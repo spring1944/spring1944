@@ -1,0 +1,10 @@
+[geropelblitz_destroyed]
+{
+	object=GEROpelBlitz_Destroyed.S3O;
+	description=Destroyed Truck;
+	energy=50;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

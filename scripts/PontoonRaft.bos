@@ -1,0 +1,141 @@
+#define TAK
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  base, deck, load_shoulder, load_arm, wake1, wake2;
+ 
+static-var restore_delay;
+
+// Signal definitions
+#define SIG_MOVE			2
+//#define INFANTRY			458752 //983040 // this is 65536 * s3o model radius
+//#define FUDGE				50 // isn't enough even between smg and rifle
+#define UNIT_ALLIED			74
+
+// Transport script courtesy of Zwzsg's script for Spring SW imptroopc
+TransportPickup(unitid)
+{
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+		if( get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [95.000000] )
+		{
+			set BUSY to 1;
+			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
+			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			attach-unit unitid to load_arm;
+			move load_arm to z-axis [10.000000] speed [300.000000];
+			wait-for-move load_arm along z-axis;
+			attach-unit unitid to deck; 
+			set BUSY to 0;
+		}
+	}
+}
+TransportDrop(unitid, position)
+{
+	var Func_Var_3;
+	Func_Var_3 = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	//if( Func_Var_3 >= 0 AND Func_Var_3 <= [95.000000] )
+	//{
+		set BUSY to 1;
+		//spin load_shoulder around y-axis speed <50>;
+		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		//move load_arm to z-axis [10.000000] now;
+		//turn load_arm to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		attach-unit unitid to load_arm;
+		move load_arm to z-axis Func_Var_3 speed [600.000000];
+		wait-for-move load_arm along z-axis;
+		drop-unit unitid;
+		move load_arm to z-axis [0.000000] now;
+		wait-for-move load_arm along z-axis;
+		if( get XZ_HYPOT(get PIECE_XZ(base) - get UNIT_XZ(unitid)) < [1.000000] )
+		{
+			attach-unit unitid to 0 - 1;
+		}
+		//stop-spin load_shoulder around y-axis;
+		sleep 10;
+		set BUSY to 0;
+	//}
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+StartMoving()
+{
+	set ACTIVATION to 1;
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	/*emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;*/
+		while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake2;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	set ACTIVATION to 0;
+	signal SIG_MOVE;
+}
+
+Create()
+{
+	hide deck;
+//	spin tow_point around y-axis speed <100>;
+
+	turn deck to x-axis <0> now;
+	turn deck to y-axis <0> now;
+	turn deck to z-axis <0> now;
+	
+	start-script SmokeUnit();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 999 )
+	{
+		corpsetype = 1;
+		
+		return (0);
+	}
+	corpsetype = 1;
+//	explode body type SHATTER;
+}

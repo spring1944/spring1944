@@ -1,0 +1,10 @@
+[GERSdKfz9_Destroyed]
+{
+	object=GERSdKfz9_Destroyed.S3O;
+	description=Destroyed Tractor;
+	energy=75;
+	damage=50000;
+	footprintx=2;
+	footprintz=4;
+	reclaimable=1;
+}

@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  file: death_watch.lua
+--  brief: Watches for the death of certain units, runs a function if needed
+--  author: Maelstrom
+--
+--  Copyright (C) 2007.
+--  Licensed under the terms of the Creative Commons Attribution-Noncommercial 3.0 Unported
+--
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--    Note:
+--  Units to watch are defined in 'LuaConfigs/death_watch_defs.lua'
+--
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+function gadget:GetInfo()
+	return {
+		name      = "Death Watch",
+		desc      = "Watches for the death of certain units",
+		author    = "Maelstrom",
+		date      = "7th August 2007",
+		license   = "CC by-nc, version 3.0",
+		layer     = -5,
+		enabled   = true  --  loaded by default?
+	}
+end
+
+if (gadgetHandler:IsSyncedCode()) then
+	
+	local watchDefs = { }
+	
+		-- Fixes up the watch def file for later
+	local function checkWatchDefs(rawWatchDefs)
+		for unitDefName, watchDef in pairs(rawWatchDefs) do
+			local ud = UnitDefNames[unitDefName]
+			local udID = ud.id
+			
+			watchDefs[udID] = { }
+			
+			watchDefs[udID].name = unitDefName
+			for k,v in pairs(watchDef) do
+				watchDefs[udID][k] = v
+			end
+		end
+	end
+	
+		-- Loads in the watchDef
+	function gadget:Initialize()
+		watchDefs = { }
+		local rawWatchDefs = include("gamedata/LuaConfigs/death_watch_defs.lua")
+		checkWatchDefs(rawWatchDefs)
+	end
+	
+		-- Runs the onDeath function if its needed
+	function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+		if watchDefs[unitDefID] then
+			watchDefs[unitDefID].onDeath(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam, watchDefs[unitDefID])
+		end
+	end
+	
+end
+

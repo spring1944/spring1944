@@ -1,0 +1,22 @@
+[rust3476_damaged]
+{
+	object=RUST3476_Damaged.S3O;
+	featuredead=RUST3476_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[rust3476_destroyed]
+{
+	object=RUST3476_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

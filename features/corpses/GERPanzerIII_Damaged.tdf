@@ -1,0 +1,22 @@
+[gerpanzeriii_damaged]
+{
+	object=GERPanzerIII_Damaged.S3O;
+	featuredead=GERPanzerIII_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gerpanzeriii_destroyed]
+{
+	object=GERPanzerIII_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

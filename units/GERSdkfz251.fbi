@@ -1,0 +1,77 @@
+[unitinfo]
+{
+	unitname=GERSdkfz251;
+	objectname=GERSdkfz251.S3O;
+	corpse=GERSdkfz251_Destroyed;
+	icontype=halftrack;
+	soundcategory=GERTank;
+	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
+	tedclass=TANK;
+
+	name=Sd.Kfz. 251/1 SPW;
+	description=Medium Personnel Carrier;
+	side=GER;
+	maxdamage=1200;
+	buildcostmetal=520;
+	buildcostenergy=0;
+	buildtime=260;
+	footprintx=2;
+	footprintz=2;
+
+	smoothanim=0;
+
+	shownanoframe=0;
+
+	energyuse=6;
+	SeismicSignature=0;
+	sightdistance=800;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Light;
+	maxvelocity=5.2;
+	acceleration=0.065;
+	brakerate=0.195;
+	turnrate=405;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	transportsize=1;
+	transportcapacity=12;
+	transportmass=1200;	
+	releaseheld=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=MG34;
+	onlytargetcategory1=INFTARG;
+	weapon2=MG34Fear;
+	onlytargetcategory2=INFTARG;
+	weaponslaveto2=1;
+	weapon3=.50calproof;
+
+	weapon4=Small_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+	}
+}

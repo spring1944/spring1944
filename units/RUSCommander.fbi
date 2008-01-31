@@ -1,0 +1,59 @@
+[unitinfo]
+{
+	unitname=RUSCommander;
+	objectname=RUSEngineer.S3O;
+	corpse=RUSSoldier_dead;
+	icontype=commissar;
+	soundcategory=RUSInf;
+	category=NOWEAPON NFLAG COMMANDER INFTARG NFLAGNAIR;
+	tedclass=CONSTR;
+
+	name=Engineer Commander;
+	side=RUS;
+	maxdamage=40;
+	damagemodifier=0.375;
+	idleautoheal=2;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=4000;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	commander=1;
+	upright=1;
+	shownanoframe=0;
+
+	metalmake=5;
+	energymake=5;
+	energystorage=1000;
+	SeismicSignature=0;
+	sightdistance=700;
+	stealth=1;
+
+	builder=1;
+	builddistance=5;
+	workertime=20; //110
+	shownanospray=0;
+
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=40;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=10;
+	weapon1=buildline;
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	[sfxtypes]
+	{
+	}
+}

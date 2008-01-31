@@ -1,0 +1,37 @@
+[m2flamethrower]
+{
+	id=76;
+	name=M2-2 Flamethrower;
+	rendertype=5;
+	turret=1;
+	tolerance=200;
+
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=200;
+	reloadtime=2;
+	energypershot=2;
+	burst=40;
+	burstrate=.04;
+	sprayangle=1024;
+	weaponvelocity=140;
+	areaofeffect=32;
+	weapontimer=2;
+
+	soundtrigger=1;
+	soundstart=GEN_Flamethrower;
+	soundhit=none;
+
+	impulsefactor=0.000001;
+
+	[damage]
+	{
+		default=140;
+		bunkers=300;
+		sandbags=5;
+		mines=0;
+		flag=0.000000001;
+		tanks=50;
+	}
+}

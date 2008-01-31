@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=Sandbags;
+	objectname=Sandbags.S3O;
+	corpse=Sandbags;
+	category=SANDBAG NFLAGNAIR;
+	tedclass=FORT;
+	yardmap=f;
+
+	name=Sandbags;
+	description=Defensive Barrier;
+	side=GER;
+	maxdamage=2000;
+	buildcostmetal=1;
+	buildcostenergy=25;
+	buildtime=75;
+	buildangle=5;
+	footprintx=2;
+	footprintz=1;
+
+	hidedamage=1;
+	isfeature=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	stealth=1;
+
+	maxslope=8;
+	maxwaterdepth=0;
+
+	weapon1=SandbagFearShield;
+	[sfxtypes]
+	{
+	}
+}

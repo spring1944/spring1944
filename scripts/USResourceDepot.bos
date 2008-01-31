@@ -1,0 +1,29 @@
+#define TA			// This is a TA script
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  base, head1, head2;
+
+
+Headspin()
+{
+	spin head1 around x-axis speed <50>;
+	spin head2 around x-axis speed <50>;
+}
+
+Create()
+{
+	start-script Headspin();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+	//corpsetype = 0;
+	explode base type BITMAPONLY | BITMAP1;
+}

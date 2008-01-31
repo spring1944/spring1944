@@ -1,0 +1,27 @@
+[LZFlare]
+{
+	usedefaultexplosions=0;
+
+	[heatcloud]// Fire burst
+   	{
+      		[properties]
+      		{
+			ageSpeed = 0.0000000001;
+      			heat = 28;
+			Texture=flare;
+      			maxheat = 25;
+      			heatFalloff =4;
+      			size = 8 r1;
+      			sizeGrowth = 2 r.16;
+      			sizemod = 0;
+      			sizemodmod = 0;
+      			speed = 0, 0.0, 0;
+      			pos = 0, 0.0, 0;
+      		}
+
+		air=1;
+      		water=1;
+      		ground=1;
+      		count=1;
+   		}
+}

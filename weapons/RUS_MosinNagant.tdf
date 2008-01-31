@@ -1,0 +1,110 @@
+[mosinnagant]
+{
+	id=2;
+	name=Mosin-Nagant;
+	rendertype=0;
+	turret=1;
+	tolerance=6000;
+	interceptedbyshieldtype=8;
+	explosiongenerator=custom:BulletImpact;
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=880;
+	reloadtime=3;
+	energypershot=0.5;
+	accuracy=100;
+	sprayangle=100;
+	movingaccuracy=888;
+	weaponvelocity=1500;
+	areaofeffect=1;
+	weapontimer=1;
+
+	soundtrigger=0;
+	soundstart=RUS_MosinNagant;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+
+	rgbcolor=0 0.7 0;
+
+	beamweapon=1;
+	thickness=0.4;
+	duration=0.01;
+	intensity=0.9;
+
+	corethickness=0.15;
+	laserflaresize=0.0001;
+
+	size=2.5;
+
+	[damage]
+	{
+		default=1;
+		infantry=20.5;
+		guns=15;
+		lightbuildings=1;
+		bunkers=0;
+		sandbags=1;
+		mines=0;
+		flag=0.000000000000001;
+		tanks=0;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
+	}
+}
+[partisanmosinnagant]
+{
+	id=2;
+	name=Mosin-Nagant;
+	rendertype=0;
+	turret=1;
+	tolerance=6000;
+	interceptedbyshieldtype=8;
+
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=800;
+	reloadtime=3;
+	energypershot=2;
+	accuracy=400;
+	sprayangle=100;
+	movingaccuracy=888;
+	weaponvelocity=1500;
+	areaofeffect=1;
+	weapontimer=1;
+
+	soundtrigger=0;
+	soundstart=RUS_MosinNagant;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+
+	rgbcolor=0 0.7 0;
+
+	beamweapon=1;
+	thickness=0.4;
+	duration=0.01;
+	intensity=0.9;
+
+	corethickness=0.15;
+	laserflaresize=0.0001;
+
+	size=2.5;
+
+	[damage]
+	{
+		default=1;
+		infantry=20.5;
+		guns=15;
+		lightbuildings=1;
+		bunkers=0;
+		sandbags=1;
+		mines=0;
+		flags=0;
+		tanks=0;
+		armouredvehicles=12;
+		unarmouredvehicles=15;
+	}
+}

@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=ger_platoon_hq;
+	objectname=MortarShell.S3O;
+	buildpic=GERPanzergren.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Rifle Squad;
+	description=4 x Rifle, 2 x SMG;
+	side=GER;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=320;
+	buildcostenergy=0;
+	buildtime=320;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

@@ -1,0 +1,22 @@
+[gbrcromwell_damaged]
+{
+	object=GBRCromwell_Damaged.S3O;
+	featuredead=GBRCromwell_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gbrcromwell_destroyed]
+{
+	object=GBRCromwell_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

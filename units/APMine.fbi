@@ -1,0 +1,72 @@
+[unitinfo]
+{
+	unitname=APMine;
+	objectname=APMine.S3O;
+	icontype=mines;
+	soundcategory=Nothing;
+	category=MINE WEAPON;
+	tedclass=SPECIAL;
+	yardmap=y;
+
+	name=Anti-Personelle Mines;
+	maxdamage=100;
+	buildcostmetal=345;
+	buildcostenergy=0;
+	buildtime=230;
+	footprintx=1;
+	footprintz=1;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=150;
+	stealth=1;
+
+	init_cloaked=1;
+	mincloakdistance=1;
+
+	maxslope=3;
+	maxwaterdepth=50;
+
+	selfdestructcountdown=1;
+	explodeas=NOWEAPON;
+	selfdestructas=APMine;
+	kamikaze=1;
+
+	weapon1=APMineKill;
+	onlytargetcategory1=NFLAGNAIR;
+	weapon2=APMine;
+	onlytargetcategory2=NFLAGNAIR;
+	weapon3=APMine;
+	onlytargetcategory3=NFLAGNAIR;
+	weapon4=APMine;
+	onlytargetcategory4=NFLAGNAIR;
+	weapon5=APMine;
+	onlytargetcategory5=NFLAGNAIR;
+	weapon6=APMine;
+	onlytargetcategory6=NFLAGNAIR;
+	weapon7=APMine;
+	onlytargetcategory7=NFLAGNAIR;
+	weapon8=APMine;
+	onlytargetcategory8=NFLAGNAIR;
+	weapon9=APMine;
+	onlytargetcategory9=NFLAGNAIR;
+	weapon10=APMine;
+	onlytargetcategory10=NFLAGNAIR;
+	weapon11=APMine;
+	onlytargetcategory11=NFLAGNAIR;
+	weapon12=APMine;
+	onlytargetcategory12=NFLAGNAIR;
+	weapon13=APMine;
+	onlytargetcategory13=NFLAGNAIR;
+	weapon14=APMine;
+	onlytargetcategory14=NFLAGNAIR;
+	weapon15=APMine;
+	onlytargetcategory15=NFLAGNAIR;
+	weapon16=APMine;
+	onlytargetcategory16=NFLAGNAIR;
+	[sfxtypes]
+	{
+	}
+}

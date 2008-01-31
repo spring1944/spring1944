@@ -1,0 +1,82 @@
+[SCHREK_BACKBLAST] //thanks to quantum, he rocks! Please credit him if you use this effect.
+
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=3;
+          	length=5.5;
+          	sizeGrowth=1;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=shotgunflare;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+
+}
+
+[FAUST_BACKBLAST]
+{
+  	 [BitmapMuzzleFlame]
+   	{
+	class = CBitmapMuzzleFlame;
+      	[properties]
+      		{
+         		dir = dir;
+         		colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          		size=4;
+          		length=8;
+          		sizeGrowth=-0.5;
+          		ttl=4;
+          		frontOffset=0.1;
+          		sideTexture=plasma2;
+          		frontTexture=flowerflash;
+      	}
+	water=1;   
+	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+
+
+   	}
+}
+
+[MORTAR_MUZZLEFLASH] //thanks to quantum, he rocks! Please credit him if you use this effect.
+
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=3;
+          	length=2.5;
+          	sizeGrowth=1;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=shotgunflare;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+
+}

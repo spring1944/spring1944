@@ -1,0 +1,226 @@
+#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+
+piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
+piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
+ 
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
+
+#include "inf_suppressionvars.h"
+// Signal definitions
+#define SIG_AIM1	2
+#define SIG_DEPLOY	4
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MEDIUM_Muzzleflash	1024+7
+#define MEDIUM_MuzzleDust	1024+8
+#define MuzzleBrakeSmoke	1024+9
+
+// definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
+#define TURR_TRAVERSE	<35>
+#define TURR_ELEVATE	<50>
+#define TURR_ARC		<30>
+
+// definitions for weapons behaviour
+#define RECOIL		[-0.5] // distance to recoil the gun
+#define RETURN_SPEED	[50] // speed at which the barrel returns
+
+// animation macros
+#define CREW_DEPLOY \
+move crewman1 to y-axis [-1.0] now;\
+turn torso1 to y-axis <40> now;\
+turn lloarm1 to x-axis <-45> now;\
+
+#define CREW_FIRING \
+turn ruparm1 to x-axis <-90> speed <200>;\
+turn ruparm1 to y-axis <20> speed <200>;\
+turn torso1 to y-axis <80> speed <200>;\
+sleep 100;\
+turn torso1 to y-axis <40> speed <100>;\
+turn ruparm1 to x-axis <0> speed <100>;\
+turn ruparm1 to y-axis <0> speed <100>;\
+
+#define CREW_RELOADING \
+turn torso1 to x-axis <30> speed <100>;\
+turn ruparm1 to x-axis <-120> speed <200>;\
+turn ruparm1 to y-axis <20> speed <200>;\
+turn luparm1 to x-axis <-75> speed <200>;\
+turn torso1 to y-axis <80> speed <100>;\
+wait-for-turn torso1 around y-axis;\
+sleep 100;\
+turn ruparm1 to x-axis <-60> speed <150>;\
+turn luparm1 to x-axis <-25> speed <150>;\
+turn torso1 to y-axis <45> speed <50>;\
+wait-for-turn torso1 around y-axis;\
+sleep 200;\
+turn ruparm1 to x-axis <0> speed <100>;\
+turn ruparm1 to y-axis <0> speed <100>;\
+turn torso1 to x-axis <0> speed <50>;\
+turn luparm1 to x-axis <0> speed <100>;\
+turn torso1 to y-axis <40> speed <50>;
+
+#define CREW_SUPRESSED \
+turn head1 to x-axis <-20> now;\
+turn torso1 to y-axis <40> now;\
+turn luparm1 to x-axis <-90> now;\
+turn ruparm1 to x-axis <-90> now;\
+turn lloarm1 to x-axis <-115> now;\
+turn rloarm1 to x-axis <-115> now;\
+turn luparm1 to z-axis <20> now;\
+turn ruparm1 to z-axis <-20> now;\
+
+
+Create()
+{
+	hide flare;
+	hide brakeleft;
+	hide brakeright;
+	// init vars
+	set ACTIVATION to TRUE;
+}
+
+TakeCover()
+{
+set-signal-mask 0;
+	if (IsProne == 0)
+	{
+	
+				IsProne=1;
+				CREW_SUPRESSED
+
+	}
+		SET ARMORED to TRUE;
+
+		sleep 100;
+		return(0);
+}
+
+RestoreAfterCover() //get up out of the dirt. also controls going into pinned mode.
+{
+	
+
+		if (fear <=0 && IsProne==1)
+		{	
+			fear=0;
+			CREW_DEPLOY
+				IsProne=0;
+				SET ARMORED to FALSE;
+				set MAX_SPEED to [0.5];
+		
+		}
+		return (1);
+		sleep 100;
+	}
+
+
+FearRecovery() 
+{ 
+
+	
+     if (DecreasingFear==1) return (1);  // better to use signals here
+
+
+     DecreasingFear = 1;
+     while(fear > 0) 
+          { 
+          fear = fear - RecoverConstant; 
+          sleep RecoverRate; 
+          } 
+start-script RestoreAfterCover(); 
+DecreasingFear=0; 
+ 
+return (1); 
+}
+
+
+HitByWeaponId(z,x,id,damage)
+{	
+	lasthit = Id;
+	if (Id<=300 || Id>700)
+		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
+	
+	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+		fear = fear + LittleFear;
+	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
+		fear = fear + MedFear;
+	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
+		fear = fear + BigFear;
+	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
+		fear = fear + MortalFear;
+
+	if (fear > FearLimit) fear = FearLimit; // put this line AFTER increasing fear var
+		
+	start-script TakeCover();
+	sleep 100; // what is this for??
+	start-script FearRecovery();
+	
+	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
+}
+
+// Weapon 1
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = barrel;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if (fear>0) return 0;
+	bAiming=1;
+		//TODO: anim	
+	turn carriage to y-axis heading speed TURR_ELEVATE;
+	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn carriage around y-axis;
+	wait-for-turn carriage around x-axis;
+	bAiming=0;
+	return 1;
+}
+
+FireWeapon1()
+{
+	emit-sfx MEDIUM_Muzzleflash from flare;
+	emit-sfx MEDIUM_MuzzleDust from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	
+	move barrel to z-axis RECOIL now;
+	//Fire teh weap0n!!!11
+	CREW_FIRING;
+	get DO_SEISMIC_PING(15);
+	sleep 100;
+	move barrel to z-axis [0] speed RETURN_SPEED;
+	//Now reload...
+	CREW_RELOADING
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 25 || lasthit>1 && lasthit<10)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		return (0);
+	}
+	if(severity <= 999)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	}
+	corpsetype = 2;
+	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;	
+	explode sleeve type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode head1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode carriage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+}

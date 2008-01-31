@@ -1,0 +1,11 @@
+[gbrm10achilles_destroyed]
+{
+	object=GBRM10Achilles_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank Destroyer;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

@@ -1,0 +1,54 @@
+[unitinfo]
+{
+	unitname=USHQEngineer;
+	objectname=USEngineer.S3O;
+	corpse=USsoldier_dead;
+	icontype=engineer;
+	soundcategory=USInf;
+	category=NOWEAPON NFLAG  INFTARG NFLAGNAIR;
+	tedclass=CONSTR;
+
+	name=Field Engineer;
+	description=Basic Engineer;
+	maxdamage=100;
+	buildcostmetal=140;
+	buildcostenergy=0;
+	buildtime=140;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	damagemodifier=0.375;
+	hidedamage=1;
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=2;
+	SeismicSignature=0;
+	sightdistance=500;
+	stealth=1;
+
+	builder=1;
+	builddistance=5;
+	workertime=10;
+	shownanospray=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=50;
+	weapon1=buildline;
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+}

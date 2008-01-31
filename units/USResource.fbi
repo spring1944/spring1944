@@ -1,0 +1,47 @@
+[unitinfo]
+{
+	unitname=USResource;
+	objectname=LogisticsMed.S3O;
+	buildpic=LogisticsSmall.png;
+	corpse=Debris_Small;
+	icontype=ammo;
+	soundcategory=USInf;
+	category=NOWEAPON  BUILDING  NFLAGNAIR NFLAG ;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Supply Stockpile;
+	description=Logistics Supply Source;
+	maxdamage=450;
+	buildcostmetal=772;
+	buildcostenergy=0;
+	buildtime=515;
+	footprintx=3;
+	footprintz=3;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=3.75;
+	energystorage=50;
+
+	sightdistance=1;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	maxslope=15;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=3;
+	buildinggrounddecalsizey=3;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=ResourceBoom;
+	selfdestructas=Med_Explosion;
+
+	[sfxtypes]
+	{
+	}
+}

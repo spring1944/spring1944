@@ -1,0 +1,53 @@
+[unitinfo]
+{
+	unitname=RUSEngineer;
+	objectname=RUSEngineer.S3O;
+	corpse=RUSSoldier_dead;
+	icontype=advancedengineer;
+	soundcategory=RUSInf;
+	category=NOWEAPON NFLAG INFTARG NFLAGNAIR;
+	tedclass=CONSTR;
+
+	name=Engineer;
+	description=Advanced Engineer;
+	side=RUS;
+	maxdamage=40;
+	damagemodifier=0.375;
+	idleautoheal=2;
+	buildcostmetal=460;
+	buildcostenergy=0;
+	buildtime=230;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+
+	energyuse=5;
+	SeismicSignature=0;
+	sightdistance=700;
+	stealth=1;
+
+	builder=1;
+	builddistance=5;
+	workertime=10;//75
+	shownanospray=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=10;
+	weapon1=buildline;
+	
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	[sfxtypes]
+	{
+	}
+}

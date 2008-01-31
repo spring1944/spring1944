@@ -1,0 +1,51 @@
+[unitinfo]
+{
+	unitname=GERBarracks;
+	objectname=GERBarracks.S3O;
+	corpse=GERBarracks_Destroyed;
+	icontype=factory;
+	soundcategory=GERInf;
+	category=NFLAGNAIR PLANT BUILDING;
+	tedclass=PLANT;
+	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
+
+	name=Heer Divisionen Kaserne;
+	description=Divisional Barracks;
+	maxdamage=5000;
+	buildcostmetal=907.5;
+	buildcostenergy=0;
+	buildtime=605;
+	footprintx=5;
+	footprintz=7;
+
+	shownanoframe=0;
+	unitrestricted=3;
+	smoothanim=0;
+
+	metalstorage=1500;
+	energystorage=300;
+
+	sightdistance=146;
+	stealth=1;
+
+	builder=1;
+	workertime=10;//760000
+	shownanospray=0;
+	canbeassisted=0;
+
+	canmove=1;
+	maxslope=10;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=6;
+	buildinggrounddecalsizey=8;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Large_Explosion;
+	selfdestructas=Large_Explosion;
+
+	weapon1=BuildingFearShield;
+	[sfxtypes]
+	{
+	}
+}

@@ -1,0 +1,11 @@
+[usm10wolverine_destroyed]
+{
+	object=USM10Wolverine_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank Destroyer;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

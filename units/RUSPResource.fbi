@@ -1,0 +1,50 @@
+[unitinfo]
+{
+	unitname=RUSPResource;
+	objectname=LogisticsSmall.S3O;
+	buildpic=LogisticsSmall.bmp;
+	corpse=Debris_Small;
+	icontype=ammo;
+	soundcategory=RUSInf;
+	category=BUILDING NFLAGNAIR;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Partisan Supplies;
+	description=Logistics Supply Source;
+	side=RUS;
+	maxdamage=1500;
+	buildcostmetal=30;
+	buildcostenergy=0;
+	buildtime=400;
+	footprintx=2;
+	footprintz=2;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=15;
+	energystorage=100;
+
+	sightdistance=1;
+	stealth=1;
+
+	activatewhenbuilt=1;
+	init_cloaked=1;
+	cloakcost=1;
+
+	maxslope=15;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=3;
+	buildinggrounddecalsizey=3;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Med_Explosion;
+	selfdestructas=Med_Explosion;
+
+	[sfxtypes]
+	{
+	}
+}

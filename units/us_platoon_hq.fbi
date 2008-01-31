@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=us_platoon_hq;
+	objectname=MortarShell.S3O;
+	buildpic=USGIRifle.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Rifle Squad;
+	description=4 x Rifle, 2 x SMG;
+	side=US;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=260;
+	buildcostenergy=0;
+	buildtime=260;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

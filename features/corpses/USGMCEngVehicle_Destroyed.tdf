@@ -1,0 +1,11 @@
+[usgmcengvehicle_destroyed]
+{
+	object=USGMCEngVehicle_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Engineer Vehicle;
+	energy=500;
+	damage=5000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

@@ -1,0 +1,10 @@
+[GBRHQ_Destroyed]
+{
+	object=GBRBarracks_Destroyed.S3O;
+	description=Destroyed HQ;
+	energy=1000;
+	damage=50000;
+	footprintx=7;
+	footprintz=7;
+	reclaimable=1;
+}

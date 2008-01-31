@@ -1,0 +1,43 @@
+#define TA			// This is a TA script
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  base, Log1, Log2, truck;
+
+static-var  Static_Var_1;
+
+
+Create()
+{
+
+  while (get BUILD_PERCENT_LEFT)
+   {
+    move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;
+    sleep 10;
+ 	}
+  move base to y-axis 0 now;
+  
+	Static_Var_1 = Rand( 1, 2 );
+	if( Static_Var_1 == 1 )
+	{
+		show Log1;
+		show truck;
+		hide Log2;
+	}
+	if( Static_Var_1 == 2 )
+	{
+		hide Log1;
+		hide truck;
+		show Log2;
+	}
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+}

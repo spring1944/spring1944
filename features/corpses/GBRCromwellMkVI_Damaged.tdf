@@ -1,0 +1,22 @@
+[gbrcromwellmkvi_damaged]
+{
+	object=GBRCromwellmkvi_Damaged.S3O;
+	featuredead=GBRCromwellmkvi_Destroyed;
+	description=Abandoned Support Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gbrcromwellmkvi_destroyed]
+{
+	object=GBRCromwellmkvi_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Support Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

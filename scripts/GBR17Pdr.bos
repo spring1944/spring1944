@@ -1,0 +1,646 @@
+#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+
+piece ground, carriage, turret, gunleg1, gunleg2, wheels, sleeve, barrel, flare, brakeleft, brakeright;
+piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
+piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
+ 
+static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
+
+#include "inf_suppressionvars.h"
+// Signal definitions
+#define SIG_AIM1	2
+#define SIG_AIM2	4
+#define SIG_AIM3	8
+#define SIG_AIM4	16
+#define SIG_DEPLOY	32
+
+// definitions for wheels
+#define WHEEL_SPIN		<100>
+#define WHEEL_ACCEL		<30>
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MEDIUM_Muzzleflash	1024+7
+#define MEDIUM_MuzzleDust	1024+8
+#define MuzzleBrakeSmoke	1024+9
+
+// definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
+#define TURR_TRAVERSE	<200>
+#define TURR_ELEVATE	<150>
+#define TURR_ARC		<30>
+
+// definitions for weapons behaviour
+#define RECOIL		[-0.5] // distance to recoil the gun
+#define RETURN_SPEED	[50] // speed at which the barrel returns
+
+// animation macros
+#define CREW_DEPLOY \
+turn head1 to x-axis <0> now;\
+turn head2 to x-axis <0> now;\
+turn rthigh1 to x-axis <-50> now;\
+turn lthigh1 to x-axis <-50> now;\
+turn rleg1 to x-axis <130> now;\
+turn lleg1 to x-axis <130> now;\
+move crewman1 to y-axis [-1.0] now;\
+turn torso1 to y-axis <40> now;\
+turn lloarm1 to x-axis <-45> now;\
+turn rthigh2 to x-axis <-90> now;\
+turn rleg2 to x-axis <90> now;\
+turn lleg2 to x-axis <90> now;\
+move crewman2 to y-axis [-1.0] now;\
+turn torso2 to y-axis <-45> now;\
+turn torso2 to x-axis <10> now;\
+turn luparm2 to x-axis <-60> now;\
+turn luparm2 to y-axis <35> now;\
+turn ruparm2 to x-axis <-90> now;
+
+#define CREW_UNDEPLOY \
+turn carriage to y-axis <0> now;\
+turn carriage to x-axis <0> now;\
+move crewman1 to y-axis [0] now;\
+move crewman2 to y-axis [0] now;\
+turn rthigh1 to x-axis <0> now;\
+turn lthigh1 to x-axis <0> now;\
+turn rleg1 to x-axis <0> now;\
+turn lleg1 to x-axis <0> now;\
+turn torso1 to y-axis <0> now;\
+turn luparm1 to x-axis <0> now;\
+turn lloarm1 to x-axis <0> now;\
+turn rthigh2 to x-axis <0> now;\
+turn rleg2 to x-axis <0> now;\
+turn lleg2 to x-axis <0> now;\
+turn torso2 to y-axis <0> now;\
+turn torso2 to x-axis <0> now;\
+turn luparm2 to x-axis <0> now;\
+turn luparm2 to y-axis <0> now;\
+turn ruparm2 to x-axis <0> now;\
+
+#define CREW_STOP \
+turn rthigh1 to x-axis <0> now;\
+turn lthigh1 to x-axis <0> now;\
+turn rthigh2 to x-axis <0> now;\
+turn lthigh2 to x-axis <0> now;\
+turn rleg1  to x-axis <0> now;\
+turn lleg1  to x-axis <0> now;\
+turn rleg2 to x-axis <0> now;\
+turn lleg2 to x-axis <0> now;\
+turn torso1 to y-axis <0> now;\
+turn torso2 to y-axis <0> now;\
+turn torso1 to x-axis <0> now;\
+turn torso2 to x-axis <0> now;\
+turn head1 to x-axis <0> now;\
+turn head2 to x-axis <0> now;
+
+#define CREW_FIRING \
+turn ruparm2 to x-axis <90> now;\
+turn rloarm2 to x-axis <-90> now;\
+sleep 50;\
+turn ruparm1 to x-axis <-90> speed <200>;\
+turn ruparm1 to y-axis <20> speed <200>;\
+turn torso1 to y-axis <80> speed <200>;\
+sleep 100;\
+turn torso1 to y-axis <40> speed <100>;\
+turn ruparm1 to x-axis <0> speed <100>;\
+turn ruparm1 to y-axis <0> speed <100>;\
+turn ruparm2 to x-axis <-90> speed <200>;\
+turn rloarm2 to x-axis <0> speed <150>;\
+
+#define CREW_RELOADING \
+turn torso1 to x-axis <30> speed <100>;\
+turn ruparm1 to x-axis <-120> speed <200>;\
+turn ruparm1 to y-axis <20> speed <200>;\
+turn luparm1 to x-axis <-75> speed <200>;\
+turn torso1 to y-axis <80> speed <100>;\
+wait-for-turn torso1 around y-axis;\
+sleep 100;\
+turn ruparm1 to x-axis <-60> speed <150>;\
+turn luparm1 to x-axis <-25> speed <150>;\
+turn torso1 to y-axis <45> speed <50>;\
+wait-for-turn torso1 around y-axis;\
+sleep 200;\
+turn ruparm1 to x-axis <0> speed <100>;\
+turn ruparm1 to y-axis <0> speed <100>;\
+turn torso1 to x-axis <0> speed <50>;\
+turn luparm1 to x-axis <0> speed <100>;\
+turn torso1 to y-axis <40> speed <50>;
+
+#define CREW_SUPRESSED \
+turn head1 to x-axis <-20> now;\
+turn head2 to x-axis <-20> now;\
+turn rthigh1 to x-axis <-50> now;\
+turn lthigh1 to x-axis <-50> now;\
+turn rleg1 to x-axis <130> now;\
+turn lleg1 to x-axis <130> now;\
+move crewman1 to y-axis [-1.0] now;\
+turn torso1 to y-axis <40> now;\
+turn rthigh2 to x-axis <-90> now;\
+turn rleg2 to x-axis <90> now;\
+turn lleg2 to x-axis <90> now;\
+move crewman2 to y-axis [-1.0] now;\
+turn torso2 to y-axis <-45> now;\
+turn torso2 to x-axis <10> now;\
+turn luparm1 to x-axis <-90> now;\
+turn luparm2 to x-axis <-90> now;\
+turn ruparm1 to x-axis <-90> now;\
+turn ruparm2 to x-axis <-90> now;\
+turn lloarm1 to x-axis <-115> now;\
+turn lloarm2 to x-axis <-115> now;\
+turn rloarm1 to x-axis <-115> now;\
+turn rloarm2 to x-axis <-115> now;\
+turn luparm1 to z-axis <20> now;\
+turn luparm2 to z-axis <20> now;\
+turn ruparm1 to z-axis <-20> now;\
+turn ruparm2 to z-axis <-20> now;\
+
+
+Create()
+{
+	hide flare;
+	hide brakeleft;
+	hide brakeright;
+	// init vars
+	isDeployed = FALSE;
+	normalSpeed = get MAX_SPEED;
+	set ACTIVATION to TRUE;
+}
+
+TakeCover()
+{
+set-signal-mask 0;
+	if (IsProne == 0)
+	{
+	
+				IsProne=1;
+				CREW_SUPRESSED
+
+	}
+		SET MAX_SPEED to [0.00001];
+		SET ARMORED to TRUE;
+
+		sleep 100;
+		return(0);
+}
+
+RestoreAfterCover() //get up out of the dirt. also controls going into pinned mode.
+{
+	
+
+		if (fear <=0 && IsProne==1)
+		{	
+			fear=0;
+			CREW_DEPLOY
+				IsProne=0;
+				SET ARMORED to FALSE;
+				set MAX_SPEED to [0.5];
+		
+		}
+		return (1);
+		sleep 100;
+	}
+
+
+FearRecovery() 
+{ 
+
+	
+     if (DecreasingFear==1) return (1);  // better to use signals here
+
+
+     DecreasingFear = 1;
+     while(fear > 0) 
+          { 
+          fear = fear - RecoverConstant; 
+          sleep RecoverRate; 
+          } 
+start-script RestoreAfterCover(); 
+DecreasingFear=0; 
+ 
+return (1); 
+}
+
+
+HitByWeaponId(z,x,id,damage)
+{	
+	lasthit = Id;
+	if (Id<=300 || Id>700)
+		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
+	
+	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+		fear = fear + LittleFear;
+	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
+		fear = fear + MedFear;
+	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
+		fear = fear + BigFear;
+	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
+		fear = fear + MortalFear;
+
+	if (fear > FearLimit) fear = FearLimit; // put this line AFTER increasing fear var
+		
+	start-script TakeCover();
+	sleep 100; // what is this for??
+	start-script FearRecovery();
+	
+	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
+}
+
+
+// thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
+Deploy() 
+{
+	set-signal-mask SIG_DEPLOY;
+	//TODO: deploy anim
+	
+	CREW_DEPLOY;
+	
+	move crewman1 to y-axis [-1] now;
+	move crewman2 to y-axis [-1] now;
+	
+	turn gunleg1 to y-axis <15> now;
+	turn gunleg2 to y-axis <-15> now;
+	//set CLOAKED to TRUE;
+		SET MAX_SPEED to 1;
+	sleep 100;
+	isDeployed = TRUE;
+
+}
+
+UnDeploy() 
+{
+	set-signal-mask SIG_DEPLOY;
+	isDeployed = FALSE;
+	// TODO: undeploy anim
+	
+	CREW_UNDEPLOY;
+	wait-for-turn carriage around y-axis;
+	turn gunleg1 to y-axis <0> now;
+	turn gunleg2 to y-axis <0> now;
+	
+	move crewman1 to y-axis [0] now;
+	move crewman2 to y-axis [0] now;
+
+	sleep 50;
+	set CLOAKED to FALSE;
+	set MAX_SPEED to normalSpeed;
+}
+
+CrewWalk()
+{
+	//TODO: crew walking anim
+	
+	var bMoving;
+	bMoving = TRUE; // lazy hack!
+	
+	while (TRUE) 
+	{
+		 if (fear>0) sleep 100;
+		 
+	if( bMoving )
+	{
+		turn torso1 to x-axis <30> now;
+		turn head1 to x-axis <-30> now;
+		turn torso2 to x-axis <30> now;
+		turn head2 to x-axis <-30> now;
+		
+		turn luparm1 to x-axis <-40> now;
+		turn lloarm1 to x-axis <-50> now;
+		turn luparm2 to x-axis <-45> now;
+		turn lloarm2 to x-axis <-45> now;
+		
+		turn ruparm1 to x-axis <-25> now;
+		turn rloarm1 to x-axis <-50> now;
+		turn ruparm2 to x-axis <-30> now;
+		turn rloarm2 to x-axis <-40> now;
+		
+		turn ruparm1 to y-axis <15> now;
+		turn ruparm2 to y-axis <15> now;
+		turn luparm1 to y-axis <-15> now;
+		turn luparm2 to y-axis <-15> now;
+	
+		turn torso1 to y-axis <-6.000000> now;
+		turn rthigh1 to x-axis <-1.000000> now;
+		turn lthigh1 to x-axis <17.000000> now;
+		turn lleg1  to x-axis <80.016484> now;
+		turn rleg1  to x-axis <26.005495> now;
+
+		turn rthigh2 to x-axis <-1.000000> now;
+		turn lthigh2 to x-axis <17.000000> now;
+		turn lleg2 to x-axis <80.016484> now;
+		turn rleg2 to x-axis <26.005495> now;
+
+		sleep 60;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <10.000000> now;
+		turn lthigh1 to x-axis <4.000000> now;
+		turn lleg1 to x-axis <117.027473> now;
+		turn rleg1 to x-axis <13.000000> now;
+
+		turn rthigh2 to x-axis <10.000000> now;
+		turn lthigh2 to x-axis <4.000000> now;
+		turn lleg2 to x-axis <117.027473> now;
+		turn rleg2 to x-axis <13.000000> now;
+
+		sleep 70;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <14.000000> now;
+		turn lthigh1 to x-axis <-19.000000> now;
+		turn rleg1 to x-axis <18.000000> now;
+
+		turn rthigh2 to x-axis <14.000000> now;
+		turn lthigh2 to x-axis <-19.000000> now;
+		turn rleg2 to x-axis <18.000000> now;
+
+		sleep 60;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <21.000000> now;
+		turn lthigh1 to x-axis <-40.005495> now;
+		turn lleg1 to x-axis <109.016484> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <21.000000> now;
+		turn lthigh2 to x-axis <-40.005495> now;
+		turn lleg2 to x-axis <109.016484> now;
+		
+		sleep 50;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <23.005495> now;
+		turn lthigh1 to x-axis <-54.005495> now;
+		turn lleg1 to x-axis <80.016484> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <23.005495> now;
+		turn lthigh2 to x-axis <-54.005495> now;
+		turn lleg2 to x-axis <80.016484> now;
+		
+		sleep 40;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <30.005495> now;
+		turn lthigh1 to x-axis <-44.005495> now;
+		turn lleg1 to x-axis <35.005495> now;
+		turn rleg1 to x-axis <46.005495> now;
+		
+		turn rthigh2 to x-axis <30.005495> now;
+		turn lthigh2 to x-axis <-44.005495> now;
+		turn lleg2 to x-axis <35.005495> now;
+		turn rleg2 to x-axis <46.005495> now;
+
+		sleep 30;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <19.000000> now;
+		turn lthigh1 to x-axis <-42.005495> now;
+		turn lleg1 to x-axis <46.005495> now;
+		turn rleg1 to x-axis <84.016484> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		//turn torso2 to y-axis <8.000000> now;
+		turn rthigh2 to x-axis <19.000000> now;
+		turn lthigh2 to x-axis <-42.005495> now;
+		turn lleg2 to x-axis <46.005495> now;
+		turn rleg2 to x-axis <84.016484> now;
+
+		sleep 40;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <13.000000> now;
+		turn lthigh1 to x-axis <-33.005495> now;
+		turn rleg1 to x-axis <91.016484> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn pelvis2 to x-axis <6.000000> now;
+		turn rthigh2 to x-axis <13.000000> now;
+		turn lthigh2 to x-axis <-33.005495> now;
+		turn rleg2 to x-axis <91.016484> now;
+
+		sleep 50;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <2.000000> now;
+		turn lthigh1 to x-axis <-23.005495> now;
+		turn rleg1 to x-axis <100.016484> now;
+
+		turn rthigh2 to x-axis <2.000000> now;
+		turn lthigh2 to x-axis <-23.005495> now;
+		turn rleg2 to x-axis <100.016484> now;
+
+		sleep 60;
+	}
+	if( bMoving )
+	{
+
+		turn rthigh1 to x-axis <-17.000000> now;
+		turn lthigh1 to x-axis <-3.000000> now;
+		turn lleg1 to x-axis <31.005495> now;
+		turn rleg1 to x-axis <111.016484> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <-17.000000> now;
+		turn lthigh2 to x-axis <-3.000000> now;
+		turn lleg2 to x-axis <31.005495> now;
+		turn rleg2 to x-axis <111.016484> now;
+
+		sleep 70;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <-32.005495> now;
+		turn lthigh1 to x-axis <5.000000> now;
+		turn lleg1 to x-axis <25.005495> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <-32.005495> now;
+		turn lthigh2 to x-axis <5.000000> now;
+		turn lleg2 to x-axis <25.005495> now;
+
+		sleep 60;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <-45.005495> now;
+		turn lthigh1 to x-axis <13.000000> now;
+		turn lleg1 to x-axis <29.005495> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <-45.005495> now;
+		turn lthigh2 to x-axis <13.000000> now;
+		turn lleg2 to x-axis <29.005495> now;
+
+		sleep 50;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <-50.005495> now;
+		turn lthigh1 to x-axis <17.000000> now;
+		turn rleg1 to x-axis <63.005495> now;
+
+		turn rthigh2 to x-axis <-50.005495> now;
+		turn lthigh2 to x-axis <17.000000> now;
+		turn rleg2 to x-axis <63.005495> now;
+
+		sleep 40;
+	}
+	if( bMoving )
+	{
+		turn lthigh1 to x-axis <24.005495> now;
+		turn rleg1 to x-axis <37.005495> now;
+
+		move pelvis2 to y-axis [0.000000] now;
+		turn lthigh2 to x-axis <24.005495> now;
+		turn rleg2 to x-axis <37.005495> now;
+		
+		sleep 30;
+	}
+	if( bMoving )
+	{
+		turn rthigh1 to x-axis <-41.005495> now;
+		turn lthigh1 to x-axis <20.000000> now;
+		turn lleg1 to x-axis <54.005495> now;
+		turn rleg1 to x-axis <44.005495> now;
+		
+		move pelvis2 to y-axis [0.000000] now;
+		turn rthigh2 to x-axis <-41.005495> now;
+		turn lthigh2 to x-axis <20.000000> now;
+		turn lleg2 to x-axis <54.005495> now;
+		turn rleg2 to x-axis <44.005495> now;
+
+		sleep 40;
+	}
+	turn rthigh1 to x-axis <-30.005495> now;
+	turn lthigh1 to x-axis <16.000000> now;
+	turn lleg1 to x-axis <69.016484> now;
+	turn rleg1 to x-axis <41.005495> now;
+	
+	move pelvis2 to y-axis [0.000000] now;
+	turn rthigh2 to x-axis <-30.005495> now;
+	turn lthigh2 to x-axis <16.000000> now;
+	turn lleg2 to x-axis <69.016484> now;
+	turn rleg2 to x-axis <41.005495> now;
+
+	sleep 50;
+	}
+}
+
+setSFXoccupy(terrain)
+{	
+	if(!terrain)// Transported
+	{
+		//TODO: change to being transported anim
+		
+		call-script UnDeploy();
+		CREW_UNDEPLOY;
+	}	
+	if(terrain)
+	{
+		CREW_DEPLOY;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
+	sleep 200;
+	call-script UnDeploy();
+ 	spin wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	call-script CrewWalk();
+}
+
+StopMoving()
+{
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
+ 	stop-spin wheels around x-axis;
+	CREW_STOP;
+	sleep 200;
+	start-script Deploy();
+}
+
+
+// Weapon 1
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = barrel;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if (fear>0) return 0;
+	bAiming=1;
+	if (isDeployed) 
+	{
+		//TODO: anim
+		
+	turn carriage to y-axis heading speed TURR_ELEVATE;
+	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn carriage around y-axis;
+	wait-for-turn carriage around x-axis;
+		bAiming=0;
+		return 1;
+	}
+	return 0;
+}
+
+FireWeapon1()
+{
+	emit-sfx MEDIUM_Muzzleflash from flare;
+	emit-sfx MEDIUM_MuzzleDust from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	move barrel to z-axis RECOIL now;
+	//Fire teh weap0n!!!11
+	CREW_FIRING;
+	get DO_SEISMIC_PING(15);
+	sleep 100;
+	//turn ruparm2 to x-axis <-90> speed <200>;
+	//turn rloarm2 to x-axis <0> speed <150>;
+	move barrel to z-axis [0] speed RETURN_SPEED;
+	//Now reload...
+	CREW_RELOADING
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 25 || lasthit>1 && lasthit<10)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		return (0);
+	}
+	if(severity <= 999)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	}
+	corpsetype = 2;
+	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;		
+	explode sleeve type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode head1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode carriage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+}

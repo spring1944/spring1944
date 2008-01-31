@@ -1,0 +1,5 @@
+[flankingbonus] 
+	{ 
+	defaultmode=0;  // is turned off mod-wide
+	} 
+

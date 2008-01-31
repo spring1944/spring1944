@@ -1,0 +1,86 @@
+[unitinfo]
+{
+	unitname=USM8Greyhound;
+	objectname=USM8Greyhound.S3O;
+	corpse=USM8Greyhound_Destroyed;
+	icontype=armoredcar;
+	soundcategory=USTank;
+	category=NFLAGNAIR NFLAG TANK WEAPON INFTARG LIGHTVEH;
+	tedclass=TANK;
+
+	name=M8 Greyhound;
+	description=Armoured Car;
+	side=US;
+
+	maxdamage=1618;
+	flankingbonusmode=3;
+	flankingbonusdir=0 0 1;
+	flankingbonusmax=1.19;//damage to back multiplied by this
+	flankingbonusmin=.8;//damage to front multiplied by this
+
+	buildcostmetal=2605;
+	buildcostenergy=0;
+	buildtime=868;
+	footprintx=2;
+	footprintz=2;
+	mass=1250;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=6;
+	SeismicSignature=0;
+	sightdistance=650;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Light;
+	maxvelocity=7;
+	acceleration=0.03;
+	brakerate=0.09;
+	turnrate=405;
+	maxslope=6;
+	maxwaterdepth=15;
+
+	leavetracks=1;
+	trackwidth=13;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=M637mmHE;
+	onlytargetcategory1=NFLAGNAIR;
+	weapon2=M637mmAP;
+	onlytargetcategory2=TANK;
+	weapon3=M1919A4Browning;
+	onlytargetcategory3=INFTARG;
+	weapon4=M2Browning;
+	onlytargetcategory4=AIR;
+	weapon5=NOWEAPON;
+	weapon6=M637mmFear;
+	badtargetcategory6=NFLAGNAIR;
+	onlytargetcategory6=NFLAGNAIR;
+	weaponslaveto6=1;
+	weapon7=M1919A4BrowningFear;
+	onlytargetcategory7=INFTARG;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+		explosiongenerator8=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator9=custom:SMALL_MUZZLEDUST;
+	}
+}

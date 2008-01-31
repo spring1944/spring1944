@@ -1,0 +1,46 @@
+[unitinfo]
+{
+	unitname=GerResourceDepot;
+	objectname=LogisticsLarge.S3O;
+	buildpic=LogisticsLarge.png;
+	corpse=Debris_Large;
+	icontype=ammo;
+	soundcategory=GERInf;
+	category=NFLAGNAIR NOWEAPON   BUILDING NFLAG ;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Logistikdepot;
+	side=GER;
+	maxdamage=2500;
+	buildcostmetal=3750;
+	buildcostenergy=0;
+	buildtime=2500;
+	footprintx=4;
+	footprintz=6;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=15;
+	energystorage=450;
+
+	sightdistance=1;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	maxslope=15;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=5;
+	buildinggrounddecalsizey=7;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Massive_Explosion;
+	selfdestructas=Massive_Explosion;
+
+	[sfxtypes]
+	{
+	}
+}

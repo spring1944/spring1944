@@ -1,0 +1,92 @@
+function widget:GetInfo()
+	return {
+		name      = "Square buildpics",
+		desc      = "Forces square buildpics at any resolution",
+		author    = "Gnome, Maelstrom",
+		date      = "December 7, 2007",
+		license   = "CC by-nc, version 3.0",
+		layer     = 5,
+		enabled   = false  --  loaded by default?
+	}
+end
+
+local iconscale = 64
+local vsx, vsy
+local iconSizeX, iconSizeY
+local iconsX, iconsY
+local xPos, yPos
+local xSelectPos, ySelectPos
+
+local minimap = { w = 200, h = 250 }
+local tooltip = { w = 300, h = 100 }
+local buttons = { x = 0,   y = 100 }
+local select  = { x = 50,   y = 80 }
+
+local function SetupCtrlPanel()
+	local f = io.open("s44panel.txt", "w+")
+	if (f) then
+		f:write("outlinefont 1\n")
+		f:write("dropShadows 0\n")
+		f:write("frameAlpha 0.6  // use the GUI alpha if < 0.0\n")
+		--f:write("selectGaps 0\n")
+		--f:write("selectThrough 1\n")
+		f:write("xIcons " .. iconsX .. "\n")
+		f:write("yIcons " .. iconsY .. "\n")
+		f:write("xIconSize " .. iconSizeX .. "\n")
+		f:write("yIconSize " .. iconSizeY .. "\n")
+		f:write("xPos " .. xPos .. "\n")
+		f:write("yPos " .. yPos .. "\n")
+		f:write("xSelectionPos " .. xSelectPos .. "\n")
+		f:write("ySelectionPos " .. ySelectPos .. "\n")
+		f:write("textBorder 0.003\n")
+		f:write("iconBorder 0\n")
+		f:write("frameBorder 0\n")
+		
+		f:close()
+		Spring.SendCommands({"ctrlpanel s44panel.txt"})
+	end
+	os.remove("s44panel.txt")
+end
+
+function widget:ViewResize(viewSizeX, viewSizeY)
+	if(vsx >= 1024) then
+		iconscale = 96
+	end
+
+	if (viewSizeX <= 1) or (viewSizeX == nil) or (viewSizeY <= 1) or (viewSizeY == nil) then
+		return
+	end
+	
+	vsx = viewSizeX
+	vsy = viewSizeY
+	
+	local avaliableY = vsy - minimap.h - tooltip.h
+	
+	iconsX = 3
+	iconsY = math.floor(avaliableY / iconscale)
+
+	if(vsy <= 600) then
+		iconsY = iconsY + 1
+	end
+	
+	iconSizeX = iconscale / vsx
+	iconSizeY = iconscale / vsy
+	
+	xPos = buttons.x / vsx
+	yPos = buttons.y / vsy
+	
+	xSelectPos = select.x / vsx
+	ySelectPos = select.y / vsy
+	
+	SetupCtrlPanel()
+end
+
+function widget:Initialize()
+	local vsx, vsy = widgetHandler:GetViewSizes()
+	widget:ViewResize(vsx, vsy)
+end
+
+
+function widget:Shutdown()
+	Spring.SendCommands({'ctrlpanel LuaUI/ctrlpanel.txt'})
+end

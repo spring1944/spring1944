@@ -1,0 +1,70 @@
+[unitinfo]
+{
+	unitname=RUSBA64;
+	objectname=RUSBA64.S3O;
+	corpse=RUSBA64_Destroyed;
+	soundcategory=RUSVeh;
+	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
+	tedclass=TANK;
+
+	name=BA-64;
+	description=Light Scout Car;
+	side=RUS;
+	maxdamage=500;
+	buildcostmetal=600;
+	buildcostenergy=0;
+	buildtime=200;
+	footprintx=2;
+	footprintz=2;
+	mass=1000;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=5;
+	SeismicSignature=0;
+	sightdistance=750;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Car;
+	maxvelocity=5.2;
+	acceleration=0.03;
+	brakerate=0.09;
+	turnrate=425;
+	maxslope=6;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=11;
+	trackoffset=4;
+	trackstrength=5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=DT;
+	onlytargetcategory1=NFLAG;
+	weapon2=DTFear;
+	weaponslaveto2=1;
+
+	weapon3=Small_Tracer_Green;
+
+	icontype=jeep;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+	}
+}

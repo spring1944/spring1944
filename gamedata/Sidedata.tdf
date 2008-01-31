@@ -1,0 +1,493 @@
+
+
+[SIDE0]
+{
+	name=GER;//The Third Reich
+	commander=GERHQBunker;
+}
+
+[SIDE1]
+{
+	name=GBR;//Great Britain & The Commonwealth
+	commander=GBRHQ;
+}
+
+
+[SIDE2]
+{
+	name=RUS;//Union of Soviet Socialist Republics, Russia
+	commander=RUSCommander;
+}
+
+
+[SIDE3]
+{
+	name=US;//United States of America
+	commander=USHQ;
+}
+
+
+[CANBUILD]
+{
+
+				////////////////////
+				// AMERICAN UNITS //
+				////////////////////
+
+	[USHQ]
+	{
+		canbuild1=USHQEngineer;
+		//canbuild2=USAirEngineer;
+		canbuild3=us_platoon_hq;
+	}
+
+	[USCP]
+	{
+		canbuild1=USHQEngineer;
+		canbuild2=USEngineer;
+		canbuild3=USGMCTruck;
+		//canbuild4=USJeep;
+	}
+
+	[USGIRifle]
+	{
+	canbuild1=USFlag;
+	}
+
+	[USGIThompson]
+	{
+	canbuild1=USFlag;
+	}
+
+	[USHQEngineer]
+	{
+		canbuild1=USBarracks;
+		canbuild2=USFlag;
+		canbuild3=USResource;
+		canbuild4=USGMCTruck;
+		//canbuild5=apmine;
+		canbuild6=atmine;
+		//canbuild7=Sandbags;
+		canbuild8=TankObstacle;
+		canbuild9=RubberDingy;
+		canbuild10=PontoonRaft;
+	}
+
+	[USBarracks]
+	{
+		canbuild1=USHQEngineer;
+		canbuild2=USEngineer;
+		canbuild3=us_platoon_rifle;
+		canbuild4=us_platoon_assault;
+		canbuild5=us_platoon_mg;
+		canbuild6=us_platoon_at;
+		canbuild7=us_platoon_scout;
+		canbuild8=us_platoon_sniper;
+		canbuild9=us_platoon_flamethrower;
+		canbuild10=us_platoon_mortar;
+		canbuild12=USM8Gun;
+	}
+
+	[USEngineer]
+	{
+		canbuild1=USVehicleYard;
+		canbuild2=USGunYard;
+		canbuild3=USCP;
+		canbuild4=USFlag;
+		canbuild5=USResourceDepot;
+		Canbuild7=USGMCTruck;
+		canbuild8=ATmine;
+		//canbuild9=APMine;
+		canbuild10=TankObstacle;
+		//canbuild11=Sandbags;
+		canbuild12=RubberDingy;
+		canbuild13=PontoonRaft;
+
+	}
+
+	[USVehicleYard]
+	{
+		canbuild1=USGMCEngVehicle;
+		canbuild2=USGMCTruck;
+		//canbuild3=USJeep;
+		canbuild4=USM3Halftrack;
+		canbuild5=USM8Greyhound;
+		canbuild6=USM8Scott;
+	}
+
+	[USGunYard]
+	{
+		canbuild1=USGMCTruck;
+		canbuild2=USM8Gun;
+		canbuild3=USM5Gun;
+		canbuild4=USM2Gun;
+	}
+
+
+	[USGMCEngVehicle]
+	{
+		canbuild1=USTankYard;
+		canbuild2=USResourceDepot;
+		canbuild3=TankObstacle;
+	}
+
+	[USTankYard]
+	{
+		canbuild1=USM5Stuart;
+		canbuild2=USM4A4Sherman;
+		canbuild3=USM4A376Sherman;
+		canbuild4=USM4A3105Sherman;
+		canbuild5=USM10Wolverine;
+		canbuild6=USM7Priest;
+		canbuild7=USL4;//temp
+
+	}
+
+	[Airstrip]
+	{
+		canbuild1=USP51DMustang;
+	}
+
+				////////////////////
+				// GERMAN UNITS   //
+				////////////////////
+
+	[GERHQBunker]
+	{
+		canbuild1=GERHQEngineer;
+		//canbuild2=GERAirEngineer;
+		canbuild3=ger_platoon_hq;
+	}
+
+	[GERPanzerGren]
+	{
+	canbuild1=GERFlag;
+	}
+
+	[GERMP40]
+	{
+	canbuild1=GERFlag;
+	}
+
+	[GERHQEngineer]
+	{
+		canbuild1=GERBarracks;
+		canbuild2=GERFlag;
+		canbuild3=GERResource;
+		//canbuild5=APMine;
+		canbuild6=ATMine;
+		//canbuild7=Sandbags;
+		canbuild8=TankObstacle;
+		canbuild9=GEROpelBlitz;
+		canbuild10=RubberDingy;
+		canbuild11=PontoonRaft;
+	}
+
+	[GERBarracks]
+	{
+		canbuild1=GERHQEngineer;
+		canbuild2=GEREngineer;
+		canbuild3=ger_platoon_rifle;
+		canbuild4=ger_platoon_assault;
+		canbuild5=ger_platoon_mg;
+		canbuild6=ger_platoon_scout;
+		canbuild7=ger_platoon_at;
+		canbuild9=ger_platoon_sniper;
+		canbuild10=ger_platoon_mortar;
+		canbuild11=GERleIG18;
+	}
+
+	[GEREngineer]
+	{
+		canbuild1=GERVehicleYard;
+		canbuild2=GERBarracks;
+		canbuild3=GERGunYard;
+		canbuild4=GERFlag;
+		canbuild5=GERResourceDepot;
+		canbuild7=ATMine;
+		//canbuild8=APMine;
+		//canbuild9=Sandbags;
+		canbuild10=TankObstacle;
+		canbuild11=GEROpelBlitz;
+		canbuild12=RubberDingy;
+		canbuild13=PontoonRaft;
+	}
+
+	[GERVehicleYard]
+	{
+		canbuild1=GERSdKfz9;
+		canbuild2=GEROpelBlitz;
+		canbuild3=GERSdkfz250;
+		canbuild4=GERSdkfz251;
+		canbuild5=GERMarder;
+	}
+
+	[GERGunYard]
+	{
+		canbuild1=GEROpelBlitz;
+		//canbuild2=GERFlaK38;
+		canbuild3=GERleIG18;
+		canbuild4=GERPaK40;
+		canbuild5=GERleFH18;
+	}
+
+	[GERSdKfz9]
+	{
+		canbuild1=GERTankYard;
+		canbuild2=GERResourceDepot;
+		canbuild3=TankObstacle;
+	}
+
+	[GERTankYard]
+	{
+		canbuild1=GERPanzerIII;
+		canbuild2=GERPanzerIV;
+		canbuild3=GERStugIII;
+		canbuild4=GERPanther;
+		canbuild5=GERTiger;
+		canbuild6=GERWespe;
+		canbuild7=GERFi156;//temp
+	}
+
+				//////////////////////
+				/////British Units////
+				//////////////////////
+
+	[GBRHQ]
+	{
+		canbuild1=GBRHQEngineer;
+		//canbuild2=USAirEngineer;
+		canbuild2=gbr_platoon_hq;
+		//canbuild4=GBRBREN;
+	}
+
+
+	[GBRRifle]
+	{
+	canbuild1=GBRFlag;
+	}
+
+	[GBRSTEN]
+	{
+	canbuild1=GBRFlag;
+	}
+
+	[GBRHQEngineer]
+	{
+		canbuild1=GBRBarracks;
+		canbuild2=GBRFlag;
+		canbuild3=GBRResource;
+		//canbuild4=apmine;
+		canbuild5=atmine;
+		//canbuild6=Sandbags;
+		canbuild7=TankObstacle;
+		canbuild8=GBRBedfordTruck;
+		canbuild10=RubberDingy;
+		canbuild11=PontoonRaft;
+	}
+
+	[GBRBarracks]
+	{
+		canbuild1=GBRHQEngineer;
+		canbuild2=GBREngineer;
+		canbuild3=gbr_platoon_rifle;
+		canbuild4=gbr_platoon_assault;
+		canbuild5=gbr_platoon_mg;
+		canbuild6=gbr_platoon_scout;
+		canbuild7=gbr_platoon_at;
+		canbuild9=gbr_platoon_sniper;
+		canbuild10=gbr_platoon_mortar;
+		//canbuild11=gbr_platoon_commando;
+	}
+
+	[GBRGunyard]
+	{
+		canbuild1=GBRBedfordTruck;
+		canbuild2=GBR17Pdr;
+		canbuild3=GBR25Pdr;
+	}
+
+	
+	[GBRCommandoC]
+	{
+	canbuild1=GBRSatchelCharge;
+	Canbuild2=GBRLZ;
+	}
+
+	[GBRCommando]
+	{
+	canbuild1=GBRSatchelCharge;
+	}
+
+	[GBRLZ]
+	{
+	canbuild1=GBRCommando;
+	}
+
+	[GBREngineer]
+	{
+		canbuild1=GBRVehicleYard;
+		canbuild2=GBRgunyard;
+		canbuild3=GBRFlag;
+		canbuild4=GBRResourceDepot;
+		canbuild6=ATmine;
+		//canbuild7=APMine;
+		//canbuild8=Sandbags;
+		canbuild9=TankObstacle;
+		canbuild10=GBRBedfordTruck;
+		canbuild11=RubberDingy;
+		canbuild12=PontoonRaft;
+
+	}
+
+	[GBRVehicleYard]
+	{
+		canbuild1=GBRMatadorEngVehicle;
+		canbuild2=GBRBedfordTruck;
+		canbuild3=GBRM5Halftrack;
+		canbuild4=GBRDaimler;
+		canbuild5=GBRKangaroo;
+	}
+
+	[GBRMatadorEngVehicle]
+	{
+		canbuild1=GBRTankYard;
+		canbuild2=GBRResourceDepot;
+		canbuild3=TankObstacle;
+	}
+
+	[GBRTankYard]
+	{
+		canbuild1=GBRAECMkIII;
+		canbuild2=GBRCromwell;
+		canbuild3=GBRShermanFirefly;
+		canbuild4=GBRM10Achilles;
+		canbuild5=GBRCromwellMkVI;
+		canbuild6=GBRChurchillMkVII;
+		canbuild7=GBRAuster;//temp
+	}
+
+
+				////////////////////
+				// SOVIET UNITS   //
+				////////////////////
+
+
+	[RUSCommander]
+	{
+		canbuild1=RUSFlag;
+		canbuild2=RUSResource;
+		canbuild3=RUSCommissar;
+		canbuild4=RUSPShack;
+		canbuild5=RUSBarracks;
+		canbuild6=RUSGunyard;
+		canbuild8=RUSZiS5;
+		canbuild9=ATMine;
+		//canbuild10=APMine;
+		canbuild11=TankObstacle;
+		//canbuild12=Sandbags;
+		canbuild13=RubberDingy;
+		canbuild14=PontoonRaft;
+	}
+
+	[RUSPShack]
+	{
+		//canbuild1=RUSCommissar1;
+		canbuild1=rus_platoon_partisan;
+	}
+
+
+	[RUSBarracks]
+	{
+		canbuild1=RUSCommissar1;
+		canbuild2=RUSEngineer;
+		canbuild3=rus_platoon_rifle;
+		canbuild4=rus_platoon_assault;
+		canbuild5=rus_platoon_mg;
+		canbuild6=rus_platoon_scout;
+		canbuild7=rus_platoon_atlight;
+		canbuild8=rus_platoon_atheavy;
+		canbuild9=rus_platoon_sniper;
+		canbuild10=rus_platoon_mortar;
+	}
+
+	[RUSEngineer]
+	{
+		canbuild1=RUSVehicleYard;
+		canbuild2=RUSTankYard;
+		canbuild3=RUSGunYard;
+		canbuild4=RUSFlag;
+		canbuild5=RUSResourceDepot;
+		canbuild6=RUSZiS5;
+		//canbuild7=APMine;
+		canbuild8=ATMine;
+		canbuild9=TankObstacle;
+		//canbuild10=Sandbags;
+		canbuild10=RubberDingy;
+		canbuild111=PontoonRaft;
+	}
+
+	[RUSCommissar]
+	{
+		canbuild1=RUSFlag;
+		canbuild2=RUSResource;
+		canbuild3=RUSCommissar;
+		canbuild4=RUSPShack;
+		canbuild5=RUSBarracks;
+		canbuild6=RUSGunyard;
+		canbuild8=RUSZiS5;
+		//canbuild9=APMine;
+		canbuild10=ATMine;
+		canbuild11=TankObstacle;
+		//canbuild12=Sandbags;
+		canbuild13=RubberDingy;
+		canbuild14=PontoonRaft;
+	}
+	[RUSCommissar1]
+	{
+		canbuild1=RUSFlag;
+		canbuild2=RUSResource;
+		canbuild3=RUSCommissar;
+		canbuild4=RUSPShack;
+		canbuild5=RUSBarracks;
+		canbuild6=RUSGunyard;
+		canbuild8=RUSZiS5;
+		//canbuild9=APMine;
+		canbuild10=ATMine;
+		canbuild11=TankObstacle;
+		//canbuild12=Sandbags;
+		canbuild13=RubberDingy;
+		canbuild14=PontoonRaft;
+	}
+
+	[RUSVehicleYard]
+	{
+		canbuild1=RUSZiS5;
+		canbuild2=RUSBA64;
+		canduild3=RUSM5Halftrack;
+		canbuild4=RUST60;
+		canbuild5=RUSSU76;
+	}
+
+	[RUSGunYard]
+	{
+		canbuild1=RUSZiS5;
+		canbuild2=RUSZiS2;
+		canbuild3=RUSZiS3;
+		canbuild4=RUSM30;
+	}
+
+	[RUSTankYard]
+	{
+		canbuild1=RUST70;
+		canbuild2=RUST3476;
+		canbuild3=RUST3485;
+		canbuild4=RUSKV1;
+		canbuild5=RUSIS2;
+		canbuild6=RUSSU85;
+		canbuild7=RUSSU100;
+		canbuild8=RUSSU122;
+		canbuild9=RUSISU152;
+		canbuild10=RUSPo2;//temp
+	}
+}

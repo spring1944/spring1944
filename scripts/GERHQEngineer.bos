@@ -1,0 +1,138 @@
+#define TAK			// This is a TAK script
+
+#include "STANDARD_COMMANDS_GPL.h"
+
+piece  torso, nano, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
+       ruparm, rloarm, luparm, lloarm, lfoot, ground, head, gun;
+
+static-var DecreasingFear, last_pos, bMoving, nade_active, run_speed,
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, linecount;
+
+#define SIG_AIM            2
+#define SIG_BUILD			4
+#define SIG_MOVE 64
+
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define BUILD_LINE			 2048+0
+
+#include "Inf_suppressionvars.h"
+
+
+//movement check for anims
+#include "Inf_movecheck.h"
+
+StartMoving()
+{
+
+		bMoving=1;
+}
+
+StopMoving()
+{
+	bMoving=0;
+}
+
+#include "Inf_pin_unpin.h"
+
+WeaponReady() //attentshaun!
+{
+	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
+   /* turn ruparm to x-axis <0> speed <40>*RUN_SPEED;
+    turn ruparm to y-axis <0> speed <40>*RUN_SPEED;
+    turn ruparm to z-axis <0> speed <40>*RUN_SPEED;
+    
+	turn rloarm to x-axis <0> speed <100>*RUN_SPEED;
+	turn rloarm to y-axis <0> speed <100>*RUN_SPEED;
+	turn rloarm to z-axis <0> speed <100>;
+    
+	turn luparm to x-axis <0> speed <40>*RUN_SPEED;
+	turn luparm to y-axis <0> speed <40>*RUN_SPEED;
+	turn luparm to z-axis <0> speed <40>*RUN_SPEED;
+    
+	turn lloarm to x-axis <0> speed <100>*RUN_SPEED;
+	turn lloarm to y-axis <0> speed <100>*RUN_SPEED;
+	turn lloarm to z-axis <0> speed <100>*RUN_SPEED;*/
+    
+	turn head to y-axis <0.000000> speed <100>*RUN_SPEED;
+	turn head to x-axis <0.000000> speed <100>*RUN_SPEED;
+	turn head to z-axis <0.000000> speed <100>*RUN_SPEED;
+}
+
+
+
+
+#include "Inf_Eng_run.h"
+
+#include "Inf_takecover.h"
+
+#include "Inf_hitbyweapon.h"
+
+
+
+Activate()
+{
+	sleep 100;
+	start-script TakeCover();
+}
+
+Deactivate()
+{
+//	fear=0;
+	start-script FearRecovery();
+}
+
+Create()
+{
+	start-script WeaponReady();
+	start-script Run();
+	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
+	move ground to y-axis -0.5 speed <100>;
+	WALK_SPEED = 9;
+	prone_speed = rand(3,5);
+	DEATH_SPEED=4;
+	IsProne=0;
+	IsPinned=0;
+	InAimStance=0;
+}
+
+
+SweetSpot(piecenum)
+{
+	piecenum = torso;
+}
+
+StartBuilding(buildheading, pitch)
+{
+signal SIG_BUILD;
+set-signal-mask SIG_BUILD;
+turn ground to y-axis buildheading now;
+set INBUILDSTANCE to 1;
+turn nano to y-axis pitch now;
+}
+
+StopBuilding()
+{
+SIGNAL SIG_BUILD;
+turn ground to y-axis <0> now;
+set INBUILDSTANCE to 0;
+}
+
+QueryNanoPiece(piecenum)
+{
+piecenum = nano;
+	linecount=linecount+1;
+	if(linecount==5)
+	{
+			emit-sfx BUILD_LINE from nano;
+			linecount=0;
+	}
+}
+
+
+
+#include "Inf_death.h"

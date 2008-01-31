@@ -1,0 +1,10 @@
+[gbrbedfordtruck_destroyed]
+{
+	object=GBRBedfordTruck_Destroyed.S3O;
+	description=Destroyed Truck;
+	energy=50;
+	damage=2000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

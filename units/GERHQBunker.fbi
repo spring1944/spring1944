@@ -1,0 +1,78 @@
+[unitinfo]
+{
+	unitname=GERHQBunker;
+	objectname=GERHQBunker.S3O;
+	buildpic=GERHQBunker.bmp;
+	corpse=GERHQBunker_Destroyed;
+	icontype=gerhq;
+	soundcategory=GerInf;
+	category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
+	tedclass=PLANT;
+	yardmap=oooooooooo occcccccco occcccccco occcccccco occcccccco occcccccco ooocccoooo ooocccoooo cccccccooo ccccccccoo ;
+
+	name=Wehrmacht Bunker-Kommand;
+	description=Wehrmacht Field Headquarters;
+	maxdamage=32000;
+	buildcostmetal=40500;
+	buildcostenergy=0;
+	buildtime=80000;
+	footprintx=10;
+	footprintz=10;
+
+	commander=1;
+	showplayername=1;
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	metalmake=4;
+	energymake=10;
+
+	sightdistance=700;
+	stealth=1;
+
+	builder=1;
+	workertime=10;//old 595000
+	shownanospray=0;
+	canbeassisted=0;
+
+	activatewhenbuilt=1;
+
+	canmove=1;
+	maxslope=10;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=12;
+	buildinggrounddecalsizey=12;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Huge_Explosion;
+	selfdestructas=Huge_Explosion;
+
+	hightrajectory=0;
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=MG34;
+	weaponmaindir1=0 0 -1;
+	maxangledif1=180;
+	weapon2=mg34fear;
+	weaponmaindir2=0 0 -1;
+	maxangledif2=180;
+	weapon3=MG34;
+	weaponmaindir3=0 0 1;
+	maxangledif3=180;
+	weapon4=mg34fear;
+	weaponmaindir4=0 0 1;
+	maxangledif4=180;
+	//weapon5=GrW34_8cmMortar;
+	onlytargetcategory5=NFLAGNAIR;
+	weapon6=M2Flamethrower;
+	weaponmaindir6=1 0 1;
+	maxangledif6=80;
+	weapon7=BuildingFearShield;
+	[sfxtypes]
+	{
+	}
+}

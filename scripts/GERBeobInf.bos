@@ -1,0 +1,328 @@
+#define TAK			// This is a TAK script
+
+#include "STANDARD_COMMANDS_GPL.h"
+
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
+       lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, binoculars;
+
+static-var InAimStance, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, bAiming, IsPinned;
+
+#define SIG_AIM            2
+#define SIG_MOVE 64
+
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define PISTOL_MUZZLEFLASH 1024+7
+
+
+#include "Inf_suppressionvars.h"
+
+
+//movement check for anims
+#include "Inf_movecheck.h"
+
+StartMoving()
+{
+	SET STANDINGFIREORDERS to 0;
+		bMoving=1;
+			
+}
+
+StopMoving()
+{
+	bMoving=0;
+}
+
+#include "Inf_pin_unpin.h"
+
+WeaponReady() //attentshaun!
+{
+if (bAiming == 1) return 0;
+
+	
+	show gun;
+	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
+	
+    turn ruparm to x-axis <-30> speed <40>*RUN_SPEED;
+    turn ruparm to y-axis <20> speed <40>*RUN_SPEED;
+    turn ruparm to z-axis <0> speed <40>*RUN_SPEED;
+    
+	turn rloarm to x-axis <-120> speed <100>*RUN_SPEED;
+	turn rloarm to y-axis <0> speed <100>*RUN_SPEED;
+	turn rloarm to z-axis <0> speed <100>;
+    
+	turn luparm to x-axis <-60> speed <40>*RUN_SPEED;
+	turn luparm to y-axis <-40> speed <40>*RUN_SPEED;
+	turn luparm to z-axis <0> speed <40>*RUN_SPEED;
+    
+	turn lloarm to x-axis <-65> speed <100>*RUN_SPEED;
+	turn lloarm to y-axis <0> speed <100>*RUN_SPEED;
+	turn lloarm to z-axis <10> speed <100>*RUN_SPEED;
+    
+	turn gun to x-axis <0.000000> speed <100>*RUN_SPEED;
+	turn gun to y-axis <0.000000> speed <100>*RUN_SPEED;
+	turn gun to z-axis <0.000000> speed <100>*RUN_SPEED;
+	turn head to y-axis <0.000000> speed <100>*RUN_SPEED;
+	turn head to x-axis <0.000000> speed <100>*RUN_SPEED;
+	turn head to z-axis <0.000000> speed <100>*RUN_SPEED;
+}
+
+#include "Inf_takecover.h"
+
+Activate()
+{
+
+}
+
+Deactivate()
+{
+
+}
+
+FearRecovery() 
+{ 
+
+	if (fear>PinnedLevel && IsPinned==0) call-script Pinned();
+
+
+
+
+     if (DecreasingFear==1) return (1); 
+
+
+     DecreasingFear = 1;
+     while(fear > 0) 
+          { 
+			if (0<fear && fear < PinnedLevel && IsPinned==1)
+
+		{
+			call-script RestoreFromPinned();
+			sleep 100;
+		}
+
+          fear = fear - RecoverConstant; 
+          sleep RecoverRate; 
+          } 
+start-script RestoreAfterCover(); 
+start-script Activate();
+DecreasingFear=0; 
+ 
+return (1); 
+}
+
+
+HitByWeaponId(z,x,id,damage)
+{
+	if (fear > FearLimit) fear = FearLimit;
+	
+	if (Id<=300 || Id>700)
+	{
+	return (100);
+	}
+	
+	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+		{
+			fear=fear + LittleFear;
+			start-script TakeCover();
+			sleep 100;
+			start-script FearRecovery();
+			start-script Deactivate();
+		}
+		
+	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
+		{
+			fear=fear + MedFear;
+			start-script TakeCover();
+			sleep 100;
+			start-script FearRecovery();
+			start-script Deactivate();
+		}
+	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
+		{
+			fear=fear + BigFear;
+			start-script TakeCover();
+			sleep 100;
+			start-script FearRecovery();
+			start-script Deactivate();
+		}
+		
+	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
+		{
+			fear=fear + MortalFear;
+			start-script TakeCover();
+			sleep 100;
+			start-script FearRecovery();
+			start-script Deactivate();
+		}
+	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter.
+	
+}
+luaFunction(arg1)
+ {
+  arg1 = fear;
+ }
+#include "Inf_AimPoseCloak_run.h"
+
+
+
+Create()
+{
+	nade_active=0;
+	start-script WeaponReady();
+	start-script Run();
+	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
+	move ground to y-axis -0.5 speed <100>;
+	nade_speed = 3;
+	WALK_SPEED = rand(9,11);
+	prone_speed = rand(3,5);
+	DEATH_SPEED=4;
+	IsProne=0;
+	InAimStance=0;
+	IsPinned=0;
+	SET STANDINGFIREORDERS to 0;
+}
+
+
+SweetSpot(piecenum)
+{
+	piecenum = torso;
+}
+
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = head;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimWeapon1(heading, pitch)
+{
+//	while (bMoving==1) return 0;
+	
+	signal 2;
+	set-signal-mask 2;
+	show gun;
+	bAiming=1;
+	if (IsProne==1 && fear < PinnedLevel)
+	{
+		turn torso to y-axis <0> speed <150>*PRONE_SPEED;
+		turn ruparm to x-axis <-85> - pitch speed <120>*PRONE_SPEED;
+		turn luparm to x-axis <-140> - pitch speed <100>*PRONE_SPEED;
+		turn pelvis to y-axis heading speed <80>*PRONE_SPEED;
+		wait-for-turn pelvis around y-axis;
+		bAiming=0;
+		return (1);
+	}
+	
+	
+	
+	if (IsProne==0 && bMoving == 1)
+	{	
+	turn torso to y-axis heading speed <200>;
+	turn ruparm to x-axis <-90> - pitch speed <300>;
+	turn luparm to x-axis <-90> - pitch speed <300>;
+	
+	turn ruparm to y-axis <10> speed <300>;
+	turn luparm to y-axis <-30> speed <300>;
+	turn gun to z-axis <10> speed <300>;
+	wait-for-turn torso around y-axis;
+	wait-for-turn gun around z-axis;
+	wait-for-turn luparm around x-axis;
+	wait-for-turn ruparm around x-axis;
+	wait-for-turn ruparm around y-axis;
+	wait-for-turn luparm around y-axis;
+	bAiming=0;
+	return (1);
+	} 
+	
+		if (IsProne==0 && bMoving == 0)
+	{	
+	turn pelvis to y-axis heading speed <200>;
+	turn torso to y-axis <0> speed <200>;
+	turn ruparm to x-axis <-90> - pitch speed <300>;
+	turn ruparm to y-axis <10> speed <300>;
+	turn ruparm to z-axis <0> speed <300>;
+	
+	turn rloarm to x-axis <0> speed <300>;
+	turn rloarm to y-axis <0> speed <300>;
+	turn rloarm to z-axis <0> speed <300>;
+			
+	turn luparm to x-axis <-90> - pitch speed <300>;
+	turn luparm to y-axis <-30> speed <300>;
+	turn luparm to z-axis <0> speed <300>;
+		
+	turn lloarm to x-axis <0> speed <300>;
+	turn lloarm to y-axis <0> speed <300>;
+	turn lloarm to z-axis <0> speed <300>;
+	turn gun to z-axis <10> speed <300>;
+
+	wait-for-turn gun around z-axis;
+	wait-for-turn pelvis around y-axis;
+	wait-for-turn torso around y-axis;
+	
+	wait-for-turn luparm around x-axis;
+	wait-for-turn luparm around y-axis;
+	wait-for-turn luparm around z-axis;
+	
+	wait-for-turn lloarm around x-axis;
+	wait-for-turn lloarm around y-axis;
+	wait-for-turn lloarm around z-axis;
+	
+	wait-for-turn ruparm around x-axis;
+	wait-for-turn ruparm around y-axis;
+	wait-for-turn ruparm around z-axis;
+	
+	wait-for-turn rloarm around x-axis;
+	wait-for-turn rloarm around y-axis;
+	wait-for-turn rloarm around z-axis;
+
+	bAiming=0;
+	return (1);
+	} 
+	
+	
+	
+//ohcrap, too scared to shoot.
+	bAiming=0;
+	return (0);
+}
+
+FireWeapon1()
+{
+	show gun;
+	
+	if (IsProne==1)
+	{
+		turn ruparm to x-axis <-95> speed <700>;
+		turn luparm to x-axis <-150> speed <700>;
+		emit-sfx PISTOL_MUZZLEFLASH from flare;
+		sleep 10;
+		turn ruparm to x-axis <-85> speed <200>;
+		turn luparm to x-axis <-140> speed <200>;
+		sleep 50;
+		return (0);
+	}
+	if (IsProne==0)
+	{
+		turn ruparm to x-axis <-100> speed <700>;
+		turn luparm to x-axis <-100> speed <700>;
+		emit-sfx PISTOL_MUZZLEFLASH from flare;
+		sleep 10;
+		turn ruparm to x-axis <-90> speed <200>;
+		turn luparm to x-axis <-90> speed <200>;
+		sleep 50;
+		return (0);
+	}
+
+}
+
+#include "Inf_death.h"

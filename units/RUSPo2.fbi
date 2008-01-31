@@ -1,0 +1,79 @@
+[UNITINFO]
+{
+	Name=Po-2 Kukuruznik;
+	UnitName=RUSPo2;
+	
+	//    Required Tags
+	BuildCostEnergy=9000;
+	BuildCostMetal=9000;
+	BuildTime=10000;
+	Category=AIRCRAFT;
+	Description=Recon Plane;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=500;
+	ObjectName=RUSPo2.S3O;
+	Side=RUS;
+	//SoundCategory=RUSPlane;
+	category=NFLAG AIR;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.48;
+	CanMove=1;
+	MaxVelocity=16;
+	MaxSlope=10;
+	TurnRate=50;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=20;
+	EnergyUse=20;
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	
+	//    Sight/Radar
+	SightDistance=2000;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	BuildPic=GERFi156.bmp;
+	CruiseAlt=160;
+	ExplodeAs=ResourceBoom;
+	MaxWaterDepth=0;
+	SelfDestructAs=ResourceBoom;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+	bankscale=1;
+	moverate1=4;
+
+	wingdrag=0.1;
+	wingangle=0.1;
+	drag=0.1;
+	mygravity=0.1;
+	maxbank=0.1;
+	maxpitch=0.1;
+	maxaileron=0.005;
+	maxelevator=0.005;
+	maxrudder=0.005;
+
+	bmcode=1;
+	idleTime=1800;
+	steeringmode=1;
+	maneuverleashlength=1280;
+	seismicsignature=0;
+	Maxfuel=200;
+	RefuelTime=10;
+	shownanoframe=0;
+}

@@ -1,0 +1,127 @@
+[UNITINFO]
+{
+	Name=Spitfire Mk XIVe;
+	UnitName=GBRSpitfireMkXIV;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=11000;
+	BuildTime=13000;
+	Category=AIRCRAFT;
+	Description=Attack Fighter;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=650;
+	ObjectName=GBRSpitfireMkXIV.S3O;
+	Side=GBR;
+	//SoundCategory=GBRPlane;
+	category=NFLAG AIR;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.48;
+	CanMove=1;
+	MaxVelocity=24;
+	MaxSlope=10;
+	TurnRate=50;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=20;
+	EnergyUse=20;
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	
+	//    Sight/Radar
+	SightDistance=500;
+	AirSightDistance=1750;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	BuildPic=GBRSPitfireMkXIV.png;
+	ExplodeAs=Vehicle_Explosion_Med;
+	MaxWaterDepth=0;
+	SelfDestructAs=Vehicle_Explosion_Med;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+
+	//	Flight Stuff
+	wingdrag=0.1;
+	wingangle=0.1;
+	drag=0.05;
+	mygravity=0.1;
+	maxbank=0.13;
+	maxpitch=0.13;
+	turnradius=2000;
+	maxaileron=0.006;
+	maxelevator=0.005;
+	maxrudder=0.004;
+
+	CruiseAlt=500;
+
+	moverate1=4;//does this tag even work?
+	//Maxfuel=200;edited out for testing purposes
+	//RefuelTime=10;
+
+	// 	Misc
+	bmcode=1;
+	idleTime=1800;
+	steeringmode=1;
+	maneuverleashlength=1280;
+	seismicsignature=0;
+	shownanoframe=0;
+
+	//	Weapons
+	weapon1=m2browningamg;
+	weaponmaindir1=0 0 1;
+	maxangledif1=5;
+
+	weapon2=m2browningamg;
+	weaponmaindir2=0 0 1;
+	maxangledif2=5;
+	weaponslaveto2=1;
+
+	weapon3=HS40420mm;
+	weaponmaindir3=0 0 1;
+	maxangledif3=5;
+	weaponslaveto3=1;
+
+	weapon4=HS40420mm;
+	weaponmaindir4=0 0 1;
+	maxangledif4=5;
+	weaponslaveto4=1;
+	
+	weapon5=bomb;
+	//weaponmaindir5=0 0 1;
+	//maxangledif5=40;
+	//weaponslaveto5=1;
+	
+	weapon6=Medium_Tracer;	
+	weapon7=Large_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_MUZZLEFLASH;
+		explosiongenerator2=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator3=custom:MG_SHELLCASINGS;
+	}
+
+	[customParams]
+	{
+		proptexture=bitmaps/prop5.tga;
+		enginesound = p51b-;
+		enginesoundnr = 16;
+	}
+}

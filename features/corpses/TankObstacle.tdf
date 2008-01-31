@@ -1,0 +1,10 @@
+[tankobstacle]
+{
+	object=TankObstacle.S3O;
+	description=Tank Obstacle;
+	energy=25;
+	damage=1000;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=1;
+}

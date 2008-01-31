@@ -1,0 +1,60 @@
+#define TA			// This is a TA script
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  base, logistics1, logistics2, logistics3, logistics4;
+
+static-var  Static_Var_1;
+
+
+Create()
+{
+
+  while (get BUILD_PERCENT_LEFT)
+   {
+    move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;
+    sleep 10;
+ 	}
+  move base to y-axis 0 now;
+  
+	Static_Var_1 = Rand( 1, 4 );
+	if( Static_Var_1 == 1 )
+	{
+		show logistics1;
+		hide logistics2;
+		hide logistics3;
+		hide logistics4;
+	}
+	if( Static_Var_1 == 2 )
+	{
+		hide logistics1;
+		show logistics2;
+		hide logistics3;
+		hide logistics4;
+	}
+	if( Static_Var_1 == 3 )
+	{
+		hide logistics1;
+		hide logistics2;
+		show logistics3;
+		hide logistics4;
+	}
+		if( Static_Var_1 == 4 )
+	{
+		hide logistics1;
+		hide logistics2;
+		hide logistics3;
+		show logistics4;
+	}
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+return (0);
+}

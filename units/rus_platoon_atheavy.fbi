@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=rus_platoon_atheavy;
+	objectname=MortarShell.S3O;
+	buildpic=RUSRPG43.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Anti-Tank Assault Squad;
+	description=3 x Anti-Tank Grenade, 3 x SMG;
+	side=RUS;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=1260;
+	buildcostenergy=0;
+	buildtime=630;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

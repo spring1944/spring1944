@@ -1,0 +1,35 @@
+[satchelcharge]
+{
+	id=64;
+	name=A Mine!;
+	model=ATMine;
+	rendertype=2;
+	turret=1;
+	explosiongenerator=custom:Weapon_Explosion_Large;
+
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=80;
+	reloadtime=10;
+	weaponvelocity=200;
+	areaofeffect=80;
+	edgeeffectiveness=1;
+	weapontimer=0;
+
+	soundstart=GEN_Explo_4;
+	soundhit=GEN_Explo_4;
+
+	cratermult=.5;
+
+	[damage]
+	{
+		default=8000;
+		infantry=400;
+		guns=700;
+		bunkers=6250;
+		sandbags=8000;
+		mines=0;
+		flag=0;
+	}
+}

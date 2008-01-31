@@ -1,0 +1,213 @@
+[flak3820mmaa]
+{
+	id=50;
+	name=2cm FlaK 30/38 High-Explosive Shells;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosiongenerator=custom:Weapon_Explosion_XSmall;
+
+	lineofsight=1;
+	firestarter=0.0;
+	targetmoveerror=0.05;
+	range=1500;
+	reloadtime=1.5;
+	energypershot=20;
+	burst=5;
+	burstrate=0.16;
+	sprayangle=500;
+	accuracy=1000;
+	movingaccuracy=500;
+	weaponvelocity=2000;
+	areaofeffect=5;
+	edgeeffectiveness=0.5;
+	burnblow=1;
+	weapontimer=1;
+
+	soundstart=GER_20mm;
+	soundhit=GEN_Explo_Flak1;
+
+	rgbcolor=1 1 0;
+
+	intensity=0.9;
+
+	collisionsize=2;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+
+  size=0.0000000001;
+  separation=2;
+  stages=50;
+
+
+	[damage]
+	{
+		default=40;
+		flag=0.00000001;
+		sandbags=100;
+		armouredvehicles=400;
+		hq=100;
+		unarmoredvehicles=480;
+		infantry=425;
+		guns=200;
+		LightPlanes=40;
+	}
+}
+[kwk3020mmhe]
+{
+	id=50;
+	name=2cm KwK 30 High-Explosive Shells;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosiongenerator=custom:Weapon_Explosion_XSmall;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+	targetmoveerror=0.05;
+	range=975;
+	reloadtime=2;
+	energypershot=20;
+	burst=5;
+	burstrate=0.16;
+	sprayangle=400;
+	accuracy=255;
+	movingaccuracy=500;
+	weaponvelocity=2000;
+	areaofeffect=15;
+	edgeeffectiveness=0.5;
+	burnblow=0;
+
+	soundstart=GER_20mm;
+	soundhit=GEN_Explo_Flak1;
+
+	rgbcolor=1 .50 0;
+
+	intensity=0.9;
+
+	collisionsize=2;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	cratermult=0;
+ 	craterboost=0;
+  	sizedecay=0;
+  	size=0.0000000000001;
+  	separation=2;
+  	stages=50;
+
+	[damage]
+	{
+		default=40;
+		flag=0.00000001;
+		sandbags=100;
+		armouredvehicles=400;
+		hq=100;
+		unarmoredvehicles=480;
+		infantry=425;
+		guns=200;
+		LightPlanes=40;
+	}
+}
+[kwk3020mhefear]
+{
+	id=306;
+	name=Supression from 20mm HE shells;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=975;
+	reloadtime=2;
+	energypershot=0;
+	weaponvelocity=2300;
+	areaofeffect=150;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}
+[kwk3020mmap]
+{
+	id=100;
+	name=2cm kwk 30 AP;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+	targetmoveerror=0.05;
+	range=975;
+	reloadtime=2;
+	energypershot=20;
+	burst=5;
+	burstrate=0.16;
+	sprayangle=400;
+	accuracy=255;
+	movingaccuracy=500;
+	weaponvelocity=1500;
+	areaofeffect=2;
+	edgeeffectiveness=0.5;
+	canattackground=0;
+
+	soundstart=GER_20mm;
+	soundhit=GEN_Explo_1;
+
+	rgbcolor=1 .50 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.1;
+
+	size=1;
+	collisionsize=2;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=1800;
+	[damage]
+	{
+		default=1500;//2000
+		//armouredvehicles=921;
+		infantry=1750;
+		guns=305;
+		lightbuildings=50;
+		bunkers=0;
+		sandbags=25;
+		mines=0;
+		flag=0;
+	}
+}

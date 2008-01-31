@@ -1,0 +1,22 @@
+[gerstugiii_damaged]
+{
+	object=GERStuGIII_Damaged.S3O;
+	featuredead=GERStuGIII_Destroyed;
+	description=Abandoned Assault Gun;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gerstugiii_destroyed]
+{
+	object=GERStuGIII_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Assault Gun;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

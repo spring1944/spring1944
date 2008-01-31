@@ -1,0 +1,91 @@
+[CLASS0]
+	{
+	Name=KBOT_Infantry;
+	FootprintX=1;
+	FootprintZ=1;
+	MaxWaterDepth=10;
+	MaxSlope=30;
+	}
+[CLASS1]
+	{
+	Name=TANK_Truck;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxWaterDepth=5;
+	MaxSlope=13;
+	}
+[CLASS2]
+	{
+	Name=TANK_Car;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxWaterDepth=8;
+	MaxSlope=13;
+	}
+[CLASS3]
+	{
+	Name=TANK_Light;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxWaterDepth=8;
+	MaxSlope=16;
+	}
+[CLASS4]
+	{
+	Name=TANK_Medium;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxWaterDepth=10;
+	MaxSlope=16;
+	}
+[CLASS5]
+	{
+	Name=TANK_Heavy;
+	FootprintX=3;
+	FootprintZ=3;
+	MaxWaterDepth=15;
+	MaxSlope=16;
+	}
+
+[CLASS6]
+	{
+	Name=TANK_SuperHeavy;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxWaterDepth=15;
+	MaxSlope=16;
+	}
+[CLASS7]
+	{
+	Name=TANK_Gun;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxWaterDepth=5;
+	MaxWaterSlope=5;
+	MaxSlope=13;
+	}
+[CLASS8]
+	{
+	Name=KBOT_Gun;
+	FootprintX=2;
+	FootprintZ=2;
+	MaxWaterDepth=5;
+	MaxWaterSlope=5;
+	MaxSlope=13;
+	}
+[CLASS9]
+{
+	name=BOAT_Small;
+	footprintx=3;
+	footprintz=3;
+	minwaterdepth=5;
+	crushstrength=10;
+}
+[CLASS10]
+{
+	name=BOAT_Medium;
+	footprintx=15;
+	footprintz=15;
+	minwaterdepth=5;
+	crushstrength=10;
+}

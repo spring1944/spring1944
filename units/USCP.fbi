@@ -1,0 +1,58 @@
+[unitinfo]
+{
+	unitname=USCP;
+	objectname=USCP.S3O;
+	corpse=Debris_Large;
+	icontype=ushq;
+	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
+	tedclass=PLANT;
+	yardmap=ooccooo ooccooo oocccoo oocccoo oocccoo oocccoo oocccoo;
+
+	name=US Army Command Post;
+	description=Forward HQ;
+	maxdamage=8500;
+	buildcostmetal=2050;
+	buildcostenergy=0;
+	buildtime=8500;
+	footprintx=7;
+	footprintz=7;
+
+	commander=1;
+	showplayername=1;
+	hidedamage=1;
+	shownanoframe=0;
+	unitrestricted=1;
+	smoothanim=0;
+
+	metalmake=5;
+	energymake=2;
+
+	sightdistance=146;
+	stealth=1;
+	radardistance=200000;
+
+	builder=1;
+	workertime=2200000;
+	shownanospray=0;
+	canbeassisted=0;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	canmove=1;
+	maxslope=10;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=7;
+	buildinggrounddecalsizey=7;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Large_Explosion;
+	selfdestructas=Large_Explosion;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+}

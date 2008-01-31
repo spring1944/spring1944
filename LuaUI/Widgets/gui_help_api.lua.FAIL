@@ -1,0 +1,852 @@
+function widget:GetInfo()
+  return {
+    name      = "Help API",
+    desc      = "Provides API to show in-game help",
+    author    = "author: BigHead",
+    date      = "September 13, 2007",
+    license   = "GNU GPL, v2 or later",
+    layer     = -10,
+    enabled   = true -- loaded by default?
+  }
+end
+
+-- if set to true the widget will print debug msgs to the console
+local debug = false
+
+-- You can modify all variabiles below at run-time to change apperance of the widget
+-- For example you can have full screen help that pauses the game and windowed in-game unit guide
+---------------------------------------------------------------------------------------------------
+local defaultOptions = {
+  pauseAutomaticaly = true, -- pause when a page is displayed?
+  unpauseAutomaticaly = true,
+
+  placeAutomaticaly = true, -- if set to true the widget will be automaticaly placed in the middle of the screen with width and height set below
+  widgetWidth = 60, -- in %
+  widgetHeight = 60, -- in %
+
+  -- if you set placeAutomaticaly to false you need to set these variabiles, otherwise zeros are ok
+  windowX = 0, -- in pixels
+  windowY = 0, -- in pixels
+  width = 0, -- in pixels
+  height = 0, -- in pixels
+
+  pageDirectory = "help", -- LuaUI/pageDirectory
+  pageExtention = ".page",
+
+  padding = 10,
+  fontSize = 12,
+  lineSpace = 3,
+  titleFontSize = 20,
+
+  -- blue, green, red, alpha
+  textColorStr = "\255\255\255\255",
+  linkColorStr = "\255\178\178\255",
+
+  -- red, green, blue, alpha
+  titleColor = {1,1,1,1},
+  linkColor = {0.7, 0.7, 1, 1},
+  backgroundColor = {0,0,0,7},
+
+
+  buttonHeight = 25,
+  buttonWidth = 100,
+  buttonFontSize = 15,
+
+  mouseWheelScrollSpeed = 1.5,
+  scrollBarWidth = 15,
+
+  -- letters outline
+  -- "o" - outline with black
+  -- "O" - outline with white
+  outline = ""
+}
+------------------------------------------------------------------------------------
+
+local options = nil;
+
+local windowX = 0
+local windowY = 0
+local width = 0
+local height = 0
+
+local padding
+local fontSize
+local lineSpace
+local titleFontSize
+
+local textColorStr
+local linkColorStr
+
+local titleColor
+local linkColor
+local backgroundColor
+
+local buttonHeight = 0
+local buttonWidth = 0
+local buttonFontSize = 0
+
+local scrollBarWidth = 0
+
+local outline = ""
+
+local contentAreaWidth = 0
+local contentAreaTop = 0
+local contentAreaHeight = 0
+local contentAreaLeft = 0
+
+local lineSize = 0
+
+local scroll = 0
+
+local lines = {}
+local rowCount = 0
+local title
+local pageHeight
+local visibleLinks = {}
+
+local buttons = {}
+
+local currentPage = nil
+
+local visible = false
+
+local displayWelcomePage = false
+local welcomePage = nil
+local inGame = false
+
+glText      = gl.Text
+glRect      = gl.Rect
+glShape     = gl.Shape
+glColor     = gl.Color
+glTexture   = gl.Texture
+glTexRect   = gl.TexRect
+glLineWidth = gl.LineWidth
+
+local callInList = {
+  "DrawScreen",
+  "ViewResize",
+  "MouseWheel",
+  "MousePress",
+  "MouseRelease",
+  "MouseMove",
+  "TextCommand"
+}
+
+if debug then
+  echo = Spring.Echo
+else
+  function echo()
+  end
+end
+
+function widget:Initialize()
+  widgetHandler:RegisterGlobal("displayPage", displayPage)
+  widgetHandler:RegisterGlobal("setPageOptions", setPageOptions)
+  widgetHandler:RegisterGlobal("setWelcomePage", setWelcomePage)
+  widgetHandler:RegisterGlobal("isHelpVisible", isHelpVisible)
+  removeCallIns()
+end
+
+function setWelcomePage(page)
+  welcomePage = page
+  local welcomePageShown = Spring.GetConfigInt(page .. "Shown", 0)
+
+  if welcomePageShown == 0 then
+    displayWelcomePage = true
+    widgetHandler:UpdateCallIn("DrawScreen")
+  end
+  
+  return true
+end
+
+function isHelpVisible()
+  return visible
+end
+
+function removeCallIns()
+  for k,v in pairs(callInList) do
+    widgetHandler:RemoveCallIn(v)
+  end
+end
+
+function updateCallIns()
+  for k,v in pairs(callInList) do
+    widgetHandler:UpdateCallIn(v)
+  end
+end
+
+function widget:ViewResize(viewSizeX, viewSizeY) 
+  if visible then
+    processContent()   
+  end
+end
+
+function isInGame()
+  if inGame then
+    return true
+  elseif Spring.GetGameSeconds() ~= 0 then
+    inGame = true
+    return true
+  else
+    return false
+  end
+end
+
+function widget:DrawScreen()
+  if not isInGame() then
+    return
+  end
+  
+  if displayWelcomePage then
+    displayWelcomePage = false
+    displayPage(welcomePage)
+    Spring.SetConfigInt(welcomePage .. "Shown", 1)
+  end
+  
+  if visible then
+    drawFrame()
+    
+    glColor(tableToColor(titleColor))
+    glText(title, windowX + width / 2, windowY - padding - titleFontSize, titleFontSize, outline .. "cn")
+    
+    visibleLinks = {}
+    for row, line in ipairs(lines) do
+      if line.top - scroll >= 0 and line.top + line.height - scroll <= contentAreaHeight then
+        if line.image then
+          drawImage(line)
+        elseif line.list then
+          drawList(line)
+        else
+          drawLine(line)
+          underLineLinks(line)      
+        end
+      end  
+    end     
+  end
+end
+
+function drawList(line)
+  local size = 4
+  glColor(1, 1, 1, 1)
+  drawBox(contentAreaLeft + padding - size, contentAreaTop - line.top - (line.height - size) / 2 + scroll,  size, size)
+  drawLine(line)
+  underLineLinks(line)
+end
+
+function drawImage(line)
+  if line.image.align == "left" then
+    DrawTexRect({contentAreaLeft, contentAreaTop - line.top + scroll, line.image.width, line.image.height}, line.image.path, 1)
+  elseif line.image.align == "right" then
+    DrawTexRect({contentAreaLeft + contentAreaWidth - line.image.width, contentAreaTop - line.top + scroll, line.image.width, line.image.height}, line.image.path, 1)
+  elseif line.image.align == "center" then
+    DrawTexRect({contentAreaLeft + (contentAreaWidth - line.image.width) / 2, contentAreaTop - line.top + scroll, line.image.width, line.image.height}, line.image.path, 1)
+  end
+  if line.text then
+    drawLine(line)
+    underLineLinks(line)
+  end
+end
+
+function underLineLinks(line)
+  if not line.links then
+    return
+  end
+  
+  for _, link in ipairs(line.links) do
+    glColor(tableToColor(linkColor))
+    link.left = contentAreaLeft + line.offset + link.x
+    link.top = contentAreaTop - line.top - line.height + scroll 
+    link.height = line.fontSize
+    table.insert(visibleLinks, link)
+    drawBox(link.left, link.top, link.width, 1)    
+  end
+end
+
+function drawLine(line)
+  glText(line.text, contentAreaLeft + line.offset, contentAreaTop - line.top - line.height + scroll, line.fontSize, outline)
+end
+
+function tableToColor(t)
+  return t[1], t[2], t[3], t[4]
+end
+
+function drawFrame()
+  glColor(tableToColor(backgroundColor))
+  
+  drawBox(windowX, windowY, width, height)
+  if drawScrollBar then
+    glColor(0.5, 0.5, 0.5, 1)
+    drawBox(windowX + width, windowY, scrollBarWidth, height)
+    glColor(1,1,1,1)
+    scrollBoxY = windowY - scroll / pageHeight * height
+    drawBox(windowX + width, scrollBoxY, scrollBarWidth, scrollBoxHeight)
+  end
+  
+  buttons = {}
+  
+  addButton("Exit", 0, exitButtonClicked)
+  if currentPage.previousPage then
+    addButton("Back", -1, backButtonClicked)
+  end
+  if currentPage.nextPage then
+    addButton("Forward", 1, forwardButtonClicked)
+  end
+end
+
+function exitButtonClicked()
+  removeCallIns()
+  visible = false
+  if options.unpauseAutomaticaly and isPaused() then
+    Spring.SendCommands({"pause"})
+  end
+end
+
+function addButton(text, index, _function)
+  local buttonX = windowX + (width - buttonWidth) / 2 + index * (buttonWidth + padding)
+  local buttonY = windowY - height + buttonHeight + padding
+  
+  glColor(1,1,1,1)
+  drawBox(buttonX, buttonY, buttonWidth, buttonHeight)
+  glColor(0,0,0,1)
+  glText(text, buttonX + buttonWidth / 2, buttonY - (buttonHeight + buttonFontSize) / 2 , buttonFontSize, "cn")
+  
+  local button = {}
+  button.left = buttonX
+  button.top = buttonY
+  button._function = _function
+  table.insert(buttons, button)
+end
+
+function drawBox(x, y, w, h)
+  glShape(GL.QUADS, {
+    {v = {x, y}},
+    {v = {x, y - h}},
+    {v = {x + w, y - h}},
+    {v = {x + w, y}}
+  })
+end
+
+function widget:MouseWheel(up, value) 
+  if not isInGame() then
+    return
+  end
+
+  if visible then
+  
+    local x, y = Spring.GetMouseState()
+    if not isInside(x, y) then
+      return false
+    end
+
+    if not drawScrollBar then
+      return true
+    end
+    
+    if up then 
+      scroll = scroll - lineSize * options.mouseWheelScrollSpeed
+      if scroll < 0 then scroll = 0 end
+    else
+      scroll = scroll + lineSize * options.mouseWheelScrollSpeed
+      if scroll + contentAreaHeight > pageHeight then scroll = pageHeight - contentAreaHeight end
+    end
+    return true    
+  end
+end
+
+function widget:MousePress(x, y, button)
+  if not isInGame() then
+    return
+  end
+
+  if visible then
+    
+    if drawScrollBar then
+      if x > windowX + width and x < windowX + width + scrollBarWidth then
+        scrollBoxDrag = true
+        if y < scrollBoxY and y > scrollBoxY - scrollBoxHeight then
+          scrollBoxDragPos = scrollBoxY - y
+        else
+          scrollBoxDragPos = scrollBoxHeight / 2
+          scroll = (windowY - y - scrollBoxDragPos) / height * pageHeight  
+          
+          if scroll < 0 then scroll = 0
+          elseif scroll + contentAreaHeight > pageHeight then scroll = pageHeight - contentAreaHeight end
+        end
+        
+        return true                
+      end
+    end
+
+    if not isInside(x, y) then
+      return false
+    end
+        
+    for _, link in pairs(visibleLinks) do
+      if x > link.left and x < link.left + link.width and y > link.top and y < link.top + link.height then
+        loadPage(link.address)
+        return true
+      end
+    end
+    
+    for _, button in pairs(buttons) do
+      if x > button.left and x < button.left + buttonWidth and y < button.top and y > button.top - buttonHeight then
+        button._function()
+        return true
+      end
+    end
+    
+    return true    
+  end
+end
+
+function isInside(x, y)
+  return x >= windowX and x <= windowX + width and y < windowY and y > windowY - height
+end
+
+function widget:MouseRelease(x, y, button)
+  if not isInGame() then
+    return
+  end
+
+  if visible then
+    if scrollBoxDrag then
+      scrollBoxDrag = false
+    else
+      return isInside(x, y)
+    end
+  end
+end
+
+function widget:MouseMove(x, y, dx, dy, button)
+  if not isInGame() then
+    return
+  end
+
+  if visible then
+    if scrollBoxDrag then
+      scroll = (windowY - y - scrollBoxDragPos) / height * pageHeight  
+      
+      if scroll < 0 then scroll = 0
+      elseif scroll + contentAreaHeight > pageHeight then scroll = pageHeight - contentAreaHeight end
+      
+      return true
+    end
+    return isInside(x, y)
+  end
+end
+
+function widget:TextCommand(command)
+  if not isInGame() then
+    return
+  end
+
+  if visible then
+    if (string.find(command, 'redraw') == 1) then
+      loadPage(currentPage.file)
+    end    
+  end
+end
+
+function placeWidget()
+  local screenWidth, screenHeight = widgetHandler:GetViewSizes()
+
+  width = screenWidth * options.widgetWidth / 100
+  height = screenHeight * options.widgetHeight / 100
+  
+  windowX = (screenWidth - width) / 2
+  windowY = (screenHeight + height) / 2  
+end
+
+function processContent()
+  echo("entering processContent()")
+
+  if options.placeAutomaticaly then
+    placeWidget()
+  end
+  
+  local titleSize = titleFontSize + padding
+  local buttonBarHeight = buttonHeight + padding
+  
+  contentAreaWidth = width - 2 * padding
+  contentAreaTop = windowY - titleSize
+  contentAreaLeft = windowX + padding
+  contentAreaHeight = height - buttonBarHeight - titleSize - padding
+  
+  local y = 0
+  local row = 0
+  local content = currentPage.content
+  lines = {}
+  scroll = 0
+  
+  title = "no title"
+
+  for pos, str in pairs(content) do 
+    if string.find(str, "<") == 1 then
+    
+      if string.find(str, "<title") then
+        _, _, title = string.find(str, "<title=(.*)>")
+        echo("line: " .. pos .. " tag: <title>")
+        
+      elseif string.find(str, "<include") then
+        -- it's already included on load time
+      else
+        row = row + 1
+        local line = {}
+        lines[row] = line      
+        line.top = y
+        line.offset = 0
+        
+        if string.find(str, "<heading") then
+          echo("line: " .. pos .. " tag: <heading>")
+          
+          local _, e, value = string.find(str, "<heading=(%d*)>")
+          local headingSize = tonumber(value)
+          
+          line.text = string.sub(str, e + 1)
+          line.height = headingSize + lineSpace
+          line.fontSize = headingSize
+          
+          y = y + line.height
+          
+        elseif string.find(str, "<image") then
+          echo("line: " .. pos .. " tag: <image>")
+          local image = {}
+          
+          local  _, _, file = string.find(str, "<image=(.-)%s")
+          image.path = LUAUI_DIRNAME .. options.pageDirectory .. "/" .. file
+
+          _, lt, h = string.find(str, "height=(.-)>")
+          _, _, w = string.find(str, "width=(.-)%s")
+          _, _, align = string.find(str, "align=(.-)%s")
+          if not align then
+            align = "left"
+          end
+          image.align = align
+          image.width = tonumber(w)
+          image.height = tonumber(h)
+          image.row = row
+          line.image = image
+
+          local restriction = {}
+          
+          if align == "left" then
+            restriction.offset = image.width + padding
+            restriction.textAreaWidth = contentAreaWidth - restriction.offset
+            
+          elseif align == "right" then
+            restriction.offset = 0
+            restriction.textAreaWidth = contentAreaWidth - image.width - padding
+          end
+          
+          if align == "center" then
+            restriction = nil
+            line.height = image.height + padding
+            y = y + line.height
+          else
+            restriction.bottom = y + image.height + padding
+
+            local text = string.sub(str, lt + 1)
+            if string.len(text) > 0 then
+              row, y = processText(row, y, text, restriction, line)
+              if y < restriction.bottom then
+                y = restriction.bottom
+              end
+
+            else
+              line.height = image.height + padding
+              y = y + line.height
+            end            
+          end                    
+          
+          
+        elseif string.find(str, "<li>") then
+          echo("line: " .. pos .. " tag: <li>")
+          
+          local _, e = string.find(str, "<li>")
+          line.list = true
+          local restriction = {}
+          restriction.offset = padding + padding
+          restriction.textAreaWidth = contentAreaWidth - restriction.offset
+          local text = string.sub(str, e + 1)
+          row, y = processText(row, y, text, restriction, line)          
+        end                              
+      end
+    else
+      row, y = addTextLine(row, y, str)
+    end
+  end
+  
+  pageHeight = y
+  
+  if pageHeight > contentAreaHeight then
+    drawScrollBar = true
+    scrollBoxHeight = height * contentAreaHeight / pageHeight
+  else
+    drawScrollBar = false
+  end
+  
+  echo("leaving processContent()")
+end
+
+function backButtonClicked()
+  local newPage = currentPage.previousPage
+  currentPage = newPage
+  processContent()
+end
+
+function forwardButtonClicked()
+  local newPage = currentPage.nextPage
+  currentPage = newPage
+  processContent()
+end
+
+function isPaused() 
+  local _,_,pause = Spring.GetGameSpeed() 
+  return pause
+end
+
+function tableToColorString(t)
+  local colors = {}
+  for k, v in ipairs(t) do
+    local color = v * 255
+    if color <= 0 then color = 1 end
+    colors[k] = string.format("\%s", string.format("%d", color))
+  end
+  return colors[1] .. colors[2] .. colors[3] ..  colors[4]
+end
+
+function setPageOptions(_options)
+  if _options then
+
+    options = {}
+    for k,v in pairs(defaultOptions) do
+      if _options[k] ~= nil then
+        options[k] = _options[k]
+        echo(k, _options[k])
+      else
+        options[k] = v
+      end
+    end
+    
+  else
+    options = defaultOptions
+  end
+  
+  padding = options.padding 
+  fontSize = options.fontSize
+  lineSpace = options.lineSpace
+  lineSize = fontSize + lineSpace
+  titleFontSize = options.titleFontSize
+
+  textColorStr = options.textColorStr
+  linkColorStr = options.linkColorStr
+
+  titleColor = options.titleColor
+  linkColor = options.linkColor
+  backgroundColor = options.backgroundColor
+
+  buttonHeight = options.buttonHeight
+  buttonWidth = options.buttonWidth
+  buttonFontSize = options.buttonFontSize
+
+  scrollBarWidth = options.scrollBarWidth
+
+  outline = options.outline
+  
+  if not options.placeAutomaticaly then
+    windowX = options.windowX
+    windowY = options.windowY
+    width = options.width
+    height = options.height
+  end
+  
+  return true
+end
+
+function displayPage(file)
+  if not visible then
+    currentPage = nil
+    if options.pauseAutomaticaly and not isPaused() then
+      Spring.SendCommands({"pause"})
+    end
+  end
+  
+--  titleColorStr = tableToColorString(titleColor)
+--  textColorStr = tableToColorString(textColor)
+--  linkColorStr = tableToColorString(linkColor)
+  
+  loadPage(file)
+  
+  if not visible then
+    visible = true
+    updateCallIns()
+  end
+  
+  return true
+end
+
+function loadPage(file)  
+  echo("entering loadPage() " .. file)
+  local newPage = {}
+  
+  local content = {}
+      
+  if currentPage then
+    newPage.previousPage = currentPage      
+    currentPage.nextPage = newPage
+  end
+  
+  currentPage = newPage
+
+  local load = {}
+
+  content = fetchData(file, load)
+
+  currentPage.content = content
+  currentPage.file = file
+  
+  processContent(content)
+  echo("leaving loadPage()")
+end
+
+function fetchData(file, loadedData)
+  echo("entering fetchData() " .. file)
+  local path = LUAUI_DIRNAME .. options.pageDirectory .. "/" .. file .. options.pageExtention  
+
+  local line = 0
+  local data = {}
+  
+  for str in io.lines(path) do
+    line = line + 1
+    data[line] = str
+  end
+  
+  line = 1
+  while line <= #data do
+    str = data[line]
+
+    if string.find(str, "<include") then
+      echo("line: " .. line .. " tag: <include>")
+      local _, _, value = string.find(str, "<include=(.-)>")
+
+      local includedData = loadedData[value]
+      if not includedData then
+        includedData = fetchData(value, loadedData)
+        loadedData[value] = includedData
+      end
+      for _, incl in ipairs(includedData) do      
+        line = line + 1
+        table.insert(data, line, incl)
+      end
+        line = line + 1
+      
+    else
+      line = line + 1
+    end
+  end
+
+  echo("leaving fetchData()")
+  return data;
+end
+
+function processText(row, y, text, restriction, line)
+  line.offset = 0
+  line.top = y
+  line.height = fontSize + lineSpace
+  line.fontSize = fontSize
+
+  if restriction then
+    line.restriction = restriction
+  end
+  if restriction and (not restriction.bottom or y < restriction.bottom) then
+    textAreaWidth = restriction.textAreaWidth
+    line.offset = restriction.offset
+  else
+    textAreaWidth = contentAreaWidth    
+    restriction = nil
+  end
+
+  y = y + line.height
+  
+  local s, e = nil, nil    
+  local lineText, lineWidth
+    
+  local word, wordWidth, s, e = getWord(text, 1, 0, line)
+  lineText = word
+  lineWidth = wordWidth
+  local length = string.len(text)
+  
+  repeat
+    word, wordWidth, s, e = getWord(text, e+1, lineWidth, line, textAreaWidth)
+    
+    if not word then
+      line.text = lineText
+      local textLeft = textColorStr .. string.sub(text, s) 
+      return addTextLine(row, y, textLeft, restriction)
+    else
+      lineWidth = lineWidth + wordWidth
+      lineText = lineText .. word
+    end
+  until e>=length
+  
+  line.text = textColorStr ..lineText    
+  
+  return row, y
+end
+
+function addTextLine(row, y, text, restriction)
+  row = row + 1
+  local line = {}
+  lines[row] = line
+  
+  return processText(row, y, text, restriction, line)
+end
+
+function getWord(text, start, x, line, textAreaWidth)
+  local s, e = string.find(text, "[%w%c%p]-%s", start)  
+  
+  if not s then
+    s, e = string.find(text, "[%a]-", start)
+  end
+  if s > e then 
+    e = string.len(text)
+  end
+    
+  local word = string.sub(text, s, e)
+
+  local link = nil
+  if string.find(word, "<link") then
+    _, _, link = string.find(text, "<link=(.-)>")    
+    _, e, word = string.find(text, ">(.-)</link>")    
+    
+    word = linkColorStr .. word .. textColorStr
+  end
+  
+  local wordWidth = gl.GetTextWidth(word) * fontSize
+  
+  if not textAreaWidth or x + wordWidth <= textAreaWidth then    
+    if link then
+      addLink(link, x, wordWidth, line)
+    end
+    return word, wordWidth, s, e
+  else
+    return nil, nil, s
+  end    
+end
+
+function addLink(address, x, width, line)
+  if not line.links then
+    line.links = {}
+  end
+  link = {['address'] = address, ['x']=x, ['width']=width}
+  table.insert(line.links, link)
+end
+
+function DrawTexRect(rect, texture, alpha)
+  glTexture(true)
+  glTexture(texture)
+  glColor(1,1,1, alpha or 1)
+  glTexRect(rect[1],rect[2]-rect[4],rect[1] + rect[3], rect[2] )
+  glColor(1,1,1,1)
+  glTexture(false)
+end

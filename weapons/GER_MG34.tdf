@@ -1,0 +1,78 @@
+[mg34]
+{
+	id=7;
+	name=Maschinengewehr 34;
+	rendertype=0;
+	turret=1;
+	tolerance=6	pitchtolerance=700;
+	interceptedbyshieldtype=8;
+	explosiongenerator=custom:BulletImpact;
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=1170;
+	reloadtime=1.7;
+	energypershot=0.5;
+	burst=10;
+	burstrate=.069;
+	sprayangle=300;
+	movingaccuracy=2666;
+	weaponvelocity=1500;
+	areaofeffect=1;
+	weapontimer=1;
+
+	soundtrigger=1;
+	soundstart=GER_MG34;
+
+	rgbcolor=1 0.75 0;
+
+	size=0.0000000000001;
+
+	[damage]
+	{
+		default=5;
+		infantry=28;
+		guns=40;
+		lightbuildings=10;
+		bunkers=0;
+		sandbags=5;
+		mines=0;
+		flag=0.00000000001;
+		tanks=0;
+		armouredvehicles=12;
+		unarmouredvehicles=15;
+	}
+}
+[mg34fear]
+{
+	id=301;
+	name=Supression from MG34 fire;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=1170;
+	reloadtime=1.7;
+	energypershot=2;
+	weaponvelocity=800;
+	areaofeffect=150;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

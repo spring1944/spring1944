@@ -1,0 +1,150 @@
+[s5385mmhe]
+{
+	id=103;
+	name=S-53/ZIS-S-53 85mm High-Explosive Ammunition;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:Weapon_Explosion_Medium;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+
+	range=2140;
+	reloadtime=4.9;
+	energypershot=85;
+	accuracy=200;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	weaponvelocity=1400;
+	areaofeffect=85;
+	edgeeffectiveness=0.35;
+
+	soundstart=RUS_85mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=600;
+		mines=0;
+		flag=0;
+		infantry=2850;
+		guns=2300;
+		tanks=100;
+		armouredvehicles=1000;
+		unarmouredvehicles=1200;
+	}
+}
+[s5385mmap]
+{
+	id=100;
+	name=S-53/ZIS-S-53 85mm Armour-Piercing Ammunition;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+
+	ballistic=1;
+
+	range=2900;
+	reloadtime=4.5;
+	energypershot=85;
+	accuracy=350;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	firestarter=0.0;
+	weaponvelocity=1600;
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=RUS_85mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=6500;
+	[damage]
+	{
+		default=7425;//9900
+		infantry=2450;
+		guns=1800;
+		lightbuildings=750;
+		bunkers=50;
+		sandbags=250;
+		mines=0;
+		flags=0;
+	}
+}
+[s5385mmhefear]
+{
+	id=401;
+	name=Supression;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=2850;
+	reloadtime=4.9;
+	energypershot=0;
+	weaponvelocity=1400;
+	areaofeffect=180;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

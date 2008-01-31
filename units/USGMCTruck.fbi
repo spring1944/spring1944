@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=USGMCTruck;
+	objectname=USGMCTruck.S3O;
+	corpse=USGMCTruck_Destroyed;
+	icontype=truck;
+	soundcategory=USTank;
+	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+	tedclass=TANK;
+
+	name=GMC Truck;
+	description=General Transport Truck;
+	maxdamage=550;
+	buildcostmetal=474;
+	buildcostenergy=0;
+	buildtime=158;
+	footprintx=3;
+	footprintz=3;
+	mass=750;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=5;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Truck;
+	maxvelocity=4.8;
+	acceleration=0.35;
+	brakerate=0.45;
+	turnrate=440;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	transportsize=1;
+	transportcapacity=15;
+	transportmass=750;
+	releaseheld=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+}

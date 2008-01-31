@@ -1,0 +1,10 @@
+[gerlefh18_destroyed]
+{
+	object=GERleFH18_Destroyed.S3O;
+	description=Destroyed Howitzer;
+	energy=1000;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

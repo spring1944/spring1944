@@ -1,0 +1,788 @@
+//Extra-small Muzzle flash, for 20-30mm weapons
+
+[MuzzleBrakeSmoke]
+{
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+[XSMALL_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.15;
+          	length=0.3;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Extra-small Muzzle smoke, for 20-30mm weapons
+[XSMALL_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1      0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=20;
+			particleSpeed=6;
+			particleSpeedSpread=6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//Small-sized Muzzle flash for 37-45mm weapons
+[SMALL_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.15;
+          	length=0.3;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Small-zised Muzzle Smoke for 37-45mm weapons
+[SMALL_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1      0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=20;
+			particleSpeed=6;
+			particleSpeedSpread=6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//Small/Medium-sized Muzzle flash for 45-60mm weapons
+[MEDIUMSMALL_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.15;
+          	length=0.3;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Small/Medium-sized Muzzle smoke for 45-60mm weapons
+[MEDIUMSMALL_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1      0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=20;
+			particleSpeed=6;
+			particleSpeedSpread=6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//Medium-sized Muzzle flash for 70-80mm weapons
+[MEDIUM_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.25;
+          	length=0.5;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Medium-sized Muzzle slash for 70-80mm weapons
+[MEDIUM_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1      0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=20;
+			particleSpeed=6;
+			particleSpeedSpread=6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//Medium/Large-sized Muzzle flash for 80-95mm weapons
+[MEDIUMLARGE_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.375;
+          	length=0.75;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Medium/Large-sized Muzzle slash for 85-95mm weapons
+[MEDIUMLARGE_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1      0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=20;
+			particleSpeed=6;
+			particleSpeedSpread=6;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//Large-sized Muzzle flash for 105mm-125mm weapons
+[LARGE_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.5;
+          	length=1;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//Large-sized Muzzle smoke for 105mm-125mm weapons
+[LARGE_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1  0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=40;
+			particleSpeed=6;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+//XLarge-sized Muzzle flash for 150-175mm weapons
+[XLARGE_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=0.75;
+          	length=1.3;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//XLarge-sized Muzzle smoke for 150mm-175mm weapons
+[XLARGE_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1  0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=40;
+			particleSpeed=6;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}
+
+
+//XXLarge-sized Muzzle flash for 175+mm weapons
+[XXLARGE_MUZZLEFLASH]
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0.5 0.01	1 0.7 0 0.01	0 0 0 0.01; 
+          	size=1;
+          	length=1.75;
+          	sizeGrowth=70;
+          	ttl=5;
+          	frontOffset=0.3;
+          	sideTexture=plasma2;
+          	frontTexture=plasma0029;
+			alwaysvisible=0;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+	[muzzlesmoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=20;
+			particleLifeSpread=0;
+			numParticles=1;
+			particleSpeed=10 i-1;
+			particleSpeedSpread=1;
+			particleSize=7 i-0.4;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+
+}
+
+//XXLarge-sized Muzzle smoke for 175+mm weapons
+[XXLARGE_MUZZLEDUST]
+{
+		[muzzleflash]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=1;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.05, 0;
+			colorMap=0.72 0.61 0.41 1  0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.8;
+			particleLife=30;
+			particleLifeSpread=0;
+			numParticles=40;
+			particleSpeed=6;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=90;
+			emitRotSpread=10;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=0;
+	}
+}

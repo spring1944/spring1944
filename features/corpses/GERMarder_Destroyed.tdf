@@ -1,0 +1,10 @@
+[GERmarder_destroyed]
+{
+	object=GERMarder_destroyed.S3O;
+	description=Destroyed TD;
+	energy=75;
+	damage=8000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}

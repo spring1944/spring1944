@@ -1,0 +1,10 @@
+[USBarracks_Destroyed]
+{
+	object=USBarracks_Destroyed.S3O;
+	description=Destroyed Barracks;
+	energy=1000;
+	damage=50000;
+	footprintx=4;
+	footprintz=6;
+	reclaimable=1;
+}

@@ -1,0 +1,32 @@
+[unitinfo]
+{
+	unitname=TankObstacle;
+	objectname=TankObstacle.S3O;
+	corpse=TankObstacle;
+	category=NFLAGNAIR;
+	tedclass=FORT;
+	yardmap=f;
+
+	name=Tank Obstacle;
+	description=Blocks Vehicles;
+	maxdamage=8000;
+	buildcostmetal=45;
+	buildcostenergy=0;
+	buildtime=30;
+	footprintx=1;
+	footprintz=1;
+
+	hidedamage=1;
+	isfeature=1;
+	shownanoframe=1;
+	smoothanim=0;
+
+	sightdistance=50;
+	stealth=1;
+
+	maxslope=20;
+
+	[sfxtypes]
+	{
+	}
+}

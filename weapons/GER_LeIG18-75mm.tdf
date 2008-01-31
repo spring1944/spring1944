@@ -1,0 +1,90 @@
+[leig18he]
+{
+	id=109;
+	name=German 75mm Light Infantry Gun (leIG) 18 High-Explosive Ammunition;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:Weapon_Explosion_Large;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+
+	range=1200;
+	reloadtime=4.3;
+	energypershot=75;
+	accuracy=350;
+	targetmoveerror=0.075;
+	weaponvelocity=700;
+	areaofeffect=75;
+	edgeeffectiveness=0.25;
+
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=2.6;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=1800;
+		infantry=1500;
+		guns=1400;
+		mines=0;
+		flag=0;
+		tanks=500;
+		armouredvehicles=2000;
+		unarmouredvehicles=2150;
+	}
+}
+[leig18hefear]
+{
+	id=403;
+	name=Supression from Leig 18 HE;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=1200;
+	reloadtime=4.3;
+	energypershot=0;
+	weaponvelocity=700;
+	areaofeffect=175;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

@@ -1,0 +1,57 @@
+[Mk10830mm]
+{
+	name=30mm Mk 108 Aircraft Cannon;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=8;
+	explosiongenerator=custom:Weapon_Explosion_XSmall;
+
+	lineofsight=1;
+	firestarter=10;
+	collisionsize=2;
+	range=1000;
+	reloadtime=3;
+	energypershot=10;
+	burst=3;
+	burstrate=0.25;
+	sprayangle=250;
+	//movingaccuracy=7111;
+	weaponvelocity=1750;
+	areaofeffect=1;
+	burnblow=1;
+	weapontimer=1;
+
+	soundtrigger=0;
+	soundstart=GER_30mmAir;
+
+	rgbcolor=1 0.75 0;
+
+	//beamweapon=1;
+	//thickness=0.7;
+	//duration=0.02;
+	//intensity=0.1;
+
+	//corethickness=0.5;
+	//laserflaresize=0.0001;
+
+	size=0.0000000000001;
+	//separation=2;
+	//stages=50;
+
+	[damage]
+	{
+		default=100;
+		infantry=200;
+		guns=200;
+		lightbuildings=100;
+		bunkers=0;
+		sandbags=5;
+		mines=0;
+		flag=0.00000000001;
+		tanks=200;
+		armouredvehicles=150;
+		unarmouredvehicles=200;
+		LightPlanes=150;
+	}
+}

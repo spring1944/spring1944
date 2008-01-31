@@ -1,0 +1,291 @@
+[Infantry]
+	{
+	//**Germany**//
+	GERAirEngineer=99;
+	GERBeobInf=99;
+	GEREngineer=99;
+	GERGrW34=99;
+	GERHQEngineer=99;
+	GERLabourer=99;
+	GERMG42=99;
+	GERMP40=99;
+	GERPanzerfaust=99;
+	GERPanzerschrek=99;
+	GERPanzerGren=99;
+	GERSniper=99;
+
+	//US//
+	USAirEngineer=99;
+	USEngineer=99;
+	USGIBAR=99;
+	USGIBazooka=99;
+	USGIFlamethrower=99;
+	USGIMG=99;
+	USGIRifle=99;
+	USGISniper=99;
+	USGIThompson=99;
+	USHQEngineer=99;
+	USM1Mortar=99;
+	USObserv=99;
+
+	//USSR//
+	RUSCommander=99;
+	RUSEngineer=99;
+	RUSRifle=99;
+	RUSPPsh=99;
+	RUSDP=99;
+	RUSPTRD=99;
+	RUSMaxim=99;
+	RUSRPG43=99;
+	RUSObserv=99;
+	RUSMortar=99;
+	RUSSniper=99;
+	RUSPartisan=99;
+	RUSCommissar=99;
+	RUSCommissar1=99;
+
+	//Britain//
+	GBRHQEngineer=99;
+	GBREngineer=99;
+	GBRRifle=99;
+	GBRSTEN=99;
+	GBRBren=99;
+	GBRObserv=99;
+	GBRSniper=99;
+	GBR3inMortar=99;
+	GBRPIAT=99;
+	GBRCommandoC=99;
+	GBRCommando=99;
+	}
+	
+[Guns]
+	{
+	//**Germany**//
+	GERleIG18=99;
+	GERFlaK38=99;
+	GERPaK40=99;
+	GERleFH18=99;
+	GERSandbagMG=99;
+	GERATGun=99;
+
+	//US//
+	USM8Gun=99;
+	USM2Gun=99;
+	USM5Gun=99;
+	USSandbagMG=99;
+	USATGun=99;
+
+	//USSR//
+	RUS61K=99;
+	RUSZiS2=99;
+	RUSZiS3=99;
+	RUSSandbagMG=99;
+	RUSATGun=99;
+	RUSM30=99;
+
+	//Britain//
+	GBR25Pdr=99;
+	GBR17Pdr=99;
+	GBRSandbagMG=99;
+	GBRATGun=99;
+
+	}
+
+[LightBuildings]
+	{
+	//Germany//
+	GERBarracks=99;
+	GERVehicleYard=99;
+	GERResource=99;
+	GERResourceDepot=99;
+	GERGunYard=99;
+	GERTankYard=99;
+
+	//US//
+	USHQ=99;
+	USCP=99;
+	USBarracks=99;
+	USVehicleYard=99;
+	USResource=99;
+	USResourceDepot=99;
+	USGunYard=99;
+
+	//USSR//
+	RUSBarracks=99;
+	RUSVehicleYard=99;
+	RUSResource=99;
+	RUSResourceDepot=99;
+	RUSGunYard=99;
+	RUSShack=99;
+	RUSPResource=99;
+
+	//Britain//
+	GBRResource=99;
+	GBRResourceDepot=99;
+	GBRGunYard=99;
+	GBRVehicleYard=99;
+	GBRBarracks=99;
+	GBRLZ=99;
+	GBRHQ=99;
+
+	}
+
+[Bunkers]
+	{
+	//**Germany**//
+	GERHQBunker=99;
+	
+	//US//
+
+	//USSR//
+
+	//Britain//
+	
+	}
+
+[Sandbags]
+	{
+	Sandbags=99;
+	}
+
+[Mines]
+{
+	APMine=99;
+	ATMine=99;
+}
+
+[Flag]
+	{
+	GERflag=99;
+	USFlag=99;
+	RUSFlag=99;
+	GBRFlag=99;
+	}
+
+[Tanks]
+	{
+	//**Germany**//
+	GERPanzerIII=99;
+	GERStuGIII=99;
+	GERPanzerIV=99;
+	GERPanther=99;
+	GERTiger=99;
+
+	//US//
+	USM4A4Sherman=99;
+	USM4A376Sherman=99;
+	USM5Stuart=99;
+
+	//USSR//
+	RUSISU152=99;
+	RUST60=99;
+	RUST70=99;
+	RUST3485=99;
+	RUST3476=99;
+	RUSISU122=99;
+	RUSKV1=99;
+	RUSIS2=99;
+	RUSSU85=99;
+	RUSSU100=99;
+	RUSSU122=99;
+
+	//Britain//
+
+	GBRShermanFirefly=99;
+	GBRCromwell=99;
+	GBRCromwellMkVI=99;
+	GBRChurchillMkVII=99;
+	GBRKangaroo=99;
+	}
+
+[ArmouredVehicles]
+	{
+	//**Germany**//
+	GERSdKfz250=99;
+	GERSdKfz251=99;
+	sdkfz9=99;
+	GERMarder=99;
+	GERWespe=99;
+
+	//US//
+	USM8Greyhound=99;
+	USM3Halftrack=99;
+	USM7Priest=99;
+
+	//USSR//
+	RUSBA64=99;
+	RUSM5Halftrack=99;
+	RUSSU76=99;
+
+	//Britain//
+	GBRDaimler=99;
+	GBRM5Halftrack=99;
+	GBRAECMkIII=99;
+	}
+
+[UnarmouredVehicles]
+	{
+	//**Germany**//
+	GEROpelBlitz=99;
+	GEROpelBlitz_Eng=99;
+
+	//US//
+	USGMCTruck=99;
+	USGMCTruck_Eng=99;
+	USGMCEngVehicle=99;
+
+	//USSR//
+	RUSZiS5=99;
+	RUSZiS5_Eng=99;
+	RUSGAZAAA=99;
+
+	//Britain//
+	GBRBedfordTruck=99;
+	GBRBedfordTruck_Eng=99;
+
+	//All//
+	RubberDingy=99;
+	PontoonRaft=99;
+	}
+
+[LightPlanes]
+	{
+	//**Germany**//
+	GERFi156=99;
+	GERBf109=99;
+	
+	//US//
+	USP51DMustang=99;
+
+	//USSR//
+	RUSYak3=99;
+
+	//Britain//
+	GBRSpitfireMkXIV=99;
+
+	}
+
+[HeavyPlanes]
+	{
+	//**Germany**//
+	
+	//US//
+
+	//USSR//
+
+	//Britain//
+
+	}
+
+
+
+//	Infantry=;
+//	Guns=;
+//	LightBuildings=;
+//	Bunkers=;
+//	Sandbags=;
+//	Mines=;
+//	Flags=;
+//	Tanks=;
+//	ArmouredVehicles=;
+//	UnarmouredVehicles=; 

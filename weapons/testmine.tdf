@@ -1,0 +1,38 @@
+[testmine]
+{
+	id=31;
+	name=mine test;
+	model=KatyushaRocket.S3O;
+	weapontype=missilelauncher;
+	rendertype=1;
+	explosiongenerator=custom:Weapon_Explosion_Shrapnel;
+	turret=1;
+	lineofsight=1;
+
+	range=200;
+	reloadtime=5;
+	burst=10;
+	burstrate=0.0000001;
+	sprayangle=64000;
+	energypershot=5;
+	accuracy=1421;
+	movingaccuracy=7111;
+	weaponvelocity=210;
+	areaofeffect=25;
+	edgeeffectiveness=0.8;
+	canattackground=0;
+	weapontimer=5;
+	smoketrail=1;
+	groundbounce=1;
+	numbounce=100;
+	noexplode=1;
+
+	soundhit=GEN_Explo_Grenade;
+
+	impulsefactor=0.00001;
+
+	[damage]
+	{
+		default=250;
+	}
+}

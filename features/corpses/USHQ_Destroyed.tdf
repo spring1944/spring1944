@@ -1,0 +1,10 @@
+[USHQ_Destroyed]
+{
+	object=USHQ_Destroyed.S3O;
+	description=Destroyed HQ;
+	energy=1000;
+	damage=50000;
+	footprintx=4;
+	footprintz=6;
+	reclaimable=1;
+}

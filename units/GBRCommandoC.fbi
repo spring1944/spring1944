@@ -1,0 +1,78 @@
+[unitinfo]
+{
+	unitname=GBRCommandoC;
+	objectname=GBRCommando.S3O;
+	buildpic=GBRCommando.png;
+	corpse=GBRSoldier_dead;
+	icontype=commando;
+	soundcategory=GBRInf;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
+
+	name=Commando;
+	description=Special Demolitions and Infiltration Infantry;
+	side=GBR;
+	maxdamage=280;
+	damagemodifier=0.375;
+	buildcostmetal=1050;
+	buildcostenergy=0;
+	buildtime=525;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=2;
+	SeismicSignature=0;
+	sightdistance=500;
+	stealth=1;
+
+	builder=1;
+	builddistance=5;
+	workertime=10;//80
+	canassist=0;
+	canrepair=0;
+	canreclaim=0;
+	shownanospray=0;
+
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=100;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.55;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=30;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+
+	weapon1=SilencedSTEN;
+	badtargetcategory1=LIGHTVEH;
+	onlytargetcategory1=INFTARG;
+	weaponmaindir1=0 0 1;
+	maxangledif1=170;
+	icontype=commando;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:SMG_MUZZLEFLASH;
+	}
+}

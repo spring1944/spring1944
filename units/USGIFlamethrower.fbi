@@ -1,0 +1,63 @@
+[unitinfo]
+{
+	unitname=USGIFlamethrower;
+	objectname=USflamethrower.S3O;
+	corpse=USsoldier_dead;
+	icontype=flame;
+	soundcategory=USInf;
+	category=NFLAG NFLAGNAIR INFTARG ;
+	tedclass=KBOT;
+
+	name=G.I. M2 Flamethrower;
+	description=Close Range Heavy Assault Infantry;
+	maxdamage=100;
+	damagemodifier=0.375;
+	buildcostmetal=300;
+	buildcostenergy=0;
+	buildtime=1050;
+	footprintx=1;
+	footprintz=1;
+	mass=75;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=10;
+	SeismicSignature=0;
+	sightdistance=701;
+	stealth=1;
+
+	mincloakdistance=175;
+	cloakcost=0;
+	cloakcostmoving=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.3;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=5;
+
+	explodeas=Small_Explosion;
+	//selfdestructas=; //Infantry don't need to explode
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=M2Flamethrower;
+	onlytargetcategory1=NFLAGNAIR;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:SMG_MUZZLEFLASH;
+	}
+}

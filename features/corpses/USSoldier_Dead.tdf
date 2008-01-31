@@ -1,0 +1,10 @@
+[ussoldier_dead]
+{
+	object=USTrooper_dead.S3O;
+	description=Dead American;
+	damage=1000;
+	blocking=0;
+	footprintx=1;
+	footprintz=1;
+	reclaimable=0;
+}

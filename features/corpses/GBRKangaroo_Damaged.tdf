@@ -1,0 +1,11 @@
+[gbrkangaroo_destroyed]
+{
+	object=GBRKangaroo_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed APC;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

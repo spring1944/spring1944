@@ -1,0 +1,88 @@
+--[[
+
+File: death_watch_defs.lua
+
+Description:
+  For use with the unit_death_watch.lua script, this defines what
+unit classes to watch, and what to do upon their deaths.
+
+Syntax:
+  Each unit that needs a death watch simply needs an entry in the
+watchDefs table, containing a table that contains a function called 
+'onDeath', like so:
+
+---------------------------------------------------------------------
+local watchDefs = {
+	unitname = {
+		onDeath = function(unitID, unitDefID, unitTeam,
+	             attackerID, attackerDefID, attackerTeam, 
+	             watchDef)
+			Spring.Echo (UnitDef[unitDefID] .. " was killed!")
+		end
+	}
+}
+---------------------------------------------------------------------
+
+  Additional information can be placed in the table, and accessed
+through the watchDef table supplied to the function. This is the
+contents of the original table, along with the unitname under
+watchDef.name, incase you use the same function for multiple units,
+as described below.
+
+  The same function can be used for multiple units on death, by
+creating a reference to the function, or a table containing the
+function, like so:
+
+---------------------------------------------------------------------
+local commonFunction = {
+	onDeath = function(unitID, unitDefID, unitTeam,
+	                   attackerID, attackerDefID, attackerTeam, 
+	                   watchDef)
+		Spring.Echo (watchDef.message .. " was killed!")
+	end
+}
+
+local watchDefs = {
+	unit1 = { onDeath = commonFunction, message = "Unit 1" },
+	unit2 = { onDeath = commonFunction, message = "Unit 1" },
+	unit3 = { onDeath = commonFunction, message = "Unit 1" },
+	-- ect.
+}
+---------------------------------------------------------------------
+
+]]--
+
+local spawnHolo = function(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam, watchDef)
+			-- If the attacker is nil, either the unit self destructed, or was destroyed via Lua.
+			-- There are a few other posibilities, but these dont really apply to a static building like the Holo Projector
+			-- We only want to spawn a new one if the unit was actually destroyed
+			-- Change the name in Spring.CreateUnit("unitname") to change the unit spawned
+		if attackerID and unitTeam ~= attackerTeam then
+			local px, py, pz = Spring.GetUnitBasePosition(unitID)
+			local ud = UnitDefs[unitDefID]
+			if ud.name == "imp_p_flag" or ud.name == "reb_p_flag" then
+				local _,_,_,_,_,faction,_,_,_ = Spring.GetTeamInfo(attackerTeam)
+				if faction == "galactic empire" then
+					local newUnit = Spring.CreateUnit("imp_p_flag", px, py, pz, 0, attackerTeam)
+				else
+					local newUnit = Spring.CreateUnit("reb_p_flag", px, py, pz, 0, attackerTeam)
+				end
+			else
+				local newUnit = Spring.CreateUnit(watchDef.spawn, px, py, pz, 0, unitTeam)
+			end
+		end
+	end
+
+local watchDefs = {
+	reb_p_flagadv = {spawn = "reb_p_flag", onDeath = spawnHolo},
+	imp_p_flagadv = {spawn = "imp_p_flag", onDeath = spawnHolo},
+	reb_p_flag = {spawn = "reb_p_flag", onDeath = spawnHolo},
+	imp_p_flag = {spawn = "imp_p_flag", onDeath = spawnHolo},
+}
+
+
+-------------------------------------------------
+-- Dont touch below here
+-------------------------------------------------
+
+return watchDefs

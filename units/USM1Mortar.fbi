@@ -1,0 +1,64 @@
+[unitinfo]
+{
+	unitname=USM1Mortar;
+	objectname=USM1Mortar.S3O;
+	corpse=USSoldier_dead;
+	icontype=mortar;
+	soundcategory=USInf;
+	category=INFTARG NFLAGNAIR NOTAIR NFLAG;
+	tedclass=KBOT;
+
+	name=81mm M1 Mortar;
+	description=Infantry Level Heavy Fire Support;
+	side=US;
+	maxdamage=200;
+	damagemodifier=0.375;
+	buildcostmetal=625;
+	buildcostenergy=0;
+	buildtime=2250;
+	footprintx=1;
+	footprintz=1;
+	mass=100;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=5;
+	SeismicSignature=0;
+	sightdistance=701;
+	stealth=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.25;
+	acceleration=0.2;
+	brakerate=0.6;
+	turnrate=1010;
+	maxslope=15;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	hightrajectory=1;
+
+	weapon1=M1_81mmMortar;
+	onlytargetcategory1=NFLAGNAIR;
+	weapon2=M1_81mmMortarFear;
+	onlytargetcategory2=NFLAG;
+	weaponslaveto2=1;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:MORTAR_MUZZLEFLASH;
+	}
+}

@@ -1,0 +1,11 @@
+[GBRAECMKIII_destroyed]
+{
+	object=GBRAECMKIII_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Car;
+	energy=50;
+	damage=8000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

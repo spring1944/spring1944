@@ -1,0 +1,49 @@
+[unitinfo]
+{
+	unitname=GBRResourceDepot;
+	objectname=LogisticsLarge.S3O;
+	buildpic=LogisticsLarge.png;
+	corpse=Debris_Large;
+	icontype=ammo;
+	soundcategory=GbrInf;
+	category=NFLAGNAIR BUILDING NFLAG ;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Large Logistics Stockpile;
+	description=Provides More Logistics;
+	side=GBR;
+	maxdamage=2500;
+	buildcostmetal=3860;
+	buildcostenergy=0;
+	buildtime=2575;
+	footprintx=4;
+	footprintz=6;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+
+
+	energymake=25;
+	energystorage=300;
+
+	sightdistance=1;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	maxslope=15;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=5;
+	buildinggrounddecalsizey=7;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Massive_Explosion;
+	selfdestructas=Massive_Explosion;
+
+	[sfxtypes]
+	{
+	}
+}

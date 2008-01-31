@@ -1,0 +1,20 @@
+[kubelwagen_damaged]
+{
+	object=Kubelwagen_damaged.S3O;
+	description=Abandoned Car;
+	energy=150;
+	damage=500;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
+[kubelwagen_destroyed]
+{
+	object=Kubelwagen_destroyed.S3O;
+	description=Destroyed Car;
+	energy=75;
+	damage=20000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

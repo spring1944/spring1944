@@ -1,0 +1,329 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  file:    gui_deploy.lua
+--  brief:   custom deploy gui
+--  author:  Dave Rodgers
+--
+--  Copyright (C) 2007.
+--  Licensed under the terms of the GNU GPL, v2 or later.
+--
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+function widget:GetInfo()
+  return {
+    name      = "Deploy",
+    desc      = "custom deploy gui",
+    author    = "trepan",
+    date      = "Jan 8, 2007",
+    license   = "GNU GPL, v2 or later",
+    layer     = 0,
+    enabled   = false  --  loaded by default?
+  }
+end
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+include('colors.h.lua')
+
+local teamRangeLists = {}
+local circleList = 0
+local miniMapXformList = 0
+
+local worldDivs   = 1024
+local minimapDivs = 256
+
+local mapX = Game.mapX * 512
+local mapY = Game.mapY * 512
+
+local startTime = Spring.GetTimer()
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+local function SetGlobal(name)
+  local chunk, err = loadstring(
+    'local w = widgetHandler:FindWidget("Deploy")\n' ..
+    'if (w) then\n' ..
+    '  ' .. name .. ' = w.' .. name .. '\n' ..
+    'else\n' ..
+    '  print("could not find: ' .. name .. '")\n' ..
+    'end', name
+  )
+  if (chunk) then
+    chunk()
+  else
+    print('gui_deploy: ' .. err)
+  end
+end
+
+
+function widget:Initialize()
+  SetGlobal('DeployDrawWorld')
+  SetGlobal('DeployDrawScreen')
+  SetGlobal('DeployDrawMiniMap')
+end
+
+
+local function NilFunction(name)
+  local chunk, err = loadstring(name .. ' = nil', 'NilFunction')
+  chunk()
+end
+
+
+function widget:Shutdown()
+  NilFunction('DeployDrawWorld')
+  NilFunction('DeployDrawScreen')
+  NilFunction('DeployDrawMiniMap')
+end
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  Create Lists
+--
+
+local function MakeWorldRangeList(px, py, pz, radius, width)
+  local rads = (2 * math.pi) / worldDivs
+  local xTexStep = math.floor(4 * radius / width) / worldDivs
+  gl.BeginEnd(GL.QUAD_STRIP, function()
+    for i = 0, worldDivs do
+      local a = rads * i
+      local ix = px + (math.sin(a) * radius)
+      local iz = pz + (math.cos(a) * radius)
+      local iy = Spring.GetGroundHeight(ix, iz)
+      local ox = px + (math.sin(a) * (radius + width))
+      local oz = pz + (math.cos(a) * (radius + width))
+      local oy = Spring.GetGroundHeight(ox, oz)
+
+      local isx, isy, isz = Spring.GetGroundNormal(ix, iz)
+      local osx, osy, osz = Spring.GetGroundNormal(ox, oz)
+      local f = 5
+      ix, iy, iz = (ix + (isx * f)), (iy + (isy * f)), (iz + (isz * f))
+      ox, oy, oz = (ox + (osx * f)), (oy + (osy * f)), (oz + (osz * f))
+      local dx, dy, dz = (ox - ix), (oy - iy), (oz - iz)
+      local len = math.sqrt((dx * dx) + (dy * dy) + (dz * dz))
+      local lf = width / len
+      ox, oy, oz = (ix + (dx * lf)), (iy + (dy * lf)), (iz + (dz * lf))
+--      gl.Color(1, 0, 0, 0.5)
+      gl.TexCoord(i * xTexStep, 1.0)
+      gl.Vertex(ix, iy, iz)
+--      gl.Color(1, 0, 0, 0.0)
+      gl.TexCoord(i * xTexStep, 0.125)
+      gl.Vertex(ox, oy, oz)
+    end
+  end)
+end
+
+
+circleList = gl.CreateList(function()
+  local rads = (2 * math.pi) / minimapDivs
+  gl.BeginEnd(GL.LINE_LOOP, function()
+    for i = 0, minimapDivs-1 do
+      local a = rads * i
+      gl.Vertex(math.sin(a), 0, math.cos(a))
+    end
+  end)
+end)
+
+
+miniMapXformList = gl.CreateList(function()
+  -- this will probably be a common display
+  -- list for widgets that use DrawInMiniMap()
+  gl.LoadIdentity()
+  gl.Translate(0, 1, 0)
+  gl.Scale(1 / mapX, 1 / mapY, 1)
+  gl.Rotate(90, 1, 0, 0)
+end)
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  DeployDrawWorld()
+--
+
+function DeployDrawWorld(teamID,  x, y, z, r,  tr, tg, tb)
+
+  local list = teamRangeLists[teamID]
+  if (list == nil) then
+    list = gl.CreateList(MakeWorldRangeList, x, 0, z, r, 40)
+    teamRangeLists[teamID] = list
+  end
+
+  local dtime = Spring.DiffTimers(Spring.GetTimer(), startTime)
+  local alpha = 0.25 + 0.5 * math.abs(0.5 - math.mod(dtime * 2, 1))
+
+  gl.Texture('LuaRules/Deploy/rangeTooth.png')
+  gl.MatrixMode(GL.TEXTURE)
+  gl.Translate(-math.mod(dtime, 1), 0, 0)
+  gl.MatrixMode(GL.MODELVIEW)
+
+  gl.LineWidth(2)
+  
+  gl.DepthTest(GL.GREATER)
+  gl.Color(0.5, 0.5, 0.5, 0.5)
+  gl.CallList(list)
+
+  gl.DepthTest(GL.LEQUAL)
+  gl.Color(tr, tg, tb, 0.5)--alpha)
+  gl.CallList(list)
+
+  gl.DepthTest(GL.LEQUAL)
+  gl.DepthTest(false)
+
+  gl.LineWidth(1)
+
+  gl.Texture(false)
+  gl.MatrixMode(GL.TEXTURE)
+  gl.LoadIdentity()
+  gl.MatrixMode(GL.MODELVIEW)
+end
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  DeployDrawInMiniMap()
+--
+
+local bitpat = (65536 - 775)
+
+function DeployDrawInMiniMap(teamID,  x, y, z, r,  tr, tb, tg)
+  gl.LineWidth(2.49)
+
+  gl.DepthTest(false)
+
+  local dtime = Spring.DiffTimers(Spring.GetTimer(), startTime)
+  local alpha = 0.25 + 0.5 * math.abs(0.5 - math.mod(dtime * 2, 1))
+  local shift = math.floor(math.mod(dtime * 16, 16))
+
+  gl.PushMatrix()
+  gl.CallList(miniMapXformList)
+
+  gl.LineStipple(1, bitpat, -shift)
+  gl.Color(tr, tg, tb, alpha)
+  gl.Translate(x, y, z)
+  gl.Scale(radius, 1, radius)
+  gl.CallList(circleList)
+  gl.LineStipple(false)
+
+  gl.PopMatrix()
+
+  gl.LineWidth(1)
+end
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  DeployDrawScreen()
+--
+
+local function DrawLevelBar(name, val, max, x, y, width, height, color)
+  local hw = math.floor(width * 0.5)
+  local x0, x1 = x - hw, x + hw
+  local y0, y1 = y - 1, y + height + 2
+
+  local xm = x0 + (width * (val / max))
+  gl.Color(color[1], color[2], color[3], 0.5)
+  gl.Rect(x0, y0, xm, y1)
+  gl.Color(0, 0, 0, 0.5)
+  gl.Rect(xm, y0, x1, y1)
+
+  val = math.floor(val)
+  max = math.floor(max)
+  local preStr  = val .. ':' .. name
+  local postStr = name .. ':' .. max
+
+  local g = math.floor(height / 2)
+  gl.Color(1, 1, 1, 0.75)
+  gl.Text(name, x, y0, height, 'ocn')
+
+  gl.LineWidth(1)
+  gl.PolygonMode(GL.FRONT_AND_BACK, GL.LINE)
+  gl.Color(1, 1, 1, 0.75)
+  gl.Rect(x0 - 0.5, y0 - 0.5, x1 + 0.5, y1 + 0.5)
+  gl.Color(0, 0, 0, 0.75)
+  gl.Rect(x0 - 1.5, y0 - 1.5, x1 + 1.5, y1 + 1.5)
+  gl.PolygonMode(GL.FRONT_AND_BACK, GL.FILL)
+
+  gl.Text(val, x0 - g, y0, height, 'or')
+  gl.Text(max, x1 + g, y0, height, 'o')
+end
+
+
+function DeployDrawScreen(teamID,  f, mf,  u, mu,  m, mm,  e, me)
+
+  local cx, cy = vsx * 0.5, 111 --vsy * 0.125
+
+  local fs = (vsy / 70)
+  fs = (fs > 10) and fs or 10
+  fs = math.floor(fs)
+  local fg = math.floor(fs * 1.8)
+  local lsx = cx
+  local strwidth = fs * gl.GetTextWidth('Energy Left: ')
+  local nsx = lsx + strwidth
+  local y = cy
+  
+  local width = (fs * 1.6) * gl.GetTextWidth('Deployment')
+
+  if (teamID) then
+    local maxEnergy = SYNCED.maxEnergy
+    if (maxEnergy < 1e9) then
+      DrawLevelBar('Energy', e, me,
+  --    DrawLevelBar('Energy', maxEnergy - team.energy, maxEnergy,
+                   cx, y, width, fs, { 1, 1, 0, 0.5 })
+      y = y + fg
+    end
+    local maxMetal = SYNCED.maxMetal
+    if (maxMetal < 1e9) then
+      DrawLevelBar('Metal', m, mm,
+  --    DrawLevelBar('Metal', maxMetal - team.metal, maxMetal,
+                   cx, y, width, fs, { 0, 1, 1, 0.5 })
+      y = y + fg
+    end
+    local maxUnits = SYNCED.maxUnits
+    if (maxUnits < 1e9) then
+      DrawLevelBar('Units', u, mu,
+  --    DrawLevelBar('Units', maxUnits - team.units.n, maxUnits,
+                   cx, y, width, fs, { 0, 1, 0, 0.5 })
+      y = y + fg
+    end
+  end
+
+  local maxFrames = SYNCED.maxFrames
+  if (maxFrames < 1e9) then
+    local gs = Game.gameSpeed
+    DrawLevelBar('Time', (f / gs), mf / gs,
+  --  DrawLevelBar('Time', 0.999 + (SYNCED.framesLeft / 30), SYNCED.maxFrames,
+                 cx, y, width, fs, { 1, 0, 0, 0.5 })
+    y = y + fg
+  end
+
+--[[
+  local timeLeft = (SYNCED.framesLeft / 30)
+  gl.Text(MagentaStr .. 'Time Left' .. RedStr .. ': ', lsx, y, fs, 'o')
+  gl.Text(string.format("%.1f", timeLeft),             nsx, y, fs, 'o')
+  y = y + fg
+--]]
+
+  gl.Color(0, 0, 0)
+  gl.Text('Deployment', lsx, y, fs * 1.6, 'Ocn')
+end
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+[USM8Gun_Destroyed]
+{
+	object=USM8Gun_Destroyed.S3O;
+	description=Destroyed Pack Howitzer;
+	energy=500;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

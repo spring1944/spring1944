@@ -1,0 +1,35 @@
+[atmine]
+{
+	id=64;
+	name=A Mine!;
+	rendertype=2;
+	turret=1;
+	explosiongenerator=custom:Weapon_Explosion_Large;
+
+	lineofsight=1;
+	firestarter=0.0;
+
+	range=35;
+	reloadtime=10;
+	weaponvelocity=90;
+	areaofeffect=45;
+	weapontimer=0;
+
+	soundstart=GEN_Explo_4;
+	soundhit=GEN_Explo_4;
+
+	size=0.00001;
+	cratermult=.5;
+
+	[damage]
+	{
+		default=10000;
+		infantry=200;
+		guns=500;
+		lightbuildings=1000;
+		bunkers=100;
+		sandbags=500;
+		mines=0;
+		flag=0;
+	}
+}

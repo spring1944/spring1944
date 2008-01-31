@@ -1,0 +1,62 @@
+[unitinfo]
+{
+	unitname=GERPanzerschrek;
+	objectname=GERPanzerschrek.S3O;
+	corpse=GERsoldier_dead;
+	icontype=antitank;
+	soundcategory=GERInf;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
+
+	name=Panzerschrek Infantrie;
+	description=Heavy Anti-Tank Infantry;
+	side=GER;
+	maxdamage=110;
+	damagemodifier=0.375;
+	buildcostmetal=450;
+	buildcostenergy=0;
+	buildtime=225;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=5;
+	SeismicSignature=0;
+	sightdistance=701;
+	stealth=1;
+
+	mincloakdistance=146;
+	cloakcost=0;
+	cloakcostmoving=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.2;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=20;
+	maxwaterdepth=5;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	weapon1=Panzerschrek;
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:SCHREK_BACKBLAST;
+	}
+}

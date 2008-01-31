@@ -1,0 +1,22 @@
+[russu122_damaged]
+{
+	object=RUSSU122_Damaged.S3O;
+	featuredead=RUSSU122_Destroyed;
+	description=Abandoned SP Artillery;
+	energy=1000;
+	damage=5000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}
+[russu122_destroyed]
+{
+	object=RUSSU122_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed SP Artillery;
+	energy=500;
+	damage=10000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}

@@ -1,0 +1,10 @@
+[rusm30_destroyed]
+{
+	object=RUSM30_Destroyed.S3O;
+	description=Destroyed Howitzer;
+	energy=500;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

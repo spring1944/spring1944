@@ -1,0 +1,118 @@
+[UNITINFO]
+{
+	Name=Bf 109K-4;
+	UnitName=GERBf109;
+	
+	//    Required Tags
+	BuildCostEnergy=9000;
+	BuildCostMetal=9000;
+	BuildTime=10000;
+	Category=AIRCRAFT;
+	Description=Attack Fighter;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=800;
+	ObjectName=GERBf109.S3O;
+	Side=GER;
+	//SoundCategory=GERPlane;
+	category=NFLAG AIR;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.5;
+	CanMove=1;
+	MaxVelocity=24;
+	MaxSlope=10;
+	TurnRate=50;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	EnergyMake=20;
+	EnergyUse=20;
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	
+	//    Sight/Radar
+	SightDistance=500;
+	AirSightDistance=1500;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	BuildPic=GERBf109.png;
+	ExplodeAs=Vehicle_Explosion_Med;
+	MaxWaterDepth=0;
+	SelfDestructAs=Vehicle_Explosion_Med;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+
+	//	Flight Stuff
+	wingdrag=0.1;
+	wingangle=0.1;
+	drag=0.1;
+	mygravity=0.1;
+	maxbank=0.1;
+	maxpitch=0.1;
+	turnradius=2000;
+	maxaileron=0.00465;
+	maxelevator=0.0036;
+	maxrudder=0.002765;
+
+	CruiseAlt=500;
+
+	moverate1=4;//does this tag even work?
+	//Maxfuel=200;edited out for testing purposes
+	//RefuelTime=10;
+
+	// 	Misc
+	bmcode=1;
+	idleTime=1800;
+	steeringmode=1;
+	maneuverleashlength=1280;
+	seismicsignature=0;
+	shownanoframe=0;
+
+
+	//	Weapons
+	weapon1=mg15115mm;
+	weaponmaindir1=0 0 1;
+	maxangledif1=5;
+
+	weapon2=mg15115mm;
+	weaponmaindir2=0 0 1;
+	maxangledif2=5;
+	weaponslaveto2=1;
+
+	weapon3=mk10830mm;
+	weaponmaindir3=0 0 1;
+	maxangledif3=5;
+	weaponslaveto3=1;
+	
+	weapon4=Medium_Tracer;	
+	weapon5=Large_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_MUZZLEFLASH;
+		explosiongenerator2=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator3=custom:MG_SHELLCASINGS;
+	}
+
+	[customParams]
+	{
+		proptexture = bitmaps/prop3.tga;
+		enginesound = me109b-;
+		enginesoundnr = 18;
+	}
+}

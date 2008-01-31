@@ -1,0 +1,88 @@
+[unitinfo]
+{
+	unitname=GBRAECMkIII;
+	objectname=GBRAECMkIII.S3O;
+	corpse=GBRAECMkIII_Destroyed;
+	icontype=armoredcar;
+	soundcategory=GBRTank;
+	category=NFLAGNAIR NFLAG TANK WEAPON  LIGHTVEH;
+	tedclass=TANK;
+
+	name=AEC Armoured Car Mk III;
+	description=Heavy Combat Car;
+	side=GBR;
+	
+	maxdamage=3542;
+	flankingbonusdir=0 0 1;
+	flankingbonusmax=1;
+	flankingbonusmin=1;
+	flankingbonusmode=3;
+
+	buildcostmetal=2900;
+	buildcostenergy=0;
+	buildtime=580;
+	footprintx=2;
+	footprintz=2;
+	mass=1250;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=8;
+	SeismicSignature=0;
+	sightdistance=630;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Car;
+	maxvelocity=3.0;//4
+	acceleration=0.03;
+	brakerate=0.09;
+	turnrate=405;
+	maxslope=6;
+	maxwaterdepth=15;
+
+	leavetracks=1;
+	trackwidth=13;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=M375mmHE;
+	onlytargetcategory1=NFLAGNAIR;
+	weapon2=M375mmAP;
+	onlytargetcategory2=TANK;
+	weapon3=Besa;
+	onlytargetcategory3=INFTARG;
+	weapon4=M375mmHEFear;
+	onlytargetcategory4=NFLAGNAIR;
+	weaponslaveto4=1;
+	weapon5=BesaFear;
+	onlytargetcategory5=INFTARG;
+	weaponslaveto5=3;
+
+	weapon6=Small_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
+		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
+		explosiongenerator10=custom:MuzzleBrakeSmoke;
+		explosiongenerator11=custom:SMALLARMS_TRACER;
+	}
+}

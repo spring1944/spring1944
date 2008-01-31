@@ -1,0 +1,49 @@
+[unitinfo]
+{
+	unitname=PontoonRaft;
+	objectname=USPontoonRaft.S3O;
+	//corpse=;
+	icontype=pontoon;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Pontoon Raft;
+	description=Heavy Equipment Transport;
+	maxdamage=1000;
+	buildcostmetal=150;
+	buildcostenergy=0;
+	buildtime=500;
+	footprintx=5;
+	footprintz=5;
+	mass=1000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=3;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=BOAT_HOLYSHIT;
+	maxvelocity=2.5;
+	acceleration=0.15;
+	brakerate=0.10;
+	turnrate=25;
+
+	transportsize=9;
+	minTransportSize=3;
+	transportcapacity=1;
+	isfireplatform=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	waterline=2.5;
+	[sfxtypes]
+	{
+	}
+}

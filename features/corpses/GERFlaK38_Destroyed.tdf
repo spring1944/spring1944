@@ -1,0 +1,11 @@
+[rusba64_destroyed]
+{
+	object=RUSBA64_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Car;
+	energy=100;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}

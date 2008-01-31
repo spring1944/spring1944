@@ -1,0 +1,150 @@
+[kwk75mml48he]
+{
+	id=107;
+	name=German 75mm KwK 40 L/48 High-Explosive;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:Weapon_Explosion_Medium;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+
+	range=2025;
+	reloadtime=4.3;
+	energypershot=75;
+	accuracy=255;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	weaponvelocity=1096;
+	areaofeffect=75;
+	edgeeffectiveness=0.15;
+
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=4;
+	collisionsize=3;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=1;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=1440;
+		infantry=1500;
+		mines=0;
+		guns=2000;
+		flag=0;
+		tanks=375;
+		armouredvehicles=1550;
+		unarmouredvehicles=3000;
+	}
+}
+[kwk75mml48ap]
+{
+	id=100;
+	name=German 75mm KwK 40 L/48 Armour-Piercing;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+
+	range=2025;
+	reloadtime=4.3;
+	energypershot=75;
+	accuracy=255;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	weaponvelocity=1480;
+	areaofeffect=15;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=4;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=5250;
+	[damage]
+	{
+		default=7575; //10100
+		infantry=2500;
+		guns=1900;
+		lightbuildings=750;
+		bunkers=50;
+		sandbags=250;
+		mines=0;
+		flag=0;
+	}
+}
+[kwk75mml48hefear]
+{
+	id=402;
+	name=Supression from KwK75mmL48 HE;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=2025;
+	reloadtime=4.3;
+	energypershot=0;
+	weaponvelocity=800;
+	areaofeffect=150;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

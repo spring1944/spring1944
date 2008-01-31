@@ -1,0 +1,42 @@
+[unitinfo]
+{
+	unitname=GBRLZ;
+	objectname=GBRLZ.S3O;
+	buildpic=GBRLZ.bmp;
+	category=GBR PLANT NOWEAPON NFLAG;
+	tedclass=PLANT;
+	yardmap=cccccc cccccc cccccc cccccc cccccc cccccc;
+
+	name=Commando Landing Zone;
+	side=GBR;
+	maxdamage=5;
+	idleautoheal=0;
+	buildcostmetal=1000;
+	buildcostenergy=0;
+	buildtime=200;
+	footprintx=6;
+	footprintz=6;
+
+	shownanoframe=0;
+	unitrestricted=2;
+	levelground=0;
+
+	sightdistance=5;
+	stealth=1;
+
+	builder=1;
+	workertime=10; //250
+	shownanospray=0;
+
+	canmove=1;
+	maxslope=10;
+
+	explodeas=GBRLZ_death;
+	selfdestructas=GBRLZ_death;
+
+	weapon1=GBRLZ_death;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:LZflare;
+	}
+}

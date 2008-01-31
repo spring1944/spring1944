@@ -1,0 +1,22 @@
+[russu100_damaged]
+{
+	object=RUSSU100_Damaged.S3O;
+	featuredead=RUSSU100_Destroyed;
+	description=Abandoned Tank Destroyer;
+	energy=1000;
+	damage=5000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}
+[russu100_destroyed]
+{
+	object=RUSSU100_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank Destroyer;
+	energy=500;
+	damage=10000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}

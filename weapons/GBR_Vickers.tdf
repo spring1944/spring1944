@@ -1,0 +1,91 @@
+[vickers]
+{
+	id=7;
+	name=Vickers, .303" Mark 1;
+	rendertype=0;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=8;
+	explosiongenerator=custom:BulletImpact;
+	lineofsight=1;
+	firestarter=1;
+
+	range=1200;
+	reloadtime=1.8;
+	energypershot=0.5;
+	burst=7;
+	burstrate=.103;
+	sprayangle=300;
+	areaofeffect=1;
+	weaponvelocity=1500;
+	burnblow=1;
+	weapontimer=1;
+
+	soundtrigger=1;
+	soundstart=RUS_Maxim;
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	rgbcolor=1 0.75 0;
+
+	beamweapon=1;
+	thickness=0.45;
+	duration=0.01;
+	intensity=0.7;
+
+	corethickness=0.15;
+	laserflaresize=0.0001;
+
+	size=2.5;
+
+	[damage]
+	{
+		default=5;
+		infantry=28;
+		guns=40;
+		lightbuildings=10;
+		bunkers=0;
+		sandbags=5;
+		mines=0;
+		flag=0.00000000000001;
+		tanks=0;
+		armouredvehicles=15;
+		unarmouredvehicles=15;
+	}
+}
+[vickersfear]
+{
+	id=501;
+	name=Supression from Vickers fire;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=1000;
+	reloadtime=1.8;
+	energypershot=2;
+	weaponvelocity=1400;
+	areaofeffect=150;
+	edgeeffectiveness=1;
+	burnblow=1;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.00000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

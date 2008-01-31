@@ -1,0 +1,53 @@
+[unitinfo]
+{
+	unitname=USEngineer;
+	objectname=USCommander.S3O;
+	corpse=USsoldier_dead;
+	icontype=advancedengineer;
+	soundcategory=USInf;
+	category=NFLAGNAIR NOWEAPON  INFTARG NFLAG;
+	tedclass=CONSTR;
+
+	name=Engineer;
+	description=Advanced Engineer;
+	maxdamage=100;
+	buildcostmetal=290;
+	buildcostenergy=0;
+	buildtime=145;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	hidedamage=1;
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=7;
+	SeismicSignature=0;
+	sightdistance=700;
+	stealth=1;
+
+	builder=1;
+	builddistance=20;
+	workertime=10;
+	shownanospray=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=30;
+	weapon1=buildline;
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+}

@@ -1,0 +1,53 @@
+[unitinfo]
+{
+	unitname=USVehicleYard;
+	objectname=USVehicleYard.S3O;
+	corpse=USVehicleYard_Destroyed;
+	icontype=factory;
+	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+	tedclass=PLANT;
+	yardmap=cccccc ooccco ooccco ooccco cccccc;
+
+	name=U.S. Light Ordnance Depot;
+	description=Constructs Light Ordnance/Vehicles;
+	maxdamage=5500;
+	buildcostmetal=3000;
+	buildcostenergy=0;
+	buildtime=2000;
+	footprintx=6;
+	footprintz=5;
+
+	hidedamage=1;
+	shownanoframe=0;
+	unitrestricted=3;
+	smoothanim=0;
+
+	metalmake=0;
+	metalstorage=1500;
+	energystorage=500;
+
+	sightdistance=700;
+	stealth=1;
+
+	builder=1;
+	workertime=10;//old 95
+	shownanospray=0;
+	canbeassisted=0;
+
+	canmove=1;
+	maxslope=10;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=6;
+	buildinggrounddecalsizey=5;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=LARGE_EXPLOSION;
+	selfdestructas=LARGE_EXPLOSION;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+}

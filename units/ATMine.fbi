@@ -1,0 +1,44 @@
+[unitinfo]
+{
+	unitname=ATMine;
+	objectname=ATMine.S3O;
+	icontype=mines;
+	soundcategory=Nothing;
+	category=MINE WEAPON KAMIKAZE;
+	tedclass=SPECIAL;
+	yardmap=o;
+
+	name=Anti-Tank Mine;
+	maxdamage=500;
+	buildcostmetal=187.5;
+	buildcostenergy=0;
+	buildtime=125;
+	footprintx=1;
+	footprintz=1;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=30;
+	stealth=1;
+
+	init_cloaked=1;
+	mincloakdistance=0.0000001;
+
+	maxslope=15;
+	maxwaterdepth=50;
+
+	selfdestructcountdown=1;
+	explodeas=NOWEAPON;
+	selfdestructas=ATMine;
+	kamikaze=1;
+
+	weapon1=ATMine;
+	onlytargetcategory1=TANK;
+	weapon2=ATMineDet;
+	onlytargetcategory2=NOTHING;
+	[sfxtypes]
+	{
+	}
+}

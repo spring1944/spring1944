@@ -1,0 +1,10 @@
+[usvehicleyard_destroyed]
+{
+	object=USVehicleYard.S3O;
+	description=Destroyed Barracks;
+	energy=1000;
+	damage=50000;
+	footprintx=6;
+	footprintz=5;
+	reclaimable=1;
+}

@@ -1,0 +1,75 @@
+[unitinfo]
+{
+	unitname=RUSPPsh;
+	objectname=RUSPPsh.S3O;
+	corpse=RUSSoldier_dead;
+	icontype=assault;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
+
+	name=PPSch-41 Infantry;
+	description=Close-Quarters Assault Infantry;
+	side=RUS;
+	maxdamage=40;
+	damagemodifier=0.375;
+	buildcostmetal=60;
+	buildcostenergy=0;
+	buildtime=30;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=0.5;
+	SeismicSignature=0;
+	sightdistance=701;
+	stealth=1;
+
+	canassist=0;
+	canrepair=0;
+	canreclaim=0;
+	canrestore=0;
+	shownanospray=0;
+
+	mincloakdistance=146;
+	cloakcost=0;
+	cloakcostmoving=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.4;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=10;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	weapon1=PPsh;
+	badtargetcategory1=LIGHTVEH;
+	onlytargetcategory1=INFTARG;
+	weaponmaindir1=0 0 1;
+	maxangledif1=170;
+	weapon2=Model24;
+	onlytargetcategory2=NFLAGNAIR;
+	weaponmaindir2= 0 0 1;
+	maxangledif2=170;
+	weapon3=RUSflagkiller;
+	onlytargetcategory3=FLAG;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:SMG_MUZZLEFLASH;
+	}
+}

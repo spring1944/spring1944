@@ -1,0 +1,149 @@
+[zis376mmhe]
+{
+	id=1001;
+	name=Soviet ZiS3 76.2mm Gun, High Explosives;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:Weapon_Explosion_Medium;
+	explosionspeed=100;
+
+	ballistic=1;
+	firestarter=0.0;
+
+	range=1690;
+	reloadtime=3.5;
+	energypershot=76;
+	accuracy=300;
+	targetmoveerror=0.075;
+	weaponvelocity=926;
+	areaofeffect=76;
+	edgeeffectiveness=0.25;
+
+	soundstart=RUS_76mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=2;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=2400;
+		mines=0;
+		flag=0;
+		infantry=2300;
+		tanks=500;
+		armouredvehicles=2000;
+		unarmouredvehicles=2250;
+	}
+}
+[zis376mmap]
+{
+	id=100;
+	name=Soviet F-34 76.2mm Gun, Armour-Piercing;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+
+	ballistic=1;
+
+	range=1690;
+	reloadtime=3.5;
+	energypershot=75;
+	accuracy=290;
+	targetmoveerror=0.075;
+	firestarter=0.0;
+	weaponvelocity=1238;
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=RUS_76mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=5250;
+	[damage]
+	{
+		default=5100;//6800
+		infantry=2200;
+		guns=1200;
+		lightbuildings=500;
+		bunkers=50;
+		sandbags=200;
+		mines=0;
+		flag=0;
+	}
+}
+[zis376mmhefear]
+{
+	id=404;
+	name=Supression;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=32;
+	explosiongenerator=custom:nothing;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=1690;
+	reloadtime=3.5;
+	energypershot=0;
+	weaponvelocity=926;
+	areaofeffect=210;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}

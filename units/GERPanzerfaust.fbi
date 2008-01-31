@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=GERPanzerfaust;
+	objectname=GERPanzerfaust.S3O;
+	corpse=gersoldier_dead;
+	icontype=antitank;
+	soundcategory=GERInf;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
+
+	name=Panzerfaust 60 Infantrie;
+	description=Light Anti-Tank Infantry;
+	side=GER;
+	maxdamage=110;
+	damagemodifier=0.375;
+	buildcostmetal=320;
+	buildcostenergy=0;
+	buildtime=160;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=1;
+	SeismicSignature=0;
+	sightdistance=350;
+	stealth=1;
+
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=220;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=5;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	weapon1=Panzerfaust;
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:FAUST_BACKBLAST;
+	}
+}

@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=USGIBazooka;
+	objectname=USHAT.S3O;
+	corpse=USsoldier_dead;
+	icontype=antitank;
+	soundcategory=USInf;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
+
+	name=G.I. Bazooka;
+	description=Heavy Anti-Tank Infantry;
+	side=US;
+	maxdamage=100;
+	damagemodifier=0.375;
+	buildcostmetal=170;
+	buildcostenergy=0;
+	buildtime=1050;
+	footprintx=1;
+	footprintz=1;
+	mass=75;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energyuse=3;
+	SeismicSignature=0;
+	sightdistance=701;
+	stealth=1;
+
+	mincloakdistance=146;
+	cloakcost=0;
+	cloakcostmoving=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.2;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=20;
+	maxwaterdepth=5;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+
+	badtargetcategory=INFTARG;
+
+	weapon1=M9A1Bazooka;
+	onlytargetcategory1=NFLAGNAIR;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator1=custom:MuzzleBrakeSmoke;
+	}
+}

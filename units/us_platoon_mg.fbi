@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=us_platoon_mg;
+	objectname=MortarShell.S3O;
+	buildpic=usgimg.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Machinegun Squad;
+	description=3 x Machinegun, 2 x Rifleman, 1 x Scout;
+	side=US;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=1500;
+	buildcostenergy=0;
+	buildtime=750;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	maxwaterdepth=5;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

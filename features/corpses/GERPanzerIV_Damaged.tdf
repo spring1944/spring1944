@@ -1,0 +1,22 @@
+[gerpanzeriv_damaged]
+{
+	object=GERPanzerIV_Damaged.S3O;
+	featuredead=GERPanzerIV_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gerpanzeriv_destroyed]
+{
+	object=GERPanzerIV_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

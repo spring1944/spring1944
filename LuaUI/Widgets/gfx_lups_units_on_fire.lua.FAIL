@@ -1,0 +1,134 @@
+
+function widget:GetInfo()
+  return {
+    name      = "Units on Fire",
+    desc      = "Graphical effect for burning units",
+    author    = "jK/quantum",
+    date      = "Jul 08, 2007",
+    license   = "GNU GPL, v2 or later",
+    layer     = 10,
+    enabled   = true  --  loaded by default?
+  }
+end
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+function MergeTable(outtable,intable)
+  for i,v in pairs(intable) do 
+    if (outtable[i]==nil) then
+      if (type(v)=='table') then
+        if (type(outtable[i])~='table') then outtable[i] = {} end
+        MergeTable(outtable[i],v)
+      else
+        outtable[i] = v
+      end
+    end
+  end
+end
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+local flameLarge = {
+    layer        = 0,
+    airdrag      = 0.912,
+    speed        = 0.5,
+    speedSpread  = 1,
+    life         = 40,
+    lifeSpread   = 80,
+    colormap     = { { 0, 0, 0, 0}, {0.15, 0.1, 0.0, 0.1}, {0.3, 0.12, 0.0, 0.07}, {0, 0, 0, 0} },
+    partpos      = "a,b,c | a=10*(rand()-0.5),b=10*(rand()-0.5),c=10*(rand()-0.5)",
+    rotSpeed     = 0.4,
+    rotSpread    = 360,
+    rotairdrag   = 0.995,
+    size         = 20,
+    sizeSpread   = 15,
+    sizeGrowth   = -0.1,
+    emitVector   = {0,1,0},
+    emitRotSpread = 150,
+    texture      = 'bitmaps/Other/Poof.png',
+    count        = 15,
+}
+
+local flameSmall = {
+    life        = 20,
+    size        = 10,
+    count       = 3,
+    rotSpeed    = 0,
+    speed       = 0,
+    speedSpread = 1,
+    partpos     = "a,b,c | a=30*(rand()-0.5),b=30*(rand()-0.5),c=30*(rand()-0.5)",
+}
+
+local smoke = {
+    colormap    = { { 0, 0, 0, 0}, {0.2, 0.066, 0.00, 0.01},  {0.15, 0.05, 0.0, 0.01}, {0.08, 0.08, 0.08, 0.16}, {0.1, 0.1, 0.1, 0.16}, {0.06, 0.06, 0.06, 0.4},  {0, 0, 0, 0} },
+    speed = 1;
+    speedSpread = 2;
+    count       = 2,
+    layer       = 1,
+    life        = 100,
+    lifeSpread  = 100,
+    sizeGrowth  = 0.2,
+    rotairdrag  = 0.99,
+    emitRotSpread = 360,
+    texture     = "bitmaps/smoke/smoke06.tga",
+}
+
+--// merge with shared data in flameLarge
+MergeTable(flameSmall, flameLarge)
+MergeTable(smoke, flameLarge)
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+local Lups  -- Lua Particle System
+local particleIDs = {}
+local random = math.random
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+function widget:Initialize()
+  widgetHandler:RegisterGlobal('onFire', onFire)
+end
+
+function widget:Shutdown()
+  if (initialized) then
+    for _,particleID in pairs(particleIDs) do
+      Lups.RemoveParticles(particleID)
+    end
+  end
+end
+
+
+function onFire(unitID)
+  Lups  = WG['Lups']
+  if (Lups==nil) then return end
+  if (math.random(0, 3) ~= 0) then return end
+  --// get wind and random values
+  local alpha = 2*math.pi*math.random()
+  local r = 20*math.random()
+  local wx, wy, wz = Spring.GetWind()
+  wx, wy, wz = wx*0.15, wy*0.15, wz*0.15
+
+  --// set up forces and random values
+  smoke.force = {wx,wy+2.5,wz}
+  smoke.speedSpread = 1.5*math.random()
+  smoke.rotSpeed = (math.random()-0.5)*0.5
+  flameLarge.force = {wx,wy+2.5,wz}
+  flameLarge.speedSpread = 1.5*math.random()
+  flameLarge.rotSpeed = (math.random()-0.5)*0.5
+  flameSmall.force = {wx*0.2,(wy+2.5)*0.2,wz*0.2}
+
+  --// send particles to LUPS
+  local x, y, z = Spring.GetUnitBasePosition(unitID)
+  if (not x) then return end
+  flameLarge.pos = {x+r*math.cos(alpha),y+20,z+r*math.sin(alpha)}
+  table.insert(particleIDs, Lups.AddParticles('SimpleParticles',flameLarge) )
+
+  flameSmall.pos = {x,y+20,z}
+  table.insert(particleIDs, Lups.AddParticles('SimpleParticles',flameSmall) )
+
+  smoke.pos = {x+r*math.cos(alpha),y+20,z+r*math.sin(alpha)}
+  table.insert(particleIDs, Lups.AddParticles('SimpleParticles',smoke) )
+end

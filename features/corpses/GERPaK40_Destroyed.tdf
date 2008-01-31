@@ -1,0 +1,10 @@
+[gerpak40_destroyed]
+{
+	object=GERPaK40_Destroyed.S3O;
+	description=Destroyed Gun;
+	energy=500;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
