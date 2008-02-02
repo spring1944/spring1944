@@ -30,7 +30,7 @@
 	stealth=1;
 
 	canmove=1;
-	movementclass=TANK_Gun;
+	movementclass=KBOT_Gun;
 	maxvelocity=0.3;
 	acceleration=0.026;
 	brakerate=0.017;

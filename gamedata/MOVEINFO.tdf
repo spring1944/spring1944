@@ -55,16 +55,8 @@
 	MaxWaterDepth=15;
 	MaxSlope=16;
 	}
+
 [CLASS7]
-	{
-	Name=TANK_Gun;
-	FootprintX=2;
-	FootprintZ=2;
-	MaxWaterDepth=5;
-	MaxWaterSlope=5;
-	MaxSlope=13;
-	}
-[CLASS8]
 	{
 	Name=KBOT_Gun;
 	FootprintX=2;
@@ -73,7 +65,7 @@
 	MaxWaterSlope=5;
 	MaxSlope=13;
 	}
-[CLASS9]
+[CLASS8]
 {
 	name=BOAT_Small;
 	footprintx=3;
@@ -81,7 +73,7 @@
 	minwaterdepth=5;
 	crushstrength=10;
 }
-[CLASS10]
+[CLASS9]
 {
 	name=BOAT_Medium;
 	footprintx=15;

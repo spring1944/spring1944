@@ -34,7 +34,7 @@
 	cloakcostmoving=0;
 
 	canmove=1;
-	movementclass=TANK_Gun;
+	movementclass=KBOT_Gun;
 	maxvelocity=0.375;
 	acceleration=0.25;
 	brakerate=0.6;
