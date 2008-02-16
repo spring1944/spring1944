@@ -85,4 +85,9 @@
 		explosiongenerator8=custom:MEDIUMSMALL_MUZZLEFLASH;
 		explosiongenerator9=custom:MEDIUMSMALL_MUZZLEDUST;
 	}
+		[customParams]
+	{
+		maxammo=16;
+		weaponswithammo=2;
+	}
 }

@@ -2,96 +2,94 @@ TakeCover()
 {
 set-signal-mask 0;
 
-		signal RUNSTOP;
 		SET MAX_SPEED to [0.00001];
 		SET ARMORED to TRUE;
 		//bMoving=0;
 
 	if (IsProne == 0)
 	{
-		IsProne=1;
-		signal RUNSTOP;
+	
+				IsProne=1;
 		SET UPRIGHT to 0;
-		turn pelvis to y-axis <0> speed <600>;
-		turn pelvis to z-axis <0> speed <600>;
+		turn pelvis to y-axis <0> speed <150>*PRONE_SPEED;
+		turn pelvis to z-axis <0> speed <150>*PRONE_SPEED;
 		
-		Move pelvis to y-axis [-0.3] speed <600>;
-		turn rthigh to x-axis <-40> speed <600>;
-		turn rleg to x-axis <70> speed <400>;
-		turn lthigh to x-axis <-40> speed <400>;
-		turn lleg to x-axis <70> speed <400>;
-		turn torso to y-axis <0> speed <600>;
-		turn torso to x-axis <20> speed <600>;
-		turn head to x-axis <-20> speed <600>;
+		Move pelvis to y-axis [-0.3] speed <150>*PRONE_SPEED;
+		turn rthigh to x-axis <-40> speed <150>*PRONE_SPEED;
+		turn rleg to x-axis <70> speed <100>*PRONE_SPEED;
+		turn lthigh to x-axis <-40> speed <100>*PRONE_SPEED;
+		turn lleg to x-axis <70> speed <100>*PRONE_SPEED;
+		turn torso to y-axis <0> speed <150>*PRONE_SPEED;
+		turn torso to x-axis <20> speed <150>*PRONE_SPEED;
+		turn head to x-axis <-20> speed <150>*PRONE_SPEED;
 
-		turn ruparm to y-axis <0> speed <600>;
-		turn ruparm to z-axis <0> speed <600>;
-		turn ruparm to x-axis <-70> speed <400>;
+		turn ruparm to y-axis <0> speed <150>*PRONE_SPEED;
+		turn ruparm to z-axis <0> speed <150>*PRONE_SPEED;
+		turn ruparm to x-axis <-70> speed <100>*PRONE_SPEED;
 
-		turn rloarm to x-axis <0> speed <600>;
-		turn rloarm to y-axis <0> speed <600>;
-		turn rloarm to z-axis <-55> speed <600>;
+		turn rloarm to x-axis <0> speed <150>*PRONE_SPEED;
+		turn rloarm to y-axis <0> speed <150>*PRONE_SPEED;
+		turn rloarm to z-axis <-55> speed <150>*PRONE_SPEED;
 
-		turn luparm to y-axis <0> speed <400>;
-		turn luparm to z-axis <0> speed <400>;
-		turn luparm to x-axis <-75> speed <400>;
-		turn lloarm to x-axis <0> speed <600>; 
+		turn luparm to y-axis <0> speed <100>*PRONE_SPEED;
+		turn luparm to z-axis <0> speed <100>*PRONE_SPEED;
+		turn luparm to x-axis <-75> speed <100>*PRONE_SPEED;
+		turn lloarm to x-axis <0> speed <150>*PRONE_SPEED; 
 
 	wait-for-turn ruparm around x-axis;
 	wait-for-turn luparm around x-axis;
 	wait-for-turn rthigh around x-axis;
 	wait-for-turn lthigh around x-axis;	
-		turn torso to x-axis <0> speed <480>;
-		turn torso to y-axis <0> speed <480>;
-		turn torso to z-axis <0> speed <480>;
+		turn torso to x-axis <0> speed <120>*PRONE_SPEED;
+		turn torso to y-axis <0> speed <120>*PRONE_SPEED;
+		turn torso to z-axis <0> speed <120>*PRONE_SPEED;
 
-		Move pelvis to y-axis [0.525] speed <6080>;
-		Turn pelvis to x-axis <90> speed <160>;
-		Turn rthigh to x-axis <0> speed <480>;
-		Turn rthigh to y-axis <0> speed <480>;
-		Turn rthigh to z-axis <10> speed <480>;
-		Turn rleg to x-axis <35> speed <480>;
+		Move pelvis to y-axis [0.525] speed <1520>*PRONE_SPEED;
+		Turn pelvis to x-axis <90> speed <40>*PRONE_SPEED; //20
+		Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
+		Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
+		Turn rthigh to z-axis <10> speed <120>*PRONE_SPEED;
+		Turn rleg to x-axis <35> speed <120>*PRONE_SPEED;
 		
-		turn lthigh to y-axis <0> speed <480>;
-		Turn lthigh to x-axis <0> speed <480>;
-		Turn lthigh to z-axis <-10> speed <480>;
-		Turn lleg to x-axis <35> speed <480>;
+		turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
+		Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
+		Turn lthigh to z-axis <-10> speed <120>*PRONE_SPEED;
+		Turn lleg to x-axis <35> speed <120>*PRONE_SPEED;
 		
-		turn ruparm to x-axis <180> speed <480>;
+		turn ruparm to x-axis <180> speed <120>*PRONE_SPEED;
 			
-		turn luparm to x-axis <180> speed <480>;
-		turn lloarm to z-axis <40> speed <480>;
+		turn luparm to x-axis <180> speed <120>*PRONE_SPEED;
+		turn lloarm to z-axis <40> speed <120>*PRONE_SPEED;
 
 	wait-for-turn lloarm around z-axis;
-		Move pelvis to y-axis [-2.25] speed <9001>; //should be 9000,
-										// but this way its OVER 9000!!!!
-		Turn pelvis to x-axis <65> speed <240>;
+		Move pelvis to y-axis [-2.25] speed <2250>*PRONE_SPEED;
+		Turn pelvis to x-axis <65> speed <60>*PRONE_SPEED;
 	wait-for-turn pelvis around x-axis;
 	wait-for-move pelvis along y-axis;
 		
-		Turn head to x-axis <-60> speed <480>;
-		turn head to y-axis <0> speed <480>;
-		turn head to z-axis <0> speed <480>;
+		Turn head to x-axis <-60> speed <120>*PRONE_SPEED;
+		turn head to y-axis <0> speed <120>*PRONE_SPEED;
+		turn head to z-axis <0> speed <120>*PRONE_SPEED;
 	
-		Turn ruparm to x-axis <-85> speed <480>;
-		Turn ruparm to y-axis <0> speed <480>;
-		turn ruparm to z-axis <-50> speed <480>;
+		Turn ruparm to x-axis <-85> speed <120>*PRONE_SPEED;
+		Turn ruparm to y-axis <0> speed <120>*PRONE_SPEED;
+		turn ruparm to z-axis <-50> speed <120>*PRONE_SPEED;
 		
-		Turn rloarm to x-axis <-100> speed <480>;
-		Turn rloarm to y-axis <0> speed <480>;
-		Turn rloarm to z-axis <0> speed <480>;
+		Turn rloarm to x-axis <-100> speed <120>*PRONE_SPEED;
+		Turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
+		Turn rloarm to z-axis <0> speed <120>*PRONE_SPEED;
 		
-		turn luparm to x-axis <-140> speed <480>;
-		turn luparm to y-axis <0> speed <480>;
-		turn luparm to z-axis <35> speed <480>;
+		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
+		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
+		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
 		
-		turn lloarm to x-axis <0> speed <480>;
-		turn lloarm to y-axis <0> speed <480>;
-		turn lloarm to z-axis <0> speed <480>;
+		turn lloarm to x-axis <0> speed <120>*PRONE_SPEED;
+		turn lloarm to y-axis <0> speed <120>*PRONE_SPEED;
+		turn lloarm to z-axis <0> speed <120>*PRONE_SPEED;
 		
-		turn gun to x-axis <30> speed <480>;
-		turn gun to y-axis <30> speed <480>;
-		turn gun to z-axis <0> speed <480>;
+		turn gun to x-axis <30> speed <120>*PRONE_SPEED;
+		turn gun to y-axis <30> speed <120>*PRONE_SPEED;
+		turn gun to z-axis <0> speed <120>*PRONE_SPEED;
 	wait-for-turn rthigh around x-axis;
 	wait-for-turn rthigh around y-axis;
 	wait-for-turn rthigh around z-axis;
@@ -127,74 +125,76 @@ set-signal-mask 0;
 	wait-for-turn gun around z-axis;
 	}
 
+
+		sleep 100;
 		return(0);
 }
 
 RestoreAfterCover() //get up out of the dirt. also controls going into pinned mode.
 {
-		if (bAiming==1) return 0;
 	
 		if (fear > PinnedLevel)
 		{
 			call-script Pinned();
+			sleep 100;
 		} 
 
 
 
 
-		if (fear <=0 AND IsProne==1)
+		if (fear <=0 && IsProne==1)
 		{	
-			Turn pelvis to x-axis <55> speed <480>;
-			Turn rthigh to z-axis <0> speed <480>;
-			Turn lthigh to z-axis <0> speed<480>;
+			Turn pelvis to x-axis <55> speed <120>*PRONE_SPEED;
+			Turn rthigh to z-axis <0> speed <120>*PRONE_SPEED;
+			Turn lthigh to z-axis <0> speed<120>*PRONE_SPEED;
 	
-			turn ruparm to z-axis <0> speed <480>;
+			turn ruparm to z-axis <0> speed <120>*PRONE_SPEED;
 	
-			Turn rloarm to x-axis <-80> speed <480>;
-			Turn rloarm to z-axis <0> speed <480>;
-			Turn rloarm to y-axis <0> speed <480>;
+			Turn rloarm to x-axis <-80> speed <120>*PRONE_SPEED;
+			Turn rloarm to z-axis <0> speed <120>*PRONE_SPEED;
+			Turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
 
-			Turn luparm to x-axis <-85> speed <480>;
-			turn luparm to y-axis <0> speed <480>;
+			Turn luparm to x-axis <-85> speed <120>*PRONE_SPEED;
+			turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
 
-			Turn rthigh to x-axis <-85> speed <480>;
-			Turn lthigh to x-axis <-40> speed <480>;
+			Turn rthigh to x-axis <-85> speed <120>*PRONE_SPEED;
+			Turn lthigh to x-axis <-40> speed <120>*PRONE_SPEED;
 
-			Move pelvis to y-axis [-0.75] speed [480];
-			Turn rleg to x-axis <80> speed <480>;
-			Turn lleg to x-axis <80> speed <480>;
+			Move pelvis to y-axis [-0.75] speed [120]*PRONE_SPEED;
+			Turn rleg to x-axis <80> speed <120>*PRONE_SPEED;
+			Turn lleg to x-axis <80> speed <120>*PRONE_SPEED;
 
 		
 		wait-for-turn lleg around x-axis;
-			Move pelvis to y-axis [0] speed [480];
+			Move pelvis to y-axis [0] speed [120]*PRONE_SPEED;
 		call-script WeaponReady();
 
-			turn torso to x-axis <0> speed <480>;
-			turn torso to y-axis <0> speed <480>;
-			turn torso to z-axis <0> speed <480>;
-			Turn head to x-axis <0> speed <480>;
-			Turn head to y-axis <0> speed <480>;
-			Turn head to z-axis <0> speed <480>;
+			turn torso to x-axis <0> speed <120>*PRONE_SPEED;
+			turn torso to y-axis <0> speed <120>*PRONE_SPEED;
+			turn torso to z-axis <0> speed <120>*PRONE_SPEED;
+			Turn head to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn head to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn head to z-axis <0> speed <120>*PRONE_SPEED;
 		
-			Turn rleg to x-axis <0> speed <480>;
-			Turn rleg to y-axis <0> speed <480>;
-			Turn rleg to z-axis <0> speed <480>;
+			Turn rleg to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn rleg to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn rleg to z-axis <0> speed <120>*PRONE_SPEED;
 		
-			Turn lleg to x-axis <0> speed <480>;
-			Turn lleg to y-axis <0> speed <480>;
-			Turn lleg to z-axis <0> speed <480>;
+			Turn lleg to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn lleg to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn lleg to z-axis <0> speed <120>*PRONE_SPEED;
 		
-			Turn pelvis to x-axis <0> speed <480>;
-			Turn pelvis to y-axis <0> speed <480>;
-			Turn pelvis to z-axis <0> speed <480>;
+			Turn pelvis to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn pelvis to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn pelvis to z-axis <0> speed <120>*PRONE_SPEED;
 		
-			Turn rthigh to x-axis <0> speed <480>;
-			Turn rthigh to y-axis <0> speed <480>;
-			Turn rthigh to z-axis <0> speed <480>;
+			Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn rthigh to z-axis <0> speed <120>*PRONE_SPEED;
 		
-			Turn lthigh to x-axis <0> speed <480>;
-			Turn lthigh to y-axis <0> speed <480>;
-			Turn lthigh to z-axis <0> speed <480>;
+			Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
+			Turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
+			Turn lthigh to z-axis <0> speed <120>*PRONE_SPEED;
 	wait-for-turn rthigh around x-axis;
 	wait-for-turn rthigh around y-axis;
 	wait-for-turn rthigh around z-axis;
@@ -232,17 +232,14 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 	wait-for-turn pelvis around x-axis;
 	wait-for-turn pelvis around y-axis;
 	wait-for-turn pelvis around z-axis;
-		
 				fear=0;
 				IsProne=0;
 				SET UPRIGHT TO 1;
 				SET ARMORED to FALSE;
-				sleep 50;
 				set MAX_SPEED to [0.5];
-			
-				call-script WeaponReady();
 				call-script MoveCheck();
 		
 		}
 		return (1);
+		sleep 100;
 	}

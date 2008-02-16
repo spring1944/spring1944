@@ -7,7 +7,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 
 static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
- nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned;// reloading;
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, Fear1Ok;// reloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -243,6 +243,7 @@ FireWeapon1()
 //		reloading=1;
 //		sleep ReloadPenalty;
 //		reloading=0;
+		Fear1Ok=1;
 		return (1);
 	}
 	if (IsProne==0)
@@ -254,6 +255,7 @@ FireWeapon1()
 		turn ruparm to x-axis <20> speed <200>;
 		turn luparm to x-axis <-70> speed <200>;
 		sleep 50;
+		Fear1Ok=1;
 		return (1);
 	}
 	return (0);
@@ -273,15 +275,17 @@ QueryWeapon2(piecenum)
 AimWeapon2(heading, pitch)
 {
 	if (bMoving==1) return (0);
-	if (bAiming)
+	if (bAiming && Fear1Ok==1)
 	{
 	wait-for-turn pelvis around y-axis;
 	return (1);
 	}
+	return 0;
 }
 
 FireWeapon2()
 {
+Fear1Ok=0;
 return (0);
 }
 

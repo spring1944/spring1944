@@ -48,7 +48,7 @@
 	transportcapacity=15;
 	transportmass=750;
 	releaseheld=0;
-
+	weapon1=smallsupply;
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 
@@ -58,5 +58,10 @@
 	onlytargetcategory2=NFLAG;
 	[sfxtypes]
 	{
+	}
+		[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=250;
 	}
 }

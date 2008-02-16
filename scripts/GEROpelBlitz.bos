@@ -129,6 +129,26 @@ SweetSpot(piecenum)
 	piecenum = body;
 }
 
+AimFromWeapon1(piecenum) //supply range ring 
+{
+	piecenum = base;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon1(heading, pitch)
+{
+	return 1;
+}
+
+FireWeapon1()
+{
+return (0);
+}
+
 Killed(severity, corpsetype)
 {
 	if( severity <= 999 )

@@ -10,7 +10,7 @@ Run()
 	while (1)
 		{
 		
-			if (IsProne==1||fear>0||transported==1)
+			if (IsProne==1||fear>0)
 			{
 			sleep 1000;
 			}

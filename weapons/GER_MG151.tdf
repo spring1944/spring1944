@@ -50,7 +50,7 @@
 		tanks=0;
 		armouredvehicles=30;
 		unarmouredvehicles=45;
-		LightPlanes=30;
+		LightPlanes=40;
 	}
 }
 
@@ -108,6 +108,6 @@
 		tanks=25;
 		armouredvehicles=50;
 		unarmouredvehicles=80;
-		LightPlanes=40;
+		LightPlanes=90;
 	}
 }

@@ -54,7 +54,7 @@
 		unarmoredvehicles=480;
 		infantry=425;
 		guns=200;
-		LightPlanes=40;
+		LightPlanes=75;
 	}
 }
 [kwk3020mmhe]

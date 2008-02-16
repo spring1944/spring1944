@@ -1,4 +1,4 @@
-/*MoveCheck() //check if the unit is moving or not so that the animation is right when they stand up after prone.
+MoveCheck() //check if the unit is moving or not so that the animation is right when they stand up after prone.
 //THIS WOULD BE MUCH EASIER WITH GET CURRENT_SPEED, but that seems to be broken.
 {
       last_pos = get PIECE_XZ(ground); // current position
@@ -20,10 +20,4 @@
         bMoving=1;
       }
          
-}*/
-
-MoveCheck()
-{
-	if ((get (CURRENT_SPEED)) > 0) bMoving=1;
-	if ((get (CURRENT_SPEED)) == 0) bMoving=0;
 }

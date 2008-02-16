@@ -62,7 +62,6 @@
 	weapon3=.50calproof;
 
 	weapon4=Small_Tracer;
-
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -73,5 +72,10 @@
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
+	}
+		[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=250;
 	}
 }

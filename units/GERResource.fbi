@@ -38,7 +38,7 @@
 	buildinggrounddecalsizex=4;
 	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
-
+	weapon1=medsupply;
 	explodeas=ResourceBoom;
 	selfdestructas=Med_Explosion;
 
@@ -46,5 +46,11 @@
 	onlytargetcategory2=NFLAG;
 	[sfxtypes]
 	{
+	}
+	[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=700;
+		ammoLevel=-1;
 	}
 }
