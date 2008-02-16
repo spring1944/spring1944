@@ -13,7 +13,7 @@
 	idleautoheal=0;
 	buildcostmetal=1500;
 	buildcostenergy=0;
-	buildtime=750;
+	buildtime=1050;
 	footprintx=1;
 	footprintz=1;
 
