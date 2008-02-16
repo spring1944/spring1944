@@ -266,12 +266,14 @@ function gadget:DrawScreen(dt)
            break
 	    end
         local sx, sy, sz = Spring.WorldToScreenCoords(wx, wy, wz)
-       -- if (ammoLevel < 5) then
-         -- gl.Text(RedStr..ammoLevel, sx, sy, 20, "c")
-         -- elseif (ammoLevel > 5) then
-          gl.Text(WhiteStr..ammoLevel, sx, sy, 12, "c")
-          -- else
+       if (ammoLevel ~= nil) then
+		  if (ammoLevel < 5) then
+           gl.Text(RedStr..ammoLevel, sx, sy, 20, "c")
+           elseif (ammoLevel > 5) then
+           gl.Text(WhiteStr..ammoLevel, sx, sy, 10, "c")
+           --else
           -- gl.Text(WhiteStr.."x", sx, sy, 10, "c")
+		  end
         end
       end
 	
