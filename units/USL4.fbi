@@ -76,4 +76,8 @@
 	Maxfuel=200;
 	RefuelTime=10;
 	shownanoframe=0;
+	[customParams]
+	{
+		dontCount=1;
+	}
 }

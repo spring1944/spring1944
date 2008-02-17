@@ -29,4 +29,8 @@
 	[sfxtypes]
 	{
 	}
+	[customParams]
+	{
+		dontCount=1;
+	}
 }

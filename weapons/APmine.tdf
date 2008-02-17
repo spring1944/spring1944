@@ -6,12 +6,12 @@
 	turret=1;
 	explosiongenerator=custom:Weapon_Explosion_Shrapnel;
 
-	lineofsight=1;
+	ballistic=1;
 	firestarter=0.0;
 
-	range=130;
+	range=32;
 	reloadtime=19999;
-	weaponvelocity=35;
+	weaponvelocity=30;
 	areaofeffect=70;
 
 	soundstart=GEN_Explo_1;
@@ -43,13 +43,13 @@
 	turret=1;
 	explosiongenerator=custom:Weapon_Explosion_Shrapnel;
 
-	lineofsight=1;
+	ballistic=1;
 	firestarter=0.0;
 	size=0.0000001;
-	range=130;
+	range=24;
 	reloadtime=19999;
-	weaponvelocity=35;
-	areaofeffect=70;
+	weaponvelocity=104;
+	areaofeffect=5;
 
 	soundstart=GEN_Explo_1;
 	soundhit=GEN_Explo_1;
@@ -58,16 +58,16 @@
 
 	[damage]
 	{
-		default=100;
-		infantry=2000;
-		guns=75;
-		lightbuildings=5;
+		default=0;
+		infantry=0;
+		guns=0;
+		lightbuildings=0;
 		bunkers=0;
-		sandbags=50;
+		sandbags=0;
 		APMine=5000;
 		flag=0;
-		tanks=10;
-		armouredvehicles=400;
-		unarmouredvehicles=100;
+		tanks=0;
+		armouredvehicles=0;
+		unarmouredvehicles=0;
 	}
 }

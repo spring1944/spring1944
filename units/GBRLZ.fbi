@@ -39,4 +39,8 @@
 	{
 		explosiongenerator0=custom:LZflare;
 	}
+	[customParams]
+	{
+		dontCount=1;
+	}
 }

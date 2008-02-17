@@ -27,5 +27,8 @@
 	selfdestructcountdown=10;
 	explodeas=SatchelCharge;
 	selfdestructas=SatchelCharge;
-
+	[customParams]
+	{
+		dontCount=1;
+	}
 }
