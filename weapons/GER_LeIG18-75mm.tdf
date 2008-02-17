@@ -45,14 +45,14 @@
 
 	[damage]
 	{
-		default=1800;
-		infantry=1500;
-		guns=1400;
+		default=1700;
+		infantry=850;
+		guns=760;
 		mines=0;
 		flag=0;
 		tanks=500;
 		armouredvehicles=2000;
-		unarmouredvehicles=2150;
+		unarmouredvehicles=2350;
 	}
 }
 [leig18hefear]

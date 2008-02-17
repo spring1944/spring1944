@@ -45,13 +45,13 @@
 	[damage]
 	{
 		default=1800;
-		infantry=3300;
-		guns=2000;
+		infantry=1320;
+		guns=1000;
 		mines=0;
 		flag=0;
 		tanks=1000;
 		armouredvehicles=2000;
-		unarmouredvehicles=2250;
+		unarmouredvehicles=3250;
 	}
 }
 [25pdrfear]

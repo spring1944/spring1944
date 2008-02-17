@@ -52,7 +52,7 @@
 		armouredvehicles=400;
 		hq=100;
 		unarmoredvehicles=480;
-		infantry=425;
+		infantry=200;
 		guns=200;
 		LightPlanes=75;
 	}
@@ -73,7 +73,7 @@
 	range=975;
 	reloadtime=2;
 	energypershot=20;
-	burst=5;
+	burst=3;
 	burstrate=0.16;
 	sprayangle=400;
 	accuracy=255;
@@ -111,7 +111,7 @@
 		armouredvehicles=400;
 		hq=100;
 		unarmoredvehicles=480;
-		infantry=425;
+		infantry=170;
 		guns=200;
 		LightPlanes=40;
 	}
@@ -164,7 +164,7 @@
 	range=975;
 	reloadtime=2;
 	energypershot=20;
-	burst=5;
+	burst=3;
 	burstrate=0.16;
 	sprayangle=400;
 	accuracy=255;

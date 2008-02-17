@@ -50,8 +50,8 @@
 		default=1650;
 		mines=0;
 		flag=0;
-		infantry=1500;
-		guns=1300;
+		infantry=850;
+		guns=700;
 		tanks=500;
 		armouredvehicles=2000;
 		unarmouredvehicles=2250;

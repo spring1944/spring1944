@@ -47,8 +47,8 @@
 	[damage]
 	{
 		default=219;
-		infantry=1200;
-		guns=1000;
+		infantry=550;
+		guns=500;
 		mines=0;
 		flag=0;
 		tanks=100;

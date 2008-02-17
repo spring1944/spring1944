@@ -47,13 +47,13 @@
 	[damage]
 	{
 		default=2500;
-		infantry=2750;
-		guns=2000;
+		infantry=1100;
+		guns=800;
 		mines=0;
 		flag=0;
 		tanks=375;
 		armouredvehicles=2550;
-		unarmouredvehicles=2500;
+		unarmouredvehicles=3500;
 	}
 }
 [kwk88mml56ap]

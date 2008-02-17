@@ -5,7 +5,7 @@
 	corpse=RUST60_Destroyed;
 	icontype=lighttank;
 	soundcategory=RUSTank;
-	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+	category=NFLAGNAIR NFLAG TANK WEAPON NAIR;
 	tedclass=TANK;
 
 	name=T-60/M41;

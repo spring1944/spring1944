@@ -49,8 +49,8 @@
 	[damage]
 	{
 		default=10000;
-		infantry=1400;
-		guns=300;
+		infantry=600;
+		guns=550;
 		lightbuildings=750;
 		bunkers=300;
 		sandbags=250;

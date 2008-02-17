@@ -18,7 +18,7 @@
 	startvelocity=275;
 	weaponvelocity=450;
 	areaofeffect=65;
-	edgeeffectiveness=0.25;
+	edgeeffectiveness=0.5;
 	smoketrail=1;
 
 	soundstart=GER_Panzerfaust;
@@ -49,8 +49,8 @@
 	[damage]
 	{
 		default=5500;
-		Infantry=1800;
-		guns=1500;
+		Infantry=720;
+		guns=600;
 		lightbuildings=2500;
 		bunkers=1500;
 		sandbags=250;

@@ -48,11 +48,12 @@
 	{
 		default=685;
 		mines=0;
-		infantry=800;
+		infantry=600;
+		guns=550;
 		flag=0;
 		tanks=400;
-		armouredvehicles=900;
-		unarmouredvehicles=1100;
+		armouredvehicles=1600;
+		unarmouredvehicles=1700;
 	}
 }
 [m7ap]
