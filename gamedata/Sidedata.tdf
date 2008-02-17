@@ -65,7 +65,7 @@
 		canbuild2=USFlag;
 		canbuild3=USResource;
 		canbuild4=USGMCTruck;
-		//canbuild5=apmine;
+		canbuild5=apmine;
 		canbuild6=atmine;
 		//canbuild7=Sandbags;
 		canbuild8=TankObstacle;
@@ -97,7 +97,7 @@
 		canbuild5=USResourceDepot;
 		Canbuild7=USGMCTruck;
 		canbuild8=ATmine;
-		//canbuild9=APMine;
+		canbuild9=APMine;
 		canbuild10=TankObstacle;
 		//canbuild11=Sandbags;
 		canbuild12=RubberDingy;
@@ -174,7 +174,7 @@
 		canbuild1=GERBarracks;
 		canbuild2=GERFlag;
 		canbuild3=GERResource;
-		//canbuild5=APMine;
+		canbuild5=APMine;
 		canbuild6=ATMine;
 		//canbuild7=Sandbags;
 		canbuild8=TankObstacle;
@@ -205,7 +205,7 @@
 		canbuild4=GERFlag;
 		canbuild5=GERResourceDepot;
 		canbuild7=ATMine;
-		//canbuild8=APMine;
+		canbuild8=APMine;
 		//canbuild9=Sandbags;
 		canbuild10=TankObstacle;
 		canbuild11=GEROpelBlitz;
@@ -277,7 +277,7 @@
 		canbuild1=GBRBarracks;
 		canbuild2=GBRFlag;
 		canbuild3=GBRResource;
-		//canbuild4=apmine;
+		canbuild4=apmine;
 		canbuild5=atmine;
 		//canbuild6=Sandbags;
 		canbuild7=TankObstacle;
@@ -331,7 +331,7 @@
 		canbuild3=GBRFlag;
 		canbuild4=GBRResourceDepot;
 		canbuild6=ATmine;
-		//canbuild7=APMine;
+		canbuild7=APMine;
 		//canbuild8=Sandbags;
 		canbuild9=TankObstacle;
 		canbuild10=GBRBedfordTruck;
@@ -383,7 +383,7 @@
 		canbuild6=RUSGunyard;
 		canbuild8=RUSZiS5;
 		canbuild9=ATMine;
-		//canbuild10=APMine;
+		canbuild10=APMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
 		canbuild13=RubberDingy;
@@ -419,7 +419,7 @@
 		canbuild4=RUSFlag;
 		canbuild5=RUSResourceDepot;
 		canbuild6=RUSZiS5;
-		//canbuild7=APMine;
+		canbuild7=APMine;
 		canbuild8=ATMine;
 		canbuild9=TankObstacle;
 		//canbuild10=Sandbags;
@@ -436,7 +436,7 @@
 		canbuild5=RUSBarracks;
 		canbuild6=RUSGunyard;
 		canbuild8=RUSZiS5;
-		//canbuild9=APMine;
+		canbuild9=APMine;
 		canbuild10=ATMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
@@ -452,7 +452,7 @@
 		canbuild5=RUSBarracks;
 		canbuild6=RUSGunyard;
 		canbuild8=RUSZiS5;
-		//canbuild9=APMine;
+		canbuild9=APMine;
 		canbuild10=ATMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
