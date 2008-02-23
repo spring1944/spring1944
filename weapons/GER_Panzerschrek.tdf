@@ -48,7 +48,7 @@
 
 	[damage]
 	{
-		default=10000;
+		default=17422;
 		infantry=600;
 		guns=550;
 		lightbuildings=750;
