@@ -179,7 +179,7 @@
 		//canbuild7=Sandbags;
 		canbuild8=TankObstacle;
 		canbuild9=GEROpelBlitz;
-		canbuild10=RubberDingy;
+		canbuild10=GERSturmboot;
 		canbuild11=PontoonRaft;
 	}
 
@@ -209,7 +209,7 @@
 		//canbuild9=Sandbags;
 		canbuild10=TankObstacle;
 		canbuild11=GEROpelBlitz;
-		canbuild12=RubberDingy;
+		canbuild12=GERSturmboot;
 		canbuild13=PontoonRaft;
 	}
 
@@ -423,7 +423,7 @@
 		canbuild8=ATMine;
 		canbuild9=TankObstacle;
 		//canbuild10=Sandbags;
-		canbuild10=RubberDingy;
+		canbuild10=GERSturmboot;
 		canbuild111=PontoonRaft;
 	}
 
@@ -440,7 +440,7 @@
 		canbuild10=ATMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
-		canbuild13=RubberDingy;
+		canbuild13=GERSturmboot;
 		canbuild14=PontoonRaft;
 	}
 	[RUSCommissar1]
@@ -456,7 +456,7 @@
 		canbuild10=ATMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
-		canbuild13=RubberDingy;
+		canbuild13=GERSturmboot;
 		canbuild14=PontoonRaft;
 	}
 
