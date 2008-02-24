@@ -37,7 +37,7 @@ local morphDefs = {
   
   gbrsandbagmg =
   {
-    into = 'gbrgren',
+    into = 'gbrbren',
     tech = 0,
     time = 5,
     metal = 0,

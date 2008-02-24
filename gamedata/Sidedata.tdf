@@ -464,7 +464,7 @@
 	{
 		canbuild1=RUSZiS5;
 		canbuild2=RUSBA64;
-		canduild3=RUSM5Halftrack;
+		canbuild3=RUSM5Halftrack;
 		canbuild4=RUST60;
 		canbuild5=RUSSU76;
 	}
