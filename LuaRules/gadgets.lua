@@ -11,6 +11,15 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
+--  Changelog:
+--
+--   jK: added UnitExperience callin (Dec. 19 2007)
+--       added UnitCmdDone,UnitCloaked,UnitDecloaked callins (Dec. 14 2007)
+--       added missing arguments to DefaultCommand callin (Dec. 2007)
+--
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
 --  TODO:  - get rid of the ':'/self referencing, it's a waste of cycles
 --         - (De)RegisterCOBCallback(data)
 --         - (De)RegisterGlobal(name, value)
@@ -25,12 +34,31 @@ local SAFEWRAP = 0
 
 
 -- setup the UnitDefNames{} table
-local udn = {}
-for _,ud in pairs(UnitDefs) do
-  udn[ud.name] = ud
+do
+  local tbl = {}
+  for _,def in pairs(UnitDefs) do
+    tbl[def.name] = def
+  end
+  UnitDefNames = tbl
 end
-UnitDefNames = udn
-udn = nil
+
+-- setup the FeatureDefNames{} table
+do
+  local tbl = {}
+  for _,def in pairs(FeatureDefs) do
+    tbl[def.name] = def
+  end
+  FeatureDefNames = tbl
+end
+
+-- setup the WeaponDefNames{} table
+do
+  local tbl = {}
+  for _,def in pairs(WeaponDefs) do
+    tbl[def.name] = def
+  end
+  WeaponDefNames = tbl
+end
 
 
 local SCRIPT_DIR = Script.GetName() .. '/'
@@ -86,6 +114,8 @@ gadgetHandler = {
   yViewSize    = 1,
   xViewSizeOld = 1,
   yViewSizeOld = 1,
+
+  actionHandler = actionHandler,
 }
 
 
@@ -109,7 +139,9 @@ local callInLists = {
   'UnitFinished',
   'UnitFromFactory',
   'UnitDestroyed',
+  'UnitExperience',
   'UnitIdle',
+  'UnitCmdDone',
   'UnitDamaged',
   'UnitTaken',
   'UnitGiven',
@@ -120,6 +152,9 @@ local callInLists = {
   'UnitSeismicPing',
   'UnitLoaded',
   'UnitUnloaded',
+  'UnitCloaked',
+  'UnitDecloaked',
+  'StockpileChanged',
 
   -- Feature CallIns
   'FeatureCreated',
@@ -129,6 +164,8 @@ local callInLists = {
   'Explosion',
 
   -- LuaRules CallIns
+  'DrawUnit',
+  'AICallIn',
   'CommandFallback',
   'AllowCommand',
   'AllowUnitCreation',
@@ -144,6 +181,7 @@ local callInLists = {
 
   -- Unsynced CallIns
   'Update',
+  'DefaultCommand',
   'DrawWorld',
   'DrawWorldPreUnit',
   'DrawWorldShadow',
@@ -324,6 +362,11 @@ function gadgetHandler:LoadGadget(filename)
     self.orderList[name] = 0
     self.knownGadgets[name].active = false
     return nil
+  end
+
+  -- raw access to gadgetHandler
+  if (info)and(info.handler) then
+    gadget.gadgetHandler = self
   end
 
   return gadget
@@ -857,14 +900,6 @@ end
 --  The call-in distribution routines
 --
 
-function gadgetHandler:Update()
-  for _,g in ipairs(self.UpdateList) do
-    g:Update()
-  end
-  return
-end
-
-
 function gadgetHandler:Shutdown()
   for _,g in ipairs(self.ShutdownList) do
     g:Shutdown()
@@ -985,6 +1020,27 @@ end
 --  LuaRules Game call-ins
 --
 
+
+function gadgetHandler:DrawUnit(unitID,drawMode)
+  for _,g in ipairs(self.DrawUnitList) do
+    if (g:DrawUnit(unitID,drawMode)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:AICallIn(dataStr)
+  for _,g in ipairs(self.AICallInList) do
+    local dataRet = g:AICallIn(dataStr)
+    if (dataRet) then
+      return dataRet
+    end
+  end
+end
+
+
 function gadgetHandler:CommandFallback(unitID, unitDefID, unitTeam,
                                        cmdID, cmdParams, cmdOptions)
   for _,g in ipairs(self.CommandFallbackList) do
@@ -999,10 +1055,10 @@ end
 
 
 function gadgetHandler:AllowCommand(unitID, unitDefID, unitTeam,
-                                    cmdID, cmdParams, cmdOptions)
+                                    cmdID, cmdParams, cmdOptions,fromSynced)
   for _,g in ipairs(self.AllowCommandList) do
     if (not g:AllowCommand(unitID, unitDefID, unitTeam,
-                           cmdID, cmdParams, cmdOptions)) then
+                           cmdID, cmdParams, cmdOptions,fromSynced)) then
       return false
     end
   end
@@ -1129,6 +1185,16 @@ function gadgetHandler:UnitDestroyed(unitID,     unitDefID,     unitTeam,
 end
 
 
+function gadgetHandler:UnitExperience(unitID,     unitDefID,     unitTeam,
+                                      experience, oldExperience)
+  for _,g in ipairs(self.UnitExperienceList) do
+    g:UnitExperience(unitID,     unitDefID,     unitTeam,
+                    experience, oldExperience)
+  end
+  return
+end
+
+
 function gadgetHandler:UnitIdle(unitID, unitDefID, unitTeam)
   for _,g in ipairs(self.UnitIdleList) do
     g:UnitIdle(unitID, unitDefID, unitTeam)
@@ -1136,11 +1202,18 @@ function gadgetHandler:UnitIdle(unitID, unitDefID, unitTeam)
   return
 end
 
+function gadgetHandler:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
+  for _,g in ipairs(self.UnitCmdDoneList) do
+    g:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
+  end
+  return
+end
+
 function gadgetHandler:UnitDamaged(unitID, unitDefID, unitTeam,
-                                   damage, paralyzer,
+                                   damage, paralyzer, weaponID,
                                    attackerID, attackerDefID, attackerTeam)
   for _,g in ipairs(self.UnitDamagedList) do
-    g:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer,
+    g:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID,
                   attackerID, attackerDefID, attackerTeam)
   end
   return
@@ -1221,6 +1294,32 @@ function gadgetHandler:UnitUnloaded(x, y, z, strength)
 end
 
 
+function gadgetHandler:UnitCloaked(unitID, unitDefID, unitTeam)
+  for _,g in ipairs(self.UnitCloakedList) do
+    g:UnitCloaked(unitID, unitDefID, unitTeam)
+  end
+  return
+end
+
+
+function gadgetHandler:UnitDecloaked(unitID, unitDefID, unitTeam)
+  for _,g in ipairs(self.UnitDecloakedList) do
+    g:UnitDecloaked(unitID, unitDefID, unitTeam)
+  end
+  return
+end
+
+
+function gadgetHandler:StockpileChanged(unitID, unitDefID, unitTeam,
+                                        weaponNum, oldCount, newCount)
+  for _,g in ipairs(self.StockpileChangedList) do
+    g:StockpileChanged(unitID, unitDefID, unitTeam,
+                       weaponNum, oldCount, newCount)
+  end
+  return
+end
+
+
 --------------------------------------------------------------------------------
 --
 --  Feature call-ins
@@ -1260,6 +1359,25 @@ end
 --
 --  Draw call-ins
 --
+
+function gadgetHandler:Update()
+  for _,g in ipairs(self.UpdateList) do
+    g:Update()
+  end
+  return
+end
+
+
+function gadgetHandler:DefaultCommand(type,id)
+  for _,g in ipairs(self.DefaultCommandList) do
+    local id = g:DefaultCommand(type,id)
+    if (id) then
+      return id
+    end
+  end
+  return
+end
+
 
 function gadgetHandler:DrawWorld()
   for _,g in ipairs(self.DrawWorldList) do

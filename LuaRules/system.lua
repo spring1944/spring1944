@@ -26,10 +26,12 @@ if (System == nil) then
     CMDTYPE = CMDTYPE,
     VFS = VFS,
 
-    UnitDefs     = UnitDefs,
-    UnitDefNames = UnitDefNames,
-    FeatureDefs  = FeatureDefs,
-    WeaponDefs   = WeaponDefs,
+    UnitDefs        = UnitDefs,
+    UnitDefNames    = UnitDefNames,
+    FeatureDefs     = FeatureDefs,
+    FeatureDefNames = FeatureDefNames,
+    WeaponDefs      = WeaponDefs,
+    WeaponDefNames  = WeaponDefNames,
 
     --
     -- Custom Constants

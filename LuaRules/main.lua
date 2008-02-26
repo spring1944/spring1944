@@ -38,10 +38,42 @@ function tprint(t)
 end
 
 
-if (not Spring.IsDevLuaEnabled()) then
-  VFS.Include(Script.GetName() .. "/gadgets.lua", nil, VFS.ZIP_ONLY)
-  Spring.Echo("LUARULES-MAIN  (GADGETS)")
+local allModOptions = Spring.GetModOptions()
+function Spring.GetModOption(s,bool)
+  if (bool) then
+    return (allModOptions[s]=="1")
+  else
+    return allModOptions[s]
+  end
+end
+
+
+if (Spring.GetModOption("gamemode")=="deploy")or
+   (Spring.GetModOption("gamemode")=="tactics")
+then
+
+  -----------------------------
+  -- DEPLOYMENT MODE
+  -----------------------------
+  if (not Spring.IsDevLuaEnabled()) then
+    VFS.Include(Script.GetName() .. "/Deploy/main.lua", nil, VFS.ZIP_ONLY)
+    Spring.Echo("LUARULES-DRAW  (DEPLOYMENT)")
+  else
+    VFS.Include(Script.GetName() .. "/Deploy/main.lua", nil, VFS.ZIP_ONLY)
+    Spring.Echo("LUARULES-DRAW  (DEPLOYMENT)  --  DEVMODE")
+  end
+
 else
-  VFS.Include(Script.GetName() .. "/gadgets.lua", nil, VFS.RAW_ONLY)
-  Spring.Echo("LUARULES-MAIN  (GADGETS)  --  DEVMODE")
+
+  -----------------------------
+  -- NORMAL MODE
+  -----------------------------
+  if (not Spring.IsDevLuaEnabled()) then
+    VFS.Include(Script.GetName() .. '/gadgets.lua', nil, VFS.ZIP_ONLY)
+    Spring.Echo("LUARULES-DRAW  (GADGETS)")
+  else
+    VFS.Include(Script.GetName() .. '/gadgets.lua', nil, VFS.ZIP_ONLY)
+    Spring.Echo("LUARULES-DRAW  (GADGETS)  --  DEVMODE")
+  end
+
 end
