@@ -128,7 +128,7 @@ piecenum = nano;
 	linecount=linecount+1;
 	if(linecount==5)
 	{
-			emit-sfx BUILD_LINE from nano;
+			//emit-sfx BUILD_LINE from nano;
 			linecount=0;
 	}
 }

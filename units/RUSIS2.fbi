@@ -2,7 +2,7 @@
 {
 	unitname=RUSIS2;
 	objectname=RUSIS2.S3O;
-	//corpse=;
+	corpse=RUSIS2_Damaged;
 	icontype=heavytank;
 	soundcategory=RUSTank;
 	category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NSUB CTRL_G;

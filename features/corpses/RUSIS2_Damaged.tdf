@@ -1,0 +1,22 @@
+[RUSIS2_Damaged]
+{
+	object=RUSIS2_Damaged.S3O;
+	featuredead=RUSIS2_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=5000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}
+[RUSIS2_Destroyed]
+{
+	object=RUSIS2_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=3;
+	footprintz=3;
+	reclaimable=1;
+}
