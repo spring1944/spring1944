@@ -25,7 +25,6 @@
 	unitrestricted=8;
 	smoothanim=0;
 
-	energyuse=2;
 	SeismicSignature=0;
 	sightdistance=500;
 	stealth=1;

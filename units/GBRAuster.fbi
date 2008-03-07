@@ -31,9 +31,7 @@
 	//    Construction
 	
 	//    Resources
-	EnergyMake=20;
-	EnergyUse=20;
-	
+		
 	//    Abilities
 	CanAttack=1;
 	CanDropFlare=1;
