@@ -24,7 +24,7 @@ end
 
 function gadget:GameFrame(t)
 
-	if (((t+250) % 31) < 0.1) then
+	if (t % (30*30) < 0.1) then
 		for u in pairs(flags) do
 		local defaultOutput = tonumber(flags[u].defaultOutput)
 		local lifespan = flags[u].lifespan
