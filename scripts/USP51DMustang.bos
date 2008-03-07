@@ -66,20 +66,10 @@ gearsdown()
 
 activatescr()
 {
-	if( TRUE )
-	{
-
-	}
-	sleep 44;
 }
 
 deactivatescr()
 {
-	if( TRUE )
-	{
-		
-	}
-	sleep 44;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)

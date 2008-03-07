@@ -36,8 +36,7 @@ deactivatescr()
 		show blades;
 		spin propeller around z-axis speed <800> accelerate <-400>;
 		sleep 400;
-		spin propeller around z-axis speed <50>;
-		
+		spin propeller around z-axis speed <50>;	
 	}
 	sleep 44;
 }
