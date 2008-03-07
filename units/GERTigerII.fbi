@@ -1,21 +1,21 @@
 [unitinfo]
 {
-	unitname=GERTiger;
-	objectname=GERTiger.S3O;
-	corpse=GERTiger_Damaged;
+	unitname=GERTigerII;
+	objectname=GERTigerII.S3O;
+	corpse=GERTigerII_Damaged;
 	icontype=heavytank;
 	soundcategory=GERTank;
-	category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NOTSUB CTRL_G;
+	category=NFLAGNAIR NFLAG TANK LEVEL3 WEAPON NAIR NOTSUB CTRL_G;
 	tedclass=TANK;
 
-	name=Pzkpfw VI E Tiger;
-	description=Heavy Tank;
+	name=Pzkpfw VI B Koenigstiger;
+	description=Super Heavy Tank;
 	side=GER;
 
-	maxdamage=9456;
+	maxdamage=14910;
 	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.15;
-	flankingbonusmin=.85;
+	flankingbonusmax=1.65;
+	flankingbonusmin=.84;
 	flankingbonusmode=3;
 
 	buildcostmetal=5275;
@@ -49,20 +49,20 @@
 	trackstretch=1;
 	tracktype=Stdtank;
 
-	explodeas=Vehicle_Explosion_Med;
-	selfdestructas=Vehicle_Explosion_Med;
+	explodeas=Vehicle_Explosion_Large;
+	selfdestructas=Vehicle_Explosion_Large;
 
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=kwk88mml56HE;
+	weapon1=kwk88mml71HE;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon2=kwk88mml56AP;
+	weapon2=kwk88mml71AP;
 	onlytargetcategory2=TANK;
 	weapon3=MG34;
 	onlytargetcategory3=INFTARG;
 	weapon4=.50calproof;
-	weapon5=kwk88mml56HEFear;
+	weapon5=kwk88mml71HEFear;
 	onlytargetcategory5=NFLAGNAIR;
 	weaponslaveto5=1;
 	weapon6=MG34Fear;
@@ -88,7 +88,7 @@
 	}
 	[customParams]
 	{
-		maxammo=23;
+		maxammo=21;
 		weaponswithammo=2;
 	}
 	

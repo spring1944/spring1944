@@ -1,0 +1,22 @@
+[gertigerii_damaged]
+{
+	object=GERTigerii_Damaged.S3O;
+	featuredead=GERTigerii_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[gertigerii_destroyed]
+{
+	object=GERTigerii_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
