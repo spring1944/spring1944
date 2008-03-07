@@ -57,10 +57,10 @@
 	idleAutoHeal=2;
 
 	//	Flight Stuff
-	wingdrag=0.1;
+	wingdrag=0.01;
 	wingangle=0.1;
-	drag=0.1;
-	mygravity=0.1;
+	drag=0.01;
+	mygravity=.25;
 	maxbank=0.1;
 	maxpitch=0.1;
 	turnradius=2000;

@@ -22,9 +22,9 @@
 	BrakeRate=5;
 	Acceleration=0.48;
 	CanMove=1;
-	MaxVelocity=24;
+	MaxVelocity=48;
 	MaxSlope=10;
-	TurnRate=50;
+	TurnRate=24;
 	
 	//    Buildings
 	
@@ -57,10 +57,10 @@
 	idleAutoHeal=2;
 
 	//	Flight Stuff
-	wingdrag=0.1;
+	wingdrag=0.01;
 	wingangle=0.1;
-	drag=0.05;
-	mygravity=0.1;
+	drag=0.01;
+	mygravity=.25;
 	maxbank=0.13;
 	maxpitch=0.13;
 	turnradius=2000;
