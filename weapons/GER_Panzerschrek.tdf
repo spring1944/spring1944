@@ -12,7 +12,6 @@
 
 	range=400;
 	reloadtime=15;
-	energypershot=20;
 	accuracy=500;
 	targetmoveerror=0.075;
 	startvelocity=400;

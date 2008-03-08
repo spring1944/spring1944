@@ -16,7 +16,6 @@
 	reloadtime=20;
 	burst=16;
 	burstrate=.8;
-	energypershot=35;
 	sprayangle=1000;
 	startvelocity=500;
 	weaponvelocity=500;

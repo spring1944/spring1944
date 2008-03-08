@@ -12,7 +12,6 @@
 	explosiongenerator=custom:BulletImpact;
 	range=1700;
 	reloadtime=10;
-	energypershot=0.5;
 	sprayangle=0;
 	movingaccuracy=888;
 	weaponvelocity=2000;
@@ -64,7 +63,6 @@
 
 	range=1500;
 	reloadtime=10;
-	energypershot=2;
 	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;

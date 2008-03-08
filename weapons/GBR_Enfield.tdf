@@ -12,7 +12,6 @@
 
 	range=905;
 	reloadtime=2.5;
-	energypershot=0.5;
 	accuracy=50;
 	sprayangle=100;
 	movingaccuracy=888;

@@ -8,11 +8,9 @@
 	interceptedbyshieldtype=8;
 	explosiongenerator=custom:nothing;
 	lineofsight=1;
-	firestarter=1;
-
+	firestarter=;
 	range=1000;
 	reloadtime=.1;
-	energypershot=0;
 	areaofeffect=1;
 	movingaccuracy=7111;
 	weaponvelocity=1500;
@@ -55,11 +53,9 @@
 	interceptedbyshieldtype=8;
 	explosiongenerator=custom:nothing;
 	lineofsight=1;
-	firestarter=1;
-
+	firestarter=;
 	range=1000;
 	reloadtime=.1;
-	energypershot=0;
 	areaofeffect=1;
 	movingaccuracy=7111;
 	weaponvelocity=1500;
@@ -102,11 +98,9 @@
 	interceptedbyshieldtype=8;
 	explosiongenerator=custom:nothing;
 	lineofsight=1;
-	firestarter=1;
-
+	firestarter=;
 	range=1000;
 	reloadtime=.1;
-	energypershot=0;
 	sprayangle=410;
 	areaofeffect=1;
 	movingaccuracy=7111;
@@ -150,11 +144,9 @@
 	interceptedbyshieldtype=8;
 	explosiongenerator=custom:nothing;
 	lineofsight=1;
-	firestarter=1;
-
+	firestarter=;
 	range=1000;
 	reloadtime=.1;
-	energypershot=0;
 	sprayangle=410;
 	areaofeffect=1;
 	movingaccuracy=7111;
@@ -197,11 +189,10 @@
 	explosiongenerator=custom:nothing;
 
 	lineofsight=1;
-	firestarter=10;
+	firestarter=0;
 	collisionsize=2;
 	range=2000;
 	reloadtime=0.1;
-	energypershot=0;
 	sprayangle=250;
 	weaponvelocity=2100;
 	areaofeffect=1;
@@ -240,11 +231,10 @@
 	explosiongenerator=custom:nothing;
 
 	lineofsight=1;
-	firestarter=10;
+	firestarter=0;
 	collisionsize=2;
 	range=2000;
 	reloadtime=0.1;
-	energypershot=0;
 	sprayangle=250;
 	weaponvelocity=2100;
 	areaofeffect=1;

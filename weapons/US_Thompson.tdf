@@ -12,7 +12,6 @@
 
 	range=410;
 	reloadtime=1.7;
-	energypershot=0.5;
 	burst=6;
 	burstrate=.086;
 	sprayangle=500;

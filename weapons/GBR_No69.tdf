@@ -8,7 +8,6 @@
 
 	range=200;
 	reloadtime=8;
-	energypershot=5;
 	accuracy=1421;
 	movingaccuracy=7111;
 	weaponvelocity=210;

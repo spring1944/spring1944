@@ -13,7 +13,6 @@
 
 	range=3375;
 	reloadtime=9;
-	energypershot=55;
 	accuracy=400;
 	targetmoveerror=0.02;
 	weaponvelocity=1200;
@@ -70,7 +69,6 @@
 
 	range=3375;
 	reloadtime=9;
-	energypershot=152;
 	accuracy=500;
 	targetmoveerror=0.05;
 	firestarter=0.0;
@@ -131,7 +129,6 @@
 
 	range=3375;
 	reloadtime=9;
-	energypershot=0;
 	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;

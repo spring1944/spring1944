@@ -12,7 +12,6 @@
 
 	range=1750;
 	reloadtime=8.5;
-	energypershot=0.5;
 	movingaccuracy=1777;
 	weaponvelocity=1500;
 	areaofeffect=2;
@@ -60,7 +59,6 @@
 
 	range=1700;
 	reloadtime=8.5;
-	energypershot=2;
 	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;

@@ -12,7 +12,6 @@
 	collisionsize=2;
 	range=1000;
 	reloadtime=3;
-	energypershot=10;
 	burst=3;
 	burstrate=0.25;
 	sprayangle=250;

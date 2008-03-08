@@ -13,7 +13,6 @@
 
 	range=300;
 	reloadtime=5;
-	energypershot=35;
 	sprayangle=1000;
 	startvelocity=1000;
 	weaponvelocity=1000;
@@ -54,7 +53,6 @@
 
 	range=300;
 	reloadtime=1.7;
-	energypershot=0;
 	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;

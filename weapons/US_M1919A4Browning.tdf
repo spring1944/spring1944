@@ -12,7 +12,6 @@
 
 	range=1150;
 	reloadtime=2;
-	energypershot=0.5;
 	burst=7;
 	burstrate=.14;
 	sprayangle=400;
@@ -60,7 +59,6 @@
 
 	range=1300;
 	reloadtime=2;
-	energypershot=2;
 	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;

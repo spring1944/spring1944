@@ -12,7 +12,6 @@
 
 	range=880;
 	reloadtime=3;
-	energypershot=0.5;
 	accuracy=100;
 	sprayangle=100;
 	movingaccuracy=888;
@@ -67,7 +66,6 @@
 
 	range=800;
 	reloadtime=3;
-	energypershot=2;
 	accuracy=400;
 	sprayangle=100;
 	movingaccuracy=888;

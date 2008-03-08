@@ -13,7 +13,6 @@
 
 	range=2250;
 	reloadtime=5.1;
-	energypershot=75;
 	accuracy=255;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -70,7 +69,6 @@
 
 	range=2250;
 	reloadtime=5.1;
-	energypershot=75;
 	accuracy=255;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -130,7 +128,6 @@
 
 	range=2250;
 	reloadtime=5.1;
-	energypershot=0;
 	weaponvelocity=1096;
 	areaofeffect=210;
 	edgeeffectiveness=1;
