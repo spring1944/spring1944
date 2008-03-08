@@ -28,7 +28,6 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	energyuse=30;
 	SeismicSignature=0;
 	sightdistance=630;
 	stealth=1;
@@ -90,6 +89,8 @@
 	{
 		maxammo=21;
 		weaponswithammo=2;
+		lowammolevel=5;
+		weaponcost=22;
 	}
 	
 }

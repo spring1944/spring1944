@@ -24,7 +24,6 @@
 	upright=1;
 	shownanoframe=0;
 
-	//energyuse=5;
 	SeismicSignature=0;
 	sightdistance=701;
 	stealth=1;
@@ -66,6 +65,8 @@
 		[customParams]
 	{
 		maxammo=10;
-		weaponswithammo=2;
+		weaponswithammo=1;
+		lowammolevel=3;
+		weaponcost=12;
 	}
 }

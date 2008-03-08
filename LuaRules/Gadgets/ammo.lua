@@ -25,7 +25,8 @@ a note on the customParams (custom FBI tags) used by this script:
 maxammo=the total ammo capacity of this unit;
 ammosupplier=boolean; //is this a ammo supplying unit?
 supplyrange=x; //how far this supply unit can supply (at this distance ammoRegen is default)
-ammowarningLevel=0-1; the level (% of total ammo) when this unit displays some kind of "low ammo" graphic
+lowAmmoLevel=x; the level when this unit displays some kind of "low ammo" graphic. example would be lowammolevel=5 for the panther.
+weaponcost= the cost to reload the weaopns with ammo per tick.
 weaponswithammo; // Number of weapons that use ammo. Must be the first ones. Default is 2.
 
 ------
@@ -61,7 +62,12 @@ local ammoPenalty = 1.5
 --------------------------------------------------------------------------------
 
 local function AmmoRegen(defaultRegen, supplyRange, nearestDepotDistance)
-  return ((0-1)*(defaultRegen/supplyRange)*nearestDepotDistance + defaultRegen)
+  local regen = ((0-1)*(defaultRegen/supplyRange)*nearestDepotDistance + defaultRegen)
+  if (regen >= 0) then
+  return regen
+  else 
+  return 0
+  end
 end
 
 
@@ -86,11 +92,20 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
   end
 end
 
-
+local function CalcReload(ammoLevel, lowAmmoLevel, reloadtime, defaultReload)
+	reloadtime = ((((0-1)*lowAmmoLevel)/defaultReload)*ammoLevel+(2*defaultReload))
+	print("lowAmmoLevel:", lowAmmoLevel)
+	print("defaultReload:", defaultReload)
+	print("ammoLevel:", ammoLevel)
+	print("reloadtime:", reloadtime)
+	return reloadtime
+end
+	
 local function ProcessWeapon(unitID, weaponNum)
   local unitDefID = GetUnitDefID(unitID)
   local _, _, reloadFrame = GetUnitWeaponState(unitID, weaponNum)
   local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
+  local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
   local weaponID = UnitDefs[unitDefID].weapons[weaponNum+1].weaponDef
   local reload = WeaponDefs[weaponID].reload
   if (CheckReload(unitID, reloadFrame, weaponNum)) then
@@ -101,8 +116,13 @@ local function ProcessWeapon(unitID, weaponNum)
     print("ammo", vehicles[unitID].ammoLevel)
   end
   
-  if (ammoLevel < 1) then
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*ammoPenalty})
+  if (ammoLevel <= 0) then 
+	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*99999}) -- a very large number to prevent it from firing until its removed
+  end	
+  if (ammoLevel < lowAmmoLevel) then
+	local defaultReload = reload
+	CalcReload(ammoLevel, lowAmmoLevel, reloadtime, defaultReload)
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime})
     vehicles[unitID].conserveAmmo = true
   else
     SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
@@ -128,14 +148,14 @@ end
 
 
 local function Resupply(unitID)
-  
+  local unitDefID = GetUnitDefID(unitID)
   local supplierID, distanceFromSupplier = FindSupplier(unitID)
   print("supplierID", supplierID, "distanceFromSupplier", distanceFromSupplier)
   if (not supplierID) then
     return
   end
   local supplierDefID = GetUnitDefID(supplierID)
-  local unitDefID = GetUnitDefID(unitID)
+  local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
   local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
   if (supplyRange < distanceFromSupplier) then
     return
@@ -151,6 +171,9 @@ local function Resupply(unitID)
     newAmmo = maxAmmo
   end
   print("Resupply ammo", oldAmmo, newAmmo)
+  if (newAmmo < maxAmmo) then
+  Spring.UseUnitResource(supplierID, "e", weaponCost)
+  end
   vehicles[unitID].ammoLevel = newAmmo
   
 end
@@ -195,17 +218,18 @@ function gadget:GameFrame(n)
    --SendToUnsynced("supplyinfo", supplierID, supplyRange)
  -- end
     for unitID in pairs(vehicles) do
+	  local unitDefID = GetUnitDefID(unitID)
 	  local ammoLevel = vehicles[unitID].ammoLevel
-	  
+	  local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	  --local maxAmmo = UnitDefs[unitDefID].customParams.maxAmmo
 	
-      local unitDefID = GetUnitDefID(unitID)
+    
       local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
       for weaponNum=0, weaponsWithAmmo-1 do
         ProcessWeapon(unitID, weaponNum)
       end
       Resupply(unitID)
-      SendToUnsynced("ammo", unitID, ammoLevel)
+      SendToUnsynced("ammo", unitID, ammoLevel, lowAmmoLevel)
     end
     
 
@@ -254,6 +278,8 @@ function gadget:DrawScreen(dt)
   CallAsTeam({ ['read'] = readTeam }, function()
     local n = Spring.GetGameFrame()
     for unitID, ammoLevel in pairs(units) do
+	--local ammoLevel = units[unitID].ammoLevel
+	--local lowAmmoLevel = units[unitID].lowAmmoLevel
         -- if (not Spring.GetUnitViewPosition(unitID)) then
           -- break
         -- end
@@ -302,12 +328,12 @@ function gadget:DrawScreen(dt)
 
   function RecvFromSynced(...)
     if (arg[2] == "ammo") then
-     units[arg[3]] = tonumber(arg[4])
+	 units[arg[3]] = tonumber(arg[4])
+	 --units[arg[3]].lowAmmoLevel = tonumber(arg[5])
     end
 	--if (arg[2] == "supplyinfo") then
     -- suppliers[arg[3]] = tonumber(arg[4]) 
-	--end
-	
+	--end	
   end
 	
 end 

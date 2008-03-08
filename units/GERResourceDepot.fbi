@@ -22,7 +22,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	energymake=15;
+	energymake=0;
 	energystorage=450;
 
 	sightdistance=1;
