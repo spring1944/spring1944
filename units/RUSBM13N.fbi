@@ -7,7 +7,7 @@
 	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
 	tedclass=TANK;
 
-	name=BM-13N;
+	name=BM-13N Katyusha;
 	description=Self-Propelled Rocket Artillery;
 	side=RUS;
 	maxdamage=700;
@@ -28,10 +28,10 @@
 
 	canmove=1;
 	movementclass=TANK_Car;
-	maxvelocity=5.2;
-	acceleration=0.03;
+	maxvelocity=4.9;
+	acceleration=0.02;
 	brakerate=0.09;
-	turnrate=425;
+	turnrate=300;
 	maxslope=6;
 	maxwaterdepth=5;
 

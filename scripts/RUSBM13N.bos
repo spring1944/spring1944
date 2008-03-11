@@ -1,7 +1,7 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8, rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16;
-piece wheel1, wheel2, wheel3;
+piece  base, turret, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8;
+piece  rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16, wheel1, wheel2, wheel3;
  
 static-var  restore_delay, rock, reloading, mainHead;
 
@@ -12,7 +12,7 @@ static-var  restore_delay, rock, reloading, mainHead;
 #define SMOKEPIECE1	base
 #define SMOKEPIECE2 rails
 #define SMOKEPIECE3 wheel1
-#define SMOKEPIECE4 rocket6
+#define SMOKEPIECE4 wheel2
 
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
 
