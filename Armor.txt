@@ -170,6 +170,7 @@
 	GERPanzerIV=99;
 	GERPanther=99;
 	GERTiger=99;
+	GERTigerII=99;
 
 	//US//
 	USM4A4Sherman=99;
@@ -183,6 +184,7 @@
 	RUST3485=99;
 	RUST3476=99;
 	RUSISU122=99;
+	RUSISU152=99;
 	RUSKV1=99;
 	RUSIS2=99;
 	RUSSU85=99;
@@ -203,7 +205,7 @@
 	//**Germany**//
 	GERSdKfz250=99;
 	GERSdKfz251=99;
-	sdkfz9=99;
+	GERSdkfz9=99;
 	GERMarder=99;
 	GERWespe=99;
 
@@ -238,10 +240,12 @@
 	RUSZiS5=99;
 	RUSZiS5_Eng=99;
 	RUSGAZAAA=99;
+	RUSBM13N=99;
 
 	//Britain//
 	GBRBedfordTruck=99;
 	GBRBedfordTruck_Eng=99;
+	GBRMatadorEngVehicle=99;
 
 	//All//
 	RubberDingy=99;

@@ -1,7 +1,7 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, brakeleft, brakeright, exhaust, hullMG;
-piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, brakeleft, brakeright, exhaust, hullmg;
+piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk;
 
@@ -114,6 +114,7 @@ StartMoving()
  	spin wheel6 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel7 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel8 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel9 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
 }
 
 StopMoving()
@@ -130,6 +131,7 @@ StopMoving()
  	stop-spin wheel6 around x-axis;
  	stop-spin wheel7 around x-axis;
  	stop-spin wheel8 around x-axis;
+  	stop-spin wheel9 around x-axis;
 }
 
 SetMaxReloadTime(longestReloadTime)
@@ -355,7 +357,7 @@ QueryWeapon6(piecenum)
 
 AimWeapon6(heading, pitch)
 {
-	if (MGFearOk=1)
+	if ( MGFearOk == 1 )
 	{
 	wait-for-turn turret around y-axis;
 	return (1);

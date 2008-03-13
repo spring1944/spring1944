@@ -1,7 +1,7 @@
 [gertigerii_damaged]
 {
-	object=GERTigerii_Damaged.S3O;
-	featuredead=GERTigerii_Destroyed;
+	object=GERTigerII_Damaged.S3O;
+	featuredead=GERTigerII_Destroyed;
 	description=Abandoned Tank;
 	energy=1000;
 	damage=2500;
@@ -11,7 +11,7 @@
 }
 [gertigerii_destroyed]
 {
-	object=GERTigerii_Destroyed.S3O;
+	object=GERTigerII_Destroyed.S3O;
 	featuredead=Debris_Small;
 	description=Destroyed Tank;
 	energy=500;
