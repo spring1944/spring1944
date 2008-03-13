@@ -15,7 +15,7 @@
 	maxdamage=9456;
 	flankingbonusdir=0 0 1;
 	flankingbonusmax=1.15;
-	flankingbonusmin=.85;
+	flankingbonusmin=.87;
 	flankingbonusmode=3;
 
 	buildcostmetal=5275;

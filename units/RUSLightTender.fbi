@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=RUSLightTender;
+	objectname=RUSLightTender.S3O;
+	//corpse=;
+	icontype=pontoon;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Light Tender;
+	description= Infantry Assault Transport;
+	maxdamage=500;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=4;
+	footprintz=4;
+	mass=1000;
+	floater=1;
+	minwaterdepth=5;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=BOAT_Medium;
+	maxvelocity=3.4;
+	acceleration=0.3;
+	brakerate=0.20;
+	turnrate=300;
+
+	transportsize=1;
+	transportcapacity=9;
+	transportmass=750;
+	isfireplatform=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	waterline=0.2;
+
+	//Weapon1=Maxim;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

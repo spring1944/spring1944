@@ -15,8 +15,8 @@
 	maxdamage=7022;
 	flankingbonusmode=3;
 	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.5;//damage to back multiplied by this
-	flankingbonusmin=.78;//damage to front multiplied by this
+	flankingbonusmax=1.49;//damage to back multiplied by this
+	flankingbonusmin=.86;//damage to front multiplied by this
 
 	buildcostmetal=1625;
 	buildcostenergy=0;

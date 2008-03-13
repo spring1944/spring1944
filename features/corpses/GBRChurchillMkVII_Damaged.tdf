@@ -1,0 +1,22 @@
+[gbrchurchillmkvii_damaged]
+{
+	object=GBRChurchillMkVII_Damaged.S3O;
+	featuredead=GBRChurchillMkVII_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=3;
+	footprintz=4;
+	reclaimable=1;
+}
+[gbrchurchillmkvii_destroyed]
+{
+	object=GBRChurchillMkVII_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed Tank;
+	energy=500;
+	damage=10000;
+	footprintx=3;
+	footprintz=4;
+	reclaimable=1;
+}
