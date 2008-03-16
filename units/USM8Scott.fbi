@@ -2,7 +2,7 @@
 {
 	unitname=USM8Scott;
 	objectname=USM8Scott.S3O;
-	corpse=USM8Scott_Destroyed;
+	corpse=USM8Scott_Damaged;
 	icontype=lighttank;
 	soundcategory=USTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
