@@ -55,7 +55,7 @@ local vehicles      = {}
 local ammoSuppliers = {}
 
 --what reload time is multiplied by when the unit runs out of ammo
-local ammoPenalty = 1.5
+local ammoPenalty = 1.5 --not used anymore
 
 
 --------------------------------------------------------------------------------
@@ -92,13 +92,13 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
   end
 end
 
-local function CalcReload(ammoLevel, lowAmmoLevel, reloadtime, defaultReload)
-	reloadtime = ((((0-1)*lowAmmoLevel)/defaultReload)*ammoLevel+(2*defaultReload))
+local function CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
+	newReload = ((((0-1)*lowAmmoLevel)/defaultReload)*ammoLevel+(2*defaultReload))
 	print("lowAmmoLevel:", lowAmmoLevel)
 	print("defaultReload:", defaultReload)
 	print("ammoLevel:", ammoLevel)
-	print("reloadtime:", reloadtime)
-	return reloadtime
+	print("newReload:", newReload)
+	return newReload
 end
 	
 local function ProcessWeapon(unitID, weaponNum)
@@ -116,15 +116,17 @@ local function ProcessWeapon(unitID, weaponNum)
     print("ammo", vehicles[unitID].ammoLevel)
   end
   
-  if (ammoLevel <= 0) then 
-	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*99999}) -- a very large number to prevent it from firing until its removed
+  if (ammoLevel < 1) then 
+	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*5} {reloadstate = 1})
   end	
-  if (ammoLevel < lowAmmoLevel) then
+  if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
 	local defaultReload = reload
-	CalcReload(ammoLevel, lowAmmoLevel, reloadtime, defaultReload)
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime})
+	local newReload = reload
+	CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload})
     vehicles[unitID].conserveAmmo = true
-  else
+  end
+  if (ammoLevel > lowAmmoLevel) then
     SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
     vehicles[unitID].conserveAmmo = nil
   end
@@ -210,7 +212,7 @@ end
 
 
 function gadget:GameFrame(n)
-  if (((n+3) % 31) < 0.1) then
+   if (n % (3*30) < 0.1) then
   
   --for supplierID in pairs(ammoSuppliers) do
  --  local supplierDefID = GetUnitDefID(supplierID)
