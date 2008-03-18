@@ -261,6 +261,44 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+ 
+-- Resource Trucks
+
+	gbrmatadorengvehicle = 
+  {
+    into = 'gbrresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+    gersdkfz9 = 
+  {
+    into = 'gerresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+    rusk31 = 
+  {
+    into = 'rusresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+    usgmcengvehicle = 
+  {
+    into = 'usresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
   
 }
 
