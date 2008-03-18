@@ -14,9 +14,9 @@
 	description=Supply Source;
 	side=RUS;
 	maxdamage=2500;
-	buildcostmetal=2400;
+	buildcostmetal=3860;
 	buildcostenergy=0;
-	buildtime=1600;
+	buildtime=2575;
 	footprintx=4;
 	footprintz=6;
 

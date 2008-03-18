@@ -94,7 +94,7 @@
 		canbuild2=USGunYard;
 		canbuild3=USCP;
 		canbuild4=USFlag;
-		canbuild5=USResourceDepot;
+		canbuild5=USResource;
 		Canbuild7=USGMCTruck;
 		canbuild8=ATmine;
 		canbuild9=APMine;
@@ -203,7 +203,7 @@
 		canbuild2=GERBarracks;
 		canbuild3=GERGunYard;
 		canbuild4=GERFlag;
-		canbuild5=GERResourceDepot;
+		canbuild5=GERResource;
 		canbuild7=ATMine;
 		canbuild8=APMine;
 		//canbuild9=Sandbags;
@@ -329,7 +329,7 @@
 		canbuild1=GBRVehicleYard;
 		canbuild2=GBRgunyard;
 		canbuild3=GBRFlag;
-		canbuild4=GBRResourceDepot;
+		canbuild4=GBRResource;
 		canbuild6=ATmine;
 		canbuild7=APMine;
 		//canbuild8=Sandbags;
@@ -416,13 +416,14 @@
 		canbuild1=RUSVehicleYard;
 		canbuild2=RUSGunYard;
 		canbuild3=RUSFlag;
-		canbuild4=RUSZiS5;
-		canbuild5=APMine;
-		canbuild6=ATMine;
-		canbuild7=TankObstacle;
+		canbuild4=RUSResource;
+		canbuild5=RUSZiS5;
+		canbuild6=APMine;
+		canbuild7=ATMine;
+		canbuild8=TankObstacle;
 		//canbuild8=Sandbags;
-		canbuild8=RUSPG117;
-		canbuild9=PontoonRaft;
+		canbuild9=RUSPG117;
+		canbuild10=PontoonRaft;
 	}
 
 	[RUSCommissar]
