@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Large Logistics Stockpile;
-	description=Provides More Logistics;
+	description=Logistics Storage (limited to 3);
 	side=GBR;
 	maxdamage=2500;
 	buildcostmetal=3860;
@@ -24,9 +24,9 @@
 	smoothanim=0;
 
 
-
+	unitrestricted=3;
 	energymake=0;
-	energystorage=300;
+	energystorage=500;
 
 	sightdistance=1;
 	stealth=1;

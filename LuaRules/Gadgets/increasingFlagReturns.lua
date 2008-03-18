@@ -24,7 +24,7 @@ end
 
 function gadget:GameFrame(t)
 
-	if (t % (30*30) < 0.1) then
+	if (t % (60*30) < 0.1) then
 		for u in pairs(flags) do
 		local defaultOutput = tonumber(flags[u].defaultOutput)
 		local lifespan = flags[u].lifespan
@@ -34,7 +34,7 @@ function gadget:GameFrame(t)
 		--call a local function to determine output
 		OutputCalc(lifespan, defaultOutput)
 
-			if (output < 3*(defaultOutput)) then
+			if (output < 2*(defaultOutput)) then
 			Spring.SetUnitMetalExtraction (u, output)	
 			end
 		flags[u].lifespan = lifespan

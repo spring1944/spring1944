@@ -21,7 +21,7 @@
 	unitrestricted=3;
 
 	metalstorage=1500;
-	energystorage=400;
+	energystorage=0;
 
 	sightdistance=146;
 	stealth=1;

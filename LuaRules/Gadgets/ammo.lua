@@ -186,9 +186,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local ud = UnitDefs[unitDefID]
-  if (ud.moveData.name                       and 
-      string.find(ud.moveData.name, "TANK")  and
-      ud.customParams.maxammo)               then
+  if (ud.customParams.maxammo)               then
     print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
       ammoLevel = ud.customParams.maxammo,

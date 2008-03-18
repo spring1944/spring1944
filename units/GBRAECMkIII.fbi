@@ -85,4 +85,11 @@
 		explosiongenerator10=custom:MuzzleBrakeSmoke;
 		explosiongenerator11=custom:SMALLARMS_TRACER;
 	}
+	[customParams]
+	{
+		maxammo=6;
+		weaponswithammo=2;
+		lowammolevel=2;
+		weaponcost=10;
+	}
 }

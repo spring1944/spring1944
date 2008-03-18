@@ -11,6 +11,7 @@
 	yardmap=o;
 
 	name=Logistikdepot;
+	description=Logistics Storage (limited to 3);
 	side=GER;
 	maxdamage=2500;
 	buildcostmetal=3750;
@@ -21,9 +22,9 @@
 
 	shownanoframe=0;
 	smoothanim=0;
-
+	unitrestricted=3;
 	energymake=0;
-	energystorage=450;
+	energystorage=500;
 
 	sightdistance=1;
 	stealth=1;
@@ -46,7 +47,5 @@
 		[customParams]
 	{
 		dontCount=1;
-		ammoSupplier=1;
-		supplyRange=1500;
 	}
 }
