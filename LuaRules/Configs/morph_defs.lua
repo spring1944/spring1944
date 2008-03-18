@@ -264,7 +264,7 @@ local morphDefs = {
  
 -- Resource Trucks
 
-	gbrmatadorengvehicle = 
+	gbrbedfordtruck =
   {
     into = 'gbrresource',
     tech = 0,
@@ -273,7 +273,7 @@ local morphDefs = {
     energy = 0,
   },
   
-    gersdkfz9 = 
+    geropelblitz =
   {
     into = 'gerresource',
     tech = 0,
@@ -282,7 +282,7 @@ local morphDefs = {
     energy = 0,
   },
   
-    rusk31 = 
+    ruszis5 =
   {
     into = 'rusresource',
     tech = 0,
@@ -291,7 +291,7 @@ local morphDefs = {
     energy = 0,
   },
   
-    usgmcengvehicle = 
+    usgmctruck =
   {
     into = 'usresource',
     tech = 0,
