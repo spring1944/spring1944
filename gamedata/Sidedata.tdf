@@ -414,17 +414,15 @@
 	[RUSEngineer]
 	{
 		canbuild1=RUSVehicleYard;
-		canbuild2=RUSTankYard;
-		canbuild3=RUSGunYard;
-		canbuild4=RUSFlag;
-		canbuild5=RUSResourceDepot;
-		canbuild6=RUSZiS5;
-		canbuild7=APMine;
-		canbuild8=ATMine;
-		canbuild9=TankObstacle;
-		//canbuild10=Sandbags;
-		canbuild10=RUSPG117;
-		canbuild111=PontoonRaft;
+		canbuild2=RUSGunYard;
+		canbuild3=RUSFlag;
+		canbuild4=RUSZiS5;
+		canbuild5=APMine;
+		canbuild6=ATMine;
+		canbuild7=TankObstacle;
+		//canbuild8=Sandbags;
+		canbuild8=RUSPG117;
+		canbuild9=PontoonRaft;
 	}
 
 	[RUSCommissar]
@@ -443,6 +441,7 @@
 		canbuild13=RUSPG117;
 		canbuild14=PontoonRaft;
 	}
+
 	[RUSCommissar1]
 	{
 		canbuild1=RUSFlag;
@@ -460,13 +459,21 @@
 		canbuild14=PontoonRaft;
 	}
 
+	[RUSK31]
+	{
+		canbuild1=RUSTankYard;
+		canbuild2=RUSResourceDepot;
+		canbuild3=TankObstacle;
+	}
+
 	[RUSVehicleYard]
 	{
-		canbuild1=RUSZiS5;
-		canbuild2=RUSBA64;
-		canbuild3=RUSM5Halftrack;
-		canbuild4=RUST60;
-		canbuild5=RUSSU76;
+		canbuild1=RUSK31;
+		canbuild2=RUSZiS5;
+		canbuild3=RUSBA64;
+		canbuild4=RUSM5Halftrack;
+		canbuild5=RUST60;
+		canbuild6=RUSSU76;
 	}
 
 	[RUSGunYard]
