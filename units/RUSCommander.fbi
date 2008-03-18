@@ -56,4 +56,11 @@
 	[sfxtypes]
 	{
 	}
+
+	[customParams]
+	{
+		hq=1;
+		refillamount=1000000; 
+		arrivalgap=180;	
+	}
 }
