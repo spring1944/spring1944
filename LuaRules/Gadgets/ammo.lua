@@ -117,7 +117,7 @@ local function ProcessWeapon(unitID, weaponNum)
   end
   
   if (ammoLevel < 1) then 
-	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*5} {reloadstate = 1})
+	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*99999})
   end	
   if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
 	local defaultReload = reload
@@ -127,7 +127,7 @@ local function ProcessWeapon(unitID, weaponNum)
     vehicles[unitID].conserveAmmo = true
   end
   if (ammoLevel > lowAmmoLevel) then
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = 1})
     vehicles[unitID].conserveAmmo = nil
   end
 end
