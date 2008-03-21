@@ -2,6 +2,7 @@
 {
 	object=GERMarder_destroyed.S3O;
 	description=Destroyed TD;
+	featuredead=Debris_Small;
 	energy=75;
 	damage=8000;
 	footprintx=3;

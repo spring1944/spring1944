@@ -2,6 +2,7 @@
 {
 	object=GERHQBunker_Destroyed.S3O;
 	description=Destroyed HQ;
+	featuredead=BuildingDebris_Large;
 	energy=1000;
 	damage=50000;
 	footprintx=10;

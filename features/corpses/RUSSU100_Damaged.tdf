@@ -12,7 +12,7 @@
 [russu100_destroyed]
 {
 	object=RUSSU100_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed Tank Destroyer;
 	energy=500;
 	damage=10000;

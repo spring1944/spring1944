@@ -2,6 +2,7 @@
 {
 	object=GBRBarracks_Destroyed.S3O;
 	description=Destroyed Barracks;
+	featuredead=BuildingDebris_Large;
 	energy=1000;
 	damage=50000;
 	footprintx=4;

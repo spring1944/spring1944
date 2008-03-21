@@ -1,7 +1,7 @@
-[GBRHQ_Destroyed]
+[RUSBarracks_Destroyed]
 {
-	object=GBRBarracks_Destroyed.S3O;
-	description=Destroyed HQ;
+	object=RUSBarracks_Destroyed.S3O;
+	description=Destroyed Barracks;
 	featuredead=BuildingDebris_Large;
 	energy=1000;
 	damage=50000;

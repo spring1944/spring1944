@@ -2,6 +2,7 @@
 {
 	object=TankObstacle.S3O;
 	description=Tank Obstacle;
+	featuredead=Debris_Small;
 	energy=25;
 	damage=1000;
 	footprintx=1;

@@ -2,6 +2,7 @@
 {
 	object=GERSdKfz9_Destroyed.S3O;
 	description=Destroyed Tractor;
+	featuredead=Debris_Small;
 	energy=75;
 	damage=50000;
 	footprintx=2;

@@ -2,6 +2,7 @@
 {
 	object=GBRM5Halftrack_Destroyed.S3O;
 	description=Destroyed Halftrack;
+	featuredead=Debris_Small;
 	energy=50;
 	damage=5000;
 	footprintx=2;

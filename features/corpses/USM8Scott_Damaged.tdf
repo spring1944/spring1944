@@ -1,15 +1,3 @@
-[USM8Scott_Damaged]
-{
-	object=USM8Scott_Damaged.S3O;
-	featuredead=USM8Scott_Destroyed;
-	description=Damaged Light Tank;
-	energy=50;
-	damage=2500;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
-}
-
 [USM8Scott_Destroyed]
 {
 	object=USM8Scott_Destroyed.S3O;

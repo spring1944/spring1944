@@ -2,6 +2,7 @@
 {
 	object=USM8Gun_Destroyed.S3O;
 	description=Destroyed Pack Howitzer;
+	featuredead=Debris_Small;
 	energy=500;
 	damage=5000;
 	footprintx=2;

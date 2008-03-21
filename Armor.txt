@@ -171,6 +171,7 @@
 	GERPanther=99;
 	GERTiger=99;
 	GERTigerII=99;
+	GERJagdpanzerIV=99;
 
 	//US//
 	USM4A4Sherman=99;

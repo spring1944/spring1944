@@ -2,6 +2,7 @@
 {
 	object=GERSdkfz251_destroyed.S3O;
 	description=Wrecked Halftrack;
+	featuredead=Debris_Small;
 	energy=25;
 	damage=8000;
 	footprintx=2;

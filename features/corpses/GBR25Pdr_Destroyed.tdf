@@ -1,6 +1,7 @@
 [gbr25pdr_destroyed]
 {
 	object=GBR25Pdr_Destroyed.S3O;
+	featuredead=BuildingDebris_Small;
 	description=Destroyed Gun;
 	energy=500;
 	damage=5000;

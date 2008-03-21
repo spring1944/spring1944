@@ -12,7 +12,7 @@
 [russu122_destroyed]
 {
 	object=RUSSU122_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed SP Artillery;
 	energy=500;
 	damage=10000;

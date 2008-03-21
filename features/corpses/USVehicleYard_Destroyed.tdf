@@ -1,7 +1,8 @@
 [usvehicleyard_destroyed]
 {
 	object=USVehicleYard.S3O;
-	description=Destroyed Barracks;
+	description=Destroyed Yard;
+	featuredead=BuildingDebris_Large;
 	energy=1000;
 	damage=50000;
 	footprintx=6;

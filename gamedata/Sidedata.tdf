@@ -246,7 +246,7 @@
 		canbuild4=GERPanther;
 		canbuild5=GERTiger;
 		canbuild6=GERWespe;
-		canbuild7=GERFi156;//temp
+		canbuild7=GERJagdpanzerIV;//temp
 	}
 
 				//////////////////////
@@ -301,6 +301,13 @@
 	}
 
 	[GBRGunyard]
+	{
+		canbuild1=GBRBedfordTruck;
+		canbuild2=GBR17Pdr;
+		canbuild3=GBR25Pdr;
+	}
+
+	[GBRHeavyGunyard]
 	{
 		canbuild1=GBRBedfordTruck;
 		canbuild2=GBR17Pdr;

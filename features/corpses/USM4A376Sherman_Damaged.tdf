@@ -12,7 +12,7 @@
 [usm4a376sherman_destroyed]
 {
 	object=USM4A376Sherman_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed Tank;
 	energy=500;
 	damage=10000;

@@ -2,6 +2,7 @@
 {
 	object=GEROpelBlitz_Destroyed.S3O;
 	description=Destroyed Truck;
+	featuredead=Debris_Small;
 	energy=50;
 	damage=5000;
 	footprintx=2;

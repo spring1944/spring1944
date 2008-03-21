@@ -12,7 +12,7 @@
 [rusisu152_destroyed]
 {
 	object=RUSISU152_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed Assault Gun;
 	energy=500;
 	damage=10000;

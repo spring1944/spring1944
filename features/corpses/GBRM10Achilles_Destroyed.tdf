@@ -1,7 +1,7 @@
 [gbrm10achilles_destroyed]
 {
 	object=GBRM10Achilles_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed Tank Destroyer;
 	energy=500;
 	damage=10000;

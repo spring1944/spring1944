@@ -300,6 +300,16 @@ local morphDefs = {
     energy = 0,
   },
   
+-- Yards
+
+	gbrvehicleyard =
+  {
+    into = 'gbrtankyard',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
 }
 
 --

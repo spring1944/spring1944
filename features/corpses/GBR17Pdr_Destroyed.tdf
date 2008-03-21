@@ -2,6 +2,7 @@
 {
 	object=GBR17Pdr_Destroyed.S3O;
 	description=Destroyed Gun;
+	featuredead=BuildingDebris_Small;
 	energy=500;
 	damage=5000;
 	footprintx=2;

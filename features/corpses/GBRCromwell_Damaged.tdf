@@ -12,7 +12,7 @@
 [gbrcromwell_destroyed]
 {
 	object=GBRCromwell_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed Tank;
 	energy=500;
 	damage=10000;

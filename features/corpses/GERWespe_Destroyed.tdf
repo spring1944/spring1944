@@ -2,6 +2,7 @@
 {
 	object=GERWespe_destroyed.S3O;
 	description=Destroyed SP;
+	featuredead=Debris_Small;
 	energy=75;
 	damage=8000;
 	footprintx=3;

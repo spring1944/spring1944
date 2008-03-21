@@ -2,6 +2,7 @@
 {
 	object=GERleFH18_Destroyed.S3O;
 	description=Destroyed Howitzer;
+	featuredead=Debris_Small;
 	energy=1000;
 	damage=5000;
 	footprintx=2;

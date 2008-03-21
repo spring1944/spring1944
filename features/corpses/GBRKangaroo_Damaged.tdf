@@ -1,7 +1,7 @@
 [gbrkangaroo_destroyed]
 {
 	object=GBRKangaroo_Destroyed.S3O;
-	featuredead=Debris_Small;
+	featuredead=Debris_Large;
 	description=Destroyed APC;
 	energy=500;
 	damage=10000;
