@@ -152,14 +152,19 @@ end
 local function Resupply(unitID)
   local unitDefID = GetUnitDefID(unitID)
   local supplierID, distanceFromSupplier = FindSupplier(unitID)
-  print("supplierID", supplierID, "distanceFromSupplier", distanceFromSupplier)
+   if (supplierID) then
+    local teamID = Spring.GetUnitTeam(supplierID)
+    local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
+    --print("logisticsLevel", logisticsLevel)
+   end
+  --print("supplierID", supplierID, "distanceFromSupplier", distanceFromSupplier)
   if (not supplierID) then
     return
   end
   local supplierDefID = GetUnitDefID(supplierID)
   local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
   local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-  if (supplyRange < distanceFromSupplier) then
+  if (supplyRange < distanceFromSupplier) or (logisticsLevel < 50) then
     return
   end
   local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
@@ -187,9 +192,9 @@ end
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local ud = UnitDefs[unitDefID]
   if (ud.customParams.maxammo)               then
-    print("add vehicle", ud.customParams.maxammo)
+  --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
-      ammoLevel = ud.customParams.maxammo,
+      ammoLevel = ud.customParams.maxammo + 2,
       reloadFrame = {},
     }
     for weaponNum=0, ud.customParams.weaponswithammo do
@@ -197,7 +202,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
     end
   end
   if (ud.customParams.ammosupplier == '1') then
-    print"add ammo supplier"
+    --print"add ammo supplier"
     ammoSuppliers[unitID] = true
   end
 end
