@@ -43,7 +43,7 @@
 	maxwaterdepth=15;
 
 	leavetracks=1;
-	trackwidth=20;
+	trackwidth=22;
 	trackoffset=5;
 	trackstrength=7;
 	trackstretch=1;

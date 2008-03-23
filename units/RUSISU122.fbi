@@ -43,9 +43,9 @@
 	maxwaterdepth=5;
 
 	leavetracks=1;
-	trackwidth=27;
+	trackwidth=22;
 	trackoffset=5;
-	trackstrength=14;
+	trackstrength=7;
 	trackstretch=1;
 	tracktype=Stdtank;
 
