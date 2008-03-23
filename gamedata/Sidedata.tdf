@@ -255,6 +255,7 @@
 		canbuild2=GERPanzerIV;
 		canbuild3=GERPanther;
 		canbuild4=GERTiger;
+		canbuild5=GERTigerII;
 	}
 
 	[GERSPYard]
