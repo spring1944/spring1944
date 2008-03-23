@@ -108,6 +108,7 @@
 	
 	weapon6=Medium_Tracer;	
 	weapon7=Large_Tracer;
+	//weapon8=FighterFear;
 
 	[sfxtypes]
 	{

@@ -123,11 +123,11 @@ local function ProcessWeapon(unitID, weaponNum)
 	local defaultReload = reload
 	local newReload = reload
 	CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload})
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = (32*newReload)})
     vehicles[unitID].conserveAmmo = true
   end
   if (ammoLevel > lowAmmoLevel) then
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = 1})
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = (32*reload)})
     vehicles[unitID].conserveAmmo = nil
   end
 end
@@ -155,6 +155,9 @@ local function Resupply(unitID)
    if (supplierID) then
     local teamID = Spring.GetUnitTeam(supplierID)
     local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
+	if (logisticsLevel < 50) then
+	 return
+	end
     --print("logisticsLevel", logisticsLevel)
    end
   --print("supplierID", supplierID, "distanceFromSupplier", distanceFromSupplier)
@@ -164,7 +167,7 @@ local function Resupply(unitID)
   local supplierDefID = GetUnitDefID(supplierID)
   local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
   local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-  if (supplyRange < distanceFromSupplier) or (logisticsLevel < 50) then
+  if (supplyRange < distanceFromSupplier) then
     return
   end
   local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)

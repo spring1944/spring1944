@@ -244,6 +244,25 @@ FireWeapon3()
 	return (0);
 }
 
+AimFromWeapon6(piecenum)
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = propeller;
+}
+
+AimWeapon6(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon6()
+{
+return (0);
+}
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;

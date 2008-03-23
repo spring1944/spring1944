@@ -99,6 +99,8 @@
 	weapon4=Medium_Tracer;	
 	weapon5=Large_Tracer;
 
+	//weapon6=FighterFear;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
