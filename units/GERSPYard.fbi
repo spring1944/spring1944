@@ -1,13 +1,13 @@
 [unitinfo]
 {
-	unitname=GERTankYard;
+	unitname=GERSPYard;
 	objectname=GERTankYard.S3O;
 	icontype=factory;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
 
-	name=Tank Depot;
+	name=Motorized Gun Depot;
 	side=GER;
 	maxdamage=8000;
 	idleautoheal=3;

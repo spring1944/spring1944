@@ -1,33 +1,33 @@
 [unitinfo]
 {
-	unitname=GERTankYard;
-	objectname=GERTankYard.S3O;
+	unitname=RUSSPYard;
+	objectname=RUSTankYard.S3O;
 	icontype=factory;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
 
-	name=Tank Depot;
-	side=GER;
+	name=Motorized Gun Depot;
+	side=RUS;
 	maxdamage=8000;
 	idleautoheal=3;
-	buildcostmetal=4800;
+	buildcostmetal=5400;
 	buildcostenergy=0;
-	buildtime=3200;
+	buildtime=3600;
 	footprintx=7;
 	footprintz=7;
 
 	shownanoframe=0;
 	unitrestricted=3;
 
-	metalstorage=4000;
+	metalstorage=300;
 	energystorage=0;
 
 	sightdistance=146;
 	stealth=1;
 
 	builder=1;
-	workertime=10;//old 180
+	workertime=10;
 	shownanospray=0;
 	canbeassisted=0;
 

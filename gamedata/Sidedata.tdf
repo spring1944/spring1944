@@ -126,9 +126,13 @@
 
 	[USGMCEngVehicle]
 	{
-		canbuild1=USTankYard;
-		canbuild2=USResourceDepot;
-		canbuild3=TankObstacle;
+		canbuild1=USBarracks;
+		canbuild2=USGunyard;
+		canbuild3=USVehicleYard;
+		canbuild4=USSPYard;
+		canbuild5=USTankYard;
+		canbuild6=USResourceDepot;
+		canbuild7=TankObstacle;
 	}
 
 	[USTankYard]
@@ -136,11 +140,14 @@
 		canbuild1=USM5Stuart;
 		canbuild2=USM4A4Sherman;
 		canbuild3=USM4A376Sherman;
-		canbuild4=USM4A3105Sherman;
-		canbuild5=USM10Wolverine;
-		canbuild6=USM7Priest;
-		canbuild7=USL4;//temp
+	}
 
+	[USSPYard]
+	{
+		canbuild1=USM8Scott;
+		canbuild2=USM4A3105Sherman;
+		canbuild3=USM10Wolverine;
+		canbuild4=USM7Priest;
 	}
 
 	[Airstrip]
@@ -233,20 +240,29 @@
 
 	[GERSdKfz9]
 	{
-		canbuild1=GERTankYard;
-		canbuild2=GERResourceDepot;
-		canbuild3=TankObstacle;
+		canbuild1=GERBarracks;
+		canbuild2=GERGunyard;
+		canbuild3=GERVehicleYard;
+		canbuild4=GERSPYard;
+		canbuild5=GERTankYard;
+		canbuild6=GERResourceDepot;
+		canbuild7=TankObstacle;
 	}
 
 	[GERTankYard]
 	{
 		canbuild1=GERPanzerIII;
 		canbuild2=GERPanzerIV;
-		canbuild3=GERStugIII;
-		canbuild4=GERPanther;
-		canbuild5=GERTiger;
+		canbuild3=GERPanther;
+		canbuild4=GERTiger;
+	}
+
+	[GERSPYard]
+	{
+		canbuild1=GERMarder;
+		canbuild2=GERStugIII;
+		canbuild3=GERJagdpanzerIV;
 		canbuild6=GERWespe;
-		canbuild7=GERJagdpanzerIV;//temp
 	}
 
 				//////////////////////
@@ -358,9 +374,13 @@
 
 	[GBRMatadorEngVehicle]
 	{
-		canbuild1=GBRTankYard;
-		canbuild2=GBRResourceDepot;
-		canbuild3=TankObstacle;
+		canbuild1=GBRBarracks;
+		canbuild2=GBRGunyard;
+		canbuild3=GBRVehicleYard;
+		canbuild4=GBRSPYard;
+		canbuild5=GBRTankYard;
+		canbuild6=GBRResourceDepot;
+		canbuild7=TankObstacle;
 	}
 
 	[GBRTankYard]
@@ -368,10 +388,15 @@
 		canbuild1=GBRAECMkIII;
 		canbuild2=GBRCromwell;
 		canbuild3=GBRShermanFirefly;
+		canbuild4=GBRCromwellMkVI;
+		canbuild5=GBRChurchillMkVII;
+		canbuild6=GBRAuster;//temp
+	}
+
+	[GBRSPYard]
+	{
 		canbuild4=GBRM10Achilles;
-		canbuild5=GBRCromwellMkVI;
-		canbuild6=GBRChurchillMkVII;
-		canbuild7=GBRAuster;//temp
+		canbuild2=GBRSexton;
 	}
 
 
@@ -469,9 +494,13 @@
 
 	[RUSK31]
 	{
-		canbuild1=RUSTankYard;
-		canbuild2=RUSResourceDepot;
-		canbuild3=TankObstacle;
+		canbuild1=RUSBarracks;
+		canbuild2=RUSGunyard;
+		canbuild3=RUSVehicleYard;
+		canbuild4=RUSSPYard;
+		canbuild5=RUSTankYard;
+		canbuild6=RUSResourceDepot;
+		canbuild7=TankObstacle;
 	}
 
 	[RUSVehicleYard]
@@ -504,5 +533,14 @@
 		canbuild8=RUSSU122;
 		canbuild9=RUSISU152;
 		canbuild10=RUSPo2;//temp
+	}
+
+	[RUSSPYard]
+	{
+		canbuild1=RUSSU76;
+		canbuild2=RUSSU85;
+		canbuild3=RUSSU100;
+		canbuild4=RUSSU122;
+		canbuild5=RUSISU152;
 	}
 }
