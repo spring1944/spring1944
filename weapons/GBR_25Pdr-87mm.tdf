@@ -12,7 +12,7 @@
 	firestarter=0.0;
 
 	range=4275;
-	reloadtime=3.5;
+	reloadtime=4.5;
 	accuracy=270;
 	targetmoveerror=0.1;
 	weaponvelocity=1200;
@@ -67,7 +67,7 @@
 	firestarter=0;
 
 	range=4275;
-	reloadtime=3.5;
+	reloadtime=4.5;
 	weaponvelocity=1200;
 	areaofeffect=250;
 	edgeeffectiveness=1;
