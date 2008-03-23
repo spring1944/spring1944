@@ -176,6 +176,7 @@
 	//US//
 	USM4A4Sherman=99;
 	USM4A376Sherman=99;
+	USM4A3105Sherman=99;
 	USM5Stuart=99;
 
 	//USSR//
@@ -224,6 +225,7 @@
 	GBRDaimler=99;
 	GBRM5Halftrack=99;
 	GBRAECMkIII=99;
+	GBRSexton=99;
 	}
 
 [UnarmouredVehicles]
