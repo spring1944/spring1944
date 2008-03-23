@@ -2,7 +2,6 @@
 {
 	unitname=RUSISU122;
 	objectname=RUSISU122.S3O;
-	buildpic=RUSISU122.bmp;
 	corpse=RUSISU122_Damaged;
 	icontype=selfprop;
 	soundcategory=RUSZveroboy;
