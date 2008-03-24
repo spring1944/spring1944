@@ -75,4 +75,12 @@
 		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
 		explosiongenerator10=custom:MuzzleBrakeSmoke;
 	}
+
+	[customParams]
+	{
+		maxammo=13;
+		weaponswithammo=1;
+		lowammolevel=3;
+		weaponcost=13;
+	}
 }
