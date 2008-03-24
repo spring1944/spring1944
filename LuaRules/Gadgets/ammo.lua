@@ -74,7 +74,7 @@ end
 local function DefaultRegen(unitDefID)
   local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
   local reload = WeaponDefs[weaponID].reload
-  return 2/reload
+  return reload
 end
 
 
@@ -172,7 +172,7 @@ local function Resupply(unitID)
   end
   local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
   local defaultRegen = DefaultRegen(unitDefID)
-  local ammoRegen = AmmoRegen(defaultRegen, supplyRange, distanceFromSupplier)
+  local ammoRegen = defaultRegen --AmmoRegen(defaultRegen, supplyRange, distanceFromSupplier)
   local oldAmmo = vehicles[unitID].ammoLevel
   
   
