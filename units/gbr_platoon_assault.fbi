@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=16 x SMG, 4 x Rifles, 4 x Anti-Tank;
+	description= 12 x Sten SMG;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=3300;
+	buildcostmetal=1650;
 	buildcostenergy=0;
-	buildtime=1650;
+	buildtime=825;
 	footprintx=1;
 	footprintz=1;
 

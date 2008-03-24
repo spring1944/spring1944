@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=18 x Submachinegunner, 2 x Rifleman, 2 x BAR, 2 x Bazooka;
+	description=12 x Thompson SMG;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=2140;
+	buildcostmetal=1070;
 	buildcostenergy=0;
-	buildtime=1070;
+	buildtime=535;
 	footprintx=1;
 	footprintz=1;
 

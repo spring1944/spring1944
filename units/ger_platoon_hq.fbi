@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Rifle Squad;
-	description=4 x Rifle, 2 x SMG;
+	description=4 x Kar 98K Rifle, 2 x MP40 SMG;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

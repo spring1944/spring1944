@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=16 x Rifleman, 2 x MG, 2 x BAR;
+	description=8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1900;
+	buildcostmetal=950;
 	buildcostenergy=0;
-	buildtime=950;
+	buildtime=475;
 	footprintx=1;
 	footprintz=1;
 

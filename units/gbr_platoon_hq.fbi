@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Rifle Squad;
-	description=4 x Rifle, 2 x SMG;
+	description=4 x Enfield Rifle, 2 x Sten SMG;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

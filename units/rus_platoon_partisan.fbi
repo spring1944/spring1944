@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Partisan Contingent;
-	description=35 x Partisans;
+	description=16 x Partisans;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1760;
+	buildcostmetal=880;
 	buildcostenergy=0;
-	buildtime=880;
+	buildtime=440;
 	footprintx=1;
 	footprintz=1;
 

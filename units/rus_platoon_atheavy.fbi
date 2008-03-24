@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Anti-Tank Assault Squad;
-	description=3 x Anti-Tank Grenade, 3 x SMG;
+	description=3 x RPG-43 Anti-Tank Grenade;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

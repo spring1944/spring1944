@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=16 x Rifleman, 4 x SMG, 4 x MG;
+	description=10 x Enfield Rifle, 2 x Sten SMG;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=3420;
+	buildcostmetal=1710;
 	buildcostenergy=0;
-	buildtime=1710;
+	buildtime=855;
 	footprintx=1;
 	footprintz=1;
 

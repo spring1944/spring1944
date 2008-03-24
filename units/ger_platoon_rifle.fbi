@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=16 x Rifleman, 4 x SMG, 4 x MG;
+	description=10 x Kar 98K Rifle, 2 x MP40 SMG;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=3080;
+	buildcostmetal=1540;
 	buildcostenergy=0;
-	buildtime=1540;
+	buildtime=770;
 	footprintx=1;
 	footprintz=1;
 

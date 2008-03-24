@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=3 x Machinegun, 2 x Rifleman, 1 x Scout;
+	description=3 x MG42 Machinegun;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

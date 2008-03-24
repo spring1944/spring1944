@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Mortar Team;
-	description=3 x Mortar;
+	description=3 x GrW 34 Mortar;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

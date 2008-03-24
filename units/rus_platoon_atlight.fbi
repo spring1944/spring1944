@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Anti-Tank Rifle Squad;
-	description=3 x PTRD, 3 x Rifle;
+	description=3 x PTRD Anti-Tank Rifle;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

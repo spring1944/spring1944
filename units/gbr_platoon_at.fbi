@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Anti-Tank Squad;
-	description=3 x Anti-Tank, 3 x SMG;
+	description= 3 x PIAT;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

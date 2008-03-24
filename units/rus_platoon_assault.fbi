@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=20 x SMG, 2 x DP, 2 x Anti-Tank Grenade;
+	description=12 x PPsh-43 SMG;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1840;
+	buildcostmetal=920;
 	buildcostenergy=0;
-	buildtime=920;
+	buildtime=460;
 	footprintx=1;
 	footprintz=1;
 

@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=10 x Rifleman, 10 x SMG, 4 x DP;
+	description=8 x Mosin-Nagant Rifle, 4 x PPsh-43 SMG;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1760;
+	buildcostmetal=880;
 	buildcostenergy=0;
-	buildtime=880;
+	buildtime=440;
 	footprintx=1;
 	footprintz=1;
 

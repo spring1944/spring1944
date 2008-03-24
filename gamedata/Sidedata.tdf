@@ -529,11 +529,6 @@
 		canbuild3=RUST3485;
 		canbuild4=RUSKV1;
 		canbuild5=RUSIS2;
-		canbuild6=RUSSU85;
-		canbuild7=RUSSU100;
-		canbuild8=RUSSU122;
-		canbuild9=RUSISU152;
-		canbuild10=RUSPo2;//temp
 	}
 
 	[RUSSPYard]

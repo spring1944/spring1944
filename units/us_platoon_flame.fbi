@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Flamethrower Squad;
-	description=3 x Flamethrower, 3 x SMG;
+	description=3 x Flamethrower;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;
