@@ -379,7 +379,7 @@ local squadDefs = {
 	["us_platoon_flame"] = 
 	{
 		"usgiflamethrower",
-		"usgiflamethrower",,
+		"usgiflamethrower",
 		"usgiflamethrower",
 	},
 	
