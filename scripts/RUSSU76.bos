@@ -4,7 +4,7 @@ piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, FearOk;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -46,7 +46,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define AA_ELEVATE		<150>
 
 // definitions for weapons behaviour
-#define RELOAD		4300 // time in milliseconds between shots
+#define RELOAD		3500 // time in milliseconds between shots
 #define RECOIL		[-2] // distance to recoil the gun
 #define RETURN_SPEED	[15] // speed at which the barrel returns
 
@@ -184,6 +184,7 @@ FireWeapon1()
 	
 	// TODO: Add to SFX
 	// Do SFX
+	FearOk=1;
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
@@ -210,12 +211,17 @@ QueryWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {
+	if (FearOk==1)
+	{
 	wait-for-turn mantlet around y-axis;
-return (1);
+	return (1);
+	}
+return 0;
 }
 
 FireWeapon3()
 {
+FearOk=0;
 return (0);
 }
 

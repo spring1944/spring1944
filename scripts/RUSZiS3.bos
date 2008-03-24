@@ -4,7 +4,7 @@ piece ground, carriage, turret, gunleg1, gunleg2, wheels, sleeve, barrel, flare,
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
 piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
  
-static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned;
+static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned, FearOk;
 
 
  
@@ -650,6 +650,7 @@ FireWeapon1()
 {
 	// TODO: Add to SFX
 	// Do SFX
+	FearOk=1;
 	emit-sfx MEDIUM_Muzzleflash from flare;
 	emit-sfx MEDIUM_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
@@ -684,7 +685,7 @@ AimWeapon2(heading, pitch)
 		signal SIG_AIM2;
 		set-signal-mask SIG_AIM2;
 		
-		if (isDeployed)
+		if (isDeployed && FearOk==1)
 		{
 		wait-for-turn carriage around y-axis;
 		return (1);
@@ -695,6 +696,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
+FearOk=0;
 return (0);
 }
 

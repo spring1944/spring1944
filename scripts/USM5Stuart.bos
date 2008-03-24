@@ -2,7 +2,7 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, hullmg, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, MGFearOk, CannonFearOk;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -182,6 +182,7 @@ FireWeapon1()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
+	CannonFearOk=1;
 	emit-sfx SMALL_MUZZLEFLASH from flare;
 	emit-sfx SMALL_MUZZLEDUST from flare;
 	// barrel recoil
@@ -206,12 +207,17 @@ QueryWeapon6(piecenum)
 
 AimWeapon6(heading, pitch)
 {
-wait-for-turn turret around y-axis;
-return (1);
+	if (CannonFearOk==1)
+	{
+	wait-for-turn turret around y-axis;
+	return (1);
+	}
+return 0;
 }
 
 FireWeapon6()
 {
+CannonFearOk=0;
 return (0);
 }
 
@@ -310,7 +316,7 @@ FireWeapon3()
 	sleep 109;
 		emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 109;
-	
+	MGFearOk=1;
 	return(0);
 	}
 	
@@ -326,8 +332,12 @@ QueryWeapon7(piecenum)
 
 AimWeapon7(heading, pitch)
 {
+	if (MGFearOk==1)
+	{
 	wait-for-turn turret around y-axis;
-return (1);
+	return (1);
+	}
+return 0;
 }
 
 FireWeapon7()

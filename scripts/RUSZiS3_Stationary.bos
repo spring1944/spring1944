@@ -3,7 +3,7 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk;
 
 #include "inf_suppressionvars.h"
 // Signal definitions
@@ -162,7 +162,7 @@ HitByWeaponId(z,x,id,damage)
 	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
 }
 
-// Weapon 1
+// Weapon 1 76mm HE
 QueryWeapon1(piecenum)
 {
 	piecenum = flare;
@@ -194,7 +194,7 @@ FireWeapon1()
 	emit-sfx MEDIUM_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
-	
+	FearOk=1;
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
@@ -203,6 +203,32 @@ FireWeapon1()
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
 	CREW_RELOADING
+}
+
+//Weapon 2 76mm HE Fear
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = barrel;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (fear>0 || FearOk==0) return 0;
+
+	wait-for-turn carriage around y-axis;
+	wait-for-turn carriage around x-axis;
+	return 1;
+}
+
+FireWeapon2()
+{
+FearOk=0;
+return 0;
 }
 
 Killed(severity, corpsetype)

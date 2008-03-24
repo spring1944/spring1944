@@ -2,7 +2,7 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, hullmg, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, FearOk;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -182,6 +182,7 @@ FireWeapon1()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
+	FearOk=1;
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
 	// barrel recoil
@@ -194,160 +195,44 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon6(piecenum) //Main gun HE fear
+AimFromWeapon4(piecenum) //Main gun HE fear
 {
 	piecenum = turret;
 }
 
-QueryWeapon6(piecenum)
+QueryWeapon4(piecenum)
 {
 	piecenum = flare;
 }
 
-AimWeapon6(heading, pitch)
+AimWeapon4(heading, pitch)
 {
-wait-for-turn turret around y-axis;
-return (1);
-}
-
-FireWeapon6()
-{
-return (0);
-}
-
-// Weapon 2 - Main cannon, AP
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon2(heading, pitch)
-{	
-	aim2 = TRUE;
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-
-	mainHead = heading;
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	if (FearOk==1)
+	{
 	wait-for-turn turret around y-axis;
-	wait-for-turn mantlet around x-axis;
-	
-	start-script RestoreAfterDelay();
-	aim2 = FALSE;
-	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	return 1;
-}
-
-FireWeapon2()
-{
-	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX - done!
-	emit-sfx MEDIUM_MUZZLEFLASH from flare;
-	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	// barrel recoil
-	move barrel to z-axis RECOIL now;
-	sleep 200;
-	move barrel to z-axis 0 speed RETURN_SPEED;
-	
-	rock = FALSE;
-	start-script Reload(); // start reload timer after firing
-	return 0;
-}
-
-// Weapon 3 - Coax MG
-QueryWeapon3 (piecenum)
-	{
-	piecenum = coaxFlare;
-	}
-
-AimFromWeapon3 (piecenum)
-	{
-	piecenum = turret;
-	}
-
-AimWeapon3(heading, pitch)
-	{
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
-	MGAiming=1;
-	if (mainHead > 0) {
-	  if (heading < mainHead - COAX_ARC || heading > mainHead + COAX_ARC) return 0;
-	}
-	if (mainHead < 0) {
-	  if (heading > mainHead - COAX_ARC || heading < mainHead + COAX_ARC) return 0;		
-	}
-	
-	//turn turret to y-axis heading speed TURR_TRAVERSE;
-	wait-for-turn turret around y-axis;
-	
-	//start-script RestoreAfterDelay();
-	MGAiming=0;
 	return (1);
 	}
-
-FireWeapon3()
-	{
-	rock = FALSE;
-	
-	// TODO: nice SFX - done!
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-		emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-		emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-		emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-		emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-		emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-	
-	return(0);
-	}
-	
-AimFromWeapon7(piecenum) //Coax fear 
-{
-	piecenum = turret;
+	return 0;
 }
 
-QueryWeapon7(piecenum)
+FireWeapon4()
 {
-	piecenum = coaxflare;
-}
-
-AimWeapon7(heading, pitch)
-{
-	wait-for-turn turret around y-axis;
-return (1);
-}
-
-FireWeapon7()
-{
+FearOk=0;
 return (0);
 }
 
-
-// Weapon 4 - AA MG
-QueryWeapon4 (piecenum)
+// Weapon 2 - AA MG
+QueryWeapon2 (piecenum)
 	{
 	piecenum = aaFlare;
 	}
 
-AimFromWeapon4 (piecenum)
+AimFromWeapon2 (piecenum)
 	{
 	piecenum = aaGun;
 	}
 
-AimWeapon4(heading, pitch)
+AimWeapon2(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -362,7 +247,7 @@ AimWeapon4(heading, pitch)
 	return (1);
 	}
 
-FireWeapon4()
+FireWeapon2()
 	{
 	rock = FALSE;
 	
@@ -374,7 +259,28 @@ FireWeapon4()
 	return(0);
 	}
 
-AimFromWeapon5(piecenum) //bulletproof effect
+AimFromWeapon3(piecenum) //bulletproof effect
+{
+	piecenum = base;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon3(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon3()
+{
+return (0);
+}
+
+
+AimFromWeapon5(piecenum) //fear shield
 {
 	piecenum = base;
 }
@@ -390,27 +296,6 @@ return (1);
 }
 
 FireWeapon5()
-{
-return (0);
-}
-
-
-AimFromWeapon8(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon8(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon8(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon8()
 {
 return (0);
 }
