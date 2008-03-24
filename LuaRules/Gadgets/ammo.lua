@@ -62,7 +62,7 @@ local ammoPenalty = 1.5 --not used anymore
 --------------------------------------------------------------------------------
 
 local function AmmoRegen(defaultRegen, supplyRange, nearestDepotDistance)
-  local regen = ((0-1)*(defaultRegen/supplyRange)*nearestDepotDistance + defaultRegen)
+  local regen = ((0-1)*(defaultRegen/supplyRange)*nearestDepotDistance + (2*defaultRegen))
   if (regen >= 0) then
   return regen
   else 
