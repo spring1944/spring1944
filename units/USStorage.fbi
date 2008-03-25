@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=USResourceDepot;
+	unitname=USStorage;
 	objectname=LogisticsLarge.S3O;
 	buildpic=LogisticsLarge.png;
 	corpse=Debris_Large;
@@ -10,8 +10,8 @@
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistics Depot;
-	description=Supply Source;
+	name=Supply Storage;
+	description=- Increases ammunition storage;
 	maxdamage=2500;
 	buildcostmetal=4290;
 	buildcostenergy=0;

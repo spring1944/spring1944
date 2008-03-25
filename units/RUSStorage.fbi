@@ -1,0 +1,53 @@
+[unitinfo]
+{
+	unitname=RUSStorage;
+	objectname=LogisticsLarge.S3O;
+	buildpic=LogisticsLarge.png;
+	corpse=Debris_Large;
+	icontype=ammo;
+	soundcategory=RUSInf;
+	category=NOWEAPON  BUILDING NFLAG NFLAGNAIR;
+	tedclass=ENERGY;
+	yardmap=o;
+
+	name=Supply Storage;
+	description=- Increases ammunition storage;
+	side=RUS;
+	maxdamage=2500;
+	buildcostmetal=3860;
+	buildcostenergy=0;
+	buildtime=2575;
+	footprintx=4;
+	footprintz=6;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energystorage=850;
+
+	sightdistance=1;
+	stealth=1;
+
+	activatewhenbuilt=1;
+
+	maxslope=15;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=4;
+	buildinggrounddecalsizey=6;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=Massive_Explosion;
+	selfdestructas=Massive_Explosion;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -97,9 +97,11 @@
 	GERBarracks=99;
 	GERVehicleYard=99;
 	GERResource=99;
-	GERResourceDepot=99;
+	GERStorage=99;
 	GERGunYard=99;
 	GERTankYard=99;
+	GERSupplyDepot=99;
+	GERTruckSupplies=99;
 
 	//US//
 	USHQ=99;
@@ -107,26 +109,32 @@
 	USBarracks=99;
 	USVehicleYard=99;
 	USResource=99;
-	USResourceDepot=99;
+	USStorage=99;
 	USGunYard=99;
+	USSupplyDepot=99;
+	USTruckSupplies=99;
 
 	//USSR//
 	RUSBarracks=99;
 	RUSVehicleYard=99;
 	RUSResource=99;
-	RUSResourceDepot=99;
+	RUSStorage=99;
 	RUSGunYard=99;
 	RUSShack=99;
 	RUSPResource=99;
+	RUSSupplyDepot=99;
+	RUSTruckSupplies=99;
 
 	//Britain//
 	GBRResource=99;
-	GBRResourceDepot=99;
+	GBRStorage=99;
 	GBRGunYard=99;
 	GBRVehicleYard=99;
 	GBRBarracks=99;
 	GBRLZ=99;
 	GBRHQ=99;
+	GBRSupplyDepot=99;
+	GBRTruckSupplies=99;
 
 	}
 
@@ -233,22 +241,26 @@
 	//**Germany**//
 	GEROpelBlitz=99;
 	GEROpelBlitz_Eng=99;
+	GERSupplyTruck=99;
 
 	//US//
 	USGMCTruck=99;
 	USGMCTruck_Eng=99;
 	USGMCEngVehicle=99;
+	USSupplyTruck=99;
 
 	//USSR//
 	RUSZiS5=99;
 	RUSZiS5_Eng=99;
 	RUSGAZAAA=99;
 	RUSBM13N=99;
+	RUSSupplyTruck=99;
 
 	//Britain//
 	GBRBedfordTruck=99;
 	GBRBedfordTruck_Eng=99;
 	GBRMatadorEngVehicle=99;
+	RUSSupplyTruck=99;
 
 	//All//
 	RubberDingy=99;

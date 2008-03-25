@@ -1,24 +1,24 @@
 [unitinfo]
 {
-	unitname=GBRResource;
-	objectname=LogisticsMed.S3O;
-	buildpic=LogisticsSmall.png;
-	corpse=Debris_Small;
+	unitname=GBRSupplyDepot;
+	objectname=LogisticsHuge.S3O;
+	buildpic=LogisticsHuge.png;
+	corpse=BuildingDebris_Large;
 	icontype=ammo;
 	soundcategory=GbrInf;
 	category=NFLAGNAIR BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistics Stockpile;
-	description=Provides Logistics (Energy);
+	name=Supply Depot;
+	description=- Major Ammunition Supply Dump;
 	side=GBR;
-	maxdamage=400;
-	buildcostmetal=720;
+	maxdamage=3000;
+	buildcostmetal=3600;
 	buildcostenergy=0;
-	buildtime=480;
-	footprintx=3;
-	footprintz=3;
+	buildtime=2400;
+	footprintx=7;
+	footprintz=7;
 
 	shownanoframe=0;
 	smoothanim=0;
@@ -34,12 +34,12 @@
 	maxslope=15;
 
 	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=4;
+	buildinggrounddecalsizex=8;
+	buildinggrounddecalsizey=8;
 	buildinggrounddecaltype=Dirt2.dds;
 
-	explodeas=ResourceBoom;
-	selfdestructas=Med_Explosion;
+	explodeas=massive_explosion;
+	selfdestructas=massive_explosion;
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;
@@ -50,6 +50,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=300;
+		supplyRange=2000;
 	}
 }

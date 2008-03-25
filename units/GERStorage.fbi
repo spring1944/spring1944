@@ -1,29 +1,27 @@
 [unitinfo]
 {
-	unitname=GBRResourceDepot;
+	unitname=GERStorage;
 	objectname=LogisticsLarge.S3O;
 	buildpic=LogisticsLarge.png;
 	corpse=Debris_Large;
 	icontype=ammo;
-	soundcategory=GbrInf;
-	category=NFLAGNAIR BUILDING NFLAG ;
+	soundcategory=GERInf;
+	category=NFLAGNAIR NOWEAPON   BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Large Logistics Stockpile;
-	description=Logistics Storage (limited to 3);
-	side=GBR;
+	name=Supply Storage;
+	description=- Increases ammunition storage;
+	side=GER;
 	maxdamage=2500;
-	buildcostmetal=3860;
+	buildcostmetal=3750;
 	buildcostenergy=0;
-	buildtime=2575;
+	buildtime=2500;
 	footprintx=4;
 	footprintz=6;
 
 	shownanoframe=0;
 	smoothanim=0;
-
-
 	unitrestricted=3;
 	energymake=0;
 	energystorage=500;
@@ -34,7 +32,7 @@
 	activatewhenbuilt=1;
 
 	maxslope=15;
-
+	weapon1=bigsupply;
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=5;
 	buildinggrounddecalsizey=7;
@@ -42,11 +40,11 @@
 
 	explodeas=Massive_Explosion;
 	selfdestructas=Massive_Explosion;
-
+	
 	[sfxtypes]
 	{
 	}
-	[customParams]
+		[customParams]
 	{
 		dontCount=1;
 	}

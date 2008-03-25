@@ -1,30 +1,30 @@
 [unitinfo]
 {
-	unitname=RUSResourceDepot;
-	objectname=LogisticsLarge.S3O;
-	buildpic=LogisticsLarge.png;
+	unitname=RUSTruckSupplies;
+	objectname=RUSTruckSupplies.S3O;
+	buildpic=RUSTruckSupplies.png;
 	corpse=Debris_Large;
 	icontype=ammo;
-	soundcategory=RUSInf;
-	category=NOWEAPON  BUILDING NFLAG NFLAGNAIR;
+	soundcategory=GbrInf;
+	category=NFLAGNAIR BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistics Depot;
-	description=Supply Source;
+	name=Unloaded Supply Truck;
+	description=Provides Ammunition;
 	side=RUS;
-	maxdamage=2500;
-	buildcostmetal=3860;
+	maxdamage=400;
+	buildcostmetal=720;
 	buildcostenergy=0;
-	buildtime=2575;
+	buildtime=480;
 	footprintx=4;
-	footprintz=6;
+	footprintz=4;
 
-	hidedamage=1;
 	shownanoframe=0;
 	smoothanim=0;
 
-	energystorage=850;
+	energymake=0;
+	energystorage=0;
 
 	sightdistance=1;
 	stealth=1;
@@ -35,11 +35,11 @@
 
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=6;
+	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
 
-	explodeas=Massive_Explosion;
-	selfdestructas=Massive_Explosion;
+	explodeas=ResourceBoom;
+	selfdestructas=Med_Explosion;
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;
@@ -49,5 +49,7 @@
 	[customParams]
 	{
 		dontCount=1;
+		ammoSupplier=1;
+		supplyRange=700;
 	}
 }

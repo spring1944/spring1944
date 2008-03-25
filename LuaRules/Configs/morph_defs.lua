@@ -264,54 +264,71 @@ local morphDefs = {
  
 -- Resource Trucks
 
-	gbrbedfordtruck =
+	gbrsupplytruck =
   {
-    into = 'gbrresource',
+    into = 'gbrtrucksupplies',
     tech = 0,
     time = 5,
-    metal = 0,
+    metal = 25,
+    energy = 0,
+  },  
+    gbrtrucksupplies =
+  {
+    into = 'gbrsupplytruck',
+    tech = 0,
+    time = 5,
+    metal = 25,
+    energy = 0,
+  },  
+    gersupplytruck =
+  {
+    into = 'gertrucksupplies',
+    tech = 0,
+    time = 5,
+    metal = 25,
+    energy = 0,
+  },  
+    gertrucksupplies =
+  {
+    into = 'gersupplytruck',
+    tech = 0,
+    time = 5,
+    metal = 25,
+    energy = 0,
+  },  
+    russupplytruck =
+  {
+    into = 'rustrucksupplies',
+    tech = 0,
+    time = 5,
+    metal = 25,
+    energy = 0,
+  }, 
+    rustrucksupplies =
+  {
+    into = 'russupplytruck',
+    tech = 0,
+    time = 5,
+    metal = 25,
+    energy = 0,
+  },  
+    ussupplytruck =
+  {
+    into = 'ustrucksupplies',
+    tech = 0,
+    time = 5,
+    metal = 25,
     energy = 0,
   },
-  
-    geropelblitz =
+    ustrucksupplies =
   {
-    into = 'gerresource',
+    into = 'ussupplytruck',
     tech = 0,
     time = 5,
-    metal = 0,
-    energy = 0,
-  },
-  
-    ruszis5 =
-  {
-    into = 'rusresource',
-    tech = 0,
-    time = 5,
-    metal = 0,
-    energy = 0,
-  },
-  
-    usgmctruck =
-  {
-    into = 'usresource',
-    tech = 0,
-    time = 5,
-    metal = 0,
-    energy = 0,
-  },
-  
--- Yards
-
-	gbrvehicleyard =
-  {
-    into = 'gbrtankyard',
-    tech = 0,
-    time = 5,
-    metal = 0,
+    metal = 25,
     energy = 0,
   },
 }
-
 --
 -- Here's an example of why active configuration
 -- scripts are better then static TDF files...

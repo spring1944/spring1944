@@ -1,24 +1,24 @@
 [unitinfo]
 {
-	unitname=GBRResource;
-	objectname=LogisticsMed.S3O;
-	buildpic=LogisticsSmall.png;
-	corpse=Debris_Small;
+	unitname=GBRTruckSupplies;
+	objectname=GBRTruckSupplies.S3O;
+	buildpic=GBRTruckSupplies.png;
+	corpse=Debris_Large;
 	icontype=ammo;
 	soundcategory=GbrInf;
 	category=NFLAGNAIR BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistics Stockpile;
-	description=Provides Logistics (Energy);
+	name=Unloaded Supply Truck;
+	description=Provides Ammunition;
 	side=GBR;
 	maxdamage=400;
 	buildcostmetal=720;
 	buildcostenergy=0;
 	buildtime=480;
-	footprintx=3;
-	footprintz=3;
+	footprintx=4;
+	footprintz=4;
 
 	shownanoframe=0;
 	smoothanim=0;
@@ -50,6 +50,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=300;
+		supplyRange=700;
 	}
 }

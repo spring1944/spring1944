@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=GERSupplyTruck;
+	objectname=GERSupplyTruck.S3O;
+	buildpic=GEROpelBlitz.png;
+	corpse=GEROpelBlitz_Destroyed;
+	icontype=truck;
+	soundcategory=GERTank;
+	category=NFLAGNAIR TPORT LIGHTVEH INFTARG NFLAG NWEAPON;
+	tedclass=TANK;
+
+	name=Supply Truck;
+	description=;
+	maxdamage=500;
+	buildcostmetal=660;
+	buildcostenergy=0;
+	buildtime=220;
+	footprintx=3;
+	footprintz=3;
+	mass=1000;
+
+	shownanoframe=0;
+	smoothanim=0;
+
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Truck;
+	maxvelocity=6.2;
+	acceleration=0.3;
+	brakerate=0.45;
+	turnrate=440;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=13;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	weapon1=smallsupply;
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+		[customParams]
+	{
+		dontCount=1;
+	}
+}

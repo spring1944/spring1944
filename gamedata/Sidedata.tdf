@@ -108,7 +108,7 @@
 	[USVehicleYard]
 	{
 		canbuild1=USGMCEngVehicle;
-		canbuild2=USGMCTruck;
+		canbuild2=USSupplyTruck;
 		//canbuild3=USJeep;
 		canbuild4=USM3Halftrack;
 		canbuild5=USM8Greyhound;
@@ -131,8 +131,9 @@
 		canbuild3=USVehicleYard;
 		canbuild4=USSPYard;
 		canbuild5=USTankYard;
-		canbuild6=USResourceDepot;
-		canbuild7=TankObstacle;
+		canbuild6=USStorage;
+		canbuild7=USSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[USTankYard]
@@ -223,7 +224,7 @@
 	[GERVehicleYard]
 	{
 		canbuild1=GERSdKfz9;
-		canbuild2=GEROpelBlitz;
+		canbuild2=GERSupplyTruck;
 		canbuild3=GERSdkfz250;
 		canbuild4=GERSdkfz251;
 		canbuild5=GERMarder;
@@ -245,8 +246,9 @@
 		canbuild3=GERVehicleYard;
 		canbuild4=GERSPYard;
 		canbuild5=GERTankYard;
-		canbuild6=GERResourceDepot;
-		canbuild7=TankObstacle;
+		canbuild6=GERStorage;
+		canbuild7=GERSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[GERTankYard]
@@ -367,7 +369,7 @@
 	[GBRVehicleYard]
 	{
 		canbuild1=GBRMatadorEngVehicle;
-		canbuild2=GBRBedfordTruck;
+		canbuild2=GBRSupplyTruck;
 		canbuild3=GBRM5Halftrack;
 		canbuild4=GBRDaimler;
 		canbuild5=GBRKangaroo;
@@ -380,8 +382,9 @@
 		canbuild3=GBRVehicleYard;
 		canbuild4=GBRSPYard;
 		canbuild5=GBRTankYard;
-		canbuild6=GBRResourceDepot;
-		canbuild7=TankObstacle;
+		canbuild6=GBRStorage;
+		canbuild7=GBRSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[GBRTankYard]
@@ -500,14 +503,15 @@
 		canbuild3=RUSVehicleYard;
 		canbuild4=RUSSPYard;
 		canbuild5=RUSTankYard;
-		canbuild6=RUSResourceDepot;
-		canbuild7=TankObstacle;
+		canbuild6=RUSStorage;
+		canbuild7=RUSSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[RUSVehicleYard]
 	{
 		canbuild1=RUSK31;
-		canbuild2=RUSZiS5;
+		canbuild2=RUSSupplyTruck;
 		canbuild3=RUSBA64;
 		canbuild4=RUSM5Halftrack;
 		canbuild5=RUST60;

@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=USSupplyTruck;
+	objectname=USSupplyTruck.S3O;
+	corpse=USGMCTruck_Destroyed;
+	icontype=truck;
+	soundcategory=USTank;
+	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+	tedclass=TANK;
+
+	name=Supply Truck;
+	description=;
+	maxdamage=550;
+	buildcostmetal=660;
+	buildcostenergy=0;
+	buildtime=220;
+	footprintx=3;
+	footprintz=3;
+	mass=750;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Truck;
+	maxvelocity=4.8;
+	acceleration=0.35;
+	brakerate=0.45;
+	turnrate=440;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}
