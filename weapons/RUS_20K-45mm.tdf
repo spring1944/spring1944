@@ -61,7 +61,7 @@
 [20k45mmap]
 {
 	id=100;
-	name=Q.F. 2 Pounder Mk.X L / 50 Armour-Piercing;
+	name=20K M1938 45mm Armour Piercing;
 	rendertype=1;
 	turret=1;
 	tolerance=300;
