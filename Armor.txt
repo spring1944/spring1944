@@ -107,6 +107,7 @@
 	GERTankYard=99;
 	GERSupplyDepot=99;
 	GERTruckSupplies=99;
+	GERSPYard=99;
 
 	//US//
 	USHQ=99;
@@ -118,6 +119,7 @@
 	USGunYard=99;
 	USSupplyDepot=99;
 	USTruckSupplies=99;
+	USSPYard=99;
 
 	//USSR//
 	RUSBarracks=99;
@@ -129,6 +131,7 @@
 	RUSPResource=99;
 	RUSSupplyDepot=99;
 	RUSTruckSupplies=99;
+	RUSSPYard=99;
 
 	//Britain//
 	GBRResource=99;
@@ -140,6 +143,7 @@
 	GBRHQ=99;
 	GBRSupplyDepot=99;
 	GBRTruckSupplies=99;
+	GBRSPYard=99;
 
 	}
 
