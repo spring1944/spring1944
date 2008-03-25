@@ -12,9 +12,9 @@
 	description=Armoured Battalion Engineer Vehicle;
 	side=GER;
 	maxdamage=1000;
-	buildcostmetal=800;
+	buildcostmetal=1800;
 	buildcostenergy=0;
-	buildtime=400;
+	buildtime=600;
 	footprintx=3;
 	footprintz=3;
 

@@ -10,11 +10,11 @@
 
 	name=K-31 ;
 	description=Construction Vehicle;
-	side=GBR;
+	side=RUS;
 	maxdamage=550;
-	buildcostmetal=1200;
+	buildcostmetal=1800;
 	buildcostenergy=0;
-	buildtime=400;
+	buildtime=600;
 	footprintx=3;
 	footprintz=3;
 	mass=1250;

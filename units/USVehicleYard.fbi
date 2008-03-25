@@ -11,9 +11,9 @@
 	name=U.S. Light Ordnance Depot;
 	description=Constructs Light Ordnance/Vehicles;
 	maxdamage=5500;
-	buildcostmetal=3000;
+	buildcostmetal=3750;
 	buildcostenergy=0;
-	buildtime=2000;
+	buildtime=2500;
 	footprintx=6;
 	footprintz=5;
 

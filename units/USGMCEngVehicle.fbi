@@ -12,9 +12,9 @@
 	description=Construction Vehicle;
 	side=US;
 	maxdamage=550;
-	buildcostmetal=711;
+	buildcostmetal=1800;
 	buildcostenergy=0;
-	buildtime=236;
+	buildtime=600;
 	footprintx=3;
 	footprintz=3;
 	mass=1250;
