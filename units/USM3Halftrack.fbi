@@ -22,7 +22,7 @@
 	smoothanim=0;
 
 	energymake=0;
-	energyuse=6;
+	energyuse=0;
 	SeismicSignature=0;
 	sightdistance=800;
 	stealth=1;

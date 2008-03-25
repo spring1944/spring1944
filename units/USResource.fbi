@@ -23,8 +23,8 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	energymake=3.75;
-	energystorage=50;
+	energymake=0;
+	energystorage=0;
 
 	sightdistance=1;
 	stealth=1;
@@ -47,5 +47,7 @@
 	[customParams]
 	{
 		dontCount=1;
+		ammoSupplier=1;
+		supplyRange=700;
 	}
 }
