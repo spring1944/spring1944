@@ -65,29 +65,34 @@
 	GERFlaK38=99;
 	GERPaK40=99;
 	GERleFH18=99;
+	GERleFH18_Stationary=99;
 	GERSandbagMG=99;
-	GERATGun=99;
+	GERPaK40_Stationary=99;
 
 	//US//
 	USM8Gun=99;
 	USM2Gun=99;
+	USM2Gun_Stationary=99;
 	USM5Gun=99;
 	USSandbagMG=99;
-	USATGun=99;
+	USM5Gun_Stationary=99;
 
 	//USSR//
 	RUS61K=99;
 	RUSZiS2=99;
+	RUSZiS2_Stationary=99;
 	RUSZiS3=99;
+	RUSZiS3_Stationary=99;
 	RUSSandbagMG=99;
-	RUSATGun=99;
 	RUSM30=99;
+	RUSM30_Stationary=99;
 
 	//Britain//
 	GBR25Pdr=99;
+	GBR25Pdr_Stationary=99;
 	GBR17Pdr=99;
 	GBRSandbagMG=99;
-	GBRATGun=99;
+	GBR17Pdr_Stationary=99;
 
 	}
 

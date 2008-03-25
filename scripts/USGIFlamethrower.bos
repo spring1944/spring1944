@@ -6,7 +6,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 
 static-var bAiming, HipAim, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
- nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance;// reloading, NadeReloading;
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, FearOk;// reloading, NadeReloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -142,21 +142,6 @@ Create()
 	InAimStance=0;
 //	reloading=0;
 //	nadereloading=0;
-}
-
-StartBuilding(Func_Var_1)
-{
-set INBUILDSTANCE to 1;
-}
-
-StopBuilding()
-{
-set INBUILDSTANCE to 0;
-}
-
-QueryNanoPiece(piecenum)
-{
-	piecenum = head;
 }
 
 
@@ -339,204 +324,33 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show gun;
-	
-	if (IsProne==1)
-	{
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <-95> speed <700>;
-		turn luparm to x-axis <-150> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <-95> speed <700>;
-		turn luparm to x-axis <-150> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <-95> speed <700>;
-		turn luparm to x-axis <-150> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <-95> speed <700>;
-		turn luparm to x-axis <-150> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		sleep 20;		
-		
-/*		reloading=1;
-		sleep ReloadPenalty;
-		reloading=0;*/
-		return (0);
-	}
-	if (IsProne==0)
-	{
-		if (bMoving==1)
-		{
-			emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <40> speed <700>;
-		turn luparm to x-axis <-70> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <50> speed <200>;
-		turn luparm to x-axis <-60> speed <200>;
-		sleep 20;
-			
-						emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <40> speed <700>;
-		turn luparm to x-axis <-70> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <50> speed <200>;
-		turn luparm to x-axis <-60> speed <200>;
-		sleep 20;
-					emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <40> speed <700>;
-		turn luparm to x-axis <-70> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <50> speed <200>;
-		turn luparm to x-axis <-60> speed <200>;
-		sleep 20;
-					emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <40> speed <700>;
-		turn luparm to x-axis <-70> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <50> speed <200>;
-		turn luparm to x-axis <-60> speed <200>;
-		sleep 20;
-					emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <40> speed <700>;
-		turn luparm to x-axis <-70> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <50> speed <200>;
-		turn luparm to x-axis <-60> speed <200>;
-		sleep 20;
-		
-		return (0);
-		}
-		
-		if (bMoving==0)
-		{
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <5> speed <700>;
-		turn luparm to x-axis <-30> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <10> speed <200>;
-		turn luparm to x-axis <-25> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <5> speed <700>;
-		turn luparm to x-axis <-30> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <10> speed <200>;
-		turn luparm to x-axis <-25> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <5> speed <700>;
-		turn luparm to x-axis <-30> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <10> speed <200>;
-		turn luparm to x-axis <-25> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <5> speed <700>;
-		turn luparm to x-axis <-30> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <10> speed <200>;
-		turn luparm to x-axis <-25> speed <200>;
-		sleep 20;
-		emit-sfx SMG_MUZZLEFLASH from flare;
-		turn ruparm to x-axis <5> speed <700>;
-		turn luparm to x-axis <-30> speed <700>;
-		sleep 20;
-		turn ruparm to x-axis <10> speed <200>;
-		turn luparm to x-axis <-25> speed <200>;
-		sleep 20;
-		
-		
-		return (1);
-		}
-	}
+	FearOk=1;
 	return (1);
 }
 
-AimFromWeapon2(piecenum)
+
+AimFromWeapon2(piecenum) //Fear weapon
 {
-	piecenum = torso;
+	piecenum = head;
 }
 
 QueryWeapon2(piecenum)
 {
-	piecenum = gun;
+	piecenum = flare;
 }
 
 AimWeapon2(heading, pitch)
 {
-
-	signal 4;
-	set-signal-mask 4;
-	if (bMoving) return 0;
-	turn pelvis to y-axis heading - <30> now;
-//	if (NadeReloading==1) return (0); //slow nades while prone
-
-	return (1);
-}
-#include "Inf_grenade.h"
-
-FireWeapon2(heading) //grenaaaaade!
-{
-	if (IsProne==0)
+	if (FearOk==1)
 	{
-	nade_active = 1;
-	start-script NadeAnim();
-	nade_active = 0;
-	call-script WeaponReady();
-	}
-	if (IsProne==1)
-	{
-	nade_active=1;
-	turn luparm to x-axis <0> speed <100>*NADE_SPEED;
-	turn luparm to y-axis <80> speed <100>*NADE_SPEED;
-	turn luparm to z-axis <0> speed <100>*NADE_SPEED;
-	wait-for-turn luparm around x-axis;
-	turn luparm to x-axis <-160> speed<200>*NADE_SPEED;
-	
-	wait-for-turn luparm around x-axis;
-		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
-	/*	nadeReloading=1;
-		sleep NadePenalty;
-		nadeReloading=0;*/
-	nade_active=0;
 	return (1);
 	}
-	return (0);
+return 0;
 }
 
-AimFromWeapon3(piecenum) //flag killing weapon
+FireWeapon2() 
 {
-	piecenum = head;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = head;
-}
-
-AimWeapon3(heading, pitch)
-{
-	return (1);
-}
-
-FireWeapon3() 
-{
+	FearOk=0;
 	return (0);
 }
 

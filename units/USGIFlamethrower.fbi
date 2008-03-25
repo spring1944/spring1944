@@ -48,6 +48,9 @@
 
 	weapon1=M2Flamethrower;
 	onlytargetcategory1=NFLAGNAIR;
+	weapon2=M2FlamethrowerFear;
+	onlytargetcategory2=NFLAGNAIR;
+	weaponslaveto2=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

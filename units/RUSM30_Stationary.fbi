@@ -13,6 +13,11 @@
 	description=- Stationary Howitzer;
 	side=RUS;
 	maxdamage=2500;
+	flankingbonusdir=0 0 1;
+	flankingbonusmax=1.25;
+	flankingbonusmin=0.75;
+	flankingbonusmode=3;
+
 	buildcostmetal=1800;
 	buildcostenergy=0;
 	buildtime=3500;

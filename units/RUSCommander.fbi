@@ -24,8 +24,6 @@
 	upright=1;
 	shownanoframe=0;
 
-	metalmake=5;
-	energymake=5;
 	energystorage=1000;
 	SeismicSignature=0;
 	sightdistance=700;

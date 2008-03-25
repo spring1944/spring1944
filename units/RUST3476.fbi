@@ -18,9 +18,9 @@
 	flankingbonusmax=1.16;//damage to back multiplied by this
 	flankingbonusmin=.82;//damage to front multiplied by this
 
-	buildcostmetal=1733;
+	buildcostmetal=3600;
 	buildcostenergy=0;
-	buildtime=327;
+	buildtime=480;
 	footprintx=3;
 	footprintz=3;
 	mass=2750;
@@ -28,7 +28,6 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	energyuse=10;
 	SeismicSignature=0;
 	sightdistance=630;
 	stealth=1;

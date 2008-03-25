@@ -7,11 +7,11 @@
 	tolerance=200;
 
 	lineofsight=1;
-	firestarter=0.0;
+	firestarter=100;
 
 	range=200;
-	reloadtime=2;
-	burst=40;
+	reloadtime=1;
+	burst=20;
 	burstrate=.04;
 	sprayangle=1024;
 	weaponvelocity=140;
@@ -32,5 +32,35 @@
 		mines=0;
 		flag=0.000000001;
 		tanks=50;
+	}
+}
+
+[m2flamethrowerFear]
+{
+	id=601;
+	name=M2-2 Flamethrower Fear;
+	rendertype=1;
+	turret=1;
+	tolerance=200;
+	size=0.000000001;
+	explosiongenerator=custom:nothing;
+	lineofsight=1;
+	firestarter=0.0;
+	noselfdamage=1;
+	range=200;
+	reloadtime=1;
+	sprayangle=0;
+	weaponvelocity=140;
+	areaofeffect=150;
+	impulsefactor=0.000001;
+
+	[damage]
+	{
+		default=0;
+		bunkers=0;
+		sandbags=0;
+		mines=0;
+		flag=0.000000001;
+		tanks=0;
 	}
 }

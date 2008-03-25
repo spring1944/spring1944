@@ -22,7 +22,6 @@
 
 	metalstorage=500;
 	energystorage=500;
-	energyuse=20;
 
 	sightdistance=146;
 	stealth=1;
