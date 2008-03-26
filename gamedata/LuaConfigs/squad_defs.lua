@@ -110,6 +110,13 @@ local squadDefs = {
 		"gbrobserv",
 	},
 	
+	["gbr_platoon_commando"] =
+	{
+		"gbrcommando",
+		"gbrcommando",
+		"gbrcommando",
+	},
+	
 	 -----------------------------
 	 -- GER Platoons and Squads --
 	 -----------------------------
@@ -188,7 +195,7 @@ local squadDefs = {
 		"gerbeobinf",
 		"gerbeobinf",
 		"gerbeobinf",
-	},
+	},  
 	
 	 -----------------------------
 	 -- RUS Platoons and Squads --

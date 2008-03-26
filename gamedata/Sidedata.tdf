@@ -316,7 +316,7 @@
 		canbuild7=gbr_platoon_at;
 		canbuild9=gbr_platoon_sniper;
 		canbuild10=gbr_platoon_mortar;
-		//canbuild11=gbr_platoon_commando;
+		canbuild11=gbr_platoon_commando;
 	}
 
 	[GBRGunyard]
