@@ -7,7 +7,7 @@
 	icontype=ammo;
 	soundcategory=GERInf;
 	category=NFLAGNAIR BUILDING NFLAG ;
-	tedclass=ENERGY;
+	tedclass=PLANT;
 	yardmap=o;
 
 	name=Supply Depot;
@@ -21,6 +21,7 @@
 	footprintz=7;
 
 	shownanoframe=0;
+	unitrestricted=3;
 	smoothanim=0;
 
 	energymake=0;
@@ -28,6 +29,11 @@
 
 	sightdistance=1;
 	stealth=1;
+
+	builder=1;
+	workertime=10;//200
+	shownanospray=0;
+	canbeassisted=0;
 
 	activatewhenbuilt=1;
 

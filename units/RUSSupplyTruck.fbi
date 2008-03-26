@@ -2,6 +2,7 @@
 {
 	unitname=RUSSupplyTruck;
 	objectname=RUSSupplyTruck.S3O;
+	buildpic=RUSZiS5.png;
 	corpse=RUSZiS5_Destroyed;
 	icontype=truck;
 	soundcategory=RUSVeh;

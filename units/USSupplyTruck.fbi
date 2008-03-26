@@ -2,6 +2,7 @@
 {
 	unitname=USSupplyTruck;
 	objectname=USSupplyTruck.S3O;
+	buildpic=USGMCTruck.png;
 	corpse=USGMCTruck_Destroyed;
 	icontype=truck;
 	soundcategory=USTank;
