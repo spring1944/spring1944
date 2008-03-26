@@ -4,7 +4,7 @@
 	name=P.I.A.T.;
 	//weapontype=MissileLauncher;
 	rendertype=4;
-	//model=Bomb_Small.S3O
+	model=Bomb_Tiny.S3O;
 	turret=1;
 	tolerance=6000;
 	explosionspeed=100;

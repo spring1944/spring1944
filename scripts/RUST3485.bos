@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, turret, brakeleft, brakeright, mantlet, barrel, flare, coaxflare, exhaust, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGaiming, MGFearOk, CannonFearOk;
 
@@ -20,8 +20,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define FX_HIDE\
 	hide flare;\
 	hide coaxflare;\
-	hide brakeleft;\
-	hide brakeright;\
 
 // definitions for RockUnit_Set
 #define ROCK_SPEED	<50> // heavier units should rock less
@@ -395,34 +393,24 @@ return (0);
 // TODO: make this pretty
 Killed(severity, corpsetype)
 {
-	if( severity <= 50 )
-	{
-		corpsetype = 1;
-		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
-		return (0);
-	}
 	if( severity <= 250 )
 	{
 		corpsetype = 1;
-		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel1 type SHATTER;
+		explode wheel2 type SHATTER;
+		explode wheel3 type SHATTER;
+		explode wheel4 type SHATTER;
+		explode wheel5 type SHATTER;
 	}
 	if(severity <= 1000)
 	{
 		corpsetype = 2;
 		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-		explode wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheel3 type SHATTER;
+		explode wheel4 type SHATTER;
+		explode wheel5 type SHATTER;
 	}
 	corpsetype = 2;
 	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
@@ -430,9 +418,9 @@ Killed(severity, corpsetype)
 	explode frontwheel type SHATTER;
 	explode rearwheel type SHATTER;
 	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-	explode wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
-	explode wheel3 type SHATTER | EXPLODE_ON_HIT;
-	explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel3 type SHATTER;
+	explode wheel4 type SHATTER;
+	explode wheel5 type SHATTER;
 }
 

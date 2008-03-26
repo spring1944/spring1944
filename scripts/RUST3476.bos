@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, brakeleft, brakeright, turret, mantlet, barrel, flare, coaxflare, exhaust, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, MGAiming, treadnum, CannonFearOk, MGFearOk;
 
@@ -20,8 +20,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 #define FX_HIDE\
 	hide flare;\
 	hide coaxflare;\
-	hide brakeleft;\
-	hide brakeright;\
 
 // definitions for RockUnit_Set
 #define ROCK_SPEED	<50> // heavier units should rock less

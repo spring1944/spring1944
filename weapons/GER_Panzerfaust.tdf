@@ -1,8 +1,10 @@
 [panzerfaust]
 {
 	id=100;
-	name=Panzerfaust;
+	name=Panzerfaust 100, Faustpatrone, etc;
+	//weapontype=MissileLauncher;
 	rendertype=4;
+	model=Bomb_Small.S3O;
 	turret=1;
 	tolerance=6000;
 	explosionspeed=100;
@@ -11,14 +13,13 @@
 	firestarter=0.0;
 
 	range=250;
-	reloadtime=20;
+	reloadtime=15;
 	accuracy=500;
 	targetmoveerror=0.075;
-	startvelocity=275;
-	weaponvelocity=450;
-	areaofeffect=65;
-	edgeeffectiveness=0.5;
-	smoketrail=1;
+	startvelocity=200;
+	weaponvelocity=400;
+	areaofeffect=35;
+	edgeeffectiveness=0.1;
 
 	soundstart=GER_Panzerfaust;
 	soundhit=GEN_Explo_2;
@@ -33,7 +34,7 @@
 	collisionsize=3;
 	impulsefactor=0;
 	impulseboost=0;
-	cratermult=0;
+	cratermult=-0.1;
 	craterboost=0;
 
 	  cratermult=0;
@@ -57,10 +58,11 @@
 		flag=0;
 	}
 }
+
 [panzerfaustfear]
 {
 	id=301;
-	name=Supression from MG42 fire;
+	name=Supression from Panzerfaust fire;
 	rendertype=1;
 	turret=1;
 	tolerance=600;
@@ -69,7 +71,7 @@
 	firestarter=0;
 
 	range=1300;
-	reloadtime=1.7;
+	reloadtime=2;
 	energypershot=0;
 	weaponvelocity=800;
 	areaofeffect=150;
