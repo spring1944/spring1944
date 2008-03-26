@@ -11,14 +11,14 @@
 	side=GER;
 	maxdamage=5000;
 	idleautoheal=3;
-	buildcostmetal=2685;
+	buildcostmetal=4030;
 	buildcostenergy=0;
-	buildtime=1790;
+	buildtime=2685;
 	footprintx=7;
 	footprintz=7;
 
 	shownanoframe=0;
-	unitrestricted=1;
+	unitrestricted=2;
 
 	metalstorage=1500;
 	energystorage=0;

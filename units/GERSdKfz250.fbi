@@ -12,9 +12,9 @@
 	description=Light Infantry Support;
 	side=GER;
 	maxdamage=1000;
-	buildcostmetal=640;
+	buildcostmetal=740;
 	buildcostenergy=0;
-	buildtime=320;
+	buildtime=370;
 	footprintx=3;
 	footprintz=3;
 

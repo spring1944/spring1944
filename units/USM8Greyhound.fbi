@@ -18,9 +18,9 @@
 	flankingbonusmax=1.19;//damage to back multiplied by this
 	flankingbonusmin=.8;//damage to front multiplied by this
 
-	buildcostmetal=920;
+	buildcostmetal=820;
 	buildcostenergy=0;
-	buildtime=460;
+	buildtime=410;
 	footprintx=2;
 	footprintz=2;
 	mass=1250;
