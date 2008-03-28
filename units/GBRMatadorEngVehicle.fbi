@@ -12,9 +12,9 @@
 	description=Construction Vehicle;
 	side=GBR;
 	maxdamage=550;
-	buildcostmetal=1800;
+	buildcostmetal=2700;
 	buildcostenergy=0;
-	buildtime=600;
+	buildtime=900;
 	footprintx=3;
 	footprintz=3;
 	mass=1250;
@@ -33,7 +33,7 @@
 
 	canmove=1;
 	movementclass=TANK_Truck;
-	maxvelocity=2.5;//3
+	maxvelocity=3.4;
 	acceleration=0.01;
 	brakerate=0.6;
 	turnrate=180;

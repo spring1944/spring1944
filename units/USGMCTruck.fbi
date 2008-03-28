@@ -29,7 +29,7 @@
 
 	canmove=1;
 	movementclass=TANK_Truck;
-	maxvelocity=4.8;
+	maxvelocity=4.3;
 	acceleration=0.35;
 	brakerate=0.45;
 	turnrate=440;
