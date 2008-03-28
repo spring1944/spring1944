@@ -34,7 +34,7 @@
 
 	canmove=1;
 	movementclass=TANK_Heavy;
-	maxvelocity=2.3;
+	maxvelocity=1.6;
 	acceleration=0.035;
 	brakerate=0.105;
 	turnrate=195;
