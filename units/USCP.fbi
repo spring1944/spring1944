@@ -55,4 +55,10 @@
 	[sfxtypes]
 	{
 	}
+
+	[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=500;
+	}
 }

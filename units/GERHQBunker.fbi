@@ -79,5 +79,9 @@
 		hq=1;
 		refillamount=1000000; 
 		arrivalgap=180;	
+
+		ammoSupplier=1;
+		supplyRange=1000;
+
 	}
 }
