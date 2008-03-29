@@ -25,6 +25,7 @@
 
 	SeismicSignature=0;
 	sightdistance=800;
+	airsightdistance=3000;
 	stealth=1;
 
 	canmove=1;

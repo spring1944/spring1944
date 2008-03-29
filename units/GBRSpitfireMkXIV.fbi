@@ -44,7 +44,7 @@
 	
 	//    Sight/Radar
 	SightDistance=500;
-	AirSightDistance=1750;
+	AirSightDistance=4000;
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;

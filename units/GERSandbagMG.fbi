@@ -23,6 +23,7 @@
 	smoothanim=0;
 
 	sightdistance=701;
+	airsightdistance=2500;
 	stealth=1;
 
 	activatewhenbuilt=1;

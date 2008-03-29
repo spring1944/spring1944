@@ -28,6 +28,7 @@
 	metalmake=10;
 
 	sightdistance=146;
+	airsightdistance=2500;
 	stealth=1;
 
 	builder=1;
