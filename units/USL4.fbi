@@ -4,9 +4,9 @@
 	UnitName=USL4;
 	
 	//    Required Tags
-	BuildCostEnergy=9000;
-	BuildCostMetal=9000;
-	BuildTime=10000;
+	BuildCostEnergy=0;
+	buildcostmetal=15750;
+	BuildTime=2100;
 	Category=AIRCRAFT;
 	Description=Recon Plane;
 	FootprintX=4;

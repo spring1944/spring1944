@@ -141,6 +141,7 @@
 		canbuild1=USM5Stuart;
 		canbuild2=USM4A4Sherman;
 		canbuild3=USM4A376Sherman;
+		canbuild10=USL4;
 	}
 
 	[USSPYard]
@@ -263,6 +264,7 @@
 		canbuild3=GERPanther;
 		canbuild4=GERTiger;
 		canbuild5=GERTigerII;
+		canbuild10=GERFi156;
 	}
 
 	[GERSPYard]
@@ -404,7 +406,7 @@
 		canbuild3=GBRShermanFirefly;
 		canbuild4=GBRCromwellMkVI;
 		canbuild5=GBRChurchillMkVII;
-		canbuild6=GBRAuster;//temp
+		canbuild10=GBRAuster;
 	}
 
 	[GBRSPYard]
@@ -548,6 +550,7 @@
 		canbuild3=RUST3485;
 		canbuild4=RUSKV1;
 		canbuild5=RUSIS2;
+		canbuild10=RUSPo2;
 	}
 
 	[RUSSPYard]
