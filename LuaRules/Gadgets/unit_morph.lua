@@ -114,8 +114,8 @@ end
 local morphCmdDesc = {
   id     = CMD_MORPH,
   type   = CMDTYPE.ICON,
-  name   = 'Morph',
-  cursor = 'Morph',  -- add with LuaUI?
+  name   = 'Deploy',
+  cursor = 'Deploy',  -- add with LuaUI?
   action = 'morph',
 }
 
