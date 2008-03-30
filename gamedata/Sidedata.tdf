@@ -531,8 +531,9 @@
 		canbuild2=RUSSupplyTruck;
 		canbuild3=RUSBA64;
 		canbuild4=RUSM5Halftrack;
-		canbuild5=RUST60;
-		canbuild6=RUSSU76;
+		canbuild5=RUSGAZAAA;
+		canbuild6=RUST60;
+		canbuild7=RUSSU76;
 	}
 
 	[RUSGunYard]
@@ -559,6 +560,7 @@
 		canbuild2=RUSSU85;
 		canbuild3=RUSSU100;
 		canbuild4=RUSSU122;
+		canbuild5=RUSBM13N;
 		canbuild5=RUSISU152;
 	}
 

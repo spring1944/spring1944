@@ -52,7 +52,11 @@
 	badtargetcategory1=NFLAGNAIR;
 	onlytargetcategory1=AIR;
 
-	weapon2=Large_Tracer;
+	weapon2=KwK3020mmHE;
+	onlytargetcategory2=NFLAGNAIR;
+	badtargetcategory2=AIR;
+
+	weapon3=Large_Tracer;
 
 	[sfxtypes]
 	{

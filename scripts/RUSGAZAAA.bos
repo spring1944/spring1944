@@ -5,10 +5,13 @@
 
 piece  base, wheel1, wheel2, wheel3, stand, turret, guns, flare1, flare2, flare3, flare4;
  
-static-var restore_delay;
+static-var restore_delay, aim1;
 
 // Signal definitions
 #define SIG_AIM				2
+#define SIG_AIM2			4
+#define SIG_AIM3			8
+#define SIG_AIM4			16
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -20,7 +23,7 @@ static-var restore_delay;
 #define MG_MUZZLEFLASH 1024+7
 
 // tracers
-#define SMALL_TRACER 	2048+4
+#define SMALL_TRACER 	2048+8
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
@@ -72,10 +75,11 @@ StopMoving()
 
 Create()
 {
+	aim1 = FALSE;
 	start-script SmokeUnit();
 }
 
-// Weapon 1 - Maxim
+// Weapon 1 - Maxim AA
 QueryWeapon1 (piecenum)
 	{
 	piecenum = flare1;
@@ -88,6 +92,8 @@ AimFromWeapon1 (piecenum)
 
 AimWeapon1(heading, pitch)
 	{
+	if (aim1) return 0;
+	
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 
@@ -124,7 +130,7 @@ FireWeapon1()
 	return(0);
 	}
 	
-// Weapon 2 - Maxim
+// Weapon 2 - Maxim AA
 QueryWeapon2 (piecenum)
 	{
 	piecenum = flare2;
@@ -137,8 +143,10 @@ AimFromWeapon2 (piecenum)
 
 AimWeapon2(heading, pitch)
 	{
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+	if (aim1) return 0;
+	
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
 
 	turn turret to y-axis heading speed <150>; 
 	turn guns to x-axis 0 - pitch speed <100>; 
@@ -173,7 +181,7 @@ FireWeapon2()
 	return(0);
 	}
 	
-// Weapon 3 - Maxim
+// Weapon 3 - Maxim AA
 QueryWeapon3 (piecenum)
 	{
 	piecenum = flare3;
@@ -186,8 +194,10 @@ AimFromWeapon3 (piecenum)
 
 AimWeapon3(heading, pitch)
 	{
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+	if (aim1) return 0;
+	
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3;
 
 	turn turret to y-axis heading speed <150>; 
 	turn guns to x-axis 0 - pitch speed <100>; 
@@ -222,7 +232,7 @@ FireWeapon3()
 	return(0);
 	}
 	
-// Weapon 4 - Maxim
+// Weapon 4 - Maxim AA
 QueryWeapon4 (piecenum)
 	{
 	piecenum = flare4;
@@ -235,8 +245,10 @@ AimFromWeapon4 (piecenum)
 
 AimWeapon4(heading, pitch)
 	{
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+	if (aim1) return 0;
+	
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4;
 
 	turn turret to y-axis heading speed <150>; 
 	turn guns to x-axis 0 - pitch speed <100>; 
@@ -270,7 +282,186 @@ FireWeapon4()
 	sleep 50;
 	return(0);
 	}
+
+// Weapon 5 - Maxim Ground
+QueryWeapon5(piecenum)
+	{
+	piecenum = flare1;
+	}
+
+AimFromWeapon5(piecenum)
+	{
+	piecenum = turret;
+	}
+
+AimWeapon5(heading, pitch)
+	{
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
 	
+	aim1 = TRUE;
+	turn turret to y-axis heading speed <150>; 
+	turn guns to x-axis 0 - pitch speed <100>; 
+	wait-for-turn turret around y-axis; 
+	wait-for-turn guns around x-axis;
+	aim1 = FALSE;
+	
+	return (1);
+	}
+
+FireWeapon5()
+	{
+	emit-sfx SMALL_TRACER from flare1;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare1;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare1;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare1;
+	return(0);
+	}
+	
+// Weapon 6 - Maxim Ground
+QueryWeapon6(piecenum)
+	{
+	piecenum = flare2;
+	}
+
+AimFromWeapon6(piecenum)
+	{
+	piecenum = turret;
+	}
+
+AimWeapon6(heading, pitch)
+	{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+
+	aim1 = TRUE;
+	turn turret to y-axis heading speed <150>; 
+	turn guns to x-axis 0 - pitch speed <100>; 
+	wait-for-turn turret around y-axis; 
+	wait-for-turn guns around x-axis;
+	aim1 = FALSE;
+	
+	return (1);
+	}
+
+FireWeapon6()
+	{
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare2;
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare2;
+	emit-sfx MG_MUZZLEFLASH from flare2;
+	sleep 50;
+	return(0);
+	}
+	
+// Weapon 7 - Maxim Ground
+QueryWeapon7(piecenum)
+	{
+	piecenum = flare3;
+	}
+
+AimFromWeapon7(piecenum)
+	{
+	piecenum = turret;
+	}
+
+AimWeapon7(heading, pitch)
+	{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3;
+
+	aim1 = TRUE;
+	turn turret to y-axis heading speed <150>; 
+	turn guns to x-axis 0 - pitch speed <100>; 
+	wait-for-turn turret around y-axis; 
+	wait-for-turn guns around x-axis;
+	aim1 = FALSE;
+	
+	return (1);
+	}
+
+FireWeapon7()
+	{
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare3;
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare3;
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare3;
+	sleep 50;
+	return(0);
+	}
+	
+// Weapon 8 - Maxim Ground
+QueryWeapon8(piecenum)
+	{
+	piecenum = flare4;
+	}
+
+AimFromWeapon8(piecenum)
+	{
+	piecenum = turret;
+	}
+
+AimWeapon8(heading, pitch)
+	{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4;
+
+	aim1 = TRUE;
+	turn turret to y-axis heading speed <150>; 
+	turn guns to x-axis 0 - pitch speed <100>; 
+	wait-for-turn turret around y-axis; 
+	wait-for-turn guns around x-axis;
+	aim1 = FALSE;
+	
+	return (1);
+	}
+
+FireWeapon8()
+	{
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	emit-sfx SMALL_TRACER from flare4;
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	emit-sfx MG_MUZZLEFLASH from flare4;
+	sleep 50;
+	return(0);
+	}	
 SweetSpot(piecenum)
 {
 	piecenum = base;

@@ -2,7 +2,7 @@
 {
 	unitname=RUSSupplyDepot;
 	objectname=LogisticsHuge.S3O;
-	buildpic=LogisticsHuge.png;
+	buildpic=SupplyDepot.png;
 	corpse=BuildingDebris_Large;
 	icontype=ammo;
 	soundcategory=RUSInf;

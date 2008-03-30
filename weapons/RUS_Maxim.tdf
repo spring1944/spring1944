@@ -29,15 +29,7 @@
 
 	rgbcolor=0 0.7 0;
 
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=2.5;
+	size=0.000000000001;
 
 	[damage]
 	{
@@ -111,6 +103,7 @@
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
+	canattackground=0;
 
 	soundtrigger=1;
 	soundstart=RUS_Maxim;
@@ -121,15 +114,7 @@
 
 	rgbcolor=0 0.7 0;
 
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=2.5;
+	size=0.000000000001;
 
 	[damage]
 	{

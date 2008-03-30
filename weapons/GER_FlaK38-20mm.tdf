@@ -14,14 +14,13 @@
 	reloadtime=1.5;
 	burst=5;
 	burstrate=0.16;
-	sprayangle=500;
-	accuracy=1000;
-	movingaccuracy=500;
+	sprayangle=400;
 	weaponvelocity=2000;
 	areaofeffect=5;
 	edgeeffectiveness=0.5;
 	burnblow=1;
 	weapontimer=1;
+	canattackground=0;
 
 	soundstart=GER_20mm;
 	soundhit=GEN_Explo_Flak1;

@@ -65,7 +65,22 @@
 	weaponslaveto4=1;
 	onlytargetcategory4=AIR;
 
-	weapon5=Small_Tracer_Green;
+	weapon5=MaximAA;
+	onlytargetcategory5=NFLAGNAIR;
+
+	weapon6=MaximAA;
+	weaponslaveto6=5;
+	onlytargetcategory6=NFLAGNAIR;
+
+	weapon7=MaximAA;
+	weaponslaveto7=5;
+	onlytargetcategory7=NFLAGNAIR;
+
+	weapon8=MaximAA;
+	weaponslaveto8=5;
+	onlytargetcategory8=NFLAGNAIR;
+
+	weapon9=Small_Tracer_Green;
 
 	[sfxtypes]
 	{
