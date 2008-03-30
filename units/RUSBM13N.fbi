@@ -69,4 +69,12 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
 	}
+
+	[customParams]
+	{
+		maxammo=3;
+		weaponswithammo=1;
+		lowammolevel=0;
+		weaponcost=320;
+	}
 }

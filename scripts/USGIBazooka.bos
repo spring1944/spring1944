@@ -2,17 +2,23 @@
 
 #include "STANDARD_COMMANDS_GPL.h"
 
-piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot, lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, flare, blast;
+piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
+       lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, flare, backblast;
 
-static-var DecreasingFear, last_pos, bMoving, run_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAiming, IsPinned;
+static-var DecreasingFear, last_pos, bMoving, run_speed,
+walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAiming, IsPinned;
 
-#define SIG_AIM            	2
-#define SIG_MOVE 			64
+#define SIG_AIM            2
+#define SIG_MOVE 64
 
-//effects
-#define SMALL_MUZZLEFLASH 	1024+1
-#define MuzzleBrakeSmoke 	1024+2
-
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define XSMALL_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEDUST 1024+8
 
 #include "Inf_suppressionvars.h"
 
@@ -97,7 +103,7 @@ AimWeapon1(heading, pitch)
 	signal 2;
 	set-signal-mask 2;
 	show gun;
-	if(bMoving==1 || IsPinned==1) return (0);
+	if(bMoving==1) return (0);
 
 
 	if (IsProne==1 && fear < PinnedLevel)
@@ -182,8 +188,9 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	emit-sfx MuzzleBrakeSmoke from flare;
-	emit-sfx SMALL_MUZZLEFLASH from blast;
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from backblast;
+	emit-sfx XSMALL_MUZZLEFLASH from backblast;
 	return (0);
 
 }

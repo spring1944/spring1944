@@ -3,7 +3,7 @@
 #include "STANDARD_COMMANDS_GPL.h"
 
 piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
-       lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, flare, gunhead;
+       lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, flare, gunhead, backblast;
 
 static-var DecreasingFear, last_pos, bMoving, run_speed,
 walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAiming, IsPinned;
@@ -18,7 +18,8 @@ walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAi
 #define placeholder_EFFECT04 1024+4
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
-#define FAUST_BACKBLAST 1024+7
+#define XSMALL_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEDUST 1024+8
 
 #include "Inf_suppressionvars.h"
 
@@ -202,7 +203,9 @@ show gunhead;
 FireWeapon1()
 {
 	call-script ChargeAnim();
-	emit-sfx FAUST_BACKBLAST from flare;
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from backblast;
+	emit-sfx XSMALL_MUZZLEFLASH from backblast;
 	return (0);
 
 }

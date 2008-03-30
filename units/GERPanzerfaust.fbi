@@ -52,6 +52,7 @@
 	weapon1=Panzerfaust;
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -61,6 +62,7 @@
 		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:FAUST_BACKBLAST;
+		explosiongenerator7=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator8=custom:XSMALL_MUZZLEDUST;
 	}
 }

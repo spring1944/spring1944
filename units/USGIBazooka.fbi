@@ -52,10 +52,17 @@
 
 	weapon1=M9A1Bazooka;
 	onlytargetcategory1=NFLAGNAIR;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator1=custom:MuzzleBrakeSmoke;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator8=custom:XSMALL_MUZZLEDUST;
 	}
 }
