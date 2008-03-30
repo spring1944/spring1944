@@ -6,7 +6,7 @@
 piece  base, load_shoulder, load_arm, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tow_point, 
 tracks1, tracks2, turret, gun, flare;
  
-static-var restore_delay, bMoving, treadnum, MGFearOk;
+static-var restore_delay, bMoving, treadnum, MGFearOk, aim1;
 
 
 #define FX_HIDE\
@@ -187,6 +187,7 @@ Create()
 {
 	FX_HIDE
 //	spin tow_point around y-axis speed <100>;
+	aim1 = FALSE;
 	treadnum=0;
 	start-script SmokeUnit();
 }
@@ -204,6 +205,7 @@ AimFromWeapon1 (piecenum)
 
 AimWeapon1(heading, pitch)
 	{
+	aim1 = TRUE;
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 	if ( heading > <-120.000000> AND heading < <120.000000> )
@@ -236,7 +238,8 @@ AimWeapon1(heading, pitch)
 	//turn gun to x-axis 0 - pitch speed <100.000000>; 
 	//wait-for-turn turret around y-axis; 
 	//wait-for-turn gun around x-axis;
-	return (1);
+	aim1 = FALSE;
+	return (0);
 	}
 
 FireWeapon1()
@@ -292,6 +295,83 @@ FireWeapon2()
 MGFearOk=0;
 return (0);
 }
+	
+// Weapon 3 - MG AA
+QueryWeapon3 (piecenum)
+	{
+	piecenum = flare;
+	}
+
+AimFromWeapon3 (piecenum)
+	{
+	piecenum = gun;
+	}
+
+AimWeapon3(heading, pitch)
+	{
+	if (aim1) return 0;
+	
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	if ( heading > <-120.000000> AND heading < <120.000000> )
+	{
+		turn turret to y-axis heading speed <150.000000>;
+		turn gun to x-axis 0 - pitch speed <100.000000>;
+		wait-for-turn turret around y-axis;
+		wait-for-turn gun around x-axis;
+	}
+	if ( heading > <120.000000> )
+	{
+		heading = heading - <60.000000>;
+		call-script TurnUnit(heading);
+		turn turret to y-axis <60.000000> speed <150.000000>;
+		turn gun to x-axis <0.000000> - pitch speed <100.000000>;
+		wait-for-turn turret around y-axis;
+		wait-for-turn gun around x-axis;
+	}
+	if ( heading < <-120.000000> )
+	{
+		heading = heading + <60.000000>;
+		call-script TurnUnit(heading);
+		turn turret to y-axis <-60.000000> speed <150.000000>;
+		turn gun to x-axis <0.000000> - pitch speed <100.000000>;
+		wait-for-turn turret around y-axis;
+		wait-for-turn gun around x-axis;
+	}
+	// thanks to Fang and zwzsg for this!
+	//turn turret to y-axis heading speed <150.000000>; 
+	//turn gun to x-axis 0 - pitch speed <100.000000>; 
+	//wait-for-turn turret around y-axis; 
+	//wait-for-turn gun around x-axis;
+	return (0);
+	}
+
+FireWeapon3()
+	{
+	emit-sfx SMALL_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx SMALL_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx SMALL_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	MGFearOk=1;
+	return(0);
+	}
 	
 SweetSpot(piecenum)
 {

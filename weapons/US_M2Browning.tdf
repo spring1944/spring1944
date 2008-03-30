@@ -14,8 +14,8 @@
 	reloadtime=3;
 	burst=8;
 	burstrate=.1;
-	sprayangle=200;
-	movingaccuracy=888;
+	sprayangle=300;
+	movingaccuracy=500;
 	targetmoveerror=0.25;
 	weaponvelocity=3000;
 	areaofeffect=1;
@@ -26,18 +26,9 @@
 
 	rgbcolor=1 0.75 0;
 
-	beamweapon=1;
-	thickness=0.5;
-	duration=0.015;
-	intensity=0.7;
+	size=0.000000000000000000001;
 
-	corethickness=0.15;
-	laserflaresize=8;
-
-	size=4;
-	collisionsize=8;
-
-	canattackground=0;
+	canattackground=1;
 
 	[damage]
 	{
@@ -72,26 +63,18 @@
 	burst=6;
 	burstrate=.109;
 	sprayangle=600;
-	movingaccuracy=888;
+	movingaccuracy=300;
 	weaponvelocity=3000;
 	areaofeffect=1;
 	weapontimer=1;
+	canattackground=0;
 
 	soundtrigger=1;
 	soundstart=US_50CAL;
 
 	rgbcolor=1 0.75 0;
 
-	beamweapon=1;
-	thickness=0.5;
-	duration=0.015;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=8;
-
-	size=4;
-	collisionsize=8;
+	size=0.0000000000000001;
 
 	[damage]
 	{
@@ -106,6 +89,7 @@
 		tanks=0;
 		armouredvehicles=25;
 		unarmouredvehicles=40;
+		lightplanes=25;
 	}
 }
 [m2browningfear]

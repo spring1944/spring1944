@@ -59,9 +59,11 @@
 	weapon2=MG34Fear;
 	onlytargetcategory2=INFTARG;
 	weaponslaveto2=1;
-	weapon3=.50calproof;
+	weapon3=mg42aa;
+	onlytargetcategory3=AIR;
 
 	weapon4=Small_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

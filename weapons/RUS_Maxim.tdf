@@ -44,6 +44,7 @@
 		tanks=0;
 		armouredvehicles=15;
 		unarmouredvehicles=15;
+		lightplanes=15;
 	}
 }
 
@@ -99,6 +100,7 @@
 	burst=7;
 	burstrate=.103;
 	sprayangle=350;
+	movingaccuracy=400;
 	areaofeffect=1;
 	weaponvelocity=1500;
 	burnblow=1;

@@ -60,8 +60,8 @@
 	weapon1=25PdrHE;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-	//weapon4=M2Browning;
-	//onlytargetcategory4=AIR;
+	weapon4=M2BrowningAA;
+	onlytargetcategory4=AIR;
 	weapon5=.50calproof;
 	weapon6=25PdrFear;
 	weaponslaveto6=1;

@@ -44,6 +44,7 @@
 		tanks=0;
 		armouredvehicles=12;
 		unarmouredvehicles=15;
+		lightplanes=15;
 	}
 }
 [mg42a]
@@ -129,5 +130,55 @@
 	[damage]
 	{
 		default=0.0001;
+	}
+}
+
+[mg42]
+{
+	id=7;
+	name=Maschinengewehr 42 AA;
+	rendertype=0;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=8;
+	lineofsight=1;
+	firestarter=1;
+	
+	range=1300;
+	reloadtime=1.7;
+	burst=11;
+	burstrate=.0175;
+	sprayangle=460;
+	areaofeffect=1;
+	movingaccuracy=300;
+	weaponvelocity=1500;
+	burnblow=1;
+	weapontimer=1;
+	explosiongenerator=custom:BulletImpact;
+	soundtrigger=1;
+	soundstart=GER_MG42;
+
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	rgbcolor=1 0.75 0;
+
+	size=0.000000000001;
+
+	[damage]
+	{
+		default=5;
+		infantry=28;
+		guns=40;
+		lightbuildings=10;
+		bunkers=0;
+		sandbags=5;
+		mines=0;
+		flag=0.00000000000001;
+		tanks=0;
+		armouredvehicles=12;
+		unarmouredvehicles=15;
+		lightplanes=15;
 	}
 }

@@ -61,10 +61,7 @@
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
 
-	//weapon3=M1919A4Browning;
-	//onlytargetcategory3=INFTARG;
-
-	weapon2=M2Browning;
+	weapon2=M2BrowningAA;
 	onlytargetcategory2=AIR;
 
 	weapon3=.50calproof;
@@ -72,7 +69,8 @@
 	weapon4=M875mmHEFear;
 	weaponslaveto4=1;
 
-//	weapon5=TankFearShield;
+	weapon5=Medium_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

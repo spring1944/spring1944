@@ -56,12 +56,12 @@
 
 	weapon1=17pdrAP;
 	onlytargetcategory1=TANK;
-	weapon4=M2Browning;
+	weapon2=M2BrowningAA;
 	onlytargetcategory4=AIR;
-	weapon5=.50calproof;
-	weapon6=TankFearShield;
+	weapon3=.50calproof;
+	weapon4=TankFearShield;
 
-	weapon7=Medium_Tracer;
+	weapon5=Medium_Tracer;
 
 	[sfxtypes]
 	{

@@ -57,10 +57,13 @@
 
 	weapon1=M7AP;
 	onlytargetcategory1=TANK;
-	weapon4=M2Browning;
+	weapon2=M2BrowningAA;
 	onlytargetcategory4=AIR;
-	weapon5=.50calproof;
-	weapon8=TankFearShield;
+	weapon3=.50calproof;
+	weapon4=TankFearShield;
+
+	weapon5=Medium_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -73,7 +76,6 @@
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
 		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
 		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
-		explosiongenerator10=custom:MuzzleBrakeSmoke;
 	}
 
 	[customParams]

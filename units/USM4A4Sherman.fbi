@@ -73,6 +73,10 @@
 	onlytargetcategory7=INFTARG;
 	weaponslaveto7=3;
 	weapon8=TankFearShield;
+
+	weapon9=Small_Tracer;
+	weapon10=Medium_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

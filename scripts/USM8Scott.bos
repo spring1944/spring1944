@@ -61,6 +61,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define MEDIUM_MUZZLEFLASH 1024+8
 #define MEDIUM_MUZZLEDUST 1024+9
 
+// tracers
+#define MEDIUM_TRACER 	2048+4
 
 treads() 
 { 
@@ -238,7 +240,7 @@ AimWeapon2(heading, pitch)
 	set-signal-mask SIG_AIM_2;
 
 	// thanks to Fang and zwzsg for this!
-	turn aaTurret to y-axis heading - get XZ_ATAN(get PIECE_XZ(aaRef) - get PIECE_XZ(aaFlare)) speed AA_TRAVERSE; 
+	turn aaTurret to y-axis heading speed AA_TRAVERSE; 
 	turn aaGun to x-axis 0 - pitch speed AA_ELEVATE; 
 	wait-for-turn aaTurret around y-axis; 
 	wait-for-turn aaGun around x-axis;
@@ -252,9 +254,21 @@ FireWeapon2()
 	rock = FALSE;
 	
 	// TODO: nice SFX
-	show aaFlare;
-	sleep 50;
-	hide aaFlare;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	sleep 109;
 	
 	return(0);
 	}
@@ -279,27 +293,6 @@ FireWeapon3()
 return (0);
 }
 
-
-AimFromWeapon5(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon5(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon5(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon5()
-{
-return (0);
-}
-// TODO: make this pretty
 Killed(severity, corpsetype)
 {
 	if( severity <= 50 )

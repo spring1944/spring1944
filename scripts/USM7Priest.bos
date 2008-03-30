@@ -60,6 +60,9 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define LARGE_MUZZLEFLASH 1024+8
 #define LARGE_MUZZLEDUST 1024+9
 
+// tracers
+#define MEDIUM_TRACER 	2048+5
+
 //Pressure Line's stuff
 #define TURNRATE 280 //set to whatever the unit's fbi turnrate is
 
@@ -266,8 +269,8 @@ AimWeapon4(heading, pitch)
 	set-signal-mask SIG_AIM_2;
 
 	// thanks to Fang and zwzsg for this!
-	turn aaturret to y-axis heading - get XZ_ATAN(get PIECE_XZ(aaRef) - get PIECE_XZ(aaFlare)) speed AA_TRAVERSE; 
-	turn aagun to x-axis 0 - pitch speed AA_ELEVATE; 
+	turn aaturret to y-axis heading - <180> speed AA_TRAVERSE; 
+	turn aagun to x-axis 0 + pitch speed AA_ELEVATE; 
 	wait-for-turn aaturret around y-axis; 
 	wait-for-turn aagun around x-axis;
 	
@@ -280,9 +283,21 @@ FireWeapon4()
 	rock = FALSE;
 	
 	// TODO: nice SFX
-	show aaflare;
-	sleep 50;
-	hide aaflare;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	emit-sfx MEDIUM_TRACER from aaflare;
+	sleep 109;
 	
 	return(0);
 	}

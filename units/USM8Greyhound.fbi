@@ -57,19 +57,27 @@
 
 	weapon1=M637mmHE;
 	onlytargetcategory1=NFLAGNAIR;
+	
 	weapon2=M637mmAP;
 	onlytargetcategory2=TANK;
+	
 	weapon3=M1919A4Browning;
 	onlytargetcategory3=INFTARG;
-	weapon4=M2Browning;
+	
+	weapon4=M2BrowningAA;
 	onlytargetcategory4=AIR;
-	weapon5=NOWEAPON;
-	weapon6=M637mmFear;
-	badtargetcategory6=NFLAGNAIR;
-	onlytargetcategory6=NFLAGNAIR;
-	weaponslaveto6=1;
-	weapon7=M1919A4BrowningFear;
-	onlytargetcategory7=INFTARG;
+	
+	weapon5=M637mmFear;
+	badtargetcategory5=NFLAGNAIR;
+	onlytargetcategory5=NFLAGNAIR;
+	weaponslaveto5=1;
+	
+	weapon6=M1919A4BrowningFear;
+	onlytargetcategory6=INFTARG;
+	
+	weapon7=Small_Tracer;
+	weapon8=Medium_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

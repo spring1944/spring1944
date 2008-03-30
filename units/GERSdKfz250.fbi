@@ -50,7 +50,7 @@
 	badtargetcategory=FLAG;
 
 	weapon1=KwK3020mmHE;
-	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory1=NFLAG;
 	weapon2=KwK3020mmAP;
 	onlytargetcategory2=TANK;
 	weapon3=MG34;
