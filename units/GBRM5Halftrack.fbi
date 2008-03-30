@@ -58,11 +58,15 @@
 
 	weapon1=M2Browning;
 	onlytargetcategory1=INFTARG;
-	weapon2=M2BrowningFear;
-	onlytargetcategory2=INFTARG;
+	weapon2=m2browningaa;
+	onlytargetcategory2=AIR;
+
+	weapon3=M2BrowningFear;
+	onlytargetcategory3=INFTARG;
+	weaponslaveto3=1;
 
 
-	weapon3=Medium_Tracer;
+	weapon4=Medium_Tracer;
 
 	[sfxtypes]
 	{

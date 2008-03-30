@@ -6,7 +6,7 @@
 piece  base, load_shoulder, load_arm, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tow_point, 
 tracks1, tracks2, turret, gun, flare;
  
-static-var restore_delay, bMoving, treadnum;
+static-var restore_delay, bMoving, treadnum, FearOk, aim1;
 
 #define FX_HIDE\
 	hide flare;\
@@ -19,7 +19,7 @@ static-var restore_delay, bMoving, treadnum;
 #define MG_MUZZLEFLASH		1024+7
 
 // tracers
-#define MEDIUM_TRACER 	2048+7
+#define MEDIUM_TRACER 	2048+3
 
 treads() 
 { 
@@ -159,12 +159,13 @@ StopMoving()
 Create()
 {
 //	spin tow_point around y-axis speed <100>;
+	aim1 = FALSE;
 	treadnum=0;
 	FX_HIDE
 	start-script SmokeUnit();
 }
 
-// Weapon 1 - MG
+// Weapon 1 - MG, ground targets
 QueryWeapon1 (piecenum)
 	{
 	piecenum = flare;
@@ -178,6 +179,7 @@ AimFromWeapon1 (piecenum)
 
 AimWeapon1(heading, pitch)
 	{
+	aim1 = TRUE;
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 
@@ -186,6 +188,7 @@ AimWeapon1(heading, pitch)
 	turn gun to x-axis 0 - pitch speed <100>; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn gun around x-axis;
+	aim1 = FALSE;
 	return (1);
 	}
 
@@ -205,29 +208,82 @@ FireWeapon1()
 	sleep 75;
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep 75;
-	
+	FearOk=1;
 	return(0);
 	}
 	
-AimFromWeapon2(piecenum) // fear 
+	// Weapon 2 - MG AA
+QueryWeapon2 (piecenum)
+	{
+	piecenum = flare;
+	}
+
+AimFromWeapon2 (piecenum)
+	{
+	piecenum = gun
+	;
+	}
+
+AimWeapon2(heading, pitch)
+	{
+	if (aim1) return 0; // don't fire at aircraft if firing at infantry
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+
+	// thanks to Fang and zwzsg for this!
+	turn turret to y-axis heading speed <150>; 
+	turn gun to x-axis 0 - pitch speed <100>; 
+	wait-for-turn turret around y-axis; 
+	wait-for-turn gun around x-axis;
+
+	return (1);
+	}
+
+FireWeapon2()
+	{
+	emit-sfx MEDIUM_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	emit-sfx MEDIUM_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 75;
+	FearOk=1;
+	return(0);
+	}
+	
+	//Weapon 3 - Fear
+AimFromWeapon3(piecenum) // fear 
 {
 	piecenum = turret;
 }
 
-QueryWeapon2(piecenum)
+QueryWeapon3(piecenum)
 {
 	piecenum = flare;
 }
 
-AimWeapon2(heading, pitch)
+AimWeapon3(heading, pitch)
 {
-	wait-for-turn turret around y-axis;
-	wait-for-turn gun around x-axis;
-return (1);
+	if (FearOk==1)
+	{
+		wait-for-turn turret around y-axis;
+		wait-for-turn gun around x-axis;
+		return (1);
+	}
+return 0;
 }
 
-FireWeapon2()
+FireWeapon3()
 {
+FearOk=0;
 return (0);
 }
 	
