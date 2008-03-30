@@ -160,6 +160,7 @@
 	[Airstrip]
 	{
 		canbuild1=USP51DMustang;
+		canbuild2=GBRSpitfireMkXIV;
 	}
 
 				////////////////////
