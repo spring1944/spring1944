@@ -188,7 +188,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	//emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from backblast;
 	emit-sfx XSMALL_MUZZLEFLASH from backblast;
 	return (0);

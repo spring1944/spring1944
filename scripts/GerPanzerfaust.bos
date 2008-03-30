@@ -202,12 +202,12 @@ show gunhead;
 
 FireWeapon1()
 {
-	call-script ChargeAnim();
-	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	//emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from backblast;
 	emit-sfx XSMALL_MUZZLEFLASH from backblast;
+	explode gun type FALL | SMOKE;
+	call-script ChargeAnim();
 	return (0);
-
 }
 
 #include "Inf_death.h"
