@@ -2,8 +2,8 @@
 {
 	unitname=GERFlaK38;
 	objectname=GERFlaK38.S3O;
-	buildpic=GERFlaK38.bmp;
-	//corpse=;
+	buildpic=GERFlaK38.png;
+	corpse=GERFlak38_Destroyed;
 	icontype=aaartillery;
 	soundcategory=GERInf;
 	category=INFTARG NFLAGNAIR NFLAG;

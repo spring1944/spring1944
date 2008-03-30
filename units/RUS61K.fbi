@@ -4,51 +4,60 @@
 	objectname=RUS61K.S3O;
 	buildpic=RUS61K.bmp;
 	//corpse=;
-	soundcategory=RusInf;
-	category=INFTARG NFLAGNAIR NAIR NFLAG;
-	tedclass=KBOT;
+	icontype=aaartillery;
+	soundcategory=RUSInf;
+	category=INFTARG NFLAGNAIR NFLAG;
+	tedclass=TANK;
 
-	name=40mm 61-K;
-	description=Anti-Aicraft Gun;
+	name=37mm 61-K;
+	description=Anti-Aircraft Gun;
 	side=RUS;
-	maxdamage=500;
-	idleautoheal=2;
-	idletime=2000;
-	buildcostmetal=1500;
+	maxdamage=450;
+	buildcostmetal=525;
 	buildcostenergy=0;
-	buildtime=9000;
+	buildtime=150;//old 37500000
 	footprintx=2;
 	footprintz=2;
-	mass=750;
 
-	upright=1;
 	shownanoframe=0;
+	smoothanim=0;
 
 	SeismicSignature=0;
-	sightdistance=701;
+	sightdistance=700;
 	airsightdistance=5000;
 	stealth=1;
 
-	mincloakdistance=350.4;
-	cloakcost=0;
-	cloakcostmoving=0;
-
 	canmove=1;
 	movementclass=KBOT_Gun;
-	maxvelocity=0.375;
-	acceleration=0.25;
-	brakerate=0.6;
-	turnrate=600;
-	maxslope=20;
-	maxwaterdepth=5;
+	maxvelocity=0.25;
+	acceleration=0.026;
+	brakerate=0.017;
+	turnrate=400;
+	maxslope=15;
+	maxwaterdepth=0;
+
+	leavetracks=1;
+	trackwidth=12;
+	trackoffset=3;
+	trackstrength=5.5;
+	trackstretch=1;
+	tracktype=Stdtank;
 
 	explodeas=Tiny_Explosion;
 	selfdestructas=Tiny_Explosion;
 
-	hightrajectory=1;
+	nochasecategory=VTOL;
 
-	weapon1=61K;
+	weapon1=61k37mmaa;
+	badtargetcategory1=NFLAGNAIR;
 	onlytargetcategory1=AIR;
+
+	weapon2=61k37mmhe;
+	onlytargetcategory2=NFLAGNAIR;
+	badtargetcategory2=AIR;
+
+	weapon3=Large_Tracer;
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -58,8 +67,8 @@
 		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator8=custom:SMALL_MUZZLEDUST;
-		explosiongenerator9=custom:MuzzleBrakeSmoke;
+		explosiongenerator7=custom:PLACEHOLDER_EFFECT07;
+		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
 	}
 }
