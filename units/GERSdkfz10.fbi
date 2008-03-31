@@ -27,7 +27,7 @@
 
 	canmove=1;
 	movementclass=TANK_Light;
-	maxvelocity=5.2;
+	maxvelocity=4.75;
 	acceleration=0.065;
 	brakerate=0.195;
 	turnrate=405;
@@ -35,9 +35,9 @@
 	maxwaterdepth=5;
 
 	leavetracks=1;
-	trackwidth=13;
+	trackwidth=19;
 	trackoffset=10;
-	trackstrength=6.5;
+	trackstrength=7;
 	trackstretch=1;
 	tracktype=Stdtank;
 
