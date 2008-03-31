@@ -12,7 +12,7 @@
 	FootprintX=3;
 	FootprintZ=3;
 	MaxWaterDepth=5;
-	MaxSlope=13;
+	MaxSlope=16;
 	}
 [CLASS2]
 	{
@@ -20,7 +20,7 @@
 	FootprintX=2;
 	FootprintZ=2;
 	MaxWaterDepth=8;
-	MaxSlope=13;
+	MaxSlope=16;
 	}
 [CLASS3]
 	{
@@ -28,7 +28,7 @@
 	FootprintX=2;
 	FootprintZ=2;
 	MaxWaterDepth=8;
-	MaxSlope=16;
+	MaxSlope=20;
 	}
 [CLASS4]
 	{
@@ -36,7 +36,7 @@
 	FootprintX=3;
 	FootprintZ=3;
 	MaxWaterDepth=10;
-	MaxSlope=16;
+	MaxSlope=20;
 	}
 [CLASS5]
 	{
@@ -44,7 +44,7 @@
 	FootprintX=3;
 	FootprintZ=3;
 	MaxWaterDepth=15;
-	MaxSlope=16;
+	MaxSlope=20;
 	}
 
 [CLASS6]
@@ -53,7 +53,7 @@
 	FootprintX=4;
 	FootprintZ=4;
 	MaxWaterDepth=15;
-	MaxSlope=16;
+	MaxSlope=18;
 	}
 
 [CLASS7]
@@ -63,7 +63,7 @@
 	FootprintZ=2;
 	MaxWaterDepth=5;
 	MaxWaterSlope=5;
-	MaxSlope=13;
+	MaxSlope=16;
 	}
 [CLASS8]
 {
