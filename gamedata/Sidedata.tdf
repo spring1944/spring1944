@@ -234,7 +234,8 @@
 		canbuild2=GERSupplyTruck;
 		canbuild3=GERSdkfz250;
 		canbuild4=GERSdkfz251;
-		canbuild5=GERMarder;
+		canbuild5=GERSdkfz10;
+		canbuild6=GERMarder;
 	}
 
 	[GERGunYard]
