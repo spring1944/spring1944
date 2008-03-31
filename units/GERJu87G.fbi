@@ -1,36 +1,37 @@
 [UNITINFO]
 {
-	Name=P-51D Mustang;
-	UnitName=USP51DMustang;
+	Name=Ju 87G-1 Stuka;
+	UnitName=GBRSpitfireMkXIV;
 	
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=11000;
 	BuildTime=13000;
 	Category=AIRCRAFT;
-	Description=Attack Fighter;
+	Description=Ground Attack/Tank Buster Plane;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=700;
-	ObjectName=USP51DMustang.S3O;
-	Side=US;
-	//SoundCategory=USPlane;
+	MaxDamage=650;
+	ObjectName=GERJu87G.S3O;
+	Side=GBR;
+	//SoundCategory=GERPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
 	
 	//    Movement
 	BrakeRate=5;
-	Acceleration=0.48;
+	Acceleration=0.5;
 	CanMove=1;
-	MaxVelocity=25;
+	MaxVelocity=23;
 	MaxSlope=10;
-	TurnRate=50;
+	TurnRate=60;
 	
 	//    Buildings
 	
 	//    Construction
 	
 	//    Resources
+
 	
 	//    Abilities
 	CanAttack=1;
@@ -42,12 +43,12 @@
 	Stealth=1;
 	
 	//    Sight/Radar
-	SightDistance=500;
-	AirSightDistance=4000;
+	SightDistance=800;
+	AirSightDistance=3000;
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=USP51DMustang.png;
+	BuildPic=GBRSPitfireMkXIV.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -59,14 +60,14 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=.25;
-	maxbank=0.12;
-	maxpitch=0.12;
-	turnradius=2000;
-	maxaileron=0.0055;
-	maxelevator=0.0043;
-	maxrudder=0.0035;
+	maxbank=0.065;
+	maxpitch=0.07;
+	turnradius=2200;
+	maxaileron=0.00375;
+	maxelevator=0.00275;
+	maxrudder=0.0015;
 
-	CruiseAlt=500;
+	CruiseAlt=200;
 
 	moverate1=4;//does this tag even work?
 	//Maxfuel=200;edited out for testing purposes
@@ -79,50 +80,49 @@
 	maneuverleashlength=1280;
 	seismicsignature=0;
 	shownanoframe=0;
+	nochasecategory=AIR;
 
 	//	Weapons
-
-	weapon1=m2browningamg;
+	weapon1=bk37mmap;
 	weaponmaindir1=0 0 1;
-	maxangledif1=5;
+	maxangledif1=10;
+	onlytargetcategory1=NFLAGNAIR;
 
-	weapon2=m2browningamg;
+	weapon2=bk37mmap;
 	weaponmaindir2=0 0 1;
-	maxangledif2=5;
+	maxangledif2=10;
 	weaponslaveto2=1;
+	onlytargetcategory2=NFLAGNAIR;
 
-	weapon3=m2browningamg;
-	weaponmaindir3=0 0 1;
-	maxangledif3=5;
-	weaponslaveto3=1;
+	weapon3=mg42aa;
+	weaponmaindir3=0 .75 -1;
+	maxangledif3=90;
+	onlytargetcategory3=AIR;
 
-	weapon4=m2browningamg;
-	weaponmaindir4=0 0 1;
-	maxangledif4=5;
-	weaponslaveto4=1;
+	weapon4=mg42aa;
+	weaponmaindir4=0 .75 -1;
+	maxangledif4=90;
+	weaponslaveto4=3;
+	onlytargetcategory4=AIR;
 
-	weapon5=m2browningamg;
-	weaponmaindir5=0 0 1;
+	weapon5=mg42fear;
+	weaponmaindir5=0 1 0;
 	maxangledif5=5;
-	weaponslaveto5=1;
-
-	weapon6=m2browningamg;
-	weaponmaindir6=0 0 1;
-	maxangledif6=5;
-	weaponslaveto6=1;
 	
-	weapon7=Medium_Tracer;
+	weapon6=Small_Tracer;	
+	weapon7=Large_Tracer;
 
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_SHELLCASINGS;
-		explosiongenerator2=custom:MG_MUZZLEFLASH;
+		explosiongenerator1=custom:MG_MUZZLEFLASH;
+		explosiongenerator2=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator3=custom:MG_SHELLCASINGS;
 	}
 
 	[customParams]
 	{
-		proptexture = bitmaps/prop3.tga;
+		proptexture=bitmaps/prop3.tga;
 		enginesound = p51b-;
 		enginesoundnr = 16;
 	}

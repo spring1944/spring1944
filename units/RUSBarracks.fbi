@@ -2,7 +2,7 @@
 {
 	unitname=RUSBarracks;
 	objectname=RUSBarracks.S3O;
-	icontype=factory;
+	icontype=barracks;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=yyoooo ooocco occcco ooocco yyocco yyocco yyocco yyocco;

@@ -47,7 +47,7 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GERFi156.bmp;
+	BuildPic=GERFi156.png;
 	CruiseAlt=160;
 	ExplodeAs=ResourceBoom;
 	MaxWaterDepth=0;
@@ -56,6 +56,8 @@
 	idleAutoHeal=2;
 	bankscale=1;
 	moverate1=4;
+	nochasecategory=AIR;
+	badtargetcategory=AIR;
 
 	wingdrag=0.1;
 	wingangle=0.1;
@@ -76,6 +78,20 @@
 	RefuelTime=10;
 	shownanoframe=0;
 	
+	weapon1=mg42aa;
+	weaponmaindir1=0 .75 -1;
+	maxangledif1=90;
+	onlytargetcategory1=AIR;
+
+	weapon2=Small_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_MUZZLEFLASH;
+		explosiongenerator2=custom:MG_SHELLCASINGS;
+	}
+
 	[customParams]
 	{
 		dontCount=1;

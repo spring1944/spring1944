@@ -281,6 +281,7 @@
 	//**Germany**//
 	GERFi156=99;
 	GERBf109=99;
+	GERJu87G=99;
 	
 	//US//
 	USP51DMustang=99;

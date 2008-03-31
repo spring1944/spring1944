@@ -160,7 +160,9 @@
 	[Airstrip]
 	{
 		canbuild1=USP51DMustang;
-		canbuild2=GBRSpitfireMkXIV;
+		canbuild2=USP51DMustangGA;
+		canbuild3=GBRSpitfireMkXIV;
+		canbuild4=GERFi156;
 	}
 
 				////////////////////

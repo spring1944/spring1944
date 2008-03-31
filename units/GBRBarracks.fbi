@@ -3,7 +3,7 @@
 	unitname=GBRBarracks;
 	objectname=GBRBarracks.S3O;
 	corpse=GBRBarracks_Destroyed;
-	icontype=factory;
+	icontype=barracks;
 	soundcategory=GBRInf;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;

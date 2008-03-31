@@ -133,7 +133,7 @@
 	}
 }
 
-[mg42]
+[mg42aa]
 {
 	id=7;
 	name=Maschinengewehr 42 AA;
@@ -157,6 +157,7 @@
 	explosiongenerator=custom:BulletImpact;
 	soundtrigger=1;
 	soundstart=GER_MG42;
+	canattackground=0;
 
 	avoidfriendly=0;
 	collidefriendly=0;

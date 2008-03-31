@@ -1,18 +1,18 @@
 [UNITINFO]
 {
-	Name=P-51D Mustang;
-	UnitName=USP51DMustang;
+	Name=P-51D-25 Mustang;
+	UnitName=USP51DMustangGA;
 	
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=11000;
 	BuildTime=13000;
 	Category=AIRCRAFT;
-	Description=Attack Fighter;
+	Description=Ground Attack Aircraft;
 	FootprintX=4;
 	FootprintZ=4;
 	MaxDamage=700;
-	ObjectName=USP51DMustang.S3O;
+	ObjectName=USP51DMustangGA.S3O;
 	Side=US;
 	//SoundCategory=USPlane;
 	category=NFLAG AIR;
@@ -22,7 +22,7 @@
 	BrakeRate=5;
 	Acceleration=0.48;
 	CanMove=1;
-	MaxVelocity=25;
+	MaxVelocity=22;
 	MaxSlope=10;
 	TurnRate=50;
 	
@@ -47,7 +47,7 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=USP51DMustang.png;
+	BuildPic=USP51DMustangGA.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -59,12 +59,12 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=.25;
-	maxbank=0.12;
-	maxpitch=0.12;
+	maxbank=0.105;
+	maxpitch=0.105;
 	turnradius=2000;
-	maxaileron=0.0055;
-	maxelevator=0.0043;
-	maxrudder=0.0035;
+	maxaileron=0.0052;
+	maxelevator=0.004;
+	maxrudder=0.003;
 
 	CruiseAlt=500;
 
@@ -82,42 +82,52 @@
 
 	//	Weapons
 
-	weapon1=m2browningamg;
+	weapon1=HVARRocket;
 	weaponmaindir1=0 0 1;
-	maxangledif1=5;
+	maxangledif1=10;
 
-	weapon2=m2browningamg;
+	weapon2=HVARRocket;
 	weaponmaindir2=0 0 1;
-	maxangledif2=5;
+	maxangledif2=10;
 	weaponslaveto2=1;
 
 	weapon3=m2browningamg;
 	weaponmaindir3=0 0 1;
 	maxangledif3=5;
-	weaponslaveto3=1;
 
 	weapon4=m2browningamg;
 	weaponmaindir4=0 0 1;
 	maxangledif4=5;
-	weaponslaveto4=1;
+	weaponslaveto4=3;
 
 	weapon5=m2browningamg;
 	weaponmaindir5=0 0 1;
 	maxangledif5=5;
-	weaponslaveto5=1;
+	weaponslaveto5=3;
 
 	weapon6=m2browningamg;
 	weaponmaindir6=0 0 1;
 	maxangledif6=5;
-	weaponslaveto6=1;
+	weaponslaveto6=3;
+
+	weapon7=m2browningamg;
+	weaponmaindir7=0 0 1;
+	maxangledif7=5;
+	weaponslaveto7=3;
+
+	weapon8=m2browningamg;
+	weaponmaindir8=0 0 1;
+	maxangledif8=5;
+	weaponslaveto8=3;
 	
-	weapon7=Medium_Tracer;
+	weapon9=Medium_Tracer;
 
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
 		explosiongenerator1=custom:MG_SHELLCASINGS;
 		explosiongenerator2=custom:MG_MUZZLEFLASH;
+		explosiongenerator3=custom:XLARGE_MUZZLEFLASH;
 	}
 
 	[customParams]

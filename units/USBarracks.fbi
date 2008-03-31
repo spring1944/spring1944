@@ -3,7 +3,7 @@
 	unitname=USBarracks;
 	objectname=USBarracks.S3O;
 	corpse=USBarracks_Destroyed;
-	icontype=factory;
+	icontype=barracks;
 	soundcategory=USInf;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;

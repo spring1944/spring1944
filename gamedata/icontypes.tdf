@@ -87,7 +87,7 @@
 	[aaartillery]
 	{
 		bitmap=icons/aaartillery.tga;
-		size=3.5;
+		size=4;
 		distance=0.2;
 	}
 	[aahalftrack]
@@ -232,14 +232,14 @@
 	[rusflag]
 	{
 		bitmap=icons/rushq.tga;
-		size=2.25;
+		size=2.5;
 		distance=0.3;
 	}
 
 	[commissar]
 	{
 		bitmap=icons/rushq.tga;
-		size=1.25;
+		size=1.75;
 		distance=0.15;
 	}
 
@@ -266,5 +266,11 @@
 		bitmap=icons/rusptrd.tga;
 		size=2.25;
 		distance=0.15;
+	}
+	[barracks]
+	{
+		bitmap=icons/barracks.tga;
+		size=2.75;
+		distance=0.4;
 	}
 } 

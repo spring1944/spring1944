@@ -3,7 +3,7 @@
 	unitname=GERBarracks;
 	objectname=GERBarracks.S3O;
 	corpse=GERBarracks_Destroyed;
-	icontype=factory;
+	icontype=barracks;
 	soundcategory=GERInf;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
