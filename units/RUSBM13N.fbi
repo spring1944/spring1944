@@ -74,7 +74,7 @@
 	{
 		maxammo=3;
 		weaponswithammo=1;
-		lowammolevel=0;
+		lowammolevel=1;
 		weaponcost=320;
 	}
 }
