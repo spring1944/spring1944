@@ -8,6 +8,7 @@
 	turret=1;
 	tolerance=6000;
 	explosionspeed=100;
+	explosiongenerator=custom:Weapon_Explosion_Large;
 
 	lineofsight=1;
 	firestarter=0.0;
@@ -43,8 +44,6 @@
   	size=1;
   	separation=2;
   	stages=50;
-
-	explosiongenerator=custom:Weapon_Explosion_Large;
 
 	[damage]
 	{

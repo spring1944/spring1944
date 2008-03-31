@@ -121,7 +121,7 @@
 	[customParams]
 	{
 		proptexture=bitmaps/prop5.tga;
-		enginesound = p51b-;
-		enginesoundnr = 16;
+		enginesound = spitfireb-;
+		enginesoundnr = 18;
 	}
 }
