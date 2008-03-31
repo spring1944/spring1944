@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece base, turret, sleeve, barrel, flare, brakeright, brakeleft, aaref, aaturret, aagun, aaflare, exhaust;
+piece base, sleeve, barrel, flare, brakeright, brakeleft, aaref, aaturret, aagun, aaflare, exhaust;
 piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
  
 static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, CannonFearOk;
@@ -12,8 +12,8 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
-#define SMOKEPIECE2 turret
-#define SMOKEPIECE3 sleeve
+#define SMOKEPIECE2 sleeve
+#define SMOKEPIECE3 frontwheel
 #define SMOKEPIECE4 exhaust
 
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
@@ -132,7 +132,6 @@ SetMaxReloadTime(longestReloadTime)
 RestoreAfterDelay()
 {
 	sleep restore_delay;
-	turn turret to y-axis <0.000000> speed <60>;
 	turn barrel to x-axis <0.000000> speed <10>;
 }
 
@@ -149,7 +148,7 @@ QueryWeapon1(piecenum)
 
 AimFromWeapon1(piecenum)
 {
-	piecenum = turret;
+	piecenum = base;
 }
 
 AimWeapon1(heading, pitch)
@@ -158,9 +157,7 @@ AimWeapon1(heading, pitch)
 	set-signal-mask SIG_AIM;
 	GunAiming=1;
 	mainHead = heading;
-	turn turret to y-axis heading speed TURR_TRAVERSE;
 	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
 	wait-for-turn sleeve around x-axis;
 	
 	start-script RestoreAfterDelay();
@@ -191,7 +188,7 @@ FireWeapon1()
 
 AimFromWeapon6(piecenum) //Main gun HE fear
 {
-	piecenum = turret;
+	piecenum = base;
 }
 
 QueryWeapon6(piecenum)
@@ -203,7 +200,6 @@ AimWeapon6(heading, pitch)
 {
 	if (CannonFearOk==1)
 	{
-	wait-for-turn turret around y-axis;
 	return (1);
 	}
 return 0;
@@ -231,7 +227,7 @@ AimWeapon4(heading, pitch)
 	set-signal-mask SIG_AIM_2;
 
 	// thanks to Fang and zwzsg for this!
-	turn aaturret to y-axis heading - get XZ_ATAN(get PIECE_XZ(aaref) - get PIECE_XZ(aaflare)) speed AA_TRAVERSE; 
+	turn aaturret to y-axis heading speed AA_TRAVERSE; 
 	turn aagun to x-axis 0 - pitch speed AA_ELEVATE; 
 	wait-for-turn aaturret around y-axis; 
 	wait-for-turn aagun around x-axis;
@@ -317,7 +313,6 @@ Killed(severity, corpsetype)
 	if(severity <= 1000)
 	{
 		corpsetype = 2;
-		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		explode wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
@@ -325,7 +320,6 @@ Killed(severity, corpsetype)
 		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
 	}
 	corpsetype = 2;
-	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 	explode barrel type SHATTER;
 	explode frontwheel type SHATTER;
 	explode rearwheel type SHATTER;
