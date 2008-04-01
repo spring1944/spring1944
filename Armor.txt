@@ -285,13 +285,13 @@
 	
 	//US//
 	USP51DMustang=99;
+	USP51DMustangGA=99;
 
 	//USSR//
 	RUSYak3=99;
 
 	//Britain//
 	GBRSpitfireMkXIV=99;
-
 	}
 
 [HeavyPlanes]
