@@ -157,15 +157,11 @@
 		canbuild1=USSupplyTruck;
 	}
 
-	[Airstrip]
+	[USAirfield]
 	{
-		canbuild1=USP51DMustang;
-		canbuild2=USP51DMustangGA;
-		canbuild3=GBRSpitfireMkXIV;
-		canbuild4=GERBf109;
-		canbuild5=RUSYak3;
-		canbuild6=GERFi156;
-		canbuild7=GERJu87G;
+		canbuild1=USL4;
+		canbuild2=USP51DMustang;
+		canbuild3=USP51DMustangGA;
 	}
 
 				////////////////////
@@ -285,6 +281,13 @@
 	[GERSupplyDepot]
 	{
 		canbuild1=GERSupplyTruck;
+	}
+
+	[GERAirfield]
+	{
+		canbuild1=GERFi156;
+		canbuild2=GERBf109;
+		canbuild3=GERJu87G;
 	}
 
 				//////////////////////
@@ -426,6 +429,13 @@
 	[GBRSupplyDepot]
 	{
 		canbuild1=GBRSupplyTruck;
+	}
+
+	[GBRAirfield]
+	{
+		canbuild1=GBRAuster;
+		canbuild2=GBRSpitfireMkXIV;
+		canbuild3=GBRTyphoon;
 	}
 
 				////////////////////
@@ -575,5 +585,12 @@
 	[RUSSupplyDepot]
 	{
 		canbuild1=RUSSupplyTruck;
+	}
+	
+	[RUSAirfield]
+	{
+		canbuild1=RUSPo2;
+		canbuild2=RUSYak3;
+		canbuild3=RUSIl2;
 	}
 }

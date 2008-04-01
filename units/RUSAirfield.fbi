@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=Airstrip;
+	unitname=RUSAirfield;
 	objectname=Airstrip.S3O;
 	//corpse=Airstrip_Destroyed;
 	icontype=factory;
@@ -9,7 +9,7 @@
 	tedclass=PLANT;
 	yardmap=ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ccccccccccccccccccccccccccccccc ;
 
-	name=Test Airtrip;
+	name=Airfield;
 	maxdamage=20000;
 	buildcostmetal=100000;
 	buildcostenergy=0;
@@ -38,7 +38,7 @@
 
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=60;//7
-	buildinggrounddecalsizey=30;//7
+	buildinggrounddecalsizey=60;//7
 	buildinggrounddecaltype=Airstrip.dds;//Dirt2.dds;
 
 	explodeas=Med_Explosion;

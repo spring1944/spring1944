@@ -2,12 +2,12 @@
 
 piece base, stand, turret, sleeve, barrel, flare;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, aim1;
+static-var DecreasingFear, fear, lasthit, aim1;
 
 #include "inf_suppressionvars.h"
+
 // Signal definitions
-#define SIG_AIM	2
-#define SIG_DEPLOY	4
+#define SIG_AIM					2
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -26,15 +26,12 @@ static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit,
 
 // definitions for weapons behaviour
 #define RECOIL		[-1] // distance to recoil the gun
-#define RETURN_SPEED	[50] // speed at which the barrel returns
+#define RETURN_SPEED	[10] // speed at which the barrel returns
 #define BURST1		5
 #define BURST2		3
 
 //tracers
 #define LARGE_TRACER		2048+2
-
-#define CREW_DEPLOY
-#define CREW_SUPRESSED
 
 Create()
 {
@@ -43,7 +40,7 @@ Create()
 	set ACTIVATION to TRUE;
 }
 
-TakeCover()
+/*TakeCover()
 {
 set-signal-mask 0;
 	if (IsProne == 0)
@@ -117,9 +114,9 @@ HitByWeaponId(z,x,id,damage)
 	start-script FearRecovery();
 	
 	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
-}
+}*/
 
-// Weapon 1 - AA Ammo
+// Weapon 1 - HE Ammo
 QueryWeapon1(piecenum)
 {
 	piecenum = flare;
@@ -131,6 +128,49 @@ AimFromWeapon1(piecenum)
 }
 
 AimWeapon1(heading, pitch)
+{
+	//if (aim1) return 0;
+	
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+		
+	return 0;
+}
+
+FireWeapon1()
+{
+	// barrel recoil
+	emit-sfx LARGE_TRACER from flare;
+	var i;
+	for (i=0; i < BURST2; ++i) 
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from flare;
+		emit-sfx XSMALL_MUZZLEDUST from flare;
+		move barrel to z-axis RECOIL now;
+		sleep 50;
+		move barrel to z-axis 0 speed RETURN_SPEED;
+		sleep 50;
+	}
+	sleep 200;
+}
+
+// Weapon 2 - AA Ammo
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
 {
 	aim1 = TRUE;
 	signal SIG_AIM;
@@ -146,7 +186,7 @@ AimWeapon1(heading, pitch)
 	return 0;
 }
 
-FireWeapon1()
+FireWeapon2()
 {
 	// barrel recoil
 	emit-sfx LARGE_TRACER from flare;
@@ -154,48 +194,6 @@ FireWeapon1()
 	emit-sfx LARGE_TRACER from flare;
 	var i;
 	for (i=0; i < BURST1; ++i) 
-	{
-		emit-sfx XSMALL_MUZZLEFLASH from flare;
-		emit-sfx XSMALL_MUZZLEDUST from flare;
-		move barrel to z-axis RECOIL now;
-		sleep 50;
-		move barrel to z-axis 0 speed RETURN_SPEED;
-		sleep 50;
-	}
-	sleep 200;
-}
-
-// Weapon 2 - HE Ammo
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (aim1) return 0;
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-	
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
-	wait-for-turn sleeve around x-axis;
-		
-	return 0;
-}
-
-FireWeapon2()
-{
-	// barrel recoil
-	emit-sfx LARGE_TRACER from flare;
-	var i;
-	for (i=0; i < BURST2; ++i) 
 	{
 		emit-sfx XSMALL_MUZZLEFLASH from flare;
 		emit-sfx XSMALL_MUZZLEDUST from flare;
