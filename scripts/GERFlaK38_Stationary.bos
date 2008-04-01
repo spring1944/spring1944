@@ -1,0 +1,227 @@
+#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+
+piece base, stand, turret, sleeve, barrel, flare;
+ 
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, aim1;
+
+#include "inf_suppressionvars.h"
+// Signal definitions
+#define SIG_AIM	2
+#define SIG_DEPLOY	4
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define XSMALL_MUZZLEFLASH	1024+7
+#define XSMALL_MUZZLEDUST	1024+8
+
+// definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
+#define TURR_TRAVERSE	<200>
+#define TURR_ELEVATE	<150>
+#define TURR_ARC		<30>
+
+// definitions for weapons behaviour
+#define RECOIL		[-1] // distance to recoil the gun
+#define RETURN_SPEED	[50] // speed at which the barrel returns
+#define BURST1		5
+#define BURST2		3
+
+//tracers
+#define LARGE_TRACER		2048+2
+
+#define CREW_DEPLOY
+#define CREW_SUPRESSED
+
+Create()
+{
+	hide flare;
+	aim1 = FALSE;
+	set ACTIVATION to TRUE;
+}
+
+TakeCover()
+{
+set-signal-mask 0;
+	if (IsProne == 0)
+	{
+	
+				IsProne=1;
+				CREW_SUPRESSED
+
+	}
+		SET ARMORED to TRUE;
+
+		sleep 100;
+		return(0);
+}
+
+RestoreAfterCover() //get up out of the dirt. also controls going into pinned mode.
+{
+	
+
+		if (fear <=0 && IsProne==1)
+		{	
+			fear=0;
+			CREW_DEPLOY
+				IsProne=0;
+				SET ARMORED to FALSE;
+				set MAX_SPEED to [0.5];
+		
+		}
+		return (1);
+		sleep 100;
+	}
+
+
+FearRecovery() 
+{ 
+	if (DecreasingFear==1) return (1);  // better to use signals here
+
+
+     DecreasingFear = 1;
+     while(fear > 0) 
+          { 
+          fear = fear - RecoverConstant; 
+          sleep RecoverRate; 
+          } 
+start-script RestoreAfterCover(); 
+DecreasingFear=0; 
+ 
+return (1); 
+}
+
+
+HitByWeaponId(z,x,id,damage)
+{	
+	lasthit = Id;
+	if (Id<=300 || Id>700)
+		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
+	
+	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+		fear = fear + LittleFear;
+	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
+		fear = fear + MedFear;
+	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
+		fear = fear + BigFear;
+	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
+		fear = fear + MortalFear;
+
+	if (fear > FearLimit) fear = FearLimit; // put this line AFTER increasing fear var
+		
+	start-script TakeCover();
+	sleep 100; // what is this for??
+	start-script FearRecovery();
+	
+	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
+}
+
+// Weapon 1 - AA Ammo
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	aim1 = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	
+		//TODO: anim
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	
+	aim1 = FALSE;	
+	return 0;
+}
+
+FireWeapon1()
+{
+	// barrel recoil
+	emit-sfx LARGE_TRACER from flare;
+	sleep 50;
+	emit-sfx LARGE_TRACER from flare;
+	var i;
+	for (i=0; i < BURST1; ++i) 
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from flare;
+		emit-sfx XSMALL_MUZZLEDUST from flare;
+		move barrel to z-axis RECOIL now;
+		sleep 50;
+		move barrel to z-axis 0 speed RETURN_SPEED;
+		sleep 50;
+	}
+	sleep 200;
+}
+
+// Weapon 2 - HE Ammo
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (aim1) return 0;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+		
+	return 0;
+}
+
+FireWeapon2()
+{
+	// barrel recoil
+	emit-sfx LARGE_TRACER from flare;
+	var i;
+	for (i=0; i < BURST2; ++i) 
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from flare;
+		emit-sfx XSMALL_MUZZLEDUST from flare;
+		move barrel to z-axis RECOIL now;
+		sleep 50;
+		move barrel to z-axis 0 speed RETURN_SPEED;
+		sleep 50;
+	}
+	sleep 200;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 25 || lasthit>1 && lasthit<10)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		return (0);
+	}
+	if(severity <= 999)
+	{
+		corpsetype = 1;
+		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	}
+	corpsetype = 2;
+	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;	
+	explode sleeve type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode stand type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+}

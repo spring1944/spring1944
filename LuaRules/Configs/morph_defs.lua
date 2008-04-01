@@ -136,6 +136,24 @@ local morphDefs = {
     energy = 0,
   },
   
+  gerflak38 =
+  {
+    into = 'gerflak38_stationary',
+    tech = 0,
+    time = 20,
+    metal = 50,
+    energy = 0,
+  },
+  
+  gerflak38_stationary =
+  {
+    into = 'gerflak38',
+    tech = 0,
+    time = 10,
+    metal = 0,
+    energy = 0,
+  },
+  
   gerpak40 = 
   {
     into = 'gerpak40_stationary',

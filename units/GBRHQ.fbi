@@ -2,7 +2,7 @@
 {
 	unitname=GBRHQ;
 	objectname=GBRHQ.S3O;
-	buildpic=GBRHQ.bmp;
+	buildpic=GBRHQ.png;
 	corpse=GBRHQ_Destroyed;
 	icontype=gbrhq;
 	soundcategory=GBRInf;
