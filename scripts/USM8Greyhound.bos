@@ -49,7 +49,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, MGFearOk, CannonFear
 // definitions for weapons behaviour
 #define RELOAD		3000 // time in milliseconds between shots
 #define RECOIL		[-1.5] // distance to recoil the gun
-#define RETURN_SPEED	[15] // speed at which the barrel returns
+#define RETURN_SPEED	[5] // speed at which the barrel returns
 
 //effects
 #define placeholder_EFFECT01 1024+1

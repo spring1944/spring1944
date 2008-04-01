@@ -34,8 +34,8 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, Pick
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
-#define RECOIL		[-0.5] // distance to recoil the gun
-#define RETURN_SPEED	[50] // speed at which the barrel returns
+#define RECOIL		[-3] // distance to recoil the gun
+#define RETURN_SPEED	[5] // speed at which the barrel returns
 
 // animation macros
 #define CREW_DEPLOY \

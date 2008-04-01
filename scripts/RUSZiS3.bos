@@ -38,7 +38,7 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, last
 
 // definitions for weapons behaviour
 #define RECOIL		[-2.5] // distance to recoil the gun
-#define RETURN_SPEED	[30] // speed at which the barrel returns
+#define RETURN_SPEED	[5] // speed at which the barrel returns
 
 // animation macros
 #define CREW_DEPLOY \

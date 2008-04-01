@@ -43,8 +43,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 
 // definitions for weapons behaviour
 #define RELOAD		3300 // time in milliseconds between shots
-#define RECOIL		[-1.75] // distance to recoil the gun
-#define RETURN_SPEED	[15] // speed at which the barrel returns
+#define RECOIL		[-3] // distance to recoil the gun
+#define RETURN_SPEED	[4] // speed at which the barrel returns
 
 // definitions for HitWeapId_S44
 #define ARMOUR		9456
