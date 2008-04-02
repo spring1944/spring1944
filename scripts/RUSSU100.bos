@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, mantlet, barrel, flare, brakeright, brakeleft;
+piece  base, mantlet, barrel, flare;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
 
  
@@ -82,8 +82,6 @@ treads()
 Create()
 {
 	hide flare;
-	hide brakeright;
-	hide brakeleft;
 	// init vars
 	rock = FALSE;
 	// start continuous scripts
@@ -167,8 +165,6 @@ FireWeapon1()
 	// Do SFX
 	emit-sfx LARGE_MUZZLEFLASH from flare;
 	emit-sfx LARGE_MUZZLEDUST from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
