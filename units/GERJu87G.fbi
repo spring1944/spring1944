@@ -95,17 +95,18 @@
 	onlytargetcategory2=NFLAGNAIR;
 
 	weapon3=mg42aa;
-	weaponmaindir3=0 .75 -1;
+	weaponmaindir3=0 .5 -1;
 	maxangledif3=90;
 	onlytargetcategory3=AIR;
 
 	weapon4=mg42aa;
-	weaponmaindir4=0 .75 -1;
+	weaponmaindir4=0 .5 -1;
 	maxangledif4=90;
 	weaponslaveto4=3;
 	onlytargetcategory4=AIR;
 
 	weapon5=mg42fear;
+	onlytargetcategory5=NFLAGNAIR;
 	weaponmaindir5=0 1 0;
 	maxangledif5=5;
 	

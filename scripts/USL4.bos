@@ -8,31 +8,65 @@ piece  base, fuselage, wing1, wing2, wheel1, wheel2, propeller, blades;
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 
+#define SMOKEPUFF_GPL_FX 		1024+0
+#define MG_MUZZLEFLASH			1024+1
+#define MG_SHELLCASINGS 		1024+2
+
+#define SIG_BANK 				2
+
+#define SMALL_TRACER 			2048+1
+
+startengine()
+{
+	spin propeller around z-axis speed <800> accelerate <200>;
+	sleep 400;
+	spin propeller around z-axis speed <5000> accelerate <-5000>;
+	sleep 200;
+	spin propeller around z-axis speed <5000> accelerate <5000>;
+	hide blades;
+	set 1024 to 1;
+}
+
+stopengine()
+{
+	show blades;
+	spin propeller around z-axis speed <800> accelerate <-400>;
+	sleep 400;
+	spin propeller around z-axis speed <50>;
+	set 1024 to 0;
+}
+
+bankright()
+{
+	signal SIG_BANK;
+	set-signal-mask SIG_BANK;
+	turn fuselage to z-axis <-30> speed <30>;
+	sleep 100;
+	turn fuselage to z-axis <0> speed <30>;	
+}
+bankleft()
+{
+	signal SIG_BANK;
+	set-signal-mask SIG_BANK;
+	turn fuselage to z-axis <30> speed <30>;
+	sleep 100;
+	turn fuselage to z-axis <0> speed <30>;	
+}
+
+gearsup()
+{
+}
+
+gearsdown()
+{
+}
+
 activatescr()
 {
-	if( TRUE )
-	{
-		spin propeller around z-axis speed <800> accelerate <200>;
-		sleep 400;
-		spin propeller around z-axis speed <5000> accelerate <-5000>;
-		sleep 200;
-		spin propeller around z-axis speed <5000> accelerate <5000>;
-		hide blades;
-	}
-	sleep 44;
 }
 
 deactivatescr()
 {
-	if( TRUE )
-	{
-		show blades;
-		spin propeller around z-axis speed <800> accelerate <-400>;
-		sleep 400;
-		spin propeller around z-axis speed <50>;
-		
-	}
-	sleep 44;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
@@ -113,6 +147,7 @@ Create()
 	Static_Var_1 = 0;
 	call-script InitState();
 	start-script SmokeUnit();
+	set 1024 to 0;
 }
 
 Activate()

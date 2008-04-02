@@ -1,7 +1,7 @@
 [UNITINFO]
 {
-	Name=Hawker Typhoon Mk.IB;
-	UnitName=GBRTyphoon;
+	Name=IL-2M Shturmovik;
+	UnitName=RUSIL2;
 	
 	//    Required Tags
 	BuildCostEnergy=0;
@@ -12,9 +12,9 @@
 	FootprintX=4;
 	FootprintZ=4;
 	MaxDamage=700;
-	ObjectName=GBRTyphoon.S3O;
+	ObjectName=RUSIL2.S3O;
 	Side=US;
-	//SoundCategory=GBRPlane;
+	//SoundCategory=USPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
 	
@@ -22,7 +22,7 @@
 	BrakeRate=5;
 	Acceleration=0.48;
 	CanMove=1;
-	MaxVelocity=20;
+	MaxVelocity=22;
 	MaxSlope=10;
 	TurnRate=50;
 	
@@ -47,7 +47,7 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GBRTyphoon.png;
+	BuildPic=RUSIL2.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -59,14 +59,14 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=.25;
-	maxbank=0.09;
-	maxpitch=0.09;
-	turnradius=2200;
-	maxaileron=0.0044;
-	maxelevator=0.0031;
-	maxrudder=0.0023;
+	maxbank=0.05;
+	maxpitch=0.05;
+	turnradius=3000;
+	maxaileron=0.0040;
+	maxelevator=0.0025;
+	maxrudder=0.0019;
 
-	CruiseAlt=500;
+	CruiseAlt=300;
 
 	moverate1=4;//does this tag even work?
 	//Maxfuel=200;edited out for testing purposes
@@ -93,43 +93,50 @@
 	maxangledif2=10;
 	weaponslaveto2=1;
 
-	weapon3=HS40420mm;
-	onlytargetcategory3=NFLAG;
+	weapon3=ShVAK20mm;
 	weaponmaindir3=0 0 1;
 	maxangledif3=5;
 
-	weapon4=HS40420mm;
-	onlytargetcategory4=NFLAG;
+	weapon4=ShVAK20mm;
 	weaponmaindir4=0 0 1;
 	maxangledif4=5;
 	weaponslaveto4=3;
 
-	weapon5=HS40420mm;
-	onlytargetcategory5=NFLAG;
+	weapon5=mg15115mm;
 	weaponmaindir5=0 0 1;
 	maxangledif5=5;
 	weaponslaveto5=3;
 
-	weapon6=HS40420mm;
-	onlytargetcategory6=NFLAG;
+	weapon6=mg15115mm;
 	weaponmaindir6=0 0 1;
 	maxangledif6=5;
 	weaponslaveto6=3;
+
+	weapon7=bomb;
+	onlytargetcategory7=NFLAGNAIR;
+
+	weapon8=m2browningaa;
+	onlytargetcategory8=AIR;
+	weaponmaindir8=0 .25 -1;
+	maxangledif8=90;
 	
-	weapon7=Medium_Tracer;
+	weapon9=Small_Tracer;
+	weapon10=Medium_Tracer;
+	weapon11=Large_Tracer;
 
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
 		explosiongenerator1=custom:MG_SHELLCASINGS;
-		explosiongenerator2=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator3=custom:XLARGE_MUZZLEFLASH;
+		explosiongenerator2=custom:MG_MUZZLEFLASH;
+		explosiongenerator3=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator4=custom:XLARGE_MUZZLEFLASH;
 	}
 
 	[customParams]
 	{
 		proptexture = bitmaps/prop3.tga;
-		enginesound = spitfireb-;
+		enginesound = p51b-;
 		enginesoundnr = 16;
 	}
 }

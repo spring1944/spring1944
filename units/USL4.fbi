@@ -75,8 +75,18 @@
 	Maxfuel=200;
 	RefuelTime=10;
 	shownanoframe=0;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_MUZZLEFLASH;
+		explosiongenerator2=custom:MG_SHELLCASINGS;
+	}
+
 	[customParams]
 	{
-		dontCount=1;
+		proptexture=bitmaps/prop3.tga;
+		enginesound = spitfireb-;
+		enginesoundnr = 18;
 	}
 }

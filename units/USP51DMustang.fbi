@@ -83,30 +83,36 @@
 	//	Weapons
 
 	weapon1=m2browningamg;
+	onlytargetcategory1=NFLAG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=5;
 
 	weapon2=m2browningamg;
+	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=5;
 	weaponslaveto2=1;
 
 	weapon3=m2browningamg;
+	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=5;
 	weaponslaveto3=1;
 
 	weapon4=m2browningamg;
+	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
 	maxangledif4=5;
 	weaponslaveto4=1;
 
 	weapon5=m2browningamg;
+	onlytargetcategory5=NFLAG;
 	weaponmaindir5=0 0 1;
 	maxangledif5=5;
 	weaponslaveto5=1;
 
 	weapon6=m2browningamg;
+	onlytargetcategory6=NFLAG;
 	weaponmaindir6=0 0 1;
 	maxangledif6=5;
 	weaponslaveto6=1;
