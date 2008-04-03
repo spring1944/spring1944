@@ -132,7 +132,7 @@
 	[customParams]
 	{
 		proptexture = bitmaps/prop3.tga;
-		enginesound = p51b-;
-		enginesoundnr = 16;
+		enginesound = fw190b-;
+		enginesoundnr = 12;
 	}
 }
