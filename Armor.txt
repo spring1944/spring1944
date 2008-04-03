@@ -281,17 +281,22 @@
 	//**Germany**//
 	GERFi156=99;
 	GERBf109=99;
+	GERFw190=99;
 	GERJu87G=99;
 	
 	//US//
+	USL4=99;
 	USP51DMustang=99;
 	USP51DMustangGA=99;
 
 	//USSR//
+	RUSPo2=99;
 	RUSYak3=99;
+	RUSIL2=99;
 
 	//Britain//
 	GBRSpitfireMkXIV=99;
+	GBRTyphoon=99;
 	}
 
 [HeavyPlanes]
