@@ -1,9 +1,9 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, brakeleft, brakeright, exhaust, hullMG;
+piece  base, turret, mantlet, barrel, flare, coaxflare, brakeleft, brakeright, exhaust, hullMG, skirts, turretskirts;
 piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk, Static_Var_1;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -98,6 +98,28 @@ Create()
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
+	
+	Static_Var_1 = Rand( 1, 4 );
+	if( Static_Var_1 == 1 )
+	{
+		show skirts;
+		hide turretskirts;
+	}
+	if( Static_Var_1 == 2 )
+	{
+		hide skirts;
+		show turretskirts;
+	}
+	if( Static_Var_1 == 3 )
+	{
+		hide skirts;
+		hide turretskirts;
+	}
+		if( Static_Var_1 == 4 )
+	{
+		show skirts;
+		show turretskirts;
+	}
 }
 
 StartMoving()

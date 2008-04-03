@@ -1,36 +1,37 @@
 [UNITINFO]
 {
-	Name=Bf 109K-4;
-	UnitName=GERBf109;
+	Name=Spitfire Mk IXe LF;
+	UnitName=GBRSpitfireMkIX;
 	
 	//    Required Tags
-	BuildCostEnergy=9000;
-	BuildCostMetal=9000;
-	BuildTime=10000;
+	BuildCostEnergy=0;
+	BuildCostMetal=11000;
+	BuildTime=13000;
 	Category=AIRCRAFT;
-	Description=Attack Fighter;
+	Description=Fighter-Bomber;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=800;
-	ObjectName=GERBf109.S3O;
-	Side=GER;
-	//SoundCategory=GERPlane;
+	MaxDamage=650;
+	ObjectName=GBRSpitfireMkIX.S3O;
+	Side=GBR;
+	//SoundCategory=GBRPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
 	
 	//    Movement
 	BrakeRate=5;
-	Acceleration=0.5;
+	Acceleration=0.48;
 	CanMove=1;
-	MaxVelocity=24;
+	MaxVelocity=48;
 	MaxSlope=10;
-	TurnRate=50;
+	TurnRate=24;
 	
 	//    Buildings
 	
 	//    Construction
 	
 	//    Resources
+
 	
 	//    Abilities
 	CanAttack=1;
@@ -43,11 +44,11 @@
 	
 	//    Sight/Radar
 	SightDistance=500;
-	airsightdistance=4000;
+	AirSightDistance=4000;
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GERBf109.png;
+	BuildPic=GBRSPitfireMkXIV.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -59,14 +60,14 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=.25;
-	maxbank=0.1;
-	maxpitch=0.1;
+	maxbank=0.13;
+	maxpitch=0.13;
 	turnradius=2000;
-	maxaileron=0.00465;
-	maxelevator=0.0036;
-	maxrudder=0.002765;
+	maxaileron=0.006;
+	maxelevator=0.005;
+	maxrudder=0.004;
 
-	CruiseAlt=500;
+	CruiseAlt=250;
 
 	moverate1=4;//does this tag even work?
 	//Maxfuel=200;edited out for testing purposes
@@ -80,29 +81,39 @@
 	seismicsignature=0;
 	shownanoframe=0;
 
-
 	//	Weapons
-	weapon1=mg15115mm;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
 
-	weapon2=mg15115mm;
+	weapon1=bomb;
+	weaponmaindir1=0 -.5 1;
+	maxangledif1=20;
+	onlytargetcategory1=NFLAGNAIR;
+
+	weapon2=m2browningamg;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
-	weaponslaveto2=1;
 
-	weapon3=mk10830mm;
+	weapon3=m2browningamg;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
-	weaponslaveto3=1;
-	
-	weapon4=Medium_Tracer;	
-	weapon5=Large_Tracer;
+	weaponslaveto3=2;
 
-	//weapon6=FighterFear;
+	weapon4=HS40420mm;
+	onlytargetcategory4=NFLAG;
+	weaponmaindir4=0 0 1;
+	maxangledif4=10;
+	weaponslaveto4=2;
+
+	weapon5=HS40420mm;
+	onlytargetcategory5=NFLAG;
+	weaponmaindir5=0 0 1;
+	maxangledif5=10;
+	weaponslaveto5=2;
+	
+	weapon6=Medium_Tracer;	
+	weapon7=Large_Tracer;
+	//weapon8=FighterFear;
 
 	[sfxtypes]
 	{
@@ -114,8 +125,8 @@
 
 	[customParams]
 	{
-		proptexture = bitmaps/prop3.tga;
-		enginesound = me109b-;
+		proptexture=bitmaps/prop3.tga;
+		enginesound = spitfireb-;
 		enginesoundnr = 18;
 	}
 }

@@ -66,7 +66,7 @@
 	maxelevator=0.0031;
 	maxrudder=0.0023;
 
-	CruiseAlt=500;
+	CruiseAlt=250;
 
 	moverate1=4;//does this tag even work?
 	//Maxfuel=200;edited out for testing purposes
@@ -96,24 +96,24 @@
 	weapon3=HS40420mm;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
-	maxangledif3=5;
+	maxangledif3=10;
 
 	weapon4=HS40420mm;
 	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
-	maxangledif4=5;
+	maxangledif4=10;
 	weaponslaveto4=3;
 
 	weapon5=HS40420mm;
 	onlytargetcategory5=NFLAG;
 	weaponmaindir5=0 0 1;
-	maxangledif5=5;
+	maxangledif5=10;
 	weaponslaveto5=3;
 
 	weapon6=HS40420mm;
 	onlytargetcategory6=NFLAG;
 	weaponmaindir6=0 0 1;
-	maxangledif6=5;
+	maxangledif6=10;
 	weaponslaveto6=3;
 	
 	weapon7=Medium_Tracer;

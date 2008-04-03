@@ -90,31 +90,31 @@
 	weapon2=mg15115mm;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
-	maxangledif2=5;
+	maxangledif2=10;
 	weaponslaveto2=1;
 
 	weapon3=MG15120mm;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
-	maxangledif3=5;
+	maxangledif3=10;
 	weaponslaveto3=1;
 
 	weapon4=MG15120mm;
 	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
-	maxangledif4=5;
+	maxangledif4=10;
 	weaponslaveto4=1;
 
 	weapon5=MG15120mm;
 	onlytargetcategory5=NFLAG;
 	weaponmaindir5=0 0 1;
-	maxangledif5=5;
+	maxangledif5=10;
 	weaponslaveto5=1;
 
 	weapon6=MG15120mm;
 	onlytargetcategory6=NFLAG;
 	weaponmaindir6=0 0 1;
-	maxangledif6=5;
+	maxangledif6=10;
 	weaponslaveto6=1;
 	
 	weapon7=Medium_Tracer;

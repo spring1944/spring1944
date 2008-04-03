@@ -57,9 +57,9 @@
 	weapon2=rusflagkiller;
 	onlytargetcategory2=FLAG;
 
-	//weapon3=molotov;
-	//weaponmaindir3= 0 0 1;
-	//maxangledif3=180;
+	weapon3=molotov;
+	weaponmaindir3= 0 0 1;
+	maxangledif3=180;
 
 	[sfxtypes]
 	{

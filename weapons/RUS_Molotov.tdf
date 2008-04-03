@@ -1,0 +1,35 @@
+[molotov]
+{
+	id=31;
+	name=Molotov Cocktail;
+	model=MortarShell.S3O;
+	rendertype=3;
+	turret=1;
+
+	range=200;
+	reloadtime=8;
+	accuracy=1421;
+	movingaccuracy=7111;
+	weaponvelocity=210;
+	areaofeffect=25;
+	edgeeffectiveness=0.8;
+	canattackground=0;
+	weapontimer=5;
+
+	soundhit=GEN_Molotov2;
+	explosiongenerator=custom:Weapon_Explosion_Molotov;
+
+	impulsefactor=0.00001;
+
+	[damage]
+	{
+		default=500;
+		mines=0;
+		infantry=560;
+		guns=400;
+		flag=0;
+		tanks=670;
+		armouredvehicles=850;
+		unarmouredvehicles=450;
+	}
+}

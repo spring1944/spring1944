@@ -85,31 +85,28 @@
 	weapon1=m2browningamg;
 	onlytargetcategory1=NFLAG;
 	weaponmaindir1=0 0 1;
-	maxangledif1=5;
+	maxangledif1=10;
 
 	weapon2=m2browningamg;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
-	maxangledif2=5;
+	maxangledif2=10;
 	weaponslaveto2=1;
 
 	weapon3=HS40420mm;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
-	maxangledif3=5;
+	maxangledif3=10;
 	weaponslaveto3=1;
 
 	weapon4=HS40420mm;
 	onlytargetcategory5=NFLAG;
 	weaponmaindir4=0 0 1;
-	maxangledif4=5;
+	maxangledif4=10;
 	weaponslaveto4=1;
 	
-	weapon5=bomb;
-	onlytargetcategory=NFLAGNAIR;
-	
-	weapon6=Medium_Tracer;	
-	weapon7=Large_Tracer;
+	weapon5=Medium_Tracer;	
+	weapon6=Large_Tracer;
 	//weapon8=FighterFear;
 
 	[sfxtypes]

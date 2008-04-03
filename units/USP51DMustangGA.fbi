@@ -96,36 +96,36 @@
 	weapon3=m2browningamg;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
-	maxangledif3=5;
+	maxangledif3=10;
 
 	weapon4=m2browningamg;
 	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
-	maxangledif4=5;
+	maxangledif4=10;
 	weaponslaveto4=3;
 
 	weapon5=m2browningamg;
 	onlytargetcategory5=NFLAG;
 	weaponmaindir5=0 0 1;
-	maxangledif5=5;
+	maxangledif5=10;
 	weaponslaveto5=3;
 
 	weapon6=m2browningamg;
 	onlytargetcategory6=NFLAG;
 	weaponmaindir6=0 0 1;
-	maxangledif6=5;
+	maxangledif6=10;
 	weaponslaveto6=3;
 
 	weapon7=m2browningamg;
 	onlytargetcategory7=NFLAG;
 	weaponmaindir7=0 0 1;
-	maxangledif7=5;
+	maxangledif7=10;
 	weaponslaveto7=3;
 
 	weapon8=m2browningamg;
 	onlytargetcategory8=NFLAG;
 	weaponmaindir8=0 0 1;
-	maxangledif8=5;
+	maxangledif8=10;
 	weaponslaveto8=3;
 	
 	weapon9=Medium_Tracer;
