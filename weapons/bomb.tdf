@@ -9,7 +9,7 @@
 	dropped=1;
 
 	range=500;
-	reloadtime=4;
+	reloadtime=10;
 	accuracy=1421;
 	movingaccuracy=500;
 	weaponvelocity=500;
@@ -20,7 +20,7 @@
 
 	soundhit=GEN_Explo_9;
 
-	impulsefactor=0.00001;
+	impulsefactor=0.01;
 
 	explosiongenerator=custom:Weapon_Explosion_XXXLarge;
 	

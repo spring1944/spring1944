@@ -42,7 +42,7 @@
 	Stealth=1;
 	
 	//    Sight/Radar
-	SightDistance=500;
+	SightDistance=750;
 	AirSightDistance=4000;
 	
 	//    Misc
@@ -66,7 +66,7 @@
 	maxelevator=0.0025;
 	maxrudder=0.0019;
 
-	CruiseAlt=250;
+	CruiseAlt=200;
 
 	moverate1=4;//does this tag even work?
 	//Maxfuel=200;edited out for testing purposes

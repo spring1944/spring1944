@@ -43,7 +43,7 @@
 	Stealth=1;
 	
 	//    Sight/Radar
-	SightDistance=800;
+	SightDistance=750;
 	AirSightDistance=3000;
 	
 	//    Misc

@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades, bombpoint;
+piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades, bomb;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
@@ -178,7 +178,7 @@ AimFromWeapon1(piecenum) //Coax fear
 
 QueryWeapon1(piecenum)
 {
-	piecenum = bombpoint;
+	piecenum = mg1;
 }
 
 AimWeapon1(heading, pitch)
@@ -188,7 +188,25 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
+	emit-sfx MEDIUM_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
 	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
 	return (0);
 }
 
@@ -199,7 +217,7 @@ AimFromWeapon2(piecenum) //Coax fear
 
 QueryWeapon2(piecenum)
 {
-	piecenum = mg1;
+	piecenum = mg2;
 }
 
 AimWeapon2(heading, pitch)
@@ -209,25 +227,25 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	emit-sfx MEDIUM_TRACER from mg1;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MEDIUM_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	sleep 67;
-	emit-sfx MEDIUM_TRACER from mg1;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MEDIUM_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg1;
-	emit-sfx MG_SHELLCASINGS from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	return (0);
 }
 
@@ -238,7 +256,7 @@ AimFromWeapon3(piecenum) //Coax fear
 
 QueryWeapon3(piecenum)
 {
-	piecenum = mg2;
+	piecenum = cannon1;
 }
 
 AimWeapon3(heading, pitch)
@@ -247,45 +265,6 @@ AimWeapon3(heading, pitch)
 }
 
 FireWeapon3()
-{
-	emit-sfx MEDIUM_TRACER from mg2;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	sleep 67;
-	emit-sfx MEDIUM_TRACER from mg2;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from mg2;
-	emit-sfx MG_SHELLCASINGS from mg2;
-	return (0);
-}
-
-AimFromWeapon4(piecenum) //Coax fear 
-{
-	piecenum = fuselage;
-}
-
-QueryWeapon4(piecenum)
-{
-	piecenum = cannon1;
-}
-
-AimWeapon4(heading, pitch)
-{
-	return (1);
-}
-
-FireWeapon4()
 {
 	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
 	sleep 67;
@@ -297,22 +276,22 @@ FireWeapon4()
 	return (0);
 }
 
-AimFromWeapon5(piecenum) //Coax fear 
+AimFromWeapon4(piecenum) //Coax fear 
 {
 	piecenum = fuselage;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon4(piecenum)
 {
 	piecenum = cannon2;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon4(heading, pitch)
 {
 	return (1);
 }
 
-FireWeapon5()
+FireWeapon4()
 {
 	emit-sfx XSMALL_MUZZLEFLASH from cannon2;
 	sleep 67;
@@ -324,24 +303,25 @@ FireWeapon5()
 	return (0);
 }
 
-AimFromWeapon8(piecenum)
+AimFromWeapon5(piecenum) //Coax fear 
 {
 	piecenum = fuselage;
 }
 
-QueryWeapon8(piecenum)
+QueryWeapon5(piecenum)
 {
-	piecenum = propeller;
+	piecenum = bomb;
 }
 
-AimWeapon8(heading, pitch)
+AimWeapon5(heading, pitch)
 {
 	return (1);
 }
 
-FireWeapon8()
+FireWeapon5()
 {
-return (0);
+	sleep 67;
+	return (0);
 }
 
 Killed(severity, corpsetype)

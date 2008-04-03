@@ -1,7 +1,7 @@
 [UNITINFO]
 {
-	Name=Spitfire Mk IXe LF;
-	UnitName=GBRSpitfireMkIX;
+	Name=Fw 190G-8;
+	UnitName=GERFw190G;
 	
 	//    Required Tags
 	BuildCostEnergy=0;
@@ -11,27 +11,26 @@
 	Description=Fighter-Bomber;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=650;
-	ObjectName=GBRSpitfireMkIX.S3O;
-	Side=GBR;
-	//SoundCategory=GBRPlane;
+	MaxDamage=700;
+	ObjectName=GERFw190G.S3O;
+	Side=US;
+	//SoundCategory=GERPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
 	
 	//    Movement
 	BrakeRate=5;
-	Acceleration=0.48;
+	Acceleration=0.46;
 	CanMove=1;
-	MaxVelocity=48;
+	MaxVelocity=22;
 	MaxSlope=10;
-	TurnRate=24;
+	TurnRate=50;
 	
 	//    Buildings
 	
 	//    Construction
 	
 	//    Resources
-
 	
 	//    Abilities
 	CanAttack=1;
@@ -48,7 +47,7 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GBRSPitfireMkXIV.png;
+	BuildPic=USP51DMustang.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -60,12 +59,12 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=.25;
-	maxbank=0.13;
-	maxpitch=0.13;
+	maxbank=0.115;
+	maxpitch=0.115;
 	turnradius=2000;
-	maxaileron=0.006;
-	maxelevator=0.005;
-	maxrudder=0.004;
+	maxaileron=0.0054;
+	maxelevator=0.0042;
+	maxrudder=0.003;
 
 	CruiseAlt=200;
 
@@ -78,30 +77,29 @@
 	idleTime=1800;
 	steeringmode=1;
 	maneuverleashlength=1280;
-	nochasecategory=AIR;
 	seismicsignature=0;
 	shownanoframe=0;
 
 	//	Weapons
 
-	weapon1=m2browningamg;
+	weapon1=mg15115mm;
 	onlytargetcategory1=NFLAG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=10;
 
-	weapon2=m2browningamg;
+	weapon2=mg15115mm;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
 	weaponslaveto2=1;
 
-	weapon3=HS40420mm;
+	weapon3=MG15120mm;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
 	weaponslaveto3=1;
 
-	weapon4=HS40420mm;
+	weapon4=MG15120mm;
 	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
@@ -112,21 +110,22 @@
 	maxangledif5=20;
 	onlytargetcategory5=NFLAGNAIR;
 
-	weapon6=Medium_Tracer;	
+	weapon6=Medium_Tracer;
 	weapon7=Large_Tracer;
 
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_MUZZLEFLASH;
-		explosiongenerator2=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator3=custom:MG_SHELLCASINGS;
+		explosiongenerator1=custom:MG_SHELLCASINGS;
+		explosiongenerator2=custom:MG_MUZZLEFLASH;
+		explosiongenerator3=custom:XSMALL_MUZZLEFLASH;
+		
 	}
 
 	[customParams]
 	{
-		proptexture=bitmaps/prop3.tga;
-		enginesound = spitfireb-;
-		enginesoundnr = 18;
+		proptexture = bitmaps/prop3.tga;
+		enginesound = fw190b-;
+		enginesoundnr = 12;
 	}
 }
