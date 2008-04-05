@@ -32,8 +32,8 @@
 	maxslope=15;
 
 	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=3;
-	buildinggrounddecalsizey=3;
+	buildinggrounddecalsizex=1;
+	buildinggrounddecalsizey=1;
 	buildinggrounddecaltype=Dirt2.dds;
 
 	//explodeas=; //Infantry don't need to explode
@@ -41,13 +41,13 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=KwK3020mmHE;
-	onlytargetcategory1=NFLAGNAIR;
-	badtargetcategory1=AIR;
+	weapon1=flak3820mmaa;
+	onlytargetcategory1=AIR;
+	badtargetcategory1=NFLAGNAIR;
 
-	//weapon2=flak3820mmaa;
-	badtargetcategory2=NFLAGNAIR;
-	onlytargetcategory2=AIR;
+	weapon2=KwK3020mmHE;
+	badtargetcategory2=AIR;
+	onlytargetcategory2=NFLAGNAIR;
 
 	weapon3=Large_Tracer;
 

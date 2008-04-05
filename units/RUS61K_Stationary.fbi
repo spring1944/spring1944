@@ -1,60 +1,53 @@
 [unitinfo]
 {
-	unitname=RUS61K;
-	objectname=RUS61K.S3O;
-	buildpic=RUS61K.bmp;
-	//corpse=;
+	unitname=RUS61K_Stationary;
+	objectname=RUS61K_Stationary.S3O;
+	corpse=RUS61K_Destroyed;
 	icontype=aaartillery;
 	soundcategory=RUSInf;
-	category=INFTARG NFLAGNAIR NFLAG;
-	tedclass=TANK;
+	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+	tedclass=TURRET;
+	yardmap=o;
 
-	name=37mm 61-K;
-	description=Anti-Aircraft Gun;
-	side=RUS;
-	maxdamage=450;
-	buildcostmetal=525;
+	name=Dug-In 61-K;
+	description=- Stationary Anti-Aircraft Gun;
+	side=GBR;
+	maxdamage=2500;
+
+	buildcostmetal=1500;
 	buildcostenergy=0;
-	buildtime=150;//old 37500000
+	buildtime=1000;
 	footprintx=2;
 	footprintz=2;
 
 	shownanoframe=0;
 	smoothanim=0;
 
-	SeismicSignature=0;
-	sightdistance=700;
-	airsightdistance=5000;
+	sightdistance=701;
+	airsightdistance=2500;
 	stealth=1;
 
-	canmove=1;
-	movementclass=KBOT_Gun;
-	maxvelocity=0.25;
-	acceleration=0.026;
-	brakerate=0.017;
-	turnrate=400;
+	activatewhenbuilt=1;
+
 	maxslope=15;
-	maxwaterdepth=0;
 
-	leavetracks=1;
-	trackwidth=12;
-	trackoffset=3;
-	trackstrength=5.5;
-	trackstretch=1;
-	tracktype=Stdtank;
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=2;
+	buildinggrounddecalsizey=2;
+	buildinggrounddecaltype=Dirt2.dds;
 
-	explodeas=Tiny_Explosion;
-	selfdestructas=Tiny_Explosion;
-
-	nochasecategory=VTOL;
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
 
 	weapon1=61k37mmaa;
-	badtargetcategory1=NFLAGNAIR;
 	onlytargetcategory1=AIR;
+	badtargetcategory1=NFLAGNAIR;
 
 	weapon2=61k37mmhe;
-	onlytargetcategory2=NFLAGNAIR;
 	badtargetcategory2=AIR;
+	onlytargetcategory2=NFLAGNAIR;
 
 	weapon3=Large_Tracer;
 
@@ -71,12 +64,11 @@
 		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
 		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
 	}
-
 	[customParams]
 	{
-		maxammo=10;
-		weaponswithammo=1;
-		lowammolevel=3;
+		maxammo=30;
+		weaponswithammo=2;
+		lowammolevel=8;
 		weaponcost=20;
 	}
 }

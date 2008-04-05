@@ -21,15 +21,15 @@ static-var DecreasingFear, fear, lasthit, aim1, reloading;
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
 #define RELOAD		300 // time in milliseconds between shots
-#define TURR_TRAVERSE	<200>
-#define TURR_ELEVATE	<150>
+#define TURR_TRAVERSE	<150>
+#define TURR_ELEVATE	<125>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
-#define RECOIL		[-1] // distance to recoil the gun
+#define RECOIL		[-1.5] // distance to recoil the gun
 #define RETURN_SPEED	[10] // speed at which the barrel returns
-#define BURST1		5
-#define BURST2		3
+#define BURST1		3
+#define BURST2		2
 
 //tracers
 #define LARGE_TRACER		2048+2
@@ -163,9 +163,9 @@ FireWeapon1()
 		move barrel to z-axis RECOIL now;
 		sleep 50;
 		move barrel to z-axis 0 speed RETURN_SPEED;
-		sleep 50;
+		sleep 200;
 	}
-	sleep 200;
+	sleep 400;
 	start-script Reload(); // start reload timer after firing
 }
 
@@ -204,7 +204,7 @@ FireWeapon2()
 		move barrel to z-axis RECOIL now;
 		sleep 50;
 		move barrel to z-axis 0 speed RETURN_SPEED;
-		sleep 50;
+		sleep 300;
 	}
 	sleep 200;
 	start-script Reload(); // start reload timer after firing

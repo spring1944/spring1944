@@ -9,7 +9,7 @@
 
 	lineofsight=1;
 	firestarter=0.0;
-	targetmoveerror=0.05;
+	targetmoveerror=0.1;
 	range=1500;
 	reloadtime=1.5;
 	burst=5;
@@ -67,7 +67,7 @@
 
 	ballistic=1;
 	firestarter=0.0;
-	targetmoveerror=0.05;
+	targetmoveerror=0.075;
 	range=975;
 	reloadtime=2;
 	burst=3;

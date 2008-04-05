@@ -190,6 +190,24 @@ local morphDefs = {
     energy = 0,
   },
   
+	rus61k = 
+  {
+    into = 'rus61k2_stationary',
+    tech = 0,
+    time = 20,
+    metal = 50,
+    energy = 0,
+  },
+  
+  rus61k_stationary = 
+  {
+    into = 'rus61k',
+    tech = 0,
+    time = 10,
+    metal = 0,
+    energy = 0,
+  },
+  
   ruszis2 = 
   {
     into = 'ruszis2_stationary',

@@ -1,0 +1,152 @@
+[UNITINFO]
+{
+	Name=P-47D Thunderbolt;
+	UnitName=USP47Thunderbolt;
+	
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=11000;
+	BuildTime=13000;
+	Category=AIRCRAFT;
+	Description=Fighter-Bomber;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=700;
+	ObjectName=USP47Thunderbolt.S3O;
+	Side=US;
+	//SoundCategory=USPlane;
+	category=NFLAG AIR;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.48;
+	CanMove=1;
+	MaxVelocity=25;
+	MaxSlope=10;
+	TurnRate=50;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	
+	//    Sight/Radar
+	SightDistance=750;
+	AirSightDistance=4000;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	BuildPic=USP51DMustang.png;
+	ExplodeAs=Vehicle_Explosion_Med;
+	MaxWaterDepth=0;
+	SelfDestructAs=Vehicle_Explosion_Med;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+
+	//	Flight Stuff
+	wingdrag=0.01;
+	wingangle=0.1;
+	drag=0.01;
+	mygravity=.25;
+	maxbank=0.09;
+	maxpitch=0.09;
+	turnradius=2200;
+	maxaileron=0.0044;
+	maxelevator=0.0031;
+	maxrudder=0.0023;
+
+	CruiseAlt=250;
+
+	moverate1=4;//does this tag even work?
+	//Maxfuel=200;edited out for testing purposes
+	//RefuelTime=10;
+
+	// 	Misc
+	bmcode=1;
+	idleTime=1800;
+	steeringmode=1;
+	maneuverleashlength=1280;
+	seismicsignature=0;
+	shownanoframe=0;
+
+	//	Weapons
+
+	weapon1=m2browningamg;
+	onlytargetcategory1=NFLAG;
+	weaponmaindir1=0 0 1;
+	maxangledif1=10;
+
+	weapon2=m2browningamg;
+	onlytargetcategory2=NFLAG;
+	weaponmaindir2=0 0 1;
+	maxangledif2=10;
+	weaponslaveto2=1;
+
+	weapon3=m2browningamg;
+	onlytargetcategory3=NFLAG;
+	weaponmaindir3=0 0 1;
+	maxangledif3=10;
+	weaponslaveto3=1;
+
+	weapon4=m2browningamg;
+	onlytargetcategory4=NFLAG;
+	weaponmaindir4=0 0 1;
+	maxangledif4=10;
+	weaponslaveto4=1;
+
+	weapon5=m2browningamg;
+	onlytargetcategory5=NFLAG;
+	weaponmaindir5=0 0 1;
+	maxangledif5=10;
+	weaponslaveto5=1;
+
+	weapon6=m2browningamg;
+	onlytargetcategory6=NFLAG;
+	weaponmaindir6=0 0 1;
+	maxangledif6=10;
+	weaponslaveto6=1;
+
+	weapon7=m2browningamg;
+	onlytargetcategory7=NFLAG;
+	weaponmaindir7=0 0 1;
+	maxangledif7=10;
+	weaponslaveto7=1;
+
+	weapon8=m2browningamg;
+	onlytargetcategory8=NFLAG;
+	weaponmaindir8=0 0 1;
+	maxangledif8=10;
+	weaponslaveto6=1;
+	
+	weapon9=bomb;
+	weaponmaindir9=0 -.5 1;
+	maxangledif9=20;
+	onlytargetcategory9=NFLAGNAIR;
+
+	weapon10=Medium_Tracer;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_SHELLCASINGS;
+		explosiongenerator2=custom:MG_MUZZLEFLASH;
+	}
+
+	[customParams]
+	{
+		proptexture = bitmaps/prop5.tga;
+		enginesound = p51b-;
+		enginesoundnr = 16;
+	}
+}

@@ -162,6 +162,7 @@
 		canbuild1=USL4;
 		canbuild2=USP51DMustang;
 		canbuild3=USP51DMustangGA;
+		canbuild4=USP47Thunderbolt;
 	}
 
 				////////////////////
@@ -289,6 +290,7 @@
 		canbuild2=GERBf109;
 		canbuild3=GERFw190;
 		canbuild4=GERJu87G;
+		canbuild5=GERFw190G;
 	}
 
 				//////////////////////
