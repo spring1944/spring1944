@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece ground, carriage, wheel1, wheel2, wheel3, wheel4, turret, sleeve, barrel, flare, gunner;
+piece ground, carriage, wheel1, wheel2, wheel3, wheel4, turret, sleeve, barrel, flare;
 piece carriageleg1, carriageleg2, carriagefoot1, carriagefoot2, carriagefoot3;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1 ;
 piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
@@ -551,13 +551,11 @@ Killed(severity, corpsetype)
 		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-		explode gunner type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	}
 	corpsetype = 2;
 	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;		
-	explode gunner type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode sleeve type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode head1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode carriage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

@@ -64,8 +64,8 @@ gearsup()
 
 gearsdown()
 {
-		turn gear1 to z-axis <90> speed <30>;
-		turn gear2 to z-axis <-90> speed <30>;
+		turn gear1 to z-axis <-90> speed <30>;
+		turn gear2 to z-axis <90> speed <30>;
 }
 
 activatescr()
