@@ -95,7 +95,10 @@
 	cratermult=0;
 	craterboost=0;
 
-	texture1=HEShellMED;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
 
 	dyndamageexp=1;
 	dyndamagerange=5750;
