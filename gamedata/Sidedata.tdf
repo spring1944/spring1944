@@ -83,7 +83,7 @@
 		canbuild6=us_platoon_at;
 		canbuild7=us_platoon_scout;
 		canbuild8=us_platoon_sniper;
-		canbuild9=us_platoon_flamethrower;
+		canbuild9=us_platoon_flame;
 		canbuild10=us_platoon_mortar;
 		canbuild12=USM8Gun;
 	}
