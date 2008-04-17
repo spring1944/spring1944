@@ -80,11 +80,15 @@ end
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
   local oldReloadFrame
+	if (not reloadFrame) then
+		reloadFrame = 0
+	end
   if (vehicles[unitID].reloadFrame) then
     oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
   end
-  if (oldReloadFrame == reloadFrame or
-      not reloadFrame)              then
+  if (oldReloadFrame == reloadFrame --or
+      --not reloadFrame
+			) then
     return false
   else
     vehicles[unitID].reloadFrame[weaponNum] = reloadFrame
@@ -197,7 +201,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   if (ud.customParams.maxammo)               then
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
-      ammoLevel = ud.customParams.maxammo + 2,
+      ammoLevel = ud.customParams.maxammo,-- + 2,
       reloadFrame = {},
     }
     for weaponNum=0, ud.customParams.weaponswithammo do
