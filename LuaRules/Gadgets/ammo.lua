@@ -1,5 +1,5 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
 function gadget:GetInfo()
   return {
@@ -82,8 +82,9 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
   local oldReloadFrame
   if (vehicles[unitID].reloadFrame) then
     oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
-	end
-  if (oldReloadFrame == reloadFrame or not reloadFrame) then
+  end
+  if (oldReloadFrame == reloadFrame or
+      not reloadFrame)              then
     return false
   else
     vehicles[unitID].reloadFrame[weaponNum] = reloadFrame
@@ -120,13 +121,13 @@ local function ProcessWeapon(unitID, weaponNum)
   end	
   if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
 	local defaultReload = reload
-	local newReload = --reload
+	local newReload = reload
 	CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
-    --SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = (32*newReload)})
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = (32*newReload)})
     vehicles[unitID].conserveAmmo = true
   end
   if (ammoLevel > lowAmmoLevel) then
-    --SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = (32*reload)})
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = (32*reload)})
     vehicles[unitID].conserveAmmo = nil
   end
 end
@@ -196,7 +197,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   if (ud.customParams.maxammo)               then
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
-      ammoLevel = ud.customParams.maxammo,-- + 2,
+      ammoLevel = ud.customParams.maxammo + 2,
       reloadFrame = {},
     }
     for weaponNum=0, ud.customParams.weaponswithammo do
