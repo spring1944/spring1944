@@ -1,5 +1,5 @@
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 function gadget:GetInfo()
   return {
@@ -53,6 +53,7 @@ local GetUnitDefID       = Spring.GetUnitDefID
 
 local vehicles      = {}
 local ammoSuppliers = {}
+local savedFrames 	= {}
 
 --what reload time is multiplied by when the unit runs out of ammo
 local ammoPenalty = 1.5 --not used anymore
@@ -108,26 +109,32 @@ local function ProcessWeapon(unitID, weaponNum)
   local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
   local weaponID = UnitDefs[unitDefID].weapons[weaponNum+1].weaponDef
   local reload = WeaponDefs[weaponID].reload
+	--local oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
+	Spring.Echo(reloadFrame, savedFrames[unitID])
   if (CheckReload(unitID, reloadFrame, weaponNum)) then
     print("fire!", weaponNum, reloadFrame)
+		if (ammoLevel == 1) then
+			savedFrames[unitID] = reloadFrame
+		end
     if (ammoLevel > 0) then
       vehicles[unitID].ammoLevel = ammoLevel - 1
     end
     print("ammo", vehicles[unitID].ammoLevel)
   end
-  
-  if (ammoLevel < 1) then 
-	SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload*99999})
+  if (ammoLevel < 1) then
+		SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
   end	
   if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
 	local defaultReload = reload
 	local newReload = reload
-	CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = (32*newReload)})
+		--CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
+    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = reloadFrame + (32*newReload)})
     vehicles[unitID].conserveAmmo = true
   end
   if (ammoLevel > lowAmmoLevel) then
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = (32*reload)})
+		if (reloadFrame > 0 and savedFrames[unitID]) then
+			SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
+		end
     vehicles[unitID].conserveAmmo = nil
   end
 end
