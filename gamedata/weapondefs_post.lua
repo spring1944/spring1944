@@ -36,9 +36,24 @@ if (modOptions) then
 	Spring.Echo("Starting weapon reload multiplying, coefficient: "..reloadCoeff)
 	for name in pairs(WeaponDefs) do
 		local curReload = WeaponDefs[name].reloadtime
-		local id = WeaponDefs[name].id
-		if (curReload) and (id > 9) and (id ~= 301) then
+		local rendertype = WeaponDefs[name].rendertype
+		local explosiongenerator = WeaponDefs[name].explosiongenerator
+		if (curReload) and (rendertype ~= 0) and (explosiongenerator ~= 'custom:nothing;') then
 			WeaponDefs[name].reloadtime = curReload * reloadCoeff
+			totalWeapons = totalWeapons + 1
+		end
+	end
+  end
+    if (modOptions.weapon_edgeeffectiveness_mult) then
+	local totalWeapons
+	totalWeapons = 0
+	local edgeeffectCoeff
+	edgeeffectCoeff = modOptions.weapon_edgeeffectiveness_mult
+	Spring.Echo("Starting weapon edgeeffectiveness multiplying, coefficient: "..edgeeffectCoeff)
+	for name in pairs(WeaponDefs) do
+		local curEdgeeffect = WeaponDefs[name].edgeEffectiveness
+		if (curEdgeeffect) then
+			WeaponDefs[name].edgeEffectiveness = curEdgeeffect * edgeeffectCoeff
 			totalWeapons = totalWeapons + 1
 		end
 	end

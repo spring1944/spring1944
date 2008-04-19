@@ -41,6 +41,16 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
+  },
+  {
+    key    = 'weapon_edgeeffectiveness_mult',
+    name   = 'Weapon edgeeffectiveness multiplier',
+    desc   = 'Applies a multiplier to all the weapon edgeeffectiveness ingame',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.01,
+    max    = 10,
+    step   = 0.1,
   }
 }
 
