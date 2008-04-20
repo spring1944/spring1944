@@ -17,6 +17,7 @@
 	burst=16;
 	burstrate=.8;
 	sprayangle=1000;
+	dance=10;
 	startvelocity=500;
 	weaponvelocity=500;
 	areaofeffect=75;
