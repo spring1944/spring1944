@@ -109,20 +109,16 @@ local function ProcessWeapon(unitID, weaponNum)
   local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
   local weaponID = UnitDefs[unitDefID].weapons[weaponNum+1].weaponDef
   local reload = WeaponDefs[weaponID].reload
-	--local oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
-	Spring.Echo(reloadFrame, savedFrames[unitID])
   if (CheckReload(unitID, reloadFrame, weaponNum)) then
     print("fire!", weaponNum, reloadFrame)
 		if (ammoLevel == 1) then
 			savedFrames[unitID] = reloadFrame
+			SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
 		end
     if (ammoLevel > 0) then
       vehicles[unitID].ammoLevel = ammoLevel - 1
     end
     print("ammo", vehicles[unitID].ammoLevel)
-  end
-  if (ammoLevel < 1) then
-		SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
   end	
   if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
 	local defaultReload = reload
@@ -204,7 +200,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   if (ud.customParams.maxammo)               then
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
-      ammoLevel = ud.customParams.maxammo + 2,
+      ammoLevel = ud.customParams.maxammo,
       reloadFrame = {},
     }
     for weaponNum=0, ud.customParams.weaponswithammo do
@@ -308,7 +304,7 @@ function gadget:DrawScreen(dt)
 	    end
         local sx, sy, sz = Spring.WorldToScreenCoords(wx, wy, wz)
        if (ammoLevel ~= nil) then
-		  if (ammoLevel < 5) then
+		  if (ammoLevel <= 5) then
            gl.Text(RedStr..ammoLevel, sx, sy, 20, "c")
            elseif (ammoLevel > 5) then
            gl.Text(WhiteStr..ammoLevel, sx, sy, 10, "c")
