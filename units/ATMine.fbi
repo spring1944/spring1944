@@ -38,6 +38,12 @@
 	onlytargetcategory1=TANK;
 	weapon2=ATMineDet;
 	onlytargetcategory2=NOTHING;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=2;
+	buildinggrounddecalsizey=2;
+	buildinggrounddecaltype=MineDirt.dds;
+
 	[sfxtypes]
 	{
 	}

@@ -12,7 +12,7 @@
 	firestarter=0.0;
 
 	range=3375;
-	reloadtime=7.5;
+	reloadtime=10;//7.5 - because it is not specifically an artillery gun
 	accuracy=200;
 	targetmoveerror=0.05;
 	weaponvelocity=900;
@@ -67,7 +67,7 @@
 	ballistic=1;
 
 	range=3375;
-	reloadtime=7.5;
+	reloadtime=10;//7.5
 	accuracy=290;
 	targetmoveerror=0.05;	
 	firestarter=0.0;

@@ -35,7 +35,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<30>
+#define TURR_TRAVERSE	<45>//30
 #define TURR_ELEVATE	<13>
 #define AA_TRAVERSE		<225>
 #define AA_ELEVATE		<150>
