@@ -1,13 +1,13 @@
 [unitinfo]
 {
-	unitname=RUSPartisan;
-	objectname=RUSPartisan.S3O;
+	unitname=RUSPartisanRifle;
+	objectname=RUSPartisanRifle.S3O;
 	icontype=partisan;
 	soundcategory=RUSInf;
 	category=NFLAGNAIR INFTARG;
 	tedclass=KBOT;
 
-	name=Partisan;
+	name=Rifle Partisan;
 	Description=Very light ambusher;
 	side=RUS;
 	maxdamage=20;
