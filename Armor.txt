@@ -40,7 +40,7 @@
 	RUSObserv=99;
 	RUSMortar=99;
 	RUSSniper=99;
-	RUSPartisan=99;
+	RUSPartisanRifle=99;
 	RUSCommissar=99;
 	RUSCommissar1=99;
 
