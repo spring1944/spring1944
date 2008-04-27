@@ -71,5 +71,7 @@
 		weaponswithammo=1;
 		lowammolevel=8;
 		weaponcost=17;
+
+		canAreaAttack=1;
 	}
 }

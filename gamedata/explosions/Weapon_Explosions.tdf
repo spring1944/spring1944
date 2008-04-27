@@ -142,7 +142,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -237,7 +237,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -390,7 +390,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -603,7 +603,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -860,7 +860,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -1116,8 +1116,8 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			colorMap= 0 0 0 0.1   1 1 0.8 0.1              0 0 0 0.1;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -1374,7 +1374,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -1631,7 +1631,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -1888,7 +1888,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6;
 			particleLifeSpread=0;
@@ -2148,7 +2148,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -2243,7 +2243,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -2368,7 +2368,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -2492,7 +2492,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;
@@ -2616,7 +2616,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
-			Texture=diamondstar;
+			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
 			particleLifeSpread=0;

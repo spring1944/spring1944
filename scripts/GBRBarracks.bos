@@ -10,8 +10,12 @@ static-var  Static_Var_3, Static_Var_4;
 
 activatescr()
 {
-	turn door to y-axis <130.000000> speed <50.000000>;
-	sleep 13;
+	turn door to y-axis <-77> speed <308>;
+	sleep 250;
+	turn door to y-axis <-105> speed <80>;
+	sleep 350;
+	turn door to y-axis <-121> speed <24>;
+	sleep 649;
 }
 
 deactivatescr()
