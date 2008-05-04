@@ -581,9 +581,9 @@
 		canbuild1=RUSSU76;
 		canbuild2=RUSSU85;
 		canbuild3=RUSSU100;
-		canbuild4=RUSSU122;
+		//canbuild4=RUSSU122; redundant with 122 now that 152 is out.
 		canbuild5=RUSBM13N;
-		canbuild5=RUSISU152;
+		canbuild5=RUSISU122;
 	}
 
 	[RUSSupplyDepot]

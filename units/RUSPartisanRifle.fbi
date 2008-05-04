@@ -51,7 +51,7 @@
 	badtargetcategory=FLAG;
 
 	weapon1=PartisanMosinNagant;
-	onlytargetcategory1=NFLAG;
+	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=180;
 	weapon2=rusflagkiller;
