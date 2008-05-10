@@ -860,7 +860,7 @@
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
 			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
-			Texture=shotgunflare;
+			Texture=explosionball;
 			airdrag=1;
 			particleLife=3;
 			particleLifeSpread=0;
@@ -878,6 +878,23 @@
 		water=1;
 		ground=1;
 		count=5;
+	}
+
+	[sphere]
+	{
+		class=CSpherePartSpawner;
+		[properties]
+		{
+			expansionSpeed=10;
+			ttl=10;
+			alpha=0.05;
+			color=1,1,1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		underwater=0;
+		count=1;
 	}
 
   	[GROUNDFLASH]
