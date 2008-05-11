@@ -536,7 +536,7 @@
 
 	[RUSBarracks]
 	{
-		canbuild1=AI_RUSCommissar;
+		canbuild1=RUSCommissar;
 		canbuild2=RUSEngineer;
 		canbuild3=rus_platoon_rifle;
 		canbuild4=rus_platoon_assault;
@@ -562,12 +562,28 @@
 		canbuild9=RUSPG117;
 		canbuild10=PontoonRaft;
 	}
+	[AI_RUSCommissar]
+	{
+		canbuild1=RUSFlag;
+		//canbuild2=RUSResource;
+		canbuild3=AI_RUSCommissar;
+		canbuild4=RUSPShack;
+		canbuild5=RUSBarracks;
+		canbuild6=RUSGunyard;
+		canbuild8=RUSZiS5;
+		canbuild9=APMine;
+		canbuild10=ATMine;
+		canbuild11=TankObstacle;
+		//canbuild12=Sandbags;
+		canbuild13=RUSPG117;
+		canbuild14=PontoonRaft;
+	}
 
 	[RUSCommissar]
 	{
 		canbuild1=RUSFlag;
 		//canbuild2=RUSResource;
-		canbuild3=AI_RUSCommissar;
+		canbuild3=RUSCommissar;
 		canbuild4=RUSPShack;
 		canbuild5=RUSBarracks;
 		canbuild6=RUSGunyard;
