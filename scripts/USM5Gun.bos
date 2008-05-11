@@ -29,8 +29,8 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, last
 #define MEDIUM_MuzzleDust	1024+8
 #define MuzzleBrakeSmoke	1024+9
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
-#define TURR_TRAVERSE	<200>
-#define TURR_ELEVATE	<150>
+#define TURR_TRAVERSE	<7>
+#define TURR_ELEVATE	<10>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
@@ -588,7 +588,7 @@ AimWeapon1(heading, pitch)
 	{
 		//TODO: anim
 		
-	turn carriage to y-axis heading speed TURR_ELEVATE;
+	turn carriage to y-axis heading speed TURR_TRAVERSE;
 	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn carriage around y-axis;
 	wait-for-turn carriage around x-axis;
