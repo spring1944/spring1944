@@ -1,24 +1,21 @@
 [unitinfo]
 {
-	unitname=RUSCommissar1;
-	buildpic=RUSCommissar.png;
+	unitname=AI_RUSCommander;
 	objectname=RUSEngineer.S3O;
 	corpse=RUSSoldier_dead;
 	icontype=commissar;
 	soundcategory=RUSInf;
-	category=NOWEAPON NFLAG INFTARG NFLAGNAIR;
+	category=NOWEAPON NFLAG COMMANDER INFTARG NFLAGNAIR;
 	tedclass=CONSTR;
-	buildpic=RUSCommissar.png;
 
-	name=Commissar;
-	description=Political Engineer;
+	name=Engineer Commander;
 	side=RUS;
 	maxdamage=40;
 	damagemodifier=0.375;
 	idleautoheal=2;
 	buildcostmetal=100;
 	buildcostenergy=0;
-	buildtime=6300000;
+	buildtime=4000;
 	footprintx=1;
 	footprintz=1;
 	mass=50;
@@ -27,21 +24,23 @@
 	upright=1;
 	shownanoframe=0;
 
+	energystorage=1000;
 	SeismicSignature=0;
 	sightdistance=700;
 	stealth=1;
-	energystorage=100;
-	metalstorage=1000;
 
 	builder=1;
 	builddistance=5;
-	workertime=35;
+	workertime=20; //110
 	shownanospray=0;
 
 	init_cloaked=1;
 	cloakcost=0;
 	cloakcostmoving=0;
-	mincloakdistance=146;
+	mincloakdistance=40;
+	
+	metalmake=500000;
+	energymake=50;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
@@ -57,5 +56,12 @@
 
 	[sfxtypes]
 	{
+	}
+
+	[customParams]
+	{
+		hq=1;
+		refillamount=1000000; 
+		arrivalgap=180;	
 	}
 }

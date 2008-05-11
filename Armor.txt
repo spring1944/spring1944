@@ -30,6 +30,7 @@
 
 	//USSR//
 	RUSCommander=99;
+	AI_RUSCommander=99;
 	RUSEngineer=99;
 	RUSRifle=99;
 	RUSPPsh=99;
@@ -42,7 +43,7 @@
 	RUSSniper=99;
 	RUSPartisanRifle=99;
 	RUSCommissar=99;
-	RUSCommissar1=99;
+	AI_RUSCommissar=99;
 
 	//Britain//
 	GBRHQEngineer=99;
@@ -113,6 +114,7 @@
 
 	//US//
 	USHQ=99;
+	AI_USHQ=99;
 	USCP=99;
 	USBarracks=99;
 	USVehicleYard=99;
@@ -143,6 +145,7 @@
 	GBRBarracks=99;
 	GBRLZ=99;
 	GBRHQ=99;
+	AI_GBRHQ=99;
 	GBRSupplyDepot=99;
 	GBRTruckSupplies=99;
 	GBRSPYard=99;
@@ -153,6 +156,7 @@
 	{
 	//**Germany**//
 	GERHQBunker=99;
+	AI_GERHQBunker=99;
 	
 	//US//
 
