@@ -23,30 +23,6 @@
 --------------------------------------------------------------------------------
 local options = {
   {
-    key    = 'gamemode',
-    name   = 'Game Modes',
-    desc   = 'Change the game mode',
-    type   = 'list',
-    def    = 'normal',
-    items  = {
-      {
-        key  = 'chickeneasy',
-        name = 'Chicken (easy) - Work in progress',
-        desc = 'Players must defeat wave after wave of chicken dinosaur zerglings',
-      },
-      {
-        key  = 'chickennormal',
-        name = 'Chicken (normal) - Work in progress',
-        desc = 'Players must defeat wave after wave of chicken dinosaur zerglings',
-      },
-      {
-        key  = 'chickenhard',
-        name = 'Chicken (hard) - Work in progress',
-        desc = 'Players must defeat wave after wave of chicken dinosaur zerglings',
-      },
-    },
-  },
-  {
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
     desc   = 'Applies a multiplier to all the weapon ranges ingame',
