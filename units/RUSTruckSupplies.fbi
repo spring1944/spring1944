@@ -5,7 +5,7 @@
 	buildpic=RUSTruckSupplies.png;
 	corpse=Debris_Large;
 	icontype=ammo;
-	soundcategory=GbrInf;
+	soundcategory=RUSInf;
 	category=NFLAGNAIR BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;

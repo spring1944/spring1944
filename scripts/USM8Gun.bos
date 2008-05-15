@@ -159,6 +159,7 @@ turn ruparm2 to z-axis <-20> now;\
 
 Create()
 {
+	hide flare;
 	// init vars
 	isDeployed = FALSE;
 	normalSpeed = get MAX_SPEED;

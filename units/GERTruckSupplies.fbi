@@ -5,7 +5,7 @@
 	buildpic=GERTruckSupplies.png;
 	corpse=Debris_Large;
 	icontype=ammo;
-	soundcategory=GbrInf;
+	soundcategory=GERInf;
 	category=NFLAGNAIR BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
