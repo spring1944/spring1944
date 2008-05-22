@@ -1,0 +1,76 @@
+[unitinfo]
+{
+	unitname=SaberDude;
+	objectname=SaberDude.S3O;
+	corpse=GERSoldier_dead;
+	icontype=rifle;
+	soundcategory=GERInf;
+	category=NFLAGNAIR NFLAG INFTARG;
+	tedclass=KBOT;
+
+	pushResistant=1;
+
+	name=Hack n' slash;
+	description=Chop, chop!;
+	side=GER;
+	maxdamage=1000;
+	damagemodifier=0.375;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=50;
+	footprintx=1;
+	footprintz=1;
+	mass=50;
+
+	upright=1;
+	shownanoframe=0;
+	smoothanim=1;
+
+	SeismicSignature=0;
+	sightdistance=701;
+	airsightdistance=2500;
+	stealth=1;
+
+	builder=1;
+	builddistance=5;
+	workertime=80;
+	canrestore=0;
+	canassist=0;
+	canrepair=0;
+	canreclaim=0;
+	shownanospray=0;
+
+	mincloakdistance=146;
+	cloakcost=0;
+	cloakcostmoving=0;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=1.35;
+	acceleration=0.375;
+	brakerate=0.9;
+	turnrate=1010;
+	maxslope=15;
+	maxwaterdepth=10;
+
+	//explodeas=; //Infantry don't need to explode
+	//selfdestructas=; //Infantry don't need to explode
+
+	weapon1=sabertrigger;
+	weaponmaindir1=0 0 1;
+	maxangledif1=100;
+	weapon2=saber;
+//	weapon3=lancetrigger;
+//	weapon4=lance;
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
+		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator7=custom:RIFLE_MUZZLEFLASH;
+	}
+}

@@ -1,0 +1,387 @@
+#define TAK			// This is a TAK script
+
+#include "STANDARD_COMMANDS_GPL.h"
+
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
+
+static-var bAiming, swinging, last_pos, bMoving, run_speed, walk_speed, prone_speed, DEATH_SPEED, PickDeath, InAimStance;
+
+#define SIG_AIM            2
+
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define RIFLE_MUZZLEFLASH 1024+7
+
+#define saber 2048+1
+
+#define CombatDelay 10000 //how long the saber stays active for
+
+//movement check for anims
+MoveCheck() //check if the unit is moving or not so that the animation is right when they stand up after prone.
+//THIS WOULD BE MUCH EASIER WITH GET CURRENT_SPEED, but that seems to be broken.
+{
+      last_pos = get PIECE_XZ(ground); // current position
+      sleep 20;
+
+      if (last_pos - get PIECE_XZ(ground) != 0) // is it moving?
+      {
+	bMoving=1;
+      }
+      
+   
+      if (last_pos - get PIECE_XZ(ground) == 0) // or is it still?
+      {
+	bMoving=0;
+      }
+      sleep 10;
+            if (last_pos - get PIECE_XZ(ground) != 0) // or is it really moving? - second check to catch any that missed it the first time.
+      {
+        bMoving=1;
+      }
+         
+}
+
+WeaponReady() //attentshaun!
+{		
+	show gun;
+	turn pelvis to y-axis <0> speed <100>;
+    turn ruparm to x-axis <-30> speed <100>;
+    turn ruparm to y-axis <30> speed <100>;
+    turn ruparm to z-axis <0> speed <100>;
+    
+	turn rloarm to x-axis <-80> speed <100>;
+	turn rloarm to y-axis <0> speed <100>;
+	turn rloarm to z-axis <0> speed <100>;
+    
+	turn luparm to x-axis <-30> speed <100>;
+	turn luparm to y-axis <-30> speed <100>;
+	turn luparm to z-axis <0> speed <100>;
+    
+	turn lloarm to x-axis <-80> speed <100>;
+	turn lloarm to y-axis <0> speed <100>;
+	turn lloarm to z-axis <0> speed <100>;
+    
+	turn gun to x-axis <-40> speed <100>;
+	turn gun to y-axis <0.000000> speed <100>;
+	turn gun to z-axis <0.000000> speed <100>;
+	turn head to y-axis <0.000000> speed <100>;
+	turn head to x-axis <0.000000> speed <100>;
+	turn head to z-axis <0.000000> speed <100>;
+	wait-for-turn ruparm around x-axis;
+	wait-for-turn ruparm around y-axis;
+	wait-for-turn ruparm around z-axis;
+	wait-for-turn rloarm around x-axis;
+	wait-for-turn rloarm around y-axis;
+	wait-for-turn rloarm around z-axis;
+	
+	wait-for-turn luparm around x-axis;
+	wait-for-turn luparm around y-axis;
+	wait-for-turn luparm around z-axis;
+	wait-for-turn lloarm around x-axis;
+	wait-for-turn lloarm around y-axis;
+	wait-for-turn lloarm around z-axis;
+	
+	wait-for-turn gun around x-axis;
+	wait-for-turn gun around y-axis;
+	wait-for-turn gun around z-axis;
+	
+}
+
+
+Run()
+{
+	while (1)
+		{
+			
+			if (bMoving==1)
+			{
+			InAimStance=0;
+			Turn lthigh to z-axis <0> speed <120>*PRONE_SPEED; 	
+			turn lleg to z-axis <0> speed <120>*PRONE_SPEED;
+			turn lleg to y-axis <0> speed <120>*PRONE_SPEED;
+			turn rleg to z-axis <0> speed <120>*PRONE_SPEED;
+			turn rleg to y-axis <0> speed <120>*PRONE_SPEED;
+			turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;						
+			Turn rthigh to z-axis <0> speed <120>*PRONE_SPEED;
+			Turn lthigh to z-axis <0> speed <120>*PRONE_SPEED;
+			turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
+			call-script WeaponReady();	
+			turn pelvis to y-axis <0> speed <40>*RUN_SPEED;
+			turn pelvis to x-axis <4> speed <40>*RUN_SPEED;
+			turn torso to x-axis <4> speed <40>*RUN_SPEED;
+			
+					if (InAimStance==0)
+					{
+				move pelvis to y-axis [0.0] speed <100>*RUN_SPEED;
+					}
+			}
+			
+				if (bMoving==1)
+			{
+			Turn rleg to x-axis <85> speed<30>*WALK_SPEED;	
+			Turn lleg to x-axis <55> speed<40>*WALK_SPEED;
+			Turn rthigh to x-axis <-60> speed<20>*WALK_SPEED;
+			Turn lthigh to x-axis <20> speed<20>*WALK_SPEED;			
+		wait-for-move pelvis along y-axis;
+				if (InAimStance==0)
+					{
+			move pelvis to y-axis [1.25] speed <100>*RUN_SPEED;
+					}
+			}
+			
+				if (bMoving==1)
+			{
+			Turn rleg to x-axis <45> speed<60>*WALK_SPEED;
+		wait-for-turn lthigh around x-axis;
+				if (InAimStance==0)
+					{
+				move pelvis to y-axis [0.0] speed <100>*RUN_SPEED;
+					}
+			Turn lleg to x-axis <85> speed<30>*WALK_SPEED;
+			Turn rleg to x-axis <55> speed<40>*WALK_SPEED;
+			Turn lthigh to x-axis <-60> speed<20>*WALK_SPEED;
+			}
+			
+				if (bMoving==1)
+			{
+			Turn rthigh to x-axis <20> speed<20>*WALK_SPEED;
+		wait-for-move pelvis along y-axis;
+		if (InAimStance==0)
+			{
+			move pelvis to y-axis [1.25] speed <100>*RUN_SPEED;
+			}
+			Turn lleg to x-axis <45> speed<60>*WALK_SPEED;	
+		wait-for-turn rthigh around x-axis;
+			}
+			
+			if (bMoving==0)
+			{
+			move pelvis to y-axis [0.0] speed <100>*RUN_SPEED;
+			turn pelvis to x-axis <0> speed <10>*RUN_SPEED;
+			turn torso to x-axis <0> speed <10>*RUN_SPEED;
+			wait-for-turn rthigh around x-axis;
+			turn rthigh to x-axis <0> speed <100>*RUN_SPEED;
+			wait-for-turn lthigh around x-axis;
+			turn lthigh to x-axis <0> speed <100>*RUN_SPEED;
+			turn lleg to x-axis <0> speed <100>*RUN_SPEED;
+			turn rleg to x-axis <0> speed <100>*RUN_SPEED;
+			}
+			
+					if (bMoving==0)
+			{
+			sleep 100;
+			}
+			
+											
+		}
+	}
+
+
+StartMoving()
+{
+	bMoving=1;
+}
+
+
+StopMoving()
+{
+    bMoving=0;
+}
+
+Swing1()
+{
+swinging=1;
+call-script WeaponReady();
+turn ruparm to x-axis <-110> speed <200>;
+turn rloarm to x-axis <-70> speed <200>;
+turn rloarm to y-axis <20> speed <200>;
+turn luparm to x-axis <-110> speed <200>;
+turn lloarm to x-axis <-70> speed <200>;
+turn lloarm to y-axis <-20> speed <200>;
+turn gun to x-axis <-60> speed <200>;
+
+wait-for-turn gun around x-axis;
+wait-for-turn luparm around x-axis;
+wait-for-turn lloarm around x-axis;
+wait-for-turn lloarm around y-axis;
+wait-for-turn ruparm around x-axis;
+wait-for-turn rloarm around x-axis;
+wait-for-turn rloarm around y-axis;
+
+turn ruparm to x-axis <-70> speed <200>;
+turn ruparm to y-axis <20> speed <200>;
+turn luparm to x-axis <-70> speed <200>;
+turn luparm to y-axis <-20> speed <200>;
+turn rloarm to x-axis <-20> speed <200>;
+turn rloarm to y-axis <0> speed <200>;
+turn lloarm to x-axis <-20> speed <200>;
+turn lloarm to y-axis <0> speed <200>;
+turn gun to x-axis <-20> speed <200>;
+
+wait-for-turn gun around x-axis;
+wait-for-turn luparm around x-axis;
+wait-for-turn luparm around y-axis;
+wait-for-turn lloarm around x-axis;
+wait-for-turn lloarm around y-axis;
+wait-for-turn ruparm around x-axis;
+wait-for-turn ruparm around y-axis;
+wait-for-turn rloarm around x-axis;
+wait-for-turn rloarm around y-axis;
+
+turn ruparm to x-axis <0> speed <200>;
+turn ruparm to y-axis <40> speed <200>;
+turn luparm to x-axis <0> speed <200>;
+turn luparm to y-axis <-40> speed <200>;
+turn gun to x-axis <0> speed <200>;
+turn gun to z-axis <30> speed <200>;
+
+wait-for-turn luparm around x-axis;
+wait-for-turn luparm around y-axis;
+wait-for-turn ruparm around x-axis;
+wait-for-turn ruparm around y-axis;
+wait-for-turn gun around x-axis;
+wait-for-turn gun around z-axis;
+call-script WeaponReady();
+sleep 500;
+swinging=0;
+}
+
+Swing2()
+{
+swinging=1;
+call-script WeaponReady();
+turn ruparm to x-axis <-70> speed <200>;
+turn ruparm to y-axis <0> speed <200>;
+turn ruparm to z-axis <60> speed <200>;
+turn luparm to x-axis <0> speed <200>;
+turn luparm to y-axis <0> speed <200>;
+turn luparm to z-axis <0> speed <200>;
+turn lloarm to x-axis <0> speed <200>;
+turn lloarm to y-axis <0> speed <200>;
+turn lloarm to z-axis <0> speed <200>;
+
+turn rloarm to x-axis <-20> speed <200>;
+turn gun to x-axis <0> speed <200>;
+
+wait-for-turn gun around x-axis;
+wait-for-turn ruparm around x-axis;
+wait-for-turn ruparm around y-axis;
+wait-for-turn ruparm around z-axis;
+wait-for-turn rloarm around x-axis;
+wait-for-turn luparm around x-axis;
+wait-for-turn luparm around y-axis;
+wait-for-turn luparm around z-axis;
+wait-for-turn lloarm around x-axis;
+wait-for-turn lloarm around y-axis;
+wait-for-turn lloarm around z-axis;
+
+turn ruparm to z-axis <-30> speed <200>;
+turn rloarm to z-axis <-50> speed <200>;
+wait-for-turn ruparm around z-axis;
+wait-for-turn rloarm around z-axis;
+call-script WeaponReady();
+sleep 500;
+swinging=0;
+}
+
+Swing3()
+{
+swinging=1; 
+//anim
+swinging=0;
+}
+
+SaberControl()
+{
+	while (1)
+	{
+		while (bAiming==1)
+		{
+		emit-sfx saber from flare;
+		sleep 10;
+		if (swinging==0)
+			{
+			var PickSwing;
+			PickSwing = rand(1,2);
+			if (PickSwing==1) start-script Swing1();
+			if (PickSwing==2) start-script Swing2();
+			if (PickSwing==3) start-script Swing3();
+			}		
+		}
+	sleep 100;
+	}
+}
+
+Create()
+{
+	start-script WeaponReady();
+	start-script Run();
+	start-script SaberControl();
+	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
+	move ground to y-axis -0.5 speed <100>;
+	WALK_SPEED = rand(9,11);
+	prone_speed = rand(3,5);
+	DEATH_SPEED=10;
+	bAiming=0;
+	hide flare;
+	swinging=0;
+	InAimStance=0;
+}
+
+StartBuilding(heading,pitch)
+{
+set INBUILDSTANCE to 1;
+}
+
+StopBuilding()
+{
+set INBUILDSTANCE to 0;
+}
+
+QueryNanoPiece(piecenum)
+{
+	piecenum = head;
+}
+
+
+SweetSpot(piecenum)
+{
+	piecenum = torso;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = torso;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+RestoreAfterDelay()
+{
+sleep CombatDelay;
+bAiming=0;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal 4;
+	set-signal-mask 4;
+	turn torso to y-axis heading speed <200>;
+	turn torso to x-axis <0> - pitch speed <200>;
+	bAiming=1;
+	start-script RestoreAfterDelay();
+	return (0);
+}
+
+FireWeapon1(heading)
+{
+	return (0);
+}
