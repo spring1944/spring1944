@@ -4,7 +4,7 @@
 	objectname=GBRBarracks.S3O;
 	corpse=GBRBarracks_Destroyed;
 	icontype=barracks;
-	soundcategory=GBRInf;
+	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooo occo occo occo occo occo;

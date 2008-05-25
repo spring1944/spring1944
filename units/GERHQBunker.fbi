@@ -5,7 +5,7 @@
 	buildpic=GERHQBunker.bmp;
 	corpse=GERHQBunker_Destroyed;
 	icontype=gerhq;
-	soundcategory=GerInf;
+	soundcategory=GERYard;
 	category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
 	tedclass=PLANT;
 	yardmap=oooooooooo occcccccco occcccccco occcccccco occcccccco occcccccco ooocccoooo ooocccoooo cccccccooo ccccccccoo ;

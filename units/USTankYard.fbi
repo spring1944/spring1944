@@ -3,6 +3,7 @@
 	unitname=USTankYard;
 	objectname=USTankYard.S3O;
 	icontype=factory;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;

@@ -4,6 +4,7 @@
 	objectname=GBRTankYard.S3O;
 	icontype=factory;
 	category=NFLAGNAIR PLANT BUILDING;
+	soundcategory=GBRYard;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
 

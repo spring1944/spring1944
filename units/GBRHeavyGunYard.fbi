@@ -3,6 +3,7 @@
 	unitname=GBRHeavyGunYard;
 	objectname=GBRGunYard.S3O;
 	icontype=factory;
+	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco ;

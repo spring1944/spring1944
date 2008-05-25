@@ -5,7 +5,7 @@
 	buildpic=GBRHQ.png;
 	corpse=GBRHQ_Destroyed;
 	icontype=gbrhq;
-	soundcategory=GBRInf;
+	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;

@@ -4,6 +4,7 @@
 	objectname=USVehicleYard.S3O;
 	corpse=USVehicleYard_Destroyed;
 	icontype=factory;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=cccccc ooccco ooccco ooccco cccccc;

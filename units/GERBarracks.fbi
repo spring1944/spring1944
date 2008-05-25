@@ -4,7 +4,7 @@
 	objectname=GERBarracks.S3O;
 	corpse=GERBarracks_Destroyed;
 	icontype=barracks;
-	soundcategory=GERInf;
+	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;

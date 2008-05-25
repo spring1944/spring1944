@@ -4,7 +4,7 @@
 	objectname=USBarracks.S3O;
 	corpse=USBarracks_Destroyed;
 	icontype=barracks;
-	soundcategory=USInf;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooo occo occo occo occo occo;

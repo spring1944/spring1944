@@ -4,7 +4,7 @@
 	objectname=USHQ.S3O;
 	corpse=USHQ_Destroyed;
 	icontype=ushq;
-	soundcategory=USInf;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooo occo occo occo occo occo;

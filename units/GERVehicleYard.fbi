@@ -3,6 +3,7 @@
 	unitname=GERVehicleYard;
 	objectname=GERVehicleYard.S3O;
 	icontype=factory;
+	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;

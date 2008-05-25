@@ -3,7 +3,7 @@
 	unitname=GBRflag;
 	objectname=GBRFlag.S3O;
 	icontype=gbrflag;
-	soundcategory=Nothing;
+	soundcategory=GBRYard;
 	category=metal level1 NOWEAPON FLAG;
 	tedclass=METAL;
 	yardmap=ooooooooo;

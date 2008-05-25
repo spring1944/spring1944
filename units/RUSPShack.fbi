@@ -4,6 +4,7 @@
 	objectname=RUSPShack.S3O;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
+	soundcategory=RUSYard;
 	yardmap=oooo occo occo occo;
 
 	name=Partisan Shack;
