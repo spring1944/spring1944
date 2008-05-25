@@ -95,7 +95,7 @@ unitDef = {
       },
 
       endsmoke                = "0",
-      explosionGenerator      = "custom:Weapon_Explosion_Small",
+      explosionGenerator      = "custom:nothing",
       impulseBoost            = 0,
       impulseFactor           = 0.4,
       intensity               = 0.7,
@@ -110,7 +110,7 @@ unitDef = {
       separation              = 1.5,
       size                    = 1.75,
       sizeDecay               = 0,
-    -- soundStart              = "flashemg",
+    -- soundStart              = "chickenscream",
       sprayAngle              = 1180,
       stages                  = 10,
       startsmoke              = "0",
