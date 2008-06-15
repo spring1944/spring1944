@@ -14,8 +14,10 @@
 	reloadtime=2;
 	burst=5;
 	burstrate=.12;
+	accuracy=100;
 	sprayangle=350;
-	movingaccuracy=1777;
+	movingaccuracy=888;
+	accuracy=100;
 	weaponvelocity=1500;
 	areaofeffect=1;
 	weapontimer=1;

@@ -34,8 +34,8 @@ static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming;
 #include "HitWeapId_S44.h"
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<15>
-#define TURR_ELEVATE	<10>
+#define TURR_TRAVERSE	<7>
+#define TURR_ELEVATE	<5>
 #define AA_TRAVERSE		<225>
 #define AA_ELEVATE		<150>
 

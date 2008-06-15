@@ -12,7 +12,7 @@
 
 	range=885;
 	reloadtime=2.8;
-	accuracy=50;
+	accuracy=100;
 	sprayangle=100;
 	movingaccuracy=888;
 	weaponvelocity=1500;

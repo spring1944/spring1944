@@ -236,7 +236,7 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 				IsProne=0;
 				SET UPRIGHT TO 1;
 				SET ARMORED to FALSE;
-				set MAX_SPEED to [0.5];
+				set MAX_SPEED to [0.8];
 				call-script MoveCheck();
 		
 		}
