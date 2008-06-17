@@ -12,7 +12,7 @@
 	description=Medium Tank;
 	side=US;
 
-	maxdamage=6795;
+	maxdamage=6721;
 	flankingbonusmode=3;
 	flankingbonusdir=0 0 1;
 	flankingbonusmax=1.57;//damage to back multiplied by this

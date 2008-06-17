@@ -1,0 +1,56 @@
+[unitinfo]
+{
+	unitname=GERTankYard;
+	objectname=GERTankYard.S3O;
+	icontype=factory;
+	soundcategory=GERYard;
+	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+	tedclass=PLANT;
+	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
+
+	name=Tier 1 Tank Depot;
+	side=GER;
+	maxdamage=8000;
+	idleautoheal=3;
+	buildcostmetal=14400;
+	buildcostenergy=0;
+	buildtime=9600;
+	footprintx=7;
+	footprintz=7;
+
+	shownanoframe=0;
+	unitrestricted=1;
+
+	metalstorage=4000;
+	energystorage=0;
+
+	sightdistance=146;
+	stealth=1;
+
+	builder=1;
+	workertime=10;//old 180
+	shownanospray=0;
+	canbeassisted=0;
+
+	canmove=1;
+	maxslope=10;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=8;
+	buildinggrounddecalsizey=8;
+	buildinggrounddecaldecayspeed=0.05;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=LARGE_EXPLOSION;
+	selfdestructas=LARGE_EXPLOSION;
+
+	[sfxtypes]
+	{
+	}
+
+	[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=500;
+	}
+}

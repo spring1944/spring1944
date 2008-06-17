@@ -6,6 +6,9 @@ piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wh
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // AA MG
@@ -79,6 +82,7 @@ treads()
 
 Create()
 {
+	set ACTIVATION to 1;
 	// init vars
 	rock = FALSE;
 	aim2 = FALSE;
@@ -183,6 +187,9 @@ FireWeapon1()
 	
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	return 0;
 }
 
@@ -232,6 +239,9 @@ FireWeapon2()
 	
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	return 0;
 }
 

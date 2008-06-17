@@ -11,7 +11,7 @@
 	description=Self-Propelled Rocket Artillery;
 	side=RUS;
 	maxdamage=700;
-	buildcostmetal=1800;
+	buildcostmetal=4500;
 	buildcostenergy=0;
 	buildtime=600;
 	footprintx=2;
@@ -21,10 +21,12 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	SeismicSignature=0;
-	sightdistance=750;
+	seismicsignature=0;
+	sightdistance=701;
 	airsightdistance=2500;
-	stealth=1;
+	radardistancejam=75;
+	onoffable=1;
+	stealth=0;
 
 	canmove=1;
 	movementclass=TANK_Car;
@@ -72,7 +74,7 @@
 
 	[customParams]
 	{
-		maxammo=-1;
+		maxammo=1;
 		weaponswithammo=1;
 		lowammolevel=0;
 		weaponcost=320;

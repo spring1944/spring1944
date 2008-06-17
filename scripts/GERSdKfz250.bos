@@ -29,6 +29,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #include "RockUnit_Set.h"
 
 // definitions for HitWeapId_S44
+#define QUALITY		18010
 #define ARMOUR		1109
 #include "HitWeapId_S44.h"
 
@@ -39,7 +40,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 // definitions for turret movement
 #define TURR_TRAVERSE	<30> // manual
 #define TURR_ELEVATE	<6>
-#define COAX_ARC		<6>
+#define COAX_ARC		<3>
 
 // definitions for weapons behaviour
 #define RELOAD		300 // time in milliseconds between shots

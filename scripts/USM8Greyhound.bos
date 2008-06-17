@@ -40,11 +40,11 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, MGFearOk, CannonFear
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<50> // manual?
-#define TURR_ELEVATE	<25>
+#define TURR_TRAVERSE	<25> // manual?
+#define TURR_ELEVATE	<13>
 #define AA_TRAVERSE		<225>
 #define AA_ELEVATE		<150>
-#define COAX_ARC		<6>
+#define COAX_ARC		<3>
 
 // definitions for weapons behaviour
 #define RELOAD		3000 // time in milliseconds between shots

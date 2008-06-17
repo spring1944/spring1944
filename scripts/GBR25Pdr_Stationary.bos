@@ -10,6 +10,8 @@ static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
 
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
 //effects
 #define placeholder_EFFECT01 1024+1
 #define placeholder_EFFECT02 1024+2
@@ -202,6 +204,9 @@ FireWeapon1()
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
 	CREW_RELOADING
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 }
 
 Killed(severity, corpsetype)

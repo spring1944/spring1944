@@ -4,6 +4,9 @@ piece  base, turret, sleeve, barrel, flare, brakeleft, brakeright, aaref, aaturr
  
 static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, FearOk;
 
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
@@ -34,11 +37,11 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<30>
-#define TURR_ELEVATE	<13>
+#define TURR_TRAVERSE	<15>
+#define TURR_ELEVATE	<7>
 #define AA_TRAVERSE		<225>
 #define AA_ELEVATE		<150>
-#define COAX_ARC		<15>
+#define COAX_ARC		<3>
 
 // definitions for weapons behaviour
 #define RELOAD		3500 // time in milliseconds between shots
@@ -108,6 +111,7 @@ treads()
 
 Create()
 {
+	set ACTIVATION to 1;
 	FX_HIDE
 	// init vars
 	rock = FALSE;
@@ -227,6 +231,9 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	return 0;
 }
 

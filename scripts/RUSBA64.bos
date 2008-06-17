@@ -38,8 +38,8 @@ static-var  restore_delay, rock, reloading, mainHead;
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<100> // very light
-#define TURR_ELEVATE	<100> //it's just a machinegun on a pivot
+#define TURR_TRAVERSE	<50> // very light
+#define TURR_ELEVATE	<50> //it's just a machinegun on a pivot
 
 // definitions for weapons behaviour
 #define RELOAD		2500 // time in milliseconds between shots

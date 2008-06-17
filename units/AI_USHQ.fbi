@@ -27,6 +27,7 @@
 	metalmake=500000;
 	energymake=50;
 
+	radardistance=2000000;
 	sightdistance=146;
 	stealth=1;
 

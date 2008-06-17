@@ -2,7 +2,7 @@
 {
 	Name=Spring: 1944 SVN;
 	ShortName=S44;
-	Version=0.26;
+	//Version=0.26;
 	game=Spring 1944;
 	ShortGame=S44;
 	mutator=Official;

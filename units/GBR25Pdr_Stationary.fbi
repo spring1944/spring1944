@@ -29,8 +29,10 @@
 	smoothanim=0;
 
 	sightdistance=701;
-	stealth=1;
-
+	radardistancejam=75;
+	stealth=0;
+	onoffable=1;
+	
 	activatewhenbuilt=1;
 
 	maxslope=15;

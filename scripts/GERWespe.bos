@@ -5,6 +5,9 @@ piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tr
  
 static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, CannonFearOk;
 
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
@@ -89,6 +92,7 @@ treads()
 
 Create()
 {
+	set ACTIVATION to 1;
 	FX_HIDE
 	// init vars
 	rock = FALSE;
@@ -183,6 +187,9 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	return 0;
 }
 

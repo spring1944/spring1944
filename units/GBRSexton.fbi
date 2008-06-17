@@ -28,10 +28,12 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	SeismicSignature=0;
+	seismicsignature=0;
 	sightdistance=630;
 	airsightdistance=2500;
-	stealth=1;
+	radardistancejam=75;
+	onoffable=1;
+	stealth=0;
 
 	activatewhenbuilt=1;
 

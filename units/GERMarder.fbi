@@ -5,7 +5,7 @@
 	corpse=GERMarder_Destroyed;
 	icontype=selfprop;
 	soundcategory=GERTank;
-	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
+	category=NFLAGNAIR NFLAG TANK INFTARG LIGHTVEH;
 	tedclass=TANK;
 
 	name=Panzerjager Marder;

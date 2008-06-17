@@ -1,0 +1,61 @@
+[6pdr57mmap]
+{
+	id=100;
+	name=British 57mm 6 Pounder Armour-Piercing;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_Impact_MediumSmall;
+
+	ballistic=1;
+
+	range=1575;
+	reloadtime=3.3;
+	accuracy=290;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	firestarter=0.0;
+	weaponvelocity=1670;
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=GER_50mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=2;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=3200;
+	[damage]
+	{
+		default=7275;//9700
+		infantry=1900;
+		guns=800;
+		lightbuildings=500;
+		bunkers=40;
+		sandbags=200;
+		mines=0;
+		flag=0;
+	}
+}

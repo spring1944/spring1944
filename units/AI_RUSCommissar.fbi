@@ -28,7 +28,8 @@
 	metalmake=500000;
 	energymake=50;
 
-	SeismicSignature=0;
+	radardistance=2000000;
+	seismicsignature=0;
 	sightdistance=700;
 	stealth=1;
 	energystorage=100;

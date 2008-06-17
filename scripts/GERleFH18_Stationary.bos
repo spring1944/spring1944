@@ -6,6 +6,10 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, CannonFearOk;
 
 #include "inf_suppressionvars.h"
+
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
@@ -203,6 +207,9 @@ FireWeapon1()
 	//Now reload...
 	CannonFearOk=1;
 	CREW_RELOADING
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 }
 
 AimFromWeapon2(piecenum)

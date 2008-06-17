@@ -24,7 +24,8 @@
 	extractsmetal=0.00184;
 	energyuse=0;
 	windgenerator=0.000001;
-
+	
+	radardistance=2000000;
 	sightdistance=0;
 	stealth=1;
 

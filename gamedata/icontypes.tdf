@@ -6,7 +6,7 @@
 		 bitmap=icons/alert.tga;
 		 size=5;
 		// radiusadjust=0;
-		 distance=8000;
+		 distance=5000;
 	}
 	
 	[rifle]

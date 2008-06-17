@@ -6,6 +6,10 @@ piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tr
  
 static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming, FearOk;
 
+
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // AA MG
@@ -34,8 +38,8 @@ static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming, FearOk;
 #include "HitWeapId_S44.h"
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<19>
-#define TURR_ELEVATE	<10>
+#define TURR_TRAVERSE	<10>
+#define TURR_ELEVATE	<7>
 #define AA_TRAVERSE		<225>
 #define AA_ELEVATE		<150>
 
@@ -81,6 +85,7 @@ treads()
 
 Create()
 {
+	set ACTIVATION to 1;
 	hide flare;
 	// init vars
 	rock = FALSE;
@@ -172,6 +177,9 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	return 0;
 }
 

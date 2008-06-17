@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GBRAECMkIII;
+	unitname=GBRAECMkII;
 	objectname=GBRAECMkIII.S3O;
 	corpse=GBRAECMkIII_Destroyed;
 	icontype=armoredcar;
@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG TANK WEAPON  LIGHTVEH;
 	tedclass=TANK;
 
-	name=AEC Armoured Car Mk III;
-	description=Heavy Combat Car;
+	name=AEC Armoured Car Mk II;
+	description=Fast Tank Destroyer;
 	side=GBR;
 	
 	maxdamage=3542;
@@ -56,18 +56,8 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=M375mmHE;
-	onlytargetcategory1=NFLAGNAIR;
-	weapon2=M375mmAP;
-	onlytargetcategory2=TANK;
-	weapon3=Besa;
-	onlytargetcategory3=INFTARG;
-	weapon4=M375mmHEFear;
-	onlytargetcategory4=NFLAGNAIR;
-	weaponslaveto4=1;
-	weapon5=BesaFear;
-	onlytargetcategory5=INFTARG;
-	weaponslaveto5=3;
+	weapon1=6pdr57mmap;
+	onlytargetcategory1=TANK;
 
 	weapon6=Small_Tracer;
 

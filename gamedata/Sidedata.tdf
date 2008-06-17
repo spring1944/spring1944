@@ -160,7 +160,7 @@
 		canbuild1=USBarracks;
 		canbuild2=USGunyard;
 		canbuild3=USVehicleYard;
-		canbuild4=USSPYard;
+		//canbuild4=USSPYard;
 		canbuild5=USTankYard;
 		canbuild6=USStorage;
 		canbuild7=USSupplyDepot;
@@ -171,8 +171,14 @@
 	{
 		canbuild1=USM5Stuart;
 		canbuild2=USM4A4Sherman;
-		canbuild3=USM4A376Sherman;
-		canbuild10=USL4;
+		canbuild3=USM10Wolverine;
+	}
+	
+	[USTankYard1]
+	{
+		canbuild1=USM4A376Sherman;
+		canbuild2=USM4A3105Sherman;
+		canbuild3=USM4Jumbo;
 	}
 
 	[USSPYard]
@@ -292,7 +298,7 @@
 		canbuild1=GERBarracks;
 		canbuild2=GERGunyard;
 		canbuild3=GERVehicleYard;
-		canbuild4=GERSPYard;
+		//canbuild4=GERSPYard;
 		canbuild5=GERTankYard;
 		canbuild6=GERStorage;
 		canbuild7=GERSupplyDepot;
@@ -302,11 +308,22 @@
 	[GERTankYard]
 	{
 		canbuild1=GERPanzerIII;
-		canbuild2=GERPanzerIV;
-		canbuild3=GERPanther;
+		canbuild2=GERStugIII;
+		canbuild3=GERTiger;
+	}
+	
+	[GERTankYard1]
+	{
+		canbuild1=GERPanzerIV;
+		canbuild2=GERJagdPanzerIV;
+		canbuild3=GERWespe;
 		canbuild4=GERTiger;
-		canbuild5=GERTigerII;
-		canbuild10=GERFi156;
+	}
+	
+	[GERTankYard2]
+	{
+		canbuild1=GERPanther;
+		canbuild2=GERTigerII;
 	}
 
 	[GERSPYard]
@@ -451,7 +468,7 @@
 		canbuild1=GBRBarracks;
 		canbuild2=GBRGunyard;
 		canbuild3=GBRVehicleYard;
-		canbuild4=GBRSPYard;
+		//canbuild4=GBRSPYard;
 		canbuild5=GBRTankYard;
 		canbuild6=GBRStorage;
 		canbuild7=GBRSupplyDepot;
@@ -460,12 +477,19 @@
 
 	[GBRTankYard]
 	{
-		canbuild1=GBRAECMkIII;
+		canbuild1=GBRAECMkII;
 		canbuild2=GBRCromwell;
+		canbuild3=GBRCromwellMkVI;
+		canbuild4=GBRShermanFirefly;
+	}
+	
+	[GBRTankYard1]
+	{
+		canbuild1=GBRKangaroo;
 		canbuild3=GBRShermanFirefly;
-		canbuild4=GBRCromwellMkVI;
-		canbuild5=GBRChurchillMkVII;
-		canbuild10=GBRAuster;
+		canbuild4=GBRSexton;
+		canbuild5=GBRAchilles;
+		canbuild6=GBRChurchillMkVII;
 	}
 
 	[GBRSPYard]
@@ -601,7 +625,7 @@
 		canbuild1=RUSBarracks;
 		canbuild2=RUSGunyard;
 		canbuild3=RUSVehicleYard;
-		canbuild4=RUSSPYard;
+		//canbuild4=RUSSPYard;
 		canbuild5=RUSTankYard;
 		canbuild6=RUSStorage;
 		canbuild7=RUSSupplyDepot;
@@ -632,10 +656,14 @@
 	{
 		canbuild1=RUST70;
 		canbuild2=RUST3476;
-		canbuild3=RUST3485;
-		canbuild4=RUSKV1;
-		canbuild5=RUSIS2;
-		canbuild10=RUSPo2;
+		canbuild3=RUSISU152;
+	}
+	
+	[RUSTankYard1]
+	{
+		canbuild1=RUST3485;
+		canbuild2=RUSIS2;
+		canbuild3=RUSBM13N;
 	}
 
 	[RUSSPYard]
