@@ -24,7 +24,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 	SeismicSignature=0;
-	sightdistance=400;
+	sightdistance=475;
 	stealth=1;
 
 	init_cloaked=1;
@@ -34,7 +34,7 @@
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
-	maxvelocity=1.1;
+	maxvelocity=1.6;
 	acceleration=0.375;
 	brakerate=0.9;
 	turnrate=1010;

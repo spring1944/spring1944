@@ -12,8 +12,8 @@
 	trajectoryheight=0.5;
 	firestarter=0.0;
 
-	range=3000;
-	reloadtime=20;
+	range=2250;
+	reloadtime=30;
 	burst=16;
 	burstrate=.8;
 	sprayangle=1000;

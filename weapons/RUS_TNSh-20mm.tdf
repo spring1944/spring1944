@@ -11,8 +11,8 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=900;
-	reloadtime=3;
+	range=675;
+	reloadtime=4.5;
 	burst=4;
 	burstrate=0.17;
 	sprayangle=444;
@@ -67,8 +67,8 @@
 	ballistic=1;
 	firestarter=0.0;
 	targetmoveerror=0.05;
-	range=900;
-	reloadtime=2;
+	range=675;
+	reloadtime=3;
 	burst=3;
 	burstrate=0.1;
 	sprayangle=444;
@@ -127,9 +127,9 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=900;
-	reloadtime=2;
-	weaponvelocity=1600;
+	range=675;
+	reloadtime=4.5;
+	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;
 

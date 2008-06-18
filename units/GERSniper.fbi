@@ -25,7 +25,7 @@
 	smoothanim=0;
 
 	SeismicSignature=0;
-	sightdistance=400;
+	sightdistance=475;
 	airsightdistance=2500;
 	cloakcost=0;
 	cloakcostmoving=0;

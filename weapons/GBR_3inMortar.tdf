@@ -9,8 +9,8 @@
 
 	firestarter=0.0;
 
-	range=1760;
-	reloadtime=6;
+	range=1320;
+	reloadtime=9;
 	accuracy=370;
 	startvelocity=1000;
 	weaponvelocity=480;
@@ -49,8 +49,8 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=1650;
-	reloadtime=3;
+	range=1320;
+	reloadtime=9;
 	energypershot=0;
 	startvelocity=1000;
 	weaponvelocity=426;

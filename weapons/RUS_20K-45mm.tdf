@@ -11,8 +11,8 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=1310;
-	reloadtime=3.2;
+	range=980;
+	reloadtime=4.8;
 	accuracy=354;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -69,8 +69,8 @@
 	explosiongenerator=custom:AP_Impact_MediumSmall;
 	ballistic=1;
 
-	range=1310;
-	reloadtime=3.2;
+	range=980;
+	reloadtime=4.8;
 	accuracy=290;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -125,9 +125,9 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=1310;
-	reloadtime=3.2;
-	weaponvelocity=1584;
+	range=980;
+	reloadtime=4.8;
+	weaponvelocity=800;
 	areaofeffect=150;
 	edgeeffectiveness=1;
 

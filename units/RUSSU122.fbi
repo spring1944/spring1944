@@ -29,7 +29,7 @@
 	smoothanim=0;
 
 	seismicsignature=0;
-	sightdistance=630;
+	sightdistance=470;
 	onoffable=1;
 	radardistancejam=75;
 	stealth=0;

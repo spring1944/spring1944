@@ -41,7 +41,7 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=MG34;
+	weapon1=MG42;
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=120;

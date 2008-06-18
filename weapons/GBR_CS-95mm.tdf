@@ -11,8 +11,8 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=2250;
-	reloadtime=4;
+	range=1690;
+	reloadtime=9;
 	accuracy=270;
 	targetmoveerror=0.1;
 	weaponvelocity=1200;
@@ -56,7 +56,7 @@
 [cs95mmhefear]
 {
 	id=401;
-	name=Supression from 25 Pounder HE shell;
+	name=Supression from 95mm HE shell;
 	rendertype=1;
 	turret=1;
 	tolerance=600;
@@ -66,8 +66,8 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=2250;
-	reloadtime=4;
+	range=1690;
+	reloadtime=9;
 	weaponvelocity=1200;
 	areaofeffect=250;
 	edgeeffectiveness=1;

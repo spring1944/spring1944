@@ -11,8 +11,8 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=1690;
-	reloadtime=3.5;
+	range=1270;
+	reloadtime=5.25;
 	accuracy=300;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -67,8 +67,8 @@
 
 	ballistic=1;
 
-	range=1690;
-	reloadtime=3.5;
+	range=1270;
+	reloadtime=5.25;
 	accuracy=290;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
@@ -127,8 +127,8 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=1690;
-	reloadtime=3.5;
+	range=1270;
+	reloadtime=5.25;
 	weaponvelocity=926;
 	areaofeffect=150;
 	edgeeffectiveness=1;

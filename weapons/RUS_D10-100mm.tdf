@@ -10,8 +10,8 @@
 
 	ballistic=1;
 
-	range=2475;
-	reloadtime=6.7;
+	range=1860;
+	reloadtime=10;
 	accuracy=350;
 	movingaccuracy=600;
 	targetmoveerror=0.075;
