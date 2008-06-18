@@ -1,0 +1,110 @@
+-----------CHANGE LOG------------
+=As changes are made on an almost hourly basis, changelog is mainly by day; SVN REV shown indicates last SVN of a specific day, so consider that everything from the previous day's revision to the current day's are changes for the current day, for instance, REV 702 is the DEC 24th release, REVs 703-709 would be for 25th's work.
+
+--DEC 24TH 2007 (SVN REV 702)--
+
+Initial Release of Spring: 1944 Beta Lite v0.1
+
+--DEC 25th 2007 (SVN REV 709)--
+
+*Suppression indicators (numbers) disabled to stop LuaCOB crashes
+*Pack Howitzer/LeIG 18/ZiS-3 range lowered
+*MG Sandbag costs lowered
+*Restore button removed from Assault infantry
+
+--DEC 26th 2007 (SVN REV 723)--
+
+*Sounds added for Vickers and Maxim sandbag machinegun
+*Sniper ranges increased slightly
+*MG ranges tweaked (Bren/DP lowered, MG42 raised)
+*Grenade damage vs. structures and tanks increased
+*RPG-43 anti-tank grenade infantry (Soviets) added
+*Observ and Sniper LoS lowered slightly, observation buildtime increased moderately
+*Custom Formation widget added (but disabled by default)
+*ZiS-3 range reduced again slightly
+*Churchill added, but without skin
+
+--DEC 27th 2007 (SVN REV 726)--
+
+*LoS experiment; Observation changed to "Scout" and LoS reduced to less than infantry (about 500); decloak radius lowered (to 150 and then 125)
+*Sniper/Panzerfaust/Partisan LoS reduced to below-average
+*Sniper rifle range greatly increased
+
+--DEC 27th 2007 (SVN REV 727)--
+
+*Tweaks suggested by Ivory_King
+*Soviet 20mm accuracy decreased to be more inline with German 20mm
+*RPG-43 range increased to grenade range
+*Sandbag Machineguns cost/buildtime/health reduced 30-50%
+*AEC Mk III moved from Vehicle Yard to Tank Depot on account if it outclassing light tanks, including Panzer III, M5 Stuart, and T-70.
+
+--DEC 28th 2007 (SVN REV 742)--
+
+*Added Soviet M-30 122mm Field Howitzer
+*Added KV-1 M1942 (using KV-1S model) and Pzrkpfw VI Tiger with mockup (solid colour) skins
+
+--DEC 30th 2007 (SVN REV 765)--
+-General-
+*Disabling units not meant to be included in next release (Churchill, Tiger, KV-1, M10, Achilles, ISU-152).
+*Bumping up brakerates for all tracked vehicles to 0.45 (from 0.25).
+
+-Balance/Gameplay changes-
+-Big-
+*Removed Observation infantry, replaced them with a "Scout" with a small LoS. Also nerfed Sniper LoS significantly.
+*Units that cloak while moving move rather slower.
+This removes the "observ shielding" gameplay that was a problem.
+It is much easier to manuever forces around enemy concentrations now that enemy LoS doesn't cover half the map.
+*Equalized Riflemen ranges (In decending order of range: Britain - 810, Germany - 805, Soviets - 800, US - 785).
+*Increased Garand rate of fire by 10%.
+*Nerfed Soviet infantry HP to 40 (from 50), Partisans to 20 (from 25).
+
+-Small-
+*Cheapened trucks to 100m each
+*Sniper rifle range greatly increased (+50%)
+*Bringing down mobile MG cost for all but soviets (450m-->300m).
+*Cheapened Leig/Packhow (from ~2000 to 1100, 1200m respectively).
+*Lowering cost of APC halftracks by half (from ~1000 to 500).
+*Lowering cost of ZiS-3, along with a range nerf (now that its not serving as mid-range arty as much, it can be more of a direct fire gun).
+*Cheapened Stuart (2700->2500) and T-70 (2850->2750).
+*Doubled mortar weapon reload time, keeping suppression weapon the same (they're less effective at killing now, mainly a pinning weapon)
+
+-New units-
+*Added ML-30 Howitzer for Soviets. (This is their "heavy" arty for the lite release)
+*Added Dug-in AT Guns for all sides (directional + limited arc like the MGs - higher cost and HP than normal towed AT guns)
+*Added Kangaroo Armored Infantry Transport - with only slightly less armor than a Sherman tank, this
+ transport allows British infantry to get past light defenses that would stop halftracks or trucks instantly.
+
+-Bugfixes-
+*Fixing mortars exploding in mid-air in SVN Spring.
+*Fixing weaponID on ML-30 suppresssion weapon.
+*Removing XP widget for now (until we have our own images) - fixes giant white squares
+*Fixed HE shells and MGs damaging flags
+*Removed +3 metal production from US veh yard.
+*Removed a no-effect script error in mortars, sdkfz9 (double semicolon).
+
+--JAN 2nd, 2008 (SVN REV 773)--
+*brought rifle ranges on average back up to 900 (maintained differences, just not to the extreme that they were)
+*fixed russian truck costing 400m.
+*fixed flags being used by AIs for energy
+*fixed SMG/rifle movecloak. 
+*removed MG from german bunker
+*added new FX for 20mm
+*fixed ML-30 lacking an armor.txt entry
+*bumped AP mine cost back up a touch since there are basically no counters to it atm (except tanks)
+*bumped up bazooka/PIAT/RPG-43 damage to 8500, 'faust to 5500
+*changed the weaponID on a few of the bigger arty pieces so they don't get read as AP weapons.
+
+--JAN 8th, 2008 (SVN 793)--
+*Added completed Tiger w/ skin and all (can not yet be built)
+*Removed ALL Lua to deal with crashes (LuaUI and widgets still crashed) - better safe then sorry
+*Gave German HQ Bunker its MGs back
+*Animated cursors
+*Fixed Partisan and Rifle/SMG move-while-cloaked
+
+--JAN 9th, 2008 (SVN 818)--
+*Removed all LuaUI widgets except Team Circle, Build ETA and Custom Formations, which have all been made to disabled by default
+*If crashes still occur, please disable all unecessary widgets and report the problem at our website
+*Tweaked various units slightly, universalized things like turret rotation speed, assault gun turn speed, etc.
+*v0.25
+
+--Blah--
