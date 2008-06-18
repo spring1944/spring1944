@@ -46,10 +46,10 @@
   stages=50;
 
 	dyndamageexp=1;
-	dyndamagerange=3200;
+	dyndamagerange=4300;
 	[damage]
 	{
-		default=7275;//9700
+		default=6975;//9300
 		infantry=1900;
 		guns=800;
 		lightbuildings=500;
