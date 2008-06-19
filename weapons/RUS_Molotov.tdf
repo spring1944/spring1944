@@ -6,7 +6,7 @@
 	rendertype=3;
 	turret=1;
 
-	range=200;
+	range=180;
 	reloadtime=8;
 	accuracy=1421;
 	movingaccuracy=7111;

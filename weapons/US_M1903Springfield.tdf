@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 	explosiongenerator=custom:BulletImpact;
-	range=1700;
+	range=1275;
 	reloadtime=10;
 	sprayangle=0;
 	movingaccuracy=888;

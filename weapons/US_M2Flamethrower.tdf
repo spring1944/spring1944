@@ -9,7 +9,7 @@
 	lineofsight=1;
 	firestarter=100;
 
-	range=200;
+	range=180;
 	reloadtime=1;
 	burst=20;
 	burstrate=.04;
@@ -47,7 +47,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 	noselfdamage=1;
-	range=200;
+	range=180;
 	reloadtime=1;
 	sprayangle=0;
 	weaponvelocity=140;

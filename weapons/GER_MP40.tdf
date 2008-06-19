@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=420;
+	range=315;
 	reloadtime=2;
 	burst=5;
 	burstrate=.12;

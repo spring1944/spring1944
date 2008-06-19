@@ -13,7 +13,7 @@
 	trajectoryheight=0.1;
 	firestarter=0.0;
 
-	range=300;
+	range=270;
 	reloadtime=10;
 	startvelocity=750;
 	weaponvelocity=750;

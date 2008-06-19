@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=905;
+	range=680;
 	reloadtime=2.5;
 	accuracy=50;
 	sprayangle=100;
