@@ -1,7 +1,0 @@
-All Lua code included in this game is licensed under the GPL by their respective authors, unless otherwise stated in the script.
-All other information in this game is hereby released under the Creative Commons license.
-
-If you need to know the details of the licenses, and your rights and responsibilities under them, please read the files GNU_PUBLIC_LICENSE.txt and CC_LICENSE.txt, respectively.
-
-If any of the material found in this archive that is licensed under the Creative Common license is reused,
-please credit the original author in some recognizable way (such as a "credits & info.txt" as seen in this archive).
