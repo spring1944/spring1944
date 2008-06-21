@@ -25,7 +25,7 @@
 	smoothanim=0;
 
 	metalmake=5;
-	energymake=5;
+	energymake=0;
 
 	radardistance=2000000;
 	sightdistance=146;

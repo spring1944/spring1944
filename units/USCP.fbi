@@ -25,7 +25,7 @@
 	smoothanim=0;
 
 	metalmake=5;
-	energymake=2;
+	energymake=0;
 
 	sightdistance=146;
 	stealth=1;
