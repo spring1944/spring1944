@@ -72,7 +72,7 @@
 		maxammo=30;
 		weaponswithammo=1;
 		lowammolevel=8;
-		weaponcost=17;
+		weaponcost=34;
 
 		canAreaAttack=1;
 	}
