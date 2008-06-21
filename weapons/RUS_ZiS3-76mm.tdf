@@ -128,7 +128,7 @@
 	firestarter=0;
 
 	range=1310;
-	reloadtime=5.25
+	reloadtime=5.25;
 	weaponvelocity=926;
 	areaofeffect=210;
 	edgeeffectiveness=1;
