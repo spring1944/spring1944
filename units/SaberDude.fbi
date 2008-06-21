@@ -59,9 +59,11 @@
 	weapon1=sabertrigger;
 	weaponmaindir1=0 0 1;
 	maxangledif1=100;
-	weapon2=saber;
-//	weapon3=lancetrigger;
-//	weapon4=lance;
+	weapon5=saber;
+	weapon3=strike1trigger;
+	weapon4=strike2trigger;	//emitted like the main sword about 40 degrees ahead of the damaging one - allows
+							//swordsmen to see when they should block							
+	weapon2=block_interrupt; //causes the attacking unit to stop its swing
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

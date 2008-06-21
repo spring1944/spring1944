@@ -1,7 +1,7 @@
 [saber]
 {
 	id=67;
-	name=beamsword raaag;
+	name=beamsword stabity stab!;
 	rendertype=0;
 	turret=1;
 	tolerance=1000;
@@ -18,11 +18,14 @@
 	CylinderTargetting=1;
 	avoidfriendly=0;
 	collidefriendly=0;
-	
+	explosiongenerator=custom:nothing;
 	RGBcolor=0 0 1;
-
+	
+	impulsefactor=0;
+	impulseboost=0;
+	
 	beamweapon=1;
-	thickness=1.5;
+	thickness=1;
 	intensity=0.9;
 	corethickness=0.7;
 	laserflaresize=2;
@@ -32,22 +35,126 @@
 
 	[damage]
 	{
-		default=40;
+		default=80;
 	}
 }
+
+[strike1trigger]
+{
+	id=42;
+	name=indicator of strike 1;
+	rendertype=0;
+	turret=1;
+	tolerance=1000;
+	explosiongenerator=custom:nothing;
+	lineofsight=1;
+	firestarter=0;
+	texture2=nonsense;
+	texture3=nonsense;
+	range=24;
+	reloadtime=0.01;
+	areaofeffect=10;
+	canattackground=0;
+	targetborder=1;
+	CylinderTargetting=1;
+	avoidfriendly=0;
+	collidefriendly=0;
+	
+	RGBcolor=1 0 0;
+
+	beamweapon=1;
+	thickness=0.5;
+	intensity=0.5;
+	corethickness=0.7;
+	laserflaresize=0.0001;
+
+	beamlaser=1;
+	beamtime=0.033;
+
+	[damage]
+	{
+		default=0.0000001;
+	}
+}
+
+[strike2trigger]
+{
+	id=43;
+	name=indicator of strike 2;
+	rendertype=0;
+	turret=1;
+	tolerance=1000;
+	explosiongenerator=custom:nothing;
+	lineofsight=1;
+	firestarter=0;
+	texture2=nonsense;
+	texture3=nonsense;
+	range=24;
+	reloadtime=0.01;
+	areaofeffect=10;
+	canattackground=0;
+	targetborder=1;
+	CylinderTargetting=1;
+	avoidfriendly=0;
+	collidefriendly=0;
+	
+	RGBcolor=0 0 1;
+
+	beamweapon=1;
+	thickness=0.0000001;
+	intensity=0.1;
+	corethickness=0.7;
+	laserflaresize=2;
+
+	beamlaser=1;
+	beamtime=0.033;
+
+	[damage]
+	{
+		default=0.0000001;
+	}
+}
+
+[block_interrupt]
+{
+	id=41;
+	name=block notifier weapon;
+	rendertype=0;
+	turret=1;
+	tolerance=600;
+	lineofsight=1;
+	firestarter=0;
+	weaponvelocity=300;
+	range=24;
+	reloadtime=0.001;
+	areaofeffect=16;
+	burnblow=1;
+	avoidfriendly=0;
+	collidefriendly=0;
+	noselfdamage=1;
+
+	rgbcolor=0 1 0;
+	size=1;
+	[damage]
+	{
+		default=0;
+	}
+}
+
+
 [sabertrigger]
 {
 	id=67;
-	name=flag killing weapon;
+	name=activates saber;
 	rendertype=0;
 	turret=1;
 	tolerance=6000;
-
+	explosiongenerator=custom:nothing;
 	lineofsight=1;
 	firestarter=0;
 	targetborder=1;
 	CylinderTargetting=1;
-	range=32;
+	range=24;
 	reloadtime=0.000000000001;
 	areaofeffect=0.0001;
 	canattackground=0;
