@@ -4,7 +4,7 @@ piece  base, mantlet, barrel, flare;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming, FearOk;
+static-var  restore_delay, rock, bMoving, treadnum, GunAiming, FearOk;
 
 
 //how long the unit appears on the map after firing (in ms)
@@ -151,7 +151,6 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-	mainHead = heading;
 	turn mantlet to y-axis heading speed TURR_ELEVATE;
 	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn mantlet around y-axis;

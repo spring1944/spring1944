@@ -3,7 +3,7 @@
 piece  base, mantlet, barrel, flare, brakeleft, brakeright, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
+static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -55,25 +55,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define MEDIUM_MUZZLEDUST 1024+9
 #define MuzzleBrakeSmoke 1024+10
 
-//Pressure Line's stuff
-#define TURNRATE 230 //set to whatever the unit's fbi turnrate is
-
-TurnUnit(heading)
-   {
-   while(heading <= 0-TURNRATE)
-      {
-      set HEADING to (get HEADING)-TURNRATE;
-      heading = heading + TURNRATE;
-      sleep 30;
-   }
-
-   while(heading >= TURNRATE)
-   {
-      set HEADING to (get HEADING)+TURNRATE;
-      heading = heading - TURNRATE;
-      sleep 30;
-   }
-}
 
 treads() 
 { 
@@ -173,37 +154,10 @@ AimWeapon1(heading, pitch)
 	
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-	mainHead = heading;
-	if ( heading > <-21.000000> AND heading < <21.000000> )
-	{
-		turn mantlet to y-axis heading speed TURR_TRAVERSE;
-		turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-		wait-for-turn mantlet around y-axis;
-		wait-for-turn mantlet around x-axis;
-	}
-	if ( heading > <21.000000> )
-	{
-		heading = heading - <10.500000>;
-		call-script TurnUnit(heading);
-		turn mantlet to y-axis <10.500000> speed TURR_TRAVERSE;
-		turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-		wait-for-turn mantlet around y-axis;
-		wait-for-turn mantlet around x-axis;
-	}
-	if ( heading < <-21.000000> )
-	{
-		heading = heading + <10.500000>;
-		call-script TurnUnit(heading);
-		turn mantlet to y-axis <-10.500000> speed TURR_TRAVERSE;
-		turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-		wait-for-turn mantlet around y-axis;
-		wait-for-turn mantlet around x-axis;
-	}
-	//turn mantlet to y-axis heading speed TURR_ELEVATE;
-	//turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-	//wait-for-turn mantlet around y-axis;
-	//wait-for-turn mantlet around x-axis;
-	
+	turn mantlet to y-axis heading speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
 	start-script RestoreAfterDelay();
 	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	return 1;
@@ -247,9 +201,6 @@ AimWeapon2(heading, pitch)
 	aim2 = TRUE;
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-
-	mainHead = heading;
-	
 	turn mantlet to y-axis heading speed TURR_ELEVATE;
 	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn mantlet around y-axis;

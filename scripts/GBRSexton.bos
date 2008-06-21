@@ -70,23 +70,6 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 //Pressure Line's stuff
 #define TURNRATE 280 //set to whatever the unit's fbi turnrate is
 
-TurnUnit(heading)
-   {
-   while(heading <= 0-TURNRATE)
-      {
-      set HEADING to (get HEADING)-TURNRATE;
-      heading = heading + TURNRATE;
-      sleep 30;
-   }
-
-   while(heading >= TURNRATE)
-   {
-      set HEADING to (get HEADING)+TURNRATE;
-      heading = heading - TURNRATE;
-      sleep 30;
-   }
-}
-
 treads() 
 { 
    while( TRUE ) 
@@ -182,32 +165,10 @@ AimWeapon1(heading, pitch)
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 	GunAiming=1;
-	mainHead = heading;
-	if ( heading > <-15.000000> AND heading < <25.000000> )
-	{
-		turn turret to y-axis heading speed TURR_TRAVERSE;
-		turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
-		wait-for-turn turret around y-axis;
-		wait-for-turn sleeve around x-axis;
-	}
-	if ( heading > <25.000000> )
-	{
-		heading = heading - <12.500000>;
-		call-script TurnUnit(heading);
-		turn turret to y-axis <12.500000> speed TURR_TRAVERSE;
-		turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-		wait-for-turn turret around y-axis;
-		wait-for-turn sleeve around x-axis;
-	}
-	if ( heading < <-15.000000> )
-	{
-		heading = heading + <7.500000>;
-		call-script TurnUnit(heading);
-		turn turret to y-axis <-7.500000> speed TURR_TRAVERSE;
-		turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-		wait-for-turn turret around y-axis;
-		wait-for-turn sleeve around x-axis;
-	}
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
 	start-script RestoreAfterDelay();
 	GunAiming=0;
 	return 1;

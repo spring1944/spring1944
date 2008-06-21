@@ -26,38 +26,6 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 
 #include "Inf_pin_unpin.h"
 
-TurnUnit(desired_heading, steps)
-{
-	var current_heading;
-	current_heading = get HEADING;
-	var points_per_step;
-
-	if ( current_heading - desired_heading < desired_heading - current_heading ) // reverse the < and > if it goes the wrong way
-	{
-		points_per_step = desired_heading / steps;
-	}
-
-	if ( current_heading - desired_heading >= desired_heading - current_heading )
-	{
-		points_per_step = 0 - desired_heading / steps;
-	}
-
-	current_heading = get HEADING;
-
-	while ( current_heading - desired_heading < 100 ) // margin of error, in case of random rounding
-	{
-		var heading_to_achieve;
-		heading_to_achieve = current_heading + points_per_step;
-		
-		if ( heading_to_achieve < 0 )
-		{
-			heading_to_achieve = heading_to_achieve + 32768;
-		}
-
-		set HEADING to heading_to_achieve;
-	}
-}
-
 WeaponReady() //attentshaun!
 {
 	while (nade_active == 1)

@@ -4,12 +4,12 @@ piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, CannonFearOk;
+static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming, CannonFearOk;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // AA MG
-
+#define SIG_STOPTURN	8
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
 #define SMOKEPIECE2 base
@@ -59,23 +59,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 
 //Pressure Line's stuff
 #define TURNRATE 175 //set to whatever the unit's fbi turnrate is
-
-TurnUnit(heading)
-   {
-   while(heading <= 0-TURNRATE)
-      {
-      set HEADING to (get HEADING)-TURNRATE;
-      heading = heading + TURNRATE;
-      sleep 30;
-   }
-
-   while(heading >= TURNRATE)
-   {
-      set HEADING to (get HEADING)+TURNRATE;
-      heading = heading - TURNRATE;
-      sleep 30;
-   }
-}
 
 treads() 
 { 
@@ -182,36 +165,13 @@ AimWeapon1(heading, pitch)
 	
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-	GunAiming=1;
-	mainHead = heading;
- 	if ( heading > <-10.000000> AND heading < <10.000000> )		//degrees in which the unit will not turn its body to aim, only the gun. MEDIUM ex, 10 degrees either way
-	  {
-      turn mantlet to y-axis heading speed TURR_TRAVERSE;
-      turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-	  }
-   if ( heading > <10.000000> )			//if the target is more than 10 degrees to the right of the unit do this
-      {
-      heading = heading - <5.000000>;		//stops the hull rotation 5 degrees (half of the traverse) short of the target
-      call-script TurnUnit(heading);
-      turn mantlet to y-axis <5.000000> speed TURR_TRAVERSE;		//turns the gun the last 5 degrees towards the target
-      turn mantlet to x-axis <0.000000> - pitch speed <50.000000>;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-      }
-   if ( heading < <-10.000000> )		//if the target is more than 10 degrees to the left of the unit do this
-      {
-      heading = heading + <5.000000>;		//stops the hull rotation 5 degrees (half of the traverse) short of the target
-      call-script TurnUnit(heading);
-      turn mantlet to y-axis <-5.000000> speed TURR_TRAVERSE;		//turns the gun the last 5 degrees towards the target
-      turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-      }
+	turn mantlet to y-axis heading speed TURR_ELEVATE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
+	
 	start-script RestoreAfterDelay();
 	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	GunAiming=0;
 	return 1;
 }
 
@@ -279,33 +239,10 @@ AimWeapon2(heading, pitch)
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 
-	mainHead = heading;
-	
-	if ( heading > <-10.000000> AND heading < <10.000000> )
-	  {
-      turn mantlet to y-axis heading speed TURR_TRAVERSE;
-      turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-	  }
-   if ( heading > <10.000000> )
-      {
-      heading = heading - <5.000000>;
-      call-script TurnUnit(heading);
-      turn mantlet to y-axis <5.000000> speed TURR_TRAVERSE;
-      turn mantlet to x-axis <0.000000> - pitch speed <50.000000>;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-      }
-   if ( heading < <-10.000000> )
-      {
-      heading = heading + <5.000000>;
-      call-script TurnUnit(heading);
-      turn mantlet to y-axis <-5.000000> speed TURR_TRAVERSE;
-      turn mantlet to x-axis <0.000000> - pitch speed TURR_ELEVATE;
-      wait-for-turn mantlet around y-axis;
-      wait-for-turn mantlet around x-axis;
-      }
+	turn mantlet to y-axis heading speed TURR_ELEVATE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
 	
 	start-script RestoreAfterDelay();
 	aim2 = FALSE;
