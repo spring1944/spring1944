@@ -28,7 +28,7 @@
 
 	builder=1;
 	builddistance=100;
-	workertime=100;//130
+	workertime=10;//130
 	shownanospray=0;
 
 	canmove=1;

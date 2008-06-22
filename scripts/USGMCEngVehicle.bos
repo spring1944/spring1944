@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, nanobeam, crane, turret, body, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6;
+piece  base, nano, crane, turret, body, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
@@ -143,7 +143,7 @@ StopBuilding()
 
 QueryNanoPiece(piecenum)
 {
-	piecenum = nanobeam;
+	piecenum = nano;
 }
 
 TargetHeading(Func_Var_1)

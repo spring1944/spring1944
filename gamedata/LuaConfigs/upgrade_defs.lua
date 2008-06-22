@@ -38,33 +38,13 @@ local upgradeDefs = {
   Note: All unitnames are case sensitive!
 ]]--
 
-	-- If the unit is a HQ, put this in the definition
-	--[[
-			onUpgrade = function(oldUnitID, newUnitID, _)
-				HQGuardTransfer(oldUnitID, newUnitID)
-			end
-	]]--
-	-- If the unit also has E-WEBs guarding it, put this below HQGuardTransfer
-	-- HQEWEBTransfer(oldUnitID, newUnitID)
-
-	
---[[local function HQGuardTransfer(oldID, newID)
-	if Script.LuaRules.HQ_GUARD_IDUpdate ~= nil then
-		Script.LuaRules.HQ_GUARD_IDUpdate({oldID = oldID, newID = newID})
-	end
-end
-local function HQEWEBTransfer(oldID, newID)
-	if Script.LuaRules.HQ_EWEB_IDUpdate ~= nil then
-		Script.LuaRules.HQ_EWEB_IDUpdate({oldID = oldID, newID = newID})
-	end
-end]]--
 
 
 local upgradeDefs = {
 	rustankyard = {
 		{
 			into = 'rustankyard1',
-			mcost = 2500,
+			mcost = 3000,
 			ecost = 0,
 			time = 30,
 			buttonname = 'Upgrade',
@@ -73,7 +53,7 @@ local upgradeDefs = {
 	ustankyard = {
 		{
 			into = 'ustankyard1',
-			mcost = 2500,
+			mcost = 3000,
 			ecost = 0,
 			time = 30,
 			buttonname = 'Upgrade',
@@ -82,7 +62,7 @@ local upgradeDefs = {
 	gertankyard = {
 		{
 			into = 'gertankyard1',
-			mcost = 2500,
+			mcost = 3000,
 			ecost = 0,
 			time = 30,
 			buttonname = 'Upgrade',
@@ -91,7 +71,7 @@ local upgradeDefs = {
 	gertankyard1 = {
 		{
 			into = 'gertankyard2',
-			mcost = 2500,
+			mcost = 3000,
 			ecost = 0,
 			time = 30,
 			buttonname = 'Upgrade',
@@ -100,7 +80,7 @@ local upgradeDefs = {
 	gbrtankyard = {
 		{
 			into = 'gbrtankyard1',
-			mcost = 2500,
+			mcost = 3000,
 			ecost = 0,
 			time = 30,
 			buttonname = 'Upgrade',

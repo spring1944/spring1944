@@ -123,7 +123,7 @@
 	{
 		canbuild1=USVehicleYard;
 		canbuild2=USGunYard;
-		canbuild3=USCP;
+		//canbuild3=USCP;
 		canbuild4=USFlag;
 		//canbuild5=USResource;
 		Canbuild7=USGMCTruck;

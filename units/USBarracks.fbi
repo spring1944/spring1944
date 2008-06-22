@@ -17,7 +17,7 @@
 	footprintx=4;
 	footprintz=6;
 
-	hidedamage=1;
+	hidedamage=0;
 	shownanoframe=0;
 	unitrestricted=3;
 	smoothanim=0;
