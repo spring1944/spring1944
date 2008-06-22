@@ -68,7 +68,7 @@
 	firestarter=0.0;
 	targetmoveerror=0.05;
 	range=675;
-	reloadtime=3;
+	reloadtime=4.5;
 	burst=3;
 	burstrate=0.1;
 	sprayangle=444;

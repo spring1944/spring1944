@@ -66,7 +66,7 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=900;
+	range=675;
 	reloadtime=3;
 	weaponvelocity=1200;
 	areaofeffect=70;
