@@ -24,7 +24,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	metalmake=5;
+	metalmake=20;
 	energymake=0;
 
 	radardistance=2000000;
@@ -59,7 +59,7 @@
 	{
 		hq=1;
 		refillamount=1000000; 
-		arrivalgap=180;	
+		arrivalgap=300;	
 
 		ammoSupplier=1;
 		supplyRange=500;

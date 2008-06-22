@@ -58,6 +58,8 @@
 	badtargetcategory=FLAG;
 
 	weapon1=m2he;
+	weaponmaindir1=0 0 1;
+	maxangledif1=15;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
 	weapon4=M2Browning;

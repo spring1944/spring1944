@@ -56,8 +56,12 @@
 	badtargetcategory=FLAG;
 
 	weapon1=KwK75mmL48HE;
+	weaponmaindir1=0 0 1;
+	maxangledif1=15;
 	onlytargetcategory1=NFLAGNAIR;
 	weapon2=KwK75mmL48AP;
+	weaponmaindir2=0 0 1;
+	maxangledif2=15;
 	onlytargetcategory2=TANK;
 	weapon3=KwK75mmL48HEFear;
 	onlytargetcategory3=NFLAGNAIR;

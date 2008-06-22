@@ -17,7 +17,7 @@ if (gadgetHandler:IsSyncedCode()) then
 local flags = {}
 
 local function OutputCalc(lifespan, defaultOutput)
-	output = (defaultOutput * 1.05^lifespan)
+	output = (defaultOutput * 1.025^lifespan)
 		print("output", output)
 	return output
 end
@@ -34,7 +34,7 @@ function gadget:GameFrame(t)
 		--call a local function to determine output
 		OutputCalc(lifespan, defaultOutput)
 
-			if (output < 4*(defaultOutput)) then
+			if (output < 2*(defaultOutput)) then
 			Spring.SetUnitMetalExtraction (u, output)	
 			end
 		flags[u].lifespan = lifespan

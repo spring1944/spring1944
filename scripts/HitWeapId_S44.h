@@ -17,7 +17,7 @@
 #define COBSCALE	65536
 #define ExCOBSCALE      178145
 #ifndef QUALITY
-  #define QUALITY	1801	// =0.0275
+  #define QUALITY	2701	// =0.0275
 #endif
 #define AT_WEAPON	100
 

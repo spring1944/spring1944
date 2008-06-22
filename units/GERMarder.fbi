@@ -56,6 +56,8 @@
 	badtargetcategory=FLAG;
 
 	weapon1=KwK75mmL48AP;
+	weaponmaindir1=0 0 1;
+	maxangledif1=15;
 	onlytargetcategory1=TANK;
 
 	[sfxtypes]
