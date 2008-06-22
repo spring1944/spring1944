@@ -13,7 +13,7 @@
 
 [GBRYard]
 	{
-	select1=GBR_Anthem;
+	//select1=GBR_Anthem;
 	unitcomplete=GEN_YardDone;
 	underattack=;
 	build=GEN_YardSelect;
@@ -29,7 +29,7 @@
 
 [GERYard]
 	{
-	select1=GER_Anthem;
+	//select1=GER_Anthem;
 	unitcomplete=GEN_YardDone;
 	underattack=;
 	build=GEN_YardSelect;
@@ -45,7 +45,7 @@
 
 [RUSYard]
 	{
-	select1=RUS_Anthem;
+	//select1=RUS_Anthem;
 	unitcomplete=GEN_YardDone;
 	underattack=;
 	build=GEN_YardSelect;
@@ -61,7 +61,7 @@
 
 [USYard]
 	{
-	select1=US_Anthem;
+	//select1=US_Anthem;
 	unitcomplete=GEN_YardDone;
 	underattack=;
 	build=GEN_YardSelect;
