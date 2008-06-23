@@ -75,9 +75,4 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
 	}
-		[customParams]
-	{
-		ammoSupplier=1;
-		supplyRange=250;
-	}
 }

@@ -181,7 +181,7 @@ local function Resupply(unitID)
   local oldAmmo = vehicles[unitID].ammoLevel
   
   
-  local newAmmo = oldAmmo + ammoRegen
+  local newAmmo = oldAmmo + 1 --newAmmo
   if (newAmmo > maxAmmo) then
     newAmmo = maxAmmo
   end
@@ -212,7 +212,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   if (ud.customParams.maxammo)               then
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
-      ammoLevel = ud.customParams.maxammo,
+      ammoLevel = tonumber(ud.customParams.maxammo),
       reloadFrame = {},
     }
     for weaponNum=0, ud.customParams.weaponswithammo do

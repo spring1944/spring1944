@@ -15,8 +15,8 @@
 	range=2250;
 	reloadtime=30;
 	burst=16;
-	burstrate=.8;
-	sprayangle=1000;
+	burstrate=0.8;
+	sprayangle=1500;
 	dance=10;
 	startvelocity=500;
 	weaponvelocity=500;
@@ -69,6 +69,9 @@
 
 	range=2250;
 	reloadtime=30;
+	burst=2;
+	burstrate=0.8;
+	sprayangle=2000;
 	weaponvelocity=800;
 	areaofeffect=400;
 	edgeeffectiveness=1;
