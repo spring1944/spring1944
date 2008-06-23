@@ -10,7 +10,7 @@
 		pos=-2 r4, r4, -2 r4;
 		emitVector=0, 1, 0;
 		gravity=0, -.1, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=.8;
 		particleLife=10;
@@ -41,7 +41,7 @@
 		pos=-2 r4, r4, -2 r4;
 		emitVector=0, 1, 0;
 		gravity=0, -.1, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=.8;
 		particleLife=10;
@@ -77,7 +77,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity=0;// -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -108,7 +108,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity=.01;// -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=50;
@@ -202,7 +202,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -277,7 +277,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -307,7 +307,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -338,7 +338,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=25;
@@ -430,7 +430,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -460,7 +460,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -490,7 +490,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=25;
@@ -520,7 +520,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -551,7 +551,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=25;
@@ -643,7 +643,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=45;
@@ -673,7 +673,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=45;
@@ -703,7 +703,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=10;
@@ -733,7 +733,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=30;
@@ -763,7 +763,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -793,7 +793,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=20;
@@ -823,7 +823,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=30;
@@ -917,7 +917,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=60;
@@ -947,7 +947,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=60;
@@ -977,7 +977,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=10;
@@ -1007,7 +1007,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=30;
@@ -1037,7 +1037,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=25;
@@ -1067,7 +1067,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=20;
@@ -1097,7 +1097,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=30;
@@ -1174,7 +1174,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=75;
@@ -1204,7 +1204,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=75;
@@ -1234,7 +1234,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=15;
@@ -1264,7 +1264,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=50;
@@ -1294,7 +1294,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=30;
@@ -1324,7 +1324,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=20;
@@ -1354,7 +1354,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=35;
@@ -1390,7 +1390,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01              0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
@@ -1431,7 +1431,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=90;
@@ -1461,7 +1461,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=75;
@@ -1491,7 +1491,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=15;
@@ -1521,7 +1521,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=50;
@@ -1551,7 +1551,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=40;
@@ -1581,7 +1581,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=30;
@@ -1611,7 +1611,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=45;
@@ -1647,7 +1647,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01             0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=3;
@@ -1688,7 +1688,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=90;
@@ -1718,7 +1718,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=75;
@@ -1748,7 +1748,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=15;
@@ -1778,7 +1778,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=50;
@@ -1808,7 +1808,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=40;
@@ -1838,7 +1838,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=30;
@@ -1868,7 +1868,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=45;
@@ -1904,7 +1904,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9              0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01              0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6;
@@ -1945,7 +1945,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.3 .25 .2 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.3 .25 .2 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=100;
@@ -1975,7 +1975,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.012 r.025,  -.001,  -.025 r.05;
-		colorMap=.2 .175 .15 1  .1 .075 .05 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  .1 .075 .05 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=100;
@@ -2005,7 +2005,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.005 r.0025,  -.001, -.005 r.0025;
-		colorMap=1 0.5 0.1 .1  0 0 0 .5  0 0 0 0;
+		colorMap=1 0.5 0.1 .1  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=20;
@@ -2035,7 +2035,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .09 .08 1  .1 .09 .08 .5  0 0 0 0;
+		colorMap=.1 .09 .08 0.01  .1 .09 .08 0.01  0 0 0 0;
 		Texture=debris2;
 		airdrag=0.98;
 		particleLife=100;
@@ -2065,7 +2065,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .175 .15 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .175 .15 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=40;
@@ -2097,7 +2097,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.1 .075 .05 1  0 0 0 .3   0 0 0 0;
+		colorMap=.1 .075 .05 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=25;
@@ -2127,7 +2127,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= 0, -.35, 0;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dirt;
 		airdrag=0.98;
 		particleLife=50;
@@ -2164,7 +2164,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
@@ -2195,7 +2195,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=0 0 0 1  0 0 0 .3   0 0 0 0;
+		colorMap=0 0 0 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=GenericSmokeCloud;
 		airdrag=1;
 		particleLife=25;
@@ -2225,7 +2225,7 @@
 		pos=0, 1.0, 0;
 		emitVector=0, 1, 0;
 		gravity=0, -0.1, 0;
-		colorMap=1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+		colorMap=1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 		Texture=diamondstar;
 		airdrag=0.95;
 		particleLife=60;
@@ -2259,7 +2259,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
@@ -2290,7 +2290,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=0 0 0 1  0 0 0 .3   0 0 0 0;
+		colorMap=0 0 0 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=GenericSmokeCloud;
 		airdrag=1;
 		particleLife=25;
@@ -2320,7 +2320,7 @@
 		pos=0, 1.0, 0;
 		emitVector=0, 1, 0;
 		gravity=0, -0.1, 0;
-		colorMap=1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+		colorMap=1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 		Texture=diamondstar;
 		airdrag=0.95;
 		particleLife=60;
@@ -2350,7 +2350,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -2384,7 +2384,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
@@ -2415,7 +2415,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=0 0 0 1  0 0 0 .3   0 0 0 0;
+		colorMap=0 0 0 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=GenericSmokeCloud;
 		airdrag=1;
 		particleLife=25;
@@ -2445,7 +2445,7 @@
 		pos=0, 1.0, 0;
 		emitVector=0, 1, 0;
 		gravity=0, -0.1, 0;
-		colorMap=1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+		colorMap=1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 		Texture=diamondstar;
 		airdrag=0.95;
 		particleLife=60;
@@ -2475,7 +2475,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 1.03   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -2508,7 +2508,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
@@ -2539,7 +2539,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=0 0 0 1  0 0 0 .3   0 0 0 0;
+		colorMap=0 0 0 0.01  0 0 0 0.01   0 0 0 0;
 		Texture=GenericSmokeCloud;
 		airdrag=1;
 		particleLife=25;
@@ -2569,7 +2569,7 @@
 		pos=0, 1.0, 0;
 		emitVector=0, 1, 0;
 		gravity=0, -0.1, 0;
-		colorMap=1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+		colorMap=1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 		Texture=diamondstar;
 		airdrag=0.95;
 		particleLife=60;
@@ -2599,7 +2599,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 .01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
@@ -2632,7 +2632,7 @@
 			pos=0, 2, 0;
 			emitVector=-0, 1, 0;
 			gravity=0, 0.00, 0;
-			colorMap= 0 0 0 0.01   1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+			colorMap= 0 0 0 0.01   1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 			Texture=shotgunflare;
 			airdrag=1;
 			particleLife=6.2;
@@ -2663,7 +2663,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=0 0 0 1  0 0 0 .3   0 0 0 0;
+		colorMap=0 0 0 0.01  0 0 0 .03   0 0 0 0;
 		Texture=GenericSmokeCloud;
 		airdrag=1;
 		particleLife=25;
@@ -2693,7 +2693,7 @@
 		pos=0, 1.0, 0;
 		emitVector=0, 1, 0;
 		gravity=0, -0.1, 0;
-		colorMap=1 1 0.8 0.9   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
+		colorMap=1 1 0.8 0.01   1 1 0.7 0   0 0 0 0.01   0 0 0 0.01;
 		Texture=diamondstar;
 		airdrag=0.95;
 		particleLife=60;
@@ -2723,7 +2723,7 @@
 		pos=-10 r20, 5 r10, -10 r20;
 		emitVector=0, 1, 0;
 		gravity= -.025 r.05,  -.35,  -.025 r.05;
-		colorMap=.2 .2 .2 1  0 0 0 .3   0 0 0 0;
+		colorMap=.2 .2 .2 0.01  0 0 0 .01   0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
 		particleLife=23;
