@@ -80,17 +80,17 @@ end
 
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
+	--Spring.Echo("Reload Frame for unit " .. unitID .. " weapon# " .. weaponNum .. " is " .. reloadFrame)
   local oldReloadFrame
   if (vehicles[unitID].reloadFrame) then
     oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
   end
-  if (oldReloadFrame == reloadFrame or
-      not reloadFrame)              then
+  if (oldReloadFrame == reloadFrame or reloadFrame == 0) then
     return false
-  else
-    vehicles[unitID].reloadFrame[weaponNum] = reloadFrame
-    return true
-  end
+	end
+  
+  vehicles[unitID].reloadFrame[weaponNum] = reloadFrame
+  return true
 end
 
 local function CalcReload(ammoLevel, newReload, defaultReload)
@@ -102,25 +102,36 @@ local function CalcReload(ammoLevel, newReload, defaultReload)
 	return newReload
 end
 	
-local function ProcessWeapon(unitID, weaponNum)
+local function ProcessWeapon(unitID)--, weaponNum)
   local unitDefID = GetUnitDefID(unitID)
-  local _, _, reloadFrame = GetUnitWeaponState(unitID, weaponNum)
-  local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
+	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
+	local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
   local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
-  local weaponID = UnitDefs[unitDefID].weapons[weaponNum+1].weaponDef
-  local reload = WeaponDefs[weaponID].reload
-  if (CheckReload(unitID, reloadFrame, weaponNum)) then
-    print("fire!", weaponNum, reloadFrame)
-		if (ammoLevel <= 1) then
+	local weaponFired = false
+	
+	for weapNum = 0, weaponsWithAmmo do
+		local _, _, reloadFrame = GetUnitWeaponState(unitID, weapNum)
+		local weaponID = UnitDefs[unitDefID].weapons[weapNum+1].weaponDef
+		local reload = WeaponDefs[weaponID].reload
+		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
+	end
+	--Spring.Echo ("Ammo level is: " .. ammoLevel)
+	if (weaponFired) then
+	--if (CheckReload(unitID, reloadFrame, weaponNum)) then	
+		--Spring.Echo ("Fire! " .. weaponNum .. " " .. reloadFrame)
+		if (ammoLevel == 2) then
 			savedFrames[unitID] = reloadFrame
-			SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
+			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
+			SetUnitWeaponState(unitID, 0, {reloadtime = 99999, reloadstate = 99999})
+			SetUnitWeaponState(unitID, 1, {reloadtime = 99999, reloadstate = 99999})
+			--SetUnitWeaponState(unitID, 2, {reloadtime = 99999})
 		end
-    if (ammoLevel > 1) then
+    if (ammoLevel > 0) then
       vehicles[unitID].ammoLevel = ammoLevel - 1
-	  SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
-	 	if (reloadFrame > 0 and savedFrames[unitID]) then
-			SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
-		end
+	  --SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
+	 	--if (reloadFrame > 0 and savedFrames[unitID]) then
+			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
+		--end
     end
     print("ammo", vehicles[unitID].ammoLevel)
   end
@@ -178,8 +189,18 @@ local function Resupply(unitID)
   if (newAmmo < maxAmmo) then
   Spring.UseUnitResource(supplierID, "e", weaponCost)
   end
+	  local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
+  local reload = WeaponDefs[weaponID].reload
+	
+	--if (reloadFrame > 0 and savedFrames[unitID]) then
+	if (oldAmmo <= 1) then -- and savedFrames[unitID]) then
+			SetUnitWeaponState(unitID, 0, {reloadtime = reload, reloadstate = reload})
+			SetUnitWeaponState(unitID, 1, {reloadtime = reload, reloadstate = reload})
+			--SetUnitWeaponState(unitID, 2, {reloadtime = reload, reloadstate = reload})
+	end
+	
   vehicles[unitID].ammoLevel = newAmmo
-  
+	
 end
     
     
@@ -226,10 +247,10 @@ function gadget:GameFrame(n)
 	  --local maxAmmo = UnitDefs[unitDefID].customParams.maxAmmo
 	
     
-      local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
-      for weaponNum=0, weaponsWithAmmo-1 do
-        ProcessWeapon(unitID, weaponNum)
-      end
+      --local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
+      --for weaponNum=0, weaponsWithAmmo do
+        ProcessWeapon(unitID)--, weaponNum)
+      --end
       Resupply(unitID)
       SendToUnsynced("ammo", unitID, ammoLevel, lowAmmoLevel)
     end
