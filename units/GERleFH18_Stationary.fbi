@@ -74,5 +74,6 @@
 		weaponswithammo=1;
 		lowammolevel=8;
 		weaponcost=40;
+		canareaattack=1;
 	}
 }
