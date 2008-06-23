@@ -117,7 +117,7 @@
 }
 [ml20s152mmfear]
 {
-	id=301;
+	id=401;
 	name=Supression from 152mm ML-20;
 	rendertype=1;
 	explosiongenerator=custom:nothing;

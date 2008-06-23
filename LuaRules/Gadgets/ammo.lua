@@ -46,7 +46,6 @@ local GetUnitsInCylinder = Spring.GetUnitsInCylinder
 local GetUnitPosition    = Spring.GetUnitPosition
 local GetUnitSeparation  = Spring.GetUnitSeparation
 local GetUnitDefID       = Spring.GetUnitDefID
-local SetUnitRulesParam  = Spring.SetUnitRulesParam
 
 
 --------------------------------------------------------------------------------
@@ -94,7 +93,7 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
   end
 end
 
-local function CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
+local function CalcReload(ammoLevel, newReload, defaultReload)
 	newReload = ((((0-1)*lowAmmoLevel)/defaultReload)*ammoLevel+(2*defaultReload))
 	print("lowAmmoLevel:", lowAmmoLevel)
 	print("defaultReload:", defaultReload)
@@ -112,28 +111,18 @@ local function ProcessWeapon(unitID, weaponNum)
   local reload = WeaponDefs[weaponID].reload
   if (CheckReload(unitID, reloadFrame, weaponNum)) then
     print("fire!", weaponNum, reloadFrame)
-		if (ammoLevel == 1) then
+		if (ammoLevel <= 1) then
 			savedFrames[unitID] = reloadFrame
 			SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
 		end
-    if (ammoLevel > 0) then
+    if (ammoLevel > 1) then
       vehicles[unitID].ammoLevel = ammoLevel - 1
-			SetUnitRulesParam(unitID, "ammo",  ammoLevel - 1)
-    end
-    print("ammo", vehicles[unitID].ammoLevel)
-  end	
-  if (ammoLevel < lowAmmoLevel) and (ammoLevel > 1) then
-	local defaultReload = reload
-	local newReload = reload
-		--CalcReload(ammoLevel, lowAmmoLevel, newReload, defaultReload)
-    SetUnitWeaponState(unitID, weaponNum, {reloadtime = newReload, reloadstate = reloadFrame + (32*newReload)})
-    vehicles[unitID].conserveAmmo = true
-  end
-  if (ammoLevel > lowAmmoLevel) then
-		if (reloadFrame > 0 and savedFrames[unitID]) then
+	  SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
+	 	if (reloadFrame > 0 and savedFrames[unitID]) then
 			SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
 		end
-    vehicles[unitID].conserveAmmo = nil
+    end
+    print("ammo", vehicles[unitID].ammoLevel)
   end
 end
 
@@ -190,7 +179,6 @@ local function Resupply(unitID)
   Spring.UseUnitResource(supplierID, "e", weaponCost)
   end
   vehicles[unitID].ammoLevel = newAmmo
-	SetUnitRulesParam(unitID, "ammo",  newAmmo)
   
 end
     
@@ -201,7 +189,6 @@ end
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local ud = UnitDefs[unitDefID]
   if (ud.customParams.maxammo)               then
-		SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
       ammoLevel = ud.customParams.maxammo,
@@ -352,9 +339,3 @@ function gadget:DrawScreen(dt)
   end
 	
 end 
-
---[01:08:03] <[LCC]quantum[CA]> you have an ammo gadget, right
---[01:08:34] <[LCC]quantum[CA]> here is how you can do it with minimum fuss
---[01:08:57] <[LCC]quantum[CA]> in the ammo gadget, when the ammo level changes
---[01:09:08] <[LCC]quantum[CA]> call Spring.SetUnitRulesParam(unitID, "ammo",  ammoLevel)
---[01:09:54] <[LCC]quantum[CA]> then when you draw the icon get the ammo status with GetUnitRulesParam

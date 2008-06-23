@@ -43,7 +43,7 @@ static-var  restore_delay, rock, reloading, mainHead, FearOk, isDeployed, normal
 #define TURR_ELEVATE	<100> //it's just a machinegun on a pivot
 
 // definitions for weapons behaviour
-#define RELOAD		2500 // time in milliseconds between shots
+#define RELOAD		30000 // time in milliseconds between shots
 #define RECOIL		[-1] // distance to recoil the gun
 #define RETURN_SPEED	[20] // speed at which the barrel returns
 #define BURST		5
@@ -74,31 +74,13 @@ RestoreAfterDelay()
 	turn rails to x-axis <0.000000> speed <100>;
 }
 
-StartMoving()
-{
-	set ACTIVATION to 1;
- 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
- 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
- 	spin wheel3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
-}
-
-StopMoving()
-{
-	set ACTIVATION to 0;
- 	stop-spin wheel1 around x-axis;
- 	stop-spin wheel2 around x-axis;
-  	stop-spin wheel3 around x-axis;
-}
-
-// thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
 Deploy() 
 {
 	set-signal-mask SIG_DEPLOY;
 	//TODO: deploy anim
-	
 	//set CLOAKED to TRUE;
 	SET MAX_SPEED to 1;
-	sleep 5000;
+//	sleep 5000;
 	isDeployed = TRUE;
 
 }
@@ -108,11 +90,32 @@ UnDeploy()
 	set-signal-mask SIG_DEPLOY;
 	isDeployed = FALSE;
 	// TODO: undeploy anim
-
-	sleep 5000;
-
+//	sleep 5000;
 	set MAX_SPEED to normalSpeed;
 }
+
+
+StartMoving()
+{
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
+	call-script UnDeploy();
+ 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+}
+
+StopMoving()
+{
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
+ 	stop-spin wheel1 around x-axis;
+ 	stop-spin wheel2 around x-axis;
+  	stop-spin wheel3 around x-axis;
+	start-script Deploy();
+}
+
+// thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
 
 
 SweetSpot(piecenum)
@@ -142,18 +145,18 @@ AimWeapon1(heading, pitch)
 	wait-for-turn rails around x-axis;
 	
 	//start-script RestoreAfterDelay();
-	return 1;
+	return (1);
 	}
-	return 0;
+	return (0);
 }
 
 FireWeapon1()
 {
 	//emit-sfx MEDIUM_Muzzleflash from rocket1;
 	FearOk=1;
-	set ACTIVATION to 1;
-	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 1;
 	//start-script Reload(); // start reload timer after firing
 	return 0;
 }

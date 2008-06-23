@@ -94,7 +94,6 @@ Create()
 StartMoving()
 {
 	bMoving = TRUE;
-	set ACTIVATION to 1;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -108,7 +107,6 @@ StartMoving()
 StopMoving()
 {
 	bMoving = FALSE;
-	set ACTIVATION to 0;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;
 	stop-spin wheel1 around x-axis;

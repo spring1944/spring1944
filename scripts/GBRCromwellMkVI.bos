@@ -16,6 +16,9 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, M
 
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
 
+//how long the unit appears on the map after firing (in ms)
+#define VISIBLE_PERIOD	5000
+
 //hiding fx emit points
 
 #define FX_HIDE\
@@ -103,7 +106,6 @@ Create()
 StartMoving()
 {
 	bMoving = TRUE;
-	set ACTIVATION to 1;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -116,7 +118,6 @@ StartMoving()
 StopMoving()
 {
 	bMoving = FALSE;
-	set ACTIVATION to 0;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;
 	stop-spin wheel1 around x-axis;
@@ -194,7 +195,9 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	sleep 200;
 	move barrel to z-axis 0 speed RETURN_SPEED;
-	
+	set ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 0;
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;

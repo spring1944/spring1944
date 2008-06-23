@@ -54,3 +54,35 @@
 		unarmouredvehicles=5050;
 	}
 }
+
+[M13132mmfear]
+{
+	id=501;
+	name=Supression;
+	rendertype=1;
+	explosiongenerator=custom:nothing;
+	turret=1;
+	tolerance=600;
+
+	ballistic=1;
+	firestarter=0;
+
+	range=2250;
+	reloadtime=30;
+	weaponvelocity=800;
+	areaofeffect=400;
+	edgeeffectiveness=1;
+
+	collidefriendly=0;
+	noselfdamage=1;
+
+	color=255;
+
+	size=0.000001;
+	collisionsize=4;
+
+	[damage]
+	{
+		default=0.0001;
+	}
+}
