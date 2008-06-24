@@ -26,14 +26,14 @@ local aadesc= {
 	id=CMD_AREAATTACK,
 	type=CMDTYPE.ICON_AREA,
 	tooltip="Attack an area randomly",
-	cursor="cursorattack",
+	cursor="Attack",
 }
 
 function gadget:GameFrame(f)
 	for i,o in pairs(attackList) do
 		attackList[i] = nil
 		local phase = math.random(200*math.pi)/100.0
-		local amp = math.random(o.radius)
+		local amp = math.random(o.radius + 1) -- a 0 radius will crash, so add 1
 		Spring.GiveOrderToUnit(o.unit, CMD.INSERT, {0, CMD.ATTACK, 0, o.x + math.cos(phase)*amp, o.y, o.z + math.sin(phase)*amp}, {"alt"})
 	end
 	for i,o in pairs(closeList) do

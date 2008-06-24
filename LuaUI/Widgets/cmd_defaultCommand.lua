@@ -11,6 +11,8 @@ function widget:GetInfo()
 end
 
 local CMD_FIGHT = CMD.FIGHT
+local CMD_ATTACK = CMD.ATTACK
+local CMD_AREA_ATTACK = 39954 -- as set in areaattack.lua gadget
 local defCom = {}
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -18,6 +20,8 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		local ud = UnitDefs[unitDefID]
 		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
 			defCom[unitDefID] = CMD_FIGHT
+		elseif (ud.speed == 0 and ud.customParams.canareaattack) then
+				defCom[unitDefID] = CMD_AREA_ATTACK
 		end
 	end
 end
