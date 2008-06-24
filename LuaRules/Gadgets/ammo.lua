@@ -94,8 +94,8 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
 end
 
 local function CalcReload(ammoLevel, newReload, defaultReload)
-	newReload = ((((0-1)*lowAmmoLevel)/defaultReload)*ammoLevel+(2*defaultReload))
-	print("lowAmmoLevel:", lowAmmoLevel)
+	newReload = ((((0-1)*1)/defaultReload)*ammoLevel+(2*defaultReload))
+	--print("lowAmmoLevel:", lowAmmoLevel)
 	print("defaultReload:", defaultReload)
 	print("ammoLevel:", ammoLevel)
 	print("newReload:", newReload)
@@ -106,7 +106,7 @@ local function ProcessWeapon(unitID)--, weaponNum)
   local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
 	local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
-  local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
+  --local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	local weaponFired = false
 	
 	for weapNum = 0, weaponsWithAmmo - 1 do
@@ -119,7 +119,7 @@ local function ProcessWeapon(unitID)--, weaponNum)
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if (weaponFired) then
 	--if (CheckReload(unitID, reloadFrame, weaponNum)) then	
-		if (ammoLevel == 2) then
+		if (ammoLevel == 1) then
 			savedFrames[unitID] = reloadFrame
 			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
 			SetUnitWeaponState(unitID, 0, {reloadtime = 99999, reloadstate = 99999})
@@ -243,7 +243,7 @@ function gadget:GameFrame(n)
     for unitID in pairs(vehicles) do
 	  local unitDefID = GetUnitDefID(unitID)
 	  local ammoLevel = vehicles[unitID].ammoLevel
-	  local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
+	  --local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	  --local maxAmmo = UnitDefs[unitDefID].customParams.maxAmmo
 	
     
@@ -252,7 +252,7 @@ function gadget:GameFrame(n)
         ProcessWeapon(unitID)--, weaponNum)
       --end
       Resupply(unitID)
-      SendToUnsynced("ammo", unitID, ammoLevel, lowAmmoLevel)
+      SendToUnsynced("ammo", unitID, ammoLevel)
     end
     
 

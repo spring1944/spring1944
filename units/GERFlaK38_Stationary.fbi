@@ -66,9 +66,9 @@
 	}
 	[customParams]
 	{
-		maxammo=60;
+		maxammo=30;
 		weaponswithammo=2;
 		lowammolevel=8;
-		weaponcost=10;
+		weaponcost=20;
 	}
 }
