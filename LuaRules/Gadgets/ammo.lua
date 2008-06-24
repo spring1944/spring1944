@@ -46,6 +46,7 @@ local GetUnitsInCylinder = Spring.GetUnitsInCylinder
 local GetUnitPosition    = Spring.GetUnitPosition
 local GetUnitSeparation  = Spring.GetUnitSeparation
 local GetUnitDefID       = Spring.GetUnitDefID
+local GetUnitAllyTeam		 = Spring.GetUnitAllyTeam
 
 
 --------------------------------------------------------------------------------
@@ -141,13 +142,17 @@ end
 local function FindSupplier(vehicleID)
   local closestSupplier
   local closestDistance = math.huge
+	local allyTeam = GetUnitAllyTeam(vehicleID)
   
   for supplierID in pairs(ammoSuppliers) do
-    local separation  = GetUnitSeparation(vehicleID, supplierID, true)
-    if (separation < closestDistance) then
-      closestSupplier = supplierID
-      closestDistance = separation
-    end
+		local supAllyTeam = GetUnitAllyTeam(supplierID)
+		if (allyTeam == supAllyTeam) then
+			local separation  = GetUnitSeparation(vehicleID, supplierID, true)
+			if (separation < closestDistance) then
+				closestSupplier = supplierID
+				closestDistance = separation
+			end
+		end
   end
   
   return closestSupplier, closestDistance

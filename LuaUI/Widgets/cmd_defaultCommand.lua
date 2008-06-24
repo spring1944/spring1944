@@ -16,7 +16,7 @@ local defCom = {}
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (not defCom[unitDefID]) then
 		local ud = UnitDefs[unitDefID]
-		if (ud.speed > 0 and ud.canAttack) then
+		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
 			defCom[unitDefID] = CMD_FIGHT
 		end
 	end

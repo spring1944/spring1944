@@ -67,5 +67,6 @@
 		weaponswithammo=1;
 		lowammolevel=3;
 		weaponcost=28;
+		defaultMove=1;
 	}
 }

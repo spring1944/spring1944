@@ -50,6 +50,7 @@
 	maxangledif1=25;
 	//weapon2=LeFH18HEFear;
 	weaponslaveto2=1;
+	canattack=0;
 
 	[sfxtypes]
 	{

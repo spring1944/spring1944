@@ -91,5 +91,6 @@
 		lowammolevel=4;
 		weaponcost=40;
 		canareaattack=1;
+		defaultMove=1;
 	}
 }
