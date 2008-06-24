@@ -109,16 +109,16 @@ local function ProcessWeapon(unitID)--, weaponNum)
   local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	local weaponFired = false
 	
-	for weapNum = 0, weaponsWithAmmo do
+	for weapNum = 0, weaponsWithAmmo - 1 do
 		local _, _, reloadFrame = GetUnitWeaponState(unitID, weapNum)
 		local weaponID = UnitDefs[unitDefID].weapons[weapNum+1].weaponDef
 		local reload = WeaponDefs[weaponID].reload
 		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
+		--if (weaponFired) then Spring.Echo ("Fire! " .. weapNum .. " " .. reloadFrame) end
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if (weaponFired) then
 	--if (CheckReload(unitID, reloadFrame, weaponNum)) then	
-		--Spring.Echo ("Fire! " .. weaponNum .. " " .. reloadFrame)
 		if (ammoLevel == 2) then
 			savedFrames[unitID] = reloadFrame
 			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
