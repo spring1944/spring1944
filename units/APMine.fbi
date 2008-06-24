@@ -34,7 +34,7 @@
 	weapon1=apminekill;
 	selfdestructas=APMine;
 	Kamikaze=1;
-
+	//kamikazedistance=24;
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=1;
 	buildinggrounddecalsizey=1;

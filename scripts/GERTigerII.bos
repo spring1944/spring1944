@@ -47,7 +47,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define RETURN_SPEED	[4] // speed at which the barrel returns
 
 // definitions for HitWeapId_S44
-#define ARMOUR		9456
+#define ARMOUR		14910
 #include "HitWeapId_S44.h"
 
 //effects

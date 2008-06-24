@@ -13,13 +13,14 @@
 	maxdamage=50;
 	buildcostmetal=1;
 	buildcostenergy=0;
-	buildtime=70;
+	buildtime=150;
 	footprintx=3;
 	footprintz=3;
 
 	hidedamage=1;
 	shownanoframe=0;
 	smoothanim=0;
+	levelground=0;
 
 	extractsmetal=0.001472;
 	energyuse=0;
