@@ -35,13 +35,13 @@ HitByWeaponId(z,x,id,damage)
 	if (Id<=300 || Id>700)
 		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
 	
-	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+	if (Id==301) //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
 		fear = fear + LittleFear;
-	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
+	if (Id==401) //small/med explosions: mortars, 75mm guns and under
 		fear = fear + MedFear;
-	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
+	if (Id==501) //large explosions: small bombs, 155mm - 88mm guns,
 		fear = fear + BigFear;
-	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
+	if (Id==601) //omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
 		fear = fear + MortalFear;
 
 	if (fear > FearLimit) fear = FearLimit; // put this line AFTER increasing fear var

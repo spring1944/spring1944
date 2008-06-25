@@ -36,17 +36,17 @@
 		default=0;
 		infantry=1900;
 		guns=400;
-		lightbuildings=25;
+		lightbuildings=1;
 		mines=0;
 		flag=0;
 		tanks=0;
-		armouredvehicles=50;
-		unarmouredvehicles=70;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 	}
 }
 [enfield_tfear]
 {
-	id=301;
+	id=401;
 	name=Supression from Scoped Enfield Fire;
 	rendertype=1;
 	turret=1;
@@ -60,7 +60,7 @@
 	range=1275;
 	reloadtime=8.5;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=175;
 	edgeeffectiveness=1;
 
 	collidefriendly=0;

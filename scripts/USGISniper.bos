@@ -126,7 +126,8 @@ AimWeapon1(heading, pitch)
 	signal 2;
 	set-signal-mask 2;
 	bAiming=1;
-	if (bMoving == 1 || IsPinned==1)
+		if (IsPinned==1) return 0;
+	if (bMoving == 1)
 	{
 		return (0);
 	}
@@ -230,6 +231,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
+	FearOk=1;
 	if (IsProne==1)
 	{
 		turn ruparm to x-axis <-95> speed <700>;
@@ -242,6 +244,7 @@ FireWeapon1()
 //		reloading=1;
 //		sleep ReloadPenalty;
 //		reloading=0;
+		FearOk=1;
 		return (1);
 	}
 	if (IsProne==0)
@@ -253,9 +256,9 @@ FireWeapon1()
 		turn ruparm to x-axis <20> speed <200>;
 		turn luparm to x-axis <-70> speed <200>;
 		sleep 50;
+		FearOk=1;
 		return (1);
 	}
-	FearOk=1;
 	return (0);
 
 }
@@ -272,12 +275,11 @@ QueryWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
-	if (bMoving==1 || FearOk==0) return (0);
-	if (bAiming)
+	if (bAiming && FearOk==1)
 	{
-	wait-for-turn pelvis around y-axis;
 	return (1);
 	}
+	return (0);
 }
 
 FireWeapon2()

@@ -36,19 +36,19 @@
 		default=0;
 		infantry=1500;
 		guns=400;
-		lightbuildings=25;
+		lightbuildings=1;
 		bunkers=25;
 		sandbags=25;
 		mines=0;
 		flag=0;
 		tanks=0;
-		armouredvehicles=50;
-		unarmouredvehicles=70;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 	}
 }
 [k98kscopefear]
 {
-	id=301;
+	id=401;
 	name=Supression from k98k sniper fire;
 	rendertype=1;
 	turret=1;
@@ -62,7 +62,7 @@
 	range=1240;
 	reloadtime=10;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=175;
 	edgeeffectiveness=1;
 
 	collidefriendly=0;

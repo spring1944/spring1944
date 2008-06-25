@@ -40,19 +40,19 @@
 		default=0;
 		infantry=200;
 		guns=100;
-		lightbuildings=25;
+		lightbuildings=1;
 		bunkers=25;
 		sandbags=25;
 		mines=0;
 		flags=0;
 		tanks=0;
-		armouredvehicles=25;
-		unarmouredvehicles=50;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 	}
 }
 [m1903springfieldfear]
 {
-	id=301;
+	id=401;
 	name=Supression;
 	rendertype=1;
 	turret=1;
@@ -64,7 +64,7 @@
 	range=1275;
 	reloadtime=10;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=175;
 	edgeeffectiveness=1;
 
 	collidefriendly=0;

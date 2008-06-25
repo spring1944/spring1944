@@ -19,16 +19,16 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (not defCom[unitDefID]) then
 		local ud = UnitDefs[unitDefID]
 		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
-			defCom[unitDefID] = CMD_FIGHT
+			--defCom[unitDefID] = CMD_FIGHT
 		elseif (ud.speed == 0 and ud.customParams.canareaattack) then
 				defCom[unitDefID] = CMD_AREA_ATTACK
 		end
 	end
 end
 
---[[function widget:Initialize()
+function widget:Initialize()
 	WG.activeCommand=0 -- needed??
-end]]
+end
 
 function widget:DefaultCommand()
 	local type = false

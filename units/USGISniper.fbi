@@ -55,8 +55,7 @@
 	weaponmaindir1=0 0 1;
 	maxangledif1=170;
 	weapon2=M1903SpringfieldFear;
-	onlytargetcategory2=NFLAG;
-	weaponslaveto2=1;
+	onlytargetcategory2=INFTARG;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
