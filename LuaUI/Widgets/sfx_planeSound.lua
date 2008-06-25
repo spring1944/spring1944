@@ -40,13 +40,13 @@ function widget:DrawWorld()
            			local zr = zd/range
            			local dotp = xr*xv + yr*yv + zr*zv
 
-        			--local sound = 'sounds/'..UnitDefs[type]["customParams"]["enginesound"]..math.floor(UnitDefs[type]["customParams"]["enginesoundnr"]/2*(30*dotp+UnitDefs[type]["speed"])/UnitDefs[type]["speed"])..".wav"
-        			if(math.floor((UnitDefs[type]["customParams"]["enginesoundnr"]-2)/2*(1-2*math.random()+dotp+speed)/speed+2) > 0 and
+        			local sound = 'sounds/engine/'..UnitDefs[type]["customParams"]["enginesound"]..math.floor(UnitDefs[type]["customParams"]["enginesoundnr"]/2*(30*dotp+UnitDefs[type]["speed"])/UnitDefs[type]["speed"])..".wav"
+        			--[[if(math.floor((UnitDefs[type]["customParams"]["enginesoundnr"]-2)/2*(1-2*math.random()+dotp+speed)/speed+2) > 0 and
 					math.floor((UnitDefs[type]["customParams"]["enginesoundnr"]-2)/2*(1-2*math.random()+dotp+speed)/speed+2) <= UnitDefs[type]["customParams"]["enginesoundnr"]+0) then
-						local sound = 'sounds/engine/'..UnitDefs[type]["customParams"]["enginesound"]..math.floor((UnitDefs[type]["customParams"]["enginesoundnr"]-2)/2*(1-2*math.random()+dotp+speed)/speed+2)..".wav"
+						local sound = 'sounds/engine/'..UnitDefs[type]["customParams"]["enginesound"]..math.floor((UnitDefs[type]["customParams"]["enginesoundnr"]-2)/2*(1-2*math.random()+dotp+speed)/speed+2)..".wav"]]
 						Spring.PlaySoundFile(sound,3,xp,yp,zp)
 						--Spring.Echo(sound)
-					end
+					--end
 				end
 			end
 		end

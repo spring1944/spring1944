@@ -2,7 +2,7 @@
 {
 	unitname=ger_platoon_scout;
 	objectname=MortarShell.S3O;
-	buildpic=GERBeobInf.png;
+	buildpic=GERObserv.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	

@@ -173,7 +173,7 @@ local squadDefs = {
 	["ger_platoon_sniper"] = 
 	{
 		"gersniper",
-		"gerbeobinf",
+		"gerobserv",
 	},
 	
 	["ger_platoon_mortar"] = 
@@ -192,9 +192,9 @@ local squadDefs = {
 	
 	["ger_platoon_scout"] = 
 	{
-		"gerbeobinf",
-		"gerbeobinf",
-		"gerbeobinf",
+		"gerobserv",
+		"gerobserv",
+		"gerobserv",
 	},  
 	
 	 -----------------------------

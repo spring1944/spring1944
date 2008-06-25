@@ -1,7 +1,7 @@
 [unitinfo]
 {
-	unitname=GERBeobInf;
-	objectname=GERBeobInf.S3O;
+	unitname=GERObserv;
+	objectname=GERObserv.S3O;
 	corpse=GERsoldier_dead;
 	icontype=officer;
 	soundcategory=GERInf;
