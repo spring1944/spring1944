@@ -220,7 +220,7 @@
 		canbuild3=ger_platoon_hq;
 	}
 
-	[GERPanzerGren]
+	[gerrifle]
 	{
 	canbuild1=GERFlag;
 	}

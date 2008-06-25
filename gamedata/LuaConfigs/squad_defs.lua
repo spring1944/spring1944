@@ -123,28 +123,28 @@ local squadDefs = {
 
 	["ger_platoon_hq"] =
 	{
-		"gerpanzergren",
+		"gerrifle",
 		"germp40",
-		"gerpanzergren",
-		"gerpanzergren",
+		"gerrifle",
+		"gerrifle",
 		"germp40",
-		"gerpanzergren",
+		"gerrifle",
 	},
 	
 	["ger_platoon_rifle"] = 
 	{
 		"germp40",
 		"germp40",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
-		"gerpanzergren",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
+		"gerrifle",
 	},
 	
 	["ger_platoon_assault"] = 

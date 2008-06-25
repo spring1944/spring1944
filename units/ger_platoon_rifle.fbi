@@ -2,7 +2,7 @@
 {
 	unitname=ger_platoon_rifle;
 	objectname=MortarShell.S3O;
-	buildpic=GERPanzerGren.png;
+	buildpic=GERRifle.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	

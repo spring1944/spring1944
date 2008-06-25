@@ -1,7 +1,7 @@
 [unitinfo]
 {
-	unitname=GERPanzerGren;
-	objectname=GERPanzerGren.S3O;
+	unitname=GERRifle;
+	objectname=GERRifle.S3O;
 	corpse=GERSoldier_dead;
 	icontype=rifle;
 	soundcategory=GERInf;
