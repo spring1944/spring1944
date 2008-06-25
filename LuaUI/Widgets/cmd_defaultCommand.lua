@@ -1,10 +1,10 @@
 function widget:GetInfo()
 	return {
-		name = "1944 defaultCommand",
-		desc = "Gives combat units Fight command as default",
+		name = "1944 Default Commands",
+		desc = "Allows using the rightclick for some commands",
 		author = "KDR_11k (David Becker), Craig Lawrence",
 		date = "2008-06-24",
-		license = "None",
+		license = "Public Domain",
 		layer = 1,
 		enabled = true
 	}
@@ -20,7 +20,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		local ud = UnitDefs[unitDefID]
 		-- mobile combat units except SPGs, AT guns, etc
 		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
-			--defCom[unitDefID] = CMD_FIGHT
+			defCom[unitDefID] = CMD_FIGHT
 		-- Deployed howitzers with area attack
 		elseif (ud.speed == 0 and ud.customParams.canareaattack) then
 				defCom[unitDefID] = CMD_AREA_ATTACK
@@ -38,9 +38,26 @@ end
 function widget:DefaultCommand()
 	local type = false
 	for _,u in ipairs(Spring.GetSelectedUnits()) do
-		if defCom[Spring.GetUnitDefID(u)] and type == false then
-			type=defCom[Spring.GetUnitDefID(u)]
-		elseif type ~= defCom[Spring.GetUnitDefID(u)] then
+		local unitDefCom = defCom[Spring.GetUnitDefID(u)]
+		if unitDefCom and type == false then
+			-- only default to fight for groups over 5
+			if unitDefCom == CMD_FIGHT then 
+				if Spring.GetSelectedUnitsCount() > 5 then
+					local mx, my = Spring.GetMouseState()
+					local s,t = Spring.TraceScreenRay(mx, my)
+					-- apply ATTACK if cursor over a unit
+					if s == "unit" then
+						type = CMD_ATTACK
+					-- apply default otherwise
+					else
+						type=unitDefCom
+					end
+				end
+			-- other default commands should always be applied
+			else
+				type=unitDefCom
+			end
+		elseif type ~= unitDefCom then
 			type=nil
 		end
 	end
