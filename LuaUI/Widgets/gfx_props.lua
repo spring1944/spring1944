@@ -1,6 +1,6 @@
 function widget:GetInfo()
   return {
-    name      = "Spring 1944 Propellers",
+    name      = "1944 Propeller FX",
     desc      = "Draws motion-blurred propellers on aircraft",
     author    = "Zpock",
     date      = "19th january, 2008",

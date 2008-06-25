@@ -5,3 +5,17 @@ If you need to know the details of the licenses, and your rights and responsibil
 
 If any of the material found in this archive that is licensed under the Creative Common license is reused,
 please credit the original author in some recognizable way (such as a "credits & info.txt" as seen in this archive).
+
+All Lua scripts made by Maelstrom included in Star wars
+Spring, unless otherwise stated, are licensed under the
+Creative Commons Attribution-Noncommercial 3.0 License.
+To view a copy of this license, visit:
+
+http://creativecommons.org/licenses/by-nc/3.0/
+
+Please credit any work used by stating:
+"A/Some Lua script(s) in this game made by Maelstrom"
+in an authors/readme/ect file.
+
+You are free to modify Maelstroms scripts freely, as
+long as credit is given for what is used.

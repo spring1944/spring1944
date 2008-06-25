@@ -1,6 +1,6 @@
 function widget:GetInfo()
   return {
-    name      = "Spring 1944 Aircraft Sounds",
+    name      = "1944 Aircraft Sounds",
     desc      = "Advanced doppler-sound fx for aircraft",
     author    = "Zpock",
     date      = "19th january, 2008",

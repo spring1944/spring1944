@@ -13,7 +13,7 @@
 
 function widget:GetInfo()
   return {
-    name      = "S44TeamCircleOptimized",
+    name      = "1944 Team Circles",
     desc      = "Shows a team color circle around selected units",
     author    = "trepan",
     date      = "Apr 16, 2007",
