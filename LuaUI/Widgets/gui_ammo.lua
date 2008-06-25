@@ -3,13 +3,13 @@
 
 function widget:GetInfo()
   return {
-    name      = "Ammo Icons",
+    name      = "1944 Ammo Icons",
     desc      = "Shows a ammo icon next to units",
     author    = "FLOZi, adapted from code by trepan (idea quantum,jK)",
     date      = "May, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 5,
-    enabled   = false  -- loaded by default?
+    enabled   = true  -- loaded by default?
   }
 end
 
@@ -50,8 +50,8 @@ local ammoIcons = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {} }
 
 local myAllyTeamID = 666
 
-local iconsize   = 33
-local iconoffset = 14
+local iconsize   = 16 --33
+local iconoffset = 4
 local ammoTexBase = 'LuaUI/Images/Ammo/'
 local ammoTextures = {
   [0] = nil,
@@ -102,7 +102,7 @@ function SetUnitAmmoIcon(unitID)
     ranks[xp][unitID] = true
   end--]]
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo",  ammoLevel)
-	local newAmmo = GetUnitRulesParam(unitID, "ammo",  newAmmo)
+	--[[local newAmmo = GetUnitRulesParam(unitID, "ammo",  newAmmo)
 	if ((ammoLevel ~= nil) and (newAmmo ~= nil)) then
 		--if (newAmmo > ammoLevel) then
 			local ammoLevel = newAmmo
@@ -110,7 +110,10 @@ function SetUnitAmmoIcon(unitID)
 	end
 	--Spring.Echo(newAmmo)
 	--Spring.Echo(ammoLevel)
-	--Spring.Echo(maxAmmo)
+	--Spring.Echo(maxAmmo)]]
+	
+	local maxAmmo = ud.customParams.maxammo
+	
 	if (not ammoLevel) then
 	  unitHeights[unitID] = nil
     return
@@ -118,34 +121,38 @@ function SetUnitAmmoIcon(unitID)
 	local ammoIconType = 0
 	if (ammoLevel > (0.66*maxAmmo)) then -- Normal ammo
 		ammoIconType = 1
-		ammoIcons[1] = { [0] = {}, [1] = {1}, [2] = {}, [3] = {}, [4] = {} }
+		--[[ammoIcons[1] = { [0] = {}, [1] = {1}, [2] = {}, [3] = {}, [4] = {} }
 		ammoIcons[2] = nil
 		ammoIcons[3] = nil
-		ammoIcons[4] = nil
+		ammoIcons[4] = nil]]
 	end
 	if ((ammoLevel <= (0.66*maxAmmo)) and (ammoLevel > (0.33*maxAmmo))) then -- reduced ammo
 		ammoIconType = 2
-		ammoIcons[1] = nil
+		--[[ammoIcons[1] = nil
 		ammoIcons[2] = { [0] = {}, [1] = {}, [2] = {1}, [3] = {}, [4] = {} }
 		ammoIcons[3] = nil
-		ammoIcons[4] = nil
+		ammoIcons[4] = nil]]
 	end
 	if ((ammoLevel <= (0.33*maxAmmo)) and (ammoLevel > 0)) then --still more reduced ammo
 		ammoIconType = 3
-		ammoIcons[1] = nil
+		--[[ammoIcons[1] = nil
 		ammoIcons[2] = nil
 		ammoIcons[3] = { [0] = {}, [1] = {}, [2] = {}, [3] = {1}, [4] = {} }
-		ammoIcons[4] = nil
+		ammoIcons[4] = nil]]
 	end	
 	if (ammoLevel <= 0) then -- no ammo
 		ammoIconType = 4
-		ammoIcons[1] = nil
+		--[[ammoIcons[1] = nil
 		ammoIcons[2] = nil
 		ammoIcons[3] = nil
-		ammoIcons[4] = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {1} }
+		ammoIcons[4] = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {1} }]]
 	end
 	--Spring.Echo(ammoIconType)
 	unitHeights[unitID] = ud.height + iconoffset
+	
+	for i = 1, 4 do
+		ammoIcons[i][unitID] = nil
+	end
 	ammoIcons[ammoIconType][unitID] = true
 end
 
@@ -154,7 +161,7 @@ end
 
 local timeCounter = math.huge -- force the first update
 
-function widget:Update(deltaTime)
+--function widget:Update(deltaTime)
   --[[if (timeCounter < update) then
     timeCounter = timeCounter + deltaTime
     return
@@ -162,10 +169,13 @@ function widget:Update(deltaTime)
 
   timeCounter = 0--]]
 
-  -- just update the units
-  for unitID in pairs(unitHeights) do
-    SetUnitAmmoIcon(unitID)
-  end
+function widget:GameFrame(n)
+	if (n % (3*30) < 0.1) then
+		-- just update the units
+		for unitID in pairs(unitHeights) do
+			SetUnitAmmoIcon(unitID)
+		end
+	end
 end
 
 
@@ -232,7 +242,8 @@ end
 local function DrawUnitFunc(yshift)
   glTranslate(0,yshift,0)
   glBillboard()
-  glTexRect(-iconsize+10.5, -9, 10.5, iconsize-9)
+  --glTexRect(-iconsize+10.5, -9, 10.5, iconsize-9)
+	glTexRect(-iconsize-10.5, -9, -10.5, iconsize-9)
 end
 
 
@@ -272,6 +283,17 @@ function widget:DrawWorld()
         glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
       end
   end
+	
+	--[[for i = 1, 4 do
+		--if (next(ammoIcons[i])) then
+		if (ammoIcons[i] ~= nil) then
+			glTexture( ammoTextures[i] )
+			for unitID,_ in pairs(ammoIcons[i]) do
+				glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
+			end
+		end	
+	end]]
+	
   glTexture(false)
 
   glAlphaTest(false)

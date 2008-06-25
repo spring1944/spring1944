@@ -47,7 +47,7 @@ local GetUnitPosition    = Spring.GetUnitPosition
 local GetUnitSeparation  = Spring.GetUnitSeparation
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitAllyTeam		 = Spring.GetUnitAllyTeam
-
+local SetUnitRulesParam  = Spring.SetUnitRulesParam
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -129,6 +129,7 @@ local function ProcessWeapon(unitID)--, weaponNum)
 		end
     if (ammoLevel > 0) then
       vehicles[unitID].ammoLevel = ammoLevel - 1
+			SetUnitRulesParam(unitID, "ammo",  ammoLevel - 1)
 	  --SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload})
 	 	--if (reloadFrame > 0 and savedFrames[unitID]) then
 			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
@@ -205,7 +206,7 @@ local function Resupply(unitID)
 	end
 	
   vehicles[unitID].ammoLevel = newAmmo
-	
+	SetUnitRulesParam(unitID, "ammo",  newAmmo)
 end
     
     
@@ -214,7 +215,8 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local ud = UnitDefs[unitDefID]
-  if (ud.customParams.maxammo)               then
+  if (ud.customParams.maxammo) then
+		SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
   --  print("add vehicle", ud.customParams.maxammo)
     vehicles[unitID] = {
       ammoLevel = tonumber(ud.customParams.maxammo),
@@ -257,7 +259,7 @@ function gadget:GameFrame(n)
         ProcessWeapon(unitID)--, weaponNum)
       --end
       Resupply(unitID)
-      SendToUnsynced("ammo", unitID, ammoLevel)
+      --SendToUnsynced("ammo", unitID, ammoLevel)
     end
     
 
@@ -270,7 +272,7 @@ end
 else
 --	UNSYNCED?
 ---------------------------------------------------------------------------------
-local WhiteStr   = "\255\255\255\255"
+--[[local WhiteStr   = "\255\255\255\255"
 local RedStr     = "\255\255\001\001"
 
 
@@ -329,7 +331,7 @@ function gadget:DrawScreen(dt)
           -- gl.Text(WhiteStr.."x", sx, sy, 10, "c")
 		  end
         end
-      end
+      end]]
 	
 
     --[[ for supplierID, supplyRange in pairs(suppliers) do
@@ -343,8 +345,8 @@ function gadget:DrawScreen(dt)
 	   gl.DrawGroundCircle(x,y,z,supplyRange, 20)
 	   gl.Color(0,0,1,1)
 	   end
-	 end]]--
-	end
+	 end]]
+--[[	end
  end
  )
  
@@ -356,12 +358,12 @@ function gadget:DrawScreen(dt)
 
   function RecvFromSynced(...)
     if (arg[2] == "ammo") then
-	 units[arg[3]] = tonumber(arg[4])
-	 --units[arg[3]].lowAmmoLevel = tonumber(arg[5])
+	 units[arg[3] ] = tonumber(arg[4])
+	 --units[arg[3] ].lowAmmoLevel = tonumber(arg[5])
     end
 	--if (arg[2] == "supplyinfo") then
-    -- suppliers[arg[3]] = tonumber(arg[4]) 
+    -- suppliers[arg[3] ] = tonumber(arg[4]) 
 	--end	
-  end
+  end]]
 	
-end 
+end
