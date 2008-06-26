@@ -3,7 +3,7 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, CannonFearOk;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk;
 
 #include "inf_suppressionvars.h"
 
@@ -205,7 +205,7 @@ FireWeapon1()
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
-	CannonFearOk=1;
+	FearOk=1;
 	CREW_RELOADING
 	set ACTIVATION to 1;
 	sleep VISIBLE_PERIOD;
@@ -224,7 +224,7 @@ QueryWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
-	if (CannonFearOk==1)
+	if (FearOk==1)
 	{
 	wait-for-turn carriage around y-axis;
 	return (1);
@@ -234,7 +234,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-CannonFearOk=0;
+FearOk=0;
 return (0);
 }
 

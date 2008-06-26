@@ -1,16 +1,17 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, mantlet, barrel, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
-piece brakeright, brakeleft, flare;
+piece  base, mantlet, barrel, flare, brakeright, brakeleft;
+piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, FearOk;
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
-#define SIG_AIM_2	4 // AA MG
+#define SIG_AIM2	4 // Fear
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
@@ -32,7 +33,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #include "RockUnit_Set.h"
 
 // definitions for HitWeapId_S44
-#define ARMOUR		8000
+#define ARMOUR		9764
 #include "HitWeapId_S44.h"
 
 // definitions for turret movement
@@ -43,8 +44,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 
 // definitions for weapons behaviour
 #define RELOAD		9000 // time in milliseconds between shots
-#define RECOIL		[-2.5] // distance to recoil the gun
-#define RETURN_SPEED	[3.5] // speed at which the barrel returns
+#define RECOIL		[-3] // distance to recoil the gun
+#define RETURN_SPEED	[3] // speed at which the barrel returns
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -53,8 +54,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define placeholder_EFFECT04 1024+4
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
-#define LARGE_Muzzleflash	1024+7
-#define LARGE_MuzzleDust	1024+8
+#define XLARGE_Muzzleflash	1024+7
+#define XLARGE_MuzzleDust	1024+8
 #define MuzzleBrakeSmoke	1024+9
 
 treads() 
@@ -171,9 +172,9 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	rock = TRUE; // firing a heavy weapon
-	
-	emit-sfx LARGE_Muzzleflash from flare;
-	emit-sfx LARGE_MuzzleDust from flare;
+	FearOk=1;
+	emit-sfx XLARGE_Muzzleflash from flare;
+	emit-sfx XLARGE_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 
@@ -187,6 +188,36 @@ FireWeapon1()
 	set ACTIVATION to 1;
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
+	return 0;
+}
+
+// Weapon 3 - Main cannon fear
+QueryWeapon3(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = mantlet;
+}
+
+AimWeapon3(heading, pitch)
+{	
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	if (FearOk==1)
+	{
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
+	return (1);
+	}
+	return (0);
+}
+
+FireWeapon3()
+{
+	FearOk=1;
 	return 0;
 }
 
@@ -224,8 +255,8 @@ FireWeapon2()
 {
 	rock = TRUE; // firing a heavy weapon
 	
-	emit-sfx LARGE_Muzzleflash from flare;
-	emit-sfx LARGE_MuzzleDust from flare;
+	emit-sfx XLARGE_Muzzleflash from flare;
+	emit-sfx XLARGE_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 
@@ -240,6 +271,26 @@ FireWeapon2()
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
 	return 0;
+}
+
+AimFromWeapon4(piecenum) //fear shield
+{
+	piecenum = base;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon4(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon4()
+{
+return (0);
 }
 
 // Weapon 3 - AA MG

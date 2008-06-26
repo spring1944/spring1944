@@ -517,6 +517,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
+MGFearOk=0;
 return (0);
 }
 

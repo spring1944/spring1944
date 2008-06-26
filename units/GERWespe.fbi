@@ -62,12 +62,11 @@
 	weapon1=leFH18HE;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon4=MG42;
-	onlytargetcategory4=AIR;
-	weapon5=.50calproof;
-	weapon6=LeFH18HEFear;
-	weaponslaveto6=1;
-	weapon8=TankFearShield;
+	weapon2=MG42;
+	onlytargetcategory2=AIR;
+	weapon3=.50calproof;
+	weapon4=LeFH18HEFear;
+	weaponslaveto4=1;
 
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;

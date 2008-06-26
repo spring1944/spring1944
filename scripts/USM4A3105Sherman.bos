@@ -202,17 +202,17 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon6(piecenum) //Main gun HE fear
+AimFromWeapon5(piecenum) //Main gun HE fear
 {
 	piecenum = turret;
 }
 
-QueryWeapon6(piecenum)
+QueryWeapon5(piecenum)
 {
 	piecenum = flare;
 }
 
-AimWeapon6(heading, pitch)
+AimWeapon5(heading, pitch)
 {
 	if (CannonFearOk==1)
 	{
@@ -222,71 +222,24 @@ AimWeapon6(heading, pitch)
 return 0;
 }
 
-FireWeapon6()
+FireWeapon5()
 {
 CannonFearOk=0;
 return (0);
 }
 
-// Weapon 2 - Main cannon, AP
+// Weapon 2 - Coax MG
 QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon2(heading, pitch)
-{	
-	aim2 = TRUE;
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-
-	mainHead = heading;
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
-	wait-for-turn mantlet around x-axis;
-	
-	start-script RestoreAfterDelay();
-	aim2 = FALSE;
-	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	return 1;
-}
-
-FireWeapon2()
-{
-	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX - done!
-	emit-sfx MEDIUM_MUZZLEFLASH from flare;
-	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	// barrel recoil
-	move barrel to z-axis RECOIL now;
-	sleep 200;
-	move barrel to z-axis 0 speed RETURN_SPEED;
-	
-	rock = FALSE;
-	start-script Reload(); // start reload timer after firing
-	return 0;
-}
-
-// Weapon 3 - Coax MG
-QueryWeapon3 (piecenum)
 	{
 	piecenum = coaxFlare;
 	}
 
-AimFromWeapon3 (piecenum)
+AimFromWeapon2(piecenum)
 	{
 	piecenum = turret;
 	}
 
-AimWeapon3(heading, pitch)
+AimWeapon2(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -306,7 +259,7 @@ AimWeapon3(heading, pitch)
 	return (1);
 	}
 
-FireWeapon3()
+FireWeapon2()
 	{
 	rock = FALSE;
 	
@@ -330,17 +283,17 @@ FireWeapon3()
 	return(0);
 	}
 	
-AimFromWeapon7(piecenum) //Coax fear 
+AimFromWeapon6(piecenum) //Coax fear 
 {
 	piecenum = turret;
 }
 
-QueryWeapon7(piecenum)
+QueryWeapon6(piecenum)
 {
 	piecenum = coaxflare;
 }
 
-AimWeapon7(heading, pitch)
+AimWeapon6(heading, pitch)
 {
 if (MGFearOk==1)
 {
@@ -350,24 +303,24 @@ return (1);
 return 0;
 }
 
-FireWeapon7()
+FireWeapon6()
 {
 MGFearOk=0;
 return (0);
 }
 
-// Weapon 4 - AA MG
-QueryWeapon4 (piecenum)
+// Weapon 3 - AA MG
+QueryWeapon3(piecenum)
 	{
 	piecenum = aaFlare;
 	}
 
-AimFromWeapon4 (piecenum)
+AimFromWeapon3(piecenum)
 	{
 	piecenum = aaGun;
 	}
 
-AimWeapon4(heading, pitch)
+AimWeapon3(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -382,7 +335,7 @@ AimWeapon4(heading, pitch)
 	return (1);
 	}
 
-FireWeapon4()
+FireWeapon3()
 	{
 	rock = FALSE;
 	
@@ -406,22 +359,22 @@ FireWeapon4()
 	return(0);
 	}
 
-AimFromWeapon5(piecenum) //bulletproof effect
+AimFromWeapon4(piecenum) //bulletproof effect
 {
 	piecenum = base;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon4(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon4(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon5()
+FireWeapon4()
 {
 return (0);
 }

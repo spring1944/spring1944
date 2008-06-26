@@ -60,16 +60,16 @@
 	weapon1=m4105mmhe;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon3=M1919A4Browning;
-	onlytargetcategory3=INFTARG;
-	weapon4=M2Browning;
-	onlytargetcategory4=AIR;
-	weapon5=.50calproof;
-	weapon6=m4105mmhefear;
-	weaponslaveto6=1;
-	weapon7=M1919A4BrowningFear;
-	onlytargetcategory7=INFTARG;
-	weaponslaveto7=3;
+	weapon2=M1919A4Browning;
+	onlytargetcategory2=INFTARG;
+	weapon3=M2Browning;
+	onlytargetcategory3=AIR;
+	weapon4=.50calproof;
+	weapon5=m4105mmhefear;
+	weaponslaveto5=1;
+	weapon6=M1919A4BrowningFear;
+	onlytargetcategory6=INFTARG;
+	weaponslaveto6=3;
 	weapon8=TankFearShield;
 
 	weapon9=Small_Tracer;

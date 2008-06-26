@@ -62,14 +62,13 @@
 	maxangledif1=15;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon4=M2Browning;
-	onlytargetcategory4=AIR;
-	weapon5=.50calproof;
-	weapon6=m2hefear;
-	weaponslaveto6=1;
-	weapon8=TankFearShield;
+	weapon2=M2Browning;
+	onlytargetcategory2=AIR;
+	weapon3=.50calproof;
+	weapon4=m2hefear;
+	weaponslaveto4=1;
 	
-	weapon9=Medium_Tracer;
+	weapon6=Medium_Tracer;
 
 	[sfxtypes]
 	{

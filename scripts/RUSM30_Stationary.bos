@@ -12,7 +12,8 @@ static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit,
 
 // Signal definitions
 #define SIG_AIM1	2
-#define SIG_DEPLOY	4
+#define SIG_AIM2	4
+#define SIG_DEPLOY	8
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -202,6 +203,7 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
+	FearOk=1;
 	get DO_SEISMIC_PING(15);
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
@@ -209,28 +211,31 @@ FireWeapon1()
 	CREW_RELOADING
 }
 //Weapon 2 122mm HE Fear
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
 
 AimFromWeapon2(piecenum)
 {
 	piecenum = barrel;
 }
 
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
 AimWeapon2(heading, pitch)
 {
-	if (fear>0 || FearOk==0) return 0;
+	if (FearOk==1)
+	{
 	wait-for-turn carriage around y-axis;
-	wait-for-turn carriage around x-axis;
-	return 1;
+	return (1);
+	}
+	return(0);
 }
 
 FireWeapon2()
 {
 FearOk=0;
-return 0;
+return (0);
 }
 
 

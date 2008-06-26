@@ -6,7 +6,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 
 static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
-walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned;// reloading;
+walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, FearOk;// reloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -339,6 +339,7 @@ FireWeapon1()
 	set CLOAKED to FALSE;
 	if (IsProne==1)
 	{
+		FearOk=1;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
@@ -416,6 +417,7 @@ FireWeapon1()
 	
 	if (IsProne==0)
 	{
+		FearOk=1;
 			emit-sfx MG_MUZZLEFLASH from flare;
  
 		turn ruparm to x-axis <-75> speed <700>;
@@ -502,7 +504,7 @@ QueryWeapon2(piecenum)
 AimWeapon2(heading, pitch)
 {
 	if (bMoving==1) return (0);
-	if (bAiming)
+	if (FearOk==1)
 	{
 	wait-for-turn pelvis around y-axis;
 	return (1);
@@ -512,6 +514,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
+FearOk=0;
 return (0);
 }
 

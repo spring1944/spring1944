@@ -6,7 +6,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, shell_eject;
 
 static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
-walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, FearOk;// reloading;
+walk_speed, fear, nade_active, nade_speed, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, FearOk;// reloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -31,6 +31,12 @@ walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, FearOk
 
 WeaponReady() //attentshaun!
 {
+
+	while (nade_active == 1)
+	{
+	sleep 10000;
+	}
+	
 	//if (InAimStance==1) return (0);
 	show gun;
     turn ruparm to x-axis <-60> speed <40>*RUN_SPEED;
@@ -78,6 +84,8 @@ Create()
 	IsProne=0;
 	InAimStance=0;
 	IsPinned=0;
+	nade_speed=4;
+	nade_active=0;
 	hide flare;
 	hide shell_eject;
 //	reloading=0;
@@ -196,7 +204,7 @@ AimWeapon1(heading, pitch)
 	signal 2;
 	set-signal-mask 2;
 
-	if (bMoving == 1 || IsPinned==1) return (0);
+	if (bMoving == 1 || IsPinned==1 || nade_active==1) return (0);
 	bAiming=1;
 	
 /*	if (reloading==1)
@@ -367,7 +375,8 @@ FireWeapon1()
 			
 /*		reloading=1;
 		sleep ReloadPenalty;
-		reloading=0;*/		
+		reloading=0;*/	
+		FearOk=1;	
 		return (1);
 	}
 	
@@ -404,7 +413,7 @@ FireWeapon1()
 	FearOk=1;
 	return (0);
 }
- 
+
 AimFromWeapon2(piecenum)
 {
 	piecenum = torso;
@@ -412,13 +421,64 @@ AimFromWeapon2(piecenum)
 
 QueryWeapon2(piecenum)
 {
-	piecenum = flare;
+	piecenum = gun;
 }
 
 AimWeapon2(heading, pitch)
 {
-	if (bMoving==1 || FearOk==0) return (0);
-	if (bAiming)
+	signal 4;
+	set-signal-mask 4;
+	if (bMoving) return 0;
+	turn pelvis to y-axis heading - <30> now;
+	return (1);
+}
+
+#include "Inf_grenade.h"
+
+FireWeapon2(heading) //grenaaaaade!
+{
+	if (IsProne==0)
+	{
+	nade_active = 1;
+	start-script NadeAnim();
+	nade_active = 0;
+	call-script WeaponReady();
+	}
+	if (IsProne==1)
+	{
+	nade_active=1;
+	turn luparm to x-axis <0> speed <100>*NADE_SPEED;
+	turn luparm to y-axis <80> speed <100>*NADE_SPEED;
+	turn luparm to z-axis <0> speed <100>*NADE_SPEED;
+	wait-for-turn luparm around x-axis;
+	turn luparm to x-axis <-160> speed<200>*NADE_SPEED;
+	
+	wait-for-turn luparm around x-axis;
+		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
+		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
+		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
+	nade_active=0;
+	return (1);
+	}
+	return (0);
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = torso;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = flare;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal 8;
+	set-signal-mask 8;
+	if (bMoving==1) return (0);
+	if (FearOk==1)
 	{
 	wait-for-turn pelvis around y-axis;
 	return (1);
@@ -426,7 +486,7 @@ AimWeapon2(heading, pitch)
 	return(0);
 }
 
-FireWeapon2()
+FireWeapon3()
 {
 FearOk=0;
 return (0);

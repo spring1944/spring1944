@@ -191,17 +191,17 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon6(piecenum) //Main gun HE fear
+AimFromWeapon4(piecenum) //Main gun HE fear
 {
 	piecenum = base;
 }
 
-QueryWeapon6(piecenum)
+QueryWeapon4(piecenum)
 {
 	piecenum = flare;
 }
 
-AimWeapon6(heading, pitch)
+AimWeapon4(heading, pitch)
 {
 	if (CannonFearOk==1)
 	{
@@ -210,23 +210,23 @@ AimWeapon6(heading, pitch)
 return 0;
 }
 
-FireWeapon6()
+FireWeapon4()
 {
 CannonFearOk=0;
 return (0);
 }
 
-QueryWeapon4 (piecenum)// Weapon 4 - AA MG
+QueryWeapon2(piecenum)// Weapon 4 - AA MG
 	{
 	piecenum = aaflare;
 	}
 
-AimFromWeapon4 (piecenum)
+AimFromWeapon2(piecenum)
 	{
 	piecenum = aagun;
 	}
 
-AimWeapon4(heading, pitch)
+AimWeapon2(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -241,7 +241,7 @@ AimWeapon4(heading, pitch)
 	return (1);
 	}
 
-FireWeapon4()
+FireWeapon2()
 	{
 	rock = FALSE;
 	
@@ -253,46 +253,27 @@ FireWeapon4()
 	return(0);
 	}
 
-AimFromWeapon5(piecenum) //bulletproof effect
+AimFromWeapon3(piecenum) //bulletproof effect
 {
 	piecenum = base;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon3(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon3(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon5()
+FireWeapon3()
 {
 return (0);
 }
 
 
-AimFromWeapon8(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon8(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon8(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon8()
-{
-return (0);
-}
 // TODO: make this pretty
 Killed(severity, corpsetype)
 {

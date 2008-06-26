@@ -60,17 +60,17 @@
 	weapon1=cs95mmhe;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon3=Bren;
-	onlytargetcategory3=INFTARG;
-	weapon4=.50calproof;
-	weapon5=QF75mmHEFear;
-	weaponslaveto5=1;
-	weapon6=BrenFear;
-	onlytargetcategory6=INFTARG;
-	weaponslaveto6=3;
-	weapon7=TankFearShield;
+	weapon2=Bren;
+	onlytargetcategory2=INFTARG;
+	weapon3=.50calproof;
+	weapon4=cs95mmhefear;
+	weaponslaveto4=1;
+	weapon5=BrenFear;
+	onlytargetcategory5=INFTARG;
+	weaponslaveto5=3;
+	weapon6=TankFearShield;
 
-	weapon8=Small_Tracer;
+	weapon7=Small_Tracer;
 
 	[sfxtypes]
 	{

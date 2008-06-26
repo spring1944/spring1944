@@ -629,7 +629,6 @@ AimWeapon2(heading, pitch)
 		
 		if (isDeployed && CannonFearOk==1)
 		{
-		wait-for-turn carriage around y-axis;
 		return (1);
 		}
 		return (0);
@@ -637,6 +636,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
+CannonFearOk=0;
 return (0);
 }
 
