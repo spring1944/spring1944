@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------------
 --
 --    Note:
---  Upgrade definitions are defined in 'gamedata/LuaConfigs/upgrade_defs.lua'
+--  Upgrade definitions are defined in 'LuaRules/Configs/upgrade_defs.lua'
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	function gadget:Initialize()
 		
 		upgradeDefs = { }
-		local rawUpgradeDefs = include("gamedata/LuaConfigs/upgrade_defs.lua")
+		local rawUpgradeDefs = include("LuaRules/Configs/upgrade_defs.lua")
 		checkUpgradeDefs(rawUpgradeDefs)
 		
 		-- _G.upgradeUnits = upgradeUnits

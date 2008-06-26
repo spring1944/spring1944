@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------------
 --
 --    Note:
---  Squad definitions are defined in 'gamedata/LuaConfigs/squad_defs.lua'
+--  Squad definitions are defined in 'LuaRules/Configs/squad_defs.lua'
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	
 	function gadget:Initialize()
 		
-		squadDefs = include("gamedata/LuaConfigs/squad_defs.lua")
+		squadDefs = include("LuaRules/Configs/squad_defs.lua")
 		
 	end
 	
