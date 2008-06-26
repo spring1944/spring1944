@@ -3,7 +3,7 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk, reloading, aim2;
 
 #include "inf_suppressionvars.h"
 // Signal definitions
@@ -27,6 +27,7 @@ static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit,
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
+#define RELOAD		5250
 #define RECOIL		[-2.5] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
@@ -162,6 +163,13 @@ HitByWeaponId(z,x,id,damage)
 	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
 }
 
+Reload()
+{
+	reloading = TRUE;
+	sleep RELOAD;
+	reloading = FALSE;
+}
+
 // Weapon 1 76mm HE
 QueryWeapon1(piecenum)
 {
@@ -175,6 +183,8 @@ AimFromWeapon1(piecenum)
 
 AimWeapon1(heading, pitch)
 {
+	if (aim2) return 0; // don't aim weap1 if aiming AP
+	
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
 	if (fear>0) return 0;
@@ -184,6 +194,8 @@ AimWeapon1(heading, pitch)
 	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn carriage around y-axis;
 	wait-for-turn carriage around x-axis;
+	
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	bAiming=0;
 	return 1;
 }
@@ -203,20 +215,70 @@ FireWeapon1()
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
 	CREW_RELOADING
+	start-script Reload(); // start reload timer after firing
 }
 
-//Weapon 2 76mm HE Fear
-AimFromWeapon2(piecenum)
-{
-	piecenum = barrel;
-}
-
+// Weapon 2 76mm AP
 QueryWeapon2(piecenum)
 {
 	piecenum = flare;
 }
 
+AimFromWeapon2(piecenum)
+{
+	piecenum = barrel;
+}
+
 AimWeapon2(heading, pitch)
+{
+	aim2 = TRUE;
+	
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if (fear>0) return 0;
+	bAiming=1;
+		//TODO: anim	
+	turn carriage to y-axis heading speed TURR_TRAVERSE;
+	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn carriage around y-axis;
+	wait-for-turn carriage around x-axis;
+	
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	bAiming=0;
+	return 1;
+}
+
+FireWeapon2()
+{
+	emit-sfx MEDIUM_Muzzleflash from flare;
+	emit-sfx MEDIUM_MuzzleDust from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	FearOk=1;
+	move barrel to z-axis RECOIL now;
+	//Fire teh weap0n!!!11
+	CREW_FIRING;
+	get DO_SEISMIC_PING(15);
+	sleep 100;
+	move barrel to z-axis [0] speed RETURN_SPEED;
+	//Now reload...
+	CREW_RELOADING
+	start-script Reload(); // start reload timer after firing
+}
+
+// Weapon 3 76mm HE Fear
+AimFromWeapon3(piecenum)
+{
+	piecenum = barrel;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = flare;
+}
+
+AimWeapon3(heading, pitch)
 {
 	if (FearOk==1)
 	{
@@ -226,7 +288,7 @@ AimWeapon2(heading, pitch)
 	return(0);
 }
 
-FireWeapon2()
+FireWeapon3()
 {
 FearOk=0;
 return (0);
