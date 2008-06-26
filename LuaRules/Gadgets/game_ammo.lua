@@ -48,6 +48,7 @@ local GetUnitSeparation  = Spring.GetUnitSeparation
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitAllyTeam		 = Spring.GetUnitAllyTeam
 local SetUnitRulesParam  = Spring.SetUnitRulesParam
+local GetUnitRulesParam	 = Spring.GetUnitRulesParam
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -106,7 +107,8 @@ end
 local function ProcessWeapon(unitID)--, weaponNum)
   local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
-	local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
+	--local ammoLevel = tonumber(vehicles[unitID].ammoLevel)
+	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
   --local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	local weaponFired = false
 	
@@ -135,7 +137,7 @@ local function ProcessWeapon(unitID)--, weaponNum)
 			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = reload, reloadstate = savedFrames[unitID] + (32*reload)})
 		--end
     end
-    print("ammo", vehicles[unitID].ammoLevel)
+    --print("ammo", vehicles[unitID].ammoLevel)
   end
 end
 
@@ -184,7 +186,8 @@ local function Resupply(unitID)
   local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
   local defaultRegen = DefaultRegen(unitDefID)
   local ammoRegen = defaultRegen --AmmoRegen(defaultRegen, supplyRange, distanceFromSupplier)
-  local oldAmmo = vehicles[unitID].ammoLevel
+  --local oldAmmo = vehicles[unitID].ammoLevel
+	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
   
   
   local newAmmo = oldAmmo + 1 --newAmmo
@@ -249,7 +252,8 @@ function gadget:GameFrame(n)
  -- end
     for unitID in pairs(vehicles) do
 	  local unitDefID = GetUnitDefID(unitID)
-	  local ammoLevel = vehicles[unitID].ammoLevel
+	  --local ammoLevel = vehicles[unitID].ammoLevel
+		local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	  --local lowAmmoLevel = tonumber(UnitDefs[unitDefID].customParams.lowammolevel)
 	  --local maxAmmo = UnitDefs[unitDefID].customParams.maxAmmo
 	

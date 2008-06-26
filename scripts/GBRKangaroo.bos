@@ -1,12 +1,12 @@
 #include "STANDARD_COMMANDS_GPL.h"
 
-piece  base, load_shoulder, load_arm, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tow_point, 
-tracks1, tracks2, turret, gun, flare;
+piece  base, tracks2, tracks1, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, 
+ exhaust, aaref, aaturret, aagun, aaflare, load_shoulder, load_arm;
  
 static-var restore_delay, bMoving, treadnum;
 
 #define FX_HIDE\
-	hide flare;\
+	hide aaflare;\
 
 // definitions for HitWeapId_S44
 #define ARMOUR		5905
@@ -44,26 +44,16 @@ treads()
 // Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
 {
-	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+	if( get UNIT_ALLIED(unitid) == 1 && get UNIT_HEIGHT (unitid) == INFANTRY) { // only pick up allied infantry units
 		if( get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [95.000000] )
 		{
 			set BUSY to 1;
 			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
 			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
 			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			attach-unit unitid to load_arm;
+			attach-unit unitid to 0 - 1; //load_arm;
 			move load_arm to z-axis [10.000000] speed [300.000000];
 			wait-for-move load_arm along z-axis;
-			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
-			{ 
-			//<= INFANTRY + FUDGE ) { // when using FUDGE
-			  attach-unit unitid to 0 - 1; // hide infantry models
-			}
-			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
-			{ 
-			//> INFANTRY + FUDGE ) {  // when using FUDGE
-			  attach-unit unitid to tow_point; // don't hide other units
-			}
 			set BUSY to 0;
 		}
 	}
@@ -131,6 +121,7 @@ StartMoving()
 	sleep 50;
 	emit-sfx 257 from exhaust;*/
 	spin frontwheel around x-axis speed <350.082418>;
+	spin rearwheel around x-axis speed <350.082418>;
 	spin wheel1 around x-axis speed <350.082418>;
 	spin wheel2 around x-axis speed <350.082418>;
 	spin wheel3 around x-axis speed <350.082418>;
@@ -144,6 +135,7 @@ StopMoving()
 	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;
+	stop-spin rearwheel around x-axis decelerate <100.000000>;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
 	stop-spin wheel2 around x-axis decelerate <100.000000>;
 	stop-spin wheel3 around x-axis decelerate <100.000000>;

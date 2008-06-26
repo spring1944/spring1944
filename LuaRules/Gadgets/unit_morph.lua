@@ -277,6 +277,13 @@ local function FinishMorph(unitID, morphData)
   local h = Spring.GetUnitHeading(unitID)
   Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
 
+	-- copy ammolevel
+	local ud = UnitDefs[Spring.GetUnitDefID(unitID)]
+	if (ud.customParams.weaponswithammo) then
+		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo",  ammoLevel)
+		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
+	end	
+	
   --copy experience
   local newXp = Spring.GetUnitExperience(unitID)*XpScale
   local nextMorph = morphDefs[morphData.def.into]
@@ -284,7 +291,7 @@ local function FinishMorph(unitID, morphData)
     newXp = math.min( newXp, nextMorph.xp*0.9)
   end
   Spring.SetUnitExperience(newUnit, Spring.GetUnitExperience(unitID)*XpScale)
-
+		
   --copy command queue
   local cmds = Spring.GetUnitCommands(unitID)
   for i = 2, cmds.n do  -- skip the first command (CMD_MORPH)
