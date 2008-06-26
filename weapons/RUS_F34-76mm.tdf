@@ -116,7 +116,7 @@
 }
 [f3476mmhefear]
 {
-	id=404;
+	id=401;
 	name=Supression;
 	rendertype=1;
 	turret=1;

@@ -42,7 +42,7 @@ function widget:DefaultCommand()
 		if unitDefCom and type == false then
 			-- only default to fight for groups over 5
 			if unitDefCom == CMD_FIGHT then 
-				if Spring.GetSelectedUnitsCount() > 5 then
+				if Spring.GetSelectedUnitsCount() >= 6 then
 					local mx, my = Spring.GetMouseState()
 					local s,t = Spring.TraceScreenRay(mx, my)
 					-- apply ATTACK if cursor over a unit

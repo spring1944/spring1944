@@ -64,7 +64,7 @@ local WhiteStr   = "\255\255\255\255"
 local RedStr     = "\255\255\001\001"
 
 
-local pinnedThreshold = 14
+local pinnedThreshold = 15
 local fontSize = 20
 
 local units = {}

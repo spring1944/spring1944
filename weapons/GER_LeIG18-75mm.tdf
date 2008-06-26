@@ -56,7 +56,7 @@
 }
 [leig18hefear]
 {
-	id=403;
+	id=401;
 	name=Supression from Leig 18 HE;
 	rendertype=1;
 	turret=1;

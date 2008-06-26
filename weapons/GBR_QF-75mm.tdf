@@ -116,7 +116,7 @@
 }
 [qf75mmhefear]
 {
-	id=402;
+	id=401;
 	name=Supression from QF 75mm;
 	rendertype=1;
 	turret=1;

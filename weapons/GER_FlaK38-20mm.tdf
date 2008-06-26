@@ -115,7 +115,7 @@
 }
 [kwk3020mhefear]
 {
-	id=306;
+	id=301;
 	name=Supression from 20mm HE shells;
 	rendertype=1;
 	turret=1;

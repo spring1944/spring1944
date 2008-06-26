@@ -115,7 +115,7 @@
 
 [61k37mmhefear]
 {
-	id=306;
+	id=301;
 	name=Supression from 37mm HE shells;
 	rendertype=1;
 	turret=1;
