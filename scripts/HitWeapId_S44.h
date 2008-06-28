@@ -54,9 +54,4 @@ HitByWeaponId(anglez,anglex,id,damage)
 	}
 	else return 100;
 }
-setSFXoccupy (terrain)
-{
-	if (terrain == 0 AND !(get BUILD_PERCENT_LEFT)) turn base to y-axis <90> now;
-	else turn base to y-axis 0 now;
-}
 #endif
