@@ -5,8 +5,8 @@
 	
 	//    Required Tags
 	BuildCostEnergy=9000;
-	BuildCostMetal=9000;
-	BuildTime=10000;
+	BuildCostMetal=5500;
+	BuildTime=550;
 	Category=AIRCRAFT;
 	Description=Attack Fighter;
 	FootprintX=4;

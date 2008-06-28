@@ -19,7 +19,7 @@
 	weaponvelocity=2000;
 	areaofeffect=1;
 	weapontimer=1;
-
+	collisionsize=2.5;
 	soundtrigger=1;
 	soundstart=US_30CAL;
 

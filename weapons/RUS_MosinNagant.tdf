@@ -35,7 +35,7 @@
 	corethickness=0.15;
 	laserflaresize=0.0001;
 
-	size=2.5;
+	collisionsize=2.5;
 
 	[damage]
 	{
@@ -64,10 +64,9 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=800;
+	range=660;
 	reloadtime=3;
-	accuracy=400;
-	sprayangle=100;
+	accuracy=200;
 	movingaccuracy=888;
 	weaponvelocity=1500;
 	areaofeffect=1;
@@ -89,7 +88,7 @@
 	corethickness=0.15;
 	laserflaresize=0.0001;
 
-	size=2.5;
+	collisionsize=2.5;
 
 	[damage]
 	{

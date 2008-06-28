@@ -5,8 +5,8 @@
 	
 	//    Required Tags
 	BuildCostEnergy=0;
-	BuildCostMetal=11000;
-	BuildTime=13000;
+	BuildCostMetal=7000;
+	BuildTime=700;
 	Category=AIRCRAFT;
 	Description=Ground Attack/Tank Buster Plane;
 	FootprintX=4;

@@ -11,7 +11,7 @@
 
 	name=Airfield;
 	maxdamage=20000;
-	buildcostmetal=100000;
+	buildcostmetal=15000;
 	buildcostenergy=0;
 	buildtime=10000;
 	footprintx=60;
@@ -25,7 +25,8 @@
 	metalstorage=1000;
 	energystorage=2000;
 
-	sightdistance=146;
+	SightDistance=800;
+	airsightdistance=4000;
 	stealth=1;
 
 	builder=1;

@@ -37,7 +37,7 @@
 	corethickness=0.15;
 	laserflaresize=0.0001;
 
-	size=2.5;
+	collisionsize=2.5;
 
 	[damage]
 	{

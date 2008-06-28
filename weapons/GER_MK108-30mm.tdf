@@ -17,7 +17,7 @@
 	sprayangle=250;
 	//movingaccuracy=7111;
 	weaponvelocity=1750;
-	areaofeffect=1;
+	areaofeffect=30;
 	burnblow=1;
 	weapontimer=1;
 

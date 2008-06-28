@@ -28,7 +28,7 @@
 	noselfdamage=1;
 
 	rgbcolor=0 0.7 0;
-
+	collisionsize=2.5;
 	size=0.000000000001;
 
 	[damage]

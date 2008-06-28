@@ -27,7 +27,7 @@
 	rgbcolor=1 0.75 0;
 
 	size=0.000000000000000000001;
-
+	collisionsize=2.5;
 	canattackground=1;
 
 	[damage]

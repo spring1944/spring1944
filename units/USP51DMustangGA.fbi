@@ -5,8 +5,8 @@
 	
 	//    Required Tags
 	BuildCostEnergy=0;
-	BuildCostMetal=11000;
-	BuildTime=13000;
+	BuildCostMetal=8000;
+	BuildTime=800;
 	Category=AIRCRAFT;
 	Description=Ground Attack Aircraft;
 	FootprintX=4;

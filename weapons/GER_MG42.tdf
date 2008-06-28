@@ -17,6 +17,7 @@
 	accuracy=100;
 	areaofeffect=1;
 	movingaccuracy=7111;
+	collisionsize=2;
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;

@@ -4,9 +4,9 @@
 	UnitName=GERBf109;
 	
 	//    Required Tags
-	BuildCostEnergy=9000;
-	BuildCostMetal=9000;
-	BuildTime=10000;
+	BuildCostEnergy=0;
+	BuildCostMetal=6000;
+	BuildTime=600;
 	Category=AIRCRAFT;
 	Description=Attack Fighter;
 	FootprintX=4;

@@ -5,8 +5,8 @@
 	
 	//    Required Tags
 	BuildCostEnergy=0;
-	buildcostmetal=15750;
-	buildtime=2100;
+	buildcostmetal=3000;
+	buildtime=300;
 	Category=AIRCRAFT;
 	Description=Recon Plane;
 	FootprintX=4;
