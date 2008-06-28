@@ -14,9 +14,9 @@
 	maxdamage=300;
 	idleautoheal=2;
 	idletime=2000;
-	buildcostmetal=910;
+	buildcostmetal=1365;
 	buildcostenergy=0;
-	buildtime=260;
+	buildtime=683;
 	footprintx=1;
 	footprintz=1;
 	mass=600;
@@ -34,7 +34,7 @@
 	maxvelocity=0.8;
 	acceleration=0.2;
 	brakerate=0.6;
-	turnrate=160;
+	turnrate=120;
 	maxslope=10;
 	maxwaterdepth=5;
 

@@ -29,8 +29,8 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, last
 #define WHEEL_ACCEL		<30>
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
-#define TURR_TRAVERSE	<200>
-#define TURR_ELEVATE	<150>
+#define TURR_TRAVERSE	<100>
+#define TURR_ELEVATE	<75>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour

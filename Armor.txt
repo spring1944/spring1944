@@ -2,7 +2,7 @@
 	{
 	//**Germany**//
 	GERAirEngineer=99;
-	GERBeobInf=99;
+	GERObserv=99;
 	GEREngineer=99;
 	GERGrW34=99;
 	GERHQEngineer=99;
@@ -11,7 +11,7 @@
 	GERMP40=99;
 	GERPanzerfaust=99;
 	GERPanzerschrek=99;
-	GERPanzerGren=99;
+	GERRifle=99;
 	GERSniper=99;
 
 	//US//
