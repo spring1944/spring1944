@@ -88,10 +88,10 @@ function SetUnitsuppressIcon(unitID)
 
 	local suppressLevel = GetUnitRulesParam(unitID, "suppress",  suppressLevel)
 	
-	--[[if (not suppressLevel) then
+	if (not suppressLevel) then
 	  unitHeights[unitID] = nil
     return
-  end]]
+  end
 	
 	local suppressIconType = 0
 	if (suppressLevel == 0) then -- No suppression ^_^
@@ -128,9 +128,6 @@ end
 
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam)
-
-  local suppressLevel = GetUnitRulesParam(unitID, "suppress",  suppressLevel)
-	
   if (IsUnitAllied(unitID)or(GetSpectatingState())) then
     SetUnitsuppressIcon(unitID)
   end
@@ -159,7 +156,9 @@ end
 -------------------------------------------------------------------------------------
 
 local function DrawUnitFunc(yshift)
-  glTranslate(0,yshift,0)
+	if yshift then -- hack to fix a bug i don't understand
+		glTranslate(0,yshift,0)
+	end
   glBillboard()
 	glTexRect(-iconsize-10.5, -9, -10.5, iconsize-9)
 end
