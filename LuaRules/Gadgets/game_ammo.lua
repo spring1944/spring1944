@@ -189,17 +189,16 @@ local function Resupply(unitID)
   --local oldAmmo = vehicles[unitID].ammoLevel
 	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
   
-  
-  local newAmmo = oldAmmo + 1 --newAmmo
-  if (newAmmo > maxAmmo) then
-    newAmmo = maxAmmo
-  end
-  print("Resupply ammo", oldAmmo, newAmmo)
-  if (newAmmo < maxAmmo) then
-  Spring.UseUnitResource(supplierID, "e", weaponCost)
-  end
-	  local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-  local reload = WeaponDefs[weaponID].reload
+	if oldAmmo < maxAmmo then
+		local newAmmo = oldAmmo + 1 --newAmmo
+		--print("Resupply ammo", oldAmmo, newAmmo)
+		Spring.UseUnitResource(supplierID, "e", weaponCost)
+		vehicles[unitID].ammoLevel = newAmmo
+		SetUnitRulesParam(unitID, "ammo",  newAmmo)
+	end
+
+	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
+	local reload = WeaponDefs[weaponID].reload
 	
 	--if (reloadFrame > 0 and savedFrames[unitID]) then
 	if (oldAmmo <= 1) then -- and savedFrames[unitID]) then
@@ -207,9 +206,6 @@ local function Resupply(unitID)
 			SetUnitWeaponState(unitID, 1, {reloadtime = reload, reloadstate = reload})
 			--SetUnitWeaponState(unitID, 2, {reloadtime = reload, reloadstate = reload})
 	end
-	
-  vehicles[unitID].ammoLevel = newAmmo
-	SetUnitRulesParam(unitID, "ammo",  newAmmo)
 end
     
     
