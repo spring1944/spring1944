@@ -12,9 +12,9 @@
 	name=Heer Divisionen Kaserne;
 	description=Divisional Barracks;
 	maxdamage=5000;
-	buildcostmetal=907.5;
+	buildcostmetal=2100;
 	buildcostenergy=0;
-	buildtime=605;
+	buildtime=1400;
 	footprintx=5;
 	footprintz=7;
 
