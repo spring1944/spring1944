@@ -12,9 +12,9 @@
 	description=Transport;
 	side=RUS;
 	maxdamage=1000;
-	buildcostmetal=591;
+	buildcostmetal=900;
 	buildcostenergy=0;
-	buildtime=197;
+	buildtime=300;
 	footprintx=3;
 	footprintz=3;
 	mass=1000;

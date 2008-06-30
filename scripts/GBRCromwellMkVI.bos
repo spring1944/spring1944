@@ -195,9 +195,9 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	sleep 200;
 	move barrel to z-axis 0 speed RETURN_SPEED;
-	set ACTIVATION to 1;
-	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 1;
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;

@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "1944 Ammo Icons",
-    desc      = "Shows a ammo icon next to units",
+    desc      = "Shows an ammo icon next to units",
     author    = "FLOZi, adapted from code by trepan (idea quantum,jK)",
     date      = "May, 2008",
     license   = "GNU GPL, v2 or later",
@@ -240,7 +240,9 @@ end
 -------------------------------------------------------------------------------------
 
 local function DrawUnitFunc(yshift)
-  glTranslate(0,yshift,0)
+  if yshift then 
+   glTranslate(0,yshift,0)
+  end
   glBillboard()
   --glTexRect(-iconsize+10.5, -9, 10.5, iconsize-9)
 	glTexRect(-iconsize-10.5, -9, -10.5, iconsize-9)

@@ -95,7 +95,7 @@ function SetUnitsuppressIcon(unitID)
 	
 	local suppressIconType = 0
 	if (suppressLevel == 0) then -- No suppression ^_^
-		suppressIconType = 1
+		suppressIconType = 0
 	elseif (suppressLevel < pinnedThreshold) then -- suppressed, not pinned O_O
 		suppressIconType = 2
 	else -- pinned! ;_;

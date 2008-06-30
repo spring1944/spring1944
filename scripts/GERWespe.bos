@@ -185,9 +185,9 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
-	set ACTIVATION to 1;
-	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 1;
 	return 0;
 }
 

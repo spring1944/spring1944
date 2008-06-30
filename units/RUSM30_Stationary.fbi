@@ -30,6 +30,7 @@
 	sightdistance=701;
 	airsightdistance=2500;
 	radardistancejam=75;
+	onoffable=1;
 	stealth=0;
 
 	activatewhenbuilt=1;

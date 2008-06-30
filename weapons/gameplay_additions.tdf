@@ -367,7 +367,7 @@
 	lineofsight=1;
 	firestarter=0;
 	//duration=0.03;
-	range=250;
+	range=300;
 	reloadtime=10;
 	areaofeffect=0.000001;
 	canattackground=0;
@@ -398,7 +398,7 @@
 	lineofsight=1;
 	firestarter=0;
 	//duration=0.03;
-	range=700;
+	range=500;
 	reloadtime=10;
 	areaofeffect=0.000001;
 	canattackground=0;

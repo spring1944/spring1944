@@ -12,9 +12,9 @@
 	description=Medium Personnel Carrier;
 	side=GER;
 	maxdamage=1200;
-	buildcostmetal=520;
+	buildcostmetal=1050;
 	buildcostenergy=0;
-	buildtime=260;
+	buildtime=350;
 	footprintx=2;
 	footprintz=2;
 

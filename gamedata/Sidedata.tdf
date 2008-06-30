@@ -280,7 +280,7 @@
 		canbuild2=GERSupplyTruck;
 		canbuild3=GERSdkfz250;
 		canbuild4=GERSdkfz251;
-		canbuild5=GERSdkfz10;
+		//canbuild5=GERSdkfz10;
 		canbuild6=GERMarder;
 	}
 
@@ -638,7 +638,7 @@
 		canbuild2=RUSSupplyTruck;
 		canbuild3=RUSBA64;
 		canbuild4=RUSM5Halftrack;
-		canbuild5=RUSGAZAAA;
+		//canbuild5=RUSGAZAAA;
 		canbuild6=RUST60;
 		canbuild7=RUSSU76;
 	}

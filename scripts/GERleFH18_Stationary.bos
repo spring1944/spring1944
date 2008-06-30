@@ -207,9 +207,9 @@ FireWeapon1()
 	//Now reload...
 	FearOk=1;
 	CREW_RELOADING
-	set ACTIVATION to 1;
-	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 1;
 }
 
 AimFromWeapon2(piecenum)

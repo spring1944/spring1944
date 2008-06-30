@@ -11,9 +11,9 @@
 	name=M3A1 Halftrack;
 	description=Transport;
 	maxdamage=1000;
-	buildcostmetal=1555;
+	buildcostmetal=1100;
 	buildcostenergy=0;
-	buildtime=518;
+	buildtime=365;
 	footprintx=3;
 	footprintz=3;
 	mass=1000;

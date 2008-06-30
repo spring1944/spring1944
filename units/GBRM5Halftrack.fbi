@@ -12,9 +12,9 @@
 	name=M5 Halftrack;
 	description=Transport;
 	maxdamage=1000;
-	buildcostmetal=660;
+	buildcostmetal=920;
 	buildcostenergy=0;
-	buildtime=220;
+	buildtime=305;
 	footprintx=3;
 	footprintz=3;
 	mass=1000;

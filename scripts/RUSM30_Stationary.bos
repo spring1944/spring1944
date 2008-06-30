@@ -209,6 +209,9 @@ FireWeapon1()
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
 	CREW_RELOADING
+	set ACTIVATION to 0;
+	sleep VISIBLE_PERIOD;
+	set ACTIVATION to 1;
 }
 //Weapon 2 122mm HE Fear
 
