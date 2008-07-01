@@ -20,7 +20,6 @@
 
 	hidedamage=1;
 	shownanoframe=0;
-	unitrestricted=2;
 	smoothanim=0;
 
 	metalmake=0;

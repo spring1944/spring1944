@@ -34,6 +34,8 @@ static-var  restore_delay, rock, reloading, mainHead, FearOk;
 
 #include "HitWeap_Set.h"
 
+//restore delay
+
 // definitions for wheels
 #define WHEEL_SPIN		<500>
 #define WHEEL_ACCEL		<150>
@@ -72,7 +74,7 @@ Create()
 
 RestoreAfterDelay()
 {
-	sleep restore_delay;
+	sleep 5000;
 	turn turret to y-axis <0.000000> speed <100>;
 	turn gun to x-axis <0.000000> speed <100>;
 }
