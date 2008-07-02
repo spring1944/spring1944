@@ -11,7 +11,7 @@
 
 	range=1200;
 	reloadtime=9;
-	accuracy=370;
+	accuracy=570;
 	startvelocity=1000;
 	weaponvelocity=480;
 	areaofeffect=80;

@@ -11,11 +11,11 @@
 
 	range=1320;
 	reloadtime=9;
-	accuracy=370;
+	accuracy=570;
 	startvelocity=1000;
 	weaponvelocity=480;
 	areaofeffect=88;
-	edgeeffectiveness=0.2;
+	edgeeffectiveness=0.25;
 
 	soundstart=GEN_Mortar;
 	soundhit=GEN_Explo_3;
