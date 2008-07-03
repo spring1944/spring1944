@@ -62,7 +62,7 @@ end
 else
 
 --UNSYNCED
-
+--[[
 local floor = math.floor
 
 local uTimeLeft = 0
@@ -96,5 +96,5 @@ function RecvFromSynced(...)
 	end
 end
 
---return false
+--return false]]--
 end

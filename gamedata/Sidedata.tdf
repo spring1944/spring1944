@@ -287,7 +287,7 @@
 	[GERGunYard]
 	{
 		canbuild1=GEROpelBlitz;
-		canbuild2=GERFlaK38;
+		//canbuild2=GERFlaK38;
 		canbuild3=GERleIG18;
 		canbuild4=GERPaK40;
 		canbuild5=GERleFH18;
@@ -646,7 +646,7 @@
 	[RUSGunYard]
 	{
 		canbuild1=RUSZiS5;
-		canbuild2=RUS61K;
+		//canbuild2=RUS61K;
 		canbuild3=RUSZiS2;
 		canbuild4=RUSZiS3;
 		canbuild5=RUSM30;
