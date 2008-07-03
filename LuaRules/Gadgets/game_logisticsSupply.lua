@@ -35,7 +35,7 @@ function gadget:GameFrame(t)
 		if timeLeft > 0 then
 			timeLeft = timeLeft - 1
 		end
-		SendToUnsynced(timeLeft)
+		SendToUnsynced("timeLeft", timeLeft)
 	end
 end
 
@@ -91,8 +91,8 @@ function gadget:DrawScreen()
 end
 
 function RecvFromSynced(...)
-	if arg[2] then
-		uTimeLeft = arg[2]
+	if arg[2] == "timeLeft" then
+		uTimeLeft = arg[3]
 	end
 end
 
