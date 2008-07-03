@@ -91,7 +91,9 @@ function gadget:DrawScreen()
 end
 
 function RecvFromSynced(...)
-	uTimeLeft = arg[2]
+	if arg[2] then
+		uTimeLeft = arg[2]
+	end
 end
 
 --return false
