@@ -22,7 +22,7 @@
 
 	sightdistance=32;
 	stealth=1;
-
+	energymake=-1;
 	init_cloaked=1;
 	mincloakdistance=1;
 

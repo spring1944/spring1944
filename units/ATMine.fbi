@@ -28,7 +28,7 @@
 
 	maxslope=15;
 	maxwaterdepth=50;
-
+	energymake=-1;
 	selfdestructcountdown=1;
 	explodeas=NOWEAPON;
 	selfdestructas=ATMine;
