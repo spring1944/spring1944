@@ -2,9 +2,11 @@
 FearRecovery() 
 { 
 
-	if (fear>PinnedLevel && IsPinned==0) call-script Pinned();
-
-
+	if (fear>PinnedLevel && IsPinned==0)
+	{
+	SET LOS_RADIUS to 5;
+	 call-script Pinned();
+	}
 
 
      if (DecreasingFear==1) return (1);  // better to use signals here

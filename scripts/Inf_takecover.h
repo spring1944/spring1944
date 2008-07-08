@@ -4,6 +4,7 @@ set-signal-mask 0;
 
 		SET MAX_SPEED to [0.00001];
 		SET ARMORED to TRUE;
+		SET LOS_RADIUS to 18;
 		//bMoving=0;
 
 	if (IsProne == 0)
@@ -236,6 +237,7 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 				IsProne=0;
 				SET UPRIGHT TO 1;
 				SET ARMORED to FALSE;
+				set LOS_RADIUS to 26;
 				set MAX_SPEED to [0.8];
 				call-script MoveCheck();
 		

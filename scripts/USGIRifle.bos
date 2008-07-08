@@ -89,6 +89,9 @@ Create()
 
 StartBuilding(heading,pitch)
 {
+var los;
+los=GET LOS_RADIUS;
+GET PRINT (los);
 set INBUILDSTANCE to 1;
 }
 

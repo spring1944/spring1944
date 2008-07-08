@@ -27,7 +27,7 @@
 	energystorage=1000;
 	radardistance=2000000;
 	seismicsignature=0;
-	sightdistance=700;
+	sightdistance=840;
 	stealth=1;
 
 	builder=1;

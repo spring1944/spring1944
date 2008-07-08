@@ -40,12 +40,14 @@ RestoreFromPinned()
 		turn gun to x-axis <30> speed <120>*PRONE_SPEED;
 		turn gun to y-axis <30> speed <120>*PRONE_SPEED;
 		turn gun to z-axis <0> speed <120>*PRONE_SPEED;
+		SET LOS_RADIUS to 18;
 		IsPinned=0;
 }
 
 Pinned() //hit the dirt and kiss your ass goodbye...
 {
 	IsPinned=1;
+	SET LOS_RADIUS to 10;
 	turn torso to x-axis <0> speed <120>*PRONE_SPEED; 
 	turn torso to y-axis <0> speed <120>*PRONE_SPEED; 
 	turn torso to z-axis <0> speed <120>*PRONE_SPEED; 
