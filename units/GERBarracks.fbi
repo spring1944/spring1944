@@ -7,7 +7,7 @@
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
-	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
+	yardmap=c;
 
 	name=Heer Divisionen Kaserne;
 	description=Divisional Barracks;

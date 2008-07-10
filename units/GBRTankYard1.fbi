@@ -6,7 +6,7 @@
 	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
-	yardmap=ooooooo occccco occccco occccco occccco occccco occccco;
+	yardmap=c;
 
 	name=Tier 1 Tank Depot;
 	side=GBR;
