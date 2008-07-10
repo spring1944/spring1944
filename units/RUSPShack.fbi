@@ -5,7 +5,7 @@
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
 	soundcategory=RUSYard;
-	yardmap=cccc cccc cccc cccc;
+	yardmap=ccc ccc ccc;
 
 	name=Partisan Shack;
 	description=Partisan Resistance Center;
