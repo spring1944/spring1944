@@ -152,6 +152,7 @@
 		canbuild2=USM8Gun;
 		canbuild3=USM5Gun;
 		canbuild4=USM2Gun;
+		canbuild5=USSupplyTruck;
 	}
 
 
@@ -291,6 +292,7 @@
 		canbuild3=GERleIG18;
 		canbuild4=GERPaK40;
 		canbuild5=GERleFH18;
+		canbuild6=GERSupplyTruck;
 	}
 
 	[GERSdKfz9]
@@ -412,6 +414,7 @@
 		canbuild1=GBRBedfordTruck;
 		canbuild2=GBR17Pdr;
 		canbuild3=GBR25Pdr;
+		canbuild4=GBRSupplyTruck;
 	}
 
 	[GBRHeavyGunyard]
@@ -650,6 +653,7 @@
 		canbuild3=RUSZiS2;
 		canbuild4=RUSZiS3;
 		canbuild5=RUSM30;
+		canbuild6=RUSSupplyTruck;
 	}
 
 	[RUSTankYard]
