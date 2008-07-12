@@ -14,7 +14,7 @@
 function gadget:GetInfo()
 	return {
 		name      = "Startpos Clearer",
-		desc      = "Blows shit up around the IMP Commander",
+		desc      = "Blows shit up around the HQ units",
 		author    = "Maelstrom",
 		date      = "30th September 2007",
 		license   = "CC by-nc, version 3.0",
@@ -22,8 +22,6 @@ function gadget:GetInfo()
 		enabled   = true  --  loaded by default?
 	}
 end
-
-local COMMANDER_ID = UnitDefNames['imp_commander'].id
 
 if (gadgetHandler:IsSyncedCode()) then
 	
@@ -36,16 +34,15 @@ if (gadgetHandler:IsSyncedCode()) then
 	end
 	
 	function gadget:UnitFinished(unitID, unitDefID, teamID)
-		if unitDefID == COMMANDER_ID then
-			
-			local ud = UnitDefs[COMMANDER_ID]
+		local ud = UnitDefs[unitID]
+		if ud.customParams.hq == '1' then
 			
 			local px, py, pz = Spring.GetUnitPosition(unitID)
 			
-			local xmin = px - (ud.xsize * 8) / 2
-			local xmax = px + (ud.xsize * 8) / 2
-			local zmin = pz - (ud.ysize * 8) / 2
-			local zmax = pz + (ud.ysize * 8) / 2
+			local xmin = px - (ud.xsize * 14) / 2
+			local xmax = px + (ud.xsize * 14) / 2
+			local zmin = pz - (ud.ysize * 14) / 2
+			local zmax = pz + (ud.ysize * 14) / 2
 			
 			local features = Spring.GetFeaturesInRectangle(xmin, zmin, xmax, zmax)
 			
@@ -55,9 +52,7 @@ if (gadgetHandler:IsSyncedCode()) then
 						Spring.DestroyFeature(v)
 					end
 				end
-			end
-			
+			end			
 		end
-	end
-	
+	end	
 end
