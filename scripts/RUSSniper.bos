@@ -28,6 +28,7 @@ static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
 
 StartMoving()
 {
+	if (isPinned == 0 && isProne == 0) set LOS_RADIUS to 18;
 	bMoving=1;
 }
 

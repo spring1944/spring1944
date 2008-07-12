@@ -37,6 +37,7 @@ WeaponReady() //attentshaun!
 	if (hipaim==1) return (1);
 	
 	show gun;
+	set LOS_RADIUS to 15;
 	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
     turn ruparm to x-axis <-60> speed <40>*RUN_SPEED;
     turn ruparm to y-axis <0> speed <40>*RUN_SPEED;
