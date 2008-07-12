@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=us_platoon_flame;
-	objectname=null.S3O;
+	objectname=MortarShell.S3O;
 	buildpic=usgiflamethrower.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=1080;
 	buildcostenergy=0;
 	buildtime=540;
-	footprintx=0;
-	footprintz=0;
+	footprintx=1;
+	footprintz=1;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

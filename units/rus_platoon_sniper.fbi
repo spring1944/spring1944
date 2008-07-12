@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=rus_platoon_sniper;
-	objectname=null.S3O;
+	objectname=MortarShell.S3O;
 	buildpic=russniper.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=560;
 	buildcostenergy=0;
 	buildtime=280;
-	footprintx=0;
-	footprintz=0;
+	footprintx=1;
+	footprintz=1;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

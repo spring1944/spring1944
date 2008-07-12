@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=rus_platoon_atheavy;
-	objectname=null.S3O;
+	objectname=MortarShell.S3O;
 	buildpic=RUSRPG43.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=1260;
 	buildcostenergy=0;
 	buildtime=630;
-	footprintx=0;
-	footprintz=0;
+	footprintx=1;
+	footprintz=1;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

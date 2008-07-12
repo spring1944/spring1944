@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------------
 --
 --    Note:
---  Squad definitions are defined in 'LuaRules/Configs/squad_defs.lua'
+--  Squad definitions are defined in 'gamedata/LuaConfigs/squad_defs.lua'
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -36,16 +36,20 @@ local DestroyUnit         = Spring.DestroyUnit
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GiveOrderToUnits    = Spring.GiveOrderToUnitArray
 
+local ADD_BAR = "AddBar"
+local SET_BAR = "SetBar"
+local REMOVE_BAR = "RemoveBar"
+
 if (gadgetHandler:IsSyncedCode()) then
 	
 	local squadDefs = { }
-	
 	local newSquads = { }
+	local watchUnits = { }
 	
 	function gadget:Initialize()
 		
-		squadDefs = include("LuaRules/Configs/squad_defs.lua")
-		
+		squadDefs = include("gamedata/LuaConfigs/squad_defs.lua")
+		watchUnits = { }
 	end
 	
 	
@@ -89,12 +93,14 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 				
 			end
+
+			watchUnits[squad_spawner] = nil
 			
 			table.remove(newSquads)
-			
 			DestroyUnit(squad_spawner, false, true)
 			
 		end
+		
 	end
 	
 		-- Adds a HQ to the HQ table, if a HQ has been created
@@ -106,22 +112,37 @@ if (gadgetHandler:IsSyncedCode()) then
 			
 			local px, py, pz = GetUnitBasePosition(unitID)
 			
-			
-			
 			local unitArray = { }
+
+			local xSpace, zSpace = -10, -10
 			
 			for i, unitName in ipairs(squadDef) do
-				
-				local newUnitID = CreateUnit(unitName,px,py,pz,0,teamID)
-				
+				local newUnitID = CreateUnit(unitName,px + xSpace,py,pz + zSpace,0,teamID)
+
 				table.insert(unitArray,newUnitID)
-				
+
+				if(i % 4 == 0) then
+					xSpace = -10
+					zSpace = zSpace + 10
+				else
+					xSpace = xSpace + 10
+				end
 			end
 			
 			table.insert(newSquads, {unitID = unitID, members = unitArray})
 			
 		end
 		
+	end
+	
+	function gadget:UnitCreated(unitID, unitDefID, teamID)
+		local squadDef = squadDefs[unitDefID]
+	end
+	
+	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+		if (watchUnits[unitID] ~= nil) then
+			watchUnits[unitID] = nil
+		end
 	end
 	
 end

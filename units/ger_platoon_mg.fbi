@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ger_platoon_mg;
-	objectname=null.S3O;
+	objectname=MortarShell.S3O;
 	buildpic=GERMG42.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=2120;
 	buildcostenergy=0;
 	buildtime=1060;
-	footprintx=0;
-	footprintz=0;
+	footprintx=1;
+	footprintz=1;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
