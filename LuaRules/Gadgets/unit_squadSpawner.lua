@@ -41,71 +41,74 @@ local SET_BAR = "SetBar"
 local REMOVE_BAR = "RemoveBar"
 
 if (gadgetHandler:IsSyncedCode()) then
-	
+
 	local squadDefs = { }
 	local newSquads = { }
 	local watchUnits = { }
-	
+
 	function gadget:Initialize()
-		
 		squadDefs = include("gamedata/LuaConfigs/squad_defs.lua")
 		watchUnits = { }
 	end
-	
-	
+
 	function gadget:GameFrame(n)
-		while # newSquads ~= 0 do
-				
+		--while # newSquads ~= 0 do
+		for index, squad in ipairs(newSquads) do
+
 				-- Get the orders for the squad spawner
-			local squad_spawner = newSquads[1].unitID;
-			local squad_members = newSquads[1].members;
-			
-			local queue = GetCommandQueue(squad_spawner);
-			
+			local squad_spawner = squad.unitID
+			local squad_members = squad.members
+			local squad_factory = squad.factID
+
+			local queue = GetCommandQueue(squad_spawner)
+			local factstates = Spring.GetUnitStates(squad_factory)
+			--Spring.Echo(squad_factory .. " " .. factstates.firestate .. " " .. factstates.movestate)
+
 				-- If its a valid queue
-			if (queue ~= nil) then  
-				
+			if (queue ~= nil) then
+
 				local first = next(queue, nil)
-				
+
 					-- Fix some things up
 				for k,v in ipairs(queue) do
-					
+
 					local opts = v.options
 					if (not opts.internal) then
-						
+
 						local newopts = {}
 						if (opts.alt)   then table.insert(newopts, "alt")   end
 						if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
 						if (opts.shift) then table.insert(newopts, "shift") end
 						if (opts.right) then table.insert(newopts, "right") end
-						
+
 						if (k == first) then
 							if (opts.ctrl) then
 								table.insert(newopts, "shift")
 							end
 						end
-						
+
 							-- Give order to the units
 						GiveOrderToUnits(squad_members, v.id, v.params, newopts)
-						
+
+						if(factstates.movestate ~= nil) then
+							for _, squaduid in ipairs(squad_members) do
+								Spring.SetUnitCOBValue(squaduid, 2, factstates.movestate)
+								Spring.SetUnitCOBValue(squaduid, 3, factstates.firestate)
+							end
+						end
 					end
-					
 				end
-				
 			end
 
 			watchUnits[squad_spawner] = nil
-			
-			table.remove(newSquads)
+
+			table.remove(newSquads[index])
 			DestroyUnit(squad_spawner, false, true)
-			
 		end
-		
 	end
-	
-		-- Adds a HQ to the HQ table, if a HQ has been created
-	function gadget:UnitFinished(unitID, unitDefID, teamID)
-		
+
+	function gadget:UnitFromFactory(unitID, unitDefID, teamID, factID, factDefID, userOrders)
+
 		local squadDef = squadDefs[unitDefID]
 		
 		if squadDef ~= nil then
@@ -128,15 +131,9 @@ if (gadgetHandler:IsSyncedCode()) then
 					xSpace = xSpace + 10
 				end
 			end
-			
-			table.insert(newSquads, {unitID = unitID, members = unitArray})
-			
+
+			table.insert(newSquads, {unitID = unitID, factID = factID, members = unitArray})
 		end
-		
-	end
-	
-	function gadget:UnitCreated(unitID, unitDefID, teamID)
-		local squadDef = squadDefs[unitDefID]
 	end
 	
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
