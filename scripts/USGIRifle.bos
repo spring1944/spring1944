@@ -62,76 +62,19 @@ WeaponReady() //attentshaun!
 	turn head to z-axis <0.000000> speed <100>*RUN_SPEED;
 }
 
-//#include "Inf_MovingAimPose_run.h"
+#include "Inf_MovingAimPose_run.h"
 
-//#include "Inf_takecover.h"
+#include "Inf_takecover.h"
 
-//#include "Inf_hitbyweapon.h"
+#include "Inf_hitbyweapon.h"
 
-//#include "Inf_movecontrol.h"
-Thrust()
-{
-while (1)
-	{
-//	wait-for-move pelvis along z-axis;
-	//wait-for-move pelvis along y-axis;
-	wait-for-turn lthigh around x-axis;
-//	wait-for-turn lleg around x-axis;
-	wait-for-turn rthigh around x-axis;
-//	wait-for-turn rleg around x-axis;
-//	wait-for-turn chest around x-axis;
-//	wait-for-turn shoulders around x-axis;
-//	wait-for-turn lloarm around x-axis;
-//	wait-for-turn rloarm around x-axis;
-//	wait-for-turn head around x-axis;
-	
-	turn head to x-axis <0> speed <63>;
-	turn pelvis to x-axis <10> now;
-	move pelvis to z-axis [-1.0] speed <2040>; //2140
-	move pelvis to y-axis [-0.2] speed <425>;
-	turn lthigh to x-axis <-40> speed <100>;
-	turn lthigh to z-axis <-5> speed <100>;
-	turn lleg to x-axis <30> speed <75>;
-	turn rthigh to x-axis <-40> speed <100>;
-	turn rthigh to z-axis <5> speed <100>;
-	turn rleg to x-axis <30> speed <75>;
-	turn torso to x-axis <10> speed <100>;
-//	turn shoulders to x-axis <-40> speed <275>;
-	turn lloarm to x-axis <-90> speed <100>;
-	turn rloarm to x-axis <-90> speed <100>;
-	
-//	wait-for-move pelvis along z-axis;
-//	wait-for-move pelvis along y-axis;
-	wait-for-turn lthigh around x-axis;
-//	wait-for-turn lleg around x-axis;
-	wait-for-turn rthigh around x-axis;
-//	wait-for-turn rleg around x-axis;
-	//wait-for-turn chest around x-axis;
-//	wait-for-turn shoulders around x-axis;
-//	wait-for-turn lloarm around x-axis;
-//	wait-for-turn rloarm around x-axis;
-//	wait-for-turn head around x-axis;
-	turn head to x-axis <25> speed <63>;
-	move pelvis to z-axis [1] speed <1940>; //1940
-	move pelvis to y-axis [0] speed <625>;
-	turn lthigh to x-axis <0> speed <100>;
-	turn lleg to x-axis <0> speed <75>;
-	turn rthigh to x-axis <0> speed <100>;
-	turn rleg to x-axis <0> speed <75>;
-	turn torso to x-axis <-30> speed <100>;
-//	turn shoulders to x-axis <70> speed <275>;
-	turn lloarm to x-axis <-70> speed <100>;
-	turn rloarm to x-axis <-70> speed <100>;
-	}
-}
+#include "Inf_movecontrol.h"
 
 Create()
 {
 	nade_active=0;
-//	start-script WeaponReady();
-//	start-script Run();
-	start-script Thrust();
-	hide gun;
+	start-script WeaponReady();
+	start-script Run();
 	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
 	move ground to y-axis -0.5 speed <100>;
 	nade_speed = 4;
