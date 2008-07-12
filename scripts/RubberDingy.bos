@@ -24,10 +24,10 @@ TransportPickup(unitid)
 			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
 			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
 			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			attach-unit unitid to load_arm;
+			attach-unit unitid to -1;
 			move load_arm to z-axis [10.000000] speed [300.000000];
 			wait-for-move load_arm along z-axis;
-			transportcount=transportcount+1;
+			/*transportcount=transportcount+1;
 			if (transportcount==1) attach-unit unitid to bow; 
 			if (transportcount==2) attach-unit unitid to port1;
 			if (transportcount==3) attach-unit unitid to starboard1;
@@ -40,7 +40,7 @@ TransportPickup(unitid)
 			{
 			attach-unit unitid to starboard4;
 			transportcount=0;
-			}
+			}*/
 			set BUSY to 0;
 		}
 	}

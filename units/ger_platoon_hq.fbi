@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ger_platoon_hq;
-	objectname=MortarShell.S3O;
+	objectname=null.S3O;
 	buildpic=GERRifle.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=320;
 	buildcostenergy=0;
 	buildtime=320;
-	footprintx=1;
-	footprintz=1;
+	footprintx=0;
+	footprintz=0;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

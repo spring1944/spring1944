@@ -23,10 +23,12 @@ function gadget:GameFrame(n)
 				fhp, fmaxhp = Spring.GetFeatureHealth(fid)
 				subtract = fmaxhp * 0.033 --always make it take about 30 seconds regardless of the feature
 				fhp = fhp - subtract
-				if(fhp <= 0) then
-					Spring.DestroyFeature(fid)
-				else
-					Spring.SetFeatureHealth(fid,fhp)
+				if(fhp ~= nil) then
+					if(fhp <= 0) then
+						Spring.DestroyFeature(fid)
+					else
+						Spring.SetFeatureHealth(fid,fhp)
+					end
 				end
 			end
 		end

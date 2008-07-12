@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ger_platoon_sniper;
-	objectname=MortarShell.S3O;
+	objectname=null.S3O;
 	buildpic=GERSniper.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=770;
 	buildcostenergy=0;
 	buildtime=385;
-	footprintx=1;
-	footprintz=1;
+	footprintx=0;
+	footprintz=0;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

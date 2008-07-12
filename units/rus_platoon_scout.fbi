@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=rus_platoon_scout;
-	objectname=MortarShell.S3O;
+	objectname=null.S3O;
 	buildpic=RUSObserv.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=450;
 	buildcostenergy=0;
 	buildtime=225;
-	footprintx=1;
-	footprintz=1;
+	footprintx=0;
+	footprintz=0;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

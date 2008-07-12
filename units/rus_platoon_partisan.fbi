@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=rus_platoon_partisan;
-	objectname=MortarShell.S3O;
+	objectname=null.S3O;
 	buildpic=RUSRifle.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=880;
 	buildcostenergy=0;
 	buildtime=440;
-	footprintx=1;
-	footprintz=1;
+	footprintx=0;
+	footprintz=0;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

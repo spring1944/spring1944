@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=gbr_platoon_mortar;
-	objectname=MortarShell.S3O;
+	objectname=null.S3O;
 	buildpic=GBR3InMortar.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
@@ -14,8 +14,8 @@
 	buildcostmetal=2400;
 	buildcostenergy=0;
 	buildtime=1200;
-	footprintx=1;
-	footprintz=1;
+	footprintx=0;
+	footprintz=0;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
