@@ -57,57 +57,65 @@ if (gadgetHandler:IsSyncedCode()) then
 
 				-- Get the orders for the squad spawner
 			local squad_spawner = squad.unitID
-			local squad_members = squad.members
-			local squad_factory = squad.factID
 
-			local queue = GetCommandQueue(squad_spawner)
-			local factstates = Spring.GetUnitStates(squad_factory)
-			--Spring.Echo(squad_factory .. " " .. factstates.firestate .. " " .. factstates.movestate)
+			_,_,_,_,buildprog = Spring.GetUnitHealth(squad_spawner)
 
-				-- If its a valid queue
-			if (queue ~= nil) then
+			if(buildprog ~= nil and buildprog >= 1) then
 
-				local first = next(queue, nil)
+				local squad_members = squad.members
+				local squad_builder = squad.builderID
+				local squad_units = {}
 
-					-- Fix some things up
-				for k,v in ipairs(queue) do
+				local queue = GetCommandQueue(squad_spawner)
+				local states = Spring.GetUnitStates(squad_builder)
 
-					local opts = v.options
-					if (not opts.internal) then
+				for _,unit in ipairs(squad_members) do
+					local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
+					if(states.movestate ~= nil) then
+						Spring.SetUnitCOBValue(newUnitID, 2, states.movestate)
+						Spring.SetUnitCOBValue(newUnitID, 3, states.firestate)
+					end
+					table.insert(squad_units,newUnitID)
+				end
 
-						local newopts = {}
-						if (opts.alt)   then table.insert(newopts, "alt")   end
-						if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
-						if (opts.shift) then table.insert(newopts, "shift") end
-						if (opts.right) then table.insert(newopts, "right") end
+					-- If its a valid queue
+				if (queue ~= nil) then
 
-						if (k == first) then
-							if (opts.ctrl) then
-								table.insert(newopts, "shift")
+					local first = next(queue, nil)
+
+						-- Fix some things up
+					for k,v in ipairs(queue) do
+
+						local opts = v.options
+						if (not opts.internal) then
+
+							local newopts = {}
+							if (opts.alt)   then table.insert(newopts, "alt")   end
+							if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
+							if (opts.shift) then table.insert(newopts, "shift") end
+							if (opts.right) then table.insert(newopts, "right") end
+
+							if (k == first) then
+								if (opts.ctrl) then
+									table.insert(newopts, "shift")
+								end
 							end
-						end
 
-							-- Give order to the units
-						GiveOrderToUnits(squad_members, v.id, v.params, newopts)
-
-						if(factstates.movestate ~= nil) then
-							for _, squaduid in ipairs(squad_members) do
-								Spring.SetUnitCOBValue(squaduid, 2, factstates.movestate)
-								Spring.SetUnitCOBValue(squaduid, 3, factstates.firestate)
-							end
+								-- Give order to the units
+							GiveOrderToUnits(squad_units, v.id, v.params, newopts)
 						end
 					end
 				end
+				watchUnits[squad_spawner] = nil
+
+				table.remove(newSquads[index])
+				DestroyUnit(squad_spawner, false, true)
 			end
-
-			watchUnits[squad_spawner] = nil
-
-			table.remove(newSquads[index])
-			DestroyUnit(squad_spawner, false, true)
 		end
 	end
 
-	function gadget:UnitFromFactory(unitID, unitDefID, teamID, factID, factDefID, userOrders)
+--	function gadget:UnitFromFactory(unitID, unitDefID, teamID, factID, factDefID, userOrders)
+	function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 
 		local squadDef = squadDefs[unitDefID]
 		
@@ -120,9 +128,16 @@ if (gadgetHandler:IsSyncedCode()) then
 			local xSpace, zSpace = -10, -10
 			
 			for i, unitName in ipairs(squadDef) do
-				local newUnitID = CreateUnit(unitName,px + xSpace,py,pz + zSpace,0,teamID)
+				local newUnit = {
+					unitname = unitName,
+					x = px + xSpace,
+					y = py,
+					z = pz + zSpace,
+					heading = Spring.GetUnitBuildFacing(builderID),
+					team = teamID,
+				}
 
-				table.insert(unitArray,newUnitID)
+				table.insert(unitArray,newUnit)
 
 				if(i % 4 == 0) then
 					xSpace = -10
@@ -132,7 +147,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 			end
 
-			table.insert(newSquads, {unitID = unitID, factID = factID, members = unitArray})
+			table.insert(newSquads, {unitID = unitID, builderID = builderID, members = unitArray})
 		end
 	end
 	

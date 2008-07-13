@@ -2,7 +2,7 @@
 {
 	object=GBRTrooper_dead.S3O;
 	description=Dead British Soldier;
-	metal=1;
+	metal=-1;
 	energy=150;
 	damage=1000;
 	blocking=0;

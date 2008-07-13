@@ -42,7 +42,7 @@ RestoreFromPinned()
 		turn gun to z-axis <0> speed <120>*PRONE_SPEED;
 		if (fear < PinnedLevel) 
 		{
-		SET LOS_RADIUS to 13;
+		SET LOS_RADIUS to 26;
 		IsPinned=0;
 		}
 }
@@ -50,7 +50,7 @@ RestoreFromPinned()
 Pinned() //hit the dirt and kiss your ass goodbye...
 {
 	IsPinned=1;
-	SET LOS_RADIUS to 4;
+	SET LOS_RADIUS to 13;
 	turn torso to x-axis <0> speed <120>*PRONE_SPEED; 
 	turn torso to y-axis <0> speed <120>*PRONE_SPEED; 
 	turn torso to z-axis <0> speed <120>*PRONE_SPEED; 

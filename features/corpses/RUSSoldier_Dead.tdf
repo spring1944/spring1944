@@ -3,7 +3,7 @@
 	object=RUSTrooper_dead.S3O;
 	description=Dead Soviet Soldier;
 	energy=150;
-	metal=1;
+	metal=-1;
 	damage=1000;
 	blocking=0;
 	footprintx=1;

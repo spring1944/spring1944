@@ -8,7 +8,6 @@ set-signal-mask 0;
 
 	if (IsProne == 0 && isPinned == 0)
 	{
-		SET LOS_RADIUS to 13;
 		IsProne=1;
 		SET UPRIGHT to 0;
 		turn pelvis to y-axis <0> speed <150>*PRONE_SPEED;

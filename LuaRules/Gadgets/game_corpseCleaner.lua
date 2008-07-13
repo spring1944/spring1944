@@ -19,7 +19,7 @@ function gadget:GameFrame(n)
 			fdid = Spring.GetFeatureDefID(fid)
 			fname = FeatureDefs[fdid].name
 			fmetal = FeatureDefs[fdid].metal
-			if(fmetal == 1) then --don't get rid of corpses that can change gameplay
+			if(fmetal == -1) then --don't get rid of corpses that can change gameplay
 				fhp, fmaxhp = Spring.GetFeatureHealth(fid)
 				subtract = fmaxhp * 0.033 --always make it take about 30 seconds regardless of the feature
 				fhp = fhp - subtract

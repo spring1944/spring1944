@@ -4,7 +4,7 @@
 	featuredead=GER_shoulderhit;
 	description=Dead German;
 	energy=150;
-	metal=1;
+	metal=-1;
 	damage=1000;
 	blocking=0;
 	footprintx=1;
@@ -16,7 +16,7 @@
 	object=GER_shoulderhit.S3O;
 	description=Dead German after shoulder hit;
 	energy=150;
-	metal=1;
+	metal=-1;
 	damage=1000;
 	blocking=0;
 	footprintx=1;
