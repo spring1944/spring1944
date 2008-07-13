@@ -63,7 +63,7 @@
 	FootprintZ=2;
 	MaxWaterDepth=5;
 	MaxWaterSlope=5;
-	MaxSlope=16;
+	MaxSlope=24;
 	}
 [CLASS8]
 {

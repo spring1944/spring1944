@@ -28,7 +28,7 @@ StopMoving()
 
 	if (bMoving==0)
 	{
-	set CLOAKED to TRUE;
+	//set CLOAKED to TRUE;
 	start-script TakeCover();
 	}
 
