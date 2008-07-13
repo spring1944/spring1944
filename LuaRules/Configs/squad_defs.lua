@@ -36,8 +36,8 @@ local squadDefs = {
 
     ["gbr_platoon_hq"] =
 	{
-		"gbrrifle",
-		"gbrrifle",
+		"gbrbren",
+		"gbrobserv",
 		"gbrrifle",
 		"gbrrifle",
 		"gbrsten",

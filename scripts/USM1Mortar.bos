@@ -39,8 +39,6 @@ StopMoving()
 {
 	bMoving=0;
 	sleep 5000;
-	set CLOAKED to TRUE;
-
 }
 RestoreFromPinned()
 {

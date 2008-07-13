@@ -334,7 +334,6 @@ bMoving=0;
 sleep 10000;
 if (bMoving==0)
 	{
-	set CLOAKED to TRUE;
 	start-script AimWeapon1();
 	}
 }

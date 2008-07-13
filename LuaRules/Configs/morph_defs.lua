@@ -26,7 +26,7 @@ local morphDefs = {
 
   -- Machineguns
   
-  gbrbren =
+  gbrvickers =
   {
     into = 'gbrsandbagmg',
     tech = 0,
@@ -37,7 +37,7 @@ local morphDefs = {
   
   gbrsandbagmg =
   {
-    into = 'gbrbren',
+    into = 'gbrvickers',
     tech = 0,
     time = 5,
     metal = 0,
@@ -62,7 +62,7 @@ local morphDefs = {
     energy = 0,
   },
   
-  rusdp =
+  rusmaxim =
   {
     into = 'russandbagmg',
     tech = 0,
@@ -73,7 +73,7 @@ local morphDefs = {
 
   russandbagmg =
   {
-    into = 'rusdp',
+    into = 'rusmaxim',
     tech = 0,
     time = 5,
     metal = 0,
