@@ -29,11 +29,7 @@
 	airsightdistance=2500;
 	stealth=1;
 
-	cloakcost=0;
-	cloakcostmoving=0;
-	mincloakdistance=146;
-
-	canmove=1;
+	anmove=1;
 	movementclass=KBOT_Infantry;
 	maxvelocity=1.6;
 	acceleration=0.375;

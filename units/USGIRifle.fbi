@@ -39,10 +39,6 @@
 	canreclaim=0;
 	shownanospray=0;
 
-	mincloakdistance=146;
-	cloakcost=0;
-	cloakcostmoving=0;
-
 	canmove=1;
 	movementclass=KBOT_Infantry;
 	maxvelocity=1.6;

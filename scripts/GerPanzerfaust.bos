@@ -30,7 +30,6 @@ walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAi
 
 StartMoving()
 {
-	if (isPinned == 0 && isProne == 0) set LOS_RADIUS to 13;
 	bMoving=1;
 }
 

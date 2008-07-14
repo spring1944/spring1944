@@ -216,7 +216,6 @@ AimWeapon1(heading, pitch)
 	if (IsProne==0)
 	{	
 	InAimStance=1;
-	set LOS_RADIUS to 13;
 	Move pelvis to y-axis [-1.8] speed <400>*RUN_SPEED;
 	turn pelvis to y-axis heading speed <200.000000>;
 	
@@ -318,7 +317,6 @@ set ACTIVATION to 1;
 bMoving=1;
 	if (bAiming==0)
 	{
-	set LOS_RADIUS to 26;
 	set CLOAKED to FALSE;
 	}
 }
