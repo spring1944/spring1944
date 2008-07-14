@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Rifle Squad;
-	description=4 x Enfield Rifle, 2 x Sten SMG;
+	description=2 x Enfield Rifle, 2 x Sten SMG, 1 x Bren LMG, 1 x Scout;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=410;
+	buildcostmetal=390;
 	buildcostenergy=0;
-	buildtime=410;
+	buildtime=390;
 	footprintx=1;
 	footprintz=1;
 

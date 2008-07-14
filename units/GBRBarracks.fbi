@@ -11,9 +11,9 @@
 
 	name=British Army Barracks;
 	maxdamage=4250;
-	buildcostmetal=3121;
+	buildcostmetal=2805;
 	buildcostenergy=0;
-	buildtime=2080;
+	buildtime=1870;
 	footprintx=4;
 	footprintz=6;
 

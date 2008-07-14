@@ -31,7 +31,7 @@
 
 	builder=1;
 	builddistance=5;
-	workertime=80;
+	workertime=10;
 	canassist=0;
 	canrestore=0;
 	canrepair=0;
