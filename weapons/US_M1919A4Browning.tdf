@@ -25,7 +25,9 @@
 
 	avoidfriendly=0;
 	collidefriendly=0;
-
+	avoidfeature=0;
+	collidefeature=0;
+	
 	rgbcolor=1 0.75 0;
 
 	size=0.00000000000001;
@@ -63,7 +65,10 @@
 	areaofeffect=150;
 	edgeeffectiveness=1;
 
+	avoidfeature=0;
+	collidefeature=0;
 	collidefriendly=0;
+	avoidfriendly=0;
 	noselfdamage=1;
 
 	color=255;

@@ -3,3 +3,10 @@
 	defaultmode=0;  // is turned off mod-wide
 	} 
 
+[EXPERIENCE]
+	{
+	powerScale=40;
+	healthScale=1.5;
+	reloadScale=1.5;
+	experienceMult=0.25;
+	}

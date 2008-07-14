@@ -25,6 +25,8 @@
 	soundtrigger=1;
 	soundstart=GER_MP40;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 

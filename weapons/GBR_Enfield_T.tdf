@@ -19,6 +19,8 @@
 	soundtrigger=0;
 	soundstart=GBR_Enfield;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 
@@ -63,6 +65,9 @@
 	areaofeffect=175;
 	edgeeffectiveness=1;
 
+	avoidfeature=0;
+	collidefeature=0;
+	avoidfriendly=0;
 	collidefriendly=0;
 	noselfdamage=1;
 

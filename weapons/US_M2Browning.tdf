@@ -21,6 +21,11 @@
 	areaofeffect=1;
 	weapontimer=1;
 
+	collidefriendly=0;
+	avoidfriendly=0;
+	avoidfeature=0;
+	collidefeature=0;
+	
 	soundtrigger=1;
 	soundstart=US_50CAL;
 
@@ -110,7 +115,10 @@
 	areaofeffect=150;
 	edgeeffectiveness=1;
 
+	avoidfeature=0;
+	collidefeature=0;
 	collidefriendly=0;
+	avoidfriendly=0;
 	noselfdamage=1;
 
 	color=255;

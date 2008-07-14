@@ -11,7 +11,7 @@
 	firestarter=0.0;
 
 	range=675;
-	reloadtime=1.5;
+	reloadtime=2.25;
 	burst=3;
 	burstrate=.1;
 	sprayangle=400;
@@ -23,6 +23,8 @@
 	soundtrigger=1;
 	soundstart=US_BAR;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 
@@ -37,7 +39,7 @@
 	corethickness=0.15;
 	laserflaresize=0.0001;
 
-	collisionsize=2;=2.5;
+	collisionsize=2.5;
 
 	[damage]
 	{
@@ -67,11 +69,13 @@
 	firestarter=0;
 
 	range=675;
-	reloadtime=3;
+	reloadtime=2.25;
 	weaponvelocity=1200;
 	areaofeffect=70;
 	edgeeffectiveness=1;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 	noselfdamage=1;

@@ -21,6 +21,8 @@
 	soundtrigger=0;
 	soundstart=US_M1garand;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 

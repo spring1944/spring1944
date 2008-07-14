@@ -22,7 +22,9 @@
 
 	avoidfriendly=0;
 	collidefriendly=0;
-
+	avoidfeature=0;
+	collidefeature=0;
+	
 	color=255;
 	color2=226;
 	rgbcolor=1 0.75 0;

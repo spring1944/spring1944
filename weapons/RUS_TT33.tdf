@@ -19,6 +19,8 @@
 	soundtrigger=0;
 	soundstart=RUS_TT33;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 

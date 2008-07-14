@@ -23,6 +23,8 @@
 	soundtrigger=1;
 	soundstart=RUS_Maxim;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 	noselfdamage=1;
@@ -68,6 +70,8 @@
 	edgeeffectiveness=1;
 	burnblow=1;
 
+	avoidfeature=0;
+	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 	noselfdamage=1;
