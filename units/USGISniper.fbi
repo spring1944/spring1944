@@ -11,7 +11,7 @@
 	name=G.I. Sniper;
 	description=Precise Fire Support;
 	maxdamage=100;
-	buildcostmetal=190;
+	buildcostmetal=150;
 	buildcostenergy=0;
 	buildtime=1075.25;
 	footprintx=1;

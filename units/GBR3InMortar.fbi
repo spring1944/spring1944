@@ -13,7 +13,7 @@
 	side=GBR;
 	maxdamage=280;
 	damagemodifier=0.375;
-	buildcostmetal=800;
+	buildcostmetal=300;
 	buildcostenergy=0;
 	buildtime=400;
 	footprintx=1;

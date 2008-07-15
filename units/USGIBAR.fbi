@@ -12,7 +12,7 @@
 	description=Long Range Assault/Light Fire Support Unit;
 	maxdamage=100;
 	damagemodifier=0.375;
-	buildcostmetal=190;
+	buildcostmetal=100;
 	buildcostenergy=0;
 	buildtime=720;
 	footprintx=1;

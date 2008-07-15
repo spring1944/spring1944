@@ -5,8 +5,8 @@
 
 [EXPERIENCE]
 	{
-	powerScale=40;
+	powerScale=1;
 	healthScale=1.5;
 	reloadScale=1.5;
-	experienceMult=0.25;
+	experienceMult=1.25;
 	}

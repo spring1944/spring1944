@@ -13,7 +13,7 @@
 	side=GER;
 	maxdamage=110;
 	damagemodifier=0.375;
-	buildcostmetal=370;
+	buildcostmetal=150;
 	buildcostenergy=0;
 	buildtime=185;
 	footprintx=1;

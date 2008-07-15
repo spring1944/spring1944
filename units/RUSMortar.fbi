@@ -13,7 +13,7 @@
 	side=RUS;
 	maxdamage=80;
 	damagemodifier=0.375;
-	buildcostmetal=490;
+	buildcostmetal=300;
 	buildcostenergy=0;
 	buildtime=245;
 	footprintx=1;
