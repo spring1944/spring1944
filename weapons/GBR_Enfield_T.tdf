@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=1275;
+	range=940;
 	reloadtime=8.5;
 	movingaccuracy=1777;
 	weaponvelocity=1500;
