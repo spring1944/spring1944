@@ -392,6 +392,84 @@ local squadDefs = {
 	
 }
 
+	 ---------------------------------
+	 -- Finnish Platoons and Squads --
+	 ---------------------------------
+	
+	["fin_platoon_command"] =
+	{
+		"finengineer",
+		"fin_platoon_rifle",
+		"finlahti",
+	}
+	
+	["fin_platoon_rifle"] = 
+	{
+		"finsuomi",
+		"finsuomi",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finrifle",
+		"finm26",
+		
+	},
+	
+	["fin_platoon_assault"] = 
+	{
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+		"finsuomi",
+	},
+	
+	["fin_platoon_mg"] = 
+	{
+		"finsuomi",
+	},
+	
+	["fin_platoon_sniper"] = 
+	{
+		"finsniper",
+		"finobserv",
+	},
+	
+	["fin_platoon_mortar"] = 
+	{
+		"finkrh36",
+		"finkrh36",
+		"finkrh36",
+	},
+	
+	["fin_platoon_lightat"] = 
+	{
+		"finsuomi",
+	},
+	
+	["fin_platoon_heavyat"] ]
+	{
+		"finsuomi",
+	},
+	
+	["fin_platoon_scout"] = 
+	{
+		"finobserv",
+		"finobserv",
+		"finobserv",
+	},
+		
+}
+
 -------------------------------------------------
 -- Dont touch below here
 -------------------------------------------------
