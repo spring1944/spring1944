@@ -29,7 +29,7 @@
 	airsightdistance=2500;
 	stealth=1;
 
-	anmove=1;
+	canmove=1;
 	movementclass=KBOT_Infantry;
 	maxvelocity=1.6;
 	acceleration=0.375;
