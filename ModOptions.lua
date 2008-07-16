@@ -42,6 +42,16 @@ local options = {
     max    = 10,
     step   = 0.1,
   },
+    {
+    key    = 'unit_los_mult',
+    name   = 'Unit sight (los/airLoS) multiplier',
+    desc   = 'Applies a multiplier to all the LoS ranges ingame',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.1,
+  },
   {
     key    = 'weapon_edgeeffectiveness_mult',
     name   = 'Weapon edgeeffectiveness multiplier',
