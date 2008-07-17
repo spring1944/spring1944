@@ -6,7 +6,7 @@ piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, flare, gunhead, backblast;
 
 static-var DecreasingFear, last_pos, bMoving, run_speed,
-walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAiming, IsPinned;
+walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, InAimStance, bAiming, IsPinned, FearOk;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -203,9 +203,37 @@ FireWeapon1()
 	//emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from backblast;
 	emit-sfx XSMALL_MUZZLEFLASH from backblast;
-	explode gun type FALL | SMOKE;
+	FearOk=1;
 	call-script ChargeAnim();
 	return (0);
 }
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = torso;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (bMoving==1) return (0);
+	if (bAiming && FearOk==1)
+	{
+	wait-for-turn pelvis around y-axis;
+	return (1);
+	}
+	return(0);
+}
+
+FireWeapon2()
+{
+FearOk=0;
+return (0);
+}
+
 
 #include "Inf_death.h"

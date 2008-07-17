@@ -19,8 +19,8 @@
 	targetmoveerror=0.075;
 	startvelocity=200;
 	weaponvelocity=400;
-	areaofeffect=35;
-	edgeeffectiveness=0.1;
+	areaofeffect=55;
+	edgeeffectiveness=0.01;
 
 	soundstart=GER_Panzerfaust;
 	soundhit=GEN_Explo_2;
@@ -48,8 +48,8 @@
 	[damage]
 	{
 		default=15150;
-		Infantry=720;
-		guns=600;
+		Infantry=5720;
+		guns=3200;
 		lightbuildings=2500;
 		bunkers=1500;
 		sandbags=250;
@@ -60,7 +60,7 @@
 
 [panzerfaustfear]
 {
-	id=301;
+	id=501;
 	name=Supression from Panzerfaust fire;
 	rendertype=1;
 	turret=1;

@@ -8,16 +8,19 @@
 
 	lineofsight=1;
 	firestarter=100;
-
-	range=180;
+	explosiongenerator=custom:Weapon_Explosion_Flamethrower;
+	//CEGTag=
+	range=225;
 	reloadtime=1;
 	burst=20;
 	burstrate=.04;
 	sprayangle=1024;
 	weaponvelocity=140;
-	areaofeffect=32;
+	areaofeffect=80;
+	explosionspeed=0.0001;
+	edgeeffectiveness=0.25;
 	weapontimer=2;
-
+	groundbounce=0;
 	soundtrigger=1;
 	soundstart=GEN_Flamethrower;
 	soundhit=none;
@@ -26,12 +29,11 @@
 
 	[damage]
 	{
-		default=140;
+		default=65;
 		bunkers=300;
 		sandbags=5;
 		mines=0;
 		flag=0.000000001;
-		tanks=50;
 	}
 }
 
@@ -47,7 +49,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 	noselfdamage=1;
-	range=180;
+	range=225;
 	reloadtime=1;
 	sprayangle=0;
 	weaponvelocity=140;

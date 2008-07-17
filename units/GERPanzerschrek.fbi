@@ -25,9 +25,14 @@
 	smoothanim=0;
 
 	SeismicSignature=0;
-	sightdistance=840;
+	sightdistance=420;
 	airsightdistance=2500;
 	stealth=1;
+	
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=200;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

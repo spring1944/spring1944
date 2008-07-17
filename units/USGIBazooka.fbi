@@ -25,7 +25,7 @@
 	smoothanim=0;
 
 	SeismicSignature=0;
-	sightdistance=840;
+	sightdistance=420;
 	airsightdistance=2500;
 	stealth=1;
 
@@ -37,6 +37,11 @@
 	turnrate=1010;
 	maxslope=20;
 	maxwaterdepth=5;
+	
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=200;
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode

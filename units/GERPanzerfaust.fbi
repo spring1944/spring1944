@@ -32,7 +32,7 @@
 	init_cloaked=1;
 	cloakcost=0;
 	cloakcostmoving=0;
-	mincloakdistance=220;
+	mincloakdistance=180;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
@@ -51,7 +51,9 @@
 
 	weapon1=Panzerfaust;
 	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
+	onlytargetcategory2=NFLAGNAIR;
+	weapon2=panzerfaustfear;
+	weaponslaveto2=1;
 
 	[sfxtypes]
 	{
