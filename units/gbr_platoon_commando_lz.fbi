@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Commando Team;
-	description=3 x Commando Leader;
+	description=6 x Commando;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=2400;
+	buildcostmetal=1500;
 	buildcostenergy=0;
-	buildtime=1200;
+	buildtime=150;
 	footprintx=1;
 	footprintz=1;
 

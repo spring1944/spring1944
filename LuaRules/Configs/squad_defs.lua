@@ -112,6 +112,16 @@ local squadDefs = {
 	
 	["gbr_platoon_commando"] =
 	{
+		"gbrcommandoc",
+		"gbrcommandoc",
+		"gbrcommandoc",
+	},
+	
+	["gbr_platoon_commando_lz"] =
+	{
+		"gbrcommando",
+		"gbrcommando",
+		"gbrcommando",
 		"gbrcommando",
 		"gbrcommando",
 		"gbrcommando",

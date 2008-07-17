@@ -15,7 +15,7 @@ baseLoop()
 {
 	while (1)
 		{
-		emit-sfx 1024 from base1;
+		emit-sfx 1024 from base;
 		sleep 20;
 		}
 }
@@ -81,6 +81,7 @@ CloseYard()
 		set YARD_OPEN to 0;
 	}
 	set BUGGER_OFF to 0;
+	emit-sfx 2048 from base;
 }
 
 QueryNanoPiece(piecenum)

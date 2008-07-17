@@ -25,10 +25,7 @@
 	[damage]
 	{
 		default=8000;
-		infantry=400;
-		guns=700;
 		bunkers=6250;
-		sandbags=8000;
 		mines=0;
 		flag=0;
 	}

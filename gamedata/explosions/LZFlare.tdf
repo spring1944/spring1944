@@ -17,6 +17,8 @@
       			sizemodmod = 0;
       			speed = 0, 0.0, 0;
       			pos = 0, 0.0, 0;
+				alwaysvisible=0;
+				useAirLos=0;
       		}
 
 		air=1;

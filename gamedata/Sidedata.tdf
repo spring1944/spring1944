@@ -438,7 +438,7 @@
 
 	[GBRLZ]
 	{
-	canbuild1=GBRCommando;
+	canbuild1=gbr_platoon_commando_lz;
 	}
 
 	[GBREngineer]

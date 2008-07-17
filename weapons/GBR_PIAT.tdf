@@ -12,7 +12,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=180;
+	range=225;
 	reloadtime=15;
 	accuracy=500;
 	targetmoveerror=0.02;

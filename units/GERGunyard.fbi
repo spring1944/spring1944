@@ -9,7 +9,7 @@
 	yardmap=ooooooo occccco occccco occccco occccco occccco occccco ;
 
 	name=Towed Gun Yard;
-	side=USSR;
+	side=GER;
 	maxdamage=5000;
 	idleautoheal=3;
 	buildcostmetal=2175;
