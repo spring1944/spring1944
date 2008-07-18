@@ -22,7 +22,7 @@
 	smoothanim=0;
 
 	seismicsignature=0;
-	sightdistance=525;
+	sightdistance=825;
 	airsightdistance=2500;
 	radardistancejam=75;
 	onoffable=1;

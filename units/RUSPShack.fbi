@@ -32,7 +32,7 @@
 	shownanospray=0;
 
 	init_cloaked=1;
-	cloakcost=1;
+	cloakcost=0;
 	mincloakdistance=300;
 
 	canmove=1;
