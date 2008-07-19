@@ -7,7 +7,7 @@
 	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
-	yardmap=oooo occo occo occo occo cccc;
+	yardmap=oooo occo occo cccc cccc cccc;
 
 	name=British Army Barracks;
 	maxdamage=4250;
