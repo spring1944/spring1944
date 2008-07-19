@@ -59,12 +59,12 @@ OpenYard()
 
 CloseYard()
 {
-	set YARD_OPEN to 0;
+//set YARD_OPEN to 0;
 	while( get YARD_OPEN )
 	{
 		set BUGGER_OFF to 1;
 		sleep 1500;
-		set YARD_OPEN to 0;
+		//set YARD_OPEN to 0;
 	}
 	set BUGGER_OFF to 0;
 }
@@ -78,7 +78,7 @@ Go()
 
 Stop()
 {
-	set INBUILDSTANCE to 0;
+//	set INBUILDSTANCE to 0;
 	call-script CloseYard();
 	call-script deactivatescr();
 }
@@ -117,7 +117,8 @@ RequestState(requestedstate, currentstate)
 
 Create()
 {
-
+	set INBUILDSTANCE to 1;
+	set YARD_OPEN to 1;
   while (get BUILD_PERCENT_LEFT)
    {
     move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;

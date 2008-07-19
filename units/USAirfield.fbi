@@ -19,7 +19,6 @@
 
 	hidedamage=1;
 	shownanoframe=0;
-	unitrestricted=3;
 	smoothanim=0;
 
 	metalstorage=1000;
@@ -35,7 +34,7 @@
 	canbeassisted=0;
 
 	canmove=1;
-	maxslope=10;
+	maxslope=40;
 
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=60;//7

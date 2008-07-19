@@ -61,6 +61,16 @@ local options = {
     min	   = 0.01,
     max    = 10,
     step   = 0.1,
+  },
+  {
+    key    = 'unit_buildable_airfields',
+    name   = 'Airfield enabler',
+    desc   = 'Adds/removes airfields from build trees',
+    type   = 'number',
+    def    = 0,
+    min	   = 0,
+    max    = 1,
+    step   = 1,
   }
 }
 

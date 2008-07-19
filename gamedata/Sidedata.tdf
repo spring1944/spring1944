@@ -163,9 +163,10 @@
 		canbuild3=USVehicleYard;
 		//canbuild4=USSPYard;
 		canbuild5=USTankYard;
-		canbuild6=USStorage;
-		canbuild7=USSupplyDepot;
-		canbuild8=TankObstacle;
+		canbuild6=USAirfield;
+		canbuild7=USStorage;
+		canbuild8=USSupplyDepot;
+		canbuild9=TankObstacle;
 	}
 
 	[USTankYard]
@@ -302,9 +303,10 @@
 		canbuild3=GERVehicleYard;
 		//canbuild4=GERSPYard;
 		canbuild5=GERTankYard;
-		canbuild6=GERStorage;
-		canbuild7=GERSupplyDepot;
-		canbuild8=TankObstacle;
+		canbuild6=GERAirfield;
+		canbuild7=GERStorage;
+		canbuild8=GERSupplyDepot;
+		canbuild9=TankObstacle;
 	}
 
 	[GERTankYard]
@@ -473,9 +475,10 @@
 		canbuild3=GBRVehicleYard;
 		//canbuild4=GBRSPYard;
 		canbuild5=GBRTankYard;
-		canbuild6=GBRStorage;
-		canbuild7=GBRSupplyDepot;
-		canbuild8=TankObstacle;
+		canbuild6=GBRAirfield;
+		canbuild7=GBRStorage;
+		canbuild8=GBRSupplyDepot;
+		canbuild9=TankObstacle;
 	}
 
 	[GBRTankYard]
@@ -630,9 +633,10 @@
 		canbuild3=RUSVehicleYard;
 		//canbuild4=RUSSPYard;
 		canbuild5=RUSTankYard;
-		canbuild6=RUSStorage;
-		canbuild7=RUSSupplyDepot;
-		canbuild8=TankObstacle;
+		canbuild6=RUSAirfield;
+		canbuild7=RUSStorage;
+		canbuild8=RUSSupplyDepot;
+		canbuild9=TankObstacle;
 	}
 
 	[RUSVehicleYard]
