@@ -65,9 +65,12 @@ if (gadgetHandler:IsSyncedCode()) then
 				local squad_members = squad.members
 				local squad_builder = squad.builderID
 				local squad_units = {}
+				local states = {}
 
 				local queue = GetCommandQueue(squad_spawner)
-				local states = Spring.GetUnitStates(squad_builder)
+				if squad_builder then
+					states = Spring.GetUnitStates(squad_builder)
+				end
 
 				for _,unit in ipairs(squad_members) do
 					local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
@@ -128,12 +131,16 @@ if (gadgetHandler:IsSyncedCode()) then
 			local xSpace, zSpace = -10, -10
 			
 			for i, unitName in ipairs(squadDef) do
+				local unitHeading = 0
+				if builderID then 
+					unitHeading = Spring.GetUnitBuildFacing(builderID)
+				end
 				local newUnit = {
 					unitname = unitName,
 					x = px + xSpace,
 					y = py,
 					z = pz + zSpace,
-					heading = Spring.GetUnitBuildFacing(builderID),
+					heading = unitHeading,
 					team = teamID,
 				}
 
