@@ -10,10 +10,10 @@
 	firestarter=0.0;
 
 	range=1240;
-	reloadtime=9;
+	reloadtime=12;
 	accuracy=570;
 	startvelocity=1000;
-	weaponvelocity=480;
+	weaponvelocity=550;
 	areaofeffect=81;
 	edgeeffectiveness=0.2;
 
@@ -48,9 +48,9 @@
 	firestarter=0;
 
 	range=1240;
-	reloadtime=9;
+	reloadtime=12;
 	startvelocity=1000;
-	weaponvelocity=426;
+	weaponvelocity=550;
 	areaofeffect=210;
 	edgeeffectiveness=1;
 
