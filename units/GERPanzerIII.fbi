@@ -18,9 +18,9 @@
 	flankingbonusmin=.84;
 	flankingbonusmode=3;
 
-	buildcostmetal=2400;
+	buildcostmetal=2625;
 	buildcostenergy=0;
-	buildtime=320;
+	buildtime=350;
 	footprintx=3;
 	footprintz=3;
 	mass=2500;
