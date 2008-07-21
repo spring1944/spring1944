@@ -45,7 +45,7 @@ local floor = math.floor
 ----------------------------------------------------------------------------------------
 
 local unitHeights  = {}
-local suppressIcons = { [0] = {}, [1] = {}, [2] = {}, [3] = {} }
+local suppressIcons = { [0] = {}, [1] = {}, [2] = {} }
 
 local myAllyTeamID = 666
 
@@ -55,8 +55,7 @@ local suppressTexBase = 'LuaUI/Images/Suppress/'
 local suppressTextures = {
   [0] = nil,
   [1] = suppressTexBase .. 'suppress1.png',
-  [2] = suppressTexBase .. 'suppress2.png',
-  [3] = suppressTexBase .. 'suppress3.png'
+  [2] = suppressTexBase .. 'suppress2.png'
 }
 
 local pinnedThreshold = 15
@@ -97,13 +96,13 @@ function SetUnitsuppressIcon(unitID)
 	if (suppressLevel == 0) then -- No suppression ^_^
 		suppressIconType = 0
 	elseif (suppressLevel < pinnedThreshold) then -- suppressed, not pinned O_O
-		suppressIconType = 2
+		suppressIconType = 1
 	else -- pinned! ;_;
-		suppressIconType = 3
+		suppressIconType = 2
 	end	
 	unitHeights[unitID] = ud.height + iconoffset
 	
-	for i = 1, 3 do
+	for i = 1, 2 do
 		suppressIcons[i][unitID] = nil
 	end
 	suppressIcons[suppressIconType][unitID] = true
@@ -138,7 +137,6 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
   unitHeights[unitID] = nil
   suppressIcons[1][unitID] = nil
   suppressIcons[2][unitID] = nil
-  suppressIcons[3][unitID] = nil
 end
 
 
@@ -147,7 +145,6 @@ function widget:UnitGiven(unitID, unitDefID, oldTeam, newTeam)
     unitHeights[unitID] = nil
     suppressIcons[1][unitID] = nil
     suppressIcons[2][unitID] = nil
-    suppressIcons[3][unitID] = nil
   end
 end
 
@@ -183,13 +180,6 @@ function widget:DrawWorld()
   if (suppressIcons[2] ~= nil) then
       glTexture( suppressTextures[2] )
       for unitID,_ in pairs(suppressIcons[2]) do
-        glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
-      end
-  end
-  
-  if (suppressIcons[3] ~= nil) then
-      glTexture( suppressTextures[3] )
-      for unitID,_ in pairs(suppressIcons[3]) do
         glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
       end
   end
