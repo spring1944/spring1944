@@ -62,6 +62,6 @@
 	{
 		hq=1;
 		refillamount=1000000; 
-		arrivalgap=300;	
+		arrivalgap=600;	
 	}
 }

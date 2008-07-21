@@ -30,15 +30,13 @@
 	[damage]
 	{
 		default=17422;
-		infantry=600;
-		guns=550;
+		infantry=1900;
+		guns=1500;
 		lightbuildings=750;
-		bunkers=300;
+		bunkers=750;
 		sandbags=250;
 		mines=0;
 		flag=0;
-		armouredvehicles=4000;
-		unarmouredvehicles=8000;
 	}
 }
 [panzerschrekfear]

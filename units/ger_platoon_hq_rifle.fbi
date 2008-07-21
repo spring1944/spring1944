@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=ger_platoon_hq_rifle;
+	objectname=MortarShell.S3O;
+	buildpic=GERRifle.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Rifle Platoon;
+	description=18 x Kar 98K Rifle, 4 x MP40 SMG, 2x MG42 MG;
+	side=GER;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=720;
+	buildcostenergy=0;
+	buildtime=720;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	stealth=1;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

@@ -28,8 +28,7 @@
 	SeismicSignature=0;
 	sightdistance=840;
 	stealth=1;
-	energystorage=100;
-	metalstorage=1000;
+	metalstorage=250;
 
 	builder=1;
 	builddistance=5;

@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=rus_platoon_big_assault;
+	objectname=MortarShell.S3O;
+	buildpic=RUSPPsh.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Assault Platoon;
+	description=24 x PPsh-43 SMG;
+	side=RUS;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=1150;
+	buildcostenergy=0;
+	buildtime=575;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	stealth=1;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}

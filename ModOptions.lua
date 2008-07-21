@@ -61,7 +61,7 @@ local options = {
     min	   = 0.01,
     max    = 10,
     step   = 0.1,
-  },
+  }--[[
   {
     key    = 'unit_buildable_airfields',
     name   = 'Airfield enabler',
@@ -71,7 +71,17 @@ local options = {
     min	   = 0,
     max    = 1,
     step   = 1,
-  }
+  },
+    {
+    key    = 'unit_hq_platoon',
+    name   = 'HQ-centric infantry game',
+    desc   = 'Removes rifle/assault squads from barracks, puts them in HQ',
+    type   = 'number',
+    def    = 0,
+    min	   = 0,
+    max    = 1,
+    step   = 1,
+  }]]--
 }
 
 return options

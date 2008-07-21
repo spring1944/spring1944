@@ -88,7 +88,7 @@
 		maxammo=13;
 		weaponswithammo=1;
 		lowammolevel=4;
-		weaponcost=40;
+		weaponcost=6;
 		canareaattack=1;
 		defaultMove=1;
 	}

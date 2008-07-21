@@ -14,9 +14,9 @@
 	description=- Increases ammunition storage;
 	side=GBR;
 	maxdamage=2500;
-	buildcostmetal=3860;
+	buildcostmetal=900;
 	buildcostenergy=0;
-	buildtime=2575;
+	buildtime=600;
 	footprintx=4;
 	footprintz=6;
 
@@ -24,9 +24,8 @@
 	smoothanim=0;
 
 
-	unitrestricted=3;
 	energymake=0;
-	energystorage=500;
+	energystorage=250;
 
 	sightdistance=1;
 	stealth=1;

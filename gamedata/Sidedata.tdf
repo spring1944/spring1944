@@ -63,6 +63,8 @@
 		canbuild1=USHQEngineer;
 		//canbuild2=USAirEngineer;
 		canbuild3=us_platoon_hq;
+		//canbuild4=us_platoon_hq_rifle;
+		//canbuild5=us_platoon_hq_assault;
 	}
 	
 	[AI_USHQ]
@@ -163,10 +165,9 @@
 		canbuild3=USVehicleYard;
 		//canbuild4=USSPYard;
 		canbuild5=USTankYard;
-		canbuild6=USAirfield;
-		canbuild7=USStorage;
-		canbuild8=USSupplyDepot;
-		canbuild9=TankObstacle;
+		canbuild6=USStorage;
+		canbuild7=USSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[USTankYard]
@@ -213,6 +214,8 @@
 		canbuild1=GERHQEngineer;
 		//canbuild2=GERAirEngineer;
 		canbuild3=ger_platoon_hq;
+		//canbuild4=ger_platoon_hq_rifle;
+		//canbuild5=ger_platoon_hq_assault;
 	}
 	
 	[AI_GERHQBunker]
@@ -303,10 +306,10 @@
 		canbuild3=GERVehicleYard;
 		//canbuild4=GERSPYard;
 		canbuild5=GERTankYard;
-		canbuild6=GERAirfield;
-		canbuild7=GERStorage;
-		canbuild8=GERSupplyDepot;
-		canbuild9=TankObstacle;
+		//canbuild6=GERAirfield;
+		canbuild6=GERStorage;
+		canbuild7=GERSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[GERTankYard]
@@ -361,7 +364,8 @@
 		canbuild1=GBRHQEngineer;
 		//canbuild2=USAirEngineer;
 		canbuild2=gbr_platoon_hq;
-		//canbuild4=GBRBREN;
+		//canbuild3=gbr_platoon_hq_rifle;
+		//canbuild4=gbr_platoon_hq_assault;
 	}
 	
 	[AI_GBRHQ]
@@ -475,10 +479,10 @@
 		canbuild3=GBRVehicleYard;
 		//canbuild4=GBRSPYard;
 		canbuild5=GBRTankYard;
-		canbuild6=GBRAirfield;
-		canbuild7=GBRStorage;
-		canbuild8=GBRSupplyDepot;
-		canbuild9=TankObstacle;
+		//canbuild6=GBRAirfield;
+		canbuild6=GBRStorage;
+		canbuild7=GBRSupplyDepot;
+		canbuild8=TankObstacle;
 	}
 
 	[GBRTankYard]
@@ -569,13 +573,15 @@
 		canbuild1=RUSCommissar;
 		canbuild2=RUSEngineer;
 		canbuild3=rus_platoon_rifle;
-		canbuild4=rus_platoon_assault;
-		canbuild5=rus_platoon_mg;
-		canbuild6=rus_platoon_scout;
-		canbuild7=rus_platoon_atlight;
-		canbuild8=rus_platoon_atheavy;
-		canbuild9=rus_platoon_sniper;
-		canbuild10=rus_platoon_mortar;
+		//canbuild4=rus_platoon_big_rifle;
+		canbuild5=rus_platoon_assault;
+		//canbuild6=rus_platoon_big_assault;
+		canbuild7=rus_platoon_mg;
+		canbuild8=rus_platoon_scout;
+		canbuild9=rus_platoon_atlight;
+		canbuild10=rus_platoon_atheavy;
+		canbuild11=rus_platoon_sniper;
+		canbuild12=rus_platoon_mortar;
 	}
 
 	[RUSEngineer]
@@ -633,7 +639,7 @@
 		canbuild3=RUSVehicleYard;
 		//canbuild4=RUSSPYard;
 		canbuild5=RUSTankYard;
-		canbuild6=RUSAirfield;
+		//canbuild6=RUSAirfield;
 		canbuild7=RUSStorage;
 		canbuild8=RUSSupplyDepot;
 		canbuild9=TankObstacle;

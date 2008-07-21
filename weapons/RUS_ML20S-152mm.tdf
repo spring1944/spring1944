@@ -12,11 +12,11 @@
 	firestarter=0.0;
 
 	range=2530;
-	reloadtime=13.5;
-	accuracy=400;
+	reloadtime=11.5;
+	accuracy=290;
 	targetmoveerror=0.02;
 	weaponvelocity=1200;
-	areaofeffect=70;
+	areaofeffect=150;
 	edgeeffectiveness=0.1;
 
 	soundstart=RUS_152mm;
@@ -68,8 +68,8 @@
 	ballistic=1;
 
 	range=2530;
-	reloadtime=13.5;
-	accuracy=500;
+	reloadtime=11.5;
+	accuracy=290;
 	targetmoveerror=0.05;
 	firestarter=0.0;
 	weaponvelocity=1300;
@@ -106,8 +106,8 @@
 	[damage]
 	{
 		default=9750;
-		infantry=450;
-		guns=300;
+		infantry=4500;
+		guns=3000;
 		lightbuildings=1000;
 		bunkers=250;
 		sandbags=500;
@@ -130,7 +130,7 @@
 	range=2530;
 	reloadtime=13.5;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=250;
 	edgeeffectiveness=1;
 
 	collidefriendly=0;

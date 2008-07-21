@@ -48,9 +48,9 @@
 	[damage]
 	{
 		default=15150;
-		Infantry=5720;
-		guns=3200;
-		lightbuildings=2500;
+		infantry=2600;
+		guns=2000;
+		lightbuildings=1250;
 		bunkers=1500;
 		sandbags=250;
 		mines=0;
@@ -60,7 +60,7 @@
 
 [panzerfaustfear]
 {
-	id=501;
+	id=401;
 	name=Supression from Panzerfaust fire;
 	rendertype=1;
 	turret=1;
@@ -73,7 +73,7 @@
 	reloadtime=15;
 	energypershot=0;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=90;
 	edgeeffectiveness=1;
 
 	collidefriendly=0;

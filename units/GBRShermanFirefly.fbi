@@ -94,6 +94,6 @@
 		maxammo=14;
 		weaponswithammo=2;
 		lowammolevel=5;
-		weaponcost=28;
+		weaponcost=5;
 	}
 }

@@ -24,14 +24,12 @@
 	[damage]
 	{
 		default=8500;
-		infantry=600;
-		guns=500;
-		lightbuildings=700;
-		bunkers=300;
+		infantry=1100;
+		guns=900;
+		lightbuildings=750;
+		bunkers=750;
 		sandbags=250;
 		mines=0;
 		flag=0;
-		armouredvehicles=2500;
-		unarmouredvehicles=5000;
 	}
 }

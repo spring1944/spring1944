@@ -16,7 +16,7 @@
 	accuracy=200;
 	targetmoveerror=0.05;
 	weaponvelocity=900;
-	areaofeffect=40;
+	areaofeffect=120;
 	edgeeffectiveness=0.1;
 
 	soundstart=RUS_122mm;

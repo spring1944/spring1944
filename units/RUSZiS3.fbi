@@ -47,11 +47,11 @@
 	weapon1=ZiS376mmHE;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
-	maxangledif1=12;
+	maxangledif1=25;
 	weapon2=ZiS376mmAP;
 	onlytargetcategory2=TANK;
 	weaponmaindir2=0 0 1;
-	maxangledif2=12;
+	maxangledif2=25;
 	weapon3=ZiS376mmHEFear;
 	onlytargetcategory3=NFLAGNAIR;
 	weaponslaveto3=1;
@@ -75,7 +75,7 @@
 		maxammo=8;
 		weaponswithammo=2;
 		lowammolevel=2;
-		weaponcost=20;
+		weaponcost=8;
 		defaultMove=1;
 	}
 }

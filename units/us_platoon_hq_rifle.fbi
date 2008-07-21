@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=us_platoon_hq_rifle;
+	objectname=MortarShell.S3O;
+	buildpic=usgirifle.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Rifle Platoon;
+	description=16 x Garand Rifle, 4 x Thompson SMG, 4 x BAR Automatic Rifle;
+	side=US;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=610;
+	buildcostenergy=0;
+	buildtime=610;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	stealth=1;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}
