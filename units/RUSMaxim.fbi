@@ -4,7 +4,7 @@
 	objectname=RUSMaxim.S3O;
 	corpse=RUSsoldier_dead;
 	icontype=lightmg;
-	soundcategory=USInf;
+	soundcategory=RUSInf;
 	category=NFLAGNAIR NFLAG INFTARG ;
 	tedclass=KBOT;
 

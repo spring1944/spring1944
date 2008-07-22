@@ -30,7 +30,7 @@
 	stealth=1;
 
 	init_cloaked=1;
-	cloakcost=1;
+	cloakcost=0;
 	cloakcostmoving=0;
 	mincloakdistance=150;
 
