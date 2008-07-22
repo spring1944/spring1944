@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=3 x DP Machinegun;
+	description=1 x Maxim Heavy Machinegun, 2 x DP Light Machinegun;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

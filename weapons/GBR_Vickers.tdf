@@ -10,9 +10,9 @@
 	lineofsight=1;
 	firestarter=1;
 
-	range=900;
+	range=950;
 	reloadtime=2.7;
-	burst=7;
+	burst=10;
 	burstrate=.103;
 	sprayangle=300;
 	areaofeffect=1;
@@ -60,7 +60,7 @@
 }
 [vickersfear]
 {
-	id=501;
+	id=301;
 	name=Supression from Vickers fire;
 	rendertype=1;
 	turret=1;
@@ -71,11 +71,11 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=900;
+	range=950;
 	reloadtime=2.7;
 	energypershot=0;
 	weaponvelocity=800;
-	areaofeffect=150;
+	areaofeffect=250;
 	edgeeffectiveness=1;
 	burnblow=1;
 

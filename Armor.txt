@@ -40,6 +40,7 @@
 	RUSRPG43=99;
 	RUSObserv=99;
 	RUSMortar=99;
+	RUSMaxim=99;
 	RUSSniper=99;
 	RUSPartisanRifle=99;
 	RUSCommissar=99;
@@ -51,6 +52,7 @@
 	GBRRifle=99;
 	GBRSTEN=99;
 	GBRBren=99;
+	GBRVickers=99;
 	GBRObserv=99;
 	GBRSniper=99;
 	GBR3inMortar=99;

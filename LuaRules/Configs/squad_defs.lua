@@ -135,7 +135,7 @@ local squadDefs = {
 	["gbr_platoon_mg"] =
 	{
 		"gbrbren",
-		"gbrbren",
+		"gbrvickers",
 		"gbrbren",
 	},
 
@@ -442,7 +442,7 @@ local squadDefs = {
 	["rus_platoon_mg"] =
 	{
 		"rusdp",
-		"rusdp",
+		"rusmaxim",
 		"rusdp",
 	},
 

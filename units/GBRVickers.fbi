@@ -1,39 +1,41 @@
 [unitinfo]
 {
-	unitname=GBRSandbagMG;
-	objectname=GBRSandbagMG.S3O;
-	corpse=SandbagMG_Destroyed;
+	unitname=GBRVickers;
+	objectname=GBRVickers.S3O;
+	corpse=GBRsoldier_dead;
 	icontype=lightmg;
-	soundcategory=GbrInf;
-	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
-	tedclass=TURRET;
-	yardmap=o;
+	soundcategory=GBRInf;
+	category=NFLAGNAIR NFLAG INFTARG ;
+	tedclass=KBOT;
 
-	name=Light Defensive Position;
-	description=- Directional Infantry area denial;
+	name=Vickers;
+	description=Heavy Machinegun;
 	side=GBR;
-	maxdamage=1000;
-	buildcostmetal=645;
+	maxdamage=140;
+	damagemodifier=0.375;
+	buildcostmetal=200;
 	buildcostenergy=0;
-	buildtime=430;
-	footprintx=2;
-	footprintz=2;
+	buildtime=1150;
+	footprintx=1;
+	footprintz=1;
+	mass=75;
 
+	upright=1;
 	shownanoframe=0;
 	smoothanim=0;
-
+	SeismicSignature=0;
 	sightdistance=840;
 	airsightdistance=2500;
 	stealth=1;
 
-	activatewhenbuilt=1;
-
+		canmove=1;
+	movementclass=KBOT_Gun;
+	maxvelocity=0.8;
+	acceleration=0.2;
+	brakerate=0.6;
+	turnrate=420;
 	maxslope=15;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=4;
-	buildinggrounddecaltype=Dirt2.dds;
+	maxwaterdepth=5;
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
@@ -41,15 +43,6 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=Vickers;
-	onlytargetcategory1=INFTARG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=120;
-	weapon2=VickersFear;
-	onlytargetcategory2=INFTARG;
-	weaponslaveto2=1;
-	weaponmaindir2=0 0 1;
-	maxangledif2=120;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
