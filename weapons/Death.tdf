@@ -3,7 +3,7 @@
 	id=0;
 	name=No Weapon;
 
-	range=160;
+	range=20;
 
 	[damage]
 	{

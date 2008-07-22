@@ -31,7 +31,7 @@
 
 	init_cloaked=1;
 	cloakcost=1;
-	cloakcostmoving=1;
+	cloakcostmoving=0;
 	mincloakdistance=150;
 
 	canmove=1;
@@ -46,11 +46,11 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 	
-	weapon1=PPsh;
-	badtargetcategory1=LIGHTVEH;
-	onlytargetcategory1=INFTARG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=170;
+	weapon1=NOWEAPON;
+	//badtargetcategory1=LIGHTVEH;
+	//onlytargetcategory1=INFTARG;
+	//weaponmaindir1=0 0 1;
+	//maxangledif1=170;
 	weapon2=RPG43;
 	onlytargetcategory2=TANK;
 	weaponmaindir2= 0 0 1;
