@@ -3,7 +3,7 @@
 	unitname=RUSCommander;
 	objectname=RUSEngineer.S3O;
 	corpse=RUSSoldier_dead;
-	icontype=commissar;
+	icontype=engineer;
 	soundcategory=RUSInf;
 	category=NOWEAPON NFLAG COMMANDER INFTARG NFLAGNAIR;
 	tedclass=CONSTR;
