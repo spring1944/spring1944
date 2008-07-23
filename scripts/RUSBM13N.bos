@@ -3,7 +3,7 @@
 piece  base, turret, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8;
 piece  rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16, wheel1, wheel2, wheel3;
  
-static-var  restore_delay, rock, reloading, mainHead, FearOk, isDeployed, normalSpeed;
+static-var  restore_delay, rock, reloading, mainHead, FearOk, isDeployed, normalSpeed, rocket;
 
 // Signal definitions
 #define SIG_AIM		2 // Machinegun
@@ -64,6 +64,7 @@ Create()
 	reloading = FALSE;
 	isDeployed = FALSE;
 	normalSpeed = get MAX_SPEED;
+	rocket = 0;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
 }
@@ -72,6 +73,29 @@ RestoreAfterDelay()
 {
 	sleep restore_delay;
 	turn rails to x-axis <0.000000> speed <100>;
+}
+
+RestoreRockets(time)
+{
+	//get PRINT (666);
+	sleep time;
+	show rocket1;
+	show rocket2;
+	show rocket3;
+	show rocket4;
+	show rocket5;
+	show rocket6;
+	show rocket7;
+	show rocket8;
+	show rocket9;
+	show rocket10;
+	show rocket11;
+	show rocket12;
+	show rocket13;
+	show rocket14;
+	show rocket15;
+	show rocket16;
+	rocket = 0;
 }
 
 Deploy() 
@@ -126,7 +150,70 @@ SweetSpot(piecenum)
 // Weapon 1 - Main cannon, HE
 QueryWeapon1(piecenum)
 {
-	piecenum = rocket1;
+	if (rocket == 1) {
+		piecenum = rocket1;
+		hide rocket1;
+	}
+	else if (rocket == 2) {
+		piecenum = rocket2;
+		hide rocket2;
+	}
+	else if (rocket == 3) {
+		piecenum = rocket3;
+		hide rocket3;
+	}
+	else if (rocket == 4) {
+		piecenum = rocket4;
+		hide rocket4;
+	}
+	else if (rocket == 5) {
+		piecenum = rocket5;
+		hide rocket5;
+	}
+	else if (rocket == 6) {
+		piecenum = rocket6;
+		hide rocket6;
+	}
+	else if (rocket == 7) {
+		piecenum = rocket7;
+		hide rocket7;
+	}
+	else if (rocket == 8) {
+		piecenum = rocket8;
+		hide rocket8;
+	}
+	else if (rocket == 9) {
+		piecenum = rocket9;
+		hide rocket9;
+	}
+	else if (rocket == 10) {
+		piecenum = rocket10;
+		hide rocket10;
+	}
+	else if (rocket == 11) {
+		piecenum = rocket11;
+		hide rocket11;
+	}
+	else if (rocket == 12) {
+		piecenum = rocket12;
+		hide rocket12;
+	}
+	else if (rocket == 13) {
+		piecenum = rocket13;
+		hide rocket13;
+	}
+	else if (rocket == 14) {
+		piecenum = rocket14;
+		hide rocket14;
+	}
+	else if (rocket == 15) {
+		piecenum = rocket15;
+		hide rocket15;
+	}
+	else if (rocket == 16) {
+		piecenum = rocket16;
+		hide rocket16;
+	}
 }
 
 AimFromWeapon1(piecenum)
@@ -161,6 +248,10 @@ FireWeapon1()
 	return 0;
 }
 
+Shot1()
+{
+	rocket = rocket + 1;
+}
 	
 AimFromWeapon2(piecenum) //Rocket fear
 {
