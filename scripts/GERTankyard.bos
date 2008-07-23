@@ -13,44 +13,12 @@ static-var  spray, unitviewer, statechg_DesiredState, statechg_StateChanging;
 
 activatescr()
 {
-	if( TRUE )
-	{
-		sleep 514;
-	}
-	if( TRUE )
-	{
-		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	sleep 13;
+	sleep 100;
 }
 
 deactivatescr()
 {
-	if( TRUE )
-	{
-		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 520;
-	}
-	if( TRUE )
-	{
-		sleep 520;
-	}
-	sleep 23;
+	sleep 100;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
