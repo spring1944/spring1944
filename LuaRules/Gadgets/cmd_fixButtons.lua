@@ -39,7 +39,8 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		if (unitCloakCmdDesc) then
 			RemoveUnitCmdDesc(unitID, unitCloakCmdDesc)
 		end
-	elseif (ud.jammerRadius) then
+	end
+	if (ud.jammerRadius) then
 		local unitOnOffCmdDesc = FindUnitCmdDesc(unitID, CMD_ONOFF)
 		if (unitOnOffCmdDesc) then
 			RemoveUnitCmdDesc(unitID, unitOnOffCmdDesc)
