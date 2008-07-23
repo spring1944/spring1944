@@ -205,14 +205,16 @@ local function Resupply(unitID)
 	--if (reloadFrame > 0 and savedFrames[unitID]) then
 	if (oldAmmo < 1) then -- and savedFrames[unitID]) then
 		local savedFrame = 0
+		local currFrame = Spring.GetGameFrame()
 		if (savedFrames[unitID]) then
 			savedFrame = savedFrames[unitID]
 		end
 		reloadState = savedFrame
 		if UnitDefs[unitDefID].name == "rusbm13n" then
-			local difference = savedFrame - Spring.GetGameFrame()
+			local difference = savedFrame - currFrame
 			if difference < 0 then
 				difference = 0
+				reloadState = currFrame + 90 -- add three seconds
 			end
 			Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
 		end

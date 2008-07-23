@@ -6,7 +6,7 @@
 	rendertype=1;
 	model=KatyushaRocket.S3O;
 	turret=1;
-	tolerance=6000;
+	tolerance=2000;
 
 	ballistic=1;
 	trajectoryheight=0.5;
