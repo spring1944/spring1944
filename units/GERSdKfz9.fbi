@@ -3,7 +3,7 @@
 	unitname=GERSdKfz9;
 	objectname=GERSdKfz9.S3O;
 	corpse=GERSdKfz9_Destroyed;
-	icontype=engineer;
+	icontype=engineervehicle;
 	soundcategory=GERTank;
 	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
 	tedclass=CONSTR;

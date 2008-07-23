@@ -3,7 +3,7 @@
 	unitname=RUSK31;
 	objectname=RUSK31.S3O;
 	//corpse=;
-	icontype=engineer;
+	icontype=engineervehicle;
 	soundcategory=RUSTank;
 	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
 	tedclass=CONSTR;

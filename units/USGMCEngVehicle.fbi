@@ -3,7 +3,7 @@
 	unitname=USGMCEngVehicle;
 	objectname=USGMCEngVehicle.S3O;
 	corpse=USGMCEngVehicle_Destroyed;
-	icontype=engineer;
+	icontype=engineervehicle;
 	soundcategory=USTank;
 	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
 	tedclass=CONSTR;
