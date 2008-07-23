@@ -208,14 +208,17 @@ local function Resupply(unitID)
 		if (savedFrames[unitID]) then
 			savedFrame = savedFrames[unitID]
 		end
-		reloadState = savedFrame + reload
+		reloadState = savedFrame
+		Spring.Echo(savedFrame .. " " .. Spring.GetGameFrame())
+		--reloadState = reload * 30
+		--Spring.Echo(reload .. " " .. reloadState)
 		SetUnitWeaponState(unitID, 0, {reloadtime = reload, reloadstate = reloadState})
 		SetUnitWeaponState(unitID, 1, {reloadtime = reload, reloadstate = reloadState})
 		vehicles[unitID].reloadFrame[0] = reloadState
 		vehicles[unitID].reloadFrame[1] = reloadState
 		--SetUnitWeaponState(unitID, 2, {reloadtime = reload, reloadstate = reload})
 		if UnitDefs[unitDefID].name == "rusbm13n" then
-			Spring.CallCOBScript(unitID, "RestoreRockets", 0, reload * 1000 - 4000)
+			Spring.CallCOBScript(unitID, "RestoreRockets", 0, ((savedFrame - Spring.GetGameFrame()) * 30) - 4000)
 		end
 	end
 end
