@@ -18,6 +18,7 @@ walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, MGFear
 #define placeholder_EFFECT05 1024+5
 #define MG_SHELLCASINGS 1024+6
 #define MG_MUZZLEFLASH 1024+7
+#define SMALL_TRACER 2048+2
 
 #include "Inf_suppressionvars.h"
 
@@ -354,6 +355,18 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
+		turn ruparm to x-axis <-75> speed <700>;
+		turn luparm to x-axis <-130> speed <700>;
+		turn gun to x-axis <10> speed <700>;
+		sleep 10;
+		turn ruparm to x-axis <-85> speed <200>;
+		turn luparm to x-axis <-140> speed <200>;
+		turn gun to x-axis <20> speed <200>;
+				sleep 10;
+		emit-sfx MG_MUZZLEFLASH from flare;
+		emit-sfx MG_SHELLCASINGS from shell_eject;
+	//	emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;
@@ -374,6 +387,7 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;
@@ -394,16 +408,7 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
-		turn ruparm to x-axis <-75> speed <700>;
-		turn luparm to x-axis <-130> speed <700>;
-		turn gun to x-axis <10> speed <700>;
-		sleep 10;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		turn gun to x-axis <20> speed <200>;
-				sleep 10;
-		emit-sfx MG_MUZZLEFLASH from flare;
-		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;
@@ -434,6 +439,7 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;
@@ -454,6 +460,7 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;
@@ -474,6 +481,7 @@ FireWeapon1()
 				sleep 10;
 		emit-sfx MG_MUZZLEFLASH from flare;
 		emit-sfx MG_SHELLCASINGS from shell_eject;
+		emit-sfx SMALL_TRACER from flare;
 		turn ruparm to x-axis <-75> speed <700>;
 		turn luparm to x-axis <-130> speed <700>;
 		turn gun to x-axis <10> speed <700>;

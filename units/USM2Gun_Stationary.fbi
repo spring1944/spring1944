@@ -27,7 +27,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=701;
+	sightdistance=840;
 	airsightdistance=2500;
 	onoffable=1;
 	radardistancejam=75;

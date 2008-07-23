@@ -48,6 +48,7 @@
 	weapon2=M1919A4BrowningFear;
 	onlytargetcategory2=INFTARG;
 	weaponslaveto2=1;
+	weapon3=Small_Tracer;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
