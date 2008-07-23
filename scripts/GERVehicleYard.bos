@@ -17,18 +17,6 @@ activatescr()
 	{
 		sleep 514;
 	}
-	if( TRUE )
-	{
-		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
 	sleep 13;
 }
 
@@ -37,18 +25,6 @@ deactivatescr()
 	if( TRUE )
 	{
 		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 520;
-	}
-	if( TRUE )
-	{
-		sleep 520;
 	}
 	sleep 23;
 }
@@ -86,7 +62,7 @@ OpenYard()
 	while( !get YARD_OPEN )
 	{
 		set BUGGER_OFF to 1;
-		sleep 1500;
+		sleep 100;
 		set YARD_OPEN to 1;
 	}
 	set BUGGER_OFF to 0;
@@ -98,7 +74,7 @@ CloseYard()
 	while( get YARD_OPEN )
 	{
 		set BUGGER_OFF to 1;
-		sleep 1500;
+		sleep 100;
 		set YARD_OPEN to 0;
 	}
 	set BUGGER_OFF to 0;
