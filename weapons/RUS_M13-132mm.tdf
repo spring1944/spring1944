@@ -16,8 +16,8 @@
 	reloadtime=30;
 	burst=16;
 	burstrate=0.8;
-	sprayangle=1500;
-	dance=10;
+	sprayangle=3000;
+	dance=50;
 	startvelocity=500;
 	weaponvelocity=500;
 	areaofeffect=130;

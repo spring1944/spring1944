@@ -58,7 +58,7 @@
 	weapon2=M13132mmfear;
 	weaponslaveto2=1;
 
-	icontype=truck;
+	icontype=rockettruck;
 
 	[sfxtypes]
 	{
