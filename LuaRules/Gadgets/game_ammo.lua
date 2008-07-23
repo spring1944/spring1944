@@ -123,7 +123,9 @@ local function ProcessWeapon(unitID)--, weaponNum)
 	if (weaponFired) then
 	--if (CheckReload(unitID, reloadFrame, weaponNum)) then	
 		if (ammoLevel == 1) then
-			savedFrames[unitID] = reloadFrame
+			_, _, x = GetUnitWeaponState(unitID, 0)
+			--Spring.Echo(x)
+			savedFrames[unitID] = x
 			--SetUnitWeaponState(unitID, weaponNum, {reloadtime = 99999})
 			SetUnitWeaponState(unitID, 0, {reloadtime = 99999, reloadstate = 99999})
 			SetUnitWeaponState(unitID, 1, {reloadtime = 99999, reloadstate = 99999})
@@ -198,12 +200,12 @@ local function Resupply(unitID)
 	end
 
 	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-	local reload = WeaponDefs[weaponID].reload
+	local reload = tonumber(WeaponDefs[weaponID].reload)
 	
 	--if (reloadFrame > 0 and savedFrames[unitID]) then
 	if (oldAmmo <= 1) then -- and savedFrames[unitID]) then
-			SetUnitWeaponState(unitID, 0, {reloadtime = reload, reloadstate = reload})
-			SetUnitWeaponState(unitID, 1, {reloadtime = reload, reloadstate = reload})
+			SetUnitWeaponState(unitID, 0, {reloadtime = reload, reloadstate = savedFrames[unitID] + reload})
+			SetUnitWeaponState(unitID, 1, {reloadtime = reload, reloadstate = savedFrames[unitID] + reload})
 			--SetUnitWeaponState(unitID, 2, {reloadtime = reload, reloadstate = reload})
 	end
 end
