@@ -58,7 +58,7 @@
 	weapon2=M13132mmfear;
 	weaponslaveto2=1;
 
-	icontype=rockettruck;
+	icontype=truck;
 
 	[sfxtypes]
 	{
@@ -77,7 +77,7 @@
 		maxammo=1;
 		weaponswithammo=1;
 		lowammolevel=1;
-		weaponcost=128;
+		weaponcost=160;
 		defaultMove=1;
 	}
 }

@@ -11,11 +11,11 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=1690;
-	reloadtime=5.25;
-	accuracy=500;
+	range=1310;
+	reloadtime=6.75;
+	accuracy=400;
 	targetmoveerror=0.075;
-	weaponvelocity=926;
+	weaponvelocity=700;
 	areaofeffect=75;
 	edgeeffectiveness=0.25;
 

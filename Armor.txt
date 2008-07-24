@@ -64,7 +64,8 @@
 [Guns]
 	{
 	//**Germany**//
-	GERleIG18=99;
+	GERleIG18_bax=99;
+	GERleIG18_gunyard=99;
 	GERFlaK38=99;
 	GERPaK40=99;
 	GERleFH18=99;
@@ -74,7 +75,8 @@
 	GERFlak38_Stationary=99;
 
 	//US//
-	USM8Gun=99;
+	USM8Gun_bax=99;
+	USM8Gun_gunyard=99;
 	USM2Gun=99;
 	USM2Gun_Stationary=99;
 	USM5Gun=99;

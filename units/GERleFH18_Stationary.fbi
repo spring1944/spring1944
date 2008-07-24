@@ -27,7 +27,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=840;
+	sightdistance=701;
 	airsightdistance=2500;
 	radardistancejam=75;
 	onoffable=1;
@@ -73,7 +73,7 @@
 		maxammo=22;
 		weaponswithammo=1;
 		lowammolevel=8;
-		weaponcost=6;
+		weaponcost=20;
 		canareaattack=1;
 	}
 }

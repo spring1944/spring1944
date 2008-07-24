@@ -91,7 +91,7 @@
 		maxammo=17;
 		weaponswithammo=2;
 		lowammolevel=6;
-		weaponcost=14;
+		weaponcost=18;
 
 		//enginesound=tigersound;
 		//enginesoundnr=21;

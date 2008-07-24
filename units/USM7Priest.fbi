@@ -18,9 +18,9 @@
 	flankingbonusmax=2.8;//damage to back multiplied by this
 	flankingbonusmin=.7;//damage to front multiplied by this
 
-	buildcostmetal=6000;
+	buildcostmetal=9000;
 	buildcostenergy=0;
-	buildtime=800;
+	buildtime=11000;
 	footprintx=3;
 	footprintz=3;
 	mass=2750;
@@ -88,7 +88,7 @@
 		maxammo=13;
 		weaponswithammo=1;
 		lowammolevel=4;
-		weaponcost=6;
+		weaponcost=20;
 		canareaattack=1;
 		defaultMove=1;
 	}

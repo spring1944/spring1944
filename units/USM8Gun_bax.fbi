@@ -1,22 +1,22 @@
 [unitinfo]
 {
-	unitname=GERPaK40;
-	objectname=GERPaK40.S3O;
-	corpse=GERPaK40_Destroyed;
+	unitname=USM8Gun_bax;
+	objectname=USM8Gun.S3O;
+	corpse=USM8Gun_Destroyed;
 	icontype=artillery;
-	soundcategory=GERInf;
+	soundcategory=USInf;
 	category=INFTARG NFLAGNAIR NAIR NFLAG;
 	tedclass=KBOT;
 
-	name=7.5cm PaK 40;
-	description=Anti-Tank Gun;
-	side=GER;
-	maxdamage=400;
+	name=75mm M8;
+	description=Pack Howitzer;
+	side=US;
+	maxdamage=300;
 	idleautoheal=2;
 	idletime=2000;
-	buildcostmetal=1225;
+	buildcostmetal=1020;
 	buildcostenergy=0;
-	buildtime=350;
+	buildtime=510;
 	footprintx=1;
 	footprintz=1;
 	mass=600;
@@ -29,27 +29,27 @@
 	airsightdistance=2500;
 	stealth=1;
 
-	mincloakdistance=215;
-
 	canmove=1;
 	movementclass=KBOT_Gun;
-	maxvelocity=0.5;
+	maxvelocity=0.8;
 	acceleration=0.2;
 	brakerate=0.6;
-	turnrate=90;
+	turnrate=120;
 	maxslope=10;
 	maxwaterdepth=5;
 
 	explodeas=Tiny_Explosion;
 	selfdestructas=Tiny_Explosion;
-
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=KwK75mmL48AP;
+
+	weapon1=M875mmHE;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
+	weapon2=M875mmHEFear;
+	weaponslaveto2=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -61,14 +61,12 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MEDIUM_MUZZLEFLASH;
 		explosiongenerator8=custom:MEDIUM_MUZZLEDUST;
-		explosiongenerator9=custom:MuzzleBrakeSmoke;
 	}
-		[customParams]
+	[customParams]
 	{
 		maxammo=8;
 		weaponswithammo=1;
 		lowammolevel=3;
-		weaponcost=12;
-		defaultMove=1;
+		weaponcost=8;
 	}
 }

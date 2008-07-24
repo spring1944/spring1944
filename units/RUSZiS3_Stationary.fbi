@@ -28,7 +28,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=840;
+	sightdistance=701;
 	airsightdistance=2500;
 	stealth=1;
 
@@ -49,11 +49,11 @@
 	weapon1=ZiS376mmHE;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
-	maxangledif1=90;
+	maxangledif1=12;
 	weapon2=ZiS376mmAP;
 	onlytargetcategory2=TANK;
 	weaponmaindir2=0 0 1;
-	maxangledif2=90;
+	maxangledif2=12;
 	weapon3=ZiS376mmHEFear;
 	onlytargetcategory3=NFLAGNAIR;
 	weaponslaveto3=1;
@@ -77,7 +77,7 @@
 		maxammo=22;
 		weaponswithammo=2;
 		lowammolevel=7;
-		weaponcost=8;
+		weaponcost=10;
 		canareaattack=1;
 	}
 }

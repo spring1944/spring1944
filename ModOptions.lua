@@ -42,7 +42,7 @@ local options = {
     max    = 10,
     step   = 0.1,
   },
-    {
+  {
     key    = 'unit_los_mult',
     name   = 'Unit sight (los/airLoS) multiplier',
     desc   = 'Applies a multiplier to all the LoS ranges ingame',
@@ -51,6 +51,17 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
+  },
+  
+  {
+    key    = 'unit_metal_mult',
+    name   = 'Metal extraction multiplier',
+    desc   = 'Applies a multiplier to all the metal extraction values',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.05,
   },
   {
     key    = 'weapon_edgeeffectiveness_mult',

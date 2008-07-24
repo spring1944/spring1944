@@ -31,6 +31,14 @@ end
 			end
 		end
 	end
+	
+	if (modOptions.unit_metal_mult) then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.extractsmetal) then
+			ud.extractsmetal = (modOptions.unit_metal_mult * ud.extractsmetal)
+			end
+		end
+	end
 --[[
 	if (modOptions.unit_buildable_airfields == 0) then
 		disableunits({usairfield", "gbrairfield", "gerairfield", "RUSAirfield"})

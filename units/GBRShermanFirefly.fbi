@@ -18,9 +18,9 @@
 	flankingbonusmin=.84;
 	flankingbonusmode=3;
 
-	buildcostmetal=4350;
+	buildcostmetal=4800;
 	buildcostenergy=0;
-	buildtime=580;
+	buildtime=640;
 	footprintx=3;
 	footprintz=3;
 	mass=2750;
@@ -94,6 +94,6 @@
 		maxammo=14;
 		weaponswithammo=2;
 		lowammolevel=5;
-		weaponcost=5;
+		weaponcost=16;
 	}
 }

@@ -24,7 +24,7 @@
 	shownanoframe=0;
 
 	SeismicSignature=0;
-	sightdistance=840;
+	sightdistance=701;
 	airsightdistance=2500;
 	stealth=1;
 
@@ -66,7 +66,7 @@
 		maxammo=8;
 		weaponswithammo=1;
 		lowammolevel=3;
-		weaponcost=5;
+		weaponcost=16;
 		defaultMove=1;
 	}
 }

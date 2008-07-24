@@ -27,7 +27,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=840;
+	sightdistance=701;
 	airsightdistance=2500;
 	stealth=1;
 
@@ -68,7 +68,7 @@
 		maxammo=22;
 		weaponswithammo=1;
 		lowammolevel=8;
-		weaponcost=10;
+		weaponcost=12;
 	}
 	
 }

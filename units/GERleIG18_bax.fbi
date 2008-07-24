@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GERleIG18;
+	unitname=GERleIG18_bax;
 	objectname=GERleIG18.S3O;
 	corpse=GERleIG18_Destroyed;
 	icontype=artillery;
@@ -14,9 +14,9 @@
 	maxdamage=300;
 	idleautoheal=2;
 	idletime=2000;
-	buildcostmetal=1365;
+	buildcostmetal=1020;
 	buildcostenergy=0;
-	buildtime=683;
+	buildtime=510;
 	footprintx=1;
 	footprintz=1;
 	mass=600;
@@ -25,7 +25,7 @@
 	shownanoframe=0;
 
 	SeismicSignature=0;
-	sightdistance=840;
+	sightdistance=701;
 	airsightdistance=2500;
 	stealth=1;
 
@@ -69,6 +69,6 @@
 		maxammo=8;
 		weaponswithammo=1;
 		lowammolevel=2;
-		weaponcost=6;
+		weaponcost=8;
 	}
 }

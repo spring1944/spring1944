@@ -18,7 +18,7 @@
 	flankingbonusmax=1.58;//damage to back multiplied by this
 	flankingbonusmin=.83;//damage to front multiplied by this
 
-	buildcostmetal=4582;
+	buildcostmetal=3055;
 	buildcostenergy=0;
 	buildtime=611;
 	footprintx=3;
@@ -94,6 +94,6 @@
 		maxammo=12;
 		weaponswithammo=1;
 		lowammolevel=4;
-		weaponcost=6;
+		weaponcost=20;
 	}
 }
