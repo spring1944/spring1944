@@ -96,7 +96,7 @@
 	{
 		canbuild1=USBarracks;
 		canbuild2=USFlag;
-		//canbuild3=USResource;
+		canbuild3=USStorage;
 		canbuild4=USGMCTruck;
 		canbuild5=apmine;
 		canbuild6=atmine;
@@ -126,15 +126,15 @@
 		canbuild1=USVehicleYard;
 		canbuild2=USGunYard;
 		//canbuild3=USCP;
-		canbuild4=USFlag;
-		//canbuild5=USResource;
-		Canbuild7=USGMCTruck;
-		canbuild8=ATmine;
-		canbuild9=APMine;
-		canbuild10=TankObstacle;
+		canbuild3=USFlag;
+		canbuild4=USStorage;
+		Canbuild5=USGMCTruck;
+		canbuild6=ATmine;
+		canbuild7=APMine;
+		canbuild8=TankObstacle;
 		//canbuild11=Sandbags;
-		canbuild12=RubberDingy;
-		canbuild13=PontoonRaft;
+		canbuild9=RubberDingy;
+		canbuild10=PontoonRaft;
 
 	}
 
@@ -239,14 +239,14 @@
 	{
 		canbuild1=GERBarracks;
 		canbuild2=GERFlag;
-		//canbuild3=GERResource;
-		canbuild5=APMine;
-		canbuild6=ATMine;
+		canbuild3=GERStorage;
+		canbuild4=APMine;
+		canbuild5=ATMine;
 		//canbuild7=Sandbags;
-		canbuild8=TankObstacle;
-		canbuild9=GEROpelBlitz;
-		canbuild10=GERSturmboot;
-		canbuild11=PontoonRaft;
+		canbuild6=TankObstacle;
+		canbuild7=GEROpelBlitz;
+		canbuild8=GERSturmboot;
+		canbuild9=PontoonRaft;
 	}
 
 	[GERBarracks]
@@ -269,14 +269,14 @@
 		canbuild2=GERBarracks;
 		canbuild3=GERGunYard;
 		canbuild4=GERFlag;
-		//canbuild5=GERResource;
-		canbuild7=ATMine;
-		canbuild8=APMine;
+		canbuild5=GERStorage;
+		canbuild6=ATMine;
+		canbuild7=APMine;
 		//canbuild9=Sandbags;
-		canbuild10=TankObstacle;
-		canbuild11=GEROpelBlitz;
-		canbuild12=GERSturmboot;
-		canbuild13=PontoonRaft;
+		canbuild8=TankObstacle;
+		canbuild9=GEROpelBlitz;
+		canbuild10=GERSturmboot;
+		canbuild11=PontoonRaft;
 	}
 
 	[GERVehicleYard]
@@ -396,7 +396,8 @@
 		canbuild5=atmine;
 		//canbuild6=Sandbags;
 		canbuild7=TankObstacle;
-		canbuild8=GBRBedfordTruck;
+		canbuild8=GBRStorage;
+		canbuild9=GBRBedfordTruck;
 		canbuild10=RubberDingy;
 		canbuild11=PontoonRaft;
 	}
@@ -452,14 +453,15 @@
 		canbuild1=GBRVehicleYard;
 		canbuild2=GBRgunyard;
 		canbuild3=GBRFlag;
-		//canbuild4=GBRResource;
-		canbuild6=ATmine;
-		canbuild7=APMine;
+		canbuild4=GBRStorage;
+		canbuild5=ATmine;
+		canbuild6=APMine;
 		//canbuild8=Sandbags;
-		canbuild9=TankObstacle;
-		canbuild10=GBRBedfordTruck;
-		canbuild11=RubberDingy;
-		canbuild12=PontoonRaft;
+		canbuild7=TankObstacle;
+		//canbuild10=GBRStorage;
+		canbuild8=GBRBedfordTruck;
+		canbuild9=RubberDingy;
+		canbuild10=PontoonRaft;
 
 	}
 
@@ -539,6 +541,7 @@
 		canbuild9=ATMine;
 		canbuild10=APMine;
 		canbuild11=TankObstacle;
+		canbuild12=RUSStorage;
 		//canbuild12=Sandbags;
 		canbuild13=RUSPG117;
 		canbuild14=PontoonRaft;
@@ -594,9 +597,10 @@
 		canbuild6=APMine;
 		canbuild7=ATMine;
 		canbuild8=TankObstacle;
+		canbuild9=RUSStorage;
 		//canbuild8=Sandbags;
-		canbuild9=RUSPG117;
-		canbuild10=PontoonRaft;
+		canbuild10=RUSPG117;
+		canbuild11=PontoonRaft;
 	}
 	[AI_RUSCommissar]
 	{
@@ -628,6 +632,7 @@
 		canbuild10=ATMine;
 		canbuild11=TankObstacle;
 		//canbuild12=Sandbags;
+		canbuild12=RUSStorage;
 		canbuild13=RUSPG117;
 		canbuild14=PontoonRaft;
 	}

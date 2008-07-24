@@ -70,10 +70,10 @@
 	weapon6=M1919A4BrowningFear;
 	onlytargetcategory6=INFTARG;
 	weaponslaveto6=3;
-	weapon8=TankFearShield;
+	weapon7=TankFearShield;
 
-	weapon9=Small_Tracer;
-	weapon10=Medium_Tracer;
+	weapon8=Small_Tracer;
+	weapon9=Medium_Tracer;
 
 	[sfxtypes]
 	{

@@ -63,8 +63,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define MEDIUM_MUZZLEDUST 1024+9
 
 // tracers
-#define SMALL_TRACER 	2048+8
-#define MEDIUM_TRACER 	2048+9
+#define SMALL_TRACER 	2048+7
+#define MEDIUM_TRACER 	2048+8
 
 treads() 
 { 
@@ -384,25 +384,26 @@ return (0);
 }
 
 
-AimFromWeapon8(piecenum) //fear shield
+AimFromWeapon7(piecenum) //fear shield
 {
 	piecenum = base;
 }
 
-QueryWeapon8(piecenum)
+QueryWeapon7(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon8(heading, pitch)
+AimWeapon7(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon8()
+FireWeapon7()
 {
 return (0);
 }
+
 // TODO: make this pretty
 Killed(severity, corpsetype)
 {
