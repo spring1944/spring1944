@@ -57,16 +57,16 @@
 
 	weapon1=MG34;
 	weaponmaindir1=0 0 -1;
-	maxangledif1=180;
-	weapon2=mg34fear;
-	weaponmaindir2=0 0 -1;
-	maxangledif2=180;
-	weapon3=MG34;
+	maxangledif1=360;
+	//weapon2=mg34fear;
+	//weaponmaindir2=0 0 -1;
+	//maxangledif2=180;
+	/*weapon3=MG34;
 	weaponmaindir3=0 0 1;
 	maxangledif3=180;
 	weapon4=mg34fear;
 	weaponmaindir4=0 0 1;
-	maxangledif4=180;
+	maxangledif4=180;*/
 	//weapon5=GrW34_8cmMortar;
 	onlytargetcategory5=NFLAGNAIR;
 	weapon6=M2Flamethrower;

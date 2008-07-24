@@ -62,10 +62,10 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define placeholder_EFFECT04 1024+4
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
-#define MG_MUZZLEFLASH 1024+7
-#define LARGE_Muzzleflash	1024+8
-#define LARGE_MuzzleDust	1024+9
-#define MuzzleBrakeSmoke	1024+10
+//#define MG_MUZZLEFLASH 1024+7
+#define LARGE_Muzzleflash	1024+7
+#define LARGE_MuzzleDust	1024+8
+#define MuzzleBrakeSmoke	1024+9
 
 
 treads() 
