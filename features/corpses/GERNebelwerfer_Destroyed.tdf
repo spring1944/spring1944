@@ -1,0 +1,11 @@
+[gernebelwerfer_destroyed]
+{
+	object=GERNebelwerfver_Destroyed.S3O;
+	description=Destroyed Rockets;
+	featuredead=Debris_Small;
+	energy=500;
+	damage=5000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
