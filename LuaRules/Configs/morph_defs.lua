@@ -190,6 +190,24 @@ local morphDefs = {
     energy = 0,
   },
   
+	gernebelwerfer = 
+  {
+    into = 'gernebelwerfer_stationary',
+    tech = 0,
+    time = 20,
+    metal = 50,
+    energy = 0,
+  },
+  
+  gernebelwerfer_stationary = 
+  {
+    into = 'gernebelwerfer',
+    tech = 0,
+    time = 10,
+    metal = 0,
+    energy = 0,
+  },
+	
 	rus61k = 
   {
     into = 'rus61k_stationary',

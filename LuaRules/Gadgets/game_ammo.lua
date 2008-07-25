@@ -210,7 +210,7 @@ local function Resupply(unitID)
 			savedFrame = savedFrames[unitID]
 		end
 		reloadState = savedFrame
-		if UnitDefs[unitDefID].name == "rusbm13n" then
+		if UnitDefs[unitDefID].name == "rusbm13n" or UnitDefs[unitDefID].name == "gernebelwerfer_stationary" then
 			local difference = savedFrame - currFrame
 			if difference < 0 then
 				difference = 0

@@ -66,10 +66,6 @@
 
 	[customParams]
 	{
-		maxammo=1;
-		weaponswithammo=1;
-		lowammolevel=1;
-		weaponcost=150;
 		defaultMove=1;
 	}
 }
