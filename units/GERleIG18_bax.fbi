@@ -3,6 +3,7 @@
 	unitname=GERleIG18_bax;
 	objectname=GERleIG18.S3O;
 	corpse=GERleIG18_Destroyed;
+	buildpic=GERLeIG18.png;
 	icontype=artillery;
 	soundcategory=GERInf;
 	category=INFTARG NFLAGNAIR NAIR NFLAG;

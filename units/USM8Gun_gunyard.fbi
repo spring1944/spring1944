@@ -3,6 +3,7 @@
 	unitname=USM8Gun_gunyard;
 	objectname=USM8Gun.S3O;
 	corpse=USM8Gun_Destroyed;
+	buildpic=USM8Gun.png;
 	icontype=artillery;
 	soundcategory=USInf;
 	category=INFTARG NFLAGNAIR NAIR NFLAG;

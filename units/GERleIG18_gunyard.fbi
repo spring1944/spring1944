@@ -4,6 +4,7 @@
 	objectname=GERleIG18.S3O;
 	corpse=GERleIG18_Destroyed;
 	icontype=artillery;
+	buildpic=GERLeIG18.png;
 	soundcategory=GERInf;
 	category=INFTARG NFLAGNAIR NAIR NFLAG;
 	tedclass=KBOT;
