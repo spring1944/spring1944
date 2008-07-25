@@ -2,7 +2,7 @@
 {
 	unitname=gbr_platoon_commando;
 	objectname=MortarShell.S3O;
-	buildpic=GBRSniper.png;
+	buildpic=GBRCommando.png;
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
