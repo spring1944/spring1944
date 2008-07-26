@@ -326,6 +326,8 @@ local squadDefs = {
 	 ["rus_platoon_rifle"] =
 	{
   		"rusrifle",
+		"rusrifle",
+		"rusrifle",
   		"rusrifle",
   		"rusrifle",
   		"rusrifle",
