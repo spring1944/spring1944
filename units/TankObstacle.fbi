@@ -18,7 +18,7 @@
 
 	hidedamage=1;
 	isfeature=1;
-	shownanoframe=1;
+	shownanoframe=0;
 	smoothanim=0;
 
 	sightdistance=50;

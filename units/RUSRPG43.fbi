@@ -46,15 +46,10 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 	
-	weapon1=NOWEAPON;
-	//badtargetcategory1=LIGHTVEH;
-	//onlytargetcategory1=INFTARG;
-	//weaponmaindir1=0 0 1;
-	//maxangledif1=170;
-	weapon2=RPG43;
-	onlytargetcategory2=TANK;
-	weaponmaindir2= 0 0 1;
-	maxangledif2=170;
+	weapon1=RPG43;
+	onlytargetcategory1=TANK;
+	weaponmaindir1= 0 0 1;
+	maxangledif1=170;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
