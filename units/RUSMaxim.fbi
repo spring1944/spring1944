@@ -11,7 +11,7 @@
 	name=Maxim;
 	description=Heavy Machinegun;
 	side=RUS;
-	maxdamage=40;
+	maxdamage=65;
 	damagemodifier=0.375;
 	buildcostmetal=200;
 	buildcostenergy=0;

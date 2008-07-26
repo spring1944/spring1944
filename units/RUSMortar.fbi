@@ -11,7 +11,7 @@
 	name=M1937 Mortar;
 	description=Infantry Level Heavy Fire Support;
 	side=RUS;
-	maxdamage=80;
+	maxdamage=130;
 	damagemodifier=0.375;
 	buildcostmetal=300;
 	buildcostenergy=0;

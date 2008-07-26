@@ -10,7 +10,7 @@
 
 	name=Engineer Commander;
 	side=RUS;
-	maxdamage=40;
+	maxdamage=65;
 	damagemodifier=0.375;
 	idleautoheal=2;
 	buildcostmetal=100;

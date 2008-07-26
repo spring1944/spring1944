@@ -11,7 +11,7 @@
 	name=PTRD Infantry;
 	description=Long Range Light Anti-Tank;
 	side=RUS;
-	maxdamage=40;
+	maxdamage=65;
 	damagemodifier=0.375;
 	idleautoheal=1;
 	buildcostmetal=50;

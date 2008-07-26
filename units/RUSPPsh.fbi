@@ -10,7 +10,7 @@
 	name=PPSch-41 Infantry;
 	description=Close-Quarters Assault Infantry;
 	side=RUS;
-	maxdamage=40;
+	maxdamage=65;
 	damagemodifier=0.375;
 	buildcostmetal=25;
 	buildcostenergy=0;
