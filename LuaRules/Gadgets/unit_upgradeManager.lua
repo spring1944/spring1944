@@ -198,7 +198,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		
 			-- Creating the new unit
 		local px, py, pz = Spring.GetUnitBasePosition(unitID)
-		local newUnit = Spring.CreateUnit(udDst.name, px, py, pz, 0, Spring.GetUnitTeam(unitID))
+		local newUnit = Spring.CreateUnit(udDst.name, px, py, pz, Spring.GetUnitBuildFacing(unitID), Spring.GetUnitTeam(unitID))
 		
 		--if flag ~= nil then flag.unitID = newUnit end
 		

@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece ground, turret, carriage, wheel1, wheel2, sleeve, gun, flare;
+piece ground, turret, carriage, wheel1, wheel2, gun, flare;
 piece crewman, pelvis, torso, head, luparm, lloarm, ruparm, rloarm, rthigh, rleg, lthigh, lleg;
  
  
@@ -436,7 +436,6 @@ Killed(severity, corpsetype)
 	corpsetype = 2;
 	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;		
-	explode sleeve type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode head type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode carriage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 }
