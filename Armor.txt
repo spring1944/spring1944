@@ -73,6 +73,8 @@
 	GERSandbagMG=99;
 	GERPaK40_Stationary=99;
 	GERFlak38_Stationary=99;
+	GERNebelwerfer=99;
+	GERNebelwerfer_Stationary=99;
 
 	//US//
 	USM8Gun_bax=99;

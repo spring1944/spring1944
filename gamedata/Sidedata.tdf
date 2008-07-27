@@ -296,7 +296,8 @@
 		canbuild3=GERleIG18_gunyard;
 		canbuild4=GERPaK40;
 		canbuild5=GERleFH18;
-		canbuild6=GERSupplyTruck;
+		canbuild6=GERNebelwerfer;
+		canbuild7=GERSupplyTruck;
 	}
 
 	[GERSdKfz9]
