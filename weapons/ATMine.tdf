@@ -19,7 +19,8 @@
 	soundhit=GEN_Explo_4;
 
 	size=0.00001;
-	cratermult=.5;
+	cratermult=1;
+	craterboost=1;
 
 	[damage]
 	{

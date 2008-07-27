@@ -18,6 +18,9 @@
 
 	size=0.000001;
 
+	cratermult=1;
+	craterboost=1;
+
 	[damage]
 	{
 		default=0.000001;

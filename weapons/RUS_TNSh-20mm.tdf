@@ -33,8 +33,8 @@
 	collisionsize=2;
 	impulsefactor=0;
 	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
+	cratermult=.1;
+	craterboost=.1;
 
   sizedecay=0;
   size=0.000000000001;

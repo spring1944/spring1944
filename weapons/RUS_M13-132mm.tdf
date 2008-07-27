@@ -36,22 +36,22 @@
 	cratermult=.5;
 	craterboost=0;
 
-	cratermult=.25;
-  	craterboost=0;
+	cratermult=.8;
+  	craterboost=.8;
 
-	impulsefactor=5;
-	impulseboost=5;
+	impulsefactor=0;
+	impulseboost=0;
 
 	[damage]
 	{
-		default=3500;
-		infantry=1600;
+		default=3000;
+		infantry=1400;
 		guns=1300;
 		mines=0;
 		flag=0;
-		tanks=2500;
-		armouredvehicles=5000;
-		unarmouredvehicles=5050;
+		tanks=2200;
+		armouredvehicles=4500;
+		unarmouredvehicles=4500;
 	}
 }
 

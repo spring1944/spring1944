@@ -31,16 +31,16 @@
 
 
 	cegtag=TestRocketTrail;
-	explosiongenerator=custom:Weapon_Explosion_Large;
+	explosiongenerator=custom:Weapon_Explosion_XLarge;
 	explosionspeed=100;
 	cratermult=.5;
 	craterboost=0;
 
-	cratermult=.25;
-  	craterboost=0;
+	cratermult=1;
+  	craterboost=1;
 
-	impulsefactor=5;
-	impulseboost=5;
+	impulsefactor=0;
+	impulseboost=0;
 
 	[damage]
 	{
@@ -49,9 +49,9 @@
 		guns=1300;
 		mines=0;
 		flag=0;
-		tanks=2500;
-		armouredvehicles=5000;
-		unarmouredvehicles=5050;
+		tanks=2700;
+		armouredvehicles=5250;
+		unarmouredvehicles=5250;
 	}
 }
 
