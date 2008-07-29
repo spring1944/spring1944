@@ -282,3 +282,24 @@
 	count0=GEN_alarm;
 	canceldestruct=;
       	} 
+
+[CDNInf]
+	{
+	select1=CDN_INF_Select1;
+	select2=CDN_INF_Select2;
+	select3=CDN_INF_Select3;
+	ok1=CDN_INF_OK1;
+	ok2=CDN_INF_OK2;
+	ok3=CDN_INF_OK3;
+	//arrived1=US_INF_Arrived1;
+	//arrived2=US_INF_Arrived2;
+	//arrived3=US_INF_Arrived3;
+	underattack=CDN_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
