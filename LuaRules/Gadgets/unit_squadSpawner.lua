@@ -75,8 +75,8 @@ if (gadgetHandler:IsSyncedCode()) then
 				for _,unit in ipairs(squad_members) do
 					local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
 					if(states.movestate ~= nil) then
-						Spring.SetUnitCOBValue(newUnitID, 2, states.movestate)
-						Spring.SetUnitCOBValue(newUnitID, 3, states.firestate)
+						Spring.GiveOrderToUnit(newUnitID, CMD.FIRE_STATE, { states.firestate }, 0)
+						Spring.GiveOrderToUnit(newUnitID, CMD.MOVE_STATE, { states.movestate }, 0)
 					end
 					table.insert(squad_units,newUnitID)
 				end
