@@ -2,7 +2,7 @@
 {
 	unitname=GBRSexton;
 	objectname=GBRSexton.S3O;
-	corpse=GBRSexton_Destroyed;
+	corpse=USM7Priest_Destroyed;
 	icontype=medtank;
 	soundcategory=USTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
@@ -18,7 +18,7 @@
 	flankingbonusmax=2.8;//damage to back multiplied by this
 	flankingbonusmin=.7;//damage to front multiplied by this
 
-	buildcostmetal=3050;
+	buildcostmetal=4575;
 	buildcostenergy=0;
 	buildtime=610;
 	footprintx=3;

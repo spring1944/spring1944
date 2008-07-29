@@ -20,7 +20,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=30;
+	sightdistance=40;
 	stealth=1;
 
 	init_cloaked=1;
