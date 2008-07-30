@@ -9,6 +9,7 @@ static-var  lock, statechg_DesiredState, statechg_StateChanging, RandomSpin, pn;
 
 // Signal definitions
 #define SIG_ACTIVATE			2
+#define commandoBuildTime	16000
 
 
 baseLoop()
@@ -168,10 +169,13 @@ Deactivate()
 
 StartBuilding()
 {
+sleep commandoBuildTime;
+emit-sfx 2048 from base;
 }
 
 StopBuilding()
 {
+	emit-sfx 2048 from base;
 }
 
 QueryBuildInfo(piecenum)

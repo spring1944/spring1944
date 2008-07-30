@@ -5,7 +5,7 @@
 	buildpic=GBRLZ.bmp;
 	category=GBR PLANT NOWEAPON NFLAG;
 	tedclass=PLANT;
-	yardmap=cccccc cccccc cccccc cccccc cccccc cccccc;
+	yardmap=cccc cccc cccc cccc;
 
 	name=Commando Landing Zone;
 	side=GBR;
@@ -14,8 +14,8 @@
 	buildcostmetal=2000;
 	buildcostenergy=0;
 	buildtime=200;
-	footprintx=6;
-	footprintz=6;
+	footprintx=4;
+	footprintz=4;
 
 	shownanoframe=0;
 	unitrestricted=3;

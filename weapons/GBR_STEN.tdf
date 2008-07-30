@@ -92,7 +92,7 @@
 	thickness=0.4;
 	duration=0.01;
 	intensity=0.7;
-	soundstart=GBR_STEN;
+	//soundstart=GBR_STEN;
 	corethickness=0.15;
 	laserflaresize=0.0001;
 

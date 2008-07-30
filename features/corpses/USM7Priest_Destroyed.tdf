@@ -1,0 +1,22 @@
+/*[usm4a3105sherman_damaged]
+{
+	object=USM7Priest_Damaged.S3O;
+	featuredead=USM7Priest_Destroyed;
+	description=Abandoned Support Tank;
+	energy=1000;
+	damage=2500;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}*/
+[USM7Priest_destroyed]
+{
+	object=USM7Priest_Destroyed.S3O;
+	featuredead=Debris_Large;
+	description=Destroyed Support Tank;
+	energy=500;
+	damage=10000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
