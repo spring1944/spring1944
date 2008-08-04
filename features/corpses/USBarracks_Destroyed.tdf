@@ -4,7 +4,7 @@
 	description=Destroyed Barracks;
 	featuredead=BuildingDebris_Large;
 	energy=1000;
-	damage=50000;
+	damage=2501;
 	footprintx=4;
 	footprintz=6;
 	reclaimable=1;

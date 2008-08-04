@@ -4,7 +4,7 @@
 	featuredead=Debris_Small;
 	description=Destroyed Car;
 	energy=100;
-	damage=5000;
+	damage=1251;
 	footprintx=2;
 	footprintz=2;
 	reclaimable=1;

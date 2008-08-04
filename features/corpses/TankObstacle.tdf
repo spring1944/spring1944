@@ -4,7 +4,7 @@
 	description=Tank Obstacle;
 	featuredead=Debris_Small;
 	energy=25;
-	damage=1000;
+	damage=2500;
 	footprintx=1;
 	footprintz=1;
 	reclaimable=1;

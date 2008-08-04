@@ -4,7 +4,7 @@
 	featuredead=Debris_Small;
 	description=Destroyed Light Tank;
 	energy=50;
-	damage=10000;
+	damage=2501;
 	footprintx=2;
 	footprintz=2;
 	reclaimable=1;

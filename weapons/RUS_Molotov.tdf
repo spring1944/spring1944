@@ -8,8 +8,8 @@
 
 	range=180;
 	reloadtime=8;
-	accuracy=1421;
-	movingaccuracy=7111;
+	accuracy=300;
+	movingaccuracy=500;
 	weaponvelocity=210;
 	areaofeffect=25;
 	edgeeffectiveness=0.8;

@@ -41,7 +41,7 @@
 	{
 		default=0;
 		infantry=1900;
-		guns=400;
+		guns=250;
 		lightbuildings=1;
 		mines=0;
 		flag=0;
@@ -57,11 +57,11 @@
 	rendertype=1;
 	turret=1;
 	tolerance=600;
-
+	interceptedbyshieldtype=32;
 	ballistic=1;
 	firestarter=0;
 
-	range=1275;
+	range=820;
 	reloadtime=10;
 	weaponvelocity=800;
 	areaofeffect=175;

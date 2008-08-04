@@ -431,14 +431,6 @@ local squadDefs = {
 		"ruspartisanrifle",
 		"ruspartisanrifle",
 		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
-		"ruspartisanrifle",
 	},
 	
 	["rus_platoon_mg"] =

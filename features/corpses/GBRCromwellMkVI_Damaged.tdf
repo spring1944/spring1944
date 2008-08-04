@@ -4,7 +4,7 @@
 	featuredead=GBRCromwellmkvi_Destroyed;
 	description=Abandoned Support Tank;
 	energy=1000;
-	damage=2500;
+	damage=626;
 	footprintx=2;
 	footprintz=3;
 	reclaimable=1;
@@ -15,7 +15,7 @@
 	featuredead=Debris_Large;
 	description=Destroyed Support Tank;
 	energy=500;
-	damage=10000;
+	damage=2501;
 	footprintx=2;
 	footprintz=3;
 	reclaimable=1;

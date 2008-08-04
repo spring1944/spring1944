@@ -12,7 +12,7 @@
 	name=Light Defensive Position;
 	description=- Directional Infantry area denial;
 	side=US;
-	maxdamage=1000;
+	maxdamage=2500;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;
@@ -41,11 +41,11 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=M2Browning;
+	weapon1=m1919a4browning_deployed;
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=120;
-	weapon2=M2BrowningFear;
+	weapon2=m1919a4browning_deployedfear;
 	onlytargetcategory2=INFTARG;
 	weaponslaveto2=1;
 	weaponmaindir2=0 0 1;

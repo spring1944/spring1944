@@ -120,7 +120,7 @@
 	turret=1;
 	tolerance=600;
 	explosiongenerator=custom:nothing;
-
+	interceptedbyshieldtype=32;
 	ballistic=1;
 	firestarter=0;
 

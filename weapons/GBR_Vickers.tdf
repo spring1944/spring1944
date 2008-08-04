@@ -10,9 +10,9 @@
 	lineofsight=1;
 	firestarter=1;
 
-	range=1100;
+	range=1270;
 	reloadtime=2.7;
-	burst=10;
+	burst=14;
 	burstrate=.103;
 	sprayangle=300;
 	areaofeffect=1;
@@ -47,7 +47,7 @@
 	{
 		default=5;
 		infantry=28;
-		guns=40;
+		guns=28;
 		lightbuildings=10;
 		bunkers=0;
 		sandbags=5;
@@ -71,7 +71,7 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=950;
+	range=1270;
 	reloadtime=2.7;
 	energypershot=0;
 	weaponvelocity=800;

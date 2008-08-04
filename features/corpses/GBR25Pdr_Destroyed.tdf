@@ -4,7 +4,7 @@
 	featuredead=BuildingDebris_Small;
 	description=Destroyed Gun;
 	energy=500;
-	damage=5000;
+	damage=1251;
 	footprintx=2;
 	footprintz=2;
 	reclaimable=1;

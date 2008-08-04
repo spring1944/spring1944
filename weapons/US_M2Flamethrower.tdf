@@ -55,7 +55,7 @@
 	weaponvelocity=140;
 	areaofeffect=150;
 	impulsefactor=0.000001;
-
+	interceptedbyshieldtype=32;
 	[damage]
 	{
 		default=0;

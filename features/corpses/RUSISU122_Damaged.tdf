@@ -4,7 +4,7 @@
 	featuredead=RUSISU122_Destroyed;
 	description=Abandoned Assault Gun;
 	energy=1000;
-	damage=5000;
+	damage=1251;
 	footprintx=3;
 	footprintz=3;
 	reclaimable=1;
@@ -15,7 +15,7 @@
 	featuredead=Debris_Large;
 	description=Destroyed Assault Gun;
 	energy=500;
-	damage=10000;
+	damage=2501;
 	footprintx=3;
 	footprintz=3;
 	reclaimable=1;

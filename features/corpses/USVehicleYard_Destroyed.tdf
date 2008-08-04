@@ -4,7 +4,7 @@
 	description=Destroyed Yard;
 	featuredead=BuildingDebris_Large;
 	energy=1000;
-	damage=50000;
+	damage=2501;
 	footprintx=6;
 	footprintz=5;
 	reclaimable=1;

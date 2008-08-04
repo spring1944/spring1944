@@ -4,7 +4,7 @@
 	description=Destroyed Tractor;
 	featuredead=Debris_Small;
 	energy=75;
-	damage=50000;
+	damage=2501;
 	footprintx=2;
 	footprintz=4;
 	reclaimable=1;

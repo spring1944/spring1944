@@ -12,7 +12,7 @@
 	name=Light Defensive Position;
 	description=- Infantry area denial;
 	side=RUS;
-	maxdamage=1000;
+	maxdamage=2500;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;

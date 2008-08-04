@@ -4,7 +4,7 @@
 	description=Destroyed Truck;
 	featuredead=Debris_Small;
 	energy=50;
-	damage=2000;
+	damage=501;
 	footprintx=2;
 	footprintz=2;
 	reclaimable=1;

@@ -4,7 +4,7 @@
 	description=Abandoned TD;
 	featuredead=GERJagdpanzerIV_Destroyed;
 	energy=75;
-	damage=8000;
+	damage=501;
 	footprintx=3;
 	footprintz=3;
 	reclaimable=1;
@@ -16,7 +16,7 @@
 	description=Destroyed TD;
 	featuredead=Debris_Large;
 	energy=75;
-	damage=8000;
+	damage=501;
 	footprintx=3;
 	footprintz=3;
 	reclaimable=1;

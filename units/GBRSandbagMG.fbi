@@ -12,7 +12,7 @@
 	name=Light Defensive Position;
 	description=- Directional Infantry area denial;
 	side=GBR;
-	maxdamage=1000;
+	maxdamage=2500;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;

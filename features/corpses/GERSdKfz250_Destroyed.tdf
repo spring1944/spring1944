@@ -4,7 +4,7 @@
 	featuredead=Debris_Small;
 	description=Destroyed Halftrack;
 	energy=500;
-	damage=5000;
+	damage=1251;
 	footprintx=2;
 	footprintz=3;
 	reclaimable=1;

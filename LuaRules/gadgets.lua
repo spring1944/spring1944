@@ -1,3 +1,4 @@
+-- $Id: gadgets.lua 2491 2008-07-17 13:36:51Z det $
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -73,6 +74,7 @@ end
 
 VFS.Include(SCRIPT_DIR .. 'system.lua', nil, VFSMODE)
 VFS.Include(SCRIPT_DIR .. 'callins.lua', nil, VFSMODE)
+--VFS.Include(SCRIPT_DIR .. 'factions.lua', nil, VFSMODE)
 
 local actionHandler = VFS.Include(SCRIPT_DIR .. 'actions.lua', nil, VFSMODE)
 
@@ -175,6 +177,7 @@ local callInLists = {
   'AllowResourceLevel',
   'AllowResourceTransfer',
   'AllowDirectUnitControl',
+  'RecvLuaMsg',
 
   -- COB CallIn  (FIXME?)
   'CobCallback',
@@ -253,13 +256,8 @@ function gadgetHandler:Initialize()
   local gadgetFiles = VFS.DirList(GADGET_DIR, "*.lua", VFSMODE)
 --  table.sort(gadgetFiles)
 
-  for k,gf in ipairs(gadgetFiles) do
-    print('gf1 = ' .. gf) -- FIXME
-  end
-
   -- stuff the gadgets into unsortedGadgets
   for k,gf in ipairs(gadgetFiles) do
-    print('gf2 = ' .. gf) -- FIXME
     local gadget = self:LoadGadget(gf)
     if (gadget) then
       table.insert(unsortedGadgets, gadget)
@@ -287,7 +285,6 @@ function gadgetHandler:Initialize()
   -- add the gadgets  
   for _,g in ipairs(unsortedGadgets) do
     gadgetHandler:InsertGadget(g)
-
     local name = g.ghInfo.name
     local basename = g.ghInfo.basename
     print(string.format("Loaded gadget:  %-18s  <%s>", name, basename))
@@ -388,6 +385,8 @@ function gadgetHandler:NewGadget()
   local gh = gadget.gadgetHandler
   local self = self
 
+  gh.gadgetHandler = self
+
   gadget.include  = function (f)
     return VFS.Include(f, gadget, VFSMODE)
   end
@@ -485,7 +484,7 @@ end
 local function SafeWrap(func, funcName)
   local gh = gadgetHandler
   return function(g, ...)
-    local r = { pcall(func, g, unpack(arg)) }
+    local r = { pcall(func, g, ...) }
     if (r[1]) then
       table.remove(r, 1)
       return unpack(r)
@@ -612,7 +611,7 @@ function gadgetHandler:UpdateCallIn(name)
       (name == 'RecvFromSynced')) then
     local selffunc = self[name]
     _G[name] = function(...)
-      return selffunc(self, unpack(arg))
+      return selffunc(self, ...)
     end
   else
     _G[name] = nil
@@ -886,7 +885,7 @@ function gadgetHandler:RegisterCMDID(gadget, id)
   end
   if (self.CMDIDs[id] ~= nil) then
     Spring.Echo('Gadget (' .. gadget.ghInfo.name .. ') ' ..
-                'tried to register a CMD_ID >= 40000')
+                'tried to register an already used CMD_ID')
     Script.Kill('Duplicate CMD_ID code: ' .. id)
   end
   self.CMDIDs[id] = gadget
@@ -916,11 +915,11 @@ end
 
 
 function gadgetHandler:RecvFromSynced(...)
-  if (actionHandler.RecvFromSynced(unpack(arg))) then
+  if (actionHandler.RecvFromSynced(...)) then
     return
   end
   for _,g in ipairs(self.RecvFromSyncedList) do
-    if (g:RecvFromSynced(unpack(arg))) then
+    if (g:RecvFromSynced(...)) then
       return
     end
   end
@@ -929,7 +928,8 @@ end
 
 
 function gadgetHandler:GotChatMsg(msg, player)
-  if ((player == 0) and Spring.IsCheatingEnabled()) then
+  if (((player == 0) or (player == 255))
+      and Spring.IsCheatingEnabled()) then
     local sp = '^%s*'    -- start pattern
     local ep = '%s+(.*)' -- end pattern
     local s, e, match
@@ -1144,6 +1144,16 @@ function gadgetHandler:AllowDirectUnitControl(unitID, unitDefID, unitTeam,
 end
 
 
+function gadgetHandler:RecvLuaMsg(msg, playerID)
+  for _,g in ipairs(self.RecvLuaMsgList) do
+    if g:RecvLuaMsg(msg, playerID) then
+      return true
+    end
+  end
+  return false
+end
+
+
 --------------------------------------------------------------------------------
 --
 --  Unit call-ins
@@ -1278,17 +1288,17 @@ function gadgetHandler:UnitSeismicPing(x, y, z, strength,
 end
 
 
-function gadgetHandler:UnitLoaded(x, y, z, strength)
+function gadgetHandler:UnitLoaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
   for _,g in ipairs(self.UnitLoadedList) do
-    g:UnitLoaded(x, y, z, strength)
+    g:UnitLoaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
   end
   return
 end
 
 
-function gadgetHandler:UnitUnloaded(x, y, z, strength)
+function gadgetHandler:UnitUnloaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
   for _,g in ipairs(self.UnitUnloadedList) do
-    g:UnitUnloaded(x, y, z, strength)
+    g:UnitUnloaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
   end
   return
 end

@@ -28,8 +28,7 @@
 
 	intensity=0.1;
 
-	size=5;
-	collisionsize=3;
+	collisionsize=5;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=1;
@@ -122,7 +121,7 @@
 	explosiongenerator=custom:nothing;
 	turret=1;
 	tolerance=600;
-
+	interceptedbyshieldtype=32;
 	ballistic=1;
 	firestarter=0;
 

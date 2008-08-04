@@ -9,9 +9,9 @@
 
 	firestarter=0.0;
 
-	range=1240;
+	range=1365;
 	reloadtime=12;
-	accuracy=570;
+	accuracy=485;
 	startvelocity=1000;
 	weaponvelocity=550;
 	areaofeffect=81;
@@ -43,7 +43,7 @@
 	turret=1;
 	tolerance=600;
 	explosiongenerator=custom:nothing;
-
+	interceptedbyshieldtype=32;
 	ballistic=1;
 	firestarter=0;
 

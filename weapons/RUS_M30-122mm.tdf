@@ -63,7 +63,7 @@
 	explosiongenerator=custom:nothing;
 	turret=1;
 	tolerance=600;
-
+	interceptedbyshieldtype=32;
 	ballistic=1;
 	firestarter=0;
 

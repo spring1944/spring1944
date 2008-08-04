@@ -4,7 +4,7 @@
 	featuredead=Debris_Small;
 	description=Destroyed Assault Gun;
 	energy=50;
-	damage=8000;
+	damage=501;
 	footprintx=2;
 	footprintz=2;
 	reclaimable=1;

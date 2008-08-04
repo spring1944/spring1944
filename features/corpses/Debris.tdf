@@ -17,7 +17,7 @@
 	description=Debris;
 	metal=0;
 	energy=100;
-	damage=2500;
+	damage=626;
 	blocking=0;
 	footprintx=5;
 	footprintz=5;
@@ -31,7 +31,7 @@
 	description=Debris;
 	metal=0;
 	energy=50;
-	damage=2500;
+	damage=626;
 	blocking=0;
 	footprintx=2;
 	footprintz=2;
@@ -44,7 +44,7 @@
 	description=Debris;
 	metal=0;
 	energy=100;
-	damage=5000;
+	damage=1251;
 	blocking=0;
 	footprintx=5;
 	footprintz=5;

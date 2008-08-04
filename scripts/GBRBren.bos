@@ -205,8 +205,8 @@ AimWeapon1(heading, pitch)
 	{
 		turn pelvis to y-axis heading speed <50>;
 		turn torso to y-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm to x-axis <-85> - pitch speed <120>*PRONE_SPEED;
-		turn luparm to x-axis <-140> - pitch speed <100>*PRONE_SPEED;
+		turn ruparm to x-axis <-85> - pitch speed <180>*PRONE_SPEED;
+		turn luparm to x-axis <-140> - pitch speed <180>*PRONE_SPEED;
 		wait-for-turn pelvis around y-axis;
 		bAiming=0;
 		sleep 100;

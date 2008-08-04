@@ -37,7 +37,7 @@
 	{
 		default=0;
 		infantry=1500;
-		guns=400;
+		guns=250;
 		lightbuildings=1;
 		bunkers=25;
 		sandbags=25;
@@ -61,7 +61,7 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=1240;
+	range=790;
 	reloadtime=10;
 	weaponvelocity=800;
 	areaofeffect=175;
