@@ -3,14 +3,14 @@
 	unitname=flag;
 	objectname=flag.S3O;
 	icontype=gbrflag;
-	category=metal level1 NOWEAPON FLAG;
+	category=metal level1 NOWEAPON;
 	tedclass=METAL;
 	yardmap=ooooooooo;
 
 	name=Flag;
 	description=Command Position Signal;
 	side=GBR;
-	maxdamage=50;
+	maxdamage=5000000;
 	buildcostmetal=1;
 	buildcostenergy=0;
 	buildtime=150;
@@ -41,12 +41,12 @@
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;
+	weapon1=flag;
 	[sfxtypes]
 	{
 	}
 	[customParams]
 	{
-		dontCount=1;
 		flag=1;
 	}
 }

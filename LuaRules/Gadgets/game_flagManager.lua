@@ -6,7 +6,7 @@ function gadget:GetInfo()
 		date      = "31st July 2008",
 		license   = "CC by-nc, version 3.0",
 		layer     = -5,
-		enabled   = false  --  loaded by default?
+		enabled   = true  --  loaded by default?
 	}
 end
 
@@ -15,13 +15,18 @@ end
 local GetGroundInfo					= Spring.GetGroundInfo
 local GetGroundHeight				=	Spring.GetGroundHeight
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
-local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
-local GetUnitRulesParam			= Spring.GetUnitRulesParam
+local GetUnitTeam						= Spring.GetUnitTeam
+local GetUnitDefID       		= Spring.GetUnitDefID
+local GetTeamInfo						= Spring.GetTeamInfo
+--local GetUnitRulesParam			= Spring.GetUnitRulesParam
 -- Synced Ctrl
 local CreateUnit						= Spring.CreateUnit
 local SetUnitNeutral				=	Spring.SetUnitNeutral
 local SetUnitAlwaysVisible	= Spring.SetUnitAlwaysVisible
-local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local TransferUnit					= Spring.TransferUnit
+local GiveOrderToUnit				= Spring.GiveOrderToUnit
+local CallCOBScript					= Spring.CallCOBScript
+--local SetUnitRulesParam			= Spring.SetUnitRulesParam
 
 -- constants
 local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
@@ -29,7 +34,8 @@ local BLOCK_SIZE						= 32	-- size of map to check at once
 local METAL_THRESHOLD				= 1 
 local PROFILE_PATH					= "maps/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. "_profile.lua"
 local FLAG_RADIUS						= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local FLAG_CAP_THRESHOLD		= 100 -- number of capping points needed for a flag to switch teams
+local FLAG_CAP_THRESHOLD		= 100 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
+local SIDES									= {gbr = 1, ger = 2, rus = 3, us = 4}
 
 -- variables
 --local maxMetal 							= 0 -- maximum metal found on map
@@ -42,7 +48,7 @@ local flags 								= {} -- table of flag unitIDs
 local cappers 							= {} -- table of flag cappers
 local defenders							= {} -- table of flag defenders
 local flagCapStatuses				= {{}} -- table of flag's capping statuses
-local allyTeams							= Spring.GetAllyTeamList()
+local teams									= Spring.GetTeamList()
 
 
 if (gadgetHandler:IsSyncedCode()) then
@@ -53,6 +59,11 @@ function PlaceFlag(spot)
 	SetUnitNeutral(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
 	table.insert(flags, newFlag)
+end
+
+function getFlagControl(flagID)
+	local flagControl = 0
+	
 end
 
 function gadget:GameFrame(n)
@@ -98,25 +109,59 @@ function gadget:GameFrame(n)
 	elseif n == 40 then
 		for _, flagID in pairs(flags) do
 			SetUnitAlwaysVisible(flagID, false)
-			flagCapStatuses[flagID] = allyTeams
+			flagCapStatuses[flagID] = {}
 		end
 			
 	end
 	
 	-- FLAG CONTROL
-	-- TODO: stuff!
 	if n % 30 == 5 and n > 40 then
 		for spotNum, flagID in pairs(flags) do
+			local flagTeamID = GetUnitTeam(flagID)
 			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
-			for _, unitID in pairs(unitsAtFlag) do
-				local unitAllyTeamID = GetUnitAllyTeam(unitID)
-				local flagAllyTeamID = GetUnitAllyTeam(flagID)
-				if unitAllyTeamID ~= flagAllyTeamID and cappers[unitID] then
-					flagCapStatuses[flagID][unitAllyTeamID] = (flagCapStatuses[flagID][unitAllyTeamID] or 0) + cappers[unitID]
-				elseif unitAllyTeamID == flagAllyTeamID and defenders[unitID] then
-					flagCapStatuses[flagID][flagAllyTeamID] = (flagCapStatuses[flagID][flagAllyTeamID] or 0) + defenders[unitID]
-				end
+			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
+			for i = 1, #unitsAtFlag do
+				local unitID = unitsAtFlag[i]
+				local unitTeamID = GetUnitTeam(unitID)
+				if unitTeamID == flagTeamID and defenders[unitID] then
+					--Spring.Echo("Defender at flag " .. flagID)
+					flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
+					--Spring.Echo("Defend value is: " .. flagCapStatuses[flagID][flagTeamID])
+					for teamID = 0, #teams-1 do
+						if teamID ~= flagTeamID then
+							if (flagCapStatuses[flagID][i] or 0) > 0 then
+								flagCapStatuses[flagID][i] = flagCapStatuses[flagID][i] - flagCapStatuses[flagID][flagTeamID]
+							end
+						end
+					end
+				elseif unitTeamID ~= flagTeamID and cappers[unitID] then
+					--Spring.Echo("Capper at flag " .. flagID)
+					flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID] - (flagCapStatuses[flagID][flagTeamID] or 0)
+					if flagCapStatuses[flagID][unitTeamID] < 0 then
+						flagCapStatuses[flagID][unitTeamID] = 0
+					end
+					--Spring.Echo("Cap Status is: " .. flagCapStatuses[flagID][unitTeamID] or 0)
+					if flagCapStatuses[flagID][unitTeamID] > FLAG_CAP_THRESHOLD then
+						if (flagTeamID == GAIA_TEAM_ID) then
+							Spring.SendMessageToTeam(unitTeamID, "Flag Captured!")
+							TransferUnit(flagID, unitTeamID, false)
+							local _, _, _, _, side = GetTeamInfo(unitTeamID)
+							CallCOBScript(flagID, "ShowFlag", SIDES[side] or 0)
+							flagTeamID = unitTeamID
+						else
+							Spring.SendMessageToTeam(unitTeamID, "Flag Neutralised!")
+							TransferUnit(flagID, GAIA_TEAM_ID, false)	
+							CallCOBScript(flagID, "ShowFlag", 0)
+							flagTeamID = GAIA_TEAM_ID
+						end
+						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
+						for teamID = 0, #teams-1 do
+							flagCapStatuses[flagID][teamID] = 0
+						end
+					end
+				end	
 			end
+			flagCapStatuses[flagID][flagTeamID] = 0
 		end
 	end
 	

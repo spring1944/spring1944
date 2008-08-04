@@ -189,6 +189,7 @@
 	USFlag=99;
 	RUSFlag=99;
 	GBRFlag=99;
+	flag=99;
 	}
 
 [Tanks]

@@ -3,23 +3,108 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, pole, flagpiece1, flagpiece2, flagpiece3;
+piece  base, pole;
+piece  gerflagpiece1, gerflagpiece2, gerflagpiece3;
+piece  gbrflagpiece1, gbrflagpiece2, gbrflagpiece3;
+piece  rusflagpiece1, rusflagpiece2, rusflagpiece3;
+piece  usflagpiece1, usflagpiece2, usflagpiece3;
 
 static-var  Static_Var_1, Static_Var_2, Static_Var_3, Static_Var_4, Static_Var_5;
 
+#define ALARM			 4096+0
+
 #define MAX_HEIGHT	[22]
+
+#define HIDE_GER \
+\hide gerflagpiece1; \
+\hide gerflagpiece2; \
+\hide gerflagpiece3;
+
+#define HIDE_GBR \
+\hide gbrflagpiece1; \
+\hide gbrflagpiece2; \
+\hide gbrflagpiece3;
+
+#define HIDE_RUS \
+\hide rusflagpiece1; \
+\hide rusflagpiece2; \
+\hide rusflagpiece3;
+
+#define HIDE_US \
+\hide usflagpiece1; \
+\hide usflagpiece2; \
+\hide usflagpiece3;
+
+#define SHOW_GER \
+\show gerflagpiece1; \
+\show gerflagpiece2; \
+\show gerflagpiece3;
+
+#define SHOW_GBR \
+\show gbrflagpiece1; \
+\show gbrflagpiece2; \
+\show gbrflagpiece3;
+
+#define SHOW_RUS \
+\show rusflagpiece1; \
+\show rusflagpiece2; \
+\show rusflagpiece3;
+
+#define SHOW_US \
+\show usflagpiece1; \
+\show usflagpiece2; \
+\show usflagpiece3;
+
+ShowFlag(team)
+{
+	if(team == 0) { // GAIA
+		HIDE_GER
+		HIDE_GBR
+		HIDE_RUS
+		HIDE_US
+	}
+	if(team == 1) { // GBR
+		SHOW_GBR
+		HIDE_GER
+		HIDE_RUS
+		HIDE_US	
+	}
+	if(team == 2) { // GER
+		HIDE_GBR
+		SHOW_GER
+		HIDE_RUS
+		HIDE_US	
+	}
+	if(team == 3) { // RUS
+		HIDE_GBR
+		HIDE_GER
+		SHOW_RUS
+		HIDE_US	
+	}
+	if(team == 4) { // US
+		HIDE_GBR
+		HIDE_GER
+		HIDE_RUS
+		SHOW_US	
+	}
+	emit-sfx ALARM from base;
+}
 
 SetFlag()
 {
-	while ( TRUE ) {
+	/*while ( TRUE ) {
 	  move flagpiece1 to y-axis MAX_HEIGHT * (get 4) / 100 now;
 	  sleep 500;
-	}
+	}*/
+		HIDE_GER
+		HIDE_GBR
+		HIDE_RUS
+		HIDE_US
 }
 
 Go()
 {
-	while( Static_Var_1 == 1 )
+	/*while( Static_Var_1 == 1 )
 	{
 	turn flagpiece1 to y-axis <-20> speed <200>;
 	turn flagpiece2 to y-axis <20> speed <200>;
@@ -29,7 +114,7 @@ Go()
 	turn flagpiece2 to y-axis <-20> speed <200>;
 	turn flagpiece3 to y-axis <20> speed <200>;
 	sleep 200;
-	}
+	}*/
 }
 
 Stop()
