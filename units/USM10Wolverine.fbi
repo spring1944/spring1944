@@ -58,7 +58,7 @@
 	weapon1=M7AP;
 	onlytargetcategory1=TANK;
 	weapon2=M2BrowningAA;
-	onlytargetcategory4=AIR;
+	onlytargetcategory2=AIR;
 	weapon3=.50calproof;
 	weapon4=TankFearShield;
 
