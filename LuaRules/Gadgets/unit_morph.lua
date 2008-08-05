@@ -350,7 +350,11 @@ function gadget:Initialize()
     return    
   end
   --]]
-
+ 	for _, unitID in ipairs(Spring.GetAllUnits()) do
+		 local teamID = Spring.GetUnitTeam(unitID)
+		 local unitDefID = Spring.GetUnitDefID(unitID)
+		 gadget:UnitCreated(unitID, unitDefID, teamID)
+	end
   _G.morphUnits = morphUnits  -- make it global for unsynced access via SYNCED
   -- get the morphDefs
   morphDefs = include("LuaRules/Configs/morph_defs.lua")

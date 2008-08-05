@@ -1,3 +1,4 @@
+-- $Id: main.lua 2491 2008-07-17 13:36:51Z det $
 
 
 AllowUnsafeChanges("USE AT YOUR OWN PERIL")
@@ -20,13 +21,18 @@ AllowUnsafeChanges("USE AT YOUR OWN PERIL")
 --  *** The string argument must be an exact match ***
 
 
+if (select == nil) then
+  select = function(n,...) return arg[((n=='#') and 'n')or n] end
+end
+
+
 do  --  wrap print() in a closure
   local origPrint = print
-  print = function(...)
-    if (arg[1]) then
-      arg[1] = Script.GetName() .. ': ' .. tostring(arg[1])
+  print = function(arg1,...)
+    if (arg1) then
+      arg1 = Script.GetName() .. ': ' .. tostring(arg1)
     end
-    origPrint(unpack(arg))
+    origPrint(arg1, ...)
   end
 end
 
@@ -39,11 +45,15 @@ end
 
 
 local allModOptions = Spring.GetModOptions()
-function Spring.GetModOption(s,bool)
+function Spring.GetModOption(s,bool,default)
   if (bool) then
-    return (allModOptions[s]=="1")
+    local modOption = allModOptions[s]
+    if (modOption==nil) then modOption = (default and "1") end
+    return (modOption=="1")
   else
-    return allModOptions[s]
+    local modOption = allModOptions[s]
+    if (modOption==nil) then modOption = default end
+    return modOption
   end
 end
 

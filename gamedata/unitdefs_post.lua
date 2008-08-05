@@ -24,6 +24,21 @@ local function disableunits(unitlist)
 	end
 end
 
+local function tobool(val)
+  local t = type(val)
+  if (t == 'nil') then
+    return false
+  elseif (t == 'boolean') then
+    return val
+  elseif (t == 'number') then
+    return (val ~= 0)
+  elseif (t == 'string') then
+    return ((val ~= '0') and (val ~= 'false'))
+  end
+  return false
+end
+
+
 	if (modOptions.unit_los_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.sightdistance) then
@@ -39,6 +54,20 @@ end
 			end
 		end
 	end
+	
+if (modOptions and (modOptions.gamemode == "tactics")) then
+  -- remove all build options
+  Game = { gameSpeed = 30 };  --  required by tactics.lua
+  local options = VFS.Include("LuaRules/Configs/tactics.lua")
+  local customBuilds = options.customBuilds
+  for name, ud in pairs(UnitDefs) do
+    if tobool(ud.commander) then
+      ud.buildoptions = (customBuilds[name] or {}).allow or {}
+    else
+      ud.buildoptions = {}
+    end
+  end
+end
 --[[
 	if (modOptions.unit_buildable_airfields == 0) then
 		disableunits({usairfield", "gbrairfield", "gerairfield", "RUSAirfield"})

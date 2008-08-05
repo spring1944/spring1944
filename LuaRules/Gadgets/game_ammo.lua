@@ -258,7 +258,7 @@ end
 
 function gadget:GameFrame(n)
    if (n % (3*30) < 0.1) then
-  
+
   --for supplierID in pairs(ammoSuppliers) do
  --  local supplierDefID = GetUnitDefID(supplierID)
   -- local supplyRange = UnitDefs[supplierDefID].customParams.supplyrange

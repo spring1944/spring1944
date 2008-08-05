@@ -1,6 +1,4 @@
--- $Id: gadgets.lua 2491 2008-07-17 13:36:51Z det $
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+
 --
 --  file:    gadgets.lua
 --  brief:   the gadget manager, a call-in router
@@ -74,7 +72,6 @@ end
 
 VFS.Include(SCRIPT_DIR .. 'system.lua', nil, VFSMODE)
 VFS.Include(SCRIPT_DIR .. 'callins.lua', nil, VFSMODE)
---VFS.Include(SCRIPT_DIR .. 'factions.lua', nil, VFSMODE)
 
 local actionHandler = VFS.Include(SCRIPT_DIR .. 'actions.lua', nil, VFSMODE)
 

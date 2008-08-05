@@ -48,6 +48,11 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:Initialize()
 		squadDefs = include("LuaRules/Configs/squad_defs.lua")
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
+			 local teamID = Spring.GetUnitTeam(unitID)
+			 local unitDefID = Spring.GetUnitDefID(unitID)
+			 gadget:UnitCreated(unitID, unitDefID, teamID)
+		end
 		watchUnits = { }
 	end
 

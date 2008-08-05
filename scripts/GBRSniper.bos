@@ -232,6 +232,7 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	FearOk=1;
+	get DO_SEISMIC_PING(4);
 	if (IsProne==1)
 	{
 		turn ruparm to x-axis <-95> speed <700>;
