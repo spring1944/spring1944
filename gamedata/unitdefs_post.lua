@@ -55,19 +55,6 @@ end
 		end
 	end
 	
-if (modOptions and (modOptions.gamemode == "tactics")) then
-  -- remove all build options
-  Game = { gameSpeed = 30 };  --  required by tactics.lua
-  local options = VFS.Include("LuaRules/Configs/tactics.lua")
-  local customBuilds = options.customBuilds
-  for name, ud in pairs(UnitDefs) do
-    if tobool(ud.commander) then
-      ud.buildoptions = (customBuilds[name] or {}).allow or {}
-    else
-      ud.buildoptions = {}
-    end
-  end
-end
 --[[
 	if (modOptions.unit_buildable_airfields == 0) then
 		disableunits({usairfield", "gbrairfield", "gerairfield", "RUSAirfield"})

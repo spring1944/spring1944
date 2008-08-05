@@ -23,25 +23,6 @@
 --------------------------------------------------------------------------------
 local options = {
   {
-    key    = 'gamemode',
-    name   = 'Game Modes',
-    desc   = 'Change the game mode \nkey: gamemode',
-    type   = 'list',
-    def    = 'normal',
-    items  = {
-      { 
-        key  = 'normal',
-        name = 'Normal',
-        desc = 'Normal game mode',
-      },
-      {
-        key  = 'tactics',
-        name = 'Tactics',
-        desc = 'Players select a limited number of units before the game starts (without any factories)',
-      },
-    },
-  },
-  {
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
     desc   = 'Applies a multiplier to all the weapon ranges ingame',
