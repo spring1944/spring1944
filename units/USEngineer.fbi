@@ -30,6 +30,7 @@
 	builder=1;
 	builddistance=20;
 	workertime=10;
+	terraformspeed=300;
 	shownanospray=0;
 
 	canmove=1;

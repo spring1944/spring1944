@@ -34,6 +34,7 @@
 	metalmake=20;
 	builddistance=5;
 	workertime=20; //110
+	terraformspeed=300;
 	shownanospray=0;
 
 	init_cloaked=1;
