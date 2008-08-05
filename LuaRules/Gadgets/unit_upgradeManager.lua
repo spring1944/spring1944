@@ -90,7 +90,6 @@ if (gadgetHandler:IsSyncedCode()) then
 	
 	function gadget:Initialize()
 		
-		
 		upgradeDefs = { }
 		local rawUpgradeDefs = include("LuaRules/Configs/upgrade_defs.lua")
 		checkUpgradeDefs(rawUpgradeDefs)
@@ -100,18 +99,16 @@ if (gadgetHandler:IsSyncedCode()) then
 		for i = 1,CMD_MAX_UPGRADES do
 			gadgetHandler:RegisterCMDID(CMD_UPGRADE + i)
 		end
-		if (modOptions.gamemode == "normal") then
+		
 			-- Loops through the units, calling g:UnitFinished() on each of them
-			for _, unitID in ipairs(Spring.GetAllUnits()) do
-				local teamID = Spring.GetUnitTeam(unitID)
-				local unitDefID = GetUnitDefID(unitID)
-				gadget:UnitFinished(unitID, unitDefID, teamID)
-			end
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
+			local teamID = Spring.GetUnitTeam(unitID)
+			local unitDefID = GetUnitDefID(unitID)
+			gadget:UnitFinished(unitID, unitDefID, teamID)
 		end
 		
 	end
-
-
+	
 	
 	
 	local function GetUpgradeToolTip(unitID, upgradeDef)

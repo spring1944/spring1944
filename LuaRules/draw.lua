@@ -1,4 +1,3 @@
--- $Id: draw.lua 2491 2008-07-17 13:36:51Z det $
 
 --
 -- 0.75b2 compatibilty
@@ -17,18 +16,13 @@ if (Spring.GetTeamColor == nil) then
 end
 
 
-if (select == nil) then
-  select = function(n,...) return arg[((n=='#') and 'n')or n] end
-end
-
-
 do  --  wrap print() in a closure
   local origPrint = print
-  print = function(arg1,...)
-    if (arg1) then
-      arg1 = '>> ' .. tostring(arg1)
+  print = function(...)
+    if (arg[1]) then
+      arg[1] = '>> ' .. tostring(arg[1])
     end
-    origPrint(arg1, ...)
+    origPrint(unpack(arg))
   end
 end
 
@@ -39,17 +33,12 @@ function tprint(t)
   end
 end
 
-
 local allModOptions = Spring.GetModOptions()
-function Spring.GetModOption(s,bool,default)
+function Spring.GetModOption(s,bool)
   if (bool) then
-    local modOption = allModOptions[s]
-    if (modOption==nil) then modOption = (default and "1") end
-    return (modOption=="1")
+    return (allModOptions[s]=="1")
   else
-    local modOption = allModOptions[s]
-    if (modOption==nil) then modOption = default end
-    return modOption
+    return allModOptions[s]
   end
 end
 

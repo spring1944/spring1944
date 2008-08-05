@@ -78,12 +78,6 @@ function gadget:Initialize()
 	for _,t in ipairs(Spring.GetTeamList()) do
 		aliveCount[t] = 0
 	end
-		--To account for deployment or other reasons for units existing before this gadget initializes, do the following:
-	for _, unitID in ipairs(Spring.GetAllUnits()) do
-		 local teamID = Spring.GetUnitTeam(unitID)
-		 local unitDefID = Spring.GetUnitDefID(unitID)
-		 gadget:UnitCreated(unitID, unitDefID, teamID)
-	end
 end
 
 else
