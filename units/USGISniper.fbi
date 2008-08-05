@@ -38,7 +38,7 @@
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
+	maxvelocity=1.2;
 	acceleration=0.375;
 	brakerate=0.9;
 	turnrate=1010;
