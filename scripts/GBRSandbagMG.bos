@@ -18,24 +18,24 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 #define MG_MUZZLEFLASH 1024+7
 #define SMALL_TRACER 2048+2
 
-#define FearLimit	16	//24
-#define RecoverConstant 8
-#define PinnedLevel	20 //fear level where they stop shooting and freeze on the ground - 24
-#define RecoverRate	3000 //how often RecoverConstant is subtracted from total fear level
+#define FearLimit	10 //max amount of fear they can possibly get. any additional is ignored
+#define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
+#define PinnedLevel	6 //fear level where they stop shooting and freeze on the ground
+#define RecoverRate	1000 //how often RecoverConstant is subtracted from total fear level
 //#define InitialFreeze 2000 //how long they stay down before they start recovering
 //various levels of fear added when these weapons hit
 
-#define LittleFear	0 //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
-#define MedFear	1 //small/med explosions: mortars, 88mm guns and under
-#define BigFear	2 //large explosions: small bombs, 155mm - 105mm guns
-#define MortalFear	8 //omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty
+#define LittleFear	3 //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+#define MedFear	6 //small/med explosions: mortars, 88mm guns and under
+#define BigFear	11 //large explosions: small bombs, 155mm - 105mm guns
+#define MortalFear	16 //omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty
 
 
 //movement check for anims
 
 WeaponReady() //attentshaun!
 {
-	move pelvis to y-axis [-1.2] speed <100>*PRONE_SPEED;
+	move pelvis to y-axis [-1.2] speed <500>*PRONE_SPEED;
 	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
 	turn pelvis to x-axis <0> speed <100>*RUN_SPEED;
 	turn pelvis to z-axis <0> speed <100>*RUN_SPEED;
@@ -171,9 +171,9 @@ set-signal-mask 0;
 		turn lloarm to y-axis <0> speed <120>*PRONE_SPEED;
 		turn lloarm to z-axis <0> speed <120>*PRONE_SPEED;
 		
-		turn gun to x-axis <30> speed <120>*PRONE_SPEED;
-		turn gun to y-axis <30> speed <120>*PRONE_SPEED;
-		turn gun to z-axis <0> speed <120>*PRONE_SPEED;
+	///	turn gun to x-axis <30> speed <120>*PRONE_SPEED;
+	//	turn gun to y-axis <30> speed <120>*PRONE_SPEED;
+	//	turn gun to z-axis <0> speed <120>*PRONE_SPEED;
 	wait-for-turn rthigh around x-axis;
 	wait-for-turn rthigh around y-axis;
 	wait-for-turn rthigh around z-axis;
@@ -204,9 +204,9 @@ set-signal-mask 0;
 	wait-for-turn lloarm around y-axis;
 	wait-for-turn lloarm around z-axis;
 	
-	wait-for-turn gun around x-axis;
-	wait-for-turn gun around y-axis;
-	wait-for-turn gun around z-axis;
+	//wait-for-turn gun around x-axis;
+//	wait-for-turn gun around y-axis;
+//	wait-for-turn gun around z-axis;
 	}
 
 
@@ -254,7 +254,7 @@ return (1);
 }
 
 
-/*HitByWeaponId(z,x,id,damage)
+HitByWeaponId(z,x,id,damage)
 {	
 	if (Id<=300 || Id>700)
 		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
@@ -275,7 +275,12 @@ return (1);
 	start-script FearRecovery();
 	
 	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
-}*/
+}
+
+luaFunction(arg1)
+{
+ arg1 = fear;
+}
 
 
 Create()
@@ -318,9 +323,9 @@ AimWeapon1(heading, pitch)
 	set-signal-mask 2;
 	bAiming=1;
 	
-	if (IsProne==1)	return (0);
+	if (IsProne==1 || fear > 0)	return (0);
 	
-	if (IsProne==0)
+	if (IsProne==0 && fear == 0)
 	{	
  		turn gun to y-axis heading speed <80>;
  		wait-for-turn gun around y-axis;
@@ -370,8 +375,8 @@ AimWeapon2(heading, pitch)
 {
 	signal 4;
 	set-signal-mask 4;
-	if (isProne==1 || FearOk==0) return (0);
-	if (isProne==0 && FearOk==1)
+	if (isProne==1 || FearOk==0 || fear>0) return (0);
+	if (isProne==0 && FearOk==1 && fear == 0)
 	{
 	wait-for-turn pelvis around y-axis;
 	wait-for-turn gun around y-axis;
