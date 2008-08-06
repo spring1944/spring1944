@@ -18,10 +18,10 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 #define MG_MUZZLEFLASH 1024+7
 #define SMALL_TRACER 2048+2
 
-#define FearLimit	10 //max amount of fear they can possibly get. any additional is ignored
+#define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
 #define PinnedLevel	6 //fear level where they stop shooting and freeze on the ground
-#define RecoverRate	1000 //how often RecoverConstant is subtracted from total fear level
+#define RecoverRate	1250 //how often RecoverConstant is subtracted from total fear level
 //#define InitialFreeze 2000 //how long they stay down before they start recovering
 //various levels of fear added when these weapons hit
 
@@ -327,7 +327,7 @@ AimWeapon1(heading, pitch)
 	
 	if (IsProne==0 && fear == 0)
 	{	
- 		turn gun to y-axis heading speed <80>;
+ 		turn gun to y-axis heading speed <35>;
  		wait-for-turn gun around y-axis;
  		return (1);
 	}
