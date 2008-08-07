@@ -60,7 +60,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=1130;
+	range=1020;
 	reloadtime=3;
 	burst=7;
 	burstrate=.14;
@@ -145,7 +145,7 @@
 	ballistic=1;
 	firestarter=0;
 
-	range=1130;
+	range=1020;
 	reloadtime=3;
 	weaponvelocity=800;
 	areaofeffect=225;

@@ -30,7 +30,7 @@ local morphDefs = {
   {
     into = 'gbrsandbagmg',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 5,
     energy = 0,
   },
@@ -48,7 +48,7 @@ local morphDefs = {
   {
     into = 'gersandbagmg',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 5,
     energy = 0,
   },
@@ -66,7 +66,7 @@ local morphDefs = {
   {
     into = 'russandbagmg',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 5,
     energy = 0,
   },
@@ -84,7 +84,7 @@ local morphDefs = {
   {
     into = 'ussandbagmg',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 5,
     energy = 0,
   },
@@ -104,7 +104,7 @@ local morphDefs = {
   {
     into = 'gbr17pdr_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -122,7 +122,7 @@ local morphDefs = {
   {
     into = 'gbr25pdr_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -140,7 +140,7 @@ local morphDefs = {
   {
     into = 'gerflak38_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -158,7 +158,7 @@ local morphDefs = {
   {
     into = 'gerpak40_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -176,7 +176,7 @@ local morphDefs = {
   {
     into = 'gerlefh18_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -194,7 +194,7 @@ local morphDefs = {
   {
     into = 'gernebelwerfer_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -212,7 +212,7 @@ local morphDefs = {
   {
     into = 'rus61k_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -230,7 +230,7 @@ local morphDefs = {
   {
     into = 'ruszis2_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -248,7 +248,7 @@ local morphDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -266,7 +266,7 @@ local morphDefs = {
   {
     into = 'rusm30_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -284,7 +284,7 @@ local morphDefs = {
   {
     into = 'usm5gun_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
@@ -302,7 +302,7 @@ local morphDefs = {
   {
     into = 'usm2gun_stationary',
     tech = 0,
-    time = 30,
+    time = 45,
     metal = 10,
     energy = 0,
   },
