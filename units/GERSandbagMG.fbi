@@ -44,12 +44,12 @@
 	weapon1=MG42_deployed;
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
-	maxangledif1=100;
+	maxangledif1=120;
 	weapon2=MG34_deployedfear;
 	onlytargetcategory2=INFTARG;
 	weaponslaveto2=1;
 	weaponmaindir2=0 0 1;
-	maxangledif2=100;
+	maxangledif2=120;
 	weapon3=Small_Tracer;
 	[sfxtypes]
 	{
