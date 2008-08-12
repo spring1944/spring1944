@@ -73,4 +73,8 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:RIFLE_MUZZLEFLASH;
 	}
+	[customParams]
+	{
+		flagCapRate=0.05;
+	}
 }
