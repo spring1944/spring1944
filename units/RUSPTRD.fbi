@@ -48,7 +48,7 @@
 	badtargetcategory=FLAG;
 
 	weapon1=PTRD;
-	onlytargetcategory1=NFLAG;
+	onlytargetcategory1=NFLAGNAIR;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
