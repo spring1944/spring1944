@@ -11,23 +11,25 @@ function widget:GetInfo()
 end
 
 -- function localisations
-local GetUnitTeam         = Spring.GetUnitTeam
-local GetUnitViewPosition = Spring.GetUnitViewPosition
-local GetUnitBasePosition = Spring.GetUnitBasePosition
-local IsUnitVisible       = Spring.IsUnitVisible
+-- Synced Read
 local GetGroundNormal     = Spring.GetGroundNormal
 local GetTeamUnitsByDefs 	= Spring.GetTeamUnitsByDefs
+local GetUnitBasePosition = Spring.GetUnitBasePosition
+local GetUnitTeam         = Spring.GetUnitTeam
+local GetUnitViewPosition = Spring.GetUnitViewPosition
+-- Unsynced Read
+local IsUnitVisible       = Spring.IsUnitVisible
 -- OpenGL
-local glColor          = gl.Color
-local glDrawListAtUnit = gl.DrawListAtUnit
+local glColor          		= gl.Color
+local glDrawListAtUnit 		= gl.DrawListAtUnit
 
 -- constants
-local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
-local FLAG_DEF_ID						= UnitDefNames["flag"].id
-local FLAG_RADIUS						= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local CIRCLE_DIVS   				= 32	-- How many sides in our 'circle'
-local CIRCLE_OFFSET 				= 0		-- y-offset
-local CIRCLE_LINES  				= 0		-- display list containing circle
+local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
+local FLAG_DEF_ID					= UnitDefNames["flag"].id
+local FLAG_RADIUS					= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
+local CIRCLE_DIVS   			= 32	-- How many sides in our 'circle'
+local CIRCLE_OFFSET 			= 0		-- y-offset
+local CIRCLE_LINES  			= 0		-- display list containing circle
 
 -- variables
 local teamColors = {}
@@ -47,9 +49,11 @@ function widget:Initialize()
   end)
 end
 
+
 function widget:Shutdown()
   gl.DeleteList(CIRCLE_LINES)
 end
+
 
 function widget:DrawWorldPreUnit()
   gl.LineWidth(5)

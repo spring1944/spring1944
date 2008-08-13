@@ -61,10 +61,11 @@ function PlaceFlag(spot)
 	table.insert(flags, newFlag)
 end
 
+
 function getFlagControl(flagID)
 	local flagControl = 0
-	
 end
+
 
 function gadget:GameFrame(n)
 	-- FLAG PLACEMENT
@@ -164,8 +165,8 @@ function gadget:GameFrame(n)
 			flagCapStatuses[flagID][flagTeamID] = 0
 		end
 	end
-	
 end
+
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
