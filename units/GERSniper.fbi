@@ -13,7 +13,7 @@
 	side=GER;
 	maxdamage=110;
 	damagemodifier=0.375;
-	buildcostmetal=150;
+	buildcostmetal=300;
 	buildcostenergy=0;
 	buildtime=185;
 	footprintx=1;
@@ -40,7 +40,7 @@
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
-	maxvelocity=1.2;
+	maxvelocity=1;
 	acceleration=0.375;
 	brakerate=0.9;
 	turnrate=1010;

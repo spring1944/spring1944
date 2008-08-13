@@ -13,7 +13,7 @@
 	FootprintZ=4;
 	MaxDamage=700;
 	ObjectName=GERFw190G.S3O;
-	Side=US;
+	Side=GER;
 	//SoundCategory=GERPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
@@ -73,7 +73,6 @@
 	//RefuelTime=10;
 
 	// 	Misc
-	bmcode=1;
 	idleTime=1800;
 	steeringmode=1;
 	maneuverleashlength=1280;
@@ -81,19 +80,17 @@
 	shownanoframe=0;
 
 	//	Weapons
-
-	weapon1=mg15115mm;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
-
+	weapon1=bomb;
+	weaponmaindir1=0 -0.25 1;
+	maxangledif1=20;
+	onlytargetcategory1=NFLAGNAIR;
+	
 	weapon2=mg15115mm;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
-	weaponslaveto2=1;
 
-	weapon3=MG15120mm;
+	weapon3=mg15115mm;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
@@ -104,11 +101,17 @@
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
 	weaponslaveto4=1;
+
+	weapon5=MG15120mm;
+	onlytargetcategory5=NFLAG;
+	weaponmaindir5=0 0 1;
+	maxangledif5=10;
+	weaponslaveto5=1;
 	
-	weapon5=bomb;
-	weaponmaindir5=0 -.5 1;
-	maxangledif5=20;
-	onlytargetcategory5=NFLAGNAIR;
+	//weapon6=bombTrigger;
+	//weaponmaindir6=0 -.5 1;
+	//maxangledif6=20;
+	//onlytargetcategory6=NFLAGNAIR;
 
 	weapon6=Medium_Tracer;
 	weapon7=Large_Tracer;
@@ -127,5 +130,9 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = fw190b-;
 		enginesoundnr = 12;
+		maxammo=1;
+		weaponswithammo=1;
+		lowammolevel=1;
+		weaponcost=250;
 	}
 }
