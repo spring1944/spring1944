@@ -9,6 +9,7 @@
 	footprintz=4;
 	reclaimable=1;
 }
+
 [gbrchurchillmkvii_destroyed]
 {
 	object=GBRChurchillMkVII_Destroyed.S3O;

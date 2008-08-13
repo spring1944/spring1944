@@ -2,7 +2,7 @@
 {
 	unitname=GBRChurchillMkVII;
 	objectname=GBRChurchillMkVII.S3O;
-	//corpse=_Damaged;
+	corpse=GBRChurchillMkVII_Damaged;
 	icontype=heavytank;
 	soundcategory=GBRTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
