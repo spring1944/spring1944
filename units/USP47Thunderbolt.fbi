@@ -73,7 +73,6 @@
 	//RefuelTime=10;
 
 	// 	Misc
-	bmcode=1;
 	idleTime=1800;
 	steeringmode=1;
 	maneuverleashlength=1280;
@@ -82,16 +81,15 @@
 
 	//	Weapons
 
-	weapon1=m2browningamg;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
-
+	weapon1=bomb;
+	weaponmaindir1=0 -0.25 1;
+	maxangledif1=20;
+	onlytargetcategory1=NFLAGNAIR;
+	
 	weapon2=m2browningamg;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
-	weaponslaveto2=1;
 
 	weapon3=m2browningamg;
 	onlytargetcategory3=NFLAG;
@@ -127,13 +125,14 @@
 	onlytargetcategory8=NFLAG;
 	weaponmaindir8=0 0 1;
 	maxangledif8=10;
-	weaponslaveto6=1;
-	
-	weapon9=bomb;
-	weaponmaindir9=0 -.5 1;
-	maxangledif9=20;
-	onlytargetcategory9=NFLAGNAIR;
+	weaponslaveto8=1;
 
+	weapon9=m2browningamg;
+	onlytargetcategory9=NFLAG;
+	weaponmaindir9=0 0 1;
+	maxangledif9=10;
+	weaponslaveto9=1;
+	
 	weapon10=Medium_Tracer;
 
 	[sfxtypes]
@@ -148,5 +147,9 @@
 		proptexture = bitmaps/prop5.tga;
 		enginesound = p51b-;
 		enginesoundnr = 16;
+		maxammo=100;
+		weaponswithammo=1;
+		lowammolevel=1;
+		weaponcost=250;
 	}
 }

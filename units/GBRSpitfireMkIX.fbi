@@ -84,18 +84,17 @@
 
 	//	Weapons
 
-	weapon1=m2browningamg;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
-
+	weapon1=bomb;
+	weaponmaindir1=0 -0.25 1;
+	maxangledif1=20;
+	onlytargetcategory1=NFLAGNAIR;
+	
 	weapon2=m2browningamg;
 	onlytargetcategory2=NFLAG;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
-	weaponslaveto2=1;
 
-	weapon3=HS40420mm;
+	weapon3=m2browningamg;
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
@@ -106,11 +105,12 @@
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
 	weaponslaveto4=1;
-	
-	weapon5=bomb;
-	weaponmaindir5=0 -.5 1;
-	maxangledif5=20;
-	onlytargetcategory5=NFLAGNAIR;
+
+	weapon5=HS40420mm;
+	onlytargetcategory5=NFLAG;
+	weaponmaindir5=0 0 1;
+	maxangledif5=10;
+	weaponslaveto5=1;
 
 	weapon6=Medium_Tracer;	
 	weapon7=Large_Tracer;
@@ -128,5 +128,9 @@
 		proptexture=bitmaps/prop3.tga;
 		enginesound = spitfireb-;
 		enginesoundnr = 18;
+		maxammo=100;
+		weaponswithammo=1;
+		lowammolevel=1;
+		weaponcost=250;
 	}
 }

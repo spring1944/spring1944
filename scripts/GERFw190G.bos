@@ -3,9 +3,9 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, bomb, blades;
+piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, bomb, blades, flare;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, bombOk, gears;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
@@ -58,14 +58,12 @@ bankleft()
 
 gearsup()
 {
-		gears=0;
 		turn gear1 to z-axis <0> speed <30>;
 		turn gear2 to z-axis <0> speed <30>;
 }
 
 gearsdown()
 {
-		gears=1;
 		turn gear1 to z-axis <-90> speed <30>;
 		turn gear2 to z-axis <90> speed <30>;
 }
@@ -158,7 +156,6 @@ Create()
 	call-script InitState();
 	start-script SmokeUnit();
 	set 1024 to 0;
-	bombOk=0;
 }
 
 Activate()
@@ -195,9 +192,6 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	hide bomb;
-	sleep 10000;
-	show bomb;
-	bombOk=0;
 	return (0);
 }
 

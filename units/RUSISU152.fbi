@@ -5,7 +5,7 @@
 	corpse=RUSISU152_Damaged;
 	icontype=selfprop;
 	soundcategory=RUSZveroboy;
-	category=NFLAGNAIR TANK;
+	category=NFLAGNAIR NFLAG TANK;
 	tedclass=TANK;
 
 	name=ISU-152;
