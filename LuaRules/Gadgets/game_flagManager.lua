@@ -6,7 +6,7 @@ function gadget:GetInfo()
 		date      = "31st July 2008",
 		license   = "CC by-nc, version 3.0",
 		layer     = -5,
-		enabled   = false  --  loaded by default?
+		enabled   = true  --  loaded by default?
 	}
 end
 
@@ -26,7 +26,7 @@ local SetUnitAlwaysVisible	= Spring.SetUnitAlwaysVisible
 local TransferUnit					= Spring.TransferUnit
 local GiveOrderToUnit				= Spring.GiveOrderToUnit
 local CallCOBScript					= Spring.CallCOBScript
---local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local SetUnitRulesParam			= Spring.SetUnitRulesParam
 
 -- constants
 local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
@@ -138,6 +138,7 @@ function gadget:GameFrame(n)
 				elseif unitTeamID ~= flagTeamID and cappers[unitID] then
 					--Spring.Echo("Capper at flag " .. flagID)
 					flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID] - (flagCapStatuses[flagID][flagTeamID] or 0)
+					SetUnitRulesParam(flagID, "cap" .. tostring(unitTeamID), flagCapStatuses[flagID][unitTeamID])
 					if flagCapStatuses[flagID][unitTeamID] < 0 then
 						flagCapStatuses[flagID][unitTeamID] = 0
 					end
@@ -158,6 +159,7 @@ function gadget:GameFrame(n)
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
 						for teamID = 0, #teams-1 do
 							flagCapStatuses[flagID][teamID] = 0
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), 0)
 						end
 					end
 				end	

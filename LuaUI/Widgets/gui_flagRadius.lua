@@ -17,6 +17,7 @@ local GetTeamUnitsByDefs 	= Spring.GetTeamUnitsByDefs
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GetUnitTeam         = Spring.GetUnitTeam
 local GetUnitViewPosition = Spring.GetUnitViewPosition
+local GetUnitRulesParam		= Spring.GetUnitRulesParam
 -- Unsynced Read
 local IsUnitVisible       = Spring.IsUnitVisible
 -- OpenGL
@@ -30,6 +31,10 @@ local FLAG_RADIUS					= 230 -- current flagkiller weapon radius, we may want to 
 local CIRCLE_DIVS   			= 32	-- How many sides in our 'circle'
 local CIRCLE_OFFSET 			= 0		-- y-offset
 local CIRCLE_LINES  			= 0		-- display list containing circle
+local LINE_ALPHA_CAP			= 0.9	-- alpha value of capping indicator line
+local LINE_ALPHA_RADIUS		= 0.5	-- alpha value of radius line
+local LINE_WIDTH_CAP			= 10	-- width of capping indicator line (this is limited either by hardware or the lua opengl implementation)
+local LINE_WIDTH_RADIUS		= 5		-- width of radius line
 
 -- variables
 local teamColors = {}
@@ -47,6 +52,13 @@ function widget:Initialize()
       end
     end)
   end)
+	-- pre-cache team colours
+	for i = 1, #teams do
+		local teamID = teams[i]
+		local r,g,b = Spring.GetTeamColor(teamID)
+		teamColors[teamID] = {{ r, g, b, LINE_ALPHA_RADIUS },
+													{ r, g, b, LINE_ALPHA_CAP }}
+	end
 end
 
 
@@ -56,7 +68,6 @@ end
 
 
 function widget:DrawWorldPreUnit()
-  gl.LineWidth(5)
   gl.DepthTest(false)
   gl.PolygonOffset(-50, 1000)
 
@@ -73,15 +84,24 @@ function widget:DrawWorldPreUnit()
 					local x, y, z = GetUnitBasePosition(unitID)
 					local gx, gy, gz = GetGroundNormal(x, z)
 					local degrot = math.acos(gy) * 180 / math.pi
-					if (colorSet) then
-						glColor(colorSet[2])
-						glDrawListAtUnit(unitID, CIRCLE_LINES, false,
-														FLAG_RADIUS, 1.0, FLAG_RADIUS,
-														degrot, gz, 0, -gx)
-					else
-						local r,g,b = Spring.GetTeamColor(teamID)
-						teamColors[teamID] = {{ r, g, b, 0.4 },
-																	{ r, g, b, 0.5 }}
+					glColor(colorSet[1])
+					gl.LineWidth(LINE_WIDTH_RADIUS)
+					glDrawListAtUnit(unitID, CIRCLE_LINES, false,
+													FLAG_RADIUS, 1.0, FLAG_RADIUS,
+													degrot, gz, 0, -gx)
+					for j = 1, #teams do
+						capTeamID = teams[j]
+						teamCapValue = GetUnitRulesParam(unitID, "cap" .. tostring(capTeamID))
+						--Spring.Echo(teamCapValue)
+						if teamCapValue then
+							colorSet = teamColors[capTeamID]
+							glColor(colorSet[2])
+							gl.LineWidth(LINE_WIDTH_CAP)
+							local capVisualRadius = (FLAG_RADIUS - 5)/ 100 * teamCapValue
+							glDrawListAtUnit(unitID, CIRCLE_LINES, false,
+															capVisualRadius, 1.0, capVisualRadius,
+															degrot, gz, 0, -gx)
+						end
 					end
         end
       end
