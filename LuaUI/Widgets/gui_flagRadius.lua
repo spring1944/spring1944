@@ -28,6 +28,7 @@ local glDrawListAtUnit 		= gl.DrawListAtUnit
 local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local FLAG_DEF_ID					= UnitDefNames["flag"].id
 local FLAG_RADIUS					= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
+local FLAG_CAP_THRESHOLD	= 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 local CIRCLE_DIVS   			= 32	-- How many sides in our 'circle'
 local CIRCLE_OFFSET 			= 0		-- y-offset
 local CIRCLE_LINES  			= 0		-- display list containing circle
@@ -93,11 +94,11 @@ function widget:DrawWorldPreUnit()
 						capTeamID = teams[j]
 						teamCapValue = GetUnitRulesParam(unitID, "cap" .. tostring(capTeamID))
 						--Spring.Echo(teamCapValue)
-						if teamCapValue then
+						if (teamCapValue or 0) > 0 then
 							colorSet = teamColors[capTeamID]
 							glColor(colorSet[2])
 							gl.LineWidth(LINE_WIDTH_CAP)
-							local capVisualRadius = (FLAG_RADIUS - 5)/ 100 * teamCapValue
+							local capVisualRadius = (FLAG_RADIUS - 5)/ FLAG_CAP_THRESHOLD * teamCapValue
 							glDrawListAtUnit(unitID, CIRCLE_LINES, false,
 															capVisualRadius, 1.0, capVisualRadius,
 															degrot, gz, 0, -gx)

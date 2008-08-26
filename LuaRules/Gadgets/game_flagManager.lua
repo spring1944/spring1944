@@ -34,7 +34,8 @@ local BLOCK_SIZE						= 32	-- size of map to check at once
 local METAL_THRESHOLD				= 1 
 local PROFILE_PATH					= "maps/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. "_profile.lua"
 local FLAG_RADIUS						= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local FLAG_CAP_THRESHOLD		= 100 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
+local FLAG_CAP_THRESHOLD		= 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
+local FLAG_REGEN						= 1		-- how fast a flag with no defenders or attackers will reduce capping statuses
 local SIDES									= {gbr = 1, ger = 2, rus = 3, us = 4}
 
 -- variables
@@ -119,52 +120,84 @@ function gadget:GameFrame(n)
 	if n % 30 == 5 and n > 40 then
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
+			local defendTotal = 0
 			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
 			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
-			for i = 1, #unitsAtFlag do
-				local unitID = unitsAtFlag[i]
-				local unitTeamID = GetUnitTeam(unitID)
-				if unitTeamID == flagTeamID and defenders[unitID] then
-					--Spring.Echo("Defender at flag " .. flagID)
-					flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
-					--Spring.Echo("Defend value is: " .. flagCapStatuses[flagID][flagTeamID])
-					for teamID = 0, #teams-1 do
-						if teamID ~= flagTeamID then
-							if (flagCapStatuses[flagID][i] or 0) > 0 then
-								flagCapStatuses[flagID][i] = flagCapStatuses[flagID][i] - flagCapStatuses[flagID][flagTeamID]
-							end
+			if #unitsAtFlag == 1 then -- Only the flag, no other units
+				for teamID = 0, #teams-1 do
+					if teamID ~= flagTeamID then
+						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
+							--SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
 						end
 					end
-				elseif unitTeamID ~= flagTeamID and cappers[unitID] then
-					--Spring.Echo("Capper at flag " .. flagID)
-					flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID] - (flagCapStatuses[flagID][flagTeamID] or 0)
-					SetUnitRulesParam(flagID, "cap" .. tostring(unitTeamID), flagCapStatuses[flagID][unitTeamID])
-					if flagCapStatuses[flagID][unitTeamID] < 0 then
-						flagCapStatuses[flagID][unitTeamID] = 0
+				end
+			else -- Attackers or defenders (or both) present
+				for i = 1, #unitsAtFlag do
+					local unitID = unitsAtFlag[i]
+					local unitTeamID = GetUnitTeam(unitID)
+					-- BEGIN check for defenders
+					if unitTeamID == flagTeamID and defenders[unitID] then
+						--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
+						flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
+						defendTotal = defendTotal + defenders[unitID]
+						--Spring.Echo(flagCapStatuses[flagID][flagTeamID])
+					-- END check for defenders
+					-- BEGIN check for cappers
 					end
+					if unitTeamID ~= flagTeamID and cappers[unitID] then
+						Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
+						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
+						Spring.Echo(flagCapStatuses[flagID][unitTeamID])
+					end
+					-- END check for cappers
+				end
+				for j = 1, #teams do
+					teamID = teams[j]
+					-- BEGIN Calculate totals
+					if teamID ~= flagTeamID then
+						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+							--Spring.Echo("Flag Team: " .. flagTeamID)
+							Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
+							--flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - (flagCapStatuses[flagID][flagTeamID] or 0)
+							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
+							if flagCapStatuses[flagID][teamID] < 0 then
+								flagCapStatuses[flagID][teamID] = 0
+							end
+							if flagID == 12 then
+								--Spring.Echo(flagCapStatuses[flagID][flagTeamID])
+								--Spring.Echo(flagCapStatuses[flagID][teamID])
+							end
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
+						end
+					end
+					-- END calculate totals
+					-- BEGIN check for capping threshold
 					--Spring.Echo("Cap Status is: " .. flagCapStatuses[flagID][unitTeamID] or 0)
-					if flagCapStatuses[flagID][unitTeamID] > FLAG_CAP_THRESHOLD then
+					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD then
 						if (flagTeamID == GAIA_TEAM_ID) then
-							Spring.SendMessageToTeam(unitTeamID, "Flag Captured!")
-							TransferUnit(flagID, unitTeamID, false)
-							local _, _, _, _, side = GetTeamInfo(unitTeamID)
+							Spring.SendMessageToTeam(teamID, "Flag Captured!")
+							TransferUnit(flagID, teamID, false)
+							local _, _, _, _, side = GetTeamInfo(teamID)
 							CallCOBScript(flagID, "ShowFlag", SIDES[side] or 0)
-							flagTeamID = unitTeamID
+							--flagTeamID = teamID
 						else
-							Spring.SendMessageToTeam(unitTeamID, "Flag Neutralised!")
+							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 							TransferUnit(flagID, GAIA_TEAM_ID, false)	
 							CallCOBScript(flagID, "ShowFlag", 0)
-							flagTeamID = GAIA_TEAM_ID
+							--flagTeamID = GAIA_TEAM_ID
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
-						for teamID = 0, #teams-1 do
-							flagCapStatuses[flagID][teamID] = 0
-							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), 0)
+						for cleanTeamID = 0, #teams-1 do
+							flagCapStatuses[flagID][cleanTeamID] = 0
+							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0)
 						end
 					end
-				end	
+					-- END check for capping threshold
+					-- cleanup defenders
+					flagCapStatuses[flagID][flagTeamID] = 0
+				end
 			end
-			flagCapStatuses[flagID][flagTeamID] = 0
 		end
 	end
 end
