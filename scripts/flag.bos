@@ -57,22 +57,22 @@ ShowFlag(team)
 		HIDE_US
 	}
 	if(team == 1) { // GBR
-		SHOW_GBR
 		HIDE_GER
 		HIDE_RUS
 		HIDE_US	
+		SHOW_GBR
 	}
 	if(team == 2) { // GER
 		HIDE_GBR
-		SHOW_GER
 		HIDE_RUS
 		HIDE_US	
+		SHOW_GER
 	}
 	if(team == 3) { // RUS
 		HIDE_GBR
 		HIDE_GER
-		SHOW_RUS
 		HIDE_US	
+		SHOW_RUS
 	}
 	if(team == 4) { // US
 		HIDE_GBR

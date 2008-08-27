@@ -26,6 +26,7 @@ if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
 local TransferUnit					= Spring.TransferUnit
+local SetUnitNeutral				= Spring.SetUnitNeutral
 local destroyQueue = {}
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local aliveCount = {}
@@ -36,6 +37,7 @@ function gadget:GameFrame(t)
 		for t,_ in pairs(destroyQueue) do
 			for _,u in ipairs(Spring.GetTeamUnits(t)) do
 			  TransferUnit(u, GAIA_TEAM_ID, false)
+				SetUnitNeutral(u, true)
 			end
 			destroyQueue[t]=nil
 		end
