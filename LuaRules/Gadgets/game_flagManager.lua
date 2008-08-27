@@ -128,7 +128,7 @@ function gadget:GameFrame(n)
 					if teamID ~= flagTeamID then
 						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
-							--SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
 						end
 					end
 				end
@@ -174,7 +174,7 @@ function gadget:GameFrame(n)
 					-- END calculate totals
 					-- BEGIN check for capping threshold
 					--Spring.Echo("Cap Status is: " .. flagCapStatuses[flagID][unitTeamID] or 0)
-					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD then
+					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
 						if (flagTeamID == GAIA_TEAM_ID) then
 							Spring.SendMessageToTeam(teamID, "Flag Captured!")
 							TransferUnit(flagID, teamID, false)
