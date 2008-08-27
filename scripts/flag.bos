@@ -16,44 +16,44 @@ static-var  Static_Var_1, Static_Var_2, Static_Var_3, Static_Var_4, Static_Var_5
 #define MAX_HEIGHT	[22]
 
 #define HIDE_GER \
-\hide gerflagpiece1; \
-\hide gerflagpiece2; \
-\hide gerflagpiece3;
+\move gerflagpiece1 to y-axis 0 now; \
+\move gerflagpiece2 to y-axis 0 now; \
+\move gerflagpiece3 to y-axis 0 now;
 
 #define HIDE_GBR \
-\hide gbrflagpiece1; \
-\hide gbrflagpiece2; \
-\hide gbrflagpiece3;
+\move gbrflagpiece1 to y-axis 0 now; \
+\move gbrflagpiece2 to y-axis 0 now; \
+\move gbrflagpiece3 to y-axis 0 now;
 
 #define HIDE_RUS \
-\hide rusflagpiece1; \
-\hide rusflagpiece2; \
-\hide rusflagpiece3;
+\move rusflagpiece1 to y-axis 0 now; \
+\move rusflagpiece2 to y-axis 0 now; \
+\move rusflagpiece3 to y-axis 0 now;
 
 #define HIDE_US \
-\hide usflagpiece1; \
-\hide usflagpiece2; \
-\hide usflagpiece3;
+\move usflagpiece1 to y-axis 0 now; \
+\move usflagpiece2 to y-axis 0 now; \
+\move usflagpiece3 to y-axis 0 now;
 
 #define SHOW_GER \
-\show gerflagpiece1; \
-\show gerflagpiece2; \
-\show gerflagpiece3;
+\move gerflagpiece1 to y-axis [10] now; \
+\move gerflagpiece2 to y-axis [10] now; \
+\move gerflagpiece3 to y-axis [10] now;
 
 #define SHOW_GBR \
-\show gbrflagpiece1; \
-\show gbrflagpiece2; \
-\show gbrflagpiece3;
+\move gbrflagpiece1 to y-axis [10] now; \
+\move gbrflagpiece2 to y-axis [10] now; \
+\move gbrflagpiece3 to y-axis [10] now;
 
 #define SHOW_RUS \
-\show rusflagpiece1; \
-\show rusflagpiece2; \
-\show rusflagpiece3;
+\move rusflagpiece1 to y-axis [10] now; \
+\move rusflagpiece2 to y-axis [10] now; \
+\move rusflagpiece3 to y-axis [10] now;
 
 #define SHOW_US \
-\show usflagpiece1; \
-\show usflagpiece2; \
-\show usflagpiece3;
+\move usflagpiece1 to y-axis [10] now; \
+\move usflagpiece2 to y-axis [10] now; \
+\move usflagpiece3 to y-axis [10] now;
 
 ShowFlag(team)
 {

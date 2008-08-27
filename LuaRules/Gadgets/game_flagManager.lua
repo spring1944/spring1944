@@ -15,12 +15,10 @@ end
 local AreTeamsAllied				= Spring.AreTeamsAllied
 local GetGroundInfo					= Spring.GetGroundInfo
 local GetGroundHeight				=	Spring.GetGroundHeight
---local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam						= Spring.GetUnitTeam
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetTeamInfo						= Spring.GetTeamInfo
---local GetUnitRulesParam			= Spring.GetUnitRulesParam
 -- Synced Ctrl
 local CreateUnit						= Spring.CreateUnit
 local SetUnitNeutral				=	Spring.SetUnitNeutral
@@ -41,7 +39,6 @@ local FLAG_REGEN						= 1		-- how fast a flag with no defenders or attackers wil
 local SIDES									= {gbr = 1, ger = 2, rus = 3, us = 4}
 
 -- variables
---local maxMetal 							= 0 -- maximum metal found on map
 local avgMetal							= 0	-- average metal per spot
 local totalMetal						= 0 -- total metal found
 local minMetalLimit 				= 0	-- minimum metal to place a flag at
@@ -83,7 +80,6 @@ function gadget:GameFrame(n)
 							table.insert(spots, {x = x, z = z, metal = metal})
 							numSpots = numSpots + 1
 							totalMetal = totalMetal + metal
-							--maxMetal = math.max(metal, maxMetal)
 						end
 					end
 				end
@@ -122,7 +118,6 @@ function gadget:GameFrame(n)
 	if n % 30 == 5 and n > 40 then
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
-			--local flagAllyTeamID = GetUnitAllyTeam(flagID)
 			local defendTotal = 0
 			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
 			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
@@ -139,56 +134,37 @@ function gadget:GameFrame(n)
 				for i = 1, #unitsAtFlag do
 					local unitID = unitsAtFlag[i]
 					local unitTeamID = GetUnitTeam(unitID)
-					-- BEGIN check for defenders
 					if AreTeamsAllied(unitTeamID, flagTeamID) and defenders[unitID] then
 						--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
-						--flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
 						defendTotal = defendTotal + defenders[unitID]
-						--Spring.Echo(flagCapStatuses[flagID][flagTeamID])
-					-- END check for defenders
-					-- BEGIN check for cappers
 					end
 					if (not AreTeamsAllied(unitTeamID, flagTeamID)) and cappers[unitID] then
 						--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
 						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
-						--Spring.Echo(flagCapStatuses[flagID][unitTeamID])
 					end
-					-- END check for cappers
 				end
 				for j = 1, #teams do
 					teamID = teams[j]
-					-- BEGIN Calculate totals
 					if teamID ~= flagTeamID then
 						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
-							--Spring.Echo("Flag Team: " .. flagTeamID)
 							--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
-							--flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - (flagCapStatuses[flagID][flagTeamID] or 0)
 							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
 							if flagCapStatuses[flagID][teamID] < 0 then
 								flagCapStatuses[flagID][teamID] = 0
 							end
-							if flagID == 12 then
-								--Spring.Echo(flagCapStatuses[flagID][flagTeamID])
-								--Spring.Echo(flagCapStatuses[flagID][teamID])
-							end
 							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
 						end
 					end
-					-- END calculate totals
-					-- BEGIN check for capping threshold
-					--Spring.Echo("Cap Status is: " .. flagCapStatuses[flagID][unitTeamID] or 0)
 					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
 						if (flagTeamID == GAIA_TEAM_ID) then
 							Spring.SendMessageToTeam(teamID, "Flag Captured!")
 							TransferUnit(flagID, teamID, false)
 							local _, _, _, _, side = GetTeamInfo(teamID)
 							CallCOBScript(flagID, "ShowFlag", 0, SIDES[side] or 0)
-							--flagTeamID = teamID
 						else
 							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 							TransferUnit(flagID, GAIA_TEAM_ID, false)	
 							CallCOBScript(flagID, "ShowFlag", 0, 0)
-							--flagTeamID = GAIA_TEAM_ID
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
 						for cleanTeamID = 0, #teams-1 do
@@ -196,7 +172,6 @@ function gadget:GameFrame(n)
 							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0)
 						end
 					end
-					-- END check for capping threshold
 					-- cleanup defenders
 					flagCapStatuses[flagID][flagTeamID] = 0
 				end
