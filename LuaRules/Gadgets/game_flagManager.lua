@@ -146,9 +146,9 @@ function gadget:GameFrame(n)
 					-- BEGIN check for cappers
 					end
 					if unitTeamID ~= flagTeamID and cappers[unitID] then
-						Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
+						--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
 						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
-						Spring.Echo(flagCapStatuses[flagID][unitTeamID])
+						--Spring.Echo(flagCapStatuses[flagID][unitTeamID])
 					end
 					-- END check for cappers
 				end
@@ -158,7 +158,7 @@ function gadget:GameFrame(n)
 					if teamID ~= flagTeamID then
 						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 							--Spring.Echo("Flag Team: " .. flagTeamID)
-							Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
+							--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
 							--flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - (flagCapStatuses[flagID][flagTeamID] or 0)
 							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
 							if flagCapStatuses[flagID][teamID] < 0 then
