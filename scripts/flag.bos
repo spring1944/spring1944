@@ -16,47 +16,40 @@ static-var  Static_Var_1, Static_Var_2, Static_Var_3, Static_Var_4, Static_Var_5
 #define MAX_HEIGHT	[22]
 
 #define HIDE_GER \
-\move gerflagpiece1 to y-axis 0 now; \
-\move gerflagpiece2 to y-axis 0 now; \
-\move gerflagpiece3 to y-axis 0 now;
+\move gerflagpiece1 to y-axis 0 speed [20]; \
+wait-for-move gerflagpiece1 along y-axis;
 
 #define HIDE_GBR \
-\move gbrflagpiece1 to y-axis 0 now; \
-\move gbrflagpiece2 to y-axis 0 now; \
-\move gbrflagpiece3 to y-axis 0 now;
+\move gbrflagpiece1 to y-axis 0 speed [20]; \
+wait-for-move gbrflagpiece1 along y-axis;
 
 #define HIDE_RUS \
-\move rusflagpiece1 to y-axis 0 now; \
-\move rusflagpiece2 to y-axis 0 now; \
-\move rusflagpiece3 to y-axis 0 now;
+\move rusflagpiece1 to y-axis 0 speed [20]; \
+wait-for-move rusflagpiece1 along y-axis;
 
 #define HIDE_US \
-\move usflagpiece1 to y-axis 0 now; \
-\move usflagpiece2 to y-axis 0 now; \
-\move usflagpiece3 to y-axis 0 now;
+\move usflagpiece1 to y-axis 0 speed [20]; \
+wait-for-move usflagpiece1 along y-axis;
 
 #define SHOW_GER \
-\move gerflagpiece1 to y-axis [10] now; \
-\move gerflagpiece2 to y-axis [10] now; \
-\move gerflagpiece3 to y-axis [10] now;
+\move gerflagpiece1 to y-axis [25] speed [10]; \
+wait-for-move gerflagpiece1 along y-axis;
 
 #define SHOW_GBR \
-\move gbrflagpiece1 to y-axis [10] now; \
-\move gbrflagpiece2 to y-axis [10] now; \
-\move gbrflagpiece3 to y-axis [10] now;
+\move gbrflagpiece1 to y-axis [25] speed [10]; \
+wait-for-move gbrflagpiece1 along y-axis;
 
 #define SHOW_RUS \
-\move rusflagpiece1 to y-axis [10] now; \
-\move rusflagpiece2 to y-axis [10] now; \
-\move rusflagpiece3 to y-axis [10] now;
+\move rusflagpiece1 to y-axis [25] speed [10]; \
+wait-for-move rusflagpiece1 along y-axis;
 
 #define SHOW_US \
-\move usflagpiece1 to y-axis [10] now; \
-\move usflagpiece2 to y-axis [10] now; \
-\move usflagpiece3 to y-axis [10] now;
+\move usflagpiece1 to y-axis [25] speed [10]; \
+wait-for-move usflagpiece1 along y-axis;
 
 ShowFlag(team)
 {
+	emit-sfx ALARM from base;
 	if(team == 0) { // GAIA
 		HIDE_GER
 		HIDE_GBR
@@ -87,7 +80,6 @@ ShowFlag(team)
 		HIDE_RUS
 		SHOW_US	
 	}
-	emit-sfx ALARM from base;
 }
 
 SetFlag()
