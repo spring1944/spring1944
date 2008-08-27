@@ -47,6 +47,7 @@
 	}
 	[customParams]
 	{
+		dontCount=1;
 		flag=1;
 	}
 }
