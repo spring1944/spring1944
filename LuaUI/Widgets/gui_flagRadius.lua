@@ -52,6 +52,7 @@ function widget:Initialize()
         gl.Vertex(math.sin(a), CIRCLE_OFFSET, math.cos(a))
       end
     end)
+		gl.LineStipple(false)
   end)
 	-- pre-cache team colours
 	for i = 1, #teams do
