@@ -18,10 +18,14 @@ local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitRulesParam	 	= Spring.GetUnitRulesParam
 local GetUnitSeparation		= Spring.GetUnitSeparation
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
+local GetUnitTeam					= Spring.GetUnitTeam
 local GetUnitWeaponState	= Spring.GetUnitWeaponState
 -- Synced Ctrl
 local SetUnitRulesParam		= Spring.SetUnitRulesParam
 local SetUnitWeaponState 	= Spring.SetUnitWeaponState
+
+-- Constants
+local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 
 -- Variables
 local ammoSuppliers = {}
@@ -95,7 +99,8 @@ local function FindSupplier(vehicleID)
 	
 	for supplierID in pairs(ammoSuppliers) do
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
-		if allyTeam == supAllyTeam then
+		local supTeam = GetUnitTeam(supplierID)
+		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
 			local separation	= GetUnitSeparation(vehicleID, supplierID, true)
 			if separation < closestDistance then
 				closestSupplier = supplierID
