@@ -12,8 +12,10 @@ end
 
 -- function localisations
 -- Synced Read
+local AreTeamsAllied				= Spring.AreTeamsAllied
 local GetGroundInfo					= Spring.GetGroundInfo
 local GetGroundHeight				=	Spring.GetGroundHeight
+--local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam						= Spring.GetUnitTeam
 local GetUnitDefID       		= Spring.GetUnitDefID
@@ -120,6 +122,7 @@ function gadget:GameFrame(n)
 	if n % 30 == 5 and n > 40 then
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
+			--local flagAllyTeamID = GetUnitAllyTeam(flagID)
 			local defendTotal = 0
 			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
 			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
@@ -137,15 +140,15 @@ function gadget:GameFrame(n)
 					local unitID = unitsAtFlag[i]
 					local unitTeamID = GetUnitTeam(unitID)
 					-- BEGIN check for defenders
-					if unitTeamID == flagTeamID and defenders[unitID] then
+					if AreTeamsAllied(unitTeamID, flagTeamID) and defenders[unitID] then
 						--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
-						flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
+						--flagCapStatuses[flagID][flagTeamID] = (flagCapStatuses[flagID][flagTeamID] or 0) + defenders[unitID]
 						defendTotal = defendTotal + defenders[unitID]
 						--Spring.Echo(flagCapStatuses[flagID][flagTeamID])
 					-- END check for defenders
 					-- BEGIN check for cappers
 					end
-					if unitTeamID ~= flagTeamID and cappers[unitID] then
+					if (not AreTeamsAllied(unitTeamID, flagTeamID)) and cappers[unitID] then
 						--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
 						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
 						--Spring.Echo(flagCapStatuses[flagID][unitTeamID])
@@ -179,12 +182,12 @@ function gadget:GameFrame(n)
 							Spring.SendMessageToTeam(teamID, "Flag Captured!")
 							TransferUnit(flagID, teamID, false)
 							local _, _, _, _, side = GetTeamInfo(teamID)
-							CallCOBScript(flagID, "ShowFlag", SIDES[side] or 0)
+							CallCOBScript(flagID, "ShowFlag", 0, SIDES[side] or 0)
 							--flagTeamID = teamID
 						else
 							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 							TransferUnit(flagID, GAIA_TEAM_ID, false)	
-							CallCOBScript(flagID, "ShowFlag", 0)
+							CallCOBScript(flagID, "ShowFlag", 0, 0)
 							--flagTeamID = GAIA_TEAM_ID
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
