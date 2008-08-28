@@ -4,7 +4,7 @@ function widget:GetInfo()
     desc      = "Shows a flag's capping radius and team colour",
     author    = "FLOZi, modified from gui_teamCircle.lua by trepan",
     date      = "11th August 2008",
-    license   = "GNU GPL, v2 or later",
+    license   = "GNU GPL v2",
     layer     = 5,
     enabled   = true  --  loaded by default?
   }
