@@ -82,20 +82,20 @@
 		//canbuild4=USJeep;
 	}
 
-	[USGIRifle]
-	{
-	canbuild1=USFlag;
-	}
+//	[USGIRifle]
+//	{
+//	canbuild1=USFlag;
+//	}
 
-	[USGIThompson]
-	{
-	canbuild1=USFlag;
-	}
+//	[USGIThompson]
+//	{
+//	canbuild1=USFlag;
+//	}
 
 	[USHQEngineer]
 	{
 		canbuild1=USBarracks;
-		canbuild2=USFlag;
+//		canbuild2=USFlag;
 		canbuild3=USStorage;
 		canbuild4=USGMCTruck;
 		canbuild5=apmine;
@@ -126,7 +126,7 @@
 		canbuild1=USVehicleYard;
 		canbuild2=USGunYard;
 		//canbuild3=USCP;
-		canbuild3=USFlag;
+//		canbuild3=USFlag;
 		canbuild4=USStorage;
 		Canbuild5=USGMCTruck;
 		canbuild6=ATmine;
@@ -225,20 +225,20 @@
 		canbuild3=ger_platoon_hq;
 	}
 
-	[gerrifle]
-	{
-	canbuild1=GERFlag;
-	}
+//	[gerrifle]
+//	{
+//	canbuild1=GERFlag;
+//	}
 
-	[GERMP40]
-	{
-	canbuild1=GERFlag;
-	}
+//	[GERMP40]
+//	{
+//	canbuild1=GERFlag;
+//	}
 
 	[GERHQEngineer]
 	{
 		canbuild1=GERBarracks;
-		canbuild2=GERFlag;
+//		canbuild2=GERFlag;
 		canbuild3=GERStorage;
 		canbuild4=APMine;
 		canbuild5=ATMine;
@@ -268,7 +268,7 @@
 		canbuild1=GERVehicleYard;
 		canbuild2=GERBarracks;
 		canbuild3=GERGunYard;
-		canbuild4=GERFlag;
+//		canbuild4=GERFlag;
 		canbuild5=GERStorage;
 		canbuild6=ATMine;
 		canbuild7=APMine;
@@ -378,20 +378,20 @@
 	}
 
 
-	[GBRRifle]
-	{
-	canbuild1=GBRFlag;
-	}
+//	[GBRRifle]
+//	{
+//	canbuild1=GBRFlag;
+//	}
 
-	[GBRSTEN]
-	{
-	canbuild1=GBRFlag;
-	}
+//	[GBRSTEN]
+//	{
+//	canbuild1=GBRFlag;
+//	}
 
 	[GBRHQEngineer]
 	{
 		canbuild1=GBRBarracks;
-		canbuild2=GBRFlag;
+//		canbuild2=GBRFlag;
 		//canbuild3=GBRResource;
 		canbuild4=apmine;
 		canbuild5=atmine;
@@ -453,7 +453,7 @@
 	{
 		canbuild1=GBRVehicleYard;
 		canbuild2=GBRgunyard;
-		canbuild3=GBRFlag;
+//		canbuild3=GBRFlag;
 		canbuild4=GBRStorage;
 		canbuild5=ATmine;
 		canbuild6=APMine;
@@ -532,7 +532,7 @@
 
 	[RUSCommander]
 	{
-		canbuild1=RUSFlag;
+//		canbuild1=RUSFlag;
 		//canbuild2=RUSResource;
 		canbuild3=RUSCommissar;
 		canbuild4=RUSPShack;
@@ -550,7 +550,7 @@
 	
 	[AI_RUSCommander]
 	{
-		canbuild1=RUSFlag;
+//		canbuild1=RUSFlag;
 		//canbuild2=RUSResource;
 		canbuild3=AI_RUSCommissar;
 		canbuild4=RUSPShack;
@@ -592,7 +592,7 @@
 	{
 		canbuild1=RUSVehicleYard;
 		canbuild2=RUSGunYard;
-		canbuild3=RUSFlag;
+//		canbuild3=RUSFlag;
 		//canbuild4=RUSResource;
 		canbuild5=RUSZiS5;
 		canbuild6=APMine;
@@ -605,7 +605,7 @@
 	}
 	[AI_RUSCommissar]
 	{
-		canbuild1=RUSFlag;
+//		canbuild1=RUSFlag;
 		//canbuild2=RUSResource;
 		canbuild3=AI_RUSCommissar;
 		canbuild4=RUSPShack;
@@ -622,7 +622,7 @@
 
 	[RUSCommissar]
 	{
-		canbuild1=RUSFlag;
+//		canbuild1=RUSFlag;
 		//canbuild2=RUSResource;
 		canbuild3=RUSCommissar;
 		canbuild4=RUSPShack;

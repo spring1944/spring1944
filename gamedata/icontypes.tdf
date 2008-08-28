@@ -289,4 +289,12 @@
 		size=2.75;
 		distance=0.4;
 	}
+
+	[flag]
+	{
+		bitmap=bitmaps/circularthingy.tga;
+		size=4.5;
+		distance=0.3;
+	}
+
 } 

@@ -2,7 +2,7 @@
 {
 	unitname=flag;
 	objectname=flag.S3O;
-	icontype=gbrflag;
+	icontype=flag;
 	category=metal level1 NOWEAPON;
 	tedclass=METAL;
 	yardmap=ooooooooo;
