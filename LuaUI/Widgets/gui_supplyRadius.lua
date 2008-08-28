@@ -13,11 +13,7 @@ end
 -- function localisations
 -- Synced Read
 local GetGroundNormal     	= Spring.GetGroundNormal
-local GetTeamUnitsByDefs 		= Spring.GetTeamUnitsByDefs
 local GetUnitBasePosition 	= Spring.GetUnitBasePosition
-local GetUnitTeam         	= Spring.GetUnitTeam
-local GetUnitViewPosition 	= Spring.GetUnitViewPosition
-local GetUnitRulesParam			= Spring.GetUnitRulesParam
 -- Unsynced Read
 local IsUnitVisible      	 	= Spring.IsUnitVisible
 -- OpenGL
@@ -25,7 +21,6 @@ local glColor          			= gl.Color
 local glDrawListAtUnit 			= gl.DrawListAtUnit
 
 -- constants
-local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
 local CIRCLE_DIVS   				= 32	-- How many sides in our 'circle'
 local CIRCLE_OFFSET 				= 0		-- y-offset
 local CIRCLE_LINES  				= 0		-- display list containing circle
@@ -36,11 +31,9 @@ local LINE_WIDTH_SUPPLY			= 10	-- width of supply range line
 -- variables
 local color  = { 1.0, 1.0, 0.25, LINE_ALPHA_SUPPLY }
 local ammoSuppliers = {}
-local teams									= Spring.GetTeamList()
 
 function widget:Initialize()
   CIRCLE_LINES = gl.CreateList(function()
-		--gl.LineStipple("default")
     gl.BeginEnd(GL.LINE_LOOP, function()
       local radstep = (2.0 * math.pi) / CIRCLE_DIVS
       for i = 1, CIRCLE_DIVS do
@@ -48,7 +41,6 @@ function widget:Initialize()
         gl.Vertex(math.sin(a), CIRCLE_OFFSET, math.cos(a))
       end
     end)
-		--gl.LineStipple(false)
   end)
 end
 
