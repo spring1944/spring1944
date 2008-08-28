@@ -97,6 +97,7 @@ function gadget:GameFrame(n)
 				end
 			end
 			spots = onlyFlagSpots
+			GG['flags'] = flags
 			
 		else -- load the flag positions from profile
 			Spring.Echo("Map Flag Profile found. Loading flag positions.")
@@ -159,11 +160,13 @@ function gadget:GameFrame(n)
 						if (flagTeamID == GAIA_TEAM_ID) then
 							Spring.SendMessageToTeam(teamID, "Flag Captured!")
 							TransferUnit(flagID, teamID, false)
+							SetUnitRulesParam(flagID, "lifespan", 0)
 							local _, _, _, _, side = GetTeamInfo(teamID)
 							CallCOBScript(flagID, "ShowFlag", 0, SIDES[side] or 0)
 						else
 							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
-							TransferUnit(flagID, GAIA_TEAM_ID, false)	
+							TransferUnit(flagID, GAIA_TEAM_ID, false)
+							SetUnitRulesParam(flagID, "lifespan", 0)
 							CallCOBScript(flagID, "ShowFlag", 0, 0)
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})

@@ -1,8 +1,8 @@
 function gadget:GetInfo()
 	return {
 		name = "Increasing Flag Returns",
-		desc = "Increases the output of metal extractors according to how long they've been alive",
-		author = "Nemo (B. Tyler)",
+		desc = "Increases the output of flags according to how long they've been held",
+		author = "Nemo (B. Tyler), FLOZi",
 		date = "2008-03-06",
 		license = "Public domain",
 		layer = 1,
@@ -10,58 +10,56 @@ function gadget:GetInfo()
 	}
 end
 
-if (gadgetHandler:IsSyncedCode()) then
 
+-- function localisations
+-- Synced Read
+local GetUnitDefID						= Spring.GetUnitDefID
+local GetUnitRulesParam				=	Spring.GetUnitRulesParam
+local GetUnitTeam							= Spring.GetUnitTeam
+-- Synced Ctrl
+local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
+local SetUnitRulesParam				= Spring.SetUnitRulesParam
+
+-- constants
+local GAIA_TEAM_ID		= Spring.GetGaiaTeamID()
+local DEFAULT_OUTPUT 	= 0
+local MULTIPLIER_CAP	= 2
+local OUTPUT_BASE			=	1.025
+
+if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
-local flags = {}
-
-local function OutputCalc(lifespan, defaultOutput)
-	output = (defaultOutput * 1.025^lifespan)
-		print("output", output)
-	return output
+local function OutputCalc(lifespan)
+	return DEFAULT_OUTPUT * OUTPUT_BASE ^ lifespan
 end
 
 function gadget:GameFrame(t)
 
-	if (t % (60*30) < 0.1) then
-		for u in pairs(flags) do
-		local defaultOutput = tonumber(flags[u].defaultOutput)
-		local lifespan = flags[u].lifespan
-		print("defaultOutput", defaultOutput)
-		lifespan = lifespan + 1
-		print("lifespan", lifespan)
-		--call a local function to determine output
-		OutputCalc(lifespan, defaultOutput)
-
-			if (output < 2*(defaultOutput)) then
-			Spring.SetUnitMetalExtraction (u, output)	
+	if t == 6 then
+		local flagDefID = GetUnitDefID(GG['flags'][1])
+		local flagUD = UnitDefs[flagDefID]
+		DEFAULT_OUTPUT = flagUD.extractsMetal
+		--Spring.Echo("Flag Default Output: " .. DEFAULT_OUTPUT)
+	end
+	
+	if (t % (60*30) < 0.1) and t > 6 then	-- every minute
+		for i = 1, #GG['flags'] do
+			flagID = GG['flags'][i]
+			
+			if GetUnitTeam(flagID) ~= GAIA_TEAM_ID then -- Neutral flags do not gain lifespan
+				local lifespan = GetUnitRulesParam(flagID, "lifespan") or 0
+				lifespan = lifespan + 1
+				SetUnitRulesParam(flagID, "lifespan", lifespan)
+				
+				local output = OutputCalc(lifespan)
+				if output < MULTIPLIER_CAP * DEFAULT_OUTPUT then
+					SetUnitMetalExtraction (flagID, output)	
+				end
 			end
-		flags[u].lifespan = lifespan
 		end
 	end
 end
 
-function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	local u = unitID
-	local ud = UnitDefs[unitDefID]
-	if (ud.customParams.flag == '1') then
-	print("add flag")
-	flags[u] = {
-      lifespan = 0,
-	  defaultOutput = ud.extractsMetal 
-    }
-	end
-end
-
-
-function gadget:UnitDestroyed(u) -- you can omit unneeded arguments if they
-  flags[u] = nil              -- are at the end
-end
-
 else
-
 --UNSYNCED
-
-return false
 end
