@@ -4,7 +4,7 @@
 	objectname=GBRMatadorEngVehicle.S3O;
 	corpse=GBRMatadorEngVehicle_Destroyed;
 	icontype=engineervehicle;
-	soundcategory=GBRTank;
+	soundcategory=GBRVeh;
 	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
 	tedclass=CONSTR;
 

@@ -5,6 +5,7 @@
 	buildpic=GBRBedfordTruck.png;
 	corpse=GBRBedfordTruck_Destroyed;
 	icontype=truck;
+	soundcategory=GBRVeh;
 	category=NFLAGNAIR TANK TPORT  INFTARG NFLAG NWEAPON;
 	tedclass=TANK;
 

@@ -4,7 +4,7 @@
 	objectname=GBRM5Halftrack.S3O;
 	corpse=GBRM5Halftrack_Destroyed;
 	icontype=truck;
-	soundcategory=GBRTank;
+	soundcategory=GBRVeh;
 	category=TANK TPORT NFLAG INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
 	side=GBR;

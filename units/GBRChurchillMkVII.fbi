@@ -4,7 +4,7 @@
 	objectname=GBRChurchillMkVII.S3O;
 	corpse=GBRChurchillMkVII_Damaged;
 	icontype=heavytank;
-	soundcategory=GBRTank;
+	soundcategory=GBRChurchill;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;
 

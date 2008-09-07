@@ -4,7 +4,7 @@
 	objectname=GBRM10Achilles.S3O;
 	corpse=GBRM10Achilles_Destroyed;
 	icontype=medtank;
-	soundcategory=GBRTank;
+	soundcategory=GBRSP;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;
 

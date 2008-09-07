@@ -4,7 +4,7 @@
 	objectname=GBRDaimler.S3O;
 	corpse=GBRDaimler_Destroyed;
 	icontype=armoredcar;
-	soundcategory=GBRTank;
+	soundcategory=GBRVeh;
 	category=NFLAGNAIR NFLAG TANK WEAPON LIGHTVEH;
 	tedclass=TANK;
 	side=GBR;

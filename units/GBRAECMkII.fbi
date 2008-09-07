@@ -4,7 +4,7 @@
 	objectname=GBRAECMkIII.S3O;
 	corpse=GBRAECMkIII_Destroyed;
 	icontype=armoredcar;
-	soundcategory=GBRTank;
+	soundcategory=GBRChurchill;
 	category=NFLAGNAIR NFLAG TANK WEAPON  LIGHTVEH;
 	tedclass=TANK;
 
