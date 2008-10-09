@@ -34,7 +34,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	end
 	
 	function gadget:UnitFinished(unitID, unitDefID, teamID)
-		local ud = UnitDefs[unitID]
+		local ud = UnitDefs[unitDefID]
 		if ud.customParams.hq == '1' then
 			
 			local px, py, pz = Spring.GetUnitPosition(unitID)
@@ -52,7 +52,7 @@ if (gadgetHandler:IsSyncedCode()) then
 						Spring.DestroyFeature(v)
 					end
 				end
-			end			
+			end		
 		end
 	end	
 end

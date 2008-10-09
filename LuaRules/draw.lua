@@ -1,3 +1,4 @@
+-- $Id$
 
 --
 -- 0.75b2 compatibilty
@@ -16,13 +17,22 @@ if (Spring.GetTeamColor == nil) then
 end
 
 
+if (select == nil) then
+  select = function(n,...) 
+    local arg = arg
+    if (not arg) then arg = {...}; arg.n = #arg end
+    return arg[((n=='#') and 'n')or n]
+  end
+end
+
+
 do  --  wrap print() in a closure
   local origPrint = print
-  print = function(...)
-    if (arg[1]) then
-      arg[1] = '>> ' .. tostring(arg[1])
+  print = function(arg1,...)
+    if (arg1) then
+      arg1 = '>> ' .. tostring(arg1)
     end
-    origPrint(unpack(arg))
+    origPrint(arg1, ...)
   end
 end
 
@@ -33,12 +43,17 @@ function tprint(t)
   end
 end
 
+
 local allModOptions = Spring.GetModOptions()
-function Spring.GetModOption(s,bool)
+function Spring.GetModOption(s,bool,default)
   if (bool) then
-    return (allModOptions[s]=="1")
+    local modOption = allModOptions[s]
+    if (modOption==nil) then modOption = (default and "1") end
+    return (modOption=="1")
   else
-    return allModOptions[s]
+    local modOption = allModOptions[s]
+    if (modOption==nil) then modOption = default end
+    return modOption
   end
 end
 
