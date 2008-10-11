@@ -31,12 +31,14 @@ local SetUnitRulesParam			= Spring.SetUnitRulesParam
 -- constants
 local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
 local BLOCK_SIZE						= 32	-- size of map to check at once
-local METAL_THRESHOLD				= 1 
+local EXTRACT_RADIUS_MOD		= 1.5 -- Another handy thing to tweak for profiles ALWAYS REVERT TO 1.5
+local METAL_THRESHOLD				= 1 -- Handy for creating profiles, set to just less than the lowest metal spot you want to include. ALWAYS REVERT TO 1
 local PROFILE_PATH					= "maps/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. "_profile.lua"
 local FLAG_RADIUS						= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
 local FLAG_CAP_THRESHOLD		= 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 local FLAG_REGEN						= 1		-- how fast a flag with no defenders or attackers will reduce capping statuses
 local SIDES									= {gbr = 1, ger = 2, rus = 3, us = 4}
+local DEBUG									= false -- enable to print out flag locations in profile format
 
 -- variables
 local avgMetal							= 0	-- average metal per spot
@@ -56,6 +58,13 @@ if (gadgetHandler:IsSyncedCode()) then
 
 function PlaceFlag(spot)
 	newFlag = CreateUnit("flag", spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	if DEBUG then
+		Spring.Echo("{")
+		Spring.Echo("	x = " .. spot.x .. ",")
+		Spring.Echo("	z = " .. spot.z .. ",")
+		Spring.Echo("	feature = nil")
+		Spring.Echo("},")
+	end
 	SetUnitNeutral(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
 	table.insert(flags, newFlag)
@@ -70,6 +79,9 @@ end
 function gadget:GameFrame(n)
 	-- FLAG PLACEMENT
 	if n == 5 then
+		if DEBUG then
+			Spring.Echo(PROFILE_PATH)
+		end
 		if not VFS.FileExists(PROFILE_PATH) then
 			Spring.Echo("Map Flag Profile not found. Autogenerating flag positions.")
 			for z = 0, Game.mapSizeZ, BLOCK_SIZE do
@@ -89,7 +101,7 @@ function gadget:GameFrame(n)
 			local onlyFlagSpots = {}
 			for _, spot in pairs(spots) do
 				if spot.metal >= minMetalLimit then
-					local unitsAtSpot = GetUnitsInCylinder(spot.x, spot.z, Game.extractorRadius * 1.5, GAIA_TEAM_ID)
+					local unitsAtSpot = GetUnitsInCylinder(spot.x, spot.z, Game.extractorRadius * EXTRACT_RADIUS_MOD, GAIA_TEAM_ID)
 					if #unitsAtSpot == 0 then
 						PlaceFlag(spot)
 						table.insert(onlyFlagSpots, {x = spot.x, z = spot.z})
@@ -97,7 +109,6 @@ function gadget:GameFrame(n)
 				end
 			end
 			spots = onlyFlagSpots
-			GG['flags'] = flags
 			
 		else -- load the flag positions from profile
 			Spring.Echo("Map Flag Profile found. Loading flag positions.")
@@ -106,6 +117,7 @@ function gadget:GameFrame(n)
 				PlaceFlag(spot)
 			end
 		end
+		GG['flags'] = flags
 		
 	elseif n == 40 then
 		for _, flagID in pairs(flags) do
