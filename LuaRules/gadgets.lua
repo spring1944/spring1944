@@ -1,4 +1,3 @@
--- $Id: gadgets.lua 2491 2008-07-17 13:36:51Z det $
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -12,58 +11,20 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
---  Changelog:
---
---   jK: added UnitExperience callin (Dec. 19 2007)
---       added UnitCmdDone,UnitCloaked,UnitDecloaked callins (Dec. 14 2007)
---       added missing arguments to DefaultCommand callin (Dec. 2007)
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
 --  TODO:  - get rid of the ':'/self referencing, it's a waste of cycles
 --         - (De)RegisterCOBCallback(data)
---         - (De)RegisterGlobal(name, value)
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 local SAFEWRAP = 0
 -- 0: disabled
--- 1: enabled, but can be overriden by widget.GetInfo().unsafe
+-- 1: enabled, but can be overriden by gadget.GetInfo().unsafe
 -- 2: always enabled
 
 
--- setup the UnitDefNames{} table
-do
-  local tbl = {}
-  for _,def in pairs(UnitDefs) do
-    tbl[def.name] = def
-  end
-  UnitDefNames = tbl
-end
-
--- setup the FeatureDefNames{} table
-do
-  local tbl = {}
-  for _,def in pairs(FeatureDefs) do
-    tbl[def.name] = def
-  end
-  FeatureDefNames = tbl
-end
-
--- setup the WeaponDefNames{} table
-do
-  local tbl = {}
-  for _,def in pairs(WeaponDefs) do
-    tbl[def.name] = def
-  end
-  WeaponDefNames = tbl
-end
-
-
-local SCRIPT_DIR = Script.GetName() .. '/'
-local GADGET_DIR = SCRIPT_DIR .. 'Gadgets/'
+local HANDLER_DIR = 'LuaGadgets/'
+local GADGETS_DIR = Script.GetName():gsub('US$', '') .. '/Gadgets/'
 
 
 local VFSMODE = VFS.ZIP_ONLY -- FIXME: ZIP_FIRST ?
@@ -72,11 +33,11 @@ if (Spring.IsDevLuaEnabled()) then
 end
 
 
-VFS.Include(SCRIPT_DIR .. 'system.lua', nil, VFSMODE)
-VFS.Include(SCRIPT_DIR .. 'callins.lua', nil, VFSMODE)
---VFS.Include(SCRIPT_DIR .. 'factions.lua', nil, VFSMODE)
+VFS.Include(HANDLER_DIR .. 'setupdefs.lua', nil, VFSMODE)
+VFS.Include(HANDLER_DIR .. 'system.lua',    nil, VFSMODE)
+VFS.Include(HANDLER_DIR .. 'callins.lua',   nil, VFSMODE)
 
-local actionHandler = VFS.Include(SCRIPT_DIR .. 'actions.lua', nil, VFSMODE)
+local actionHandler = VFS.Include(HANDLER_DIR .. 'actions.lua', nil, VFSMODE)
 
 
 --------------------------------------------------------------------------------
@@ -117,7 +78,7 @@ gadgetHandler = {
   xViewSizeOld = 1,
   yViewSizeOld = 1,
 
-  actionHandler = actionHandler,
+  mouseOwner = nil,
 }
 
 
@@ -126,6 +87,8 @@ gadgetHandler = {
 local callInLists = {
   'Shutdown',
 
+  'GamePreload',
+  'GameStart',
   'GameOver',
   'TeamDied',
 
@@ -135,6 +98,7 @@ local callInLists = {
 
   'TextCommand',  -- FIXME ?
   'GotChatMsg',
+  'RecvLuaMsg',
 
   -- Unit CallIns
   'UnitCreated',
@@ -162,12 +126,14 @@ local callInLists = {
   'FeatureCreated',
   'FeatureDestroyed',
 
+  -- Projectile CallIns
+  'ProjectileCreated',
+  'ProjectileDestroyed',
+
   -- Misc Synced CallIns
   'Explosion',
 
   -- LuaRules CallIns
-  'DrawUnit',
-  'AICallIn',
   'CommandFallback',
   'AllowCommand',
   'AllowUnitCreation',
@@ -177,7 +143,11 @@ local callInLists = {
   'AllowResourceLevel',
   'AllowResourceTransfer',
   'AllowDirectUnitControl',
-  'RecvLuaMsg',
+  'MoveCtrlNotify',
+  'TerraformComplete',
+  -- unsynced
+  'DrawUnit',
+  'AICallIn',
 
   -- COB CallIn  (FIXME?)
   'CobCallback',
@@ -185,6 +155,7 @@ local callInLists = {
   -- Unsynced CallIns
   'Update',
   'DefaultCommand',
+  'DrawGenesis',
   'DrawWorld',
   'DrawWorldPreUnit',
   'DrawWorldShadow',
@@ -194,6 +165,22 @@ local callInLists = {
   'DrawScreen',
   'DrawInMiniMap',
   'RecvFromSynced',
+
+  -- moved from LuaUI
+  'KeyPress',
+  'KeyRelease',
+  'MousePress',
+  'MouseRelease',
+  'MouseMove',
+  'MouseWheel',
+  'IsAbove',
+  'GetTooltip',
+
+  -- FIXME -- not implemented  (more of these?)
+  'WorldTooltip',
+  'MapDrawCmd',
+  'GameSetup',
+  'DefaultCommand',
 }
 
 
@@ -253,11 +240,16 @@ function gadgetHandler:Initialize()
   local unsortedGadgets = {}
 
   -- get the gadget names
-  local gadgetFiles = VFS.DirList(GADGET_DIR, "*.lua", VFSMODE)
+  local gadgetFiles = VFS.DirList(GADGETS_DIR, "*.lua", VFSMODE)
 --  table.sort(gadgetFiles)
+
+  for k,gf in ipairs(gadgetFiles) do
+    Spring.Echo('gf1 = ' .. gf) -- FIXME
+  end
 
   -- stuff the gadgets into unsortedGadgets
   for k,gf in ipairs(gadgetFiles) do
+    Spring.Echo('gf2 = ' .. gf) -- FIXME
     local gadget = self:LoadGadget(gf)
     if (gadget) then
       table.insert(unsortedGadgets, gadget)
@@ -285,9 +277,10 @@ function gadgetHandler:Initialize()
   -- add the gadgets  
   for _,g in ipairs(unsortedGadgets) do
     gadgetHandler:InsertGadget(g)
+
     local name = g.ghInfo.name
     local basename = g.ghInfo.basename
-    print(string.format("Loaded gadget:  %-18s  <%s>", name, basename))
+    Spring.Echo(string.format("Loaded gadget:  %-18s  <%s>", name, basename))
   end
 end
 
@@ -317,6 +310,11 @@ function gadgetHandler:LoadGadget(filename)
     return nil -- gadget asked for a quiet death
   end
 
+  -- raw access to gadgetHandler
+  if (gadget.GetInfo and gadget:GetInfo().handler) then
+    gadget.gadgetHandler = self
+  end
+
   self:FinalizeGadget(gadget, filename, basename)
   local name = gadget.ghInfo.name
 
@@ -329,7 +327,7 @@ function gadgetHandler:LoadGadget(filename)
   local knownInfo = self.knownGadgets[name]
   if (knownInfo) then
     if (knownInfo.active) then
-      print('Failed to load: ' .. basename .. '  (duplicate name)')
+      Spring.Echo('Failed to load: ' .. basename .. '  (duplicate name)')
       return nil
     end
   else
@@ -361,11 +359,6 @@ function gadgetHandler:LoadGadget(filename)
     return nil
   end
 
-  -- raw access to gadgetHandler
-  if (info)and(info.handler) then
-    gadget.gadgetHandler = self
-  end
-
   return gadget
 end
 
@@ -384,8 +377,6 @@ function gadgetHandler:NewGadget()
   gadget.gadgetHandler = {}
   local gh = gadget.gadgetHandler
   local self = self
-
-  gh.gadgetHandler = self
 
   gadget.include  = function (f)
     return VFS.Include(f, gadget, VFSMODE)
@@ -432,6 +423,16 @@ function gadgetHandler:NewGadget()
     end
     gh.RemoveSyncAction = function(_, cmd)
       return actionHandler.RemoveSyncAction(gadget, cmd)
+    end
+  end
+
+  -- for proxied call-ins
+  gh.IsMouseOwner = function (_)
+    return (self.mouseOwner == gadget)
+  end
+  gh.DisownMouse  = function (_)
+    if (self.mouseOwner == gadget) then
+      self.mouseOwner = nil
     end
   end
 
@@ -490,7 +491,7 @@ local function SafeWrap(func, funcName)
       return unpack(r)
     else
       if (funcName ~= 'Shutdown') then
-        gadgetHandler:RemoveWidget(g)
+        gadgetHandler:RemoveGadget(g)
       else
         Spring.Echo('Error in Shutdown')
       end
@@ -503,7 +504,7 @@ local function SafeWrap(func, funcName)
 end
 
 
-local function SafeWrapWidget(gadget)
+local function SafeWrapGadget(gadget)
   if (SAFEWRAP <= 0) then
     return
   elseif (SAFEWRAP == 1) then
@@ -586,7 +587,7 @@ function gadgetHandler:RemoveGadget(gadget)
   end
 
   ArrayRemove(self.gadgets, gadget)
-  self:RemoveWidgetGlobals(gadget)
+  self:RemoveGadgetGlobals(gadget)
   actionHandler.RemoveGadgetActions(gadget)
   for _,listname in ipairs(callInLists) do
     ArrayRemove(self[listname..'List'], gadget)
@@ -632,7 +633,7 @@ function gadgetHandler:UpdateGadgetCallIn(name, g)
     end
     self:UpdateCallIn(name)
   else
-    print('UpdateGadgetCallIn: bad name: ' .. name)
+    Spring.Echo('UpdateGadgetCallIn: bad name: ' .. name)
   end
 end
 
@@ -644,7 +645,7 @@ function gadgetHandler:RemoveGadgetCallIn(name, g)
     ArrayRemove(ciList, g)
     self:UpdateCallIn(name)
   else
-    print('RemoveGadgetCallIn: bad name: ' .. name)
+    Spring.Echo('RemoveGadgetCallIn: bad name: ' .. name)
   end
 end
 
@@ -666,7 +667,7 @@ function gadgetHandler:EnableGadget(name)
     return false
   end
   if (not ki.active) then
-    print('Loading:  '..ki.filename)
+    Spring.Echo('Loading:  '..ki.filename)
     local order = gadgetHandler.orderList[name]
     if (not order or (order <= 0)) then
       self.orderList[name] = 1
@@ -688,7 +689,7 @@ function gadgetHandler:DisableGadget(name)
   if (ki.active) then
     local w = self:FindGadget(name)
     if (not w) then return false end
-    print('Removed:  '..ki.filename)
+    Spring.Echo('Removed:  '..ki.filename)
     self:RemoveGadget(w)     -- deactivate
     self.orderList[name] = 0 -- disable
   end
@@ -840,7 +841,7 @@ function gadgetHandler:SetGlobal(owner, name, value)
 end
 
 
-function gadgetHandler:RemoveWidgetGlobals(owner)
+function gadgetHandler:RemoveGadgetGlobals(owner)
   local count = 0
   for name, o in pairs(self.globals) do
     if (o == owner) then
@@ -885,7 +886,7 @@ function gadgetHandler:RegisterCMDID(gadget, id)
   end
   if (self.CMDIDs[id] ~= nil) then
     Spring.Echo('Gadget (' .. gadget.ghInfo.name .. ') ' ..
-                'tried to register an already used CMD_ID')
+                'tried to register a CMD_ID >= 40000')
     Script.Kill('Duplicate CMD_ID code: ' .. id)
   end
   self.CMDIDs[id] = gadget
@@ -898,6 +899,20 @@ end
 --
 --  The call-in distribution routines
 --
+
+function gadgetHandler:GamePreload()
+  for _,g in ipairs(self.GamePreloadList) do
+    g:GamePreload()
+  end
+  return
+end
+
+function gadgetHandler:GameStart()
+  for _,g in ipairs(self.GameStartList) do
+    g:GameStart()
+  end
+  return
+end
 
 function gadgetHandler:Shutdown()
   for _,g in ipairs(self.ShutdownList) do
@@ -928,8 +943,7 @@ end
 
 
 function gadgetHandler:GotChatMsg(msg, player)
-  if (((player == 0) or (player == 255))
-      and Spring.IsCheatingEnabled()) then
+  if ((player == 0) and Spring.IsCheatingEnabled()) then
     local sp = '^%s*'    -- start pattern
     local ep = '%s+(.*)' -- end pattern
     local s, e, match
@@ -964,6 +978,16 @@ function gadgetHandler:GotChatMsg(msg, player)
     SendToUnsynced(player, msg)
   end
 
+  return false
+end
+
+
+function gadgetHandler:RecvLuaMsg(msg, player)
+  for _,g in ipairs(self.RecvLuaMsgList) do
+    if (g:RecvLuaMsg(msg, player)) then
+      return true
+    end
+  end
   return false
 end
 
@@ -1020,10 +1044,9 @@ end
 --  LuaRules Game call-ins
 --
 
-
-function gadgetHandler:DrawUnit(unitID,drawMode)
+function gadgetHandler:DrawUnit(unitID, drawMode)
   for _,g in ipairs(self.DrawUnitList) do
-    if (g:DrawUnit(unitID,drawMode)) then
+    if (g:DrawUnit(unitID, drawMode)) then
       return true
     end
   end
@@ -1042,10 +1065,10 @@ end
 
 
 function gadgetHandler:CommandFallback(unitID, unitDefID, unitTeam,
-                                       cmdID, cmdParams, cmdOptions)
+                                       cmdID, cmdParams, cmdOptions, cmdTag)
   for _,g in ipairs(self.CommandFallbackList) do
     local used, remove = g:CommandFallback(unitID, unitDefID, unitTeam,
-                                           cmdID, cmdParams, cmdOptions)
+                                           cmdID, cmdParams, cmdOptions, cmdTag)
     if (used) then
       return remove
     end
@@ -1055,10 +1078,10 @@ end
 
 
 function gadgetHandler:AllowCommand(unitID, unitDefID, unitTeam,
-                                    cmdID, cmdParams, cmdOptions,fromSynced)
+                                    cmdID, cmdParams, cmdOptions, cmdTag, synced)
   for _,g in ipairs(self.AllowCommandList) do
     if (not g:AllowCommand(unitID, unitDefID, unitTeam,
-                           cmdID, cmdParams, cmdOptions,fromSynced)) then
+                           cmdID, cmdParams, cmdOptions, cmdTag, synced)) then
       return false
     end
   end
@@ -1144,9 +1167,23 @@ function gadgetHandler:AllowDirectUnitControl(unitID, unitDefID, unitTeam,
 end
 
 
-function gadgetHandler:RecvLuaMsg(msg, playerID)
-  for _,g in ipairs(self.RecvLuaMsgList) do
-    if g:RecvLuaMsg(msg, playerID) then
+function gadgetHandler:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
+  local state = false
+  for _,g in ipairs(self.MoveCtrlNotifyList) do
+    if (g:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)) then
+      state = true
+    end
+  end
+  return state
+end
+
+
+function gadgetHandler:TerraformComplete(unitID, unitDefID, unitTeam,
+                                       buildUnitID, buildUnitDefID, buildUnitTeam)
+  for _,g in ipairs(self.TerraformCompleteList) do
+    local stop = g:TerraformComplete(unitID, unitDefID, unitTeam,
+                                       buildUnitID, buildUnitDefID, buildUnitTeam)
+    if (stop) then
       return true
     end
   end
@@ -1195,11 +1232,10 @@ function gadgetHandler:UnitDestroyed(unitID,     unitDefID,     unitTeam,
 end
 
 
-function gadgetHandler:UnitExperience(unitID,     unitDefID,     unitTeam,
+function gadgetHandler:UnitExperience(unitID, unitDefID, unitTeam,
                                       experience, oldExperience)
   for _,g in ipairs(self.UnitExperienceList) do
-    g:UnitExperience(unitID,     unitDefID,     unitTeam,
-                    experience, oldExperience)
+    g:UnitExperience(unitID, unitDefID, unitTeam, experience, oldExperience)
   end
   return
 end
@@ -1212,6 +1248,7 @@ function gadgetHandler:UnitIdle(unitID, unitDefID, unitTeam)
   return
 end
 
+
 function gadgetHandler:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
   for _,g in ipairs(self.UnitCmdDoneList) do
     g:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
@@ -1219,11 +1256,13 @@ function gadgetHandler:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
   return
 end
 
+
 function gadgetHandler:UnitDamaged(unitID, unitDefID, unitTeam,
                                    damage, paralyzer, weaponID,
                                    attackerID, attackerDefID, attackerTeam)
   for _,g in ipairs(self.UnitDamagedList) do
-    g:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID,
+    g:UnitDamaged(unitID, unitDefID, unitTeam,
+                  damage, paralyzer, weaponID,
                   attackerID, attackerDefID, attackerTeam)
   end
   return
@@ -1288,17 +1327,21 @@ function gadgetHandler:UnitSeismicPing(x, y, z, strength,
 end
 
 
-function gadgetHandler:UnitLoaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
+function gadgetHandler:UnitLoaded(unitID, unitDefID, unitTeam,
+                                  transportID, transportTeam)
   for _,g in ipairs(self.UnitLoadedList) do
-    g:UnitLoaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
+    g:UnitLoaded(unitID, unitDefID, unitTeam,
+                 transportID, transportTeam)
   end
   return
 end
 
 
-function gadgetHandler:UnitUnloaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
+function gadgetHandler:UnitUnloaded(unitID, unitDefID, unitTeam,
+                                    transportID, transportTeam)
   for _,g in ipairs(self.UnitUnloadedList) do
-    g:UnitUnloaded(unitID,unitDefID,unitTeam,transportID,transportTeam)
+    g:UnitUnloaded(unitID, unitDefID, unitTeam,
+                   transportID, transportTeam)
   end
   return
 end
@@ -1353,6 +1396,27 @@ end
 
 --------------------------------------------------------------------------------
 --
+--  Projectile call-ins
+--
+
+function gadgetHandler:ProjectileCreated(proID, proOwnerID)
+  for _,g in ipairs(self.ProjectileCreatedList) do
+    g:ProjectileCreated(proID, proOwnerID)
+  end
+  return
+end
+
+
+function gadgetHandler:ProjectileDestroyed(proID)
+  for _,g in ipairs(self.ProjectileDestroyedList) do
+    g:ProjectileDestroyed(proID)
+  end
+  return
+end
+
+
+--------------------------------------------------------------------------------
+--
 --  Misc call-ins
 --
 
@@ -1378,12 +1442,20 @@ function gadgetHandler:Update()
 end
 
 
-function gadgetHandler:DefaultCommand(type,id)
+function gadgetHandler:DefaultCommand(type, id)
   for _,g in ipairs(self.DefaultCommandList) do
-    local id = g:DefaultCommand(type,id)
+    local id = g:DefaultCommand(type, id)
     if (id) then
       return id
     end
+  end
+  return
+end
+
+
+function gadgetHandler:DrawGenesis()
+  for _,g in ipairs(self.DrawGenesisList) do
+    g:DrawGenesis()
   end
   return
 end
@@ -1450,6 +1522,99 @@ function gadgetHandler:DrawInMiniMap(mmsx, mmsy)
     g:DrawInMiniMap(mmsx, mmsy)
   end
   return
+end
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+function gadgetHandler:KeyPress(key, mods, isRepeat, label, unicode)
+  for _,g in ipairs(self.KeyPressList) do
+    if (g:KeyPress(key, mods, isRepeat, label, unicode)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:KeyRelease(key, mods, label, unicode)
+  for _,g in ipairs(self.KeyReleaseList) do
+    if (g:KeyRelease(key, mods, label, unicode)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:MousePress(x, y, button)
+  local mo = self.mouseOwner
+  if (mo) then
+    mo:MousePress(x, y, button)
+    return true  --  already have an active press
+  end
+  for _,g in ipairs(self.MousePressList) do
+    if (g:MousePress(x, y, button)) then
+      self.mouseOwner = g
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:MouseMove(x, y, dx, dy, button)
+  local mo = self.mouseOwner
+  if (mo and mo.MouseMove) then
+    return mo:MouseMove(x, y, dx, dy, button)
+  end
+end
+
+
+function gadgetHandler:MouseRelease(x, y, button)
+  local mo = self.mouseOwner
+  local mx, my, lmb, mmb, rmb = Spring.GetMouseState()
+  if (not (lmb or mmb or rmb)) then
+    self.mouseOwner = nil
+  end
+  if (mo and mo.MouseRelease) then
+    return mo:MouseRelease(x, y, button)
+  end
+  return -1
+end
+
+
+function gadgetHandler:MouseWheel(up, value)
+  for _,g in ipairs(self.MouseWheelList) do
+    if (g:MouseWheel(up, value)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:IsAbove(x, y)
+  for _,g in ipairs(self.IsAboveList) do
+    if (g:IsAbove(x, y)) then
+      return true
+    end
+  end
+  return false
+end
+
+
+function gadgetHandler:GetTooltip(x, y)
+  for _,g in ipairs(self.GetTooltipList) do
+    if (g:IsAbove(x, y)) then
+      local tip = g:GetTooltip(x, y)
+      if (string.len(tip) > 0) then
+        return tip
+      end
+    end
+  end
+  return ''
 end
 
 
