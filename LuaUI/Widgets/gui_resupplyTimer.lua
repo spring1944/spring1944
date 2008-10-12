@@ -15,7 +15,7 @@ local floor = math.floor
 
 -- the 'f' suffixes are fractions  (and can be nil)
 local color  = { 1.0, 1.0, 0.25 }
-local xposf  = 0.5
+local xposf  = 0.52
 local xpos   = xposf * vsx
 local yposf  = 0.010
 local ypos   = yposf * vsy

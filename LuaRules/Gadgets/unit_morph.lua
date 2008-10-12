@@ -121,9 +121,9 @@ end
 local morphCmdDesc = {
 --  id     = CMD_MORPH, -- added by the calling function because there is now more than one option
   type   = CMDTYPE.ICON,
-  name   = 'Morph',
-  cursor = 'Morph',  -- add with LuaUI?
-  action = 'morph',
+  name   = 'Deploy',
+  cursor = 'Deploy',  -- add with LuaUI?
+  action = 'Deploy',
 }
 
 --// will be replaced in Initialize()
@@ -233,7 +233,7 @@ end
 local function GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
   local ud = UnitDefs[morphDef.into]
   local tt = ''
-  tt = tt .. WhiteStr  .. 'Morph into a ' .. ud.humanName .. '\n'
+  tt = tt .. WhiteStr  .. 'Deploy into a ' .. ud.humanName .. '\n'
   tt = tt .. GreenStr  .. 'time: '   .. morphDef.time     .. '\n'
   tt = tt .. CyanStr   .. 'metal: '  .. morphDef.metal    .. '\n'
   tt = tt .. YellowStr .. 'energy: ' .. morphDef.energy   .. '\n'
