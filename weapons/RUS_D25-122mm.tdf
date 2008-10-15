@@ -53,7 +53,7 @@
 	}
 	[customParams]
 	{
-		fearid=301; // WTF!?
+		fearid=501;
 		fearaoe=150;
 	}
 }
