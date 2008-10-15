@@ -147,7 +147,7 @@
 	id=67;
 	name=activates saber;
 	rendertype=0;
-	turret=1;
+	turret=0;
 	tolerance=6000;
 	explosiongenerator=custom:nothing;
 	lineofsight=1;

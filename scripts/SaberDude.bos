@@ -31,7 +31,7 @@ static-var bAiming, swinging, last_pos, stunned, bMoving, run_speed, walk_speed,
 #define BlockedTrigger	41
 
 #define CombatDelay 10000 //how long the saber stays active for
-#define blockstun	500	//how long the attacking unit is stunned after having an attack blocked
+#define blockstun	1500	//how long the attacking unit is stunned after having an attack blocked
 #define weaponreadydelay 1000
 WeaponReady() //attentshaun!
 {
@@ -60,6 +60,7 @@ WeaponReady() //attentshaun!
 	turn head to y-axis <0.000000> speed <200>;
 	turn head to x-axis <0.000000> speed <200>;
 	turn head to z-axis <0.000000> speed <200>;
+	/*
 	wait-for-turn ruparm around x-axis;
 	wait-for-turn ruparm around y-axis;
 	wait-for-turn ruparm around z-axis;
@@ -76,7 +77,7 @@ WeaponReady() //attentshaun!
 	
 	wait-for-turn gun around x-axis;
 	wait-for-turn gun around y-axis;
-	wait-for-turn gun around z-axis;
+	wait-for-turn gun around z-axis;*/
 	sleep weaponreadydelay;
 	swinging=0;	
 	stunned=0;
@@ -185,6 +186,12 @@ StopMoving()
 
 Swing1()
 {
+var sleep1;
+var sleep2;
+var sleep3;
+sleep1 = 100;
+sleep2 = 100;
+sleep3 = 200;
 set-signal-mask BLOCKNOW;
 set-signal-mask STRIKESTOP;
 swinging=1;
@@ -205,7 +212,8 @@ turn lloarm to z-axis <0> speed <250>;
 turn gun to x-axis <-60> speed <250>;
 turn gun to y-axis <0> speed <250>;
 turn gun to z-axis <0> speed <250>;
-
+sleep sleep1;
+/*
 wait-for-turn gun around x-axis;
 wait-for-turn gun around y-axis;
 wait-for-turn gun around z-axis;
@@ -222,7 +230,7 @@ wait-for-turn ruparm around z-axis;
 
 wait-for-turn rloarm around x-axis;
 wait-for-turn rloarm around y-axis;
-wait-for-turn rloarm around z-axis;
+wait-for-turn rloarm around z-axis;*/
 
 turn ruparm to x-axis <-70> speed <250>;
 turn ruparm to y-axis <20> speed <250>;
@@ -233,7 +241,8 @@ turn rloarm to y-axis <0> speed <250>;
 turn lloarm to x-axis <-20> speed <250>;
 turn lloarm to y-axis <0> speed <250>;
 turn gun to x-axis <-20> speed <250>;
-
+sleep sleep2;
+/*
 wait-for-turn gun around x-axis;
 wait-for-turn luparm around x-axis;
 wait-for-turn luparm around y-axis;
@@ -242,7 +251,7 @@ wait-for-turn lloarm around y-axis;
 wait-for-turn ruparm around x-axis;
 wait-for-turn ruparm around y-axis;
 wait-for-turn rloarm around x-axis;
-wait-for-turn rloarm around y-axis;
+wait-for-turn rloarm around y-axis;*/
 
 turn ruparm to x-axis <0> speed <250>;
 turn ruparm to y-axis <40> speed <250>;
@@ -255,7 +264,8 @@ turn luparm to z-axis <0> speed <250>;
 turn gun to x-axis <0> speed <250>;
 turn gun to y-axis <0> speed <250>;
 turn gun to z-axis <30> speed <250>;
-
+sleep sleep3;
+/*
 wait-for-turn luparm around x-axis;
 wait-for-turn luparm around y-axis;
 wait-for-turn luparm around z-axis;
@@ -264,34 +274,36 @@ wait-for-turn ruparm around y-axis;
 wait-for-turn ruparm around z-axis;
 wait-for-turn gun around x-axis;
 wait-for-turn gun around y-axis;
-wait-for-turn gun around z-axis;
-sleep 1500;
+wait-for-turn gun around z-axis;*/
+//sleep 1500;
 call-script WeaponReady();
 }
 
 HighCBlock()
 {
 set-signal-mask HIT;
+var sleep1;
+sleep1 = 100;
 swinging=2;
-turn luparm to x-axis <-120> speed <250>;
-turn luparm to y-axis <-20> speed <250>;
-turn luparm to z-axis <0> speed <250>;
+turn luparm to x-axis <-120> speed <350>;
+turn luparm to y-axis <-20> speed <350>;
+turn luparm to z-axis <0> speed <350>;
 
-turn lloarm to x-axis <0> speed <250>;
-turn lloarm to y-axis <0> speed <250>;
-turn lloarm to z-axis <40> speed <250>;
+turn lloarm to x-axis <0> speed <350>;
+turn lloarm to y-axis <0> speed <350>;
+turn lloarm to z-axis <40> speed <350>;
 
-turn ruparm to x-axis <-60> speed <250>;
-turn ruparm to y-axis <40> speed <250>;
-turn ruparm to z-axis <40> speed <250>;
+turn ruparm to x-axis <-60> speed <350>;
+turn ruparm to y-axis <40> speed <350>;
+turn ruparm to z-axis <40> speed <350>;
 
-turn rloarm to x-axis <-100> speed <250>;
-turn rloarm to y-axis <0> speed <250>;
-turn rloarm to z-axis <0> speed <250>;
+turn rloarm to x-axis <-100> speed <350>;
+turn rloarm to y-axis <0> speed <350>;
+turn rloarm to z-axis <0> speed <350>;
 
-turn gun to x-axis <0> speed <250>;
-turn gun to y-axis <0> speed <250>;
-turn gun to z-axis <-70> speed <250>;
+turn gun to x-axis <0> speed <350>;
+turn gun to y-axis <0> speed <350>;
+turn gun to z-axis <-70> speed <350>;
 
 wait-for-turn gun around x-axis;
 wait-for-turn gun around y-axis;
@@ -312,7 +324,7 @@ wait-for-turn rloarm around y-axis;
 wait-for-turn rloarm around z-axis;
 blocked=1;
 emit-sfx block from blockemit;
-sleep 1500;
+sleep sleep1;
 call-script WeaponReady();
 }
 
@@ -325,7 +337,11 @@ Swing2()
 {
 set-signal-mask BLOCKNOW;
 swinging=1;
-call-script WeaponReady();
+var sleep1;
+var sleep2;
+sleep1 = 100;
+sleep2 = 100;
+//call-script WeaponReady();
 turn ruparm to x-axis <-70> speed <250>;
 turn ruparm to y-axis <0> speed <250>;
 turn ruparm to z-axis <60> speed <250>;
@@ -346,7 +362,8 @@ turn gun to x-axis <0> speed <250>;
 turn gun to y-axis <0> speed <250>;
 turn gun to z-axis <0> speed <250>;
 
-
+sleep sleep1;
+/*
 wait-for-turn gun around x-axis;
 wait-for-turn gun around y-axis;
 wait-for-turn gun around z-axis;
@@ -365,12 +382,14 @@ wait-for-turn luparm around z-axis;
 
 wait-for-turn lloarm around x-axis;
 wait-for-turn lloarm around y-axis;
-wait-for-turn lloarm around z-axis;
+wait-for-turn lloarm around z-axis;*/
 
 turn ruparm to z-axis <-30> speed <250>;
 turn rloarm to z-axis <-50> speed <250>;
+sleep sleep2;
+/*
 wait-for-turn ruparm around z-axis;
-wait-for-turn rloarm around z-axis;
+wait-for-turn rloarm around z-axis;*/
 call-script WeaponReady();
 }
 
@@ -397,7 +416,7 @@ SaberControl()
 			{
 			if (PickSwing==1) start-script Swing1();
 			if (PickSwing==2) start-script Swing2();
-			if (PickSwing==3) start-script Swing3();
+			//if (PickSwing==3) call-script Swing3();
 			}		
 		}
 	sleep 100;
@@ -447,14 +466,14 @@ HitByWeaponId(z,x,id,damage) //TODO ! give each strike its own ghost weapon to n
 	if (Id==Strike1Trigger && swinging != 2 && stunned == 0)
 	{
 	signal BLOCKNOW;
-	start-script HighCBlock();
+	call-script HighCBlock();
 	return (0);
 	}
 	
 	if (Id==Strike2Trigger)
 	{
 	signal BLOCKNOW;
-	start-script MedLBlock();
+	call-script MedLBlock();
 	return (0);
 	}
 	
@@ -465,6 +484,7 @@ HitByWeaponId(z,x,id,damage) //TODO ! give each strike its own ghost weapon to n
 	swinging=2;
 	stunned=1;
 	sleep blockstun;
+	explode head type FALL;
 	call-script WeaponReady();
 	return (0);
 	}

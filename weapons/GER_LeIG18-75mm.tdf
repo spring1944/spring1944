@@ -26,7 +26,7 @@
 
 	rgbcolor=.5 .5 0;
 
-	intensity=0.1;
+	intensity=5;
 
 	size=2.6;
 	collisionsize=4;
