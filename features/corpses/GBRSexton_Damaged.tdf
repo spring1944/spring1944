@@ -1,0 +1,11 @@
+[gbrsexton_destroyed]
+{
+	object=GBRSexton_Destroyed.S3O;
+	featuredead=Debris_Large;
+	description=Destroyed Artillery;
+	energy=500;
+	damage=2000;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}

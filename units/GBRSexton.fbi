@@ -2,7 +2,7 @@
 {
 	unitname=GBRSexton;
 	objectname=GBRSexton.S3O;
-	corpse=USM7Priest_Destroyed;
+	corpse=GBRSexton_Destroyed;
 	icontype=medtank;
 	soundcategory=GBRSP;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
