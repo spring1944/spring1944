@@ -69,5 +69,6 @@
 		weaponswithammo=1;
 		lowammolevel=7;
 		weaponcost=10;
+		feartarget=1;
 	}
 }

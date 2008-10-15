@@ -55,6 +55,11 @@
 		armouredvehicles=2000;
 		unarmouredvehicles=2250;
 	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=150;
+	}
 }
 [m375mmap]
 {
@@ -113,36 +118,5 @@
 		sandbags=200;
 		mines=0;
 		flag=0;
-	}
-}
-[m375mmhefear]
-{
-	id=401;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=1270;
-	reloadtime=5.25;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

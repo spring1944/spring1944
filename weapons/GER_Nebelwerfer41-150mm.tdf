@@ -53,39 +53,9 @@
 		armouredvehicles=5250;
 		unarmouredvehicles=5250;
 	}
-}
-
-[nebelwerfer41fear]
-{
-	id=501;
-	name=Supression;
-	rendertype=1;
-	explosiongenerator=custom:nothing;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=2500;
-	reloadtime=30;
-	burst=2;
-	burstrate=0.8;
-	sprayangle=2000;
-	weaponvelocity=800;
-	areaofeffect=400;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
+	[customParams]
 	{
-		default=0.0001;
+		fearid=501;
+		fearaoe=400;
 	}
 }

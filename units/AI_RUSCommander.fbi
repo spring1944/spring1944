@@ -65,5 +65,6 @@
 		hq=1;
 		refillamount=1000000; 
 		arrivalgap=180;	
+		feartarget=1;
 	}
 }

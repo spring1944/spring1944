@@ -35,34 +35,9 @@
 		mines=0;
 		flag=0.000000001;
 	}
-}
-
-[m2flamethrowerFear]
-{
-	id=601;
-	name=M2-2 Flamethrower Fear;
-	rendertype=1;
-	turret=1;
-	tolerance=200;
-	size=0.000000001;
-	explosiongenerator=custom:nothing;
-	lineofsight=1;
-	firestarter=0.0;
-	noselfdamage=1;
-	range=225;
-	reloadtime=1;
-	sprayangle=0;
-	weaponvelocity=140;
-	areaofeffect=150;
-	impulsefactor=0.000001;
-	interceptedbyshieldtype=32;
-	[damage]
+	[customParams]
 	{
-		default=0;
-		bunkers=0;
-		sandbags=0;
-		mines=0;
-		flag=0.000000001;
-		tanks=0;
+		fearid=601;
+		fearaoe=150;
 	}
 }

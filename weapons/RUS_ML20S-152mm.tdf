@@ -52,6 +52,11 @@
 		armouredvehicles=4000;
 		unarmouredvehicles=8000;
 	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=250;
+	}
 }
 [ml20s152mmap]
 {
@@ -111,36 +116,5 @@
 		sandbags=500;
 		mines=0;
 		flags=0;
-	}
-}
-[ml20s152mmfear]
-{
-	id=401;
-	name=Supression from 152mm ML-20;
-	rendertype=1;
-	explosiongenerator=custom:nothing;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=2530;
-	reloadtime=13.5;
-	weaponvelocity=800;
-	areaofeffect=250;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

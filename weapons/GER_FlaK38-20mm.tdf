@@ -112,37 +112,10 @@
 		guns=200;
 		LightPlanes=40;
 	}
-}
-[kwk3020mhefear]
-{
-	id=301;
-	name=Supression from 20mm HE shells;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=730;
-	reloadtime=3;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
+	[customParams]
 	{
-		default=0.0001;
+		fearid=301;
+		fearaoe=150;
 	}
 }
 [kwk3020mmap]

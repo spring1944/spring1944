@@ -52,6 +52,11 @@
 		armouredvehicles=1400;
 		unarmouredvehicles=1850;
 	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=210;
+	}
 }
 [f3476mmap]
 {
@@ -110,37 +115,5 @@
 		sandbags=200;
 		mines=0;
 		flag=0;
-	}
-}
-[f3476mmhefear]
-{
-	id=401;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=1270;
-	reloadtime=5.25;
-	weaponvelocity=800;
-	areaofeffect=210;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

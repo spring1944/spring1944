@@ -54,6 +54,11 @@
 		armouredvehicles=1600;
 		unarmouredvehicles=2300;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=150;
+	}
 }
 [kwk50mml60ap]
 {
@@ -114,37 +119,5 @@
 		sandbags=200;
 		mines=0;
 		flag=0;
-	}
-}
-[kwk50mml60hefear]
-{
-	id=301;
-	name=Supression from KwK 50mm HE;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=1125;
-	reloadtime=4.95;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

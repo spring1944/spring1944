@@ -57,5 +57,6 @@
 	[customParams]
 	{
 		defaultMove=1;
+		feartarget=1;
 	}
 }

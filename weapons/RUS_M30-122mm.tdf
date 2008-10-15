@@ -53,36 +53,9 @@
 		armouredvehicles=5000;
 		unarmouredvehicles=5050;
 	}
-}
-
-[m30122mmhefear]
-{
-	id=501;
-	name=Supression;
-	rendertype=1;
-	explosiongenerator=custom:nothing;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=3095;
-	reloadtime=19.5;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
+	[customParams]
 	{
-		default=0.0001;
+		fearid=501;
+		fearaoe=150;
 	}
 }

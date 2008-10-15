@@ -74,5 +74,6 @@
 		lowammolevel=7;
 		weaponcost=20;
 		canareaattack=1;
+		feartarget=1;
 	}
 }

@@ -60,5 +60,6 @@
 	[customParams]
 	{
 		flagCapRate=5;
+		feartarget=1;
 	}
 }

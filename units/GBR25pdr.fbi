@@ -63,4 +63,8 @@
 		explosiongenerator8=custom:MEDIUMLARGE_MUZZLEDUST;
 		explosiongenerator9=custom:MuzzleBrakeSmoke;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }

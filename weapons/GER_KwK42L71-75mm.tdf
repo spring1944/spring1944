@@ -54,6 +54,11 @@
 		armouredvehicles=1750;
 		unarmouredvehicles=2100;
 	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=210;
+	}
 }
 [kwk75mml71ap]
 {
@@ -112,37 +117,5 @@
 		sandbags=250;
 		mines=0;
 		flag=0;
-	}
-}
-[kwk75mml71hefear]
-{
-	id=401;
-	name=Supression from KwK 75mm L70 HE;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=1690;
-	reloadtime=7.65;
-	weaponvelocity=1096;
-	areaofeffect=210;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

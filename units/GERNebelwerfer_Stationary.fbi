@@ -73,5 +73,6 @@
 		lowammolevel=1;
 		weaponcost=150;
 		defaultMove=1;
+		feartarget=1;
 	}
 }

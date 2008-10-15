@@ -53,6 +53,11 @@
 		armouredvehicles=2000;
 		unarmouredvehicles=2250;
 	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=210;
+	}
 }
 [zis376mmap]
 {
@@ -112,37 +117,5 @@
 		sandbags=200;
 		mines=0;
 		flag=0;
-	}
-}
-[zis376mmhefear]
-{
-	id=401;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=1310;
-	reloadtime=5.25;
-	weaponvelocity=926;
-	areaofeffect=210;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

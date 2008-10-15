@@ -61,4 +61,8 @@
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }

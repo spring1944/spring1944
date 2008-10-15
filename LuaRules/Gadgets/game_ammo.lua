@@ -73,15 +73,16 @@ local function ProcessWeapons(unitID)
 	local reloadFrame = 0
 	
 	for weapNum = 0, weaponsWithAmmo - 1 do
-		_, _, reloadFrame = GetUnitWeaponState(unitID, weapNum)
+		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
+		--Spring.Echo(reloadFrame)
 		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
-			for weapNum = 0, weaponsWithAmmo - 1 do
-				SetUnitWeaponState(unitID, weapNum, {reloadtime = 99999, reloadstate = 99999})
+			for weapNum = 0, weaponsWithAmmo do
+				SetUnitWeaponState(unitID, weapNum, {reloadTime = 99999, reloadState = 99999})
 			end
 		end
 		if ammoLevel > 0 then
@@ -163,7 +164,7 @@ local function Resupply(unitID)
 			Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
 		end
 		for weapNum = 0, weaponsWithAmmo - 1 do
-			SetUnitWeaponState(unitID, weapNum, {reloadtime = reload, reloadstate = reloadState})
+			SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
 			vehicles[unitID].reloadFrame[weapNum] = reloadState
 		end
 	end

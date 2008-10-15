@@ -61,4 +61,8 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MORTAR_MUZZLEFLASH;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }

@@ -66,4 +66,8 @@
 		explosiongenerator7=custom:XSMALL_MUZZLEFLASH;
 		explosiongenerator8=custom:XSMALL_MUZZLEDUST;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }

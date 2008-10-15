@@ -60,4 +60,8 @@
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:PTRD_MUZZLEFLASH;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }

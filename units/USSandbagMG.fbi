@@ -62,4 +62,8 @@
 		explosiongenerator6=custom:MG_SHELLCASINGS;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
 	}
+	[customParams]
+	{
+		feartarget=1;
+	}
 }
