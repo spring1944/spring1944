@@ -6,7 +6,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, shell_eject;
 
 static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
-walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, MGFearOk;// reloading;
+walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned;// reloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -18,7 +18,7 @@ walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, MGFear
 #define placeholder_EFFECT05 1024+5
 #define MG_SHELLCASINGS 1024+6
 #define MG_MUZZLEFLASH 1024+7
-#define SMALL_TRACER 2048+2
+#define SMALL_TRACER 2048+1
 
 #include "Inf_suppressionvars.h"
 
@@ -421,7 +421,6 @@ FireWeapon1()
 /*		reloading=1;
 		sleep ReloadPenalty;
 		reloading=0;*/	
-		MGFearOk=1;	
 		return (1);
 	}
 	
@@ -499,36 +498,9 @@ FireWeapon1()
 		turn ruparm to x-axis <-85> speed <200>;
 		turn luparm to x-axis <-140> speed <200>;
 		turn gun to x-axis <20> speed <200>;
-		MGFearOk=1;	
 		}
 	return (0);
 }
  
-AimFromWeapon2(piecenum)
-{
-	piecenum = torso;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (bMoving==1) return (0);
-	if (bAiming && MGFearOk==1)
-	{
-	wait-for-turn pelvis around y-axis;
-	return (1);
-	}
-	return(0);
-}
-
-FireWeapon2()
-{
-MGFearOk=0;
-return (0);
-}
 
 #include "Inf_death.h"

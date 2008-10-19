@@ -7,7 +7,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
        lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 
 static-var DecreasingFear, InAimStance, last_pos, bMoving, bAiming, run_speed,
- nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, FearOk;// reloading;
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned;// reloading;
 
 #define SIG_AIM            2
 #define SIG_MOVE 64
@@ -231,7 +231,6 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	FearOk=1;
 	get DO_SEISMIC_PING(4);
 	if (IsProne==1)
 	{
@@ -245,7 +244,6 @@ FireWeapon1()
 //		reloading=1;
 //		sleep ReloadPenalty;
 //		reloading=0;
-		FearOk=1;
 		return (1);
 	}
 	if (IsProne==0)
@@ -257,37 +255,10 @@ FireWeapon1()
 		turn ruparm to x-axis <20> speed <200>;
 		turn luparm to x-axis <-70> speed <200>;
 		sleep 50;
-		FearOk=1;
 		return (1);
 	}
 	return (0);
 
 }
  
-AimFromWeapon2(piecenum)
-{
-	piecenum = torso;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (bAiming && FearOk==1)
-	{
-	return (1);
-	}
-	return (0);
-}
-
-FireWeapon2()
-{
-FearOk=0;
-return (0);
-}
-
-
 #include "Inf_death.h"

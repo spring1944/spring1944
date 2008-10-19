@@ -62,15 +62,7 @@
 	weapon3=MG34;
 	onlytargetcategory3=INFTARG;
 	weapon4=.50calproof;
-	weapon5=kwk88mml56HEFear;
-	onlytargetcategory5=NFLAGNAIR;
-	weaponslaveto5=1;
-	weapon6=MG34Fear;
-	onlytargetcategory6=INFTARG;
-	weaponslaveto6=3;
-	weapon7=TankFearShield;
-
-	weapon8=Small_Tracer;
+	weapon5=Small_Tracer;
 
 	[sfxtypes]
 	{

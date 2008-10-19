@@ -5,7 +5,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
  
  
-static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, PickDeath, lasthit, IsPinned, CannonFearOk;
+static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, PickDeath, lasthit, IsPinned;
 #include "Inf_Suppressionvars.h"
 // Signal definitions
 #define SIG_AIM1	2
@@ -607,38 +607,9 @@ FireWeapon1()
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
-	CannonFearOk=1;
 	CREW_RELOADING
 }
 
-AimFromWeapon2(piecenum)
-{
-	piecenum = barrel;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon2(heading, pitch)
-{
-	
-		signal SIG_AIM2;
-		set-signal-mask SIG_AIM2;
-		
-		if (isDeployed && CannonFearOk==1)
-		{
-		return (1);
-		}
-		return (0);
-}
-
-FireWeapon2()
-{
-CannonFearOk=0;
-return (0);
-}
 
 
 Killed(severity, corpsetype)

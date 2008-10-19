@@ -3,7 +3,7 @@
 piece base, carriage, tubes, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk, rocket;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, rocket;
 
 #include "inf_suppressionvars.h"
 
@@ -231,7 +231,6 @@ FireWeapon1()
 	CREW_FIRING;
 	get DO_SEISMIC_PING(15);
 	//Now reload...
-	FearOk=1;
 	CREW_RELOADING
 	set ACTIVATION to 0;
 	sleep VISIBLE_PERIOD;
@@ -243,31 +242,6 @@ Shot1()
 	rocket = rocket + 1;
 }
 
-AimFromWeapon2(piecenum)
-{
-	piecenum = tubes;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = rocket1;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (FearOk==1)
-	{
-	wait-for-turn carriage around y-axis;
-	return (1);
-	}
-	return(0);
-}
-
-FireWeapon2()
-{
-FearOk=0;
-return (0);
-}
 
 Killed(severity, corpsetype)
 {

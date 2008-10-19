@@ -56,13 +56,10 @@
 
 	weapon1=MG34;
 	onlytargetcategory1=INFTARG;
-	weapon2=MG34Fear;
-	onlytargetcategory2=INFTARG;
-	weaponslaveto2=1;
 	//weapon3=mg42aa;
 	//onlytargetcategory3=AIR;
 
-	weapon4=Small_Tracer;
+	weapon2=Small_Tracer;
 
 	[sfxtypes]
 	{

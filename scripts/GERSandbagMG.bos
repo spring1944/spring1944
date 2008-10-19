@@ -5,7 +5,7 @@
 piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, turret, lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, tripod;
 
 static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
- nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, HipAim, FearOk;
+ nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, HipAim;
 
 #define SIG_AIM            2
 #define BURSTRATE	100//burstrate of the MG weapon, minus 10 ms
@@ -16,7 +16,7 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
 #define MG_MUZZLEFLASH 1024+7
-#define SMALL_TRACER 2048+2
+#define SMALL_TRACER 2048+1
 
 #define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
@@ -355,39 +355,8 @@ FireWeapon1()
 	sleep BURSTRATE;
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep BURSTRATE;
-	FearOk=1;
 	return (0);
 
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = torso;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = gun;
-}
-
-AimWeapon2(heading, pitch)
-{
-	signal 4;
-	set-signal-mask 4;
-	if (isProne==1 || FearOk==0 || fear>0) return (0);
-	if (isProne==0 && FearOk==1 && fear == 0)
-	{
-	wait-for-turn pelvis around y-axis;
-	wait-for-turn gun around y-axis;
-	return (1);
-	}
-	return (0);
-}
-
-
-FireWeapon2(heading) //MG fear weapon
-{
-	return (1);
 }
 
 

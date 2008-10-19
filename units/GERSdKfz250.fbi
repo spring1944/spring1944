@@ -55,15 +55,8 @@
 	onlytargetcategory2=TANK;
 	weapon3=MG34;
 	onlytargetcategory3=INFTARG;
-	weapon4=KwK3020mHEFear;
-	onlytargetcategory4=NFLAGNAIR;
-	weaponslaveto4=1;
-	weapon5=MG34Fear;
-	onlytargetcategory5=INFTARG;
-	weaponslaveto5=3;
-
-	weapon6=Small_Tracer;
-	weapon7=Large_Tracer;
+	weapon4=Small_Tracer;
+	weapon5=Large_Tracer;
 
 	[sfxtypes]
 	{

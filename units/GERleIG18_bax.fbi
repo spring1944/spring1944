@@ -49,8 +49,6 @@
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
-	weapon2=leIG18HEFear;
-	weaponslaveto2=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

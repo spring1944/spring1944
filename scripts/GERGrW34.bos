@@ -834,26 +834,6 @@ FireWeapon1()
 }
 
 
-AimFromWeapon2(piecenum)
-{
-	piecenum = torso;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon2(heading, pitch)
-{
-wait-for-turn ground around y-axis;
-return (1);
-}
-
-FireWeapon2()
-{
-return (0);
-}
 
 Killed(severity, corpsetype)
 {

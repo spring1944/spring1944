@@ -3,7 +3,7 @@
 piece base, sleeve, barrel, flare, brakeright, brakeleft, aaref, aaturret, aagun, aaflare, exhaust;
 piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
  
-static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, CannonFearOk;
+static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
@@ -174,7 +174,6 @@ FireWeapon1()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
-	CannonFearOk=1;
 	emit-sfx LARGE_Muzzleflash from flare;
 	emit-sfx LARGE_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
@@ -191,30 +190,6 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon4(piecenum) //Main gun HE fear
-{
-	piecenum = base;
-}
-
-QueryWeapon4(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon4(heading, pitch)
-{
-	if (CannonFearOk==1)
-	{
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon4()
-{
-CannonFearOk=0;
-return (0);
-}
 
 QueryWeapon2(piecenum)// Weapon 4 - AA MG
 	{

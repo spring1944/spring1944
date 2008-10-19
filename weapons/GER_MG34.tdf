@@ -48,6 +48,11 @@
 		armouredvehicles=12;
 		unarmouredvehicles=15;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
 }
 [mg34fear]
 {

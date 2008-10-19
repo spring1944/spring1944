@@ -50,6 +50,11 @@
 		unarmouredvehicles=15;
 		lightplanes=15;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
 }
 
 [mg42_deployed]
@@ -103,6 +108,11 @@
 		armouredvehicles=12;
 		unarmouredvehicles=15;
 		lightplanes=15;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=20;
 	}
 }
 [mg42a]

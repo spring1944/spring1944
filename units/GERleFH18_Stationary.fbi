@@ -51,8 +51,6 @@
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=90;
-	weapon2=LeFH18HEFear;
-	weaponslaveto2=1;
 	
 	[sfxtypes]
 	{

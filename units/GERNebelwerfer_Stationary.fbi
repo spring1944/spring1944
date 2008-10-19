@@ -51,9 +51,7 @@
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=90;
-	weapon2=Nebelwerfer41Fear;
-	weaponslaveto2=1;
-	
+
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

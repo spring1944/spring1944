@@ -2,7 +2,7 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxFlare, exhaust, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -60,8 +60,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define XSMALL_MUZZLEDUST 1024+9
 
 //tracers
-#define SMALL_TRACER 	2048+5
-#define LARGE_TRACER		2048+6
+#define SMALL_TRACER 	2048+3
+#define LARGE_TRACER		2048+4
 
 treads() 
 { 
@@ -198,36 +198,10 @@ FireWeapon1()
 	}
 	emit-sfx LARGE_TRACER from flare;
 	rock = FALSE;
-	CannonFearOk=1;
 	start-script Reload(); // start reload timer after firing
 	return 0;
 }
 
-AimFromWeapon4(piecenum) //Main gun HE fear
-{
-	piecenum = turret;
-}
-
-QueryWeapon4(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon4(heading, pitch)
-{
-	if (CannonFearOk==1)
-	{
-	wait-for-turn turret around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon4()
-{
-CannonFearOk=0;
-return (0);
-}
 
 // Weapon 2 - Main cannon, AP
 QueryWeapon2(piecenum)
@@ -310,7 +284,6 @@ AimWeapon3(heading, pitch)
 	
 	start-script RestoreAfterDelay();
 	MGAiming=0;
-	MGFearOk=1;
 	return (1);
 }
 
@@ -338,36 +311,8 @@ FireWeapon3()
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 67;
-	MGFearOk=1;
 	return(0);
 }
-
-AimFromWeapon5(piecenum) //Coax fear 
-{
-	piecenum = turret;
-}
-
-QueryWeapon5(piecenum)
-{
-	piecenum = coaxflare;
-}
-
-AimWeapon5(heading, pitch)
-{
-	if (MGFearOk==1)
-	{
-	wait-for-turn turret around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon5()
-{
-MGFearOk=0;
-return (0);
-}
-
 
 
 // TODO: make this pretty

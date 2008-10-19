@@ -63,11 +63,7 @@
 	weaponmaindir2=0 0 1;
 	maxangledif2=15;
 	onlytargetcategory2=TANK;
-	weapon3=KwK75mmL48HEFear;
-	onlytargetcategory3=NFLAGNAIR;
-	weaponslaveto3=1;
-	weapon4=.50calproof;
-	weapon5=TankFearShield;
+	weapon3=.50calproof;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

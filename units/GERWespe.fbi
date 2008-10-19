@@ -65,9 +65,6 @@
 	weapon2=MG42;
 	onlytargetcategory2=AIR;
 	weapon3=.50calproof;
-	weapon4=LeFH18HEFear;
-	weaponslaveto4=1;
-
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
 	[sfxtypes]

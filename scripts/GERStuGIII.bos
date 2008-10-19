@@ -4,7 +4,7 @@ piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming, CannonFearOk;
+static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -191,35 +191,8 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
-	CannonFearOk=1;
 	start-script Reload(); // start reload timer after firing
 	return 0;
-}
-
-AimFromWeapon3(piecenum) //Main gun HE fear
-{
-	piecenum = mantlet;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon3(heading, pitch)
-{
-	if (CannonFearOk==1)
-	{
-	wait-for-turn mantlet around y-axis;
-	return (1);
-	}
-	return 0;
-}
-
-FireWeapon3()
-{
-CannonFearOk=0;
-return (0);
 }
 
 // Weapon 2 - Main cannon, AP
@@ -330,29 +303,6 @@ FireWeapon4()
 {
 return (0);
 }
-
-
-
-AimFromWeapon5(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon5(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon5(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon5()
-{
-return (0);
-}
-
 
 // TODO: make this pretty
 Killed(severity, corpsetype)
