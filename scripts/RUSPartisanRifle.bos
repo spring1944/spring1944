@@ -10,7 +10,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
 ---
 bEngaged - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
 	Controls: timing of idle animations, the usage of AimRunControl over RunControl
-	Set by: Aimweapon, unset by X
+	Set by: Aimweapon, unset by RestoreAfterDelay
 ---
 bNading - is the unit currently in the process of throwing a grenade?
 	Controls: locks out weaponready, and X
@@ -143,14 +143,31 @@ set-signal-mask SIG_AIM1;
 
 }
 
+
 AimRun() //running animation while aiming at a target.
 //TODO: slow them down? and make a different anim
 {
 var pelviswait;
 pelviswait = 150;
+		HIPAIM
 		turn pelvis to x-axis <0> now;
 		turn pelvis to y-axis <0> now;
-	//	turn torso to x-axis <7> now;
+		turn pelvis to z-axis <0> now;
+		
+		turn torso to y-axis <0> now;
+		turn torso to z-axis <0> now;
+		
+		turn rthigh to y-axis <0> now;
+		turn rthigh to z-axis <0> now;
+		
+		turn lthigh to y-axis <0> now;
+		turn lthigh to z-axis <0> now;
+		
+		turn lleg to y-axis <0> now;
+		turn lleg to y-axis <0> now;
+		
+		turn rleg to y-axis <0> now;
+		turn rleg to z-axis <0> now;
 	
 		if (bMoving==1)
 			{
@@ -388,11 +405,14 @@ Prone()
 Stand() //just resetting legs and such while still
 {
 	move pelvis to y-axis [0.0] now;
+	if (bEngaged == 0)
+	{
 	turn rthigh to x-axis <0> now;
 	turn lthigh to x-axis <0> now;
 	turn lleg to x-axis <0> now;
 	turn rleg to x-axis <0> now;
-	if (bEngaged == 0) turn torso to x-axis <0> now;
+	turn torso to x-axis <0> now;
+	}
 	sleep 10;
 /*	if (!bEngaged && bMoving == 0 && iState == 1)
 			{
@@ -944,7 +964,7 @@ AimWeapon1(heading, pitch)
 			start-script RestoreAfterDelay();			
 			return (1);
 		} 
-		#endif
+		//#endif
 	}
 	
 	return (0);
@@ -955,17 +975,17 @@ FireWeapon1()
 	
 	if (iState>=6)
 	{
+
+		return (1);
+	}
+	if (iState<6)
+	{
 		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;
 		turn ruparm to x-axis <-40> now;
 		turn luparm to x-axis <-70> now;
 		sleep 50;
 		turn ruparm to x-axis <-35> now;
 		turn luparm to x-axis <-65> now;
-		return (1);
-	}
-	if (iState<6)
-	{
-		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;
 		return (1);
 	}
 	
