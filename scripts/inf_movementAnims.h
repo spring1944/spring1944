@@ -2,9 +2,10 @@ AimRun() //running animation while aiming at a target.
 //TODO: slow them down? and make a different anim
 {
 var pelviswait;
-pelviswait = 150;
+pelviswait = rand(140, 170);
 		start-script HipAim();
 		//turn pelvis to x-axis <0> now;
+		move pelvis to y-axis [0] now;
 		turn pelvis to y-axis <0> now;
 		turn pelvis to z-axis <0> now;
 	
@@ -19,30 +20,34 @@ pelviswait = 150;
 		
 		turn rleg to y-axis <0> now;
 		turn rleg to z-axis <0> now;
-	
+		/*if (bMoving==0)
+		{
+		sleep 50;
+		start-script Stand();
+		return 0;
+		}*/
+		//if ((bMoving == 0) && (iState == 3)) sleep 100;
 		if (bMoving==1)
 			{
 			turn lleg to x-axis <85> speed <405>;
 			turn lthigh to x-axis <-45> speed <200>;
 			turn rthigh to x-axis <23> speed <200>;
 		sleep pelviswait;
-		//wait-for-move pelvis along y-axis;
 			move pelvis to y-axis [0.3] speed <2100>;
 		sleep pelviswait;	
-	//	wait-for-move pelvis along y-axis;
 			turn lleg to x-axis <10> speed <470>;
 			move pelvis to y-axis [0] speed <2100>;
 			}
+		//if (bMoving==0) sleep 200;
+		//if ((bMoving == 0) && (iState == 3)) sleep 100;
 		if (bMoving==1)
 			{
 			turn rleg to x-axis <85> speed <405>;	
 			turn rthigh to x-axis <-45> speed <200>;
 			turn lthigh to x-axis <23> speed <200>;
 		sleep pelviswait;
-		//wait-for-move pelvis along y-axis;		
 			move pelvis to y-axis [0.3] speed <2100>;
 		sleep pelviswait;
-		//wait-for-move pelvis along y-axis;
 			turn rleg to x-axis <10> speed <470>;
 			move pelvis to y-axis [0] speed <2100>;
 			}
@@ -53,7 +58,7 @@ Run() //basic jog when there is no fear or aiming
 {
 //set-signal-mask SIG_RUN;
 var pelviswait;
-pelviswait = rand(120, 140);
+pelviswait = rand(130, 145);
 		turn pelvis to y-axis <0> now;
 		turn pelvis to z-axis <0> now;
 		
@@ -72,7 +77,7 @@ pelviswait = rand(120, 140);
 		turn rleg to y-axis <0> now;
 		turn rleg to z-axis <0> now;
 		//turn torso to x-axis <7> now;
-		if (bMoving==0) sleep 50;	
+		//if (bMoving==0) sleep 200;	
 		if (bMoving==1)
 			{
 			turn rleg to x-axis <85> speed <540>;	
@@ -80,15 +85,12 @@ pelviswait = rand(120, 140);
 			turn lthigh to x-axis <30> speed <270>;
 			turn torso to y-axis <10> speed <90>;
 		sleep pelviswait;
-	//	wait-for-move pelvis along y-axis;		
 			move pelvis to y-axis [0.4] speed <2800>;
 		sleep pelviswait;
-		//wait-for-move pelvis along y-axis;
 			turn rleg to x-axis <10> speed <630>;
 			move pelvis to y-axis [0] speed <2800>;
 			}
-		//	sleep Desync;
-		if (bMoving==0) sleep 50;
+		//if (bMoving==0) sleep 200;
 		if (bMoving==1)
 			{
 			turn lleg to x-axis <85> speed <540>;
@@ -110,6 +112,7 @@ Crawl() //crawl under fire (moving, iFear>0, but not pinned)
 //todo - fix the anim to not be sucky
 {
 turn pelvis to x-axis <90> now;
+turn pelvis to y-axis <0> now;
 turn ground to x-axis <0> now;
 move pelvis to y-axis [-2.7] now;
 var sleeptime;

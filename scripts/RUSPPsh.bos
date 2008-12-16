@@ -37,9 +37,9 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 /* --Var defs:
 -----Boolean
 ---
-bEngaged - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
+bAiming - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
 	Controls: timing of idle animations, the usage of AimRunControl over RunControl
-	Set by: Aimweapon, unset by RestoreAfterDelay
+	Set by: Aimweapon, unset over time by AimRunControl and StartMoving/StopMoving
 ---
 bNading - is the unit currently in the process of throwing a grenade?
 	Controls: locks out weaponready, and X
@@ -57,8 +57,8 @@ iState - what the unit is currently doing //todo: add states for being in a tran
 	  Values:
 		standing idle - 0
 		standing at attention - 1
-		standing aiming rifle - 2
-		standing aiming nade - 3
+		standing aiming rifle/SMG - 2
+		kneeling aiming rifle/SMG - 3
 		-		
 		running - 4
 		running aiming - 5
@@ -80,10 +80,10 @@ iFear - how 'afraid' unit currently is.
 	
 */
 #ifndef WEAPON_GRENADE
-static-var bEngaged, bMoving, iState, iFear;
+static-var bAiming, bMoving, iState, iFear;
 #endif
 #ifdef WEAPON_GRENADE
-static-var bEngaged, bMoving, iState, iFear, bNading;
+static-var bAiming, bMoving, iState, iFear, bNading;
 #endif
 
 //FX definitions
@@ -121,19 +121,23 @@ static-var bEngaged, bMoving, iState, iFear, bNading;
 
 StartMoving()
 {
+	bAiming = 0;
 	bMoving = 1;
+	signal SIG_IDLE;
 }
 
 StopMoving()
 {
+	bAiming = 0;
 	bMoving = 0;
+	signal SIG_IDLE;
 }
 
 Create()
 {
 	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
 	bMoving = 0;
-	bEngaged = 0;
+	bAiming = 0;
 	#ifdef WEAPON_GRENADE
 	bNading = 0;
 	#endif
@@ -145,14 +149,13 @@ Create()
 
 RestoreAfterDelay()
 {
-sleep RestoreDelay;
-bEngaged=0;
-if (iFear > 0) start-script CrawlControl();
-if (iFear <= 0)
-	{
-	start-script Stand();
-	start-script RunControl();
-	}
+	sleep RestoreDelay;
+//	bAiming=0;	
+	if (iFear > 0) start-script CrawlControl();
+	if (iFear <= 0)
+		{
+		start-script RunControl();
+		}
 }
 
 //start weapons

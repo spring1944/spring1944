@@ -112,6 +112,238 @@
 	turn torso to y-axis <0> now;\
 	turn torso to x-axis <0> now;\
 	turn torso to z-axis <0> now;
+	
+#define MG_STANCE1 \
+	turn ruparm to x-axis <-60> now;\
+	turn ruparm to y-axis <0> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-30> now;\
+	turn rloarm to y-axis <20> now;\
+	turn rloarm to z-axis <-50> now;\
+	turn luparm to x-axis <-10> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-85> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+
+#define MG_STANCE2 \
+	turn ruparm to x-axis <-70> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-40> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-110> now;\
+	turn luparm to x-axis <0> now;\
+	turn luparm to y-axis <20> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-60> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <30> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <-20> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SNIPER_STANCE1 \
+	turn ruparm to x-axis <-60> now;\
+	turn ruparm to y-axis <0> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-30> now;\
+	turn rloarm to y-axis <20> now;\
+	turn rloarm to z-axis <-50> now;\
+	turn luparm to x-axis <-10> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-85>now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SNIPER_STANCE2 \
+	turn ruparm to x-axis <-60> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-50> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-110> now;\
+	turn luparm to x-axis <-20> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-140>now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <-50> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SNIPER_STANCE3 \
+	turn ruparm to x-axis <-70> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-40> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-110> now;\
+	turn luparm to x-axis <0> now;\
+	turn luparm to y-axis <20> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-60> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <30> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <-20> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SCOUT_STANCE1 \
+	turn ruparm to x-axis <-30> now;\
+	turn ruparm to y-axis <20> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-130> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <0> now;\
+	turn luparm to x-axis <-70> now;\
+	turn luparm to y-axis <25> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-80> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <40> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SCOUT_STANCE2 \
+	turn ruparm to x-axis <-40> now;\
+	turn ruparm to y-axis <50> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-100> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-20> now;\
+	turn luparm to x-axis <-20> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-135> now;\
+	turn lloarm to y-axis <-15> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define SCOUT_STANCE3 \
+	turn ruparm to x-axis <-40> now;\
+	turn ruparm to y-axis <30> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <0> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-20> now;\
+	turn luparm to x-axis <-10> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-40> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <20> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+#define ATROCKET_STANCE1 \
+	turn ruparm to x-axis <-60> now;\
+	turn ruparm to y-axis <0> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-30> now;\
+	turn rloarm to y-axis <20> now;\
+	turn rloarm to z-axis <-50> now;\
+	turn luparm to x-axis <-10> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-85>now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <0> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
+	
+#define ATROCKET_STANCE2 \
+	turn ruparm to x-axis <-70> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-40> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-110> now;\
+	turn luparm to x-axis <0> now;\
+	turn luparm to y-axis <20> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-60> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <30> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <-20> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
+	
 
 HipAim()
 	{
@@ -141,8 +373,8 @@ HipAim()
 Prone(pickSide)
 {
 //	wait-for-turn lloarm around z-axis;
-	move pelvis to y-axis [-2.75] speed <9001>; // OVER 9000!!!!...please don't nuke this file in disgust
-	if (iState != 7)
+	move pelvis to y-axis [-2.75] speed <9001>; 
+	if (bAiming == 0 && iState != 7)
 	{
 	turn pelvis to x-axis <90> now;
 	turn pelvis to y-axis <0> now;
@@ -150,7 +382,6 @@ Prone(pickSide)
 	move ground to y-axis [0] now;
 	sleep 70;
 	}
-	sleep 100;
 	//wait-for-turn pelvis around x-axis;
 	//wait-for-move pelvis along y-axis;
 	turn torso to y-axis <0> speed <600>;
@@ -214,11 +445,11 @@ Prone(pickSide)
 	sleep 100;
 }
 
-Stand() //just resetting legs and such while still
+Stand(pickStance) //just resetting legs and such while still
 {
-	if (iState != 2)
+	if (bAiming == 0)
 	{
-		move pelvis to y-axis [0.0] now;
+		move pelvis to x-axis [0.0] now;
 		turn rthigh to x-axis <0> now;
 		turn rthigh to y-axis <0> now;
 		turn rthigh to z-axis <0> now;
@@ -232,19 +463,81 @@ Stand() //just resetting legs and such while still
 		turn torso to z-axis <0> now;
 		turn pelvis to y-axis <0> now;
 		turn pelvis to x-axis <0> now;
-		turn pelvis to z-axis <0> now;
-	}
-	sleep 200;
-/*	if (!bEngaged && bMoving == 0 && iState == 1)
+		turn pelvis to z-axis <0> now;	
+		#ifdef MG
+		if (pickStance == 1)
+		{
+		MG_STANCE1
+		}
+		#endif
+		#ifdef ATROCKET
+		if (pickStance == 1)
+		{
+		ATROCKET_STANCE1
+		}
+		#endif
+		#ifdef SNIPER
+		if (pickStance == 1)
+		{
+		SNIPER_STANCE1
+		}
+		if (pickStance == 2)
+		{
+		SNIPER_STANCE2
+		}
+		if (pickStance == 3)
+		{
+		SNIPER_STANCE3
+		}
+		#endif
+		#ifdef SCOUT
+		if (pickStance == 1)
+		{
+		SCOUT_STANCE1
+		}
+		if (pickStance == 2)
+		{
+		SCOUT_STANCE2
+		}
+		if (pickStance == 3)
+		{
+		SCOUT_STANCE3
+		}
+		#endif
+#ifdef WEAPON_GRENADE
+		if (!bNading)
+		{
+			#ifdef RIFLE
+			show gun;
+			if (pickStance == 1)
 			{
-			signal SIG_STAND;
-			set-signal-mask SIG_STAND;
-			sleep IdleDelay;
-			var pickIdleAnim;
-			iState=0; //standing idle
-			explode head type FALL;
-			//idlestuff; TODO - add anims & picking mechanism
-			}*/
+			RIFLE_STANCE1
+			}
+			if (pickStance == 2)
+			{
+			RIFLE_STANCE3
+			}
+			if (pickStance == 3)
+			{
+			RIFLE_STANCE2
+			}
+			#endif
+			#ifdef SMG
+			show gun;
+			if (pickStance == 1)
+			{
+			SMG_STANCE1
+			}
+			if (pickStance == 2)
+			{
+			SMG_STANCE2
+			}
+			#endif
+		}
+#endif	
+	}
+	//call-script StandingIdle();
+	//sleep 150;
 }
 
 /*

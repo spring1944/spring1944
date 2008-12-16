@@ -19,26 +19,27 @@ FearRecovery
 setSFXOccupy
 Death
 */
+
 AimRunControl()
 {
 signal SIG_AIMRUN;
 set-signal-mask SIG_AIMRUN;
 signal SIG_RUN;
-	while(1)
+while(1)
 	{
+		if (bAiming > 0) bAiming = (bAiming - 1);
 		if (bMoving == 0)
 		{
-	  	//iState=2; //standing at attention
-		call-script Stand();
-		//start-script TenseIdle();
-		}	
-	  
+		start-script Stand();
+		sleep 200;
+		//call-script StandingIdle();
+		}	  
+		
 		if (bMoving == 1)
 		{
-		iState=5; //aiming & running
 		set MAX_SPEED to (UNIT_SPEED/AIM_SLOWDOWN_FACTOR);
-		call-script AimRun(); //this has a sleep at the end of it, so theoretically no lockups
-		}
+		call-script AimRun();
+		}		
 	}
 }
 
@@ -69,26 +70,28 @@ Death
 */
 CrawlControl()
 {
-signal SIG_RUN;
-signal SIG_AIMRUN;
 signal SIG_CRAWL;
 set-signal-mask SIG_CRAWL;
+signal SIG_RUN;
+signal SIG_AIMRUN;
+//get PRINT(333, iState, bMoving, bAiming);
 var pickSide;
 pickSide = rand(1,2);
 	while(1)
 	{
-		if (iFear > PinnedLevel && iState !=9 )	start-script PinnedControl();
-
+		if (iFear > PinnedLevel && iState !=9)	start-script PinnedControl();
 		if (iState == 9) signal SIG_CRAWL;
-		
+		if (bAiming > 0) bAiming = (bAiming - 1);
 		if (bMoving == 0)
 		{
 	  	call-script Prone(pickSide);
+		//get PRINT(111, iState, bMoving, bAiming);
 		}
 		
 		if (bMoving == 1)
 		{
-		iState=8; //crawling
+		//iState=8; //crawling
+		//get PRINT(222, iState, bMoving, bAiming);
 		call-script Crawl(); //this has a sleep at the end of it, so theoretically no lockups
 		}
 	}
@@ -105,24 +108,44 @@ Death
 */
 RunControl() 
 {
-	signal SIG_AIMRUN;
 	signal SIG_RUN;
 	set-signal-mask SIG_RUN;
+	signal SIG_CRAWL;
+
+	signal SIG_AIMRUN;
 	start-script WeaponReady();
+	var pickStance;
+	pickStance = rand(1,StanceNumber);
 	while(1)
 	{
-		if (bEngaged) start-script AimRunControl();
-		
+		#ifndef OnlyProneFire
+			#ifndef NoAimRun
+		if (bAiming > 0) 
+		{
+		start-script AimRunControl();
+		return 0;
+		}
+			#endif
+		#endif
+		#ifdef OnlyProneFire
+		if (bAiming > 0) 
+		{
+		start-script CrawlControl();
+		return 0;
+		}
+		#endif
 		if (bMoving == 0)
 		{
-	  	iState=1; //standing at attention
-		call-script Stand();
+	  	iState=1;
+		start-script Stand(pickStance);
+		sleep 200;
+		//call-script StandingIdle();
 		}
 		
 		if (bMoving == 1)
 		{
-		iState=4; //just running
-		call-script Run();//this has a sleep at the end of it, so theoretically no lockups
+		iState=4; 
+		call-script Run();
 		}
 	}
 }

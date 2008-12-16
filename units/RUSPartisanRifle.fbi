@@ -54,13 +54,11 @@
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=180;
-	weapon2=rusflagkiller;
-	onlytargetcategory2=FLAG;
-
-	weapon3=molotov;
-	onlytargetcategory3=TANK BUILDING;
-	weaponmaindir3= 0 0 1;
-	maxangledif3=180;
+	
+	weapon2=molotov;
+	//onlytargetcategory2=TANK BUILDING;
+	weaponmaindir2= 0 0 1;
+	maxangledif2=180;
 
 	[sfxtypes]
 	{

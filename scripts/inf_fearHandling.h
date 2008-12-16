@@ -19,9 +19,6 @@ RestoreFromPinned()
 
 TakeCover() //get down!
 {
-	signal SIG_AIMRUN;
-	signal SIG_RUN;
-	signal SIG_RESTOREFROMCRAWL;
 	SET MAX_SPEED to (UNIT_SPEED/CRAWL_SLOWDOWN_FACTOR);
 	SET ARMORED to TRUE;
 	iState=6;
@@ -86,8 +83,7 @@ TakeCover() //get down!
 	var pickSide;
 	pickSide = rand(1,2);
 	call-script Prone(pickSide);
-	start-script CrawlControl();
-	return(0);
+	return(1);
 }
 
 
@@ -104,6 +100,7 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 //	{	
 	signal SIG_CRAWL;
 	signal SIG_PINNEDCTRL;
+	signal SIG_IDLE;
 	signal SIG_RESTOREFROMCRAWL;
 	set-signal-mask SIG_RESTOREFROMCRAWL;
 	set MAX_SPEED to [0.0000001];
@@ -176,6 +173,7 @@ FearRecovery()
 { 
 	signal SIG_AIMRUN;
 	signal SIG_RUN;	
+	signal SIG_IDLE;
 	signal SIG_FEARRECOVERY;
 	set-signal-mask SIG_FEARRECOVERY;
      while(iFear > 0) 
@@ -206,22 +204,41 @@ For the specific fear values that each fear class (LittleFear, MedFear, BigFear,
 */
 HitByWeaponId(z,x,id,damage)
 {	
-	if (Id<=300 || Id>700) return 100;
+	if (Id<=300 || Id>700)
+	{
+	iFear= iFear + 1;
+		if (iState < 6) 
+		{
+		signal SIG_AIMRUN;
+		signal SIG_RUN;
+		signal SIG_RESTOREFROMCRAWL;
+		signal SIG_CRAWL;
+		signal SIG_IDLE;
+		call-script TakeCover();
+		//sleep initialDelay;
+		start-script CrawlControl();
+		start-script FearRecovery();
+		}
+	return 100;
+	}
 	
-	if (Id==301) 
-		iFear = iFear + LittleFear;
-	if (Id==401) 
-		iFear = iFear + MedFear;
-	if (Id==501) 
-		iFear = iFear + BigFear;
-	if (Id==601)
-		iFear = iFear + MortalFear;
-
-	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing fear var
-		
-	if (iState < 6) start-script TakeCover();
+	if (Id==301) iFear = iFear + LittleFear;
+	if (Id==401) iFear = iFear + MedFear;
+	if (Id==501) iFear = iFear + BigFear;
+	if (Id==601) iFear = iFear + MortalFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing fear var		
+	if (iState < 6)
+	{
+	signal SIG_AIMRUN;
+	signal SIG_RUN;
+	signal SIG_RESTOREFROMCRAWL;
+	signal SIG_CRAWL;
+	signal SIG_IDLE;
+	call-script TakeCover();
+	//sleep initialDelay;
+	start-script CrawlControl();
+	}
 	start-script FearRecovery();
-	
 	return (0); 
 }
 //lets Lua suppression notification see what fear is at

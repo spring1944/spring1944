@@ -4,6 +4,7 @@
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
 #define PinnedLevel	15 //fear level where they stop shooting and freeze on the ground
 #define RecoverRate	1000 //how often RecoverConstant is subtracted from total fear level
+#define initialDelay	5000 //the amount that they stay on the ground, regardless of fear level, upon first being hit
 
 //various levels of fear added when these weapons hit
 #define LittleFear	3 //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm

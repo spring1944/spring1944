@@ -59,8 +59,6 @@
 	onlytargetcategory2=NFLAGNAIR;
 	weaponmaindir2= 0 0 1;
 	maxangledif2=170;
-	weapon3=GERflagkiller;
-	onlytargetcategory3=FLAG;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

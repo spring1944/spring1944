@@ -28,15 +28,14 @@
 	avoidfriendly=0;
 	collidefriendly=0;
 
-	color=255;
-	rgbcolor=0 0.7 0;
+	rgbcolor=0.3 0.75 0.4;
 
 	beamweapon=1;
-	thickness=0.4;
-	duration=0.01;
-	intensity=0.7;
+	thickness=0.2;
+	duration=0.02;
+	intensity=0.8;
 
-	corethickness=0.15;
+	corethickness=0.75;
 	laserflaresize=0.0001;
 
 	collisionsize=2.5;
