@@ -45,7 +45,7 @@ function gadget:Explosion(weaponId, px, py, pz, ownerId)
 		for i = 1, #unitsAtSpot do
 			local unitId = unitsAtSpot[i]
 			local fearTarget = UnitDefs[GetUnitDefID(unitId)].customParams.feartarget
-			if fearTarget then
+			if fearTarget and unitId ~= ownerId then
 				Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
 			end
 		end
