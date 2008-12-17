@@ -32,7 +32,7 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 #define RestoreDelay			5000
 #define UNIT_SPEED				[0.8]
 #define StanceNumber			3 //number of WeaponReady stances
-#define BurstRate				50 //marginally less than the actual so there's visible movement
+#define BurstRate				80 //marginally less than the actual so there's visible movement
 
 /* --Var defs:
 -----Boolean

@@ -29,7 +29,7 @@ AimWeapon1(heading, pitch)
 	{
 	pickPose = rand(1,1);
 	}
-	bAiming=10;
+	bAiming=5;
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
 	signal SIG_IDLE;
