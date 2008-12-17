@@ -47,6 +47,15 @@ end
 		end
 	end
 	
+	if (modOptions.unit_speed_mult) then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.maxvelocity) then
+			ud.maxvelocity = (modOptions.unit_speed_mult * ud.maxvelocity)
+			ud.acceleration = (modOptions.unit_speed_mult * ud.acceleration)
+			end
+		end
+	end
+	
 	if (modOptions.unit_metal_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.extractsmetal) then

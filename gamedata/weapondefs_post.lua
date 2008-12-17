@@ -211,8 +211,14 @@ if (modOptions) then
 		local curReload = WeaponDefs[name].reloadtime
 		local rendertype = WeaponDefs[name].rendertype
 		local explosiongenerator = WeaponDefs[name].explosiongenerator
-		if (curReload) and (rendertype ~= 0) and (explosiongenerator ~= 'custom:nothing;') then
+		if (curReload) then
 			WeaponDefs[name].reloadtime = curReload * reloadCoeff
+			if (WeaponDefs[name].sprayangle) then
+				WeaponDefs[name].sprayangle	= (WeaponDefs[name].sprayangle/reloadCoeff)
+			end
+			if (WeaponDefs[name].accuracy) then
+				WeaponDefs[name].accuracy = (WeaponDefs[name].accuracy/reloadCoeff)
+			end
 			totalWeapons = totalWeapons + 1
 		end
 	end

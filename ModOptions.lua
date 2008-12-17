@@ -51,8 +51,17 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
-  },
-  
+  },  
+  {
+    key    = 'unit_speed_mult',
+    name   = 'Unit speed multiplier',
+    desc   = 'Applies a multiplier to all the unit speeds and acceleration values ingame',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.1,
+  },  
   {
     key    = 'unit_metal_mult',
     name   = 'Metal extraction multiplier',
