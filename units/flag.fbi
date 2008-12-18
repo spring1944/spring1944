@@ -37,7 +37,7 @@
 	maxwaterdepth=255;
 
 	explodeas=Flag;
-	selfdestructas=Flag;
+	canselfdestruct=0;
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;

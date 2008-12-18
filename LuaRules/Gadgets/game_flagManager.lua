@@ -27,6 +27,7 @@ local TransferUnit					= Spring.TransferUnit
 local GiveOrderToUnit				= Spring.GiveOrderToUnit
 local CallCOBScript					= Spring.CallCOBScript
 local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local SetUnitNoSelect				= Spring.SetUnitNoSelect
 
 -- constants
 local GAIA_TEAM_ID					= Spring.GetGaiaTeamID()
@@ -67,6 +68,7 @@ function PlaceFlag(spot)
 	end
 	SetUnitNeutral(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
+	SetUnitNoSelect(newFlag, true)
 	table.insert(flags, newFlag)
 end
 
