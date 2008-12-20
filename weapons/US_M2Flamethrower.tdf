@@ -17,7 +17,7 @@
 	sprayangle=1024;
 	weaponvelocity=140;
 	areaofeffect=80;
-	explosionspeed=0.0001;
+	explosionspeed=0.01;
 	edgeeffectiveness=0.25;
 	weapontimer=2;
 	groundbounce=0;

@@ -176,6 +176,7 @@ FearRecovery()
 	signal SIG_IDLE;
 	signal SIG_FEARRECOVERY;
 	set-signal-mask SIG_FEARRECOVERY;
+	sleep initialDelay;
      while(iFear > 0) 
         { 
 			if (iFear < PinnedLevel && iState == 9)
@@ -206,7 +207,7 @@ HitByWeaponId(z,x,id,damage)
 {	
 	if (Id<=300 || Id>700)
 	{
-	iFear= iFear + 1;
+	iFear = iFear + 1;
 		if (iState < 6) 
 		{
 		signal SIG_AIMRUN;
@@ -215,10 +216,10 @@ HitByWeaponId(z,x,id,damage)
 		signal SIG_CRAWL;
 		signal SIG_IDLE;
 		call-script TakeCover();
-		//sleep initialDelay;
 		start-script CrawlControl();
-		start-script FearRecovery();
+		//sleep initialDelay;
 		}
+	start-script FearRecovery();
 	return 100;
 	}
 	
@@ -235,8 +236,8 @@ HitByWeaponId(z,x,id,damage)
 	signal SIG_CRAWL;
 	signal SIG_IDLE;
 	call-script TakeCover();
-	//sleep initialDelay;
 	start-script CrawlControl();
+	//sleep initialDelay;
 	}
 	start-script FearRecovery();
 	return (0); 

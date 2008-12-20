@@ -327,7 +327,7 @@
 
 [buildline]
 {
-	id=200;
+	id=650;
 	name=build line effect;
 	rendertype=0;
 	turret=1;

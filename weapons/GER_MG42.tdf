@@ -17,14 +17,14 @@
 	accuracy=100;
 	areaofeffect=1;
 	movingaccuracy=7111;
-	collisionsize=2;
+	collisionsize=1.5;
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
 	explosiongenerator=custom:BulletImpact;
 	soundtrigger=1;
 	soundstart=GER_MG42;
-
+	impactonly=1;
 	avoidfeature=0;
 	collidefeature=0;
 	avoidfriendly=0;

@@ -67,12 +67,12 @@
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
+		explosiongenerator1=custom:Weapon_Explosion_Medium;
+		explosiongenerator2=custom:AP_Impact_Large;
+		explosiongenerator3=custom:FANNY;
+		explosiongenerator4=custom:ROME;
+		explosiongenerator5=custom:DIRTEXPL;
+		explosiongenerator6=custom:KLARA;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
 		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
 		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;

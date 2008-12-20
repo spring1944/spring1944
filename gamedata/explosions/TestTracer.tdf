@@ -60,3 +60,20 @@
 	count=1;
 	}
 }
+
+[TracerLightSmall]
+{
+usedefaultexplosions=0;	
+[groundflash]
+   	{
+      	flashSize = 10;
+      	flashAlpha = 0.8;
+      	circleGrowth = 0;
+      	circleAlpha = 0;
+      	ttl = 2;
+      	color = 1, 0.75, 0;
+		air=1;
+     	ground=1;
+      	water=1;
+	}
+}

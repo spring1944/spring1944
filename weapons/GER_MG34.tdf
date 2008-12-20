@@ -29,9 +29,10 @@
 	
 	soundtrigger=1;
 	soundstart=GER_MG34;
-
+	
 	rgbcolor=1 0.75 0;
-	collisionsize=2.5;
+	impactonly=1;
+	collisionsize=1.5;
 	size=0.0000000000001;
 
 	[damage]

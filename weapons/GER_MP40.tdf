@@ -21,7 +21,9 @@
 	weaponvelocity=1500;
 	areaofeffect=1;
 	weapontimer=1;
-
+	
+	cegTag=TracerLightSmall;
+	
 	soundtrigger=1;
 	soundstart=GER_MP40;
 
@@ -35,14 +37,15 @@
 	rgbcolor=1 0.75 0;
 
 	beamweapon=1;
-	thickness=0.4;
-	duration=0.01;
-	intensity=0.7;
+	thickness=0.25;
+	duration=0.005;
+	intensity=0.9;
 
-	corethickness=0.15;
+	corethickness=0.65;
 	laserflaresize=0.0001;
 
-	collisionsize=2.5;
+	collisionsize=1.5;
+	impactonly=1;
 
 	[damage]
 	{
