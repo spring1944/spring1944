@@ -22,7 +22,7 @@
 	areaofeffect=1;
 	weapontimer=1;
 	
-	cegTag=TracerLightSmall;
+	//cegTag=TracerLightSmall;
 	
 	soundtrigger=1;
 	soundstart=GER_MP40;

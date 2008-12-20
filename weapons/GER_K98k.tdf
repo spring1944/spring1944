@@ -28,7 +28,7 @@
 	collidefriendly=0;
 
 	rgbcolor=1 0.75 0;
-	cegTag=TracerLightSmall;
+	//cegTag=TracerLightSmall;
 	beamweapon=1;
 	
 	thickness=0.25;

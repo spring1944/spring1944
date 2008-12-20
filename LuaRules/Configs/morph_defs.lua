@@ -382,6 +382,25 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+  
+  --regular trucks and tiny supplies
+    geropelblitz =
+  {
+    into = 'gerresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+	gerresource =
+  {
+    into = 'geropelblitz',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
 }
 --
 -- Here's an example of why active configuration

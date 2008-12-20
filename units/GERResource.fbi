@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=GerResource;
-	objectname=LogisticsMed.S3O;
+	objectname=LogisticsSmall.S3O;
 	buildpic=LogisticsSmall.png;
 	corpse=Debris_Small;
 	icontype=ammo;
@@ -38,7 +38,7 @@
 	buildinggrounddecalsizex=4;
 	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
-	weapon1=medsupply;
+	//weapon1=medsupply;
 	explodeas=ResourceBoom;
 	selfdestructas=Med_Explosion;
 
@@ -51,6 +51,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=300;
+		supplyRange=150;
 	}
 }

@@ -22,7 +22,7 @@
 
 	soundstart=GER_50mm;
 	soundhit=GEN_Explo_2;
-	cegTag=TestTrail;
+	//cegTag=TestTrail;
 	noselfdamage=1;
 
 	rgbcolor=.5 .5 0;

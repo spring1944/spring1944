@@ -13,23 +13,23 @@
 		gravity=0, 0, 0;
 		
 
-		Texture=HEShellMED;
+		Texture=GenericSmokeCloud;
 		airdrag=0.8;
 		colorMap=1.0 0.8 0.5 0.1 0.15 0.15 0.15 0.2 0.0 0.0 0.0 0.01;
 
-		particleLifeSpread=15; 
+		particleLifeSpread=150; 
 		particleSpeedSpread=1;  
 		particleSizeSpread=1;   
 		
 		particleLife=25;
-		numParticles=2; 
+		numParticles=20; 
 		particleSpeed=1; 
 		particleSize=8;
 		
 		
 		emitVector=0, 0, 0; 
 		emitRot=80;
-		emitRotSpread=5; 
+		emitRotSpread=50; 
 		directional=0; 
 
 		}
@@ -50,23 +50,23 @@
 		gravity=0, 0, 0;
 		
 
-		Texture=HEShellMED;
+		Texture=GenericSmokeCloud;
 		airdrag=0.8;
 		colorMap=1.0 0.7 0.4 0.1 0.1 0.1 0.1 0.2 0.0 0.0 0.0 0.01;
 
-		particleLifeSpread=15; 
+		particleLifeSpread=150; 
 		particleSpeedSpread=100;  
 		particleSizeSpread=10;   
 		
 		particleLife=50;
-		numParticles=2; 
+		numParticles=20; 
 		particleSpeed=1; 
 		particleSize=8;
 		
 		
 		emitVector=0, 0, 0; 
 		emitRot=80;
-		emitRotSpread=5; 
+		emitRotSpread=50; 
 		directional=0; 
 
 		}
