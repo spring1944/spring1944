@@ -1,371 +1,197 @@
-#define TAK			// This is a TAK script
+#define TAK //this is a TAK script
 
-#include "STANDARD_COMMANDS_GPL.h"
+#include "constants.h"
 
 piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
+		
 
-static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
- nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, HipAim;
+//signals to handle control of..everything
+#define SIG_RUN					8
+#define SIG_AIMRUN				16
+#define SIG_CRAWL				32
+#define SIG_AIM1				64
+#define SIG_AIM2				128 //no inf has more than 2 weapons except commando, something of a special exception
+#define SIG_PINNEDCTRL			256
+#define SIG_FEARRECOVERY		512
+#define SIG_RESTOREFROMCRAWL	1024
+#define SIG_IDLE				2048
 
-#define SIG_AIM            2
+/*
+Defs that are shared among inf
+the numbers that control pinned levels, how scary various weapons are, ect.
+*/
+#include "inf_sharedDefs.h"
 
-#define placeholder_EFFECT01 1024+1
-#define placeholder_EFFECT02 1024+2
-#define placeholder_EFFECT03 1024+3
-#define placeholder_EFFECT04 1024+4
-#define placeholder_EFFECT05 1024+5
-#define placeholder_EFFECT06 1024+6
-#define RIFLE_MUZZLEFLASH 1024+7
+//individual unit definitions
+#define RIFLE
+#define WEAPON_GRENADE
+#define FLAGKILLER
+#define GUN_QUERY_PIECENUM		flare
+#define IdleDelay				10000
+#define RestoreDelay			5000
+#define StanceNumber			3 //number of WeaponReady stances
+#define BurstRate				80 //marginally less than the actual so there's visible movement
 
-#include "Inf_suppressionvars.h"
+/* --Var defs:
+-----Boolean
+---
+bAiming - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
+	Controls: timing of idle animations, the usage of AimRunControl over RunControl
+	Set by: Aimweapon, unset over time by AimRunControl and StartMoving/StopMoving
+---
+bNading - is the unit currently in the process of throwing a grenade?
+	Controls: locks out weaponready, and X
+	Set by: fireweapon of the nade script, unset by same at the end
+---
+bMoving - is the unit currently moving? 
+	Controls: various animations.
+	Set by: StartMoving, unset by StopMoving
+---
+-----Integer
+---
+iState - what the unit is currently doing //todo: add states for being in a transport, update killed and aimweapon accordingly
+	Controls: which aiming anim to use, among others.
+	 Set by: everything that changes the state of the unit. *Control, HitbyWeapon, RestoreFromCrawl, ect
+	  Values:
+		standing idle - 0
+		standing at attention - 1
+		standing aiming rifle/SMG - 2
+		kneeling aiming rifle/SMG - 3
+		-		
+		running - 4
+		running aiming - 5
+		-
+		prone 'idle' - 6
+		prone aiming - 7
+		crawling - 8
+		-
+		pinned - 9 
+---
+iFear - how 'afraid' unit currently is. 
+	Controls: if unit is crawling/prone or standing.
+	Controls: pinned status.
+	 Set by: increased by HitbyWeapon on impact of suitable weapon, decreased by FearRecovery
+	  Values: 0-20
+	  iFear = 0-14 = prone/crawling
+	  iFear >= 15 = pinned, unable to fire or crawl.
+---
+	
+*/
+#ifndef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, iSpeed;
+#endif
+#ifdef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
+#endif
 
+//FX definitions
+	//frivolous
+#define BLOOD_SM 1024+1
+#define BLOOD_LG 1024+2
+#define CLIP 1024+3
+#define SHELL 1024+4
+#define PISS 1024+5
+#define CIG 1024+6
+#define MUZZLEFLASH 1024+7
+//end FX
 
-//movement check for anims
-#include "Inf_movecheck.h"
+//aiming poses
+#include "inf_poses.h"
 
-#include "Inf_pin_unpin.h"
+//weapon ready - split out so I can easily update the number of poses
+#include "inf_weaponReady.h"
 
+//Idle animations.
+#include "inf_idleAnims.h"
 
-WeaponReady() //attentshaun!
+//All of the animations concerning movement - running, aimrunning, crawling, standing, going prone.
+#include "inf_movementAnims.h"
+		
+
+//All the loops that handle the animations and state changes concerning movement.
+#include "inf_movementControls.h"
+
+//Fead handling (HitByWeapon, FearRecovery, TakeCover, PinnedControl, Pinned, RestoreAfterCover)
+#include "inf_fearHandling.h"
+
+//transport state handling
+#include "inf_transportHandling.h"
+
+StartMoving()
 {
-	while (nade_active == 1)
-	{
-	sleep 10000;
-	}
-	
-	if (hipaim==1) return (1);
-	
-	show gun;
-	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
-    turn ruparm to x-axis <-60> speed <40>*RUN_SPEED;
-    turn ruparm to y-axis <0> speed <40>*RUN_SPEED;
-    turn ruparm to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn rloarm to x-axis <-30> speed <100>*RUN_SPEED;
-	turn rloarm to y-axis <20> speed <100>*RUN_SPEED;
-	turn rloarm to z-axis <-50> speed <100>;
-    
-	turn luparm to x-axis <-10> speed <40>*RUN_SPEED;
-	turn luparm to y-axis <0> speed <40>*RUN_SPEED;
-	turn luparm to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn lloarm to x-axis <-85> speed <100>*RUN_SPEED;
-	turn lloarm to y-axis <0> speed <100>*RUN_SPEED;
-	turn lloarm to z-axis <0> speed <100>*RUN_SPEED;
-    
-	turn gun to x-axis <0.000000> speed <100>*RUN_SPEED;
-	turn gun to y-axis <0.000000> speed <100>*RUN_SPEED;
-	turn gun to z-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head to y-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head to x-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head to z-axis <0.000000> speed <100>*RUN_SPEED;
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 1;
 }
 
-#include "Inf_MovingAimPose_run.h"
-
-#include "Inf_takecover.h"
-
-#include "Inf_hitbyweapon.h"
-
-#include "Inf_movecontrol.h"
+StopMoving()
+{
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 0;
+}
 
 Create()
 {
-	nade_active=0;
+	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
+	bMoving = 0;
+	bAiming = 0;
+	#ifdef WEAPON_GRENADE
+	bNading = 0;
+	#endif
+	iState = 1;
+	iFear = 0;
+	iSpeed = GET MAX_SPEED;
 	start-script WeaponReady();
-	start-script Run();
-	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
-	move ground to y-axis -0.5 speed <100>;
-	nade_speed = 4;
-	WALK_SPEED = rand(9,11);
-	prone_speed = rand(3,5);
-	DEATH_SPEED=10;
-	IsProne=0;
-	IsPinned=0;
-	hide flare;
-	InAimStance=0;
+	start-script RunControl();
 }
 
-StartBuilding(heading,pitch)
+RestoreAfterDelay()
 {
-set INBUILDSTANCE to 1;
-}
-
-StopBuilding()
-{
-set INBUILDSTANCE to 0;
-}
-
-QueryNanoPiece(piecenum)
-{
-	piecenum = head;
-}
-
-
-SweetSpot(piecenum)
-{
-	piecenum = torso;
-}
-
-
-AimFromWeapon1(piecenum)
-{
-	piecenum = head;
-}
-
-QueryWeapon1(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon1(heading, pitch)
-{
-	signal 2;
-	set-signal-mask 2;
-	bAiming=1;
-		if (IsPinned==1) return 0;
-	show gun;
-	if (nade_active == 1)
-	{
-		sleep 7500; 
-		return (0);
-	}
-	
-	
-	if (IsProne==1 && fear < PinnedLevel)
-	{
-		turn torso to y-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm to x-axis <-85> - pitch speed <120>*PRONE_SPEED;
-		turn luparm to x-axis <-140> - pitch speed <100>*PRONE_SPEED;
-		turn pelvis to y-axis heading speed <30>*PRONE_SPEED;
-		wait-for-turn pelvis around y-axis;
-	bAiming=0;
-	return (1);
-	}
-	
-	if (IsProne==0)
-	{	
-	
-	if (bMoving==1)
-	{
-	HipAim=1;	
-	turn torso to x-axis <0> - pitch speed <300>;
-	turn torso to y-axis heading speed <300>;
-	//turn pelvis to y-axis heading speed <300>;
-	turn ruparm to x-axis <20.000000> speed <300.000000>;
-	turn ruparm to y-axis <30.500000> speed <300.000000>;
-	turn ruparm to z-axis <0.000000> speed <300.000000>;
-	
-	turn rloarm to x-axis <-150.000000> speed <300.000000>;
-	turn rloarm to y-axis <0.000000> speed <1000.000000>;
-	turn rloarm to z-axis <0.000000> speed <1000.000000>;
-	
-	turn gun to x-axis <40.000000> speed <300.000000>;
-	turn gun to y-axis <0> speed <300>;
-	turn gun to z-axis <30> speed <300>;
-	
-	turn luparm to x-axis <-70.000000> speed <300.000000>;
-	turn luparm to y-axis <-35.000000> speed <300.000000>;
-	turn luparm to z-axis <0> speed <300>;
-	
-	turn lloarm to x-axis <-35.000000> speed <300.000000>;
-	turn lloarm to y-axis <0.000000> speed <300.000000>;
-	turn lloarm to z-axis <0> speed <300>;
-	
-	turn head to x-axis <20> speed <100>;
-	turn head to y-axis <0> speed <100>;
-	turn head to z-axis <-30> speed <100>;
-	
-	wait-for-turn ruparm around x-axis;
-	wait-for-turn ruparm around y-axis;
-	wait-for-turn ruparm around z-axis;
-	
-	
-	wait-for-turn rloarm around x-axis;
-	wait-for-turn rloarm around y-axis;
-	wait-for-turn rloarm around z-axis;
-	
-	wait-for-turn gun around x-axis;
-	wait-for-turn gun around z-axis;
-	
-	wait-for-turn luparm around x-axis;
-	wait-for-turn luparm around y-axis;
-	wait-for-turn luparm around z-axis;
-	
-	wait-for-turn lloarm around x-axis;
-	wait-for-turn lloarm around y-axis;
-	wait-for-turn lloarm around z-axis;
-	wait-for-move pelvis along y-axis;
-		
-	wait-for-turn head around x-axis;
-	wait-for-turn head around z-axis;
-	wait-for-turn pelvis around y-axis;
-	wait-for-turn torso around x-axis;
-	wait-for-turn torso around y-axis;
-	bAiming=0;
-		return (1);
-	} 
-	
-		if (bMoving==0)
+	sleep RestoreDelay;
+//	bAiming=0;	
+	if (iFear > 0) start-script CrawlControl();
+	if (iFear <= 0)
 		{
-			turn torso to x-axis <0> - pitch speed <300>;
-	turn torso to y-axis heading speed <300>;
-	//turn pelvis to y-axis heading speed <300>;
-	turn ruparm to x-axis <20.000000> speed <300.000000>;
-	turn ruparm to y-axis <30.500000> speed <300.000000>;
-	turn ruparm to z-axis <0.000000> speed <300.000000>;
-	
-	turn rloarm to x-axis <-150.000000> speed <300.000000>;
-	turn rloarm to y-axis <0.000000> speed <1000.000000>;
-	turn rloarm to z-axis <0.000000> speed <1000.000000>;
-	
-	turn gun to x-axis <40.000000> speed <300.000000>;
-	turn gun to y-axis <0> speed <300>;
-	turn gun to z-axis <30> speed <300>;
-	
-	turn luparm to x-axis <-70.000000> speed <300.000000>;
-	turn luparm to y-axis <-35.000000> speed <300.000000>;
-	turn luparm to z-axis <0> speed <300>;
-	
-	turn lloarm to x-axis <-35.000000> speed <300.000000>;
-	turn lloarm to y-axis <0.000000> speed <300.000000>;
-	turn lloarm to z-axis <0> speed <300>;
-	
-	turn head to x-axis <20> speed <100>;
-	turn head to y-axis <0> speed <100>;
-	turn head to z-axis <-30> speed <100>;
-	
-	wait-for-turn ruparm around x-axis;
-	wait-for-turn ruparm around y-axis;
-	wait-for-turn ruparm around z-axis;
-	
-	
-	wait-for-turn rloarm around x-axis;
-	wait-for-turn rloarm around y-axis;
-	wait-for-turn rloarm around z-axis;
-	
-	wait-for-turn gun around x-axis;
-	wait-for-turn gun around z-axis;
-	
-	wait-for-turn luparm around x-axis;
-	wait-for-turn luparm around y-axis;
-	wait-for-turn luparm around z-axis;
-	
-	wait-for-turn lloarm around x-axis;
-	wait-for-turn lloarm around y-axis;
-	wait-for-turn lloarm around z-axis;
-	wait-for-move pelvis along y-axis;
-		
-	wait-for-turn head around x-axis;
-	wait-for-turn head around z-axis;
-	wait-for-turn pelvis around y-axis;
-	wait-for-turn torso around x-axis;
-	wait-for-turn torso around y-axis;
-	bAiming=0;
-		return (1);
-	} 
-	}
-	
-	return (0);
+		start-script RunControl();
+		}
 }
 
-FireWeapon1()
-{
-	
-	if (IsProne==1)
-	{
-		turn ruparm to x-axis <-95> speed <700>;
-		turn luparm to x-axis <-150> speed <700>;
-		emit-sfx RIFLE_MUZZLEFLASH from flare;
-		sleep 20;
-		turn ruparm to x-axis <-85> speed <200>;
-		turn luparm to x-axis <-140> speed <200>;
-		return (1);
-	}
-	if (IsProne==0)
-	{
-		turn ruparm to x-axis <15> speed <700>;
-		turn luparm to x-axis <-75> speed <700>;
-	emit-sfx RIFLE_MUZZLEFLASH from flare;
-		sleep 20;
-		turn ruparm to x-axis <20> speed <200>;
-		turn luparm to x-axis <-70> speed <200>;
-		sleep 50;
-		return (1);
-	}
-	
-	return (0);
+//start weapons
+/*
+Primary weapon. 
+States: crawling/prone, running.
+Killed by:
+Grenade aiming
+PinnedControl
+*/
 
-}
+#ifdef RIFLE
+#include "inf_weaponRifle.h"
+#endif
+#ifdef SMG
+#include "inf_weaponSMG.h"
+#endif
+#ifdef MG
+#include "inf_weaponMG.h"
+#endif
+#ifdef ATROCKET
+#include "inf_weaponATRocket.h"
+#endif
+#ifdef SNIPER
+#include "inf_weaponSniper.h"
+#endif
+#ifdef SCOUT
+#include "inf_weaponScout.h"
+#endif
+#ifdef ATRIFLE
+#include "inf_weaponATRifle.h"
+#endif
 
-AimFromWeapon2(piecenum)
-{
-	piecenum = torso;
-}
+//Grenade is always weapon 2
+#ifdef WEAPON_GRENADE
+#include "inf_weaponGrenade.h"
+#endif
 
-QueryWeapon2(piecenum)
-{
-	piecenum = gun;
-}
-
-AimWeapon2(heading, pitch)
-{
-	signal 4;
-	set-signal-mask 4;
-	if (bMoving) return 0;
-	turn pelvis to y-axis heading - <30> now;
-	return (1);
-}
-
-#include "Inf_grenade.h"
-
-FireWeapon2(heading) //grenaaaaade!
-{
-	if (IsProne==0)
-	{
-	nade_active = 1;
-	start-script NadeAnim();
-	nade_active = 0;
-	call-script WeaponReady();
-	}
-	if (IsProne==1)
-	{
-	nade_active=1;
-	turn luparm to x-axis <0> speed <100>*NADE_SPEED;
-	turn luparm to y-axis <80> speed <100>*NADE_SPEED;
-	turn luparm to z-axis <0> speed <100>*NADE_SPEED;
-	wait-for-turn luparm around x-axis;
-	turn luparm to x-axis <-160> speed<200>*NADE_SPEED;
-	
-	wait-for-turn luparm around x-axis;
-		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
-	nade_active=0;
-	return (1);
-	}
-	return (0);
-}
-
-AimFromWeapon3(piecenum) //flag killing weapon
-{
-	piecenum = head;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = head;
-}
-
-AimWeapon3(heading, pitch)
-{
-	return (1);
-}
-
-FireWeapon3()//
-{
-	return (0);
-}
-
-#include "Inf_death.h"
+#include "inf_Death.h"

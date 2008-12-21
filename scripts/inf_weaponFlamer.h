@@ -33,7 +33,7 @@ AimWeapon1(heading, pitch)
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
 	signal SIG_IDLE;
-	if (iState == 9 || bNading == 1) return 0; //if the unit is pinned, we don't even bother aiming or calling the control loop
+	if (iState == 9) return 0; //if the unit is pinned, we don't even bother aiming or calling the control loop
 	show gun;
 	if (iState >= 6)
 	{
@@ -360,7 +360,6 @@ AimWeapon1(heading, pitch)
 }
 
 #define SHOT_ANIM_STANDING\
-		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
 		turn ruparm to x-axis <-40> now;\
 		turn luparm to x-axis <-70> now;\
 		sleep (BurstRate/2);\
@@ -369,7 +368,6 @@ AimWeapon1(heading, pitch)
 		sleep (BurstRate/2);
 		
 #define SHOT_ANIM_KNEELING\
-		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
 		turn ruparm to x-axis <-4> now;\
 		turn luparm to x-axis <-85> now;\
 		sleep (BurstRate/2);\
@@ -378,7 +376,6 @@ AimWeapon1(heading, pitch)
 		sleep (BurstRate/2);
 		
 #define SHOT_ANIM_RUNNING\
-		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
 		turn ruparm to x-axis <47.5> now;\
 		turn rloarm to x-axis <-125> now;\
 		turn luparm to x-axis <-62.5> now;\
@@ -391,7 +388,6 @@ AimWeapon1(heading, pitch)
 		sleep (BurstRate/2);
 		
 #define SHOT_ANIM_PRONE\
-		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
 		turn ruparm to x-axis <-95> now;\
 		turn luparm to x-axis <-150> now;\
 		sleep (BurstRate/2);\
@@ -401,16 +397,14 @@ AimWeapon1(heading, pitch)
 		
 FireWeapon1()
 {
-	if (iState==2)
+	/*if (iState==2)
 		{
 		SHOT_ANIM_STANDING
 		SHOT_ANIM_STANDING
 		SHOT_ANIM_STANDING
-		#ifndef BAR
 		SHOT_ANIM_STANDING
 		SHOT_ANIM_STANDING
 		SHOT_ANIM_STANDING
-		#endif
 		}
 		
 	if (iState==3)
@@ -418,11 +412,9 @@ FireWeapon1()
 		SHOT_ANIM_KNEELING
 		SHOT_ANIM_KNEELING
 		SHOT_ANIM_KNEELING
-		#ifndef BAR
 		SHOT_ANIM_KNEELING
 		SHOT_ANIM_KNEELING
 		SHOT_ANIM_KNEELING
-		#endif
 		}
 		
 	if (iState==5)
@@ -430,11 +422,9 @@ FireWeapon1()
 		SHOT_ANIM_RUNNING
 		SHOT_ANIM_RUNNING
 		SHOT_ANIM_RUNNING
-		#ifndef BAR
 		SHOT_ANIM_RUNNING
 		SHOT_ANIM_RUNNING
 		SHOT_ANIM_RUNNING
-		#endif
 		}
 		
 	if (iState==7)
@@ -442,11 +432,9 @@ FireWeapon1()
 		SHOT_ANIM_PRONE
 		SHOT_ANIM_PRONE
 		SHOT_ANIM_PRONE
-		#ifndef BAR
 		SHOT_ANIM_PRONE
 		SHOT_ANIM_PRONE
 		SHOT_ANIM_PRONE
-		#endif
-		}
+		}*/
 	return (0);
 }

@@ -37,7 +37,7 @@ while(1)
 		
 		if (bMoving == 1)
 		{
-		set MAX_SPEED to (UNIT_SPEED/AIM_SLOWDOWN_FACTOR);
+		set MAX_SPEED to (iSpeed/AIM_SLOWDOWN_FACTOR);
 		call-script AimRun();
 		}		
 	}
@@ -50,7 +50,7 @@ PinnedControl() //hit the dirt and kiss your ass goodbye...
 	set-signal-mask SIG_PINNEDCTRL;
 	signal SIG_AIM1;
 	signal SIG_CRAWL;
-	set MAX_SPEED to (UNIT_SPEED/4000);
+	set MAX_SPEED to (iSpeed/4000);
 	iState=9;
 	var pickPinned;
 	pickPinned = rand(1,3);
@@ -116,6 +116,7 @@ RunControl()
 	start-script WeaponReady();
 	var pickStance;
 	pickStance = rand(1,StanceNumber);
+	set MAX_SPEED to iSpeed;
 	while(1)
 	{
 		#ifndef OnlyProneFire

@@ -5,12 +5,40 @@
 piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 		
+
+//signals to handle control of..everything
+#define SIG_RUN					8
+#define SIG_AIMRUN				16
+#define SIG_CRAWL				32
+#define SIG_AIM1				64
+#define SIG_AIM2				128 //no inf has more than 2 weapons except commando, something of a special exception
+#define SIG_PINNEDCTRL			256
+#define SIG_FEARRECOVERY		512
+#define SIG_RESTOREFROMCRAWL	1024
+#define SIG_IDLE				2048
+
+/*
+Defs that are shared among inf
+the numbers that control pinned levels, how scary various weapons are, ect.
+*/
+#include "inf_sharedDefs.h"
+
+//individual unit definitions
+#define RIFLE
+#define WEAPON_GRENADE
+#define FLAGKILLER
+#define GUN_QUERY_PIECENUM		flare
+#define IdleDelay				10000
+#define RestoreDelay			5000
+#define StanceNumber			3 //number of WeaponReady stances
+#define BurstRate				80 //marginally less than the actual so there's visible movement
+
 /* --Var defs:
 -----Boolean
 ---
-bEngaged - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
+bAiming - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
 	Controls: timing of idle animations, the usage of AimRunControl over RunControl
-	Set by: Aimweapon, unset by RestoreAfterDelay
+	Set by: Aimweapon, unset over time by AimRunControl and StartMoving/StopMoving
 ---
 bNading - is the unit currently in the process of throwing a grenade?
 	Controls: locks out weaponready, and X
@@ -28,8 +56,8 @@ iState - what the unit is currently doing //todo: add states for being in a tran
 	  Values:
 		standing idle - 0
 		standing at attention - 1
-		standing aiming rifle - 2
-		standing aiming nade - 3
+		standing aiming rifle/SMG - 2
+		kneeling aiming rifle/SMG - 3
 		-		
 		running - 4
 		running aiming - 5
@@ -44,35 +72,18 @@ iFear - how 'afraid' unit currently is.
 	Controls: if unit is crawling/prone or standing.
 	Controls: pinned status.
 	 Set by: increased by HitbyWeapon on impact of suitable weapon, decreased by FearRecovery
-	  Values: 0-16
+	  Values: 0-20
 	  iFear = 0-14 = prone/crawling
-	  iFear > 14 = pinned, unable to fire or crawl.
+	  iFear >= 15 = pinned, unable to fire or crawl.
 ---
 	
 */
-
-static-var bEngaged, bMoving, iState, iFear;
-
-
-//signals to handle control of..everything
-#define SIG_RUN					8
-#define SIG_AIMRUN				16
-#define SIG_CRAWL				32
-#define SIG_AIM1				64
-#define SIG_AIM2				128 //no inf has more than 2 weapons except commando, something of a special exception
-#define SIG_PINNEDCTRL			256
-#define SIG_FEARRECOVERY		512
-#define SIG_RESTOREFROMCRAWL	1024
-
-//unit definitions
-#define RIFLE
-#define WEAPON_GRENADE
-#define FLAGKILLER
-#define GUN_QUERY_PIECENUM	flare
-#define IdleDelay	10000
-#define RestoreDelay	5000
-#define UNIT_SPEED		[0.9]
-#define StanceNumber	1
+#ifndef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, iSpeed;
+#endif
+#ifdef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
+#endif
 
 //FX definitions
 	//frivolous
@@ -85,63 +96,11 @@ static-var bEngaged, bMoving, iState, iFear;
 #define MUZZLEFLASH 1024+7
 //end FX
 
-#include "inf_suppressionVars.h"
+//aiming poses
 #include "inf_poses.h"
 
-#ifdef WEAPON_GRENADE
-static-var bNading;
-#endif
-
-WeaponReady() //structure is here to allow for multiple poses (either per unit class or even multiples per unit class)
-{
-var pickStance;
-pickStance=rand(1,StanceNumber);
-bEngaged = FALSE;
-	#ifdef MG
-	if (pickStance == 1)
-	{
-	MG_STANCE1
-	}
-	#endif
-	#ifdef ATROCKET
-	if (pickStance == 1)
-	{
-	ATROCKET_STANCE1
-	}
-	#endif
-	#ifdef SNIPER
-	if (pickStance == 1)
-	{
-	SNIPER_STANCE1
-	}
-	#endif
-	#ifdef SCOUT
-	if (pickStance == 1)
-	{
-	SCOUT_STANCE1
-	}
-	#endif
-#ifdef WEAPON_GRENADE
-	if (!bNading)
-	{
-		#ifdef RIFLE
-		show gun;
-		if (pickStance == 1)
-		{
-		RIFLE_STANCE1
-		}
-		#endif
-		#ifdef SMG
-		show gun;
-		if (pickStance == 1)
-		{
-		SMG_STANCE1
-		}
-		#endif
-	}
-#endif
-}
-
+//weapon ready - split out so I can easily update the number of poses
+#include "inf_weaponReady.h"
 
 //Idle animations.
 #include "inf_idleAnims.h"
@@ -157,16 +116,19 @@ bEngaged = FALSE;
 #include "inf_fearHandling.h"
 
 //transport state handling
-
 #include "inf_transportHandling.h"
 
 StartMoving()
 {
+	signal SIG_IDLE;
+	bAiming = 0;
 	bMoving = 1;
 }
 
 StopMoving()
 {
+	signal SIG_IDLE;
+	bAiming = 0;
 	bMoving = 0;
 }
 
@@ -174,26 +136,26 @@ Create()
 {
 	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
 	bMoving = 0;
-	bEngaged = 0;
+	bAiming = 0;
 	#ifdef WEAPON_GRENADE
 	bNading = 0;
 	#endif
 	iState = 1;
 	iFear = 0;
+	iSpeed = GET MAX_SPEED;
 	start-script WeaponReady();
 	start-script RunControl();
 }
 
 RestoreAfterDelay()
 {
-sleep RestoreDelay;
-bEngaged=0;
-if (iFear>0) call-script CrawlControl();
-if (iFear <=0)
-	{
-	call-script Stand();
-	call-script RunControl();
-	}
+	sleep RestoreDelay;
+//	bAiming=0;	
+	if (iFear > 0) start-script CrawlControl();
+	if (iFear <= 0)
+		{
+		start-script RunControl();
+		}
 }
 
 //start weapons

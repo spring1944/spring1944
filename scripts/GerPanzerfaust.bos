@@ -79,10 +79,10 @@ iFear - how 'afraid' unit currently is.
 	
 */
 #ifndef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear;
+static-var bAiming, bMoving, iState, iFear, iSpeed;
 #endif
 #ifdef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear, bNading;
+static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #endif
 
 //FX definitions
@@ -144,6 +144,7 @@ Create()
 	#endif
 	iState = 1;
 	iFear = 0;
+	iSpeed = GET MAX_SPEED;
 	start-script WeaponReady();
 	start-script RunControl();
 }

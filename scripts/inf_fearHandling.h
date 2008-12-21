@@ -19,7 +19,7 @@ RestoreFromPinned()
 
 TakeCover() //get down!
 {
-	SET MAX_SPEED to (UNIT_SPEED/CRAWL_SLOWDOWN_FACTOR);
+	SET MAX_SPEED to (iSpeed/CRAWL_SLOWDOWN_FACTOR);
 	SET ARMORED to TRUE;
 	iState=6;
 	SET UPRIGHT to 0;
@@ -163,7 +163,7 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 	iState=1;
 	SET UPRIGHT TO 1;
 	SET ARMORED to FALSE;
-	set MAX_SPEED to UNIT_SPEED;
+	set MAX_SPEED to iSpeed;
 	call-script RunControl();
 //	}
 	return (1);

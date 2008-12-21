@@ -28,7 +28,6 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000
 #define RestoreDelay			5000
-#define UNIT_SPEED				[0.8]
 #define StanceNumber			3 //number of WeaponReady stances
 #define BurstRate				100 //marginally less than the actual so there's visible movement
 
@@ -78,10 +77,10 @@ iFear - how 'afraid' unit currently is.
 	
 */
 #ifndef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear;
+static-var bAiming, bMoving, iState, iFear, iSpeed;
 #endif
 #ifdef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear, bNading;
+static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #endif
 
 //FX definitions
@@ -142,6 +141,7 @@ Create()
 	#endif
 	iState = 1;
 	iFear = 0;
+	iSpeed = GET MAX_SPEED;
 	start-script WeaponReady();
 	start-script RunControl();
 }

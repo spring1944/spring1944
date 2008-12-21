@@ -2,8 +2,8 @@
 
 #include "constants.h"
 
-piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
-		lfoot, luparm, lloarm, ground, binoculars, gun, ruparm, rloarm, head;
+piece  torso, gun, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+		lfoot, luparm, lloarm, ground, ruparm, rloarm, head, nano;
 		
 
 //signals to handle control of..everything
@@ -16,6 +16,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
 #define SIG_FEARRECOVERY		512
 #define SIG_RESTOREFROMCRAWL	1024
 #define SIG_IDLE				2048
+#define SIG_BUILD				5096
 
 /*
 Defs that are shared among inf
@@ -24,12 +25,11 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 #include "inf_sharedDefs.h"
 
 //individual unit definitions
-#define SCOUT
-#define GUN_QUERY_PIECENUM		flare
+#define ENGINEER
+#define NoAimRun
 #define IdleDelay				10000
 #define RestoreDelay			5000
-#define StanceNumber			3 //number of WeaponReady stances
-#define BurstRate				100 //marginally less than the actual so there's visible movement
+#define StanceNumber			2 //number of WeaponReady stances
 
 /* --Var defs:
 -----Boolean
@@ -76,12 +76,9 @@ iFear - how 'afraid' unit currently is.
 ---
 	
 */
-#ifndef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear, iSpeed;
-#endif
-#ifdef WEAPON_GRENADE
-static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
-#endif
+static-var bAiming, bMoving, iState, iFear, iSpeed, linecount;
+
+
 
 //FX definitions
 	//frivolous
@@ -91,7 +88,7 @@ static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #define SHELL 1024+4
 #define PISS 1024+5
 #define CIG 1024+6
-#define MUZZLEFLASH 1024+7
+#define BUILD_LINE 1024+7
 //end FX
 
 //aiming poses
@@ -132,8 +129,6 @@ StopMoving()
 
 Create()
 {
-	hide binoculars;
-	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
 	bMoving = 0;
 	bAiming = 0;
 	#ifdef WEAPON_GRENADE
@@ -165,6 +160,9 @@ Killed by:
 Grenade aiming
 PinnedControl
 */
+#ifdef ENGINEER
+#include "inf_EngineerFx.h"
+#endif
 
 #ifdef RIFLE
 #include "inf_weaponRifle.h"

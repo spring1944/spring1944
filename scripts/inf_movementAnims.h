@@ -76,6 +76,19 @@ pelviswait = rand(130, 145);
 		
 		turn rleg to y-axis <0> now;
 		turn rleg to z-axis <0> now;
+
+		#ifdef ENGINEER
+		turn ruparm to y-axis <0> now;
+		turn ruparm to z-axis <0> now;
+		turn rloarm to x-axis <-100> now;
+		turn rloarm to y-axis <0> now;
+		turn rloarm to z-axis <0> now;
+		turn luparm to y-axis <0> now;
+		turn luparm to z-axis <0> now;
+		turn lloarm to x-axis <-100> now;
+		turn lloarm to y-axis <0> now;
+		turn lloarm to z-axis <0> now;
+		#endif
 		//turn torso to x-axis <7> now;
 		//if (bMoving==0) sleep 200;	
 		if (bMoving==1)
@@ -87,6 +100,10 @@ pelviswait = rand(130, 145);
 		sleep pelviswait;
 			move pelvis to y-axis [0.4] speed <2800>;
 		sleep pelviswait;
+			#ifdef ENGINEER
+			turn luparm to x-axis <-20> speed <270>;
+			turn ruparm to x-axis <40> speed <270>;
+			#endif
 			turn rleg to x-axis <10> speed <630>;
 			move pelvis to y-axis [0] speed <2800>;
 			}
@@ -98,10 +115,12 @@ pelviswait = rand(130, 145);
 			turn rthigh to x-axis <30> speed <270>;
 			turn torso to y-axis <-10> speed <90>;
 		sleep pelviswait;
-		//wait-for-move pelvis along y-axis;
 			move pelvis to y-axis [0.4] speed <2800>;	
 		sleep pelviswait;
-	//	wait-for-move pelvis along y-axis;
+			#ifdef ENGINEER
+			turn luparm to x-axis <40> speed <270>;
+			turn ruparm to x-axis <-20> speed <270>;
+			#endif
 			turn lleg to x-axis <10> speed <630>;
 			move pelvis to y-axis [0] speed <2800>;
 			}
@@ -117,7 +136,7 @@ turn ground to x-axis <0> now;
 move pelvis to y-axis [-2.7] now;
 var sleeptime;
 sleeptime = rand(395, 465);
-set MAX_SPEED to (UNIT_SPEED/CRAWL_SLOWDOWN_FACTOR);
+set MAX_SPEED to (iSpeed/CRAWL_SLOWDOWN_FACTOR);
 		if (bMoving==1)
 			{
 			turn torso to x-axis <-15> speed <75>;
@@ -154,9 +173,11 @@ set MAX_SPEED to (UNIT_SPEED/CRAWL_SLOWDOWN_FACTOR);
 			turn rloarm to x-axis <-60> speed <150>;
 			turn rloarm to y-axis <10> speed <150>;
 			turn rloarm to z-axis <0> speed <150>;
+			#ifndef ENGINEER
 			turn gun to x-axis <-105> speed <150>;
 			turn gun to y-axis <35> speed <150>;
 			turn gun to z-axis <0> speed <150>;
+			#endif
 			}
 					
 		if (bMoving==1)
@@ -193,9 +214,11 @@ set MAX_SPEED to (UNIT_SPEED/CRAWL_SLOWDOWN_FACTOR);
 			turn ruparm to z-axis <0> speed <150>;
 			turn rloarm to x-axis <-120> speed <150>;
 			turn rloarm to y-axis <30> speed <150>;
-			turn rloarm to z-axis <0> speed <150>;						
+			turn rloarm to z-axis <0> speed <150>;		
+			#ifndef ENGINEER			
 			turn gun to x-axis <-40> speed <150>;
 			turn gun to y-axis <45> speed <150>;
 			turn gun to z-axis <0> speed <150>;
+			#endif
 			}
 }
