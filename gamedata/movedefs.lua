@@ -4,6 +4,7 @@ local moveDefs 	=	 {
 		footprintX		=	1,
 		maxWaterDepth	=	10,
 		maxSlope			=	30,
+		crushStrength	=	0,
 	},
 	{
 		name					=	"TANK_Truck",

@@ -123,6 +123,11 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 	end
 end
 
+function gadget:Initialize()
+	Spring.SetCustomCommandDrawData(CMD_CALL_FB,"Attack",{1,0,0,1},false)
+end
+	
+
 function getSpawnPoint(unitID, teamID)
 	local x,y,z = GetUnitPosition(unitID)
 	if (x < MAP_SIZE_X / 2) then -- West
