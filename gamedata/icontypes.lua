@@ -220,8 +220,8 @@ local iconTypes = {
 		distance	=	0.4,
 	},
 	flag = {
-		bitmap		=	"bitmaps/circularthingy.tga",
-		size			=	4.5,
+		bitmap		=	"icons/flag.tga",
+		size			=	2.5,
 		distance	=	0.3,
 	},
 }
