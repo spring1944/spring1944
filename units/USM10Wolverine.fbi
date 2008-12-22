@@ -60,9 +60,7 @@
 	weapon2=M2BrowningAA;
 	onlytargetcategory2=AIR;
 	weapon3=.50calproof;
-	weapon4=TankFearShield;
-
-	weapon5=Medium_Tracer;
+	weapon4=Medium_Tracer;
 
 	[sfxtypes]
 	{

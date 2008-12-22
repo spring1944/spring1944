@@ -66,10 +66,7 @@
 
 	weapon3=.50calproof;
 
-	weapon4=M875mmHEFear;
-	weaponslaveto4=1;
-
-	weapon5=Medium_Tracer;
+	weapon4=Medium_Tracer;
 
 	[sfxtypes]
 	{

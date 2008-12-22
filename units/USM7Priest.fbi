@@ -65,10 +65,8 @@
 	weapon2=M2Browning;
 	onlytargetcategory2=AIR;
 	weapon3=.50calproof;
-	weapon4=m2hefear;
-	weaponslaveto4=1;
 	
-	weapon6=Medium_Tracer;
+	weapon4=Medium_Tracer;
 
 	[sfxtypes]
 	{

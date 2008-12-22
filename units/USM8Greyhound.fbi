@@ -67,14 +67,6 @@
 	weapon4=M2BrowningAA;
 	onlytargetcategory4=AIR;
 	
-	weapon5=M637mmFear;
-	badtargetcategory5=NFLAGNAIR;
-	onlytargetcategory5=NFLAGNAIR;
-	weaponslaveto5=1;
-	
-	weapon6=M1919A4BrowningFear;
-	onlytargetcategory6=INFTARG;
-	
 	weapon7=Small_Tracer;
 	weapon8=Medium_Tracer;
 

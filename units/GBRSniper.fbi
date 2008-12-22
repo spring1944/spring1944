@@ -54,9 +54,6 @@
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=170;
-	weapon2=enfield_tfear;
-	onlytargetcategory2=INFTARG;
-	weaponslaveto2=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

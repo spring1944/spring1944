@@ -3,7 +3,7 @@
 piece base, turret, mantlet, barrel, flare, coaxflare, exhaust, brakeright, brakeleft;
 piece wheel1, wheel2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, MGFearOk, CannonFearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -72,8 +72,6 @@ Create()
 	// init vars
 	rock = FALSE;
 	aim2 = FALSE;
-	CannonFearOk=0;
-	MGFearOk=0;
 	reloading = FALSE;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
@@ -158,7 +156,6 @@ FireWeapon1()
 	emit-sfx MuzzleBrakeSmoke from brakeright;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	
-	CannonFearOk=1;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;

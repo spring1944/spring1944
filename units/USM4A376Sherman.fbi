@@ -65,14 +65,8 @@
 	weapon4=M2Browning;
 	onlytargetcategory4=AIR;
 	weapon5=.50calproof;
-	weapon6=M7HEFear;
-	onlytargetcategory6=NFLAGNAIR;
-	weapon7=M1919A4BrowningFear;
-	onlytargetcategory7=INFTARG;
-	weapon8=TankFearShield;
-
-	weapon9=Small_Tracer;
-	weapon10=Medium_Tracer;
+	weapon6=Small_Tracer;
+	weapon7=Medium_Tracer;
 
 	[sfxtypes]
 	{

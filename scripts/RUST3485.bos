@@ -2,7 +2,7 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGaiming, MGFearOk, CannonFearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGaiming;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -59,7 +59,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define MuzzleBrakeSmoke 1024+10
 
 // tracers
-#define SMALL_TRACER 	2048+7
+#define SMALL_TRACER 	2048+4
 
 treads() 
 { 
@@ -183,7 +183,6 @@ FireWeapon1()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
-	CannonFearOk=1;
 	emit-sfx MEDIUMLARGE_MUZZLEFLASH from flare;
 	emit-sfx MEDIUMLARGE_MUZZLEDUST from flare;
 	// barrel recoil
@@ -194,32 +193,6 @@ FireWeapon1()
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;
-}
-
-AimFromWeapon5(piecenum) //Main gun HE fear
-{
-	piecenum = turret;
-}
-
-QueryWeapon5(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon5(heading, pitch)
-{
-	if (CannonFearOk==1)
-	{
-	wait-for-turn turret around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon5()
-{
-CannonFearOk=0;
-return (0);
 }
 
 // Weapon 2 - Main cannon, AP
@@ -318,36 +291,9 @@ FireWeapon3()
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 67;
-	MGFearOk=1;
 	return(0);
 	}
 	
-AimFromWeapon6(piecenum) //Coax fear 
-{
-	piecenum = turret;
-}
-
-QueryWeapon6(piecenum)
-{
-	piecenum = coaxflare;
-}
-
-AimWeapon6(heading, pitch)
-{
-	if (MGFearOk==1)
-	{
-	wait-for-turn turret around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon6()
-{
-MGFearOk=0;
-return (0);
-}
-
 AimFromWeapon4(piecenum) //bulletproof effect 
 {
 	piecenum = base;
@@ -369,26 +315,6 @@ return (0);
 }
 
 
-
-AimFromWeapon7(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon7(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon7(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon7()
-{
-return (0);
-}
 
 // TODO: make this pretty
 Killed(severity, corpsetype)

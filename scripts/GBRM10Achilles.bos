@@ -60,7 +60,7 @@ static-var  restore_delay, rock, aim, reloading, mainHead, bMoving, treadnum, Gu
 #define MEDIUM_MUZZLEDUST 1024+9
 
 // tracers
-#define MEDIUM_TRACER 	2048+4
+#define MEDIUM_TRACER 	2048+3
 
 treads() 
 { 
@@ -262,27 +262,6 @@ return (1);
 }
 
 FireWeapon3()
-{
-return (0);
-}
-
-
-AimFromWeapon4(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon4(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon4(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon4()
 {
 return (0);
 }

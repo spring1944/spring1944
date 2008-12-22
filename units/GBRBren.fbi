@@ -46,10 +46,7 @@
 
 	weapon1=Bren;
 	onlytargetcategory1=INFTARG;
-	weapon2=BrenFear;
-	onlytargetcategory2=INFTARG;
-	weaponslaveto2=1;
-	weapon3=Small_Tracer;
+	weapon2=Small_Tracer;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

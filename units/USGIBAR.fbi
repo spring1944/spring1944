@@ -48,9 +48,6 @@
 	onlytargetcategory1=INFTARG;
 	weapon2=MK2;
 	onlytargetcategory2=NFLAGNAIR;
-	weapon3=BARFear;
-	onlytargetcategory3=INFTARG;
-	weaponslaveto3=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

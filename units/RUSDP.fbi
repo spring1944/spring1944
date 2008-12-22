@@ -46,10 +46,7 @@
 
 	weapon1=DP;
 	onlytargetcategory1=INFTARG;
-	weapon2=DPFear;
-	onlytargetcategory2=INFTARG;
-	weaponslaveto2=1;
-	weapon3=Small_Tracer_Green;
+	weapon2=Small_Tracer_Green;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

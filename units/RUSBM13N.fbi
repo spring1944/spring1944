@@ -54,10 +54,6 @@
 	onlytargetcategory1=NFLAG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
-
-	weapon2=M13132mmfear;
-	weaponslaveto2=1;
-
 	icontype=truck;
 
 	[sfxtypes]

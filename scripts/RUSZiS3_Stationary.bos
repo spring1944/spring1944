@@ -3,9 +3,9 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk, reloading, aim2;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, reloading, aim2;
 
-#include "inf_suppressionvars.h"
+#include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
@@ -206,7 +206,6 @@ FireWeapon1()
 	emit-sfx MEDIUM_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
-	FearOk=1;
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
@@ -255,7 +254,6 @@ FireWeapon2()
 	emit-sfx MEDIUM_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
-	FearOk=1;
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
@@ -265,33 +263,6 @@ FireWeapon2()
 	//Now reload...
 	CREW_RELOADING
 	start-script Reload(); // start reload timer after firing
-}
-
-// Weapon 3 76mm HE Fear
-AimFromWeapon3(piecenum)
-{
-	piecenum = barrel;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon3(heading, pitch)
-{
-	if (FearOk==1)
-	{
-	wait-for-turn carriage around y-axis;
-	return (1);
-	}
-	return(0);
-}
-
-FireWeapon3()
-{
-FearOk=0;
-return (0);
 }
 
 Killed(severity, corpsetype)

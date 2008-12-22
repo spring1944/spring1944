@@ -4,7 +4,7 @@ piece  base, mantlet, barrel, flare;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, bMoving, treadnum, GunAiming, FearOk;
+static-var  restore_delay, rock, bMoving, treadnum, GunAiming;
 
 
 //how long the unit appears on the map after firing (in ms)
@@ -164,7 +164,6 @@ FireWeapon1()
 	
 	// TODO: Add to SFX
 	// Do SFX
-	FearOk=1;
 	emit-sfx XLARGE_MUZZLEFLASH from flare;
 	emit-sfx XLARGE_MUZZLEDUST from flare;
 	
@@ -180,48 +179,22 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon2(piecenum) //Main gun HE fear
+AimFromWeapon2(piecenum) //bulletproof effect 
 {
-	piecenum = mantlet;
+	piecenum = base;
 }
 
 QueryWeapon2(piecenum)
 {
-	piecenum = flare;
+	piecenum = base;
 }
 
 AimWeapon2(heading, pitch)
 {
-	if (FearOk==1)
-	{
-	wait-for-turn mantlet around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon2()
-{
-FearOk=0;
-return (0);
-}
-
-AimFromWeapon3(piecenum) //bulletproof effect 
-{
-	piecenum = base;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon3(heading, pitch)
-{
 return (1);
 }
 
-FireWeapon3()
+FireWeapon2()
 {
 return (0);
 }

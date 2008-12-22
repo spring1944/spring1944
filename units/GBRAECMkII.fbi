@@ -59,8 +59,6 @@
 	weapon1=6pdr57mmap;
 	onlytargetcategory1=TANK;
 
-	weapon6=Small_Tracer;
-
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

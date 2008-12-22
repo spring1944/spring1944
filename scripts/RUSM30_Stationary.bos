@@ -3,9 +3,9 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, FearOk;
+static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
 
-#include "inf_suppressionvars.h"
+#include "inf_sharedDefs.h"
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
@@ -195,7 +195,6 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	FearOk=1;
 	emit-sfx LARGE_Muzzleflash from flare;
 	emit-sfx LARGE_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeleft;
@@ -203,7 +202,6 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
-	FearOk=1;
 	get DO_SEISMIC_PING(15);
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
@@ -213,34 +211,6 @@ FireWeapon1()
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 1;
 }
-//Weapon 2 122mm HE Fear
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = barrel;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (FearOk==1)
-	{
-	wait-for-turn carriage around y-axis;
-	return (1);
-	}
-	return(0);
-}
-
-FireWeapon2()
-{
-FearOk=0;
-return (0);
-}
-
 
 Killed(severity, corpsetype)
 {

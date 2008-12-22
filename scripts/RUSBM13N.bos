@@ -3,7 +3,7 @@
 piece  base, turret, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8;
 piece  rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16, wheel1, wheel2, wheel3;
  
-static-var  restore_delay, rock, reloading, mainHead, FearOk, isDeployed, normalSpeed, rocket;
+static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, rocket;
 
 // Signal definitions
 #define SIG_AIM		2 // Machinegun
@@ -240,7 +240,6 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	//emit-sfx MEDIUM_Muzzleflash from rocket1;
-	FearOk=1;
 	set ACTIVATION to 0;
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 1;
@@ -253,32 +252,6 @@ Shot1()
 	rocket = rocket + 1;
 }
 	
-AimFromWeapon2(piecenum) //Rocket fear
-{
-	piecenum = rails;
-}
-
-QueryWeapon2(piecenum)
-{
-	piecenum = rocket1;
-}
-
-AimWeapon2(heading, pitch)
-{
-	if (FearOk==1)
-	{
-	wait-for-turn rails around x-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon2()
-{
-FearOk=0;
-return (0);
-}
-
 // TODO: make this pretty
 Killed(severity, corpsetype)
 {

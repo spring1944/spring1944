@@ -47,9 +47,6 @@
 
 	weapon1=3InMortar;
 	onlytargetcategory1=NFLAGNAIR;
-	weapon2=3InMortarFear;
-	onlytargetcategory2=NFLAG;
-	weaponslaveto2=1;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

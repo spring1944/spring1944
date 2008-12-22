@@ -50,10 +50,7 @@
 
 	weapon1=DT;
 	onlytargetcategory1=NFLAG;
-	weapon2=DTFear;
-	weaponslaveto2=1;
-
-	weapon3=Small_Tracer_Green;
+	weapon2=Small_Tracer_Green;
 
 	icontype=jeep;
 	[sfxtypes]

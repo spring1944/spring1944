@@ -65,14 +65,7 @@
 	weapon3=Bren;
 	onlytargetcategory3=INFTARG;
 	weapon4=.50calproof;
-	weapon5=QF75mmHEFear;
-	weaponslaveto5=1;
-	weapon6=BrenFear;
-	onlytargetcategory6=INFTARG;
-	weaponslaveto6=3;
-	weapon7=TankFearShield;
-
-	weapon8=Small_Tracer;
+	weapon5=Small_Tracer;
 
 	[sfxtypes]
 	{

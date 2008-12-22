@@ -2,7 +2,7 @@
 
 piece  base, turret, sleeve, barrel, flare, brakeleft, brakeright, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
-static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming, FearOk;
+static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
@@ -179,7 +179,6 @@ FireWeapon1()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
-	FearOk=1;
 	emit-sfx MEDIUMLARGE_MUZZLEFLASH from flare;
 	emit-sfx MEDIUMLARGE_MUZZLEDUST from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
@@ -196,43 +195,17 @@ FireWeapon1()
 	return 0;
 }
 
-AimFromWeapon6(piecenum) //Main gun HE fear
-{
-	piecenum = turret;
-}
-
-QueryWeapon6(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon6(heading, pitch)
-{
-	if (FearOk==1)
-	{
-	wait-for-turn turret around y-axis;
-	return (1);
-	}
-return 0;
-}
-
-FireWeapon6()
-{
-FearOk=1;
-return (0);
-}
-
-QueryWeapon4 (piecenum)// Weapon 4 - AA MG
+QueryWeapon2 (piecenum)// Weapon 4 - AA MG
 	{
 	piecenum = aaflare;
 	}
 
-AimFromWeapon4 (piecenum)
+AimFromWeapon2 (piecenum)
 	{
 	piecenum = aagun;
 	}
 
-AimWeapon4(heading, pitch)
+AimWeapon2(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -247,7 +220,7 @@ AimWeapon4(heading, pitch)
 	return (1);
 	}
 
-FireWeapon4()
+FireWeapon2()
 	{
 	rock = FALSE;
 	
@@ -276,43 +249,22 @@ FireWeapon4()
 	return(0);
 	}
 
-AimFromWeapon5(piecenum) //bulletproof effect
+AimFromWeapon3(piecenum) //bulletproof effect
 {
 	piecenum = base;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon3(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon3(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon5()
-{
-return (0);
-}
-
-
-AimFromWeapon7(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon7(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon7(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon7()
+FireWeapon3()
 {
 return (0);
 }

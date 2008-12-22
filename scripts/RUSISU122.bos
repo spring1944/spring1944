@@ -4,14 +4,13 @@ piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
 
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, FearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
-#define SIG_AIM2	4 // Fear
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
@@ -172,7 +171,6 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	rock = TRUE; // firing a heavy weapon
-	FearOk=1;
 	emit-sfx XLARGE_Muzzleflash from flare;
 	emit-sfx XLARGE_MuzzleDust from flare;
 	emit-sfx MuzzleBrakeSmoke from brakeright;
@@ -188,36 +186,6 @@ FireWeapon1()
 	set ACTIVATION to 0;
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 1;
-	return 0;
-}
-
-// Weapon 3 - Main cannon fear
-QueryWeapon3(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon3(piecenum)
-{
-	piecenum = mantlet;
-}
-
-AimWeapon3(heading, pitch)
-{	
-	signal SIG_AIM2;
-	set-signal-mask SIG_AIM2;
-	if (FearOk==1)
-	{
-	wait-for-turn mantlet around y-axis;
-	wait-for-turn mantlet around x-axis;
-	return (1);
-	}
-	return (0);
-}
-
-FireWeapon3()
-{
-	FearOk=1;
 	return 0;
 }
 
@@ -271,26 +239,6 @@ FireWeapon2()
 	sleep VISIBLE_PERIOD;
 	set ACTIVATION to 0;
 	return 0;
-}
-
-AimFromWeapon4(piecenum) //fear shield
-{
-	piecenum = base;
-}
-
-QueryWeapon4(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon4(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon4()
-{
-return (0);
 }
 
 // Weapon 3 - AA MG

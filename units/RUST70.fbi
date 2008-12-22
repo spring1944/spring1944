@@ -62,14 +62,8 @@
 	onlytargetcategory2=TANK;
 	weapon3=DT;
 	onlytargetcategory3=INFTARG;
-	weapon4=20K45mmHEFear;
-	weaponslaveto4=1;
-	weapon5=DTFear;
-	weaponslaveto5=3;
-	weapon6=.50calproof;
-	weapon7=TankFearShield;
-	
-	weapon8=Small_Tracer_Green;
+	weapon4=.50calproof;
+	weapon5=Small_Tracer_Green;
 
 	[sfxtypes]
 	{

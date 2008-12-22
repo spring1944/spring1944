@@ -63,14 +63,7 @@
 	weapon3=Bren;
 	onlytargetcategory3=INFTARG;
 	weapon4=.30calproof;
-	weapon5=2Pdr40mmHEFear;
-	onlytargetcategory5=NFLAGNAIR;
-	weaponslaveto5=1;
-	weapon6=BrenFear;
-	badtargetcategory6=NFLAGNAIR;
-	weaponslaveto6=3;
-
-	weapon7=Small_Tracer;
+	weapon5=Small_Tracer;
 
 	[sfxtypes]
 	{

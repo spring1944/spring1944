@@ -61,13 +61,11 @@
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
-	weapon3=ml20s152mmfear;
-	weaponslaveto3=1;
 	weapon2=ML20S152mmAP;
 	onlytargetcategory2=TANK;
 	weaponmaindir2=0 0 1;
 	maxangledif2=25;
-	weapon4=.50calproof;
+	weapon3=.50calproof;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

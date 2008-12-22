@@ -20,7 +20,7 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 
 #define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
-#define PinnedLevel	6 //fear level where they stop shooting and freeze on the ground
+#define PinnedLevel	10 //fear level where they stop shooting and freeze on the ground
 #define RecoverRate	500 //how often RecoverConstant is subtracted from total fear level
 //#define InitialFreeze 2000 //how long they stay down before they start recovering
 //various levels of fear added when these weapons hit

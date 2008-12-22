@@ -26,7 +26,7 @@ local CIRCLE_DIVS   				= 64	-- How many sides in our 'circle'
 local CIRCLE_OFFSET 				= 0		-- y-offset
 local CIRCLE_LINES  				= 0		-- display list containing circle
 local DEFAULT_SUPPLY_RANGE	=	300 -- This should never have to be used, but just in case
-local LINE_ALPHA_SUPPLY			= 0.1	-- alpha value of supply range line
+local LINE_ALPHA_SUPPLY			= 0.265	-- alpha value of supply range line
 local LINE_WIDTH_SUPPLY			= 10	-- width of supply range line
 local ROTATION_SPEED_MULT		= 4
 
