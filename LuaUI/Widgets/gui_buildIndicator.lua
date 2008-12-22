@@ -45,12 +45,13 @@ end
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.buildDistance then
-		table.insert(builders, unitID)
+		--table.insert(builders, unitID)
+		builders[unitID] = true
 	end
 end
 
 function widget:UnitDestroyed(unitID)
-	ammoSuppliers[unitID] = nil
+	builders[unitID] = nil
 end
 
 
@@ -61,9 +62,10 @@ function widget:DrawWorldPreUnit()
 	
   local lastColorSet = nil
 
-	for i = 1, #builders  do
-		builderID = builders[i]
-		if builderID then
+	--for i = 1, #builders  do
+		--builderID = builders[i]
+	for builderID, yes in pairs(builders) do
+		if yes then
 			beingBuiltID = GetUnitIsBuilding(builderID)
 			if beingBuiltID then
 				local x, y, z = GetUnitBasePosition(builderID)
