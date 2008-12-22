@@ -22,6 +22,13 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 local options = {
+	{ 
+		key = 'always_visible_flags', 
+		name = 'Always Visible Flags', 
+		desc = 'Flags and their capping status can be seen without LOS', 
+		type = 'bool', 
+		def = false, 
+	},
   {
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',

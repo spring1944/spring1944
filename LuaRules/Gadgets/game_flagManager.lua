@@ -55,6 +55,10 @@ local defenders							= {} -- table of flag defenders
 local flagCapStatuses				= {{}} -- table of flag's capping statuses
 local teams									= Spring.GetTeamList()
 
+local modOptions
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
@@ -125,7 +129,13 @@ function gadget:GameFrame(n)
 		
 	elseif n == 40 then
 		for _, flagID in pairs(flags) do
-			SetUnitAlwaysVisible(flagID, false)
+			if (modOptions) then
+				if (modOptions.always_visible_flags == "0") then
+					SetUnitAlwaysVisible(flagID, false)
+				end
+			else
+				SetUnitAlwaysVisible(flagID, false)
+			end
 			flagCapStatuses[flagID] = {}
 		end
 			
