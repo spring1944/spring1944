@@ -50,7 +50,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.feartarget then
+	if ud.customParams.feartarget and ~ud.customParams.maxammo then
 		infantry[unitID] = true
 	end
 	if ud.customParams.ammosupplier == '1' then
@@ -80,20 +80,22 @@ function gadget:GameFrame(n)
 				return
 			end
 			local supplierID, distanceFromSupplier = CheckDist(unitID)
-			local supplierDefID = GetUnitDefID(supplierID)
-			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-			if (distanceFromSupplier < supplyRange) and (logisticsLevel > 5) then 
-				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
-			end
-			if (distanceFromSupplier > supplyRange) and (logisticsLevel > 5) then
-				local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
-				if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
-					savedFrame[unitID] = reloadFrame + reloadFrameLength
+			if supplierID then
+				local supplierDefID = GetUnitDefID(supplierID)
+				local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
+				if (distanceFromSupplier < supplyRange) and (logisticsLevel > 5) then 
+					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
 				end
-				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
-				if (reloadFrame > savedFrame[unitID]) then
-					savedFrame[unitID] = reloadFrame
-					Spring.UseUnitResource(unitID, "e", weaponCost)
+				if (distanceFromSupplier > supplyRange) and (logisticsLevel > 5) then
+					local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
+					if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
+						savedFrame[unitID] = reloadFrame + reloadFrameLength
+					end
+					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
+					if (reloadFrame > savedFrame[unitID]) then
+						savedFrame[unitID] = reloadFrame
+						Spring.UseUnitResource(unitID, "e", weaponCost)
+					end
 				end
 			end
 		end
