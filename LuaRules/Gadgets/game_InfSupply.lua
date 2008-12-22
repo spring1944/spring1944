@@ -50,7 +50,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.feartarget and ~ud.customParams.maxammo then
+	if ud.customParams.feartarget and not(ud.customParams.maxammo) then
 		infantry[unitID] = true
 	end
 	if ud.customParams.ammosupplier == '1' then
