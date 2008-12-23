@@ -56,40 +56,10 @@
 		armouredvehicles=12;
 		unarmouredvehicles=15;
 	}
-}
-[brenfear]
-{
-	id=301;
-	name=Supression from Bren Gun Fire;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=32;
-	explosiongenerator=custom:nothing;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=700;
-	reloadtime=2.8;
-	weaponvelocity=1000;
-	areaofeffect=170;
-	edgeeffectiveness=1;
-	burnblow=1;
-
-	avoidfeature=0;
-	collidefeature=0;
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.00000001;
-	collisionsize=4;
-
-	[damage]
+	
+	[customParams]
 	{
-		default=0.0001;
+		fearid=301;
+		fearaoe=30;
 	}
 }

@@ -46,6 +46,11 @@
 		armouredvehicles=12;
 		unarmouredvehicles=15;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
 }
 
 [m1919a4browning_deployed]
@@ -96,74 +101,9 @@
 		armouredvehicles=12;
 		unarmouredvehicles=15;
 	}
-}
-
-[m1919a4browningfear]
-{
-	id=301;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=820;
-	reloadtime=3;
-	weaponvelocity=800;
-	areaofeffect=225;
-	edgeeffectiveness=1;
-
-	avoidfeature=0;
-	collidefeature=0;
-	collidefriendly=0;
-	avoidfriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
+	[customParams]
 	{
-		default=0.0001;
-	}
-}
-
-[m1919a4browning_deployedfear]
-{
-	id=301;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=1020;
-	reloadtime=3;
-	weaponvelocity=800;
-	areaofeffect=225;
-	edgeeffectiveness=1;
-
-	avoidfeature=0;
-	collidefeature=0;
-	collidefriendly=0;
-	avoidfriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
+		fearid=301;
+		fearaoe=30;
 	}
 }

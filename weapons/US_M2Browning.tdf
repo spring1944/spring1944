@@ -50,6 +50,11 @@
 		unarmouredvehicles=40;
 		lightplanes=25;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
 }
 [m2browningaa]
 {
