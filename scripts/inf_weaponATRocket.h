@@ -154,11 +154,13 @@ AimWeapon1(heading, pitch)
 		
 #define SHOT_ANIM\
 		emit-sfx MUZZLEFLASH from backblast;\
-		emit-sfx MUZZLEDUST from backblast;	
+		emit-sfx MUZZLEDUST from backblast;
 	
 	
 FireWeapon1()
-{		
+{	
+	#ifndef PIAT
 	SHOT_ANIM
+	#endif
 	return (0);
 }

@@ -19,7 +19,7 @@ static-var restore_delay, bMoving, treadnum, aim1;
 #define MG_MUZZLEFLASH		1024+7
 
 // tracers
-#define MEDIUM_TRACER 	2048+3
+#define MEDIUM_TRACER 	2048+2
 
 treads() 
 { 

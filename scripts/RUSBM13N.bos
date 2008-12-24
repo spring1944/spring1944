@@ -247,7 +247,7 @@ FireWeapon1()
 	return 0;
 }
 
-Shot1()
+Shot1(something)
 {
 	rocket = rocket + 1;
 }
