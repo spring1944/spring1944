@@ -5,7 +5,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
  
 static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, rocket;
 
-#include "inf_suppressionvars.h"
+#include "inf_sharedDefs.h"
 
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
@@ -237,7 +237,7 @@ FireWeapon1()
 	set ACTIVATION to 1;
 }
 
-Shot1()
+Shot1(something)
 {
 	rocket = rocket + 1;
 }

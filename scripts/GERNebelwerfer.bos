@@ -8,7 +8,7 @@ static-var normalSpeed, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPin
 
 
  
- #include "inf_suppressionvars.h"
+ #include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_AIM2	4
@@ -549,12 +549,16 @@ setSFXoccupy(terrain)
 
 StartMoving()
 {
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
  	spin wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	call-script CrewWalk();
 }
 
 StopMoving()
 {
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
  	stop-spin wheels around x-axis;
 	CREW_STOP
 }
