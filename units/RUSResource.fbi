@@ -1,32 +1,31 @@
 [unitinfo]
 {
 	unitname=RUSResource;
-	objectname=LogisticsMed.S3O;
+	objectname=LogisticsSmall.S3O;
 	buildpic=LogisticsSmall.png;
 	corpse=Debris_Small;
 	icontype=ammo;
 	soundcategory=RUSInf;
-	category=NOWEAPON  BUILDING  NFLAGNAIR NFLAG ;
+	category=NFLAGNAIR NOWEAPON  BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Supply Stockpile;
-	description=Logistics Supply Source;
+	name=Malenkaya Kucha Pripasov;
+	description=Provides supplies to a small area;
 	side=RUS;
 	maxdamage=400;
-	buildcostmetal=645;
+	buildcostmetal=720;
 	buildcostenergy=0;
-	buildtime=430;
+	buildtime=480;
 	footprintx=3;
 	footprintz=3;
 
-	hidedamage=1;
 	shownanoframe=0;
 	smoothanim=0;
 
 
 	energymake=0;
-	energystorage=0;
+	energystorage=150;
 
 	sightdistance=1;
 	stealth=1;
@@ -36,13 +35,15 @@
 	maxslope=15;
 
 	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=3;
-	buildinggrounddecalsizey=3;
+	buildinggrounddecalsizex=4;
+	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
-
+	//weapon1=medsupply;
 	explodeas=ResourceBoom;
 	selfdestructas=Med_Explosion;
 
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
 	[sfxtypes]
 	{
 	}
@@ -50,6 +51,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=300;
+		supplyRange=150;
 	}
 }

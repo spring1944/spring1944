@@ -38,6 +38,7 @@ AimWeapon1(heading, pitch)
 		turn ruparm to x-axis <-85> - pitch speed <480>;
 		turn luparm to x-axis <-140> - pitch speed <400>;
 		turn pelvis to y-axis heading speed <120>;
+		turn gun to z-axis <0> now;
 		wait-for-turn luparm around x-axis;
 		wait-for-turn gun around x-axis;
 		wait-for-turn gun around y-axis;

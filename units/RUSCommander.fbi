@@ -62,6 +62,7 @@
 	[customParams]
 	{
 		hq=1;
+		flagCapRate=8;
 		refillamount=1000000; 
 		arrivalgap=600;	
 		feartarget=1;

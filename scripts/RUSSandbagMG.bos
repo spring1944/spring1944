@@ -16,7 +16,7 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
 #define MG_MUZZLEFLASH 1024+7
-#define SMALL_TRACER 2048+2
+#define SMALL_TRACER 2048+1
 
 #define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate

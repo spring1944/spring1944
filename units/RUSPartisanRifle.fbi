@@ -56,7 +56,7 @@
 	maxangledif1=180;
 	
 	weapon2=molotov;
-	//onlytargetcategory2=TANK BUILDING;
+	onlytargetcategory2=NFLAG;
 	weaponmaindir2= 0 0 1;
 	maxangledif2=180;
 

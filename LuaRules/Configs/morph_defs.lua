@@ -401,6 +401,60 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+  
+      gbrbedfordtruck =
+  {
+    into = 'gbrresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+	gbrresource =
+  {
+    into = 'gbrbedfordtruck',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+    ruszis5 =
+  {
+    into = 'rusresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+	rusresource =
+  {
+    into = 'ruszis5',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+    usgmctruck =
+  {
+    into = 'usresource',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
+  
+	usresource =
+  {
+    into = 'usgmctruck',
+    tech = 0,
+    time = 5,
+    metal = 0,
+    energy = 0,
+  },
 }
 --
 -- Here's an example of why active configuration

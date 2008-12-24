@@ -64,6 +64,12 @@ show gun;
 	ENGINEER_STANCE1
 	}
 	#endif
+	#ifdef ATRIFLE
+	if (pickStance == 1)
+	{
+	ATRIFLE_STANCE1
+	}
+	#endif
 #ifdef WEAPON_GRENADE
 	if (!bNading)
 	{

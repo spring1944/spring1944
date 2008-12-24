@@ -1,17 +1,17 @@
 [unitinfo]
 {
 	unitname=GBRResource;
-	objectname=LogisticsMed.S3O;
+	objectname=LogisticsSmall.S3O;
 	buildpic=LogisticsSmall.png;
 	corpse=Debris_Small;
 	icontype=ammo;
-	soundcategory=GbrInf;
-	category=NFLAGNAIR BUILDING NFLAG ;
+	soundcategory=GBRInf;
+	category=NFLAGNAIR NOWEAPON  BUILDING NFLAG ;
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistics Stockpile;
-	description=Provides Logistics (Energy);
+	name=Small Supply Dump;
+	description=Provides supplies to a small area;
 	side=GBR;
 	maxdamage=400;
 	buildcostmetal=720;
@@ -23,8 +23,9 @@
 	shownanoframe=0;
 	smoothanim=0;
 
+
 	energymake=0;
-	energystorage=0;
+	energystorage=150;
 
 	sightdistance=1;
 	stealth=1;
@@ -37,7 +38,7 @@
 	buildinggrounddecalsizex=4;
 	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
-
+	//weapon1=medsupply;
 	explodeas=ResourceBoom;
 	selfdestructas=Med_Explosion;
 
@@ -50,6 +51,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=300;
+		supplyRange=150;
 	}
 }
