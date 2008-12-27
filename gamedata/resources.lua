@@ -104,7 +104,6 @@ local	resources = {
 				dust2							=	'dust2.png',
 				dirt							=	'dirt.png',
 				fireflash					=	'fireflash2.png',
-				dirtDots          = 'PD/dirtDots.tga',
 				splashside        = 'PD/splashside.tga',
 				splashbase        = 'PD/splashbase.tga',
 			},
