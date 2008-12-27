@@ -6,7 +6,7 @@
 	turret=1;
 	tolerance=5;
 	interceptedbyshieldtype=8;
-	explosiongenerator=custom:BulletImpact;
+	explosiongenerator=custom:Bullet;
 	lineofsight=1;
 	firestarter=0.0;
 

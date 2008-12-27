@@ -1,0 +1,49 @@
+[Bullet] {
+	usedefaultexplosions=0;
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0,  0;
+			delay=0;				
+			explosionGenerator=custom:Bullet_Miss;
+		}
+		nounit=1;
+		count=1;
+	}
+}
+
+[Bullet_Miss] {
+	[ground]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.5 0.4 0.3 1  0.05 0.04 0.03 0.1;
+			size=1 r0.5;
+			length=4 r8;
+			sizeGrowth=1;
+			ttl=12;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=2;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0.045 0.045 0.05 0.05; 
+			size=1 r0.5;
+			length=4 r8;
+			sizeGrowth=1;
+			ttl=12;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=2;
+	}
+}

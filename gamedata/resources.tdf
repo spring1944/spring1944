@@ -82,6 +82,9 @@
 			fireflash=fireflash2.png;
 			flash3=flash3.tga;
 			shot=shot.tga;
+			dirtDots=PD/dirtDots.tga;
+			splashside=PD/splashside.tga;
+			splashbase=PD/splashbase.tga;
 		}
 	}
 }

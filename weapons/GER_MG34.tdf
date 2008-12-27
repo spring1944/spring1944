@@ -5,9 +5,10 @@
 	name=Maschinengewehr 34;
 	rendertype=0;
 	turret=1;
-	tolerance=6	pitchtolerance=700;
+	tolerance=6;	
+	pitchtolerance=700;
 	interceptedbyshieldtype=8;
-	explosiongenerator=custom:BulletImpact;
+	explosiongenerator=custom:Bullet;
 	lineofsight=1;
 	firestarter=0.0;
 

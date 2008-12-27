@@ -21,7 +21,7 @@
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
-	explosiongenerator=custom:BulletImpact;
+	explosiongenerator=custom:Bullet;
 	soundtrigger=1;
 	soundstart=GER_MG42;
 	impactonly=1;
@@ -80,7 +80,7 @@
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
-	explosiongenerator=custom:BulletImpact;
+	explosiongenerator=custom:Bullet;
 	soundtrigger=1;
 	soundstart=GER_MG42;
 
@@ -188,7 +188,7 @@
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
-	explosiongenerator=custom:BulletImpact;
+	explosiongenerator=custom:Bullet;
 	soundtrigger=1;
 	soundstart=GER_MG42;
 	canattackground=0;
