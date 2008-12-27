@@ -29,9 +29,9 @@ if gadgetHandler:IsSyncedCode() then
 		if cmdID == CMD.RECLAIM then
 			local IDs = cmdParams
 			if (IDs[1] > Game.maxUnits) then
-				local featureID = IDs - Game.maxUnits
+				local featureID = IDs[1] - Game.maxUnits
 				local FeatureDefID = GetFeatureDefID(featureID)
-				local name = FeatureDefs[GetFeatureDefID(feature)].name
+				local name = FeatureDefs[FeatureDefID].name
 				if name and string.find(name, "treetype") ~= nil then
 					return false
 				else
