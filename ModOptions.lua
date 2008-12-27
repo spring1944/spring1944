@@ -79,6 +79,27 @@ local options = {
     max    = 10,
     step   = 0.05,
   },
+    {
+    key    = 'weapon_aoe_mult',
+    name   = 'AoE multiplier',
+    desc   = 'Applies a multiplier to all the weapon AoE values',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.05,
+  },
+  
+    {
+    key    = 'weapon_hedamage_mult',
+    name   = 'HE damage multiplier',
+    desc   = 'Applies a multiplier to all the HE damage values',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.05,
+  },
   {
     key    = 'weapon_edgeeffectiveness_mult',
     name   = 'Weapon edgeeffectiveness multiplier',

@@ -11,7 +11,7 @@
 	name=Field Engineer;
 	description=Basic Engineer;
 	maxdamage=100;
-	buildcostmetal=140;
+	buildcostmetal=280;
 	buildcostenergy=0;
 	buildtime=140;
 	footprintx=1;

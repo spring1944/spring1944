@@ -22,6 +22,12 @@
 	upright=1;
 	shownanoframe=0;
 	smoothanim=0;
+	
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=220;
+	
 
 	SeismicSignature=0;
 	sightdistance=840;
@@ -30,11 +36,11 @@
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
+	maxvelocity=1;
 	acceleration=0.375;
 	brakerate=0.9;
 	turnrate=1010;
-	maxslope=15;
+	maxslope=25;
 	maxwaterdepth=5;
 
 	explodeas=Small_Explosion;

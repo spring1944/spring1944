@@ -10,11 +10,11 @@
 	lineofsight=1;
 	firestarter=1;
 
-	range=700;
+	range=735;
 	reloadtime=2.8;
 	burst=5;
 	burstrate=.109;
-	sprayangle=410;
+	sprayangle=350;
 	areaofeffect=1;
 	movingaccuracy=7111;
 	weaponvelocity=1500;

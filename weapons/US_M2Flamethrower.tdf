@@ -37,7 +37,7 @@
 	}
 	[customParams]
 	{
-		fearid=601;
-		fearaoe=150;
+		fearid=501;
+		fearaoe=75;
 	}
 }

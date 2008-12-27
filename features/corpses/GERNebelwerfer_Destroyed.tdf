@@ -1,6 +1,6 @@
 [gernebelwerfer_destroyed]
 {
-	object=GERNebelwerfver_Destroyed.S3O;
+	object=GERNebelwerfer_Destroyed.S3O;
 	description=Destroyed Rockets;
 	featuredead=Debris_Small;
 	energy=500;

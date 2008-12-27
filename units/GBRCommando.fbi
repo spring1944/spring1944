@@ -22,7 +22,6 @@
 
 	upright=1;
 	shownanoframe=0;
-	unitrestricted=8;
 	smoothanim=0;
 
 	SeismicSignature=0;

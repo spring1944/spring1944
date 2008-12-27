@@ -201,6 +201,7 @@ if (modOptions) then
 	end
 	Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
   end
+  
   if (modOptions.weapon_reload_mult) then
 	local totalWeapons
 	totalWeapons = 0
@@ -223,18 +224,39 @@ if (modOptions) then
 		end
 	end
   end
-    if (modOptions.weapon_edgeeffectiveness_mult) then
-	local totalWeapons
-	totalWeapons = 0
+  if (modOptions.weapon_edgeeffectiveness_mult) then
 	local edgeeffectCoeff
 	edgeeffectCoeff = modOptions.weapon_edgeeffectiveness_mult
-	Spring.Echo("Starting weapon edgeeffectiveness multiplying, coefficient: "..edgeeffectCoeff)
 	for name in pairs(WeaponDefs) do
-		local curEdgeeffect = WeaponDefs[name].edgeEffectiveness
+		local curEdgeeffect = WeaponDefs[name].edgeeffectiveness
 		if (curEdgeeffect) then
-			WeaponDefs[name].edgeEffectiveness = curEdgeeffect * edgeeffectCoeff
-			totalWeapons = totalWeapons + 1
+			WeaponDefs[name].edgeeffectiveness = curEdgeeffect * edgeeffectCoeff
 		end
+	end
+  end
+  
+  if (modOptions.weapon_aoe_mult) then
+	local aoeCoeff
+	aoeCoeff = modOptions.weapon_aoe_mult
+	for name in pairs(WeaponDefs) do
+		if (WeaponDefs[name].lineofsight ~= 1) then
+			local curAoe = WeaponDefs[name].areaofeffect
+			if (curAoe) then
+				WeaponDefs[name].areaofeffect = curAoe * aoeCoeff
+			end
+		end
+	end
+  end
+  
+  if (modOptions.weapon_hedamage_mult) then
+	local heCoeff
+	heCoeff = modOptions.weapon_hedamage_mult
+	for name in pairs(WeaponDefs) do
+		--if (WeaponDefs[name].canattackground == true) and (WeaponDefs[name].lineofsight ~= 1) then
+			for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
+				WeaponDefs[name].damage[armorType] = armorDamage * heCoeff
+			end
+		--end
 	end
   end
 end

@@ -6,7 +6,7 @@
 	soundcategory=RUSYard;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
-	yardmap=oooooo occcco occcco occcco occcco cccccc cccccc cccccc;
+	yardmap=oooooo oooooo ooccoo occcco occcco cccccc cccccc cccccc;
 
 	name=Barracks;
 	side=RUS;

@@ -49,7 +49,10 @@
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
-
+	
+	nochasecategory=FLAG;
+	badtargetcategory=FLAG;
+	
 	weapon1=STEN;
 	badtargetcategory1=LIGHTVEH;
 	onlytargetcategory1=INFTARG;
@@ -59,8 +62,6 @@
 	onlytargetcategory2=NFLAGNAIR;
 	weaponmaindir2= 0 0 1;
 	maxangledif2=170;
-	weapon3=GERflagkiller;
-	onlytargetcategory3=FLAG;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
