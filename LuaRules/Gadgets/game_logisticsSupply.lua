@@ -48,7 +48,7 @@ end
 
 
 function gadget:UnitDestroyed(u) -- you can omit unneeded arguments if they
-       hq[u] = nil       -- are at the end
+      -- hq[u] = nil     
 end
 
 else
