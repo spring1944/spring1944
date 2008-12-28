@@ -499,7 +499,7 @@
 	[GBRTankYard1]
 	{
 		canbuild1=GBRKangaroo;
-		canbuild3=GBRShermanFirefly;
+		//canbuild3=GBRShermanFirefly;
 		canbuild4=GBRSexton;
 		canbuild5=GBRM10Achilles;
 		canbuild6=GBRChurchillMkVII;

@@ -65,7 +65,7 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define MuzzleBrakeSmoke	1024+10
 
 // tracers
-#define MEDIUM_TRACER 	2048+7
+#define MEDIUM_TRACER 	2048+3
 
 //Pressure Line's stuff
 #define TURNRATE 280 //set to whatever the unit's fbi turnrate is

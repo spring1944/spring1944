@@ -62,7 +62,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define MEDIUM_MUZZLEDUST 1024+9
 
 // tracers
-#define MEDIUM_TRACER 	2048+4
+#define MEDIUM_TRACER 	2048+3
 
 treads() 
 { 
