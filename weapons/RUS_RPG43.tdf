@@ -4,7 +4,7 @@
 	name=RPG-43 Anti-Tank Grenade;
 	model=MortarShell.S3O;
 	rendertype=3;
-	explosiongenerator=custom:Weapon_Explosion_Medium;
+	explosiongenerator=custom:HE_Medium;
 	turret=1;
 
 	range=225;
