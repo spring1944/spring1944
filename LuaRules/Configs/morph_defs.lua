@@ -388,7 +388,7 @@ local morphDefs = {
   {
     into = 'gerresource',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -397,7 +397,7 @@ local morphDefs = {
   {
     into = 'geropelblitz',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -406,7 +406,7 @@ local morphDefs = {
   {
     into = 'gbrresource',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -415,7 +415,7 @@ local morphDefs = {
   {
     into = 'gbrbedfordtruck',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -424,7 +424,7 @@ local morphDefs = {
   {
     into = 'rusresource',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -433,7 +433,7 @@ local morphDefs = {
   {
     into = 'ruszis5',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -442,7 +442,7 @@ local morphDefs = {
   {
     into = 'usresource',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -451,7 +451,7 @@ local morphDefs = {
   {
     into = 'usgmctruck',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
