@@ -17,7 +17,7 @@
 	weapontimer=5;
 
 	soundhit=GEN_Explo_Grenade;
-	explosiongenerator=custom:Weapon_Explosion_Shrapnel;
+	explosiongenerator=custom:HE_Small;
 
 	impulsefactor=0.00001;
 
