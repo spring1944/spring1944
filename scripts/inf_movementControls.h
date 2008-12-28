@@ -37,7 +37,9 @@ while(1)
 		
 		if (bMoving == 1)
 		{
+		#ifndef COMMANDO
 		set MAX_SPEED to (iSpeed/AIM_SLOWDOWN_FACTOR);
+		#endif
 		call-script AimRun();
 		}		
 	}
