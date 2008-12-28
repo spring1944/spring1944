@@ -66,7 +66,7 @@
 	turret=1;
 	tolerance=300;
 	explosionspeed=100;
-	explosiongenerator=custom:AP_Impact_Medium;
+	explosiongenerator=custom:AP_Medium;
 
 	ballistic=1;
 

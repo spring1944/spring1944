@@ -64,7 +64,7 @@
 {
 	id=100;
 	name=German 75mm KwK 40 L/48 Armour-Piercing;
-	explosiongenerator=custom:AP_Impact_Medium;
+	explosiongenerator=custom:AP_Medium;
 	rendertype=1;
 	turret=1;
 	tolerance=300;
