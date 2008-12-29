@@ -29,6 +29,24 @@
 		count=1;
 	}
 	
+	[pikes] {
+		class=CExploSpikeProjectile;
+		[properties] {
+			dir= -0.5 r1, -0.5 r1, -0.5 r1;
+			width=1;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.125;
+			color=1,0.75,0.5;
+			alwaysVisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8; 
+	}
+	
 	[hit] {
 		class=CExpGenSpawner;
 		[properties]{
@@ -62,23 +80,6 @@
 }
 
 [AP_XSmall_Hit] {
-	[pikes] {
-		class=CExploSpikeProjectile;
-		[properties] {
-			dir= -0.5 r1, -0.5 r1, -0.5 r1;
-			width=1;
-			length=1;
-			lengthGrowth=1;
-			alpha=1;
-			alphadecay=0.125;
-			color=1,0.75,0.5;
-			alwaysVisible=1;
-		}
-		air=1;
-		water=1;
-		ground=1;
-		count=8; 
-	}
 	
 	[sparks] {
 		class=CSimpleParticleSystem;
