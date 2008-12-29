@@ -30,7 +30,7 @@
 	soundhit=GEN_Explo_5;
 
 
-	cegtag=TestRocketTrail;
+	cegtag=RocketTrail;
 	explosiongenerator=custom:HE_XLarge;
 	explosionspeed=100;
 	cratermult=.5;

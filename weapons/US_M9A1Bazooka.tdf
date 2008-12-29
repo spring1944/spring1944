@@ -25,7 +25,7 @@
 	soundstart=US_Bazooka;
 	soundhit=GEN_Explo_2;
 
-	cegtag=TestBazookaTrail;
+	cegtag=BazookaTrail;
 
 	[damage]
 	{

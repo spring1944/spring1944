@@ -26,7 +26,7 @@
 	soundstart=GER_Panzerschrek;
 	soundhit=GEN_Explo_2;
 
-	cegtag=TestBazookaTrail;
+	cegtag=BazookaTrail;
 
 	impulsefactor=1;
 	impulseboost=0;

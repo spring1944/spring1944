@@ -25,7 +25,7 @@
 	soundstart=GER_Panzerschrek;
 	soundhit=GEN_Explo_3;
 
-	cegtag=TestBazookaTrail;
+	cegtag=BazookaTrail;
 
 	[damage]
 	{
