@@ -44,7 +44,7 @@
   	separation=2;
   	stages=50;
 
-	explosiongenerator=custom:Weapon_Explosion_Large;
+	explosiongenerator=custom:HE_Large;
 
 	[damage]
 	{

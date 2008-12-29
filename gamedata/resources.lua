@@ -107,6 +107,7 @@ local	resources = {
 				splashside        = 'PD/splashside.tga',
 				splashbase        = 'PD/splashbase.tga',
 				randdots          = 'randdots.tga',
+				fireball          = 'PD/fireball.tga',
 			},
 		}
 	}

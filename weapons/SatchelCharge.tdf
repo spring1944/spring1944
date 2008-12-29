@@ -5,7 +5,7 @@
 	model=ATMine;
 	rendertype=2;
 	turret=1;
-	explosiongenerator=custom:Weapon_Explosion_Large;
+	explosiongenerator=custom:HE_Large;
 
 	lineofsight=1;
 	firestarter=0.0;
