@@ -1,0 +1,83 @@
+[Molotov] {
+	usedefaultexplosions=0;
+	[flames] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-8 r16, 0, -8 r16;
+			delay=r16;				
+			explosionGenerator=custom:Molotov_Flames;
+		}
+		unit=1;
+		ground=1;
+		count=64;
+	}
+	
+	[fire] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0.25;
+			sizeMod=1;
+			pos=-4 r8, 0, -4 r8;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=1 1 1 0.2  0 0 0 0;
+			Texture=fireball;
+			airdrag=0.75;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=0.5;
+			particleSizeSpread=1;
+			emitRot=80;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8;
+	}
+	
+	[groundflash] {
+		flashsize=12;
+		flashalpha=1;
+		circlegrowth=10;
+		circlealpha=0;
+		ttl=48;
+		color=1,0.5,0;
+	}
+}
+
+[Molotov_Flames] {
+	[flames] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.1, 0;
+			colorMap=1 1 1 0.2  0 0 0 0.2  0 0 0 0;
+			Texture=fireball;
+			airdrag=0.95;
+			particleLife=24;
+			particleLifeSpread=8;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=0.5;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

@@ -17,7 +17,7 @@
 	weapontimer=5;
 
 	soundhit=GEN_Molotov2;
-	explosiongenerator=custom:Weapon_Explosion_Molotov;
+	explosiongenerator=custom:Molotov;
 
 	impulsefactor=0.00001;
 

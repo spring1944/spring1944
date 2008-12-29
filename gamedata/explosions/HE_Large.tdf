@@ -37,13 +37,13 @@
 			pos=0, 0, 0;
 			emitVector=0, 1, 0;
 			gravity=0, 0, 0;
-			colorMap=1 1 1 1  0 0 0 0;
+			colorMap=1 1 1 0.1  0 0 0 0.1  0 0 0 0;
 			Texture=fireball;
 			airdrag=0.75;
 			particleLife=24;
 			particleLifeSpread=8;
-			numParticles=8;
-			particleSpeed=4;
+			numParticles=32;
+			particleSpeed=1;
 			particleSpeedSpread=4;
 			particleSize=1;
 			particleSizeSpread=0;
