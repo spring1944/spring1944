@@ -112,7 +112,7 @@
 	[wreck_light] {
 		class=CExpGenSpawner;
 		[properties]{
-			pos=-16 r32, r32, -16 r32;
+			pos=-16 r32, r16, -16 r32;
 			dir=-2 r4, 2, -2 r4;
 			delay=r8;				
 			explosionGenerator=custom:HE_Large_Wreck_Light;
@@ -125,7 +125,7 @@
 	[wreck_dark] {
 		class=CExpGenSpawner;
 		[properties]{
-			pos=-16 r32, r32, -16 r32;
+			pos=-16 r32, r16, -16 r32;
 			dir=-2 r4, 2, -2 r4;
 			delay=r8;				
 			explosionGenerator=custom:HE_Large_Wreck_Dark;
@@ -133,6 +133,34 @@
 		unit=1;
 		ground=1;
 		count=8;
+	}
+	
+	[debris] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.3, 0;
+			colorMap=0 0 0 1  0 0 0 1;
+			Texture=debris2;
+			airdrag=0.95;
+			particleLife=48;
+			particleLifeSpread=16;
+			numParticles=32;
+			particleSpeed=8;
+			particleSpeedSpread=8;
+			particleSize=2;
+			particleSizeSpread=16;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
+		}
+		unit=1;
+		ground=1;
+		count=1;
 	}
 	
 	[sphere] {

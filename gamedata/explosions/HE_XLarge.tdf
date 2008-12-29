@@ -2,21 +2,32 @@
 	usedefaultexplosions=0;
 	
 	[smoke] {
-		class=CSmokeProjectile2;
+		class=CSimpleParticleSystem;
 		[properties]{
-			color=r0.5;
-			ageSpeed=0.015;
-			size=12 r8;
-			startSize=4 r8;
-			sizeExpansion=0.125;
-			glowFalloff=3;
-			pos=-64 r128, r64, -64 r128;
-			speed=-1 r2, r4, -1 r2;
+			sizeGrowth=0.2 r0.1;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.1, 0;
+			colorMap=0.25 0.25 0 0.25  0.25 0 0 0.25  0 0 0 0.25  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.95;
+			particleLife=48;
+			particleLifeSpread=16;
+			numParticles=64;
+			particleSpeed=0.5;
+			particleSpeedSpread=2;
+			particleSize=4;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=0;
 		}
 		air=1;
 		water=1;
 		ground=1;
-		count=64;
+		count=1;
 	}
 	
 	[fire] {
@@ -85,9 +96,9 @@
 	[wreck_light] {
 		class=CExpGenSpawner;
 		[properties]{
-			pos=-32 r64, r64, -32 r64;
+			pos=-16 r32, r16, -16 r32;
 			dir=-2 r4, 2, -2 r4;
-			delay=r16;				
+			delay=r8;				
 			explosionGenerator=custom:HE_XLarge_Wreck_Light;
 		}
 		unit=1;
@@ -98,9 +109,9 @@
 	[wreck_dark] {
 		class=CExpGenSpawner;
 		[properties]{
-			pos=-32 r64, r64, -32 r64;
+			pos=-16 r32, r16, -16 r32;
 			dir=-2 r4, 2, -2 r4;
-			delay=r16;				
+			delay=r8;				
 			explosionGenerator=custom:HE_XLarge_Wreck_Dark;
 		}
 		unit=1;
@@ -108,16 +119,61 @@
 		count=16;
 	}
 	
-	[pillar] {
-		class=CExpGenSpawner;
+	[debris] {
+		class=CSimpleParticleSystem;
 		[properties]{
-			pos=-4 r8, 16 i2, -4 r8;
-			delay=i1;				
-			explosionGenerator=custom:HE_XLarge_Pillar;
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.3, 0;
+			colorMap=0 0 0 1  0 0 0 1;
+			Texture=debris2;
+			airdrag=0.95;
+			particleLife=48;
+			particleLifeSpread=16;
+			numParticles=64;
+			particleSpeed=8;
+			particleSpeedSpread=8;
+			particleSize=2;
+			particleSizeSpread=16;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
 		}
 		unit=1;
 		ground=1;
-		count=32;
+		count=1;
+	}
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.3, 0;
+			colorMap=1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
+			Texture=plasma;
+			airdrag=0.9;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=32;
+			particleSpeed=4;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
 	}
 	
 	[sphere] {
@@ -203,36 +259,5 @@
 		water=1;
 		ground=1;
 		count=32;
-	}
-}
-
-[HE_XLarge_Pillar] {
-	[fire] {
-		class=CSimpleParticleSystem;
-		[properties]{
-			sizeGrowth=6 r6;
-			sizeMod=0.5;
-			pos=0, 0, 0;
-			emitVector=0, 1, 0;
-			gravity=0, 0, 0;
-			colorMap=1 1 1 0.1  0 0 0 0.1  0 0 0 0.1  0 0 0 0;
-			Texture=fireball;
-			airdrag=0.75;
-			particleLife=48;
-			particleLifeSpread=16;
-			numParticles=1;
-			particleSpeed=0;
-			particleSpeedSpread=1;
-			particleSize=1;
-			particleSizeSpread=0;
-			emitRot=0;
-			emitRotSpread=180;
-			directional=0;
-			alwaysVisible=0;
-		}
-		air=1;
-		water=1;
-		ground=1;
-		count=1;
 	}
 }
