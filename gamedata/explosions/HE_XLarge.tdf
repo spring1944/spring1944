@@ -208,7 +208,7 @@
 			sizeMod=1;
 			pos=-1 r2, r1, -1 r2;
 			emitVector=dir;
-			gravity=0, -0.2y0 i0.03125y1 1x0x1x1, 0;
+			gravity=0, i0.03125y0 -0.2x0x0, 0;
 			colorMap=0.4 0.4 0.4 0.5  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.97;
@@ -239,7 +239,7 @@
 			sizeMod=1;
 			pos=-1 r2, r1, -1 r2;
 			emitVector=dir;
-			gravity=0, -0.2y0 i0.03125y1 1x0x1x1, 0;
+			gravity=0, i0.03125y0 -0.2x0x0, 0;
 			colorMap=0.1 0.1 0.1 0.5  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.97;
