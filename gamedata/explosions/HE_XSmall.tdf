@@ -63,20 +63,6 @@
 		count=4;
 	}
 	
-	[sphere] {
-		class=CSpherePartSpawner;
-		[properties] {
-			expansionSpeed=1;
-			ttl=8;
-			alpha=0.125;
-			color=1,1,1;
-		}
-		air=1;
-		water=1;
-		ground=1;
-		count=1;
-	}
-	
 	[groundflash] {
 		flashsize=8;
 		flashalpha=1;

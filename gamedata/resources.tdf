@@ -84,6 +84,7 @@
 			shot=shot.tga;
 			splashside=PD/splashside.tga;
 			splashbase=PD/splashbase.tga;
+			randdots=randdots.tga;
 		}
 	}
 }

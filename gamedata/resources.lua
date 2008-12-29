@@ -106,6 +106,7 @@ local	resources = {
 				fireflash					=	'fireflash2.png',
 				splashside        = 'PD/splashside.tga',
 				splashbase        = 'PD/splashbase.tga',
+				randdots          = 'randdots.tga',
 			},
 		}
 	}

@@ -46,6 +46,23 @@
 		count=8;
 	}
 	
+	[dirt]{
+		class = CDirtProjectile;
+		[properties]{
+			alpha=255;
+			alphaFalloff=10;
+			size=8 r16;
+			sizeExpansion=0;
+			slowdown=0.95;
+			color=0.4 r0.1, 0.3 r0.1, 0.2 r0.1;
+			texture=randdots;
+			pos=-2 r4, r2, -2 r4;
+			speed=-2 r4, r2, -2 r4;
+		}
+		ground=1;
+		count=8;
+	}
+	
 	[water]{
 		class = CBitmapMuzzleFlame;  
 		[properties]{
