@@ -31,7 +31,7 @@
 
 
 	cegtag=TestRocketTrail;
-	explosiongenerator=custom:Weapon_Explosion_XLarge;
+	explosiongenerator=custom:HE_XLarge;
 	explosionspeed=100;
 	cratermult=.5;
 	craterboost=0;
