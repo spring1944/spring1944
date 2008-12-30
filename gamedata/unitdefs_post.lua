@@ -47,6 +47,19 @@ end
 		end
 	end
 	
+	if (modOptions.fast_supply == "1") then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.customparams) then
+				if (ud.customparams.weaponcost) then
+				ud.customparams.weaponcost = (2.25 * ud.customparams.weaponcost)
+				end
+				if (ud.customparams.arrivalgap) then
+				ud.customparams.arrivalgap = (0.5 * ud.customparams.arrivalgap)
+				end
+			end
+		end
+	end
+	
 	if (modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.maxvelocity) then

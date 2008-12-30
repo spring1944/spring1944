@@ -28,8 +28,15 @@ local options = {
 		desc = 'Flags and their capping status can be seen without LOS', 
 		type = 'bool', 
 		def = false, 
+	},		
+	{ 
+		key = 'fast_supply', 
+		name = 'Faster resupply schedule', 
+		desc = 'Weapons cost 2.25x to refill, resupply comes every 5 minutes instead of every 10.', 
+		type = 'bool', 
+		def = false, 
 	},
-  {
+	{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
     desc   = 'Applies a multiplier to all the weapon ranges ingame',
@@ -90,7 +97,7 @@ local options = {
     step   = 0.05,
   },
   
-    {
+   {
     key    = 'weapon_hedamage_mult',
     name   = 'HE damage multiplier',
     desc   = 'Applies a multiplier to all the HE damage values',
