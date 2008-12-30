@@ -384,6 +384,29 @@
 	turn head to y-axis <0.000000> now;\
 	turn head to x-axis <0.000000> now;\
 	turn head to z-axis <0.000000> now;
+	
+#define FLAMER_STANCE1 \
+	turn ruparm to x-axis <-70> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-40> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-110> now;\
+	turn luparm to x-axis <25> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <-95> now;\
+	turn lloarm to y-axis <0> now;\
+	turn lloarm to z-axis <0> now;\
+	turn gun to x-axis <30> now;\
+	turn gun to y-axis <0> now;\
+	turn gun to z-axis <-20> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <0> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;
 
 HipAim()
 	{
@@ -551,6 +574,12 @@ Stand(pickStance) //just resetting legs and such while still
 		if (pickStance == 2)
 		{
 		ENGINEER_STANCE1
+		}
+		#endif
+		#ifdef FLAMETHROWER
+		if (pickStance == 1)
+		{
+		FLAMER_STANCE1
 		}
 		#endif
 	#ifdef WEAPON_GRENADE

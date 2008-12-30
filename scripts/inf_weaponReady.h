@@ -74,6 +74,12 @@ show gun;
 	ATRIFLE_STANCE1
 	}
 	#endif
+	#ifdef FLAMETHROWER
+	if (pickStance == 1)
+	{
+	FLAMER_STANCE1
+	}
+	#endif
 #ifdef WEAPON_GRENADE
 	if (!bNading)
 	{

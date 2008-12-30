@@ -24,7 +24,7 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 #include "inf_sharedDefs.h"
 
 //individual unit definitions
-#define SMG
+//#define SMG
 #define FLAMETHROWER
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000

@@ -53,7 +53,7 @@
 	weapon1=PartisanMosinNagant;
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
-	maxangledif1=180;
+	maxangledif1=170;
 	
 	weapon2=molotov;
 	onlytargetcategory2=NFLAG;
