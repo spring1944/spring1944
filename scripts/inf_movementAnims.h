@@ -77,22 +77,23 @@ pelviswait = rand(130, 145);
 		turn rleg to y-axis <0> now;
 		turn rleg to z-axis <0> now;
 
-		#ifdef ENGINEER
-		turn ruparm to y-axis <0> now;
-		turn ruparm to z-axis <0> now;
-		turn rloarm to x-axis <-100> now;
-		turn rloarm to y-axis <0> now;
-		turn rloarm to z-axis <0> now;
-		turn luparm to y-axis <0> now;
-		turn luparm to z-axis <0> now;
-		turn lloarm to x-axis <-100> now;
-		turn lloarm to y-axis <0> now;
-		turn lloarm to z-axis <0> now;
-		#endif
+
 		//turn torso to x-axis <7> now;
 		//if (bMoving==0) sleep 200;	
 		if (bMoving==1)
 			{
+			#ifdef ENGINEER
+			turn ruparm to y-axis <0> now;
+			turn ruparm to z-axis <0> now;
+			turn rloarm to x-axis <-100> now;
+			turn rloarm to y-axis <0> now;
+			turn rloarm to z-axis <0> now;
+			turn luparm to y-axis <0> now;
+			turn luparm to z-axis <0> now;
+			turn lloarm to x-axis <-100> now;
+			turn lloarm to y-axis <0> now;
+			turn lloarm to z-axis <0> now;
+			#endif
 			turn rleg to x-axis <85> speed <540>;	
 			turn rthigh to x-axis <-60> speed <270>;
 			turn lthigh to x-axis <30> speed <270>;
@@ -101,8 +102,8 @@ pelviswait = rand(130, 145);
 			move pelvis to y-axis [0.4] speed <2800>;
 		sleep pelviswait;
 			#ifdef ENGINEER
-			turn luparm to x-axis <-20> speed <270>;
-			turn ruparm to x-axis <40> speed <270>;
+			if (bMoving==1) turn luparm to x-axis <0> speed <270>;
+			if (bMoving==1) turn ruparm to x-axis <60> speed <270>;
 			#endif
 			turn rleg to x-axis <10> speed <630>;
 			move pelvis to y-axis [0] speed <2800>;
@@ -118,8 +119,8 @@ pelviswait = rand(130, 145);
 			move pelvis to y-axis [0.4] speed <2800>;	
 		sleep pelviswait;
 			#ifdef ENGINEER
-			turn luparm to x-axis <40> speed <270>;
-			turn ruparm to x-axis <-20> speed <270>;
+			if (bMoving==1) turn luparm to x-axis <60> speed <270>;
+			if (bMoving==1) turn ruparm to x-axis <0> speed <270>;
 			#endif
 			turn lleg to x-axis <10> speed <630>;
 			move pelvis to y-axis [0] speed <2800>;

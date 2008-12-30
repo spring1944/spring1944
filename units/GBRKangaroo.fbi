@@ -3,7 +3,7 @@
 	unitname=GBRKangaroo;
 	objectname=GBRKangaroo.S3O;
 	corpse=GBRKangaroo_Destroyed;
-	icontype=medtank;
+	icontype=halftrack;
 	soundcategory=GBRTank;
 	category=TANK TPORT INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;

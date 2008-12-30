@@ -63,6 +63,10 @@ show gun;
 	{
 	ENGINEER_STANCE1
 	}
+	if (pickStance == 2)
+	{
+	ENGINEER_STANCE1
+	}
 	#endif
 	#ifdef ATRIFLE
 	if (pickStance == 1)

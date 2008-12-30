@@ -543,7 +543,17 @@ Stand(pickStance) //just resetting legs and such while still
 		SCOUT_STANCE3
 		}
 		#endif
-#ifdef WEAPON_GRENADE
+		#ifdef ENGINEER
+		if (pickStance == 1)
+		{
+		ENGINEER_STANCE1
+		}
+		if (pickStance == 2)
+		{
+		ENGINEER_STANCE1
+		}
+		#endif
+	#ifdef WEAPON_GRENADE
 		if (!bNading)
 		{
 			#ifdef RIFLE
