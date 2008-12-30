@@ -49,7 +49,7 @@
 	startvelocity=10;
 	tolerance=4000;
 	weaponvelocity=245;
-	areaofeffect=300;
+	areaofeffect=376;
 	edgeeffectiveness=0.8;
 	soundhit=GEN_Explo_9;
 
@@ -59,7 +59,7 @@
 	
 	[damage]
 	{
-		default=10000;
+		default=20000;
 	}
 }
 

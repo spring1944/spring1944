@@ -17,7 +17,7 @@
 	reloadtime=10;
 	startvelocity=750;
 	weaponvelocity=750;
-	areaofeffect=25;
+	areaofeffect=32;
 	weapontimer=1;
 	//smoketrail=1;
 	targetmoveerror=0.075;
@@ -30,42 +30,12 @@
 	[damage]
 	{
 		default=17422;
-		infantry=1900;
-		guns=1500;
-		lightbuildings=750;
-		bunkers=750;
+		infantry=4000;
+		guns=3000;
+		lightbuildings=1500;
+		bunkers=1500;
 		sandbags=250;
 		mines=0;
 		flag=0;
-	}
-}
-[panzerschrekfear]
-{
-	id=301;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-
-	ballistic=1;
-	firestarter=0;
-
-	range=300;
-	reloadtime=2;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	collidefriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
 	}
 }

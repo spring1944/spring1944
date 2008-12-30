@@ -11,7 +11,7 @@
 	accuracy=1421;
 	movingaccuracy=7111;
 	weaponvelocity=210;
-	areaofeffect=25;
+	areaofeffect=32;
 	edgeeffectiveness=0.8;
 	canattackground=0;
 	weapontimer=5;
@@ -23,13 +23,13 @@
 
 	[damage]
 	{
-		default=1250;
+		default=2500;
 		mines=0;
 		infantry=560;
 		guns=400;
 		flag=0;
-		tanks=670;
-		armouredvehicles=850;
-		unarmouredvehicles=450;
+		tanks=1340;
+		armouredvehicles=1700;
+		unarmouredvehicles=900;
 	}
 }

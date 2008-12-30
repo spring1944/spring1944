@@ -72,7 +72,7 @@
 	sprayangle=250;
 	//movingaccuracy=7111;
 	weaponvelocity=2000;
-	areaofeffect=20;
+	areaofeffect=24;
 	burnblow=1;
 	weapontimer=1;
 
@@ -95,17 +95,17 @@
 
 	[damage]
 	{
-		default=20;
-		infantry=220;
-		guns=150;
-		lightbuildings=25;
+		default=40;
+		infantry=500;
+		guns=300;
+		lightbuildings=50;
 		bunkers=0;
 		sandbags=5;
 		mines=0;
 		flag=0.00000000001;
-		tanks=25;
-		armouredvehicles=400;
-		unarmouredvehicles=500;
+		tanks=50;
+		armouredvehicles=800;
+		unarmouredvehicles=1000;
 		LightPlanes=90;
 	}
 }

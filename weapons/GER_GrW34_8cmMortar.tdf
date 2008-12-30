@@ -27,12 +27,12 @@
 
 	[damage]
 	{
-		default=760;
+		default=1520;
 		mines=0;
 		flag=0;
-		tanks=200;
-		armouredvehicles=1785;
-		unarmouredvehicles=1900;
+		tanks=400;
+		armouredvehicles=3500;
+		unarmouredvehicles=4000;
 	}
 	[customParams]
 	{

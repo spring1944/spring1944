@@ -19,7 +19,7 @@
 	accuracy=300;
 	movingaccuracy=500;
 	weaponvelocity=1600;
-	areaofeffect=20;
+	areaofeffect=24;
 	edgeeffectiveness=0.5;
 
 	soundstart=RUS_20mm;
@@ -43,15 +43,15 @@
 
 	[damage]
 	{
-		default=65;
-		infantry=300;
-		guns=220;
+		default=130;
+		infantry=600;
+		guns=440;
 		sandbags=50;
 		mines=0;
 		flag=0;
-		tanks=25;
-		armouredvehicles=450;
-		unarmouredvehicles=680;
+		tanks=50;
+		armouredvehicles=900;
+		unarmouredvehicles=1200;
 	}
 	[customParams]
 	{

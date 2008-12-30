@@ -16,7 +16,7 @@
 	accuracy=470;
 	targetmoveerror=0.1;
 	weaponvelocity=1200;
-	areaofeffect=105;
+	areaofeffect=128;
 	edgeeffectiveness=0.25;
 	soundstart=GEN_105mm;
 	soundhit=GEN_Explo_4;

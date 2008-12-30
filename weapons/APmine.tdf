@@ -12,7 +12,7 @@
 	range=32;
 	reloadtime=19999;
 	weaponvelocity=30;
-	areaofeffect=70;
+	areaofeffect=88;
 
 	soundstart=GEN_Explo_1;
 	soundhit=GEN_Explo_1;
@@ -22,17 +22,17 @@
 
 	[damage]
 	{
-		default=100;
-		infantry=2000;
-		guns=750;
-		lightbuildings=5;
+		default=200;
+		infantry=4000;
+		guns=1500;
+		lightbuildings=10;
 		bunkers=0;
-		sandbags=50;
+		sandbags=100;
 		mines=0;
 		flag=0;
-		tanks=10;
-		armouredvehicles=400;
-		unarmouredvehicles=505;
+		tanks=20;
+		armouredvehicles=800;
+		unarmouredvehicles=1000;
 	}
 }
 [apminekill]

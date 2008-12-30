@@ -17,7 +17,7 @@
 	reloadtime=1;
 	startvelocity=1250;
 	weaponvelocity=1250;
-	areaofeffect=50;
+	areaofeffect=64;
 	accuracy=1000;
 	weapontimer=1;
 	//smoketrail=1;
@@ -36,11 +36,11 @@
 
 	[damage]
 	{
-		default=9100;
-		infantry=1600;
-		guns=1300;
-		lightbuildings=2000;
-		bunkers=1000;
+		default=18000;
+		infantry=3200;
+		guns=2600;
+		lightbuildings=4000;
+		bunkers=2000;
 		sandbags=200;
 		mines=0;
 		flag=0;

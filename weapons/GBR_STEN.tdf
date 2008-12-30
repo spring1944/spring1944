@@ -41,7 +41,7 @@
 	laserflaresize=0.0001;
 
 	collisionsize=2.5;
-
+	impactonly=1;
 	[damage]
 	{
 		default=0;

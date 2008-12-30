@@ -23,7 +23,7 @@
 	range=480;
 	reloadtime=3.6;
 	weaponvelocity=250;
-	areaofeffect=50;
+	areaofeffect=64;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.5;
@@ -86,7 +86,7 @@
 	range=480;
 	reloadtime=3.6;
 	weaponvelocity=250;
-	areaofeffect=90;
+	areaofeffect=112;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.5;
@@ -252,7 +252,7 @@
 	range=480;
 	reloadtime=3.6;
 	weaponvelocity=250;
-	areaofeffect=40;
+	areaofeffect=64;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.5;
@@ -285,7 +285,7 @@
 	range=480;
 	reloadtime=3.6;
 	weaponvelocity=250;
-	areaofeffect=75;
+	areaofeffect=96;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.5;
@@ -420,7 +420,7 @@
 	range=200;
 	reloadtime=3.6;
 	weaponvelocity=10;
-	areaofeffect=80;
+	areaofeffect=104;
 
 	soundstart=GEN_Explo_1;
 	soundhit=GEN_Explo_1;

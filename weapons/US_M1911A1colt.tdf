@@ -37,7 +37,7 @@
 	corethickness=0.15;
 
 	size=2.5;
-
+	impactonly=1;
 	[damage]
 	{
 		default=1;

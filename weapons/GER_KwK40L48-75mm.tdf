@@ -17,7 +17,7 @@
 	movingaccuracy=600;
 	targetmoveerror=0.075;
 	weaponvelocity=1096;
-	areaofeffect=75;
+	areaofeffect=96;
 	edgeeffectiveness=0.15;
 
 	soundstart=GER_75mm;
@@ -45,14 +45,14 @@
 
 	[damage]
 	{
-		default=1550;
-		infantry=780;
-		guns=600;
+		default=3100;
+		infantry=1560;
+		guns=1200;
 		mines=0;
 		flag=0;
-		tanks=375;
-		armouredvehicles=1750;
-		unarmouredvehicles=3000;
+		tanks=750;
+		armouredvehicles=3550;
+		unarmouredvehicles=4300;
 	}
 	[customParams]
 	{

@@ -12,7 +12,7 @@
 	range=35;
 	reloadtime=10;
 	weaponvelocity=90;
-	areaofeffect=45;
+	areaofeffect=46;
 	weapontimer=0;
 
 	soundstart=GEN_Explo_4;
@@ -24,7 +24,7 @@
 
 	[damage]
 	{
-		default=10000;
+		default=12000;
 		infantry=200;
 		guns=500;
 		lightbuildings=1000;

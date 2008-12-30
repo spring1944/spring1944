@@ -40,7 +40,7 @@
 
 	//dyndamageexp=1;
 	//dyndamagerange=1000;
-
+	impactonly=1;
 	[damage]
 	{
 		default=1800;

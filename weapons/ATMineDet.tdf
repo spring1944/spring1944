@@ -11,7 +11,7 @@
 	range=30;
 	reloadtime=1000000000;
 	weaponvelocity=1;
-	areaofeffect=10;
+	areaofeffect=12;
 
 	soundstart=GEN_Explo_4;
 	soundhit=GEN_Explo_4;

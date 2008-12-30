@@ -18,7 +18,7 @@
 	accuracy=1421;
 	movingaccuracy=7111;
 	weaponvelocity=210;
-	areaofeffect=25;
+	areaofeffect=32;
 	edgeeffectiveness=0.8;
 	canattackground=0;
 	weapontimer=5;
@@ -33,6 +33,6 @@
 
 	[damage]
 	{
-		default=250;
+		default=500;
 	}
 }

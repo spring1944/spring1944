@@ -13,7 +13,7 @@
 	range=80;
 	reloadtime=10;
 	weaponvelocity=200;
-	areaofeffect=80;
+	areaofeffect=104;
 	edgeeffectiveness=1;
 	weapontimer=0;
 
@@ -24,8 +24,8 @@
 
 	[damage]
 	{
-		default=8000;
-		bunkers=6250;
+		default=16000;
+		bunkers=12500;
 		mines=0;
 		flag=0;
 	}

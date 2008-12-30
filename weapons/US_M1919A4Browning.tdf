@@ -31,7 +31,7 @@
 	rgbcolor=1 0.75 0;
 
 	size=0.00000000000001;
-
+	impactonly=1;
 	[damage]
 	{
 		default=1;

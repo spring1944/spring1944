@@ -14,7 +14,7 @@
 	accuracy=485;
 	startvelocity=1000;
 	weaponvelocity=550;
-	areaofeffect=88;
+	areaofeffect=112;
 	edgeeffectiveness=0.25;
 
 	soundstart=GEN_Mortar;
@@ -27,14 +27,14 @@
 
 	[damage]
 	{
-		default=760;
-		infantry=800;
-		guns=800;
+		default=1520;
+		infantry=1600;
+		guns=1600;
 		mines=0;
 		flag=0;
-		tanks=200;
-		armouredvehicles=1785;
-		unarmouredvehicles=1900;
+		tanks=400;
+		armouredvehicles=3570;
+		unarmouredvehicles=3800;
 	}
 	[customParams]
 	{

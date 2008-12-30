@@ -17,7 +17,7 @@
 	movingaccuracy=590;
 	targetmoveerror=0.075;
 	weaponvelocity=1584;
-	areaofeffect=40;
+	areaofeffect=50;
 	edgeeffectiveness=0.25;
 
 	soundstart=US_37mm;
@@ -45,14 +45,14 @@
 
 	[damage]
 	{
-		default=219;
-		infantry=550;
-		guns=500;
+		default=440;
+		infantry=1100;
+		guns=2000;
 		mines=0;
 		flag=0;
-		tanks=100;
-		armouredvehicles=800;
-		unarmouredvehicles=1200;
+		tanks=200;
+		armouredvehicles=1600;
+		unarmouredvehicles=2400;
 	}
 	[customParams]
 	{

@@ -17,7 +17,7 @@
 	targetmoveerror=0.075;
 	firestarter=0.0;
 	weaponvelocity=1768;
-	areaofeffect=10;
+	areaofeffect=12;
 	edgeeffectiveness=0.1;
 	canattackground=0;
 

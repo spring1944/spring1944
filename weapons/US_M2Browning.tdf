@@ -34,7 +34,7 @@
 	size=0.000000000000000000001;
 	collisionsize=2.5;
 	canattackground=1;
-
+	impactonly=1;
 	[damage]
 	{
 		default=4.3;

@@ -16,7 +16,7 @@
 	accuracy=400;
 	targetmoveerror=0.1;
 	weaponvelocity=1200;
-	areaofeffect=90;
+	areaofeffect=112;
 	edgeeffectiveness=0.35;
 	soundstart=GEN_105mm;
 	soundhit=GEN_Explo_4;
@@ -43,14 +43,14 @@
 
 	[damage]
 	{
-		default=1800;
-		infantry=1320;
-		guns=1000;
+		default=3600;
+		infantry=2620;
+		guns=2000;
 		mines=0;
 		flag=0;
-		tanks=1000;
-		armouredvehicles=2000;
-		unarmouredvehicles=3250;
+		tanks=2000;
+		armouredvehicles=4000;
+		unarmouredvehicles=6500;
 	}
 	[customParams]
 	{

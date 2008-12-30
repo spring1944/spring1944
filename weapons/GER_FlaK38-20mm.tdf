@@ -16,7 +16,7 @@
 	burstrate=0.16;
 	sprayangle=400;
 	weaponvelocity=2000;
-	areaofeffect=5;
+	areaofeffect=8;
 	edgeeffectiveness=0.5;
 	burnblow=1;
 	weapontimer=1;
@@ -47,7 +47,7 @@
 		default=40;
 		flag=0.00000001;
 		sandbags=100;
-		armouredvehicles=400;
+		armouredvehicles=800;
 		hq=100;
 		unarmoredvehicles=480;
 		infantry=200;
@@ -76,7 +76,7 @@
 	accuracy=255;
 	movingaccuracy=500;
 	weaponvelocity=2000;
-	areaofeffect=15;
+	areaofeffect=24;
 	edgeeffectiveness=0.5;
 	burnblow=0;
 
@@ -102,14 +102,14 @@
 
 	[damage]
 	{
-		default=40;
+		default=80;
 		flag=0.00000001;
 		sandbags=100;
-		armouredvehicles=400;
+		armouredvehicles=800;
 		hq=100;
-		unarmoredvehicles=480;
-		infantry=170;
-		guns=200;
+		unarmoredvehicles=980;
+		infantry=340;
+		guns=400;
 		LightPlanes=40;
 	}
 	[customParams]

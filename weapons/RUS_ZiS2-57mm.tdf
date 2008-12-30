@@ -16,7 +16,7 @@
 	accuracy=200;
 	targetmoveerror=0.02;
 	weaponvelocity=1100;
-	areaofeffect=60;
+	areaofeffect=72;
 	edgeeffectiveness=0.1;
 
 	soundstart=RUS_57mm;
@@ -49,7 +49,7 @@
 		guns=350;
 		mines=0;
 		flag=0;
-		tanks=200;
+		tanks=400;
 		armouredvehicles=600;
 		unarmouredvehicles=750;
 	}
@@ -112,7 +112,7 @@
 	{
 		default=7275;//9700
 		infantry=1900;
-		guns=800;
+		guns=1600;
 		lightbuildings=500;
 		bunkers=40;
 		sandbags=200;

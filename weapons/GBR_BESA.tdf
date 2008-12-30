@@ -42,7 +42,7 @@
 
 	collisionsize=2.5;
 	size=0.0000000001;//2.5;
-
+	impactonly=1;
 	[damage]
 	{
 		default=5;

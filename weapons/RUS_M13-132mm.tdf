@@ -20,7 +20,7 @@
 	dance=50;
 	startvelocity=500;
 	weaponvelocity=500;
-	areaofeffect=130;
+	areaofeffect=160;
 	edgeeffectiveness=0.1;
 	weapontimer=1;
 	//smoketrail=1;
@@ -44,14 +44,14 @@
 
 	[damage]
 	{
-		default=3000;
-		infantry=1400;
-		guns=1300;
+		default=6000;
+		infantry=2800;
+		guns=2600;
 		mines=0;
 		flag=0;
-		tanks=2200;
-		armouredvehicles=4500;
-		unarmouredvehicles=4500;
+		tanks=4400;
+		armouredvehicles=8000;
+		unarmouredvehicles=10000;
 	}
 	[customParams]
 	{

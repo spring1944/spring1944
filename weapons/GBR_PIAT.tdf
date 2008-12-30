@@ -18,7 +18,7 @@
 	targetmoveerror=0.02;
 	startvelocity=200;
 	weaponvelocity=400;
-	areaofeffect=35;
+	areaofeffect=46;
 	edgeeffectiveness=0.1;
 
 	soundstart=GBR_PIAT;
@@ -49,10 +49,10 @@
 	[damage]
 	{
 		default=8500;
-		infantry=1900;
-		guns=1500;
-		lightbuildings=750;
-		bunkers=750;
+		infantry=3800;
+		guns=3000;
+		lightbuildings=1500;
+		bunkers=1500;
 		sandbags=200;
 		mines=0;
 		flag=0;
