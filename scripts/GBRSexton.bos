@@ -16,7 +16,7 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define SMOKEPIECE1	base
 #define SMOKEPIECE2 turret
 #define SMOKEPIECE3 sleeve
-#define SMOKEPIECE4 exhaust
+#define SMOKEPIECE4 rearwheel
 
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
 
