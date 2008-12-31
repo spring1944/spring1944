@@ -10,9 +10,9 @@
 
 	name=Anti-Personelle Mine;
 	maxdamage=100;
-	buildcostmetal=20;
+	buildcostmetal=240;
 	buildcostenergy=0;
-	buildtime=13;
+	buildtime=160;
 	footprintx=1;
 	footprintz=1;
 
@@ -22,10 +22,10 @@
 
 	sightdistance=32;
 	stealth=1;
-	energymake=-1;
+	//energymake=-1;
 	init_cloaked=1;
 	mincloakdistance=1;
-
+	cloakcost=0;
 	maxslope=3;
 	maxwaterdepth=50;
 

@@ -81,7 +81,7 @@ local function ProcessWeapons(unitID)
 	if weaponFired then
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
-			for weapNum = 0, weaponsWithAmmo do
+			for weapNum = 0, weaponsWithAmmo - 1 do
 				SetUnitWeaponState(unitID, weapNum, {reloadTime = 99999, reloadState = 99999})
 			end
 		end
