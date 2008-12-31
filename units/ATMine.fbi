@@ -10,9 +10,9 @@
 
 	name=Anti-Tank Mine;
 	maxdamage=500;
-	buildcostmetal=187.5;
+	buildcostmetal=300;
 	buildcostenergy=0;
-	buildtime=125;
+	buildtime=200;
 	footprintx=1;
 	footprintz=1;
 
