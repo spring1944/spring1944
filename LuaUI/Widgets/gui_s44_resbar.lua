@@ -1,4 +1,4 @@
-local versionNumber = "v1.0"
+local versionNumber = "v1.1"
 
 function widget:GetInfo()
 	return {
@@ -17,6 +17,8 @@ end
 ------------------------------------------------
 local lineWidth = 1
 local mainScale = 24
+
+local supplyEstimateDecay = 0.9
 
 ------------------------------------------------
 --speedups
@@ -67,6 +69,7 @@ local activeClick = false
 local resupplyString = "?"
 local resupplyResourceUpdates = 0
 local resupplyPeriod = 300 -- default to 5 minutes
+local recentSupplyUse = 0
 
 ------------------------------------------------
 --util
@@ -324,7 +327,7 @@ local function DrawMain()
 	local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
 	local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
 	
-	local estimatedRemainingE = max(eCurr - resupplyResourceUpdates * ePull, 0)
+	local estimatedRemainingE = max(eCurr - resupplyResourceUpdates * recentSupplyUse, 0)
 	
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
 	
@@ -418,7 +421,12 @@ end
 
 function widget:GameFrame(n)
 	resupplyString = FramesToTimeString(resupplyPeriod - n % resupplyPeriod)
-	resupplyResourceUpdates = ceil((resupplyPeriod - n % resupplyPeriod) / 32)
+	if ((resupplyPeriod - n % resupplyPeriod) % 32 == 0) then
+		resupplyResourceUpdates = (resupplyPeriod - n % resupplyPeriod) / 32
+		local myTeamID = GetMyTeamID()
+		local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
+		recentSupplyUse = supplyEstimateDecay * recentSupplyUse + ePull * (1 - supplyEstimateDecay)
+	end
 end
 
 function widget:Shutdown()
