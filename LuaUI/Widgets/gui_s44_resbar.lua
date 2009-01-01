@@ -1,4 +1,4 @@
-local versionNumber = "v1.1"
+local versionNumber = "v1.2"
 
 function widget:GetInfo()
 	return {
@@ -27,6 +27,7 @@ local supplyEstimateDecayTime = 30
 local GetMouseState = Spring.GetMouseState
 local GetMyTeamID = Spring.GetMyTeamID
 local GetTeamResources = Spring.GetTeamResources
+local IsGUIHidden = Spring.IsGUIHidden
 local SetShareLevel = Spring.SetShareLevel
 
 local glColor = gl.Color
@@ -402,7 +403,7 @@ local function DrawMain()
 		glText("\255\255\1\1-" .. ToSI(mPull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0, 0.75, "c")
 	glPopMatrix()
 	
-	DrawActiveClick()
+	
 end
 
 ------------------------------------------------
@@ -450,7 +451,10 @@ function widget:DrawScreen()
 	glPushMatrix()
 		glTranslate(vsx - mainScale * 22, vsy - mainScale, 0)
 		glScale(mainScale, mainScale, 1)
-		DrawMain()
+		if (not IsGUIHidden()) then
+			DrawMain()
+		end
+		DrawActiveClick()
 	glPopMatrix()
 	
 	glLineWidth(1)
@@ -458,7 +462,7 @@ end
 
 function widget:MousePress(x, y, button)
   local component = GetComponent(x, y)
-  if (component) then
+  if (component and not IsGUIHidden()) then
     activeClick = component
     return true
   end
