@@ -18,7 +18,7 @@ end
 local lineWidth = 1
 local mainScale = 24
 
-local supplyEstimateDecay = 0.9
+local supplyEstimateDecayTime = 30
 
 ------------------------------------------------
 --speedups
@@ -71,6 +71,9 @@ local resupplyResourceUpdates = 0
 local resupplyPeriod = 300 -- default to 5 minutes
 local recentSupplyUse = 0
 
+local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci
+local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci
+
 ------------------------------------------------
 --util
 ------------------------------------------------
@@ -101,6 +104,13 @@ end
 local function FramesToTimeString(n)
 	local seconds = n / 30
 	return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
+end
+
+local function UpdateResources()
+	local myTeamID = GetMyTeamID()
+	mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
+	eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
+	recentSupplyUse = recentSupplyUse * (supplyEstimateDecayTime - 1) / supplyEstimateDecayTime  + ePull / supplyEstimateDecayTime
 end
 
 ------------------------------------------------
@@ -323,9 +333,6 @@ local function DrawMain()
 	glPopMatrix()
 	
 	--resources
-	local myTeamID = GetMyTeamID()
-	local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
-	local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
 	
 	local estimatedRemainingE = max(eCurr - resupplyResourceUpdates * recentSupplyUse, 0)
 	
@@ -403,6 +410,7 @@ end
 ------------------------------------------------
 function widget:Initialize()
 	CreateDisplayLists()
+	UpdateResources()
 	Spring.SendCommands("resbar 0")
 	once = true
 end
@@ -423,9 +431,7 @@ function widget:GameFrame(n)
 	resupplyString = FramesToTimeString(resupplyPeriod - n % resupplyPeriod)
 	if ((resupplyPeriod - n % resupplyPeriod) % 32 == 0) then
 		resupplyResourceUpdates = (resupplyPeriod - n % resupplyPeriod) / 32
-		local myTeamID = GetMyTeamID()
-		local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
-		recentSupplyUse = supplyEstimateDecay * recentSupplyUse + ePull * (1 - supplyEstimateDecay)
+		UpdateResources()
 	end
 end
 
