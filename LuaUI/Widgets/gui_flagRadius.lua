@@ -12,7 +12,7 @@ end
 
 -- function localisations
 -- Synced Read
-local GetGroundNormal     = Spring.GetGroundNormal
+--local GetGroundNormal     = Spring.GetGroundNormal
 local GetTeamUnitsByDefs 	= Spring.GetTeamUnitsByDefs
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GetUnitTeam         = Spring.GetUnitTeam
@@ -84,13 +84,13 @@ function widget:DrawWorldPreUnit()
 				if (IsUnitVisible(unitID)) then
 					local colorSet  = teamColors[teamID]
 					local x, y, z = GetUnitBasePosition(unitID)
-					local gx, gy, gz = GetGroundNormal(x, z)
-					local degrot = math.acos(gy) * 180 / math.pi
+					--local gx, gy, gz = GetGroundNormal(x, z)
+					--local degrot = math.acos(gy) * 180 / math.pi
 					glColor(colorSet[1])
 					gl.LineWidth(LINE_WIDTH_RADIUS)
 					glDrawListAtUnit(unitID, CIRCLE_LINES, false,
 													FLAG_RADIUS, 1.0, FLAG_RADIUS,
-													degrot, gz, 0, -gx)
+													0, 0, 1, 0)
 					for j = 1, #teams do
 						capTeamID = teams[j]
 						teamCapValue = GetUnitRulesParam(unitID, "cap" .. tostring(capTeamID))
@@ -102,7 +102,7 @@ function widget:DrawWorldPreUnit()
 							local capVisualRadius = (FLAG_RADIUS - 5)/ FLAG_CAP_THRESHOLD * teamCapValue
 							glDrawListAtUnit(unitID, CIRCLE_LINES, false,
 															capVisualRadius, 1.0, capVisualRadius,
-															degrot, gz, 0, -gx)
+															0, 0, 1, 0)
 						end
 					end
         end
