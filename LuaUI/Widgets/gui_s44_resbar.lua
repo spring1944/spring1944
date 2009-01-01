@@ -1,4 +1,4 @@
-local versionNumber = "v1.2"
+local versionNumber = "v1.3"
 
 function widget:GetInfo()
 	return {
@@ -69,7 +69,7 @@ local activeClick = false
 
 local resupplyString = "?"
 local resupplyResourceUpdates = 0
-local resupplyPeriod = 300 -- default to 5 minutes
+local resupplyPeriod = 9000 -- default to 5 minutes
 local recentSupplyUse = 0
 
 local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci
