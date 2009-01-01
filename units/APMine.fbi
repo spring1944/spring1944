@@ -10,9 +10,9 @@
 
 	name=Anti-Personelle Mine;
 	maxdamage=100;
-	buildcostmetal=240;
+	buildcostmetal=360;
 	buildcostenergy=0;
-	buildtime=160;
+	buildtime=240;
 	footprintx=1;
 	footprintz=1;
 
