@@ -327,14 +327,13 @@ end
 
 
 local function StartMorph(unitID, unitDefID, teamID, morphDef)
-	local transportees = Spring.GetUnitIsTransporting(unitID)
-	if (UnitDefs[unitDefID].transportCapacity > 0) and (transportees ~= nil) then
+	--[[if (UnitDefs[unitDefID].transportCapacity > 0) then
 		local unitid_x_coord, unitid_y_coord, unitid_z_coord = Spring.GetUnitPosition(unitID)
 		Spring.GiveOrderToUnit(unitID, CMD.UNLOAD_UNITS, { unitid_x_coord, unitid_y_coord, unitid_z_coord, 50 }, {})
 	end
-	if (transportees == nil) then
-		Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
-	end
+	if (UnitDefs[unitDefID].transportCapacity == nil) or (UnitDefs[unitDefID].transportCapacity <= 0) then]]--
+	Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
+	--end
 	Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
 	Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
 
