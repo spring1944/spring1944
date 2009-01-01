@@ -8,7 +8,7 @@
 	soundcategory=GERYard;
 	category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
 	tedclass=PLANT;
-	yardmap=oooooooooo oooooooooo ooccccccoo occcccccco occcccccco occcccccco ooocccoooo ooocccoooo cccccccooo ccccccccoo ;
+	yardmap=cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc;
 
 	name=Wehrmacht Bunker-Kommand;
 	description=Wehrmacht Field Headquarters;

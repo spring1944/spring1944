@@ -7,7 +7,7 @@
 	soundcategory=USInf;
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
-	yardmap=oooo occo occo occo occo occo;
+	yardmap=cccc cccc cccc cccc cccc cccc;
 
 	name=US Army HQ;
 	description=Divisional Headquarters;

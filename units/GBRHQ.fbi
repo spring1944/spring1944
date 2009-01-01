@@ -8,7 +8,7 @@
 	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
-	yardmap=ooooooo ooooooo ooocooo ooocooo oocccoo oocccoo oocccoo;
+	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
 	name=British Army HQ;
 	description=Divisional Headquarters;

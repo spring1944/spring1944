@@ -6,7 +6,7 @@
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
-	yardmap=ooooooo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
+	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
 	name=Light Vehicle Yard;
 	side=GER;
