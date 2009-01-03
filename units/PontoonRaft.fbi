@@ -34,7 +34,7 @@
 	turnrate=200;
 
 	transportsize=9;
-	minTransportSize=3;
+	minTransportSize=1;
 	transportcapacity=1;
 	isfireplatform=0;
 

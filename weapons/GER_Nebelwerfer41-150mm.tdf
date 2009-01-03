@@ -12,7 +12,7 @@
 	trajectoryheight=0.5;
 	firestarter=0.0;
 
-	range=2500;
+	range=2120;
 	reloadtime=30;
 	burst=6;
 	burstrate=0.8;

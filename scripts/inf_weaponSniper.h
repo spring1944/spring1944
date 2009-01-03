@@ -212,5 +212,6 @@ FireWeapon1()
 		{
 		SHOT_ANIM_PRONE
 		}
+	get DO_SEISMIC_PING(3);
 	return (0);
 }
