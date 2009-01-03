@@ -400,7 +400,7 @@ local function DrawMain()
 	--change text
 	glPushMatrix()
 		glTranslate(10, 0.15, 0)
-		glText("\255\255\1\1-" .. ToSI(mPull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0, 0.75, "c")
+		glText("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0, 0.75, "c")
 	glPopMatrix()
 	
 	
