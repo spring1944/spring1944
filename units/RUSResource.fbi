@@ -38,7 +38,7 @@
 	buildinggrounddecalsizex=4;
 	buildinggrounddecalsizey=4;
 	buildinggrounddecaltype=Dirt2.dds;
-	//weapon1=medsupply;
+	weapon1=noweapon;
 	explodeas=ResourceBoom;
 	selfdestructas=Med_Explosion;
 
