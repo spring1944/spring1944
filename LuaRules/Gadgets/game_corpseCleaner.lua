@@ -2,7 +2,7 @@ function gadget:GetInfo()
 	return {
 		name      = "Corpse cleaner",
 		desc      = "Removes infantry corpses over time",
-		author    = "Gnome",
+		author    = "Gnome, tweaked by Nemo",
 		date      = "June 2008",
 		license   = "CC by-nc, version 3.0",
 		layer     = 0,
@@ -19,9 +19,9 @@ function gadget:GameFrame(n)
 			fdid = Spring.GetFeatureDefID(fid)
 			fname = FeatureDefs[fdid].name
 			fmetal = FeatureDefs[fdid].metal
-			if(fmetal == -1) then --don't get rid of corpses that can change gameplay
+			if fname and (string.find(fname, "soldier") or string.find(fname, "shoulder")) ~= nil then
 				fhp, fmaxhp = Spring.GetFeatureHealth(fid)
-				subtract = fmaxhp * 0.033 --always make it take about 30 seconds regardless of the feature
+				subtract = fmaxhp * 0.01 --always make it take about 90 seconds regardless of the feature
 				fhp = fhp - subtract
 				if(fhp ~= nil) then
 					if(fhp <= 0) then
