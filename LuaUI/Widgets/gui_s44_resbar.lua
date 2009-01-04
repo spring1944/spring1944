@@ -1,4 +1,4 @@
-local versionNumber = "v1.3"
+local versionNumber = "v1.4"
 
 function widget:GetInfo()
 	return {
@@ -16,9 +16,26 @@ end
 --config
 ------------------------------------------------
 local lineWidth = 1
-local mainScale = 24
+local mainSize = 24
+
+--top-right corner
+local mainX, mainY
 
 local supplyEstimateDecayTime = 30
+
+function widget:GetConfigData(data)
+	return {
+		mainX = mainX,
+		mainY = mainY,
+		mainSize = mainSize,
+	}
+end
+
+function widget:SetConfigData(data)
+	mainX = data.mainX or 10000
+	mainY = data.mainY or 10000
+	mainSize = data.mainSize or 24
+end
 
 ------------------------------------------------
 --speedups
@@ -219,7 +236,7 @@ end
 --click
 ------------------------------------------------
 local function MainTransform(x, y)
-	return (x - vsx) / mainScale + 22, (y - vsy) / mainScale + 1
+	return (x - mainX) / mainSize, (y - mainY) / mainSize
 end
 
 local function GetMShare(tx)
@@ -245,6 +262,8 @@ local function GetComponent(x, y)
 		return "mShare"
 	elseif (tx >= 2 and tx <= 18) then
 		return "eShare"
+	elseif (tx >= -20 and tx <= 20) then
+		return "default"
 	end
 end
 
@@ -285,6 +304,9 @@ local function ReleaseActiveClick(x, y)
 		SetShareLevel("metal", GetMShare(tx))
 	elseif (activeClick == "eShare") then
 		SetShareLevel("energy", GetEShare(tx))
+	elseif (activeClick == "default") then
+		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
+		widget:ViewResize(viewSizeX, viewSizeY)
 	end
 		
 	activeClick = false
@@ -406,6 +428,17 @@ local function DrawMain()
 	
 end
 
+local function ChangeSize(_,_,words)
+	local newSize = tonumber(words[1])
+	if (newSize and newSize >= 1) then
+		mainSize = newSize
+		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
+		widget:ViewResize(viewSizeX, viewSizeY)
+	else
+		Spring.Echo("<1944 Resource Bars>: Invalid size.")
+	end
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -413,12 +446,32 @@ function widget:Initialize()
 	CreateDisplayLists()
 	UpdateResources()
 	Spring.SendCommands("resbar 0")
+	mainX, mainY = mainX or 10000, mainY or 10000
 	once = true
+	
+	widgetHandler:AddAction("s44_resbar_size", ChangeSize, nil, "t")
+end
+
+function widget:Shutdown()
+	widgetHandler:RemoveAction("s44_resbar_size")
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
 	vsx = viewSizeX
 	vsy = viewSizeY
+	
+	local sizeX, sizeY = 20 * mainSize, mainSize
+	--keep panel in-screen
+	if (mainX < sizeX) then
+		mainX = sizeX
+	elseif (mainX > vsx - sizeX) then
+		mainX = vsx - sizeX
+	end
+	if (mainY < sizeY) then
+		mainY = sizeY
+	elseif (mainY > vsy - sizeY) then
+		mainY = vsy - sizeY
+	end
 end
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -449,8 +502,8 @@ function widget:DrawScreen()
 	end
 	
 	glPushMatrix()
-		glTranslate(vsx - mainScale * 22, vsy - mainScale, 0)
-		glScale(mainScale, mainScale, 1)
+		glTranslate(mainX, mainY, 0)
+		glScale(mainSize, mainSize, 1)
 		if (not IsGUIHidden()) then
 			DrawMain()
 		end
@@ -477,3 +530,9 @@ function widget:MouseRelease(x, y, button)
   return false
 end
 
+function widget:MouseMove(x, y, dx, dy, button)
+	if (activeClick == "default") then
+		mainX = mainX + dx
+		mainY = mainY + dy
+	end
+end
