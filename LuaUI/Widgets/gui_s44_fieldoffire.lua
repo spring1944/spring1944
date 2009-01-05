@@ -1,4 +1,4 @@
-local versionNumber = "v1.0"
+local versionNumber = "v1.1"
 
 function widget:GetInfo()
 	return {
@@ -110,6 +110,7 @@ end
 --callins
 ------------------------------------------------
 function widget:Initialize()
+	local inUse = false
 	for unitDefID, unitDef in ipairs(UnitDefs) do
 		local stationaryName = unitDef.name
 		local suffix = strSub(stationaryName, -11)
@@ -125,9 +126,15 @@ function widget:Initialize()
 				if (mobileDefID) then
 					deployables[mobileDefID] = unitDef.maxWeaponRange
 					deployables[unitDefID] = unitDef.maxWeaponRange
+					inUse = true
 				end
 			end
 		end
+	end
+	
+	--remove self if unused
+	if (not inUse) then
+		widgetHandler:RemoveWidget()
 	end
 end
 
