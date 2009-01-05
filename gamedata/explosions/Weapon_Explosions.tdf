@@ -79,13 +79,13 @@
 		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
-		particleLife=50;
-		particleLifeSpread=50;
+		particleLife=25;
+		particleLifeSpread=25;
 		numParticles=1;
-		particleSpeed=.1;
-		particleSpeedSpread=.5;
-		particleSize=.5;
-		particleSizeSpread=2;
+		particleSpeed=1;
+		particleSpeedSpread=5;
+		particleSize=1;
+		particleSizeSpread=5;
 		emitRot=0;
 		emitRotSpread=45;
 		directional=1;
@@ -126,6 +126,37 @@
 	ground=1;
 	count=1;
 	}
+
+	[sparks]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=0;
+		sizeMod=1.0;
+		pos=0, 1.0, 0;
+		emitVector=0, 1, 0;
+		gravity=0;
+		colorMap=1 .5 0.3 0.01   1 .5 0.3 0;
+		Texture=diamondstar;
+		airdrag=0.95;
+		particleLife=50;
+		particleLifeSpread=10;
+		numParticles=5;
+		particleSpeed=1.5;
+		particleSpeedSpread=1;
+		particleSize=.2;
+		particleSizeSpread=.5;
+		emitRot=30;
+		emitRotSpread=15;
+		directional=0;
+		}
+	air=0;
+	water=0;
+	ground=1;
+	count=1;
+	}
+
 }
 
 [Weapon_Explosion_Molotov]//Grenades and other small shrapnel devices, ie mortars
