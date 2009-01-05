@@ -25,7 +25,7 @@
 	shownanoframe=0;
 
 	energystorage=1000;
-	radardistance=2000000;
+	//radardistance=2000000;
 	seismicsignature=0;
 	sightdistance=840;
 	stealth=1;

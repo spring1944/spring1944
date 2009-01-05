@@ -27,7 +27,7 @@
 
 	metalmake=20;
 	
-	radardistance=2000000;
+	//radardistance=2000000;
 	sightdistance=700;
 	airsightdistance=2500;
 	stealth=1;
@@ -57,6 +57,7 @@
 
 	weapon1=MG34;
 	weaponmaindir1=0 0 -1;
+	onlytargetcategory1=NFLAGNAIR;
 	maxangledif1=360;
 	//weapon2=mg34fear;
 	//weaponmaindir2=0 0 -1;
@@ -72,7 +73,6 @@
 	weapon6=M2Flamethrower;
 	weaponmaindir6=1 0 1;
 	maxangledif6=80;
-	weapon7=BuildingFearShield;
 	[sfxtypes]
 	{
 	}
