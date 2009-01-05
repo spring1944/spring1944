@@ -1,4 +1,4 @@
-local versionNumber = "v1.4"
+local versionNumber = "v1.5"
 
 function widget:GetInfo()
 	return {
@@ -443,6 +443,10 @@ end
 --callins
 ------------------------------------------------
 function widget:Initialize()
+	if (Game.modShortName ~= "S44") then
+		widgetHandler:RemoveWidget()
+		return
+	end
 	CreateDisplayLists()
 	UpdateResources()
 	Spring.SendCommands("resbar 0")
