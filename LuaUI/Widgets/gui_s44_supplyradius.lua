@@ -1,10 +1,11 @@
-local versionNumber = "v1.0"
+local versionNumber = "v1.1"
 
 function widget:GetInfo()
 	return {
 		name = "1944 Supply Radius",
 		desc = versionNumber .. " Supply radius indicator for Spring 1944"
-				.. "\luaui s44_supplyradius_show[always | rollover | select] to change display options",
+				.. "\luaui s44_supplyradius_show[always | rollover | select] to change display options"
+				.. "\luaui s44_supplyradius_viewdistance [number] to change view distance (negative for fixed point size)",
 		author = "Evil4Zerggin",
 		date = "5 January 2009",
 		license = "GNU LGPL, v2.1 or later",
@@ -16,7 +17,7 @@ end
 ------------------------------------------------
 --config
 ------------------------------------------------
-local size = 2
+local viewDistance = 8192 --distance at which dots start getting bigger; fixed size if negative
 local color = {1, 1, 0, 0.75}
 local showAlways = false
 local showRollover = true
@@ -28,6 +29,7 @@ function widget:GetConfigData(data)
 		showAlways = showAlways,
 		notShowRollover = not showRollover,
 		notShowSelect = not showSelect,
+		viewDistance = viewDistance,
 	}
 end
 
@@ -35,6 +37,7 @@ function widget:SetConfigData(data)
 	showAlways = data.showAlways
 	showRollover = not data.notShowRollover
 	showSelect = not data.notShowSelect
+	viewDistance = data.viewDistance or 8192
 end
 
 ------------------------------------------------
@@ -59,6 +62,8 @@ local AreTeamsAllied = Spring.AreTeamsAllied
 local GetMyTeamID = Spring.GetMyTeamID
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
+local GetGroundHeight = Spring.GetGroundHeight
+local GetCameraPosition = Spring.GetCameraPosition
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -86,6 +91,7 @@ local GL_POINTS = GL.POINTS
 
 local sin, cos = math.sin, math.cos
 local ceil, floor = math.ceil, math.floor
+local min, max = math.min, math.max
 
 local DEFAULT_SUPPLY_RANGE = 300
 local PI = math.pi
@@ -97,6 +103,17 @@ local PI = math.pi
 local function DistSq(x1, z1, x2, z2)
 	local dx, dz = x2 - x1, z2 - z1
 	return dx * dx + dz * dz
+end
+
+local function GetCameraScale()
+	if (viewDistance > 0) then
+		local cx, cy, cz = GetCameraPosition()
+		local gwh = max(GetGroundHeight(cx, cz), 0)
+		local size = max(viewDistance / max(cy - gwh, 1), 1)
+		return size
+	else
+		return -viewDistance
+	end
 end
 
 ------------------------------------------------
@@ -231,13 +248,18 @@ end
 
 local function DrawMain()
 	glColor(color)
-	glPointSize(size)
 	
 	for unitID, supplyInfo in pairs(supplyInfos) do
 		DrawSupplyRing(unitID, supplyInfo)
 	end
 	
 	glColor(1, 1, 1, 1)
+	
+end
+
+local function CallMain()
+	glPointSize(GetCameraScale())
+	glCallList(mainList)
 	glPointSize(1)
 end
 
@@ -273,6 +295,20 @@ local function ToggleShowSelect()
 		Spring.Echo("<1944 Supply Radius>: Now showing on selection.")
 	else
 		Spring.Echo("<1944 Supply Radius>: Now not showing on selection.")
+	end
+end
+
+local function SetViewDistance(_,_,words)
+	local newViewDistance = tonumber(words[1])
+	if (newViewDistance) then
+		viewDistance = newViewDistance
+		if (newViewDistance > 0) then
+			Spring.Echo("<1944 Supply Radius>: View distance set to " .. viewDistance .. ".")
+		else
+			Spring.Echo("<1944 Supply Radius>: Point size set to " .. -viewDistance .. ".")
+		end
+	else
+		Spring.Echo("<1944 Supply Radius>: Invalid view distance.")
 	end
 end
 
@@ -325,7 +361,7 @@ end
 function widget:DrawWorldPreUnit()
 	
 	if (showAlways) then
-		glCallList(mainList)
+		CallMain()
 		return
 	end
 	
@@ -333,7 +369,7 @@ function widget:DrawWorldPreUnit()
 		local mx, my = GetMouseState()
 		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
 		if (mouseTargetType == "unit" and supplyInfos[mouseTarget]) then
-			glCallList(mainList)
+			CallMain()
 			return
 		end
 	end
@@ -342,7 +378,7 @@ function widget:DrawWorldPreUnit()
 		local selectedUnitsCounts = GetSelectedUnitsCounts()
 		for unitDefID, _ in pairs(selectedUnitsCounts) do
 			if (supplyDefInfos[unitDefID]) then
-				glCallList(mainList)
+				CallMain()
 				return
 			end
 		end
@@ -378,6 +414,7 @@ function widget:Initialize()
 	widgetHandler:AddAction("s44_supplyradius_showalways", ToggleShowAlways, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showrollover", ToggleShowRollover, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showselect", ToggleShowSelect, nil, "t")
+	widgetHandler:AddAction("s44_supplyradius_viewdistance", SetViewDistance, nil, "t")
 end
 
 function widget:Shutdown()
@@ -385,4 +422,5 @@ function widget:Shutdown()
 	widgetHandler:RemoveAction("s44_supplyradius_showalways")
 	widgetHandler:RemoveAction("s44_supplyradius_showrollover")
 	widgetHandler:RemoveAction("s44_supplyradius_showselect")
+	widgetHandler:RemoveAction("s44_supplyradius_viewdistance")
 end
