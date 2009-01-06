@@ -1,9 +1,10 @@
-local versionNumber = "v0.0"
+local versionNumber = "v1.0"
 
 function widget:GetInfo()
 	return {
 		name = "1944 Supply Radius",
-		desc = versionNumber .. " Supply radius indicator for Spring 1944",
+		desc = versionNumber .. " Supply radius indicator for Spring 1944"
+				.. "\luaui s44_supplyradius_show[always | rollover | select] to change display options",
 		author = "Evil4Zerggin",
 		date = "5 January 2009",
 		license = "GNU LGPL, v2.1 or later",
@@ -16,11 +17,25 @@ end
 --config
 ------------------------------------------------
 local size = 2
-local color = {1, 1, 0, 0.5}
+local color = {1, 1, 0, 0.75}
 local showAlways = false
 local showRollover = true
 local showSelect = true
 local segmentLength = 5
+
+function widget:GetConfigData(data)
+	return {
+		showAlways = showAlways,
+		notShowRollover = not showRollover,
+		notShowSelect = not showSelect,
+	}
+end
+
+function widget:SetConfigData(data)
+	showAlways = data.showAlways
+	showRollover = not data.notShowRollover
+	showSelect = not data.notShowSelect
+end
 
 ------------------------------------------------
 --vars
@@ -234,6 +249,33 @@ local function UpdateLists()
 	mainList = glCreateList(DrawMain)
 end
 
+local function ToggleShowAlways()
+	showAlways = not showAlways
+	if (showAlways) then
+		Spring.Echo("<1944 Supply Radius>: Now showing always.")
+	else
+		Spring.Echo("<1944 Supply Radius>: Now not showing always.")
+	end
+end
+
+local function ToggleShowRollover()
+	showRollover = not showRollover
+	if (showRollover) then
+		Spring.Echo("<1944 Supply Radius>: Now showing on rollover.")
+	else
+		Spring.Echo("<1944 Supply Radius>: Now not showing on rollover.")
+	end
+end
+
+local function ToggleShowSelect()
+	showSelect = not showSelect
+	if (showSelect) then
+		Spring.Echo("<1944 Supply Radius>: Now showing on selection.")
+	else
+		Spring.Echo("<1944 Supply Radius>: Now not showing on selection.")
+	end
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -332,8 +374,15 @@ function widget:Initialize()
 	end
 	
 	mainList = glCreateList(DrawMain)
+	
+	widgetHandler:AddAction("s44_supplyradius_showalways", ToggleShowAlways, nil, "t")
+	widgetHandler:AddAction("s44_supplyradius_showrollover", ToggleShowRollover, nil, "t")
+	widgetHandler:AddAction("s44_supplyradius_showselect", ToggleShowSelect, nil, "t")
 end
 
 function widget:Shutdown()
 	glDeleteList(mainList)
+	widgetHandler:RemoveAction("s44_supplyradius_showalways")
+	widgetHandler:RemoveAction("s44_supplyradius_showrollover")
+	widgetHandler:RemoveAction("s44_supplyradius_showselect")
 end
