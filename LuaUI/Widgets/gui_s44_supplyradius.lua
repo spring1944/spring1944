@@ -1,11 +1,12 @@
-local versionNumber = "v1.1"
+local versionNumber = "v1.2"
 
 function widget:GetInfo()
 	return {
 		name = "1944 Supply Radius",
-		desc = versionNumber .. " Supply radius indicator for Spring 1944"
-				.. "\luaui s44_supplyradius_show[always | rollover | select] to change display options"
-				.. "\luaui s44_supplyradius_viewdistance [number] to change view distance (negative for fixed point size)",
+		desc = versionNumber .. " Supply radius indicator for Spring 1944. Commands: \luaui s44_supplyradius_"
+				.. "show[always | rollover | select] to change display options"
+				.. "viewdistance [number] to change view distance (negative for fixed point size)"
+				.. "minimapsize to change minimap point size (nonpositive to disable)",
 		author = "Evil4Zerggin",
 		date = "5 January 2009",
 		license = "GNU LGPL, v2.1 or later",
@@ -18,6 +19,7 @@ end
 --config
 ------------------------------------------------
 local viewDistance = 8192 --distance at which dots start getting bigger; fixed size if negative
+local minimapSize = 1
 local color = {1, 1, 0, 0.75}
 local showAlways = false
 local showRollover = true
@@ -30,6 +32,7 @@ function widget:GetConfigData(data)
 		notShowRollover = not showRollover,
 		notShowSelect = not showSelect,
 		viewDistance = viewDistance,
+		minimapSize = minimapSize,
 	}
 end
 
@@ -38,6 +41,7 @@ function widget:SetConfigData(data)
 	showRollover = not data.notShowRollover
 	showSelect = not data.notShowSelect
 	viewDistance = data.viewDistance or 8192
+	minimapSize = data.minimapSize or 1
 end
 
 ------------------------------------------------
@@ -81,6 +85,7 @@ local glShape = gl.Shape
 
 local glTranslate = gl.Translate
 local glScale = gl.Scale
+local glRotate = gl.Rotate
 local glPopMatrix = gl.PopMatrix
 local glPushMatrix = gl.PushMatrix
 
@@ -92,6 +97,9 @@ local GL_POINTS = GL.POINTS
 local sin, cos = math.sin, math.cos
 local ceil, floor = math.ceil, math.floor
 local min, max = math.min, math.max
+
+local MAP_SIZE_X = Game.mapSizeX
+local MAP_SIZE_Z = Game.mapSizeZ
 
 local DEFAULT_SUPPLY_RANGE = 300
 local PI = math.pi
@@ -254,13 +262,32 @@ local function DrawMain()
 	end
 	
 	glColor(1, 1, 1, 1)
-	
 end
 
 local function CallMain()
-	glPointSize(GetCameraScale())
-	glCallList(mainList)
-	glPointSize(1)
+	if (showAlways) then
+		glCallList(mainList)
+		return
+	end
+	
+	if (showRollover) then
+		local mx, my = GetMouseState()
+		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
+		if (mouseTargetType == "unit" and supplyInfos[mouseTarget]) then
+			glCallList(mainList)
+			return
+		end
+	end
+	
+	if (showSelect) then
+		local selectedUnitsCounts = GetSelectedUnitsCounts()
+		for unitDefID, _ in pairs(selectedUnitsCounts) do
+			if (supplyDefInfos[unitDefID]) then
+				glCallList(mainList)
+				return
+			end
+		end
+	end
 end
 
 local function UpdateLists()
@@ -312,6 +339,16 @@ local function SetViewDistance(_,_,words)
 	end
 end
 
+local function SetMinimapSize(_,_,words)
+	local newMinimapSize = tonumber(words[1])
+	if (newMinimapSize) then
+		minimapSize = newMinimapSize
+		Spring.Echo("<1944 Supply Radius>: Minimap point size set to " .. minimapSize .. ".")
+	else
+		Spring.Echo("<1944 Supply Radius>: Invalid minimap point size.")
+	end
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -359,30 +396,22 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function widget:DrawWorldPreUnit()
+	glPointSize(GetCameraScale())
+	CallMain()
+	glPointSize(1)
+end
+
+function widget:DrawInMiniMap(sx, sy)
+	if (minimapSize <= 0) then return end
 	
-	if (showAlways) then
+	glPointSize(minimapSize)
+	glPushMatrix()
+		glTranslate(0, sy, 0)
+		glRotate(90, 1, 0, 0)
+		glScale(sx / MAP_SIZE_X, 1, sy / MAP_SIZE_Z)
 		CallMain()
-		return
-	end
-	
-	if (showRollover) then
-		local mx, my = GetMouseState()
-		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
-		if (mouseTargetType == "unit" and supplyInfos[mouseTarget]) then
-			CallMain()
-			return
-		end
-	end
-	
-	if (showSelect) then
-		local selectedUnitsCounts = GetSelectedUnitsCounts()
-		for unitDefID, _ in pairs(selectedUnitsCounts) do
-			if (supplyDefInfos[unitDefID]) then
-				CallMain()
-				return
-			end
-		end
-	end
+	glPopMatrix()
+	glPointSize(1)
 end
 
 function widget:Initialize()
@@ -415,6 +444,7 @@ function widget:Initialize()
 	widgetHandler:AddAction("s44_supplyradius_showrollover", ToggleShowRollover, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showselect", ToggleShowSelect, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_viewdistance", SetViewDistance, nil, "t")
+	widgetHandler:AddAction("s44_supplyradius_minimapsize", SetMinimapSize, nil, "t")
 end
 
 function widget:Shutdown()
@@ -423,4 +453,5 @@ function widget:Shutdown()
 	widgetHandler:RemoveAction("s44_supplyradius_showrollover")
 	widgetHandler:RemoveAction("s44_supplyradius_showselect")
 	widgetHandler:RemoveAction("s44_supplyradius_viewdistance")
+	widgetHandler:RemoveAction("s44_supplyradius_minimapsize")
 end
