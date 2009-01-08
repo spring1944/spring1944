@@ -126,14 +126,42 @@
 			sizeMod=1;
 			pos=0, 0, 0;
 			emitVector=0, 1, 0;
-			gravity=0, -0.3, 0;
+			gravity=0, -0.2, 0;
+			colorMap=0 0 0 1  0 0 0 1;
+			Texture=debris;
+			airdrag=0.95;
+			particleLife=48;
+			particleLifeSpread=16;
+			numParticles=32;
+			particleSpeed=4;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+			alwaysVisible=0;
+		}
+		unit=1;
+		ground=1;
+		count=1;
+	}
+	
+	[debris2] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.2, 0;
 			colorMap=0 0 0 1  0 0 0 1;
 			Texture=debris2;
 			airdrag=0.95;
 			particleLife=48;
 			particleLifeSpread=16;
-			numParticles=64;
-			particleSpeed=8;
+			numParticles=32;
+			particleSpeed=4;
 			particleSpeedSpread=8;
 			particleSize=2;
 			particleSizeSpread=16;
@@ -155,7 +183,7 @@
 			sizeMod=1.0;
 			pos=0, 0, 0;
 			emitVector=0, 1, 0;
-			gravity=0, -0.3, 0;
+			gravity=0, -0.1, 0;
 			colorMap=1 1 0.5 0.01   1 0.5 0 0.01   0 0 0 0;
 			Texture=plasma;
 			airdrag=0.9;
