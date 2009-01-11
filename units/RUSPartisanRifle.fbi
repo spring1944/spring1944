@@ -10,7 +10,7 @@
 	name=Rifle Partisan;
 	Description=Very light ambusher;
 	side=RUS;
-	maxdamage=20;
+	maxdamage=40;
 	idleautoheal=1;
 	buildcostmetal=15;
 	buildcostenergy=0;

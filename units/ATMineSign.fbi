@@ -1,0 +1,42 @@
+[unitinfo]
+{
+	unitname=APMineSign;
+	objectname=MineSign.S3O;
+	icontype=mines;
+	soundcategory=Nothing;
+	category=NONE;
+	tedclass=SPECIAL;
+	yardmap=y;
+	buildpic=ATMine.png;
+	
+	name=Warning Sign;
+	maxdamage=100;
+	buildcostmetal=360;
+	buildcostenergy=0;
+	buildtime=240;
+	footprintx=1;
+	footprintz=1;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	sightdistance=1;
+	stealth=1;
+	//energymake=-1;
+	init_cloaked=1;
+	mincloakdistance=75;
+	cloakcost=0;
+	maxslope=3;
+	maxwaterdepth=50;
+
+	selfdestructcountdown=1;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

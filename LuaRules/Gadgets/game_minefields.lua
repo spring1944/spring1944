@@ -18,11 +18,11 @@ local GetGroundHeight	=	Spring.GetGroundHeight
 -- Synced Ctrl
 local CreateUnit		=	Spring.CreateUnit
 -- Constants
-local APMineNumber		=	15
-local APMineSpread		= 	35
+local APMineNumber		=	6
+local APMineSpread		= 	25
 
-local ATMineNumber		=	4
-local ATMineSpread		=	25
+local ATMineNumber		=	3
+local ATMineSpread		=	18
 -- Variables
 local engineerBuilt	=	{}
 
@@ -31,14 +31,14 @@ if gadgetHandler:IsSyncedCode() then
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if (ud.name == "apmine" and builderID ~= nil) or (ud.name == "atmine" and builderID ~= nil) then
+	if (ud.name == "apminesign" and builderID ~= nil) or (ud.name == "atminesign" and builderID ~= nil) then
 	engineerBuilt[unitID] = 1
 	end
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 	local ud = UnitDefs[unitDefID]
-	if ud.name == "apmine" and engineerBuilt[unitID] ~= nil then		
+	if ud.name == "apminesign" and engineerBuilt[unitID] ~= nil then		
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < APMineNumber do
@@ -50,7 +50,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		end
 	end
 	
-	if ud.name == "atmine" and engineerBuilt[unitID] ~= nil then		
+	if ud.name == "atminesign" and engineerBuilt[unitID] ~= nil then		
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < ATMineNumber do
