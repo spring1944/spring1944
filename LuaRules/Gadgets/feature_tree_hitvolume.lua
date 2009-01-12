@@ -59,6 +59,6 @@ function gadget:FeatureCreated(featureID)
 				1 -- y-axis
 				)
 		--debug
-		Spring.Echo("tree changed")
+		--Spring.Echo("tree changed")
 	end
 end
