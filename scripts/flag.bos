@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, pole;
+piece  base;
 piece  gerflagpiece1, gerflagpiece2, gerflagpiece3;
 piece  gbrflagpiece1, gbrflagpiece2, gbrflagpiece3;
 piece  rusflagpiece1, rusflagpiece2, rusflagpiece3;

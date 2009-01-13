@@ -41,8 +41,8 @@ if (gadgetHandler:IsSyncedCode()) then
 			
 			local xmin = px - (ud.xsize * 14) / 2
 			local xmax = px + (ud.xsize * 14) / 2
-			local zmin = pz - (ud.ysize * 14) / 2
-			local zmax = pz + (ud.ysize * 14) / 2
+			local zmin = pz - (ud.zsize * 14) / 2
+			local zmax = pz + (ud.zsize * 14) / 2
 			
 			local features = Spring.GetFeaturesInRectangle(xmin, zmin, xmax, zmax)
 			
