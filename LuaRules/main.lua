@@ -20,6 +20,7 @@ AllowUnsafeChanges("USE AT YOUR OWN PERIL")
 --
 --  *** The string argument must be an exact match ***
 
+VFS.Include("LuaRules/mineClear.lua")
 
 if (select == nil) then
   select = function(n,...) 

@@ -112,6 +112,9 @@ static-var bAiming, bMoving, iState, iFear, iSpeed;
 //transport state handling
 #include "inf_transportHandling.h"
 
+//mine clear stuff
+#include "engineerMineClear.h"
+
 StartMoving()
 {
 	signal SIG_IDLE;

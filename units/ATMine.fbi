@@ -51,5 +51,6 @@
 	[customParams]
 	{
 		dontCount=1;
+		isMine=1;
 	}
 }
