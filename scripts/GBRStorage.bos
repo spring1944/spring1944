@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, Log1, Log2, truck;
+piece  base, supplies1, supplies2, supplies3;
 
 static-var  Static_Var_1;
 
@@ -21,15 +21,15 @@ Create()
 	Static_Var_1 = Rand( 1, 2 );
 	if( Static_Var_1 == 1 )
 	{
-		show Log1;
-		show truck;
-		hide Log2;
+		show supplies1;
+		show supplies2;
+		hide supplies3;
 	}
 	if( Static_Var_1 == 2 )
 	{
-		hide Log1;
-		hide truck;
-		show Log2;
+		hide supplies1;
+		hide supplies2;
+		show supplies3;
 	}
 }
 

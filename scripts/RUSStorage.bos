@@ -3,17 +3,14 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, head1, head2;
+piece  base, supplies1, supplies2, supplies3;
 
+static-var  Static_Var_1;
 
-Headspin()
-{
-	spin head1 around x-axis speed <50>;
-	spin head2 around x-axis speed <50>;
-}
 
 Create()
 {
+
   while (get BUILD_PERCENT_LEFT)
    {
     move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;
@@ -21,7 +18,19 @@ Create()
  	}
   move base to y-axis 0 now;
   
-	start-script Headspin();
+	Static_Var_1 = Rand( 1, 2 );
+	if( Static_Var_1 == 1 )
+	{
+		show supplies1;
+		show supplies2;
+		hide supplies3;
+	}
+	if( Static_Var_1 == 2 )
+	{
+		hide supplies1;
+		hide supplies2;
+		show supplies3;
+	}
 }
 
 SweetSpot(piecenum)
@@ -31,6 +40,4 @@ SweetSpot(piecenum)
 
 Killed(severity, corpsetype)
 {
-	//corpsetype = 0;
-	explode base type BITMAPONLY | BITMAP1;
 }

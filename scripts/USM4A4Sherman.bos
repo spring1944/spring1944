@@ -1,6 +1,6 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "STANDARD_COMMANDS_GPL.h"
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, hullmg, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
 
@@ -15,7 +15,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 exhaust
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 //hiding FX emit points
 #define FX_HIDE\

@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h"
 
-piece  base, tracks2, tracks1, hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, 
+piece  base, tracks2, tracks1, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, 
  exhaust, aaref, aaturret, aagun, aaflare, load_shoulder, load_arm;
  
 static-var restore_delay, bMoving, treadnum;
