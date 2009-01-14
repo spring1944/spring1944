@@ -14,7 +14,7 @@ static-var restore_delay, bMoving, treadnum, aim1;
 	
 // Signal definitions
 #define SIG_AIM				2 // Machinemg
-#define INFANTRY			458752 // this is 65536 * s3o model radius
+#define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
 #define FUDGE				50 // isn't enough even between smg and rifle
 #define UNIT_ALLIED			74
 
