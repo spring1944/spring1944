@@ -47,7 +47,6 @@ end
 		end
 	end
 	
-	if (modOptions.fast_supply == "1") then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then
@@ -58,7 +57,6 @@ end
 				end
 			end
 		end
-	end
 	
 	if (modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do

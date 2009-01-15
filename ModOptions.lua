@@ -29,13 +29,6 @@ local options = {
 		type = 'bool', 
 		def = false, 
 	},		
-	{ 
-		key = 'fast_supply', 
-		name = 'Faster resupply schedule', 
-		desc = 'Weapons cost 2.25x to refill, resupply comes every 5 minutes instead of every 10.', 
-		type = 'bool', 
-		def = false, 
-	},
 	{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',

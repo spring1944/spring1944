@@ -75,14 +75,7 @@ function gadget:GameFrame(n)
 		for unitID in pairs(infantry) do
 			local unitDefID = GetUnitDefID(unitID)
 			local teamID = Spring.GetUnitTeam(unitID)
-			local weaponCost
-			if (modOptions) then
-				if (modOptions.fast_supply == "1") then
-				weaponCost = 2
-				else
-					weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 1
-				end
-			end
+			local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 2
 			local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
 			local reload = WeaponDefs[weaponID].reload
 			local reloadFrameLength = (reload*30)
