@@ -1,7 +1,7 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
 piece  base, turret, mantlet, barrel, exhaust;
-piece hullMG, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
+piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
 piece flare, brakeright, brakeleft, coaxflare, engine_fx, hatch_fx, front_fx, back_fx, magazine_fx, right_fx, left_fx;
 
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, MGAiming, GunAiming;
