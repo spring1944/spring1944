@@ -8,7 +8,7 @@
 	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
 
-	name=GMC Truck;
+	name=GMC 2.5t Truck;
 	description=General Transport Truck;
 	maxdamage=550;
 	buildcostmetal=474;
