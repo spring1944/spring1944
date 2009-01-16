@@ -1,0 +1,61 @@
+[unitinfo]
+{
+	unitname=USM5Gun_Truck;
+	objectname=USM5Gun_Truck.S3O;
+	buildpic=USM5Gun.png;
+	corpse=USGMCTruck_Destroyed;
+	icontype=truck;
+	soundcategory=USTank;
+	category=TANK NFLAG   INFTARG NFLAGNAIR WEAPON;
+	tedclass=TANK;
+
+	name=Towed 3-Inch M5;
+	description=Anti-Tank Gun;
+	maxdamage=550;
+	buildcostmetal=1225;
+	buildcostenergy=0;
+	buildtime=350;
+	footprintx=3;
+	footprintz=3;
+	mass=750;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	SeismicSignature=0;
+	sightdistance=800;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Truck;
+	maxvelocity=4.3;
+	acceleration=0.35;
+	brakerate=0.45;
+	turnrate=440;
+	maxslope=10;
+	maxwaterdepth=5;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}
