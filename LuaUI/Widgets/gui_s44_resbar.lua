@@ -101,10 +101,8 @@ local function ToSI(num)
     return "0"
   else
     local absNum = abs(num)
-    if (absNum < 0.001) then
-      return strFormat("%.2fu", 1000000 * num)
-    elseif (absNum < 1) then
-      return strFormat("%.2fm", 1000 * num)
+    if (absNum < 0.1) then
+      return 0 --too small to matter
     elseif (absNum < 1000) then
       return strFormat("%.2f", num)
     elseif (absNum < 1000000) then
