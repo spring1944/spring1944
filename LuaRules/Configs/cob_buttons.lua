@@ -1,15 +1,65 @@
 -- $Id: cob_buttons.lua 3171 2008-11-06 09:06:29Z det $
 return {
-  ruscommissar = {
+	ruscommissar = {
 	{
 		cob = "LookForMines",
-		name = "Search",
+		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
-  ruscommander = {
+	ruscommander = {
 	{
 		cob = "LookForMines",
-		name = "Search",
+		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
+	
+	rusengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	
+	gbrengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	
+	gbrhqengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	
+	gerengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	
+	gerhqengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	
+	usengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+
+	ushqengineer = {
+	{
+		cob = "LookForMines",
+		name = "Clear Mines",
+		tooltip = "Search for mines"},
+	},
+	 
 }

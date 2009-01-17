@@ -3,7 +3,7 @@
 #include "constants.h"
 
 piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
-		lfoot, luparm, lloarm, ground, ruparm, rloarm, head, gun;
+		lfoot, luparm, lloarm, ground, ruparm, rloarm, head, gun, detector;
 		
 
 //signals to handle control of..everything
@@ -131,6 +131,7 @@ StopMoving()
 
 Create()
 {
+	hide detector;
 	bMoving = 0;
 	bAiming = 0;
 	iState = 1;

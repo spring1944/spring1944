@@ -100,7 +100,7 @@ local morphDefs = {
   
   -- Towed Guns
   
-  gbr17pdr = 
+  gbr17pdr_truck = 
   {
     into = 'gbr17pdr_stationary',
     tech = 0,
@@ -111,14 +111,14 @@ local morphDefs = {
 
   gbr17pdr_stationary = 
   {
-    into = 'gbr17pdr',
+    into = 'gbr17pdr_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  gbr25pdr = 
+  gbr25pdr_truck = 
   {
     into = 'gbr25pdr_stationary',
     tech = 0,
@@ -129,7 +129,7 @@ local morphDefs = {
 
   gbr25pdr_stationary = 
   {
-    into = 'gbr25pdr',
+    into = 'gbr25pdr_truck',
     tech = 0,
     time = 10,
     metal = 0,
@@ -154,7 +154,7 @@ local morphDefs = {
     energy = 0,
   },
   
-  gerpak40 = 
+  gerpak40_truck = 
   {
     into = 'gerpak40_stationary',
     tech = 0,
@@ -165,14 +165,14 @@ local morphDefs = {
   
   gerpak40_stationary = 
   {
-    into = 'gerpak40',
+    into = 'gerpak40_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  gerlefh18 = 
+  gerlefh18_truck = 
   {
     into = 'gerlefh18_stationary',
     tech = 0,
@@ -183,14 +183,14 @@ local morphDefs = {
   
   gerlefh18_stationary = 
   {
-    into = 'gerlefh18',
+    into = 'gerlefh18_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-	gernebelwerfer = 
+	gernebelwerfer_truck = 
   {
     into = 'gernebelwerfer_stationary',
     tech = 0,
@@ -201,7 +201,7 @@ local morphDefs = {
   
   gernebelwerfer_stationary = 
   {
-    into = 'gernebelwerfer',
+    into = 'gernebelwerfer_truck',
     tech = 0,
     time = 10,
     metal = 0,
@@ -226,7 +226,7 @@ local morphDefs = {
     energy = 0,
   },
   
-  ruszis2 = 
+  ruszis2_truck = 
   {
     into = 'ruszis2_stationary',
     tech = 0,
@@ -237,14 +237,14 @@ local morphDefs = {
   
   ruszis2_stationary = 
   {
-    into = 'ruszis2',
+    into = 'ruszis2_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  ruszis3 = 
+  ruszis3_truck = 
   {
     into = 'ruszis3_stationary',
     tech = 0,
@@ -255,14 +255,14 @@ local morphDefs = {
   
   ruszis3_stationary = 
   {
-    into = 'ruszis3',
+    into = 'ruszis3_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  rusm30 = 
+  rusm30_truck = 
   {
     into = 'rusm30_stationary',
     tech = 0,
@@ -273,14 +273,14 @@ local morphDefs = {
   
   rusm30_stationary = 
   {
-    into = 'rusm30',
+    into = 'rusm30_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  usm5gun = 
+  usm5gun_truck = 
   {
     into = 'usm5gun_stationary',
     tech = 0,
@@ -291,14 +291,14 @@ local morphDefs = {
   
   usm5gun_stationary = 
   {
-    into = 'usm5gun',
+    into = 'usm5gun_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  usm2gun = 
+  usm2gun_truck = 
   {
     into = 'usm2gun_stationary',
     tech = 0,
@@ -309,7 +309,7 @@ local morphDefs = {
   
   usm2gun_stationary = 
   {
-    into = 'usm2gun',
+    into = 'usm2gun_truck',
     tech = 0,
     time = 10,
     metal = 0,

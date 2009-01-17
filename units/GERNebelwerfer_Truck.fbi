@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=GERNebelwerfer_Truck;
-	objectname=GERPaK40_Truck.S3O;
+	objectname=GERNebelwerfer_Truck.S3O;
 	buildpic=GERNebelwerfer.png;
 	corpse=GEROpelBlitz_Destroyed;
 	icontype=truck;
