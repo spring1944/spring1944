@@ -5,10 +5,10 @@
 	turn rloarm to x-axis <-30> now;\
 	turn rloarm to y-axis <20> now;\
 	turn rloarm to z-axis <-50> now;\
-	turn luparm to x-axis <-10> now;\
+	turn luparm to x-axis <0> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-85>now;\
+	turn lloarm to x-axis <-95> now;\
 	turn lloarm to y-axis <0> now;\
 	turn lloarm to z-axis <0> now;\
 	turn gun to x-axis <0> now;\
@@ -28,12 +28,12 @@
 	turn rloarm to x-axis <-50> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <-20> now;\
+	turn luparm to x-axis <10> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-140>now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <-15> now;\
+	turn lloarm to y-axis <100> now;\
+	turn lloarm to z-axis <150> now;\
 	turn gun to x-axis <-50> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <0> now;\
@@ -51,12 +51,12 @@
 	turn rloarm to x-axis <-40> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <0> now;\
-	turn luparm to y-axis <20> now;\
+	turn luparm to x-axis <15> now;\
+	turn luparm to y-axis <15> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-60> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <30> now;\
+	turn lloarm to y-axis <90> now;\
+	turn lloarm to z-axis <100> now;\
 	turn gun to x-axis <30> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <-20> now;\
@@ -69,17 +69,17 @@
 
 #define SMG_STANCE1 \
 	turn ruparm to x-axis <-60> now;\
-	turn ruparm to y-axis <0> now;\
+	turn ruparm to y-axis <-20> now;\
 	turn ruparm to z-axis <0> now;\
 	turn rloarm to x-axis <-30> now;\
 	turn rloarm to y-axis <20> now;\
-	turn rloarm to z-axis <-50> now;\
-	turn luparm to x-axis <-10> now;\
+	turn rloarm to z-axis <-70> now;\
+	turn luparm to x-axis <0> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-85> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <20> now;\
+	turn lloarm to y-axis <90> now;\
+	turn lloarm to z-axis <90> now;\
 	turn gun to x-axis <0> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <0> now;\
@@ -97,15 +97,15 @@
 	turn rloarm to x-axis <-40> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <25> now;\
-	turn luparm to y-axis <0> now;\
+	turn luparm to x-axis <35> now;\
+	turn luparm to y-axis <-20> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-95> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <40> now;\
+	turn lloarm to y-axis <70> now;\
+	turn lloarm to z-axis <130> now;\
 	turn gun to x-axis <30> now;\
 	turn gun to y-axis <0> now;\
-	turn gun to z-axis <-20> now;\
+	turn gun to z-axis <-10> now;\
 	turn head to y-axis <0> now;\
 	turn head to x-axis <0> now;\
 	turn head to z-axis <0> now;\
@@ -120,10 +120,10 @@
 	turn rloarm to x-axis <-30> now;\
 	turn rloarm to y-axis <20> now;\
 	turn rloarm to z-axis <-50> now;\
-	turn luparm to x-axis <-10> now;\
+	turn luparm to x-axis <0> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-85> now;\
+	turn lloarm to x-axis <-95> now;\
 	turn lloarm to y-axis <0> now;\
 	turn lloarm to z-axis <0> now;\
 	turn gun to x-axis <0> now;\
@@ -137,21 +137,21 @@
 	turn torso to z-axis <0> now;
 
 #define MG_STANCE2 \
-	turn ruparm to x-axis <-70> now;\
+	turn ruparm to x-axis <-60> now;\
 	turn ruparm to y-axis <-40> now;\
 	turn ruparm to z-axis <0> now;\
-	turn rloarm to x-axis <-40> now;\
+	turn rloarm to x-axis <-50> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <0> now;\
-	turn luparm to y-axis <20> now;\
+	turn luparm to x-axis <10> now;\
+	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-60> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
-	turn gun to x-axis <30> now;\
+	turn lloarm to x-axis <-15> now;\
+	turn lloarm to y-axis <100> now;\
+	turn lloarm to z-axis <150> now;\
+	turn gun to x-axis <-50> now;\
 	turn gun to y-axis <0> now;\
-	turn gun to z-axis <-20> now;\
+	turn gun to z-axis <0> now;\
 	turn head to y-axis <0> now;\
 	turn head to x-axis <0> now;\
 	turn head to z-axis <0> now;\
@@ -166,10 +166,10 @@
 	turn rloarm to x-axis <-30> now;\
 	turn rloarm to y-axis <20> now;\
 	turn rloarm to z-axis <-50> now;\
-	turn luparm to x-axis <-10> now;\
+	turn luparm to x-axis <0> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-85>now;\
+	turn lloarm to x-axis <-95> now;\
 	turn lloarm to y-axis <0> now;\
 	turn lloarm to z-axis <0> now;\
 	turn gun to x-axis <0> now;\
@@ -189,12 +189,12 @@
 	turn rloarm to x-axis <-50> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <-20> now;\
+	turn luparm to x-axis <10> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-140>now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <-15> now;\
+	turn lloarm to y-axis <100> now;\
+	turn lloarm to z-axis <150> now;\
 	turn gun to x-axis <-50> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <0> now;\
@@ -212,12 +212,12 @@
 	turn rloarm to x-axis <-40> now;\
 	turn rloarm to y-axis <0> now;\
 	turn rloarm to z-axis <-110> now;\
-	turn luparm to x-axis <0> now;\
-	turn luparm to y-axis <20> now;\
+	turn luparm to x-axis <15> now;\
+	turn luparm to y-axis <15> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-60> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <30> now;\
+	turn lloarm to y-axis <90> now;\
+	turn lloarm to z-axis <100> now;\
 	turn gun to x-axis <30> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <-20> now;\
@@ -299,20 +299,20 @@
 	
 #define ATROCKET_STANCE1 \
 	turn ruparm to x-axis <-60> now;\
-	turn ruparm to y-axis <0> now;\
+	turn ruparm to y-axis <-60> now;\
 	turn ruparm to z-axis <0> now;\
-	turn rloarm to x-axis <-30> now;\
-	turn rloarm to y-axis <20> now;\
-	turn rloarm to z-axis <-50> now;\
-	turn luparm to x-axis <-10> now;\
+	turn rloarm to x-axis <-40> now;\
+	turn rloarm to y-axis <0> now;\
+	turn rloarm to z-axis <-120> now;\
+	turn luparm to x-axis <20> now;\
 	turn luparm to y-axis <0> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-85>now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
-	turn gun to x-axis <0> now;\
+	turn lloarm to x-axis <30> now;\
+	turn lloarm to y-axis <80> now;\
+	turn lloarm to z-axis <115> now;\
+	turn gun to x-axis <20> now;\
 	turn gun to y-axis <0> now;\
-	turn gun to z-axis <0> now;\
+	turn gun to z-axis <-10> now;\
 	turn head to y-axis <0> now;\
 	turn head to x-axis <0> now;\
 	turn head to z-axis <0> now;\
@@ -331,9 +331,9 @@
 	turn luparm to x-axis <0> now;\
 	turn luparm to y-axis <20> now;\
 	turn luparm to z-axis <0> now;\
-	turn lloarm to x-axis <-60> now;\
-	turn lloarm to y-axis <0> now;\
-	turn lloarm to z-axis <0> now;\
+	turn lloarm to x-axis <30> now;\
+	turn lloarm to y-axis <100> now;\
+	turn lloarm to z-axis <70> now;\
 	turn gun to x-axis <30> now;\
 	turn gun to y-axis <0> now;\
 	turn gun to z-axis <-20> now;\
