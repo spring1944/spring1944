@@ -1,4 +1,4 @@
-local versionNumber = "v1.2"
+local versionNumber = "v1.3"
 
 function widget:GetInfo()
 	return {
@@ -68,6 +68,7 @@ local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
 local GetGroundHeight = Spring.GetGroundHeight
 local GetCameraPosition = Spring.GetCameraPosition
+local GetCameraDirection = Spring.GetCameraDirection
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -94,6 +95,7 @@ local GL_LINE_LOOP = GL.LINE_LOOP
 local GL_LINE_STRIP = GL.LINE_STRIP
 local GL_POINTS = GL.POINTS
 
+local abs = math.abs
 local sin, cos = math.sin, math.cos
 local ceil, floor = math.ceil, math.floor
 local min, max = math.min, math.max
@@ -116,8 +118,9 @@ end
 local function GetCameraScale()
 	if (viewDistance > 0) then
 		local cx, cy, cz = GetCameraPosition()
+		local _, dy = GetCameraDirection()
 		local gwh = max(GetGroundHeight(cx, cz), 0)
-		local size = max(viewDistance / max(cy - gwh, 1), 1)
+		local size = max(viewDistance / max(cy - gwh, 1), 1) * abs(dy)
 		return size
 	else
 		return -viewDistance
@@ -352,7 +355,6 @@ end
 ------------------------------------------------
 --callins
 ------------------------------------------------
-
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (not AreTeamsAllied(unitTeam, GetMyTeamID())) then 
