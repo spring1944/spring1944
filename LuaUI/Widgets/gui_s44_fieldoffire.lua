@@ -129,6 +129,21 @@ function widget:Initialize()
 					inUse = true
 				end
 			end
+			
+			if mobileName then
+			
+				local truckName = mobileName .. "_truck"
+				
+				local truckDef = UnitDefNames[truckName]
+				if (truckDef) then
+					local truckDefID = truckDef.id
+					if (truckDefID) then
+						deployables[truckDefID] = unitDef.maxWeaponRange
+						deployables[unitDefID] = unitDef.maxWeaponRange
+						inUse = true
+					end
+				end
+			end
 		end
 	end
 	
