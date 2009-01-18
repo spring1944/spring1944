@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece ground, carriage, gunleg1, gunleg2, wheels, sleeve, barrel, flare, brakeright, brakeleft;
+piece ground, carriage, wheels, sleeve, barrel, flare, brakeright, brakeleft;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
 piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
  
@@ -8,7 +8,7 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, Pick
 
 
  
- #include "inf_suppressionvars.h"
+ #include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_AIM2	4
@@ -307,8 +307,6 @@ Deploy()
 	move crewman1 to y-axis [-1] now;
 	move crewman2 to y-axis [-1] now;
 	
-	turn gunleg1 to y-axis <15> now;
-	turn gunleg2 to y-axis <-15> now;
 	set MAX_SPEED to 1;
 	sleep 100;
 	isDeployed = TRUE;
@@ -322,8 +320,6 @@ UnDeploy()
 	
 	CREW_UNDEPLOY
 	wait-for-turn carriage around y-axis;
-	turn gunleg1 to y-axis <0> now;
-	turn gunleg2 to y-axis <0> now;
 	
 	move crewman1 to y-axis [0] now;
 	move crewman2 to y-axis [0] now;
