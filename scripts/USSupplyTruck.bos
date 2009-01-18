@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, body, wheel1, wheel2, wheel3;
+piece  base, wheel1, wheel2, wheel3;
  
 static-var restore_delay, skip;
 
@@ -57,7 +57,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 Killed(severity, corpsetype)

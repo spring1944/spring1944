@@ -131,4 +131,6 @@
 #define FLANK_B_MIN_DAMAGE			124 // set or get
 #define KILL_UNIT					125 // get KILL_UNIT(unitId, SelfDestruct=true, Reclaimed=false)
 // NOTE: shared variables use codes [1024 - 5119]
-
+#define MIN				131
+#define MAX				132
+#define ABS				133

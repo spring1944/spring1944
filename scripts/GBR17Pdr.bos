@@ -6,7 +6,7 @@ piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthi
  
 static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
 
-#include "inf_suppressionvars.h"
+#include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_AIM2	4

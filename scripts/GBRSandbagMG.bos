@@ -2,7 +2,7 @@
 
 #include "STANDARD_COMMANDS_GPL.h"
 
-piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, turret, lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head, tripod;
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, turret, lfoot, luparm, lloarm, base, gun, ruparm, rloarm, head, tripod;
 
 static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
  nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, HipAim;
@@ -20,7 +20,7 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 
 #define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
-#define PinnedLevel	10 //fear level where they stop shooting and freeze on the ground
+#define PinnedLevel	10 //fear level where they stop shooting and freeze on the base
 #define RecoverRate	500 //how often RecoverConstant is subtracted from total fear level
 //#define InitialFreeze 2000 //how long they stay down before they start recovering
 //various levels of fear added when these weapons hit
@@ -288,7 +288,7 @@ Create()
 	nade_active=0;
 	start-script WeaponReady();
 	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
-	move ground to y-axis -0.5 speed <100>;
+	move pelvis to y-axis -0.5 speed <100>;
 	nade_speed = 4;
 	WALK_SPEED = rand(9,11);
 	prone_speed = rand(3,5);

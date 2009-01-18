@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, body, load_shoulder, load_arm, wheel1, wheel2, tow_point;
+piece  base, load_shoulder, load_arm, wheel1, wheel2, tow_point;
  
 static-var restore_delay, skip;
 
@@ -126,27 +126,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
-}
-
-AimFromWeapon1(piecenum) //supply range ring 
-{
 	piecenum = base;
-}
-
-QueryWeapon1(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon1(heading, pitch)
-{
-	return 1;
-}
-
-FireWeapon1()
-{
-return (0);
 }
 
 Killed(severity, corpsetype)

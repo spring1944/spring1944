@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, pad, beam, BA64;
+piece  base, pad, beam;
 
 static-var  spray, unitviewer, statechg_DesiredState, statechg_StateChanging;
 

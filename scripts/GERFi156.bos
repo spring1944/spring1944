@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, fuselage, wing1, wing2, wheel1, wheel2, propeller, blades, turret, barrel, flare;
+piece  base, fuselage, wing1, wing2, wheel1, wheel2, propeller, blades;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
@@ -164,64 +164,7 @@ SweetSpot(piecenum)
 	piecenum = fuselage;
 }
 
-AimFromWeapon1(piecenum)//Defensive Machinegun
-{
-	piecenum = turret;
-}
 
-QueryWeapon1(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon1(heading, pitch)
-{
-	turn turret to y-axis heading - <180> speed <200>;
-	turn barrel to x-axis 0 + pitch speed <200>;
-	wait-for-turn turret around y-axis;
-	wait-for-turn barrel around x-axis;
-	return (1);
-}
-
-FireWeapon1()
-{
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	emit-sfx MG_SHELLCASINGS from turret;
-	sleep 67;
-	
-	return (0);
-}
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
