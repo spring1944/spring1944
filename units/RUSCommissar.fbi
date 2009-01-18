@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=RUSCommissar;
-	objectname=RUSEngineer.S3O;
+	objectname=RUSCommissar.S3O;
 	corpse=RUSSoldier_dead;
 	icontype=commissar;
 	soundcategory=RUSInf;
