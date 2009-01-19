@@ -21,6 +21,9 @@
 
 	impulsefactor=0.00001;
 
+	dyndamageexp=1;
+	dyndamagerange=200;
+
 	[damage]
 	{
 		default=2500;

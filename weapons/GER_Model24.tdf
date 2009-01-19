@@ -22,6 +22,9 @@
 
 	explosiongenerator=custom:HE_Small;
 
+	dyndamageexp=1;
+	dyndamagerange=220;
+
 	[damage]
 	{
 		default=2500;
