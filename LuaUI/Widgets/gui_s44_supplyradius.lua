@@ -1,4 +1,4 @@
-local versionNumber = "v1.3"
+local versionNumber = "v1.4"
 
 function widget:GetInfo()
 	return {
@@ -241,17 +241,21 @@ local function DrawSupplyRing(unitID, supplyInfo)
 	local vi = 1
 	for i=1, supplyInfo.numSegments do
 		if (supplyInfo[i]) then
-			vertices[vi] = {
-				v = {cos(angle), 0, sin(angle)}
-			}
-			vi = vi + 1
+			local gx, gz = x + r * cos(angle), z + r * sin(angle)
+			local gy =  max(GetGroundHeight(gx, gz), 0)
+			if gy then
+				vertices[vi] = {
+					v = {gx, gy, gz}
+				}
+				vi = vi + 1
+			end
 		end
 		angle = angle + segmentAngle
 	end
 	
 	glPushMatrix()
-		glTranslate(x, y, z)
-		glScale(r, r, r)
+		--glTranslate(x, y, z)
+		--glScale(r, r, r)
 		
 		glShape(GL_POINTS, vertices)
 	glPopMatrix()
