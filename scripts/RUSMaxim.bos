@@ -1,11 +1,11 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece ground, turret, carriage, wheel1, wheel2, gun, flare;
-piece crewman, pelvis, torso, head, luparm, lloarm, ruparm, rloarm, rthigh, rleg, lthigh, lleg;
+piece turret, carriage, wheels, gun, flare;
+piece ground, pelvis, torso, head, luparm, lloarm, ruparm, rloarm, rthigh, rleg, lthigh, lleg;
  
  
 static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned, FearOk;
-#include "Inf_Suppressionvars.h"
+#include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_AIM2	4
@@ -111,7 +111,7 @@ turn rthigh to x-axis <-50> now;\
 turn lthigh to x-axis <-50> now;\
 turn rleg to x-axis <130> now;\
 turn lleg to x-axis <130> now;\
-move crewman to y-axis [-1.0] now;\
+move pelvis to y-axis [-1.0] now;\
 turn torso to y-axis <40> now;\
 turn luparm to x-axis <-90> now;\
 turn ruparm to x-axis <-90> now;\
@@ -219,7 +219,7 @@ Deploy()
 	
 //	CREW_DEPLOY;
 	
-	move crewman to y-axis [-1] now;
+//.	move pelvis to y-axis [-1] now;
 	sleep 50;
 	set MAX_SPEED to 1;
 	isDeployed = TRUE;
@@ -233,7 +233,7 @@ UnDeploy()
 	
 //	CREW_UNDEPLOY;
 	wait-for-turn carriage around y-axis;
-	move crewman to y-axis [0] now;
+//	move crewman to y-axis [0] now;
 
 	sleep 50;
 	
@@ -401,8 +401,7 @@ StartMoving()
 	set-signal-mask SIG_DEPLOY;
 	sleep 200;
 	//call-script UnDeploy();
- 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
- 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	call-script CrewWalk();
 }
 
@@ -410,8 +409,7 @@ StopMoving()
 {
 	signal SIG_DEPLOY;
 	set-signal-mask SIG_DEPLOY;
- 	stop-spin wheel1 around x-axis;
-  	stop-spin wheel2 around x-axis;
+  	stop-spin wheels around x-axis;
 	CREW_STOP;
 	sleep 200;
 	//start-script Deploy();
@@ -424,18 +422,18 @@ Killed(severity, corpsetype)
 	{
 		corpsetype = 1;
 		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		return (0);
 	}
 	if(severity <= 999)
 	{
 		corpsetype = 1;
 		explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	}
 	corpsetype = 2;
 	explode flare type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;		
+	explode wheels type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;		
 	explode head type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode carriage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 }
