@@ -19,7 +19,7 @@
 	startvelocity=200;
 	weaponvelocity=400;
 	areaofeffect=46;
-	edgeeffectiveness=0.1;
+	edgeeffectiveness=0.8;
 
 	soundstart=GBR_PIAT;
 	soundhit=GEN_Explo_3;

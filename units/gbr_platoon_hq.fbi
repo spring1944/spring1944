@@ -11,9 +11,9 @@
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=390;
+	buildcostmetal=335;
 	buildcostenergy=0;
-	buildtime=390;
+	buildtime=335;
 	footprintx=1;
 	footprintz=1;
 
