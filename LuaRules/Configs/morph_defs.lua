@@ -28,14 +28,14 @@ local morphDefs = {
   
   gbrvickers =
   {
-    into = 'gbrsandbagmg',
+    into = 'gbrvickers_sandbag',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
   },
   
-  gbrsandbagmg =
+  gbrvickers_sandbag =
   {
     into = 'gbrvickers',
     tech = 0,
@@ -46,14 +46,14 @@ local morphDefs = {
   
   germg42 =
   {
-    into = 'gersandbagmg',
+    into = 'germg42_sandbag',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
   },
 
-  gersandbagmg =
+  germg42_sandbag =
   {
     into = 'germg42',
     tech = 0,
@@ -64,14 +64,14 @@ local morphDefs = {
   
   rusmaxim =
   {
-    into = 'russandbagmg',
+    into = 'rusmaxim_sandbag',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
   },
 
-  russandbagmg =
+  rusmaxim_sandbag =
   {
     into = 'rusmaxim',
     tech = 0,
@@ -82,14 +82,14 @@ local morphDefs = {
   
   usgimg =
   {
-    into = 'ussandbagmg',
+    into = 'usgimg_sandbag',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
   },
 
-  ussandbagmg =
+  usgimg_sandbag =
   {
     into = 'usgimg',
     tech = 0,

@@ -1,17 +1,17 @@
 [unitinfo]
 {
-	unitname=GBRSandbagMG;
-	objectname=GBRSandbagMG.S3O;
+	unitname=usgimg_sandbag;
+	objectname=USSandbagMG.S3O;
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
-	soundcategory=GbrInf;
-	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+	soundcategory=USInf;
+	category=NFLAGNAIR NOWEAPON INFTARG BUILDING TURRET NFLAG ;
 	tedclass=TURRET;
 	yardmap=o;
 
 	name=Light Defensive Position;
 	description=- Directional Infantry area denial;
-	side=GBR;
+	side=US;
 	maxdamage=1875;
 	buildcostmetal=645;
 	buildcostenergy=0;
@@ -41,7 +41,7 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=Vickers;
+	weapon1=m1919a4browning_deployed;
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=120;

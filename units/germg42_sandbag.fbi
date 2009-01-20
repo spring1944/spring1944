@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GERSandbagMG;
+	unitname=germg42_sandbag;
 	objectname=GERSandbagMG.S3O;
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;

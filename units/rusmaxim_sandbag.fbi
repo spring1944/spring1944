@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=RUSSandbagMG;
+	unitname=rusmaxim_sandbag;
 	objectname=RUSSandbagMG.S3O;
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
