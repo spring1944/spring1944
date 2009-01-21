@@ -21,6 +21,7 @@ end
 local viewDistance = 8192 --distance at which dots start getting bigger; fixed size if negative
 local minimapSize = 1
 local color = {1, 1, 0, 0.75}
+local previewColor = {1, 1, 0, 0.25}
 local showAlways = false
 local showRollover = true
 local showSelect = true
@@ -50,7 +51,7 @@ end
 
 local mainList
 
---format: unitDefID = {radius, numSegments, segmentAngle}
+--format: unitDefID = {radius, numSegments, segmentAngle, oddX, oddZ}
 local supplyDefInfos = {}
 
 --format: unitID = {[1] = bool, [2] = bool, ... [numSegments] = bool, supplyDefInfo = table, x = number, y = number, z = number}
@@ -69,6 +70,7 @@ local GetUnitTeam = Spring.GetUnitTeam
 local GetGroundHeight = Spring.GetGroundHeight
 local GetCameraPosition = Spring.GetCameraPosition
 local GetCameraDirection = Spring.GetCameraDirection
+local GetActiveCommand = Spring.GetActiveCommand
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -125,6 +127,30 @@ local function GetCameraScale()
 	else
 		return -viewDistance
 	end
+end
+
+local function GetMouseBuildPosition(oddX, oddZ)
+	local mx, my = GetMouseState()
+	local _, coords = TraceScreenRay(mx, my, true, true)
+	
+	if not coords then return nil end
+	
+	local x, z = coords[1], coords[3]
+	local bx, bz
+	
+	if (oddX) then
+		bx = (floor( x / 16) + 0.5) * 16
+	else
+		bx = floor( x / 16 + 0.5) * 16
+	end
+	
+	if (oddZ) then
+		bz = (floor( z / 16) + 0.5) * 16
+	else
+		bz = floor( z / 16 + 0.5) * 16
+	end
+	
+	return bx, bz
 end
 
 ------------------------------------------------
@@ -231,7 +257,7 @@ end
 ------------------------------------------------
 --drawing
 ------------------------------------------------
-local function DrawSupplyRing(unitID, supplyInfo)
+local function DrawSupplyRing(supplyInfo)
 	local supplyDefInfo = supplyInfo.supplyDefInfo
 	local angle = 0
 	local r = supplyInfo.r
@@ -254,9 +280,38 @@ local function DrawSupplyRing(unitID, supplyInfo)
 	end
 	
 	glPushMatrix()
-		--glTranslate(x, y, z)
-		--glScale(r, r, r)
-		
+		glShape(GL_POINTS, vertices)
+	glPopMatrix()
+end
+
+local function DrawPreview(supplyDefInfo)
+	
+	if not supplyDefInfo then return end
+	
+	local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
+	
+	if not bx then return end
+	
+	local r = supplyDefInfo[1]
+	local segmentAngle = supplyDefInfo[3]
+	
+	local vertices = {}
+	local angle = 0
+	local vi = 1
+	for i=1, supplyDefInfo[2] do
+		local gx, gz = bx + r * cos(angle), bz + r * sin(angle)
+		local gy =  max(GetGroundHeight(gx, gz), 0)
+		if gy then
+			vertices[vi] = {
+				v = {gx, gy, gz}
+			}
+			vi = vi + 1
+		end
+		angle = angle + segmentAngle
+	end
+	
+	glPushMatrix()
+		glColor(previewColor)
 		glShape(GL_POINTS, vertices)
 	glPopMatrix()
 end
@@ -264,15 +319,24 @@ end
 local function DrawMain()
 	glColor(color)
 	
-	for unitID, supplyInfo in pairs(supplyInfos) do
-		DrawSupplyRing(unitID, supplyInfo)
+	for _, supplyInfo in pairs(supplyInfos) do
+		DrawSupplyRing(supplyInfo)
 	end
 	
 	glColor(1, 1, 1, 1)
 end
 
 local function CallMain()
-	if (showAlways) then
+	local supplyDefInfo
+	local _, cmd_id = GetActiveCommand()
+	if cmd_id then
+		local unitDefID = -cmd_id
+		supplyDefInfo = supplyDefInfos[unitDefID]
+	end
+	
+	DrawPreview(supplyDefInfo)
+	
+	if (showAlways or supplyDefInfo) then
 		glCallList(mainList)
 		return
 	end
@@ -428,7 +492,14 @@ function widget:Initialize()
 			local radius = unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE
 			local numSegments = ceil(radius / segmentLength)
 			local segmentAngle = 2 * PI / numSegments
-			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle}
+      local oddX, oddZ
+      if (unitDef.xsize % 4 == 2) then
+				oddX = true
+			end
+			if (unitDef.zsize % 4 == 2) then
+				oddZ = true
+			end
+			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle, oddX, oddZ}
 			inUse = true
 		end
 	end
