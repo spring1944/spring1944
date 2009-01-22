@@ -35,7 +35,7 @@ end
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
-local function CheckDist(unitID)
+local function FindSupplier(unitID)
 	local closestSupplier
 	local closestDistance = math.huge
 	local allyTeam = GetUnitAllyTeam(unitID)
@@ -43,14 +43,17 @@ local function CheckDist(unitID)
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
 		local supTeam = GetUnitTeam(supplierID)
 		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
-			local separation	= GetUnitSeparation(unitID, supplierID, true)
-			if separation < closestDistance then
+			local separation = GetUnitSeparation(unitID, supplierID, true)
+			local supplierDefID = GetUnitDefID(supplierID)
+			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
+			if separation < closestDistance and separation <= supplyRange then
 				closestSupplier = supplierID
 				closestDistance = separation
 			end
 		end
-	end	
-	return closestSupplier, closestDistance
+	end
+	
+	return closestSupplier
 end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -84,23 +87,20 @@ function gadget:GameFrame(n)
 				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
 				return
 			end
-			local supplierID, distanceFromSupplier = CheckDist(unitID)
+			local supplierID = FindSupplier(unitID)
 			if supplierID then
 				local supplierDefID = GetUnitDefID(supplierID)
 				local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-				if (distanceFromSupplier < supplyRange) and (logisticsLevel > 5) then 
-					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
+				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
+			else
+				local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
+				if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
+					savedFrame[unitID] = reloadFrame + reloadFrameLength
 				end
-				if (distanceFromSupplier > supplyRange) and (logisticsLevel > 5) then
-					local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
-					if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
-						savedFrame[unitID] = reloadFrame + reloadFrameLength
-					end
-					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
-					if (reloadFrame > savedFrame[unitID]) then
-						savedFrame[unitID] = reloadFrame
-						Spring.UseUnitResource(unitID, "e", weaponCost)
-					end
+				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
+				if (reloadFrame > savedFrame[unitID]) then
+					savedFrame[unitID] = reloadFrame
+					Spring.UseUnitResource(unitID, "e", weaponCost)
 				end
 			end
 		end

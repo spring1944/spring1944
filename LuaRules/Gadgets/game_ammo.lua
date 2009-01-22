@@ -97,26 +97,27 @@ local function FindSupplier(vehicleID)
 	local closestSupplier
 	local closestDistance = math.huge
 	local allyTeam = GetUnitAllyTeam(vehicleID)
-	
 	for supplierID in pairs(ammoSuppliers) do
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
 		local supTeam = GetUnitTeam(supplierID)
 		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
-			local separation	= GetUnitSeparation(vehicleID, supplierID, true)
-			if separation < closestDistance then
+			local separation = GetUnitSeparation(vehicleID, supplierID, true)
+			local supplierDefID = GetUnitDefID(supplierID)
+			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
+			if separation < closestDistance and separation <= supplyRange then
 				closestSupplier = supplierID
 				closestDistance = separation
 			end
 		end
 	end
 	
-	return closestSupplier, closestDistance
+	return closestSupplier
 end
 
 
 local function Resupply(unitID)
 	local unitDefID = GetUnitDefID(unitID)
-	local supplierID, distanceFromSupplier = FindSupplier(unitID)
+	local supplierID = FindSupplier(unitID)
 	if supplierID then
 		local teamID = Spring.GetUnitTeam(supplierID)
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
@@ -127,12 +128,7 @@ local function Resupply(unitID)
 		return
 	end
 	
-	local supplierDefID = GetUnitDefID(supplierID)
 	local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
-	local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-	if supplyRange < distanceFromSupplier then
-		return
-	end
 	local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
 	local ammoRegen = DefaultRegen(unitDefID)
