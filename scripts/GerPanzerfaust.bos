@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  torso, flare, backblast, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+piece  torso, flare, pelvis, backblast, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 		
 
@@ -29,7 +29,6 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000
 #define RestoreDelay			5000
-#define UNIT_SPEED				[0.8]
 #define StanceNumber			2 //number of WeaponReady stances
 #define BurstRate				100 //marginally less than the actual so there's visible movement
 
@@ -93,15 +92,112 @@ static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #define SHELL 1024+4
 #define PISS 1024+5
 #define CIG 1024+6
-#define MUZZLEFLASH 1024+7
-#define MUZZLEDUST	1024+8
+#define MUZZLEFLASH 1024+6
+#define MUZZLEDUST	1024+7
 //end FX
 
 //aiming poses
 #include "inf_poses.h"
 
 //weapon ready - split out so I can easily update the number of poses
-#include "inf_weaponReady.h"
+WeaponReady() //structure is here to allow for multiple poses (either per unit class or even multiples per unit class)
+{
+var pickStance;
+pickStance=rand(1, StanceNumber);
+show gun;
+//bEngaged = FALSE;
+	#ifdef MG
+	if (pickStance == 1)
+	{
+	MG_STANCE1
+	}
+	if (pickStance == 2)
+	{
+	MG_STANCE2
+	}
+	#endif
+	#ifdef ATROCKET
+	if (pickStance == 1)
+	{
+	ATROCKET_STANCE1
+	}
+	if (pickStance == 2)
+	{
+	ATROCKET_STANCE2
+	}
+	#endif
+	#ifdef SNIPER
+	if (pickStance == 1)
+	{
+	SNIPER_STANCE1
+	}
+	if (pickStance == 2)
+	{
+	SNIPER_STANCE2
+	}
+	if (pickStance == 3)
+	{
+	SNIPER_STANCE3
+	}
+	#endif
+	#ifdef SCOUT
+	if (pickStance == 1)
+	{
+	SCOUT_STANCE1
+	}
+	if (pickStance == 2)
+	{
+	SCOUT_STANCE2
+	}	
+	if (pickStance == 3)
+	{
+	SCOUT_STANCE3
+	}
+	#endif
+	#ifdef ENGINEER
+	if (pickStance == 1)
+	{
+	ENGINEER_STANCE1
+	}
+	#endif
+	#ifdef ATRIFLE
+	if (pickStance == 1)
+	{
+	ATRIFLE_STANCE1
+	}
+	#endif
+#ifdef WEAPON_GRENADE
+	if (!bNading)
+	{
+		#ifdef RIFLE
+		show gun;
+		if (pickStance == 1)
+		{
+		RIFLE_STANCE1
+		}
+		if (pickStance == 2)
+		{
+		RIFLE_STANCE3
+		}
+		if (pickStance == 3)
+		{
+		RIFLE_STANCE2
+		}
+		#endif
+		#ifdef SMG
+		show gun;
+		if (pickStance == 1)
+		{
+		SMG_STANCE1
+		}
+		if (pickStance == 2)
+		{
+		SMG_STANCE2
+		}
+		#endif
+	}
+#endif
+}
 
 //Idle animations.
 #include "inf_idleAnims.h"
@@ -135,7 +231,7 @@ StopMoving()
 
 Create()
 {
-	hide backblast;
+	//hide backblast;
 	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
 	bMoving = 0;
 	bAiming = 0;
