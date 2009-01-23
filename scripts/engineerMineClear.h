@@ -2,8 +2,9 @@
 #define _MINECLEAR_H
 
 // some defines for the mine-clearing. Can be defined in unit script to be unit-specific
+// mine search radius should NOT be in linear units
 #ifndef MINE_SEARCH_RADIUS
-#define MINE_SEARCH_RADIUS	[20]
+#define MINE_SEARCH_RADIUS	100
 #endif
 #ifndef MINE_SERACH_TIME
 #define MINE_SEARCH_TIME	5000
