@@ -84,7 +84,7 @@
 
 	//	Weapons
 
-	weapon1=bomb;
+	weapon1=bombsmall;
 	weaponmaindir1=0 -0.25 1;
 	maxangledif1=20;
 	onlytargetcategory1=NFLAGNAIR;
