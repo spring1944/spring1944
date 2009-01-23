@@ -1,4 +1,4 @@
-local versionNumber = "v1.4"
+local versionNumber = "v1.5"
 
 function widget:GetInfo()
 	return {
@@ -79,6 +79,8 @@ local GetSelectedUnitsCounts = Spring.GetSelectedUnitsCounts
 local glColor = gl.Color
 local glLineWidth = gl.LineWidth
 local glPointSize = gl.PointSize
+local glBlending = gl.Blending
+local glSmoothing = gl.Smoothing
 
 local glCreateList = gl.CreateList
 local glCallList = gl.CallList
@@ -96,6 +98,8 @@ local GL_LINES = GL.LINES
 local GL_LINE_LOOP = GL.LINE_LOOP
 local GL_LINE_STRIP = GL.LINE_STRIP
 local GL_POINTS = GL.POINTS
+local GL_SRC_ALPHA = GL.SRC_ALPHA
+local GL_ONE_MINUS_SRC_ALPHA = GL.ONE_MINUS_SRC_ALPHA
 
 local abs = math.abs
 local sin, cos = math.sin, math.cos
@@ -467,7 +471,10 @@ end
 
 function widget:DrawWorldPreUnit()
 	glPointSize(GetCameraScale())
+	glSmoothing(true, false, false)
+	glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 	CallMain()
+	glSmoothing(false, false, false)
 	glPointSize(1)
 end
 
