@@ -179,11 +179,14 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 			vehicles[unitID].reloadFrame[weaponNum] = 0
 		end
 	end
+end
+
+function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+	local ud = UnitDefs[unitDefID]
 	if ud.customParams.ammosupplier == '1' then
 		ammoSuppliers[unitID] = true
 	end
 end
-
 
 function gadget:UnitDestroyed(unitID)
 	vehicles[unitID] = nil

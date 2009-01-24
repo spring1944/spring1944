@@ -61,6 +61,10 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if ud.customParams.feartarget and not(ud.customParams.maxammo) and (ud.weapons[1]) then
 		infantry[unitID] = true
 	end
+end
+
+function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+	local ud = UnitDefs[unitDefID]
 	if ud.customParams.ammosupplier == '1' then
 		ammoSuppliers[unitID] = true
 	end

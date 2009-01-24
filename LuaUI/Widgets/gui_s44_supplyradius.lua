@@ -1,4 +1,4 @@
-local versionNumber = "v1.5"
+local versionNumber = "v1.6"
 
 function widget:GetInfo()
 	return {
@@ -54,9 +54,11 @@ local mainList
 --format: unitDefID = {radius, numSegments, segmentAngle, oddX, oddZ}
 local supplyDefInfos = {}
 
---format: unitID = {[1] = bool, [2] = bool, ... [numSegments] = bool, supplyDefInfo = table, x = number, y = number, z = number}
+--format: unitID = {[1] = bool, [2] = bool, ... [numSegments] = bool, r = number, numSegments = number, segmentAngle = number, x = number, y = number, z = number}
 local supplyInfos = {}
 
+--format: unitID = {supplyDefInfo = table, x = number, z = number}
+local inBuildSupplyInfos = {}
 
 ------------------------------------------------
 --speedups and constants
@@ -71,6 +73,7 @@ local GetGroundHeight = Spring.GetGroundHeight
 local GetCameraPosition = Spring.GetCameraPosition
 local GetCameraDirection = Spring.GetCameraDirection
 local GetActiveCommand = Spring.GetActiveCommand
+local GetUnitIsStunned = Spring.GetUnitIsStunned
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -288,14 +291,7 @@ local function DrawSupplyRing(supplyInfo)
 	glPopMatrix()
 end
 
-local function DrawPreview(supplyDefInfo)
-	
-	if not supplyDefInfo then return end
-	
-	local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
-	
-	if not bx then return end
-	
+local function DrawPreview(supplyDefInfo, x, z)
 	local r = supplyDefInfo[1]
 	local segmentAngle = supplyDefInfo[3]
 	
@@ -303,7 +299,7 @@ local function DrawPreview(supplyDefInfo)
 	local angle = 0
 	local vi = 1
 	for i=1, supplyDefInfo[2] do
-		local gx, gz = bx + r * cos(angle), bz + r * sin(angle)
+		local gx, gz = x + r * cos(angle), z + r * sin(angle)
 		local gy =  max(GetGroundHeight(gx, gz), 0)
 		if gy then
 			vertices[vi] = {
@@ -327,6 +323,12 @@ local function DrawMain()
 		DrawSupplyRing(supplyInfo)
 	end
 	
+	for _, inBuildSupplyInfo in pairs(inBuildSupplyInfos) do
+		local x, z = inBuildSupplyInfo.x, inBuildSupplyInfo.z
+		local supplyDefInfo = inBuildSupplyInfo.supplyDefInfo
+		DrawPreview(supplyDefInfo, x, z)
+	end
+	
 	glColor(1, 1, 1, 1)
 end
 
@@ -338,7 +340,12 @@ local function CallMain()
 		supplyDefInfo = supplyDefInfos[unitDefID]
 	end
 	
-	DrawPreview(supplyDefInfo)
+	if supplyDefInfo then
+		local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
+		if bx then
+			DrawPreview(supplyDefInfo, bx, bz)
+		end
+	end
 	
 	if (showAlways or supplyDefInfo) then
 		glCallList(mainList)
@@ -348,7 +355,7 @@ local function CallMain()
 	if (showRollover) then
 		local mx, my = GetMouseState()
 		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
-		if (mouseTargetType == "unit" and supplyInfos[mouseTarget]) then
+		if mouseTargetType == "unit" and (supplyInfos[mouseTarget] or inBuildSupplyInfos[mouseTarget]) then
 			glCallList(mainList)
 			return
 		end
@@ -429,6 +436,31 @@ end
 ------------------------------------------------
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	local _, _, inBuild = GetUnitIsStunned(unitID)
+	if not inBuild then
+		widget:UnitFinished(unitID, unitDefID, unitTeam)
+		return
+	end
+	
+	local supplyDefInfo = supplyDefInfos[unitDefID]
+	
+	if (not supplyDefInfo) then return end
+	
+	--enter info
+	local supplyInfo = {}
+	supplyInfo.supplyDefInfo = supplyDefInfo
+	
+	local x, _, z = GetUnitPosition(unitID)
+	supplyInfo.x, supplyInfo.z = x, z
+	
+	inBuildSupplyInfos[unitID] = supplyInfo
+	
+	UpdateLists()
+end
+
+function widget:UnitFinished(unitID, unitDefID, unitTeam)
+	inBuildSupplyInfos[unitID] = nil
+	
 	if (not AreTeamsAllied(unitTeam, GetMyTeamID())) then 
 		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		return
@@ -454,19 +486,32 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function widget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-	widget:UnitCreated(unitID, unitDefID, unitTeam)
+	local _, _, inBuild = GetUnitIsStunned(unitID)
+	if inBuild then
+		widget:UnitCreated(unitID, unitDefID, unitTeam)
+	else
+		widget:UnitFinished(unitID, unitDefID, unitTeam)
+	end
 end
 
 function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-	widget:UnitCreated(unitID, unitDefID, unitTeam)
+	local _, _, inBuild = GetUnitIsStunned(unitID)
+	if inBuild then
+		widget:UnitCreated(unitID, unitDefID, unitTeam)
+	else
+		widget:UnitFinished(unitID, unitDefID, unitTeam)
+	end
 end
 
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	local supplyInfo = supplyInfos[unitID]
-	if (not supplyInfo) then return end
-	supplyInfos[unitID] = nil
-	UpdateRemove(unitID, supplyInfo)
-	UpdateLists()
+	if supplyInfo then
+		supplyInfos[unitID] = nil
+		UpdateRemove(unitID, supplyInfo)
+		UpdateLists()
+	else
+		inBuildSupplyInfos[unitID] = nil
+	end
 end
 
 function widget:DrawWorldPreUnit()
