@@ -4,7 +4,7 @@
 	objectname=USRifle.S3O;
 	corpse=USSoldier_dead;
 	icontype=rifle;
-	soundcategory=CDNInf;
+	soundcategory=USInf;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
