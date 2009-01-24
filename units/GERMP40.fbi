@@ -5,7 +5,7 @@
 	icontype=assault;
 	soundcategory=GERInf;
       corpse=GERSoldier_dead;
-	category=NFLAGNAIR NFLAG INFTARG ;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Sturminfanterie;

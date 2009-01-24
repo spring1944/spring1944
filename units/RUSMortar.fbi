@@ -5,7 +5,7 @@
 	corpse=RUSSoldier_dead;
 	icontype=mortar;
 	soundcategory=RUSInf;
-	category=INFTARG NFLAGNAIR NOTAIR NFLAG;
+	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
 	tedclass=KBOT;
 
 	name=M1937 Mortar;

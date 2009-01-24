@@ -6,7 +6,7 @@
 	soundcategory=Nothing;
 	category=MINE WEAPON KAMIKAZE;
 	tedclass=SPECIAL;
-	yardmap=o;
+	yardmap=y;
 
 	name=Anti-Tank Mine;
 	maxdamage=500;
@@ -20,7 +20,7 @@
 	shownanoframe=0;
 	smoothanim=0;
 
-	sightdistance=40;
+	sightdistance=160;
 	stealth=1;
 
 	init_cloaked=1;

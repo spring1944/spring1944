@@ -5,7 +5,7 @@
 	corpse=GERSoldier_dead;
 	icontype=rifle;
 	soundcategory=GERInf;
-	category=NFLAGNAIR NFLAG INFTARG;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Kar 98K Infantrie;

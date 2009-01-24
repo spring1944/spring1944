@@ -9,9 +9,9 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=32;
+	range=25;
 	reloadtime=19999;
-	weaponvelocity=30;
+	weaponvelocity=90;
 	areaofeffect=88;
 
 	soundstart=GEN_Explo_1;
@@ -35,39 +35,32 @@
 		unarmouredvehicles=1000;
 	}
 }
-[apminekill]
+[apminedet]
 {
-	id=921;
-	name=A Mine!;
+	id=64;
+	name=AP Mine detonator;
 	rendertype=1;
 	turret=1;
-	explosiongenerator=custom:HE_Medium;
+	tolerance=64000;
 
 	ballistic=1;
-	firestarter=0.0;
-	size=0.0000001;
-	range=30;
-	reloadtime=19999;
-	weaponvelocity=104;
-	areaofeffect=5;
 
-	soundstart=GEN_Explo_1;
-	soundhit=GEN_Explo_1;
+	range=25;
+	reloadtime=1000000000;
+	weaponvelocity=1;
+	areaofeffect=12;
 
-	impulsefactor=0.1;
+	soundstart=GEN_Explo_4;
+	soundhit=GEN_Explo_4;
+
+	size=0.000001;
+
+	cratermult=1;
+	craterboost=1;
 
 	[damage]
 	{
-		default=0;
-		infantry=0;
-		guns=0;
-		lightbuildings=0;
-		bunkers=0;
-		sandbags=0;
-		APMine=5000;
-		flag=0;
-		tanks=0;
-		armouredvehicles=0;
-		unarmouredvehicles=0;
+		default=0.000001;
+		mines=10000;
 	}
 }

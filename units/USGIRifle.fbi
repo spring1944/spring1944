@@ -5,7 +5,7 @@
 	corpse=USSoldier_dead;
 	icontype=rifle;
 	soundcategory=CDNInf;
-	category=NFLAGNAIR NFLAG INFTARG;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=G.I. M1 Garand;

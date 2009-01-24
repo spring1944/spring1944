@@ -5,7 +5,7 @@
 	corpse=RUSsoldier_dead;
 	icontype=officer;
 	soundcategory=RUSInf;
-	category=NFLAGNAIR NFLAG INFTARG ;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Scout;

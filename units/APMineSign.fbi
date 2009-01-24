@@ -4,7 +4,7 @@
 	objectname=MineSign.S3O;
 	icontype=mines;
 	soundcategory=Nothing;
-	category=NONE;
+	category=NOWEAPON;
 	tedclass=SPECIAL;
 	yardmap=y;
 	buildpic=APMine.png;
@@ -25,7 +25,7 @@
 	stealth=1;
 	//energymake=-1;
 	init_cloaked=1;
-	mincloakdistance=110;
+	mincloakdistance=160;
 	cloakcost=0;
 	maxslope=3;
 	maxwaterdepth=50;

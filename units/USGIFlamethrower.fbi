@@ -5,7 +5,7 @@
 	corpse=USsoldier_dead;
 	icontype=flame;
 	soundcategory=USInf;
-	category=NFLAG NFLAGNAIR INFTARG ;
+	category=NFLAG NFLAGNAIR INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=G.I. M2 Flamethrower;

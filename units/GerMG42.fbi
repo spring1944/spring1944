@@ -5,7 +5,7 @@
 	corpse=gersoldier_dead;
 	icontype=lightmg;
 	soundcategory=GERInf;
-	category=NFLAGNAIR NFLAG INFTARG ;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=MG42 Infantrie;

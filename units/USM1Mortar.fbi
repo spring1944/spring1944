@@ -5,7 +5,7 @@
 	corpse=USSoldier_dead;
 	icontype=mortar;
 	soundcategory=USInf;
-	category=INFTARG NFLAGNAIR NOTAIR NFLAG;
+	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
 	tedclass=KBOT;
 
 	name=81mm M1 Mortar;

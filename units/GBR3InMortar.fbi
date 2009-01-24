@@ -5,7 +5,7 @@
 	corpse=gbrsoldier_dead;
 	icontype=mortar;
 	soundcategory=GbrInf;
-	category=INFTARG NFLAGNAIR NOTAIR NFLAG;
+	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
 	tedclass=KBOT;
 
 	name=3 Inch Mortar;

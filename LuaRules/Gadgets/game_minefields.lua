@@ -15,14 +15,15 @@ end
 local GetUnitPosition	=	Spring.GetUnitPosition
 local GetUnitHealth		=	Spring.GetUnitHealth
 local GetGroundHeight	=	Spring.GetGroundHeight
+local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 -- Synced Ctrl
 local CreateUnit		=	Spring.CreateUnit
 -- Constants
-local APMineNumber		=	6
+local APMineNumber		=	16
 local APMineSpread		= 	25
 
-local ATMineNumber		=	3
-local ATMineSpread		=	18
+local ATMineNumber		=	5
+local ATMineSpread		=	23
 -- Variables
 local engineerBuilt	=	{}
 
@@ -42,12 +43,13 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < APMineNumber do
-			local xpos = (math.random(-3, 3) * APMineSpread) + x
-			local zpos = (math.random(-3, 3) * APMineSpread) + z
+			local xpos = (math.random(-5, 5) * APMineSpread) + x
+			local zpos = (math.random(-5, 5) * APMineSpread) + z
 			local ypos = GetGroundHeight(xpos, zpos)
-			CreateUnit("apmine", xpos, ypos, zpos, 0, unitTeam)
+			CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID) --unitTeam
 			mineCount = mineCount + 1
 		end
+		Spring.MarkerAddPoint(x, y, z, "Minefield")
 	end
 	
 	if ud.name == "atminesign" and engineerBuilt[unitID] ~= nil then		
@@ -56,9 +58,10 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		while mineCount < ATMineNumber do
 			local xpos = (math.random(-3, 3) * ATMineSpread) + x
 			local zpos = (math.random(-3, 3) * ATMineSpread) + z
-			CreateUnit("atmine", xpos, y, zpos, 0, unitTeam)
+			CreateUnit("atmine", xpos, y, zpos, 0, GAIA_TEAM_ID)
 			mineCount = mineCount + 1
 		end
+		Spring.MarkerAddPoint(x, y, z, "Minefield")
 	end
 end
 

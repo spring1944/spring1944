@@ -5,7 +5,7 @@
 	corpse=GERsoldier_dead;
 	icontype=antitank;
 	soundcategory=GERInf;
-	category=NFLAGNAIR NFLAG INFTARG ;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Panzerschrek Infantrie;

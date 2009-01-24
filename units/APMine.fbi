@@ -19,19 +19,23 @@
 	hidedamage=1;
 	shownanoframe=0;
 	smoothanim=0;
-
-	sightdistance=32;
+	mincloakdistance=0.0000001;
+	sightdistance=160;
 	stealth=1;
 	//energymake=-1;
 	init_cloaked=1;
-	mincloakdistance=1;
 	cloakcost=0;
 	maxslope=3;
 	maxwaterdepth=50;
 
 	selfdestructcountdown=1;
 	explodeas=APMine;
-	weapon1=apminekill;
+	
+	weapon1=APMine;
+	onlytargetcategory1=WEAPON TPORT;
+	weapon2=APMineDet;
+	onlytargetcategory2=NOTHING;
+	
 	selfdestructas=APMine;
 	Kamikaze=1;
 	//kamikazedistance=24;

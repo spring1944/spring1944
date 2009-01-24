@@ -8,8 +8,13 @@ piece  base;
 
 Create()
 {
+	var angle;
+	var randMult;
+	randMult = rand(0,5);
+	angle = (randMult*15);
 	dont-shade base;
 	dont-cache base;
+	turn base to y-axis <1>*angle now;
 }
 
 SweetSpot(piecenum)

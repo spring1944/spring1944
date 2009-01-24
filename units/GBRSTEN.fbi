@@ -5,7 +5,7 @@
 	corpse=gbrsoldier_dead;
 	icontype=assault;
 	soundcategory=GBRInf;
-	category=NFLAGNAIR NFLAG INFTARG ;
+	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Sten SMG;

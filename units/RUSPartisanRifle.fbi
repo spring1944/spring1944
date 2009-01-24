@@ -4,7 +4,7 @@
 	objectname=RUSPartisanRifle.S3O;
 	icontype=partisan;
 	soundcategory=RUSInf;
-	category=NFLAGNAIR INFTARG;
+	category=NFLAGNAIR INFTARG WEAPON;
 	tedclass=KBOT;
 
 	name=Rifle Partisan;

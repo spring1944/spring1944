@@ -4,7 +4,7 @@
 	objectname=MineSign.S3O;
 	icontype=mines;
 	soundcategory=Nothing;
-	category=NONE;
+	category=NONE NOWEAPON;
 	tedclass=SPECIAL;
 	yardmap=y;
 	buildpic=ATMine.png;
