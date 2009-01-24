@@ -1,6 +1,6 @@
 [M13132mm]
 {
-	id=100;
+	id=99;
 	name=M-13 132mm unguided artillery rocket;
 	weapontype=MissileLauncher;
 	rendertype=1;

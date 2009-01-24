@@ -1,6 +1,6 @@
 [nebelwerfer41]
 {
-	id=100;
+	id=99;
 	name=Nebelwerfer 41 150mm unguided artillery rocket;
 	weapontype=MissileLauncher;
 	rendertype=1;
