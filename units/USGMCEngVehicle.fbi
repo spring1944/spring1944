@@ -4,7 +4,7 @@
 	objectname=USGMCEngVehicle.S3O;
 	corpse=USGMCEngVehicle_Destroyed;
 	icontype=engineervehicle;
-	soundcategory=USTank;
+	soundcategory=USVeh;
 	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
 	tedclass=CONSTR;
 

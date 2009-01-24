@@ -117,6 +117,25 @@
 	canceldestruct=;
       	} 
 
+[USVeh]
+	{
+	select1=US_Veh_Select1;
+	select2=US_Veh_Select2;
+	select3=US_Veh_Select3;
+	ok1=US_Veh_OK1;
+	ok2=US_Veh_OK2;
+	ok3=US_Veh_OK3;
+	arrived1=US_Veh_Arrived;
+	underattack=US_Veh_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
 [RUSInf]
 	{
 	select1=RUS_INF_Select1;

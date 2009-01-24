@@ -4,7 +4,7 @@
 	objectname=USM8Greyhound.S3O;
 	corpse=USM8Greyhound_Destroyed;
 	icontype=armoredcar;
-	soundcategory=USTank;
+	soundcategory=USVeh;
 	category=NFLAGNAIR NFLAG TANK WEAPON INFTARG LIGHTVEH;
 	tedclass=TANK;
 

@@ -4,7 +4,7 @@
 	objectname=USGMCTruck.S3O;
 	corpse=USGMCTruck_Destroyed;
 	icontype=truck;
-	soundcategory=USTank;
+	soundcategory=USVeh;
 	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
 
