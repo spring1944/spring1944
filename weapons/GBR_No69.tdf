@@ -10,7 +10,7 @@
 	reloadtime=8;
 	accuracy=1421;
 	movingaccuracy=7111;
-	weaponvelocity=210;
+	weaponvelocity=200;
 	areaofeffect=32;
 	edgeeffectiveness=0.8;
 	canattackground=0;
@@ -23,6 +23,11 @@
 
 	dyndamageexp=1;
 	dyndamagerange=200;
+
+	groundbounce=1;
+	bouncerebound=.5;
+	bounceslip=.75;	
+	numbounce=2;
 
 	[damage]
 	{
