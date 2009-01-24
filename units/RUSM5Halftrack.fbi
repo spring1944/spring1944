@@ -11,7 +11,7 @@
 	name=M5 Halftrack;
 	description=Transport;
 	side=RUS;
-	maxdamage=1000;
+	maxdamage=1200;
 	buildcostmetal=900;
 	buildcostenergy=0;
 	buildtime=300;

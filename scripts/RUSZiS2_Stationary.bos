@@ -5,7 +5,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
  
 static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
 
-#include "inf_suppressionvars.h"
+#include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
@@ -22,8 +22,8 @@ static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
 #define MuzzleBrakeSmoke	1024+9
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
-#define TURR_TRAVERSE	<5>
-#define TURR_ELEVATE	<10>
+#define TURR_TRAVERSE	<10>
+#define TURR_ELEVATE	<15>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour

@@ -52,8 +52,8 @@
 	}
 	[customParams]
 	{
-		fearid=301;
-		fearaoe=30;
+		fearid=401;
+		fearaoe=50;
 	}
 }
 [m2browningaa]

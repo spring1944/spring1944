@@ -11,7 +11,7 @@
 
 	name=M5 Halftrack;
 	description=Transport;
-	maxdamage=1000;
+	maxdamage=1200;
 	buildcostmetal=920;
 	buildcostenergy=0;
 	buildtime=305;
@@ -30,7 +30,7 @@
 
 	canmove=1;
 	movementclass=TANK_Light;
-	maxvelocity=1.75;//4.1
+	maxvelocity=4.1;
 	acceleration=0.065;
 	brakerate=0.195;
 	turnrate=400;

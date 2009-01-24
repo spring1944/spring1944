@@ -55,7 +55,7 @@
 	[customParams]
 	{
 		fearid=401;
-		fearaoe=250;
+		fearaoe=325;
 	}
 }
 [ml20s152mmap]

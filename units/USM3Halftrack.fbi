@@ -10,7 +10,7 @@
 
 	name=M3A1 Halftrack;
 	description=Transport;
-	maxdamage=1000;
+	maxdamage=1200;
 	buildcostmetal=1100;
 	buildcostenergy=0;
 	buildtime=365;
@@ -30,7 +30,7 @@
 
 	canmove=1;
 	movementclass=TANK_Light;
-	maxvelocity=4.11;
+	maxvelocity=4.1;
 	acceleration=0.065;
 	brakerate=0.195;
 	turnrate=400;
