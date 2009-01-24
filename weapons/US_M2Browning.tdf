@@ -11,7 +11,7 @@
 	firestarter=0.0;
 
 	range=975;
-	reloadtime=4.5;
+	reloadtime=4;
 	burst=8;
 	burstrate=.1;
 	sprayangle=300;
