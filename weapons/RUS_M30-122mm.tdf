@@ -18,7 +18,7 @@
 	LeadLimit=0.05;
 	weaponvelocity=1100;
 	areaofeffect=160;
-	edgeeffectiveness=0.25;
+	edgeeffectiveness=0.15;
 
 	soundstart=RUS_122mm;
 	soundhit=GEN_Explo_5;
