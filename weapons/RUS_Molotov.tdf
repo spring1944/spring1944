@@ -5,6 +5,7 @@
 	model=MortarShell.S3O;
 	rendertype=3;
 	turret=1;
+	CEGTag=Flametrail;
 
 	range=180;
 	reloadtime=8;
