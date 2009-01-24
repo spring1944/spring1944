@@ -13,8 +13,9 @@
 
 	range=3200;
 	reloadtime=15;//5
-	accuracy=470;
-	targetmoveerror=0.1;
+	accuracy=350;
+	targetmoveerror=0.25;
+	LeadLimit=0.05;
 	weaponvelocity=1200;
 	areaofeffect=128;
 	edgeeffectiveness=0.25;
@@ -44,8 +45,8 @@
 	[damage]
 	{
 		default=6000;
-		infantry=2480;
-		guns=2240;
+		infantry=3480;
+		guns=3240;
 		mines=0;
 		flag=0;
 		tanks=3400;

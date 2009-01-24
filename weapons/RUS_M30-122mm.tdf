@@ -13,8 +13,9 @@
 
 	range=3095;
 	reloadtime=19.5;//6.5
-	accuracy=300;
-	targetmoveerror=0.1;
+	accuracy=500;
+	targetmoveerror=0.25;
+	LeadLimit=0.05;
 	weaponvelocity=1100;
 	areaofeffect=160;
 	edgeeffectiveness=0.25;
