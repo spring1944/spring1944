@@ -413,24 +413,24 @@ HipAim()
 	turn torso to y-axis <0> now;
 	turn torso to x-axis <0> now;
 	turn torso to z-axis <0> now;
-	turn ruparm to x-axis <50.500000> now;
-	turn ruparm to y-axis <43.000000> now;
+	turn ruparm to x-axis <80> now;
+	turn ruparm to y-axis <30> now;
 	turn ruparm to z-axis <0> now;
-	turn rloarm to x-axis <-120.000000> now;
+	turn rloarm to x-axis <-120> now;
 	turn rloarm to y-axis <0> now;
 	turn rloarm to z-axis <0> now;
 	turn head to x-axis <0> now;
 	turn head to y-axis <0> now;
 	turn head to z-axis <0> now;
-	turn gun to x-axis <-20.000000> now;
+	turn gun to x-axis <-50.000000> now;
 	turn gun to y-axis <0> now;
-	turn gun to z-axis <40> now;
+	turn gun to z-axis <30> now;
 	turn luparm to x-axis <-60.000000> now;
-	turn luparm to y-axis <-25.000000> now;
+	turn luparm to y-axis <-40.000000> now;
 	turn luparm to z-axis <0> now;
-	turn lloarm to x-axis <-15> now;
-	turn lloarm to y-axis <0> now;
-	turn lloarm to z-axis <25.000000> now;
+	turn lloarm to x-axis <0> now;
+	turn lloarm to y-axis <70> now;
+	turn lloarm to z-axis <10> now;
 	}
 
 Prone(pickSide)
@@ -447,32 +447,32 @@ Prone(pickSide)
 	}
 	//wait-for-turn pelvis around x-axis;
 	//wait-for-move pelvis along y-axis;
-	turn torso to y-axis <0> speed <600>;
-	turn torso to x-axis <-20> speed <600>;
+	turn torso to y-axis <20> speed <600>;
+	turn torso to x-axis <-10> speed <600>;
 	turn torso to z-axis <0> speed <600>;
 	
 	turn head to x-axis <-60> speed <480>;
 	turn head to y-axis <0> speed <480>;
 	turn head to z-axis <0> speed <480>;
 	
-	turn ruparm to x-axis <-85> speed <480>;
-	turn ruparm to y-axis <0> speed <480>;
-	turn ruparm to z-axis <-50> speed <480>;
+	turn ruparm to x-axis <-80> speed <480>;
+	turn ruparm to y-axis <20> speed <480>;
+	turn ruparm to z-axis <70> speed <480>;
 	
-	turn rloarm to x-axis <-100> speed <480>;
-	turn rloarm to y-axis <0> speed <480>;
+	turn rloarm to x-axis <-120> speed <480>;
+	turn rloarm to y-axis <30> speed <480>;
 	turn rloarm to z-axis <0> speed <480>;
 	
 	turn luparm to x-axis <-140> speed <480>;
-	turn luparm to y-axis <0> speed <480>;
-	turn luparm to z-axis <35> speed <480>;
+	turn luparm to y-axis <-30> speed <480>;
+	turn luparm to z-axis <0> speed <480>;
 	
-	turn lloarm to x-axis <0> speed <480>;
-	turn lloarm to y-axis <0> speed <480>;
-	turn lloarm to z-axis <0> speed <480>;
-	turn gun to x-axis <30> speed <480>;
-	turn gun to y-axis <30> speed <480>;
-	turn gun to z-axis <0> speed <480>;
+	turn lloarm to x-axis <20> speed <480>;
+	turn lloarm to y-axis <65> speed <480>;
+	turn lloarm to z-axis <40> speed <480>;
+	turn gun to x-axis <10> speed <480>;
+	turn gun to y-axis <-35> speed <480>;
+	turn gun to z-axis <45> speed <480>;
 	if (pickSide == 1)
 	{
 		turn lthigh to x-axis <0> speed <210>;

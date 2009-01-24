@@ -34,8 +34,7 @@ AimWeapon1(heading, pitch)
 	if (bMoving == 0)
 	{		
 		iState=7; //prone aiming
-		turn torso to y-axis <0> speed <600>;
-		turn ruparm to x-axis <-85> - pitch speed <480>;
+		turn ruparm to x-axis <-80> - pitch speed <480>;
 		turn luparm to x-axis <-140> - pitch speed <400>;
 		turn pelvis to y-axis heading speed <120>;
 		turn gun to z-axis <0> now;
@@ -54,10 +53,10 @@ AimWeapon1(heading, pitch)
 		
 #define SHOT_ANIM_PRONE\
 		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
-		turn ruparm to x-axis <-95> now;\
-		turn luparm to x-axis <-150> now;\
+		turn ruparm to x-axis <-88> now;\
+		turn luparm to x-axis <-148> now;\
 		sleep (BurstRate/2);\
-		turn ruparm to x-axis <-85> now;\
+		turn ruparm to x-axis <-80> now;\
 		turn luparm to x-axis <-140> now;\
 		sleep (BurstRate/2);
 		

@@ -33,9 +33,9 @@ AimWeapon1(heading, pitch)
 	if (bMoving == 1) return 0;
 	if (iState >= 6)
 	{
+		if (bMoving == 1) return 0;
 		iState=7; //prone aiming
-		turn torso to y-axis <0> speed <600>;
-		turn ruparm to x-axis <-85> - pitch speed <480>;
+		turn ruparm to x-axis <-80> - pitch speed <480>;
 		turn luparm to x-axis <-140> - pitch speed <400>;
 		turn pelvis to y-axis heading speed <120>;
 		wait-for-turn luparm around x-axis;

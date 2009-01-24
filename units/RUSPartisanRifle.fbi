@@ -56,7 +56,7 @@
 	maxangledif1=170;
 	
 	weapon2=molotov;
-	onlytargetcategory2=NFLAG;
+	onlytargetcategory2=NFLAGNAIR;
 	weaponmaindir2= 0 0 1;
 	maxangledif2=180;
 

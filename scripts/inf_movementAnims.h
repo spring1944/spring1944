@@ -140,8 +140,8 @@ sleeptime = rand(395, 465);
 set MAX_SPEED to (iSpeed/CRAWL_SLOWDOWN_FACTOR);
 		if (bMoving==1)
 			{
-			turn torso to x-axis <-15> speed <75>;
-			turn torso to y-axis <-15> speed <75>;	
+			turn torso to x-axis <-10> speed <75>;
+			turn torso to y-axis <-20> speed <75>;	
 			turn torso to z-axis <20> speed <75>;
 			turn pelvis to y-axis <15> speed <75>;
 			turn pelvis to z-axis <-15> speed <75>;
@@ -183,8 +183,8 @@ set MAX_SPEED to (iSpeed/CRAWL_SLOWDOWN_FACTOR);
 					
 		if (bMoving==1)
 			{
-			turn torso to x-axis <-15> speed <75>;
-			turn torso to y-axis <15> speed <75>;	
+			turn torso to x-axis <-10> speed <75>;
+			turn torso to y-axis <20> speed <75>;	
 			turn torso to z-axis <-20> speed <75>;
 			turn pelvis to y-axis <-15> speed <75>;
 			turn pelvis to z-axis <15> speed <75>;
