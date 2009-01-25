@@ -24,10 +24,10 @@
 	dyndamageexp=1;
 	dyndamagerange=200;
 
-	groundbounce=1;
-	bouncerebound=.5;
-	bounceslip=.75;	
-	numbounce=2;
+	//groundbounce=1;
+	//bouncerebound=.5;
+	//bounceslip=.75;	
+	//numbounce=2;
 
 	[damage]
 	{
