@@ -72,6 +72,11 @@ Death
 */
 CrawlControl()
 {
+#ifdef NoCrawl
+set MAX_SPEED to [0.000000001];
+if (NoCrawl == 1) return 0;
+#endif
+
 signal SIG_CRAWL;
 set-signal-mask SIG_CRAWL;
 signal SIG_RUN;
@@ -121,6 +126,9 @@ RunControl()
 	set MAX_SPEED to iSpeed;
 	while(1)
 	{
+		#ifdef MORTAR
+		if (bAiming > 0) bAiming = (bAiming - 1);
+		#endif
 		#ifndef OnlyProneFire
 			#ifndef NoAimRun
 		if (bAiming > 0) 

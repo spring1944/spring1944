@@ -50,7 +50,7 @@ end
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then
-				ud.customparams.weaponcost = (2.25 * ud.customparams.weaponcost)
+				ud.customparams.weaponcost = (2 * ud.customparams.weaponcost)
 				end
 				if (ud.customparams.arrivalgap) then
 				ud.customparams.arrivalgap = (0.5 * ud.customparams.arrivalgap)

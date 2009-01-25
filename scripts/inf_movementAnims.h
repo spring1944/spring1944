@@ -59,6 +59,7 @@ Run() //basic jog when there is no fear or aiming
 //set-signal-mask SIG_RUN;
 var pelviswait;
 pelviswait = rand(130, 145);
+		turn ground to y-axis <0> now;
 		turn pelvis to y-axis <0> now;
 		turn pelvis to z-axis <0> now;
 		
@@ -99,6 +100,9 @@ pelviswait = rand(130, 145);
 			turn lthigh to x-axis <30> speed <270>;
 			turn torso to y-axis <10> speed <90>;
 		sleep pelviswait;
+			#ifdef MORTAR
+			move mortarbase to y-axis [4.4] speed <2800>;
+			#endif
 			move pelvis to y-axis [0.4] speed <2800>;
 		sleep pelviswait;
 			#ifdef ENGINEER
@@ -106,6 +110,9 @@ pelviswait = rand(130, 145);
 			if (bMoving==1) turn ruparm to x-axis <60> speed <270>;
 			#endif
 			turn rleg to x-axis <10> speed <630>;
+			#ifdef MORTAR
+			move mortarbase to y-axis [4] speed <2800>;
+			#endif
 			move pelvis to y-axis [0] speed <2800>;
 			}
 		//if (bMoving==0) sleep 200;
@@ -116,6 +123,9 @@ pelviswait = rand(130, 145);
 			turn rthigh to x-axis <30> speed <270>;
 			turn torso to y-axis <-10> speed <90>;
 		sleep pelviswait;
+			#ifdef MORTAR
+			move mortarbase to y-axis [4.4] speed <2800>;
+			#endif
 			move pelvis to y-axis [0.4] speed <2800>;	
 		sleep pelviswait;
 			#ifdef ENGINEER
@@ -123,6 +133,9 @@ pelviswait = rand(130, 145);
 			if (bMoving==1) turn ruparm to x-axis <0> speed <270>;
 			#endif
 			turn lleg to x-axis <10> speed <630>;
+			#ifdef MORTAR
+			move mortarbase to y-axis [4] speed <2800>;
+			#endif
 			move pelvis to y-axis [0] speed <2800>;
 			}
 		//	sleep Desync;

@@ -1,846 +1,195 @@
-#define TAK			// This is a TAK script
+#define TAK //this is a TAK script
 
-#include "STANDARD_COMMANDS_GPL.h"
+#include "constants.h"
 
-piece  crewman, crewman2, torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
-       lfoot, luparm, lloarm, ground, ruparm, rloarm, head, torso2, flare2, pelvis2, rthigh2, lthigh2, lleg2, rleg2, rfoot2,
-       lfoot2, luparm2, lloarm2, ruparm2, rloarm2, head2, mortarbase, mortartube, mortarstand;
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+		lfoot, luparm, lloarm, ground, ruparm, rloarm, head, mortarbase, mortartube, mortarstand, gun;
+		
 
-static-var DecreasingFear, kneeling, last_pos, bMoving, bAiming, run_speed,
-walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, RUN_SPEED2, WALK_SPEED2, PickDeath, shooting, IsPinned;
+//signals to handle control of..everything
+#define SIG_RUN					8
+#define SIG_AIMRUN				16
+#define SIG_CRAWL				32
+#define SIG_AIM1				64
+#define SIG_AIM2				128 //no inf has more than 2 weapons except commando, something of a special exception
+#define SIG_PINNEDCTRL			256
+#define SIG_FEARRECOVERY		512
+#define SIG_RESTOREFROMCRAWL	1024
+#define SIG_IDLE				2048
 
-#define SIG_AIM            2
-#define SIG_MOVE 64
+/*
+Defs that are shared among inf
+the numbers that control pinned levels, how scary various weapons are, ect.
+*/
+#include "inf_sharedDefs.h"
 
-#define placeholder_EFFECT01 1024+1
-#define placeholder_EFFECT02 1024+2
-#define placeholder_EFFECT03 1024+3
-#define placeholder_EFFECT04 1024+4
-#define placeholder_EFFECT05 1024+5
-#define placeholder_EFFECT06 1024+6
-#define MORTAR_MUZZLEFLASH 1024+7 
-#include "Inf_suppressionvars.h"
+//individual unit definitions
+#define NoAimRun			1
+#define NoCrawl				1
+#define MORTAR
+#define GUN_QUERY_PIECENUM		flare
+#define IdleDelay				10000
+#define RestoreDelay			500
+#define StanceNumber			1 //number of WeaponReady stances
 
+/* --Var defs:
+-----Boolean
+---
+bAiming - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
+	Controls: timing of idle animations, the usage of AimRunControl over RunControl
+	Set by: Aimweapon, unset over time by AimRunControl and StartMoving/StopMoving
+---
+bNading - is the unit currently in the process of throwing a grenade?
+	Controls: locks out weaponready, and X
+	Set by: fireweapon of the nade script, unset by same at the end
+---
+bMoving - is the unit currently moving? 
+	Controls: various animations.
+	Set by: StartMoving, unset by StopMoving
+---
+-----Integer
+---
+iState - what the unit is currently doing //todo: add states for being in a transport, update killed and aimweapon accordingly
+	Controls: which aiming anim to use, among others.
+	 Set by: everything that changes the state of the unit. *Control, HitbyWeapon, RestoreFromCrawl, ect
+	  Values:
+		standing idle - 0
+		standing at attention - 1
+		standing aiming rifle/SMG - 2
+		kneeling aiming rifle/SMG - 3
+		-		
+		running - 4
+		running aiming - 5
+		-
+		prone 'idle' - 6
+		prone aiming - 7
+		crawling - 8
+		-
+		pinned - 9 
+---
+iFear - how 'afraid' unit currently is. 
+	Controls: if unit is crawling/prone or standing.
+	Controls: pinned status.
+	 Set by: increased by HitbyWeapon on impact of suitable weapon, decreased by FearRecovery
+	  Values: 0-20
+	  iFear = 0-14 = prone/crawling
+	  iFear >= 15 = pinned, unable to fire or crawl.
+---
+	
+*/
+#ifndef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, iSpeed, firing;
+#endif
+#ifdef WEAPON_GRENADE
+static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
+#endif
 
-//movement check for anims
-#include "Inf_movecheck.h"
+//FX definitions
+	//frivolous
+#define BLOOD_SM 1024+1
+#define BLOOD_LG 1024+2
+#define CLIP 1024+3
+#define SHELL 1024+4
+#define PISS 1024+5
+#define CIG 1024+6
+#define MUZZLEFLASH 1024+7
+//end FX
+
+//aiming poses
+#include "inf_poses.h"
+
+//weapon ready - split out so I can easily update the number of poses
+#include "inf_weaponReady.h"
+
+//Idle animations.
+#include "inf_idleAnims.h"
+
+//All of the animations concerning movement - running, aimrunning, crawling, standing, going prone.
+#include "inf_movementAnims.h"
+		
+
+//All the loops that handle the animations and state changes concerning movement.
+#include "inf_movementControls.h"
+
+//Fead handling (HitByWeapon, FearRecovery, TakeCover, PinnedControl, Pinned, RestoreAfterCover)
+#include "inf_fearHandling.h"
+
+//transport state handling
+#include "inf_transportHandling.h"
 
 StartMoving()
 {
-
-		bMoving=1;
-		kneeling=0;
-	set CLOAKED to FALSE;
-	return (0);
-
-	}
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 1;
+}
 
 StopMoving()
 {
-	bMoving=0;
-	sleep 5000;
-}
-RestoreFromPinned()
-{
-		Turn pelvis to x-axis <90> speed <40>*PRONE_SPEED; //20
-		Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh to z-axis <10> speed <120>*PRONE_SPEED;
-		Turn rleg to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh to z-axis <-10> speed <120>*PRONE_SPEED;
-		Turn lleg to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn ruparm to x-axis <180> speed <120>*PRONE_SPEED;
-			
-		turn luparm to x-axis <180> speed <120>*PRONE_SPEED;
-		turn lloarm to z-axis <40> speed <120>*PRONE_SPEED;
-		
-		turn torso2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Move pelvis2 to y-axis [0.525] speed <1520>*PRONE_SPEED;
-		Turn pelvis2 to x-axis <90> speed <40>*PRONE_SPEED; //20
-		Turn rthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh2 to z-axis <10> speed <120>*PRONE_SPEED;
-		Turn rleg2 to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh2 to z-axis <-10> speed <120>*PRONE_SPEED;
-		Turn lleg2 to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn ruparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-			
-		turn luparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-		turn lloarm2 to z-axis <40> speed <120>*PRONE_SPEED;
-
-	wait-for-turn lloarm around z-axis;
-	wait-for-turn lloarm2 around z-axis;
-		Move pelvis to y-axis [-2.25] speed <2250>*PRONE_SPEED;
-		Turn pelvis to x-axis <65> speed <60>*PRONE_SPEED;
-		Move pelvis2 to y-axis [-2.25] speed <2250>*PRONE_SPEED;
-		Turn pelvis2 to x-axis <65> speed <60>*PRONE_SPEED;
-	wait-for-move pelvis along y-axis;
-	wait-for-move pelvis2 along y-axis;
-		
-		Turn head to x-axis <-60> speed <120>*PRONE_SPEED;
-	
-		Turn ruparm to x-axis <-85> speed <120>*PRONE_SPEED;
-		Turn ruparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn ruparm to z-axis <-50> speed <120>*PRONE_SPEED;
-		
-		Turn rloarm to x-axis <-100> speed <120>*PRONE_SPEED;
-		Turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rloarm to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lloarm to x-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		Turn head2 to x-axis <-60> speed <120>*PRONE_SPEED;
-	
-		Turn ruparm2 to x-axis <-85> speed <120>*PRONE_SPEED;
-		Turn ruparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn ruparm2 to z-axis <-50> speed <120>*PRONE_SPEED;
-		
-		Turn rloarm2 to x-axis <-100> speed <120>*PRONE_SPEED;
-		Turn rloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rloarm2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		turn luparm2 to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm2 to z-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lloarm2 to x-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm2 to z-axis <0> speed <120>*PRONE_SPEED;
-		IsPinned=0;		
-}
-Pinned() //hit the dirt and kiss your ass goodbye...
-{
-	IsPinned=1;
-	turn torso to x-axis <0> speed <120>*PRONE_SPEED; 
-	turn torso to y-axis <0> speed <120>*PRONE_SPEED; 
-	turn torso to z-axis <0> speed <120>*PRONE_SPEED; 
-			
-	Move pelvis to y-axis [-2.25] speed <1520>*PRONE_SPEED;
-	Turn pelvis to x-axis <90> speed <40>*PRONE_SPEED; //20
-	Turn pelvis to z-axis <0> speed <40>*PRONE_SPEED; 
-	
-	turn head to x-axis <20> speed <70>*PRONE_SPEED;
-	turn head to y-axis <0> speed <70>*PRONE_SPEED;
-	turn head to z-axis <0> speed <70>*PRONE_SPEED;
-		
-	Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
-	Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
-	Turn rthigh to z-axis <10> speed <120>*PRONE_SPEED;
-	
-	Turn rleg to x-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
-	Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
-	Turn lthigh to z-axis <-10> speed <120>*PRONE_SPEED;
-	
-	Turn lleg to x-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn ruparm to x-axis <180> speed <120>*PRONE_SPEED;
-	turn ruparm to y-axis <0> speed <120>*PRONE_SPEED;
-	turn ruparm to z-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn rloarm to x-axis <0> speed <120>*PRONE_SPEED;
-	turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
-	turn rloarm to z-axis <-40> speed <120>*PRONE_SPEED;
-	
-	turn luparm to x-axis <180> speed <120>*PRONE_SPEED;
-	turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-	turn luparm to z-axis <0> speed <120>*PRONE_SPEED;
-	
-	
-	turn lloarm to x-axis <0> speed <120>*PRONE_SPEED;
-	turn lloarm to y-axis <0> speed <120>*PRONE_SPEED;
-	turn lloarm to z-axis <40> speed <120>*PRONE_SPEED;
-	
-	// second guy
-	turn torso2 to x-axis <0> speed <120>*PRONE_SPEED; 
-	turn torso2 to y-axis <0> speed <120>*PRONE_SPEED; 
-	turn torso2 to z-axis <0> speed <120>*PRONE_SPEED; 
-			
-	Move pelvis2 to y-axis [-2.25] speed <1520>*PRONE_SPEED;
-	Turn pelvis2 to x-axis <90> speed <40>*PRONE_SPEED; //20
-	Turn pelvis2 to z-axis <0> speed <40>*PRONE_SPEED; 
-	
-	turn head2 to x-axis <20> speed <70>*PRONE_SPEED;
-	turn head2 to y-axis <0> speed <70>*PRONE_SPEED;
-	turn head2 to z-axis <0> speed <70>*PRONE_SPEED;
-		
-	Turn rthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-	Turn rthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-	Turn rthigh2 to z-axis <10> speed <120>*PRONE_SPEED;
-	
-	Turn rleg2 to x-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn lthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-	Turn lthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-	Turn lthigh2 to z-axis <-10> speed <120>*PRONE_SPEED;
-	
-	Turn lleg2 to x-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn ruparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-	turn ruparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-	turn ruparm2 to z-axis <0> speed <120>*PRONE_SPEED;
-	
-	turn rloarm2 to x-axis <0> speed <120>*PRONE_SPEED;
-	turn rloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-	turn rloarm2 to z-axis <-40> speed <120>*PRONE_SPEED;
-	
-	turn luparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-	turn luparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-	turn luparm2 to z-axis <0> speed <120>*PRONE_SPEED;
-	
-	
-	turn lloarm2 to x-axis <0> speed <120>*PRONE_SPEED;
-	turn lloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-	turn lloarm2 to z-axis <40> speed <120>*PRONE_SPEED;
-	
-	
-	sleep 100;
-	return (1);
-}
-
-WeaponReady() //attentshaun!
-{
-	move pelvis to y-axis [0] speed <300>*RUN_SPEED;
-	move pelvis2 to y-axis [0] speed <300>*RUN_SPEED;
-	move mortarbase to y-axis [2.25] speed <200>*RUN_SPEED;
-	turn mortartube to x-axis <0> now;
-	turn mortarstand to x-axis <0> now;
-	turn pelvis to y-axis <0> speed <100>*RUN_SPEED;
-    turn ruparm to x-axis <0> speed <40>*RUN_SPEED;
-    turn ruparm to y-axis <0> speed <40>*RUN_SPEED;
-    turn ruparm to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn rloarm to x-axis <0> speed <100>*RUN_SPEED;
-	turn rloarm to y-axis <0> speed <100>*RUN_SPEED;
-	turn rloarm to z-axis <0> speed <100>;
-    
-	turn luparm to x-axis <0> speed <40>*RUN_SPEED;
-	turn luparm to y-axis <0> speed <40>*RUN_SPEED;
-	turn luparm to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn lloarm to x-axis <0> speed <100>*RUN_SPEED;
-	turn lloarm to y-axis <0> speed <100>*RUN_SPEED;
-	turn lloarm to z-axis <0> speed <100>*RUN_SPEED;
-    
-	turn head to y-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head to x-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head to z-axis <0.000000> speed <100>*RUN_SPEED;
-	
-	turn pelvis2 to y-axis <0> speed <100>*RUN_SPEED;
-    turn ruparm2 to x-axis <0> speed <40>*RUN_SPEED;
-    turn ruparm2 to y-axis <0> speed <40>*RUN_SPEED;
-    turn ruparm2 to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn rloarm2 to x-axis <0> speed <100>*RUN_SPEED;
-	turn rloarm2 to y-axis <0> speed <100>*RUN_SPEED;
-	turn rloarm2 to z-axis <0> speed <100>;
-    
-	turn luparm2 to x-axis <0> speed <40>*RUN_SPEED;
-	turn luparm2 to y-axis <0> speed <40>*RUN_SPEED;
-	turn luparm2 to z-axis <0> speed <40>*RUN_SPEED;
-    
-	turn lloarm2 to x-axis <0> speed <100>*RUN_SPEED;
-	turn lloarm2 to y-axis <0> speed <100>*RUN_SPEED;
-	turn lloarm2 to z-axis <0> speed <100>*RUN_SPEED;
-    
-	turn head2 to y-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head2 to x-axis <0.000000> speed <100>*RUN_SPEED;
-	turn head2 to z-axis <0.000000> speed <100>*RUN_SPEED;
-}
-
-
-
-
-TakeCover()
-{
-	if (IsProne == 0)
-	{
-	
-				IsProne=1;
-		turn pelvis to y-axis <0> speed <150>*PRONE_SPEED;
-		turn pelvis to z-axis <0> speed <150>*PRONE_SPEED;
-		
-		Move pelvis to y-axis [-0.2] speed <150>*PRONE_SPEED;
-		turn rthigh to x-axis <-40> speed <150>*PRONE_SPEED;
-		turn rleg to x-axis <70> speed <100>*PRONE_SPEED;
-		turn lthigh to x-axis <-40> speed <100>*PRONE_SPEED;
-		turn lleg to x-axis <70> speed <100>*PRONE_SPEED;
-		turn torso to y-axis <0> speed <150>*PRONE_SPEED;
-		turn torso to x-axis <20> speed <150>*PRONE_SPEED;
-		turn head to x-axis <-20> speed <150>*PRONE_SPEED;
-
-		turn ruparm to y-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm to z-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm to x-axis <-70> speed <100>*PRONE_SPEED;
-
-		turn rloarm to x-axis <0> speed <150>*PRONE_SPEED;
-		turn rloarm to y-axis <0> speed <150>*PRONE_SPEED;
-		turn rloarm to z-axis <-55> speed <150>*PRONE_SPEED;
-
-		turn luparm to y-axis <0> speed <100>*PRONE_SPEED;
-		turn luparm to z-axis <0> speed <100>*PRONE_SPEED;
-		turn luparm to x-axis <-75> speed <100>*PRONE_SPEED;
-		turn lloarm to x-axis <0> speed <150>*PRONE_SPEED; 
-		
-		turn pelvis2 to y-axis <0> speed <150>*PRONE_SPEED;
-		turn pelvis2 to z-axis <0> speed <150>*PRONE_SPEED;
-		
-		Move pelvis2 to y-axis [-0.2] speed <150>*PRONE_SPEED;
-		turn rthigh2 to x-axis <-40> speed <150>*PRONE_SPEED;
-		turn rleg2 to x-axis <70> speed <100>*PRONE_SPEED;
-		turn lthigh2 to x-axis <-40> speed <100>*PRONE_SPEED;
-		turn lleg2 to x-axis <70> speed <100>*PRONE_SPEED;
-		turn torso2 to y-axis <0> speed <150>*PRONE_SPEED;
-		turn torso2 to x-axis <20> speed <150>*PRONE_SPEED;
-		turn head2 to x-axis <-20> speed <150>*PRONE_SPEED;
-
-		turn ruparm2 to y-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm2 to z-axis <0> speed <150>*PRONE_SPEED;
-		turn ruparm2 to x-axis <-70> speed <100>*PRONE_SPEED;
-
-		turn rloarm2 to x-axis <0> speed <150>*PRONE_SPEED;
-		turn rloarm2 to y-axis <0> speed <150>*PRONE_SPEED;
-		turn rloarm2 to z-axis <-55> speed <150>*PRONE_SPEED;
-
-		turn luparm2 to y-axis <0> speed <100>*PRONE_SPEED;
-		turn luparm2 to z-axis <0> speed <100>*PRONE_SPEED;
-		turn luparm2 to x-axis <-75> speed <100>*PRONE_SPEED;
-		turn lloarm2 to x-axis <0> speed <150>*PRONE_SPEED; 
-
-	wait-for-turn ruparm around x-axis;
-	wait-for-turn luparm around x-axis;
-	wait-for-turn rthigh around x-axis;
-	wait-for-turn lthigh around x-axis;	
-	wait-for-turn ruparm2 around x-axis;
-	wait-for-turn luparm2 around x-axis;
-	wait-for-turn rthigh2 around x-axis;
-	wait-for-turn lthigh2 around x-axis;	
-		turn torso to x-axis <0> speed <120>*PRONE_SPEED;
-		Move pelvis to y-axis [0.35] speed <1520>*PRONE_SPEED;
-		Turn pelvis to x-axis <90> speed <40>*PRONE_SPEED; //20
-		Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh to z-axis <10> speed <120>*PRONE_SPEED;
-		Turn rleg to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh to z-axis <-10> speed <120>*PRONE_SPEED;
-		Turn lleg to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn ruparm to x-axis <180> speed <120>*PRONE_SPEED;
-			
-		turn luparm to x-axis <180> speed <120>*PRONE_SPEED;
-		turn lloarm to z-axis <40> speed <120>*PRONE_SPEED;
-		
-		turn torso2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Move pelvis2 to y-axis [0.35] speed <1520>*PRONE_SPEED;
-		Turn pelvis2 to x-axis <90> speed <40>*PRONE_SPEED; //20
-		Turn rthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rthigh2 to z-axis <10> speed <120>*PRONE_SPEED;
-		Turn rleg2 to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-		Turn lthigh2 to z-axis <-10> speed <120>*PRONE_SPEED;
-		Turn lleg2 to x-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn ruparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-			
-		turn luparm2 to x-axis <180> speed <120>*PRONE_SPEED;
-		turn lloarm2 to z-axis <40> speed <120>*PRONE_SPEED;
-
-	wait-for-turn lloarm around z-axis;
-	wait-for-turn lloarm2 around z-axis;
-		Move pelvis to y-axis [-2.25] speed <2250>*PRONE_SPEED;
-		Turn pelvis to x-axis <65> speed <60>*PRONE_SPEED;
-		Move pelvis2 to y-axis [-2.25] speed <2250>*PRONE_SPEED;
-		Turn pelvis2 to x-axis <65> speed <60>*PRONE_SPEED;
-	wait-for-move pelvis along y-axis;
-	wait-for-move pelvis2 along y-axis;
-		
-		Turn head to x-axis <-60> speed <120>*PRONE_SPEED;
-	
-		Turn ruparm to x-axis <-85> speed <120>*PRONE_SPEED;
-		Turn ruparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn ruparm to z-axis <-50> speed <120>*PRONE_SPEED;
-		
-		Turn rloarm to x-axis <-100> speed <120>*PRONE_SPEED;
-		Turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rloarm to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		turn luparm to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm to z-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lloarm to x-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm to y-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		Turn head2 to x-axis <-60> speed <120>*PRONE_SPEED;
-	
-		Turn ruparm2 to x-axis <-85> speed <120>*PRONE_SPEED;
-		Turn ruparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn ruparm2 to z-axis <-50> speed <120>*PRONE_SPEED;
-		
-		Turn rloarm2 to x-axis <-100> speed <120>*PRONE_SPEED;
-		Turn rloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		Turn rloarm2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		turn luparm2 to x-axis <-140> speed <120>*PRONE_SPEED;
-		turn luparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn luparm2 to z-axis <35> speed <120>*PRONE_SPEED;
-		
-		turn lloarm2 to x-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-		turn lloarm2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-		move mortarbase to y-axis [0] speed <200>*RUN_SPEED;
-		turn mortartube to x-axis <-55> now;
-		turn mortarstand to x-axis <-45> now;
-		
-		}
-		
-		SET MAX_SPEED to [0.00001];
-		SET ARMORED to TRUE;
-
-		sleep 100;
-		return(0);
-}
-
-RestoreAfterCover() //get up out of the dirt. also controls going into pinned mode.
-{
-	
-		if (fear > PinnedLevel)
-		{
-			call-script Pinned();
-			sleep 100;
-		} 
-
-		if (fear <=0 && IsProne==1)
-		{	
-			sleep 100;
-			Turn pelvis to x-axis <55> speed <120>*PRONE_SPEED;
-			Turn rthigh to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh to z-axis <0> speed<120>*PRONE_SPEED;
-	
-			turn ruparm to z-axis <0> speed <120>*PRONE_SPEED;
-	
-			Turn rloarm to x-axis <-80> speed <120>*PRONE_SPEED;
-			Turn rloarm to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn rloarm to y-axis <0> speed <120>*PRONE_SPEED;
-
-			Turn luparm to x-axis <-85> speed <120>*PRONE_SPEED;
-			turn luparm to y-axis <0> speed <120>*PRONE_SPEED;
-
-			Turn rthigh to x-axis <-85> speed <120>*PRONE_SPEED;
-			Turn lthigh to x-axis <-40> speed <120>*PRONE_SPEED;
-
-			Move pelvis to y-axis [-0.5] speed [120]*PRONE_SPEED;
-			Turn rleg to x-axis <80> speed <120>*PRONE_SPEED;
-			Turn lleg to x-axis <80> speed <120>*PRONE_SPEED;
-			
-			Turn pelvis2 to x-axis <55> speed <120>*PRONE_SPEED;
-			Turn rthigh2 to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh2 to z-axis <0> speed<120>*PRONE_SPEED;
-	
-			turn ruparm2 to z-axis <0> speed <120>*PRONE_SPEED;
-	
-			Turn rloarm2 to x-axis <-80> speed <120>*PRONE_SPEED;
-			Turn rloarm2 to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn rloarm2 to y-axis <0> speed <120>*PRONE_SPEED;
-
-			Turn luparm2 to x-axis <-85> speed <120>*PRONE_SPEED;
-			turn luparm2 to y-axis <0> speed <120>*PRONE_SPEED;
-
-			Turn rthigh2 to x-axis <-85> speed <120>*PRONE_SPEED;
-			Turn lthigh2 to x-axis <-40> speed <120>*PRONE_SPEED;
-
-			Move pelvis2 to y-axis [-0.5] speed [120]*PRONE_SPEED;
-			Turn rleg2 to x-axis <80> speed <120>*PRONE_SPEED;
-			Turn lleg2 to x-axis <80> speed <120>*PRONE_SPEED;
-
-		wait-for-turn lleg around x-axis;
-		wait-for-turn lleg2 around x-axis;
-			Move pelvis to y-axis [0] speed [120]*PRONE_SPEED;
-			Move pelvis2 to y-axis [0] speed [120]*PRONE_SPEED;
-		call-script WeaponReady();
-			turn torso to x-axis <0> speed <120>*PRONE_SPEED;
-			turn torso to y-axis <0> speed <120>*PRONE_SPEED;
-			turn torso to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn head to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn head to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn head to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn rleg to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn rleg to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn rleg to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn lleg to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn lleg to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn lleg to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn pelvis to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn pelvis to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn pelvis to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn rthigh to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn rthigh to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn rthigh to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn lthigh to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh to z-axis <0> speed <120>*PRONE_SPEED;
-			
-			turn torso2 to x-axis <0> speed <120>*PRONE_SPEED;
-			turn torso2 to y-axis <0> speed <120>*PRONE_SPEED;
-			turn torso2 to z-axis <0> speed <120>*PRONE_SPEED;
-			Turn head2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn head2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn head2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn rleg2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn rleg2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn rleg2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn lleg2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn lleg2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn lleg2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn pelvis2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn pelvis2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn pelvis2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn rthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn rthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn rthigh2 to z-axis <0> speed <120>*PRONE_SPEED;
-		
-			Turn lthigh2 to x-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh2 to y-axis <0> speed <120>*PRONE_SPEED;
-			Turn lthigh2 to z-axis <0> speed <120>*PRONE_SPEED;
-		wait-for-turn lthigh around x-axis;
-		wait-for-turn lthigh2 around x-axis;
-				IsProne=0;
-				SET ARMORED to FALSE;
-				set MAX_SPEED to [0.5];
-				call-script MoveCheck();
-		
-		}
-		return (1);
-		sleep 100;
-	}
-
-#include "Inf_hitbyweapon.h"
-
-Run()
-{
-	while (1)
-		{
-		
-			if (IsProne==1||fear>0||bAiming==1)
-			{
-			sleep 100;
-			}
-			
-			if (bMoving==1 && IsProne==0 && fear<=0)
-			{
-			kneeling=0;
-			set ARMORED to FALSE;
-			call-script WeaponReady();	
-			turn ground to y-axis <0> speed <100>*PRONE_SPEED;
-			Turn lthigh to z-axis <0> speed <100>*PRONE_SPEED; 	
-			Turn rthigh to z-axis <0> speed <100>*PRONE_SPEED;
-			Turn lthigh2 to z-axis <0> speed <100>*PRONE_SPEED; 	
-			Turn rthigh2 to z-axis <0> speed <100>*PRONE_SPEED;
-		
-		
-			turn pelvis to y-axis <0> speed <40>*RUN_SPEED;
-			turn pelvis to x-axis <4> speed <40>*RUN_SPEED;
-			turn torso to x-axis <4> speed <40>*RUN_SPEED;
-			turn torso to y-axis <-20> speed <5>*RUN_SPEED;
-			move ground to y-axis [0.0] speed <100>*RUN_SPEED;
-			
-			turn pelvis2 to y-axis <0> speed <40>*RUN_SPEED2;
-			turn pelvis2 to x-axis <4> speed <40>*RUN_SPEED2;
-			turn torso2 to x-axis <4> speed <40>*RUN_SPEED2;
-			turn torso2 to y-axis <-20> speed <5>*RUN_SPEED2;
-			}
-			
-				if (bMoving==1 && IsProne==0 && fear<=0)
-			{
-			Turn rleg to x-axis <85> speed<30>*WALK_SPEED;	
-			Turn lleg to x-axis <55> speed<40>*WALK_SPEED;
-			Turn rthigh to x-axis <-60> speed<20>*WALK_SPEED;
-			Turn lthigh to x-axis <20> speed<20>*WALK_SPEED;	
-			
-			Turn rleg2 to x-axis <85> speed<30>*WALK_SPEED2;	
-			Turn lleg2 to x-axis <55> speed<40>*WALK_SPEED2;
-			Turn rthigh2 to x-axis <-60> speed<20>*WALK_SPEED2;
-			Turn lthigh2 to x-axis <20> speed<20>*WALK_SPEED2;		
-		wait-for-move ground along y-axis;
-			move ground to y-axis [0.5] speed <80>*RUN_SPEED;
-			}
-			
-				if (bMoving==1 && IsProne==0 && fear<=0)
-			{
-			Turn rleg to x-axis <45> speed<60>*WALK_SPEED;
-			Turn rleg2 to x-axis <45> speed<60>*WALK_SPEED2;
-		wait-for-turn lthigh around x-axis;
-		wait-for-turn lthigh2 around x-axis;
-			turn torso to y-axis <20> speed <5>*RUN_SPEED;
-			Turn lleg to x-axis <85> speed<30>*WALK_SPEED;
-			Turn rleg to x-axis <55> speed<40>*WALK_SPEED;
-			Turn lthigh to x-axis <-60> speed<20>*WALK_SPEED;
-			
-			turn torso2 to y-axis <20> speed <5>*RUN_SPEED2;
-			move ground to y-axis [0.0] speed <100>*RUN_SPEED;
-			Turn lleg2 to x-axis <85> speed<30>*WALK_SPEED2;
-			Turn rleg2 to x-axis <55> speed<40>*WALK_SPEED2;
-			Turn lthigh2 to x-axis <-60> speed<20>*WALK_SPEED2;
-			}
-			
-				if (bMoving==1 && IsProne==0 && fear<=0)
-			{
-			Turn rthigh to x-axis <20> speed<20>*WALK_SPEED;
-			Turn rthigh2 to x-axis <20> speed<20>*WALK_SPEED2;
-		wait-for-move ground along y-axis;
-			move ground to y-axis [0.5] speed <80>*RUN_SPEED;
-			Turn lleg to x-axis <45> speed<60>*WALK_SPEED;	
-			Turn lleg2 to x-axis <45> speed<60>*WALK_SPEED2;
-		wait-for-turn rthigh around x-axis;
-		wait-for-turn rthigh2 around x-axis;
-			}
-			
-			if (bMoving==0 && IsProne==0 && fear<=0 && kneeling==0)
-			{
-			
-				move mortarbase to y-axis [0] speed <200>*RUN_SPEED;
-				turn mortartube to x-axis <-55> now;
-				turn mortarstand to x-axis <-45> now;
-			turn pelvis to x-axis <0> speed <10>*RUN_SPEED;
-			turn torso to x-axis <0> speed <10>*RUN_SPEED;
-			
-			move ground to y-axis [0.0] speed <100>*RUN_SPEED;
-			turn pelvis2 to x-axis <0> speed <10>*RUN_SPEED;
-			turn torso2 to x-axis <0> speed <10>*RUN_SPEED;
-		wait-for-turn rthigh around x-axis;
-		wait-for-turn rthigh2 around x-axis;
-			turn rthigh to x-axis <0> speed <100>*RUN_SPEED;
-			turn rthigh2 to x-axis <0> speed <100>*RUN_SPEED;
-		wait-for-turn lthigh around x-axis;
-		wait-for-turn lthigh2 around x-axis;
-			turn lthigh to x-axis <0> speed <100>*RUN_SPEED;
-			turn lleg to x-axis <0> speed <100>*RUN_SPEED;
-			turn rleg to x-axis <0> speed <100>*RUN_SPEED;
-			
-			turn lthigh2 to x-axis <0> speed <100>*RUN_SPEED;
-			turn lleg2 to x-axis <0> speed <100>*RUN_SPEED;
-			turn rleg2 to x-axis <0> speed <100>*RUN_SPEED;
-			}
-			
-		sleep 10;
-								
-		}
-		sleep 10;
-	}
-
-
-
-
-
-Activate()
-{
-	sleep 100;
-	start-script TakeCover();
-}
-
-Deactivate()
-{
-//	fear=0;
-	start-script FearRecovery();
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 0;
 }
 
 Create()
 {
-	start-script WeaponReady();
-	start-script Run();
-	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
-	WALK_SPEED = rand(9,11);
-	RUN_SPEED2=rand(16,20);
-	WALK_SPEED2=rand(9,11);
-	prone_speed = rand(3,5);
-	DEATH_SPEED=4;
-	IsProne=0;
-	kneeling=0;
-	Hide flare;
-}
-
-
-SweetSpot(piecenum)
-{
-	piecenum = torso;
-}
-
-AimFromWeapon1(piecenum)
-{
-	piecenum = torso;
-}
-
-QueryWeapon1(piecenum)
-{
-	piecenum = flare;
-}
-
-AimWeapon1(heading, pitch)
-{
-	signal 2;
-	set-signal-mask 2;
-	bAiming = 1;
-	if( bMoving || IsPinned || IsProne)
-	{
-	return 0;
-	}
-	
-	if (IsProne==0 && kneeling==0)
-	{
-	kneeling=1;
-	//put anim here of crew kneeling and preparing to fire...
-	move pelvis to y-axis [-1.3] speed [300];
-	turn rthigh to x-axis <-100> now;
-	turn rleg to x-axis <100> now;
-	turn lleg to x-axis <90> now;
-	turn lfoot to x-axis <20> now;
-	move pelvis2 to y-axis [-1.3] speed [300];
-	turn rthigh2 to x-axis <-100> now;
-	turn rleg2 to x-axis <100> now;
-	turn lleg2 to x-axis <90> now;
-	turn lfoot2 to x-axis <20> now;
-	
-	turn luparm to x-axis <-75> now;
-	turn lloarm to x-axis <-45> now;
-	turn lloarm to y-axis <-45> now;
-	turn ruparm to x-axis <-75> now;
-	turn rloarm to x-axis <-45> now;
-	turn rloarm to z-axis <-45> now;
-
-	turn torso to y-axis <75> speed <150>;
-	turn torso2 to y-axis heading speed <200>;
-	turn luparm2 to x-axis <0> now;
-	turn luparm2 to y-axis <0> now;
-	turn lloarm2 to x-axis <0> now;
-	turn lloarm2 to y-axis <0> now;
-	turn lloarm2 to z-axis <0> now;
-	turn ruparm2 to x-axis <0> now;
-	turn ruparm2 to y-axis <0> now;
-	turn rloarm to x-axis <-70> now;
-	turn head2 to x-axis <0> now;
-	//mortar anim...
-	turn mortartube to x-axis <0> - pitch speed <100>;
-	turn mortarstand to x-axis <-45> speed <100>;
-	turn ground to y-axis heading speed <75>;
+	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
+	bMoving = 0;
 	bAiming = 0;
-	wait-for-turn ground around y-axis;
-	return (1);
-	}
-
-	
-	if (kneeling==1)
-	{
-		turn luparm to x-axis <-75> now;
-	turn lloarm to x-axis <-45> now;
-	turn lloarm to y-axis <-45> now;
-	turn ruparm to x-axis <-75> now;
-	turn rloarm to x-axis <-45> now;
-	turn rloarm to z-axis <-45> now;
-
-	turn torso to y-axis <75> speed <150>;
-	turn torso2 to y-axis heading speed <200>;
-	turn luparm2 to x-axis <0> now;
-	turn luparm2 to y-axis <0> now;
-	turn lloarm2 to x-axis <0> now;
-	turn lloarm2 to y-axis <0> now;
-	turn lloarm2 to z-axis <0> now;
-	turn ruparm2 to x-axis <0> now;
-	turn ruparm2 to y-axis <0> now;
-	turn rloarm to x-axis <-70> now;
-	turn head2 to x-axis <0> now;
-	turn mortartube to x-axis <0> - pitch speed <100>;
-	turn mortarstand to x-axis <-45> speed <100>;
-	turn ground to y-axis heading speed <75>;
-	wait-for-turn ground around y-axis;
-	bAiming=0;
-	return (1);
-	}
-	return (0);
+	#ifdef WEAPON_GRENADE
+	bNading = 0;
+	#endif
+	iState = 1;
+	iFear = 0;
+	iSpeed = GET MAX_SPEED;
+	start-script WeaponReady();
+	start-script RunControl();
 }
 
-FireWeapon1()
+RestoreAfterDelay()
 {
-	shooting = 1;
-	turn torso to y-axis <-45> speed <300>;
-	turn luparm to x-axis <-75> now;
-	turn luparm to y-axis <-20> now;
-	turn ruparm to x-axis <-75> now;
-	turn ruparm to y-axis <20> now;
-	turn lloarm to x-axis <-150> now;
-	turn lloarm to y-axis <0> now;
-	turn lloarm to z-axis <10> now;
-	turn rloarm to x-axis <-150> now;
-	turn rloarm to z-axis <-10> now;
-	turn head to x-axis <20> now;
-	
-	turn torso2 to y-axis <45> speed <300>;
-	turn luparm2 to x-axis <-75> now;
-	turn luparm2 to y-axis <-20> now;
-	turn ruparm2 to x-axis <-75> now;
-	turn ruparm2 to y-axis <20> now;
-	turn lloarm2 to x-axis <-150> now;
-	turn lloarm2 to y-axis <0> now;
-	turn lloarm2 to z-axis <10> now;
-	turn rloarm2 to x-axis <-150> now;
-	turn rloarm2 to z-axis <-10> now;
-	turn head2 to x-axis <20> now;
-	
-	sleep 500;
-	
-	emit-sfx MORTAR_MUZZLEFLASH from flare;
-	
-	sleep 1000;
-	turn luparm to y-axis <0> now;
-	turn luparm to z-axis <0> now;
-	turn ruparm to y-axis <0> now;
-	turn rloarm to x-axis <-45> now;
-	
-	turn luparm2 to y-axis <0> now;
-	turn luparm2 to z-axis <0> now;
-	turn ruparm2 to y-axis <0> now;
-	shooting = 0;
+	sleep RestoreDelay;
+//	bAiming=0;	
+	if (iFear > 0) start-script CrawlControl();
+	call-script Stand(1);
+	if (iFear <= 0)
+		{
+		start-script RunControl();
+		}
 }
 
+//start weapons
+/*
+Primary weapon. 
+States: crawling/prone, running.
+Killed by:
+Grenade aiming
+PinnedControl
+*/
 
+#ifdef RIFLE
+#include "inf_weaponRifle.h"
+#endif
+#ifdef SMG
+#include "inf_weaponSMG.h"
+#endif
+#ifdef MG
+#include "inf_weaponMG.h"
+#endif
+#ifdef ATROCKET
+#include "inf_weaponATRocket.h"
+#endif
+#ifdef SNIPER
+#include "inf_weaponSniper.h"
+#endif
+#ifdef SCOUT
+#include "inf_weaponScout.h"
+#endif
+#ifdef ATRIFLE
+#include "inf_weaponATRifle.h"
+#endif
+#ifdef MORTAR
+#include "inf_weaponMortar.h"
+#endif
 
-Killed(severity, corpsetype)
-{
-	if( severity <= 99 )
-	{
-		corpsetype = 1;
-		return (0);
-	}
-	corpsetype = 3;
-}
+#include "inf_Death.h"

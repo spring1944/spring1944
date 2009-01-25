@@ -407,6 +407,41 @@
 	turn torso to y-axis <0> now;\
 	turn torso to x-axis <0> now;\
 	turn torso to z-axis <0> now;
+	
+#define MORTAR_STANCE1 \
+	turn pelvis to x-axis <0> now;\
+	turn ground to y-axis <0> now;\
+	turn pelvis to y-axis <0> now;\
+	turn pelvis to z-axis <0> now;\
+	turn ruparm to x-axis <-60> now;\
+	turn ruparm to y-axis <-40> now;\
+	turn ruparm to z-axis <0> now;\
+	turn rloarm to x-axis <-20> now;\
+	turn rloarm to y-axis <-80> now;\
+	turn rloarm to z-axis <-140> now;\
+	turn luparm to x-axis <-20> now;\
+	turn luparm to y-axis <0> now;\
+	turn luparm to z-axis <0> now;\
+	turn lloarm to x-axis <0> now;\
+	turn lloarm to y-axis <50> now;\
+	turn lloarm to z-axis <60> now;\
+	move mortarbase to y-axis [4] now;\
+	move mortarbase to z-axis [0] now;\
+	turn mortarbase to x-axis <-140> now;\
+	turn mortarbase to y-axis <25> now;\
+	turn mortarbase to z-axis <60> now;\
+	turn mortartube to x-axis <0> now;\
+	turn mortartube to y-axis <0> now;\
+	turn mortartube to z-axis <0> now;\
+	turn mortarstand to x-axis <0> now;\
+	turn mortarstand to y-axis <0> now;\
+	turn mortarstand to z-axis <0> now;\
+	turn head to y-axis <0> now;\
+	turn head to x-axis <0> now;\
+	turn head to z-axis <30> now;\
+	turn torso to y-axis <0> now;\
+	turn torso to x-axis <0> now;\
+	turn torso to z-axis <0> now;	
 
 HipAim()
 	{
@@ -447,6 +482,14 @@ Prone(pickSide)
 	}
 	//wait-for-turn pelvis around x-axis;
 	//wait-for-move pelvis along y-axis;
+	#ifdef MORTAR
+	move mortarbase to y-axis [0] now;
+	move mortarbase to x-axis [0] now;
+	move mortarbase to z-axis [1] now;
+	turn mortarbase to x-axis <0> now;
+	turn mortarbase to y-axis <90> now;
+	turn mortarbase to z-axis <0> now;
+	#endif
 	turn torso to y-axis <20> speed <600>;
 	turn torso to x-axis <-10> speed <600>;
 	turn torso to z-axis <0> speed <600>;
@@ -466,13 +509,13 @@ Prone(pickSide)
 	turn luparm to x-axis <-140> speed <480>;
 	turn luparm to y-axis <-30> speed <480>;
 	turn luparm to z-axis <0> speed <480>;
-	
-	turn lloarm to x-axis <20> speed <480>;
-	turn lloarm to y-axis <65> speed <480>;
-	turn lloarm to z-axis <40> speed <480>;
 	turn gun to x-axis <10> speed <480>;
 	turn gun to y-axis <-35> speed <480>;
 	turn gun to z-axis <45> speed <480>;
+	turn lloarm to x-axis <20> speed <480>;
+	turn lloarm to y-axis <65> speed <480>;
+	turn lloarm to z-axis <40> speed <480>;
+
 	if (pickSide == 1)
 	{
 		turn lthigh to x-axis <0> speed <210>;
@@ -580,6 +623,13 @@ Stand(pickStance) //just resetting legs and such while still
 		if (pickStance == 1)
 		{
 		FLAMER_STANCE1
+		}
+		#endif
+		
+	#ifdef MORTAR
+		if (pickStance == 1)
+		{
+		MORTAR_STANCE1
 		}
 		#endif
 	#ifdef WEAPON_GRENADE

@@ -8,9 +8,9 @@ WeaponReady() //structure is here to allow for multiple poses (either per unit c
 {
 var pickStance;
 pickStance=rand(1, StanceNumber);
-show gun;
 //bEngaged = FALSE;
 	#ifdef MG
+	show gun;
 	if (pickStance == 1)
 	{
 	MG_STANCE1
@@ -21,6 +21,7 @@ show gun;
 	}
 	#endif
 	#ifdef ATROCKET
+	show gun;
 	if (pickStance == 1)
 	{
 	ATROCKET_STANCE1
@@ -31,6 +32,7 @@ show gun;
 	}
 	#endif
 	#ifdef SNIPER
+	show gun;
 	if (pickStance == 1)
 	{
 	SNIPER_STANCE1
@@ -45,6 +47,7 @@ show gun;
 	}
 	#endif
 	#ifdef SCOUT
+	show gun;
 	if (pickStance == 1)
 	{
 	SCOUT_STANCE1
@@ -69,15 +72,23 @@ show gun;
 	}
 	#endif
 	#ifdef ATRIFLE
+	show gun;
 	if (pickStance == 1)
 	{
 	ATRIFLE_STANCE1
 	}
 	#endif
 	#ifdef FLAMETHROWER
+	show gun;
 	if (pickStance == 1)
 	{
 	FLAMER_STANCE1
+	}
+	#endif
+	#ifdef MORTAR
+	if (pickStance == 1)
+	{
+	MORTAR_STANCE1
 	}
 	#endif
 #ifdef WEAPON_GRENADE

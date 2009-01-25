@@ -43,6 +43,7 @@ AimWeapon1(heading, pitch)
 		wait-for-turn ruparm around x-axis;
 		wait-for-turn torso around y-axis;
 		wait-for-turn pelvis around y-axis;
+		wait-for-move pelvis along y-axis;
 		start-script RestoreAfterDelay();
 		return (1);
 	}
