@@ -391,6 +391,18 @@ local function FinishMorph(unitID, morphData)
   
   local h = Spring.GetUnitHeading(unitID)
   Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
+	
+	if (udDst.customParams.maxammo) then
+		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
+		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
+		if (ammoLevel == 0 and udDst.weapons) then
+			Spring.SetUnitWeaponState(newUnit, 0, {reloadTime = 99999, reloadState = 99999})
+		end
+		local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
+		if (weapon1) then
+			Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
+		end
+	end
 
   --//copy experience
   local newXp = Spring.GetUnitExperience(unitID)*XpScale
@@ -411,6 +423,7 @@ local function FinishMorph(unitID, morphData)
     newXp = math.min( newXp, maxXp*0.9)
   end
   Spring.SetUnitExperience(newUnit, newXp)
+
 
   --//copy some state
   local states = Spring.GetUnitStates(unitID)

@@ -131,7 +131,7 @@ local function Resupply(unitID)
 	local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
 	local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
-	local ammoRegen = DefaultRegen(unitDefID)
+	--local ammoRegen = DefaultRegen(unitDefID)
 	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
 	
 	if oldAmmo < maxAmmo then
@@ -141,8 +141,13 @@ local function Resupply(unitID)
 		SetUnitRulesParam(unitID, "ammo",	newAmmo)
 	end
 
-	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-	local reload = tonumber(WeaponDefs[weaponID].reload)
+	local hasWeapon = UnitDefs[unitDefID].weapons[1]
+	local reload = 0
+	if hasWeapon then
+		reload = tonumber(WeaponDefs[hasWeapon.weaponDef].reload)
+	else
+		reload = GetUnitRulesParam(unitID, "defRegen")
+	end
 	
 	if oldAmmo < 1 then
 		local savedFrame = 0
