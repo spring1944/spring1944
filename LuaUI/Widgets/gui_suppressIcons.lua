@@ -50,7 +50,7 @@ local suppressIcons = { [0] = {}, [1] = {}, [2] = {} }
 local myAllyTeamID = 666
 
 local iconsize   = 8 --16
-local iconoffset = 4
+local iconoffset = 6
 local suppressTexBase = 'LuaUI/Images/Suppress/'
 local suppressTextures = {
   [0] = nil,

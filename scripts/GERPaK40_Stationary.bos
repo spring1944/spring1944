@@ -3,13 +3,13 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit;
+static-var bAiming, iFear, iState, PickDeath, lasthit;
 
 #include "inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
-
+#define SIG_FEARRECOVERY	8
 //effects
 #define placeholder_EFFECT01 1024+1
 #define placeholder_EFFECT02 1024+2
@@ -87,10 +87,10 @@ Create()
 TakeCover()
 {
 set-signal-mask 0;
-	if (IsProne == 0)
+	if (iState < 6)
 	{
 	
-				IsProne=1;
+				iState=6;
 				CREW_SUPRESSED
 
 	}
@@ -104,11 +104,11 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 {
 	
 
-		if (fear <=0 && IsProne==1)
+		if (iFear <=0 && iState>=6)
 		{	
-			fear=0;
+			iFear=0;
 			CREW_DEPLOY
-				IsProne=0;
+				iState=1;
 				SET ARMORED to FALSE;
 				set MAX_SPEED to [0.5];
 		
@@ -120,19 +120,16 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 
 FearRecovery() 
 { 
-
+signal SIG_FEARRECOVERY;
+set-signal-mask SIG_FEARRECOVERY;
 	
-     if (DecreasingFear==1) return (1);  // better to use signals here
-
-
-     DecreasingFear = 1;
-     while(fear > 0) 
-          { 
-          fear = fear - RecoverConstant; 
-          sleep RecoverRate; 
-          } 
-start-script RestoreAfterCover(); 
-DecreasingFear=0; 
+     while(iFear > 0) 
+        { 
+	        sleep RecoverRate; 
+			iFear = iFear - RecoverConstant; 
+        } 
+	start-script RestoreAfterCover();   
+	return (1); 
  
 return (1); 
 }
@@ -140,26 +137,35 @@ return (1);
 
 HitByWeaponId(z,x,id,damage)
 {	
-	lasthit = Id;
 	if (Id<=300 || Id>700)
-		return (100); // DON'T NEED BRACKETS FOR return STATEMENTS!
-	
-	if (300<Id && Id<=400) //301-400=small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
-		fear = fear + LittleFear;
-	if (400<Id && Id<=500) //401-500=small/med explosions: mortars, 75mm guns and under
-		fear = fear + MedFear;
-	if (500<Id && Id<=600) //501-600=large explosions: small bombs, 155mm - 88mm guns,
-		fear = fear + BigFear;
-	if (600<Id && Id<=700) //601-700=omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty 
-		fear = fear + MortalFear;
-
-	if (fear > FearLimit) fear = FearLimit; // put this line AFTER increasing fear var
-		
-	start-script TakeCover();
-	sleep 100; // what is this for??
+	{
+	iFear = iFear + 1;
+		if (iState < 6) 
+		{
+		call-script TakeCover();
+		//sleep initialDelay;
+		}
 	start-script FearRecovery();
+	return 100;
+	}
 	
-	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
+	if (Id==301) iFear = iFear + LittleFear;
+	if (Id==401) iFear = iFear + MedFear;
+	if (Id==501) iFear = iFear + BigFear;
+	if (Id==601) iFear = iFear + MortalFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
+	if (iState < 6)
+	{
+	call-script TakeCover();
+	//sleep initialDelay;
+	}
+	start-script FearRecovery();
+	return (0); 
+}
+
+luaFunction(arg1)
+{
+ arg1 = iFear;
 }
 
 // Weapon 1
@@ -177,7 +183,7 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
-	if (fear>0) return 0;
+	if (iState>=6) return 0;
 	bAiming=1;
 		//TODO: anim	
 	turn carriage to y-axis heading speed TURR_TRAVERSE;

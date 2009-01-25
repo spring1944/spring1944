@@ -5,7 +5,7 @@
 	corpse=GBRSoldier_dead;
 	icontype=commando;
 	soundcategory=GBRInf;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
+	category=NFLAGNAIR NFLAG INFTARG;
 	tedclass=KBOT;
 
 	name=Commando;
