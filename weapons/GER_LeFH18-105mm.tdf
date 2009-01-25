@@ -12,7 +12,7 @@
 	firestarter=0.0;
 
 	range=3200;
-	reloadtime=15;//5
+	reloadtime=11.25;//5
 	accuracy=350;
 	targetmoveerror=0.25;
 	LeadLimit=0.05;

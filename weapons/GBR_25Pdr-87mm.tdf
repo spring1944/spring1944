@@ -12,7 +12,7 @@
 	firestarter=0.0;
 
 	range=2810;
-	reloadtime=13.5;//4.5
+	reloadtime=8;//4.5
 	accuracy=250;
 	targetmoveerror=0.25;
 	LeadLimit=0.05;
@@ -55,7 +55,7 @@
 	}
 	[customParams]
 	{
-		fearid=401;
+		fearid=501;
 		fearaoe=250;
 	}
 }

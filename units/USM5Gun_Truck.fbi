@@ -56,6 +56,10 @@
 	}
 	[customParams]
 	{
-		dontCount=1;
+	
+		maxammo=4;
+		weaponswithammo=0;
+		lowammolevel=1;
+		weaponcost=13;
 	}
 }
