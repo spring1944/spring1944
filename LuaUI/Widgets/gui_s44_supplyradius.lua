@@ -11,7 +11,7 @@ function widget:GetInfo()
 		date = "5 January 2009",
 		license = "GNU LGPL, v2.1 or later",
 		layer = 1,
-		enabled = false
+		enabled = true
 	}
 end
 
@@ -49,6 +49,12 @@ end
 --vars
 ------------------------------------------------
 
+local abs = math.abs
+local sin, cos = math.sin, math.cos
+local ceil, floor = math.ceil, math.floor
+local min, max = math.min, math.max
+local PI = math.pi
+
 local mainList
 
 --format: unitDefID = {radius, numSegments, segmentAngle, oddX, oddZ}
@@ -60,13 +66,21 @@ local supplyInfos = {}
 --format: unitID = {supplyDefInfo = table, x = number, z = number}
 local inBuildSupplyInfos = {}
 
+--format: unitDefID = bool
+local generalTruckDefIDs = {}
+local supplyTruckDefIDs = {}
+
+local generalTruckDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
+local supplyTruckDefInfo = {410, ceil(410 / segmentLength), 2 * PI / ceil(410 / segmentLength)}
+
+local myTeamID = Spring.GetMyTeamID()
+
 ------------------------------------------------
 --speedups and constants
 ------------------------------------------------
 local GetUnitSeparation = Spring.GetUnitSeparation
 local GetUnitPosition = Spring.GetUnitPosition
 local AreTeamsAllied = Spring.AreTeamsAllied
-local GetMyTeamID = Spring.GetMyTeamID
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
 local GetGroundHeight = Spring.GetGroundHeight
@@ -74,6 +88,7 @@ local GetCameraPosition = Spring.GetCameraPosition
 local GetCameraDirection = Spring.GetCameraDirection
 local GetActiveCommand = Spring.GetActiveCommand
 local GetUnitIsStunned = Spring.GetUnitIsStunned
+local GetVisibleUnits = Spring.GetVisibleUnits
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -104,17 +119,13 @@ local GL_POINTS = GL.POINTS
 local GL_SRC_ALPHA = GL.SRC_ALPHA
 local GL_ONE_MINUS_SRC_ALPHA = GL.ONE_MINUS_SRC_ALPHA
 
-local abs = math.abs
-local sin, cos = math.sin, math.cos
-local ceil, floor = math.ceil, math.floor
-local min, max = math.min, math.max
+local strFind = string.find
+local strSub = string.sub
 
 local MAP_SIZE_X = Game.mapSizeX
 local MAP_SIZE_Z = Game.mapSizeZ
 
 local DEFAULT_SUPPLY_RANGE = 300
-local PI = math.pi
-
 
 ------------------------------------------------
 --util
@@ -316,6 +327,25 @@ local function DrawPreview(supplyDefInfo, x, z)
 	glPopMatrix()
 end
 
+local function DrawTrucks()
+	local visibleUnits = GetVisibleUnits()
+	
+	if not visibleUnits then return end
+	for i=1,#visibleUnits do
+		local unitID = visibleUnits[i]
+		local unitDefID = GetUnitDefID(unitID)
+		local unitTeam = GetUnitTeam(unitID)
+		local x, _, z = GetUnitPosition(unitID)
+		if AreTeamsAllied(unitTeam, myTeamID) then 
+			if generalTruckDefIDs[unitDefID] then
+				DrawPreview(generalTruckDefInfo, x, z)
+			elseif supplyTruckDefIDs[unitDefID] then
+				DrawPreview(supplyTruckDefInfo, x, z)
+			end
+		end
+	end
+end
+
 local function DrawMain()
 	glColor(color)
 	
@@ -348,6 +378,7 @@ local function CallMain()
 	end
 	
 	if (showAlways or supplyDefInfo) then
+		DrawTrucks()
 		glCallList(mainList)
 		return
 	end
@@ -355,16 +386,26 @@ local function CallMain()
 	if (showRollover) then
 		local mx, my = GetMouseState()
 		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
-		if mouseTargetType == "unit" and (supplyInfos[mouseTarget] or inBuildSupplyInfos[mouseTarget]) then
-			glCallList(mainList)
-			return
+		if mouseTargetType == "unit" then
+			local targetDefID = GetUnitDefID(mouseTarget)
+			if supplyInfos[mouseTarget] 
+					or inBuildSupplyInfos[mouseTarget]
+					or generalTruckDefIDs[targetDefID]
+					or supplyTruckDefIDs[targetDefID] then
+				DrawTrucks()
+				glCallList(mainList)
+				return
+			end
 		end
 	end
 	
 	if (showSelect) then
 		local selectedUnitsCounts = GetSelectedUnitsCounts()
 		for unitDefID, _ in pairs(selectedUnitsCounts) do
-			if (supplyDefInfos[unitDefID]) then
+			if supplyDefInfos[unitDefID]
+					or generalTruckDefIDs[unitDefID]
+					or supplyTruckDefIDs[unitDefID] then
+				DrawTrucks()
 				glCallList(mainList)
 				return
 			end
@@ -442,6 +483,11 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		return
 	end
 	
+	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
+		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
+		return
+	end
+	
 	local supplyDefInfo = supplyDefInfos[unitDefID]
 	
 	if (not supplyDefInfo) then return end
@@ -461,7 +507,7 @@ end
 function widget:UnitFinished(unitID, unitDefID, unitTeam)
 	inBuildSupplyInfos[unitID] = nil
 	
-	if (not AreTeamsAllied(unitTeam, GetMyTeamID())) then 
+	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
 		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		return
 	end
@@ -553,6 +599,10 @@ function widget:Initialize()
 			end
 			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle, oddX, oddZ}
 			inUse = true
+		elseif unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) then
+			generalTruckDefIDs[unitDefID] = true
+		elseif unitDef.humanName and strFind(unitDef.humanName, "Supply Truck") then
+			supplyTruckDefIDs[unitDefID] = true
 		end
 	end
 	
