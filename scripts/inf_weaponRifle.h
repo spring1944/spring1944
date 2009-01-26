@@ -57,8 +57,8 @@ AimWeapon1(heading, pitch)
 			iState = 5;
 			turn torso to y-axis heading speed <300>;
 			turn torso to x-axis <0> - pitch speed <300>;
-			turn ruparm to x-axis <50.500000> speed <300.000000>;
-			turn ruparm to y-axis <43.000000> speed <300.000000>;
+			turn ruparm to x-axis <80.500000> speed <300.000000>;
+			turn ruparm to y-axis <30.000000> speed <300.000000>;
 			turn ruparm to z-axis <0> speed <300>;
 		
 			turn rloarm to x-axis <-120.000000> speed <300.000000>;
@@ -70,17 +70,17 @@ AimWeapon1(heading, pitch)
 			turn head to z-axis <0> speed <300>;
 			
 			
-			turn gun to x-axis <-20.000000> speed <300.000000>;
+			turn gun to x-axis <-50.000000> speed <300.000000>;
 			turn gun to y-axis <0> speed <300>;
-			turn gun to z-axis <40> speed <300>;
+			turn gun to z-axis <30> speed <300>;
 			
 			turn luparm to x-axis <-60.000000> speed <300.000000>;
-			turn luparm to y-axis <-25.000000> speed <300.000000>;
+			turn luparm to y-axis <-40.000000> speed <300.000000>;
 			turn luparm to z-axis <0> speed <300>;
 			
-			turn lloarm to x-axis <-15> speed <300>;
-			turn lloarm to y-axis <0> speed <300>;
-			turn lloarm to z-axis <25.000000> speed <300.000000>;
+			turn lloarm to x-axis <0> speed <300>;
+			turn lloarm to y-axis <70> speed <300>;
+			turn lloarm to z-axis <10.000000> speed <300.000000>;
 			
 			wait-for-turn torso around x-axis;
 			wait-for-turn torso around y-axis;
@@ -378,15 +378,11 @@ AimWeapon1(heading, pitch)
 		
 #define SHOT_ANIM_RUNNING\
 		emit-sfx MUZZLEFLASH from GUN_QUERY_PIECENUM;\
-		turn ruparm to x-axis <47.5> now;\
-		turn rloarm to x-axis <-125> now;\
-		turn luparm to x-axis <-62.5> now;\
-		turn lloarm to x-axis <-20> now;\
+		turn ruparm to x-axis <75> now;\
+		turn luparm to x-axis <-65> now;\
 		sleep (BurstRate/2);\
-		turn ruparm to x-axis <50> now;\
-		turn rloarm to x-axis <-120> now;\
+		turn ruparm to x-axis <80> now;\
 		turn luparm to x-axis <-60> now;\
-		turn lloarm to x-axis <-15> now;\
 		sleep (BurstRate/2);
 		
 #define SHOT_ANIM_PRONE\
