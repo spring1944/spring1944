@@ -136,7 +136,7 @@ local morphDefs = {
     energy = 0,
   },
   
-  gerflak38 =
+  --[[gerflak38 =
   {
     into = 'gerflak38_stationary',
     tech = 0,
@@ -152,7 +152,7 @@ local morphDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-  },
+  },]]--
   
   gerpak40_truck = 
   {
@@ -208,7 +208,7 @@ local morphDefs = {
     energy = 0,
   },
 	
-	rus61k = 
+	--[[rus61k = 
   {
     into = 'rus61k_stationary',
     tech = 0,
@@ -224,7 +224,7 @@ local morphDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-  },
+  },]]--
   
   ruszis2_truck = 
   {
