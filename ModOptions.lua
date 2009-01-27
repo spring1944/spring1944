@@ -27,9 +27,62 @@ local options = {
 		name = 'Always Visible Flags', 
 		desc = 'Flags and their capping status can be seen without LOS', 
 		type = 'bool', 
-		def = false, 
-	},		
-	{
+		def = true, 
+	},	
+
+  {
+    key    = 'command_mult',
+    name   = 'Command Point Income/Battle Significance',
+    desc   = 'Sets level of Command Point income - use to adjust maps that provide too much or too little command points',
+    type   = 'list',
+    def    = '1',
+    items  = 
+    {
+      { 
+        key  = '0',
+        name = 'Low',
+        desc = 'Limited Command Points. This battle is insignificant, and you will be struggling to maintain infantry battalions',
+      },
+      {
+        key  = '1',
+        name = 'Normal',
+        desc = 'Standard Command Points. The supreme commanders are keeping an eye on the outcome of this engagement. Expect medium numbers of infantry with considerable vehicle support, with armor and gun batteries appearing later.',
+      },
+      {
+        key  = '2',
+        name = 'High',
+        desc = 'Abundant Command Points. The command has deemed this battle vital. You must win at all costs, and your available resources reflect that urgency.',
+      },
+    },
+  },
+  
+    {
+    key    = 'logistics_mult',
+    name   = 'Logistics Resupply Frequency',
+    desc   = 'Sets the gap between Logistics Resupply',
+    type   = 'list',
+    def    = '1',
+    items  = 
+    {
+      { 
+        key  = '0',
+        name = 'Low - 7.5 minute gap',
+        desc = 'Limited logistics supply. Conservative play - storage buildings and well supplied infantry are the order of the day.',
+      },
+      {
+        key  = '1',
+        name = 'Normal - 5 minute gap',
+        desc = 'Normal logistics supply. Supplies come on a frequent enough basis to keep the warmachine rumbling, but beware of large artillery batteries or armored thrusts.',
+      },
+      {
+        key  = '2',
+        name = 'High - 2.5 minute gap',
+        desc = 'Abundant logistics supply. Supply deliveries arrive early and often, allowing for much more aggressive play.',
+      },
+    },
+  },
+  
+	--[[{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
     desc   = 'Applies a multiplier to all the weapon ranges ingame',
@@ -109,7 +162,9 @@ local options = {
     min	   = 0.01,
     max    = 10,
     step   = 0.1,
-  }--[[
+  }]]--
+  
+  --[[
   {
     key    = 'unit_buildable_airfields',
     name   = 'Airfield enabler',

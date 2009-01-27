@@ -28,32 +28,6 @@
 local options = 
 {
   {
-    key    = 'GameMode',
-    name   = 'Game end condition',
-    desc   = 'Determines what condition triggers the defeat of a player',
-    type   = 'list',
-    def    = '0',
-    items  = 
-    {
-      { 
-        key  = '0',
-        name = 'Kill everything',
-        desc = 'The player will lose when only after all units of the player will be killed',
-      },
-      {
-        key  = '1',
-        name = 'Commander ends',
-        desc = 'The player will lose when his commander will be dead',
-      },
-      {
-        key  = '2',
-        name = 'Commander lineage ends',
-        desc = 'This is a stricter form of commander ends\nevery unit will inherit the lineage from the player whom built it\neven if shared, when the commander dies the unit will still die',
-      },
-    },
-  },
-  
-  {
     key    = 'StartingResources',
     name   = 'Starting Resources',
     desc   = 'Sets storage and amount of resources that players will start with',
@@ -62,8 +36,8 @@ local options =
   
   {
     key    = 'StartMetal',
-    name   = 'Starting metal',
-    desc   = 'Determines amount of metal and metal storage that each player will start with',
+    name   = 'Starting Command',
+    desc   = 'Sets the starting Command Point level for all players',
     type   = 'number',
     section= 'StartingResources',
     def    = 1000,
@@ -74,11 +48,11 @@ local options =
   },
   {
     key    = 'StartEnergy',
-    name   = 'Starting energy',
-    desc   = 'Determines amount of metal and metal storage that each player will start with',
+    name   = 'Starting Logistics',
+    desc   = 'Sets the starting Logistics level for all players',
     type   = 'number',
     section= 'StartingResources',
-    def    = 500,
+    def    = 1000,
     min    = 0,
     max    = 10000,
     step   = 1,  -- quantization is aligned to the def value

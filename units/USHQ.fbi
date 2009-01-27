@@ -59,7 +59,7 @@
 	{
 		hq=1;
 		refillamount=1000000; 
-		arrivalgap=600;	
+		arrivalgap=300;	
 		flagCapRate=10;
 		ammoSupplier=1;
 		supplyRange=500;

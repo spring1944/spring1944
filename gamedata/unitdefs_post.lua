@@ -52,17 +52,48 @@ end
 				if (ud.customparams.weaponcost) then
 				ud.customparams.weaponcost = (2 * ud.customparams.weaponcost)
 				end
+			end
+		end
+		
+	if (modOptions.logistics_mult) then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.customparams) then
 				if (ud.customparams.arrivalgap) then
-				ud.customparams.arrivalgap = (0.5 * ud.customparams.arrivalgap)
+					if (modOptions.logistics_mult == '0') then
+					ud.customparams.arrivalgap = (1.5 * ud.customparams.arrivalgap)
+					end
+					if (modOptions.logistics_mult == '1') then
+					ud.customparams.arrivalgap = (1 * ud.customparams.arrivalgap)
+					end
+					if (modOptions.logistics_mult == '2') then
+					ud.customparams.arrivalgap = (0.5 * ud.customparams.arrivalgap)
+					end
 				end
 			end
 		end
+	end
 	
 	if (modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.maxvelocity) then
 			ud.maxvelocity = (modOptions.unit_speed_mult * ud.maxvelocity)
 			ud.acceleration = (modOptions.unit_speed_mult * ud.acceleration)
+			end
+		end
+	end
+	
+	if (modOptions.command_mult) then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.extractsmetal) then
+				if (modOptions.command_mult == '0') then --Low Command
+				ud.extractsmetal = (0.5 * ud.extractsmetal)
+				end
+				if (modOptions.command_mult == '1') then --Normal Command
+				ud.extractsmetal = (1 * ud.extractsmetal)
+				end
+				if (modOptions.command_mult == '2') then --High Command
+				ud.extractsmetal = (1.5 * ud.extractsmetal)
+				end
 			end
 		end
 	end
