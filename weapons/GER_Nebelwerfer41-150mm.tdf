@@ -28,7 +28,8 @@
 	soundtrigger=0;
 	soundstart=GER_Nebelwerfer;
 	soundhit=GEN_Explo_5;
-
+	commandfire=1;
+	guidance=1;
 
 	cegtag=RocketTrail;
 	explosiongenerator=custom:HE_XLarge;

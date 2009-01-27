@@ -28,8 +28,9 @@
 	soundtrigger=0;
 	soundstart=RUS_Katyusha;
 	soundhit=GEN_Explo_5;
-
-
+	commandfire=1;
+	guidance=1;
+	
 	cegtag=RocketTrail;
 	explosiongenerator=custom:HE_Large;
 	explosionspeed=100;
