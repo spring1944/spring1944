@@ -37,6 +37,8 @@ end
 --   30000 - 39999:  LuaRules
 --
 
+-- USES C++ ARRAY CONVENTION (e.g. for i=0,MAX_MORPH-1)!!!
+
 local CMD_MORPH_STOP = 32210
 local CMD_MORPH = 31210
 
@@ -501,7 +503,7 @@ function gadget:Initialize()
   _G.morphDefs  = morphDefs
 
   --// Register CmdIDs
-  for number=0,MAX_MORPH do
+  for number=0,MAX_MORPH-1 do
     gadgetHandler:RegisterCMDID(CMD_MORPH+number)
     gadgetHandler:RegisterCMDID(CMD_MORPH_STOP+number)
   end
@@ -561,7 +563,7 @@ function gadget:Shutdown()
     if (morphData) then
       StopMorph(unitID, morphData)
     end
-    for number=0,MAX_MORPH do
+    for number=0,MAX_MORPH-1 do
       local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_MORPH+number)
       if (cmdDescID) then
         Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
@@ -797,7 +799,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     --else --// disallow ANY command to units in morph
     --  return false
     end
-  elseif (cmdID >= CMD_MORPH and cmdID <= CMD_MORPH+MAX_MORPH) then
+  elseif (cmdID >= CMD_MORPH and cmdID < CMD_MORPH+MAX_MORPH) then
     local morphDef = (morphDefs[unitDefID] or {})[cmdID]
     if ((morphDef)and
         (morphDef.tech<=teamTechLevel[teamID])and
@@ -822,7 +824,7 @@ end
 
 
 function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-  if (cmdID <= CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH) then
+  if (cmdID < CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH) then
     return false  --// command was not used
   end
   local morphDef = (morphDefs[unitDefID] or {})[cmdID]
