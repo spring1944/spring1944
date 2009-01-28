@@ -428,8 +428,8 @@
 	[GBRHeavyGunyard]
 	{
 		canbuild1=GBRBedfordTruck;
-		canbuild2=GBR17Pdr;
-		canbuild3=GBR25Pdr;
+		canbuild2=GBR17Pdr_Truck;
+		canbuild3=GBR25Pdr_Truck;
 	}
 
 	
