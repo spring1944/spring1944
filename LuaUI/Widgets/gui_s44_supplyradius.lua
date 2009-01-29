@@ -1,4 +1,4 @@
-local versionNumber = "v1.6"
+local versionNumber = "v1.7"
 
 function widget:GetInfo()
 	return {
@@ -73,7 +73,7 @@ local supplyTruckDefIDs = {}
 local generalTruckDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
 local supplyTruckDefInfo = {410, ceil(410 / segmentLength), 2 * PI / ceil(410 / segmentLength)}
 
-local myTeamID = Spring.GetMyTeamID()
+local myTeamID
 
 ------------------------------------------------
 --speedups and constants
@@ -89,6 +89,8 @@ local GetCameraDirection = Spring.GetCameraDirection
 local GetActiveCommand = Spring.GetActiveCommand
 local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetVisibleUnits = Spring.GetVisibleUnits
+local GetAllUnits = Spring.GetAllUnits
+local GetMyTeamID = Spring.GetMyTeamID
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -472,6 +474,19 @@ local function SetMinimapSize(_,_,words)
 	end
 end
 
+local function Reset()
+	inBuildSupplyInfos = {}
+	supplyInfos= {}
+	
+	local allUnits = GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		widget:UnitCreated(unitID, GetUnitDefID(unitID), GetUnitTeam(unitID))
+	end
+	
+	UpdateLists()
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -611,13 +626,9 @@ function widget:Initialize()
 		widgetHandler:RemoveWidget()
 	end
 	
-	local allUnits = Spring.GetAllUnits()
-	for i=1,#allUnits do
-		local unitID = allUnits[i]
-		widget:UnitCreated(unitID, GetUnitDefID(unitID), GetUnitTeam(unitID))
-	end
+	myTeamID = GetMyTeamID()
 	
-	mainList = glCreateList(DrawMain)
+	Reset()
 	
 	widgetHandler:AddAction("s44_supplyradius_showalways", ToggleShowAlways, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showrollover", ToggleShowRollover, nil, "t")
@@ -633,4 +644,12 @@ function widget:Shutdown()
 	widgetHandler:RemoveAction("s44_supplyradius_showselect")
 	widgetHandler:RemoveAction("s44_supplyradius_viewdistance")
 	widgetHandler:RemoveAction("s44_supplyradius_minimapsize")
+end
+
+function widget:Update(dt)
+	local newMyTeamID = GetMyTeamID()
+	if newMyTeamID ~= myTeamID then
+		myTeamID = newMyTeamID
+		Reset()
+	end
 end
