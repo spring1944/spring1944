@@ -648,8 +648,10 @@ end
 
 function widget:Update(dt)
 	local newMyTeamID = GetMyTeamID()
-	if newMyTeamID ~= myTeamID then
+	if not AreTeamsAllied(newMyTeamID, myTeamID) then
 		myTeamID = newMyTeamID
 		Reset()
+	else
+		myTeamID = newMyTeamID
 	end
 end
