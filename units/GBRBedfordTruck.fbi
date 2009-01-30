@@ -10,9 +10,9 @@
 	tedclass=TANK;
 
 	name=Bedford QL;
-	description=Lorry Truck;
+	description=General Transport Truck;
 	maxdamage=500;
-	buildcostmetal=420;
+	buildcostmetal=210;
 	buildcostenergy=0;
 	buildtime=140;
 	footprintx=3;

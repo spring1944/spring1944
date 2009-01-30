@@ -49,7 +49,7 @@
 	releaseheld=1;
 	unloadspread=2;
 	transportUnloadMethod=2;
-	weapon1=smallsupply;
+
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 

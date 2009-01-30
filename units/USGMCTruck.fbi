@@ -10,13 +10,13 @@
 
 	name=GMC 2.5t Truck;
 	description=General Transport Truck;
-	maxdamage=550;
-	buildcostmetal=474;
+	maxdamage=500;
+	buildcostmetal=210;
 	buildcostenergy=0;
-	buildtime=158;
+	buildtime=40;
 	footprintx=3;
 	footprintz=3;
-	mass=750;
+	mass=1000;
 
 	hidedamage=1;
 	shownanoframe=0;
@@ -29,8 +29,8 @@
 
 	canmove=1;
 	movementclass=TANK_Truck;
-	maxvelocity=4.3;
-	acceleration=0.35;
+	maxvelocity=4.5;//4.8
+	acceleration=0.3;
 	brakerate=0.45;
 	turnrate=440;
 	maxslope=10;
