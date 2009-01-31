@@ -1,4 +1,4 @@
-local versionNumber = "v1.1"
+local versionNumber = "v1.2"
 
 function widget:GetInfo()
 	return {
@@ -17,6 +17,8 @@ end
 ------------------------------------------------
 local alpha = 1
 local color = {1, 0.5, 0, alpha} --if no color specified, picks a hashed color for each unit
+local deployDivs = 64
+local sandbagDivs = 32
 local startDistDeployable = 24
 local startDistSandbagable = 16
 local lineWidth = 1
@@ -26,114 +28,130 @@ local lineWidth = 1
 ------------------------------------------------
 --format: unitDefID = range
 local deployables = {} --90 degree
+local deployed = {}
+
 local sandbagables = {} --120 degree
+local sandbagged = {}
+
+local deployList, sandbagList, deployedList, sandbaggedList
+
 ------------------------------------------------
 --speedups
 ------------------------------------------------
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
-local GetUnitDirection = Spring.GetUnitDirection
+local GetUnitHeading = Spring.GetUnitHeading
 local GetUnitPosition = Spring.GetUnitPosition
-local GetUnitRadius = Spring.GetUnitRadius
 
 local glLineWidth = gl.LineWidth
 local glColor = gl.Color
-local glShape = gl.Shape
-local glTranslate = gl.Translate
-local glPopMatrix = gl.PopMatrix
-local glPushMatrix = gl.PushMatrix
 
-local floor = math.floor
-local sqrt = math.sqrt
+local glPushMatrix = gl.PushMatrix
+local glPopMatrix = gl.PopMatrix
+local glTranslate = gl.Translate
+local glRotate = gl.Rotate
+local glScale = gl.Scale
+
+local glBeginEnd = gl.BeginEnd
+local glVertex = gl.Vertex
+
+local glCreateList = gl.CreateList
+local glCallList = gl.CallList
+local glDeleteList = gl.DeleteList
+
+local sin, cos = math.sin, math.cos
+local deg, rad = math.deg, math.rad
 
 local strFind = string.find
 local strSub = string.sub
 
-local GL_LINES = GL.LINES
+local GL_LINE_STRIP = GL.LINE_STRIP
+local GL_LINE_LOOP = GL.LINE_LOOP
 
-local SQRT_HALF = sqrt(0.5)
-local SQRT_THREE_QUARTERS = sqrt(0.75)
+local PI = math.pi
 
 ------------------------------------------------
 --helper functions
 ------------------------------------------------
-local function HashColor(x)
-	local hue = x * SQRT_HALF * 42
-	hue = hue - floor(hue)
-	hue = hue * 6
-	
-	local huePart = hue - floor(hue)
-	
-	if (hue < 1) then
-		glColor(1, huePart, 0, alpha)
-	elseif (hue < 2) then
-		glColor(1, 0, huePart, alpha)
-	elseif (hue < 3) then
-		glColor(huePart, 1, 0, alpha)
-	elseif (hue < 4) then
-		glColor(0, 1, huePart, alpha)
-	elseif (hue < 5) then
-		glColor(huePart, 0, 1, alpha)
-	else
-		glColor(0, huePart, 1, alpha)
+
+local function glRotateToUnitHeading(unitID)
+	local rotation = GetUnitHeading(unitID) * 360 / 65536
+	glRotate(rotation, 0, 1, 0)
+end
+
+local function SectorVertices(maxAngleDif, divs)
+	local divAngle = maxAngleDif / divs
+	glVertex(0, 0, 0)
+	local angle = -0.5 * maxAngleDif
+	for i=0,divs do
+		glVertex(sin(angle), 0, cos(angle))
+		angle = angle + divAngle
 	end
+end
+
+local function AngleVertices(maxAngleDif)
+	local halfAngle = 0.5 * maxAngleDif
+	glVertex(-sin(halfAngle), 0, cos(halfAngle))
+	glVertex(0, 0, 0)
+	glVertex(sin(halfAngle), 0, cos(halfAngle))
+end
+
+local function DrawDeploy()
+	glBeginEnd(GL_LINE_LOOP, SectorVertices, rad(90), deployDivs)
+end
+
+local function DrawSandbag()
+	glBeginEnd(GL_LINE_LOOP, SectorVertices, rad(120), sandbagDivs)
+end
+
+local function DrawDeployed()
+	glBeginEnd(GL_LINE_STRIP, AngleVertices, rad(90))
+end
+
+local function DrawSandbagged()
+	glBeginEnd(GL_LINE_STRIP, AngleVertices, rad(120))
 end
 
 local function DrawDeployableFieldOfFire(unitID, range)
 	local x, y, z = GetUnitPosition(unitID)
-	local dx, _, dz = GetUnitDirection(unitID)
-	
-	if (dx == 0 and dz == 0) then return end
-	
-	--normalize and multiply by sqrt(0.5)
-	local dg = sqrt(dx * dx + dz * dz)
-	dx, dz = SQRT_HALF * dx / dg, SQRT_HALF * dz / dg
-	
-	local sum = dx + dz
-	local diff = dx - dz
-	
-	local vertices = {
-		{v = {startDistDeployable * diff, 0, startDistDeployable * sum}},
-		{v = {range * diff, 0, range * sum}},
-		{v = {startDistDeployable * sum, 0, startDistDeployable * -diff}},
-		{v = {range * sum, 0, range * -diff}},
-	}
 	
 	glPushMatrix()
-		if (not color) then
-			HashColor(unitID)
-		end
 		glTranslate(x, y, z)
-		glShape(GL_LINES, vertices)
+		glRotateToUnitHeading(unitID)
+		glScale(range, 1, range)
+		glCallList(deployList)
 	glPopMatrix()
 end
 
 local function DrawSandbagableFieldOfFire(unitID, range)
 	local x, y, z = GetUnitPosition(unitID)
-	local dx, _, dz = GetUnitDirection(unitID)
-	
-	if (dx == 0 and dz == 0) then return end
-	
-	local dg = sqrt(dx * dx + dz * dz)
-	dx, dz = dx / dg, dz / dg
-	local half_dx, half_dz = 0.5 * dx, 0.5 * dz
-	local root_dx, root_dz = SQRT_THREE_QUARTERS * dx, SQRT_THREE_QUARTERS * dz
-	
-	local sum = dx + dz
-	local diff = dx - dz
-	
-	local vertices = {
-		{v = {startDistSandbagable * (half_dx - root_dz), 0, startDistSandbagable * (half_dz + root_dx)}},
-		{v = {range *                (half_dx - root_dz), 0, range *                (half_dz + root_dx)}},
-		{v = {startDistSandbagable * (half_dx + root_dz), 0, startDistSandbagable * (half_dz - root_dx)}},
-		{v = {range *                (half_dx + root_dz), 0, range *                (half_dz - root_dx)}},
-	}
 	
 	glPushMatrix()
-		if (not color) then
-			HashColor(unitID)
-		end
 		glTranslate(x, y, z)
-		glShape(GL_LINES, vertices)
+		glRotateToUnitHeading(unitID)
+		glScale(range, 1, range)
+		glCallList(sandbagList)
+	glPopMatrix()
+end
+
+local function DrawDeployedFieldOfFire(unitID, range)
+	local x, y, z = GetUnitPosition(unitID)
+	
+	glPushMatrix()
+		glTranslate(x, y, z)
+		glRotateToUnitHeading(unitID)
+		glScale(range, 1, range)
+		glCallList(deployedList)
+	glPopMatrix()
+end
+
+local function DrawSandbaggedFieldOfFire(unitID, range)
+	local x, y, z = GetUnitPosition(unitID)
+	
+	glPushMatrix()
+		glTranslate(x, y, z)
+		glRotateToUnitHeading(unitID)
+		glScale(range, 1, range)
+		glCallList(sandbaggedList)
 	glPopMatrix()
 end
 
@@ -146,16 +164,12 @@ function widget:Initialize()
 		local stationaryName = unitDef.name
 		if strSub(stationaryName, -11) == "_stationary" then
 			local mobileName = strSub(stationaryName, 1, -12)
-			
-			--debug
-			--Spring.Echo(mobileName)
-			
 			local mobileDef = UnitDefNames[mobileName]
 			if (mobileDef) then
 				local mobileDefID = mobileDef.id
 				if (mobileDefID) then
 					deployables[mobileDefID] = unitDef.maxWeaponRange
-					deployables[unitDefID] = unitDef.maxWeaponRange
+					deployed[unitDefID] = unitDef.maxWeaponRange
 					inUse = true
 				end
 			end
@@ -169,7 +183,7 @@ function widget:Initialize()
 					local truckDefID = truckDef.id
 					if (truckDefID) then
 						deployables[truckDefID] = unitDef.maxWeaponRange
-						deployables[unitDefID] = unitDef.maxWeaponRange
+						deployed[unitDefID] = unitDef.maxWeaponRange
 						inUse = true
 					end
 				end
@@ -182,7 +196,7 @@ function widget:Initialize()
 				local mobileDefID = mobileDef.id
 				if mobileDefID then
 					sandbagables[mobileDefID] = unitDef.maxWeaponRange
-					sandbagables[unitDefID] = unitDef.maxWeaponRange
+					sandbagged[unitDefID] = unitDef.maxWeaponRange
 					inUse = true
 				end
 			end
@@ -193,19 +207,29 @@ function widget:Initialize()
 	if (not inUse) then
 		widgetHandler:RemoveWidget()
 	end
+	
+	deployList = glCreateList(DrawDeploy)
+	sandbagList = glCreateList(DrawSandbag)
+	deployedList = glCreateList(DrawDeployed)
+	sandbaggedList = glCreateList(DrawSandbagged)
+end
+
+function widget:Shutdown()
+	glDeleteList(deployList)
+	glDeleteList(sandbagList)
+	glDeleteList(deployedList)
+	glDeleteList(sandbaggedList)
 end
 
 function widget:DrawWorld()
-	if (color) then
-		glColor(color)
-	end
+	glColor(color)
 	glLineWidth(lineWidth)
 	
 	local selectedUnitsSorted = GetSelectedUnitsSorted()
 	
 	for unitDefID, range in pairs(deployables) do
 		local units = selectedUnitsSorted[unitDefID]
-		if (units) then
+		if units then
 			for i=1,#units do
 				local unitID = units[i]
 				DrawDeployableFieldOfFire(unitID, range)
@@ -213,12 +237,32 @@ function widget:DrawWorld()
 		end
 	end
 	
+	for unitDefID, range in pairs(deployed) do
+		local units = selectedUnitsSorted[unitDefID]
+		if units then
+			for i=1,#units do
+				local unitID = units[i]
+				DrawDeployedFieldOfFire(unitID, range)
+			end
+		end
+	end
+	
 	for unitDefID, range in pairs(sandbagables) do
 		local units = selectedUnitsSorted[unitDefID]
-		if (units) then
+		if units then
 			for i=1,#units do
 				local unitID = units[i]
 				DrawSandbagableFieldOfFire(unitID, range)
+			end
+		end
+	end
+	
+	for unitDefID, range in pairs(sandbagged) do
+		local units = selectedUnitsSorted[unitDefID]
+		if units then
+			for i=1,#units do
+				local unitID = units[i]
+				DrawSandbaggedFieldOfFire(unitID, range)
 			end
 		end
 	end
