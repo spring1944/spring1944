@@ -9,8 +9,8 @@
 	tedclass=TURRET;
 	yardmap=o;
 
-	name=Light Defensive Position;
-	description=- Directional Infantry area denial;
+	name=Deployed Vickers Heavy Machinegun;
+	description=Dug-in Heavy Infantry Fire Support;
 	side=GBR;
 	maxdamage=1875;
 	buildcostmetal=645;

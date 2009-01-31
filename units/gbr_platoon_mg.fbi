@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=1 x Vickers Heavy Machinegun, 2 x Bren Light Machinegun;
+	description=1 x Vickers, 2 x Bren Machineguns: Infantry Fire Support Squad;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

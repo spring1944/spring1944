@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=P.I.A.T. Tank Hunter;
-	description=Heavy Anti-Tank Infantry;
+	name=PIAT;
+	description=Anti-Tank Infantry;
 	side=GBR;
 	maxdamage=140;
 	damagemodifier=0.375;

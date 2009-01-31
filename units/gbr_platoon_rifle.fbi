@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Rifle Platoon;
-	description=10 x Enfield Rifle, 2 x Sten SMG;
+	name=Enfield Rifle Platoon;
+	description=10 x Enfield Rifle, 2 x Sten SMG: Long-range Combat Platoon;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

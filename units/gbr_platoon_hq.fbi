@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Rifle Squad;
-	description=2 x Enfield Rifle, 2 x Sten SMG, 1 x Bren LMG, 1 x Scout;
+	name=HQ Combat Squad;
+	description=2 x Enfield Rifle, 2 x Sten SMG, 1 x Bren LMG, 1 x Scout: Small flexible combat secton;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Commando Team;
-	description=6 x Commando;
+	name=Commando Squad;
+	description=6 x Commando: Special-Ops Infantry;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

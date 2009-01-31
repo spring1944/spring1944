@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Commando Team;
-	description=3 x Commando Leader;
+	name=Commando Pathfinder Squad;
+	description=3 x Commando Leaders: Can call in Commando Airdrop;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

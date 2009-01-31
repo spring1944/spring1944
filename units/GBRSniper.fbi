@@ -8,7 +8,7 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=British Marksman;
+	name=Marksman;
 	description=Sniper;
 	side=GBR;
 	maxdamage=140;

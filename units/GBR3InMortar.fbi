@@ -8,8 +8,8 @@
 	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
 	tedclass=KBOT;
 
-	name=3 Inch Mortar;
-	description=Infantry Level Heavy Fire Support;
+	name=3" Mortar;
+	description=Heavy Infantry Fire Support;
 	side=GBR;
 	maxdamage=280;
 	damagemodifier=0.375;

@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Sniper Team;
-	description=1 x Enfield Sniper, 1 x Scout;
+	description=1 x Enfield Sniper, 1 x Scout: Long-range fire support;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

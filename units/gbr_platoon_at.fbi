@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Anti-Tank Squad;
-	description= 3 x PIAT;
+	name=PIAT Anti-Tank Squad;
+	description= 3 x PIAT: Anti-Tank Infantry;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

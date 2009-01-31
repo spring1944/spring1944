@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Mortar Team;
-	description=3 x 3-inch Mortar;
+	name=3-inch Mortar Team;
+	description=3 x Mortar: Heavy Infantry Fire Support;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

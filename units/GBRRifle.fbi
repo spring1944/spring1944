@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=Enfield Rifle Trooper;
-	description=General Use Infantry;
+	name=Enfield Rifleman;
+	description=Long-range Rifle Infantry;
 	side=GBR;
 	maxdamage=140;
 	damagemodifier=0.375;

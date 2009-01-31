@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=Bren Gunner;
-	description=Medium Machinegun;
+	name=Bren Light Machinegun;
+	description=Light Infantry Fire Support;
 	side=GBR;
 	maxdamage=140;
 	damagemodifier=0.375;
