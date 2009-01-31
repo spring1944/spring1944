@@ -1,6 +1,6 @@
 [GERJagdpanzerIV_Damaged]
 {
-	object=GERJagdpanzerIV_Damaged.S3O;
+	object=GERJagdpanzerIV.S3O;
 	description=Abandoned TD;
 	featuredead=GERJagdpanzerIV_Destroyed;
 	energy=75;

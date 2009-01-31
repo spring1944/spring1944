@@ -1,6 +1,6 @@
 [usm4a3105sherman_damaged]
 {
-	object=USM4A3105Sherman_Damaged.S3O;
+	object=USM4A3105_Damaged.S3O;
 	featuredead=USM4A3105Sherman_Destroyed;
 	description=Abandoned Support Tank;
 	energy=1000;
@@ -11,7 +11,7 @@
 }
 [usm4a3105sherman_destroyed]
 {
-	object=USM4A3105Sherman_Destroyed.S3O;
+	object=USM4A3105_Destroyed.S3O;
 	featuredead=Debris_Large;
 	description=Destroyed Support Tank;
 	energy=500;

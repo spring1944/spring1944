@@ -1,6 +1,6 @@
 [kubelwagen_destroyed]
 {
-	object=Kubelwagen_destroyed.S3O;
+	object=Debris_Small.S3O;
 	description=Destroyed Car;
 	featuredead=Debris_Small;
 	energy=75;
