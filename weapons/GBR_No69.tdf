@@ -22,7 +22,7 @@
 	impulsefactor=0.00001;
 
 	dyndamageexp=1;
-	dyndamagerange=300;
+	dyndamagerange=200;
 
 	//groundbounce=1;
 	//bouncerebound=.5;
@@ -33,11 +33,11 @@
 	{
 		default=2500;
 		mines=0;
-		infantry=560;
-		guns=400;
+		infantry=800;
+		guns=750;
 		flag=0;
 		tanks=1340;
-		armouredvehicles=1700;
-		unarmouredvehicles=900;
+		armouredvehicles=2500;
+		unarmouredvehicles=2700;
 	}
 }

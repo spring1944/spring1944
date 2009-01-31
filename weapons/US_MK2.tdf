@@ -24,17 +24,17 @@
 	impulsefactor=0.00001;
 
 	dyndamageexp=1;
-	dyndamagerange=300;
+	dyndamagerange=200;
 
 	[damage]
 	{
 		default=2500;
 		mines=0;
-		infantry=1200;
-		guns=1000;
+		infantry=800;
+		guns=750;
 		flag=0;
 		tanks=1340;
-		armouredvehicles=1700;
-		unarmouredvehicles=900;
+		armouredvehicles=2500;
+		unarmouredvehicles=2700;
 	}
 }

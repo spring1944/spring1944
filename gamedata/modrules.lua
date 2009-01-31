@@ -10,8 +10,8 @@ local modRules = {
 	},
 	sensors = {
 		los = {
-			losMipLevel				=	2,
-			airMipLevel				=	4,
+			losMipLevel				=	3,
+			airMipLevel				=	5,
 		},
 	},
 	nanospray = {

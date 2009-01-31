@@ -23,17 +23,17 @@
 	explosiongenerator=custom:HE_Small;
 
 	dyndamageexp=1;
-	dyndamagerange=320;
+	dyndamagerange=220;
 
 	[damage]
 	{
 		default=2500;
 		infantry=1200;
-		guns=550;
+		guns=1050;
 		mines=0;
 		flag=0;
-		tanks=1000;
-		armouredvehicles=975;
-		unarmouredvehicles=1050;
+		tanks=1400;
+		armouredvehicles=2875;
+		unarmouredvehicles=2950;
 	}
 }

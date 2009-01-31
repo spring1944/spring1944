@@ -14,16 +14,18 @@
 	description=- Increases ammunition storage;
 	side=GER;
 	maxdamage=2500;
-	buildcostmetal=900;
+	buildcostmetal=2025;
 	buildcostenergy=0;
-	buildtime=600;
+	buildtime=1350;
 	footprintx=4;
 	footprintz=6;
 
 	shownanoframe=0;
 	smoothanim=0;
+
+
 	energymake=0;
-	energystorage=250;
+	energystorage=625;
 
 	sightdistance=1;
 	stealth=1;

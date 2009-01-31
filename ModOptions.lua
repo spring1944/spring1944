@@ -29,6 +29,16 @@ local options = {
 		type = 'bool', 
 		def = true, 
 	},	
+	{
+    key    = 'maxammo_mult',
+    name   = 'Vehicle maxammmo multiplier',
+    desc   = 'Applies a multiplier to all the vehicle maxammo values',
+    type   = 'number',
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+    step   = 0.1,
+  },
 
   {
     key    = 'command_mult',
@@ -38,20 +48,30 @@ local options = {
     def    = '1',
     items  = 
     {
-      { 
+	  {
         key  = '0',
+        name = 'Very Low',
+        desc = 'Very limited resources. Nothing but a minor skirmish, you must make the most of what resources you have.',
+      },	  
+      { 
+        key  = '1',
         name = 'Low',
         desc = 'Limited Command Points. This battle is insignificant, and you will be struggling to maintain infantry battalions',
       },
       {
-        key  = '1',
+        key  = '2',
         name = 'Normal',
         desc = 'Standard Command Points. The supreme commanders are keeping an eye on the outcome of this engagement. Expect medium numbers of infantry with considerable vehicle support, with armor and gun batteries appearing later.',
       },
       {
-        key  = '2',
+        key  = '3',
         name = 'High',
         desc = 'Abundant Command Points. The command has deemed this battle vital. You must win at all costs, and your available resources reflect that urgency.',
+      },
+	  {
+        key  = '4',
+        name = 'Very High',
+        desc = 'Excessive Command Points. High command has an emotional attachment to your skirmish, and they want it won.',
       },
     },
   },

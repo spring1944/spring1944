@@ -13,17 +13,18 @@
 	name=Supply Storage;
 	description=- Increases ammunition storage;
 	maxdamage=2500;
-	buildcostmetal=900;
+	buildcostmetal=2025;
 	buildcostenergy=0;
-	buildtime=600;
+	buildtime=1350;
 	footprintx=4;
 	footprintz=6;
 
-	hidedamage=1;
 	shownanoframe=0;
 	smoothanim=0;
 
-	energystorage=250;
+
+	energymake=0;
+	energystorage=625;
 
 	sightdistance=1;
 	stealth=1;

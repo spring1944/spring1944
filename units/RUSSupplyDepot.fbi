@@ -25,7 +25,7 @@
 	smoothanim=0;
 
 	energymake=0;
-	energystorage=0;
+	energystorage=500;
 
 	sightdistance=1;
 	stealth=1;

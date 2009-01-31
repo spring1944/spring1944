@@ -47,6 +47,16 @@ end
 		end
 	end
 	
+	if (modOptions.maxammo_mult) then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.customparams) then
+				if (ud.customparams.maxammo) and (ud.weapons) then
+				ud.customparams.maxammo = (modOptions.maxammo_mult * ud.customparams.maxammo)
+				end
+			end
+		end
+	end
+	
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then
@@ -85,14 +95,20 @@ end
 	if (modOptions.command_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.extractsmetal) then
-				if (modOptions.command_mult == '0') then --Low Command
+				if (modOptions.command_mult == '0') then --Very Low Command
+				ud.extractsmetal = (0.25 * ud.extractsmetal)
+				end
+				if (modOptions.command_mult == '1') then --Low Command
 				ud.extractsmetal = (0.5 * ud.extractsmetal)
 				end
-				if (modOptions.command_mult == '1') then --Normal Command
+				if (modOptions.command_mult == '2') then --Normal Command
 				ud.extractsmetal = (1 * ud.extractsmetal)
 				end
-				if (modOptions.command_mult == '2') then --High Command
+				if (modOptions.command_mult == '3') then --High Command
 				ud.extractsmetal = (1.5 * ud.extractsmetal)
+				end
+				if (modOptions.command_mult == '4') then --Very High Command
+				ud.extractsmetal = (2.5 * ud.extractsmetal)
 				end
 			end
 		end

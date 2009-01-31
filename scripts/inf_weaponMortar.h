@@ -1,6 +1,6 @@
 AimFromWeapon1(piecenum)
 {
-	piecenum = torso;
+	piecenum = flare;
 }
 
 QueryWeapon1(piecenum)

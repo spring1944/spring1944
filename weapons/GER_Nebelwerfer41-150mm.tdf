@@ -37,8 +37,8 @@
 	cratermult=.5;
 	craterboost=0;
 
-	cratermult=1;
-  	craterboost=1;
+	cratermult=0;
+  	craterboost=0;
 
 	impulsefactor=0;
 	impulseboost=0;
