@@ -24,7 +24,7 @@ function widget:DrawWorld()
 			
 			for key1, value1 in pairs(pieces) do
 				if(string.sub(value1,1,9) == 'propeller') then
-					if(Spring.GetCOBUnitVar(value, 0) == 1) then
+--					if(Spring.GetCOBUnitVar(value, 0) == 1) then
 						gl.DepthTest(true)
 					
 						gl.PushMatrix()
@@ -49,7 +49,7 @@ function widget:DrawWorld()
 							gl.Vertex(size,-size,0)
   							end)
   						gl.PopMatrix()
-					end
+--					end
 				end
 			end
 				
