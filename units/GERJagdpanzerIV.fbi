@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Jagdpanzer IV/70(V) ;
-	description=Tank Destroyer;
+	description=Turretless Tank Destroyer;
 	side=GER;
 
 	maxdamage=8790;

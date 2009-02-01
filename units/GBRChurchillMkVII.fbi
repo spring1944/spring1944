@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Churchill Mk VII;
-	description=Heavily-Armoured Support Tank;
+	description=Heavily Armoured Support Tank;
 	side=GBR;
 
 	maxdamage=12135;

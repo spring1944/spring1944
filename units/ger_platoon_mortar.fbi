@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Mortar Team;
-	description=3 x GrW 34 Mortar;
+	name=GrW 34 Mortar Team;
+	description=3 x GrW 34 Mortar: Heavy Infantry Fire Support;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

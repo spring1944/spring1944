@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Pzkpfw V Panther;
-	description=Medium-Heavy Tank;
+	description=Advanced Heavy Combat Tank;
 	side=GER;
 
 	maxdamage=9395;

@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Panzerjager Marder;
-	description=Cheap Tank Destroyer;
+	description=Cheap Turretless Tank Destroyer;
 	side=GER;
 
 	maxdamage=1626;

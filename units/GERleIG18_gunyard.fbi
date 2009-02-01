@@ -10,7 +10,7 @@
 	tedclass=KBOT;
 
 	name=7.5cm leIG 18;
-	description=Infantry Support Gun;
+	description=Infantry Support Cannon;
 	side=GER;
 	maxdamage=300;
 	idleautoheal=2;

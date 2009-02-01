@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
 	tedclass=CONSTR;
 
-	name=PzrAbt Pionierpanzerwagen;
-	description=Armoured Battalion Engineer Vehicle;
+	name=Sd.Kfz. 9;
+	description=Construction Vehicle;
 	side=GER;
 	maxdamage=1000;
 	buildcostmetal=2700;

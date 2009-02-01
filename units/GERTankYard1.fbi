@@ -8,7 +8,7 @@
 	tedclass=PLANT;
 	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
-	name=Tier 1 Tank Depot;
+	name=Tier 2 Tank Depot;
 	side=GER;
 	maxdamage=8000;
 	idleautoheal=3;

@@ -10,8 +10,8 @@
 	tedclass=PLANT;
 	yardmap=o;
 
-	name=Supply Depot;
-	description=- Major Ammunition Supply Dump;
+	name=Large Supply Depot;
+	description=Provides supplies to an enormous area;
 	side=GER;
 	maxdamage=3000;
 	buildcostmetal=3600;

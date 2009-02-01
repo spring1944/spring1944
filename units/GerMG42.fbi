@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=MG42 Infantrie;
-	description=Medium Machinegun;
+	name=MG42 Machinegun;
+	description=Medium Infantry Fire Support;
 	side=GER;
 	maxdamage=110;
 	damagemodifier=0.375;

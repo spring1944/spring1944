@@ -10,7 +10,7 @@
 	tedclass=TANK;
 
 	name=Bedford QL;
-	description=LightTransport Truck;
+	description=Light Transport Truck;
 	maxdamage=500;
 	buildcostmetal=210;
 	buildcostenergy=0;

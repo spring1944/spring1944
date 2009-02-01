@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=3 x MG42 Machinegun;
+	description=3 x MG42 Machinegun: Infantry Fire Support Squad;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

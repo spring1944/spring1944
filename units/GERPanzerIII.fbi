@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Pzkpfw III Ausf G-L;
-	description=Medium Tank;
+	description=Light Combat Tank;
 	side=GER;
 
 	maxdamage=5320;

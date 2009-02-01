@@ -6,8 +6,8 @@
 	category=NOTFLAG NOTAIR;
 	icontype=mines;
 	
-	name=Rifle Platoon;
-	description=10 x Kar 98K Rifle, 2 x MP40 SMG;
+	name=Kar 98K Rifle Platoon;
+	description=10 x Kar 98K Rifle, 2 x MP40 SMG: Long-range Combat Platoon;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

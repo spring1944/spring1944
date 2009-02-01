@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Pzkpfw IV Ausf G-J;
-	description=Medium Tank;
+	description=Medium Combat Tank;
 	side=GER;
 
 	maxdamage=5504;

@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Pzkpfw VI E Tiger;
-	description=Heavy Tank;
+	description=Heavy Combat Tank;
 	side=GER;
 
 	maxdamage=9456;

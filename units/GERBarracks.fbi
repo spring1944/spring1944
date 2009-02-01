@@ -9,8 +9,8 @@
 	tedclass=PLANT;
 	yardmap=ccccc ccccc ccccc ccccc occco ccccc ccccc;
 
-	name=Heer Divisionen Kaserne;
-	description=Divisional Barracks;
+	name=Wehrmacht Barracks;
+	description=;
 	maxdamage=5000;
 	buildcostmetal=2520;
 	buildcostenergy=0;

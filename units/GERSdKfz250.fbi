@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG TANK  INFTARG  LIGHTVEH;
 	tedclass=TANK;
 
-	name=Sd.Kfz. 250/9 SPW;
-	description=Light Infantry Support;
+	name=Sd.Kfz. 250/9;
+	description=Light Infantry Support Halftrack;
 	side=GER;
 	maxdamage=1000;
 	buildcostmetal=1240;

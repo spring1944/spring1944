@@ -10,7 +10,7 @@
 	tedclass=TANK;
 
 	name=Towed 15 cm Nebelwerfer 41;
-	description=Rocket Artillery;
+	description=- Stationary Rocket Artillery;
 	maxdamage=500;
 	buildcostmetal=3430;
 	buildcostenergy=0;

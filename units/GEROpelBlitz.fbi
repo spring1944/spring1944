@@ -9,8 +9,8 @@
 	category=NFLAGNAIR TPORT LIGHTVEH INFTARG NFLAG NWEAPON;
 	tedclass=TANK;
 
-	name=Opel Blitz Zugkraftwagen;
-	description=General Transport Truck;
+	name=Opel Blitz;
+	description=Light Transport Truck;
 	maxdamage=500;
 	buildcostmetal=210;
 	buildcostenergy=0;

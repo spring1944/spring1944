@@ -9,7 +9,7 @@
 	tedclass=KBOT;
 
 	name=Panzerfaust 60 Infantrie;
-	description=Light Anti-Tank Infantry;
+	description=Anti-Tank Infantry;
 	side=GER;
 	maxdamage=110;
 	damagemodifier=0.375;

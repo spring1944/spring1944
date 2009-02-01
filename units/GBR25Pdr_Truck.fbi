@@ -9,7 +9,7 @@
 	category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
 	tedclass=TANK;
 
-	name=Towed 25 Pounder;
+	name=Towed Q.F. 25 Pounder;
 	description=Light Howitzer;
 	maxdamage=600;
 	buildcostmetal=2450;

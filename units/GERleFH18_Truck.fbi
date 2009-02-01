@@ -9,7 +9,7 @@
 	category=NFLAGNAIR LIGHTVEH INFTARG NFLAG NWEAPON;
 	tedclass=TANK;
 
-	name=Towed 10.5cm leFH 18/40;
+	name=Towed 10.5cm leFH 18;
 	description=Light Howitzer;
 	maxdamage=500;
 	buildcostmetal=2450;

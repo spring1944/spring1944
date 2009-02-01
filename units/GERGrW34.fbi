@@ -8,8 +8,8 @@
 	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
 	tedclass=KBOT;
 
-	name=8cm Granatwerfer 34;
-	description=Infantry Level Heavy Fire Support;
+	name=8cm GrW 34 Mortar;
+	description=Heavy Infantry Fire Support;
 	side=GER;
 	maxdamage=220;
 	damagemodifier=0.375;

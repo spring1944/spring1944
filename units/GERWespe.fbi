@@ -8,7 +8,7 @@
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;
 
-	name=leFH 18 auf Wespe;
+	name=Wespe;
 	description=Self-Propelled Howitzer;
 	side=US;
 

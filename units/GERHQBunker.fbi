@@ -10,8 +10,8 @@
 	tedclass=PLANT;
 	yardmap=cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc cccccccccc;
 
-	name=Wehrmacht Bunker-Kommand;
-	description=Wehrmacht Field Headquarters;
+	name=Wehrmacht HQ Bunker;
+	description=Command Structure;
 	maxdamage=32000;
 	buildcostmetal=40500;
 	buildcostenergy=0;

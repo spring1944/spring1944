@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
 	tedclass=TANK;
 
-	name=Sd.Kfz. 251/1 SPW;
-	description=Medium Personnel Carrier;
+	name=Sd.Kfz. 251/1;
+	description=Infantry Support Transport;
 	side=GER;
 	maxdamage=1200;
 	buildcostmetal=1050;

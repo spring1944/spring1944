@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Large Supply Depot;
-	description=Proviced supplies to an enormous area;
+	description=Provides supplies to an enormous area;
 	side=GBR;
 	maxdamage=3000;
 	buildcostmetal=3600;

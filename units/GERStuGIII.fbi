@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=StuG III G;
-	description=Assault Gun;
+	description=Turretless Combat Tank;
 	side=GER;
 
 	maxdamage=6044;

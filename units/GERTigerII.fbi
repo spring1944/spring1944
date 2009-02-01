@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Pzkpfw VI B Königstiger;
-	description=Super Heavy Tank;
+	description=Super HeavyCombat Tank;
 	side=GER;
 
 	maxdamage=14910;

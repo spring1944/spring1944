@@ -8,8 +8,8 @@
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
-	name=Kar 98K Infantrie;
-	description=General Use Infantry;
+	name=Kar 98K Rifleman;
+	description=Long-range Rifle Infantry;
 	side=GER;
 	maxdamage=110;
 	damagemodifier=0.375;

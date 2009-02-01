@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Sd.Kfz. 10/5 2cm FlaK 38;
-	description=Light Infantry Support;
+	description=Self-Propelled Light Anti-Aircraft;
 	side=GER;
 	maxdamage=1000;
 	buildcostmetal=740;

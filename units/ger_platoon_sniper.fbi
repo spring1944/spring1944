@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Sniper Team;
-	description=1 x Kar 98K Sniper, 1 x Scout;
+	description=1 x Kar 98K Sniper, 1 x Scout: Long-range fire support;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

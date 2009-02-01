@@ -10,7 +10,7 @@
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Logistikvorrat;
+	name=Small Supply Dump;
 	description=Provides supplies to a small area;
 	side=GER;
 	maxdamage=400;
