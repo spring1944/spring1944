@@ -105,7 +105,6 @@ for filename, archive in pairs(tdfFiles) do
   end
 end
 
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -148,7 +147,7 @@ for filename, archive in pairs(luaFiles) do
   else
     for fdName, fd in pairs(fds) do
       if (isstring(fdName) and istable(fd)) then
-        ProcessFeature(name, fd, archive)
+        ProcessFeature(fdName, fd, archive)
       end
     end
   end  
