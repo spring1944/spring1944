@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=A27M Cromwell Mk VI;
-	description=Close Support Medium Tank;
+	description=Heavily-Armed Support Tank;
 	side=GBR;
 
 	maxdamage=6027;

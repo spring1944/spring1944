@@ -10,7 +10,7 @@
 	side=GBR;
 
 	name=Kangaroo;
-	description=Heavily Armored Personnel Carrier;
+	description=Heavily Armored Transport;
 
 	maxdamage=5903;
 	flankingbonusdir=0 0 1;

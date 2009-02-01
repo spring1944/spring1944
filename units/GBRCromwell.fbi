@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=A27M Cromwell Mk IV;
-	description=Fast Medium Tank;
+	description=Medium Support Tank;
 	side=GBR;
 
 	maxdamage=6027;
