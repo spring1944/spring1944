@@ -10,7 +10,7 @@
 	side=GBR;
 
 	name=Daimler;
-	description=Armoured Car/Infantry support;
+	description=Armoured Combat Car;
 	side=GBR;
 
 	maxdamage=1549;

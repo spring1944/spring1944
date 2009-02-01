@@ -8,7 +8,7 @@
 	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
 	tedclass=CONSTR;
 
-	name=AEC Matador Royal Engineer;
+	name=AEC Matador;
 	description=Construction Vehicle;
 	side=GBR;
 	maxdamage=550;

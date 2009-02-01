@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=SP Sexton Mk. II;
-	description=Self-Propelled Howitzer;
+	description=Self-Propelled Light Howitzer;
 	side=US;
 
 	maxdamage=3739;

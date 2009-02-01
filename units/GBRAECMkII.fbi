@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=AEC Armoured Car Mk II;
-	description=Fast Tank Destroyer;
+	description=Light Tank Destroyer;
 	side=GBR;
 	
 	maxdamage=3542;

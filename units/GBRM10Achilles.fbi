@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=17pdr SP. Achilles;
-	description=Tank Destroyer;
+	description=Heavily-Armed Tank Destroyer;
 	side=GBR;
 
 	maxdamage=5708;

@@ -11,7 +11,7 @@
 	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
 	name=British Army HQ;
-	description=Divisional Headquarters;
+	description=Command Structure;
 	maxdamage=8500;
 	buildcostmetal=2050;
 	buildcostenergy=0;

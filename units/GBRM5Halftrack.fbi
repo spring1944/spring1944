@@ -10,7 +10,7 @@
 	side=GBR;
 
 	name=M5 Halftrack;
-	description=Transport;
+	description=Infantry Support Transport;
 	maxdamage=1200;
 	buildcostmetal=920;
 	buildcostenergy=0;

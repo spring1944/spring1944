@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Supply Truck;
-	description= carries Supplies;
+	description=Deploys into sources of supplies;
 	maxdamage=500;
 	buildcostmetal=660;
 	buildcostenergy=0;

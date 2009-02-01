@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=Sherman VC Firefly;
-	description=Upgunned Medium Tank;
+	description=Advanced Medium Combat Tank;
 	side=GBR;
 
 	maxdamage=6887;
