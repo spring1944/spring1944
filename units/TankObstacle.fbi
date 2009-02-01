@@ -10,9 +10,9 @@
 	name=Tank Obstacle;
 	description=Blocks Vehicles;
 	maxdamage=8000;
-	buildcostmetal=23;
+	buildcostmetal=15;
 	buildcostenergy=0;
-	buildtime=15;
+	buildtime=10;
 	footprintx=1;
 	footprintz=1;
 
