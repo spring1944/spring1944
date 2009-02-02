@@ -13,7 +13,7 @@
 	range=1270;
 	reloadtime=2.7;
 	burst=14;
-	burstrate=.103;
+	burstrate=.05;
 	sprayangle=350;
 	areaofeffect=1;
 	weaponvelocity=1500;

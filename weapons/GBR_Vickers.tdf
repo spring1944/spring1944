@@ -13,7 +13,7 @@
 	range=1270;
 	reloadtime=2.7;
 	burst=14;
-	burstrate=.103;
+	burstrate=.05;
 	sprayangle=300;
 	areaofeffect=1;
 	weaponvelocity=1500;
@@ -33,15 +33,8 @@
 
 	rgbcolor=1 0.75 0;
 
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
 	collisionsize=2.5;
+	size=0.000000000001;
 	impactonly=1;
 	[damage]
 	{
