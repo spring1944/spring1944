@@ -60,7 +60,7 @@ static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, r
 Create()
 {
 	// init vars
-	set ACTIVATION to 1;
+	set STEALTH to 1;
 	reloading = FALSE;
 	isDeployed = FALSE;
 	normalSpeed = get MAX_SPEED;
@@ -240,9 +240,9 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	//emit-sfx MEDIUM_Muzzleflash from rocket1;
-	set ACTIVATION to 0;
+	set STEALTH to 0;
 	sleep VISIBLE_PERIOD;
-	set ACTIVATION to 1;
+	set STEALTH to 1;
 	//start-script Reload(); // start reload timer after firing
 	return 0;
 }

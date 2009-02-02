@@ -6,7 +6,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, rocket;
 
 #include "inf_sharedDefs.h"
-
+#define RecoverRate 	2000
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
 
@@ -82,6 +82,7 @@ turn ruparm1 to z-axis <-20> now;\
 Create()
 {
 	// init vars
+	set STEALTH to 1;
 	rocket = 0;
 	set ACTIVATION to TRUE;
 }
@@ -232,9 +233,9 @@ FireWeapon1()
 	get DO_SEISMIC_PING(15);
 	//Now reload...
 	CREW_RELOADING
-	set ACTIVATION to 0;
+	set STEALTH to 0;
 	sleep VISIBLE_PERIOD;
-	set ACTIVATION to 1;
+	set STEALTH to 1;
 }
 
 Shot1(something)

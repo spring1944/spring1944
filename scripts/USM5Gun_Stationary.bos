@@ -6,6 +6,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 static-var bAiming, iFear, iState, PickDeath, lasthit;
 
 #include "inf_sharedDefs.h"
+#define RecoverRate 	2000
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4

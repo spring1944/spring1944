@@ -6,7 +6,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 static-var bAiming, iFear, iState, PickDeath, lasthit;
 
 #include "inf_sharedDefs.h"
-
+#define RecoverRate 	2000
 //how long the unit appears on the map after firing (in ms)
 #define VISIBLE_PERIOD	5000
 
@@ -85,7 +85,7 @@ Create()
 {
 	hide flare;
 	// init vars
-	set ACTIVATION to TRUE;
+	set STEALTH to 1;
 }
 
 TakeCover()
@@ -210,9 +210,9 @@ FireWeapon1()
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
 	CREW_RELOADING
-	set ACTIVATION to 0;
+	set STEALTH to 0;
 	sleep VISIBLE_PERIOD;
-	set ACTIVATION to 1;
+	set STEALTH to 1;
 }
 
 Killed(severity, corpsetype)

@@ -51,7 +51,7 @@
 		lightbuildings=1200;
 		hq=200;
 		sandbags=1000;
-		tanks=200;
+		tanks=120;
 		armouredvehicles=800;
 		unarmouredvehicles=1200;
 	}

@@ -46,6 +46,7 @@
 		infantry=5000;
 		guns=4500;
 		lightbuildings=4200;
+		tanks=3000;
 		bunkers=3000;
 		sandbags=1000;
 		mines=200;

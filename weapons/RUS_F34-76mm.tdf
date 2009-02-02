@@ -48,7 +48,7 @@
 		guns=1200;
 		mines=0;
 		flag=0;
-		tanks=1000;
+		tanks=600;
 		armouredvehicles=2800;
 		unarmouredvehicles=3850;
 	}

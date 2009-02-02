@@ -31,7 +31,7 @@
 	seismicsignature=0;
 	sightdistance=830;	
 	airsightdistance=2500;
-	radardistancejam=75;
+	radardistancejam=0;
 	onoffable=1;
 	stealth=0;
 

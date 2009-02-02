@@ -29,7 +29,7 @@
 	smoothanim=0;
 
 	sightdistance=701;
-	radardistancejam=75;
+	radardistancejam=0;
 	stealth=0;
 	onoffable=1;
 	

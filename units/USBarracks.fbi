@@ -7,7 +7,7 @@
 	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
-	yardmap=cccc cccc cccc cccc cccc cccc;
+	yardmap=oooo occo occo oyyo oyyo oyyo;
 
 	name=US Army Barracks;
 	maxdamage=4250;

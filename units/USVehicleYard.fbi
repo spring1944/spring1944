@@ -7,7 +7,7 @@
 	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
-	yardmap=cccccc cccccc cccccc cccccc cccccc;
+	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 
 	name=U.S. Light Ordnance Depot;
 	description=Constructs Light Ordnance/Vehicles;
@@ -15,8 +15,8 @@
 	buildcostmetal=5482;
 	buildcostenergy=0;
 	buildtime=3655;
-	footprintx=6;
-	footprintz=5;
+	footprintx=7;
+	footprintz=7;
 
 	hidedamage=1;
 	shownanoframe=0;

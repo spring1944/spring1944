@@ -50,7 +50,7 @@
 		guns=2600;
 		mines=0;
 		flag=0;
-		tanks=5400;
+		tanks=1920;
 		armouredvehicles=11050;
 		unarmouredvehicles=14050;
 	}

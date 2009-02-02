@@ -50,7 +50,7 @@
 		infantry=1500;
 		flag=0;
 		guns=1200;
-		tanks=1000;
+		tanks=600;
 		armouredvehicles=4800;
 		unarmouredvehicles=5650;
 	}
