@@ -15,7 +15,7 @@
 	burst=6;
 	burstrate=.086;
 	sprayangle=500;
-	movingaccuracy=2666;
+	movingaccuracy=1170;
 	weaponvelocity=1500;
 	areaofeffect=1;
 	weapontimer=1;
