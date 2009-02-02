@@ -96,7 +96,7 @@ include("LuaRules/colors.h.lua")
 local stopPenalty  = 0.0
 local morphPenalty = 1.0
 local upgradingBuildSpeed = 250
-local XpScale = 0.50
+local XpScale = 1
 
 local XpMorphUnits = {}
 
