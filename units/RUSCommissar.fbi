@@ -14,9 +14,9 @@
 	maxdamage=65;
 	damagemodifier=0.375;
 	idleautoheal=2;
-	buildcostmetal=280;
+	buildcostmetal=325;
 	buildcostenergy=0;
-	buildtime=185;
+	buildtime=215;
 	footprintx=1;
 	footprintz=1;
 	mass=50;
