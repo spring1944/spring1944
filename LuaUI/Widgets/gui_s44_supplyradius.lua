@@ -1,4 +1,4 @@
-local versionNumber = "v1.7"
+local versionNumber = "v1.8"
 
 function widget:GetInfo()
 	return {
@@ -492,6 +492,7 @@ end
 ------------------------------------------------
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	
 	local _, _, inBuild = GetUnitIsStunned(unitID)
 	if not inBuild then
 		widget:UnitFinished(unitID, unitDefID, unitTeam)
@@ -499,7 +500,6 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 	
 	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
-		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		return
 	end
 	
@@ -523,7 +523,6 @@ function widget:UnitFinished(unitID, unitDefID, unitTeam)
 	inBuildSupplyInfos[unitID] = nil
 	
 	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
-		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		return
 	end
 	
