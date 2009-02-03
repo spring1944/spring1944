@@ -51,6 +51,7 @@
 
 	[customParams]
 	{
+		blockfear=1;	
 		ammoSupplier=1;
 		supplyRange=500;
 	}

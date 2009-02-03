@@ -81,6 +81,7 @@
 
 		[customParams]
 	{
+		blockfear=1;
 		maxammo=19;
 		weaponswithammo=2;
 		lowammolevel=6;
