@@ -27,7 +27,7 @@
 	cloakcost=0;
 	maxslope=3;
 	maxwaterdepth=50;
-
+	Levelground=0;
 	selfdestructcountdown=1;
 	explodeas=APMine;
 	

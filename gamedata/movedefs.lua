@@ -3,7 +3,7 @@ local moveDefs 	=	 {
 		name					=	"KBOT_Infantry",
 		footprintX		=	1,
 		maxWaterDepth	=	10,
-		maxSlope			=	30,
+		maxSlope			=	36,
 		crushStrength	=	0,
 	},
 	{

@@ -22,7 +22,7 @@
 
 	sightdistance=160;
 	stealth=1;
-
+	Levelground=0;
 	init_cloaked=1;
 	mincloakdistance=0.0000001;
 
