@@ -1,4 +1,4 @@
-local versionNumber = "v1.8"
+local versionNumber = "v1.9"
 
 function widget:GetInfo()
 	return {
@@ -70,8 +70,9 @@ local inBuildSupplyInfos = {}
 local generalTruckDefIDs = {}
 local supplyTruckDefIDs = {}
 
-local generalTruckDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
-local supplyTruckDefInfo = {410, ceil(410 / segmentLength), 2 * PI / ceil(410 / segmentLength)}
+local generalTruckDefInfo = {450, ceil(450 / segmentLength), 2 * PI / ceil(450 / segmentLength)}
+local supplyTruckDefInfo = {625, ceil(625 / segmentLength), 2 * PI / ceil(625 / segmentLength)}
+local supplyTruckMobileDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
 
 local myTeamID
 
@@ -304,7 +305,7 @@ local function DrawSupplyRing(supplyInfo)
 	glPopMatrix()
 end
 
-local function DrawPreview(supplyDefInfo, x, z)
+local function DrawSupplyRingFull(supplyDefInfo, x, z)
 	local r = supplyDefInfo[1]
 	local segmentAngle = supplyDefInfo[3]
 	
@@ -324,7 +325,6 @@ local function DrawPreview(supplyDefInfo, x, z)
 	end
 	
 	glPushMatrix()
-		glColor(previewColor)
 		glShape(GL_POINTS, vertices)
 	glPopMatrix()
 end
@@ -340,9 +340,13 @@ local function DrawTrucks()
 		local x, _, z = GetUnitPosition(unitID)
 		if AreTeamsAllied(unitTeam, myTeamID) then 
 			if generalTruckDefIDs[unitDefID] then
-				DrawPreview(generalTruckDefInfo, x, z)
+				glColor(previewColor)
+				DrawSupplyRingFull(generalTruckDefInfo, x, z)
 			elseif supplyTruckDefIDs[unitDefID] then
-				DrawPreview(supplyTruckDefInfo, x, z)
+				glColor(previewColor)
+				DrawSupplyRingFull(supplyTruckDefInfo, x, z)
+				glColor(color)
+				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z)
 			end
 		end
 	end
@@ -600,12 +604,12 @@ function widget:Initialize()
 	local inUse = false
 	for unitDefID=1,#UnitDefs do
 		local unitDef = UnitDefs[unitDefID]
-		if (unitDef.customParams.ammosupplier == "1") then
+		if (unitDef.customParams.ammosupplier == "1" and unitDef.speed == 0) then
 			local radius = unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE
 			local numSegments = ceil(radius / segmentLength)
 			local segmentAngle = 2 * PI / numSegments
-      local oddX, oddZ
-      if (unitDef.xsize % 4 == 2) then
+			local oddX, oddZ
+			if (unitDef.xsize % 4 == 2) then
 				oddX = true
 			end
 			if (unitDef.zsize % 4 == 2) then
@@ -613,9 +617,12 @@ function widget:Initialize()
 			end
 			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle, oddX, oddZ}
 			inUse = true
-		elseif unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) then
+		end
+		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) then
 			generalTruckDefIDs[unitDefID] = true
-		elseif unitDef.humanName and strFind(unitDef.humanName, "Supply Truck") then
+		end
+		if unitDef.humanName and strFind(unitDef.humanName, "Halftrack") then
+			Spring.Echo(unitDef.humanName)
 			supplyTruckDefIDs[unitDefID] = true
 		end
 	end
