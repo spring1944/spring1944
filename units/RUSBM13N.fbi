@@ -47,7 +47,7 @@
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG NFLAGNAIR;
 	badtargetcategory=FLAG;
 
 	weapon1=M13132mm;

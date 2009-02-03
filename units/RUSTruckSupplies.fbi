@@ -50,6 +50,6 @@
 	{
 		dontCount=1;
 		ammoSupplier=1;
-		supplyRange=410;
+		supplyRange=625;
 	}
 }

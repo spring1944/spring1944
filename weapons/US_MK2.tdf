@@ -18,7 +18,8 @@
 	areaofeffect=40;
 	edgeeffectiveness=0.8;
 	weapontimer=5;
-
+	TargetBorder=1;
+	canattackground=0;
 	soundhit=GEN_Explo_Grenade;
 
 	impulsefactor=0.00001;

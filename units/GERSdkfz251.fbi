@@ -8,7 +8,7 @@
 	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
 	tedclass=TANK;
 
-	name=Sd.Kfz. 251/1;
+	name=Sd.Kfz. 251/1 Halftrack;
 	description=Infantry Support Transport;
 	side=GER;
 	maxdamage=1200;
@@ -73,5 +73,10 @@
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
+	}
+		[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=200;
 	}
 }

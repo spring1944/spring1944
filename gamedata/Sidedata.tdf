@@ -141,7 +141,7 @@
 	[USVehicleYard]
 	{
 		canbuild1=USGMCEngVehicle;
-		canbuild2=USSupplyTruck;
+		//canbuild2=USSupplyTruck;
 		//canbuild3=USJeep;
 		canbuild4=USM3Halftrack;
 		canbuild5=USM8Greyhound;
@@ -154,7 +154,7 @@
 		canbuild2=USM8Gun_gunyard;
 		canbuild3=USM5Gun_truck;
 		canbuild4=USM2Gun_truck;
-		canbuild5=USSupplyTruck;
+		//canbuild5=USSupplyTruck;
 	}
 
 
@@ -194,7 +194,7 @@
 
 	[USSupplyDepot]
 	{
-		canbuild1=USSupplyTruck;
+		canbuild1=USM3Halftrack;
 	}
 
 	[USAirfield]
@@ -282,7 +282,7 @@
 	[GERVehicleYard]
 	{
 		canbuild1=GERSdKfz9;
-		canbuild2=GERSupplyTruck;
+		//canbuild2=GERSupplyTruck;
 		canbuild3=GERSdkfz250;
 		canbuild4=GERSdkfz251;
 		//canbuild5=GERSdkfz10;
@@ -297,7 +297,7 @@
 		canbuild4=GERPaK40_truck;
 		canbuild5=GERleFH18_truck;
 		canbuild6=GERNebelwerfer_truck;
-		canbuild7=GERSupplyTruck;
+		//canbuild7=GERSupplyTruck;
 	}
 
 	[GERSdKfz9]
@@ -344,7 +344,7 @@
 
 	[GERSupplyDepot]
 	{
-		canbuild1=GERSupplyTruck;
+		canbuild1=GERSdkfz251;
 	}
 
 	[GERAirfield]
@@ -422,7 +422,7 @@
 		canbuild1=GBRBedfordTruck;
 		canbuild2=GBR17Pdr_truck;
 		canbuild3=GBR25Pdr_truck;
-		canbuild4=GBRSupplyTruck;
+		//canbuild4=GBRSupplyTruck;
 	}
 
 	[GBRHeavyGunyard]
@@ -469,7 +469,7 @@
 	[GBRVehicleYard]
 	{
 		canbuild1=GBRMatadorEngVehicle;
-		canbuild2=GBRSupplyTruck;
+		//canbuild2=GBRSupplyTruck;
 		canbuild3=GBRM5Halftrack;
 		canbuild4=GBRDaimler;
 		canbuild5=GBRKangaroo;
@@ -514,7 +514,7 @@
 
 	[GBRSupplyDepot]
 	{
-		canbuild1=GBRSupplyTruck;
+		canbuild1=GBRM5Halftrack;
 	}
 
 	[GBRAirfield]
@@ -654,7 +654,7 @@
 	[RUSVehicleYard]
 	{
 		canbuild1=RUSK31;
-		canbuild2=RUSSupplyTruck;
+		//canbuild2=RUSSupplyTruck;
 		canbuild3=RUSBA64;
 		canbuild4=RUSM5Halftrack;
 		//canbuild5=RUSGAZAAA;
@@ -669,7 +669,7 @@
 		canbuild3=RUSZiS2_truck;
 		canbuild4=RUSZiS3_truck;
 		canbuild5=RUSM30_truck;
-		canbuild6=RUSSupplyTruck;
+		//canbuild6=RUSSupplyTruck;
 	}
 
 	[RUSTankYard]
@@ -698,7 +698,7 @@
 
 	[RUSSupplyDepot]
 	{
-		canbuild1=RUSSupplyTruck;
+		canbuild1=RUSM5Halftrack;
 	}
 	
 	[RUSAirfield]

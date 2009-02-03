@@ -52,8 +52,8 @@
 	explodeas=Vehicle_Explosion_Med;
 	selfdestructas=Vehicle_Explosion_Med;
 
-	nochasecategory=FLAG;
-	badtargetcategory=FLAG;
+	nochasecategory=FLAG INFTARG;
+	badtargetcategory=FLAG INFTARG;
 
 	weapon1=M7AP;
 	onlytargetcategory1=TANK;

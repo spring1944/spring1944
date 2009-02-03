@@ -38,8 +38,8 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 
-	nochasecategory=FLAG;
-	badtargetcategory=FLAG;
+	nochasecategory=FLAG LIGHTVEH;
+	badtargetcategory=FLAG LIGHTVEH;
 
 	weapon1=m1919a4browning_deployed;
 	onlytargetcategory1=INFTARG;

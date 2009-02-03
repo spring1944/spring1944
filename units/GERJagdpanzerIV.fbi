@@ -52,7 +52,7 @@
 	explodeas=Vehicle_Explosion_Med;
 	selfdestructas=Vehicle_Explosion_Med;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG INFTARG;
 	badtargetcategory=FLAG;
 
 	weapon1=KwK75mmL71AP;

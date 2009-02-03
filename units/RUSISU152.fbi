@@ -54,8 +54,8 @@
 	explodeas=Vehicle_Explosion_Large;
 	selfdestructas=Vehicle_Explosion_Large;
 
-	nochasecategory=VTOL;
-	badtargetcategory=VTOL;
+	nochasecategory=FLAG INFTARG;
+	badtargetcategory=FLAG;
 
 	weapon1=ML20S152mmHE;
 	onlytargetcategory1=NFLAGNAIR;

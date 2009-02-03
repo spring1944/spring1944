@@ -46,7 +46,7 @@
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
-	nochasecategory=FLAG;
+	nochasecategory=FLAG INFTARG;
 	badtargetcategory=FLAG;
 
 	weapon1=Webley;
@@ -65,6 +65,7 @@
 	}
 	[customParams]
 	{
+		dontCount=1;
 		feartarget=1;
 	}
 }

@@ -16,7 +16,7 @@
 	edgeeffectiveness=0.8;
 	canattackground=0;
 	weapontimer=5;
-
+	TargetBorder=1;
 	soundhit=GEN_Molotov;
 	explosiongenerator=custom:Molotov;
 

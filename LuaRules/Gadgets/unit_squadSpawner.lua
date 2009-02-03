@@ -130,7 +130,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			
 			local unitArray = { }
 
-			local xSpace, zSpace = -10, -10
+			local xSpace, zSpace = -5, -5
 			
 			for i, unitName in ipairs(squadDef) do
 				local unitHeading = 0

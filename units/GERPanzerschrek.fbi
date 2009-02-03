@@ -45,10 +45,10 @@
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
-
+	badtargetcategory=INFTARG;
+	nochasecategory=FLAG INFTARG;
 	weapon1=Panzerschrek;
 	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
 
 	[sfxtypes]
 	{
@@ -64,6 +64,7 @@
 	}
 	[customParams]
 	{
+		dontCount=1;
 		feartarget=1;
 	}
 }
