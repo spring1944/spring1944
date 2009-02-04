@@ -45,7 +45,7 @@ local options = {
     name   = 'Command Point Income/Battle Significance',
     desc   = 'Sets level of Command Point income - use to adjust maps that provide too much or too little command points',
     type   = 'list',
-    def    = '1',
+    def    = '2',
     items  = 
     {
 	  {
