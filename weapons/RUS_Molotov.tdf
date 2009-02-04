@@ -6,7 +6,7 @@
 	rendertype=3;
 	turret=1;
 	CEGTag=Flametrail;
-
+	tolerance=10000;
 	range=180;
 	reloadtime=8;
 	accuracy=300;

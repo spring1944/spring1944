@@ -5,7 +5,7 @@
 	model=MortarShell.S3O;
 	rendertype=3;
 	turret=1;
-
+	tolerance=10000;
 	range=200;
 	reloadtime=6.5;
 	accuracy=1250;

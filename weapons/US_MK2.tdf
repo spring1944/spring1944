@@ -6,7 +6,7 @@
 	rendertype=1;
 	explosiongenerator=custom:HE_Small;
 	turret=1;
-	tolerance=5000;
+	tolerance=10000;
 
 	firestarter=0.0;
 
@@ -14,7 +14,7 @@
 	reloadtime=8;
 	accuracy=1777;
 	movingaccuracy=6222;
-	weaponvelocity=210;
+	weaponvelocity=310;
 	areaofeffect=40;
 	edgeeffectiveness=0.8;
 	weapontimer=5;
