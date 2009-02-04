@@ -362,7 +362,7 @@ local function DrawMain()
 	for _, inBuildSupplyInfo in pairs(inBuildSupplyInfos) do
 		local x, z = inBuildSupplyInfo.x, inBuildSupplyInfo.z
 		local supplyDefInfo = inBuildSupplyInfo.supplyDefInfo
-		--DrawPreview(supplyDefInfo, x, z)
+		DrawSupplyRingFull(supplyDefInfo, x, z)
 	end
 	
 	glColor(1, 1, 1, 1)
@@ -379,7 +379,7 @@ local function CallMain()
 	if supplyDefInfo then
 		local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
 		if bx then
-			--DrawPreview(supplyDefInfo, bx, bz)
+			DrawSupplyRingFull(supplyDefInfo, bx, bz)
 		end
 	end
 	
