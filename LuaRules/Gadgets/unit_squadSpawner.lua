@@ -112,7 +112,7 @@ if (gadgetHandler:IsSyncedCode()) then
 						end
 					end
 				end
-				watchUnits[squad_spawner] = nil
+				watchUnits[squad_spawner] = true
 
 				table.remove(newSquads[index])
 				DestroyUnit(squad_spawner, false, true)
