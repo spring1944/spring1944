@@ -57,66 +57,67 @@ if (gadgetHandler:IsSyncedCode()) then
 
 				-- Get the orders for the squad spawner
 			local squad_spawner = squad.unitID
+			if watchUnits[squad_spawner] then
+				_,_,_,_,buildprog = Spring.GetUnitHealth(squad_spawner)
 
-			_,_,_,_,buildprog = Spring.GetUnitHealth(squad_spawner)
+				if(buildprog ~= nil and buildprog >= 1) then
 
-			if(buildprog ~= nil and buildprog >= 1) then
+					local squad_members = squad.members
+					local squad_builder = squad.builderID
+					local squad_units = {}
+					local states = {}
 
-				local squad_members = squad.members
-				local squad_builder = squad.builderID
-				local squad_units = {}
-				local states = {}
-
-				local queue = GetCommandQueue(squad_spawner)
-				if squad_builder then
-					states = Spring.GetUnitStates(squad_builder)
-				end
-
-				for _,unit in ipairs(squad_members) do
-					local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
-					if (states) then
-						if(states.movestate ~= nil) then
-							Spring.GiveOrderToUnit(newUnitID, CMD.FIRE_STATE, { states.firestate }, 0)
-							Spring.GiveOrderToUnit(newUnitID, CMD.MOVE_STATE, { states.movestate }, 0)
-						end
-						table.insert(squad_units,newUnitID)
+					local queue = GetCommandQueue(squad_spawner)
+					if squad_builder then
+						states = Spring.GetUnitStates(squad_builder)
 					end
-				end
-				Spring.Echo("Squad Members Created")
+
+					for _,unit in ipairs(squad_members) do
+						local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
+						if (states) then
+							if(states.movestate ~= nil) then
+								Spring.GiveOrderToUnit(newUnitID, CMD.FIRE_STATE, { states.firestate }, 0)
+								Spring.GiveOrderToUnit(newUnitID, CMD.MOVE_STATE, { states.movestate }, 0)
+							end
+							table.insert(squad_units,newUnitID)
+						end
+					end
+					--Spring.Echo("Squad Members Created")
 
 					-- If its a valid queue
-				if (queue ~= nil) then
+					if (queue ~= nil) then
 
-					local first = next(queue, nil)
+						local first = next(queue, nil)
 
 						-- Fix some things up
-					for k,v in ipairs(queue) do
+						for k,v in ipairs(queue) do
 
-						local opts = v.options
-						if (not opts.internal) then
+							local opts = v.options
+							if (not opts.internal) then
 
-							local newopts = {}
-							if (opts.alt)   then table.insert(newopts, "alt")   end
-							if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
-							if (opts.shift) then table.insert(newopts, "shift") end
-							if (opts.right) then table.insert(newopts, "right") end
+								local newopts = {}
+								if (opts.alt)   then table.insert(newopts, "alt")   end
+								if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
+								if (opts.shift) then table.insert(newopts, "shift") end
+								if (opts.right) then table.insert(newopts, "right") end
 
-							if (k == first) then
-								if (opts.ctrl) then
-									table.insert(newopts, "shift")
+								if (k == first) then
+									if (opts.ctrl) then
+										table.insert(newopts, "shift")
+									end
 								end
-							end
 
 								-- Give order to the units
-							GiveOrderToUnits(squad_units, v.id, v.params, newopts)
+								GiveOrderToUnits(squad_units, v.id, v.params, newopts)
+							end
 						end
 					end
 				end
-				watchUnits[squad_spawner] = true
 
 				table.remove(newSquads[index])
 				DestroyUnit(squad_spawner, false, true)
-				Spring.Echo("Spawner Destroyed")
+				watchUnits[squad_spawner] = nil
+				--Spring.Echo("Spawner Destroyed")
 			end
 		end
 	end
@@ -127,7 +128,8 @@ if (gadgetHandler:IsSyncedCode()) then
 		local squadDef = squadDefs[unitDefID]
 		
 		if squadDef ~= nil then
-			Spring.Echo("Spawner Created")
+			--Spring.Echo("Spawner Created")
+			watchUnits[unitID] = true
 			local px, py, pz = GetUnitBasePosition(unitID)
 			
 			local unitArray = { }
@@ -165,7 +167,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		if (watchUnits[unitID] ~= nil) then
 			watchUnits[unitID] = nil
-			Spring.Echo("Spawner Destroyed 2")
+			--Spring.Echo("Spawner Destroyed 2")
 		end
 	end
 	
