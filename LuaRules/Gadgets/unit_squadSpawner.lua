@@ -57,11 +57,9 @@ if (gadgetHandler:IsSyncedCode()) then
 
 				-- Get the orders for the squad spawner
 			local squad_spawner = squad.unitID
-			if watchUnits[squad_spawner] then
+			if watchUnits[squad_spawner] == true then
 				_,_,_,_,buildprog = Spring.GetUnitHealth(squad_spawner)
-
 				if(buildprog ~= nil and buildprog >= 1) then
-
 					local squad_members = squad.members
 					local squad_builder = squad.builderID
 					local squad_units = {}
@@ -112,12 +110,12 @@ if (gadgetHandler:IsSyncedCode()) then
 							end
 						end
 					end
-				end
 
-				table.remove(newSquads[index])
-				DestroyUnit(squad_spawner, false, true)
-				watchUnits[squad_spawner] = nil
-				--Spring.Echo("Spawner Destroyed")
+					table.remove(newSquads[index])
+					DestroyUnit(squad_spawner, false, true)
+					watchUnits[squad_spawner] = nil
+					--Spring.Echo("Spawner Destroyed")
+				end
 			end
 		end
 	end
