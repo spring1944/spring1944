@@ -52,8 +52,10 @@ function gadget:Explosion(weaponId, px, py, pz, ownerId)
 		if unitId ~= ownerId and not blockAllyTeams[GetUnitAllyTeam(unitId)] then
 			Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
 		end
+		targets[i] = nil
 	end
-	
+		targets = {}
+		blockAllyTeams = {}
 	return false
 end
 
