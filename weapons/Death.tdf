@@ -35,6 +35,7 @@
 	[damage]
 	{
 		default=100;
+		squadSpawners=100000;
 		flag=0;
 		apmine=.0001;
 		atmine=.0001;
@@ -68,6 +69,7 @@
 	[damage]
 	{
 		default=250;
+		squadSpawners=100000;
 		apmine=.0001;
 		flag=0;
 		atmine=.0001;
@@ -101,6 +103,7 @@
 	[damage]
 	{
 		default=400;
+		squadSpawners=100000;
 		apmine=.0001;
 		flag=0;
 		atmine=.0001;
@@ -168,6 +171,7 @@
 	[damage]
 	{
 		default=900;
+		squadSpawners=100000;
 		apmine=.0001;
 		atmine=.0001;
 		flag=0;
@@ -201,6 +205,7 @@
 	[damage]
 	{
 		default=1500;
+		squadSpawners=100000;
 		flag=0;
 		apmine=.0001;
 		atmine=.0001;
@@ -234,6 +239,7 @@
 	[damage]
 	{
 		default=2250;
+		squadSpawners=100000;
 		apmine=.0001;
 		flag=0;
 		atmine=.0001;

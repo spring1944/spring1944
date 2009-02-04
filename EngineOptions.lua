@@ -52,7 +52,7 @@ local options =
     desc   = 'Sets the starting Logistics level for all players',
     type   = 'number',
     section= 'StartingResources',
-    def    = 1000,
+    def    = 500,
     min    = 0,
     max    = 10000,
     step   = 1,  -- quantization is aligned to the def value
@@ -84,7 +84,7 @@ local options =
     name   = 'Fixed ingame alliances',
     desc   = 'Disables the possibility of players to dynamically change allies ingame',
     type   = 'bool',
-    def    = true,
+    def    = false,
   },
 
   {
