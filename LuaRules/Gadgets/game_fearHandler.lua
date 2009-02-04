@@ -14,12 +14,16 @@ end
 -- Synced Read
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitDefID       		= Spring.GetUnitDefID
+local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
 -- Synced Ctrl
 local CallCOBScript					= Spring.CallCOBScript
 
 -- constants
 
 -- variables
+
+local targets = {}
+local blockAllyTeams = {}
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
@@ -32,21 +36,21 @@ function gadget:Explosion(weaponId, px, py, pz, ownerId)
 	-- compile table of ud.customParams.fearshieldradius units in fearshieldradius+fearaoe, check seperation between all feartarget units and each of these, apply fear if seperation > fearshieldradius
 	-- optimisation? if fearshieldradius > fearaoe, all units are protected
 	
-	local fearBlockerFound	= false
+	--local fearBlockerFound	= false
 	for i = 1, #unitsAtSpot do
 		local unitId = unitsAtSpot[i]
 		local ud = UnitDefs[GetUnitDefID(unitId)]
-			fearBlockerFound = fearBlockerFound or ud.customParams.blockfear == "1"
-		if fearBlockerFound then break end -- how ugly is that
+		if ud.customParams.blockfear == "1" then
+			blockAllyTeams[GetUnitAllyTeam(unitId)] = true
+		elseif ud.customParams.feartarget then
+			table.insert(targets, unitId)
+		end
 	end
 	
-	if not (fearBlockerFound) then -- only apply fear when no factory and fearBlocker in the fearaoe
-		for i = 1, #unitsAtSpot do
-			local unitId = unitsAtSpot[i]
-			local fearTarget = UnitDefs[GetUnitDefID(unitId)].customParams.feartarget
-			if fearTarget and unitId ~= ownerId then
-				Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
-			end
+	for i = 1, #targets do
+		local unitId = targets[i]
+		if unitId ~= ownerId and not blockAllyTeams[GetUnitAllyTeam(unitId)] then
+			Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
 		end
 	end
 	

@@ -82,6 +82,7 @@ if (gadgetHandler:IsSyncedCode()) then
 						table.insert(squad_units,newUnitID)
 					end
 				end
+				Spring.Echo("Squad Members Created")
 
 					-- If its a valid queue
 				if (queue ~= nil) then
@@ -115,6 +116,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 				table.remove(newSquads[index])
 				DestroyUnit(squad_spawner, false, true)
+				Spring.Echo("Spawner Destroyed")
 			end
 		end
 	end
@@ -125,7 +127,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		local squadDef = squadDefs[unitDefID]
 		
 		if squadDef ~= nil then
-			
+			Spring.Echo("Spawner Created")
 			local px, py, pz = GetUnitBasePosition(unitID)
 			
 			local unitArray = { }
@@ -163,6 +165,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		if (watchUnits[unitID] ~= nil) then
 			watchUnits[unitID] = nil
+			Spring.Echo("Spawner Destroyed 2")
 		end
 	end
 	
