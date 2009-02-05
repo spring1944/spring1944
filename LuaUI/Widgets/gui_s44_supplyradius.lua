@@ -571,11 +571,21 @@ function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 end
 
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	inBuildSupplyInfos[unitID] = nil
+	local doUpdate = false
+	local inBuildSupplyInfo = inBuildSupplyInfos[unitID]
+	if inBuildSupplyInfo then
+		inBuildSupplyInfos[unitID] = nil
+		doUpdate = true
+	end
+	
 	local supplyInfo = supplyInfos[unitID]
 	if supplyInfo then
 		supplyInfos[unitID] = nil
 		UpdateRemove(unitID, supplyInfo)
+		doUpdate = true
+	end
+	
+	if doUpdate then
 		UpdateLists()
 	end
 end
