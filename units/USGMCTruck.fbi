@@ -35,6 +35,7 @@
 	turnrate=440;
 	maxslope=10;
 	maxwaterdepth=5;
+	turninplace=0;
 
 	leavetracks=1;
 	trackwidth=15;
@@ -47,8 +48,8 @@
 	transportcapacity=15;
 	transportmass=750;
 	releaseheld=1;
-	unloadspread=2;
-	transportUnloadMethod=2;
+	//unloadspread=2;
+	//transportUnloadMethod=2;
 
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
