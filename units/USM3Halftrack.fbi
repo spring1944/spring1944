@@ -47,11 +47,10 @@
 
 	transportsize=1;
 	transportcapacity=15;
-	loadingradius=2500;
 	transportmass=750;
 	releaseheld=1;
-	unloadspread=2;
-	transportUnloadMethod=2;
+	//unloadspread=2;
+	//transportUnloadMethod=2;
 
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;

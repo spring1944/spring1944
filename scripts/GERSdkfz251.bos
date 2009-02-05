@@ -51,57 +51,30 @@ treads()
 
 
 
-// Transport script courtesy of Zwzsg's script for Spring SW imptroopc
-TransportPickup(unitid)
-{
-	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-		if( get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [95.000000] )
-		{
-			set BUSY to 1;
-			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
-			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			attach-unit unitid to load_arm;
-			move load_arm to z-axis [10.000000] speed [300.000000];
-			wait-for-move load_arm along z-axis;
-			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
-			{ 
-			//<= INFANTRY + FUDGE ) { // when using FUDGE
-			  attach-unit unitid to 0 - 1; // hide infantry models
-			}
-			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
-			{ 
-			//> INFANTRY + FUDGE ) {  // when using FUDGE
-			  attach-unit unitid to tow_point; // don't hide other units
-			}
-			set BUSY to 0;
-		}
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid) {
+	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200]) {
+		attach-unit unitid to base;
 	}
 }
 
-TransportDrop(unitid, position)
-{
-	var Func_Var_3;
-	Func_Var_3 = get XZ_HYPOT(get PIECE_XZ(base) - position);
-	if( Func_Var_3 >= 0 AND Func_Var_3 <= [95.000000] )
-	{
-		set BUSY to 1;
-		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-		move load_arm to z-axis [10.000000] now;
-		turn load_arm to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-		attach-unit unitid to load_arm;
-		move load_arm to z-axis Func_Var_3 speed [5500.000000];
-		wait-for-move load_arm along z-axis;
-		drop-unit unitid;
-		move load_arm to z-axis [0.000000] now;
-		wait-for-move load_arm along z-axis;
-		if( get XZ_HYPOT(get PIECE_XZ(base) - get UNIT_XZ(unitid)) < [1.000000] )
-		{
-			attach-unit unitid to 0 - 1;
-		}
-		sleep 5;
-		set BUSY to 0;
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
+	if(depth < 3) {
+		return 0;
 	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
