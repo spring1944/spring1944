@@ -359,6 +359,8 @@ local function DrawMain()
 		DrawSupplyRing(supplyInfo)
 	end
 	
+	glColor(previewColor)
+	
 	for _, inBuildSupplyInfo in pairs(inBuildSupplyInfos) do
 		local x, z = inBuildSupplyInfo.x, inBuildSupplyInfo.z
 		local supplyDefInfo = inBuildSupplyInfo.supplyDefInfo
@@ -379,6 +381,7 @@ local function CallMain()
 	if supplyDefInfo then
 		local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
 		if bx then
+			glColor(previewColor)
 			DrawSupplyRingFull(supplyDefInfo, bx, bz)
 		end
 	end
@@ -568,13 +571,12 @@ function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 end
 
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
+	inBuildSupplyInfos[unitID] = nil
 	local supplyInfo = supplyInfos[unitID]
 	if supplyInfo then
 		supplyInfos[unitID] = nil
 		UpdateRemove(unitID, supplyInfo)
 		UpdateLists()
-	else
-		inBuildSupplyInfos[unitID] = nil
 	end
 end
 
@@ -621,8 +623,8 @@ function widget:Initialize()
 		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) then
 			generalTruckDefIDs[unitDefID] = true
 		end
-		if unitDef.humanName and strFind(unitDef.humanName, "Halftrack") then
-			Spring.Echo(unitDef.humanName)
+		if unitDef.humanName and strFind(unitDef.humanName, "Halftrack") and not strFind(unitDef.humanName, "Unloaded") then
+			--Spring.Echo(unitDef.humanName)
 			supplyTruckDefIDs[unitDefID] = true
 		end
 	end
