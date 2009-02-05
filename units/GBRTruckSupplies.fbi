@@ -10,7 +10,7 @@
 	tedclass=ENERGY;
 	yardmap=o;
 
-	name=Unloaded Supply Truck;
+	name=Unloaded Halftrack Supplies;
 	description=Provides ammunition to a medium area;
 	side=GBR;
 	maxdamage=400;

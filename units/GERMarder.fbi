@@ -41,7 +41,8 @@
 	turnrate=230;
 	maxslope=5;
 	maxwaterdepth=5;
-
+	turninplace=0;
+	
 	leavetracks=1;
 	trackwidth=12;
 	trackoffset=3;

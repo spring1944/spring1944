@@ -18,7 +18,6 @@
 	flankingbonusmax=1.1;
 	flankingbonusmin=1;
 	flankingbonusmode=3;
-	turninplace=0;
 	buildcostmetal=1700;
 	buildcostenergy=0;
 	buildtime=565;
@@ -42,6 +41,7 @@
 	turnrate=405;
 	maxslope=6;
 	maxwaterdepth=15;
+	turninplace=0;
 
 	leavetracks=1;
 	trackwidth=13;

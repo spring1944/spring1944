@@ -43,6 +43,7 @@
 	maxslope=6;
 	maxwaterdepth=15;
 	turninplace=0;
+	
 	leavetracks=1;
 	trackwidth=15;
 	trackoffset=10;
@@ -55,8 +56,6 @@
 	//loadingradius=2500;
 	transportmass=750;
 	releaseheld=1;
-	unloadspread=2;
-	transportUnloadMethod=2;
 
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
@@ -68,7 +67,7 @@
 	onlytargetcategory1=INFTARG;
 	weapon2=M2BrowningFear;
 	onlytargetcategory2=INFTARG;*/
-	weapon1=.50calproof;
+	//weapon1=.50calproof;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
