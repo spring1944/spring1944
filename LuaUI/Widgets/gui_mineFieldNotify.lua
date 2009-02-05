@@ -12,12 +12,15 @@ end
 
 function widget:UnitFinished(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
-	if (ud.name == "apminesign") then 
-		local x, y, z = Spring.GetUnitPosition(unitID)
-		Spring.MarkerAddPoint(x, y, z, "Anti-Personnel Minefield!")
-	end
-	if (ud.name == "atminesign") then 
-		local x, y, z = Spring.GetUnitPosition(unitID)
-		Spring.MarkerAddPoint(x, y, z, "Anti-Tank Minefield!")
+	local ownerTeamID	=	Spring.GetMyTeamID()
+	if (teamID == ownerTeamID) then
+		if (ud.name == "apminesign") then 
+			local x, y, z = Spring.GetUnitPosition(unitID)
+			Spring.MarkerAddPoint(x, y, z, "AP Minefield!")
+		end
+		if (ud.name == "atminesign") then 
+			local x, y, z = Spring.GetUnitPosition(unitID)
+			Spring.MarkerAddPoint(x, y, z, "AT Minefield!")
+		end
 	end
 end

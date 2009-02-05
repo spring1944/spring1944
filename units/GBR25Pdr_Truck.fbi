@@ -31,10 +31,11 @@
 	movementclass=TANK_Truck;
 	maxvelocity=4.5;//4.8
 	acceleration=0.3;
-	brakerate=0.45;
+	brakerate=0.96;
 	turnrate=440;
 	maxslope=10;
 	maxwaterdepth=5;
+	turninplace=0;
 
 	leavetracks=1;
 	trackwidth=13;
