@@ -81,7 +81,7 @@
 	burnblow=0;
 
 	soundstart=GER_20mm;
-	soundhit=GEN_Explo_Flak1;
+	soundhit=GEN_Explo_1;
 
 	rgbcolor=1 .50 0;
 
