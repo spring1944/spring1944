@@ -413,8 +413,6 @@ local squadDefs = {
 		"rusppsh",
 		"rusppsh",
 		"rusppsh",
-		"rusppsh",
-		"rusppsh",
 	},
     	
     ["rus_platoon_partisan"] =
