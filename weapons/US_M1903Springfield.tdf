@@ -18,7 +18,7 @@
 	areaofeffect=2;
 
 	soundtrigger=0;
-	soundstart=GBR_LeeEnfield;
+	soundstart=US_Springfield;
 
 	avoidfeature=0;
 	collidefeature=0;
