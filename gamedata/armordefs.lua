@@ -69,7 +69,7 @@ local armorDefs = {
 		"GERPaK40",
 		"GERleFH18",
 		"GERleFH18_Stationary",
-		"GERSandbagMG",
+		"germg42_sandbag",
 		"GERPaK40_Stationary",
 		"GERFlak38_Stationary",
 		"GERNebelwerfer",
@@ -81,7 +81,7 @@ local armorDefs = {
 		"USM2Gun",
 		"USM2Gun_Stationary",
 		"USM5Gun",
-		"USSandbagMG",
+		"usgimg_sandbag",
 		"USM5Gun_Stationary",
 
 		--USSR--
@@ -90,7 +90,7 @@ local armorDefs = {
 		"RUSZiS2_Stationary",
 		"RUSZiS3",
 		"RUSZiS3_Stationary",
-		"RUSSandbagMG",
+		"rusmaxim_sandbag",
 		"RUSM30",
 		"RUSM30_Stationary",
 		"RUS61K_Stationary",
@@ -99,7 +99,7 @@ local armorDefs = {
 		"GBR25Pdr",
 		"GBR25Pdr_Stationary",
 		"GBR17Pdr",
-		"GBRSandbagMG",
+		"gbrvickers_sandbag",
 		"GBR17Pdr_Stationary",
 	},
 
