@@ -142,6 +142,7 @@ gadget.unitBuildOrder = {
 	ustankyard = {
 		--added by journier might not work
 			"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
+			"usm10wolverine",
 	},
 			
 }
@@ -181,7 +182,7 @@ gadget.baseBuildOrder = {
 		"gersupplydepot",
 	},
 	
-	usa = {
+	us = {
 		--might work
 		"usbarracks", "usbarracks", "usbarracks",
 		"usstorage",
