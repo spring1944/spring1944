@@ -83,7 +83,7 @@ gadget.unitBuildOrder = {
 		"rust3476", "rusisu152",
 	},		
 	-- Germany
-	gerhq = { 
+	gerhqbunker = { 
 		-- added by journier may work
 		"gerhqengineer", "gerhqengineer", 
 		"ger_platoon_hq", "ger_platoon_hq", "ger_platoon_hq", 
