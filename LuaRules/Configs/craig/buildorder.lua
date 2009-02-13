@@ -22,12 +22,15 @@ gadget.unitBuildOrder = {
 		"gbr_platoon_rifle", "gbr_platoon_assault",
 		"gbr_platoon_rifle", "gbr_platoon_mortar",
 		"gbr_platoon_rifle", "gbr_platoon_at",
-		"gbr_platoon_rifle", "gbr_platoon_mg",
+		"gbr_platoon_rifle",
 		"gbr_platoon_rifle", "gbr_platoon_sniper",
 		"gbr_platoon_rifle", "gbr_platoon_rifle",
 	},
 	gbrvehicleyard = {
 		"gbrmatadorengvehicle",
+		"gbrdaimler", "gbrdaimler",
+		"gbrdaimler", "gbrdaimler",
+		"gbrm5halftrack",
 		"gbrdaimler", "gbrdaimler",
 		"gbrm5halftrack",
 		"gbrdaimler", "gbrdaimler",
@@ -35,9 +38,7 @@ gadget.unitBuildOrder = {
 	},
 	-- it can not upgrade tank yard yet!
 	gbrtankyard = {
-		"gbrcromwell", "gbrcromwellmkvi",
-		"gbrcromwell", "gbrcromwellmkvi",
-		"gbraecmkii", --antitank
+		"gbrcromwell",
 		"gbrshermanfirefly", "gbrshermanfirefly",
 	},
 	-- Russia
@@ -46,11 +47,16 @@ gadget.unitBuildOrder = {
 		"rus_platoon_rifle", "rus_platoon_assault",
 		"rus_platoon_rifle", "rus_platoon_atheavy",
 		"rus_platoon_rifle", "rus_platoon_atlight",
-		"rus_platoon_rifle", "rus_platoon_atlight",
-		"rus_platoon_rifle", "rus_platoon_mg",
+		"rus_platoon_rifle",
+		"rus_platoon_rifle",
 		"rus_platoon_rifle", "rus_platoon_mortar",
 		"rus_platoon_rifle", "rus_platoon_sniper",
 		"rus_platoon_rifle", "rus_platoon_rifle",
+	},
+	rusvehicleyard = {
+		-- might work Journier added rusvehicleyard.
+		"rust60", "rust60", "rust60",
+		"russu76", "russu76", "russu76", 
 	},
 }
 
@@ -58,15 +64,13 @@ gadget.unitBuildOrder = {
 gadget.baseBuildOrder = {
 	gbr = {
 		-- I used storages basically to delay tech up a bit :P
-		"gbrbarracks", "gbrbarracks",
-		"gbrstorage", "gbrstorage",
-		"gbrbarracks",
-		"gbrvehicleyard",
-		"gbrstorage", "gbrstorage",
+		"gbrbarracks", "gbrbarracks", "gbrbarracks",
+		"gbrvehicleyard", "gbrvehicleyard",
+		"gbrstorage",
 		-- GBR doesn't have packed howitzers, and C.R.A.I.G. doesn't know
 		-- about deploying yet, so no point making a Towed Gun Yard.
 		--"gbrgunyard",
-		"gbrtankyard",
+		"gbrtankyard", "gbrtankyard",
 		"gbrsupplydepot",
 		"gbrstorage", "gbrstorage",
 	},
@@ -76,6 +80,8 @@ gadget.baseBuildOrder = {
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
 		"russtorage", "russtorage", "russtorage",
+		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard"
+		
 	},
 }
 
