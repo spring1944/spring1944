@@ -79,7 +79,7 @@ gadget.unitBuildOrder = {
 	rustankyard = { 
 		-- works so far Journier
 		"rust70", "rust3476", 
-		"rust3476", "ust3476", 
+		"rust3476", "rust3476", 
 		"rust3476", "rusisu152",
 	},		
 	-- Germany
