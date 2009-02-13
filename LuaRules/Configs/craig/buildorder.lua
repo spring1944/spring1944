@@ -43,7 +43,7 @@ gadget.unitBuildOrder = {
 	},
 	-- Russia
 	rusbarracks = {
-		-- no engineer yet, someone else may continue the build orders :-)
+		"rusengineer", "rusengineer",
 		"rus_platoon_rifle", "rus_platoon_assault",
 		"rus_platoon_rifle", "rus_platoon_atheavy",
 		"rus_platoon_rifle", "rus_platoon_atlight",
@@ -80,7 +80,7 @@ gadget.baseBuildOrder = {
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
 		"russtorage", "russtorage", "russtorage",
-		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard"
+		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard",
 		
 	},
 }
@@ -92,11 +92,11 @@ gadget.baseBuilders = {
 	"gbrmatadorengvehicle",
 	"gerengineer",
 	"gerhqengineer",
-	--TODO: ger eng vehicle
+	"gersdkfz9",
 	"ruscommander", -- contrary to other sides Russia can start immediately
 	"ruscommissar", -- after game start with base building...
 	"rusengineer",
-	--TODO: rus eng vehicle
+	"rusk31",
 	"ushqengineer",
 	"usengineer",
 	"usgmcengvehicle",
