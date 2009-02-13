@@ -38,9 +38,13 @@ gadget.unitBuildOrder = {
 	},
 	-- it can not upgrade tank yard yet!
 	gbrtankyard = {
-		"gbrcromwell",
+		"gbrcromwell", "gbrcromwell", "gbrcromwell",
 		"gbrshermanfirefly", "gbrshermanfirefly",
+		"gbrcromwellmkvi",
+		"gbraecmkII", 
+		
 	},
+	
 	-- Russia
 	rusbarracks = {
 		"rusengineer", "rusengineer",
@@ -55,21 +59,64 @@ gadget.unitBuildOrder = {
 	},
 	
 	ruspshack = { 
-		"rus_platoon_partisan"
+		"rus_platoon_partisan",
 	},
 	
 	rusvehicleyard = {
-		-- might work Journier added rusvehicleyard.
+		-- works so far added by Journier
 		"rusk31", 
+		"rusba64",
+		"rust60", "rust60", "rust60", 
+		"rusba64",
+		"rusm5halftrack", 
 		"rust60", "rust60", "rust60",
-		"russu76", "russu76", "russu76", 
+		"rusba64",
+		"rusm5halftrack",
+		"russu76", "russu76", "russu76",
+		"rusba64",
+		"rusm5halftrack",
+		"russu76", "russu76", "russu76",
 	},
 	rustankyard = { 
-		-- might work tank yard
+		--  works so far Journier
 		"rust70", "rust3476", "rust3476",
 		"rust3476", "rust3476", "rusisu152",
 	},
 		
+		--Germany
+	gerhq = { 
+		-- added by journier may work
+		"gerhqengineer", "gerhqengineer", 
+		"ger_platoon_hq", "ger_platoon_hq", "ger_platoon_hq", 
+		"ger_platoon_hq", "ger_platoon_hq",
+	},
+		
+	gerbarracks = {
+		-- added by Journier may work
+		"gerengineer", "gerengineer",
+		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
+		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
+		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar", 
+		"gerleig18_bax"
+	},
+	
+	gervehicleyard = {
+		-- added by journier might work
+		"gersdkfz9", 
+		"gersdkfz250", "gersdkfz250", "gersdkfz250",
+		"germarder",
+		"gersdkfz251",
+		"gersdkfz250", "gersdkfz250", "gersdkfz250",
+		"germarder",
+		"gersdkfz251",
+	},
+	
+	gertankyard = {
+		-- added by journier may work
+		"gerpanzerIII", "gerpanzerIII", "gerpanzerIII", 
+		"gerstugIII", "gerstugIII", "gerstugIII",
+		"gertiger",
+	},
 }
 
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
@@ -93,9 +140,20 @@ gadget.baseBuildOrder = {
 		"rusbarracks", "rusbarracks", "rusbarracks",
 		"ruspshack", "ruspshack",
 		"russtorage", "russtorage", "russtorage",
-		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard",
+		"rusvehicleyard", "rusvehicleyard",
+		"russupplydepot", "russupplydepot",
+		"rustankyard", "rustankyard",
 		
 	},
+	ger = { 
+		-- might work added by Journier
+		"gerbarracks", "gerbarracks", "gerbarracks", 
+		"gerstorage",
+		"gervehicleyard", "gervehicleyard",
+		"gerstorage",
+		"gertankyard", "gertankyard",
+	},
+	
 }
 
 -- this lists all the units (of all sides) that are considered "base builders"
