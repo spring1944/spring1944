@@ -14,8 +14,10 @@ gadget.unitBuildOrder = {
 	-- Great Britain
 	gbrhq = {
 		"gbrhqengineer", "gbrhqengineer",
-		"gbr_platoon_hq", "gbr_platoon_hq", "gbr_platoon_hq", "gbr_platoon_hq",
-		"gbr_platoon_hq", "gbr_platoon_hq", "gbr_platoon_hq", "gbr_platoon_hq",
+		"gbr_platoon_hq", "gbr_platoon_hq", 
+		"gbr_platoon_hq", "gbr_platoon_hq",
+		"gbr_platoon_hq", "gbr_platoon_hq", 
+		"gbr_platoon_hq", "gbr_platoon_hq",
 	},
 	gbrbarracks = {
 		"gbrengineer", "gbrengineer",
@@ -38,13 +40,11 @@ gadget.unitBuildOrder = {
 	},
 	-- it can not upgrade tank yard yet!
 	gbrtankyard = {
-		"gbrcromwell", "gbrcromwell", "gbrcromwell",
-		"gbrshermanfirefly", "gbrshermanfirefly",
-		"gbrcromwellmkvi",
-		"gbraecmkII", 
-		
+		"gbrcromwell", "gbrcromwell", 
+		"gbrcromwell", "gbrshermanfirefly", 
+		"gbrshermanfirefly", "gbrcromwellmkvi",
+		"gbraecmkII", 	
 	},
-	
 	-- Russia
 	rusbarracks = {
 		"rusengineer", "rusengineer",
@@ -57,49 +57,46 @@ gadget.unitBuildOrder = {
 		"rus_platoon_rifle", "rus_platoon_sniper",
 		"rus_platoon_rifle", "rus_platoon_rifle",
 	},
-	
 	ruspshack = { 
 		"rus_platoon_partisan",
-	},
-	
+	},	
 	rusvehicleyard = {
 		-- works so far added by Journier
 		"rusk31", 
 		"rusba64",
-		"rust60", "rust60", "rust60", 
-		"rusba64",
+		"rust60", "rust60", 
+		"rust60", "rusba64",
 		"rusm5halftrack", 
-		"rust60", "rust60", "rust60",
-		"rusba64",
+		"rust60", "rust60", 
+		"rust60", "rusba64",
 		"rusm5halftrack",
-		"russu76", "russu76", "russu76",
-		"rusba64",
+		"russu76", "russu76",
+		"russu76", "rusba64",
 		"rusm5halftrack",
-		"russu76", "russu76", "russu76",
+		"russu76", "russu76",
+		"russu76",
 	},
 	rustankyard = { 
-		--  works so far Journier
-		"rust70", "rust3476", "rust3476",
-		"rust3476", "rust3476", "rusisu152",
-	},
-		
-		--Germany
+		-- works so far Journier
+		"rust70", "rust3476", 
+		"rust3476", "ust3476", 
+		"rust3476", "rusisu152",
+	},		
+	-- Germany
 	gerhq = { 
 		-- added by journier may work
 		"gerhqengineer", "gerhqengineer", 
 		"ger_platoon_hq", "ger_platoon_hq", "ger_platoon_hq", 
 		"ger_platoon_hq", "ger_platoon_hq",
-	},
-		
+	},		
 	gerbarracks = {
 		-- added by Journier may work
 		"gerengineer", "gerengineer",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar", 
-		"gerleig18_bax"
+		"gerleig18_bax",
 	},
-	
 	gervehicleyard = {
 		-- added by journier might work
 		"gersdkfz9", 
@@ -110,7 +107,6 @@ gadget.unitBuildOrder = {
 		"germarder",
 		"gersdkfz251",
 	},
-	
 	gertankyard = {
 		-- added by journier may work
 		"gerpanzerIII", "gerpanzerIII", "gerpanzerIII", 
@@ -118,7 +114,6 @@ gadget.unitBuildOrder = {
 		"gertiger",
 	},
 }
-
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
 gadget.baseBuildOrder = {
 	gbr = {
