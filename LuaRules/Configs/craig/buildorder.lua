@@ -53,11 +53,23 @@ gadget.unitBuildOrder = {
 		"rus_platoon_rifle", "rus_platoon_sniper",
 		"rus_platoon_rifle", "rus_platoon_rifle",
 	},
+	
+	ruspshack = { 
+		"rus_platoon_partisan"
+	},
+	
 	rusvehicleyard = {
 		-- might work Journier added rusvehicleyard.
+		"rusk31", 
 		"rust60", "rust60", "rust60",
 		"russu76", "russu76", "russu76", 
 	},
+	rustankyard = { 
+		-- might work tank yard
+		"rust70", "rust3476", "rust3476",
+		"rust3476", "rust3476", "rusisu152",
+	},
+		
 }
 
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
@@ -79,6 +91,7 @@ gadget.baseBuildOrder = {
 		"ruscommissar", "ruscommissar", -- due to unconventional build tree setup
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
+		"ruspshack", "ruspshack",
 		"russtorage", "russtorage", "russtorage",
 		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard",
 		
