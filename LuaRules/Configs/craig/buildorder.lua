@@ -43,7 +43,7 @@ gadget.unitBuildOrder = {
 		"gbrcromwell", "gbrcromwell", 
 		"gbrcromwell", "gbrshermanfirefly", 
 		"gbrshermanfirefly", "gbrcromwellmkvi",
-		"gbraecmkII", 	
+		"gbraecmkii", 	
 	},
 	-- Russia
 	rusbarracks = {
@@ -109,8 +109,8 @@ gadget.unitBuildOrder = {
 	},
 	gertankyard = {
 		-- added by journier may work
-		"gerpanzerIII", "gerpanzerIII", "gerpanzerIII", 
-		"gerstugIII", "gerstugIII", "gerstugIII",
+		"gerpanzeriii", "gerpanzeriii", "gerpanzeriii", 
+		"gerstugiii", "gerstugiii", "gerstugiii",
 		"gertiger",
 	},
 }
