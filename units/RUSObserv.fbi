@@ -53,8 +53,6 @@
 	weapon1=TT33;
 	badtargetcategory1=LIGHTVEH;
 	onlytargetcategory1=INFTARG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=160;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;

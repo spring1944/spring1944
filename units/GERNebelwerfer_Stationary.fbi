@@ -50,7 +50,7 @@
 	weapon1=Nebelwerfer41;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
-	maxangledif1=90;
+	maxangledif1=10;
 
 	[sfxtypes]
 	{

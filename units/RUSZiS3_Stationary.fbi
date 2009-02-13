@@ -53,7 +53,7 @@
 	weapon2=ZiS376mmAP;
 	onlytargetcategory2=TANK;
 	weaponmaindir2=0 0 1;
-	maxangledif2=90;
+	maxangledif2=45;
 	
 	[sfxtypes]
 	{

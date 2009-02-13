@@ -50,7 +50,7 @@
 	weapon1=M2HE;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
-	maxangledif1=90;
+	maxangledif1=25;
 
 	[sfxtypes]
 	{

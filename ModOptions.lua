@@ -99,9 +99,67 @@ local options = {
         name = 'High - 2.5 minute gap',
         desc = 'Abundant logistics supply. Supply deliveries arrive early and often, allowing for much more aggressive play.',
       },
+	 },
     },
-  },
-  
+   {
+      key="scoremode",
+      name="Score Mode",
+      desc="How are control points scored?",
+      type="list",
+      def="disabled",
+      items = {
+         {
+		 key = "disabled",
+		 name = "Disabled",
+		 desc = "Disables ticket scoring mode",
+		 },
+         {
+		 key = "countdown",
+		 name = "Count Down",
+		 desc = "Points reduce enemy score, score cannot be regained",
+		 },
+         {
+		 key = "tugowar",
+		 name = "Tug o'War",
+		 desc = "Points steal enemy score, owner gains score" ,
+		 },
+         {
+		 key = "multidomination",
+		 name = "Multi Domination",
+		 desc = "Hold all points for 20 seconds to score",
+		 },
+      },
+   },
+  {
+      key="starttime",
+      name="Start Time",
+      desc="When the capturing of points can begin.",
+      type="list",
+      def="5",
+      items = {
+         { key = "0", name = "0", desc = "0 minutes", },
+         { key = "2", name = "2", desc = "2 minutes", },
+         { key = "3", name = "3", desc = "3 minutes", },
+         { key = "5", name = "5", desc = "5 minutes", },
+         { key = "10", name = "10", desc = "10 minutes", },
+      },
+   },
+   {
+      key="limitscore",
+      name="Score Limit",
+      desc="Score players start at or have to reach (depending on mode)",
+      type="list",
+      def="1000",
+      items = {
+         { key = "200", name = "200", desc = "Very Short", },
+         { key = "500", name = "500", desc = "Short", },
+         { key = "1000", name = "1000", desc = "Average", },
+         { key = "2000", name = "2000", desc = "Long", },
+         { key = "3000", name = "3000", desc = "Insane!", },
+      },
+   },   
+   
+     
 	--[[{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
@@ -206,5 +264,4 @@ local options = {
     step   = 1,
   }]]--
 }
-
 return options

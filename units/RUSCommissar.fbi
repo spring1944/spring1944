@@ -40,11 +40,11 @@
 	init_cloaked=1;
 	cloakcost=0;
 	cloakcostmoving=0;
-	mincloakdistance=300;
+	mincloakdistance=225;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;
-	maxvelocity=1.45;
+	maxvelocity=1.6;
 	acceleration=0.375;
 	brakerate=0.9;
 	turnrate=1010;
