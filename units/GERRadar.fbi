@@ -1,0 +1,50 @@
+[unitinfo]
+{
+	unitname=GERRadar;
+	objectname=GERRadar.S3O;
+	icontype=radar;
+	soundcategory=Nothing;
+	category=metal level1 NOWEAPON FLAG;
+	tedclass=METAL;
+	yardmap=ooooooooo;
+
+	name=Freya Air Control Radar;
+	description=Detects and Controls Aircraft;
+	side=GER;
+	maxdamage=5000;
+	buildcostmetal=1;
+	buildcostenergy=0;
+	buildtime=150;
+	footprintx=5;
+	footprintz=5;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+	levelground=0;
+
+	energyuse=0;
+	windgenerator=0.000001;
+	
+	radardistance=20000;
+	sightdistance=0;
+	stealth=1;
+
+	onoffable=1;
+	activatewhenbuilt=1;
+
+	maxslope=20;
+	maxwaterdepth=255;
+
+	explodeas=Flag;
+	selfdestructas=Flag;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+	}
+}
