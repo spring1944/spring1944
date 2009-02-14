@@ -1,7 +1,7 @@
 function gadget:GetInfo()
 	return {
-		name      = "Test",
-		desc      = "Test",
+		name      = "Spring: 1944 Planes",
+		desc      = "Allows structures to order aircraft sorties.",
 		author    = "Evil4Zerggin",
 		date      = "13 February 2008",
 		license   = "GNU LGPL, v2.1 or later",
@@ -20,6 +20,7 @@ local PATROL_DISTANCE = 1000
 local FORMATION_SEPARATION = 64
 local DIAG_FORMATION_SEPARATION = FORMATION_SEPARATION * sqrt(2)
 local RETREAT_TOLERANCE = 64 --retreating planes disappear when they reach this distance from the map edge
+local CRUISE_SPEED = 0.75
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
 
@@ -39,6 +40,7 @@ local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitPosition = Spring.GetUnitPosition
 local GetGameFrame = Spring.GetGameFrame
 local GetGroundHeight = Spring.GetGroundHeight
+local SendMessageToTeam = Spring.SendMessageToTeam
 
 local vNormalized = GG.Vector.Normalized
 local vRotateY = GG.Vector.RotateY
@@ -50,6 +52,7 @@ local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
 local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
 local CMDTYPE_ICON_UNIT_OR_MAP = CMDTYPE.ICON_UNIT_OR_MAP
+local CMD_IDLEMODE = CMD.IDLEMODE
 local CMD_MOVE = CMD.MOVE
 local CMD_PATROL = CMD.PATROL
 local CMD_ATTACK = CMD.ATTACK
@@ -155,18 +158,22 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	end
 	
 	local unitDef = UnitDefNames[unitname]
-	local speed = unitDef.speed / 30
+	--local speed = unitDef.speed / 30
+	local drag = unitDef.drag
+	local speed = unitDef.maxAcc * (1 - drag) / drag * CRUISE_SPEED
 	local altitude = unitDef.wantedHeight
 	sy = sy + altitude
 	local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
 	SetUnitPosition(unitID, sx, sy, sz)
 	SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
 	SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
+	GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
 	if waypoint then
-		GiveOrderToUnit(unitID, CMD_MOVE, waypoint, {})
+		GiveOrderToUnit(unitID, CMD_MOVE, waypoint, {"shift"})
 	end
 	if #cmdParams == 1 then
 		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
+		
 	else
 		GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
 	end
@@ -202,9 +209,14 @@ local function SpawnFlight(teamID, units, sx, sy, sz, cmdParams)
 	local tx, ty, tz
 	if #cmdParams == 1 then
 		tx, ty, tz = GetUnitPosition(cmdParams[1])
+		if not tx then
+			tx, ty, tz = GetTeamStartPosition(teamID)
+			cmdParams = {tx, ty, tz}
+		end
 	else
 		tx, ty, tz = cmdParams[1], cmdParams[2], cmdParams[3]
 	end
+	
 	local dx, dy, dz, dist = vNormalized(tx - sx, 0, tz - sz)
 	local rotation = atan2(dx, dz)
 	
@@ -254,7 +266,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-	if planeStates[unitID] == PLANE_STATE_RETREAT then
+	local planeState = planeStates[unitID]
+	if planeState == PLANE_STATE_RETREAT or (planeState and cmdID == CMD_IDLEMODE) then
 		return false
 	end
 	
@@ -276,8 +289,10 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		orderedSorties[targetFrame][#orderedSorties+1] = {
 			sortie,
 			teamID,
-			cmdParams
+			cmdParams, 
 		}
+		
+		SendMessageToTeam(teamID, (sortie.name or "") .. " sortie ordered. ETA " .. (sortie.delay or 0) .. "s.")
 	end
 	
 	return false
@@ -293,8 +308,9 @@ function gadget:GameFrame(n)
 			local cmdParams = info[3]
 			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
 			SpawnFlight(teamID, sortie.units, sx, sy, sz, cmdParams)
+			SendMessageToTeam(teamID, (sortie.name or "") .. " sortie arrived.")
 		end
-		orderedSorties[n] = nil --delete
+		orderedSorties[n] = nil --don't need this information anymore
 	end
 	
 	for unitID, state in pairs(planeStates) do
