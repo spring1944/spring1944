@@ -72,7 +72,7 @@
 	steeringmode=1;
 	maneuverleashlength=1280;
 	seismicsignature=0;
-	Maxfuel=200;
+	Maxfuel=60;
 	RefuelTime=10;
 	shownanoframe=0;
 
