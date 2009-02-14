@@ -69,6 +69,7 @@ local strSub = string.sub
 
 local GL_QUADS = GL.QUADS
 local GL_QUAD_STRIP = GL.QUAD_STRIP
+local GL_LINE_STRIP = GL.LINE_STRIP
 local GL_LINE_LOOP = GL.LINE_LOOP
 local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
 local GL_TRIANGLES = GL.TRIANGLES
@@ -390,20 +391,13 @@ local function DrawGEPip(color, highlightColor)
 		{v = {1, 0, 0}, c = highlightColor},
 	}
 	
-	local lineVertices = {
-		{v = {1, 0, 0}},
-		{v = {0, 1, 0}},
-		{v = {-1, 0, 0}},
-		{v = {0, -1, 0}},
-	}
-	
 	local angle = rad(-45)
 	local increment = rad(7.5)
 	
 	for i=1,6 do
 		angle = angle + increment
 		triangleVertices[i*2+1] = {
-			v = {0.5 * (1 - tan(angle)), 0.5 * (1 + tan(angle)), 0},
+			v = {0.5 * (1 - tan(angle)) - 0.03125, 0.5 * (1 + tan(angle)) - 0.03125, 0},
 			c = color,
 		}
 		
@@ -414,14 +408,31 @@ local function DrawGEPip(color, highlightColor)
 		}
 	end
 	
+	local lineVertices = OutlineTriangleLoopVertices(triangleVertices)
+	
 	glPushMatrix()
 		for i=1,4 do
 			glShape(GL_TRIANGLE_FAN, triangleVertices)
+			glColor(0, 0, 0, 1)
+			glShape(GL_LINE_STRIP, lineVertices)
 			glRotate(90, 0, 0, 1)
 		end
 	glPopMatrix()
-	glColor(0, 0, 0, 1)
-	glShape(GL_LINE_LOOP, lineVertices)
+	
+	glPushMatrix()
+		glScale(0.375, 0.375, 0.375)
+		DrawCircle(highlightColor, color, 16)
+	glPopMatrix()
+	
+	glPushMatrix()
+		glScale(0.25, 0.25, 0.25)
+		DrawCircle(highlightColor, color, 16)
+	glPopMatrix()
+	
+	glPushMatrix()
+		glScale(0.125, 0.125, 0.125)
+		DrawCircle(highlightColor, color, 16)
+	glPopMatrix()
 end
 
 local function DrawShoulder(color, highlightColor)
@@ -693,7 +704,7 @@ local function CreateRULists()
 	
 	local function LargeStar()
 		glPushMatrix()
-			glScale(2, 2, 2)
+			glScale(3, 3, 3)
 			DrawStar(darkRed, red)
 		glPopMatrix()
 	end
@@ -793,6 +804,8 @@ local function CreateRULists()
 	end
 	
 	local function Colonel()
+		TwoLines()
+		
 		glPushMatrix()
 			glTranslate(0, 0.5, 0)
 			SmallStar()
@@ -847,7 +860,7 @@ local function CreateRULists()
 	local function ChiefMarshal()
 		glColor(1, 1, 1, 1)
 		glTexture(IMAGE_DIRNAME .. "RUWreath.png")
-		glTexRect(-2, -2, 2, 2)
+		glTexRect(-3, -3, 3, 3)
 		glTexture(false)
 		LargeStar()
 	end
@@ -855,7 +868,7 @@ local function CreateRULists()
 	local function MarshalOfTheSovietUnion()
 		glColor(1, 1, 1, 1)
 		glTexture(IMAGE_DIRNAME .. "RUMarshal.png")
-		glTexRect(-2, -2, 2, 2)
+		glTexRect(-3, -3, 3, 3)
 		glTexture(false)
 	end
 	
