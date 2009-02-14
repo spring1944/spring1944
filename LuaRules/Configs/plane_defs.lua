@@ -1,7 +1,21 @@
+--[[
+	format:
+	radiotowershortname = {sortie, sortie...}
+	sortie = {
+		name = string (default ""), 
+		shortname = string (default nil),
+		cost = number (required), 
+		delay = number (default 1 frame), 
+		cursor = string (default "Attack"), 
+		units = {unitname, unitname...} (required)
+	}
+]]
+
 local planeDefs = {
 	gbrflag = {
 		{
 			name = "Recon Plane",
+			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
@@ -9,7 +23,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Attack Fighters",
+			name = "Attack Fighter",
+			shortname = "AF",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -20,7 +35,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Fighter-Bombers",
+			name = "Fighter-Bomber",
+			shortname = "FB",
 			cost = 4000,
 			delay = 15,
 			units = {
@@ -32,6 +48,7 @@ local planeDefs = {
 		},
 		{
 			name = "Ground-Attack Aircraft",
+			shortname = "GA",
 			cost = 5000,
 			delay = 15,
 			units = {
@@ -45,6 +62,7 @@ local planeDefs = {
 	gerflag = {
 		{
 			name = "Recon Plane",
+			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
@@ -52,7 +70,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Attack Fighters",
+			name = "Attack Fighter",
+			shortname = "AF",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -63,7 +82,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Fighter-Bombers",
+			name = "Fighter-Bomber",
+			shortname = "FB",
 			cost = 4000,
 			delay = 15,
 			units = {
@@ -75,6 +95,7 @@ local planeDefs = {
 		},
 		{
 			name = "Ground-Attack Aircraft",
+			shortname = "GA",
 			cost = 5000,
 			delay = 15,
 			units = {
@@ -88,6 +109,7 @@ local planeDefs = {
 	rusflag = {
 		{
 			name = "Recon Plane",
+			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
@@ -95,7 +117,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Attack Fighters",
+			name = "Attack Fighter",
+			shortname = "AF",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -107,6 +130,7 @@ local planeDefs = {
 		},
 		{
 			name = "Ground-Attack Aircraft",
+			shortname = "GA",
 			cost = 5000,
 			delay = 15,
 			units = {
@@ -120,6 +144,7 @@ local planeDefs = {
 	usflag = {
 		{
 			name = "Recon Plane",
+			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
@@ -127,7 +152,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Attack Fighters",
+			name = "Attack Fighter",
+			shortname = "AF",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -138,7 +164,8 @@ local planeDefs = {
 			},
 		},
 		{
-			name = "Fighter-Bombers",
+			name = "Fighter-Bomber",
+			shortname = "FB",
 			cost = 4000,
 			delay = 15,
 			units = {
@@ -150,6 +177,7 @@ local planeDefs = {
 		},
 		{
 			name = "Ground-Attack Aircraft",
+			shortname = "GA",
 			cost = 5000,
 			delay = 15,
 			units = {

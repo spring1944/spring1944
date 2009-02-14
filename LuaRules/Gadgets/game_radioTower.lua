@@ -9,7 +9,7 @@ function gadget:GetInfo()
     date      = "Dec 15, 2008",
     license   = "CC attribution-noncommerical 3.0 or later",
     layer     = 0,
-    enabled   = true  --  loaded by default?
+    enabled   = false  --  loaded by default?
   }
 end
 	

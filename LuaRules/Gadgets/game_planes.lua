@@ -56,7 +56,7 @@ local CMD_ATTACK = CMD.ATTACK
 local CMD_OPT_SHIFT = CMD.OPT_SHIFT
 
 ----------------------------------------------------------------
---init
+--cmds
 ----------------------------------------------------------------
 --unitname = sorties
 local planeDefs = VFS.Include("LuaRules/Configs/plane_defs.lua")
@@ -80,13 +80,55 @@ local function GetDefaultTexture(sortie)
 	return "unitpics/" .. unitDef.buildpicname
 end
 
+local function GetDefaultTooltip(sortie)
+	local planeList = {}
+	local units = sortie.units
+	local duration = 0
+	for i=1,#units do
+		local unitDef = UnitDefNames[units[i]]
+		local planeName = unitDef.humanName
+		local fuel = unitDef.maxFuel
+		if fuel > 0 and duration then
+			if fuel > duration then
+				duration = fuel
+			end
+		else
+			duration = nil
+		end
+		
+		if planeList[planeName] then
+			planeList[planeName] = planeList[planeName] + 1
+		else
+			planeList[planeName] = 1
+		end
+	end
+	
+	local planeString = ""
+	local notFirst = false
+	for planeName, count in pairs(planeList) do
+		if notFirst then
+			planeString = planeString .. ", "
+		else
+			notFirst = true
+		end
+		planeString = planeString .. count .. "x " .. planeName
+	end
+	
+	local result = "Order " .. (sortie.name or "") .. " Sortie (" .. planeString .. ")\n"
+		.. "Command Cost " .. sortie.cost .. "\n"
+		.. "Delay " .. (sortie.delay or 0) .. "s\n"
+		.. "Duration " .. (duration or "Permanent") .. "s"
+	
+	return result
+end
+
 local function BuildCmdDesc(sortie)
 	result = {
 		id = currCmdID,
 		type = CMDTYPE_ICON_UNIT_OR_MAP,
-		name = sortie.name,
-		cursor = "Attack",
-		tooltip = sortie.tooltip,
+		name = sortie.shortname,
+		cursor = sortie.cursor or "Attack",
+		tooltip = sortie.tooltip or GetDefaultTooltip(sortie),
 		texture = sortie.texture or GetDefaultTexture(sortie),
 	}
 	
@@ -195,6 +237,10 @@ local function GetSpawnPoint(teamID, numPlanes)
 	local rx, ry, rz = vNearestMapEdge(sx, sy, sz, margin)
 	return rx, ry, rz
 end
+
+----------------------------------------------------------------
+--callins
+----------------------------------------------------------------
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local unitDef = UnitDefs[unitDefID]
