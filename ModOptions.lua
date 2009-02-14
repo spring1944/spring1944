@@ -113,15 +113,15 @@ local options = {
 		 name = "Disabled",
 		 desc = "Disables ticket scoring mode",
 		 },
-         {
+       --[[  {
 		 key = "countdown",
 		 name = "Count Down",
 		 desc = "Points reduce enemy score, score cannot be regained",
-		 },
+		 },]]--
          {
 		 key = "tugowar",
-		 name = "Tug o'War",
-		 desc = "Points steal enemy score, owner gains score" ,
+		 name = "Ticket Bleed",
+		 desc = "Owning more flags than the enemy causes them to lose tickets. When a team hits zero, they are eliminated." ,
 		 },
          {
 		 key = "multidomination",

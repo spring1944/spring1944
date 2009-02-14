@@ -21,7 +21,7 @@ local dominationScoreTime = 30 --Time needed holding all points to score in mult
 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 Spring.Echo("+++++++++++++++++++++++++++++++++++++++++++++++++++++++ "..(Spring.GetModOptions().scoremode or "nil!"))
-if Spring.GetModOptions().scoremode == "disabled" then return false end
+if Spring.GetModOptions().scoremode == "disabled" or Spring.GetModOptions().scoremode == nil then return false end
 
 local limitScore = tonumber(Spring.GetModOptions().limitscore) or 200
 
@@ -110,7 +110,7 @@ function gadget:GameFrame(f)
             local unitOwner = Spring.GetUnitAllyTeam(u)
 			local unitDefID = Spring.GetUnitDefID(u)
 			local ud = UnitDefs[unitDefID]
-		   if (ud.customParams.flagcaprate ~= nil) then
+		   if (ud.customParams.flagcaprate ~= nil) or ((ud.customParams.flag == 1) and (unitOwner ~= GAIA_TEAM_ID)) then
 	            if owner then
 	               if owner == unitOwner then
 	                  count = 0
@@ -209,18 +209,6 @@ function gadget:GameFrame(f)
    end
 end
 
-
-function gadget:AllowUnitCreation(unit, builder, team, x, y, z)
-    for _,p in pairs(points) do
-       if x and math.sqrt((x-p.x)*(x-p.x) + (z-p.z)*(z-p.z)) < captureRadius then
-          Spring.SendMessageToPlayer(team, "Cannot build units in a control point")
-           return false
-       end
-    end
-   return true
-end
-
-
 else
 
 --UNSYNCED
@@ -249,7 +237,7 @@ local function DrawPoints()
          end
       end
       Color(r,g,b,1)
-      DrawGroundCircle(p.x,p.y,p.z,captureRadius,30)
+     -- DrawGroundCircle(p.x,p.y,p.z,captureRadius,30)
       if p.capture > 0 then
          PushMatrix()
          Translate(p.x,p.y + 100,p.z)
