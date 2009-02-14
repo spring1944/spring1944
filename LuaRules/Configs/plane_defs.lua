@@ -3,7 +3,7 @@ local planeDefs = {
 		{
 			name = "Recon Plane",
 			cost = 500,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gbrauster",
 			},
@@ -11,7 +11,7 @@ local planeDefs = {
 		{
 			name = "Attack Fighters",
 			cost = 3000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gbrspitfiremkxiv",
 				"gbrspitfiremkxiv",
@@ -22,7 +22,7 @@ local planeDefs = {
 		{
 			name = "Fighter-Bombers",
 			cost = 4000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gbrspitfiremkix",
 				"gbrspitfiremkix",
@@ -33,7 +33,7 @@ local planeDefs = {
 		{
 			name = "Ground-Attack Aircraft",
 			cost = 5000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gbrtyphoon",
 				"gbrtyphoon",
@@ -46,7 +46,7 @@ local planeDefs = {
 		{
 			name = "Recon Plane",
 			cost = 500,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gerfi156",
 			},
@@ -54,7 +54,7 @@ local planeDefs = {
 		{
 			name = "Attack Fighters",
 			cost = 3000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gerfw190",
 				"gerfw190",
@@ -65,7 +65,7 @@ local planeDefs = {
 		{
 			name = "Fighter-Bombers",
 			cost = 4000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gerfw190g",
 				"gerfw190g",
@@ -76,7 +76,7 @@ local planeDefs = {
 		{
 			name = "Ground-Attack Aircraft",
 			cost = 5000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"gerju87g",
 				"gerju87g",
@@ -89,7 +89,7 @@ local planeDefs = {
 		{
 			name = "Recon Plane",
 			cost = 500,
-			delay = 10,
+			delay = 15,
 			units = {
 				"ruspo2",
 			},
@@ -97,7 +97,7 @@ local planeDefs = {
 		{
 			name = "Attack Fighters",
 			cost = 3000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"rusyak3",
 				"rusyak3",
@@ -108,7 +108,7 @@ local planeDefs = {
 		{
 			name = "Ground-Attack Aircraft",
 			cost = 5000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"rusil2",
 				"rusil2",
@@ -121,7 +121,7 @@ local planeDefs = {
 		{
 			name = "Recon Plane",
 			cost = 500,
-			delay = 10,
+			delay = 15,
 			units = {
 				"usl4",
 			},
@@ -129,7 +129,7 @@ local planeDefs = {
 		{
 			name = "Attack Fighters",
 			cost = 3000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"usp51dmustang",
 				"usp51dmustang",
@@ -140,7 +140,7 @@ local planeDefs = {
 		{
 			name = "Fighter-Bombers",
 			cost = 4000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"usp47thunderbolt",
 				"usp47thunderbolt",
@@ -151,7 +151,7 @@ local planeDefs = {
 		{
 			name = "Ground-Attack Aircraft",
 			cost = 5000,
-			delay = 10,
+			delay = 15,
 			units = {
 				"usp51dmustangga",
 				"usp51dmustangga",

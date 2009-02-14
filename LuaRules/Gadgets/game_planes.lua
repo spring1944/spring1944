@@ -3,8 +3,8 @@ function gadget:GetInfo()
 		name      = "Test",
 		desc      = "Test",
 		author    = "Evil4Zerggin",
-		date      = "Whenever",
-		license   = "Whatever",
+		date      = "13 February 2008",
+		license   = "GNU LGPL, v2.1 or later",
 		layer     = -5,
 		enabled   = true  --  loaded by default?
 	}
@@ -12,8 +12,14 @@ end
 
 if not gadgetHandler:IsSyncedCode() then return end
 
+local sqrt = math.sqrt
+local sin, cos, atan2 = math.sin, math.cos, math.atan2
+
 local CMD_PLANES = 34400
-local FORMATION_SEPARATION = 128
+local PATROL_DISTANCE = 1000
+local FORMATION_SEPARATION = 64
+local DIAG_FORMATION_SEPARATION = FORMATION_SEPARATION * sqrt(2)
+local RETREAT_TOLERANCE = 64 --retreating planes disappear when they reach this distance from the map edge
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
 
@@ -30,10 +36,15 @@ local UseUnitResource = Spring.UseUnitResource
 local GetUnitFuel = Spring.GetUnitFuel
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
+local GetUnitPosition = Spring.GetUnitPosition
 local GetGameFrame = Spring.GetGameFrame
+local GetGroundHeight = Spring.GetGroundHeight
 
-local sqrt = math.sqrt
-local sin, cos, atan2 = math.sin, math.cos, math.atan2
+local vNormalized = GG.Vector.Normalized
+local vRotateY = GG.Vector.RotateY
+local vClampToMapSize = GG.Vector.ClampToMapSize
+local vNearestMapEdge = GG.Vector.NearestMapEdge
+local vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
 
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
@@ -41,197 +52,158 @@ local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
 local CMDTYPE_ICON_UNIT_OR_MAP = CMDTYPE.ICON_UNIT_OR_MAP
 local CMD_MOVE = CMD.MOVE
 local CMD_PATROL = CMD.PATROL
+local CMD_ATTACK = CMD.ATTACK
 local CMD_OPT_SHIFT = CMD.OPT_SHIFT
 
 ----------------------------------------------------------------
 --init
 ----------------------------------------------------------------
---unitname = missions
+--unitname = sorties
 local planeDefs = VFS.Include("LuaRules/Configs/plane_defs.lua")
 
---cmdID = mission
+--cmdID = sortie
 local planeCmdIDs = {}
 
 --unitID = state
 local planeStates = {}
 
---framenum = {missions}
-local orderedMissions = {}
+--framenum = {sorties}
+local orderedSorties = {}
 
 local currCmdID = CMD_PLANES
 
-local function GetDefaultTexture(mission)
-	local unitname = mission.units[1]
+local function GetDefaultTexture(sortie)
+	local unitname = sortie.units[1]
 	local unitDef = UnitDefNames[unitname]
 	if not unitDef then return end
 	
 	return "unitpics/" .. unitDef.buildpicname
 end
 
-local function BuildCmdDesc(mission)
+local function BuildCmdDesc(sortie)
 	result = {
 		id = currCmdID,
-		type = CMDTYPE_ICON_MAP,
-		name = mission.name,
+		type = CMDTYPE_ICON_UNIT_OR_MAP,
+		name = sortie.name,
 		cursor = "Attack",
-		tooltip = mission.tooltip,
-		texture = mission.texture or GetDefaultTexture(mission),
+		tooltip = sortie.tooltip,
+		texture = sortie.texture or GetDefaultTexture(sortie),
 	}
 	
-	planeCmdIDs[currCmdID] = mission
+	planeCmdIDs[currCmdID] = sortie
 	
 	currCmdID = currCmdID + 1 
 	
 	return result
 end
 
-for radioTowerID, missions in pairs(planeDefs) do
-	for i=1,#missions do
-		missions[i].cmdDesc = BuildCmdDesc(missions[i])
+for radioTowerID, sorties in pairs(planeDefs) do
+	for i=1,#sorties do
+		sorties[i].cmdDesc = BuildCmdDesc(sorties[i])
 	end
 end
 
 ----------------------------------------------------------------
---helpers
+--spawning
 ----------------------------------------------------------------
-local function AddVectors(u, v)
-	local result = {}
-	for i = 1, #u do
-		result[i] = u[i] + v[i]
-	end
-	return result
-end
 
-local function SubtractVectors(u, v)
-	local result = {}
-	for i = 1, #u do
-		result[i] = u[i] - v[i]
+local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, rotation, waypoint)
+	if #cmdParams == 3 then
+		cmdParams[1], cmdParams[2], cmdParams[3] = vClampToMapSize(cmdParams[1], cmdParams[2], cmdParams[3])
 	end
-	return result
-end
-
-local function ScaleVector(c, v)
-	local result = {}
-	for i = 1, #v do
-		result[i] = c * v[i]
-	end
-	return result
-end
-
-local function VectorMagnitude(v)
-	local resultSq = 0
-	for i=1, #v do
-		resultSq = resultSq + v[i] * v[i]
-	end
-	return sqrt(resultSq)
-end
-
-local function VectorNormalize(v)
-	local mag = VectorMagnitude(v)
-	local result = {}
-	for i=1, #v do
-		result[i] = v[i] / mag
-	end
-	return result
-end
-
-local function ClampVectorToMap(v)
-	local x, y, z = v[1], v[2], v[3]
-	if x < 0 then 
-		x = 0 
-	elseif x > mapSizeX then
-		x = mapSizeX
-	end
-	if z < 0 then 
-		z = 0 
-	elseif z > mapSizeZ then
-		z = mapSizeZ
-	end
-	
-	return {x, y, z}
-end
-
-local function RotateVectorByHeading(v, heading)
-	local sinHeading = sin(heading)
-	local cosHeading = cos(heading)
-	return {v[1] * cosHeading + v[3] * sinHeading, v[2], v[3] * cosHeading - v[1] * sinHeading}
-end
-
-local function SpawnPlane(teamID, unitname, pos, target, dir, rotation)
-	target = ClampVectorToMap(target)
-	local x, y, z = pos[1], pos[2], pos[3]
 	
 	local unitDef = UnitDefNames[unitname]
-	local speed = unitDef.speed
+	local speed = unitDef.speed / 30
 	local altitude = unitDef.wantedHeight
-	local velocity = ScaleVector(speed / 120, dir)
-	y = y + altitude
-	local unitID = CreateUnit(unitname, x, y, z, 0, teamID)
-	SetUnitPosition(unitID, x, y, z)
-	SetUnitRotation(unitID, 0, rotation, 0)
-	SetUnitVelocity(unitID, velocity[1], velocity[2], velocity[3])
-	GiveOrderToUnit(unitID, CMD_MOVE, target, {})
-	GiveOrderToUnit(unitID, CMD_PATROL, pos, {"shift"})
+	sy = sy + altitude
+	local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
+	SetUnitPosition(unitID, sx, sy, sz)
+	SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
+	SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
+	if waypoint then
+		GiveOrderToUnit(unitID, CMD_MOVE, waypoint, {})
+	end
+	if #cmdParams == 1 then
+		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
+	else
+		GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
+	end
 	planeStates[unitID] = PLANE_STATE_ACTIVE
 end
 
-local function SpawnFlight(teamID, units, pos, target)
-	local diff = SubtractVectors(target, pos)
-	local dir = VectorNormalize(diff)
-	local rotation = -atan2(diff[1], diff[3])
-	
-	local cosRotation = cos(rotation) * FORMATION_SEPARATION
-	local sinRotation = sin(rotation) * FORMATION_SEPARATION
-	local diffRotation = cosRotation - sinRotation
-	local sumRotation = cosRotation + sinRotation
-	
-	--"deuce" formation
-	if #units == 2 then
-		local currPos = AddVectors(pos, {cosRotation, 0, -sinRotation})
-		local currTarget = AddVectors(target, {cosRotation, 0, -sinRotation})
-		SpawnPlane(teamID, units[1], currPos, currTarget, dir, rotation)
-		
-		currPos = AddVectors(pos, {cosRotation, 0, sinRotation})
-		currTarget = AddVectors(target, {cosRotation, 0, sinRotation})
-		SpawnPlane(teamID, units[2], currPos, currTarget, dir, rotation)
-		return
+local function GetFormationOffsets(numUnits, rotation)
+	local result = {}
+	if numUnits == 1 then
+		result[1] = {0, 0, 0}
+	elseif numUnits == 2 then
+		result[1] = {vRotateY(-FORMATION_SEPARATION, 0, 0, rotation)}
+		result[2] = {vRotateY(FORMATION_SEPARATION, 0, 0, rotation)}
+	else
+		local i = 1
+		local pairNum = 0
+		while true do
+			result[i] = {vRotateY(-DIAG_FORMATION_SEPARATION * pairNum, 0, -DIAG_FORMATION_SEPARATION * pairNum, rotation)}
+			i = i + 1
+			pairNum = pairNum + 1
+			if i > numUnits then break end
+			
+			result[i] = {vRotateY(DIAG_FORMATION_SEPARATION * pairNum, 0, -DIAG_FORMATION_SEPARATION * pairNum, rotation)}
+			i = i + 1
+			if i > numUnits then break end
+		end
 	end
 	
-	--single, "vic", "finger four", etc.
-	local currPos = pos
-	local currTarget = target
-	local unitname = units[1]
-	SpawnPlane(teamID, unitname, currPos, currTarget, dir, rotation)
-	
-	local i = 1
-	while true do
-		unitname = units[2*i]
-		if not unitname then return end
-		--right side
-		currPos = AddVectors(pos, {-diffRotation * i, 0, -sumRotation * i})
-		currTarget = AddVectors(target, {-diffRotation * i, 0, -sumRotation * i})
-		SpawnPlane(teamID, unitname, currPos, currTarget, dir, rotation)
-		
-		
-		unitname = units[2*i+1]
-		if not unitname then return end
-		--left side
-		currPos = AddVectors(pos, {sumRotation * i, 0, -diffRotation * i})
-		currTarget = AddVectors(target, {sumRotation * i, 0, -diffRotation * i})
-		SpawnPlane(teamID, unitname, currPos, currTarget, dir, rotation)
-		
-		i = i + 1
+	return result
+end
+
+local function SpawnFlight(teamID, units, sx, sy, sz, cmdParams)
+	local tx, ty, tz
+	if #cmdParams == 1 then
+		tx, ty, tz = GetUnitPosition(cmdParams[1])
+	else
+		tx, ty, tz = cmdParams[1], cmdParams[2], cmdParams[3]
 	end
+	local dx, dy, dz, dist = vNormalized(tx - sx, 0, tz - sz)
+	local rotation = atan2(dx, dz)
+	
+	local offsets = GetFormationOffsets(#units, rotation)
+	if dist >= PATROL_DISTANCE then
+		local wbx, wbz = sx + (dist - PATROL_DISTANCE) * dx, sz + (dist - PATROL_DISTANCE) * dz
+		for i=1, #units do
+			local offset = offsets[i]
+			local waypoint = {}
+			waypoint[1], waypoint[2], waypoint[3] = offset[1] + wbx, 0, offset[3] + wbz
+			local ux, uz = offset[1] + sx, offset[3] + sz
+			local uy = GetGroundHeight(ux, uz)
+			local unitname = units[i]
+			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint)
+		end
+	else
+		for i=1, #units do
+			local offset = offsets[i]
+			local ux, uz = offset[1] + sx, offset[3] + sz
+			local uy = GetGroundHeight(ux, uz)
+			local unitname = units[i]
+			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation)
+		end
+	end
+end
+
+local function GetSpawnPoint(teamID, numPlanes)
+	local margin = FORMATION_SEPARATION * 0.5 * (numPlanes or 0)
+	local sx, sy, sz = GetTeamStartPosition(teamID)
+	local rx, ry, rz = vNearestMapEdge(sx, sy, sz, margin)
+	return rx, ry, rz
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local unitDef = UnitDefs[unitDefID]
 	local unitDefName = unitDef.name
-	local missions = planeDefs[unitDefName]
+	local sorties = planeDefs[unitDefName]
 	
-	if not missions then return end
-	for i=1,#missions do
-		InsertUnitCmdDesc(unitID, missions[i].cmdDesc)
+	if not sorties then return end
+	for i=1,#sorties do
+		InsertUnitCmdDesc(unitID, sorties[i].cmdDesc)
 	end
 end
 
@@ -240,19 +212,23 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		return false
 	end
 	
-	local mission = planeCmdIDs[cmdID]
-	if not mission then
+	local sortie = planeCmdIDs[cmdID]
+	if not sortie then
 		return true
 	end
 	
-	if UseUnitResource(unitID, "m", mission.cost) then
-		local targetFrame = GetGameFrame() + mission.delay * 30
-		if not orderedMissions[targetFrame] then
-			orderedMissions[targetFrame] = {}
+	if UseUnitResource(unitID, "m", sortie.cost) then
+		local delay = (sortie.delay or 0) * 30
+		if delay < 1 then
+			delay = 1
+		end
+		local targetFrame = GetGameFrame() + delay
+		if not orderedSorties[targetFrame] then
+			orderedSorties[targetFrame] = {}
 		end
 		
-		orderedMissions[targetFrame][#orderedMissions+1] = {
-			mission,
+		orderedSorties[targetFrame][#orderedSorties+1] = {
+			sortie,
 			teamID,
 			cmdParams
 		}
@@ -262,21 +238,18 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 end
 
 function gadget:GameFrame(n)
-	local missionsThisFrame = orderedMissions[n]
-	if missionsThisFrame then
-		for i=1, #missionsThisFrame do
-			local info = missionsThisFrame[i]
-			local mission = info[1]
+	local sortiesThisFrame = orderedSorties[n]
+	if sortiesThisFrame then
+		for i=1, #sortiesThisFrame do
+			local info = sortiesThisFrame[i]
+			local sortie = info[1]
 			local teamID = info[2]
-			local target = info[3]
-			local pos = {}
-			pos[1], pos[2], pos[3] = GetTeamStartPosition(teamID)
-			SpawnFlight(teamID, mission.units, pos, target)
+			local cmdParams = info[3]
+			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
+			SpawnFlight(teamID, sortie.units, sx, sy, sz, cmdParams)
 		end
-		orderedMissions[n] = nil --delete
+		orderedSorties[n] = nil --delete
 	end
-	
-	if n % 30 ~= 14 then return end
 	
 	for unitID, state in pairs(planeStates) do
 		local unitDefID = GetUnitDefID(unitID)
@@ -284,12 +257,16 @@ function gadget:GameFrame(n)
 		local teamID = GetUnitTeam(unitID)
 		if state == PLANE_STATE_ACTIVE then
 			if GetUnitFuel(unitID) < 1 and unitDef.maxFuel > 0 then
-				Spring.Echo(GetUnitFuel(unitID))
-				planeStates[unitID] = PLANE_STATE_RETREAT
 				SetUnitNoSelect(unitID, true)
+				local ex, ey, ez = GetSpawnPoint(teamID)
+				GiveOrderToUnit(unitID, CMD_MOVE, {ex, ey, ez}, {})
+				planeStates[unitID] = PLANE_STATE_RETREAT
 			end
 		elseif state == PLANE_STATE_RETREAT then
-			DestroyUnit(unitID, false, true)
+			local ux, uy, uz = GetUnitPosition(unitID)
+			if vDistanceToMapEdge(ux, uy, uz) <= RETREAT_TOLERANCE then
+				DestroyUnit(unitID, false, true)
+			end
 		end
 	end
 end
@@ -297,3 +274,4 @@ end
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	planeStates[unitID] = nil
 end
+
