@@ -48,6 +48,12 @@ if (gadgetHandler:IsSyncedCode()) then
 			local xmax = px + ((2*ud.xsize) * spawnList.spread) / 2
 			local zmin = pz - ((2*ud.zsize) * spawnList.spread) / 2
 			local zmax = pz + ((2*ud.zsize) * spawnList.spread) / 2
+			if ud.customParams.feartarget ~= nil then
+				xmin = px - ((6*ud.xsize) * spawnList.spread) / 2
+				xmax = px + ((6*ud.xsize) * spawnList.spread) / 2
+				zmin = pz - ((6*ud.zsize) * spawnList.spread) / 2
+				zmax = pz + ((6*ud.zsize) * spawnList.spread) / 2
+			end
 			for blah, unitName in ipairs(spawnList.units) do
 				Spring.Echo(unitName)
 				local x = math.random(xmin, xmax)
@@ -59,7 +65,7 @@ if (gadgetHandler:IsSyncedCode()) then
 					occupied = Spring.GetUnitsInCylinder(x, z, spread, teamID)
 				end
 				Spring.CreateUnit(unitName, x, py, z, 0, teamID)
-			end			
+			end		
 		end
 	end	
 	
