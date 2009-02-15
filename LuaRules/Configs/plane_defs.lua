@@ -73,6 +73,18 @@ local planeDefs = {
 			cost = 3000,
 			delay = 15,
 			units = {
+				"gerbf109",
+				"gerbf109",
+				"gerbf109",
+				"gerbf109",
+			},
+		},
+		{
+			name = "Heavy Attack Fighter",
+			shortname = "HAF",
+			cost = 3500,
+			delay = 15,
+			units = {
 				"gerfw190",
 				"gerfw190",
 				"gerfw190",

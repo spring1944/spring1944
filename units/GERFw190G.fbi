@@ -130,9 +130,5 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = fw190b-;
 		enginesoundnr = 12;
-		maxammo=100;
-		weaponswithammo=1;
-		lowammolevel=1;
-		weaponcost=250;
 	}
 }

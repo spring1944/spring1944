@@ -45,7 +45,7 @@
 	ballistic=1;
 	burst=1;
 	range=850;
-	reloadtime=10;
+	reloadtime=600;
 	accuracy=1421;
 	movingaccuracy=500;
 	startvelocity=10;
@@ -82,7 +82,7 @@
 	ballistic=1;
 	burst=1;
 	range=850;
-	reloadtime=10;
+	reloadtime=600;
 	accuracy=1421;
 	movingaccuracy=500;
 	startvelocity=10;

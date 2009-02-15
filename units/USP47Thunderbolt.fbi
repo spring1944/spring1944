@@ -147,9 +147,5 @@
 		proptexture = bitmaps/prop5.tga;
 		enginesound = p51b-;
 		enginesoundnr = 16;
-		maxammo=100;
-		weaponswithammo=1;
-		lowammolevel=1;
-		weaponcost=250;
 	}
 }

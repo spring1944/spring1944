@@ -134,7 +134,7 @@ local function Resupply(unitID)
 	--local ammoRegen = DefaultRegen(unitDefID)
 	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
 	
-	if oldAmmo < maxAmmo then
+	if oldAmmo < maxAmmo and weaponCost >= 0 then
 		local newAmmo = oldAmmo + 1
 		Spring.UseUnitResource(supplierID, "e", weaponCost)
 		vehicles[unitID].ammoLevel = newAmmo

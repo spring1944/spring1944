@@ -13,7 +13,7 @@
 	FootprintZ=4;
 	MaxDamage=700;
 	ObjectName=GERFw190.S3O;
-	Side=US;
+	Side=GER;
 	//SoundCategory=GERPlane;
 	category=NFLAG AIR;
 	TEDClass=VTOL;

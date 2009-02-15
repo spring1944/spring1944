@@ -128,9 +128,5 @@
 		proptexture=bitmaps/prop3.tga;
 		enginesound = spitfireb-;
 		enginesoundnr = 18;
-		maxammo=100;
-		weaponswithammo=1;
-		lowammolevel=1;
-		weaponcost=250;
 	}
 }
