@@ -12,13 +12,14 @@
 ]]
 
 local planeDefs = {
-	gbrflag = {
+	gbrradar = {
 		{
 			name = "Recon Plane",
 			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
+				"gbrauster",
 				"gbrauster",
 			},
 		},
@@ -42,8 +43,6 @@ local planeDefs = {
 			units = {
 				"gbrspitfiremkix",
 				"gbrspitfiremkix",
-				"gbrspitfiremkix",
-				"gbrspitfiremkix",
 			},
 		},
 		{
@@ -54,18 +53,17 @@ local planeDefs = {
 			units = {
 				"gbrtyphoon",
 				"gbrtyphoon",
-				"gbrtyphoon",
-				"gbrtyphoon",
 			},
 		},
 	},
-	gerflag = {
+	gerradar = {
 		{
 			name = "Recon Plane",
 			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
+				"gerfi156",
 				"gerfi156",
 			},
 		},
@@ -89,8 +87,6 @@ local planeDefs = {
 			units = {
 				"gerfw190g",
 				"gerfw190g",
-				"gerfw190g",
-				"gerfw190g",
 			},
 		},
 		{
@@ -101,12 +97,10 @@ local planeDefs = {
 			units = {
 				"gerju87g",
 				"gerju87g",
-				"gerju87g",
-				"gerju87g",
 			},
 		},
 	},
-	rusflag = {
+	rusradar = {
 		{
 			name = "Recon Plane",
 			shortname = "Rec",
@@ -124,8 +118,6 @@ local planeDefs = {
 			units = {
 				"rusyak3",
 				"rusyak3",
-				"rusyak3",
-				"rusyak3",
 			},
 		},
 		{
@@ -136,18 +128,17 @@ local planeDefs = {
 			units = {
 				"rusil2",
 				"rusil2",
-				"rusil2",
-				"rusil2",
 			},
 		},
 	},
-	usflag = {
+	usradar = {
 		{
 			name = "Recon Plane",
 			shortname = "Rec",
 			cost = 500,
 			delay = 15,
 			units = {
+				"usl4",
 				"usl4",
 			},
 		},
@@ -171,8 +162,6 @@ local planeDefs = {
 			units = {
 				"usp47thunderbolt",
 				"usp47thunderbolt",
-				"usp47thunderbolt",
-				"usp47thunderbolt",
 			},
 		},
 		{
@@ -181,8 +170,6 @@ local planeDefs = {
 			cost = 5000,
 			delay = 15,
 			units = {
-				"usp51dmustangga",
-				"usp51dmustangga",
 				"usp51dmustangga",
 				"usp51dmustangga",
 			},

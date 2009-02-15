@@ -168,6 +168,7 @@
 		canbuild6=USStorage;
 		canbuild7=USSupplyDepot;
 		canbuild8=TankObstacle;
+		canbuild9=usradar;
 	}
 
 	[USTankYard]
@@ -311,6 +312,7 @@
 		canbuild6=GERStorage;
 		canbuild7=GERSupplyDepot;
 		canbuild8=TankObstacle;
+		canbuild9=gerradar;
 	}
 
 	[GERTankYard]
@@ -486,6 +488,7 @@
 		canbuild6=GBRStorage;
 		canbuild7=GBRSupplyDepot;
 		canbuild8=TankObstacle;
+		canbuild9=gbrradar;
 	}
 
 	[GBRTankYard]
@@ -649,6 +652,7 @@
 		canbuild7=RUSStorage;
 		canbuild8=RUSSupplyDepot;
 		canbuild9=TankObstacle;
+		canbuild10=rusradar;
 	}
 
 	[RUSVehicleYard]

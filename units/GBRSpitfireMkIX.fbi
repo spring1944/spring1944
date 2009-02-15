@@ -22,7 +22,7 @@
 	BrakeRate=5;
 	Acceleration=0.48;
 	CanMove=1;
-	MaxVelocity=48;
+	MaxVelocity=24;
 	MaxSlope=10;
 	TurnRate=24;
 	

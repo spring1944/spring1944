@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GERRadar;
+	unitname=usradar;
 	objectname=GERRadar.S3O;
 	icontype=radar;
 	soundcategory=Nothing;
