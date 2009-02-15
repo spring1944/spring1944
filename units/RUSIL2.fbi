@@ -81,39 +81,39 @@
 	shownanoframe=0;
 
 	//	Weapons
+	
+	weapon1=bomb;
+	onlytargetcategory7=NFLAGNAIR;
 
-	weapon1=HVARRocket;
+	weapon2=HVARRocket;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
 	maxangledif1=10;
 
-	weapon2=HVARRocket;
+	weapon3=HVARRocket;
 	onlytargetcategory2=NFLAGNAIR;
 	weaponmaindir2=0 0 1;
 	maxangledif2=10;
 	weaponslaveto2=1;
 
-	weapon3=ShVAK20mm;
+	weapon4=ShVAK20mm;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
 
-	weapon4=ShVAK20mm;
+	weapon5=ShVAK20mm;
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
 	weaponslaveto4=3;
 
-	weapon5=m2browningamg;
+	weapon6=m2browningamg;
 	weaponmaindir5=0 0 1;
 	maxangledif5=10;
 	weaponslaveto5=3;
 
-	weapon6=m2browningamg;
+	weapon7=m2browningamg;
 	weaponmaindir6=0 0 1;
 	maxangledif6=10;
 	weaponslaveto6=3;
-
-	weapon7=bomb;
-	onlytargetcategory7=NFLAGNAIR;
 
 	weapon8=m2browningaa;
 	onlytargetcategory8=AIR;

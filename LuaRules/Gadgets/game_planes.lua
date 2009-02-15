@@ -294,7 +294,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		
 		SendMessageToTeam(teamID, (sortie.name or "") .. " sortie ordered. ETA " .. (sortie.delay or 0) .. "s.")
 	else
-		SendMessageToTeam(teamID, "Not enough command to order " .. (sortie.name or "") .. " !")
+		SendMessageToTeam(teamID, "Not enough command to order " .. (sortie.name or "") .. " sortie!")
 	end
 	
 	return false

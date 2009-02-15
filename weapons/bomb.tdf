@@ -38,7 +38,9 @@
 	burnblow=0;
 	rendertype=4;
 	commandfire=1;
-	canattackground=0;
+	//canattackground=0;
+	dropped=1;
+	manualbombsettings=1;
 	turret=1;
 	ballistic=1;
 	burst=1;
@@ -55,7 +57,7 @@
 
 	impulsefactor=0.01;
 
-	explosiongenerator=custom:Weapon_Explosion_XXXLarge;
+	explosiongenerator=custom:HE_XLarge;
 	
 	[damage]
 	{
@@ -73,7 +75,9 @@
 	burnblow=0;
 	rendertype=4;
 	commandfire=1;
-	canattackground=0;
+	//canattackground=0;
+	dropped=1;
+	manualbombsettings=1;
 	turret=1;
 	ballistic=1;
 	burst=1;
@@ -90,7 +94,7 @@
 
 	impulsefactor=0.01;
 
-	explosiongenerator=custom:Weapon_Explosion_XLarge;
+	explosiongenerator=custom:HE_Large;
 	
 	[damage]
 	{
