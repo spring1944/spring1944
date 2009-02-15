@@ -66,7 +66,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 	targetmoveerror=0.1;
-	range=1200;
+	range=850;
 	reloadtime=1.3;
 	burst=2;
 	burstrate=0.3;
@@ -112,6 +112,6 @@
 	[customParams]
 	{
 		fearid=301;
-		fearaoe=150;
+		fearaoe=50;
 	}
 }

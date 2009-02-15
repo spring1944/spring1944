@@ -12,6 +12,17 @@
 ]]
 
 local planeDefs = {
+	gbrhq = {
+		{
+			name = "Recon Plane",
+			shortname = "Rec",
+			cost = 350,
+			delay = 15,
+			units = {
+				"gbrauster",
+			},
+		},
+	},
 	gbrradar = {
 		{
 			name = "Recon Plane",
@@ -53,6 +64,17 @@ local planeDefs = {
 			units = {
 				"gbrtyphoon",
 				"gbrtyphoon",
+			},
+		},
+	},
+	gerhqbunker = {
+			{
+			name = "Recon Plane",
+			shortname = "Rec",
+			cost = 350,
+			delay = 15,
+			units = {
+				"gerfi156",
 			},
 		},
 	},
@@ -112,6 +134,17 @@ local planeDefs = {
 			},
 		},
 	},
+	rusbarracks = {
+		{
+			name = "Recon Plane",
+			shortname = "Rec",
+			cost = 350,
+			delay = 15,
+			units = {
+				"ruspo2",
+			},
+		},	
+	},
 	rusradar = {
 		{
 			name = "Recon Plane",
@@ -119,6 +152,7 @@ local planeDefs = {
 			cost = 500,
 			delay = 15,
 			units = {
+				"ruspo2",
 				"ruspo2",
 			},
 		},
@@ -140,6 +174,17 @@ local planeDefs = {
 			units = {
 				"rusil2",
 				"rusil2",
+			},
+		},
+	},
+	ushq = {
+		{
+			name = "Recon Plane",
+			shortname = "Rec",
+			cost = 350,
+			delay = 15,
+			units = {
+				"usl4",
 			},
 		},
 	},
