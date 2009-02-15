@@ -1,6 +1,6 @@
-[GERFlaK38_Destroyed]
+[USM1Bofors_Destroyed]
 {
-	object=GERFlaK38_Destroyed.S3O;
+	object=USM1Bofors_Destroyed.S3O;
 	featuredead=Debris_Small;
 	description=Destroyed AA Gun;
 	energy=0;
