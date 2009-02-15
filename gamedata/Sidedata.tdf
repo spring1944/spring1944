@@ -141,20 +141,19 @@
 	[USVehicleYard]
 	{
 		canbuild1=USGMCEngVehicle;
-		//canbuild2=USSupplyTruck;
-		//canbuild3=USJeep;
-		canbuild4=USM3Halftrack;
-		canbuild5=USM8Greyhound;
-		canbuild6=USM8Scott;
+		canbuild2=USM3Halftrack;
+		canbuild3=USDUKW;
+		canbuild4=USM8Greyhound;
+		canbuild5=USM8Scott;
 	}
 
 	[USGunYard]
 	{
 		canbuild1=USGMCTruck;
 		canbuild2=USM8Gun_gunyard;
-		canbuild3=USM5Gun_truck;
-		canbuild4=USM2Gun_truck;
-		//canbuild5=USSupplyTruck;
+		canbuild3=USM5Gun_Truck;
+		canbuild4=USM2Gun_Truck;
+		canbuild5=USM1Bofors_Truck;
 	}
 
 
@@ -293,12 +292,12 @@
 	[GERGunYard]
 	{
 		canbuild1=GEROpelBlitz;
-		//canbuild2=GERFlaK38_truck;
+		//canbuild2=GERFlaK38_Truck;
 		canbuild3=GERleIG18_gunyard;
-		canbuild4=GERPaK40_truck;
-		canbuild5=GERleFH18_truck;
-		canbuild6=GERNebelwerfer_truck;
-		//canbuild7=GERSupplyTruck;
+		canbuild4=GERPaK40_Truck;
+		canbuild5=GERleFH18_Truck;
+		canbuild6=GERNebelwerfer_Truck;
+		canbuild7=GERFlaK38_Truck;
 	}
 
 	[GERSdKfz9]
@@ -422,9 +421,9 @@
 	[GBRGunyard]
 	{
 		canbuild1=GBRBedfordTruck;
-		canbuild2=GBR17Pdr_truck;
-		canbuild3=GBR25Pdr_truck;
-		//canbuild4=GBRSupplyTruck;
+		canbuild2=GBR17Pdr_Truck;
+		canbuild3=GBR25Pdr_Truck;
+		canbuild4=GBRBofors_Truck;
 	}
 
 	[GBRHeavyGunyard]
@@ -669,11 +668,10 @@
 	[RUSGunYard]
 	{
 		canbuild1=RUSZiS5;
-		//canbuild2=RUS61K_truck;
-		canbuild3=RUSZiS2_truck;
-		canbuild4=RUSZiS3_truck;
-		canbuild5=RUSM30_truck;
-		//canbuild6=RUSSupplyTruck;
+		canbuild3=RUSZiS2_Truck;
+		canbuild4=RUSZiS3_Truck;
+		canbuild5=RUSM30_Truck;
+		canbuild6=RUS61K_Truck;
 	}
 
 	[RUSTankYard]
