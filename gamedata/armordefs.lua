@@ -255,6 +255,9 @@ local armorDefs = {
 		"GEROpelBlitz",
 		"GEROpelBlitz_Eng",
 		"GERSupplyTruck",
+		"GERFlaK38_Truck",
+		"GERPaK40_Truck",
+		"GERleFH18_Truck",
 
 		--US--
 		"USGMCTruck",
@@ -262,6 +265,9 @@ local armorDefs = {
 		"USGMCEngVehicle",
 		"USSupplyTruck",
 		"usdukw",
+		"USM1Bofors_Truck",
+		"USM2Gun_Truck",
+		"USM5Gun_Truck",
 
 		--USSR--
 		"RUSZiS5",
@@ -269,12 +275,18 @@ local armorDefs = {
 		"RUSGAZAAA",
 		"RUSBM13N",
 		"RUSSupplyTruck",
+		"RUSM30_Truck",
+		"RUSZiS2_Truck",
+		"RUSZiS3_Truck",
 
 		--Britain--
 		"GBRBedfordTruck",
 		"GBRBedfordTruck_Eng",
 		"GBRMatadorEngVehicle",
-		"RUSSupplyTruck",
+		"GBRSupplyTruck",
+		"GBRBofors_Truck",
+		"GBR17Pdr_Truck",
+		"GBR25Pdr_Truck",
 
 		--All--
 		"RubberDingy",
@@ -286,6 +298,7 @@ local armorDefs = {
 		"GERFi156",
 		"GERBf109",
 		"GERFw190",
+		"GERFw190G",
 		"GERJu87G",
 	
 		--US--
@@ -299,7 +312,9 @@ local armorDefs = {
 		"RUSIL2",
 
 		--Britain--
+		"GBRAuster",
 		"GBRSpitfireMkXIV",
+		"GBRSpitfireMkIX",
 		"GBRTyphoon",
 	},
 
