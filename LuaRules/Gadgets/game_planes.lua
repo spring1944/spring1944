@@ -54,6 +54,7 @@ local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
 local CMDTYPE_ICON_UNIT_OR_MAP = CMDTYPE.ICON_UNIT_OR_MAP
 local CMD_IDLEMODE = CMD.IDLEMODE
 local CMD_MOVE = CMD.MOVE
+local CMD_FIGHT = CMD.FIGHT
 local CMD_PATROL = CMD.PATROL
 local CMD_ATTACK = CMD.ATTACK
 local CMD_OPT_SHIFT = CMD.OPT_SHIFT
@@ -168,13 +169,15 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
 	SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
 	GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
-	if waypoint then
-		GiveOrderToUnit(unitID, CMD_MOVE, waypoint, {"shift"})
-	end
-	if #cmdParams == 1 then
+	if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
 		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
-		
-	else
+		if waypoint then
+			GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
+		end
+	else --location: fight to waypoint, then patrol to target
+		if waypoint then
+			GiveOrderToUnit(unitID, CMD_FIGHT, waypoint, {"shift"})
+		end
 		GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
 	end
 	planeStates[unitID] = PLANE_STATE_ACTIVE
