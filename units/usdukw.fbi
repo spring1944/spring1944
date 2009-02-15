@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=usdukw;
+	objectname=usdukw.s3o;
+	corpse=usgmctruck_destroyed;
+	icontype=truck;
+	soundcategory=USTank;
+	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+	tedclass=TANK;
+
+	name=DUKW;
+	description=Amphibious Transport Truck;
+	maxdamage=550;
+	buildcostmetal=711;
+	buildcostenergy=0;
+	buildtime=237;
+	footprintx=3;
+	footprintz=3;
+	mass=950;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	canhover=1;
+	movementclass=HOVER_AmphibTruck;
+	maxvelocity=4.0;
+	acceleration=0.35;
+	brakerate=0.45;
+	turnrate=440;
+	maxslope=10;
+	turninplace=0;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	transportsize=1;
+	transportcapacity=15;
+	transportmass=750;
+	releaseheld=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -59,6 +59,14 @@ local moveDefs 	=	 {
 		footprintX		=	15,
 		minWaterDepth	=	5,
 		crushStrength	=	10,
+	},
+	{
+		name					=	"HOVER_AmphibTruck",
+		footprintX		=	3,
+		footprintY		=	3,
+		MaxSlope		=	17,
+		MaxWaterSlope		=	255,
+		crushStrength		=	10,
 	}
 }
 

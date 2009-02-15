@@ -261,6 +261,7 @@ local armorDefs = {
 		"USGMCTruck_Eng",
 		"USGMCEngVehicle",
 		"USSupplyTruck",
+		"usdukw",
 
 		--USSR--
 		"RUSZiS5",
