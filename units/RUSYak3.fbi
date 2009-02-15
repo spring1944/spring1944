@@ -2,7 +2,7 @@
 {
 	Name=Yak-3;
 	UnitName=RUSYak3;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=9000;
 	BuildCostMetal=5500;

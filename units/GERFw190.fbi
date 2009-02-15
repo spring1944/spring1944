@@ -2,7 +2,7 @@
 {
 	Name=Fw 190A-8;
 	UnitName=GERFw190;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=7000;

@@ -2,7 +2,7 @@
 {
 	Name=P-51D Mustang;
 	UnitName=USP51DMustang;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=7000;

@@ -2,7 +2,7 @@
 {
 	Name=TC Auster AOP Mk V;
 	UnitName=GBRAuster;
-	
+	icontype=recon;
 	//    Required Tags
 	BuildCostEnergy=0;
 	buildcostmetal=3000;

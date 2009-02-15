@@ -2,7 +2,7 @@
 {
 	Name=Bf 109K-4;
 	UnitName=GERBf109;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=6000;

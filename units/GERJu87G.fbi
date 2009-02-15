@@ -2,7 +2,7 @@
 {
 	Name=Ju 87G-1 Stuka;
 	UnitName=GBRSpitfireMkXIV;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=7000;

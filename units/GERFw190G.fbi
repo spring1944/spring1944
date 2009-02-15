@@ -2,7 +2,7 @@
 {
 	Name=Fw 190G-8;
 	UnitName=GERFw190G;
-	
+	icontype=bomber;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=8500;

@@ -2,7 +2,7 @@
 {
 	Name=Spitfire Mk IXe LF;
 	UnitName=GBRSpitfireMkIX;
-	
+	icontype=bomber;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=9500;

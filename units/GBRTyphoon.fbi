@@ -2,7 +2,7 @@
 {
 	Name=Hawker Typhoon Mk.IB;
 	UnitName=GBRTyphoon;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=8500;

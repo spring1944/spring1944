@@ -2,7 +2,7 @@
 {
 	Name=IL-2M Shturmovik;
 	UnitName=RUSIL2;
-	
+	icontype=bomber;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=9500;

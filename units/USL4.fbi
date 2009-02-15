@@ -2,7 +2,7 @@
 {
 	Name=L-4 Grasshopper;
 	UnitName=USL4;
-	
+	icontype=recon;
 	//    Required Tags
 	BuildCostEnergy=0;
 	buildcostmetal=3000;

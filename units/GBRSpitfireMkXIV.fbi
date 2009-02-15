@@ -2,7 +2,7 @@
 {
 	Name=Spitfire Mk XIVe;
 	UnitName=GBRSpitfireMkXIV;
-	
+	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=6000;

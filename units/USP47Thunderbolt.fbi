@@ -2,7 +2,7 @@
 {
 	Name=P-47D Thunderbolt;
 	UnitName=USP47Thunderbolt;
-	
+	icontype=bomber;
 	//    Required Tags
 	BuildCostEnergy=0;
 	BuildCostMetal=8500;

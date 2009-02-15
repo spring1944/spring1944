@@ -2,7 +2,7 @@
 {
 	Name=Fi 156 Storch;
 	UnitName=GERFI156;
-	
+	icontype=recon;
 	//    Required Tags
 	BuildCostEnergy=0;
 	buildcostmetal=3000;

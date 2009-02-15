@@ -2,7 +2,7 @@
 {
 	Name=Po-2 Kukuruznik;
 	UnitName=RUSPo2;
-	
+	icontype=recon;
 	//    Required Tags
 	BuildCostEnergy=0;
 	buildcostmetal=3000;
