@@ -9,7 +9,8 @@
 
 	lineofsight=1;
 	firestarter=0.0;
-	targetmoveerror=0.1;
+	//targetmoveerror=0.1;
+	predictboost=0.5;
 	range=1500;
 	reloadtime=1.5;
 	burst=5;
