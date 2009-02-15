@@ -8,7 +8,7 @@
 	BuildCostMetal=7000;
 	BuildTime=700;
 	Category=AIRCRAFT;
-	Description=Ground Attack/Tank Buster Plane;
+	Description=Ground Attack Aircraft;
 	FootprintX=4;
 	FootprintZ=4;
 	MaxDamage=650;

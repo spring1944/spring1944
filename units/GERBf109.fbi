@@ -8,7 +8,7 @@
 	BuildCostMetal=6000;
 	BuildTime=600;
 	Category=AIRCRAFT;
-	Description=Attack Fighter;
+	Description=Interceptor;
 	FootprintX=4;
 	FootprintZ=4;
 	MaxDamage=800;

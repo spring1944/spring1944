@@ -8,7 +8,7 @@
 	BuildCostMetal=9500;
 	BuildTime=950;
 	Category=AIRCRAFT;
-	Description=Ground Attack Aircraft;
+	Description=Attack Aircraft;
 	FootprintX=4;
 	FootprintZ=4;
 	MaxDamage=700;
