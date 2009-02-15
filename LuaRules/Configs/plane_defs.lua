@@ -2,12 +2,12 @@
 	format:
 	radiotowershortname = {sortie, sortie...}
 	sortie = {
-		name = string (default ""), 
-		shortname = string (default nil),
-		cost = number (required), 
-		delay = number (default 1 frame), 
-		cursor = string (default "Attack"), 
-		units = {unitname, unitname...} (required)
+		name = string (default ""), --full name of sortie
+		shortname = string (default nil), --displayed over icon
+		cost = number (required), --command cost of sortie
+		delay = number (at least 1 frame), --seconds it takes sortie to arrive
+		cursor = string (default "Attack"), --cursor when ordering sortie
+		units = {unitname, unitname...} (required) --planes in the sortie; first unitname is lead plane
 	}
 ]]
 
