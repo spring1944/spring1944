@@ -83,6 +83,7 @@ local armorDefs = {
 		"USM5Gun",
 		"usgimg_sandbag",
 		"USM5Gun_Stationary",
+		"USM1Bofors_Stationary",
 
 		--USSR--
 		"RUS61K",
@@ -100,7 +101,8 @@ local armorDefs = {
 		"GBR25Pdr_Stationary",
 		"GBR17Pdr",
 		"gbrvickers_sandbag",
-		"GBR17Pdr_Stationary",
+		"GBR17Pdr_Stationary",	
+		"GBRBofors_Stationary",
 	},
 
 	lightBuildings	=	{
