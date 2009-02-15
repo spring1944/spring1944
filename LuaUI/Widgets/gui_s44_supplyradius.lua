@@ -153,24 +153,24 @@ end
 local function GetMouseBuildPosition(oddX, oddZ)
 	local mx, my = GetMouseState()
 	local _, coords = TraceScreenRay(mx, my, true, true)
-	
+
 	if not coords then return nil end
-	
+
 	local x, z = coords[1], coords[3]
 	local bx, bz
-	
+
 	if (oddX) then
 		bx = (floor( x / 16) + 0.5) * 16
 	else
 		bx = floor( x / 16 + 0.5) * 16
 	end
-	
+
 	if (oddZ) then
 		bz = (floor( z / 16) + 0.5) * 16
 	else
 		bz = floor( z / 16 + 0.5) * 16
 	end
-	
+
 	return bx, bz
 end
 
@@ -235,12 +235,12 @@ local function UpdateAdd(unitID, supplyInfo)
 	local r0 = supplyInfo.r
 	local numSegments = supplyInfo.numSegments
 	local x0, y0, z0 = supplyInfo.x, supplyInfo.y, supplyInfo.z
-	
+
 	--start with all true
 	for i=1, supplyInfo.numSegments do
 		supplyInfo[i] = true
 	end
-	
+
 	for currUnitID, currSupplyInfo in pairs(supplyInfos) do
 		--ignore self
 		if (unitID ~= currUnitID) then
@@ -260,7 +260,7 @@ local function UpdateRemove(unitID, supplyInfo)
 	local r0 = supplyInfo.r
 	local numSegments = supplyInfo.numSegments
 	local x0, z0 = supplyInfo.x, supplyInfo.z
-	
+
 	for currUnitID, currSupplyInfo in pairs(supplyInfos) do
 		--ignore self
 		if (unitID ~= currUnitID) then
@@ -299,7 +299,7 @@ local function DrawSupplyRing(supplyInfo)
 		end
 		angle = angle + segmentAngle
 	end
-	
+
 	glPushMatrix()
 		glShape(GL_POINTS, vertices)
 	glPopMatrix()
@@ -308,7 +308,7 @@ end
 local function DrawSupplyRingFull(supplyDefInfo, x, z)
 	local r = supplyDefInfo[1]
 	local segmentAngle = supplyDefInfo[3]
-	
+
 	local vertices = {}
 	local angle = 0
 	local vi = 1
@@ -323,7 +323,7 @@ local function DrawSupplyRingFull(supplyDefInfo, x, z)
 		end
 		angle = angle + segmentAngle
 	end
-	
+
 	glPushMatrix()
 		glShape(GL_POINTS, vertices)
 	glPopMatrix()
@@ -331,14 +331,14 @@ end
 
 local function DrawTrucks()
 	local visibleUnits = GetVisibleUnits()
-	
+
 	if not visibleUnits then return end
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
-		if AreTeamsAllied(unitTeam, myTeamID) then 
+		if AreTeamsAllied(unitTeam, myTeamID) then
 			if generalTruckDefIDs[unitDefID] then
 				glColor(previewColor)
 				DrawSupplyRingFull(generalTruckDefInfo, x, z)
@@ -354,19 +354,19 @@ end
 
 local function DrawMain()
 	glColor(color)
-	
+
 	for _, supplyInfo in pairs(supplyInfos) do
 		DrawSupplyRing(supplyInfo)
 	end
-	
+
 	glColor(previewColor)
-	
+
 	for _, inBuildSupplyInfo in pairs(inBuildSupplyInfos) do
 		local x, z = inBuildSupplyInfo.x, inBuildSupplyInfo.z
 		local supplyDefInfo = inBuildSupplyInfo.supplyDefInfo
 		DrawSupplyRingFull(supplyDefInfo, x, z)
 	end
-	
+
 	glColor(1, 1, 1, 1)
 end
 
@@ -377,7 +377,7 @@ local function CallMain()
 		local unitDefID = -cmd_id
 		supplyDefInfo = supplyDefInfos[unitDefID]
 	end
-	
+
 	if supplyDefInfo then
 		local bx, bz = GetMouseBuildPosition(supplyDefInfo[4], supplyDefInfo[5])
 		if bx then
@@ -385,19 +385,19 @@ local function CallMain()
 			DrawSupplyRingFull(supplyDefInfo, bx, bz)
 		end
 	end
-	
+
 	if (showAlways or supplyDefInfo) then
 		DrawTrucks()
 		glCallList(mainList)
 		return
 	end
-	
+
 	if (showRollover) then
 		local mx, my = GetMouseState()
 		local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
 		if mouseTargetType == "unit" then
 			local targetDefID = GetUnitDefID(mouseTarget)
-			if supplyInfos[mouseTarget] 
+			if supplyInfos[mouseTarget]
 					or inBuildSupplyInfos[mouseTarget]
 					or generalTruckDefIDs[targetDefID]
 					or supplyTruckDefIDs[targetDefID] then
@@ -407,7 +407,7 @@ local function CallMain()
 			end
 		end
 	end
-	
+
 	if (showSelect) then
 		local selectedUnitsCounts = GetSelectedUnitsCounts()
 		for unitDefID, _ in pairs(selectedUnitsCounts) do
@@ -426,7 +426,7 @@ local function UpdateLists()
 	if (mainList) then
 		glDeleteList(mainList)
 	end
-	
+
 	mainList = glCreateList(DrawMain)
 end
 
@@ -484,13 +484,13 @@ end
 local function Reset()
 	inBuildSupplyInfos = {}
 	supplyInfos= {}
-	
+
 	local allUnits = GetAllUnits()
 	for i=1,#allUnits do
 		local unitID = allUnits[i]
 		widget:UnitCreated(unitID, GetUnitDefID(unitID), GetUnitTeam(unitID))
 	end
-	
+
 	UpdateLists()
 end
 
@@ -499,56 +499,56 @@ end
 ------------------------------------------------
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	
+
 	local _, _, inBuild = GetUnitIsStunned(unitID)
 	if not inBuild then
 		widget:UnitFinished(unitID, unitDefID, unitTeam)
 		return
 	end
-	
-	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
+
+	if (not AreTeamsAllied(unitTeam, myTeamID)) then
 		return
 	end
-	
+
 	local supplyDefInfo = supplyDefInfos[unitDefID]
-	
+
 	if (not supplyDefInfo) then return end
-	
+
 	--enter info
 	local supplyInfo = {}
 	supplyInfo.supplyDefInfo = supplyDefInfo
-	
+
 	local x, _, z = GetUnitPosition(unitID)
 	supplyInfo.x, supplyInfo.z = x, z
-	
+
 	inBuildSupplyInfos[unitID] = supplyInfo
-	
+
 	UpdateLists()
 end
 
 function widget:UnitFinished(unitID, unitDefID, unitTeam)
 	inBuildSupplyInfos[unitID] = nil
-	
-	if (not AreTeamsAllied(unitTeam, myTeamID)) then 
+
+	if (not AreTeamsAllied(unitTeam, myTeamID)) then
 		return
 	end
-	
+
 	local supplyDefInfo = supplyDefInfos[unitDefID]
-	
+
 	if (not supplyDefInfo) then return end
-	
+
 	--enter info
 	local supplyInfo = {}
 	supplyInfo.r = supplyDefInfo[1]
 	supplyInfo.numSegments = supplyDefInfo[2]
 	supplyInfo.segmentAngle = supplyDefInfo[3]
-	
+
 	local x, y, z = GetUnitPosition(unitID)
 	supplyInfo.x, supplyInfo.y, supplyInfo.z = x, y, z
-	
+
 	UpdateAdd(unitID, supplyInfo, supplyDefInfo)
 	supplyInfos[unitID] = supplyInfo
-	
+
 	UpdateLists()
 end
 
@@ -562,11 +562,8 @@ function widget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 end
 
 function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-	local _, _, inBuild = GetUnitIsStunned(unitID)
-	if inBuild then
-		widget:UnitCreated(unitID, unitDefID, unitTeam)
-	else
-		widget:UnitFinished(unitID, unitDefID, unitTeam)
+	if (not AreTeamsAllied(unitTeam, newTeam)) then
+		widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	end
 end
 
@@ -577,14 +574,14 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		inBuildSupplyInfos[unitID] = nil
 		doUpdate = true
 	end
-	
+
 	local supplyInfo = supplyInfos[unitID]
 	if supplyInfo then
 		supplyInfos[unitID] = nil
 		UpdateRemove(unitID, supplyInfo)
 		doUpdate = true
 	end
-	
+
 	if doUpdate then
 		UpdateLists()
 	end
@@ -601,7 +598,7 @@ end
 
 function widget:DrawInMiniMap(sx, sy)
 	if (minimapSize <= 0) then return end
-	
+
 	glPointSize(minimapSize)
 	glPushMatrix()
 		glTranslate(0, sy, 0)
@@ -638,16 +635,16 @@ function widget:Initialize()
 			supplyTruckDefIDs[unitDefID] = true
 		end
 	end
-	
+
 	--remove self if unused
 	if (not inUse) then
 		widgetHandler:RemoveWidget()
 	end
-	
+
 	myTeamID = GetMyTeamID()
-	
+
 	Reset()
-	
+
 	widgetHandler:AddAction("s44_supplyradius_showalways", ToggleShowAlways, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showrollover", ToggleShowRollover, nil, "t")
 	widgetHandler:AddAction("s44_supplyradius_showselect", ToggleShowSelect, nil, "t")
