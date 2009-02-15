@@ -35,6 +35,7 @@ local GetTeamStartPosition = Spring.GetTeamStartPosition
 local InsertUnitCmdDesc = Spring.InsertUnitCmdDesc
 local UseUnitResource = Spring.UseUnitResource
 local GetUnitFuel = Spring.GetUnitFuel
+local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitPosition = Spring.GetUnitPosition
@@ -75,6 +76,14 @@ local planeStates = {}
 local orderedSorties = {}
 
 local currCmdID = CMD_PLANES
+
+local function GetDefaultName(sortie)
+	local unitname = sortie.units[1]
+	local unitDef = UnitDefNames[unitname]
+	if not unitDef then return end
+
+	return unitDef.tooltip
+end
 
 local function GetDefaultTexture(sortie)
 	local unitname = sortie.units[1]
@@ -118,7 +127,7 @@ local function GetDefaultTooltip(sortie)
 		planeString = planeString .. count .. "x " .. planeName
 	end
 	
-	local result = "Order " .. (sortie.name or "") .. " Sortie (" .. planeString .. ")\n"
+	local result = "Order " .. sortie.name .. " Sortie (" .. planeString .. ")\n"
 		.. "Command Cost " .. sortie.cost .. "\n"
 		.. "Delay " .. (sortie.delay or 0) .. "s\n"
 		.. "Duration " .. (duration or "Permanent") .. "s"
@@ -130,7 +139,7 @@ local function BuildCmdDesc(sortie)
 	result = {
 		id = currCmdID,
 		type = CMDTYPE_ICON_UNIT_OR_MAP,
-		name = sortie.shortname,
+		name = sortie.shortname or "",
 		cursor = sortie.cursor or "Attack",
 		tooltip = sortie.tooltip or GetDefaultTooltip(sortie),
 		texture = sortie.texture or GetDefaultTexture(sortie),
@@ -145,7 +154,9 @@ end
 
 for radioTowerID, sorties in pairs(planeDefs) do
 	for i=1,#sorties do
-		sorties[i].cmdDesc = BuildCmdDesc(sorties[i])
+		local sortie = sorties[i]
+		sortie.name = sortie.name or GetDefaultName(sortie) or ""
+		sortie.cmdDesc = BuildCmdDesc(sorties[i])
 	end
 end
 
@@ -279,25 +290,31 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		return true
 	end
 	
-	if UseUnitResource(unitID, "m", sortie.cost) then
-		local delay = (sortie.delay or 0) * 30
-		if delay < 1 then
-			delay = 1
-		end
-		local targetFrame = GetGameFrame() + delay
-		if not orderedSorties[targetFrame] then
-			orderedSorties[targetFrame] = {}
-		end
-		
-		orderedSorties[targetFrame][#orderedSorties+1] = {
-			sortie,
-			teamID,
-			cmdParams, 
-		}
-		
-		SendMessageToTeam(teamID, (sortie.name or "") .. " sortie ordered. ETA " .. (sortie.delay or 0) .. "s.")
+	local _, _, inBuild = GetUnitIsStunned(unitID)
+	
+	if inBuild then
+		--?
 	else
-		SendMessageToTeam(teamID, "Not enough command to order " .. (sortie.name or "") .. " sortie!")
+		if UseUnitResource(unitID, "m", sortie.cost) then
+			local delay = (sortie.delay or 0) * 30
+			if delay < 1 then
+				delay = 1
+			end
+			local targetFrame = GetGameFrame() + delay
+			if not orderedSorties[targetFrame] then
+				orderedSorties[targetFrame] = {}
+			end
+			
+			orderedSorties[targetFrame][#orderedSorties+1] = {
+				sortie,
+				teamID,
+				cmdParams, 
+			}
+			
+			SendMessageToTeam(teamID, sortie.name .. " sortie ordered. ETA " .. (sortie.delay or 0) .. "s.")
+		else
+			SendMessageToTeam(teamID, "Not enough command to order " .. sortie.name .. " sortie!")
+		end
 	end
 	
 	return false
@@ -313,7 +330,7 @@ function gadget:GameFrame(n)
 			local cmdParams = info[3]
 			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
 			SpawnFlight(teamID, sortie.units, sx, sy, sz, cmdParams)
-			SendMessageToTeam(teamID, (sortie.name or "") .. " sortie arrived.")
+			SendMessageToTeam(teamID, sortie.name .. " sortie arrived.")
 		end
 		orderedSorties[n] = nil --don't need this information anymore
 	end
