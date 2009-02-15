@@ -1,0 +1,11 @@
+[GBRBofors_Destroyed]
+{
+	object=GBRBofors_Destroyed.S3O;
+	featuredead=Debris_Small;
+	description=Destroyed AA Gun;
+	energy=0;
+	damage=3000;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+}
