@@ -286,14 +286,14 @@
 		//canbuild2=GERSupplyTruck;
 		canbuild3=GERSdkfz250;
 		canbuild4=GERSdkfz251;
-		//canbuild5=GERSdkfz10;
+		canbuild5=GERSdkfz10;
 		canbuild6=GERMarder;
 	}
 
 	[GERGunYard]
 	{
 		canbuild1=GEROpelBlitz;
-		//canbuild2=GERFlaK38;
+		//canbuild2=GERFlaK38_truck;
 		canbuild3=GERleIG18_gunyard;
 		canbuild4=GERPaK40_truck;
 		canbuild5=GERleFH18_truck;
@@ -661,7 +661,7 @@
 		//canbuild2=RUSSupplyTruck;
 		canbuild3=RUSBA64;
 		canbuild4=RUSM5Halftrack;
-		//canbuild5=RUSGAZAAA;
+		canbuild5=RUSGAZAAA;
 		canbuild6=RUST60;
 		canbuild7=RUSSU76;
 	}
@@ -669,7 +669,7 @@
 	[RUSGunYard]
 	{
 		canbuild1=RUSZiS5;
-		//canbuild2=RUS61K;
+		//canbuild2=RUS61K_truck;
 		canbuild3=RUSZiS2_truck;
 		canbuild4=RUSZiS3_truck;
 		canbuild5=RUSM30_truck;
