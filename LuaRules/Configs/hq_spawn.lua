@@ -44,7 +44,6 @@ local hqDefs = {
 				"rus_platoon_rifle",
 				"russtorage",
 				"russtorage",
-				"ruszis5",
 				"rus61k_stationary",
 				"rus61k_stationary",
 				"rus61k_stationary",

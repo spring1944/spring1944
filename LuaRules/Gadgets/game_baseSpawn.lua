@@ -58,11 +58,11 @@ if (gadgetHandler:IsSyncedCode()) then
 				Spring.Echo(unitName)
 				local x = math.random(xmin, xmax)
 				local z = math.random(zmin, zmax)
-				local occupied = Spring.GetUnitsInCylinder(x, z, spread, teamID)
+				local occupied = Spring.GetUnitsInCylinder(x, z, 100, teamID)
 				while (occupied[1] ~= nil) do
 					x = math.random(xmin, xmax)
 					z = math.random(zmin, zmax)
-					occupied = Spring.GetUnitsInCylinder(x, z, spread, teamID)
+					occupied = Spring.GetUnitsInCylinder(x, z, 100, teamID)
 				end
 				Spring.CreateUnit(unitName, x, py, z, 0, teamID)
 			end		
