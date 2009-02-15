@@ -9,7 +9,7 @@
 	tedclass=TURRET;
 	yardmap=o;
 
-	name=Dug-In M1 Bofors
+	name=Dug-In M1 Bofors;
 	description=- Stationary 40mm Anti-Aircraft Gun;
 	side=GBR;
 	maxdamage=2500;
