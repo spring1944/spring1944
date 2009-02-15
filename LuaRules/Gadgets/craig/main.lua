@@ -49,6 +49,8 @@ include("LuaRules/Configs/craig/buildorder.lua")
 -- include code
 include("LuaRules/Gadgets/craig/buildorder.lua")
 include("LuaRules/Gadgets/craig/buildsite.lua")
+include("LuaRules/Gadgets/craig/base.lua")
+include("LuaRules/Gadgets/craig/unitlimits.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 
 -- globals
@@ -150,6 +152,13 @@ function gadget:TeamDied(teamID)
 	--for _,t in pairs(team) do
 	--	t.TeamDied(teamID)
 	--end
+end
+
+function gadget:AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
+	if team[builderTeam] then
+		return team[builderTeam].AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
+	end
+	return true
 end
 
 --------------------------------------------------------------------------------

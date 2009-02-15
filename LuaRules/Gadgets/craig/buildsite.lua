@@ -18,7 +18,7 @@ function buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam)
 	Must be called for each unit leaving the team
 	(e.g. from gadget:UnitDestroyed, gadget:UnitTaken)
 
-function buildsiteFinder.FindBuildsite(builderID, unitDefID)
+function buildsiteFinder.FindBuildsite(builderID, unitDefID, closest)
 	Returns x, y, z, facing if it finds a suitable buildsite for unitDefID.
 	builderID is currently used only to determine optimal build facing.
 	Returns nil if it can not find a suitable buildsite.
@@ -38,7 +38,7 @@ local widget = {}
 ------------------------------------------------
 --config
 ------------------------------------------------
-local segmentLength = 5
+local segmentLength = 10
 
 local DEFAULT_BUILD_RANGE = 250
 
@@ -311,7 +311,7 @@ end
 -- Wee, the first function in this file written by myself!
 -- This is main public method; it finds good buildsites.
 -- returns x,y,z,facing, or nil if it can not find any build position
-function widget.FindBuildsite(builderID, unitDefID)
+function widget.FindBuildsite(builderID, unitDefID, closest)
 	-- build list of points, similar to points shown by S44 supplyradius widget,
 	-- but with different radii (currently fixed for all buildings)
 	local vertices = DrawMain()
@@ -321,31 +321,48 @@ function widget.FindBuildsite(builderID, unitDefID)
 	local x,y,z = GetUnitPosition(builderID)
 	local facing = FindFacing(x,y,z)
 
-	if count > 1.5 then
-		-- repeatedly try a random vertex until either we found one we can build on,
-		-- or we tried as many times as there are vertices
-		local watchdog = 0
-		repeat
-			-- get random vertex from the list
-			local i = math.random(0, count-1)
-			local v = vertices[i]
-			-- don't call TestBuildOrder multiple times for the same vertex
-			vertices[i] = nil
-			if v and TestBuildOrder(unitDefID, v[1],v[2],v[3], facing) > 0 then
-				return v[1],v[2],v[3],facing
+	-- only use the "advanced" algorithm for buildings,
+	-- and when there is already at least one building.
+	if UnitDefs[unitDefID].speed == 0 and count > 1.5 then
+		if closest then
+			for _,v in ipairs(vertices) do
+				local dx,dz = (x-v[1]), (z-v[3])
+				v.sqdist = dx*dx + dz*dz
 			end
-			watchdog = watchdog + 1
-		until watchdog >= count
-		-- TODO: as last resort, do an exhaustive search over all vertices?
+			table.sort(vertices, function (a, b) return a.sqdist < b.sqdist end)
+			for _,v in ipairs(vertices) do
+				if TestBuildOrder(unitDefID, v[1],v[2],v[3], facing) > 0 then
+					return v[1],v[2],v[3],facing
+				end
+			end
+		else
+			-- repeatedly try a random vertex until either we found one we can build on,
+			-- or we tried as many times as there are vertices
+			local watchdog = 0
+			repeat
+				-- get random vertex from the list
+				local i = math.random(0, count-1)
+				local v = vertices[i]
+				-- don't call TestBuildOrder multiple times for the same vertex
+				vertices[i] = nil
+				if v and TestBuildOrder(unitDefID, v[1],v[2],v[3], facing) > 0 then
+					return v[1],v[2],v[3],facing
+				end
+				watchdog = watchdog + 1
+			until watchdog >= count
+			-- TODO: as last resort, do an exhaustive search over all vertices?
+		end
 	end
 
-	-- fallback: try to pick some random build site near the builder
+	-- fallback: try to pick some random build site, preferably in range of the builder
+	local range = 0.5 * UnitDefs[GetUnitDefID(builderID)].buildDistance
 	for _=1,10 do
-		local tx = x + math.random(-DEFAULT_BUILD_RANGE, DEFAULT_BUILD_RANGE)
-		local tz = z + math.random(-DEFAULT_BUILD_RANGE, DEFAULT_BUILD_RANGE)
+		local tx = x + math.random(-range, range)
+		local tz = z + math.random(-range, range)
 		if TestBuildOrder(unitDefID, tx,y,tz, facing) > 0 then
 			return tx,y,tz,facing
 		end
+		range = range * 1.5
 	end
 
 	-- we did our best, but to no avail... maybe we get lucky next time

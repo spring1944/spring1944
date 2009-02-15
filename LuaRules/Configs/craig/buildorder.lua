@@ -14,9 +14,9 @@ gadget.unitBuildOrder = {
 	-- Great Britain
 	gbrhq = {
 		"gbrhqengineer", "gbrhqengineer",
-		"gbr_platoon_hq", "gbr_platoon_hq", 
 		"gbr_platoon_hq", "gbr_platoon_hq",
-		"gbr_platoon_hq", "gbr_platoon_hq", 
+		"gbr_platoon_hq", "gbr_platoon_hq",
+		"gbr_platoon_hq", "gbr_platoon_hq",
 		"gbr_platoon_hq", "gbr_platoon_hq",
 	},
 	gbrbarracks = {
@@ -40,10 +40,10 @@ gadget.unitBuildOrder = {
 	},
 	-- it can not upgrade tank yard yet!
 	gbrtankyard = {
-		"gbrcromwell", "gbrcromwell", 
-		"gbrcromwell", "gbrshermanfirefly", 
+		"gbrcromwell", "gbrcromwell",
+		"gbrcromwell", "gbrshermanfirefly",
 		"gbrshermanfirefly", "gbrcromwellmkvi",
-		"gbraecmkii", 	
+		"gbraecmkii",
 	},
 	-- Russia
 	rusbarracks = {
@@ -58,17 +58,17 @@ gadget.unitBuildOrder = {
 		"rus_platoon_rifle", "rus_platoon_sniper",
 		"rus_platoon_rifle", "rus_platoon_rifle",
 	},
-	ruspshack = { 
+	ruspshack = {
 		"rus_platoon_partisan",
-	},	
+	},
 	rusvehicleyard = {
 		-- works so far added by Journier
-		"rusk31", 
+		"rusk31",
 		"rusba64",
-		"rust60", "rust60", 
+		"rust60", "rust60",
 		"rust60",
-		"rusm5halftrack", 
-		"rust60", "rust60", 
+		"rusm5halftrack",
+		"rust60", "rust60",
 		"rust60",
 		"rusm5halftrack",
 		"russu76", "russu76",
@@ -77,30 +77,30 @@ gadget.unitBuildOrder = {
 		"russu76", "russu76",
 		"russu76",
 	},
-	rustankyard = { 
+	rustankyard = {
 		-- works so far Journier
-		"rust70", "rust3476", 
-		"rust3476", "rust3476", 
+		"rust70", "rust3476",
+		"rust3476", "rust3476",
 		"rust3476", "rusisu152",
-	},		
+	},
 	-- Germany
-	gerhqbunker = { 
+	gerhqbunker = {
 		-- added by journier works
-		"gerhqengineer", "gerhqengineer", 
-		"ger_platoon_hq", "ger_platoon_hq", "ger_platoon_hq", 
+		"gerhqengineer", "gerhqengineer",
+		"ger_platoon_hq", "ger_platoon_hq", "ger_platoon_hq",
 		"ger_platoon_hq", "ger_platoon_hq",
-	},		
+	},
 	gerbarracks = {
 		-- added by Journier works
 		"gerengineer", "gerengineer",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
-		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar", 
+		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar",
 		"gerleig18_bax",
 	},
 	gervehicleyard = {
 		-- added by journier works
-		"gersdkfz9", 
+		"gersdkfz9",
 		"gersdkfz250", "gersdkfz250", "gersdkfz250",
 		"germarder",
 		"gersdkfz251",
@@ -110,7 +110,7 @@ gadget.unitBuildOrder = {
 	},
 	gertankyard = {
 		-- added by journier works
-		"gerpanzeriii", "gerpanzeriii", "gerpanzeriii", 
+		"gerpanzeriii", "gerpanzeriii", "gerpanzeriii",
 		"gerstugiii", "gerstugiii", "gerstugiii",
 		"gertiger",
 	},
@@ -123,30 +123,30 @@ gadget.unitBuildOrder = {
 	},
 	usbarracks = {
 		--added by journier might work
-			"usengineer", "usengineer",
-			"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
-			"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
-			"us_platoon_assault", "us_platoon_at", 
-			"us_platoon_mortar", "us_platoon_sniper", "us_platoon_flame",
-			"usm8gun_bax",
+		"usengineer", "usengineer",
+		"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
+		"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
+		"us_platoon_assault", "us_platoon_at",
+		"us_platoon_mortar", "us_platoon_sniper", "us_platoon_flame",
+		"usm8gun_bax",
 	},
 	usvehicleyard = {
 		--added by journier might not work
-			"usgmcengvehicle",
-			"usm8greyhound", "usm8greyhound", "usm8greyhound",
-			"usm3halftrack",
-			"usm8scott",
-			"usm8greyhound", "usm8greyhound", "usm8greyhound",
-			"usm3halftrack", 
-			"usm8scott",
+		"usgmcengvehicle",
+		"usm8greyhound", "usm8greyhound", "usm8greyhound",
+		"usm3halftrack",
+		"usm8scott",
+		"usm8greyhound", "usm8greyhound", "usm8greyhound",
+		"usm3halftrack",
+		"usm8scott",
 	},
 	ustankyard = {
 		--added by journier might not work
-			"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
-			"usm10wolverine",
+		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
+		"usm10wolverine",
 	},
-			
 }
+
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
 gadget.baseBuildOrder = {
 	gbr = {
@@ -171,18 +171,18 @@ gadget.baseBuildOrder = {
 		"rusvehicleyard", "rusvehicleyard",
 		"russupplydepot",
 		"rustankyard", "rustankyard",
-		
+
 	},
-	ger = { 
+	ger = {
 		-- works added by Journier
-		"gerbarracks", "gerbarracks", "gerbarracks", 
+		"gerbarracks", "gerbarracks", "gerbarracks",
 		"gerstorage",
 		"gervehicleyard", "gervehicleyard",
 		"gerstorage",
 		"gertankyard", "gertankyard",
 		"gersupplydepot",
 	},
-	
+
 	us = {
 		--might work
 		"usbarracks", "usbarracks", "usbarracks",
@@ -192,16 +192,16 @@ gadget.baseBuildOrder = {
 		"ustankyard", "ustankyard",
 		"ussupplydepot",
 	},
-		
+
 }
 
--- this lists all the units (of all sides) that are considered "base builders"
+-- This lists all the units (of all sides) that are considered "base builders"
 gadget.baseBuilders = {
 	"gbrhqengineer",
 	"gbrengineer",
 	"gbrmatadorengvehicle",
-	"gerengineer",
 	"gerhqengineer",
+	"gerengineer",
 	"gersdkfz9",
 	"ruscommander", -- contrary to other sides Russia can start immediately
 	"ruscommissar", -- after game start with base building...
@@ -210,4 +210,18 @@ gadget.baseBuilders = {
 	"ushqengineer",
 	"usengineer",
 	"usgmcengvehicle",
+}
+
+
+-- Do not limit units spawned through LUA! (infantry that is build in platoons,
+-- deployed supply trucks, deployed guns, etc.)
+gadget.unitLimits = {
+	gbrengineer = 4,
+	gbrmatadorengvehicle = 1,
+	gerengineer = 4,
+	gersdkfz9 = 1,
+	rusengineer = 4,
+	rusk31 = 1,
+	usengineer = 4,
+	usgmcengvehicle = 1,
 }

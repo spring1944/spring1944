@@ -7,18 +7,22 @@ interface methods.  Private data is stored in the function's closure.
 
 Public interface:
 
-local team = CreateTeam(myTeamID, myAllyTeamID, mySide)
+local Team = CreateTeam(myTeamID, myAllyTeamID, mySide)
 
-function team.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-function team.UnitFinished(unitID, unitDefID, unitTeam)
-function team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-function team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-function team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+function Team.UnitCreated(unitID, unitDefID, unitTeam, builderID)
+function Team.UnitFinished(unitID, unitDefID, unitTeam)
+function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+function Team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+function Team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 ]]--
 
 function CreateTeam(myTeamID, myAllyTeamID, mySide)
 
-local team = {}
+local Team = {}
+
+local Log = function (message)
+	Log("Team[" .. myTeamID .. "] " .. message)
+end
 
 -- constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -28,24 +32,16 @@ local enemyBases = {}
 local enemyBaseCount = 0
 local enemyBaseLastAttacked = 0
 
+-- Base building (one global buildOrder)
+local baseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
+
 -- Unit building (one buildOrder per factory)
 local unitBuildOrder = gadget.unitBuildOrder
 
--- Base building (one global buildOrder)
-local buildsiteFinder = CreateBuildsiteFinder(myTeamID)
-local baseBuildOrder = gadget.baseBuildOrder[mySide]
-local baseBuildIndex = 0
-local baseBuilders = gadget.baseBuilders
-local baseBuildOptions = {} -- map of unitDefIDs (buildOption) to unitDefIDs (builders)
-local baseBuildOptionsDirty = false
-local currentBuild          -- one unitDefID
-local currentBuilder        -- one unitID
+-- Unit limits
+local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)
 
 local delayedCallQue = { first = 1, last = 0 }
-
-local Log = function (message)
-	Log("Team[" .. myTeamID .. "] " .. message)
-end
 
 local function DelayedCall(fun)
 	delayedCallQue.last = delayedCallQue.last + 1
@@ -60,86 +56,13 @@ local function PopDelayedCall()
 	return ret
 end
 
--- does not modify sim; is called from outside GameFrame
-local function BuildBaseInterrupted(violent)
-	if violent then
-		baseBuildIndex = baseBuildIndex - 1
-		Log("Reset baseBuildIndex to " .. baseBuildIndex)
-	end
-	currentBuild = nil
-	currentBuilder = nil
-end
-
--- modifies sim, only call this in GameFrame! (or use DelayedCall)
-local function BuildBase()
-	if currentBuild then
-		local unitID = Spring.GetUnitIsBuilding(currentBuilder)
-		local vx,vy,vz = Spring.GetUnitVelocity(currentBuilder)
-		local _,_,inBuild = Spring.GetUnitIsStunned(currentBuilder)
-		-- consider build aborted when:
-		-- * the builder isn't building anymore (unitID == nil)
-		-- * the builder doesn't exist anymore (vx == nil)
-		-- * the builder is not moving, except when he is being build!
-		if (unitID == nil) and ((vx == nil) or ((vx*vx + vz*vz < 0.0001) and (not inBuild))) then
-			Log(UnitDefs[currentBuild].humanName .. " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
-			BuildBaseInterrupted(false)
-		--[[else
-			local _,_,inBuild = Spring.GetUnitIsStunned(unitID)
-			if not inBuild then
-				Log(UnitDefs[currentBuild].humanName .. " was finished, but neither UnitFinished nor UnitDestroyed was called (2)")
-				BuildBaseInterrupted(false)
-			end]]--
-		end
-	end
-
-	-- nothing to do if something is still being build
-	if currentBuild then return end
-
-	local unitDefID = baseBuildOrder[baseBuildIndex + 1]
-	-- restart queue when finished
-	if not unitDefID then
-		baseBuildIndex = 0
-		unitDefID = baseBuildOrder[1]
-		Log("Restarted baseBuildOrder, next item: " .. UnitDefs[unitDefID].humanName)
-	end
-
-	local builderDefID = baseBuildOptions[unitDefID]
-	-- nothing to do if we have no builders available yet who can build this
-	if not builderDefID then Log("No builder available for " .. UnitDefs[unitDefID].humanName) return end
-
-	local builders = Spring.GetTeamUnitsByDefs(myTeamID, builderDefID)
-	if not builders then Log("internal error: Spring.GetTeamUnitsByDefs returned nil") return end
-
-	local builderID = builders[1]
-	if not builderID then Log("internal error: Spring.GetTeamUnitsByDefs returned empty array") return end
-
-	-- give the order to the builder, iff we can find a buildsite
-	local x,y,z,facing = buildsiteFinder.FindBuildsite(builderID, unitDefID)
-	if not x then Log("Could not find buildsite for " .. UnitDefs[unitDefID].humanName) return end
-
-	Log("Queueing in place: " .. UnitDefs[unitDefID].humanName)
-	Spring.GiveOrderToUnit(builderID, -unitDefID, {x,y,z,facing}, {})
-
-	-- give guard order to the other builders with the same def
-	for i=2,#builders do
-		Spring.GiveOrderToUnit(builders[i], CMD.GUARD, {builderID}, {})
-	end
-
-	-- TODO: give guard order to all builders with another def
-
-	-- finally, register the build as started
-	baseBuildIndex = baseBuildIndex + 1
-	currentBuild = unitDefID
-	currentBuilder = builderID
-end
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
 --  The call-in routines
 --
 
-function team.GameStart()
+function Team.GameStart()
 	Log("GameStart")
 	-- Can not run this in the initialization code at the end of this file,
 	-- because at that time Spring.GetTeamStartPosition seems to always return 0,0,0.
@@ -159,35 +82,24 @@ function team.GameStart()
 	Log("Preparing to attack " .. enemyBaseCount .. " enemies")
 end
 
-function team.GameFrame(f)
+function Team.GameFrame(f)
 	Log("GameFrame")
-
-	-- update baseBuildOptions
-	if baseBuildOptionsDirty then
-		baseBuildOptionsDirty = false
-		baseBuildOptions = {}
-		local unitCounts = Spring.GetTeamUnitsCounts(myTeamID)
-		for ud,_ in pairs(baseBuilders) do
-			if unitCounts[ud] and unitCounts[ud] > 0 then
-				Log(unitCounts[ud] .. " x " .. UnitDefs[ud].humanName)
-				for _,bo in ipairs(UnitDefs[ud].buildOptions) do
-					if not baseBuildOptions[bo] then
-						Log("Base can now build " .. UnitDefs[bo].humanName)
-						baseBuildOptions[bo] = ud --{}
-					end
-					--baseBuildOptions[bo][ud] = true
-				end
-			end
-		end
-	end
 
 	while true do
 		local fun = PopDelayedCall()
 		if fun then fun() else break end
 	end
 
-	BuildBase()
+	baseMgr.GameFrame(f)
 end
+
+--------------------------------------------------------------------------------
+--
+--  Game call-ins
+--
+
+-- Short circuit callin which would otherwise only forward the call..
+Team.AllowUnitCreation = unitLimitsMgr.AllowUnitCreation
 
 --------------------------------------------------------------------------------
 --
@@ -196,11 +108,10 @@ end
 
 -- Currently unitTeam always equals myTeamID (enforced in gadget)
 
-function team.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	buildsiteFinder.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-end
+-- Short circuit callin which would otherwise only forward the call..
+Team.UnitCreated = baseMgr.UnitCreated
 
-function team.UnitFinished(unitID, unitDefID, unitTeam)
+function Team.UnitFinished(unitID, unitDefID, unitTeam)
 	Log("UnitFinished: " .. UnitDefs[unitDefID].humanName)
 
 	-- idea from BrainDamage: instead of cheating huge amounts of resources,
@@ -211,21 +122,8 @@ function team.UnitFinished(unitID, unitDefID, unitTeam)
 	-- queue unitBuildOrders if we have any for this unitDefID
 	if unitBuildOrder[unitDefID] then
 		DelayedCall(function()
-			local factory = (UnitDefs[unitDefID].TEDClass == "PLANT") -- factory or builder?
-			for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-				if factory then
-					Log("Queueing: " .. UnitDefs[bo].humanName)
-					Spring.GiveOrderToUnit(unitID, -bo, {}, {})
-				else
-					Log("Queueing in place: " .. UnitDefs[bo].humanName)
-					if UnitDefs[bo].speed == 0 then
-						Log("Warning: it's not recommended to queue buildings through unitBuildOrder!")
-					end
-					local x,y,z,facing = buildsiteFinder.FindBuildsite(unitID, bo)
-					Spring.GiveOrderToUnit(unitID, -bo, {x,y,z,facing}, {"shift"})
-				end
-			end
-			if factory then
+			-- factory or builder?
+			if (UnitDefs[unitDefID].TEDClass == "PLANT") then
 				-- If there are no enemies, don't bother lagging Spring to death:
 				-- just go through the build queue exactly once, instead of repeating it.
 				if enemyBaseCount > 0 then
@@ -247,56 +145,34 @@ function team.UnitFinished(unitID, unitDefID, unitTeam)
 						if idx > enemyBaseCount then idx = 1 end
 					end
 				end
+				for _,bo in ipairs(unitBuildOrder[unitDefID]) do
+					Log("Queueing: " .. UnitDefs[bo].humanName)
+					Spring.GiveOrderToUnit(unitID, -bo, {}, {})
+				end
+			else
+				Log("Warning: unitBuildOrder can only be used to control factories")
 			end
 		end)
 	end
 
-	-- update base building
-	if baseBuilders[unitDefID] then
-		for _,bo in ipairs(UnitDefs[unitDefID].buildOptions) do
-			if not baseBuildOptions[bo] then
-				Log("Base can now build " .. UnitDefs[bo].humanName)
-				baseBuildOptions[bo] = unitDefID --{}
-			end
-			--baseBuildOptions[bo][unitDefID] = true
-		end
-	end
-	if unitDefID == currentBuild then
-		Log("CurrentBuild finished")
-		BuildBaseInterrupted(false)
-	end
+	baseMgr.UnitFinished(unitID, unitDefID, unitTeam)
 end
 
-function team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	Log("UnitDestroyed: " .. UnitDefs[unitDefID].humanName)
 
-	buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-
-	-- update baseBuildOptions
-	if baseBuilders[unitDefID] then
-		baseBuildOptionsDirty = true
-	end
-
-	-- update base building
-	if unitDefID == currentBuild then
-		Log("CurrentBuild destroyed")
-		BuildBaseInterrupted(true)
-	end
-	if unitID == currentBuilder then
-		Log("CurrentBuilder destroyed")
-		BuildBaseInterrupted(true)
-	end
+	baseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 end
 
-function team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-	team.UnitDestroyed(unitID, unitDefID, unitTeam)
+function Team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+	Team.UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
-function team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-	team.UnitCreated(unitID, unitDefID, unitTeam, nil)
+function Team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+	Team.UnitCreated(unitID, unitDefID, unitTeam, nil)
 	local _, _, inBuild = Spring.GetUnitIsStunned(unitID)
 	if not inBuild then
-		team.UnitFinished(unitID, unitDefID, unitTeam)
+		Team.UnitFinished(unitID, unitDefID, unitTeam)
 	end
 end
 
@@ -305,11 +181,7 @@ end
 --  Initialization
 --
 
-if not baseBuildOrder then
-	error("C.R.A.I.G. is not configured properly to play as " .. mySide)
-end
-
 Log("assigned to " .. gadget:GetInfo().name .. " (allyteam: " .. myAllyTeamID .. ", side: " .. mySide .. ")")
 
-return team
+return Team
 end

@@ -50,3 +50,11 @@ do
 end
 
 gadget.baseBuilders = NameArrayToIdSet(gadget.baseBuilders)
+
+do
+	local unitLimitsById = {}
+	for k,v in pairs(gadget.unitLimits) do
+		unitLimitsById[NameToID(k)] = v
+	end
+	gadget.unitLimits = unitLimitsById
+end
