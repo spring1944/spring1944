@@ -167,10 +167,8 @@ gadget.baseBuildOrder = {
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
 		"ruspshack", "ruspshack",
-		"russtorage", "russtorage",
 		"rusvehicleyard", "rusvehicleyard",
-		"russupplydepot",
-		"rustankyard", "rustankyard",
+		"rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard",
 
 	},
 	ger = {
