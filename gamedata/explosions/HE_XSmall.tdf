@@ -1,19 +1,20 @@
 [HE_XSmall] {
 	usedefaultexplosions=0;
-	[smoke] {
+	
+	[airsmoke] {
 		class=CSimpleParticleSystem;
 		[properties]{
-			sizeGrowth=0.5 r0.5;
+			sizeGrowth=2 r2;
 			sizeMod=0.5;
 			pos=0, 0, 0;
 			emitVector=0, 1, 0;
 			gravity=0, 0, 0;
-			colorMap=0.5 0.5 0.5 1  0 0 0 0;
+			colorMap=0.25 0.25 0.25 1  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.75;
-			particleLife=12;
-			particleLifeSpread=4;
-			numParticles=8;
+			particleLife=24;
+			particleLifeSpread=8;
+			numParticles=1;
 			particleSpeed=0.5;
 			particleSpeedSpread=0.25;
 			particleSize=1;
@@ -24,8 +25,6 @@
 			alwaysVisible=0;
 		}
 		air=1;
-		water=1;
-		ground=1;
 		count=1;
 	}
 	
