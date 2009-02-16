@@ -69,7 +69,7 @@
 	CruiseAlt=200;
 
 	moverate1=4;//does this tag even work?
-	Maxfuel=60;
+	Maxfuel=180;
 	//RefuelTime=10;
 
 	// 	Misc
