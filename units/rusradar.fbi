@@ -1,14 +1,14 @@
 [unitinfo]
 {
 	unitname=rusradar;
-	objectname=GERRadar.S3O;
+	objectname=RUSRadar.S3O;
 	icontype=radar;
 	soundcategory=Nothing;
 	category=metal level1 NOWEAPON FLAG;
 	tedclass=METAL;
 	yardmap=ooooooooo;
 
-	name=Freya Air Control Radar;
+	name=RUS-2 Air Control Station;
 	description=Detects and Controls Aircraft;
 	side=GER;
 	maxdamage=5000;
