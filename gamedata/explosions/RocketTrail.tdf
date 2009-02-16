@@ -7,13 +7,13 @@
 			pos=0, 0, 0;
 			emitVector=dir;
 			gravity=0, 0, 0;
-			colorMap=1 1 0.5 0.25  0.25 0.1 0.05 0.25  0.024 0.024 0.024 0.12  0.02 0.02 0.02 0.1  0.016 0.016 0.016 0.08  0.012 0.012 0.012 0.06  0.008 0.008 0.008 0.04  0.004 0.004 0.004 0.02  0 0 0 0;
+			colorMap=1 1 0.625 0.25  0.18 0.18 0.18 0.24  0.15 0.15 0.15 0.20  0.12 0.12 0.12 0.16  0.09 0.09 0.09 0.12  0.06 0.06 0.06 0.08  0.03 0.03 0.03 0.04  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.5;
-			particleLife=48;
-			particleLifeSpread=32;
+			particleLife=16;
+			particleLifeSpread=24;
 			numParticles=1;
-			particleSpeed=i2;
+			particleSpeed=i3;
 			particleSpeedSpread=1;
 			particleSize=1;
 			particleSizeSpread=2;
@@ -25,6 +25,6 @@
 		air=1;
 		water=1;
 		ground=1;
-		count=8;
+		count=6;
 	}
 }
