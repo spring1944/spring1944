@@ -1,20 +1,20 @@
 [unitinfo]
 {
-	unitname=rusradar;
+	unitname=RUSRadar;
 	objectname=RUSRadar.S3O;
 	icontype=radar;
 	soundcategory=Nothing;
-	category=metal level1 NOWEAPON FLAG;
-	tedclass=METAL;
+	category=NFLAGNAIR PLANT BUILDING;
+	tedclass=PLANT;
 	yardmap=ooooooooo;
 
 	name=RUS-2 Air Control Station;
 	description=Detects and Controls Aircraft;
 	side=GER;
 	maxdamage=5000;
-	buildcostmetal=12000;
+	buildcostmetal=7900;
 	buildcostenergy=0;
-	buildtime=9000;
+	buildtime=5265;
 	footprintx=5;
 	footprintz=5;
 
@@ -35,11 +35,12 @@
 	maxslope=20;
 	maxwaterdepth=255;
 
-	explodeas=Flag;
-	selfdestructas=Flag;
+	explodeas=Large_Explosion;
+	selfdestructas=Large_Explosion;
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;
+
 	[sfxtypes]
 	{
 	}
