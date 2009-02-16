@@ -78,7 +78,7 @@
 	idleTime=1800;
 	steeringmode=1;
 	maneuverleashlength=1280;
-	nochasecategory=AIR;
+	nochasecategory=FLAG;
 	seismicsignature=0;
 	shownanoframe=0;
 

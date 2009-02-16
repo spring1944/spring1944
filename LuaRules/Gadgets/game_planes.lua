@@ -17,7 +17,7 @@ local sin, cos, atan2 = math.sin, math.cos, math.atan2
 
 local CMD_PLANES = 34400
 local PATROL_DISTANCE = 1000
-local FORMATION_SEPARATION = 64
+local FORMATION_SEPARATION = 128
 local DIAG_FORMATION_SEPARATION = FORMATION_SEPARATION * sqrt(2)
 local RETREAT_TOLERANCE = 64 --retreating planes disappear when they reach this distance from the map edge
 local CRUISE_SPEED = 0.75
