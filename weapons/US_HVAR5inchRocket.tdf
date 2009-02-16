@@ -8,6 +8,7 @@
 	explosiongenerator=custom:HE_Medium;
 	turret=1;
 	tolerance=300;
+	//projectiles=2;
 
 	ballistic=1;
 	trajectoryheight=0.1;
