@@ -4,7 +4,7 @@
 	objectname=RUSBA64.S3O;
 	corpse=RUSBA64_Destroyed;
 	soundcategory=RUSVeh;
-	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
+	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH TANK;
 	tedclass=TANK;
 
 	name=BA-64;
