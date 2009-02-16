@@ -126,5 +126,9 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = stukab-;
 		enginesoundnr = 12;
+		maxammo=12;
+		weaponswithammo=2;
+		lowammolevel=1;
+		weaponcost=-1;
 	}
 }
