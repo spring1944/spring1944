@@ -48,7 +48,7 @@
 	//    Misc
 	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
-	BuildPic=GERBf109.png;
+	BuildPic=RUSYak3.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
