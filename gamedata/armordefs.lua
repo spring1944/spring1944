@@ -303,6 +303,7 @@ local armorDefs = {
 	
 		--US--
 		"USL4",
+		"USP47Thunderbolt",
 		"USP51DMustang",
 		"USP51DMustangGA",
 
