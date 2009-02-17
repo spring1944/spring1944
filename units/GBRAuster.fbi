@@ -49,9 +49,9 @@
 	BadTargetCategory=NOTAIR;
 	BuildPic=GBRAuster.png;
 	CruiseAlt=160;
-	ExplodeAs=ResourceBoom;
+	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
-	SelfDestructAs=ResourceBoom;
+	ExplodeAs=Vehicle_Explosion_Med;
 	SmoothAnim=1;
 	idleAutoHeal=2;
 	bankscale=1;

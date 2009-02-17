@@ -12,7 +12,7 @@
 	name=Dug-In M1 Bofors;
 	description=- Stationary 40mm Anti-Aircraft Gun;
 	side=GBR;
-	maxdamage=2500;
+	maxdamage=1250;
 
 	buildcostmetal=1500;
 	buildcostenergy=0;
