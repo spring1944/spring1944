@@ -87,12 +87,12 @@ local iconTypes = {
 	bomber = {
 		bitmap		=	"icons/bomber.tga",
 		size			=	2.5,
-		distance	=	0.5,
+		distance	=	1,
 	},
 	fighter = {
 		bitmap		=	"icons/fighter.tga",
 		size			=	2.5,
-		distance	=	0.5,
+		distance	=	1,
 	},
 	gerhq = {
 		bitmap		=	"icons/gerhq.tga",
