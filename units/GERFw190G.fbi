@@ -48,7 +48,7 @@
 	//    Misc
 	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
-	BuildPic=USP51DMustang.png;
+	BuildPic=GERFw190G.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;

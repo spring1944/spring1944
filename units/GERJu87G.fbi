@@ -1,7 +1,7 @@
 [UNITINFO]
 {
 	Name=Ju 87G-1 Stuka;
-	UnitName=GBRSpitfireMkXIV;
+	UnitName=GERJu87G;
 	icontype=fighter;
 	//    Required Tags
 	BuildCostEnergy=0;
@@ -49,7 +49,7 @@
 	//    Misc
 	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
-	BuildPic=GBRSPitfireMkXIV.png;
+	BuildPic=GERJu87G.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -81,7 +81,6 @@
 	maneuverleashlength=1280;
 	seismicsignature=0;
 	shownanoframe=0;
-	nochasecategory=AIR;
 
 	//	Weapons
 	weapon1=bk37mmap;

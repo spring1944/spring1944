@@ -47,7 +47,7 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GERFi156.bmp;
+	BuildPic=RUSPo2.png;
 	CruiseAlt=160;
 	ExplodeAs=ResourceBoom;
 	MaxWaterDepth=0;

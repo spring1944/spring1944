@@ -48,7 +48,8 @@
 	
 	//    Misc
 	BadTargetCategory=NOTAIR;
-	BuildPic=GBRSPitfireMkXIV.png;
+	nochasecategory=FLAG;
+	BuildPic=GBRSpitfireMkIX.png;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	SelfDestructAs=Vehicle_Explosion_Med;
@@ -78,7 +79,6 @@
 	idleTime=1800;
 	steeringmode=1;
 	maneuverleashlength=1280;
-	nochasecategory=FLAG;
 	seismicsignature=0;
 	shownanoframe=0;
 
