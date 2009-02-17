@@ -1,0 +1,110 @@
+[UNITINFO]
+{
+	Name=La-5FN;
+	UnitName=RUSLa5FN;
+	icontype=fighter;
+	//    Required Tags
+	BuildCostEnergy=9000;
+	BuildCostMetal=5500;
+	BuildTime=550;
+	Category=AIRCRAFT;
+	Description=Air Superiority Fighter;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=800;
+	ObjectName=RUSLa5FN.S3O;
+	Side=RUS;
+	//SoundCategory=RUSPlane;
+	category=NFLAG AIR;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.5;
+	CanMove=1;
+	MaxVelocity=25;
+	MaxSlope=10;
+	TurnRate=50;
+	
+	//    Buildings
+	
+	//    Construction
+	
+	//    Resources
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	
+	//    Sight/Radar
+	SightDistance=500;
+	AirSightDistance=4000;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	nochasecategory=FLAG;
+	BuildPic=RUSLa5FN.png;
+	ExplodeAs=Vehicle_Explosion_Med;
+	MaxWaterDepth=0;
+	SelfDestructAs=Vehicle_Explosion_Med;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+
+	//	Flight Stuff
+	wingdrag=0.01;
+	wingangle=0.1;
+	drag=0.01;
+	mygravity=.25;
+	maxbank=0.12;
+	maxpitch=0.12;
+	turnradius=2000;
+	maxaileron=0.0055;
+	maxelevator=0.0043;
+	maxrudder=0.0035;
+
+	CruiseAlt=500;
+
+	moverate1=4;//does this tag even work?
+	Maxfuel=180;
+	//RefuelTime=10;
+
+	// 	Misc
+	bmcode=1;
+	idleTime=1800;
+	steeringmode=1;
+	maneuverleashlength=1280;
+	seismicsignature=0;
+	shownanoframe=0;
+
+	//	Weapons
+	weapon1=ShVAK20mm;
+	onlytargetcategory1=NFLAG;
+	weaponmaindir1=0 0 1;
+	maxangledif1=10;
+
+	weapon2=ShVAK20mm;
+	onlytargetcategory2=NFLAG;
+	weaponmaindir2=0 0 1;
+	maxangledif2=10;
+	weaponslaveto2=1;
+
+	weapon3=Large_Tracer_Green;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:XSMALL_Muzzleflash;
+	}
+
+	[customParams]
+	{
+		proptexture = bitmaps/prop3.tga;
+		enginesound = yakb-;
+		enginesoundnr = 20;
+	}
+}

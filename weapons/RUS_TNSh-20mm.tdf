@@ -133,8 +133,8 @@
 	firestarter=10;
 	collisionsize=2;
 	range=2000;
-	reloadtime=1.25;
-	burst=6;
+	reloadtime=1;
+	burst=3;
 	burstrate=0.085;
 	sprayangle=250;
 	//movingaccuracy=7111;

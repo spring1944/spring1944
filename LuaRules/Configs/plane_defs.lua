@@ -169,6 +169,18 @@ local planeDefs = {
 			},
 		},
 		{
+			--name = "Heavy Attack Fighter",
+			--shortname = "HAF",
+			cost = 3500,
+			delay = 15,
+			units = {
+				"rusla5fn",
+				"rusla5fn",
+				"rusla5fn",
+				"rusla5fn",
+			},
+		},
+		{
 			--name = "Ground-Attack Aircraft",
 			--shortname = "GA",
 			cost = 5000,
