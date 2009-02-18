@@ -3,7 +3,7 @@ local modRules = {
 		defaultMode					=	0,
 	},
 	experience = {
-		powerScale					=	1,
+		powerScale					=	1.5,
 		healthScale					=	1.5,
 		reloadScale					=	1.5,
 		experienceMult			=	1.25,
