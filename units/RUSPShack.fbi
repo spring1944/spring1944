@@ -19,7 +19,7 @@
 	footprintz=3;
 
 	shownanoframe=0;
-	unitrestricted=3;
+	//unitrestricted=3;
 
 	sightdistance=146;
 	stealth=1;

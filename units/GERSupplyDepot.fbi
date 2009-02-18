@@ -21,7 +21,7 @@
 	footprintz=7;
 
 	shownanoframe=0;
-	unitrestricted=3;
+	//unitrestricted=3;
 	smoothanim=0;
 
 	energymake=0;

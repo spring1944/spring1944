@@ -19,7 +19,7 @@
 	footprintz=7;
 
 	shownanoframe=0;
-	unitrestricted=2;
+	//unitrestricted=2;
 
 	metalstorage=1000;
 	energystorage=0;

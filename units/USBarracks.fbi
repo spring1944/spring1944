@@ -19,7 +19,7 @@
 
 	hidedamage=0;
 	shownanoframe=0;
-	unitrestricted=3;
+	//unitrestricted=3;
 	smoothanim=0;
 
 	metalstorage=1500;
