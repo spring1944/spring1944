@@ -137,7 +137,7 @@ local iconTypes = {
 	recon = {
 		bitmap		=	"icons/recon.tga",
 		size			=	2.25,
-		distance	=	0.15,
+		distance	=	0.75,
 	},
 	selfprop = {
 		bitmap		=	"icons/selfprop.tga",
