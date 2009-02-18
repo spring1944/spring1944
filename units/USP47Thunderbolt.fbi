@@ -59,7 +59,7 @@
 	wingdrag=0.01;
 	wingangle=0.1;
 	drag=0.01;
-	mygravity=.25;
+	mygravity=1;
 	maxbank=0.09;
 	maxpitch=0.09;
 	turnradius=2200;
@@ -96,43 +96,43 @@
 	onlytargetcategory3=NFLAG;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
-	weaponslaveto3=1;
+	weaponslaveto3=2;
 
 	weapon4=m2browningamg;
 	onlytargetcategory4=NFLAG;
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
-	weaponslaveto4=1;
+	weaponslaveto4=2;
 
 	weapon5=m2browningamg;
 	onlytargetcategory5=NFLAG;
 	weaponmaindir5=0 0 1;
 	maxangledif5=10;
-	weaponslaveto5=1;
+	weaponslaveto5=2;
 
 	weapon6=m2browningamg;
 	onlytargetcategory6=NFLAG;
 	weaponmaindir6=0 0 1;
 	maxangledif6=10;
-	weaponslaveto6=1;
+	weaponslaveto6=2;
 
 	weapon7=m2browningamg;
 	onlytargetcategory7=NFLAG;
 	weaponmaindir7=0 0 1;
 	maxangledif7=10;
-	weaponslaveto7=1;
+	weaponslaveto7=2;
 
 	weapon8=m2browningamg;
 	onlytargetcategory8=NFLAG;
 	weaponmaindir8=0 0 1;
 	maxangledif8=10;
-	weaponslaveto8=1;
+	weaponslaveto8=2;
 
 	weapon9=m2browningamg;
 	onlytargetcategory9=NFLAG;
 	weaponmaindir9=0 0 1;
 	maxangledif9=10;
-	weaponslaveto9=1;
+	weaponslaveto9=2;
 	
 	weapon10=Medium_Tracer;
 

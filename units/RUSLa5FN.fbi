@@ -22,7 +22,7 @@
 	BrakeRate=5;
 	Acceleration=0.5;
 	CanMove=1;
-	MaxVelocity=25;
+	MaxVelocity=30;
 	MaxSlope=10;
 	TurnRate=50;
 	
@@ -59,7 +59,7 @@
 	wingdrag=0.01;
 	wingangle=0.1;
 	drag=0.01;
-	mygravity=.25;
+	mygravity=1;
 	maxbank=0.12;
 	maxpitch=0.12;
 	turnradius=2000;
