@@ -143,7 +143,6 @@
 	burnblow=1;
 	weapontimer=1;
 
-	soundtrigger=1;
 	soundstart=RUS_20mm;
 
 	rgbcolor=1 0.75 0;
