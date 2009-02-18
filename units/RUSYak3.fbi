@@ -1,6 +1,6 @@
 [UNITINFO]
 {
-	Name=Yak-3;
+	Name=Yak-9;
 	UnitName=RUSYak3;
 	icontype=fighter;
 	//    Required Tags
@@ -22,7 +22,7 @@
 	BrakeRate=5;
 	Acceleration=0.5;
 	CanMove=1;
-	MaxVelocity=28;
+	MaxVelocity=30;
 	MaxSlope=10;
 	TurnRate=50;
 	
