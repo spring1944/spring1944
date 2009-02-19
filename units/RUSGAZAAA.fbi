@@ -8,7 +8,7 @@
 	category=TANK TPORT NFLAG INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
 
-	name=GAZ-AAA Maxim Mount;
+	name=M4 GAZ-AAA;
 	description=Light Anti-Aircraft Truck;
 	side=RUS;
 	maxdamage=700;
