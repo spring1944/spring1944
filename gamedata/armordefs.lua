@@ -229,10 +229,8 @@ local armorDefs = {
 		--**Germany**--
 		"GERSdKfz250",
 		"GERSdKfz251",
-		"GERSdkfz9",
 		"GERMarder",
 		"GERWespe",
-		"GERSdkfz10",
 
 		--US--
 		"USM8Greyhound",
@@ -259,6 +257,8 @@ local armorDefs = {
 		"GERFlaK38_Truck",
 		"GERPaK40_Truck",
 		"GERleFH18_Truck",
+		"GERSdkfz10",
+		"GERSdkfz9",
 
 		--US--
 		"USGMCTruck",
