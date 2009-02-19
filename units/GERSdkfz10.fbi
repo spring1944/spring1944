@@ -11,12 +11,13 @@
 	name=Sd.Kfz. 10/5 2cm FlaK 38;
 	description=Self-Propelled Light Anti-Aircraft;
 	side=GER;
-	maxdamage=1000;
+	maxdamage=600;
 	buildcostmetal=1350;
 	buildcostenergy=0;
 	buildtime=450;
 	footprintx=3;
 	footprintz=3;
+	mass=1200;
 
 	smoothanim=0;
 

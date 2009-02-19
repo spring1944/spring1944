@@ -11,7 +11,7 @@
 	name=M4 GAZ-AAA;
 	description=Light Anti-Aircraft Truck;
 	side=RUS;
-	maxdamage=700;
+	maxdamage=600;
 	buildcostmetal=1350;
 	buildcostenergy=0;
 	buildtime=450;
