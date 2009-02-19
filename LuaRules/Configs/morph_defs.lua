@@ -136,7 +136,25 @@ local morphDefs = {
     energy = 0,
   },
   
-  --[[gerflak38 =
+  gbrbofors_truck =
+  {
+    into = 'gbrbofors_stationary',
+    tech = 0,
+    time = 35,
+    metal = 0,
+    energy = 0,
+  },
+  
+  gbrbofors_stationary =
+  {
+    into = 'gbrbofors_truck',
+    tech = 0,
+    time = 10,
+    metal = 0,
+    energy = 0,
+  },
+  
+  gerflak38_truck =
   {
     into = 'gerflak38_stationary',
     tech = 0,
@@ -147,12 +165,12 @@ local morphDefs = {
   
   gerflak38_stationary =
   {
-    into = 'gerflak38',
+    into = 'gerflak38_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
-  },]]--
+  },
   
   gerpak40_truck = 
   {
@@ -208,7 +226,7 @@ local morphDefs = {
     energy = 0,
   },
 	
-	--[[rus61k = 
+  rus61k_truck = 
   {
     into = 'rus61k_stationary',
     tech = 0,
@@ -219,12 +237,12 @@ local morphDefs = {
   
   rus61k_stationary = 
   {
-    into = 'rus61k',
+    into = 'rus61k_truck',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
-  },]]--
+  },
   
   ruszis2_truck = 
   {
@@ -316,6 +334,24 @@ local morphDefs = {
     energy = 0,
   },
  
+     usm1bofors_truck = 
+  {
+    into = 'usm1bofors_stationary',
+    tech = 0,
+    time = 35,
+    metal = 0,
+    energy = 0,
+  },
+  
+    usm1bofors_stationary = 
+  {
+    into = 'usm1bofors_truck',
+    tech = 0,
+    time = 10,
+    metal = 0,
+    energy = 0,
+  },
+  
 -- Resource Trucks
 
 	gbrm5halftrack =
