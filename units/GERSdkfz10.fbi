@@ -12,9 +12,9 @@
 	description=Self-Propelled Light Anti-Aircraft;
 	side=GER;
 	maxdamage=1000;
-	buildcostmetal=740;
+	buildcostmetal=1350;
 	buildcostenergy=0;
-	buildtime=370;
+	buildtime=450;
 	footprintx=3;
 	footprintz=3;
 
