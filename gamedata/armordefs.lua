@@ -232,6 +232,7 @@ local armorDefs = {
 		"GERSdkfz9",
 		"GERMarder",
 		"GERWespe",
+		"GERSdkfz10",
 
 		--US--
 		"USM8Greyhound",
