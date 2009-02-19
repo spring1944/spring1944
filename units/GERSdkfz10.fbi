@@ -50,13 +50,13 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=KwK3020mmHE;
-	onlytargetcategory1=NFLAG;
+	//weapon1=KwK3020mmHE;
+	//onlytargetcategory1=NFLAG;
 	weapon2=flak3820mmaa;
 	onlytargetcategory2=AIR;
-	weapon3=KwK3020mHEFear;
-	onlytargetcategory4=NFLAGNAIR;
-	weaponslaveto4=1;
+	//weapon3=KwK3020mHEFear;
+	//onlytargetcategory3=NFLAGNAIR;
+	//weaponslaveto3=1;
 
 	weapon4=Large_Tracer;
 
