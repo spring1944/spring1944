@@ -150,19 +150,19 @@ gadget.unitBuildOrder = {
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
 gadget.baseBuildOrder = {
 	gbr = {
-		-- I used storages basically to delay tech up a bit :P
+		-- I used storages basically to delay tech up a bit :P Making GBR the easy faction to play against.
 		"gbrbarracks", "gbrbarracks", "gbrbarracks",
 		"gbrvehicleyard", "gbrvehicleyard",
 		"gbrstorage",
 		-- GBR doesn't have packed howitzers, and C.R.A.I.G. doesn't know
 		-- about deploying yet, so no point making a Towed Gun Yard.
 		--"gbrgunyard",
-		"gbrtankyard", "gbrtankyard", "gbrtankyard", "gbrtankyard",
+		"gbrtankyard",
 		"gbrsupplydepot",
 		"gbrstorage", "gbrstorage",
 	},
 	rus = {
-		-- TODO: add veh / tanks / towed guns (if rus has packed howitzers)
+		-- TODO: add veh / tanks / towed guns (if rus has packed howitzers) Russia will be the "expert"
 		"ruscommissar", "ruscommissar", -- due to unconventional build tree setup
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
@@ -214,7 +214,7 @@ gadget.baseBuilders = {
 -- Do not limit units spawned through LUA! (infantry that is build in platoons,
 -- deployed supply trucks, deployed guns, etc.)
 gadget.unitLimits = {
-	gbrengineer = 7,
+	gbrengineer = 3,
 	gbrmatadorengvehicle = 1,
 	gerengineer = 7,
 	gersdkfz9 = 1,
