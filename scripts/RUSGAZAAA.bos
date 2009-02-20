@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, wheel1, wheel2, wheel3, stand, turret, guns, flare1, flare2, flare3, flare4;
+piece  base, wheel1, wheel2, wheel3, stand, turret, guns, flare1, flare2, flare3, flare4, crewman;
  
 static-var restore_delay, aim1;
 
@@ -23,7 +23,7 @@ static-var restore_delay, aim1;
 #define MG_MUZZLEFLASH 1024+7
 
 // tracers
-#define SMALL_TRACER 	2048+8
+#define SMALL_TRACER 	2048+4
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
