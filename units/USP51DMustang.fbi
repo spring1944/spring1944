@@ -56,7 +56,7 @@
 	idleAutoHeal=2;
 
 	//	Flight Stuff
-	wingdrag=0.01;
+	wingdrag=0.1;
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=1;
