@@ -295,26 +295,29 @@ local armorDefs = {
 	},
 
 	lightPlanes	=	{
-		--**Germany**--
 		"GERFi156",
+		"USL4",
+		"RUSPo2",
+		"GBRAuster",
+	},
+	
+	mediumPlanes = {
+		--**Germany**--
 		"GERBf109",
 		"GERFw190",
 		"GERFw190G",
 		"GERJu87G",
 	
 		--US--
-		"USL4",
 		"USP47Thunderbolt",
 		"USP51DMustang",
 		"USP51DMustangGA",
 
 		--USSR--
-		"RUSPo2",
 		"RUSYak3",
 		"RUSIL2",
 
 		--Britain--
-		"GBRAuster",
 		"GBRSpitfireMkXIV",
 		"GBRSpitfireMkIX",
 		"GBRTyphoon",

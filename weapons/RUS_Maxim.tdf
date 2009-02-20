@@ -47,6 +47,7 @@
 		armouredvehicles=15;
 		unarmouredvehicles=15;
 		lightplanes=15;
+		mediumplanes=1;
 	}
 	[customParams]
 	{
@@ -105,5 +106,6 @@
 		armouredvehicles=15;
 		unarmouredvehicles=15;
 		lightplanes=15;
+		mediumplanes=1;
 	}
 }

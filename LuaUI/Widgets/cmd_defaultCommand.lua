@@ -19,10 +19,10 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (not defCom[unitDefID]) then
 		local ud = UnitDefs[unitDefID]
 		-- mobile combat units except SPGs, AT guns, etc
-		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
-			defCom[unitDefID] = CMD_FIGHT
+		--if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
+		--	defCom[unitDefID] = CMD_FIGHT
 		-- Deployed howitzers with area attack
-		elseif (ud.speed == 0 and ud.customParams.canareaattack) then
+		--[[else]]if (ud.speed == 0 and ud.customParams.canareaattack) then
 				defCom[unitDefID] = CMD_AREA_ATTACK
 		-- Deployed AT and AA guns
 		elseif (ud.speed == 0 and ud.canAttack and not ud.customParams.canareaattack and not ud.builder) then
@@ -41,7 +41,7 @@ function widget:DefaultCommand()
 		local unitDefCom = defCom[Spring.GetUnitDefID(u)]
 		if unitDefCom and type == false then
 			-- only default to fight for groups over 5
-			if unitDefCom == CMD_FIGHT then 
+			--[[if unitDefCom == CMD_FIGHT then 
 				if Spring.GetSelectedUnitsCount() >= 6 then
 					local mx, my = Spring.GetMouseState()
 					local s,t = Spring.TraceScreenRay(mx, my)
@@ -54,9 +54,9 @@ function widget:DefaultCommand()
 					end
 				end
 			-- other default commands should always be applied
-			else
+			else]]
 				type=unitDefCom
-			end
+			--end
 		elseif type ~= unitDefCom then
 			type=nil
 		end

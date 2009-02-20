@@ -173,5 +173,6 @@
 		armouredvehicles=50;
 		unarmouredvehicles=80;
 		LightPlanes=55;
+		mediumPLanes=11;
 	}
 }

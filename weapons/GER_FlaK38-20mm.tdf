@@ -53,7 +53,8 @@
 		unarmoredvehicles=480;
 		infantry=200;
 		guns=200;
-		LightPlanes=40;
+		LightPlanes=101;
+		MediumPlanes=101;
 	}
 }
 [kwk3020mmhe]
@@ -111,7 +112,8 @@
 		unarmoredvehicles=980;
 		infantry=340;
 		guns=400;
-		LightPlanes=40;
+		LightPlanes=101;
+		MediumPlanes=101;
 	}
 	[customParams]
 	{

@@ -49,6 +49,7 @@
 		armouredvehicles=25;
 		unarmouredvehicles=40;
 		lightplanes=25;
+		mediumplanes=4.6;
 	}
 	[customParams]
 	{
@@ -100,6 +101,7 @@
 		armouredvehicles=25;
 		unarmouredvehicles=40;
 		lightplanes=25;
+		mediumplanes=4.6;
 	}
 }
 [m2browningfear]
@@ -189,5 +191,6 @@
 		armouredvehicles=25;
 		unarmouredvehicles=40;
 		LightPlanes=25;
+		mediumplanes=4.6;
 	}
 }

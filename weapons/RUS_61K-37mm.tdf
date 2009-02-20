@@ -5,12 +5,12 @@
 	rendertype=1;
 	turret=1;
 	tolerance=700;
-	explosiongenerator=custom:HE_XSmall;
+	explosiongenerator=custom:HE_Small;
 
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.75;
+	predictboost=0.65;
 	range=1700;
 	reloadtime=1.3;
 	burst=3;
@@ -51,7 +51,8 @@
 		unarmoredvehicles=1500;
 		infantry=800;
 		guns=600;
-		LightPlanes=150;
+		LightPlanes=352;
+		mediumPlanes=352;
 	}
 }
 
@@ -108,7 +109,8 @@
 		unarmoredvehicles=1500;
 		infantry=600;
 		guns=500;
-		LightPlanes=150;
+		LightPlanes=352;
+		mediumPlanes=352;
 	}
 	[customParams]
 	{

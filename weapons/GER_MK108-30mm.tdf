@@ -52,5 +52,6 @@
 		armouredvehicles=500;
 		unarmouredvehicles=800;
 		LightPlanes=270;
+		mediumplanes=58;
 	}
 }
