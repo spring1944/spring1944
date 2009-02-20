@@ -13,6 +13,7 @@
 	firestarter=0.0;
 
 	range=2250;
+	flighttime=5;
 	reloadtime=45;
 	burst=16;
 	burstrate=0.8;

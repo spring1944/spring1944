@@ -6,23 +6,26 @@
 	rendertype=1;
 	model=Rocket_HVAR.S3O;
 	explosiongenerator=custom:HE_Medium;
+	collidefriendly=0;
 	turret=1;
 	tolerance=300;
 	//projectiles=2;
 
 	ballistic=1;
-	trajectoryheight=0.1;
+	trajectoryheight=0.05;
 	firestarter=0.0;
 
 	range=1500;
+	flighttime=2;
 	reloadtime=1;
 	startvelocity=1250;
 	weaponvelocity=1250;
 	areaofeffect=64;
-	accuracy=1000;
+	wobble=1500;
+	//accuracy=1000;
 	weapontimer=1;
 	//smoketrail=1;
-	targetmoveerror=0.075;
+	//targetmoveerror=0.075;
 	soundtrigger=0;
 	soundstart=GER_Panzerschrek;
 	soundhit=GEN_Explo_2;

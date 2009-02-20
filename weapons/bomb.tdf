@@ -34,7 +34,7 @@
 	model=Bomb_Medium.S3O;
 	weapontype=MissileLauncher;
 	//weapontimer=1;
-	//flighttime=0.01;
+	flighttime=3;
 	collidefriendly=0;
 	burnblow=0;
 	rendertype=4;
@@ -73,7 +73,7 @@
 	model=Bomb_Medium.S3O;
 	weapontype=MissileLauncher;
 	//weapontimer=1;
-	//flighttime=0.01;
+	flighttime=3;
 	collidefriendly=0;
 	burnblow=0;
 	rendertype=4;
