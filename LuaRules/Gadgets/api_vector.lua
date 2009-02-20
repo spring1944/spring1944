@@ -103,12 +103,28 @@ local function DistanceToMapEdge(x, y, z)
 	return result
 end
 
-GG.Vector = {}
-local Vector = GG.Vector
+local function HeadingToDegrees(h)
+	return h * 360 / 65536
+end
 
-Vector.Magnitude = Magnitude
-Vector.Normalized = Normalized
-Vector.RotateY = RotateY
-Vector.ClampToMapSize = ClampToMapSize
-Vector.NearestMapEdge = NearestMapEdge
-Vector.DistanceToMapEdge = DistanceToMapEdge
+local function DegreesToHeading(d)
+	return d * 65536 / 360
+end
+
+local Vector = {
+	Magnitude = Magnitude,
+	Normalized = Normalized,
+	RotateY = RotateY,
+	ClampToMapSize = ClampToMapSize,
+	NearestMapEdge = NearestMapEdge,
+	DistanceToMapEdge = DistanceToMapEdge,
+	HeadingToDegrees = HeadingToDegrees,
+	DegreesToHeading = DegreesToHeading,
+}
+
+if GG then
+	GG.Vector = Vector
+elseif WG then
+	WG.Vector = Vector
+end
+
