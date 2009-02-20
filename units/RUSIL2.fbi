@@ -114,7 +114,7 @@
 	weaponslaveto6=3;
 	
 	weapon7=bomb;
-	weaponmaindir7=0 0 1;
+	weaponmaindir7=0 -0.18 1;
 	maxangledif=20;
 	onlytargetcategory7=NFLAGNAIR;
 
