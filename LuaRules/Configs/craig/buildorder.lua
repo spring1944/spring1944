@@ -30,12 +30,17 @@ gadget.unitBuildOrder = {
 	},
 	gbrvehicleyard = {
 		"gbrmatadorengvehicle",
-		"gbrdaimler", "gbrdaimler",
-		"gbrdaimler", "gbrdaimler",
+		"gbrdaimler",
 		"gbrm5halftrack",
-		"gbrdaimler", "gbrdaimler",
+		"gbrdaimler",
 		"gbrm5halftrack",
-		"gbrdaimler", "gbrdaimler",
+		"gbrdaimler",
+		"gbrm5halftrack",
+		"gbrdaimler",
+		"gbrm5halftrack",
+		"gbrdaimler",
+		"gbrm5halftrack",
+		"gbrdaimler",
 		"gbrm5halftrack",
 	},
 	-- it can not upgrade tank yard yet!
@@ -65,16 +70,17 @@ gadget.unitBuildOrder = {
 		-- Works J
 		"rusk31",
 		"rusba64",
-		"rust60", "rust60",
-		"rust60",
 		"rusm5halftrack",
-		"rust60", "rust60",
-		"rust60",
+		"rust60", 
 		"rusm5halftrack",
-		"russu76", "russu76",
 		"russu76",
 		"rusm5halftrack",
-		"russu76", "russu76",
+		"rust60", 
+		"rusm5halftrack",
+		"russu76",
+		"rusm5halftrack",
+		"rust60", 
+		"rusm5halftrack",
 		"russu76",
 	},
 	rustankyard = {
@@ -101,12 +107,18 @@ gadget.unitBuildOrder = {
 	gervehicleyard = {
 		-- Works J
 		"gersdkfz9",
-		"gersdkfz250", "gersdkfz250", "gersdkfz250",
+		"gersdkfz251",
+		"gersdkfz250", 
+		"gersdkfz251",
+		"gersdkfz250",
+		"gersdkfz251",
 		"germarder",
 		"gersdkfz251",
-		"gersdkfz250", "gersdkfz250", "gersdkfz250",
-		"germarder",
+		"gersdkfz250", 
 		"gersdkfz251",
+		"gersdkfz250",
+		"gersdkfz251",
+		"germarder",
 	},
 	gertankyard = {
 		-- Works J
@@ -133,10 +145,16 @@ gadget.unitBuildOrder = {
 	usvehicleyard = {
 		-- Works J
 		"usgmcengvehicle",
-		"usm8greyhound", "usm8greyhound", "usm8greyhound",
+		"usm3halftrack",
+		"usm8greyhound",
+		"usm3halftrack",
+		"usm8greyhound",
 		"usm3halftrack",
 		"usm8scott",
-		"usm8greyhound", "usm8greyhound", "usm8greyhound",
+		"usm3halftrack",
+		"usm8greyhound",
+		"usm3halftrack",
+		"usm8greyhound",
 		"usm3halftrack",
 		"usm8scott",
 	},
@@ -152,7 +170,7 @@ gadget.baseBuildOrder = {
 	gbr = {
 		-- I used storages basically to delay tech up a bit :P Making GBR the easy faction to play against.
 		"gbrbarracks", "gbrbarracks", "gbrbarracks",
-		"gbrvehicleyard", "gbrvehicleyard",
+		"gbrvehicleyard", "gbrvehicleyard", "gbrvehicleyard",
 		"gbrstorage",
 		-- GBR doesn't have packed howitzers, and C.R.A.I.G. doesn't know
 		-- about deploying yet, so no point making a Towed Gun Yard.
@@ -167,7 +185,7 @@ gadget.baseBuildOrder = {
 		"ruscommissar", "ruscommissar", -- commissars are considered buildings :-)
 		"rusbarracks", "rusbarracks", "rusbarracks",
 		"ruspshack", "ruspshack",
-		"rusvehicleyard", "rusvehicleyard",
+		"rusvehicleyard", "rusvehicleyard", "rusvehicleyard",
 		"rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard", "rustankyard",
 
 	},
@@ -175,7 +193,7 @@ gadget.baseBuildOrder = {
 		-- works J
 		"gerbarracks", "gerbarracks", "gerbarracks",
 		"gerstorage",
-		"gervehicleyard", "gervehicleyard",
+		"gervehicleyard", "gervehicleyard", "gervehicleyard",
 		"gerstorage",
 		"gertankyard", "gertankyard", "gertankyard", "gertankyard",
 		"gersupplydepot",
@@ -185,7 +203,7 @@ gadget.baseBuildOrder = {
 		-- Works J
 		"usbarracks", "usbarracks", "usbarracks",
 		"usstorage",
-		"usvehicleyard", "usvehicleyard",
+		"usvehicleyard", "usvehicleyard", "usvehicleyard",
 		"usstorage",
 		"ustankyard", "ustankyard", "ustankyard", "ustankyard",
 		"ussupplydepot",
