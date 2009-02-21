@@ -1,0 +1,35 @@
+[unitinfo]
+{
+	unitname=gbr_platoon_flame;
+	objectname=MortarShell.S3O;
+	buildpic=gbrflamethrower.png;
+	category=NOTFLAG NOTAIR;
+	icontype=mines;
+	
+	name=Flamethrower Squad;
+	description=3 x Flamethrower;
+	side=US;
+	maxdamage=100;
+	idleautoheal=0;
+	buildcostmetal=770;
+	buildcostenergy=0;
+	buildtime=385;
+	footprintx=1;
+	footprintz=1;
+
+	canmove=1;
+	movementclass=KBOT_Infantry;
+	maxvelocity=0.01;
+	acceleration=0.1;
+	brakerate=1;
+	turnrate=1;
+	maxslope=82;
+	stealth=1;
+
+	explodeas=noweapon;
+	selfdestructas=noweapon;
+
+	[sfxtypes]
+	{
+	}
+}
