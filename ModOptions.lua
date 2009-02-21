@@ -157,7 +157,18 @@ local options = {
          { key = "2000", name = "2000", desc = "Long", },
          { key = "3000", name = "3000", desc = "Insane!", },
       },
-   },   
+   },
+   
+   {
+    key    = 'command_storage',
+    name   = 'Fixed Command Storage',
+    desc   = 'Fixes the command storage of all players. 0 to use default storage.',
+    type   = 'number',
+    def    = 0,
+    min    = 0,
+    max    = 1944000,
+    step   = 1000,
+  },
    
      
 	--[[{

@@ -122,6 +122,14 @@ end
 		end
 	end
 	
+	if modOptions.command_storage and tonumber(modOptions.command_storage) > 0 then
+		for name, ud in pairs(UnitDefs) do
+			if (ud.metalstorage) then
+				ud.metalstorage = 0
+			end
+		end
+	end
+	
 --[[
 	if (modOptions.unit_buildable_airfields == 0) then
 		disableunits({usairfield", "gbrairfield", "gerairfield", "RUSAirfield"})
