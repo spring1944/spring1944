@@ -1,4 +1,4 @@
-local versionNumber = "v0.3"
+local versionNumber = "v0.4"
 
 function widget:GetInfo()
   return {
@@ -13,13 +13,7 @@ function widget:GetInfo()
 end
 
 ----------------------------------------------------------------
---config
-----------------------------------------------------------------
-local iconSize = 3
-local lineWidth = 0.25
-
-----------------------------------------------------------------
---local vars
+--pre-config
 ----------------------------------------------------------------
 local sin, cos, tan = math.sin, math.cos, math.tan
 local sqrt = math.sqrt
@@ -31,6 +25,17 @@ local gbRanks = {}
 local grRanks = {}
 local ruRanks = {}
 
+----------------------------------------------------------------
+--config
+----------------------------------------------------------------
+local iconSize = 0.5
+local lineWidth = 0.25
+local defaultRanks = usRanks
+
+----------------------------------------------------------------
+--local vars
+----------------------------------------------------------------
+
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/Ranks/"
 
 ----------------------------------------------------------------
@@ -40,6 +45,8 @@ local GetVisibleUnits = Spring.GetVisibleUnits
 local GetUnitExperience = Spring.GetUnitExperience
 local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitDefID = Spring.GetUnitDefID
+local GetUnitRadius = Spring.GetUnitRadius
+local GetUnitHeight = Spring.GetUnitHeight
 
 local glCreateList = gl.CreateList
 local glCallList = gl.CallList
@@ -1250,7 +1257,7 @@ end
 
 local function GetRankList(rank, prefix)
 	local list, nonList = nil, nil
-	local rankTable = usRanks
+	local rankTable = defaultRanks
 	
 	if prefix == "ru" then
 		rankTable = ruRanks
@@ -1258,6 +1265,8 @@ local function GetRankList(rank, prefix)
 		rankTable = gbRanks
 	elseif prefix == "ge" then
 		rankTable = geRanks
+	elseif prefix == "us" then
+		rankTable = usRanks
 	end
 	
 	for i = 1,#rankTable do
@@ -1282,10 +1291,12 @@ local function DrawRankIcon(unitID)
 	if not list then return end
 	
 	local x, y, z = GetUnitPosition(unitID)
+	local scale = GetUnitRadius(unitID) * iconSize
+	local height = GetUnitHeight(unitID)
 	glPushMatrix()
-		glTranslate(x, y + 12, z)
+		glTranslate(x, y + height, z)
 		glBillboard()
-		glScale(iconSize, iconSize, iconSize)
+		glScale(scale, scale, scale)
 		glCallList(list)
 		if nonList then
 			nonList()
