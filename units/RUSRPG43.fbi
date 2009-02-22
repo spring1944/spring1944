@@ -49,7 +49,7 @@
 	badtargetcategory=FLAG INFTARG;
 	
 	weapon1=RPG43;
-	onlytargetcategory1=TANK;
+	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1= 0 0 1;
 	maxangledif1=170;
 	[sfxtypes]
