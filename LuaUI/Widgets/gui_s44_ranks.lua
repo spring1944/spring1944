@@ -1,4 +1,4 @@
-local versionNumber = "v0.4"
+local versionNumber = "v0.5"
 
 function widget:GetInfo()
   return {
@@ -1011,6 +1011,62 @@ local function CreateGBLists()
 		glPopMatrix()
 	end
 	
+	local function MajorGeneral()
+		glPushMatrix()
+			glTranslate(0, 0.75, 0)
+			DrawGoldOrder()
+			glTranslate(0, -1.5, 0)
+			glColor(1, 1, 1)
+			glTexture(IMAGE_DIRNAME .. "GBSwoBat.png")
+			glTexRect(-1, -1, 1, 1)
+			glTexture(false)
+		glPopMatrix()
+	end
+	
+	local function LieutenantGeneral()
+		glPushMatrix()
+			glColor(1, 1, 1)
+			glTranslate(0, 0.75, 0)
+			glTexture(IMAGE_DIRNAME .. "GBCrown.png")
+			glTexRect(-1, -1, 1, 1)
+			glTexture(false)
+			glTranslate(0, -1.5, 0)
+			glTexture(IMAGE_DIRNAME .. "GBSwoBat.png")
+			glTexRect(-1, -1, 1, 1)
+			glTexture(false)
+		glPopMatrix()
+	end
+	
+	local function General()
+		glPushMatrix()
+			glTranslate(0, 2, 0)
+			glColor(1, 1, 1)
+			glTexture(IMAGE_DIRNAME .. "GBCrown.png")
+			glTexRect(-1, -1, 1, 1)
+			glTexture(false)
+			glTranslate(0, -2, 0)
+			DrawGoldOrder()
+			glTranslate(0, -1.5, 0)
+			glColor(1, 1, 1)
+			glTexture(IMAGE_DIRNAME .. "GBSwoBat.png")
+			glTexRect(-1, -1, 1, 1)
+			glTexture(false)
+		glPopMatrix()
+	end
+	
+	local function FieldMarshal()
+		glPushMatrix()
+			glColor(1, 1, 1)
+			glTexture(IMAGE_DIRNAME .. "GBBatLau.png")
+			glTexRect(-2, -2, 2, 2)
+			glTexture(false)
+			glTranslate(0, 4, 0)
+			glTexture(IMAGE_DIRNAME .. "GBCrown.png")
+			glTexRect(-2, -2, 2, 2)
+			glTexture(false)
+		glPopMatrix()
+	end
+	
 	gbRanks = {
 		{0.2, glCreateList(LanceCorporal)},
 		{0.5, glCreateList(Corporal)},
@@ -1023,10 +1079,10 @@ local function CreateGBLists()
 		{8, 0, LieutenantColonel},
 		{12, 0, Colonel},
 		{20, 0, Brigadier},
-		--{25, glCreateList(MajorGeneral)},
-		--{30, glCreateList(LieutenantGeneral)},
-		--{50, glCreateList(General)},
-		--{100, glCreateList(FieldMarshal)},
+		{25, 0, MajorGeneral},
+		{30, 0, LieutenantGeneral},
+		{50, 0, General},
+		{100, 0, FieldMarshal},
 	}
 end
 
