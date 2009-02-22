@@ -21,7 +21,7 @@
 	hidedamage=1;
 	shownanoframe=0;
 	
-	metalstorage=300;
+	metalstorage=4000;
 	
 	smoothanim=0;
 	levelground=0;
