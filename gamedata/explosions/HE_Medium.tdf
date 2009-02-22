@@ -1,5 +1,48 @@
 [HE_Medium] {
 	usedefaultexplosions=0;
+	
+	[airheat] {
+		class=CHeatCloudProjectile;
+		[properties] {
+			heat = 8;
+			maxheat = 16;
+			heatFalloff = 1;
+			size=1;
+			sizeGrowth = 8;
+			texture=heatcloud;
+			pos=-4 r8, -4 r8, -4 r8;
+		}
+		air=1;
+		count=4;
+	}
+	
+	[airsmoke] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=4 r4;
+			sizeMod=0.875;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0.125 0.125 0.125 1  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.75;
+			particleLife=96;
+			particleLifeSpread=64;
+			numParticles=1;
+			particleSpeed=0.5;
+			particleSpeedSpread=0.25;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=180;
+			directional=1;
+			alwaysVisible=0;
+		}
+		air=1;
+		count=1;
+	}
+	
 	[smoke] {
 		class=CSimpleParticleSystem;
 		[properties]{
@@ -23,7 +66,6 @@
 			directional=0;
 			alwaysVisible=0;
 		}
-		air=1;
 		water=1;
 		ground=1;
 		count=1;

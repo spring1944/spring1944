@@ -4,12 +4,12 @@
 	[airsmoke] {
 		class=CSimpleParticleSystem;
 		[properties]{
-			sizeGrowth=2 r2;
-			sizeMod=0.5;
+			sizeGrowth=1 r1;
+			sizeMod=0.75;
 			pos=0, 0, 0;
 			emitVector=0, 1, 0;
 			gravity=0, 0, 0;
-			colorMap=0.25 0.25 0.25 1  0 0 0 0;
+			colorMap=0.125 0.125 0.125 1  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.75;
 			particleLife=24;
@@ -20,8 +20,8 @@
 			particleSize=1;
 			particleSizeSpread=0;
 			emitRot=0;
-			emitRotSpread=90;
-			directional=0;
+			emitRotSpread=180;
+			directional=1;
 			alwaysVisible=0;
 		}
 		air=1;
