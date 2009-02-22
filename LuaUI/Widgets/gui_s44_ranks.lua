@@ -29,6 +29,7 @@ local ruRanks = {}
 --config
 ----------------------------------------------------------------
 local iconSize = 0.5
+local maxScale = 16
 local lineWidth = 0.25
 local defaultRanks = usRanks
 
@@ -71,11 +72,13 @@ local glLineWidth = gl.LineWidth
 
 local glSmoothing = gl.Smoothing
 local glBlending = gl.Blending
+local glDepthTest = gl.DepthTest
 
 local strSub = string.sub
 
 local GL_QUADS = GL.QUADS
 local GL_QUAD_STRIP = GL.QUAD_STRIP
+local GL_LINES = GL.LINES
 local GL_LINE_STRIP = GL.LINE_STRIP
 local GL_LINE_LOOP = GL.LINE_LOOP
 local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
@@ -507,6 +510,211 @@ local function DrawShoulderFull(color, highlightColor)
 	glColor(0, 0, 0, 1)
 	glShape(GL_LINE_LOOP, quadLineVertices)
 	
+	glPushMatrix()
+		glTranslate(0, 0.625, 0)
+		glScale(0.25, 0.25, 0.25)
+		DrawCircle(color, highlightColor, 16)
+	glPopMatrix()
+end
+
+local function DrawEpaulette(color, highlightColor, color2, highlightColor2, divs)
+	local divAngle = rad(90) / divs
+	local function DrawStraight()
+		local function DrawSingleStraight(color, highlightColor)
+			local quadVertices = {
+				{v = {-1, 0, 0}, c = color},
+				{v = {1, 0, 0}, c = color},
+				{v = {-1, 1/3, 0}, c = highlightColor},
+				{v = {1, 1/3, 0}, c = highlightColor},
+				{v = {-1, 2/3, 0}, c = color},
+				{v = {1, 2/3, 0}, c = color},
+			}
+			
+			glShape(GL_QUAD_STRIP, quadVertices)
+		end
+		
+		glPushMatrix()
+			glTranslate(0, -1, 0)
+			DrawSingleStraight(color, highlightColor)
+			glTranslate(0, 2/3, 0)
+			DrawSingleStraight(color2, highlightColor2)
+			glTranslate(0, 2/3, 0)
+			DrawSingleStraight(color, highlightColor)
+		glPopMatrix()
+	end
+	
+	local function DrawCurved()
+		local function DrawSingleCurved(color, highlightColor, innerRadius, outerRadius)
+			local midRadius = 0.5 * (innerRadius + outerRadius)
+			if innerRadius > 0 then
+				local quadVertices1 = {}
+				local quadVertices2 = {}
+				
+				local angle = 0
+				
+				for i=0,divs do
+					quadVertices1[2*i+1] = {
+						v = {cos(angle) * innerRadius, sin(angle) * innerRadius, 0},
+						c = color,
+					}
+					
+					quadVertices1[2*i+2] = {
+						v = {cos(angle) * midRadius, sin(angle) * midRadius, 0},
+						c = highlightColor,
+					}
+					
+					quadVertices2[2*i+1] = {
+						v = {cos(angle) * midRadius, sin(angle) * midRadius, 0},
+						c = highlightColor,
+					}
+					
+					quadVertices2[2*i+2] = {
+						v = {cos(angle) * outerRadius, sin(angle) * outerRadius, 0},
+						c = color,
+					}
+					
+					angle = angle + divAngle
+				end
+				
+				glShape(GL_QUAD_STRIP, quadVertices1)
+				glShape(GL_QUAD_STRIP, quadVertices2)
+			else
+				local angle = 0
+				local triangleVertices = {
+					{v = {0, 0, 0}, c = color},
+				}
+
+				local quadVertices = {}
+				
+				for i=0,divs do
+					
+					triangleVertices[i+2] = {
+						v = {cos(angle) * midRadius, sin(angle) * midRadius, 0},
+						c = highlightColor,
+					}
+					
+					quadVertices[2*i+1] = {
+						v = {cos(angle) * midRadius, sin(angle) * midRadius, 0},
+						c = highlightColor,
+					}
+					
+					quadVertices[2*i+2] = {
+						v = {cos(angle) * outerRadius, sin(angle) * outerRadius, 0},
+						c = color,
+					}
+					angle = angle + divAngle
+				end
+				
+				glShape(GL_TRIANGLE_FAN, triangleVertices)
+				glShape(GL_QUAD_STRIP, quadVertices)
+			end
+		end --end DrawSingleCurved
+		
+		local function DrawSingleCurvedLine(radius)
+			local angle = 0
+			
+			local lineVertices = {}
+			
+			for i=0,divs do
+				lineVertices[i+1] = {
+					v = {cos(angle) * radius, sin(angle) * radius, 0},
+				}
+				angle = angle + divAngle
+			end
+			
+			glColor(0, 0, 0, 1)
+			glShape(GL_LINES, lineVertices)
+		end
+		
+		glPushMatrix()
+			glTranslate(-1, -1, 0)
+			DrawSingleCurved(color, highlightColor, 0, 2/3)
+			DrawSingleCurved(color2, highlightColor2, 2/3, 4/3)
+			DrawSingleCurved(color, highlightColor, 4/3, 2)
+			DrawSingleCurvedLine(2)
+		glPopMatrix()
+	end --end DrawCurved
+	
+	local scale = 0.125 * sqrt(0.5)
+	glPushMatrix()
+		--columns 1, 3, 5
+		glTranslate(-0.25, -0.625, 0)
+		glPushMatrix()
+			for i = 1, 5 do
+				glPushMatrix()
+					glRotate(135, 0, 0, 1)
+					glScale(scale, scale, 1)
+					DrawCurved()
+				glPopMatrix()
+				glTranslate(0, 0.25, 0)
+			end
+		glPopMatrix()
+		glTranslate(0.25, 0, 0)
+		glPushMatrix()
+			for i = 1, 5 do
+				glPushMatrix()
+					glRotate(45, 0, 0, 1)
+					glScale(scale, scale, 1)
+					DrawStraight()
+				glPopMatrix()
+				glTranslate(0, 0.25, 0)
+			end
+		glPopMatrix()
+		glTranslate(0.25, 0, 0)
+		glPushMatrix()
+			for i = 1, 5 do
+				glPushMatrix()
+					glRotate(-45, 0, 0, 1)
+					glScale(scale, scale, 1)
+					DrawCurved()
+				glPopMatrix()
+				glTranslate(0, 0.25, 0)
+			end
+		glPopMatrix()
+		
+		--columns 4, 2
+		glTranslate(-0.125, -0.125, 0)
+		glPushMatrix()
+			glPushMatrix()
+				glRotate(-135, 0, 0, 1)
+				glScale(scale, scale, 1)
+				DrawCurved()
+			glPopMatrix()
+			for i = 1, 5 do
+				glTranslate(0, 0.25, 0)
+				glPushMatrix()
+					glRotate(-45, 0, 0, 1)
+					glScale(scale, scale, 1)
+					DrawStraight()
+				glPopMatrix()
+			end
+		glPopMatrix()
+		
+		glTranslate(-0.25, 0, 0)
+		glPushMatrix()
+			glPushMatrix()
+				glRotate(-135, 0, 0, 1)
+				glScale(scale, scale, 1)
+				DrawCurved()
+			glPopMatrix()
+			for i = 1, 4 do
+				glTranslate(0, 0.25, 0)
+				glPushMatrix()
+					glRotate(-45, 0, 0, 1)
+					glScale(scale, scale, 1)
+					DrawStraight()
+				glPopMatrix()
+			end
+			glTranslate(0, 0.25, 0)
+			glPushMatrix()
+				glRotate(45, 0, 0, 1)
+				glScale(scale, scale, 1)
+				DrawStraight()
+			glPopMatrix()
+		glPopMatrix()
+	glPopMatrix()
+	
+	--button
 	glPushMatrix()
 		glTranslate(0, 0.625, 0)
 		glScale(0.25, 0.25, 0.25)
@@ -1244,6 +1452,68 @@ local function CreateGELists()
 		glPopMatrix()
 	end
 	
+	local function Major()
+		glPushMatrix()
+			glScale(2, 2, 2)
+			DrawEpaulette(color, highlightColor, color, highlightColor, 8)
+		glPopMatrix()
+	end
+	
+	local function Oberstleutnant()
+		Major()
+		glPushMatrix()
+			glTranslate(0, -0.25, 0)
+			SmallPip(gold, highlightGold)
+		glPopMatrix()
+	end
+	
+	local function Oberst()
+		Major()
+		glPushMatrix()
+			glTranslate(0, -0.75, 0)
+			SmallPip(gold, highlightGold)
+			glTranslate(0, 1, 0)
+			SmallPip(gold, highlightGold)
+		glPopMatrix()
+	end
+	
+	local function Generalmajor()
+		glPushMatrix()
+			glScale(2, 2, 2)
+			DrawEpaulette(gold, highlightGold, color, highlightColor, 8)
+		glPopMatrix()
+	end
+	
+	local function Generalleutnant()
+		Generalmajor()
+		glPushMatrix()
+			glTranslate(0, -0.25, 0)
+			SmallPip(darkColor, highlightColor)
+		glPopMatrix()
+	end
+	
+	local function General()
+		Generalmajor()
+		glPushMatrix()
+			glTranslate(0, -0.75, 0)
+			SmallPip(darkColor, highlightColor)
+			glTranslate(0, 1, 0)
+			SmallPip(darkColor, highlightColor)
+		glPopMatrix()
+	end
+	
+	local function Generaloberst()
+		Generalmajor()
+		glPushMatrix()
+			glTranslate(0, 0.25, 0)
+			SmallPip(darkColor, highlightColor)
+			glTranslate(-0.25, -1, 0)
+			SmallPip(darkColor, highlightColor)
+			glTranslate(0.5, 0, 0)
+			SmallPip(darkColor, highlightColor)
+		glPopMatrix()
+	end
+	
 	geRanks = {
 		{0.2, glCreateList(Obershutze)},
 		{0.5, glCreateList(Gefreiter)},
@@ -1257,13 +1527,13 @@ local function CreateGELists()
 		{12, glCreateList(Leutnant)},
 		{20, glCreateList(Oberleutnant)},
 		{25, glCreateList(Hauptman)},
-		--{30, glCreateList(Major)},
-		--{35, glCreateList(Oberstleutnant)},
-		--{40, glCreateList(Oberst)},
-		--{45, glCreateList(Generalmajor)},
-		--{50, glCreateList(Generalleutnant)},
-		--{60, glCreateList(General)},
-		--{80, glCreateList(Generaloberst)},
+		{30, glCreateList(Major)},
+		{35, glCreateList(Oberstleutnant)},
+		{40, glCreateList(Oberst)},
+		{45, glCreateList(Generalmajor)},
+		{50, glCreateList(Generalleutnant)},
+		{60, glCreateList(General)},
+		{80, glCreateList(Generaloberst)},
 		--{100, glCreateList(Generalfeldmarschall)},
 	}
 end
@@ -1347,8 +1617,20 @@ local function DrawRankIcon(unitID)
 	if not list then return end
 	
 	local x, y, z = GetUnitPosition(unitID)
-	local scale = GetUnitRadius(unitID) * iconSize
+	local radius = GetUnitRadius(unitID)
+	
+	local scale = radius * iconSize
+	if scale > maxScale then
+		scale = maxScale
+	end
+	
+	local minHeight = scale + 0.5 * radius + 8
+	
 	local height = GetUnitHeight(unitID)
+	if height < minHeight then
+		height = minHeight
+	end
+	
 	glPushMatrix()
 		glTranslate(x, y + height, z)
 		glBillboard()
