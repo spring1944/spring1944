@@ -8,7 +8,7 @@
 	tedclass=PLANT;
 	yardmap=ooooooooo;
 
-	name=Type ### Air Control Station;
+	name=Chain Home Air Control Station;
 	description=Detects and Controls Aircraft;
 	side=GER;
 	maxdamage=5000;
