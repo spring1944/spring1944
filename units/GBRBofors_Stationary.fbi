@@ -41,11 +41,11 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=61k37mmaa;
+	weapon1=bofors40mmaa;
 	onlytargetcategory1=AIR;
 	badtargetcategory1=NFLAGNAIR;
 
-	weapon2=61k37mmhe;
+	weapon2=bofors40mmhe;
 	badtargetcategory2=AIR;
 	onlytargetcategory2=NFLAGNAIR;
 
