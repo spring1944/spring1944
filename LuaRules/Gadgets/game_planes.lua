@@ -172,7 +172,7 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	local unitDef = UnitDefNames[unitname]
 	--local speed = unitDef.speed / 30
 	local drag = unitDef.drag
-	local speed = unitDef.maxAcc * (1 - drag) / drag * CRUISE_SPEED
+	local speed = 20 -- unitDef.maxAcc * (1 - drag) / drag * CRUISE_SPEED
 	local altitude = unitDef.wantedHeight
 	sy = sy + altitude
 	local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
