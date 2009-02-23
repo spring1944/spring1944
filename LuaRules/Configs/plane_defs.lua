@@ -131,6 +131,7 @@ local planeDefs = {
 			units = {
 				"gerju87g",
 				"gerju87g",
+				"gerju87g",
 			},
 		},
 	},
