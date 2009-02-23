@@ -43,6 +43,16 @@ end
 
 --------------------------------------------------------------------------------
 
+-- globals
+waypointMgr = {}
+
+if (Spring.GetModOptions) then
+	local modOptions = Spring.GetModOptions()
+	difficulty = (modOptions.craig_difficulty or "hard")
+else
+	difficulty = "hard"
+end
+
 -- include configuration
 include("LuaRules/Configs/craig/buildorder.lua")
 
@@ -50,13 +60,20 @@ include("LuaRules/Configs/craig/buildorder.lua")
 include("LuaRules/Gadgets/craig/buildorder.lua")
 include("LuaRules/Gadgets/craig/buildsite.lua")
 include("LuaRules/Gadgets/craig/base.lua")
+include("LuaRules/Gadgets/craig/combat.lua")
+include("LuaRules/Gadgets/craig/flags.lua")
+include("LuaRules/Gadgets/craig/pathfinder.lua")
 include("LuaRules/Gadgets/craig/unitlimits.lua")
 include("LuaRules/Gadgets/craig/team.lua")
+include("LuaRules/Gadgets/craig/waypoints.lua")
 
--- globals
+-- locals
 local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
-
+local delayedCalls = {}
 local team = {}
+local waypointMgrGameFrameRate = 0
+
+--------------------------------------------------------------------------------
 
 local function ChangeAIDebugVerbosity(cmd,line,words,player)
 	local lvl = tonumber(words[1])
@@ -83,10 +100,27 @@ local function SetupCmdChangeAIDebugVerbosity()
 	Script.AddActionFallback(cmd .. ' ',help)
 end
 
-function Log(message)
+function gadget.Log(...)
 	if CRAIG_Debug_Mode > 0 then
-		Spring.Echo("C.R.A.I.G.: " .. message)
+		Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
 	end
+end
+
+-- This is for log messages which can not be turned off (e.g. while loading.)
+function gadget.Warning(...)
+	Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
+end
+
+--------------------------------------------------------------------------------
+
+-- Runs fun() in the next GameFrame. If unitID is destoyed, fun() is never run.
+-- Limitations: 1) There can only be one delayed call per unit per GameFrame
+--              and 2) the delayed calls are executed in arbitrary order.
+function gadget.DelayedCall(unitID, fun)
+	if delayedCalls[unitID] then
+		Log("Warning: second delayed call for ", unitID)
+	end
+	delayedCalls[unitID] = fun
 end
 
 --------------------------------------------------------------------------------
@@ -102,16 +136,23 @@ end
 --  gadget:GameStart
 
 function gadget:Initialize()
-	--Log("gadget:Initialize")
+	setmetatable(gadget, {
+		__index = function() error("Attempt to read undeclared global variable", 2) end,
+		__newindex = function() error("Attempt to write undeclared global variable", 2) end,
+	})
 	SetupCmdChangeAIDebugVerbosity()
 end
 
 function gadget:GamePreload()
 	-- This is executed BEFORE headquarters / commander is spawned
-	--Log("gadget:GamePreload")
+	Log("gadget:GamePreload")
+	-- Intialise waypoint manager
+	waypointMgr = CreateWaypointMgr()
+	if waypointMgr then
+		waypointMgrGameFrameRate = waypointMgr.GetGameFrameRate()
+	end
 	-- Initialise AI for all team that are set to use it
 	for _,t in ipairs(Spring.GetTeamList()) do
-		--Log("considering team " .. t)
 		if Spring.GetTeamLuaAI(t) == gadget:GetInfo().name then
 			local _,_,_,_,side,at = Spring.GetTeamInfo(t)
 			team[t] = CreateTeam(t, at, side)
@@ -121,13 +162,27 @@ end
 
 function gadget:GameStart()
 	-- This is executed AFTER headquarters / commander is spawned
-	--Log("gadget:GameStart")
+	Log("gadget:GameStart")
+	if waypointMgr then
+		waypointMgr.GameStart()
+	end
 	for _,t in pairs(team) do
 		t.GameStart()
 	end
 end
 
 function gadget:GameFrame(f)
+	-- run delayed calls
+	for u,fun in pairs(delayedCalls) do
+		fun()
+		delayedCalls[u] = nil
+	end
+
+	-- waypointMgr update
+	if waypointMgr and f % waypointMgrGameFrameRate < .1 then
+		waypointMgr.GameFrame(f)
+	end
+
 	-- AI update
 	if f % 128 < .1 then
 		for _,t in pairs(team) do
@@ -144,7 +199,7 @@ end
 function gadget:TeamDied(teamID)
 	if team[teamID] then
 		team[teamID] = nil
-		Log("removed team " .. teamID)
+		Log("removed team ", teamID)
 	end
 
 	--TODO: need to call this for other/enemy teams too, so a team
@@ -167,6 +222,9 @@ end
 --
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	if waypointMgr then
+		waypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	end
 	if team[unitTeam] then
 		team[unitTeam].UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
@@ -180,12 +238,14 @@ end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	if team[unitTeam] then
+		delayedCalls[unitID] = nil
 		team[unitTeam].UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	if team[unitTeam] then
+		delayedCalls[unitID] = nil
 		team[unitTeam].UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	end
 end
@@ -198,4 +258,7 @@ end
 
 -- This may be called by engine from inside Spring.GiveOrderToUnit (e.g. if unit limit is reached)
 function gadget:UnitIdle(unitID, unitDefID, unitTeam)
+	if team[unitTeam] then
+		team[unitTeam].UnitIdle(unitID, unitDefID, unitTeam)
+	end
 end

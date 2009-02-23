@@ -14,6 +14,9 @@ function UnitLimitsMgr.AllowUnitCreation(unitDefID)
 
 function CreateUnitLimitsMgr(myTeamID)
 
+--speedups
+local GetTeamUnitDefCount = Spring.GetTeamUnitDefCount
+
 local UnitLimitsMgr = {}
 
 -- Format: map unitDefID -> limit
@@ -26,7 +29,7 @@ local limits = gadget.unitLimits
 
 function UnitLimitsMgr.AllowUnitCreation(unitDefID)
 	if limits[unitDefID] then
-		local count = Spring.GetTeamUnitDefCount(myTeamID, unitDefID)
+		local count = GetTeamUnitDefCount(myTeamID, unitDefID)
 		return (count or 0) < limits[unitDefID]
 	end
 	return true

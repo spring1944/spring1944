@@ -9,6 +9,7 @@ Public interface:
 
 local Team = CreateTeam(myTeamID, myAllyTeamID, mySide)
 
+function Team.Log(...)
 function Team.UnitCreated(unitID, unitDefID, unitTeam, builderID)
 function Team.UnitFinished(unitID, unitDefID, unitTeam)
 function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
@@ -20,9 +21,14 @@ function CreateTeam(myTeamID, myAllyTeamID, mySide)
 
 local Team = {}
 
-local Log = function (message)
-	Log("Team[" .. myTeamID .. "] " .. message)
+do
+	local GadgetLog = gadget.Log
+	function Team.Log(...)
+		GadgetLog("Team[", myTeamID, "] ", ...)
+	end
 end
+local Log = Team.Log
+local DelayedCall = gadget.DelayedCall
 
 -- constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -41,24 +47,27 @@ local unitBuildOrder = gadget.unitBuildOrder
 -- Unit limits
 local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)
 
-local delayedCallQue = { first = 1, last = 0 }
+-- Combat management
+local waypointMgr = gadget.waypointMgr
+local lastWaypoint = 0
+local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, Log)
 
-local function DelayedCall(fun)
-	delayedCallQue.last = delayedCallQue.last + 1
-	delayedCallQue[delayedCallQue.last] = fun
-end
-
-local function PopDelayedCall()
-	local ret = delayedCallQue[delayedCallQue.first]
-	if ret then
-		delayedCallQue.first = delayedCallQue.first + 1
-	end
-	return ret
-end
+-- Flag capping
+local flagsMgr = CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
 
 local function Refill(resource)
-	local value,storage = Spring.GetTeamResources(myTeamID, resource)
-	Spring.AddTeamResource(myTeamID, resource, storage - value)
+	if (gadget.difficulty ~= "easy") then
+		local value,storage = Spring.GetTeamResources(myTeamID, resource)
+		if (gadget.difficulty ~= "medium") then
+			-- hard: full refill
+			Spring.AddTeamResource(myTeamID, resource, storage - value)
+		else
+			-- medium: partial refill
+			-- 1000 storage / 128 * 30 = approx. +234
+			-- this means 100% cheat is bonus of +234 metal at 1k storage
+			Spring.AddTeamResource(myTeamID, resource, (storage - value) * 0.06)
+		end
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -72,33 +81,35 @@ function Team.GameStart()
 	-- Can not run this in the initialization code at the end of this file,
 	-- because at that time Spring.GetTeamStartPosition seems to always return 0,0,0.
 	for _,t in ipairs(Spring.GetTeamList()) do
-		--Log("considering team " .. t)
 		if (t ~= GAIA_TEAM_ID) and (not Spring.AreTeamsAllied(myTeamID, t)) then
 			local x,y,z = Spring.GetTeamStartPosition(t)
 			if x and x ~= 0 then
 				enemyBaseCount = enemyBaseCount + 1
 				enemyBases[enemyBaseCount] = {x,y,z}
-				Log("Enemy base spotted at coordinates: " .. x .. ", " .. z)
+				Log("Enemy base spotted at coordinates: ", x, ", ", z)
 			else
 				Log("Oops, Spring.GetTeamStartPosition failed")
 			end
 		end
 	end
-	Log("Preparing to attack " .. enemyBaseCount .. " enemies")
+	if waypointMgr then
+		flagsMgr.GameStart()
+	end
+	Log("Preparing to attack ", enemyBaseCount, " enemies")
 end
 
 function Team.GameFrame(f)
-	Log("GameFrame")
+	--Log("GameFrame")
 
 	Refill("metal")
 	Refill("energy")
 
-	while true do
-		local fun = PopDelayedCall()
-		if fun then fun() else break end
-	end
-
 	baseMgr.GameFrame(f)
+
+	if waypointMgr then
+		flagsMgr.GameFrame(f)
+		combatMgr.GameFrame(f)
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -120,7 +131,7 @@ Team.AllowUnitCreation = unitLimitsMgr.AllowUnitCreation
 Team.UnitCreated = baseMgr.UnitCreated
 
 function Team.UnitFinished(unitID, unitDefID, unitTeam)
-	Log("UnitFinished: " .. UnitDefs[unitDefID].humanName)
+	Log("UnitFinished: ", UnitDefs[unitDefID].humanName)
 
 	-- idea from BrainDamage: instead of cheating huge amounts of resources,
 	-- just cheat in the cost of the units we build.
@@ -129,7 +140,7 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 
 	-- queue unitBuildOrders if we have any for this unitDefID
 	if unitBuildOrder[unitDefID] then
-		DelayedCall(function()
+		DelayedCall(unitID, function()
 			-- factory or builder?
 			if (UnitDefs[unitDefID].TEDClass == "PLANT") then
 				-- If there are no enemies, don't bother lagging Spring to death:
@@ -140,21 +151,23 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 					-- Didn't use math.random() because it's really hard to establish
 					-- a 100% correct distribution when you don't know whether the
 					-- upper bound of the RNG is inclusive or exclusive.
-					enemyBaseLastAttacked = enemyBaseLastAttacked + 1
-					if enemyBaseLastAttacked > enemyBaseCount then
-						enemyBaseLastAttacked = 1
-					end
-					-- queue up a bunch of fight orders towards all enemies
-					local idx = enemyBaseLastAttacked
-					for i=1,enemyBaseCount do
-						-- enemyBases[] is in the right format to pass into GiveOrderToUnit...
-						Spring.GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {"shift"})
-						idx = idx + 1
-						if idx > enemyBaseCount then idx = 1 end
+					if (not waypointMgr) then
+						enemyBaseLastAttacked = enemyBaseLastAttacked + 1
+						if enemyBaseLastAttacked > enemyBaseCount then
+							enemyBaseLastAttacked = 1
+						end
+						-- queue up a bunch of fight orders towards all enemies
+						local idx = enemyBaseLastAttacked
+						for i=1,enemyBaseCount do
+							-- enemyBases[] is in the right format to pass into GiveOrderToUnit...
+							Spring.GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {"shift"})
+							idx = idx + 1
+							if idx > enemyBaseCount then idx = 1 end
+						end
 					end
 				end
 				for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-					Log("Queueing: " .. UnitDefs[bo].humanName)
+					Log("Queueing: ", UnitDefs[bo].humanName)
 					Spring.GiveOrderToUnit(unitID, -bo, {}, {})
 				end
 			else
@@ -163,13 +176,30 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 		end)
 	end
 
-	baseMgr.UnitFinished(unitID, unitDefID, unitTeam)
+	-- if any unit manager takes care of the unit, return
+	-- managers are in order of preference
+
+	-- need to prefer flag capping over building to handle Russian commissars
+	if waypointMgr then
+		if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
+	end
+
+	if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
+
+	if waypointMgr then
+		if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
+	end
 end
 
 function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-	Log("UnitDestroyed: " .. UnitDefs[unitDefID].humanName)
+	Log("UnitDestroyed: ", UnitDefs[unitDefID].humanName)
 
 	baseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+
+	if waypointMgr then
+		flagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+		combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	end
 end
 
 function Team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
@@ -184,12 +214,16 @@ function Team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	end
 end
 
+function Team.UnitIdle(unitID, unitDefID, unitTeam)
+	Log("UnitIdle: ", UnitDefs[unitDefID].humanName)
+end
+
 --------------------------------------------------------------------------------
 --
 --  Initialization
 --
 
-Log("assigned to " .. gadget:GetInfo().name .. " (allyteam: " .. myAllyTeamID .. ", side: " .. mySide .. ")")
+Log("assigned to ", gadget.ghInfo.name, " (allyteam: ", myAllyTeamID, ", side: ", mySide, ")")
 
 return Team
 end

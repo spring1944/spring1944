@@ -22,13 +22,13 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 local options = {
-	{ 
-		key = 'always_visible_flags', 
-		name = 'Always Visible Flags', 
-		desc = 'Flags and their capping status can be seen without LOS', 
-		type = 'bool', 
-		def = true, 
-	},	
+	{
+		key = 'always_visible_flags',
+		name = 'Always Visible Flags',
+		desc = 'Flags and their capping status can be seen without LOS',
+		type = 'bool',
+		def = true,
+	},
 	{
     key    = 'maxammo_mult',
     name   = 'Vehicle maxammmo multiplier',
@@ -46,14 +46,14 @@ local options = {
     desc   = 'Sets level of Command Point income - use to adjust maps that provide too much or too little command points',
     type   = 'list',
     def    = '2',
-    items  = 
+    items  =
     {
 	  {
         key  = '0',
         name = 'Very Low',
         desc = 'Very limited resources. Nothing but a minor skirmish, you must make the most of what resources you have.',
-      },	  
-      { 
+      },
+      {
         key  = '1',
         name = 'Low',
         desc = 'Limited Command Points. This battle is insignificant, and you will be struggling to maintain infantry battalions',
@@ -75,16 +75,16 @@ local options = {
       },
     },
   },
-  
+
     {
     key    = 'logistics_mult',
     name   = 'Logistics Resupply Frequency',
     desc   = 'Sets the gap between Logistics Resupply',
     type   = 'list',
     def    = '1',
-    items  = 
+    items  =
     {
-      { 
+      {
         key  = '0',
         name = 'Low - 7.5 minute gap',
         desc = 'Limited logistics supply. Conservative play - storage buildings and well supplied infantry are the order of the day.',
@@ -158,7 +158,7 @@ local options = {
          { key = "3000", name = "3000", desc = "Insane!", },
       },
    },
-   
+
    {
     key    = 'command_storage',
     name   = 'Fixed Command Storage',
@@ -169,8 +169,8 @@ local options = {
     max    = 1944000,
     step   = 1000,
   },
-   
-     
+
+
 	--[[{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',
@@ -200,7 +200,7 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
-  },  
+  },
   {
     key    = 'unit_speed_mult',
     name   = 'Unit speed multiplier',
@@ -210,7 +210,7 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
-  },  
+  },
   {
     key    = 'unit_metal_mult',
     name   = 'Metal extraction multiplier',
@@ -231,7 +231,7 @@ local options = {
     max    = 10,
     step   = 0.05,
   },
-  
+
    {
     key    = 'weapon_hedamage_mult',
     name   = 'HE damage multiplier',
@@ -252,7 +252,7 @@ local options = {
     max    = 10,
     step   = 0.1,
   }]]--
-  
+
   --[[
   {
     key    = 'unit_buildable_airfields',
@@ -274,5 +274,37 @@ local options = {
     max    = 1,
     step   = 1,
   }]]--
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  C.R.A.I.G. specific option(s)
+--
+	{
+		key    = 'craig_difficulty',
+		name   = 'C.R.A.I.G. difficulty level',
+		desc   = 'Sets the difficulty level of the C.R.A.I.G. bot.',
+		type   = 'list',
+		def    = 'hard',
+		items = {
+			{
+				key = 'easy',
+				name = 'Easy',
+				desc = 'No resource cheating.'
+			},
+			{
+				key = 'medium',
+				name = 'Medium',
+				desc = 'Little bit of resource cheating.'
+			},
+			{
+				key = 'hard',
+				name = 'Hard',
+				desc = 'Infinite resources.'
+			},
+		}
+	},
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 }
 return options

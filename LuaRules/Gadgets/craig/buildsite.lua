@@ -98,7 +98,7 @@ local function RemovePoints(supplyInfo, x, z, r)
 	for i=1,numSegments do
 		local x1, z1 = x0 + r0 * cos(angle), z0 + r0 * sin(angle)
 		if (supplyInfo[i]) then
-			distSq = DistSq(x1, z1, x, z)
+			local distSq = DistSq(x1, z1, x, z)
 			if (distSq < rSq) then
 				supplyInfo[i] = false
 			end
@@ -114,7 +114,7 @@ local function UpdatePoint(unitID, x1, z1)
 			local r = currSupplyInfo.r
 			local rSq = r * r
 			local x, z = currSupplyInfo.x, currSupplyInfo.z
-			distSq = DistSq(x1, z1, x, z)
+			local distSq = DistSq(x1, z1, x, z)
 			if (distSq < rSq) then
 				return false
 			end
@@ -133,7 +133,7 @@ local function UpdatePoints(unitID, supplyInfo, x, z, r)
 	local rSq = r * r
 	for i=1,numSegments do
 		local x1, z1 = x0 + r0 * cos(angle), z0 + r0 * sin(angle)
-		distSq = DistSq(x1, z1, x, z)
+		local distSq = DistSq(x1, z1, x, z)
 		if (distSq < rSq) then
 			supplyInfo[i] = UpdatePoint(unitID, x1, z1)
 		end

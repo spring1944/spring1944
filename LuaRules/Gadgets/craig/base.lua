@@ -28,6 +28,9 @@ function CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
 
 local BaseMgr = {}
 
+-- speedups
+local GetUnitDefID = Spring.GetUnitDefID
+
 -- Base building (one global buildOrder)
 local buildsiteFinder = CreateBuildsiteFinder(myTeamID)
 local baseBuildOrder = gadget.baseBuildOrder[mySide]
@@ -61,7 +64,7 @@ end
 local function BuildBase()
 	if currentBuildDefID then
 		if #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
-			Log(UnitDefs[currentBuildDefID].humanName .. " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
+			Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
 			BuildBaseInterrupted()
 		end
 	end
@@ -72,14 +75,8 @@ local function BuildBase()
 	local unitDefID
 	local newIndex = baseBuildIndex
 	repeat
-		newIndex = newIndex + 1
+		newIndex = (newIndex % #baseBuildOrder) + 1
 		unitDefID = baseBuildOrder[newIndex]
-		-- restart queue when finished
-		if not unitDefID then
-			newIndex = 1
-			unitDefID = baseBuildOrder[1]
-			Log("Restarted baseBuildOrder, next item: " .. UnitDefs[unitDefID].humanName)
-		end
 	until (newIndex == baseBuildIndex) or
 		-- check if Spring would block this build (unit restriction)
 		((Spring.GetTeamUnitDefCount(myTeamID, unitDefID) or 0) < UnitDefs[unitDefID].maxThisUnit and
@@ -88,10 +85,14 @@ local function BuildBase()
 
 	local builderDefID = baseBuildOptions[unitDefID]
 	-- nothing to do if we have no builders available yet who can build this
-	if not builderDefID then Log("No builder available for " .. UnitDefs[unitDefID].humanName) return end
+	if not builderDefID then Log("No builder available for ", UnitDefs[unitDefID].humanName) return end
 
-	local builders = Spring.GetTeamUnitsByDefs(myTeamID, builderDefID)
-	if not builders then Log("internal error: Spring.GetTeamUnitsByDefs returned nil") return end
+	local builders = {}
+	for u,_ in pairs(myBaseBuilders) do
+		if (GetUnitDefID(u) == builderDefID) then
+			builders[#builders+1] = u
+		end
+	end
 
 	-- get a builder that isn't being build
 	local builderID
@@ -99,13 +100,14 @@ local function BuildBase()
 		local _,_,inBuild = Spring.GetUnitIsStunned(u)
 		if not inBuild then builderID = u break end
 	end
-	if not builderID then Log("internal error: Spring.GetTeamUnitsByDefs returned empty array") return end
+	builderID = (builderID or builders[1])
+	if not builderID then Log("internal error: no builders were found") return end
 
 	-- give the order to the builder, iff we can find a buildsite
 	local x,y,z,facing = buildsiteFinder.FindBuildsite(builderID, unitDefID, bUseClosestBuildSite)
-	if not x then Log("Could not find buildsite for " .. UnitDefs[unitDefID].humanName) return end
+	if not x then Log("Could not find buildsite for ", UnitDefs[unitDefID].humanName) return end
 
-	Log("Queueing in place: " .. UnitDefs[unitDefID].humanName)
+	Log("Queueing in place: ", UnitDefs[unitDefID].humanName)
 	Spring.GiveOrderToUnit(builderID, -unitDefID, {x,y,z,facing}, {})
 
 	-- give guard order to all our other builders
@@ -138,10 +140,10 @@ function BaseMgr.GameFrame(f)
 		local unitCounts = Spring.GetTeamUnitsCounts(myTeamID)
 		for ud,_ in pairs(baseBuilders) do
 			if unitCounts[ud] and unitCounts[ud] > 0 then
-				Log(unitCounts[ud] .. " x " .. UnitDefs[ud].humanName)
+				Log(unitCounts[ud], " x ", UnitDefs[ud].humanName)
 				for _,bo in ipairs(UnitDefs[ud].buildOptions) do
 					if not baseBuildOptions[bo] then
-						Log("Base can now build " .. UnitDefs[bo].humanName)
+						Log("Base can now build ", UnitDefs[bo].humanName)
 						baseBuildOptions[bo] = ud
 					end
 				end
@@ -166,6 +168,11 @@ function BaseMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
+	if (unitDefID == currentBuildDefID) and ((not currentBuildID) or (unitID == currentBuildID)) then
+		Log("CurrentBuild finished")
+		BuildBaseFinished()
+	end
+
 	-- update base building
 	if baseBuilders[unitDefID] then
 		-- keep track of all builders we've walking around
@@ -173,15 +180,17 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
 		-- update list of buildings we can build
 		for _,bo in ipairs(UnitDefs[unitDefID].buildOptions) do
 			if not baseBuildOptions[bo] then
-				Log("Base can now build " .. UnitDefs[bo].humanName)
+				Log("Base can now build ", UnitDefs[bo].humanName)
 				baseBuildOptions[bo] = unitDefID
 			end
 		end
-	end
-
-	if (unitDefID == currentBuildDefID) and ((not currentBuildID) or (unitID == currentBuildID)) then
-		Log("CurrentBuild finished")
-		BuildBaseFinished()
+		-- give the builder a guard order on current builder
+		if currentBuilder then
+			DelayedCall(unitID, function()
+				Spring.GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
+			end)
+		end
+		return true --signal Team.UnitFinished that we will control this unit
 	end
 end
 
