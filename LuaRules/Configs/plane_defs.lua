@@ -27,10 +27,9 @@ local planeDefs = {
 		{
 			--name = "Recon Plane",
 			--shortname = "Rec",
-			cost = 500,
+			cost = 350,
 			delay = 15,
 			units = {
-				"gbrauster",
 				"gbrauster",
 			},
 		},
@@ -50,7 +49,7 @@ local planeDefs = {
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
 			cost = 4000,
-			delay = 15,
+			delay = 45,
 			units = {
 				"gbrspitfiremkix",
 				"gbrspitfiremkix",
@@ -60,7 +59,7 @@ local planeDefs = {
 			--name = "Ground-Attack Aircraft",
 			--shortname = "GA",
 			cost = 5000,
-			delay = 15,
+			delay = 30,
 			units = {
 				"gbrtyphoon",
 				"gbrtyphoon",
@@ -82,10 +81,9 @@ local planeDefs = {
 		{
 			--name = "Recon Plane",
 			--shortname = "Rec",
-			cost = 500,
+			cost = 350,
 			delay = 15,
 			units = {
-				"gerfi156",
 				"gerfi156",
 			},
 		},
@@ -105,7 +103,7 @@ local planeDefs = {
 			--name = "Heavy Attack Fighter",
 			--shortname = "HAF",
 			cost = 3500,
-			delay = 15,
+			delay = 30,
 			units = {
 				"gerfw190",
 				"gerfw190",
@@ -117,7 +115,7 @@ local planeDefs = {
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
 			cost = 4000,
-			delay = 15,
+			delay = 45,
 			units = {
 				"gerfw190g",
 				"gerfw190g",
@@ -127,7 +125,7 @@ local planeDefs = {
 			--name = "Ground-Attack Aircraft",
 			--shortname = "GA",
 			cost = 5000,
-			delay = 15,
+			delay = 30,
 			units = {
 				"gerju87g",
 				"gerju87g",
@@ -150,10 +148,9 @@ local planeDefs = {
 		{
 			--name = "Recon Plane",
 			--shortname = "Rec",
-			cost = 500,
+			cost = 350,
 			delay = 15,
 			units = {
-				"ruspo2",
 				"ruspo2",
 			},
 		},
@@ -173,7 +170,7 @@ local planeDefs = {
 			--name = "Heavy Attack Fighter",
 			--shortname = "HAF",
 			cost = 3500,
-			delay = 15,
+			delay = 30,
 			units = {
 				"rusla5fn",
 				"rusla5fn",
@@ -185,7 +182,7 @@ local planeDefs = {
 			--name = "Ground-Attack Aircraft",
 			--shortname = "GA",
 			cost = 5000,
-			delay = 15,
+			delay = 40,
 			units = {
 				"rusil2",
 				"rusil2",
@@ -207,10 +204,9 @@ local planeDefs = {
 		{
 			--name = "Recon Plane",
 			--shortname = "Rec",
-			cost = 500,
+			cost = 350,
 			delay = 15,
 			units = {
-				"usl4",
 				"usl4",
 			},
 		},
@@ -218,7 +214,7 @@ local planeDefs = {
 			--name = "Attack Fighter",
 			--shortname = "AF",
 			cost = 3000,
-			delay = 15,
+			delay = 25,
 			units = {
 				"usp51dmustang",
 				"usp51dmustang",
@@ -230,7 +226,7 @@ local planeDefs = {
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
 			cost = 4000,
-			delay = 15,
+			delay = 45,
 			units = {
 				"usp47thunderbolt",
 				"usp47thunderbolt",
@@ -240,7 +236,7 @@ local planeDefs = {
 			--name = "Ground-Attack Aircraft",
 			--shortname = "GA",
 			cost = 5000,
-			delay = 15,
+			delay = 35,
 			units = {
 				"usp51dmustangga",
 				"usp51dmustangga",
