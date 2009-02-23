@@ -103,6 +103,7 @@ Yak-3
 
 Wingspan: 30ft/9.2m
 Engine: Klimov VK-105 @ 1300
+Max Speed: 401 mph
 Climb: 3645ft/m
 Fuel Capacity: 650km/405mile range
 Armament: 1 x ShVAK 20mm cannon, 2 x Beresin 12.7mm MG

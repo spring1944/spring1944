@@ -20,8 +20,9 @@
 	//sprayangle=3000;
 	//dance=50;
 	wobble=3000;
-	startvelocity=500;
-	weaponvelocity=500;
+	startvelocity=10;
+	weaponacceleration=2000;
+	weaponvelocity=750;
 	areaofeffect=184;
 	edgeeffectiveness=0.1;
 	weapontimer=1;

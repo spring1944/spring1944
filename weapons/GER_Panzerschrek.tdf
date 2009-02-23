@@ -16,8 +16,9 @@
 	range=360;
 	flighttime=1;
 	reloadtime=10;
-	startvelocity=750;
-	weaponvelocity=750;
+	startvelocity=10;
+	weaponacceleration=2000;
+	weaponvelocity=1000;
 	areaofeffect=32;
 	weapontimer=1;
 	//smoketrail=1;

@@ -18,8 +18,9 @@
 	range=1500;
 	flighttime=2;
 	reloadtime=1;
-	startvelocity=1250;
-	weaponvelocity=1250;
+	startvelocity=750;
+	weaponacceleration=2000;
+	weaponvelocity=1500;
 	areaofeffect=64;
 	wobble=1500;
 	//accuracy=1000;
