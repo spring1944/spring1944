@@ -42,8 +42,8 @@ local options =
     section= 'StartingResources',
     def    = 1000,
     min    = 0,
-    max    = 10000,
-    step   = 1,  -- quantization is aligned to the def value
+    max    = 50000,
+    step   = 10,  -- quantization is aligned to the def value
                     -- (step <= 0) means that there is no quantization
   },
   {
@@ -54,8 +54,8 @@ local options =
     section= 'StartingResources',
     def    = 500,
     min    = 0,
-    max    = 10000,
-    step   = 1,  -- quantization is aligned to the def value
+    max    = 50000,
+    step   = 10,  -- quantization is aligned to the def value
                     -- (step <= 0) means that there is no quantization
   },
   
