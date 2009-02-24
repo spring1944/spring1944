@@ -94,11 +94,11 @@
 	maxangledif2=10;
 	weaponslaveto2=1;
 
-	weapon3=ShVAK20mm;
+	weapon3=VYa23mm;
 	weaponmaindir3=0 0 1;
 	maxangledif3=10;
 
-	weapon4=ShVAK20mm;
+	weapon4=YVa23mm;
 	weaponmaindir4=0 0 1;
 	maxangledif4=10;
 	weaponslaveto4=3;
