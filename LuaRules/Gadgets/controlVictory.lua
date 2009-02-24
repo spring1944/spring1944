@@ -24,7 +24,7 @@ Spring.Echo("+++++++++++++++++++++++++++++++++++++++++++++++++++++++ "..(Spring.
 if Spring.GetModOptions().scoremode == "disabled" or Spring.GetModOptions().scoremode == nil then return false end
 
 local limitScore = tonumber(Spring.GetModOptions().limitscore) or 200
-
+local initFrame
 local scoreModes = {
    disabled = 0, --none (duh)
    countdown = 1, --A point decreases all opponents' scores, zero means defeat
@@ -74,6 +74,7 @@ function gadget:Initialize()
          score[a] = 0
       end
    end
+   initFrame = Spring.GetGameFrame()
    score[gaia]=0
    _G.points = points
    _G.score = score
@@ -81,7 +82,7 @@ function gadget:Initialize()
 end
 
 function gadget:GameFrame(f)
-	if (f == 10) then
+	if (f == (initFrame + 10)) then
       for _,u in ipairs(Spring.GetAllUnits()) do
 		local unitDefID = Spring.GetUnitDefID(u)
 		local ud = UnitDefs[unitDefID]

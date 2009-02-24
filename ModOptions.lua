@@ -39,6 +39,26 @@ local options = {
     max    = 10,
     step   = 0.1,
   },
+  
+    {
+	key    = "gamemode",
+	name   = "Game Modes",
+	desc   = "Change the game mode",
+	type   = "list",
+	def    = "normal",
+	items  = {
+		{ 
+		key  = "normal",
+		name = "Traditional",
+		desc = "Traditional RTS style unit construction",
+		},
+		{
+		key  = "tactics",
+		name = "Deployment",
+		desc = "Place your army on the map and fight it out with limited resources",
+		},
+	  },
+  },
 
   {
     key    = 'command_mult',

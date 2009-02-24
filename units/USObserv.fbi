@@ -28,7 +28,7 @@
 	sightdistance=690;
 	airsightdistance=2500;
 	stealth=1;
-	seismicdistance=2000;
+	seismicdistance=690;
 
 	init_cloaked=1;
 	cloakcost=0;

@@ -25,7 +25,7 @@
 	smoothanim=0;
 	SeismicSignature=0;
 	seismicdistance=570;
-	sightdistance=570;
+	sightdistance=950;
 	stealth=1;
 
 	init_cloaked=1;

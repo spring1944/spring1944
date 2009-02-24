@@ -6,11 +6,6 @@
 	commander=GERHQBunker;
 }
 
-[SIDE4]
-{
-	name=AI GER;//The Third Reich
-	commander=AI_GERHQBunker;
-}
 
 [SIDE1]
 {
@@ -18,36 +13,16 @@
 	commander=GBRHQ;
 }
 
-[SIDE5]
-{
-	name=AI GBR;//Great Britain & The Commonwealth
-	commander=AI_GBRHQ;
-}
-
-
 [SIDE2]
 {
 	name=RUS;//Union of Soviet Socialist Republics, Russia
 	commander=RUSCommander;
 }
 
-[SIDE6]
-{
-	name=AI RUS;//Union of Soviet Socialist Republics, Russia
-	commander=AI_RUSCommander;
-}
-
-
 [SIDE3]
 {
 	name=US;//United States of America
 	commander=USHQ;
-}
-
-[SIDE7]
-{
-	name=AI US;//United States of America
-	commander=AI_USHQ;
 }
 
 
@@ -66,13 +41,6 @@
 		//canbuild4=us_platoon_hq_rifle;
 		//canbuild5=us_platoon_hq_assault;
 	}
-	
-	[AI_USHQ]
-	{
-		canbuild1=USHQEngineer;
-		//canbuild2=USAirEngineer;
-		canbuild3=us_platoon_hq;
-	}
 
 	[USCP]
 	{
@@ -81,16 +49,6 @@
 		canbuild3=USGMCTruck;
 		//canbuild4=USJeep;
 	}
-
-//	[USGIRifle]
-//	{
-//	canbuild1=USFlag;
-//	}
-
-//	[USGIThompson]
-//	{
-//	canbuild1=USFlag;
-//	}
 
 	[USHQEngineer]
 	{
@@ -217,23 +175,6 @@
 		//canbuild4=ger_platoon_hq_rifle;
 		//canbuild5=ger_platoon_hq_assault;
 	}
-	
-	[AI_GERHQBunker]
-	{
-		canbuild1=GERHQEngineer;
-		//canbuild2=GERAirEngineer;
-		canbuild3=ger_platoon_hq;
-	}
-
-//	[gerrifle]
-//	{
-//	canbuild1=GERFlag;
-//	}
-
-//	[GERMP40]
-//	{
-//	canbuild1=GERFlag;
-//	}
 
 	[GERHQEngineer]
 	{
@@ -369,25 +310,6 @@
 		//canbuild3=gbr_platoon_hq_rifle;
 		//canbuild4=gbr_platoon_hq_assault;
 	}
-	
-	[AI_GBRHQ]
-	{
-		canbuild1=GBRHQEngineer;
-		//canbuild2=USAirEngineer;
-		canbuild2=gbr_platoon_hq;
-		//canbuild4=GBRBREN;
-	}
-
-
-//	[GBRRifle]
-//	{
-//	canbuild1=GBRFlag;
-//	}
-
-//	[GBRSTEN]
-//	{
-//	canbuild1=GBRFlag;
-//	}
 
 	[GBRHQEngineer]
 	{
@@ -549,23 +471,6 @@
 		canbuild13=RUSPG117;
 		canbuild14=PontoonRaft;
 	}
-	
-	[AI_RUSCommander]
-	{
-//		canbuild1=RUSFlag;
-		//canbuild2=RUSResource;
-		canbuild3=AI_RUSCommissar;
-		canbuild4=RUSPShack;
-		canbuild5=RUSBarracks;
-		canbuild6=RUSGunyard;
-		canbuild8=RUSZiS5;
-		canbuild9=atminesign;
-		canbuild10=apminesign;
-		canbuild11=TankObstacle;
-		//canbuild12=Sandbags;
-		canbuild13=RUSPG117;
-		canbuild14=PontoonRaft;
-	}
 
 	[RUSPShack]
 	{
@@ -604,22 +509,6 @@
 		//canbuild8=Sandbags;
 		canbuild10=RUSPG117;
 		canbuild11=PontoonRaft;
-	}
-	[AI_RUSCommissar]
-	{
-//		canbuild1=RUSFlag;
-		//canbuild2=RUSResource;
-		canbuild3=AI_RUSCommissar;
-		canbuild4=RUSPShack;
-		canbuild5=RUSBarracks;
-		canbuild6=RUSGunyard;
-		canbuild8=RUSZiS5;
-		canbuild9=apminesign;
-		canbuild10=atminesign;
-		canbuild11=TankObstacle;
-		//canbuild12=Sandbags;
-		canbuild13=RUSPG117;
-		canbuild14=PontoonRaft;
 	}
 
 	[RUSCommissar]
@@ -693,7 +582,7 @@
 		canbuild1=RUSSU76;
 		canbuild2=RUSSU85;
 		canbuild3=RUSSU100;
-		//canbuild4=RUSSU122; redundant with 152.
+		//canbuild4=RUSSU122; 
 		canbuild5=RUSBM13N;
 		canbuild6=RUSISU152;
 	}

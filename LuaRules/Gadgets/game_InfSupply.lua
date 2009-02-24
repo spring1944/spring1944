@@ -26,7 +26,7 @@ local supplyBonus				=	0.65 --65
 local ammoSuppliers		=	{}
 local infantry			= 	{}
 local savedFrame		=	{}
-
+local initFrame
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
@@ -56,6 +56,15 @@ local function FindSupplier(unitID)
 	return closestSupplier
 end
 
+function gadget:Initialize()
+	initFrame = Spring.GetGameFrame()
+	for _, unitID in ipairs(Spring.GetAllUnits()) do
+		 local unitTeam = Spring.GetUnitTeam(unitID)
+		 local unitDefID = Spring.GetUnitDefID(unitID)
+		 gadget:UnitCreated(unitID, unitDefID, unitTeam)
+	end
+end
+
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.feartarget and not(ud.customParams.maxammo) and (ud.weapons[1]) then
@@ -78,33 +87,46 @@ end
 
 
 function gadget:GameFrame(n)
-	if n % (1*30) < 0.1 then
-		for unitID in pairs(infantry) do
-			local unitDefID = GetUnitDefID(unitID)
+
+	if (n == initFrame + 6) then
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local teamID = Spring.GetUnitTeam(unitID)
-			local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 1.5
-			local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-			local reload = WeaponDefs[weaponID].reload
-			local reloadFrameLength = (reload*30)
-			local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
-			if (logisticsLevel < 5) then
-				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
-				return
+			local unitDefID = Spring.GetUnitDefID(unitID)	
+			local ud = UnitDefs[unitDefID]
+			if ud.customParams.ammosupplier == '1' then
+				ammoSuppliers[unitID] = true
 			end
-			local supplierID = FindSupplier(unitID)
-			if supplierID then
-				local supplierDefID = GetUnitDefID(supplierID)
-				local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
-			else
-				local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
-				if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
-					savedFrame[unitID] = reloadFrame + reloadFrameLength
+		end
+	end
+	if n > (initFrame+5) then
+		if n % (1*30) < 0.1 then
+			for unitID in pairs(infantry) do
+				local unitDefID = GetUnitDefID(unitID)
+				local teamID = Spring.GetUnitTeam(unitID)
+				local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 1.5
+				local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
+				local reload = WeaponDefs[weaponID].reload
+				local reloadFrameLength = (reload*30)
+				local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
+				if (logisticsLevel < 5) then
+					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
+					return
 				end
-				Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
-				if (reloadFrame > savedFrame[unitID]) then
-					savedFrame[unitID] = reloadFrame
-					Spring.UseUnitResource(unitID, "e", weaponCost)
+				local supplierID = FindSupplier(unitID)
+				if supplierID then
+					local supplierDefID = GetUnitDefID(supplierID)
+					local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
+					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
+				else
+					local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
+					if (savedFrame[unitID] == nil) or (savedFrame[unitID] == 0) then
+						savedFrame[unitID] = reloadFrame + reloadFrameLength
+					end
+					Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
+					if (reloadFrame > savedFrame[unitID]) then
+						savedFrame[unitID] = reloadFrame
+						Spring.UseUnitResource(unitID, "e", weaponCost)
+					end
 				end
 			end
 		end

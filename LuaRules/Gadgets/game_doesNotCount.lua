@@ -20,8 +20,13 @@ end
 --
 -- Uses I can think of include making mines explode when the team has nothing useful left
 -- or implementing C&C-style no buildings = dead rules.
+local modOptions
 
-if (gadgetHandler:IsSyncedCode()) then
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
+
+if (gadgetHandler:IsSyncedCode() and modOptions.gamemode == "normal") then
 
 --SYNCED
 
@@ -87,5 +92,4 @@ else
 --UNSYNCED
 
 return false
-
 end

@@ -31,7 +31,7 @@ local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local ammoSuppliers = {}
 local vehicles			= {}
 local savedFrames 	= {}
-
+local initFrame
 --[[a note on the customParams (custom FBI tags) used by this script:
 
 maxammo				The total ammo capacity of this unit;
@@ -66,7 +66,8 @@ end
 
 
 local function ProcessWeapons(unitID)
-	local unitDefID = GetUnitDefID(unitID)
+	local unitDefID = Spring.GetUnitDefID(unitID)
+	Spring.Echo("unitID:",unitID, "unitDefID:", unitDefID)
 	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
@@ -171,6 +172,15 @@ local function Resupply(unitID)
 	end
 end
 		
+function gadget:Initialize()
+	initFrame = Spring.GetGameFrame()
+	for _, unitID in ipairs(Spring.GetAllUnits()) do
+		 local unitTeam = Spring.GetUnitTeam(unitID)
+		 local unitDefID = Spring.GetUnitDefID(unitID)
+		 gadget:UnitCreated(unitID, unitDefID, unitTeam)
+	end
+end
+
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
@@ -200,12 +210,34 @@ end
 
 
 function gadget:GameFrame(n)
-	if n % (3*30) < 0.1 then
-		for unitID in pairs(vehicles) do
-			local unitDefID = GetUnitDefID(unitID)
-			local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-			ProcessWeapons(unitID)
-			Resupply(unitID)
+	if (n == initFrame+32) then
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
+			local unitTeam = Spring.GetUnitTeam(unitID)
+			local unitDefID = Spring.GetUnitDefID(unitID)	
+			local ud = UnitDefs[unitDefID]
+			if ud.customParams.ammosupplier == '1' then
+				ammoSuppliers[unitID] = true
+			end
+			if ud.customParams.maxammo then
+				SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
+				vehicles[unitID] = {
+					ammoLevel = tonumber(ud.customParams.maxammo),
+					reloadFrame = {},
+				}
+				for weaponNum = 0, ud.customParams.weaponswithammo do
+						vehicles[unitID].reloadFrame[weaponNum] = 0
+				end
+			end
+		end
+	end
+	if n > (initFrame+42) then
+		if n % (3*30) < 0.1 then
+			for unitID in pairs(vehicles) do
+				local unitDefID = GetUnitDefID(unitID)
+				local ammoLevel = GetUnitRulesParam(unitID, "ammo")
+				ProcessWeapons(unitID)
+				Resupply(unitID)
+			end
 		end
 	end
 end

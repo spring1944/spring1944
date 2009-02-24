@@ -38,14 +38,27 @@ local function tobool(val)
   return false
 end
 
+if (modOptions and (modOptions.gamemode == "tactics")) then
+  -- remove all build options
+  Game = { gameSpeed = 30 };  --  required by tactics.lua
+  local options = VFS.Include("LuaRules/Configs/tactics.lua")
+  local customBuilds = options.customBuilds
+  for name, ud in pairs(UnitDefs) do
+    if tobool(ud.commander) then
+      ud.buildoptions = (customBuilds[name] or {}).allow or {}
+    else
+      ud.buildoptions = {}
+    end
+  end
+end
 
-	if (modOptions.unit_los_mult) then
+	--[[if (modOptions.unit_los_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.sightdistance) then
 			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
 			end
 		end
-	end
+	end]]--
 	
 	if (modOptions.maxammo_mult) then
 		for name, ud in pairs(UnitDefs) do
@@ -83,14 +96,14 @@ end
 		end
 	end
 	
-	if (modOptions.unit_speed_mult) then
+	--[[if (modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.maxvelocity) then
 			ud.maxvelocity = (modOptions.unit_speed_mult * ud.maxvelocity)
 			ud.acceleration = (modOptions.unit_speed_mult * ud.acceleration)
 			end
 		end
-	end
+	end]]--
 	
 	if (modOptions.command_mult) then
 		for name, ud in pairs(UnitDefs) do
@@ -114,13 +127,13 @@ end
 		end
 	end
 	
-	if (modOptions.unit_metal_mult) then
+	--[[if (modOptions.unit_metal_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.extractsmetal) then
 			ud.extractsmetal = (modOptions.unit_metal_mult * ud.extractsmetal)
 			end
 		end
-	end
+	end]]--
 	
 	if modOptions.command_storage and tonumber(modOptions.command_storage) > 0 then
 		for name, ud in pairs(UnitDefs) do
