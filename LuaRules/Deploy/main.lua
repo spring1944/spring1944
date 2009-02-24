@@ -367,14 +367,14 @@ local function StartGame()
     for _,unitID in ipairs(team.units) do
       CopyUnit(unitID)
     end
-    if (not noComm) then
+    --if (not noComm) then
       team.comm = CopyUnit(team.comm)
-    else
+    --else
       Spring.DestroyUnit(team.comm, false, true)
-    end
+   -- end
     
     Spring.SetTeamResource(team.id, 'metal',  maxMetal - team.metal)
-    Spring.SetTeamResource(team.id, 'energy', maxEnergy - team.energy)
+   -- Spring.SetTeamResource(team.id, 'energy', maxEnergy - team.energy)
   end
 
   CopyCommands()

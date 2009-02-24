@@ -130,8 +130,8 @@ local options = {
       items = {
          {
 		 key = "disabled",
-		 name = "Disabled",
-		 desc = "Disables ticket scoring mode",
+		 name = "No Score Mode",
+		 desc = "Only goal is complete and total annihilation of the enemy",
 		 },
        --[[  {
 		 key = "countdown",
