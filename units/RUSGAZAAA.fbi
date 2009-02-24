@@ -67,6 +67,7 @@
 	onlytargetcategory4=AIR;
 
 	weapon5=Small_Tracer_Green;
+	onlytargetcategory5=AIR;
 
 	[sfxtypes]
 	{

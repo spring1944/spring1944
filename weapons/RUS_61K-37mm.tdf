@@ -5,20 +5,20 @@
 	rendertype=1;
 	turret=1;
 	tolerance=700;
-	explosiongenerator=custom:HE_Small;
+	explosiongenerator=custom:HE_Medium;
 
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.65;
+	predictboost=0.5;
 	range=1700;
 	reloadtime=1.3;
 	burst=3;
 	burstrate=0.3;
-	sprayangle=400;
+	sprayangle=900;
 	weaponvelocity=2000;
-	areaofeffect=12;
-	edgeeffectiveness=0.5;
+	areaofeffect=74;
+	edgeeffectiveness=0.35;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
@@ -30,7 +30,7 @@
 
 	intensity=0.9;
 
-	collisionsize=2;
+	collisionsize=9.25;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.2;
