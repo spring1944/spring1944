@@ -45,15 +45,15 @@ local options = {
 	name   = "Game Modes",
 	desc   = "Change the game mode",
 	type   = "list",
-	def    = "normal",
+	def    = "1",
 	items  = {
 		{ 
-		key  = "normal",
+		key  = "1",
 		name = "Traditional",
 		desc = "Traditional RTS style unit construction",
 		},
 		{
-		key  = "tactics",
+		key  = "2",
 		name = "Deployment",
 		desc = "Place your army on the map and fight it out with limited resources",
 		},
