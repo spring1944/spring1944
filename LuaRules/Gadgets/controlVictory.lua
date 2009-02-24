@@ -238,7 +238,7 @@ local function DrawPoints()
          end
       end
       Color(r,g,b,1)
-     -- DrawGroundCircle(p.x,p.y,p.z,captureRadius,30)
+      DrawGroundCircle(p.x,p.y,p.z,captureRadius,30)
       if p.capture > 0 then
          PushMatrix()
          Translate(p.x,p.y + 100,p.z)

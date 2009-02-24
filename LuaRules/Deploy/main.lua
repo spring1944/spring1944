@@ -384,11 +384,6 @@ local function StartGame()
   DeleteGlobals()
 
   VFS.Include("LuaRules/gadgets.lua")
-	for _, unitID in ipairs(Spring.GetAllUnits()) do
-		 local teamID = Spring.GetUnitTeam(unitID)
-		 local unitDefID = Spring.GetUnitDefID(unitID)
-		 UnitCreated(unitID, unitDefID, teamID)
-	end
   Spring.PlaySoundFile('LuaRules/Deploy/gotime.wav', 1.0)
 end
 
@@ -552,10 +547,10 @@ local function GetCancelBuildID(teamID, buildID, cmdParams)
     local sx = twist and ud.ysize or ud.xsize
     local sz = twist and ud.xsize or ud.ysize
     local x, y, z = Spring.GetUnitBasePosition(uid)
-    if (((math.abs(bx - x) * 2) <= (ss * max(sx, bsx))) and
-        ((math.abs(bz - z) * 2) <= (ss * max(sz, bsz)))) then
-      return uid
-    end
+    --if (((math.abs(bx - x) * 2) <= (ss * max(sx, bsx))) and
+    --    ((math.abs(bz - z) * 2) <= (ss * max(sz, bsz)))) then
+    -- return uid
+  -- end
   end
 
   return nil

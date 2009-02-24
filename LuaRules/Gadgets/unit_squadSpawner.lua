@@ -39,7 +39,7 @@ local GiveOrderToUnits    = Spring.GiveOrderToUnitArray
 local ADD_BAR = "AddBar"
 local SET_BAR = "SetBar"
 local REMOVE_BAR = "RemoveBar"
-
+local initFrame
 if (gadgetHandler:IsSyncedCode()) then
 
 	local squadDefs = { }
@@ -48,11 +48,19 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:Initialize()
 		squadDefs = include("LuaRules/Configs/squad_defs.lua")
+		initFrame = Spring.GetGameFrame()
 		watchUnits = { }
 	end
 
 	function gadget:GameFrame(n)
 		--while # newSquads ~= 0 do
+		if (n == initFrame+4) then
+			for _, unitID in ipairs(Spring.GetAllUnits()) do
+			 local teamID = Spring.GetUnitTeam(unitID)
+			 local unitDefID = Spring.GetUnitDefID(unitID)
+			 gadget:UnitCreated(unitID, unitDefID, teamID)
+			end
+		end
 		for index, squad in ipairs(newSquads) do
 
 				-- Get the orders for the squad spawner

@@ -88,7 +88,7 @@ end
 
 function gadget:GameFrame(n)
 
-	if (n == initFrame + 6) then
+	if (n == initFrame + 5) then
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local teamID = Spring.GetUnitTeam(unitID)
 			local unitDefID = Spring.GetUnitDefID(unitID)	

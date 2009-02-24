@@ -67,7 +67,6 @@ end
 
 local function ProcessWeapons(unitID)
 	local unitDefID = Spring.GetUnitDefID(unitID)
-	Spring.Echo("unitID:",unitID, "unitDefID:", unitDefID)
 	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
@@ -174,11 +173,6 @@ end
 		
 function gadget:Initialize()
 	initFrame = Spring.GetGameFrame()
-	for _, unitID in ipairs(Spring.GetAllUnits()) do
-		 local unitTeam = Spring.GetUnitTeam(unitID)
-		 local unitDefID = Spring.GetUnitDefID(unitID)
-		 gadget:UnitCreated(unitID, unitDefID, unitTeam)
-	end
 end
 
 
@@ -210,7 +204,7 @@ end
 
 
 function gadget:GameFrame(n)
-	if (n == initFrame+32) then
+	if (n == initFrame+4) then
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local unitTeam = Spring.GetUnitTeam(unitID)
 			local unitDefID = Spring.GetUnitDefID(unitID)	
@@ -230,7 +224,7 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
-	if n > (initFrame+42) then
+	if n > (initFrame+4) then
 		if n % (3*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				local unitDefID = GetUnitDefID(unitID)

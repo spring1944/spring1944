@@ -26,6 +26,11 @@ local DEFAULT_OUTPUT 	= 0
 local MULTIPLIER_CAP	= 2
 local OUTPUT_BASE			=	1.025
 
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
+if (modOptions.gamemode == "normal") then
+
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
@@ -62,4 +67,7 @@ end
 
 else
 --UNSYNCED
+end
+else
+--DEPLOYMENT MODE
 end

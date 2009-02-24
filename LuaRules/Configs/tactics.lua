@@ -15,15 +15,35 @@
 
 local noCustomBuilds = false
 
-
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
+local commandLimit
+if (modOptions.command_mult) then
+	if (modOptions.command_mult == '0') then
+		commandLimit = 5000
+	end
+	if (modOptions.command_mult == '1') then
+		commandLimit = 10000
+	end
+	if (modOptions.command_mult == '2') then
+		commandLimit = 20000
+	end
+	if (modOptions.command_mult == '3') then
+		commandLimit = 40000
+	end
+	if (modOptions.command_mult == '4') then
+		commandLimit = 80000
+	end
+end
 local deployment = {
 
-  maxFrames = 10 * Game.gameSpeed,
+  maxFrames = 60 * Game.gameSpeed,
 
   maxUnits  = 5000,
 
-  maxMetal  = 40000,
-  maxEnergy = 15000,
+  maxMetal  = commandLimit,
+  maxEnergy = 5,
 
   maxRadius = 1024,
 
