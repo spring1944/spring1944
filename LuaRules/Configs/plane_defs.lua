@@ -34,8 +34,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Attack Fighter",
-			--shortname = "AF",
+			--name = "Interceptor",
+			--shortname = "Int",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -56,8 +56,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Ground-Attack Aircraft",
-			--shortname = "GA",
+			--name = "Attack Fighter",
+			--shortname = "AF",
 			cost = 5000,
 			delay = 30,
 			units = {
@@ -88,8 +88,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Attack Fighter",
-			--shortname = "AF",
+			--name = "Interceptor",
+			--shortname = "Int",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -100,8 +100,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Heavy Attack Fighter",
-			--shortname = "HAF",
+			--name = "Air Superiority Fighter",
+			--shortname = "ASF",
 			cost = 3500,
 			delay = 30,
 			units = {
@@ -122,8 +122,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Ground-Attack Aircraft",
-			--shortname = "GA",
+			--name = "Attack Fighter",
+			--shortname = "AF",
 			cost = 5000,
 			delay = 30,
 			units = {
@@ -155,8 +155,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Attack Fighter",
-			--shortname = "AF",
+			--name = "Interceptor",
+			--shortname = "Int",
 			cost = 3000,
 			delay = 15,
 			units = {
@@ -167,8 +167,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Heavy Attack Fighter",
-			--shortname = "HAF",
+			--name = "Air Superiority Fighter",
+			--shortname = "ASF",
 			cost = 3500,
 			delay = 30,
 			units = {
@@ -179,8 +179,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Ground-Attack Aircraft",
-			--shortname = "GA",
+			--name = "Attack Fighter",
+			--shortname = "AF",
 			cost = 5000,
 			delay = 40,
 			units = {
@@ -211,8 +211,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Attack Fighter",
-			--shortname = "AF",
+			--name = "Interceptor",
+			--shortname = "Int",
 			cost = 3000,
 			delay = 25,
 			units = {
@@ -233,8 +233,8 @@ local planeDefs = {
 			},
 		},
 		{
-			--name = "Ground-Attack Aircraft",
-			--shortname = "GA",
+			--name = "Attack Fighter",
+			--shortname = "AF",
 			cost = 5000,
 			delay = 35,
 			units = {
