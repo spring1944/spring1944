@@ -23,7 +23,7 @@ VFS.Include("LuaRules/colors.h.lua")
 local SetupBuilds = VFS.Include("LuaRules/Deploy/builds.lua")
 
 local options
-if (Spring.GetModOption("gamemode")=="tactics") then
+if (Spring.GetModOption("gamemode")=="1") then
   options = VFS.Include("LuaRules/Configs/tactics.lua")
 end
 

@@ -63,8 +63,7 @@ function Spring.GetModOption(s,bool,default)
 end
 
 
-if (Spring.GetModOption("gamemode")=="deploy")or
-   (Spring.GetModOption("gamemode")=="tactics")
+if (Spring.GetModOption("gamemode")=="1")
 then
 
   -----------------------------

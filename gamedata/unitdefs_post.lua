@@ -38,7 +38,7 @@ local function tobool(val)
   return false
 end
 
-if (modOptions and (modOptions.gamemode == "tactics")) then
+if (modOptions and (modOptions.gamemode == "1")) then
   -- remove all build options
   Game = { gameSpeed = 30 };  --  required by tactics.lua
   local options = VFS.Include("LuaRules/Configs/tactics.lua")

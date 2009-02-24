@@ -29,7 +29,7 @@ local OUTPUT_BASE			=	1.025
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
-if (modOptions.gamemode == "normal") then
+if (modOptions.gamemode == "0") then
 
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED

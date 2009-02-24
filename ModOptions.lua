@@ -48,12 +48,12 @@ local options = {
 	def    = "1",
 	items  = {
 		{ 
-		key  = "1",
+		key  = "0",
 		name = "Traditional",
 		desc = "Traditional RTS style unit construction",
 		},
 		{
-		key  = "2",
+		key  = "1",
 		name = "Deployment",
 		desc = "Place your army on the map and fight it out with limited resources",
 		},
