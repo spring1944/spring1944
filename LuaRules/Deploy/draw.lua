@@ -550,7 +550,7 @@ function DrawScreen(vsx, vsy)
   fs = math.floor(fs)
   local fg = math.floor(fs * 1.8)
   local lsx = cx
-  local strwidth = fs * gl.GetTextWidth('Energy Left: ')
+  local strwidth = fs * gl.GetTextWidth('')
   local nsx = lsx + strwidth
   local y = cy
   
@@ -559,13 +559,13 @@ function DrawScreen(vsx, vsy)
   if (team) then
     local maxEnergy = SYNCED.maxEnergy
     if (maxEnergy < 1e9) then
-      DrawLevelBar('Energy', team.energy, maxEnergy,
-                   cx, y, width, fs, { 1, 1, 0, 0.5 })
+      --DrawLevelBar('Energy', team.energy, maxEnergy,
+                   --cx, y, width, fs, { 1, 1, 0, 0.5 })
       y = y + fg
     end
     local maxMetal = SYNCED.maxMetal
     if (maxMetal < 1e9) then
-      DrawLevelBar('Metal', team.metal, maxMetal,
+      DrawLevelBar('Command', team.metal, maxMetal,
                    cx, y, width, fs, { 0, 1, 1, 0.5 })
       y = y + fg
     end

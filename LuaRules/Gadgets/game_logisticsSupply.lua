@@ -9,14 +9,37 @@ function gadget:GetInfo()
 		enabled = true
 	}
 end
+local initFrame
 
 if (gadgetHandler:IsSyncedCode()) then
+
+local modOptions
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
 
 --SYNCED
 
 local hq = {}
-
+function gadget:Initialize()
+	initFrame = Spring.GetGameFrame()
+end
 function gadget:GameFrame(t)
+	if ((t == (initFrame + 50)) and (modOptions.gamemode == "1")) then
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
+			local unitDefID = Spring.GetUnitDefID(unitID)	
+			local ud = UnitDefs[unitDefID]
+			if ud.customParams.hq == '1' then
+				hq[unitID] = {
+				     refillAmount = ud.customParams.refillamount,
+				  arrivalGap = ud.customParams.arrivalgap, 	
+				  teamID = Spring.GetUnitTeam(unitID)	  
+				  }
+			 ud.buildoptions = {}
+			--Spring.DestroyUnit(unitID, false, true)
+			end
+		end
+	end
 	if (t % (5*30) < 0.1) then
 		for u in pairs(hq) do
 			local arrivalGap = tonumber(hq[u].arrivalGap)

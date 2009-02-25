@@ -36,11 +36,6 @@ end
 --  Hide the comm during deployment, and destroy it when the game starts
 --  FIXME: need to move the comm away, it blocks builds
 --
-local noComm = false
-if (Game.commEnds) then
-  noComm = false
-end
-
 --
 --  Check teams without players when looking for ready teams
 --
@@ -367,14 +362,9 @@ local function StartGame()
     for _,unitID in ipairs(team.units) do
       CopyUnit(unitID)
     end
-    --if (not noComm) then
-      team.comm = CopyUnit(team.comm)
-    --else
-      Spring.DestroyUnit(team.comm, false, true)
-   -- end
     
     Spring.SetTeamResource(team.id, 'metal',  maxMetal - team.metal)
-   -- Spring.SetTeamResource(team.id, 'energy', maxEnergy - team.energy)
+    Spring.SetTeamResource(team.id, 'energy', 100000000)
   end
 
   CopyCommands()
@@ -568,7 +558,7 @@ local function ReadyCommand(team, cmdOptions)
       return
     end
   end
-  if (noComm and (#team.units <= 0)) then
+  if (#team.units <= 0) then
     Spring.SendMessageToTeam(team.id,
       "You have no units, you are not ready"
     )
@@ -873,11 +863,7 @@ end
 --
 
 local function SetupCommander(team)
-  if (noComm) then
-    HideCmdDescs(team.comm)
-  else
-    ClearBuildCmdDescs(team.comm)
-  end
+  ClearBuildCmdDescs(team.comm)
   RemoveCmdDescID(team.comm, CMD.SELFD)
   AddReadyCmdDesc(team.comm)
   for _,bid in ipairs(team.builds) do
@@ -885,14 +871,6 @@ local function SetupCommander(team)
   end
 
 --  Spring.MoveCtrl.Enable(team.comm)  
-  if (noComm) then
---    Spring.SetUnitNoSelect(team.comm, true)
-    Spring.SetUnitNoDraw(team.comm, true)
-    Spring.SetUnitNoMinimap(team.comm, true)
-    Spring.SetUnitBlocking(team.comm, false)
-    local x,y,z = Spring.GetUnitPosition(team.comm)
-    Spring.SetUnitPosition(team.comm, x, 10000, z)
-  end
   Spring.SetUnitHealth(team.comm, { paralyze = math.huge })
   Spring.SetUnitStealth(team.comm, true)
   Spring.SetUnitMetalExtraction(team.comm, 0, 0)
@@ -1074,7 +1052,7 @@ function GameFrame(frameNum)
       teams[teamID] = nil
     else
       Spring.SetTeamResource(team.id, 'metal',  0)
-      Spring.SetTeamResource(team.id, 'energy', 0)
+      Spring.SetTeamResource(team.id, 'energy', 1000000)
       if (not team.ready) then
         if (checkAllTeams or TeamHasPlayer(team.id)) then
           allReady = false
