@@ -26,7 +26,7 @@
 	areaofeffect=64;
 	impulsefactor=0;
 	impulseboost=0;
-	cratermult=.5;
+	cratermult=0;
 	craterboost=0;
 
 	soundstart=GEN_Explo_1;
@@ -57,14 +57,11 @@
 	areaofeffect=65;
 	impulsefactor=0;
 	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_2;
 	soundhit=GEN_Explo_2;
 
-	impulsefactor=1;
-	cratermult=1;
 
 	[damage]
 	{
@@ -91,14 +88,12 @@
 	areaofeffect=112;
 	impulsefactor=0;
 	impulseboost=0;
-	cratermult=.5;
+	cratermult=0;
 	craterboost=0;
   explosiongenerator=custom:ROACHPLOSION;
 	soundstart=GEN_Explo_3;
 	soundhit=GEN_Explo_3;
 
-	impulsefactor=3;
-	cratermult=1;
 
 	[damage]
 	{
@@ -125,14 +120,12 @@
 	areaofeffect=120;
 
 	soundstart=GEN_Explo_3;
-	impulsefactor=0;
 	impulseboost=0;
-	cratermult=.5;
+	cratermult=0;
 	craterboost=0;
 	soundhit=GEN_Explo_3;
 	explosiongenerator=custom:SmallBuildingDeath;
 	impulsefactor=2;
-	cratermult=1;
 
 	[damage]
 	{
@@ -157,16 +150,14 @@
 	reloadtime=3.6;
 	weaponvelocity=250;
 	areaofeffect=100;
-	impulsefactor=0;
 	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_5;
 	soundhit=GEN_Explo_5;
 
-	impulsefactor=5;
-	cratermult=1;
+	impulsefactor=2;
+	cratermult=0;
 
 	[damage]
 	{
@@ -192,15 +183,13 @@
 	weaponvelocity=250;
 	areaofeffect=200;
 	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_10;
 	soundhit=GEN_Explo_10;
 
-	impulsefactor=7;
-	cratermult=1;
+	impulsefactor=2;
+	cratermult=0;
 
 	[damage]
 	{
@@ -226,15 +215,13 @@
 	weaponvelocity=250;
 	areaofeffect=250;
 	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_11;
 	soundhit=GEN_Explo_11;
 
-	impulsefactor=10;
-	cratermult=1;
+	impulsefactor=3;
+	cratermult=0;
 
 	[damage]
 	{
@@ -260,15 +247,13 @@
 	weaponvelocity=250;
 	areaofeffect=64;
 	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_Vehicle1;
 	soundhit=GEN_Explo_Vehicle1;
 
 	impulsefactor=1;
-	cratermult=1;
+	cratermult=0;
 
 	[damage]
 	{
@@ -293,15 +278,13 @@
 	weaponvelocity=250;
 	areaofeffect=96;
 	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
 	craterboost=0;
 
 	soundstart=GEN_Explo_Vehicle2;
 	soundhit=GEN_Explo_Vehicle2;
 	
 	impulsefactor=1;
-	cratermult=1;
+	cratermult=0;
 
 	[damage]
 	{
@@ -325,16 +308,14 @@
 	reloadtime=3.6;
 	weaponvelocity=250;
 	areaofeffect=120;
-	impulsefactor=0;
+	impulsefactor=1;
 	impulseboost=0;
-	cratermult=.5;
+	cratermult=0;
 	craterboost=0;
 
 	soundstart=GEN_Explo_Vehicle3;
 	soundhit=GEN_Explo_Vehicle3;
 
-	impulsefactor=1;
-	cratermult=1;
 
 	[damage]
 	{
@@ -358,7 +339,10 @@
 	reloadtime=3.6;
 	weaponvelocity=250;
 	areaofeffect=2;
-
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
 	soundstart=GER_Inf_Dead;
 	soundhit=GER_Inf_Dead;
 
@@ -376,7 +360,10 @@
 
 	ballistic=1;
 	firestarter=0.0;
-
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
 	range=480;
 	reloadtime=3.6;
 	weaponvelocity=250;
@@ -407,7 +394,10 @@
 
 	soundstart=GEN_Explo_Flag;
 	soundhit=GEN_Explo_Flag;
-
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
 	[damage]
 	{
 		default=1;
@@ -427,7 +417,10 @@
 	reloadtime=3.6;
 	weaponvelocity=10;
 	areaofeffect=104;
-
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
 	soundstart=GEN_Explo_1;
 	soundhit=GEN_Explo_1;
 

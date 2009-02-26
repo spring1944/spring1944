@@ -58,7 +58,7 @@
 	nochasecategory=FLAG;
 	badtargetcategory=FLAG;
 
-	weapon1=M637mmHE;
+	weapon1=M637mmCanister;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
 	weapon2=M637mmAP;

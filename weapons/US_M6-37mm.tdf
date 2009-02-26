@@ -121,3 +121,66 @@
 		flag=0;
 	}
 }
+
+[m637mmCanister]
+{
+	id=59;
+	name=US 37mm M6 Canister;
+	rendertype=0;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:Bullet;
+	explosionspeed=100;
+
+	ballistic=0;
+	firestarter=0.0;
+
+	range=550;
+	reloadtime=4.5;
+	accuracy=300;
+	movingaccuracy=500;
+	projectiles=140;
+	sprayangle=3000;
+	targetmoveerror=0.075;
+	weaponvelocity=1400;
+	areaofeffect=10;
+	edgeeffectiveness=1;
+	soundstart=US_37mm;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0.75 0;
+
+	beamweapon=1;
+	thickness=0.3;
+	duration=0.008;
+	intensity=0.7;
+
+	corethickness=0.15;
+	laserflaresize=0.0001;
+
+	collisionsize=3;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	size=0.25;
+	collisionsize=2;
+	[damage]
+	{
+		default=1;
+		infantry=150;
+		guns=140;
+		mines=0;
+		flag=0;
+		tanks=0;
+		armouredvehicles=25;
+		unarmouredvehicles=40;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=20;
+	}
+}
