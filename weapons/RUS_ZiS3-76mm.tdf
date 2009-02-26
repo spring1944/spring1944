@@ -56,7 +56,7 @@
 	[customParams]
 	{
 		fearid=401;
-		fearaoe=210;
+		fearaoe=75;
 	}
 }
 [zis376mmap]

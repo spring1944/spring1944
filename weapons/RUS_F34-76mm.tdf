@@ -55,7 +55,7 @@
 	[customParams]
 	{
 		fearid=401;
-		fearaoe=210;
+		fearaoe=75;
 	}
 }
 [f3476mmap]

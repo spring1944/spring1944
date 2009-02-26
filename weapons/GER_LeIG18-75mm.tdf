@@ -56,6 +56,6 @@
 	[customParams]
 	{
 		fearid=401;
-		fearaoe=175;
+		fearaoe=75;
 	}
 }

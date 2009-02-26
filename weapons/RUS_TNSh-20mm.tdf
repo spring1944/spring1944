@@ -56,7 +56,7 @@
 	[customParams]
 	{
 		fearid=301;
-		fearaoe=150;
+		fearaoe=40;
 	}
 }
 [tnsh20mmap]

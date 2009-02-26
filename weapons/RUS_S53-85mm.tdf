@@ -55,7 +55,7 @@
 	[customParams]
 	{
 		fearid=401;
-		fearaoe=180;
+		fearaoe=90;
 	}
 }
 [s5385mmap]
