@@ -132,9 +132,11 @@
 	explosiongenerator=custom:Bullet;
 	explosionspeed=100;
 
-	ballistic=0;
+	lineofsight=1;
 	firestarter=0.0;
-
+	
+	soundtrigger=1;
+	
 	range=550;
 	reloadtime=4.5;
 	accuracy=300;
@@ -145,15 +147,15 @@
 	weaponvelocity=1400;
 	areaofeffect=10;
 	edgeeffectiveness=1;
-	soundstart=US_37mm;
-
+	//soundstart=US_37mm;
+	
 	noselfdamage=1;
 
 	rgbcolor=1 0.75 0;
 
 	beamweapon=1;
 	thickness=0.3;
-	duration=0.008;
+	duration=0.01;
 	intensity=0.7;
 
 	corethickness=0.15;
@@ -164,9 +166,6 @@
 	impulseboost=0;
 	cratermult=0;
 	craterboost=0;
-
-	size=0.25;
-	collisionsize=2;
 	[damage]
 	{
 		default=1;
