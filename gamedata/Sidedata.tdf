@@ -573,8 +573,9 @@
 	[RUSTankYard1]
 	{
 		canbuild1=RUST3485;
-		canbuild2=RUSIS2;
-		canbuild3=RUSBM13N;
+		canbuild2=RUSSU100;
+		canbuild3=RUSIS2;
+		canbuild4=RUSBM13N;
 	}
 
 	[RUSSPYard]
