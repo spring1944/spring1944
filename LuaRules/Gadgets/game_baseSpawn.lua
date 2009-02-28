@@ -41,7 +41,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		if ud.customParams.hq == "1" then
 			local spawnList = hqDefs[unitDefName]
 			if not spawnList then return end
-			Spring.Echo(spawnList.units[1])
+			--Spring.Echo(spawnList.units[1])
 			local spread = spawnList.spread
 			local px, py, pz = Spring.GetUnitPosition(unitID)
 			local xmin = px - ((2*ud.xsize) * spawnList.spread) / 2
@@ -55,7 +55,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				zmax = pz + ((6*ud.zsize) * spawnList.spread) / 2
 			end
 			for blah, unitName in ipairs(spawnList.units) do
-				Spring.Echo(unitName)
+				--Spring.Echo(unitName)
 				local x = math.random(xmin, xmax)
 				local z = math.random(zmin, zmax)
 				local occupied = Spring.GetUnitsInCylinder(x, z, 100, teamID)

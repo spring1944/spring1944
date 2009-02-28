@@ -73,7 +73,7 @@ Death
 CrawlControl()
 {
 #ifdef NoCrawl
-set MAX_SPEED to [0.000000001];
+set MAX_SPEED to 1;
 if (NoCrawl == 1) return 0;
 #endif
 

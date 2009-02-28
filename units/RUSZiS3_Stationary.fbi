@@ -49,11 +49,11 @@
 	weapon1=ZiS376mmHE;
 	onlytargetcategory1=NFLAGNAIR;
 	weaponmaindir1=0 0 1;
-	maxangledif1=30;
+	maxangledif1=60;
 	weapon2=ZiS376mmAP;
 	onlytargetcategory2=TANK;
 	weaponmaindir2=0 0 1;
-	maxangledif2=45;
+	maxangledif2=60;
 	
 	[sfxtypes]
 	{
