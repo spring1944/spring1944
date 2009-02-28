@@ -60,7 +60,7 @@
 
 	weapon1=M637mmCanister;
 	badtargetcategory1=TANK;
-	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory1=INFTARG;
 	weapon2=M637mmAP;
 	onlytargetcategory2=TANK;
 	weapon3=M1919A4Browning;
