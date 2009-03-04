@@ -2,13 +2,14 @@
 -- License: GNU General Public License v2
 
 -- Slightly based on the Kernel Panic AI by KDR_11k (David Becker) and zwzsg.
+-- Thanks to lurker for providing hints on how to make the AI run unsynced.
 
 -- In-game, type /luarules craig in the console to toggle the ai debug messages
 
 function gadget:GetInfo()
 	return {
-		name = "C.R.A.I.G.: 1944",
-		desc = "Configurable Reusable Artificial Intelligence Gadget for Spring: 1944",
+		name = "C.R.A.I.G.",
+		desc = "Configurable Reusable Artificial Intelligence Gadget",
 		author = "Tobi Vollebregt",
 		date = "2009-02-12",
 		license = "GNU General Public License",
@@ -17,47 +18,114 @@ function gadget:GetInfo()
 	}
 end
 
-do
--- If not in synced code, ask for a quiet death.
--- (Tried to make the AI unsynced one time but I seem to get no
---  Unit events then so it's pointless... (no errors either))
-if (not gadgetHandler:IsSyncedCode()) then
-	return false
-end
 
--- If no AIs are in the game, ask for a quiet death.
-local function CountBots()
-	local count = 0
-	for _,t in ipairs(Spring.GetTeamList()) do
-		if Spring.GetTeamLuaAI(t) == gadget:GetInfo().name then
-			count = count + 1
-		end
-	end
-	return count
-end
-
-if CountBots() == 0 then
-	return false
-end
-end
-
---------------------------------------------------------------------------------
-
--- globals
-waypointMgr = {}
-
+-- Read mod options, we need this in both synced and unsynced code!
 if (Spring.GetModOptions) then
 	local modOptions = Spring.GetModOptions()
-	difficulty = (modOptions.craig_difficulty or "hard")
+	local lookup = {"easy", "medium", "hard"}
+	difficulty = lookup[tonumber(modOptions.craig_difficulty) or 2]
 else
 	difficulty = "hard"
 end
 
+
+-- Seed unsynced random number generator.
+if (math.randomseed ~= nil) then
+	--[[
+	This hack is based on the facts that:
+	1) A "timer" is a light userdata,
+	2) A "scream" is a userdata.
+	3) Spring.DiffTimers doesn't not check the type of it's userdata arguments,
+	   but just casts the userdata pointers to unsigned ints and returns their
+	   difference.
+	As such, the next line actually calculates the difference between
+	SDL_GetTicks() and an arbitrary (userdata) pointer value.
+	Credits to lurker and trepan for ideas for this hack :-)
+	]]--
+	local r = Spring.DiffTimers(Spring.GetTimer(), Script.CreateScream())
+	--Spring.Echo("C.R.A.I.G.: Seeding random number generator: " .. r)
+	math.random()      -- first random() call calls randomseed(1) internally
+	math.randomseed(r) -- hack until spring seeds it itself
+end
+
+
 -- include configuration
 include("LuaRules/Configs/craig/buildorder.lua")
+include("LuaRules/Gadgets/craig/buildorder.lua")
+
+
+
+if (gadgetHandler:IsSyncedCode()) then
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  SYNCED
+--
+
+-- globals
+local unitLimits = {}
 
 -- include code
-include("LuaRules/Gadgets/craig/buildorder.lua")
+include("LuaRules/Gadgets/craig/unitlimits.lua")
+
+function gadget:GamePreload()
+	-- Initialise unit limit for all AI teams.
+	local name = gadget:GetInfo().name
+	for _,t in ipairs(Spring.GetTeamList()) do
+		if Spring.GetTeamLuaAI(t) ==  name then
+			unitLimits[t] = CreateUnitLimitsMgr(t)
+		end
+	end
+end
+
+local function Refill(myTeamID, resource)
+	if (gadget.difficulty ~= "easy") then
+		local value,storage = Spring.GetTeamResources(myTeamID, resource)
+		if (gadget.difficulty ~= "medium") then
+			-- hard: full refill
+			Spring.AddTeamResource(myTeamID, resource, storage - value)
+		else
+			-- medium: partial refill
+			-- 1000 storage / 128 * 30 = approx. +234
+			-- this means 100% cheat is bonus of +234 metal at 1k storage
+			Spring.AddTeamResource(myTeamID, resource, (storage - value) * 0.05)
+		end
+	end
+end
+
+function gadget:GameFrame(f)
+	-- Perform economy cheating, this must be done in synced code!
+	if f % 128 < 0.1 then
+		for t,_ in pairs(team) do
+			Refill(t, "metal")
+			Refill(t, "energy")
+		end
+	end
+end
+
+function gadget:AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
+	if unitLimits[builderTeam] then
+		return unitLimits[builderTeam].AllowUnitCreation(unitDefID)
+	end
+	return true
+end
+
+else
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  UNSYNCED
+--
+
+--constants
+local MY_PLAYER_ID = Spring.GetMyPlayerID()
+
+-- globals
+waypointMgr = {}
+
+-- include code
 include("LuaRules/Gadgets/craig/buildsite.lua")
 include("LuaRules/Gadgets/craig/base.lua")
 include("LuaRules/Gadgets/craig/combat.lua")
@@ -97,7 +165,7 @@ local function SetupCmdChangeAIDebugVerbosity()
 	func = ChangeAIDebugVerbosity
 	help = " [0|1]: make C.R.A.I.G. shut up or fill your infolog"
 	gadgetHandler:AddChatAction(cmd,func,help)
-	Script.AddActionFallback(cmd .. ' ',help)
+	--Script.AddActionFallback(cmd .. ' ',help)
 end
 
 function gadget.Log(...)
@@ -143,6 +211,7 @@ function gadget:Initialize()
 	SetupCmdChangeAIDebugVerbosity()
 end
 
+
 function gadget:GamePreload()
 	-- This is executed BEFORE headquarters / commander is spawned
 	Log("gadget:GamePreload")
@@ -152,10 +221,13 @@ function gadget:GamePreload()
 		waypointMgrGameFrameRate = waypointMgr.GetGameFrameRate()
 	end
 	-- Initialise AI for all team that are set to use it
+	local name = gadget:GetInfo().name
 	for _,t in ipairs(Spring.GetTeamList()) do
-		if Spring.GetTeamLuaAI(t) == gadget:GetInfo().name then
-			local _,_,_,_,side,at = Spring.GetTeamInfo(t)
-			team[t] = CreateTeam(t, at, side)
+		if Spring.GetTeamLuaAI(t) ==  name then
+			local _,leader,_,_,side,at = Spring.GetTeamInfo(t)
+			if (leader == MY_PLAYER_ID) then
+				team[t] = CreateTeam(t, at, side)
+			end
 		end
 	end
 end
@@ -209,9 +281,12 @@ function gadget:TeamDied(teamID)
 	--end
 end
 
+-- This is not called by Spring, only the synced version of this function is
+-- called by Spring.  This unsynced version is here to allow the AI itself to
+-- determine whether a unit creation would be allowed.
 function gadget:AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
 	if team[builderTeam] then
-		return team[builderTeam].AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
+		return team[builderTeam].AllowUnitCreation(unitDefID)
 	end
 	return true
 end
@@ -237,6 +312,9 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	if waypointMgr then
+		waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	end
 	if team[unitTeam] then
 		delayedCalls[unitID] = nil
 		team[unitTeam].UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
@@ -262,3 +340,21 @@ function gadget:UnitIdle(unitID, unitDefID, unitTeam)
 		team[unitTeam].UnitIdle(unitID, unitDefID, unitTeam)
 	end
 end
+
+end
+
+
+-- Set up LUA AI framework.
+callInList = {
+	"GamePreload",
+	"GameStart",
+	"GameFrame",
+	"TeamDied",
+	"UnitCreated",
+	"UnitFinished",
+	"UnitDestroyed",
+	"UnitTaken",
+	"UnitGiven",
+	"UnitIdle",
+}
+return include("LuaRules/Gadgets/craig/framework.lua")

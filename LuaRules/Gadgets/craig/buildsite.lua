@@ -266,7 +266,7 @@ end
 local function Initialize()
 	for unitDefID=1,#UnitDefs do
 		local unitDef = UnitDefs[unitDefID]
-		if (unitDef.humanName ~= "Flag" and unitDef.speed == 0) then
+		if (not gadget.flags[unitDefID] and unitDef.speed == 0) then
 			local radius = unitDef.customParams.buildrange or DEFAULT_BUILD_RANGE
 			local numSegments = ceil(radius / segmentLength)
 			local segmentAngle = 2 * PI / numSegments
@@ -359,7 +359,7 @@ function widget.FindBuildsite(builderID, unitDefID, closest)
 	for _=1,10 do
 		local tx = x + math.random(-range, range)
 		local tz = z + math.random(-range, range)
-		if TestBuildOrder(unitDefID, tx,y,tz, facing) > 0 then
+		if TestBuildOrder(unitDefID, tx,y,tz, facing) == 2 then
 			return tx,y,tz,facing
 		end
 		range = range * 1.5

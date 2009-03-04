@@ -15,7 +15,6 @@ function WaypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
 
 function WaypointMgr.GetGameFrameRate()
 function WaypointMgr.GetWaypoints()
-function WaypointMgr.GetFlags()
 function WaypointMgr.GetTeamStartPosition(myTeamID)
 function WaypointMgr.GetFrontline(myTeamID, myAllyTeamID)
 	Returns frontline, previous. Frontline is the set of waypoints adjacent
@@ -40,6 +39,7 @@ local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local GetUnitPosition = Spring.GetUnitPosition
 local sqrt = math.sqrt
+local isFlag = gadget.flags
 
 -- class
 local WaypointMgr = {}
@@ -183,9 +183,9 @@ function Waypoint:GetEnemyUnitCount(myAllyTeamID)
 	return sum
 end
 
-function Waypoint:AreAllFlagsCappedByTeam(myTeamID)
+function Waypoint:AreAllFlagsCappedByAllyTeam(myAllyTeamID)
 	for _,f in pairs(self.flags) do
-		if (GetUnitTeam(f) ~= myTeamID) then
+		if (GetUnitAllyTeam(f) ~= myAllyTeamID) then
 			return false
 		end
 	end
@@ -206,10 +206,6 @@ end
 
 function WaypointMgr.GetWaypoints()
 	return waypoints
-end
-
-function WaypointMgr.GetFlags()
-	return flags
 end
 
 function WaypointMgr.GetTeamStartPosition(myTeamID)
@@ -246,6 +242,7 @@ function WaypointMgr.GameFrame(f)
 	index = (index % #waypoints) + 1
 	--Log("WaypointMgr: updating waypoint ", index)
 	local p = waypoints[index]
+	p.flags = {}
 
 	-- Update p.allyTeamUnitCount
 	-- Box check (as opposed to Rectangle, Sphere, Cylinder),
@@ -256,7 +253,15 @@ function WaypointMgr.GameFrame(f)
 	for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
 		local ud = GetUnitDefID(u)
 		local at = GetUnitAllyTeam(u)
-		if (UnitDefs[ud].speed == 0) and (UnitDefs[ud].name ~= "flag") and (at ~= GAIA_ALLYTEAM_ID) then
+		if isFlag[ud] then
+			local x, y, z = GetUnitPosition(u)
+			local dist = GetDist2D(x, z, p.x, p.z)
+			if (dist < FLAG_RADIUS) then
+				p.flags[#p.flags+1] = u
+				flags[p] = u
+				--Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
+			end
+		elseif (UnitDefs[ud].speed == 0) and (at ~= GAIA_ALLYTEAM_ID) then
 			allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
 		end
 	end
@@ -282,7 +287,7 @@ end
 --
 
 function WaypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	if (UnitDefs[unitDefID].name == "flag") then
+	if isFlag[unitDefID] then
 		-- This is O(n*m), with n = number of flags and m = number of waypoints.
 		local x, y, z = GetUnitPosition(unitID)
 		local p, dist = GetNearestWaypoint2D(x, z)
@@ -290,6 +295,21 @@ function WaypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
 			p.flags[#p.flags+1] = unitID
 			flags[unitID] = p
 			Log("Flag ", unitID, " is near ", p.x, ", ", p.z)
+		end
+	end
+end
+
+function WaypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	if isFlag[unitDefID] then
+		local p = flags[unitID]
+		if p then
+			flags[unitID] = nil
+			for i=1,#p.flags do
+				if (p.flags[i] == unitID) then
+					table.remove(p.flags, i)
+					break
+				end
+			end
 		end
 	end
 end

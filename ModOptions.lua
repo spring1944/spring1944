@@ -305,20 +305,20 @@ local options = {
 		name   = 'C.R.A.I.G. difficulty level',
 		desc   = 'Sets the difficulty level of the C.R.A.I.G. bot.',
 		type   = 'list',
-		def    = 'hard',
+		def    = '3',
 		items = {
 			{
-				key = 'easy',
+				key = '1',
 				name = 'Easy',
 				desc = 'No resource cheating.'
 			},
 			{
-				key = 'medium',
+				key = '2',
 				name = 'Medium',
 				desc = 'Little bit of resource cheating.'
 			},
 			{
-				key = 'hard',
+				key = '3',
 				name = 'Hard',
 				desc = 'Infinite resources.'
 			},

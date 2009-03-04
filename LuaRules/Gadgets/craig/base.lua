@@ -108,12 +108,12 @@ local function BuildBase()
 	if not x then Log("Could not find buildsite for ", UnitDefs[unitDefID].humanName) return end
 
 	Log("Queueing in place: ", UnitDefs[unitDefID].humanName)
-	Spring.GiveOrderToUnit(builderID, -unitDefID, {x,y,z,facing}, {})
+	GiveOrderToUnit(builderID, -unitDefID, {x,y,z,facing}, {})
 
 	-- give guard order to all our other builders
 	for u,_ in pairs(myBaseBuilders) do
 		if u ~= builderID then
-			Spring.GiveOrderToUnit(u, CMD.GUARD, {builderID}, {})
+			GiveOrderToUnit(u, CMD.GUARD, {builderID}, {})
 		end
 	end
 
@@ -187,7 +187,7 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
 		-- give the builder a guard order on current builder
 		if currentBuilder then
 			DelayedCall(unitID, function()
-				Spring.GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
+				GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
 			end)
 		end
 		return true --signal Team.UnitFinished that we will control this unit

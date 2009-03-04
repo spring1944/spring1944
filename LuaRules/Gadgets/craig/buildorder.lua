@@ -50,6 +50,9 @@ do
 end
 
 gadget.baseBuilders = NameArrayToIdSet(gadget.baseBuilders)
+gadget.flags = NameArrayToIdSet(gadget.flags)
+gadget.flagCappers = NameArrayToIdSet(gadget.flagCappers)
+gadget.reservedFlagCappers = gadget.reservedFlagCappers or {}
 
 do
 	local unitLimitsById = {}
@@ -58,3 +61,4 @@ do
 	end
 	gadget.unitLimits = unitLimitsById
 end
+

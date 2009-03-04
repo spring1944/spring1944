@@ -66,7 +66,7 @@ gadgetHandler = {
   knownGadgets = {},
   knownCount = 0,
   knownChanged = true,
-  
+
   GG = {}, -- shared table for gadgets
 
   globals = {}, -- global vars/funcs
@@ -256,7 +256,7 @@ function gadgetHandler:Initialize()
     end
   end
 
-  -- sort the gadgets  
+  -- sort the gadgets
   table.sort(unsortedGadgets, function(g1, g2)
     local l1 = g1.ghInfo.layer
     local l2 = g2.ghInfo.layer
@@ -274,7 +274,7 @@ function gadgetHandler:Initialize()
     end
   end)
 
-  -- add the gadgets  
+  -- add the gadgets
   for _,g in ipairs(unsortedGadgets) do
     gadgetHandler:InsertGadget(g)
 
@@ -297,7 +297,7 @@ function gadgetHandler:LoadGadget(filename)
     Spring.Echo('Failed to load: ' .. basename .. '  (' .. err .. ')')
     return nil
   end
-  
+
   local gadget = gadgetHandler:NewGadget()
 
   setfenv(chunk, gadget)

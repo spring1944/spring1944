@@ -28,7 +28,7 @@ local SQUAD_SPREAD = 250
 -- speedups
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
-local flags = waypointMgr.GetFlags()
+local GetUnitNoSelect = Spring.GetUnitNoSelect
 
 -- members
 local lastWaypoint = 0
@@ -44,6 +44,16 @@ local newUnitCount = 0
 --
 
 function CombatMgr.GameFrame(f)
+	if newUnitCount >= SQUAD_SIZE then
+		-- Don't use units which user wouldn't be able to use..
+		for u,_ in pairs(newUnits) do
+			if GetUnitNoSelect(u) then
+				newUnits[u] = nil
+				newUnitCount = newUnitCount - 1
+			end
+		end
+	end
+
 	if newUnitCount >= SQUAD_SIZE then
 		local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
 		lastWaypoint = (lastWaypoint % #frontline) + 1
