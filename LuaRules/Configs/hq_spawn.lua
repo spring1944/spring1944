@@ -38,7 +38,7 @@ local hqDefs = {
 				},
 	},
 	ruscommander = {
-			spread = 25,
+			spread = 45,
 			units = {
 				"rus_platoon_rifle",
 				"russtorage",
