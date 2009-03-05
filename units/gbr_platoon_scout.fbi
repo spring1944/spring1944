@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_scout;
 	objectname=MortarShell.S3O;
 	buildpic=GBRObserv.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Scout Team;

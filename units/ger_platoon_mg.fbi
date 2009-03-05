@@ -3,7 +3,7 @@
 	unitname=ger_platoon_mg;
 	objectname=MortarShell.S3O;
 	buildpic=GERMG42.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Machinegun Squad;

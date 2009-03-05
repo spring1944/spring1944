@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_commando;
 	objectname=MortarShell.S3O;
 	buildpic=GBRCommando.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Commando Squad;

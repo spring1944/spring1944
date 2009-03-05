@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_sniper;
 	objectname=MortarShell.S3O;
 	buildpic=GBRSniper.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Sniper Team;

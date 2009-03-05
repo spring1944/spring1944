@@ -3,7 +3,7 @@
 	unitname=rus_platoon_atlight;
 	objectname=MortarShell.S3O;
 	buildpic=RUSPTRD.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Anti-Tank Rifle Squad;

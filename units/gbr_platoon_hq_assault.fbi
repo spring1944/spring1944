@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_hq_assault;
 	objectname=MortarShell.S3O;
 	buildpic=GBRSTEN.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Assault Platoon;

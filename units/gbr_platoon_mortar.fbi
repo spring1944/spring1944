@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_mortar;
 	objectname=MortarShell.S3O;
 	buildpic=GBR3InMortar.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=3-inch Mortar Team;

@@ -3,7 +3,7 @@
 	unitname=ger_platoon_hq_assault;
 	objectname=MortarShell.S3O;
 	buildpic=GERMP40.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Assault Platoon;

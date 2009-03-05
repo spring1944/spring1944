@@ -3,7 +3,7 @@
 	unitname=ger_platoon_hq;
 	objectname=MortarShell.S3O;
 	buildpic=GERRifle.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Rifle Squad;

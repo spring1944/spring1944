@@ -3,7 +3,7 @@
 	unitname=rus_platoon_big_assault;
 	objectname=MortarShell.S3O;
 	buildpic=RUSPPsh.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Assault Platoon;

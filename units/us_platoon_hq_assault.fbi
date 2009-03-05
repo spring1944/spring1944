@@ -3,7 +3,7 @@
 	unitname=us_platoon_hq_assault;
 	objectname=MortarShell.S3O;
 	buildpic=usgithompson.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Assault Platoon;

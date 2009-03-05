@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_rifle;
 	objectname=MortarShell.S3O;
 	buildpic=GBRRifle.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Enfield Rifle Platoon;

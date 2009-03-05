@@ -3,7 +3,7 @@
 	unitname=gbr_platoon_at;
 	objectname=MortarShell.S3O;
 	buildpic=GBRPIAT.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=PIAT Anti-Tank Squad;

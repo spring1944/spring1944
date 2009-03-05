@@ -3,7 +3,7 @@
 	unitname=rus_platoon_mortar;
 	objectname=MortarShell.S3O;
 	buildpic=RUSMortar.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Mortar Team;

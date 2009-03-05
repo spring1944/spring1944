@@ -3,7 +3,7 @@
 	unitname=ger_platoon_at;
 	objectname=MortarShell.S3O;
 	buildpic=GERPanzerfaust.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Anti-Tank Squad;

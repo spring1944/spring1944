@@ -3,7 +3,7 @@
 	unitname=us_platoon_flame;
 	objectname=MortarShell.S3O;
 	buildpic=usgiflamethrower.png;
-	category=NOTFLAG NOTAIR;
+	category=FLAG;
 	icontype=mines;
 	
 	name=Flamethrower Squad;
