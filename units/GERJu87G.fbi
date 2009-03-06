@@ -11,7 +11,7 @@
 	Description=Ground Attack Aircraft;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=650;
+	MaxDamage=3600;
 	ObjectName=GERJu87G.S3O;
 	Side=GBR;
 	//SoundCategory=GERPlane;

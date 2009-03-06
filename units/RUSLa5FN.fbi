@@ -11,7 +11,7 @@
 	Description=Air Superiority Fighter;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=800;
+	MaxDamage=2605;
 	ObjectName=RUSLa5FN.S3O;
 	Side=RUS;
 	//SoundCategory=RUSPlane;

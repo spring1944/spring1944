@@ -11,7 +11,7 @@
 	Description=Interceptor;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=650;
+	MaxDamage=2993;
 	ObjectName=GBRSpitfireMkXIV.S3O;
 	Side=GBR;
 	//SoundCategory=GBRPlane;

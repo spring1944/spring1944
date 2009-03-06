@@ -11,7 +11,7 @@
 	Description=Air Supremacy Fighter;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=700;
+	MaxDamage=3465;
 	ObjectName=USP51DMustang.S3O;
 	Side=US;
 	//SoundCategory=USPlane;

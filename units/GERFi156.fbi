@@ -11,7 +11,7 @@
 	Description=Recon Plane;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=500;
+	MaxDamage=860;
 	ObjectName=GERFi156.S3O;
 	Side=GER;
 	//SoundCategory=GERPlane;

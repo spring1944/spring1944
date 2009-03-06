@@ -11,7 +11,7 @@
 	Description=Attack Fighter;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=700;
+	MaxDamage=4445;
 	ObjectName=GBRTyphoon.S3O;
 	Side=US;
 	//SoundCategory=GBRPlane;

@@ -11,7 +11,7 @@
 	Description=Fighter-Bomber;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=650;
+	MaxDamage=2545;
 	ObjectName=GBRSpitfireMkIX.S3O;
 	Side=GBR;
 	//SoundCategory=GBRPlane;

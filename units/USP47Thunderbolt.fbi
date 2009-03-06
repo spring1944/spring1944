@@ -11,7 +11,7 @@
 	Description=Fighter-Bomber;
 	FootprintX=4;
 	FootprintZ=4;
-	MaxDamage=700;
+	MaxDamage=4536;
 	ObjectName=USP47Thunderbolt.S3O;
 	Side=US;
 	//SoundCategory=USPlane;
