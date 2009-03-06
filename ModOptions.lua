@@ -23,6 +23,13 @@
 --------------------------------------------------------------------------------
 local options = {
 	{
+		key = 'simple_tanks',
+		name = 'Simplified Tank Buildtree',
+		desc = 'Different german tank buildtree',
+		type = 'bool',
+		def = true,
+	},
+	{
 		key = 'always_visible_flags',
 		name = 'Always Visible Flags',
 		desc = 'Flags and their capping status can be seen without LOS',

@@ -1,3 +1,8 @@
+local modOptions
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
+
 buildoptions = 
 {
 
@@ -572,5 +577,22 @@ buildoptions =
 		"rusil2",
 	},
 }
+if (modOptions) then
+	if (modOptions.simple_tanks) then
+		local gertankyard = {
+			"gerstugiii",
+			"gerpanzeriv",
+			"gerjagdpanzeriv",
+			"gertiger",
+			}
+		local gertankyard1 = {
+			"gerpanther",
+			"gertigerii",
+			"gerwespe",
+		}
+		buildoptions.gertankyard = gertankyard
+		buildoptions.gertankyard1 = gertankyard1
+	end
+end
 
 return buildoptions
