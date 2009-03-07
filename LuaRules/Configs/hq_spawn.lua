@@ -1,6 +1,6 @@
 local hqDefs = {
 	ushq = {
-			spread = 15,
+			spread = 200,
 			units = {
 				"us_platoon_hq",
 				"usstorage",
@@ -11,9 +11,9 @@ local hqDefs = {
 				"ushqengineer",
 			},
 	},
-	
+
 	gbrhq = {
-			spread = 15,
+			spread = 200,
 			units = {
 				"gbr_platoon_hq",
 				"gbrstorage",
@@ -24,9 +24,9 @@ local hqDefs = {
 				"gbrhqengineer",
 			},
 	},
-	
+
 	gerhqbunker = {
-			spread = 15,
+			spread = 200,
 			units = {
 				"ger_platoon_hq",
 				"gerstorage",
@@ -38,7 +38,7 @@ local hqDefs = {
 				},
 	},
 	ruscommander = {
-			spread = 45,
+			spread = 200,
 			units = {
 				"rus_platoon_rifle",
 				"russtorage",

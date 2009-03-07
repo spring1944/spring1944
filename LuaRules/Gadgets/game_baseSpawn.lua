@@ -15,7 +15,7 @@ function gadget:GetInfo()
 	return {
 		name      = "Base Spawner",
 		desc      = "Spawns around the HQ units",
-		author    = "B. Tyler",
+		author    = "B. Tyler, Tobi Vollebregt",
 		date      = "31th Jan. 2009",
 		license   = "CC BY-NC",
 		layer     = -5,
@@ -27,53 +27,66 @@ if (gadgetHandler:IsSyncedCode()) then
 
 ---------------------------------------------------------------------------
 	local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
-		-- Removes this gadget if the game has started.
-		-- Only needs to run once at game start
+
+	-- Each time an invalid position is randomly chosen, spread is multiplied by SPREAD_MULT.
+	-- If spread reaches MAX_SPREAD, the unit is not deployed AT ALL.
+	-- (This prevents infinite loops and units being spawned over entire map.)
+	-- 1000|1.1 will result in approx. 16 tries before giving up (200 * 1.1^17 > 1000)
+	local MAX_SPREAD = 1000
+	local SPREAD_MULT = 1.1
+
+	-- Removes this gadget if the game has started.
+	-- Only needs to run once at game start
 	--[[function gadget:GameFrame(n)
 		if n<2 then
 			gadgetHandler:RemoveGadget()
 		end
 	end]]--
-	
+
+	local function IsPositionValid(unitDefID, x, z)
+		-- Don't place units underwater. (this is also checked by TestBuildOrder
+		-- but that needs proper maxWaterDepth/floater/etc. in the UnitDef.)
+		local y = Spring.GetGroundHeight(x, z)
+		if (y <= 0) then
+			return false
+		end
+		-- Don't place units where it isn't be possible to build them normally.
+		local test = Spring.TestBuildOrder(unitDefID, x, y, z, 0)
+		if (test ~= 2) then
+			return false
+		end
+		-- Don't place units too close together.
+		local ud = UnitDefs[unitDefID]
+		local units = Spring.GetUnitsInCylinder(x, z, 100)
+		if (units[1] ~= nil) then
+			return false
+		end
+		return true
+	end
+
 	function gadget:UnitFinished(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		local unitDefName = ud.name
 		if ud.customParams.hq == "1" then
-			local spawnList = hqDefs[unitDefName]
+			local spawnList = hqDefs[ud.name]
 			if not spawnList then return end
-			--Spring.Echo(spawnList.units[1])
-			local spread = spawnList.spread
 			local px, py, pz = Spring.GetUnitPosition(unitID)
-			local xmin = px - ((2*ud.xsize) * spread) / 2
-			local xmax = px + ((2*ud.xsize) * spread) / 2
-			local zmin = pz - ((2*ud.zsize) * spread) / 2
-			local zmax = pz + ((2*ud.zsize) * spread) / 2
-			if ud.customParams.feartarget ~= nil then
-				xmin = px - ((6*ud.xsize) * spread) / 2
-				xmax = px + ((6*ud.xsize) * spread) / 2
-				zmin = pz - ((6*ud.zsize) * spread) / 2
-				zmax = pz + ((6*ud.zsize) * spread) / 2
-			end
-			for blah, unitName in ipairs(spawnList.units) do
-				--Spring.Echo(unitName)
-				local x = math.random(xmin, xmax)
-				local z = math.random(zmin, zmax)
-				local occupied = Spring.GetUnitsInCylinder(x, z, 100, teamID)
-				while (occupied[1] ~= nil) do
-					spread = spawnList.spread + (0.1*spread)
-					xmin = px - ((2*ud.xsize) * spread) / 2
-					xmax = px + ((2*ud.xsize) * spread) / 2
-					zmin = pz - ((2*ud.zsize) * spread) / 2
-					zmax = pz + ((2*ud.zsize) * spread) / 2
-					x = math.random(xmin, xmax)
-					z = math.random(zmin, zmax)
-					occupied = Spring.GetUnitsInCylinder(x, z, 100, teamID)
+			for _, unitName in ipairs(spawnList.units) do
+				local udid = UnitDefNames[unitName].id
+				local spread = spawnList.spread
+				while (spread < MAX_SPREAD) do
+					local x = px + math.random(-spread, spread)
+					local z = pz + math.random(-spread, spread)
+					if IsPositionValid(udid, x, z) then
+						Spring.CreateUnit(unitName, x, py, z, 0, teamID)
+						break
+					end
+					spread = spread * SPREAD_MULT
 				end
-				Spring.CreateUnit(unitName, x, py, z, 0, teamID)
-			end		
+				--Spring.Echo(unitName .. ", spread: " .. spread)
+			end
 		end
-	end	
-	
+	end
+
 else -- UNSYNCED
 
 end
