@@ -1,4 +1,4 @@
-local versionNumber = "v1.1"
+local versionNumber = "v1.2"
 
 function widget:GetInfo()
   return {
@@ -24,11 +24,11 @@ local GetUnitExperience = Spring.GetUnitExperience
 local GetUnitDefID = Spring.GetUnitDefID
 
 local MOD_NAME = Game.modName
-local DATAFILE = LUAUI_DIRNAME .. "Logs/util_xp_tracker_log.lua"
+local LOGFILE = LUAUI_DIRNAME .. "Logs/util_xp_tracker_log.lua"
 
 local data
 
-local deathData, gameOverData
+local destroyedData, gameOverData
 
 ----------------------------------------------------------------
 --local functions
@@ -67,18 +67,18 @@ end
 ----------------------------------------------------------------
 
 function widget:Initialize()
-	if VFS.FileExists(DATAFILE, VFS.RAW) then
-		data = VFS.Include(DATAFILE, nil, VFS.RAW)
+	if VFS.FileExists(LOGFILE, VFS.RAW) then
+		data = VFS.Include(LOGFILE, nil, VFS.RAW)
 	else
 		data = {}
 	end
 	if not data[MOD_NAME] then
 		data[MOD_NAME] = {
-			atDeath = {},
+			atDestroyed = {},
 			atGameOver = {},
 		}
 	end
-	deathData = data[MOD_NAME].atDeath
+	destroyedData = data[MOD_NAME].atDestroyed
 	gameOverData = data[MOD_NAME].atGameOver
 end
 
@@ -89,15 +89,19 @@ function widget:Shutdown()
 		ProcessUnit(allUnits[i], gameOverData)
 	end
 	
-	for _, info in pairs(deathData) do
+	for _, info in pairs(destroyedData) do
 		info.avg = info.xp / info.n
 	end
 	
 	for _, info in pairs(gameOverData) do
-		info.avg = info.xp / info.n
+		if info.n > 0 then
+			info.avg = info.xp / info.n
+		else
+			info.avg = 0
+		end
 		info.avg_zero = info.xp / (info.n + info.n_zero)
 	end
-	table.save(data, DATAFILE)
+	table.save(data, LOGFILE)
 end
 
 function widget:GameOver()
@@ -105,5 +109,5 @@ function widget:GameOver()
 end
 
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	ProcessUnit(unitID, deathData)
+	ProcessUnit(unitID, destroyedData)
 end
