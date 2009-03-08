@@ -12,6 +12,7 @@ end
 
 local sin, cos = math.sin, math.cos
 local sqrt = math.sqrt
+local PI = math.pi
 
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
@@ -111,6 +112,14 @@ local function DegreesToHeading(d)
 	return d * 65536 / 360
 end
 
+local function HeadingToRadians(h)
+	return h * PI / 32368
+end
+
+local function RadiansToHeading(r)
+	return r * 32368 / PI
+end
+
 local Vector = {
 	Magnitude = Magnitude,
 	Normalized = Normalized,
@@ -120,6 +129,8 @@ local Vector = {
 	DistanceToMapEdge = DistanceToMapEdge,
 	HeadingToDegrees = HeadingToDegrees,
 	DegreesToHeading = DegreesToHeading,
+	HeadingToRadians = HeadingToRadians,
+	RadiansToHeading = RadiansToHeading,
 }
 
 if GG then

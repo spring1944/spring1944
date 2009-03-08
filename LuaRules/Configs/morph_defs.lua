@@ -33,6 +33,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   gbrvickers_sandbag =
@@ -51,6 +52,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   germg42_sandbag =
@@ -69,6 +71,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   rusmaxim_sandbag =
@@ -87,6 +90,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   usgimg_sandbag =
@@ -107,6 +111,7 @@ local morphDefs = {
     time = 15,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   gbr17pdr_stationary = 
@@ -125,6 +130,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   gbr25pdr_stationary = 
@@ -179,6 +185,7 @@ local morphDefs = {
     time = 15,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   gerpak40_stationary = 
@@ -197,6 +204,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   gerlefh18_stationary = 
@@ -215,6 +223,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   gernebelwerfer_stationary = 
@@ -251,6 +260,7 @@ local morphDefs = {
     time = 15,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   ruszis2_stationary = 
@@ -269,6 +279,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   ruszis3_stationary = 
@@ -287,6 +298,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   rusm30_stationary = 
@@ -305,6 +317,7 @@ local morphDefs = {
     time = 15,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   usm5gun_stationary = 
@@ -323,6 +336,7 @@ local morphDefs = {
     time = 35,
     metal = 0,
     energy = 0,
+    directional = true,
   },
   
   usm2gun_stationary = 

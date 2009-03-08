@@ -124,7 +124,8 @@ local morphCmdDesc = {
 --  id     = CMD_MORPH, -- added by the calling function because there is now more than one option
   type   = CMDTYPE.ICON,
   name   = 'Deploy',
-  cursor = 'Deploy',  -- add with LuaUI?
+  --cursor = 'Deploy',  -- add with LuaUI?
+  cursor = 'Fight',
   action = 'Deploy',
 }
 
@@ -178,6 +179,7 @@ local function BuildMorphDef(udSrc, morphData)
     newData.tech = morphData.tech or 0
     newData.xp   = morphData.xp or 0
     newData.rank = morphData.rank or 0
+    newData.directional = morphData.directional
     local require = -1
     if (morphData.require) then
       require = (UnitDefNames[defNamesL[string.lower(morphData.require)] or -1] or {}).id
@@ -284,6 +286,9 @@ local function AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTech)
   morphCmdDesc.tooltip = GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
   morphCmdDesc.texture = "#" .. morphDef.into   --//only works with a patched layout.lua or the TweakedLayout widget!
   morphCmdDesc.disabled= (morphDef.tech > teamTech)or(morphDef.rank > unitRank)or(morphDef.xp > unitXP)or(not teamOwnsReqUnit)
+  if morphDef.directional then
+    morphCmdDesc.type = CMDTYPE.ICON_MAP
+  end
 
   morphCmdDesc.id = morphDef.cmd
 
@@ -294,8 +299,10 @@ local function AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTech)
     Spring.InsertUnitCmdDesc(unitID, morphCmdDesc)
   end
 
+  --reset to default
   morphCmdDesc.tooltip = nil
   morphCmdDesc.texture = nil
+  morphCmdDesc.type = CMDTYPE.ICON
 end
 
 
@@ -328,7 +335,7 @@ end
 --------------------------------------------------------------------------------
 
 
-local function StartMorph(unitID, unitDefID, teamID, morphDef)
+local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 	--[[if (UnitDefs[unitDefID].transportCapacity > 0) then
 		local unitid_x_coord, unitid_y_coord, unitid_z_coord = Spring.GetUnitPosition(unitID)
 		Spring.GiveOrderToUnit(unitID, CMD.UNLOAD_UNITS, { unitid_x_coord, unitid_y_coord, unitid_z_coord, 50 }, {})
@@ -338,7 +345,14 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef)
 	--end
 	Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
 	Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
-
+  
+  if morphDef.directional then
+    local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
+    local ux, _, uz = Spring.GetUnitPosition(unitID)
+    local dx, dz = tx - ux, tz - uz
+    local rotation = math.atan2(dx, dz)
+    Spring.SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
+  end 
   morphUnits[unitID] = {
     def = morphDef,
     progress = 0.0,
@@ -349,7 +363,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef)
 
   local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
   if (cmdDescID) then
-    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop"})
+    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
   end
 
   SendToUnsynced("unit_morph_start", unitID, unitDefID, morphDef.cmd)
@@ -373,8 +387,12 @@ local function StopMorph(unitID, morphData)
   SendToUnsynced("unit_morph_stop", unitID)
 
   local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphData.def.stopCmd)
+  local newType
+  if morphData.def.directional then
+    newType = CMDTYPE.ICON_MAP
+  end
   if (cmdDescID) then
-    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name})
+    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name, type = newType })
   end
 end
 
@@ -392,6 +410,9 @@ local function FinishMorph(unitID, morphData)
   Spring.SetUnitPosition(newUnit, px, py, pz)
   
   local h = Spring.GetUnitHeading(unitID)
+  if morphData.directional then
+    Spring.Echo("dir")
+  end
   Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
 	
 	if (udDst.customParams.maxammo) then
@@ -810,7 +831,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
       if (isFactory(unitDefID)) then
         --// the factory cai is broken and doesn't call CommandFallback(),
         --// so we have to start the morph here
-        StartMorph(unitID, unitDefID, teamID, morphDef)
+        StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
         return false
       else
         return true
@@ -833,7 +854,7 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
   end
   local morphData = morphUnits[unitID]
   if (not morphData) then
-    StartMorph(unitID, unitDefID, teamID, morphDef)
+    StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
     return true, true
   end
   return true, false  --// command was used, do not remove it
