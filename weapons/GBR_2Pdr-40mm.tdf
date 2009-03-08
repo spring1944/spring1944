@@ -108,10 +108,10 @@
   stages=50;
 
 	dyndamageexp=1;
-	dyndamagerange=4500;
+	dyndamagerange=2250;//4500
 	[damage]
 	{
-		default=4650;//6200
+		default=3100;//4650;//6200
 		bunkers=20;
 		mines=0;
 		flag=0;
