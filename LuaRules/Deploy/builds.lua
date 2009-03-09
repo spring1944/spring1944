@@ -13,7 +13,7 @@
 --------------------------------------------------------------------------------
 
 local options
-if (Spring.GetModOption("gamemode")=="1") then
+if (Spring.GetModOption("gametype")=="1") then
   options = VFS.Include("LuaRules/Configs/tactics.lua")
 end
 

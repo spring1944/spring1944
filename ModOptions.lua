@@ -48,7 +48,7 @@ local options = {
   },
   
     {
-	key    = "gamemode",
+	key    = "gametype",
 	name   = "Game Modes",
 	desc   = "Change the game mode",
 	type   = "list",

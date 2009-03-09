@@ -25,7 +25,7 @@ function gadget:Initialize()
 	initFrame = Spring.GetGameFrame()
 end
 function gadget:GameFrame(t)
-	if ((t == (initFrame + 50)) and (modOptions.gamemode == "1")) then
+	if ((t == (initFrame + 50)) and (modOptions.gametype == "1")) then
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local unitDefID = Spring.GetUnitDefID(unitID)	
 			local ud = UnitDefs[unitDefID]
@@ -35,8 +35,7 @@ function gadget:GameFrame(t)
 				  arrivalGap = ud.customParams.arrivalgap, 	
 				  teamID = Spring.GetUnitTeam(unitID)	  
 				  }
-			 ud.buildoptions = {}
-			--Spring.DestroyUnit(unitID, false, true)
+			Spring.DestroyUnit(unitID, false, true)
 			end
 		end
 	end

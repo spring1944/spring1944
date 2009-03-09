@@ -63,7 +63,7 @@ function Spring.GetModOption(s,bool,default)
 end
 
 
-if (Spring.GetModOption("gamemode")=="1")
+if (Spring.GetModOption("gametype")=="1")
 then
 
   -----------------------------

@@ -26,7 +26,7 @@ if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
 
-if (gadgetHandler:IsSyncedCode() and modOptions.gamemode == "0") then
+if (gadgetHandler:IsSyncedCode() and modOptions.gametype == "0") then
 
 --SYNCED
 
