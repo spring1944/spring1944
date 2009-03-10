@@ -1,4 +1,4 @@
-local versionNumber = "v1.3"
+local versionNumber = "v1.4"
 
 function widget:GetInfo()
 	return {
@@ -23,7 +23,7 @@ local divsPerRadian = 16
 ------------------------------------------------
 --vars
 ------------------------------------------------
---format: unitDefID = list
+--format: unitDefID = {list, range}
 local unitDefInfos = {}
 
 local stationaryLists = {}
@@ -47,6 +47,7 @@ local glPushMatrix = gl.PushMatrix
 local glPopMatrix = gl.PopMatrix
 local glTranslate = gl.Translate
 local glRotate = gl.Rotate
+local glScale = gl.Scale
 
 local glShape = gl.Shape
 
@@ -74,7 +75,7 @@ local RAD1 = rad(1)
 --helper functions
 ------------------------------------------------
 
-local function DrawMobile(maxAngleDif, range)
+local function DrawMobile(maxAngleDif)
 	local vertices = {
 		{v = {0, 0, 0}},
 	}
@@ -84,7 +85,7 @@ local function DrawMobile(maxAngleDif, range)
 	local angleIncrement = 2 * angle / divs
 	local i = 2
 	for j = 0, divs do
-		vertices[i] = {v = {sin(angle) * range, 0, cos(angle) * range}}
+		vertices[i] = {v = {sin(angle), 0, cos(angle)}}
 		angle = angle - angleIncrement
 		i = i + 1
 	end
@@ -92,9 +93,9 @@ local function DrawMobile(maxAngleDif, range)
 	glShape(GL_LINE_LOOP, vertices)
 end
 
-local function DrawStationary(maxAngleDif, range)
-	local length = maxAngleDif * range
-	local width = sqrt(1 - maxAngleDif * maxAngleDif) * range
+local function DrawStationary(maxAngleDif)
+	local length = maxAngleDif
+	local width = sqrt(1 - maxAngleDif * maxAngleDif)
 	local vertices = {
 		{v = {-width, 0, length}},
 		{v = {0, 0, 0}},
@@ -104,12 +105,13 @@ local function DrawStationary(maxAngleDif, range)
 	glShape(GL_LINE_STRIP, vertices)
 end
 
-local function DrawFieldOfFire(unitID, list)
+local function DrawFieldOfFire(unitID, list, range)
 	local x, y, z = GetUnitPosition(unitID)
 	
 	glPushMatrix()
 		glTranslate(x, y, z)
 		glRotate(vHeadingToDegrees(GetUnitHeading(unitID)), 0, 1, 0)
+		glScale(range, range, range)
 		glCallList(list)
 	glPopMatrix()
 end
@@ -144,10 +146,10 @@ function widget:Initialize()
 			local list = stationaryLists[maxAngleDif]
 			local range = stationaryUnitDef.maxWeaponRange
 			if not list then
-				list = glCreateList(DrawStationary, maxAngleDif, range)
+				list = glCreateList(DrawStationary, maxAngleDif)
 				stationaryLists[maxAngleDif] = list
 			end
-			unitDefInfos[stationaryUnitDefID] = list
+			unitDefInfos[stationaryUnitDefID] = {list, range}
 			
 			inUse = true
 			
@@ -160,10 +162,10 @@ function widget:Initialize()
 					if mobileBasename == staticBasename then
 						local list = mobileLists[maxAngleDif]
 						if not list then
-							list = glCreateList(DrawMobile, maxAngleDif, range)
+							list = glCreateList(DrawMobile, maxAngleDif)
 							mobileLists[maxAngleDif] = list
 						end
-						unitDefInfos[mobileUnitDefID] = list
+						unitDefInfos[mobileUnitDefID] = {list, range}
 					end
 				end
 			end
@@ -193,12 +195,12 @@ function widget:DrawWorld()
 	
 	local selectedUnitsSorted = GetSelectedUnitsSorted()
 	
-	for unitDefID, list in pairs(unitDefInfos) do
+	for unitDefID, info in pairs(unitDefInfos) do
 		local units = selectedUnitsSorted[unitDefID]
 		if units then
 			for i=1,#units do
 				local unitID = units[i]
-				DrawFieldOfFire(unitID, list)
+				DrawFieldOfFire(unitID, info[1], info[2])
 			end
 		end
 	end
