@@ -16,13 +16,13 @@ function gadget:GameFrame(n)
 	if(n % 30 < 1) then
 		local features = Spring.GetAllFeatures()
 		for _,fid in ipairs(features) do
-			fdid = Spring.GetFeatureDefID(fid)
-			fname = FeatureDefs[fdid].name
-			fmetal = FeatureDefs[fdid].metal
+			local fdid = Spring.GetFeatureDefID(fid)
+			local fname = FeatureDefs[fdid].name
+			local fmetal = FeatureDefs[fdid].metal
 			if fname and (string.find(fname, "soldier") or string.find(fname, "shoulder")) ~= nil then
-				fhp, fmaxhp = Spring.GetFeatureHealth(fid)
-				subtract = fmaxhp * 0.01 --always make it take about 90 seconds regardless of the feature
-				fhp = fhp - subtract
+				local fhp, fmaxhp = Spring.GetFeatureHealth(fid)
+				local subtract = fmaxhp * 0.01 --always make it take about 90 seconds regardless of the feature
+				local fhp = fhp - subtract
 				if(fhp ~= nil) then
 					if(fhp <= 0) then
 						Spring.DestroyFeature(fid)
