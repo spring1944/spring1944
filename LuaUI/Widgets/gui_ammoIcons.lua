@@ -50,7 +50,7 @@ local ammoIcons = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {} }
 
 local myAllyTeamID = 666
 
-local iconsize   = 12 --33
+local iconsize   = 15 --33
 local iconoffset = 4
 local ammoTexBase = 'LuaUI/Images/Ammo/'
 local ammoTextures = {

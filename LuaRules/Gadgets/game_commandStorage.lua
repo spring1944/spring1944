@@ -1,6 +1,6 @@
 function gadget:GetInfo()
 	return {
-		name      = "Spring: 1944 Command Storage",
+		name      = "Spring: 1944 Command/Logisticsf Storage",
 		desc      = "Sets command storage at the beginning of the game.",
 		author    = "Evil4Zerggin",
 		date      = "21 February 2008",
@@ -18,11 +18,12 @@ local GetTeamResources = Spring.GetTeamResources
 function gadget:GameFrame(n)
 	if n > 1 then
 		local modOptions = Spring.GetModOptions()
-		local commandStorage = tonumber(modOptions.command_storage) or 0
+		local commandStorage = tonumber(modOptions.command_storage) or 1000
 		if commandStorage > 0 then
 			local teamIDs = Spring.GetTeamList()
 			for i=1, #teamIDs do
 				local teamID = teamIDs[i]
+				SetTeamResource(teamID, "es", 1250) --ugly, but effective for now
 				local _, currStorage = GetTeamResources(teamID, "metal")
 				if commandStorage > currStorage then
 					SetTeamResource(teamID, "ms", commandStorage)
