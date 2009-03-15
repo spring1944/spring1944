@@ -1,6 +1,10 @@
 -- Author: Tobi Vollebregt
 -- License: GNU General Public License v2
 
+-- Misc config
+FLAG_RADIUS = 230 --from S44 game_flagManager.lua
+SQUAD_SIZE = 24
+
 -- unit names must be lowercase!
 
 -- Format: factory = { "unit to build 1", "unit to build 2", ... }

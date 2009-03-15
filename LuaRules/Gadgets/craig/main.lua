@@ -50,7 +50,7 @@ end
 
 
 -- include configuration
-include("LuaRules/Configs/craig/buildorder.lua")
+include("LuaRules/Configs/craig/" .. Game.modShortName .. "/buildorder.lua")
 include("LuaRules/Gadgets/craig/buildorder.lua")
 
 

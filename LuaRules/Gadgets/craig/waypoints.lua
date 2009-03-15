@@ -26,7 +26,7 @@ function CreateWaypointMgr()
 -- constants
 local GAIA_TEAM_ID    = Spring.GetGaiaTeamID()
 local GAIA_ALLYTEAM_ID      -- initialized later on..
-local FLAG_RADIUS     = 230 --from S44 game_flagManager.lua
+local FLAG_RADIUS     = FLAG_RADIUS
 local WAYPOINT_RADIUS = 500
 local WAYPOINT_HEIGHT = 100
 

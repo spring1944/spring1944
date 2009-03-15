@@ -22,7 +22,7 @@ end
 local CombatMgr = {}
 
 -- constants
-local SQUAD_SIZE = 24    --TODO: make this configurable (maybe even time dependent?)
+local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 250
 
 -- speedups
