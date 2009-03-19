@@ -79,7 +79,7 @@ function PlaceFlag(spot)
 end
 
 function gadget:Initialize()
-	initFrame = Spring.GetGameFrame()	
+	initFrame = Spring.GetGameFrame()
 end
 
 function getFlagControl(flagID)
@@ -120,7 +120,7 @@ function gadget:GameFrame(n)
 				end
 			end
 			spots = onlyFlagSpots
-			
+
 		else -- load the flag positions from profile
 			Spring.Echo("Map Flag Profile found. Loading flag positions.")
 			spots = VFS.Include(PROFILE_PATH)
@@ -129,7 +129,7 @@ function gadget:GameFrame(n)
 			end
 		end
 		GG['flags'] = flags
-		
+
 	elseif n == (initFrame + 40) then
 		for _, flagID in pairs(flags) do
 			if (modOptions) then
@@ -141,9 +141,9 @@ function gadget:GameFrame(n)
 			end
 			flagCapStatuses[flagID] = {}
 		end
-			
+
 	end
-	
+
 	-- FLAG CONTROL
 	if (modOptions.gametype == "0" or modOptions.gametype == nil) then
 		if n % 30 == 5 and n > 40 then
@@ -224,6 +224,12 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (ud.customParams.flagdefendrate) then
 		defenders[unitID] = (DEF_MULT*ud.customParams.flagdefendrate)
 	end
+end
+
+
+function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	cappers[unitID] = nil
+	defenders[unitID] = nil
 end
 
 else
