@@ -79,7 +79,7 @@
 		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
-		particleLife=25;
+		particleLife=18;
 		particleLifeSpread=25;
 		numParticles=1;
 		particleSpeed=1;
@@ -110,7 +110,7 @@
 		colorMap=1 0.5 0.1 0.01  0 0 0 0.01  0 0 0 0;
 		Texture=dust2;
 		airdrag=0.98;
-		particleLife=100;
+		particleLife=50;
 		particleLifeSpread=100;
 		numParticles=10;
 		particleSpeed=.25;
@@ -140,7 +140,7 @@
 		colorMap=1 .5 0.3 0.01   1 .5 0.3 0;
 		Texture=diamondstar;
 		airdrag=0.95;
-		particleLife=50;
+		particleLife=30;
 		particleLifeSpread=10;
 		numParticles=5;
 		particleSpeed=1.5;

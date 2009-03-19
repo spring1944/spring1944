@@ -145,7 +145,7 @@ function gadget:GameFrame(n)
 	end
 	
 	-- FLAG CONTROL
-	if (modOptions.gametype == "0") then
+	if (modOptions.gametype == "0" or modOptions.gametype == nil) then
 		if n % 30 == 5 and n > 40 then
 			for spotNum, flagID in pairs(flags) do
 				local flagTeamID = GetUnitTeam(flagID)

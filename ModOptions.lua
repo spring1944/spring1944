@@ -52,7 +52,7 @@ local options = {
 	name   = "Game Modes",
 	desc   = "Change the game mode",
 	type   = "list",
-	def    = "1",
+	def    = "0",
 	items  = {
 		{ 
 		key  = "0",
