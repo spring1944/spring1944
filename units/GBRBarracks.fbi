@@ -8,7 +8,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooo occo occo oyyo oyyo oyyo;
-
+	collisionvolumetype=ellipsoid;
 	name=British Army Barracks;
 	maxdamage=4250;
 	buildcostmetal=2805;

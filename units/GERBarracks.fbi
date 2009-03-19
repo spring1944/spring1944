@@ -8,7 +8,7 @@
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
 	yardmap=ooccc ccccc ccccc ccccc ooccc ooccc ooccc;
-
+	collisionvolumetype=ellipsoid;
 	name=Wehrmacht Barracks;
 	description=;
 	maxdamage=5000;

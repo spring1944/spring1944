@@ -9,7 +9,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo oocccoo oocccoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;
-
+	collisionvolumetype=ellipsoid;
 	name=British Army HQ;
 	description=Command Structure;
 	maxdamage=8500;

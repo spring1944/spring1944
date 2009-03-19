@@ -5,7 +5,7 @@
 	corpse=TankObstacle;
 	category=NFLAGNAIR;
 	tedclass=FORT;
-	yardmap=f;
+	yardmap=y;
 
 	name=Tank Obstacle;
 	description=Blocks Vehicles;
@@ -13,8 +13,8 @@
 	buildcostmetal=15;
 	buildcostenergy=0;
 	buildtime=10;
-	footprintx=1;
-	footprintz=1;
+	footprintx=2;
+	footprintz=2;
 
 	hidedamage=1;
 	isfeature=1;

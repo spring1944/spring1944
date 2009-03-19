@@ -9,7 +9,7 @@
 	category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
 	tedclass=PLANT;
 	yardmap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
-
+	collisionvolumetype=ellipsoid;
 	name=Wehrmacht HQ Bunker;
 	description=Command Structure;
 	maxdamage=32000;

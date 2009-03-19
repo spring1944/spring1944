@@ -7,7 +7,7 @@
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
-
+	collisionvolumetype=ellipsoid;
 	name=Light Vehicle Yard;
 	side=GER;
 	maxdamage=5000;

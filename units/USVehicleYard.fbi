@@ -8,7 +8,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
-
+	collisionvolumetype=ellipsoid;
 	name=U.S. Light Ordnance Depot;
 	description=Constructs Light Ordnance/Vehicles;
 	maxdamage=5500;

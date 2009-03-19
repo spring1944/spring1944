@@ -8,7 +8,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooo occo occo oyyo oyyo oyyo;
-
+	collisionvolumetype=ellipsoid;
 	name=US Army HQ;
 	description=Divisional Headquarters;
 	maxdamage=8500;

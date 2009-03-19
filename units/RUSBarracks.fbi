@@ -7,7 +7,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
 	tedclass=PLANT;
 	yardmap=oooooo oooooo ooccoo occcco occcco cccccc cccccc cccccc;
-
+	collisionvolumetype=ellipsoid;
 	name=Barracks;
 	side=RUS;
 	maxdamage=8000;

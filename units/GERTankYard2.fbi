@@ -7,7 +7,7 @@
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
-
+	collisionvolumetype=ellipsoid;
 	name=Tier 3 Tank Depot;
 	side=GER;
 	maxdamage=8000;
