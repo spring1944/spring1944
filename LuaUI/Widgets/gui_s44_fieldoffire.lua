@@ -32,9 +32,16 @@ local mobileLists = {}
 ------------------------------------------------
 --speedups
 ------------------------------------------------
+local FindUnitCmdDesc = Spring.FindUnitCmdDesc
+local GetActiveCommand = Spring.GetActiveCommand
+local GetInvertQueueKey = Spring.GetInvertQueueKey
+local GetModKeyState = Spring.GetModKeyState
+local GetMouseState = Spring.GetMouseState
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
+local GetUnitCommands = Spring.GetUnitCommands
 local GetUnitHeading = Spring.GetUnitHeading
 local GetUnitPosition = Spring.GetUnitPosition
+local TraceScreenRay = Spring.TraceScreenRay
 
 local glLineWidth = gl.LineWidth
 local glColor = gl.Color
@@ -75,11 +82,38 @@ local RAD1 = rad(1)
 --helper functions
 ------------------------------------------------
 
+-- Returns the position the unit will (probably) have when it reached the end
+-- of it's command queue.  Only supports MOVE and FIGHT commands.
+local function GetUnitPositionAtEndOfQueue(unitID)
+	local queue = GetUnitCommands(unitID)
+	if queue then
+		for i=#queue,1,-1 do
+			local cmd = queue[i]
+			if ((cmd.id == CMD.MOVE) or (cmd.id == CMD.FIGHT)) and (#cmd.params >= 3) then
+				return unpack(cmd.params)
+			end
+		end
+	end
+	return GetUnitPosition(unitID)
+end
+
+-- Returns the position the unit will (probably) have when it would start
+-- executing the command which is being given now. (Spring.GetActiveCommand)
+local function GetUnitActiveCommandPosition(unitID)
+	local _, _, _, shift = GetModKeyState()
+	local invertQueueKey = GetInvertQueueKey()
+	if (not invertQueueKey and shift) or (invertQueueKey and not shift) then
+		return GetUnitPositionAtEndOfQueue(unitID)
+	else
+		return GetUnitPosition(unitID)
+	end
+end
+
 local function DrawMobile(maxAngleDif)
 	local vertices = {
 		{v = {0, 0, 0}},
 	}
-	
+
 	local angle = acos(maxAngleDif)
 	local divs = ceil(2 * angle * divsPerRadian)
 	local angleIncrement = 2 * angle / divs
@@ -89,7 +123,7 @@ local function DrawMobile(maxAngleDif)
 		angle = angle - angleIncrement
 		i = i + 1
 	end
-	
+
 	glShape(GL_LINE_LOOP, vertices)
 end
 
@@ -101,19 +135,24 @@ local function DrawStationary(maxAngleDif)
 		{v = {0, 0, 0}},
 		{v = {width, 0, length}},
 	}
-	
+
 	glShape(GL_LINE_STRIP, vertices)
+end
+
+local function DrawFieldOfFire2(x, y, z, list, range, rotation)
+	glPushMatrix()
+		glTranslate(x, y, z)
+		glRotate(rotation, 0, 1, 0)
+		glScale(range, range, range)
+		glCallList(list)
+	glPopMatrix()
 end
 
 local function DrawFieldOfFire(unitID, list, range)
 	local x, y, z = GetUnitPosition(unitID)
-	
-	glPushMatrix()
-		glTranslate(x, y, z)
-		glRotate(vHeadingToDegrees(GetUnitHeading(unitID)), 0, 1, 0)
-		glScale(range, range, range)
-		glCallList(list)
-	glPopMatrix()
+	local rotation = vHeadingToDegrees(GetUnitHeading(unitID))
+
+	return DrawFieldOfFire2(x, y, z, list, range, rotation)
 end
 
 local function GetUnitDefMaxAngleDif(unitDef)
@@ -150,12 +189,12 @@ function widget:Initialize()
 				stationaryLists[maxAngleDif] = list
 			end
 			unitDefInfos[stationaryUnitDefID] = {list, range}
-			
+
 			inUse = true
-			
+
 			--look for mobiles
 			local staticBasename = GetBasename(stationaryUnitDef.name)
-			
+
 			for mobileUnitDefID, mobileUnitDef in ipairs(UnitDefs) do
 				if mobileUnitDef.speed > 0 then
 					local mobileBasename = GetBasename(mobileUnitDef.name)
@@ -171,7 +210,7 @@ function widget:Initialize()
 			end
 		end
 	end
-	
+
 	--remove self if unused
 	if (not inUse) then
 		widgetHandler:RemoveWidget()
@@ -182,7 +221,7 @@ function widget:Shutdown()
 	for _, list in pairs(stationaryLists) do
 		glDeleteList(list)
 	end
-	
+
 	for _, list in pairs(mobileLists) do
 		glDeleteList(list)
 	end
@@ -192,19 +231,42 @@ function widget:DrawWorld()
 	glColor(color)
 	glLineWidth(lineWidth)
 	glDepthTest(false)
-	
+
 	local selectedUnitsSorted = GetSelectedUnitsSorted()
-	
+
+	local tx, tz
+	local cmdID, cmdDescID, cmdDescType, cmdDescName = GetActiveCommand()
+	local inDeployCmd = (cmdDescName == "Deploy")
+
+	if inDeployCmd then
+		--Spring.Echo(cmdID .. "/" .. cmdDescID .. "/" .. cmdDescName)
+		local mx, my = GetMouseState()
+		local what, coors = TraceScreenRay(mx, my, true)
+		if (what == "ground") then
+			tx, tz = coors[1], coors[3]
+		else
+			inDeployCmd = false
+		end
+	end
+
 	for unitDefID, info in pairs(unitDefInfos) do
 		local units = selectedUnitsSorted[unitDefID]
 		if units then
 			for i=1,#units do
 				local unitID = units[i]
-				DrawFieldOfFire(unitID, info[1], info[2])
+				if inDeployCmd and FindUnitCmdDesc(unitID, cmdDescID) then
+					local unitID = units[i]
+					local ux, uy, uz = GetUnitActiveCommandPosition(unitID)
+					local dx, dz = tx - ux, tz - uz
+					local rotation = math.atan2(dx, dz) * (180 / 3.1415)
+					DrawFieldOfFire2(ux, uy, uz, info[1], info[2], rotation)
+				else
+					DrawFieldOfFire(unitID, info[1], info[2])
+				end
 			end
 		end
 	end
-	
+
 	glLineWidth(1)
 	glColor(1, 1, 1, 1)
 end
