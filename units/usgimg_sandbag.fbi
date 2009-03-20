@@ -5,14 +5,14 @@
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
 	soundcategory=USInf;
-	category=NFLAGNAIR NOWEAPON INFTARG BUILDING TURRET NFLAG ;
+	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG ;
 	tedclass=TURRET;
 	yardmap=o;
 
 	name=Light Defensive Position;
-	description=- Directional Infantry area denial;
+	description=- Dug-in Heavy Infantry Fire Support;
 	side=US;
-	maxdamage=1875;
+	maxdamage=2160;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;

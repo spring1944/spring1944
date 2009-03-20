@@ -5,14 +5,14 @@
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
 	soundcategory=GerInf;
-	category=NFLAGNAIR NOWEAPON INFTARG BUILDING TURRET NFLAG ;
+	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG ;
 	tedclass=TURRET;
 	yardmap=o;
 
-	name=Deployed MG34 Heavy Machinegun;
+	name=Deployed MG42 Heavy Machinegun;
 	description=Dug-in Heavy Infantry Fire Support;
-	side=GBR;
-	maxdamage=1875;
+	side=GER;
+	maxdamage=2160;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;

@@ -42,13 +42,13 @@
 	[damage]
 	{
 		default=1;
-		infantry=35;
-		guns=15;
+		infantry=33;
+		guns=30;
 		lightbuildings=1;
 		bunkers=0;
 		sandbags=1;
 		mines=0;
-		flag=0.000000000000001;
+		flag=0.00000001;
 		tanks=0;
 		armouredvehicles=8;
 		unarmouredvehicles=12;
@@ -70,7 +70,7 @@
 	range=660;
 	reloadtime=3;
 	accuracy=200;
-	movingaccuracy=888;
+	movingaccuracy=1800;
 	weaponvelocity=1500;
 	areaofeffect=1;
 	weapontimer=1;
@@ -96,15 +96,15 @@
 	[damage]
 	{
 		default=1;
-		infantry=25.6;
-		guns=15;
+		infantry=33;
+		guns=30;
 		lightbuildings=1;
 		bunkers=0;
 		sandbags=1;
 		mines=0;
-		flags=0;
+		flag=0.00000001;
 		tanks=0;
-		armouredvehicles=12;
-		unarmouredvehicles=15;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 	}
 }

@@ -10,12 +10,12 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=800;
+	range=920;
 	reloadtime=8.5;
 	movingaccuracy=1777;
 	weaponvelocity=1500;
 	areaofeffect=2;
-
+	explosiongenerator=custom:Bullet;
 	soundtrigger=0;
 	soundstart=GBR_Enfield;
 
@@ -37,7 +37,7 @@
 	{
 		default=0;
 		infantry=1900;
-		guns=250;
+		guns=625;
 		lightbuildings=1;
 		mines=0;
 		flag=0;

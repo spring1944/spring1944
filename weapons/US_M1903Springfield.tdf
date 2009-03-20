@@ -10,11 +10,11 @@
 	lineofsight=1;
 	firestarter=0.0;
 	explosiongenerator=custom:Bullet;
-	range=820;
+	range=945;
 	reloadtime=10;
 	sprayangle=0;
 	movingaccuracy=888;
-	weaponvelocity=2000;
+	weaponvelocity=1500;
 	areaofeffect=2;
 
 	soundtrigger=0;
@@ -41,7 +41,7 @@
 	{
 		default=0;
 		infantry=1900;
-		guns=250;
+		guns=625;
 		lightbuildings=1;
 		mines=0;
 		flag=0;

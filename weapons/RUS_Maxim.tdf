@@ -35,17 +35,17 @@
 	impactonly=1;
 	[damage]
 	{
-		default=5;
-		infantry=28;
-		guns=28;
-		lightbuildings=10;
+		default=1;
+		infantry=33;
+		guns=30;
+		lightbuildings=1;
 		bunkers=0;
-		sandbags=5;
+		sandbags=1;
 		mines=0;
-		flag=0.000000000001;
+		flag=0.00000001;
 		tanks=0;
-		armouredvehicles=15;
-		unarmouredvehicles=15;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 		lightplanes=15;
 		mediumplanes=1;
 	}

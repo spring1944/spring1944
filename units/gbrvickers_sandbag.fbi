@@ -12,7 +12,7 @@
 	name=Deployed Vickers Heavy Machinegun;
 	description=Dug-in Heavy Infantry Fire Support;
 	side=GBR;
-	maxdamage=1875;
+	maxdamage=2160;
 	buildcostmetal=645;
 	buildcostenergy=0;
 	buildtime=430;

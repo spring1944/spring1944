@@ -15,39 +15,38 @@
 	burstrate=.0175;
 	sprayangle=530;
 	accuracy=100;
-	areaofeffect=1;
+	areaofeffect=4;
 	movingaccuracy=7111;
-	collisionsize=1.5;
+	collisionsize=3;
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;
 	explosiongenerator=custom:Bullet;
 	soundtrigger=1;
 	soundstart=GER_MG42;
-	impactonly=1;
 	avoidfeature=0;
 	collidefeature=0;
 	avoidfriendly=0;
 	collidefriendly=0;
 	noselfdamage=1;
-
+	edgeeffectiveness=1;
 	rgbcolor=1 0.75 0;
 
 	size=0.000000000001;
 
 	[damage]
 	{
-		default=5;
-		infantry=28;
-		guns=40;
-		lightbuildings=10;
+		default=1;
+		infantry=33;
+		guns=30;
+		lightbuildings=1;
 		bunkers=0;
-		sandbags=5;
+		sandbags=1;
 		mines=0;
-		flag=0.00000000000001;
+		flag=0.00000001;
 		tanks=0;
-		armouredvehicles=12;
-		unarmouredvehicles=15;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 		lightplanes=15;
 		mediumplanes=1;
 	}
@@ -73,9 +72,9 @@
 	reloadtime=2.55;
 	burst=11;
 	burstrate=.0175;
-	sprayangle=460;
+	sprayangle=360;
 	accuracy=100;
-	areaofeffect=1;
+	areaofeffect=4;
 	movingaccuracy=7111;
 	collisionsize=2;
 	weaponvelocity=1500;
@@ -84,7 +83,8 @@
 	explosiongenerator=custom:Bullet;
 	soundtrigger=1;
 	soundstart=GER_MG42;
-
+	
+	edgeeffectiveness=1;
 	avoidfeature=0;
 	collidefeature=0;
 	avoidfriendly=0;
@@ -97,24 +97,24 @@
 
 	[damage]
 	{
-		default=5;
-		infantry=28;
-		guns=40;
-		lightbuildings=10;
+		default=1;
+		infantry=33;
+		guns=30;
+		lightbuildings=1;
 		bunkers=0;
-		sandbags=5;
+		sandbags=1;
 		mines=0;
-		flag=0.00000000000001;
+		flag=0.00000001;
 		tanks=0;
-		armouredvehicles=12;
-		unarmouredvehicles=15;
+		armouredvehicles=8;
+		unarmouredvehicles=12;
 		lightplanes=15;
 		mediumplanes=1;
 	}
 	[customParams]
 	{
 		fearid=301;
-		fearaoe=20;
+		fearaoe=30;
 	}
 }
 [mg42a]

@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=790;
+	range=910;
 	reloadtime=10;
 	movingaccuracy=1777;
 	weaponvelocity=1500;
@@ -36,8 +36,8 @@
 	[damage]
 	{
 		default=0;
-		infantry=1500;
-		guns=250;
+		infantry=1900;
+		guns=625;
 		lightbuildings=1;
 		bunkers=25;
 		sandbags=25;
