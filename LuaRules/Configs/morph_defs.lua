@@ -146,7 +146,7 @@ local morphDefs = {
   {
     into = 'gbrbofors_stationary',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
   },
@@ -164,7 +164,7 @@ local morphDefs = {
   {
     into = 'gerflak38_stationary',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
   },
@@ -239,7 +239,7 @@ local morphDefs = {
   {
     into = 'rus61k_stationary',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
   },
@@ -276,7 +276,7 @@ local morphDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,
@@ -352,7 +352,7 @@ local morphDefs = {
   {
     into = 'usm1bofors_stationary',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
   },
