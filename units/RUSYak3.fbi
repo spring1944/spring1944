@@ -59,7 +59,7 @@
 	wingangle=0.1;
 	drag=0.01;
 	mygravity=1;
-	maxbank=0.09;
+	maxbank=1;
 	maxpitch=0.09;
 	turnradius=2200;
 	maxaileron=0.0044;

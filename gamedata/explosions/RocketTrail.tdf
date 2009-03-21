@@ -25,6 +25,6 @@
 		air=1;
 		water=1;
 		ground=1;
-		count=6;
+		count=8;
 	}
 }
