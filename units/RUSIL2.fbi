@@ -58,7 +58,6 @@
 	//	Flight Stuff
 	wingdrag=0.1;
 	wingangle=0.1;
-	drag=0.01;
 	mygravity=1;
 	maxbank=0.05;
 	maxpitch=0.05;
