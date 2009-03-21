@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=2000;
+	range=2500;
 	reloadtime=.8;
 	burst=6;
 	burstrate=.08;
@@ -20,7 +20,9 @@
 	areaofeffect=1;
 	burnblow=1;
 	weapontimer=1;
-
+	
+	predictboost=0.5;
+	
 	soundtrigger=1;
 	soundstart=GER_15mmAir;
 
@@ -48,9 +50,8 @@
 		flag=0.00000000001;
 		tanks=0;
 		armouredvehicles=30;
-		unarmouredvehicles=45;
-		LightPlanes=40;
-		mediumplanes=7.8;
+		unarmouredvehicles=45; 
+		planes=190;
 	}
 }
 
@@ -66,14 +67,14 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=2000;
+	range=2500;
 	reloadtime=1.25;
 	burst=6;
 	burstrate=0.085;
 	sprayangle=250;
 	//movingaccuracy=7111;
 	weaponvelocity=2000;
-	areaofeffect=24;
+	areaofeffect=30;
 	burnblow=1;
 	weapontimer=1;
 
@@ -107,7 +108,6 @@
 		tanks=50;
 		armouredvehicles=800;
 		unarmouredvehicles=1000;
-		LightPlanes=90;
-		mediumplanes=16;
+		planes=385;
 	}
 }

@@ -47,7 +47,6 @@
 	AirSightDistance=4000;
 	
 	//    Misc
-	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
 	BuildPic=GBRSPitfireMkXIV.png;
 	ExplodeAs=Vehicle_Explosion_Med;
@@ -68,7 +67,7 @@
 	maxelevator=0.005;
 	maxrudder=0.004;
 
-	CruiseAlt=500;
+	cruisealt=1000;
 
 	moverate1=4;//does this tag even work?
 	Maxfuel=120;
@@ -82,6 +81,7 @@
 	seismicsignature=0;
 	shownanoframe=0;
 
+	badtargetcategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
 	//	Weapons
 	weapon1=m2browningamg;
 	onlytargetcategory1=NFLAG;

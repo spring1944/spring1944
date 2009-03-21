@@ -67,7 +67,7 @@
 	maxelevator=0.0036;
 	maxrudder=0.002765;
 
-	CruiseAlt=500;
+	cruisealt=1000;
 
 	moverate1=4;//does this tag even work?
 	Maxfuel=120;

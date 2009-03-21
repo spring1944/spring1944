@@ -21,7 +21,7 @@
 	shownanoframe=0;
 	//unitrestricted=1;
 
-	metalstorage=4000;
+	 
 	energystorage=0;
 
 	sightdistance=146;

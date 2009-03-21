@@ -48,8 +48,7 @@
 		tanks=0;
 		armouredvehicles=25;
 		unarmouredvehicles=40;
-		lightplanes=25;
-		mediumplanes=4.6;
+		planes=110;
 	}
 	[customParams]
 	{
@@ -100,42 +99,7 @@
 		tanks=0;
 		armouredvehicles=25;
 		unarmouredvehicles=40;
-		lightplanes=25;
-		mediumplanes=4.6;
-	}
-}
-[m2browningfear]
-{
-	id=401;
-	name=Supression;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-	interceptedbyshieldtype=32;
-	ballistic=1;
-	firestarter=0;
-
-	range=975;
-	reloadtime=4.5;
-	weaponvelocity=800;
-	areaofeffect=150;
-	edgeeffectiveness=1;
-
-	avoidfeature=0;
-	collidefeature=0;
-	collidefriendly=0;
-	avoidfriendly=0;
-	noselfdamage=1;
-
-	color=255;
-
-	size=0.000001;
-	collisionsize=4;
-
-	[damage]
-	{
-		default=0.0001;
+ 		planes=110;
 	}
 }
 
@@ -151,7 +115,7 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=2000;
+	range=2500;
 	reloadtime=.6;
 	burst=6;
 	burstrate=.085;
@@ -161,6 +125,8 @@
 	areaofeffect=1;
 	burnblow=1;
 	weapontimer=1;
+	
+	predictboost=0.75;
 
 	soundtrigger=1;
 	soundstart=US_50CALAir;
@@ -189,8 +155,7 @@
 		flag=0.00000000001;
 		tanks=0;
 		armouredvehicles=25;
-		unarmouredvehicles=40;
-		LightPlanes=25;
-		mediumplanes=4.6;
+		unarmouredvehicles=40; 
+		planes=110;
 	}
 }

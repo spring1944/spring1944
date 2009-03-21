@@ -132,7 +132,7 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=2000;
+	range=2500;
 	reloadtime=1;
 	burst=3;
 	burstrate=0.085;
@@ -159,6 +159,8 @@
 	//separation=2;
 	//stages=50;
 
+	predictboost=0.5;
+	
 	[damage]
 	{
 		default=20;
@@ -172,7 +174,6 @@
 		tanks=25;
 		armouredvehicles=50;
 		unarmouredvehicles=80;
-		LightPlanes=55;
-		mediumPLanes=11;
+		mediumPLanes=265;
 	}
 }

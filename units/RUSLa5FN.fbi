@@ -46,7 +46,8 @@
 	AirSightDistance=4000;
 	
 	//    Misc
-	BadTargetCategory=NOTAIR;
+		shownanoframe=0;
+	badtargetcategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
 	nochasecategory=FLAG;
 	BuildPic=RUSLa5FN.png;
 	ExplodeAs=Vehicle_Explosion_Med;
@@ -67,7 +68,7 @@
 	maxelevator=0.0043;
 	maxrudder=0.0035;
 
-	CruiseAlt=500;
+	cruisealt=1000;
 
 	moverate1=4;//does this tag even work?
 	Maxfuel=180;

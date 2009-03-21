@@ -23,7 +23,7 @@
 	smoothanim=0;
 
 	metalmake=0;
-	metalstorage=1500;
+	 
 	energystorage=0;
 
 	sightdistance=700;

@@ -203,7 +203,7 @@ buildoptions =
 		--"gersupplytruck",
 		"gersdkfz250",
 		"gersdkfz251",
-		"gersdkfz10",
+		--"gersdkfz10",
 		"germarder",
 	},
 

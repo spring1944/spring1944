@@ -1,11 +1,12 @@
 #define TA			// This is a TA script
 
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
+//#include "sfxtype.h"
+//#include "exptype.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades, bomb;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, fear;
 
 #define SMOKEPUFF_GPL_FX 		1024+0
 #define MG_MUZZLEFLASH			1024+1
@@ -13,7 +14,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 #define MG_SHELLCASINGS 		1024+3
 
 #define SIG_BANK 				2
-
+#define BugOutLevel				10
 #define MEDIUM_TRACER 			2048+4
 #define LARGE_TRACER			2048+5
 
@@ -154,6 +155,7 @@ Create()
 	call-script InitState();
 	start-script SmokeUnit();
 	set 1024 to 0;
+	fear = 0;
 }
 
 Activate()
@@ -169,6 +171,19 @@ Deactivate()
 SweetSpot(piecenum)
 {
 	piecenum = base;
+}
+
+HitByWeaponId(z,x,id,damage)
+{
+fear = fear + 1;
+get PRINT(damage);
+if (fear == BugOutLevel)
+	{
+	var gameFrame;
+	gameFrame = (get GAME_FRAME);
+	emit-sfx bomb from bomb;
+	get WEAPON_RELOADSTATE(1, (gameFrame + 50000000));
+	}
 }
 
 AimFromWeapon1(piecenum) //Coax fear 
@@ -329,7 +344,7 @@ FireWeapon5()
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type BITMAPONLY | BITMAP1;
+	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

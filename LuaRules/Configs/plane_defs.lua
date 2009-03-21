@@ -58,7 +58,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 5000,
+			cost = 4500,
 			delay = 30,
 			units = {
 				"gbrtyphoon",
@@ -90,7 +90,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 3000,
+			cost = 2750,
 			delay = 15,
 			units = {
 				"gerbf109",
@@ -102,7 +102,7 @@ local planeDefs = {
 		{
 			--name = "Air Superiority Fighter",
 			--shortname = "ASF",
-			cost = 3500,
+			cost = 3000,
 			delay = 30,
 			units = {
 				"gerfw190",
@@ -124,8 +124,8 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 5000,
-			delay = 30,
+			cost = 3000,
+			delay = 20,
 			units = {
 				"gerju87g",
 				"gerju87g",
@@ -157,7 +157,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 3000,
+			cost = 2500,
 			delay = 15,
 			units = {
 				"rusyak3",
@@ -213,7 +213,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 3000,
+			cost = 3250,
 			delay = 25,
 			units = {
 				"usp51dmustang",
@@ -235,7 +235,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 5000,
+			cost = 4000,
 			delay = 35,
 			units = {
 				"usp51dmustangga",

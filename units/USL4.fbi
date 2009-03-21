@@ -48,7 +48,7 @@
 	//    Misc
 	BadTargetCategory=NOTAIR;
 	BuildPic=USL4.png;
-	CruiseAlt=160;
+	cruisealt=480;
 	ExplodeAs=Vehicle_Explosion_Med;
 	MaxWaterDepth=0;
 	ExplodeAs=Vehicle_Explosion_Med;

@@ -12,9 +12,9 @@
 	name=Towed 40mm Bofors;
 	description=Anti-Aircraft Gun;
 	maxdamage=550;
-	buildcostmetal=2450;
+	buildcostmetal=1300;
 	buildcostenergy=0;
-	buildtime=700;
+	buildtime=370;
 	footprintx=3;
 	footprintz=3;
 	mass=750;

@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=1750;
+	range=2200;
 	reloadtime=1.1;
 	burst=3;
 	burstrate=0.1;
@@ -20,7 +20,9 @@
 	areaofeffect=1;
 	burnblow=1;
 	weapontimer=1;
-
+	
+	predictboost=0.5;
+	
 	soundtrigger=1;
 	soundstart=GBR_20mmAir;
 
@@ -51,7 +53,6 @@
 		tanks=25;
 		armouredvehicles=50;
 		unarmouredvehicles=80;
-		LightPlanes=100;
-		mediumPlanes=20;
+		planes=480;
 	}
 }

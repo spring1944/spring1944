@@ -21,9 +21,9 @@ static-var iState, iFear, lasthit, aim1, reloading;
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
 #define RELOAD		300 // time in milliseconds between shots
-#define TURR_TRAVERSE	<150>
-#define TURR_ELEVATE	<125>
-#define TURR_ARC		<30>
+#define TURR_TRAVERSE	<265>
+#define TURR_ELEVATE	<220>
+#define TURR_ARC		<35>
 
 // definitions for weapons behaviour
 #define RECOIL		[-1.5] // distance to recoil the gun

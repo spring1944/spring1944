@@ -10,15 +10,15 @@
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.75;
-	range=1500;
+	predictboost=0.9;
+	range=1900;
 	reloadtime=1.5;
 	burst=5;
 	burstrate=0.16;
 	sprayangle=400;
 	weaponvelocity=2000;
-	areaofeffect=8;
-	edgeeffectiveness=0.5;
+	areaofeffect=35;
+	edgeeffectiveness=0.85;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
@@ -53,8 +53,7 @@
 		unarmoredvehicles=480;
 		infantry=200;
 		guns=200;
-		LightPlanes=101;
-		MediumPlanes=101;
+		planes=480;
 	}
 }
 [kwk3020mmhe]
@@ -112,7 +111,7 @@
 		unarmoredvehicles=980;
 		infantry=340;
 		guns=400;
-		LightPlanes=101;
+ 
 		MediumPlanes=101;
 	}
 	[customParams]

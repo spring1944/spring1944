@@ -36,7 +36,7 @@ local options = {
 		type = 'bool',
 		def = true,
 	},
-	{
+	--[[{
     key    = 'maxammo_mult',
     name   = 'Vehicle maxammmo multiplier',
     desc   = 'Applies a multiplier to all the vehicle maxammo values',
@@ -45,7 +45,7 @@ local options = {
     min	   = 0.1,
     max    = 10,
     step   = 0.1,
-  },
+  },]]--
   
     {
 	key    = "gametype",
@@ -189,10 +189,10 @@ local options = {
    {
     key    = 'command_storage',
     name   = 'Fixed Command Storage',
-    desc   = 'Fixes the command storage of all players. 0 to use default storage.',
+    desc   = 'Fixes the command storage of all players.',
     type   = 'number',
-    def    = 0,
-    min    = 0,
+    def    = 5000,
+    min    = 1000,
     max    = 1944000,
     step   = 1000,
   },

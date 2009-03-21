@@ -47,7 +47,6 @@
 		tanks=0;
 		armouredvehicles=8;
 		unarmouredvehicles=12;
-		lightplanes=15;
 		mediumplanes=1;
 	}
 	[customParams]
@@ -108,7 +107,6 @@
 		tanks=0;
 		armouredvehicles=8;
 		unarmouredvehicles=12;
-		lightplanes=15;
 		mediumplanes=1;
 	}
 	[customParams]
@@ -127,7 +125,7 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=1300;
+	range=2030;
 	reloadtime=2.55;
 	burst=7;
 	burstrate=.039;
@@ -216,7 +214,6 @@
 		tanks=0;
 		armouredvehicles=12;
 		unarmouredvehicles=15;
-		lightplanes=15;
-		mediumplanes=1;
+		planes=24;
 	}
 }

@@ -46,7 +46,6 @@
 	AirSightDistance=4000;
 	
 	//    Misc
-	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
 	BuildPic=RUSYak3.png;
 	ExplodeAs=Vehicle_Explosion_Med;
@@ -67,7 +66,7 @@
 	maxelevator=0.0031;
 	maxrudder=0.0023;
 
-	CruiseAlt=500;
+	cruisealt=1000;
 
 	moverate1=4;//does this tag even work?
 	Maxfuel=120;
@@ -80,7 +79,8 @@
 	maneuverleashlength=1280;
 	seismicsignature=0;
 	shownanoframe=0;
-
+	shownanoframe=0;
+	badtargetcategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
 	//	Weapons
 	weapon1=m2browningamg;
 	onlytargetcategory1=NFLAG;

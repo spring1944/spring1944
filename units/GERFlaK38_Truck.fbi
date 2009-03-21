@@ -11,10 +11,10 @@
 
 	name=Towed 2.0cm FlaK 38;
 	description=Anti-Aircraft Gun;
-	maxdamage=500;
-	buildcostmetal=2450;
+	maxdamage=600;
+	buildcostmetal=1050;
 	buildcostenergy=0;
-	buildtime=700;
+	buildtime=300;
 	footprintx=3;
 	footprintz=3;
 	mass=1000;

@@ -12,9 +12,9 @@
 	name=Towed Q.F. 40mm Bofors;
 	description=Anti-Aircraft Gun;
 	maxdamage=600;
-	buildcostmetal=1225;
+	buildcostmetal=1300;
 	buildcostenergy=0;
-	buildtime=350;
+	buildtime=370;
 	footprintx=3;
 	footprintz=3;
 	mass=1000;

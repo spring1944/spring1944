@@ -10,19 +10,21 @@
 	lineofsight=1;
 	firestarter=10;
 	collisionsize=2;
-	range=2000;
+	range=2500;
 	reloadtime=1;
 	burst=3;
 	burstrate=0.085;
 	sprayangle=250;
 	//movingaccuracy=7111;
 	weaponvelocity=2600;
-	areaofeffect=1;
+	areaofeffect=25;
 	//burnblow=1;
 	weapontimer=1;
 
 	soundstart=RUS_20mm;
 
+	predictboost=0.5;
+	
 	rgbcolor=1 0.75 0;
 
 	//beamweapon=1;
@@ -50,7 +52,6 @@
 		tanks=26;
 		armouredvehicles=52;
 		unarmouredvehicles=104;
-		LightPlanes=52;
-		mediumPLanes=26;
+		planes=625;
 	}
 }

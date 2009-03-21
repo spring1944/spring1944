@@ -294,14 +294,11 @@ local armorDefs = {
 		"PontoonRaft",
 	},
 
-	lightPlanes	=	{
+	planes	=	{
 		"GERFi156",
 		"USL4",
 		"RUSPo2",
 		"GBRAuster",
-	},
-	
-	mediumPlanes = {
 		--**Germany**--
 		"GERBf109",
 		"GERFw190",
@@ -322,7 +319,7 @@ local armorDefs = {
 		"GBRSpitfireMkIX",
 		"GBRTyphoon",
 	},
-
+	
 	heavyPlanes	=	{
 		--**Germany**--
 	
