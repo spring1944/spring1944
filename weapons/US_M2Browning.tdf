@@ -35,6 +35,7 @@
 	collisionsize=2.5;
 	canattackground=1;
 	impactonly=1;
+	collisionvolumetest=1;
 	[damage]
 	{
 		default=4.3;
@@ -123,6 +124,8 @@
 	//movingaccuracy=7111;
 	weaponvelocity=3000;
 	areaofeffect=1;
+	impactonly=1;
+	collisionvolumetest=1;
 	burnblow=1;
 	weapontimer=1;
 	

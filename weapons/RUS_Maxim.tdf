@@ -75,6 +75,8 @@
 	sprayangle=350;
 	movingaccuracy=400;
 	areaofeffect=1;
+	impactonly=1;
+	collisionvolumetest=1;
 	weaponvelocity=1500;
 	burnblow=1;
 	weapontimer=1;

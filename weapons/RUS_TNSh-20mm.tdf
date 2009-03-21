@@ -140,6 +140,8 @@
 	//movingaccuracy=7111;
 	weaponvelocity=2600;
 	areaofeffect=1;
+	impactonly=1;
+	collisionvolumetest=1;
 	//burnblow=1;
 	weapontimer=1;
 
