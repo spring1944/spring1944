@@ -4,7 +4,7 @@
 //#include "sfxtype.h"
 //#include "exptype.h"
 
-piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades, bomb;
+piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades, bombemit, bomb;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, fear;
 
@@ -14,7 +14,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, fear;
 #define MG_SHELLCASINGS 		1024+3
 
 #define SIG_BANK 				2
-#define BugOutLevel				10
+#define BugOutLevel				85 //% of health when plane ditches its bombs
 #define MEDIUM_TRACER 			2048+4
 #define LARGE_TRACER			2048+5
 
@@ -173,19 +173,6 @@ SweetSpot(piecenum)
 	piecenum = base;
 }
 
-HitByWeaponId(z,x,id,damage)
-{
-fear = fear + 1;
-get PRINT(damage);
-if (fear == BugOutLevel)
-	{
-	var gameFrame;
-	gameFrame = (get GAME_FRAME);
-	emit-sfx bomb from bomb;
-	get WEAPON_RELOADSTATE(1, (gameFrame + 50000000));
-	}
-}
-
 AimFromWeapon1(piecenum) //Coax fear 
 {
 	piecenum = fuselage;
@@ -199,6 +186,20 @@ QueryWeapon1(piecenum)
 AimWeapon1(heading, pitch)
 {
 	return (1);
+}
+
+HitByWeaponId(z,x,id,damage)
+{
+if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < get (GAME_FRAME) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-1, 100);
+	emit-sfx 2048 from bombemit;
+	hide bomb;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
+	}
+return (100);
 }
 
 FireWeapon1()

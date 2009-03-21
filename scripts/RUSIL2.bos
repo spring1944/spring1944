@@ -1,10 +1,9 @@
 #define TA			// This is a TA script
 
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, blades, door1a, door1b, door2a, door2b;
-piece mg1, mg2, cannon1, cannon2, turret, machinegun, mgflare, bomb1, bomb2;
+piece mg1, mg2, cannon1, cannon2, turret, machinegun, mgflare, bomb1, bomb2, bombemit1, bombemit2;
 piece rocket1, rocket2, rocket3, rocket4, rocketexhaust1, rocketexhaust2, rocketexhaust3, rocketexhaust4;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
@@ -17,7 +16,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 #define SIG_BANK			2
 #define SIG_AIM				4
-
+#define BugOutLevel			85 //% of health when the pilot drops bombs for more speed
 //tracers
 #define SMALL_TRACER 	2048+8
 #define MEDIUM_TRACER 	2048+9
@@ -382,6 +381,21 @@ FireWeapon7()
 	return (0);
 }
 
+HitByWeaponId(z,x,id,damage)
+{
+if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (7)) < get (GAME_FRAME) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-7, 100);
+	emit-sfx 2048+7 from bombemit1;
+	hide bomb1;
+	hide bomb2;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-7, (gameFrame+108000));
+	}
+return (100);
+}
+
 AimFromWeapon8(piecenum)
 {
 	piecenum = turret;
@@ -436,7 +450,7 @@ FireWeapon8()
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type BITMAPONLY | BITMAP1;
+	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

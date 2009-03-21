@@ -10,7 +10,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.9;
+	predictboost=0.75;
 	range=1900;
 	reloadtime=1.5;
 	burst=5;
@@ -18,7 +18,7 @@
 	sprayangle=400;
 	weaponvelocity=2000;
 	areaofeffect=35;
-	edgeeffectiveness=0.85;
+	edgeeffectiveness=0.15;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
