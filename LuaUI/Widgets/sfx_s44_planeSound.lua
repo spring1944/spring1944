@@ -1,4 +1,4 @@
-local versionNumber = "v1.0"
+local versionNumber = "v1.1"
 
 function widget:GetInfo()
 	return {
@@ -65,7 +65,7 @@ function widget:Update(dt)
 			if times[unitID] then
 				times[unitID] = times[unitID] + dt
 			else
-				times[unitID] = math.fmod(unitID * PI, updatePeriod)
+				times[unitID] = (unitID * PI) % updatePeriod
 			end
 			
 			if times[unitID] > updatePeriod then
