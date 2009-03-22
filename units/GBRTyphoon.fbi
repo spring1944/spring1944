@@ -130,7 +130,7 @@
 	{
 		proptexture = bitmaps/prop3.tga;
 		enginesound = spitfireb-;
-		enginesoundnr = 16;
+		enginesoundnr = 18;
 		maxammo=8;
 		weaponswithammo=2;
 		lowammolevel=1;
