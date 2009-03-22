@@ -28,7 +28,7 @@
 	stealth=1;
 
 	builder=1;
-	builddistance=100;
+	builddistance=128;
 	workertime=10; //old 130
 	terraformspeed=300;
 	shownanospray=0;

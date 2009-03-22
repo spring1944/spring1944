@@ -27,7 +27,7 @@
 	stealth=1;
 
 	builder=1;
-	builddistance=100;
+	builddistance=128;
 	workertime=10;//130
 	terraformspeed=300;
 	shownanospray=0;
@@ -35,7 +35,7 @@
 	canmove=1;
 	movementclass=TANK_Truck;
 	maxvelocity=3.4;
-	acceleration=0.01;
+	acceleration=0.25;
 	brakerate=0.6;
 	turnrate=180;
 	maxslope=2;

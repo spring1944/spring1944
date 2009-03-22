@@ -26,7 +26,7 @@
 	stealth=1;
 
 	builder=1;
-	builddistance=100;
+	builddistance=128;
 	workertime=10;//140
 	terraformspeed=300;
 	shownanospray=0;
@@ -34,7 +34,7 @@
 	canmove=1;
 	movementclass=TANK_Medium;
 	maxvelocity=3;
-	acceleration=0.065;
+	acceleration=0.25;
 	brakerate=0.195;
 	turnrate=180;
 	maxslope=10;
