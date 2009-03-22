@@ -49,6 +49,8 @@ local vClampToMapSize = GG.Vector.ClampToMapSize
 local vNearestMapEdge = GG.Vector.NearestMapEdge
 local vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
 
+local DelayCall = GG.Delay.DelayCall
+
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
 local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
@@ -71,9 +73,6 @@ local planeCmdIDs = {}
 
 --unitID = state
 local planeStates = {}
-
---framenum = {sorties}
-local orderedSorties = {}
 
 local currCmdID = CMD_PLANES
 
@@ -219,7 +218,7 @@ local function GetFormationOffsets(numUnits, rotation)
 	return result
 end
 
-local function SpawnFlight(teamID, units, sx, sy, sz, cmdParams)
+local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 	local tx, ty, tz
 	if #cmdParams == 1 then
 		tx, ty, tz = GetUnitPosition(cmdParams[1])
@@ -255,6 +254,8 @@ local function SpawnFlight(teamID, units, sx, sy, sz, cmdParams)
 			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation)
 		end
 	end
+	
+	SendMessageToTeam(teamID, name .. " sortie arrived.")
 end
 
 local function GetSpawnPoint(teamID, numPlanes)
@@ -296,21 +297,8 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		--?
 	else
 		if UseUnitResource(unitID, "m", sortie.cost) then
-			local delay = (sortie.delay or 0) * 30
-			if delay < 1 then
-				delay = 1
-			end
-			local targetFrame = GetGameFrame() + delay
-			if not orderedSorties[targetFrame] then
-				orderedSorties[targetFrame] = {}
-			end
-			
-			orderedSorties[targetFrame][#orderedSorties+1] = {
-				sortie,
-				teamID,
-				cmdParams, 
-			}
-			
+			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
+			DelayCall(SpawnFlight, {teamID, sortie.name, sortie.units, sx, sy, sz, cmdParams}, sortie.delay * 30)
 			SendMessageToTeam(teamID, sortie.name .. " sortie ordered. ETE " .. (sortie.delay or 0) .. "s.")
 		else
 			SendMessageToTeam(teamID, "Not enough command to order " .. sortie.name .. " sortie!")
@@ -321,20 +309,6 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 end
 
 function gadget:GameFrame(n)
-	local sortiesThisFrame = orderedSorties[n]
-	if sortiesThisFrame then
-		for i=1, #sortiesThisFrame do
-			local info = sortiesThisFrame[i]
-			local sortie = info[1]
-			local teamID = info[2]
-			local cmdParams = info[3]
-			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
-			SpawnFlight(teamID, sortie.units, sx, sy, sz, cmdParams)
-			SendMessageToTeam(teamID, sortie.name .. " sortie arrived.")
-		end
-		orderedSorties[n] = nil --don't need this information anymore
-	end
-	
 	for unitID, state in pairs(planeStates) do
 		local unitDefID = GetUnitDefID(unitID)
 		local unitDef = UnitDefs[unitDefID]
