@@ -1,33 +1,6 @@
 [HE_XSmall] {
 	usedefaultexplosions=0;
 	
-	[airsmoke] {
-		class=CSimpleParticleSystem;
-		[properties]{
-			sizeGrowth=1 r1;
-			sizeMod=0.75;
-			pos=0, 0, 0;
-			emitVector=0, 1, 0;
-			gravity=0, 0, 0;
-			colorMap=0.125 0.125 0.125 1  0 0 0 0;
-			Texture=smokesmall;
-			airdrag=0.75;
-			particleLife=24;
-			particleLifeSpread=8;
-			numParticles=1;
-			particleSpeed=0.5;
-			particleSpeedSpread=0.25;
-			particleSize=1;
-			particleSizeSpread=0;
-			emitRot=0;
-			emitRotSpread=180;
-			directional=1;
-			alwaysVisible=0;
-		}
-		air=1;
-		count=1;
-	}
-	
 	[dust]{
 		class = CBitmapMuzzleFlame;  
 		[properties]{

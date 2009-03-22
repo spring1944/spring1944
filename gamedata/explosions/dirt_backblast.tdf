@@ -1,0 +1,31 @@
+[dirt_backblast] {
+	usedefaultexplosions=0;
+	[dirt] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=1 r1;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=0.25 0.2 0.15 0.5  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.95;
+			particleLife=32;
+			particleLifeSpread=16;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=8;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=180;
+			emitRotSpread=15;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=16;
+	}
+}

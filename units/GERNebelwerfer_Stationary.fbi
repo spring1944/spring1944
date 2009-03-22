@@ -62,6 +62,7 @@
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
+		explosiongenerator8=custom:dirt_backblast;
 	}
 
 	[customParams]

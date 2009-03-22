@@ -1,6 +1,6 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece base, carriage, tubes, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6;
+piece base, carriage, backblast, tubes, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
 static-var bAiming, DecreasingFear, fear, IsProne, PickDeath, IsPinned, lasthit, rocket;
@@ -240,6 +240,7 @@ FireWeapon1()
 
 Shot1(something)
 {
+	emit-sfx 1032 from backblast;
 	rocket = rocket + 1;
 }
 
