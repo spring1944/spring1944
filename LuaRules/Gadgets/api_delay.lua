@@ -27,11 +27,11 @@ local floor = math.floor
 
 local currentFrame = 0
 
---index = {call, call...}
+--frameNumber = {call, call...}
 local calls = {}
 
 local function DelayCall(f, args, delay)
-	if delay < 1 then
+	if not delay or delay < 1 then
 		delay = 1
 	else
 		delay = floor(delay)
