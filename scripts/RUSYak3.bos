@@ -3,7 +3,7 @@
 #include "sfxtype.h"
 #include "exptype.h"
 
-piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, blades;
+piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon, blades;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
@@ -256,7 +256,7 @@ AimFromWeapon3(piecenum) //Coax fear
 
 QueryWeapon3(piecenum)
 {
-	piecenum = cannon1;
+	piecenum = cannon;
 }
 
 AimWeapon3(heading, pitch)
@@ -266,12 +266,12 @@ AimWeapon3(heading, pitch)
 
 FireWeapon3()
 {
-	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon;
 	sleep 67;
-	emit-sfx LARGE_TRACER from cannon1;
-	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	emit-sfx LARGE_TRACER from cannon;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon;
 	sleep 67;
-	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon;
 	sleep 67;
 	return (0);
 }

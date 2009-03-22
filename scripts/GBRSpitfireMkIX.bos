@@ -190,7 +190,7 @@ AimWeapon1(heading, pitch)
 
 HitByWeaponId(z,x,id,damage)
 {
-if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < get (GAME_FRAME) + 1))
+if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
 	{
 	get WEAPON_PROJECTILE_SPEED (-1, 100);
 	emit-sfx 2048 from bombemit;
