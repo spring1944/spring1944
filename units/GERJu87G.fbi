@@ -104,13 +104,8 @@
 	weaponslaveto4=3;
 	onlytargetcategory4=AIR;
 
-	weapon5=mg42fear;
-	onlytargetcategory5=NFLAGNAIR;
-	weaponmaindir5=0 1 0;
-	maxangledif5=5;
-	
-	weapon6=Small_Tracer;	
-	weapon7=Large_Tracer;
+	weapon5=Small_Tracer;	
+	weapon6=Large_Tracer;
 
 	[sfxtypes]
 	{

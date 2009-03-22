@@ -15,10 +15,10 @@
 	reloadtime=1.5;
 	burst=5;
 	burstrate=0.16;
-	sprayangle=450;
+	sprayangle=475;
 	weaponvelocity=2000;
-	areaofeffect=28;
-	edgeeffectiveness=0.1;
+	areaofeffect=35;
+	edgeeffectiveness=0.2;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
