@@ -300,6 +300,12 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 			local sx, sy, sz = GetSpawnPoint(teamID, #(sortie.units))
 			DelayCall(SpawnFlight, {teamID, sortie.name, sortie.units, sx, sy, sz, cmdParams}, sortie.delay * 30)
 			SendMessageToTeam(teamID, sortie.name .. " sortie ordered. ETE " .. (sortie.delay or 0) .. "s.")
+			local _, _, _, _, _, allyTeam = Spring.GetTeamInfo(teamID)
+			for _, alliance in ipairs(Spring.GetAllyTeamList()) do
+				if alliance ~= allyTeam and sortie.name ~= "Recon Plane" then
+					Spring.SendMessageToAllyTeam(alliance, "Incoming Enemy Aircraft Spotted, arriving in 15-45 seconds")
+				end
+			end
 		else
 			SendMessageToTeam(teamID, "Not enough command to order " .. sortie.name .. " sortie!")
 		end
