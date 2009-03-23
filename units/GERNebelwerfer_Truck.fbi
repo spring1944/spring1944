@@ -12,7 +12,7 @@
 	name=Towed 15 cm Nebelwerfer 41;
 	description=- Stationary Rocket Artillery;
 	maxdamage=500;
-	buildcostmetal=3430;
+	buildcostmetal=4900;
 	buildcostenergy=0;
 	buildtime=980;
 	footprintx=3;

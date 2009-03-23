@@ -60,6 +60,7 @@ buildoptions =
 	{
 		"usvehicleyard",
 		"usgunyard",
+		"usradar",
 		--"uscp",
 --		"usflag",
 		"usstorage",
@@ -97,12 +98,12 @@ buildoptions =
 		"usbarracks",
 		"usgunyard",
 		"usvehicleyard",
+		"usradar",
 		--"usspyard",
 		"ustankyard",
 		"usstorage",
 		"ussupplydepot",
 		"tankobstacle",
-		"usradar",
 	},
 
 	ustankyard =
@@ -186,6 +187,7 @@ buildoptions =
 		"gervehicleyard",
 		"gerbarracks",
 		"gergunyard",
+		"gerradar",
 --		"gerflag",
 		"gerstorage",
 		"atminesign",
@@ -223,13 +225,13 @@ buildoptions =
 		"gerbarracks",
 		"gergunyard",
 		"gervehicleyard",
+		"gerradar",
 		--"gerspyard",
 		"gertankyard",
 		--"gerairfield",
 		"gerstorage",
 		"gersupplydepot",
 		"tankobstacle",
-		"gerradar",
 	},
 
 	gertankyard =
@@ -353,6 +355,7 @@ buildoptions =
 	{
 		"gbrvehicleyard",
 		"gbrgunyard",
+		"gbrradar",
 --		"gbrflag",
 		"gbrstorage",
 		"atminesign",
@@ -380,13 +383,13 @@ buildoptions =
 		"gbrbarracks",
 		"gbrgunyard",
 		"gbrvehicleyard",
+		"gbrradar",
 		--"gbrspyard",
 		"gbrtankyard",
 		--"gbrairfield",
 		"gbrstorage",
 		"gbrsupplydepot",
-		"tankobstacle",
-		"gbrradar",
+		"tankobstacle",		
 	},
 
 	gbrtankyard =
@@ -476,6 +479,7 @@ buildoptions =
 	{
 		"rusvehicleyard",
 		"rusgunyard",
+		"rusradar",
 --		"rusflag",
 		--"rusresource",
 		"ruszis5",
@@ -511,13 +515,13 @@ buildoptions =
 		"rusbarracks",
 		"rusgunyard",
 		"rusvehicleyard",
+		"rusradar",
 		--"russpyard",
 		"rustankyard",
 		--"rusairfield",
 		"russtorage",
 		"russupplydepot",
-		"tankobstacle",
-		"rusradar",
+		"tankobstacle",		
 	},
 
 	rusvehicleyard =

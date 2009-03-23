@@ -12,9 +12,9 @@
 	name=Towed 3-Inch M5;
 	description=Anti-Tank Gun;
 	maxdamage=550;
-	buildcostmetal=1225;
+	buildcostmetal=1500;
 	buildcostenergy=0;
-	buildtime=350;
+	buildtime=300;
 	footprintx=3;
 	footprintz=3;
 	mass=750;

@@ -12,7 +12,7 @@
 	name=Towed 7.5cm PaK 40;
 	description=Anti-Tank Gun;
 	maxdamage=500;
-	buildcostmetal=1225;
+	buildcostmetal=1750;
 	buildcostenergy=0;
 	buildtime=350;
 	footprintx=3;

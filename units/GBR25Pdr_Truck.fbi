@@ -12,7 +12,7 @@
 	name=Towed Q.F. 25 Pounder;
 	description=Light Howitzer;
 	maxdamage=600;
-	buildcostmetal=2450;
+	buildcostmetal=3500;
 	buildcostenergy=0;
 	buildtime=700;
 	footprintx=3;

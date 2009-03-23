@@ -12,7 +12,7 @@
 	name=Towed 105mm M2;
 	description=Light Howitzer;
 	maxdamage=550;
-	buildcostmetal=2450;
+	buildcostmetal=3500;
 	buildcostenergy=0;
 	buildtime=700;
 	footprintx=3;

@@ -49,7 +49,7 @@
 	weapon1=17pdrap;
 	onlytargetcategory1=TANK;
 	weaponmaindir1=0 0 1;
-	maxangledif1=60;
+	maxangledif1=50;
 	
 	[sfxtypes]
 	{

@@ -9,7 +9,7 @@
 	tedclass=TURRET;
 	yardmap=o;
 
-	name=Deployed Vickers Heavy Machinegun;
+	name=Deployed Maxim Heavy Machinegun;
 	description=- Dug-in Heavy Infantry Fire Support;
 	side=RUS;
 	maxdamage=2160;

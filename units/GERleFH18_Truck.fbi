@@ -12,7 +12,7 @@
 	name=Towed 10.5cm leFH 18;
 	description=Light Howitzer;
 	maxdamage=500;
-	buildcostmetal=2450;
+	buildcostmetal=3500;
 	buildcostenergy=0;
 	buildtime=700;
 	footprintx=3;
