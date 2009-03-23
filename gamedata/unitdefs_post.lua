@@ -20,7 +20,7 @@ local function disableunits(unitlist)
 	          end
 	        end
 	      end
-	    end	
+	    end
 	end
 end
 
@@ -52,15 +52,15 @@ if (modOptions and (modOptions.gametype == "1")) then
   end
 end
 
-	--[[if (modOptions.unit_los_mult) then
+	--[[if (modOptions and modOptions.unit_los_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.sightdistance) then
 			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
 			end
 		end
 	end]]--
-	
-	if (modOptions.maxammo_mult) then
+
+	if (modOptions and modOptions.maxammo_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.maxammo) and (ud.weapons) then
@@ -69,7 +69,7 @@ end
 			end
 		end
 	end
-	
+
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then
@@ -77,8 +77,8 @@ end
 				end
 			end
 		end
-		
-	if (modOptions.logistics_mult) then
+
+	if (modOptions and modOptions.logistics_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.arrivalgap) then
@@ -95,8 +95,8 @@ end
 			end
 		end
 	end
-	
-	--[[if (modOptions.unit_speed_mult) then
+
+	--[[if (modOptions and modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.maxvelocity) then
 			ud.maxvelocity = (modOptions.unit_speed_mult * ud.maxvelocity)
@@ -104,8 +104,8 @@ end
 			end
 		end
 	end]]--
-	
-	if (modOptions.command_mult) then
+
+	if (modOptions and modOptions.command_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.extractsmetal) then
 				if (modOptions.command_mult == '0') then --Very Low Command
@@ -126,52 +126,51 @@ end
 			end
 		end
 	end
-	
-	--[[if (modOptions.unit_metal_mult) then
+
+	--[[if (modOptions and modOptions.unit_metal_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.extractsmetal) then
 			ud.extractsmetal = (modOptions.unit_metal_mult * ud.extractsmetal)
 			end
 		end
 	end]]--
-	
-	if modOptions.command_storage and tonumber(modOptions.command_storage) > 0 then
+
+	if (modOptions and modOptions.command_storage and (tonumber(modOptions.command_storage) > 0)) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.metalstorage) then
 				ud.metalstorage = 0
 			end
 		end
 	end
-	
+
 --[[
-	if (modOptions.unit_buildable_airfields == 0) then
+	if (modOptions and (modOptions.unit_buildable_airfields == 0)) then
 		disableunits({usairfield", "gbrairfield", "gerairfield", "RUSAirfield"})
 	end
 
-	if (modOptions.unit_hq_platoon == 1) then
+	if (modOptions and (modOptions.unit_hq_platoon == 1)) then
 		disableunits({"us_platoon_hq", "us_platoon_rifle", "us_platoon_assault", "gbr_platoon_hq", "gbr_platoon_rifle", "gbr_platoon_assault", "ger_platoon_hq", "ger_platoon_rifle", "ger_platoon_assault", "rus_platoon_rifle", "rus_platoon_assault"})
 	end
 
-	if (modOptions.unit_hq_platoon == 0) then
+	if (modOptions and (modOptions.unit_hq_platoon == 0)) then
 		disableunits({"us_platoon_hq_rifle", "us_platoon_hq_assault", "gbr_platoon_hq_rifle", "gbr_platoon_hq_assault", "ger_platoon_hq_rifle", "ger_platoon_hq_assault", "rus_platoon_big_rifle", "rus_platoon_big_assault"})
 	end
-	
-	
-if modOptions and (unit_buildable_airfields == 1) then
+
+
+if (modOptions and (unit_buildable_airfields == 1)) then
 	        for name, ud in pairs(UnitDefs) do
 	            local unitname = ud.unitname
 	                if unitname == "USgmcengvehicle" then
 	                    table.insert(ud.buildoptions, 1, "usairfield")
-	                end    
+	                end
 					if unitname == "rusk31" then
 	                    table.insert(ud.buildoptions, 1, "rusairfield")
-	                end  
+	                end
 					if unitname == "gersdkfz9" then
 	                    table.insert(ud.buildoptions, 1, "gerairfield")
-	                end  
+	                end
 					if unitname == "GBRMatadorEngVehicle" then
 	                    table.insert(ud.buildoptions, 1, "GBRAirfield")
-	                end  
+	                end
             end
 end]]--
-	
