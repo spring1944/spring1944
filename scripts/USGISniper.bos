@@ -25,9 +25,10 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 
 //individual unit definitions
 #define SNIPER
+#define NoAimRun
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000
-#define RestoreDelay			0
+#define RestoreDelay			100
 #define StanceNumber			3 //number of WeaponReady stances
 #define BurstRate				50 //marginally less than the actual so there's visible movement
 
