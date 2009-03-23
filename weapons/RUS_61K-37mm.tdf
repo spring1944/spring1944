@@ -30,7 +30,7 @@
 
 	intensity=0.9;
 
-	collisionsize=9.25;
+	collisionsize=2;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.2;
