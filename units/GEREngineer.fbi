@@ -21,6 +21,9 @@
 
 	upright=1;
 	shownanoframe=0;
+	
+	
+	energystorage=0.01;
 
 	SeismicSignature=0;
 	sightdistance=500;

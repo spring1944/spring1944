@@ -29,7 +29,7 @@
 	sightdistance=840;
 	stealth=1;
 	metalstorage=5;
-	energystorage=15;
+	energystorage=0.01;
 
 	builder=1;
 	builddistance=5;

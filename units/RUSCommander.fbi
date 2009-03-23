@@ -24,7 +24,7 @@
 	upright=1;
 	shownanoframe=0;
 
-	energystorage=1000;
+	energystorage=0.01;
 	//radardistance=2000000;
 	seismicsignature=0;
 	sightdistance=840;

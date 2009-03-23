@@ -18,6 +18,8 @@
 	buildtime=80000;
 	footprintx=10;
 	footprintz=10;
+	
+	energystorage=0.01;
 
 	commander=1;
 	showplayername=1;

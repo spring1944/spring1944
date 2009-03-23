@@ -24,7 +24,7 @@
 
 	metalmake=0;
 	 
-	energystorage=0;
+	energystorage=0.01;
 
 	sightdistance=700;
 	stealth=1;
