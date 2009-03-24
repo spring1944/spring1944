@@ -46,7 +46,7 @@ local options =
     step   = 10,  -- quantization is aligned to the def value
                     -- (step <= 0) means that there is no quantization
   },
-  {
+  --[[{
     key    = 'StartEnergy',
     name   = 'Starting Logistics',
     desc   = 'Sets the starting Logistics level for all players',
@@ -57,7 +57,7 @@ local options =
     max    = 50000,
     step   = 10,  -- quantization is aligned to the def value
                     -- (step <= 0) means that there is no quantization
-  },
+  },]]--
   
   {
     key    = 'MaxUnits',

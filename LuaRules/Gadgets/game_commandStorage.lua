@@ -23,7 +23,7 @@ function gadget:GameFrame(n)
 			local teamIDs = Spring.GetTeamList()
 			for i=1, #teamIDs do
 				local teamID = teamIDs[i]
-				SetTeamResource(teamID, "es", 1250) --ugly, but effective for now
+				SetTeamResource(teamID, "es", 1251) --ugly, but effective for now
 				local _, currStorage = GetTeamResources(teamID, "metal")
 				if commandStorage > currStorage then
 					SetTeamResource(teamID, "ms", commandStorage)
