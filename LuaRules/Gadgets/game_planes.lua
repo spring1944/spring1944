@@ -31,7 +31,10 @@ local SetUnitPosition = Spring.SetUnitPosition
 local SetUnitRotation = Spring.SetUnitRotation
 local SetUnitVelocity = Spring.SetUnitVelocity
 local SetUnitNoSelect = Spring.SetUnitNoSelect
+local GetTeamResources = Spring.GetTeamResources
 local GetTeamStartPosition = Spring.GetTeamStartPosition
+local GetUnitCmdDescs = Spring.GetUnitCmdDescs
+local EditUnitCmdDesc = Spring.EditUnitCmdDesc
 local InsertUnitCmdDesc = Spring.InsertUnitCmdDesc
 local UseUnitResource = Spring.UseUnitResource
 local GetUnitFuel = Spring.GetUnitFuel
@@ -74,6 +77,9 @@ local planeCmdIDs = {}
 --unitID = state
 local planeStates = {}
 
+--set of unitIDs
+local radioTowers = {}
+
 local currCmdID = CMD_PLANES
 
 local function GetDefaultName(sortie)
@@ -88,7 +94,7 @@ local function GetDefaultTexture(sortie)
 	local unitname = sortie.units[1]
 	local unitDef = UnitDefNames[unitname]
 	if not unitDef then return end
-	
+
 	return "unitpics/" .. unitDef.buildpicname
 end
 
@@ -107,14 +113,14 @@ local function GetDefaultTooltip(sortie)
 		else
 			duration = nil
 		end
-		
+
 		if planeList[planeName] then
 			planeList[planeName] = planeList[planeName] + 1
 		else
 			planeList[planeName] = 1
 		end
 	end
-	
+
 	local planeString = ""
 	local notFirst = false
 	for planeName, count in pairs(planeList) do
@@ -125,12 +131,12 @@ local function GetDefaultTooltip(sortie)
 		end
 		planeString = planeString .. count .. "x " .. planeName
 	end
-	
+
 	local result = "Order " .. sortie.name .. " Sortie (" .. planeString .. ")\n"
 		.. "Command Cost " .. sortie.cost .. "\n"
 		.. "Delay " .. (sortie.delay or 0) .. "s\n"
 		.. "Duration " .. (duration or "Permanent") .. "s"
-	
+
 	return result
 end
 
@@ -143,11 +149,11 @@ local function BuildCmdDesc(sortie)
 		tooltip = sortie.tooltip or GetDefaultTooltip(sortie),
 		texture = sortie.texture or GetDefaultTexture(sortie),
 	}
-	
+
 	planeCmdIDs[currCmdID] = sortie
-	
-	currCmdID = currCmdID + 1 
-	
+
+	currCmdID = currCmdID + 1
+
 	return result
 end
 
@@ -167,7 +173,7 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	if #cmdParams == 3 then
 		cmdParams[1], cmdParams[2], cmdParams[3] = vClampToMapSize(cmdParams[1], cmdParams[2], cmdParams[3])
 	end
-	
+
 	local unitDef = UnitDefNames[unitname]
 	--local speed = unitDef.speed / 30
 	local drag = unitDef.drag
@@ -208,13 +214,13 @@ local function GetFormationOffsets(numUnits, rotation)
 			i = i + 1
 			pairNum = pairNum + 1
 			if i > numUnits then break end
-			
+
 			result[i] = {vRotateY(DIAG_FORMATION_SEPARATION * pairNum, 0, -DIAG_FORMATION_SEPARATION * pairNum, rotation)}
 			i = i + 1
 			if i > numUnits then break end
 		end
 	end
-	
+
 	return result
 end
 
@@ -229,10 +235,10 @@ local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 	else
 		tx, ty, tz = cmdParams[1], cmdParams[2], cmdParams[3]
 	end
-	
+
 	local dx, dy, dz, dist = vNormalized(tx - sx, 0, tz - sz)
 	local rotation = atan2(dx, dz)
-	
+
 	local offsets = GetFormationOffsets(#units, rotation)
 	if dist >= PATROL_DISTANCE then
 		local wbx, wbz = sx + (dist - PATROL_DISTANCE) * dx, sz + (dist - PATROL_DISTANCE) * dz
@@ -254,7 +260,7 @@ local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation)
 		end
 	end
-	
+
 	SendMessageToTeam(teamID, name .. " sortie arrived.")
 end
 
@@ -273,8 +279,9 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local unitDef = UnitDefs[unitDefID]
 	local unitDefName = unitDef.name
 	local sorties = planeDefs[unitDefName]
-	
+
 	if not sorties then return end
+	radioTowers[unitID] = true
 	for i=1,#sorties do
 		InsertUnitCmdDesc(unitID, sorties[i].cmdDesc)
 	end
@@ -285,14 +292,14 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 	if planeState == PLANE_STATE_RETREAT or (planeState and cmdID == CMD_IDLEMODE) then
 		return false
 	end
-	
+
 	local sortie = planeCmdIDs[cmdID]
 	if not sortie then
 		return true
 	end
-	
+
 	local _, _, inBuild = GetUnitIsStunned(unitID)
-	
+
 	if inBuild then
 		--?
 	else
@@ -310,7 +317,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 			SendMessageToTeam(teamID, "Not enough command to order " .. sortie.name .. " sortie!")
 		end
 	end
-	
+
 	return false
 end
 
@@ -333,9 +340,25 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
+	if n % 11 < 0.1 then
+		for unitID, _ in pairs(radioTowers) do
+			local cmdDescs = GetUnitCmdDescs(unitID)
+			local teamID = GetUnitTeam(unitID)
+			local command = GetTeamResources(teamID, "metal")
+			for i,cd in ipairs(cmdDescs) do
+				local sortie = planeCmdIDs[cd.id]
+				if sortie then
+					local disabled = (command < sortie.cost)
+					if disabled ~= cd.disabled then
+						EditUnitCmdDesc(unitID, i, { disabled = disabled })
+					end
+				end
+			end
+		end
+	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	planeStates[unitID] = nil
+	radioTowers[unitID] = nil
 end
-
