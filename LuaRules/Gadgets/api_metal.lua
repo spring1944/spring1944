@@ -13,7 +13,7 @@ function luaType:GetInfo()
 		date      = "21 March 2008",
 		license   = "GNU LGPL, v2.1 or later",
 		layer     = -10000,
-		enabled   = false  --  loaded by default?
+		enabled   = true  --  loaded by default?
 	}
 end
 
@@ -28,8 +28,6 @@ local METAL_MAP_SQUARE_SIZE = 16
 local totalMetal = 0
 local maxMetal = 0
 local minMetal
-
-local lasttime = os.clock()
 
 for x = METAL_MAP_SQUARE_SIZE * 0.5, MAP_SIZE_X, METAL_MAP_SQUARE_SIZE do
 	for z = METAL_MAP_SQUARE_SIZE * 0.5, MAP_SIZE_Z, METAL_MAP_SQUARE_SIZE do

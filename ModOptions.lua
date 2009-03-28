@@ -196,6 +196,17 @@ local options = {
     max    = 1944000,
     step   = 1000,
   },
+  
+  {
+    key    = 'map_command_per_player',
+    name   = 'Map Command Per Player',
+    desc   = 'Sets the total command on the map to some number per player (negative to disable).',
+    type   = 'number',
+    def    = -10,
+    min    = -10,
+    max    = 1000,
+    step   = 10,
+  },
 
 
 	--[[{
