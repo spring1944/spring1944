@@ -77,7 +77,7 @@ function widget:DrawWorld()
 					glPushMatrix()
 						glUnitPieceMultMatrix(unitID, propeller)
 						if not rotations[unitID] then
-							rotations[unitID] = unitID * 91
+							rotations[unitID] = unitID * 97
 						end
 						glRotate(rotations[unitID], 0, 0, 1)
 						glTexRect(-size, -size, size, size)

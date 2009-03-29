@@ -8,7 +8,7 @@
 
 	lineofsight=1;
 	firestarter=100;
-	explosiongenerator=custom:Weapon_Explosion_Flamethrower;
+	explosiongenerator=custom:Molotov;
 	CEGTag=Flametrail;
 	range=200;
 	reloadtime=1;
