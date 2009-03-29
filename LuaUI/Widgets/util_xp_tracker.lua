@@ -1,4 +1,4 @@
-local versionNumber = "v1.2"
+local versionNumber = "v1.3"
 
 function widget:GetInfo()
   return {
@@ -90,7 +90,12 @@ function widget:Shutdown()
 	end
 	
 	for _, info in pairs(destroyedData) do
-		info.avg = info.xp / info.n
+		if info.n > 0 then
+			info.avg = info.xp / info.n
+		else
+			info.avg = 0
+		end
+		info.avg_zero = info.xp / (info.n + info.n_zero)
 	end
 	
 	for _, info in pairs(gameOverData) do
