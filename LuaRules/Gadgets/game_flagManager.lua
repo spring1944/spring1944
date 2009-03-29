@@ -76,7 +76,7 @@ function PlaceFlag(spot)
 	SetUnitNeutral(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
-	if (tonumber(modOptions.map_command_per_player) >= 0) then
+	if ((tonumber(modOptions.map_command_per_player) or -1) >= 0) then
 		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / GG.Metal.totalMetal
 		SetUnitMetalExtraction(newFlag, extraction)
 	end
