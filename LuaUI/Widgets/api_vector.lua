@@ -3,12 +3,14 @@ if not gadget then
 	luaType = widget
 end
 
+local versionNumber = "v1.0"
+
 function luaType:GetInfo()
 	return {
 		name      = "Vector API",
-		desc      = "Basic vector functions.",
+		desc      = versionNumber .. " Basic vector functions.",
 		author    = "Evil4Zerggin",
-		date      = "13 February 2008",
+		date      = "21 March 2008",
 		license   = "GNU LGPL, v2.1 or later",
 		layer     = -10000,
 		enabled   = true  --  loaded by default?
