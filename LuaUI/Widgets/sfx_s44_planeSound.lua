@@ -1,4 +1,4 @@
-local versionNumber = "v1.1"
+local versionNumber = "v1.2"
 
 function widget:GetInfo()
 	return {
@@ -13,7 +13,7 @@ function widget:GetInfo()
 end
 
 local soundVolume = 4
-local updatePeriod = 0.25
+local updatePeriod = 0.1
 
 local SOUND_DIR = "sounds/engine/"
 local SOUND_EXT = ".wav"
@@ -83,9 +83,9 @@ function widget:Update(dt)
 				
 				local vDotD = vx*dx + vy*dy + vz*dz
 				
-				local soundNumber = floor(0.5 * (1 + vDotD) * engineSoundNr)
+				local soundNumber = 1 + floor(0.5 * (1 + vDotD) * engineSoundNr)
 				
-				if soundNumber < 1 then soundNumber = 1
+				if soundNumber < 2 then soundNumber = 2
 				elseif soundNumber > engineSoundNr then soundNumber = engineSoundNr
 				end
 				
