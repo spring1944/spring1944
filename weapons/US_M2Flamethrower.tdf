@@ -12,8 +12,8 @@
 	CEGTag=Flametrail;
 	range=200;
 	reloadtime=1;
-	burst=20;
-	burstrate=.04;
+	burst=40;
+	burstrate=.01;
 	sprayangle=500;
 	weaponvelocity=240;
 	areaofeffect=80;
@@ -29,9 +29,9 @@
 
 	[damage]
 	{
-		default=65;
-		bunkers=300;
-		sandbags=5;
+		default=32;
+		bunkers=150;
+		sandbags=2.5;
 		mines=0;
 		flag=0.000000001;
 	}

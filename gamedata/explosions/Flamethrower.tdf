@@ -9,7 +9,7 @@
 		}
 		unit=1;
 		ground=1;
-		count=64;
+		count=32;
 	}
 	
 	[fire] {
@@ -27,7 +27,7 @@
 			particleLifeSpread=16;
 			numParticles=1;
 			particleSpeed=0;
-			particleSpeedSpread=3;
+			particleSpeedSpread=4;
 			particleSize=0.5;
 			particleSizeSpread=1;
 			emitRot=80;
@@ -38,7 +38,7 @@
 		air=1;
 		water=1;
 		ground=1;
-		count=8;
+		count=4;
 	}
 	
 	[groundflash] {
