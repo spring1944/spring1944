@@ -10,13 +10,13 @@
 			colorMap=1 1 0.25 0.5  0.25 0.15 0.05 0.25  0 0 0 0;
 			Texture=smokesmall;
 			airdrag=0.5;
-			particleLife=8;
+			particleLife=3;
 			particleLifeSpread=2;
 			numParticles=1;
-			particleSpeed=i1;
-			particleSpeedSpread=1;
-			particleSize=1;
-			particleSizeSpread=1;
+			particleSpeed=i0.25;
+			particleSpeedSpread=0.5;
+			particleSize=1.5;
+			particleSizeSpread=0.5;
 			emitRot=0;
 			emitRotSpread=0;
 			directional=0;
@@ -25,6 +25,6 @@
 		air=1;
 		water=1;
 		ground=1;
-		count=4;
+		count=12;
 	}
 }

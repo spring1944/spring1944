@@ -15,7 +15,7 @@
 	burst=40;
 	burstrate=.01;
 	sprayangle=500;
-	weaponvelocity=240;
+	weaponvelocity=180;
 	areaofeffect=80;
 	explosionspeed=0.01;
 	edgeeffectiveness=0.25;
@@ -24,6 +24,7 @@
 	soundtrigger=1;
 	soundstart=GEN_Flamethrower;
 	soundhit=none;
+	size=0.01;
 
 	impulsefactor=0.000001;
 
