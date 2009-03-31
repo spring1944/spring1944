@@ -139,6 +139,7 @@ local callInLists = {
   'AllowUnitCreation',
   'AllowUnitTransfer',
   'AllowUnitBuildStep',
+  'AllowFeatureBuildStep',
   'AllowFeatureCreation',
   'AllowResourceLevel',
   'AllowResourceTransfer',
@@ -1118,6 +1119,18 @@ function gadgetHandler:AllowUnitBuildStep(builderID, builderTeam,
   for _,g in ipairs(self.AllowUnitBuildStepList) do
     if (not g:AllowUnitBuildStep(builderID, builderTeam,
                                  unitID, unitDefID, part)) then
+      return false
+    end
+  end
+  return true
+end
+
+
+function gadgetHandler:AllowFeatureBuildStep(builderID, builderTeam,
+                                             featureID, featureDefID, part)
+  for _,g in ipairs(self.AllowFeatureBuildStepList) do
+    if (not g:AllowFeatureBuildStep(builderID, builderTeam,
+                                    featureID, featureDefID, part)) then
       return false
     end
   end

@@ -28,8 +28,8 @@ local function istable(x)  return (type(x) == 'table')   end
 local function isnumber(x) return (type(x) == 'number')  end
 local function isstring(x) return (type(x) == 'string')  end
 
-local mapEnergyMult   = 0.00001  --Used to normalize map features to a mod-specific scale
-local mapMetalMult    = 0.00001
+local mapEnergyMult   = 0 --Used to normalize map features to a mod-specific scale
+local mapMetalMult    = 0
 local mapReclaimMult  = 1
 
 --------------------------------------------------------------------------------
@@ -61,9 +61,9 @@ local function ProcessFeature(name, fd, archive)
   featureDefs[name] = fd
   --if archive == 'map' then
   if not modFeatures[name] then
+    fd.reclaimTime = (fd.reclaimTime or ((fd.energy or 0) + (fd.metal or 0))) * mapReclaimMult
     if tonumber(fd.energy) then fd.energy = fd.energy * mapEnergyMult end
     if tonumber(fd.metal) then fd.metal = fd.metal * mapMetalMult end
-    if tonumber(fd.reclaimTime) then fd.reclaimTime = fd.reclaimTime * mapReclaimMult end
   end
 end
 
@@ -150,7 +150,7 @@ for filename, archive in pairs(luaFiles) do
         ProcessFeature(fdName, fd, archive)
       end
     end
-  end  
+  end
 end
 
 
