@@ -221,7 +221,7 @@ local iconTypes = {
 	},
 	radar = {
 		bitmap		=	"icons/radar.tga",
-		size			=	2.5,
+		size			=	4,
 		distance	=	0.3,
 	},
 	flag = {
