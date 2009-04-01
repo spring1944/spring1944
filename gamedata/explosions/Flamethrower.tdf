@@ -9,7 +9,7 @@
 		}
 		unit=1;
 		ground=1;
-		count=32;
+		count=16;
 	}
 	
 	[fire] {

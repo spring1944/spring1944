@@ -15,7 +15,7 @@
 	burst=40;
 	burstrate=.01;
 	sprayangle=500;
-	weaponvelocity=180;
+	weaponvelocity=240;
 	areaofeffect=80;
 	explosionspeed=0.01;
 	edgeeffectiveness=0.25;

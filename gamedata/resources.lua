@@ -93,6 +93,7 @@ local	resources = {
 				flowerflash				=	'flowerflash.tga',
 				shell							=	'shell.tga',
 				smokesmall				=	'smokesmall.tga',
+				longsmokesmall		=	'longsmokesmall.tga',
 				shotgunflare			=	'shotgunflare.tga',
 				HEShellMED				=	'HEShellMED.png',
 				kfoam							=	'kfoam.tga',
