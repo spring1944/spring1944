@@ -41,7 +41,7 @@
 	init_cloaked=1;
 	cloakcost=0;
 	cloakcostmoving=0;
-	mincloakdistance=200;
+	mincloakdistance=230;
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode

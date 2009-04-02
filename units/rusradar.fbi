@@ -10,11 +10,11 @@
 
 	name=RUS-2 Air Control Station;
 	description=Detects and Controls Aircraft;
-	side=GER;
+	side=RUS;
 	maxdamage=5000;
-	buildcostmetal=7900;
+	buildcostmetal=5138;
 	buildcostenergy=0;
-	buildtime=5265;
+	buildtime=3425;
 	footprintx=5;
 	footprintz=5;
 

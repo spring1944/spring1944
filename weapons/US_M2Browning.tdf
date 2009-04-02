@@ -161,4 +161,9 @@
 		unarmouredvehicles=40; 
 		planes=110;
 	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
 }

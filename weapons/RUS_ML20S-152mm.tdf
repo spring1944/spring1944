@@ -11,7 +11,7 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=2530;
+	range=1700;
 	reloadtime=11.5;
 	accuracy=290;
 	targetmoveerror=0.25;
@@ -72,7 +72,7 @@
 
 	ballistic=1;
 
-	range=2530;
+	range=1700;
 	reloadtime=11.5;
 	accuracy=290;
 	targetmoveerror=0.05;

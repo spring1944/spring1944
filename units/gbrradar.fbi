@@ -11,11 +11,11 @@
 
 	name=Type 8C Ground Control Intercept;
 	description=Detects and Controls Aircraft;
-	side=GER;
+	side=GBR;
 	maxdamage=5000;
-	buildcostmetal=7900;
+	buildcostmetal=5138;
 	buildcostenergy=0;
-	buildtime=5265;
+	buildtime=3425;
 	footprintx=5;
 	footprintz=5;
 

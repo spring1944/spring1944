@@ -178,4 +178,11 @@
 		unarmouredvehicles=80;
 		mediumPLanes=265;
 	}
+
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
+
 }

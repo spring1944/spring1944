@@ -55,6 +55,13 @@
 		unarmouredvehicles=45; 
 		planes=190;
 	}
+	
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
+
 }
 
 [MG15120mm]
@@ -112,4 +119,11 @@
 		unarmouredvehicles=1000;
 		planes=385;
 	}
+
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
+
 }

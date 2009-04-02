@@ -7,7 +7,7 @@
 	explosiongenerator=custom:HE_Medium;
 	turret=1;
 
-	range=225;
+	range=235;
 	reloadtime=5;
 	accuracy=400;
 	movingaccuracy=7111;

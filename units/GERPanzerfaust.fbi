@@ -32,7 +32,7 @@
 	init_cloaked=1;
 	cloakcost=0;
 	cloakcostmoving=0;
-	mincloakdistance=180;
+	mincloakdistance=230;
 
 	canmove=1;
 	movementclass=KBOT_Infantry;

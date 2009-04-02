@@ -13,7 +13,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=225;
+	range=235;
 	flighttime=2;
 	reloadtime=15;
 	accuracy=500;
