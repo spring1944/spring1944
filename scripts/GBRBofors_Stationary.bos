@@ -57,7 +57,7 @@ Create()
 	set ACTIVATION to TRUE;
 	originalRange = get WEAPON_RANGE(1);
 	isRangeAdjusted = FALSE;
-	get PRINT(originalRange);
+	//get PRINT(originalRange);
 }
 
 Reload()
@@ -151,6 +151,14 @@ luaFunction(arg1)
  arg1 = iFear;
 }
 
+ResetRangefinder1(sleepTime)
+{
+	set-signal-mask SIG_AIM;
+	//get PRINT(sleepTime);
+	sleep sleepTime;
+	call-script RangefinderReset(1);
+}
+
 // Weapon 1 - AA Ammo
 QueryWeapon1(piecenum)
 {
@@ -172,6 +180,7 @@ AimWeapon1(heading, pitch)
 	if(!isRangeAdjusted)
 	{
 		call-script RangeFinder(1);
+		start-script ResetRangefinder1(get WEAPON_RELOADTIME(1));
 	}
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	wait-for-turn turret around y-axis;

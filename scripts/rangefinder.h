@@ -24,7 +24,7 @@ RangeFinder(weaponNum)
 		// add a random spread to range
 		range = range*((100 - RANGE_INACCURACY_PERCENT/2)/100) + rand(0, range)*RANGE_INACCURACY_PERCENT/100;
 
-		get PRINT(range);
+		//get PRINT(range);
 		
 		if(range>originalRange)
 		{
