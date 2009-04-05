@@ -699,6 +699,23 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+function CheckMorphPlace(unitID, unitDefID, targetDef)
+	-- check if morph destination unit can be built here
+	-- if morph is called by an immobile unit, then the check should auto-succeed
+	local callerMobile = UnitDefs[unitDefID].canMove
+	if not callerMobile then
+		return true
+	end
+	local destID = targetDef.into
+	local unitX, unitY, unitZ = Spring.GetUnitPosition(unitID)
+	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
+	Spring.Echo(result)
+	Spring.Echo(feature)
+	if result == 0 then
+		Spring.Echo("Morph failed: unable to morph here.")
+	end
+	return (result>0)
+end
 
 function AddFactory(unitID, unitDefID, teamID)
   if (isFactory(unitDefID)) then
@@ -807,7 +824,6 @@ function gadget:GameFrame(n)
   end
 end
 
-
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
   local morphData = morphUnits[unitID]
   if (morphData) then
@@ -826,7 +842,8 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         (morphDef.tech<=teamTechLevel[teamID])and
         (morphDef.rank<=GetUnitRank(unitID))and
         (morphDef.xp<=Spring.GetUnitExperience(unitID))and
-        (UnitReqCheck(teamID, morphDef.require)) )
+        (UnitReqCheck(teamID, morphDef.require))and
+	(CheckMorphPlace(unitID, unitDefID, morphDef)) )
     then
       if (isFactory(unitDefID)) then
         --// the factory cai is broken and doesn't call CommandFallback(),
