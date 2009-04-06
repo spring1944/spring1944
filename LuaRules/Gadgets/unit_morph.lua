@@ -709,8 +709,6 @@ function CheckMorphPlace(unitID, unitDefID, targetDef)
 	local destID = targetDef.into
 	local unitX, unitY, unitZ = Spring.GetUnitPosition(unitID)
 	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
-	Spring.Echo(result)
-	Spring.Echo(feature)
 	if result == 0 then
 		Spring.Echo("Morph failed: unable to morph here.")
 	end
