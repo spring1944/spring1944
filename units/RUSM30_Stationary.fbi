@@ -36,6 +36,7 @@
 	activatewhenbuilt=1;
 
 	maxslope=15;
+	maxwaterdepth=0;
 
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=5;

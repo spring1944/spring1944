@@ -43,6 +43,7 @@
 
 	canmove=1;
 	maxslope=10;
+	maxwaterdepth=0;
 
 	usebuildinggrounddecal=1;
 	buildinggrounddecalsizex=5;

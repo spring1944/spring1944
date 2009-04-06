@@ -30,6 +30,7 @@
 
 	canmove=1;
 	maxslope=10;
+	maxwaterdepth=0;
 
 	explodeas=GBRLZ_death;
 	selfdestructas=GBRLZ_death;

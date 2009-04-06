@@ -37,6 +37,7 @@
 	brakerate=0.6;
 	turnrate=1010;
 	maxslope=15;
+	maxwaterdepth=10;
 
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode

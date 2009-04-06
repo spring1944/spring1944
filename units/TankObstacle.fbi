@@ -25,6 +25,7 @@
 	stealth=1;
 
 	maxslope=20;
+	maxwaterdepth=50;
 
 	[sfxtypes]
 	{
