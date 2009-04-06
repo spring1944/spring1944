@@ -627,7 +627,7 @@ function widget:Initialize()
 			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle, oddX, oddZ}
 			inUse = true
 		end
-		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) then
+		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) and unitDef.name ~= "usdukw" then
 			generalTruckDefIDs[unitDefID] = true
 		end
 		if unitDef.humanName and strFind(unitDef.humanName, "Halftrack") and not strFind(unitDef.humanName, "Unloaded") then
