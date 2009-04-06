@@ -82,6 +82,18 @@ local function isFinished(UnitID)
   local _,_,_,_,buildProgress = Spring.GetUnitHealth(UnitID)
   return (buildProgress==nil)or(buildProgress>=1)
 end
+
+
+local function GetBuildFacing(heading, unitDef)
+  --tweak this to change which units need to rotate using buildfacing
+  if (unitDef.TEDClass == "PLANT") then
+    return true, math.floor((heading + 8192) / 16384) % 4
+  else
+    return false, 0
+  end
+end
+
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -345,14 +357,14 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 	--end
 	Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
 	Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
-  
+
   if morphDef.directional then
     local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
     local ux, _, uz = Spring.GetUnitPosition(unitID)
     local dx, dz = tx - ux, tz - uz
     local rotation = math.atan2(dx, dz)
     Spring.SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
-  end 
+  end
   morphUnits[unitID] = {
     def = morphDef,
     progress = 0.0,
@@ -405,16 +417,15 @@ local function FinishMorph(unitID, morphData)
   Spring.SetUnitBlocking(unitID, false)
   morphUnits[unitID] = nil
 
-  local newUnit = Spring.CreateUnit(defName, px, py, pz, 0, unitTeam)
-  
-  Spring.SetUnitPosition(newUnit, px, py, pz)
-  
   local h = Spring.GetUnitHeading(unitID)
-  if morphData.directional then
-    Spring.Echo("dir")
+  local useBuildFacing, facing = GetBuildFacing(h, udDst)
+  local newUnit = Spring.CreateUnit(defName, px, py, pz, facing, unitTeam)
+
+  Spring.SetUnitPosition(newUnit, px, py, pz)
+  if (not useBuildFacing) then
+    Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
   end
-  Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-	
+
 	if (udDst.customParams.maxammo) then
 		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
 		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
@@ -1098,6 +1109,10 @@ local function DrawMorphUnit(unitID, morphData, localTeamID)
   local px,py,pz = GetUnitBasePosition(unitID)
   if (px==nil) then
     return
+  end
+  local useBuildFacing, facing = GetBuildFacing(h, UnitDefs[morphData.def.into])
+  if (useBuildFacing) then
+    h = facing * 16384
   end
   local unitTeam = morphData.teamID
 
