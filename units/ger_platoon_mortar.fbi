@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=GrW 34 Mortar Team;
-	description=3 x GrW 34 Mortar: Heavy Infantry Fire Support;
+	description=3 x GrW 34 Mortar, 2x Scout: Heavy Infantry Fire Support;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=2380;
+	buildcostmetal=2260;
 	buildcostenergy=0;
-	buildtime=1190;
+	buildtime=1130;
 	footprintx=1;
 	footprintz=1;
 

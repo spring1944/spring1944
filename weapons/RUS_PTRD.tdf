@@ -1,6 +1,6 @@
 [ptrd]
 {
-	id=30;
+	id=100;
 	name=PTRD;
 	rendertype=0;
 	turret=1;
@@ -12,7 +12,6 @@
 
 	range=675;
 	reloadtime=10;
-	accuracy=200;
 	movingaccuracy=888;
 	weaponvelocity=1500;
 	areaofeffect=1;
@@ -43,10 +42,10 @@
 	impactonly=1;
 	[damage]
 	{
-		default=1800;
-		infantry=1900;
-		guns=800;
-		lightbuildings=200;
+		default=1860;
+		infantry=400;
+		guns=300;
+		lightbuildings=20;
 		bunkers=0;
 		sandbags=1;
 		mines=0;

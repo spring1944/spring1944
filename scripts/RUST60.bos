@@ -44,7 +44,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define BURST		4
 
 // definitions for HitWeapId_S44
-#define ARMOUR		2921
+#define ARMOUR		2021
+#define QUALITY		100
 #include "HitWeapId_S44.h"
 
 //effects

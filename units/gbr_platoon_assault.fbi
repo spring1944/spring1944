@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description= 12 x STEN SMG: Close-Quarters Assault Infantry;
+	description= 12 x STEN SMG, 1 x Commando: Close-Quarters Assault Infantry;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

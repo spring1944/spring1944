@@ -46,15 +46,15 @@
 	{
 		default=0;
 		infantry=17;
-		guns=28;
+		guns=25;
 		lightbuildings=0;
 		bunkers=0;
 		sandbags=1;
 		mines=0;
 		flag=0.0000000000001;
 		tanks=0;
-		armouredvehicles=10;
-		unarmouredvehicles=10;
+		armouredvehicles=4;
+		unarmouredvehicles=6;
 	}
 }
 [silencedsten]
@@ -72,6 +72,7 @@
 
 	range=360;
 	energypershot=0;
+	reloadtime=0.8;
 	burst=3;
 	burstrate=.1;
 	sprayangle=200;

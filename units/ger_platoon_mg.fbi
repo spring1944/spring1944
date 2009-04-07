@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=3 x MG42 Machinegun: Infantry Fire Support Squad;
+	description=3 x MG42 Machinegun, 2x Scout: Infantry Fire Support Squad;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1680;
+	buildcostmetal=1600;
 	buildcostenergy=0;
-	buildtime=840;
+	buildtime=800;
 	footprintx=1;
 	footprintz=1;
 

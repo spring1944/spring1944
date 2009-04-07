@@ -1,10 +1,12 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+// not needed - look into constants.h
+// #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
 piece base, stand, turret, sleeve, barrel, flare, crewman1, crewman2;
  
-static-var iState, iFear, lasthit, aim1, reloading;
+static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange;
 
 #include "inf_sharedDefs.h"
+#include "constants.h"
 
 // Signal definitions
 #define SIG_AIM					2
@@ -19,10 +21,12 @@ static-var iState, iFear, lasthit, aim1, reloading;
 #define XSMALL_MUZZLEFLASH	1024+7
 #define XSMALL_MUZZLEDUST	1024+8
 
+#define RANGE_INACCURACY_PERCENT	10
+
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
 #define RELOAD		300 // time in milliseconds between shots
-#define TURR_TRAVERSE	<150>
-#define TURR_ELEVATE	<125>
+#define TURR_TRAVERSE	<500>
+#define TURR_ELEVATE	<415>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
@@ -43,12 +47,17 @@ turn crewman2 to x-axis <70> now;\
 turn crewman1 to x-axis <0> now;\
 turn crewman2 to x-axis <0> now;\
 
+#include "rangefinder.h"
+
 Create()
 {
 	hide flare;
 	reloading = FALSE;
 	aim1 = FALSE;
 	set ACTIVATION to TRUE;
+	originalRange = get WEAPON_RANGE(1);
+	isRangeAdjusted = FALSE;
+	//get PRINT(originalRange);
 }
 
 Reload()
@@ -142,6 +151,14 @@ luaFunction(arg1)
  arg1 = iFear;
 }
 
+ResetRangefinder1(sleepTime)
+{
+	set-signal-mask SIG_AIM;
+	//get PRINT(sleepTime);
+	sleep sleepTime;
+	call-script RangefinderReset(1);
+}
+
 // Weapon 1 - AA Ammo
 QueryWeapon1(piecenum)
 {
@@ -159,6 +176,12 @@ AimWeapon1(heading, pitch)
 	set-signal-mask SIG_AIM;
 	if (iState>=6) return 0;
 	aim1 = TRUE;
+	// call the rangefinder
+	if(!isRangeAdjusted)
+	{
+		call-script RangeFinder(1);
+		start-script ResetRangefinder1(get WEAPON_RELOADTIME(1));
+	}
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	wait-for-turn turret around y-axis;
 	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
@@ -185,6 +208,9 @@ FireWeapon1()
 	}
 	sleep 400;
 	start-script Reload(); // start reload timer after firing
+	// signal the rangefinder we need a new range reading
+	isRangeAdjusted = FALSE;
+	call-script RangefinderReset();
 }
 
 // Weapon 2 - HE Ammo

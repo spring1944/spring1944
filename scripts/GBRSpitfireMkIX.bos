@@ -14,7 +14,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, fear;
 #define MG_SHELLCASINGS 		1024+3
 
 #define SIG_BANK 				2
-#define BugOutLevel				85 //% of health when plane ditches its bombs
+#define BugOutLevel				90 //% of health when plane ditches its bombs
 #define MEDIUM_TRACER 			2048+4
 #define LARGE_TRACER			2048+5
 

@@ -469,7 +469,7 @@ buildoptions =
 		--"rus_platoon_big_assault",
 		"rus_platoon_mg",
 		--"rus_platoon_scout",
-		"rus_platoon_atlight",
+		--"rus_platoon_atlight",
 		"rus_platoon_atheavy",
 		"rus_platoon_sniper",
 		"rus_platoon_mortar",

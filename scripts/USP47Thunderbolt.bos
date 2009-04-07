@@ -10,7 +10,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 #define MG_SHELLCASINGS 1024+1
 #define MG_MUZZLEFLASH	1024+2
 #define SIG_BANK			2
-#define BugOutLevel			85 //% of health when pilot drops bombs for more speed
+#define BugOutLevel			90 //% of health when pilot drops bombs for more speed
 //tracers
 #define MEDIUM_TRACER 	2048+9
 

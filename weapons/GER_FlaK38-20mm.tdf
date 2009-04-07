@@ -5,20 +5,20 @@
 	rendertype=1;
 	turret=1;
 	tolerance=700;
-	explosiongenerator=custom:HE_XSmall;
+	explosiongenerator=custom:HE_Small;
 
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.75;
-	range=1900;
+	predictboost=0.99;
+	range=3000;
 	reloadtime=1.5;
 	burst=5;
 	burstrate=0.16;
 	sprayangle=475;
-	weaponvelocity=2000;
-	areaofeffect=35;
-	edgeeffectiveness=0.35;
+	weaponvelocity=5000;
+	areaofeffect=80;
+	edgeeffectiveness=0.95;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
@@ -30,7 +30,7 @@
 
 	intensity=0.9;
 
-	collisionsize=2;
+	collisionsize=4;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=0;
@@ -38,9 +38,7 @@
 
 	  cratermult=0;
 
-  size=0.0000000001;
-  separation=2;
-  stages=50;
+  size=0.0001;
 
 
 	[damage]
@@ -53,7 +51,7 @@
 		unarmoredvehicles=480;
 		infantry=200;
 		guns=200;
-		planes=480;
+		planes=80;
 	}
 }
 [kwk3020mmhe]

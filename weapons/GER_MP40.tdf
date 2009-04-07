@@ -58,7 +58,7 @@
 		mines=0;
 		flag=0;
 		tanks=0;
-		armouredvehicles=10;
-		unarmouredvehicles=10;
+		armouredvehicles=4;
+		unarmouredvehicles=6;
 	}
 }

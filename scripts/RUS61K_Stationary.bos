@@ -1,10 +1,10 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
 piece base, stand, turret, sleeve, barrel, flare, crewman1, crewman2;
  
-static-var iState, iFear, lasthit, aim1, reloading;
+static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange;
 
 #include "inf_sharedDefs.h"
+#include "constants.h"
 
 // Signal definitions
 #define SIG_AIM					2
@@ -21,8 +21,8 @@ static-var iState, iFear, lasthit, aim1, reloading;
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
 #define RELOAD		300 // time in milliseconds between shots
-#define TURR_TRAVERSE	<150>
-#define TURR_ELEVATE	<125>
+#define TURR_TRAVERSE	<400>
+#define TURR_ELEVATE	<315>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
@@ -31,6 +31,7 @@ static-var iState, iFear, lasthit, aim1, reloading;
 #define BURST1		3
 #define BURST2		2
 
+#define RANGE_INACCURACY_PERCENT	10
 //tracers
 #define LARGE_TRACER		2048+2
 
@@ -43,12 +44,15 @@ turn crewman2 to x-axis <70> now;\
 turn crewman1 to x-axis <0> now;\
 turn crewman2 to x-axis <0> now;\
 
+#include "rangefinder.h"
 Create()
 {
 	hide flare;
 	reloading = FALSE;
 	aim1 = FALSE;
 	set ACTIVATION to TRUE;
+	originalRange = get WEAPON_RANGE(1);
+	isRangeAdjusted = FALSE;
 }
 
 Reload()
@@ -142,6 +146,14 @@ luaFunction(arg1)
  arg1 = iFear;
 }
 
+ResetRangefinder1(sleepTime)
+{
+	set-signal-mask SIG_AIM;
+	//get PRINT(sleepTime);
+	sleep sleepTime;
+	call-script RangefinderReset(1);
+}
+
 // Weapon 1 - AA Ammo
 QueryWeapon1(piecenum)
 {
@@ -159,6 +171,12 @@ AimWeapon1(heading, pitch)
 	set-signal-mask SIG_AIM;
 	if (iState>=6) return 0;
 	aim1 = TRUE;
+		// call the rangefinder
+	if(!isRangeAdjusted)
+	{
+		call-script RangeFinder(1);
+		start-script ResetRangefinder1(get WEAPON_RELOADTIME(1));
+	}
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	wait-for-turn turret around y-axis;
 	turn sleeve to x-axis <0.000000> - pitch speed TURR_ELEVATE;
@@ -184,6 +202,9 @@ FireWeapon1()
 		sleep 200;
 	}
 	sleep 400;
+	// signal the rangefinder we need a new range reading
+	isRangeAdjusted = FALSE;
+	call-script RangefinderReset();
 	start-script Reload(); // start reload timer after firing
 }
 

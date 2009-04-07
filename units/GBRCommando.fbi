@@ -9,7 +9,7 @@
 	tedclass=KBOT;
 
 	name=Commando;
-	description=Airdropped Demolitions and Infiltration Infantry;
+	description=Demolitions and Infiltration Infantry;
 	side=GBR;
 	maxdamage=280;
 	damagemodifier=0.375;

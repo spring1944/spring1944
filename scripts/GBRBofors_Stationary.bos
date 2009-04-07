@@ -1,6 +1,3 @@
-// not needed - look into constants.h
-// #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
-
 piece base, stand, turret, sleeve, barrel, flare, crewman1, crewman2;
  
 static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange;
@@ -25,8 +22,8 @@ static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRan
 
 // definitions for turret movement - will probably use this later with a more advanced anim that requires redeploy for > arc traverse
 #define RELOAD		300 // time in milliseconds between shots
-#define TURR_TRAVERSE	<150>
-#define TURR_ELEVATE	<125>
+#define TURR_TRAVERSE	<500>
+#define TURR_ELEVATE	<415>
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour

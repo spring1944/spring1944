@@ -10,15 +10,15 @@
 	lineofsight=1;
 	firestarter=0.0;
 	//targetmoveerror=0.1;
-	predictboost=0.5;
-	range=2125;
-	reloadtime=1.3;
-	burst=3;
+	predictboost=0.9;
+	range=3225;
+	reloadtime=2.5;
+	burst=2;
 	burstrate=0.3;
-	sprayangle=1350;
-	weaponvelocity=2000;
-	areaofeffect=74;
-	edgeeffectiveness=0.025;
+	sprayangle=550;
+	weaponvelocity=5000;
+	areaofeffect=120;
+	edgeeffectiveness=0.000005;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
@@ -30,15 +30,13 @@
 
 	intensity=0.9;
 
-	collisionsize=2;
+	collisionsize=0.00001;
 	impulsefactor=0;
 	impulseboost=0;
 	cratermult=.2;
 	craterboost=.2;
 
-  size=0.0000000001;
-  separation=2;
-  stages=50;
+	size=0.001;
 
 
 	[damage]
@@ -51,7 +49,7 @@
 		unarmoredvehicles=1500;
 		infantry=800;
 		guns=600;
-		planes=8448;
+		planes=1410;
 	}
 }
 

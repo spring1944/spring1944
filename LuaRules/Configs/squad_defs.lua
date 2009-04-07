@@ -37,7 +37,7 @@ local squadDefs = {
     ["gbr_platoon_hq"] =
 	{
 		"gbrbren",
-		"gbrobserv",
+		"gbrsten",
 		"gbrrifle",
 		"gbrrifle",
 		"gbrsten",
@@ -130,6 +130,7 @@ local squadDefs = {
 		"gbrsten",
 		"gbrsten",
 		"gbrsten",
+		"gbrcommando",
 	},
 
 	["gbr_platoon_mg"] =
@@ -268,9 +269,7 @@ local squadDefs = {
 		"gerrifle",
 		"gerrifle",
 		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
+		"germg42",
 	},
 	
 	["ger_platoon_assault"] = 
@@ -285,8 +284,8 @@ local squadDefs = {
 		"germp40",
 		"germp40",
 		"germp40",
-		"germp40",
-		"germp40",
+		"gerpanzerfaust",
+		"gerpanzerfaust",
 	},
 	
 	["ger_platoon_mg"] = 
@@ -333,8 +332,8 @@ local squadDefs = {
 
 	 ["rus_platoon_rifle"] =
 	{
-  		"rusrifle",
-		"rusrifle",
+  		"rusptrd",
+		"rusptrd",
 		"rusrifle",
   		"rusrifle",
   		"rusrifle",
@@ -421,6 +420,7 @@ local squadDefs = {
 		"rusppsh",
 		"rusppsh",
 		"rusppsh",
+		"ruscommissar",
 	},
     	
     ["rus_platoon_partisan"] =
@@ -581,10 +581,10 @@ local squadDefs = {
 		"usgithompson",
 		"usgithompson",
 		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
+		"usgibazooka",
+		"usgiflamethrower",
+		"usgibar",
+		"usgibar",
 	},
 	
 	["us_platoon_mg"] = 

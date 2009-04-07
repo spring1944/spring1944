@@ -34,9 +34,10 @@ SmokeUnit()
 }
 
 Create() {
-	while (get BUILD_PERCENT_LEFT) {
-    	move base to y-axis 0 - ([0.6] * get BUILD_PERCENT_LEFT) now;
-    	sleep 30;
+  while (get BUILD_PERCENT_LEFT)
+   {
+    move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;
+    sleep 100;
  	}
   	move base to y-axis 0 now;
 	spin radar around y-axis speed <60> accelerate <5>;

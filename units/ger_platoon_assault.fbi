@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=12 x MP40 SMG: Close-Quarters Assault Infantry;
+	description=10 x MP40 SMG, 2 x Panzerfaust Anti-Tank: Close-Quarters Assault Infantry;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=1900;
+	buildcostmetal=1800;
 	buildcostenergy=0;
-	buildtime=950;
+	buildtime=900;
 	footprintx=1;
 	footprintz=1;
 

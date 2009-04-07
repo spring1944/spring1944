@@ -16,7 +16,7 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 #define SIG_BANK			2
 #define SIG_AIM				4
-#define BugOutLevel			85 //% of health when the pilot drops bombs for more speed
+#define BugOutLevel			90 //% of health when the pilot drops bombs for more speed
 //tracers
 #define SMALL_TRACER 	2048+8
 #define MEDIUM_TRACER 	2048+9
