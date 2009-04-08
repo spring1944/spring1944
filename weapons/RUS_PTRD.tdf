@@ -10,13 +10,13 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=675;
-	reloadtime=10;
+	range=655;
+	reloadtime=12;
 	movingaccuracy=888;
 	weaponvelocity=1500;
 	areaofeffect=1;
 	weapontimer=1;
-
+	accuracy=450;
 	soundtrigger=0;
 	soundstart=RUS_PTRD;
 
@@ -35,7 +35,7 @@
 	corethickness=0.15;
 	laserflaresize=0.0001;
 
-	size=2.5;
+	size=1;
 
 	//dyndamageexp=1;
 	//dyndamagerange=1000;
@@ -43,8 +43,8 @@
 	[damage]
 	{
 		default=1860;
-		infantry=400;
-		guns=300;
+		infantry=95;
+		guns=400;
 		lightbuildings=20;
 		bunkers=0;
 		sandbags=1;
