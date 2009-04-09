@@ -29,13 +29,13 @@ local options = {
 		type = 'bool',
 		def = true,
 	},]]--
-	{
+	--[[{
 		key = 'always_visible_flags',
 		name = 'Always Visible Flags',
 		desc = 'Flags and their capping status can be seen without LOS',
 		type = 'bool',
 		def = true,
-	},
+	},]]--
 	--[[{
     key    = 'maxammo_mult',
     name   = 'Vehicle maxammmo multiplier',
@@ -113,17 +113,17 @@ local options = {
     {
       {
         key  = '0',
-        name = 'Low - 7.5 minute gap',
+        name = 'Low - 11.25 minute gap',
         desc = 'Limited logistics supply. Conservative play - storage buildings and well supplied infantry are the order of the day.',
       },
       {
         key  = '1',
-        name = 'Normal - 5 minute gap',
+        name = 'Normal - 7.5 minute gap',
         desc = 'Normal logistics supply. Supplies come on a frequent enough basis to keep the warmachine rumbling, but beware of large artillery batteries or armored thrusts.',
       },
       {
         key  = '2',
-        name = 'High - 2.5 minute gap',
+        name = 'High - 3.75 minute gap',
         desc = 'Abundant logistics supply. Supply deliveries arrive early and often, allowing for much more aggressive play.',
       },
 	 },
