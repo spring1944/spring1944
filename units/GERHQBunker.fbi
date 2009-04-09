@@ -2,7 +2,7 @@
 {
 	unitname=GERHQBunker;
 	objectname=GERHQBunker.S3O;
-	buildpic=GERHQBunker.bmp;
+	buildpic=GERHQBunker.png;
 	corpse=GERHQBunker_Destroyed;
 	icontype=gerhq;
 	soundcategory=GERYard;

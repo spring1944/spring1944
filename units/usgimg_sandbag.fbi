@@ -4,6 +4,7 @@
 	objectname=USSandbagMG.S3O;
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
+	buildpic=USSandbagMG.png;
 	soundcategory=USInf;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG ;
 	tedclass=TURRET;

@@ -3,6 +3,7 @@
 	unitname=rusmaxim_sandbag;
 	objectname=RUSSandbagMG.S3O;
 	corpse=SandbagMG_Destroyed;
+	buildpic=RUSSandbagMG.png;
 	icontype=lightmg;
 	soundcategory=RUSInf;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG ;

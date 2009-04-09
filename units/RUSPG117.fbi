@@ -4,6 +4,7 @@
 	objectname=RUSPG117.S3O;
 	//corpse=;
 	icontype=pontoon;
+	buildpic=RUSPG117.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

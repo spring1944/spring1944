@@ -2,7 +2,7 @@
 {
 	unitname=RUSPResource;
 	objectname=LogisticsSmall.S3O;
-	buildpic=LogisticsSmall.bmp;
+	buildpic=LogisticsSmall.png;
 	corpse=Debris_Small;
 	icontype=ammo;
 	soundcategory=RUSInf;

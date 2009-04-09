@@ -3,6 +3,7 @@
 	unitname=RUSMaxim;
 	objectname=RUSMaxim.S3O;
 	corpse=RUSsoldier_dead;
+	buildpic=RUSSandbagMG.png;
 	icontype=lightmg;
 	soundcategory=RUSInf;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;

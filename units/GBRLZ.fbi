@@ -2,7 +2,7 @@
 {
 	unitname=GBRLZ;
 	objectname=GBRLZ2.S3O;
-	buildpic=GBRLZ.bmp;
+	buildpic=GBRLZ.png;
 	category=GBR PLANT NOWEAPON NFLAG;
 	tedclass=PLANT;
 	yardmap=cccc cccc cccc cccc;

@@ -5,6 +5,7 @@
 	corpse=SandbagMG_Destroyed;
 	icontype=lightmg;
 	soundcategory=GerInf;
+	buildpic=GERSandbagMG.png;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG ;
 	tedclass=TURRET;
 	yardmap=o;
