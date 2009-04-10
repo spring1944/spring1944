@@ -4,6 +4,7 @@
 	objectname=GERPanzerschrek.S3O;
 	corpse=GERsoldier_dead;
 	icontype=antitank;
+	buildpic=GERPanzerfaust.png;
 	soundcategory=GERInf;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
