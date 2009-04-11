@@ -18,7 +18,7 @@ function widget:GetInfo()
     author    = "trepan",
     date      = "Jan 8, 2007",
     license   = "GNU GPL, v2 or later",
-    layer     = -5,
+    layer     = -4,    --  must be initialized after widgets it replaces!
     enabled   = true,  --  loaded by default?
     handler   = true,
   }
@@ -87,7 +87,6 @@ local function Replace(widgetName)
   for i, widget in ipairs(widgetHandler.widgets) do
     if (widget:GetInfo().name == widgetName) then
       widgetHandler:RemoveWidget(widget)
-      spSendCommands{"tooltip 0"}
       return
     end
   end
@@ -139,15 +138,17 @@ local replaced
 function widget:DrawScreen()
   if ((widgetHandler.knownWidgets.Tooltip or {}).active) then
     Replace"Tooltip"
+    spSendCommands{"tooltip 0"}
     replaced = true
   end
   if ((widgetHandler.knownWidgets["Tooltip Replacement"] or {}).active) then
-  	Replace"Tooltip Replacement"
-  	replaced = true
+    Replace"Tooltip Replacement"
+    spSendCommands{"tooltip 0"}
+    replaced = true
   end
-  if (Spring.GetGameSeconds() < 0.1 and not replaced) then
-    widgetHandler:RemoveWidget(widget)
-  end
+  --if (Spring.GetGameSeconds() < 0.1 and not replaced) then
+  --  widgetHandler:RemoveWidget(widget)
+  --end
   if (fh) then
     fh = fontHandler.UseFont(fontName)
     fontHandler.BindTexture()
