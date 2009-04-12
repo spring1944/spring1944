@@ -8,7 +8,7 @@
 	category=NFLAGNAIR NFLAG TANK LEVEL3 WEAPON NAIR NOTSUB CTRL_G;
 	tedclass=TANK;
 
-	name=Pzkpfw VI B Königstiger;
+	name=Pzkpfw VI B Koenigstiger;
 	description=Super HeavyCombat Tank;
 	side=GER;
 
