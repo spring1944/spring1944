@@ -710,7 +710,7 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-function CheckMorphPlace(unitID, unitDefID, targetDef)
+function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 	-- check if morph destination unit can be built here
 	-- if morph is called by an immobile unit, then the check should auto-succeed
 	local callerMobile = UnitDefs[unitDefID].canMove
@@ -721,7 +721,7 @@ function CheckMorphPlace(unitID, unitDefID, targetDef)
 	local unitX, unitY, unitZ = Spring.GetUnitPosition(unitID)
 	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
 	if result == 0 then
-		Spring.Echo("Morph failed: unable to morph here.")
+		Spring.SendMessageToTeam("Morph failed: unable to morph here.")
 	end
 	return (result>0)
 end
@@ -852,7 +852,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         (morphDef.rank<=GetUnitRank(unitID))and
         (morphDef.xp<=Spring.GetUnitExperience(unitID))and
         (UnitReqCheck(teamID, morphDef.require))and
-	(CheckMorphPlace(unitID, unitDefID, morphDef)) )
+	(CheckMorphPlace(unitID, unitDefID, teamID, morphDef)) )
     then
       if (isFactory(unitDefID)) then
         --// the factory cai is broken and doesn't call CommandFallback(),
