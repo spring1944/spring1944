@@ -12,7 +12,6 @@ L - (Re)load waypoint data, THIS DISCARDS THE WAYPOINTS IN MEMORY!
 S - Save waypoint data
 
 Load & save are automatically performed on Initialize / Shutdown.
-Up to 200 waypoints supported.
 ]]--
 
 local GetGameSeconds = Spring.GetGameSeconds
@@ -59,8 +58,6 @@ local function AddWaypoint(x, y, z)
 	return waypoints[lastWaypointID]
 end
 
-
-
 local function ToggleConnection(a, b)
 	if (a.id > b.id) then a,b = b,a end
 	local key = 4096 * a.id + b.id
@@ -70,7 +67,6 @@ local function ToggleConnection(a, b)
 		connections[key] = { a, b }
 	end
 end
-
 
 local function AddConnection(a, b)
 	if (a.id > b.id) then a,b = b,a end
@@ -125,21 +121,35 @@ local function Save()
 	Spring.Echo("Saved to: " .. fname)
 end
 
-local function Load()
-	-- load chunk
-	local fname = "craig_maps/" .. Game.mapName .. ".lua"
-	local chunk,err = loadfile(fname)
-	if (not chunk) then
-		Spring.Echo(err)
-		return
+local function LoadChunk()
+	local filenames = {
+		"craig_maps/" .. Game.mapName .. ".lua",
+		"LuaRules/Configs/craig/maps/" .. Game.mapName .. ".lua",
+	}
+	for _,fname in ipairs(filenames) do
+		local text = VFS.LoadFile(fname)
+		if text then
+			local chunk,err = loadstring(text, fname)
+			if chunk then
+				return chunk,fname
+			else
+				Spring.Echo(err)
+			end
+		end
 	end
+	return nil
+end
+
+local function Load()
+	local chunk,fname = LoadChunk()
+	if (not chunk) then return end
 	-- clear any existing data
 	lastWaypointID = 0
 	waypoints = {}
 	connections = {}
 	-- execute chunk
 	setfenv(chunk, {AddWaypoint = AddWaypoint, AddConnection = AddConnection})
-	local data = chunk()
+	chunk()
 	Spring.Echo("Loaded from: " .. fname)
 end
 
@@ -167,6 +177,29 @@ end
 
 
 
+local function GetDist(x, y, p, q)
+	local dx = x - p
+	local dy = y - q
+	return sqrt(dx * dx + dy * dy)
+end
+
+local function FindWaypoint(mx, my)
+	local _, coors = TraceScreenRay(mx, my, true)
+	if (coors ~= nil) then
+		local p, r = coors[1], coors[3]
+		for _, waypoint in pairs(waypoints) do
+			local x, z = waypoint[1], waypoint[3]
+			local d = GetDist(x, z, p, r)
+			if (d < 64) then
+				return waypoint
+			end
+		end
+	end
+	return nil
+end
+
+
+
 function widget:KeyPress(key, modifier, isRepeat)
 	if (modifier.shift) then
 		shiftPressed = true
@@ -179,7 +212,7 @@ function widget:KeyPress(key, modifier, isRepeat)
 	end
 	if (key == 110) then
 		-- new waypoint 'N'
-		local mx, my, lmb, _, _ = GetMouseState()
+		local mx, my, _, _, _ = GetMouseState()
 		local _, coors = TraceScreenRay(mx, my, true)
 		if (coors ~= nil) then
 			AddWaypoint(unpack(coors))
@@ -187,15 +220,21 @@ function widget:KeyPress(key, modifier, isRepeat)
 	end
 	if (key == 109) then
 		-- delete waypoint 'M'
-		if (selectedWaypoint ~= nil) then
+		local mx, my, _, _, _ = GetMouseState()
+		local mouseOverWaypoint = FindWaypoint(mx, my)
+		if (mouseOverWaypoint ~= nil) then
 			for k,v in pairs(connections) do
-				if (v[1] == selectedWaypoint) or (v[2] == selectedWaypoint) then
+				if (v[1] == mouseOverWaypoint) or (v[2] == mouseOverWaypoint) then
 					connections[k] = nil
 				end
 			end
-			waypoints[selectedWaypoint.id] = nil
-			selectedWaypoint = nil
-			selectedTargetWaypoint = nil
+			waypoints[mouseOverWaypoint.id] = nil
+			if (selectedWaypoint == mouseOverWaypoint) then
+				selectedWaypoint = nil
+				selectedTargetWaypoint = nil
+			elseif (selectedTargetWaypoint == mouseOverWaypoint) then
+				selectedTargetWaypoint = nil
+			end
 		end
 	end
 	if (key == 115) then
@@ -224,14 +263,6 @@ end
 
 
 
-function GetDist(x, y, p, q)
-	local dx = x - p
-	local dy = y - q
-	return sqrt(dx * dx + dy * dy)
-end
-
-
-
 function UpdateWaypoint(mx, my)
 	local _, coors = TraceScreenRay(mx, my, true)
 	local dict = {}
@@ -253,19 +284,6 @@ local function MouseReleased(mx, my)
 	UpdateWaypoint(mx, my)
 end
 
-
-local function FindWaypoint(mx, my)
-	for _, waypoint in pairs(waypoints) do
-		local x, y, z = waypoint[1], waypoint[2], waypoint[3]
-		local p, q = WorldToScreenCoords(x, y, z)
-		local d = GetDist(mx, my, p, q)
-
-		if (d < 64) then
-			return waypoint
-		end
-	end
-	return nil
-end
 
 
 function widget:Update(_)
@@ -312,13 +330,12 @@ function widget:DrawWorld()
 		)
 	end
 
+	local mouseOverWaypoint = FindWaypoint(mx, my)
+
 	for _, waypoint in pairs(waypoints) do
 		local x, y, z = waypoint[1], waypoint[2], waypoint[3]
-		local p, q = WorldToScreenCoords(x, y, z)
-		local d = GetDist(mx, my, p, q)
-		local commandID = waypoint[5]
 
-		if (d < 64) or (waypoint == selectedWaypoint) or (waypoint == selectedTargetWaypoint) then
+		if (waypoint == mouseOverWaypoint) or (waypoint == selectedWaypoint) or (waypoint == selectedTargetWaypoint) then
 			glColor(1.0, 1.0, 1.0, 1.0)
 			glLineWidth(3.0)
 			glDrawGroundCircle(x, y, z, 64, 16)

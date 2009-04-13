@@ -44,14 +44,12 @@ local currentBuildID        -- one unitID
 local currentBuilder        -- one unitID
 local bUseClosestBuildSite = true
 
--- does not modify sim; is called from outside GameFrame
 local function BuildBaseFinished()
 	currentBuildDefID = nil
 	currentBuildID = nil
 	currentBuilder = nil
 end
 
--- does not modify sim; is called from outside GameFrame
 local function BuildBaseInterrupted()
 	-- enforce randomized next buildsite, instead of
 	-- hopelessly trying again and again on same place
@@ -60,7 +58,6 @@ local function BuildBaseInterrupted()
 	return BuildBaseFinished()
 end
 
--- modifies sim, only call this in GameFrame! (or use DelayedCall)
 local function BuildBase()
 	if currentBuildDefID then
 		if #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
@@ -72,12 +69,18 @@ local function BuildBase()
 	-- nothing to do if something is still being build
 	if currentBuildDefID then return end
 
+	-- fix for infinite loop if baseBuildIndex <= 0
+	local count, maxcount = 1, #baseBuildOrder
 	local unitDefID
 	local newIndex = baseBuildIndex
 	repeat
-		newIndex = (newIndex % #baseBuildOrder) + 1
+		newIndex = (newIndex % maxcount) + 1
 		unitDefID = baseBuildOrder[newIndex]
-	until (newIndex == baseBuildIndex) or
+		count = count + 1
+		-- if there's nothing to do anymore because all units are limited,
+		-- don't wander around but just wait until there's something to do again.
+		if (count > maxcount) then return end
+	until
 		-- check if Spring would block this build (unit restriction)
 		((Spring.GetTeamUnitDefCount(myTeamID, unitDefID) or 0) < UnitDefs[unitDefID].maxThisUnit and
 		-- check if some part of the AI would block this build
@@ -186,9 +189,7 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
 		end
 		-- give the builder a guard order on current builder
 		if currentBuilder then
-			DelayedCall(unitID, function()
-				GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
-			end)
+			GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
 		end
 		return true --signal Team.UnitFinished that we will control this unit
 	end

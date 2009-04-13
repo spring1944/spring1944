@@ -28,7 +28,6 @@ local FlagsMgr = {}
 local RESERVED_FLAG_CAPPERS = gadget.reservedFlagCappers[mySide] or 24
 
 -- speedups
-local DelayedCall = gadget.DelayedCall
 local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitTeam = Spring.GetUnitTeam
 

@@ -50,9 +50,7 @@ end
 
 
 -- include configuration
-include("LuaRules/Configs/craig/" .. Game.modShortName .. "/buildorder.lua")
-include("LuaRules/Gadgets/craig/buildorder.lua")
-
+include("LuaRules/Configs/craig/config.lua")
 
 
 if (gadgetHandler:IsSyncedCode()) then
@@ -137,7 +135,6 @@ include("LuaRules/Gadgets/craig/waypoints.lua")
 
 -- locals
 local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
-local delayedCalls = {}
 local team = {}
 local waypointMgrGameFrameRate = 0
 
@@ -177,18 +174,6 @@ end
 -- This is for log messages which can not be turned off (e.g. while loading.)
 function gadget.Warning(...)
 	Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
-end
-
---------------------------------------------------------------------------------
-
--- Runs fun() in the next GameFrame. If unitID is destoyed, fun() is never run.
--- Limitations: 1) There can only be one delayed call per unit per GameFrame
---              and 2) the delayed calls are executed in arbitrary order.
-function gadget.DelayedCall(unitID, fun)
-	if delayedCalls[unitID] then
-		Log("Warning: second delayed call for ", unitID)
-	end
-	delayedCalls[unitID] = fun
 end
 
 --------------------------------------------------------------------------------
@@ -244,12 +229,6 @@ function gadget:GameStart()
 end
 
 function gadget:GameFrame(f)
-	-- run delayed calls
-	for u,fun in pairs(delayedCalls) do
-		fun()
-		delayedCalls[u] = nil
-	end
-
 	-- waypointMgr update
 	if waypointMgr and f % waypointMgrGameFrameRate < .1 then
 		waypointMgr.GameFrame(f)
@@ -316,14 +295,12 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerD
 		waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
 	if team[unitTeam] then
-		delayedCalls[unitID] = nil
 		team[unitTeam].UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	if team[unitTeam] then
-		delayedCalls[unitID] = nil
 		team[unitTeam].UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	end
 end

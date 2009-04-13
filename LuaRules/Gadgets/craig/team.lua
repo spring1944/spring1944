@@ -28,7 +28,6 @@ do
 	end
 end
 local Log = Team.Log
-local DelayedCall = gadget.DelayedCall
 
 -- constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -122,40 +121,38 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 
 	-- queue unitBuildOrders if we have any for this unitDefID
 	if unitBuildOrder[unitDefID] then
-		DelayedCall(unitID, function()
-			-- factory or builder?
-			if (UnitDefs[unitDefID].TEDClass == "PLANT") then
-				-- If there are no enemies, don't bother lagging Spring to death:
-				-- just go through the build queue exactly once, instead of repeating it.
-				if enemyBaseCount > 0 then
-					GiveOrderToUnit(unitID, CMD.REPEAT, {1}, {})
-					-- Each next factory gives fight command to next enemy.
-					-- Didn't use math.random() because it's really hard to establish
-					-- a 100% correct distribution when you don't know whether the
-					-- upper bound of the RNG is inclusive or exclusive.
-					if (not waypointMgr) then
-						enemyBaseLastAttacked = enemyBaseLastAttacked + 1
-						if enemyBaseLastAttacked > enemyBaseCount then
-							enemyBaseLastAttacked = 1
-						end
-						-- queue up a bunch of fight orders towards all enemies
-						local idx = enemyBaseLastAttacked
-						for i=1,enemyBaseCount do
-							-- enemyBases[] is in the right format to pass into GiveOrderToUnit...
-							GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {"shift"})
-							idx = idx + 1
-							if idx > enemyBaseCount then idx = 1 end
-						end
+		-- factory or builder?
+		if (UnitDefs[unitDefID].TEDClass == "PLANT") then
+			-- If there are no enemies, don't bother lagging Spring to death:
+			-- just go through the build queue exactly once, instead of repeating it.
+			if (enemyBaseCount > 0 or Spring.GetGameSeconds() < 0.1) then
+				GiveOrderToUnit(unitID, CMD.REPEAT, {1}, {})
+				-- Each next factory gives fight command to next enemy.
+				-- Didn't use math.random() because it's really hard to establish
+				-- a 100% correct distribution when you don't know whether the
+				-- upper bound of the RNG is inclusive or exclusive.
+				if (not waypointMgr) then
+					enemyBaseLastAttacked = enemyBaseLastAttacked + 1
+					if enemyBaseLastAttacked > enemyBaseCount then
+						enemyBaseLastAttacked = 1
+					end
+					-- queue up a bunch of fight orders towards all enemies
+					local idx = enemyBaseLastAttacked
+					for i=1,enemyBaseCount do
+						-- enemyBases[] is in the right format to pass into GiveOrderToUnit...
+						GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {"shift"})
+						idx = idx + 1
+						if idx > enemyBaseCount then idx = 1 end
 					end
 				end
-				for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-					Log("Queueing: ", UnitDefs[bo].humanName)
-					GiveOrderToUnit(unitID, -bo, {}, {})
-				end
-			else
-				Log("Warning: unitBuildOrder can only be used to control factories")
 			end
-		end)
+			for _,bo in ipairs(unitBuildOrder[unitDefID]) do
+				Log("Queueing: ", UnitDefs[bo].humanName)
+				GiveOrderToUnit(unitID, -bo, {}, {})
+			end
+		else
+			Log("Warning: unitBuildOrder can only be used to control factories")
+		end
 	end
 
 	-- if any unit manager takes care of the unit, return
