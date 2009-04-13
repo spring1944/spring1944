@@ -3,7 +3,7 @@
 	unitname=RUSGAZAAA;
 	objectname=RUSGAZAAA.S3O;
 	corpse=RUSGAZAAA_Destroyed;
-	icontype=truck;
+	icontype=AAtruck;
 	soundcategory=RUSVeh;
 	category=TANK TPORT NFLAG INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
