@@ -137,7 +137,7 @@ end
 local function DisplayListStar()
 	local vertices = {
 		{v = {0, 0, 0}},
-		
+
 		{v = {0, 1, 0}},
 		{v = {0.29, 0.4, 0}},
 		{v = {0.95, 0.31, 0}},
@@ -161,22 +161,22 @@ local function DisplayListBullet()
 		{v = {0.1, -1, 0}},
 		{v = {0.1, -0.9, 0}},
 		{v = {-0.1, -0.9, 0}},
-		
+
 		{v = {-0.1, -0.8, 0}},
 		{v = {0.1, -0.8, 0}},
 		{v = {0.1, 0, 0}},
 		{v = {-0.1, 0, 0}},
-		
+
 		{v = {-0.1, 0, 0}},
 		{v = {0.1, 0, 0}},
 		{v = {0.08, 0.4, 0}},
 		{v = {-0.08, 0.4, 0}},
-		
+
 		{v = {-0.07, 0.4, 0}},
 		{v = {0.07, 0.4, 0}},
 		{v = {0.05, 0.8, 0}},
 		{v = {-0.05, 0.8, 0}},
-		
+
 		{v = {-0.05, 0.8, 0}},
 		{v = {0.05, 0.8, 0}},
 		{v = {0.01, 1, 0}},
@@ -190,13 +190,13 @@ end
 --size (-1, -1) to (1, 1)
 local function DisplayListBullets()
 	glPushMatrix()
-	
+
 	DisplayListBullet()
 	glTranslate(-0.5, 0, 0)
 	DisplayListBullet()
 	glTranslate(1, 0, 0)
 	DisplayListBullet()
-	
+
 	glPopMatrix()
 end
 
@@ -207,7 +207,7 @@ local function DisplayListShare()
 		{v = {-0.03125, -0.75, 0}},
 		{v = {0.03125, -0.75, 0}},
 	}
-	
+
 	local verticesTop = {
 		{v = {0, 0.25, 0}},
 		{v = {0.03125, 0.75, 0}},
@@ -253,9 +253,9 @@ end
 
 local function GetComponent(x, y)
 	local tx, ty = MainTransform(x, y)
-	
+
 	if (ty > 1 or ty < -1) then return end
-	
+
 	if (tx >= -18 and tx <= -2) then
 		return "mShare"
 	elseif (tx >= 2 and tx <= 18) then
@@ -267,7 +267,7 @@ end
 
 local function DrawActiveClick()
 	if (not activeClick) then return end
-	
+
 	local mx, my = GetMouseState()
 	local tx, ty = MainTransform(mx, my)
 	if (activeClick == "mShare") then
@@ -297,7 +297,7 @@ end
 
 local function ReleaseActiveClick(x, y)
 	local tx, ty = MainTransform(x, y)
-	
+
 	if (activeClick == "mShare") then
 		SetShareLevel("metal", GetMShare(tx))
 	elseif (activeClick == "eShare") then
@@ -306,7 +306,7 @@ local function ReleaseActiveClick(x, y)
 		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
 		widget:ViewResize(viewSizeX, viewSizeY)
 	end
-		
+
 	activeClick = false
 end
 
@@ -337,7 +337,7 @@ local function DrawMain()
 	glColor(0, 0, 0, 1)
 	glRect(-18, -0.25, -2, 0.25)
 	glRect(2, -0.25, 18, 0.25)
-	
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
 	--star icon
 	glPushMatrix()
@@ -345,20 +345,20 @@ local function DrawMain()
 		glColor(0.75, 0.75, 0.75, 1)
 		glCallList(starDisplayList)
 	glPopMatrix()
-	
+
 	--bullet icon
 	glPushMatrix()
 		glColor(1, 1, 0, 1)
 		glTranslate(1, 0, 0)
 		glCallList(bulletsDisplayList)
 	glPopMatrix()
-	
+
 	--resources
-	
+
 	local estimatedRemainingE = max(eCurr - resupplyResourceUpdates * recentSupplyUse, 0)
-	
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-	
+
 	--command
 	glPushMatrix()
 		glColor(0.75, 0.75, 0.75, 1)
@@ -371,25 +371,25 @@ local function DrawMain()
 			glCallList(shareDisplayList)
 		glPopMatrix()
 	glPopMatrix()
-	
+
 	--current text
 	glPushMatrix()
 		glTranslate(-10, -1.1, 0)
 		glText("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.75, "c")
 	glPopMatrix()
-	
+
 	--max text
 	glPushMatrix()
 		glTranslate(-2, -0.475, 0)
 		glText("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.75)
 	glPopMatrix()
-	
+
 	--change text
 	glPushMatrix()
 		glTranslate(-10, 0.15, 0)
 		glText("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0, 0.75, "c")
 	glPopMatrix()
-	
+
 	--logistics
 	glPushMatrix()
 		glTranslate(2, 0, 0)
@@ -404,26 +404,26 @@ local function DrawMain()
 			glCallList(shareDisplayList)
 		glPopMatrix()
 	glPopMatrix()
-	
+
 	--current text
 	glPushMatrix()
 		glTranslate(10, -1.1, 0)
 		glText("\255\255\255\1Logistics: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.75, "c")
 	glPopMatrix()
-	
+
 	--max text
 	glPushMatrix()
 		glTranslate(18, -0.475, 0)
 		glText("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.75)
 	glPopMatrix()
-	
+
 	--change text
 	glPushMatrix()
 		glTranslate(10, 0.15, 0)
 		glText("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0, 0.75, "c")
 	glPopMatrix()
-	
-	
+
+
 end
 
 local function ChangeSize(_,_,words)
@@ -450,7 +450,7 @@ function widget:Initialize()
 	Spring.SendCommands("resbar 0")
 	mainX, mainY = mainX or 10000, mainY or 10000
 	once = true
-	
+
 	widgetHandler:AddAction("s44_resbar_size", ChangeSize, nil, "t")
 end
 
@@ -459,9 +459,14 @@ function widget:Shutdown()
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
+	if (vsx and vsy) then
+		mainX = mainX + viewSizeX - vsx
+		mainY = mainY + viewSizeY - vsy
+	end
+
 	vsx = viewSizeX
 	vsy = viewSizeY
-	
+
 	local sizeX, sizeY = 20 * mainSize, mainSize
 	--keep panel in-screen
 	if (mainX < sizeX) then
@@ -502,7 +507,7 @@ function widget:DrawScreen()
 		widget:ViewResize(viewSizeX, viewSizeY)
 		once = false
 	end
-	
+
 	glPushMatrix()
 		glTranslate(mainX, mainY, 0)
 		glScale(mainSize, mainSize, 1)
@@ -511,7 +516,7 @@ function widget:DrawScreen()
 		end
 		DrawActiveClick()
 	glPopMatrix()
-	
+
 	glLineWidth(1)
 end
 
