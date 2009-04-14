@@ -30,7 +30,7 @@ local morphDefs = {
   {
     into = 'gbrvickers_sandbag',
     tech = 0,
-    time = 35,
+    time = 20,
     metal = 0,
     energy = 0,
     directional = true,
@@ -49,7 +49,7 @@ local morphDefs = {
   {
     into = 'germg42_sandbag',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,
@@ -68,7 +68,7 @@ local morphDefs = {
   {
     into = 'rusmaxim_sandbag',
     tech = 0,
-    time = 35,
+    time = 20,
     metal = 0,
     energy = 0,
     directional = true,
@@ -87,7 +87,7 @@ local morphDefs = {
   {
     into = 'usgimg_sandbag',
     tech = 0,
-    time = 35,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,

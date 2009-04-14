@@ -15,6 +15,7 @@ buildoptions =
 		"ushqengineer",
 		--"usairengineer",
 		"us_platoon_hq",
+		"usgmctruck",
 		--"us_platoon_hq_rifle",
 		--"us_platoon_hq_assault",
 	},
@@ -85,7 +86,7 @@ buildoptions =
 
 	usgunyard =
 	{
-		"usgmctruck",
+		--"usgmctruck",
 		"usm8gun_gunyard",
 		"usm5gun_truck",
 		"usm2gun_truck",
@@ -150,6 +151,7 @@ buildoptions =
 		"gerhqengineer",
 		--"gerairengineer",
 		"ger_platoon_hq",
+		"geropelblitz",
 		--"ger_platoon_hq_rifle",
 		--"ger_platoon_hq_assault",
 	},
@@ -211,7 +213,7 @@ buildoptions =
 
 	gergunyard =
 	{
-		"geropelblitz",
+		--"geropelblitz",
 		--"gerflak38_truck",
 		"gerleig18_gunyard",
 		"gerpak40_truck",
@@ -286,6 +288,7 @@ buildoptions =
 		"gbrhqengineer",
 		--"usairengineer",
 		"gbr_platoon_hq",
+		"gbrbedfordtruck",
 		--"gbr_platoon_hq_rifle",
 		--"gbr_platoon_hq_assault",
 	},
@@ -321,7 +324,7 @@ buildoptions =
 
 	gbrgunyard =
 	{
-		"gbrbedfordtruck",
+		--"gbrbedfordtruck",
 		"gbr17pdr_truck",
 		"gbr25pdr_truck",
 		"gbrbofors_truck",
@@ -473,6 +476,7 @@ buildoptions =
 		"rus_platoon_atheavy",
 		"rus_platoon_sniper",
 		"rus_platoon_mortar",
+		"ruszis5",
 	},
 
 	rusengineer =
@@ -537,7 +541,7 @@ buildoptions =
 
 	rusgunyard =
 	{
-		"ruszis5",
+		--"ruszis5",
 		"ruszis2_truck",
 		"ruszis3_truck",
 		"rusm30_truck",

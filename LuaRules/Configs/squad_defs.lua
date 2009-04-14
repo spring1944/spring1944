@@ -332,8 +332,10 @@ local squadDefs = {
 
 	 ["rus_platoon_rifle"] =
 	{
+		"ruscommissar",
   		"rusptrd",
-		"rusptrd",
+		"rusrifle",
+		"rusrifle",
 		"rusrifle",
   		"rusrifle",
   		"rusrifle",
@@ -473,7 +475,9 @@ local squadDefs = {
     ["rus_platoon_atheavy"] =
 	{
 		"rusrpg43",
+		"rusptrd",
 		"rusrpg43",
+		"rusptrd",
 		"rusrpg43",
 	},
 	

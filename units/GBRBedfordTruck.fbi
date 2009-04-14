@@ -63,5 +63,6 @@
 	[customParams]
 	{
 		dontCount=1;
+		buildOutside=1;
 	}
 }

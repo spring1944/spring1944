@@ -10,10 +10,10 @@
 	name=BA-64;
 	description=Light Scout Car;
 	side=RUS;
-	maxdamage=500;
-	buildcostmetal=600;
+	maxdamage=650;
+	buildcostmetal=540;
 	buildcostenergy=0;
-	buildtime=200;
+	buildtime=180;
 	footprintx=2;
 	footprintz=2;
 	mass=1000;

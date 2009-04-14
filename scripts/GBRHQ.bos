@@ -7,7 +7,6 @@ piece  base, pad, beam, door;
 
 static-var  Static_Var_3, Static_Var_4;
 
-
 activatescr()
 {
 	turn door to y-axis <130.000000> speed <50.000000>;
@@ -122,6 +121,18 @@ Create()
 	call-script InitState();
 	start-script SmokeUnit();
 }
+pickPlace(buildPlace)
+{
+if (buildPlace == 1)
+{
+move pad to x-axis [25] speed [4000];
+}
+
+if (buildPlace == 0)
+{
+move pad to x-axis [0] speed [4000];
+}
+}
 
 QueryNanoPiece(piecenum)
 {
@@ -141,6 +152,7 @@ Deactivate()
 	set-signal-mask 0;
 	start-script RequestState(1);
 }
+
 
 StartBuilding()
 {

@@ -70,13 +70,13 @@ end
 		end
 	end
 
-		for name, ud in pairs(UnitDefs) do
+	--[[	for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then
 				ud.customparams.weaponcost = (2 * ud.customparams.weaponcost)
 				end
 			end
-		end
+		end]]--
 
 	if (modOptions and modOptions.logistics_mult) then
 		for name, ud in pairs(UnitDefs) do

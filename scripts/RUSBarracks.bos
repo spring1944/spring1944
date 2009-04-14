@@ -131,6 +131,19 @@ Create()
 	start-script SmokeUnit();
 }
 
+pickPlace(buildPlace)
+{
+if (buildPlace == 1)
+{
+move pad to x-axis [25] speed [4000];
+}
+
+if (buildPlace == 0)
+{
+move pad to x-axis [0] speed [4000];
+}
+}
+
 QueryNanoPiece(piecenum)
 {
 	piecenum = beam;

@@ -178,15 +178,27 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.maxammo then
-		SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
-		vehicles[unitID] = {
-			ammoLevel = tonumber(ud.customParams.maxammo),
-			reloadFrame = {},
-		}
-		for weaponNum = 0, ud.customParams.weaponswithammo do
-			vehicles[unitID].reloadFrame[weaponNum] = 0
-		end
+		if ud.customParams.maxammo then
+			if ud.canFly then
+				SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
+				vehicles[unitID] = {
+					ammoLevel = tonumber(ud.customParams.maxammo),
+					reloadFrame = {},
+				}
+			for weaponNum = 0, ud.customParams.weaponswithammo do
+				vehicles[unitID].reloadFrame[weaponNum] = 0
+			end
+			else
+				SetUnitRulesParam(unitID, "ammo", 0)
+				vehicles[unitID] = {
+					ammoLevel = 0,
+					reloadFrame = {},
+				}		
+			for weaponNum = 0, ud.customParams.weaponswithammo do
+				vehicles[unitID].reloadFrame[weaponNum] = 0
+			end				
+			end
+
 	end
 end
 

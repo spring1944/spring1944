@@ -145,6 +145,19 @@ Deactivate()
 	start-script RequestState(1);
 }
 
+pickPlace(buildPlace)
+{
+if (buildPlace == 1)
+{
+move pad to x-axis [35] speed [4000];
+}
+
+if (buildPlace == 0)
+{
+move pad to x-axis [0] speed [4000];
+}
+}
+
 StartBuilding()
 {
 }
