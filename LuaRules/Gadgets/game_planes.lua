@@ -188,7 +188,7 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
 		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
 		if waypoint then
-			GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
+			GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
 		end
 	else --location: fight to waypoint, then patrol to target
 		if waypoint then
