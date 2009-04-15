@@ -75,7 +75,7 @@ local iconTypes = {
 		distance	=	0.2,
 	},
 	aatruck = {
-		bitmap		=	"icons/aatruck.tga",
+		bitmap		=	"icons/AAtruck.tga",
 		size			=	3,
 		distance	=	0.2,
 	},
