@@ -53,11 +53,13 @@ end
 
 
 function gadget:GameFrame(n)
-  for unitID, funcID in pairs(scriptIDs) do
-    local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
-    --SendToUnsynced("supressed", unitID, supression)
-		SetUnitRulesParam(unitID, "suppress", suppression)
-  end
+	if (n % (1.5*30) < 0.1) then
+	  for unitID, funcID in pairs(scriptIDs) do
+		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
+		--SendToUnsynced("supressed", unitID, supression)
+			SetUnitRulesParam(unitID, "suppress", suppression)
+	  end
+	end
 end
 
 --------------------------------------------------------------------------------
