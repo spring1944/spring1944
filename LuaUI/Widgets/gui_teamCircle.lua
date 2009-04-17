@@ -34,7 +34,10 @@ local function SetupCommandColors(state)
     f:close()
     Spring.SendCommands({'cmdcolors cmdcolors.tmp'})
   end
-  os.remove('cmdcolors.tmp')
+  --Spring newer then 0.78.2.1 doesn't have os.remove anymore
+  if (os.remove) then
+    os.remove('cmdcolors.tmp')
+  end
 end
 
 --------------------------------------------------------------------------------
