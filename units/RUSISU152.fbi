@@ -55,7 +55,7 @@
 	explodeas=Vehicle_Explosion_Large;
 	selfdestructas=Vehicle_Explosion_Large;
 
-	nochasecategory=FLAG INFTARG;
+	nochasecategory=FLAG INFTARG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=ML20S152mmHE;

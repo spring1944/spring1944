@@ -51,7 +51,7 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 	
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=M1Garand;

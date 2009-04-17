@@ -41,7 +41,7 @@
 
 	explodeas=Tiny_Explosion;
 	selfdestructas=Tiny_Explosion;
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 

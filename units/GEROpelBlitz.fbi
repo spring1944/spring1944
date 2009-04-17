@@ -54,7 +54,7 @@
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 
-	nochasecategory=VTOL;
+	nochasecategory=VTOL AIR;
 
 	onlytargetcategory1=NFLAGNAIR;
 	onlytargetcategory2=NFLAG;

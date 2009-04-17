@@ -52,7 +52,7 @@
 	explodeas=Vehicle_Explosion_Med;
 	selfdestructas=Vehicle_Explosion_Med;
 
-	nochasecategory=FLAG INFTARG;
+	nochasecategory=FLAG INFTARG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=17pdrAP;

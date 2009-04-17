@@ -42,7 +42,7 @@
 
 	hightrajectory=1;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=M1937_Mortar;

@@ -55,7 +55,7 @@
 	explodeas=Vehicle_Explosion_Large;
 	selfdestructas=Vehicle_Explosion_Large;
 
-	nochasecategory=VTOL;
+	nochasecategory=VTOL AIR;
 	badtargetcategory=VTOL;
 
 	weapon1=D25122mmHE;

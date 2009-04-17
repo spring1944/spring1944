@@ -46,7 +46,7 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 
-	nochasecategory=FLAG LIGHTVEH;
+	nochasecategory=FLAG LIGHTVEH AIR;
 	badtargetcategory=FLAG LIGHTVEH;
 
 	weapon1=Enfield_T;

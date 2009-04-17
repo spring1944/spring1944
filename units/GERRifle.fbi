@@ -47,7 +47,7 @@
 	maxslope=15;
 	maxwaterdepth=10;
 	
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	//explodeas=; //Infantry don't need to explode

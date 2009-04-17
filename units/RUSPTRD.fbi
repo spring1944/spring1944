@@ -44,7 +44,7 @@
 
 	badtargetcategory=INFANTRY;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=PTRD;

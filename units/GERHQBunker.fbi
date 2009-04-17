@@ -55,7 +55,7 @@
 
 	hightrajectory=0;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=MG34;

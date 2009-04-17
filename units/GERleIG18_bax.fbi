@@ -42,7 +42,7 @@
 	explodeas=Tiny_Explosion;
 	selfdestructas=Tiny_Explosion;
 
-	nochasecategory=FLAG;
+	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
 	weapon1=leIG18HE;
