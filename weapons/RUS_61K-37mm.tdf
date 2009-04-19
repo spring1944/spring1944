@@ -11,7 +11,7 @@
 	firestarter=0.0;
 	//targetmoveerror=0.1;
 	predictboost=0.9;
-	range=3225;
+	range=2100;
 	reloadtime=2.5;
 	burst=2;
 	burstrate=0.3;

@@ -13,7 +13,7 @@
 	side=GBR;
 	maxdamage=280;
 	damagemodifier=0.375;
-	buildcostmetal=500; //also matters not!
+	buildcostmetal=1050; //also matters not!
 	buildcostenergy=0;
 	buildtime=20;//matters not!
 	footprintx=1;
@@ -62,10 +62,10 @@
 	onlytargetcategory1=INFTARG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=170;
-	weapon2=stickybomb;
-	onlytargetcategory2=TANK;
-	weaponmaindir2=0 0 1;
-	maxangledif2=170;
+	//weapon2=stickybomb;
+	//onlytargetcategory2=TANK;
+	//weaponmaindir2=0 0 1;
+	//maxangledif2=170;
 	icontype=commando;
 	[sfxtypes]
 	{

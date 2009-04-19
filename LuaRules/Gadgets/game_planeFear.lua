@@ -6,9 +6,9 @@ function gadget:GetInfo()
   return {
     name      = "Plane Fear",
     desc      = "Causes Planes under heavy AA fire to abort attack runs",
-    author    = "quantum",
-    date      = "June 29, 2007",
-    license   = "GNU GPL, v2 or later",
+    author    = "B. Tyler",
+    date      = "April 20th, 2009",
+    license   = "LGPL v2 or later",
     layer     = 0,
     enabled   = true  --  loaded by default?
   }
@@ -28,7 +28,7 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
-local bugOutLevel = 1 --amount of fear where the plane bugs out back to HQ 
+local bugOutLevel = 3 --amount of fear where the plane bugs out back to HQ 
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
 local hqIDs = {}

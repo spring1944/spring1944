@@ -72,7 +72,7 @@
 
 	range=360;
 	energypershot=0;
-	reloadtime=0.8;
+	reloadtime=1.2;
 	burst=3;
 	burstrate=.1;
 	sprayangle=200;
