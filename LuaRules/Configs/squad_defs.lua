@@ -336,7 +336,6 @@ local squadDefs = {
   		"rusptrd",
 		"rusrifle",
 		"rusrifle",
-		"rusrifle",
   		"rusrifle",
   		"rusrifle",
   		"rusrifle",
