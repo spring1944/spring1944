@@ -4,7 +4,9 @@
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, bomb, blades, bombemit;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#include "air_sharedDefs.h"
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
@@ -12,6 +14,8 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 #define XSMALL_MUZZLEFLASH	1024+3
 
 #define SIG_BANK			10
+#define SIG_FEARRECOVERY	8
+
 #define BugOutLevel			90//% of health when plane ditches its bombs
 //tracers
 #define MEDIUM_TRACER 	2048+5
@@ -167,6 +171,49 @@ Deactivate()
 	start-script RequestState(1);
 }
 
+FearRecovery() 
+{ 
+signal SIG_FEARRECOVERY;
+set-signal-mask SIG_FEARRECOVERY;
+	
+     while(iFear > 0) 
+        { 
+	        sleep RecoverRate; 
+			iFear = iFear - RecoverConstant; 
+        } 
+	//start-script RestoreAfterCover();   
+	return (1); 
+}
+
+HitByWeaponId(z,x,id,damage)
+{	
+	
+	if (Id==701)
+	{
+	iFear = iFear + AAFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
+	start-script FearRecovery();
+	return (100);
+	}
+	
+	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-1, 100);
+	emit-sfx 2048+1 from bombemit;
+	hide bomb;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
+	}
+	return (100); 
+}
+
+luaFunction(arg1)
+{
+ arg1 = iFear;
+}
+
+
 SweetSpot(piecenum)
 {
 	piecenum = base;
@@ -193,21 +240,6 @@ FireWeapon1()
 	hide bomb;
 	return (0);
 }
-
-HitByWeaponId(z,x,id,damage)
-{
-if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
-	{
-	get WEAPON_PROJECTILE_SPEED (-1, 100);
-	emit-sfx 2048 from bombemit;
-	hide bomb;
-	var gameFrame;
-	gameFrame = get GAME_FRAME;
-	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
-	}
-return (100);
-}
-
 
 AimFromWeapon2(piecenum) 
 {

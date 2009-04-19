@@ -117,5 +117,6 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = me109b-;
 		enginesoundnr = 18;
+		feartarget=1;
 	}
 }

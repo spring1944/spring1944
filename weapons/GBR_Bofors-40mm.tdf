@@ -18,8 +18,8 @@
 	burstrate=0.3;
 	sprayangle=550;
 	weaponvelocity=5000;
-	areaofeffect=120;
-	edgeeffectiveness=0.000001;
+	areaofeffect=80;
+	edgeeffectiveness=0.0000001;
 	burnblow=1;
 	weapontimer=1;
 	canattackground=0;
@@ -50,6 +50,11 @@
 		infantry=800;
 		guns=600;
 		planes=2040;
+	}
+	[customParams]
+	{
+		fearid=701;
+		fearaoe=250;
 	}
 }
 

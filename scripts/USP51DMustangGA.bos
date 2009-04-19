@@ -1,12 +1,11 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, mg3, mg4, mg5, mg6, blades;
 piece rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocketexhaust1, rocketexhaust2, rocketexhaust3, rocketexhaust4, rocketexhaust5, rocketexhaust6;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#include "air_sharedDefs.h"
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
@@ -14,10 +13,12 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 #define XLARGE_MUZZLEFLASH	1024+3
 
 #define SIG_BANK			2
+#define SIG_FEARRECOVERY		4
 
 //tracers
 #define MEDIUM_TRACER 	2048+8
 
+#include "air_fearHandling.h"
 startengine()
 {
 	spin propeller around z-axis speed <800> accelerate <200>;
@@ -452,7 +453,7 @@ FireWeapon8()
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type BITMAPONLY | BITMAP1;
+	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

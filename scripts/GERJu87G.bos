@@ -1,12 +1,14 @@
-#define TA			// This is a TA script
 
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
+
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, blades, gun1, gun2;
 piece turret, machineguns, flare1, flare2, mgflare1, mgflare2;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#include "air_sharedDefs.h"
+
 
 #define SMOKEPUFF_GPL_FX 		1024+0
 #define MG_MUZZLEFLASH			1024+1
@@ -15,9 +17,15 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 #define SIG_BANK 				2
 #define SIG_AIM					4
+#define SIG_AIM2				8
+#define SIG_AIM3				16
+#define SIG_AIM4				32
+#define SIG_FEARRECOVERY		64
 
 #define SMALL_TRACER 			2048+5
 #define LARGE_TRACER			2048+6
+
+#include "air_fearHandling.h"
 
 startengine()
 {
@@ -164,12 +172,13 @@ Deactivate()
 	start-script RequestState(1);
 }
 
+
 SweetSpot(piecenum)
 {
 	piecenum = base;
 }
 
-AimFromWeapon1(piecenum) //Coax fear 
+AimFromWeapon1(piecenum)
 {
 	piecenum = fuselage;
 }
@@ -225,8 +234,8 @@ QueryWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3;
 	turn turret to y-axis heading - <180> speed <200>;
 	turn machineguns to x-axis 0 + pitch speed <200>;
 	wait-for-turn turret around y-axis;
@@ -286,8 +295,8 @@ QueryWeapon4(piecenum)
 
 AimWeapon4(heading, pitch)
 {
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4;
 	turn turret to y-axis heading - <180> speed <200>;
 	turn machineguns to x-axis 0 + pitch speed <200>;
 	wait-for-turn turret around y-axis;
@@ -337,7 +346,7 @@ FireWeapon4()
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type BITMAPONLY | BITMAP1;
+	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

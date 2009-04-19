@@ -88,5 +88,6 @@
 		proptexture=bitmaps/prop3.tga;
 		enginesound = spitfireb-;
 		enginesoundnr = 18;
+		feartarget=1;
 	}
 }

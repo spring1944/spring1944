@@ -122,5 +122,6 @@
 		proptexture=bitmaps/prop5.tga;
 		enginesound = spitfireb-;
 		enginesoundnr = 18;
+		feartarget=1;
 	}
 }

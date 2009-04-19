@@ -1,12 +1,14 @@
-#define TA			// This is a TA script
 
 #include "constants.h"
+
+
+#include "air_sharedDefs.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, blades, door1a, door1b, door2a, door2b;
 piece mg1, mg2, cannon1, cannon2, turret, machinegun, mgflare, bomb1, bomb2, bombemit1, bombemit2;
 piece rocket1, rocket2, rocket3, rocket4, rocketexhaust1, rocketexhaust2, rocketexhaust3, rocketexhaust4;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
@@ -16,6 +18,8 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
 #define SIG_BANK			2
 #define SIG_AIM				4
+#define SIG_FEARRECOVERY	8
+
 #define BugOutLevel			90 //% of health when the pilot drops bombs for more speed
 //tracers
 #define SMALL_TRACER 	2048+8
@@ -167,6 +171,48 @@ Create()
 	call-script InitState();
 	start-script SmokeUnit();
 	set 1024 to 0;
+}
+FearRecovery() 
+{ 
+signal SIG_FEARRECOVERY;
+set-signal-mask SIG_FEARRECOVERY;
+	
+     while(iFear > 0) 
+        { 
+	        sleep RecoverRate; 
+			iFear = iFear - RecoverConstant; 
+        } 
+	//start-script RestoreAfterCover();   
+	return (1); 
+}
+
+HitByWeaponId(z,x,id,damage)
+{	
+	
+	if (Id==701)
+	{
+	iFear = iFear + AAFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
+	start-script FearRecovery();
+	return (100);
+	}
+	
+	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (7)) < (get (GAME_FRAME)) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-7, 100);
+	emit-sfx 2048+7 from bombemit1;
+	hide bomb1;
+	hide bomb2;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-7, (gameFrame+108000));
+	}
+	return (100); 
+}
+
+luaFunction(arg1)
+{
+ arg1 = iFear;
 }
 
 Activate()
@@ -379,21 +425,6 @@ FireWeapon7()
 {
 	sleep 67;
 	return (0);
-}
-
-HitByWeaponId(z,x,id,damage)
-{
-if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (7)) < (get (GAME_FRAME)) + 1))
-	{
-	get WEAPON_PROJECTILE_SPEED (-7, 100);
-	emit-sfx 2048+7 from bombemit1;
-	hide bomb1;
-	hide bomb2;
-	var gameFrame;
-	gameFrame = get GAME_FRAME;
-	get WEAPON_RELOADSTATE (-7, (gameFrame+108000));
-	}
-return (100);
 }
 
 AimFromWeapon8(piecenum)

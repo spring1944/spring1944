@@ -17,7 +17,7 @@
 	burstrate=0.16;
 	sprayangle=475;
 	weaponvelocity=5000;
-	areaofeffect=80;
+	areaofeffect=40;
 	edgeeffectiveness=0.95;
 	burnblow=1;
 	weapontimer=1;
@@ -52,6 +52,11 @@
 		infantry=200;
 		guns=200;
 		planes=80;
+	}
+	[customParams]
+	{
+		fearid=701;
+		fearaoe=160;
 	}
 }
 [kwk3020mmhe]

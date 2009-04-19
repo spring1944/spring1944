@@ -1,11 +1,11 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, cannon1, cannon2, blades;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#include "air_sharedDefs.h"
+
 
 #define SMOKEPUFF_GPL_FX 		1024+0
 #define MG_MUZZLEFLASH			1024+1
@@ -13,10 +13,12 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 #define MG_SHELLCASINGS 		1024+3
 
 #define SIG_BANK 				2
+#define SIG_FEARRECOVERY		4
 
 #define MEDIUM_TRACER 			2048+4
 #define LARGE_TRACER			2048+5
 
+#include "air_fearHandling.h"
 startengine()
 {
 	spin propeller around z-axis speed <800> accelerate <200>;
@@ -165,6 +167,7 @@ Deactivate()
 {
 	start-script RequestState(1);
 }
+
 
 SweetSpot(piecenum)
 {
@@ -326,7 +329,7 @@ return (0);
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type BITMAPONLY | BITMAP1;
+	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;

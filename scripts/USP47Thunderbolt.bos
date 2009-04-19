@@ -1,15 +1,18 @@
-#define TA			// This is a TA script
-
 #include "constants.h"
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, mg1, mg2, mg3, mg4, mg5, mg6, mg7, mg8, bomb, blades, bombemit;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#include "air_sharedDefs.h"
+
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
 #define MG_MUZZLEFLASH	1024+2
 #define SIG_BANK			2
+#define SIG_FEARRECOVERY	4
+
 #define BugOutLevel			90 //% of health when pilot drops bombs for more speed
 //tracers
 #define MEDIUM_TRACER 	2048+9
@@ -163,6 +166,48 @@ Deactivate()
 	start-script RequestState(1);
 }
 
+FearRecovery() 
+{ 
+signal SIG_FEARRECOVERY;
+set-signal-mask SIG_FEARRECOVERY;
+	
+     while(iFear > 0) 
+        { 
+	        sleep RecoverRate; 
+			iFear = iFear - RecoverConstant; 
+        } 
+	//start-script RestoreAfterCover();   
+	return (1); 
+}
+
+HitByWeaponId(z,x,id,damage)
+{	
+	
+	if (Id==701)
+	{
+	iFear = iFear + AAFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
+	start-script FearRecovery();
+	return (100);
+	}
+	
+	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-1, 100);
+	emit-sfx 2048+1 from bombemit;
+	hide bomb;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
+	}
+	return (100); 
+}
+
+luaFunction(arg1)
+{
+ arg1 = iFear;
+}
+
 SweetSpot(piecenum)
 {
 	piecenum = base;
@@ -187,20 +232,6 @@ FireWeapon1()
 {
 	hide bomb;
 	return (0);
-}
-
-HitByWeaponId(z,x,id,damage)
-{
-if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
-	{
-	get WEAPON_PROJECTILE_SPEED (-1, 100);
-	emit-sfx 2048 from bombemit;
-	hide bomb;
-	var gameFrame;
-	gameFrame = get GAME_FRAME;
-	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
-	}
-return (100);
 }
 
 AimFromWeapon2(piecenum) //Coax fear 

@@ -130,5 +130,6 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = p51b-;
 		enginesoundnr = 16;
+		feartarget=1;
 	}
 }

@@ -95,5 +95,6 @@
 	[customParams]
 	{
 		dontCount=1;
+		feartarget=1;
 	}
 }

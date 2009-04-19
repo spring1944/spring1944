@@ -130,5 +130,6 @@
 		proptexture = bitmaps/prop3.tga;
 		enginesound = fw190b-;
 		enginesoundnr = 12;
+		feartarget=1;
 	}
 }
