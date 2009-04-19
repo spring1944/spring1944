@@ -4,6 +4,7 @@
 	objectname=RUSPShack.S3O;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;
+	icontype=shack;
 	soundcategory=RUSYard;
 	yardmap=ccc coc ccc;
 

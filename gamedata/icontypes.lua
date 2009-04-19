@@ -99,6 +99,12 @@ local iconTypes = {
 		size			=	2.5,
 		distance	=	1,
 	},
+	fighterbomber = {
+		bitmap		=	"icons/fighterbomber.tga",
+		size			=	2.5,
+		distance	=	1,
+	},
+
 	gerhq = {
 		bitmap		=	"icons/gerhq.tga",
 		size			=	4,
@@ -221,7 +227,7 @@ local iconTypes = {
 	},
 	barracks = {
 		bitmap		=	"icons/barracks.tga",
-		size			=	2.75,
+		size			=	3,
 		distance	=	0.4,
 	},
 	radar = {
@@ -232,6 +238,11 @@ local iconTypes = {
 	flag = {
 		bitmap		=	"icons/flag.tga",
 		size			=	2.5,
+		distance	=	0.3,
+	},
+	shack = {
+		bitmap		=	"icons/shack.tga",
+		size			=	2.75,
 		distance	=	0.3,
 	},
 }
