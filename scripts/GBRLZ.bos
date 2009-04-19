@@ -145,8 +145,8 @@ Create()
 	start-script baseloop();
 	call-script InitState();
 	start-script SmokeUnit();
-	sleep 60000;
-	emit-sfx 2048 from base;
+	//sleep 60000;
+	//emit-sfx 2048 from base;
 }
 
 
@@ -167,8 +167,8 @@ Deactivate()
 
 StartBuilding()
 {
-sleep commandoBuildTime;
-emit-sfx 2048 from base;
+//sleep commandoBuildTime;
+//emit-sfx 2048 from base;
 }
 
 StopBuilding()
