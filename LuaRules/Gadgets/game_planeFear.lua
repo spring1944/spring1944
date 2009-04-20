@@ -28,7 +28,10 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
-local bugOutLevel = 3 --amount of fear where the plane bugs out back to HQ 
+local SetUnitNoSelect = GG.SetUnitNoSelect --uses game_noselect gadget
+local GiveOrderToUnit = GG.GiveOrderToUnitDisregardingNoSelect
+
+local bugOutLevel = 3 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
 local hqIDs = {}
@@ -41,7 +44,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly then
 		local planeScriptID = Spring.GetCOBScriptID(unitID, "luaFunction")
-  		if (planeScriptID) then 
+  		if (planeScriptID) then
 			SetUnitRulesParam(unitID, "suppress", 0)
 			planeScriptIDs[unitID] = planeScriptID
 		end
@@ -60,7 +63,7 @@ end
 	if ud.canFly then
 	for unitID, someThing in pairs(planeScriptIDs) do
 		if Spring.GetUnitNoSelect == true then]]--
-		
+
 
 function gadget:GameFrame(n)
 	if (n % (0.25*30) < 0.1) then
@@ -68,15 +71,15 @@ function gadget:GameFrame(n)
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
 		local teamID = Spring.GetUnitTeam(unitID)
 		--Spring.Echo("Plane TeamID", teamID)
-			if suppression > bugOutLevel then 
+			if suppression > bugOutLevel then
 				SetUnitRulesParam(unitID, "suppress", suppression)
 				local px, py, pz = Spring.GetTeamStartPosition(teamID)
-				Spring.GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
+				GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
 				--Spring.Echo("Move order issued,", "Fear level:", suppression)
-				Spring.SetUnitNoSelect(unitID, true)
+				SetUnitNoSelect(unitID, true)
 			else
 				--Spring.Echo("No Fear, selectable:", suppression)
-				Spring.SetUnitNoSelect(unitID, false)
+				SetUnitNoSelect(unitID, false)
 			end
 		end
 	end

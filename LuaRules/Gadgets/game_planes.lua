@@ -26,11 +26,9 @@ local PLANE_STATE_RETREAT = 1
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
-local GiveOrderToUnit = Spring.GiveOrderToUnit
 local SetUnitPosition = Spring.SetUnitPosition
 local SetUnitRotation = Spring.SetUnitRotation
 local SetUnitVelocity = Spring.SetUnitVelocity
-local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GetTeamResources = Spring.GetTeamResources
 local GetTeamStartPosition = Spring.GetTeamStartPosition
 local GetUnitCmdDescs = Spring.GetUnitCmdDescs
@@ -53,6 +51,9 @@ local vNearestMapEdge = GG.Vector.NearestMapEdge
 local vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
 
 local DelayCall = GG.Delay.DelayCall
+
+local SetUnitNoSelect = GG.SetUnitNoSelect --uses game_noselect gadget
+local GiveOrderToUnit = GG.GiveOrderToUnitDisregardingNoSelect
 
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
