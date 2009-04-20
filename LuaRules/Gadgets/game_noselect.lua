@@ -39,12 +39,12 @@ function GG.GiveOrderToUnitDisregardingNoSelect(unitID, cmdID, cmdParams, cmdOpt
 end
 
 
-function gadgetHandler:UnitDestroyed(unitID)
+function gadget:UnitDestroyed(unitID)
 	noSelect[unitID] = nil
 end
 
 
-function gadgetHandler:AllowCommand(unitID)
+function gadget:AllowCommand(unitID)
 	return not noSelect[unitID] or allowAll
 end
 
