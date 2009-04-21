@@ -55,6 +55,7 @@ buildoptions =
 		"us_platoon_flame",
 		"us_platoon_mortar",
 		"usm8gun_bax",
+		"usgmctruck",
 	},
 
 	usengineer =
@@ -182,6 +183,7 @@ buildoptions =
 		"ger_platoon_sniper",
 		"ger_platoon_mortar",
 		"gerleig18_bax",
+		"geropelblitz",
 	},
 
 	gerengineer =
@@ -320,6 +322,7 @@ buildoptions =
 		"gbr_platoon_sniper",
 		"gbr_platoon_mortar",
 		"gbr_platoon_commando",
+		"gbrbedfordtruck",
 	},
 
 	gbrgunyard =

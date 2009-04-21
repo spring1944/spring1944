@@ -7,6 +7,18 @@ piece  base, pad, beam, door;
 
 static-var  Static_Var_3, Static_Var_4;
 
+pickPlace(buildPlace)
+{
+if (buildPlace == 1)
+{
+move pad to x-axis [25] speed [4000];
+}
+
+if (buildPlace == 0)
+{
+move pad to x-axis [0] speed [4000];
+}
+}
 
 activatescr()
 {

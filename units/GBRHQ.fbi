@@ -66,5 +66,6 @@
 		flagCapRate=10;
 		ammoSupplier=1;
 		supplyRange=500;
+		separatebuildspot=1;
 	}
 }

@@ -16,7 +16,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			local builderDefID = Spring.GetUnitDefID(builderID)
 			local bud = UnitDefs[builderDefID]
 			local buildPlace
-			if (bud.customParams.hq) or (ud.name == "rusbarracks") then
+			if (bud.customParams.separatebuildspot) then
 				if (ud.customParams.buildoutside) then
 					buildPlace = 1
 				else
