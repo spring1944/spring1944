@@ -4,7 +4,7 @@
 --
 --  file:    unit_morph.lua
 --  brief:   Adds unit morphing command
---  author:  Dave Rodgers (improved by jK, Licho and aegis)
+--  author:  Dave Rodgers (improved by jK, Licho, aegis, yuritch, Tobi)
 --
 --  Copyright (C) 2007.
 --  Licensed under the terms of the GNU GPL, v2 or later.
@@ -967,6 +967,11 @@ local function SelectSwap(cmd, oldID, newID)
     end
   end
 
+  --copy control group
+  local unitGroup = Spring.GetUnitGroup(oldID)
+  if (unitGroup) then
+    Spring.SetUnitGroup(newID, unitGroup)
+  end
 
   if (Script.LuaUI('MorphFinished')) then
     if (useLuaUI) then
