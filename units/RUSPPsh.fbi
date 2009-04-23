@@ -28,12 +28,6 @@
 	airsightdistance=2500;
 	stealth=1;
 
-	canassist=0;
-	canrepair=0;
-	canreclaim=0;
-	canrestore=0;
-	shownanospray=0;
-
 	canmove=1;
 	movementclass=KBOT_Infantry;
 	maxvelocity=1.6;
