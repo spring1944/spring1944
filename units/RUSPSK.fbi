@@ -1,0 +1,76 @@
+[unitinfo]
+{
+	unitname=RUSPSK;
+	objectname=RUSPSK;
+	corpse=RUSPSK_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=Brilliant-class Border Guard Ship;
+	description= Large Patrol Ship;
+	maxdamage=25000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=100000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1100;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=1.68; //16.8 knots
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=102mmL60;
+	Weapon2=61k37mmaa;
+	Weapon3=61k37mmaa;
+	Weapon4=61k37mmaa; //20mmflakvierling;
+	Weapon5=dshk; //20mmflakvierling;
+	Weapon6=dshk;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 -1;
+	MaxAngleDif2=300;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	WeaponMainDir4=0 0 -1;
+	MaxAngleDif4=270;
+
+	WeaponMainDir5=1 0 0;
+	MaxAngleDif5=270;
+
+	WeaponMainDir6=-1 0 0;
+	MaxAngleDif6=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

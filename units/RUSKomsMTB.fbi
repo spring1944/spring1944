@@ -1,0 +1,71 @@
+[unitinfo]
+{
+	unitname=RUSKomsMTB;
+	objectname=RUSKomsMTB;
+	corpse=RUSKomsMTB_dead;
+	icontype=torpboat;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Komsomolets class MTB;
+	description= torpedo boat;
+	maxdamage=5000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=4;
+	footprintz=4;
+	mass=75000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1000;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=4.8; //48 knots
+	acceleration=0.2;
+	brakerate=0.2;
+	turnrate=50;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=533mmtorpedo;
+	Weapon2=533mmtorpedo;
+	Weapon3=twin_dshk;
+	Weapon4=twin_dshk;
+
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=40;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=40;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	WeaponMainDir4=0 0 -1;
+	MaxAngleDif4=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -1,0 +1,66 @@
+[unitinfo]
+{
+	unitname=GBRPontoonTruck;
+	objectname=GBRPontoonTruck.s3o;
+	corpse=GBRPontoonTruck_Dead;
+	icontype=truck;
+	buildpic=GBRPontoonTruck.png;
+	soundcategory=GBRVeh;
+	category=NFLAGNAIR TANK TPORT INFTARG NFLAG NWEAPON;
+	tedclass=TANK;
+
+	name=Bedford Pontoon Transport;
+	description=Deployable Boatyard Vehicle;
+	side=GBR;
+	maxdamage=500;
+	idleautoheal=2;
+	idletime=1000;
+	buildcostmetal=2100;
+	buildcostenergy=0;
+	buildtime=1400;
+	footprintx=3;
+	footprintz=3;
+	mass=1000;
+
+	shownanoframe=0;
+	SeismicSignature=0;
+	sightdistance=800;
+	stealth=1;
+
+	canmove=1;
+	movementclass=TANK_Truck_deep;
+	maxvelocity=4.5;//4.8
+	acceleration=0.3;
+	brakerate=0.96;
+	turnrate=440;
+	maxslope=10;
+	maxwaterdepth=15;
+	turninplace=0;
+
+	leavetracks=1;
+	trackwidth=12;
+	trackoffset=5;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	transportsize=1;
+	transportcapacity=15;
+	transportmass=750;
+	releaseheld=1;
+	//unloadspread=2;
+	//transportUnloadMethod=2;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

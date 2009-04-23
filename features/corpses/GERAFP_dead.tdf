@@ -1,0 +1,13 @@
+[GERAFP_dead]
+{
+	object=GERAFP_dead;
+	description=Sunk Artilleriefahrprahm;
+	energy=5000;
+	damage=20000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=10;
+}

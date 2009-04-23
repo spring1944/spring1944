@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=RUSTYPEM;
+	objectname=RUSTYPEM;
+	corpse=RUSTypeM_dead;
+	icontype=sub;
+	category=NFLAGNAIR NFLAG WEAPON SUB LARGESHIP;
+	tedclass=SHIP;
+
+	name=Type M submarine;
+	description= Light Attack Submarine;
+	maxdamage=2500;
+	buildcostmetal=10000;
+	buildcostenergy=0;
+	buildtime=2500;
+	footprintx=8;
+	footprintz=8;
+	mass=60000;
+	floater=1;
+	minwaterdepth=40;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	airsightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=BOAT_Sub;
+	maxvelocity=0.82; // 8.2 knots submerged
+	acceleration=0.2;
+	brakerate=0.20;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	waterline=60;
+
+	canAttack=1;
+	Weapon1=533mmtorpedo; //450mmtorp;
+	Weapon2=533mmtorpedo; //450mmtorp;
+	WeaponMainDir1=0 0 1;
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif1=60;
+	MaxAngleDif2=60;
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

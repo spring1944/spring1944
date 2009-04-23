@@ -1,0 +1,65 @@
+[unitinfo]
+{
+	unitname=RUSLCT;
+	objectname=RUSLCT;
+	corpse=RUSLCT_dead;
+	icontype=transportship;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=LCT mk.6;
+	description= transports up to 4 tanks;
+	maxdamage=12500;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=150000;
+	floater=1;
+	minwaterdepth=2;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=700;
+	airsightdistance=1100;
+	stealth=0;
+
+	// enough for 5 shermans
+	transportsize=26;
+	transportcapacity=26;
+	//transportcapacity=5;
+	transportmass=12000;
+	holdsteady=1;
+	turninplace=0;
+
+	canmove=1;
+	movementclass=BOAT_LandingCraft;
+	maxvelocity=0.7; // 7 knots
+	acceleration=0.2;
+	brakerate=0.15;
+	turnrate=42.5;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	Weapon1=20mmOerlikon; //oerlikon20mm;
+	Weapon2=20mmOerlikon; //oerlikon20mm;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 -1;
+	MaxAngleDif2=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

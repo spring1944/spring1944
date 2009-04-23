@@ -1,0 +1,13 @@
+[GERType1934_dead]
+{
+	object=GERType1934_dead;
+	description=Sunk Type 1934;
+	energy=5000;
+	damage=50000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

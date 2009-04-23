@@ -1,0 +1,85 @@
+[unitinfo]
+{
+	unitname=RUSMonitor;
+	objectname=RUSMonitor;
+	corpse=RUSMonitor_dead;
+	icontype=pontoon;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Zhelezniakov-class monitor;
+	description= Fire Support Ship;
+	maxdamage=30000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=240000;
+	floater=1;
+	minwaterdepth=6;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_River;
+	maxvelocity=0.83; //8.3 knots max. It's really sluggish
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=mk_2_4;
+	Weapon2=41k45mmhe;
+	Weapon3=40k45mmhe;
+	Weapon4=dshk;
+	Weapon5=dshk;
+	Weapon6=61k37mmaa;
+	Weapon7=61k37mmaa;
+	Weapon8=dshk;
+	Weapon9=dshk;
+
+	WeaponMainDir1=0 -1 0;
+	MaxAngleDif1=300;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=300;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=300;
+
+	WeaponMainDir4=0 0 1;
+	MaxAngleDif4=270;
+
+	WeaponMainDir5=0 0 -1;
+	MaxAngleDif5=300;
+
+	WeaponMainDir6=0 0 -1;
+	MaxAngleDif6=270;
+
+	WeaponMainDir7=0 0 -1;
+	MaxAngleDif7=300;
+
+	WeaponMainDir9=0 0 -1;
+	MaxAngleDif9=300;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

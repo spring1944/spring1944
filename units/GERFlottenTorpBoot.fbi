@@ -1,0 +1,117 @@
+[unitinfo]
+{
+	unitname=GERFlottenTorpBoot;
+	objectname=GERFlottenTorpBoot;
+	corpse=GERFlottenTorpBoot_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=Type 39 Flottentorpedoboot;
+	description= Light Destroyer;
+	maxdamage=40000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=800000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=3.23; // 32.3 kn
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=105mmC32;
+	Weapon2=105mmC32;
+	Weapon3=105mmC32;
+	Weapon4=105mmC32;
+	Weapon5=37mmC30aa;
+	Weapon6=37mmC30aa;
+	Weapon7=20mmc38;
+	Weapon8=20mmc38;
+	Weapon9=20mmc38;
+	Weapon10=20mmc38;
+	Weapon11=20mmc38;
+	Weapon12=flak3820mmaa;
+	Weapon13=triple_g7a533mmtorpedo;
+	Weapon14=triple_g7a533mmtorpedo;
+
+	OnlyTargetCategory13=LARGESHIP;
+	OnlyTargetCategory14=LARGESHIP;
+
+	// 105mm main gun
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=270;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	WeaponMainDir4=0 0 -1;
+	MaxAngleDif4=270;
+
+	// 37mm AA
+	WeaponMainDir5=1 0 0;
+	MaxAngleDif5=200;
+
+	WeaponMainDir6=-1 0 0;
+	MaxAngleDif6=200;
+
+	// 20mm AA
+	WeaponMainDir7=0 0 1;
+	MaxAngleDif7=270;
+
+	WeaponMainDir8=1 0 0;
+	MaxAngleDif8=200;
+
+	WeaponMainDir9=-1 0 0;
+	MaxAngleDif9=200;
+
+	WeaponMainDir10=1 0 0;
+	MaxAngleDif10=200;
+
+	WeaponMainDir11=-1 0 0;
+	MaxAngleDif11=200;
+
+	// Vierling
+	WeaponMainDir12=0 0 -1;
+	MaxAngleDif12=270;
+
+	// torpedo launchers
+	WeaponMainDir13=0 0 1;
+	MaxAngleDif13=270;
+
+	WeaponMainDir14=0 0 1;
+	MaxAngleDif14=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -1,0 +1,105 @@
+[unitinfo]
+{
+	unitname=GBRFairmileD;
+	objectname=GBRFairmileD;
+	corpse=GBRFairmileD_dead;
+	icontype=torpboat;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Fairmile D;
+	description=Gun/torpedo boat;
+	maxdamage=7500;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=4;
+	footprintz=4;
+	mass=100000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LightPatrol;
+	maxvelocity=3.0; // 30 knots
+	acceleration=0.3;
+	brakerate=0.3;
+	turnrate=55;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=18inchtorpedo;
+	Weapon2=18inchtorpedo;
+	Weapon3=18inchtorpedo;
+	Weapon4=18inchtorpedo;
+
+	Weapon5=6pdr57mmap;
+	Weapon6=6pdr57mmap;
+
+	Weapon7=20mmOerlikon;
+	Weapon8=20mmOerlikon;
+	WeaponSlaveTo8=7;
+
+	Weapon9=twin05calVickers;
+	Weapon10=twin05calVickers;
+
+	Weapon11=vickers;
+	Weapon12=vickers;
+
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+	OnlyTargetCategory3=LARGESHIP;
+	OnlyTargetCategory4=LARGESHIP;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=40;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=40;
+
+	WeaponMainDir3=0 0 1;
+	MaxAngleDif3=40;
+
+	WeaponMainDir4=0 0 1;
+	MaxAngleDif4=40;
+
+	WeaponMainDir5=0 0 1;
+	MaxAngleDif5=270;
+
+	WeaponMainDir6=0 0 -1;
+	MaxAngleDif6=270;
+
+	WeaponMainDir7=0 0 -1;
+	MaxAngleDif7=300;
+
+	WeaponMainDir9=1 0 0;
+	MaxAngleDif9=270;
+	WeaponMainDir10=-1 0 0;
+	MaxAngleDif10=270;
+
+	WeaponMainDir11=1 0 0;
+	MaxAngleDif11=200;
+	WeaponMainDir12=-1 0 0;
+	MaxAngleDif12=200;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

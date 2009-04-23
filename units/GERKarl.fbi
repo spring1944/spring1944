@@ -1,0 +1,68 @@
+[unitinfo]
+{
+	unitname=GERKarl;
+	objectname=GERKarl;
+	corpse=GERKarl_Dead;
+	icontype=truck;
+	soundcategory=USTank;
+	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+	tedclass=TANK;
+
+	name=Karl Geraet 040;
+	description=600mm Superheavy Mortar;
+	maxdamage=5000;
+	buildcostmetal=711;
+	buildcostenergy=0;
+	buildtime=237;
+	footprintx=5;
+	footprintz=5;
+	mass=126000;
+
+	hidedamage=1;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	canhover=1;
+	movementclass=TANK_VeryLarge;
+	maxvelocity=0.5;
+	acceleration=0.05;
+	brakerate=0.25;
+	turnrate=50;
+	maxslope=10;
+	turninplace=0;
+
+	ActivateWhenBuilt=1;
+	onoffable=1;
+
+	leavetracks=1;
+	trackwidth=15;
+	trackoffset=10;
+	trackstrength=6.5;
+	trackstretch=1;
+	tracktype=Stdtank;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	nochasecategory=VTOL;
+
+	Weapon1=GERKarlGeraet;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=10;
+
+	onlytargetcategory1=NFLAGNAIR;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

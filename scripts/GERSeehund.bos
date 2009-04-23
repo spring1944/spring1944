@@ -1,0 +1,197 @@
+#define TAK
+
+piece base, hull, torp1, torp2, propeller,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//*********************Death anim
+#define HULL_LIST_SPEED		<10>
+#define HULL_LIST_ANGLE		<-90>
+
+#define PROP_SPIN_SPEED		<360>
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					CurrentSpeed, bMoving, hasTorp1, hasTorp2;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+ReloadTorp1()
+{
+	while(TRUE)
+	{
+		if(!hasTorp1)
+		{
+			sleep 30000;
+			hasTorp1 = TRUE;
+			show torp1;
+		}
+		sleep 500;
+	}
+}
+
+ReloadTorp2()
+{
+	while(TRUE)
+	{
+		if(!hasTorp2)
+		{
+			sleep 30000;
+			hasTorp2 = TRUE;
+			show torp2;
+		}
+		sleep 500;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	hasTorp1 = TRUE;
+	hasTorp2 = TRUE;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	start-script ReloadTorp1();
+	start-script ReloadTorp2();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	//start-script EmitWakes();
+	bMoving = TRUE;
+	spin propeller around z-axis speed PROP_SPIN_SPEED;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+	stop-spin propeller around z-axis;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = torp1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = torp1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	while(!hasTorp1)
+	{
+		sleep 150;
+	}
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	hasTorp1 = FALSE;
+	hide torp1;
+	sleep 200;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = torp2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = torp2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	while(!hasTorp2)
+	{
+		sleep 150;
+	}
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	hasTorp2 = FALSE;
+	hide torp2;
+	sleep 200;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn hull around z-axis;
+		explode hull type		BITMAPONLY|BITMAP1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	explode torp1 type	FALL|EXPLODE_ON_HIT|FIRE;
+	explode torp2 type	FALL|EXPLODE_ON_HIT|FIRE;
+	return (TRUE);
+}

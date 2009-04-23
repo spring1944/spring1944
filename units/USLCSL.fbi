@@ -1,0 +1,86 @@
+[unitinfo]
+{
+	unitname=USLCSL;
+	objectname=USLCSL;
+	corpse=USLCSL_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=LCS(L);
+	description=Landing Craft, Support (Large);
+	maxdamage=15000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=200000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LandingCraft;
+	maxvelocity=1.2; // 12 kn
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=3in50mk22;
+
+	Weapon2=40mmmk1aa;
+	Weapon3=40mmmk1aa;
+
+	Weapon4=20mmOerlikon;
+	Weapon5=20mmOerlikon;
+	Weapon6=20mmOerlikon;
+	Weapon7=20mmOerlikon;
+
+	// 3-inch main gun
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	// 40mm AA
+	WeaponMainDir2=0 0 0;
+	MaxAngleDif2=200;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=200;
+
+	// 20mm AA
+	WeaponMainDir4=1 0 0;
+	MaxAngleDif4=200;
+
+	WeaponMainDir5=-1 0 0;
+	MaxAngleDif5=200;
+
+	WeaponMainDir6=1 0 0;
+	MaxAngleDif6=200;
+
+	WeaponMainDir7=-1 0 0;
+	MaxAngleDif7=200;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

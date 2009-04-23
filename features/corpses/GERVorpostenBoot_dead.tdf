@@ -1,0 +1,13 @@
+[GERVorpostenBoot_dead]
+{
+	object=GERVorpostenBoot_dead;
+	description=Sunk Vorpostenboot;
+	energy=5000;
+	damage=15000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

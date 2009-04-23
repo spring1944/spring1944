@@ -1,0 +1,49 @@
+[unitinfo]
+{
+	unitname=target;
+	objectname=target;
+	corpse=target_dead;
+	icontype=pontoon;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Target ship;
+	description= spawn it to test your shooting skill;
+	maxdamage=100000;
+	autoheal=1000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=1000000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=700;
+	airsightdistance=1100;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=2;
+	acceleration=0.2;
+	brakerate=0.15;
+	turnrate=42.5;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -379,6 +379,44 @@ local armorDefs = {
 	"us_platoon_scout",
 	"us_platoon_flame",
 	},
+	ships	=	{
+		--Germany--
+	"GERAFP",
+	"GERRBoot",
+	"GERMFP",
+	"GERFlottenTorpBoat",
+	"GERSBoot",
+	"GERSeehund",
+	"GERSeehunt_surfaced",
+	"GERVorpostenBoot",
+	"GERType1934",
+	"GERSiebelFahre",
+		--US--
+	"USLCT",
+	"USPT103",
+	"USPT103-bofors",
+	"USFletcher",
+	"USTacoma",
+	"USLCVP",
+		--USSR--
+	"RUSMonitor",
+	"RUSBMO",
+	"RUSBKA-1125",
+	"RUSPSK",
+	"RUSPr7",
+	"RUSTypeM",
+	"RUSTypeM_surfaced",
+	"RUSLCT",
+	"RUSKomsMTB",
+		--Britain--
+	"GBRLCT",
+	"GBRFairmileD",
+	"GBRHuntII",
+	"GBRFlower",
+	"GBROClass",
+	"GBRMonitor",
+	"GBRLCA",
+	},
 }
 
 -- convert to named maps  (trepan is a noob)

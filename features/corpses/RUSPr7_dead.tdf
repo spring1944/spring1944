@@ -1,0 +1,13 @@
+[RUSPr7_dead]
+{
+	object=RUSPr7_dead;
+	description=Sunk Project 7 Destroyer;
+	energy=5000;
+	damage=50000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

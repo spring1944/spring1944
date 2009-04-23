@@ -1,0 +1,64 @@
+[unitinfo]
+{
+	unitname=GERRBoot;
+	objectname=GERRBoot;
+	corpse=GERRBoot_dead;
+	icontype=gunboat;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Raumboot;
+	description= Minesweeper (light patrol ship);
+	maxdamage=10000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=4;
+	footprintz=4;
+	mass=50000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LightPatrol;
+	maxvelocity=1.9; // 19 knots
+	acceleration=0.2;
+	brakerate=0.15;
+	turnrate=42.5;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=37mmflak43;
+	Weapon2=20mmc38;
+	Weapon3=20mmc38;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 -1;
+	MaxAngleDif2=270;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=300;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

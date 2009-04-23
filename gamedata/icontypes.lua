@@ -245,6 +245,36 @@ local iconTypes = {
 		size			=	2.75,
 		distance	=	0.3,
 	},
+	shipyard = {
+		bitmap		=	"icons/anchor.png",
+		size			=	5,
+		distance	=	0.3,
+	},
+	destroyer = {
+		bitmap		=	"icons/destroyer.png",
+		size			=	5,
+		distance	=	0.3,
+	},
+	torpboat = {
+		bitmap		=	"icons/t-boat.png",
+		size			=	4,
+		distance	=	0.3,
+	},
+	gunboat = {
+		bitmap		=	"icons/g-boat.png",
+		size			=	4,
+		distance	=	0.3,
+	},
+	landingship = {
+		bitmap		=	"icons/l-boat.png",
+		size			=	4,
+		distance	=	0.3,
+	},
+	transportship = {
+		bitmap		=	"icons/transportship.png",
+		size			=	5,
+		distance	=	0.3,
+	}
 }
 
 return iconTypes

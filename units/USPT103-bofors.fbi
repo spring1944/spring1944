@@ -1,0 +1,84 @@
+[unitinfo]
+{
+	unitname=USPT103-bofors;
+	objectname=USPT103-bofors;
+	corpse=USPT103_dead;
+	icontype=torpboat;
+	buildpic=USPT103.png;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=PT-103 type boat;
+	description=torpedo boat;
+	maxdamage=5000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=4;
+	footprintz=4;
+	mass=100000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LightPatrol;
+	maxvelocity=4.3; // 43 knots
+	acceleration=0.3;
+	brakerate=0.3;
+	turnrate=55;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=mk13torpedo;
+	Weapon2=mk13torpedo;
+	Weapon3=mk13torpedo;
+	Weapon4=mk13torpedo;
+
+	Weapon5=40mmmk3aa;
+
+	Weapon6=20mmOerlikon;
+
+	Weapon7=m2browningaa;
+	Weapon8=m2browningaa;
+
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+	OnlyTargetCategory3=LARGESHIP;
+	OnlyTargetCategory4=LARGESHIP;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=40;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=40;
+
+	WeaponMainDir3=0 0 1;
+	MaxAngleDif3=40;
+
+	WeaponMainDir4=0 0 1;
+	MaxAngleDif4=40;
+
+	WeaponMainDir5=0 0 -1;
+	MaxAngleDif5=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

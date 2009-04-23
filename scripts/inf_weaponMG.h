@@ -27,12 +27,12 @@ AimWeapon1(heading, pitch)
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
 	signal SIG_IDLE;
-	bAiming=4;
+	bAiming=2;
 	if (iState == 9) return 0; //if the unit is pinned, we don't even bother aiming or calling the control loop
-	if (iState < 6) call-script TakeCover();
 	if (bMoving == 1) return 0;
 	if (bMoving == 0)
-	{		
+	{	
+		if (iState < 6) call-script TakeCover();
 		iState=7; //prone aiming
 		turn ruparm to x-axis <-80> - pitch speed <480>;
 		turn luparm to x-axis <-140> - pitch speed <400>;

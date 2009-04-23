@@ -1,0 +1,13 @@
+[USLCVP_dead]
+{
+	object=USLCVP_dead;
+	description=Sunk LCVP;
+	energy=5000;
+	damage=2500;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=10;
+}

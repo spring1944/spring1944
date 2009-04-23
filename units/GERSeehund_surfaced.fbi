@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=GERSeehund_surfaced;
+	objectname=GERSeehund;
+	corpse=GERSeehund_dead;
+	icontype=sub;
+	category=NFLAGNAIR NFLAG WEAPON SUB;
+	tedclass=SHIP;
+
+	name=U-Boat XXVIIB Seehund;
+	description= Midget submarine;
+	maxdamage=1000;
+	buildcostmetal=10000;
+	buildcostenergy=0;
+	buildtime=2500;
+	footprintx=8;
+	footprintz=8;
+	mass=20000;
+	floater=1;
+	minwaterdepth=40;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=600;
+	airsightdistance=600;
+	stealth=1;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=0.77; // 7.7 knots surfaced
+	acceleration=0.2;
+	brakerate=0.20;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	waterline=0;
+
+	canAttack=1;
+	Weapon1=g7a533mmtorpedo;
+	Weapon2=g7a533mmtorpedo;
+	WeaponMainDir1=0 0 1;
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif1=60;
+	MaxAngleDif2=60;
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

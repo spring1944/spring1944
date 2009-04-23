@@ -1,0 +1,14 @@
+[USPontoonTruck_dead]
+{
+	object=USGMCTruck_Destroyed.S3O;
+	description=Destroyed Pontoon Truck;
+	featuredead=Debris_Small;
+	energy=50;
+	damage=1251;
+	footprintx=2;
+	footprintz=2;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=70;
+	height=5;
+}

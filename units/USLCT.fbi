@@ -1,0 +1,65 @@
+[unitinfo]
+{
+	unitname=USLCT;
+	objectname=USLCT;
+	corpse=USLCT_dead;
+	icontype=transportship;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=LCT mk.5;
+	description= transports up to 5 tanks;
+	maxdamage=15000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=180000;
+	floater=1;
+	minwaterdepth=2;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=700;
+	airsightdistance=1100;
+	stealth=0;
+
+	// enough for 5 shermans
+	transportsize=30;
+	transportcapacity=30;
+	//transportcapacity=5;
+	transportmass=15000;
+	holdsteady=1;
+
+	canmove=1;
+	movementclass=BOAT_LandingCraft;
+	maxvelocity=0.7; // 7 knots
+	acceleration=0.2;
+	brakerate=0.15;
+	turnrate=42.5;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	Weapon1=20mmOerlikon; //oerlikon20mm;
+	Weapon2=20mmOerlikon; //oerlikon20mm;
+
+	WeaponMainDir1=1 0 0;
+	MaxAngleDif1=240;
+
+	WeaponMainDir2=-1 0 0;
+	MaxAngleDif2=240;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

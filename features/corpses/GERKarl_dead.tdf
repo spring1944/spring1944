@@ -1,0 +1,13 @@
+[GERKarl_dead]
+{
+	object=GERKarl_dead;
+	description=Destroyed Karl Mortar;
+	energy=0;
+	damage=5000;
+	footprintx=5;
+	footprintz=5;
+	reclaimable=1;
+	blocking=1;
+	hitdensity=70;
+	height=5;
+}

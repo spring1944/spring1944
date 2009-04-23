@@ -1,0 +1,84 @@
+[unitinfo]
+{
+	unitname=GERVorpostenBoot;
+	objectname=GERVorpostenBoot;
+	corpse=GERVorpostenBoot_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=Vorpostenboot;
+	description= Patrol ship;
+	maxdamage=15000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=400000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=1.2; // 12 kn
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=88mmskc30;
+	Weapon2=37mmflak43;
+	Weapon3=37mmflak43;
+	Weapon4=20mmc38;
+	Weapon5=20mmc38;
+	Weapon6=20mmc38;
+	Weapon7=20mmc38;
+
+	// 88mm main gun
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	// 37mm AA
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=270;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	// 20mm AA
+	WeaponMainDir4=1 0 1;
+	MaxAngleDif4=270;
+
+	WeaponMainDir5=-1 0 1;
+	MaxAngleDif5=270;
+
+	WeaponMainDir6=0 0 -1;
+	MaxAngleDif6=270;
+
+	WeaponMainDir7=0 0 -1;
+	MaxAngleDif7=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

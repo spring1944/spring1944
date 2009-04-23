@@ -1,0 +1,99 @@
+#define TAK
+
+piece base, hull, exhaust1, exhaust2, wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+#define SIG_MOVE			2
+#define SIG_DEATH			2048
+
+#define SMOKEPIECE	hull
+
+//********************Engine smoke
+#define ENGINE_SMOKE_PIECE1	exhaust1
+#define ENGINE_SMOKE_PIECE2	exhaust2
+#define ENGINE_SMOKE_PERIOD	300
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					CurrentSpeed, bMoving, MainGun, FrontGun;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			emit-sfx SFXTYPE_BLACKSMOKE from ENGINE_SMOKE_PIECE1;
+			emit-sfx SFXTYPE_BLACKSMOKE from ENGINE_SMOKE_PIECE2;
+			sleep ENGINE_SMOKE_PERIOD;
+		}
+		sleep ENGINE_SMOKE_PERIOD;
+	}
+}
+
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	bMoving = TRUE;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		explode hull type		BITMAPONLY|BITMAP1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	return (TRUE);
+}

@@ -1,0 +1,61 @@
+[octpompom]
+{
+	id=100;
+	name=Pom-pom mkVIII 2pdr Octuple Automatic AA Gun;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_Impact_MediumSmall;
+
+	ballistic=1;
+
+	range=1250; // sucky muzzle velocity
+	reloadtime=0.075; // 100 rpm per gun, and 8 guns...
+	accuracy=500;
+	movingaccuracy=800;
+	targetmoveerror=0.09;
+	firestarter=0.0;
+	weaponvelocity=1200; // quite a slow projectile
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=1;
+
+	soundstart=pompom;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=1.25;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=5250;
+	[damage]
+	{
+		default=2500; //10100
+		infantry=1000;
+		guns=1100;
+		lightbuildings=250;
+		bunkers=15;
+		sandbags=100;
+		mines=0;
+		flag=0;
+	}
+}

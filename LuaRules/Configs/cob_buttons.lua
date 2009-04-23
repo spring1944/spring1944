@@ -61,5 +61,10 @@ return {
 		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
-	 
+	gerkarl = {
+	{
+		cob = "TriggerDeploy",
+		name = "Deploy",
+		tooltip = "Prepare the gun for firing or moving"},
+	},
 }

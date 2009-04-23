@@ -1,0 +1,13 @@
+[RUSTender15t_dead]
+{
+	object=RUSTender15t_dead;
+	description=Sunk 15-ton Tender;
+	energy=5000;
+	damage=2500;
+	footprintx=4;
+	footprintz=4;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=10;
+}

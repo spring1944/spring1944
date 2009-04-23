@@ -1,0 +1,13 @@
+[GBRHuntII_dead]
+{
+	object=GBRHuntII_dead;
+	description=Sunk Hunt II class;
+	energy=5000;
+	damage=35000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

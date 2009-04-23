@@ -1,0 +1,71 @@
+[unitinfo]
+{
+	unitname=GERMFP;
+	objectname=GERMFP;
+	corpse=GERMFP_dead;
+	icontype=transportship;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	tedclass=SHIP;
+
+	name=Marinefahrprahm;
+	description= Landing Ship (up to 3 tanks);
+	maxdamage=15000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=100000;
+	floater=1;
+	minwaterdepth=6;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	// enough for 3 medium tanks
+	transportsize=18;
+	transportcapacity=18;
+	//transportcapacity=5;
+	transportmass=8000;
+	holdsteady=1;
+
+	canmove=1;
+	movementclass=BOAT_LandingCraft;
+	maxvelocity=1.05; // 10.5 kn
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	Weapon1=88mmskc30;
+	Weapon2=37mmflak43;
+	Weapon3=20mmc38;
+	Weapon4=20mmc38;
+	Weapon5=20mmc38;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 -1;
+	MaxAngleDif2=270;
+
+	WeaponMainDir5=0 0 -1;
+	MaxAngleDif5=270;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

@@ -1,0 +1,13 @@
+[GERSeehund_dead]
+{
+	object=GERSeehund_sunk;
+	description=Sunk Seehund;
+	energy=5000;
+	damage=1000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=70;
+	height=5;
+}

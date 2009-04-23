@@ -142,6 +142,14 @@ buildoptions =
 		"usp51dmustangga",
 		"usp47thunderbolt",
 	},
+	usboatyard =
+	{
+		"rubberdingy",
+		"pontoonraft",
+		"usdukw",
+		"uslcvp",
+		"uspt103-bofors",
+	},
 
 				--------------------
 				-- german units   --
@@ -279,6 +287,14 @@ buildoptions =
 		"gerfw190",
 		"gerju87g",
 		"gerfw190g",
+	},
+	
+	gerboatyard =
+	{
+		"gersturmboot",
+		"pontoonraft",
+		"gerrboot",
+		"gersboot",
 	},
 
 				----------------------
@@ -434,6 +450,14 @@ buildoptions =
 		"gbrtyphoon",
 		"gbrspitfiremkix",
 	},
+	
+	gbrboatyard =
+	{
+		"rubberdingy",
+		"pontoonraft",
+		"gbrlca",
+		"gbrfairmiled",
+	},
 
 				--------------------
 				-- soviet units   --
@@ -587,6 +611,15 @@ buildoptions =
 		"rusyak3",
 		"rusil2",
 	},
+	rusboatyard =
+	{
+		"ruspg117",
+		"pontoonraft",
+		"rustender15t",
+		"rusbka-1125",
+		"rusbmo",
+		"ruskomsmtb",
+	}
 }
 if (modOptions) then
 	if (modOptions.simple_tanks) then

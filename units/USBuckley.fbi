@@ -1,0 +1,107 @@
+[unitinfo]
+{
+	unitname=USBuckley;
+	objectname=USBuckley;
+	corpse=USBuckley_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=Buckley class Escort Destroyer;
+	description=Light Destroyer;
+	maxdamage=25000;
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=500000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=2.5; // 25 kn
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=3in50mk22;
+	Weapon2=3in50mk22;
+	Weapon3=3in50mk22;
+
+	Weapon4=mk15_533mmtorpedo;
+	Weapon5=28mmchicagopiano;
+
+	Weapon6=20mmOerlikon;
+	Weapon7=20mmOerlikon;
+	Weapon8=20mmOerlikon;
+	Weapon9=20mmOerlikon;
+	Weapon10=20mmOerlikon;
+	Weapon11=20mmOerlikon;
+	Weapon12=20mmOerlikon;
+	Weapon13=20mmOerlikon;
+
+	// 3-inch main gun
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=270;
+
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	// 28mm AA
+	WeaponMainDir5=0 0 -1;
+	MaxAngleDif5=200;
+
+	// 20mm AA
+	WeaponMainDir6=1 0 0;
+	MaxAngleDif6=200;
+
+	WeaponMainDir7=-1 0 0;
+	MaxAngleDif7=200;
+
+	WeaponMainDir8=1 0 0;
+	MaxAngleDif8=200;
+
+	WeaponMainDir9=-1 0 0;
+	MaxAngleDif9=200;
+
+	WeaponMainDir10=1 0 0;
+	MaxAngleDif10=200;
+
+	WeaponMainDir11=-1 0 0;
+	MaxAngleDif11=200;
+
+	WeaponMainDir12=1 0 -1;
+	MaxAngleDif10=200;
+
+	WeaponMainDir13=-1 0 -1;
+	MaxAngleDif11=200;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

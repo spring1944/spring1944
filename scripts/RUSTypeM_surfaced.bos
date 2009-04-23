@@ -1,0 +1,228 @@
+#define TAK
+
+piece base, hull, gun_mount, gun_sleeve, gun_barrel, gun_flare, torp_tube1, torp_tube2,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define GUN45_TURRET_TURN		<25>
+#define GUN45_TURRET_PITCH		<30>
+
+//*********************Recoil
+#define GUN45_GUN_RECOIL		[0.4]
+#define GUN45_GUN_RECOIL_SPEED	[10]
+#define GUN45_GUN_BACK_SPEED	[0.2]
+
+//*********************Death anim
+#define HULL_LIST_SPEED		<10>
+#define HULL_LIST_ANGLE		<-30>
+
+//*********************Dive
+#define DIVE_DEPTH			[30]
+#define DIVE_SPEED			[3]
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					CurrentSpeed, bMoving;
+
+lua_TypeMSwap()
+{
+}
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+Dive()
+{
+	move hull to y-axis (0-DIVE_DEPTH) speed DIVE_SPEED;
+	wait-for-move hull along y-axis;
+	call-script lua_TypeMSwap();
+	return;
+}
+
+DiveNow()
+{
+	move hull to y-axis (0-DIVE_DEPTH) now;
+}
+
+Surface()
+{
+	move hull to y-axis 0 speed DIVE_SPEED;
+	wait-for-move hull along y-axis;
+	return;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	bMoving = TRUE;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn gun_mount to y-axis <0> speed GUN45_TURRET_TURN;
+	turn gun_sleeve to x-axis <0> speed GUN45_TURRET_PITCH;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = torp_tube1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = torp_tube1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	sleep 200;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = torp_tube2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = torp_tube2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	sleep 200;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = gun_flare;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = gun_mount;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn gun_mount to y-axis heading speed GUN45_TURRET_TURN;
+	turn gun_sleeve to x-axis (0-pitch) speed GUN45_TURRET_PITCH;
+	wait-for-turn gun_mount around y-axis;
+	wait-for-turn gun_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+	show gun_flare;
+	move gun_barrel to z-axis (0-GUN45_GUN_RECOIL) speed GUN45_GUN_RECOIL_SPEED;
+	sleep 200;
+	move gun_barrel to z-axis [0] speed GUN45_GUN_BACK_SPEED;
+	hide gun_flare;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn hull around z-axis;
+		explode hull type		BITMAPONLY|BITMAP1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	explode gun_mount type	FALL|EXPLODE_ON_HIT|FIRE;
+	return (TRUE);
+}

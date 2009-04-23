@@ -505,6 +505,41 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+  
+	ruspontoontruck =
+  {
+    into = 'rusboatyard',
+    tech = 0,
+    time = 200,
+    metal = 0,
+    energy = 0,
+  },
+
+    uspontoontruck =
+  {
+    into = 'usboatyard',
+    tech = 0,
+    time = 200,
+    metal = 0,
+    energy = 0,
+  },
+
+    gerpontoontruck =
+  {
+    into = 'gerboatyard',
+    tech = 0,
+    time = 200,
+    metal = 0,
+    energy = 0,
+  },
+    gbrpontoontruck =
+  {
+    into = 'gbrboatyard',
+    tech = 0,
+    time = 200,
+    metal = 0,
+    energy = 0,
+  },
 }
 --
 -- Here's an example of why active configuration

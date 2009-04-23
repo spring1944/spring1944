@@ -1,0 +1,235 @@
+#define TAK
+
+piece base, hull, flag1, flag2, flag3, flag4, mg_mount, mg_turret, gun, flare,
+  	  turret, grabber, link, wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+// Weapon
+#define MG_TURN_SPEED		<30>
+#define MG_PITCH_SPEED		<45>
+
+// Flag
+#define FLAG_FLAP_ANGLE		<30>
+#define FLAG_FLAP_SPEED		<45>
+#define FLAG_FLAP_PERIOD	50
+
+#define LOAD_DIST			[125]
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_LOAD			4
+#define SIG_AIM1			8
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					MaxSpeed, bMoving, bTooFar, boom_len, boom_heading, boom_pitch;
+/*
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+*/
+FlagFlap()
+{
+	while(TRUE)
+	{
+		//turn flag1 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag4 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+		//turn flag1 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag4 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	MaxSpeed = get MAX_SPEED;
+	hide flag1;
+	hide flag2;
+	hide flag3;
+	hide flag4;
+	turn flag1 to y-axis <180> now;
+	call-script WaitForConstructionToFinish();
+	show flag1;
+	show flag2;
+	show flag3;
+	show flag4;
+	start-script DamageSmoke();
+	//start-script WorkingLoop();
+	start-script FlagFlap();
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	sleep 2500;
+	turn mg_turret to y-axis 0 speed MG_TURN_SPEED;
+	turn gun to x-axis 0 speed MG_PITCH_SPEED;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn mg_turret to y-axis heading speed MG_TURN_SPEED;
+	turn gun to x-axis (0-pitch) speed MG_PITCH_SPEED;
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn gun around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	show flare;
+	sleep 200;
+	hide flare;
+}
+
+//Transport stuff
+BoomCalc(posxz,posy)
+{
+	var dxz,dy,lenxz;
+
+	dxz = get PIECE_XZ(turret) - posxz;
+	dy = posy - get PIECE_Y(turret);
+	lenxz = get XZ_HYPOT(dxz);
+
+	boom_len = get HYPOT(lenxz,dy);
+	boom_heading = get XZ_ATAN(dxz);
+	boom_pitch = get ATAN(dy,lenxz);
+	bTooFar = (boom_len > LOAD_DIST);
+}
+
+PositionLink(posxz,posy)
+{
+	turn turret to y-axis boom_heading now;
+	turn grabber to x-axis 0-boom_pitch now;
+	move grabber to z-axis boom_len now;
+}
+
+ReturnLink()
+{
+	turn turret to y-axis <0> now;
+	turn grabber to x-axis <0> now;
+	move grabber to z-axis [0] now;
+}
+
+TransportPickup(unitid)
+{
+	signal SIG_LOAD;
+	set-signal-mask SIG_LOAD;
+    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+	if( bTooFar )
+	{
+		return (FALSE);
+	}
+	set BUSY to 1;
+	attach-unit unitid to (0-1);
+	sleep 500;
+	set BUSY to 0;
+	sleep 2500;
+}
+
+TransportDrop(unitid, position)
+{
+	signal SIG_LOAD;
+	set-signal-mask SIG_LOAD;
+    call-script BoomCalc(position,get GROUND_HEIGHT(position));
+	if( bTooFar )
+	{
+		return (1);
+	}
+	set BUSY to 1;
+	attach-unit unitid to link;
+	call-script PositionLink();
+	sleep 50;
+	drop-unit unitid;
+	call-script ReturnLink();
+	sleep 1000;
+	set BUSY to 0;
+	//sleep 1500;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	bMoving = TRUE;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<50)
+	{
+		corpsetype = 1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	return (TRUE);
+}

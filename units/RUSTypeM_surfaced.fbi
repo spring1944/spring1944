@@ -1,0 +1,69 @@
+[unitinfo]
+{
+	unitname=RUSTYPEM_Surfaced;
+	objectname=RUSTYPEM;
+	corpse=RUSTypeM_dead;
+	icontype=sub;
+	category=NFLAGNAIR NFLAG WEAPON SUB TANK LARGESHIP;
+	tedclass=SHIP;
+
+	name=Type M submarine;
+	description= Light Attack Submarine;
+	maxdamage=2500;
+	buildcostmetal=10000;
+	buildcostenergy=0;
+	buildtime=2500;
+	footprintx=4;
+	footprintz=4;
+	mass=60000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=1;
+
+	canmove=1;
+	// Use the destroyer movetype while surfaced - this way we can get through shallow places
+	movementclass=BOAT_Destroyer;
+	maxvelocity=1.41; // 14.1 knots surfaced
+	acceleration=0.3;
+	brakerate=0.20;
+	turnrate=35;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	waterline=0;
+
+	canAttack=1;
+	Weapon1=533mmtorpedo; //450mmtorp;
+	Weapon2=533mmtorpedo; //450mmtorp;
+	Weapon3=40k45mmhe;
+	badtargetcategory1=TANK;
+	onlytargetcategory1=LARGESHIP;
+	//weapon4=20K45mmAP;
+	onlytargetcategory2=LARGESHIP;
+
+	WeaponMainDir1=0 0 1;
+	WeaponMainDir2=0 0 1;
+	WeaponMainDir3=0 0 1;
+	MaxAngleDif1=60;
+	MaxAngleDif2=60;
+	MaxAngleDif3=270;
+	OnlyTargetCategory1=SHIP;
+	OnlyTargetCategory2=SHIP;
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

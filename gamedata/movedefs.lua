@@ -61,12 +61,55 @@ local moveDefs 	=	 {
 		crushStrength	=	10,
 	},
 	{
+		name					=	"BOAT_RiverSmall",
+		footprintX		=	4,
+		minWaterDepth	=	6,
+		crushStrength	=	10,
+	},
+	{
+		name					=	"BOAT_River",
+		footprintX		=	8,
+		minWaterDepth	=	6,
+		crushStrength	=	10,
+	},
+	{
+		name					=	"BOAT_LightPatrol",
+		footprintX		=	4,
+		minWaterDepth	=	10,
+		crushStrength	=	10,
+	},
+	{
+		name					=	"BOAT_Destroyer",
+		footprintX		=	8,
+		minWaterDepth	=	20,
+		crushStrength	=	10,
+	},
+	{
+		name					=	"BOAT_LandingCraft",
+		footprintX		=	8,
+		minWaterDepth	=	2,
+		crushStrength	=	10,
+	},
+	{
 		name					=	"HOVER_AmphibTruck",
 		footprintX		=	3,
 		footprintY		=	3,
 		MaxSlope		=	17,
 		MaxWaterSlope		=	255,
 		crushStrength		=	10,
+	},
+	{
+		name					=	"BOAT_Sub",
+		footprintX		=	8,
+		minWaterDepth	=	40,
+		crushStrength	=	10,
+		submarine	=	1,
+	},
+	{
+		name					=	"TANK_Truck_deep",
+		footprintX		=	3,
+		maxWaterDepth	=	25,
+		maxSlope			=	17,
 	}
 }
 
