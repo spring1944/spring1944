@@ -37,6 +37,18 @@ piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_
 
 #define SMOKEPIECE	hull
 
+//tracers
+#define LARGE_TRACER		2048+2
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define XSMALL_MUZZLEFLASH	1024+7
+#define XSMALL_MUZZLEDUST	1024+8
+
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
@@ -168,13 +180,17 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
+	emit-sfx LARGE_TRACER from flare_1;
+/*
 	show flare_1;
 	sleep 200;
-	hide flare_1;
+	hide flare_1;*/
 }
 
 Shot1(foo)
 {
+	emit-sfx XSMALL_MUZZLEFLASH from flare_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare_1;
 	move barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
@@ -204,13 +220,16 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show flare_2;
+	emit-sfx LARGE_TRACER from flare_2;
+/*	show flare_2;
 	sleep 200;
-	hide flare_2;
+	hide flare_2;*/
 }
 
 Shot2(foo)
 {
+	emit-sfx XSMALL_MUZZLEFLASH from flare_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare_2;
 	move barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;

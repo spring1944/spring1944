@@ -47,6 +47,18 @@ piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_4
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEFLASH 1024+8
+#define XSMALL_MUZZLEDUST 1024+9
+
 static-var					CurrentSpeed, bMoving, aamgFlare, mgFlare;
 
 WorkingLoop()
@@ -162,11 +174,13 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show flare_37;
+//	show flare_37;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_37;
+	emit-sfx XSMALL_MUZZLEDUST from flare_37;
 	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_37 to z-axis [0] speed AA37_GUN_BACK_SPEED;
-	hide flare_37;
+//	hide flare_37;
 }
 
 QueryWeapon2(piecenum)
@@ -193,11 +207,13 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show flare_45;
+//	show flare_45;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_45;
+	emit-sfx XSMALL_MUZZLEDUST from flare_45;
 	move barrel_45 to z-axis (0-GUN45_GUN_RECOIL) speed GUN45_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_45 to z-axis [0] speed GUN45_GUN_BACK_SPEED;
-	hide flare_45;
+//	hide flare_45;
 }
 
 QueryWeapon3(piecenum)
@@ -231,13 +247,31 @@ FireWeapon3()
 {
 	if(aamgFlare)
 	{
-		show flare_aa_1;
-		sleep 200;
-		hide flare_aa_1;
+		//show flare_aa_1;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
+		//sleep 200;
+		//hide flare_aa_1;
 	} else {
-		show flare_aa_2;
-		sleep 200;
-		hide flare_aa_2;
+		//show flare_aa_2;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
+		//sleep 200;
+		//hide flare_aa_2;
 	}
 	aamgFlare = !aamgFlare;
 }
@@ -273,13 +307,31 @@ FireWeapon4()
 {
 	if(mgFlare)
 	{
-		show flare_mg_1;
-		sleep 200;
-		hide flare_mg_1;
+		//show flare_mg_1;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
+		//sleep 200;
+		//hide flare_mg_1;
 	} else {
-		show flare_mg_2;
-		sleep 200;
-		hide flare_mg_2;
+		//show flare_mg_2;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
+		sleep 67;
+		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
+		//sleep 200;
+		//hide flare_mg_2;
 	}
 	mgFlare = !mgFlare;
 }

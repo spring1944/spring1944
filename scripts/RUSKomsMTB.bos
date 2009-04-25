@@ -31,6 +31,11 @@ piece base, hull, tower, turret1, gun1, flare1_1, flare1_2, turret2, gun2, flare
 #define SIG_AIM3			16
 #define SIG_AIM4			32
 
+#define MG_MUZZLEFLASH		1024+7
+
+// tracers
+#define MEDIUM_TRACER 	2048+4
+
 #define SMOKEPIECE	hull
 
 #include "exptype.h"
@@ -219,14 +224,41 @@ FireWeapon3()
 {
 	if(flare1)
 	{
-		show flare1_1;
+		emit-sfx MEDIUM_TRACER from flare1_1;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare1_1;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_1;
+/*		show flare1_1;
 		sleep 200;
-		hide flare1_1;
+		hide flare1_1;*/
 	} else
 	{
+		emit-sfx MEDIUM_TRACER from flare1_2;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare1_2;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare1_2;
+/*
 		show flare1_2;
 		sleep 200;
-		hide flare1_2;
+		hide flare1_2;*/
 	}
 	flare1 = !flare1;
 }
@@ -262,14 +294,42 @@ FireWeapon4()
 {
 	if(flare2)
 	{
+		emit-sfx MEDIUM_TRACER from flare2_1;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare2_1;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_1;
+/*
 		show flare2_1;
 		sleep 200;
-		hide flare2_1;
+		hide flare2_1;*/
 	} else
 	{
+		emit-sfx MEDIUM_TRACER from flare2_2;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare2_2;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare2_2;
+/*
 		show flare2_2;
 		sleep 200;
-		hide flare2_2;
+		hide flare2_2;*/
 	}
 	flare2 = !flare2;
 }
