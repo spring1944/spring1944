@@ -61,6 +61,21 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 
 #define SMOKEPIECE	hull
 
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEFLASH 1024+8
+#define XSMALL_MUZZLEDUST 1024+9
+// tracers
+#define SMALL_TRACER 	2048+12
+#define MEDIUM_TRACER 	2048+13
+#define LARGE_TRACER 	2048+14
+
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
@@ -365,11 +380,21 @@ AimWeapon7(heading, pitch)
 
 FireWeapon7()
 {
-	show flare20_1;
+/*	show flare20_1;
 	move barrel20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide flare20_1;
+	hide flare20_1;*/
+}
+
+Shot7(foo)
+{
+	emit-sfx LARGE_TRACER from flare20_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare20_1;
+	move barrel20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
 QueryWeapon8(piecenum)
@@ -395,11 +420,21 @@ AimWeapon8(heading, pitch)
 
 FireWeapon8()
 {
-	show flare20_2;
+/*	show flare20_2;
 	move barrel20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide flare20_2;
+	hide flare20_2;*/
+}
+
+Shot8(foo)
+{
+	emit-sfx LARGE_TRACER from flare20_2;
+	emit-sfx XSMALL_MUZZLEFLASH from flare20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare20_2;
+	move barrel20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
 QueryWeapon9(piecenum)
@@ -434,14 +469,42 @@ FireWeapon9()
 {
 	if (flare05_1)
 	{
-		show flare05_1_1;
+		emit-sfx MEDIUM_TRACER from flare05_1_1;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare05_1_1;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
+		sleep 75;
+/*		show flare05_1_1;
 		sleep 200;
-		hide flare05_1_1;
+		hide flare05_1_1;*/
 	} else
 	{
-		show flare05_1_2;
+		emit-sfx MEDIUM_TRACER from flare05_1_2;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare05_1_2;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
+		sleep 75;
+/*		show flare05_1_2;
 		sleep 200;
-		hide flare05_1_2;
+		hide flare05_1_2;*/
 	}
 	flare05_1 = !flare05_1;
 }
@@ -478,14 +541,44 @@ FireWeapon10()
 {
 	if (flare05_2)
 	{
+		emit-sfx MEDIUM_TRACER from flare05_2_1;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare05_2_1;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
+		sleep 75;
+/*
 		show flare05_2_1;
 		sleep 200;
-		hide flare05_2_1;
+		hide flare05_2_1;*/
 	} else
 	{
+		emit-sfx MEDIUM_TRACER from flare05_2_2;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+		emit-sfx MEDIUM_TRACER from flare05_2_2;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
+		sleep 75;
+/*
 		show flare05_2_2;
 		sleep 200;
-		hide flare05_2_2;
+		hide flare05_2_2;*/
 	}
 	flare05_2 = !flare05_2;
 }
@@ -514,9 +607,27 @@ AimWeapon11(heading, pitch)
 
 FireWeapon11()
 {
-	show flare303_1;
+/*	show flare303_1;
 	sleep 200;
-	hide flare303_1;
+	hide flare303_1;*/
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	emit-sfx SMALL_TRACER from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	emit-sfx SMALL_TRACER from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	emit-sfx SMALL_TRACER from flare303_1;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_1;
+	emit-sfx SMALL_TRACER from flare303_1;
+	sleep 100;
 }
 
 QueryWeapon12(piecenum)
@@ -543,9 +654,27 @@ AimWeapon12(heading, pitch)
 
 FireWeapon12()
 {
-	show flare303_2;
+/*	show flare303_2;
 	sleep 200;
-	hide flare303_2;
+	hide flare303_2;*/
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	emit-sfx SMALL_TRACER from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	emit-sfx SMALL_TRACER from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	emit-sfx SMALL_TRACER from flare303_2;
+	sleep 100;
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	emit-sfx SMALL_TRACER from flare303_2;
+	sleep 100;
 }
 
 Killed(severity, corpsetype)
