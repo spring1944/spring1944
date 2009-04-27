@@ -3,6 +3,7 @@
 	unitname=RUSMonitor;
 	objectname=RUSMonitor;
 	corpse=RUSMonitor_dead;
+	buildpic=rusmonitor.png;
 	icontype=pontoon;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;

@@ -619,6 +619,11 @@ buildoptions =
 		"rusbka-1125",
 		"rusbmo",
 		"ruskomsmtb",
+	},
+	rusboatyardlarge =
+	{
+		"ruslct",
+		"rusmonitor",
 	}
 }
 if (modOptions) then

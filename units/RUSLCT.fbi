@@ -3,6 +3,7 @@
 	unitname=RUSLCT;
 	objectname=RUSLCT;
 	corpse=RUSLCT_dead;
+	buildpic=ruslct.png;
 	icontype=transportship;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
