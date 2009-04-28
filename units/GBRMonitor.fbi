@@ -21,6 +21,10 @@
 	shownanoframe=0;
 	smoothanim=0;
 
+	collisionVolumeType=box;
+	collisionVolumeScales=120 180 600;
+	collisionVolumeOffsets=0 -60 0;
+
 	energymake=0;
 	energyuse=0;
 	SeismicSignature=0;
