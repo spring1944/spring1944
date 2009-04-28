@@ -4,6 +4,7 @@
 	objectname=GERMFP;
 	corpse=GERMFP_dead;
 	icontype=transportship;
+	buildpic=germfp.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

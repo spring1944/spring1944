@@ -4,6 +4,7 @@
 	objectname=GBRLCT;
 	corpse=GBRLCT_dead;
 	icontype=transportship;
+	buildpic=gbrlct.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

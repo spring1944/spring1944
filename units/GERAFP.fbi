@@ -3,7 +3,8 @@
 	unitname=GERAFP;
 	objectname=GERAFP;
 	corpse=GERAFP_dead;
-	icontype=pontoon;
+	icontype=gunboat;
+	buildpic=gerafp.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

@@ -1,0 +1,13 @@
+[GBRBoatyardLarge_dead]
+{
+	object=BoatyardLargeDead;
+	description=Destroyed Large Boat Yard;
+	energy=5000;
+	damage=5000;
+	footprintx=14;
+	footprintz=14;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=70;
+	height=5;
+}

@@ -3,7 +3,8 @@
 	unitname=USLCSL;
 	objectname=USLCSL;
 	corpse=USLCSL_dead;
-	icontype=destroyer;
+	icontype=gunboat;
+	buildpic=uslcsl.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
 	tedclass=SHIP;
 

@@ -1,0 +1,60 @@
+[unitinfo]
+{
+	unitname=GBRBoatyardLarge;
+	objectname=GBRBoatyardLarge;
+	corpse=GBRBoatyardLarge_dead;
+	icontype=shipyard;
+	buildpic=GBRBoatyard.png;
+	soundcategory=GBRYard;
+	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+	tedclass=PLANT;
+	yardmap=ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo;
+
+	name=Large Boat Yard;
+	side=GBR;
+	maxdamage=5000;
+	idleautoheal=3;
+	buildcostmetal=5445;
+	buildcostenergy=0;
+	buildtime=3630;
+	footprintx=14;
+	footprintz=14;
+
+	shownanoframe=0;
+
+	metalstorage=300;
+	energystorage=0;
+
+	sightdistance=146;
+	stealth=1;
+
+	builder=1;
+	workertime=10;//250
+	shownanospray=0;
+	canbeassisted=0;
+
+	canmove=1;
+	maxslope=10;
+	minWaterDepth=10;
+	floater=1;
+	waterLine=0;
+
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=8;
+	buildinggrounddecalsizey=8;
+	buildinggrounddecaldecayspeed=0.05;
+	buildinggrounddecaltype=Dirt2.dds;
+
+	explodeas=LARGE_EXPLOSION;
+	selfdestructas=LARGE_EXPLOSION;
+
+	[sfxtypes]
+	{
+	}
+
+	[customParams]
+	{
+		ammoSupplier=1;
+		supplyRange=500;
+	}
+}

@@ -150,6 +150,11 @@ buildoptions =
 		"uslcvp",
 		"uspt103-bofors",
 	},
+	usboatyardlarge =
+	{
+		"uslct",
+		"uslcsl",
+	},
 
 				--------------------
 				-- german units   --
@@ -295,6 +300,11 @@ buildoptions =
 		"pontoonraft",
 		"gerrboot",
 		"gersboot",
+	},
+	gerboatyardlarge =
+	{
+		"germfp",
+		"gerafp",
 	},
 
 				----------------------
@@ -457,6 +467,10 @@ buildoptions =
 		"pontoonraft",
 		"gbrlca",
 		"gbrfairmiled",
+	},
+	gbrboatyardlarge =
+	{
+		"gbrlct",
 	},
 
 				--------------------

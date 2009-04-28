@@ -4,6 +4,7 @@
 	objectname=USLCT;
 	corpse=USLCT_dead;
 	icontype=transportship;
+	buildpic=uslct.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

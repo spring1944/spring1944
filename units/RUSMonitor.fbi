@@ -4,7 +4,7 @@
 	objectname=RUSMonitor;
 	corpse=RUSMonitor_dead;
 	buildpic=rusmonitor.png;
-	icontype=pontoon;
+	icontype=gunboat;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 
