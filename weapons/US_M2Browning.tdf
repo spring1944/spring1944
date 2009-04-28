@@ -69,7 +69,7 @@
 	lineofsight=1;
 	firestarter=0.0;
 
-	range=1280;
+	range=830;
 	reloadtime=1.5;
 	burst=6;
 	burstrate=.109;
@@ -100,7 +100,12 @@
 		tanks=0;
 		armouredvehicles=25;
 		unarmouredvehicles=40;
- 		planes=110;
+ 		planes=18;
+	}
+	[customParams]
+	{
+		fearid=701;
+		fearaoe=1;
 	}
 }
 

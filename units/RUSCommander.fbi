@@ -31,7 +31,7 @@
 	stealth=1;
 
 	builder=1;
-	metalmake=20;
+	metalmake=0;
 	builddistance=5;
 	workertime=20; //110
 	terraformspeed=300;

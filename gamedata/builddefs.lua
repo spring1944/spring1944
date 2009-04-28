@@ -79,6 +79,7 @@ buildoptions =
 	usvehicleyard =
 	{
 		"usgmcengvehicle",
+		"usgmctruck",
 		"usm3halftrack",
 		"usdukw",
 		"usm8greyhound",
@@ -87,7 +88,7 @@ buildoptions =
 
 	usgunyard =
 	{
-		--"usgmctruck",
+		"usgmctruck",
 		"usm8gun_gunyard",
 		"usm5gun_truck",
 		"usm2gun_truck",
@@ -219,7 +220,7 @@ buildoptions =
 	gervehicleyard =
 	{
 		"gersdkfz9",
-		--"gersupplytruck",
+		"geropelblitz",
 		"gersdkfz250",
 		"gersdkfz251",
 		--"gersdkfz10",
@@ -228,8 +229,7 @@ buildoptions =
 
 	gergunyard =
 	{
-		--"geropelblitz",
-		--"gerflak38_truck",
+		"geropelblitz",
 		"gerleig18_gunyard",
 		"gerpak40_truck",
 		"gerlefh18_truck",
@@ -353,7 +353,7 @@ buildoptions =
 
 	gbrgunyard =
 	{
-		--"gbrbedfordtruck",
+		"gbrbedfordtruck",
 		"gbr17pdr_truck",
 		"gbr25pdr_truck",
 		"gbrbofors_truck",
@@ -404,7 +404,7 @@ buildoptions =
 	gbrvehicleyard =
 	{
 		"gbrmatadorengvehicle",
-		--"gbrsupplytruck",
+		"gbrbedford",
 		"gbrm5halftrack",
 		"gbrdaimler",
 		"gbrkangaroo",
@@ -572,7 +572,7 @@ buildoptions =
 	rusvehicleyard =
 	{
 		"rusk31",
-		--"russupplytruck",
+		"ruszis5",
 		"rusba64",
 		"rusm5halftrack",
 		"rusgazaaa",
@@ -582,7 +582,7 @@ buildoptions =
 
 	rusgunyard =
 	{
-		--"ruszis5",
+		"ruszis5",
 		"ruszis2_truck",
 		"ruszis3_truck",
 		"rusm30_truck",
