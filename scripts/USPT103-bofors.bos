@@ -11,9 +11,11 @@ piece base, hull, turret_20, gun_20, barrel_20, flare_20, turret_40, sleeve_40, 
 //********************Turret turn speeds
 #define AA20_TURRET_TURN		<45>
 #define AA20_TURRET_PITCH		<45>
+#define AA20_BURSTRATE			150
 
 #define AA40_TURRET_TURN		<30>
 #define AA40_TURRET_PITCH		<30>
+#define AA40_BURSTRATE			290
 
 #define MG05_TURRET_TURN		<45>
 #define MG05_TURRET_PITCH		<45>
@@ -30,6 +32,17 @@ piece base, hull, turret_20, gun_20, barrel_20, flare_20, turret_40, sleeve_40, 
 #define HULL_LIST_SPEED		<30>
 #define HULL_LIST_ANGLE_Z	<-45>
 #define HULL_LIST_ANGLE_X	<-15>
+//*********************FX
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
 
 //*********************Cruise mode
 #define CRUISE_MODE_ANGLE	<-4>
@@ -62,6 +75,23 @@ piece base, hull, turret_20, gun_20, barrel_20, flare_20, turret_40, sleeve_40, 
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
+
+//weapon anims
+#define SHOT_20mm\
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20;\
+	emit-sfx XSMALL_MUZZLEDUST from flare_20;\
+	move barrel_20 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;\
+	sleep AA20_BURSTRATE;\
+	move barrel_20 to z-axis [0] speed AA20_GUN_BACK_SPEED;\
+	hide flare_20;
+	
+#define SHOT_40mm\
+	emit-sfx SMALL_MUZZLEFLASH from flare_40;\
+	emit-sfx SMALL_MUZZLEDUST from flare_40;\
+	move barrel_40 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;\
+	sleep AA40_BURSTRATE;\
+	move barrel_40 to z-axis [0] speed AA40_GUN_BACK_SPEED;
+	
 static-var					MaxSpeed, CruiseTriggerSpeed, bMoving, mg_flare1, mg_flare2, isTorp1Ready, isTorp2Ready, isTorp3Ready, isTorp4Ready;
 
 InitTurrets()
@@ -339,7 +369,7 @@ FireWeapon4()
 	isTorp4Ready = FALSE;
 	sleep 200;
 }
-
+//bofors AA
 QueryWeapon5(piecenum)
 {
 	piecenum = flare_40;
@@ -364,13 +394,39 @@ AimWeapon5(heading, pitch)
 
 FireWeapon5()
 {
-	show flare_40;
-	move barrel_40 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel_40 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-	hide flare_20;
+	SHOT_40mm
+	SHOT_40mm
+}
+//bofors HE (ground target)
+QueryWeapon9(piecenum)
+{
+	piecenum = flare_40;
 }
 
+AimFromWeapon9(piecenum)
+{
+	piecenum = turret_40;
+}
+
+AimWeapon9(heading, pitch)
+{
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
+	turn turret_40 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_40 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_40 around y-axis;
+	wait-for-turn sleeve_40 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon9()
+{
+	SHOT_40mm
+	SHOT_40mm
+}
+
+//20mm AA
 QueryWeapon6(piecenum)
 {
 	piecenum = flare_20;
@@ -395,11 +451,41 @@ AimWeapon6(heading, pitch)
 
 FireWeapon6()
 {
-	show flare_20;
-	move barrel_20 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel_20 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide flare_20;
+	SHOT_20mm
+	SHOT_20mm
+	SHOT_20mm
+	SHOT_20mm
+	SHOT_20mm
+}
+
+//20mm HE/ground target
+QueryWeapon10(piecenum)
+{
+	piecenum = flare_20;
+}
+
+AimFromWeapon10(piecenum)
+{
+	piecenum = turret_20;
+}
+
+AimWeapon10(heading, pitch)
+{
+	signal SIG_AIM6;
+	set-signal-mask SIG_AIM6|SIG_DEATH;
+	turn turret_20 to y-axis heading speed AA20_TURRET_TURN;
+	turn gun_20 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20 around y-axis;
+	wait-for-turn gun_20 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon10()
+{
+	SHOT_20mm
+	SHOT_20mm
+	SHOT_20mm
 }
 
 QueryWeapon7(piecenum)
@@ -430,18 +516,16 @@ AimWeapon7(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon7()
+ShotWeapon7()
 {
 	if (mg_flare1)
 	{
-		show mg_flare1_1;
+		emit-sfx MG_MUZZLEFLASH from mg_flare1_1;
 		sleep 200;
-		hide mg_flare1_1;
 	} else
 	{
-		show mg_flare1_2;
+		emit-sfx MG_MUZZLEFLASH from mg_flare1_1;
 		sleep 200;
-		hide mg_flare1_2;
 	}
 	mg_flare1 = !mg_flare1;
 }
@@ -474,18 +558,16 @@ AimWeapon8(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon8()
+ShotWeapon8()
 {
 	if (mg_flare2)
 	{
-		show mg_flare2_1;
+		emit-sfx MG_MUZZLEFLASH from mg_flare2_1;
 		sleep 200;
-		hide mg_flare2_1;
 	} else
 	{
-		show mg_flare2_2;
+	emit-sfx MG_MUZZLEFLASH from mg_flare2_2;
 		sleep 200;
-		hide mg_flare2_2;
 	}
 	mg_flare2 = !mg_flare2;
 }

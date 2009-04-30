@@ -27,15 +27,18 @@
 	SeismicSignature=0;
 	sightdistance=900;
 	airsightdistance=1500;
-	stealth=0;
+	stealth=1;
 
 	canmove=1;
 	movementclass=BOAT_LightPatrol;
-	maxvelocity=4.3; // 43 knots
+	maxvelocity=9.64; // 43 knots
 	acceleration=0.3;
-	brakerate=0.3;
-	turnrate=55;
+	brakerate=0.1;
+	turnrate=550;
 	turninplace=0;
+	
+	nochasecategory=FLAG AIR;
+	badtargetcategory=FLAG;
 
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
@@ -47,12 +50,13 @@
 	Weapon3=mk13torpedo;
 	Weapon4=mk13torpedo;
 
-	Weapon5=40mmmk3aa;
+	Weapon5=bofors40mmaa;
 
-	Weapon6=20mmOerlikon;
-
+	Weapon6=flak3820mmaa;
+	Weapon10=KwK3020mmHE;
 	Weapon7=m2browningaa;
 	Weapon8=m2browningaa;
+	Weapon9=bofors40mmhe;
 
 	OnlyTargetCategory1=LARGESHIP;
 	OnlyTargetCategory2=LARGESHIP;
@@ -72,10 +76,32 @@
 	MaxAngleDif4=40;
 
 	WeaponMainDir5=0 0 -1;
+	onlytargetcategory5=AIR;
 	MaxAngleDif5=270;
+	
+	WeaponMainDir6=0 0 1;
+	OnlyTargetCategory6=AIR;
+	
+	WeaponMainDir10=0 0 1;
+	OnlyTargetCategory10=AIR INFTARG;
+	
+	WeaponMainDir9=0 0 -1;
+	MaxAngleDif9=270;
+	OnlyTargetCategory7=AIR INFTARG;
+	OnlyTargetCategory8=AIR INFTARG;
 
 	[sfxtypes]
 	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
+		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
+		explosiongenerator5=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator6=custom:XSMALL_MUZZLEDUST;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+		explosiongenerator8=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator9=custom:SMALL_MUZZLEDUST;
 	}
 	[customParams]
 	{

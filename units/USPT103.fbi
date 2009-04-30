@@ -26,7 +26,7 @@
 	SeismicSignature=0;
 	sightdistance=900;
 	airsightdistance=1500;
-	stealth=0;
+	stealth=1;
 
 	canmove=1;
 	movementclass=BOAT_LightPatrol;
