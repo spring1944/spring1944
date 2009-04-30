@@ -3,7 +3,7 @@
 	unitname=GERWespe;
 	objectname=GERWespe.S3O;
 	corpse=GERWespe_Destroyed;
-	icontype=medtank;
+	icontype=sparty;
 	soundcategory=GERTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;

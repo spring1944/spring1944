@@ -155,6 +155,11 @@ local iconTypes = {
 		size			=	2.5,
 		distance	=	0.3,
 	},
+	sparty = {
+		bitmap		=	"icons/sparty.png",
+		size			=	2,
+		distance	=	0.3,
+	},
 	rockettruck = {
 		bitmap		=	"icons/rockettruck.tga",
 		size			=	2.5,

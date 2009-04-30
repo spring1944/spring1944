@@ -3,7 +3,7 @@
 	unitname=USM7Priest;
 	objectname=USM7Priest.S3O;
 	corpse=USM7Priest_Destroyed;
-	icontype=medtank;
+	icontype=sparty;
 	soundcategory=USTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;
