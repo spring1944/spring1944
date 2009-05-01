@@ -404,7 +404,7 @@ buildoptions =
 	gbrvehicleyard =
 	{
 		"gbrmatadorengvehicle",
-		"gbrbedford",
+		"gbrbedfordtruck",
 		"gbrm5halftrack",
 		"gbrdaimler",
 		"gbrkangaroo",

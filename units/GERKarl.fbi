@@ -28,7 +28,6 @@
 	stealth=1;
 
 	canmove=1;
-	canhover=1;
 	movementclass=TANK_VeryLarge;
 	maxvelocity=0.5;
 	acceleration=0.05;
