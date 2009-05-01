@@ -87,8 +87,18 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide flare;
+	hide flare_37;
+	hide flare_20_1;
+	hide flare_20_2;
+	hide flare_20_3;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	MaxSpeed = get MAX_SPEED;
 	call-script InitTurrets();
@@ -213,13 +223,6 @@ EmitWakes()
 	}
 }
 
-StartMoving()
-{
-	signal SIG_MOVE;
-	start-script EmitWakes();
-	bMoving = TRUE;
-}
-
 StopMoving()
 {
 	signal SIG_MOVE;
@@ -227,6 +230,32 @@ StopMoving()
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
 	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	bMoving = TRUE;
 }
 
 RestoreTurret()

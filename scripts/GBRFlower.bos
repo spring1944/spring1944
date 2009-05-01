@@ -87,8 +87,17 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare;
+	hide pom_flare;
+	hide flare_20_1;
+	hide flare_20_2;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

@@ -92,8 +92,22 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare;
+	hide aa40_flare_11;
+	hide aa40_flare_12;
+	hide aa40_flare_21;
+	hide aa40_flare_22;
+	hide aa20_flare_1;
+	hide aa20_flare_2;
+	hide aa20_flare_3;
+	hide aa20_flare_4;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

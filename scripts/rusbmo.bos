@@ -92,13 +92,52 @@ WaitForConstructionToFinish()
 	}
 }
 
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+HideFlares()
+{
+	hide flare_37;
+	hide flare_45;
+	hide flare_aa_1;
+	hide flare_aa_2;
+	hide flare_mg_1;
+	hide flare_mg_2;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
 	start-script WorkingLoop();
+	start-script StopCatcher();
 }
 
 SweetSpot(piecenum)
@@ -122,16 +161,8 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	start-script EmitWakes();
+	start-script StopCatcher();
 	bMoving = TRUE;
-}
-
-StopMoving()
-{
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE;
-	// We don't want this to trigger on VERY short stops
-	sleep 300;
-	bMoving = FALSE;
 }
 
 RestoreTurret()

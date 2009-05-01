@@ -132,8 +132,30 @@ RadarLoop()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare_a;
+	hide main_flare_b;
+	hide main_flare_c;
+	hide main_flare_d;
+	hide aa37_flare1_1;
+	hide aa37_flare1_2;
+	hide aa37_flare2_1;
+	hide aa37_flare2_2;
+	hide aa20_flare_1;
+	hide aa20_flare_2;
+	hide aa20_flare_3;
+	hide aa20_flare_4;
+	hide aa20_flare_5;
+	hide v_flare1;
+	hide v_flare2;
+	hide v_flare3;
+	hide v_flare4;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

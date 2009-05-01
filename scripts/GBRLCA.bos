@@ -55,6 +55,7 @@ WaitForConstructionToFinish()
 
 Create()
 {
+	hide bren_flare;
 	bMoving = FALSE;
 	FearOk=0;
 	MaxSpeed = get MAX_SPEED;
@@ -181,13 +182,6 @@ EmitWakes()
 	}
 }
 
-StartMoving()
-{
-	signal SIG_MOVE;
-	start-script EmitWakes();
-	bMoving = TRUE;
-}
-
 StopMoving()
 {
 	signal SIG_MOVE;
@@ -195,6 +189,32 @@ StopMoving()
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
 	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	bMoving = TRUE;
 }
 
 RestoreTurrets()

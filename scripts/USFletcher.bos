@@ -138,8 +138,35 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare_a;
+	hide main_flare_b;
+	hide main_flare_c;
+	hide main_flare_d;
+	hide main_flare_e;
+	hide aa40_flare_11;
+	hide aa40_flare_21;
+	hide aa40_flare_12;
+	hide aa40_flare_22;
+	hide aa40_flare_13;
+	hide aa40_flare_23;
+	hide aa40_flare_14;
+	hide aa40_flare_24;
+	hide aa40_flare_15;
+	hide aa40_flare_25;
+	hide aa20_flare_1;
+	hide aa20_flare_2;
+	hide aa20_flare_3;
+	hide aa20_flare_4;
+	hide aa20_flare_5;
+	hide aa20_flare_6;
+	hide aa20_flare_7;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

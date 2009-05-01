@@ -117,8 +117,26 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare_1;
+	hide main_flare_2;
+	hide main_flare_3;
+	hide main_flare_4;
+	hide aa4inch_flare;
+	hide pom_flare1;
+	hide pom_flare2;
+	hide pom_flare3;
+	hide pom_flare4;
+	hide flare_20_1;
+	hide flare_20_2;
+	hide flare_20_3;
+	hide flare_20_4;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

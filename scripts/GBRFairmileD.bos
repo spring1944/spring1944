@@ -127,8 +127,50 @@ CruiseControl()
 	}
 }
 
+HideFlares()
+{
+	hide flare6_1;
+	hide flare6_2;
+	hide flare20_1;
+	hide flare20_2;
+	hide flare05_1_1;
+	hide flare05_1_2;
+	hide flare05_2_1;
+	hide flare05_2_2;
+	hide flare303_1;
+	hide flare303_2;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	is20mmAimed = FALSE;
 	flare05_1 = TRUE;
@@ -140,6 +182,7 @@ Create()
 	start-script DamageSmoke();
 	start-script WorkingLoop();
 	start-script CruiseControl();
+	start-script StopCatcher();
 }
 
 SweetSpot(piecenum)
@@ -164,16 +207,8 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	start-script EmitWakes();
+	start-script StopCatcher();
 	bMoving = TRUE;
-}
-
-StopMoving()
-{
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE;
-	// We don't want this to trigger on VERY short stops
-	sleep 300;
-	bMoving = FALSE;
 }
 
 RestoreTurret()

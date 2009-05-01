@@ -150,8 +150,59 @@ WaitForConstructionToFinish()
 	}
 }
 
+HideFlares()
+{
+	hide main_flare_1;
+	hide main_flare_2;
+	hide secondary_flare1_1;
+	hide secondary_flare2_1;
+	hide secondary_flare1_2;
+	hide secondary_flare2_2;
+	hide secondary_flare1_3;
+	hide secondary_flare2_3;
+	hide secondary_flare1_4;
+	hide secondary_flare2_4;
+	hide pom_flare1;
+	hide pom_flare2;
+	hide pom_flare3;
+	hide pom_flare4;
+	hide pom_flare5;
+	hide pom_flare6;
+	hide pom_flare7;
+	hide pom_flare8;
+	hide pom1_flare1;
+	hide pom1_flare2;
+	hide pom1_flare3;
+	hide pom1_flare4;
+	hide pom2_flare1;
+	hide pom2_flare2;
+	hide pom2_flare3;
+	hide pom2_flare4;
+	hide aa2x20_flare1_1;
+	hide aa2x20_flare2_1;
+	hide aa2x20_flare1_2;
+	hide aa2x20_flare2_2;
+	hide aa2x20_flare1_3;
+	hide aa2x20_flare2_3;
+	hide aa2x20_flare1_4;
+	hide aa2x20_flare2_4;
+	hide aa2x20_flare1_5;
+	hide aa2x20_flare2_5;
+	hide aa2x20_flare1_6;
+	hide aa2x20_flare2_6;
+	hide aa2x20_flare1_7;
+	hide aa2x20_flare2_7;
+	hide aa2x20_flare1_8;
+	hide aa2x20_flare2_8;
+	hide aa20_flare_1;
+	hide aa20_flare_2;
+	hide aa20_flare_3;
+	hide aa20_flare_4;
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();

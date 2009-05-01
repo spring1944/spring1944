@@ -91,8 +91,44 @@ CruiseControl()
 	}
 }
 
+HideFlares()
+{
+	hide flare1_1;
+	hide flare1_2;
+	hide flare2_1;
+	hide flare2_2;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
 Create()
 {
+	start-script HideFlares();
 	bMoving = FALSE;
 	MaxSpeed = get MAX_SPEED;
 	CruiseTriggerSpeed = MaxSpeed * CRUISE_MODE_START_MULTIPLIER / CRUISE_MODE_START_DIVIDER;
@@ -101,6 +137,7 @@ Create()
 	start-script DamageSmoke();
 	start-script WorkingLoop();
 	start-script CruiseControl();
+	start-script StopCatcher();
 }
 
 SweetSpot(piecenum)
@@ -124,16 +161,8 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	start-script EmitWakes();
+	start-script StopCatcher();
 	bMoving = TRUE;
-}
-
-StopMoving()
-{
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE|SIG_DEATH;
-	// We don't want this to trigger on VERY short stops
-	sleep 300;
-	bMoving = FALSE;
 }
 
 RestoreTurret()

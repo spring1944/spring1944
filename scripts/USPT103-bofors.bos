@@ -183,6 +183,15 @@ RestoreTorpedo4()
 	}
 }
 
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
 Create()
 {
 	bMoving = FALSE;
@@ -221,20 +230,30 @@ EmitWakes()
 	}
 }
 
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
 StartMoving()
 {
 	signal SIG_MOVE;
 	start-script EmitWakes();
+	start-script StopCatcher();
 	bMoving = TRUE;
-}
-
-StopMoving()
-{
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE;
-	// We don't want this to trigger on VERY short stops
-	sleep 300;
-	bMoving = FALSE;
 }
 
 RestoreTurret()
