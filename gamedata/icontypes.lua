@@ -276,7 +276,7 @@ local iconTypes = {
 		distance	=	0.3,
 	},
 	transportship = {
-		bitmap		=	"icons/transportship.png",
+		bitmap		=	"icons/transportship.tga",
 		size			=	5,
 		distance	=	0.3,
 	}
