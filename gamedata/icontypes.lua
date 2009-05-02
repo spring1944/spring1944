@@ -156,7 +156,7 @@ local iconTypes = {
 		distance	=	0.3,
 	},
 	sparty = {
-		bitmap		=	"icons/sparty.png",
+		bitmap		=	"icons/sparty.tga",
 		size			=	2,
 		distance	=	0.3,
 	},
