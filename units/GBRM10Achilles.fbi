@@ -34,7 +34,7 @@
 
 	canmove=1;
 	movementclass=TANK_Medium;
-	maxvelocity=2.7;//3.65
+	maxvelocity=3;//3.65
 	acceleration=0.05;
 	brakerate=0.15;
 	turnrate=280;
