@@ -3,7 +3,7 @@
 	unitname=PontoonRaft;
 	objectname=USPontoonRaft.S3O;
 	//corpse=;
-	icontype=pontoon;
+	icontype=raft;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 

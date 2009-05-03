@@ -31,7 +31,7 @@ local iconTypes = {
 	},
 	officer = {
 		bitmap		=	"icons/binos.tga",
-		size			=	1,
+		size			=	1.4,
 		distance	=	0.15,
 	},
 	engineer = {
@@ -152,12 +152,12 @@ local iconTypes = {
 	},
 	selfprop = {
 		bitmap		=	"icons/selfprop.tga",
-		size			=	2.5,
+		size			=	2,
 		distance	=	0.3,
 	},
 	sparty = {
 		bitmap		=	"icons/sparty.tga",
-		size			=	2,
+		size			=	2.25,
 		distance	=	0.3,
 	},
 	rockettruck = {
@@ -222,6 +222,11 @@ local iconTypes = {
 	},
 	pontoon = {
 		bitmap		=	"icons/pontoon.tga",
+		size			=	2.5,
+		distance	=	0.4,
+	},
+	raft	= {
+		bitmap		=	"icons/raft.tga",
 		size			=	2.5,
 		distance	=	0.4,
 	},
