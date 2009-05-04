@@ -9,6 +9,7 @@
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 	collisionvolumetype=ellipsoid;
 	name=Light Vehicle Yard;
+	description=Produces wheeled vehicles;
 	side=RUS;
 	maxdamage=5000;
 	idleautoheal=3;

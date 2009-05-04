@@ -9,6 +9,7 @@
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 	collisionvolumetype=ellipsoid;
 	name=Towed Gun Yard;
+	description=Towed artillery production facility;
 	side=RUS;
 	maxdamage=5000;
 	idleautoheal=3;

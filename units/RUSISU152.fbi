@@ -9,7 +9,7 @@
 	tedclass=TANK;
 
 	name=ISU-152;
-	description=15.2cm Heavy Assault Gun;
+	description=152mm Heavy Assault Gun;
 	side=RUS;
 
 	maxdamage=9764;

@@ -9,6 +9,7 @@
 	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 	collisionvolumetype=ellipsoid;
 	name=Tier 1 Tank Depot;
+	description=Produces tanks;
 	side=RUS;
 	maxdamage=8000;
 	idleautoheal=3;

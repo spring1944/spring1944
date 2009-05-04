@@ -9,6 +9,7 @@
 	tedclass=CONSTR;
 
 	name=Engineer Commander;
+	description=Political engineer;
 	side=RUS;
 	maxdamage=65;
 	damagemodifier=0.375;

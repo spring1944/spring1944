@@ -9,6 +9,7 @@
 	yardmap=oooooo oooooo ooccoo occcco occcco cccccc cccccc cccccc;
 	collisionvolumetype=ellipsoid;
 	name=Barracks;
+	description=Infantry training facility;
 	side=RUS;
 	maxdamage=8000;
 	idleautoheal=3;
