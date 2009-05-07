@@ -46,8 +46,8 @@
 	Weapon2=gbr4inch45mkxvi;
 	Weapon3=gbr4inch45mkxvi;
 	Weapon4=quadpompom;
-	Weapon5=20mmOerlikon;
-	Weapon6=20mmOerlikon;
+	Weapon5=20mmOerlikonaa;
+	Weapon6=20mmOerlikonaa;
 
 	// 4inch main gun
 	WeaponMainDir1=0 0 1;

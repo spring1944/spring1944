@@ -47,19 +47,19 @@
 	Weapon3=5in38mk30;
 	Weapon4=5in38mk30;
 	Weapon5=5in38mk30;
-	Weapon6=40mmmk1aa;
-	Weapon7=40mmmk1aa;
-	Weapon8=40mmmk1aa;
-	Weapon9=40mmmk1aa;
-	Weapon10=40mmmk1aa;
+	Weapon6=twin_bofors40mmaa;
+	Weapon7=twin_bofors40mmaa;
+	Weapon8=twin_bofors40mmaa;
+	Weapon9=twin_bofors40mmaa;
+	Weapon10=twin_bofors40mmaa;
 
-	Weapon11=20mmOerlikon;
-	Weapon12=20mmOerlikon;
-	Weapon13=20mmOerlikon;
-	Weapon14=20mmOerlikon;
-	Weapon15=20mmOerlikon;
-	Weapon16=20mmOerlikon;
-	Weapon17=20mmOerlikon;
+	Weapon11=20mmOerlikonaa;
+	Weapon12=20mmOerlikonaa;
+	Weapon13=20mmOerlikonaa;
+	Weapon14=20mmOerlikonaa;
+	Weapon15=20mmOerlikonaa;
+	Weapon16=20mmOerlikonaa;
+	Weapon17=20mmOerlikonaa;
 	Weapon18=mk14_533mmtorpedo;
 	Weapon19=mk14_533mmtorpedo;
 

@@ -49,14 +49,14 @@
 	Weapon4=mk15_533mmtorpedo;
 	Weapon5=28mmchicagopiano;
 
-	Weapon6=20mmOerlikon;
-	Weapon7=20mmOerlikon;
-	Weapon8=20mmOerlikon;
-	Weapon9=20mmOerlikon;
-	Weapon10=20mmOerlikon;
-	Weapon11=20mmOerlikon;
-	Weapon12=20mmOerlikon;
-	Weapon13=20mmOerlikon;
+	Weapon6=20mmOerlikonaa;
+	Weapon7=20mmOerlikonaa;
+	Weapon8=20mmOerlikonaa;
+	Weapon9=20mmOerlikonaa;
+	Weapon10=20mmOerlikonaa;
+	Weapon11=20mmOerlikonaa;
+	Weapon12=20mmOerlikonaa;
+	Weapon13=20mmOerlikonaa;
 
 	// 3-inch main gun
 	WeaponMainDir1=0 0 1;

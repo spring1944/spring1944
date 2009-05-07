@@ -57,19 +57,19 @@
 	Weapon7=quadpompom;
 	Weapon8=quadpompom;
 
-	Weapon9=twin20mmOerlikon;
-	Weapon10=twin20mmOerlikon;
-	Weapon11=twin20mmOerlikon;
-	Weapon12=twin20mmOerlikon;
-	Weapon13=twin20mmOerlikon;
-	Weapon14=twin20mmOerlikon;
-	Weapon15=twin20mmOerlikon;
-	Weapon16=twin20mmOerlikon;
+	Weapon9=twin_20mmOerlikonaa;
+	Weapon10=twin_20mmOerlikonaa;
+	Weapon11=twin_20mmOerlikonaa;
+	Weapon12=twin_20mmOerlikonaa;
+	Weapon13=twin_20mmOerlikonaa;
+	Weapon14=twin_20mmOerlikonaa;
+	Weapon15=twin_20mmOerlikonaa;
+	Weapon16=twin_20mmOerlikonaa;
 
-	Weapon17=20mmOerlikon;
-	Weapon18=20mmOerlikon;
-	Weapon19=20mmOerlikon;
-	Weapon20=20mmOerlikon;
+	Weapon17=20mmOerlikonaa;
+	Weapon18=20mmOerlikonaa;
+	Weapon19=20mmOerlikonaa;
+	Weapon20=20mmOerlikonaa;
 
 	// 15inch main gun
 	WeaponMainDir1=0 0 1;

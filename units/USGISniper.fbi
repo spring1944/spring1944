@@ -48,8 +48,8 @@
 	//explodeas=; //Infantry don't need to explode
 	//selfdestructas=; //Infantry don't need to explode
 
-	nochasecategory=FLAG LIGHTVEH AIR;
-	badtargetcategory=FLAG LIGHTVEH;
+	nochasecategory=FLAG LIGHTVEH AIR BUILDING PLANT;
+	badtargetcategory=FLAG LIGHTVEH BUILDING PLANT;
 
 	weapon1=M1903Springfield;
 	badtargetcategory1=LIGHTVEH;

@@ -46,15 +46,15 @@
 	Weapon2=3in50mk22;
 	Weapon3=3in50mk22;
 
-	Weapon4=40mmmk1aa;
-	Weapon5=40mmmk1aa;
+	Weapon4=twin_bofors40mmaa;
+	Weapon5=twin_bofors40mmaa;
 
-	Weapon6=20mmOerlikon;
-	Weapon7=20mmOerlikon;
-	Weapon8=20mmOerlikon;
-	Weapon9=20mmOerlikon;
-	Weapon10=20mmOerlikon;
-	Weapon11=20mmOerlikon;
+	Weapon6=20mmOerlikonaa;
+	Weapon7=20mmOerlikonaa;
+	Weapon8=20mmOerlikonaa;
+	Weapon9=20mmOerlikonaa;
+	Weapon10=20mmOerlikonaa;
+	Weapon11=20mmOerlikonaa;
 
 	// 3-inch main gun
 	WeaponMainDir1=0 0 1;

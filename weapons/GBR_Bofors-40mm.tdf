@@ -58,6 +58,66 @@
 	}
 }
 
+[twin_bofors40mmaa]
+{
+	id=50;
+	name=2x 40mm Bofors Anti-Aircraft Gun;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosiongenerator=custom:HE_Medium;
+
+	lineofsight=1;
+	firestarter=0.0;
+	//targetmoveerror=0.1;
+	predictboost=0.9;
+	range=2100;
+	//accuracy=600;
+	reloadtime=1.25;
+	burst=2;
+	burstrate=0.3;
+	sprayangle=550;
+	weaponvelocity=5000;
+	areaofeffect=80;
+	edgeeffectiveness=0.0000001;
+	burnblow=1;
+	weapontimer=1;
+	canattackground=0;
+
+	soundstart=GEN_37mmAA;
+	soundhit=GEN_Explo_Flak1;
+
+	rgbcolor=1 1 0;
+
+	intensity=0.9;
+
+	collisionsize=0.00001;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.2;
+	craterboost=.2;
+
+  size=0.001;
+
+	[damage]
+	{
+		default=200;
+		flag=0.00000001;
+		sandbags=200;
+		armouredvehicles=1300;
+		hq=100;
+		unarmoredvehicles=1500;
+		infantry=800;
+		guns=600;
+		planes=2040;
+	}
+	[customParams]
+	{
+		fearid=701;
+		fearaoe=250;
+	}
+}
+
 [bofors40mmhe]
 {
 	id=50;

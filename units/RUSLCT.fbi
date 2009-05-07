@@ -47,8 +47,8 @@
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 
-	Weapon1=20mmOerlikon; //oerlikon20mm;
-	Weapon2=20mmOerlikon; //oerlikon20mm;
+	Weapon1=20mmOerlikonaa; //oerlikon20mm;
+	Weapon2=20mmOerlikonaa; //oerlikon20mm;
 
 	WeaponMainDir1=1 0 0;
 	MaxAngleDif1=200;
