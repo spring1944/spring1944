@@ -80,7 +80,6 @@ CloseYard()
 		set YARD_OPEN to 0;
 	}
 	set BUGGER_OFF to 0;
-	emit-sfx 2048 from base;
 }
 
 QueryNanoPiece(piecenum)
@@ -173,7 +172,7 @@ StartBuilding()
 
 StopBuilding()
 {
-	emit-sfx 2048 from base;
+	//emit-sfx 2048 from base;
 }
 
 QueryBuildInfo(piecenum)

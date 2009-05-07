@@ -29,7 +29,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead;
 	hide coaxflare;\
 	
 // definitions for HitWeapId_S44
-#define QUALITY		18010
+#define QUALITY		20010
 #define ARMOUR		1549
 #include "HitWeapId_S44.h"
 

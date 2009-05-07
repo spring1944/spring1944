@@ -5,7 +5,7 @@
 	buildpic=GBRLZ.png;
 	category=GBR PLANT NOWEAPON NFLAG;
 	tedclass=PLANT;
-	yardmap=cccc cccc cccc cccc;
+	yardmap=y;
 
 	name=Commando Landing Zone;
 	side=GBR;
@@ -14,28 +14,19 @@
 	buildcostmetal=2000;
 	buildcostenergy=0;
 	buildtime=200;
-	footprintx=4;
-	footprintz=4;
+	footprintx=1;
+	footprintz=1;
 
 	shownanoframe=0;
-	//unitrestricted=3;
 	levelground=0;
 
 	sightdistance=5;
 	stealth=1;
 
-	builder=1;
-	workertime=10; //250
-	shownanospray=0;
-
-	canmove=1;
-	maxslope=10;
+	maxslope=60;
 	maxwaterdepth=0;
 
 	explodeas=GBRLZ_death;
-	selfdestructas=GBRLZ_death;
-
-	weapon1=GBRLZ_death;
 	[sfxtypes]
 	{
 		explosiongenerator0=custom:LZflare;

@@ -26,6 +26,15 @@ local morphDefs = {
 
   -- Machineguns
   
+    gbrlz =
+  {
+    into = 'gbr_platoon_commando_lz',
+    tech = 0,
+    time = 12,
+    metal = 1200,
+    energy = 0,
+  },
+  
   gbrvickers =
   {
     into = 'gbrvickers_sandbag',

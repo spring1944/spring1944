@@ -378,11 +378,6 @@ buildoptions =
 	"gbrsatchelcharge",
 	},
 
-	gbrlz =
-	{
-	"gbr_platoon_commando_lz",
-	},
-
 	gbrengineer =
 	{
 		"gbrvehicleyard",

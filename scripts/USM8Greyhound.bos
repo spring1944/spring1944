@@ -33,6 +33,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead;
 
 // definitions for HitWeapId_S44
 #define ARMOUR		1618
+#define QUALITY	20280
 #include "HitWeapId_S44.h"
 
 // definitions for wheels
