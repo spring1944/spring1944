@@ -522,6 +522,7 @@ Shot6(foo)
 		move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 		emit-sfx XSMALL_MUZZLEFLASH from flare_20_1;
 		emit-sfx XSMALL_MUZZLEDUST from flare_20_1;
+		sleep flak20mmBurstRate;
 		move barrel_20_1 to z-axis 0 speed AA20_GUN_BACK_SPEED;
 }
 
@@ -561,6 +562,7 @@ Shot7(foo)
 		move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 		emit-sfx XSMALL_MUZZLEFLASH from flare_20_2;
 		emit-sfx XSMALL_MUZZLEDUST from flare_20_2;
+		sleep flak20mmBurstRate;
 		move barrel_20_2 to z-axis 0 speed AA20_GUN_BACK_SPEED;
 }
 
