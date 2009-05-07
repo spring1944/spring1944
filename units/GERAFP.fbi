@@ -73,6 +73,16 @@
 
 	[sfxtypes]
 	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
+		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
+		explosiongenerator3=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator4=custom:SMALL_MUZZLEDUST;
+		explosiongenerator5=custom:XSMALL_MUZZLEFLASH;
+		explosiongenerator6=custom:XSMALL_MUZZLEDUST;
+		explosiongenerator7=custom:MG_MUZZLEFLASH;
+		explosiongenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+		explosiongenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
 	}
 	[customParams]
 	{
