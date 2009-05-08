@@ -174,3 +174,16 @@ if (modOptions and (unit_buildable_airfields == 1)) then
 	                end
             end
 end]]--
+
+-- adjust descriptions
+for name, ud in pairs(UnitDefs) do
+	if (ud.energystorage) then
+		-- this is to exclude things like builders having 0.01 storage
+		if tonumber(ud.energystorage)>1 then
+			if not (ud.description) then
+				ud.description = "log. storage: "..ud.energystorage
+			end
+			ud.description = ud.description.." (log. storage: "..ud.energystorage..")"
+		end
+	end
+end
