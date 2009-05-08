@@ -177,6 +177,7 @@ end]]--
 
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
+	-- ammo storage
 	if (ud.energystorage) then
 		-- this is to exclude things like builders having 0.01 storage
 		if tonumber(ud.energystorage)>1 then
@@ -184,6 +185,16 @@ for name, ud in pairs(UnitDefs) do
 				ud.description = "log. storage: "..ud.energystorage
 			end
 			ud.description = ud.description.." (log. storage: "..ud.energystorage..")"
+		end
+	end
+	-- ammo users
+	if (ud.customparams) then
+		if (ud.customparams.weaponcost) and (ud.customparams.maxammo) then
+			if not (ud.description) then
+				ud.description = "log. for full reload: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
+			end
+			ud.description = ud.description.." (log. for full reload: "..(ud.customparams.weaponcost*ud.customparams.maxammo)..")"
+			
 		end
 	end
 end
