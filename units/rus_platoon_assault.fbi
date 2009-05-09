@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=14 x PPsh-43 SMG;
+	description=14 x PPsh-43 SMG, 1 x Commissar;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

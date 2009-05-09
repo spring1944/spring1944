@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Commando Pathfinder Squad;
-	description=3 x Commando Leaders: Can call in Commando Airdrop;
+	description=3 x Commando Leaders: Special-Ops, Can Call Airdrop;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=3-inch Mortar Team;
-	description=3 x Mortar: Heavy Infantry Fire Support;
+	description=3 x Mortar, 2 x Scout: Heavy Infantry Fire Support;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;
