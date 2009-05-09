@@ -3,7 +3,7 @@
 	unitname=USBoatyardLarge;
 	objectname=USBoatyardLarge;
 	corpse=USBoatyardLarge_dead;
-	icontype=shipyard;
+	icontype=hshipyard;
 	buildpic=USBoatyard.png;
 	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;

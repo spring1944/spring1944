@@ -256,7 +256,12 @@ local iconTypes = {
 		distance	=	0.3,
 	},
 	shipyard = {
-		bitmap		=	"icons/anchor.png",
+		bitmap		=	"icons/anchor.tga",
+		size			=	5,
+		distance	=	0.3,
+	},
+	hshipyard = {
+		bitmap		=	"icons/anchor2.tga",
 		size			=	5,
 		distance	=	0.3,
 	},

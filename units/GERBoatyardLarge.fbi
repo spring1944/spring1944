@@ -3,7 +3,7 @@
 	unitname=GERBoatyardLarge;
 	objectname=GERBoatyardLarge;
 	corpse=GERBoatyardLarge_dead;
-	icontype=shipyard;
+	icontype=hshipyard;
 	buildpic=GERBoatyard.png;
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
