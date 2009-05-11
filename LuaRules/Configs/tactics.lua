@@ -75,10 +75,7 @@ local deployment = {
     		"gerpanther",
     		"gertiger",
     		"gertigerii",
-    		"gersturmboot",
-			"tankobstacle",
-    		"apmine",
-    		"atmine"
+    		"gersturmboot"
       },
       forbid = {
       },
@@ -107,10 +104,7 @@ local deployment = {
     		"gbrm10achilles",
     		"gbrchurchillmkvii",
     		"gbrsexton",
-    		"rubberdingy",
-			"tankobstacle",
-    		"apmine",
-    		"atmine"
+    		"rubberdingy"
       },
       forbid = {
       },
@@ -140,10 +134,7 @@ local deployment = {
     		"rust3485",
     		"rusis2",
     		"rusbm13n",
-    		"ruslighttender",
-			"tankobstacle",
-    		"apmine",
-    		"atmine"
+    		"ruslighttender"
       },
       forbid = {
       },
@@ -172,10 +163,7 @@ local deployment = {
     		"usm4a376sherman",
     		"usm4a3105sherman",
     		"usm4jumbo",
-    		"rubberdingy",
-			"tankobstacle",
-    		"apmine",
-			"atmine"
+    		"rubberdingy"
       },
       forbid = {
       },

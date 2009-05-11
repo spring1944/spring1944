@@ -19,7 +19,7 @@
 
 	commander=1;
 	showplayername=1;
-	hidedamage=1;
+	 
 	shownanoframe=0;
 	//unitrestricted=1;
 	smoothanim=0;

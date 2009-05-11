@@ -18,7 +18,7 @@
 	footprintz=1;
 	mass=50;
 
-	hidedamage=1;
+	 
 	upright=1;
 	shownanoframe=0;
 	smoothanim=0;

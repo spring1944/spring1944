@@ -19,7 +19,7 @@
 	footprintz=3;
 	mass=1000;
 
-	hidedamage=1;
+	 
 	shownanoframe=0;
 	smoothanim=0;
 
