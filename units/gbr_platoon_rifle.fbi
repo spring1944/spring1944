@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Enfield Rifle Platoon;
-	description=10 x Enfield Rifle, 2 x Sten SMG: Long-range Combat Platoon;
+	description=10 x Enfield Rifle, 2 x Sten SMG: Long-Range Combat Platoon;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=HQ Combat Squad;
-	description=2 x Enfield Rifle, 3 x Sten SMG, 1 x Bren LMG: Small combat squad;
+	description=2 x Enfield Rifle, 3 x Sten SMG, 1 x Bren LMG: Small Combat Squad;
 	side=GBR;
 	maxdamage=100;
 	idleautoheal=0;

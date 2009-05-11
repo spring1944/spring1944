@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=16 x Mosin-Nagant Rifle, 8 x PPsh-43 SMG;
+	description=16 x Mosin-Nagant Rifle, 8 x PPsh-43 SMG: Long-Range Combat Platoon;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

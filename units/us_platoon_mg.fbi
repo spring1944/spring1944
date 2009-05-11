@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Machinegun Squad;
-	description=3 x Browning .30 Cal Machinegun, 2 x Scout;
+	description=3 x Browning .30 Cal Machinegun, 2 x Scout: Infantry Fire Support Squad;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;

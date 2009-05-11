@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Partisan Contingent;
-	description=12 x Partisans;
+	description=12 x Partisans: Conscripted Partisan Infantry;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

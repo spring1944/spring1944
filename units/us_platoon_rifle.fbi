@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun;
+	description=8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun: Long-Range Combat Platoon;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;

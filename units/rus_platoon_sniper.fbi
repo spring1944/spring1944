@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Sniper Team;
-	description=1 x Mosin-Nagant Sniper, 1 x Scout;
+	description=1 x Mosin-Nagant Sniper, 1 x Scout: Long-Range Fire Support;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

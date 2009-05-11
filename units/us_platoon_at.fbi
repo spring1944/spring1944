@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Anti-Tank Squad;
-	description=3 x Bazooka;
+	description=3 x Bazooka: Anti-Tank Infantry;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;

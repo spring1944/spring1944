@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Rifle Platoon;
-	description=18 x Kar 98K Rifle, 4 x MP40 SMG, 2x MG42 MG;
+	description=18 x Kar 98K Rifle, 4 x MP40 SMG, 2x MG42 MG: Long-Range Combat Platoon;
 	side=GER;
 	maxdamage=100;
 	idleautoheal=0;

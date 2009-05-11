@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Flamethrower Squad;
-	description=3 x Flamethrower;
+	description=3 x Flamethrower: Specialized Assault Infantry;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;
