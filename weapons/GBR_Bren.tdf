@@ -12,7 +12,7 @@
 
 	range=735;
 	reloadtime=2.8;
-	burst=5;
+	burst=4;
 	burstrate=.109;
 	sprayangle=350;
 	areaofeffect=1;
