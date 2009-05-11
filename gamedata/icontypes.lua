@@ -266,7 +266,7 @@ local iconTypes = {
 		distance	=	0.3,
 	},
 	destroyer = {
-		bitmap		=	"icons/destroyer.png",
+		bitmap		=	"icons/destroyer.tga",
 		size			=	5,
 		distance	=	0.3,
 	},
