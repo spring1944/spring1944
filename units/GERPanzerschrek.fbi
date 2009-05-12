@@ -19,8 +19,8 @@
 	buildtime=225;
 	footprintx=1;
 	footprintz=1;
-	mass=50;
-
+	 mass=50;
+	repairable=0;
 	upright=1;
 	shownanoframe=0;
 	smoothanim=0;

@@ -17,8 +17,8 @@
 	buildtime=70;
 	footprintx=1;
 	footprintz=1;
-	mass=50;
-	damagemodifier=0.5;
+	 mass=50;
+	repairable=0;	damagemodifier=0.5;
 
 	upright=1;
 	shownanoframe=0;
