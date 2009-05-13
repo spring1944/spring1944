@@ -10,7 +10,7 @@
 	yardmap=ooccc ccccc ccccc ccccc ooccc ooccc ooccc;
 	collisionvolumetype=ellipsoid;
 	name=Wehrmacht Barracks;
-	description=;
+	description=Infantry Training & Housing Facility;
 	maxdamage=5000;
 	buildcostmetal=2520;
 	buildcostenergy=0;

@@ -11,6 +11,7 @@
 	yardmap=ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo;
 
 	name=Large Boat Yard;
+	description=Naval Production Facility;
 	side=US;
 	maxdamage=5000;
 	idleautoheal=3;

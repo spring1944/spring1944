@@ -10,6 +10,7 @@
 	yardmap=oooo occo occo oyyo oyyo oyyo;
 	collisionvolumetype=ellipsoid;
 	name=US Army Barracks;
+	description=Infantry Training & Housing Facility;
 	maxdamage=4250;
 	buildcostmetal=2746;
 	buildcostenergy=0;

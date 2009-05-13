@@ -9,6 +9,7 @@
 	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
 	name=Heavy Towed Gun Yard;
+	description=Advanced Towed Artillery Production Facility;
 	side=GBR;
 	maxdamage=5000;
 	idleautoheal=3;

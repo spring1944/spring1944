@@ -11,7 +11,7 @@
 	yardmap=ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo;
 
 	name=Large Boat Yard;
-	description=Produces large water units;
+	description=Naval Production Facility;
 	side=RUS;
 	maxdamage=5000;
 	idleautoheal=3;

@@ -11,7 +11,7 @@
 	yardmap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
 	collisionvolumetype=ellipsoid;
 	name=Wehrmacht HQ Bunker;
-	description=Command Structure;
+	description=Fortified Command Post;
 	maxdamage=32000;
 	buildcostmetal=40500;
 	buildcostenergy=0;

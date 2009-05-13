@@ -10,7 +10,7 @@
 	buildpic=GERRadar.png;
 
 	name=SCR-584 Air Control Station;
-	description=Detects and Controls Aircraft;
+	description=Flight Detection & Control Station;
 	side=US;
 	maxdamage=5000;
 	buildcostmetal=5138;

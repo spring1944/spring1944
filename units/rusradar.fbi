@@ -9,7 +9,7 @@
 	yardmap=ooooooooo;
 
 	name=RUS-2 Air Control Station;
-	description=Detects and Controls Aircraft;
+	description=Flight Detection & Control Station;
 	side=RUS;
 	maxdamage=5000;
 	buildcostmetal=5138;

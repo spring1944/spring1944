@@ -9,7 +9,7 @@
 	yardmap=ooooooooo;
 
 	name=Freya Air Control Station;
-	description=Detects and Controls Aircraft;
+	description=Flight Detection & Control Station;
 	side=GER;
 	maxdamage=5000;
 	buildcostmetal=5138;

@@ -11,7 +11,7 @@
 	yardmap=ooooooo oocccoo oocccoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;
 	collisionvolumetype=ellipsoid;
 	name=British Army HQ;
-	description=Command Structure;
+	description=Command Outpost;
 	maxdamage=8500;
 	buildcostmetal=2050;
 	buildcostenergy=0;

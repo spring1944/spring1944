@@ -10,7 +10,7 @@
 	buildpic=GERRadar.png;
 
 	name=Type 8C Ground Control Intercept;
-	description=Detects and Controls Aircraft;
+	description=Flight Detection & Control Station;
 	side=GBR;
 	maxdamage=5000;
 	buildcostmetal=5138;

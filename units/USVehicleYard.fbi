@@ -10,7 +10,7 @@
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 	collisionvolumetype=ellipsoid;
 	name=U.S. Light Ordnance Depot;
-	description=Constructs Light Ordnance/Vehicles;
+	description=Light Ordnance & Vehicle Production Facility;
 	maxdamage=5500;
 	buildcostmetal=5482;
 	buildcostenergy=0;

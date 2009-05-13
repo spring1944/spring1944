@@ -9,6 +9,7 @@
 	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 	collisionvolumetype=ellipsoid;
 	name=Tier 2 Tank Depot;
+	description=Advanced Armour Production Facility;
 	side=GBR;
 	maxdamage=8000;
 	idleautoheal=3;

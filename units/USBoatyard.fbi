@@ -11,6 +11,7 @@
 	yardmap=oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo;
 
 	name=Boat Yard;
+	description=Light Naval Production Facility;
 	side=US;
 	maxdamage=5000;
 	idleautoheal=3;
