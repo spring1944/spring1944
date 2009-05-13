@@ -8,7 +8,7 @@
 	tedclass=PLANT;
 	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 	collisionvolumetype=ellipsoid;
-	name=Tier 3 Tank Depot;
+	name=Heavy Tank Depot;
 	description=Advanced Armour Production Facility;
 	side=GER;
 	maxdamage=8000;

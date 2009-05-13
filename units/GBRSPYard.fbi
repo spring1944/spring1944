@@ -1,35 +1,34 @@
 [unitinfo]
 {
 	unitname=GBRSPYard;
-	objectname=GBRTankYard.S3O;
+	objectname=GBRGunYard.S3O;
 	icontype=factory;
-	category=NFLAGNAIR PLANT BUILDING;
 	soundcategory=GBRYard;
+	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
-	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
-
-	name=Self-Propelled Depot;
+	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
+	collisionvolumetype=ellipsoid;
+	name=Self-Propelled Gun Yard;
 	description=Self Propelled Gun Production Facility;
 	side=GBR;
-	maxdamage=8000;
+	maxdamage=5000;
 	idleautoheal=3;
-	buildcostmetal=4050;
+	buildcostmetal=1868;
 	buildcostenergy=0;
-	buildtime=2700;
+	buildtime=1245;
 	footprintx=7;
 	footprintz=7;
 
 	shownanoframe=0;
-	//unitrestricted=1;
 
 	 
-	energystorage=0;
+	energystorage=0.01;
 
 	sightdistance=146;
 	stealth=1;
 
 	builder=1;
-	workertime=10;//180
+	workertime=10;//250
 	shownanospray=0;
 	canbeassisted=0;
 
@@ -43,8 +42,8 @@
 	buildinggrounddecaldecayspeed=0.05;
 	buildinggrounddecaltype=Dirt2.dds;
 
-	explodeas=LARGE_EXPLOSION;
-	selfdestructas=LARGE_EXPLOSION;
+	explodeas=Large_Explosion;
+	selfdestructas=Large_Explosion;
 
 	[sfxtypes]
 	{

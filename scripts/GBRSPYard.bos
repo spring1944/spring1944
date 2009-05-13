@@ -13,44 +13,12 @@ static-var  spray, unitviewer, statechg_DesiredState, statechg_StateChanging;
 
 activatescr()
 {
-	if( TRUE )
-	{
-		sleep 514;
-	}
-	if( TRUE )
-	{
-		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	sleep 13;
+sleep 100;
 }
 
 deactivatescr()
 {
-	if( TRUE )
-	{
-		sleep 518;
-	}
-	if( TRUE )
-	{
-		sleep 519;
-	}
-	if( TRUE )
-	{
-		sleep 520;
-	}
-	if( TRUE )
-	{
-		sleep 520;
-	}
-	sleep 23;
+sleep 100;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
@@ -152,6 +120,14 @@ RequestState(requestedstate, currentstate)
 
 Create()
 {
+	
+  while (get BUILD_PERCENT_LEFT)
+   {
+    move base to y-axis 0 - ([0.3] * get BUILD_PERCENT_LEFT) now;
+    sleep 100;
+ 	}
+  move base to y-axis 0 now;
+  
 	spray = base;
 	call-script InitState();
 	start-script SmokeUnit();

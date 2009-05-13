@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------------
 --
 --    Note:
---  Upgrade definitions are defined in 'LuaRules/Configs/upgrade_defs.lua'
+--  Upgrade definitions are defined in 'gamedata/LuaConfigs/upgrade_defs.lua'
 --
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			-- Loops through the units, calling g:UnitFinished() on each of them
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local teamID = Spring.GetUnitTeam(unitID)
-			local unitDefID = Spring.GetUnitDefID(unitID)
+			local unitDefID = GetUnitDefID(unitID)
 			gadget:UnitFinished(unitID, unitDefID, teamID)
 		end
 		
@@ -114,9 +114,9 @@ if (gadgetHandler:IsSyncedCode()) then
 	local function GetUpgradeToolTip(unitID, upgradeDef)
 		local ud = UnitDefs[upgradeDef.udID]
 		local tt = ''
-		tt =       'Upgrade to: ' .. ud.humanName .. '\n'
-		tt = tt .. 'Energy cost ' .. upgradeDef.ecost .. '\n'
-		tt = tt .. 'Metal cost ' .. upgradeDef.mcost .. '\n'
+		tt =       upgradeDef.name .. ' - ' .. upgradeDef.desc .. '\n'
+		--tt = tt .. 'Energy cost ' .. upgradeDef.ecost .. '\n'
+		tt = tt .. 'Command cost ' .. upgradeDef.mcost .. '\n'
 		tt = tt .. 'Build time ' .. upgradeDef.time .. '\n'
 		
 		return tt
@@ -124,7 +124,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	
 	
 	
-	function gadget:UnitFinished(unitID, unitDefID, teamID)
+	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		
 		local upgradeCmdDesc = {
 			id     = CMD_UPGRADE,
@@ -143,6 +143,17 @@ if (gadgetHandler:IsSyncedCode()) then
 				else
 					upgradeCmdDesc.name = "Upgrade " .. i
 				end
+
+				if upgrade.buildpic then
+					upgradeCmdDesc.texture = "&.9x.9&unitpics/" .. upgrade.buildpic .. "&bitmaps/frame.tga"
+				end
+
+				if upgrade.notext == true then
+					upgradeCmdDesc.onlyTexture = true
+				else
+					upgradeCmdDesc.onlyTexture = false
+				end
+
 				upgradeCmdDesc.tooltip = GetUpgradeToolTip(unitID, upgrade)
 				Spring.InsertUnitCmdDesc(unitID, upgradeCmdDesc)
 				
@@ -177,8 +188,6 @@ if (gadgetHandler:IsSyncedCode()) then
 			upgradeUnits[unitID].def.onStart(unitID)
 		end
 		
-		SendToUnsynced(ADD_BAR, unitID, "Upgrading:")
-		
 	end
 	
 	
@@ -191,20 +200,20 @@ if (gadgetHandler:IsSyncedCode()) then
 		Spring.SetUnitBlocking(unitID, false)
 		upgradeUnits[unitID] = nil
 		
-		--[[local flag --check if upgrading a flag
-		for _,f in ipairs(_G.flags) do 
-			if f.unitID == unitID then flag = f end
-		end]]--
 		
 			-- Creating the new unit
 		local px, py, pz = Spring.GetUnitBasePosition(unitID)
-		local newUnit = Spring.CreateUnit(udDst.name, px, py, pz, Spring.GetUnitBuildFacing(unitID), Spring.GetUnitTeam(unitID))
+		local heading = Spring.GetUnitBuildFacing(unitID)
+
+		local newUnit = Spring.CreateUnit(udDst.name, px, py, pz, heading, Spring.GetUnitTeam(unitID))
 		
-		--if flag ~= nil then flag.unitID = newUnit end
-		
+	
 			-- Copy some settings
 			-- Rotation
-		Spring.SetUnitRotation(newUnit, 0, -Spring.GetUnitHeading(unitID) * math.pi / 32768, 0)
+		if(udSrc.speed > 0) then
+			local rot = Spring.GetUnitHeading(unitID)
+			Spring.SetUnitRotation(newUnit, 0, -rot * math.pi / 32768, 0)
+		end
 			-- Experience
 		Spring.SetUnitExperience(newUnit, Spring.GetUnitExperience(unitID))
 			-- Command queue
@@ -227,8 +236,8 @@ if (gadgetHandler:IsSyncedCode()) then
 		local oldHealth = Spring.GetUnitHealth(unitID)
 		local newHealth = oldHealth * (udDst.health / udSrc.health)
 		Spring.SetUnitHealth(newUnit, newHealth)
-		
-		SendToUnsynced(REMOVE_BAR, unitID)
+
+		Spring.SetUnitRulesParam(unitID, "upgradeProgress", 0)
 		
 		if upgradeData.def.onUpgrade then
 			upgradeData.def.onUpgrade(unitID, newUnit, upgradeData)
@@ -258,8 +267,8 @@ if (gadgetHandler:IsSyncedCode()) then
 				upgradeData.state = STALLING
 			end
 		end
-		
-		SendToUnsynced(SET_BAR, unitID, upgradeData.progress)
+
+		Spring.SetUnitRulesParam(unitID, "upgradeProgress", upgradeData.progress)
 		
 		if (upgradeData.progress >= 1.0) then
 			FinishUpgrade(unitID, upgradeData)
@@ -285,8 +294,8 @@ if (gadgetHandler:IsSyncedCode()) then
 			Spring.AddUnitResource(unitID, "e", upgradeData.def.resTable.e * progress)
 			
 			upgradeUnits[unitID] = nil
-			
-			SendToUnsynced(REMOVE_BAR, unitID)
+
+			Spring.SetUnitRulesParam(unitID, "upgradeProgress", 0)
 			
 		end
 	end
@@ -326,30 +335,30 @@ if (gadgetHandler:IsSyncedCode()) then
 		StartUpgrade(unitID, unitDefID, cmdID - CMD_UPGRADE + 1)
 		return true, true  -- command was used, remove it
 	end
-	
-	
-	
+
+
+
 	function gadget:GameFrame(n)
-		
+
 		if (next(upgradeUnits) == nil) then
 			return  -- no upgradinging units
 		end
-		
+
 		local killUnits = {}
 		for unitID, upgradeData in pairs(upgradeUnits) do
 			if (not StepUpgrade(unitID, upgradeData)) then
 				killUnits[unitID] = true
 			end
 		end
-		
+
 		for unitID in pairs(killUnits) do
 			upgradeUnits[unitID] = nil
 		end
-		
+
 	end
-	
-	
-	
+
+
+
 	function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		StopUpgrade(unitID)
 	end

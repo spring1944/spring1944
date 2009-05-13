@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GERTankYard;
+	unitname=GERTankYard1;
 	objectname=GERTankYard.S3O;
 	icontype=factory;
 	soundcategory=GERYard;
@@ -8,7 +8,7 @@
 	tedclass=PLANT;
 	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 	collisionvolumetype=ellipsoid;
-	name=Tier 2 Tank Depot;
+	name=Optimized Medium Tank Depot;
 	description=Intermediate Armour Production Facility;
 	side=GER;
 	maxdamage=8000;

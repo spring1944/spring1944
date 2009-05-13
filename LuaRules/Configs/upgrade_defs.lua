@@ -41,50 +41,252 @@ local upgradeDefs = {
 
 
 local upgradeDefs = {
+
+	rusvehicleyard = {
+		{
+			into = 'rusvehicleyard1',
+			mcost = 2000,
+			ecost = 0,
+			time = 130,
+			buttonname = 'Upg: L. Armor',
+			name = 'Upgrade: Light Armor',
+			desc = 'Makes Light Armor available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+	},
+	
+	usvehicleyard = {
+		{
+			into = 'usvehicleyard1',
+			mcost = 2000,
+			ecost = 0,
+			time = 130,
+			buttonname = 'Upg: L. Armor',
+			name = 'Upgrade: Light Armor',
+			desc = 'Makes Light Armor available in this yard',
+			notext = true,
+			buildpic = 'usbackground.png',
+		},
+	},
+	
+	gervehicleyard = {
+		{
+			into = 'gervehicleyard1',
+			mcost = 2000,
+			ecost = 0,
+			time = 130,
+			buttonname = 'Upg: L. Armor',
+			name = 'Upgrade: Light Armor',
+			desc = 'Makes Light Armor available in this yard',
+			notext = true,
+			buildpic = 'gerbackground.png',
+		},
+	},
+	
+	gbrvehicleyard = {
+		{
+			into = 'gbrvehicleyard1',
+			mcost = 2000,
+			ecost = 0,
+			time = 130,
+			buttonname = 'Upg: L. Armor',
+			name = 'Upgrade: Light Armor',
+			desc = 'Makes Light Armor available in this yard',
+			notext = true,
+			buildpic = 'gbrbackground.png',
+		},
+	},
+	
+	rusgunyard = {
+		{
+			into = 'russpyard',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: SP Guns',
+			name = 'Upgrade: Self Prop. Guns',
+			desc = 'Makes Self-Propelled Artillery available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+		{
+			into = 'russpyard1',
+			mcost = 4500,
+			ecost = 0,
+			time = 300,
+			buttonname = 'Upg: TD',
+			name = 'Upgrade: Tank Destroyers',
+			desc = 'Makes Tank Destroyers available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+	},
+	
+	usgunyard = {
+		{
+			into = 'usspyard',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: SP Guns',
+			name = 'Upgrade: Self Prop. Guns',
+			desc = 'Makes Self-Propelled Artillery available in this yard',
+			notext = true,
+			buildpic = 'usbackground.png',
+		},
+	},
+	
+	gergunyard = {
+		{
+			into = 'gerspyard',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: SP Guns',
+			name = 'Upgrade: Self Prop. Guns',
+			desc = 'Makes Self-Propelled Artillery available in this yard',
+			notext = true,
+			buildpic = 'gerbackground.png',
+		},
+		{
+			into = 'gerspyard1',
+			mcost = 4500,
+			ecost = 0,
+			time = 300,
+			buttonname = 'Upg: TD',
+			name = 'Upgrade: Tank Destroyers',
+			desc = 'Makes Tank Destroyers available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+	},	
+	
+	gbrgunyard = {
+		{
+			into = 'gbrspyard',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: SP Guns',
+			name = 'Upgrade: Self Prop. Guns',
+			desc = 'Makes Self-Propelled Artillery available in this yard',
+			notext = true,
+			buildpic = 'gbrbackground.png',
+		},
+		{
+			into = 'gbrspyard1',
+			mcost = 4500,
+			ecost = 0,
+			time = 300,
+			buttonname = 'Upg: TD',
+			name = 'Upgrade: Tank Destroyers',
+			desc = 'Makes Tank Destroyers available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+	},	
+	
 	rustankyard = {
 		{
 			into = 'rustankyard1',
 			mcost = 3000,
 			ecost = 0,
-			time = 30,
-			buttonname = 'Upgrade',
+			time = 200,
+			buttonname = 'Upg: Adv. Med',
+			name = 'Upgrade: Advanced Mediums',
+			desc = 'Makes Advanced Medium Armor available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
+		},
+		{
+			into = 'rustankyard2',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Heavy',
+			name = 'Upgrade: Heavy Armor',
+			desc = 'Makes Heavy Armor available in this yard',
+			notext = true,
+			buildpic = 'rusbackground.png',
 		},
 	},
+	
 	ustankyard = {
 		{
 			into = 'ustankyard1',
 			mcost = 3000,
 			ecost = 0,
-			time = 30,
-			buttonname = 'Upgrade',
+			time = 200,
+			buttonname = 'Upg: Adv. Med',
+			name = 'Upgrade: Advanced Mediums',
+			desc = 'Makes Advanced Medium Armor available in this yard',
+			notext = true,
+			buildpic = 'usbackground.png',
+		},
+		{
+			into = 'ustankyard2',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Heavy',
+			name = 'Upgrade: Heavy Armor',
+			desc = 'Makes Heavy Armor available in this yard',
+			notext = true,
+			buildpic = 'usbackground.png',
 		},
 	},
+	
 	gertankyard = {
 		{
 			into = 'gertankyard1',
 			mcost = 3000,
 			ecost = 0,
-			time = 30,
-			buttonname = 'Upgrade',
+			time = 200,
+			buttonname = 'Upg: Adv. Med',
+			name = 'Upgrade: Advanced Mediums',
+			desc = 'Makes Advanced Medium Armor available in this yard',
+			notext = true,
+			buildpic = 'gerbackground.png',
 		},
-	},
-	gertankyard1 = {
+
 		{
 			into = 'gertankyard2',
 			mcost = 3000,
 			ecost = 0,
-			time = 30,
-			buttonname = 'Upgrade',
-		}
+			time = 200,
+			buttonname = 'Upg: Heavy',
+			name = 'Upgrade: Heavy Armor',
+			desc = 'Makes Heavy Armor available in this yard',
+			notext = true,
+			buildpic = 'gerbackground.png',
+		},
 	},
+	
 	gbrtankyard = {
 		{
 			into = 'gbrtankyard1',
 			mcost = 3000,
 			ecost = 0,
-			time = 30,
-			buttonname = 'Upgrade',
-		}
+			time = 200,
+			buttonname = 'Upg: Adv. Med',
+			name = 'Upgrade: Advanced Mediums',
+			desc = 'Makes Advanced Medium Armor available in this yard',
+			notext = true,
+			buildpic = 'gbrbackground.png',
+		},
+	
+		{
+			into = 'gbrtankyard2',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Heavy',
+			name = 'Upgrade: Heavy Armor',
+			desc = 'Makes Heavy Armor available in this yard',
+			notext = true,
+			buildpic = 'gbrbackground.png',
+		},
 	},
 }
 

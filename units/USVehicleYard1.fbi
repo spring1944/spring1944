@@ -1,36 +1,36 @@
 [unitinfo]
 {
-	unitname=RUSSPYard;
-	objectname=RUSTankYard.S3O;
+	unitname=USVehicleYard1;
+	objectname=USVehicleYard.S3O;
+	corpse=USVehicleYard_Destroyed;
 	icontype=factory;
-	soundcategory=RUSYard;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 	collisionvolumetype=ellipsoid;
-	
-	name=Motorized Gun Depot;
-	description=Motorized Gun Production Facility;; 
-	side=RUS;
-	maxdamage=8000;
-	idleautoheal=3;
-	buildcostmetal=5400;
+	name=U.S. Light Armor/Vehicle Yard;
+	description=Constructs Light Armor/Vehicles;
+	maxdamage=5500;
+	buildcostmetal=5482;
 	buildcostenergy=0;
-	buildtime=3600;
+	buildtime=3655;
 	footprintx=7;
 	footprintz=7;
 
-	shownanoframe=0;
-	//unitrestricted=1;
-
 	 
-	energystorage=0;
+	shownanoframe=0;
+	smoothanim=0;
 
-	sightdistance=146;
+	metalmake=0;
+	 
+	energystorage=0.01;
+
+	sightdistance=700;
 	stealth=1;
 
 	builder=1;
-	workertime=10;
+	workertime=10;//old 95
 	shownanospray=0;
 	canbeassisted=0;
 
@@ -39,14 +39,15 @@
 	maxwaterdepth=0;
 
 	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaldecayspeed=0.05;
+	buildinggrounddecalsizex=6;
+	buildinggrounddecalsizey=5;
 	buildinggrounddecaltype=Dirt2.dds;
 
 	explodeas=LARGE_EXPLOSION;
 	selfdestructas=LARGE_EXPLOSION;
 
+	onlytargetcategory1=NFLAGNAIR;
+	onlytargetcategory2=NFLAG;
 	[sfxtypes]
 	{
 	}

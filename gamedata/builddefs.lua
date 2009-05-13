@@ -85,6 +85,17 @@ buildoptions =
 		"usm8greyhound",
 		"usm8scott",
 	},
+	
+	usvehicleyard1 =
+	{
+		"usgmcengvehicle",
+		"usgmctruck",
+		"usm3halftrack",
+		"usdukw",
+		"usm8greyhound",
+		"usm8scott",
+		"usm5stuart",
+	},
 
 	usgunyard =
 	{
@@ -95,6 +106,16 @@ buildoptions =
 		"usm1bofors_truck",
 	},
 
+	usspyard =
+	{
+		"usgmctruck",
+		"usm8gun_gunyard",
+		"usm5gun_truck",
+		"usm2gun_truck",
+		"usm1bofors_truck",
+		"usm8scott",
+		"usm7priest",
+	},
 
 	usgmcengvehicle =
 	{
@@ -118,18 +139,23 @@ buildoptions =
 	
 	ustankyard1 =
 	{
+		"usm5stuart",
+		"usm4a4sherman",
+		"usm10wolverine",
+		"usm4a3105sherman",
 		"usm4a376sherman",
+	},
+	
+	ustankyard2 =
+	{
+		"usm5stuart",
+		"usm4a4sherman",
+		"usm10wolverine",
 		"usm4a3105sherman",
 		"usm4jumbo",
 	},
 
-	usspyard =
-	{
-		"usm8scott",
-		"usm4a3105sherman",
-		"usm10wolverine",
-		"usm7priest",
-	},
+
 
 	ussupplydepot =
 	{
@@ -226,6 +252,17 @@ buildoptions =
 		--"gersdkfz10",
 		"germarder",
 	},
+	
+	gervehicleyard =
+	{
+		"gersdkfz9",
+		"geropelblitz",
+		"gersdkfz250",
+		"gersdkfz251",
+		--"gersdkfz10",
+		"germarder",
+		"gerpanzeriii",
+	},
 
 	gergunyard =
 	{
@@ -235,6 +272,29 @@ buildoptions =
 		"gerlefh18_truck",
 		"gernebelwerfer_truck",
 		"gerflak38_truck",
+	},
+	
+	gerspyard =
+	{
+		"geropelblitz",
+		"gerleig18_gunyard",
+		"gerpak40_truck",
+		"gerlefh18_truck",
+		"gernebelwerfer_truck",
+		"gerflak38_truck",
+		"gerwespe",
+	},
+	
+	gerspyard1 =
+	{
+		"geropelblitz",
+		"gerleig18_gunyard",
+		"gerpak40_truck",
+		"gerlefh18_truck",
+		"gernebelwerfer_truck",
+		"gerflak38_truck",
+		"germarder",
+		"gerjagdpanzeriv",
 	},
 
 	gersdkfz9 =
@@ -260,24 +320,20 @@ buildoptions =
 	
 	gertankyard1 =
 	{
-		"gerpanzeriv",
-		"gerjagdpanzeriv",
-		"gerwespe",
+		"gerpanzeriii",
+		"gerstugiii",
 		"gertiger",
+		"gerpanzeriv",
+		"gerpanther",
 	},
 	
 	gertankyard2 =
 	{
-		"gerpanther",
-		"gertigerii",
-	},
-
-	gerspyard =
-	{
-		"germarder",
+		"gerpanzeriii",
 		"gerstugiii",
-		"gerjagdpanzeriv",
-		"gerwespe",
+		"gertiger",
+		"gerpanzeriv",		
+		"gertigerii",
 	},
 
 	gersupplydepot =
@@ -358,14 +414,25 @@ buildoptions =
 		"gbr25pdr_truck",
 		"gbrbofors_truck",
 	},
-
-	gbrheavygunyard =
+	
+	gbrspyard =
 	{
 		"gbrbedfordtruck",
 		"gbr17pdr_truck",
 		"gbr25pdr_truck",
+		"gbrbofors_truck",
+		"gbrsexton",
 	},
-
+	
+	gbrspyard1 =
+	{
+		"gbrbedfordtruck",
+		"gbr17pdr_truck",
+		"gbr25pdr_truck",
+		"gbrbofors_truck",
+		"gbraecmkii",
+		"gbrm10achilles",
+	},
 	
 	gbrcommandoc =
 	{
@@ -404,6 +471,16 @@ buildoptions =
 		"gbrdaimler",
 		"gbrkangaroo",
 	},
+	
+	gbrvehicleyard1 =
+	{
+		"gbrmatadorengvehicle",
+		"gbrbedfordtruck",
+		"gbrm5halftrack",
+		"gbrdaimler",
+		"gbrkangaroo",
+		"gbraecmkii",
+	},
 
 	gbrmatadorengvehicle =
 	{
@@ -421,25 +498,28 @@ buildoptions =
 
 	gbrtankyard =
 	{
+		"gbrkangaroo",
+		"gbraecmkii",
+		"gbrcromwell",
+		"gbrcromwellmkvi",
+	},
+	
+	gbrtankyard1 =
+	{
+		"gbrkangaroo",
 		"gbraecmkii",
 		"gbrcromwell",
 		"gbrcromwellmkvi",
 		"gbrshermanfirefly",
 	},
 	
-	gbrtankyard1 =
+	gbrtankyard2 =
 	{
 		"gbrkangaroo",
-		--"gbrshermanfirefly",
-		"gbrsexton",
-		"gbrm10achilles",
+		"gbraecmkii",
+		"gbrcromwell",
+		"gbrcromwellmkvi",
 		"gbrchurchillmkvii",
-	},
-
-	gbrspyard =
-	{
-		"gbrm10achilles",
-		"gbrsexton",
 	},
 
 
@@ -580,8 +660,31 @@ buildoptions =
 		"ruszis5",
 		"ruszis2_truck",
 		"ruszis3_truck",
+		"rus61k_truck",
+	},
+	
+	russpyard =
+	{
+		"ruszis5",
+		"ruszis2_truck",
+		"ruszis3_truck",
 		"rusm30_truck",
 		"rus61k_truck",
+		"rusm30_truck",
+		"russu76",
+		"rusbm13n",
+	},
+	
+	russpyard1 =
+	{
+		"ruszis5",
+		"ruszis2_truck",
+		"ruszis3_truck",
+		"rusm30_truck",
+		"rus61k_truck",
+		"rusm30_truck",
+		"russu85",
+		"russu100",
 	},
 
 	rustankyard =
@@ -593,20 +696,18 @@ buildoptions =
 	
 	rustankyard1 =
 	{
-		"rust3485",
-		"russu100",
-		"rusis2",
-		"rusbm13n",
-	},
-
-	russpyard =
-	{
-		"russu76",
-		"russu85",
-		"russu100",
-		--"russu122", 
-		"rusbm13n",
+		"rust70",
+		"rust3476",
 		"rusisu152",
+		"rust3485",
+	},
+	
+	rustankyard2 =
+	{
+		"rust70",
+		"rust3476",
+		"rusisu152",
+		"rusis2",	
 	},
 
 	russupplydepot =

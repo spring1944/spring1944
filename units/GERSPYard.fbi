@@ -1,35 +1,35 @@
 [unitinfo]
 {
 	unitname=GERSPYard;
-	objectname=GERTankYard.S3O;
+	objectname=GERGunyard.S3O;
 	icontype=factory;
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
-
-	name=Motorized Gun Depot;
+	collisionvolumetype=ellipsoid;
+	name=Self-Propelled Gun Yard;
+	description=Constructs Self-Propelled Guns;
 	description=Motorized Gun Production Facility;
 	side=GER;
-	maxdamage=8000;
+	maxdamage=5000;
 	idleautoheal=3;
-	buildcostmetal=4800;
+	buildcostmetal=2175;
 	buildcostenergy=0;
-	buildtime=3200;
+	buildtime=1450;
 	footprintx=7;
 	footprintz=7;
 
 	shownanoframe=0;
-	//unitrestricted=1;
 
 	 
-	energystorage=0;
+	energystorage=0.01;
 
 	sightdistance=146;
 	stealth=1;
 
 	builder=1;
-	workertime=10;//old 180
+	workertime=10;//old 250
 	shownanospray=0;
 	canbeassisted=0;
 

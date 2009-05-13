@@ -1,36 +1,33 @@
 [unitinfo]
 {
-	unitname=RUSSPYard;
-	objectname=RUSTankYard.S3O;
+	unitname=USTankYard2;
+	objectname=USTankYard.S3O;
 	icontype=factory;
-	soundcategory=RUSYard;
+	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
-	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
+	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 	collisionvolumetype=ellipsoid;
-	
-	name=Motorized Gun Depot;
-	description=Motorized Gun Production Facility;; 
-	side=RUS;
+	name=Heavy Tank Depot;
+	side=US;
 	maxdamage=8000;
 	idleautoheal=3;
-	buildcostmetal=5400;
+	buildcostmetal=13500;
 	buildcostenergy=0;
-	buildtime=3600;
+	buildtime=9000;
 	footprintx=7;
 	footprintz=7;
 
 	shownanoframe=0;
-	//unitrestricted=1;
 
 	 
-	energystorage=0;
+	energystorage=0.01;
 
 	sightdistance=146;
 	stealth=1;
 
 	builder=1;
-	workertime=10;
+	workertime=10; //old 180
 	shownanospray=0;
 	canbeassisted=0;
 

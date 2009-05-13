@@ -116,6 +116,10 @@ local armorDefs = {
 		"GERSupplyDepot",
 		"GERTruckSupplies",
 		"GERSPYard",
+		"GERSPYard1",
+		"GERVehicleYard1",
+		"GERTankYard1",
+		"GERTankYard2",
 
 		--US--
 		"USHQ",
@@ -129,6 +133,10 @@ local armorDefs = {
 		"USSupplyDepot",
 		"USTruckSupplies",
 		"USSPYard",
+		"USVehicleYard1",
+		"USTankYard",
+		"USTankYard1",
+		"USTankYard2",
 
 		--USSR--
 		"RUSBarracks",
@@ -141,11 +149,17 @@ local armorDefs = {
 		"RUSSupplyDepot",
 		"RUSTruckSupplies",
 		"RUSSPYard",
+		"RUSSPYard1",
+		"RUSVehicleYard1",
+		"RUSTankYard",
+		"RUSTankYard1",
+		"RUSTankYard2",
 
 		--Britain--
 		"GBRResource",
 		"GBRStorage",
 		"GBRGunYard",
+		"GBRVehicleYard1",
 		"GBRVehicleYard",
 		"GBRBarracks",
 		"GBRLZ",
@@ -154,6 +168,10 @@ local armorDefs = {
 		"GBRSupplyDepot",
 		"GBRTruckSupplies",
 		"GBRSPYard",
+		"GERSPYard1",
+		"GBRTankYard",
+		"GBRTankYard1",
+		"GBRTankYard2",
 	},
 
 	bunkers	=	{
