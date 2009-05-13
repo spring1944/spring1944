@@ -10,7 +10,7 @@
 	tedclass=TANK;
 
 	name=Supply Truck;
-	description=;
+	description=Deploys Into Supply Point;
 	side=RUS;
 	maxdamage=500;
 	idleautoheal=2;

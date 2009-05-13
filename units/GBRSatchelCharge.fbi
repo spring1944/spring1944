@@ -8,7 +8,7 @@
 	yardmap=o;
 
 	name=Satchel Charge;
-	description=Anti-building demolitions pack;
+	description=Anti-Building Demolitions Pack;
 	maxdamage=5;
 	buildcostmetal=1;
 	buildcostenergy=0;

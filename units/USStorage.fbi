@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Supply Storage;
-	description=- Increases ammunition storage;
+	description=General Logistics & Ammunition Stockpile;
 	maxdamage=2500;
 	buildcostmetal=2025;
 	buildcostenergy=0;

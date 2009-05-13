@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Unloaded Halftrack Supplies;
-	description=Provides ammunition to a medium area;
+	description=Supplies A Moderate Area;
 	side=GBR;
 	maxdamage=400;
 	buildcostmetal=720;

@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Storage Shed;
-	description=- Increases Logistics storage;
+	description=General Logistics & Ammunition Stockpile;
 	side=GBR;
 	maxdamage=2500;
 	buildcostmetal=2025;

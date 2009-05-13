@@ -8,7 +8,7 @@
 	tedclass=SHIP;
 
 	name=Rubber Dingy;
-	description= Infantry Water Transport;
+	description=Infantry Water Transport;
 	maxdamage=500;
 	buildcostmetal=100;
 	buildcostenergy=0;

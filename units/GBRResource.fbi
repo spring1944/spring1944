@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Small Supply Dump;
-	description=Provides supplies to a small area;
+	description=Supplies A Small Area;
 	side=GBR;
 	maxdamage=400;
 	buildcostmetal=720;

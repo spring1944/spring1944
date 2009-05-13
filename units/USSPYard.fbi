@@ -9,6 +9,7 @@
 	yardmap=ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc ccccccc;
 
 	name=Motor Carriage Depot;
+	description=Motorized Gun Production Facility;
 	side=US;
 	maxdamage=8000;
 	idleautoheal=3;

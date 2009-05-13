@@ -9,6 +9,7 @@
 	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 
 	name=Motorized Gun Depot;
+	description=Motorized Gun Production Facility;
 	side=GER;
 	maxdamage=8000;
 	idleautoheal=3;

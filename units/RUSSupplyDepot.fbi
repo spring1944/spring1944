@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Supply Depot;
-	description=- Major Ammunition Supply Dump;
+	description=Supplies An Extended Area;
 	side=RUS;
 	maxdamage=3000;
 	buildcostmetal=3600;

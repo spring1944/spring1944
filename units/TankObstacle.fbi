@@ -8,7 +8,7 @@
 	yardmap=y;
 
 	name=Tank Obstacle;
-	description=Blocks Vehicles;
+	description=Blocks Tracked & Wheeled Vehicles;
 	maxdamage=8000;
 	buildcostmetal=15;
 	buildcostenergy=0;

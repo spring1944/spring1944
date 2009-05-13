@@ -11,7 +11,7 @@
 	yardmap=o;
 
 	name=Unloaded Supply Truck;
-	description=Provides ammunition to a medium area;
+	description=Supplies A Moderate Area;
 	side=GER;
 	maxdamage=400;
 	buildcostmetal=720;

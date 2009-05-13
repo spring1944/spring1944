@@ -10,7 +10,7 @@
 	tedclass=TANK;
 
 	name=Supply Truck;
-	description=;
+	description=Deploys Into Supply Point;
 	maxdamage=550;
 	buildcostmetal=660;
 	buildcostenergy=0;
