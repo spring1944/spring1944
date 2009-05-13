@@ -253,7 +253,7 @@ buildoptions =
 		"germarder",
 	},
 	
-	gervehicleyard =
+	gervehicleyard1 =
 	{
 		"gersdkfz9",
 		"geropelblitz",
