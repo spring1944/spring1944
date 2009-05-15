@@ -158,7 +158,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Tank Destroyers',
 			desc = 'Makes Tank Destroyers available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'gerbackground.png',
 		},
 	},	
 	
@@ -183,7 +183,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Tank Destroyers',
 			desc = 'Makes Tank Destroyers available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'gbrbackground.png',
 		},
 	},	
 	

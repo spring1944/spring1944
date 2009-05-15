@@ -207,6 +207,7 @@ local armorDefs = {
 	tanks	=	{
 		--**Germany**--
 		"GERPanzerIII",
+		"GERPanzerIII_veh",
 		"GERStuGIII",
 		"GERPanzerIV",
 		"GERPanther",
@@ -219,11 +220,13 @@ local armorDefs = {
 		"USM4A376Sherman",
 		"USM4A3105Sherman",
 		"USM5Stuart",
+		"USM5Stuart_veh",
 
 		--USSR--
 		"RUSISU152",
 		"RUST60",
 		"RUST70",
+		"RUST70_veh",
 		"RUST3485",
 		"RUST3476",
 		"RUSISU122",
@@ -263,7 +266,8 @@ local armorDefs = {
 		--Britain--
 		"GBRDaimler",
 		"GBRM5Halftrack",
-		"GBRAECMkIII",
+		"GBRAECMkII",
+		"GBRAECMkII_veh",
 		"GBRSexton",
 	},
 

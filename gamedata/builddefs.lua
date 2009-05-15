@@ -94,7 +94,7 @@ buildoptions =
 		"usdukw",
 		"usm8greyhound",
 		"usm8scott",
-		"usm5stuart",
+		"usm5stuart_veh",
 	},
 
 	usgunyard =
@@ -261,7 +261,7 @@ buildoptions =
 		"gersdkfz251",
 		--"gersdkfz10",
 		"germarder",
-		"gerpanzeriii",
+		"gerpanzeriii_veh",
 	},
 
 	gergunyard =
@@ -479,7 +479,7 @@ buildoptions =
 		"gbrm5halftrack",
 		"gbrdaimler",
 		"gbrkangaroo",
-		"gbraecmkii",
+		"gbraecmkii_veh",
 	},
 
 	gbrmatadorengvehicle =
@@ -664,7 +664,7 @@ buildoptions =
 		--"rusgazaaa",
 		"rust60",
 		"russu76",
-		"rust70",
+		"rust70_veh",
 	},
 
 	rusgunyard =

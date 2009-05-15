@@ -39,7 +39,7 @@ local morphDefs = {
   {
     into = 'gbrvickers_sandbag',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,
@@ -58,7 +58,7 @@ local morphDefs = {
   {
     into = 'germg42_sandbag',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -77,7 +77,7 @@ local morphDefs = {
   {
     into = 'rusmaxim_sandbag',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,
@@ -96,7 +96,7 @@ local morphDefs = {
   {
     into = 'usgimg_sandbag',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -117,7 +117,7 @@ local morphDefs = {
   {
     into = 'gbr17pdr_stationary',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -191,7 +191,7 @@ local morphDefs = {
   {
     into = 'gerpak40_stationary',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -266,7 +266,7 @@ local morphDefs = {
   {
     into = 'ruszis2_stationary',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -285,7 +285,7 @@ local morphDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -323,7 +323,7 @@ local morphDefs = {
   {
     into = 'usm5gun_stationary',
     tech = 0,
-    time = 15,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -381,7 +381,7 @@ local morphDefs = {
   {
     into = 'gbrtrucksupplies',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
   },  
@@ -389,7 +389,7 @@ local morphDefs = {
   {
     into = 'gbrm5halftrack',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },  
@@ -397,7 +397,7 @@ local morphDefs = {
   {
     into = 'gertrucksupplies',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
   },  
@@ -405,7 +405,7 @@ local morphDefs = {
   {
     into = 'gersdkfz251',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },  
@@ -413,7 +413,7 @@ local morphDefs = {
   {
     into = 'rustrucksupplies',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
   }, 
@@ -421,7 +421,7 @@ local morphDefs = {
   {
     into = 'rusm5halftrack',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },  
@@ -429,7 +429,7 @@ local morphDefs = {
   {
     into = 'ustrucksupplies',
     tech = 0,
-    time = 20,
+    time = 15,
     metal = 0,
     energy = 0,
   },
@@ -437,7 +437,7 @@ local morphDefs = {
   {
     into = 'usm3halftrack',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },

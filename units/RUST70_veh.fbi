@@ -1,26 +1,26 @@
 [unitinfo]
 {
-	unitname=USM8Scott;
-	objectname=USM8Scott.S3O;
-	corpse=USM8Scott_Damaged;
-	icontype=sparty;
-	soundcategory=USTank;
-	category=NFLAGNAIR NFLAG TANK WEAPON;
+	unitname=RUST70_veh;
+	objectname=RUST70.S3O;
+	corpse=RUST70_Destroyed;
+	icontype=medtank;
+	soundcategory=RUSTank;
+	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
 	tedclass=TANK;
 
-	name=M8 Scott GMC;
-	description=Infantry Support Tank;
-	side=US;
+	name=T-70/M42;
+	description=Light Tank;
+	side=RUS;
 
-	maxdamage=4275;
-	flankingbonusmode=3;
+	maxdamage=4372;
+	flankingbonusmode=3;	
 	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.5;//damage to back multiplied by this
-	flankingbonusmin=.9;//damage to front multiplied by this
+	flankingbonusmax=1.21;//damage to back multiplied by this
+	flankingbonusmin=.77;//damage to front multiplied by this
 
-	buildcostmetal=2040;
+	buildcostmetal=1725;
 	buildcostenergy=0;
-	buildtime=680;
+	buildtime=575;
 	footprintx=3;
 	footprintz=3;
 	mass=2750;
@@ -29,18 +29,16 @@
 	smoothanim=0;
 
 	SeismicSignature=0;
-	sightdistance=670;
-	airsightdistance=2500;
+	sightdistance=750;
+	airsightdistance=1500;
 	stealth=1;
-
-	activatewhenbuilt=1;
 
 	canmove=1;
 	movementclass=TANK_Medium;
-	maxvelocity=3.5;
+	maxvelocity=4.11;
 	acceleration=0.05;
 	brakerate=0.15;
-	turnrate=280;
+	turnrate=250;
 	maxslope=2;
 	maxwaterdepth=15;
 	turninplace=0;
@@ -48,7 +46,7 @@
 	leavetracks=1;
 	trackwidth=18;
 	trackoffset=5;
-	trackstrength=10;
+	trackstrength=7;
 	trackstretch=1;
 	tracktype=Stdtank;
 
@@ -58,16 +56,15 @@
 	nochasecategory=FLAG AIR;
 	badtargetcategory=FLAG;
 
-	weapon1=M875mmHE;
+	weapon1=20K45mmHE;
 	badtargetcategory1=TANK;
 	onlytargetcategory1=NFLAGNAIR;
-
-	weapon2=M2BrowningAA;
-	onlytargetcategory2=AIR;
-
-	weapon3=.50calproof;
-
-	weapon4=Medium_Tracer;
+	weapon2=20K45mmAP;
+	onlytargetcategory2=TANK;
+	weapon3=DT;
+	onlytargetcategory3=INFTARG;
+	weapon4=.50calproof;
+	weapon5=Small_Tracer_Green;
 
 	[sfxtypes]
 	{
@@ -79,15 +76,16 @@
 		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
 		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
 		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
-		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
+		explosiongenerator8=custom:SMALL_MUZZLEFLASH;
+		explosiongenerator9=custom:SMALL_MUZZLEDUST;
 	}
 
-	[customParams]
+		[customParams]
 	{
-		maxammo=9;
-		weaponswithammo=1;
-		lowammolevel=3;
+		blockfear=1;
+		maxammo=18;
+		weaponswithammo=2;
+		lowammolevel=6;
 		weaponcost=8;
 	}
 }
