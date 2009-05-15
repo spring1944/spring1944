@@ -3,6 +3,7 @@
 	unitname=GBRVehicleYard1;
 	objectname=GBRVehicleYard.S3O;
 	icontype=factory;
+	buildpic=gbrvehicleyard.png;
 	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT BUILDING;
 	tedclass=PLANT;

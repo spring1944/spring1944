@@ -655,6 +655,18 @@ buildoptions =
 		"russu76",
 	},
 
+	rusvehicleyard1 =
+	{
+		"rusk31",
+		"ruszis5",
+		"rusba64",
+		"rusm5halftrack",
+		--"rusgazaaa",
+		"rust60",
+		"russu76",
+		"rust70",
+	},
+
 	rusgunyard =
 	{
 		"ruszis5",

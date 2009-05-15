@@ -3,6 +3,7 @@
 	unitname=RUSVehicleYard1;
 	objectname=RUSVehicleYard.S3O;
 	icontype=factory;
+	buildpic=rusvehicleyard.png;
 	soundcategory=RUSYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
