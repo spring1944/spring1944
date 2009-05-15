@@ -52,7 +52,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Light Armor',
 			desc = 'Makes Light Armor available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'ruslightarmorupg.png',
 		},
 	},
 	
@@ -66,7 +66,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Light Armor',
 			desc = 'Makes Light Armor available in this yard',
 			notext = true,
-			buildpic = 'usbackground.png',
+			buildpic = 'uslightarmorupg.png',
 		},
 	},
 	
@@ -80,7 +80,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Light Armor',
 			desc = 'Makes Light Armor available in this yard',
 			notext = true,
-			buildpic = 'gerbackground.png',
+			buildpic = 'gerlightarmorupg.png',
 		},
 	},
 	
@@ -94,7 +94,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Light Armor',
 			desc = 'Makes Light Armor available in this yard',
 			notext = true,
-			buildpic = 'gbrbackground.png',
+			buildpic = 'gbrlightarmorupg.png',
 		},
 	},
 	
@@ -108,7 +108,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Self Prop. Guns',
 			desc = 'Makes Self-Propelled Artillery available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'russpupg.png',
 		},
 		{
 			into = 'russpyard1',
@@ -119,7 +119,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Tank Destroyers',
 			desc = 'Makes Tank Destroyers available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'rustdupg.png',
 		},
 	},
 	
@@ -133,7 +133,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Self Prop. Guns',
 			desc = 'Makes Self-Propelled Artillery available in this yard',
 			notext = true,
-			buildpic = 'usbackground.png',
+			buildpic = 'usspupg.png',
 		},
 	},
 	
@@ -147,7 +147,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Self Prop. Guns',
 			desc = 'Makes Self-Propelled Artillery available in this yard',
 			notext = true,
-			buildpic = 'gerbackground.png',
+			buildpic = 'gerspupg.png',
 		},
 		{
 			into = 'gerspyard1',
@@ -158,7 +158,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Tank Destroyers',
 			desc = 'Makes Tank Destroyers available in this yard',
 			notext = true,
-			buildpic = 'gerbackground.png',
+			buildpic = 'gertdupg.png',
 		},
 	},	
 	
@@ -172,7 +172,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Self Prop. Guns',
 			desc = 'Makes Self-Propelled Artillery available in this yard',
 			notext = true,
-			buildpic = 'gbrbackground.png',
+			buildpic = 'gbrspupg.png',
 		},
 		{
 			into = 'gbrspyard1',
@@ -183,7 +183,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Tank Destroyers',
 			desc = 'Makes Tank Destroyers available in this yard',
 			notext = true,
-			buildpic = 'gbrbackground.png',
+			buildpic = 'gbrtdupg.png',
 		},
 	},	
 	
@@ -197,7 +197,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Advanced Mediums',
 			desc = 'Makes Advanced Medium Armor available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'rusadvmedarmorupg.png',
 		},
 		{
 			into = 'rustankyard2',
@@ -208,7 +208,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Heavy Armor',
 			desc = 'Makes Heavy Armor available in this yard',
 			notext = true,
-			buildpic = 'rusbackground.png',
+			buildpic = 'rusheavyarmorupg.png',
 		},
 	},
 	
@@ -222,7 +222,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Advanced Mediums',
 			desc = 'Makes Advanced Medium Armor available in this yard',
 			notext = true,
-			buildpic = 'usbackground.png',
+			buildpic = 'usadvmedarmorupg.png',
 		},
 		{
 			into = 'ustankyard2',
@@ -233,7 +233,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Heavy Armor',
 			desc = 'Makes Heavy Armor available in this yard',
 			notext = true,
-			buildpic = 'usbackground.png',
+			buildpic = 'usheavyarmorupg.png',
 		},
 	},
 	
@@ -247,7 +247,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Advanced Mediums',
 			desc = 'Makes Advanced Medium Armor available in this yard',
 			notext = true,
-			buildpic = 'gerbackground.png',
+			buildpic = 'geradvmedarmorupg.png',
 		},
 
 		{
@@ -259,7 +259,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Heavy Armor',
 			desc = 'Makes Heavy Armor available in this yard',
 			notext = true,
-			buildpic = 'gerbackground.png',
+			buildpic = 'gerheavyarmorupg.png',
 		},
 	},
 	
@@ -273,7 +273,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Advanced Mediums',
 			desc = 'Makes Advanced Medium Armor available in this yard',
 			notext = true,
-			buildpic = 'gbrbackground.png',
+			buildpic = 'gbradvmedarmorupg.png',
 		},
 	
 		{
@@ -285,7 +285,7 @@ local upgradeDefs = {
 			name = 'Upgrade: Heavy Armor',
 			desc = 'Makes Heavy Armor available in this yard',
 			notext = true,
-			buildpic = 'gbrbackground.png',
+			buildpic = 'gbrheavyarmorupg.png',
 		},
 	},
 }
