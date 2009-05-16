@@ -9,7 +9,7 @@
 	yardmap=ooooooooo;
 	buildpic=GERRadar.png;
 
-	name=SCR-584 Air Control Station;
+	name=AN/TPS-3 (SCR-602-T8) Light Aircraft Detector;
 	description=Flight Detection & Control Station;
 	side=US;
 	maxdamage=5000;

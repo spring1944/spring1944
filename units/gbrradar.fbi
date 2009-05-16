@@ -9,7 +9,7 @@
 	yardmap=ooooooooo;
 	buildpic=GERRadar.png;
 
-	name=Type 8C Ground Control Intercept;
+	name=AA No4 Mk3(P) Light Warning Set;
 	description=Flight Detection & Control Station;
 	side=GBR;
 	maxdamage=5000;
