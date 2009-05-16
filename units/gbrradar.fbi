@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=GBRRadar;
-	objectname=GERRadar.S3O;
+	objectname=GBRRadar.S3O;
 	icontype=radar;
 	soundcategory=Nothing;
 	category=NFLAGNAIR PLANT BUILDING;
