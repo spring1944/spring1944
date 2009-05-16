@@ -11,6 +11,7 @@
 	name=Pzkpfw III Ausf G-L;
 	description=Light Combat Tank;
 	side=GER;
+	buildpic=GERPanzerIII.png;
 
 	maxdamage=5320;
 	flankingbonusdir=0 0 1;

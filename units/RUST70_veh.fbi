@@ -11,6 +11,7 @@
 	name=T-70/M42;
 	description=Light Tank;
 	side=RUS;
+	buildpic=RUST70.png;
 
 	maxdamage=4372;
 	flankingbonusmode=3;	

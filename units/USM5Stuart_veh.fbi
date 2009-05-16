@@ -11,6 +11,7 @@
 	name=M5A1 Stuart;
 	description=Light Tank;
 	side=US;
+	buildpic=USM5Stuart.png;
 
 	maxdamage=4275;
 	flankingbonusmode=3;

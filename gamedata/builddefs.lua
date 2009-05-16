@@ -115,7 +115,7 @@ buildoptions =
 		"usm5gun_truck",
 		"usm2gun_truck",
 		"usm1bofors_truck",
-		"usm8scott",
+		"usm8scott_sp",
 		"usm7priest",
 	},
 
@@ -297,7 +297,7 @@ buildoptions =
 		"gerlefh18_truck",
 		"gernebelwerfer_truck",
 		"gerflak38_truck",
-		"germarder",
+		"germarder_sp",
 		"gerjagdpanzeriv",
 	},
 
@@ -434,7 +434,7 @@ buildoptions =
 		"gbr17pdr_truck",
 		"gbr25pdr_truck",
 		"gbrbofors_truck",
-		"gbraecmkii",
+		"gbraecmkii_sp",
 		"gbrm10achilles",
 	},
 	
@@ -504,7 +504,7 @@ buildoptions =
 
 	gbrtankyard =
 	{
-		"gbrkangaroo",
+		"gbrkangaroo_tank",
 		"gbraecmkii",
 		"gbrcromwell",
 		"gbrcromwellmkvi",
@@ -512,7 +512,7 @@ buildoptions =
 	
 	gbrtankyard1 =
 	{
-		"gbrkangaroo",
+		"gbrkangaroo_tank",
 		"gbraecmkii",
 		"gbrcromwell",
 		"gbrcromwellmkvi",
@@ -521,7 +521,7 @@ buildoptions =
 	
 	gbrtankyard2 =
 	{
-		"gbrkangaroo",
+		"gbrkangaroo_tank",
 		"gbraecmkii",
 		"gbrcromwell",
 		"gbrcromwellmkvi",
@@ -691,7 +691,7 @@ buildoptions =
 		"rusm30_truck",
 		"rus61k_truck",
 		"rusm30_truck",
-		"russu76",
+		"russu76_sp",
 		"rusbm13n",
 	},
 	

@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=GBRAECMkII_veh;
+	unitname=GBRAECMkII_sp;
 	objectname=GBRAECMkIII.S3O;
 	corpse=GBRAECMkIII_Destroyed;
 	icontype=armoredcar;
@@ -21,7 +21,7 @@
 
 	buildcostmetal=1725;
 	buildcostenergy=0;
-	buildtime=575;
+	buildtime=345;
 	footprintx=2;
 	footprintz=2;
 	mass=1250;

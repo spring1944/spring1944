@@ -221,6 +221,8 @@ local armorDefs = {
 		"USM4A3105Sherman",
 		"USM5Stuart",
 		"USM5Stuart_veh",
+		"USM8Scott",
+		"USM8Scott_sp",
 
 		--USSR--
 		"RUSISU152",
@@ -244,6 +246,7 @@ local armorDefs = {
 		"GBRCromwellMkVI",
 		"GBRChurchillMkVII",
 		"GBRKangaroo",
+		"GBRKangaroo_tank",
 	},
 
 	armouredVehicles	=	{
@@ -251,6 +254,7 @@ local armorDefs = {
 		"GERSdKfz250",
 		"GERSdKfz251",
 		"GERMarder",
+		"GERMarder_sp",
 		"GERWespe",
 
 		--US--
@@ -262,12 +266,15 @@ local armorDefs = {
 		"RUSBA64",
 		"RUSM5Halftrack",
 		"RUSSU76",
+		"RUSSU76_sp",
 
+		--Britain--
 		--Britain--
 		"GBRDaimler",
 		"GBRM5Halftrack",
 		"GBRAECMkII",
 		"GBRAECMkII_veh",
+		"GBRAECMkII_sp",
 		"GBRSexton",
 	},
 

@@ -11,9 +11,9 @@
 	description=Self-Propelled Rocket Artillery;
 	side=RUS;
 	maxdamage=700;
-	buildcostmetal=4500;
+	buildcostmetal=4050;
 	buildcostenergy=0;
-	buildtime=600;
+	buildtime=810;
 	footprintx=2;
 	footprintz=2;
 	mass=1000;
