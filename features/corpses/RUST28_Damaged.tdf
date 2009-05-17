@@ -1,0 +1,22 @@
+[rust28_damaged]
+{
+	object=RUST28;
+	featuredead=RUST28_Destroyed;
+	description=Abandoned Tank;
+	energy=1000;
+	damage=626;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
+[rust28_destroyed]
+{
+	object=RUST3476_Destroyed.S3O;
+	featuredead=Debris_Large;
+	description=Destroyed Tank;
+	energy=500;
+	damage=2501;
+	footprintx=2;
+	footprintz=3;
+	reclaimable=1;
+}
