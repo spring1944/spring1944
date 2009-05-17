@@ -34,7 +34,7 @@
 	brakerate=0.96;
 	turnrate=440;
 	maxslope=10;
-	maxwaterdepth=15;
+	maxwaterdepth=45;
 	turninplace=0;
 
 	leavetracks=1;
