@@ -77,7 +77,7 @@
 	MaxAngleDif9=300;
 
 	[sfxtypes]
-	}
+	{
 		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
 		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
 		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;

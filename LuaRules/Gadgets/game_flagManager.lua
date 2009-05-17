@@ -53,7 +53,7 @@ local spots 								= {} -- table of flag locations
 local flags 								= {} -- table of flag unitIDs
 local cappers 							= {} -- table of flag cappers
 local defenders							= {} -- table of flag defenders
-local flagCapStatuses				= {{}} -- table of flag's capping statuses
+local flagCapStatuses				= {} -- table of flag's capping statuses
 local teams									= Spring.GetTeamList()
 local initFrame
 local modOptions
@@ -151,7 +151,7 @@ function gadget:GameFrame(n)
 
 	-- FLAG CONTROL
 	if (modOptions.gametype == "0" or modOptions.gametype == nil) then
-		if n % 30 == 5 and n > 40 then
+		if n % 30 == 5 and n > (initFrame + 40) then
 			for spotNum, flagID in pairs(flags) do
 				local flagTeamID = GetUnitTeam(flagID)
 				local defendTotal = 0
