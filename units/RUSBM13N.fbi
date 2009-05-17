@@ -4,6 +4,7 @@
 	objectname=RUSBM13N.S3O;
 	corpse=RUSBM13N_Destroyed;
 	soundcategory=RUSVeh;
+	icontype=rockettruck;
 	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
 	tedclass=TANK;
 
@@ -55,7 +56,6 @@
 	onlytargetcategory1=NFLAG;
 	weaponmaindir1=0 0 1;
 	maxangledif1=25;
-	icontype=truck;
 
 	[sfxtypes]
 	{
