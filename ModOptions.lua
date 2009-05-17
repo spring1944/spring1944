@@ -209,6 +209,14 @@ local options = {
   },
 
 
+	{
+		key = 'gm_team_enable',
+		name = 'Enable Sandbox/GM tools faction',
+		desc = 'Allows the sandbox/game master tools faction to spawn, rather than changing to a random team',
+		type = 'bool',
+		def = false,
+	},
+	
 	--[[{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',

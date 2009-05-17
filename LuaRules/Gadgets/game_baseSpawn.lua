@@ -34,7 +34,7 @@ if (gadgetHandler:IsSyncedCode()) then
 	-- 1000|1.1 will result in approx. 16 tries before giving up (200 * 1.1^17 > 1000)
 	local MAX_SPREAD = 1000
 	local SPREAD_MULT = 1.1
-
+	local spawnQueue = {}
 	-- Removes this gadget if the game has started.
 	-- Only needs to run once at game start
 	--[[function gadget:GameFrame(n)
@@ -64,28 +64,42 @@ if (gadgetHandler:IsSyncedCode()) then
 		return true
 	end
 
-	function gadget:UnitFinished(unitID, unitDefID, teamID)
+	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		if ud.customParams.hq == "1" then
-			local spawnList = hqDefs[ud.name]
-			if not spawnList then return end
-			local px, py, pz = Spring.GetUnitPosition(unitID)
-			for _, unitName in ipairs(spawnList.units) do
-				local udid = UnitDefNames[unitName].id
-				local spread = spawnList.spread
-				while (spread < MAX_SPREAD) do
-					local x = px + math.random(-spread, spread)
-					local z = pz + math.random(-spread, spread)
-					if IsPositionValid(udid, x, z) then
-						Spring.CreateUnit(unitName, x, py, z, 0, teamID)
-						break
-					end
-					spread = spread * SPREAD_MULT
-				end
-				--Spring.Echo(unitName .. ", spread: " .. spread)
-			end
+		if (ud.customParams.hq == "1") then
+			spawnQueue[unitID] = true
 		end
 	end
+	
+	function gadget:GameFrame(n)
+		if (n==2) then
+			for unitID, someThing in pairs(spawnQueue) do
+				local unitDefID = Spring.GetUnitDefID(unitID)
+				local teamID = Spring.GetUnitTeam(unitID)
+				local ud = UnitDefs[unitDefID]
+				local spawnList = hqDefs[ud.name]
+				if not spawnList then return end
+				local px, py, pz = Spring.GetUnitPosition(unitID)
+				for _, unitName in ipairs(spawnList.units) do
+					local udid = UnitDefNames[unitName].id
+					local spread = spawnList.spread
+					while (spread < MAX_SPREAD) do
+						local x = px + math.random(-spread, spread)
+						local z = pz + math.random(-spread, spread)
+						if IsPositionValid(udid, x, z) then
+								Spring.CreateUnit(unitName, x, py, z, 0, teamID)
+							break
+						end
+						spread = spread * SPREAD_MULT
+					end
+				end
+			end
+		end
+		if (n==10) then
+		gadgetHandler:RemoveGadget()
+		end
+	end
+
 
 else -- UNSYNCED
 

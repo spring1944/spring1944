@@ -15,5 +15,9 @@ local sidedata = {
 	name = "US",
 	startUnit = "USHQ",
 	},
+	{
+	name = "Random Team/GM",
+	startUnit = "GMToolbox",
+	},
 }
 return sidedata

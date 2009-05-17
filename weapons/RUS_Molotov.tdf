@@ -9,7 +9,7 @@
 	tolerance=10000;
 	range=180;
 	reloadtime=8;
-	accuracy=300;
+	accuracy=1250;
 	movingaccuracy=500;
 	weaponvelocity=210;
 	areaofeffect=32;

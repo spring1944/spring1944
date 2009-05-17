@@ -11,9 +11,6 @@ local hqDefs = {
 				"usgimg",
 				"usgimg",
 				"ushqengineer",
-				"usgmctruck",
-				"usgmctruck",
-				
 			},
 	},
 
@@ -29,8 +26,6 @@ local hqDefs = {
 				"gbrvickers",
 				"gbrobserv",
 				"gbrhqengineer",
-				"gbrbedfordtruck",
-				"gbrbedfordtruck",
 			},
 	},
 
@@ -46,8 +41,6 @@ local hqDefs = {
 				"germg42",
 				"germg42",
 				"gerhqengineer",
-				"geropelblitz",
-				"geropelblitz",
 				},
 	},
 	ruscommander = {
@@ -63,8 +56,6 @@ local hqDefs = {
 				"rusobserv",
 				"ruscommissar",
 				"ruscommissar",
-				"ruszis5",
-				"ruszis5",
 			},
 		},
 }

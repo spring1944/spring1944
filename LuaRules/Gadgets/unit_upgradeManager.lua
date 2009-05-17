@@ -103,8 +103,8 @@ if (gadgetHandler:IsSyncedCode()) then
 			-- Loops through the units, calling g:UnitFinished() on each of them
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local teamID = Spring.GetUnitTeam(unitID)
-			local unitDefID = GetUnitDefID(unitID)
-			gadget:UnitFinished(unitID, unitDefID, teamID)
+			local unitDefID = Spring.GetUnitDefID(unitID)
+			gadget:UnitCreated(unitID, unitDefID, teamID)
 		end
 		
 	end

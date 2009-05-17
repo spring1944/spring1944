@@ -405,8 +405,7 @@ local squadDefs = {
 
 	["rus_platoon_assault"] =
 	{
-		"rusppsh",
-		"rusppsh",
+		"rusrpg43",
 		"rusppsh",
 		"rusppsh",
 		"rusppsh",

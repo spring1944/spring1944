@@ -16,9 +16,10 @@ local SetTeamResource = Spring.SetTeamResource
 local GetTeamResources = Spring.GetTeamResources
 
 function gadget:GameFrame(n)
-	if n > 1 then
+	if n > 2 then
 		local modOptions = Spring.GetModOptions()
 		local commandStorage = tonumber(modOptions.command_storage) or 1000
+		if modOptions.gametype ~= 1 then
 		if commandStorage > 0 then
 			local teamIDs = Spring.GetTeamList()
 			for i=1, #teamIDs do
@@ -29,6 +30,7 @@ function gadget:GameFrame(n)
 					SetTeamResource(teamID, "ms", commandStorage)
 				end
 			end
+		end
 		end
 		gadgetHandler:RemoveGadget()
 	end

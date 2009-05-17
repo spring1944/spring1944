@@ -1,0 +1,95 @@
+[UNITINFO]
+{
+	Name=Game Master Toolbox;
+	UnitName=GMToolbox;
+	icontype=GM;
+	//    Required Tags
+	BuildCostEnergy=0;
+	BuildCostMetal=8000;
+	BuildTime=80000000;
+	Category=NOTHING;
+	Description=Allows the game master to do game-mastery things;
+	FootprintX=4;
+	FootprintZ=4;
+	MaxDamage=3465000;
+	ObjectName=USP51DMustangGA.S3O;
+	Side=US;
+	//SoundCategory=USPlane;
+	TEDClass=VTOL;
+	
+	//    Movement
+	BrakeRate=5;
+	Acceleration=0.5;
+	CanMove=1;
+	MaxVelocity=15;
+	MaxSlope=10;
+	TurnRate=500;
+	hoverattack=1;
+	AirHoverFactor=0;
+	AirStrafe=1;
+	commander=1;
+	
+	//    Buildings
+	
+	//    Construction
+	builder=1;
+	builddistance=500;
+	workertime=1000;
+	shownanospray=0;
+	
+	//    Resources
+	energystorage=10000000000;
+	metalstorage=100000000000;
+	metalmake=10000000;
+	energymake=1000000;
+	
+	//    Abilities
+	CanAttack=1;
+	CanDropFlare=1;
+	CanFly=1;
+	CanGuard=1;
+	CanPatrol=1;
+	CanStop=1;
+	Stealth=1;
+	init_cloaked=1;
+	cloakcost=0;
+	cloakcostmoving=0;
+	mincloakdistance=1;
+	
+	//    Sight/Radar
+	SightDistance=2000;
+	AirSightDistance=4000;
+	
+	//    Misc
+	BadTargetCategory=NOTAIR;
+	nochasecategory=FLAG;
+	BuildPic=USP51DMustangGA.png;
+	ExplodeAs=Vehicle_Explosion_Med;
+	MaxWaterDepth=0;
+	SelfDestructAs=Vehicle_Explosion_Med;
+	SmoothAnim=1;
+	idleAutoHeal=2;
+
+	cruisealt=200;
+
+	// 	Misc
+	seismicsignature=0;
+	shownanoframe=0;
+
+	//	Weapons
+	weapon1=trenchmaker;
+	onlytargetcategory1=ABSOLUTELYNOTHING;
+
+	[sfxtypes]
+	{
+		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
+		explosiongenerator1=custom:MG_SHELLCASINGS;
+		explosiongenerator2=custom:MG_MUZZLEFLASH;
+		explosiongenerator3=custom:XLARGE_MUZZLEFLASH;
+	}
+
+	[customParams]
+	{
+		gm=1;
+	}
+}
