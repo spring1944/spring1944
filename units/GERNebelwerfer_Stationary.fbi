@@ -71,7 +71,7 @@
 		maxammo=1;
 		weaponswithammo=1;
 		lowammolevel=1;
-		weaponcost=180;
+		weaponcost=210;
 		defaultMove=1;
 		feartarget=1;
 	}

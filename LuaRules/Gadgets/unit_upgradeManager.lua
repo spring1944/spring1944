@@ -318,7 +318,10 @@ if (gadgetHandler:IsSyncedCode()) then
 		else
 			
 			if (cmdID >= CMD_UPGRADE and cmdID <= CMD_UPGRADE + CMD_MAX_UPGRADES) then
-				StartUpgrade(unitID, unitDefID, cmdID - CMD_UPGRADE + 1)
+				local _, _, inBuild = Spring.GetUnitIsStunned(unitID)
+				if (inBuild == 0) then
+					StartUpgrade(unitID, unitDefID, cmdID - CMD_UPGRADE + 1)
+				end
 			end
 			return true  -- command was not used
 			

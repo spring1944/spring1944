@@ -12,7 +12,7 @@
 	trajectoryheight=0.5;
 	firestarter=0.0;
 
-	range=2250;
+	range=2025;
 	flighttime=5;
 	reloadtime=45;
 	burst=16;
