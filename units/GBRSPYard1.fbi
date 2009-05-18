@@ -3,6 +3,7 @@
 	unitname=GBRSPYard1;
 	objectname=GBRGunYard.S3O;
 	icontype=factory;
+	buildpic=gbrgunyard.png;
 	soundcategory=GBRYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
