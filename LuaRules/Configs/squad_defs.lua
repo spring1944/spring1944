@@ -568,6 +568,7 @@ local squadDefs = {
 		"usgirifle",
 		"usgibar",
 		"usgibar",
+		"usgibazooka",
 		
 	},
 	
@@ -581,7 +582,7 @@ local squadDefs = {
 		"usgithompson",
 		"usgithompson",
 		"usgithompson",
-		"usgibazooka",
+		"usgiflamethrower",
 		"usgiflamethrower",
 		"usgibar",
 		"usgibar",
@@ -627,6 +628,7 @@ local squadDefs = {
 	
 	["us_platoon_flame"] = 
 	{
+		"usgiflamethrower",
 		"usgiflamethrower",
 		"usgiflamethrower",
 		"usgiflamethrower",

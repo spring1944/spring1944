@@ -7,13 +7,13 @@
 	icontype=mines;
 	
 	name=Flamethrower Squad;
-	description=3 x Flamethrower: Specialized Assault Infantry;
+	description=4 x Flamethrower: Specialized Assault Infantry;
 	side=US;
 	maxdamage=100;
 	idleautoheal=0;
-	buildcostmetal=770;
+	buildcostmetal=700;
 	buildcostenergy=0;
-	buildtime=385;
+	buildtime=350;
 	footprintx=1;
 	footprintz=1;
 
