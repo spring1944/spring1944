@@ -7,7 +7,7 @@
 	icontype=mines;
 	
 	name=Assault Platoon;
-	description=14 x PPsh-43 SMG, 1 x Commissar: Close-Quarters Assault Infantry;
+	description=12 x PPsh-43 SMG, 1 x RPG43, 1 x Commissar: Close-Quarters Assault Infantry;
 	side=RUS;
 	maxdamage=100;
 	idleautoheal=0;

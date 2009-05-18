@@ -38,6 +38,11 @@
 	maxslope=20;
 	maxwaterdepth=255;
 
+	usebuildinggrounddecal=1;
+	buildinggrounddecalsizex=8;
+	buildinggrounddecalsizey=8;
+	buildinggrounddecaltype=Dirt2.dds;
+
 	explodeas=Large_Explosion;
 	selfdestructas=Large_Explosion;
 
