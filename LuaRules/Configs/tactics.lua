@@ -74,8 +74,7 @@ local deployment = {
     		"gerjagdpanzeriv",
     		"gerpanther",
     		"gertiger",
-    		"gertigerii",
-    		"gersturmboot"
+    		"gertigerii"
       },
       forbid = {
       },
@@ -103,8 +102,7 @@ local deployment = {
     		"gbrcromwellmkvi",
     		"gbrm10achilles",
     		"gbrchurchillmkvii",
-    		"gbrsexton",
-    		"rubberdingy"
+    		"gbrsexton"
       },
       forbid = {
       },
@@ -125,6 +123,8 @@ local deployment = {
     		"rust60",
     		"rusm5halftrack",
     		"russu76",
+			"russu85",
+			"russu100",
     		"ruszis3_truck",
     		"ruszis2_truck",
     		"rusm30_truck",
@@ -133,8 +133,7 @@ local deployment = {
     		"rusisu152",
     		"rust3485",
     		"rusis2",
-    		"rusbm13n",
-    		"ruslighttender"
+    		"rusbm13n"
       },
       forbid = {
       },
@@ -154,6 +153,7 @@ local deployment = {
     		"usm8greyhound",
     		"usm3halftrack",
     		"usm8scott",
+			"usm7priest",
     		"usm8gun_bax",
     		"usm5gun_truck",
     		"usm2gun_truck",
@@ -162,8 +162,7 @@ local deployment = {
     		"usm10wolverine",
     		"usm4a376sherman",
     		"usm4a3105sherman",
-    		"usm4jumbo",
-    		"rubberdingy"
+    		"usm4jumbo"
       },
       forbid = {
       },

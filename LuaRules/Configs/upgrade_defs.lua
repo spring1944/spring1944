@@ -288,6 +288,61 @@ local upgradeDefs = {
 			buildpic = 'gbrheavyarmorupg.png',
 		},
 	},
+	gbrboatyard = {
+		{
+			into = 'gbrboatyardlarge',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Large BY',
+			name = 'Upgrade: Large Boatyard',
+			desc = 'Makes larger ships available',
+			notext = true,
+			buildpic = 'gbrboatyard.png',
+		},
+	},
+	
+	gerboatyard = {
+		{
+			into = 'gerboatyardlarge',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Large BY',
+			name = 'Upgrade: Large Boatyard',
+			desc = 'Makes larger ships available',
+			notext = true,
+			buildpic = 'gerboatyard.png',
+		},
+	},
+	
+	rusboatyard = {
+		{
+			into = 'rusboatyardlarge',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Large BY',
+			name = 'Upgrade: Large Boatyard',
+			desc = 'Makes larger ships available',
+			notext = true,
+			buildpic = 'rusboatyard.png',
+		},
+	},
+	
+	usboatyard = {
+		{
+			into = 'usboatyardlarge',
+			mcost = 3000,
+			ecost = 0,
+			time = 200,
+			buttonname = 'Upg: Large BY',
+			name = 'Upgrade: Large Boatyard',
+			desc = 'Makes larger ships available',
+			notext = true,
+			buildpic = 'usboatyard.png',
+		},
+	},
 }
 
 

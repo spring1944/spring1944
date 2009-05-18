@@ -549,42 +549,6 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
-  
-     gbrboatyard =
-  {
-    into = 'gbrboatyardlarge',
-    tech = 0,
-    time = 200,
-    metal = 0,
-    energy = 0,
-  },
-  
-      usboatyard =
-  {
-    into = 'usboatyardlarge',
-    tech = 0,
-    time = 200,
-    metal = 0,
-    energy = 0,
-  },
-  
-      gerboatyard =
-  {
-    into = 'gerboatyardlarge',
-    tech = 0,
-    time = 200,
-    metal = 0,
-    energy = 0,
-  },
-  
-      rusboatyard =
-  {
-    into = 'rusboatyardlarge',
-    tech = 0,
-    time = 200,
-    metal = 0,
-    energy = 0,
-  },
 }
 --
 -- Here's an example of why active configuration
