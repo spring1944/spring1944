@@ -1,6 +1,6 @@
 [unitinfo]
 {
-	unitname=RUSSU76;
+	unitname=RUSSU76_sp;
 	objectname=RUSSU76.S3O;
 	corpse=RUSSU76_Destroyed;
 	icontype=selfprop;
