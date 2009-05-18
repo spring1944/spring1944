@@ -361,6 +361,7 @@ buildoptions =
 	gerboatyard =
 	{
 		"gersturmboot",
+		"gerschsturmboot",
 		"pontoonraft",
 		"gerrboot",
 		"gersboot",

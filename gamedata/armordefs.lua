@@ -420,6 +420,7 @@ local armorDefs = {
 	"GERVorpostenBoot",
 	"GERType1934",
 	"GERSiebelFahre",
+	"GERSchSturmboot",
 		--US--
 	"USLCT",
 	"USPT103",
