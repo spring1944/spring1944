@@ -196,7 +196,6 @@ function gadget:Initialize()
 	SetupCmdChangeAIDebugVerbosity()
 end
 
-
 function gadget:GamePreload()
 	-- This is executed BEFORE headquarters / commander is spawned
 	Log("gadget:GamePreload")
@@ -205,15 +204,48 @@ function gadget:GamePreload()
 	if waypointMgr then
 		waypointMgrGameFrameRate = waypointMgr.GetGameFrameRate()
 	end
+end
+
+local function CreateTeams()
 	-- Initialise AI for all team that are set to use it
+	local sidedata = Spring.GetSideData()
 	local name = gadget:GetInfo().name
 	for _,t in ipairs(Spring.GetTeamList()) do
-		if Spring.GetTeamLuaAI(t) ==  name then
-			local _,leader,_,_,side,at = Spring.GetTeamInfo(t)
+		if (Spring.GetTeamLuaAI(t) == name) then
+			local _,leader,_,_,_,at = Spring.GetTeamInfo(t)
 			if (leader == MY_PLAYER_ID) then
-				team[t] = CreateTeam(t, at, side)
+				local units = Spring.GetTeamUnits(t)
+				-- Figure out the side we're on by searching for our
+				-- startUnit in Spring's sidedata.
+				local side
+				for _,u in ipairs(units) do
+					if (not Spring.GetUnitIsDead(u)) then
+						local unit = UnitDefs[Spring.GetUnitDefID(u)].name
+						for _,s in ipairs(sidedata) do
+							if (s.startUnit == unit) then side = s.sideName end
+						end
+					end
+				end
+				if (side) then
+					team[t] = CreateTeam(t, at, side)
+					-- Call UnitCreated and UnitFinished for the units we have.
+					-- (the team didn't exist when those were originally called)
+					for _,u in ipairs(units) do
+						if (not Spring.GetUnitIsDead(u)) then
+							local ud = Spring.GetUnitDefID(u)
+							team[t].UnitCreated(u, ud, t)
+							team[t].UnitFinished(u, ud, t)
+						end
+					end
+				else
+					Warning("Startunit not found, don't know as which side I'm supposed to be playing.")
+				end
 			end
 		end
+	end
+
+	for _,t in pairs(team) do
+		t.GameStart()
 	end
 end
 
@@ -223,9 +255,11 @@ function gadget:GameStart()
 	if waypointMgr then
 		waypointMgr.GameStart()
 	end
-	for _,t in pairs(team) do
-		t.GameStart()
-	end
+
+	-- We perform this only this late, and then fake UnitFinished for all units
+	-- in the team, to support random faction (implemented by swapping out HQ
+	-- in GameStart of that gadget.)
+	CreateTeams()
 end
 
 function gadget:GameFrame(f)
