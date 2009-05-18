@@ -225,6 +225,11 @@ local iconTypes = {
 		size			=	2.5,
 		distance	=	0.4,
 	},
+	lttrans = {
+		bitmap		=	"icons/lttrans.tga",
+		size			=	2.5,
+		distance	=	0.4,
+	},
 	raft	= {
 		bitmap		=	"icons/raft.tga",
 		size			=	2.5,

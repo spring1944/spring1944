@@ -3,7 +3,7 @@
 	unitname=RUSPG117;
 	objectname=RUSPG117.S3O;
 	//corpse=;
-	icontype=pontoon;
+	icontype=lttrans;
 	buildpic=RUSPG117.png;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
