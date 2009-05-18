@@ -3,6 +3,7 @@
 	unitname=RUSLightTender;
 	objectname=RUSLightTender.S3O;
 	//corpse=;
+	buildpic=RUSTender15t.png;
 	icontype=pontoon;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
