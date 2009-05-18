@@ -3,6 +3,7 @@
 	unitname=USTankYard1;
 	objectname=USTankYard.S3O;
 	icontype=factory;
+	buildpic=ustankyard.png;
 	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;

@@ -3,6 +3,7 @@
 	unitname=GERSPYard1;
 	objectname=GERGunyard.S3O;
 	icontype=factory;
+	buildpic=gergunyard.png;
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;

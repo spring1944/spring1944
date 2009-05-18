@@ -3,6 +3,7 @@
 	unitname=GERTankYard2;
 	objectname=GERTankYard.S3O;
 	icontype=factory;
+	buildpic=gertankyard.png;
 	soundcategory=GERYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;

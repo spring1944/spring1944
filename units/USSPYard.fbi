@@ -3,6 +3,7 @@
 	unitname=USSPYard;
 	objectname=USGunyard.S3O;
 	icontype=factory;
+	buildpic=usgunyard.png;
 	soundcategory=USYard;
 	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
 	tedclass=PLANT;
