@@ -483,6 +483,7 @@ buildoptions =
 		"gbrm5halftrack",
 		"gbrdaimler",
 		"gbrkangaroo",
+		"gbrwasp",
 	},
 	
 	gbrvehicleyard1 =
