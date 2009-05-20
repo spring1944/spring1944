@@ -269,13 +269,13 @@ local armorDefs = {
 		"RUSSU76_sp",
 
 		--Britain--
-		--Britain--
 		"GBRDaimler",
 		"GBRM5Halftrack",
 		"GBRAECMkII",
 		"GBRAECMkII_veh",
 		"GBRAECMkII_sp",
 		"GBRSexton",
+		"GBRWasp",
 	},
 
 	unarmouredVehicles	=	{
