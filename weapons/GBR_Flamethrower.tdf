@@ -1,0 +1,44 @@
+[waspflamethrower]
+{
+	id=76;
+	name=Wasp Flamethrower;
+	rendertype=1;
+	turret=1;
+	tolerance=200;
+
+	lineofsight=1;
+	firestarter=100;
+	explosiongenerator=custom:Flamethrower;
+	CEGTag=Flametrail;
+	range=300;
+	reloadtime=1;
+	burst=40;
+	burstrate=.01;
+	sprayangle=500;
+	weaponvelocity=240;
+	areaofeffect=80;
+	explosionspeed=0.01;
+	edgeeffectiveness=0.25;
+	weapontimer=2;
+	groundbounce=0;
+	soundtrigger=1;
+	soundstart=GEN_Flamethrower;
+	soundhit=none;
+	size=0.01;
+
+	impulsefactor=0.000001;
+
+	[damage]
+	{
+		default=32;
+		bunkers=150;
+		sandbags=2.5;
+		mines=0;
+		flag=0.000000001;
+	}
+	[customParams]
+	{
+		fearid=501;
+		fearaoe=75;
+	}
+}
