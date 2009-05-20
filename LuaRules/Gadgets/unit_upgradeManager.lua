@@ -165,7 +165,10 @@ if (gadgetHandler:IsSyncedCode()) then
 	
 	
 	local function StartUpgrade(unitID, unitDefID, cmdNum)
-		
+		  local _,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+			if (buildProgress<1) then
+			return false
+		end
 		if (not upgradeDefs[unitDefID]) then
 			return false
 		end
@@ -318,10 +321,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		else
 			
 			if (cmdID >= CMD_UPGRADE and cmdID <= CMD_UPGRADE + CMD_MAX_UPGRADES) then
-				local _, _, inBuild = Spring.GetUnitIsStunned(unitID)
-				if (inBuild ~= 1) then
-					StartUpgrade(unitID, unitDefID, cmdID - CMD_UPGRADE + 1)
-				end
+				StartUpgrade(unitID, unitDefID, cmdID - CMD_UPGRADE + 1)
 			end
 			return true  -- command was not used
 			
