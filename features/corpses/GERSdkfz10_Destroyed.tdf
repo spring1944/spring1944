@@ -1,0 +1,11 @@
+[gersdkfz10_destroyed]
+{
+	object=GERSdkfz10_destroyed.S3O;
+	description=Wrecked Halftrack;
+	featuredead=Debris_Small;
+	energy=25;
+	damage=501;
+	footprintx=2;
+	footprintz=4;
+	reclaimable=1;
+}
