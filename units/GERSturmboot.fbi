@@ -3,7 +3,7 @@
 	unitname=GERSturmboot;
 	objectname=GERSturmboot.S3O;
 	//corpse=;
-	icontype=pontoon;
+	icontype=lttrans;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 
