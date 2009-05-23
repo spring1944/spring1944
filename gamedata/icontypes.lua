@@ -66,7 +66,7 @@ local iconTypes = {
 	},
 	aaartillery = {
 		bitmap		=	"icons/aaartillery.tga",
-		size			=	4,
+		size			=	3,
 		distance	=	0.2,
 	},
 	aahalftrack = {
