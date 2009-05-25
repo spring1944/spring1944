@@ -3,7 +3,7 @@
 	unitname=USM3Halftrack;
 	objectname=USM3Halftrack.S3O;
 	corpse=USM3Halftrack_Destroyed;
-	icontype=truck;
+	icontype=halftrack;
 	soundcategory=USVeh;
 	category=TANK TPORT INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;

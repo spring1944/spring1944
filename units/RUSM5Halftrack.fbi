@@ -3,7 +3,7 @@
 	unitname=RUSM5Halftrack;
 	objectname=RUSM5Halftrack.S3O;
 	corpse=RUSM5Halftrack_Destroyed;
-	icontype=truck;
+	icontype=halftrack;
 	soundcategory=RUSVeh;
 	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
