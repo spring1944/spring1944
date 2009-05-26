@@ -221,7 +221,7 @@ local iconTypes = {
 		distance	=	0.15,
 	},
 	pontoon = {
-		bitmap		=	"icons/pontoon.tga",
+		bitmap		=	"icons/rubber.tga",
 		size			=	2.5,
 		distance	=	0.4,
 	},
