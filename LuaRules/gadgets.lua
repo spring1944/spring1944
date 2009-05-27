@@ -66,7 +66,7 @@ gadgetHandler = {
   knownGadgets = {},
   knownCount = 0,
   knownChanged = true,
-
+  
   GG = {}, -- shared table for gadgets
 
   globals = {}, -- global vars/funcs
@@ -108,6 +108,7 @@ local callInLists = {
   'UnitExperience',
   'UnitIdle',
   'UnitCmdDone',
+  'UnitPreDamaged',
   'UnitDamaged',
   'UnitTaken',
   'UnitGiven',
@@ -257,7 +258,7 @@ function gadgetHandler:Initialize()
     end
   end
 
-  -- sort the gadgets
+  -- sort the gadgets  
   table.sort(unsortedGadgets, function(g1, g2)
     local l1 = g1.ghInfo.layer
     local l2 = g2.ghInfo.layer
@@ -275,7 +276,7 @@ function gadgetHandler:Initialize()
     end
   end)
 
-  -- add the gadgets
+  -- add the gadgets  
   for _,g in ipairs(unsortedGadgets) do
     gadgetHandler:InsertGadget(g)
 
@@ -1267,6 +1268,19 @@ function gadgetHandler:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
     g:UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdTag)
   end
   return
+end
+
+
+function gadgetHandler:UnitPreDamaged(unitID, unitDefID, unitTeam,
+                                   damage, paralyzer, weaponID,
+                                   attackerID, attackerDefID, attackerTeam)
+  local dam = damage
+  for _,g in ipairs(self.UnitPreDamagedList) do
+    dam = g:UnitPreDamaged(unitID, unitDefID, unitTeam,
+                  dam, paralyzer, weaponID,
+                  attackerID, attackerDefID, attackerTeam)
+  end
+  return dam
 end
 
 
