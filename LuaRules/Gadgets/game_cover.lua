@@ -6,7 +6,7 @@ function gadget:GetInfo()
     date      = "27 May 2008",
     license   = "GNU LGPL, v2.1 or later",
     layer     = 10000,
-    enabled   = false  --  loaded by default?
+    enabled   = true  --  loaded by default?
   }
 end
 
@@ -110,8 +110,5 @@ function gadget:GameFrame(n)
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
-  if cover[unitID] and cover[unitID] > 1 then
-    Spring.Echo("Cover", cover[unitID])
-  end
   return damage / (cover[unitID] or 1)
 end
