@@ -3,7 +3,7 @@
 	unitname=RubberDingy;
 	objectname=RubberDingy.S3O;
 	//corpse=;
-	icontype=pontoon;
+	icontype=rubber;
 	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 
