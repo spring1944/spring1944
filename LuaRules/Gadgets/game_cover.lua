@@ -32,7 +32,6 @@ end
 local UPDATE_PERIOD = 32
 local UPDATE_OFFSET = 19
 
-local cover = {}
 local coverFeatures = {}
 
 ----------------------------------------------------------------
@@ -42,6 +41,9 @@ local GetFeatureDefID = Spring.GetFeatureDefID
 local GetFeaturePosition = Spring.GetFeaturePosition
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitsInCylinder = Spring.GetUnitsInCylinder
+local GetUnitRulesParam = Spring.GetUnitRulesParam
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+local GetAllUnits = Spring.GetAllUnits
 
 ----------------------------------------------------------------
 --callins
@@ -52,7 +54,7 @@ function gadget:Initialize()
   for i = 1, #allFeatures do
     gadget:FeatureCreated(allFeatures[i])
   end
-  local allUnits = Spring.GetAllUnits()
+  local allUnits = GetAllUnits()
   for i = 1, #allUnits do
     local unitID = allUnits[i]
     gadget:UnitCreated(unitID, GetUnitDefID(unitID))
@@ -75,18 +77,18 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local unitDef = UnitDefs[unitDefID]
   if unitDef.canFly or unitDef.speed == 0 then return end
   
-  cover[unitID] = 1
-end
-
-function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-  cover[unitID] = nil
+  SetUnitRulesParam(unitID, "cover", 1)
 end
 
 function gadget:GameFrame(n)
   if n % UPDATE_PERIOD ~= UPDATE_OFFSET then return end
   
-  for unitID, _ in pairs(cover) do
-    cover[unitID] = 1
+  local allUnits = GetAllUnits()
+  for i=1, #allUnits do
+    local unitID = allUnits[i]
+    if GetUnitRulesParam(unitID, "cover") then
+      SetUnitRulesParam(unitID, "cover", 1)
+    end
   end
   
   for featureID, featureInfo in pairs(coverFeatures) do
@@ -96,8 +98,9 @@ function gadget:GameFrame(n)
       local coveredUnits = GetUnitsInCylinder(fx, fz, featureInfo[2])
       for i = 1, #coveredUnits do
         local unitID = coveredUnits[i]
-        if cover[unitID] and cover[unitID] < coverStrength then
-          cover[unitID] = coverStrength
+        local currCover = GetUnitRulesParam(unitID, "cover")
+        if currCover and currCover < coverStrength then
+          SetUnitRulesParam(unitID, "cover", coverStrength)
         end
       end
     end
@@ -105,5 +108,5 @@ function gadget:GameFrame(n)
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
-  return damage / (cover[unitID] or 1)
+  return damage / (GetUnitRulesParam(unitID, "cover") or 1)
 end
