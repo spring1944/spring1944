@@ -5,7 +5,7 @@
 	buildpic=USM1Bofors.png;
 	corpse=USGMCTruck_Destroyed;
 	icontype=truck;
-	soundcategory=USTank;
+	soundcategory=USGun;
 	category=TANK NFLAG   INFTARG NFLAGNAIR WEAPON;
 	tedclass=TANK;
 

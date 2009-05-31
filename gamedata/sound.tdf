@@ -136,6 +136,22 @@
 	canceldestruct=;
       	} 
 
+[USGun]//Meh, Incomplete, Unclean, Joy Joy
+	{
+	select1=US_Veh_Select1;
+	select2=US_Veh_Select2;
+	select3=US_Veh_Select3;
+	ok1=US_GUN_OK1;
+	ok2=US_GUN_OK2;
+	cant1=US_GUN_WITHDRAW;
+	arrived1=US_GUN_DEPLOY;
+	arrived2=US_GUN_OK3;
+	underattack=US_GUN_UnderAttack;
+	//deploy=US_GUN_DEPLOY; //Can we call sfx in morphs through sounds.tdf?
+	//stop=US_GUN_STOP;
+	//withdraw=US_GUN_WITHDRAW;
+		}
+
 [RUSInf]
 	{
 	select1=RUS_INF_Select1;

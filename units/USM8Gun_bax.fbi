@@ -5,7 +5,7 @@
 	corpse=USM8Gun_Destroyed;
 	icontype=artillery;
 	buildpic=USM8Gun.png;
-	soundcategory=USInf;
+	soundcategory=USGun;
 	category=INFTARG NFLAGNAIR NAIR NFLAG;
 	tedclass=KBOT;
 

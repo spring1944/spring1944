@@ -4,7 +4,7 @@
 	objectname=USM1Bofors_Stationary.S3O;
 	corpse=USM1Bofors_Destroyed;
 	icontype=aaartillery;
-	soundcategory=USInf;
+	soundcategory=USGun;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
 	tedclass=TURRET;
 	yardmap=o;

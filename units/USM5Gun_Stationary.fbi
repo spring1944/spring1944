@@ -4,7 +4,7 @@
 	objectname=USM5Gun_Stationary.S3O;
 	corpse=USM5Gun_Destroyed;
 	icontype=artillery;
-	soundcategory=USInf;
+	soundcategory=USGun;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
 	tedclass=TURRET;
 	yardmap=o;
