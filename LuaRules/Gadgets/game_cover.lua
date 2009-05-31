@@ -35,11 +35,6 @@ local UPDATE_OFFSET = 19
 local cover = {}
 local coverFeatures = {}
 
-local updateLists = {}
-for i = 0, UPDATE_PERIOD - 1 do
-  updateLists[i] = {}
-end
-
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
