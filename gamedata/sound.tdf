@@ -385,3 +385,104 @@
 	count0=GEN_alarm;
 	canceldestruct=;
       	} 
+
+[GERStug]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_STUG_Ok1;
+	//ok2=GER_Tank_OK2;
+	//ok3=GER_Tank_OK3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_STUG_Arrived1;
+	arrived2=GER_TankNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERTANKNew]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_TANKNew_Ok1;
+	ok2=GER_TANKNew_Ok2;
+	ok3=GER_TANKNew_Ok3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_TANKNew_Arrived1;
+	arrived2=GER_TANKNew_Arrived2;
+	arrived3=GER_TANKNew_Arrived3;
+	arrived4=GER_TANKNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERJgPz]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_JGPZ_Ok1;
+	//ok2=GER_Tank_OK2;
+	//ok3=GER_Tank_OK3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_JGPZ_Arrived1;
+	arrived2=GER_TankNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERFaust]
+	{
+	select1=GER_INFNew_Select1;
+//	select2=GER_INF_Select2;
+//	select3=GER_INF_Select3;
+	ok1=GER_FAUST_OK1;
+	ok2=GER_INF_OK4;
+	//cant1=;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERSniper]
+	{
+	select1=GER_INFNew_Select1;
+//	select2=GER_INF_Select2;
+//	select3=GER_INF_Select3;
+	ok1=GER_SNIPER_OK1;
+	ok2=GER_INF_OK4;
+	//cant1=;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 

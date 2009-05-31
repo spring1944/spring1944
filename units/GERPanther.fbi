@@ -4,7 +4,7 @@
 	objectname=GERPanther.S3O;
 	corpse=GERPanther_Damaged;
 	icontype=heavytank;
-	soundcategory=GERTank;
+	soundcategory=GERTANKNew;
 	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
 	tedclass=TANK;
 

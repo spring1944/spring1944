@@ -5,7 +5,7 @@
 	corpse=GERsoldier_dead;
 	icontype=antitank;
 	buildpic=GERPanzerfaust.png;
-	soundcategory=GERInf;
+	soundcategory=GERFaust;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 

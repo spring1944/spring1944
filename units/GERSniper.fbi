@@ -4,7 +4,7 @@
 	objectname=GERSniper.S3O;
 	corpse=gersoldier_dead;
 	icontype=sniper;
-	soundcategory=GERInf;
+	soundcategory=GERSniper;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 

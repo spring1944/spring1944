@@ -4,7 +4,7 @@
 	objectname=GERMarder.S3O;
 	corpse=GERMarder_Destroyed;
 	icontype=selfprop;
-	soundcategory=GERTank;
+	soundcategory=GERJgPz;
 	category=NFLAGNAIR NFLAG TANK INFTARG LIGHTVEH;
 	tedclass=TANK;
 
