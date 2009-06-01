@@ -3,7 +3,7 @@
 	unitname=GBRWasp;
 	objectname=GBRWasp.S3O;
 	corpse=GBRWasp_Destroyed;
-	icontype=armoredcar;
+	icontype=flametank;
 	soundcategory=GBRVeh;
 	category=NFLAGNAIR NFLAG TANK WEAPON LIGHTVEH;
 	tedclass=TANK;

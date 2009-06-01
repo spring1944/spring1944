@@ -295,6 +295,11 @@ local iconTypes = {
 		size			=	5,
 		distance	=	0.3,
 	}
+	flametank = {
+		bitmap		=	"icons/flametank.tga",
+		size			=	2.25,
+		distance	=	0.2,
+	},
 }
 
 return iconTypes
