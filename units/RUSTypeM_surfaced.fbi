@@ -50,6 +50,7 @@
 	onlytargetcategory1=LARGESHIP;
 	//weapon4=20K45mmAP;
 	onlytargetcategory2=LARGESHIP;
+	OnlyTargetCategory3=NFLAG;
 
 	WeaponMainDir1=0 0 1;
 	WeaponMainDir2=0 0 1;

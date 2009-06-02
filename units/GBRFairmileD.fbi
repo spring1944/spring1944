@@ -68,6 +68,15 @@
 	OnlyTargetCategory3=LARGESHIP;
 	OnlyTargetCategory4=LARGESHIP;
 
+	OnlyTargetCategory5=NFLAGNAIR;
+	OnlyTargetCategory6=NFLAGNAIR;
+	OnlyTargetCategory7=NFLAG;
+	OnlyTargetCategory8=NFLAG;
+	OnlyTargetCategory9=NFLAG;
+	OnlyTargetCategory10=NFLAG;
+	OnlyTargetCategory11=NFLAG;
+	OnlyTargetCategory12=NFLAG;
+
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=40;
 

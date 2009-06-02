@@ -50,6 +50,9 @@
 	Weapon1=20mmOerlikonaa; //oerlikon20mm;
 	Weapon2=20mmOerlikonaa; //oerlikon20mm;
 
+	OnlyTargetCategory1=NFLAG;
+	OnlyTargetCategory2=NFLAG;
+
 	WeaponMainDir1=1 0 0;
 	MaxAngleDif1=240;
 

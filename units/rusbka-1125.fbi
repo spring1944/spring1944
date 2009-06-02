@@ -46,6 +46,11 @@
 	Weapon3=dshk;
 	Weapon4=dshk;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=300;
 

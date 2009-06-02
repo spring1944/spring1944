@@ -47,6 +47,7 @@
 	selfdestructas=Vehicle_Explosion_Sm;
 
 	Weapon1=dshk;
+	OnlyTargetCategory1=NFLAG;
 
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=270;

@@ -44,6 +44,17 @@ piece base, hull, main_turret, main_sleeve, main_barrel, main_flare, mg_turret1,
 #include "damageSmoke.h"
 static-var					CurrentSpeed, bMoving;
 
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define MEDIUM_Muzzleflash	1024+8
+#define MEDIUM_MuzzleDust	1024+9
+
 WorkingLoop()
 {
 	while(TRUE)
@@ -197,11 +208,11 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show main_flare;
+	emit-sfx MEDIUM_Muzzleflash from main_flare;
+	emit-sfx MEDIUM_MuzzleDust from main_flare;
 	move main_barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare;
 }
 
 QueryWeapon2(piecenum)
@@ -228,9 +239,14 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show mg_flare1;
+/*	show mg_flare1;
 	sleep 200;
-	hide mg_flare1;
+	hide mg_flare1;*/
+}
+
+Shot2(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare1;
 }
 
 QueryWeapon3(piecenum)
@@ -257,9 +273,14 @@ AimWeapon3(heading, pitch)
 
 FireWeapon3()
 {
-	show mg_flare2;
+/*	show mg_flare2;
 	sleep 200;
-	hide mg_flare2;
+	hide mg_flare2;*/
+}
+
+Shot3(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare2;
 }
 
 QueryWeapon4(piecenum)
@@ -286,9 +307,14 @@ AimWeapon4(heading, pitch)
 
 FireWeapon4()
 {
-	show mg_flare3;
+/*	show mg_flare3;
 	sleep 200;
-	hide mg_flare3;
+	hide mg_flare3;*/
+}
+
+Shot4(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare3;
 }
 
 Killed(severity, corpsetype)

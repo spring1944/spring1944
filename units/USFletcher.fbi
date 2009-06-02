@@ -63,6 +63,23 @@
 	Weapon18=mk14_533mmtorpedo;
 	Weapon19=mk14_533mmtorpedo;
 
+	OnlyTargetCategory1=NFLAG;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
+	OnlyTargetCategory8=NFLAG;
+	OnlyTargetCategory9=NFLAG;
+	OnlyTargetCategory10=NFLAG;
+	OnlyTargetCategory11=NFLAG;
+	OnlyTargetCategory12=NFLAG;
+	OnlyTargetCategory13=NFLAG;
+	OnlyTargetCategory14=NFLAG;
+	OnlyTargetCategory15=NFLAG;
+	OnlyTargetCategory16=NFLAG;
+	OnlyTargetCategory17=NFLAG;
 	OnlyTargetCategory18=LARGESHIP;
 	OnlyTargetCategory19=LARGESHIP;
 

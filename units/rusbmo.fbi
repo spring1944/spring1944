@@ -46,6 +46,11 @@
 	Weapon3=twin_dshk;
 	Weapon4=twin_dshk;
 
+	OnlyTargetCategory1=NFLAG;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=270;
 

@@ -53,6 +53,12 @@
 	Weapon4=20mmc38;
 	Weapon5=20mmc38;
 
+	OnlyTargetCategory5=NFLAGNAIR;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=270;
 

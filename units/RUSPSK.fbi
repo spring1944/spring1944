@@ -48,6 +48,13 @@
 	Weapon5=dshk; //20mmflakvierling;
 	Weapon6=dshk;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=270;
 

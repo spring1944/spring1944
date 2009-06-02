@@ -50,6 +50,14 @@
 	Weapon6=20mmc38;
 	Weapon7=20mmc38;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
+
 	// 88mm main gun
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=270;

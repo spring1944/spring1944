@@ -58,6 +58,19 @@
 	Weapon14=quad_g7a533mmtorpedo;
 	Weapon15=quad_g7a533mmtorpedo;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAGNAIR;
+	OnlyTargetCategory3=NFLAGNAIR;
+	OnlyTargetCategory4=NFLAGNAIR;
+	OnlyTargetCategory5=NFLAGNAIR;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
+	OnlyTargetCategory8=NFLAG;
+	OnlyTargetCategory9=NFLAG;
+	OnlyTargetCategory10=NFLAG;
+	OnlyTargetCategory11=NFLAG;
+	OnlyTargetCategory12=NFLAG;
+	OnlyTargetCategory13=NFLAG;
 	OnlyTargetCategory14=LARGESHIP;
 	OnlyTargetCategory15=LARGESHIP;
 

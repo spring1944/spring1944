@@ -50,6 +50,10 @@
 	Weapon2=20mmc38;
 	Weapon3=20mmc38;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAGNAIR;
+	OnlyTargetCategory3=NFLAGNAIR;
+
 	WeaponMainDir1=-1 0 0;
 	MaxAngleDif1=320;
 

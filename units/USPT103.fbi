@@ -55,6 +55,9 @@
 	OnlyTargetCategory2=LARGESHIP;
 	OnlyTargetCategory3=LARGESHIP;
 	OnlyTargetCategory4=LARGESHIP;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
 
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=40;

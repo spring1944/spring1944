@@ -71,6 +71,27 @@
 	Weapon19=20mmOerlikonaa;
 	Weapon20=20mmOerlikonaa;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAG;
+	OnlyTargetCategory3=NFLAG;
+	OnlyTargetCategory4=NFLAG;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
+	OnlyTargetCategory8=NFLAG;
+	OnlyTargetCategory9=NFLAG;
+	OnlyTargetCategory10=NFLAG;
+	OnlyTargetCategory11=NFLAG;
+	OnlyTargetCategory12=NFLAG;
+	OnlyTargetCategory13=NFLAG;
+	OnlyTargetCategory14=NFLAG;
+	OnlyTargetCategory15=NFLAG;
+	OnlyTargetCategory16=NFLAG;
+	OnlyTargetCategory17=NFLAG;
+	OnlyTargetCategory18=NFLAG;
+	OnlyTargetCategory19=NFLAG;
+	OnlyTargetCategory20=NFLAG;
+
 	// 15inch main gun
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=200;

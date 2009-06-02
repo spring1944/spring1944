@@ -59,6 +59,20 @@
 	Weapon15=triple533mmtorpedo;
 	Weapon16=triple533mmtorpedo;
 
+	OnlyTargetCategory1=NFLAGNAIR;
+	OnlyTargetCategory2=NFLAGNAIR;
+	OnlyTargetCategory3=NFLAGNAIR;
+	OnlyTargetCategory4=NFLAGNAIR;
+	OnlyTargetCategory5=NFLAG;
+	OnlyTargetCategory6=NFLAG;
+	OnlyTargetCategory7=NFLAG;
+	OnlyTargetCategory8=NFLAG;
+	OnlyTargetCategory9=NFLAG;
+	OnlyTargetCategory10=NFLAG;
+	OnlyTargetCategory11=NFLAG;
+	OnlyTargetCategory12=NFLAG;
+	OnlyTargetCategory13=NFLAG;
+	OnlyTargetCategory14=NFLAG;
 	OnlyTargetCategory15=LARGESHIP;
 	OnlyTargetCategory16=LARGESHIP;
 
