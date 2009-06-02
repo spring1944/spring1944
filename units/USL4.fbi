@@ -46,6 +46,7 @@
 	airsightdistance=4000;
 	
 	//    Misc
+	repairable=0;
 	BadTargetCategory=NOTAIR;
 	BuildPic=USL4.png;
 	cruisealt=480;

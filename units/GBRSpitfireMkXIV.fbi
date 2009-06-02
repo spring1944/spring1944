@@ -47,6 +47,7 @@
 	AirSightDistance=4000;
 	
 	//    Misc
+	repairable=0;
 	nochasecategory=FLAG;
 	BuildPic=GBRSPitfireMkXIV.png;
 	ExplodeAs=Vehicle_Explosion_Med;

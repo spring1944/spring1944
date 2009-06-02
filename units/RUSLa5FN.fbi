@@ -46,7 +46,8 @@
 	AirSightDistance=4000;
 	
 	//    Misc
-		shownanoframe=0;
+	repairable=0;
+	shownanoframe=0;
 	badtargetcategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
 	nochasecategory=FLAG;
 	BuildPic=RUSLa5FN.png;

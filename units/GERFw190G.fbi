@@ -46,6 +46,7 @@
 	AirSightDistance=4000;
 	
 	//    Misc
+	repairable=0;
 	BadTargetCategory=NOTAIR;
 	nochasecategory=FLAG;
 	BuildPic=GERFw190G.png;

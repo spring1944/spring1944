@@ -46,6 +46,7 @@
 	airsightdistance=5000;
 	
 	//    Misc
+	repairable=0;
 	BadTargetCategory=NOTAIR;
 	BuildPic=RUSPo2.png;
 	cruisealt=480;
