@@ -294,7 +294,7 @@ local iconTypes = {
 		bitmap		=	"icons/transportship.tga",
 		size			=	5,
 		distance	=	0.3,
-	}
+	},
 	flametank = {
 		bitmap		=	"icons/flametank.tga",
 		size			=	2.25,
