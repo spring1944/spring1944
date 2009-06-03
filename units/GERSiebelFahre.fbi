@@ -26,7 +26,7 @@
 	SeismicSignature=0;
 	sightdistance=900;
 	airsightdistance=1500;
-	stealth=0;
+	stealth=1;
 
 	// enough for 1 medium tank OR 3 trucks, etc.
 	transportsize=18;

@@ -27,7 +27,7 @@
 	SeismicSignature=0;
 	sightdistance=700;
 	airsightdistance=1100;
-	stealth=0;
+	stealth=1;
 
 	canmove=1;
 	movementclass=BOAT_Destroyer;

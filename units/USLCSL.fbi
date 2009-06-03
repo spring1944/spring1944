@@ -27,7 +27,7 @@
 	SeismicSignature=0;
 	sightdistance=1300;
 	airsightdistance=1700;
-	stealth=0;
+	stealth=1;
 
 	canmove=1;
 	movementclass=BOAT_LandingCraft;
