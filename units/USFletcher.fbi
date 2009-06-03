@@ -4,7 +4,7 @@
 	objectname=USFletcher;
 	corpse=USFletcher_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=Fletcher-class Destroyer;

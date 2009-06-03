@@ -5,7 +5,7 @@
 	corpse=RUSMonitor_dead;
 	buildpic=rusmonitor.png;
 	icontype=gunboat;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TANK NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Zhelezniakov-class monitor;

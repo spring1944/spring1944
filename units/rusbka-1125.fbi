@@ -4,7 +4,7 @@
 	objectname=RUSBKA-1125;
 	corpse=RUSBKA-1125_dead;
 	icontype=gunboat;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TANK NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Pr.1125 Armored Boat;

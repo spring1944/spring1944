@@ -5,7 +5,7 @@
 	corpse=USLCSL_dead;
 	icontype=gunboat;
 	buildpic=uslcsl.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=LCS(L);

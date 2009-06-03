@@ -5,7 +5,7 @@
 	corpse=USLCT_dead;
 	icontype=transportship;
 	buildpic=uslct.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=LCT mk.5;

@@ -4,7 +4,7 @@
 	objectname=GERSiebelFahre;
 	corpse=GERSiebelFahre_dead;
 	icontype=pontoon;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Siebel Fahre;

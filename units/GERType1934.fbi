@@ -4,7 +4,7 @@
 	objectname=GERType1934;
 	corpse=GERType1934_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=Type 1934 Destroyer;

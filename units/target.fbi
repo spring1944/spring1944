@@ -4,7 +4,7 @@
 	objectname=target;
 	corpse=target_dead;
 	icontype=pontoon;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR INFTARG NFLAG NWEAPON;
 	tedclass=SHIP;
 
 	name=Target ship;

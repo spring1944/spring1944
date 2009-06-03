@@ -5,7 +5,7 @@
 	corpse=RUSLCT_dead;
 	buildpic=ruslct.png;
 	icontype=transportship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=LCT mk.6;

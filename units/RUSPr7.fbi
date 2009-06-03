@@ -4,7 +4,7 @@
 	objectname=RUSPr7;
 	corpse=RUSPr7_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=Project 7 Destroyer;

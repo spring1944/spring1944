@@ -5,7 +5,7 @@
 	corpse=USPT103_dead;
 	icontype=torpboat;
 	buildpic=USPT103.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=PT-103 type boat;

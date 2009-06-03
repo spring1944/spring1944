@@ -5,7 +5,7 @@
 	corpse=GERAFP_dead;
 	icontype=gunboat;
 	buildpic=gerafp.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TANK NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Artilleriefahrprahm;

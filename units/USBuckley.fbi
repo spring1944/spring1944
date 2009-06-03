@@ -4,7 +4,7 @@
 	objectname=USBuckley;
 	corpse=USBuckley_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=Buckley class Escort Destroyer;

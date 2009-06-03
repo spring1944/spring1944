@@ -5,7 +5,7 @@
 	corpse=GERMFP_dead;
 	icontype=transportship;
 	buildpic=germfp.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT TANK NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Marinefahrprahm;

@@ -4,7 +4,7 @@
 	objectname=USLCVP;
 	corpse=USLCVP_dead;
 	icontype=landingship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Landing Craft, Vehicle, Personnel;

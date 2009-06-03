@@ -4,7 +4,7 @@
 	objectname=GBRMonitor;
 	corpse=GBRMonitor_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
 	tedclass=SHIP;
 
 	name=Roberts class;

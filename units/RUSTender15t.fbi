@@ -4,7 +4,7 @@
 	objectname=RUSTender15t;
 	corpse=RUSTender15t_dead;
 	icontype=landingship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=15-ton Tender;

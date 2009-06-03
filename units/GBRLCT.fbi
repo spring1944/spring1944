@@ -5,7 +5,7 @@
 	corpse=GBRLCT_dead;
 	icontype=transportship;
 	buildpic=gbrlct.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=LCT mk.4;

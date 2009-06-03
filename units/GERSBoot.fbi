@@ -4,7 +4,7 @@
 	objectname=GERSBoot;
 	corpse=GERSBoot_dead;
 	icontype=torpboat;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=NFLAGNAIR INFTARG NFLAG WEAPON;
 	tedclass=SHIP;
 
 	name=Schnellboot;
