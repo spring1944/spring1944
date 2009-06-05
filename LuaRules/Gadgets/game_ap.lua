@@ -31,7 +31,7 @@ ap_hit_side: forces the weapon to hit a certain side of the armor ("front", "sid
 the damage actually dealt is proportional to the unmodified damage 
 (the ap system multiplies the basic damage depending on penetration vs. armor)
 
-Estimate the cost of a unit as proportional to sqrt(hp * dps * exp(armor / ARMOR_BANDWIDTH / 2) * exp(penetration / PENETRATION_BANDWIDTH / 2)).
+Estimate the cost of a unit as proportional to sqrt(hp * dps * exp((armor + penetration) / ARMOR_BANDWIDTH / 2).
 
 ]]
 
@@ -48,9 +48,8 @@ local PENETRATION_BIAS = 0 --adds "free" penetration to all weapons
 --how quickly penetration and armor effectiveness increase with thickness
 --higher = less quickly
 --along with cost, controls how hard counters are; higher = softer counters
---recommend somewhere around 20-25
-local PENETRATION_BANDWIDTH = 25
-local ARMOR_BANDWIDTH = 25 
+--recommend somewhere around 15-25
+local AP_BANDWIDTH = 20
 
 --universal multiplier to AP damage, mostly for balance purposes
 local DAMAGE_MULT = 2
@@ -95,10 +94,10 @@ function gadget:Initialize()
 			local armor_rear = customParams.armor_rear or armor_side
 			local armor_top = customParams.armor_top or armor_rear
 			unitInfos[i] = {
-				exp(armor_front / ARMOR_BANDWIDTH),
-				exp(armor_side / ARMOR_BANDWIDTH),
-				exp(armor_rear / ARMOR_BANDWIDTH),
-				exp(armor_top / ARMOR_BANDWIDTH),
+				exp(armor_front / AP_BANDWIDTH),
+				exp(armor_side / AP_BANDWIDTH),
+				exp(armor_rear / AP_BANDWIDTH),
+				exp(armor_top / AP_BANDWIDTH),
 			}
 		end
 	end
@@ -172,7 +171,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	end
 	
 	local penetration = weaponInfo[1] - d * weaponInfo[2]
-	penetration = exp(penetration / PENETRATION_BANDWIDTH)
+	penetration = exp(penetration / AP_BANDWIDTH)
 	
 	local apDamage = damage * penetration / (penetration + armor) * DAMAGE_MULT
 	
