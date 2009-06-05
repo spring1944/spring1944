@@ -71,5 +71,6 @@
 	{
 		dontCount=1;
 		feartarget=1;
+		killvoice=1;
 	}
 }

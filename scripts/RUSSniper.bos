@@ -83,7 +83,7 @@ static-var bAiming, bMoving, iState, iFear, iSpeed;
 #ifdef WEAPON_GRENADE
 static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #endif
-
+static-var lastKillNumber;
 //FX definitions
 	//frivolous
 #define BLOOD_SM 1024+1
@@ -117,6 +117,13 @@ static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 //transport state handling
 #include "inf_transportHandling.h"
 
+foo()
+{
+	play-sound("rus_sniper_oneless", 4);
+	play-sound("rus_sniper_twoless", 4);
+	play-sound("rus_sniper_threeless", 4);
+}
+
 StartMoving()
 {
 	signal SIG_IDLE;
@@ -144,6 +151,7 @@ Create()
 	iSpeed = GET MAX_SPEED;
 	start-script WeaponReady();
 	start-script RunControl();
+	lastKillNumber=0;
 }
 
 RestoreAfterDelay()
@@ -155,6 +163,16 @@ RestoreAfterDelay()
 		{
 		start-script RunControl();
 		}
+}
+
+KillVoice()
+{
+	lastKillNumber = lastKillNumber+1;
+	if(lastKillNumber>3)
+	{
+		lastKillNumber=1;
+	}
+	get PLAY_SOUND((lastKillNumber - 1), 655360, 5, 0);	
 }
 
 //start weapons
