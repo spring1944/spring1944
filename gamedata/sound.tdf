@@ -174,6 +174,30 @@
 	canceldestruct=;
       	} 
 
+[RUSSniper]
+	{
+	select1=RUS_SNIPER_Select1;
+	select2=RUS_SNIPER_Select2;
+	select3=RUS_SNIPER_Select3;
+	ok1=RUS_SNIPER_OK1;
+	ok2=RUS_SNIPER_OK2;
+	ok3=RUS_SNIPER_OK3;
+	ok4=RUS_SNIPER_OK4;
+	cant1=RUS_SNIPER_CANT;
+	//arrived1=RUS_INF_Arrived1;
+	//arrived2=RUS_INF_Arrived2;
+	//arrived3=RUS_INF_Arrived3;
+	underattack1=RUS_SNIPER_UnderAttack1;
+	underattack2=RUS_SNIPER_UnderAttack2;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
 [RUSTank]
 	{
 	select1=RUS_Tank_Select1;

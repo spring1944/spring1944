@@ -4,7 +4,7 @@
 	objectname=RUSSniper.S3O;
 	corpse=RUSsoldier_dead;
 	icontype=sniper;
-	soundcategory=RUSInf;
+	soundcategory=RUSSniper;
 	category=NFLAGNAIR NFLAG INFTARG WEAPON;
 	tedclass=KBOT;
 
