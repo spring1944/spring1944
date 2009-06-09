@@ -14,7 +14,7 @@
 	MaxDamage=770;
 	ObjectName=RUSPo2.S3O;
 	Side=RUS;
-	//SoundCategory=RUSPlane;
+	SoundCategory=RUSPo2;
 	category=NFLAG AIR;
 	TEDClass=VTOL;
 	

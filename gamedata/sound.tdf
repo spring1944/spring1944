@@ -286,6 +286,75 @@
 	canceldestruct=;
       	}
 
+[RUSPo2]
+	{
+	select1=RUS_AIR_PO2_SELECT;
+	ok1=RUS_AIR_OK1;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_UNDERATTACK;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[RUSIl2]
+	{
+	select1=RUS_AIR_IL2_SELECT;
+	ok1=RUS_AIR_IL2_OK;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_UNDERAAFIRE;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[RUSFighter]
+	{
+	select1=RUS_AIR_FIGHTER_SELECT;
+	ok1=RUS_AIR_OK1;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_IMGOINGDOWN!;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
 [GBRInf]
 	{
 	select1=GBR_INF_Select1;
