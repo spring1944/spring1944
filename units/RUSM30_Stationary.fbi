@@ -4,7 +4,7 @@
 	objectname=RUSM30_Stationary.S3O;
 	corpse=RUSM30_Destroyed;
 	icontype=artillery;
-	soundcategory=RUSInf;
+	soundcategory=RUSGun;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
 	tedclass=TURRET;
 	yardmap=o;

@@ -5,7 +5,7 @@
 	corpse=RUS61K_Destroyed;
 	icontype=aaartillery;
 	buildpic=RUS61K.png;
-	soundcategory=RUSInf;
+	soundcategory=RUSGun;
 	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
 	tedclass=TURRET;
 	yardmap=o;
