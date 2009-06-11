@@ -3,7 +3,7 @@
 	unitname=GERJagdpanzerIV;
 	objectname=GERJagdpanzerIV.S3O;
 	corpse=GERJagdpanzerIV_Destroyed;
-	icontype=medtank;
+	icontype=selfprop;
 	soundcategory=GERJgPz;
 	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
 	tedclass=TANK;

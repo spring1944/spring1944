@@ -3,7 +3,7 @@
 	unitname=RUSSU100;
 	objectname=RUSSU100.S3O;
 	corpse=RUSSU100_Damaged;
-	icontype=medtank;
+	icontype=selfprop;
 	soundcategory=RUSTank;
 	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
 	tedclass=TANK;

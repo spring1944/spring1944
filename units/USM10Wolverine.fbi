@@ -3,7 +3,7 @@
 	unitname=USM10Wolverine;
 	objectname=USM10Wolverine.S3O;
 	corpse=USM10Wolverine_Destroyed;
-	icontype=medtank;
+	icontype=selfprop;
 	soundcategory=USTank;
 	category=NFLAGNAIR NFLAG TANK WEAPON;
 	tedclass=TANK;
