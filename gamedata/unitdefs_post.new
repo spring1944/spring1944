@@ -261,8 +261,8 @@ for name, ud in pairs(UnitDefs) do
 				tmpUnitSide="us"
 			end
 			-- find and store unit's COB file name
-			if (ud.cobfilename) then
-				COBFileName = ud.cobfilename
+			if (ud.script) then
+				COBFileName = ud.script
 			else
 				COBFileName = name..".cob"
 			end
@@ -271,9 +271,9 @@ for name, ud in pairs(UnitDefs) do
 				-- make a copy
 				tmpUnit = deepcopy(ud)
 				-- set COBFileName
-				if (tmpUnit.cobfilename) then
+				if (tmpUnit.script) then
 				else
-					tmpUnit["cobfilename"]=COBFileName
+					tmpUnit["script"]=COBFileName
 				end
 				-- now replace the part in name
 				local unitName, oldNameLen
