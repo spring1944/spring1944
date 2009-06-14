@@ -446,6 +446,7 @@ local armorDefs = {
 	"GBROClass",
 	"GBRMonitor",
 	"GBRLCA",
+	"GBRLCG",
 	},
 }
 

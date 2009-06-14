@@ -565,6 +565,7 @@ buildoptions =
 		"gbrlca",
 		"gbrfairmiled",
 		"gbrlct",
+		"gbrlcg",
 	},
 
 				--------------------
