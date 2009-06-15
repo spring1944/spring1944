@@ -16,21 +16,21 @@ local SetTeamResource = Spring.SetTeamResource
 local GetTeamResources = Spring.GetTeamResources
 
 function gadget:GameFrame(n)
-	if n > 2 then
+	if n > 32 then
 		local modOptions = Spring.GetModOptions()
 		local commandStorage = tonumber(modOptions.command_storage) or 1000
 		if modOptions.gametype ~= 1 then
-		if commandStorage > 0 then
-			local teamIDs = Spring.GetTeamList()
-			for i=1, #teamIDs do
-				local teamID = teamIDs[i]
-				SetTeamResource(teamID, "es", 1251) --ugly, but effective for now
-				local _, currStorage = GetTeamResources(teamID, "metal")
-				if commandStorage > currStorage then
-					SetTeamResource(teamID, "ms", commandStorage)
+			if commandStorage > 0 then
+				local teamIDs = Spring.GetTeamList()
+				for i=1, #teamIDs do
+					local teamID = teamIDs[i]
+					SetTeamResource(teamID, "es", 1251) --ugly, but effective for now
+					local _, currStorage = GetTeamResources(teamID, "metal")
+					if commandStorage > currStorage then
+						SetTeamResource(teamID, "ms", commandStorage)
+					end
 				end
 			end
-		end
 		end
 		gadgetHandler:RemoveGadget()
 	end
