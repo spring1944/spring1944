@@ -52,7 +52,7 @@ local PENETRATION_BIAS = 0 --adds "free" penetration to all weapons
 local AP_BANDWIDTH = 20
 
 --universal multiplier to AP damage, mostly for balance purposes
-local DAMAGE_MULT = 2
+local DAMAGE_MULT = 1
 
 ----------------------------------------------------------------
 --locals
