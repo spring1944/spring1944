@@ -107,7 +107,7 @@
 
 	[damage]
 	{
-		default=20300; //shell weight in g * 2 + 1000
+		default=29950; //shell weight in g * 3 + 1000
 		infantry=2100;
 		guns=1800;
 		lightbuildings=750;
