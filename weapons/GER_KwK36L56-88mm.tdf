@@ -62,7 +62,6 @@
 }
 [kwk88mml56ap]
 {
-	id=100;
 	name=German 88mm KwK 36 L/56 Armour-Piercing;
 	rendertype=1;
 	turret=1;
@@ -105,12 +104,10 @@
   separation=2;
   stages=50;
 
-	dyndamageexp=1;
-	dyndamagerange=6000;
 
 	[damage]
 	{
-		default=9075;//12100
+		default=20300; //shell weight in g * 2 + 1000
 		infantry=2100;
 		guns=1800;
 		lightbuildings=750;
@@ -118,5 +115,10 @@
 		sandbags=250;
 		mines=0;
 		flag=0;
+	}
+	
+	[customparams] {
+		ap_penetration = 121; //penetration at 30 deg in mm
+		ap_penetration_1000m = 100;
 	}
 }

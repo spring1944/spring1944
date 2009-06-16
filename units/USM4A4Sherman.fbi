@@ -12,7 +12,7 @@
 	description=Medium Tank;
 	side=US;
 
-	maxdamage=6721;
+	maxdamage=31600;
 	flankingbonusmode=3;
 	flankingbonusdir=0 0 1;
 	flankingbonusmax=1.57;//damage to back multiplied by this
@@ -87,6 +87,12 @@
 
 	[customParams]
 	{
+		//armor values in mm
+		armor_front = 75;
+		armor_side = 42;
+		armor_rear = 44;
+		armor_top = 21;
+		
 		blockfear=1;
 		maxammo=18;
 		weaponswithammo=2;

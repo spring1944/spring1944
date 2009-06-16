@@ -63,7 +63,6 @@
 }
 [m375mmap]
 {
-	id=100;
 	name=US M3 (Sherman) 75mm AP;
 	rendertype=1;
 	turret=1;
@@ -106,11 +105,9 @@
   separation=2;
   stages=50;
 
-	dyndamageexp=1;
-	dyndamagerange=5750;
 	[damage]
 	{
-		default=5325; //7100
+		default=14580; //shell weight in g * 2 + 1000
 		infantry=2000;
 		guns=1400;
 		lightbuildings=500;
@@ -118,5 +115,10 @@
 		sandbags=200;
 		mines=0;
 		flag=0;
+	}
+	
+	[customparams] {
+		ap_penetration = 78; //penetration at 30 deg in mm
+		ap_penetration_1000m = 61;
 	}
 }

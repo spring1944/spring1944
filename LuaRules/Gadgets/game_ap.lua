@@ -25,7 +25,7 @@ Each of these defaults to the previous if not explicitly given.
 
 Weapon customParams:
 ap_penetration: penetration of the weapon (in mm)
-ap_dropoff: dropoff in penetration (in mm penetration loss per 1000 m traveled), default 0
+ap_penetration_1000m: penetration of the weapon at 1000 m (in mm); default equal to penetration (i.e. no dropoff). Penetration drops off exponentially
 ap_hit_side: forces the weapon to hit a certain side of the armor ("front", "side", "rear", or "top")
 
 the damage actually dealt is proportional to the unmodified damage 
@@ -77,6 +77,7 @@ local ValidUnitID = Spring.ValidUnitID
 local vNormalized = GG.Vector.Normalized
 
 local exp = math.exp
+local log = math.log
 
 local SQRT_HALF = math.sqrt(0.5)
 
@@ -107,11 +108,11 @@ function gadget:Initialize()
 		local customParams = weaponDef.customParams
 		if customParams.ap_penetration then
 			local ap_penetration = customParams.ap_penetration
-			local ap_dropoff = customParams.ap_dropoff or 0
+			local ap_penetration_1000m = customParams.ap_penetration_1000m or ap_penetration
 			local ap_hit_side = customParams.ap_hit_side
 			weaponInfos[i] = {
 				ap_penetration + PENETRATION_BIAS,
-				ap_dropoff * 0.001,
+				0.001 * log(ap_penetration_1000m / ap_penetration),
 				ap_hit_side,
 			}
 		end
@@ -170,7 +171,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		end
 	end
 	
-	local penetration = weaponInfo[1] - d * weaponInfo[2]
+	local penetration = weaponInfo[1] * exp(d * weaponInfo[2])
 	penetration = exp(penetration / AP_BANDWIDTH)
 	
 	local apDamage = damage * penetration / (penetration + armor) * DAMAGE_MULT

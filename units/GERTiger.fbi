@@ -12,7 +12,7 @@
 	description=Heavy Combat Tank;
 	side=GER;
 
-	maxdamage=9456;
+	maxdamage=57000;
 	flankingbonusdir=0 0 1;
 	flankingbonusmax=1.15;
 	flankingbonusmin=.87;
@@ -81,6 +81,12 @@
 	}
 	[customParams]
 	{
+		//armor values in mm
+		armor_front = 103;
+		armor_side = 72;
+		armor_rear = 81;
+		armor_top = 25;
+		
 		blockfear=1;
 		maxammo=17;
 		weaponswithammo=2;
