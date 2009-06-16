@@ -116,5 +116,6 @@
 		enginesound = yakb-;
 		enginesoundnr = 20;
 		feartarget=1;
+		planevoice=1;
 	}
 }

@@ -146,5 +146,6 @@
 		lowammolevel=1;
 		weaponcost=-1;
 		feartarget=1;
+		planevoice=1;
 	}
 }

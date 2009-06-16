@@ -26,6 +26,21 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 #define MEDIUM_TRACER 	2048+9
 #define LARGE_TRACER 	2048+10
 
+SoundPreparer()
+{
+	// arrived sound
+	play-sound("rus_air_il2_select", 4);
+	// under-fire sound
+	play-sound("rus_air_underaafire", 4);
+	// returning home sound
+	play-sound("rus_air_return", 4);
+}
+
+PlaneVoice(phraseNum)
+{
+	get PLAY_SOUND((phraseNum - 1), 655360, 5, 0);
+}
+
 startengine()
 {
 	spin propeller around z-axis speed <800> accelerate <200>;
