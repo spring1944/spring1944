@@ -172,7 +172,7 @@ KillVoice()
 	{
 		lastKillNumber=1;
 	}
-	get PLAY_SOUND((lastKillNumber - 1), 655360, 5, 0);	
+	get PLAY_SOUND((lastKillNumber - 1), 655360, 5, 0);
 }
 
 //start weapons

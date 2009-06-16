@@ -11,7 +11,7 @@ function gadget:GetInfo()
 end
 
 -- use the custom param killvoice=1 (capitalization doesn't matter in a .fbi, only
--- in a .lua unit definition) to mark a unit as not counted:
+-- in a .lua unit definition) to mark a unit as viable for saying things after it kills something:
 --
 -- [customParams]
 -- {

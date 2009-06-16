@@ -170,7 +170,7 @@ end
 --spawning
 ----------------------------------------------------------------
 
-local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, rotation, waypoint)
+local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, rotation, waypoint, numInFlight)
 	if #cmdParams == 3 then
 		cmdParams[1], cmdParams[2], cmdParams[3] = vClampToMapSize(cmdParams[1], cmdParams[2], cmdParams[3])
 	end
@@ -198,6 +198,12 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 		GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
 	end
 	planeStates[unitID] = PLANE_STATE_ACTIVE
+	-- make the plane say something if it's the first in its group
+	if numInFlight==1 then
+		if unitDef.customParams.planevoice=="1" then
+			Spring.CallCOBScript(unitID, "PlaneVoice", 1, 1)
+		end
+	end
 end
 
 local function GetFormationOffsets(numUnits, rotation)
@@ -250,7 +256,7 @@ local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 			local ux, uz = offset[1] + sx, offset[3] + sz
 			local uy = GetGroundHeight(ux, uz)
 			local unitname = units[i]
-			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint)
+			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i)
 		end
 	else
 		for i=1, #units do
@@ -258,7 +264,7 @@ local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 			local ux, uz = offset[1] + sx, offset[3] + sz
 			local uy = GetGroundHeight(ux, uz)
 			local unitname = units[i]
-			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation)
+			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, i)
 		end
 	end
 
@@ -333,6 +339,10 @@ function gadget:GameFrame(n)
 				local ex, ey, ez = GetSpawnPoint(teamID)
 				GiveOrderToUnit(unitID, CMD_MOVE, {ex, ey, ez}, {})
 				planeStates[unitID] = PLANE_STATE_RETREAT
+				-- make it say something
+				if unitDef.customParams.planevoice=="1" then
+					Spring.CallCOBScript(unitID, "PlaneVoice", 1, 3)
+				end
 			end
 		elseif state == PLANE_STATE_RETREAT then
 			local ux, uy, uz = GetUnitPosition(unitID)

@@ -90,5 +90,6 @@
 		enginesound = spitfireb-;
 		enginesoundnr = 18;
 		feartarget=1;
+		planevoice=1;
 	}
 }
