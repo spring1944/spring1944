@@ -80,7 +80,7 @@ local function ProcessWeapons(unitID)
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
-		Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
+		--Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
 			for weapNum = 0, weaponsWithAmmo - 1 do
