@@ -9,11 +9,12 @@ function gadget:GetInfo()
 		enabled	= true	--	loaded by default?
 	}
 end
-	
+
 -- function localisations
 -- Synced Read
 local GetUnitAllyTeam		 	= Spring.GetUnitAllyTeam
 local GetUnitDefID			 	= Spring.GetUnitDefID
+local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitRulesParam	 	= Spring.GetUnitRulesParam
 local GetUnitSeparation		= Spring.GetUnitSeparation
@@ -59,7 +60,7 @@ local function CheckReload(unitID, reloadFrame, weaponNum)
 	if oldReloadFrame == reloadFrame or reloadFrame == 0 then
 		return false
 	end
-	
+
 	vehicles[unitID].reloadFrame[weaponNum] = reloadFrame
 	return true
 end
@@ -71,7 +72,7 @@ local function ProcessWeapons(unitID)
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
 	local reloadFrame = 0
-	
+
 	for weapNum = 0, weaponsWithAmmo - 1 do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
 		--Spring.Echo(reloadFrame)
@@ -79,10 +80,11 @@ local function ProcessWeapons(unitID)
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
+		Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
 			for weapNum = 0, weaponsWithAmmo - 1 do
-				SetUnitWeaponState(unitID, weapNum, {reloadTime = 99999, reloadState = 99999})
+				SetUnitWeaponState(unitID, weapNum, {reloadTime = 99999, reloadState = reloadFrame + 99999})
 			end
 		end
 		if ammoLevel > 0 then
@@ -110,7 +112,7 @@ local function FindSupplier(vehicleID)
 			end
 		end
 	end
-	
+
 	return closestSupplier
 end
 
@@ -127,13 +129,13 @@ local function Resupply(unitID)
 	else
 		return
 	end
-	
+
 	local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
 	local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
 	--local ammoRegen = DefaultRegen(unitDefID)
 	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
-	
+
 	if oldAmmo < maxAmmo and weaponCost >= 0 then
 		local newAmmo = oldAmmo + 1
 		Spring.UseUnitResource(supplierID, "e", weaponCost)
@@ -148,7 +150,7 @@ local function Resupply(unitID)
 	else
 		reload = GetUnitRulesParam(unitID, "defRegen")
 	end
-	
+
 	if oldAmmo < 1 then
 		local savedFrame = 0
 		local currFrame = Spring.GetGameFrame()
@@ -170,7 +172,7 @@ local function Resupply(unitID)
 		end
 	end
 end
-		
+
 function gadget:Initialize()
 	initFrame = Spring.GetGameFrame()
 end
@@ -193,10 +195,10 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 				vehicles[unitID] = {
 					ammoLevel = 0,
 					reloadFrame = {},
-				}		
+				}
 			for weaponNum = 0, ud.customParams.weaponswithammo do
 				vehicles[unitID].reloadFrame[weaponNum] = 0
-			end				
+			end
 			end
 
 	end
@@ -214,12 +216,32 @@ function gadget:UnitDestroyed(unitID)
 	ammoSuppliers[unitID] = nil
 end
 
+function gadget:UnitLoaded(unitID, unitDefID)
+	if UnitDefs[unitDefID].customParams.maxammo then
+		return ProcessWeapons(unitID)
+	end
+end
+
+function gadget:UnitUnloaded(unitID, unitDefID)
+	local ud = UnitDefs[unitDefID]
+
+	if ud.customParams.maxammo then
+		local weaponsWithAmmo = ud.customParams.weaponswithammo or 2
+
+		for weapNum = 0, weaponsWithAmmo - 1 do
+			local reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
+			vehicles[unitID].reloadFrame[weapNum] = reloadFrame
+		end
+
+		savedFrames[unitID] = nil
+	end
+end
 
 function gadget:GameFrame(n)
 	if (n == initFrame+4) then
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
 			local unitTeam = Spring.GetUnitTeam(unitID)
-			local unitDefID = Spring.GetUnitDefID(unitID)	
+			local unitDefID = Spring.GetUnitDefID(unitID)
 			local ud = UnitDefs[unitDefID]
 			if ud.customParams.ammosupplier == '1' then
 				ammoSuppliers[unitID] = true
@@ -239,10 +261,11 @@ function gadget:GameFrame(n)
 	if n > (initFrame+4) then
 		if n % (3*30) < 0.1 then
 			for unitID in pairs(vehicles) do
-				local unitDefID = GetUnitDefID(unitID)
-				local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-				ProcessWeapons(unitID)
-				Resupply(unitID)
+				local _, stunned = GetUnitIsStunned(unitID)
+				if (not stunned) then
+					ProcessWeapons(unitID)
+					Resupply(unitID)
+				end
 			end
 		end
 	end
