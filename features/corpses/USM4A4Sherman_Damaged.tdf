@@ -19,4 +19,7 @@
 	footprintx=2;
 	footprintz=3;
 	reclaimable=1;
+	[customParams] {
+		ceg_created=Burning;
+	}
 }

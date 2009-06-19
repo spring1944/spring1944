@@ -1,0 +1,54 @@
+[Burning] {
+	usedefaultexplosions=0;
+	[flames] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=-4 r8, r2, -4 r8;
+			delay=i1 r2;
+			explosionGenerator=custom:Burning_Flames;
+		}
+		unit=1;
+		ground=1;
+		count=512;
+	}
+}
+
+[Burning_Flames] {
+	[flames] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.1, 0;
+			colorMap=1 1 1 0.2  0 0 0 0.3  0 0 0 0.2  0 0 0 0.1  0 0 0 0;
+			Texture=fireball;
+			airdrag=0.95;
+			particleLife=64;
+			particleLifeSpread=16;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=1;
+			particleSize=8;
+			particleSizeSpread=8;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+
+	[groundflash] {
+		flashsize=32;
+		flashalpha=0.125;
+		circlegrowth=10;
+		circlealpha=0;
+		ttl=16;
+		color=1,0.5,0.1;
+	}
+}
