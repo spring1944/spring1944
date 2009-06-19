@@ -49,7 +49,7 @@ local PENETRATION_BIAS = 0 --adds "free" penetration to all weapons
 --higher = less quickly
 --along with cost, controls how hard counters are; higher = softer counters
 --recommend somewhere around 15-25
-local AP_BANDWIDTH = 20
+local AP_SCALE = 20
 
 --universal multiplier to AP damage, mostly for balance purposes
 local DAMAGE_MULT = 1
@@ -95,10 +95,10 @@ function gadget:Initialize()
 			local armor_rear = customParams.armor_rear or armor_side
 			local armor_top = customParams.armor_top or armor_rear
 			unitInfos[i] = {
-				exp(armor_front / AP_BANDWIDTH),
-				exp(armor_side / AP_BANDWIDTH),
-				exp(armor_rear / AP_BANDWIDTH),
-				exp(armor_top / AP_BANDWIDTH),
+				exp(armor_front / AP_SCALE),
+				exp(armor_side / AP_SCALE),
+				exp(armor_rear / AP_SCALE),
+				exp(armor_top / AP_SCALE),
 			}
 		end
 	end
@@ -172,7 +172,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	end
 	
 	local penetration = weaponInfo[1] * exp(d * weaponInfo[2])
-	penetration = exp(penetration / AP_BANDWIDTH)
+	penetration = exp(penetration / AP_SCALE)
 	
 	local apDamage = damage * penetration / (penetration + armor) * DAMAGE_MULT
 	
