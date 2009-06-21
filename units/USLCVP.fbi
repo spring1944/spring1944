@@ -1,66 +1,56 @@
-[unitinfo]
-{
-	unitname=USLCVP;
-	objectname=USLCVP;
-	corpse=USLCVP_dead;
-	icontype=landingship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=USLCVP;
+  name=Landing Craft, Vehicle, Personnel;
+  description=Infantry Landing Craft;
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  corpse=USLCVP_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  holdSteady=1;
+  iconType=landingship;
+  mass=10000;
+  maxDamage=2500;
+  maxVelocity=0.9; // 9 kn
+  minWaterDepth=6;
+  movementClass=BOAT_LandingCraft;
+  objectName=USLCVP;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=25;
+  transportMass=8000;
+  transportSize=1;
+  turninplace=0;
+  turnRate=35;
+  WeaponMainDir1=1 0 0;
+  WeaponMainDir2=-1 0 0;
 
-	name=Landing Craft, Vehicle, Personnel;
-	description= Infantry Landing Craft;
-	maxdamage=2500;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=10000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=m1919a4browning;
+  maxAngleDif1=200;
+  onlyTargetCategory1=INFTARG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
-
-	// enough for 25 inf
-	transportsize=1;
-	transportcapacity=25;
-	//transportcapacity=5;
-	transportmass=8000;
-	holdsteady=1;
-
-	canmove=1;
-	movementclass=BOAT_LandingCraft;
-	maxvelocity=0.9; // 9 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=35;
-	turninplace=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	Weapon1=m1919a4browning;
-	Weapon2=m1919a4browning;
-
-	WeaponMainDir1=1 0 0;
-	MaxAngleDif1=200;
-	WeaponMainDir2=-1 0 0;
-	MaxAngleDif2=200;
-	OnlyTargetCategory1=INFTARG;
-	OnlyTargetCategory2=INFTARG;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon2=m1919a4browning;
+  maxAngleDif2=200;
+  onlyTargetCategory2=INFTARG;
 }
+

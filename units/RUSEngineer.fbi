@@ -1,60 +1,50 @@
-[unitinfo]
-{
-	unitname=RUSEngineer;
-	objectname=RUSEngineer.S3O;
-	corpse=RUSSoldier_dead;
-	icontype=advancedengineer;
-	soundcategory=RUSInf;
-	category=NOWEAPON NFLAG INFTARG NFLAGNAIR;
-	tedclass=CONSTR;
+[unitinfo] {
+  unitname=RUSEngineer;
+  name=Engineer;
+  description=Advanced Engineer;
+  acceleration=0.375;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=460;
+  buildDistance=5;
+  builder=1;
+  buildTime=230;
+  canAttack=0;
+  canMove=1;
+  category=NOWEAPON NFLAG INFTARG NFLAGNAIR;
+  corpse=RUSSoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  energyStorage=0.01;
+  footprintX=1;
+  footprintZ=1;
+  iconType=advancedengineer;
+  idleAutoHeal=2;
+  mass=50;
+  maxDamage=65;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=10;
+  movementClass=KBOT_Infantry;
+  objectName=RUSEngineer.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=RUS;
+  sightDistance=840;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  turnRate=1010;
+  upright=1;
+  workerTime=10; //75
 
-	name=Engineer;
-	description=Advanced Engineer;
-	side=RUS;
-	maxdamage=65;
-	damagemodifier=0.375;
-	idleautoheal=2;
-	buildcostmetal=460;
-	buildcostenergy=0;
-	buildtime=230;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	upright=1;
-	shownanoframe=0;
-
-	SeismicSignature=0;
-	sightdistance=840;
-	stealth=1;
-	
-	energystorage=0.01;
-
-	builder=1;
-	builddistance=5;
-	workertime=10;//75
-	terraformspeed=300;
-	shownanospray=0;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=10;
-	weapon1=buildline;
-	
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-	canattack=0;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		feartarget=1;
-	}
+  weapon1=buildline;
 }
+

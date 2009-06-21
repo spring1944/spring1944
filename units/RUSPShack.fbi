@@ -1,53 +1,42 @@
-[unitinfo]
-{
-	unitname=RUSPShack;
-	objectname=RUSPShack.S3O;
-	category=NFLAGNAIR PLANT BUILDING;
-	tedclass=PLANT;
-	icontype=shack;
-	soundcategory=RUSYard;
-	yardmap=ccc coc ccc;
-
-	name=Partisan Shack;
-	description=Partisan Resistance Center;
-	side=RUS;
-	maxdamage=1000;
-	idleautoheal=3;
-	buildcostmetal=645;
-	buildcostenergy=0;
-	buildtime=430;
-	footprintx=3;
-	footprintz=3;
-
-	shownanoframe=0;
-	//unitrestricted=3;
-
-	sightdistance=146;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//77000
-	shownanospray=0;
-	canbeassisted=0;
-
-	init_cloaked=1;
-	cloakcost=0;
-	mincloakdistance=300;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=4;
-	buildinggrounddecaldecayspeed=0.05;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Med_Explosion;
-	selfdestructas=Med_Explosion;
-
-	[sfxtypes]
-	{
-	}
+[unitinfo] {
+  unitname=RUSPShack;
+  name=Partisan Shack;
+  description=Partisan Resistance Center;
+  buildCostEnergy=0;
+  buildCostMetal=645;
+  builder=1;
+  buildingGroundDecalDecaySpeed=0.05;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=430;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT BUILDING;
+  cloakCost=0;
+  explodeAs=Med_Explosion;
+  footprintX=3;
+  footprintZ=3;
+  iconType=shack;
+  idleAutoHeal=3;
+  init_cloaked=1;
+  maxDamage=1000;
+  maxSlope=10;
+  maxWaterDepth=0;
+  minCloakDistance=300;
+  objectName=RUSPShack.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=RUS;
+  sightDistance=146;
+  soundcategory=RUSYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //77000
+  yardMap=ccc coc ccc;
 }
+

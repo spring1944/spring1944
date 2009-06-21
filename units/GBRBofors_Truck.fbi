@@ -1,64 +1,54 @@
-[unitinfo]
-{
-	unitname=GBRBofors_Truck;
-	objectname=GBRBofors_Truck.S3O;
-	buildpic=GBRBofors.png;
-	corpse=GBRBedfordTruck_Destroyed;
-	icontype=truck;
-	soundcategory=GBRVeh;
-	category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
-	tedclass=TANK;
-
-	name=Towed Q.F. 40mm Bofors;
-	description=Anti-Aircraft Gun;
-	maxdamage=600;
-	buildcostmetal=1500;
-	buildcostenergy=0;
-	buildtime=300;
-	footprintx=3;
-	footprintz=3;
-	mass=1000;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=450;
-	airsightdistance=1500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=4.5;//4.8
-	acceleration=0.3;
-	brakerate=0.96;
-	turnrate=440;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=13;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		maxammo=4;
-		weaponswithammo=0;
-		lowammolevel=1;
-		weaponcost=3;
-	}
+[unitinfo] {
+  unitname=GBRBofors_Truck;
+  name=Towed Q.F. 40mm Bofors;
+  description=Anti-Aircraft Gun;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1500;
+  buildPic=GBRBofors.png;
+  buildTime=300;
+  canMove=1;
+  category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
+  corpse=GBRBedfordTruck_Destroyed;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=3;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=600;
+  maxSlope=10;
+  maxVelocity=4.5; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=GBRBofors_Truck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=450;
+  smoothAnim=0;
+  soundcategory=GBRVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

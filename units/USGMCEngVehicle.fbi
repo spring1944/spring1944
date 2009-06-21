@@ -1,62 +1,52 @@
-[unitinfo]
-{
-	unitname=USGMCEngVehicle;
-	objectname=USGMCEngVehicle.S3O;
-	corpse=USGMCEngVehicle_Destroyed;
-	icontype=engineervehicle;
-	soundcategory=USVeh;
-	category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
-	tedclass=CONSTR;
-
-	name=CCKW-353 Engineer Vehicle;
-	description=Construction Vehicle;
-	side=US;
-	maxdamage=550;
-	buildcostmetal=2700;
-	buildcostenergy=0;
-	buildtime=900;
-	footprintx=3;
-	footprintz=3;
-	mass=1250;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	SeismicSignature=0;
-	sightdistance=800;
-	stealth=1;
-
-	builder=1;
-	builddistance=128;
-	workertime=10; //old 130
-	terraformspeed=300;
-	shownanospray=0;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=3.6;
-	acceleration=0.25;
-	brakerate=0.96;
-	turnrate=360;
-	maxslope=10;
-	maxwaterdepth=20;
-
-	leavetracks=1;
-	trackwidth=15;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	canattack=0;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
+[unitinfo] {
+  unitname=USGMCEngVehicle;
+  name=CCKW-353 Engineer Vehicle;
+  description=Construction Vehicle;
+  acceleration=0.25;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=2700;
+  buildDistance=128;
+  builder=1;
+  buildTime=900;
+  canAttack=0;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
+  corpse=USGMCEngVehicle_Destroyed;
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=engineervehicle;
+  leaveTracks=1;
+  mass=1250;
+  maxDamage=550;
+  maxSlope=10;
+  maxVelocity=3.6;
+  maxWaterDepth=20;
+  movementClass=TANK_Truck;
+  objectName=USGMCEngVehicle.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=US;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=USVeh;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turnRate=360;
+  workerTime=10; //old 130
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

@@ -1,68 +1,60 @@
-[unitinfo]
-{
-	unitname=RUSBA64;
-	objectname=RUSBA64.S3O;
-	corpse=RUSBA64_Destroyed;
-	soundcategory=RUSVeh;
-	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH TANK;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=RUSBA64;
+  name=BA-64;
+  description=Light Scout Car;
+  acceleration=0.03;
+  airSightDistance=2500;
+  brakeRate=0.09;
+  buildCostEnergy=0;
+  buildCostMetal=540;
+  buildTime=180;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG LIGHTVEH TANK;
+  corpse=RUSBA64_Destroyed;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=2;
+  footprintZ=2;
+  iconType=jeep;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=650;
+  maxSlope=6;
+  maxVelocity=5.2;
+  maxWaterDepth=5;
+  movementClass=TANK_Car;
+  noChaseCategory=FLAG AIR;
+  objectName=RUSBA64.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=RUSVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=4;
+  trackStrength=5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=11;
+  turninplace=0;
+  turnRate=425;
+  badTargetCategory=FLAG;
 
-	name=BA-64;
-	description=Light Scout Car;
-	side=RUS;
-	maxdamage=650;
-	buildcostmetal=540;
-	buildcostenergy=0;
-	buildtime=180;
-	footprintx=2;
-	footprintz=2;
-	mass=1000;
+  weapon1=DT;
+  onlyTargetCategory1=NFLAG;
 
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Car;
-	maxvelocity=5.2;
-	acceleration=0.03;
-	brakerate=0.09;
-	turnrate=425;
-	maxslope=6;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=11;
-	trackoffset=4;
-	trackstrength=5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=DT;
-	onlytargetcategory1=NFLAG;
-	weapon2=Small_Tracer_Green;
-
-	icontype=jeep;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
+  weapon2=Small_Tracer_Green;
 }
+

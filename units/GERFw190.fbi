@@ -1,141 +1,110 @@
-[UNITINFO]
-{
-	Name=Fw 190A-8;
-	UnitName=GERFw190;
-	icontype=fighter;
-	//    Required Tags
-	BuildCostEnergy=0;
-	BuildCostMetal=7000;
-	BuildTime=700;
-	Category=AIRCRAFT;
-	Description=Air Supremacy Fighter;
-	FootprintX=4;
-	FootprintZ=4;
-	MaxDamage=3200;
-	ObjectName=GERFw190.S3O;
-	Side=GER;
-	//SoundCategory=GERPlane;
-	category=NFLAG AIR;
-	TEDClass=VTOL;
-	
-	//    Movement
-	BrakeRate=5;
-	Acceleration=0.5;
-	CanMove=1;
-	MaxVelocity=24;
-	MaxSlope=10;
-	TurnRate=50;
-	
-	//    Buildings
-	
-	//    Construction
-	
-	//    Resources
-	
-	//    Abilities
-	CanAttack=1;
-	CanDropFlare=1;
-	CanFly=1;
-	CanGuard=1;
-	CanPatrol=1;
-	CanStop=1;
-	Stealth=1;
-	
-	//    Sight/Radar
-	SightDistance=500;
-	AirSightDistance=4000;
-	
-	//    Misc
-	repairable=0;
-	nochasecategory=FLAG;
-	BuildPic=GERFw190.png;
-	ExplodeAs=Vehicle_Explosion_Med;
-	MaxWaterDepth=0;
-	SelfDestructAs=Vehicle_Explosion_Med;
-	SmoothAnim=1;
-	idleAutoHeal=2;
+[UNITINFO] {
+  UnitName=GERFw190;
+  name=Fw 190A-8;
+  description=Air Supremacy Fighter;
+  acceleration=0.5;
+  airSightDistance=4000;
+  bmcode=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=7000;
+  buildPic=GERFw190.png;
+  buildTime=700;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=NFLAG AIR;
+  cruiseAlt=1000;
+  [customParams] {
+    enginesound=fw190b-;
+    enginesoundnr=12;
+    feartarget=1;
+    proptexture=bitmaps/prop3.tga;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  iconType=fighter;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.0054;
+  maxBank=1;
+  maxDamage=3200;
+  maxElevator=0.0042;
+  maxFuel=180;
+  maxPitch=0.115;
+  maxRudder=0.003;
+  maxSlope=10;
+  maxVelocity=24;
+  maxWaterDepth=0;
+  moverate1=4; //does this tag even work?
+  myGravity=0.6;
+  noChaseCategory=FLAG;
+  objectName=GERFw190.S3O;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_SHELLCASINGS;
+    explosionGenerator2=custom:MG_MUZZLEFLASH;
+    explosionGenerator3=custom:XSMALL_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  Side=GER;
+  sightDistance=500;
+  smoothAnim=1;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRadius=2000;
+  turnRate=50;
+  badTargetCategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
+  weaponmaindir1=0 0 1;
+  weaponmaindir2=0 0 1;
+  weaponmaindir3=0 0 1;
+  weaponmaindir4=0 0 1;
+  weaponmaindir5=0 0 1;
+  weaponmaindir6=0 0 1;
+  weaponslaveto2=1;
+  weaponslaveto3=1;
+  weaponslaveto4=1;
+  weaponslaveto5=1;
+  weaponslaveto6=1;
+  wingAngle=0.1;
+  wingDrag=0.1;
 
-	//	Flight Stuff
-	wingdrag=0.1;
-	wingangle=0.1;
-	mygravity=0.6;
-	maxbank=1;
-	maxpitch=0.115;
-	turnradius=2000;
-	maxaileron=0.0054;
-	maxelevator=0.0042;
-	maxrudder=0.003;
+  weapon1=mg15115mm;
+  maxAngleDif1=5;
+  onlyTargetCategory1=NFLAG;
 
-	cruisealt=1000;
+  weapon2=mg15115mm;
+  maxAngleDif2=10;
+  onlyTargetCategory2=NFLAG;
 
-	moverate1=4;//does this tag even work?
-	Maxfuel=180;
-	//RefuelTime=10;
+  weapon3=MG15120mm;
+  maxAngleDif3=10;
+  onlyTargetCategory3=NFLAG;
 
-	// 	Misc
-	bmcode=1;
-	idleTime=1800;
-	steeringmode=1;
-	maneuverleashlength=1280;
-	seismicsignature=0;
-	shownanoframe=0;
-	shownanoframe=0;
-	
-	badtargetcategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
-	//	Weapons
+  weapon4=MG15120mm;
+  maxAngleDif4=10;
+  onlyTargetCategory4=NFLAG;
 
-	weapon1=mg15115mm;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=5;
+  weapon5=MG15120mm;
+  maxAngleDif5=10;
+  onlyTargetCategory5=NFLAG;
 
-	weapon2=mg15115mm;
-	onlytargetcategory2=NFLAG;
-	weaponmaindir2=0 0 1;
-	maxangledif2=10;
-	weaponslaveto2=1;
+  weapon6=MG15120mm;
+  maxAngleDif6=10;
+  onlyTargetCategory6=NFLAG;
 
-	weapon3=MG15120mm;
-	onlytargetcategory3=NFLAG;
-	weaponmaindir3=0 0 1;
-	maxangledif3=10;
-	weaponslaveto3=1;
+  weapon7=Medium_Tracer;
 
-	weapon4=MG15120mm;
-	onlytargetcategory4=NFLAG;
-	weaponmaindir4=0 0 1;
-	maxangledif4=10;
-	weaponslaveto4=1;
-
-	weapon5=MG15120mm;
-	onlytargetcategory5=NFLAG;
-	weaponmaindir5=0 0 1;
-	maxangledif5=10;
-	weaponslaveto5=1;
-
-	weapon6=MG15120mm;
-	onlytargetcategory6=NFLAG;
-	weaponmaindir6=0 0 1;
-	maxangledif6=10;
-	weaponslaveto6=1;
-	
-	weapon7=Medium_Tracer;
-	weapon8=Large_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_SHELLCASINGS;
-		explosiongenerator2=custom:MG_MUZZLEFLASH;
-		explosiongenerator3=custom:XSMALL_MUZZLEFLASH;
-		
-	}
-
-	[customParams]
-	{
-		proptexture = bitmaps/prop3.tga;
-		enginesound = fw190b-;
-		enginesoundnr = 12;
-		feartarget=1;
-	}
+  weapon8=Large_Tracer;
 }
+

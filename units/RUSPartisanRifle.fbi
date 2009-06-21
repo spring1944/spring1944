@@ -1,79 +1,68 @@
-[unitinfo]
-{
-	unitname=RUSPartisanRifle;
-	objectname=RUSPartisanRifle.S3O;
-	icontype=partisan;
-	soundcategory=RUSInf;
-	category=NFLAGNAIR INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=RUSPartisanRifle;
+  name=Rifle Partisan;
+  description=Very light ambusher;
+  acceleration=0.375;
+  airSightDistance=1500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=15;
+  buildTime=70;
+  canMove=1;
+  category=NFLAGNAIR INFTARG WEAPON;
+  cloakCost=0;
+  cloakCostMoving=0;
+  [customParams] {
+    dontCount=1;
+    flagCapRate=0.05;
+  }
+  damageModifier=0.5;
+  energyUse=0;
+  footprintX=1;
+  footprintZ=1;
+  iconType=partisan;
+  idleAutoHeal=1;
+  init_cloaked=1;
+  mass=50;
+  maxDamage=40;
+  maxSlope=15;
+  maxVelocity=1.25;
+  maxWaterDepth=15;
+  minCloakDistance=225;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR;
+  objectName=RUSPartisanRifle.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=480;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
+  weaponmaindir1=0 0 1;
+  weaponmaindir2=0 0 1;
 
-	name=Rifle Partisan;
-	Description=Very light ambusher;
-	side=RUS;
-	maxdamage=40;
-	idleautoheal=1;
-	buildcostmetal=15;
-	buildcostenergy=0;
-	buildtime=70;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;	damagemodifier=0.5;
+  weapon1=PartisanMosinNagant;
+  maxAngleDif1=170;
+  onlyTargetCategory1=INFTARG;
 
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=480;
-	airsightdistance=1500;
-	stealth=1;
-
-	init_cloaked=1;
-	cloakcost=0;
-	cloakcostmoving=0;
-	mincloakdistance=225;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.25;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=15;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=PartisanMosinNagant;
-	onlytargetcategory1=INFTARG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=170;
-	
-	weapon2=molotov;
-	onlytargetcategory2=NFLAGNAIR;
-	weaponmaindir2= 0 0 1;
-	maxangledif2=180;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:RIFLE_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		dontCount=1;
-		flagCapRate=0.05;
-	}
+  weapon2=molotov;
+  maxAngleDif2=180;
+  onlyTargetCategory2=NFLAGNAIR;
 }
+

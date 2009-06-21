@@ -1,65 +1,56 @@
-[unitinfo]
-{
-	unitname=GERPaK40_Truck;
-	objectname=GERPaK40_Truck.S3O;
-	buildpic=GERPaK40.png;
-	corpse=GEROpelBlitz_Destroyed;
-	icontype=truck;
-	soundcategory=GERTank;
-	category=NFLAGNAIR LIGHTVEH INFTARG NFLAG NWEAPON;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERPaK40_Truck;
+  name=Towed 7.5cm PaK 40;
+  description=Anti-Tank Gun;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1750;
+  buildPic=GERPaK40.png;
+  buildTime=350;
+  canMove=1;
+  category=NFLAGNAIR LIGHTVEH INFTARG NFLAG NWEAPON;
+  corpse=GEROpelBlitz_Destroyed;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=12;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=500;
+  maxSlope=10;
+  maxVelocity=4.5;
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=GERPaK40_Truck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=440;
 
-	name=Towed 7.5cm PaK 40;
-	description=Anti-Tank Gun;
-	maxdamage=500;
-	buildcostmetal=1750;
-	buildcostenergy=0;
-	buildtime=350;
-	footprintx=3;
-	footprintz=3;
-	mass=1000;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=800;
-	airsightdistance=1500;
-	stealth=1;
-	
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=4.5;
-	acceleration=0.3;
-	brakerate=0.96;
-	turnrate=440;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=13;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	weapon1=smallsupply;
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-		[customParams]
-	{
-		maxammo=4;
-		weaponswithammo=0;
-		lowammolevel=1;
-		weaponcost=12;
-	}
+  weapon1=smallsupply;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

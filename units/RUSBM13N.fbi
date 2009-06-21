@@ -1,81 +1,70 @@
-[unitinfo]
-{
-	unitname=RUSBM13N;
-	objectname=RUSBM13N.S3O;
-	corpse=RUSBM13N_Destroyed;
-	soundcategory=RUSVeh;
-	icontype=rockettruck;
-	category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=RUSBM13N;
+  name=BM-13N Katyusha;
+  description=Self-Propelled Rocket Artillery;
+  acceleration=0.02;
+  airSightDistance=2500;
+  brakeRate=0.09;
+  buildCostEnergy=0;
+  buildCostMetal=4875;
+  buildTime=975;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
+  corpse=RUSBM13N_Destroyed;
+  [customParams] {
+    defaultMove=1;
+    lowammolevel=1;
+    maxammo=1;
+    weaponcost=560;
+    weaponswithammo=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=2;
+  footprintZ=2;
+  iconType=rockettruck;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=700;
+  maxSlope=6;
+  maxVelocity=4.9;
+  maxWaterDepth=5;
+  movementClass=TANK_Car;
+  noChaseCategory=FLAG NFLAGNAIR AIR;
+  objectName=RUSBM13N.S3O;
+  onoffable=1;
+  radarDistanceJam=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:dirt_backblast;
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=825;
+  smoothAnim=0;
+  soundcategory=RUSVeh;
+  stealth=0;
+  TEDClass=TANK;
+  trackOffset=4;
+  trackStrength=5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=11;
+  turninplace=0;
+  turnRate=300;
+  badTargetCategory=FLAG;
+  weaponmaindir1=0 0 1;
 
-	name=BM-13N Katyusha;
-	description=Self-Propelled Rocket Artillery;
-	side=RUS;
-	maxdamage=700;
-	buildcostmetal=4875;
-	buildcostenergy=0;
-	buildtime=975;
-	footprintx=2;
-	footprintz=2;
-	mass=1000;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	seismicsignature=0;
-	sightdistance=825;
-	airsightdistance=2500;
-	radardistancejam=0;
-	onoffable=1;
-	stealth=0;
-
-	canmove=1;
-	movementclass=TANK_Car;
-	maxvelocity=4.9;
-	acceleration=0.02;
-	brakerate=0.09;
-	turnrate=300;
-	maxslope=6;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=11;
-	trackoffset=4;
-	trackstrength=5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG NFLAGNAIR AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=M13132mm;
-	onlytargetcategory1=NFLAG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=25;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:dirt_backblast;
-	}
-
-	[customParams]
-	{
-		maxammo=1;
-		weaponswithammo=1;
-		lowammolevel=1;
-		weaponcost=560;
-		defaultMove=1;
-	}
+  weapon1=M13132mm;
+  maxAngleDif1=25;
+  onlyTargetCategory1=NFLAG;
 }
+

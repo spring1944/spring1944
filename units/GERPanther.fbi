@@ -1,90 +1,82 @@
-[unitinfo]
-{
-	unitname=GERPanther;
-	objectname=GERPanther.S3O;
-	corpse=GERPanther_Damaged;
-	icontype=heavytank;
-	soundcategory=GERTANKNew;
-	category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERPanther;
+  name=Pzkpfw V Panther;
+  description=Advanced Heavy Combat Tank;
+  acceleration=0.035;
+  airSightDistance=1500;
+  brakeRate=0.105;
+  buildCostEnergy=0;
+  buildCostMetal=6940;
+  buildTime=925;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  corpse=GERPanther_Damaged;
+  [customParams] {
+    blockfear=1;
+    lowammolevel=5;
+    maxammo=15;
+    weaponcost=16;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=2;
+  flankingBonusMin=0.78;
+  flankingBonusMode=3;
+  footprintX=3;
+  footprintZ=3;
+  iconType=heavytank;
+  leaveTracks=1;
+  mass=2500;
+  maxDamage=9395;
+  maxSlope=2;
+  maxVelocity=3.8;
+  maxWaterDepth=5;
+  movementClass=TANK_Heavy;
+  noChaseCategory=FLAG AIR;
+  objectName=GERPanther.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:Weapon_Explosion_Medium;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:AP_Impact_Large;
+    explosionGenerator3=custom:FANNY;
+    explosionGenerator4=custom:ROME;
+    explosionGenerator5=custom:DIRTEXPL;
+    explosionGenerator6=custom:KLARA;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=815;
+  smoothAnim=0;
+  soundcategory=GERTANKNew;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=19;
+  turninplace=0;
+  turnRate=240;
+  badTargetCategory=FLAG;
 
-	name=Pzkpfw V Panther;
-	description=Advanced Heavy Combat Tank;
-	side=GER;
+  weapon1=KwK75mmL71HE;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	maxdamage=9395;
-	flankingbonusdir=0 0 1;
-	flankingbonusmax=2;
-	flankingbonusmin=.78;
-	flankingbonusmode=3;
+  weapon2=KwK75mmL71AP;
+  onlyTargetCategory2=TANK;
 
-	buildcostmetal=6940;
-	buildcostenergy=0;
-	buildtime=925;
-	footprintx=3;
-	footprintz=3;
-	mass=2500;
+  weapon3=MG34;
+  onlyTargetCategory3=INFTARG;
 
-	shownanoframe=0;
-	smoothanim=0;
+  weapon4=.50calproof;
 
-	SeismicSignature=0;
-	sightdistance=815;
-	airsightdistance=1500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Heavy;
-	maxvelocity=3.8;
-	acceleration=0.035;
-	brakerate=0.105;
-	turnrate=240;
-	maxslope=2;
-	maxwaterdepth=5;
-	turninplace=0;
-	
-	leavetracks=1;
-	trackwidth=19;
-	trackoffset=5;
-	trackstrength=10;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Med;
-	selfdestructas=Vehicle_Explosion_Med;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=KwK75mmL71HE;
-	onlytargetcategory1=NFLAGNAIR;
-	weapon2=KwK75mmL71AP;
-	onlytargetcategory2=TANK;
-	weapon3=MG34;
-	onlytargetcategory3=INFTARG;
-	weapon4=.50calproof;
-	weapon5=Small_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:Weapon_Explosion_Medium;
-		explosiongenerator2=custom:AP_Impact_Large;
-		explosiongenerator3=custom:FANNY;
-		explosiongenerator4=custom:ROME;
-		explosiongenerator5=custom:DIRTEXPL;
-		explosiongenerator6=custom:KLARA;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
-		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
-		explosiongenerator10=custom:MuzzleBrakeSmoke;
-	}
-		[customParams]
-	{
-		blockfear=1;
-		maxammo=15;
-		weaponswithammo=2;
-		lowammolevel=5;
-		weaponcost=16;
-	}
+  weapon5=Small_Tracer;
 }
+

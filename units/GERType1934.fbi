@@ -1,134 +1,119 @@
-[unitinfo]
-{
-	unitname=GERType1934;
-	objectname=GERType1934;
-	corpse=GERType1934_dead;
-	icontype=destroyer;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GERType1934;
+  name=Type 1934 Destroyer;
+  description=Destroyer;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  corpse=GERType1934_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=800000;
+  maxDamage=45000;
+  maxVelocity=3.64; // 36.4 kn
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  objectName=GERType1934;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=25;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir10=-1 0 0;
+  WeaponMainDir11=1 0 0;
+  WeaponMainDir12=-1 0 0;
+  WeaponMainDir13=0 0 -1;
+  WeaponMainDir14=0 0 1;
+  WeaponMainDir15=0 0 1;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 1;
+  WeaponMainDir4=0 0 -1;
+  WeaponMainDir5=0 0 -1;
+  WeaponMainDir6=1 0 0;
+  WeaponMainDir7=-1 0 0;
+  WeaponMainDir8=0 0 1;
+  WeaponMainDir9=1 0 0;
 
-	name=Type 1934 Destroyer;
-	description=Destroyer;
-	maxdamage=45000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=800000;
-	floater=1;
-	minwaterdepth=20;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon10=20mmc38;
+  maxAngleDif10=200;
+  onlyTargetCategory10=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=1300;
-	airsightdistance=1700;
-	stealth=0;
+  Weapon11=20mmc38;
+  maxAngleDif11=200;
+  onlyTargetCategory11=NFLAG;
 
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=3.64; // 36.4 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=25;
-	activatewhenbuilt=1;
-	turninplace=0;
+  Weapon12=20mmc38;
+  maxAngleDif12=200;
+  onlyTargetCategory12=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon13=flak3820mmaa;
+  maxAngleDif13=270;
+  onlyTargetCategory13=NFLAG;
 
-	canAttack=1;
+  Weapon14=quad_g7a533mmtorpedo;
+  maxAngleDif14=270;
+  onlyTargetCategory14=LARGESHIP;
 
-	Weapon1=127mmSKC34;
-	Weapon2=127mmSKC34;
-	Weapon3=127mmSKC34;
-	Weapon4=127mmSKC34;
-	Weapon5=127mmSKC34;
-	Weapon6=37mmC30aa;
-	Weapon7=37mmC30aa;
-	Weapon8=20mmc38;
-	Weapon9=20mmc38;
-	Weapon10=20mmc38;
-	Weapon11=20mmc38;
-	Weapon12=20mmc38;
-	Weapon13=flak3820mmaa;
-	Weapon14=quad_g7a533mmtorpedo;
-	Weapon15=quad_g7a533mmtorpedo;
+  Weapon15=quad_g7a533mmtorpedo;
+  maxAngleDif15=270;
+  onlyTargetCategory15=LARGESHIP;
 
-	OnlyTargetCategory1=NFLAGNAIR;
-	OnlyTargetCategory2=NFLAGNAIR;
-	OnlyTargetCategory3=NFLAGNAIR;
-	OnlyTargetCategory4=NFLAGNAIR;
-	OnlyTargetCategory5=NFLAGNAIR;
-	OnlyTargetCategory6=NFLAG;
-	OnlyTargetCategory7=NFLAG;
-	OnlyTargetCategory8=NFLAG;
-	OnlyTargetCategory9=NFLAG;
-	OnlyTargetCategory10=NFLAG;
-	OnlyTargetCategory11=NFLAG;
-	OnlyTargetCategory12=NFLAG;
-	OnlyTargetCategory13=NFLAG;
-	OnlyTargetCategory14=LARGESHIP;
-	OnlyTargetCategory15=LARGESHIP;
+  Weapon1=127mmSKC34;
+  maxAngleDif1=270;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	// 105mm main gun
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=270;
+  Weapon2=127mmSKC34;
+  maxAngleDif2=270;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=270;
+  Weapon3=127mmSKC34;
+  maxAngleDif3=270;
+  onlyTargetCategory3=NFLAGNAIR;
 
-	WeaponMainDir3=0 0 1;
-	MaxAngleDif3=270;
+  Weapon4=127mmSKC34;
+  maxAngleDif4=270;
+  onlyTargetCategory4=NFLAGNAIR;
 
-	WeaponMainDir4=0 0 -1;
-	MaxAngleDif4=270;
+  Weapon5=127mmSKC34;
+  maxAngleDif5=270;
+  onlyTargetCategory5=NFLAGNAIR;
 
-	WeaponMainDir5=0 0 -1;
-	MaxAngleDif5=270;
+  Weapon6=37mmC30aa;
+  maxAngleDif6=200;
+  onlyTargetCategory6=NFLAG;
 
-	// 37mm AA
-	WeaponMainDir6=1 0 0;
-	MaxAngleDif6=200;
+  Weapon7=37mmC30aa;
+  maxAngleDif7=200;
+  onlyTargetCategory7=NFLAG;
 
-	WeaponMainDir7=-1 0 0;
-	MaxAngleDif7=200;
+  Weapon8=20mmc38;
+  maxAngleDif8=270;
+  onlyTargetCategory8=NFLAG;
 
-	// 20mm AA
-	WeaponMainDir8=0 0 1;
-	MaxAngleDif8=270;
-
-	WeaponMainDir9=1 0 0;
-	MaxAngleDif9=200;
-
-	WeaponMainDir10=-1 0 0;
-	MaxAngleDif10=200;
-
-	WeaponMainDir11=1 0 0;
-	MaxAngleDif11=200;
-
-	WeaponMainDir12=-1 0 0;
-	MaxAngleDif12=200;
-
-	// Vierling
-	WeaponMainDir13=0 0 -1;
-	MaxAngleDif13=270;
-
-	// torpedo launchers
-	WeaponMainDir14=0 0 1;
-	MaxAngleDif14=270;
-
-	WeaponMainDir15=0 0 1;
-	MaxAngleDif15=270;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon9=20mmc38;
+  maxAngleDif9=200;
+  onlyTargetCategory9=NFLAG;
 }
+

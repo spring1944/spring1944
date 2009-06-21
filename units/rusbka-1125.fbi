@@ -1,73 +1,63 @@
-[unitinfo]
-{
-	unitname=RUSBKA-1125;
-	objectname=RUSBKA-1125;
-	corpse=RUSBKA-1125_dead;
-	icontype=gunboat;
-	category=NFLAGNAIR TANK NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=RUSBKA-1125;
+  name=Pr.1125 Armored Boat;
+  description=armored river gunboat;
+  acceleration=0.1;
+  airSightDistance=1500;
+  brakeRate=0.1;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR TANK NFLAG WEAPON;
+  corpse=RUSBKA-1125_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=gunboat;
+  mass=75000;
+  maxDamage=20000;
+  maxVelocity=1.8; // 18 knots
+  minWaterDepth=6;
+  movementClass=BOAT_RiverSmall;
+  objectName=RUSBKA-1125;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=30;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 1;
+  WeaponMainDir4=0 0 -1;
 
-	name=Pr.1125 Armored Boat;
-	description= armored river gunboat;
-	maxdamage=20000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=75000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=F3476mmHE;
+  maxAngleDif1=300;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
+  Weapon2=dshk;
+  maxAngleDif2=270;
+  onlyTargetCategory2=NFLAG;
 
-	canmove=1;
-	movementclass=BOAT_RiverSmall;
-	maxvelocity=1.8; // 18 knots
-	acceleration=0.1;
-	brakerate=0.1;
-	turnrate=30;
-	turninplace=0;
+  Weapon3=dshk;
+  maxAngleDif3=358;
+  onlyTargetCategory3=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	canAttack=1;
-
-	Weapon1=F3476mmHE;
-	Weapon2=dshk;
-	Weapon3=dshk;
-	Weapon4=dshk;
-
-	OnlyTargetCategory1=NFLAGNAIR;
-	OnlyTargetCategory2=NFLAG;
-	OnlyTargetCategory3=NFLAG;
-	OnlyTargetCategory4=NFLAG;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=300;
-
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=270;
-
-	WeaponMainDir3=0 0 1;
-	MaxAngleDif3=358;
-
-	WeaponMainDir4=0 0 -1;
-	MaxAngleDif4=270;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon4=dshk;
+  maxAngleDif4=270;
+  onlyTargetCategory4=NFLAG;
 }
+

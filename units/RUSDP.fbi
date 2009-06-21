@@ -1,65 +1,57 @@
-[unitinfo]
-{
-	unitname=RUSDP;
-	objectname=RUSDP.S3O;
-	corpse=RUSsoldier_dead;
-	icontype=lightmg;
-	soundcategory=RUSInf;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=RUSDP;
+  name=DP Infantry;
+  description=Light Machinegun;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=250;
+  buildTime=125;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  corpse=RUSsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  footprintX=1;
+  footprintZ=1;
+  iconType=lightmg;
+  mass=50;
+  maxDamage=65;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=5;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG LIGHTVEH TANK AIR;
+  objectName=RUSDP.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:MG_SHELLCASINGS;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG LIGHTVEH;
 
-	name=DP Infantry;
-	description=Light Machinegun;
-	side=RUS;
-	maxdamage=65;
-	damagemodifier=0.375;
-	buildcostmetal=250;
-	buildcostenergy=0;
-	buildtime=125;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
+  weapon1=DP;
+  onlyTargetCategory1=INFTARG;
 
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=5;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG LIGHTVEH TANK AIR;
-	badtargetcategory=FLAG LIGHTVEH;
-
-	weapon1=DP;
-	onlytargetcategory1=INFTARG;
-	weapon2=Small_Tracer_Green;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:MG_SHELLCASINGS;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		feartarget=1;
-	}
+  weapon2=Small_Tracer_Green;
 }
+

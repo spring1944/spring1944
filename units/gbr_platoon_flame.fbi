@@ -1,35 +1,30 @@
-[unitinfo]
-{
-	unitname=gbr_platoon_flame;
-	objectname=MortarShell.S3O;
-	buildpic=gbrflamethrower.png;
-	category=FLAG;
-	icontype=mines;
-	
-	name=Flamethrower Squad;
-	description=3 x Flamethrower, Specialized Assault Infantry;
-	side=US;
-	maxdamage=100;
-	idleautoheal=0;
-	buildcostmetal=770;
-	buildcostenergy=0;
-	buildtime=385;
-	footprintx=1;
-	footprintz=1;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=0.01;
-	acceleration=0.1;
-	brakerate=1;
-	turnrate=1;
-	maxslope=82;
-	stealth=1;
-
-	explodeas=noweapon;
-	selfdestructas=noweapon;
-
-	[sfxtypes]
-	{
-	}
+[unitinfo] {
+  unitname=gbr_platoon_flame;
+  name=Flamethrower Squad;
+  description=3 x Flamethrower, Specialized Assault Infantry;
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=770;
+  buildPic=gbrflamethrower.png;
+  buildTime=385;
+  canMove=1;
+  category=FLAG;
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  iconType=mines;
+  idleAutoHeal=0;
+  maxDamage=100;
+  maxSlope=82;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+  }
+  side=US;
+  stealth=1;
+  turnRate=1;
 }
+

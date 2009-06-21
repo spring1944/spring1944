@@ -1,67 +1,54 @@
-[unitinfo]
-{
-	unitname=GERKarl;
-	objectname=GERKarl;
-	corpse=GERKarl_Dead;
-	icontype=truck;
-	soundcategory=USTank;
-	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERKarl;
+  name=Karl Geraet 040;
+  description=600mm Superheavy Mortar;
+  acceleration=0.05;
+  activateWhenBuilt=1;
+  brakeRate=0.25;
+  buildCostEnergy=0;
+  buildCostMetal=711;
+  buildTime=237;
+  canMove=1;
+  category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+  corpse=GERKarl_Dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=5;
+  footprintZ=5;
+  iconType=truck;
+  leaveTracks=1;
+  mass=126000;
+  maxDamage=5000;
+  maxSlope=10;
+  maxVelocity=0.5;
+  movementClass=TANK_VeryLarge;
+  noChaseCategory=VTOL;
+  objectName=GERKarl;
+  onoffable=1;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=USTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turninplace=0;
+  turnRate=50;
+  WeaponMainDir1=0 0 1;
 
-	name=Karl Geraet 040;
-	description=600mm Superheavy Mortar;
-	maxdamage=5000;
-	buildcostmetal=711;
-	buildcostenergy=0;
-	buildtime=237;
-	footprintx=5;
-	footprintz=5;
-	mass=126000;
-
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	SeismicSignature=0;
-	sightdistance=600;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_VeryLarge;
-	maxvelocity=0.5;
-	acceleration=0.05;
-	brakerate=0.25;
-	turnrate=50;
-	maxslope=10;
-	turninplace=0;
-
-	ActivateWhenBuilt=1;
-	onoffable=1;
-
-	leavetracks=1;
-	trackwidth=15;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL;
-
-	Weapon1=GERKarlGeraet;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=10;
-
-	onlytargetcategory1=NFLAGNAIR;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon1=GERKarlGeraet;
+  maxAngleDif1=10;
+  onlyTargetCategory1=NFLAGNAIR;
 }
+

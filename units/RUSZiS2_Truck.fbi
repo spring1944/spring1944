@@ -1,62 +1,53 @@
-[unitinfo]
-{
-	unitname=RUSZiS2_Truck;
-	objectname=RUSZiS2_Truck.S3O;
-	buildpic=RUSZiS2.png;
-	corpse=RUSZiS5_Destroyed;
-	icontype=truck;
-	soundcategory=RUSVeh;
-	category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
-	tedclass=TANK;
-
-	name=Towed 57mm ZiS-2;
-	description=Anti-Tank Gun;
-	side=RUS;
-	maxdamage=500;
-	idleautoheal=2;
-	idletime=1000;
-	buildcostmetal=1250;
-	buildcostenergy=0;
-	buildtime=250;
-	footprintx=3;
-	footprintz=3;
-	mass=1000;
-
-	shownanoframe=0;
-	SeismicSignature=0;
-	sightdistance=800;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=4.5;//4.8
-	acceleration=0.3;
-	brakerate=0.96;
-	turnrate=440;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=12;
-	trackoffset=5;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		maxammo=4;
-		weaponswithammo=0;
-		lowammolevel=1;
-		weaponcost=10;
-	}
+[unitinfo] {
+  unitname=RUSZiS2_Truck;
+  name=Towed 57mm ZiS-2;
+  description=Anti-Tank Gun;
+  acceleration=0.3;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1250;
+  buildPic=RUSZiS2.png;
+  buildTime=250;
+  canMove=1;
+  category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
+  corpse=RUSZiS5_Destroyed;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=10;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  idleAutoHeal=2;
+  idleTime=1000;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=500;
+  maxSlope=10;
+  maxVelocity=4.5; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=RUSZiS2_Truck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=800;
+  soundcategory=RUSVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turninplace=0;
+  turnRate=440;
 }
+

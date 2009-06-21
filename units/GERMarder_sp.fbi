@@ -1,87 +1,73 @@
-[unitinfo]
-{
-	unitname=GERMarder;
-	objectname=GERMarder.S3O;
-	corpse=GERMarder_Destroyed;
-	icontype=selfprop;
-	soundcategory=GERJgPz;
-	category=NFLAGNAIR NFLAG TANK INFTARG LIGHTVEH;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERMarder;
+  name=Panzerjager Marder;
+  description=Cheap Turretless Tank Destroyer;
+  acceleration=0.05;
+  airSightDistance=2500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=2100;
+  buildPic=GERMarder.png;
+  buildTime=420;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK INFTARG LIGHTVEH;
+  corpse=GERMarder_Destroyed;
+  [customParams] {
+    lowammolevel=2;
+    maxammo=6;
+    weaponcost=12;
+    weaponswithammo=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=1.6;
+  flankingBonusMin=1;
+  flankingBonusMode=3;
+  footprintX=2;
+  footprintZ=2;
+  iconType=selfprop;
+  leaveTracks=1;
+  maxDamage=1626;
+  maxSlope=5;
+  maxVelocity=2.6;
+  maxWaterDepth=5;
+  movementClass=TANK_Medium;
+  noChaseCategory=FLAG INFTARG AIR;
+  objectName=GERMarder.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=720;
+  smoothAnim=0;
+  soundcategory=GERJgPz;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=3;
+  trackStrength=6;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turninplace=0;
+  turnRate=230;
+  badTargetCategory=FLAG;
+  weaponmaindir1=0 0 1;
 
-	name=Panzerjager Marder;
-	description=Cheap Turretless Tank Destroyer;
-	side=GER;
-	buildpic=GERMarder.png;
-
-	maxdamage=1626;
-	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.6;
-	flankingbonusmin=1;
-	flankingbonusmode=3;
-
-	buildcostmetal=2100;
-	buildcostenergy=0;
-	buildtime=420;
-	footprintx=2;
-	footprintz=2;
-
-	smoothanim=0;
-
-	shownanoframe=0;
-
-	SeismicSignature=0;
-	sightdistance=720;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Medium;
-	maxvelocity=2.6;
-	acceleration=0.05;
-	brakerate=0.15;
-	turnrate=230;
-	maxslope=5;
-	maxwaterdepth=5;
-	turninplace=0;
-	
-	leavetracks=1;
-	trackwidth=12;
-	trackoffset=3;
-	trackstrength=6;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG INFTARG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=KwK75mmL48AP;
-	weaponmaindir1=0 0 1;
-	maxangledif1=15;
-	onlytargetcategory1=TANK;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:MEDIUM_MUZZLEFLASH;
-		explosiongenerator9=custom:MEDIUM_MUZZLEDUST;
-		explosiongenerator10=custom:MuzzleBrakeSmoke;
-	}
-	
-		[customParams]
-	{
-		maxammo=6;
-		weaponswithammo=1;
-		lowammolevel=2;
-		weaponcost=12;
-	}
+  weapon1=KwK75mmL48AP;
+  maxAngleDif1=15;
+  onlyTargetCategory1=TANK;
 }
+

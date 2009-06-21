@@ -1,60 +1,54 @@
-[unitinfo]
-{
-	unitname=GERSeehund;
-	objectname=GERSeehund;
-	corpse=GERSeehund_dead;
-	icontype=sub;
-	category=NFLAGNAIR NFLAG WEAPON SUB;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GERSeehund;
+  name=U-Boat XXVIIB Seehund;
+  description=Midget submarine;
+  acceleration=0.2;
+  airSightDistance=600;
+  brakeRate=0.2;
+  buildCostEnergy=0;
+  buildCostMetal=10000;
+  buildTime=2500;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR NFLAG WEAPON SUB;
+  corpse=GERSeehund_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=sub;
+  mass=20000;
+  maxDamage=1000;
+  maxVelocity=0.6; // 6 knots submerged
+  minWaterDepth=40;
+  movementClass=BOAT_Sub;
+  objectName=GERSeehund;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=35;
+  waterline=20;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 1;
 
-	name=U-Boat XXVIIB Seehund;
-	description= Midget submarine;
-	maxdamage=1000;
-	buildcostmetal=10000;
-	buildcostenergy=0;
-	buildtime=2500;
-	footprintx=8;
-	footprintz=8;
-	mass=20000;
-	floater=1;
-	minwaterdepth=40;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=g7a533mmtorpedo;
+  maxAngleDif1=60;
+  onlyTargetCategory1=LARGESHIP;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=600;
-	airsightdistance=600;
-	stealth=1;
-
-	canmove=1;
-	movementclass=BOAT_Sub;
-	maxvelocity=0.6; // 6 knots submerged
-	acceleration=0.2;
-	brakerate=0.20;
-	turnrate=35;
-	turninplace=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	waterline=20;
-
-	canAttack=1;
-	Weapon1=g7a533mmtorpedo;
-	Weapon2=g7a533mmtorpedo;
-	WeaponMainDir1=0 0 1;
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif1=60;
-	MaxAngleDif2=60;
-	OnlyTargetCategory1=LARGESHIP;
-	OnlyTargetCategory2=LARGESHIP;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon2=g7a533mmtorpedo;
+  maxAngleDif2=60;
+  onlyTargetCategory2=LARGESHIP;
 }
+

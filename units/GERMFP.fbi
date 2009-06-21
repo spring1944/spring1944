@@ -1,88 +1,74 @@
-[unitinfo]
-{
-	unitname=GERMFP;
-	objectname=GERMFP;
-	corpse=GERMFP_dead;
-	icontype=transportship;
-	buildpic=germfp.png;
-	category=NFLAGNAIR TPORT TANK NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GERMFP;
+  name=Marinefahrprahm;
+  description=Landing Ship (up to 3 tanks);
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildPic=germfp.png;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT TANK NFLAG WEAPON;
+  corpse=GERMFP_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  holdSteady=1;
+  iconType=transportship;
+  mass=100000;
+  maxDamage=15000;
+  maxVelocity=1.05; // 10.5 kn
+  minWaterDepth=6;
+  movementClass=BOAT_LandingCraft;
+  objectName=GERMFP;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  transportCapacity=18;
+  transportMass=8000;
+  transportSize=18;
+  turninplace=0;
+  turnRate=35;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 -1;
+  WeaponMainDir5=0 0 -1;
 
-	name=Marinefahrprahm;
-	description= Landing Ship (up to 3 tanks);
-	maxdamage=15000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=100000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=88mmskc30;
+  maxAngleDif1=270;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=0;
+  Weapon2=37mmflak43;
+  maxAngleDif2=270;
 
-	// enough for 3 medium tanks
-	transportsize=18;
-	transportcapacity=18;
-	//transportcapacity=5;
-	transportmass=8000;
-	holdsteady=1;
+  Weapon3=20mmc38;
 
-	canmove=1;
-	movementclass=BOAT_LandingCraft;
-	maxvelocity=1.05; // 10.5 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=35;
-	turninplace=0;
+  Weapon4=20mmc38;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	Weapon1=88mmskc30;
-	Weapon2=37mmflak43;
-	Weapon3=20mmc38;
-	Weapon4=20mmc38;
-	Weapon5=20mmc38;
-
-	OnlyTargetCategory5=NFLAGNAIR;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=270;
-
-	WeaponMainDir2=0 0 -1;
-	MaxAngleDif2=270;
-
-	WeaponMainDir5=0 0 -1;
-	MaxAngleDif5=270;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator4=custom:SMALL_MUZZLEDUST;
-		explosiongenerator5=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator6=custom:XSMALL_MUZZLEDUST;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
-		explosiongenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon5=20mmc38;
+  maxAngleDif5=270;
+  onlyTargetCategory5=NFLAG;
 }
+

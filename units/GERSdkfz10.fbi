@@ -1,85 +1,67 @@
-[unitinfo]
-{
-	unitname=GERSdKfz10;
-	objectname=GERSdKfz10.S3O;
-	//corpse=GERSdKfz10_Destroyed;
-	icontype=halftrack;
-	soundcategory=GERTank;
-	category=NFLAGNAIR NFLAG TANK  INFTARG  LIGHTVEH;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERSdKfz10;
+  name=Sd.Kfz. 10/5 2cm FlaK 38;
+  description=Self-Propelled Light Anti-Aircraft;
+  acceleration=0.065;
+  airSightDistance=2500;
+  brakeRate=0.195;
+  buildCostEnergy=0;
+  buildCostMetal=1350;
+  buildTime=450;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK  INFTARG  LIGHTVEH;
+  [customParams] {
+    lowammolevel=6;
+    maxammo=25;
+    weaponcost=10;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=halftrack;
+  leaveTracks=1;
+  mass=1200;
+  maxDamage=600;
+  maxSlope=6;
+  maxVelocity=4.75;
+  maxWaterDepth=5;
+  movementClass=TANK_Light;
+  noChaseCategory=FLAG AIR;
+  objectName=GERSdKfz10.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=810;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=7;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=19;
+  turninplace=0;
+  turnRate=405;
+  badTargetCategory=FLAG;
 
-	name=Sd.Kfz. 10/5 2cm FlaK 38;
-	description=Self-Propelled Light Anti-Aircraft;
-	side=GER;
-	maxdamage=600;
-	buildcostmetal=1350;
-	buildcostenergy=0;
-	buildtime=450;
-	footprintx=3;
-	footprintz=3;
-	mass=1200;
+  weapon2=flak3820mmaa;
+  onlyTargetCategory2=AIR;
 
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=810;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Light;
-	maxvelocity=4.75;
-	acceleration=0.065;
-	brakerate=0.195;
-	turnrate=405;
-	maxslope=6;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=19;
-	trackoffset=10;
-	trackstrength=7;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	shownanoframe=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	//weapon1=KwK3020mmHE;
-	//onlytargetcategory1=NFLAG;
-	weapon2=flak3820mmaa;
-	onlytargetcategory2=AIR;
-	//weapon3=KwK3020mHEFear;
-	//onlytargetcategory3=NFLAGNAIR;
-	//weaponslaveto3=1;
-
-	weapon4=Large_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
-	}
-	
-		[customParams]
-	{
-		maxammo=25;
-		weaponswithammo=2;
-		lowammolevel=6;
-		weaponcost=10;
-	}
+  weapon4=Large_Tracer;
 }
+

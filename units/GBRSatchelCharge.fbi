@@ -1,35 +1,29 @@
-[unitinfo]
-{
-	unitname=GBRSatchelCharge;
-	objectname=ATMine.S3O;
-	soundcategory=Nothing;
-	category=MINE WEAPON KAMIKAZE;
-	tedclass=SPECIAL;
-	yardmap=o;
-
-	name=Satchel Charge;
-	description=Anti-Building Demolitions Pack;
-	maxdamage=5;
-	buildcostmetal=1;
-	buildcostenergy=0;
-	buildtime=50;
-	footprintx=1;
-	footprintz=1;
-
-	sightdistance=1;
-
-	init_cloaked=1;
-	mincloakdistance=20;
-
-	maxslope=80;
-	maxwaterdepth=50;
-
-	selfdestructcountdown=10;
-	explodeas=SatchelCharge;
-	selfdestructas=SatchelCharge;
-	[customParams]
-	{
-		dontCount=1;
-		isMine=1;
-	}
+[unitinfo] {
+  unitname=GBRSatchelCharge;
+  name=Satchel Charge;
+  description=Anti-Building Demolitions Pack;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildTime=50;
+  category=MINE WEAPON KAMIKAZE;
+  [customParams] {
+    dontCount=1;
+    isMine=1;
+  }
+  explodeAs=SatchelCharge;
+  footprintX=1;
+  footprintZ=1;
+  init_cloaked=1;
+  maxDamage=5;
+  maxSlope=80;
+  maxWaterDepth=50;
+  minCloakDistance=20;
+  objectName=ATMine.S3O;
+  selfDestructAs=SatchelCharge;
+  selfDestructCountdown=10;
+  sightDistance=1;
+  soundcategory=Nothing;
+  TEDClass=SPECIAL;
+  yardMap=o;
 }
+

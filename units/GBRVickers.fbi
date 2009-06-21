@@ -1,61 +1,51 @@
-[unitinfo]
-{
-	unitname=GBRVickers;
-	objectname=GBRVickers.S3O;
-	corpse=GBRsoldier_dead;
-	icontype=lightmg;
-	soundcategory=GBRInf;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
-	tedclass=KBOT;
-
-	name=Vickers Heavy Machinegun;
-	description=Heavy Infantry Fire Support;
-	side=GBR;
-	maxdamage=140;
-	damagemodifier=0.375;
-	buildcostmetal=200;
-	buildcostenergy=0;
-	buildtime=1150;
-	footprintx=1;
-	footprintz=1;
-	mass=75;
-
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-		canmove=1;
-	movementclass=KBOT_Gun;
-	maxvelocity=0.8;
-	acceleration=0.2;
-	brakerate=0.6;
-	turnrate=420;
-	maxslope=15;
-	maxwaterdepth=5;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:MG_SHELLCASINGS;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		feartarget=1;
-	}
+[unitinfo] {
+  unitname=GBRVickers;
+  name=Vickers Heavy Machinegun;
+  description=Heavy Infantry Fire Support;
+  acceleration=0.2;
+  airSightDistance=2500;
+  brakeRate=0.6;
+  buildCostEnergy=0;
+  buildCostMetal=200;
+  buildTime=1150;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  corpse=GBRsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  footprintX=1;
+  footprintZ=1;
+  iconType=lightmg;
+  mass=75;
+  maxDamage=140;
+  maxSlope=15;
+  maxVelocity=0.8;
+  maxWaterDepth=5;
+  movementClass=KBOT_Gun;
+  noChaseCategory=FLAG AIR;
+  objectName=GBRVickers.S3O;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:MG_SHELLCASINGS;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=GBRInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=420;
+  upright=1;
+  badTargetCategory=FLAG;
 }
+

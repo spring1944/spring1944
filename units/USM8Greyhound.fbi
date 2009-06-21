@@ -1,95 +1,83 @@
-[unitinfo]
-{
-	unitname=USM8Greyhound;
-	objectname=USM8Greyhound.S3O;
-	corpse=USM8Greyhound_Destroyed;
-	icontype=armoredcar;
-	soundcategory=USVeh;
-	category=NFLAGNAIR NFLAG TANK WEAPON INFTARG LIGHTVEH;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=USM8Greyhound;
+  name=M8 Greyhound;
+  description=Armoured Car;
+  acceleration=0.03;
+  airSightDistance=2500;
+  brakeRate=0.09;
+  buildCostEnergy=0;
+  buildCostMetal=1400;
+  buildTime=470;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK WEAPON INFTARG LIGHTVEH;
+  corpse=USM8Greyhound_Destroyed;
+  [customParams] {
+    lowammolevel=5;
+    maxammo=15;
+    weaponcost=8;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=1.19; //damage to back multiplied by this
+  flankingBonusMin=0.8; //damage to front multiplied by this
+  flankingBonusMode=3;
+  footprintX=2;
+  footprintZ=2;
+  iconType=armoredcar;
+  leaveTracks=1;
+  mass=1250;
+  maxDamage=1618;
+  maxSlope=6;
+  maxVelocity=7;
+  maxWaterDepth=15;
+  movementClass=TANK_Light;
+  noChaseCategory=FLAG AIR;
+  objectName=USM8Greyhound.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:SMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=US;
+  sightDistance=780;
+  smoothAnim=0;
+  soundcategory=USVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=405;
+  badTargetCategory=FLAG;
 
-	name=M8 Greyhound;
-	description=Armoured Car;
-	side=US;
+  weapon1=M637mmHE;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	maxdamage=1618;
-	flankingbonusmode=3;
-	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.19;//damage to back multiplied by this
-	flankingbonusmin=.8;//damage to front multiplied by this
+  weapon2=M637mmAP;
+  onlyTargetCategory2=TANK;
 
-	buildcostmetal=1400;
-	buildcostenergy=0;
-	buildtime=470;
-	footprintx=2;
-	footprintz=2;
-	mass=1250;
+  weapon3=M1919A4Browning;
+  onlyTargetCategory3=INFTARG;
 
-	shownanoframe=0;
-	smoothanim=0;
+  weapon4=M2BrowningAA;
+  onlyTargetCategory4=AIR;
 
-	SeismicSignature=0;
-	sightdistance=780;
-	airsightdistance=2500;
-	stealth=1;
+  weapon5=Small_Tracer;
 
-	canmove=1;
-	movementclass=TANK_Light;
-	maxvelocity=7;
-	acceleration=0.03;
-	brakerate=0.09;
-	turnrate=405;
-	maxslope=6;
-	maxwaterdepth=15;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=13;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=M637mmHE;
-	onlytargetcategory1=NFLAGNAIR;
-	
-	weapon2=M637mmAP;
-	onlytargetcategory2=TANK;
-	
-	weapon3=M1919A4Browning;
-	onlytargetcategory3=INFTARG;
-	
-	weapon4=M2BrowningAA;
-	onlytargetcategory4=AIR;
-	
-	weapon5=Small_Tracer;
-	weapon6=Medium_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator9=custom:SMALL_MUZZLEDUST;
-	}
-
-	[customParams]
-	{
-		maxammo=15;
-		weaponswithammo=2;
-		lowammolevel=5;
-		weaponcost=8;
-	}
+  weapon6=Medium_Tracer;
 }
+

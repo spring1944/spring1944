@@ -1,49 +1,42 @@
-[unitinfo]
-{
-	unitname=target;
-	objectname=target;
-	corpse=target_dead;
-	icontype=pontoon;
-	category=NFLAGNAIR INFTARG NFLAG NWEAPON;
-	tedclass=SHIP;
-
-	name=Target ship;
-	description= spawn it to test your shooting skill;
-	maxdamage=100000;
-	autoheal=1000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=1000000;
-	floater=1;
-	minwaterdepth=10;
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=700;
-	airsightdistance=1100;
-	stealth=1;
-
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=2;
-	acceleration=0.2;
-	brakerate=0.15;
-	turnrate=42.5;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=target;
+  name=Target ship;
+  description=spawn it to test your shooting skill;
+  acceleration=0.2;
+  airSightDistance=1100;
+  autoHeal=1000;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG NWEAPON;
+  corpse=target_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=pontoon;
+  mass=1e+06;
+  maxDamage=100000;
+  maxVelocity=2;
+  minWaterDepth=10;
+  movementClass=BOAT_Destroyer;
+  objectName=target;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=700;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turnRate=42.5;
 }
+

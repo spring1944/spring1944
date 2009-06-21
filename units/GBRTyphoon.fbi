@@ -1,141 +1,111 @@
-[UNITINFO]
-{
-	Name=Hawker Typhoon Mk.IB;
-	UnitName=GBRTyphoon;
-	icontype=fighter;
-	//    Required Tags
-	BuildCostEnergy=0;
-	BuildCostMetal=8500;
-	BuildTime=850;
-	Category=AIRCRAFT;
-	Description=Attack Fighter;
-	FootprintX=4;
-	FootprintZ=4;
-	MaxDamage=4445;
-	ObjectName=GBRTyphoon.S3O;
-	Side=US;
-	//SoundCategory=GBRPlane;
-	category=NFLAG AIR;
-	TEDClass=VTOL;
-	
-	//    Movement
-	BrakeRate=5;
-	Acceleration=0.5;
-	CanMove=1;
-	MaxVelocity=20;
-	MaxSlope=10;
-	TurnRate=50;
-	
-	//    Buildings
-	
-	//    Construction
-	
-	//    Resources
-	
-	//    Abilities
-	CanAttack=1;
-	CanDropFlare=1;
-	CanFly=1;
-	CanGuard=1;
-	CanPatrol=1;
-	CanStop=1;
-	Stealth=1;
-	
-	//    Sight/Radar
-	SightDistance=860;
-	AirSightDistance=4000;
-	
-	//    Misc
-	repairable=0;
-	BadTargetCategory=NOTAIR;
-	nochasecategory=FLAG;
-	BuildPic=GBRTyphoon.png;
-	ExplodeAs=Vehicle_Explosion_Med;
-	MaxWaterDepth=0;
-	SelfDestructAs=Vehicle_Explosion_Med;
-	SmoothAnim=1;
-	idleAutoHeal=2;
+[UNITINFO] {
+  UnitName=GBRTyphoon;
+  name=Hawker Typhoon Mk.IB;
+  description=Attack Fighter;
+  acceleration=0.5;
+  airSightDistance=4000;
+  bmcode=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=8500;
+  buildPic=GBRTyphoon.png;
+  buildTime=850;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=NFLAG AIR;
+  cruiseAlt=600;
+  [customParams] {
+    enginesound=spitfireb-;
+    enginesoundnr=18;
+    feartarget=1;
+    lowammolevel=1;
+    maxammo=8;
+    proptexture=bitmaps/prop3.tga;
+    weaponcost=-1;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  iconType=fighter;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.0044;
+  maxBank=0.09;
+  maxDamage=4445;
+  maxElevator=0.0031;
+  maxFuel=120;
+  maxPitch=0.09;
+  maxRudder=0.0023;
+  maxSlope=10;
+  maxVelocity=20;
+  maxWaterDepth=0;
+  moverate1=4; //does this tag even work?
+  myGravity=0.6;
+  noChaseCategory=FLAG;
+  objectName=GBRTyphoon.S3O;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_SHELLCASINGS;
+    explosionGenerator2=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator3=custom:XLARGE_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  Side=US;
+  sightDistance=860;
+  smoothAnim=1;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRadius=2200;
+  turnRate=50;
+  badTargetCategory=NOTAIR;
+  weaponmaindir1=0 0 1;
+  weaponmaindir2=0 0 1;
+  weaponmaindir3=0 0 1;
+  weaponmaindir4=0 0 1;
+  weaponmaindir5=0 0 1;
+  weaponmaindir6=0 0 1;
+  weaponslaveto2=1;
+  weaponslaveto4=3;
+  weaponslaveto5=3;
+  weaponslaveto6=3;
+  wingAngle=0.1;
+  wingDrag=0.1;
 
-	//	Flight Stuff
-	wingdrag=0.1;
-	wingangle=0.1;
-	mygravity=0.6;
-	maxbank=0.09;
-	maxpitch=0.09;
-	turnradius=2200;
-	maxaileron=0.0044;
-	maxelevator=0.0031;
-	maxrudder=0.0023;
+  weapon1=HVARRocket;
+  maxAngleDif1=10;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	cruisealt=600;
+  weapon2=HVARRocket;
+  maxAngleDif2=10;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	moverate1=4;//does this tag even work?
-	Maxfuel=120;
-	//RefuelTime=10;
+  weapon3=HS40420mm;
+  maxAngleDif3=10;
+  onlyTargetCategory3=NFLAG;
 
-	// 	Misc
-	bmcode=1;
-	idleTime=1800;
-	steeringmode=1;
-	maneuverleashlength=1280;
-	seismicsignature=0;
-	shownanoframe=0;
+  weapon4=HS40420mm;
+  maxAngleDif4=10;
+  onlyTargetCategory4=NFLAG;
 
-	//	Weapons
+  weapon5=HS40420mm;
+  maxAngleDif5=10;
+  onlyTargetCategory5=NFLAG;
 
-	weapon1=HVARRocket;
-	onlytargetcategory1=NFLAGNAIR;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
+  weapon6=HS40420mm;
+  maxAngleDif6=10;
+  onlyTargetCategory6=NFLAG;
 
-	weapon2=HVARRocket;
-	onlytargetcategory2=NFLAGNAIR;
-	weaponmaindir2=0 0 1;
-	maxangledif2=10;
-	weaponslaveto2=1;
-
-	weapon3=HS40420mm;
-	onlytargetcategory3=NFLAG;
-	weaponmaindir3=0 0 1;
-	maxangledif3=10;
-
-	weapon4=HS40420mm;
-	onlytargetcategory4=NFLAG;
-	weaponmaindir4=0 0 1;
-	maxangledif4=10;
-	weaponslaveto4=3;
-
-	weapon5=HS40420mm;
-	onlytargetcategory5=NFLAG;
-	weaponmaindir5=0 0 1;
-	maxangledif5=10;
-	weaponslaveto5=3;
-
-	weapon6=HS40420mm;
-	onlytargetcategory6=NFLAG;
-	weaponmaindir6=0 0 1;
-	maxangledif6=10;
-	weaponslaveto6=3;
-	
-	weapon7=Medium_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_SHELLCASINGS;
-		explosiongenerator2=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator3=custom:XLARGE_MUZZLEFLASH;
-	}
-
-	[customParams]
-	{
-		proptexture = bitmaps/prop3.tga;
-		enginesound = spitfireb-;
-		enginesoundnr = 18;
-		maxammo=8;
-		weaponswithammo=2;
-		lowammolevel=1;
-		weaponcost=-1;
-		feartarget=1;
-	}
+  weapon7=Medium_Tracer;
 }
+

@@ -1,58 +1,47 @@
-[unitinfo]
-{
-	unitname=USEngineer;
-	objectname=USCommander.S3O;
-	corpse=USsoldier_dead;
-	icontype=advancedengineer;
-	soundcategory=USInf;
-	category=NFLAGNAIR NOWEAPON  INFTARG NFLAG;
-	tedclass=CONSTR;
-
-	name=Engineer;
-	description=Advanced Engineer;
-	maxdamage=100;
-	buildcostmetal=290;
-	buildcostenergy=0;
-	buildtime=145;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	 
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=840;
-	stealth=1;
-	
-	energystorage=0.01;
-
-	builder=1;
-	builddistance=20;
-	workertime=10;
-	terraformspeed=300;
-	shownanospray=0;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=30;
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		feartarget=1;
-	}
+[unitinfo] {
+  unitname=USEngineer;
+  name=Engineer;
+  description=Advanced Engineer;
+  acceleration=0.375;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=290;
+  buildDistance=20;
+  builder=1;
+  buildTime=145;
+  canMove=1;
+  category=NFLAGNAIR NOWEAPON  INFTARG NFLAG;
+  corpse=USsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  energyStorage=0.01;
+  footprintX=1;
+  footprintZ=1;
+  iconType=advancedengineer;
+  mass=50;
+  maxDamage=100;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=30;
+  movementClass=KBOT_Infantry;
+  objectName=USCommander.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  turnRate=1010;
+  upright=1;
+  workerTime=10;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

@@ -1,65 +1,54 @@
-[unitinfo]
-{
-	unitname=USM2Gun_Truck;
-	objectname=USM2Gun_Truck.S3O;
-	buildpic=USM2Gun.png;
-	corpse=USGMCTruck_Destroyed;
-	icontype=truck;
-	soundcategory=USGun;
-	category=TANK NFLAG   INFTARG NFLAGNAIR WEAPON;
-	tedclass=TANK;
-
-	name=Towed 105mm M2;
-	description=Light Howitzer;
-	maxdamage=550;
-	buildcostmetal=3500;
-	buildcostenergy=0;
-	buildtime=700;
-	footprintx=3;
-	footprintz=3;
-	mass=750;
-
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	SeismicSignature=0;
-	sightdistance=800;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=4.5;//4.8
-	acceleration=0.3;
-	brakerate=0.96;
-	turnrate=440;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=15;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		maxammo=4;
-		weaponswithammo=0;
-		lowammolevel=1;
-		weaponcost=20;
-	}
+[unitinfo] {
+  unitname=USM2Gun_Truck;
+  name=Towed 105mm M2;
+  description=Light Howitzer;
+  acceleration=0.3;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=3500;
+  buildPic=USM2Gun.png;
+  buildTime=700;
+  canMove=1;
+  category=TANK NFLAG   INFTARG NFLAGNAIR WEAPON;
+  corpse=USGMCTruck_Destroyed;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=20;
+    weaponswithammo=0;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=750;
+  maxDamage=550;
+  maxSlope=10;
+  maxVelocity=4.5; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=USM2Gun_Truck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=USGun;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

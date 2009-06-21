@@ -1,75 +1,65 @@
-[unitinfo]
-{
-	unitname=GERSniper;
-	objectname=GERSniper.S3O;
-	corpse=gersoldier_dead;
-	icontype=sniper;
-	soundcategory=GERSniper;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=GERSniper;
+  name=Heckenschutze;
+  description=Sniper;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=300;
+  buildTime=185;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  cloakCost=0;
+  cloakCostMoving=0;
+  corpse=gersoldier_dead;
+  [customParams] {
+    dontCount=1;
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  decloakOnFire=0;
+  footprintX=1;
+  footprintZ=1;
+  iconType=sniper;
+  init_cloaked=1;
+  mass=50;
+  maxDamage=110;
+  maxSlope=25;
+  maxVelocity=1;
+  maxWaterDepth=20;
+  minCloakDistance=220;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG LIGHTVEH TANK AIR BUILDING PLANT;
+  objectName=GERSniper.S3O;
+  repairable=0;
+  seismicDistance=950;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=570;
+  smoothAnim=0;
+  soundcategory=GERSniper;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG LIGHTVEH BUILDING PLANT;
+  weaponmaindir1=0 0 1;
 
-	name=Heckenschutze;
-	description=Sniper;
-	side=GER;
-	maxdamage=110;
-	damagemodifier=0.375;
-	buildcostmetal=300;
-	buildcostenergy=0;
-	buildtime=185;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=570;
-	seismicdistance=950;
-	airsightdistance=2500;
-	cloakcost=0;
-	cloakcostmoving=0;
-	stealth=1;
-
-	init_cloaked=1;
-	mincloakdistance=220;
-	decloakonfire=0;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=25;
-	maxwaterdepth=20;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG LIGHTVEH TANK AIR BUILDING PLANT;
-	badtargetcategory=FLAG LIGHTVEH BUILDING PLANT;
-
-	weapon1=K98kscope;
-	badtargetcategory1=LIGHTVEH;
-	onlytargetcategory1=INFTARG;
-	weaponmaindir1=0 0 1;
-	maxangledif1=170;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:RIFLE_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		dontCount=1;
-		feartarget=1;
-	}
+  weapon1=K98kscope;
+  badTargetCategory1=LIGHTVEH;
+  maxAngleDif1=170;
+  onlyTargetCategory1=INFTARG;
 }
+

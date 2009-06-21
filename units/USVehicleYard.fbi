@@ -1,60 +1,47 @@
-[unitinfo]
-{
-	unitname=USVehicleYard;
-	objectname=USVehicleYard.S3O;
-	corpse=USVehicleYard_Destroyed;
-	icontype=factory;
-	soundcategory=USYard;
-	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
-	tedclass=PLANT;
-	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
-	collisionvolumetype=ellipsoid;
-	name=U.S. Light Ordnance Depot;
-	description=Light Ordnance & Vehicle Production Facility;
-	maxdamage=5500;
-	buildcostmetal=5482;
-	buildcostenergy=0;
-	buildtime=3655;
-	footprintx=7;
-	footprintz=7;
-
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	metalmake=0;
-	 
-	energystorage=0.01;
-
-	sightdistance=700;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//old 95
-	shownanospray=0;
-	canbeassisted=0;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=6;
-	buildinggrounddecalsizey=5;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=LARGE_EXPLOSION;
-	selfdestructas=LARGE_EXPLOSION;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-
-	[customParams]
-	{
-		ammoSupplier=1;
-		supplyRange=500;
-	}
+[unitinfo] {
+  unitname=USVehicleYard;
+  name=U.S. Light Ordnance Depot;
+  description=Light Ordnance & Vehicle Production Facility;
+  buildCostEnergy=0;
+  buildCostMetal=5482;
+  builder=1;
+  buildingGroundDecalSizeX=6;
+  buildingGroundDecalSizeY=5;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=3655;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+  collisionVolumeType=ellipsoid;
+  corpse=USVehicleYard_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=LARGE_EXPLOSION;
+  footprintX=7;
+  footprintZ=7;
+  iconType=factory;
+  maxDamage=5500;
+  maxSlope=10;
+  maxWaterDepth=0;
+  metalMake=0;
+  objectName=USVehicleYard.S3O;
+  selfDestructAs=LARGE_EXPLOSION;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=700;
+  smoothAnim=0;
+  soundcategory=USYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //old 95
+  yardMap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

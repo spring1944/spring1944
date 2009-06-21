@@ -1,55 +1,43 @@
-[unitinfo]
-{
-	unitname=RUSPResource;
-	objectname=LogisticsSmall.S3O;
-	buildpic=LogisticsSmall.png;
-	corpse=Debris_Small;
-	icontype=ammo;
-	soundcategory=RUSInf;
-	category=BUILDING NFLAGNAIR;
-	tedclass=ENERGY;
-	yardmap=o;
-
-	name=Partisan Supplies;
-	description=Logistics Supply Source;
-	side=RUS;
-	maxdamage=1500;
-	buildcostmetal=30;
-	buildcostenergy=0;
-	buildtime=400;
-	footprintx=2;
-	footprintz=2;
-
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=15;
-	energystorage=100;
-
-	sightdistance=1;
-	stealth=1;
-
-	activatewhenbuilt=1;
-	init_cloaked=1;
-	cloakcost=1;
-
-	maxslope=15;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=3;
-	buildinggrounddecalsizey=3;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Med_Explosion;
-	selfdestructas=Med_Explosion;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=RUSPResource;
+  name=Partisan Supplies;
+  description=Logistics Supply Source;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=30;
+  buildingGroundDecalSizeX=3;
+  buildingGroundDecalSizeY=3;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=LogisticsSmall.png;
+  buildTime=400;
+  category=BUILDING NFLAGNAIR;
+  cloakCost=1;
+  corpse=Debris_Small;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=15;
+  energyStorage=100;
+  explodeAs=Med_Explosion;
+  footprintX=2;
+  footprintZ=2;
+  iconType=ammo;
+  init_cloaked=1;
+  maxDamage=1500;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsSmall.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=ENERGY;
+  useBuildingGroundDecal=1;
+  yardMap=o;
 }
+

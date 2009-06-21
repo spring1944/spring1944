@@ -1,66 +1,54 @@
-[unitinfo]
-{
-	unitname=usdukw;
-	objectname=usdukw.s3o;
-	corpse=usgmctruck_destroyed;
-	icontype=truck;
-	soundcategory=USTank;
-	category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
-	tedclass=TANK;
-
-	name=DUKW;
-	description=Amphibious Transport Truck;
-	maxdamage=550;
-	buildcostmetal=711;
-	buildcostenergy=0;
-	buildtime=237;
-	footprintx=3;
-	footprintz=3;
-	mass=950;
-
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	SeismicSignature=0;
-	sightdistance=600;
-	stealth=1;
-
-	canmove=1;
-	canhover=1;
-	movementclass=HOVER_AmphibTruck;
-	maxvelocity=4.0;
-	acceleration=0.35;
-	brakerate=0.45;
-	turnrate=440;
-	maxslope=10;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=15;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	transportsize=1;
-	transportcapacity=15;
-	transportmass=750;
-	releaseheld=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=usdukw;
+  name=DUKW;
+  description=Amphibious Transport Truck;
+  acceleration=0.35;
+  brakeRate=0.45;
+  buildCostEnergy=0;
+  buildCostMetal=711;
+  buildTime=237;
+  canHover=1;
+  canMove=1;
+  category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+  corpse=usgmctruck_destroyed;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=950;
+  maxDamage=550;
+  maxSlope=10;
+  maxVelocity=4;
+  movementClass=HOVER_AmphibTruck;
+  noChaseCategory=VTOL AIR;
+  objectName=usdukw.s3o;
+  releaseHeld=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=USTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  transportCapacity=15;
+  transportMass=750;
+  transportSize=1;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

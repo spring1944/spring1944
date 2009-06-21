@@ -1,82 +1,73 @@
-[unitinfo]
-{
-	unitname=RUSKomsMTB;
-	objectname=RUSKomsMTB;
-	corpse=RUSKomsMTB_dead;
-	icontype=torpboat;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=RUSKomsMTB;
+  name=Komsomolets class MTB;
+  description=torpedo boat;
+  acceleration=0.2;
+  airSightDistance=1500;
+  brakeRate=0.2;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  corpse=RUSKomsMTB_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=torpboat;
+  mass=75000;
+  maxDamage=5000;
+  maxVelocity=4.8; //48 knots
+  minWaterDepth=10;
+  movementClass=BOAT_Destroyer;
+  objectName=RUSKomsMTB;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  sightDistance=1000;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=50;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 -1;
+  WeaponMainDir4=0 0 -1;
 
-	name=Komsomolets class MTB;
-	description= torpedo boat;
-	maxdamage=5000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=75000;
-	floater=1;
-	minwaterdepth=10;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=533mmtorpedo;
+  maxAngleDif1=40;
+  onlyTargetCategory1=LARGESHIP;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=1000;
-	airsightdistance=1500;
-	stealth=1;
+  Weapon2=533mmtorpedo;
+  maxAngleDif2=40;
+  onlyTargetCategory2=LARGESHIP;
 
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=4.8; //48 knots
-	acceleration=0.2;
-	brakerate=0.2;
-	turnrate=50;
-	turninplace=0;
+  Weapon3=twin_dshk;
+  maxAngleDif3=270;
+  onlyTargetCategory3=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon4=twin_dshk;
+  maxAngleDif4=270;
+  onlyTargetCategory4=NFLAG;
 
-	canAttack=1;
-
-	Weapon1=533mmtorpedo;
-	Weapon2=533mmtorpedo;
-	Weapon3=twin_dshk;
-	Weapon4=twin_dshk;
-	Weapon5=Medium_Tracer;
-
-	OnlyTargetCategory1=LARGESHIP;
-	OnlyTargetCategory2=LARGESHIP;
-	OnlyTargetCategory3=NFLAG;
-	OnlyTargetCategory4=NFLAG;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=40;
-
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=40;
-
-	WeaponMainDir3=0 0 -1;
-	MaxAngleDif3=270;
-
-	WeaponMainDir4=0 0 -1;
-	MaxAngleDif4=270;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon5=Medium_Tracer;
 }
+

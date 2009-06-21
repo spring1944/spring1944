@@ -1,99 +1,83 @@
-[unitinfo]
-{
-	unitname=GERAFP;
-	objectname=GERAFP;
-	corpse=GERAFP_dead;
-	icontype=gunboat;
-	buildpic=gerafp.png;
-	category=NFLAGNAIR TANK NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GERAFP;
+  name=Artilleriefahrprahm;
+  description=Landing Fire Support Ship;
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildPic=gerafp.png;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR TANK NFLAG WEAPON;
+  corpse=GERAFP_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=gunboat;
+  mass=100000;
+  maxDamage=20000;
+  maxVelocity=1.02; //10.2 kn
+  minWaterDepth=6;
+  movementClass=BOAT_River;
+  objectName=GERAFP;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=35;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 -1;
+  WeaponMainDir3=0 0 1;
+  WeaponMainDir4=0 0 1;
+  WeaponMainDir5=0 0 -1;
+  WeaponMainDir6=1 0 0;
+  WeaponMainDir7=-1 0 0;
 
-	name=Artilleriefahrprahm;
-	description= Landing Fire Support Ship;
-	maxdamage=20000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=100000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=88mmskc30;
+  maxAngleDif1=270;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=0;
+  Weapon2=88mmskc30;
+  maxAngleDif2=270;
 
-	canmove=1;
-	movementclass=BOAT_River;
-	maxvelocity=1.02; //10.2 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=35;
-	turninplace=0;
+  Weapon3=37mmflak43;
+  maxAngleDif3=270;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon4=flak3820mmaa; //20mmflakvierling;
+  maxAngleDif4=270;
 
-	canAttack=1;
+  Weapon5=flak3820mmaa; //20mmflakvierling;
+  maxAngleDif5=270;
+  onlyTargetCategory5=NFLAG;
 
-	Weapon1=88mmskc30;
-	Weapon2=88mmskc30;
-	Weapon3=37mmflak43;
-	Weapon4=flak3820mmaa; //20mmflakvierling;
-	Weapon5=flak3820mmaa; //20mmflakvierling;
-	Weapon6=20mmc38;
-	Weapon7=20mmc38;
+  Weapon6=20mmc38;
+  maxAngleDif6=270;
 
-	OnlyTargetCategory5=NFLAGNAIR;
-	OnlyTargetCategory5=NFLAGNAIR;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=270;
-
-	WeaponMainDir2=0 0 -1;
-	MaxAngleDif2=270;
-
-	WeaponMainDir3=0 0 1;
-	MaxAngleDif3=270;
-
-	WeaponMainDir4=0 0 1;
-	MaxAngleDif4=270;
-
-	WeaponMainDir5=0 0 -1;
-	MaxAngleDif5=270;
-
-	WeaponMainDir6=1 0 0;
-	MaxAngleDif6=270;
-
-	WeaponMainDir7=-1 0 0;
-	MaxAngleDif7=270;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator4=custom:SMALL_MUZZLEDUST;
-		explosiongenerator5=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator6=custom:XSMALL_MUZZLEDUST;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
-		explosiongenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon7=20mmc38;
+  maxAngleDif7=270;
 }
+

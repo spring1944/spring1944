@@ -1,84 +1,74 @@
-[unitinfo]
-{
-	unitname=USPT103;
-	objectname=USPT103;
-	corpse=USPT103_dead;
-	icontype=torpboat;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=USPT103;
+  name=PT-103 type boat;
+  description=torpedo boat;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.3;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  corpse=USPT103_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=torpboat;
+  mass=100000;
+  maxDamage=5000;
+  maxVelocity=4.3; // 43 knots
+  minWaterDepth=10;
+  movementClass=BOAT_LightPatrol;
+  objectName=USPT103;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=55;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 1;
+  WeaponMainDir4=0 0 1;
+  WeaponMainDir5=0 0 -1;
 
-	name=PT-103 type boat;
-	description=torpedo boat;
-	maxdamage=5000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=100000;
-	floater=1;
-	minwaterdepth=10;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=mk13torpedo;
+  maxAngleDif1=40;
+  onlyTargetCategory1=LARGESHIP;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
+  Weapon2=mk13torpedo;
+  maxAngleDif2=40;
+  onlyTargetCategory2=LARGESHIP;
 
-	canmove=1;
-	movementclass=BOAT_LightPatrol;
-	maxvelocity=4.3; // 43 knots
-	acceleration=0.3;
-	brakerate=0.3;
-	turnrate=55;
-	turninplace=0;
+  Weapon3=mk13torpedo;
+  maxAngleDif3=40;
+  onlyTargetCategory3=LARGESHIP;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon4=mk13torpedo;
+  maxAngleDif4=40;
+  onlyTargetCategory4=LARGESHIP;
 
-	canAttack=1;
+  Weapon5=20mmOerlikonaa;
+  maxAngleDif5=270;
+  onlyTargetCategory5=NFLAG;
 
-	Weapon1=mk13torpedo;
-	Weapon2=mk13torpedo;
-	Weapon3=mk13torpedo;
-	Weapon4=mk13torpedo;
+  Weapon6=m2browningaa;
+  onlyTargetCategory6=NFLAG;
 
-	Weapon5=20mmOerlikonaa;
-
-	Weapon6=m2browningaa;
-	Weapon7=m2browningaa;
-
-	OnlyTargetCategory1=LARGESHIP;
-	OnlyTargetCategory2=LARGESHIP;
-	OnlyTargetCategory3=LARGESHIP;
-	OnlyTargetCategory4=LARGESHIP;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory6=NFLAG;
-	OnlyTargetCategory7=NFLAG;
-
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=40;
-
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=40;
-
-	WeaponMainDir3=0 0 1;
-	MaxAngleDif3=40;
-
-	WeaponMainDir4=0 0 1;
-	MaxAngleDif4=40;
-
-	WeaponMainDir5=0 0 -1;
-	MaxAngleDif5=270;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon7=m2browningaa;
+  onlyTargetCategory7=NFLAG;
 }
+

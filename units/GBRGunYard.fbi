@@ -1,57 +1,45 @@
-[unitinfo]
-{
-	unitname=GBRGunYard;
-	objectname=GBRGunYard.S3O;
-	icontype=factory;
-	soundcategory=GBRYard;
-	category=NFLAGNAIR PLANT NOWEAPON BUILDING;
-	tedclass=PLANT;
-	yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
-	collisionvolumetype=ellipsoid;
-	name=Towed Gun Yard;
-	description=Towed Artillery Production Facility;
-	side=GBR;
-	maxdamage=5000;
-	idleautoheal=3;
-	buildcostmetal=1868;
-	buildcostenergy=0;
-	buildtime=1245;
-	footprintx=7;
-	footprintz=7;
-
-	shownanoframe=0;
-
-	 
-	energystorage=0.01;
-
-	sightdistance=146;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//250
-	shownanospray=0;
-	canbeassisted=0;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaldecayspeed=0.05;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Large_Explosion;
-	selfdestructas=Large_Explosion;
-
-	[sfxtypes]
-	{
-	}
-
-	[customParams]
-	{
-		ammoSupplier=1;
-		supplyRange=500;
-	}
+[unitinfo] {
+  unitname=GBRGunYard;
+  name=Towed Gun Yard;
+  description=Towed Artillery Production Facility;
+  buildCostEnergy=0;
+  buildCostMetal=1868;
+  builder=1;
+  buildingGroundDecalDecaySpeed=0.05;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=1245;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+  collisionVolumeType=ellipsoid;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=Large_Explosion;
+  footprintX=7;
+  footprintZ=7;
+  iconType=factory;
+  idleAutoHeal=3;
+  maxDamage=5000;
+  maxSlope=10;
+  maxWaterDepth=0;
+  objectName=GBRGunYard.S3O;
+  selfDestructAs=Large_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=GBR;
+  sightDistance=146;
+  soundcategory=GBRYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //250
+  yardMap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 }
+

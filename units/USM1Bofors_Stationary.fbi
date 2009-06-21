@@ -1,76 +1,63 @@
-[unitinfo]
-{
-	unitname=USM1Bofors_Stationary;
-	objectname=USM1Bofors_Stationary.S3O;
-	corpse=USM1Bofors_Destroyed;
-	icontype=aaartillery;
-	soundcategory=USGun;
-	category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
-	tedclass=TURRET;
-	yardmap=o;
+[unitinfo] {
+  unitname=USM1Bofors_Stationary;
+  name=Dug-In M1 Bofors;
+  description=- Stationary 40mm Anti-Aircraft Gun;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=1500;
+  buildingGroundDecalSizeX=2;
+  buildingGroundDecalSizeY=2;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=1000;
+  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  corpse=USM1Bofors_Destroyed;
+  [customParams] {
+    feartarget=1;
+    lowammolevel=8;
+    maxammo=4;
+    weaponcost=3;
+    weaponswithammo=2;
+  }
+  footprintX=2;
+  footprintZ=2;
+  iconType=aaartillery;
+  maxDamage=1250;
+  maxSlope=15;
+  maxWaterDepth=0;
+  noChaseCategory=FLAG AIR;
+  objectName=USM1Bofors_Stationary.S3O;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=701;
+  smoothAnim=0;
+  soundcategory=USGun;
+  stealth=1;
+  TEDClass=TURRET;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+  yardMap=o;
 
-	name=Dug-In M1 Bofors;
-	description=- Stationary 40mm Anti-Aircraft Gun;
-	side=GBR;
-	maxdamage=1250;
+  weapon1=bofors40mmaa;
+  badTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=AIR;
 
-	buildcostmetal=1500;
-	buildcostenergy=0;
-	buildtime=1000;
-	footprintx=2;
-	footprintz=2;
+  weapon2=bofors40mmhe;
+  badTargetCategory2=AIR;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	shownanoframe=0;
-	smoothanim=0;
-
-	sightdistance=701;
-	airsightdistance=2500;
-	stealth=1;
-
-	activatewhenbuilt=1;
-
-	maxslope=15;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=2;
-	buildinggrounddecalsizey=2;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=bofors40mmaa;
-	onlytargetcategory1=AIR;
-	badtargetcategory1=NFLAGNAIR;
-
-	weapon2=bofors40mmhe;
-	badtargetcategory2=AIR;
-	onlytargetcategory2=NFLAGNAIR;
-
-	weapon3=Large_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:PLACEHOLDER_EFFECT07;
-		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		maxammo=4;
-		weaponswithammo=2;
-		lowammolevel=8;
-		weaponcost=3;
-		feartarget=1;
-	}
+  weapon3=Large_Tracer;
 }
+

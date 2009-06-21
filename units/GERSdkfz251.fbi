@@ -1,83 +1,67 @@
-[unitinfo]
-{
-	unitname=GERSdkfz251;
-	objectname=GERSdkfz251.S3O;
-	corpse=GERSdkfz251_Destroyed;
-	icontype=halftrack;
-	soundcategory=GERTank;
-	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GERSdkfz251;
+  name=Sd.Kfz. 251/1 Halftrack;
+  description=Infantry Support Transport;
+  acceleration=0.065;
+  airSightDistance=2500;
+  brakeRate=0.195;
+  buildCostEnergy=0;
+  buildCostMetal=1050;
+  buildTime=350;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
+  corpse=GERSdkfz251_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=200;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=2;
+  footprintZ=2;
+  iconType=halftrack;
+  leaveTracks=1;
+  maxDamage=1200;
+  maxSlope=10;
+  maxVelocity=5.2;
+  maxWaterDepth=5;
+  movementClass=TANK_Light;
+  noChaseCategory=FLAG AIR;
+  objectName=GERSdkfz251.S3O;
+  releaseHeld=1;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=820;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  transportCapacity=12;
+  transportMass=1200;
+  transportSize=1;
+  turninplace=0;
+  turnRate=405;
+  badTargetCategory=FLAG;
 
-	name=Sd.Kfz. 251/1 Halftrack;
-	description=Infantry Support Transport;
-	side=GER;
-	maxdamage=1200;
-	buildcostmetal=1050;
-	buildcostenergy=0;
-	buildtime=350;
-	footprintx=2;
-	footprintz=2;
+  weapon1=MG34;
+  onlyTargetCategory1=INFTARG;
 
-	smoothanim=0;
-
-	shownanoframe=0;
-
-	SeismicSignature=0;
-	sightdistance=820;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Light;
-	maxvelocity=5.2;
-	acceleration=0.065;
-	brakerate=0.195;
-	turnrate=405;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=15;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	transportsize=1;
-	transportcapacity=12;
-	transportmass=1200;	
-	releaseheld=1;
-	//unloadspread=2;
-	//transportUnloadMethod=2;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=MG34;
-	onlytargetcategory1=INFTARG;
-	//weapon3=mg42aa;
-	//onlytargetcategory3=AIR;
-
-	weapon2=Small_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
-		[customParams]
-	{
-		ammoSupplier=1;
-		supplyRange=200;
-	}
+  weapon2=Small_Tracer;
 }
+

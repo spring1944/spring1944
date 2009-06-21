@@ -1,58 +1,46 @@
-[unitinfo]
-{
-	unitname=RUSLightTender;
-	objectname=RUSLightTender.S3O;
-	//corpse=;
-	buildpic=RUSTender15t.png;
-	icontype=pontoon;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
-	tedclass=SHIP;
-
-	name=Light Tender;
-	description= Infantry Assault Transport;
-	maxdamage=500;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=1000;
-	floater=1;
-	minwaterdepth=5;
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=600;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=BOAT_Medium;
-	maxvelocity=3.4;
-	acceleration=0.3;
-	brakerate=0.20;
-	turnrate=300;
-
-	transportsize=1;
-	transportcapacity=9;
-	transportmass=750;
-	isfireplatform=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	waterline=0.2;
-
-	//Weapon1=Maxim;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=RUSLightTender;
+  name=Light Tender;
+  description=Infantry Assault Transport;
+  acceleration=0.3;
+  airSightDistance=2500;
+  brakeRate=0.2;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildPic=RUSTender15t.png;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=pontoon;
+  isFirePlatform=0;
+  mass=1000;
+  maxDamage=500;
+  maxVelocity=3.4;
+  minWaterDepth=5;
+  movementClass=BOAT_Medium;
+  objectName=RUSLightTender.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=9;
+  transportMass=750;
+  transportSize=1;
+  turnRate=300;
+  waterline=0.2;
 }
+

@@ -1,72 +1,62 @@
-[unitinfo]
-{
-	unitname=RUSObserv;
-	objectname=RUSObserv.S3O;
-	corpse=RUSsoldier_dead;
-	icontype=officer;
-	soundcategory=RUSInf;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=RUSObserv;
+  name=Scout;
+  description=Reconnaisance Infantry;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=50;
+  buildTime=150;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  cloakCost=0;
+  cloakCostMoving=0;
+  corpse=RUSsoldier_dead;
+  [customParams] {
+    dontCount=1;
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  footprintX=1;
+  footprintZ=1;
+  iconType=officer;
+  init_cloaked=1;
+  mass=50;
+  maxDamage=65;
+  maxSlope=40;
+  maxVelocity=1.6;
+  maxWaterDepth=10;
+  minCloakDistance=160;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG INFTARG AIR;
+  objectName=RUSObserv.S3O;
+  repairable=0;
+  seismicDistance=690;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PISTOL_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=690;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG INFTARG;
 
-	name=Scout;
-	description=Reconnaisance Infantry;
-	side=RUS;
-	maxdamage=65;
-	damagemodifier=0.375;
-	buildcostmetal=50;
-	buildcostenergy=0;
-	buildtime=150;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=690;
-	airsightdistance=2500;
-	stealth=1;
-	seismicdistance=690;
-
-	init_cloaked=1;
-	cloakcost=0;
-	cloakcostmoving=0;
-	mincloakdistance=160;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=40;
-	maxwaterdepth=10;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG INFTARG AIR;
-	badtargetcategory=FLAG INFTARG;
-
-	weapon1=TT33;
-	badtargetcategory1=LIGHTVEH;
-	onlytargetcategory1=INFTARG;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:PISTOL_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		dontCount=1;
-		feartarget=1;
-	}
+  weapon1=TT33;
+  badTargetCategory1=LIGHTVEH;
+  onlyTargetCategory1=INFTARG;
 }
+

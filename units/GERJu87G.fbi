@@ -1,130 +1,101 @@
-[UNITINFO]
-{
-	Name=Ju 87G-1 Stuka;
-	UnitName=GERJu87G;
-	icontype=fighter;
-	//    Required Tags
-	BuildCostEnergy=0;
-	BuildCostMetal=7000;
-	BuildTime=700;
-	Category=AIRCRAFT;
-	Description=Ground Attack Aircraft;
-	FootprintX=4;
-	FootprintZ=4;
-	MaxDamage=3600;
-	ObjectName=GERJu87G.S3O;
-	Side=GBR;
-	//SoundCategory=GERPlane;
-	category=NFLAG AIR;
-	TEDClass=VTOL;
-	
-	//    Movement
-	BrakeRate=5;
-	Acceleration=0.5;
-	CanMove=1;
-	MaxVelocity=20;
-	MaxSlope=10;
-	TurnRate=60;
-	
-	//    Buildings
-	
-	//    Construction
-	
-	//    Resources
+[UNITINFO] {
+  UnitName=GERJu87G;
+  name=Ju 87G-1 Stuka;
+  description=Ground Attack Aircraft;
+  acceleration=0.5;
+  airSightDistance=3000;
+  bmcode=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=7000;
+  buildPic=GERJu87G.png;
+  buildTime=700;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=NFLAG AIR;
+  cruiseAlt=600;
+  [customParams] {
+    enginesound=stukab-;
+    enginesoundnr=12;
+    feartarget=1;
+    lowammolevel=1;
+    maxammo=12;
+    proptexture=bitmaps/prop3.tga;
+    weaponcost=-1;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  iconType=fighter;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.00375;
+  maxBank=0.065;
+  maxDamage=3600;
+  maxElevator=0.00275;
+  maxFuel=160;
+  maxPitch=0.07;
+  maxRudder=0.0015;
+  maxSlope=10;
+  maxVelocity=20;
+  maxWaterDepth=0;
+  moverate1=4; //does this tag even work?
+  myGravity=0.6;
+  noChaseCategory=FLAG;
+  objectName=GERJu87G.S3O;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_MUZZLEFLASH;
+    explosionGenerator2=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator3=custom:MG_SHELLCASINGS;
+  }
+  showNanoFrame=0;
+  Side=GBR;
+  sightDistance=860;
+  smoothAnim=1;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRadius=2200;
+  turnRate=60;
+  badTargetCategory=NOTAIR;
+  weaponmaindir1=0 0 1;
+  weaponmaindir2=0 0 1;
+  weaponmaindir3=0 .5 -1;
+  weaponmaindir4=0 .5 -1;
+  weaponslaveto2=1;
+  weaponslaveto4=3;
+  wingAngle=0.1;
+  wingDrag=0.1;
 
-	
-	//    Abilities
-	CanAttack=1;
-	CanDropFlare=1;
-	CanFly=1;
-	CanGuard=1;
-	CanPatrol=1;
-	CanStop=1;
-	Stealth=1;
-	
-	//    Sight/Radar
-	SightDistance=860;
-	AirSightDistance=3000;
-	
-	//    Misc
-	repairable=0;
-	BadTargetCategory=NOTAIR;
-	nochasecategory=FLAG;
-	BuildPic=GERJu87G.png;
-	ExplodeAs=Vehicle_Explosion_Med;
-	MaxWaterDepth=0;
-	SelfDestructAs=Vehicle_Explosion_Med;
-	SmoothAnim=1;
-	idleAutoHeal=2;
+  weapon1=bk37mmap;
+  maxAngleDif1=10;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	//	Flight Stuff
-	wingdrag=0.1;
-	wingangle=0.1;
-	mygravity=0.6;
-	maxbank=0.065;
-	maxpitch=0.07;
-	turnradius=2200;
-	maxaileron=0.00375;
-	maxelevator=0.00275;
-	maxrudder=0.0015;
+  weapon2=bk37mmap;
+  maxAngleDif2=10;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	cruisealt=600;
+  weapon3=mg42aa;
+  maxAngleDif3=90;
+  onlyTargetCategory3=AIR;
 
-	moverate1=4;//does this tag even work?
-	Maxfuel=160;
-	//RefuelTime=10;
+  weapon4=mg42aa;
+  maxAngleDif4=90;
+  onlyTargetCategory4=AIR;
 
-	// 	Misc
-	bmcode=1;
-	idleTime=1800;
-	steeringmode=1;
-	maneuverleashlength=1280;
-	seismicsignature=0;
-	shownanoframe=0;
+  weapon5=Small_Tracer;
 
-	//	Weapons
-	weapon1=bk37mmap;
-	weaponmaindir1=0 0 1;
-	maxangledif1=10;
-	onlytargetcategory1=NFLAGNAIR;
-
-	weapon2=bk37mmap;
-	weaponmaindir2=0 0 1;
-	maxangledif2=10;
-	weaponslaveto2=1;
-	onlytargetcategory2=NFLAGNAIR;
-
-	weapon3=mg42aa;
-	weaponmaindir3=0 .5 -1;
-	maxangledif3=90;
-	onlytargetcategory3=AIR;
-
-	weapon4=mg42aa;
-	weaponmaindir4=0 .5 -1;
-	maxangledif4=90;
-	weaponslaveto4=3;
-	onlytargetcategory4=AIR;
-
-	weapon5=Small_Tracer;	
-	weapon6=Large_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_MUZZLEFLASH;
-		explosiongenerator2=custom:SMALL_MUZZLEFLASH;
-		explosiongenerator3=custom:MG_SHELLCASINGS;
-	}
-
-	[customParams]
-	{
-		proptexture = bitmaps/prop3.tga;
-		enginesound = stukab-;
-		enginesoundnr = 12;
-		maxammo=12;
-		weaponswithammo=2;
-		lowammolevel=1;
-		weaponcost=-1;
-		feartarget=1;
-	}
+  weapon6=Large_Tracer;
 }
+

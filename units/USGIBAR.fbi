@@ -1,66 +1,58 @@
-[unitinfo]
-{
-	unitname=USGIBAR;
-	objectname=USLMG.S3O;
-	corpse=USsoldier_dead;
-	icontype=bar;
-	soundcategory=USInf;
-	category=NFLAGNAIR NFLAG INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=USGIBAR;
+  name=G.I. BAR;
+  description=Long Range Assault/Light Fire Support Unit;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=720;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  corpse=USsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  footprintX=1;
+  footprintZ=1;
+  iconType=bar;
+  mass=50;
+  maxDamage=100;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=10;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR;
+  objectName=USLMG.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:MG_SHELLCASINGS;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
 
-	name=G.I. BAR;
-	description=Long Range Assault/Light Fire Support Unit;
-	maxdamage=100;
-	damagemodifier=0.375;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=720;
-	footprintx=1;
-	footprintz=1;
-	 mass=50;
-	repairable=0;
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
+  weapon1=BAR;
+  badTargetCategory1=LIGHTVEH;
+  onlyTargetCategory1=INFTARG;
 
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.6;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=10;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=BAR;
-	badtargetcategory1=LIGHTVEH;
-	onlytargetcategory1=INFTARG;
-	weapon2=MK2;
-	onlytargetcategory2=NFLAGNAIR;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:MG_SHELLCASINGS;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		feartarget=1;
-	}
+  weapon2=MK2;
+  onlyTargetCategory2=NFLAGNAIR;
 }
+

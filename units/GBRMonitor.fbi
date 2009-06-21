@@ -1,157 +1,147 @@
-[unitinfo]
-{
-	unitname=GBRMonitor;
-	objectname=GBRMonitor;
-	corpse=GBRMonitor_dead;
-	icontype=destroyer;
-	category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GBRMonitor;
+  name=Roberts class;
+  description=Heavy Monitor;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
+  collisionVolumeOffsets=0.0 -60.0 0.0;
+  collisionVolumeScales=120.0 180.0 600.0;
+  collisionVolumeType=box;
+  corpse=GBRMonitor_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=8e+06;
+  maxDamage=75000;
+  maxVelocity=1.2; // 12 kn
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  objectName=GBRMonitor;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=25;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir10=-1 0 1;
+  WeaponMainDir11=1 0 1;
+  WeaponMainDir12=-1 0 1;
+  WeaponMainDir13=1 0 1;
+  WeaponMainDir14=-1 0 1;
+  WeaponMainDir15=1 0 1;
+  WeaponMainDir16=-1 0 1;
+  WeaponMainDir17=1 0 1;
+  WeaponMainDir18=-1 0 1;
+  WeaponMainDir19=1 0 1;
+  WeaponMainDir2=1 0 0;
+  WeaponMainDir20=-1 0 1;
+  WeaponMainDir3=-1 0 0;
+  WeaponMainDir4=1 0 0;
+  WeaponMainDir5=-1 0 0;
+  WeaponMainDir6=0 0 -1;
+  WeaponMainDir7=1 0 1;
+  WeaponMainDir8=-1 0 1;
+  WeaponMainDir9=1 0 1;
 
-	name=Roberts class;
-	description= Heavy Monitor;
-	maxdamage=75000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=8000000;
-	floater=1;
-	minwaterdepth=20;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon10=twin_20mmOerlikonaa;
+  maxAngleDif10=270;
+  onlyTargetCategory10=NFLAG;
 
-	collisionVolumeType=box;
-	collisionVolumeScales=120 180 600;
-	collisionVolumeOffsets=0 -60 0;
+  Weapon11=twin_20mmOerlikonaa;
+  maxAngleDif11=270;
+  onlyTargetCategory11=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=1300;
-	airsightdistance=1700;
-	stealth=0;
+  Weapon12=twin_20mmOerlikonaa;
+  maxAngleDif12=270;
+  onlyTargetCategory12=NFLAG;
 
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=1.2; // 12 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=25;
-	turninplace=0;
-	activatewhenbuilt=1;
+  Weapon13=twin_20mmOerlikonaa;
+  maxAngleDif13=270;
+  onlyTargetCategory13=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon14=twin_20mmOerlikonaa;
+  maxAngleDif14=270;
+  onlyTargetCategory14=NFLAG;
 
-	canAttack=1;
+  Weapon15=twin_20mmOerlikonaa;
+  maxAngleDif15=270;
+  onlyTargetCategory15=NFLAG;
 
-	Weapon1=gbr15inch42mki;
+  Weapon16=twin_20mmOerlikonaa;
+  maxAngleDif16=270;
+  onlyTargetCategory16=NFLAG;
 
-	Weapon2=gbr4inch45mkxvi;
-	Weapon3=gbr4inch45mkxvi;
-	Weapon4=gbr4inch45mkxvi;
-	Weapon5=gbr4inch45mkxvi;
+  Weapon17=20mmOerlikonaa;
+  maxAngleDif17=270;
+  onlyTargetCategory17=NFLAG;
 
-	Weapon6=octpompom;
-	Weapon7=quadpompom;
-	Weapon8=quadpompom;
+  Weapon18=20mmOerlikonaa;
+  maxAngleDif18=270;
+  onlyTargetCategory18=NFLAG;
 
-	Weapon9=twin_20mmOerlikonaa;
-	Weapon10=twin_20mmOerlikonaa;
-	Weapon11=twin_20mmOerlikonaa;
-	Weapon12=twin_20mmOerlikonaa;
-	Weapon13=twin_20mmOerlikonaa;
-	Weapon14=twin_20mmOerlikonaa;
-	Weapon15=twin_20mmOerlikonaa;
-	Weapon16=twin_20mmOerlikonaa;
+  Weapon19=20mmOerlikonaa;
+  maxAngleDif19=270;
+  onlyTargetCategory19=NFLAG;
 
-	Weapon17=20mmOerlikonaa;
-	Weapon18=20mmOerlikonaa;
-	Weapon19=20mmOerlikonaa;
-	Weapon20=20mmOerlikonaa;
+  Weapon1=gbr15inch42mki;
+  maxAngleDif1=200;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	OnlyTargetCategory1=NFLAGNAIR;
-	OnlyTargetCategory2=NFLAG;
-	OnlyTargetCategory3=NFLAG;
-	OnlyTargetCategory4=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory6=NFLAG;
-	OnlyTargetCategory7=NFLAG;
-	OnlyTargetCategory8=NFLAG;
-	OnlyTargetCategory9=NFLAG;
-	OnlyTargetCategory10=NFLAG;
-	OnlyTargetCategory11=NFLAG;
-	OnlyTargetCategory12=NFLAG;
-	OnlyTargetCategory13=NFLAG;
-	OnlyTargetCategory14=NFLAG;
-	OnlyTargetCategory15=NFLAG;
-	OnlyTargetCategory16=NFLAG;
-	OnlyTargetCategory17=NFLAG;
-	OnlyTargetCategory18=NFLAG;
-	OnlyTargetCategory19=NFLAG;
-	OnlyTargetCategory20=NFLAG;
+  Weapon20=20mmOerlikonaa;
+  maxAngleDif20=270;
+  onlyTargetCategory20=NFLAG;
 
-	// 15inch main gun
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=200;
+  Weapon2=gbr4inch45mkxvi;
+  maxAngleDif2=200;
+  onlyTargetCategory2=NFLAG;
 
-	// 4inch AA gun
-	WeaponMainDir2=1 0 0;
-	MaxAngleDif2=200;
-	WeaponMainDir3=-1 0 0;
-	MaxAngleDif3=200;
+  Weapon3=gbr4inch45mkxvi;
+  maxAngleDif3=200;
+  onlyTargetCategory3=NFLAG;
 
-	WeaponMainDir4=1 0 0;
-	MaxAngleDif4=200;
-	WeaponMainDir5=-1 0 0;
-	MaxAngleDif5=200;
+  Weapon4=gbr4inch45mkxvi;
+  maxAngleDif4=200;
+  onlyTargetCategory4=NFLAG;
 
-	// octuple pompom
-	WeaponMainDir6=0 0 -1;
-	MaxAngleDif6=240;
+  Weapon5=gbr4inch45mkxvi;
+  maxAngleDif5=200;
+  onlyTargetCategory5=NFLAG;
 
-	// pom-pom AA
-	WeaponMainDir7=1 0 1;
-	MaxAngleDif7=270;
-	WeaponMainDir8=-1 0 1;
-	MaxAngleDif8=270;
+  Weapon6=octpompom;
+  maxAngleDif6=240;
+  onlyTargetCategory6=NFLAG;
 
-	// 20mm AA
-	WeaponMainDir9=1 0 1;
-	MaxAngleDif9=270;
-	WeaponMainDir10=-1 0 1;
-	MaxAngleDif10=270;
+  Weapon7=quadpompom;
+  maxAngleDif7=270;
+  onlyTargetCategory7=NFLAG;
 
-	WeaponMainDir11=1 0 1;
-	MaxAngleDif11=270;
-	WeaponMainDir12=-1 0 1;
-	MaxAngleDif12=270;
+  Weapon8=quadpompom;
+  maxAngleDif8=270;
+  onlyTargetCategory8=NFLAG;
 
-	WeaponMainDir13=1 0 1;
-	MaxAngleDif13=270;
-	WeaponMainDir14=-1 0 1;
-	MaxAngleDif14=270;
-
-	WeaponMainDir15=1 0 1;
-	MaxAngleDif15=270;
-	WeaponMainDir16=-1 0 1;
-	MaxAngleDif16=270;
-
-	WeaponMainDir17=1 0 1;
-	MaxAngleDif17=270;
-	WeaponMainDir18=-1 0 1;
-	MaxAngleDif18=270;
-	WeaponMainDir19=1 0 1;
-	MaxAngleDif19=270;
-	WeaponMainDir20=-1 0 1;
-	MaxAngleDif20=270;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon9=twin_20mmOerlikonaa;
+  maxAngleDif9=270;
+  onlyTargetCategory9=NFLAG;
 }
+

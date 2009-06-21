@@ -1,128 +1,118 @@
-[unitinfo]
-{
-	unitname=GBRFairmileD;
-	objectname=GBRFairmileD;
-	corpse=GBRFairmileD_dead;
-	icontype=torpboat;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GBRFairmileD;
+  name=Fairmile D;
+  description=Gun/torpedo boat;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.3;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  corpse=GBRFairmileD_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=torpboat;
+  mass=100000;
+  maxDamage=7500;
+  maxVelocity=3; // 30 knots
+  minWaterDepth=10;
+  movementClass=BOAT_LightPatrol;
+  objectName=GBRFairmileD;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=55;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir10=-1 0 0;
+  WeaponMainDir11=1 0 0;
+  WeaponMainDir12=-1 0 0;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 1;
+  WeaponMainDir4=0 0 1;
+  WeaponMainDir5=0 0 1;
+  WeaponMainDir6=0 0 -1;
+  WeaponMainDir7=0 0 -1;
+  WeaponMainDir9=1 0 0;
+  WeaponSlaveTo8=7;
 
-	name=Fairmile D;
-	description=Gun/torpedo boat;
-	maxdamage=7500;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=100000;
-	floater=1;
-	minwaterdepth=10;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon10=twin05calVickers;
+  maxAngleDif10=270;
+  onlyTargetCategory10=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
+  Weapon11=vickers;
+  maxAngleDif11=200;
+  onlyTargetCategory11=NFLAG;
 
-	canmove=1;
-	movementclass=BOAT_LightPatrol;
-	maxvelocity=3.0; // 30 knots
-	acceleration=0.3;
-	brakerate=0.3;
-	turnrate=55;
-	turninplace=0;
+  Weapon12=vickers;
+  maxAngleDif12=200;
+  onlyTargetCategory12=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon13=Small_Tracer;
 
-	canAttack=1;
+  Weapon14=Medium_Tracer;
 
-	Weapon1=18inchtorpedo;
-	Weapon2=18inchtorpedo;
-	Weapon3=18inchtorpedo;
-	Weapon4=18inchtorpedo;
+  Weapon15=Large_Tracer;
 
-	Weapon5=6pdr57mmap;
-	Weapon6=6pdr57mmap;
+  Weapon1=18inchtorpedo;
+  maxAngleDif1=40;
+  onlyTargetCategory1=LARGESHIP;
 
-	Weapon7=20mmOerlikonaa;
-	Weapon8=20mmOerlikonaa;
-	WeaponSlaveTo8=7;
+  Weapon2=18inchtorpedo;
+  maxAngleDif2=40;
+  onlyTargetCategory2=LARGESHIP;
 
-	Weapon9=twin05calVickers;
-	Weapon10=twin05calVickers;
+  Weapon3=18inchtorpedo;
+  maxAngleDif3=40;
+  onlyTargetCategory3=LARGESHIP;
 
-	Weapon11=vickers;
-	Weapon12=vickers;
+  Weapon4=18inchtorpedo;
+  maxAngleDif4=40;
+  onlyTargetCategory4=LARGESHIP;
 
-	Weapon13=Small_Tracer;
-	Weapon14=Medium_Tracer;
-	Weapon15=Large_Tracer;
+  Weapon5=6pdr57mmap;
+  maxAngleDif5=270;
+  onlyTargetCategory5=NFLAGNAIR;
 
-	OnlyTargetCategory1=LARGESHIP;
-	OnlyTargetCategory2=LARGESHIP;
-	OnlyTargetCategory3=LARGESHIP;
-	OnlyTargetCategory4=LARGESHIP;
+  Weapon6=6pdr57mmap;
+  maxAngleDif6=270;
+  onlyTargetCategory6=NFLAGNAIR;
 
-	OnlyTargetCategory5=NFLAGNAIR;
-	OnlyTargetCategory6=NFLAGNAIR;
-	OnlyTargetCategory7=NFLAG;
-	OnlyTargetCategory8=NFLAG;
-	OnlyTargetCategory9=NFLAG;
-	OnlyTargetCategory10=NFLAG;
-	OnlyTargetCategory11=NFLAG;
-	OnlyTargetCategory12=NFLAG;
+  Weapon7=20mmOerlikonaa;
+  maxAngleDif7=300;
+  onlyTargetCategory7=NFLAG;
 
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=40;
+  Weapon8=20mmOerlikonaa;
+  onlyTargetCategory8=NFLAG;
 
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=40;
-
-	WeaponMainDir3=0 0 1;
-	MaxAngleDif3=40;
-
-	WeaponMainDir4=0 0 1;
-	MaxAngleDif4=40;
-
-	WeaponMainDir5=0 0 1;
-	MaxAngleDif5=270;
-
-	WeaponMainDir6=0 0 -1;
-	MaxAngleDif6=270;
-
-	WeaponMainDir7=0 0 -1;
-	MaxAngleDif7=300;
-
-	WeaponMainDir9=1 0 0;
-	MaxAngleDif9=270;
-	WeaponMainDir10=-1 0 0;
-	MaxAngleDif10=270;
-
-	WeaponMainDir11=1 0 0;
-	MaxAngleDif11=200;
-	WeaponMainDir12=-1 0 0;
-	MaxAngleDif12=200;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon9=twin05calVickers;
+  maxAngleDif9=270;
+  onlyTargetCategory9=NFLAG;
 }
+

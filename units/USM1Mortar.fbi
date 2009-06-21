@@ -1,71 +1,60 @@
-[unitinfo]
-{
-	unitname=USM1Mortar;
-	objectname=USM1Mortar.S3O;
-	corpse=USSoldier_dead;
-	icontype=mortar;
-	soundcategory=USInf;
-	category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=USM1Mortar;
+  name=81mm M1 Mortar;
+  description=Infantry Level Heavy Fire Support;
+  acceleration=0.2;
+  airSightDistance=2500;
+  brakeRate=0.6;
+  buildCostEnergy=0;
+  buildCostMetal=300;
+  buildTime=2250;
+  canMove=1;
+  category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
+  corpse=USSoldier_dead;
+  [customParams] {
+    feartarget=1;
+    lowammolevel=3;
+    maxammo=10;
+    weaponcost=10;
+    weaponswithammo=1;
+  }
+  damageModifier=0.375;
+  energyUse=0;
+  footprintX=1;
+  footprintZ=1;
+  highTrajectory=1;
+  iconType=mortar;
+  mass=100;
+  maxDamage=200;
+  maxSlope=15;
+  maxVelocity=1.25;
+  maxWaterDepth=10;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR;
+  objectName=USM1Mortar.S3O;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MORTAR_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=US;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
 
-	name=81mm M1 Mortar;
-	description=Infantry Level Heavy Fire Support;
-	side=US;
-	maxdamage=200;
-	damagemodifier=0.375;
-	buildcostmetal=300;
-	buildcostenergy=0;
-	buildtime=2250;
-	footprintx=1;
-	footprintz=1;
-	mass=100;
-
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1.25;
-	acceleration=0.2;
-	brakerate=0.6;
-	turnrate=1010;
-	maxslope=15;
-	maxwaterdepth=10;
-
-	//explodeas=; //Infantry don't need to explode
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	hightrajectory=1;
-
-	weapon1=M1_81mmMortar;
-	onlytargetcategory1=NFLAGNAIR;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MORTAR_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		feartarget=1;
-		maxammo=10;
-		weaponswithammo=1;
-		lowammolevel=3;
-		weaponcost=10;
-	}
+  weapon1=M1_81mmMortar;
+  onlyTargetCategory1=NFLAGNAIR;
 }
+

@@ -1,114 +1,99 @@
-[unitinfo]
-{
-	unitname=GBROClass;
-	objectname=GBROClass;
-	corpse=GBROClass_dead;
-	icontype=destroyer;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GBROClass;
+  name=O class Destroyer;
+  description=Fleet Destroyer;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  corpse=GBROClass_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=1e+06;
+  maxDamage=50000;
+  maxVelocity=3.675; // 36.75 kn
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  objectName=GBROClass;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=25;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir10=-1 0 0;
+  WeaponMainDir11=0 0 -1;
+  WeaponMainDir2=0 0 1;
+  WeaponMainDir3=0 0 -1;
+  WeaponMainDir4=0 0 -1;
+  WeaponMainDir5=0 0 1;
+  WeaponMainDir6=0 0 -1;
+  WeaponMainDir7=1 0 0;
+  WeaponMainDir8=-1 0 0;
+  WeaponMainDir9=1 0 0;
 
-	name=O class Destroyer;
-	description=Fleet Destroyer;
-	maxdamage=50000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=1000000;
-	floater=1;
-	minwaterdepth=20;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon10=20mmOerlikonaa;
+  maxAngleDif10=200;
+  onlyTargetCategory10=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=1300;
-	airsightdistance=1700;
-	stealth=0;
+  Weapon11=quad_gbr21inchtorpedo;
+  maxAngleDif11=300;
+  onlyTargetCategory11=LARGESHIP;
 
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=3.675; // 36.75 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=25;
-	activatewhenbuilt=1;
-	turninplace=0;
+  Weapon1=gbr4_7inchmkix;
+  maxAngleDif1=270;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon2=gbr4_7inchmkix;
+  maxAngleDif2=270;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	canAttack=1;
+  Weapon3=gbr4_7inchmkix;
+  maxAngleDif3=270;
+  onlyTargetCategory3=NFLAGNAIR;
 
-	Weapon1=gbr4_7inchmkix;
-	Weapon2=gbr4_7inchmkix;
-	Weapon3=gbr4_7inchmkix;
-	Weapon4=gbr4_7inchmkix;
-	Weapon5=gbr4inchmkv;
-	Weapon6=quadpompom;
-	Weapon7=20mmOerlikonaa;
-	Weapon8=20mmOerlikonaa;
-	Weapon9=20mmOerlikonaa;
-	Weapon10=20mmOerlikonaa;
-	Weapon11=quad_gbr21inchtorpedo;
+  Weapon4=gbr4_7inchmkix;
+  maxAngleDif4=270;
+  onlyTargetCategory4=NFLAGNAIR;
 
-	OnlyTargetCategory1=NFLAGNAIR;
-	OnlyTargetCategory2=NFLAGNAIR;
-	OnlyTargetCategory3=NFLAGNAIR;
-	OnlyTargetCategory4=NFLAGNAIR;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory6=NFLAG;
-	OnlyTargetCategory7=NFLAG;
-	OnlyTargetCategory8=NFLAG;
-	OnlyTargetCategory9=NFLAG;
-	OnlyTargetCategory10=NFLAG;
+  Weapon5=gbr4inchmkv;
+  maxAngleDif5=300;
+  onlyTargetCategory5=NFLAG;
 
-	// 4.7inch main gun
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=270;
+  Weapon6=quadpompom;
+  maxAngleDif6=300;
+  onlyTargetCategory6=NFLAG;
 
-	WeaponMainDir2=0 0 1;
-	MaxAngleDif2=270;
+  Weapon7=20mmOerlikonaa;
+  maxAngleDif7=200;
+  onlyTargetCategory7=NFLAG;
 
-	WeaponMainDir3=0 0 -1;
-	MaxAngleDif3=270;
+  Weapon8=20mmOerlikonaa;
+  maxAngleDif8=200;
+  onlyTargetCategory8=NFLAG;
 
-	WeaponMainDir4=0 0 -1;
-	MaxAngleDif4=270;
-
-	// 4 inch heavy AA
-	WeaponMainDir5=0 0 1;
-	MaxAngleDif5=300;
-
-	// pom-pom AA
-	WeaponMainDir6=0 0 -1;
-	MaxAngleDif6=300;
-
-	// 20mm AA
-	WeaponMainDir7=1 0 0;
-	MaxAngleDif7=200;
-
-	WeaponMainDir8=-1 0 0;
-	MaxAngleDif8=200;
-
-	WeaponMainDir9=1 0 0;
-	MaxAngleDif9=200;
-
-	WeaponMainDir10=-1 0 0;
-	MaxAngleDif10=200;
-
-	// torpedo tubes
-	WeaponMainDir11=0 0 -1;
-	MaxAngleDif11=300;
-	OnlyTargetCategory11=LARGESHIP;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon9=20mmOerlikonaa;
+  maxAngleDif9=200;
+  onlyTargetCategory9=NFLAG;
 }
+

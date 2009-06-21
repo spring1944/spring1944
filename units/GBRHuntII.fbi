@@ -1,87 +1,74 @@
-[unitinfo]
-{
-	unitname=GBRHuntII;
-	objectname=GBRHuntII;
-	corpse=GBRHuntII_dead;
-	icontype=destroyer;
-	category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GBRHuntII;
+  name=Hunt II class;
+  description=Escort Destroyer;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canAttack=1;
+  canMove=1;
+  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  corpse=GBRHuntII_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=800000;
+  maxDamage=35000;
+  maxVelocity=2.7; // 27 kn
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  objectName=GBRHuntII;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=25;
+  WeaponMainDir1=0 0 1;
+  WeaponMainDir2=0 0 -1;
+  WeaponMainDir3=0 0 -1;
+  WeaponMainDir4=0 0 -1;
+  WeaponMainDir5=1 0 0;
+  WeaponMainDir6=-1 0 0;
 
-	name=Hunt II class;
-	description= Escort Destroyer;
-	maxdamage=35000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=800000;
-	floater=1;
-	minwaterdepth=20;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=gbr4inch45mkxvi;
+  maxAngleDif1=270;
+  onlyTargetCategory1=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=1300;
-	airsightdistance=1700;
-	stealth=0;
+  Weapon2=gbr4inch45mkxvi;
+  maxAngleDif2=270;
+  onlyTargetCategory2=NFLAG;
 
-	canmove=1;
-	movementclass=BOAT_Destroyer;
-	maxvelocity=2.7; // 27 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=25;
-	turninplace=0;
-	activatewhenbuilt=1;
+  Weapon3=gbr4inch45mkxvi;
+  maxAngleDif3=270;
+  onlyTargetCategory3=NFLAG;
 
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
+  Weapon4=quadpompom;
+  maxAngleDif4=270;
+  onlyTargetCategory4=NFLAG;
 
-	canAttack=1;
+  Weapon5=20mmOerlikonaa;
+  maxAngleDif5=200;
+  onlyTargetCategory5=NFLAG;
 
-	Weapon1=gbr4inch45mkxvi;
-	Weapon2=gbr4inch45mkxvi;
-	Weapon3=gbr4inch45mkxvi;
-	Weapon4=quadpompom;
-	Weapon5=20mmOerlikonaa;
-	Weapon6=20mmOerlikonaa;
-
-	OnlyTargetCategory1=NFLAG;
-	OnlyTargetCategory2=NFLAG;
-	OnlyTargetCategory3=NFLAG;
-	OnlyTargetCategory4=NFLAG;
-	OnlyTargetCategory5=NFLAG;
-	OnlyTargetCategory6=NFLAG;
-
-	// 4inch main gun
-	WeaponMainDir1=0 0 1;
-	MaxAngleDif1=270;
-
-	WeaponMainDir2=0 0 -1;
-	MaxAngleDif2=270;
-
-	WeaponMainDir3=0 0 -1;
-	MaxAngleDif3=270;
-
-	// pom-pom AA
-	WeaponMainDir4=0 0 -1;
-	MaxAngleDif4=270;
-
-	// 20mm AA
-	WeaponMainDir5=1 0 0;
-	MaxAngleDif5=200;
-
-	WeaponMainDir6=-1 0 0;
-	MaxAngleDif6=200;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon6=20mmOerlikonaa;
+  maxAngleDif6=200;
+  onlyTargetCategory6=NFLAG;
 }
+

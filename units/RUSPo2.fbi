@@ -1,95 +1,72 @@
-[UNITINFO]
-{
-	Name=Po-2 Kukuruznik;
-	UnitName=RUSPo2;
-	icontype=recon;
-	//    Required Tags
-	BuildCostEnergy=0;
-	buildcostmetal=3000;
-	BuildTime=300;
-	Category=AIRCRAFT;
-	Description=Recon Plane;
-	FootprintX=4;
-	FootprintZ=4;
-	MaxDamage=770;
-	ObjectName=RUSPo2.S3O;
-	Side=RUS;
-	SoundCategory=RUSPo2;
-	category=NFLAG AIR;
-	TEDClass=VTOL;
-	
-	//    Movement
-	BrakeRate=5;
-	Acceleration=0.48;
-	CanMove=1;
-	MaxVelocity=16;
-	MaxSlope=10;
-	TurnRate=50;
-	
-	//    Buildings
-	
-	//    Construction
-	
-	//    Resources
-	
-	//    Abilities
-	CanAttack=1;
-	CanDropFlare=1;
-	CanFly=1;
-	CanGuard=1;
-	CanPatrol=1;
-	CanStop=1;
-	Stealth=1;
-	
-	//    Sight/Radar
-	SightDistance=2000;
-	airsightdistance=5000;
-	
-	//    Misc
-	repairable=0;
-	BadTargetCategory=NOTAIR;
-	BuildPic=RUSPo2.png;
-	cruisealt=480;
-	ExplodeAs=Vehicle_Explosion_Med;
-	MaxWaterDepth=0;
-	ExplodeAs=Vehicle_Explosion_Med;
-	SmoothAnim=1;
-	idleAutoHeal=2;
-	bankscale=1;
-	moverate1=4;
-
-	wingdrag=0.1;
-	wingangle=0.1;
-	drag=0.1;
-	mygravity=0.6;
-	maxbank=0.1;
-	maxpitch=0.1;
-	maxaileron=0.005;
-	maxelevator=0.005;
-	maxrudder=0.005;
-
-	bmcode=1;
-	idleTime=1800;
-	steeringmode=1;
-	maneuverleashlength=1280;
-	seismicsignature=0;
-	Maxfuel=60;
-	RefuelTime=10;
-	shownanoframe=0;
-	
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:MG_MUZZLEFLASH;
-		explosiongenerator2=custom:MG_SHELLCASINGS;
-	}
-
-	[customParams]
-	{
-		proptexture=bitmaps/prop3.tga;
-		enginesound = spitfireb-;
-		enginesoundnr = 18;
-		feartarget=1;
-		planevoice=1;
-	}
+[UNITINFO] {
+  UnitName=RUSPo2;
+  name=Po-2 Kukuruznik;
+  description=Recon Plane;
+  acceleration=0.48;
+  airSightDistance=5000;
+  bankscale=1;
+  bmcode=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=3000;
+  buildPic=RUSPo2.png;
+  buildTime=300;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=NFLAG AIR;
+  cruiseAlt=480;
+  [customParams] {
+    enginesound=spitfireb-;
+    enginesoundnr=18;
+    feartarget=1;
+    planevoice=1;
+    proptexture=bitmaps/prop3.tga;
+  }
+  drag=0.1;
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  iconType=recon;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.005;
+  maxBank=0.1;
+  maxDamage=770;
+  maxElevator=0.005;
+  maxFuel=60;
+  maxPitch=0.1;
+  maxRudder=0.005;
+  maxSlope=10;
+  maxVelocity=16;
+  maxWaterDepth=0;
+  moverate1=4;
+  myGravity=0.6;
+  objectName=RUSPo2.S3O;
+  refuelTime=10;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_MUZZLEFLASH;
+    explosionGenerator2=custom:MG_SHELLCASINGS;
+  }
+  showNanoFrame=0;
+  Side=RUS;
+  sightDistance=2000;
+  smoothAnim=1;
+  SoundCategory=RUSPo2;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRate=50;
+  badTargetCategory=NOTAIR;
+  wingAngle=0.1;
+  wingDrag=0.1;
 }
+

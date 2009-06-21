@@ -1,53 +1,44 @@
-[unitinfo]
-{
-	unitname=PontoonRaft;
-	objectname=USPontoonRaft.S3O;
-	//corpse=;
-	icontype=raft;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
-	tedclass=SHIP;
-
-	name=Pontoon Raft;
-	description=Heavy Equipment Transport;
-	maxdamage=1000;
-	buildcostmetal=150;
-	buildcostenergy=0;
-	buildtime=500;
-	footprintx=5;
-	footprintz=5;
-	mass=1000;
-	floater=1;
-	minwaterdepth=10;
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=800;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=BOAT_Medium;
-	maxvelocity=2.5;
-	acceleration=0.15;
-	brakerate=0.10;
-	turnrate=200;
-	turninplace=0;
-
-	transportsize=9;
-	minTransportSize=1;
-	transportcapacity=1;
-	isfireplatform=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	waterline=2.5;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=PontoonRaft;
+  name=Pontoon Raft;
+  description=Heavy Equipment Transport;
+  acceleration=0.15;
+  airSightDistance=2500;
+  brakeRate=0.1;
+  buildCostEnergy=0;
+  buildCostMetal=150;
+  buildTime=500;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=5;
+  footprintZ=5;
+  iconType=raft;
+  isFirePlatform=0;
+  mass=1000;
+  maxDamage=1000;
+  maxVelocity=2.5;
+  minTransportSize=1;
+  minWaterDepth=10;
+  movementClass=BOAT_Medium;
+  objectName=USPontoonRaft.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=1;
+  transportSize=9;
+  turninplace=0;
+  turnRate=200;
+  waterline=2.5;
 }
+

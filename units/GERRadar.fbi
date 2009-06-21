@@ -1,58 +1,42 @@
-[unitinfo]
-{
-	unitname=GERRadar;
-	objectname=GERRadar.S3O;
-	icontype=radar;
-	soundcategory=Nothing;
-	category=NFLAGNAIR PLANT BUILDING;
-	tedclass=PLANT;
-	yardmap=ooooooooo;
-
-	name=Freya Air Control Station;
-	description=Flight Detection & Control Station;
-	side=GER;
-	maxdamage=5000;
-	buildcostmetal=5138;
-	buildcostenergy=0;
-	buildtime=3425;
-	footprintx=5;
-	footprintz=5;
-
-	 
-	shownanoframe=0;
-	
-	 
-	
-	smoothanim=0;
-	levelground=0;
-
-	energyuse=0;
-	
-	radardistance=20000;
-	sightdistance=0;
-	stealth=1;
-
-	onoffable=1;
-	activatewhenbuilt=1;
-
-	maxslope=20;
-	maxwaterdepth=255;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Large_Explosion;
-	selfdestructas=Large_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-	}
+[unitinfo] {
+  unitname=GERRadar;
+  name=Freya Air Control Station;
+  description=Flight Detection & Control Station;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=5138;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=3425;
+  category=NFLAGNAIR PLANT BUILDING;
+  [customParams] {
+  }
+  energyUse=0;
+  explodeAs=Large_Explosion;
+  footprintX=5;
+  footprintZ=5;
+  iconType=radar;
+  levelGround=0;
+  maxDamage=5000;
+  maxSlope=20;
+  maxWaterDepth=255;
+  objectName=GERRadar.S3O;
+  onoffable=1;
+  radarDistance=20000;
+  selfDestructAs=Large_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=0;
+  smoothAnim=0;
+  soundcategory=Nothing;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  yardMap=ooooooooo;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

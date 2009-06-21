@@ -1,57 +1,47 @@
-[unitinfo]
-{
-	unitname=GerResource;
-	objectname=LogisticsSmall.S3O;
-	buildpic=LogisticsSmall.png;
-	corpse=Debris_Small;
-	icontype=ammo;
-	soundcategory=GERInf;
-	category=NFLAGNAIR NOWEAPON  BUILDING NFLAG ;
-	tedclass=ENERGY;
-	yardmap=o;
+[unitinfo] {
+  unitname=GerResource;
+  name=Small Supply Dump;
+  description=Supplies A Small Area;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=720;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=LogisticsSmall.png;
+  buildTime=480;
+  category=NFLAGNAIR NOWEAPON  BUILDING NFLAG;
+  corpse=Debris_Small;
+  [customParams] {
+    ammoSupplier=1;
+    dontCount=1;
+    supplyRange=450;
+  }
+  energyMake=0;
+  energyStorage=0;
+  explodeAs=ResourceBoom;
+  footprintX=3;
+  footprintZ=3;
+  iconType=ammo;
+  maxDamage=400;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsSmall.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=GERInf;
+  stealth=1;
+  TEDClass=ENERGY;
+  useBuildingGroundDecal=1;
+  yardMap=o;
 
-	name=Small Supply Dump;
-	description=Supplies A Small Area;
-	side=GER;
-	maxdamage=400;
-	buildcostmetal=720;
-	buildcostenergy=0;
-	buildtime=480;
-	footprintx=3;
-	footprintz=3;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-
-	energymake=0;
-	energystorage=0;
-
-	sightdistance=1;
-	stealth=1;
-
-	activatewhenbuilt=1;
-
-	maxslope=15;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=4;
-	buildinggrounddecaltype=Dirt2.dds;
-	weapon1=noweapon;
-	explodeas=ResourceBoom;
-	selfdestructas=Med_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		ammoSupplier=1;
-		supplyRange=450;
-	}
+  weapon1=noweapon;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

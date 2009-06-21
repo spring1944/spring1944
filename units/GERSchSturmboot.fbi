@@ -1,53 +1,45 @@
-[unitinfo]
-{
-	unitname=GERSchSturmboot;
-	objectname=GERSchSturmboot;
-	corpse=GERSchSturmboot_dead;
-	buildpic=GERSchSturmboot.png;
-	icontype=landingship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
-	tedclass=SHIP;
-
-	name=Schwere Sturmboot 42;
-	description= Infantry Landing Craft;
-	maxdamage=2500;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=4;
-	footprintz=4;
-	mass=10000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
-
-	// enough for 20 inf
-	transportsize=1;
-	transportcapacity=20;
-	//transportcapacity=5;
-	transportmass=8000;
-	holdsteady=1;
-
-	canmove=1;
-	movementclass=BOAT_LandingCraft;
-	maxvelocity=3;
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=35;
-	turninplace=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=GERSchSturmboot;
+  name=Schwere Sturmboot 42;
+  description=Infantry Landing Craft;
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildPic=GERSchSturmboot.png;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+  corpse=GERSchSturmboot_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  holdSteady=1;
+  iconType=landingship;
+  mass=10000;
+  maxDamage=2500;
+  maxVelocity=3;
+  minWaterDepth=6;
+  movementClass=BOAT_LandingCraft;
+  objectName=GERSchSturmboot;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=20;
+  transportMass=8000;
+  transportSize=1;
+  turninplace=0;
+  turnRate=35;
 }
+

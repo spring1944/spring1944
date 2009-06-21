@@ -1,71 +1,61 @@
-[unitinfo]
-{
-	unitname=GBRHQ;
-	objectname=GBRHQ.S3O;
-	buildpic=GBRHQ.png;
-	corpse=GBRHQ_Destroyed;
-	icontype=gbrhq;
-	soundcategory=GBRYard;
-	category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
-	tedclass=PLANT;
-	yardmap=ooooooo oocccoo oocccoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;
-	collisionvolumetype=ellipsoid;
-	name=British Army HQ;
-	description=Command Outpost;
-	maxdamage=8500;
-	buildcostmetal=2050;
-	buildcostenergy=0;
-	buildtime=8500;
-	footprintx=7;
-	footprintz=7;
-
-	commander=1;
-	showplayername=1;
-	hidedamage=1;
-	shownanoframe=0;
-	smoothanim=0;
-
-	metalmake=0;
-	energystorage=0.01;
-	radardistance=2000000;
-	sightdistance=146;
-	airsightdistance=2500;
-	stealth=1;
-
-	builder=1;
-	workertime=10; //60
-	shownanospray=0;
-	canbeassisted=0;
-
-	onoffable=1;
-	activatewhenbuilt=1;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Huge_Explosion;
-	selfdestructas=Huge_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		blockfear=1;
-		hq=1;
-		refillamount=1000000; 
-		arrivalgap=450;	
-		flagCapRate=10;
-		ammoSupplier=1;
-		supplyRange=500;
-		separatebuildspot=1;
-	}
+[unitinfo] {
+  unitname=GBRHQ;
+  name=British Army HQ;
+  description=Command Outpost;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=2050;
+  builder=1;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=GBRHQ.png;
+  buildTime=8500;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
+  collisionVolumeType=ellipsoid;
+  commander=1;
+  corpse=GBRHQ_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    arrivalgap=450;
+    blockfear=1;
+    flagCapRate=10;
+    hq=1;
+    refillamount=1e+06;
+    separatebuildspot=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=Huge_Explosion;
+  footprintX=7;
+  footprintZ=7;
+  hideDamage=1;
+  iconType=gbrhq;
+  maxDamage=8500;
+  maxSlope=10;
+  maxWaterDepth=0;
+  metalMake=0;
+  objectName=GBRHQ.S3O;
+  onoffable=1;
+  radarDistance=2000000;
+  selfDestructAs=Huge_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  showPlayerName=1;
+  sightDistance=146;
+  smoothAnim=0;
+  soundcategory=GBRYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //60
+  yardMap=ooooooo oocccoo oocccoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

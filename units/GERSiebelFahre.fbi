@@ -1,73 +1,61 @@
-[unitinfo]
-{
-	unitname=GERSiebelFahre;
-	objectname=GERSiebelFahre;
-	corpse=GERSiebelFahre_dead;
-	icontype=pontoon;
-	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GERSiebelFahre;
+  name=Siebel Fahre;
+  description=Tank Ferry;
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  corpse=GERSiebelFahre_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  holdSteady=1;
+  iconType=pontoon;
+  mass=70000;
+  maxDamage=10000;
+  maxVelocity=0.65; // 12 km/h ~= 6.5 kn
+  minWaterDepth=6;
+  movementClass=BOAT_LandingCraft;
+  objectName=GERSiebelFahre;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=900;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=18;
+  transportMass=3000;
+  transportSize=18;
+  turninplace=0;
+  turnRate=35;
+  WeaponMainDir1=-1 0 0;
+  WeaponMainDir2=1 0 0;
+  WeaponMainDir5=0 0 -1;
 
-	name=Siebel Fahre;
-	description=Tank Ferry;
-	maxdamage=10000;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=70000;
-	floater=1;
-	minwaterdepth=6;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=20mmc38;
+  maxAngleDif1=320;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=900;
-	airsightdistance=1500;
-	stealth=1;
+  Weapon2=20mmc38;
+  maxAngleDif2=320;
+  onlyTargetCategory2=NFLAGNAIR;
 
-	// enough for 1 medium tank OR 3 trucks, etc.
-	transportsize=18;
-	transportcapacity=18;
-	//transportcapacity=5;
-	transportmass=3000;
-	holdsteady=1;
-
-	canmove=1;
-	movementclass=BOAT_LandingCraft;
-	maxvelocity=0.65; // 12 km/h ~= 6.5 kn
-	acceleration=0.15;
-	brakerate=0.14;
-	turnrate=35;
-	turninplace=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	Weapon1=20mmc38;
-	Weapon2=20mmc38;
-	Weapon3=20mmc38;
-
-	OnlyTargetCategory1=NFLAGNAIR;
-	OnlyTargetCategory2=NFLAGNAIR;
-	OnlyTargetCategory3=NFLAGNAIR;
-
-	WeaponMainDir1=-1 0 0;
-	MaxAngleDif1=320;
-
-	WeaponMainDir2=1 0 0;
-	MaxAngleDif2=320;
-
-	WeaponMainDir5=0 0 -1;
-	MaxAngleDif5=270;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon3=20mmc38;
+  onlyTargetCategory3=NFLAGNAIR;
+  maxAngleDif5=270;
 }
+

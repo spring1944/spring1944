@@ -1,56 +1,45 @@
-[unitinfo]
-{
-	unitname=GBRTankYard;
-	objectname=GBRTankYard.S3O;
-	icontype=factory;
-	soundcategory=GBRYard;
-	category=NFLAGNAIR PLANT BUILDING;
-	tedclass=PLANT;
-	yardmap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
-	collisionvolumetype=ellipsoid;
-	name=Tank Depot;
-	description=Basic Armour Production Facility;
-	side=GBR;
-	maxdamage=8000;
-	idleautoheal=3;
-	buildcostmetal=7900;
-	buildcostenergy=0;
-	buildtime=5265;
-	footprintx=7;
-	footprintz=7;
-
-	shownanoframe=0;
-
-	 
-	energystorage=0.01;
-
-	sightdistance=146;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//180
-	shownanospray=0;
-	canbeassisted=0;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaldecayspeed=0.05;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=LARGE_EXPLOSION;
-	selfdestructas=LARGE_EXPLOSION;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		ammoSupplier=1;
-		supplyRange=500;
-	}
+[unitinfo] {
+  unitname=GBRTankYard;
+  name=Tank Depot;
+  description=Basic Armour Production Facility;
+  buildCostEnergy=0;
+  buildCostMetal=7900;
+  builder=1;
+  buildingGroundDecalDecaySpeed=0.05;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=5265;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT BUILDING;
+  collisionVolumeType=ellipsoid;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=LARGE_EXPLOSION;
+  footprintX=7;
+  footprintZ=7;
+  iconType=factory;
+  idleAutoHeal=3;
+  maxDamage=8000;
+  maxSlope=10;
+  maxWaterDepth=0;
+  objectName=GBRTankYard.S3O;
+  selfDestructAs=LARGE_EXPLOSION;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=GBR;
+  sightDistance=146;
+  soundcategory=GBRYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //180
+  yardMap=oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo oocccoo;
 }
+

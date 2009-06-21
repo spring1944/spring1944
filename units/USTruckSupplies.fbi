@@ -1,56 +1,47 @@
-[unitinfo]
-{
-	unitname=USTruckSupplies;
-	objectname=USTruckSupplies.S3O;
-	buildpic=USTruckSupplies.png;
-	corpse=Debris_Large;
-	icontype=ammo;
-	soundcategory=USInf;
-	category=NFLAGNAIR BUILDING NFLAG ;
-	tedclass=ENERGY;
-	yardmap=o;
+[unitinfo] {
+  unitname=USTruckSupplies;
+  name=Unloaded Supply Truck;
+  description=Supplies A Moderate Area;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=720;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=USTruckSupplies.png;
+  buildTime=480;
+  category=NFLAGNAIR BUILDING NFLAG;
+  corpse=Debris_Large;
+  [customParams] {
+    ammoSupplier=1;
+    dontCount=1;
+    supplyRange=625;
+  }
+  energyMake=0;
+  energyStorage=0;
+  explodeAs=ResourceBoom;
+  footprintX=4;
+  footprintZ=4;
+  iconType=ammo;
+  maxDamage=400;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=USTruckSupplies.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=US;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=ENERGY;
+  useBuildingGroundDecal=1;
+  yardMap=o;
 
-	name=Unloaded Supply Truck;
-	description=Supplies A Moderate Area;
-	side=US;
-	maxdamage=400;
-	buildcostmetal=720;
-	buildcostenergy=0;
-	buildtime=480;
-	footprintx=4;
-	footprintz=4;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	energymake=0;
-	energystorage=0;
-
-	sightdistance=1;
-	stealth=1;
-
-	activatewhenbuilt=1;
-
-	maxslope=15;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=4;
-	buildinggrounddecalsizey=4;
-	buildinggrounddecaltype=Dirt2.dds;
-	weapon1=noweapon;
-	explodeas=ResourceBoom;
-	selfdestructas=Med_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		ammoSupplier=1;
-		supplyRange=625;
-	}
+  weapon1=noweapon;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

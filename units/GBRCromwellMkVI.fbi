@@ -1,90 +1,80 @@
-[unitinfo]
-{
-	unitname=GBRCromwellMkVI;
-	objectname=GBRCromwellMkVI.S3O;
-	corpse=GBRCromwell_Damaged;
-	icontype=medtank;
-	soundcategory=GBRTank;
-	category=NFLAGNAIR NFLAG TANK WEAPON;
-	tedclass=TANK;
+[unitinfo] {
+  unitname=GBRCromwellMkVI;
+  name=A27M Cromwell Mk VI;
+  description=Heavily-Armed Support Tank;
+  acceleration=0.05;
+  activateWhenBuilt=1;
+  airSightDistance=1500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=4050;
+  buildTime=540;
+  canMove=1;
+  category=NFLAGNAIR NFLAG TANK WEAPON;
+  corpse=GBRCromwell_Damaged;
+  [customParams] {
+    blockfear=1;
+    lowammolevel=3;
+    maxammo=10;
+    weaponcost=20;
+    weaponswithammo=1;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.84;
+  flankingBonusMode=3;
+  footprintX=3;
+  footprintZ=3;
+  iconType=medtank;
+  leaveTracks=1;
+  mass=2750;
+  maxDamage=6027;
+  maxSlope=2;
+  maxVelocity=3.6;
+  maxWaterDepth=15;
+  movementClass=TANK_Heavy;
+  noChaseCategory=FLAG AIR;
+  objectName=GBRCromwellMkVI.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:LARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:LARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=750;
+  smoothAnim=0;
+  soundcategory=GBRTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=18;
+  turninplace=0;
+  turnRate=250;
+  badTargetCategory=FLAG;
 
-	name=A27M Cromwell Mk VI;
-	description=Heavily-Armed Support Tank;
-	side=GBR;
+  weapon1=cs95mmhe;
+  badTargetCategory1=TANK;
+  onlyTargetCategory1=NFLAGNAIR;
 
-	maxdamage=6027;
-	flankingbonusdir=0 0 1;
-	flankingbonusmax=1.5;
-	flankingbonusmin=.84;
-	flankingbonusmode=3;
+  weapon2=Bren;
+  onlyTargetCategory2=INFTARG;
 
-	buildcostmetal=4050;
-	buildcostenergy=0;
-	buildtime=540;
-	footprintx=3;
-	footprintz=3;
-	mass=2750;
+  weapon3=.50calproof;
 
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=750;
-	airsightdistance=1500;
-	stealth=1;
-
-	activatewhenbuilt=1;
-
-	canmove=1;
-	movementclass=TANK_Heavy;
-	maxvelocity=3.6;
-	acceleration=0.05;
-	brakerate=0.15;
-	turnrate=250;
-	maxslope=2;
-	maxwaterdepth=15;
-	turninplace=0;
-	
-	leavetracks=1;
-	trackwidth=18;
-	trackoffset=5;
-	trackstrength=10;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Med;
-	selfdestructas=Vehicle_Explosion_Med;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=cs95mmhe;
-	badtargetcategory1=TANK;
-	onlytargetcategory1=NFLAGNAIR;
-	weapon2=Bren;
-	onlytargetcategory2=INFTARG;
-	weapon3=.50calproof;
-	weapon4=Small_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:MG_MUZZLEFLASH;
-		explosiongenerator8=custom:LARGE_MUZZLEFLASH;
-		explosiongenerator9=custom:LARGE_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		blockfear=1;
-		maxammo=10;
-		weaponswithammo=1;
-		lowammolevel=3;
-		weaponcost=20;
-	}
+  weapon4=Small_Tracer;
 }
+

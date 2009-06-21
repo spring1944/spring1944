@@ -1,81 +1,69 @@
-[unitinfo]
-{
-	unitname=GBRLCT;
-	objectname=GBRLCT;
-	corpse=GBRLCT_dead;
-	icontype=transportship;
-	buildpic=gbrlct.png;
-	category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
-	tedclass=SHIP;
+[unitinfo] {
+  unitname=GBRLCT;
+  name=LCT mk.4;
+  description=transports up to 9 tanks;
+  acceleration=0.2;
+  airSightDistance=1100;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildPic=gbrlct.png;
+  buildTime=375;
+  canMove=1;
+  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  corpse=GBRLCT_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  holdSteady=1;
+  iconType=transportship;
+  mass=280000;
+  maxDamage=17500;
+  maxVelocity=0.8; // 8 knots...
+  minWaterDepth=2;
+  movementClass=BOAT_LandingCraft;
+  objectName=GBRLCT;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=700;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=30;
+  transportMass=27000;
+  transportSize=54;
+  turninplace=0;
+  turnRate=42.5;
+  WeaponMainDir1=1 0 0;
+  WeaponMainDir2=-1 0 0;
 
-	name=LCT mk.4;
-	description= transports up to 9 tanks;
-	maxdamage=17500;
-	buildcostmetal=100;
-	buildcostenergy=0;
-	buildtime=375;
-	footprintx=8;
-	footprintz=8;
-	mass=280000;
-	floater=1;
-	minwaterdepth=2;
-	shownanoframe=0;
-	smoothanim=0;
+  Weapon1=20mmOerlikonaa; //oerlikon20mm;
+  maxAngleDif1=240;
+  onlyTargetCategory1=NFLAG;
 
-	energymake=0;
-	energyuse=0;
-	SeismicSignature=0;
-	sightdistance=700;
-	airsightdistance=1100;
-	stealth=1;
+  Weapon2=20mmOerlikonaa; //oerlikon20mm;
+  maxAngleDif2=240;
+  onlyTargetCategory2=NFLAG;
 
-	// enough for 5 shermans
-	transportsize=54;
-	transportcapacity=30;
-	//transportcapacity=5;
-	transportmass=27000;
-	holdsteady=1;
-
-	canmove=1;
-	movementclass=BOAT_LandingCraft;
-	maxvelocity=0.8; // 8 knots...
-	acceleration=0.2;
-	brakerate=0.15;
-	turnrate=42.5;
-	turninplace=0;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	Weapon1=20mmOerlikonaa; //oerlikon20mm;
-	Weapon2=20mmOerlikonaa; //oerlikon20mm;
-
-	OnlyTargetCategory1=NFLAG;
-	OnlyTargetCategory2=NFLAG;
-
-	WeaponMainDir1=1 0 0;
-	MaxAngleDif1=240;
-
-	WeaponMainDir2=-1 0 0;
-	MaxAngleDif2=240;
-
-	Weapon3=Large_Tracer;
-
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:PLACEHOLDER_EFFECT07;
-		explosiongenerator8=custom:XSMALL_MUZZLEFLASH;
-		explosiongenerator9=custom:XSMALL_MUZZLEDUST;
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+  Weapon3=Large_Tracer;
 }
+

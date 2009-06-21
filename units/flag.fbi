@@ -1,53 +1,44 @@
-[unitinfo]
-{
-	unitname=flag;
-	objectname=flag.S3O;
-	icontype=flag;
-	category=metal FLAG NOWEAPON;
-	tedclass=METAL;
-	yardmap=ooooooooo;
+[unitinfo] {
+  unitname=flag;
+  name=Flag;
+  description=Command Position Signal;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildTime=150;
+  canSelfDestruct=0;
+  category=metal FLAG NOWEAPON;
+  [customParams] {
+    dontCount=1;
+    flag=1;
+  }
+  energyUse=0;
+  explodeAs=Flag;
+  extractsMetal=0.001472;
+  footprintX=0;
+  footprintZ=0;
+  hideDamage=1;
+  iconType=flag;
+  levelGround=0;
+  maxDamage=5e+06;
+  maxSlope=20;
+  maxWaterDepth=255;
+  objectName=flag.S3O;
+  onoffable=1;
+  radarDistance=2000000;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=0;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=METAL;
+  windGenerator=1e-06;
+  yardMap=ooooooooo;
 
-	name=Flag;
-	description=Command Position Signal;
-	side=GBR;
-	maxdamage=5000000;
-	buildcostmetal=1;
-	buildcostenergy=0;
-	buildtime=150;
-	footprintx=0;
-	footprintz=0;
-
-	hidedamage=1;
-	shownanoframe=0;
-	smoothanim=0;
-	levelground=0;
-
-	extractsmetal=0.001472;
-	energyuse=0;
-	windgenerator=0.000001;
-
-	radardistance=2000000;
-	sightdistance=0;
-	stealth=1;
-
-	onoffable=1;
-	activatewhenbuilt=1;
-
-	maxslope=20;
-	maxwaterdepth=255;
-
-	explodeas=Flag;
-	canselfdestruct=0;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	weapon1=flag;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		flag=1;
-	}
+  weapon1=flag;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

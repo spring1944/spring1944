@@ -1,93 +1,70 @@
-[unitinfo]
-{
-	unitname=GERHQBunker;
-	objectname=GERHQBunker.S3O;
-	buildpic=GERHQBunker.png;
-	corpse=GERHQBunker_Destroyed;
-	icontype=gerhq;
-	soundcategory=GERYard;
-	category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
-	tedclass=PLANT;
-	yardmap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
-	collisionvolumetype=ellipsoid;
-	name=Wehrmacht HQ Bunker;
-	description=Fortified Command Post;
-	maxdamage=32000;
-	buildcostmetal=40500;
-	buildcostenergy=0;
-	buildtime=80000;
-	footprintx=10;
-	footprintz=10;
-	
-	energystorage=0.01;
+[unitinfo] {
+  unitname=GERHQBunker;
+  name=Wehrmacht HQ Bunker;
+  description=Fortified Command Post;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=40500;
+  builder=1;
+  buildingGroundDecalSizeX=12;
+  buildingGroundDecalSizeY=12;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=GERHQBunker.png;
+  buildTime=80000;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
+  collisionVolumeType=ellipsoid;
+  commander=1;
+  corpse=GERHQBunker_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    arrivalgap=450;
+    blockfear=1;
+    flagCapRate=10;
+    hq=1;
+    refillamount=1e+06;
+    supplyRange=1000;
+  }
+  energyStorage=0.01;
+  explodeAs=Huge_Explosion;
+  footprintX=10;
+  footprintZ=10;
+  hideDamage=1;
+  highTrajectory=0;
+  iconType=gerhq;
+  maxDamage=32000;
+  maxSlope=10;
+  maxWaterDepth=0;
+  metalMake=0;
+  noChaseCategory=FLAG AIR;
+  objectName=GERHQBunker.S3O;
+  radarDistance=2000000;
+  selfDestructAs=Huge_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  showPlayerName=1;
+  sightDistance=700;
+  smoothAnim=0;
+  soundcategory=GERYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+  weaponmaindir1=0 0 -1;
+  weaponmaindir6=1 0 1;
+  workerTime=10; //old 595000
+  yardMap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
 
-	commander=1;
-	showplayername=1;
-	hidedamage=1;
-	shownanoframe=0;
-	smoothanim=0;
+  weapon1=MG34;
+  maxAngleDif1=360;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory5=NFLAGNAIR;
 
-	metalmake=0;
-	
-	radardistance=2000000;
-	sightdistance=700;
-	airsightdistance=2500;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//old 595000
-	shownanospray=0;
-	canbeassisted=0;
-
-	activatewhenbuilt=1;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=12;
-	buildinggrounddecalsizey=12;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Huge_Explosion;
-	selfdestructas=Huge_Explosion;
-
-	hightrajectory=0;
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=MG34;
-	weaponmaindir1=0 0 -1;
-	onlytargetcategory1=NFLAGNAIR;
-	maxangledif1=360;
-	//weapon2=mg34fear;
-	//weaponmaindir2=0 0 -1;
-	//maxangledif2=180;
-	/*weapon3=MG34;
-	weaponmaindir3=0 0 1;
-	maxangledif3=180;
-	weapon4=mg34fear;
-	weaponmaindir4=0 0 1;
-	maxangledif4=180;*/
-	//weapon5=GrW34_8cmMortar;
-	onlytargetcategory5=NFLAGNAIR;
-	weapon6=M2Flamethrower;
-	weaponmaindir6=1 0 1;
-	maxangledif6=80;
-	[sfxtypes]
-	{
-	}
-		[customParams]
-	{
-		blockfear=1;
-		hq=1;
-		refillamount=1000000; 
-		arrivalgap=450;	
-		flagCapRate=10;
-		ammoSupplier=1;
-		supplyRange=1000;
-
-	}
+  weapon6=M2Flamethrower;
+  maxAngleDif6=80;
 }
+

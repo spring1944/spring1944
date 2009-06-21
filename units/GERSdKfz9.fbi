@@ -1,60 +1,50 @@
-[unitinfo]
-{
-	unitname=GERSdKfz9;
-	objectname=GERSdKfz9.S3O;
-	corpse=GERSdKfz9_Destroyed;
-	icontype=engineervehicle;
-	soundcategory=GERTank;
-	category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
-	tedclass=CONSTR;
-
-	name=Sd.Kfz. 9;
-	description=Construction Vehicle;
-	side=GER;
-	maxdamage=1000;
-	buildcostmetal=2700;
-	buildcostenergy=0;
-	buildtime=900;
-	footprintx=3;
-	footprintz=3;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=720;
-	stealth=1;
-
-	builder=1;
-	builddistance=128;
-	workertime=10;//140
-	terraformspeed=300;
-	shownanospray=0;
-
-	canmove=1;
-	movementclass=TANK_Medium;
-	maxvelocity=3;
-	acceleration=0.25;
-	brakerate=0.96;
-	turnrate=180;
-	maxslope=10;
-	maxwaterdepth=5;
-
-	leavetracks=1;
-	trackwidth=12;
-	trackoffset=3;
-	trackstrength=6;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle;
-	selfdestructas=Vehicle;
-
-	canattack=0;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
+[unitinfo] {
+  unitname=GERSdKfz9;
+  name=Sd.Kfz. 9;
+  description=Construction Vehicle;
+  acceleration=0.25;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=2700;
+  buildDistance=128;
+  builder=1;
+  buildTime=900;
+  canAttack=0;
+  canMove=1;
+  category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
+  corpse=GERSdKfz9_Destroyed;
+  explodeAs=Vehicle;
+  footprintX=3;
+  footprintZ=3;
+  iconType=engineervehicle;
+  leaveTracks=1;
+  maxDamage=1000;
+  maxSlope=10;
+  maxVelocity=3;
+  maxWaterDepth=5;
+  movementClass=TANK_Medium;
+  objectName=GERSdKfz9.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=GER;
+  sightDistance=720;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  trackOffset=3;
+  trackStrength=6;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turnRate=180;
+  workerTime=10; //140
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

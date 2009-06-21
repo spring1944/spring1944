@@ -1,62 +1,49 @@
-[unitinfo]
-{
-	unitname=USBarracks;
-	objectname=USBarracks.S3O;
-	corpse=USBarracks_Destroyed;
-	icontype=barracks;
-	soundcategory=USYard;
-	category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
-	tedclass=PLANT;
-	yardmap=oooo occo occo oyyo oyyo oyyo;
-	collisionvolumetype=ellipsoid;
-	name=US Army Barracks;
-	description=Infantry Training & Housing Facility;
-	maxdamage=4250;
-	buildcostmetal=2746;
-	buildcostenergy=0;
-	buildtime=1670;
-	footprintx=4;
-	footprintz=6;
-
-	hidedamage=0;
-	shownanoframe=0;
-	//unitrestricted=3;
-	smoothanim=0;
-
-	 
-	energystorage=0.01;
-
-	sightdistance=146;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//76
-	shownanospray=0;
-	canbeassisted=0;
-
-	canmove=1;
-	maxslope=10;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=7;
-	buildinggrounddecalsizey=7;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=Med_Explosion;
-	selfdestructas=Med_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-
-	[customParams]
-	{
-		blockfear=1;
-		ammoSupplier=1;
-		supplyRange=500;
-		separatebuildspot=1;
-	}
+[unitinfo] {
+  unitname=USBarracks;
+  name=US Army Barracks;
+  description=Infantry Training & Housing Facility;
+  buildCostEnergy=0;
+  buildCostMetal=2746;
+  builder=1;
+  buildingGroundDecalSizeX=7;
+  buildingGroundDecalSizeY=7;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=1670;
+  canBeAssisted=0;
+  canMove=1;
+  category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
+  collisionVolumeType=ellipsoid;
+  corpse=USBarracks_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    blockfear=1;
+    separatebuildspot=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=Med_Explosion;
+  footprintX=4;
+  footprintZ=6;
+  hideDamage=0;
+  iconType=barracks;
+  maxDamage=4250;
+  maxSlope=10;
+  maxWaterDepth=0;
+  objectName=USBarracks.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=146;
+  smoothAnim=0;
+  soundcategory=USYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //76
+  yardMap=oooo occo occo oyyo oyyo oyyo;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

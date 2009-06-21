@@ -1,54 +1,39 @@
-[unitinfo]
-{
-	unitname=GBRRadar;
-	objectname=GBRRadar.S3O;
-	icontype=radar;
-	soundcategory=Nothing;
-	category=NFLAGNAIR PLANT BUILDING;
-	tedclass=PLANT;
-	yardmap=ooooooooo;
-	buildpic=GERRadar.png;
-
-	name=AA No4 Mk3(P) Light Warning Set;
-	description=Flight Detection & Control Station;
-	side=GBR;
-	maxdamage=5000;
-	buildcostmetal=5138;
-	buildcostenergy=0;
-	buildtime=3425;
-	footprintx=5;
-	footprintz=5;
-
-	 
-	shownanoframe=0;
-	
-	 
-	
-	smoothanim=0;
-	levelground=0;
-
-	energyuse=0;
-	
-	radardistance=20000;
-	sightdistance=0;
-	stealth=1;
-
-	onoffable=1;
-	activatewhenbuilt=1;
-
-	maxslope=20;
-	maxwaterdepth=255;
-
-	explodeas=Large_Explosion;
-	selfdestructas=Large_Explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-	}
+[unitinfo] {
+  unitname=GBRRadar;
+  name=AA No4 Mk3(P) Light Warning Set;
+  description=Flight Detection & Control Station;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=5138;
+  buildPic=GERRadar.png;
+  buildTime=3425;
+  category=NFLAGNAIR PLANT BUILDING;
+  [customParams] {
+  }
+  energyUse=0;
+  explodeAs=Large_Explosion;
+  footprintX=5;
+  footprintZ=5;
+  iconType=radar;
+  levelGround=0;
+  maxDamage=5000;
+  maxSlope=20;
+  maxWaterDepth=255;
+  objectName=GBRRadar.S3O;
+  onoffable=1;
+  radarDistance=20000;
+  selfDestructAs=Large_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=0;
+  smoothAnim=0;
+  soundcategory=Nothing;
+  stealth=1;
+  TEDClass=PLANT;
+  yardMap=ooooooooo;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

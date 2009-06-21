@@ -1,68 +1,56 @@
-[unitinfo]
-{
-	unitname=GBRBedfordTruck;
-	objectname=GBRBedfordTruck.S3O;
-	buildpic=GBRBedfordTruck.png;
-	corpse=GBRBedfordTruck_Destroyed;
-	icontype=truck;
-	soundcategory=GBRVeh;
-	category=NFLAGNAIR TANK TPORT  INFTARG NFLAG NWEAPON;
-	tedclass=TANK;
-
-	name=Bedford QL;
-	description=Light Transport Truck;
-	maxdamage=500;
-	buildcostmetal=210;
-	buildcostenergy=0;
-	buildtime=140;
-	footprintx=3;
-	footprintz=3;
-	mass=1000;
-
-	shownanoframe=0;
-	smoothanim=0;
-
-	SeismicSignature=0;
-	sightdistance=800;
-	airsightdistance=1500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=4.5;//4.8
-	acceleration=0.3;
-	brakerate=0.96;
-	turnrate=440;
-	maxslope=10;
-	maxwaterdepth=5;
-	turninplace=0;
-	
-	leavetracks=1;
-	trackwidth=13;
-	trackoffset=10;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	transportsize=1;
-	transportcapacity=15;
-	transportmass=750;
-	releaseheld=1;
-	//unloadspread=1;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		buildOutside=1;
-	}
+[unitinfo] {
+  unitname=GBRBedfordTruck;
+  name=Bedford QL;
+  description=Light Transport Truck;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=210;
+  buildPic=GBRBedfordTruck.png;
+  buildTime=140;
+  canMove=1;
+  category=NFLAGNAIR TANK TPORT  INFTARG NFLAG NWEAPON;
+  corpse=GBRBedfordTruck_Destroyed;
+  [customParams] {
+    buildOutside=1;
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=500;
+  maxSlope=10;
+  maxVelocity=4.5; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=GBRBedfordTruck.S3O;
+  releaseHeld=1;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=GBRVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  transportCapacity=15;
+  transportMass=750;
+  transportSize=1;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

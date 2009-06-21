@@ -1,62 +1,49 @@
-[unitinfo]
-{
-	unitname=RUSSupplyDepot;
-	objectname=LogisticsHuge.S3O;
-	buildpic=SupplyDepot.png;
-	corpse=BuildingDebris_Large;
-	icontype=ammo;
-	soundcategory=RUSInf;
-	category=NFLAGNAIR BUILDING NFLAG ;
-	tedclass=PLANT;
-	yardmap=o;
-
-	name=Supply Depot;
-	description=Supplies An Extended Area;
-	side=RUS;
-	maxdamage=3000;
-	buildcostmetal=3600;
-	buildcostenergy=0;
-	buildtime=2400;
-	footprintx=7;
-	footprintz=7;
-
-	shownanoframe=0;
-	//unitrestricted=3;
-	smoothanim=0;
-
-	energymake=0;
-	energystorage=500;
-
-	sightdistance=1;
-	stealth=1;
-
-	builder=1;
-	workertime=10;//200
-	shownanospray=0;
-	canbeassisted=0;
-
-	activatewhenbuilt=1;
-
-	maxslope=15;
-	maxwaterdepth=0;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=8;
-	buildinggrounddecalsizey=8;
-	buildinggrounddecaltype=Dirt2.dds;
-
-	explodeas=massive_explosion;
-	selfdestructas=massive_explosion;
-
-	onlytargetcategory1=NFLAGNAIR;
-	onlytargetcategory2=NFLAG;
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		ammoSupplier=1;
-		supplyRange=2000;
-	}
+[unitinfo] {
+  unitname=RUSSupplyDepot;
+  name=Supply Depot;
+  description=Supplies An Extended Area;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=3600;
+  builder=1;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=SupplyDepot.png;
+  buildTime=2400;
+  canBeAssisted=0;
+  category=NFLAGNAIR BUILDING NFLAG;
+  corpse=BuildingDebris_Large;
+  [customParams] {
+    ammoSupplier=1;
+    dontCount=1;
+    supplyRange=2000;
+  }
+  energyMake=0;
+  energyStorage=500;
+  explodeAs=massive_explosion;
+  footprintX=7;
+  footprintZ=7;
+  iconType=ammo;
+  maxDamage=3000;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsHuge.S3O;
+  selfDestructAs=massive_explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=RUS;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=10; //200
+  yardMap=o;
+  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory2=NFLAG;
 }
+

@@ -1,56 +1,47 @@
-[unitinfo]
-{
-	unitname=ATMine;
-	objectname=ATMine.S3O;
-	icontype=mines;
-	soundcategory=Nothing;
-	category=MINE WEAPON KAMIKAZE;
-	tedclass=SPECIAL;
-	yardmap=y;
+[unitinfo] {
+  unitname=ATMine;
+  name=Anti-Tank Mine;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildingGroundDecalSizeX=2;
+  buildingGroundDecalSizeY=2;
+  buildingGroundDecalType=MineDirt.dds;
+  buildTime=1;
+  category=MINE WEAPON KAMIKAZE;
+  cloakCost=0;
+  [customParams] {
+    dontCount=1;
+    isMine=1;
+  }
+  explodeAs=NOWEAPON;
+  footprintX=1;
+  footprintZ=1;
+  iconType=mines;
+  init_cloaked=1;
+  kamikaze=1;
+  levelGround=0;
+  maxDamage=500;
+  maxSlope=15;
+  maxWaterDepth=50;
+  minCloakDistance=1e-07;
+  objectName=ATMine.S3O;
+  selfDestructAs=ATMine;
+  selfDestructCountdown=1;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=160;
+  smoothAnim=0;
+  soundcategory=Nothing;
+  stealth=1;
+  TEDClass=SPECIAL;
+  useBuildingGroundDecal=1;
+  yardMap=y;
 
-	name=Anti-Tank Mine;
-	maxdamage=500;
-	buildcostmetal=1;
-	buildcostenergy=0;
-	buildtime=1;
-	footprintx=1;
-	footprintz=1;
+  weapon1=ATMine;
+  onlyTargetCategory1=TANK;
 
-	 
-	shownanoframe=0;
-	smoothanim=0;
-
-	sightdistance=160;
-	stealth=1;
-	Levelground=0;
-	init_cloaked=1;
-	mincloakdistance=0.0000001;
-
-	maxslope=15;
-	maxwaterdepth=50;
-	//energymake=-1;
-	cloakcost=0;
-	selfdestructcountdown=1;
-	explodeas=NOWEAPON;
-	selfdestructas=ATMine;
-	kamikaze=1;
-
-	weapon1=ATMine;
-	onlytargetcategory1=TANK;
-	weapon2=ATMineDet;
-	onlytargetcategory2=NOTHING;
-
-	usebuildinggrounddecal=1;
-	buildinggrounddecalsizex=2;
-	buildinggrounddecalsizey=2;
-	buildinggrounddecaltype=MineDirt.dds;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-		isMine=1;
-	}
+  weapon2=ATMineDet;
+  onlyTargetCategory2=NOTHING;
 }
+

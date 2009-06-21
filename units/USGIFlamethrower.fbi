@@ -1,72 +1,61 @@
-[unitinfo]
-{
-	unitname=USGIFlamethrower;
-	objectname=USflamethrower.S3O;
-	corpse=USsoldier_dead;
-	icontype=flame;
-	soundcategory=USInf;
-	category=NFLAG NFLAGNAIR INFTARG WEAPON;
-	tedclass=KBOT;
+[unitinfo] {
+  unitname=USGIFlamethrower;
+  name=G.I. M2 Flamethrower;
+  description=Close Range Heavy Assault Infantry;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=300;
+  buildTime=1050;
+  canMove=1;
+  category=NFLAG NFLAGNAIR INFTARG WEAPON;
+  cloakCost=0;
+  cloakCostMoving=0;
+  corpse=USsoldier_dead;
+  [customParams] {
+    dontCount=1;
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  explodeAs=Small_Explosion;
+  footprintX=1;
+  footprintZ=1;
+  iconType=flame;
+  init_cloaked=1;
+  mass=75;
+  maxDamage=100;
+  maxSlope=25;
+  maxVelocity=1;
+  maxWaterDepth=5;
+  minCloakDistance=220;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR;
+  objectName=USflamethrower.S3O;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:SMG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
+  weaponmaindir1=0 0 1;
 
-	name=G.I. M2 Flamethrower;
-	description=Close Range Heavy Assault Infantry;
-	maxdamage=100;
-	damagemodifier=0.375;
-	buildcostmetal=300;
-	buildcostenergy=0;
-	buildtime=1050;
-	footprintx=1;
-	footprintz=1;
-	mass=75;
-
-	upright=1;
-	shownanoframe=0;
-	smoothanim=0;
-	
-	init_cloaked=1;
-	cloakcost=0;
-	cloakcostmoving=0;
-	mincloakdistance=220;
-	
-
-	SeismicSignature=0;
-	sightdistance=840;
-	airsightdistance=2500;
-	stealth=1;
-
-	canmove=1;
-	movementclass=KBOT_Infantry;
-	maxvelocity=1;
-	acceleration=0.375;
-	brakerate=0.9;
-	turnrate=1010;
-	maxslope=25;
-	maxwaterdepth=5;
-
-	explodeas=Small_Explosion;
-	//selfdestructas=; //Infantry don't need to explode
-
-	nochasecategory=FLAG AIR;
-	badtargetcategory=FLAG;
-
-	weapon1=M2Flamethrower;
-	onlytargetcategory1=NFLAGNAIR;
-	weaponmaindir1=0 0 1;
-	maxangledif1=170;
-	[sfxtypes]
-	{
-		explosiongenerator0=custom:SMOKEPUFF_GPL_FX;
-		explosiongenerator1=custom:PLACEHOLDER_EFFECT01;
-		explosiongenerator2=custom:PLACEHOLDER_EFFECT02;
-		explosiongenerator3=custom:PLACEHOLDER_EFFECT03;
-		explosiongenerator4=custom:PLACEHOLDER_EFFECT04;
-		explosiongenerator5=custom:PLACEHOLDER_EFFECT05;
-		explosiongenerator6=custom:PLACEHOLDER_EFFECT06;
-		explosiongenerator7=custom:SMG_MUZZLEFLASH;
-	}
-	[customParams]
-	{
-		dontCount=1;
-		feartarget=1;
-	}
+  weapon1=M2Flamethrower;
+  maxAngleDif1=170;
+  onlyTargetCategory1=NFLAGNAIR;
 }
+

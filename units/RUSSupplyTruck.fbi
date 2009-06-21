@@ -1,59 +1,50 @@
-[unitinfo]
-{
-	unitname=RUSSupplyTruck;
-	objectname=RUSSupplyTruck.S3O;
-	buildpic=RUSZiS5.png;
-	corpse=RUSZiS5_Destroyed;
-	icontype=truck;
-	soundcategory=RUSVeh;
-	category=NFLAGNAIR TANK TPORT INFTARG NFLAG NWEAPON;
-	tedclass=TANK;
-
-	name=Supply Truck;
-	description=Deploys Into Supply Point;
-	side=RUS;
-	maxdamage=500;
-	idleautoheal=2;
-	idletime=1000;
-	buildcostmetal=660;
-	buildcostenergy=0;
-	buildtime=220;
-	footprintx=3;
-	footprintz=3;
-	mass=1000;
-
-	shownanoframe=0;
-	SeismicSignature=0;
-	sightdistance=800;
-	stealth=1;
-
-	canmove=1;
-	movementclass=TANK_Truck;
-	maxvelocity=3.96;
-	acceleration=0.3;
-	brakerate=0.45;
-	turnrate=290;
-	maxslope=2;
-	maxwaterdepth=5;
-	turninplace=0;
-
-	leavetracks=1;
-	trackwidth=12;
-	trackoffset=5;
-	trackstrength=6.5;
-	trackstretch=1;
-	tracktype=Stdtank;
-
-	explodeas=Vehicle_Explosion_Sm;
-	selfdestructas=Vehicle_Explosion_Sm;
-
-	nochasecategory=VTOL AIR;
-
-	[sfxtypes]
-	{
-	}
-	[customParams]
-	{
-		dontCount=1;
-	}
+[unitinfo] {
+  unitname=RUSSupplyTruck;
+  name=Supply Truck;
+  description=Deploys Into Supply Point;
+  acceleration=0.3;
+  brakeRate=0.45;
+  buildCostEnergy=0;
+  buildCostMetal=660;
+  buildPic=RUSZiS5.png;
+  buildTime=220;
+  canMove=1;
+  category=NFLAGNAIR TANK TPORT INFTARG NFLAG NWEAPON;
+  corpse=RUSZiS5_Destroyed;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  idleAutoHeal=2;
+  idleTime=1000;
+  leaveTracks=1;
+  mass=1000;
+  maxDamage=500;
+  maxSlope=2;
+  maxVelocity=3.96;
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=VTOL AIR;
+  objectName=RUSSupplyTruck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=800;
+  soundcategory=RUSVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turninplace=0;
+  turnRate=290;
 }
+
