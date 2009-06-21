@@ -11,7 +11,6 @@ static-var restore_delay;
 #define SIG_MOVE			2
 //#define INFANTRY			458752 //983040 // this is 65536 * s3o model radius
 //#define FUDGE				50 // isn't enough even between smg and rifle
-#define UNIT_ALLIED			74
 
 // Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
@@ -23,10 +22,10 @@ TransportPickup(unitid)
 			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
 			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
 			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			attach-unit unitid to -1;
+			attach-unit unitid to load_arm;
 			move load_arm to z-axis [10.000000] speed [300.000000];
 			wait-for-move load_arm along z-axis;
-		//	attach-unit unitid to deck; 
+			attach-unit unitid to deck;
 			set BUSY to 0;
 		}
 	}
