@@ -11,7 +11,7 @@
 	collisionvolumetype=ellipsoid;
 	
 	name=Motorized Gun Depot;
-	description=Motorized Gun Production Facility;; 
+	description=Motorized Gun Production Facility;
 	side=RUS;
 	maxdamage=8000;
 	idleautoheal=3;
