@@ -1,116 +1,101 @@
-[maxim]
-{
-	id=7;
-	name=Maxim Machinegun;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-	lineofsight=1;
-	firestarter=1;
-
-	range=1270;
-	reloadtime=2.7;
-	burst=14;
-	burstrate=.05;
-	sprayangle=350;
-	areaofeffect=1;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=1;
-	soundstart=RUS_Maxim;
-
-	avoidfeature=0;
-	collidefeature=0;
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=0 0.7 0;
-	collisionsize=2.5;
-	size=0.000000000001;
-	impactonly=1;
-	[damage]
-	{
-		default=1;
-		infantry=33;
-		guns=30;
-		lightbuildings=1;
-		bunkers=0;
-		sandbags=1;
-		mines=0;
-		flag=0.00000001;
-		tanks=0;
-		armouredvehicles=8;
-		unarmouredvehicles=12;
-		planes=24;
-	}
-	[customParams]
-	{
-		fearid=301;
-		fearaoe=30;
-	}
+[maxim] {
+  name=Maxim Machinegun;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  burnblow=1;
+  burst=14;
+  burstRate=0.05;
+  collideFeature=0;
+  collideFriendly=0;
+  collisionSize=2.5;
+  [customParams] {
+    fearaoe=30;
+    fearid=301;
+  }
+  [damage] {
+    default=1;
+    armouredvehicles=8;
+    bunkers=0;
+    flag=1e-08;
+    guns=30;
+    infantry=33;
+    lightbuildings=1;
+    mines=0;
+    planes=24;
+    sandbags=1;
+    tanks=0;
+    unarmouredvehicles=12;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=1;
+  id=7;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  noSelfDamage=1;
+  range=1270;
+  reloadTime=2.7;
+  rendertype=0;
+  rgbColor=0.0 0.7 0.0;
+  size=1e-12;
+  soundStart=RUS_Maxim;
+  soundTrigger=1;
+  sprayAngle=350;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
 
-[maximaa]
-{
-	id=7;
-	name=Maxim Machineguns in Anti-Aircraft role (GAZ-AAA);
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-	lineofsight=1;
-	firestarter=1;
-	predictboost=0.75;
-
-	range=910;
-	reloadtime=1;
-	burst=7;
-	burstrate=.103;
-	sprayangle=350;
-	movingaccuracy=400;
-	areaofeffect=1;
-	impactonly=1;
-	collisionvolumetest=1;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-	canattackground=0;
-
-	soundtrigger=1;
-	soundstart=RUS_Maxim;
-
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=0 0.7 0;
-
-	size=0.000000000001;
-
-	[damage]
-	{
-		default=1;
-		infantry=33;
-		guns=30;
-		lightbuildings=1;
-		bunkers=0;
-		sandbags=1;
-		mines=0;
-		flag=0.00000001;
-		tanks=0;
-		armouredvehicles=8;
-		unarmouredvehicles=12;
-		planes=4;
-	}
-	[customParams]
-	{
-		fearid=701;
-		fearaoe=1;
-	}
+[maximaa] {
+  name=Maxim Machineguns in Anti-Aircraft role (GAZ-AAA);
+  areaOfEffect=1;
+  avoidFriendly=0;
+  burnblow=1;
+  burst=7;
+  burstRate=0.103;
+  canAttackGround=0;
+  collideFriendly=0;
+  collisionVolumeTest=1;
+  [customParams] {
+    fearaoe=1;
+    fearid=701;
+  }
+  [damage] {
+    default=1;
+    armouredvehicles=8;
+    bunkers=0;
+    flag=1e-08;
+    guns=30;
+    infantry=33;
+    lightbuildings=1;
+    mines=0;
+    planes=4;
+    sandbags=1;
+    tanks=0;
+    unarmouredvehicles=12;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=1;
+  id=7;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  movingAccuracy=400;
+  noSelfDamage=1;
+  predictBoost=0.75;
+  range=910;
+  reloadTime=1;
+  rendertype=0;
+  rgbColor=0.0 0.7 0.0;
+  size=1e-12;
+  soundStart=RUS_Maxim;
+  soundTrigger=1;
+  sprayAngle=350;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
+

@@ -1,116 +1,91 @@
-[41k45mmhe]
-{
-	id=59;
-	name=41K 45mm Naval Gun;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Small;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=1310;
-	reloadtime=1.6; // 1.5 times as fast as the single gun
-	accuracy=354;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	weaponvelocity=1584;
-	areaofeffect=40;
-	edgeeffectiveness=0.20;
-
-	soundstart=RUS_45mm;
-	soundhit=GEN_Explo_2;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=1.75;
-	collisionsize=3;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[41k45mmap] {
+  name=41K 45mm Armour Piercing;
+  accuracy=290;
+  areaOfEffect=5;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=3225; //4300
+    bunkers=20;
+    flags=0;
+    mines=0;
+  }
+  dynDamageExp=1;
+  dynDamageRange=3100;
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Small;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1310;
+  reloadTime=2.1;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
-  stages=50;
-
-	[damage]
-	{
-		default=50;
-		infantry=600;
-		guns=500;
-		mines=0;
-		flags=0;
-		lightbuildings=600;
-		hq=200;
-		sandbags=1000;
-		tanks=100;
-		armouredvehicles=400;
-		unarmouredvehicles=600;
-	}
-}
-[41k45mmap]
-{
-	id=100;
-	name=41K 45mm Armour Piercing;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Small;
-	ballistic=1;
-
-	range=1310;
-	reloadtime=2.1;
-	accuracy=290;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	firestarter=0.0;
-	weaponvelocity=1768;
-	areaofeffect=5;
-	edgeeffectiveness=0.1;
-	canattackground=0;
-
-	soundstart=US_37mm;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=1.25;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
   size=1;
-  separation=2;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=US_37mm;
   stages=50;
-
-	dyndamageexp=1;
-	dyndamagerange=3100;
-	[damage]
-	{
-		default=3225;//4300
-		bunkers=20;
-		mines=0;
-		flags=0;
-	}
+  targetMoveError=0.075;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1768;
 }
+
+[41k45mmhe] {
+  name=41K 45mm Naval Gun;
+  accuracy=354;
+  areaOfEffect=40;
+  ballistic=1;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=50;
+    armouredvehicles=400;
+    flags=0;
+    guns=500;
+    hq=200;
+    infantry=600;
+    lightbuildings=600;
+    mines=0;
+    sandbags=1000;
+    tanks=100;
+    unarmouredvehicles=600;
+  }
+  edgeEffectiveness=0.2;
+  explosionGenerator=custom:HE_Small;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=59;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1310;
+  reloadTime=1.6; // 1.5 times as fast as the single gun
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=RUS_45mm;
+  stages=50;
+  targetMoveError=0.075;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1584;
+}
+

@@ -1,43 +1,34 @@
-[no69]
-{
-	id=31;
-	name=No. 69 Hand Grenade;
-	model=MortarShell.S3O;
-	rendertype=3;
-	turret=1;
-	tolerance=10000;
-	range=180;
-	reloadtime=8;
-	accuracy=1421;
-	movingaccuracy=7111;
-	weaponvelocity=200;
-	areaofeffect=32;
-	edgeeffectiveness=0.8;
-	canattackground=0;
-	weapontimer=5;
-	TargetBorder=1;
-	soundhit=GEN_Explo_Grenade;
-	explosiongenerator=custom:HE_Small;
-
-	impulsefactor=0.00001;
-
-	dyndamageexp=1;
-	dyndamagerange=200;
-
-	//groundbounce=1;
-	//bouncerebound=.5;
-	//bounceslip=.75;	
-	//numbounce=2;
-
-	[damage]
-	{
-		default=2500;
-		mines=0;
-		infantry=800;
-		guns=750;
-		flag=0;
-		tanks=1340;
-		armouredvehicles=2500;
-		unarmouredvehicles=2700;
-	}
+[no69] {
+  name=No. 69 Hand Grenade;
+  accuracy=1421;
+  areaOfEffect=32;
+  canAttackGround=0;
+  [damage] {
+    default=2500;
+    armouredvehicles=2500;
+    flag=0;
+    guns=750;
+    infantry=800;
+    mines=0;
+    tanks=1340;
+    unarmouredvehicles=2700;
+  }
+  dynDamageExp=1;
+  dynDamageRange=200;
+  edgeEffectiveness=0.8;
+  explosionGenerator=custom:HE_Small;
+  id=31;
+  impulseFactor=1e-05;
+  model=MortarShell.S3O;
+  movingAccuracy=7111;
+  range=180;
+  reloadTime=8;
+  rendertype=3;
+  soundHit=GEN_Explo_Grenade;
+  targetBorder=1;
+  tolerance=10000;
+  turret=1;
+  weaponTimer=5;
+  weaponVelocity=200;
 }
+

@@ -1,48 +1,39 @@
-[GERKarlGeraet]
-{
-	id=99;
-	name=Karl Geraet 040 600mm mortar;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Large;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=1500;
-	reloadtime=300;
-	accuracy=540;
-	targetmoveerror=0.1;
-	// always high traj, only
-	highTrajectory=1;
-	weaponvelocity=500;
-	areaofeffect=512;
-	edgeeffectiveness=0.25;
-	soundstart=16inch;
-	soundhit=GEN_Explo_4;
-
-	noselfdamage=0; // if we are stupid enough to hit something close with THAT, then we deserved it
-
-	model=karl_shell;
-
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	// OMGWTFBBQ explosion
-	[damage]
-	{
-		default=45000;
-		infantry=18600;
-		guns=16800;
-		mines=0;
-		flag=0;
-		tanks=25500;
-		armouredvehicles=60000;
-		unarmouredvehicles=60750;
-	}
+[GERKarlGeraet] {
+  name=Karl Geraet 040 600mm mortar;
+  accuracy=540;
+  areaOfEffect=512;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0.5;
+  [damage] {
+    default=45000;
+    armouredvehicles=60000;
+    flag=0;
+    guns=16800;
+    infantry=18600;
+    mines=0;
+    tanks=25500;
+    unarmouredvehicles=60750;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  highTrajectory=1;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  model=karl_shell;
+  noSelfDamage=0; // if we are stupid enough to hit something close with THAT, then we deserved it
+  range=1500;
+  reloadTime=300;
+  rendertype=1;
+  soundHit=GEN_Explo_4;
+  soundStart=16inch;
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=500;
 }
+

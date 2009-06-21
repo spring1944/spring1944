@@ -1,42 +1,34 @@
-[grw34_8cmmortar]
-{
-	id=28;
-	name=granatwerfer 34 81.4mm mortar;
-	model=MortarShell.S3O;
-	rendertype=1;
-	turret=1;
-	explosiongenerator=custom:HE_Medium;
-
-	firestarter=0.0;
-
-	range=1365;
-	reloadtime=12;
-	accuracy=485;
-	startvelocity=1000;
-	weaponvelocity=550;
-	areaofeffect=81;
-	edgeeffectiveness=0.2;
-
-	soundstart=GEN_Mortar;
-	soundhit=GEN_Explo_3;
-
-	color=255;
-
-	size=1.5;
-	impulsefactor=0.0000001;
-
-	[damage]
-	{
-		default=1520;
-		mines=0;
-		flag=0;
-		tanks=400;
-		armouredvehicles=3500;
-		unarmouredvehicles=4000;
-	}
-	[customParams]
-	{
-		fearid=301;
-		fearaoe=105;
-	}
+[grw34_8cmmortar] {
+  name=granatwerfer 34 81.4mm mortar;
+  accuracy=485;
+  areaOfEffect=81;
+  color=255;
+  [customParams] {
+    fearaoe=105;
+    fearid=301;
+  }
+  [damage] {
+    default=1520;
+    armouredvehicles=3500;
+    flag=0;
+    mines=0;
+    tanks=400;
+    unarmouredvehicles=4000;
+  }
+  edgeEffectiveness=0.2;
+  explosionGenerator=custom:HE_Medium;
+  fireStarter=0;
+  id=28;
+  impulseFactor=1e-07;
+  model=MortarShell.S3O;
+  range=1365;
+  reloadTime=12;
+  rendertype=1;
+  size=1.5;
+  soundHit=GEN_Explo_3;
+  soundStart=GEN_Mortar;
+  startVelocity=1000;
+  turret=1;
+  weaponVelocity=550;
 }
+

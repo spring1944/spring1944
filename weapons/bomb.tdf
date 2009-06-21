@@ -1,107 +1,87 @@
-[bombTrigger]
-{
-	id=31;
-	name=100kg Bomb Trigger;
-	model=null.S3O;
-	rendertype=4;
-	turret=1;
-	lineofsight=1;
-	dropped=1;
-
-	range=500;
-	reloadtime=10;
-	accuracy=1421;
-	startvelocity=50;
-	movingaccuracy=500;
-	weaponvelocity=500;
-	areaofeffect=1;
-	edgeeffectiveness=0.0;
-	canattackground=1;
-	impulsefactor=0.01;
-
-	explosiongenerator=custom:nothing;
-	
-	[damage]
-	{
-		default=0;
-	}
+[bomb] {
+  name=250kg Bomb;
+  accuracy=1500;
+  areaOfEffect=200;
+  ballistic=1;
+  burnblow=0;
+  burst=1;
+  collideFriendly=0;
+  commandfire=1;
+  [damage] {
+    default=30000;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:HE_XLarge;
+  flightTime=3;
+  id=31;
+  impulseFactor=0.01;
+  manualBombSettings=1;
+  model=Bomb_Medium.S3O;
+  range=850;
+  reloadTime=600;
+  rendertype=4;
+  soundHit=GEN_Explo_9;
+  startVelocity=400;
+  texture1=none;
+  tolerance=4000;
+  trajectoryHeight=0.15;
+  turret=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=400;
 }
 
-[bomb]
-{
-	id=31;
-	name=250kg Bomb;
-	model=Bomb_Medium.S3O;
-	weapontype=MissileLauncher;
-	//weapontimer=1;
-	flighttime=3;
-	collidefriendly=0;
-	burnblow=0;
-	rendertype=4;
-	commandfire=1;
-	//canattackground=0;
-	//dropped=1;
-	trajectoryheight=0.15;
-	manualbombsettings=1;
-	turret=1;
-	ballistic=1;
-	burst=1;
-	range=850;
-	reloadtime=600;
-	accuracy=1500;
-	startvelocity=400;
-	tolerance=4000;
-	weaponvelocity=400;
-	areaofeffect=200;
-	edgeeffectiveness=0.1;
-	soundhit=GEN_Explo_9;
-	texture1=none;
-
-	impulsefactor=0.01;
-
-	explosiongenerator=custom:HE_XLarge;
-	
-	[damage]
-	{
-		default=30000;
-	}
+[bombsmall] {
+  name=50kg Bomb;
+  accuracy=1500;
+  areaOfEffect=75;
+  ballistic=1;
+  burnblow=0;
+  burst=1;
+  collideFriendly=0;
+  commandfire=1;
+  [damage] {
+    default=15000;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:HE_Large;
+  flightTime=3;
+  impulseFactor=0.01;
+  manualBombSettings=1;
+  model=Bomb_Medium.S3O;
+  range=850;
+  reloadTime=600;
+  rendertype=4;
+  soundHit=GEN_Explo_9;
+  startVelocity=400;
+  texture1=none;
+  tolerance=4000;
+  trajectoryHeight=0.15;
+  turret=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=400;
 }
 
-[bombsmall]
-{
-	name=50kg Bomb;
-	model=Bomb_Medium.S3O;
-	weapontype=MissileLauncher;
-	//weapontimer=1;
-	flighttime=3;
-	collidefriendly=0;
-	burnblow=0;
-	rendertype=4;
-	commandfire=1;
-	//canattackground=0;
-	//dropped=1;
-	manualbombsettings=1;
-	trajectoryheight=0.15;
-	turret=1;
-	ballistic=1;
-	burst=1;
-	range=850;
-	reloadtime=600;
-	accuracy=1500;
-	startvelocity=400;
-	tolerance=4000;
-	weaponvelocity=400;
-	areaofeffect=75;
-	edgeeffectiveness=0.1;
-	soundhit=GEN_Explo_9;
-	texture1=none;
-
-	impulsefactor=0.01;
-
-	explosiongenerator=custom:HE_Large;
-	
-	[damage]
-	{
-		default=15000;
-	}
+[bombTrigger] {
+  name=100kg Bomb Trigger;
+  accuracy=1421;
+  areaOfEffect=1;
+  canAttackGround=1;
+  [damage] {
+    default=0;
+  }
+  dropped=1;
+  edgeEffectiveness=0;
+  explosionGenerator=custom:nothing;
+  id=31;
+  impulseFactor=0.01;
+  lineofsight=1;
+  model=null.S3O;
+  movingAccuracy=500;
+  range=500;
+  reloadTime=10;
+  rendertype=4;
+  startVelocity=50;
+  turret=1;
+  weaponVelocity=500;
 }
+

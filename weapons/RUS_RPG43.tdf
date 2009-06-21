@@ -1,35 +1,31 @@
-[RPG43]
-{
-	id=100;
-	name=RPG-43 Anti-Tank Grenade;
-	model=MortarShell.S3O;
-	rendertype=3;
-	explosiongenerator=custom:HE_Medium;
-	turret=1;
-
-	range=235;
-	reloadtime=5;
-	accuracy=400;
-	movingaccuracy=7111;
-	weaponvelocity=210;
-	areaofeffect=24;
-	edgeeffectiveness=0.5;
-	canattackground=0;
-	weapontimer=5;
-	TargetBorder=1;
-	soundhit=GEN_Explo_3;
-
-	impulsefactor=0.00001;
-
-	[damage]
-	{
-		default=8500;
-		infantry=2200;
-		guns=1800;
-		lightbuildings=1500;
-		bunkers=1500;
-		sandbags=500;
-		mines=0;
-		flag=0;
-	}
+[RPG43] {
+  name=RPG-43 Anti-Tank Grenade;
+  accuracy=400;
+  areaOfEffect=24;
+  canAttackGround=0;
+  [damage] {
+    default=8500;
+    bunkers=1500;
+    flag=0;
+    guns=1800;
+    infantry=2200;
+    lightbuildings=1500;
+    mines=0;
+    sandbags=500;
+  }
+  edgeEffectiveness=0.5;
+  explosionGenerator=custom:HE_Medium;
+  id=100;
+  impulseFactor=1e-05;
+  model=MortarShell.S3O;
+  movingAccuracy=7111;
+  range=235;
+  reloadTime=5;
+  rendertype=3;
+  soundHit=GEN_Explo_3;
+  targetBorder=1;
+  turret=1;
+  weaponTimer=5;
+  weaponVelocity=210;
 }
+

@@ -1,59 +1,50 @@
-[vickers]
-{
-	id=7;
-	name=Vickers, .303" Mark 1;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-	lineofsight=1;
-	firestarter=1;
-
-	range=1270;
-	reloadtime=2.7;
-	burst=14;
-	burstrate=.05;
-	sprayangle=300;
-	areaofeffect=1;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	avoidfeature=0;
-	collidefeature=0;
-	avoidfriendly=0;
-	collidefriendly=0;
-	
-	soundtrigger=1;
-	soundstart=RUS_Maxim;
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=1 0.75 0;
-
-	collisionsize=2.5;
-	size=0.000000000001;
-	impactonly=1;
-	[damage]
-	{
-		default=1;
-		infantry=33;
-		guns=30;
-		lightbuildings=1;
-		bunkers=0;
-		sandbags=1;
-		mines=0;
-		flag=0.00000001;
-		tanks=0;
-		armouredvehicles=8;
-		unarmouredvehicles=12;
-		planes=24;
-	}
-	[customParams]
-	{
-		fearid=301;
-		fearaoe=30;
-	}
+[vickers] {
+  name=Vickers, .303" Mark 1;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  burnblow=1;
+  burst=14;
+  burstRate=0.05;
+  collideFeature=0;
+  collideFriendly=0;
+  collisionSize=2.5;
+  [customParams] {
+    fearaoe=30;
+    fearid=301;
+  }
+  [damage] {
+    default=1;
+    armouredvehicles=8;
+    bunkers=0;
+    flag=1e-08;
+    guns=30;
+    infantry=33;
+    lightbuildings=1;
+    mines=0;
+    planes=24;
+    sandbags=1;
+    tanks=0;
+    unarmouredvehicles=12;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=1;
+  id=7;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  noSelfDamage=1;
+  range=1270;
+  reloadTime=2.7;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-12;
+  soundStart=RUS_Maxim;
+  soundTrigger=1;
+  sprayAngle=300;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
+

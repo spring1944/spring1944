@@ -1,61 +1,47 @@
-[m875mmhe]
-{
-	id=1001;
-	name=US M8 75mm Pack Howitzer;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Medium;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=1310;
-	reloadtime=6.75;
-	accuracy=400;
-	targetmoveerror=0.075;
-	weaponvelocity=700;
-	areaofeffect=96;
-	edgeeffectiveness=0.25;
-
-	soundstart=US_75mm;
-	soundhit=GEN_Explo_3;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=3;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[m875mmhe] {
+  name=US M8 75mm Pack Howitzer;
+  accuracy=400;
+  areaOfEffect=96;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    fearaoe=75;
+    fearid=401;
+  }
+  [damage] {
+    default=3600;
+    armouredvehicles=4000;
+    flag=0;
+    guns=1600;
+    infantry=1800;
+    mines=0;
+    tanks=600;
+    unarmouredvehicles=4200;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=1001;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  noSelfDamage=1;
+  range=1310;
+  reloadTime=6.75;
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=US_75mm;
   stages=50;
-
-	[damage]
-	{
-		default=3600;
-		mines=0;
-		infantry=1800;
-		guns=1600;
-		flag=0;
-		tanks=600;
-		armouredvehicles=4000;
-		unarmouredvehicles=4200;
-	}
-	[customParams]
-	{
-		fearid=401;
-		fearaoe=75;
-	}
+  targetMoveError=0.075;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=700;
 }
+

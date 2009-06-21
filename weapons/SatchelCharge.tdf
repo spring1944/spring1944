@@ -1,32 +1,26 @@
-[satchelcharge]
-{
-	id=64;
-	name=A Mine!;
-	model=ATMine;
-	rendertype=2;
-	turret=1;
-	explosiongenerator=custom:HE_Large;
-
-	lineofsight=1;
-	firestarter=0.0;
-
-	range=80;
-	reloadtime=10;
-	weaponvelocity=200;
-	areaofeffect=104;
-	edgeeffectiveness=1;
-	weapontimer=0;
-
-	soundstart=GEN_Explo_4;
-	soundhit=GEN_Explo_4;
-
-	cratermult=.5;
-
-	[damage]
-	{
-		default=16000;
-		bunkers=12500;
-		mines=0;
-		flag=0;
-	}
+[satchelcharge] {
+  name=A Mine!;
+  areaOfEffect=104;
+  craterMult=0.5;
+  [damage] {
+    default=16000;
+    bunkers=12500;
+    flag=0;
+    mines=0;
+  }
+  edgeEffectiveness=1;
+  explosionGenerator=custom:HE_Large;
+  fireStarter=0;
+  id=64;
+  lineofsight=1;
+  model=ATMine;
+  range=80;
+  reloadTime=10;
+  rendertype=2;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_Explo_4;
+  turret=1;
+  weaponTimer=0;
+  weaponVelocity=200;
 }
+

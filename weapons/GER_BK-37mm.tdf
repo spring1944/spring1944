@@ -1,61 +1,48 @@
-[bk37mmap]
-{
-	id=100;
-	name=BK-37 37mm Semi-Automatic Cannon;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Small;
-
-	ballistic=1;
-
-	range=1750;
-	reloadtime=1.5;
-	accuracy=290;
-	movingaccuracy=400;
-	targetmoveerror=0.075;
-	firestarter=0.0;
-	weaponvelocity=1768;
-	areaofeffect=12;
-	edgeeffectiveness=0.1;
-	canattackground=0;
-
-	soundstart=US_37mm;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=1.25;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[bk37mmap] {
+  name=BK-37 37mm Semi-Automatic Cannon;
+  accuracy=290;
+  areaOfEffect=12;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=7575; //10100
+    bunkers=50;
+    flag=0;
+    guns=1900;
+    infantry=2500;
+    lightbuildings=750;
+    mines=0;
+    sandbags=250;
+  }
+  dynDamageExp=1;
+  dynDamageRange=5250;
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Small;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=400;
+  noSelfDamage=1;
+  range=1750;
+  reloadTime=1.5;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=US_37mm;
   stages=50;
-
-	dyndamageexp=1;
-	dyndamagerange=5250;
-	[damage]
-	{
-		default=7575; //10100
-		infantry=2500;
-		guns=1900;
-		lightbuildings=750;
-		bunkers=50;
-		sandbags=250;
-		mines=0;
-		flag=0;
-	}
+  targetMoveError=0.075;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1768;
 }
+

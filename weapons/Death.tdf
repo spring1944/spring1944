@@ -1,435 +1,355 @@
-[noweapon]
-{
-	id=0;
-	name=No Weapon;
-
-	range=20;
-
-	[damage]
-	{
-		default=0;
-	}
+[flag] {
+  name=Flag Destroyed;
+  areaOfEffect=2;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=1;
+  }
+  fireStarter=0;
+  id=75;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_Flag;
+  soundStart=GEN_Explo_Flag;
+  turret=1;
+  weaponVelocity=250;
 }
-[tiny_explosion]
-{
-	id=69;
-	name=Tiny Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=64;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_1;
-	soundhit=GEN_Explo_1;
-
-	[damage]
-	{
-		default=100;
-		squadSpawners=100000;
-		flag=0;
-		apmine=.0001;
-		atmine=.0001;
-	}
+[gbrlz_death] {
+  name=ending of a drop point;
+  areaOfEffect=104;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=0;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    gbrlz=100000;
+  }
+  fireStarter=0;
+  id=184;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=200;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_1;
+  soundStart=GEN_Explo_1;
+  turret=1;
+  weaponVelocity=10;
 }
-[small_explosion]
-{
-	id=69;
-	name=Small Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=65;
-	impulsefactor=0;
-	impulseboost=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_2;
-	soundhit=GEN_Explo_2;
-
-
-	[damage]
-	{
-		default=250;
-		squadSpawners=100000;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[ger_infantry] {
+  name=Infantry death;
+  areaOfEffect=2;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=1;
+  }
+  fireStarter=0;
+  id=93;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GER_Inf_Dead;
+  soundStart=GER_Inf_Dead;
+  turret=1;
+  weaponVelocity=250;
 }
-[med_explosion]
-{
-	id=69;
-	name=Medium Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=112;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-  explosiongenerator=custom:ROACHPLOSION;
-	soundstart=GEN_Explo_3;
-	soundhit=GEN_Explo_3;
-
-
-	[damage]
-	{
-		default=400;
-		squadSpawners=100000;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[huge_explosion] {
+  name=Large Building Explosion;
+  areaOfEffect=200;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=1500;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  fireStarter=0;
+  id=69;
+  impulseFactor=2;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_10;
+  soundStart=GEN_Explo_10;
+  turret=1;
+  weaponVelocity=250;
 }
-[resourceboom]
-{
-	id=69;
-	name=Medium Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=120;
-
-	soundstart=GEN_Explo_3;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-	soundhit=GEN_Explo_3;
-	explosiongenerator=custom:SmallBuildingDeath;
-	impulsefactor=2;
-
-	[damage]
-	{
-		default=800;
-		lightbuildings=1050;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[large_explosion] {
+  name=Large Building Explosion;
+  areaOfEffect=100;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=900;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=2;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_5;
+  soundStart=GEN_Explo_5;
+  turret=1;
+  weaponVelocity=250;
 }
-[large_explosion]
-{
-	id=69;
-	name=Large Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=100;
-	impulseboost=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_5;
-	soundhit=GEN_Explo_5;
-
-	impulsefactor=2;
-	cratermult=0;
-
-	[damage]
-	{
-		default=900;
-		squadSpawners=100000;
-		apmine=.0001;
-		atmine=.0001;
-		flag=0;
-	}
+[massive_explosion] {
+  name=Large Building Explosion;
+  areaOfEffect=250;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=2250;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  fireStarter=0;
+  id=69;
+  impulseFactor=3;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_11;
+  soundStart=GEN_Explo_11;
+  turret=1;
+  weaponVelocity=250;
 }
-[huge_explosion]
-{
-	id=69;
-	name=Large Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=200;
-	impulsefactor=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_10;
-	soundhit=GEN_Explo_10;
-
-	impulsefactor=2;
-	cratermult=0;
-
-	[damage]
-	{
-		default=1500;
-		squadSpawners=100000;
-		flag=0;
-		apmine=.0001;
-		atmine=.0001;
-	}
+[med_explosion] {
+  name=Medium Building Explosion;
+  areaOfEffect=112;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=400;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  explosionGenerator=custom:ROACHPLOSION;
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_3;
+  soundStart=GEN_Explo_3;
+  turret=1;
+  weaponVelocity=250;
 }
-[massive_explosion]
-{
-	id=69;
-	name=Large Building Explosion;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=250;
-	impulsefactor=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_11;
-	soundhit=GEN_Explo_11;
-
-	impulsefactor=3;
-	cratermult=0;
-
-	[damage]
-	{
-		default=2250;
-		squadSpawners=100000;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[noweapon] {
+  name=No Weapon;
+  [damage] {
+    default=0;
+  }
+  id=0;
+  range=20;
 }
-[vehicle_explosion_sm]
-{
-	id=69;
-	name=Cool explosion for larger vehicles;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=64;
-	impulsefactor=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_Vehicle1;
-	soundhit=GEN_Explo_Vehicle1;
-
-	impulsefactor=1;
-	cratermult=0;
-
-	[damage]
-	{
-		default=100;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[resourceboom] {
+  name=Medium Building Explosion;
+  areaOfEffect=120;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=800;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    lightbuildings=1050;
+  }
+  explosionGenerator=custom:SmallBuildingDeath;
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=2;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_3;
+  soundStart=GEN_Explo_3;
+  turret=1;
+  weaponVelocity=250;
 }
-[vehicle_explosion_med]
-{
-	id=69;
-	name=Cool explosion for larger vehicles;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=96;
-	impulsefactor=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_Vehicle2;
-	soundhit=GEN_Explo_Vehicle2;
-	
-	impulsefactor=1;
-	cratermult=0;
-
-	[damage]
-	{
-		default=150;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[small_explosion] {
+  name=Small Building Explosion;
+  areaOfEffect=65;
+  ballistic=1;
+  craterBoost=0;
+  [damage] {
+    default=250;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_2;
+  soundStart=GEN_Explo_2;
+  turret=1;
+  weaponVelocity=250;
 }
-[vehicle_explosion_large]
-{
-	id=69;
-	name=Cool explosion for larger vehicles;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=120;
-	impulsefactor=1;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	soundstart=GEN_Explo_Vehicle3;
-	soundhit=GEN_Explo_Vehicle3;
-
-
-	[damage]
-	{
-		default=230;
-		apmine=.0001;
-		flag=0;
-		atmine=.0001;
-	}
+[tiny_explosion] {
+  name=Tiny Explosion;
+  areaOfEffect=64;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=100;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+    squadSpawners=100000;
+  }
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_1;
+  soundStart=GEN_Explo_1;
+  turret=1;
+  weaponVelocity=250;
 }
-[ger_infantry]
-{
-	id=93;
-	name=Infantry death;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=2;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-	soundstart=GER_Inf_Dead;
-	soundhit=GER_Inf_Dead;
-
-	[damage]
-	{
-		default=1;
-	}
+[us_infantry] {
+  name=Infantry death;
+  areaOfEffect=2;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=1;
+  }
+  fireStarter=0;
+  id=93;
+  impulseBoost=0;
+  impulseFactor=0;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GER_Inf_Dead;
+  soundStart=GER_Inf_Dead;
+  turret=1;
+  weaponVelocity=250;
 }
-[us_infantry]
-{
-	id=93;
-	name=Infantry death;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=2;
-
-	soundstart=GER_Inf_Dead;
-	soundhit=GER_Inf_Dead;
-
-	[damage]
-	{
-		default=1;
-	}
+[vehicle_explosion_large] {
+  name=Cool explosion for larger vehicles;
+  areaOfEffect=120;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=230;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+  }
+  fireStarter=0;
+  id=69;
+  impulseBoost=0;
+  impulseFactor=1;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_Vehicle3;
+  soundStart=GEN_Explo_Vehicle3;
+  turret=1;
+  weaponVelocity=250;
 }
-[flag]
-{
-	id=75;
-	name=Flag Destroyed;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=480;
-	reloadtime=3.6;
-	weaponvelocity=250;
-	areaofeffect=2;
-
-	soundstart=GEN_Explo_Flag;
-	soundhit=GEN_Explo_Flag;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-	[damage]
-	{
-		default=1;
-	}
+[vehicle_explosion_med] {
+  name=Cool explosion for larger vehicles;
+  areaOfEffect=96;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=150;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+  }
+  fireStarter=0;
+  id=69;
+  impulseFactor=1;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_Vehicle2;
+  soundStart=GEN_Explo_Vehicle2;
+  turret=1;
+  weaponVelocity=250;
 }
-[gbrlz_death]
-{
-	id=184;
-	name=ending of a drop point;
-	rendertype=4;
-	turret=1;
 
-	ballistic=1;
-	firestarter=0.0;
-
-	range=200;
-	reloadtime=3.6;
-	weaponvelocity=10;
-	areaofeffect=104;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-	soundstart=GEN_Explo_1;
-	soundhit=GEN_Explo_1;
-
-	[damage]
-	{
-		default=0;
-		flag=0;
-		gbrlz=100000;
-		apmine=.0001;
-		atmine=.0001;
-	}
+[vehicle_explosion_sm] {
+  name=Cool explosion for larger vehicles;
+  areaOfEffect=64;
+  ballistic=1;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=100;
+    apmine=0.0001;
+    atmine=0.0001;
+    flag=0;
+  }
+  fireStarter=0;
+  id=69;
+  impulseFactor=1;
+  range=480;
+  reloadTime=3.6;
+  rendertype=4;
+  soundHit=GEN_Explo_Vehicle1;
+  soundStart=GEN_Explo_Vehicle1;
+  turret=1;
+  weaponVelocity=250;
 }
+
