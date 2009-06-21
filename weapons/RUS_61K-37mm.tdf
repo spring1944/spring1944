@@ -19,7 +19,7 @@
     guns=600;
     hq=100;
     infantry=800;
-    planes=1410;
+    planes=141;
     sandbags=200;
     unarmoredvehicles=1500;
   }

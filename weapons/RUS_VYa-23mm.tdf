@@ -13,7 +13,7 @@
     infantry=100;
     lightbuildings=26;
     mines=0;
-    planes=625;
+    planes=62.5;
     sandbags=5;
     tanks=26;
     unarmouredvehicles=104;

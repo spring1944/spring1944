@@ -19,7 +19,7 @@
     guns=600;
     hq=100;
     infantry=800;
-    planes=2040;
+    planes=204;
     sandbags=200;
     unarmoredvehicles=1500;
   }
@@ -66,7 +66,7 @@
     guns=300;
     hq=100;
     infantry=400;
-    planes=1224;
+    planes=122.4;
     sandbags=200;
     unarmoredvehicles=1500;
   }
@@ -116,7 +116,7 @@
     guns=600;
     hq=100;
     infantry=800;
-    planes=2040;
+    planes=204;
     sandbags=200;
     unarmoredvehicles=1500;
   }
