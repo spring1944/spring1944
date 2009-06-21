@@ -34,7 +34,7 @@
   maneuverleashlength=1280;
   maxAileron=0.006;
   maxBank=1;
-  maxDamage=2993;
+  maxDamage=299.3;
   maxElevator=0.005;
   maxFuel=120;
   maxPitch=0.13;
