@@ -1,11 +1,11 @@
-[gbrm10achilles_destroyed]
-{
-	object=GBRM10Achilles_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Tank Destroyer;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[gbrm10achilles_destroyed] {
+  description=Destroyed Tank Destroyer;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRM10Achilles_Destroyed.S3O;
+  reclaimable=1;
 }
+

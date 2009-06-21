@@ -1,22 +1,22 @@
-[gbrshermanfirefly_damaged]
-{
-	object=GBRShermanFirefly_Damaged.S3O;
-	featuredead=GBRShermanFirefly_Destroyed;
-	description=Abandoned Tank;
-	energy=1000;
-	damage=626;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[gbrshermanfirefly_damaged] {
+  description=Abandoned Tank;
+  damage=626;
+  energy=1000;
+  featureDead=GBRShermanFirefly_Destroyed;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRShermanFirefly_Damaged.S3O;
+  reclaimable=1;
 }
-[gbrshermanfirefly_destroyed]
-{
-	object=GBRShermanFirefly_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Tank;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+
+[gbrshermanfirefly_destroyed] {
+  description=Destroyed Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRShermanFirefly_Destroyed.S3O;
+  reclaimable=1;
 }
+

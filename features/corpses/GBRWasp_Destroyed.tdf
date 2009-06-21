@@ -1,11 +1,11 @@
-[GBRWasp_Destroyed]
-{
-	object=GBRWasp_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Vehicle;
-	energy=50;
-	damage=501;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[GBRWasp_Destroyed] {
+  description=Destroyed Vehicle;
+  damage=501;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GBRWasp_Destroyed.S3O;
+  reclaimable=1;
 }
+

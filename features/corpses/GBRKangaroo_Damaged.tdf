@@ -1,11 +1,11 @@
-[gbrkangaroo_destroyed]
-{
-	object=GBRKangaroo_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed APC;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[gbrkangaroo_destroyed] {
+  description=Destroyed APC;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRKangaroo_Destroyed.S3O;
+  reclaimable=1;
 }
+

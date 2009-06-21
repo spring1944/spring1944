@@ -1,22 +1,22 @@
-[rust3476_damaged]
-{
-	object=RUST3476_Damaged.S3O;
-	featuredead=RUST3476_Destroyed;
-	description=Abandoned Tank;
-	energy=1000;
-	damage=626;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[rust3476_damaged] {
+  description=Abandoned Tank;
+  damage=626;
+  energy=1000;
+  featureDead=RUST3476_Destroyed;
+  footprintX=2;
+  footprintZ=3;
+  object=RUST3476_Damaged.S3O;
+  reclaimable=1;
 }
-[rust3476_destroyed]
-{
-	object=RUST3476_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Tank;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+
+[rust3476_destroyed] {
+  description=Destroyed Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=RUST3476_Destroyed.S3O;
+  reclaimable=1;
 }
+

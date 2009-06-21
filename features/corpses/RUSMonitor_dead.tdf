@@ -1,13 +1,13 @@
-[RUSMonitor_dead]
-{
-	object=RUSMonitor_dead;
-	description=Sunk Monitor;
-	energy=5000;
-	damage=20000;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=50;
-	height=10;
+[RUSMonitor_dead] {
+  description=Sunk Monitor;
+  blocking=0;
+  damage=20000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=10;
+  hitdensity=50;
+  object=RUSMonitor_dead;
+  reclaimable=1;
 }
+

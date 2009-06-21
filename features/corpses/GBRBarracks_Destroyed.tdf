@@ -1,11 +1,11 @@
-[GBRBarracks_Destroyed]
-{
-	object=GBRBarracks_Destroyed.S3O;
-	description=Destroyed Barracks;
-	featuredead=BuildingDebris_Large;
-	energy=1000;
-	damage=2501;
-	footprintx=4;
-	footprintz=6;
-	reclaimable=1;
+[GBRBarracks_Destroyed] {
+  description=Destroyed Barracks;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=4;
+  footprintZ=6;
+  object=GBRBarracks_Destroyed.S3O;
+  reclaimable=1;
 }
+

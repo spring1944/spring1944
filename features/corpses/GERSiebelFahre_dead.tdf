@@ -1,13 +1,13 @@
-[GERSiebelFahre_dead]
-{
-	object=GERSiebelFahre_dead;
-	description=Sunk Siebel Fahre;
-	energy=5000;
-	damage=10000;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=50;
-	height=10;
+[GERSiebelFahre_dead] {
+  description=Sunk Siebel Fahre;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=10;
+  hitdensity=50;
+  object=GERSiebelFahre_dead;
+  reclaimable=1;
 }
+

@@ -1,22 +1,22 @@
-[usm4a3105sherman_damaged]
-{
-	object=USM4A3105_Damaged.S3O;
-	featuredead=USM4A3105Sherman_Destroyed;
-	description=Abandoned Support Tank;
-	energy=1000;
-	damage=626;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[usm4a3105sherman_damaged] {
+  description=Abandoned Support Tank;
+  damage=626;
+  energy=1000;
+  featureDead=USM4A3105Sherman_Destroyed;
+  footprintX=2;
+  footprintZ=3;
+  object=USM4A3105_Damaged.S3O;
+  reclaimable=1;
 }
-[usm4a3105sherman_destroyed]
-{
-	object=USM4A3105_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Support Tank;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+
+[usm4a3105sherman_destroyed] {
+  description=Destroyed Support Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=USM4A3105_Destroyed.S3O;
+  reclaimable=1;
 }
+

@@ -1,11 +1,11 @@
-[ruszis3_destroyed]
-{
-	object=RUSZiS3_Destroyed.S3O;
-	description=Destroyed Gun;
-	featuredead=Debris_Small;
-	energy=500;
-	damage=1251;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[ruszis3_destroyed] {
+  description=Destroyed Gun;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSZiS3_Destroyed.S3O;
+  reclaimable=1;
 }
+

@@ -1,11 +1,11 @@
-[gersdkfz251_destroyed]
-{
-	object=GERSdkfz251_destroyed.S3O;
-	description=Wrecked Halftrack;
-	featuredead=Debris_Small;
-	energy=25;
-	damage=501;
-	footprintx=2;
-	footprintz=4;
-	reclaimable=1;
+[gersdkfz251_destroyed] {
+  description=Wrecked Halftrack;
+  damage=501;
+  energy=25;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=4;
+  object=GERSdkfz251_destroyed.S3O;
+  reclaimable=1;
 }
+

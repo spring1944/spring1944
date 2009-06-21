@@ -1,13 +1,13 @@
-[RUSBMO_dead]
-{
-	object=RUSBMO_dead;
-	description=Sunk BMO;
-	energy=5000;
-	damage=10000;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=70;
-	height=5;
+[RUSBMO_dead] {
+  description=Sunk BMO;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=RUSBMO_dead;
+  reclaimable=1;
 }
+

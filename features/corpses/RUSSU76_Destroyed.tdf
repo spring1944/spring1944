@@ -1,11 +1,11 @@
-[RUSSU76_Destroyed]
-{
-	object=RUSSU76_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Assault Gun;
-	energy=50;
-	damage=501;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[RUSSU76_Destroyed] {
+  description=Destroyed Assault Gun;
+  damage=501;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSSU76_Destroyed.S3O;
+  reclaimable=1;
 }
+

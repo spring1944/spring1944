@@ -1,11 +1,11 @@
-[GERSdKfz9_Destroyed]
-{
-	object=GERSdKfz9_Destroyed.S3O;
-	description=Destroyed Tractor;
-	featuredead=Debris_Small;
-	energy=75;
-	damage=2501;
-	footprintx=2;
-	footprintz=4;
-	reclaimable=1;
+[GERSdKfz9_Destroyed] {
+  description=Destroyed Tractor;
+  damage=2501;
+  energy=75;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=4;
+  object=GERSdKfz9_Destroyed.S3O;
+  reclaimable=1;
 }
+

@@ -1,11 +1,11 @@
-[RUSBM13N_Destroyed]
-{
-	object=RUSBM13N_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Katyusha;
-	energy=300;
-	damage=1251;
-	footprintx=3;
-	footprintz=3;
-	reclaimable=1;
+[RUSBM13N_Destroyed] {
+  description=Destroyed Katyusha;
+  damage=1251;
+  energy=300;
+  featureDead=Debris_Small;
+  footprintX=3;
+  footprintZ=3;
+  object=RUSBM13N_Destroyed.S3O;
+  reclaimable=1;
 }
+

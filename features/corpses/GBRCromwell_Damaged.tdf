@@ -1,22 +1,22 @@
-[gbrcromwell_damaged]
-{
-	object=GBRCromwell_Damaged.S3O;
-	featuredead=GBRCromwell_Destroyed;
-	description=Abandoned Tank;
-	energy=1000;
-	damage=626;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[gbrcromwell_damaged] {
+  description=Abandoned Tank;
+  damage=626;
+  energy=1000;
+  featureDead=GBRCromwell_Destroyed;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRCromwell_Damaged.S3O;
+  reclaimable=1;
 }
-[gbrcromwell_destroyed]
-{
-	object=GBRCromwell_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Tank;
-	energy=500;
-	damage=2501;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+
+[gbrcromwell_destroyed] {
+  description=Destroyed Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=3;
+  object=GBRCromwell_Destroyed.S3O;
+  reclaimable=1;
 }
+

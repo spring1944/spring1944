@@ -1,11 +1,11 @@
-[RUSBA64_Destroyed]
-{
-	object=RUSBA64_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Car;
-	energy=100;
-	damage=1251;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[RUSBA64_Destroyed] {
+  description=Destroyed Car;
+  damage=1251;
+  energy=100;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSBA64_Destroyed.S3O;
+  reclaimable=1;
 }
+

@@ -1,11 +1,11 @@
-[RUS61K_Destroyed]
-{
-	object=RUS61K_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed AA Gun;
-	energy=0;
-	damage=3000;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[RUS61K_Destroyed] {
+  description=Destroyed AA Gun;
+  damage=3000;
+  energy=0;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUS61K_Destroyed.S3O;
+  reclaimable=1;
 }
+

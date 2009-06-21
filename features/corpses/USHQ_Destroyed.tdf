@@ -1,11 +1,11 @@
-[USHQ_Destroyed]
-{
-	object=USHQ_Destroyed.S3O;
-	description=Destroyed HQ;
-	featuredead=BuildingDebris_Large;
-	energy=1000;
-	damage=2501;
-	footprintx=4;
-	footprintz=6;
-	reclaimable=1;
+[USHQ_Destroyed] {
+  description=Destroyed HQ;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=4;
+  footprintZ=6;
+  object=USHQ_Destroyed.S3O;
+  reclaimable=1;
 }
+

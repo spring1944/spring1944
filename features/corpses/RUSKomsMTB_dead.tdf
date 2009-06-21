@@ -1,13 +1,13 @@
-[RUSKomsMTB_dead]
-{
-	object=RUSKomsMTB_dead;
-	description=Sunk Torpedo Boat;
-	energy=5000;
-	damage=5000;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=70;
-	height=4;
+[RUSKomsMTB_dead] {
+  description=Sunk Torpedo Boat;
+  blocking=0;
+  damage=5000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=4;
+  hitdensity=70;
+  object=RUSKomsMTB_dead;
+  reclaimable=1;
 }
+

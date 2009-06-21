@@ -1,11 +1,11 @@
-[usgmctruck_destroyed]
-{
-	object=USGMCTruck_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Truck;
-	energy=500;
-	damage=1251;
-	footprintx=2;
-	footprintz=3;
-	reclaimable=1;
+[usgmctruck_destroyed] {
+  description=Destroyed Truck;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=3;
+  object=USGMCTruck_Destroyed.S3O;
+  reclaimable=1;
 }
+

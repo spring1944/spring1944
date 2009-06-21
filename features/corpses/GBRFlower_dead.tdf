@@ -1,13 +1,13 @@
-[GBRFlower_dead]
-{
-	object=GBRFlower_dead;
-	description=Sunk Flower class;
-	energy=5000;
-	damage=25000;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=50;
-	height=15;
+[GBRFlower_dead] {
+  description=Sunk Flower class;
+  blocking=0;
+  damage=25000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=15;
+  hitdensity=50;
+  object=GBRFlower_dead;
+  reclaimable=1;
 }
+

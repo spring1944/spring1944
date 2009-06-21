@@ -1,14 +1,14 @@
-[GERPontoonTruck_dead]
-{
-	object=GEROpelBlitz_Destroyed.S3O;
-	description=Destroyed Pontoon Truck;
-	featuredead=Debris_Small;
-	energy=50;
-	damage=1251;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=70;
-	height=5;
+[GERPontoonTruck_dead] {
+  description=Destroyed Pontoon Truck;
+  blocking=0;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  height=5;
+  hitdensity=70;
+  object=GEROpelBlitz_Destroyed.S3O;
+  reclaimable=1;
 }
+

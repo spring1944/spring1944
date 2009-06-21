@@ -1,11 +1,11 @@
-[gerbarracks_destroyed]
-{
-	object=GERBarracks_Destroyed.S3O;
-	featuredead=BuildingDebris_Large;
-	description=Destroyed Barracks;
-	energy=1000;
-	damage=1251;
-	footprintx=5;
-	footprintz=7;
-	reclaimable=1;
+[gerbarracks_destroyed] {
+  description=Destroyed Barracks;
+  damage=1251;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=5;
+  footprintZ=7;
+  object=GERBarracks_Destroyed.S3O;
+  reclaimable=1;
 }
+

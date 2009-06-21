@@ -1,13 +1,13 @@
-[GBRLCA_dead]
-{
-	object=GBRLCA_dead;
-	description=Sunk LCA;
-	energy=5000;
-	damage=2500;
-	footprintx=4;
-	footprintz=4;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=50;
-	height=10;
+[GBRLCA_dead] {
+  description=Sunk LCA;
+  blocking=0;
+  damage=2500;
+  energy=5000;
+  footprintX=4;
+  footprintZ=4;
+  height=10;
+  hitdensity=50;
+  object=GBRLCA_dead;
+  reclaimable=1;
 }
+

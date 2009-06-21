@@ -1,11 +1,11 @@
-[usvehicleyard_destroyed]
-{
-	object=USVehicleYard.S3O;
-	description=Destroyed Yard;
-	featuredead=BuildingDebris_Large;
-	energy=1000;
-	damage=2501;
-	footprintx=6;
-	footprintz=5;
-	reclaimable=1;
+[usvehicleyard_destroyed] {
+  description=Destroyed Yard;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=6;
+  footprintZ=5;
+  object=USVehicleYard.S3O;
+  reclaimable=1;
 }
+

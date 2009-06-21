@@ -1,13 +1,13 @@
-[GBRFairmileD_dead]
-{
-	object=GBRFairmileD_dead;
-	description=Sunk Fairmile D;
-	energy=5000;
-	damage=7500;
-	footprintx=8;
-	footprintz=8;
-	reclaimable=1;
-	blocking=0;
-	hitdensity=70;
-	height=5;
+[GBRFairmileD_dead] {
+  description=Sunk Fairmile D;
+  blocking=0;
+  damage=7500;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=GBRFairmileD_dead;
+  reclaimable=1;
 }
+

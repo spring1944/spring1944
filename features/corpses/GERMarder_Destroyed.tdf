@@ -1,11 +1,11 @@
-[GERmarder_destroyed]
-{
-	object=GERMarder_destroyed.S3O;
-	description=Destroyed TD;
-	featuredead=Debris_Small;
-	energy=75;
-	damage=501;
-	footprintx=3;
-	footprintz=3;
-	reclaimable=1;
+[GERmarder_destroyed] {
+  description=Destroyed TD;
+  damage=501;
+  energy=75;
+  featureDead=Debris_Small;
+  footprintX=3;
+  footprintZ=3;
+  object=GERMarder_destroyed.S3O;
+  reclaimable=1;
 }
+

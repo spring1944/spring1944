@@ -1,11 +1,11 @@
-[rust60_destroyed]
-{
-	object=RUST60_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Tankette;
-	energy=50;
-	damage=501;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[rust60_destroyed] {
+  description=Destroyed Tankette;
+  damage=501;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUST60_Destroyed.S3O;
+  reclaimable=1;
 }
+

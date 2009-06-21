@@ -1,11 +1,11 @@
-[usm8greyhound_destroyed]
-{
-	object=USM8Greyhound_Destroyed.S3O;
-	featuredead=Debris_Small;
-	description=Destroyed Car;
-	energy=50;
-	damage=501;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[usm8greyhound_destroyed] {
+  description=Destroyed Car;
+  damage=501;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=USM8Greyhound_Destroyed.S3O;
+  reclaimable=1;
 }
+

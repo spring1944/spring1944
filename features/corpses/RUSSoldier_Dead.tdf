@@ -1,12 +1,12 @@
-[russoldier_dead]
-{
-	object=RUSTrooper_dead.S3O;
-	description=Dead Soviet Soldier;
-	energy=150;
-	metal=-1;
-	damage=1000;
-	blocking=0;
-	footprintx=1;
-	footprintz=1;
-	reclaimable=1;
+[russoldier_dead] {
+  description=Dead Soviet Soldier;
+  blocking=0;
+  damage=1000;
+  energy=150;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=RUSTrooper_dead.S3O;
+  reclaimable=1;
 }
+

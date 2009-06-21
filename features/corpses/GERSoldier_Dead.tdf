@@ -1,25 +1,25 @@
-[gersoldier_dead]
-{
-	object=GERTrooper_dead.S3O;
-	featuredead=GER_shoulderhit;
-	description=Dead German;
-	energy=150;
-	metal=-1;
-	damage=1000;
-	blocking=0;
-	footprintx=1;
-	footprintz=1;
-	reclaimable=1;
+[ger_shoulderhit] {
+  description=Dead German after shoulder hit;
+  blocking=0;
+  damage=1000;
+  energy=150;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=GER_shoulderhit.S3O;
+  reclaimable=1;
 }
-[ger_shoulderhit]
-{
-	object=GER_shoulderhit.S3O;
-	description=Dead German after shoulder hit;
-	energy=150;
-	metal=-1;
-	damage=1000;
-	blocking=0;
-	footprintx=1;
-	footprintz=1;
-	reclaimable=1;
+
+[gersoldier_dead] {
+  description=Dead German;
+  blocking=0;
+  damage=1000;
+  energy=150;
+  featureDead=GER_shoulderhit;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=GERTrooper_dead.S3O;
+  reclaimable=1;
 }
+

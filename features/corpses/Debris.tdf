@@ -1,53 +1,52 @@
-[Debris_Small]
-{
-	object=Debris_Small.S3O;
-	description=Debris;
-	metal=0;
-	energy=50;
-	damage=1750;
-	blocking=0;
-	footprintx=2;
-	footprintz=2;
-	indestructible=1;
-	reclaimable=1;
-}
-[Debris_Large]
-{
-	object=Debris_Large.S3O;
-	description=Debris;
-	metal=0;
-	energy=100;
-	damage=626;
-	blocking=0;
-	footprintx=5;
-	footprintz=5;
-	indestructible=1;
-	reclaimable=1;
+[BuildingDebris_Large] {
+  description=Debris;
+  blocking=0;
+  damage=1251;
+  energy=100;
+  footprintX=5;
+  footprintZ=5;
+  indestructible=1;
+  metal=0;
+  object=BuildingDebris_Large.S3O;
+  reclaimable=1;
 }
 
-[BuildingDebris_Small]
-{
-	object=BuildingDebris_Small.S3O;
-	description=Debris;
-	metal=0;
-	energy=50;
-	damage=626;
-	blocking=0;
-	footprintx=2;
-	footprintz=2;
-	indestructible=1;
-	reclaimable=1;
+[BuildingDebris_Small] {
+  description=Debris;
+  blocking=0;
+  damage=626;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  indestructible=1;
+  metal=0;
+  object=BuildingDebris_Small.S3O;
+  reclaimable=1;
 }
-[BuildingDebris_Large]
-{
-	object=BuildingDebris_Large.S3O;
-	description=Debris;
-	metal=0;
-	energy=100;
-	damage=1251;
-	blocking=0;
-	footprintx=5;
-	footprintz=5;
-	indestructible=1;
-	reclaimable=1;
+
+[Debris_Large] {
+  description=Debris;
+  blocking=0;
+  damage=626;
+  energy=100;
+  footprintX=5;
+  footprintZ=5;
+  indestructible=1;
+  metal=0;
+  object=Debris_Large.S3O;
+  reclaimable=1;
 }
+
+[Debris_Small] {
+  description=Debris;
+  blocking=0;
+  damage=1750;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  indestructible=1;
+  metal=0;
+  object=Debris_Small.S3O;
+  reclaimable=1;
+}
+

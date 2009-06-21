@@ -1,23 +1,22 @@
-[gbrchurchillmkvii_damaged]
-{
-	object=GBRChurchillMkVII_Damaged.S3O;
-	featuredead=GBRChurchillMkVII_Destroyed;
-	description=Abandoned Tank;
-	energy=1000;
-	damage=626;
-	footprintx=3;
-	footprintz=4;
-	reclaimable=1;
+[gbrchurchillmkvii_damaged] {
+  description=Abandoned Tank;
+  damage=626;
+  energy=1000;
+  featureDead=GBRChurchillMkVII_Destroyed;
+  footprintX=3;
+  footprintZ=4;
+  object=GBRChurchillMkVII_Damaged.S3O;
+  reclaimable=1;
 }
 
-[gbrchurchillmkvii_destroyed]
-{
-	object=GBRChurchillMkVII_Destroyed.S3O;
-	featuredead=Debris_Large;
-	description=Destroyed Tank;
-	energy=500;
-	damage=2501;
-	footprintx=3;
-	footprintz=4;
-	reclaimable=1;
+[gbrchurchillmkvii_destroyed] {
+  description=Destroyed Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=3;
+  footprintZ=4;
+  object=GBRChurchillMkVII_Destroyed.S3O;
+  reclaimable=1;
 }
+

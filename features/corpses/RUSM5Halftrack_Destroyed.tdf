@@ -1,11 +1,11 @@
-[rusm5halftrack_destroyed]
-{
-	object=RUSM5Halftrack_Destroyed.S3O;
-	description=Destroyed Halftrack;
-	featuredead=Debris_Small;
-	energy=50;
-	damage=1251;
-	footprintx=2;
-	footprintz=2;
-	reclaimable=1;
+[rusm5halftrack_destroyed] {
+  description=Destroyed Halftrack;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSM5Halftrack_Destroyed.S3O;
+  reclaimable=1;
 }
+
