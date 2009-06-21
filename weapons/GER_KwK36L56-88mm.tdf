@@ -1,124 +1,97 @@
-[kwk88mml56he]
-{
-	id=107;
-	name=German 88mm KwK 36 L/56 High-Explosive;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Medium;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=2110;
-	reloadtime=9.15;
-	accuracy=125;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	weaponvelocity=1250;
-	areaofeffect=104;
-	edgeeffectiveness=0.15;
-
-	soundstart=GER_88mm;
-	soundhit=GEN_Explo_3;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=4;
-	collisionsize=3;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=1;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[kwk88mml56ap] {
+  name=German 88mm KwK 36 L/56 Armour-Piercing;
+  accuracy=125;
+  areaOfEffect=10;
+  ballistic=1;
+  canAttackGround=1;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [customparams] {
+    ap_penetration=121; //penetration at 30 deg in mm
+    ap_penetration_1000m=100;
+  }
+  [damage] {
+    default=29950; //shell weight in g * 3 + 1000
+    bunkers=50;
+    flag=0;
+    guns=1800;
+    infantry=2100;
+    lightbuildings=750;
+    mines=0;
+    sandbags=250;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=2110;
+  reloadTime=9.15;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
-  stages=50;
-
-	[damage]
-	{
-		default=5000;
-		infantry=2200;
-		guns=1600;
-		mines=0;
-		flag=0;
-		tanks=480;
-		armouredvehicles=5100;
-		unarmouredvehicles=7000;
-	}
-	[customParams]
-	{
-		fearid=401;
-		fearaoe=75;
-	}
-}
-[kwk88mml56ap]
-{
-	name=German 88mm KwK 36 L/56 Armour-Piercing;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Large;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=2110;
-	reloadtime=9.15;
-	accuracy=125;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	weaponvelocity=1780;
-	areaofeffect=10;
-	edgeeffectiveness=0.1;
-	canattackground=0;
-
-	soundstart=GER_88mm;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=4;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-  sizedecay=0;
   size=1;
-  separation=2;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=GER_88mm;
   stages=50;
-
-
-	[damage]
-	{
-		default=29950; //shell weight in g * 3 + 1000
-		infantry=2100;
-		guns=1800;
-		lightbuildings=750;
-		bunkers=50;
-		sandbags=250;
-		mines=0;
-		flag=0;
-	}
-	
-	[customparams] {
-		ap_penetration = 121; //penetration at 30 deg in mm
-		ap_penetration_1000m = 100;
-	}
+  targetMoveError=0.075;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1780;
 }
+
+[kwk88mml56he] {
+  name=German 88mm KwK 36 L/56 High-Explosive;
+  accuracy=125;
+  areaOfEffect=104;
+  ballistic=1;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    fearaoe=75;
+    fearid=401;
+  }
+  [damage] {
+    default=5000;
+    armouredvehicles=5100;
+    flag=0;
+    guns=1600;
+    infantry=2200;
+    mines=0;
+    tanks=480;
+    unarmouredvehicles=7000;
+  }
+  edgeEffectiveness=0.15;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=107;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=2110;
+  reloadTime=9.15;
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=GER_88mm;
+  stages=50;
+  targetMoveError=0.075;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1250;
+}
+

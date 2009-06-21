@@ -1,265 +1,196 @@
-[Small_Tracer]
-{
-	id=666;
-	name=Tracer for standard small-arms fire;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:nothing;
-	lineofsight=1;
-	firestarter=0;
-	range=1000;
-	reloadtime=.1;
-	areaofeffect=1;
-	movingaccuracy=7111;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=0;
-	//soundstart=;
-
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=1 0.75 0;
-
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=2.5;
-	groundfire=0;
-
-	[damage]
-	{
-		default=0;
-	}
+[Large_Tracer] {
+  name=Tracer for light automatic cannons;
+  areaOfEffect=1;
+  burnblow=1;
+  collisionSize=2;
+  [damage] {
+    default=0;
+  }
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  intensity=0.1;
+  lineofsight=1;
+  range=2000;
+  reloadTime=0.1;
+  rendertype=1;
+  rgbColor=1.0 0.75 0.0;
+  separation=2;
+  size=1;
+  soundTrigger=1;
+  sprayAngle=250;
+  stages=50;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2100;
 }
 
-[Small_Tracer_Green]
-{
-	id=666;
-	name=Tracer for standard small-arms fire (Soviet green);
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:nothing;
-	lineofsight=1;
-	firestarter=0;
-	range=1000;
-	reloadtime=.1;
-	areaofeffect=1;
-	movingaccuracy=7111;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=0;
-	//soundstart=;
-
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=0 0.7 0;
-
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=2.5;
-	groundfire=0;
-
-	[damage]
-	{
-		default=0;
-	}
+[Large_Tracer_Green] {
+  name=Tracer for light automatic cannons, with green colour;
+  areaOfEffect=1;
+  burnblow=1;
+  collisionSize=2;
+  [damage] {
+    default=0;
+  }
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  intensity=0.1;
+  lineofsight=1;
+  range=2000;
+  reloadTime=0.1;
+  rendertype=1;
+  rgbColor=0.0 0.75 0.0;
+  separation=2;
+  size=1;
+  soundTrigger=1;
+  sprayAngle=250;
+  stages=50;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2100;
 }
 
-[Medium_Tracer]
-{
-	id=666;
-	name=Tracer for HMGs and 15mm cannons, etc;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:nothing;
-	lineofsight=1;
-	firestarter=0;
-	range=1000;
-	reloadtime=.1;
-	sprayangle=410;
-	areaofeffect=1;
-	movingaccuracy=7111;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=0;
-	//soundstart=;
-
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=1 0.75 0;
-
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=4;
-	groundfire=0;
-
-	[damage]
-	{
-		default=0;
-	}
+[Medium_Tracer] {
+  name=Tracer for HMGs and 15mm cannons, etc;
+  areaOfEffect=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  burnblow=1;
+  collideFriendly=1;
+  coreThickness=0.15;
+  [damage] {
+    default=0;
+  }
+  duration=0.01;
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  groundfire=0;
+  id=666;
+  intensity=0.7;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=7111;
+  noSelfDamage=1;
+  range=1000;
+  reloadTime=0.1;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=4;
+  soundTrigger=1;
+  sprayAngle=410;
+  thickness=0.45;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
 
-[Medium_Tracer_Green]
-{
-	id=666;
-	name=Tracer for HMGs and 15mm cannons, etc, with green colour;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:nothing;
-	lineofsight=1;
-	firestarter=0;
-	range=1000;
-	reloadtime=.1;
-	sprayangle=410;
-	areaofeffect=1;
-	movingaccuracy=7111;
-	weaponvelocity=1500;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=0;
-	//soundstart=;
-
-	avoidfriendly=0;
-	collidefriendly=0;
-	noselfdamage=1;
-
-	rgbcolor=0 0.75 0;
-
-	beamweapon=1;
-	thickness=0.45;
-	duration=0.01;
-	intensity=0.7;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	size=4;
-	groundfire=0;
-
-	[damage]
-	{
-		default=0;
-	}
+[Medium_Tracer_Green] {
+  name=Tracer for HMGs and 15mm cannons, etc, with green colour;
+  areaOfEffect=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  burnblow=1;
+  collideFriendly=1;
+  coreThickness=0.15;
+  [damage] {
+    default=0;
+  }
+  duration=0.01;
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  groundfire=0;
+  id=666;
+  intensity=0.7;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=7111;
+  noSelfDamage=1;
+  range=1000;
+  reloadTime=0.1;
+  rendertype=0;
+  rgbColor=0.0 0.75 0.0;
+  size=4;
+  soundTrigger=1;
+  sprayAngle=410;
+  thickness=0.45;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
 
-[Large_Tracer]
-{
-	name=Tracer for light automatic cannons;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-
-	lineofsight=1;
-	firestarter=0;
-	collisionsize=2;
-	range=2000;
-	reloadtime=0.1;
-	sprayangle=250;
-	weaponvelocity=2100;
-	areaofeffect=1;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=1;
-	//soundstart=;
-
-	rgbcolor=1 0.75 0;
-
-	//beamweapon=1;
-	//thickness=0.7;
-	//duration=0.02;
-	intensity=0.1;
-
-	//corethickness=0.5;
-	//laserflaresize=0.0001;
-
-	size=1;
-	separation=2;
-	stages=50;
-
-	[damage]
-	{
-		default=0;
-	}
+[Small_Tracer] {
+  name=Tracer for standard small-arms fire;
+  areaOfEffect=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  burnblow=1;
+  collideFriendly=1;
+  coreThickness=0.15;
+  [damage] {
+    default=0;
+  }
+  duration=0.01;
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  groundfire=0;
+  id=666;
+  intensity=0.7;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=7111;
+  noSelfDamage=1;
+  range=1000;
+  reloadTime=0.1;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=2.5;
+  soundTrigger=1;
+  thickness=0.45;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
 
-[Large_Tracer_Green]
-{
-	name=Tracer for light automatic cannons, with green colour;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	explosiongenerator=custom:nothing;
-
-	lineofsight=1;
-	firestarter=0;
-	collisionsize=2;
-	range=2000;
-	reloadtime=0.1;
-	sprayangle=250;
-	weaponvelocity=2100;
-	areaofeffect=1;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=1;
-	//soundstart=;
-
-	rgbcolor=0 0.75 0;
-
-	//beamweapon=1;
-	//thickness=0.7;
-	//duration=0.02;
-	intensity=0.1;
-
-	//corethickness=0.5;
-	//laserflaresize=0.0001;
-
-	size=1;
-	separation=2;
-	stages=50;
-
-	[damage]
-	{
-		default=0;
-	}
+[Small_Tracer_Green] {
+  name=Tracer for standard small-arms fire (Soviet green);
+  areaOfEffect=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  burnblow=1;
+  collideFriendly=1;
+  coreThickness=0.15;
+  [damage] {
+    default=0;
+  }
+  duration=0.01;
+  explosionGenerator=custom:nothing;
+  fireStarter=0;
+  groundfire=0;
+  id=666;
+  intensity=0.7;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=7111;
+  noSelfDamage=1;
+  range=1000;
+  reloadTime=0.1;
+  rendertype=0;
+  rgbColor=0.0 0.7 0.0;
+  size=2.5;
+  soundTrigger=1;
+  thickness=0.45;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
+

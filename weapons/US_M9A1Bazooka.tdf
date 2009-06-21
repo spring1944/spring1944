@@ -1,43 +1,37 @@
-[m9a1bazooka]
-{
-	id=100;
-	name=M9A1 Bazooka;
-	weapontype=MissileLauncher;
-	rendertype=1;
-	model=Bomb_Tiny.S3O;
-	explosiongenerator=custom:HE_Medium;
-	turret=1;
-	tolerance=6000;
-
-	ballistic=1;
-	trajectoryheight=0.1;
-	firestarter=0.0;
-
-	range=270;
-	flighttime=1;
-	reloadtime=10;
-	startvelocity=10;
-	weaponacceleration=2000;
-	weaponvelocity=1000;
-	areaofeffect=32;
-	weapontimer=1;
-	//smoketrail=1;
-	targetmoveerror=0.075;
-	soundtrigger=0;
-	soundstart=US_Bazooka;
-	soundhit=GEN_Explo_2;
-
-	cegtag=BazookaTrail;
-
-	[damage]
-	{
-		default=9100;
-		infantry=3800;
-		guns=3000;
-		lightbuildings=1500;
-		bunkers=1500;
-		sandbags=400;
-		mines=0;
-		flag=0;
-	}
+[m9a1bazooka] {
+  name=M9A1 Bazooka;
+  areaOfEffect=32;
+  ballistic=1;
+  cegTag=BazookaTrail;
+  [damage] {
+    default=9100;
+    bunkers=1500;
+    flag=0;
+    guns=3000;
+    infantry=3800;
+    lightbuildings=1500;
+    mines=0;
+    sandbags=400;
+  }
+  explosionGenerator=custom:HE_Medium;
+  fireStarter=0;
+  flightTime=1;
+  id=100;
+  model=Bomb_Tiny.S3O;
+  range=270;
+  reloadTime=10;
+  rendertype=1;
+  soundHit=GEN_Explo_2;
+  soundStart=US_Bazooka;
+  soundTrigger=1;
+  startVelocity=10;
+  targetMoveError=0.075;
+  tolerance=6000;
+  trajectoryHeight=0.1;
+  turret=1;
+  weaponAcceleration=2000;
+  weaponTimer=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=1000;
 }
+

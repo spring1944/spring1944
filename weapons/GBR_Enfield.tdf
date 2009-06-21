@@ -1,56 +1,48 @@
-[enfield]
-{
-	id=2;
-	name=Lee-Enfield No. 4 Mk. I;
-	rendertype=0;
-	turret=1;
-	tolerance=6000;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-	lineofsight=1;
-	firestarter=0.0;
-
-	range=680;
-	reloadtime=2.5;
-	accuracy=50;
-	sprayangle=100;
-	movingaccuracy=888;
-	weaponvelocity=1500;
-	areaofeffect=1;
-	weapontimer=1;
-
-	soundtrigger=0;
-	soundstart=GBR_Enfield;
-
-	avoidfeature=0;
-	collidefeature=0;
-	avoidfriendly=0;
-	collidefriendly=0;
-
-	rgbcolor=1 0.75 0;
-
-	beamweapon=1;
-	thickness=0.4;
-	duration=0.01;
-	intensity=0.9;
-
-	corethickness=0.15;
-	laserflaresize=0.0001;
-
-	collisionsize=2.5;
-	impactonly=1;
-	[damage]
-	{
-		default=1;
-		infantry=33;
-		guns=30;
-		lightbuildings=1;
-		bunkers=0;
-		sandbags=1;
-		mines=0;
-		flag=0.00000001;
-		tanks=0;
-		armouredvehicles=8;
-		unarmouredvehicles=12;
-	}
+[enfield] {
+  name=Lee-Enfield No. 4 Mk. I;
+  accuracy=50;
+  areaOfEffect=1;
+  avoidFeature=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=1;
+  collisionSize=2.5;
+  coreThickness=0.15;
+  [damage] {
+    default=1;
+    armouredvehicles=8;
+    bunkers=0;
+    flag=1e-08;
+    guns=30;
+    infantry=33;
+    lightbuildings=1;
+    mines=0;
+    sandbags=1;
+    tanks=0;
+    unarmouredvehicles=12;
+  }
+  duration=0.01;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=2;
+  impactOnly=1;
+  intensity=0.9;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=680;
+  reloadTime=2.5;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  soundStart=GBR_Enfield;
+  soundTrigger=1;
+  sprayAngle=100;
+  thickness=0.4;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
+

@@ -1,66 +1,53 @@
-[apmine]
-{
-	id=12;
-	name=A Mine!;
-	rendertype=1;
-	turret=1;
-	explosiongenerator=custom:HE_Medium;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=25;
-	reloadtime=19999;
-	weaponvelocity=90;
-	areaofeffect=88;
-
-	soundstart=GEN_Explo_1;
-	soundhit=GEN_Explo_1;
-
-	size=0.00001;
-	impulsefactor=0.1;
-
-	[damage]
-	{
-		default=200;
-		infantry=4000;
-		guns=1500;
-		lightbuildings=10;
-		bunkers=0;
-		sandbags=100;
-		mines=0;
-		flag=0;
-		tanks=20;
-		armouredvehicles=800;
-		unarmouredvehicles=1000;
-	}
+[apmine] {
+  name=A Mine!;
+  areaOfEffect=88;
+  ballistic=1;
+  [damage] {
+    default=200;
+    armouredvehicles=800;
+    bunkers=0;
+    flag=0;
+    guns=1500;
+    infantry=4000;
+    lightbuildings=10;
+    mines=0;
+    sandbags=100;
+    tanks=20;
+    unarmouredvehicles=1000;
+  }
+  explosionGenerator=custom:HE_Medium;
+  fireStarter=0;
+  id=12;
+  impulseFactor=0.1;
+  range=25;
+  reloadTime=19999;
+  rendertype=1;
+  size=1e-05;
+  soundHit=GEN_Explo_1;
+  soundStart=GEN_Explo_1;
+  turret=1;
+  weaponVelocity=90;
 }
-[apminedet]
-{
-	id=64;
-	name=AP Mine detonator;
-	rendertype=1;
-	turret=1;
-	tolerance=64000;
 
-	ballistic=1;
-
-	range=25;
-	reloadtime=1000000000;
-	weaponvelocity=1;
-	areaofeffect=12;
-
-	soundstart=GEN_Explo_4;
-	soundhit=GEN_Explo_4;
-
-	size=0.000001;
-
-	cratermult=1;
-	craterboost=1;
-
-	[damage]
-	{
-		default=0.000001;
-		mines=10000;
-	}
+[apminedet] {
+  name=AP Mine detonator;
+  areaOfEffect=12;
+  ballistic=1;
+  craterBoost=1;
+  craterMult=1;
+  [damage] {
+    default=1e-06;
+    mines=10000;
+  }
+  id=64;
+  range=25;
+  reloadTime=1e+09;
+  rendertype=1;
+  size=1e-06;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_Explo_4;
+  tolerance=64000;
+  turret=1;
+  weaponVelocity=1;
 }
+

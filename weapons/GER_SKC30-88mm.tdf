@@ -1,57 +1,44 @@
-[88mmskc30]
-{
-	id=107;
-	name=German 88mm SK C/30 Naval Gun;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Medium;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=2110;
-	reloadtime=4; // 15 rpm
-	accuracy=125;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	weaponvelocity=1250;
-	areaofeffect=85;
-	edgeeffectiveness=0.15;
-
-	soundstart=GER_88mm;
-	soundhit=GEN_Explo_3;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=4;
-	collisionsize=3;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=1;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[88mmskc30] {
+  name=German 88mm SK C/30 Naval Gun;
+  accuracy=125;
+  areaOfEffect=85;
+  ballistic=1;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=2500;
+    armouredvehicles=2550;
+    flag=0;
+    guns=800;
+    infantry=1100;
+    mines=0;
+    tanks=375;
+    unarmouredvehicles=3500;
+  }
+  edgeEffectiveness=0.15;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=107;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=2110;
+  reloadTime=4; // 15 rpm
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=GER_88mm;
   stages=50;
-
-	[damage]
-	{
-		default=2500;
-		infantry=1100;
-		guns=800;
-		mines=0;
-		flag=0;
-		tanks=375;
-		armouredvehicles=2550;
-		unarmouredvehicles=3500;
-	}
+  targetMoveError=0.075;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1250;
 }
+

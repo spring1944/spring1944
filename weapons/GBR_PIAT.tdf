@@ -1,61 +1,46 @@
-[piat]
-{
-	id=100;
-	name=P.I.A.T.;
-	//weapontype=MissileLauncher;
-	rendertype=4;
-	model=Bomb_Tiny.S3O;
-	turret=1;
-	tolerance=6000;
-	explosionspeed=100;
-
-	lineofsight=1;
-	firestarter=0.0;
-
-	range=225;
-	flighttime=2;
-	reloadtime=15;
-	accuracy=500;
-	targetmoveerror=0.02;
-	startvelocity=200;
-	weaponvelocity=400;
-	areaofeffect=46;
-	edgeeffectiveness=0.8;
-
-	soundstart=GBR_PIAT;
-	soundhit=GEN_Explo_3;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=1.5;
-	collisionsize=3;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=-0.1;
-	craterboost=0;
-
-	  cratermult=0;
-  	craterboost=0;
-  	sizedecay=0;
-  	size=1;
-  	separation=2;
-  	stages=50;
-
-	explosiongenerator=custom:HE_Large;
-
-	[damage]
-	{
-		default=8500;
-		infantry=3800;
-		guns=3000;
-		lightbuildings=1500;
-		bunkers=1500;
-		sandbags=200;
-		mines=0;
-		flag=0;
-	}
+[piat] {
+  name=P.I.A.T.;
+  accuracy=500;
+  areaOfEffect=46;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=8500;
+    bunkers=1500;
+    flag=0;
+    guns=3000;
+    infantry=3800;
+    lightbuildings=1500;
+    mines=0;
+    sandbags=200;
+  }
+  edgeEffectiveness=0.8;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  flightTime=2;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  lineofsight=1;
+  model=Bomb_Tiny.S3O;
+  noSelfDamage=1;
+  range=225;
+  reloadTime=15;
+  rendertype=4;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=GBR_PIAT;
+  stages=50;
+  startVelocity=200;
+  targetMoveError=0.02;
+  tolerance=6000;
+  turret=1;
+  weaponVelocity=400;
 }
+

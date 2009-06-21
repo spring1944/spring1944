@@ -1,129 +1,89 @@
-[mg15115mm]
-{
-	name=15mm MG 151/15 Aircraft Machinegun;
-	rendertype=0;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-
-	lineofsight=1;
-	firestarter=10;
-	collisionsize=2;
-	range=2500;
-	reloadtime=.8;
-	burst=6;
-	burstrate=.08;
-	sprayangle=250;
-	//movingaccuracy=7111;
-	weaponvelocity=2000;
-	areaofeffect=1;
-	impactonly=1;
-	collisionvolumetest=1;
-	burnblow=1;
-	weapontimer=1;
-	
-	predictboost=0.5;
-	
-	soundtrigger=1;
-	soundstart=GER_15mmAir;
-
-	rgbcolor=1 0.75 0;
-
-	//beamweapon=1;
-	//thickness=0.5;
-	//duration=0.02;
-	//intensity=0.7;
-
-	//corethickness=0.15;
-	//laserflaresize=0.0001;
-
-	size=0.000000000000001;
-
-	[damage]
-	{
-		default=15;
-		infantry=50;
-		guns=40;
-		lightbuildings=10;
-		bunkers=0;
-		sandbags=5;
-		mines=0;
-		flag=0.00000000001;
-		tanks=0;
-		armouredvehicles=30;
-		unarmouredvehicles=45; 
-		planes=190;
-	}
-	
-	[customParams]
-	{
-		fearid=301;
-		fearaoe=30;
-	}
-
+[mg15115mm] {
+  name=15mm MG 151/15 Aircraft Machinegun;
+  areaOfEffect=1;
+  burnblow=1;
+  burst=6;
+  burstRate=0.08;
+  collisionSize=2;
+  collisionVolumeTest=1;
+  [customParams] {
+    fearaoe=30;
+    fearid=301;
+  }
+  [damage] {
+    default=15;
+    armouredvehicles=30;
+    bunkers=0;
+    flag=1e-11;
+    guns=40;
+    infantry=50;
+    lightbuildings=10;
+    mines=0;
+    planes=190;
+    sandbags=5;
+    tanks=0;
+    unarmouredvehicles=45;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=10;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  predictBoost=0.5;
+  range=2500;
+  reloadTime=0.8;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-15;
+  soundStart=GER_15mmAir;
+  soundTrigger=1;
+  sprayAngle=250;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2000;
 }
 
-[MG15120mm]
-{
-	name=20mm MG 151/20 Aircraft Machinegun;
-	rendertype=1;
-	turret=1;
-	tolerance=600;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:HE_XSmall;
-
-	lineofsight=1;
-	firestarter=10;
-	collisionsize=2;
-	range=2500;
-	reloadtime=1.25;
-	burst=6;
-	burstrate=0.085;
-	sprayangle=250;
-	//movingaccuracy=7111;
-	weaponvelocity=2000;
-	areaofeffect=30;
-	burnblow=1;
-	weapontimer=1;
-
-	soundtrigger=1;
-	soundstart=GER_20mmAir;
-
-	rgbcolor=1 0.75 0;
-
-	//beamweapon=1;
-	//thickness=0.7;
-	//duration=0.02;
-	//intensity=0.1;
-
-	//corethickness=0.5;
-	//laserflaresize=0.0001;
-
-	size=0.0000000000001;
-	//separation=2;
-	//stages=50;
-
-	[damage]
-	{
-		default=40;
-		infantry=500;
-		guns=300;
-		lightbuildings=50;
-		bunkers=0;
-		sandbags=5;
-		mines=0;
-		flag=0.00000000001;
-		tanks=50;
-		armouredvehicles=800;
-		unarmouredvehicles=1000;
-		planes=385;
-	}
-
-	[customParams]
-	{
-		fearid=301;
-		fearaoe=30;
-	}
-
+[MG15120mm] {
+  name=20mm MG 151/20 Aircraft Machinegun;
+  areaOfEffect=30;
+  burnblow=1;
+  burst=6;
+  burstRate=0.085;
+  collisionSize=2;
+  [customParams] {
+    fearaoe=30;
+    fearid=301;
+  }
+  [damage] {
+    default=40;
+    armouredvehicles=800;
+    bunkers=0;
+    flag=1e-11;
+    guns=300;
+    infantry=500;
+    lightbuildings=50;
+    mines=0;
+    planes=385;
+    sandbags=5;
+    tanks=50;
+    unarmouredvehicles=1000;
+  }
+  explosionGenerator=custom:HE_XSmall;
+  fireStarter=10;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  range=2500;
+  reloadTime=1.25;
+  rendertype=1;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-13;
+  soundStart=GER_20mmAir;
+  soundTrigger=1;
+  sprayAngle=250;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2000;
 }
+

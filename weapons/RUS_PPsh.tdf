@@ -1,57 +1,49 @@
-[ppsh]
-{
-	id=5;
-	name=PPsh-1941;
-	rendertype=0;
-	turret=1;
-	tolerance=6000;
-	interceptedbyshieldtype=8;
-	explosiongenerator=custom:Bullet;
-	lineofsight=1;
-	firestarter=0.0;
-
-	range=310;
-	reloadtime=1.5;
-	burst=9;
-	burstrate=.05;
-	sprayangle=500;
-	movingaccuracy=933;
-	weaponvelocity=1500;
-	areaofeffect=1;
-	weapontimer=1;
-
-	soundtrigger=1;
-	soundstart=RUS_PPsh;
-
-	avoidfeature=0;
-	collidefeature=0;
-	avoidfriendly=0;
-	collidefriendly=0;
-
-	rgbcolor=0.3 0.75 0.4;
-
-	beamweapon=1;
-	thickness=0.2;
-	duration=0.02;
-	intensity=0.8;
-
-	corethickness=0.75;
-	laserflaresize=0.0001;
-
-	collisionsize=2.5;
-	impactonly=1;
-	[damage]
-	{
-		default=0;
-		infantry=17;
-		guns=25;
-		lightbuildings=0;
-		bunkers=0;
-		sandbags=1;
-		mines=0;
-		flags=0.0000000000000001;
-		tanks=0;
-		armouredvehicles=4;
-		unarmouredvehicles=6;
-	}
+[ppsh] {
+  name=PPsh-1941;
+  areaOfEffect=1;
+  avoidFeature=1;
+  avoidFriendly=1;
+  beamweapon=1;
+  burst=9;
+  burstRate=0.05;
+  collideFeature=1;
+  collideFriendly=1;
+  collisionSize=2.5;
+  coreThickness=0.75;
+  [damage] {
+    default=0;
+    armouredvehicles=4;
+    bunkers=0;
+    flags=1e-16;
+    guns=25;
+    infantry=17;
+    lightbuildings=0;
+    mines=0;
+    sandbags=1;
+    tanks=0;
+    unarmouredvehicles=6;
+  }
+  duration=0.02;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=5;
+  impactOnly=1;
+  intensity=0.8;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=933;
+  range=310;
+  reloadTime=1.5;
+  rendertype=0;
+  rgbColor=0.3 0.75 0.4;
+  soundStart=RUS_PPsh;
+  soundTrigger=1;
+  sprayAngle=500;
+  thickness=0.2;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
 }
+

@@ -1,70 +1,61 @@
-[.50calproof]
-{
-	id=133;
-	name=Deflecting bullets;
-
-	isshield=1;
-	shieldrepulser=1;
-	exteriorshield=1;
-	shieldforce=500;
-	shieldradius=40;
-	shieldmaxspeed=900;
-	shieldenergyuse=0;
-	shieldintercepttype=24;
-	shieldbadcolor=0 0 0;
-	shieldgoodcolor=1 1 1;
-	shieldalpha=0.8;
-
-	[damage]
-	{
-		default=10;
-	}
+[.30calproof] {
+  name=Deflecting .30 cal and under bullets;
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=1313;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=16;
+  shieldMaxSpeed=900;
+  shieldRadius=35;
+  shieldRepulser=1;
 }
-[.30calproof]
-{
-	id=1313;
-	name=Deflecting .30 cal and under bullets;
 
-	isshield=1;
-	shieldrepulser=1;
-	exteriorshield=1;
-	shieldforce=500;
-	shieldradius=35;
-	shieldmaxspeed=900;
-	shieldenergyuse=0;
-	shieldintercepttype=16;
-	shieldbadcolor=0 0 0;
-	shieldgoodcolor=1 1 1;
-	shieldalpha=0.8;
-
-	[damage]
-	{
-		default=10;
-	}
+[.50calproof] {
+  name=Deflecting bullets;
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=133;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=24;
+  shieldMaxSpeed=900;
+  shieldRadius=40;
+  shieldRepulser=1;
 }
-[small30calproof]
-{
-	id=1313;
-	name=Deflecting .30 cal and under bullets;
 
-	isshield=1;
-	shieldrepulser=1;
-	exteriorshield=1;
-	visibleshield=1;
-	visibleshieldrepulse=1;
-	shieldforce=500;
-	shieldradius=16;
-	shieldmaxspeed=900;
-	shieldenergyuse=0;
-	shieldpower=9000000;
-	shieldpowerregen=1000;
-	shieldintercepttype=16;
-	shieldbadcolor=0 0 0;
-	shieldgoodcolor=1 1 1;
-	shieldalpha=0.8;
-
-	[damage]
-	{
-		default=10;
-	}
+[small30calproof] {
+  name=Deflecting .30 cal and under bullets;
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=1313;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=16;
+  shieldMaxSpeed=900;
+  shieldPower=9e+06;
+  shieldPowerRegen=1000;
+  shieldRadius=16;
+  shieldRepulser=1;
+  visibleShield=1;
+  visibleShieldRepulse=1;
 }
+

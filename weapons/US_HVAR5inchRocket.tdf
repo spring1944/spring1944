@@ -1,53 +1,42 @@
-[hvarrocket]
-{
-	id=100;
-	name=5-Inch HVAR Rockets;
-	weapontype=MissileLauncher;
-	rendertype=1;
-	model=Rocket_HVAR.S3O;
-	explosiongenerator=custom:HE_Medium;
-	collidefriendly=0;
-	turret=1;
-	tolerance=300;
-	//projectiles=2;
-
-	ballistic=1;
-	trajectoryheight=0.05;
-	firestarter=0.0;
-
-	range=1500;
-	flighttime=2;
-	reloadtime=1;
-	startvelocity=750;
-	weaponacceleration=2000;
-	weaponvelocity=1500;
-	areaofeffect=64;
-	wobble=1500;
-	//accuracy=1000;
-	weapontimer=1;
-	//smoketrail=1;
-	//targetmoveerror=0.075;
-	soundtrigger=0;
-	soundstart=GER_Panzerschrek;
-	soundhit=GEN_Explo_2;
-
-	cegtag=BazookaTrail;
-
-	impulsefactor=1;
-	impulseboost=0;
-	cratermult=1;
-	craterboost=0;
-
-
-	[damage]
-	{
-		default=10000;
-		infantry=1000;
-		guns=1000;
-		lightbuildings=1000;
-		bunkers=1000;
-		sandbags=200;
-		mines=0;
-		flag=0;
-	}
+[hvarrocket] {
+  name=5-Inch HVAR Rockets;
+  areaOfEffect=64;
+  ballistic=1;
+  cegTag=BazookaTrail;
+  collideFriendly=1;
+  craterBoost=0;
+  craterMult=1;
+  [damage] {
+    default=10000;
+    bunkers=1000;
+    flag=0;
+    guns=1000;
+    infantry=1000;
+    lightbuildings=1000;
+    mines=0;
+    sandbags=200;
+  }
+  explosionGenerator=custom:HE_Medium;
+  fireStarter=0;
+  flightTime=2;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=1;
+  model=Rocket_HVAR.S3O;
+  range=1500;
+  reloadTime=1;
+  rendertype=1;
+  soundHit=GEN_Explo_2;
+  soundStart=GER_Panzerschrek;
+  soundTrigger=1;
+  startVelocity=750;
+  tolerance=300;
+  trajectoryHeight=0.05;
+  turret=1;
+  weaponAcceleration=2000;
+  weaponTimer=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=1500;
+  wobble=1500;
 }
+

@@ -1,61 +1,48 @@
-[octpompom]
-{
-	id=100;
-	name=Pom-pom mkVIII 2pdr Octuple Automatic AA Gun;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Small;
-
-	ballistic=1;
-
-	range=1250; // sucky muzzle velocity
-	reloadtime=0.075; // 100 rpm per gun, and 8 guns...
-	accuracy=500;
-	movingaccuracy=800;
-	targetmoveerror=0.09;
-	firestarter=0.0;
-	weaponvelocity=1200; // quite a slow projectile
-	areaofeffect=10;
-	edgeeffectiveness=0.1;
-	canattackground=1;
-
-	soundstart=pompom;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=1.25;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[octpompom] {
+  name=Pom-pom mkVIII 2pdr Octuple Automatic AA Gun;
+  accuracy=500;
+  areaOfEffect=10;
+  ballistic=1;
+  canAttackGround=1;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=2500; //10100
+    bunkers=15;
+    flag=0;
+    guns=1100;
+    infantry=1000;
+    lightbuildings=250;
+    mines=0;
+    sandbags=100;
+  }
+  dynDamageExp=1;
+  dynDamageRange=5250;
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Small;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=800;
+  noSelfDamage=1;
+  range=1250; // sucky muzzle velocity
+  reloadTime=0.075; // 100 rpm per gun, and 8 guns...
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=pompom;
   stages=50;
-
-	dyndamageexp=1;
-	dyndamagerange=5250;
-	[damage]
-	{
-		default=2500; //10100
-		infantry=1000;
-		guns=1100;
-		lightbuildings=250;
-		bunkers=15;
-		sandbags=100;
-		mines=0;
-		flag=0;
-	}
+  targetMoveError=0.09;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1200; // quite a slow projectile
 }
+

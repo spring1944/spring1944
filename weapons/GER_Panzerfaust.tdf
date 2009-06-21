@@ -1,60 +1,46 @@
-[panzerfaust]
-{
-	id=100;
-	name=Panzerfaust 100, Faustpatrone, etc;
-	//weapontype=MissileLauncher;
-	rendertype=4;
-	model=Bomb_Small.S3O;
-	turret=1;
-	tolerance=6000;
-	explosionspeed=100;
-	explosiongenerator=custom:HE_Large;
-
-	lineofsight=1;
-	firestarter=0.0;
-
-	range=235;
-	flighttime=2;
-	reloadtime=15;
-	accuracy=500;
-	targetmoveerror=0.075;
-	startvelocity=200;
-	weaponvelocity=400;
-	areaofeffect=55;
-	edgeeffectiveness=0.01;
-
-	soundstart=GER_Panzerfaust;
-	soundhit=GEN_Explo_2;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=1.5;
-	collisionsize=3;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=-0.1;
-	craterboost=0;
-
-	  cratermult=0;
-  	craterboost=0;
-  	sizedecay=0;
-  	size=1;
-  	separation=2;
-  	stages=50;
-
-	[damage]
-	{
-		default=15150;
-		infantry=5200;
-		guns=4000;
-		lightbuildings=2500;
-		bunkers=3000;
-		sandbags=250;
-		mines=0;
-		flag=0;
-	}
+[panzerfaust] {
+  name=Panzerfaust 100, Faustpatrone, etc;
+  accuracy=500;
+  areaOfEffect=55;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=15150;
+    bunkers=3000;
+    flag=0;
+    guns=4000;
+    infantry=5200;
+    lightbuildings=2500;
+    mines=0;
+    sandbags=250;
+  }
+  edgeEffectiveness=0.01;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  flightTime=2;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  lineofsight=1;
+  model=Bomb_Small.S3O;
+  noSelfDamage=1;
+  range=235;
+  reloadTime=15;
+  rendertype=4;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=GER_Panzerfaust;
+  stages=50;
+  startVelocity=200;
+  targetMoveError=0.075;
+  tolerance=6000;
+  turret=1;
+  weaponVelocity=400;
 }
+

@@ -1,55 +1,43 @@
-[3in50mk22]
-{
-	id=99;
-	name=mk22 3inch/50 Naval AA Gun;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Large;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=2000;
-	reloadtime=3.5; // 15 - 20 rounds per minute, as per Russian sources
-	accuracy=170;
-	targetmoveerror=0.1;
-	weaponvelocity=1400;
-	areaofeffect=80;
-	edgeeffectiveness=0.25;
-	soundstart=GEN_105mm;
-	soundhit=GEN_Explo_4;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=5.3;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[3in50mk22] {
+  name=mk22 3inch/50 Naval AA Gun;
+  accuracy=170;
+  areaOfEffect=80;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=2250;
+    armouredvehicles=3000;
+    flag=0;
+    guns=840;
+    infantry=930;
+    mines=0;
+    tanks=1275;
+    unarmouredvehicles=3037;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  noSelfDamage=1;
+  range=2000;
+  reloadTime=3.5; // 15 - 20 rounds per minute, as per Russian sources
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_105mm;
   stages=50;
-
-	[damage]
-	{
-		default=2250;
-		infantry=930;
-		guns=840;
-		mines=0;
-		flag=0;
-		tanks=1275;
-		armouredvehicles=3000;
-		unarmouredvehicles=3037;
-	}
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1400;
 }
+

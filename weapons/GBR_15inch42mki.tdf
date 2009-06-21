@@ -1,46 +1,38 @@
-[gbr15inch42mki]
-{
-	id=99;
-	name=15"/42 mkI Naval Gun;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_XLarge;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=9000;
-	reloadtime=30; // 2 rpm
-	accuracy=540;
-	targetmoveerror=0.1;
-	weaponvelocity=1500;
-	areaofeffect=512;
-	edgeeffectiveness=0.25;
-	soundstart=16inch;
-	soundhit=GEN_Explo_4;
-
-	noselfdamage=0; // if we are stupid enough to hit something close with THAT, then we deserved it
-
-	model=gbr15inchround;
-
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	// OMGWTFBBQ explosion
-	[damage]
-	{
-		default=45000;
-		infantry=18600;
-		guns=16800;
-		mines=0;
-		flag=0;
-		tanks=25500;
-		armouredvehicles=60000;
-		unarmouredvehicles=60750;
-	}
+[gbr15inch42mki] {
+  name=15"/42 mkI Naval Gun;
+  accuracy=540;
+  areaOfEffect=512;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0.5;
+  [damage] {
+    default=45000;
+    armouredvehicles=60000;
+    flag=0;
+    guns=16800;
+    infantry=18600;
+    mines=0;
+    tanks=25500;
+    unarmouredvehicles=60750;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_XLarge;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  model=gbr15inchround;
+  noSelfDamage=1; // if we are stupid enough to hit something close with THAT, then we deserved it
+  range=9000;
+  reloadTime=30; // 2 rpm
+  rendertype=1;
+  soundHit=GEN_Explo_4;
+  soundStart=16inch;
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1500;
 }
+

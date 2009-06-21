@@ -1,36 +1,33 @@
-[molotov]
-{
-	id=31;
-	name=Molotov Cocktail;
-	model=MortarShell.S3O;
-	rendertype=3;
-	turret=1;
-	CEGTag=Flametrail;
-	tolerance=10000;
-	range=180;
-	reloadtime=8;
-	accuracy=1250;
-	movingaccuracy=500;
-	weaponvelocity=210;
-	areaofeffect=32;
-	edgeeffectiveness=0.8;
-	canattackground=0;
-	weapontimer=5;
-	TargetBorder=1;
-	soundhit=GEN_Molotov;
-	explosiongenerator=custom:Molotov;
-
-	impulsefactor=0.00001;
-
-	[damage]
-	{
-		default=1000;
-		mines=0;
-		infantry=1100;
-		guns=800;
-		flag=0;
-		tanks=660;
-		armouredvehicles=1700;
-		unarmouredvehicles=2500;
-	}
+[molotov] {
+  name=Molotov Cocktail;
+  accuracy=1250;
+  areaOfEffect=32;
+  canAttackGround=1;
+  cegTag=Flametrail;
+  [damage] {
+    default=1000;
+    armouredvehicles=1700;
+    flag=0;
+    guns=800;
+    infantry=1100;
+    mines=0;
+    tanks=660;
+    unarmouredvehicles=2500;
+  }
+  edgeEffectiveness=0.8;
+  explosionGenerator=custom:Molotov;
+  id=31;
+  impulseFactor=1e-05;
+  model=MortarShell.S3O;
+  movingAccuracy=500;
+  range=180;
+  reloadTime=8;
+  rendertype=3;
+  soundHit=GEN_Molotov;
+  targetBorder=1;
+  tolerance=10000;
+  turret=1;
+  weaponTimer=5;
+  weaponVelocity=210;
 }
+

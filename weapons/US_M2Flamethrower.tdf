@@ -1,44 +1,39 @@
-[m2flamethrower]
-{
-	id=76;
-	name=M2-2 Flamethrower;
-	rendertype=1;
-	turret=1;
-	tolerance=200;
-
-	lineofsight=1;
-	firestarter=100;
-	explosiongenerator=custom:Flamethrower;
-	CEGTag=Flametrail;
-	range=200;
-	reloadtime=1;
-	burst=40;
-	burstrate=.01;
-	sprayangle=500;
-	weaponvelocity=240;
-	areaofeffect=80;
-	explosionspeed=0.01;
-	edgeeffectiveness=0.25;
-	weapontimer=2;
-	groundbounce=0;
-	soundtrigger=1;
-	soundstart=GEN_Flamethrower;
-	soundhit=none;
-	size=0.01;
-
-	impulsefactor=0.000001;
-
-	[damage]
-	{
-		default=32;
-		bunkers=150;
-		sandbags=2.5;
-		mines=0;
-		flag=0.000000001;
-	}
-	[customParams]
-	{
-		fearid=501;
-		fearaoe=75;
-	}
+[m2flamethrower] {
+  name=M2-2 Flamethrower;
+  areaOfEffect=80;
+  burst=40;
+  burstRate=0.01;
+  cegTag=Flametrail;
+  [customParams] {
+    fearaoe=75;
+    fearid=501;
+  }
+  [damage] {
+    default=32;
+    bunkers=150;
+    flag=1e-09;
+    mines=0;
+    sandbags=2.5;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:Flamethrower;
+  explosionSpeed=0.01;
+  fireStarter=100;
+  groundBounce=1;
+  id=76;
+  impulseFactor=1e-06;
+  lineofsight=1;
+  range=200;
+  reloadTime=1;
+  rendertype=1;
+  size=0.01;
+  soundHit=none;
+  soundStart=GEN_Flamethrower;
+  soundTrigger=1;
+  sprayAngle=500;
+  tolerance=200;
+  turret=1;
+  weaponTimer=2;
+  weaponVelocity=240;
 }
+

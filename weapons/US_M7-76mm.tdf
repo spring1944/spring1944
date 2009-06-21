@@ -1,123 +1,96 @@
-[m7he]
-{
-	id=103;
-	name=US M7 76.2mm -- High Explosive Ammunition;
-	rendertype=1;
-	turret=1;
-	tolerance=3000;
-	explosiongenerator=custom:HE_Medium;
-	explosionspeed=100;
-
-	ballistic=1;
-	firestarter=0.0;
-
-	range=1545;
-	reloadtime=6.75;
-	accuracy=200;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	weaponvelocity=1646;
-	areaofeffect=72;
-	edgeeffectiveness=0.1;
-
-	soundstart=US_76mm;
-	soundhit=GEN_Explo_3;
-
-	noselfdamage=1;
-
-	rgbcolor=.5 .5 0;
-
-	intensity=0.1;
-
-	size=3;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=.5;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[m7ap] {
+  name=US M7 76.2mm -- Armour-Piercing Ammunition;
+  accuracy=290;
+  areaOfEffect=10;
+  ballistic=1;
+  canAttackGround=1;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=7350; //9800
+    bunkers=50;
+    flag=0;
+    guns=1800;
+    infantry=2150;
+    lightbuildings=750;
+    mines=0;
+    sandbags=250;
+  }
+  dynDamageExp=1;
+  dynDamageRange=7750;
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1545;
+  reloadTime=6.75;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
-  stages=50;
-
-	[damage]
-	{
-		default=685;
-		mines=0;
-		infantry=1200;
-		guns=1100;
-		flag=0;
-		tanks=480;
-		armouredvehicles=3200;
-		unarmouredvehicles=3400;
-	}
-	[customParams]
-	{
-		fearid=401;
-		fearaoe=75;
-	}
-}
-[m7ap]
-{
-	id=100;
-	name=US M7 76.2mm -- Armour-Piercing Ammunition;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Medium;
-
-	ballistic=1;
-
-	range=1545;
-	reloadtime=6.75;
-	accuracy=290;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	firestarter=0.0;
-	weaponvelocity=1584;
-	areaofeffect=10;
-	edgeeffectiveness=0.1;
-	canattackground=0;
-
-	soundstart=US_76mm;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=3;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
   size=1;
-  separation=2;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=US_76mm;
   stages=50;
-
-	dyndamageexp=1;
-	dyndamagerange=7750;
-	[damage]
-	{
-		default=7350;//9800
-		infantry=2150;
-		guns=1800;
-		lightbuildings=750;
-		bunkers=50;
-		sandbags=250;
-		mines=0;
-		flag=0;
-	}
+  targetMoveError=0.075;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1584;
 }
+
+[m7he] {
+  name=US M7 76.2mm -- High Explosive Ammunition;
+  accuracy=200;
+  areaOfEffect=72;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    fearaoe=75;
+    fearid=401;
+  }
+  [damage] {
+    default=685;
+    armouredvehicles=3200;
+    flag=0;
+    guns=1100;
+    infantry=1200;
+    mines=0;
+    tanks=480;
+    unarmouredvehicles=3400;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=103;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1545;
+  reloadTime=6.75;
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=US_76mm;
+  stages=50;
+  targetMoveError=0.075;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1646;
+}
+

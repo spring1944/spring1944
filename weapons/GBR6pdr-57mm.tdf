@@ -1,61 +1,48 @@
-[6pdr57mmap]
-{
-	id=100;
-	name=British 57mm 6 Pounder Armour-Piercing;
-	rendertype=1;
-	turret=1;
-	tolerance=300;
-	explosionspeed=100;
-	explosiongenerator=custom:AP_Medium;
-
-	ballistic=1;
-
-	range=1200;
-	reloadtime=4.95;
-	accuracy=290;
-	movingaccuracy=600;
-	targetmoveerror=0.075;
-	firestarter=0.0;
-	weaponvelocity=1670;
-	areaofeffect=10;
-	edgeeffectiveness=0.1;
-	canattackground=0;
-
-	soundstart=GER_50mm;
-	soundhit=GEN_Explo_1;
-
-	noselfdamage=1;
-
-	rgbcolor=1 0 0;
-	colormap=ap_colormap.png;
-
-	intensity=0.25;
-
-	size=2;
-	collisionsize=4;
-	impulsefactor=0;
-	impulseboost=0;
-	cratermult=0;
-	craterboost=0;
-
-	  cratermult=0;
-  craterboost=0;
-  sizedecay=0;
-  size=1;
+[6pdr57mmap] {
+  name=British 57mm 6 Pounder Armour-Piercing;
+  accuracy=290;
+  areaOfEffect=10;
+  ballistic=1;
+  canAttackGround=1;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [damage] {
+    default=6975; //9300
+    bunkers=40;
+    flag=0;
+    guns=800;
+    infantry=1900;
+    lightbuildings=500;
+    mines=0;
+    sandbags=200;
+  }
+  dynDamageExp=1;
+  dynDamageRange=4300;
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  id=100;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1200;
+  reloadTime=4.95;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
   separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=GER_50mm;
   stages=50;
-
-	dyndamageexp=1;
-	dyndamagerange=4300;
-	[damage]
-	{
-		default=6975;//9300
-		infantry=1900;
-		guns=800;
-		lightbuildings=500;
-		bunkers=40;
-		sandbags=200;
-		mines=0;
-		flag=0;
-	}
+  targetMoveError=0.075;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1670;
 }
+
