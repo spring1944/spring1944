@@ -13,7 +13,7 @@
     ap_penetration_1000m=61;
   }
   [damage] {
-    default=21370; //shell weight in g * 3 + 1000
+    default=2137; //shell weight in g * 0.3 + 100
     bunkers=50;
     flag=0;
     guns=1400;
