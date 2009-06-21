@@ -1,44 +1,51 @@
-[tt33] {
-  name=TT-33 Pistol;
-  areaOfEffect=1;
-  avoidFeature=1;
-  avoidFriendly=1;
-  beamweapon=1;
-  collideFeature=1;
-  collideFriendly=1;
-  collisionSize=2.5;
-  color=255;
-  color2=226;
-  [damage] {
-    default=1;
-    armouredvehicles=10;
-    bunkers=0;
-    flag=0;
-    guns=30;
-    infantry=41;
-    lightbuildings=1;
-    mines=0;
-    sandbags=1;
-    tanks=0;
-    unarmouredvehicles=15;
-  }
-  duration=0.025;
-  explosionGenerator=custom:Bullet;
-  fireStarter=0;
-  id=1;
-  impactOnly=1;
-  intensity=0.0001;
-  lineofsight=1;
-  movingAccuracy=888;
-  range=180;
-  reloadTime=1.5;
-  rendertype=0;
-  soundStart=RUS_TT33;
-  soundTrigger=1;
-  thickness=0.2;
-  tolerance=6000;
-  turret=1;
-  weaponTimer=1;
-  weaponVelocity=1500;
-}
+[tt33]
+{
+	id=1;
+	name=TT-33 Pistol;
+	rendertype=0;
+	turret=1;
+	tolerance=6000;
+	explosiongenerator=custom:Bullet;
+	lineofsight=1;
+	firestarter=0.0;
 
+	range=180;
+	reloadtime=1.5;
+	movingaccuracy=888;
+	weaponvelocity=1500;
+	areaofeffect=1;
+	weapontimer=1;
+
+	soundtrigger=0;
+	soundstart=RUS_TT33;
+
+	avoidfeature=0;
+	collidefeature=0;
+	avoidfriendly=0;
+	collidefriendly=0;
+
+	color=255;
+	color2=226;
+
+	beamweapon=1;
+	thickness=0.2;
+	duration=0.025;
+	intensity=0.0001;
+
+	collisionsize=2.5;
+	impactonly=1;
+	[damage]
+	{
+		default=1;
+		infantry=41;
+		guns=30;
+		lightbuildings=1;
+		bunkers=0;
+		sandbags=1;
+		mines=0;
+		flag=0;
+		tanks=0;
+		armouredvehicles=10;
+		unarmouredvehicles=15;
+	}
+}

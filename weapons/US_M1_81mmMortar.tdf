@@ -1,35 +1,43 @@
-[m1_81mmmortar] {
-  name=M1 81mm Mortar;
-  accuracy=485;
-  areaOfEffect=104;
-  color=255;
-  [customParams] {
-    fearaoe=105;
-    fearid=301;
-  }
-  [damage] {
-    default=760;
-    armouredvehicles=3570;
-    flag=0;
-    guns=1600;
-    infantry=1600;
-    mines=0;
-    tanks=240;
-    unarmouredvehicles=3800;
-  }
-  edgeEffectiveness=0.2;
-  explosionGenerator=custom:HE_Medium;
-  fireStarter=0;
-  id=28;
-  impulseFactor=1e-07;
-  model=MortarShell.S3O;
-  range=1320;
-  reloadTime=12;
-  rendertype=1;
-  soundHit=GEN_Explo_3;
-  soundStart=GEN_Mortar;
-  startVelocity=1000;
-  turret=1;
-  weaponVelocity=550;
-}
+[m1_81mmmortar]
+{
+	id=28;
+	name=M1 81mm Mortar;
+	model=MortarShell.S3O;
+	rendertype=1;
+	turret=1;
+	explosiongenerator=custom:HE_Medium;
 
+	firestarter=0.0;
+
+	range=1320;
+	reloadtime=12;
+	accuracy=485;
+	startvelocity=1000;
+	weaponvelocity=550;
+	areaofeffect=104;
+	edgeeffectiveness=0.2;
+
+	soundstart=GEN_Mortar;
+	soundhit=GEN_Explo_3;
+
+	color=255;
+
+	impulsefactor=0.0000001;
+
+	[damage]
+	{
+		default=760;
+		infantry=1600;
+		guns=1600;
+		mines=0;
+		flag=0;
+		tanks=240;
+		armouredvehicles=3570;
+		unarmouredvehicles=3800;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=105;
+	}
+}

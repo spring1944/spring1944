@@ -1,43 +1,58 @@
-[18inchtorpedo] {
-  name=Mk.XV 18inch torpedo;
-  areaOfEffect=32;
-  avoidFriendly=1;
-  burnblow=1;
-  burst=1;
-  collideFriendly=1;
-  [damage] {
-    default=8000;
-    armouredvehicles=12000;
-    flag=0;
-    guns=4000;
-    infantry=4000;
-    mines=0;
-    tanks=8000;
-    unarmouredvehicles=12000;
-  }
-  edgeEffectiveness=0.5;
-  fireStarter=70;
-  guidance=0;
-  lineofsight=1;
-  metalPerShot=0;
-  model=GBR18inchtorpedo;
-  noautorange=1;
-  propeller=1;
-  range=1300;
-  reloadTime=300;
-  rendertype=1;
-  selfprop=1;
-  soundHit=gen_explo_11;
-  soundStart=watersplash;
-  sprayAngle=1300;
-  startVelocity=250;
-  tolerance=9000;
-  tracks=1;
-  turnRate=50000;
-  turret=1;
-  waterWeapon=1;
-  weaponAcceleration=230;
-  weaponTimer=5.5;
-  weaponVelocity=450;
-}
+[18inchtorpedo]
+	{
+	name=Mk.XV 18inch torpedo;
+	rendertype=1;
+	lineofsight=1;
+	noautorange=1;
+	AvoidFriendly=1;
+	CollideFriendly=1;
+	turret=1;
+	waterweapon=1;
 
+	model=GBR18inchtorpedo;
+
+	range=1300;
+	reloadtime=300;
+	weapontimer=5.5;
+	burst=1;
+	sprayangle=1300;
+	burnblow=1;
+	weaponvelocity=450;
+	startvelocity=250;
+	weaponacceleration=230;
+	turnrate=50000;
+	areaofeffect=32;
+	edgeeffectiveness=0.5;
+	metalpershot=0;
+	propeller=1;
+
+	soundstart=watersplash;
+	soundhit=gen_explo_11;
+
+	firestarter=70;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	tolerance=9000;
+
+	//explosiongaf=fx;
+	//explosionart=explode3;
+
+	//waterexplosiongaf=fx;
+	//waterexplosionart=h2o;
+
+	//lavaexplosiongaf=fx;
+	//lavaexplosionart=lavasplash;
+
+	[damage]
+	{
+		default=8000;
+		infantry=4000;
+		guns=4000;
+		mines=0;
+		flag=0;
+		tanks=8000;
+		armouredvehicles=12000;
+		unarmouredvehicles=12000;
+	}
+}

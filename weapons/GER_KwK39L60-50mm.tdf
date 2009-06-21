@@ -1,96 +1,123 @@
-[kwk50mml60ap] {
-  name=German 50mm KwK 39 L/60 Armour-Piercing;
-  accuracy=255;
-  areaOfEffect=10;
-  ballistic=1;
-  canAttackGround=1;
-  collisionSize=4;
-  colormap=ap_colormap.png;
-  craterBoost=0;
-  craterMult=0;
-  [damage] {
-    default=5325; //7100
-    bunkers=40;
-    flag=0;
-    guns=1000;
-    infantry=1800;
-    lightbuildings=500;
-    mines=0;
-    sandbags=200;
-  }
-  dynDamageExp=1;
-  dynDamageRange=3000;
-  edgeEffectiveness=0.1;
-  explosionGenerator=custom:AP_Medium;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=100;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.25;
-  movingAccuracy=600;
-  noSelfDamage=1;
-  range=1125;
-  reloadTime=4.95;
-  rendertype=1;
-  rgbColor=1.0 0.0 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_1;
-  soundStart=GER_50mm;
-  stages=50;
-  targetMoveError=0.075;
-  tolerance=300;
-  turret=1;
-  weaponVelocity=1670;
-}
+[kwk50mml60he]
+{
+	id=50;
+	name=German 50mm KwK 39 L/60 High-Explosive;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:HE_Medium;
+	explosionspeed=100;
 
-[kwk50mml60he] {
-  name=German 50mm KwK 39 L/60 High-Explosive;
-  accuracy=255;
-  areaOfEffect=64;
-  ballistic=1;
-  collisionSize=3;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
-    fearaoe=50;
-    fearid=301;
-  }
-  [damage] {
-    default=1600;
-    armouredvehicles=3200;
-    flag=0;
-    guns=1000;
-    infantry=1200;
-    mines=0;
-    tanks=240;
-    unarmouredvehicles=4600;
-  }
-  edgeEffectiveness=0.25;
-  explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=50;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  movingAccuracy=600;
-  noSelfDamage=1;
-  range=1125;
-  reloadTime=4.95;
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_2;
-  soundStart=GER_50mm;
-  stages=50;
-  targetMoveError=0.075;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=1100;
-}
+	ballistic=1;
+	firestarter=0.0;
 
+	range=1125;
+	reloadtime=4.95;
+	accuracy=255;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	weaponvelocity=1100;
+	areaofeffect=64;
+	edgeeffectiveness=0.25;
+
+	soundstart=GER_50mm;
+	soundhit=GEN_Explo_2;
+	//cegTag=TestTrail;
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=2.5;
+	collisionsize=3;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=1600;
+		infantry=1200;
+		guns=1000;
+		mines=0;
+		flag=0;
+		tanks=240;
+		armouredvehicles=3200;
+		unarmouredvehicles=4600;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=50;
+	}
+}
+[kwk50mml60ap]
+{
+	id=100;
+	name=German 50mm KwK 39 L/60 Armour-Piercing;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_Medium;
+
+	ballistic=1;
+
+	range=1125;
+	reloadtime=4.95;
+	accuracy=255;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	firestarter=0.0;
+	weaponvelocity=1670;
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=GER_50mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=2;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=3000;
+	[damage]
+	{
+		default=5325; //7100
+		infantry=1800;
+		guns=1000;
+		lightbuildings=500;
+		bunkers=40;
+		sandbags=200;
+		mines=0;
+		flag=0;
+	}
+}

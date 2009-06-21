@@ -1,98 +1,122 @@
-[ml20s152mmap] {
-  name=Soviet ML-20S 152mm Gun-Howitzer AP Ammo;
-  accuracy=290;
-  areaOfEffect=32;
-  ballistic=1;
-  canAttackGround=1;
-  collisionSize=4;
-  colormap=ap_colormap.png;
-  craterBoost=0;
-  craterMult=0;
-  [damage] {
-    default=9750;
-    bunkers=250;
-    flags=0;
-    guns=3000;
-    infantry=4500;
-    lightbuildings=1000;
-    mines=0;
-    sandbags=500;
-  }
-  dynDamageExp=1;
-  dynDamageRange=13000;
-  edgeEffectiveness=0.1;
-  explosionGenerator=custom:AP_Large;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=100;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.25;
-  noSelfDamage=1;
-  range=1700;
-  reloadTime=11.5;
-  rendertype=1;
-  rgbColor=1.0 0.0 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_4;
-  soundStart=RUS_152mm;
-  stages=50;
-  targetMoveError=0.05;
-  tolerance=300;
-  turret=1;
-  weaponVelocity=1300;
-}
+[ml20s152mmhe]
+{
+	id=98;
+	name=Soviet ML-20s 152mm Gun-Howitzer High-Explosive Ammo;
+	rendertype=1;
+	explosiongenerator=custom:HE_XLarge;
+	turret=1;
+	tolerance=3000;
+	explosionspeed=100;
 
-[ml20s152mmhe] {
-  name=Soviet ML-20s 152mm Gun-Howitzer High-Explosive Ammo;
-  accuracy=290;
-  areaOfEffect=192;
-  ballistic=1;
-  collisionSize=5;
-  craterBoost=1;
-  craterMult=1;
-  [customParams] {
-    fearaoe=150;
-    fearid=401;
-  }
-  [damage] {
-    default=5000;
-    armouredvehicles=8000;
-    bunkers=3000;
-    flags=0;
-    guns=4500;
-    infantry=5000;
-    lightbuildings=4200;
-    mines=200;
-    sandbags=1000;
-    tanks=3000;
-    unarmouredvehicles=16000;
-  }
-  edgeEffectiveness=0.1;
-  explosionGenerator=custom:HE_XLarge;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=98;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  leadLimit=0.05;
-  noSelfDamage=1;
-  range=1700;
-  reloadTime=11.5;
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_6;
-  soundStart=RUS_152mm;
-  stages=50;
-  targetMoveError=0.25;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=1200;
-}
+	ballistic=1;
+	firestarter=0.0;
 
+	range=1700;
+	reloadtime=11.5;
+	accuracy=290;
+	targetmoveerror=0.25;
+	LeadLimit=0.05;
+	weaponvelocity=1200;
+	areaofeffect=192;
+	edgeeffectiveness=0.1;
+
+	soundstart=RUS_152mm;
+	soundhit=GEN_Explo_6;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	collisionsize=5;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=1;
+	craterboost=1;
+
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=5000;
+		infantry=5000;
+		guns=4500;
+		lightbuildings=4200;
+		tanks=3000;
+		bunkers=3000;
+		sandbags=1000;
+		mines=200;
+		flags=0;
+		armouredvehicles=8000;
+		unarmouredvehicles=16000;
+	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=150;
+	}
+}
+[ml20s152mmap]
+{
+	id=100;
+	name=Soviet ML-20S 152mm Gun-Howitzer AP Ammo;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_Large;
+
+	ballistic=1;
+
+	range=1700;
+	reloadtime=11.5;
+	accuracy=290;
+	targetmoveerror=0.05;
+	firestarter=0.0;
+	weaponvelocity=1300;
+	areaofeffect=32;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=RUS_152mm;
+	soundhit=GEN_Explo_4;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=5;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=1;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=13000;
+	[damage]
+	{
+		default=9750;
+		infantry=4500;
+		guns=3000;
+		lightbuildings=1000;
+		bunkers=250;
+		sandbags=500;
+		mines=0;
+		flags=0;
+	}
+}

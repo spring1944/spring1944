@@ -1,37 +1,45 @@
-[m1937_mortar] {
-  name=M1937;
-  accuracy=485;
-  areaOfEffect=88;
-  color=255;
-  [customParams] {
-    fearaoe=105;
-    fearid=301;
-  }
-  [damage] {
-    default=1520;
-    armouredvehicles=3500;
-    bunkers=0;
-    flag=0;
-    guns=1600;
-    infantry=1600;
-    mines=0;
-    tanks=240;
-    unarmouredvehicles=4000;
-  }
-  edgeEffectiveness=0.2;
-  explosionGenerator=custom:HE_Medium;
-  fireStarter=0;
-  id=28;
-  impulseFactor=1e-07;
-  model=MortarShell.S3O;
-  range=1365;
-  reloadTime=12;
-  rendertype=1;
-  size=1.5;
-  soundHit=GEN_Explo_3;
-  soundStart=GEN_Mortar;
-  startVelocity=1000;
-  turret=1;
-  weaponVelocity=550;
-}
+[m1937_mortar]
+{
+	id=28;
+	name=M1937 ;
+	model=MortarShell.S3O;
+	rendertype=1;
+	turret=1;
+	explosiongenerator=custom:HE_Medium;
 
+	firestarter=0.0;
+
+	range=1365;
+	reloadtime=12;
+	accuracy=485;
+	startvelocity=1000;
+	weaponvelocity=550;
+	areaofeffect=88;
+	edgeeffectiveness=0.2;
+
+	soundstart=GEN_Mortar;
+	soundhit=GEN_Explo_3;
+
+	color=255;
+
+	size=1.5;
+	impulsefactor=0.0000001;
+
+	[damage]
+	{
+		default=1520;
+		infantry=1600;
+		guns=1600;
+		bunkers=0;
+		mines=0;
+		flag=0;
+		tanks=240;
+		armouredvehicles=3500;
+		unarmouredvehicles=4000;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=105;
+	}
+}

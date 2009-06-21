@@ -1,96 +1,121 @@
-[qf75mmap] {
-  name=75mm Q.F. Mk.V L / 36.5 75mm AP;
-  accuracy=290;
-  areaOfEffect=10;
-  ballistic=1;
-  canAttackGround=1;
-  collisionSize=4;
-  colormap=ap_colormap.png;
-  craterBoost=0;
-  craterMult=0;
-  [damage] {
-    default=5325; //7100
-    bunkers=50;
-    flags=0;
-    guns=1200;
-    infantry=2400;
-    lightbuildings=500;
-    mines=0;
-    sandbags=200;
-  }
-  dynDamageExp=1;
-  dynDamageRange=5750;
-  edgeEffectiveness=0.1;
-  explosionGenerator=custom:AP_Medium;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=100;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.25;
-  movingAccuracy=600;
-  noSelfDamage=1;
-  range=1270;
-  reloadTime=5.25;
-  rendertype=1;
-  rgbColor=1.0 0.0 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_1;
-  soundStart=US_75mm;
-  stages=50;
-  targetMoveError=0.075;
-  tolerance=300;
-  turret=1;
-  weaponVelocity=1238;
-}
+[qf75mmhe]
+{
+	id=1001;
+	name=75mm Q.F. Mk.V L / 36.5 75mm HE;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:HE_Medium;
+	explosionspeed=100;
 
-[qf75mmhe] {
-  name=75mm Q.F. Mk.V L / 36.5 75mm HE;
-  accuracy=300;
-  areaOfEffect=96;
-  ballistic=1;
-  collisionSize=4;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
-    fearaoe=75;
-    fearid=401;
-  }
-  [damage] {
-    default=5680;
-    armouredvehicles=4800;
-    flag=0;
-    guns=1200;
-    infantry=1500;
-    mines=0;
-    tanks=600;
-    unarmouredvehicles=5650;
-  }
-  edgeEffectiveness=0.2;
-  explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=1001;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  movingAccuracy=600;
-  noSelfDamage=1;
-  range=1270;
-  reloadTime=5.25;
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_3;
-  soundStart=US_75mm;
-  stages=50;
-  targetMoveError=0.075;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=926;
-}
+	ballistic=1;
+	firestarter=0.0;
 
+	range=1270;
+	reloadtime=5.25;
+	accuracy=300;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	weaponvelocity=926;
+	areaofeffect=96;
+	edgeeffectiveness=0.20;
+
+	soundstart=US_75mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=2;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=5680;
+		mines=0;
+		infantry=1500;
+		flag=0;
+		guns=1200;
+		tanks=600;
+		armouredvehicles=4800;
+		unarmouredvehicles=5650;
+	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=75;
+	}
+}
+[qf75mmap]
+{
+	id=100;
+	name=75mm Q.F. Mk.V L / 36.5 75mm AP;
+	rendertype=1;
+	turret=1;
+	tolerance=300;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_Medium;
+
+	ballistic=1;
+
+	range=1270;
+	reloadtime=5.25;
+	accuracy=290;
+	movingaccuracy=600;
+	targetmoveerror=0.075;
+	firestarter=0.0;
+	weaponvelocity=1238;
+	areaofeffect=10;
+	edgeeffectiveness=0.1;
+	canattackground=0;
+
+	soundstart=US_75mm;
+	soundhit=GEN_Explo_1;
+
+	noselfdamage=1;
+
+	rgbcolor=1 0 0;
+	colormap=ap_colormap.png;
+
+	intensity=0.25;
+
+	size=3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	dyndamageexp=1;
+	dyndamagerange=5750;
+	[damage]
+	{
+		default=5325;//7100
+		infantry=2400;
+		guns=1200;
+		lightbuildings=500;
+		bunkers=50;
+		sandbags=200;
+		mines=0;
+		flags=0;
+	}
+}

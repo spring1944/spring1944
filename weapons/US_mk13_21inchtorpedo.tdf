@@ -1,41 +1,56 @@
-[mk13torpedo] {
-  name=mk.13 21inch torpedo;
-  areaOfEffect=32;
-  avoidFriendly=1;
-  burnblow=1;
-  collideFriendly=1;
-  [damage] {
-    default=10000;
-    armouredvehicles=15000;
-    flag=0;
-    guns=5000;
-    infantry=5000;
-    mines=0;
-    tanks=10000;
-    unarmouredvehicles=15000;
-  }
-  edgeEffectiveness=0.5;
-  fireStarter=70;
-  guidance=0;
-  lineofsight=1;
-  metalPerShot=0;
-  model=mk13torpedo;
-  noautorange=1;
-  propeller=1;
-  range=1500;
-  reloadTime=300;
-  rendertype=1;
-  selfprop=1;
-  soundHit=gen_explo_11;
-  soundStart=watersplash;
-  startVelocity=250;
-  tolerance=9000;
-  tracks=1;
-  turnRate=50000;
-  turret=1;
-  waterWeapon=1;
-  weaponAcceleration=250;
-  weaponTimer=5.5;
-  weaponVelocity=450;
-}
+[mk13torpedo]
+{
+	name=mk.13 21inch torpedo;
+	rendertype=1;
+	lineofsight=1;
+	noautorange=1;
+	AvoidFriendly=1;
+	CollideFriendly=1;
+	turret=1;
+	waterweapon=1;
 
+	model=mk13torpedo;
+
+	range=1500;
+	reloadtime=300;
+	weapontimer=5.5;
+	burnblow=1;
+	weaponvelocity=450;
+	startvelocity=250;
+	weaponacceleration=250;
+	turnrate=50000;
+	areaofeffect=32;
+	edgeeffectiveness=0.5;
+	metalpershot=0;
+	propeller=1;
+
+	soundstart=watersplash;
+	soundhit=gen_explo_11;
+
+	firestarter=70;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	tolerance=9000;
+
+	//explosiongaf=fx;
+	//explosionart=explode3;
+
+	//waterexplosiongaf=fx;
+	//waterexplosionart=h2o;
+
+	//lavaexplosiongaf=fx;
+	//lavaexplosionart=lavasplash;
+
+	[damage]
+	{
+		default=10000;
+		infantry=5000;
+		guns=5000;
+		mines=0;
+		flag=0;
+		tanks=10000;
+		armouredvehicles=15000;
+		unarmouredvehicles=15000;
+	}
+}

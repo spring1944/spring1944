@@ -1,144 +1,188 @@
-[ShVAK20mm] {
-  name=20mm ShVAK aircraft-mounted autocannon;
-  areaOfEffect=1;
-  burst=3;
-  burstRate=0.085;
-  collisionSize=2;
-  collisionVolumeTest=1;
-  [customParams] {
-    fearaoe=30;
-    fearid=301;
-  }
-  [damage] {
-    default=20;
-    armouredvehicles=50;
-    bunkers=0;
-    flag=1e-11;
-    guns=80;
-    infantry=100;
-    lightbuildings=25;
-    mediumPLanes=265;
-    mines=0;
-    sandbags=5;
-    tanks=25;
-    unarmouredvehicles=80;
-  }
-  explosionGenerator=custom:HE_XSmall;
-  fireStarter=10;
-  impactOnly=1;
-  interceptedByShieldType=8;
-  lineofsight=1;
-  predictBoost=0.5;
-  range=2500;
-  reloadTime=1;
-  rendertype=1;
-  rgbColor=1.0 0.75 0.0;
-  size=1e-13;
-  soundStart=RUS_20mm;
-  sprayAngle=250;
-  tolerance=600;
-  turret=1;
-  weaponTimer=1;
-  weaponVelocity=2600;
-}
+[tnsh20mmhe]
+{
+	id=50;
+	name=2.0cm TNSh Autocannon, tank-mounted version of the ShVAK;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosiongenerator=custom:HE_XSmall;
+	explosionspeed=100;
 
-[tnsh20mmap] {
-  name=2.0cm TNSh L / 107 Cannon Armour Piercing;
-  accuracy=300;
-  areaOfEffect=3;
-  ballistic=1;
-  burst=3;
-  burstRate=0.1;
-  canAttackGround=1;
-  collisionSize=2;
-  craterBoost=0;
-  craterMult=0;
-  [damage] {
-    default=1950; //2600
-    bunkers=0;
-    flag=0;
-    guns=600;
-    infantry=1000;
-    lightbuildings=50;
-    mines=0;
-    sandbags=25;
-  }
-  dynDamageExp=1;
-  dynDamageRange=1900;
-  edgeEffectiveness=0.5;
-  explosionGenerator=custom:AP_XSmall;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=100;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  movingAccuracy=500;
-  range=675;
-  reloadTime=4.5;
-  rendertype=1;
-  rgbColor=1.0 0.5 0.0;
+	ballistic=1;
+	firestarter=0.0;
+
+	range=675;
+	reloadtime=4.5;
+	burst=4;
+	burstrate=0.17;
+	sprayangle=444;
+	accuracy=300;
+	movingaccuracy=500;
+	weaponvelocity=1600;
+	areaofeffect=24;
+	edgeeffectiveness=0.5;
+
+	soundstart=RUS_20mm;
+	soundhit=GEN_Explo_1;
+	targetmoveerror=0.05;
+	rgbcolor=0.1 0.5 0;
+
+	intensity=0.1;
+
+	size=0.0000000000001;
+	collisionsize=2;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.1;
+	craterboost=.1;
+
+  sizedecay=0;
+  size=0.000000000001;
   separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=130;
+		infantry=600;
+		guns=440;
+		sandbags=50;
+		mines=0;
+		flag=0;
+		tanks=50;
+		armouredvehicles=900;
+		unarmouredvehicles=1200;
+	}
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=40;
+	}
+}
+[tnsh20mmap]
+{
+	id=100;
+	name=2.0cm TNSh L / 107 Cannon Armour Piercing;
+	rendertype=1;
+	turret=1;
+	tolerance=700;
+	explosionspeed=100;
+	explosiongenerator=custom:AP_XSmall;
+
+	ballistic=1;
+	firestarter=0.0;
+	targetmoveerror=0.05;
+	range=675;
+	reloadtime=4.5;
+	burst=3;
+	burstrate=0.1;
+	sprayangle=444;
+	accuracy=300;
+	movingaccuracy=500;
+	weaponvelocity=1500;
+	areaofeffect=3;
+	edgeeffectiveness=0.5;
+	canattackground=0;
+
+	soundstart=RUS_20mm;
+	soundhit=GEN_Explo_1;
+
+	rgbcolor=1 .50 0;
+
+	intensity=0.1;
+
+	size=1;
+	collisionsize=2;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=0;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
   size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_1;
-  soundStart=RUS_20mm;
-  sprayAngle=444;
-  stages=50;
-  targetMoveError=0.05;
-  tolerance=700;
-  turret=1;
-  weaponVelocity=1500;
-}
-
-[tnsh20mmhe] {
-  name=2.0cm TNSh Autocannon, tank-mounted version of the ShVAK;
-  accuracy=300;
-  areaOfEffect=24;
-  ballistic=1;
-  burst=4;
-  burstRate=0.17;
-  collisionSize=2;
-  craterBoost=0.1;
-  craterMult=0.1;
-  [customParams] {
-    fearaoe=40;
-    fearid=301;
-  }
-  [damage] {
-    default=130;
-    armouredvehicles=900;
-    flag=0;
-    guns=440;
-    infantry=600;
-    mines=0;
-    sandbags=50;
-    tanks=50;
-    unarmouredvehicles=1200;
-  }
-  edgeEffectiveness=0.5;
-  explosionGenerator=custom:HE_XSmall;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=50;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  movingAccuracy=500;
-  range=675;
-  reloadTime=4.5;
-  rendertype=1;
-  rgbColor=0.1 0.5 0.0;
   separation=2;
-  size=1e-12;
-  sizeDecay=0;
-  soundHit=GEN_Explo_1;
-  soundStart=RUS_20mm;
-  sprayAngle=444;
   stages=50;
-  targetMoveError=0.05;
-  tolerance=700;
-  turret=1;
-  weaponVelocity=1600;
+
+	dyndamageexp=1;
+	dyndamagerange=1900;
+	[damage]
+	{
+		default=1950;//2600
+		infantry=1000;
+		guns=600;
+		lightbuildings=50;
+		bunkers=0;
+		sandbags=25;
+		mines=0;
+		flag=0;
+	}
 }
 
+[ShVAK20mm]
+{
+	name=20mm ShVAK aircraft-mounted autocannon;
+	rendertype=1;
+	turret=1;
+	tolerance=600;
+	interceptedbyshieldtype=8;
+	explosiongenerator=custom:HE_XSmall;
+
+	lineofsight=1;
+	firestarter=10;
+	collisionsize=2;
+	range=2500;
+	reloadtime=1;
+	burst=3;
+	burstrate=0.085;
+	sprayangle=250;
+	//movingaccuracy=7111;
+	weaponvelocity=2600;
+	areaofeffect=1;
+	impactonly=1;
+	collisionvolumetest=1;
+	//burnblow=1;
+	weapontimer=1;
+
+	soundstart=RUS_20mm;
+
+	rgbcolor=1 0.75 0;
+
+	//beamweapon=1;
+	//thickness=0.7;
+	//duration=0.02;
+	//intensity=0.1;
+
+	//corethickness=0.5;
+	//laserflaresize=0.0001;
+
+	size=0.0000000000001;
+	//separation=2;
+	//stages=50;
+
+	predictboost=0.5;
+	
+	[damage]
+	{
+		default=20;
+		infantry=100;
+		guns=80;
+		lightbuildings=25;
+		bunkers=0;
+		sandbags=5;
+		mines=0;
+		flag=0.00000000001;
+		tanks=25;
+		armouredvehicles=50;
+		unarmouredvehicles=80;
+		mediumPLanes=265;
+	}
+
+	[customParams]
+	{
+		fearid=301;
+		fearaoe=30;
+	}
+
+}

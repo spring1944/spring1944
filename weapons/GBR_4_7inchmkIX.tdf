@@ -1,44 +1,56 @@
-[gbr4_7inchmkix] {
-  name=4.7"/45 mkIX Naval Gun;
-  accuracy=540;
-  areaOfEffect=105;
-  ballistic=1;
-  burnblow=1; // for AA use
-  collisionSize=4;
-  craterBoost=0;
-  craterMult=0;
-  [damage] {
-    default=4500;
-    armouredvehicles=6000;
-    flag=0;
-    guns=1680;
-    infantry=1860;
-    mines=0;
-    tanks=2550;
-    unarmouredvehicles=6075;
-  }
-  edgeEffectiveness=0.25;
-  explosionGenerator=custom:HE_Large;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=99;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  noSelfDamage=1;
-  range=4700;
-  reloadTime=6.5; // 7-10 rpm
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_4;
-  soundStart=GEN_105mm;
-  stages=50;
-  targetMoveError=0.1;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=1400;
-}
+[gbr4_7inchmkix]
+{
+	id=99;
+	name=4.7"/45 mkIX Naval Gun;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:HE_Large;
+	explosionspeed=100;
 
+	ballistic=1;
+	firestarter=0.0;
+
+	range=4700;
+	reloadtime=6.5; // 7-10 rpm
+	accuracy=540;
+	targetmoveerror=0.1;
+	weaponvelocity=1400;
+	areaofeffect=105;
+	edgeeffectiveness=0.25;
+	soundstart=GEN_105mm;
+	soundhit=GEN_Explo_4;
+	burnblow=1; // for AA use
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=5.3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=4500;
+		infantry=1860;
+		guns=1680;
+		mines=0;
+		flag=0;
+		tanks=2550;
+		armouredvehicles=6000;
+		unarmouredvehicles=6075;
+	}
+}

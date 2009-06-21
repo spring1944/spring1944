@@ -1,47 +1,61 @@
-[leig18he] {
-  name=German 75mm Light Infantry Gun (leIG) 18 High-Explosive Ammunition;
-  accuracy=400;
-  areaOfEffect=96;
-  ballistic=1;
-  collisionSize=4;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
-    fearaoe=75;
-    fearid=401;
-  }
-  [damage] {
-    default=3400;
-    armouredvehicles=4000;
-    flag=0;
-    guns=760;
-    infantry=1700;
-    mines=0;
-    tanks=600;
-    unarmouredvehicles=2700;
-  }
-  edgeEffectiveness=0.25;
-  explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=109;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=5;
-  noSelfDamage=1;
-  range=1310;
-  reloadTime=6.75;
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_3;
-  soundStart=GER_75mm;
-  stages=50;
-  targetMoveError=0.075;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=700;
-}
+[leig18he]
+{
+	id=109;
+	name=German 75mm Light Infantry Gun (leIG) 18 High-Explosive Ammunition;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:HE_Medium;
+	explosionspeed=100;
 
+	ballistic=1;
+	firestarter=0.0;
+
+	range=1310;
+	reloadtime=6.75;
+	accuracy=400;
+	targetmoveerror=0.075;
+	weaponvelocity=700;
+	areaofeffect=96;
+	edgeeffectiveness=0.25;
+
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_3;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=5;
+
+	size=2.6;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=3400;
+		infantry=1700;
+		guns=760;
+		mines=0;
+		flag=0;
+		tanks=600;
+		armouredvehicles=4000;
+		unarmouredvehicles=2700;
+	}
+	[customParams]
+	{
+		fearid=401;
+		fearaoe=75;
+	}
+}

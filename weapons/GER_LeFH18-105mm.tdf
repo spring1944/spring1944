@@ -1,48 +1,61 @@
-[lefh18he] {
-  name=German 105mm Light Howitzer (leFH) 18 High-Explosive Ammunition;
-  accuracy=350;
-  areaOfEffect=128;
-  ballistic=1;
-  collisionSize=4;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
-    fearaoe=125;
-    fearid=501;
-  }
-  [damage] {
-    default=6000;
-    armouredvehicles=8000;
-    flag=0;
-    guns=3240;
-    infantry=3480;
-    mines=0;
-    tanks=2040;
-    unarmouredvehicles=8100;
-  }
-  edgeEffectiveness=0.15;
-  explosionGenerator=custom:HE_Large;
-  explosionSpeed=100;
-  fireStarter=0;
-  id=99;
-  impulseBoost=0;
-  impulseFactor=0;
-  intensity=0.1;
-  leadLimit=0.05;
-  noSelfDamage=1;
-  range=3200;
-  reloadTime=11.25; //5
-  rendertype=1;
-  rgbColor=0.5 0.5 0.0;
-  separation=2;
-  size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_4;
-  soundStart=GEN_105mm;
-  stages=50;
-  targetMoveError=0.25;
-  tolerance=3000;
-  turret=1;
-  weaponVelocity=1200;
-}
+[lefh18he]
+{
+	id=99;
+	name=German 105mm Light Howitzer (leFH) 18 High-Explosive Ammunition;
+	rendertype=1;
+	turret=1;
+	tolerance=3000;
+	explosiongenerator=custom:HE_Large;
+	explosionspeed=100;
 
+	ballistic=1;
+	firestarter=0.0;
+
+	range=3200;
+	reloadtime=11.25;//5
+	accuracy=350;
+	targetmoveerror=0.25;
+	LeadLimit=0.05;
+	weaponvelocity=1200;
+	areaofeffect=128;
+	edgeeffectiveness=0.15;
+	soundstart=GEN_105mm;
+	soundhit=GEN_Explo_4;
+
+	noselfdamage=1;
+
+	rgbcolor=.5 .5 0;
+
+	intensity=0.1;
+
+	size=5.3;
+	collisionsize=4;
+	impulsefactor=0;
+	impulseboost=0;
+	cratermult=.5;
+	craterboost=0;
+
+	  cratermult=0;
+  craterboost=0;
+  sizedecay=0;
+  size=1;
+  separation=2;
+  stages=50;
+
+	[damage]
+	{
+		default=6000;
+		infantry=3480;
+		guns=3240;
+		mines=0;
+		flag=0;
+		tanks=2040;
+		armouredvehicles=8000;
+		unarmouredvehicles=8100;
+	}
+	[customParams]
+	{
+		fearid=501;
+		fearaoe=125;
+	}
+}

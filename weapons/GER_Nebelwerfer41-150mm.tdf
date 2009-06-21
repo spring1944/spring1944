@@ -1,52 +1,65 @@
-[nebelwerfer41] {
-  name=Nebelwerfer 41 150mm unguided artillery rocket;
-  areaOfEffect=184;
-  ballistic=1;
-  burst=6;
-  burstRate=0.8;
-  cegTag=RocketTrail;
-  commandfire=1;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
-    fearaoe=200;
-    fearid=501;
-  }
-  [damage] {
-    default=7400;
-    armouredvehicles=11050;
-    flag=0;
-    guns=2600;
-    infantry=3200;
-    mines=0;
-    tanks=1920;
-    unarmouredvehicles=14050;
-  }
-  edgeEffectiveness=0.1;
-  explosionGenerator=custom:HE_XLarge;
-  explosionSpeed=100;
-  fireStarter=0;
-  flightTime=5;
-  guidance=1;
-  id=99;
-  impulseBoost=0;
-  impulseFactor=0;
-  model=KatyushaRocket.S3O;
-  range=2120;
-  reloadTime=45;
-  rendertype=1;
-  soundHit=GEN_Explo_5;
-  soundStart=GER_Nebelwerfer;
-  soundTrigger=1;
-  startVelocity=10;
-  targetMoveError=0.075;
-  tolerance=2000;
-  trajectoryHeight=0.5;
-  turret=1;
-  weaponAcceleration=2000;
-  weaponTimer=1;
-  weaponType=MissileLauncher;
-  weaponVelocity=750;
-  wobble=3000;
-}
+[nebelwerfer41]
+{
+	id=99;
+	name=Nebelwerfer 41 150mm unguided artillery rocket;
+	weapontype=MissileLauncher;
+	rendertype=1;
+	model=KatyushaRocket.S3O;
+	turret=1;
+	tolerance=2000;
 
+	ballistic=1;
+	trajectoryheight=0.5;
+	firestarter=0.0;
+
+	range=2120;
+	flighttime=5;
+	reloadtime=45;
+	burst=6;
+	burstrate=0.8;
+	//sprayangle=3000;
+	//dance=50;
+	wobble=3000;
+	startvelocity=10;
+	weaponacceleration=2000;
+	weaponvelocity=750;
+	areaofeffect=184;
+	edgeeffectiveness=0.1;
+	weapontimer=1;
+	//smoketrail=1;
+	targetmoveerror=0.075;
+	soundtrigger=0;
+	soundstart=GER_Nebelwerfer;
+	soundhit=GEN_Explo_5;
+	commandfire=1;
+	guidance=1;
+
+	cegtag=RocketTrail;
+	explosiongenerator=custom:HE_XLarge;
+	explosionspeed=100;
+	cratermult=.5;
+	craterboost=0;
+
+	cratermult=0;
+  	craterboost=0;
+
+	impulsefactor=0;
+	impulseboost=0;
+
+	[damage]
+	{
+		default=7400;
+		infantry=3200;
+		guns=2600;
+		mines=0;
+		flag=0;
+		tanks=1920;
+		armouredvehicles=11050;
+		unarmouredvehicles=14050;
+	}
+	[customParams]
+	{
+		fearid=501;
+		fearaoe=200;
+	}
+}
