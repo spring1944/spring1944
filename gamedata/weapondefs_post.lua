@@ -202,6 +202,8 @@ for _, weaponDef in pairs(WeaponDefs) do
             damage[armorType] = defaultDamage * mult
           end
         end
+      else
+        Spring.Echo("weapondefs_post.lua: Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
       end
     end
   end
