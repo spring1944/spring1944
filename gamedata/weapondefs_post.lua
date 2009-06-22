@@ -181,6 +181,33 @@ end
 
 
 --------------------------------------------------------------------------------
+-- Damage Types
+--------------------------------------------------------------------------------
+local damageTypes = VFS.Include("gamedata/damagedefs.lua")
+
+for _, weaponDef in pairs(WeaponDefs) do
+
+  local damageType = "default"
+  if weaponDef.customparams and weaponDef.customparams.damagetype then
+    damageType = weaponDef.customparams.damagetype
+  end
+  
+  local damage = weaponDef.damage
+  local defaultDamage = damage["default"]
+  
+  if defaultDamage then
+    local mults = damageTypes[damageType]
+    if mults then
+      for armorType, mult in pairs(mults) do
+        if not damage[armorType] then
+          damage[armorType] = defaultDamage * mult
+        end
+      end
+    end
+  end
+end
+
+--------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Range Multiplier
 --
