@@ -12,18 +12,18 @@
   category=NFLAGNAIR NFLAG TANK WEAPON LIGHTVEH;
   corpse=GBRWasp_Destroyed;
   [customParams] {
+    armor_front=10;
+    armor_rear=8;
+    armor_side=8;
+    armor_top=0;
   }
   explodeAs=Vehicle_Explosion_Sm;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.1;
-  flankingBonusMin=1;
-  flankingBonusMode=3;
   footprintX=2;
   footprintZ=2;
   iconType=flametank;
   leaveTracks=1;
   mass=1250;
-  maxDamage=850;
+  maxDamage=431.8;
   maxSlope=6;
   maxVelocity=3.6; //5
   maxWaterDepth=15;
