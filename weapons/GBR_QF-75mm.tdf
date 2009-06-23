@@ -63,12 +63,12 @@
   }
   [damage] {
     default=5680;
-    armouredvehicles=4800;
+    armouredvehicles=2400;
     flag=0;
     guns=1200;
     infantry=1500;
     mines=0;
-    tanks=600;
+    tanks=300;
     unarmouredvehicles=5650;
   }
   edgeEffectiveness=0.2;

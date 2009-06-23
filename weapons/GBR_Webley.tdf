@@ -11,7 +11,7 @@
   color2=226;
   [damage] {
     default=1;
-    armouredvehicles=20;
+    armouredvehicles=10;
     bunkers=0;
     flag=0;
     guns=60;

@@ -7,7 +7,7 @@
   collisionSize=2.5;
   [damage] {
     default=4.3;
-    armouredvehicles=22;
+    armouredvehicles=11;
     bunkers=0;
     flag=1e-11;
     guns=35;

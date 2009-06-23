@@ -6,7 +6,7 @@
   canAttackGround=1;
   [damage] {
     default=4.3;
-    armouredvehicles=25;
+    armouredvehicles=12.5;
     bunkers=0;
     flag=1e-11;
     guns=40;
@@ -47,7 +47,7 @@
   canAttackGround=1;
   [damage] {
     default=4.3;
-    armouredvehicles=25;
+    armouredvehicles=12.5;
     bunkers=0;
     flag=1e-11;
     guns=40;

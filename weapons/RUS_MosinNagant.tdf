@@ -11,7 +11,7 @@
   coreThickness=0.15;
   [damage] {
     default=1;
-    armouredvehicles=8;
+    armouredvehicles=4;
     bunkers=0;
     flag=1e-08;
     guns=30;
@@ -57,7 +57,7 @@
   coreThickness=0.15;
   [damage] {
     default=1;
-    armouredvehicles=8;
+    armouredvehicles=4;
     bunkers=0;
     flag=1e-08;
     guns=30;

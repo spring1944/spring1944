@@ -62,7 +62,7 @@
   }
   [damage] {
     default=5000;
-    armouredvehicles=8000;
+    armouredvehicles=4000;
     bunkers=3000;
     flags=0;
     guns=4500;
@@ -70,7 +70,7 @@
     lightbuildings=4200;
     mines=200;
     sandbags=1000;
-    tanks=3000;
+    tanks=1500;
     unarmouredvehicles=16000;
   }
   edgeEffectiveness=0.1;

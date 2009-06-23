@@ -16,7 +16,6 @@
   }
   [damage] {
     default=472;
-    armouredvehicles=400;
     bunkers=50;
     flag=0;
     guns=1900;

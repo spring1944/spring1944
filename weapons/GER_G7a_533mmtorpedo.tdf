@@ -6,12 +6,12 @@
   collideFriendly=1;
   [damage] {
     default=10000;
-    armouredvehicles=15000;
+    armouredvehicles=7500;
     flag=0;
     guns=5000;
     infantry=5000;
     mines=0;
-    tanks=10000;
+    tanks=5000;
     unarmouredvehicles=15000;
   }
   edgeEffectiveness=0.5;
@@ -49,12 +49,12 @@
   collideFriendly=1;
   [damage] {
     default=10000;
-    armouredvehicles=15000;
+    armouredvehicles=7500;
     flag=0;
     guns=5000;
     infantry=5000;
     mines=0;
-    tanks=10000;
+    tanks=5000;
     unarmouredvehicles=15000;
   }
   edgeEffectiveness=0.5;
@@ -93,12 +93,12 @@
   collideFriendly=1;
   [damage] {
     default=10000;
-    armouredvehicles=15000;
+    armouredvehicles=7500;
     flag=0;
     guns=5000;
     infantry=5000;
     mines=0;
-    tanks=10000;
+    tanks=5000;
     unarmouredvehicles=15000;
   }
   edgeEffectiveness=0.5;

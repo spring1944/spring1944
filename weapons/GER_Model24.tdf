@@ -5,12 +5,12 @@
   canAttackGround=0;
   [damage] {
     default=2500;
-    armouredvehicles=2875;
+    armouredvehicles=1437.5;
     flag=0;
     guns=1050;
     infantry=1200;
     mines=0;
-    tanks=1400;
+    tanks=700;
     unarmouredvehicles=2950;
   }
   dynDamageExp=1;

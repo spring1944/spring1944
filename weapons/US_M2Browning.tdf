@@ -16,7 +16,7 @@
   }
   [damage] {
     default=4.3;
-    armouredvehicles=25;
+    armouredvehicles=12.5;
     bunkers=0;
     flag=1e-11;
     guns=40;
@@ -62,7 +62,7 @@
   }
   [damage] {
     default=4.3;
-    armouredvehicles=25;
+    armouredvehicles=12.5;
     bunkers=0;
     flag=1e-08;
     guns=80;
@@ -107,7 +107,7 @@
   }
   [damage] {
     default=5;
-    armouredvehicles=25;
+    armouredvehicles=12.5;
     bunkers=0;
     flag=1e-11;
     guns=40;

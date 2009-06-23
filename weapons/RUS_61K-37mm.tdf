@@ -14,7 +14,7 @@
   }
   [damage] {
     default=200;
-    armouredvehicles=1300;
+    armouredvehicles=650;
     flag=1e-08;
     guns=600;
     hq=100;
@@ -61,7 +61,7 @@
   }
   [damage] {
     default=200;
-    armouredvehicles=1300;
+    armouredvehicles=650;
     flag=1e-08;
     guns=350;
     hq=100;

@@ -8,7 +8,7 @@
   craterMult=0;
   [damage] {
     default=60;
-    armouredvehicles=500;
+    armouredvehicles=250;
     flag=1e-08;
     guns=300;
     hq=120;

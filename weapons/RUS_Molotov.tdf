@@ -6,12 +6,12 @@
   cegTag=Flametrail;
   [damage] {
     default=1000;
-    armouredvehicles=1700;
+    armouredvehicles=850;
     flag=0;
     guns=800;
     infantry=1100;
     mines=0;
-    tanks=660;
+    tanks=330;
     unarmouredvehicles=2500;
   }
   edgeEffectiveness=0.8;

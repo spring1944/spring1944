@@ -4,7 +4,7 @@
   ballistic=1;
   [damage] {
     default=200;
-    armouredvehicles=800;
+    armouredvehicles=400;
     bunkers=0;
     flag=0;
     guns=1500;
@@ -12,7 +12,7 @@
     lightbuildings=10;
     mines=0;
     sandbags=100;
-    tanks=20;
+    tanks=10;
     unarmouredvehicles=1000;
   }
   explosionGenerator=custom:HE_Medium;

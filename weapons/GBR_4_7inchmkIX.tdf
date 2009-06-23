@@ -9,12 +9,12 @@
   craterMult=0;
   [damage] {
     default=4500;
-    armouredvehicles=6000;
+    armouredvehicles=3000;
     flag=0;
     guns=1680;
     infantry=1860;
     mines=0;
-    tanks=2550;
+    tanks=1275;
     unarmouredvehicles=6075;
   }
   edgeEffectiveness=0.25;

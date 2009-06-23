@@ -12,7 +12,7 @@
   coreThickness=0.75;
   [damage] {
     default=0;
-    armouredvehicles=4;
+    armouredvehicles=2;
     bunkers=0;
     flags=1e-16;
     guns=25;
