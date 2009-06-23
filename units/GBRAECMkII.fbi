@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK WEAPON  LIGHTVEH;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
+    armor_front=57;
+    armor_rear=30;
+    armor_side=30;
+    armor_top=15;
     blockfear=1;
     lowammolevel=2;
     maxammo=5;
@@ -20,16 +24,12 @@
   }
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1;
-  flankingBonusMin=1;
-  flankingBonusMode=3;
   footprintX=2;
   footprintZ=2;
   iconType=armoredcar;
   leaveTracks=1;
   mass=1250;
-  maxDamage=3542;
+  maxDamage=1270;
   maxSlope=6;
   maxVelocity=3; //4
   maxWaterDepth=15;
