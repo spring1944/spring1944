@@ -8,7 +8,7 @@
   colormap=ap_colormap.png;
   craterBoost=0;
   craterMult=0;
-  [customparams] {
+  [customParams] {
     ap_penetration_1000m=57;
     ap_penetration_100m=71; //penetration at 30 deg in mm
   }
