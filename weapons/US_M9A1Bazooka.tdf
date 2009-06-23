@@ -3,6 +3,9 @@
   areaOfEffect=32;
   ballistic=1;
   cegTag=BazookaTrail;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=9100;
     bunkers=1500;
@@ -16,7 +19,6 @@
   explosionGenerator=custom:HE_Medium;
   fireStarter=0;
   flightTime=1;
-  id=100;
   model=Bomb_Tiny.S3O;
   range=270;
   reloadTime=10;

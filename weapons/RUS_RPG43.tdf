@@ -3,6 +3,9 @@
   accuracy=400;
   areaOfEffect=24;
   canAttackGround=0;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=8500;
     bunkers=1500;
@@ -15,7 +18,6 @@
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_Medium;
-  id=100;
   impulseFactor=1e-05;
   model=MortarShell.S3O;
   movingAccuracy=7111;

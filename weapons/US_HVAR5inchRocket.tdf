@@ -6,6 +6,9 @@
   collideFriendly=0;
   craterBoost=0;
   craterMult=1;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=10000;
     bunkers=1000;
@@ -19,7 +22,6 @@
   explosionGenerator=custom:HE_Medium;
   fireStarter=0;
   flightTime=2;
-  id=100;
   impulseBoost=0;
   impulseFactor=1;
   model=Rocket_HVAR.S3O;

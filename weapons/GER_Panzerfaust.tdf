@@ -5,6 +5,9 @@
   collisionSize=3;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=15150;
     bunkers=3000;
@@ -20,7 +23,6 @@
   explosionSpeed=100;
   fireStarter=0;
   flightTime=2;
-  id=100;
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;

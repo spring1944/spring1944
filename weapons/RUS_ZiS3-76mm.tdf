@@ -8,6 +8,9 @@
   colormap=ap_colormap.png;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=5250; //7000
     bunkers=50;
@@ -24,7 +27,6 @@
   explosionGenerator=custom:AP_Medium;
   explosionSpeed=100;
   fireStarter=0;
-  id=100;
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;

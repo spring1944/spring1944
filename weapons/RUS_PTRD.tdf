@@ -8,6 +8,9 @@
   collideFeature=0;
   collideFriendly=0;
   coreThickness=0.15;
+  [customParams] {
+    ap_penetration=-1;
+  }
   [damage] {
     default=1860;
     armouredvehicles=800;
@@ -23,7 +26,6 @@
   duration=0.01;
   explosionGenerator=custom:AP_XSmall;
   fireStarter=0;
-  id=100;
   impactOnly=1;
   intensity=0.9;
   interceptedByShieldType=32;
