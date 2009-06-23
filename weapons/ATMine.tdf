@@ -3,8 +3,12 @@
   areaOfEffect=46;
   craterBoost=1;
   craterMult=1;
+  [customParams] {
+    ap_penetration=100;
+    ap_hit_side=top;
+  }
   [damage] {
-    default=12000;
+    default=12500;
     bunkers=100;
     flag=0;
     guns=500;

@@ -4,10 +4,10 @@
   ballistic=1;
   cegTag=BazookaTrail;
   [customParams] {
-    ap_penetration=-1;
+    ap_penetration=108;
   }
   [damage] {
-    default=9100;
+    default=7950;
     bunkers=1500;
     flag=0;
     guns=3000;

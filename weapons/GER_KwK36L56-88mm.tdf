@@ -9,7 +9,7 @@
   craterBoost=0;
   craterMult=0;
   [customparams] {
-    ap_penetration=121; //penetration at 30 deg in mm
+    ap_penetration_100m=120; //penetration at 30 deg in mm
     ap_penetration_1000m=100;
   }
   [damage] {
