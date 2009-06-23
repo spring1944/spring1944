@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK WEAPON;
   corpse=USM10Wolverine_Destroyed;
   [customParams] {
+    armor_front=62;
+    armor_rear=25;
+    armor_side=25;
+    armor_top=19;
     blockfear=1;
     lowammolevel=3;
     maxammo=13;
@@ -19,16 +23,12 @@
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=2.28; //damage to back multiplied by this
-  flankingBonusMin=0.93; //damage to front multiplied by this
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=selfprop;
   leaveTracks=1;
   mass=2500;
-  maxDamage=5708;
+  maxDamage=2903;
   maxSlope=2;
   maxVelocity=3.65;
   maxWaterDepth=15;

@@ -11,6 +11,10 @@
   canMove=1;
   category=NFLAGNAIR NFLAG TANK  INFTARG  LIGHTVEH;
   [customParams] {
+    armor_front=11;
+    armor_rear=0;
+    armor_side=0;
+    armor_top=0;
     lowammolevel=6;
     maxammo=25;
     weaponcost=10;
@@ -22,7 +26,7 @@
   iconType=halftrack;
   leaveTracks=1;
   mass=1200;
-  maxDamage=600;
+  maxDamage=499;
   maxSlope=6;
   maxVelocity=4.75;
   maxWaterDepth=5;

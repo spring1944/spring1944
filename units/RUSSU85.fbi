@@ -12,22 +12,22 @@
   category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
   corpse=RUSSU85_Damaged;
   [customParams] {
+    armor_front=78;
+    armor_rear=48;
+    armor_side=46;
+    armor_top=20;
     lowammolevel=3;
     maxammo=9;
     weaponcost=14;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1; //damage to back multiplied by this
-  flankingBonusMin=0.82; //damage to front multiplied by this
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=selfprop;
   leaveTracks=1;
   mass=2750;
-  maxDamage=6767;
+  maxDamage=2960;
   maxSlope=2;
   maxVelocity=4.11;
   maxWaterDepth=15;

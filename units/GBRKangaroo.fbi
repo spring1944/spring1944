@@ -11,17 +11,19 @@
   canMove=1;
   category=TANK TPORT INFTARG NFLAGNAIR WEAPON;
   corpse=GBRKangaroo_Destroyed;
+  [customParams] {
+    armor_front=65;
+    armor_rear=45;
+    armor_side=50;
+    armor_top=15;
+  }
   explodeAs=Vehicle_Explosion_Sm;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=2.4;
-  flankingBonusMin=0.68;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
   mass=2500;
-  maxDamage=5903;
+  maxDamage=2948.4;
   maxSlope=6;
   maxVelocity=2.8; //4.1
   maxWaterDepth=15;

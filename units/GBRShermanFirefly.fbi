@@ -13,6 +13,10 @@
   category=NFLAGNAIR NFLAG TANK WEAPON;
   corpse=GBRShermanFirefly_Damaged;
   [customParams] {
+    armor_front=65;
+    armor_rear=45;
+    armor_side=42;
+    armor_top=21;
     blockfear=1;
     lowammolevel=5;
     maxammo=14;
@@ -20,16 +24,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.46;
-  flankingBonusMin=0.84;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=medtank;
   leaveTracks=1;
   mass=2750;
-  maxDamage=6887;
+  maxDamage=3270;
   maxSlope=2;
   maxVelocity=2.8; //3.5
   maxWaterDepth=15;

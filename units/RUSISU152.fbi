@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK;
   corpse=RUSISU152_Damaged;
   [customParams] {
+    armor_front=93;
+    armor_rear=80;
+    armor_side=86;
+    armor_top=30;
     blockfear=1;
     lowammolevel=1;
     maxammo=4;
@@ -19,16 +23,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Large;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.06;
-  flankingBonusMin=0.9;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=selfprop;
   leaveTracks=1;
   mass=4000;
-  maxDamage=9764;
+  maxDamage=4180;
   maxSlope=2;
   maxVelocity=1.4;
   maxWaterDepth=5;

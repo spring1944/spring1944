@@ -13,6 +13,10 @@
   category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
   corpse=RUST70_Destroyed;
   [customParams] {
+    armor_front=50;
+    armor_rear=35;
+    armor_side=21;
+    armor_top=10;
     blockfear=1;
     lowammolevel=6;
     maxammo=18;
@@ -20,16 +24,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.21; //damage to back multiplied by this
-  flankingBonusMin=0.77; //damage to front multiplied by this
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=medtank;
   leaveTracks=1;
   mass=2750;
-  maxDamage=4372;
+  maxDamage=920;
   maxSlope=2;
   maxVelocity=4.11;
   maxWaterDepth=15;

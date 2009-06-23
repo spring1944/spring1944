@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK  INFTARG  LIGHTVEH;
   corpse=GERSdKfz250_Destroyed;
   [customParams] {
+    armor_front=12;
+    armor_rear=8;
+    armor_side=10;
+    armor_top=0;
     lowammolevel=6;
     maxammo=19;
     weaponcost=10;
@@ -22,7 +26,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
-  maxDamage=1000;
+  maxDamage=570;
   maxSlope=6;
   maxVelocity=5.2;
   maxWaterDepth=5;

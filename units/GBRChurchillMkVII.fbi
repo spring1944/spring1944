@@ -13,6 +13,10 @@
   category=NFLAGNAIR NFLAG TANK WEAPON;
   corpse=GBRChurchillMkVII_Damaged;
   [customParams] {
+    armor_front=148;
+    armor_rear=60;
+    armor_side=78;
+    armor_top=19;
     blockfear=1;
     lowammolevel=3;
     maxammo=14;
@@ -20,16 +24,12 @@
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.87;
-  flankingBonusMin=0.82;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=heavytank;
   leaveTracks=1;
   mass=4000;
-  maxDamage=12135;
+  maxDamage=4060;
   maxSlope=2;
   maxVelocity=1.3; //2.3
   maxWaterDepth=15;

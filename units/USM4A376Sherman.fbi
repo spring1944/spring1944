@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK WEAPON;
   corpse=USM4A376Sherman_Damaged;
   [customParams] {
+    armor_front=74;
+    armor_rear=45;
+    armor_side=45;
+    armor_top=21;
     blockfear=1;
     lowammolevel=4;
     maxammo=14;
@@ -19,16 +23,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.49; //damage to back multiplied by this
-  flankingBonusMin=0.86; //damage to front multiplied by this
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=medtank;
   leaveTracks=1;
   mass=2750;
-  maxDamage=7022;
+  maxDamage=3365;
   maxSlope=2;
   maxVelocity=3.5;
   maxWaterDepth=15;

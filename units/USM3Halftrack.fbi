@@ -13,6 +13,10 @@
   corpse=USM3Halftrack_Destroyed;
   [customParams] {
     ammoSupplier=1;
+    armor_front=10;
+    armor_rear=6;
+    armor_side=6;
+    armor_top=6;
     supplyRange=200;
   }
   energyMake=0;
@@ -23,7 +27,7 @@
   iconType=halftrack;
   leaveTracks=1;
   mass=1000;
-  maxDamage=1200;
+  maxDamage=930;
   maxSlope=6;
   maxVelocity=4.1;
   maxWaterDepth=5;

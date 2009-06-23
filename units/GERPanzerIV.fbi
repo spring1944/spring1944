@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
   corpse=GERPanzerIV_Damaged;
   [customParams] {
+    armor_front=65;
+    armor_rear=24;
+    armor_side=30;
+    armor_top=16;
     blockfear=1;
     lowammolevel=5;
     maxammo=17;
@@ -19,16 +23,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=2.3;
-  flankingBonusMin=0.83;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=medtank;
   leaveTracks=1;
   mass=2500;
-  maxDamage=5504;
+  maxDamage=2600;
   maxSlope=2;
   maxVelocity=2.9;
   maxWaterDepth=5;

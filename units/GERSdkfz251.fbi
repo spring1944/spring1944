@@ -13,6 +13,10 @@
   corpse=GERSdkfz251_Destroyed;
   [customParams] {
     ammoSupplier=1;
+    armor_front=10;
+    armor_rear=9;
+    armor_side=10;
+    armor_top=0;
     supplyRange=200;
   }
   explodeAs=Vehicle_Explosion_Sm;
@@ -20,7 +24,7 @@
   footprintZ=2;
   iconType=halftrack;
   leaveTracks=1;
-  maxDamage=1200;
+  maxDamage=850;
   maxSlope=10;
   maxVelocity=5.2;
   maxWaterDepth=5;

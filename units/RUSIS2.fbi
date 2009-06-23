@@ -12,6 +12,10 @@
   category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NSUB CTRL_G;
   corpse=RUSIS2_Damaged;
   [customParams] {
+    armor_front=119;
+    armor_rear=86;
+    armor_side=93;
+    armor_top=30;
     blockfear=1;
     lowammolevel=1;
     maxammo=5;
@@ -19,16 +23,12 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
-  flankingBonusDir=0.0 0.0 1.0;
-  flankingBonusMax=1.48;
-  flankingBonusMin=0.87;
-  flankingBonusMode=3;
   footprintX=3;
   footprintZ=3;
   iconType=heavytank;
   leaveTracks=1;
   mass=4500;
-  maxDamage=13108;
+  maxDamage=4600;
   maxSlope=2;
   maxVelocity=1.6;
   maxWaterDepth=15;

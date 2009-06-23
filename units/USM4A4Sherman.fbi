@@ -11,10 +11,13 @@
   buildTime=340;
   canMove=1;
   category=NFLAGNAIR NFLAG TANK WEAPON;
+  collisionVolumeOffsets=0.0 -5.0 0.0;
+  collisionVolumeScales=36.0 30.0 80.0;
+  collisionVolumeType=cylX;
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
     armor_front=75;
-    armor_rear=44;
+    armor_rear=42;
     armor_side=42;
     armor_top=21;
     blockfear=1;
@@ -29,7 +32,7 @@
   iconType=medtank;
   leaveTracks=1;
   mass=2750;
-  maxDamage=3160;
+  maxDamage=3180;
   maxSlope=2;
   maxVelocity=3.5;
   maxWaterDepth=15;
@@ -75,10 +78,7 @@
 
   weapon3=M1919A4Browning;
   onlyTargetCategory3=INFTARG;
-	
-	collisionVolumeType=cylX;
-	collisionVolumeScales=36 30 80;
-	collisionVolumeOffsets=0 -5 0;
+
   weapon4=M2Browning;
   onlyTargetCategory4=AIR;
 
