@@ -11,13 +11,19 @@
   canMove=1;
   category=NFLAGNAIR NFLAG INFTARG LIGHTVEH TANK;
   corpse=RUSBA64_Destroyed;
+  [customParams] {
+    armor_front=15;
+    armor_rear=4;
+    armor_side=6;
+    armor_top=4;
+  }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
   footprintZ=2;
   iconType=jeep;
   leaveTracks=1;
   mass=1000;
-  maxDamage=650;
+  maxDamage=245;
   maxSlope=6;
   maxVelocity=5.2;
   maxWaterDepth=5;
