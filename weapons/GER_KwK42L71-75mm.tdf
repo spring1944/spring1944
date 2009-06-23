@@ -9,11 +9,11 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    ap_penetration_100m=138;
     ap_penetration_1000m=111;
+    ap_penetration_100m=138;
   }
   [damage] {
-    default=2140;
+    default=2920;
     bunkers=50;
     flag=0;
     guns=1800;

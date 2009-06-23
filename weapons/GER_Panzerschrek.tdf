@@ -7,7 +7,7 @@
     ap_penetration=200;
   }
   [damage] {
-    default=3300;
+    default=5280;
     bunkers=1500;
     flag=0;
     guns=3000;

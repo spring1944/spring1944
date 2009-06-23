@@ -4,11 +4,11 @@
   areaOfEffect=24;
   canAttackGround=0;
   [customParams] {
-    ap_penetration=100; //same as PIAT for now
     ap_hit_side=top;
+    ap_penetration=100; //same as PIAT for now
   }
   [damage] {
-    default=5500;
+    default=8800;
     bunkers=1500;
     flag=0;
     guns=1800;
