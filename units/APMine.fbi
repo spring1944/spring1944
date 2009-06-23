@@ -7,7 +7,7 @@
   buildingGroundDecalSizeY=1;
   buildingGroundDecalType=MineDirt.dds;
   buildTime=1;
-  category=MINE WEAPON;
+  category=MINE;
   cloakCost=0;
   [customParams] {
     dontCount=1;

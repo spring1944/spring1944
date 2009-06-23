@@ -7,6 +7,15 @@
   footprintZ=3;
   object=RUSSU122_Damaged.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
 }
 
 [russu122_destroyed] {
@@ -18,5 +27,14 @@
   footprintZ=3;
   object=RUSSU122_Destroyed.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=35;
+		}
 }
 

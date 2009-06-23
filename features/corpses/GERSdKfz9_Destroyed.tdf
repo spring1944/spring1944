@@ -7,5 +7,14 @@
   footprintZ=4;
   object=GERSdKfz9_Destroyed.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
 }
 

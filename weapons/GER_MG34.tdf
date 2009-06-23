@@ -6,7 +6,7 @@
   avoidFriendly=0;
   burst=10;
   burstRate=0.069;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=1.5;
   [customParams] {

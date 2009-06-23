@@ -7,7 +7,7 @@
   burnblow=1;
   burst=11;
   burstRate=0.0175;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=3;
   [customParams] {
@@ -59,7 +59,7 @@
   burnblow=1;
   burst=11;
   burstRate=0.0175;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2;
   [customParams] {

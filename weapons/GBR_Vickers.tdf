@@ -6,7 +6,7 @@
   burnblow=1;
   burst=14;
   burstRate=0.05;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   [customParams] {

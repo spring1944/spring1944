@@ -7,5 +7,13 @@
   footprintZ=2;
   object=RUSBA64_Destroyed.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 12 30;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=35;
+		}
 }
 

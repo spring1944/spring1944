@@ -75,7 +75,10 @@
 
   weapon3=M1919A4Browning;
   onlyTargetCategory3=INFTARG;
-
+	
+	collisionVolumeType=cylX;
+	collisionVolumeScales=36 30 80;
+	collisionVolumeOffsets=0 -5 0;
   weapon4=M2Browning;
   onlyTargetCategory4=AIR;
 

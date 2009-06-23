@@ -5,7 +5,7 @@
   avoidFriendly=0;
   burst=5;
   burstRate=0.12;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   color=255;

@@ -6,7 +6,7 @@
   burst=8;
   burstRate=0.1;
   canAttackGround=1;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   collisionVolumeTest=1;

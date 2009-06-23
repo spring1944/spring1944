@@ -4,7 +4,7 @@
   avoidFeature=0;
   avoidFriendly=0;
   beamweapon=1;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   color=255;

@@ -7,6 +7,15 @@
   footprintZ=4;
   object=GBRChurchillMkVII_Damaged.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=25 25 55;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=60;
+		}
 }
 
 [gbrchurchillmkvii_destroyed] {
@@ -18,5 +27,14 @@
   footprintZ=4;
   object=GBRChurchillMkVII_Destroyed.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=25 25 55;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=60;
+		}
 }
 

@@ -6,7 +6,7 @@
   beamweapon=1;
   burst=6;
   burstRate=0.086;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   coreThickness=0.15;

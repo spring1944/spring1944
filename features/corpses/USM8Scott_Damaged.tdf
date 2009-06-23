@@ -7,6 +7,14 @@
   footprintZ=2;
   object=USM8Scott_Damaged.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
 }
 
 [USM8Scott_Destroyed] {
@@ -18,5 +26,13 @@
   footprintZ=2;
   object=USM8Scott_Destroyed.S3O;
   reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=35;
+		}
 }
 

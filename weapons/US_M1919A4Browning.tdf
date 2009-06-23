@@ -5,7 +5,7 @@
   avoidFriendly=0;
   burst=7;
   burstRate=0.14;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   [customParams] {
@@ -53,7 +53,7 @@
   avoidFriendly=0;
   burst=7;
   burstRate=0.14;
-  collideFeature=0;
+  collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
   [customParams] {
