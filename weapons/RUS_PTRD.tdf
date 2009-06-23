@@ -9,10 +9,11 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
-    ap_penetration=-1;
+    ap_penetration_100m=35;
+    ap_penetration_1000m=16;
   }
   [damage] {
-    default=1860;
+    default=118;
     armouredvehicles=800;
     bunkers=0;
     flags=0;

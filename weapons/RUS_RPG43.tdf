@@ -4,10 +4,11 @@
   areaOfEffect=24;
   canAttackGround=0;
   [customParams] {
-    ap_penetration=-1;
+    ap_penetration=65;
+    ap_hit_side=top;
   }
   [damage] {
-    default=8500;
+    default=3060;
     bunkers=1500;
     flag=0;
     guns=1800;
