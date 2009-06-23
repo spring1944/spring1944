@@ -1,5 +1,5 @@
 [kwk75mml71ap] {
-  name=German 75mm KwK 40 L/71 Armour-Piercing;
+  name=German 75mm KwK 42 L/71 Armour-Piercing;
   accuracy=255;
   areaOfEffect=15;
   ballistic=1;
@@ -9,10 +9,11 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    ap_penetration=-1;
+    ap_penetration_100m=138;
+    ap_penetration_1000m=111;
   }
   [damage] {
-    default=10575; //14100
+    default=2140;
     bunkers=50;
     flag=0;
     guns=1800;
