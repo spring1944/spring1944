@@ -4,6 +4,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=1;
   }
@@ -26,6 +28,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=0;
     apmine=0.0001;
@@ -52,6 +56,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=1;
   }
@@ -74,6 +80,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=1500;
     apmine=0.0001;
@@ -99,6 +107,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=900;
     apmine=0.0001;
@@ -125,6 +135,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=2250;
     apmine=0.0001;
@@ -150,6 +162,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=400;
     apmine=0.0001;
@@ -173,6 +187,8 @@
 
 [noweapon] {
   name=No Weapon;
+  [customParams] {
+  }
   [damage] {
     default=0;
   }
@@ -186,6 +202,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=800;
     apmine=0.0001;
@@ -212,6 +230,8 @@
   areaOfEffect=65;
   ballistic=1;
   craterBoost=0;
+  [customParams] {
+  }
   [damage] {
     default=250;
     apmine=0.0001;
@@ -238,6 +258,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=100;
     apmine=0.0001;
@@ -264,6 +286,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=1;
   }
@@ -286,6 +310,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=230;
     apmine=0.0001;
@@ -311,6 +337,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=150;
     apmine=0.0001;
@@ -335,6 +363,8 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=100;
     apmine=0.0001;

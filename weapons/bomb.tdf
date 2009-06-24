@@ -7,6 +7,8 @@
   burst=1;
   collideFriendly=0;
   commandfire=1;
+  [customParams] {
+  }
   [damage] {
     default=30000;
   }
@@ -39,6 +41,8 @@
   burst=1;
   collideFriendly=0;
   commandfire=1;
+  [customParams] {
+  }
   [damage] {
     default=15000;
   }
@@ -66,6 +70,8 @@
   accuracy=1421;
   areaOfEffect=1;
   canAttackGround=1;
+  [customParams] {
+  }
   [damage] {
     default=0;
   }

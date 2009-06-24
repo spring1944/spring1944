@@ -3,6 +3,8 @@
   accuracy=1250;
   areaOfEffect=24;
   canAttackGround=0;
+  [customParams] {
+  }
   [damage] {
     default=2500;
     armouredvehicles=1437.5;

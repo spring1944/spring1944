@@ -4,6 +4,8 @@
   burst=8;
   burstRate=0.1;
   canAttackGround=1;
+  [customParams] {
+  }
   [damage] {
     default=4.3;
     armouredvehicles=12.5;
@@ -45,6 +47,8 @@
   burst=8;
   burstRate=0.1;
   canAttackGround=1;
+  [customParams] {
+  }
   [damage] {
     default=4.3;
     armouredvehicles=12.5;

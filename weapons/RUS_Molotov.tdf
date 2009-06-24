@@ -4,6 +4,8 @@
   areaOfEffect=32;
   canAttackGround=0;
   cegTag=Flametrail;
+  [customParams] {
+  }
   [damage] {
     default=1000;
     armouredvehicles=850;

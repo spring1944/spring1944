@@ -7,6 +7,8 @@
   collisionSize=4;
   craterBoost=0;
   craterMult=0;
+  [customParams] {
+  }
   [damage] {
     default=3000;
     armouredvehicles=2000;

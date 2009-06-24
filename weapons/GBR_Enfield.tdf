@@ -9,6 +9,8 @@
   collideFriendly=0;
   collisionSize=2.5;
   coreThickness=0.15;
+  [customParams] {
+  }
   [damage] {
     default=1;
     armouredvehicles=4;

@@ -9,6 +9,8 @@
   collisionSize=2.5;
   color=255;
   color2=226;
+  [customParams] {
+  }
   [damage] {
     default=1;
     armouredvehicles=10;

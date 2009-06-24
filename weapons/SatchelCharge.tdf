@@ -2,6 +2,8 @@
   name=A Mine!;
   areaOfEffect=104;
   craterMult=0.5;
+  [customParams] {
+  }
   [damage] {
     default=16000;
     bunkers=12500;

@@ -1,5 +1,7 @@
 [.30calproof] {
   name=Deflecting .30 cal and under bullets;
+  [customParams] {
+  }
   [damage] {
     default=10;
   }
@@ -19,6 +21,8 @@
 
 [.50calproof] {
   name=Deflecting bullets;
+  [customParams] {
+  }
   [damage] {
     default=10;
   }
@@ -38,6 +42,8 @@
 
 [small30calproof] {
   name=Deflecting .30 cal and under bullets;
+  [customParams] {
+  }
   [damage] {
     default=10;
   }

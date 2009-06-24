@@ -4,6 +4,8 @@
   avoidFriendly=1;
   burnblow=1;
   collideFriendly=1;
+  [customParams] {
+  }
   [damage] {
     default=10000;
     armouredvehicles=7500;
@@ -47,6 +49,8 @@
   burst=4;
   burstRate=2;
   collideFriendly=1;
+  [customParams] {
+  }
   [damage] {
     default=10000;
     armouredvehicles=7500;
@@ -91,6 +95,8 @@
   burst=3;
   burstRate=2;
   collideFriendly=1;
+  [customParams] {
+  }
   [damage] {
     default=10000;
     armouredvehicles=7500;

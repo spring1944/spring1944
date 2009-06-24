@@ -13,6 +13,8 @@
   color=255;
   color2=226;
   coreThickness=0.65;
+  [customParams] {
+  }
   [damage] {
     default=0;
     armouredvehicles=2;

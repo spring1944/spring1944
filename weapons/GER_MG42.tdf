@@ -111,6 +111,8 @@
   burstRate=0.039;
   collisionSize=2;
   coreThickness=0.15;
+  [customParams] {
+  }
   [damage] {
     default=5;
     armouredvehicles=7.5;
@@ -153,6 +155,8 @@
   burstRate=0.0175;
   canAttackGround=0;
   collideFriendly=0;
+  [customParams] {
+  }
   [damage] {
     default=5;
     armouredvehicles=6;

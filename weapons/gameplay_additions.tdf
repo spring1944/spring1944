@@ -5,6 +5,8 @@
   beamweapon=1;
   canAttackGround=0;
   collideFriendly=1;
+  [customParams] {
+  }
   [damage] {
     default=1e-10;
   }
@@ -32,6 +34,8 @@
   beamweapon=1;
   canAttackGround=0;
   collideFriendly=1;
+  [customParams] {
+  }
   [damage] {
     default=1e-10;
   }

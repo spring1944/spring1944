@@ -4,6 +4,8 @@
   burst=3;
   burstRate=0.085;
   collisionSize=2;
+  [customParams] {
+  }
   [damage] {
     default=26;
     armouredvehicles=26;

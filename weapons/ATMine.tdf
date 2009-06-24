@@ -38,6 +38,8 @@
   ballistic=1;
   craterBoost=1;
   craterMult=1;
+  [customParams] {
+  }
   [damage] {
     default=1e-06;
     mines=10000;
