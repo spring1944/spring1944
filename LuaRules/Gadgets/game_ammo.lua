@@ -12,6 +12,7 @@ end
 
 -- function localisations
 -- Synced Read
+local GetGameFrame = Spring.GetGameFrame
 local GetUnitAllyTeam		 	= Spring.GetUnitAllyTeam
 local GetUnitDefID			 	= Spring.GetUnitDefID
 local GetUnitIsStunned = Spring.GetUnitIsStunned
@@ -153,7 +154,7 @@ local function Resupply(unitID)
 
 	if oldAmmo < 1 then
 		local savedFrame = 0
-		local currFrame = Spring.GetGameFrame()
+		local currFrame = GetGameFrame()
 		if savedFrames[unitID] then
 			savedFrame = savedFrames[unitID]
 		end
@@ -174,33 +175,34 @@ local function Resupply(unitID)
 end
 
 function gadget:Initialize()
-	initFrame = Spring.GetGameFrame()
+	initFrame = GetGameFrame()
 end
 
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-		if ud.customParams.maxammo then
-			if ud.canFly then
-				SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
-				vehicles[unitID] = {
-					ammoLevel = tonumber(ud.customParams.maxammo),
-					reloadFrame = {},
-				}
-			for weaponNum = 0, ud.customParams.weaponswithammo do
+	if ud.customParams.maxammo then
+		if ud.canFly then
+			SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
+			vehicles[unitID] = {
+				ammoLevel = tonumber(ud.customParams.maxammo),
+				reloadFrame = {},
+			}
+			for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
 				vehicles[unitID].reloadFrame[weaponNum] = 0
 			end
-			else
-				SetUnitRulesParam(unitID, "ammo", 0)
-				vehicles[unitID] = {
-					ammoLevel = 0,
-					reloadFrame = {},
-				}
-			for weaponNum = 0, ud.customParams.weaponswithammo do
+		else
+			SetUnitRulesParam(unitID, "ammo", 0)
+			vehicles[unitID] = {
+				ammoLevel = 0,
+				reloadFrame = {},
+			}
+			local frame = GetGameFrame()
+			for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
+				SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
 				vehicles[unitID].reloadFrame[weaponNum] = 0
 			end
-			end
-
+		end
 	end
 end
 
