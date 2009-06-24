@@ -18,8 +18,6 @@
     flag=0;
     mines=0;
   }
-  dynDamageExp=1;
-  dynDamageRange=2250; //4500
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Small;
   explosionSpeed=100;

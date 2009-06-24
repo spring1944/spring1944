@@ -22,8 +22,6 @@
     mines=0;
     sandbags=400;
   }
-  dynDamageExp=1;
-  dynDamageRange=7500;
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Large;
   explosionSpeed=100;
