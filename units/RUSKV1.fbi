@@ -11,7 +11,7 @@
   canMove=1;
   category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NSUB CTRL_G;
   [customParams] {
-    armor_front=71;
+    armor_front=118;
     armor_rear=93;
     armor_side=111;
     armor_top=33;
