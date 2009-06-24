@@ -11,6 +11,7 @@
   [customParams] {
     ap_penetration_1000m=36;
     ap_penetration_100m=57;
+    damagetype=kinetic;
   }
   [damage] {
     default=2720;

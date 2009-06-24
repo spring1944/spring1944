@@ -10,6 +10,7 @@
   collisionSize=2.5;
   coreThickness=0.15;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=1;
@@ -58,6 +59,7 @@
   collisionSize=2.5;
   coreThickness=0.15;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=1;

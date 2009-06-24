@@ -11,6 +11,7 @@
   collisionSize=2.5;
   coreThickness=0.75;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=0;

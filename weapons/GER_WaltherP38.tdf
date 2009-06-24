@@ -9,6 +9,7 @@
   color=255;
   color2=226;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=1;

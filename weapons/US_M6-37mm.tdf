@@ -11,6 +11,7 @@
   [customParams] {
     ap_penetration_1000m=46;
     ap_penetration_100m=63;
+    damagetype=kinetic;
   }
   [damage] {
     default=548;
@@ -57,6 +58,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=20;
     fearid=301;
   }

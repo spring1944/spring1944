@@ -9,6 +9,7 @@
   collideFriendly=0;
   collisionSize=2.5;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=30;
     fearid=301;
   }
@@ -57,6 +58,7 @@
   collideFriendly=0;
   collisionSize=2.5;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=30;
     fearid=301;
   }

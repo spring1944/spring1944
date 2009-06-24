@@ -10,6 +10,7 @@
   color=255;
   coreThickness=0.15;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=90;
     fearid=401;
   }

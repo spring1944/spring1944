@@ -10,6 +10,7 @@
   color=255;
   color2=226;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=90;
     fearid=401;
   }

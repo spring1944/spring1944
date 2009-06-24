@@ -10,6 +10,7 @@
   color2=226;
   coreThickness=0.15;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=1;

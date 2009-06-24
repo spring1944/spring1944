@@ -11,6 +11,7 @@
   [customParams] {
     ap_penetration_1000m=100;
     ap_penetration_100m=120; //penetration at 30 deg in mm
+    damagetype=kinetic;
   }
   [damage] {
     default=4180; //shell weight in g * 0.3 + 100
