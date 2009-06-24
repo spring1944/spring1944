@@ -13,7 +13,7 @@
   category=NFLAGNAIR NFLAG TANK WEAPON;
   corpse=GBRShermanFirefly_Damaged;
   [customParams] {
-    armor_front=65;
+    armor_front=74;
     armor_rear=45;
     armor_side=42;
     armor_top=21;
