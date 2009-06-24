@@ -4,6 +4,7 @@
   areaOfEffect=40;
   canAttackGround=0;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=2500;

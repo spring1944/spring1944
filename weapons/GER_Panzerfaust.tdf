@@ -7,6 +7,7 @@
   craterMult=0;
   [customParams] {
     ap_penetration=170;
+    damagetype=shapedcharge;
   }
   [damage] {
     default=6400;

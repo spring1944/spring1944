@@ -57,6 +57,7 @@
   craterBoost=0.5;
   craterMult=0.5;
   [customParams] {
+    damagetype=explosive;
     fearaoe=90;
     fearid=401;
   }

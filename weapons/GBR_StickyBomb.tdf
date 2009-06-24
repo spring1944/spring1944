@@ -6,6 +6,7 @@
   [customParams] {
     ap_hit_side=top;
     ap_penetration=100; //same as PIAT for now
+    damagetype=shapedcharge;
   }
   [damage] {
     default=8800;

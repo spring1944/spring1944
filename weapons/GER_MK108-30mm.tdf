@@ -6,6 +6,7 @@
   burstRate=0.25;
   collisionSize=2;
   [customParams] {
+    damagetype=explosive;
     fearaoe=40;
     fearid=301;
   }

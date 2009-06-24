@@ -5,6 +5,7 @@
   burstRate=0.085;
   collisionSize=2;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=26;

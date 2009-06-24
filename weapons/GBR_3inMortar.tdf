@@ -4,6 +4,7 @@
   areaOfEffect=112;
   color=255;
   [customParams] {
+    damagetype=explosive;
     fearaoe=105;
     fearid=301;
   }

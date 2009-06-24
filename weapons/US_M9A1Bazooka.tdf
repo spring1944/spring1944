@@ -5,6 +5,7 @@
   cegTag=BazookaTrail;
   [customParams] {
     ap_penetration=108;
+    damagetype=shapedcharge;
   }
   [damage] {
     default=12720;

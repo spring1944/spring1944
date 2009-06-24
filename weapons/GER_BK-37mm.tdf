@@ -11,6 +11,7 @@
   [customParams] {
     ap_hit_side=top;
     ap_penetration=60;
+    damagetype=shapedcharge;
   }
   [damage] {
     default=488.8;

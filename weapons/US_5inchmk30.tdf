@@ -8,6 +8,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=4200;

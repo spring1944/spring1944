@@ -6,6 +6,7 @@
   collisionSize=2;
   collisionVolumeTest=1;
   [customParams] {
+    damagetype=explosive;
     fearaoe=30;
     fearid=301;
   }
@@ -104,6 +105,7 @@
   craterBoost=0.1;
   craterMult=0.1;
   [customParams] {
+    damagetype=explosive;
     fearaoe=40;
     fearid=301;
   }

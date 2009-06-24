@@ -7,6 +7,7 @@
   collisionSize=2;
   collisionVolumeTest=1;
   [customParams] {
+    damagetype=explosive;
     fearaoe=30;
     fearid=301;
   }

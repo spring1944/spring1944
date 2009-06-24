@@ -9,6 +9,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
+    damagetype=explosive;
     fearaoe=160;
     fearid=701;
   }
@@ -110,6 +111,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
+    damagetype=explosive;
     fearaoe=30;
     fearid=301;
   }

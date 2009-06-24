@@ -3,6 +3,7 @@
   areaOfEffect=104;
   craterMult=0.5;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=16000;
