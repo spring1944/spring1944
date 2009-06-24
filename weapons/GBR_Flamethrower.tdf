@@ -5,6 +5,7 @@
   burstRate=0.01;
   cegTag=Flametrail;
   [customParams] {
+    damagetype=fire;
     fearaoe=75;
     fearid=501;
   }

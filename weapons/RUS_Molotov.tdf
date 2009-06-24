@@ -5,6 +5,7 @@
   canAttackGround=0;
   cegTag=Flametrail;
   [customParams] {
+    damagetype=fire;
   }
   [damage] {
     default=1000;
