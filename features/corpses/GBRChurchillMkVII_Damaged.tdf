@@ -4,7 +4,7 @@
   energy=1000;
   featureDead=GBRChurchillMkVII_Destroyed;
   footprintX=3;
-  footprintZ=4;
+  footprintZ=3;
   object=GBRChurchillMkVII_Damaged.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
@@ -24,7 +24,7 @@
   energy=500;
   featureDead=Debris_Large;
   footprintX=3;
-  footprintZ=4;
+  footprintZ=3;
   object=GBRChurchillMkVII_Destroyed.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
@@ -33,6 +33,7 @@
 	collisionVolumeTest=1;
 	[customParams]
 		{
+		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=60;
 		}

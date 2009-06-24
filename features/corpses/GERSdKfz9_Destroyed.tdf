@@ -3,8 +3,8 @@
   damage=2501;
   energy=75;
   featureDead=Debris_Small;
-  footprintX=2;
-  footprintZ=4;
+  footprintX=3;
+  footprintZ=3;
   object=GERSdKfz9_Destroyed.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;

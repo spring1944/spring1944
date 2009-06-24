@@ -4,7 +4,7 @@
   energy=500;
   featureDead=Debris_Large;
   footprintX=2;
-  footprintZ=3;
+  footprintZ=2;
   object=GBRKangaroo_Destroyed.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
@@ -13,6 +13,7 @@
 	collisionVolumeTest=1;
 	[customParams]
 		{
+		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=40;
 		}

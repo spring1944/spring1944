@@ -3,7 +3,7 @@
   damage=2501;
   energy=500;
   featureDead=Debris_Large;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=USM10Wolverine_Destroyed.S3O;
   reclaimable=1;

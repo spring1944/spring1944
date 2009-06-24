@@ -3,7 +3,7 @@
   damage=1251;
   energy=500;
   featureDead=Debris_Small;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=GERSdKfz250_Destroyed.S3O;
   reclaimable=1;

@@ -75,9 +75,10 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
   local unitDef = UnitDefs[unitDefID]
-  if unitDef.canFly or unitDef.speed == 0 then return end
-  
-  SetUnitRulesParam(unitID, "cover", 1)
+  if unitDef.customParams.feartarget and not(unitDef.canFly) and unitDef.speed ~= 0 then  
+	SetUnitRulesParam(unitID, "cover", 1)
+  else
+  end
 end
 
 function gadget:GameFrame(n)

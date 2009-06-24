@@ -3,7 +3,7 @@
   damage=626;
   energy=1000;
   featureDead=GERTiger_Destroyed;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=GERTiger_Damaged.S3O;
   reclaimable=1;
@@ -23,7 +23,7 @@
   damage=2501;
   energy=500;
   featureDead=Debris_Large;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=GERTiger_Destroyed.S3O;
   reclaimable=1;
@@ -33,6 +33,7 @@
 	collisionVolumeTest=1;
 	[customParams]
 		{
+		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=45;
 		}

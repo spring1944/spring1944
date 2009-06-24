@@ -11,9 +11,6 @@
   buildTime=340;
   canMove=1;
   category=NFLAGNAIR NFLAG TANK WEAPON;
-  collisionVolumeOffsets=0.0 -5.0 0.0;
-  collisionVolumeScales=36.0 30.0 80.0;
-  collisionVolumeType=cylX;
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
     armor_front=75;

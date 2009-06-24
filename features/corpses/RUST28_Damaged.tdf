@@ -3,7 +3,7 @@
   damage=626;
   energy=1000;
   featureDead=RUST28_Destroyed;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=RUST28;
   reclaimable=1;
@@ -15,7 +15,7 @@
   energy=500;
   featureDead=Debris_Large;
   footprintX=2;
-  footprintZ=3;
+  footprintZ=2;
   object=RUST3476_Destroyed.S3O;
   reclaimable=1;
 }

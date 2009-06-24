@@ -3,7 +3,7 @@
   damage=626;
   energy=1000;
   featureDead=USM4A4Sherman_Destroyed;
-  footprintX=2;
+  footprintX=3;
   footprintZ=3;
   object=USM4A4Sherman_Damaged.S3O;
   reclaimable=1;
@@ -29,7 +29,7 @@
   energy=500;
   featureDead=Debris_Large;
   footprintX=2;
-  footprintZ=3;
+  footprintZ=2;
   object=USM4A4Sherman_Destroyed.S3O;
   reclaimable=1;
   
