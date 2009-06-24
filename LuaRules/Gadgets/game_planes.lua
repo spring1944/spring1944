@@ -264,7 +264,7 @@ local function SpawnFlight(teamID, name, units, sx, sy, sz, cmdParams)
 			local ux, uz = offset[1] + sx, offset[3] + sz
 			local uy = GetGroundHeight(ux, uz)
 			local unitname = units[i]
-			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, i)
+			SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i)
 		end
 	end
 
