@@ -4,6 +4,7 @@
   burnblow=1;
   collisionSize=2;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
@@ -33,6 +34,7 @@
   burnblow=1;
   collisionSize=2;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
@@ -65,6 +67,7 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
@@ -103,6 +106,7 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
@@ -141,6 +145,7 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
@@ -178,6 +183,7 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;

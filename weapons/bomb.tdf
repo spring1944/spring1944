@@ -8,6 +8,7 @@
   collideFriendly=0;
   commandfire=1;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=30000;
@@ -42,6 +43,7 @@
   collideFriendly=0;
   commandfire=1;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=15000;
@@ -71,6 +73,7 @@
   areaOfEffect=1;
   canAttackGround=1;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;
