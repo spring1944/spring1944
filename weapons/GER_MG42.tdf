@@ -114,6 +114,7 @@
   collisionSize=2;
   coreThickness=0.15;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=5;
@@ -128,8 +129,8 @@
     tanks=0;
     unarmouredvehicles=30;
   }
-  explosionGenerator=custom:Bullet;
   duration=0.02;
+  explosionGenerator=custom:Bullet;
   fireStarter=10;
   intensity=0.7;
   interceptedByShieldType=8;
