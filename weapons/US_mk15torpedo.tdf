@@ -7,6 +7,7 @@
   burstRate=1;
   collideFriendly=1;
   [customParams] {
+    damagetype=shapedcharge;
   }
   [damage] {
     default=10000;
