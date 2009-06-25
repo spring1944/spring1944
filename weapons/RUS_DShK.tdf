@@ -5,6 +5,7 @@
   burstRate=0.1;
   canAttackGround=1;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=4.3;
@@ -20,7 +21,7 @@
     tanks=0;
     unarmouredvehicles=40;
   }
-  explosionGenerator=custom:BulletImpact;
+  explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=7;
   interceptedByShieldType=16;
@@ -48,6 +49,7 @@
   burstRate=0.1;
   canAttackGround=1;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=4.3;
@@ -63,7 +65,7 @@
     tanks=0;
     unarmouredvehicles=40;
   }
-  explosionGenerator=custom:BulletImpact;
+  explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=7;
   interceptedByShieldType=16;

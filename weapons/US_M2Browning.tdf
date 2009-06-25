@@ -58,6 +58,7 @@
   burstRate=0.109;
   canAttackGround=0;
   [customParams] {
+    damagetype=smallarm;
     fearaoe=1;
     fearid=701;
   }
@@ -75,6 +76,7 @@
     tanks=0;
     unarmouredvehicles=40;
   }
+  explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=71;
   interceptedByShieldType=16;

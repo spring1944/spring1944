@@ -128,6 +128,7 @@
     tanks=0;
     unarmouredvehicles=30;
   }
+  explosionGenerator=custom:Bullet;
   duration=0.02;
   fireStarter=10;
   intensity=0.7;

@@ -6,6 +6,7 @@
   canAttackGround=1;
   collisionSize=2.5;
   [customParams] {
+    damagetype=smallarm;
   }
   [damage] {
     default=4.3;
@@ -21,7 +22,7 @@
     tanks=0;
     unarmouredvehicles=35;
   }
-  explosionGenerator=custom:BulletImpact;
+  explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=7;
   interceptedByShieldType=16;
