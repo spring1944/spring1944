@@ -13,7 +13,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=8; //x10 v. guns, infantry
+    default=5;
   }
   duration=0.01;
   energyPerShot=0;
@@ -57,7 +57,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=1.7; //x10 v. guns, infantry
+    default=1.0625;
   }
   duration=0.01;
   explosionGenerator=custom:Bullet;

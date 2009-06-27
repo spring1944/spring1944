@@ -56,7 +56,7 @@
     fearid=301;
   }
   [damage] {
-    default=15; //x10 v. guns, infantry
+    default=9.375;
   }
   duration=0.01;
   edgeEffectiveness=1;

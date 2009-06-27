@@ -16,7 +16,7 @@
     fearid=301;
   }
   [damage] {
-    default=3.3; //x10 v. guns, infantry
+    default=2.0625;
   }
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
@@ -58,7 +58,7 @@
     fearid=301;
   }
   [damage] {
-    default=3.3; //x10 v. guns, infantry
+    default=2.0625;
   }
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
@@ -95,7 +95,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=5.6; //x10 v. guns, infantry
+    default=3.5;
   }
   duration=0.02;
   explosionGenerator=custom:Bullet;
@@ -131,7 +131,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=2.8; //x10 v. guns, infantry
+    default=1.75;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=1;

@@ -15,7 +15,7 @@
     fearid=401;
   }
   [damage] {
-    default=62.5; //x10 v. guns, infantry
+    default=39.0625;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
