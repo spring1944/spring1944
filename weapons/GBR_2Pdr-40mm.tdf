@@ -15,9 +15,6 @@
   }
   [damage] {
     default=688;
-    bunkers=20;
-    flag=0;
-    mines=0;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Small;

@@ -15,14 +15,6 @@
   }
   [damage] {
     default=224;
-    bunkers=0;
-    flags=0;
-    guns=400;
-    infantry=95;
-    lightbuildings=20;
-    mines=0;
-    sandbags=1;
-    unarmouredvehicles=1600;
   }
   duration=0.01;
   explosionGenerator=custom:AP_XSmall;

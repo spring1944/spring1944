@@ -50,13 +50,6 @@
   }
   [damage] {
     default=238.4;
-    bunkers=0;
-    flag=0;
-    guns=600;
-    infantry=1000;
-    lightbuildings=50;
-    mines=0;
-    sandbags=25;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:AP_XSmall;

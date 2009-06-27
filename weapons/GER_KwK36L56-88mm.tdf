@@ -15,13 +15,6 @@
   }
   [damage] {
     default=4180; //shell weight in g * 0.3 + 100
-    bunkers=50;
-    flag=0;
-    guns=1800;
-    infantry=2100;
-    lightbuildings=750;
-    mines=0;
-    sandbags=250;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Large;
