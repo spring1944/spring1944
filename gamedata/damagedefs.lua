@@ -25,11 +25,11 @@ local damagedefs = {
     flag = 0,
     mines = 0,
   },
-  --[[
   shapedcharge = {
     bunkers = 2,
     flag = 0,
   },
+  --[[
   flame = {
     bunkers = 5,
     flag = 0,

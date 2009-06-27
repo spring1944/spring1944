@@ -10,13 +10,6 @@
   }
   [damage] {
     default=8800;
-    bunkers=1500;
-    flag=0;
-    guns=1800;
-    infantry=2200;
-    lightbuildings=1500;
-    mines=0;
-    sandbags=250;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_Medium;
