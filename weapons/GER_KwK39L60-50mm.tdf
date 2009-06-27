@@ -63,13 +63,6 @@
   }
   [damage] {
     default=1600;
-    armouredvehicles=1600;
-    flag=0;
-    guns=1000;
-    infantry=1200;
-    mines=0;
-    tanks=120;
-    unarmouredvehicles=4600;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_Medium;

@@ -9,17 +9,6 @@
   }
   [damage] {
     default=26;
-    armouredvehicles=26;
-    bunkers=0;
-    flag=1e-11;
-    guns=80;
-    infantry=100;
-    lightbuildings=26;
-    mines=0;
-    planes=62.5;
-    sandbags=5;
-    tanks=13;
-    unarmouredvehicles=104;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;

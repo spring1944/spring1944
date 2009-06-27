@@ -47,18 +47,7 @@
     fearid=301;
   }
   [damage] {
-    default=40;
-    armouredvehicles=400;
-    bunkers=0;
-    flag=1e-11;
-    guns=300;
-    infantry=500;
-    lightbuildings=50;
-    mines=0;
-    planes=38.5;
-    sandbags=5;
-    tanks=25;
-    unarmouredvehicles=1000;
+    default=400;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;

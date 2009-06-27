@@ -7,14 +7,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=2500;
-    armouredvehicles=1250;
-    flag=0;
-    guns=750;
-    infantry=800;
-    mines=0;
-    tanks=670;
-    unarmouredvehicles=2700;
+    default=1250;
   }
   dynDamageExp=1;
   dynDamageRange=200;

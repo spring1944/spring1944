@@ -14,15 +14,7 @@
     fearid=701;
   }
   [damage] {
-    default=200;
-    armouredvehicles=650;
-    flag=1e-08;
-    guns=600;
-    hq=100;
-    infantry=800;
-    planes=141;
-    sandbags=200;
-    unarmoredvehicles=1500;
+    default=650;
   }
   edgeEffectiveness=5e-06;
   explosionGenerator=custom:HE_Medium;
@@ -62,15 +54,7 @@
     fearid=301;
   }
   [damage] {
-    default=200;
-    armouredvehicles=650;
-    flag=1e-08;
-    guns=350;
-    hq=100;
-    infantry=400;
-    mediumPlanes=352;
-    sandbags=200;
-    unarmoredvehicles=1500;
+    default=650;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_XSmall;

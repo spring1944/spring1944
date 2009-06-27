@@ -10,15 +10,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=60;
-    armouredvehicles=250;
-    flag=1e-08;
-    guns=300;
-    hq=120;
-    infantry=300;
-    LightPlanes=60;
-    sandbags=150;
-    unarmoredvehicles=640;
+    default=250;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_XSmall;

@@ -62,14 +62,7 @@
     fearid=401;
   }
   [damage] {
-    default=3100;
-    armouredvehicles=1775;
-    flag=0;
-    guns=1200;
-    infantry=1560;
-    mines=0;
-    tanks=225;
-    unarmouredvehicles=4300;
+    default=1775;
   }
   edgeEffectiveness=0.15;
   explosionGenerator=custom:HE_Medium;
