@@ -29,12 +29,12 @@ local damagedefs = {
     bunkers = 2,
     flag = 0,
   },
-  --[[
-  flame = {
+  fire = {
     bunkers = 5,
+    unarmouredvehicles = 2,
+    tanks = 0.5,
     flag = 0,
   },
-  ]]
 }
 
 return damagedefs

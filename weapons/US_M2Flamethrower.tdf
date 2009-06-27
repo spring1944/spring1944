@@ -11,10 +11,6 @@
   }
   [damage] {
     default=32;
-    bunkers=150;
-    flag=1e-09;
-    mines=0;
-    sandbags=2.5;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Flamethrower;
