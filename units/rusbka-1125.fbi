@@ -10,7 +10,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON;
+  category=SHIP;
   corpse=RUSBKA-1125_dead;
   [customParams] {
     dontCount=1;
@@ -39,25 +39,25 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=30;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 -1;
 
-  Weapon1=F3476mmHE;
+  weapon1=F3476mmHE;
   maxAngleDif1=300;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=dshk;
+  weapon2=dshk;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=dshk;
+  weapon3=dshk;
   maxAngleDif3=358;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=dshk;
+  weapon4=dshk;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 -1;
 }
 

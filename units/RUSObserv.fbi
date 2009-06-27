@@ -9,7 +9,7 @@
   buildCostMetal=50;
   buildTime=150;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=RUSsoldier_dead;

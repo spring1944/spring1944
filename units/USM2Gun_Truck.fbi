@@ -9,7 +9,7 @@
   buildPic=USM2Gun.png;
   buildTime=700;
   canMove=1;
-  category=TANK NFLAG   INFTARG NFLAGNAIR WEAPON;
+  category=UNARMOURED;
   corpse=USGMCTruck_Destroyed;
   [customParams] {
     lowammolevel=1;

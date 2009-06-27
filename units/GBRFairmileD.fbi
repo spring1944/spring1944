@@ -10,7 +10,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=GBRFairmileD_dead;
   [customParams] {
     dontCount=1;
@@ -49,70 +49,70 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=55;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir10=-1 0 0;
-  WeaponMainDir11=1 0 0;
-  WeaponMainDir12=-1 0 0;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 1;
-  WeaponMainDir5=0 0 1;
-  WeaponMainDir6=0 0 -1;
-  WeaponMainDir7=0 0 -1;
-  WeaponMainDir9=1 0 0;
-  WeaponSlaveTo8=7;
 
-  Weapon10=twin05calVickers;
+  weapon10=twin05calVickers;
   maxAngleDif10=270;
   onlyTargetCategory10=NFLAG;
+  weaponMainDir10=-1 0 0;
 
-  Weapon11=vickers;
+  weapon11=vickers;
   maxAngleDif11=200;
   onlyTargetCategory11=NFLAG;
+  weaponMainDir11=1 0 0;
 
-  Weapon12=vickers;
+  weapon12=vickers;
   maxAngleDif12=200;
   onlyTargetCategory12=NFLAG;
+  weaponMainDir12=-1 0 0;
 
-  Weapon13=Small_Tracer;
+  weapon13=Small_Tracer;
 
-  Weapon14=Medium_Tracer;
+  weapon14=Medium_Tracer;
 
-  Weapon15=Large_Tracer;
+  weapon15=Large_Tracer;
 
-  Weapon1=18inchtorpedo;
+  weapon1=18inchtorpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=18inchtorpedo;
+  weapon2=18inchtorpedo;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=18inchtorpedo;
+  weapon3=18inchtorpedo;
   maxAngleDif3=40;
   onlyTargetCategory3=LARGESHIP;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=18inchtorpedo;
+  weapon4=18inchtorpedo;
   maxAngleDif4=40;
   onlyTargetCategory4=LARGESHIP;
+  weaponMainDir4=0 0 1;
 
-  Weapon5=6pdr57mmap;
+  weapon5=6pdr57mmap;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAGNAIR;
+  weaponMainDir5=0 0 1;
 
-  Weapon6=6pdr57mmap;
+  weapon6=6pdr57mmap;
   maxAngleDif6=270;
   onlyTargetCategory6=NFLAGNAIR;
+  weaponMainDir6=0 0 -1;
 
-  Weapon7=20mmOerlikonaa;
+  weapon7=20mmOerlikonaa;
   maxAngleDif7=300;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=0 0 -1;
 
-  Weapon8=20mmOerlikonaa;
+  weapon8=20mmOerlikonaa;
   onlyTargetCategory8=NFLAG;
+  weaponSlaveTo8=7;
 
-  Weapon9=twin05calVickers;
+  weapon9=twin05calVickers;
   maxAngleDif9=270;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=1 0 0;
 }
 

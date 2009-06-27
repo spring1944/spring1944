@@ -10,7 +10,7 @@
   buildPic=GERSchSturmboot.png;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+  category=SHIP;
   corpse=GERSchSturmboot_dead;
   [customParams] {
     dontCount=1;

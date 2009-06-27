@@ -9,7 +9,7 @@
   buildPic=GERPontoonTruck.png;
   buildTime=1400;
   canMove=1;
-  category=NFLAGNAIR TANK TPORT INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=GERPontoonTruck_Dead;
   [customParams] {
     dontCount=1;

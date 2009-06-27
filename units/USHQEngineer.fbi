@@ -10,7 +10,7 @@
   builder=1;
   buildTime=140;
   canMove=1;
-  category=NOWEAPON NFLAG  INFTARG NFLAGNAIR;
+  category=INFANTRY;
   corpse=USsoldier_dead;
   [customParams] {
     feartarget=1;

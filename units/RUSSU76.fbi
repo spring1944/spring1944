@@ -9,7 +9,7 @@
   buildCostMetal=1740;
   buildTime=580;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  category=OPEN;
   corpse=RUSSU76_Destroyed;
   [customParams] {
     armor_front=35;
@@ -64,16 +64,16 @@
   turninplace=0;
   turnRate=160;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
 
   weapon1=ZiS376mmHE;
   maxAngleDif1=12;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
   maxAngleDif2=12;
   onlyTargetCategory2=TANK;
+  weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;
 }

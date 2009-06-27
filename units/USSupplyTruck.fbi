@@ -9,7 +9,7 @@
   buildPic=USGMCTruck.png;
   buildTime=220;
   canMove=1;
-  category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+  category=UNARMOURED;
   corpse=USGMCTruck_Destroyed;
   [customParams] {
     dontCount=1;

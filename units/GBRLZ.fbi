@@ -5,7 +5,7 @@
   buildCostMetal=3000;
   buildPic=GBRLZ.png;
   buildTime=200;
-  category=GBR PLANT NOWEAPON NFLAG;
+  category=BUILDING;
   [customParams] {
     dontCount=1;
   }

@@ -10,7 +10,7 @@
   buildPic=GERPanzerfaust.png;
   buildTime=225;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=GERsoldier_dead;

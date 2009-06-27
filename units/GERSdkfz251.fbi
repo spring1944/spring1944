@@ -9,7 +9,7 @@
   buildCostMetal=1050;
   buildTime=350;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG  LIGHTVEH;
+  category=OPEN;
   corpse=GERSdkfz251_Destroyed;
   [customParams] {
     ammoSupplier=1;

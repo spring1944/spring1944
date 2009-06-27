@@ -5,7 +5,7 @@
   buildCostMetal=360;
   buildPic=ATMine.png;
   buildTime=240;
-  category=NONE NOWEAPON FLAG;
+  category=FLAG;
   cloakCost=0;
   [customParams] {
     dontCount=1;

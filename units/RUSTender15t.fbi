@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=RUSTender15t_dead;
   [customParams] {
     dontCount=1;
@@ -42,10 +42,10 @@
   transportSize=1;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=0 0 1;
 
-  Weapon1=dshk;
+  weapon1=dshk;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 }
 

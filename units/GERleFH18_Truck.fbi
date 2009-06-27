@@ -10,7 +10,7 @@
   buildPic=GERleFH18.png;
   buildTime=700;
   canMove=1;
-  category=NFLAGNAIR LIGHTVEH INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=GEROpelBlitz_Destroyed;
   [customParams] {
     lowammolevel=1;

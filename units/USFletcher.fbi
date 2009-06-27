@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=USFletcher_dead;
   [customParams] {
     dontCount=1;
@@ -40,100 +40,100 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir10=0 0 -1;
-  WeaponMainDir11=1 0 0;
-  WeaponMainDir12=-1 0 0;
-  WeaponMainDir13=1 0 0;
-  WeaponMainDir14=-1 0 0;
-  WeaponMainDir15=0 0 -1;
-  WeaponMainDir16=0 0 -1;
-  WeaponMainDir17=0 0 -1;
-  WeaponMainDir18=0 0 1;
-  WeaponMainDir19=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 -1;
-  WeaponMainDir5=0 0 -1;
-  WeaponMainDir6=1 0 0;
-  WeaponMainDir7=-1 0 0;
-  WeaponMainDir8=1 0 0;
-  WeaponMainDir9=-1 0 0;
 
-  Weapon10=twin_bofors40mmaa;
+  weapon10=twin_bofors40mmaa;
   maxAngleDif10=270;
   onlyTargetCategory10=NFLAG;
+  weaponMainDir10=0 0 -1;
 
-  Weapon11=20mmOerlikonaa;
+  weapon11=20mmOerlikonaa;
   maxAngleDif11=200;
   onlyTargetCategory11=NFLAG;
+  weaponMainDir11=1 0 0;
 
-  Weapon12=20mmOerlikonaa;
+  weapon12=20mmOerlikonaa;
   maxAngleDif12=200;
   onlyTargetCategory12=NFLAG;
+  weaponMainDir12=-1 0 0;
 
-  Weapon13=20mmOerlikonaa;
+  weapon13=20mmOerlikonaa;
   maxAngleDif13=200;
   onlyTargetCategory13=NFLAG;
+  weaponMainDir13=1 0 0;
 
-  Weapon14=20mmOerlikonaa;
+  weapon14=20mmOerlikonaa;
   maxAngleDif14=200;
   onlyTargetCategory14=NFLAG;
+  weaponMainDir14=-1 0 0;
 
-  Weapon15=20mmOerlikonaa;
+  weapon15=20mmOerlikonaa;
   maxAngleDif15=270;
   onlyTargetCategory15=NFLAG;
+  weaponMainDir15=0 0 -1;
 
-  Weapon16=20mmOerlikonaa;
+  weapon16=20mmOerlikonaa;
   maxAngleDif16=270;
   onlyTargetCategory16=NFLAG;
+  weaponMainDir16=0 0 -1;
 
-  Weapon17=20mmOerlikonaa;
+  weapon17=20mmOerlikonaa;
   maxAngleDif17=270;
   onlyTargetCategory17=NFLAG;
+  weaponMainDir17=0 0 -1;
 
-  Weapon18=mk14_533mmtorpedo;
+  weapon18=mk14_533mmtorpedo;
   maxAngleDif18=270;
   onlyTargetCategory18=LARGESHIP;
+  weaponMainDir18=0 0 1;
 
-  Weapon19=mk14_533mmtorpedo;
+  weapon19=mk14_533mmtorpedo;
   maxAngleDif19=270;
   onlyTargetCategory19=LARGESHIP;
+  weaponMainDir19=0 0 1;
 
-  Weapon1=5in38mk30;
+  weapon1=5in38mk30;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=5in38mk30;
+  weapon2=5in38mk30;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=5in38mk30;
+  weapon3=5in38mk30;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=5in38mk30;
+  weapon4=5in38mk30;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 -1;
 
-  Weapon5=5in38mk30;
+  weapon5=5in38mk30;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 -1;
 
-  Weapon6=twin_bofors40mmaa;
+  weapon6=twin_bofors40mmaa;
   maxAngleDif6=200;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=1 0 0;
 
-  Weapon7=twin_bofors40mmaa;
+  weapon7=twin_bofors40mmaa;
   maxAngleDif7=200;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=-1 0 0;
 
-  Weapon8=twin_bofors40mmaa;
+  weapon8=twin_bofors40mmaa;
   maxAngleDif8=200;
   onlyTargetCategory8=NFLAG;
+  weaponMainDir8=1 0 0;
 
-  Weapon9=twin_bofors40mmaa;
+  weapon9=twin_bofors40mmaa;
   maxAngleDif9=200;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=-1 0 0;
 }
 

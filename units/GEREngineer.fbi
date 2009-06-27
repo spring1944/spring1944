@@ -10,7 +10,7 @@
   builder=1;
   buildTime=130;
   canMove=1;
-  category=NFLAG INFTARG NFLAGNAIR;
+  category=INFANTRY;
   corpse=GERSoldier_dead;
   [customParams] {
     defaultMove=1;

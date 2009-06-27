@@ -10,7 +10,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
   buildTime=480;
-  category=NFLAGNAIR NOWEAPON  BUILDING NFLAG;
+  category=BUILDING;
   corpse=Debris_Small;
   [customParams] {
     ammoSupplier=1;

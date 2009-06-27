@@ -9,7 +9,7 @@
   buildPic=RUSZiS3.png;
   buildTime=360;
   canMove=1;
-  category=NFLAGNAIR TANK INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=RUSZiS5_Destroyed;
   [customParams] {
     lowammolevel=1;

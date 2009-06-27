@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   collisionVolumeOffsets=0.0 -60.0 0.0;
   collisionVolumeScales=120.0 180.0 600.0;
   collisionVolumeType=box;
@@ -43,105 +43,105 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir10=-1 0 1;
-  WeaponMainDir11=1 0 1;
-  WeaponMainDir12=-1 0 1;
-  WeaponMainDir13=1 0 1;
-  WeaponMainDir14=-1 0 1;
-  WeaponMainDir15=1 0 1;
-  WeaponMainDir16=-1 0 1;
-  WeaponMainDir17=1 0 1;
-  WeaponMainDir18=-1 0 1;
-  WeaponMainDir19=1 0 1;
-  WeaponMainDir2=1 0 0;
-  WeaponMainDir20=-1 0 1;
-  WeaponMainDir3=-1 0 0;
-  WeaponMainDir4=1 0 0;
-  WeaponMainDir5=-1 0 0;
-  WeaponMainDir6=0 0 -1;
-  WeaponMainDir7=1 0 1;
-  WeaponMainDir8=-1 0 1;
-  WeaponMainDir9=1 0 1;
 
-  Weapon10=twin_20mmOerlikonaa;
+  weapon10=twin_20mmOerlikonaa;
   maxAngleDif10=270;
   onlyTargetCategory10=NFLAG;
+  weaponMainDir10=-1 0 1;
 
-  Weapon11=twin_20mmOerlikonaa;
+  weapon11=twin_20mmOerlikonaa;
   maxAngleDif11=270;
   onlyTargetCategory11=NFLAG;
+  weaponMainDir11=1 0 1;
 
-  Weapon12=twin_20mmOerlikonaa;
+  weapon12=twin_20mmOerlikonaa;
   maxAngleDif12=270;
   onlyTargetCategory12=NFLAG;
+  weaponMainDir12=-1 0 1;
 
-  Weapon13=twin_20mmOerlikonaa;
+  weapon13=twin_20mmOerlikonaa;
   maxAngleDif13=270;
   onlyTargetCategory13=NFLAG;
+  weaponMainDir13=1 0 1;
 
-  Weapon14=twin_20mmOerlikonaa;
+  weapon14=twin_20mmOerlikonaa;
   maxAngleDif14=270;
   onlyTargetCategory14=NFLAG;
+  weaponMainDir14=-1 0 1;
 
-  Weapon15=twin_20mmOerlikonaa;
+  weapon15=twin_20mmOerlikonaa;
   maxAngleDif15=270;
   onlyTargetCategory15=NFLAG;
+  weaponMainDir15=1 0 1;
 
-  Weapon16=twin_20mmOerlikonaa;
+  weapon16=twin_20mmOerlikonaa;
   maxAngleDif16=270;
   onlyTargetCategory16=NFLAG;
+  weaponMainDir16=-1 0 1;
 
-  Weapon17=20mmOerlikonaa;
+  weapon17=20mmOerlikonaa;
   maxAngleDif17=270;
   onlyTargetCategory17=NFLAG;
+  weaponMainDir17=1 0 1;
 
-  Weapon18=20mmOerlikonaa;
+  weapon18=20mmOerlikonaa;
   maxAngleDif18=270;
   onlyTargetCategory18=NFLAG;
+  weaponMainDir18=-1 0 1;
 
-  Weapon19=20mmOerlikonaa;
+  weapon19=20mmOerlikonaa;
   maxAngleDif19=270;
   onlyTargetCategory19=NFLAG;
+  weaponMainDir19=1 0 1;
 
-  Weapon1=gbr15inch42mki;
+  weapon1=gbr15inch42mki;
   maxAngleDif1=200;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon20=20mmOerlikonaa;
+  weapon20=20mmOerlikonaa;
   maxAngleDif20=270;
   onlyTargetCategory20=NFLAG;
+  weaponMainDir20=-1 0 1;
 
-  Weapon2=gbr4inch45mkxvi;
+  weapon2=gbr4inch45mkxvi;
   maxAngleDif2=200;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=1 0 0;
 
-  Weapon3=gbr4inch45mkxvi;
+  weapon3=gbr4inch45mkxvi;
   maxAngleDif3=200;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=-1 0 0;
 
-  Weapon4=gbr4inch45mkxvi;
+  weapon4=gbr4inch45mkxvi;
   maxAngleDif4=200;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=1 0 0;
 
-  Weapon5=gbr4inch45mkxvi;
+  weapon5=gbr4inch45mkxvi;
   maxAngleDif5=200;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=-1 0 0;
 
-  Weapon6=octpompom;
+  weapon6=octpompom;
   maxAngleDif6=240;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=0 0 -1;
 
-  Weapon7=quadpompom;
+  weapon7=quadpompom;
   maxAngleDif7=270;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=1 0 1;
 
-  Weapon8=quadpompom;
+  weapon8=quadpompom;
   maxAngleDif8=270;
   onlyTargetCategory8=NFLAG;
+  weaponMainDir8=-1 0 1;
 
-  Weapon9=twin_20mmOerlikonaa;
+  weapon9=twin_20mmOerlikonaa;
   maxAngleDif9=270;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=1 0 1;
 }
 

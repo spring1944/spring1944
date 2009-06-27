@@ -9,7 +9,7 @@
   buildCostMetal=150;
   buildTime=500;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON;
+  category=SHIP;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
   footprintX=10;
@@ -42,17 +42,16 @@
   TEDClass=SHIP;
   turnRate=60;
   waterline=2.5;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
-  weaponmaindir4=0 0 -1;
 
   weapon1=F3476mmHE;
   maxAngleDif1=250;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=M2Browning;
   maxAngleDif2=300;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 
   weapon3=M2Browning;
   onlyTargetCategory3=NFLAGNAIR;
@@ -60,5 +59,6 @@
   weapon4=M2Browning;
   maxAngleDif4=250;
   onlyTargetCategory4=NFLAGNAIR;
+  weaponMainDir4=0 0 -1;
 }
 

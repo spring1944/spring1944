@@ -14,7 +14,7 @@
   buildTime=80000;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR COMMANDER PLANT NFLAG BUILDING BUNKER;
+  category=BUILDING;
   collisionVolumeType=ellipsoid;
   commander=1;
   corpse=GERHQBunker_Destroyed;
@@ -54,17 +54,17 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 -1;
-  weaponmaindir6=1 0 1;
   workerTime=10; //old 595000
   yardMap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
 
   weapon1=MG34;
   maxAngleDif1=360;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 -1;
   onlyTargetCategory5=NFLAGNAIR;
 
   weapon6=M2Flamethrower;
   maxAngleDif6=80;
+  weaponMainDir6=1 0 1;
 }
 

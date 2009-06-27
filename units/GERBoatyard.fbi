@@ -13,7 +13,7 @@
   buildTime=3630;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+  category=BUILDING;
   corpse=GERBoatyard_dead;
   [customParams] {
     ammoSupplier=1;

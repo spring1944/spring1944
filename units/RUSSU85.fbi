@@ -9,7 +9,7 @@
   buildCostMetal=3200;
   buildTime=640;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   corpse=RUSSU85_Damaged;
   [customParams] {
     armor_front=78;
@@ -63,11 +63,11 @@
   turninplace=0;
   turnRate=250;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=S5385mmAP;
   maxAngleDif1=25;
   onlyTargetCategory1=TANK;
+  weaponMainDir1=0 0 1;
 
   weapon2=.50calproof;
 }

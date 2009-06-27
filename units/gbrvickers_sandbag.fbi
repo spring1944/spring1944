@@ -11,7 +11,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=GBRSandbagMG.png;
   buildTime=430;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=SandbagMG_Destroyed;
   [customParams] {
     feartarget=1;
@@ -43,12 +43,12 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG LIGHTVEH;
-  weaponmaindir1=0 0 1;
   yardMap=o;
 
   weapon1=Vickers;
   maxAngleDif1=120;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 
   weapon2=Small_Tracer;
 }

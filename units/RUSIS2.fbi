@@ -9,7 +9,7 @@
   buildCostMetal=9900;
   buildTime=1320;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   corpse=RUSIS2_Damaged;
   [customParams] {
     armor_front=119;

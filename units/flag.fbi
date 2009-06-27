@@ -7,7 +7,7 @@
   buildCostMetal=1;
   buildTime=150;
   canSelfDestruct=0;
-  category=metal FLAG NOWEAPON;
+  category=FLAG;
   [customParams] {
     dontCount=1;
     flag=1;

@@ -10,7 +10,7 @@
   buildTime=2500;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR NFLAG WEAPON SUB;
+  category=SUB;
   corpse=GERSeehund_dead;
   [customParams] {
     dontCount=1;
@@ -40,15 +40,15 @@
   turninplace=0;
   turnRate=35;
   waterline=20;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
 
-  Weapon1=g7a533mmtorpedo;
+  weapon1=g7a533mmtorpedo;
   maxAngleDif1=60;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=g7a533mmtorpedo;
+  weapon2=g7a533mmtorpedo;
   maxAngleDif2=60;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 }
 

@@ -12,7 +12,7 @@
   buildTime=8100;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT BUILDING;
+  category=BUILDING;
   collisionVolumeType=ellipsoid;
   [customParams] {
     ammoSupplier=1;

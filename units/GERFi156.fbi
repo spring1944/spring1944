@@ -18,7 +18,7 @@
   canMove=1;
   canPatrol=1;
   CanStop=1;
-  category=NFLAG AIR;
+  category=AIR;
   cruiseAlt=480;
   [customParams] {
     dontCount=1;
@@ -63,13 +63,13 @@
   TEDClass=VTOL;
   turnRate=50;
   badTargetCategory=AIR;
-  weaponmaindir1=0 .75 -1;
   wingAngle=0.1;
   wingDrag=0.1;
 
   weapon1=mg42aa;
   maxAngleDif1=90;
   onlyTargetCategory1=AIR;
+  weaponMainDir1=0 .75 -1;
 
   weapon2=Small_Tracer;
 }

@@ -10,7 +10,7 @@
   buildPic=GBRLCG.png;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=GBRLCG_dead;
   [customParams] {
     dontCount=1;
@@ -53,27 +53,27 @@
   transportSize=54;
   turninplace=0;
   turnRate=42.5;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=1 0 0;
-  WeaponMainDir4=-1 0 0;
 
-  Weapon1=gbr4_7inchmkix;
+  weapon1=gbr4_7inchmkix;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=gbr4_7inchmkix;
+  weapon2=gbr4_7inchmkix;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=20mmOerlikonaa; //oerlikon20mm;
+  weapon3=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif3=240;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=1 0 0;
 
-  Weapon4=20mmOerlikonaa; //oerlikon20mm;
+  weapon4=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif4=240;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=-1 0 0;
 
-  Weapon5=Large_Tracer;
+  weapon5=Large_Tracer;
 }
 

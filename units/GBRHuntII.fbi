@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=GBRHuntII_dead;
   [customParams] {
     dontCount=1;
@@ -40,35 +40,35 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 -1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=0 0 -1;
-  WeaponMainDir5=1 0 0;
-  WeaponMainDir6=-1 0 0;
 
-  Weapon1=gbr4inch45mkxvi;
+  weapon1=gbr4inch45mkxvi;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=gbr4inch45mkxvi;
+  weapon2=gbr4inch45mkxvi;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 -1;
 
-  Weapon3=gbr4inch45mkxvi;
+  weapon3=gbr4inch45mkxvi;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=quadpompom;
+  weapon4=quadpompom;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 -1;
 
-  Weapon5=20mmOerlikonaa;
+  weapon5=20mmOerlikonaa;
   maxAngleDif5=200;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=1 0 0;
 
-  Weapon6=20mmOerlikonaa;
+  weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=-1 0 0;
 }
 

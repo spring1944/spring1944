@@ -10,7 +10,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=USPT103_dead;
   [customParams] {
     dontCount=1;
@@ -39,36 +39,36 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=55;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 1;
-  WeaponMainDir5=0 0 -1;
 
-  Weapon1=mk13torpedo;
+  weapon1=mk13torpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=mk13torpedo;
+  weapon2=mk13torpedo;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=mk13torpedo;
+  weapon3=mk13torpedo;
   maxAngleDif3=40;
   onlyTargetCategory3=LARGESHIP;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=mk13torpedo;
+  weapon4=mk13torpedo;
   maxAngleDif4=40;
   onlyTargetCategory4=LARGESHIP;
+  weaponMainDir4=0 0 1;
 
-  Weapon5=20mmOerlikonaa;
+  weapon5=20mmOerlikonaa;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 -1;
 
-  Weapon6=m2browningaa;
+  weapon6=m2browningaa;
   onlyTargetCategory6=NFLAG;
 
-  Weapon7=m2browningaa;
+  weapon7=m2browningaa;
   onlyTargetCategory7=NFLAG;
 }
 

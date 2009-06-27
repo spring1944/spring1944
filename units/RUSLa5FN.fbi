@@ -17,7 +17,7 @@
   canMove=1;
   canPatrol=1;
   CanStop=1;
-  category=NFLAG AIR;
+  category=AIR;
   cruiseAlt=1000;
   [customParams] {
     enginesound=yakb-;
@@ -65,19 +65,19 @@
   turnRadius=2000;
   turnRate=50;
   badTargetCategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
-  weaponslaveto2=1;
   wingAngle=0.1;
   wingDrag=0.1;
 
   weapon1=ShVAK20mm;
   maxAngleDif1=10;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 
   weapon2=ShVAK20mm;
   maxAngleDif2=10;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
+  weaponSlaveTo2=1;
 
   weapon3=Large_Tracer_Green;
 }

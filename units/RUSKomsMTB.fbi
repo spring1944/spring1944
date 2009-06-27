@@ -10,7 +10,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=RUSKomsMTB_dead;
   [customParams] {
     dontCount=1;
@@ -47,27 +47,27 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=50;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=0 0 -1;
 
-  Weapon1=533mmtorpedo;
+  weapon1=533mmtorpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=533mmtorpedo;
+  weapon2=533mmtorpedo;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=twin_dshk;
+  weapon3=twin_dshk;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=twin_dshk;
+  weapon4=twin_dshk;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 -1;
 
-  Weapon5=Medium_Tracer;
+  weapon5=Medium_Tracer;
 }
 

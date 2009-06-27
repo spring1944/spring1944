@@ -9,7 +9,7 @@
   buildCostMetal=1350;
   buildTime=450;
   canMove=1;
-  category=TANK TPORT NFLAG INFTARG NFLAGNAIR WEAPON;
+  category=UNARMOURED;
   corpse=RUSGAZAAA_Destroyed;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -51,21 +51,21 @@
   turninplace=0;
   turnRate=400;
   badTargetCategory=FLAG;
-  weaponslaveto2=1;
-  weaponslaveto3=1;
-  weaponslaveto4=1;
 
   weapon1=MaximAA;
   onlyTargetCategory1=AIR;
 
   weapon2=MaximAA;
   onlyTargetCategory2=AIR;
+  weaponSlaveTo2=1;
 
   weapon3=MaximAA;
   onlyTargetCategory3=AIR;
+  weaponSlaveTo3=1;
 
   weapon4=MaximAA;
   onlyTargetCategory4=AIR;
+  weaponSlaveTo4=1;
 
   weapon5=Small_Tracer_Green;
   onlyTargetCategory5=AIR;

@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=160;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=gersoldier_dead;
@@ -54,12 +54,12 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG;
-  weaponslaveto2=1;
 
   weapon1=Panzerfaust;
   onlyTargetCategory1=NFLAGNAIR;
 
   weapon2=panzerfaustfear;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponSlaveTo2=1;
 }
 

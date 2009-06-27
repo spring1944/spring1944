@@ -9,7 +9,7 @@
   buildCostMetal=5340;
   buildTime=715;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK;
+  category=ARMOURED;
   corpse=RUSISU152_Damaged;
   [customParams] {
     armor_front=93;
@@ -67,16 +67,16 @@
   turninplace=0;
   turnRate=100;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
 
   weapon1=ML20S152mmHE;
   maxAngleDif1=25;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=ML20S152mmAP;
   maxAngleDif2=25;
   onlyTargetCategory2=TANK;
+  weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;
 }

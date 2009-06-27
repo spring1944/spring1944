@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=GBRLCA_dead;
   [customParams] {
     dontCount=1;
@@ -43,15 +43,15 @@
   transportSize=1;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=0 0 1;
-  WeaponSlaveTo2=1;
 
-  Weapon1=bren;
+  weapon1=bren;
   maxAngleDif1=270;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=BrenFear;
+  weapon2=BrenFear;
+  weaponSlaveTo2=1;
 
-  Weapon3=Small_Tracer;
+  weapon3=Small_Tracer;
 }
 

@@ -9,7 +9,7 @@
   buildCostMetal=3300;
   buildTime=660;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=GBRM10Achilles_Destroyed;
   [customParams] {
     armor_front=62;

@@ -11,7 +11,7 @@
   buildTime=130;
   canAttack=0;
   canMove=1;
-  category=NOWEAPON NFLAG INFTARG NFLAGNAIR;
+  category=INFANTRY;
   corpse=gbrsoldier_dead;
   [customParams] {
     feartarget=1;

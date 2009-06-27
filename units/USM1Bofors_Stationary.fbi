@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=2;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1000;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=USM1Bofors_Destroyed;
   [customParams] {
     feartarget=1;

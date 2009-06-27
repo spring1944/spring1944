@@ -9,7 +9,7 @@
   buildCostMetal=6940;
   buildTime=925;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  category=ARMOURED;
   corpse=GERPanther_Damaged;
   [customParams] {
     armor_front=113;

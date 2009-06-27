@@ -9,7 +9,7 @@
   buildCostMetal=2250;
   buildTime=300;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=USM10Wolverine_Destroyed;
   [customParams] {
     armor_front=62;

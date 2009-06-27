@@ -7,7 +7,7 @@
   buildingGroundDecalSizeY=2;
   buildingGroundDecalType=MineDirt.dds;
   buildTime=1;
-  category=MINE WEAPON KAMIKAZE;
+  category=MINE;
   cloakCost=0;
   [customParams] {
     dontCount=1;

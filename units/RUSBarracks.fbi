@@ -12,7 +12,7 @@
   buildTime=1090;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
+  category=BUILDING;
   collisionVolumeType=ellipsoid;
   [customParams] {
     ammoSupplier=1;

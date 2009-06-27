@@ -9,7 +9,7 @@
   buildCostMetal=711;
   buildTime=237;
   canMove=1;
-  category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+  category=OPEN;
   corpse=GERKarl_Dead;
   [customParams] {
     dontCount=1;
@@ -45,10 +45,10 @@
   trackWidth=15;
   turninplace=0;
   turnRate=50;
-  WeaponMainDir1=0 0 1;
 
-  Weapon1=GERKarlGeraet;
+  weapon1=GERKarlGeraet;
   maxAngleDif1=10;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

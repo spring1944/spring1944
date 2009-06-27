@@ -9,7 +9,7 @@
   buildCostMetal=3000;
   buildTime=400;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  category=ARMOURED;
   corpse=GERPanzerIV_Damaged;
   [customParams] {
     armor_front=65;

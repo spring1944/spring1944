@@ -10,7 +10,7 @@
   buildCostMetal=4800;
   buildTime=640;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=GBRShermanFirefly_Damaged;
   [customParams] {
     armor_front=74;

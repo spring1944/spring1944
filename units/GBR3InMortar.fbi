@@ -9,7 +9,7 @@
   buildCostMetal=300;
   buildTime=400;
   canMove=1;
-  category=INFTARG NFLAGNAIR NOTAIR NFLAG WEAPON;
+  category=INFANTRY;
   corpse=gbrsoldier_dead;
   [customParams] {
     feartarget=1;

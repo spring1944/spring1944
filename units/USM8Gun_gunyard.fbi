@@ -10,7 +10,7 @@
   buildPic=USM8Gun.png;
   buildTime=260;
   canMove=1;
-  category=INFTARG NFLAGNAIR NAIR NFLAG;
+  category=INFANTRY;
   corpse=USM8Gun_Destroyed;
   [customParams] {
     feartarget=1;
@@ -55,10 +55,10 @@
   turnRate=120;
   upright=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=M875mmHE;
   maxAngleDif1=25;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

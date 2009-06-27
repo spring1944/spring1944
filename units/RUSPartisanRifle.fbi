@@ -9,7 +9,7 @@
   buildCostMetal=15;
   buildTime=70;
   canMove=1;
-  category=NFLAGNAIR INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   [customParams] {
@@ -54,15 +54,15 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
 
   weapon1=PartisanMosinNagant;
   maxAngleDif1=170;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 
   weapon2=molotov;
   maxAngleDif2=180;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 }
 

@@ -7,7 +7,7 @@
   buildCostMetal=5138;
   buildPic=GERRadar.png;
   buildTime=3425;
-  category=NFLAGNAIR PLANT BUILDING;
+  category=BUILDING;
   [customParams] {
   }
   energyUse=0;

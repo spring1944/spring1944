@@ -10,7 +10,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsLarge.png;
   buildTime=1350;
-  category=NOWEAPON  BUILDING NFLAG NFLAGNAIR;
+  category=BUILDING;
   corpse=Debris_Large;
   [customParams] {
     dontCount=1;

@@ -9,7 +9,7 @@
   buildCostMetal=4875;
   buildTime=975;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG LIGHTVEH;
+  category=UNARMOURED;
   corpse=RUSBM13N_Destroyed;
   [customParams] {
     defaultMove=1;
@@ -61,10 +61,10 @@
   turninplace=0;
   turnRate=300;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=M13132mm;
   maxAngleDif1=25;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 }
 

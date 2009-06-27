@@ -12,7 +12,7 @@
   buildTime=3655;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT NOWEAPON BUILDING;
+  category=BUILDING;
   collisionVolumeType=ellipsoid;
   corpse=USVehicleYard_Destroyed;
   [customParams] {

@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=GERFlottenTorpBoot_dead;
   [customParams] {
     dontCount=1;
@@ -40,75 +40,75 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir10=1 0 0;
-  WeaponMainDir11=-1 0 0;
-  WeaponMainDir12=0 0 -1;
-  WeaponMainDir13=0 0 1;
-  WeaponMainDir14=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=0 0 -1;
-  WeaponMainDir5=1 0 0;
-  WeaponMainDir6=-1 0 0;
-  WeaponMainDir7=0 0 1;
-  WeaponMainDir8=1 0 0;
-  WeaponMainDir9=-1 0 0;
 
-  Weapon10=20mmc38;
+  weapon10=20mmc38;
   maxAngleDif10=200;
   onlyTargetCategory10=NFLAG;
+  weaponMainDir10=1 0 0;
 
-  Weapon11=20mmc38;
+  weapon11=20mmc38;
   maxAngleDif11=200;
   onlyTargetCategory11=NFLAG;
+  weaponMainDir11=-1 0 0;
 
-  Weapon12=flak3820mmaa;
+  weapon12=flak3820mmaa;
   maxAngleDif12=270;
   onlyTargetCategory12=NFLAG;
+  weaponMainDir12=0 0 -1;
 
-  Weapon13=triple_g7a533mmtorpedo;
+  weapon13=triple_g7a533mmtorpedo;
   maxAngleDif13=270;
   onlyTargetCategory13=LARGESHIP;
+  weaponMainDir13=0 0 1;
 
-  Weapon14=triple_g7a533mmtorpedo;
+  weapon14=triple_g7a533mmtorpedo;
   maxAngleDif14=270;
   onlyTargetCategory14=LARGESHIP;
+  weaponMainDir14=0 0 1;
 
-  Weapon1=105mmC32;
+  weapon1=105mmC32;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=105mmC32;
+  weapon2=105mmC32;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=105mmC32;
+  weapon3=105mmC32;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAGNAIR;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=105mmC32;
+  weapon4=105mmC32;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAGNAIR;
+  weaponMainDir4=0 0 -1;
 
-  Weapon5=37mmC30aa;
+  weapon5=37mmC30aa;
   maxAngleDif5=200;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=1 0 0;
 
-  Weapon6=37mmC30aa;
+  weapon6=37mmC30aa;
   maxAngleDif6=200;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=-1 0 0;
 
-  Weapon7=20mmc38;
+  weapon7=20mmc38;
   maxAngleDif7=270;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=0 0 1;
 
-  Weapon8=20mmc38;
+  weapon8=20mmc38;
   maxAngleDif8=200;
   onlyTargetCategory8=NFLAG;
+  weaponMainDir8=1 0 0;
 
-  Weapon9=20mmc38;
+  weapon9=20mmc38;
   maxAngleDif9=200;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=-1 0 0;
 }
 

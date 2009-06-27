@@ -14,7 +14,7 @@
   buildTime=8500;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT NOWEAPON COMMANDER NFLAG BUILDING;
+  category=BUILDING;
   collisionVolumeType=ellipsoid;
   commander=1;
   corpse=GBRHQ_Destroyed;

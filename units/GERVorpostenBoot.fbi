@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=GERVorpostenBoot_dead;
   [customParams] {
     dontCount=1;
@@ -40,40 +40,40 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=1 0 1;
-  WeaponMainDir5=-1 0 1;
-  WeaponMainDir6=0 0 -1;
-  WeaponMainDir7=0 0 -1;
 
-  Weapon1=88mmskc30;
+  weapon1=88mmskc30;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=37mmflak43;
+  weapon2=37mmflak43;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=37mmflak43;
+  weapon3=37mmflak43;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=20mmc38;
+  weapon4=20mmc38;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=1 0 1;
 
-  Weapon5=20mmc38;
+  weapon5=20mmc38;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=-1 0 1;
 
-  Weapon6=20mmc38;
+  weapon6=20mmc38;
   maxAngleDif6=270;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=0 0 -1;
 
-  Weapon7=20mmc38;
+  weapon7=20mmc38;
   maxAngleDif7=270;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=0 0 -1;
 }
 

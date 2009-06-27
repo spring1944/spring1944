@@ -9,7 +9,7 @@
   buildCostMetal=2361;
   buildTime=472;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   [customParams] {
     armor_front=118;
     armor_rear=93;

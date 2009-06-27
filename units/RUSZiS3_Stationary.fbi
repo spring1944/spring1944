@@ -11,7 +11,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUSZiS3_Stationary.png;
   buildTime=3500;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=RUSZiS3_Destroyed;
   [customParams] {
     canareaattack=1;
@@ -54,16 +54,16 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
   yardMap=o;
 
   weapon1=ZiS376mmHE;
   maxAngleDif1=60;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
   maxAngleDif2=50;
   onlyTargetCategory2=TANK;
+  weaponMainDir2=0 0 1;
 }
 

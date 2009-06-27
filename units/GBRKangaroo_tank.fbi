@@ -10,7 +10,7 @@
   buildPic=GBRKangaroo.png;
   buildTime=140;
   canMove=1;
-  category=TANK TPORT INFTARG NFLAGNAIR WEAPON;
+  category=ARMOURED;
   corpse=GBRKangaroo_Destroyed;
   [customParams] {
     armor_front=65;

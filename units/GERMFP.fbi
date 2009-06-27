@@ -10,7 +10,7 @@
   buildPic=germfp.png;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT TANK NFLAG WEAPON;
+  category=SHIP;
   corpse=GERMFP_dead;
   [customParams] {
     dontCount=1;
@@ -53,22 +53,22 @@
   transportSize=18;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 -1;
-  WeaponMainDir5=0 0 -1;
 
-  Weapon1=88mmskc30;
+  weapon1=88mmskc30;
   maxAngleDif1=270;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=37mmflak43;
+  weapon2=37mmflak43;
   maxAngleDif2=270;
+  weaponMainDir2=0 0 -1;
 
-  Weapon3=20mmc38;
+  weapon3=20mmc38;
 
-  Weapon4=20mmc38;
+  weapon4=20mmc38;
 
-  Weapon5=20mmc38;
+  weapon5=20mmc38;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 -1;
 }
 

@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=GBROClass_dead;
   [customParams] {
     dontCount=1;
@@ -40,60 +40,60 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir10=-1 0 0;
-  WeaponMainDir11=0 0 -1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=0 0 -1;
-  WeaponMainDir5=0 0 1;
-  WeaponMainDir6=0 0 -1;
-  WeaponMainDir7=1 0 0;
-  WeaponMainDir8=-1 0 0;
-  WeaponMainDir9=1 0 0;
 
-  Weapon10=20mmOerlikonaa;
+  weapon10=20mmOerlikonaa;
   maxAngleDif10=200;
   onlyTargetCategory10=NFLAG;
+  weaponMainDir10=-1 0 0;
 
-  Weapon11=quad_gbr21inchtorpedo;
+  weapon11=quad_gbr21inchtorpedo;
   maxAngleDif11=300;
   onlyTargetCategory11=LARGESHIP;
+  weaponMainDir11=0 0 -1;
 
-  Weapon1=gbr4_7inchmkix;
+  weapon1=gbr4_7inchmkix;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=gbr4_7inchmkix;
+  weapon2=gbr4_7inchmkix;
   maxAngleDif2=270;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=gbr4_7inchmkix;
+  weapon3=gbr4_7inchmkix;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAGNAIR;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=gbr4_7inchmkix;
+  weapon4=gbr4_7inchmkix;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAGNAIR;
+  weaponMainDir4=0 0 -1;
 
-  Weapon5=gbr4inchmkv;
+  weapon5=gbr4inchmkv;
   maxAngleDif5=300;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 1;
 
-  Weapon6=quadpompom;
+  weapon6=quadpompom;
   maxAngleDif6=300;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=0 0 -1;
 
-  Weapon7=20mmOerlikonaa;
+  weapon7=20mmOerlikonaa;
   maxAngleDif7=200;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=1 0 0;
 
-  Weapon8=20mmOerlikonaa;
+  weapon8=20mmOerlikonaa;
   maxAngleDif8=200;
   onlyTargetCategory8=NFLAG;
+  weaponMainDir8=-1 0 0;
 
-  Weapon9=20mmOerlikonaa;
+  weapon9=20mmOerlikonaa;
   maxAngleDif9=200;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=1 0 0;
 }
 

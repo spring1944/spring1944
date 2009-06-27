@@ -10,7 +10,7 @@
   buildCostMetal=100;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG NWEAPON;
+  category=SHIP;
   corpse=target_dead;
   [customParams] {
     dontCount=1;

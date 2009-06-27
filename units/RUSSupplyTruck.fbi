@@ -9,7 +9,7 @@
   buildPic=RUSZiS5.png;
   buildTime=220;
   canMove=1;
-  category=NFLAGNAIR TANK TPORT INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=RUSZiS5_Destroyed;
   [customParams] {
     dontCount=1;

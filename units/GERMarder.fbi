@@ -9,7 +9,7 @@
   buildCostMetal=2100;
   buildTime=700;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK INFTARG LIGHTVEH;
+  category=OPEN;
   corpse=GERMarder_Destroyed;
   [customParams] {
     armor_front=11;
@@ -63,10 +63,10 @@
   turninplace=0;
   turnRate=230;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=KwK75mmL48AP;
   maxAngleDif1=15;
   onlyTargetCategory1=TANK;
+  weaponMainDir1=0 0 1;
 }
 

@@ -10,7 +10,7 @@
   buildCostMetal=4200;
   buildTime=840;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=OPEN;
   corpse=GERWespe_Destroyed;
   [customParams] {
     armor_front=21;
@@ -69,12 +69,12 @@
   turninplace=0;
   turnRate=280;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=leFH18HE;
   badTargetCategory1=TANK;
   maxAngleDif1=25;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=MG42;
   onlyTargetCategory2=AIR;

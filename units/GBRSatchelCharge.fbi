@@ -5,7 +5,7 @@
   buildCostEnergy=0;
   buildCostMetal=1;
   buildTime=50;
-  category=MINE WEAPON KAMIKAZE;
+  category=BUILDING;
   [customParams] {
     dontCount=1;
     isMine=1;

@@ -10,7 +10,7 @@
   buildCostMetal=6410;
   buildTime=855;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=GBRChurchillMkVII_Damaged;
   [customParams] {
     armor_front=148;

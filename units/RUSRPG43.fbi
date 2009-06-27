@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=150;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=RUSSoldier_dead;
@@ -53,10 +53,10 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG INFTARG;
-  weaponmaindir1=0 0 1;
 
   weapon1=RPG43;
   maxAngleDif1=170;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

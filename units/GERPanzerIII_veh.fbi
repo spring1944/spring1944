@@ -10,7 +10,7 @@
   buildPic=GERPanzerIII.png;
   buildTime=800;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  category=ARMOURED;
   corpse=GERPanzerIII_Damaged;
   [customParams] {
     armor_front=63;

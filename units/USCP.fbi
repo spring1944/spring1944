@@ -12,7 +12,7 @@
   buildTime=8500;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT NOWEAPON  NFLAG BUILDING;
+  category=BUILDING;
   commander=1;
   corpse=Debris_Large;
   [customParams] {

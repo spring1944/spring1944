@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1000;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=GERNebelwerfer_Destroyed;
   [customParams] {
     defaultMove=1;
@@ -54,11 +54,11 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
   yardMap=o;
 
   weapon1=Nebelwerfer41;
   maxAngleDif1=30;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

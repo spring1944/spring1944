@@ -9,7 +9,7 @@
   buildPic=GEROpelBlitz.png;
   buildTime=220;
   canMove=1;
-  category=NFLAGNAIR TPORT LIGHTVEH INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=GEROpelBlitz_Destroyed;
   [customParams] {
     dontCount=1;

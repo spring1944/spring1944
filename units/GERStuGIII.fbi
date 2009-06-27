@@ -9,7 +9,7 @@
   buildCostMetal=2850;
   buildTime=380;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NOTSUB CTRL_G;
+  category=ARMOURED;
   corpse=GERStuGIII_Damaged;
   [customParams] {
     armor_front=83;
@@ -65,16 +65,16 @@
   turninplace=0;
   turnRate=175;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
 
   weapon1=KwK75mmL48HE;
   maxAngleDif1=15;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 
   weapon2=KwK75mmL48AP;
   maxAngleDif2=15;
   onlyTargetCategory2=TANK;
+  weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;
 }

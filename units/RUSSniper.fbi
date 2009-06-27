@@ -9,7 +9,7 @@
   buildCostMetal=300;
   buildTime=130;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=RUSsoldier_dead;
@@ -56,11 +56,11 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG LIGHTVEH BUILDING PLANT;
-  weaponmaindir1=0 0 1;
 
   weapon1=MosinNagantPU;
   badTargetCategory1=LIGHTVEH;
   maxAngleDif1=170;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 }
 

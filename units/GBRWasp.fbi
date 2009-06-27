@@ -9,7 +9,7 @@
   buildCostMetal=1500;
   buildTime=500;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON LIGHTVEH;
+  category=OPEN;
   corpse=GBRWasp_Destroyed;
   [customParams] {
     armor_front=10;
@@ -59,10 +59,10 @@
   turninplace=0;
   turnRate=405;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=waspflamethrower;
   maxAngleDif1=15;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

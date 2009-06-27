@@ -12,7 +12,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON LARGESHIP;
+  category=SHIP;
   corpse=USLCSL_dead;
   [customParams] {
     dontCount=1;
@@ -41,40 +41,40 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=25;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 0;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=1 0 0;
-  WeaponMainDir5=-1 0 0;
-  WeaponMainDir6=1 0 0;
-  WeaponMainDir7=-1 0 0;
 
-  Weapon1=3in50mk22;
+  weapon1=3in50mk22;
   maxAngleDif1=270;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=twin_bofors40mmaa;
+  weapon2=twin_bofors40mmaa;
   maxAngleDif2=200;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 0;
 
-  Weapon3=twin_bofors40mmaa;
+  weapon3=twin_bofors40mmaa;
   maxAngleDif3=200;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=20mmOerlikonaa;
+  weapon4=20mmOerlikonaa;
   maxAngleDif4=200;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=1 0 0;
 
-  Weapon5=20mmOerlikonaa;
+  weapon5=20mmOerlikonaa;
   maxAngleDif5=200;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=-1 0 0;
 
-  Weapon6=20mmOerlikonaa;
+  weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=1 0 0;
 
-  Weapon7=20mmOerlikonaa;
+  weapon7=20mmOerlikonaa;
   maxAngleDif7=200;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=-1 0 0;
 }
 

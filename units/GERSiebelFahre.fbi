@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=GERSiebelFahre_dead;
   [customParams] {
     dontCount=1;
@@ -42,20 +42,20 @@
   transportSize=18;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=-1 0 0;
-  WeaponMainDir2=1 0 0;
-  WeaponMainDir5=0 0 -1;
 
-  Weapon1=20mmc38;
+  weapon1=20mmc38;
   maxAngleDif1=320;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=-1 0 0;
 
-  Weapon2=20mmc38;
+  weapon2=20mmc38;
   maxAngleDif2=320;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=1 0 0;
 
-  Weapon3=20mmc38;
+  weapon3=20mmc38;
   onlyTargetCategory3=NFLAGNAIR;
   maxAngleDif5=270;
+  weaponMainDir5=0 0 -1;
 }
 

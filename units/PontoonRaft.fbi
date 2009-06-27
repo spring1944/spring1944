@@ -9,7 +9,7 @@
   buildCostMetal=150;
   buildTime=500;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+  category=SHIP;
   [customParams] {
     dontCount=1;
   }

@@ -9,7 +9,7 @@
   buildPic=GBRBedfordTruck.png;
   buildTime=220;
   canMove=1;
-  category=NFLAGNAIR TANK TPORT  INFTARG NFLAG NWEAPON;
+  category=UNARMOURED;
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     dontCount=1;

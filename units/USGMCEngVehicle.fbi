@@ -11,7 +11,7 @@
   buildTime=900;
   canAttack=0;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK  INFTARG LIGHTVEH;
+  category=UNARMOURED;
   corpse=USGMCEngVehicle_Destroyed;
   energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;

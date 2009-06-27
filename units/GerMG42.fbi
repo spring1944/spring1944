@@ -9,7 +9,7 @@
   buildCostMetal=250;
   buildTime=220;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   corpse=gersoldier_dead;
   [customParams] {
     feartarget=1;

@@ -10,7 +10,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
   buildTime=400;
-  category=BUILDING NFLAGNAIR;
+  category=BUILDING;
   cloakCost=1;
   corpse=Debris_Small;
   [customParams] {

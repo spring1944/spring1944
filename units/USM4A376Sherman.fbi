@@ -9,7 +9,7 @@
   buildCostMetal=3825;
   buildTime=510;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=USM4A376Sherman_Damaged;
   [customParams] {
     armor_front=74;

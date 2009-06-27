@@ -10,7 +10,7 @@
   buildTime=2500;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR NFLAG WEAPON SUB LARGESHIP;
+  category=SUB;
   corpse=RUSTypeM_dead;
   [customParams] {
     dontCount=1;
@@ -40,15 +40,15 @@
   turninplace=0;
   turnRate=35;
   waterline=60;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
 
-  Weapon1=533mmtorpedo; //450mmtorp;
+  weapon1=533mmtorpedo; //450mmtorp;
   maxAngleDif1=60;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=533mmtorpedo; //450mmtorp;
+  weapon2=533mmtorpedo; //450mmtorp;
   maxAngleDif2=60;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 }
 

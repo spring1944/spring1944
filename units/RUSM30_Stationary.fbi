@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=3500;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=RUSM30_Destroyed;
   [customParams] {
     canareaattack=1;
@@ -55,11 +55,11 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
   yardMap=o;
 
   weapon1=m30122mmhe;
   maxAngleDif1=30;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

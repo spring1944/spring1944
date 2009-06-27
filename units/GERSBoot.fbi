@@ -10,7 +10,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=GERSBoot_dead;
   [customParams] {
     dontCount=1;
@@ -49,24 +49,24 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=55;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 -1;
 
-  Weapon1=g7a533mmtorpedo;
+  weapon1=g7a533mmtorpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=g7a533mmtorpedo;
+  weapon2=g7a533mmtorpedo;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=20mmc38;
+  weapon3=20mmc38;
   maxAngleDif3=270;
   onlyTargetCategory3=NFLAGNAIR;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=20mmc38;
+  weapon4=20mmc38;
   onlyTargetCategory4=NFLAGNAIR;
+  weaponMainDir4=0 0 -1;
 }
 

@@ -16,7 +16,7 @@
   canMove=1;
   canPatrol=1;
   CanStop=1;
-  category=NFLAG AIR;
+  category=AIR;
   cruiseAlt=500;
   [customParams] {
     enginesound=p51b-;
@@ -63,22 +63,6 @@
   turnRadius=2200;
   turnRate=50;
   badTargetCategory=NOTAIR;
-  weaponmaindir1=0 -0.18 1;
-  weaponmaindir2=0 0 1;
-  weaponmaindir3=0 0 1;
-  weaponmaindir4=0 0 1;
-  weaponmaindir5=0 0 1;
-  weaponmaindir6=0 0 1;
-  weaponmaindir7=0 0 1;
-  weaponmaindir8=0 0 1;
-  weaponmaindir9=0 0 1;
-  weaponslaveto3=2;
-  weaponslaveto4=2;
-  weaponslaveto5=2;
-  weaponslaveto6=2;
-  weaponslaveto7=2;
-  weaponslaveto8=2;
-  weaponslaveto9=2;
   wingAngle=0.1;
   wingDrag=0.1;
 
@@ -87,37 +71,53 @@
   weapon1=bomb;
   maxAngleDif1=20;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 -0.18 1;
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 1;
+  weaponSlaveTo3=2;
 
   weapon4=m2browningamg;
   maxAngleDif4=10;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 1;
+  weaponSlaveTo4=2;
 
   weapon5=m2browningamg;
   maxAngleDif5=10;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 1;
+  weaponSlaveTo5=2;
 
   weapon6=m2browningamg;
   maxAngleDif6=10;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=0 0 1;
+  weaponSlaveTo6=2;
 
   weapon7=m2browningamg;
   maxAngleDif7=10;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=0 0 1;
+  weaponSlaveTo7=2;
 
   weapon8=m2browningamg;
   maxAngleDif8=10;
   onlyTargetCategory8=NFLAG;
+  weaponMainDir8=0 0 1;
+  weaponSlaveTo8=2;
 
   weapon9=m2browningamg;
   maxAngleDif9=10;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=0 0 1;
+  weaponSlaveTo9=2;
 }
 

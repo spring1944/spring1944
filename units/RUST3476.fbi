@@ -9,7 +9,7 @@
   buildCostMetal=2700;
   buildTime=360;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   corpse=RUST3476_Damaged;
   [customParams] {
     armor_front=73;

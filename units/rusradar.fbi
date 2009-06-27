@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=3425;
-  category=NFLAGNAIR PLANT BUILDING;
+  category=BUILDING;
   [customParams] {
   }
   energyUse=0;

@@ -9,7 +9,7 @@
   buildCostMetal=2700;
   buildTime=360;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   corpse=RUST28_Damaged;
   [customParams] {
     armor_front=22;
@@ -65,8 +65,6 @@
   turninplace=0;
   turnRate=250;
   badTargetCategory=FLAG;
-  weaponMainDir4=2 0 1;
-  weaponMainDir5=-2 0 1;
 
   weapon1=L1076mmHE;
   badTargetCategory1=TANK;
@@ -80,10 +78,12 @@
 
   weapon4=DT;
   maxAngleDif4=130;
+  weaponMainDir4=2 0 1;
 
   weapon5=DT;
   maxAngleDif5=130;
   onlyTargetCategory5=INFTARG;
+  weaponMainDir5=-2 0 1;
 
   weapon6=DT;
   onlyTargetCategory6=INFTARG;

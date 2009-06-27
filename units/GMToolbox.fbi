@@ -20,7 +20,7 @@
   canMove=1;
   canPatrol=1;
   CanStop=1;
-  category=NOTHING;
+  category=AIR;
   cloakCost=0;
   cloakCostMoving=0;
   commander=1;

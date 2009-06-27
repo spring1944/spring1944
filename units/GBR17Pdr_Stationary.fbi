@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1000;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=gbr17pdr_destroyed;
   [customParams] {
     feartarget=1;
@@ -52,11 +52,11 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
   yardMap=o;
 
   weapon1=17pdrap;
   maxAngleDif1=70;
   onlyTargetCategory1=TANK;
+  weaponMainDir1=0 0 1;
 }
 

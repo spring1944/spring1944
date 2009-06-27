@@ -10,7 +10,7 @@
   buildPic=uslct.png;
   buildTime=375;
   canMove=1;
-  category=NFLAGNAIR TPORT INFTARG NFLAG WEAPON;
+  category=SHIP;
   corpse=USLCT_dead;
   [customParams] {
     dontCount=1;
@@ -43,15 +43,15 @@
   transportSize=30;
   turninplace=0;
   turnRate=42.5;
-  WeaponMainDir1=1 0 0;
-  WeaponMainDir2=-1 0 0;
 
-  Weapon1=20mmOerlikonaa; //oerlikon20mm;
+  weapon1=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif1=240;
   onlyTargetCategory1=NFLAG;
+  weaponMainDir1=1 0 0;
 
-  Weapon2=20mmOerlikonaa; //oerlikon20mm;
+  weapon2=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif2=240;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=-1 0 0;
 }
 

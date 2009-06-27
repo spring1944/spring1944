@@ -12,7 +12,7 @@
   buildPic=SupplyDepot.png;
   buildTime=2400;
   canBeAssisted=0;
-  category=NFLAGNAIR BUILDING NFLAG;
+  category=BUILDING;
   corpse=BuildingDebris_Large;
   [customParams] {
     ammoSupplier=1;

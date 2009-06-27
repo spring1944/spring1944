@@ -9,7 +9,7 @@
   buildCostMetal=300;
   buildTime=185;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=gersoldier_dead;
@@ -55,11 +55,11 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG LIGHTVEH BUILDING PLANT;
-  weaponmaindir1=0 0 1;
 
   weapon1=K98kscope;
   badTargetCategory1=LIGHTVEH;
   maxAngleDif1=170;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 }
 

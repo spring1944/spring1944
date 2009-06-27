@@ -9,7 +9,7 @@
   buildCostMetal=25;
   buildTime=30;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   corpse=RUSSoldier_dead;
   [customParams] {
     feartarget=1;
@@ -48,16 +48,16 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
-  weaponmaindir2=0 0 1;
 
   weapon1=PPsh;
   badTargetCategory1=LIGHTVEH;
   maxAngleDif1=170;
   onlyTargetCategory1=INFTARG;
+  weaponMainDir1=0 0 1;
 
   weapon2=No69;
   maxAngleDif2=170;
   onlyTargetCategory2=NFLAGNAIR;
+  weaponMainDir2=0 0 1;
 }
 

@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON;
+  category=SHIP;
   corpse=RUSMonitor_dead;
   [customParams] {
     dontCount=1;
@@ -50,48 +50,48 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=0 -1 0;
-  WeaponMainDir2=0 0 1;
-  WeaponMainDir3=0 0 -1;
-  WeaponMainDir4=0 0 1;
-  WeaponMainDir5=0 0 -1;
-  WeaponMainDir6=0 0 -1;
-  WeaponMainDir7=0 0 -1;
-  WeaponMainDir9=0 0 -1;
 
-  Weapon1=mk_2_4;
+  weapon1=mk_2_4;
   maxAngleDif1=300;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 -1 0;
 
-  Weapon2=41k45mmhe;
+  weapon2=41k45mmhe;
   maxAngleDif2=300;
   onlyTargetCategory2=NFLAG;
+  weaponMainDir2=0 0 1;
 
-  Weapon3=40k45mmhe;
+  weapon3=40k45mmhe;
   maxAngleDif3=300;
   onlyTargetCategory3=NFLAG;
+  weaponMainDir3=0 0 -1;
 
-  Weapon4=dshk;
+  weapon4=dshk;
   maxAngleDif4=270;
   onlyTargetCategory4=NFLAG;
+  weaponMainDir4=0 0 1;
 
-  Weapon5=dshk;
+  weapon5=dshk;
   maxAngleDif5=300;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 -1;
 
-  Weapon6=61k37mmaa;
+  weapon6=61k37mmaa;
   maxAngleDif6=270;
   onlyTargetCategory6=NFLAG;
+  weaponMainDir6=0 0 -1;
 
-  Weapon7=61k37mmaa;
+  weapon7=61k37mmaa;
   maxAngleDif7=300;
   onlyTargetCategory7=NFLAG;
+  weaponMainDir7=0 0 -1;
 
-  Weapon8=dshk;
+  weapon8=dshk;
   onlyTargetCategory8=NFLAG;
 
-  Weapon9=dshk;
+  weapon9=dshk;
   maxAngleDif9=300;
   onlyTargetCategory9=NFLAG;
+  weaponMainDir9=0 0 -1;
 }
 

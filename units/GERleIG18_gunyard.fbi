@@ -10,7 +10,7 @@
   buildPic=GERLeIG18.png;
   buildTime=260;
   canMove=1;
-  category=INFTARG NFLAGNAIR NAIR NFLAG;
+  category=INFANTRY;
   corpse=GERleIG18_Destroyed;
   [customParams] {
     feartarget=1;
@@ -57,10 +57,10 @@
   turnRate=120;
   upright=1;
   badTargetCategory=FLAG;
-  weaponmaindir1=0 0 1;
 
   weapon1=leIG18HE;
   maxAngleDif1=25;
   onlyTargetCategory1=NFLAGNAIR;
+  weaponMainDir1=0 0 1;
 }
 

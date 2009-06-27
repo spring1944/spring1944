@@ -9,7 +9,7 @@
   buildTime=237;
   canHover=1;
   canMove=1;
-  category=TANK TPORT NFLAG   INFTARG NFLAGNAIR WEAPON;
+  category=UNARMOURED;
   corpse=usgmctruck_destroyed;
   [customParams] {
     dontCount=1;

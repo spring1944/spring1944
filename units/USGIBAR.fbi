@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=720;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   corpse=USsoldier_dead;
   [customParams] {
     feartarget=1;

@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=1;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1000;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=GERFlaK38_Destroyed;
   [customParams] {
     feartarget=1;

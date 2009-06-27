@@ -11,7 +11,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=NFLAGNAIR TANK NFLAG WEAPON;
+  category=SHIP;
   corpse=GERAFP_dead;
   [customParams] {
     dontCount=1;
@@ -50,34 +50,34 @@
   TEDClass=SHIP;
   turninplace=0;
   turnRate=35;
-  WeaponMainDir1=0 0 1;
-  WeaponMainDir2=0 0 -1;
-  WeaponMainDir3=0 0 1;
-  WeaponMainDir4=0 0 1;
-  WeaponMainDir5=0 0 -1;
-  WeaponMainDir6=1 0 0;
-  WeaponMainDir7=-1 0 0;
 
-  Weapon1=88mmskc30;
+  weapon1=88mmskc30;
   maxAngleDif1=270;
+  weaponMainDir1=0 0 1;
 
-  Weapon2=88mmskc30;
+  weapon2=88mmskc30;
   maxAngleDif2=270;
+  weaponMainDir2=0 0 -1;
 
-  Weapon3=37mmflak43;
+  weapon3=37mmflak43;
   maxAngleDif3=270;
+  weaponMainDir3=0 0 1;
 
-  Weapon4=flak3820mmaa; //20mmflakvierling;
+  weapon4=flak3820mmaa; //20mmflakvierling;
   maxAngleDif4=270;
+  weaponMainDir4=0 0 1;
 
-  Weapon5=flak3820mmaa; //20mmflakvierling;
+  weapon5=flak3820mmaa; //20mmflakvierling;
   maxAngleDif5=270;
   onlyTargetCategory5=NFLAG;
+  weaponMainDir5=0 0 -1;
 
-  Weapon6=20mmc38;
+  weapon6=20mmc38;
   maxAngleDif6=270;
+  weaponMainDir6=1 0 0;
 
-  Weapon7=20mmc38;
+  weapon7=20mmc38;
   maxAngleDif7=270;
+  weaponMainDir7=-1 0 0;
 }
 

@@ -9,7 +9,7 @@
   buildCostMetal=1400;
   buildTime=470;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON INFTARG LIGHTVEH;
+  category=OPEN;
   corpse=USM8Greyhound_Destroyed;
   [customParams] {
     armor_front=18;

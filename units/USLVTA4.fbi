@@ -11,7 +11,7 @@
   buildTime=850;
   canHover=1;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON;
+  category=ARMOURED;
   corpse=USLVTA4_Dead;
   [customParams] {
     armor_front=15;

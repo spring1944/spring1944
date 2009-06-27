@@ -12,7 +12,7 @@
   buildTime=430;
   canBeAssisted=0;
   canMove=1;
-  category=NFLAGNAIR PLANT BUILDING;
+  category=BUILDING;
   cloakCost=0;
   explodeAs=Med_Explosion;
   footprintX=3;

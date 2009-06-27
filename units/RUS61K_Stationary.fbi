@@ -11,7 +11,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUS61K.png;
   buildTime=1000;
-  category=NFLAGNAIR INFTARG BUILDING TURRET NFLAG;
+  category=DEPLOYED;
   corpse=RUS61K_Destroyed;
   [customParams] {
     feartarget=1;

@@ -10,7 +10,7 @@
   buildPic=RUST70.png;
   buildTime=575;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL1 WEAPON NAIR NSUB CTRL_G;
+  category=ARMOURED;
   corpse=RUST70_Destroyed;
   [customParams] {
     armor_front=50;

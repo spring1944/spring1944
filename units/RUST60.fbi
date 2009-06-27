@@ -9,7 +9,7 @@
   buildCostMetal=1770;
   buildTime=590;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK WEAPON NAIR;
+  category=ARMOURED;
   corpse=RUST60_Destroyed;
   [customParams] {
     armor_front=34;

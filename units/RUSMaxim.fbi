@@ -10,7 +10,7 @@
   buildPic=RUSSandbagMG.png;
   buildTime=1150;
   canMove=1;
-  category=NFLAGNAIR NFLAG INFTARG WEAPON;
+  category=INFANTRY;
   corpse=RUSsoldier_dead;
   [customParams] {
     feartarget=1;

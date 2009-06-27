@@ -9,7 +9,7 @@
   buildCostMetal=9300;
   buildTime=1240;
   canMove=1;
-  category=NFLAGNAIR NFLAG TANK LEVEL2 WEAPON NAIR NOTSUB CTRL_G;
+  category=ARMOURED;
   corpse=GERTiger_Damaged;
   [customParams] {
     armor_front=103;
