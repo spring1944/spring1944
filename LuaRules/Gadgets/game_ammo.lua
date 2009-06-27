@@ -1,38 +1,39 @@
 function gadget:GetInfo()
 	return {
-		name		= "Ammo Limiter",
-		desc		= "Gives each unit a personal 'ammo' storage that it draws from to fire, when empty it fires much more slowly",
-		author	= "quantum, FLOZi",
-		date		= "Feb 01, 2007",
+		name    = "Ammo Limiter",
+		desc    = "Gives each unit a personal 'ammo' storage that it draws from to fire, when empty it fires much more slowly",
+		author  = "quantum, FLOZi",
+		date    = "Feb 01, 2007",
 		license = "CC attribution-noncommerical 3.0 or later",
-		layer		= 0,
-		enabled	= true	--	loaded by default?
+		layer   = 0,
+		enabled = true -- loaded by default?
 	}
 end
 
 -- function localisations
 -- Synced Read
-local GetGameFrame = Spring.GetGameFrame
-local GetUnitAllyTeam		 	= Spring.GetUnitAllyTeam
-local GetUnitDefID			 	= Spring.GetUnitDefID
-local GetUnitIsStunned = Spring.GetUnitIsStunned
-local GetUnitPosition			= Spring.GetUnitPosition
-local GetUnitRulesParam	 	= Spring.GetUnitRulesParam
-local GetUnitSeparation		= Spring.GetUnitSeparation
-local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
-local GetUnitTeam					= Spring.GetUnitTeam
-local GetUnitWeaponState	= Spring.GetUnitWeaponState
+local GetGameFrame       = Spring.GetGameFrame
+local GetUnitAllyTeam    = Spring.GetUnitAllyTeam
+local GetUnitDefID       = Spring.GetUnitDefID
+local GetUnitIsStunned   = Spring.GetUnitIsStunned
+local GetUnitPosition    = Spring.GetUnitPosition
+local GetUnitRulesParam  = Spring.GetUnitRulesParam
+local GetUnitSeparation  = Spring.GetUnitSeparation
+local GetUnitsInCylinder = Spring.GetUnitsInCylinder
+local GetUnitTeam        = Spring.GetUnitTeam
+local GetUnitWeaponState = Spring.GetUnitWeaponState
 -- Synced Ctrl
-local SetUnitRulesParam		= Spring.SetUnitRulesParam
-local SetUnitWeaponState 	= Spring.SetUnitWeaponState
+local SetUnitRulesParam  = Spring.SetUnitRulesParam
+local SetUnitWeaponState = Spring.SetUnitWeaponState
 
 -- Constants
-local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
+local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
 -- Variables
 local ammoSuppliers = {}
-local vehicles			= {}
-local savedFrames 	= {}
+local vehicles = {}
+local newVehicles = {}
+local savedFrames = {}
 local initFrame
 --[[a note on the customParams (custom FBI tags) used by this script:
 
@@ -184,25 +185,14 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if ud.customParams.maxammo then
 		if ud.canFly then
 			SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)
-			vehicles[unitID] = {
-				ammoLevel = tonumber(ud.customParams.maxammo),
-				reloadFrame = {},
-			}
-			for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
-				vehicles[unitID].reloadFrame[weaponNum] = 0
-			end
 		else
 			SetUnitRulesParam(unitID, "ammo", 0)
-			vehicles[unitID] = {
-				ammoLevel = 0,
-				reloadFrame = {},
-			}
-			local frame = GetGameFrame()
-			for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
-				SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
-				vehicles[unitID].reloadFrame[weaponNum] = 0
-			end
 		end
+
+		--This is used to delay SetUnitWeaponState call depending on ammo,
+		--so other gadgets (notably the unit_morph gagdet) have a chance to
+		--customize the unit's ammo before the unit's weapons are disabled.
+		newVehicles[unitID] = true
 	end
 end
 
@@ -218,12 +208,16 @@ function gadget:UnitDestroyed(unitID)
 	ammoSuppliers[unitID] = nil
 end
 
+--If unit is loaded into a transport, do a last call to ProcessWeapons
+--before Spring clobbers the reloadState of the weapon.
 function gadget:UnitLoaded(unitID, unitDefID)
 	if UnitDefs[unitDefID].customParams.maxammo then
 		return ProcessWeapons(unitID)
 	end
 end
 
+--If unit is unloaded, reset the vehicles[unitID].reloadFrame table,
+--otherwise next call to ProcessWeapons thinks every weapon has fired.
 function gadget:UnitUnloaded(unitID, unitDefID)
 	local ud = UnitDefs[unitDefID]
 
@@ -260,9 +254,31 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
+	if next(newVehicles) then
+		local frame = GetGameFrame()
+		for unitID in pairs(newVehicles) do
+			local unitDefID = GetUnitDefID(unitID)
+			if unitDefID then
+				local ud = UnitDefs[unitDefID]
+				local ammo = GetUnitRulesParam(unitID, "ammo")
+				vehicles[unitID] = {
+					ammoLevel = ammo,
+					reloadFrame = {},
+				}
+				for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
+					vehicles[unitID].reloadFrame[weaponNum] = 0
+					if ammo == 0 then
+						SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
+					end
+				end
+			end
+		end
+		newVehicles = {}
+	end
 	if n > (initFrame+4) then
 		if n % (3*30) < 0.1 then
 			for unitID in pairs(vehicles) do
+				--skip units which are being transported
 				local _, stunned = GetUnitIsStunned(unitID)
 				if (not stunned) then
 					ProcessWeapons(unitID)
