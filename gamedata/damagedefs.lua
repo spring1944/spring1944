@@ -2,18 +2,21 @@ local damagedefs = {
   default = {},
   none = {},
   smallarm = {
-    lightbuildings = 0.25,
-    bunkers = 0,
-    tanks = 0,
     infantry = 10,
     guns = 10,
     planes = 10,
+    unarmouredvehicles = 5,
+    lightbuildings = 0.25,
+    bunkers = 0,
+    tanks = 0,
     flag = 0,
     mines = 0,
   },
+  --[[
   explosive = {
-    bunkers = 0.25,
     unarmouredvehicles = 2,
+    guns = 0.5,
+    bunkers = 0.25,
     tanks = 0.25,
     flag = 0,
   },
@@ -31,6 +34,7 @@ local damagedefs = {
     bunkers = 5,
     flag = 0,
   },
+  ]]
 }
 
 return damagedefs

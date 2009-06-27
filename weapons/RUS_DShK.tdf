@@ -8,18 +8,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=4.3;
-    armouredvehicles=12.5;
-    bunkers=0;
-    flag=1e-11;
-    guns=40;
-    infantry=50;
-    lightbuildings=10;
-    lightplanes=25;
-    mines=0;
-    sandbags=5;
-    tanks=0;
-    unarmouredvehicles=40;
+    default=5; //x10 v. guns, infantry
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
@@ -52,18 +41,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=4.3;
-    armouredvehicles=12.5;
-    bunkers=0;
-    flag=1e-11;
-    guns=40;
-    infantry=50;
-    lightbuildings=10;
-    lightplanes=25;
-    mines=0;
-    sandbags=5;
-    tanks=0;
-    unarmouredvehicles=40;
+    default=5; //x10 v. guns, infantry
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;

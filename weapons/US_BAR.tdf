@@ -17,17 +17,7 @@
     fearid=301;
   }
   [damage] {
-    default=1;
-    armouredvehicles=4;
-    bunkers=0;
-    flag=1e-08;
-    guns=30;
-    infantry=33;
-    lightbuildings=1;
-    mines=0;
-    sandbags=1;
-    tanks=0;
-    unarmouredvehicles=12;
+    default=3.3; //x10 v. guns, infantry
   }
   duration=0.015;
   explosionGenerator=custom:Bullet;

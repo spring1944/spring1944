@@ -184,7 +184,7 @@ end
 -- Damage Types
 --------------------------------------------------------------------------------
 
---[[
+
 local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 
 for _, weaponDef in pairs(WeaponDefs) do
@@ -210,7 +210,7 @@ for _, weaponDef in pairs(WeaponDefs) do
     end
   end
 end
-]]
+
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

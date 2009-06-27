@@ -16,18 +16,7 @@
     fearid=401;
   }
   [damage] {
-    default=4.3;
-    armouredvehicles=12.5;
-    bunkers=0;
-    flag=1e-11;
-    guns=40;
-    infantry=50;
-    lightbuildings=10;
-    mines=0;
-    planes=11;
-    sandbags=5;
-    tanks=0;
-    unarmouredvehicles=40;
+    default=5; //x10 v. guns, infantry
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
@@ -63,18 +52,7 @@
     fearid=701;
   }
   [damage] {
-    default=4.3;
-    armouredvehicles=12.5;
-    bunkers=0;
-    flag=1e-08;
-    guns=80;
-    infantry=93;
-    lightbuildings=10;
-    mines=0;
-    planes=1.8;
-    sandbags=5;
-    tanks=0;
-    unarmouredvehicles=40;
+    default=9.3; //x10 v. guns, infantry
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
@@ -110,18 +88,7 @@
     fearid=301;
   }
   [damage] {
-    default=5;
-    armouredvehicles=12.5;
-    bunkers=0;
-    flag=1e-11;
-    guns=40;
-    infantry=50;
-    lightbuildings=10;
-    mines=0;
-    planes=11;
-    sandbags=5;
-    tanks=0;
-    unarmouredvehicles=40;
+    default=5; //x10 v. guns, infantry
   }
   explosionGenerator=custom:Bullet;
   fireStarter=10;

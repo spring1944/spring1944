@@ -13,17 +13,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=1;
-    armouredvehicles=5;
-    bunkers=0;
-    flags=0;
-    guns=30;
-    infantry=31;
-    lightbuildings=1;
-    mines=0;
-    sandbags=1;
-    tanks=0;
-    unarmouredvehicles=15;
+    default=3.1; //x10 v. guns, infantry
   }
   duration=0.025;
   explosionGenerator=custom:Bullet;
