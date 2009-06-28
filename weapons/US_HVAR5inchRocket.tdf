@@ -12,7 +12,7 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=14000;
+    default=7000;
   }
   explosionGenerator=custom:HE_Medium;
   fireStarter=0;

@@ -14,7 +14,7 @@
     damagetype=kinetic;
   }
   [damage] {
-    default=224;
+    default=448;
   }
   duration=0.01;
   explosionGenerator=custom:AP_XSmall;
