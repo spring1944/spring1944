@@ -31,7 +31,7 @@ local function Execute(unitDefs)
     if (dlMenu) then
       ud.buildoptions = ud.buildoptions or {}
       for _, entry in ipairs(dlMenu) do
-				Spring.Echo(entry)
+				--Spring.Echo(entry)
         local buildOptions = ud.buildoptions
         table.insert(buildOptions, entry)
       end

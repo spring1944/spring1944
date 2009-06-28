@@ -20,7 +20,7 @@ local startTime = tonumber(Spring.GetModOptions().starttime) or 5 --The time whe
 local dominationScoreTime = 30 --Time needed holding all points to score in multi domination
 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
-Spring.Echo("+++++++++++++++++++++++++++++++++++++++++++++++++++++++ "..(Spring.GetModOptions().scoremode or "nil!"))
+--Spring.Echo("+++++++++++++++++++++++++++++++++++++++++++++++++++++++ "..(Spring.GetModOptions().scoremode or "nil!"))
 if Spring.GetModOptions().scoremode == "disabled" or Spring.GetModOptions().scoremode == nil then return false end
 
 local limitScore = tonumber(Spring.GetModOptions().limitscore) or 200
