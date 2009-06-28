@@ -9,7 +9,7 @@
   buildPic=RUSZiS2.png;
   buildTime=250;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=RUSZiS5_Destroyed;
   [customParams] {
     lowammolevel=1;

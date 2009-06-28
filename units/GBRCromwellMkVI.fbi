@@ -10,7 +10,7 @@
   buildCostMetal=4050;
   buildTime=540;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GBRCromwell_Damaged;
   [customParams] {
     armor_front=71;

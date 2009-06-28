@@ -10,7 +10,7 @@
   buildPic=GBRLCG.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=GBRLCG_dead;
   [customParams] {
     dontCount=1;

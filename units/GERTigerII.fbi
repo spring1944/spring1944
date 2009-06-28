@@ -9,7 +9,7 @@
   buildCostMetal=15750;
   buildTime=2100;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GERTigerII_Damaged;
   [customParams] {
     armor_front=154;

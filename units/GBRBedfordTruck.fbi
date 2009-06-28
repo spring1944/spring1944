@@ -10,7 +10,7 @@
   buildPic=GBRBedfordTruck.png;
   buildTime=140;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     buildOutside=1;

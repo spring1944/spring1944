@@ -9,7 +9,7 @@
   buildCostMetal=540;
   buildTime=180;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=RUSBA64_Destroyed;
   [customParams] {
     armor_front=15;

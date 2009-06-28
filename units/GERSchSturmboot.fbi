@@ -10,7 +10,7 @@
   buildPic=GERSchSturmboot.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=GERSchSturmboot_dead;
   [customParams] {
     dontCount=1;

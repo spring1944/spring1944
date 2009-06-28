@@ -9,7 +9,7 @@
   buildCostMetal=6940;
   buildTime=925;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GERPanther_Damaged;
   [customParams] {
     armor_front=113;

@@ -9,7 +9,7 @@
   buildCostMetal=50;
   buildTime=324.5;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   corpse=USSoldier_dead;
   [customParams] {
     feartarget=1;

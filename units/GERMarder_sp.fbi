@@ -10,7 +10,7 @@
   buildPic=GERMarder.png;
   buildTime=420;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GERMarder_Destroyed;
   [customParams] {
     armor_front=11;

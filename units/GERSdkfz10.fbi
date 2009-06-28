@@ -9,7 +9,7 @@
   buildCostMetal=1350;
   buildTime=450;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   [customParams] {
     armor_front=11;
     armor_rear=0;

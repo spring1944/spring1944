@@ -8,7 +8,7 @@
   buildCostMetal=210;
   buildTime=140;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=USGMCTruck_Destroyed;
   [customParams] {
     buildOutside=1;

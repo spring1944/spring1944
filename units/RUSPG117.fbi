@@ -10,7 +10,7 @@
   buildPic=RUSPG117.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   [customParams] {
     dontCount=1;
   }

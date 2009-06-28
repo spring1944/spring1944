@@ -11,7 +11,7 @@
   buildPic=USM8Scott.png;
   buildTime=410;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=USM8Scott_Damaged;
   [customParams] {
     armor_front=43;

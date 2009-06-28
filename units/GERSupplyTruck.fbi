@@ -9,7 +9,7 @@
   buildPic=GEROpelBlitz.png;
   buildTime=220;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=GEROpelBlitz_Destroyed;
   [customParams] {
     dontCount=1;

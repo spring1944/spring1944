@@ -9,7 +9,7 @@
   buildCostMetal=150;
   buildTime=500;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
   footprintX=10;

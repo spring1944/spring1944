@@ -9,7 +9,7 @@
   buildPic=RUSPontoonTruck.png;
   buildTime=1400;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=RUSPontoonTruck_Dead;
   [customParams] {
     dontCount=1;

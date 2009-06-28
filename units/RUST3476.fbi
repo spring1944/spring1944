@@ -9,7 +9,7 @@
   buildCostMetal=2700;
   buildTime=360;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=RUST3476_Damaged;
   [customParams] {
     armor_front=73;

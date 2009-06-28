@@ -10,7 +10,7 @@
   buildTime=2500;
   canAttack=1;
   canMove=1;
-  category=SUB;
+  category=SUB MINETRIGGER;
   corpse=GERSeehund_dead;
   [customParams] {
     dontCount=1;

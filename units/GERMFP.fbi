@@ -10,7 +10,7 @@
   buildPic=germfp.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=GERMFP_dead;
   [customParams] {
     dontCount=1;

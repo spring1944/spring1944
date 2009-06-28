@@ -9,7 +9,7 @@
   buildTime=237;
   canHover=1;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=usgmctruck_destroyed;
   [customParams] {
     dontCount=1;

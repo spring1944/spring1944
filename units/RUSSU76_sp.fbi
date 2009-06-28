@@ -10,7 +10,7 @@
   buildPic=RUSSU76.png;
   buildTime=350;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=RUSSU76_Destroyed;
   [customParams] {
     armor_front=35;

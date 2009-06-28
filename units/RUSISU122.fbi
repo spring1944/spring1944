@@ -9,7 +9,7 @@
   buildCostMetal=5275;
   buildTime=1055;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=RUSISU122_Damaged;
   [customParams] {
     armor_front=93;

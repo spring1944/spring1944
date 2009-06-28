@@ -9,7 +9,7 @@
   buildCostMetal=100;
   buildTime=150;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=RUSSoldier_dead;

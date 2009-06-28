@@ -10,7 +10,7 @@
   buildPic=ruslct.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=RUSLCT_dead;
   [customParams] {
     dontCount=1;

@@ -10,7 +10,7 @@
   buildPic=GBRBofors.png;
   buildTime=300;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     lowammolevel=1;

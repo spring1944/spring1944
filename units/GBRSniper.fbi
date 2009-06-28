@@ -8,7 +8,7 @@
   buildCostMetal=300;
   buildTime=175;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=gbrsoldier_dead;

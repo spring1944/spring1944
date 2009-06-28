@@ -12,7 +12,7 @@
   buildTime=375;
   canAttack=1;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=USLCSL_dead;
   [customParams] {
     dontCount=1;

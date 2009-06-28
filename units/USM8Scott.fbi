@@ -10,7 +10,7 @@
   buildCostMetal=2040;
   buildTime=680;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=USM8Scott_Damaged;
   [customParams] {
     armor_front=43;

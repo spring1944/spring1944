@@ -9,7 +9,7 @@
   buildCostMetal=1100;
   buildTime=365;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=USM3Halftrack_Destroyed;
   [customParams] {
     ammoSupplier=1;

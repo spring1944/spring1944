@@ -9,7 +9,7 @@
   buildCostMetal=711;
   buildTime=237;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GERKarl_Dead;
   [customParams] {
     dontCount=1;

@@ -11,7 +11,7 @@
   buildTime=850;
   canHover=1;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=USLVTA4_Dead;
   [customParams] {
     armor_front=15;

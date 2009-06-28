@@ -10,7 +10,7 @@
   buildPic=GERPanzerIII.png;
   buildTime=800;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GERPanzerIII_Damaged;
   [customParams] {
     armor_front=63;

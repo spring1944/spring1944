@@ -10,7 +10,7 @@
   buildCostMetal=1725;
   buildTime=230;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=USM5Stuart_Destroyed;
   [customParams] {
     armor_front=43;

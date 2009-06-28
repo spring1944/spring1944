@@ -10,7 +10,7 @@
   buildPic=gbrlct.png;
   buildTime=375;
   canMove=1;
-  category=SHIP;
+  category=SHIP MINETRIGGER;
   corpse=GBRLCT_dead;
   [customParams] {
     dontCount=1;

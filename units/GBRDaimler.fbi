@@ -9,7 +9,7 @@
   buildCostMetal=1500;
   buildTime=500;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GBRDaimler_Destroyed;
   [customParams] {
     armor_front=15;

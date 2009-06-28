@@ -9,7 +9,7 @@
   buildCostMetal=1125;
   buildTime=375;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GERSdKfz250_Destroyed;
   [customParams] {
     armor_front=12;

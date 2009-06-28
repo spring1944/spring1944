@@ -9,7 +9,7 @@
   buildCostMetal=15;
   buildTime=70;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
   [customParams] {

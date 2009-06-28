@@ -9,7 +9,7 @@
   buildCostMetal=1350;
   buildTime=450;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=RUSGAZAAA_Destroyed;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;

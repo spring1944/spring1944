@@ -9,7 +9,7 @@
   buildCostMetal=3825;
   buildTime=510;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=USM4A376Sherman_Damaged;
   [customParams] {
     armor_front=74;

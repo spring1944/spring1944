@@ -10,7 +10,7 @@
   buildPic=USM8Gun.png;
   buildTime=640;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   corpse=USM8Gun_Destroyed;
   [customParams] {
     feartarget=1;

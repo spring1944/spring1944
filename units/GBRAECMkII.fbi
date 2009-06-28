@@ -9,7 +9,7 @@
   buildCostMetal=2000;
   buildTime=265;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
     armor_front=57;

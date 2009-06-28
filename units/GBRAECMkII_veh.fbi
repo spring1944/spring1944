@@ -10,7 +10,7 @@
   buildPic=GBRAECMkII.png;
   buildTime=665;
   canMove=1;
-  category=OPEN;
+  category=OPEN MINETRIGGER;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
     armor_front=57;

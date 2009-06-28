@@ -9,7 +9,7 @@
   buildCostMetal=3000;
   buildTime=400;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GERPanzerIV_Damaged;
   [customParams] {
     armor_front=65;

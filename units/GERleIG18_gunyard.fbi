@@ -10,7 +10,7 @@
   buildPic=GERLeIG18.png;
   buildTime=260;
   canMove=1;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   corpse=GERleIG18_Destroyed;
   [customParams] {
     feartarget=1;

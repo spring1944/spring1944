@@ -9,7 +9,7 @@
   buildCostMetal=4875;
   buildTime=975;
   canMove=1;
-  category=UNARMOURED;
+  category=UNARMOURED MINETRIGGER;
   corpse=RUSBM13N_Destroyed;
   [customParams] {
     defaultMove=1;

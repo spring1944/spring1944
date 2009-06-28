@@ -9,7 +9,7 @@
   buildCostMetal=2850;
   buildTime=380;
   canMove=1;
-  category=ARMOURED;
+  category=ARMOURED MINETRIGGER;
   corpse=GERStuGIII_Damaged;
   [customParams] {
     armor_front=83;
