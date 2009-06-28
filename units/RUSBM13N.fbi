@@ -29,7 +29,7 @@
   maxVelocity=4.9;
   maxWaterDepth=5;
   movementClass=TANK_Car;
-  noChaseCategory=FLAG INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED AIR;
+  noChaseCategory=BUILDING OPENVEH INFANTRY HARDVEH FLAG SHIP AIR SOFTVEH DEPLOYED;
   objectName=RUSBM13N.S3O;
   onoffable=1;
   radarDistanceJam=0;
@@ -64,7 +64,7 @@
 
   weapon1=M13132mm;
   maxAngleDif1=25;
-  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

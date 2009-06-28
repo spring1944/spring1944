@@ -59,7 +59,7 @@
   badTargetCategory=FLAG;
 
   weapon1=DT;
-  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer_Green;
 }

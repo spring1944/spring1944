@@ -24,7 +24,7 @@
   maxVelocity=1.6;
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG OPEN ARMOURED AIR;
+  noChaseCategory=FLAG AIR OPENVEH HARDVEH;
   objectName=USMG.S3O;
   seismicSignature=0;
   [sfxtypes] {
@@ -49,7 +49,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M1919A4Browning;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer;
 }

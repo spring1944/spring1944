@@ -24,7 +24,7 @@
   maxVelocity=1.6;
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG UNARMOURED OPEN OPEN ARMOURED AIR;
+  noChaseCategory=OPENVEH FLAG AIR SOFTVEH HARDVEH;
   objectName=GBRLMG.S3O;
   repairable=0;
   seismicSignature=0;
@@ -47,10 +47,10 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG UNARMOURED OPEN;
+  badTargetCategory=OPENVEH FLAG SOFTVEH;
 
   weapon1=Bren;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer;
 }

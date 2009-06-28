@@ -56,7 +56,7 @@
 
   weapon1=KwK75mmL48AP;
   maxAngleDif1=70;
-  onlyTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;
 }
 

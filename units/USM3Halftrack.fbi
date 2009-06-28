@@ -66,7 +66,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M2Browning;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=m2browningaa;
   onlyTargetCategory2=AIR;

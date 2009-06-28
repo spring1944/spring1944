@@ -29,7 +29,7 @@
   maxVelocity=4.5;
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=AIR AIR;
+  noChaseCategory=AIR;
   objectName=GERPaK40_Truck.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -50,7 +50,7 @@
   turnRate=440;
 
   weapon1=smallsupply;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
-  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory2=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
 }
 

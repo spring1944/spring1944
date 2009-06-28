@@ -29,7 +29,7 @@
   maxWaterDepth=10;
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=GBRObserv.S3O;
   repairable=0;
   seismicDistance=690;
@@ -56,7 +56,7 @@
   badTargetCategory=FLAG;
 
   weapon1=Webley;
-  badTargetCategory1=UNARMOURED OPEN;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  badTargetCategory1=OPENVEH SOFTVEH;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 }
 

@@ -56,22 +56,22 @@
 
   weapon1=gbr4_7inchmkix;
   maxAngleDif1=270;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=gbr4_7inchmkix;
   maxAngleDif2=270;
-  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif3=240;
-  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory3=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir3=1 0 0;
 
   weapon4=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif4=240;
-  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory4=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir4=-1 0 0;
 
   weapon5=Large_Tracer;

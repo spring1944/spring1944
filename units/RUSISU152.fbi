@@ -33,7 +33,7 @@
   maxVelocity=1.4;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=RUSISU152.S3O;
   onoffable=1;
   radarDistanceJam=0;
@@ -70,12 +70,12 @@
 
   weapon1=ML20S152mmHE;
   maxAngleDif1=25;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=ML20S152mmAP;
   maxAngleDif2=25;
-  onlyTargetCategory2=OPEN ARMOURED;
+  onlyTargetCategory2=OPENVEH HARDVEH;
   weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;

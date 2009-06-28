@@ -46,7 +46,7 @@
 
   weapon1=bren;
   maxAngleDif1=270;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=BrenFear;

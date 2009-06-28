@@ -68,12 +68,12 @@
 
   weapon1=ZiS376mmHE;
   maxAngleDif1=12;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
   maxAngleDif2=12;
-  onlyTargetCategory2=OPEN ARMOURED;
+  onlyTargetCategory2=OPENVEH HARDVEH;
   weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;

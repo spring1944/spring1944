@@ -26,7 +26,7 @@
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=AIR AIR;
+  noChaseCategory=AIR;
   objectName=USGMCTruck.S3O;
   releaseHeld=1;
   seismicSignature=0;
@@ -49,7 +49,7 @@
   transportSize=1;
   turninplace=0;
   turnRate=440;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
-  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory2=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
 }
 

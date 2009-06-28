@@ -34,7 +34,7 @@
   maxVelocity=3; //4
   maxWaterDepth=15;
   movementClass=TANK_Car;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=GBRAECMkIII.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -69,6 +69,6 @@
   badTargetCategory=FLAG;
 
   weapon1=6pdr57mmap;
-  onlyTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=OPENVEH HARDVEH;
 }
 

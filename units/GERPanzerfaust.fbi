@@ -29,7 +29,7 @@
   maxWaterDepth=5;
   minCloakDistance=230;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=GERPanzerfaust.S3O;
   repairable=0;
   seismicSignature=0;
@@ -56,10 +56,10 @@
   badTargetCategory=FLAG;
 
   weapon1=Panzerfaust;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
 
   weapon2=panzerfaustfear;
-  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponSlaveTo2=1;
 }
 

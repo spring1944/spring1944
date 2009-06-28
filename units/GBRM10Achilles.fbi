@@ -33,7 +33,7 @@
   maxVelocity=3; //3.65
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=GBRM10Achilles.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -67,7 +67,7 @@
   badTargetCategory=FLAG;
 
   weapon1=17pdrAP;
-  onlyTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=OPENVEH HARDVEH;
 
   weapon2=M2BrowningAA;
   onlyTargetCategory2=AIR;

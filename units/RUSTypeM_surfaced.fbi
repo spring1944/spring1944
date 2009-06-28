@@ -42,7 +42,7 @@
   waterline=0;
 
   weapon1=533mmtorpedo; //450mmtorp;
-  badTargetCategory1=OPEN ARMOURED;
+  badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=60;
   onlyTargetCategory1=SHIP;
   weaponMainDir1=0 0 1;
@@ -54,7 +54,7 @@
 
   weapon3=40k45mmhe;
   maxAngleDif3=270;
-  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory3=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir3=0 0 1;
 }
 

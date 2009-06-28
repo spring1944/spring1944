@@ -55,7 +55,7 @@
 
   weapon1=M2Flamethrower;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

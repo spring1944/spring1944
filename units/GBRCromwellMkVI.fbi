@@ -67,11 +67,11 @@
   badTargetCategory=FLAG;
 
   weapon1=cs95mmhe;
-  badTargetCategory1=OPEN ARMOURED;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
 
   weapon2=Bren;
-  onlyTargetCategory2=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory2=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon3=.50calproof;
 

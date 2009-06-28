@@ -67,7 +67,7 @@
 
   weapon1=m30122mmhe;
   maxAngleDif1=25;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=.50calproof;

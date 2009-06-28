@@ -68,14 +68,14 @@
   badTargetCategory=FLAG;
 
   weapon1=M375mmHE;
-  badTargetCategory1=OPEN ARMOURED;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
 
   weapon2=M375mmAP;
-  onlyTargetCategory2=OPEN ARMOURED;
+  onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=M1919A4Browning;
-  onlyTargetCategory3=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=M2Browning;
   onlyTargetCategory4=AIR;

@@ -62,9 +62,9 @@
   workerTime=10; //80
 
   weapon1=SilencedSTEN;
-  badTargetCategory1=UNARMOURED OPEN;
+  badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

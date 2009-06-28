@@ -30,7 +30,7 @@
   maxWaterDepth=5;
   minCloakDistance=230;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
+  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
   objectName=RUSRPG43.S3O;
   repairable=0;
   seismicSignature=0;
@@ -52,11 +52,11 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  badTargetCategory=BUILDING SOFTVEH INFANTRY FLAG OPENVEH DEPLOYED;
 
   weapon1=RPG43;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

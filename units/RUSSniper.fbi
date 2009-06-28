@@ -31,7 +31,7 @@
   maxWaterDepth=20;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG UNARMOURED OPEN OPEN ARMOURED AIR BUILDING;
+  noChaseCategory=BUILDING SOFTVEH AIR FLAG HARDVEH OPENVEH;
   objectName=RUSSniper.S3O;
   repairable=0;
   seismicDistance=570;
@@ -55,12 +55,12 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG UNARMOURED OPEN BUILDING;
+  badTargetCategory=BUILDING OPENVEH FLAG SOFTVEH;
 
   weapon1=MosinNagantPU;
-  badTargetCategory1=UNARMOURED OPEN;
+  badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

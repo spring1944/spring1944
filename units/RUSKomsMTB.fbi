@@ -60,12 +60,12 @@
 
   weapon3=twin_dshk;
   maxAngleDif3=270;
-  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory3=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir3=0 0 -1;
 
   weapon4=twin_dshk;
   maxAngleDif4=270;
-  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory4=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
   weaponMainDir4=0 0 -1;
 
   weapon5=Medium_Tracer;

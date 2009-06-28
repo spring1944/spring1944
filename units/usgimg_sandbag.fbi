@@ -22,7 +22,7 @@
   maxDamage=2160;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=FLAG UNARMOURED OPEN AIR;
+  noChaseCategory=OPENVEH FLAG SOFTVEH AIR;
   objectName=USSandbagMG.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -42,12 +42,12 @@
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
-  badTargetCategory=FLAG UNARMOURED OPEN;
+  badTargetCategory=OPENVEH FLAG SOFTVEH;
   yardMap=o;
 
   weapon1=m1919a4browning_deployed;
   maxAngleDif1=120;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Small_Tracer;

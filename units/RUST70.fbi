@@ -66,14 +66,14 @@
   badTargetCategory=FLAG;
 
   weapon1=20K45mmHE;
-  badTargetCategory1=OPEN ARMOURED;
-  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
 
   weapon2=20K45mmAP;
-  onlyTargetCategory2=OPEN ARMOURED;
+  onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=DT;
-  onlyTargetCategory3=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
 

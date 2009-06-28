@@ -51,14 +51,14 @@
   badTargetCategory=FLAG;
 
   weapon1=MP40;
-  badTargetCategory1=UNARMOURED OPEN;
+  badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Model24;
   maxAngleDif2=170;
-  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 }
 
