@@ -46,7 +46,7 @@
   yardMap=o;
 
   weapon1=m1919a4browning_deployed;
-  maxAngleDif1=120;
+  maxAngleDif1=90;
   onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 

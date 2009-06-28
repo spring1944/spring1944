@@ -1,6 +1,6 @@
 [m30122mmhe] {
   name=M-30 122mm High-Explosive Ammunition;
-  accuracy=500;
+  accuracy=550;
   areaOfEffect=160;
   ballistic=1;
   collisionSize=4;
@@ -34,7 +34,7 @@
   soundHit=GEN_Explo_5;
   soundStart=RUS_122mm;
   stages=50;
-  targetMoveError=0.25;
+  targetMoveError=0.75;
   tolerance=3000;
   turret=1;
   weaponVelocity=1100;
