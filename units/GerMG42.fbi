@@ -24,7 +24,7 @@
   maxVelocity=1.6;
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
-  noChaseCategory=OPENVEH FLAG AIR SOFTVEH HARDVEH;
+  noChaseCategory=SOFTVEH OPENVEH HARDVEH FLAG AIR;
   objectName=GERMG42.S3O;
   repairable=0;
   seismicSignature=0;

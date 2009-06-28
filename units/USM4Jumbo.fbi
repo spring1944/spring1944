@@ -10,7 +10,7 @@
   buildCostMetal=7800;
   buildTime=1040;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
     armor_front=146;
@@ -69,7 +69,7 @@
 
   weapon1=M375mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=M375mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH;

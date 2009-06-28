@@ -9,7 +9,7 @@
   buildCostMetal=2700;
   buildTime=360;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=RUST28_Damaged;
   [customParams] {
     armor_front=22;
@@ -68,7 +68,7 @@
 
   weapon1=L1076mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=L1076mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH;

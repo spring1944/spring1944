@@ -10,7 +10,7 @@
   buildPic=GBRAECMkII.png;
   buildTime=400;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
     armor_front=57;
@@ -35,7 +35,7 @@
   maxVelocity=3; //4
   maxWaterDepth=15;
   movementClass=TANK_Car;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=GBRAECMkIII.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

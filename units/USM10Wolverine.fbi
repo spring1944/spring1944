@@ -9,7 +9,7 @@
   buildCostMetal=2250;
   buildTime=300;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=USM10Wolverine_Destroyed;
   [customParams] {
     armor_front=62;
@@ -33,7 +33,7 @@
   maxVelocity=3.65;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=USM10Wolverine.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -63,7 +63,7 @@
   trackWidth=18;
   turninplace=0;
   turnRate=280;
-  badTargetCategory=BUILDING SOFTVEH INFANTRY FLAG OPENVEH DEPLOYED;
+  badTargetCategory=BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED;
 
   weapon1=M7AP;
   onlyTargetCategory1=OPENVEH HARDVEH;

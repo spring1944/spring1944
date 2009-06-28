@@ -10,7 +10,7 @@
   buildCostMetal=2040;
   buildTime=680;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=USM8Scott_Damaged;
   [customParams] {
     armor_front=43;
@@ -67,7 +67,7 @@
 
   weapon1=M875mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=M2BrowningAA;
   onlyTargetCategory2=AIR;

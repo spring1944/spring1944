@@ -10,7 +10,7 @@
   buildPic=GEROpelBlitz.png;
   buildTime=140;
   canMove=1;
-  category=UNARMOURED MINETRIGGER;
+  category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;
   [customParams] {
     buildOutside=1;
@@ -50,7 +50,7 @@
   transportSize=1;
   turninplace=0;
   turnRate=440;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
-  onlyTargetCategory2=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

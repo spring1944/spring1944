@@ -9,7 +9,7 @@
   buildCostMetal=5340;
   buildTime=715;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=RUSISU152_Damaged;
   [customParams] {
     armor_front=93;
@@ -33,7 +33,7 @@
   maxVelocity=1.4;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=RUSISU152.S3O;
   onoffable=1;
   radarDistanceJam=0;
@@ -70,7 +70,7 @@
 
   weapon1=ML20S152mmHE;
   maxAngleDif1=25;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=ML20S152mmAP;

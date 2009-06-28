@@ -9,7 +9,7 @@
   buildCostMetal=1400;
   buildTime=470;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=USM8Greyhound_Destroyed;
   [customParams] {
     armor_front=18;
@@ -65,7 +65,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M637mmHE;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=M637mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH;

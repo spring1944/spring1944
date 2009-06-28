@@ -10,7 +10,7 @@
   buildCostMetal=4200;
   buildTime=840;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=GERWespe_Destroyed;
   [customParams] {
     armor_front=21;
@@ -73,7 +73,7 @@
   weapon1=leFH18HE;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=25;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=MG42;

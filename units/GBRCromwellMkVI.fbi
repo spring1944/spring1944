@@ -10,7 +10,7 @@
   buildCostMetal=4050;
   buildTime=540;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GBRCromwell_Damaged;
   [customParams] {
     armor_front=71;
@@ -68,7 +68,7 @@
 
   weapon1=cs95mmhe;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=Bren;
   onlyTargetCategory2=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;

@@ -9,7 +9,7 @@
   buildCostMetal=5200;
   buildTime=1040;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GERJagdpanzerIV_Destroyed;
   [customParams] {
     armor_front=107;
@@ -33,7 +33,7 @@
   maxVelocity=3;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=GERJagdpanzerIV.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

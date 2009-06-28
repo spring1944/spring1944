@@ -11,7 +11,7 @@
   buildTime=900;
   canAttack=0;
   canMove=1;
-  category=UNARMOURED;
+  category=SOFTVEH;
   corpse=USGMCEngVehicle_Destroyed;
   energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;
@@ -46,7 +46,7 @@
   trackWidth=15;
   turnRate=360;
   workerTime=10; //old 130
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
-  onlyTargetCategory2=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

@@ -10,7 +10,7 @@
   buildCostMetal=4800;
   buildTime=640;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GBRShermanFirefly_Damaged;
   [customParams] {
     armor_front=74;
@@ -69,7 +69,7 @@
 
   weapon1=17pdrHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=17pdrAP;
   onlyTargetCategory2=OPENVEH HARDVEH;

@@ -9,7 +9,7 @@
   buildCostMetal=1500;
   buildTime=500;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=GBRWasp_Destroyed;
   [customParams] {
     armor_front=10;
@@ -62,7 +62,7 @@
 
   weapon1=waspflamethrower;
   maxAngleDif1=15;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

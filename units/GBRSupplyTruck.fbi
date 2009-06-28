@@ -9,7 +9,7 @@
   buildPic=GBRBedfordTruck.png;
   buildTime=220;
   canMove=1;
-  category=UNARMOURED MINETRIGGER;
+  category=MINETRIGGER SOFTVEH;
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     dontCount=1;
@@ -42,7 +42,7 @@
   trackType=Stdtank;
   trackWidth=13;
   turnRate=440;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
-  onlyTargetCategory2=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

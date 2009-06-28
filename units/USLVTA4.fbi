@@ -11,7 +11,7 @@
   buildTime=850;
   canHover=1;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=USLVTA4_Dead;
   [customParams] {
     armor_front=15;
@@ -67,7 +67,7 @@
 
   weapon1=M875mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=M2BrowningAA;
   onlyTargetCategory2=AIR;

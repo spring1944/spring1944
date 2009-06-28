@@ -8,7 +8,7 @@
   buildCostMetal=3125;
   buildTime=625;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=RUSSU122_Damaged;
   [customParams] {
     armor_front=76;
@@ -67,7 +67,7 @@
 
   weapon1=m30122mmhe;
   maxAngleDif1=25;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=.50calproof;

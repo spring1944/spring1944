@@ -62,7 +62,7 @@
   stealth=1;
   TEDClass=VTOL;
   turnRate=500;
-  badTargetCategory=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   workerTime=1000;
 
   weapon1=trenchmaker;

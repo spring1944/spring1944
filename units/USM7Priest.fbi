@@ -10,7 +10,7 @@
   buildCostMetal=4200;
   buildTime=840;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=USM7Priest_Destroyed;
   [customParams] {
     armor_front=39;
@@ -74,7 +74,7 @@
   weapon1=m2he;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=15;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=M2Browning;

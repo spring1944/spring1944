@@ -9,7 +9,7 @@
   buildCostMetal=1035;
   buildTime=345;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GBRKangaroo_Destroyed;
   [customParams] {
     armor_front=65;

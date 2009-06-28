@@ -10,7 +10,7 @@
   buildPic=GERPanzerIII.png;
   buildTime=800;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GERPanzerIII_Damaged;
   [customParams] {
     armor_front=63;
@@ -67,7 +67,7 @@
   badTargetCategory=FLAG;
 
   weapon1=KwK50mmL60HE;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=KwK50mmL60AP;
   onlyTargetCategory2=OPENVEH HARDVEH;

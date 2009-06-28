@@ -29,7 +29,7 @@
   maxWaterDepth=5;
   minCloakDistance=230;
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=USHAT.S3O;
   seismicSignature=0;
   [sfxtypes] {
@@ -52,9 +52,9 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=BUILDING SOFTVEH INFANTRY FLAG OPENVEH DEPLOYED;
+  badTargetCategory=BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED;
 
   weapon1=M9A1Bazooka;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

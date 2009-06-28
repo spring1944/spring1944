@@ -22,7 +22,7 @@
   maxDamage=2160;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=OPENVEH FLAG SOFTVEH AIR;
+  noChaseCategory=OPENVEH AIR FLAG SOFTVEH;
   objectName=GERSandbagMG.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

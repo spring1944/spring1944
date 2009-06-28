@@ -9,7 +9,7 @@
   buildCostMetal=3200;
   buildTime=640;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=RUSSU85_Damaged;
   [customParams] {
     armor_front=78;
@@ -32,7 +32,7 @@
   maxVelocity=4.11;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=RUSSU85.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

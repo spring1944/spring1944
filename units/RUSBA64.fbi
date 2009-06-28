@@ -9,7 +9,7 @@
   buildCostMetal=540;
   buildTime=180;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=RUSBA64_Destroyed;
   [customParams] {
     armor_front=15;
@@ -59,7 +59,7 @@
   badTargetCategory=FLAG;
 
   weapon1=DT;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=Small_Tracer_Green;
 }

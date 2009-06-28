@@ -65,7 +65,7 @@
   steeringmode=1;
   TEDClass=VTOL;
   turnRate=50;
-  badTargetCategory=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   wingAngle=0.1;
   wingDrag=0.1;
 }

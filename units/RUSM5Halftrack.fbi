@@ -9,7 +9,7 @@
   buildCostMetal=900;
   buildTime=300;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=RUSM5Halftrack_Destroyed;
   [customParams] {
     ammoSupplier=1;

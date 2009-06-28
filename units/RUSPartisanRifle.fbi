@@ -62,7 +62,7 @@
 
   weapon2=molotov;
   maxAngleDif2=180;
-  onlyTargetCategory2=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 }
 

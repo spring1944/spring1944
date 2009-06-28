@@ -9,7 +9,7 @@
   buildCostMetal=711;
   buildTime=237;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=GERKarl_Dead;
   [customParams] {
     dontCount=1;
@@ -48,7 +48,7 @@
 
   weapon1=GERKarlGeraet;
   maxAngleDif1=10;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

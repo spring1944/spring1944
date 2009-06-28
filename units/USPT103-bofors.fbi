@@ -54,7 +54,7 @@
   badTargetCategory=FLAG;
 
   weapon10=KwK3020mmHE;
-  onlyTargetCategory10=BUILDING SOFTVEH INFANTRY AIR OPENVEH DEPLOYED;
+  onlyTargetCategory10=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
   weaponMainDir10=0 0 1;
 
   weapon1=mk13torpedo;
@@ -87,10 +87,10 @@
   weaponMainDir6=0 0 1;
 
   weapon7=m2browningaa;
-  onlyTargetCategory7=BUILDING SOFTVEH INFANTRY AIR OPENVEH DEPLOYED;
+  onlyTargetCategory7=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
 
   weapon8=m2browningaa;
-  onlyTargetCategory8=BUILDING SOFTVEH INFANTRY AIR OPENVEH DEPLOYED;
+  onlyTargetCategory8=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
 
   weapon9=bofors40mmhe;
   maxAngleDif9=270;

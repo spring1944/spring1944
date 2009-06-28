@@ -9,7 +9,7 @@
   buildCostMetal=2100;
   buildTime=700;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=GERMarder_Destroyed;
   [customParams] {
     armor_front=11;
@@ -31,7 +31,7 @@
   maxVelocity=2.6;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING SOFTVEH INFANTRY AIR FLAG OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   objectName=GERMarder.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

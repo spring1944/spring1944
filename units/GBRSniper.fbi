@@ -29,7 +29,7 @@
   maxWaterDepth=20;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING SOFTVEH AIR FLAG HARDVEH OPENVEH;
+  noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH;
   objectName=GBRSniper.S3O;
   repairable=0;
   seismicDistance=570;

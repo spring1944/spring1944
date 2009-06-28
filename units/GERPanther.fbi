@@ -9,7 +9,7 @@
   buildCostMetal=6940;
   buildTime=925;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GERPanther_Damaged;
   [customParams] {
     armor_front=113;
@@ -67,7 +67,7 @@
   badTargetCategory=FLAG;
 
   weapon1=KwK75mmL71HE;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=KwK75mmL71AP;
   onlyTargetCategory2=OPENVEH HARDVEH;

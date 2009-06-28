@@ -9,7 +9,7 @@
   buildCostMetal=4875;
   buildTime=975;
   canMove=1;
-  category=UNARMOURED MINETRIGGER;
+  category=MINETRIGGER SOFTVEH;
   corpse=RUSBM13N_Destroyed;
   [customParams] {
     defaultMove=1;
@@ -29,7 +29,7 @@
   maxVelocity=4.9;
   maxWaterDepth=5;
   movementClass=TANK_Car;
-  noChaseCategory=BUILDING OPENVEH INFANTRY HARDVEH FLAG SHIP AIR SOFTVEH DEPLOYED;
+  noChaseCategory=BUILDING INFANTRY FLAG AIR OPENVEH HARDVEH SOFTVEH SHIP DEPLOYED;
   objectName=RUSBM13N.S3O;
   onoffable=1;
   radarDistanceJam=0;
@@ -64,7 +64,7 @@
 
   weapon1=M13132mm;
   maxAngleDif1=25;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY AIR SHIP HARDVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

@@ -10,7 +10,7 @@
   buildCostMetal=6410;
   buildTime=855;
   canMove=1;
-  category=ARMOURED MINETRIGGER;
+  category=MINETRIGGER HARDVEH;
   corpse=GBRChurchillMkVII_Damaged;
   [customParams] {
     armor_front=148;
@@ -69,7 +69,7 @@
 
   weapon1=QF75mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=QF75mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH;

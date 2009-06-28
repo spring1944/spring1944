@@ -9,7 +9,7 @@
   buildCostMetal=1740;
   buildTime=580;
   canMove=1;
-  category=OPEN MINETRIGGER;
+  category=MINETRIGGER OPENVEH;
   corpse=RUSSU76_Destroyed;
   [customParams] {
     armor_front=35;
@@ -67,7 +67,7 @@
 
   weapon1=ZiS376mmHE;
   maxAngleDif1=12;
-  onlyTargetCategory1=BUILDING SOFTVEH INFANTRY HARDVEH SHIP OPENVEH DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
