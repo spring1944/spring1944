@@ -54,27 +54,27 @@
   badTargetCategory=FLAG;
 
   weapon10=KwK3020mmHE;
-  onlyTargetCategory10=AIR INFTARG;
+  onlyTargetCategory10=AIR INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir10=0 0 1;
 
   weapon1=mk13torpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=LARGESHIP;
+  onlyTargetCategory1=SHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=mk13torpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=LARGESHIP;
+  onlyTargetCategory2=SHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=mk13torpedo;
   maxAngleDif3=40;
-  onlyTargetCategory3=LARGESHIP;
+  onlyTargetCategory3=SHIP SUB;
   weaponMainDir3=0 0 1;
 
   weapon4=mk13torpedo;
   maxAngleDif4=40;
-  onlyTargetCategory4=LARGESHIP;
+  onlyTargetCategory4=SHIP SUB;
   weaponMainDir4=0 0 1;
 
   weapon5=bofors40mmaa;
@@ -87,10 +87,10 @@
   weaponMainDir6=0 0 1;
 
   weapon7=m2browningaa;
-  onlyTargetCategory7=AIR INFTARG;
+  onlyTargetCategory7=AIR INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon8=m2browningaa;
-  onlyTargetCategory8=AIR INFTARG;
+  onlyTargetCategory8=AIR INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon9=bofors40mmhe;
   maxAngleDif9=270;

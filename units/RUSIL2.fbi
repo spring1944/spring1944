@@ -71,7 +71,7 @@
   TEDClass=VTOL;
   turnRadius=3000;
   turnRate=50;
-  badTargetCategory=NOTAIR;
+  badTargetCategory=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   maxAngleDif=20;
   wingAngle=0.1;
   wingDrag=0.1;
@@ -82,12 +82,12 @@
 
   weapon1=HVARRocket;
   maxAngleDif1=10;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   maxAngleDif2=10;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
@@ -111,7 +111,7 @@
   weaponSlaveTo6=3;
 
   weapon7=bomb;
-  onlyTargetCategory7=NFLAGNAIR;
+  onlyTargetCategory7=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir7=0 -0.18 1;
 
   weapon8=m2browningaa;

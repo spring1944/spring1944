@@ -68,7 +68,7 @@
 
   weapon5=20mmc38;
   maxAngleDif5=270;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=0 0 -1;
 }
 

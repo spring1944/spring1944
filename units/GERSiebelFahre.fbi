@@ -45,16 +45,16 @@
 
   weapon1=20mmc38;
   maxAngleDif1=320;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=-1 0 0;
 
   weapon2=20mmc38;
   maxAngleDif2=320;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=1 0 0;
 
   weapon3=20mmc38;
-  onlyTargetCategory3=NFLAGNAIR;
+  onlyTargetCategory3=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   maxAngleDif5=270;
   weaponMainDir5=0 0 -1;
 }

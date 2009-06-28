@@ -31,7 +31,7 @@
   maxVelocity=2.6;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=GERMarder.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -66,7 +66,7 @@
 
   weapon1=KwK75mmL48AP;
   maxAngleDif1=15;
-  onlyTargetCategory1=TANK;
+  onlyTargetCategory1=OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

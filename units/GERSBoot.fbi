@@ -52,21 +52,21 @@
 
   weapon1=g7a533mmtorpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=LARGESHIP;
+  onlyTargetCategory1=SHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=g7a533mmtorpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=LARGESHIP;
+  onlyTargetCategory2=SHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=20mmc38;
   maxAngleDif3=270;
-  onlyTargetCategory3=NFLAGNAIR;
+  onlyTargetCategory3=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 1;
 
   weapon4=20mmc38;
-  onlyTargetCategory4=NFLAGNAIR;
+  onlyTargetCategory4=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 }
 

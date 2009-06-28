@@ -45,12 +45,12 @@
 
   weapon1=m1919a4browning;
   maxAngleDif1=200;
-  onlyTargetCategory1=INFTARG;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir1=1 0 0;
 
   weapon2=m1919a4browning;
   maxAngleDif2=200;
-  onlyTargetCategory2=INFTARG;
+  onlyTargetCategory2=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir2=-1 0 0;
 }
 

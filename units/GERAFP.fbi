@@ -69,7 +69,7 @@
 
   weapon5=flak3820mmaa; //20mmflakvierling;
   maxAngleDif5=270;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=0 0 -1;
 
   weapon6=20mmc38;

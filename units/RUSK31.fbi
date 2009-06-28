@@ -44,7 +44,7 @@
   trackWidth=15;
   turnRate=180;
   workerTime=10; //130
-  onlyTargetCategory1=NFLAGNAIR;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

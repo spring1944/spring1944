@@ -62,7 +62,7 @@
   TEDClass=VTOL;
   turnRadius=2200;
   turnRate=50;
-  badTargetCategory=NOTAIR;
+  badTargetCategory=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   wingAngle=0.1;
   wingDrag=0.1;
 
@@ -70,53 +70,53 @@
 
   weapon1=bomb;
   maxAngleDif1=20;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 -0.18 1;
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=2;
 
   weapon4=m2browningamg;
   maxAngleDif4=10;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=2;
 
   weapon5=m2browningamg;
   maxAngleDif5=10;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=2;
 
   weapon6=m2browningamg;
   maxAngleDif6=10;
-  onlyTargetCategory6=NFLAG;
+  onlyTargetCategory6=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir6=0 0 1;
   weaponSlaveTo6=2;
 
   weapon7=m2browningamg;
   maxAngleDif7=10;
-  onlyTargetCategory7=NFLAG;
+  onlyTargetCategory7=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir7=0 0 1;
   weaponSlaveTo7=2;
 
   weapon8=m2browningamg;
   maxAngleDif8=10;
-  onlyTargetCategory8=NFLAG;
+  onlyTargetCategory8=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir8=0 0 1;
   weaponSlaveTo8=2;
 
   weapon9=m2browningamg;
   maxAngleDif9=10;
-  onlyTargetCategory9=NFLAG;
+  onlyTargetCategory9=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir9=0 0 1;
   weaponSlaveTo9=2;
 }

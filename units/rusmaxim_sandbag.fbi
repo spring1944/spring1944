@@ -22,7 +22,7 @@
   maxDamage=2160;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=FLAG LIGHTVEH AIR;
+  noChaseCategory=FLAG UNARMOURED OPEN AIR;
   objectName=RUSSandbagMG.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -42,12 +42,12 @@
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
-  badTargetCategory=FLAG LIGHTVEH;
+  badTargetCategory=FLAG UNARMOURED OPEN;
   yardMap=o;
 
   weapon1=Maxim;
   maxAngleDif1=120;
-  onlyTargetCategory1=INFTARG;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir1=0 0 1;
 
   weapon2=Small_Tracer_Green;

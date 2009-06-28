@@ -42,22 +42,22 @@
 
   weapon1=F3476mmHE;
   maxAngleDif1=300;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=dshk;
   maxAngleDif2=270;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=dshk;
   maxAngleDif3=358;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 1;
 
   weapon4=dshk;
   maxAngleDif4=270;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 }
 

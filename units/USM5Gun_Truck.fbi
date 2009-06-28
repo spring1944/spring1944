@@ -29,7 +29,7 @@
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=VTOL AIR;
+  noChaseCategory=AIR AIR;
   objectName=USM5Gun_Truck.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -48,7 +48,7 @@
   trackWidth=15;
   turninplace=0;
   turnRate=440;
-  onlyTargetCategory1=NFLAGNAIR;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

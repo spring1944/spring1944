@@ -50,14 +50,14 @@
   badTargetCategory=FLAG;
 
   weapon1=PPsh;
-  badTargetCategory1=LIGHTVEH;
+  badTargetCategory1=UNARMOURED OPEN;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFTARG;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir1=0 0 1;
 
   weapon2=No69;
   maxAngleDif2=170;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 }
 

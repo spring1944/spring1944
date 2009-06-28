@@ -41,7 +41,7 @@
   yardMap=o;
 
   weapon1=noweapon;
-  onlyTargetCategory1=NFLAGNAIR;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

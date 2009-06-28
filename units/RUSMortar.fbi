@@ -54,6 +54,6 @@
   badTargetCategory=FLAG;
 
   weapon1=M1937_Mortar;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

@@ -67,12 +67,12 @@
 
   weapon1=ZiS376mmHE;
   maxAngleDif1=12;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
   maxAngleDif2=12;
-  onlyTargetCategory2=TANK;
+  onlyTargetCategory2=OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;

@@ -25,7 +25,7 @@
   maxSlope=10;
   maxVelocity=4;
   movementClass=HOVER_AmphibTruck;
-  noChaseCategory=VTOL AIR;
+  noChaseCategory=AIR AIR;
   objectName=usdukw.s3o;
   releaseHeld=0;
   seismicSignature=0;
@@ -48,7 +48,7 @@
   transportSize=1;
   turninplace=0;
   turnRate=440;
-  onlyTargetCategory1=NFLAGNAIR;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

@@ -43,57 +43,57 @@
 
   weapon10=20mmOerlikonaa;
   maxAngleDif10=270;
-  onlyTargetCategory10=NFLAG;
+  onlyTargetCategory10=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir10=1 0 0;
 
   weapon11=20mmOerlikonaa;
   maxAngleDif11=270;
-  onlyTargetCategory11=NFLAG;
+  onlyTargetCategory11=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir11=-1 0 0;
 
   weapon1=3in50mk22;
   maxAngleDif1=270;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=3in50mk22;
   maxAngleDif2=270;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=3in50mk22;
   maxAngleDif3=270;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 -1;
 
   weapon4=twin_bofors40mmaa;
   maxAngleDif4=200;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=1 0 0;
 
   weapon5=twin_bofors40mmaa;
   maxAngleDif5=200;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=-1 0 0;
 
   weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
-  onlyTargetCategory6=NFLAG;
+  onlyTargetCategory6=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir6=1 0 0;
 
   weapon7=20mmOerlikonaa;
   maxAngleDif7=200;
-  onlyTargetCategory7=NFLAG;
+  onlyTargetCategory7=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir7=-1 0 0;
 
   weapon8=20mmOerlikonaa;
   maxAngleDif8=200;
-  onlyTargetCategory8=NFLAG;
+  onlyTargetCategory8=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir8=1 0 0;
 
   weapon9=20mmOerlikonaa;
   maxAngleDif9=200;
-  onlyTargetCategory9=NFLAG;
+  onlyTargetCategory9=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir9=-1 0 0;
 }
 

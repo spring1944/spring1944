@@ -43,97 +43,97 @@
 
   weapon10=twin_bofors40mmaa;
   maxAngleDif10=270;
-  onlyTargetCategory10=NFLAG;
+  onlyTargetCategory10=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir10=0 0 -1;
 
   weapon11=20mmOerlikonaa;
   maxAngleDif11=200;
-  onlyTargetCategory11=NFLAG;
+  onlyTargetCategory11=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir11=1 0 0;
 
   weapon12=20mmOerlikonaa;
   maxAngleDif12=200;
-  onlyTargetCategory12=NFLAG;
+  onlyTargetCategory12=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir12=-1 0 0;
 
   weapon13=20mmOerlikonaa;
   maxAngleDif13=200;
-  onlyTargetCategory13=NFLAG;
+  onlyTargetCategory13=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir13=1 0 0;
 
   weapon14=20mmOerlikonaa;
   maxAngleDif14=200;
-  onlyTargetCategory14=NFLAG;
+  onlyTargetCategory14=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir14=-1 0 0;
 
   weapon15=20mmOerlikonaa;
   maxAngleDif15=270;
-  onlyTargetCategory15=NFLAG;
+  onlyTargetCategory15=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir15=0 0 -1;
 
   weapon16=20mmOerlikonaa;
   maxAngleDif16=270;
-  onlyTargetCategory16=NFLAG;
+  onlyTargetCategory16=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir16=0 0 -1;
 
   weapon17=20mmOerlikonaa;
   maxAngleDif17=270;
-  onlyTargetCategory17=NFLAG;
+  onlyTargetCategory17=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir17=0 0 -1;
 
   weapon18=mk14_533mmtorpedo;
   maxAngleDif18=270;
-  onlyTargetCategory18=LARGESHIP;
+  onlyTargetCategory18=SHIP SUB;
   weaponMainDir18=0 0 1;
 
   weapon19=mk14_533mmtorpedo;
   maxAngleDif19=270;
-  onlyTargetCategory19=LARGESHIP;
+  onlyTargetCategory19=SHIP SUB;
   weaponMainDir19=0 0 1;
 
   weapon1=5in38mk30;
   maxAngleDif1=270;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=5in38mk30;
   maxAngleDif2=270;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=5in38mk30;
   maxAngleDif3=270;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 1;
 
   weapon4=5in38mk30;
   maxAngleDif4=270;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 
   weapon5=5in38mk30;
   maxAngleDif5=270;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=0 0 -1;
 
   weapon6=twin_bofors40mmaa;
   maxAngleDif6=200;
-  onlyTargetCategory6=NFLAG;
+  onlyTargetCategory6=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir6=1 0 0;
 
   weapon7=twin_bofors40mmaa;
   maxAngleDif7=200;
-  onlyTargetCategory7=NFLAG;
+  onlyTargetCategory7=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir7=-1 0 0;
 
   weapon8=twin_bofors40mmaa;
   maxAngleDif8=200;
-  onlyTargetCategory8=NFLAG;
+  onlyTargetCategory8=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir8=1 0 0;
 
   weapon9=twin_bofors40mmaa;
   maxAngleDif9=200;
-  onlyTargetCategory9=NFLAG;
+  onlyTargetCategory9=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir9=-1 0 0;
 }
 

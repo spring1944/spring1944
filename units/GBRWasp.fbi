@@ -62,7 +62,7 @@
 
   weapon1=waspflamethrower;
   maxAngleDif1=15;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

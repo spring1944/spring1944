@@ -66,24 +66,24 @@
   TEDClass=VTOL;
   turnRadius=2200;
   turnRate=50;
-  badTargetCategory=FLAG LIGHTVEH BUILDING NFLAGNAIR;
+  badTargetCategory=FLAG UNARMOURED OPEN BUILDING INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   wingAngle=0.1;
   wingDrag=0.1;
 
   weapon1=m2browningamg;
   maxAngleDif1=10;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
   weapon3=ShVAK20mm;
   maxAngleDif3=10;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=1;
 

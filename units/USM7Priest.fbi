@@ -72,9 +72,9 @@
   badTargetCategory=FLAG;
 
   weapon1=m2he;
-  badTargetCategory1=TANK;
+  badTargetCategory1=OPEN ARMOURED;
   maxAngleDif1=15;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=M2Browning;

@@ -55,7 +55,7 @@
 
   weapon1=zis257mmap;
   maxAngleDif1=70;
-  onlyTargetCategory1=TANK;
+  onlyTargetCategory1=OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

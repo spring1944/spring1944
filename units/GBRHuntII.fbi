@@ -43,32 +43,32 @@
 
   weapon1=gbr4inch45mkxvi;
   maxAngleDif1=270;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=gbr4inch45mkxvi;
   maxAngleDif2=270;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 -1;
 
   weapon3=gbr4inch45mkxvi;
   maxAngleDif3=270;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 -1;
 
   weapon4=quadpompom;
   maxAngleDif4=270;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 
   weapon5=20mmOerlikonaa;
   maxAngleDif5=200;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=1 0 0;
 
   weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
-  onlyTargetCategory6=NFLAG;
+  onlyTargetCategory6=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir6=-1 0 0;
 }
 

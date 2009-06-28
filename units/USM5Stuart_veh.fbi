@@ -67,14 +67,14 @@
   badTargetCategory=FLAG;
 
   weapon1=M637mmCanister;
-  badTargetCategory1=TANK;
-  onlyTargetCategory1=INFTARG;
+  badTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon2=M637mmAP;
-  onlyTargetCategory2=TANK;
+  onlyTargetCategory2=OPEN ARMOURED;
 
   weapon3=M1919A4Browning;
-  onlyTargetCategory3=INFTARG;
+  onlyTargetCategory3=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon4=M2Browning;
   onlyTargetCategory4=AIR;

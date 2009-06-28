@@ -29,7 +29,7 @@
   maxWaterDepth=10;
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=GERObserv.S3O;
   repairable=0;
   seismicDistance=690;
@@ -56,8 +56,8 @@
   badTargetCategory=FLAG;
 
   weapon1=WaltherP38;
-  badTargetCategory1=LIGHTVEH;
-  onlyTargetCategory1=INFTARG;
-  onlyTargetCategory2=NFLAG;
+  badTargetCategory1=UNARMOURED OPEN;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

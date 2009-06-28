@@ -45,7 +45,7 @@
 
   weapon1=dshk;
   maxAngleDif1=270;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

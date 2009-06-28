@@ -51,6 +51,6 @@
   badTargetCategory=FLAG;
 
   weapon1=PTRD;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

@@ -49,10 +49,10 @@
   badTargetCategory=FLAG;
 
   weapon1=BAR;
-  badTargetCategory1=LIGHTVEH;
-  onlyTargetCategory1=INFTARG;
+  badTargetCategory1=UNARMOURED OPEN;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon2=MK2;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

@@ -29,7 +29,7 @@
   maxWaterDepth=5;
   minCloakDistance=230;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=USHAT.S3O;
   seismicSignature=0;
   [sfxtypes] {
@@ -52,9 +52,9 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG INFTARG;
+  badTargetCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon1=M9A1Bazooka;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

@@ -39,9 +39,9 @@
   yardMap=y;
 
   weapon1=ATMine;
-  onlyTargetCategory1=TANK;
+  onlyTargetCategory1=OPEN ARMOURED;
 
   weapon2=ATMineDet;
-  onlyTargetCategory2=NOTHING;
+  onlyTargetCategory2=NONE;
 }
 

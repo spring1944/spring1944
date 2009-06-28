@@ -27,7 +27,7 @@
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=VTOL AIR;
+  noChaseCategory=AIR AIR;
   objectName=RUSZiS5.S3O;
   releaseHeld=1;
   seismicSignature=0;

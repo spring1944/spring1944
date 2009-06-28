@@ -32,7 +32,7 @@
   maxVelocity=4.11;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=INFTARG FLAG AIR;
+  noChaseCategory=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN FLAG AIR;
   objectName=RUSSU100.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -66,7 +66,7 @@
 
   weapon1=D10S100mmAP;
   maxAngleDif1=25;
-  onlyTargetCategory1=TANK;
+  onlyTargetCategory1=OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=.50calproof;

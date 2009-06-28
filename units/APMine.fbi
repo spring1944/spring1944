@@ -39,9 +39,9 @@
   yardMap=y;
 
   weapon1=APMine;
-  onlyTargetCategory1=WEAPON TPORT;
+  onlyTargetCategory1=MINETRIGGER;
 
   weapon2=APMineDet;
-  onlyTargetCategory2=NOTHING;
+  onlyTargetCategory2=NONE;
 }
 

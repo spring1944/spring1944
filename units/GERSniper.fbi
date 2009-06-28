@@ -30,7 +30,7 @@
   maxWaterDepth=20;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG LIGHTVEH TANK AIR BUILDING PLANT;
+  noChaseCategory=FLAG UNARMOURED OPEN OPEN ARMOURED AIR BUILDING;
   objectName=GERSniper.S3O;
   repairable=0;
   seismicDistance=950;
@@ -54,12 +54,12 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG LIGHTVEH BUILDING PLANT;
+  badTargetCategory=FLAG UNARMOURED OPEN BUILDING;
 
   weapon1=K98kscope;
-  badTargetCategory1=LIGHTVEH;
+  badTargetCategory1=UNARMOURED OPEN;
   maxAngleDif1=170;
-  onlyTargetCategory1=INFTARG;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
   weaponMainDir1=0 0 1;
 }
 

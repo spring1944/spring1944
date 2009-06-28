@@ -52,12 +52,12 @@
   yardMap=o;
 
   weapon1=61k37mmaa;
-  badTargetCategory1=NFLAGNAIR;
+  badTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   onlyTargetCategory1=AIR;
 
   weapon2=61k37mmhe;
   badTargetCategory2=AIR;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon3=Large_Tracer;
 }

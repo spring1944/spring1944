@@ -68,18 +68,18 @@
   TEDClass=VTOL;
   turnRadius=2200;
   turnRate=60;
-  badTargetCategory=NOTAIR;
+  badTargetCategory=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   wingAngle=0.1;
   wingDrag=0.1;
 
   weapon1=bk37mmap;
   maxAngleDif1=10;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=bk37mmap;
   maxAngleDif2=10;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

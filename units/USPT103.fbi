@@ -42,33 +42,33 @@
 
   weapon1=mk13torpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=LARGESHIP;
+  onlyTargetCategory1=SHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=mk13torpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=LARGESHIP;
+  onlyTargetCategory2=SHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=mk13torpedo;
   maxAngleDif3=40;
-  onlyTargetCategory3=LARGESHIP;
+  onlyTargetCategory3=SHIP SUB;
   weaponMainDir3=0 0 1;
 
   weapon4=mk13torpedo;
   maxAngleDif4=40;
-  onlyTargetCategory4=LARGESHIP;
+  onlyTargetCategory4=SHIP SUB;
   weaponMainDir4=0 0 1;
 
   weapon5=20mmOerlikonaa;
   maxAngleDif5=270;
-  onlyTargetCategory5=NFLAG;
+  onlyTargetCategory5=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir5=0 0 -1;
 
   weapon6=m2browningaa;
-  onlyTargetCategory6=NFLAG;
+  onlyTargetCategory6=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon7=m2browningaa;
-  onlyTargetCategory7=NFLAG;
+  onlyTargetCategory7=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

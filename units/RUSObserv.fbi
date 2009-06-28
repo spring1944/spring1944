@@ -29,7 +29,7 @@
   maxWaterDepth=10;
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=RUSObserv.S3O;
   repairable=0;
   seismicDistance=690;
@@ -53,10 +53,10 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=FLAG INFTARG;
+  badTargetCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon1=TT33;
-  badTargetCategory1=LIGHTVEH;
-  onlyTargetCategory1=INFTARG;
+  badTargetCategory1=UNARMOURED OPEN;
+  onlyTargetCategory1=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 }
 

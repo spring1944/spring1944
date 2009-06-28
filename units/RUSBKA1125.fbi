@@ -45,20 +45,20 @@
 
   weapon1=F3476mmHE;
   maxAngleDif1=250;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=M2Browning;
   maxAngleDif2=300;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon3=M2Browning;
-  onlyTargetCategory3=NFLAGNAIR;
+  onlyTargetCategory3=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon4=M2Browning;
   maxAngleDif4=250;
-  onlyTargetCategory4=NFLAGNAIR;
+  onlyTargetCategory4=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 }
 

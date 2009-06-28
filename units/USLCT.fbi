@@ -46,12 +46,12 @@
 
   weapon1=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif1=240;
-  onlyTargetCategory1=NFLAG;
+  onlyTargetCategory1=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=1 0 0;
 
   weapon2=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif2=240;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir2=-1 0 0;
 }
 

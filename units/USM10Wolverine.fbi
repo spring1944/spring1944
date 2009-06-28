@@ -33,7 +33,7 @@
   maxVelocity=3.65;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=USM10Wolverine.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -63,10 +63,10 @@
   trackWidth=18;
   turninplace=0;
   turnRate=280;
-  badTargetCategory=FLAG INFTARG;
+  badTargetCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon1=M7AP;
-  onlyTargetCategory1=TANK;
+  onlyTargetCategory1=OPEN ARMOURED;
 
   weapon2=M2BrowningAA;
   onlyTargetCategory2=AIR;

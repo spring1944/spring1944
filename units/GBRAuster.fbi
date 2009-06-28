@@ -63,7 +63,7 @@
   steeringmode=1;
   TEDClass=VTOL;
   turnRate=50;
-  badTargetCategory=NOTAIR;
+  badTargetCategory=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   wingAngle=0.1;
   wingDrag=0.1;
 }

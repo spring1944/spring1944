@@ -59,9 +59,9 @@
 
   weapon1=MG34;
   maxAngleDif1=360;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 -1;
-  onlyTargetCategory5=NFLAGNAIR;
+  onlyTargetCategory5=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon6=M2Flamethrower;
   maxAngleDif6=80;

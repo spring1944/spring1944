@@ -43,12 +43,12 @@
 
   weapon1=533mmtorpedo; //450mmtorp;
   maxAngleDif1=60;
-  onlyTargetCategory1=LARGESHIP;
+  onlyTargetCategory1=SHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=533mmtorpedo; //450mmtorp;
   maxAngleDif2=60;
-  onlyTargetCategory2=LARGESHIP;
+  onlyTargetCategory2=SHIP SUB;
   weaponMainDir2=0 0 1;
 }
 

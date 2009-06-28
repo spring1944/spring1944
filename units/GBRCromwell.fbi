@@ -68,14 +68,14 @@
   badTargetCategory=FLAG;
 
   weapon1=QF75mmHE;
-  badTargetCategory1=TANK;
-  onlyTargetCategory1=NFLAGNAIR;
+  badTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon2=QF75mmAP;
-  onlyTargetCategory2=TANK;
+  onlyTargetCategory2=OPEN ARMOURED;
 
   weapon3=Bren;
-  onlyTargetCategory3=INFTARG;
+  onlyTargetCategory3=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon4=.50calproof;
 

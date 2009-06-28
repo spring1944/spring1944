@@ -50,22 +50,22 @@
 
   weapon1=533mmtorpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=LARGESHIP;
+  onlyTargetCategory1=SHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=533mmtorpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=LARGESHIP;
+  onlyTargetCategory2=SHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=twin_dshk;
   maxAngleDif3=270;
-  onlyTargetCategory3=NFLAG;
+  onlyTargetCategory3=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir3=0 0 -1;
 
   weapon4=twin_dshk;
   maxAngleDif4=270;
-  onlyTargetCategory4=NFLAG;
+  onlyTargetCategory4=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir4=0 0 -1;
 
   weapon5=Medium_Tracer;

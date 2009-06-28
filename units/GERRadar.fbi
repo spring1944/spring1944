@@ -36,7 +36,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   yardMap=ooooooooo;
-  onlyTargetCategory1=NFLAGNAIR;
-  onlyTargetCategory2=NFLAG;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
+  onlyTargetCategory2=AIR INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

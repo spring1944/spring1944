@@ -51,12 +51,12 @@
   yardMap=o;
 
   weapon1=bofors40mmaa;
-  badTargetCategory1=NFLAGNAIR;
+  badTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   onlyTargetCategory1=AIR;
 
   weapon2=bofors40mmhe;
   badTargetCategory2=AIR;
-  onlyTargetCategory2=NFLAGNAIR;
+  onlyTargetCategory2=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon3=Large_Tracer;
 }

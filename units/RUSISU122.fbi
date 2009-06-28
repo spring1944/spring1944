@@ -32,7 +32,7 @@
   maxVelocity=1.4;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=VTOL AIR;
+  noChaseCategory=AIR AIR;
   objectName=RUSISU122.S3O;
   onoffable=1;
   radarDistanceJam=0;
@@ -65,16 +65,16 @@
   trackWidth=22;
   turninplace=0;
   turnRate=100;
-  badTargetCategory=VTOL;
+  badTargetCategory=AIR;
 
   weapon1=D25122mmHE;
   maxAngleDif1=25;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 
   weapon2=D25122mmAP;
   maxAngleDif2=25;
-  onlyTargetCategory2=TANK;
+  onlyTargetCategory2=OPEN ARMOURED;
   weaponMainDir2=0 0 1;
 
   weapon4=.50calproof;

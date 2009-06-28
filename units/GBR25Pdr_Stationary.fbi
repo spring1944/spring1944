@@ -59,7 +59,7 @@
 
   weapon1=25PdrHE;
   maxAngleDif1=35;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

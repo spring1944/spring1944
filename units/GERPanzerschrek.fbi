@@ -30,7 +30,7 @@
   maxWaterDepth=5;
   minCloakDistance=230;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG INFTARG AIR;
+  noChaseCategory=FLAG INFANTRY DEPLOYED BUILDING UNARMOURED OPEN AIR;
   objectName=GERPanzerschrek.S3O;
   repairable=0;
   seismicSignature=0;
@@ -54,9 +54,9 @@
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
-  badTargetCategory=INFTARG;
+  badTargetCategory=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon1=Panzerschrek;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 }
 

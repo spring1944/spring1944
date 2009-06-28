@@ -67,11 +67,11 @@
   badTargetCategory=FLAG;
 
   weapon1=m4105mmhe;
-  badTargetCategory1=TANK;
-  onlyTargetCategory1=NFLAGNAIR;
+  badTargetCategory1=OPEN ARMOURED;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
 
   weapon2=M1919A4Browning;
-  onlyTargetCategory2=INFTARG;
+  onlyTargetCategory2=INFANTRY DEPLOYED BUILDING UNARMOURED OPEN;
 
   weapon3=M2Browning;
   onlyTargetCategory3=AIR;

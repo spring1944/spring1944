@@ -25,7 +25,7 @@
   maxSlope=10;
   maxVelocity=0.5;
   movementClass=TANK_VeryLarge;
-  noChaseCategory=VTOL;
+  noChaseCategory=AIR;
   objectName=GERKarl;
   onoffable=1;
   seismicSignature=0;
@@ -48,7 +48,7 @@
 
   weapon1=GERKarlGeraet;
   maxAngleDif1=10;
-  onlyTargetCategory1=NFLAGNAIR;
+  onlyTargetCategory1=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   weaponMainDir1=0 0 1;
 }
 

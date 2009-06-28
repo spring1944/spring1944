@@ -62,10 +62,10 @@
   stealth=1;
   TEDClass=VTOL;
   turnRate=500;
-  badTargetCategory=NOTAIR;
+  badTargetCategory=INFANTRY SHIP DEPLOYED BUILDING UNARMOURED OPEN ARMOURED;
   workerTime=1000;
 
   weapon1=trenchmaker;
-  onlyTargetCategory1=ABSOLUTELYNOTHING;
+  onlyTargetCategory1=NONE;
 }
 
