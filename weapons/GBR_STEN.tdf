@@ -13,7 +13,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=5;
+    default=80;
   }
   duration=0.01;
   energyPerShot=0;
@@ -57,7 +57,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=1.0625;
+    default=17;
   }
   duration=0.01;
   explosionGenerator=custom:Bullet;

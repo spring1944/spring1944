@@ -200,7 +200,9 @@ for _, weaponDef in pairs(WeaponDefs) do
       local mults = damageTypes[damageType]
       if mults then
         for armorType, mult in pairs(mults) do
-          if not damage[armorType] then
+          --you can change the default damage; all damages are based on original default however
+          --other explicit damages override calculated ones
+          if not damage[armorType] or armorType == "default" then
             damage[armorType] = defaultDamage * mult
           end
         end

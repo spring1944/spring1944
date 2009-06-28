@@ -15,7 +15,7 @@
     fearid=401;
   }
   [damage] {
-    default=39.0625;
+    default=625;
   }
   duration=0.015;
   explosionGenerator=custom:Bullet;

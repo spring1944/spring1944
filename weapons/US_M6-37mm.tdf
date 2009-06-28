@@ -56,7 +56,7 @@
     fearid=301;
   }
   [damage] {
-    default=9.375;
+    default=150;
   }
   duration=0.01;
   edgeEffectiveness=1;

@@ -9,7 +9,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=2.5;
+    default=40;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;

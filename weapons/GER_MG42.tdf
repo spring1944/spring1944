@@ -16,7 +16,7 @@
     fearid=301;
   }
   [damage] {
-    default=2.0625;
+    default=33;
   }
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
@@ -58,7 +58,7 @@
     fearid=301;
   }
   [damage] {
-    default=2.0625;
+    default=33;
   }
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
@@ -95,7 +95,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=3.5;
+    default=56;
   }
   duration=0.02;
   explosionGenerator=custom:Bullet;
@@ -131,7 +131,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=1.75;
+    default=28;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=1;

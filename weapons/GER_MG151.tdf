@@ -12,7 +12,7 @@
     fearid=301;
   }
   [damage] {
-    default=3.125;
+    default=50;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=10;

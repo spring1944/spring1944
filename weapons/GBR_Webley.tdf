@@ -13,7 +13,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=2.1875;
+    default=35;
   }
   duration=0.025;
   explosionGenerator=custom:Bullet;
