@@ -4,7 +4,7 @@
   energy=500;
   featureDead=Debris_Large;
   footprintX=2;
-  footprintZ=3;
+  footprintZ=2;
   object=USM7Priest_Destroyed.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;

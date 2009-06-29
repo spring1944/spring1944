@@ -3,8 +3,8 @@
   damage=626;
   energy=1000;
   featureDead=USM4A3105Sherman_Destroyed;
-  footprintX=3;
-  footprintZ=3;
+  footprintX=2;
+  footprintZ=2;
   object=USM4A3105_Damaged.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;

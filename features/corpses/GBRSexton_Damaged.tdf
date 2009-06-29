@@ -3,8 +3,8 @@
   damage=2000;
   energy=500;
   featureDead=Debris_Large;
-  footprintX=3;
-  footprintZ=3;
+  footprintX=2;
+  footprintZ=2;
   object=GBRSexton_Destroyed.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
