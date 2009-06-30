@@ -4,7 +4,6 @@ local damagedefs = {
   smallarm = {
     infantry = 1,
     guns = 1,
-    planes = 1,
     unarmouredvehicles = 0.375,
     lightbuildings = 0.25,
     default = 0.125,
