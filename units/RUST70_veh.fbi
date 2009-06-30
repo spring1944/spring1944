@@ -2,7 +2,7 @@
   unitname=RUST70_veh;
   name=T-70/M42;
   description=Light Tank;
-  acceleration=0.05;
+  acceleration=0.051;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -31,7 +31,7 @@
   mass=2750;
   maxDamage=920;
   maxSlope=2;
-  maxVelocity=4.11;
+  maxVelocity=3.33;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

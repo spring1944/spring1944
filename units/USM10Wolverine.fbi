@@ -2,7 +2,7 @@
   unitname=USM10Wolverine;
   name=M10 GMC Wolverine;
   description=Tank Destroyer;
-  acceleration=0.05;
+  acceleration=0.052;
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=2903;
   maxSlope=2;
-  maxVelocity=3.65;
+  maxVelocity=3.11;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;

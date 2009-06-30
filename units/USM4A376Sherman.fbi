@@ -30,7 +30,7 @@
   mass=2750;
   maxDamage=3365;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=3.11;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

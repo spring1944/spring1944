@@ -2,7 +2,7 @@
   unitname=GERPanzerIII;
   name=Pzkpfw III Ausf G-L;
   description=Light Combat Tank;
-  acceleration=0.05;
+  acceleration=0.047;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=2130;
   maxSlope=2;
-  maxVelocity=3.05;
+  maxVelocity=2.96;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

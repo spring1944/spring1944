@@ -2,7 +2,7 @@
   unitname=GBRCromwellMkVI;
   name=A27M Cromwell Mk VI;
   description=Heavily-Armed Support Tank;
-  acceleration=0.05;
+  acceleration=0.071;
   activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;
@@ -31,7 +31,7 @@
   mass=2750;
   maxDamage=2800;
   maxSlope=2;
-  maxVelocity=3.6;
+  maxVelocity=3.85;
   maxWaterDepth=15;
   movementClass=TANK_Heavy;
   noChaseCategory=FLAG AIR;

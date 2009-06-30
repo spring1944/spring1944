@@ -2,7 +2,7 @@
   unitname=RUST60;
   name=T-60/M41;
   description=Tankette;
-  acceleration=0.05;
+  acceleration=0.044;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   mass=1250;
   maxDamage=640;
   maxSlope=2;
-  maxVelocity=3.86;
+  maxVelocity=3.33;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

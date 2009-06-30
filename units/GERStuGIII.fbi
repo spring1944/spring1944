@@ -2,7 +2,7 @@
   unitname=GERStuGIII;
   name=StuG III G;
   description=Turretless Combat Tank;
-  acceleration=0.05;
+  acceleration=0.042;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=2390;
   maxSlope=2;
-  maxVelocity=3.29;
+  maxVelocity=2.96;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

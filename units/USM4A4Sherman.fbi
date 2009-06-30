@@ -2,7 +2,7 @@
   unitname=USM4A4Sherman;
   name=M4A2 Sherman;
   description=Medium Tank;
-  acceleration=0.05;
+  acceleration=0.043;
   activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;
@@ -31,7 +31,7 @@
   mass=2750;
   maxDamage=3180;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=2.96;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

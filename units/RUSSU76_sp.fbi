@@ -2,7 +2,7 @@
   unitname=RUSSU76_sp;
   name=SU-76; //Samokhodnaja Ustanovka 76
   description=Assault Gun;
-  acceleration=0.05;
+  acceleration=0.051;
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=1120;
   maxSlope=2;
-  maxVelocity=3.86;
+  maxVelocity=3.33;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

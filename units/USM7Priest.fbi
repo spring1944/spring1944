@@ -2,7 +2,7 @@
   unitname=USM7Priest;
   name=M7 HMC Priest;
   description=Self-Propelled Howitzer;
-  acceleration=0.05;
+  acceleration=0.065;
   activateWhenBuilt=1;
   airSightDistance=2500;
   brakeRate=0.15;
@@ -33,7 +33,7 @@
   mass=2750;
   maxDamage=2299.7;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=2.89;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

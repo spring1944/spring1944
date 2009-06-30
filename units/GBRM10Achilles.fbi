@@ -2,7 +2,7 @@
   unitname=GBRM10Achilles;
   name=17pdr SP. Achilles;
   description=Heavily-Armed Tank Destroyer;
-  acceleration=0.05;
+  acceleration=0.046;
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=2960;
   maxSlope=2;
-  maxVelocity=3; //3.65
+  maxVelocity=2.96;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;

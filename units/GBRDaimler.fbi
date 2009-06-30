@@ -2,7 +2,7 @@
   unitname=GBRDaimler;
   name=Daimler;
   description=Combat Armored Car;
-  acceleration=0.03;
+  acceleration=0.047;
   airSightDistance=1500;
   brakeRate=0.09;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   mass=1250;
   maxDamage=680.3;
   maxSlope=6;
-  maxVelocity=3.6; //5
+  maxVelocity=5.93;
   maxWaterDepth=15;
   movementClass=TANK_Car;
   noChaseCategory=FLAG AIR;

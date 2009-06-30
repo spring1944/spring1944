@@ -2,7 +2,7 @@
   unitname=RUSSU122;
   name=Su-122;
   description=Self-Propelled 122mm Howitzer;
-  acceleration=0.05;
+  acceleration=0.054;
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=3125;
@@ -28,7 +28,7 @@
   mass=2750;
   maxDamage=3090;
   maxSlope=2;
-  maxVelocity=4.11;
+  maxVelocity=4.07;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

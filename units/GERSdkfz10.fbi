@@ -2,7 +2,7 @@
   unitname=GERSdKfz10;
   name=Sd.Kfz. 10/5 2cm FlaK 38;
   description=Self-Propelled Light Anti-Aircraft;
-  acceleration=0.065;
+  acceleration=0.067;
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
@@ -28,7 +28,7 @@
   mass=1200;
   maxDamage=499;
   maxSlope=6;
-  maxVelocity=4.75;
+  maxVelocity=4.81;
   maxWaterDepth=5;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR;

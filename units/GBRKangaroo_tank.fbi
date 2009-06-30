@@ -2,7 +2,7 @@
   unitname=GBRKangaroo_tank;
   name=Kangaroo;
   description=Heavily Armored Transport;
-  acceleration=0.05;
+  acceleration=0.045;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -26,7 +26,7 @@
   mass=2500;
   maxDamage=2948.4;
   maxSlope=6;
-  maxVelocity=2.8; //4.1
+  maxVelocity=2.96;
   maxWaterDepth=15;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR;

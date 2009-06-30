@@ -2,7 +2,7 @@
   unitname=USM8Greyhound;
   name=M8 Greyhound;
   description=Armoured Car;
-  acceleration=0.03;
+  acceleration=0.047;
   airSightDistance=2500;
   brakeRate=0.09;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   mass=1250;
   maxDamage=780.2;
   maxSlope=6;
-  maxVelocity=7;
+  maxVelocity=7.11;
   maxWaterDepth=15;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR;

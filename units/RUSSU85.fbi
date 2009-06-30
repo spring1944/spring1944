@@ -2,7 +2,7 @@
   unitname=RUSSU85;
   name=Su-85;
   description=Tank Destroyer;
-  acceleration=0.05;
+  acceleration=0.056;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   mass=2750;
   maxDamage=2960;
   maxSlope=2;
-  maxVelocity=4.11;
+  maxVelocity=4.07;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;

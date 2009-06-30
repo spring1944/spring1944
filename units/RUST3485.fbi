@@ -2,7 +2,7 @@
   unitname=RUST3485;
   name=T-34-85;
   description=Advanced Medium Tank;
-  acceleration=0.05;
+  acceleration=0.052;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=3000;
   maxDamage=3200;
   maxSlope=2;
-  maxVelocity=3.96;
+  maxVelocity=4.07;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

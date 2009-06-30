@@ -2,7 +2,7 @@
   unitname=RUSIS2;
   name=IS-2 M1944;
   description=Heavy Tank;
-  acceleration=0.035;
+  acceleration=0.043;
   airSightDistance=1500;
   brakeRate=0.105;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=4500;
   maxDamage=4600;
   maxSlope=2;
-  maxVelocity=1.6;
+  maxVelocity=2.74;
   maxWaterDepth=15;
   movementClass=TANK_Heavy;
   noChaseCategory=FLAG AIR;

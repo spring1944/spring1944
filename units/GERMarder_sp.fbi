@@ -2,7 +2,7 @@
   unitname=GERMarder;
   name=Panzerjager Marder;
   description=Cheap Turretless Tank Destroyer;
-  acceleration=0.05;
+  acceleration=0.048;
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   leaveTracks=1;
   maxDamage=1050;
   maxSlope=5;
-  maxVelocity=2.6;
+  maxVelocity=3.11;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;

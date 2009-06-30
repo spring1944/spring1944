@@ -2,7 +2,7 @@
   unitname=GBRCromwell;
   name=A27M Cromwell Mk IV;
   description=Medium Support Tank;
-  acceleration=0.05;
+  acceleration=0.071;
   activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;

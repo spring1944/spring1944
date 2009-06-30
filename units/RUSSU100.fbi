@@ -2,7 +2,7 @@
   unitname=RUSSU100;
   name=Su-100;
   description=Heavy Tank Destroyer;
-  acceleration=0.05;
+  acceleration=0.053;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -29,7 +29,7 @@
   mass=2750;
   maxDamage=3160;
   maxSlope=2;
-  maxVelocity=4.11;
+  maxVelocity=3.7;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;

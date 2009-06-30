@@ -2,7 +2,7 @@
   unitname=RUST3476;
   name=T-34;
   description=Medium Tank;
-  acceleration=0.05;
+  acceleration=0.054;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2750;
   maxDamage=3090;
   maxSlope=2;
-  maxVelocity=4.11;
+  maxVelocity=4.07;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

@@ -2,7 +2,7 @@
   unitname=GERSdKfz250;
   name=Sd.Kfz. 250/9;
   description=Light Infantry Support Halftrack;
-  acceleration=0.065;
+  acceleration=0.058;
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
@@ -28,7 +28,7 @@
   leaveTracks=1;
   maxDamage=570;
   maxSlope=6;
-  maxVelocity=5.2;
+  maxVelocity=4.81;
   maxWaterDepth=5;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR;

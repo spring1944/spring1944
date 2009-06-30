@@ -2,7 +2,7 @@
   unitname=GBRM5Halftrack;
   name=M5 Halftrack;
   description=Infantry Support Transport;
-  acceleration=0.065;
+  acceleration=0.051;
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
@@ -27,7 +27,7 @@
   mass=1000;
   maxDamage=930;
   maxSlope=6;
-  maxVelocity=4.1;
+  maxVelocity=5.04;
   maxWaterDepth=5;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR;

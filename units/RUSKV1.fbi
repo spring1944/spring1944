@@ -2,7 +2,7 @@
   unitname=RUSKV1;
   name=KV-1 M1942;
   description=Heavy Support Tank;
-  acceleration=0.035;
+  acceleration=0.045;
   airSightDistance=1500;
   brakeRate=0.105;
   buildCostEnergy=0;
@@ -28,7 +28,7 @@
   mass=4500;
   maxDamage=4450;
   maxSlope=2;
-  maxVelocity=1.5;
+  maxVelocity=2.15;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

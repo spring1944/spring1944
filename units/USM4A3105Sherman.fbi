@@ -2,7 +2,7 @@
   unitname=USM4A3105Sherman;
   name=M4A3(105) Sherman;
   description=Support Tank;
-  acceleration=0.05;
+  acceleration=0.049;
   activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;
@@ -31,7 +31,7 @@
   mass=2750;
   maxDamage=3150;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=2.52;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

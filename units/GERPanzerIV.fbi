@@ -2,7 +2,7 @@
   unitname=GERPanzerIV;
   name=Pzkpfw IV Ausf G-J;
   description=Medium Combat Tank;
-  acceleration=0.05;
+  acceleration=0.038;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -30,7 +30,7 @@
   mass=2500;
   maxDamage=2600;
   maxSlope=2;
-  maxVelocity=2.9;
+  maxVelocity=2.81;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

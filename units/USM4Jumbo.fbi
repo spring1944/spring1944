@@ -2,7 +2,7 @@
   unitname=USM4Jumbo;
   name=M4 Sherman Jumbo;
   description=Uparmored (Heavy) Tank;
-  acceleration=0.05;
+  acceleration=0.035;
   activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;
@@ -31,7 +31,7 @@
   mass=3250;
   maxDamage=4267.2;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=2.59;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;

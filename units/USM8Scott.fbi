@@ -2,7 +2,7 @@
   unitname=USM8Scott;
   name=M8 Scott GMC;
   description=Infantry Support Tank;
-  acceleration=0.05;
+  acceleration=0.065;
   activateWhenBuilt=1;
   airSightDistance=2500;
   brakeRate=0.15;
@@ -30,7 +30,7 @@
   mass=2750;
   maxDamage=1520;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxVelocity=4.3;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR;
