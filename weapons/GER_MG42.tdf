@@ -95,7 +95,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=56;
+    default=33;
   }
   duration=0.02;
   explosionGenerator=custom:Bullet;
@@ -131,7 +131,7 @@
     damagetype=smallarm;
   }
   [damage] {
-    default=28;
+    default=33;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=1;
