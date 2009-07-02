@@ -12,7 +12,7 @@
     fearid=301;
   }
   [damage] {
-    default=50;
+    default=60;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=10;
@@ -47,7 +47,7 @@
     fearid=301;
   }
   [damage] {
-    default=400;
+    default=36;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;

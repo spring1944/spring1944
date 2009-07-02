@@ -14,7 +14,7 @@
     damagetype=kinetic;
   }
   [damage] {
-    default=2816; //shell weight in g * 0.3 + 100
+    default=2816;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Medium;
