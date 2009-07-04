@@ -68,9 +68,12 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #define placeholder_EFFECT04 1024+4
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
-#define MG_MUZZLEFLASH 1024+7
-#define XSMALL_MUZZLEFLASH 1024+8
-#define XSMALL_MUZZLEDUST 1024+9
+#define MG_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEFLASH 1024+6
+#define XSMALL_MUZZLEDUST 1024+7
+#define MEDIUM_Muzzleflash	1024+8
+#define MEDIUM_MuzzleDust	1024+9
+
 // tracers
 #define SMALL_TRACER 	2048+12
 #define MEDIUM_TRACER 	2048+13
@@ -351,11 +354,13 @@ AimWeapon5(heading, pitch)
 
 FireWeapon5()
 {
-	show flare6_1;
+	//show flare6_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare6_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare6_1;
 	move barrel6_1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel6_1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide flare6_1;
+	//hide flare6_1;
 }
 
 QueryWeapon6(piecenum)
@@ -382,11 +387,13 @@ AimWeapon6(heading, pitch)
 
 FireWeapon6()
 {
-	show flare6_2;
+	//show flare6_2;
+	emit-sfx XSMALL_MUZZLEFLASH from flare6_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare6_1;
 	move barrel6_2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel6_2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide flare6_2;
+	//hide flare6_2;
 }
 
 QueryWeapon7(piecenum)
