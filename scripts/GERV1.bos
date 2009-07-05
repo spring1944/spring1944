@@ -1,6 +1,6 @@
 #include "constants.h"
 
-piece  base, missile, exhaust;
+piece  base, exhaust;
 
 static-var bIsMoving;
 
@@ -72,12 +72,12 @@ SweetSpot(piecenum)
 
 AimFromWeapon1(piecenum)
 {
-	piecenum = missile;
+	piecenum = base;
 }
 
 QueryWeapon1(piecenum)
 {
-	piecenum = missile;
+	piecenum = base;
 }
 
 AimWeapon1(heading, pitch)
@@ -94,5 +94,5 @@ FireWeapon1()
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode missile type SHATTER;
+	explode base type SHATTER;
 }
