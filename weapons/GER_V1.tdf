@@ -1,0 +1,31 @@
+[v1] {
+  name=V1 missile;
+  areaOfEffect=128;
+  ballistic=1;
+  cegTag=BazookaTrail;
+  [customParams] {
+    damageType=explosive;
+  }
+  [damage] {
+    default=20000;
+  }
+  explosionGenerator=custom:HE_Medium;
+  fireStarter=0;
+  flightTime=1;
+  model=GERV1;
+  range=360;
+  reloadTime=10;
+  rendertype=1;
+  soundHit=GEN_Explo_3;
+  soundTrigger=0;
+  startVelocity=10;
+  targetMoveError=0.075;
+  tolerance=6000;
+  trajectoryHeight=0.1;
+  turret=1;
+  weaponAcceleration=2000;
+  weaponTimer=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=1000;
+}
+
