@@ -249,33 +249,33 @@ function gadget:GameFrame(n)
 					reloadFrame = {},
 				}
 				for weaponNum = 0, ud.customParams.weaponswithammo do
-						vehicles[unitID].reloadFrame[weaponNum] = 0
+					vehicles[unitID].reloadFrame[weaponNum] = 0
 				end
 			end
 		end
 	end
-	if next(newVehicles) then
-		local frame = GetGameFrame()
-		for unitID in pairs(newVehicles) do
-			local unitDefID = GetUnitDefID(unitID)
-			if unitDefID then
-				local ud = UnitDefs[unitDefID]
-				local ammo = GetUnitRulesParam(unitID, "ammo")
-				vehicles[unitID] = {
-					ammoLevel = ammo,
-					reloadFrame = {},
-				}
-				for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
-					vehicles[unitID].reloadFrame[weaponNum] = 0
-					if ammo == 0 then
-						SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
+	if n > (initFrame+4) then
+		if next(newVehicles) then
+			local frame = GetGameFrame()
+			for unitID in pairs(newVehicles) do
+				local unitDefID = GetUnitDefID(unitID)
+				if unitDefID then
+					local ud = UnitDefs[unitDefID]
+					local ammo = GetUnitRulesParam(unitID, "ammo")
+					vehicles[unitID] = {
+						ammoLevel = ammo,
+						reloadFrame = {},
+					}
+					for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
+						vehicles[unitID].reloadFrame[weaponNum] = 0
+						if ammo == 0 then
+							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
+						end
 					end
 				end
 			end
+			newVehicles = {}
 		end
-		newVehicles = {}
-	end
-	if n > (initFrame+4) then
 		if n % (3*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				--skip units which are being transported
