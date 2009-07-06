@@ -11,7 +11,7 @@
     fearid=301;
   }
   [damage] {
-    default=25;
+    default=22;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;
