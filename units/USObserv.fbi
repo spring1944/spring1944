@@ -29,7 +29,7 @@
   maxWaterDepth=10;
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED HARDVEH;
   objectName=USObserv.S3O;
   repairable=0;
   seismicDistance=690;
