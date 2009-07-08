@@ -204,6 +204,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitDestroyed(unitID)
+	newVehicles[unitID] = nil
 	vehicles[unitID] = nil
 	ammoSuppliers[unitID] = nil
 end
@@ -256,7 +257,6 @@ function gadget:GameFrame(n)
 	end
 	if n > (initFrame+4) then
 		if next(newVehicles) then
-			local frame = GetGameFrame()
 			for unitID in pairs(newVehicles) do
 				local unitDefID = GetUnitDefID(unitID)
 				if unitDefID then
@@ -269,7 +269,7 @@ function gadget:GameFrame(n)
 					for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
 						vehicles[unitID].reloadFrame[weaponNum] = 0
 						if ammo == 0 then
-							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = frame + 99999})
+							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
 						end
 					end
 				end
