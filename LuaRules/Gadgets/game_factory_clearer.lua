@@ -91,7 +91,7 @@ function gadget:GameFrame(n)
       local unitDef = UnitDefs[unitDefID]
       local vx, vy, vz = GetUnitVelocity(unitToMove)
       local vss = vx * vx + vz * vz
-      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 and vss < PUSH_SPEED then
+      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 and vss < PUSH_SPEED * 0.5 then
         local ux, uy, uz = GetUnitPosition(unitToMove)
         SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
       end
