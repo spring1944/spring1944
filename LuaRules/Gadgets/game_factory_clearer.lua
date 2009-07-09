@@ -24,6 +24,7 @@ end
 local infos = {}
 
 local PUSH_SPEED = 0.5
+local PUSH_THRESHOLD = 0.25 * PUSH_SPEED * PUSH_SPEED
 
 ----------------------------------------------------------------
 --speedups
@@ -89,11 +90,13 @@ function gadget:GameFrame(n)
       local unitToMove = unitsToMove[i]
       local unitDefID = GetUnitDefID(unitToMove)
       local unitDef = UnitDefs[unitDefID]
-      local vx, vy, vz = GetUnitVelocity(unitToMove)
-      local vss = vx * vx + vz * vz
-      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 and vss < PUSH_SPEED * 0.5 then
-        local ux, uy, uz = GetUnitPosition(unitToMove)
-        SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
+      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 then
+        local vx, vy, vz = GetUnitVelocity(unitToMove)
+        local vss = vx * vx + vz * vz
+        if vss < PUSH_THRESHOLD then
+          local ux, uy, uz = GetUnitPosition(unitToMove)
+          SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
+        end
       end
     end
   end
