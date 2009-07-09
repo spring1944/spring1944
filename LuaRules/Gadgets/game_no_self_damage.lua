@@ -5,7 +5,7 @@ function gadget:GetInfo()
     author    = "Evil4Zerggin",
     date      = "8 July 2008",
     license   = "GNU LGPL, v2.1 or later",
-    layer     = 0,
+    layer     = 100,
     enabled   = true  --  loaded by default?
   }
 end
