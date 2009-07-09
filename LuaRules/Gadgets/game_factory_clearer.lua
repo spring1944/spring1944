@@ -82,7 +82,7 @@ function gadget:GameFrame(n)
     local facing = info[5]
     if facing == 0 then pushZ = PUSH_SPEED
     elseif facing == 1 then pushX = PUSH_SPEED
-    elseif facint == 2 then pushZ = -PUSH_SPEED
+    elseif facing == 2 then pushZ = -PUSH_SPEED
     else pushX = -PUSH_SPEED
     end
     for i=1, #unitsToMove do
