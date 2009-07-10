@@ -65,7 +65,7 @@
   wingDrag=0.1;
 
   weapon1=v1;
-  weaponMainDir1=0 0 1;
   maxAngleDif1=30;
+  weaponMainDir1=0 0 1;
 }
 

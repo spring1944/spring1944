@@ -50,7 +50,7 @@
   badTargetCategory=OPENVEH FLAG SOFTVEH;
 
   weapon1=DP;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer_Green;
 }

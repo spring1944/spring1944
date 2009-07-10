@@ -60,7 +60,7 @@
   weapon1=MosinNagantPU;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

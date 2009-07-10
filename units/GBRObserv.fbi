@@ -57,6 +57,6 @@
 
   weapon1=Webley;
   badTargetCategory1=OPENVEH SOFTVEH;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 }
 
