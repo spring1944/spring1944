@@ -1,13 +1,12 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, brakeleft, brakeright, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
-#define SIG_AIM_3	8 // AA MG
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
@@ -20,10 +19,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 //hiding FX emit points
 #define FX_HIDE\
 	hide flare;\
-	hide brakeleft;\
-	hide brakeright;\
-	hide coaxflare;\
-	hide aaflare;
+	hide coaxflare;
 
 // definitions for RockUnit_Set
 #define ROCK_SPEED	<50> // heavier units should rock less
@@ -39,8 +35,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 // definitions for turret movement
 #define TURR_TRAVERSE	<29>
 #define TURR_ELEVATE	<13>
-#define AA_TRAVERSE		<225>
-#define AA_ELEVATE		<150>
 #define COAX_ARC		<15>
 
 // definitions for weapons behaviour
@@ -69,8 +63,9 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define MEDIUM_TRACER 	2048+6
 
 treads() 
-{ 
-   while( TRUE ) 
+{
+// FIXME - model lacks setup for animated threads
+/*   while( TRUE ) 
    { 
         if(bMoving) 
            { 
@@ -87,7 +82,7 @@ treads()
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } 
+   } */
 }
 
 Create()
@@ -194,8 +189,6 @@ FireWeapon1()
 	//emit-sfx 1  from flare;
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
@@ -243,8 +236,6 @@ FireWeapon2()
 	// Do SFX - done!
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
@@ -289,7 +280,8 @@ AimWeapon3(heading, pitch)
 FireWeapon3()
 	{
 	rock = FALSE;
-	
+	// Shot3() takes care of MG flare
+/*	
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 109;
 	emit-sfx SMALL_TRACER from coaxflare;
@@ -303,59 +295,14 @@ FireWeapon3()
 	sleep 109;
 	emit-sfx SMALL_TRACER from coaxflare;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
+	sleep 109;*/
 	return(0);
 	}
-	
-// Weapon 4 - AA MG
-QueryWeapon4 (piecenum)
-	{
-	piecenum = aaFlare;
-	}
 
-AimFromWeapon4 (piecenum)
-	{
-	piecenum = aaGun;
-	}
-
-AimWeapon4(heading, pitch)
-	{
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
-
-	// thanks to Fang and zwzsg for this!
-	turn aaTurret to y-axis heading - <180> speed AA_TRAVERSE; 
-	turn aaGun to x-axis 0 + pitch speed AA_ELEVATE; 
-	wait-for-turn aaTurret around y-axis; 
-	wait-for-turn aaGun around x-axis;
-	
-	start-script RestoreAfterDelay();
-	return (1);
-	}
-
-FireWeapon4()
-	{
-	rock = FALSE;
-	
-	// TODO: nice SFX
-	emit-sfx MEDIUM_TRACER from aaflare;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	sleep 109;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	sleep 109;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	sleep 109;
-	emit-sfx MEDIUM_TRACER from aaflare;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	sleep 109;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	sleep 109;
-	emit-sfx MG_MUZZLEFLASH from aaflare;
-	emit-sfx MEDIUM_TRACER from aaflare;
-	sleep 109;
-	
-	return(0);
-	}
+Shot3(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+}
 
 AimFromWeapon5(piecenum) //bulletproof effect
 {
