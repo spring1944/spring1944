@@ -6,16 +6,16 @@
   airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=4900;
+  buildCostMetal=4500;
   buildPic=GERNebelwerfer.png;
-  buildTime=980;
+  buildTime=900;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;
   [customParams] {
     lowammolevel=1;
     maxammo=1;
-    weaponcost=180;
+    weaponcost=210;
     weaponswithammo=0;
   }
   explodeAs=Vehicle_Explosion_Sm;

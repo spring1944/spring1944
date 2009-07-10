@@ -57,6 +57,9 @@ function gadget:GameFrame(n)
 	  for unitID, funcID in pairs(scriptIDs) do
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
 		--SendToUnsynced("supressed", unitID, supression)
+			if suppression > 10 then 
+				GG.surrender(unitID, 10)
+			end
 			SetUnitRulesParam(unitID, "suppress", suppression)
 	  end
 	end

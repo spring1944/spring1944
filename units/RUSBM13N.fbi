@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=4875;
-  buildTime=975;
+  buildCostMetal=5625;
+  buildTime=1125;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=RUSBM13N_Destroyed;

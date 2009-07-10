@@ -36,7 +36,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 3000,
+			cost = 3750,
 			delay = 15,
 			units = {
 				"gbrspitfiremkxiv",
@@ -48,7 +48,7 @@ local planeDefs = {
 		{
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
-			cost = 4000,
+			cost = 5000,
 			delay = 45,
 			units = {
 				"gbrspitfiremkix",
@@ -58,7 +58,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 4500,
+			cost = 5625,
 			delay = 30,
 			units = {
 				"gbrtyphoon",
@@ -90,7 +90,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 2750,
+			cost = 3500,
 			delay = 15,
 			units = {
 				"gerbf109",
@@ -102,7 +102,7 @@ local planeDefs = {
 		{
 			--name = "Air Superiority Fighter",
 			--shortname = "ASF",
-			cost = 3000,
+			cost = 4250,
 			delay = 30,
 			units = {
 				"gerfw190",
@@ -114,7 +114,7 @@ local planeDefs = {
 		{
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
-			cost = 4000,
+			cost = 5000,
 			delay = 45,
 			units = {
 				"gerfw190g",
@@ -124,7 +124,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 3000,
+			cost = 4250,
 			delay = 20,
 			units = {
 				"gerju87g",
@@ -157,7 +157,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 2500,
+			cost = 3375,
 			delay = 15,
 			units = {
 				"rusyak3",
@@ -169,7 +169,7 @@ local planeDefs = {
 		{
 			--name = "Air Superiority Fighter",
 			--shortname = "ASF",
-			cost = 3500,
+			cost = 4375,
 			delay = 30,
 			units = {
 				"rusla5fn",
@@ -181,7 +181,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 5000,
+			cost = 6250,
 			delay = 40,
 			units = {
 				"rusil2",
@@ -213,7 +213,7 @@ local planeDefs = {
 		{
 			--name = "Interceptor",
 			--shortname = "Int",
-			cost = 3250,
+			cost = 4100,
 			delay = 25,
 			units = {
 				"usp51dmustang",
@@ -225,7 +225,7 @@ local planeDefs = {
 		{
 			--name = "Fighter-Bomber",
 			--shortname = "FB",
-			cost = 4000,
+			cost = 5000,
 			delay = 45,
 			units = {
 				"usp47thunderbolt",
@@ -235,7 +235,7 @@ local planeDefs = {
 		{
 			--name = "Attack Fighter",
 			--shortname = "AF",
-			cost = 4000,
+			cost = 5000,
 			delay = 35,
 			units = {
 				"usp51dmustangga",

@@ -57,7 +57,7 @@
   yardMap=o;
 
   weapon1=Nebelwerfer41;
-  maxAngleDif1=30;
+  maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }

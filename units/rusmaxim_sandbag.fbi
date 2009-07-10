@@ -19,7 +19,7 @@
   footprintX=2;
   footprintZ=2;
   iconType=lightmg;
-  maxDamage=2160;
+  maxDamage=1600;
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=OPENVEH AIR FLAG SOFTVEH;
