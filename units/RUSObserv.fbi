@@ -57,6 +57,6 @@
 
   weapon1=TT33;
   badTargetCategory1=OPENVEH SOFTVEH;
-  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 }
 

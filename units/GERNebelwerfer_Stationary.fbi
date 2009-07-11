@@ -5,11 +5,11 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=1500;
+  buildCostMetal=4500;
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=1000;
+  buildTime=900;
   category=DEPLOYED;
   corpse=GERNebelwerfer_Destroyed;
   [customParams] {

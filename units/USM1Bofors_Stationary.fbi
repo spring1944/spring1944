@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=2;
   buildingGroundDecalSizeY=2;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=1000;
+  buildTime=300;
   category=DEPLOYED;
   corpse=USM1Bofors_Destroyed;
   [customParams] {

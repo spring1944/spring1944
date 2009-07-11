@@ -50,7 +50,7 @@
   badTargetCategory=OPENVEH FLAG SOFTVEH;
 
   weapon1=MG42;
-  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer;
 }

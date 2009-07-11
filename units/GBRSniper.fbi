@@ -58,7 +58,7 @@
   weapon1=Enfield_T;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 

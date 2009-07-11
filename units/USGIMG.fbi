@@ -49,7 +49,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M1919A4Browning;
-  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer;
 }

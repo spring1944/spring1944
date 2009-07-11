@@ -53,7 +53,7 @@
   weapon1=MP40;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlytargetcategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Model24;

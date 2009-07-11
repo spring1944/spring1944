@@ -5,12 +5,12 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=645;
+  buildCostMetal=700;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUSSandbagMG.png;
-  buildTime=430;
+  buildTime=350;
   category=DEPLOYED;
   corpse=SandbagMG_Destroyed;
   [customParams] {
