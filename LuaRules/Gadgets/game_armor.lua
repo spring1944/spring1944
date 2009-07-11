@@ -52,9 +52,6 @@ local PENETRATION_BIAS = 0 --adds "free" penetration to all weapons
 --recommend somewhere around 15-25
 local AP_SCALE = 20
 
---universal multiplier to AP damage, mostly for balance purposes
-local DAMAGE_MULT = 1
-
 ----------------------------------------------------------------
 --locals
 ----------------------------------------------------------------
@@ -184,8 +181,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local penetration = weaponInfo[1] * exp(d * weaponInfo[2])
 	penetration = exp(penetration / AP_SCALE)
 	
-	local apDamage = damage * penetration / (penetration + armor) * DAMAGE_MULT
-	
+	local apDamage = damage * penetration / (penetration + armor)
 	return apDamage
 	
 end
