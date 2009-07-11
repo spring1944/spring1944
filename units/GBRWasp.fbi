@@ -23,7 +23,7 @@
   iconType=flametank;
   leaveTracks=1;
   mass=1250;
-  maxDamage=431.8;
+  maxDamage=520;
   maxSlope=6;
   maxVelocity=3.56;
   maxWaterDepth=15;

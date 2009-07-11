@@ -28,7 +28,7 @@
   maxSlope=25;
   maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=220;
+  minCloakDistance=205;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR;
   objectName=GBRFlamethrower.S3O;

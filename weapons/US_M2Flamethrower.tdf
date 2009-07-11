@@ -6,7 +6,7 @@
   cegTag=Flametrail;
   [customParams] {
     damagetype=fire;
-    fearaoe=75;
+    fearaoe=60;
     fearid=501;
   }
   [damage] {
@@ -20,7 +20,7 @@
   id=76;
   impulseFactor=1e-06;
   lineofsight=1;
-  range=200;
+  range=210;
   reloadTime=1;
   rendertype=1;
   size=0.01;
