@@ -6,9 +6,9 @@
   airSightDistance=2500;
   brakeRate=0.6;
   buildCostEnergy=0;
-  buildCostMetal=200;
+  buildCostMetal=700;
   buildPic=RUSSandbagMG.png;
-  buildTime=1150;
+  buildTime=350;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=RUSsoldier_dead;

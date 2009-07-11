@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.6;
   buildCostEnergy=0;
-  buildCostMetal=200;
-  buildTime=1150;
+  buildCostMetal=800;
+  buildTime=400;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=GBRsoldier_dead;
