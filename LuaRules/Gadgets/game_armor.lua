@@ -1,9 +1,9 @@
 function gadget:GetInfo()
   return {
-    name      = "AP Damage",
-    desc      = "Calculates AP damage.",
+    name      = "Spring 1944 Armor",
+    desc      = "Calculates damage against armor.",
     author    = "Evil4Zerggin",
-    date      = "26 May 2008",
+    date      = "11 July 2008",
     license   = "GNU LGPL, v2.1 or later",
     layer     = 0,
     enabled   = true  --  loaded by default?
