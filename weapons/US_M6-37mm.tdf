@@ -71,7 +71,7 @@
   lineofsight=1;
   movingAccuracy=500;
   noSelfDamage=1;
-  projectiles=140;
+  projectiles=122;
   range=550;
   reloadTime=4.5;
   rendertype=0;
