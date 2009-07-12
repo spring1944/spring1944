@@ -1,11 +1,11 @@
-local versionNumber = "v1.5"
+local versionNumber = "v2.0"
 
 function widget:GetInfo()
 	return {
 		name = "1944 Resource Bars",
 		desc = versionNumber .. " Custom resource bars for Spring 1944",
 		author = "Evil4Zerggin",
-		date = "1 January 2009",
+		date = "11 July 2009",
 		license = "GNU LGPL, v2.1 or later",
 		layer = 1,
 		enabled = true
@@ -13,84 +13,66 @@ function widget:GetInfo()
 end
 
 ------------------------------------------------
---config
+--constants
 ------------------------------------------------
-local lineWidth = 1
-local mainSize = 24
+local mainScaleHeight = 0.045 --height as a proportion of screen height; sets the overall scale of things
+local mainScaleWidth = 0.75 --width as a proportion of screen width
 
---top-right corner
-local mainX, mainY
+local barHeight = 0.125
 
-local supplyEstimateDecayTime = 30
+------------------------------------------------
+--locals
+------------------------------------------------
+local vsx, vsy --viewsize
+local mainSize --size in pixels
+local mainWidth --width in terms of height
 
-function widget:GetConfigData(data)
-	return {
-		mainX = mainX,
-		mainY = mainY,
-		mainSize = mainSize,
-	}
-end
+local barLength --bar length as a proportion of total width
 
-function widget:SetConfigData(data)
-	mainX = data.mainX or 10000
-	mainY = data.mainY or 10000
-	mainSize = data.mainSize or 24
-end
+local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = 0, 0, 0, 0, 0, 0, 0, 0
+local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = 0, 0, 0, 0, 0, 0, 0, 0
+
+local resupplyPeriod = 450 * 30
+local resupplyString = ""
+local lastStor = 1000
+local estimatedSupplySurplus = 1
+
+local activeClick
 
 ------------------------------------------------
 --speedups
 ------------------------------------------------
+local abs = math.abs
+local floor, ceil = math.floor, math.ceil
 
-local GetMouseState = Spring.GetMouseState
-local GetMyTeamID = Spring.GetMyTeamID
+local strFormat = string.format
+
 local GetTeamResources = Spring.GetTeamResources
+local GetMyTeamID = Spring.GetMyTeamID
 local IsGUIHidden = Spring.IsGUIHidden
 local SetShareLevel = Spring.SetShareLevel
 
-local glColor = gl.Color
 local glLineWidth = gl.LineWidth
-local glRect = gl.Rect
-local glCreateList = gl.CreateList
-local glCallList = gl.CallList
-local glDeleteList = gl.DeleteList
+local glSmoothing = gl.Smoothing
+
+local glColor = gl.Color
 local glPolygonMode = gl.PolygonMode
-local glShape = gl.Shape
+
+local glPushMatrix = gl.PushMatrix
+local glPopMatrix = gl.PopMatrix
 local glTranslate = gl.Translate
 local glScale = gl.Scale
-local glLoadIdentity = gl.LoadIdentity
-local glPopMatrix = gl.PopMatrix
-local glPushMatrix = gl.PushMatrix
+local glRotate = gl.Rotate
+
+local glRect = gl.Rect
 local glText = gl.Text
+local glShape = gl.Shape
+
 local GL_LINE = GL.LINE
 local GL_FILL = GL.FILL
+
+local GL_TRIANGLES = GL.TRIANGLES
 local GL_FRONT_AND_BACK = GL.FRONT_AND_BACK
-local GL_QUADS = GL.QUADS
-local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
-local GL_LINE_LOOP = GL.LINE_LOOP
-
-local abs = math.abs
-local ceil = math.ceil
-local floor = math.floor
-local min = math.min
-local max = math.max
-local strFormat = string.format
-
-------------------------------------------------
---vars
-------------------------------------------------
-local once
-local starDisplayList, bulletsDisplayList, shareDisplayList
-local mainX, mainY
-local vsx, vsy
-local activeClick = false
-
-local resupplyString = "?"
-local resupplyResourceUpdates = 0
-local resupplyPeriod = 9000 -- default to 5 minutes
-local recentSupplyUse = 0
-
-local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci
-local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci
 
 ------------------------------------------------
 --util
@@ -113,206 +95,10 @@ local function ToSI(num)
   end
 end
 
-local function ToPercent(num)
-  return strFormat("%.2f%%", num * 100)
-end
-
 local function FramesToTimeString(n)
-	local seconds = n / 30
-	return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
+  local seconds = n / 30
+  return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
 end
-
-local function UpdateResources()
-	local myTeamID = GetMyTeamID()
-	mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
-	eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
-	recentSupplyUse = recentSupplyUse * (supplyEstimateDecayTime - 1) / supplyEstimateDecayTime  + ePull / supplyEstimateDecayTime
-end
-
-------------------------------------------------
---display lists
-------------------------------------------------
-
---size (-1, -1) to (1, 1)
-local function DisplayListStar()
-	local vertices = {
-		{v = {0, 0, 0}},
-
-		{v = {0, 1, 0}},
-		{v = {0.29, 0.4, 0}},
-		{v = {0.95, 0.31, 0}},
-		{v = {0.48, -0.15, 0}},
-		{v = {0.59, -0.81, 0}},
-		{v = {0, -0.5, 0}},
-		{v = {-0.59, -0.81, 0}},
-		{v = {-0.48, -0.15, 0}},
-		{v = {-0.95, 0.31, 0}},
-		{v = {-0.29, 0.4, 0}},
-		{v = {0, 1, 0}},
-	}
-	glLineWidth(2)
-	glShape(GL_TRIANGLE_FAN, vertices)
-end
-
---size (-1, -1) to (1, 1)
-local function DisplayListBullet()
-	local vertices = {
-		{v = {-0.1, -1, 0}},
-		{v = {0.1, -1, 0}},
-		{v = {0.1, -0.9, 0}},
-		{v = {-0.1, -0.9, 0}},
-
-		{v = {-0.1, -0.8, 0}},
-		{v = {0.1, -0.8, 0}},
-		{v = {0.1, 0, 0}},
-		{v = {-0.1, 0, 0}},
-
-		{v = {-0.1, 0, 0}},
-		{v = {0.1, 0, 0}},
-		{v = {0.08, 0.4, 0}},
-		{v = {-0.08, 0.4, 0}},
-
-		{v = {-0.07, 0.4, 0}},
-		{v = {0.07, 0.4, 0}},
-		{v = {0.05, 0.8, 0}},
-		{v = {-0.05, 0.8, 0}},
-
-		{v = {-0.05, 0.8, 0}},
-		{v = {0.05, 0.8, 0}},
-		{v = {0.01, 1, 0}},
-		{v = {-0.01, 1, 0}},
-	}
-	glLineWidth(1)
-	glShape(GL_QUADS, vertices)
-end
-
-
---size (-1, -1) to (1, 1)
-local function DisplayListBullets()
-	glPushMatrix()
-
-	DisplayListBullet()
-	glTranslate(-0.5, 0, 0)
-	DisplayListBullet()
-	glTranslate(1, 0, 0)
-	DisplayListBullet()
-
-	glPopMatrix()
-end
-
---size (-1, -1) to (1, 1) relative to resource bar
-local function DisplayListShare()
-	local verticesBottom = {
-		{v = {0, -0.25, 0}},
-		{v = {-0.03125, -0.75, 0}},
-		{v = {0.03125, -0.75, 0}},
-	}
-
-	local verticesTop = {
-		{v = {0, 0.25, 0}},
-		{v = {0.03125, 0.75, 0}},
-		{v = {-0.03125, 0.75, 0}},
-	}
-	glLineWidth(2)
-	glShape(GL_LINE_LOOP, verticesBottom)
-	glShape(GL_LINE_LOOP, verticesTop)
-end
-
-local function CreateDisplayLists()
-	starDisplayList = glCreateList(DisplayListStar)
-	bulletsDisplayList = glCreateList(DisplayListBullets)
-	shareDisplayList = glCreateList(DisplayListShare)
-end
-
-local function DeleteDisplayLists()
-	glDeleteList(starDisplayList)
-	glDeleteList(bulletsDisplayList)
-	glDeleteList(shareDisplayList)
-end
-
-------------------------------------------------
---click
-------------------------------------------------
-local function MainTransform(x, y)
-	return (x - mainX) / mainSize, (y - mainY) / mainSize
-end
-
-local function GetMShare(tx)
-	local result = (tx + 18) / 16
-	result = max(result, 0)
-	result = min(result, 1)
-	return result
-end
-
-local function GetEShare(tx)
-	local result = (tx - 2) / 16
-	result = max(result, 0)
-	result = min(result, 1)
-	return result
-end
-
-local function GetComponent(x, y)
-	local tx, ty = MainTransform(x, y)
-
-	if (ty > 1 or ty < -1) then return end
-
-	if (tx >= -18 and tx <= -2) then
-		return "mShare"
-	elseif (tx >= 2 and tx <= 18) then
-		return "eShare"
-	elseif (tx >= -20 and tx <= 20) then
-		return "default"
-	end
-end
-
-local function DrawActiveClick()
-	if (not activeClick) then return end
-
-	local mx, my = GetMouseState()
-	local tx, ty = MainTransform(mx, my)
-	if (activeClick == "mShare") then
-		local newShare = GetMShare(tx)
-		local text = "\255\255\255\255Set Command share to " .. ToPercent(newShare)
-		glText(text, tx, ty, 1.5, "r")
-		glPushMatrix()
-			glColor(1, 1, 1, 1)
-			glTranslate(-18, 0, 0)
-			glScale(16, 1, 1)
-			glTranslate(newShare, 0, 0)
-			glCallList(shareDisplayList)
-		glPopMatrix()
-	elseif (activeClick == "eShare") then
-		local newShare = GetEShare(tx)
-		local text = "\255\255\255\255Set Logistics share to " .. ToPercent(newShare)
-		glText(text, tx, ty, 1.5, "r")
-		glPushMatrix()
-			glColor(1, 1, 1, 1)
-			glTranslate(2, 0, 0)
-			glScale(16, 1, 1)
-			glTranslate(newShare, 0, 0)
-			glCallList(shareDisplayList)
-		glPopMatrix()
-	end
-end
-
-local function ReleaseActiveClick(x, y)
-	local tx, ty = MainTransform(x, y)
-
-	if (activeClick == "mShare") then
-		SetShareLevel("metal", GetMShare(tx))
-	elseif (activeClick == "eShare") then
-		SetShareLevel("energy", GetEShare(tx))
-	elseif (activeClick == "default") then
-		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
-		widget:ViewResize(viewSizeX, viewSizeY)
-	end
-
-	activeClick = false
-end
-
-------------------------------------------------
---drawing
-------------------------------------------------
 
 local function ShareColor(sent, reci)
 	if (sent > 0) then
@@ -324,200 +110,213 @@ local function ShareColor(sent, reci)
 	elseif (reci > 0) then
 		glColor(0, 1, 0, 1)
 	else
-		glColor(0.5, 0.5, 0.5, 1)
+		glColor(0.75, 0.75, 0.75, 1)
 	end
 end
 
---main drawing function; size (-20, -1) to (20, 1)
+------------------------------------------------
+--drawing
+------------------------------------------------
+
+local function DrawShareMarker()
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
+  local vertices = {
+    {v = {0, 1, 0}},
+    {v = {2, 3, 0}},
+    {v = {-2, 3, 0}},
+    
+    {v = {0, -1, 0}},
+    {v = {-2, -3, 0}},
+    {v = {2, -3, 0}},
+  }
+  glShape(GL_TRIANGLES, vertices)
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+end
+
+local function DrawCommand()
+  --resource bar
+  glPushMatrix()
+    glTranslate(-mainWidth + 1, -0.5, 0)
+    glScale(barLength, barHeight, 1)
+    glColor(0.375, 0.375, 0.375, 1)
+    glRect(0, -1, 1, 1)
+    glColor(0.75, 0.75, 0.75, 1)
+    glRect(0, -1, mCurr / mStor, 1)
+    
+    glPushMatrix()
+      glTranslate(mShar, 0, 0)
+      glScale(barHeight / barLength, 1, 1)
+      ShareColor(mSent, mReci)
+      DrawShareMarker()
+    glPopMatrix()
+  glPopMatrix()
+  
+  --curr/change
+  glPushMatrix()
+    glTranslate(-mainWidth + 1 + barLength / 2, -1.05, 0)
+    glText("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "c")
+    glText("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "c")
+  glPopMatrix()
+  
+  --storage
+  glPushMatrix()
+    glTranslate(-mainWidth + 1 + barLength, -0.75, 0)
+    glText("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375)
+  glPopMatrix()
+end
+
+local function DrawSupply()
+  --resource bar
+  glPushMatrix()
+    glTranslate(-barLength - 2, -0.5, 0)
+    glScale(barLength, barHeight, 1)
+    glColor(0.5, 0.5, 0, 1)
+    glRect(0, -1, 1, 1)
+    glColor(1, 1, 0, 1)
+    glRect(0, -1, eCurr / eStor, 1)
+    glColor(1, 0, 0, 1)
+    glRect(estimatedSupplySurplus / eCurr, -1, eCurr / eStor, 1)
+    
+    glPushMatrix()
+      glTranslate(eShar, 0, 0)
+      glScale(barHeight / barLength, 1, 1)
+      ShareColor(eSent, eReci)
+      DrawShareMarker()
+    glPopMatrix()
+  glPopMatrix()
+  
+  --curr/resupply
+  glPushMatrix()
+    glTranslate(-2 - barLength / 2, -1.05, 0)
+    glText("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "c")
+    glText("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "c")
+  glPopMatrix()
+  
+  --storage
+  glPushMatrix()
+    glTranslate(-2, -0.75, 0)
+    glText("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
+  glPopMatrix()
+end
+
 local function DrawMain()
-	--background
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-	glColor(0.5, 0.5, 0.5, 0.5)
-	glRect(-20, -1, 20, 1)
-	glColor(0, 0, 0, 1)
-	glRect(-18, -0.25, -2, 0.25)
-	glRect(2, -0.25, 18, 0.25)
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
-	--star icon
-	glPushMatrix()
-		glTranslate(-19, 0, 0)
-		glColor(0.75, 0.75, 0.75, 1)
-		glCallList(starDisplayList)
-	glPopMatrix()
-
-	--bullet icon
-	glPushMatrix()
-		glColor(1, 1, 0, 1)
-		glTranslate(1, 0, 0)
-		glCallList(bulletsDisplayList)
-	glPopMatrix()
-
-	--resources
-
-	local estimatedRemainingE = max(eCurr - resupplyResourceUpdates * recentSupplyUse, 0)
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
-
-	--command
-	glPushMatrix()
-		glColor(0.75, 0.75, 0.75, 1)
-		glTranslate(-18, 0, 0)
-		glScale(16, 1, 1)
-		glRect(0, -0.25, mCurr / mStor, 0.25)
-		glPushMatrix()
-			ShareColor(mSent, mReci)
-			glTranslate(mShar, 0, 0)
-			glCallList(shareDisplayList)
-		glPopMatrix()
-	glPopMatrix()
-
-	--current text
-	glPushMatrix()
-		glTranslate(-10, -1.1, 0)
-		glText("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.75, "c")
-	glPopMatrix()
-
-	--max text
-	glPushMatrix()
-		glTranslate(-2, -0.475, 0)
-		glText("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.75)
-	glPopMatrix()
-
-	--change text
-	glPushMatrix()
-		glTranslate(-10, 0.15, 0)
-		glText("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0, 0.75, "c")
-	glPopMatrix()
-
-	--logistics
-	glPushMatrix()
-		glTranslate(2, 0, 0)
-		glScale(16, 1, 1)
-		glColor(1, 1, 0, 1)
-		glRect(0, -0.25, eCurr / eStor, 0.25)
-		glColor(1, 0, 0, 1)
-		glRect(estimatedRemainingE / eStor, -0.25, eCurr / eStor, 0.25)
-		glPushMatrix()
-			glTranslate(eShar, 0, 0)
-			ShareColor(eSent, eReci)
-			glCallList(shareDisplayList)
-		glPopMatrix()
-	glPopMatrix()
-
-	--current text
-	glPushMatrix()
-		glTranslate(10, -1.1, 0)
-		glText("\255\255\255\1Logistics: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.75, "c")
-	glPopMatrix()
-
-	--max text
-	glPushMatrix()
-		glTranslate(18, -0.475, 0)
-		glText("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.75)
-	glPopMatrix()
-
-	--change text
-	glPushMatrix()
-		glTranslate(10, 0.15, 0)
-		glText("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0, 0.75, "c")
-	glPopMatrix()
-
-
-end
-
-local function ChangeSize(_,_,words)
-	local newSize = tonumber(words[1])
-	if (newSize and newSize >= 1) then
-		mainSize = newSize
-		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
-		widget:ViewResize(viewSizeX, viewSizeY)
-	else
-		Spring.Echo("<1944 Resource Bars>: Invalid size.")
-	end
+  glColor(0, 0, 0, 0.125)
+  glRect(-mainWidth, -1, 0, 0)
+  glPushMatrix()
+    DrawCommand()
+    DrawSupply()
+    --WG.VectorImages.DrawCircle({1, 1, 1}, {1, 1, 1}, 16)
+  glPopMatrix()
 end
 
 ------------------------------------------------
 --callins
 ------------------------------------------------
 function widget:Initialize()
-	if (Game.modShortName ~= "S44") then
-		widgetHandler:RemoveWidget()
-		return
-	end
-	CreateDisplayLists()
-	UpdateResources()
-	Spring.SendCommands("resbar 0")
-	mainX, mainY = mainX or 10000, mainY or 10000
-	once = true
-
-	widgetHandler:AddAction("s44_resbar_size", ChangeSize, nil, "t")
-end
-
-function widget:Shutdown()
-	widgetHandler:RemoveAction("s44_resbar_size")
+  if (Game.modShortName ~= "S44") then
+    widgetHandler:RemoveWidget()
+    return
+  end
+  
+  Spring.SendCommands("resbar 0")
+  
+  local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+  widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
-	if (vsx and vsy) then
-		mainX = mainX + viewSizeX - vsx
-		mainY = mainY + viewSizeY - vsy
-	end
-
-	vsx = viewSizeX
-	vsy = viewSizeY
-
-	local sizeX, sizeY = 20 * mainSize, mainSize
-	--keep panel in-screen
-	if (mainX < sizeX) then
-		mainX = sizeX
-	elseif (mainX > vsx - sizeX) then
-		mainX = vsx - sizeX
-	end
-	if (mainY < sizeY) then
-		mainY = sizeY
-	elseif (mainY > vsy - sizeY) then
-		mainY = vsy - sizeY
-	end
-end
-
-function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	local unitDef = UnitDefs[unitDefID]
-	if (unitDef.customParams.hq == '1') then
-		resupplyPeriod = tonumber(unitDef.customParams.arrivalgap) * 30
-	end
-end
-
-function widget:GameFrame(n)
-	resupplyString = FramesToTimeString(resupplyPeriod - n % resupplyPeriod)
-	if ((resupplyPeriod - n % resupplyPeriod) % 32 == 0) then
-		resupplyResourceUpdates = (resupplyPeriod - n % resupplyPeriod) / 32
-		UpdateResources()
-	end
-end
-
-function widget:Shutdown()
-	DeleteDisplayLists()
-	Spring.SendCommands("resbar 1")
+  vsx = viewSizeX
+  vsy = viewSizeY
+  mainSize = mainScaleHeight * vsy
+  mainWidth = vsx * mainScaleWidth / mainSize
+  barLength = mainWidth / 2 - 3
 end
 
 function widget:DrawScreen()
-	if (once) then
-		local viewSizeX, viewSizeY = widgetHandler:GetViewSizes()
-		widget:ViewResize(viewSizeX, viewSizeY)
-		once = false
-	end
+  glSmoothing(false, true, false)
+  glLineWidth(1)
+  glPushMatrix()
+    glTranslate(vsx, vsy, 0)
+    glScale(mainSize, mainSize, 1)
+    if (not IsGUIHidden()) then
+      DrawMain()
+    end
+  glPopMatrix()
+  glSmoothing(false, false, false)
+end
 
-	glPushMatrix()
-		glTranslate(mainX, mainY, 0)
-		glScale(mainSize, mainSize, 1)
-		if (not IsGUIHidden()) then
-			DrawMain()
-		end
-		DrawActiveClick()
-	glPopMatrix()
+function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+  local unitDef = UnitDefs[unitDefID]
+  if (unitDef.customParams.hq == '1') then
+    resupplyPeriod = tonumber(unitDef.customParams.arrivalgap) * 30
+  end
+end
 
-	glLineWidth(1)
+function widget:GameFrame(n)
+  local myTeamID = GetMyTeamID()
+  mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
+  eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
+  
+  local elapsedSupplyTime = n % resupplyPeriod
+  local remainingSupplyTime = resupplyPeriod - n % resupplyPeriod
+  
+  if remainingSupplyTime == 0 then
+    estimatedSupplySurplus = 1
+    lastStor = eStor
+  else
+    estimatedSupplySurplus = lastStor - (lastStor - eCurr) * resupplyPeriod / elapsedSupplyTime
+    if estimatedSupplySurplus > eStor then
+      estimatedSupplySurplus = eStor
+    elseif estimatedSupplySurplus < 0 then
+      estimatedSupplySurplus = 0
+    end
+  end
+  
+  resupplyString = FramesToTimeString(remainingSupplyTime)
+end
+
+------------------------------------------------
+--mouse
+------------------------------------------------
+
+local function MainTransform(x, y)
+  return (x - vsx) / mainSize, (y - vsy) / mainSize
+end
+
+local function CommandShare(tx)
+  local result = (tx + mainWidth - 1) / barLength
+  if result < 0 then return 0 end
+  if result > 1 then return 1 end
+  return result
+end
+
+local function SupplyShare(tx)
+  local result = (tx + barLength + 2) / barLength
+  if result < 0 then return 0 end
+  if result > 1 then return 1 end
+  return result
+end
+
+local function GetComponent(x, y)
+  local tx, ty = MainTransform(x, y)
+  
+  if ty < 0 and ty > -1 then
+    if tx > -mainWidth + 1 and tx < -mainWidth + barLength + 1 then
+      return "commandbar"
+    elseif tx > -2 - barLength and tx < -2 then
+      return "supplybar"
+    end
+  end
+end
+
+local function ReleaseActiveClick(x, y)
+  local tx, ty = MainTransform(x, y)
+  if activeClick == "commandbar" then
+    SetShareLevel("metal", CommandShare(tx))
+  elseif activeClick == "supplybar" then
+    SetShareLevel("energy", SupplyShare(tx))
+  end
+  activeClick = false
 end
 
 function widget:MousePress(x, y, button)
@@ -535,11 +334,4 @@ function widget:MouseRelease(x, y, button)
     return true
   end
   return false
-end
-
-function widget:MouseMove(x, y, dx, dy, button)
-	if (activeClick == "default") then
-		mainX = mainX + dx
-		mainY = mainY + dy
-	end
 end
