@@ -20,6 +20,8 @@ local mainScaleWidth = 0.75 --width as a proportion of screen width
 
 local barHeight = 0.125
 
+local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/Bitmaps/"
+
 ------------------------------------------------
 --locals
 ------------------------------------------------
@@ -67,6 +69,9 @@ local glRotate = gl.Rotate
 local glRect = gl.Rect
 local glText = gl.Text
 local glShape = gl.Shape
+
+local glTexture = gl.Texture
+local glTexRect = gl.TexRect
 
 local GL_LINE = GL.LINE
 local GL_FILL = GL.FILL
@@ -134,6 +139,15 @@ local function DrawShareMarker()
 end
 
 local function DrawCommand()
+  --icon
+  glPushMatrix()
+    glTranslate(-mainWidth, -1, 0)
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ResComIcon.png")
+    glTexRect(0, 0, 1, 1)
+    glTexture(false)
+  glPopMatrix()
+
   --resource bar
   glPushMatrix()
     glTranslate(-mainWidth + 1, -0.5, 0)
@@ -166,6 +180,15 @@ local function DrawCommand()
 end
 
 local function DrawSupply()
+  --icon
+  glPushMatrix()
+    glTranslate(-barLength - 3, -1, 0)
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ResLogIcon.png")
+    glTexRect(0, 0, 1, 1)
+    glTexture(false)
+  glPopMatrix()
+  
   --resource bar
   glPushMatrix()
     glTranslate(-barLength - 2, -0.5, 0)
