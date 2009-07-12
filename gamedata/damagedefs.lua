@@ -4,9 +4,9 @@ local damagedefs = {
   smallarm = {
     infantry = 1,
     guns = 1,
-    unarmouredvehicles = 0.375,
-    lightbuildings = 0.25,
-    default = 0.125,
+    unarmouredvehicles = 3/8,
+    default = 1/8,
+    lightbuildings = 1/16,
     bunkers = 0,
     tanks = 0,
     flag = 0,
@@ -15,14 +15,14 @@ local damagedefs = {
   explosive = {
     infantry = 8,
     unarmouredvehicles = 3,
-    guns = 0.5,
-    bunkers = 0.25,
-    tanks = 0.25,
+    guns = 1/2,
+    bunkers = 1/4,
+    tanks = 1/4,
     flag = 0,
   },
   kinetic = {
-    lightbuildings = 0.125,
-    bunkers = 0.125,
+    lightbuildings = 1/8,
+    bunkers = 1/8,
     flag = 0,
     mines = 0,
   },
@@ -33,7 +33,7 @@ local damagedefs = {
   fire = {
     bunkers = 4,
     unarmouredvehicles = 2,
-    tanks = 0.5,
+    tanks = 1/2,
     flag = 0,
   },
 }
