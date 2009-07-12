@@ -47,7 +47,7 @@
 
   weapon1=m1919a4browning_deployed;
   maxAngleDif1=90;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Small_Tracer;

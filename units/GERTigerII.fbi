@@ -73,7 +73,7 @@
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=MG34;
-  onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
 

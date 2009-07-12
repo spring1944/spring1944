@@ -75,48 +75,48 @@
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=2;
 
   weapon4=m2browningamg;
   maxAngleDif4=10;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=2;
 
   weapon5=m2browningamg;
   maxAngleDif5=10;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=2;
 
   weapon6=m2browningamg;
   maxAngleDif6=10;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir6=0 0 1;
   weaponSlaveTo6=2;
 
   weapon7=m2browningamg;
   maxAngleDif7=10;
-  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir7=0 0 1;
   weaponSlaveTo7=2;
 
   weapon8=m2browningamg;
   maxAngleDif8=10;
-  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir8=0 0 1;
   weaponSlaveTo8=2;
 
   weapon9=m2browningamg;
   maxAngleDif9=10;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir9=0 0 1;
   weaponSlaveTo9=2;
 }

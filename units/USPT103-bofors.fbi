@@ -87,10 +87,10 @@
   weaponMainDir6=0 0 1;
 
   weapon7=m2browningaa;
-  onlyTargetCategory7=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  onlyTargetCategory7=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
 
   weapon8=m2browningaa;
-  onlyTargetCategory8=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
 
   weapon9=bofors40mmhe;
   maxAngleDif9=270;

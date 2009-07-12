@@ -45,12 +45,12 @@
 
   weapon1=m1919a4browning;
   maxAngleDif1=200;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=1 0 0;
 
   weapon2=m1919a4browning;
   maxAngleDif2=200;
-  onlyTargetCategory2=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir2=-1 0 0;
 }
 

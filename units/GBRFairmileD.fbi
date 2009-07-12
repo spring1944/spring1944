@@ -52,17 +52,17 @@
 
   weapon10=twin05calVickers;
   maxAngleDif10=270;
-  onlyTargetCategory10=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory10=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir10=-1 0 0;
 
   weapon11=vickers;
   maxAngleDif11=200;
-  onlyTargetCategory11=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory11=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir11=1 0 0;
 
   weapon12=vickers;
   maxAngleDif12=200;
-  onlyTargetCategory12=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory12=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir12=-1 0 0;
 
   weapon13=Small_Tracer;
@@ -112,7 +112,7 @@
 
   weapon9=twin05calVickers;
   maxAngleDif9=270;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir9=1 0 0;
 }
 

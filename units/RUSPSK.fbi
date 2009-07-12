@@ -62,12 +62,12 @@
 
   weapon5=dshk; //20mmflakvierling;
   maxAngleDif5=270;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir5=1 0 0;
 
   weapon6=dshk;
   maxAngleDif6=270;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir6=-1 0 0;
 }
 

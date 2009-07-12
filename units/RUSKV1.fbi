@@ -71,7 +71,7 @@
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=DT;
-  onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
 

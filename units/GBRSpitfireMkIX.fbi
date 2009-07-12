@@ -75,12 +75,12 @@
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=1;
 

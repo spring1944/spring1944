@@ -71,7 +71,7 @@
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon2=M1919A4Browning;
-  onlyTargetCategory2=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon3=M2Browning;
   onlyTargetCategory3=AIR;

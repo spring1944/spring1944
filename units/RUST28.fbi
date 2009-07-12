@@ -74,7 +74,7 @@
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=DT;
-  onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=DT;
   maxAngleDif4=130;
@@ -82,14 +82,14 @@
 
   weapon5=DT;
   maxAngleDif5=130;
-  onlyTargetCategory5=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir5=-2 0 1;
 
   weapon6=DT;
-  onlyTargetCategory6=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory6=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon7=DT;
-  onlyTargetCategory7=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory7=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon8=.50calproof;
 
