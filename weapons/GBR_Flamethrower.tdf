@@ -1,6 +1,6 @@
 [waspflamethrower] {
   name=Wasp Flamethrower;
-  areaOfEffect=80;
+  areaOfEffect=90;
   burst=40;
   burstRate=0.01;
   cegTag=Flametrail;
@@ -10,7 +10,7 @@
     fearid=501;
   }
   [damage] {
-    default=32;
+    default=35;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Flamethrower;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBRWasp;
   name=Universal Carrier/Wasp;
-  description=Motorized Flamethrower;
+  description=Motorized Flamethrower Vehicle;
   acceleration=0.066;
   airSightDistance=1500;
   brakeRate=0.09;
