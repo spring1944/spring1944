@@ -10,6 +10,7 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
+    armor_hit_side=top;
     fearaoe=200;
     fearid=501;
   }

@@ -43,6 +43,7 @@
   collisionSize=2;
   [customParams] {
     damagetype=explosive;
+    armor_hit_side=top;
     fearaoe=30;
     fearid=301;
   }

@@ -5,6 +5,7 @@
   color=255;
   [customParams] {
     damagetype=explosive;
+    armor_hit_side=top;
     fearaoe=105;
     fearid=301;
   }
