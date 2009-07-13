@@ -9,7 +9,7 @@
     armor_hit_side=top;
   }
   [damage] {
-    default=46;
+    default=59;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;
