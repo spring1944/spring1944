@@ -24,7 +24,7 @@
   iconType=rockettruck;
   leaveTracks=1;
   mass=1000;
-  maxDamage=700;
+  maxDamage=573;
   maxSlope=6;
   maxVelocity=4.9;
   maxWaterDepth=5;

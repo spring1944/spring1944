@@ -4,7 +4,7 @@ local damagedefs = {
   smallarm = {
     infantry = 1,
     guns = 1,
-    unarmouredvehicles = 3/8,
+    unarmouredvehicles = 1/4,
     default = 1/8,
     lightbuildings = 1/16,
     bunkers = 0,
@@ -14,7 +14,7 @@ local damagedefs = {
   },
   explosive = {
     infantry = 8,
-    unarmouredvehicles = 3,
+    unarmouredvehicles = 2,
     armouredvehicles = 1/2,
     guns = 1/2,
     tanks = 1/2,

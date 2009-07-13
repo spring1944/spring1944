@@ -22,7 +22,7 @@
   idleTime=1000;
   leaveTracks=1;
   mass=1000;
-  maxDamage=500;
+  maxdamage=300;
   maxSlope=2;
   maxVelocity=3.96;
   maxWaterDepth=5;
