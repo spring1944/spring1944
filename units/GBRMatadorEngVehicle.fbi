@@ -19,7 +19,7 @@
   iconType=engineervehicle;
   leaveTracks=1;
   mass=1250;
-  maxDamage=550;
+  maxDamage=1800;
   maxSlope=2;
   maxVelocity=3.4;
   maxWaterDepth=20;

@@ -24,7 +24,7 @@
   iconType=truck;
   leaveTracks=1;
   mass=750;
-  maxDamage=550;
+  maxDamage=300;
   maxSlope=10;
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;

@@ -18,7 +18,7 @@
   footprintZ=3;
   iconType=engineervehicle;
   leaveTracks=1;
-  maxDamage=1000;
+  maxDamage=1800;
   maxSlope=10;
   maxVelocity=3;
   maxWaterDepth=5;
