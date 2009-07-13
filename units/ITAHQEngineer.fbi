@@ -1,0 +1,48 @@
+[unitinfo] {
+  unitname=ITAHQEngineer;
+  name=Field Engineer;
+  description=Basic Engineer;
+  acceleration=0.375;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=225;
+  buildDistance=5;
+  builder=1;
+  buildTime=140;
+  canMove=1;
+  category=INFANTRY;
+  corpse=ITAsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.375;
+  energyStorage=0.01;
+  footprintX=1;
+  footprintZ=1;
+  iconType=engineer;
+  mass=50;
+  maxDamage=80;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=50;
+  movementClass=KBOT_Infantry;
+  objectName=ITAEngineer.S3O;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=ITAInf;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  turnRate=1010;
+  upright=1;
+  workerTime=10;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+}
+
