@@ -4,7 +4,7 @@
   ballistic=1;
   cegTag=BazookaTrail;
   [customParams] {
-    ap_penetration=200;
+    armor_penetration=200;
     damagetype=shapedcharge;
   }
   [damage] {

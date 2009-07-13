@@ -9,8 +9,8 @@
   collideFriendly=0;
   coreThickness=0.15;
   [customParams] {
-    ap_penetration_1000m=16;
-    ap_penetration_100m=35;
+    armor_penetration_1000m=16;
+    armor_penetration_100m=35;
     damagetype=kinetic;
   }
   [damage] {

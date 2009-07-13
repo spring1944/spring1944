@@ -6,7 +6,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    ap_penetration=100;
+    armor_penetration=100;
     damagetype=shapedcharge;
   }
   [damage] {

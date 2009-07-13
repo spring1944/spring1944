@@ -7,8 +7,8 @@
   craterBoost=0;
   craterMult=1;
   [customParams] {
-    ap_hit_side=top;
-    ap_penetration=38;
+    armor_hit_side=top;
+    armor_penetration=38;
     damagetype=shapedcharge;
   }
   [damage] {

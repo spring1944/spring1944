@@ -9,9 +9,9 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    ap_hit_side=top;
-    ap_penetration_1000m=60; //constant penetration since aircraft engagement range can't be realistically controlled
-    ap_penetration_100m=60;
+    armor_hit_side=top;
+    armor_penetration_1000m=60; //constant penetration since aircraft engagement range can't be realistically controlled
+    armor_penetration_100m=60;
     damagetype=kinetic;
   }
   [damage] {

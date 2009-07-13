@@ -24,10 +24,10 @@ customParams:
 Each of these defaults to the previous if not explicitly given.
 
 Weapon customParams:
-ap_penetration: penetration of the weapon at point-blank (in mm)
-ao_penetration_100m: penetration of the weapon at 100 m (in mm); you may use this instead of ap_penetration
-ap_penetration_1000m: penetration of the weapon at 1000 m (in mm); default equal to penetration (i.e. no dropoff). Penetration drops off exponentially
-ap_hit_side: forces the weapon to hit a certain side of the armor ("front", "side", "rear", or "top")
+armor_penetration: penetration of the weapon at point-blank (in mm)
+ao_penetration_100m: penetration of the weapon at 100 m (in mm); you may use this instead of armor_penetration
+armor_penetration_1000m: penetration of the weapon at 1000 m (in mm); default equal to penetration (i.e. no dropoff). Penetration drops off exponentially
+armor_hit_side: forces the weapon to hit a certain side of the armor ("front", "side", "rear", or "top")
 
 the damage actually dealt is proportional to the unmodified damage 
 (the ap system multiplies the basic damage depending on penetration vs. armor)
@@ -60,7 +60,7 @@ local AP_SCALE = 20
 --all pre-exponentiated
 local unitInfos = {}
 
---format: weaponDefID = { ap_penetration, ap_dropoff, ap_hit_side }
+--format: weaponDefID = { armor_penetration, armor_dropoff, armor_hit_side }
 --not pre-exponentiated, but bias is built-in
 local weaponInfos = {}
 
@@ -104,23 +104,23 @@ function gadget:Initialize()
 	for i = 1, #WeaponDefs do
 		local weaponDef = WeaponDefs[i]
 		local customParams = weaponDef.customParams
-		if customParams.ap_penetration then
-			local ap_penetration = customParams.ap_penetration
-			local ap_penetration_1000m = customParams.ap_penetration_1000m or ap_penetration
-			local ap_hit_side = customParams.ap_hit_side
+		if customParams.armor_penetration then
+			local armor_penetration = customParams.armor_penetration
+			local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
+			local armor_hit_side = customParams.armor_hit_side
 			weaponInfos[i] = {
-				ap_penetration + PENETRATION_BIAS,
-				log(ap_penetration_1000m / ap_penetration) / 1000,
-				ap_hit_side,
+				armor_penetration + PENETRATION_BIAS,
+				log(armor_penetration_1000m / armor_penetration) / 1000,
+				armor_hit_side,
 			}
-		elseif customParams.ap_penetration_100m then
-			local ap_penetration_100m = customParams.ap_penetration_100m
-			local ap_penetration_1000m = customParams.ap_penetration_1000m or ap_penetration_100m
-			local ap_hit_side = customParams.ap_hit_side
+		elseif customParams.armor_penetration_100m then
+			local armor_penetration_100m = customParams.armor_penetration_100m
+			local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
+			local armor_hit_side = customParams.armor_hit_side
 			weaponInfos[i] = {
-				(ap_penetration_100m / ap_penetration_1000m) ^ (1/9) * ap_penetration_100m + PENETRATION_BIAS,
-				log(ap_penetration_1000m / ap_penetration_100m) / 900,
-				ap_hit_side,
+				(armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m + PENETRATION_BIAS,
+				log(armor_penetration_1000m / armor_penetration_100m) / 900,
+				armor_hit_side,
 			}
 		end
 	end
@@ -136,7 +136,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 
 	local armor
 	
-	local ap_hit_side = weaponInfo[3]
+	local armor_hit_side = weaponInfo[3]
 	
 	local frontDir, upDir = GetUnitVectors(unitID)
 	local ux, uy, uz = GetUnitPosition(unitID)
@@ -158,10 +158,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	end
 	
 	--discrete arcs
-	if ap_hit_side then
-		if ap_hit_side == "top" then armor = unitInfo[4]
-		elseif ap_hit_side == "rear" then armor = unitInfo[3]
-		elseif ap_hit_side == "side" then armor = unitInfo[2]
+	if armor_hit_side then
+		if armor_hit_side == "top" then armor = unitInfo[4]
+		elseif armor_hit_side == "rear" then armor = unitInfo[3]
+		elseif armor_hit_side == "side" then armor = unitInfo[2]
 		else armor = unitInfo[1]
 		end
 	else
