@@ -1,4 +1,4 @@
-local versionNumber = "v2.0"
+local versionNumber = "v2.1"
 
 function widget:GetInfo()
 	return {
@@ -89,13 +89,15 @@ local function ToSI(num)
   else
     local absNum = abs(num)
     if (absNum < 0.1) then
-      return 0 --too small to matter
-    elseif (absNum < 1000) then
+      return "0" --too small to matter
+    elseif (absNum < 1e3) then
       return strFormat("%.2f", num)
-    elseif (absNum < 1000000) then
-      return strFormat("%.2fk", 0.001 * num)
+    elseif (absNum < 1e6) then
+      return strFormat("%.2fk", 1e-3 * num)
+    elseif (absNum < 1e9) then
+      return strFormat("%.2fM", 1e-6 * num)
     else
-      return strFormat("%.2fM", 0.000001 * num)
+      return strFormat("%.2fB", 1e-9 * num)
     end
   end
 end
@@ -198,7 +200,7 @@ local function DrawSupply()
     glColor(1, 1, 0, 1)
     glRect(0, -1, eCurr / eStor, 1)
     glColor(1, 0, 0, 1)
-    glRect(estimatedSupplySurplus / eCurr, -1, eCurr / eStor, 1)
+    glRect(estimatedSupplySurplus / eStor, -1, eCurr / eStor, 1)
     
     glPushMatrix()
       glTranslate(eShar, 0, 0)
