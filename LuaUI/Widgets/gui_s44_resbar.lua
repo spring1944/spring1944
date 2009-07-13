@@ -199,8 +199,10 @@ local function DrawSupply()
     glRect(0, -1, 1, 1)
     glColor(1, 1, 0, 1)
     glRect(0, -1, eCurr / eStor, 1)
-    glColor(1, 0, 0, 1)
-    glRect(estimatedSupplySurplus / eStor, -1, eCurr / eStor, 1)
+    if estimatedSupplySurplus < eCurr then
+      glColor(1, 0, 0, 1)
+      glRect(estimatedSupplySurplus / eStor, -1, eCurr / eStor, 1)
+    end
     
     glPushMatrix()
       glTranslate(eShar, 0, 0)
