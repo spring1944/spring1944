@@ -1,39 +1,39 @@
-[BarettaM38] {
-  name=Beretta Model 38 Submachinegun;
+[Suomi] {
+  name=Suomi KP/-31 Submachine Gun;
   areaOfEffect=1;
   avoidFeature=0;
   avoidFriendly=0;
   beamweapon=1;
-  burst=8;
-  burstRate=0.086;
+  burst=9;
+  burstRate=0.05;
   collideFeature=1;
   collideFriendly=0;
   collisionSize=2.5;
-  coreThickness=0.15;
+  coreThickness=0.75;
   [customParams] {
     damagetype=smallarm;
   }
   [damage] {
     default=19;
   }
-  duration=0.01;
+  duration=0.02;
   explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=5;
   impactOnly=1;
-  intensity=0.7;
+  intensity=0.8;
   interceptedByShieldType=8;
   laserFlareSize=0.0001;
   lineofsight=1;
-  movingAccuracy=1300;
-  range=325;
-  reloadTime=1.7;
+  movingAccuracy=933;
+  range=310;
+  reloadTime=1.5;
   rendertype=0;
-  rgbColor=1.0 0.75 0.0;
-  soundStart=US_Thompson;
+  rgbColor=0.3 0.75 0.4;
+  soundStart=FIN_Suomi;
   soundTrigger=1;
-  sprayAngle=380;
-  thickness=0.4;
+  sprayAngle=400;
+  thickness=0.2;
   tolerance=6000;
   turret=1;
   weaponTimer=1;

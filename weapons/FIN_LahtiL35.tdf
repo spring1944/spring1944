@@ -1,0 +1,37 @@
+[LahtiL35] {
+  name=Lahti L-35 Pistol;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  color=255;
+  color2=226;
+  [customParams] {
+    damagetype=smallarm;
+  }
+  [damage] {
+    default=31;
+  }
+  duration=0.025;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=1;
+  impactOnly=1;
+  intensity=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=180;
+  reloadTime=1.5;
+  rendertype=0;
+  size=1.5;
+  soundStart=FIN_L35;
+  soundTrigger=0;
+  thickness=0.2;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+
