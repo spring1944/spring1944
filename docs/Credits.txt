@@ -10,7 +10,7 @@ FLOZi	Lead Developer, British
 Yuritch	Co-Lead Artist, Ukrainian
 	3D Models, Soviet Voices
 Neddie	Public Relations, American
-	2D Artwork, Advertising, American Voices, Writing
+	2D Artwork, Balance, Advertising, American Voices, Writing
 Zerggin	Lua Developer, American
 	Game Design, Balance, Scripting
 Felix	Developer, American
@@ -39,8 +39,12 @@ Peet
 	Advising
 Snipawolf
 	2D Artwork
+Journier
+	Scripting
 
 Testers:
+[Developers]
+[Contributors]
 PressureLine
 1v0ry_k1ng
 
@@ -49,3 +53,4 @@ http://tarrif.net/
 http://www.wwiivehicles.com
 http://www.battlefield.ru
 http://en.wikipedia.org
+http://www.navweaps.com
