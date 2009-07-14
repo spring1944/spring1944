@@ -27,7 +27,8 @@ Peet (general technical advising)
 Random testers who gave one round of feedback and then disappeared.
 
 Historical Data:
-http://tarrif.net/
-http://www.wwiivehicles.com
-http://www.battlefield.ru
-http://en.wikipedia.org
+http://tarrif.net - vehicle and gun data
+http://www.wwiivehicles.com - vehicle and gun data
+http://www.battlefield.ru - vehicle and gun data
+http://en.wikipedia.org - vehicle and gun data
+http://www.navweaps.com - gun data

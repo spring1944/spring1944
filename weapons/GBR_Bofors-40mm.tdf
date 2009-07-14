@@ -3,7 +3,7 @@
   areaOfEffect=80;
   burnblow=1;
   burst=2;
-  burstRate=0.3;
+  burstRate=0.5;
   canAttackGround=0;
   collisionSize=1e-05;
   craterBoost=0.2;
@@ -14,7 +14,7 @@
     fearid=701;
   }
   [damage] {
-    default=650;
+    default=275;
   }
   edgeEffectiveness=1e-07;
   explosionGenerator=custom:HE_Medium;
@@ -44,7 +44,7 @@
   areaOfEffect=24;
   burnblow=1;
   burst=2;
-  burstRate=0.3;
+  burstRate=0.5;
   collisionSize=2;
   craterBoost=0;
   craterMult=0;
@@ -54,7 +54,7 @@
     fearid=301;
   }
   [damage] {
-    default=650;
+    default=275;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_XSmall;
@@ -86,7 +86,7 @@
   areaOfEffect=80;
   burnblow=1;
   burst=2;
-  burstRate=0.3;
+  burstRate=0.5;
   canAttackGround=0;
   collisionSize=1e-05;
   craterBoost=0.2;
@@ -97,7 +97,7 @@
     fearid=701;
   }
   [damage] {
-    default=650;
+    default=275;
   }
   edgeEffectiveness=1e-07;
   explosionGenerator=custom:HE_Medium;
