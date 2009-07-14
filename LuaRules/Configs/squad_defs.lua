@@ -327,6 +327,87 @@ local squadDefs = {
 	},  
 	
 	 -----------------------------
+	 -- ITA Platoons and Squads --
+	 -----------------------------
+	
+	["ita_platoon_hq"] =
+	{
+		"itarifle",
+		"itam38",
+		"itarifle",
+		"itarifle",
+		"itasoloat",
+	},
+	
+	["ita_platoon_rifle"] = 
+	{
+		"itam38",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itarifle",
+		"itabreda30",
+	},
+	
+	["ita_platoon_assault"] = 
+	{
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itam38",
+		"itasoloat",
+		"itasoloat",
+	},
+	
+	["ita_platoon_mg"] = 
+	{
+		"itamg",
+		"itamg",
+		"itabreda30",
+		"itaobserv",
+		"itaobserv",
+	},
+	
+	["ita_platoon_sniper"] = 
+	{
+		"itasniper",
+		"itaobserv",
+	},
+	
+	["ita_platoon_mortar"] = 
+	{
+		"itamortar",
+		"itaobserv",
+		"itamortar",
+		"itaobserv",
+		"itamorta",
+	},
+	
+	["ita_platoon_at"] = 
+	{
+		"itasoloat",
+		"itasoloat",
+		"itasoloat",
+		"itasoloat",
+	},
+	
+	["ita_platoon_scout"] = 
+	{
+		"itaobserv",
+		"itaobserv",
+		"itaobserv",
+	},
+  	
+	 -----------------------------
 	 -- RUS Platoons and Squads --
 	 -----------------------------
 
