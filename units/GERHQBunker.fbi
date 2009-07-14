@@ -54,7 +54,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  workerTime=10; //old 595000
+  workerTime=10;
   yardMap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
 
   weapon1=MG34;

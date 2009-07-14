@@ -59,7 +59,7 @@
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG;
-  workerTime=10; //80
+  workerTime=0.2;
 
   weapon1=SilencedSTEN;
   badTargetCategory1=OPENVEH SOFTVEH;

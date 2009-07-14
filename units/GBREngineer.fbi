@@ -48,6 +48,6 @@
   terraformSpeed=300;
   turnRate=1010;
   upright=1;
-  workerTime=10;
+  workerTime=15;
 }
 

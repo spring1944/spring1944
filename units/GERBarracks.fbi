@@ -40,7 +40,7 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  workerTime=10; //760000
+  workerTime=20;
   yardMap=ooccc ccccc ccccc ccccc ooccc ooccc ooccc;
 
   weapon1=BuildingFearShield;

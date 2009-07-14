@@ -43,7 +43,7 @@
   terraformSpeed=300;
   turnRate=1010;
   upright=1;
-  workerTime=10; //75
+  workerTime=15;
 
   weapon1=buildline;
 }
