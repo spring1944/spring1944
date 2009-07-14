@@ -20,6 +20,7 @@ Shell                 Filler Weight  Kinetic Energy
 87mm Q.F. 25 Pounder    
 105mm M2A1              2.18 kg
 122mm D-25              3.6 kg
+132mm RS-132            0.9 kg?
 150mm Nebelwerfer 41    2.5 kg
 152mm ML-20           6-9 kg
 

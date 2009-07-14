@@ -36,7 +36,7 @@ local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = 0, 0, 0, 0, 0, 0,
 
 local resupplyPeriod = 450 * 30
 local resupplyString = ""
-local lastStor = 1000
+local lastStor
 local estimatedSupplySurplus = 1
 
 local activeClick
@@ -249,6 +249,7 @@ function widget:Initialize()
   
   local viewSizeX, viewSizeY = Spring.GetViewGeometry()
   widget:ViewResize(viewSizeX, viewSizeY)
+  widget:GameFrame(0)
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
@@ -284,10 +285,12 @@ function widget:GameFrame(n)
   mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
   eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
   
+  if not lastStor then lastStor = eStor end
+  
   local elapsedSupplyTime = n % resupplyPeriod
   local remainingSupplyTime = resupplyPeriod - n % resupplyPeriod
   
-  if remainingSupplyTime == 0 then
+  if remainingSupplyTime == 0 or n <= 32 then
     estimatedSupplySurplus = 1
     lastStor = eStor
   else

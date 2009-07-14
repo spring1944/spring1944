@@ -15,7 +15,7 @@
     defaultMove=1;
     lowammolevel=1;
     maxammo=1;
-    weaponcost=560;
+    weaponcost=400;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Sm;

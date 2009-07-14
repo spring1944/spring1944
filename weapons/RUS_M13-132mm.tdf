@@ -15,7 +15,7 @@
     fearid=501;
   }
   [damage] {
-    default=4000;
+    default=1800;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:HE_Large;
@@ -42,6 +42,6 @@
   weaponTimer=1;
   weaponType=MissileLauncher;
   weaponVelocity=750;
-  wobble=3000;
+  wobble=4000;
 }
 
