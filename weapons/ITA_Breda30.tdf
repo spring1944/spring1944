@@ -1,0 +1,45 @@
+[Breda30] {
+  name=Italian Breda 30 Light Machine Gun;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  burst=3;
+  burstRate=0.1;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=2.5;
+  color=255;
+  coreThickness=0.15;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=30;
+    fearid=301;
+  }
+  [damage] {
+    default=33;
+  }
+  duration=0.015;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=6;
+  impactOnly=1;
+  intensity=0.7;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=2667;
+  range=710;
+  reloadTime=2.25;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  soundStart=ITA_Breda30;
+  soundTrigger=1;
+  sprayAngle=400;
+  thickness=0.3;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2000;
+}
+
