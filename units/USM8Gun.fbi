@@ -1,17 +1,17 @@
 [unitinfo] {
-  unitname=GERleIG18_bax;
-  name=7.5cm leIG 18;
-  description=Infantry Support Cannon;
+  unitname=USM8Gun;
+  name=75mm M8;
+  description=Pack Howitzer;
   acceleration=0.2;
   airSightDistance=2500;
   brakeRate=0.6;
   buildCostEnergy=0;
   buildCostMetal=1280;
-  buildPic=GERLeIG18.png;
+  buildPic=USM8Gun.png;
   buildTime=1280;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=GERleIG18_Destroyed;
+  corpse=USM8Gun_Destroyed;
   [customParams] {
     feartarget=1;
     lowammolevel=1;
@@ -28,37 +28,35 @@
   mass=600;
   maxDamage=300;
   maxSlope=10;
-  maxVelocity=0.75;
+  maxVelocity=0.8;
   maxWaterDepth=5;
   movementClass=KBOT_Gun;
   noChaseCategory=FLAG AIR;
-  objectName=GERleIG18.S3O;
+  objectName=USM8Gun.S3O;
   seismicSignature=0;
   selfDestructAs=Tiny_Explosion;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
-    explosionGenerator10=custom:MuzzleBrakeSmoke;
     explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
     explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
     explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
     explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
     explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
-    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
-    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
-    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+    explosionGenerator7=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=GER;
+  side=US;
   sightDistance=701;
-  soundcategory=GERInf;
+  soundcategory=USGun;
   stealth=1;
   TEDClass=KBOT;
   turnRate=120;
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=leIG18HE;
+  weapon1=M875mmHE;
   maxAngleDif1=25;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
