@@ -7,8 +7,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=4200;
-  buildTime=840;
+  buildCostMetal=5250;
+  buildTime=1050;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRSexton_Destroyed;
