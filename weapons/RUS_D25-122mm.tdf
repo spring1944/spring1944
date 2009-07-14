@@ -57,7 +57,7 @@
     default=7200;
   }
   edgeEffectiveness=0.1;
-  explosionGenerator=custom:HE_Large;
+  explosionGenerator=custom:HE_XLarge;
   explosionSpeed=100;
   fireStarter=0;
   id=103;
