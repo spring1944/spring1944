@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=2100;
   buildPic=GERMarder.png;
-  buildTime=420;
+  buildTime=2100;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERMarder_Destroyed;

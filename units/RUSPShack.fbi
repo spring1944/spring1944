@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=430;
+  buildTime=645;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

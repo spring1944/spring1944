@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=100;
   buildPic=RUSTender15t.png;
-  buildTime=375;
+  buildTime=100;
   canMove=1;
   category=SHIP MINETRIGGER;
   [customParams] {

@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=8500;
   buildPic=USP47Thunderbolt.png;
-  buildTime=850;
+  buildTime=8500;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

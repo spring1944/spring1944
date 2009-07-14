@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1430;
   buildPic=usgisniper.png;
-  buildTime=715;
+  buildTime=1430;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=gbrtankyard.png;
-  buildTime=8100;
+  buildTime=12150;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=570;
   buildPic=USGIRifle.png;
-  buildTime=285;
+  buildTime=570;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

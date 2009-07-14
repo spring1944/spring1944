@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1130;
   buildPic=russniper.png;
-  buildTime=565;
+  buildTime=1130;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

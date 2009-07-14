@@ -8,7 +8,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=4350;
-  buildTime=580;
+  buildTime=4350;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM4A4Sherman_Damaged;

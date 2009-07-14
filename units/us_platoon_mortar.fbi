@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1850;
   buildPic=usm1mortar.png;
-  buildTime=925;
+  buildTime=1850;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

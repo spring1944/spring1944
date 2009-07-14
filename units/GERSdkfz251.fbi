@@ -7,7 +7,7 @@
   brakeRate=0.195;
   buildCostEnergy=0;
   buildCostMetal=1050;
-  buildTime=350;
+  buildTime=1050;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERSdkfz251_Destroyed;

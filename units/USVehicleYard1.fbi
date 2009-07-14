@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=usvehicleyard.png;
-  buildTime=3655;
+  buildTime=5482;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

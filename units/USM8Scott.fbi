@@ -8,7 +8,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=2040;
-  buildTime=680;
+  buildTime=2040;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM8Scott_Damaged;

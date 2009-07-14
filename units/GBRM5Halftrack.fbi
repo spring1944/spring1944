@@ -7,7 +7,7 @@
   brakeRate=0.195;
   buildCostEnergy=0;
   buildCostMetal=920;
-  buildTime=305;
+  buildTime=920;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRM5Halftrack_Destroyed;

@@ -7,7 +7,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=3000;
-  buildTime=400;
+  buildTime=3000;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERPanzerIV_Damaged;

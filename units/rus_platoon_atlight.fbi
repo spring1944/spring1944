@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=820;
   buildPic=RUSPTRD.png;
-  buildTime=410;
+  buildTime=820;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

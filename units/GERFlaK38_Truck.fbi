@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1250;
   buildPic=GERFlaK38.png;
-  buildTime=250;
+  buildTime=1250;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;

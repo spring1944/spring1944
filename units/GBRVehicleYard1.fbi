@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=gbrvehicleyard.png;
-  buildTime=2620;
+  buildTime=3930;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

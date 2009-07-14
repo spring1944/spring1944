@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=gbrgunyard.png;
-  buildTime=1245;
+  buildTime=1868;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

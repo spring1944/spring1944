@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=rustankyard.png;
-  buildTime=10800;
+  buildTime=16200;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

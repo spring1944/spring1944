@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=gertankyard.png;
-  buildTime=9600;
+  buildTime=14400;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1280;
   buildPic=USM8Gun.png;
-  buildTime=640;
+  buildTime=1280;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=USM8Gun_Destroyed;

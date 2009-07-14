@@ -9,7 +9,7 @@
   buildCostEnergy=0;
   buildCostMetal=9500;
   buildPic=GBRSpitfireMkIX.png;
-  buildTime=950;
+  buildTime=9500;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

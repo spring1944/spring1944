@@ -9,7 +9,7 @@
   buildCostEnergy=0;
   buildCostMetal=7000;
   buildPic=GERJu87G.png;
-  buildTime=700;
+  buildTime=7000;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

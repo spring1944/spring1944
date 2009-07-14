@@ -7,7 +7,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=5200;
-  buildTime=1040;
+  buildTime=5200;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERJagdPanther_Destroyed;

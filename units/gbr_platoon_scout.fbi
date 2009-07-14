@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=580;
   buildPic=GBRObserv.png;
-  buildTime=290;
+  buildTime=580;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

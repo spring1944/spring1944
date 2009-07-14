@@ -6,7 +6,7 @@
   brakeRate=0.9;
   buildCostEnergy=0;
   buildCostMetal=300;
-  buildTime=175;
+  buildTime=300;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;

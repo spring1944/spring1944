@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=SupplyDepot.png;
-  buildTime=2400;
+  buildTime=3600;
   canBeAssisted=0;
   category=BUILDING;
   corpse=BuildingDebris_Large;

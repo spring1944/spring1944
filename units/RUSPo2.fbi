@@ -10,7 +10,7 @@
   buildCostEnergy=0;
   buildCostMetal=3000;
   buildPic=RUSPo2.png;
-  buildTime=300;
+  buildTime=3000;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

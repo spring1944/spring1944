@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=rusvehicleyard.png;
-  buildTime=4175;
+  buildTime=6265;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

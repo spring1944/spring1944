@@ -11,7 +11,7 @@
   buildingGroundDecalSizeY=12;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=GERHQBunker.png;
-  buildTime=80000;
+  buildTime=40500;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

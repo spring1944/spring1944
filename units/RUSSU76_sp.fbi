@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1740;
   buildPic=RUSSU76.png;
-  buildTime=350;
+  buildTime=1740;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=RUSSU76_Destroyed;

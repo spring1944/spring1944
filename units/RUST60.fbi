@@ -7,7 +7,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=1770;
-  buildTime=590;
+  buildTime=1770;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=RUST60_Destroyed;

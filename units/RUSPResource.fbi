@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
-  buildTime=400;
+  buildTime=30;
   category=BUILDING;
   cloakCost=1;
   corpse=Debris_Small;

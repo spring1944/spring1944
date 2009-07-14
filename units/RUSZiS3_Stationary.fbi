@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUSZiS3_Stationary.png;
-  buildTime=225;
+  buildTime=1125;
   category=DEPLOYED;
   corpse=RUSZiS3_Destroyed;
   [customParams] {

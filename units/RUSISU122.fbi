@@ -7,7 +7,7 @@
   brakeRate=0.105;
   buildCostEnergy=0;
   buildCostMetal=5275;
-  buildTime=1055;
+  buildTime=5275;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=RUSISU122_Damaged;

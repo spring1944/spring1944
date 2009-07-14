@@ -8,7 +8,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=100;
-  buildTime=375;
+  buildTime=100;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=target_dead;

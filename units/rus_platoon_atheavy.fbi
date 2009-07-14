@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1220;
   buildPic=RUSRPG43.png;
-  buildTime=610;
+  buildTime=1220;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

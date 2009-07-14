@@ -12,7 +12,7 @@
   buildDistance=500;
   builder=1;
   buildPic=USP51DMustangGA.png;
-  buildTime=8e+07;
+  buildTime=8000;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

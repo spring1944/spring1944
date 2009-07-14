@@ -8,7 +8,7 @@
   brakeRate=0.105;
   buildCostEnergy=0;
   buildCostMetal=6410;
-  buildTime=855;
+  buildTime=6410;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRChurchillMkVII_Damaged;

@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1540;
   buildPic=usgithompson.png;
-  buildTime=770;
+  buildTime=1540;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

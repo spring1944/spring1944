@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=rusgunyard.png;
-  buildTime=1200;
+  buildTime=1800;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

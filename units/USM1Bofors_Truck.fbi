@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1500;
   buildPic=USM1Bofors.png;
-  buildTime=300;
+  buildTime=1500;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=USGMCTruck_Destroyed;

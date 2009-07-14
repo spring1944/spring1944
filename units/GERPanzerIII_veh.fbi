@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=2400;
   buildPic=GERPanzerIII.png;
-  buildTime=800;
+  buildTime=2400;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERPanzerIII_Damaged;

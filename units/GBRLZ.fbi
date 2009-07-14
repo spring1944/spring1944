@@ -4,7 +4,7 @@
   buildCostEnergy=0;
   buildCostMetal=3000;
   buildPic=GBRLZ.png;
-  buildTime=200;
+  buildTime=3000;
   category=BUILDING;
   [customParams] {
     dontCount=1;

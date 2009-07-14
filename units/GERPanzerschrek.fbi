@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=150;
   buildPic=GERPanzerfaust.png;
-  buildTime=225;
+  buildTime=150;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;

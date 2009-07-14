@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=2000;
   buildPic=GBRAECMkII.png;
-  buildTime=400;
+  buildTime=2000;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRAECMkIII_Destroyed;

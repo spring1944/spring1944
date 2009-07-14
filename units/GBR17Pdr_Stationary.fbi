@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=400;
+  buildTime=2000;
   category=DEPLOYED;
   corpse=gbr17pdr_destroyed;
   [customParams] {

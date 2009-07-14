@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=2100;
   buildPic=RUSPontoonTruck.png;
-  buildTime=1400;
+  buildTime=2100;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=RUSPontoonTruck_Dead;
@@ -22,7 +22,7 @@
   idleTime=1000;
   leaveTracks=1;
   mass=1000;
-  maxdamage=300;
+  maxDamage=300;
   maxSlope=10;
   maxVelocity=4.5; //4.8
   maxWaterDepth=45;

@@ -8,7 +8,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=4050;
-  buildTime=540;
+  buildTime=4050;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRCromwell_Damaged;

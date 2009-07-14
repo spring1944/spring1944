@@ -6,7 +6,7 @@
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=210;
-  buildTime=140;
+  buildTime=210;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=RUSZiS5_Destroyed;
@@ -22,7 +22,7 @@
   idleTime=1000;
   leaveTracks=1;
   mass=1000;
-  maxdamage=300;
+  maxDamage=300;
   maxSlope=10;
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;

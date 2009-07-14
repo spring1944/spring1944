@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=770;
   buildPic=gbrflamethrower.png;
-  buildTime=385;
+  buildTime=770;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

@@ -8,7 +8,7 @@
   buildCostMetal=2700;
   buildDistance=128;
   builder=1;
-  buildTime=900;
+  buildTime=2700;
   canAttack=0;
   canMove=1;
   category=SOFTVEH;

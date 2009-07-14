@@ -9,7 +9,7 @@
   buildCostEnergy=0;
   buildCostMetal=2040;
   buildPic=USM8Scott.png;
-  buildTime=410;
+  buildTime=2040;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM8Scott_Damaged;

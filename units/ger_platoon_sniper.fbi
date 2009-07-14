@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1520;
   buildPic=GERSniper.png;
-  buildTime=760;
+  buildTime=1520;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

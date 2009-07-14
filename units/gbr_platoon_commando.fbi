@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=2920;
   buildPic=GBRCommando.png;
-  buildTime=1460;
+  buildTime=2920;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

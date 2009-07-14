@@ -10,7 +10,7 @@
   buildDistance=5;
   builder=1;
   buildPic=GBRCommando.png;
-  buildTime=525;
+  buildTime=1050;
   canAssist=0;
   canMove=1;
   canReclaim=0;

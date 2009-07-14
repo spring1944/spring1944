@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=770;
+  buildTime=3850;
   category=DEPLOYED;
   corpse=RUSM30_Destroyed;
   [customParams] {

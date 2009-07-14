@@ -9,7 +9,7 @@
   buildCostMetal=1050; //also matters not!
   buildDistance=5;
   builder=1;
-  buildTime=20; //matters not!
+  buildTime=1050; //also matters not!
   canAssist=0;
   canMove=1;
   canReclaim=0;

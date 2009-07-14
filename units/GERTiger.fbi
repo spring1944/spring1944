@@ -7,7 +7,7 @@
   brakeRate=0.105;
   buildCostEnergy=0;
   buildCostMetal=9300;
-  buildTime=1240;
+  buildTime=9300;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERTiger_Damaged;

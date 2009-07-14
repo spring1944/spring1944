@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=700;
   buildPic=usgiflamethrower.png;
-  buildTime=350;
+  buildTime=700;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1035;
   buildPic=GBRKangaroo.png;
-  buildTime=140;
+  buildTime=1035;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRKangaroo_Destroyed;

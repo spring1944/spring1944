@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=350;
+  buildTime=1750;
   category=DEPLOYED;
   corpse=GERPaK40_Destroyed;
   [customParams] {

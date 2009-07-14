@@ -8,7 +8,7 @@
   buildCostMetal=260;
   buildDistance=0.1;
   builder=1;
-  buildTime=130;
+  buildTime=260;
   canMove=1;
   category=INFANTRY;
   corpse=GERSoldier_dead;

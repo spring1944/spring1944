@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=100;
   buildPic=rusmonitor.png;
-  buildTime=375;
+  buildTime=100;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;

@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1050;
   buildPic=RUSRifle.png;
-  buildTime=525;
+  buildTime=1050;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

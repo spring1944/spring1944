@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=300;
+  buildTime=1500;
   category=DEPLOYED;
   corpse=USM5Gun_Destroyed;
   [customParams] {

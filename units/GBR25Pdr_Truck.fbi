@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=3500;
   buildPic=GBR25Pdr.png;
-  buildTime=700;
+  buildTime=3500;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GBRBedfordTruck_Destroyed;

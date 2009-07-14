@@ -8,7 +8,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=4800;
-  buildTime=640;
+  buildTime=4800;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRShermanFirefly_Damaged;

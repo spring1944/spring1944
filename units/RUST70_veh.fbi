@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1725;
   buildPic=RUST70.png;
-  buildTime=575;
+  buildTime=1725;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=RUST70_Destroyed;

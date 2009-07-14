@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=660;
   buildPic=GBRBedfordTruck.png;
-  buildTime=220;
+  buildTime=660;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GBRBedfordTruck_Destroyed;
@@ -20,7 +20,7 @@
   iconType=truck;
   leaveTracks=1;
   mass=1000;
-  maxdamage=300;
+  maxDamage=300;
   maxSlope=10;
   maxVelocity=3; //4.8
   maxWaterDepth=5;

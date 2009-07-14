@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=700;
   buildPic=RUSSandbagMG.png;
-  buildTime=350;
+  buildTime=700;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=RUSsoldier_dead;

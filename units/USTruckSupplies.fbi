@@ -9,7 +9,7 @@
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=USTruckSupplies.png;
-  buildTime=480;
+  buildTime=720;
   category=BUILDING;
   corpse=Debris_Large;
   [customParams] {

@@ -10,7 +10,7 @@
   buildCostEnergy=0;
   buildCostMetal=3000;
   buildPic=GERFi156.png;
-  buildTime=300;
+  buildTime=3000;
   canAttack=0;
   canDropFlare=1;
   canFly=1;

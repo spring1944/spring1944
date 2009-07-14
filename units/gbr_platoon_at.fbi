@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1230;
   buildPic=GBRPIAT.png;
-  buildTime=615;
+  buildTime=1230;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

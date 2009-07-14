@@ -4,7 +4,7 @@
   description=Anti-Building Demolitions Pack;
   buildCostEnergy=0;
   buildCostMetal=1;
-  buildTime=50;
+  buildTime=1;
   category=BUILDING;
   [customParams] {
     dontCount=1;

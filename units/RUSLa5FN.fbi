@@ -9,7 +9,7 @@
   buildCostEnergy=9000;
   buildCostMetal=5500;
   buildPic=RUSLa5FN.png;
-  buildTime=550;
+  buildTime=5500;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

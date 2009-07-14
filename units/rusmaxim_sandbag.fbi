@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUSSandbagMG.png;
-  buildTime=350;
+  buildTime=700;
   category=DEPLOYED;
   corpse=SandbagMG_Destroyed;
   [customParams] {

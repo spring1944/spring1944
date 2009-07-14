@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=3500;
   buildPic=GERleFH18.png;
-  buildTime=700;
+  buildTime=3500;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;
@@ -24,7 +24,7 @@
   iconType=truck;
   leaveTracks=1;
   mass=1000;
-  maxdamage=300;
+  maxDamage=300;
   maxSlope=10;
   maxVelocity=4.5;
   maxWaterDepth=5;

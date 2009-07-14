@@ -7,7 +7,7 @@
   brakeRate=0.105;
   buildCostEnergy=0;
   buildCostMetal=2361;
-  buildTime=472;
+  buildTime=2361;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   [customParams] {

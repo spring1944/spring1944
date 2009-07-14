@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=470;
   buildPic=GERObserv.png;
-  buildTime=235;
+  buildTime=470;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

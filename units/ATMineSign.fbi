@@ -4,7 +4,7 @@
   buildCostEnergy=0;
   buildCostMetal=360;
   buildPic=ATMine.png;
-  buildTime=240;
+  buildTime=360;
   category=FLAG;
   cloakCost=0;
   [customParams] {

@@ -6,7 +6,7 @@
   buildCostEnergy=0;
   buildCostMetal=5138;
   buildPic=GERRadar.png;
-  buildTime=3425;
+  buildTime=5138;
   category=BUILDING;
   [customParams] {
   }

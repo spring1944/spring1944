@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=2;
   buildingGroundDecalSizeY=2;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=300;
+  buildTime=1500;
   category=DEPLOYED;
   corpse=GBRBofors_Destroyed;
   [customParams] {

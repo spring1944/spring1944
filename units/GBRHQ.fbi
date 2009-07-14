@@ -11,7 +11,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=GBRHQ.png;
-  buildTime=8500;
+  buildTime=2050;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

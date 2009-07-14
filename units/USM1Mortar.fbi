@@ -7,7 +7,7 @@
   brakeRate=0.6;
   buildCostEnergy=0;
   buildCostMetal=300;
-  buildTime=2250;
+  buildTime=300;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=USSoldier_dead;

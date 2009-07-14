@@ -7,7 +7,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=2850;
-  buildTime=380;
+  buildTime=2850;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERStuGIII_Damaged;

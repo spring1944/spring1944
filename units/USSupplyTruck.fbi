@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=660;
   buildPic=USGMCTruck.png;
-  buildTime=220;
+  buildTime=660;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=USGMCTruck_Destroyed;

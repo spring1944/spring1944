@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1250;
   buildPic=usgibazooka.png;
-  buildTime=625;
+  buildTime=1250;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

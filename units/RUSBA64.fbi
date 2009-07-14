@@ -7,7 +7,7 @@
   brakeRate=0.09;
   buildCostEnergy=0;
   buildCostMetal=540;
-  buildTime=180;
+  buildTime=540;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=RUSBA64_Destroyed;

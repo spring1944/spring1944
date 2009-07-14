@@ -7,7 +7,7 @@
   brakeRate=0.25;
   buildCostEnergy=0;
   buildCostMetal=711;
-  buildTime=237;
+  buildTime=711;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERKarl_Dead;

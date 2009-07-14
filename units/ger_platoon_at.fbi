@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1310;
   buildPic=GERPanzerfaust.png;
-  buildTime=655;
+  buildTime=1310;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
