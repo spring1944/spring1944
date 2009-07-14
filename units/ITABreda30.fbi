@@ -52,7 +52,7 @@
   badTargetCategory1=OPENVEH SOFTVEH;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon2=MK2;
+  weapon2=SRCM;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

@@ -56,7 +56,7 @@
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=MK2;
+  weapon2=SRCM;
   maxAngleDif2=170;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 1;
