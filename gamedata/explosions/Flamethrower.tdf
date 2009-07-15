@@ -9,7 +9,7 @@
 		}
 		unit=1;
 		ground=1;
-		count=16;
+		count=4;
 	}
 	
 	[fire] {
@@ -69,7 +69,7 @@
 			particleSpeed=0;
 			particleSpeedSpread=1;
 			particleSize=1;
-			particleSizeSpread=4;
+			particleSizeSpread=8;
 			emitRot=0;
 			emitRotSpread=5;
 			directional=0;
