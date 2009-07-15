@@ -94,6 +94,7 @@ local	resources = {
 				shell							=	'shell.tga',
 				smokesmall				=	'smokesmall.tga',
 				longsmokesmall		=	'longsmokesmall.tga',
+        longersmokesmall	=	'longersmokesmall.tga',
 				shotgunflare			=	'shotgunflare.tga',
 				HEShellMED				=	'HEShellMED.png',
 				kfoam							=	'kfoam.tga',
