@@ -12,6 +12,7 @@ Shell                 Filler Weight  Kinetic Energy
 1.1" Chicago Piano     17 g         130 kJ
 37mm 61-K              40.8 g       252 kJ
 40mm Bofors            68 g         349 kJ
+40mm 2 Pdr. Mk. VIII   71 g         156 kJ
 40mm Q.F. 2 Pounder     
 57mm Q.F. 6 Pounder     0.38 kg
 75mm M3                 0.667 kg
