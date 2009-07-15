@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.2;
   buildCostEnergy=0;
-  buildCostMetal=100;
+  buildCostMetal=300;
   buildPic=RUSPG117.png;
-  buildTime=100;
+  buildTime=200;
   canMove=1;
   category=SHIP MINETRIGGER;
   [customParams] {
