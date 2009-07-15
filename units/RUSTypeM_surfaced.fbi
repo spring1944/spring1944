@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=sub;
   mass=60000;
-  maxDamage=2500;
-  maxVelocity=1.41; // 14.1 knots surfaced
+  maxDamage=1870;
+  maxVelocity=1.93;
   minWaterDepth=10;
   movementClass=BOAT_Destroyer;
   objectName=RUSTYPEM;

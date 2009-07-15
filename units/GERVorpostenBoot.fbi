@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=400000;
-  maxDamage=15000;
-  maxVelocity=1.2; // 12 kn
+  maxDamage=88500;
+  maxVelocity=1.65;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GERVorpostenBoot;
