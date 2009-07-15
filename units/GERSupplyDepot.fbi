@@ -24,7 +24,7 @@
   explodeAs=massive_explosion;
   footprintX=7;
   footprintZ=7;
-  iconType=ammo;
+  iconType=ammo2;
   maxDamage=3000;
   maxSlope=15;
   maxWaterDepth=0;

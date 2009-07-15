@@ -180,6 +180,11 @@ local iconTypes = {
 		size			=	2.25,
 		distance	=	0.3,
 	},
+	ammo2 = {
+		bitmap		=	"icons/ammo2.tga",
+		size			=	2.25,
+		distance	=	0.3,
+	},	
 	factory = {
 		bitmap		=	"icons/factory.tga",
 		size			=	2.75,
