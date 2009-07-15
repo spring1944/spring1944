@@ -31,7 +31,7 @@
   maxVelocity=0.8;
   maxWaterDepth=5;
   movementClass=KBOT_Gun;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USM8Gun.S3O;
   seismicSignature=0;
   selfDestructAs=Tiny_Explosion;

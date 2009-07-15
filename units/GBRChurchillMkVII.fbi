@@ -34,7 +34,7 @@
   maxVelocity=1.48;
   maxWaterDepth=15;
   movementClass=TANK_Heavy;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRChurchillMkVII.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

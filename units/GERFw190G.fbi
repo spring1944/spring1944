@@ -43,7 +43,7 @@
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
-  noChaseCategory=FLAG;
+  noChaseCategory=FLAG MINE;
   objectName=GERFw190G.S3O;
   repairable=0;
   seismicSignature=0;

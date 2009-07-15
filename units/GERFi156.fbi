@@ -44,7 +44,7 @@
   maxWaterDepth=0;
   moverate1=4;
   myGravity=0.6;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=GERFi156.S3O;
   refuelTime=10;
   repairable=0;

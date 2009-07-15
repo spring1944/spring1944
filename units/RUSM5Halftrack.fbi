@@ -30,7 +30,7 @@
   maxVelocity=5.04;
   maxWaterDepth=5;
   movementClass=TANK_Light;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSM5Halftrack.S3O;
   releaseHeld=1;
   seismicSignature=0;

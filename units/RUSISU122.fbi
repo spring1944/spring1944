@@ -32,7 +32,7 @@
   maxVelocity=2.74;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=RUSISU122.S3O;
   onoffable=1;
   radarDistanceJam=0;

@@ -22,7 +22,7 @@
   maxDamage=1600;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=OPENVEH AIR FLAG SOFTVEH;
+  noChaseCategory=OPENVEH AIR FLAG SOFTVEH MINE;
   objectName=GBRSandbagMG.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

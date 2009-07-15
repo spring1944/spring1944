@@ -24,7 +24,7 @@
   maxVelocity=0.8;
   maxWaterDepth=5;
   movementClass=KBOT_Gun;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRVickers.S3O;
   seismicSignature=0;
   [sfxtypes] {

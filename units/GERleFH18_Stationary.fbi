@@ -30,7 +30,7 @@
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERleFH18_Stationary.S3O;
   onoffable=1;
   radarDistanceJam=0;

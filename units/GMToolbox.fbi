@@ -44,7 +44,7 @@
   metalMake=1e+07;
   metalStorage=1e+11;
   minCloakDistance=1;
-  noChaseCategory=FLAG;
+  noChaseCategory=FLAG MINE;
   objectName=USP51DMustangGA.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

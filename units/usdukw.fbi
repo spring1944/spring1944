@@ -25,7 +25,7 @@
   maxSlope=10;
   maxVelocity=4;
   movementClass=HOVER_AmphibTruck;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=usdukw.s3o;
   releaseHeld=0;
   seismicSignature=0;

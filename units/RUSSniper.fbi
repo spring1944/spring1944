@@ -31,7 +31,7 @@
   maxWaterDepth=20;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH;
+  noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
   objectName=RUSSniper.S3O;
   repairable=0;
   seismicDistance=570;

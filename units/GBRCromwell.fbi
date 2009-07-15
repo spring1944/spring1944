@@ -34,7 +34,7 @@
   maxVelocity=3.85;
   maxWaterDepth=15;
   movementClass=TANK_Heavy;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRCromwell.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

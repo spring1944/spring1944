@@ -36,7 +36,7 @@
   maxVelocity=2.96;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERWespe.S3O;
   onoffable=1;
   radarDistanceJam=0;

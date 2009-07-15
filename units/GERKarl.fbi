@@ -25,7 +25,7 @@
   maxSlope=10;
   maxVelocity=0.5;
   movementClass=TANK_VeryLarge;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=GERKarl;
   onoffable=1;
   seismicSignature=0;

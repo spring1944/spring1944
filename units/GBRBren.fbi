@@ -24,7 +24,7 @@
   maxVelocity=1.6;
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
-  noChaseCategory=SOFTVEH OPENVEH HARDVEH FLAG AIR;
+  noChaseCategory=SOFTVEH OPENVEH HARDVEH FLAG AIR MINE;
   objectName=GBRLMG.S3O;
   repairable=0;
   seismicSignature=0;

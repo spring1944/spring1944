@@ -29,7 +29,7 @@
   maxVelocity=3.85;
   maxWaterDepth=5;
   movementClass=TANK_Light;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERSdkfz251.S3O;
   releaseHeld=1;
   seismicSignature=0;

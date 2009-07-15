@@ -28,7 +28,7 @@
   maxVelocity=9.64; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USPT103-bofors;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

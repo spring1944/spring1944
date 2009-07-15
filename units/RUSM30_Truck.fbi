@@ -30,7 +30,7 @@
   maxVelocity=4.5; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=RUSM30_Truck.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

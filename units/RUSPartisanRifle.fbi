@@ -30,7 +30,7 @@
   maxWaterDepth=15;
   minCloakDistance=225;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSPartisanRifle.S3O;
   repairable=0;
   seismicSignature=0;

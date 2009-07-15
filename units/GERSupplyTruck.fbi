@@ -25,7 +25,7 @@
   maxVelocity=6.2;
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=GERSupplyTruck.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

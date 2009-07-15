@@ -32,7 +32,7 @@
   maxVelocity=3.7;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=RUSSU100.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

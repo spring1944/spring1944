@@ -30,7 +30,7 @@
   maxWaterDepth=5;
   minCloakDistance=205;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRFlamethrower.S3O;
   seismicSignature=0;
   [sfxtypes] {

@@ -28,7 +28,7 @@
   maxVelocity=2.96;
   maxWaterDepth=15;
   movementClass=TANK_Light;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRKangaroo.S3O;
   releaseHeld=1;
   seismicSignature=0;

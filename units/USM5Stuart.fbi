@@ -33,7 +33,7 @@
   maxVelocity=4.3;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USM5Stuart.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

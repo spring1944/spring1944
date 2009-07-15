@@ -33,7 +33,7 @@
   maxVelocity=3.41;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERPanther.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

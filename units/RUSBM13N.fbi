@@ -29,7 +29,7 @@
   maxVelocity=4.9;
   maxWaterDepth=5;
   movementClass=TANK_Car;
-  noChaseCategory=BUILDING INFANTRY FLAG AIR OPENVEH HARDVEH SOFTVEH SHIP DEPLOYED;
+  noChaseCategory=BUILDING INFANTRY FLAG AIR OPENVEH HARDVEH SOFTVEH SHIP DEPLOYED MINE;
   objectName=RUSBM13N.S3O;
   onoffable=1;
   radarDistanceJam=0;

@@ -33,7 +33,7 @@
   maxVelocity=3.11;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USM4A376Sherman.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

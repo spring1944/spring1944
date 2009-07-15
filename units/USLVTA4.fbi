@@ -33,7 +33,7 @@
   maxSlope=2;
   maxVelocity=3.5;
   movementClass=HOVER_AmphibTruck;
-  noChaseCategory=FLAG;
+  noChaseCategory=FLAG MINE;
   objectName=USLVTA4;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

@@ -33,7 +33,7 @@
   maxVelocity=2.74;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUST28;
   olnytargetcategory4=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
   seismicSignature=0;

@@ -38,7 +38,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   metalMake=0;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERHQBunker.S3O;
   radarDistance=2000000;
   selfDestructAs=Huge_Explosion;

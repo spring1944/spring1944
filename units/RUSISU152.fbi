@@ -33,7 +33,7 @@
   maxVelocity=2.74;
   maxWaterDepth=5;
   movementClass=TANK_Heavy;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
+  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=RUSISU152.S3O;
   onoffable=1;
   radarDistanceJam=0;

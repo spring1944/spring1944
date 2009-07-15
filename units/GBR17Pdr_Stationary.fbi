@@ -29,7 +29,7 @@
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBR17Pdr_Stationary.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

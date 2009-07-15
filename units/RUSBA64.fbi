@@ -28,7 +28,7 @@
   maxVelocity=5.2;
   maxWaterDepth=5;
   movementClass=TANK_Car;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSBA64.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

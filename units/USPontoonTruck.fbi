@@ -27,7 +27,7 @@
   maxVelocity=4.5; //4.8
   maxWaterDepth=45;
   movementClass=TANK_Truck_deep;
-  noChaseCategory=AIR;
+  noChaseCategory=AIR MINE;
   objectName=USPontoonTruck.s3o;
   releaseHeld=1;
   seismicSignature=0;

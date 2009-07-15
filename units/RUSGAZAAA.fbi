@@ -22,7 +22,7 @@
   maxVelocity=4.11;
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSGAZAAA.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

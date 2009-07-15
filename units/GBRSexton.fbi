@@ -36,7 +36,7 @@
   maxVelocity=3.04;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRSexton.S3O;
   onoffable=1;
   radarDistanceJam=0;

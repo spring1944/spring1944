@@ -29,7 +29,7 @@
   maxVelocity=1.25;
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG AIR;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSMortar.S3O;
   seismicSignature=0;
   [sfxtypes] {
