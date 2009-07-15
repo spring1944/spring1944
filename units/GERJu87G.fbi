@@ -1,7 +1,7 @@
 [UNITINFO] {
   UnitName=GERJu87G;
   name=Ju 87G-1 Stuka;
-  description=Ground Attack Aircraft;
+  description=Ground Attack (Anti-Tank) Aircraft;
   acceleration=0.5;
   airSightDistance=3000;
   bmcode=1;
@@ -48,7 +48,7 @@
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
-  noChaseCategory=FLAG;
+  noChaseCategory=FLAG BUILDING INFANTRY SOFTVEH SHIP DEPLOYED AIR;
   objectName=GERJu87G.S3O;
   repairable=0;
   seismicSignature=0;
@@ -74,12 +74,12 @@
 
   weapon1=bk37mmap;
   maxAngleDif1=10;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;
 
   weapon2=bk37mmap;
   maxAngleDif2=10;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=OPENVEH HARDVEH;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
