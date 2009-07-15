@@ -24,8 +24,8 @@
   holdSteady=1;
   iconType=transportship;
   mass=180000;
-  maxDamage=15000;
-  maxVelocity=0.7; // 7 knots
+  maxDamage=29100;
+  maxVelocity=1.10;
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   objectName=USLCT;

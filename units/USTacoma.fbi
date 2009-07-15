@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=500000;
-  maxDamage=25000;
-  maxVelocity=2; // 20 kn
+  maxDamage=128400;
+  maxVelocity=2.74;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USTacoma;

@@ -23,8 +23,8 @@
   holdSteady=1;
   iconType=landingship;
   mass=10000;
-  maxDamage=2500;
-  maxVelocity=0.9; // 9 kn
+  maxDamage=820;
+  maxVelocity=1.23;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=USLCVP;

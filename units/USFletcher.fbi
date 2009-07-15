@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=800000;
-  maxDamage=50000;
-  maxVelocity=3.5; // 35 kn
+  maxDamage=226800;
+  maxVelocity=5.01;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USFletcher;
