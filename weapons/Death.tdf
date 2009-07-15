@@ -30,6 +30,7 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
+    damagetype=none;
   }
   [damage] {
     default=0;

@@ -6,6 +6,7 @@
   burstRate=1e-07;
   canAttackGround=0;
   [customParams] {
+    damagetype=explosive;
   }
   [damage] {
     default=500;

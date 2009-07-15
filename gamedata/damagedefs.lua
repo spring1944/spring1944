@@ -1,6 +1,8 @@
 local damagedefs = {
   default = {},
-  none = {},
+  none = {
+    default = 0,
+  },
   smallarm = {
     infantry = 1,
     guns = 1,
