@@ -96,7 +96,7 @@ gadget.unitBuildOrder = UnitBag{
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar",
-		"gerleig18_bax",
+		"gerleig18",
 	},
 	gervehicleyard = UnitArray{
 		-- Works J
@@ -132,7 +132,7 @@ gadget.unitBuildOrder = UnitBag{
 		"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
 		"us_platoon_assault", "us_platoon_at",
 		"us_platoon_mortar", "us_platoon_sniper", "us_platoon_flame",
-		"usm8gun_bax",
+		"usm8gun",
 	},
 	usvehicleyard = UnitArray{
 		-- Works J
