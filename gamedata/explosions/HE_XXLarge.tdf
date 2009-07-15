@@ -1,0 +1,285 @@
+[HE_XXLarge] {
+  usedefaultexplosions=0;
+  
+  [wreck_light] {
+    class=CExpGenSpawner;
+    [properties]{
+      dir=-1 r2, r1, -1 r2;
+      pos=0, 0, 0;
+      delay=4 r4;
+      explosionGenerator=custom:HE_XXLarge_Wreck_Light;
+    }
+    unit=1;
+    ground=1;
+    count=16;
+  }
+  
+  [wreck_dark] {
+    class=CExpGenSpawner;
+    [properties]{
+      dir=-1 r2, r1, -1 r2;
+      pos=0, 0, 0;
+      delay=4 r4;
+      explosionGenerator=custom:HE_XXLarge_Wreck_Dark;
+    }
+    unit=1;
+    ground=1;
+    count=16;
+  }
+  
+  [smoke] {
+    class=CSimpleParticleSystem;
+    [properties]{
+      sizeGrowth=24 r24;
+      sizeMod=0.5;
+      pos=0, 0, 0;
+      emitVector=0, 1, 0;
+      gravity=0, 0, 0;
+      colorMap=0 0 0 0  0.025 0.025 0.025 0.25  0.025 0.025 0.025 0.25  0.025 0.025 0.025 0.25  0 0 0 0;
+      Texture=smokesmall;
+      airdrag=0.75;
+      particleLife=64;
+      particleLifeSpread=32;
+      numParticles=32;
+      particleSpeed=1;
+      particleSpeedSpread=16;
+      particleSize=1;
+      particleSizeSpread=0;
+      emitRot=0;
+      emitRotSpread=90;
+      directional=0;
+      alwaysVisible=0;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=1;
+  }
+  
+  [fire] {
+    class=CSimpleParticleSystem;
+    [properties]{
+      sizeGrowth=16 r16;
+      sizeMod=0.5;
+      pos=0, 0, 0;
+      emitVector=0, 1, 0;
+      gravity=0, 0, 0;
+      colorMap=1 1 1 0.25  0.025 0.025 0.025 0.25  0 0 0 0;
+      Texture=fireball;
+      airdrag=0.75;
+      particleLife=16;
+      particleLifeSpread=8;
+      numParticles=48;
+      particleSpeed=1;
+      particleSpeedSpread=12;
+      particleSize=1;
+      particleSizeSpread=0;
+      emitRot=0;
+      emitRotSpread=90;
+      directional=0;
+      alwaysVisible=0;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=1;
+  }
+  
+  [water]{
+    class = CBitmapMuzzleFlame;  
+    [properties]{
+      dir = -0.1 r0.2, 1, -0.1 r0.2;
+      colorMap=0.45 0.45 0.5 0.5  0.045 0.045 0.05 0.05; 
+      size=12 r6;
+      length=24 r24;
+      sizeGrowth=1;
+      ttl=64;
+      frontOffset=0;
+      sideTexture=splashside;
+      frontTexture=splashbase;
+    }
+    water=1;
+    count=24;
+  }
+  
+  [dirt]{
+    class = CDirtProjectile;
+    [properties]{
+      alpha=255;
+      alphaFalloff=8;
+      size=16 r32;
+      sizeExpansion=0;
+      slowdown=0.95;
+      color=0.4 r0.1, 0.3 r0.1, 0.2 r0.1;
+      texture=randdots;
+      pos=-3 r6, r3, -3 r6;
+      speed=-8 r16, r16, -8 r16;
+    }
+    ground=1;
+    count=32;
+  }
+  
+  [debris] {
+    class=CSimpleParticleSystem;
+    [properties]{
+      sizeGrowth=0;
+      sizeMod=1;
+      pos=0, 0, 0;
+      emitVector=0, 1, 0;
+      gravity=0, -0.3, 0;
+      colorMap=0 0 0 1  0 0 0 1;
+      Texture=debris2;
+      airdrag=0.95;
+      particleLife=96;
+      particleLifeSpread=64;
+      numParticles=48;
+      particleSpeed=12;
+      particleSpeedSpread=12;
+      particleSize=2;
+      particleSizeSpread=16;
+      emitRot=0;
+      emitRotSpread=90;
+      directional=1;
+      alwaysVisible=0;
+    }
+    unit=1;
+    ground=1;
+    count=1;
+  }
+  
+  [sphere] {
+    class=CSpherePartSpawner;
+    [properties] {
+      expansionSpeed=12;
+      ttl=12;
+      alpha=0.05;
+      color=1,1,1;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=1;
+  }
+  
+  [pikes] {
+    class=CExploSpikeProjectile;
+    [properties] {
+      dir= -12 r24, -12 r24, -12 r24;
+      width=8;
+      length=1;
+      lengthGrowth=1;
+      alpha=1;
+      alphadecay=0.08;
+      color=1,0.75,0.5;
+      alwaysVisible=1;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=16; 
+  }
+  
+  [groundflash] {
+    flashsize=128;
+    flashalpha=1;
+    circlegrowth=10;
+    circlealpha=0;
+    ttl=12;
+    color=1,0.75,0.5;
+  }
+}
+
+[HE_XXLarge_Wreck_Light] {
+  [single] {
+    class=CExpGenSpawner;
+    [properties]{
+      dir=dir;
+      pos=0, 0, 0;
+      damage=i1;
+      delay=i1;
+      explosionGenerator=custom:HE_XXLarge_Wreck_Light_Single;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=12;
+  }
+}
+
+[HE_XXLarge_Wreck_Light_Single] {
+  [smoke] {
+    class=CSimpleParticleSystem;
+    [properties] {
+      sizeGrowth=12 d-1 r1;
+      sizeMod=0.5;
+      pos=-2 r4, -2 r4, -2 r4;
+      emitVector=dir;
+      gravity=-0.02 r0.04, -0.02 r0.04, -0.02 r0.04;
+      colorMap=0.05 0.05 0.05 0.25  0 0 0 0;
+      Texture=smokesmall;
+      airdrag=0.75;
+      particleLife=96;
+      particleLifeSpread=48;
+      numParticles=1;
+      particleSpeed=d4 i0.5;
+      particleSpeedSpread=1;
+      particleSize=1;
+      particleSizeSpread=1;
+      emitRot=0;
+      emitRotSpread=0;
+      directional=1;
+      alwaysVisible=0;
+    }
+    unit=1;
+    ground=1;
+    count=8;
+  }
+}
+
+[HE_XXLarge_Wreck_Dark] {
+  [single] {
+    class=CExpGenSpawner;
+    [properties]{
+      dir=dir;
+      pos=0, 0, 0;
+      damage=i1;
+      delay=i1;
+      explosionGenerator=custom:HE_XXLarge_Wreck_Dark_Single;
+    }
+    air=1;
+    water=1;
+    ground=1;
+    count=12;
+  }
+}
+
+[HE_XXLarge_Wreck_Dark_Single] {
+  [smoke] {
+    class=CSimpleParticleSystem;
+    [properties] {
+      sizeGrowth=12 d-1 r1;
+      sizeMod=0.5;
+      pos=-2 r4, -2 r4, -2 r4;
+      emitVector=dir;
+      gravity=-0.02 r0.04, -0.02 r0.04, -0.02 r0.04;
+      colorMap=0.025 0.025 0.025 0.5  0 0 0 0;
+      Texture=smokesmall;
+      airdrag=0.75;
+      particleLife=96;
+      particleLifeSpread=48;
+      numParticles=1;
+      particleSpeed=d4 i0.5;
+      particleSpeedSpread=1;
+      particleSize=1;
+      particleSizeSpread=1;
+      emitRot=0;
+      emitRotSpread=0;
+      directional=1;
+      alwaysVisible=0;
+    }
+    unit=1;
+    ground=1;
+    count=8;
+  }
+}
+

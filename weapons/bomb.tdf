@@ -14,7 +14,7 @@
     default=30000;
   }
   edgeEffectiveness=0.1;
-  explosionGenerator=custom:HE_XLarge;
+  explosionGenerator=custom:HE_XXLarge;
   flightTime=3;
   id=31;
   impulseFactor=0.01;
