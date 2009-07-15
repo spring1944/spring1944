@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=gunboat;
   mass=75000;
-  maxDamage=20000;
-  maxVelocity=2.2; // 22 knots
+  maxDamage=5620;
+  maxVelocity=3.02;
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   objectName=RUSBMO;

@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=torpboat;
   mass=75000;
-  maxDamage=5000;
-  maxVelocity=4.8; //48 knots
+  maxDamage=2090;
+  maxVelocity=6.58;
   minWaterDepth=10;
   movementClass=BOAT_Destroyer;
   objectName=RUSKomsMTB;

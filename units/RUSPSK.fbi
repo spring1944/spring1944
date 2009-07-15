@@ -23,8 +23,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=100000;
-  maxDamage=25000;
-  maxVelocity=1.68; //16.8 knots
+  maxDamage=100000;
+  maxVelocity=2.30;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=RUSPSK;

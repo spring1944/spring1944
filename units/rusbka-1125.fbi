@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=gunboat;
   mass=75000;
-  maxDamage=20000;
-  maxVelocity=1.8; // 18 knots
+  maxDamage=2660;
+  maxVelocity=2.47;
   minWaterDepth=6;
   movementClass=BOAT_RiverSmall;
   objectName=RUSBKA1125.s3o;

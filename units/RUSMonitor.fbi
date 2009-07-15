@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=gunboat;
   mass=240000;
-  maxDamage=30000;
-  maxVelocity=0.83; //8.3 knots max. It's really sluggish
+  maxDamage=26300;
+  maxVelocity=1.05; //8.3 knots max. It's really sluggish
   minWaterDepth=6;
   movementClass=BOAT_River;
   objectName=RUSMonitor;
