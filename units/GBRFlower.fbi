@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=700000;
-  maxDamage=25000;
-  maxVelocity=1.6; // 16 kn
+  maxDamage=103100;
+  maxVelocity=2.19;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GBRFlower;

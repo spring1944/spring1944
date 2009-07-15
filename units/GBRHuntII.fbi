@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=800000;
-  maxDamage=35000;
-  maxVelocity=2.7; // 27 kn
+  maxDamage=136000;
+  maxVelocity=3.56;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GBRHuntII;

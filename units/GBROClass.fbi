@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=1e+06;
-  maxDamage=50000;
-  maxVelocity=3.675; // 36.75 kn
+  maxDamage=228600;
+  maxVelocity=5.04;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GBROClass;

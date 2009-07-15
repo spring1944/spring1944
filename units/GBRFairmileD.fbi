@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=torpboat;
   mass=100000;
-  maxDamage=7500;
-  maxVelocity=3; // 30 knots
+  maxDamage=9253;
+  maxVelocity=3.98;
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   objectName=GBRFairmileD;

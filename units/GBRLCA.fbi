@@ -23,8 +23,8 @@
   holdSteady=1;
   iconType=landingship;
   mass=10000;
-  maxDamage=2500;
-  maxVelocity=1; // 10 kn
+  maxDamage=914.4;
+  maxVelocity=1.37;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=GBRLCA;
