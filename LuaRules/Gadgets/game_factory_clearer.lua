@@ -24,7 +24,6 @@ end
 local infos = {}
 
 local PUSH_SPEED = 0.5
-local PUSH_THRESHOLD = 0.25 * PUSH_SPEED * PUSH_SPEED
 
 ----------------------------------------------------------------
 --speedups
@@ -60,12 +59,19 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
     local facing = GetUnitBuildFacing(unitID)
     
     local xmin, zmin, xmax, zmax
-    if facing % 2 > 0 then
-      xmin, xmax = ux - zsize, ux + zsize
-      zmin, zmax = uz - xsize, uz + xsize
-    else
+    
+    if facing == 0 then
       xmin, xmax = ux - xsize, ux + xsize
-      zmin, zmax = uz - zsize, uz + zsize
+      zmin, zmax = uz - zsize, uz + zsize + 8
+    elseif facing == 1 then
+      xmin, xmax = ux - zsize, ux + zsize + 8
+      zmin, zmax = uz - xsize, uz + xsize
+    elseif facing == 2 then
+      xmin, xmax = ux - xsize, ux + xsize
+      zmin, zmax = uz - zsize - 8, uz + zsize
+    else
+      xmin, xmax = ux - zsize - 8, ux + zsize
+      zmin, zmax = uz - xsize, uz + xsize
     end
     
     infos[unitID] = {xmin, zmin, xmax, zmax, facing}
@@ -91,12 +97,8 @@ function gadget:GameFrame(n)
       local unitDefID = GetUnitDefID(unitToMove)
       local unitDef = UnitDefs[unitDefID]
       if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 then
-        local vx, vy, vz = GetUnitVelocity(unitToMove)
-        local vss = vx * vx + vz * vz
-        if vss < PUSH_THRESHOLD then
-          local ux, uy, uz = GetUnitPosition(unitToMove)
-          SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
-        end
+        local ux, uy, uz = GetUnitPosition(unitToMove)
+        SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
       end
     end
   end
