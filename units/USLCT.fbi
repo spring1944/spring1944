@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=100;
+  buildCostMetal=1500;
   buildPic=uslct.png;
-  buildTime=100;
+  buildTime=900;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=USLCT_dead;
