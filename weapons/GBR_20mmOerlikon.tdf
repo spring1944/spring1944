@@ -14,7 +14,7 @@
     fearid=701;
   }
   [damage] {
-    default=400;
+    default=40;
   }
   edgeEffectiveness=0.95;
   explosionGenerator=custom:HE_Small;
@@ -55,7 +55,7 @@
     fearid=701;
   }
   [damage] {
-    default=400;
+    default=40;
   }
   edgeEffectiveness=0.95;
   explosionGenerator=custom:HE_Small;

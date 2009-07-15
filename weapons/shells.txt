@@ -1,5 +1,5 @@
 Shell                 Filler Weight  Kinetic Energy
-.50 Browning M2         0.86 g       17 kJ
+.50" Browning M2         0.86 g       17 kJ
 15mm MG 151/15          2.8 g        26 kJ
 20mm MG 151/20         20.2 g        29 kJ
 20mm ShVAK              5.7 g        30 kJ
@@ -8,6 +8,8 @@ Shell                 Filler Weight  Kinetic Energy
 30mm MK 108            82.5 g        42 kJ
 
 20mm FlaK 38           11 g          47 kJ
+20mm Oerlikon          11 g          44 kJ
+1.1" Chicago Piano     17 g         130 kJ
 37mm 61-K              40.8 g       252 kJ
 40mm Bofors            68 g         349 kJ
 40mm Q.F. 2 Pounder     
@@ -15,7 +17,7 @@ Shell                 Filler Weight  Kinetic Energy
 75mm M3                 0.667 kg
 75mm Q.F. Mk. V         
 76mm Q.F. 17 Pounder
-3 inch Mortar           
+3" Mortar           
 80mm GrW 34 Mortar      
 87mm Q.F. 25 Pounder    
 105mm M2A1              2.18 kg
@@ -24,7 +26,7 @@ Shell                 Filler Weight  Kinetic Energy
 150mm Nebelwerfer 41    2.5 kg
 152mm ML-20           6-9 kg
 
-15 Inch Mk I           59 kg        247 kJ
+15" Mk I           59 kg        247 kJ
 600mm Karl Geraet     220 kg        
 
 S-Mine                  0.182 kg     -

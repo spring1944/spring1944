@@ -10,7 +10,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=250;
+    default=86;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_XSmall;
