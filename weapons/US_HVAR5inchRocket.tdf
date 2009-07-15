@@ -16,7 +16,7 @@
   }
   explosionGenerator=custom:HE_Medium;
   fireStarter=0;
-  flightTime=2;
+  flightTime=3;
   impulseBoost=0;
   impulseFactor=1;
   model=Rocket_HVAR.S3O;
