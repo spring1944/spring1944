@@ -38,7 +38,7 @@
 		air=1;
 		water=1;
 		ground=1;
-		count=4;
+		count=2;
 	}
 	
 	[groundflash] {
