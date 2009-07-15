@@ -20,12 +20,11 @@ local damagedefs = {
     armouredvehicles = 1/2,
     guns = 1/2,
     tanks = 1/2,
-    bunkers = 1/4,
     flag = 0,
   },
   kinetic = {
     unarmouredvehicles = 1/2,
-    bunkers = 1/8,
+    bunkers = 1/2,
     lightbuildings = 1/16,
     flag = 0,
     mines = 0,
