@@ -160,6 +160,11 @@ local iconTypes = {
 		size			=	2.25,
 		distance	=	0.3,
 	},
+	stockpile = {
+		bitmap		=	"icons/stockpile.tga",
+		size			=	3,
+		distance	=	0.25,
+	},
 	rockettruck = {
 		bitmap		=	"icons/rockettruck.tga",
 		size			=	2.5,
