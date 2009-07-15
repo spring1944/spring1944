@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=GERType1934;
-  name=Type 1934 Destroyer;
+  name=Type 1934A Destroyer;
   description=Destroyer;
   acceleration=0.15;
   activateWhenBuilt=1;
@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=800000;
-  maxDamage=45000;
-  maxVelocity=3.64; // 36.4 kn
+  maxDamage=316000;
+  maxVelocity=5.01;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GERType1934;

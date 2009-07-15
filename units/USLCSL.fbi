@@ -25,8 +25,8 @@
   footprintZ=8;
   iconType=gunboat;
   mass=200000;
-  maxDamage=15000;
-  maxVelocity=1.2; // 12 kn
+  maxDamage=25400;
+  maxVelocity=2.26;
   minWaterDepth=10;
   movementClass=BOAT_LandingCraft;
   objectName=USLCSL;

@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=gunboat;
   mass=100000;
-  maxDamage=20000;
-  maxVelocity=1.02; //10.2 kn
+  maxDamage=27200;
+  maxVelocity=1.10;
   minWaterDepth=6;
   movementClass=BOAT_River;
   objectName=GERAFP;

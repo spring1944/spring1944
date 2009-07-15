@@ -24,8 +24,8 @@
   holdSteady=1;
   iconType=transportship;
   mass=100000;
-  maxDamage=15000;
-  maxVelocity=1.05; // 10.5 kn
+  maxDamage=23900;
+  maxVelocity=1.44;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=GERMFP;

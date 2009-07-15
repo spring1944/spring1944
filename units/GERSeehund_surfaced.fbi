@@ -23,8 +23,8 @@
   footprintZ=8;
   iconType=sub;
   mass=20000;
-  maxDamage=1000;
-  maxVelocity=0.77; // 7.7 knots surfaced
+  maxDamage=1700;
+  maxVelocity=0.75;
   minWaterDepth=40;
   movementClass=BOAT_Destroyer;
   objectName=GERSeehund;

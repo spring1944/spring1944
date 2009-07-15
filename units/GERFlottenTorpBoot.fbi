@@ -24,8 +24,8 @@
   footprintZ=8;
   iconType=destroyer;
   mass=800000;
-  maxDamage=40000;
-  maxVelocity=3.23; // 32.3 kn
+  maxDamage=159200;
+  maxVelocity=4.46;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=GERFlottenTorpBoot;
