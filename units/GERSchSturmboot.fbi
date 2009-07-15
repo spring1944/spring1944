@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=100;
+  buildCostMetal=350;
   buildPic=GERSchSturmboot.png;
-  buildTime=100;
+  buildTime=275;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GERSchSturmboot_dead;
