@@ -1,3 +1,18 @@
+--[[
+  format:
+  
+  damagetype = {
+    armortype = damageMod,
+    ...
+  }
+  
+  the damage mods are relative to the default damage given in the unit files
+  you can change the default damage too, but other damage mods are based off the original
+  damage mods other than default given explicitly in the unit files override these
+  
+  default usually corresponds to armouredvehicles
+]]
+
 local damagedefs = {
   default = {},
   none = {
