@@ -24,8 +24,8 @@
   holdSteady=1;
   iconType=gunboat;
   mass=280000;
-  maxDamage=17500;
-  maxVelocity=0.8; // 8 knots...
+  maxDamage=25000;
+  maxVelocity=1.1;
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   objectName=GBRLCG;

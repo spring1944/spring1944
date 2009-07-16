@@ -24,8 +24,8 @@
   holdSteady=1;
   iconType=landingship;
   mass=10000;
-  maxDamage=2500;
-  maxVelocity=3;
+  maxDamage=950;
+  maxVelocity=1.52;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=GERSchSturmboot;

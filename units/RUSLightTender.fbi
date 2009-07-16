@@ -23,8 +23,8 @@
   iconType=pontoon;
   isFirePlatform=0;
   mass=1000;
-  maxDamage=500;
-  maxVelocity=3.4;
+  maxDamage=1360;
+  maxVelocity=1.1;
   minWaterDepth=5;
   movementClass=BOAT_Medium;
   objectName=RUSLightTender.S3O;

@@ -24,7 +24,7 @@
   holdSteady=1;
   iconType=transportship;
   mass=280000;
-  maxDamage=17500; //fixme
+  maxDamage=25000;
   maxVelocity=1.1;
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
