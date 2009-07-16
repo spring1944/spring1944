@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=640;
   buildPic=GERRifle.png;
-  buildTime=320;
+  buildTime=640;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
