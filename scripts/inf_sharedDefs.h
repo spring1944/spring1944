@@ -7,10 +7,10 @@
 #define initialDelay	5000 //the amount that they stay on the ground, regardless of fear level, upon first being hit
 
 //various levels of fear added when these weapons hit
-#define LittleFear	3 //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
-#define MedFear	6 //small/med explosions: mortars, 88mm guns and under
-#define BigFear	11 //large explosions: small bombs, 155mm - 105mm guns
+#define LittleFear	2 //small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+#define MedFear	4 //small/med explosions: mortars, 88mm guns and under
+#define BigFear	8 //large explosions: small bombs, 155mm - 105mm guns
 #define MortalFear	16 //omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty
 
 #define CRAWL_SLOWDOWN_FACTOR	4 //UNIT_SPEED is divided by this while the unit is crawling
-#define AIM_SLOWDOWN_FACTOR		2 //UNIT_SPEED is divided by this while the unit is moving and aiming
+#define AIM_SLOWDOWN_FACTOR		1 //UNIT_SPEED is divided by this while the unit is moving and aiming
