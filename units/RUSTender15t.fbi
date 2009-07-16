@@ -24,7 +24,7 @@
   iconType=landingship;
   mass=10000;
   maxDamage=1360;
-  maxVelocity=1.10;
+  maxVelocity=1.1;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=RUSTender15t;

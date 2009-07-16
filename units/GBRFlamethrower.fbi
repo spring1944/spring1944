@@ -17,7 +17,7 @@
     dontCount=1;
     feartarget=1;
   }
-  damageModifier=0.375;
+  damageModifier=0.15;
   explodeAs=Small_Explosion;
   footprintX=1;
   footprintZ=1;

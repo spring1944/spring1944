@@ -18,7 +18,7 @@
     weaponcost=10;
     weaponswithammo=1;
   }
-  damageModifier=0.375;
+  damageModifier=0.15;
   energyUse=0;
   footprintX=1;
   footprintZ=1;

@@ -16,7 +16,7 @@
     dontCount=1;
     flagCapRate=0.05;
   }
-  damageModifier=0.5;
+  damageModifier=0.15;
   energyUse=0;
   footprintX=1;
   footprintZ=1;

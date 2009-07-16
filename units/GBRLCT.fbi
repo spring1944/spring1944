@@ -25,7 +25,7 @@
   iconType=transportship;
   mass=280000;
   maxDamage=17500; //fixme
-  maxVelocity=1.10;
+  maxVelocity=1.1;
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   objectName=GBRLCT;

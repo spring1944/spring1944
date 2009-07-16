@@ -16,7 +16,7 @@
     dontCount=1;
     feartarget=1;
   }
-  damageModifier=0.375;
+  damageModifier=0.15;
   decloakOnFire=0;
   footprintX=1;
   footprintZ=1;

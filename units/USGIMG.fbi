@@ -14,7 +14,7 @@
   [customParams] {
     feartarget=1;
   }
-  damageModifier=0.375;
+  damageModifier=0.15;
   footprintX=1;
   footprintZ=1;
   iconType=lightmg;

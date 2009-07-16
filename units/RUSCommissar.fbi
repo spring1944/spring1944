@@ -20,7 +20,7 @@
     feartarget=1;
     flagCapRate=2;
   }
-  damageModifier=0.375;
+  damageModifier=0.15;
   energyStorage=0.01;
   footprintX=1;
   footprintZ=1;
