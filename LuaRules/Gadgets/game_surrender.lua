@@ -53,8 +53,8 @@ end
 
 function gadget:GameFrame(n)
 	if n == 5 then
-		local GAIATeam	=	GAIA_TEAM_ID
-		SendToUnsynced('allytogaia', GAIATeam)
+		--local gaiateam	=	GAIA_TEAM_ID
+		SendToUnsynced('allytogaia')
 	end
     if n % (1*30) < 0.1 then
         for unitID, someThing in pairs(surrenderedUnits) do
@@ -87,9 +87,9 @@ end
 else --Unsynced
 ----------------------
 local sendCommands            =	Spring.SendCommands
-
-local function allytogaia(GAIATeam)
-	sendCommands({'ally '.. GAIATeam .. ' 1'})
+local GAIA_TEAM_ID			=	Spring.GetGaiaTeamID()
+local function allytogaia()
+	sendCommands({'ally '.. GAIA_TEAM_ID .. ' 1'})
 	print("Allied!")
 end
 
