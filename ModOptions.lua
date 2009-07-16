@@ -217,6 +217,17 @@ local options = {
 		def = false,
 	},
 	
+	{
+		key = 'prisoner_income',
+		name = 'Command Income per tick per prisoner',
+		desc = 'Changes the amount you recieve for holding prisoners',
+	    type   = 'number',
+		def    = 0,
+		min    = 0,
+		max    = 5,
+		step   = 0.25,
+	},
+	
 	--[[{
     key    = 'weapon_range_mult',
     name   = 'Weapon range multiplier',

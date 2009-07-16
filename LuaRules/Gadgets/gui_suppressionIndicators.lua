@@ -31,11 +31,13 @@ if (gadgetHandler:IsSyncedCode()) then
 
 
 local scriptIDs = {}
-
-
+local fear 	= {}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
 
 function gadget:UnitCreated(unitID)
 	local scriptID = Spring.GetCOBScriptID(unitID, "luaFunction")
@@ -56,10 +58,14 @@ function gadget:GameFrame(n)
 	if (n % (1.5*30) < 0.1) then
 	  for unitID, funcID in pairs(scriptIDs) do
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
+		fear[unitID] = suppression
+		GG.fear = fear
 		--SendToUnsynced("supressed", unitID, supression)
-		--	if suppression > 10 then 
-		--		GG.surrender(unitID, 10)
-		--	end
+		if (modOptions.prisoner_income ~= 0) then
+			if suppression > 19 then 
+				GG.surrender(unitID, 10)
+			end
+		end
 			SetUnitRulesParam(unitID, "suppress", suppression)
 	  end
 	end
