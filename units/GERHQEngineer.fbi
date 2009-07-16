@@ -8,7 +8,7 @@
   buildCostMetal=320;
   buildDistance=0.1;
   builder=1;
-  buildTime=320;
+  buildTime=160;
   canAttack=0;
   canMove=1;
   category=INFANTRY;

@@ -8,7 +8,7 @@
   buildCostMetal=280;
   buildDistance=5;
   builder=1;
-  buildTime=280;
+  buildTime=140;
   canMove=1;
   category=INFANTRY;
   corpse=USsoldier_dead;
