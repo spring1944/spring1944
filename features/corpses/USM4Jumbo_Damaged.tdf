@@ -1,11 +1,11 @@
-[GERJagdPanther_Damaged] {
-  description=Abandoned TD;
-  damage=501;
-  energy=75;
-  featureDead=GERJagdPanther_Destroyed;
+[usm4jumbo_damaged] {
+  description=Abandoned Tank;
+  damage=626;
+  energy=1000;
+  featureDead=USM4Jumbo_Destroyed;
   footprintX=2;
   footprintZ=2;
-  object=GERJagdPanther_Damaged.S3O;
+  object=USM4Jumbo_Damaged.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;
@@ -18,24 +18,24 @@
 		}
 }
 
-[GERJagdPanther_Destroyed] {
-  description=Destroyed TD;
-  damage=501;
-  energy=75;
+[usm4jumbo_destroyed] {
+  description=Destroyed Tank;
+  [customParams] {
+    ceg_created=Burning;
+	cover_strength=2;
+	cover_radius=35;
+  }
+  damage=2501;
+  energy=500;
   featureDead=Debris_Large;
   footprintX=2;
   footprintZ=2;
-  object=GERJagdPanther_Destroyed.S3O;
+  object=USM4Jumbo_Destroyed.S3O;
   reclaimable=1;
-	collisionVolumeType=cylX;
+  
+  	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;
 	collisionVolumeOffsets=0 -5 0;
 	collisionVolumeTest=1;
-	[customParams]
-		{
-		ceg_created=Burning;
-		cover_strength=2;
-		cover_radius=35;
-		}
 }
 

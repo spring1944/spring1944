@@ -63,9 +63,9 @@
   turnRate=405;
   badTargetCategory=FLAG;
 
-  weapon2=flak3820mmaa;
-  onlyTargetCategory2=AIR;
+  weapon1=flak3820mmaa;
+  onlyTargetCategory1=AIR;
 
-  weapon4=Large_Tracer;
+  weapon2=Large_Tracer;
 }
 

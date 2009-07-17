@@ -1,8 +1,8 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks;
+piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, MGAiming, GunAiming;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -16,11 +16,12 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
 
-//hiding FX emit points
+//hiding fx emit points
+
 #define FX_HIDE\
 	hide flare;\
-	hide coaxflare;
-
+	hide coaxflare;\
+	
 // definitions for RockUnit_Set
 #define ROCK_SPEED	<50> // heavier units should rock less
 #define RESTORE_SPEED	<20>
@@ -33,20 +34,20 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<29>
-#define TURR_ELEVATE	<13>
-#define COAX_ARC		<15>
+#define TURR_TRAVERSE	<16>
+#define TURR_ELEVATE	<7>
+#define COAX_ARC		<3>
 
 // definitions for weapons behaviour
 #define RELOAD		3500 // time in milliseconds between shots
-#define RECOIL		[-2.25] // distance to recoil the gun
+#define RECOIL		[-2] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
 // definitions for HitWeapId_S44
-#define ARMOUR		14078
+#define ARMOUR		6027
 #include "HitWeapId_S44.h"
 
-//effects
+
 #define placeholder_EFFECT01 1024+1
 #define placeholder_EFFECT02 1024+2
 #define placeholder_EFFECT03 1024+3
@@ -56,16 +57,13 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define MG_MUZZLEFLASH 1024+7
 #define MEDIUM_MUZZLEFLASH 1024+8
 #define MEDIUM_MUZZLEDUST 1024+9
-#define MuzzleBrakeSmoke 1024+10
 
 // tracers
-#define SMALL_TRACER 	2048+5
-#define MEDIUM_TRACER 	2048+6
+#define SMALL_TRACER 	2048+4
 
 treads() 
-{
-// FIXME - model lacks setup for animated threads
-/*   while( TRUE ) 
+{ 
+   while( TRUE ) 
    { 
         if(bMoving) 
            { 
@@ -82,7 +80,7 @@ treads()
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } */
+   } 
 }
 
 Create()
@@ -280,49 +278,52 @@ AimWeapon3(heading, pitch)
 FireWeapon3()
 	{
 	rock = FALSE;
-	// Shot3() takes care of MG flare
-/*	
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
+	// TODO: nice SFX - done!
 	emit-sfx SMALL_TRACER from coaxflare;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
+	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
+	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;
+	sleep 67;
 	emit-sfx SMALL_TRACER from coaxflare;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 109;*/
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+	sleep 67;
+	emit-sfx SMALL_TRACER from coaxflare;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+	sleep 67;
 	return(0);
 	}
+	
 
-Shot3(foo)
-{
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-}
-
-AimFromWeapon5(piecenum) //bulletproof effect
+AimFromWeapon4(piecenum) //bulletproof effect 
 {
 	piecenum = base;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon4(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon4(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon5()
+FireWeapon4()
 {
 return (0);
 }
+
 
 // TODO: make this pretty
 Killed(severity, corpsetype)
@@ -335,7 +336,6 @@ Killed(severity, corpsetype)
 		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
 		return (0);
 	}
 	if( severity <= 250 )
@@ -346,7 +346,6 @@ Killed(severity, corpsetype)
 		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
 	}
 	if(severity <= 1000)
 	{
@@ -357,7 +356,6 @@ Killed(severity, corpsetype)
 		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
 		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
 	}
 	corpsetype = 2;
 	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
@@ -369,6 +367,5 @@ Killed(severity, corpsetype)
 	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
 	explode wheel3 type SHATTER | EXPLODE_ON_HIT;
 	explode wheel5 type SHATTER | EXPLODE_ON_HIT;
-	explode wheel6 type SHATTER | EXPLODE_ON_HIT;
 }
 

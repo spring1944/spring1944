@@ -11,7 +11,7 @@
   buildTime=7800;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  corpse=USM4A4Sherman_Damaged;
+  corpse=USM4Jumbo_Damaged;
   [customParams] {
     armor_front=146;
     armor_rear=54;
@@ -41,7 +41,6 @@
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
-    explosionGenerator10=custom:MuzzleBrakeSmoke;
     explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
     explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
     explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
@@ -77,10 +76,8 @@
   weapon3=M1919A4Browning;
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon5=.50calproof;
+  weapon4=.50calproof;
 
-  weapon6=Small_Tracer;
-
-  weapon7=Medium_Tracer;
+  weapon5=Small_Tracer;
 }
 

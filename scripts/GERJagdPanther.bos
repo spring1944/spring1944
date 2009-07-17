@@ -1,7 +1,7 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece  base, mantlet, barrel, flare;
-piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
+piece  base, mantlet, barrel, flare, brakeright, brakeleft;
+piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, tracks1, tracks2;
 
  
 static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming;
@@ -54,6 +54,7 @@ static-var  restore_delay, rock, mainHead, bMoving, treadnum, GunAiming;
 #define MG_MUZZLEFLASH 1024+7
 #define MEDIUM_MUZZLEFLASH 1024+8
 #define MEDIUM_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
 
 treads() 
 { 
@@ -80,6 +81,8 @@ treads()
 Create()
 {
 	hide flare;
+	hide brakeleft;
+	hide brakeright;
 	// init vars
 	rock = FALSE;
 	// start continuous scripts
@@ -100,7 +103,6 @@ StartMoving()
  	spin wheel5 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel6 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel7 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
- 	spin wheel8 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
 }
 
 StopMoving()
@@ -116,7 +118,6 @@ StopMoving()
  	stop-spin wheel5 around x-axis;
  	stop-spin wheel6 around x-axis;
  	stop-spin wheel7 around x-axis;
- 	stop-spin wheel8 around x-axis;
 }
 
 SetMaxReloadTime(longestReloadTime)
@@ -169,6 +170,8 @@ FireWeapon1()
 	// Do SFX
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
