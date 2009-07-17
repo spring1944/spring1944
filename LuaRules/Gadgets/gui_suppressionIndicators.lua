@@ -61,7 +61,7 @@ function gadget:GameFrame(n)
 		fear[unitID] = suppression
 		GG.fear = fear
 		--SendToUnsynced("supressed", unitID, supression)
-		if (modOptions.prisoner_income ~= 0) then
+		if tonumber(modOptions.prisoner_income) > 0 then
 			if suppression > 19 then 
 				GG.surrender(unitID, 10)
 			end

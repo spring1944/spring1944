@@ -36,6 +36,12 @@ if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
 
+function gadget:Initialize()
+  if tonumber(modOptions.prisoner_income) <= 0 then
+    gadgetHandler:RemoveGadget()
+  end
+end
+
 --escapeTime is seconds until unit escapes if unattended. 0 is unlimited
 function GG.surrender(unitID, esTime)
 	currentTeam = GetUnitTeam(unitID)
@@ -74,7 +80,7 @@ function gadget:GameFrame(n)
 					else
 						surrenderedUnits[unitID].surrenderTime = currentTime
 					end
-					if (modOptions.prisoner_income ~= 0) and guardTeam ~= oldTeam then
+					if (tonumber(modOptions.prisoner_income) > 0) and guardTeam ~= oldTeam then
 							AddTeamResource(guardTeam, "m", modOptions.prisoner_income or 1)
 					end
 					--end  
