@@ -45,7 +45,7 @@ local damagedefs = {
     mines = 0,
   },
   shapedcharge = {
-    bunkers = 2,
+    lightbuildings = 1/4,
     flag = 0,
   },
   fire = {
