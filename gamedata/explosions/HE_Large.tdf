@@ -230,7 +230,8 @@
       directional=1;
       alwaysVisible=0;
     }
-    unit=1;
+    air=1;
+    water=1;
     ground=1;
     count=8;
   }
@@ -277,7 +278,8 @@
       directional=1;
       alwaysVisible=0;
     }
-    unit=1;
+    air=1;
+    water=1;
     ground=1;
     count=8;
   }
