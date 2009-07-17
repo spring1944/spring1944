@@ -217,6 +217,7 @@ local options = {
 		def = false,
 	},
 	
+  --[[
 	{
 		key = 'prisoner_income',
 		name = 'Command Income per tick per prisoner',
@@ -227,6 +228,7 @@ local options = {
 		max    = 5,
 		step   = 0.25,
 	},
+  ]]
 	
 	--[[{
     key    = 'weapon_range_mult',
