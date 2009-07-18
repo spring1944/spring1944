@@ -18,72 +18,115 @@ if (gadgetHandler:IsSyncedCode()) then
 local CMD_FIRESTATE = CMD.FIRE_STATE
 local CMD_MOVESTATE = CMD.MOVE_STATE
 
-local GetGameSeconds        =    Spring.GetGameSeconds
-local GetUnitNearestEnemy	=    Spring.GetUnitNearestEnemy
-local GetUnitSeparation		=    Spring.GetUnitSeparation
+local GetUnitTransporter	=	Spring.GetUnitTransporter
+local GetGameFrame			=	Spring.GetGameFrame
+local GetGameSeconds		=	Spring.GetGameSeconds
+local GetUnitNearestEnemy	=	Spring.GetUnitNearestEnemy
+local GetUnitSeparation		=	Spring.GetUnitSeparation
+local GetUnitsInCylinder	=	Spring.GetUnitsInCylinder
+local GetUnitPosition		=	Spring.GetUnitPosition
 local GetUnitTeam			=	Spring.GetUnitTeam
+local GetUnitAllyTeam		=	Spring.GetUnitAllyTeam
 local GAIA_TEAM_ID			=	Spring.GetGaiaTeamID()
 
-local AddTeamResource		= 	Spring.AddTeamResource
-local SetUnitSensorRadius        =    Spring.SetUnitSensorRadius
+local AddTeamResource		=	Spring.AddTeamResource
+local SetUnitSensorRadius	=	Spring.SetUnitSensorRadius
 local TransferUnit			= 	Spring.TransferUnit
 local GiveOrderToUnit		=	Spring.GiveOrderToUnit
 local SetUnitNeutral		=	Spring.SetUnitNeutral
-local surrenderedUnits		= 	{}
-local escapeRadius			=	4000
 
+local surrenderedUnits		= 	{}
+local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
+local enemyMult				=	1.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
+--[[
+esTime is given by the call to GG.surrender, and sets how long the unit can be guard-free in their escapeRadius before they go back to their old team
+
+
+
+
+]]--
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
 
-function gadget:Initialize()
-  if tonumber(modOptions.prisoner_income) <= 0 then
-    gadgetHandler:RemoveGadget()
-  end
-end
-
 --escapeTime is seconds until unit escapes if unattended. 0 is unlimited
 function GG.surrender(unitID, esTime)
-	currentTeam = GetUnitTeam(unitID)
-	if (currentTeam ~= GAIA_TEAM_ID) and (surrenderedUnits[unitID] == nil) then 
-		surrenderedUnits[unitID] = {
-			originalTeam = GetUnitTeam(unitID),
-			surrenderTime = GetGameSeconds(),
-			escapeTime = esTime,
-		}
-		TransferUnit(unitID, GAIA_TEAM_ID)
-		GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
-		GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)    
+	local currentTeam = GetUnitTeam(unitID)
+	if currentTeam == GAIA_TEAM_ID then
+		return 
 	end
+	local allyTeam	= GetUnitAllyTeam(unitID)
+	--local nearbyUnits	= {}
+	local x, _, z = GetUnitPosition(unitID)
+	--Spring.Echo(x, z, escapeRadius)
+	local enemyTotal = 0 
+	local allyTotal = 0
+	--counts nearby enemies and friendlies
+	local nearbyUnits = GetUnitsInCylinder(x, z, escapeRadius)
+
+	if nearbyUnits ~= nil then
+		 for i = 1, #nearbyUnits do
+			local nearbyUnit = nearbyUnits[i]
+			local unitAllyTeam = GetUnitAllyTeam(nearbyUnit)
+			if allyTeam == unitAllyTeam then
+				allyTotal = allyTotal + 1
+			else
+				enemyTotal = enemyTotal + 1
+			end
+		end
+	end
+	--Spring.Echo("allies: ", allyTotal, "enemies: ", enemyTotal)
+	--if he's scared enough and there are too many bad guys around - surrender!
+	if ((enemyMult*enemyTotal) > allyTotal) then
+		local currentTime = GetGameSeconds()
+		if (currentTeam ~= GAIA_TEAM_ID) and (surrenderedUnits[unitID] == nil) then 
+			surrenderedUnits[unitID] = {
+				originalTeam = currentTeam,
+				surrenderTime = currentTime,
+				escapeTime = esTime,
+			}
+			TransferUnit(unitID, GAIA_TEAM_ID)
+			GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
+			GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)    
+		end
+	end
+	nearbyUnits[unitID] = nil
 end
 
 function gadget:GameFrame(n)
 	if n == 5 then
-		--local gaiateam	=	GAIA_TEAM_ID
 		SendToUnsynced('allytogaia')
 	end
-    if n % (1*30) < 0.1 then
-        for unitID, someThing in pairs(surrenderedUnits) do
-            local nearestGuard = GetUnitNearestEnemy(unitID, _, 0)
-            if nearestGuard ~= nil then
+	if n % (1*30) < 0.1 then
+		for unitID, someThing in pairs(surrenderedUnits) do
+			local nearestGuard = GetUnitNearestEnemy(unitID, _, 0)
+			local inTransport = GetUnitTransporter(unitID)	
+			local currentTime = GetGameSeconds()
+			local captureTime = surrenderedUnits[unitID].surrenderTime
+			local escapeTime = surrenderedUnits[unitID].escapeTime
+			
+			if inTransport ~= nil then --apparently transports are not counted as enemies or nearby if the unit is inside them
+				nearestGuard = inTransport
+			end
+			if nearestGuard ~= nil then
 				local oldTeam = surrenderedUnits[unitID].originalTeam
 				local separation = GetUnitSeparation(unitID, nearestGuard)
 				local guardTeam = GetUnitTeam(nearestGuard)
-					if separation > escapeRadius or guardTeam == oldTeam then
-						local currentTime = GetGameSeconds()
-						local captureTime = surrenderedUnits[unitID].surrenderTime or 0
-						local escapeTime = surrenderedUnits[unitID].escapeTime						
-						if (currentTime - captureTime) > escapeTime and GG.fear[unitID] == 0 then
+					if guardTeam == oldTeam and ((currentTime - captureTime) > (escapeTime/2)) then --nearby friendlies let the prisoner escape in half the time; its all a mental prison, really.
+						TransferUnit(unitID, oldTeam)
+						surrenderedUnits[unitID] = nil
+					end
+					if separation > escapeRadius then
+						if ((currentTime - captureTime) > escapeTime) and GG.fear[unitID] == 0 then
 							TransferUnit(unitID, oldTeam)
 							surrenderedUnits[unitID] = nil
 						end             
 					else
-						surrenderedUnits[unitID].surrenderTime = currentTime
+						surrenderedUnits[unitID].surrenderTime = (n/30)
 					end
 					if (tonumber(modOptions.prisoner_income) > 0) and guardTeam ~= oldTeam then
 							AddTeamResource(guardTeam, "m", modOptions.prisoner_income or 1)
 					end
-					--end  
 			end
 		end
     end
@@ -92,18 +135,16 @@ end
 -----------------------
 else --Unsynced
 ----------------------
-local sendCommands            =	Spring.SendCommands
+local sendCommands			=	Spring.SendCommands
 local GAIA_TEAM_ID			=	Spring.GetGaiaTeamID()
+local LocalTeamID			=	Spring.GetLocalTeamID()
 local function allytogaia()
 	sendCommands({'ally '.. GAIA_TEAM_ID .. ' 1'})
-	print("Allied!")
+	--Spring.Echo(LocalTeamID, "Allied!")
 end
 
 function gadget:Initialize()
 	gadgetHandler:AddSyncAction("allytogaia", allytogaia)
 end
-
-
-
 
 end
