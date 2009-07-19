@@ -60,9 +60,12 @@ function gadget:GameFrame(n)
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
 		fear[unitID] = suppression
 		GG.fear = fear
+		local udid = Spring.GetUnitDefID(unitID)
+		local ud = UnitDefs[udid]
+		local mass = ud.mass
 		--SendToUnsynced("supressed", unitID, supression)
-		if tonumber(modOptions.prisoner_income) > 0 then
-			if suppression > 19 then 
+		if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
+			if suppression > 25 then 
 				GG.surrender(unitID, 10)
 			end
 		end
