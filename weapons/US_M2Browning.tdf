@@ -12,7 +12,7 @@
   collisionVolumeTest=1;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=50;
+    fearaoe=30;
     fearid=401;
   }
   [damage] {
@@ -25,7 +25,7 @@
   interceptedByShieldType=16;
   lineofsight=1;
   movingAccuracy=500;
-  range=975;
+  range=880;
   reloadTime=4;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;

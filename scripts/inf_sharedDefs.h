@@ -1,8 +1,8 @@
 
 //Fear recovery defs
-#define FearLimit	20 //max amount of fear they can possibly get. any additional is ignored
+#define FearLimit	30 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
-#define PinnedLevel	15 //fear level where they stop shooting and freeze on the ground
+#define PinnedLevel	25 //fear level where they stop shooting and freeze on the ground
 #define RecoverRate	1000 //how often RecoverConstant is subtracted from total fear level
 #define initialDelay	5000 //the amount that they stay on the ground, regardless of fear level, upon first being hit
 

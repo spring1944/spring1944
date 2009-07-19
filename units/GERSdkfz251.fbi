@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=1250;
-  buildTime=1250;
+  buildCostMetal=1100;
+  buildTime=1100;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERSdkfz251_Destroyed;

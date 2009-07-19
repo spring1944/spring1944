@@ -26,7 +26,7 @@
   mass=50;
   maxDamage=110;
   maxSlope=25;
-  maxVelocity=1;
+  maxVelocity=1.15;
   maxWaterDepth=20;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;

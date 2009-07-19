@@ -5,8 +5,8 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=210;
-  buildTime=210;
+  buildCostMetal=170;
+  buildTime=170;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=USGMCTruck_Destroyed;
