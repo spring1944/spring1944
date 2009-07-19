@@ -115,6 +115,7 @@ function gadget:GameFrame(n)
 					if guardTeam == oldTeam and ((currentTime - captureTime) > (escapeTime/2)) then --nearby friendlies let the prisoner escape in half the time; its all a mental prison, really.
 						TransferUnit(unitID, oldTeam)
 						surrenderedUnits[unitID] = nil
+						return
 					end
 					if separation > escapeRadius then
 						if ((currentTime - captureTime) > escapeTime) and GG.fear[unitID] == 0 then
