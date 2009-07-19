@@ -147,6 +147,34 @@
     count=1;
   }
   
+  [sparks] {
+    class=CSimpleParticleSystem;
+    [properties]
+    {
+      sizeGrowth=0;
+      sizeMod=1.0;
+      pos=0, 1, 0;
+      emitVector=0, 1, 0;
+      gravity=0, -0.3, 0;
+      colorMap=1 0.75 0.5 0.01   1 0.75 0.5 0.01   0 0 0 0;
+      Texture=plasma;
+      airdrag=0.8;
+      particleLife=96;
+      particleLifeSpread=64;
+      numParticles=128;
+      particleSpeed=12;
+      particleSpeedSpread=36;
+      particleSize=1;
+      particleSizeSpread=2;
+      emitRot=0;
+      emitRotSpread=90;
+      directional=1;
+    }
+    unit=1;
+    ground=1;
+    count=1;
+  }
+  
   [sphere] {
     class=CSpherePartSpawner;
     [properties] {
