@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=900;
-  buildTime=900;
+  buildCostMetal=1000;
+  buildTime=1000;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=RUSM5Halftrack_Destroyed;
