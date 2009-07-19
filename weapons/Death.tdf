@@ -87,10 +87,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=1500;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=150;
     squadSpawners=100000;
   }
   fireStarter=0;
@@ -115,10 +112,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=900;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=90;
     squadSpawners=100000;
   }
   fireStarter=0;
@@ -144,10 +138,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=2250;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=225;
     squadSpawners=100000;
   }
   fireStarter=0;
@@ -172,10 +163,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=400;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=40;
     squadSpawners=100000;
   }
   explosionGenerator=custom:ROACHPLOSION;
@@ -214,10 +202,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=800;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=80;
     lightbuildings=1050;
   }
   explosionGenerator=custom:SmallBuildingDeath;
@@ -243,10 +228,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=250;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=25;
     squadSpawners=100000;
   }
   fireStarter=0;
@@ -272,10 +254,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=100;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=10;
     squadSpawners=100000;
   }
   fireStarter=0;
@@ -326,10 +305,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=230;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=23;
   }
   fireStarter=0;
   id=69;
@@ -354,10 +330,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=150;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=15;
   }
   fireStarter=0;
   id=69;
@@ -381,10 +354,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=100;
-    apmine=0.0001;
-    atmine=0.0001;
-    flag=0;
+    default=10;
   }
   fireStarter=0;
   id=69;
