@@ -15,8 +15,8 @@
     fearid=401;
   }
   [damage] {
-    default=1700;
-	guns=625;
+    default=625;
+    infantry=1700;
   }
   duration=0.015;
   explosionGenerator=custom:Bullet;
