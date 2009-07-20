@@ -21,7 +21,7 @@
   impulseFactor=1;
   model=Rocket_HVAR.S3O;
   range=1500;
-  reloadTime=1;
+  reloadTime=3;
   rendertype=1;
   soundHit=GEN_Explo_2;
   soundStart=GER_Panzerschrek;
