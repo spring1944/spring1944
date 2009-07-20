@@ -107,7 +107,7 @@ function gadget:GameFrame(n)
 	end
 	if n % (1*30) < 0.1 then
 		for unitID, someThing in pairs(surrenderedUnits) do
-			local nearestGuard = GetUnitNearestEnemy(unitID, _, 0)
+			local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
 			local inTransport = GetUnitTransporter(unitID)	
 			local currentTime = GetGameSeconds()
 			local captureTime = surrenderedUnits[unitID].surrenderTime
