@@ -64,9 +64,11 @@ function gadget:GameFrame(n)
 		local ud = UnitDefs[udid]
 		local mass = ud.mass
 		--SendToUnsynced("supressed", unitID, supression)
-		if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
-			if suppression > 25 then 
-				GG.surrender(unitID, 10)
+		if (modOptions.prisoner_income ~= nil) then
+			if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
+				if suppression > 25 then 
+					GG.surrender(unitID, 10)
+				end
 			end
 		end
 			SetUnitRulesParam(unitID, "suppress", suppression)

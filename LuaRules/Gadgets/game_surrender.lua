@@ -13,7 +13,6 @@ end
 
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
-end
 
 if (tonumber(modOptions.prisoner_income) > 0) then
 
@@ -21,35 +20,34 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
-local CMD_FIRESTATE = CMD.FIRE_STATE
-local CMD_MOVESTATE = CMD.MOVE_STATE
+local CMD_FIRESTATE		=	CMD.FIRE_STATE
+local CMD_MOVESTATE		=	CMD.MOVE_STATE
 
 local GetUnitTransporter	=	Spring.GetUnitTransporter
-local GetGameFrame			=	Spring.GetGameFrame
+local GetGameFrame		=	Spring.GetGameFrame
 local GetGameSeconds		=	Spring.GetGameSeconds
 local GetUnitNearestEnemy	=	Spring.GetUnitNearestEnemy
 local GetUnitSeparation		=	Spring.GetUnitSeparation
 local GetUnitsInCylinder	=	Spring.GetUnitsInCylinder
 local GetUnitPosition		=	Spring.GetUnitPosition
-local GetUnitTeam			=	Spring.GetUnitTeam
+local GetUnitTeam		=	Spring.GetUnitTeam
 local GetUnitAllyTeam		=	Spring.GetUnitAllyTeam
-local GetGaiaTeamID			=	Spring.GetGaiaTeamID
+local GetGaiaTeamID		=	Spring.GetGaiaTeamID
 
 local AddTeamResource		=	Spring.AddTeamResource
 local SetUnitSensorRadius	=	Spring.SetUnitSensorRadius
-local TransferUnit			= 	Spring.TransferUnit
+local TransferUnit		= 	Spring.TransferUnit
 local GiveOrderToUnit		=	Spring.GiveOrderToUnit
 local SetUnitNeutral		=	Spring.SetUnitNeutral
 
 local surrenderedUnits		= 	{}
-local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
-local enemyMult				=	1.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
+local escapeRadius 		=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
+local enemyMult			=	1.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
 --[[
-esTime is given by the call to GG.surrender, and sets how long the unit can be guard-free in their escapeRadius before they go back to their old team
-
-
-
-
+esTime is given by the call to GG.surrender, 
+and sets how long the unit can be guard-free 
+in their escapeRadius before they go back to
+their old team.
 ]]--
 
 
@@ -147,7 +145,8 @@ local sendCommands			=	Spring.SendCommands
 local GAIA_TEAM_ID			=	Spring.GetGaiaTeamID()
 local LocalTeamID			=	Spring.GetLocalTeamID()
 local function allytogaia()
-	sendCommands({'ally '.. GAIA_TEAM_ID .. ' 1'})
+	local _, _, _, _, _, GAIA_ALLY_ID = GetTeamInfo(GAIA_TEAM_ID)
+	sendCommands({'ally '.. GAIA_ALLY_ID .. ' 1'})
 	--Spring.Echo(LocalTeamID, "Allied!")
 end
 
@@ -155,5 +154,5 @@ function gadget:Initialize()
 	gadgetHandler:AddSyncAction("allytogaia", allytogaia)
 end
 end
-
+end
 end
