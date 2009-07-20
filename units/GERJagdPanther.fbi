@@ -2,7 +2,7 @@
   unitname=GERJagdPanther;
   name=Jagdpanther;
   description=Turretless Tank Destroyer;
-  acceleration=0.039;
+  acceleration=0.051;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -12,10 +12,10 @@
   category=MINETRIGGER HARDVEH;
   corpse=GERJagdPanther_Destroyed;
   [customParams] {
-    armor_front=107;
-    armor_rear=20;
-    armor_side=37;
-    armor_top=20;
+    armor_front=114;
+    armor_rear=44;
+    armor_side=48;
+    armor_top=25;
     blockfear=1;
     lowammolevel=5;
     maxammo=15;
@@ -28,9 +28,9 @@
   iconType=selfprop;
   leaveTracks=1;
   mass=2750;
-  maxDamage=2580;
+  maxDamage=4550;
   maxSlope=2;
-  maxVelocity=2.59;
+  maxVelocity=4.07;
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
@@ -40,6 +40,7 @@
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
     explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
     explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
     explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
@@ -48,7 +49,6 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
     explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
     explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
-    explosionGenerator10=custom:MuzzleBrakeSmoke;
   }
   showNanoFrame=0;
   side=GER;
