@@ -65,8 +65,8 @@ local DIRECT_HIT_THRESHOLD = 0.98
 local unitInfos = {}
 
 --format: weaponDefID = { armor_penetration, armor_dropoff, armor_hit_side }
---armor_penetration pre-exponentiated
---armor_dropoff is in inverse elmos (predivided by ARMOR_SCALE)
+--armor_penetration is unitless (predivided by ARMOR_SCALE)
+--armor_dropoff is in inverse elmos (exponential penetration decay)
 local weaponInfos = {}
 
 ----------------------------------------------------------------
@@ -120,8 +120,8 @@ function gadget:Initialize()
       local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
       local armor_hit_side = customParams.armor_hit_side
       weaponInfos[i] = {
-        exp(armor_penetration / ARMOR_SCALE),
-        log(armor_penetration_1000m / armor_penetration) / 1000 / ARMOR_SCALE,
+        armor_penetration / ARMOR_SCALE,
+        log(armor_penetration_1000m / armor_penetration) / 1000,
         armor_hit_side,
       }
     elseif customParams.armor_penetration_100m then
@@ -130,8 +130,8 @@ function gadget:Initialize()
       local armor_hit_side = customParams.armor_hit_side
       local armor_penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
       weaponInfos[i] = {
-        exp(armor_penetration / ARMOR_SCALE),
-        log(armor_penetration_1000m / armor_penetration_100m) / 900 / ARMOR_SCALE,
+        armor_penetration / ARMOR_SCALE,
+        log(armor_penetration_1000m / armor_penetration_100m) / 900,
         armor_hit_side,
       }
     elseif customParams.damagetype == "explosive" then
@@ -207,7 +207,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   if weaponInfo[1] == "explosive" then
     penetration = exp(HE_MULT * sqrt(damage) / ARMOR_SCALE)
   else
-    penetration = weaponInfo[1] * exp(d * weaponInfo[2])
+    penetration = exp(weaponInfo[1] * exp(d * weaponInfo[2]))
   end
   
   local mult = penetration / (penetration + armor)
