@@ -48,22 +48,25 @@ end
 --higher = less quickly
 --along with cost, controls how hard counters are; higher = softer counters
 --recommend somewhere around 15-25
-local AP_SCALE = 20
+local ARMOR_SCALE = 20
 
---he weapons get an exponential decay curve
 --effective penetration = HE_MULT * damage^HE_POWER
-local HE_SCALE = AP_SCALE * 2
 --local HE_POWER = 1/2
-local HE_MULT = 2
+local HE_MULT = 2.2
+
+local DIRECT_HIT_THRESHOLD = 0.98
 
 ----------------------------------------------------------------
 --locals
 ----------------------------------------------------------------
 
---format: unitDefID = { armor_front, armor_side, armor_rear, armor_top, opentopped }
+--format: unitDefID = { armor_front, armor_side, armor_rear, armor_top, armorTypeString, armorTypeNumber }
+--armor values pre-exponentiated
 local unitInfos = {}
 
 --format: weaponDefID = { armor_penetration, armor_dropoff, armor_hit_side }
+--armor_penetration pre-exponentiated
+--armor_dropoff is in inverse elmos (predivided by ARMOR_SCALE)
 local weaponInfos = {}
 
 ----------------------------------------------------------------
@@ -98,14 +101,13 @@ function gadget:Initialize()
       local armor_rear = customParams.armor_rear or armor_side
       local armor_top = customParams.armor_top or armor_rear
       
-      local openTopped = armorTypes[unitDef.armorType] == "armouredvehicles"
-      
       unitInfos[i] = {
-        armor_front,
-        armor_side,
-        armor_rear,
-        armor_top,
-        openTopped,
+        exp(armor_front / ARMOR_SCALE),
+        exp(armor_side / ARMOR_SCALE),
+        exp(armor_rear / ARMOR_SCALE),
+        exp(armor_top / ARMOR_SCALE),
+        armorTypes[unitDef.armorType],
+        unitDef.armorType,
       }
     end
   end
@@ -118,17 +120,18 @@ function gadget:Initialize()
       local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
       local armor_hit_side = customParams.armor_hit_side
       weaponInfos[i] = {
-        armor_penetration,
-        log(armor_penetration_1000m / armor_penetration) / 1000,
+        exp(armor_penetration / ARMOR_SCALE),
+        log(armor_penetration_1000m / armor_penetration) / 1000 / ARMOR_SCALE,
         armor_hit_side,
       }
     elseif customParams.armor_penetration_100m then
       local armor_penetration_100m = customParams.armor_penetration_100m
       local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
       local armor_hit_side = customParams.armor_hit_side
+      local armor_penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
       weaponInfos[i] = {
-        (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m,
-        log(armor_penetration_1000m / armor_penetration_100m) / 900,
+        exp(armor_penetration / ARMOR_SCALE),
+        log(armor_penetration_1000m / armor_penetration_100m) / 900 / ARMOR_SCALE,
         armor_hit_side,
       }
     elseif customParams.damagetype == "explosive" then
@@ -145,10 +148,13 @@ end
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
   if not weaponDefID or not ValidUnitID(unitID) or not ValidUnitID(attackerID) then return damage end
   
+  if damage == 0 then return damage end
+  
   local unitInfo = unitInfos[unitDefID]
   local weaponInfo = weaponInfos[weaponDefID]
+  local weaponDef = WeaponDefs[weaponDefID] 
   
-  if not unitInfo or not weaponInfo then return damage end
+  if not unitInfo or not weaponInfo or not weaponDef then return damage end
 
   local armor
   
@@ -174,7 +180,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   end
   
   --discrete arcs
-  if armor_hit_side then
+  --splash hits don't use armor_hit_side
+  if armor_hit_side 
+      and (weaponInfo[1] ~= "explosive" or damage / weaponDef.damages[unitInfo[6]] > DIRECT_HIT_THRESHOLD) then
     if armor_hit_side == "top" then armor = unitInfo[4]
     elseif armor_hit_side == "rear" then armor = unitInfo[3]
     elseif armor_hit_side == "side" then armor = unitInfo[2]
@@ -194,25 +202,23 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
     end
   end
   
+  local penetration
+  
   if weaponInfo[1] == "explosive" then
-    local netPenetration = HE_MULT * sqrt(damage) - armor
-    local mult
-    if netPenetration >= 0 then
-      mult = 1
-    else
-      mult = exp(netPenetration / HE_SCALE)
-    end
-    
-    if unitInfo[5] then
-      mult = mult + 1
-    end
-    
-    return damage * mult
+    penetration = exp(HE_MULT * sqrt(damage) / ARMOR_SCALE)
   else
-    local penetration = weaponInfo[1] * exp(d * weaponInfo[2])
-    penetration = exp(penetration / AP_SCALE)
-    armor = exp(armor / AP_SCALE)
-    
-    return damage * penetration / (penetration + armor)
+    penetration = weaponInfo[1] * exp(d * weaponInfo[2])
   end
+  
+  local mult = penetration / (penetration + armor)
+  
+  if weaponInfo[1] == "explosive" and unitInfo[5] == "armouredvehicles" then
+    mult = mult + 1
+  end
+  
+  --debug
+  --local unitDef = UnitDefs[unitDefID]
+  --Spring.Echo(weaponDef.name, log(penetration) * ARMOR_SCALE, unitDef.name, log(armor) * ARMOR_SCALE, mult)
+  
+  return damage * mult
 end
