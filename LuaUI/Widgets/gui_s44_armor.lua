@@ -1,11 +1,11 @@
-local versionNumber = "v1.0"
+local versionNumber = "v1.1"
 
 function widget:GetInfo()
 	return {
-		name = "1944 AP Display",
+		name = "1944 Armor Display",
 		desc = versionNumber .. " Rollover display of armor.",
 		author = "Evil4Zerggin",
-		date = "23 June 2009",
+		date = "20 July 2009",
 		license = "GNU LGPL, v2.1 or later",
 		layer = 1,
 		enabled = true
@@ -88,16 +88,16 @@ function widget:Initialize()
       local weaponDef = WeaponDefs[weapon.weaponDef]
       local customParams = weaponDef.customParams
       
-      if (tonumber(customParams.ap_penetration) or 0) > (penetration or 0) then
-        local ap_penetration = customParams.ap_penetration
-        local ap_penetration_1000m = customParams.ap_penetration_1000m or ap_penetration
-        penetration = tonumber(ap_penetration)
-        dropoff = log(ap_penetration_1000m / ap_penetration) / 1000
-      elseif (tonumber(customParams.ap_penetration_100m) or 0) > (penetration or 0) then
-        local ap_penetration_100m = customParams.ap_penetration_100m
-        local ap_penetration_1000m = customParams.ap_penetration_1000m or ap_penetration_100m
-        penetration = (ap_penetration_100m / ap_penetration_1000m) ^ (1/9) * ap_penetration_100m
-        dropoff = log(ap_penetration_1000m / ap_penetration_100m) / 900
+      if (tonumber(customParams.armor_penetration) or 0) > (penetration or 0) then
+        local armor_penetration = customParams.armor_penetration
+        local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
+        penetration = tonumber(armor_penetration)
+        dropoff = log(armor_penetration_1000m / armor_penetration) / 1000
+      elseif (tonumber(customParams.armor_penetration_100m) or 0) > (penetration or 0) then
+        local armor_penetration_100m = customParams.armor_penetration_100m
+        local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
+        penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
+        dropoff = log(armor_penetration_1000m / armor_penetration_100m) / 900
       end
     end
     
@@ -198,7 +198,6 @@ function widget:DrawWorld()
 end
 
 function widget:DrawScreen()
-  
   local selectedUnit = GetSelectedUnits()[1]
   
   if selectedUnit then
