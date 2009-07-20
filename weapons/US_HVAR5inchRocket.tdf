@@ -27,6 +27,7 @@
   soundStart=GER_Panzerschrek;
   soundTrigger=0;
   startVelocity=750;
+  targetMoveError=0.075;
   tolerance=300;
   trajectoryHeight=0.05;
   turret=1;
