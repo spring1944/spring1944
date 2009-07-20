@@ -4,7 +4,7 @@
   areaOfEffect=32;
   canAttackGround=0;
   [customParams] {
-    armor_hit_side=top;
+    armor_penetration=200;
     damagetype=explosive;
   }
   [damage] {
