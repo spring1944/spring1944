@@ -213,6 +213,7 @@ local armorDefs = {
     "GERPanther",
     "GERTiger",
     "GERTigerII",
+    "GERJagdpanther",
     "GERJagdpanzerIV",
 
     --US--
