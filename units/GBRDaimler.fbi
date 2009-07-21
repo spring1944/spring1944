@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=1500;
-  buildTime=1500;
+  buildCostMetal=1350;
+  buildTime=1350;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRDaimler_Destroyed;
