@@ -14,8 +14,8 @@ end
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 
-if (tonumber(modOptions.prisoner_income) > 0) then
-
+if (tonumber(modOptions.prisoner_income) ~= nil) then
+if (tonumber(modOptions.prisoner_income) ~= 0) then
 if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
@@ -152,6 +152,7 @@ end
 
 function gadget:Initialize()
 	gadgetHandler:AddSyncAction("allytogaia", allytogaia)
+end
 end
 end
 end
