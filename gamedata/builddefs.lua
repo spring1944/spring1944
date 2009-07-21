@@ -310,6 +310,7 @@ buildoptions =
     "gerflak38_truck",
     "germarder",
     "gerjagdpanzeriv",
+    "gerjagdpanther",
   },
 
   gersdkfz9 =
