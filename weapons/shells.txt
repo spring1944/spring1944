@@ -7,27 +7,44 @@ Shell                 Filler Weight  Kinetic Energy
 23mm VYa-23            14 g          77 kJ
 30mm MK 108            82.5 g        42 kJ
 
+14.5mm PTRD                          32 kJ
 20mm FlaK 38           11 g          47 kJ
 20mm Oerlikon          11 g          44 kJ
 1.1" Chicago Piano     17 g         130 kJ
 37mm 61-K              40.8 g       252 kJ
+37mm M6                39 g         229 kJ (AP)
+37mm FlaK 43 L / 89                 198 kJ (AP)
 40mm Bofors            68 g         349 kJ
 40mm 2 Pdr. Mk. VIII   71 g         156 kJ
-40mm Q.F. 2 Pounder     
-57mm Q.F. 6 Pounder     0.38 kg
-75mm M3                 0.667 kg
-75mm Q.F. Mk. V         
-76mm Q.F. 17 Pounder
+40mm Q.F. 2 Pounder                 383 kJ (AP)
+45mm 20K                            706 kJ (AP)
+50mm Kw.K. 39 L / 60  165g          718 kJ (AP)
+57mm Q.F. 6 Pounder     0.38 kg    1115 kJ (AP)
+57mm ZIS-2                         1549 kJ (AP)
+76.2mm L-10 L / 24                 1089 kJ (AP)
+75mm M3                 0.667 kg   1174 kJ (AP)
+75mm Q.F. Mk. V                    1251 kJ (AP)
+75mm Kw.K.40 L / 48     0.64 kg    1862 kJ (AP)
+75mm Kw.K.42 L / 70     0.61 kg    2972 kJ (AP)
+75mm PaK 40 L / 48      0.64 kg    2122 kJ (AP)
+76mm Q.F. 17 Pounder    0.71 kg    3012 kJ (AP)
+76mm M7                            2195 kJ (AP)
+76.2mm F-34                        1452 kJ (AP)
+76.2mm ZIS-3                       1588 kJ (AP)
 3" Mortar           
 80mm GrW 34 Mortar      
+85mm S-53                          2885 kJ (AP)
 87mm Q.F. 25 Pounder    
+88mm Kw.K.36 L / 56                3264 kJ (AP)
+88mm Kw.K.43 L / 71                5100 kJ (AP)
+100mm D-10S                        6149 kJ (AP)
 105mm M2A1              2.18 kg
-122mm D-25              3.6 kg
+122mm D-25              3.6 kg     7809 kJ (AP)
 132mm RS-132            0.9 kg?
 150mm Nebelwerfer 41    2.5 kg
-152mm ML-20           6-9 kg
+152mm ML-20           6-9 kg       7200 kJ (AP)
 
-15" Mk I           59 kg        247 kJ
+15" Mk I               59 kg        247 MJ
 600mm Karl Geraet     220 kg        
 
 S-Mine                  0.182 kg     -
