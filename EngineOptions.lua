@@ -16,7 +16,7 @@
 --  step:     quantization step, aligned to the def value
 --  maxlen:   the maximum string length for string options
 --  items:    array of item strings for list options
---  scope:    'all', 'player', 'team', 'allyteam'      <<< not supported yet >>>
+--  scope:    "all", "player", "team", "allyteam"      <<< not supported yet >>>
 --
 
 --------------------------------------------------------------------------------
@@ -28,18 +28,18 @@
 local options = 
 {
   {
-    key    = 'StartingResources',
-    name   = 'Starting Resources',
-    desc   = 'Sets storage and amount of resources that players will start with',
-    type   = 'section',
+    key    = "StartingResources",
+    name   = "Starting Resources",
+    desc   = "Sets storage and amount of resources that players will start with (key = 'StartingResources')",
+    type   = "section",
   },
   
   {
-    key    = 'StartMetal',
-    name   = 'Starting Command',
-    desc   = 'Sets the starting Command Point level for all players',
-    type   = 'number',
-    section= 'StartingResources',
+    key    = "StartMetal",
+    name   = "Starting Command",
+    desc   = "Sets the starting Command Point level for all players (key = 'StartMetal')",
+    type   = "number",
+    section= "StartingResources",
     def    = 1000,
     min    = 0,
     max    = 50000,
@@ -47,11 +47,11 @@ local options =
                     -- (step <= 0) means that there is no quantization
   },
   --[[{
-    key    = 'StartEnergy',
-    name   = 'Starting Logistics',
-    desc   = 'Sets the starting Logistics level for all players',
-    type   = 'number',
-    section= 'StartingResources',
+    key    = "StartEnergy",
+    name   = "Starting Logistics",
+    desc   = "Sets the starting Logistics level for all players",
+    type   = "number",
+    section= "StartingResources",
     def    = 500,
     min    = 0,
     max    = 50000,
@@ -60,10 +60,10 @@ local options =
   },]]--
   
   {
-    key    = 'MaxUnits',
-    name   = 'Max units',
-    desc   = 'Determines the ceiling of how many units and buildings a player is allowed  to own at the same time',
-    type   = 'number',
+    key    = "MaxUnits",
+    name   = "Max units",
+    desc   = "Determines the ceiling of how many units and buildings a player is allowed  to own at the same time (key = 'MaxUnits')",
+    type   = "number",
     def    = 1000,
     min    = 1,
     max    = 10000,
@@ -72,34 +72,34 @@ local options =
   },
   
   {
-    key    = 'GhostedBuildings',
-    name   = 'Ghosted buildings',
-    desc   = "Once an enemy building will be spotted\n a ghost trail will be placed to memorize location even after the loss of the line of sight",
-    type   = 'bool',
+    key    = "GhostedBuildings",
+    name   = "Ghosted buildings",
+    desc   = "Once an enemy building will be spotted\n a ghost trail will be placed to memorize location even after the loss of the line of sight (key = 'GhostedBuildings')",
+    type   = "bool",
     def    = true,
   },
 
   {
-    key    = 'FixedAllies',
-    name   = 'Fixed ingame alliances',
-    desc   = 'Disables the possibility of players to dynamically change allies ingame',
-    type   = 'bool',
+    key    = "FixedAllies",
+    name   = "Fixed ingame alliances",
+    desc   = "Disables the possibility of players to dynamically change allies ingame (key = 'FixedAllies')",
+    type   = "bool",
     def    = false,
   },
 
   {
-    key    = 'LimitSpeed',
-    name   = 'Speed Restriction',
-    desc   = 'Limits maximum and minimum speed that the players will be allowed to change to',
-    type   = 'section',
+    key    = "LimitSpeed",
+    name   = "Speed Restriction",
+    desc   = "Limits maximum and minimum speed that the players will be allowed to change to (key = 'LimitSpeed')",
+    type   = "section",
   },
   
   {
-    key    = 'MaxSpeed',
-    name   = 'Maximum game speed',
-    desc   = 'Sets the maximum speed that the players will be allowed to change to',
-    type   = 'number',
-    section= 'LimitSpeed',
+    key    = "MaxSpeed",
+    name   = "Maximum game speed",
+    desc   = "Sets the maximum speed that the players will be allowed to change to (key = 'MaxSpeed')",
+    type   = "number",
+    section= "LimitSpeed",
     def    = 3,
     min    = 0.1,
     max    = 100,
@@ -108,11 +108,11 @@ local options =
   },
   
   {
-    key    = 'MinSpeed',
-    name   = 'Minimum game speed',
-    desc   = 'Sets the minimum speed that the players will be allowed to change to',
-    type   = 'number',
-    section= 'LimitSpeed',
+    key    = "MinSpeed",
+    name   = "Minimum game speed",
+    desc   = "Sets the minimum speed that the players will be allowed to change to (key = 'MinSpeed')",
+    type   = "number",
+    section= "LimitSpeed",
     def    = 0.3,
     min    = 0.1,
     max    = 100,
@@ -121,36 +121,36 @@ local options =
   },
   
   {
-    key    = 'DisableMapDamage',
-    name   = 'Underformable map',
-    desc   = 'Prevents the map shape from being changed by weapons',
-    type   = 'bool',
+    key    = "DisableMapDamage",
+    name   = "Undeformable map",
+    desc   = "Prevents the map shape from being changed by weapons (key = 'DisableMapDamage')",
+    type   = "bool",
     def    = true,
   },
 --[[
 -- the following options can create problems and were never used by interface programs, thus are commented out for the moment
   
   {
-    key    = 'LuaGaia',
-    name   = 'Enables gaia',
-    desc   = 'Enables gaia player',
-    type   = 'bool',
+    key    = "LuaGaia",
+    name   = "Enables gaia",
+    desc   = "Enables gaia player",
+    type   = "bool",
     def    = true,
   },
   
   {
-    key    = 'NoHelperAIs',
-    name   = 'Disable helper AIs',
-    desc   = 'Disables luaui and group ai usage for all players',
-    type   = 'bool',
+    key    = "NoHelperAIs",
+    name   = "Disable helper AIs",
+    desc   = "Disables luaui and group ai usage for all players",
+    type   = "bool",
     def    = false,
   },
   
   {
-    key    = 'LuaRules',
-    name   = 'Enable LuaRules',
-    desc   = 'Enable mod usage of LuaRules',
-    type   = 'bool',
+    key    = "LuaRules",
+    name   = "Enable LuaRules",
+    desc   = "Enable mod usage of LuaRules",
+    type   = "bool",
     def    = true,
   },
 
