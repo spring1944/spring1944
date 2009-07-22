@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=USVehicleYard;
   name=U.S. Light Ordnance Depot;
-  description=Light Ordnance & Vehicle Production Facility;
+  description=Light Ordnance & Vehicle Production Facility (Requires Barracks);
   buildCostEnergy=0;
   buildCostMetal=5482;
   builder=1;

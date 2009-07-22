@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBRTankYard;
   name=Tank Depot;
-  description=Basic Armour Production Facility;
+  description=Basic Armour Production Facility (Requires Barracks);
   buildCostEnergy=0;
   buildCostMetal=7900;
   builder=1;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERGunyard;
   name=Towed Gun Yard;
-  description=Towed Artillery Production Facility;
+  description=Towed Artillery Production Facility (Requires Barracks);
   buildCostEnergy=0;
   buildCostMetal=2175;
   builder=1;

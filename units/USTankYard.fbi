@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=USTankYard;
   name=Tank Depot;
-  description=Advanced Armour Production Facility;
+  description=Advanced Armour Production Facility (Requires Barracks);
   buildCostEnergy=0;
   buildCostMetal=8775;
   builder=1;

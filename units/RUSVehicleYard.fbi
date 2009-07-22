@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSVehicleYard;
   name=Light Vehicle Yard;
-  description=Light Ordnance & Vehicle Production Facility;
+  description=Light Ordnance & Vehicle Production Facility (Requires Barracks);
   buildCostEnergy=0;
   buildCostMetal=6265;
   builder=1;
