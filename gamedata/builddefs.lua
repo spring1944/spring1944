@@ -53,7 +53,7 @@ buildoptions =
     "us_platoon_sniper",
     "us_platoon_flame",
     "us_platoon_mortar",
-    "usm8gun_bax",
+    "usm8gun",
     "usgmctruck",
   },
 
@@ -232,7 +232,7 @@ buildoptions =
     "ger_platoon_at",
     "ger_platoon_sniper",
     "ger_platoon_mortar",
-    "gerleig18_bax",
+    "gerleig18",
     "geropelblitz",
   },
 
@@ -974,7 +974,7 @@ buildoptions =
         "usm8greyhound",
         "usm3halftrack",
         "usm8scott",
-        "usm8gun_bax",
+        "usm8gun",
         "usm5gun_truck",
         "usm2gun_truck",
       "usm7priest",
