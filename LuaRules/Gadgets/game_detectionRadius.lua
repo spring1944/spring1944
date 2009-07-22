@@ -73,7 +73,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 			infantry[unitID] = true
 		end
 	end
-	if (find(uc, "OPENVEH") ~= nil) or (find(unitCategories, "SOFTVEH" ~= nil) then
+	if (find(uc, "OPENVEH") ~= nil) or (find(unitCategories, "SOFTVEH" ~= nil)) then
 		vehicles[unitID] = true
 	end
 	
@@ -97,20 +97,21 @@ end
 function gadget:GameFrame(n)
 	if n % (1*30) < 0.1 then
 		for unitID, someThing in pairs(sneaky) do
-		local x, y, z = GetUnitVelocity(unitID)
-		if x > 0 or y > 0 or z > 0 then --unit is moving
-			local visibleMoving = GetUnitNearestEnemy(unitID, sneakyMoving, 0)
-			if visibleMoving == nil then
-				SetUnitAlwaysVisible(unitID, false)
+			local x, y, z = GetUnitVelocity(unitID)
+			if x > 0 or y > 0 or z > 0 then --unit is moving
+				local visibleMoving = GetUnitNearestEnemy(unitID, sneakyMoving, 0)
+				if visibleMoving == nil then
+					SetUnitAlwaysVisible(unitID, false)
+				else
+					SetUnitAlwaysVisible(unitID, true)
+				end
 			else
-				SetUnitAlwaysVisible(unitID, true)
-			end
-		else
-			local visibleStill = GetUnitNearestEnemy(unitID, sneakyStill, 0)
-			if visibleStill == nil then
-				SetUnitAlwaysVisible(unitID, false)
-			else
-				SetUnitAlwaysVisible(unitID, true)
+				local visibleStill = GetUnitNearestEnemy(unitID, sneakyStill, 0)
+				if visibleStill == nil then
+					SetUnitAlwaysVisible(unitID, false)
+				else
+					SetUnitAlwaysVisible(unitID, true)
+				end
 			end
 		end
 			

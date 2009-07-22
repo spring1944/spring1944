@@ -6,13 +6,13 @@ function gadget:GetInfo()
     date      = "21 July 2008",
     license   = "GNU LGPL, v2.1 or later",
     layer     = -5,
-    enables   = true  --  loaded by default?
+    enabled   = true  --  loaded by default?
   }
 end
 
 --synced only
 if not gadgetHandler:IsSyncedCode() then return end
---[[
+
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
@@ -55,40 +55,36 @@ for unitname, prereqs in pairs(prereqDefs) do
 end
 
 local function EnableBuildoption(unitDefID, teamID)
-  Spring.Echo("Enabled", UnitDefs[unitDefID].name, unitTeam)
+  Spring.Echo("Enabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
 end
 
 local function DisableBuildoption(unitDefID, teamID)
-  Spring.Echo("Disabled", UnitDefs[unitDefID].name, unitTeam)
+  Spring.Echo("Disabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
 end
-]]
+
 ----------------------------------------------------------------
 --callins
 ----------------------------------------------------------------
 
 function gadget:Initialize()
-  Spring.Echo("init_prereq")
-  --[[
+  
   local allUnits = Spring.GetAllUnits()
   
   for i = 1, #allUnits do
     local unitID = allUnits[i]
     local unitDefID = GetUnitDefID(unitID)
     local unitTeam = GetUnitTeam(unitID)
-    Spring.Echo("unitinit")
-    --gadget:UnitGiven(unitID, unitDefID, unitTeam)
+    gadget:UnitGiven(unitID, unitDefID, unitTeam)
   end
-  ]]
+  
 end
---[[
+
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
-  Spring.Echo("finished")
   local enable = enables[unitDefID]
   if enable then
     for i = 1, #enable do
       local enableID = enable[i]
       local buildabilty = buildables[enableID]
-      Spring.Echo("now")
       if buildabilty[unitTeam] then
         buildabilty[unitTeam] = buildabilty[unitTeam] + 1
       else
@@ -125,7 +121,6 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-  Spring.Echo("given")
   local _, _, inBuild = GetUnitIsStunned(unitID)
   if not inBuild then
     gadget:UnitFinished(unitID, unitDefID, unitTeam)
@@ -138,4 +133,3 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
     gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   end
 end
-]]
