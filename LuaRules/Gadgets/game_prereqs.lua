@@ -24,6 +24,10 @@ local AreTeamsAllied = Spring.AreTeamsAllied
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
+local GetTeamUnits = Spring.GetTeamUnits
+
+local FindUnitCmdDesc = Spring.FindUnitCmdDesc
+local EditUnitCmdDesc = Spring.EditUnitCmdDesc
 
 ----------------------------------------------------------------
 --locals
@@ -54,12 +58,20 @@ for unitname, prereqs in pairs(prereqDefs) do
   end
 end
 
-local function EnableBuildoption(unitDefID, teamID)
-  Spring.Echo("Enabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
-end
-
-local function DisableBuildoption(unitDefID, teamID)
-  Spring.Echo("Disabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
+local function SetBuildoptionDisabled(unitDefID, teamID, disable)
+  if disable then
+    Spring.Echo("Disabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
+  else
+    Spring.Echo("Enabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
+  end
+  local teamUnits = GetTeamUnits(teamID)
+  for i = 1, #teamUnits do
+    local unitID = teamUnits[i]
+    local cmdDescID = FindUnitCmdDesc(unitID, -unitDefID)
+    if cmdDescID then
+      EditUnitCmdDesc(unitID, cmdDescID, {disabled = disable})
+    end
+  end
 end
 
 ----------------------------------------------------------------
@@ -67,8 +79,15 @@ end
 ----------------------------------------------------------------
 
 function gadget:Initialize()
-  
   local allUnits = Spring.GetAllUnits()
+  local allTeams = Spring.GetTeamList()
+  
+  for unitDefID, _ in pairs(buildables) do
+    for i = 1, #allTeams do
+      local teamID = allTeams[i]
+      SetBuildoptionDisabled(unitDefID, teamID, true)
+    end
+  end
   
   for i = 1, #allUnits do
     local unitID = allUnits[i]
@@ -80,6 +99,7 @@ function gadget:Initialize()
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+  Spring.Echo("finished")
   local enable = enables[unitDefID]
   if enable then
     for i = 1, #enable do
@@ -90,15 +110,22 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
       else
         buildabilty[unitTeam] = 1
         --enable
-        EnableBuildoption(enableID, unitTeam)
+        SetBuildoptionDisabled(enableID, unitTeam, false)
       end
     end
   end
   
   --enable/disable for the unit just finished
-  --FIXME
+  for buildDefID, buildability in pairs(buildables) do
+    if not buildability[unitTeam] then
+      
+      local cmdDescID = FindUnitCmdDesc(unitID, -buildDefID)
+      if cmdDescID then
+        EditUnitCmdDesc(unitID, cmdDescID, {disabled = true})
+      end
+    end
+  end
 end
-
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   --update prereqs
@@ -111,7 +138,8 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
         buildabilty[unitTeam] = buildabilty[unitTeam] - 1
         if buildabilty[unitTeam] == 0 then
           --disable
-          DisableBuildoption(enableID, unitTeam)
+          buildabilty[unitTeam] = nil
+          SetBuildoptionDisabled(enableID, unitTeam, true)
         end
       else
         Spring.Echo("<prereqs>: Counting error", UnitDefs[enableID].name, buildabilty[unitTeam])
