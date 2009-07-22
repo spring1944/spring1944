@@ -30,13 +30,17 @@ buildoptions =
   ushqengineer =
   {
     "usbarracks",
+    "usvehicleyard",
+    "usgunyard",
+    "usradar",
+    --"uscp",
 --    "usflag",
     "usstorage",
     --"usgmctruck",
-    "apminesign",
     "atminesign",
-    --"sandbags",
+    "apminesign",
     "tankobstacle",
+    --"sandbags",
     "rubberdingy",
     "pontoonraft",
   },
@@ -44,7 +48,7 @@ buildoptions =
   usbarracks =
   {
     "ushqengineer",
-    "usengineer",
+    --"usengineer",
     "us_platoon_rifle",
     "us_platoon_assault",
     "us_platoon_mg",
@@ -59,6 +63,7 @@ buildoptions =
 
   usengineer =
   {
+    "usbarracks",
     "usvehicleyard",
     "usgunyard",
     "usradar",
@@ -209,11 +214,14 @@ buildoptions =
 
   gerhqengineer =
   {
+    "gervehicleyard",
     "gerbarracks",
+    "gergunyard",
+    "gerradar",
 --    "gerflag",
     "gerstorage",
-    "apminesign",
     "atminesign",
+    "apminesign",
     --"sandbags",
     "tankobstacle",
     --"geropelblitz",
@@ -224,7 +232,7 @@ buildoptions =
   gerbarracks =
   {
     "gerhqengineer",
-    "gerengineer",
+    --"gerengineer",
     "ger_platoon_rifle",
     "ger_platoon_assault",
     "ger_platoon_mg",
@@ -404,13 +412,16 @@ buildoptions =
   gbrhqengineer =
   {
     "gbrbarracks",
+    "gbrvehicleyard",
+    "gbrgunyard",
+    "gbrradar",
 --    "gbrflag",
-    --"gbrresource",
-    "apminesign",
+    "gbrstorage",
     "atminesign",
+    "apminesign",
     --"sandbags",
     "tankobstacle",
-    "gbrstorage",
+    --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
     "pontoonraft",
@@ -419,7 +430,7 @@ buildoptions =
   gbrbarracks =
   {
     "gbrhqengineer",
-    "gbrengineer",
+    --"gbrengineer",
     "gbr_platoon_rifle",
     "gbr_platoon_assault",
     "gbr_platoon_mg",
@@ -474,6 +485,7 @@ buildoptions =
 
   gbrengineer =
   {
+    "gbrbarracks",
     "gbrvehicleyard",
     "gbrgunyard",
     "gbrradar",

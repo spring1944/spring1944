@@ -59,11 +59,6 @@ for unitname, prereqs in pairs(prereqDefs) do
 end
 
 local function SetBuildoptionDisabled(unitDefID, teamID, disable)
-  if disable then
-    Spring.Echo("Disabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
-  else
-    Spring.Echo("Enabled", UnitDefs[unitDefID].name, teamID, buildables[unitDefID][teamID])
-  end
   local teamUnits = GetTeamUnits(teamID)
   for i = 1, #teamUnits do
     local unitID = teamUnits[i]
@@ -99,7 +94,6 @@ function gadget:Initialize()
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
-  Spring.Echo("finished")
   local enable = enables[unitDefID]
   if enable then
     for i = 1, #enable do
