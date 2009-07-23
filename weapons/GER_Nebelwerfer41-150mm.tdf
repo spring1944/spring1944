@@ -21,7 +21,7 @@
   explosionGenerator=custom:HE_XLarge;
   explosionSpeed=100;
   fireStarter=0;
-  flightTime=5;
+  flightTime=4;
   guidance=1;
   id=99;
   impulseBoost=0;
@@ -41,7 +41,7 @@
   weaponAcceleration=2000;
   weaponTimer=1;
   weaponType=MissileLauncher;
-  weaponVelocity=750;
+  weaponVelocity=700;
   wobble=3000;
 }
 

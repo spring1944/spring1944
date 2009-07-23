@@ -16,7 +16,7 @@
   }
   explosionGenerator=custom:HE_Medium;
   fireStarter=0;
-  flightTime=3;
+  flightTime=2;
   impulseBoost=0;
   impulseFactor=1;
   model=Rocket_HVAR.S3O;
@@ -26,15 +26,13 @@
   soundHit=GEN_Explo_2;
   soundStart=GER_Panzerschrek;
   soundTrigger=0;
-  startVelocity=750;
-  targetMoveError=0.075;
+  startVelocity=600;
   tolerance=300;
-  trajectoryHeight=0.05;
   turret=1;
   weaponAcceleration=2000;
   weaponTimer=1;
   weaponType=MissileLauncher;
-  weaponVelocity=1500;
+  weaponVelocity=850;
   wobble=1500;
 }
 
