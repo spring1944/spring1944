@@ -146,7 +146,7 @@ function gadget:Initialize()
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
-  if not weaponDefID or not ValidUnitID(unitID) or not ValidUnitID(attackerID) then return damage end
+  if not weaponDefID or not ValidUnitID(unitID) then return damage end
   
   if damage == 0 then return damage end
   
@@ -161,15 +161,15 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   local armor_hit_side = weaponInfo[3]
   
   local frontDir, upDir = GetUnitVectors(unitID)
-  local ux, uy, uz = GetUnitPosition(unitID)
-  local ax, ay, az = GetUnitPosition(attackerID)
+  
   local dx, dy, dz, d
   local dotFront, dotUp
   
-  dx, dy, dz = ax - ux, ay - uy, az - uz
-  dx, dy, dz, d = vNormalized(dx, dy, dz)
-  
-  if ax and ux then
+  if ValidUnitID(attackerID) then
+    local ux, uy, uz = GetUnitPosition(unitID)
+    local ax, ay, az = GetUnitPosition(attackerID)
+    dx, dy, dz = ax - ux, ay - uy, az - uz
+    dx, dy, dz, d = vNormalized(dx, dy, dz)
     dotUp = dx * upDir[1] + dy * upDir[2] + dz * upDir[3]
     dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
   else
@@ -217,8 +217,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   end
   
   --debug
-  --local unitDef = UnitDefs[unitDefID]
-  --Spring.Echo(weaponDef.name, log(penetration) * ARMOR_SCALE, unitDef.name, log(armor) * ARMOR_SCALE, mult)
+  --[[
+  local unitDef = UnitDefs[unitDefID]
+  Spring.Echo(weaponDef.name, log(penetration) * ARMOR_SCALE, unitDef.name, log(armor) * ARMOR_SCALE, mult, damage * mult)
+  ]]
   
   return damage * mult
 end
