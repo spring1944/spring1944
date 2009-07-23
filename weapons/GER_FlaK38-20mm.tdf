@@ -81,7 +81,7 @@
   targetMoveError=0.05;
   tolerance=700;
   turret=1;
-  weaponVelocity=1500;
+  weaponVelocity=1560;
 }
 
 [kwk3020mmhe] {

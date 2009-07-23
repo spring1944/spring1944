@@ -38,7 +38,7 @@
   targetMoveError=0.075;
   tolerance=300;
   turret=1;
-  weaponVelocity=1238;
+  weaponVelocity=1176;
 }
 
 [m375mmhe] {

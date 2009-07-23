@@ -37,7 +37,7 @@
   targetMoveError=0.05;
   tolerance=300;
   turret=1;
-  weaponVelocity=1300;
+  weaponVelocity=1200;
 }
 
 [ml20s152mmhe] {

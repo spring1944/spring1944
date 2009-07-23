@@ -38,7 +38,7 @@
   targetMoveError=0.075;
   tolerance=300;
   turret=1;
-  weaponVelocity=1038;
+  weaponVelocity=1116;
 }
 
 [l1076mmhe] {
