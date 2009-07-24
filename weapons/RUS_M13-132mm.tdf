@@ -1,6 +1,6 @@
 [M13132mm] {
   name=M-13 132mm unguided artillery rocket;
-  areaOfEffect=160;
+  areaOfEffect=122;
   ballistic=1;
   burst=16;
   burstRate=0.6;
