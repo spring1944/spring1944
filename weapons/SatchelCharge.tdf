@@ -7,9 +7,6 @@
   }
   [damage] {
     default=16000;
-    bunkers=12500;
-    flag=0;
-    mines=0;
   }
   edgeEffectiveness=1;
   explosionGenerator=custom:HE_Large;

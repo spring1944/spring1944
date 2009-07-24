@@ -11,7 +11,7 @@
     armor_hit_side=top;
   }
   [damage] {
-    default=30000;
+    default=30000; //200 kg explosive
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_XXLarge;
