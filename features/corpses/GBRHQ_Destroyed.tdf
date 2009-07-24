@@ -5,7 +5,7 @@
   featureDead=BuildingDebris_Large;
   footprintX=7;
   footprintZ=7;
-  object=GBRBarracks_Destroyed.S3O;
+  object=GBRHQ_Destroyed.S3O;
   reclaimable=1;
 }
 
