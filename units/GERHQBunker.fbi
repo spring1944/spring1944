@@ -62,11 +62,8 @@
   maxAngleDif1=360;
   onlyTargetCategory1=INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 -1;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
-  weapon2=Small_Tracer;
 
-  //weapon6=M2Flamethrower;
-  //maxAngleDif6=80;
-  //weaponMainDir6=1 0 1;
+  weapon2=Small_Tracer;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 }
 

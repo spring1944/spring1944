@@ -28,6 +28,7 @@
   leaveTracks=1;
   mass=1250;
   maxDamage=640;
+  maxReverseVelocity=1.665;
   maxSlope=2;
   maxVelocity=3.33;
   maxWaterDepth=5;

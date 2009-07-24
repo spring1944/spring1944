@@ -27,6 +27,7 @@
   iconType=selfprop;
   leaveTracks=1;
   maxDamage=1050;
+  maxReverseVelocity=1.555;
   maxSlope=5;
   maxVelocity=3.11;
   maxWaterDepth=5;

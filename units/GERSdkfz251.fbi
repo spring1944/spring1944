@@ -25,6 +25,7 @@
   iconType=halftrack;
   leaveTracks=1;
   maxDamage=850;
+  maxReverseVelocity=1.925;
   maxSlope=10;
   maxVelocity=3.85;
   maxWaterDepth=5;
