@@ -721,7 +721,6 @@ buildoptions =
 
   rusgunyard =
   {
-    "rusk31",
     "ruszis5",
     "ruszis2_truck",
     "ruszis3_truck",
