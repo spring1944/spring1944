@@ -69,6 +69,11 @@ local iconTypes = {
 		size			=	3,
 		distance	=	0.2,
 	},
+	atartillery = {
+		bitmap		=	"icons/ATartillery.tga",
+		size			=	3.25,
+		distance	=	0.25,
+	},
 	aahalftrack = {
 		bitmap		=	"icons/aahalftrack.tga",
 		size			=	3,
