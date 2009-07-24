@@ -32,7 +32,7 @@ Shell                 Filler Weight  Kinetic Energy  Momentum
 76.2mm F-34             1.08 kg    1452 kJ (AP)       4278 Ns
 76.2mm ZIS-3            1.08 kg    1588 kJ (AP)       4473 Ns
 80mm GrW 34 Mortar      0.55 kg
-85mm S-53                          2885 kJ (AP)       7286 Ns
+85mm S-53               0.64 kg    2885 kJ (AP)       7286 Ns
 87mm Q.F. 25 Pounder    0.816 kg
 88mm Kw.K.36 L / 56     0.97 kg    3264 kJ (AP)       8160 Ns
 88mm Kw.K.43 L / 71                5100 kJ (AP)      10200 Ns
