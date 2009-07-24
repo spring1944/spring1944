@@ -38,7 +38,7 @@ if (modOptions.command_mult) then
 end
 local deployment = {
 
-  maxFrames = 60 * Game.gameSpeed,
+  maxFrames = 600 * Game.gameSpeed,
 
   maxUnits  = 5000,
 
