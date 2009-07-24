@@ -1,7 +1,7 @@
 [m4105mmhe] {
   name=US 105mm direct-fire gun, as used in Sherman 105mm;
   accuracy=470;
-  areaOfEffect=128;
+  areaofeffect=131;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

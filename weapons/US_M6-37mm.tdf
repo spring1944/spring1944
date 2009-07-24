@@ -88,7 +88,7 @@
 [m637mmhe] {
   name=US 37mm M6 High-Explosive;
   accuracy=300;
-  areaOfEffect=50;
+  areaofeffect=44;
   ballistic=1;
   collisionSize=3;
   craterBoost=0;

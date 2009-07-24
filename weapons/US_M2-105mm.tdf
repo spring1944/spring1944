@@ -1,7 +1,7 @@
 [m2he] {
   name=US 105mm Light Field Gun;
   accuracy=435;
-  areaOfEffect=128;
+  areaofeffect=131;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

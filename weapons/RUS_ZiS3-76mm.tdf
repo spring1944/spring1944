@@ -43,7 +43,7 @@
 [zis376mmhe] {
   name=Soviet ZiS3 76.2mm Gun, High Explosives;
   accuracy=400;
-  areaOfEffect=96;
+  areaofeffect=103;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

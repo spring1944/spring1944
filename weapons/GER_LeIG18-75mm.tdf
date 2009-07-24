@@ -1,7 +1,7 @@
 [leig18he] {
   name=German 75mm Light Infantry Gun (leIG) 18 High-Explosive Ammunition;
   accuracy=400;
-  areaOfEffect=96;
+  areaofeffect=88;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

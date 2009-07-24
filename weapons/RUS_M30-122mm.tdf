@@ -1,7 +1,7 @@
 [m30122mmhe] {
   name=M-30 122mm High-Explosive Ammunition;
   accuracy=550;
-  areaOfEffect=160;
+  areaofeffect=154;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

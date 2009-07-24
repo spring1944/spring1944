@@ -6,8 +6,8 @@
   burstRate=0.25;
   collisionSize=2;
   [customParams] {
-    damagetype=explosive;
     armor_hit_side=top;
+    damagetype=explosive;
     fearaoe=40;
     fearid=301;
   }

@@ -43,7 +43,7 @@
 [ml20s152mmhe] {
   name=Soviet ML-20s 152mm Gun-Howitzer High-Explosive Ammo;
   accuracy=290;
-  areaOfEffect=192;
+  areaofeffect=183;
   ballistic=1;
   collisionSize=5;
   craterBoost=1;

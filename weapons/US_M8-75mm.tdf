@@ -1,7 +1,7 @@
 [m875mmhe] {
   name=US M8 75mm Pack Howitzer;
   accuracy=400;
-  areaOfEffect=96;
+  areaofeffect=94;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

@@ -1,7 +1,7 @@
 [25pdrhe] {
   name=25 Pounder Light Howitzer High-Explosive Ammunition;
   accuracy=315;
-  areaOfEffect=112;
+  areaofeffect=94;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;

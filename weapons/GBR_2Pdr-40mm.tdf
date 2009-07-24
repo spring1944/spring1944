@@ -44,7 +44,7 @@
 [2pdr40mmhe] {
   name=Q.F. 2 Pounder Mk.X L / 50 High-Explosive;
   accuracy=354;
-  areaOfEffect=50;
+  areaofeffect=42;
   ballistic=1;
   collisionSize=3;
   craterBoost=0;

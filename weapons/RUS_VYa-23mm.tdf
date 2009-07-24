@@ -5,8 +5,8 @@
   burstRate=0.085;
   collisionSize=2;
   [customParams] {
-    damagetype=explosive;
     armor_hit_side=top;
+    damagetype=explosive;
   }
   [damage] {
     default=59;

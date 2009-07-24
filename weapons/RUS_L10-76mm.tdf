@@ -44,7 +44,7 @@
 [l1076mmhe] {
   name=Soviet L-10 76.2mm Gun, High Explosives;
   accuracy=300;
-  areaOfEffect=96;
+  areaofeffect=103;
   ballistic=1;
   collisionSize=3;
   craterBoost=0.5;

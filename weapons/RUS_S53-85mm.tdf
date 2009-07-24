@@ -44,7 +44,7 @@
 [s5385mmhe] {
   name=S-53/ZIS-S-53 85mm High-Explosive Ammunition;
   accuracy=200;
-  areaOfEffect=112;
+  areaofeffect=87;
   ballistic=1;
   collisionSize=4;
   craterBoost=0.5;

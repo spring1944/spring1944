@@ -4,8 +4,8 @@
   areaOfEffect=81;
   color=255;
   [customParams] {
-    damagetype=explosive;
     armor_hit_side=top;
+    damagetype=explosive;
     fearaoe=105;
     fearid=301;
   }
