@@ -28,7 +28,7 @@
   maxDamage=8000;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=RUSTankYard.S3O;
+  objectName=RUSGunyard.S3O;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }
