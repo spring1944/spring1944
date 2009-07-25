@@ -30,7 +30,7 @@
   movingAccuracy=400;
   noSelfDamage=1;
   range=1500;
-  reloadTime=3;
+  reloadTime=5;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
   separation=2;
