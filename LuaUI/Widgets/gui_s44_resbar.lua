@@ -21,6 +21,7 @@ local mainScaleWidth = 0.75 --width as a proportion of screen width
 local barHeight = 0.125
 
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/Bitmaps/"
+local FONT_FILE = LUAUI_DIRNAME .. "Fonts/cmuntb.otf"
 
 ------------------------------------------------
 --locals
@@ -40,6 +41,8 @@ local lastStor
 local estimatedSupplySurplus = 1
 
 local activeClick
+
+local font
 
 ------------------------------------------------
 --speedups
@@ -67,8 +70,10 @@ local glScale = gl.Scale
 local glRotate = gl.Rotate
 
 local glRect = gl.Rect
-local glText = gl.Text
 local glShape = gl.Shape
+
+local glLoadFont = gl.LoadFont
+local glDeleteFont = gl.DeleteFont
 
 local glTexture = gl.Texture
 local glTexRect = gl.TexRect
@@ -170,14 +175,14 @@ local function DrawCommand()
   --curr/change
   glPushMatrix()
     glTranslate(-mainWidth + 1 + barLength / 2, -1.05, 0)
-    glText("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "c")
-    glText("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "c")
+    font:Print("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "c")
+    font:Print("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "c")
   glPopMatrix()
   
   --storage
   glPushMatrix()
     glTranslate(-mainWidth + 1 + barLength, -0.75, 0)
-    glText("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375)
+    font:Print("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375)
   glPopMatrix()
 end
 
@@ -215,14 +220,14 @@ local function DrawSupply()
   --curr/resupply
   glPushMatrix()
     glTranslate(-2 - barLength / 2, -1.05, 0)
-    glText("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "c")
-    glText("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "c")
+    font:Print("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "c")
+    font:Print("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "c")
   glPopMatrix()
   
   --storage
   glPushMatrix()
     glTranslate(-2, -0.75, 0)
-    glText("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
+    font:Print("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
   glPopMatrix()
 end
 
@@ -250,6 +255,12 @@ function widget:Initialize()
   local viewSizeX, viewSizeY = Spring.GetViewGeometry()
   widget:ViewResize(viewSizeX, viewSizeY)
   widget:GameFrame(0)
+  
+  font = glLoadFont(FONT_FILE, 16, 0, 0)
+end
+
+function widget:Shutdown()
+  glDeleteFont(font)
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
