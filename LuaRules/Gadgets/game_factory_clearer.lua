@@ -25,13 +25,14 @@ local infos = {}
 
 local PUSH_SPEED = 0.5
 
+local FRONT_BUFFER = 8
+
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
 
 local GetUnitBuildFacing = Spring.GetUnitBuildFacing
 local GetUnitIsStunned = Spring.GetUnitIsStunned
-local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local SetUnitPosition = Spring.SetUnitPosition
 local GetUnitsInRectangle = Spring.GetUnitsInRectangle
@@ -62,15 +63,15 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
     
     if facing == 0 then
       xmin, xmax = ux - xsize, ux + xsize
-      zmin, zmax = uz - zsize, uz + zsize + 8
+      zmin, zmax = uz - zsize, uz + zsize + FRONT_BUFFER
     elseif facing == 1 then
-      xmin, xmax = ux - zsize, ux + zsize + 8
+      xmin, xmax = ux - zsize, ux + zsize + FRONT_BUFFER
       zmin, zmax = uz - xsize, uz + xsize
     elseif facing == 2 then
       xmin, xmax = ux - xsize, ux + xsize
-      zmin, zmax = uz - zsize - 8, uz + zsize
+      zmin, zmax = uz - zsize - FRONT_BUFFER, uz + zsize
     else
-      xmin, xmax = ux - zsize - 8, ux + zsize
+      xmin, xmax = ux - zsize - FRONT_BUFFER, ux + zsize
       zmin, zmax = uz - xsize, uz + xsize
     end
     
@@ -97,7 +98,7 @@ function gadget:GameFrame(n)
       local unitDefID = GetUnitDefID(unitToMove)
       local unitDef = UnitDefs[unitDefID]
       if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 and not unitDef.canFly then
-        local ux, uy, uz = GetUnitPosition(unitToMove)
+        local ux, uy, uz = GetUnitBasePosition(unitToMove)
         SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
       end
     end
