@@ -24,7 +24,7 @@
   iconType=truck;
   leaveTracks=1;
   mass=1000;
-  maxDamage=600;
+  maxDamage=300;
   maxReverseVelocity=2.25;
   maxSlope=10;
   maxVelocity=4.5; //4.8
