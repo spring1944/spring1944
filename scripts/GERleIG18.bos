@@ -244,8 +244,10 @@ HitByWeaponId(z,x,id,damage)
 	return (1); //if it gets to here, its a nondamaging suppression weapon anyways, so 1% doesn't matter. // You can return 0 now
 }
 
-
-
+luaFunction(arg1)
+{
+ arg1 = fear;
+}
 
 // thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
 Deploy() 
