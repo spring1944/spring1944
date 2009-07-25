@@ -14,7 +14,7 @@
   [customParams] {
     armor_front=90;
     armor_rear=60;
-    armor_side=59;
+    armor_side=58;
     armor_top=20;
     blockfear=1;
     lowammolevel=4;

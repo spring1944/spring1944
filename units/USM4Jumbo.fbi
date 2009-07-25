@@ -13,9 +13,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=USM4Jumbo_Damaged;
   [customParams] {
-    armor_front=146;
-    armor_rear=54;
-    armor_side=67;
+    armor_front=144;
+    armor_rear=52;
+    armor_side=66;
     armor_top=21;
     blockfear=1;
     lowammolevel=6;

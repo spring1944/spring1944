@@ -14,7 +14,7 @@
   [customParams] {
     armor_front=65;
     armor_rear=45;
-    armor_side=50;
+    armor_side=49;
     armor_top=15;
   }
   explodeAs=Vehicle_Explosion_Sm;

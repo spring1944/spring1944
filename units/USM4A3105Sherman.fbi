@@ -14,8 +14,8 @@
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
     armor_front=74;
-    armor_rear=34;
-    armor_side=55;
+    armor_rear=33;
+    armor_side=54;
     armor_top=21;
     blockfear=1;
     lowammolevel=4;
