@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=5200;
-  buildTime=5200;
+  buildCostMetal=3300;
+  buildTime=3300;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERJagdpanzerIV_Destroyed;

@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=5500;
-  buildTime=5500;
+  buildCostMetal=4500;
+  buildTime=4500;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=RUSSU100_Damaged;
