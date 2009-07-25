@@ -20,6 +20,8 @@ local mainScaleWidth = 0.75 --width as a proportion of screen width
 
 local barHeight = 0.125
 
+local endLength = 1.5
+
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/Bitmaps/"
 local FONT_FILE = LUAUI_DIRNAME .. "Fonts/cmuntb.otf"
 
@@ -186,7 +188,7 @@ end
 local function DrawSupply()
   --icon
   glPushMatrix()
-    glTranslate(-barLength - 3, -1, 0)
+    glTranslate(-barLength - 1 - endLength, -1, 0)
     glColor(1, 1, 1, 1)
     glTexture(IMAGE_DIRNAME .. "ResLogIcon.png")
     glTexRect(0, 0, 1, 1)
@@ -195,7 +197,7 @@ local function DrawSupply()
   
   --resource bar
   glPushMatrix()
-    glTranslate(-barLength - 2, -0.5, 0)
+    glTranslate(-barLength - endLength, -0.5, 0)
     glScale(barLength, barHeight, 1)
     glColor(0.5, 0.5, 0, 1)
     glRect(0, -1, 1, 1)
@@ -216,14 +218,14 @@ local function DrawSupply()
   
   --curr/resupply
   glPushMatrix()
-    glTranslate(-2 - barLength / 2, -1.05, 0)
+    glTranslate(-endLength - barLength / 2, -1.05, 0)
     font:Print("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "c")
     font:Print("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "c")
   glPopMatrix()
   
   --storage
   glPushMatrix()
-    glTranslate(-2, -0.75, 0)
+    glTranslate(-endLength, -0.75, 0)
     font:Print("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
   glPopMatrix()
 end
@@ -261,7 +263,7 @@ function widget:ViewResize(viewSizeX, viewSizeY)
   vsy = viewSizeY
   mainSize = mainScaleHeight * vsy
   mainWidth = vsx * mainScaleWidth / mainSize
-  barLength = mainWidth / 2 - 3
+  barLength = mainWidth / 2 - 1 - endLength
 end
 
 function widget:DrawScreen()
@@ -325,7 +327,7 @@ local function CommandShare(tx)
 end
 
 local function SupplyShare(tx)
-  local result = (tx + barLength + 2) / barLength
+  local result = (tx + barLength + endLength) / barLength
   if result < 0 then return 0 end
   if result > 1 then return 1 end
   return result
@@ -337,7 +339,7 @@ local function GetComponent(x, y)
   if ty < 0 and ty > -1 then
     if tx > -mainWidth + 1 and tx < -mainWidth + barLength + 1 then
       return "commandbar"
-    elseif tx > -2 - barLength and tx < -2 then
+    elseif tx > -endLength - barLength and tx < -endLength then
       return "supplybar"
     end
   end
