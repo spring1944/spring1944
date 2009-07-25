@@ -96,7 +96,7 @@ function gadget:GameFrame(n)
       local unitToMove = unitsToMove[i]
       local unitDefID = GetUnitDefID(unitToMove)
       local unitDef = UnitDefs[unitDefID]
-      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 then
+      if not GetUnitIsStunned(unitToMove) and unitDef.speed > 0 and not unitDef.canFly then
         local ux, uy, uz = GetUnitPosition(unitToMove)
         SetUnitPosition(unitToMove, ux + pushX, uz + pushZ)
       end
