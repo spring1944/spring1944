@@ -14,6 +14,7 @@
   dynDamageRange=200;
   edgeEffectiveness=0.8;
   explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
   fireStarter=0;
   id=31;
   impulseFactor=1e-05;

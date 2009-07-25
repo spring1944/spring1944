@@ -43,7 +43,7 @@
 [d25122mmhe] {
   name=D-25T 122mm High-Explosive Ammunition;
   accuracy=200;
-  areaofeffect=154;
+  areaOfEffect=154;
   ballistic=1;
   collisionSize=4;
   craterBoost=0.75;
@@ -58,7 +58,7 @@
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:HE_XLarge;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=103;
   impulseBoost=0;

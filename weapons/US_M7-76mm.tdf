@@ -44,7 +44,7 @@
 [m7he] {
   name=US M7 76.2mm -- High Explosive Ammunition;
   accuracy=200;
-  areaofeffect=74;
+  areaOfEffect=74;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -59,7 +59,7 @@
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=103;
   impulseBoost=0;

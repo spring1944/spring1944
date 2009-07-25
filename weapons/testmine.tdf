@@ -14,6 +14,7 @@
   edgeEffectiveness=0.8;
   energyPerShot=5;
   explosionGenerator=custom:Weapon_Explosion_Shrapnel;
+  explosionSpeed=30;
   groundBounce=1;
   id=31;
   impulseFactor=1e-05;

@@ -44,7 +44,7 @@
 [kwk50mml60he] {
   name=German 50mm KwK 39 L/60 High-Explosive;
   accuracy=255;
-  areaofeffect=55;
+  areaOfEffect=55;
   ballistic=1;
   collisionSize=3;
   craterBoost=0;
@@ -59,7 +59,7 @@
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=50;
   impulseBoost=0;

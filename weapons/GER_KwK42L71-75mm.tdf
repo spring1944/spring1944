@@ -44,7 +44,7 @@
 [kwk75mml71he] {
   name=German 75mm KwK 40 L/71 High-Explosive;
   accuracy=255;
-  areaofeffect=85;
+  areaOfEffect=85;
   ballistic=1;
   collisionSize=3;
   craterBoost=0;
@@ -59,7 +59,7 @@
   }
   edgeEffectiveness=0.15;
   explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=107;
   impulseBoost=0;

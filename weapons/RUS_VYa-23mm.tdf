@@ -12,6 +12,7 @@
     default=59;
   }
   explosionGenerator=custom:HE_XSmall;
+  explosionSpeed=30;
   fireStarter=10;
   interceptedByShieldType=8;
   lineofsight=1;

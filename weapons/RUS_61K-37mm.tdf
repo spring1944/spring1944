@@ -17,6 +17,7 @@
   }
   edgeEffectiveness=5e-06;
   explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
   fireStarter=0;
   id=50;
   impulseBoost=0;

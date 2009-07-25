@@ -1,7 +1,7 @@
 [lefh18he] {
   name=German 105mm Light Howitzer (leFH) 18 High-Explosive Ammunition;
   accuracy=435;
-  areaofeffect=129;
+  areaOfEffect=129;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -16,7 +16,7 @@
   }
   edgeEffectiveness=0.15;
   explosionGenerator=custom:HE_Large;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=99;
   impulseBoost=0;

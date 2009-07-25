@@ -18,7 +18,7 @@
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Large;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   impulseBoost=0;
   impulseFactor=0;
@@ -43,7 +43,7 @@
 [ml20s152mmhe] {
   name=Soviet ML-20s 152mm Gun-Howitzer High-Explosive Ammo;
   accuracy=290;
-  areaofeffect=183;
+  areaOfEffect=183;
   ballistic=1;
   collisionSize=5;
   craterBoost=1;
@@ -58,7 +58,7 @@
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:HE_XLarge;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=98;
   impulseBoost=0;

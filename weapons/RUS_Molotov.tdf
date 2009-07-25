@@ -12,6 +12,7 @@
   }
   edgeEffectiveness=0.8;
   explosionGenerator=custom:Molotov;
+  explosionSpeed=30;
   id=31;
   impulseFactor=1e-05;
   model=MortarShell.S3O;

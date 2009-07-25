@@ -39,6 +39,7 @@
     flag=0;
     gbrlz=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=184;
   impulseBoost=0;
@@ -90,6 +91,7 @@
     default=150;
     squadSpawners=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseFactor=2;
@@ -115,6 +117,7 @@
     default=90;
     squadSpawners=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -141,6 +144,7 @@
     default=225;
     squadSpawners=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseFactor=3;
@@ -167,6 +171,7 @@
     squadSpawners=100000;
   }
   explosionGenerator=custom:ROACHPLOSION;
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -206,6 +211,7 @@
     lightbuildings=1050;
   }
   explosionGenerator=custom:SmallBuildingDeath;
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -231,6 +237,7 @@
     default=25;
     squadSpawners=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -257,6 +264,7 @@
     default=10;
     squadSpawners=100000;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -307,6 +315,7 @@
   [damage] {
     default=23;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseBoost=0;
@@ -332,6 +341,7 @@
   [damage] {
     default=15;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseFactor=1;
@@ -356,6 +366,7 @@
   [damage] {
     default=10;
   }
+  explosionSpeed=30;
   fireStarter=0;
   id=69;
   impulseFactor=1;

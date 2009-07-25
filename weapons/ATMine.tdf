@@ -12,6 +12,7 @@
     default=10000;
   }
   explosionGenerator=custom:HE_Large;
+  explosionSpeed=30;
   fireStarter=0;
   id=64;
   lineofsight=1;

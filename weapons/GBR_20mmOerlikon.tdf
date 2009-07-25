@@ -18,6 +18,7 @@
   }
   edgeEffectiveness=0.95;
   explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
   fireStarter=0;
   id=50;
   impulseBoost=0;
@@ -59,6 +60,7 @@
   }
   edgeEffectiveness=0.95;
   explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
   fireStarter=0;
   id=50;
   impulseBoost=0;

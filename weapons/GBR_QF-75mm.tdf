@@ -44,7 +44,7 @@
 [qf75mmhe] {
   name=75mm Q.F. Mk.V L / 36.5 75mm HE;
   accuracy=300;
-  areaofeffect=88;
+  areaOfEffect=88;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -59,7 +59,7 @@
   }
   edgeEffectiveness=0.2;
   explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=1001;
   impulseBoost=0;

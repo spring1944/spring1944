@@ -14,7 +14,7 @@
   }
   edgeEffectiveness=0.01;
   explosionGenerator=custom:HE_Large;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   flightTime=2;
   impulseBoost=0;

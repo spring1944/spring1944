@@ -9,6 +9,7 @@
     default=400;
   }
   explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
   fireStarter=0;
   id=12;
   impulseFactor=0.1;

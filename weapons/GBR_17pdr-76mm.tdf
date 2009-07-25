@@ -44,7 +44,7 @@
 [17pdrhe] {
   name=British 76mm Q.F. 17 Pounder Mk.IV L/55 High Explosive;
   accuracy=300;
-  areaofeffect=90;
+  areaOfEffect=90;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -59,7 +59,7 @@
   }
   edgeEffectiveness=0.15;
   explosionGenerator=custom:HE_Medium;
-  explosionSpeed=100;
+  explosionSpeed=30;
   fireStarter=0;
   id=107;
   impulseBoost=0;

@@ -11,6 +11,7 @@
     default=12720;
   }
   explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
   fireStarter=0;
   flightTime=1;
   model=Bomb_Tiny.S3O;

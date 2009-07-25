@@ -15,6 +15,7 @@
     default=7000;
   }
   explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
   fireStarter=0;
   flightTime=2;
   impulseBoost=0;

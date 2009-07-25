@@ -10,6 +10,7 @@
     default=20000;
   }
   explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
   fireStarter=0;
   flightTime=1;
   model=GERV1;
