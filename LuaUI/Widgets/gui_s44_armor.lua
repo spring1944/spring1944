@@ -16,8 +16,8 @@ end
 --config
 ------------------------------------------------
 local dist = 32
-local fontSizeWorld = 8
-local fontSizeScreen = 16
+local fontSizeWorld = 12
+local fontSizeScreen = 24
 local lineWidth = 1
 local maxArmor = 120
 local smooth = false
@@ -31,6 +31,7 @@ local SQRT2 = math.sqrt(2)
 
 local xlist
 local infos = {}
+local font
 
 ------------------------------------------------
 --speedups and constants
@@ -58,7 +59,6 @@ local glPopMatrix = gl.PopMatrix
 local glColor = gl.Color
 local glTranslate = gl.Translate
 local glRotate = gl.Rotate
-local glText = gl.Text
 local glBillboard = gl.Billboard
 local glLineWidth = gl.LineWidth
 local glShape = gl.Shape
@@ -105,6 +105,8 @@ function widget:Initialize()
       infos[unitDefID] = {penetration, dropoff}
     end
   end
+  
+  font = WG.S44Fonts.TypewriterBold32
 end
 
 function widget:DrawWorld()
@@ -159,34 +161,34 @@ function widget:DrawWorld()
         glPushMatrix()
           glTranslate(frontdir[1] * dist, frontdir[2] * dist, frontdir[3] * dist)
           glBillboard()
-          glText(armor_front .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+          font:Print(armor_front .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
         glPopMatrix()
         
         glColor(GetArmorColor(armor_side))
         glPushMatrix()
           glTranslate(rightdir[1] * dist, rightdir[2] * dist, rightdir[3] * dist)
           glBillboard()
-          glText(armor_side .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+          font:Print(armor_side .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
         glPopMatrix()
         
         glPushMatrix()
           glTranslate(-rightdir[1] * dist, -rightdir[2] * dist, -rightdir[3] * dist)
           glBillboard()
-          glText(armor_side .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+          font:Print(armor_side .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
         glPopMatrix()
         
         glColor(GetArmorColor(armor_rear))
         glPushMatrix()
           glTranslate(-frontdir[1] * dist, -frontdir[2] * dist, -frontdir[3] * dist)
           glBillboard()
-          glText(armor_rear .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+          font:Print(armor_rear .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
         glPopMatrix()
         
         glColor(GetArmorColor(armor_top))
         glPushMatrix()
           glTranslate(updir[1] * dist / 2, updir[2] * dist / 2, updir[3] * dist / 2)
           glBillboard()
-          glText(armor_top .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+          font:Print(armor_top .. "mm", 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
         glPopMatrix()
         
       glPopMatrix()
@@ -225,7 +227,7 @@ function widget:DrawScreen()
         penetration = penetration * exp(dropoff * dist)
         
         glColor(GetArmorColor(penetration))
-        glText(strFormat("%.0fmm", penetration), mx + 16, my - fontSizeScreen / 2, fontSizeScreen, "n")
+        font:Print(strFormat("%.0fmm", penetration), mx + 16, my - fontSizeScreen / 2, fontSizeScreen, "n")
       end
     end
   end

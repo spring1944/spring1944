@@ -72,9 +72,6 @@ local glRotate = gl.Rotate
 local glRect = gl.Rect
 local glShape = gl.Shape
 
-local glLoadFont = gl.LoadFont
-local glDeleteFont = gl.DeleteFont
-
 local glTexture = gl.Texture
 local glTexRect = gl.TexRect
 
@@ -232,7 +229,7 @@ local function DrawSupply()
 end
 
 local function DrawMain()
-  glColor(0, 0, 0, 0.125)
+  glColor(0, 0, 0, 0.25)
   glRect(-mainWidth, -1, 0, 0)
   glPushMatrix()
     DrawCommand()
@@ -256,11 +253,7 @@ function widget:Initialize()
   widget:ViewResize(viewSizeX, viewSizeY)
   widget:GameFrame(0)
   
-  font = glLoadFont(FONT_FILE, 16, 0, 0)
-end
-
-function widget:Shutdown()
-  glDeleteFont(font)
+  font = WG.S44Fonts.TypewriterBold16
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)

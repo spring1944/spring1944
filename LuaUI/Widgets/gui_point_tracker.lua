@@ -44,7 +44,6 @@ local glRect = gl.Rect
 local glLineWidth = gl.LineWidth
 local glShape = gl.Shape
 local glPolygonMode = gl.PolygonMode
-local glText = gl.Text
 local max = math.max
 local abs = math.abs
 local strSub = string.sub
@@ -67,6 +66,8 @@ local mapX = Game.mapX * 512
 local mapY = Game.mapY * 512
 
 local vsx, vsy, sMidX, sMidY
+
+local font
 
 ----------------------------------------------------------------
 --local functions
@@ -93,6 +94,7 @@ function widget:Initialize()
 	timeNow = false
 	timePart = false
 	myPlayerID = Spring.GetMyPlayerID()
+  font = WG.S44Fonts.TypewriterBold16
 end
 
 function widget:DrawScreen()
@@ -180,7 +182,7 @@ function widget:DrawScreen()
 				end
 				glShape(GL_TRIANGLES, vertices)
 				glColor(1, 1, 1, alpha)
-				glText(curr[5], textX, textY, fontSize, textOptions)
+				font:Print(curr[5], textX, textY, fontSize, textOptions)
 			end
 		end
 	end
