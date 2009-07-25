@@ -24,6 +24,7 @@
   footprintZ=2;
   iconType=halftrack;
   leaveTracks=1;
+  mass=850;
   maxDamage=850;
   maxReverseVelocity=1.925;
   maxSlope=10;

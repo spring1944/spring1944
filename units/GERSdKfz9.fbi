@@ -18,6 +18,7 @@
   footprintZ=3;
   iconType=engineervehicle;
   leaveTracks=1;
+  mass=1800;
   maxDamage=1800;
   maxReverseVelocity=1.5;
   maxSlope=10;

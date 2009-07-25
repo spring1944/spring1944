@@ -22,7 +22,7 @@
   footprintX=4;
   footprintZ=4;
   iconType=torpboat;
-  mass=75000;
+  mass=2090;
   maxDamage=2090;
   maxReverseVelocity=3.29;
   maxVelocity=6.58;

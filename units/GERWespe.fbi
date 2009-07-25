@@ -30,7 +30,7 @@
   footprintZ=3;
   iconType=sparty;
   leaveTracks=1;
-  mass=2750;
+  mass=1100;
   maxDamage=1100;
   maxReverseVelocity=1.48;
   maxSlope=2;

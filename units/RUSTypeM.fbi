@@ -22,7 +22,7 @@
   footprintX=8;
   footprintZ=8;
   iconType=sub;
-  mass=60000;
+  mass=2500;
   maxDamage=2500;
   maxReverseVelocity=0.41;
   maxVelocity=0.82; // 8.2 knots submerged

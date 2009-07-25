@@ -27,7 +27,7 @@
   footprintZ=3;
   iconType=heavytank;
   leaveTracks=1;
-  mass=4500;
+  mass=4600;
   maxDamage=4600;
   maxReverseVelocity=1.37;
   maxSlope=2;

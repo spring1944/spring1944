@@ -23,7 +23,7 @@
   footprintZ=8;
   holdSteady=1;
   iconType=transportship;
-  mass=100000;
+  mass=23900;
   maxDamage=23900;
   maxReverseVelocity=0.72;
   maxVelocity=1.44;

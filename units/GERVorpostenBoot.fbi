@@ -23,7 +23,7 @@
   footprintX=8;
   footprintZ=8;
   iconType=destroyer;
-  mass=400000;
+  mass=88500;
   maxDamage=88500;
   maxReverseVelocity=0.825;
   maxVelocity=1.65;

@@ -23,7 +23,7 @@
   footprintZ=2;
   iconType=rockettruck;
   leaveTracks=1;
-  mass=1000;
+  mass=573;
   maxDamage=573;
   maxReverseVelocity=2.45;
   maxSlope=6;

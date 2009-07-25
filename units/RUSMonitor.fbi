@@ -23,7 +23,7 @@
   footprintX=8;
   footprintZ=8;
   iconType=gunboat;
-  mass=240000;
+  mass=26300;
   maxDamage=26300;
   maxReverseVelocity=0.525;
   maxVelocity=1.05; //8.3 knots max. It's really sluggish

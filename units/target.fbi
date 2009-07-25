@@ -22,7 +22,7 @@
   footprintX=8;
   footprintZ=8;
   iconType=pontoon;
-  mass=1e+06;
+  mass=100000;
   maxDamage=100000;
   maxReverseVelocity=1;
   maxVelocity=2;

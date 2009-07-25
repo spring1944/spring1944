@@ -28,7 +28,7 @@
   footprintZ=2;
   iconType=armoredcar;
   leaveTracks=1;
-  mass=1250;
+  mass=1270;
   maxDamage=1270;
   maxReverseVelocity=1.5;
   maxSlope=6;

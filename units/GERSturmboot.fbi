@@ -19,7 +19,7 @@
   footprintZ=3;
   iconType=lttrans;
   isFirePlatform=0;
-  mass=1000;
+  mass=950;
   maxDamage=950;
   maxVelocity=3.4;
   minWaterDepth=5;

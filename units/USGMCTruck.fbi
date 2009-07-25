@@ -20,7 +20,7 @@
   footprintZ=3;
   iconType=truck;
   leaveTracks=1;
-  mass=1000;
+  mass=300;
   maxDamage=300;
   maxReverseVelocity=2.25;
   maxSlope=10;

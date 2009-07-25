@@ -22,7 +22,7 @@
   footprintX=8;
   footprintZ=8;
   iconType=sub;
-  mass=20000;
+  mass=1700;
   maxDamage=1700;
   maxReverseVelocity=0.375;
   maxVelocity=0.75;

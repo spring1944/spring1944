@@ -22,7 +22,7 @@
   footprintZ=2;
   iconType=jeep;
   leaveTracks=1;
-  mass=1000;
+  mass=245;
   maxDamage=245;
   maxReverseVelocity=2.6;
   maxSlope=6;

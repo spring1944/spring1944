@@ -22,7 +22,7 @@
   footprintX=4;
   footprintZ=4;
   iconType=gunboat;
-  mass=75000;
+  mass=2660;
   maxDamage=2660;
   maxReverseVelocity=1.235;
   maxVelocity=2.47;

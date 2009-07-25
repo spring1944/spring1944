@@ -22,7 +22,7 @@
   footprintZ=4;
   iconType=pontoon;
   isFirePlatform=0;
-  mass=1000;
+  mass=1360;
   maxDamage=1360;
   maxReverseVelocity=0.55;
   maxVelocity=1.1;

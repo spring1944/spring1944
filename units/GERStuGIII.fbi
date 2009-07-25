@@ -27,7 +27,7 @@
   footprintZ=3;
   iconType=selfprop;
   leaveTracks=1;
-  mass=2500;
+  mass=2390;
   maxDamage=2390;
   maxReverseVelocity=1.48;
   maxSlope=2;

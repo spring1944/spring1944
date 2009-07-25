@@ -27,7 +27,7 @@
   healthScale=0;
   iconType=medtank;
   leaveTracks=1;
-  mass=2500;
+  mass=2960;
   maxDamage=2960;
   maxReverseVelocity=1.48;
   maxSlope=2;

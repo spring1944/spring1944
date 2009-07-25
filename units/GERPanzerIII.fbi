@@ -27,7 +27,7 @@
   footprintZ=3;
   iconType=lighttank;
   leaveTracks=1;
-  mass=2500;
+  mass=2130;
   maxDamage=2130;
   maxReverseVelocity=1.48;
   maxSlope=2;

@@ -16,7 +16,7 @@
   footprintZ=3;
   iconType=AAtruck;
   leaveTracks=1;
-  mass=1000;
+  mass=600;
   maxDamage=600;
   maxReverseVelocity=2.055;
   maxSlope=6;

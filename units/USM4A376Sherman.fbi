@@ -27,7 +27,7 @@
   footprintZ=3;
   iconType=medtank;
   leaveTracks=1;
-  mass=2750;
+  mass=3365;
   maxDamage=3365;
   maxReverseVelocity=1.555;
   maxSlope=2;

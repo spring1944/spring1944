@@ -22,7 +22,7 @@
   footprintZ=2;
   iconType=flametank;
   leaveTracks=1;
-  mass=1250;
+  mass=431.8;
   maxDamage=431.8;
   maxReverseVelocity=1.78;
   maxSlope=6;

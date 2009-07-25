@@ -23,7 +23,7 @@
   footprintZ=4;
   holdSteady=1;
   iconType=landingship;
-  mass=10000;
+  mass=950;
   maxDamage=950;
   maxReverseVelocity=0.76;
   maxVelocity=1.52;
