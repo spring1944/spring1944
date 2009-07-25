@@ -24,6 +24,7 @@
   isFirePlatform=0;
   mass=1000;
   maxDamage=1360;
+  maxReverseVelocity=0.55;
   maxVelocity=1.1;
   minWaterDepth=5;
   movementClass=BOAT_Medium;

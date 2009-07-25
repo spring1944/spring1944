@@ -24,6 +24,7 @@
   iconType=gunboat;
   mass=50000;
   maxDamage=16000;
+  maxReverseVelocity=1.37;
   maxVelocity=2.74;
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;

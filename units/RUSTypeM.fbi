@@ -24,6 +24,7 @@
   iconType=sub;
   mass=60000;
   maxDamage=2500;
+  maxReverseVelocity=0.41;
   maxVelocity=0.82; // 8.2 knots submerged
   minWaterDepth=40;
   movementClass=BOAT_Sub;

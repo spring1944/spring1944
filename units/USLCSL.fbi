@@ -26,6 +26,7 @@
   iconType=gunboat;
   mass=200000;
   maxDamage=25400;
+  maxReverseVelocity=1.13;
   maxVelocity=2.26;
   minWaterDepth=10;
   movementClass=BOAT_LandingCraft;

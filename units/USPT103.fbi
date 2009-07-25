@@ -24,6 +24,7 @@
   iconType=torpboat;
   mass=100000;
   maxDamage=5000;
+  maxReverseVelocity=2.15;
   maxVelocity=4.3; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;

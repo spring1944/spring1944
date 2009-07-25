@@ -25,6 +25,7 @@
   iconType=destroyer;
   mass=500000;
   maxDamage=157900;
+  maxReverseVelocity=1.785;
   maxVelocity=3.57;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
