@@ -22,7 +22,7 @@
   duration=0.015;
   explosionGenerator=custom:Bullet;
   fireStarter=0;
-  id=6;
+  id=400;
   impactOnly=1;
   intensity=0.7;
   interceptedByShieldType=8;

@@ -20,7 +20,7 @@
   explosionGenerator=custom:HE_Small;
   explosionSpeed=30;
   fireStarter=0;
-  id=50;
+  id=400;
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.9;
@@ -62,7 +62,7 @@
   explosionGenerator=custom:HE_Small;
   explosionSpeed=30;
   fireStarter=0;
-  id=50;
+  id=400;
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.9;

@@ -23,7 +23,7 @@
   fireStarter=0;
   flightTime=4;
   guidance=1;
-  id=99;
+  id=400;
   impulseBoost=0;
   impulseFactor=0;
   model=KatyushaRocket.S3O;
