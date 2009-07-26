@@ -18,7 +18,7 @@ gadget.unitBuildOrder = UnitBag{
 		"gbr_platoon_hq", "gbr_platoon_hq",
 	},
 	gbrbarracks = UnitArray{
-		"gbrengineer", "gbrengineer",
+		"gbrhqengineer", "gbrhqengineer",
 		"gbr_platoon_rifle", "gbr_platoon_assault",
 		"gbr_platoon_rifle", "gbr_platoon_mortar",
 		"gbr_platoon_rifle", "gbr_platoon_at",
@@ -92,7 +92,7 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	gerbarracks = UnitArray{
 		-- Works J
-		"gerengineer", "gerengineer",
+		"gerhqengineer", "gerhqengineer",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_rifle","ger_platoon_rifle", "ger_platoon_rifle",
 		"ger_platoon_at", "ger_platoon_mg", "ger_platoon_sniper", "ger_platoon_mortar",
@@ -127,7 +127,7 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	usbarracks = UnitArray{
 		-- Works J
-		"usengineer", "usengineer",
+		"ushqengineer", "ushqengineer",
 		"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
 		"us_platoon_rifle", "us_platoon_rifle", "us_platoon_rifle",
 		"us_platoon_assault", "us_platoon_at",
