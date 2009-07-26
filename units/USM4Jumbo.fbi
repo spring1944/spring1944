@@ -22,6 +22,7 @@
     maxammo=20;
     weaponcost=10;
     weaponswithammo=2;
+    fearshieldradius=50;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;

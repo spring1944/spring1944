@@ -15,6 +15,8 @@ end
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
+local GetGameFrame 					= Spring.GetGameFrame
+local GetUnitPosition				= Spring.GetUnitPosition
 -- Synced Ctrl
 local CallCOBScript					= Spring.CallCOBScript
 
@@ -23,42 +25,70 @@ local CallCOBScript					= Spring.CallCOBScript
 -- variables
 
 local targets = {}
-local blockAllyTeams = {}
+local unitsWithShields = {}
+local unitsInShields = {}
+
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+
+function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	local ud = UnitDefs[unitDefID]
+	local fearShieldRadius = tonumber(ud.customParams.fearshieldradius or 0)
+	if fearShieldRadius > 0 then
+		unitsWithShields[unitID] = fearShieldRadius
+		--Spring.Echo("FEAR SHIELD FOUND!", unitID, fearShieldRadius)
+	end
+end
+
+function gadget:UnitDestroyed(unitID)
+	unitsWithShields[unitID] = nil
+end
 
 function gadget:Explosion(weaponId, px, py, pz, ownerId)
 	local weapDef = WeaponDefs[weaponId]
 	local unitsAtSpot = GetUnitsInCylinder(px, pz, weapDef.customParams.fearaoe)
 	
-	-- insert code for tank fear shields here
-	-- compile table of ud.customParams.fearshieldradius units in fearshieldradius+fearaoe, check seperation between all feartarget units and each of these, apply fear if seperation > fearshieldradius
-	-- optimisation? if fearshieldradius > fearaoe, all units are protected
-	
-	--local fearBlockerFound	= false
-	for i = 1, #unitsAtSpot do
-		local unitId = unitsAtSpot[i]
-		local ud = UnitDefs[GetUnitDefID(unitId)]
-		if ud.customParams.blockfear == "1" then
-			blockAllyTeams[GetUnitAllyTeam(unitId)] = true
-		elseif ud.customParams.feartarget then
-			table.insert(targets, unitId)
+	if #unitsAtSpot > 0 then
+		buildShieldTables()
+		for i = 1, #unitsAtSpot do
+			local unitId = unitsAtSpot[i]
+			local ud = UnitDefs[GetUnitDefID(unitId)]
+			if ud.customParams.feartarget then
+				table.insert(targets, unitId)
+			end
 		end
-	end
 	
-	for i = 1, #targets do
-		local unitId = targets[i]
-		if unitId ~= ownerId and not blockAllyTeams[GetUnitAllyTeam(unitId)] then
-			Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
+		for i = 1, #targets do
+			local unitId = targets[i]
+			--Spring.Echo(unitsInShields[unitId])
+			if unitId ~= ownerId and not unitsInShields[unitId] then
+				Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
+			end
+			targets[i] = nil
 		end
-		targets[i] = nil
-	end
 		targets = {}
-		blockAllyTeams = {}
+		unitsInShields = {}
+	end
 	return false
 end
 
+function buildShieldTables()
+	--Spring.Echo("BUILDING SHIELD TABLES")
+	for unitID, fearShieldRadius in pairs(unitsWithShields) do
+		--Spring.Echo("Shield unit is " .. unitID .. " with radius " .. fearShieldRadius)
+		local x, _, z = GetUnitPosition(unitID)
+		local unitsInThisShield = GetUnitsInCylinder(x, z, fearShieldRadius)
+		for i = 1, #unitsInThisShield do
+			local unitID2 = unitsInThisShield[i]
+			local ud = UnitDefs[GetUnitDefID(unitID2)]
+			if ud.customParams.feartarget then
+				unitsInShields[unitID2] = true
+				--Spring.Echo("Unit " .. unitID2 .. " is in a shield!")
+			end
+		end
+	end
+end
 
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do
