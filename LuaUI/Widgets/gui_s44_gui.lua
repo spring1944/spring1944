@@ -14,10 +14,14 @@ end
 --speedups
 ----------------------------------------------------------------
 local Echo = Spring.Echo
+local IsGUIHidden = Spring.IsGUIHidden
+
+local glLoadFont = gl.LoadFont
 
 ----------------------------------------------------------------
 --local vars
 ----------------------------------------------------------------
+local FONT_DIR = LUAUI_DIRNAME .. "Fonts/"
 local MAIN_DIRNAME = LUAUI_DIRNAME .. "Widgets/gui_s44_gui/"
 local COMPONENT_DIRNAME = MAIN_DIRNAME .. "components/"
 
@@ -26,14 +30,15 @@ local components = {}
 --callins we should look for in our components
 local callins = {
   --standard
-  "DrawScreen",
+  
   "GameFrame",
   "Update",
   "ViewResize",
   "CommandsChanged",
   
   --modified
-  "MousePress", --any component with MousePress must also have a MouseRelease
+  "DrawScreen", --does not draw if GUI is hidden
+  "MousePress", --any component with MousePress must also have a MouseRelease; does not take click if GUI is hidden
   
   --nonstandard
   
@@ -45,7 +50,14 @@ local callinLists = {}
 local clickOwner
 
 ----------------------------------------------------------------
---include
+--global vars
+----------------------------------------------------------------
+
+font16 = glLoadFont(FONT_DIR .. "cmuntb.otf", 16, 0, 0)
+font32 = glLoadFont(FONT_DIR .. "cmuntb.otf", 32, 0, 0)
+
+----------------------------------------------------------------
+--setup
 ----------------------------------------------------------------
 do
   local vfsInclude = VFS.Include
@@ -73,13 +85,6 @@ end
 ----------------------------------------------------------------
 --standard callins
 ----------------------------------------------------------------
-
-function widget:DrawScreen()
-  local callinList = callinLists["DrawScreen"]
-  for i = 1, #callinList do
-    callinList[i]:DrawScreen()
-  end
-end
 
 function widget:GameFrame(n)
   local callinList = callinLists["GameFrame"]
@@ -113,8 +118,20 @@ end
 --modified callins
 ----------------------------------------------------------------
 
---track which component is the click owner
+--does not draw if GUI is hidden
+function widget:DrawScreen()
+  if IsGUIHidden() then return end
+
+  local callinList = callinLists["DrawScreen"]
+  for i = 1, #callinList do
+    callinList[i]:DrawScreen()
+  end
+end
+
+--track which component is the click owner; does not take click if GUI is hidden
 function widget:MousePress(x, y, button)
+  if IsGUIHidden() then return false end
+
   local callinList = callinLists["MousePress"]
   for i = 1, #callinList do
     local component = callinList[i]
@@ -141,13 +158,13 @@ end
 --other callins
 ----------------------------------------------------------------
 
---includes a viewresize
+--includes a ViewResize
 function widget:Initialize()
   local viewSizeX, viewSizeY = Spring.GetViewGeometry()
   widget:ViewResize(viewSizeX, viewSizeY)
   
   for i = 1, #components do
-    local component = component[i]
+    local component = components[i]
     if component.Initialize then
       component:Initialize()
     end
@@ -156,7 +173,7 @@ end
 
 function widget:Shutdown()
   for i = 1, #components do
-    local component = component[i]
+    local component = components[i]
     if component.Shutdown then
       component:Shutdown()
     end
