@@ -57,15 +57,19 @@
 
   weapon1=88mmskc30;
   maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=37mmflak43;
   maxAngleDif2=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
   weapon3=20mmc38;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon4=20mmc38;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon5=20mmc38;
   maxAngleDif5=270;

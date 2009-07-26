@@ -54,18 +54,22 @@
 
   weapon1=88mmskc30;
   maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=88mmskc30;
   maxAngleDif2=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
   weapon3=37mmflak43;
   maxAngleDif3=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
   weapon4=flak3820mmaa; //20mmflakvierling;
   maxAngleDif4=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir4=0 0 1;
 
   weapon5=flak3820mmaa; //20mmflakvierling;
@@ -75,10 +79,12 @@
 
   weapon6=20mmc38;
   maxAngleDif6=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir6=1 0 0;
 
   weapon7=20mmc38;
   maxAngleDif7=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir7=-1 0 0;
 }
 
