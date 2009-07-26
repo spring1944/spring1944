@@ -1,0 +1,3 @@
+local component = {}
+
+return component
