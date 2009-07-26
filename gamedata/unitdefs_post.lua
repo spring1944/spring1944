@@ -78,24 +78,6 @@ end
 			end
 		end]]--
 
-	if (modOptions and modOptions.logistics_mult) then
-		for name, ud in pairs(UnitDefs) do
-			if (ud.customparams) then
-				if (ud.customparams.arrivalgap) then
-					if (modOptions.logistics_mult == '0') then
-					ud.customparams.arrivalgap = (1.5 * ud.customparams.arrivalgap)
-					end
-					if (modOptions.logistics_mult == '1') then
-					ud.customparams.arrivalgap = (1 * ud.customparams.arrivalgap)
-					end
-					if (modOptions.logistics_mult == '2') then
-					ud.customparams.arrivalgap = (0.5 * ud.customparams.arrivalgap)
-					end
-				end
-			end
-		end
-	end
-
 	--[[if (modOptions and modOptions.unit_speed_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.maxvelocity) then

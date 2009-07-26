@@ -256,6 +256,8 @@ function widget:Initialize()
   widget:GameFrame(0)
   
   font = WG.S44Fonts.TypewriterBold16
+  
+  resupplyPeriod = Spring.GetGameRulesParam("resupplyPeriod") or 450 * 30
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
@@ -277,13 +279,6 @@ function widget:DrawScreen()
     end
   glPopMatrix()
   glSmoothing(false, false, false)
-end
-
-function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-  local unitDef = UnitDefs[unitDefID]
-  if (unitDef.customParams.hq == '1') then
-    resupplyPeriod = tonumber(unitDef.customParams.arrivalgap) * 30
-  end
 end
 
 function widget:GameFrame(n)

@@ -104,25 +104,25 @@ local options = {
   },
 
     {
-    key    = "logistics_mult",
+    key    = "logistics_period",
     name   = "Logistics Resupply Frequency",
-    desc   = "Sets the gap between Logistics Resupply (key = 'logistics_mult')",
+    desc   = "Sets the gap between Logistics Resupply (key = 'logistics_period')",
     type   = "list",
-    def    = "1",
+    def    = "450",
     items  =
     {
       {
-        key  = "0",
+        key  = "675",
         name = "Low - 11.25 minute gap",
         desc = "Limited logistics supply. Conservative play - storage buildings and well supplied infantry are the order of the day.",
       },
       {
-        key  = "1",
+        key  = "450",
         name = "Normal - 7.5 minute gap",
         desc = "Normal logistics supply. Supplies come on a frequent enough basis to keep the warmachine rumbling, but beware of large artillery batteries or armored thrusts.",
       },
       {
-        key  = "2",
+        key  = "225",
         name = "High - 3.75 minute gap",
         desc = "Abundant logistics supply. Supply deliveries arrive early and often, allowing for much more aggressive play.",
       },
