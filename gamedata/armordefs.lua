@@ -63,8 +63,7 @@ local armorDefs = {
   
   guns  =  {
     --**Germany**--
-    "GERleIG18_bax",
-    "GERleIG18_gunyard",
+    "GERleIG18",
     "GERFlaK38",
     "GERPaK40",
     "GERleFH18",
@@ -76,8 +75,7 @@ local armorDefs = {
     "GERNebelwerfer_Stationary",
 
     --US--
-    "USM8Gun_bax",
-    "USM8Gun_gunyard",
+    "USM8Gun",
     "USM2Gun",
     "USM2Gun_Stationary",
     "USM5Gun",
