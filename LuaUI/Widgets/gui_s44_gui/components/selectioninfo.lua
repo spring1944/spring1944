@@ -5,8 +5,12 @@ local mainSizeY = 256
 local fontSize = 16
 
 local GetSelectedUnits = Spring.GetSelectedUnits
+
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitHealth = Spring.GetUnitHealth
+local GetUnitExperience = Spring.GetUnitExperience
+local GetUnitRulesParam  = Spring.GetUnitRulesParam
+
 local strFormat = string.format
 local glColor = gl.Color
 local glRect = gl.Rect
@@ -39,8 +43,24 @@ function component:DrawScreen()
     local healthProportion = health / maxHealth
     local healthColorString = GetColorString(GetHealthColor(healthProportion))
     
-    local text = humanName .. ":" .. tooltip .. "\n"
-      .. healthColorString .. "Health: " .. strFormat("%u", health) .. "/" .. strFormat("%u", maxHealth)
+    
+    
+    local text = humanName .. ": " .. tooltip .. "\n"
+      .. healthColorString .. "Health: " .. strFormat("%u", health) .. "/" .. strFormat("%u", maxHealth) .. "\n"
+      
+    local ammo = GetUnitRulesParam(unitID, "ammo")
+    local maxAmmo = unitDef.customParams.maxammo
+    
+    if ammo and maxAmmo then
+      local ammoProportion = ammo / maxAmmo
+      local ammoColorString = GetColorString(GetHealthColor(ammoProportion))
+      text = text .. ammoColorString .. "Ammunition: " .. strFormat("%u", ammo) .. "/" .. strFormat("%u", maxAmmo) .. "\n"
+    end
+    
+    if #unitDef.weapons > 0 then
+      local xp = GetUnitExperience(unitID)
+      text = text .. "\255\255\255\255Experience: " .. strFormat("%.2f", xp)
+    end
       
     text = font16:WrapText(text, mainSizeX - 8, mainSizeY, fontSize)
     
