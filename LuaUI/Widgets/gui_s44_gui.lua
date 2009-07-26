@@ -19,6 +19,8 @@ local TraceScreenRay = Spring.TraceScreenRay
 local GetMouseState = Spring.GetMouseState
 
 local glLoadFont = gl.LoadFont
+local glColor = gl.Color
+local glRect = gl.Rect
 
 ----------------------------------------------------------------
 --local vars
@@ -62,6 +64,46 @@ local clickOwner
 font16 = glLoadFont(FONT_DIR .. "cmuntb.otf", 16, 0, 0)
 font32 = glLoadFont(FONT_DIR .. "cmuntb.otf", 32, 0, 0)
 vsx, vsy = 1280, 1024
+
+local tooltipWidth = 0.25
+local tooltipSizeX = vsx * tooltipWidth
+local tooltipFontSize = 16
+local tooltipOffsetX = 16
+
+function DrawStandardTooltip(text, x, y, wrap)
+
+  local sizeX = tooltipSizeX
+  
+  local numLines
+  if wrap then
+    text, numLines = font16:WrapText(text, tooltipSizeX - 8, vsy, tooltipFontSize)
+  else
+    _, numLines = text:gsub("\n", "\n")
+    numLines = numLines + 1
+    sizeX = font16:GetTextWidth(text) * tooltipFontSize + 8
+  end
+  
+  local fontHeight, descender = font16:GetTextHeight(text) 
+  
+  local sizeY = fontHeight * tooltipFontSize * numLines * 1.25
+  
+  local drawX = x + tooltipOffsetX
+  if drawX + sizeX > vsx then
+    drawX = vsx - sizeX
+  end
+  
+  local drawY = y
+  if sizeY > y then
+    sizeY = y
+  end
+  
+  glColor(0, 0, 0, 0.5)
+  glRect(drawX, drawY, drawX + sizeX, drawY - sizeY)
+  glColor(1, 1, 1, 1)
+  
+  font16:Print(text, drawX, drawY, tooltipFontSize, "t")
+  
+end
 
 ----------------------------------------------------------------
 --setup
@@ -145,6 +187,8 @@ end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
   vsx, vsy = viewSizeX, viewSizeY
+  tooltipSizeX = vsx * tooltipWidth
+  
   local callinList = callinLists["ViewResize"]
   for i = 1, #callinList do
     callinList[i]:ViewResize()
