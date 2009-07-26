@@ -17,7 +17,6 @@ local FONT_FILE = LUAUI_DIRNAME .. "Fonts/cmuntb.otf"
 ------------------------------------------------
 --locals
 ------------------------------------------------
-local vsx, vsy --viewsize
 local mainSize --size in pixels
 local mainWidth --width in terms of height
 
@@ -241,9 +240,7 @@ function component:Initialize()
   resupplyPeriod = Spring.GetGameRulesParam("resupplyPeriod") or 450 * 30
 end
 
-function component:ViewResize(viewSizeX, viewSizeY)
-  vsx = viewSizeX
-  vsy = viewSizeY
+function component:ViewResize()
   mainSize = mainScaleHeight * vsy
   mainWidth = vsx * mainScaleWidth / mainSize
   barLength = mainWidth / 2 - 1 - endLength

@@ -15,6 +15,8 @@ end
 ----------------------------------------------------------------
 local Echo = Spring.Echo
 local IsGUIHidden = Spring.IsGUIHidden
+local TraceScreenRay = Spring.TraceScreenRay
+local GetMouseState = Spring.GetMouseState
 
 local glLoadFont = gl.LoadFont
 
@@ -27,26 +29,30 @@ local COMPONENT_DIRNAME = MAIN_DIRNAME .. "components/"
 
 local components = {}
 
---callins we should look for in our components
+--callins we should autocreate lists for
 local callins = {
   --standard
-  
   "GameFrame",
   "Update",
-  "ViewResize",
   "CommandsChanged",
   
   --modified
   "DrawScreen", --does not draw if GUI is hidden
   "MousePress", --any component with MousePress must also have a MouseRelease; does not take click if GUI is hidden
+  "ViewResize", --ViewResize() -> nil; the viewsizes are stored in globals vsx, vsy
+  
+  --unlisted: Initialize, Shutdown
   
   --nonstandard
-  
-  --not used in callin list generation: Initialize, Shutdown
+  "DrawRolloverWorld", --DrawRolloverWorld(targetType, targetID) -> nil (same arguments as Spring.TraceScreenRay)
+  "DrawRolloverScreen", --DrawRolloverScreen(targetType, targetID) -> nil (same arguments as Spring.TraceScreenRay)
+  "DrawTooltip", --DrawTooltip(x, y) -> component owns tooltip
 }
 
+--format: callinName = {component, component...}
 local callinLists = {}
 
+--owner of the the current MousePress
 local clickOwner
 
 ----------------------------------------------------------------
@@ -55,6 +61,7 @@ local clickOwner
 
 font16 = glLoadFont(FONT_DIR .. "cmuntb.otf", 16, 0, 0)
 font32 = glLoadFont(FONT_DIR .. "cmuntb.otf", 32, 0, 0)
+vsx, vsy = 1280, 1024
 
 ----------------------------------------------------------------
 --setup
@@ -66,7 +73,7 @@ do
   for i=1,#files do
     local file = files[i]
     components[i] = vfsInclude(file)
-    Echo("<gui_s44_hud>: Loaded component from file '" .. file)
+    Echo("<gui_s44_hud>: Loaded component from file '" .. file .. "'")
   end
 end
 
@@ -100,13 +107,6 @@ function widget:Update(dt)
   end
 end
 
-function widget:ViewResize(viewSizeX, viewSizeY)
-  local callinList = callinLists["ViewResize"]
-  for i = 1, #callinList do
-    callinList[i]:ViewResize(viewSizeX, viewSizeY)
-  end
-end
-
 function widget:CommandsChanged()
   local callinList = callinLists["CommandsChanged"]
   for i = 1, #callinList do
@@ -125,6 +125,29 @@ function widget:DrawScreen()
   local callinList = callinLists["DrawScreen"]
   for i = 1, #callinList do
     callinList[i]:DrawScreen()
+  end
+  
+  local mx, my = GetMouseState()
+  local targetType, targetID = TraceScreenRay(mx, my)
+  
+  local rolloverList = callinLists["DrawRolloverScreen"]
+  for i = 1, #rolloverList do
+    rolloverList[i]:DrawRolloverScreen(targetType, targetID)
+  end
+  
+  local tooltipList = callinLists["DrawTooltip"]
+  for i = 1, #tooltipList do
+    if tooltipList[i]:DrawTooltip(mx, my) then
+      return
+    end
+  end
+end
+
+function widget:ViewResize(viewSizeX, viewSizeY)
+  vsx, vsy = viewSizeX, viewSizeY
+  local callinList = callinLists["ViewResize"]
+  for i = 1, #callinList do
+    callinList[i]:ViewResize()
   end
 end
 
@@ -146,7 +169,7 @@ end
 --release the click if we have it
 function widget:MouseRelease(x, y, button)
   if clickOwner then
-    component:MouseRelease(x, y, button)
+    clickOwner:MouseRelease(x, y, button)
     clickOwner = nil
     return true
   else
@@ -155,7 +178,7 @@ function widget:MouseRelease(x, y, button)
 end
 
 ----------------------------------------------------------------
---other callins
+--unlisted callins
 ----------------------------------------------------------------
 
 --includes a ViewResize
@@ -177,5 +200,19 @@ function widget:Shutdown()
     if component.Shutdown then
       component:Shutdown()
     end
+  end
+  
+  local glDeleteFont = gl.DeleteFont
+  glDeleteFont(font16)
+  glDeleteFont(font32)
+end
+
+function widget:DrawWorld()
+  local mx, my = GetMouseState()
+  local targetType, targetID = TraceScreenRay(mx, my)
+  
+  local rolloverList = callinLists["DrawRolloverWorld"]
+  for i = 1, #rolloverList do
+    rolloverList[i]:DrawRolloverWorld(targetType, targetID)
   end
 end
