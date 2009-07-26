@@ -226,7 +226,10 @@ end
 ----------------------------------------------------------------
 
 --includes a ViewResize
+
+
 function widget:Initialize()
+  
   local viewSizeX, viewSizeY = Spring.GetViewGeometry()
   widget:ViewResize(viewSizeX, viewSizeY)
   
