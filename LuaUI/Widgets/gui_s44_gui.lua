@@ -47,7 +47,7 @@ local callins = {
   
   --nonstandard
   "DrawRolloverWorld", --DrawRolloverWorld(targetType, targetID) -> nil (same arguments as Spring.TraceScreenRay)
-  "DrawRolloverScreen", --DrawRolloverScreen(targetType, targetID) -> nil (same arguments as Spring.TraceScreenRay)
+  "DrawRolloverScreen", --DrawRolloverScreen(mx, my, targetType, targetID) -> nil (same arguments as Spring.TraceScreenRay)
   "DrawTooltip", --DrawTooltip(x, y) -> component owns tooltip
 }
 
@@ -174,7 +174,7 @@ function widget:DrawScreen()
   
   local rolloverList = callinLists["DrawRolloverScreen"]
   for i = 1, #rolloverList do
-    rolloverList[i]:DrawRolloverScreen(targetType, targetID)
+    rolloverList[i]:DrawRolloverScreen(mx, my, targetType, targetID)
   end
   
   local tooltipList = callinLists["DrawTooltip"]
@@ -260,3 +260,45 @@ function widget:DrawWorld()
     rolloverList[i]:DrawRolloverWorld(targetType, targetID)
   end
 end
+
+----------------------------------------------------------------
+--api
+----------------------------------------------------------------
+
+local vfsPackU8 = VFS.PackU8
+local floor = math.floor
+
+function GetColorString(color, g, b, a)
+  if g then
+    color = {color, g, b, (a or 1)}
+  else
+    color[4] = color[4] or 1
+  end
+  
+  for i = 1, 4 do
+    color[i] = floor(color[i] * 255)
+    if color[i] < 1 then color[i] = 1
+    elseif color[i] > 255 then color[i] = 255
+    end
+  end
+  
+  return vfsPackU8(color[4])
+      .. vfsPackU8(color[1]) 
+      .. vfsPackU8(color[2]) 
+      .. vfsPackU8(color[3])
+end
+
+function GetHealthColor(proportion)
+  if proportion > 0.5 then
+    return {2 - proportion * 2, 1, 0}
+  else
+    return {1, proportion * 2, 0}
+  end
+end
+
+local api = {
+  GetColorString = GetColorString,
+  GetHealthColor = GetHealthColor,
+}
+
+WG.S44GUI = api
