@@ -3,9 +3,12 @@ local component = {}
 ------------------------------------------------
 --config
 ------------------------------------------------
+local rightMargin = 0.2
 
 local mainScaleHeight = 0.045 --height as a proportion of screen height; sets the overall scale of things
-local mainScaleWidth = 0.75 --width as a proportion of screen width
+local mainScaleWidth = 0.6 --width as a proportion of screen width
+
+local rightEdge = 1 - rightMargin
 
 local barHeight = 0.125
 
@@ -219,7 +222,7 @@ local function DrawSupply()
 end
 
 local function DrawMain()
-  glColor(0, 0, 0, 0.25)
+  glColor(0, 0, 0, 0.5)
   glRect(-mainWidth, -1, 0, 0)
   glPushMatrix()
     DrawCommand()
@@ -250,7 +253,7 @@ function component:DrawScreen()
   glSmoothing(false, true, false)
   glLineWidth(1)
   glPushMatrix()
-    glTranslate(vsx, vsy, 0)
+    glTranslate(vsx * rightEdge, vsy, 0)
     glScale(mainSize, mainSize, 1)
     if (not IsGUIHidden()) then
       DrawMain()
@@ -289,7 +292,7 @@ end
 ------------------------------------------------
 
 local function MainTransform(x, y)
-  return (x - vsx) / mainSize, (y - vsy) / mainSize
+  return (x - vsx * rightEdge) / mainSize, (y - vsy) / mainSize
 end
 
 local function CommandShare(tx)
