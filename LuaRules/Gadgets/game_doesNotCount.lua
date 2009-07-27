@@ -30,8 +30,11 @@ if (gadgetHandler:IsSyncedCode() and modOptions.gametype == "0") then
 
 --SYNCED
 
-local TransferUnit					= Spring.TransferUnit
-local SetUnitNeutral				= Spring.SetUnitNeutral
+local TransferUnit = Spring.TransferUnit
+local SetUnitNeutral = Spring.SetUnitNeutral
+local GetUnitDefID = Spring.GetUnitDefID
+local GetUnitTeam = Spring.GetUnitTeam
+
 local destroyQueue = {}
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local aliveCount = {}
@@ -84,6 +87,12 @@ end
 function gadget:Initialize()
 	for _,t in ipairs(Spring.GetTeamList()) do
 		aliveCount[t] = 0
+	end
+	-- count all units already existing
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local u = allUnits[i]
+		gadget:UnitCreated(u, GetUnitDefID(u), GetUnitTeam(u))
 	end
 end
 
