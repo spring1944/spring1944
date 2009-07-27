@@ -268,27 +268,22 @@ end
 --api
 ----------------------------------------------------------------
 
-local vfsPackU8 = VFS.PackU8
+local strChar = string.char
 local floor = math.floor
 
-function GetColorString(color, g, b, a)
+function GetColorString(color, g, b)
   if g then
-    color = {color, g, b, (a or 1)}
-  else
-    color[4] = color[4] or 1
+    color = {color, g, b}
   end
   
-  for i = 1, 4 do
+  for i = 1, 3 do
     color[i] = floor(color[i] * 255)
     if color[i] < 1 then color[i] = 1
     elseif color[i] > 255 then color[i] = 255
     end
   end
   
-  return vfsPackU8(color[4])
-      .. vfsPackU8(color[1]) 
-      .. vfsPackU8(color[2]) 
-      .. vfsPackU8(color[3])
+  return strChar(255, color[1], color[2], color[3])
 end
 
 function GetHealthColor(proportion)
