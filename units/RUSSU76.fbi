@@ -12,7 +12,7 @@
   category=MINETRIGGER OPENVEH;
   corpse=RUSSU76_Destroyed;
   [customParams] {
-    armor_front=34;
+    armor_front=31;
     armor_rear=17;
     armor_side=13;
     armor_top=7;

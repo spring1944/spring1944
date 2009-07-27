@@ -12,7 +12,7 @@
   category=MINETRIGGER HARDVEH;
   corpse=RUST28_Damaged;
   [customParams] {
-    armor_front=22;
+    armor_front=21;
     armor_rear=10;
     armor_side=20;
     armor_top=10;

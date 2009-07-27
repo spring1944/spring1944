@@ -13,7 +13,7 @@
   corpse=GERPanzerIII_Damaged;
   [customParams] {
     armor_front=63;
-    armor_rear=43;
+    armor_rear=41;
     armor_side=31;
     armor_top=15;
     blockfear=1;

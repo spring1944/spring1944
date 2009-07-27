@@ -13,9 +13,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=GBRShermanFirefly_Damaged;
   [customParams] {
-    armor_front=74;
-    armor_rear=45;
-    armor_side=42;
+    armor_front=72;
+    armor_rear=44;
+    armor_side=41;
     armor_top=21;
     blockfear=1;
     lowammolevel=5;

@@ -13,9 +13,9 @@
   corpse=USM8Greyhound_Destroyed;
   [customParams] {
     armor_front=18;
-    armor_rear=12;
-    armor_side=12;
-    armor_top=4;
+    armor_rear=11;
+    armor_side=11;
+    armor_top=3;
     lowammolevel=5;
     maxammo=15;
     weaponcost=8;

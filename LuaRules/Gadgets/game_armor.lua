@@ -32,8 +32,6 @@ armor_hit_side: forces the weapon to hit a certain side of the armor ("front", "
 the damage actually dealt is proportional to the unmodified damage 
 (the ap system multiplies the basic damage depending on penetration vs. armor)
 
-Estimate the cost of a unit as proportional to sqrt(hp * dps * exp((armor + penetration) / ARMOR_BANDWIDTH / 2).
-
 ]]
 
 if (not gadgetHandler:IsSyncedCode()) then
@@ -45,16 +43,24 @@ end
 ----------------------------------------------------------------
 
 --how quickly penetration and armor effectiveness increase with thickness
---higher = less quickly
---along with cost, controls how hard counters are; higher = softer counters
---recommend somewhere around 15-25
-local ARMOR_SCALE = 18
+--higher = more quickly
+--along with cost, controls how hard counters are; higher = harder counters
+--recommend somewhere around 3-6
+local ARMOR_POWER = 4
 
 --effective penetration = HE_MULT * damage^HE_POWER
 --local HE_POWER = 1/2
 local HE_MULT = 2.2
 
 local DIRECT_HIT_THRESHOLD = 0.98
+
+local function forwardArmorTranslation(x)
+  return x ^ ARMOR_POWER
+end
+
+local function inverseArmorTranslation(x)
+  return x ^ (1 / ARMOR_POWER)
+end
 
 ----------------------------------------------------------------
 --locals
@@ -65,7 +71,7 @@ local DIRECT_HIT_THRESHOLD = 0.98
 local unitInfos = {}
 
 --format: weaponDefID = { armor_penetration, armor_dropoff, armor_hit_side }
---armor_penetration is unitless (predivided by ARMOR_SCALE)
+--armor_penetration is in mm
 --armor_dropoff is in inverse elmos (exponential penetration decay)
 local weaponInfos = {}
 
@@ -102,10 +108,10 @@ function gadget:Initialize()
       local armor_top = customParams.armor_top or armor_rear
       
       unitInfos[i] = {
-        exp(armor_front / ARMOR_SCALE),
-        exp(armor_side / ARMOR_SCALE),
-        exp(armor_rear / ARMOR_SCALE),
-        exp(armor_top / ARMOR_SCALE),
+        forwardArmorTranslation(armor_front),
+        forwardArmorTranslation(armor_side),
+        forwardArmorTranslation(armor_rear),
+        forwardArmorTranslation(armor_top),
         armorTypes[unitDef.armorType],
         unitDef.armorType,
       }
@@ -120,7 +126,7 @@ function gadget:Initialize()
       local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
       local armor_hit_side = customParams.armor_hit_side
       weaponInfos[i] = {
-        armor_penetration / ARMOR_SCALE,
+        armor_penetration,
         log(armor_penetration_1000m / armor_penetration) / 1000,
         armor_hit_side,
       }
@@ -130,7 +136,7 @@ function gadget:Initialize()
       local armor_hit_side = customParams.armor_hit_side
       local armor_penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
       weaponInfos[i] = {
-        armor_penetration / ARMOR_SCALE,
+        armor_penetration,
         log(armor_penetration_1000m / armor_penetration_100m) / 900,
         armor_hit_side,
       }
@@ -205,9 +211,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   local penetration
   
   if weaponInfo[1] == "explosive" then
-    penetration = exp(HE_MULT * sqrt(damage) / ARMOR_SCALE)
+    penetration = forwardArmorTranslation(HE_MULT * sqrt(damage))
   else
-    penetration = exp(weaponInfo[1] * exp(d * weaponInfo[2]))
+    penetration = forwardArmorTranslation(weaponInfo[1] * exp(d * weaponInfo[2]))
   end
   
   local mult = penetration / (penetration + armor)
@@ -219,7 +225,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   --debug
   --[[
   local unitDef = UnitDefs[unitDefID]
-  Spring.Echo(weaponDef.name, log(penetration) * ARMOR_SCALE, unitDef.name, log(armor) * ARMOR_SCALE, mult, damage * mult)
+  Spring.Echo(weaponDef.name, inverseArmorTranslation(penetration), unitDef.name, inverseArmorTranslation(armor), mult, damage * mult)
   ]]
   
   return damage * mult

@@ -12,9 +12,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=GERPanther_Damaged;
   [customParams] {
-    armor_front=113;
+    armor_front=114;
     armor_rear=47;
-    armor_side=50;
+    armor_side=49;
     armor_top=16;
     blockfear=1;
     lowammolevel=5;

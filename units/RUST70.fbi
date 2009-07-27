@@ -12,9 +12,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=RUST70_Destroyed;
   [customParams] {
-    armor_front=50;
+    armor_front=49;
     armor_rear=35;
-    armor_side=21;
+    armor_side=19;
     armor_top=10;
     blockfear=1;
     lowammolevel=6;

@@ -13,9 +13,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
-    armor_front=74;
-    armor_rear=42;
-    armor_side=42;
+    armor_front=73;
+    armor_rear=41;
+    armor_side=41;
     armor_top=21;
     blockfear=1;
     lowammolevel=6;

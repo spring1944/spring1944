@@ -12,9 +12,9 @@
   category=MINETRIGGER HARDVEH;
   corpse=GBRKangaroo_Destroyed;
   [customParams] {
-    armor_front=65;
-    armor_rear=45;
-    armor_side=49;
+    armor_front=64;
+    armor_rear=44;
+    armor_side=46;
     armor_top=15;
   }
   explodeAs=Vehicle_Explosion_Sm;

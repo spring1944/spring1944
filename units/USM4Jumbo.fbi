@@ -13,16 +13,16 @@
   category=MINETRIGGER HARDVEH;
   corpse=USM4Jumbo_Damaged;
   [customParams] {
-    armor_front=144;
-    armor_rear=52;
-    armor_side=66;
+    armor_front=149;
+    armor_rear=49;
+    armor_side=62;
     armor_top=21;
     blockfear=1;
+    fearshieldradius=50;
     lowammolevel=6;
     maxammo=20;
     weaponcost=10;
     weaponswithammo=2;
-    fearshieldradius=50;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;

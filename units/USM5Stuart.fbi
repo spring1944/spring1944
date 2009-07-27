@@ -15,7 +15,7 @@
   [customParams] {
     armor_front=43;
     armor_rear=28;
-    armor_side=29;
+    armor_side=28;
     armor_top=13;
     lowammolevel=9;
     maxammo=27;
