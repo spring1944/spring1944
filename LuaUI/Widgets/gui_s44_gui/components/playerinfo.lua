@@ -8,6 +8,14 @@ local glPopMatrix = gl.PopMatrix
 
 local glTranslate = gl.Translate
 
+function component:Initialize()
+  Spring.SendCommands("info 0", "clock 0", "fps 0")
+end
+
+function component:Shutdown()
+  Spring.SendCommands("info 1", "clock 1", "fps 1")
+end
+
 function component:DrawScreen()
   glPushMatrix()
     glTranslate(vsx - mainSizeX, vsy - mainSizeY, 0)
