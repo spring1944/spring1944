@@ -20,6 +20,11 @@ function component:Initialize()
   Spring.SetDrawSelectionInfo(false)
 end
 
+function component:Shutdown()
+  Spring.SendCommands("tooltip 1")
+  Spring.SetDrawSelectionInfo(true)
+end
+
 function component:CommandsChanged()
   
 end
