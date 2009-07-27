@@ -47,7 +47,7 @@
   showNanoFrame=0;
   sightDistance=700;
   smoothAnim=0;
-  stealth=1;
+  stealth=0;
   TEDClass=SHIP;
   transportCapacity=30;
   transportMass=27000;
