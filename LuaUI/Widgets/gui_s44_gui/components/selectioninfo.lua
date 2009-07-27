@@ -43,8 +43,6 @@ function component:DrawScreen()
     local healthProportion = health / maxHealth
     local healthColorString = GetColorString(GetHealthColor(healthProportion))
     
-    
-    
     local text = humanName .. ": " .. tooltip .. "\n"
       .. healthColorString .. "Health: " .. strFormat("%u", health) .. "/" .. strFormat("%u", maxHealth) .. "\n"
       
@@ -69,8 +67,6 @@ function component:DrawScreen()
     local text = #selectedUnits .. " selected units"
     font16:Print(text, 0, mainSizeY, fontSize, "t")
   end
-  
-  
   
 end
 
