@@ -165,14 +165,14 @@ local function DrawCommand()
   --curr/change
   glPushMatrix()
     glTranslate(-mainWidth + 1 + barLength / 2, -1.05, 0)
-    font16:Print("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "c")
-    font16:Print("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "c")
+    font16:Print("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "co")
+    font16:Print("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "co")
   glPopMatrix()
   
   --storage
   glPushMatrix()
     glTranslate(-mainWidth + 1 + barLength, -0.75, 0)
-    font16:Print("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375)
+    font16:Print("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375, "o")
   glPopMatrix()
 end
 
@@ -210,19 +210,19 @@ local function DrawSupply()
   --curr/resupply
   glPushMatrix()
     glTranslate(-endLength - barLength / 2, -1.05, 0)
-    font16:Print("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "c")
-    font16:Print("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "c")
+    font16:Print("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "co")
+    font16:Print("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "co")
   glPopMatrix()
   
   --storage
   glPushMatrix()
     glTranslate(-endLength, -0.75, 0)
-    font16:Print("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
+    font16:Print("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375, "o")
   glPopMatrix()
 end
 
 local function DrawMain()
-  glColor(0, 0, 0, 0.5)
+  glColor(0, 0, 0, guiOpacity)
   glRect(-mainWidth, -1, 0, 0)
   glPushMatrix()
     DrawCommand()

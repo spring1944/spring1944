@@ -18,6 +18,9 @@ local IsGUIHidden = Spring.IsGUIHidden
 local TraceScreenRay = Spring.TraceScreenRay
 local GetMouseState = Spring.GetMouseState
 
+local GetSelectedUnits = Spring.GetSelectedUnits
+local GetUnitCmdDescs = Spring.GetUnitCmdDescs
+
 local glLoadFont = gl.LoadFont
 local glColor = gl.Color
 local glRect = gl.Rect
@@ -36,12 +39,15 @@ local callins = {
   --standard
   "GameFrame",
   "Update",
-  "CommandsChanged",
+  "SetConfigData", 
   
   --modified
+  "CommandsChanged", --updates command lists
   "DrawScreen", --does not draw if GUI is hidden
   "MousePress", --any component with MousePress must also have a MouseRelease; does not take click if GUI is hidden
   "ViewResize", --ViewResize() -> nil; the viewsizes are stored in globals vsx, vsy
+  "GetConfigData", --aggregates the data into a single table
+  
   
   --unlisted: Initialize, Shutdown
   
@@ -58,11 +64,12 @@ local callinLists = {}
 local clickOwner
 
 ----------------------------------------------------------------
---global vars
+--globals
 ----------------------------------------------------------------
+guiOpacity = 0.4
 
-font16 = glLoadFont(FONT_DIR .. "cmuntb.otf", 16, 0, 0)
-font32 = glLoadFont(FONT_DIR .. "cmuntb.otf", 32, 0, 0)
+font16 = glLoadFont(FONT_DIR .. "cmuntb.otf", 16, 2, 16)
+font32 = glLoadFont(FONT_DIR .. "cmuntb.otf", 32, 4, 16)
 vsx, vsy = 1280, 1024
 
 local tooltipWidth = 0.25
@@ -97,12 +104,41 @@ function DrawStandardTooltip(text, x, y, wrap)
     sizeY = y
   end
   
-  glColor(0, 0, 0, 0.5)
+  glColor(0, 0, 0, guiOpacity)
   glRect(drawX, drawY, drawX + sizeX, drawY - sizeY)
   glColor(1, 1, 1, 1)
   
-  font16:Print(text, drawX, drawY, tooltipFontSize, "t")
+  font16:Print(text, drawX, drawY, tooltipFontSize, "to")
   
+end
+
+allCommands = {}
+orderCommands = {}
+buildCommands = {}
+
+local function UpdateCommandLists()
+  allCommands = {}
+  orderCommands = {}
+  buildCommands = {}
+  
+  --construct a list of commands
+  local selectedUnits = GetSelectedUnits()
+  for i = 1, #selectedUnits do
+    local unitID = selectedUnits[i]
+    local cmdDescs = GetUnitCmdDescs(unitID)
+    for j = 1, #cmdDescs do
+      local cmdDesc = cmdDescs[j]
+      local cmdDescID = cmdDesc.id
+      if not cmdDesc.hidden and not cmdDesc.disabled then
+        allCommands[cmdDescID] = cmdDesc
+        if cmdDescID >= 0 then
+          orderCommands[cmdDescID] = cmdDesc
+        else
+          buildCommands[cmdDescID] = cmdDesc
+        end
+      end
+    end
+  end
 end
 
 ----------------------------------------------------------------
@@ -149,10 +185,10 @@ function widget:Update(dt)
   end
 end
 
-function widget:CommandsChanged()
-  local callinList = callinLists["CommandsChanged"]
+function widget:SetConfigData(data)
+  local callinList = callinLists["SetConfigData"]
   for i = 1, #callinList do
-    callinList[i]:CommandsChanged()
+    callinList[i]:SetConfigData(data)
   end
 end
 
@@ -221,12 +257,34 @@ function widget:MouseRelease(x, y, button)
   end
 end
 
+function widget:CommandsChanged()
+  UpdateCommandLists()
+
+  local callinList = callinLists["CommandsChanged"]
+  for i = 1, #callinList do
+    callinList[i]:CommandsChanged()
+  end
+end
+
+function widget:GetConfigData()
+  local result = {}
+  
+  local callinList = callinLists["GetConfigData"]
+  for i = 1, #callinList do
+    local subresult = callinList[i]:GetConfigData()
+    for k, v in pairs(subresult) do
+      result[k] = v
+    end
+  end
+  
+  return result
+end
+
 ----------------------------------------------------------------
 --unlisted callins
 ----------------------------------------------------------------
 
 --includes a ViewResize
-
 
 function widget:Initialize()
   

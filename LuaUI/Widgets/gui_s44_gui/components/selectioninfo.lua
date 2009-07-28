@@ -30,7 +30,7 @@ function component:CommandsChanged()
 end
 
 function component:DrawScreen()
-  glColor(0, 0, 0, 0.5)
+  glColor(0, 0, 0, guiOpacity)
   glRect(0, 0, mainSizeX, mainSizeY)
   glColor(1, 1, 1, 1)
 
@@ -67,10 +67,10 @@ function component:DrawScreen()
       
     text = font16:WrapText(text, mainSizeX - 8, mainSizeY, fontSize)
     
-    font16:Print(text, 0, mainSizeY, fontSize, "t")
+    font16:Print(text, 0, mainSizeY, fontSize, "to")
   else
     local text = #selectedUnits .. " selected units"
-    font16:Print(text, 0, mainSizeY, fontSize, "t")
+    font16:Print(text, 0, mainSizeY, fontSize, "to")
   end
   
 end

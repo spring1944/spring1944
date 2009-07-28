@@ -19,11 +19,11 @@ end
 function component:DrawScreen()
   glPushMatrix()
     glTranslate(vsx - mainSizeX, vsy - mainSizeY, 0)
-    glColor(0, 0, 0, 0.5)
+    glColor(0, 0, 0, guiOpacity)
     glRect(0, 0, mainSizeX, mainSizeY)
     glColor(1, 1, 1, 1)
     
-    font32:Print("Player Info", 0, mainSizeY, 32, "t")
+    font32:Print("Player Info", 0, mainSizeY, 32, "to")
   glPopMatrix()
 end
 
