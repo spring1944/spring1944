@@ -355,6 +355,7 @@ local armorDefs = {
     --USSR--
     "RUSYak3",
     "RUSIL2",
+    "RUSLa5FN",
 
     --Britain--
     "GBRSpitfireMkXIV",
@@ -366,6 +367,7 @@ local armorDefs = {
     --**Germany**--
   
     --US--
+    "USC47",
 
     --USSR--
 
