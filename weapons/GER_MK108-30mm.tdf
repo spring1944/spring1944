@@ -17,7 +17,6 @@
   explosionGenerator=custom:HE_XSmall;
   explosionSpeed=30;
   fireStarter=10;
-  id=400;
   interceptedByShieldType=8;
   lineofsight=1;
   predictBoost=0.25;

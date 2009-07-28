@@ -20,7 +20,7 @@
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
-  id=400;
+  id=7;
   impactOnly=1;
   interceptedByShieldType=16;
   lineofsight=1;
@@ -56,7 +56,7 @@
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;
-  id=400;
+  id=71;
   interceptedByShieldType=16;
   lineofsight=1;
   movingAccuracy=300;
@@ -92,7 +92,6 @@
   }
   explosionGenerator=custom:Bullet;
   fireStarter=10;
-  id=400;
   impactOnly=1;
   interceptedByShieldType=8;
   lineofsight=1;

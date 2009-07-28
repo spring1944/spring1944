@@ -16,7 +16,6 @@
   }
   explosionGenerator=custom:Bullet;
   fireStarter=10;
-  id=400;
   impactOnly=1;
   interceptedByShieldType=8;
   lineofsight=1;
@@ -54,7 +53,6 @@
   explosionGenerator=custom:HE_XSmall;
   explosionSpeed=30;
   fireStarter=10;
-  id=400;
   interceptedByShieldType=8;
   lineofsight=1;
   range=1825;

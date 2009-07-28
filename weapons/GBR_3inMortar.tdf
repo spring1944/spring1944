@@ -16,7 +16,7 @@
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   fireStarter=0;
-  id=400;
+  id=28;
   impulseFactor=1e-07;
   model=MortarShell.S3O;
   range=1450;

@@ -21,7 +21,7 @@
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
   fireStarter=1;
-  id=400;
+  id=7;
   interceptedByShieldType=8;
   lineofsight=1;
   movingAccuracy=7111;
@@ -63,7 +63,7 @@
   edgeEffectiveness=1;
   explosionGenerator=custom:Bullet;
   fireStarter=1;
-  id=400;
+  id=7;
   interceptedByShieldType=8;
   lineofsight=1;
   movingAccuracy=7111;

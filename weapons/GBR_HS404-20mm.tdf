@@ -17,7 +17,6 @@
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;
-  id=400;
   impactOnly=1;
   interceptedByShieldType=8;
   lineofsight=1;
