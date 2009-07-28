@@ -12,7 +12,7 @@
   category=MINETRIGGER OPENVEH;
   corpse=GERMarder_Destroyed;
   [customParams] {
-    armor_front=11;
+    armor_front=10;
     armor_rear=10;
     armor_side=13;
     armor_top=10;

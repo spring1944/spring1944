@@ -12,7 +12,7 @@
   category=MINETRIGGER HARDVEH;
   corpse=RUSISU152_Damaged;
   [customParams] {
-    armor_front=92;
+    armor_front=90;
     armor_rear=80;
     armor_side=86;
     armor_top=30;

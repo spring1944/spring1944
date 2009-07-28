@@ -16,7 +16,7 @@
     armor_front=43;
     armor_rear=28;
     armor_side=28;
-    armor_top=6;
+    armor_top=5;
     lowammolevel=3;
     maxammo=9;
     weaponcost=8;

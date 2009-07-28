@@ -12,10 +12,10 @@
   category=MINETRIGGER HARDVEH;
   corpse=GBRM10Achilles_Destroyed;
   [customParams] {
-    armor_front=61;
+    armor_front=60;
     armor_rear=25;
     armor_side=25;
-    armor_top=7;
+    armor_top=6;
     lowammolevel=3;
     maxammo=10;
     weaponcost=16;

@@ -13,10 +13,10 @@
   category=MINETRIGGER OPENVEH;
   corpse=GERWespe_Destroyed;
   [customParams] {
-    armor_front=19;
+    armor_front=18;
     armor_rear=14;
     armor_side=13;
-    armor_top=5;
+    armor_top=4;
     blockfear=1;
     canareaattack=1;
     defaultMove=1;

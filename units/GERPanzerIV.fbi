@@ -12,7 +12,7 @@
   category=MINETRIGGER HARDVEH;
   corpse=GERPanzerIV_Damaged;
   [customParams] {
-    armor_front=64;
+    armor_front=62;
     armor_rear=23;
     armor_side=35;
     armor_top=15;

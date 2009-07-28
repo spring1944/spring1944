@@ -14,8 +14,8 @@
   corpse=GBRChurchillMkVII_Damaged;
   [customParams] {
     armor_front=148;
-    armor_rear=58;
-    armor_side=77;
+    armor_rear=57;
+    armor_side=75;
     armor_top=19;
     blockfear=1;
     lowammolevel=3;

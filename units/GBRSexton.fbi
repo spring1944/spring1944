@@ -13,10 +13,10 @@
   category=MINETRIGGER OPENVEH;
   corpse=GBRSexton_Destroyed;
   [customParams] {
-    armor_front=65;
+    armor_front=63;
     armor_rear=38;
     armor_side=38;
-    armor_top=8;
+    armor_top=6;
     blockfear=1;
     canareaattack=1;
     defaultMove=1;

@@ -12,8 +12,8 @@
   category=MINETRIGGER HARDVEH;
   corpse=RUSIS2_Damaged;
   [customParams] {
-    armor_front=122;
-    armor_rear=86;
+    armor_front=117;
+    armor_rear=85;
     armor_side=93;
     armor_top=30;
     blockfear=1;

@@ -12,7 +12,7 @@
   category=MINETRIGGER HARDVEH;
   corpse=GERJagdpanzerIV_Destroyed;
   [customParams] {
-    armor_front=107;
+    armor_front=106;
     armor_rear=20;
     armor_side=36;
     armor_top=20;

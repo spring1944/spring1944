@@ -45,8 +45,8 @@ end
 --how quickly penetration and armor effectiveness increase with thickness
 --higher = more quickly
 --along with cost, controls how hard counters are; higher = harder counters
---recommend somewhere around 3-6
-local ARMOR_POWER = 4
+--recommend somewhere around 4-8?
+local ARMOR_POWER = 6
 
 --effective penetration = HE_MULT * damage^HE_POWER
 --local HE_POWER = 1/2

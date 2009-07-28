@@ -13,9 +13,9 @@
   category=MINETRIGGER OPENVEH;
   corpse=USM7Priest_Destroyed;
   [customParams] {
-    armor_front=26;
+    armor_front=23;
     armor_rear=13;
-    armor_side=20;
+    armor_side=19;
     armor_top=25;
     blockfear=1;
     canareaattack=1;

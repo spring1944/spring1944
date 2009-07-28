@@ -12,10 +12,10 @@
   category=MINETRIGGER HARDVEH;
   corpse=GERPanzerIII_Damaged;
   [customParams] {
-    armor_front=63;
-    armor_rear=41;
+    armor_front=62;
+    armor_rear=40;
     armor_side=31;
-    armor_top=15;
+    armor_top=14;
     blockfear=1;
     lowammolevel=4;
     maxammo=12;
