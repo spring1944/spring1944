@@ -23,7 +23,27 @@ local options = {
 		},
 	  },
   },
-	--optional, if no listitems or left out completely, all avail maps are offered to the user
+  	--optional, list Side names for AI players. If left out first avail Side is chosen for AI
+    {
+	key    = "ai_sides",
+	name   = "AI Sides",
+	desc   = "used to map ai num <-> Side ",
+	type   = "list",
+	def    = "0",
+	items  = {
+		{
+		key  = "0",
+		name = "GER",
+		desc = "",
+		},
+		{
+		key  = "1",
+		name = "US",
+		desc = "",
+		},
+	  },
+  },
+	--optional, list min one item or leave out completely ( -> all avail maps are offered to the user )
     {
 	key    = "suggested_maps",
 	name   = "Suggested Maps",
@@ -39,6 +59,26 @@ local options = {
 		{
 		key  = "1",
 		name = "1944_BocageSmall.smf",
+		desc = "",
+		},
+	  },
+  },
+  --optional, list min one item or leave out completely ( -> all avail Sides are offered to the user )
+    {
+	key    = "suggested_sides",
+	name   = "Suggested Sides",
+	desc   = "add XX to this list to limit the choice of Sides the player gets presented with",
+	type   = "list",
+	def    = "0",
+	items  = {
+		{
+		key  = "0",
+		name = "GER",
+		desc = "",
+		},
+		{
+		key  = "1",
+		name = "GBR",
 		desc = "",
 		},
 	  },

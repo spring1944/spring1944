@@ -60,6 +60,13 @@ local options = {
 		def    = "bitmaps/lobby_background.png", 
 	},
 	{
+		key    = "icon",
+		name   = "icon",
+		desc   = "application icon",
+		type   = "string",
+		def    = "sidepics/us.bmp", 	--use plain bmp only
+	},
+	{
 		key    = "default_ai",
 		name   = "default_ai",
 		desc   = "default_ai",
