@@ -43,6 +43,22 @@ local options = {
 		},
 	  },
   },
+	--optional, use to override the default setting from LobbyOptions.lua
+		--listitem key should map to index in ai_team_ids, but does not need to be contiguous
+    {
+	key    = "ai_names",
+	name   = "AI names",
+	desc   = "used to map ai num <-> AI lib name (shortname) ",
+	type   = "list",
+	def    = "0",
+	items  = {
+		{
+		key  = "1",
+		name = "KAIK",
+		desc = "",
+		},
+	  },
+  },
 	--optional, list min one item or leave out completely ( -> all avail maps are offered to the user )
     {
 	key    = "suggested_maps",
