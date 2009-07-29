@@ -402,6 +402,7 @@ buildoptions =
 
   gbrhq =
   {
+    "gbr_sortie_recon",
     "gbrhqengineer",
     --"usairengineer",
     "gbr_platoon_hq",
