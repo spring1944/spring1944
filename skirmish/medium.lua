@@ -20,8 +20,26 @@ local options = {
 		desc = "put second AI into team 3",
 		},
 	  },
-  },
-
+	},
+	{
+	key    = "ai_sides",
+	name   = "AI Sides",
+	desc   = "used to map ai num <-> Side ",
+	type   = "list",
+	def    = "0",
+	items  = {
+		{
+		key  = "0",
+		name = "GER",
+		desc = "",
+		},
+		{
+		key  = "1",
+		name = "US",
+		desc = "",
+		},
+	  },
+	},
 	{
 		key    = "craig_difficulty",
 		name   = "C.R.A.I.G. difficulty level",

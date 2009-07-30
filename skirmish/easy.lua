@@ -23,7 +23,7 @@ local options = {
 		},
 	  },
   },
-  	--optional, list Side names for AI players. If left out first avail Side is chosen for AI
+  	--mandatory, list exactly as many Side names for AI players as there are ai_team_ids listitems
     {
 	key    = "ai_sides",
 	name   = "AI Sides",
