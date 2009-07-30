@@ -422,6 +422,27 @@ local armorDefs = {
   "us_platoon_sniper",
   "us_platoon_scout",
   "us_platoon_flame",
+  
+  "gbr_sortie_recon",
+  "gbr_sortie_interceptor",
+  "gbr_sortie_fighter_bomber",
+  "gbr_sortie_attack",
+  
+  "ger_sortie_recon",
+  "ger_sortie_interceptor",
+  "ger_sortie_fighter",
+  "ger_sortie_fighter_bomber",
+  "ger_sortie_attack",
+  
+  "rus_sortie_recon",
+  "rus_sortie_interceptor",
+  "rus_sortie_fighter",
+  "rus_sortie_attack",
+  
+  "us_sortie_recon",
+  "us_sortie_interceptor",
+  "us_sortie_fighter_bomber",
+  "us_sortie_attack",
   },
   ships  =  {
     --Germany--
