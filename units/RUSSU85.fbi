@@ -66,6 +66,7 @@
   badTargetCategory=FLAG;
 
   weapon1=S5385mmAP;
+  badTargetCategory1=SOFTVEH;
   maxAngleDif1=25;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;

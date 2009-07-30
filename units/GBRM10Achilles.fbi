@@ -68,6 +68,7 @@
   badTargetCategory=FLAG;
 
   weapon1=17pdrAP;
+  badTargetCategory1=SOFTVEH;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
 
   weapon2=M2BrowningAA;

@@ -54,6 +54,7 @@
   yardMap=o;
 
   weapon1=zis257mmap;
+  badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;

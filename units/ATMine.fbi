@@ -39,6 +39,7 @@
   yardMap=y;
 
   weapon1=ATMine;
+  badTargetCategory1=SOFTVEH;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
 
   weapon2=ATMineDet;

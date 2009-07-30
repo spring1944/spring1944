@@ -55,6 +55,7 @@
   yardMap=o;
 
   weapon1=KwK75mmL48AP;
+  badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;
