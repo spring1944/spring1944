@@ -70,6 +70,6 @@
   badTargetCategory=FLAG;
 
   weapon1=6pdr57mmap;
-  onlyTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
 }
 

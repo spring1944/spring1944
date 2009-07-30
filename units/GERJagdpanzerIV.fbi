@@ -68,7 +68,7 @@
 
   weapon1=KwK75mmL71AP;
   maxAngleDif1=25;
-  onlyTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
   weaponMainDir1=0 0 1;
 
   weapon6=.50calproof;
