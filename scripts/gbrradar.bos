@@ -5,6 +5,8 @@ piece base, radar;
 #include "sfxtype.h"
 #include "exptype.h"
 
+static-var  Static_Var_3, Static_Var_4;
+
 SmokeUnit()
 {
 	var health, sleeptime, smoketype;
@@ -33,6 +35,8 @@ SmokeUnit()
 	}
 }
 
+
+
 Create() {
   while (get BUILD_PERCENT_LEFT)
    {
@@ -42,7 +46,95 @@ Create() {
   	move base to y-axis 0 now;
 	spin radar around y-axis speed <60> accelerate <5>;
 	start-script SmokeUnit();
+	
+	Static_Var_3 = 1;
+	Static_Var_4 = 0;
 }
+
+OpenYard()
+{
+	set YARD_OPEN to 1;
+	while( !get YARD_OPEN )
+	{
+		set BUGGER_OFF to 1;
+		sleep 1500;
+		set YARD_OPEN to 1;
+	}
+	set BUGGER_OFF to 0;
+}
+
+CloseYard()
+{
+	set YARD_OPEN to 0;
+	while( get YARD_OPEN )
+	{
+		set BUGGER_OFF to 1;
+		sleep 1500;
+		set YARD_OPEN to 0;
+	}
+	set BUGGER_OFF to 0;
+}
+
+Go()
+{
+	call-script OpenYard();
+	set INBUILDSTANCE to 1;
+}
+
+Stop()
+{
+	set INBUILDSTANCE to 0;
+	call-script CloseYard();
+}
+
+RequestState(requestedstate, currentstate)
+{
+	if( Static_Var_4 )
+	{
+		Static_Var_3 = requestedstate;
+		return (0);
+	}
+	Static_Var_4 = 1;
+	currentstate = Static_Var_3;
+	Static_Var_3 = requestedstate;
+	while( Static_Var_3 != currentstate )
+	{
+		if( Static_Var_3 == 0 )
+		{
+			call-script Go();
+			currentstate = 0;
+		}
+		if( Static_Var_3 == 1 )
+		{
+			call-script Stop();
+			currentstate = 1;
+		}
+	}
+	Static_Var_4 = 0;
+}
+
+QueryNanoPiece(piecenum)
+{
+	piecenum = base;
+}
+
+Activate()
+{
+	signal 2;
+	start-script RequestState(0);
+}
+
+Deactivate()
+{
+	signal 2;
+	set-signal-mask 2;
+	set-signal-mask 0;
+	start-script RequestState(1);
+}
+
+StartBuilding(){}
+
+StopBuilding(){}
 
 Killed(severity, corpsetype)
 {

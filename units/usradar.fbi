@@ -2,37 +2,42 @@
   unitname=USRadar;
   name=AN/TPS-3 (SCR-602-T8) Light Aircraft Detector;
   description=Flight Detection & Control Station;
-  activateWhenBuilt=1;
   buildCostEnergy=0;
   buildCostMetal=5138;
-  buildPic=GERRadar.png;
+  builder=1;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
   buildTime=5138;
+  canBeAssisted=0;
+  canMove=1;
   category=BUILDING;
   [customParams] {
   }
-  energyUse=0;
   explodeAs=Large_Explosion;
   footprintX=5;
   footprintZ=5;
   iconType=radar;
   levelGround=0;
   maxDamage=5000;
-  maxSlope=20;
-  maxWaterDepth=255;
-  objectName=USRadar.S3O;
-  onoffable=1;
+  maxSlope=10;
+  maxWaterDepth=0;
+  objectName=GERRadar.S3O;
   radarDistance=20000;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=US;
-  sightDistance=0;
+  showNanoSpray=0;
+  side=GER;
+  sightDistance=146;
   smoothAnim=0;
   soundcategory=Nothing;
   stealth=1;
   TEDClass=PLANT;
-  yardMap=ooooooooo;
+  useBuildingGroundDecal=1;
+  workerTime=50;
+  yardMap=occco ccccc ccccc ccccc occco;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
 }

@@ -12,6 +12,7 @@ buildoptions =
 
   ushq = 
   {
+    "us_sortie_recon",
     "ushqengineer",
     --"usairengineer",
     "us_platoon_hq",
@@ -180,6 +181,14 @@ buildoptions =
     "usp51dmustangga",
     "usp47thunderbolt",
   },
+  
+  usradar = {
+    "us_sortie_recon",
+    "us_sortie_interceptor",
+    "us_sortie_fighter_bomber",
+    "us_sortie_attack",
+  },
+  
   usboatyard =
   {
     "rubberdingy",
@@ -205,6 +214,7 @@ buildoptions =
 
   gerhqbunker =
   {
+    "ger_sortie_recon",
     "gerhqengineer",
     --"gerairengineer",
     "ger_platoon_hq",
@@ -376,6 +386,14 @@ buildoptions =
     "gerfw190",
     "gerju87g",
     "gerfw190g",
+  },
+  
+  gerradar = {
+    "ger_sortie_recon",
+    "ger_sortie_interceptor",
+    "ger_sortie_fighter",
+    "ger_sortie_fighter_bomber",
+    "ger_sortie_attack",
   },
   
   gerboatyard =
@@ -580,6 +598,13 @@ buildoptions =
     "gbrspitfiremkxiv",
     "gbrtyphoon",
     "gbrspitfiremkix",
+  },
+  
+  gbrradar = {
+    "gbr_sortie_recon",
+    "gbr_sortie_interceptor",
+    "gbr_sortie_fighter_bomber",
+    "gbr_sortie_attack",
   },
   
   gbrboatyard =
@@ -791,6 +816,14 @@ buildoptions =
     "rusyak3",
     "rusil2",
   },
+  
+  rusradar = {
+    "rus_sortie_recon",
+    "rus_sortie_interceptor",
+    "rus_sortie_fighter",
+    "rus_sortie_attack",
+  },
+  
   rusboatyard =
   {
     "ruspg117",

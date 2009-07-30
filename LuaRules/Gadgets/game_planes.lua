@@ -112,25 +112,29 @@ local currCmdID = CMD_PLANES
 for sortieUnitName, sortie in pairs(sortieInclude) do
   Spring.Echo(sortieUnitName)
   local sortieUnitDef = UnitDefNames[sortieUnitName]
-  local sortieUnitDefID = sortieUnitDef.id
-  
-  
-  local cmdDesc = {
-    id = currCmdID,
-    type = CMDTYPE_ICON_UNIT_OR_MAP,
-    name = "0 Ready",
-    disabled = true,
-    cursor = sortie.cursor or "Attack",
-    tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),
-    texture = sortie.texture or "unitpics/" .. sortieUnitDef.buildpicname,
-  }
-  
-  sortie.cmdDesc = cmdDesc
-  sortie.name = sortieUnitDef.humanName
-  sortieCmdIDs[currCmdID] = sortie
-  sortieDefs[sortieUnitDefID] = sortie
-  
-  currCmdID = currCmdID + 1
+  if sortieUnitDef then
+    local sortieUnitDefID = sortieUnitDef.id
+    
+    
+    local cmdDesc = {
+      id = currCmdID,
+      type = CMDTYPE_ICON_UNIT_OR_MAP,
+      name = "0 Ready",
+      disabled = true,
+      cursor = sortie.cursor or "Attack",
+      tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),
+      texture = sortie.texture or "unitpics/" .. sortieUnitDef.buildpicname,
+    }
+    
+    sortie.cmdDesc = cmdDesc
+    sortie.name = sortieUnitDef.humanName
+    sortieCmdIDs[currCmdID] = sortie
+    sortieDefs[sortieUnitDefID] = sortie
+    
+    currCmdID = currCmdID + 1
+  else
+    Spring.Echo("<game_planes>: Warning: no UnitDef found for " .. sortieUnitName)
+  end
 end
 
 --radioUnitID = { sortieCmdDesc, sortieCmdDesc, sortieCmdDesc ...}
