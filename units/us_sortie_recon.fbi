@@ -1,12 +1,12 @@
 [unitinfo] {
-  unitname=gbr_sortie_recon;
+  unitname=us_sortie_recon;
   name=Recon Sortie;
-  description=1 x TC Auster AOP Mk V;
+  description=1 x L-4 Grasshopper;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=350;
-  buildPic=GBRAuster.png;
+  buildPic=USL4.png;
   buildTime=350;
   canMove=1;
   category=FLAG;
@@ -23,7 +23,7 @@
   selfDestructAs=noweapon;
   [sfxtypes] {
   }
-  side=GBR;
+  side=GER;
   stealth=1;
   turnRate=1;
 }

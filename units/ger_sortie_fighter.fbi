@@ -1,13 +1,13 @@
 [unitinfo] {
-  unitname=gbr_sortie_recon;
-  name=Recon Sortie;
-  description=1 x TC Auster AOP Mk V;
+  unitname=ger_sortie_fighter;
+  name=Air Superiority Fighter Sortie;
+  description=4 x Fw 190A-8;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=350;
-  buildPic=GBRAuster.png;
-  buildTime=350;
+  buildCostMetal=4000;
+  buildPic=GERBf109.png;
+  buildTime=4000;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

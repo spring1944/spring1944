@@ -1,13 +1,13 @@
 [unitinfo] {
-  unitname=gbr_sortie_recon;
-  name=Recon Sortie;
-  description=1 x TC Auster AOP Mk V;
+  unitname=us_sortie_attack;
+  name=Attack Sortie;
+  description=2 x P-51D-25 Mustang;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=350;
-  buildPic=GBRAuster.png;
-  buildTime=350;
+  buildCostMetal=6000;
+  buildPic=USP51DMustangGA.png;
+  buildTime=6000;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

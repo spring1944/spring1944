@@ -22,7 +22,7 @@
   maxDamage=5000;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=GERRadar.S3O;
+  objectName=USRadar.S3O;
   radarDistance=20000;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {

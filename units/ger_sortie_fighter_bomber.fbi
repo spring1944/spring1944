@@ -1,13 +1,13 @@
 [unitinfo] {
-  unitname=gbr_sortie_recon;
-  name=Recon Sortie;
-  description=1 x TC Auster AOP Mk V;
+  unitname=ger_sortie_fighter_bomber;
+  name=Fighter-Bomber Sortie;
+  description=2 x Fw 190F-8;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=350;
-  buildPic=GBRAuster.png;
-  buildTime=350;
+  buildCostMetal=6000;
+  buildPic=GERFw190G.png;
+  buildTime=6000;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
