@@ -24,7 +24,7 @@
   intensity=0.1;
   noSelfDamage=1;
   range=2250;
-  reloadTime=15;
+  reloadTime=11.25;
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;

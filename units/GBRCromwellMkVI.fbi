@@ -7,8 +7,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=4050;
-  buildTime=4050;
+  buildCostMetal=3500;
+  buildTime=3500;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRCromwell_Damaged;

@@ -62,7 +62,7 @@
   weaponMainDir1=0 0 1;
 
   weapon2=ZiS376mmAP;
-  maxAngleDif2=50;
+  maxAngleDif2=60;
   onlyTargetCategory2=OPENVEH HARDVEH;
   weaponMainDir2=0 0 1;
 }
