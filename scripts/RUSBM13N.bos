@@ -3,11 +3,12 @@
 piece  base, turret, backblast, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8;
 piece  rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16, wheel1, wheel2, wheel3;
  
-static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, rocket;
+static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, rocket, canMove;
 
 // Signal definitions
 #define SIG_AIM		2 // Machinegun
 #define SIG_DEPLOY	4
+#define SIG_NOMOVE	8
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
 #define SMOKEPIECE2 rails
@@ -67,6 +68,7 @@ Create()
 	rocket = 0;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
+	canMove = TRUE;
 }
 
 RestoreAfterDelay()
@@ -106,11 +108,15 @@ Deploy()
 	SET MAX_SPEED to 1;
 //	sleep 5000;
 	isDeployed = TRUE;
-
 }
 
 UnDeploy() 
 {
+	// don't undeploy while firing
+	if(!canMove)
+	{
+		return;
+	}
 	set-signal-mask SIG_DEPLOY;
 	isDeployed = FALSE;
 	// TODO: undeploy anim
@@ -118,6 +124,20 @@ UnDeploy()
 	set MAX_SPEED to normalSpeed;
 }
 
+// This keeps the unit from turning while firing
+KeepHeading()
+{
+	var curHeading;
+	signal SIG_NOMOVE;
+	set-signal-mask SIG_NOMOVE;
+	curHeading = get HEADING;
+	while(!canMove)
+	{
+		sleep 30;
+		set HEADING to curHeading;
+		set MAX_SPEED to 1;
+	}
+}
 
 StartMoving()
 {
@@ -239,6 +259,12 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
+	// freeze in place
+	If(canMove)
+	{
+		start-script KeepHeading();
+		canMove = FALSE;
+	}
 	//emit-sfx MEDIUM_Muzzleflash from rocket1;
 	set STEALTH to 0;
 	sleep VISIBLE_PERIOD;
@@ -251,6 +277,14 @@ Shot1(something)
 {
 	emit-sfx 1032 from backblast;
 	rocket = rocket + 1;
+}
+
+EndBurst1()
+{
+	// unfreeze
+	canMove = TRUE;
+	signal SIG_NOMOVE;
+	start-script Undeploy();
 }
 	
 // TODO: make this pretty
