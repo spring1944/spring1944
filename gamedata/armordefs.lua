@@ -27,6 +27,12 @@ local armorDefs = {
     "USHQEngineer",
     "USM1Mortar",
     "USObserv",
+    
+    "us101strifle",
+    "us101stthompson",
+    "us101stbar",
+    "us101stbazooka",
+    "us101stmg",
 
     --USSR--
     "RUSCommander",
