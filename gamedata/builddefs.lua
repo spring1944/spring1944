@@ -187,6 +187,7 @@ buildoptions =
     "us_sortie_interceptor",
     "us_sortie_fighter_bomber",
     "us_sortie_attack",
+    "us_sortie_paratrooper",
   },
   
   usboatyard =

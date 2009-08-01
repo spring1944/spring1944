@@ -152,6 +152,13 @@ local sortieDefs = {
     delay = 45,
     weight = 1,
   },
+  
+  us_sortie_paratrooper = {
+    "usc47",
+    
+    delay = 45,
+    weight = 1,
+  },
 }
 
 return sortieDefs
