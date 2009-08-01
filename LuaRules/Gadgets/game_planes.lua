@@ -15,6 +15,8 @@ if not gadgetHandler:IsSyncedCode() then return end
 local sqrt = math.sqrt
 local sin, cos, atan2 = math.sin, math.cos, math.atan2
 
+local airfieldCapacity = 5
+
 local CMD_PLANES = 34400
 local PATROL_DISTANCE = 1000
 local FORMATION_SEPARATION = 128
@@ -128,6 +130,7 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
     
     sortie.cmdDesc = cmdDesc
     sortie.name = sortieUnitDef.humanName
+    sortie.weight = sortie.weight or 0
     sortieCmdIDs[currCmdID] = sortie
     sortieDefs[sortieUnitDefID] = sortie
     
@@ -280,14 +283,27 @@ end
 ----------------------------------------------------------------
 --callins
 ----------------------------------------------------------------
-local function GetStockpile(teamID, cmdID)
+local function GetStockpile(teamID, sortie)
+  local cmdID = sortie.cmdDesc.id
   local rulesParamName = "game_planes.stockpile" .. cmdID
   return GetTeamRulesParam(teamID, rulesParamName) or 0
 end
 
-local function UpdateStockpile(teamID, cmdID, stockpile)
+local function ModifyWeight(teamID, sortie, amount)
+  local rulesParamName = "game_planes.weight"
+  local weight = GetTeamRulesParam(teamID, rulesParamName) or 0
+  weight = weight + amount * sortie.weight
+  SetTeamRulesParam(teamID, "game_planes.weight", weight)
+end
+
+local function ModifyStockpile(teamID, sortie, amount)
+  local cmdID = sortie.cmdDesc.id
   local rulesParamName = "game_planes.stockpile" .. cmdID
+  local stockpile = GetTeamRulesParam(teamID, rulesParamName) or 0 
+  stockpile = stockpile + amount
   SetTeamRulesParam(teamID, rulesParamName, stockpile)
+  
+  ModifyWeight(teamID, sortie, amount)
   
   local disabled = (stockpile <= 0)
   
@@ -324,6 +340,11 @@ function gadget:Initialize()
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
+  local sortie = sortieDefs[unitDefID]
+  if sortie then
+    ModifyWeight(teamID, sortie, 1)
+    return
+  end
   local sortieCmdDescs = radioDefs[unitDefID]
 
   if not sortieCmdDescs then return end
@@ -339,12 +360,7 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
   local sortie = sortieDefs[unitDefID]
   if not sortie then return end
   
-  local cmdDesc = sortie.cmdDesc
-  local cmdID = cmdDesc.id
-  
-  local stockpile = GetStockpile(teamID, cmdID)
-  stockpile = stockpile + 1
-  UpdateStockpile(teamID, cmdID, stockpile)
+  ModifyStockpile(teamID, sortie, 1)
   DestroyUnit(unitID, false, true)
 end
 
@@ -365,13 +381,10 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   if inBuild then
     -- can't order
   else
-    local rulesParamName = "game_planes.stockpile" .. cmdID
-    local stockpile = GetTeamRulesParam(teamID, rulesParamName) or 0
+    local stockpile = GetStockpile(teamID, sortie)
     
     if stockpile > 0 then
-      local stockpile = GetStockpile(teamID, cmdID)
-      stockpile = stockpile - 1
-      UpdateStockpile(teamID, cmdID, stockpile)
+      ModifyStockpile(teamID, sortie, -1)
       local sx, sy, sz = GetSpawnPoint(teamID, #sortie)
       DelayCall(SpawnFlight, {teamID, sortie, sx, sy, sz, cmdParams}, sortie.delay * 30)
       SendMessageToTeam(teamID, sortie.name .. " sortie ordered. ETE " .. (sortie.delay or 0) .. "s.")
@@ -415,6 +428,26 @@ function gadget:GameFrame(n)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+  local sortie = sortieDefs[unitDefID]
+  if sortie then
+    ModifyWeight(teamID, sortie, -1)
+    return
+  end
   planeStates[unitID] = nil
   radios[teamID][unitID] = nil
+end
+
+function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, part)
+  local sortie = sortieDefs[unitDefID]
+  
+  if not sortie or sortie.weight <= 0 then return true end
+  
+  local rulesParamName = "game_planes.weight"
+  local weight = GetTeamRulesParam(builderTeam, rulesParamName) or 0
+  
+  if weight > airfieldCapacity then
+    return false
+  end
+  
+  return true
 end

@@ -7,6 +7,7 @@
     
     delay = number, -- number of frames before sortie arrives
     cursor = string, (default "Attack"), --cursor when ordering sortie
+    weight = number, -- space taken up in airfield (default 0; better to use integers)
   }
 ]]
 
@@ -24,6 +25,7 @@ local sortieDefs = {
     "gbrspitfiremkxiv",
     
     delay = 15,
+    weight = 1,
   },
   
   gbr_sortie_fighter_bomber = {
@@ -31,6 +33,7 @@ local sortieDefs = {
     "gbrspitfiremkix",
     
     delay = 45,
+    weight = 1,
   },
   
   gbr_sortie_attack = {
@@ -38,6 +41,7 @@ local sortieDefs = {
     "gbrtyphoon",
     
     delay = 45,
+    weight = 1,
   },
   
   ger_sortie_recon = {
@@ -53,6 +57,7 @@ local sortieDefs = {
     "gerbf109",
     
     delay = 15,
+    weight = 1,
   },
   
   ger_sortie_fighter = {
@@ -62,6 +67,7 @@ local sortieDefs = {
     "gerfw190",
     
     delay = 30,
+    weight = 1,
   },
   
   ger_sortie_fighter_bomber = {
@@ -69,6 +75,7 @@ local sortieDefs = {
     "gerfw190g",
     
     delay = 45,
+    weight = 1,
   },
   
   ger_sortie_attack = {
@@ -77,6 +84,7 @@ local sortieDefs = {
     "gerju87g",
     
     delay = 45,
+    weight = 1,
   },
   
   rus_sortie_recon = {
@@ -92,6 +100,7 @@ local sortieDefs = {
     "rusyak3",
     
     delay = 15,
+    weight = 1,
   },
   
   rus_sortie_fighter = {
@@ -101,6 +110,7 @@ local sortieDefs = {
     "rusla5fn",
     
     delay = 30,
+    weight = 1,
   },
   
   rus_sortie_attack = {
@@ -108,6 +118,7 @@ local sortieDefs = {
     "rusil2",
     
     delay = 45,
+    weight = 1,
   },
   
   us_sortie_recon = {
@@ -123,6 +134,7 @@ local sortieDefs = {
     "usp51dmustang",
     
     delay = 15,
+    weight = 1,
   },
   
   us_sortie_fighter_bomber = {
@@ -130,6 +142,7 @@ local sortieDefs = {
     "usp47thunderbolt",
     
     delay = 45,
+    weight = 1,
   },
   
   us_sortie_attack = {
@@ -137,6 +150,7 @@ local sortieDefs = {
     "usp51dmustangga",
     
     delay = 45,
+    weight = 1,
   },
 }
 
