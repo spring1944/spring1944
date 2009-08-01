@@ -75,26 +75,26 @@
 
   weapon2=m2browningamg;
   maxAngleDif2=10;
-  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
-  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir3=0 0 1;
-  weaponSlaveTo3=1;
+  weaponSlaveTo3=2;
 
   weapon4=HS40420mm;
   maxAngleDif4=10;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir4=0 0 1;
-  weaponSlaveTo4=1;
+  weaponSlaveTo4=2;
 
   weapon5=HS40420mm;
   maxAngleDif5=10;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir5=0 0 1;
-  weaponSlaveTo5=1;
+  weaponSlaveTo5=2;
 
   weapon6=Medium_Tracer;
 

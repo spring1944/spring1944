@@ -93,6 +93,7 @@
 
   weapon3=VYa23mm;
   maxAngleDif3=10;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
   weapon4=YVa23mm;
