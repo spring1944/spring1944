@@ -18,7 +18,7 @@ static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, r
 #include "SmokeUnit_GPL.h" // Thanks again to Argh
 
 //how long the unit appears on the map after firing (in ms)
-#define VISIBLE_PERIOD	5000
+#define VISIBLE_PERIOD	15000
 //hiding FX emit points
 #define FX_HIDE\
 
@@ -44,10 +44,8 @@ static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, r
 #define TURR_ELEVATE	<100> //it's just a machinegun on a pivot
 
 // definitions for weapons behaviour
-#define RELOAD		30000 // time in milliseconds between shots
-#define RECOIL		[-1] // distance to recoil the gun
-#define RETURN_SPEED	[20] // speed at which the barrel returns
-#define BURST		5
+#define MOVE_DELAY		10000
+
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -282,6 +280,7 @@ Shot1(something)
 EndBurst1()
 {
 	// unfreeze
+	sleep MOVE_DELAY;
 	canMove = TRUE;
 	signal SIG_NOMOVE;
 	start-script Undeploy();

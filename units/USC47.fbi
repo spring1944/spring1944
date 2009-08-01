@@ -5,7 +5,6 @@
   acceleration=0.48;
   airSightDistance=4000;
   bankscale=1;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3000;
@@ -25,6 +24,7 @@
     enginesoundnr=18;
     feartarget=1;
     proptexture=bitmaps/prop3.tga;
+	troopdropper=1;
   }
   drag=0.1;
   explodeAs=Vehicle_Explosion_Med;
@@ -36,9 +36,9 @@
   maneuverleashlength=1280;
   maxAileron=0.005;
   maxBank=0.1;
-  maxDamage=34.5;
+  maxDamage=1705.7;
   maxElevator=0.005;
-  maxFuel=60;
+  //maxFuel=60;
   maxPitch=0.1;
   maxRudder=0.005;
   maxSlope=10;
@@ -58,10 +58,15 @@
   showNanoFrame=0;
   Side=US;
   sightDistance=2000;
-  smoothAnim=1;
+  smoothAnim=0;
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
+  transportUnloadMethod=1;
+  transportCapacity=28;
+  transportMass=75000;
+  transportSize=1;
+  fallSpeed=0.25; 
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   wingAngle=0.1;

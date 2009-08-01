@@ -59,7 +59,7 @@
   badTargetCategory=FLAG;
 
   weapon1=leIG18HE;
-  maxAngleDif1=25;
+  maxAngleDif1=30;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }

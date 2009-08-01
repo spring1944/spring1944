@@ -1,0 +1,29 @@
+#define TAK //this is a TAK script
+
+#include "constants.h"
+
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+		lfoot, luparm, lloarm, ground, parachute, ruparm, rloarm, head;
+		
+
+Create()
+{
+hide parachute;
+}
+
+falling()
+{
+show parachute;
+}
+
+landed()
+{
+var z;
+z = rand(<-150>, <150>);
+var chuteSpeed;
+chuteSpeed = <100>;
+turn parachute to x-axis <-80> speed chuteSpeed;
+turn parachute to z-axis z speed chuteSpeed;
+wait-for-turn parachute around x-axis;
+wait-for-turn parachute around z-axis;
+}
