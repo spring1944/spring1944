@@ -8,6 +8,7 @@
     delay = number, -- number of frames before sortie arrives
     cursor = string, (default "Attack"), --cursor when ordering sortie
     weight = number, -- space taken up in airfield (default 0; better to use integers)
+    alwaysAttack = bool, -- if true, sortie will always attack the given target or location
   }
 ]]
 
@@ -158,6 +159,7 @@ local sortieDefs = {
     
     delay = 45,
     weight = 1,
+    alwaysAttack = true,
   },
 }
 

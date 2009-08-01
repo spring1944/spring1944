@@ -44,6 +44,11 @@ QueryWeapon1(piecenum) {
 	piecenum = disembark;
 }
 
+FireWeapon1() {
+	sleep 5000;
+	set CURRENT_FUEL to 0;
+}
+
 Create()
 {
 }

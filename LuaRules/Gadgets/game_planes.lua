@@ -172,7 +172,7 @@ local radios = {}
 --spawning
 ----------------------------------------------------------------
 
-local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, rotation, waypoint, numInFlight)
+local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, rotation, waypoint, numInFlight, alwaysAttack)
   if #cmdParams == 3 then
     cmdParams[1], cmdParams[2], cmdParams[3] = vClampToMapSize(cmdParams[1], cmdParams[2], cmdParams[3])
   end
@@ -188,16 +188,23 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
   SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
   SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
   GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
-  if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
+  if alwaysAttack then
     GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
     if waypoint then
       GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
     end
-  else --location: fight to waypoint, then patrol to target
-    if waypoint then
-      GiveOrderToUnit(unitID, CMD_FIGHT, waypoint, {"shift"})
+  else
+    if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
+      GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
+      if waypoint then
+        GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
+      end
+    else --location: fight to waypoint, then patrol to target
+      if waypoint then
+        GiveOrderToUnit(unitID, CMD_FIGHT, waypoint, {"shift"})
+      end
+      GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
     end
-    GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
   end
   planeStates[unitID] = PLANE_STATE_ACTIVE
   -- make the plane say something if it's the first in its group
@@ -258,7 +265,7 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
       local ux, uz = offset[1] + sx, offset[3] + sz
       local uy = GetGroundHeight(ux, uz)
       local unitname = sortie[i]
-      SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i)
+      SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i, sortie.alwaysAttack)
     end
   else
     for i=1, #sortie do
@@ -266,7 +273,7 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
       local ux, uz = offset[1] + sx, offset[3] + sz
       local uy = GetGroundHeight(ux, uz)
       local unitname = sortie[i]
-      SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i)
+      SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i, sortie.alwaysAttack)
     end
   end
 
