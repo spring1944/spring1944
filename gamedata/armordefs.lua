@@ -28,6 +28,7 @@ local armorDefs = {
     "USM1Mortar",
     "USObserv",
     
+    "usparatrooper",
     "us101strifle",
     "us101stthompson",
     "us101stbar",
