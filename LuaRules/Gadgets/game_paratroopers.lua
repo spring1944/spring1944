@@ -12,6 +12,12 @@ end
 
 if not gadgetHandler:IsSyncedCode() then return end
 
+local windFactor = 0.1
+local drag = 0.03
+local relVelPeriod = 1
+local relVelHoriz = 0.5
+local relVelVert = 0.5
+
 local paratrooperWeaponDefIDs = {}
 
 --transportID = paratrooper number
@@ -22,6 +28,8 @@ local paratroopers = {}
 --transportDefID = list of paratroopers
 local transportInfos = {}
 
+local random = math.random
+
 local mcEnable = Spring.MoveCtrl.Enable
 local mcDisable = Spring.MoveCtrl.Disable
 local mcSetPosition = Spring.MoveCtrl.SetPosition
@@ -30,6 +38,7 @@ local mcSetWindFactor = Spring.MoveCtrl.SetWindFactor
 local mcSetDrag = Spring.MoveCtrl.SetDrag
 local mcSetTrackGround = Spring.MoveCtrl.SetTrackGround
 local mcSetCollideStop = Spring.MoveCtrl.SetCollideStop
+local mcSetRelativeVelocity = Spring.MoveCtrl.SetRelativeVelocity
 
 local CreateUnit = Spring.CreateUnit
 local SetUnitPosition = Spring.SetUnitPosition
@@ -78,11 +87,16 @@ function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
     mcEnable(unitID)
     mcSetPosition(unitID, ux, uy, uz)
     mcSetGravity(unitID, 1)
-    mcSetWindFactor(unitID, 0.1)
-    mcSetDrag(unitID, 0.03)
+    mcSetWindFactor(unitID, windFactor)
+    mcSetDrag(unitID, drag)
     mcSetTrackGround(unitID, true)
     mcSetCollideStop(unitID, true)
     --CallCOBScript(unitID, "Falling", 0, 0)
+    
+    local vx = (random() - 0.5) * relVelHoriz
+    local vy = (random() - 0.5) * relVelVert
+    local vz = (random() - 0.5) * relVelHoriz
+    mcSetRelativeVelocity(unitID, vx, vy, vz)
     
     paratroopers[unitID] = true
   end
