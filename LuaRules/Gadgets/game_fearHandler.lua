@@ -30,6 +30,9 @@ if (gadgetHandler:IsSyncedCode()) then
 
 function gadget:Explosion(weaponId, px, py, pz, ownerId)
 	local weapDef = WeaponDefs[weaponId]
+	
+	if not weapDef.customParams.fearid then return false end
+  
 	local unitsAtSpot = GetUnitsInCylinder(px, pz, weapDef.customParams.fearaoe)
 	
 	-- insert code for tank fear shields here

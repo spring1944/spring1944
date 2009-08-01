@@ -4,32 +4,6 @@ piece  base, fuselage, tail, wing1, propeller1, blades1, wheel1, wing2, propelle
 
 #define SMOKEPUFF_GPL_FX 1024+0
 
-lua_unloadFeed()
-{
-return 0;
-}
-
-lua_loadUp()
-{
-return 0;
-}
-
-unload(unitid)
-{
-	drop-unit unitid;
-}
-
-load(unitid)
-{
-	attach-unit unitid to disembark;
-	GET PRINT(1, unitid);
-}
-
-TransportDrop(unitid, position) {
-	set BUSY to 1;
-	call-script lua_unloadFeed();
-	set BUSY to 0;
-}
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
@@ -58,10 +32,20 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 	}
 }
 
+AimWeapon1() {
+	return 1;
+}
+
+AimFromWeapon1(piecenum) {
+	piecenum = disembark;
+}
+
+QueryWeapon1(piecenum) {
+	piecenum = disembark;
+}
+
 Create()
 {
-	sleep 128;
-	call-script lua_loadUp();
 }
 
 SweetSpot(piecenum)
