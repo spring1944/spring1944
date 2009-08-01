@@ -8,6 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=50;
   buildTime=50;
+  canFly=1;
   canMove=1;
   category=AIR INFANTRY;
   corpse=USSoldier_dead;
