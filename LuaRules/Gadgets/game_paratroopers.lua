@@ -41,6 +41,8 @@ local mcSetCollideStop = Spring.MoveCtrl.SetCollideStop
 local mcSetVelocity = Spring.MoveCtrl.SetVelocity
 local mcSetRelativeVelocity = Spring.MoveCtrl.SetRelativeVelocity
 
+local uReplaceUnit = GG.Util.ReplaceUnit
+
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local ValidUnitID = Spring.ValidUnitID
@@ -51,11 +53,6 @@ local CallCOBScript = Spring.CallCOBScript
 
 local GetUnitVelocity = Spring.GetUnitVelocity
 local GetUnitPosition = Spring.GetUnitPosition
-local SetUnitPosition = Spring.SetUnitPosition
-local GetUnitHealth = Spring.GetUnitHealth
-local SetUnitHealth = Spring.SetUnitHealth
-local GetUnitExperience = Spring.GetUnitExperience
-local SetUnitExperience = Spring.SetUnitExperience
 
 do
   local paratrooperInclude = VFS.Include("LuaRules/Configs/paratrooper_defs.lua")
@@ -125,21 +122,6 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   local paratrooperInfo = paratroopers[unitID]
   if not paratrooperInfo then return false end
   
-  local health, maxHealth, paralyzeDamage = GetUnitHealth(unitID)
-  local healthProportion = health / maxHealth
-  local paralyzeProportion = paralyzeDamage / maxHealth
-  local dx, dy, dz = GetUnitPosition(unitID)
-  local xp = GetUnitExperience(unitID)
-  
-  local newUnitID = CreateUnit(paratrooperInfo[2], dx, dy, dz, 0, unitTeam)
-  local newHealth, newMaxHealth = GetUnitHealth(newUnitID)
-  local healthTable = {
-    health = healthProportion * newMaxHealth,
-    paralyze = paralyzeProportion * newMaxHealth,
-  }
-  SetUnitHealth(newUnitID, healthTable)
-  SetUnitExperience(newUnitID, xp)
-  
-  DestroyUnit(unitID, false, true)
+  uReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
   return true
 end
