@@ -13,7 +13,7 @@ end
 if not gadgetHandler:IsSyncedCode() then return end
 
 local windFactor = 0.1
-local drag = 0.03
+local drag = 0.06
 local relVelPeriod = 1
 local relVelHoriz = 0.5
 local relVelVert = 0.5
@@ -38,15 +38,24 @@ local mcSetWindFactor = Spring.MoveCtrl.SetWindFactor
 local mcSetDrag = Spring.MoveCtrl.SetDrag
 local mcSetTrackGround = Spring.MoveCtrl.SetTrackGround
 local mcSetCollideStop = Spring.MoveCtrl.SetCollideStop
+local mcSetVelocity = Spring.MoveCtrl.SetVelocity
 local mcSetRelativeVelocity = Spring.MoveCtrl.SetRelativeVelocity
 
 local CreateUnit = Spring.CreateUnit
-local SetUnitPosition = Spring.SetUnitPosition
+local DestroyUnit = Spring.DestroyUnit
 local ValidUnitID = Spring.ValidUnitID
 local GetUnitDefID = Spring.GetUnitDefID
-local GetUnitPosition = Spring.GetUnitPosition
+
 local GetUnitTeam = Spring.GetUnitTeam
 local CallCOBScript = Spring.CallCOBScript
+
+local GetUnitVelocity = Spring.GetUnitVelocity
+local GetUnitPosition = Spring.GetUnitPosition
+local SetUnitPosition = Spring.SetUnitPosition
+local GetUnitHealth = Spring.GetUnitHealth
+local SetUnitHealth = Spring.SetUnitHealth
+local GetUnitExperience = Spring.GetUnitExperience
+local SetUnitExperience = Spring.SetUnitExperience
 
 do
   local paratrooperInclude = VFS.Include("LuaRules/Configs/paratrooper_defs.lua")
@@ -79,13 +88,15 @@ function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
     end
     
     transports[ownerID] = paratrooperNumber
-    local paratrooperUnitname = transportInfo[paratrooperNumber]
+    local paratrooperInfo = transportInfo[paratrooperNumber]
     
     local ux, uy, uz = GetUnitPosition(ownerID)
+    local vx, vy, vz = GetUnitVelocity(ownerID)
     local teamID = GetUnitTeam(ownerID)
-    local unitID = CreateUnit(paratrooperUnitname, ux, uy, uz, 0, teamID)
+    local unitID = CreateUnit(paratrooperInfo[1], ux, uy, uz, 0, teamID)
     mcEnable(unitID)
-    mcSetPosition(unitID, ux, uy, uz)
+    mcSetPosition(unitID, ux, uy - 16, uz)
+    mcSetVelocity(unitID, vx, vy, vz)
     mcSetGravity(unitID, 1)
     mcSetWindFactor(unitID, windFactor)
     mcSetDrag(unitID, drag)
@@ -98,7 +109,7 @@ function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
     local vz = (random() - 0.5) * relVelHoriz
     mcSetRelativeVelocity(unitID, vx, vy, vz)
     
-    paratroopers[unitID] = true
+    paratroopers[unitID] = paratrooperInfo
   end
   
   return false
@@ -111,8 +122,24 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 end
 
 function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
-  if not paratroopers[unitID] then return false end
+  local paratrooperInfo = paratroopers[unitID]
+  if not paratrooperInfo then return false end
   
-  paratroopers[unitID] = nil
+  local health, maxHealth, paralyzeDamage = GetUnitHealth(unitID)
+  local healthProportion = health / maxHealth
+  local paralyzeProportion = paralyzeDamage / maxHealth
+  local dx, dy, dz = GetUnitPosition(unitID)
+  local xp = GetUnitExperience(unitID)
+  
+  local newUnitID = CreateUnit(paratrooperInfo[2], dx, dy, dz, 0, unitTeam)
+  local newHealth, newMaxHealth = GetUnitHealth(newUnitID)
+  local healthTable = {
+    health = healthProportion * newMaxHealth,
+    paralyze = paralyzeProportion * newMaxHealth,
+  }
+  SetUnitHealth(newUnitID, healthTable)
+  SetUnitExperience(newUnitID, xp)
+  
+  DestroyUnit(unitID, false, true)
   return true
 end

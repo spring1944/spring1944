@@ -1,10 +1,7 @@
-[paratrooper28] {
+[us_paratrooper] {
   name=Paratroops;
-  accuracy=1500;
-  areaOfEffect=200;
-  ballistic=1;
-  burnblow=0;
-  burst=28;
+  areaOfEffect=1;
+  burst=18;
   burstrate=0.15;
   collideFriendly=0;
   commandfire=1;
@@ -17,11 +14,9 @@
   }
   edgeEffectiveness=0;
   explosionGenerator=custom:nothing;
-  flightTime=3;
-  id=31;
   impulseFactor=0;
   manualBombSettings=1;
-  mygravity=10;
+  mygravity=1;
   model=Bomb_Tiny.S3O;
   range=1000;
   reloadTime=600;

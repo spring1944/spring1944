@@ -1,19 +1,31 @@
+--[[
+format: transport name = {
+  { droppedUnitname, landedUnitname }
+}
+]]
+
 local paratrooperDefs = {
   usc47 = {
-    "us101strifle",
-    "us101stthompson",
-    "us101stbar",
-    "us101strifle",
-    "us101stthompson",
-    "us101stbazooka",
-    "us101strifle",
-    "us101stthompson",
-    "us101stmg",
-    "us101strifle",
-    "us101stthompson",
-    "us101stbar",
-    "us101strifle",
-    "us101stthompson",
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stthompson" },
+    { "usparatrooper", "us101stbar" },
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stbar" },
+    { "usparatrooper", "us101stthompson" },
+    
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stthompson" },
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stbazooka" },
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stthompson" },
+    
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stthompson" },
+    { "usparatrooper", "us101strifle" },
+    { "usparatrooper", "us101stthompson" },
+    { "usparatrooper", "us101stmg" },
+    { "usparatrooper", "us101stthompson" },
   }
 }
 

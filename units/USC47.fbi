@@ -18,7 +18,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1500;
+  cruiseAlt=1200;
   [customParams] {
     enginesound=spitfireb-;
     enginesoundnr=18;
@@ -66,6 +66,6 @@
   wingAngle=0.1;
   wingDrag=0.1;
   
-  weapon1=paratrooper28;
+  weapon1=us_paratrooper;
 }
 

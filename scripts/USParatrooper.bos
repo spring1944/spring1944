@@ -2,21 +2,21 @@
 
 #include "constants.h"
 
-piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, parachute, ruparm, rloarm, head;
 		
 
 Create()
 {
-hide parachute;
+show parachute;
 }
 
-falling()
+Falling()
 {
 show parachute;
 }
 
-landed()
+Landed()
 {
 var z;
 z = rand(<-150>, <150>);
