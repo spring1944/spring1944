@@ -657,6 +657,7 @@ buildoptions =
 
   rusbarracks =
   {
+    "rus_sortie_recon",
     "ruscommissar",
     "rusengineer",
     "rus_platoon_rifle",
