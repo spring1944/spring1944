@@ -72,6 +72,13 @@ local options = {
 		desc   = "default_ai",
 		type   = "string",
 		def    = "C.R.A.I.G.",
+	},
+	{
+		key    = "help_url",
+		name   = "help_url",
+		desc   = "the url that is opened in browser if help button is clicked",
+		type   = "string",
+		def    = "http://spring1944.net/phpBB3",
 	}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
