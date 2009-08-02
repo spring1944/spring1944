@@ -69,7 +69,7 @@ end
 
 
 local function ProcessWeapons(unitID)
-	local unitDefID = Spring.GetUnitDefID(unitID)
+	local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
@@ -123,7 +123,7 @@ local function Resupply(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local supplierID = FindSupplier(unitID)
 	if supplierID then
-		local teamID = Spring.GetUnitTeam(supplierID)
+		local teamID = GetUnitTeam(supplierID)
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
 		if logisticsLevel < 50 then
 			return
@@ -189,6 +189,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 			SetUnitRulesParam(unitID, "ammo", 0)
 		end
 
+
 		--This is used to delay SetUnitWeaponState call depending on ammo,
 		--so other gadgets (notably the unit_morph gagdet) have a chance to
 		--customize the unit's ammo before the unit's weapons are disabled.
@@ -237,8 +238,8 @@ end
 function gadget:GameFrame(n)
 	if (n == initFrame+4) then
 		for _, unitID in ipairs(Spring.GetAllUnits()) do
-			local unitTeam = Spring.GetUnitTeam(unitID)
-			local unitDefID = Spring.GetUnitDefID(unitID)
+			local unitTeam = GetUnitTeam(unitID)
+			local unitDefID = GetUnitDefID(unitID)
 			local ud = UnitDefs[unitDefID]
 			if ud.customParams.ammosupplier == '1' then
 				ammoSuppliers[unitID] = true
@@ -254,6 +255,7 @@ function gadget:GameFrame(n)
 				end
 			end
 		end
+		newVehicles = {}
 	end
 	if n > (initFrame+4) then
 		if next(newVehicles) then
