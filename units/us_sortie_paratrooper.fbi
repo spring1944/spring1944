@@ -1,13 +1,13 @@
 [unitinfo] {
   unitname=us_sortie_paratrooper;
   name=Paratrooper Drop;
-  description=7 x Garand Rifle, 7 x Thompson SMG, 2 x BAR, 1 x Browning .30 Cal Machinegun, 1 x Bazooka, Delivered By C-47;
+  description=16 x Garand Rifle, 4 x Thompson SMG, 4 x BAR, 2 x Browning .30 Cal Machinegun, 2 x Bazooka, Delivered By C-47;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=5000;
+  buildCostMetal=7500;
   buildPic=USC47.png;
-  buildTime=5000;
+  buildTime=7500;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
@@ -23,7 +23,7 @@
   selfDestructAs=noweapon;
   [sfxtypes] {
   }
-  side=GER;
+  side=US;
   stealth=1;
   turnRate=1;
 }
