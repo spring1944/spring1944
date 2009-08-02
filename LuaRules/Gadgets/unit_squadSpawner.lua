@@ -80,7 +80,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 					for _,unit in ipairs(squad_members) do
 						local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
-						if (states) then
+						if (states and newUnitID) then
 							if(states.movestate ~= nil) then
 								Spring.GiveOrderToUnit(newUnitID, CMD.FIRE_STATE, { states.firestate }, 0)
 								Spring.GiveOrderToUnit(newUnitID, CMD.MOVE_STATE, { states.movestate }, 0)
@@ -132,19 +132,19 @@ if (gadgetHandler:IsSyncedCode()) then
 	function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 
 		local squadDef = squadDefs[unitDefID]
-		
+
 		if squadDef ~= nil then
 			--Spring.Echo("Spawner Created")
 			watchUnits[unitID] = true
 			local px, py, pz = GetUnitBasePosition(unitID)
-			
+
 			local unitArray = { }
 
 			local xSpace, zSpace = -5, -5
-			
+
 			for i, unitName in ipairs(squadDef) do
 				local unitHeading = 0
-				if builderID then 
+				if builderID then
 					unitHeading = Spring.GetUnitBuildFacing(builderID)
 				end
 				local newUnit = {
@@ -169,12 +169,12 @@ if (gadgetHandler:IsSyncedCode()) then
 			table.insert(newSquads, {unitID = unitID, builderID = builderID, members = unitArray})
 		end
 	end
-	
+
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		if (watchUnits[unitID] ~= nil) then
 			watchUnits[unitID] = nil
 			--Spring.Echo("Spawner Destroyed 2")
 		end
 	end
-	
+
 end
