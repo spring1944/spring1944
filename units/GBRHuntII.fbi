@@ -7,8 +7,8 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=15000;
-  buildTime=9000;
+  buildCostMetal=150000;
+  buildTime=90000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
