@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=6500;
+  buildCostMetal=65000;
   buildPic=gerafp.png;
-  buildTime=4300;
+  buildTime=43000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
