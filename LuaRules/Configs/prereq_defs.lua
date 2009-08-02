@@ -25,6 +25,7 @@ local result = {
   gervehicleyard = anyBarracks,
   gertankyard = anyBarracks,
   gerradar = anyBarracks,
+  ruspshack = anyBarracks,
   rusvehicleyard = anyBarracks,
   rustankyard = anyBarracks,
   rusradar = anyBarracks,
