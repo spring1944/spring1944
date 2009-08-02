@@ -64,7 +64,7 @@ local options = {
 		name   = "icon",
 		desc   = "application icon",
 		type   = "string",
-		def    = "sidepics/us.bmp", 	--use plain bmp only
+		def    = "icons/sl_app.png", 	--bmp/png
 	},
 	{
 		key    = "default_ai",
