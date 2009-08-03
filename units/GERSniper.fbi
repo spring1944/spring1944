@@ -57,9 +57,8 @@
   badTargetCategory=BUILDING OPENVEH FLAG SOFTVEH;
 
   weapon1=K98kscope;
-  badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 
