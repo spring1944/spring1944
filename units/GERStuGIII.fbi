@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2850;
-  buildTime=2850;
+  buildCostMetal=2550;
+  buildTime=2550;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERStuGIII_Damaged;
