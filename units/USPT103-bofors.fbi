@@ -95,6 +95,7 @@
 
   weapon9=bofors40mmhe;
   maxAngleDif9=270;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }
 
