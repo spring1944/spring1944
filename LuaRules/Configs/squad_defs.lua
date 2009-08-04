@@ -128,8 +128,6 @@ local squadDefs = {
 		"gbrsten",
 		"gbrsten",
 		"gbrsten",
-		"gbrsten",
-		"gbrsten",
 		"gbrcommando",
 	},
 
