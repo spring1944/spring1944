@@ -6,9 +6,9 @@
   airSightDistance=2500;
   brakeRate=0.2;
   buildCostEnergy=0;
-  buildCostMetal=300;
+  buildCostMetal=1400;
   buildPic=RUSTender15t.png;
-  buildTime=200;
+  buildTime=1200;
   canMove=1;
   category=SHIP MINETRIGGER;
   [customParams] {

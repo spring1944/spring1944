@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=1200;
-  buildTime=800;
+  buildCostMetal=1400;
+  buildTime=1200;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=RUSTender15t_dead;
