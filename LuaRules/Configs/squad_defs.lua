@@ -649,8 +649,6 @@ local squadDefs = {
 		"usgirifle",
 		"usgibar",
 		"usgibar",
-		"usgibazooka",
-		
 	},
 	
 	["us_platoon_assault"] = 

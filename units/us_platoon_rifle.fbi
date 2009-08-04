@@ -1,13 +1,13 @@
 [unitinfo] {
   unitname=us_platoon_rifle;
   name=Rifle Platoon;
-  description=8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun, 1 x Bazooka AT: Long-Range Combat Platoon;
+  description=8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun: Long-Range Combat Platoon;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1800;
+  buildCostMetal=1675;
   buildPic=usgirifle.png;
-  buildTime=1800;
+  buildTime=1675;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
