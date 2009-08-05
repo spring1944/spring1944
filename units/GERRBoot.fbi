@@ -63,7 +63,7 @@
 
   weapon3=20mmc38;
   maxAngleDif3=300;
-  weaponMainDir3=0 0 -1;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir3=0 0 -1;
 }
 
