@@ -76,7 +76,7 @@
   weaponMainDir3=0 0 -1;
 
   weapon4=mk15_533mmtorpedo;
-  onlyTargetCategory4=SHIP LARGESHIP SUB;
+  onlyTargetCategory4=LARGESHIP SUB;
 
   weapon5=28mmchicagopiano;
   maxAngleDif5=200;

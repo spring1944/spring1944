@@ -45,12 +45,12 @@
   weapon1=533mmtorpedo; //450mmtorp;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=60;
-  onlyTargetCategory1=SHIP LARGESHIP;
+  onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=533mmtorpedo; //450mmtorp;
   maxAngleDif2=60;
-  onlyTargetCategory2=SHIP LARGESHIP;
+  onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=40k45mmhe;

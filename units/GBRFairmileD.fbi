@@ -74,22 +74,22 @@
 
   weapon1=18inchtorpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=SHIP LARGESHIP SUB;
+  onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=18inchtorpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=SHIP LARGESHIP SUB;
+  onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=18inchtorpedo;
   maxAngleDif3=40;
-  onlyTargetCategory3=SHIP LARGESHIP SUB;
+  onlyTargetCategory3=LARGESHIP SUB;
   weaponMainDir3=0 0 1;
 
   weapon4=18inchtorpedo;
   maxAngleDif4=40;
-  onlyTargetCategory4=SHIP LARGESHIP SUB;
+  onlyTargetCategory4=LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
   weapon5=6pdr57mmap;

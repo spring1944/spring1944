@@ -59,12 +59,12 @@
 
   weapon13=triple_g7a533mmtorpedo;
   maxAngleDif13=270;
-  onlyTargetCategory13=SHIP LARGESHIP SUB;
+  onlyTargetCategory13=LARGESHIP SUB;
   weaponMainDir13=0 0 1;
 
   weapon14=triple_g7a533mmtorpedo;
   maxAngleDif14=270;
-  onlyTargetCategory14=SHIP LARGESHIP SUB;
+  onlyTargetCategory14=LARGESHIP SUB;
   weaponMainDir14=0 0 1;
 
   weapon1=105mmC32;

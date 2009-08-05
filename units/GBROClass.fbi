@@ -49,7 +49,7 @@
 
   weapon11=quad_gbr21inchtorpedo;
   maxAngleDif11=300;
-  onlyTargetCategory11=SHIP LARGESHIP SUB;
+  onlyTargetCategory11=LARGESHIP SUB;
   weaponMainDir11=0 0 -1;
 
   weapon1=gbr4_7inchmkix;

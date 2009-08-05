@@ -51,12 +51,12 @@
 
   weapon1=533mmtorpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=SHIP LARGESHIP SUB;
+  onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=533mmtorpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=SHIP LARGESHIP SUB;
+  onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=twin_dshk;
