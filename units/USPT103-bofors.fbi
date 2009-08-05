@@ -60,22 +60,22 @@
 
   weapon1=mk13torpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=SHIP SUB;
+  onlyTargetCategory1=SHIP LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=mk13torpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=SHIP SUB;
+  onlyTargetCategory2=SHIP LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=mk13torpedo;
   maxAngleDif3=40;
-  onlyTargetCategory3=SHIP SUB;
+  onlyTargetCategory3=SHIP LARGESHIP SUB;
   weaponMainDir3=0 0 1;
 
   weapon4=mk13torpedo;
   maxAngleDif4=40;
-  onlyTargetCategory4=SHIP SUB;
+  onlyTargetCategory4=SHIP LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
   weapon5=bofors40mmaa;
@@ -95,7 +95,7 @@
 
   weapon9=bofors40mmhe;
   maxAngleDif9=270;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }
 

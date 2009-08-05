@@ -57,7 +57,7 @@
 
   weapon2=61k37mmhe;
   badTargetCategory2=AIR;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
   weapon3=Large_Tracer;
 }

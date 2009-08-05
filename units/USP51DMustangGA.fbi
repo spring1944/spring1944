@@ -74,48 +74,48 @@
   weapon1=HVARRocket;
   badTargetCategory1=INFANTRY SOFTVEH;
   maxAngleDif1=30;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   badTargetCategory2=INFANTRY SOFTVEH;
   maxAngleDif2=30;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
   weapon3=m2browningamg;
   maxAngleDif3=10;
-  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
   weapon4=m2browningamg;
   maxAngleDif4=10;
-  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=3;
 
   weapon5=m2browningamg;
   maxAngleDif5=10;
-  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=3;
 
   weapon6=m2browningamg;
   maxAngleDif6=10;
-  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 1;
   weaponSlaveTo6=3;
 
   weapon7=m2browningamg;
   maxAngleDif7=10;
-  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir7=0 0 1;
   weaponSlaveTo7=3;
 
   weapon8=m2browningamg;
   maxAngleDif8=10;
-  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir8=0 0 1;
   weaponSlaveTo8=3;
 

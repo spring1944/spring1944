@@ -45,17 +45,17 @@
   weapon1=533mmtorpedo; //450mmtorp;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=60;
-  onlyTargetCategory1=SHIP;
+  onlyTargetCategory1=SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
 
   weapon2=533mmtorpedo; //450mmtorp;
   maxAngleDif2=60;
-  onlyTargetCategory2=SHIP;
+  onlyTargetCategory2=SHIP LARGESHIP;
   weaponMainDir2=0 0 1;
 
   weapon3=40k45mmhe;
   maxAngleDif3=270;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 }
 

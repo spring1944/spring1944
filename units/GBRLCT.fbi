@@ -57,12 +57,12 @@
 
   weapon1=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif1=240;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=1 0 0;
 
   weapon2=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif2=240;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=-1 0 0;
 
   weapon3=Large_Tracer;

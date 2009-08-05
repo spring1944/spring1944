@@ -53,21 +53,21 @@
 
   weapon1=g7a533mmtorpedo;
   maxAngleDif1=40;
-  onlyTargetCategory1=SHIP SUB;
+  onlyTargetCategory1=SHIP LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
   weapon2=g7a533mmtorpedo;
   maxAngleDif2=40;
-  onlyTargetCategory2=SHIP SUB;
+  onlyTargetCategory2=SHIP LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
   weapon3=20mmc38;
   maxAngleDif3=270;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
   weapon4=20mmc38;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 -1;
 }
 

@@ -60,7 +60,7 @@
   badTargetCategory=FLAG;
 
   weapon1=DT;
-  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
   weapon2=Small_Tracer_Green;
 }

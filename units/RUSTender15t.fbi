@@ -46,7 +46,7 @@
 
   weapon1=dshk;
   maxAngleDif1=270;
-  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 }
 
