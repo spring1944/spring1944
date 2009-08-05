@@ -15,7 +15,10 @@
   [customParams] {
     feartarget=1;
   }
-  damageModifier=0.15;
+  damageModifier=0.23;
+  flankingBonusMode=3;
+  flankingBonusMax=1.35;
+  flankingBonusMin=1;
   energyStorage=0.01;
   footprintX=1;
   footprintZ=1;
