@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUS61K_Stationary;
   name=Dug-In 61-K;
-  description=- Stationary Anti-Aircraft Gun;
+  description=Stationary Anti-Aircraft Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

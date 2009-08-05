@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERPaK40_Stationary;
   name=Dug-In PaK 40;
-  description=- Stationary Anti-Tank Gun;
+  description=Stationary Anti-Tank Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

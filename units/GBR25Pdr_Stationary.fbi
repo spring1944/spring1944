@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBR25Pdr_Stationary;
   name=Dug-In 25-Pounder;
-  description=- Stationary Howitzer;
+  description=Stationary Howitzer;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

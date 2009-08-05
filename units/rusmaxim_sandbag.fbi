@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=rusmaxim_sandbag;
   name=Deployed Maxim Heavy Machinegun;
-  description=- Dug-in Heavy Infantry Fire Support;
+  description=Dug-in Heavy Infantry Fire Support;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

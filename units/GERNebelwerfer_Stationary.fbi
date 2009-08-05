@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERNebelwerfer_Stationary;
   name=Dug-In Nebelwerfer 41;
-  description=- Stationary Rocket Artillery;
+  description=Stationary Rocket Artillery;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

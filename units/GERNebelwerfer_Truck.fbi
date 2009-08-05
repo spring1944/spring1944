@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERNebelwerfer_Truck;
   name=Towed 15 cm Nebelwerfer 41;
-  description=- Stationary Rocket Artillery;
+  description=Stationary Rocket Artillery;
   acceleration=0.3;
   airSightDistance=1500;
   brakeRate=0.96;

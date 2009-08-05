@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSZiS2_Stationary;
   name=Dug-In ZiS-3;
-  description=- Stationary Field Gun;
+  description=Stationary Field Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

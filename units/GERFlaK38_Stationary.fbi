@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERFlaK38_Stationary;
   name=Dug-In FlaK 38;
-  description=- Stationary Anti-Aircraft Gun;
+  description=Stationary Anti-Aircraft Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

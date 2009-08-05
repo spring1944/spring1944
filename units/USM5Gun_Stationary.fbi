@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=USM5Gun_Stationary;
   name=Dug-In 3-Inch M5;
-  description=- Stationary Anti-Tank Gun;
+  description=Stationary Anti-Tank Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

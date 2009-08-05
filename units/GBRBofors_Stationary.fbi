@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBRBofors_Stationary;
   name=Dug-In M1 Bofors;
-  description=- Stationary 40mm Anti-Aircraft Gun;
+  description=Stationary 40mm Anti-Aircraft Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

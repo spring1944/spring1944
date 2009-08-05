@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=USM2Gun_Stationary;
   name=Dug-In 105mm M2;
-  description=- Stationary Howitzer;
+  description=Stationary Howitzer;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBR17Pdr_Stationary;
   name=Dug-In 17-Pounder;
-  description=- Stationary Anti-Tank Gun;
+  description=Stationary Anti-Tank Gun;
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
