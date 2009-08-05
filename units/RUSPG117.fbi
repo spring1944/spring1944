@@ -35,6 +35,7 @@
   showNanoFrame=0;
   sightDistance=600;
   smoothAnim=0;
+  SoundCategory=RUSBoat;
   stealth=1;
   TEDClass=SHIP;
   transportCapacity=9;
