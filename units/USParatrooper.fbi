@@ -20,7 +20,7 @@
   footprintZ=1;
   iconType=rifle;
   mass=50;
-  maxDamage=140;
+  maxDamage=60;
   maxSlope=15;
   maxVelocity=1.6;
   maxWaterDepth=10;
