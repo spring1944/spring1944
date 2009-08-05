@@ -11,7 +11,7 @@
   buildTime=30000;
   canAttack=1;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=LARGESHIP MINETRIGGER;
   corpse=GERVorpostenBoot_dead;
   [customParams] {
     dontCount=1;

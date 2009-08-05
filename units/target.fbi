@@ -10,7 +10,7 @@
   buildCostMetal=100;
   buildTime=100;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=LARGESHIP MINETRIGGER;
   corpse=target_dead;
   [customParams] {
     dontCount=1;

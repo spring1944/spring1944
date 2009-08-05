@@ -11,7 +11,7 @@
   buildTime=200000;
   canAttack=1;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=LARGESHIP MINETRIGGER;
   corpse=USFletcher_dead;
   [customParams] {
     dontCount=1;
