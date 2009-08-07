@@ -1,0 +1,23 @@
+- consistenly check for self.visible
+- fix fixedRatio 1 pixel jumping
+
+
+- tooltip
+- self:Resize(), OnResize
+- enter,leave (mouse events)
+- clicked controls should get MouseMove+MouseRelease event even if the mouse doesn't hover the control
+- displaylists + RenderToTexture
+- masks for HitTest (depending on linked textures-> alpha channel)
+- more different window controls -> background textures
+- use matrices for clientspace transformations
+- mousewheel support
+- theme & layout handler
+
+
+controls:
+- image
+- combobox
+- editbox
+- finish textbox
+- progressbar
+- listbox
