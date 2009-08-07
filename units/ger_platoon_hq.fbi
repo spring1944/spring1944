@@ -13,7 +13,7 @@
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  iconType=mines;
+  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;
