@@ -86,7 +86,7 @@ local moveDefs 	=	 {
 	},
 	{
 		name					=	"BOAT_Destroyer",
-		footprintX		=	8,
+		footprintX		=	32,
 		minWaterDepth	=	20,
 		crushStrength	=	10,
 	},

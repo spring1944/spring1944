@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=ger_sortie_attack;
-  name=Attack Sortie;
+  name=Tankbuster Sortie;
   description=3 x Ju 87G-1 Stuka;
   acceleration=0.1;
   brakeRate=1;

@@ -16,7 +16,6 @@
     armor_rear=90;
     armor_side=84;
     armor_top=40;
-    blockfear=1;
     lowammolevel=5;
     maxammo=16;
     weaponcost=22;

@@ -4,7 +4,7 @@
   description=torpedo boat;
   acceleration=0.3;
   airSightDistance=1500;
-  brakeRate=0.1;
+  brakeRate=0.5;
   buildCostEnergy=0;
   buildCostMetal=7200;
   buildPic=USPT103.png;
@@ -26,7 +26,7 @@
   mass=5000;
   maxDamage=5000;
   maxReverseVelocity=4.82;
-  maxVelocity=9.64; // 43 knots
+  maxVelocity=8.6; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   noChaseCategory=FLAG AIR MINE;
@@ -51,7 +51,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=550;
+  turnRate=375;
   badTargetCategory=FLAG;
 
   weapon10=KwK3020mmHE;
