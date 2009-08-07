@@ -66,7 +66,7 @@ function gadget:GameFrame(n)
 		--SendToUnsynced("supressed", unitID, supression)
 		if (modOptions.prisoner_income ~= nil) then
 			if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
-				if suppression > 25 then 
+				if suppression > 20 then 
 					GG.surrender(unitID, 10)
 				end
 			end
