@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Chili Chat Beta",
-    desc      = "v0.28 Chili Chat Console.",
+    desc      = "v0.29 Chili Chat Console.",
     author    = "CarRepairer",
     date      = "2009-07-07",
     license   = "GNU GPL, v2 or later",
@@ -42,13 +42,14 @@ local lines = {'Loading...'}
 local lines_count = 0
 local scrollbuffer = 100
 local intbuffer = 200
+local MIN_HEIGHT = 130
 
 local def_settings = {
 	minversion = 21,
 	pos_x = 110,
 	pos_y = 20,
-	c_width = 500,
-	c_height = 200,
+	c_width = 450,
+	c_height = MIN_HEIGHT,
 	
 	col_bg = {0, 0, 0, 0.3},
 	col_text = {1, 1, 1, 1},
@@ -253,8 +254,8 @@ local function makeNewConsole(x, y, w, h, scroll_cur)
 	remakeSoon = false
 	
 	local h=h
-	if h < 150 then
-		h = 150
+	if h < MIN_HEIGHT then
+		h = MIN_HEIGHT
 	end
 	
 	local lines_tb = {}
