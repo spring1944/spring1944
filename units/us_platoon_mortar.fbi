@@ -10,6 +10,9 @@
   buildTime=1850;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    helptext=Three-man mortar team equipped with three 81mm mortars. ||| Mortars provide infantry with a very valuable tool the ability to attack enemy infantry and armour from great distances, over intervening terrain and other obstacles. Mortars, quite simply, launch high-explosive warheads high into the air, which then fall on the enemy. They are inaccurate but in numbers can saturate a large area with explosives. Because of the demoralizing nature of high-explosives raining down upon them, mortars are great for suppressing and pinning enemy infantry. 
+  }        
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;

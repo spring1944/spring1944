@@ -10,10 +10,13 @@
   buildTime=1540;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    helptext = 12-man combat section armed with submachineguns. ||| Standard assault platoon, armed solely with Thompson submachineguns for maximum short-range combat capability. ;
+  }  
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  iconType=mines;
+  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;

@@ -10,6 +10,9 @@
   buildTime=440;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    helptext = 3-man Scout squad armed with pistols. ||| Scout Teams, or reconnaisance sections, are forward observers, armed with pistols and binoculars. Their sole purpose is to sneak around the battlefield, revealing enemy positions while remaining hidden. When caught, they are usually quickly killed. ;
+  }      
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;

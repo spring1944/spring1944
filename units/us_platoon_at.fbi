@@ -10,10 +10,13 @@
   buildTime=1250;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    helptext=3-man team armed with Bazookas. ||| Bazookas are large weapons which fire a rocket-ignited anti-tank warhead over short distances. They are too large to allow their wielders to sneak, but are generally longer-ranged than weapons like the Panzerfaust and PIAT, though slightly less powerful.;
+  }    
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  iconType=mines;
+  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;

@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Crude Menu",
-    desc      = "v0.59 Crude Chili Menu.",
+    desc      = "v0.60 Crude Chili Menu.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
@@ -168,11 +168,17 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-local function getUdFromName(unitName)
+local function getUdFromName(unitName, tooltip)
 	local unitName = unitName:gsub('[^a-zA-Z]', '')
 	for _,ud in pairs(UnitDefs) do
 		local humanName = ud.humanName:gsub('[^a-zA-Z]', '')
+		local scrunched_tooltip = tooltip:match('([a-zA-Z0-9 :,]*)')
+		local scrunched_udtooltip = ud.tooltip:match('([a-zA-Z0-9 :,]*)')
+		
 		if humanName == unitName then
+		--echo(scrunched_tooltip ..'||'.. scrunched_udtooltip)
+		end
+		if humanName == unitName and scrunched_tooltip == scrunched_udtooltip then
 			return ud
 		end
 	end
@@ -352,18 +358,24 @@ local function printunitinfo(ud, lang, buttonWidth)
 				width=40,
 			}
 	end
+	
+	local helptextbox = TextBox:New{ text = getHelpText(ud, lang), textColor = color.stats_fg, width = 220, } 
+	local stackchildrenheight = 80
+	if helptextbox.height > 80 then
+		stackchildrenheight = helptextbox.height 
+	end
 	local stackchildren = {
 		StackPanel:New{
 			padding = {0,0,0,0},
 			itemPadding = {0,0,0,0},
 			itemMargin = {0,0,0,0},
 			--orientation='horizontal',
-			height = 80,
+			height = stackchildrenheight,
 			width = 40,
 			resizeItems = false,
 			children = icons,
 		},
-		TextBox:New{ text = getHelpText(ud, lang), textColor = color.stats_fg, width = 200, height=150}, 
+		helptextbox,
 				
 	}
 	
@@ -389,7 +401,7 @@ local function printunitinfo(ud, lang, buttonWidth)
 	StackPanel:New{
 		y=0,
 		width = 300,
-		height = (#stackchildren-1)*20 + 200,
+		height = (#stackchildren-1)*20 + stackchildren[1].height,
 		children = stackchildren,
 		padding = {0,0,0,0},
 		itemPadding = {0,0,0,0},
@@ -451,11 +463,15 @@ end
 local function getShortTooltip()
 	local tooltip = spGetCurrentTooltip()
 	if tooltip:find('Build') == 1 then
-			return tooltip:gsub('([^-]*)\-.*', '%1'):sub(8,-2), 'Build: '
+		local start,fin = tooltip:find([[ - ]], 1, true) 
+		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(8,-2), 'Build: ', tooltip:gsub('[^-]*\- (.*)', '%1')
+		return tooltip:sub(8,start-1), 'Build: ', tooltip:sub(fin+1)
 	elseif tooltip:find('Morph') == 5 then
-			return tooltip:gsub('([^(time)]*)\(time).*', '%1'):sub(18), 'Morph to: '
+		return tooltip:gsub('([^(time)]*)\(time).*', '%1'):sub(18), 'Morph to: ', ''
 	elseif tooltip:find('Selected') == 1 then
-			return tooltip:gsub('([^-]*)\-.*', '%1'):sub(11,-2), 'Selected: '
+		local start,fin = tooltip:find([[ - ]], 1, true) 
+		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(11,-2), 'Selected: ', tooltip:gsub('[^-]*\- (.*)', '%1')
+		return tooltip:sub(11,start-1), 'Selected: ', tooltip:sub(fin+1)
 			
 	end
 	return false, false
@@ -828,23 +844,27 @@ end
 local file2 = LUAUI_DIRNAME .. "Configs/crudemenu_tree.lua"
 local menu_tree, game_menu_tree = VFS.Include(file2, nil, VFSMODE)
 
-function ShowWidgetList(self)
+local function ShowWidgetList(self)
 	spSendCommands{"luaui selector"} 
 end
 
-function ShowWidgetList2(self)
+local function ShowWidgetList2(self)
 	saveSubPos(self)
 	hideWindow(self.parent.parent)
 	MakeWidgetList()
 	window_parents[window_widgetlist] = self.parent.parent --oogly
 end
 
-function ShowFlags(self)
+
+local function ShowFlags(self)
 	saveSubPos(self)
 	hideWindow(self.parent.parent)
 	window_parents[window_flags] = self.parent.parent --oogly
 	showWindow(window_flags)
 end
+--fixme: fix these ridiculous workarounds!
+menu_tree[3][2][1][2] = ShowFlags
+menu_tree[3][2][6][2][1][2] = ShowWidgetList2
 
 
 local function makeCrudeMenu()
@@ -1065,10 +1085,10 @@ function widget:DrawScreen()
 	gl.Scale(1,-1,1)
 	screen0:Draw()
 	
-	local unitName, buildType = getShortTooltip()
+	local unitName, buildType, tooltip = getShortTooltip()
 	if unitName then
 		if not window_tooltip or cycle == 1 or mx ~= old_mx or my ~= old_my then
-			local ud = getUdFromName(unitName)
+			local ud = getUdFromName(unitName, tooltip)
 			if ud then
 				MakeToolTip(mx+20,my-20, buildType .. unitName, ud)
 			end
@@ -1158,13 +1178,14 @@ function widget:MousePress(x,y,button)
 	local mods = {alt=alt, ctrl=ctrl, meta=meta, shift=shift}
 	
 	if not settings.noContextClick and meta then
-		local unitName = getShortTooltip()
+		--local unitName = getShortTooltip()
+		local unitName, buildType, tooltip = getShortTooltip()
 		
 		if unitName then
 			local _,_,_,buildUnitName = Spring.GetActiveCommand()
 			if not buildUnitName then
 				unitName = unitName:gsub('[^a-zA-Z]', '')
-				local ud = getUdFromName(unitName)
+				local ud = getUdFromName(unitName, tooltip)
 				MakeStatsWindow(ud,x,y)
 				return true
 			end
@@ -1270,12 +1291,12 @@ function widget:Initialize()
 		'us', 
 	}
 	local country_langs = {
-		br='bp',
-		fi='fi', 
-		fr='fr', 
-		my='my', 
-		pl='pl',
-		pt='pt',
+		--br='bp',
+		--fi='fi', 
+		--fr='fr', 
+		--my='my', 
+		--pl='pl',
+		--pt='pt',
 	}
 
 	local flagChildren = {}

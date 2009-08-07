@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+	helptext = Medium range, good accuracy, excellent damage, low rate of fire. Can kill vehicles in one hit. Larger tanks may take several hits. Can move around undetected. Ineffective against infantry.;
   }
   damageModifier=0.23;
   flankingBonusMode=3;

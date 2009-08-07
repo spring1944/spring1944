@@ -10,10 +10,13 @@
   buildTime=800;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    helptext=3-man team armed with flamethrowers. ||| Flamethrowers are unique weapons which unleash torrents of liquid flame. They are excellent for use against buildings, bunkers, and often vehicles, and are potent against closely-grouped enemy infantry. They are also highly demoralizing. ;
+  }      
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  iconType=mines;
+  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;

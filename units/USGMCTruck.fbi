@@ -13,6 +13,7 @@
   [customParams] {
     buildOutside=1;
     dontCount=1;
+	helptext = Utility truck which is capable of transporting a platoon of infantrymen (12 men) and can deploy into small supply piles. ||| The GMC 2.5-ton general purpose truck is the workhorse of the American army. It is capable of transporting 12 infantrymen, and cap deploy into a small supply stockpile. ;
   }
   energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;

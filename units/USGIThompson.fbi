@@ -14,6 +14,7 @@
   [customParams] {
     feartarget=1;
     flagCapRate=1;
+	helptext = Medium range and accuracy, low damage, high rate of fire. Armed with secondary grenades.;
   }
   damageModifier=0.23;
   flankingBonusMode=3;
