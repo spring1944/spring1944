@@ -458,3 +458,22 @@ function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, pa
   
   return true
 end
+
+function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+  local sortie = sortieDefs[unitDefID]
+  if sortie then
+    ModifyWeight(unitTeam, sortie, -1)
+    return
+  end
+  
+  radios[unitTeam][unitID] = nil
+end
+
+function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+  local _, _, inBuild = GetUnitIsStunned(unitID)
+  if inBuild then
+    gadget:UnitCreated(unitID, unitDefID, unitTeam)
+  else
+    gadget:UnitFinished(unitID, unitDefID, unitTeam)
+  end
+end
