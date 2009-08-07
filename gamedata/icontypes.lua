@@ -9,6 +9,11 @@ local iconTypes = {
 		size			=	1.65,
 		distance	=	0.15,
 	},
+	paratrooper = {
+		bitmap		=	"icons/rifle.tga",
+		size			=	1.65,
+		distance	=	5000,
+	},
 	assault = {
 		bitmap		=	"icons/assault.tga",
 		size			=	1.5,

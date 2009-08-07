@@ -21,7 +21,7 @@
   flankingBonusMin=1;
   footprintX=1;
   footprintZ=1;
-  iconType=rifle;
+  iconType=paratrooper;
   mass=50;
   maxDamage=60;
   maxSlope=15;
