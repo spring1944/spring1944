@@ -15,7 +15,7 @@
     feartarget=1;
     lowammolevel=3;
     maxammo=10;
-    weaponcost=10;
+    weaponcost=15;
     weaponswithammo=1;
   }
   damageModifier=0.23;
