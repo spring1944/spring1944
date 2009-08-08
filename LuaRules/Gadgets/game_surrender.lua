@@ -97,8 +97,8 @@ function GG.surrender(unitID, esTime)
 				if nearestGuard ~= nil then
 				local guardTeam = GetUnitTeam(nearestGuard)
 					local px, py, pz = GetTeamStartPosition(guardTeam)
-					px = math.random((px-50), (px+50))
-					pz = math.random ((pz - 50), (px + 50))
+					px = math.random((px - 50), (px + 50))
+					pz = math.random((pz - 50), (pz + 50))
 					if guardTeam ~= surrenderedUnits[unitID].originalTeam then
 						GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
 					end
