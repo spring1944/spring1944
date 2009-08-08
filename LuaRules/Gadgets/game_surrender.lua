@@ -22,7 +22,9 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 local CMD_FIRESTATE		=	CMD.FIRE_STATE
 local CMD_MOVESTATE		=	CMD.MOVE_STATE
+local CMD_MOVE			=	CMD.MOVE
 
+local GetTeamStartPosition	=	Spring.GetTeamStartPosition
 local GetUnitTransporter	=	Spring.GetUnitTransporter
 local GetGameFrame			=	Spring.GetGameFrame
 local GetGameSeconds		=	Spring.GetGameSeconds
@@ -34,6 +36,8 @@ local GetUnitTeam			=	Spring.GetUnitTeam
 local GetUnitAllyTeam		=	Spring.GetUnitAllyTeam
 local GetGaiaTeamID			=	Spring.GetGaiaTeamID
 local GetTeamInfo			=	Spring.GetTeamInfo
+
+
 local AddTeamResource		=	Spring.AddTeamResource
 local SetUnitSensorRadius	=	Spring.SetUnitSensorRadius
 local TransferUnit			= 	Spring.TransferUnit
@@ -41,8 +45,8 @@ local GiveOrderToUnit		=	Spring.GiveOrderToUnit
 local SetUnitNeutral		=	Spring.SetUnitNeutral
 
 local surrenderedUnits		= 	{}
-local escapeRadius 			=	1000 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
-local enemyMult				=	2.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
+local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
+local enemyMult				=	1.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
 --[[
 esTime is given by the call to GG.surrender, 
 and sets how long the unit can be guard-free 
@@ -69,10 +73,13 @@ function GG.surrender(unitID, esTime)
 			 for i = 1, #nearbyUnits do
 				local nearbyUnit = nearbyUnits[i]
 				local unitAllyTeam = GetUnitAllyTeam(nearbyUnit)
-				if allyTeam == unitAllyTeam then
-					allyTotal = allyTotal + 1
-				else
-					enemyTotal = enemyTotal + 1
+				local nearbyUnitTeam = GetUnitTeam(nearbyUnit)
+				if nearbyUnitTeam ~= GAIA_TEAM_ID then
+					if allyTeam == unitAllyTeam then
+						allyTotal = allyTotal + 1
+					else
+						enemyTotal = enemyTotal + 1
+					end
 				end
 			end
 		end
@@ -86,10 +93,15 @@ function GG.surrender(unitID, esTime)
 					surrenderTime = currentTime,
 					escapeTime = esTime,
 				}
-				
+				local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
+				local guardTeam = GetUnitTeam(nearestGuard)
+				local px, py, pz = GetTeamStartPosition(guardTeam)
 				TransferUnit(unitID, GAIA_TEAM_ID)
 				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
-				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)    
+				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)  
+				if guardTeam ~= surrenderedUnits[unitID].originalTeam then
+					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
+				end
 			end
 		end
 		nearbyUnits[unitID] = nil

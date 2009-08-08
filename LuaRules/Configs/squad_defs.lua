@@ -659,7 +659,7 @@ local squadDefs = {
 		"usgithompson",
 		"usgithompson",
 		"usgithompson",
-		"usgiflamethrower",
+		"usgibazooka",
 		"usgiflamethrower",
 		"usgibar",
 		"usgibar",
