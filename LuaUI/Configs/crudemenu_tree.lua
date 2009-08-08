@@ -56,7 +56,7 @@ local menu_tree = {
 	},
 	{'Settings',
 		{
-			{'Language...', ShowFlags },	
+			{'cmf_Language...', 'ShowFlags' },	
 			{'Lowest Settings', 
 				{
 					{'Reset all settings to minimum.'},
@@ -159,7 +159,7 @@ local menu_tree = {
 				}
 			},
 			
-			{'Menu', 
+			{'Interface', 
 				{
 					--[[
 					{'Spring Build Menu',
@@ -214,6 +214,8 @@ local menu_tree = {
 							{'ch_Disable', 'noContextClick' },
 						}	
 					},
+					{'Toggle Chili Chat', function() spSendCommands{"luaui togglewidget Chili Chat Beta"} end },
+					{'Toggle BuildBar', function() spSendCommands{"luaui togglewidget BuildBar"} end },
 					
 				}
 			},
@@ -232,7 +234,8 @@ local menu_tree = {
 						}
 					},
 					--]]
-					{'Widget List...', ShowWidgetList2},
+					--{'Widget List...', ShowWidgetList2},
+					{'cmf_Widget List...', 'ShowWidgetList2'},
 					{'LuaUI TweakMode (Esc to exit)', function() spSendCommands{"luaui tweakgui"} end },
 					
 				}

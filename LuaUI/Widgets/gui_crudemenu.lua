@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Crude Menu",
-    desc      = "v0.60 Crude Chili Menu.",
+    desc      = "v0.61 Crude Chili Menu.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
@@ -71,6 +71,9 @@ local myAlliance = Spring.GetLocalAllyTeamID()
 local ceasefires = true
 local cycle = 1
 
+local cmfunctions = {}
+
+
 if not WG.Layout then
 	WG.Layout = {}
 end
@@ -132,7 +135,7 @@ local groupDescs = {
   ungrouped    = "Ungrouped",
 }
 
-function comma_value(amount)
+local function comma_value(amount)
   local formatted = amount
   while true do  
     formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
@@ -174,12 +177,11 @@ local function getUdFromName(unitName, tooltip)
 		local humanName = ud.humanName:gsub('[^a-zA-Z]', '')
 		local scrunched_tooltip = tooltip:match('([a-zA-Z0-9 :,]*)')
 		local scrunched_udtooltip = ud.tooltip:match('([a-zA-Z0-9 :,]*)')
-		
+
 		if humanName == unitName then
-		--echo(scrunched_tooltip ..'||'.. scrunched_udtooltip)
-		end
-		if humanName == unitName and scrunched_tooltip == scrunched_udtooltip then
-			return ud
+			if tooltip == '' or scrunched_tooltip == scrunched_udtooltip then
+				return ud
+			end
 		end
 	end
 	return false
@@ -369,7 +371,6 @@ local function printunitinfo(ud, lang, buttonWidth)
 			padding = {0,0,0,0},
 			itemPadding = {0,0,0,0},
 			itemMargin = {0,0,0,0},
-			--orientation='horizontal',
 			height = stackchildrenheight,
 			width = 40,
 			resizeItems = false,
@@ -381,27 +382,29 @@ local function printunitinfo(ud, lang, buttonWidth)
 	
 	stackchildren[#stackchildren+1] = Label:New{ caption = 'STATS', width = 200, height=20, textColor = color.stats_header,}
 	
-	stackchildren[#stackchildren+1] = Label:New{ caption = '   Cost: ' .. comma_value(ud.metalCost), width = 200,  textColor = color.stats_fg}
-	stackchildren[#stackchildren+1] = Label:New{ caption = '   Max HP: ' .. comma_value(ud.health), width = 200,  textColor = color.stats_fg}
+	stackchildren[#stackchildren+1] = Label:New{ caption = '   Cost: ' .. comma_value(ud.metalCost), width = 200,  textColor = color.stats_fg, height=15}
+	stackchildren[#stackchildren+1] = Label:New{ caption = '   Max HP: ' .. comma_value(ud.health), width = 200,  textColor = color.stats_fg, height=15}
 	if ud.speed > 0 then
-		stackchildren[#stackchildren+1] = Label:New{ caption = '   Speed: ' .. ToSI(ud.speed,2), width = 200,  textColor = color.stats_fg}
+		stackchildren[#stackchildren+1] = Label:New{ caption = '   Speed: ' .. ToSI(ud.speed,2), width = 200,  textColor = color.stats_fg, height=15}
 	end
 	
 	local cells = printWeapons(ud)
-	if cells then
+	
+	if cells and #cells > 0 then
 		stackchildren[#stackchildren+1] = Label:New{ caption = '', width = 250,  textColor = color.stats_header,}
 		stackchildren[#stackchildren+1] = Label:New{ caption = 'WEAPONS', width = 250,  textColor = color.stats_header,}
 		for _,v in ipairs(cells) do
-			stackchildren[#stackchildren+1] = Label:New{ caption = v, width = 250,  textColor = color.stats_fg}
+			stackchildren[#stackchildren+1] = Label:New{ caption = v, width = 250,  textColor = color.stats_fg, height=15}
 		end
 	end
-		
+	
+	stackchildren[#stackchildren+1] = Label:New{ caption = '--', width = 250,  textColor = color.stats_fg, height=20}
+	
 	return 
 	
 	StackPanel:New{
 		y=0,
-		width = 300,
-		height = (#stackchildren-1)*20 + stackchildren[1].height,
+		autoSize = true,
 		children = stackchildren,
 		padding = {0,0,0,0},
 		itemPadding = {0,0,0,0},
@@ -462,14 +465,20 @@ end
 
 local function getShortTooltip()
 	local tooltip = spGetCurrentTooltip()
+	local start,fin = tooltip:find([[ - ]], 1, true) 
 	if tooltip:find('Build') == 1 then
-		local start,fin = tooltip:find([[ - ]], 1, true) 
+		if not start then
+			return false
+		end
 		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(8,-2), 'Build: ', tooltip:gsub('[^-]*\- (.*)', '%1')
 		return tooltip:sub(8,start-1), 'Build: ', tooltip:sub(fin+1)
 	elseif tooltip:find('Morph') == 5 then
 		return tooltip:gsub('([^(time)]*)\(time).*', '%1'):sub(18), 'Morph to: ', ''
+		
 	elseif tooltip:find('Selected') == 1 then
-		local start,fin = tooltip:find([[ - ]], 1, true) 
+		if not start then
+			return false
+		end
 		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(11,-2), 'Selected: ', tooltip:gsub('[^-]*\- (.*)', '%1')
 		return tooltip:sub(11,start-1), 'Selected: ', tooltip:sub(fin+1)
 			
@@ -518,18 +527,18 @@ local function hideAll(self)
 	end
 end
 
-function saveSubPos(self)
+local function saveSubPos(self)
 	settings.sub_pos_x = self.parent.parent.x
 	settings.sub_pos_y = self.parent.parent.y
 	--setSubPos()
 end
-function saveSubPosSpecial(self)
+local function saveSubPosSpecial(self)
 	settings.sub_pos_x = self.parent.x
 	settings.sub_pos_y = self.parent.y
 	--setSubPos()
 end
 
-function setSubPos()
+local function setSubPos()
 	for _, window in ipairs(subwindows) do
 		window.x = settings.sub_pos_x
 		window.y = settings.sub_pos_y
@@ -643,7 +652,7 @@ local function MakeUnitContextMenu(unitID,x,y)
 	}
 end
 
-function MakeWidgetList()
+local function MakeWidgetList()
 
 	if window_widgetlist then
 		window_widgetlist:Dispose()
@@ -730,7 +739,7 @@ function MakeWidgetList()
 	
 end
 
-function MakeToolTip(x,y, ttstr, ud, playerName)
+local function MakeToolTip(x,y, ttstr, ud, playerName)
 	local y = scrH-y
 	
 	if cycle ~= 1 and window_tooltip and ttstr == old_ttstr then
@@ -825,7 +834,7 @@ function MakeToolTip(x,y, ttstr, ud, playerName)
 				height = window_height,
 				resizeItems=false,
 				padding = {0,0,0,0},
-				itemPadding = {0,0,0,0},
+				itemPadding = {1,1,1,1},
 				itemMargin = {0,0,0,0},
 				children = {
 					Image:New{
@@ -848,7 +857,7 @@ local function ShowWidgetList(self)
 	spSendCommands{"luaui selector"} 
 end
 
-local function ShowWidgetList2(self)
+cmfunctions.ShowWidgetList2 = function(self)
 	saveSubPos(self)
 	hideWindow(self.parent.parent)
 	MakeWidgetList()
@@ -856,15 +865,12 @@ local function ShowWidgetList2(self)
 end
 
 
-local function ShowFlags(self)
+cmfunctions.ShowFlags = function(self)
 	saveSubPos(self)
 	hideWindow(self.parent.parent)
 	window_parents[window_flags] = self.parent.parent --oogly
 	showWindow(window_flags)
 end
---fixme: fix these ridiculous workarounds!
-menu_tree[3][2][1][2] = ShowFlags
-menu_tree[3][2][6][2][1][2] = ShowWidgetList2
 
 
 local function makeCrudeMenu()
@@ -991,6 +997,8 @@ local function make_menu(menu_name, tree, previous_window)
 			local action = data[2]
 			if name and not action then
 				children[#children + 1] = Label:New{ caption = name, width=buttonWidth,textColor = color.sub_fg,}
+			elseif name and name:sub(1,4) == 'cmf_' and action then
+				children[#children + 1] = Button:New{ caption = name:sub(5), OnMouseUp = {cmfunctions[action]},textColor = color.sub_fg,  backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
 			elseif name and name:sub(1,3) == 'ch_' and action then
 				children[#children + 1] = Checkbox:New{ caption = name:sub(4), checked = settings[action], OnMouseUp = { function() settings[action] = not settings[action] checkChecks() end },textColor = color.sub_fg,}
 			elseif name and name:sub(1,3) == 'tr_' and action then
@@ -1291,12 +1299,12 @@ function widget:Initialize()
 		'us', 
 	}
 	local country_langs = {
-		--br='bp',
-		--fi='fi', 
-		--fr='fr', 
-		--my='my', 
-		--pl='pl',
-		--pt='pt',
+		br='bp',
+		fi='fi', 
+		fr='fr', 
+		my='my', 
+		pl='pl',
+		pt='pt',
 	}
 
 	local flagChildren = {}
