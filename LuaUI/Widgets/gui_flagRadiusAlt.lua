@@ -66,7 +66,7 @@ function widget:DrawWorldPreUnit()
 		if teamFlags then
 			for j = 1, #teamFlags do
 				unitID = teamFlags[j]
-				if (IsUnitVisible(unitID)) then
+				if (IsUnitVisible(unitID, _, true) ) then
 					local colorSet  = teamColors[teamID]
 					local x, y, z = GetUnitBasePosition(unitID)
 					gl.LineWidth(1)
