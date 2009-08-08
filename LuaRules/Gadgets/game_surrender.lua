@@ -94,14 +94,20 @@ function GG.surrender(unitID, esTime)
 					escapeTime = esTime,
 				}
 				local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
+				if nearestGuard ~= nil then
 				local guardTeam = GetUnitTeam(nearestGuard)
-				local px, py, pz = GetTeamStartPosition(guardTeam)
+					local px, py, pz = GetTeamStartPosition(guardTeam)
+					px = math.random((px-50), (px+50))
+					pz = math.random ((pz - 50), (px + 50))
+					if guardTeam ~= surrenderedUnits[unitID].originalTeam then
+						GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
+					end
+				end
 				TransferUnit(unitID, GAIA_TEAM_ID)
 				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
 				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)  
-				if guardTeam ~= surrenderedUnits[unitID].originalTeam then
-					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
-				end
+
+
 			end
 		end
 		nearbyUnits[unitID] = nil
