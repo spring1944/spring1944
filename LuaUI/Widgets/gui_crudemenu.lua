@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Crude Menu",
-    desc      = "v0.61 Crude Chili Menu.",
+    desc      = "v0.62 Crude Chili Menu.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
@@ -92,6 +92,7 @@ local settings = {
 	hideUnits = WG.Layout.hideUnits,
 	hideUnits = WG.Layout.hideUnits,
 	horizontal = false,
+	simple_tooltip = false,
 }
 
 local th
@@ -760,19 +761,19 @@ local function MakeToolTip(x,y, ttstr, ud, playerName)
 	
 	local text_count = #ttstr
 	
-	if not ud then
-		local tt_width = text_count * 8
+	if settings.simple_tooltip or not ud then
+		local tt_width = text_count * 7
 		window_tooltip = Window:New{  
 			x = x,  
 			y = y,  
 			clientWidth  = tt_width,
-			clientHeight = 20,
+			clientHeight = 15,
 			resizable = false,
 			draggable = false,
 			parent = screen0,
 			backgroundColor = color.tooltip_bg, 
 			children = {
-				Label:New{ caption = ttstr, width=tt_width, height='10', textColor=color.tooltip_fg, },
+				Label:New{ caption = ttstr, width=tt_width, height='10', textColor=color.tooltip_fg, valign='center'},
 			}
 		}
 		return
@@ -1000,7 +1001,7 @@ local function make_menu(menu_name, tree, previous_window)
 			elseif name and name:sub(1,4) == 'cmf_' and action then
 				children[#children + 1] = Button:New{ caption = name:sub(5), OnMouseUp = {cmfunctions[action]},textColor = color.sub_fg,  backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
 			elseif name and name:sub(1,3) == 'ch_' and action then
-				children[#children + 1] = Checkbox:New{ caption = name:sub(4), checked = settings[action], OnMouseUp = { function() settings[action] = not settings[action] checkChecks() end },textColor = color.sub_fg,}
+				children[#children + 1] = Checkbox:New{ caption = name:sub(4), checked = settings[action] or false, OnMouseUp = { function() settings[action] = not settings[action] checkChecks() end },textColor = color.sub_fg,}
 			elseif name and name:sub(1,3) == 'tr_' and action then
 				children[#children + 1] = Label:New{ caption = name:sub(4), width=buttonWidth,textColor = color.sub_fg,}
 				if type(action) == 'table' then

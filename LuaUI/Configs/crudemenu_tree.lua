@@ -212,6 +212,7 @@ local menu_tree = {
 							{},
 							{'Meta Click Context Menu'},
 							{'ch_Disable', 'noContextClick' },
+							{'ch_Simple Tooltips', 'simple_tooltip' },
 						}	
 					},
 					{'Toggle Chili Chat', function() spSendCommands{"luaui togglewidget Chili Chat Beta"} end },
