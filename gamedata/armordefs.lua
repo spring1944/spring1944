@@ -407,6 +407,7 @@ local armorDefs = {
   "ger_platoon_scout",
   
   "rus_platoon_assault",
+  "rus_platoon_commissar",
   "rus_platoon_rifle",
   "rus_platoon_atlight",
   "rus_platoon_atheavy",

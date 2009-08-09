@@ -408,10 +408,16 @@ local squadDefs = {
 	 -----------------------------
 	 -- RUS Platoons and Squads --
 	 -----------------------------
-
-	 ["rus_platoon_rifle"] =
+	 ["rus_platoon_commissar"] =
 	{
 		"ruscommissar",
+		"ruscommissar",
+		"ruscommissar",
+	},
+	
+	 ["rus_platoon_rifle"] =
+	{
+		"rusrifle",
 		"rusptrd",
 		"rusrifle",
   		"rusrifle",
@@ -497,7 +503,7 @@ local squadDefs = {
 		"rusppsh",
 		"rusppsh",
 		"rusppsh",
-		"ruscommissar",
+		"rusdp",
 	},
     	
     ["rus_platoon_partisan"] =

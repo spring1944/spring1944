@@ -47,9 +47,11 @@ treads()
 
 // Transport script courtesy of Gnome's script for Spring SW reb ground trans
 TransportPickup(unitid) {
+if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
 	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200]) {
 		attach-unit unitid to base;
 	}
+}
 }
 
 TransportDrop(unitid, position) {

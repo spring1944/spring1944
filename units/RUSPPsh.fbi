@@ -13,7 +13,7 @@
   corpse=RUSSoldier_dead;
   [customParams] {
     feartarget=1;
-    flagCapRate=0.1;
+    flagCapRate=0.085;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

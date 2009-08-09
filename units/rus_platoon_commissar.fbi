@@ -1,13 +1,13 @@
 [unitinfo] {
-  unitname=rus_platoon_rifle;
-  name=Rifle Platoon;
-  description=10 x Mosin-Nagant Rifle, 2 x PPsh-43 SMG, 1 x PTRD Anti-Tank Rifle: Long-Range Combat Platoon;
+  unitname=rus_platoon_commissar;
+  name=Political Commissar Group;
+  description=3 x Commissar: Rapidly Captures Territory, Recruits Partisans;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1100;
-  buildPic=RUSRifle.png;
-  buildTime=1100;
+  buildCostMetal=830;
+  buildPic=ruscommissar.png;
+  buildTime=830;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
