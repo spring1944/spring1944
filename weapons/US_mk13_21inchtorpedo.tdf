@@ -8,7 +8,7 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=10000;
+    default=90000;
   }
   edgeEffectiveness=0.5;
   explosionSpeed=30;
