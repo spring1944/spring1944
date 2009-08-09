@@ -70,6 +70,29 @@ end
 		end
 	end
 
+	if (modOptions and modOptions.flankingmax_mult) then
+		for name, ud in pairs(UnitDefs) do
+				if (ud.flankingbonusmax) then
+				ud.flankingbonusmax = (modOptions.flankingmax_mult * ud.flankingbonusmax)
+				end
+		end
+	end
+	
+	if (modOptions and modOptions.flankingmin_mult) then
+		for name, ud in pairs(UnitDefs) do
+				if (ud.flankingbonusmin) then
+				ud.flankingbonusmin = (modOptions.flankingmin_mult * ud.flankingbonusmin)
+				end
+		end
+	end
+	
+	if (modOptions and modOptions.flankingmobility_mult) then
+		for name, ud in pairs(UnitDefs) do
+				if (ud.flankingbonusmobilityadd) then
+				ud.flankingbonusmobilityadd = (modOptions.flankingmobility_mult * ud.flankingbonusmobilityadd)
+				end
+		end
+	end
 	--[[	for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
 				if (ud.customparams.weaponcost) then

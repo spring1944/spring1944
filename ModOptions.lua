@@ -228,6 +228,39 @@ local options = {
 		step   = 0.25,
 	},
 	
+	{
+		key = "flankingmax_mult",
+		name = "FlankingBonusMax",
+		desc = "Changes the damage bonus on shots to the opposite of the 'main' fire-taking side of the unit (ie, a perfect 180 degree flank with value of 1.5 will get 50% damage bonus) (key = 'flankingmax_mult')",
+	    type   = "number",
+		def    = 1,
+		min    = 1,
+		max    = 5,
+		step   = 0.05,
+	},
+	
+	{
+		key = "flankingmin_mult",
+		name = "FlankingBonusMin multiplier",
+		desc = "Changes the armor bonus on the 'main' fire-taking side of the unit (ie, 0.8 = they take 80% of normal damage in regular 1 directional firefights) (key = 'flankingmin_mult')",
+	    type   = "number",
+		def    = 1,
+		min    = 0.01,
+		max    = 1,
+		step   = 0.05,
+	},
+	
+	{
+		key = "flankingmobility_mult",
+		name = "FlankingBonusMobilityAdd multiplier",
+		desc = "Changes how fast the 'shielded' direction of the unit can adjust to fire coming from a new side. Values>1 mean flanking attacks do less damage (beacuse the shield adapts faster) while values < 1 give more benefit to flanking. (key = 'flankingbonus_mult')",
+	    type   = "number",
+		def    = 1,
+		min    = 0.01,
+		max    = 5,
+		step   = 0.1,
+	},
+	
 	--[[{
     key    = "weapon_range_mult",
     name   = "Weapon range multiplier",

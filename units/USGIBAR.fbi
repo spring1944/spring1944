@@ -16,9 +16,10 @@
 	helptext = Long range, medium accuracy, medium rate of fire. Good at pinning troops. Fires in short bursts. Armed with secondary grenades.;
   }
   damageModifier=0.23;
-  flankingBonusMode=3;
-  flankingBonusMax=1.35;
-  flankingBonusMin=1;
+  flankingBonusMode=1;
+  flankingBonusMax=1;
+  flankingBonusMax=1;
+  flankingBonusMobilityAdd=0.01;
   footprintX=1;
   footprintZ=1;
   iconType=bar;

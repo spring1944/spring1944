@@ -22,7 +22,7 @@
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
   flankingBonusMin=0.75;
-  flankingBonusMode=3;
+  flankingBonusMode=1;
   footprintX=3;
   footprintZ=3;
   iconType=atartillery;
