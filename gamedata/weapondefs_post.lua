@@ -221,78 +221,92 @@ end
 --
 
 if (modOptions) then
- if (modOptions.weapon_range_mult) then
-	local totalWeapons
-	totalWeapons = 0
-	local rangeCoeff
-	rangeCoeff = modOptions.weapon_range_mult
-	Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
-	for name in pairs(WeaponDefs) do
-		local curRange = WeaponDefs[name].range
-		if (curRange) then
-			WeaponDefs[name].range = curRange * rangeCoeff
-			totalWeapons = totalWeapons + 1
-		end
-	end
-	Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
+  if (modOptions.weapon_range_mult) then
+    local totalWeapons
+    totalWeapons = 0
+    local rangeCoeff = modOptions.weapon_range_mult
+    local velocityCoeff = rangeCoeff^(2/3)
+    Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
+    for name in pairs(WeaponDefs) do
+      local weaponDef = WeaponDefs[name]
+    
+      local curRange = weaponDef.range
+      if (curRange) then
+        WeaponDefs[name].range = curRange * rangeCoeff
+      end
+      
+      local curVelocity = weaponDef.weaponvelocity
+      if curVelocity then
+        weaponDef.weaponvelocity = curVelocity * velocityCoeff
+      end
+      
+      local curAccel = weaponDef.weaponacceleration
+      if weaponacceleration then
+        weaponDef.weaponacceleration = curAccel * velocityCoeff
+      end
+      
+      totalWeapons = totalWeapons + 1
+    end
+    Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
   end
-  
+    
   if (modOptions.weapon_reload_mult) then
-	local totalWeapons
-	totalWeapons = 0
-	local reloadCoeff
-	reloadCoeff = modOptions.weapon_reload_mult
-	Spring.Echo("Starting weapon reload multiplying, coefficient: "..reloadCoeff)
-	for name in pairs(WeaponDefs) do
-		local curReload = WeaponDefs[name].reloadtime
-		local rendertype = WeaponDefs[name].rendertype
-		local explosiongenerator = WeaponDefs[name].explosiongenerator
-		if (curReload) then
-			WeaponDefs[name].reloadtime = curReload * reloadCoeff
-			if (WeaponDefs[name].sprayangle) then
-				WeaponDefs[name].sprayangle	= (WeaponDefs[name].sprayangle/reloadCoeff)
-			end
-			if (WeaponDefs[name].accuracy) then
-				WeaponDefs[name].accuracy = (WeaponDefs[name].accuracy/reloadCoeff)
-			end
-			totalWeapons = totalWeapons + 1
-		end
-	end
+    local totalWeapons
+    totalWeapons = 0
+    local reloadCoeff
+    reloadCoeff = modOptions.weapon_reload_mult
+    Spring.Echo("Starting weapon reload multiplying, coefficient: "..reloadCoeff)
+    for name in pairs(WeaponDefs) do
+      local curReload = WeaponDefs[name].reloadtime
+      local rendertype = WeaponDefs[name].rendertype
+      local explosiongenerator = WeaponDefs[name].explosiongenerator
+      if (curReload) then
+        WeaponDefs[name].reloadtime = curReload * reloadCoeff
+        if (WeaponDefs[name].sprayangle) then
+          WeaponDefs[name].sprayangle  = (WeaponDefs[name].sprayangle/reloadCoeff)
+        end
+        if (WeaponDefs[name].accuracy) then
+          WeaponDefs[name].accuracy = (WeaponDefs[name].accuracy/reloadCoeff)
+        end
+        totalWeapons = totalWeapons + 1
+      end
+    end
   end
+
   if (modOptions.weapon_edgeeffectiveness_mult) then
-	local edgeeffectCoeff
-	edgeeffectCoeff = modOptions.weapon_edgeeffectiveness_mult
-	for name in pairs(WeaponDefs) do
-		local curEdgeeffect = WeaponDefs[name].edgeeffectiveness
-		if (curEdgeeffect) then
-			WeaponDefs[name].edgeeffectiveness = curEdgeeffect * edgeeffectCoeff
-		end
-	end
+    local edgeeffectCoeff
+    edgeeffectCoeff = modOptions.weapon_edgeeffectiveness_mult
+    for name in pairs(WeaponDefs) do
+      local curEdgeeffect = WeaponDefs[name].edgeeffectiveness
+      if (curEdgeeffect) then
+        WeaponDefs[name].edgeeffectiveness = curEdgeeffect * edgeeffectCoeff
+      end
+    end
   end
-  
+    
   if (modOptions.weapon_aoe_mult) then
-	local aoeCoeff
-	aoeCoeff = modOptions.weapon_aoe_mult
-	for name in pairs(WeaponDefs) do
-		if (WeaponDefs[name].lineofsight ~= 1) then
-			local curAoe = WeaponDefs[name].areaofeffect
-			if (curAoe) then
-				WeaponDefs[name].areaofeffect = curAoe * aoeCoeff
-			end
-		end
-	end
+    local aoeCoeff
+    aoeCoeff = modOptions.weapon_aoe_mult
+    for name in pairs(WeaponDefs) do
+      if (WeaponDefs[name].lineofsight ~= 1) then
+        local curAoe = WeaponDefs[name].areaofeffect
+        if (curAoe) then
+          WeaponDefs[name].areaofeffect = curAoe * aoeCoeff
+        end
+      end
+    end
   end
-  
+    
   if (modOptions.weapon_hedamage_mult) then
-	local heCoeff
-	heCoeff = modOptions.weapon_hedamage_mult
-	for name in pairs(WeaponDefs) do
-		--if (WeaponDefs[name].canattackground == true) and (WeaponDefs[name].lineofsight ~= 1) then
-			for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
-				WeaponDefs[name].damage[armorType] = armorDamage * heCoeff
-			end
-		--end
-	end
+    local heCoeff
+    heCoeff = modOptions.weapon_hedamage_mult
+    for name in pairs(WeaponDefs) do
+      --if (WeaponDefs[name].canattackground == true) and (WeaponDefs[name].lineofsight ~= 1) then
+        for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
+          WeaponDefs[name].damage[armorType] = armorDamage * heCoeff
+        end
+      --end
+    end
   end
 end
 --------------------------------------------------------------------------------
