@@ -301,12 +301,12 @@ local options = {
 
 	{
     key    = "weapon_range_mult",
-    name   = "'Realistic' range multiplier",
-    desc   = "Applies a multiplier to weapon ranges to make them more 'realistic'; default is our best guess.",
+    name   = "Range multiplier",
+    desc   = 'Multiplies the range of all weapons, adjusting accuracy and weapon velocity as well. 1 is default, 8 is "realistic".',
     type   = "number",
-    def    = 8.0,
+    def    = 1.0,
     min	   = 0.1,
-    max    = 10,
+    max    = 8.0,
 	section = '4other',
     step   = 0.1,
 },

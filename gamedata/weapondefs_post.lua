@@ -221,22 +221,23 @@ end
 --
 
 if (modOptions) then
-  if (modOptions.weapon_range_mult) then
+  if (tonumber(modOptions.weapon_range_mult) or 1 ~= 1) then
     local totalWeapons
     totalWeapons = 0
     local rangeCoeff = modOptions.weapon_range_mult
     local velocityCoeff = rangeCoeff^(2/3)
     local flightTimeCoeff = rangeCoeff^(1/3)
-    local accuracyMult = 1 / math.sqrt(rangeCoeff)
+    local accuracyMult = 1 / rangeCoeff
+    local wobbleMult = 1 / flightTimeCoeff
     
     local mults = {
       range = rangeCoeff,
       weaponvelocity = velocityCoeff,
       weaponacceleration = velocityCoeff,
       flighttime = flightTimeCoeff,
+      wobble = wobbleMult,
       accuracy = accuracyMult,
       sprayangle = accuracyMult,
-      wobble = accuracyMult,
       targetmoveerror = accuracyMult,
     }
     

@@ -14,7 +14,6 @@ if not gadgetHandler:IsSyncedCode() then return end
 
 local windFactor = 0.1
 local drag = 0.06
-local relVelPeriod = 1
 local relVelHoriz = 0.5
 local relVelVert = 0.5
 
