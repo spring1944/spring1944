@@ -11,7 +11,7 @@
   canMove=1;
   category=FLAG;
   [customParams] {
-    helptext = 3-man squad containing three medium machineguns. ||| Like the German machinegun squad, the .30 caliber Browning MGs fielded by this squad is capable of firing as medium machineguns from a prone position, as well as deploying into a heavy machinegun on a tripod mount. 
+    helptext = 3-man squad containing three medium machineguns. ||| Like the German machinegun squad, the .30 caliber Browning MGs fielded by this squad is capable of firing as medium machineguns from a prone position, as well as deploying into a heavy machinegun on a tripod mount. ;
   }    
   explodeAs=noweapon;
   footprintX=1;
