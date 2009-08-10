@@ -226,23 +226,29 @@ if (modOptions) then
     totalWeapons = 0
     local rangeCoeff = modOptions.weapon_range_mult
     local velocityCoeff = rangeCoeff^(2/3)
+    local flightTimeCoeff = rangeCoeff^(1/3)
+    local accuracyMult = 1 / math.sqrt(rangeCoeff)
+    
+    local mults = {
+      range = rangeCoeff,
+      weaponvelocity = velocityCoeff,
+      weaponacceleration = velocityCoeff,
+      flighttime = flightTimeCoeff,
+      accuracy = accuracyMult,
+      sprayangle = accuracyMult,
+      wobble = accuracyMult,
+      targetmoveerror = accuracyMult,
+    }
+    
+    
     Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
     for name in pairs(WeaponDefs) do
       local weaponDef = WeaponDefs[name]
-    
-      local curRange = weaponDef.range
-      if (curRange) then
-        WeaponDefs[name].range = curRange * rangeCoeff
-      end
       
-      local curVelocity = weaponDef.weaponvelocity
-      if curVelocity then
-        weaponDef.weaponvelocity = curVelocity * velocityCoeff
-      end
-      
-      local curAccel = weaponDef.weaponacceleration
-      if weaponacceleration then
-        weaponDef.weaponacceleration = curAccel * velocityCoeff
+      for tag, mult in pairs(mults) do
+        if weaponDef[tag] then
+          weaponDef[tag] = weaponDef[tag] * mult
+        end
       end
       
       totalWeapons = totalWeapons + 1
