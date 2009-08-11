@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=APMine;
-  name=Anti-Personelle Mine;
+  name=Anti-Personnel Mine;
   buildCostEnergy=0;
   buildCostMetal=1;
   buildingGroundDecalSizeX=1;
@@ -20,7 +20,7 @@
   init_cloaked=1;
   kamikaze=1;
   levelGround=0;
-  maxDamage=100;
+  maxDamage=10;
   maxSlope=3;
   maxWaterDepth=50;
   minCloakDistance=1e-07;

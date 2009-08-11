@@ -20,7 +20,7 @@
   init_cloaked=1;
   kamikaze=1;
   levelGround=0;
-  maxDamage=500;
+  maxDamage=10;
   maxSlope=15;
   maxWaterDepth=50;
   minCloakDistance=1e-07;
