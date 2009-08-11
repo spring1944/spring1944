@@ -6,7 +6,7 @@
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=4000;
-  buildPic=GERBf109.png;
+  buildPic=GERFw190.png;
   buildTime=4000;
   canMove=1;
   category=FLAG;
