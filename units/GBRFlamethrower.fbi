@@ -19,8 +19,8 @@
   }
   damageModifier=0.23;
   flankingBonusMode=1;
-  flankingBonusMax=1;
-  flankingBonusMax=1;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
   explodeAs=Small_Explosion;
   footprintX=1;

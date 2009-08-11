@@ -22,8 +22,8 @@
   }
   damageModifier=0.23;
   flankingBonusMode=1;
-  flankingBonusMax=1;
-  flankingBonusMax=1;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
   energyStorage=0.01;
   footprintX=1;
