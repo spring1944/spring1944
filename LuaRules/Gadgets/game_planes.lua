@@ -277,7 +277,7 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
     end
   end
 
-  SendMessageToTeam(teamID, sortie.name .. " sortie arrived.")
+  SendMessageToTeam(teamID, sortie.name .. " arrived.")
 end
 
 local function GetSpawnPoint(teamID, numPlanes)
