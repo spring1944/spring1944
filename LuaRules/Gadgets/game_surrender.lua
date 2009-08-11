@@ -45,8 +45,8 @@ local GiveOrderToUnit		=	Spring.GiveOrderToUnit
 local SetUnitNeutral		=	Spring.SetUnitNeutral
 
 local surrenderedUnits		= 	{}
-local escapeRadius 			=	700 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
-local enemyMult				=	2 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
+local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
+local enemyMult				=	2 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering - 2 means that if there are half the # of enemies as there are allies, and the unit is scared enough, they'll surrender
 --[[
 esTime is given by the call to GG.surrender, 
 and sets how long the unit can be guard-free 
