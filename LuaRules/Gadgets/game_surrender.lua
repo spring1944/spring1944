@@ -45,8 +45,8 @@ local GiveOrderToUnit		=	Spring.GiveOrderToUnit
 local SetUnitNeutral		=	Spring.SetUnitNeutral
 
 local surrenderedUnits		= 	{}
-local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
-local enemyMult				=	1.5 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
+local escapeRadius 			=	700 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
+local enemyMult				=	2 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering
 --[[
 esTime is given by the call to GG.surrender, 
 and sets how long the unit can be guard-free 
@@ -87,27 +87,25 @@ function GG.surrender(unitID, esTime)
 		--if he's scared enough and there are too many bad guys around - surrender!
 		if ((enemyMult*enemyTotal) > allyTotal) then
 			local currentTime = GetGameSeconds()
-			if (currentTeam ~= GAIA_TEAM_ID) and (surrenderedUnits[unitID] == nil) then 
-				surrenderedUnits[unitID] = {
-					originalTeam = currentTeam,
-					surrenderTime = currentTime,
-					escapeTime = esTime,
-				}
-				local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
-				if nearestGuard ~= nil then
+			local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
+			if nearestGuard ~= nil then -- shouldn't ever be nil, really; the count just happened!
 				local guardTeam = GetUnitTeam(nearestGuard)
+				if (currentTeam ~= GAIA_TEAM_ID) and (surrenderedUnits[unitID] == nil) then 
+					surrenderedUnits[unitID] = {
+						originalTeam = currentTeam,
+						surrenderTime = currentTime,
+						escapeTime = esTime,
+						capturingTeam = guardTeam,
+					}
+					TransferUnit(unitID, GAIA_TEAM_ID)
+					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
+					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)  
+					
 					local px, py, pz = GetTeamStartPosition(guardTeam)
-					px = math.random((px - 50), (px + 50))
-					pz = math.random((pz - 50), (pz + 50))
-					if guardTeam ~= surrenderedUnits[unitID].originalTeam then
-						GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
-					end
+					px = math.random((px - 1000), (px + 1000))
+					pz = math.random((pz - 1000), (pz + 1000))
+					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
 				end
-				TransferUnit(unitID, GAIA_TEAM_ID)
-				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_FIRESTATE, { 0 }, 0)
-				GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)  
-
-
 			end
 		end
 		nearbyUnits[unitID] = nil
@@ -125,32 +123,33 @@ function gadget:GameFrame(n)
 	end
 	if n % (1*30) < 0.1 then
 		for unitID, someThing in pairs(surrenderedUnits) do
-			local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
+			local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0) --GAIA is allied to all teams in this gadget
 			local inTransport = GetUnitTransporter(unitID)	
 			local currentTime = GetGameSeconds()
 			local captureTime = surrenderedUnits[unitID].surrenderTime
 			local escapeTime = surrenderedUnits[unitID].escapeTime
-
+			local oldTeam = surrenderedUnits[unitID].originalTeam
+			local captureTeam = surrenderedUnits[unitID].capturingTeam
 			if nearestGuard ~= nil then
-				local oldTeam = surrenderedUnits[unitID].originalTeam
-				local separation = GetUnitSeparation(unitID, nearestGuard)
 				local guardTeam = GetUnitTeam(nearestGuard)
-					if guardTeam == oldTeam and ((currentTime - captureTime) > (escapeTime/2)) and (inTransport == nil) then --nearby friendlies let the prisoner escape in half the time; its all a mental prison, really.
+					if guardTeam == oldTeam and ((currentTime - captureTime) > (escapeTime/2)) and (inTransport == nil) and GG.fear[unitID] < 20 then --nearby friendlies let the prisoner escape in half the time; its all a mental prison, really.
 						TransferUnit(unitID, oldTeam)
 						surrenderedUnits[unitID] = nil
 						return
 					end
-					if separation > escapeRadius and (inTransport == nil) then
-						if ((currentTime - captureTime) > escapeTime) and GG.fear[unitID] == 0 then
-							TransferUnit(unitID, oldTeam)
-							surrenderedUnits[unitID] = nil
-						end             
-					else
+					if guardTeam == captureTeam then
+						if (tonumber(modOptions.prisoner_income) > 0) then
+								AddTeamResource(guardTeam, "m", modOptions.prisoner_income or 1)
+						end
 						surrenderedUnits[unitID].surrenderTime = n / 30
 					end
-					if (tonumber(modOptions.prisoner_income) > 0) and guardTeam ~= oldTeam then
-							AddTeamResource(guardTeam, "m", modOptions.prisoner_income or 1)
-					end
+			else
+				if inTransport == nil then
+					if ((currentTime - captureTime) > escapeTime) and GG.fear[unitID] == 0 then
+							TransferUnit(unitID, oldTeam)
+							surrenderedUnits[unitID] = nil
+					end             	
+				end
 			end
 		end
     end
