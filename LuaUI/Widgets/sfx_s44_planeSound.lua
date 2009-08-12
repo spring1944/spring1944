@@ -99,3 +99,9 @@ end
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	times[unitID] = nil
 end
+
+function widget:AddConsoleLine(msg, priority)
+  if msg:find("enemy aircraft spotted") then
+    PlaySoundFile("sounds/GEN_air_raid.wav", 1)
+  end
+end

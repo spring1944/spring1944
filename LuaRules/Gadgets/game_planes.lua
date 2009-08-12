@@ -394,11 +394,11 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
       ModifyStockpile(teamID, sortie, -1)
       local sx, sy, sz = GetSpawnPoint(teamID, #sortie)
       DelayCall(SpawnFlight, {teamID, sortie, sx, sy, sz, cmdParams}, sortie.delay * 30)
-      SendMessageToTeam(teamID, sortie.name .. " sortie ordered. ETE " .. (sortie.delay or 0) .. "s.")
+      SendMessageToTeam(teamID, sortie.name .. " ordered. ETE " .. (sortie.delay or 0) .. "s.")
       local _, _, _, _, _, allyTeam = Spring.GetTeamInfo(teamID)
       for _, alliance in ipairs(Spring.GetAllyTeamList()) do
-        if alliance ~= allyTeam and #sortie > 1 then
-          Spring.SendMessageToAllyTeam(alliance, "Incoming Enemy Aircraft Spotted, arriving in 15-45 seconds")
+        if alliance ~= allyTeam and sortie.weight > 0 then
+          Spring.SendMessageToAllyTeam(alliance, "Incoming enemy aircraft spotted, arriving in 15-45 seconds")
         end
       end
     else
