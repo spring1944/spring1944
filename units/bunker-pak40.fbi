@@ -7,7 +7,7 @@
   buildCostMetal=1200;
   buildTime=1200;
   canMove=0;
-  category=MINETRIGGER OPENVEH;
+  category=BUILDING;
   corpse=bunker-pak40_Dead;
   [customParams] {
     ammoSupplier=1;
