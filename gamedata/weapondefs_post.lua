@@ -304,15 +304,15 @@ if (modOptions) then
     end
   end
     
-  if (modOptions.weapon_hedamage_mult) then
-    local heCoeff
-    heCoeff = modOptions.weapon_hedamage_mult
+  if (modOptions.weapon_apdamage_mult) then
+    local apCoeff
+    apCoeff = modOptions.weapon_apdamage_mult
     for name in pairs(WeaponDefs) do
-      --if (WeaponDefs[name].canattackground == true) and (WeaponDefs[name].lineofsight ~= 1) then
+      if (WeaponDefs[name].customparams.damagetype == 'kinetic') then
         for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
-          WeaponDefs[name].damage[armorType] = armorDamage * heCoeff
+          WeaponDefs[name].damage[armorType] = armorDamage * apCoeff
         end
-      --end
+      end
     end
   end
 end

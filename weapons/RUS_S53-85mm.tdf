@@ -1,6 +1,6 @@
 [s5385mmap] {
   name=S-53/ZIS-S-53 85mm Armour-Piercing Ammunition;
-  accuracy=350;
+  accuracy=290;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;

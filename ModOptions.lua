@@ -236,6 +236,19 @@ local options = {
 	desc   = "Sets experimental balance options.",
 	type   = 'section',
   },
+  
+     {
+    key    = "weapon_apdamage_mult",
+    name   = "AP damage multiplier",
+    desc   = "Applies a multiplier to all the AP damage values",
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.01,
+    max    = 2,
+	section= '1balance',
+    step   = 0.05,
+  },
+  
   	{
 		key = "prisoner_income",
 		name = "Command Income per tick per prisoner",
