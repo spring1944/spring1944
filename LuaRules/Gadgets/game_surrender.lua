@@ -47,6 +47,7 @@ local SetUnitNeutral		=	Spring.SetUnitNeutral
 local surrenderedUnits		= 	{}
 local escapeRadius 			=	500 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
 local enemyMult				=	2 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering - 2 means that if there are half the # of enemies as there are allies, and the unit is scared enough, they'll surrender
+local surrenderDestDistance	=	700 --the distance that the 4 "holding spots" for prisoners will be from that team's starting pos.
 --[[
 esTime is given by the call to GG.surrender, 
 and sets how long the unit can be guard-free 
@@ -102,8 +103,24 @@ function GG.surrender(unitID, esTime)
 					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVESTATE, { 0 }, 0)  
 					
 					local px, py, pz = GetTeamStartPosition(guardTeam)
-					px = math.random((px - 1000), (px + 1000))
-					pz = math.random((pz - 1000), (pz + 1000))
+					local pickDest = math.random(1,4)
+					if pickDest == 1 then
+					px = (px - surrenderDestDistance)
+					pz = (pz - surrenderDestDistance)
+					end
+					if pickDest == 2 then
+					px = (px + surrenderDestDistance)
+					pz = (pz + surrenderDestDistance)
+					end
+					if pickDest == 3 then
+					px = (px + surrenderDestDistance)
+					pz = (pz - surrenderDestDistance)
+					end
+					if pickDest == 4 then
+					px = (px - surrenderDestDistance)
+					pz = (pz + surrenderDestDistance)
+					end
+
 					GG.GiveOrderToUnitDisregardingNoSelect(unitID, CMD_MOVE, {px, py, pz}, {})  
 				end
 			end
