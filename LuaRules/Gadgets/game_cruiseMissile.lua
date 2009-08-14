@@ -53,6 +53,7 @@ local GetUnitVelocity = Spring.GetUnitVelocity
 local GetGroundHeight = Spring.GetGroundHeight
 local GetGameFrame = Spring.GetGameFrame
 local SetUnitNoSelect = Spring.SetUnitNoSelect
+local SetUnitAlwaysVisible = Spring.SetUnitAlwaysVisible
 
 function gadget:Initialize()
   for unitDefID = 1, #UnitDefs do
@@ -118,6 +119,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   mcSetVelocity(unitID, vx, 0, vz)
   
   SetUnitNoSelect(unitID, true)
+  SetUnitAlwaysVisible(unitID, true)
   
   local dropDist = defInfo.dropDist
   local dropDelay = 30 * (s - dropDist) / defInfo.speed

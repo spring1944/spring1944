@@ -93,7 +93,7 @@ local sortieDefs = {
     
     groundOnly = 1,
     alwaysAttack = 1,
-    delay = 1,
+    delay = 45,
     weight = 1,
   },
   

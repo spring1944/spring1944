@@ -31,7 +31,7 @@
   maneuverleashlength=1280;
   maxAileron=0.00465;
   maxBank=1;
-  maxDamage=224.7;
+  maxDamage=215;
   maxElevator=0.0036;
   maxFuel=120;
   maxPitch=0.1;
@@ -64,9 +64,5 @@
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   wingAngle=0.1;
   wingDrag=0.1;
-
-  weapon1=v1;
-  maxAngleDif1=30;
-  weaponMainDir1=0 0 1;
 }
 
