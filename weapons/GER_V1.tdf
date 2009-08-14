@@ -1,15 +1,15 @@
 [v1] {
   name=V1 missile;
-  areaOfEffect=128;
+  areaOfEffect=200;
   ballistic=1;
   cegTag=BazookaTrail;
   [customParams] {
     damageType=explosive;
   }
   [damage] {
-    default=20000;
+    default=30000;
   }
-  explosionGenerator=custom:HE_Medium;
+  explosionGenerator=custom:HE_XXLarge;
   explosionSpeed=30;
   fireStarter=0;
   flightTime=1;
@@ -17,7 +17,7 @@
   range=360;
   reloadTime=10;
   rendertype=1;
-  soundHit=GEN_Explo_3;
+  soundHit=GEN_Explo_9;
   soundTrigger=0;
   startVelocity=10;
   targetMoveError=0.075;

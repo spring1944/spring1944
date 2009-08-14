@@ -395,6 +395,7 @@ buildoptions =
     "ger_sortie_fighter",
     "ger_sortie_fighter_bomber",
     "ger_sortie_attack",
+    "ger_sortie_flying_bomb",
   },
   
   gerboatyard =

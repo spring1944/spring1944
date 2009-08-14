@@ -353,6 +353,7 @@ local armorDefs = {
     "GERFw190",
     "GERFw190G",
     "GERJu87G",
+    "gerv1",
   
     --US--
     "USP47Thunderbolt",

@@ -2,7 +2,7 @@
 
 piece  base, exhaust;
 
-static-var bIsMoving;
+static-var isFalling;
 
 #include "air_sharedDefs.h"
 
@@ -36,33 +36,23 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 	}
 }
 
+Falling() {
+	isFalling = 1;
+}
+
 ExhaustSmoke()
 {
-	while(TRUE)
+	while(!isFalling)
 	{
-		sleep 50;
-		if(bIsMoving)
-		{
-			emit-sfx SFXTYPE_WHITESMOKE from exhaust;
-		}
+		sleep 30;
+		emit-sfx SFXTYPE_WHITESMOKE from exhaust;
 	}
 }
 
 Create()
 {
-	bIsMoving=FALSE;
 	start-script SmokeUnit();
 	start-script ExhaustSmoke();
-}
-
-StartMoving()
-{
-	bIsMoving=TRUE;
-}
-
-StopMoving()
-{
-	bIsMoving=FALSE;
 }
 
 SweetSpot(piecenum)
@@ -70,29 +60,7 @@ SweetSpot(piecenum)
 	piecenum = base;
 }
 
-AimFromWeapon1(piecenum)
-{
-	piecenum = base;
-}
-
-QueryWeapon1(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon1(heading, pitch)
-{
-	return (1);
-}
-
-FireWeapon1()
-{
-	// fire weapon, remove the unit from the game
-	get KILL_UNIT(get MY_ID, 0, 1);
-}
-
 Killed(severity, corpsetype)
 {
 	corpsetype = 1;
-	explode base type SHATTER;
 }

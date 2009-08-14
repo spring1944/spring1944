@@ -1,7 +1,7 @@
 [UNITINFO] {
   UnitName=GERV1;
   name=V-1 (Fi-103);
-  description=Cruise Missile;
+  description=Flying Bomb;
   acceleration=0.5;
   airSightDistance=0;
   bmcode=1;
@@ -20,6 +20,7 @@
   category=AIR;
   cruiseAlt=1000;
   [customParams] {
+    cruise_missile_accuracy=500;
   }
   explodeAs=v1;
   footprintX=4;

@@ -88,6 +88,13 @@ local sortieDefs = {
     weight = 1,
   },
   
+  ger_sortie_flying_bomb = {
+    "gerv1",
+    
+    delay = 45,
+    weight = 1,
+  },
+  
   rus_sortie_recon = {
     "ruspo2",
     

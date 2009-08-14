@@ -117,16 +117,20 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
   if sortieUnitDef then
     local sortieUnitDefID = sortieUnitDef.id
     
-    
     local cmdDesc = {
       id = currCmdID,
-      type = CMDTYPE_ICON_UNIT_OR_MAP,
       name = "0 Ready",
       disabled = true,
       cursor = sortie.cursor or "Attack",
       tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),
       texture = sortie.texture or "unitpics/" .. sortieUnitDef.buildpicname,
     }
+    
+    if sortie.groundOnly then
+      cmdDesc.type = CMDTYPE_ICON_MAP
+    else
+      cmdDesc.type = CMDTYPE_ICON_UNIT_OR_MAP
+    end
     
     sortie.cmdDesc = cmdDesc
     sortie.name = sortieUnitDef.humanName
