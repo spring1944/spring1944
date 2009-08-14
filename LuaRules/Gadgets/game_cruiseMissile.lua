@@ -20,6 +20,7 @@ local cruiseIDs = {}
 
 local terminalIDs = {}
 
+local MIN_HEIGHT = 100
 local HEIGHT_SMOOTHING = 0.05
 local GRAVITY = Game.gravity
 local CMD_ATTACK = CMD.ATTACK
@@ -95,9 +96,15 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   tx = tx + cos(randAngle) * radius
   tz = tz + sin(randAngle) * radius
   
-  local ux, _, uz = GetUnitPosition(unitID)
-  local uy = GetGroundHeight(ux, uz) + defInfo.wantedHeight
   local ty = GetGroundHeight(tx, tz)
+  
+  local ux, _, uz = GetUnitPosition(unitID)
+  
+  local wantedAlt = ty + defInfo.wantedHeight
+  local uy = GetGroundHeight(ux, uz) + MIN_HEIGHT
+  if uy < wantedAlt then
+    uy = wantedAlt
+  end
   
   local dx, dy, dz = tx - ux, ty - uy, tz - uz
   local sx, _, sz, s = vNormalized(dx, 0, dz)
@@ -125,6 +132,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   
   cruiseIDs[unitID] = {
     defInfo = defInfo,
+    wantedAlt = wantedAlt,
     dropFrame = GetGameFrame() + dropDelay,
   }
   
@@ -144,12 +152,15 @@ function gadget:GameFrame(n)
       mcSetGravity(unitID, defInfo.gravity)
     else
       local ux, uy, uz = GetUnitPosition(unitID)
-      local gh = GetGroundHeight(ux, uz)
-      local agl = uy - gh
+      local diff = info.wantedAlt - uy
+      local nextAlt = uy + diff * HEIGHT_SMOOTHING
       
-      local heightChange = (defInfo.wantedHeight - agl) * HEIGHT_SMOOTHING
+      uy = GetGroundHeight(ux, uz) + MIN_HEIGHT
+      if uy < nextAlt then
+        uy = nextAlt
+      end
       
-      mcSetPosition(unitID, ux, uy + heightChange, uz)
+      mcSetPosition(unitID, ux, uy, uz)
     end
   end
   
