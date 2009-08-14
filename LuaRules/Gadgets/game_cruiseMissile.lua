@@ -22,6 +22,7 @@ local terminalIDs = {}
 
 local HEIGHT_SMOOTHING = 0.05
 local GRAVITY = Game.gravity
+local CMD_ATTACK = CMD.ATTACK
 
 local sin, cos = math.sin, math.cos
 local atan2 = math.atan2
@@ -78,6 +79,8 @@ function gadget:Initialize()
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
+  if cmdID ~= CMD_ATTACK then return true end
+
   if cruiseIDs[unitID] then return false end
 
   local defInfo = cruiseDefIDs[unitDefID]
@@ -114,7 +117,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   
   if dropDelay < 0 then
     ux, uz = tx - dropDist * sx, tz - dropDist * sz
-    uy = GetGroundHeight(ux, uz) + defInfo.wantedHeight
+    uy = GetGroundHeight(tx, tz) + defInfo.wantedHeight
     dropDelay = 0
   end
   

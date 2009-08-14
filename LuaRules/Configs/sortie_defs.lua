@@ -91,6 +91,8 @@ local sortieDefs = {
   ger_sortie_flying_bomb = {
     "gerv1",
     
+    groundOnly = 1,
+    alwaysAttack = 1,
     delay = 45,
     weight = 1,
   },
