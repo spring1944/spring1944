@@ -227,7 +227,7 @@ if (modOptions) then
     local rangeCoeff = modOptions.weapon_range_mult
     local velocityCoeff = rangeCoeff^(2/3)
     local flightTimeCoeff = rangeCoeff^(1/3)
-    local accuracyMult = 1 / rangeCoeff
+    local accuracyMult = 1 / math.sqrt(rangeCoeff)
     local wobbleMult = 1 / flightTimeCoeff
     
     local mults = {
