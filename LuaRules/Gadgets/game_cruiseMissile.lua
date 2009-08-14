@@ -124,7 +124,10 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   
   if dropDelay < 0 then
     ux, uz = tx - dropDist * sx, tz - dropDist * sz
-    uy = GetGroundHeight(tx, tz) + defInfo.wantedHeight
+    uy = GetGroundHeight(ux, uz) + MIN_HEIGHT
+    if uy < wantedAlt then
+      uy = wantedAlt
+    end
     dropDelay = 0
   end
   
