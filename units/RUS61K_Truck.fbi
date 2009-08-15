@@ -26,9 +26,9 @@
   leaveTracks=1;
   mass=300;
   maxDamage=300;
-  maxReverseVelocity=2.25;
+  maxReverseVelocity=1.59;
   maxSlope=10;
-  maxVelocity=4.5; //4.8
+  maxVelocity=3.8; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;

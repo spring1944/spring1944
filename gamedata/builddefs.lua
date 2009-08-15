@@ -648,7 +648,20 @@ buildoptions =
     "ruspg117",
     "pontoonraft",
   },
-
+  
+  ruscommissar1 =
+  {
+    "ruspshack",
+    "rusbarracks",
+    "rusgunyard",
+    "apminesign",
+    "atminesign",
+    "tankobstacle",
+    "russtorage",
+    --"sandbags",
+    "ruspg117",
+    "pontoonraft",
+  },
   ruspshack =
   {
     --"ruscommissar1",

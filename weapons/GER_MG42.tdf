@@ -104,7 +104,7 @@
   interceptedByShieldType=8;
   laserFlareSize=0.0001;
   lineofsight=1;
-  range=1520;
+  range=760;
   reloadTime=2.55;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;

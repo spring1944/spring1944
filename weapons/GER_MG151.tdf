@@ -20,7 +20,7 @@
   interceptedByShieldType=8;
   lineofsight=1;
   predictBoost=0.5;
-  range=1825;
+  range=900;
   reloadTime=0.8;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
@@ -55,7 +55,7 @@
   fireStarter=10;
   interceptedByShieldType=8;
   lineofsight=1;
-  range=1825;
+  range=900;
   reloadTime=1.25;
   rendertype=1;
   rgbColor=1.0 0.75 0.0;

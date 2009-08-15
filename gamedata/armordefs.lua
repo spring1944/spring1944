@@ -51,6 +51,7 @@ local armorDefs = {
     "RUSSniper",
     "RUSPartisanRifle",
     "RUSCommissar",
+	"RUSCommissar1",
     "AI_RUSCommissar",
 
     --Britain--

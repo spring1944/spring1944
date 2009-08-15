@@ -31,7 +31,7 @@ if (gadgetHandler:IsSyncedCode()) then
 local SetUnitNoSelect = GG.SetUnitNoSelect --uses game_noselect gadget
 local GiveOrderToUnit = GG.GiveOrderToUnitDisregardingNoSelect
 
-local bugOutLevel = 2 --amount of fear where the plane bugs out back to HQ
+local bugOutLevel = 1 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
 local hqIDs = {}

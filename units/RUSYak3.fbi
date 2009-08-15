@@ -58,7 +58,7 @@
   }
   showNanoFrame=0;
   Side=RUS;
-  sightDistance=500;
+  sightDistance=325;
   smoothAnim=1;
   SoundCategory=RUSFighter;
   stealth=1;

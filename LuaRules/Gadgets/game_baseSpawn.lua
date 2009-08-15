@@ -57,7 +57,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		end
 		-- Don't place units too close together.
 		local ud = UnitDefs[unitDefID]
-		local units = Spring.GetUnitsInCylinder(x, z, 250)
+		local units = Spring.GetUnitsInCylinder(x, z, 200)
 		if (units[1] ~= nil) then
 			return false
 		end

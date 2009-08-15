@@ -5,18 +5,18 @@
   burst=2;
   burstRate=0.5;
   canAttackGround=0;
-  collisionSize=1e-05;
+  collisionSize=0.1;
   craterBoost=0.2;
   craterMult=0.2;
   [customParams] {
     damagetype=explosive;
-    fearaoe=250;
+    fearaoe=400;
     fearid=701;
   }
   [damage] {
     default=275;
   }
-  edgeEffectiveness=1e-07;
+  edgeEffectiveness=0.00001;
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   fireStarter=0;
