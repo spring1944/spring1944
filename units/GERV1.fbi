@@ -20,6 +20,8 @@
   category=AIR;
   cruiseAlt=1000;
   [customParams] {
+    enginesound=v1-;
+    enginesoundnr=20;
     cruise_missile_accuracy=500;
   }
   explodeAs=v1;
