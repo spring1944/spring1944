@@ -21,8 +21,8 @@
   category=AIR;
   cruiseAlt=480;
   [customParams] {
-    enginesound=spitfireb-;
-    enginesoundnr=18;
+    enginesound=po2-;
+    enginesoundnr=11;
     feartarget=1;
     planevoice=1;
     proptexture=bitmaps/prop3.tga;
