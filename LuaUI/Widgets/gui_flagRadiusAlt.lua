@@ -1,6 +1,6 @@
 function widget:GetInfo()
   return {
-    name      = "1944 Flag Ranges Alt",
+    name      = "1944 Flag Ranges",
     desc      = "Shows a flag's capping radius and team colour",
     author    = "CarRepairer",
     date      = "2009-08-08",
