@@ -48,8 +48,8 @@ local hqDefs = {
 				"rus61k_stationary",
 				"rus61k_stationary",
 				"rus_platoon_partisan",
-				"ruscommissar1",
-				"ruscommissar1",
+				"ruscommissar",
+				"ruscommissar",
 			},
 		},
 }
