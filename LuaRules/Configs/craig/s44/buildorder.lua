@@ -205,6 +205,7 @@ gadget.baseBuilders = UnitSet{
 	"gersdkfz9",
 	"ruscommander", -- contrary to other sides Russia can start immediately
 	"ruscommissar", -- after game start with base building...
+	"ruscommissar1",
 	"rusengineer",
 	"rusk31",
 	"ushqengineer",

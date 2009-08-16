@@ -41,7 +41,7 @@ function gadget:GameStart()
 					GG.teamSide[teamID] = "us"
 				end
 				if randomComm == 3 then
-					Spring.CreateUnit("ruscommander", x, y, z, 0, teamID)
+					Spring.CreateUnit("ruscommissar1", x, y, z, 0, teamID)
 					GG.teamSide[teamID] = "rus"
 				end
 				if randomComm == 4 then
