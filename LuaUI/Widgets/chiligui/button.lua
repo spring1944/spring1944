@@ -19,7 +19,7 @@ local glColor      = gl.Color
 
 --//=============================================================================
 
-function Button:Draw()
+function Button:DrawControl()
   local w,h = self.width, self.height
   
   local vc = h*0.5 --//verticale center

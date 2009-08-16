@@ -32,7 +32,7 @@ local glRect     = gl.Rect
 local glColor    = gl.Color
 local glBeginEnd = gl.BeginEnd
 
-function Colorbars:Draw()
+function Colorbars:DrawControl()
   glPushMatrix()
   glTranslate(self.x,self.y,0)
 
@@ -81,7 +81,9 @@ function Colorbars:MouseDown(x,y)
 
   if (x<=barswidth)and(r<=1) then
     local barIdx = (yp-r)/2 + 1
-    self.color[barIdx] = math.min(1,x/barswidth)
+    local newvalue = x/barswidth
+    if (newvalue>1) then newvalue=1 elseif (newvalue<0) then newvalue=0 end
+    self.color[barIdx] = newvalue
     self:SetColor(self.color)
     return self
   end

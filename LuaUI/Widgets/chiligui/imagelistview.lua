@@ -8,6 +8,7 @@ ImageListView = LayoutPanel:Inherit{
 
   autoArrangeH = false,
   autoArrangeV = false,
+  centerItems  = false,
 
   iconX     = 64,
   iconY     = 64,
@@ -80,10 +81,22 @@ function ImageListView:_AddFile(name,imagefile)
     padding = {0,0,0,0},
     itemPadding = {0,0,0,0},
     itemMargin = {0,0,0,0},
-    autoArrangeV  = false,
+    rows = 2,
+    columns = 1,
+
     children = {
-      Image:New{file = ':cn:'..imagefile},
-      Label:New{width = self.iconX+10, align='center', caption = name},
+      Image:New{
+        width  = self.iconX,
+        height = self.iconY,
+        file = ':cn:'..imagefile,
+      },
+      Label:New{
+        width = self.iconX+10,
+        height = 20,
+        align = 'center',
+        autosize = false,
+        caption = name,
+      },
     },
   })
 end
@@ -117,15 +130,25 @@ function ImageListView:ScanDir()
     end
   end
 
-  self.children = {}
+  self:DisableRealign()
+    --// clear old
+    for i=#self.children,1,-1 do
+      self:RemoveChild(self.children[i])
+    end
 
-  self:_AddFile('..',theme.imageFolderUp)
-  for i=1,#dirs do
-    self:_AddFile(ExtractFileName(dirs[i]),theme.imageFolder)
-  end
-  for i=1,#imageFiles do
-    self:_AddFile(ExtractFileName(imageFiles[i]),imageFiles[i])
-  end
+    --// add ".."
+    self:_AddFile('..',theme.imageFolderUp)
+
+    --// add dirs at top
+    for i=1,#dirs do
+      self:_AddFile(ExtractFileName(dirs[i]),theme.imageFolder)
+    end
+
+    --// add files
+    for i=1,#imageFiles do
+      self:_AddFile(ExtractFileName(imageFiles[i]),imageFiles[i])
+    end
+  self:EnableRealign()
 end
 
 

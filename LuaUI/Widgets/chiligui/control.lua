@@ -2,10 +2,6 @@
 
 Control = Object:Inherit{
   classname       = 'control',
-  x               = 0,
-  y               = 0,
-  width           = 10,
-  height          = 10,
   padding         = theme.padding, --//FIXME table.shallowcopy() should be automatically used for all tables!!!!!
   borderThickness = theme.borderThickness,
   borderColor1    = theme.borderColor1,
@@ -14,7 +10,6 @@ Control = Object:Inherit{
   font            = theme.defaultFont,
   fontsize        = theme.defaultFontSize,
   textColor       = theme.defaultTextColor,
-  children        = {},
   snapToGrid      = false,
   visible         = true,
   resizeGripSize  = {10, 10},
@@ -24,10 +19,6 @@ Control = Object:Inherit{
   resizeGripColor = {0.8, 1, 0.7, 0.2},
   fixedRatio      = false,
   anchors         = {top=true,left=true,bottom=false,right=false},
-
-  OnMouseDown = {},
-  OnMouseUp   = {},
-  OnMouseMove = {},
 }
 
 local this = Control
@@ -36,6 +27,7 @@ local this = Control
 
 function Control:New(obj)
   obj = (this.inherited).New(self,obj)
+
   local p = self.padding
   if (obj.clientWidth) then
     obj.width = obj.clientWidth + p[1] + p[3]
@@ -44,11 +36,60 @@ function Control:New(obj)
     obj.height = obj.clientHeight + p[2] + p[4]
   end
 
+  local anchors = obj.anchors
+  if (not (anchors.top or anchors.bottom)) then
+    anchors.top = true
+  end
+  if (not (anchors.left or anchors.right)) then
+    anchors.left = true
+  end
+
   obj:UpdateClientArea()
+  obj:CallChildren("SaveAnchors")
   return obj
 end
 
 --//=============================================================================
+
+function Control:SetParent(obj)
+  this.inherited.SetParent(self,obj)
+  self:SaveAnchors()
+end
+
+function Control:AddChild(obj, dontUpdate)
+  this.inherited.AddChild(self,obj)
+  if (not dontUpdate) then
+    self:RequestRealign()
+  end
+end
+
+function Control:RemoveChild(obj)
+  local found  = this.inherited.RemoveChild(self,obj)
+  if (found) then
+    self:RequestRealign()
+  end
+  return found
+end
+
+--//=============================================================================
+
+function Control:Invalidate()
+  self._needRedraw = true
+  --Spring.Echo(self.classname,"Invalidate")
+end
+
+
+function Control:SaveAnchors()
+  local p = self.parent
+  if (p)and(p:InheritsFrom("control")) then
+    local pca = p.clientArea
+    if (pca) then
+      self._anchorOldRight  = pca[3] - self.x - self.width
+      self._anchorOldBottom = pca[4] - self.y - self.height
+    end
+  end
+end
+
 
 function Control:UpdateClientArea()
   local padding = self.padding
@@ -59,16 +100,11 @@ function Control:UpdateClientArea()
     self.height - padding[2] - padding[4]
   }
 
-  local p = self.parent
-  if (p)and(p:InheritsFrom("control")) then
-    local pca = p.clientArea
-    self._anchorOldRight  = pca[3] - self.x - self.width
-    self._anchorOldBottom = pca[4] - self.y - self.height
-  end
-
-  self:Realign()
-  self:Invalidate()
+  self:SaveAnchors()
+  self:RequestRealign()
+  self:Invalidate() --FIXME correct place?
 end
+
 
 function Control:AlignControl()
   local p = self.parent
@@ -98,13 +134,11 @@ function Control:AlignControl()
   end
 
   if (not self.anchors.left) then
-    --newBounds[1] = newBounds[1] - newBounds[3] + self.width
     newBounds[1] = newBounds[1] + newBounds[3] - self.width
     newBounds[3] = self.width
   end
 
   if (not self.anchors.top) then
-    --newBounds[2] = newBounds[2] - newBounds[4] + self.height
     newBounds[2] = newBounds[2] + newBounds[4] - self.height
     newBounds[4] = self.height
   end
@@ -112,25 +146,50 @@ function Control:AlignControl()
   self:SetPos(newBounds[1], newBounds[2], newBounds[3], newBounds[4])
 end
 
+
 function Control:RequestRealign()
   self._realignRequested = true
 end
 
-function Control:Realign()
-  if (not self._inRealign) then
-    self._inRealign = true
-    self:AlignControl()
-    if (self.UpdateLayout) then
-      self:UpdateLayout()
-    end
-    self:RealignChildren()
-    self._inRealign = nil
+
+function Control:DisableRealign()
+  self._realignDisabled = (self._realignDisabled or 0) + 1
+end
+
+
+function Control:EnableRealign()
+  self._realignDisabled = ((self._realignDisabled or 0)>1 and self._realignDisabled - 1) or nil
+  if (self._realignRequested) then
+    self:Realign()
+    self._realignRequested = nil
   end
 end
+
+function Control:Realign()
+  if (not self._realignDisabled) then
+    if (not self._inRealign) then
+      self._inRealign = true
+      self:AlignControl()
+      local childrenAligned = false
+      if (self.UpdateLayout) then
+         childrenAligned = self:UpdateLayout()
+      end
+      self._realignRequested = nil
+      if (not childrenAligned) then
+        self:RealignChildren()
+      end
+      self._inRealign = nil
+    end
+  else
+    self:RequestRealign()
+  end
+end
+
 
 function Control:RealignChildren()
   self:CallChildren"Realign"
 end
+
 
 function Control:SetPos(x, y, w, h)
   if x then
@@ -148,6 +207,7 @@ function Control:SetPos(x, y, w, h)
   self:UpdateClientArea()
 end
 
+
 function Control:Resize(w, h)
   if w then
     self.width = w
@@ -156,24 +216,6 @@ function Control:Resize(w, h)
     self.height = h
   end
   self:UpdateClientArea()
-end
-
---//=============================================================================
-
-function Control:AddChild(obj, dontUpdate)
-  this.inherited.AddChild(self,obj)
-  if (not dontUpdate) then
-    self:RequestRealign()
-  end
-end
-
-
-function Control:RemoveChild(obj)
-  local found  = this.inherited.RemoveChild(self,obj)
-  if (found) then
-    self:RequestRealign()
-  end
-  return found
 end
 
 --//=============================================================================
@@ -215,9 +257,56 @@ function Control:Update()
     self:Realign()
     self._realignRequested = nil
   end
+  if (self._needRedraw) then
+    self:_UpdateOwnDListAndTexture()
+    self:_UpdateAllDListAndTexture()
+  end
 end
 
 --//=============================================================================
+
+function Control:_UpdateOwnDListAndTexture()
+  self:CallChildren('_UpdateOwnDListAndTexture')
+
+  if (self._needRedraw) then
+    if (self._own_dlist) then
+      gl.DeleteList(self._own_dlist)
+      self._own_dlist = nil
+    end
+
+    self._own_dlist = gl.CreateList(self.DrawForList, self, false)
+
+    self._needRedraw = nil
+  end
+end
+
+function Control:_UpdateAllDListAndTexture()
+  if (self._all_dlist) then
+    gl.DeleteList(self._all_dlist)
+    self._all_dlist = nil
+  end
+  self._all_dlist = gl.CreateList(self.DrawForList, self, true)
+
+  if (self.parent)and(not self.parent._needRedraw)and(self.parent._UpdateAllDListAndTexture) then
+    (self.parent):_UpdateAllDListAndTexture()
+  end
+end
+
+--//=============================================================================
+
+function Control:DrawForList(draw_children)
+  if (self._own_dlist) then
+    gl.CallList(self._own_dlist)
+  else
+    self:DrawControl()
+  end
+
+  if (draw_children) then
+    --self:CallChildrenInverse('DrawForList') --FIXME
+    self:DrawChildrenForList() --FIXME
+  end
+end
+
 
 function Control:DrawResizeGripAux()
   local x = self.x + self.width
@@ -247,8 +336,8 @@ function Control:DrawBorder()
 end
 
 
-function Control:Draw()
-  if not self.visible then return end
+function Control:DrawControl()
+  --if not self.visible then return end
   if self.snapToGrid then
     self.x = math.floor(self.x) + 0.5
     self.y = math.floor(self.y) + 0.5
@@ -258,14 +347,40 @@ function Control:Draw()
   if self.resizable then
     self:DrawResizeGrip()
   end
+end
+
+
+function Control:Draw()
+  if (self._all_dlist) then
+    gl.CallList(self._all_dlist);
+    --gl.Color(1,0,0,0.2)
+    --gl.Rect(self.x, self.y, self.x+self.width, self.y+self.height)
+    return;
+  elseif (self._own_dlist) then
+    gl.CallList(self._own_dlist);
+    self:DrawChildren();
+    return;
+  end
+
+  self:DrawControl()
   self:DrawChildren()
 end
 
 
 function Control:DrawChildren()
+  if (next(self.children)) then
+    gl.PushMatrix()
+    gl.Translate(self.x + self.clientArea[1],self.y + self.clientArea[2],0)
+    self:CallChildrenInverse('Draw')
+    gl.PopMatrix()
+  end
+end
+
+--FIXME
+function Control:DrawChildrenForList()
   gl.PushMatrix()
   gl.Translate(self.x + self.clientArea[1],self.y + self.clientArea[2],0)
-  self:CallChildrenInverse('Draw')
+  self:CallChildrenInverse('DrawForList', true)
   gl.PopMatrix()
 end
 
@@ -279,9 +394,8 @@ end
 function Control:HitTest(x,y)
   if self:InClientArea(x,y) then
     local cax,cay = self:LocalToClient(x,y)
-    local cn = self.children
-    for i=1,#cn do
-      local c = cn[i]
+    local childrenByKeys = self.childrenByKeys
+    for c in pairs(childrenByKeys) do
       local cx,cy = c:ParentToLocal(cax,cay)
       if InLocalRect(cx,cy,c.width,c.height) then
         local obj = c:HitTest(cx,cy)

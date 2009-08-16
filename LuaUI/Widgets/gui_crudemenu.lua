@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Crude Menu",
-    desc      = "v0.62 Crude Chili Menu.",
+    desc      = "v0.67 Crude Chili Menu.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
@@ -41,7 +41,7 @@ local echo = Spring.Echo
 
 local VFSMODE      = VFS.RAW_FIRST
 local file = LUAUI_DIRNAME .. "Configs/crudemenu_conf.lua"
-local color, multiweapon, title_text, iconFormat = VFS.Include(file, nil, VFSMODE)
+local menu_tree, game_menu_tree, color, multiweapon, title_text, iconFormat = VFS.Include(file, nil, VFSMODE)
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -70,10 +70,10 @@ local scrH, scrW = 0,0
 local myAlliance = Spring.GetLocalAllyTeamID()
 local ceasefires = true
 local cycle = 1
-
+local game_menu_index = -1
 local cmfunctions = {}
 
-
+WG.crude = {}
 if not WG.Layout then
 	WG.Layout = {}
 end
@@ -93,6 +93,7 @@ local settings = {
 	hideUnits = WG.Layout.hideUnits,
 	horizontal = false,
 	simple_tooltip = false,
+	disable_idle_cursor_tooltip = false,
 }
 
 local th
@@ -101,6 +102,76 @@ local old_mx, old_my = -1,-1
 local mx, my = -1,-1
 local showToolTip =false
 local stillCursorTime = 0
+
+local screen0 = Chili.Screen:New{}
+local subwindows = {}
+local window_parents = {}
+local window_widgetlist
+local window_unitcontext = Window:New{ visible=false, parent = screen0,x=-1000 }
+local window_unitstats = Window:New{ visible=false, parent = screen0,x=-1000 }
+local window_crude 
+local window_flags
+local window_selection
+local window_tooltip
+local window_volume 
+local cmsettings_index = -1
+local window_sub_cur
+
+local flatwindowlist = {}
+local flatwindowlistcount = 0
+
+local groupDescs = {
+  api     = "For Developers",
+  camera  = "Camera",
+  cmd     = "Commands",
+  dbg     = "For Developers",
+  gfx     = "Effects",
+  gui     = "GUI",
+  hook    = "Commands",
+  ico     = "GUI",
+  init    = "Initialization",
+  minimap = "Minimap",
+  snd     = "Sound",
+  test    = "For Developers",
+  unit    = "Units",
+  ungrouped    = "Ungrouped",
+}
+
+local cursorNames = {
+  'cursornormal',
+  'cursorareaattack',
+  'cursorattack',
+  'cursorattack',
+  'cursorbuildbad',
+  'cursorbuildgood',
+  'cursorcapture',
+  'cursorcentroid',
+  'cursordwatch',
+  'cursorwait',
+  'cursordgun',
+  'cursorattack',
+  'cursorfight',
+  'cursorattack',
+  'cursorgather',
+  'cursorwait',
+  'cursordefend',
+  'cursorpickup',
+  'cursormove',
+  'cursorpatrol',
+  'cursorreclamate',
+  'cursorrepair',
+  'cursorrevive',
+  'cursorrepair',
+  'cursorrestore',
+  'cursorrepair',
+  'cursorselfd',
+  'cursornumber',
+  'cursorwait',
+  'cursortime',
+  'cursorwait',
+  'cursorunload',
+  'cursorwait',
+}
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -119,22 +190,6 @@ if tobool(Spring.GetModOptions().noceasefire) or Spring.FixedAllies() then
   ceasefires = false
 end 
 
-local groupDescs = {
-  api     = "For Developers",
-  camera  = "Camera",
-  cmd     = "Commands",
-  dbg     = "For Developers",
-  gfx     = "Effects",
-  gui     = "GUI",
-  hook    = "Commands",
-  ico     = "GUI",
-  init    = "Initialization",
-  minimap = "Minimap",
-  snd     = "Sound",
-  test    = "For Developers",
-  unit    = "Units",
-  ungrouped    = "Ungrouped",
-}
 
 local function comma_value(amount)
   local formatted = amount
@@ -200,7 +255,7 @@ local function getDescription(unitDef, lang)
 		return unitDef.tooltip
 	end
 	local suffix  = ('_' .. lang)
-	return unitDef.customParams and unitDef.customParams['description' .. suffix] or unitDef.customParams.description_en or 'Description error'
+	return unitDef.customParams and unitDef.customParams['description' .. suffix] or unitDef.tooltip or 'Description error'
 end	
 
 
@@ -362,127 +417,107 @@ local function printunitinfo(ud, lang, buttonWidth)
 			}
 	end
 	
-	local helptextbox = TextBox:New{ text = getHelpText(ud, lang), textColor = color.stats_fg, width = 220, } 
-	local stackchildrenheight = 80
+	local helptextbox = TextBox:New{ text = getHelpText(ud, lang), textColor = color.stats_fg, width = 210, x=40} 
+	local blurbheight = 80
 	if helptextbox.height > 80 then
-		stackchildrenheight = helptextbox.height 
+		blurbheight = helptextbox.height 
 	end
-	local stackchildren = {
-		StackPanel:New{
-			padding = {0,0,0,0},
-			itemPadding = {0,0,0,0},
-			itemMargin = {0,0,0,0},
-			height = stackchildrenheight,
-			width = 40,
-			resizeItems = false,
-			children = icons,
-		},
-		helptextbox,
-				
-	}
+	local statschildren = {}
 	
-	stackchildren[#stackchildren+1] = Label:New{ caption = 'STATS', width = 200, height=20, textColor = color.stats_header,}
+	statschildren[#statschildren+1] = Label:New{ caption = 'STATS', textColor = color.stats_header, width=150,}
 	
-	stackchildren[#stackchildren+1] = Label:New{ caption = '   Cost: ' .. comma_value(ud.metalCost), width = 200,  textColor = color.stats_fg, height=15}
-	stackchildren[#stackchildren+1] = Label:New{ caption = '   Max HP: ' .. comma_value(ud.health), width = 200,  textColor = color.stats_fg, height=15}
+	statschildren[#statschildren+1] = Label:New{ caption = '   Cost: ' .. comma_value(ud.metalCost), textColor = color.stats_fg, }
+	statschildren[#statschildren+1] = Label:New{ caption = '   Max HP: ' .. comma_value(ud.health), textColor = color.stats_fg, }
 	if ud.speed > 0 then
-		stackchildren[#stackchildren+1] = Label:New{ caption = '   Speed: ' .. ToSI(ud.speed,2), width = 200,  textColor = color.stats_fg, height=15}
+		statschildren[#statschildren+1] = Label:New{ caption = '   Speed: ' .. ToSI(ud.speed,2), textColor = color.stats_fg, }
 	end
 	
 	local cells = printWeapons(ud)
 	
 	if cells and #cells > 0 then
-		stackchildren[#stackchildren+1] = Label:New{ caption = '', width = 250,  textColor = color.stats_header,}
-		stackchildren[#stackchildren+1] = Label:New{ caption = 'WEAPONS', width = 250,  textColor = color.stats_header,}
+		statschildren[#statschildren+1] = Label:New{ caption = '', textColor = color.stats_header,}
+		statschildren[#statschildren+1] = Label:New{ caption = 'WEAPONS', textColor = color.stats_header,}
 		for _,v in ipairs(cells) do
-			stackchildren[#stackchildren+1] = Label:New{ caption = v, width = 250,  textColor = color.stats_fg, height=15}
+			statschildren[#statschildren+1] = Label:New{ caption = v, textColor = color.stats_fg, }
 		end
 	end
 	
-	stackchildren[#stackchildren+1] = Label:New{ caption = '--', width = 250,  textColor = color.stats_fg, height=20}
-	
 	return 
+		{
+			StackPanel:New{
+				autoArrangeV  = false,
+				padding = {0,0,0,0},
+				itemPadding = {0,0,0,0},
+				itemMargin = {0,0,0,0},
+				height = blurbheight + (#statschildren)*15 +170,
+				width = 250 + 30,
+				resizeItems = false,
+				children = {
+				
+					StackPanel:New{
+						autoArrangeV  = false,
+						padding = {0,0,0,0},
+						itemPadding = {0,0,0,0},
+						itemMargin = {0,0,0,0},
+						height = blurbheight,
+						width = 40,
+						resizeItems = false,
+						children = icons,
+					},
+					
+					helptextbox,
+					
+					StackPanel:New{
+						autoArrangeV  = false,
+						height = (#statschildren)*15,
+						width = 200,
+						children = statschildren,
+						padding = {0,0,0,0},
+						itemPadding = {0,0,0,0},
+						itemMargin = {0,0,0,0},
+					},
+					
+				},
+			},
+			
+		}
 	
-	StackPanel:New{
-		y=0,
-		autoSize = true,
-		children = stackchildren,
-		padding = {0,0,0,0},
-		itemPadding = {0,0,0,0},
-		itemMargin = {0,0,0,0},
-		resizeItems = false,
-	}
 end
 
-local cursorNames = {
-  'cursornormal',
-  'cursorareaattack',
-  'cursorattack',
-  'cursorattack',
-  'cursorbuildbad',
-  'cursorbuildgood',
-  'cursorcapture',
-  'cursorcentroid',
-  'cursordwatch',
-  'cursorwait',
-  'cursordgun',
-  'cursorattack',
-  'cursorfight',
-  'cursorattack',
-  'cursorgather',
-  'cursorwait',
-  'cursordefend',
-  'cursorpickup',
-  'cursormove',
-  'cursorpatrol',
-  'cursorreclamate',
-  'cursorrepair',
-  'cursorrevive',
-  'cursorrepair',
-  'cursorrestore',
-  'cursorrepair',
-  'cursorselfd',
-  'cursornumber',
-  'cursorwait',
-  'cursortime',
-  'cursorwait',
-  'cursorunload',
-  'cursorwait',
-}
-
-local function SetCursor(cursorSet)
+WG.crude.SetCursor = function(cursorSet)
   for _, cursor in ipairs(cursorNames) do
     local topLeft = (cursor == 'cursornormal' and cursorSet ~= 'k_haos_girl')
     Spring.ReplaceMouseCursor(cursor, cursorSet.."/"..cursor, topLeft)
   end
 end
 
-local function RestoreCursor()
+WG.crude.RestoreCursor = function()
   for _, cursor in ipairs(cursorNames) do
     local topLeft = (cursor == 'cursornormal')
     Spring.ReplaceMouseCursor(cursor, cursor, topLeft)
   end
 end
 
-local function getShortTooltip()
+local function tooltipBreakdown()
 	local tooltip = spGetCurrentTooltip()
 	local start,fin = tooltip:find([[ - ]], 1, true) 
-	if tooltip:find('Build') == 1 then
+	if tooltip:find('Build:') == 1 then
 		if not start then
 			return false
 		end
 		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(8,-2), 'Build: ', tooltip:gsub('[^-]*\- (.*)', '%1')
-		return tooltip:sub(8,start-1), 'Build: ', tooltip:sub(fin+1)
+		return tooltip:sub(fin+1), tooltip:sub(8,start-1), 'Build: '
 	elseif tooltip:find('Morph') == 5 then
-		return tooltip:gsub('([^(time)]*)\(time).*', '%1'):sub(18), 'Morph to: ', ''
+		return '', tooltip:gsub('([^(time)]*)\(time).*', '%1'):sub(18), 'Morph to: '
 		
 	elseif tooltip:find('Selected') == 1 then
 		if not start then
 			return false
 		end
 		--return tooltip:gsub('([^-]*)\-.*', '%1'):sub(11,-2), 'Selected: ', tooltip:gsub('[^-]*\- (.*)', '%1')
-		return tooltip:sub(11,start-1), 'Selected: ', tooltip:sub(fin+1)
-			
+		return tooltip:sub(fin+1), tooltip:sub(11,start-1), 'Selected: '
+	else
+		return tooltip
 	end
 	return false, false
 	
@@ -490,59 +525,38 @@ end
 
 ----------------------------------------------------------------
 
-local screen0 = Chili.Screen:New{}
-local subwindows = {}
-local window_parents = {}
-local window_widgetlist
-local window_unitcontext = Window:New{ visible=false, parent = screen0, }
-local window_unitstats = Window:New{ visible=false, parent = screen0, }
-local main_menu_window 
-local game_menu_window 
-local window_crude 
-local window_flags
-local window_tooltip
-local window_volume 
-local window_cmsettings
+local function killWindow(self)
+	self.parent.parent:Dispose()
+end
 
+local function saveSubPos()
+	if window_sub_cur then
+		settings.sub_pos_x = window_sub_cur.x
+		settings.sub_pos_y = window_sub_cur.y
+	end
+end
+
+
+local function killSubWindow()
+	if window_sub_cur then
+		saveSubPos()
+		window_sub_cur:Dispose()
+	end
+end
+
+local function killWindow2(self)
+	self.parent:Dispose()
+end
 
 local function hideWindow(window)
-	window.x = -1000
-	window.y = -1000
+	window:SetPos(-1000, -1000)
 	window.visible = false
 end
 
 local function showWindow(window, x, y)
 	window.visible = true
 	if x then
-		window.x = x
-		window.y = y
-	else
-		window.x = settings.sub_pos_x
-		window.y = settings.sub_pos_y
-	end
-end
-
-local function hideAll(self)
-	for _, window in ipairs(subwindows) do
-		hideWindow(window)
-	end
-end
-
-local function saveSubPos(self)
-	settings.sub_pos_x = self.parent.parent.x
-	settings.sub_pos_y = self.parent.parent.y
-	--setSubPos()
-end
-local function saveSubPosSpecial(self)
-	settings.sub_pos_x = self.parent.x
-	settings.sub_pos_y = self.parent.y
-	--setSubPos()
-end
-
-local function setSubPos()
-	for _, window in ipairs(subwindows) do
-		window.x = settings.sub_pos_x
-		window.y = settings.sub_pos_y
+		window:SetPos(x,y)
 	end
 end
 
@@ -550,6 +564,7 @@ local function MakeStatsWindow(ud, x,y, backbutton)
 	hideWindow(window_unitcontext)
 	
 	local y = scrH-y
+	local x = x
 	
 	if window_unitstats then
 		window_unitstats:Dispose()
@@ -560,30 +575,39 @@ local function MakeStatsWindow(ud, x,y, backbutton)
 	local window_height = 350
 
 	local children = {
-		
 		Label:New{ caption = ud.humanName ..' - '.. getDescription(ud, settings.lang), x=0, y =0, width=buttonWidth,textColor = color.stats_header,},
 		ScrollPanel:New{
 			x = 0,
 			y = B_HEIGHT*1,
-			--y = 0,
 			width = window_width - 5,
 			height = window_height - B_HEIGHT*4,
 			horizontalScrollbar = false,
-			children = {
-				printunitinfo(ud, settings.lang, buttonWidth)
-			},
+			children = printunitinfo(ud, settings.lang, buttonWidth) ,
 		},
-		(backbutton 
-			and Button:New{ 
-					caption = 'Back', 
-					OnMouseUp = { function(self) hideWindow(self.parent) showWindow(window_unitcontext, x, y) end }, 
-					x=0, y=window_height - B_HEIGHT, 
-					width=buttonWidth, 
-					backgroundColor=color.sub_back_bg, 
-					textColor=color.sub_back_fg,
-				}
-			),
 	}
+	if backbutton then
+		children[#children+1] = 
+			Button:New{ 
+				caption = 'Back', 
+				OnMouseUp = { function(self) hideWindow(self.parent) showWindow(window_unitcontext, x, y) end }, 
+				x=0, y=window_height - B_HEIGHT, 
+				width=buttonWidth, 
+				backgroundColor=color.sub_back_bg, 
+				textColor=color.sub_back_fg,
+			}
+	end
+	
+	if x > scrW * (.75) then
+		x = x - window_width - 20
+	else
+		x = x + 20
+	end
+	if y > scrH * (.75) then
+		y = y - window_height - 20
+	else
+		y = y + 20
+	end
+	window_unitstats:Dispose()
 	window_unitstats = Window:New{  
 		x = x,  
 		y = y,  
@@ -600,11 +624,6 @@ local function MakeUnitContextMenu(unitID,x,y)
 	
 	hideWindow(window_unitstats)
 					
-	local y2 = scrH-y
-	if window_unitcontext then
-		window_unitcontext:Dispose()
-	end
-	
 	local udid 			= spGetUnitDefID(unitID)
 	local ud 			= UnitDefs[udid]
 	if not ud then return end
@@ -634,6 +653,8 @@ local function MakeUnitContextMenu(unitID,x,y)
 		Label:New{ caption = 'Alliance - ' .. alliance .. '    Team - ' .. team, x=0, y = 60, width=buttonWidth ,textColor = color.context_fg,},
 		Label:New{ caption = 'Player: ' .. playerName, x=0, y = 80, width=buttonWidth, textColor=teamColor },
 	}
+	local y = scrH-y
+	local x = x
 	
 	if ceasefires and myAlliance ~= alliance then
 		window_height = window_height + B_HEIGHT*2
@@ -641,9 +662,22 @@ local function MakeUnitContextMenu(unitID,x,y)
 		children[#children+1] = Button:New{ caption = 'Break ceasefire/unvote', OnMouseUp = { function() spSendLuaRulesMsg('cf:n'..alliance) spSendLuaRulesMsg('cf:b'..alliance) end }, x=0, y=120, width=buttonWidth}
 	end
 	
+	if x > scrW * (.75) then
+		x = x - window_width - 20
+	else
+		x = x + 20
+	end
+	if y > scrH * (.75) then
+		y = y - window_height - 20
+	else
+		y = y + 20
+	end
+	if window_unitcontext then
+		window_unitcontext:Dispose()
+	end
 	window_unitcontext = Window:New{  
 		x = x,  
-		y = y2,  
+		y = y,  
 		clientWidth  = window_width,
 		clientHeight = window_height,
 		resizable = false,
@@ -695,22 +729,26 @@ local function MakeWidgetList()
 		end)
 		i=i+1
 		widget_children[#widget_children + 1] = 
-			Label:New{ 
-				caption = catdesc, x=20, y = i * B_HEIGHT, width=buttonWidth, textColor = color.sub_header,
-				anchors = {top=true,left=true,bottom=true,right=true},
-			}
+			Label:New{ caption = '-='.. catdesc ..'=-', textColor = color.sub_header, align='center', }
 		
 		for _, wdata in ipairs(catwidgets) do
 			i=i+1
+			
+			local order = widgetHandler.orderList[wdata.name]
+			local enabled = order and (order > 0)
+			local hilite_color = (wdata.active and {0,1,0,1}) or (enabled  and {1,1,0.5,1}) or {1,0,0,1}
+        
 			widget_children[#widget_children + 1] = Checkbox:New{ 
-					x = 20, 
-					y = i * B_HEIGHT, 
 					caption = wdata.name_display, 
-					width=buttonWidth-30, 
 					checked = wdata.active,
-					textColor = color.sub_fg,
-					OnMouseUp = { function() widgetHandler:ToggleWidget(wdata.name)end },
-					anchors = {top=true,left=true,bottom=true,right=true},
+					textColor = hilite_color,
+					OnMouseUp = { 
+						function(self) 
+							widgetHandler:ToggleWidget(wdata.name)
+							self.textColor = self.checked and {0,1,0,1} or {1,0,0,1}
+							self:UpdateClientArea()
+						end,
+					},
 				}
 		end
 	end
@@ -723,246 +761,391 @@ local function MakeWidgetList()
 		parent = screen0,
 		backgroundColor = color.sub_bg,
 		children = {
-			ScrollPanel:New{
-				x = 0,
-				y = 0,
-				width = window_width - 10,
-				height = window_height - B_HEIGHT*3,
-				children = widget_children,
-				anchors = {top=true,left=true,bottom=true,right=true},
-				
-			},
-			Button:New{ caption = 'Back', OnMouseUp = { function() showWindow(window_parents[window_widgetlist]) hideWindow(window_widgetlist) end  }, x=10, y=window_height - B_HEIGHT*2, width=buttonWidth, backgroundColor=color.sub_back_bg, textColor=color.sub_back_fg, anchors = {bottom=true, },},
-			Button:New{ caption = 'Close', OnMouseUp = { function() hideWindow(window_widgetlist) end}, x=10, y=window_height - B_HEIGHT, width=buttonWidth, backgroundColor=color.sub_close_bg, textColor=color.sub_close_fg, anchors = {bottom=true},},
-			
-		}
+			--[[
+			StackPanel:New{
+				height = window_height,
+				width = window_width,
+				padding = {0,0,0,0},
+				itemPadding = {1,1,1,1},
+				itemMargin = {0,0,0,0},	
+				--resizeItems = false,
+				children = {
+				--]]
+					Label:New{ caption = 'Widget List', textColor = color.sub_header, align='center', width =window_width-10, anchors = {top=true,left=true,right=true} },
+					ScrollPanel:New{
+						y=B_HEIGHT,
+						width = window_width-10,
+						height = window_height - B_HEIGHT*3,
+						
+						children = {
+							StackPanel:New{
+								height = #widget_children*B_HEIGHT,
+								width = window_width-40,
+								padding = {0,0,0,0},
+								itemPadding = {1,1,1,1},
+								itemMargin = {0,0,0,0},					
+								children = widget_children,
+							},
+						},
+						anchors = {top=true,left=true,bottom=true,right=true},
+					},
+					
+					Button:New{ 
+						caption = 'Close', 
+						OnMouseUp = { killWindow2 }, width=window_width-10, 
+						backgroundColor=color.sub_close_bg, 
+						textColor=color.sub_close_fg, 
+						anchors = {bottom=true, right=true,left=true,},
+						y = window_height - B_HEIGHT,
+					},
+				--},
+			--},
+		},
 	}
 	
 end
 
+local function MakeFlags()
+	local countries = {
+		'au',
+		'br',
+		'bz',
+		'ca',
+		'fi', 
+		'fr', 
+		'gb',
+		'my', 
+		'nz',
+		'pl',
+		'pt',
+		'us', 
+	}
+	local country_langs = {
+		br='bp',
+		fi='fi', 
+		fr='fr', 
+		my='my', 
+		pl='pl',
+		pt='pt',
+	}
+
+	local flagChildren = {}
+	local flagCount = 0
+	for _,country in ipairs(countries) do
+		local countryLang = country_langs[country] or 'en'
+		flagCount = flagCount + 1
+		flagChildren[#flagChildren + 1] = Image:New{ file= LUAUI_DIRNAME .. "Images/flags/".. country ..'.png', }
+		flagChildren[#flagChildren + 1] = Button:New{ caption = country:upper(), 
+			textColor = color.sub_button_fg,
+			backgroundColor = color.sub_button_bg,
+			OnMouseUp = { 
+				function(self) 
+					Spring.Echo('Setting local language to "' .. countryLang .. '"') 
+					WG.lang = countryLang 
+					settings.lang = countryLang
+				end 
+			} 
+		}
+	end
+	local window_height = 300
+	local window_width = 170
+	window_flags = Window:New{  
+		x = settings.sub_pos_x,  
+		y = settings.sub_pos_y,  
+		clientWidth  = window_width,
+		clientHeight = window_height,
+		parent = screen0,
+		backgroundColor = color.sub_bg,
+		children = {
+			ScrollPanel:New{
+				x=0,y=0,
+				width  = window_width,
+				height = window_height - B_HEIGHT*3 ,
+				anchors={top=true, bottom=true, left=true, right=true},
+				children = {
+					Grid:New{
+						columns=2,
+						x=0,y=0,
+						width=window_width-40,
+						height=400,
+						children = flagChildren,
+					}
+				}
+			},
+			Button:New{ caption = 'Close', OnMouseUp = { killWindow2 }, x=10, y=window_height - B_HEIGHT, width=window_width-20, backgroundColor = color.sub_close_bg, textColor = color.sub_close_fg, anchors={bottom=true, left=true,},},
+		}
+	}
+	
+	subwindows[#subwindows + 1] = window_flags
+end
+
 local function MakeToolTip(x,y, ttstr, ud, playerName)
 	local y = scrH-y
+	local x=x
 	
 	if cycle ~= 1 and window_tooltip and ttstr == old_ttstr then
-		window_tooltip.x = x
-		window_tooltip.y = y
+		if x > scrW * (.75) then
+			x = x - window_tooltip.width - 20
+		else
+			x = x + 20
+		end
+		if y > scrH * (.75) then
+			y = y - window_tooltip.height - 20
+		else
+			y = y + 20
+		end
+	
+		window_tooltip:SetPos(x,y)
 		return
 	end
+	
 	old_ttstr = ttstr
-
-	if window_tooltip then
-		window_tooltip:Dispose()
-	end
 	
 	local ttstr = ttstr
 	if playerName then
 		ttstr = ttstr .. ' (' .. playerName .. ')'
 	end
 	
-	local text_count = #ttstr
-	
 	if settings.simple_tooltip or not ud then
-		local tt_width = text_count * 7
+		local tt_width = 260
+		if not ttstr:find("\n") then
+			tt_width = #ttstr*8
+		end
+		
+		local tt_label = TextBox:New{ text = ttstr, textColor=color.tooltip_fg, width=tt_width, align=center }
+		tt_label:UpdateLayout()
+		
+		if x > scrW * (.75) then
+			x = x - tt_width - 20
+		else
+			x = x + 20
+		end
+		if y > scrH * (.75) then
+			y = y - tt_label.height - 20
+		else
+			y = y + 20
+		end
+		
+		if window_tooltip then
+			window_tooltip:Dispose()
+		end		
 		window_tooltip = Window:New{  
 			x = x,  
 			y = y,  
 			clientWidth  = tt_width,
-			clientHeight = 15,
+			clientHeight = tt_label.height, 
 			resizable = false,
 			draggable = false,
 			parent = screen0,
 			backgroundColor = color.tooltip_bg, 
-			children = {
-				Label:New{ caption = ttstr, width=tt_width, height='10', textColor=color.tooltip_fg, valign='center'},
-			}
+			children = { tt_label, }
 		}
 		return
 	
 	end
-	if text_count < #(ud.tooltip) then
-		text_count = #(ud.tooltip)
-	end
-	if text_count < 25 then
-		text_count = 25
-	end
-	local tt_width = text_count * 6
 	local blip_size = 18
 	
 	local tt_children = {}
+	local tt_label = Label:New{ caption = ttstr, textColor=color.tooltip_fg,  }
 	if ud.iconType ~= 'default' then
 		tt_children[#tt_children + 1] = 
-			Image:New{
-				file='icons/'.. ud.iconType ..iconFormat,
-				height= blip_size,
-				width= blip_size,
-			}
-	end	
-	tt_children[#tt_children + 1] = Label:New{ caption = ttstr, width=tt_width, height='10', textColor=color.tooltip_fg,  }
-	tt_children[#tt_children + 1] = Label:New{ caption = ud.tooltip or 'desc error', width=tt_width, height='10',valign='center', textColor=color.tooltip_fg,  }
-	
-	
-	local _,_,_,buildUnitName = Spring.GetActiveCommand()
-	if not buildUnitName then
-		tt_children[#tt_children+1] = Label:New{ caption = '(Space+click for options)', width=tt_width, height='10',align='right', textColor=color.tooltip_fg,   }
-	end
-	
-	local stack_tooltip = StackPanel:New{
-		width=tt_width + blip_size + 5,
-		height=(#tt_children-1)*10 + blip_size,
-		padding = {0,0,0,0},
-		itemPadding = {1,1,1,1},
-		itemMargin = {0,0,0,0},
-		resizeItems=false,
-		children = tt_children,
-	}
-	
-	local buildpic = 'unitpics/'.. (ud.buildpicname ~= '' and ud.buildpicname or (ud.name .. '.png'))
-	local window_height = 60
-	local window_width = stack_tooltip.width + window_height
-	window_tooltip = Window:New{  
-		x = x,  
-		y = y,  
-		clientWidth  = window_width,
-		clientHeight = window_height,
-		resizable = false,
-		draggable = false,
-		parent = screen0,
-		backgroundColor = color.tooltip_bg, 
-		children = {
 			StackPanel:New{
+				centerItems = false,
 				orientation='horizontal',
-				width  = window_width,
-				height = window_height,
 				resizeItems=false,
+				--width = tt_label.width + blip_size -160,
+				height = blip_size + 20,
 				padding = {0,0,0,0},
 				itemPadding = {1,1,1,1},
 				itemMargin = {0,0,0,0},
 				children = {
 					Image:New{
-						file=buildpic,
-						height=55,
-						width=55,
+						file='icons/'.. ud.iconType ..iconFormat,
+						height= blip_size,
+						width= blip_size,
 					},
-					stack_tooltip,
+					tt_label,
 				},
+			}
+		
+	else
+		tt_children[#tt_children + 1] = tt_label
+	end	
+	
+	local desc_label = Label:New{ caption = ud.tooltip or 'desc error', valign='center', textColor=color.tooltip_fg,  }
+	tt_children[#tt_children + 1] = desc_label
+	
+	
+	local _,_,_,buildUnitName = Spring.GetActiveCommand()
+	local sc_label 
+	if not buildUnitName then
+		sc_label = Label:New{ caption = '(Space+click for options)', textColor=color.tooltip_fg,   }
+		tt_children[#tt_children+1] = sc_label
+	end
+	
+	local tt_width = tt_label.width
+	if desc_label.width > tt_width then
+		tt_width = desc_label.width
+	end
+	if sc_label and sc_label.width > tt_width then
+		tt_width = sc_label.width
+	end
+	local stack_tooltip = StackPanel:New{
+		autoArrangeV = false,
+		width = tt_width + blip_size + 5,
+		height=(#tt_children)*20,
+		padding = {0,0,0,0},
+		itemPadding = {1,1,1,1},
+		itemMargin = {0,0,0,0},
+		--resizeItems=false,
+		children = tt_children,
+	}
+	local buildpic = 'unitpics/'.. (ud.buildpicname ~= '' and ud.buildpicname or (ud.name .. '.png'))
+	
+	local mainstack_height = 55
+	if stack_tooltip.height > mainstack_height then
+		mainstack_height = stack_tooltip.height
+	end
+	local mainstack = 
+		StackPanel:New{
+			orientation='horizontal',
+			width  = 55 + stack_tooltip.width + 5,
+			height = mainstack_height + 2,
+			resizeItems=false,
+			padding = {0,0,0,0},
+			itemPadding = {1,1,1,1},
+			itemMargin = {0,0,0,0},
+			children = {
+				Image:New{
+					file=buildpic,
+					height=55,
+					width=55,
+				},
+				stack_tooltip,
 			},
+		}
+	
+	if x > scrW * (.75) then
+		x = x - mainstack.width - 20
+	else
+		x = x + 20
+	end
+	if y > scrH * (.75) then
+		y = y - mainstack.height - 20
+	else
+		y = y + 20
+	end
+	if window_tooltip then
+		window_tooltip:Dispose()
+	end
+	
+	window_tooltip = Window:New{  
+		x = x,  
+		y = y,  
+		clientWidth  = mainstack.width,
+		clientHeight = mainstack.height,
+		resizable = false,
+		draggable = false,
+		parent = screen0,
+		backgroundColor = color.tooltip_bg, 
+		children = {
+			mainstack
 		},
 	}
-
+	
 end
 
-local file2 = LUAUI_DIRNAME .. "Configs/crudemenu_tree.lua"
-local menu_tree, game_menu_tree = VFS.Include(file2, nil, VFSMODE)
+local function flattenMenu(tree, first_title)
+	local function flattenTree(tree, parent, title)
+		if title == 'Game Menu' then
+			game_menu_index = flatwindowlistcount+1
+		end
+		
+		if type(tree) == 'table' and #tree == 2 then
+			local tree1 = tree[1]
+			if tree1:sub(1,3) == 'tr_' 
+				or tree1:sub(1,3) == 'ch_' 
+				or tree1:sub(1,4) == 'cmf_' 
+				then
+				
+				return tree
+			end
+		end
+	
+		if type(tree) == 'table' and #tree > 0 and type(tree[1]) ~= 'table' and type(tree[2]) == 'table' then
+			
+			local title = tree[1]
+			flatwindowlistcount = flatwindowlistcount + 1
+			if title == 'Crude Menu' then
+				cmsettings_index = flatwindowlistcount
+			end
+			local curcount = flatwindowlistcount
+			local temptree = {}
+			for i, subtree in ipairs(tree[2]) do
+				temptree[#temptree+1] = flattenTree(subtree, curcount)
+			end
+			flatwindowlist[curcount] = {parent = parent, tree = temptree, title=title}
+			return curcount
+		elseif type(tree) == 'table'  and #tree > 0 and type(tree[1]) == 'table' then
+			
+			flatwindowlistcount = flatwindowlistcount + 1
+			local curcount = flatwindowlistcount
+			local temptree = {}
+			for i, subtree in ipairs(tree) do
+				temptree[#temptree+1] = flattenTree(subtree, curcount)
+			end
+			flatwindowlist[curcount] = {parent = parent, tree = temptree, title=title}
+			return curcount
+		
+		elseif type(tree) == 'table'  and #tree == 2 and type(tree[1]) == 'string' and type(tree[2]) == 'string' then
+			
+			local title = tree[1]
+			flatwindowlistcount = flatwindowlistcount + 1
+			local curcount = flatwindowlistcount
+						
+			flatwindowlist[curcount] = {parent = parent, tree = tree[2], title=title}
+			return curcount
+		
+		else
+			return tree
+		end
+	end
+	flattenTree(tree, 0, first_title)
+end
+
+
+flattenMenu(menu_tree, 'Main Menu')
+flattenMenu(game_menu_tree, 'Game Menu')
 
 local function ShowWidgetList(self)
 	spSendCommands{"luaui selector"} 
 end
 
 cmfunctions.ShowWidgetList2 = function(self)
-	saveSubPos(self)
-	hideWindow(self.parent.parent)
 	MakeWidgetList()
-	window_parents[window_widgetlist] = self.parent.parent --oogly
+	--window_parents[window_widgetlist] = self.parent_index
 end
-
 
 cmfunctions.ShowFlags = function(self)
-	saveSubPos(self)
-	hideWindow(self.parent.parent)
-	window_parents[window_flags] = self.parent.parent --oogly
-	showWindow(window_flags)
+	MakeFlags()
+	--window_parents[window_flags] = self.parent_index
 end
 
-
-local function makeCrudeMenu()
-	
-	if window_crude then
-		settings.pos_x = window_crude.x
-		settings.pos_y = window_crude.y
-		window_crude:Dispose()
-	end
-	
-	local label_width = #title_text*7
-	if label_width < 55 then
-		label_width = 55
-	end	
-	local button_width = label_width
-	local crude_width = button_width + 5
-	local crude_height = 70
-	
-	if settings.horizontal then
-		button_width = 50
-		crude_width = 100 + label_width + 10
-		crude_height = B_HEIGHT + 4
-	end
-	
-	window_crude = Window:New{  
-		x = settings.pos_x ,  
-		y = settings.pos_y ,
-		--width = 80,
-		--height = 80,
-		clientWidth = crude_width,
-		clientHeight = crude_height,
-		draggable = true,
-		resizable = false,
-		parent = screen0,
-		OnMouseUp = {ShowCrudeMenuSettings},
-		backgroundColor = color.main_bg,
-		
-		
-		children = {
-			StackPanel:New{
-				width = crude_width,
-				height = crude_height,
-				resizeItems = false,
-				padding = {1,1,1,1},
-				itemPadding = {1,1,1,1},
-				itemMargin = {0,0,0,0},		
-				children = {
-					Label:New{ caption= title_text, textColor=color.main_fg, height=B_HEIGHT, width=label_width, valign='center', align='center', },
-					Button:New{caption = "Menu", OnMouseUp = { function() hideAll() showWindow(main_menu_window) end, ShowCrudeMenuSettings, }, backgroundColor=color.menu_bg, textColor=color.menu_fg, height=B_HEIGHT, width=button_width, },
-					Button:New{caption = "Game", OnMouseUp = { function() hideAll() showWindow(game_menu_window) end, ShowCrudeMenuSettings,}, backgroundColor=color.game_bg, textColor=color.game_fg, height=B_HEIGHT, width=button_width, align='center'},
-					
-				}
-			}
-		}
-	}
-end
 local function checkChecks()
-	if settings.noVolBar then
-		settings.vol_x = window_volume.x
-		settings.vol_y = window_volume.y
-		window_volume.x = -1000
-		window_volume.y = -1000
-		window_volume.visible = false
-	else
-		if settings.vol_x < 1 or settings.vol_y < 1 then
-			settings.vol_x = 1
-			settings.vol_y = 1
-		end
-		window_volume.x = settings.vol_x
-		window_volume.y = settings.vol_y
-		window_volume.visible = true
-	end
-	
-	if WG.Layout.hideUnits ~= settings.hideUnits then
-		WG.Layout.hideUnits = settings.hideUnits
-		Spring.ForceLayoutUpdate()
-	end
-	makeCrudeMenu()
 end
 
-local function make_menu(menu_name, tree, previous_window)
+local function make_menu(num)
+	local menu_name = flatwindowlist[num].title
+	local tree = flatwindowlist[num].tree
+	local parent = flatwindowlist[num].parent
 	
 	local children = {}
 	children[#children + 1] = Label:New{ caption = menu_name, width=150, textColor = color.sub_header,}
 	
-	local parent_id = #window_parents+1
-	window_parents[parent_id] = true
-	
 	local window_height = 0
 	local buttonWidth = 0
 	if type(tree) == 'string' then
+	
 		buttonWidth = 200
 		window_height = 200
 		children[#children + 1] = 
@@ -975,7 +1158,7 @@ local function make_menu(menu_name, tree, previous_window)
 				children = {
 					TextBox:New{
 						y=30,
-						width =100,height=300,
+						width =80,height=300,
 						text = tree,
 						textColor = color.sub_fg,
 					},
@@ -986,20 +1169,37 @@ local function make_menu(menu_name, tree, previous_window)
 	else
 		local charlength = 0
 		for _, data in ipairs(tree) do
-			local name = data[1]
+			local name = 'none'
+			if type(data) ~= 'table' then
+				name = flatwindowlist[data].title
+			else
+				name = data[1]
+			end
+			
 			if name and #name > charlength then
 				charlength = #name
 			end
 		end
+		
 		buttonWidth = charlength*7
 		buttonWidth = buttonWidth < 100 and 100 or buttonWidth
 		for i, data in ipairs(tree) do
-			local name = data[1]
-			local action = data[2]
+
+			local name = 'none'
+			local action = ''
+			if type(data) ~= 'table' then
+				name = flatwindowlist[data].title
+				action = flatwindowlist[data].tree
+			else
+				name = data[1]
+				action = data[2]
+			end
+			
+			
 			if name and not action then
 				children[#children + 1] = Label:New{ caption = name, width=buttonWidth,textColor = color.sub_fg,}
-			elseif name and name:sub(1,4) == 'cmf_' and action then
-				children[#children + 1] = Button:New{ caption = name:sub(5), OnMouseUp = {cmfunctions[action]},textColor = color.sub_fg,  backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
+			elseif name and name:sub(1,4) == 'cmf_' and action then		
+				children[#children + 1] = Button:New{ parent_index = num, caption = name:sub(5), OnMouseUp = {cmfunctions[action]},textColor = color.sub_fg,  backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
 			elseif name and name:sub(1,3) == 'ch_' and action then
 				children[#children + 1] = Checkbox:New{ caption = name:sub(4), checked = settings[action] or false, OnMouseUp = { function() settings[action] = not settings[action] checkChecks() end },textColor = color.sub_fg,}
 			elseif name and name:sub(1,3) == 'tr_' and action then
@@ -1014,8 +1214,9 @@ local function make_menu(menu_name, tree, previous_window)
 					children[#children + 1] = Trackbar:New{ OnMouseUp = { action },trackColor = color.sub_fg,}
 				end
 			elseif name and (type(action) == 'table' and action[1] or type(action) == 'string') then
-				local subwindow = make_menu(name, action, parent_id)
-				children[#children + 1] = Button:New{ caption = name..'...', OnMouseUp = {saveSubPos, hideAll,  function() showWindow(subwindow) end },textColor = color.sub_fg, backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
+				children[#children + 1] = Button:New{ caption = name..'...', OnMouseUp = { killSubWindow, function() make_menu(data) end },textColor = color.sub_fg, backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
+				
+				
 			elseif name and action then
 				children[#children + 1] = Button:New{ caption =name, OnMouseUp = {action},textColor = color.sub_fg,  backgroundColor = color.sub_button_bg,textColor = color.sub_button_fg,}
 			else
@@ -1026,17 +1227,11 @@ local function make_menu(menu_name, tree, previous_window)
 		window_height = (#children + 2) * B_HEIGHT
 	end
 	children[#children + 1] = Label:New{ caption = '', }
-	if previous_window then
+	if parent > 0 then
 		window_height = window_height + B_HEIGHT
-		children[#children + 1] = Button:New{ caption = 'Back', OnMouseUp = {saveSubPos, hideAll,  function() showWindow(window_parents[previous_window]) end }, backgroundColor = color.sub_back_bg,textColor = color.sub_back_fg, }
-		
-		--temporary solution until stackpanels with scrollbars work better.
-		if type(tree) == 'string' then
-			children[#children] = Button:New{ caption = 'Back', OnMouseUp = {saveSubPosSpecial, hideAll, function() showWindow(window_parents[previous_window]) end },textColor = color.sub_back_fg, backgroundColor = color.sub_back_bg,textColor = color.sub_back_fg, }
-		end
-			
+		children[#children + 1] = Button:New{ caption = 'Back', OnMouseUp = { killSubWindow, function() make_menu(parent) end,  }, backgroundColor = color.sub_back_bg,textColor = color.sub_back_fg, width=buttonWidth}	
 	end
-	children[#children + 1] = Button:New{ caption = 'Close', OnMouseUp = {saveSubPos, hideAll }, textColor = color.sub_close_fg, backgroundColor = color.sub_close_bg,}
+	children[#children + 1] = Button:New{ caption = 'Close', OnMouseUp = { killSubWindow }, textColor = color.sub_close_fg, backgroundColor = color.sub_close_bg, width=buttonWidth}
 	
 	local children_window = {
 		StackPanel:New{
@@ -1058,10 +1253,11 @@ local function make_menu(menu_name, tree, previous_window)
 		children_window = children
 	end
 	
-	local window_return = Window:New{  
+	killSubWindow()
+	window_sub_cur = Window:New{  
 		x = settings.sub_pos_x,  
 		y = settings.sub_pos_y, 
-		width = buttonWidth + 10,
+		clientWidth = buttonWidth,
 		height = window_height + 10,
 		
 		resizable = false,
@@ -1069,53 +1265,116 @@ local function make_menu(menu_name, tree, previous_window)
 		backgroundColor = color.sub_bg,
 		children = children_window
 	}
-	window_parents[parent_id] = window_return
-	subwindows[#subwindows+1] = window_return
 	
-	if menu_name == 'Crude Menu' then
-		window_cmsettings = window_return
-	end
-	return window_return
 end
+
+local function makeCrudeMenu()
+	
+	if window_crude then
+		settings.pos_x = window_crude.x
+		settings.pos_y = window_crude.y
+		window_crude:Dispose()
+	end
+	
+	local label_title = Label:New{ caption= title_text, textColor=color.main_fg, valign='center', align='center', }
+	local label_width = label_title.width
+	local button_width = 55
+	local crude_width = button_width
+	local crude_height = 70
+	
+	if settings.horizontal then
+		crude_width = button_width*2 + label_width + 15
+		crude_height = B_HEIGHT + 5
+	end
+	
+	window_crude = Window:New{  
+		x = settings.pos_x ,  
+		y = settings.pos_y ,
+		clientWidth = crude_width,
+		clientHeight = crude_height,
+		draggable = true,
+		resizable = false,
+		parent = screen0,
+		OnMouseUp = {ShowCrudeMenuSettings},
+		backgroundColor = color.main_bg,
+		
+		children = {
+			StackPanel:New{
+				orientation = settings.horizontal and 'horizontal' or 'vertical',
+				width = crude_width,
+				height = crude_height,
+				resizeItems = not settings.horizontal or false,
+				padding = {0,0,0,0},
+				itemPadding = {2,2,2,2},
+				itemMargin = {0,0,0,0},
+				children = {
+					label_title,
+					Button:New{caption = "Menu", OnMouseUp = { function() make_menu(1) end, ShowCrudeMenuSettings, }, backgroundColor=color.menu_bg, textColor=color.menu_fg, height=B_HEIGHT, width=button_width, },
+					Button:New{caption = "Game", OnMouseUp = { function() make_menu(game_menu_index) end, ShowCrudeMenuSettings,}, backgroundColor=color.game_bg, textColor=color.game_fg, height=B_HEIGHT, width=button_width, },
+					
+				}
+			}
+		}
+	}
+end
+
+checkChecks = function()
+	if settings.noVolBar then
+		settings.vol_x = window_volume.x
+		settings.vol_y = window_volume.y
+		hideWindow(window_volume)
+	else
+		if settings.vol_x < 1 or settings.vol_y < 1 then
+			settings.vol_x = 200
+			settings.vol_y = 200
+		end
+		showWindow(window_volume,settings.vol_x,settings.vol_y)
+	end
+	
+	if WG.Layout.hideUnits ~= settings.hideUnits then
+		WG.Layout.hideUnits = settings.hideUnits
+		Spring.ForceLayoutUpdate()
+	end
+	makeCrudeMenu()
+end
+
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 function widget:DrawScreen()
-	if (not th) then
-		th = Chili.textureHandler
-		th.Initialize()
-	end
-
 	th.Update()
-
 	gl.PushMatrix()
 	local vsx,vsy = gl.GetViewSizes()
 	gl.Translate(0,vsy,0)
 	gl.Scale(1,-1,1)
 	screen0:Draw()
+	gl.PopMatrix()
 	
-	local unitName, buildType, tooltip = getShortTooltip()
+	local tooltip, unitName, buildType  = tooltipBreakdown()
 	if unitName then
 		if not window_tooltip or cycle == 1 or mx ~= old_mx or my ~= old_my then
 			local ud = getUdFromName(unitName, tooltip)
 			if ud then
-				MakeToolTip(mx+20,my-20, buildType .. unitName, ud)
+				MakeToolTip(mx,my, buildType .. unitName, ud)
 			end
 		end
 	elseif showToolTip then
 		if not window_tooltip or cycle == 1 or mx ~= old_mx or my ~= old_my then
 			local type, data = spTraceScreenRay(mx, my)
+			
 			if (type == 'unit') then
+			
 				local unitID = data
 				local udid 			= spGetUnitDefID(unitID)
 				local ud 			= UnitDefs[udid]
 				if ud then
+				
 					local alliance 		= spGetUnitAllyTeam(unitID)
 					local team			= spGetUnitTeam(unitID)
 					local _, player 	= spGetTeamInfo(team)
 					local playerName 	= spGetPlayerInfo(player) or 'noname'
 					--local teamColor 	= {spGetTeamColor(team)}
-					MakeToolTip(mx+20,my-20, ud.humanName, ud, playerName)
+					MakeToolTip(mx,my, ud.humanName, ud, playerName)
 				end
 				
 			elseif (type == 'feature') then
@@ -1134,16 +1393,19 @@ function widget:DrawScreen()
 					local live_name = feature_name:gsub('([^_]*).*', '%1')
 					local ud = UnitDefNames[live_name]
 					if ud then
-						MakeToolTip(mx+20,my-20, ud.humanName .. desc, ud)
+						MakeToolTip(mx,my, ud.humanName .. desc, ud)
 					else
-						MakeToolTip(mx+20,my-20, fd.tooltip or feature_name )
+						MakeToolTip(mx,my, fd.tooltip or feature_name )
 					end
 				end
-				
+			--[[
 			elseif window_tooltip then
 				window_tooltip:Dispose()
 				window_tooltip = nil
 				old_ttstr = ''
+				--]]
+			else
+				MakeToolTip(mx,my, tooltip)
 			end
 		else
 			showToolTip = false
@@ -1154,17 +1416,23 @@ function widget:DrawScreen()
 		old_ttstr = ''	
 	end
 	
-	gl.PopMatrix()
 end
 
 function widget:Update(dt)
+	if (not th) then
+		th = Chili.textureHandler
+		th.Initialize()
+	end
+	Chili.TaskHandler.Update()		
+	
+	
 	cycle = cycle%100 + 1
 	old_mx, old_my = mx,my
 	local _,_,meta,_ = Spring.GetModKeyState()
 	mx,my = Spring.GetMouseState()
 	if meta then
 		showToolTip = true
-	else
+	elseif not settings.disable_idle_cursor_tooltip then
 		if mx == old_mx and my == old_my then
 			stillCursorTime = stillCursorTime + dt
 		else
@@ -1178,8 +1446,16 @@ function widget:Update(dt)
 		end
 		
 	end
-		
+	
+	
 end
+
+function widget:IsAbove(x,y)
+  if screen0:IsAbove(x,y) then
+    return true
+  end
+end
+
 
 function widget:MousePress(x,y,button)
 
@@ -1187,8 +1463,7 @@ function widget:MousePress(x,y,button)
 	local mods = {alt=alt, ctrl=ctrl, meta=meta, shift=shift}
 	
 	if not settings.noContextClick and meta then
-		--local unitName = getShortTooltip()
-		local unitName, buildType, tooltip = getShortTooltip()
+		local tooltip, unitName, buildType = tooltipBreakdown()
 		
 		if unitName then
 			local _,_,_,buildUnitName = Spring.GetActiveCommand()
@@ -1244,22 +1519,20 @@ function widget:MouseRelease(x,y,button)
   
 end
 
-function widget:MouseMove(x,y,dx,dy,...)
+function widget:MouseMove(x,y,dx,dy,button)
+  local alt, ctrl, meta, shift = Spring.GetModKeyState()
+  local mods = {alt=alt, ctrl=ctrl, meta=meta, shift=shift}
 
-	local alt, ctrl, meta, shift = Spring.GetModKeyState()
-	local mods = {alt=alt, ctrl=ctrl, meta=meta, shift=shift}
-
-	if screen0:MouseMove(x,y,dx,dy,button,mods) then
-		return true
-	end
+  if screen0:MouseMove(x,y,dx,dy,button,mods) then
+    return true
+  end
 
 end
 
 
 function ShowCrudeMenuSettings(self, x,y,button,mods) 
 	if mods.meta then
-		hideAll()
-		showWindow(window_cmsettings)
+		make_menu(cmsettings_index)
 	end
 end
 
@@ -1280,84 +1553,7 @@ function widget:Initialize()
 		settings.vol_y = scrH/2
 	end
 	
-	main_menu_window = make_menu('Main Menu', menu_tree)
-	game_menu_window = make_menu('Game Menu', game_menu_tree)
-	
 	makeCrudeMenu()
-	
-	local countries = {
-		'au',
-		'br',
-		'bz',
-		'ca',
-		'fi', 
-		'fr', 
-		'gb',
-		'my', 
-		'nz',
-		'pl',
-		'pt',
-		'us', 
-	}
-	local country_langs = {
-		br='bp',
-		fi='fi', 
-		fr='fr', 
-		my='my', 
-		pl='pl',
-		pt='pt',
-	}
-
-	local flagChildren = {}
-	local flagCount = 0
-	for _,country in ipairs(countries) do
-		local countryLang = country_langs[country] or 'en'
-		flagCount = flagCount + 1
-		flagChildren[#flagChildren + 1] = Image:New{ file= LUAUI_DIRNAME .. "Images/flags/".. country ..'.png', }
-		flagChildren[#flagChildren + 1] = Button:New{ caption = country:upper(), 
-			textColor = color.sub_button_fg,
-			backgroundColor = color.sub_button_bg,
-			OnMouseUp = { 
-				function(self) 
-					Spring.Echo('Setting local language to "' .. countryLang .. '"') 
-					WG.lang = countryLang 
-					settings.lang = countryLang
-				end 
-			} 
-		}
-	end
-	local window_height = 230
-	local window_width = 150
-	window_flags = Window:New{  
-		x = settings.sub_pos_x,  
-		y = settings.sub_pos_y,  
-		clientWidth  = window_width,
-		clientHeight = window_height,
-		resizable = false,
-		parent = screen0,
-		backgroundColor = color.sub_bg,
-		children = {
-			ScrollPanel:New{
-				x=0,y=0,
-				width  = window_width,
-				height = window_height - B_HEIGHT*3 ,
-				horizontalScrollbar = false,
-				children = {
-					Grid:New{
-						columns=2,
-						x=0,y=0,
-						width=140,
-						height=400,
-						children = flagChildren
-					}
-				}
-			},
-			Button:New{ caption = 'Back', OnMouseUp = { saveSubPosSpecial, hideAll,  function() showWindow(window_parents[window_flags]) end }, x=10, y=window_height - B_HEIGHT*2, width=window_width-20, backgroundColor = color.sub_back_bg, textColor = color.sub_back_fg, },
-			Button:New{ caption = 'Close', OnMouseUp = { saveSubPosSpecial, function(self) hideWindow(self.parent) end }, x=10, y=window_height - B_HEIGHT, width=window_width-20, backgroundColor = color.sub_close_bg, textColor = color.sub_close_fg,},
-		}
-	}
-	
-	subwindows[#subwindows + 1] = window_flags
 	
 	window_volume = Window:New{
 		x=settings.vol_x,
@@ -1382,7 +1578,6 @@ function widget:Initialize()
 	}
 	
 	checkChecks() 
-	hideAll()
 end
 
 function widget:GetConfigData()
@@ -1409,11 +1604,13 @@ function widget:SetConfigData(data)
 			settings.hideUnits = WG.Layout.hideUnits
 			makeCrudeMenu()
 			if window_volume then
-				window_volume.x = settings.vol_x
-				window_volume.y = settings.vol_y
+				window_volume.x = settings.vol_x or 1
+				window_volume.y = settings.vol_y or 1
 			end
-			
+			if window_sub_cur then
+				window_sub_cur.x = settings.sub_pos_x or 1
+				window_sub_cur.y = settings.sub_pos_y or 1
+			end
 		end
 	end
-	--setSubPos()
 end

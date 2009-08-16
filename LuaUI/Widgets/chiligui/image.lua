@@ -12,6 +12,7 @@ Image = Button:Inherit{
   OnClick  = {},
 }
 
+
 local this = Image
 
 --//=============================================================================
@@ -27,7 +28,7 @@ local DrawCentered = fh.DrawCentered
 
 --//=============================================================================
 
-function Image:Draw()
+function Image:DrawControl()
   gl.PushMatrix()
   gl.Translate(self.x,self.y,0)
 

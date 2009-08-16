@@ -92,7 +92,7 @@ function TextBox:UpdateLayout()
   end
 end
 
-function TextBox:Draw()
+function TextBox:DrawControl()
   fontHandler.UseFont(self.font)
   local x, y, width, height = unpack4(self.clientArea)
   x,y = self.x + x,self.y + y

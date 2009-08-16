@@ -10,6 +10,10 @@ function fh.GetTextWidth(text, size)
   return gl.GetTextWidth(text) * size
 end
 
+function fh.GetTextHeight(text, size) 
+  return gl.GetTextHeight(text) * size
+end
+
 fh.StripColors = fontHandler.StripColors
 
 function fh.Draw(text, x, y, size)

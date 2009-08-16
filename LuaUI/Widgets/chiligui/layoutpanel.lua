@@ -74,17 +74,57 @@ local function compareSizes(a,b)
   return a[2] < b[2]
 end
 
-
-function LayoutPanel:AutoArrangeAbscissa(startCell,endCell,freeSpace)
-  if (not self.autoArrangeH) then
-    return
+function LayoutPanel:_JustCenterItemsH(startCell,endCell,freeSpace)
+  local _cells = self._cells
+  local perItemHalfAlloc = (freeSpace/2) / ((endCell+1) - startCell)
+  for i=startCell,endCell do
+    local cell = _cells[i]
+    if (self.orientation == "horizontal") then
+      cell[1] = cell[1] + perItemHalfAlloc
+    else
+      cell[2] = cell[2] + perItemHalfAlloc
+    end
   end
+end
 
+function LayoutPanel:_JustCenterItemsV(startCell,endCell,freeSpace)
+--[[
+  local _cells = self._cells
+  local perItemHalfAlloc = (freeSpace/2) / ((endCell+1) - startCell)
+  for i=startCell,endCell do
+    local cell = _cells[i]
+    if (self.orientation == "horizontal") then
+      cell[2] = cell[2] + perItemHalfAlloc
+    else
+      cell[1] = cell[1] + perItemHalfAlloc
+    end
+  end
+--]]
+end
+
+function LayoutPanel:_AutoArrangeAbscissa(startCell,endCell,freeSpace)
   if (startCell > endCell) then
     return
   end
 
+  if (not self.autoArrangeH) then
+    if (self.centerItems) then
+      self:_JustCenterItemsH(startCell,endCell,freeSpace)
+    end
+    return
+  end
+
   local _cells = self._cells
+
+  if (startCell == endCell) then
+    local cell = self._cells[startCell]
+    if (self.orientation == "horizontal") then
+      cell[1] = cell[1] + freeSpace/2
+    else
+      cell[2] = cell[2] + freeSpace/2
+    end
+    return
+  end
 
   --// create a sorted table with the cell sizes
   local cellSizesCount = 0
@@ -155,8 +195,11 @@ function LayoutPanel:AutoArrangeAbscissa(startCell,endCell,freeSpace)
 end
 
 
-function LayoutPanel:AutoArrangeOrdinate(freeSpace)
+function LayoutPanel:_AutoArrangeOrdinate(freeSpace)
   if (not self.autoArrangeV) then
+    if (self.centerItems) then
+      self:_JustCenterItemsV(freeSpace)
+    end
     return
   end
 
@@ -359,7 +402,7 @@ function LayoutPanel:UpdateLayout()
       if (x > clientAreaWidth)
        --or(y+child.height+margin[4] > clientAreaHeight) --FIXME
       then
-        self:AutoArrangeAbscissa(_lines[curLine], i-1, clientAreaWidth - (x - totalChildWidth))
+        self:_AutoArrangeAbscissa(_lines[curLine], i-1, clientAreaWidth - (x - totalChildWidth))
 
         x = totalChildWidth
         y = y + curLineSize
@@ -378,8 +421,8 @@ function LayoutPanel:UpdateLayout()
       end
     end
 
-    self:AutoArrangeAbscissa(_lines[curLine], #cn, clientAreaWidth - x)
-    self:AutoArrangeOrdinate(clientAreaHeight - (y + curLineSize))
+    self:_AutoArrangeAbscissa(_lines[curLine], #cn, clientAreaWidth - x)
+    self:_AutoArrangeOrdinate(clientAreaHeight - (y + curLineSize))
 
     if (y+curLineSize > clientAreaHeight) then
       if (self.autoSize) then
@@ -388,8 +431,8 @@ function LayoutPanel:UpdateLayout()
         self.height = self.padding[2] + clientAreaHeight +  self.padding[4]
         --self.parent.UpdateClientArea(self.parent)
       else
-        --Spring.Echo(debug.traceback())
-        error(self.classname .. ": not enough space")
+        Spring.Echo(debug.traceback())
+        error(self.classname .. ": not enough vertical space")
       end
     end
 
@@ -429,9 +472,12 @@ end
 function LayoutPanel:DrawItemBkGnd(index)
 end
 
-function LayoutPanel:Draw()
+function LayoutPanel:DrawControl()
   self:DrawBackground(self)
+end
 
+
+function LayoutPanel:DrawChildren()
   local cn = self.children
   if (#cn==0) then return end
 
@@ -446,6 +492,44 @@ function LayoutPanel:Draw()
     local child = cn[i]
     self:DrawItemBkGnd(i)
     child:Draw()
+  end
+
+  if (self.debug) then
+    gl.Color(1,0,0,0.6)
+    for i=1,#self._cells do
+      local cell = self._cells[i]
+      gl.Rect(cell[1],cell[2],cell[1]+cell[3],cell[2]+cell[4])
+    end
+    gl.Color(1,1,1,1)
+  end
+
+  gl.PopMatrix()
+end
+
+function LayoutPanel:DrawChildrenForList()
+  local cn = self.children
+  if (#cn==0) then return end
+
+  local cells = self._cells
+  local selectedItems = self.selectedItems
+  local itemPadding = self.itemPadding
+
+  gl.PushMatrix()
+  gl.Translate(self.x + self.clientArea[1],self.y + self.clientArea[2],0)
+
+  for i=1,#cn do
+    local child = cn[i]
+    self:DrawItemBkGnd(i)
+    child:DrawForList(true)
+  end
+
+  if (self.debug) then
+    gl.Color(1,0,0,0.6)
+    for i=1,#self._cells do
+      local cell = self._cells[i]
+      gl.Rect(cell[1],cell[2],cell[1]+cell[3],cell[2]+cell[4])
+    end
+    gl.Color(1,1,1,1)
   end
 
   gl.PopMatrix()
@@ -502,6 +586,8 @@ function LayoutPanel:MouseDown(x,y,button,mods)
   local cx,cy = self:LocalToClient(x,y)
   local itemIdx = self:GetItemIndexAt(cx,cy)
 
+  --FIXME write and use SelectItem(),ToggleItem() functions!
+
   if (itemIdx>0) then
     if (self.multiSelect) then
       if (mods.shift and mods.ctrl) then
@@ -522,6 +608,8 @@ function LayoutPanel:MouseDown(x,y,button,mods)
       self.selectedItems = {[itemIdx]=true}
       self._lastSelected = itemIdx
     end
+
+    self:Invalidate()
 
     return self
   end

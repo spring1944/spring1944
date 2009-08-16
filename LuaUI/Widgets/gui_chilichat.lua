@@ -4,7 +4,7 @@
 function widget:GetInfo()
   return {
     name      = "Chili Chat Beta",
-    desc      = "v0.29 Chili Chat Console.",
+    desc      = "v0.31 Chili Chat Console.",
     author    = "CarRepairer",
     date      = "2009-07-07",
     license   = "GNU GPL, v2 or later",
@@ -33,22 +33,23 @@ local Window = Chili.Window
 local ScrollPanel = Chili.ScrollPanel
 local StackPanel = Chili.StackPanel
 local Grid = Chili.Grid
-local LayoutPanel = Chili.LayoutPanel
+--local LayoutPanel = Chili.LayoutPanel
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
 local lines = {'Loading...'}
 local lines_count = 0
-local scrollbuffer = 100
-local intbuffer = 200
+local scrollbuffer = 150
+local intbuffer = 160
 local MIN_HEIGHT = 130
+local MIN_WIDTH = 450
 
 local def_settings = {
 	minversion = 21,
 	pos_x = 110,
 	pos_y = 20,
-	c_width = 450,
+	c_width = MIN_WIDTH,
 	c_height = MIN_HEIGHT,
 	
 	col_bg = {0, 0, 0, 0.3},
@@ -90,6 +91,7 @@ local playernames = {}
 local colorNames = {}
 local colors = {}
 
+local scrW, scrH
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -160,7 +162,6 @@ local function reset()
 	window_console.height = settings.c_height
 end
 
-
 local function makeSettingsWindow()
 	if window_settings then
 		window_settings:Dispose()
@@ -168,28 +169,25 @@ local function makeSettingsWindow()
 
 	window_console.draggable = true
 	window_console.resizable = true
-	freeze = false
+	freeze = false	
 	
-	local child_height = 50
-	
-	local settings_height = child_height*5
-	local window_height = settings_height + 170
-	local window_width = 300
+	local window_height = 360
+	local window_width = 250
 	
 	local caption_width = 130
 	
 	window_settings = Window:New{  
 		x = 200,  
 		y = 200,
-		clientWidth  = window_width+10,
-		clientHeight = window_height+10,
+		clientWidth  = window_width,
+		clientHeight = window_height,
 		parent = screen0,
 		resizable = false,
 		backgroundColor = {0.5, .5, .5, 1},
 		children = {
 			StackPanel:New{
-				clientWidth  = window_width+10,
-				clientHeight = settings_height+child_height*8,
+				width  = window_width,
+				height = window_height,
 				resizeItems=false,
 				padding = {0,0,0,0},
 				itemPadding = {0,2,0,0},
@@ -197,39 +195,45 @@ local function makeSettingsWindow()
 				columns = 1,
 				
 				children = {
-					Label:New{caption='Console Settings', width=caption_width*2, height=20, textColor={1,1,1,1}},
-					Label:New{caption='You can resize and move the chat window', width=caption_width*2, height=20, },
-					Label:New{caption='while this window is open', width=caption_width*2, height=20, valign='top'},
-					Label:New{caption='', width=caption_width*2, height=20, },
-					Checkbox:New{
-						caption=[[Don't Color Name]], 
-						checked = settings.noColorName or false, 
-						OnMouseUp = { function(self) settings.noColorName = self.checked end},  
-						width=caption_width+50,
+					StackPanel:New{
+						width  = window_width,
+						height = 100,
+						children = {
+							Label:New{caption='Console Settings', textColor={1,1,1,1}},
+							Label:New{caption='You can resize and move the chat window', },
+							Label:New{caption='while this window is open',  },
+							Label:New{caption='',  },
+							Checkbox:New{
+								caption=[[Don't Color Name]], 
+								checked = settings.noColorName or false, 
+								OnMouseUp = { function(self) settings.noColorName = self.checked end},  
+								width=caption_width+50,
+							},
+							Label:New{caption='Adjust Console Colors', },
+						},
 					},
 					
-					Label:New{caption='Adjust Console Colors', width=caption_width*2,},
 					
 					Grid:New{
 						width  = window_width,
-						height = settings_height,
+						height = 200,
 						columns=2,
 						--resizeItems=false,
 						
 						children = {					
-							Label:New{caption='Chat Text', width=caption_width,},
+							Label:New{caption='Chat Text', },
 							Colorbars:New{ OnMouseUp = {setColorText}, color=settings.col_text},
 							
-							Label:New{caption='Ally Text', width=caption_width,},
+							Label:New{caption='Ally Text', },
 							Colorbars:New{ OnMouseUp = {setColorAllyText}, color=incolor2color(settings.col_ally_in)},
 							
-							Label:New{caption='Other Text', width=caption_width,},
+							Label:New{caption='Other Text', },
 							Colorbars:New{ OnMouseUp = {setColorOtherText}, color=incolor2color(settings.col_othertext_in)},
 							
-							Label:New{caption='Duplicate Text', width=caption_width,},
+							Label:New{caption='Duplicate Text', },
 							Colorbars:New{ OnMouseUp = {setColorDup}, color=incolor2color(settings.col_dup_in)},
 							
-							Label:New{caption='Background', width=caption_width,},
+							Label:New{caption='Background', },
 							Colorbars:New{ OnMouseUp = {setColorBg}, color=settings.col_bg},
 						},
 					},
@@ -256,6 +260,13 @@ local function makeNewConsole(x, y, w, h, scroll_cur)
 	local h=h
 	if h < MIN_HEIGHT then
 		h = MIN_HEIGHT
+	end
+	local w = w
+	if w < MIN_WIDTH then
+		w = MIN_WIDTH
+	end
+	if x+w > scrW then
+		x = scrW - w
 	end
 	
 	local lines_tb = {}
@@ -289,13 +300,13 @@ local function makeNewConsole(x, y, w, h, scroll_cur)
 	end	
 	local children_console = StackPanel:New{
 		width = w-rightmargin,
-		children = lines_tb, 
 		height = bufflen*(text_height+pad ),
 		padding = {0,0,0,0},
 		itemPadding = {0,pad ,0,0},
 		itemMargin = {0,0,0,0},
 		autoArrangeV  = false,
 		--resizeItems = false,
+		children = lines_tb, 
 	}
 	
 	local cur_max = children_console.height
@@ -316,6 +327,7 @@ local function makeNewConsole(x, y, w, h, scroll_cur)
 		backgroundColor = settings.col_bg,
 		draggable = not freeze,
 		resizable = not freeze,
+		minimumSize = {MIN_WIDTH, MIN_HEIGHT },
 		OnMouseUp = {
 			function(self, x,y,button,mods) 
 				if mods.meta then
@@ -331,7 +343,8 @@ local function makeNewConsole(x, y, w, h, scroll_cur)
 				height = h-10,
 				horizontalScrollbar = false,
 				scrollPosY = scroll_y,
-				children = {children_console},
+				--children = {children_console}, --strange
+				children = lines_tb, --strange
 				anchors = {right=true, left=true, top=true, bottom=true},
 			},
 			StackPanel:New{
@@ -454,13 +467,9 @@ local function addLine(msg)
 	lines_count = lines_count + 1
 	lines[lines_count] = { msg=msg, text=message, dup=1, mtype=msgtype, player=playername}
 	
-	if lines_count >= intbuffer then
-		local lines2 = {}
-		for i = 100, lines_count do
-			lines2[i-99] = lines[i]
-		end
-		lines_count = #lines2
-		lines = lines2
+	if lines_count > intbuffer then
+		lines_count = intbuffer
+		table.remove(lines, 1)
 	end
 	remakeSoon = true
 end
@@ -484,19 +493,14 @@ end
 --------------------------------------------------------------------------------
 
 function widget:DrawScreen()
-	if (not th) then
-		th = Chili.textureHandler
-		th.Initialize()
-	end
+  th.Update()
 
-	th.Update()
-
-	gl.PushMatrix()
-	local vsx,vsy = gl.GetViewSizes()
-	gl.Translate(0,vsy,0)
-	gl.Scale(1,-1,1)
-	screen0:Draw()
-	gl.PopMatrix()
+  gl.PushMatrix()
+  local vsx,vsy = gl.GetViewSizes()
+  gl.Translate(0,vsy,0)
+  gl.Scale(1,-1,1)
+  screen0:Draw()
+  gl.PopMatrix()
 end
 
 
@@ -520,7 +524,7 @@ function widget:MouseRelease(x,y,button)
   
 end
 
-function widget:MouseMove(x,y,dx,dy,...)
+function widget:MouseMove(x,y,dx,dy,button)
 	local alt, ctrl, meta, shift = Spring.GetModKeyState()
 	local mods = {alt=alt, ctrl=ctrl, meta=meta, shift=shift}
 
@@ -535,12 +539,11 @@ end
 
 local inColors = {}
 
-function widget:Initialize()
-	makeNewConsole(settings.pos_x, settings.pos_y, settings.c_width, settings.c_height, -1)
-	setup()
-end
-
 function widget:Update()
+  if (not th) then
+    th = Chili.textureHandler
+    th.Initialize()
+  end
 	cycle = cycle % (8) + 1	
 	longcycle = longcycle % (32*2) + 1	
 	if longcycle == 1 then
@@ -553,6 +556,15 @@ function widget:Update()
 			remakeConsole()
 		end 
 	end
+
+
+  Chili.TaskHandler.Update()
+end
+
+function widget:IsAbove(x,y)
+  if screen0:IsAbove(x,y) then
+    return true
+  end
 end
 
 function widget:SetConfigData(data)
@@ -586,7 +598,13 @@ function widget:Shutdown()
 	spSendCommands({"console 1"})
 end
 
+function widget:ViewResize(vsx, vsy)
+	scrW = vsx
+	scrH = vsy
+end
 
-
-
-
+function widget:Initialize()
+	widget:ViewResize(Spring.GetViewGeometry())
+	makeNewConsole(settings.pos_x, settings.pos_y, settings.c_width, settings.c_height, -1)
+	setup()
+end

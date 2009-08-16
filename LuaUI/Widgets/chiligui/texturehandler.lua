@@ -27,7 +27,9 @@ local glCallList = gl.CallList
 --//=============================================================================
 
 function textureHandler.Initialize()
-  gl.Texture(placeholderFilename); gl.Texture(false);
+  placeholderDL = gl.CreateList(gl.Texture,placeholderFilename)
+  gl.DeleteList(placeholderDL)
+
   placeholderDL = gl.CreateList(gl.Texture,placeholderFilename)
 end
 
@@ -48,9 +50,13 @@ end
 function textureHandler.LoadTexture(arg1,arg2,arg3)
   local activeTexID,filename,obj
   if (type(arg1)=='number') then
-     activeTexID,filename,obj = arg1,arg2,arg3
+     activeTexID = arg1
+     filename = arg2
+     obj = arg3
   else
-     activeTexID,filename,obj = 0,arg1,arg2
+     activeTexID = 0
+     filename = arg1
+     obj = arg2
   end
 
   if (not loaded[filename]) then

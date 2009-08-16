@@ -33,7 +33,7 @@ end
 
 --//=============================================================================
 
-function Trackbar:Draw()
+function Trackbar:DrawControl()
   local percent = (self.value-self.min)/(self.max-self.min)
   theme.DrawTrackbar(self.x,self.y,self.width,self.height,percent,self.state,self.trackColor)
 end

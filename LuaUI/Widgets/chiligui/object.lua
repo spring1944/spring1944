@@ -8,6 +8,8 @@ Object = {
   height    = 10,
 
   children  = {},
+  childrenByKeys = {},
+  childrenByKeysInverse = {},
 
   OnClick     = {},
   OnDblClick  = {},
@@ -36,9 +38,7 @@ function Object:New(obj)
   local cn = obj.children
   obj.children = {}
   for i=1,#cn do
-    local c = cn[i]
-    c.parent = obj
-    obj:AddChild(c,true)
+    obj:AddChild(cn[i],true)
   end
   if (parent) then
     parent:AddChild(obj)
@@ -58,9 +58,6 @@ function Object:Dispose()
   end
   -- todo: kill display list
   self:CallChildren("Dispose")
-  -- todo: properly remove the functions from the call-ins
-  self.visible = false
-  self.MouseDown = {}
 end
 
 
@@ -73,27 +70,72 @@ end
 
 function Object:Inherit(class)
   class.inherited = self
-  setmetatable(class,{__index=self})
+
+  for i,v in pairs(self) do
+    if (not class[i])and(i ~= "inherited") then
+      t = type(v)
+      if (t == "table") --[[or(t=="metatable")--]] then
+        class[i] = table.shallowcopy(v)
+      else
+        class[i] = v
+      end
+    end
+  end
+
+  --setmetatable(class,{__index=self})
+
   return class
 end
 
 --//=============================================================================
 
+function Object:SetParent(obj)
+  self.parent = obj
+end
+
+
 function Object:AddChild(obj, dontUpdate)
-  local cn = self.children
-  cn[#cn+1] = obj
-  self:Invalidate()
+  local childrenByKeys = self.childrenByKeys
+
+  if (not obj.parent) then
+    obj:SetParent(self)
+  end
+
+  if (not childrenByKeys[obj]) then
+    local children = self.children
+    children[#children+1] = obj
+
+    --//FIXME: sort by layer!
+    childrenByKeys[obj] = obj
+    self.childrenByKeysInverse[obj] = obj
+
+    self:Invalidate()
+  else
+    Spring.Echo("ChiliUI: tried to readd a child-object")
+  end
 end
 
 
 function Object:RemoveChild(child)
-  local children = self.children
-  local cn = #children
-  for i=1,cn do
-    if (child == children[i]) then
-      children[i] = children[cn]
-      children[cn] = nil
-      return true
+  local childrenByKeys = self.childrenByKeys
+  if (childrenByKeys[child]) then
+    if (child.parent == self) then
+      child:SetParent(nil)
+    end
+
+    self.childrenByKeys[child] = nil
+    self.childrenByKeysInverse[child] = nil
+
+    local children = self.children
+    local cn = #children
+    --// todo: add a new tag to keep children order! (and then use table.remove if needed)
+    for i=1,cn do
+      if (child == children[i]) then
+        children[i] = children[cn]
+        children[cn] = nil
+        self:Invalidate()
+        return true
+      end
     end
   end
   return false
@@ -164,19 +206,37 @@ end
 
 
 function Object:CallChildren(eventname, ...)
-  local children = self.children
-  for i=1,#children do
-    local child = children[i]
-	if not child then return end
+  local childrenByKeys = self.childrenByKeys
+  for child in pairs(childrenByKeys) do
     local obj = child[eventname](child, ...)
     if (obj) then
       return obj
     end
   end
+
+--[[
+  local children = self.children
+  for i=1,#children do
+    local child = children[i]
+    local obj = child[eventname](child, ...)
+    if (obj) then
+      return obj
+    end
+  end
+--]]
 end
 
 
 function Object:CallChildrenInverse(eventname, ...)
+  local childrenByKeysInverse = self.childrenByKeysInverse
+  for child in pairs(childrenByKeysInverse) do
+    local obj = child[eventname](child, ...)
+    if (obj) then
+      return obj
+    end
+  end
+
+--[[
   local children = self.children
   for i=#children,1,-1 do
     local child = children[i]
@@ -185,6 +245,7 @@ function Object:CallChildrenInverse(eventname, ...)
       return obj
     end
   end
+--]]
 end
 
 
@@ -194,9 +255,8 @@ end
 
 
 function Object:CallChildrenHT(eventname, x, y, ...)
-  local cn = self.children
-  for i=1,#cn do
-    local c = cn[i]
+  local childrenByKeys = self.childrenByKeys
+  for c in pairs(childrenByKeys) do
     local cx,cy = c:ParentToLocal(x,y)
     if InLocalRect(cx,cy,c.width,c.height) and c:HitTest(cx,cy) then
       local obj = c[eventname](c, cx, cy, ...)
@@ -211,9 +271,7 @@ end
 --//=============================================================================
 
 function Object:Invalidate()
-  if (self.parent) then
-    (self.parent):Invalidate()
-  end
+  --FIXME should be Control only
 end
 
 
@@ -243,7 +301,11 @@ end
 
 
 function Object:LocalToScreen(x,y)
-  return (self.parent):ClientToScreen(self:LocalToParent(x,y))
+  if self.parent then
+    return (self.parent):ClientToScreen(self:LocalToParent(x,y))
+  else
+    return -1,-1
+  end
 end
 
 
@@ -265,9 +327,8 @@ end
 
 
 function Object:HitTest(x,y)
-  local cn = self.children
-  for i=1,#cn do
-    local c = cn[i]
+  local childrenByKeys = self.childrenByKeys
+  for c in pairs(childrenByKeys) do
     local cx,cy = c:ParentToLocal(x,y)
     if InLocalRect(cx,cy,c.width,c.height) then
       local obj = c:HitTest(cx,cy)

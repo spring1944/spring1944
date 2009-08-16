@@ -6,7 +6,7 @@ Label = Control:Inherit{
   width = 70,
   height = 20,
 
-  autosize = false,
+  autosize = true,
 
   align    = "left",
   valign   = "center",
@@ -28,14 +28,17 @@ end
 function Label:SetCaption(newcaption)
   self.caption = newcaption
   if (self.autosize) then
-    --self.width = 
+    self._caption  = self.caption
+    local w = fh.GetTextWidth(self.caption,self.fontsize);
+    local h = fh.GetTextHeight(self.caption,self.fontsize);
+    self:Resize(w,h)
   else
     local _caption = self.caption
     self._caption  = _caption
     if (fh.GetTextWidth(_caption,self.fontsize) > self.width) then
-      while (fh.GetTextWidth(_caption .. '...',self.fontsize) > self.width) do
+      repeat 
         _caption = _caption:sub(1,-2)
-      end
+      until (fh.GetTextWidth(_caption .. '...',self.fontsize) <= self.width);
       self._caption = _caption .. '...'
     end
   end
@@ -50,7 +53,7 @@ local UseFont             = fh.UseFont
 
 --//=============================================================================
 
-function Label:Draw()
+function Label:DrawControl()
   gl.Color(self.textColor)
   UseFont(self.font)
 
