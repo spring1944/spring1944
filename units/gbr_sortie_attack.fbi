@@ -15,7 +15,7 @@
   footprintZ=1;
   iconType=mines;
   idleAutoHeal=0;
-  maxDamage=100;
+  maxDamage=1000000;
   maxSlope=82;
   maxVelocity=0.01;
   movementClass=KBOT_Infantry;
