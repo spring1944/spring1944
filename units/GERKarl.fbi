@@ -6,8 +6,8 @@
   activateWhenBuilt=1;
   brakeRate=0.25;
   buildCostEnergy=0;
-  buildCostMetal=711;
-  buildTime=711;
+  buildCostMetal=10000;
+  buildTime=10000;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERKarl_Dead;
@@ -20,8 +20,8 @@
   footprintZ=5;
   iconType=truck;
   leaveTracks=1;
-  mass=5000;
-  maxDamage=5000;
+  mass=12400;
+  maxDamage=12400;
   maxReverseVelocity=0.25;
   maxSlope=10;
   maxVelocity=0.5;

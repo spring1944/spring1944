@@ -1,7 +1,7 @@
 [GERKarlGeraet] {
   name=Karl Geraet 040 600mm mortar;
   accuracy=540;
-  areaOfEffect=512;
+  areaOfEffect=589;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -11,7 +11,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=30000; //200 kg explosive
+    default=400000; //200 kg explosive
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_XXLarge;
@@ -22,8 +22,9 @@
   impulseBoost=0;
   impulseFactor=0;
   model=karl_shell;
+  myGravity=0.0436;
   noSelfDamage=0; // if we are stupid enough to hit something close with THAT, then we deserved it
-  range=1500;
+  range=4000;
   reloadTime=300;
   rendertype=1;
   soundHit=GEN_Explo_4;
@@ -31,6 +32,6 @@
   targetMoveError=0.1;
   tolerance=3000;
   turret=1;
-  weaponVelocity=500;
+  weaponVelocity=566;
 }
 

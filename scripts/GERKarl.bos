@@ -245,6 +245,7 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
+	/*
 	while(!bCanFire)
 	{
 		sleep 50;
@@ -253,6 +254,7 @@ AimWeapon1(heading, pitch)
 	{
 		return FALSE;
 	}
+	*/
 	turn sleeve to x-axis (0 - pitch) speed GUN_PITCH_SPEED;
 	wait-for-turn sleeve around x-axis;
 	return(TRUE);
