@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSTankYard2;
   name=Heavy Tank Depot;
-  description=Produces tanks;
+  description=Heavy Armour Production Facility;
   buildCostEnergy=0;
   buildCostMetal=16200;
   builder=1;

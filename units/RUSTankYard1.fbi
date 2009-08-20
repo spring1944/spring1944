@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSTankYard1;
-  name=Tier 1 Tank Depot;
-  description=Basic Armour Production Facility;
+  name=Optimized Medium Tank Depot;
+  description=Advanced Medium Armour Production Facility;
   buildCostEnergy=0;
   buildCostMetal=16200;
   builder=1;

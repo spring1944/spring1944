@@ -150,6 +150,7 @@ MoveRate2()
 
 Create()
 {
+	SET STANDINGFIREORDERS to 1;
 	Static_Var_1 = 0;
 	call-script InitState();
 	start-script SmokeUnit();

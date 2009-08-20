@@ -1,6 +1,7 @@
 [unitinfo] {
   unitname=USTankYard2;
   name=Heavy Tank Depot;
+  description=Heavy Armour Production Facility;
   buildCostEnergy=0;
   buildCostMetal=13500;
   builder=1;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERTankYard2;
   name=Heavy Tank Depot;
-  description=Advanced Armour Production Facility;
+  description=Heavy Armour Production Facility;
   buildCostEnergy=0;
   buildCostMetal=14400;
   builder=1;

@@ -1,6 +1,7 @@
 [unitinfo] {
   unitname=GBRTankYard2;
   name=Heavy Tank Depot;
+  description=Heavy Armour Production Facility;
   buildCostEnergy=0;
   buildCostMetal=12150;
   builder=1;
