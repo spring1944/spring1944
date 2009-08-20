@@ -10,6 +10,8 @@ function widget:GetInfo()
   }
 end
 
+--[[
+
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
@@ -74,3 +76,4 @@ function widget:DrawScreen()
     gl.LineWidth(1)
   gl.PopMatrix()
 end
+]]
