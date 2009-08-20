@@ -7,6 +7,7 @@
   }
   [damage] {
     default=400;
+	mines=0;
   }
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
