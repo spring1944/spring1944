@@ -24,8 +24,8 @@
   iconType=destroyer;
   mass=100000;
   maxDamage=100000;
-  maxReverseVelocity=1.15;
-  maxVelocity=2.3;
+  maxReverseVelocity=3;
+  maxVelocity=6;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=RUSPSK;
@@ -40,7 +40,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=35;
+  turnRate=160;
 
   weapon1=102mmL60;
   maxAngleDif1=270;

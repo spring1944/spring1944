@@ -25,8 +25,8 @@
   iconType=destroyer;
   mass=157900;
   maxDamage=157900;
-  maxReverseVelocity=1.785;
-  maxVelocity=3.57;
+  maxReverseVelocity=2.5;
+  maxVelocity=5;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USBuckley;
@@ -40,7 +40,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=25;
+  turnRate=124;
 
   weapon10=20mmOerlikonaa;
   maxAngleDif10=200;

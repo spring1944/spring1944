@@ -26,8 +26,8 @@
   iconType=gunboat;
   mass=25400;
   maxDamage=25400;
-  maxReverseVelocity=1.13;
-  maxVelocity=2.26;
+  maxReverseVelocity=1.2;
+  maxVelocity=2.4;
   minWaterDepth=10;
   movementClass=BOAT_LandingCraft;
   objectName=USLCSL;
@@ -51,7 +51,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=25;
+  turnRate=140;
 
   weapon1=3in50mk22;
   maxAngleDif1=270;

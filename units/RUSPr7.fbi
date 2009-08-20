@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=RUSPr7;
-  name=Project 7 Destroyer;
+  name=Soobrazitelny-class Destroyer;
   description=Surface Superiority Ship;
   acceleration=0.15;
   activateWhenBuilt=1;
@@ -25,8 +25,8 @@
   iconType=destroyer;
   mass=190500;
   maxDamage=190500;
-  maxReverseVelocity=2.605;
-  maxVelocity=5.21;
+  maxReverseVelocity=4;
+  maxVelocity=8;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=RUSPr7;
@@ -40,8 +40,7 @@
   SoundCategory=RUSBoat;
   stealth=0;
   TEDClass=SHIP;
-  turninplace=0;
-  turnRate=25;
+  turnRate=112.5;
 
   weapon10=61k37mmaa;
   maxAngleDif10=270;

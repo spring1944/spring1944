@@ -4,7 +4,7 @@
   description=torpedo boat;
   acceleration=0.3;
   airSightDistance=1500;
-  brakeRate=0.5;
+  brakeRate=0.3;
   buildCostEnergy=0;
   buildCostMetal=7200;
   buildPic=USPT103.png;
@@ -25,7 +25,7 @@
   iconType=torpboat;
   mass=5000;
   maxDamage=5000;
-  maxReverseVelocity=4.82;
+  maxReverseVelocity=4.3;
   maxVelocity=8.6; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
