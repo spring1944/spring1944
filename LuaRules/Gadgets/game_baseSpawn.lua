@@ -1,22 +1,9 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  file: startpos_clear.lua
---  brief: Removes any features around the  Commanders start positions
---  author: Maelstrom
---
---  Copyright (C) 2007.
---  Licensed under the terms of the Creative Commons Attribution-Noncommercial 3.0 Unported
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 function gadget:GetInfo()
 	return {
 		name      = "Base Spawner",
 		desc      = "Spawns around the HQ units",
 		author    = "B. Tyler, Tobi Vollebregt",
-		date      = "31th Jan. 2009",
+		date      = "2009/08/18",
 		license   = "CC BY-NC",
 		layer     = -5,
 		enabled   = true --  loaded by default?
@@ -31,17 +18,19 @@ if (gadgetHandler:IsSyncedCode()) then
 	-- Each time an invalid position is randomly chosen, spread is multiplied by SPREAD_MULT.
 	-- If spread reaches MAX_SPREAD, the unit is not deployed AT ALL.
 	-- (This prevents infinite loops and units being spawned over entire map.)
+	-- with spread defined in spawnList as 200
 	-- 1000|1.1 will result in approx. 16 tries before giving up (200 * 1.1^17 > 1000)
+	-- 1000|1.02 will result in approx. 81 tries before giving up (200 * 1.02^82 > 1000)
+	-- The max number of tries should at least be higher then the average number
+	-- of tries required when placing a HQ in the corner of the map.
+	-- (In this case the search space is reduced by 75% ...)
 	local MAX_SPREAD = 1000
-	local SPREAD_MULT = 1.1
+	local SPREAD_MULT = 1.02
+	-- Minimum distance between any two spawned units.
+	local CLEARANCE = 125
+	-- Minimum distance bewteen each unit and the spawn center (HQ position)
+	local HQ_CLEARANCE = 200
 	local spawnQueue = {}
-	-- Removes this gadget if the game has started.
-	-- Only needs to run once at game start
-	--[[function gadget:GameFrame(n)
-		if n<2 then
-			gadgetHandler:RemoveGadget()
-		end
-	end]]--
 
 	local function IsPositionValid(unitDefID, x, z)
 		-- Don't place units underwater. (this is also checked by TestBuildOrder
@@ -57,7 +46,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		end
 		-- Don't place units too close together.
 		local ud = UnitDefs[unitDefID]
-		local units = Spring.GetUnitsInCylinder(x, z, 200)
+		local units = Spring.GetUnitsInCylinder(x, z, CLEARANCE)
 		if (units[1] ~= nil) then
 			return false
 		end
@@ -70,9 +59,9 @@ if (gadgetHandler:IsSyncedCode()) then
 			spawnQueue[unitID] = true
 		end
 	end
-	
+
 	function gadget:GameFrame(n)
-		if (n==2) then
+		if next(spawnQueue) then
 			for unitID, someThing in pairs(spawnQueue) do
 				local unitDefID = Spring.GetUnitDefID(unitID)
 				local teamID = Spring.GetUnitTeam(unitID)
@@ -80,23 +69,31 @@ if (gadgetHandler:IsSyncedCode()) then
 				local spawnList = hqDefs[ud.name]
 				if not spawnList then return end
 				local px, py, pz = Spring.GetUnitPosition(unitID)
+				--local steps = 1
 				for _, unitName in ipairs(spawnList.units) do
 					local udid = UnitDefNames[unitName].id
 					local spread = spawnList.spread
 					while (spread < MAX_SPREAD) do
-						local x = px + math.random(-spread, spread)
-						local z = pz + math.random(-spread, spread)
-						if IsPositionValid(udid, x, z) then
-								Spring.CreateUnit(unitName, x, py, z, 0, teamID)
+						local dx = math.random(-spread, spread)
+						local dz = math.random(-spread, spread)
+						local x = px + dx
+						local z = pz + dz
+						if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
+							Spring.CreateUnit(unitName, x, py, z, 0, teamID)
 							break
 						end
 						spread = spread * SPREAD_MULT
+						--steps = steps + 1
 					end
 				end
+				--Spring.Echo("average number of steps: " .. (steps / #spawnList.units))
 			end
+			spawnQueue = {}
 		end
+		-- Removes this gadget if the game has started.
+		-- Only needs to run once at game start
 		if (n==10) then
-		gadgetHandler:RemoveGadget()
+			gadgetHandler:RemoveGadget()
 		end
 	end
 

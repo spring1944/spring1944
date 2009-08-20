@@ -32,22 +32,9 @@ function gadget:GameStart()
 				local x,y,z = Spring.GetUnitPosition(unitID)
 				local teamID = Spring.GetUnitTeam(unitID)
 				local randomComm = math.random(1,4)
-				if randomComm == 1 then
-					Spring.CreateUnit("gerhqbunker", x, y, z, 0, teamID)
-					GG.teamSide[teamID] = "ger"
-				end
-				if randomComm == 2 then
-					Spring.CreateUnit("ushq", x, y, z, 0, teamID)
-					GG.teamSide[teamID] = "us"
-				end
-				if randomComm == 3 then
-					Spring.CreateUnit("ruscommissar1", x, y, z, 0, teamID)
-					GG.teamSide[teamID] = "rus"
-				end
-				if randomComm == 4 then
-					Spring.CreateUnit("gbrhq", x, y, z, 0, teamID)
-					GG.teamSide[teamID] = "gbr"
-				end
+				local sideName, startUnit = Spring.GetSideData(randomComm)
+				Spring.CreateUnit(startUnit, x, y, z, 0, teamID)
+				GG.teamSide[teamID] = sideName
 				Spring.DestroyUnit(unitID, false, true)
 			end
 		end
