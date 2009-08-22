@@ -20,9 +20,13 @@ local GetUnitViewPosition = Spring.GetUnitViewPosition
 local GetUnitRulesParam		= Spring.GetUnitRulesParam
 -- Unsynced Read
 local IsUnitVisible       = Spring.IsUnitVisible
+
+local spGetCameraPosition       = Spring.GetCameraPosition
 -- OpenGL
-local glColor          		= gl.Color
-local glDrawGroundCircle          		= gl.DrawGroundCircle
+local glColor          			= gl.Color
+local glDrawGroundCircle        = gl.DrawGroundCircle
+local gl_LineWidth          	= gl.LineWidth
+local gl_DepthTest          	= gl.DepthTest
 
 -- constants
 local FLAG_DEF_ID					= UnitDefNames["flag"].id
@@ -30,7 +34,7 @@ local FLAG_RADIUS					= 230 -- current flagkiller weapon radius, we may want to 
 local FLAG_CAP_THRESHOLD	= 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 
 local loop = 20
-local alphamax = 0.8
+local alphamax = 0.7
 
 
 -- variables
@@ -59,7 +63,17 @@ end
 
 
 function widget:DrawWorldPreUnit()
-  gl.DepthTest(false)
+  local _,cy = spGetCameraPosition()
+  
+    gl_DepthTest(false) -- should be already set this way
+	if cy < 500 then
+		gl_LineWidth(4)
+	elseif cy < 1000 then
+		gl_LineWidth(2)
+	else
+		gl_LineWidth(1)
+	end
+
 	for i = 1, #teams do
 		teamID = teams[i]
 		teamFlags = GetTeamUnitsByDefs (teamID, FLAG_DEF_ID)
@@ -69,7 +83,6 @@ function widget:DrawWorldPreUnit()
 				if (IsUnitVisible(unitID, FLAG_RADIUS, true) ) then
 					local colorSet  = teamColors[teamID]
 					local x, y, z = GetUnitBasePosition(unitID)
-					gl.LineWidth(1)
 					
 					local coltemp = colorSet[1]
 					for i=0,loop do
@@ -96,4 +109,5 @@ function widget:DrawWorldPreUnit()
 			end
 		end
 	end
+	gl_LineWidth(1)
 end
