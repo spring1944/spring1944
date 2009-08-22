@@ -43,7 +43,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   waterline=0;
-  workerTime=10;
+  workerTime=100;
   yardMap=oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo oocccccoo;
 }
 

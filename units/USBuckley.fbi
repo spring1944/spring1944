@@ -2,16 +2,19 @@
   unitname=USBuckley;
   name=Buckley class Escort Destroyer;
   description=Light Destroyer;
-  acceleration=0.15;
+  acceleration=0.075;
   activateWhenBuilt=1;
   airSightDistance=1700;
-  brakeRate=0.14;
+  brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=180000;
-  buildTime=160000;
+  buildCostMetal=31500;
+  buildTime=31500;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -65.0 0.0;
+  collisionVolumeScales=80.0 130.0 520.0;
+  collisionVolumeType=box;
   corpse=USBuckley_dead;
   [customParams] {
     dontCount=1;
@@ -20,8 +23,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=32;
+  footprintZ=32;
   iconType=destroyer;
   mass=157900;
   maxDamage=157900;

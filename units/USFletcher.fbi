@@ -2,21 +2,20 @@
   unitname=USFletcher;
   name=Fletcher-class Destroyer;
   description=Destroyer;
-  acceleration=0.05;
+  acceleration=0.075;
   activateWhenBuilt=1;
   airSightDistance=1700;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=250000;
-  buildTime=200000;
+  buildCostMetal=33600;
+  buildTime=33600;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
   corpse=USFletcher_dead;
-  collisionVolumeType=cylZ;
-  collisionVolumeScales=120 150 700;
-  collisionVolumeOffsets=0 -15 0;
-  collisionVolumeTest=1;
+  collisionVolumeOffsets=0.0 -50.0 0.0;
+  collisionVolumeScales=85.0 130.0 600.0;
+  collisionVolumeType=box;
   [customParams] {
     dontCount=1;
   }
@@ -24,8 +23,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=30;
-  footprintZ=30;
+  footprintX=40;
+  footprintZ=40;
   iconType=destroyer;
   mass=226800;
   maxDamage=226800;

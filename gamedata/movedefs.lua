@@ -80,19 +80,19 @@ local moveDefs 	=	 {
 	},
 	{
 		name					=	"BOAT_LightPatrol",
-		footprintX		=	4,
+		footprintX		=	10,
 		minWaterDepth	=	10,
 		crushStrength	=	10,
 	},
 	{
 		name					=	"BOAT_Destroyer",
-		footprintX		=	32,
+		footprintX		=	40,
 		minWaterDepth	=	20,
 		crushStrength	=	10,
 	},
 	{
 		name					=	"BOAT_LandingCraft",
-		footprintX		=	8,
+		footprintX		=	16,
 		minWaterDepth	=	2,
 		crushStrength	=	10,
 	},

@@ -3,6 +3,7 @@
   areaOfEffect=32;
   avoidFriendly=1;
   burnblow=1;
+  canAttackGround=0;
   collideFriendly=1;
   [customParams] {
     damagetype=shapedcharge;
@@ -19,7 +20,7 @@
   model=mk13torpedo;
   noautorange=1;
   propeller=1;
-  range=1500;
+  range=900;
   reloadTime=300;
   rendertype=1;
   selfprop=1;

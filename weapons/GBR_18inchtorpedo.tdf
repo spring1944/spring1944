@@ -4,6 +4,7 @@
   avoidFriendly=1;
   burnblow=1;
   burst=1;
+  canAttackGround=0;
   collideFriendly=1;
   [customParams] {
     damagetype=shapedcharge;
@@ -20,7 +21,7 @@
   model=GBR18inchtorpedo;
   noautorange=1;
   propeller=1;
-  range=1300;
+  range=780;
   reloadTime=300;
   rendertype=1;
   selfprop=1;

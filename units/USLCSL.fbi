@@ -2,17 +2,20 @@
   unitname=USLCSL;
   name=LCS(L);
   description=Landing Craft, Support (Large);
-  acceleration=0.15;
+  acceleration=0.075;
   activateWhenBuilt=1;
   airSightDistance=1700;
-  brakeRate=0.14;
+  brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=20000;
+  buildCostMetal=10000;
   buildPic=uslcsl.png;
-  buildTime=15000;
+  buildTime=10000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -40.0 0.0;
+  collisionVolumeScales=60.0 80.0 280.0;
+  collisionVolumeType=box;
   corpse=USLCSL_dead;
   [customParams] {
     dontCount=1;
@@ -21,8 +24,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=16;
+  footprintZ=16;
   iconType=gunboat;
   mass=25400;
   maxDamage=25400;

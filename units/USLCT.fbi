@@ -2,15 +2,18 @@
   unitname=USLCT;
   name=LCT mk.5;
   description=transports up to 5 tanks;
-  acceleration=0.2;
+  acceleration=0.075;
   airSightDistance=1100;
-  brakeRate=0.15;
+  brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=20000;
+  buildCostMetal=2800;
   buildPic=uslct.png;
-  buildTime=16000;
+  buildTime=2800;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -30.0 0.0;
+  collisionVolumeScales=60.0 100.0 220.0;
+  collisionVolumeType=box;
   corpse=USLCT_dead;
   [customParams] {
     dontCount=1;
@@ -19,8 +22,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=14;
+  footprintZ=14;
   holdSteady=1;
   iconType=transportship;
   mass=29100;
