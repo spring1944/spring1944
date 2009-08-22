@@ -11,14 +11,11 @@ static-var restore_delay, skip;
 #define SIG_AIM				2
 #define INFANTRY			412876 //458752 //983040 // this is 65536 * s3o model radius
 #define FUDGE				50 // isn't enough even between smg and rifle
-//#define UNIT_ALLIED			74
 
 // Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
 {
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-		if( get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [50.000000] )
-		{
 			set BUSY to 1;
 			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
 			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
@@ -37,7 +34,6 @@ TransportPickup(unitid)
 			  attach-unit unitid to tow_point; // don't hide other units
 			}
 			set BUSY to 0;
-		}
 	}
 }
 

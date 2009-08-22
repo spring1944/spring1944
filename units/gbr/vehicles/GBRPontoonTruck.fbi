@@ -26,7 +26,7 @@
   maxReverseVelocity=2.25;
   maxSlope=10;
   maxVelocity=4.5; //4.8
-  maxWaterDepth=45;
+  maxWaterDepth=70;
   movementClass=TANK_Truck_deep;
   noChaseCategory=AIR MINE;
   objectName=GBRPontoonTruck.s3o;

@@ -114,7 +114,7 @@ local moveDefs 	=	 {
 	{
 		name					=	"TANK_Truck_deep",
 		footprintX		=	3,
-		maxWaterDepth	=	45,
+		maxWaterDepth	=	70,
 		maxSlope			=	17,
 	}
 }

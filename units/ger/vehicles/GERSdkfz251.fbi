@@ -60,6 +60,7 @@
   trackWidth=15;
   transportCapacity=12;
   transportMass=1200;
+  transportRadius=50;
   transportSize=1;
   turninplace=0;
   turnRate=405;

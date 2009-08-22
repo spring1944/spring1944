@@ -16,16 +16,11 @@ static-var restore_delay, bMoving, treadnum, aim1;
 #define SIG_AIM				2 // Machinemg
 #define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
 #define FUDGE				50 // isn't enough even between smg and rifle
-#define UNIT_ALLIED			74
 
 //weapon stuff
 #define MG_MUZZLEFLASH		1024+7
 // tracers
 #define SMALL_TRACER 	2048+1
-
-//Pressure Line's stuff
-#define HEADING 82
-#define TURNRATE 405 //set to whatever the unit's fbi turnrate is
 
 treads() 
 { 
@@ -53,11 +48,9 @@ treads()
 
 // Transport script courtesy of Gnome's script for Spring SW reb ground trans
 TransportPickup(unitid) {
-if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200]) {
-		attach-unit unitid to base;
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			attach-unit unitid to base;
 	}
-}
 }
 
 TransportDrop(unitid, position) {

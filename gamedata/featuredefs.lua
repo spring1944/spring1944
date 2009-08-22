@@ -73,37 +73,20 @@ end
 --  Load the TDF featuredef files
 --
 
-local tdfFiles = {}
-do   --separate map and mod for later processing
-  local features = VFS.DirList('features/all worlds/', '*.tdf', VFS.MAP)
-  local corpses  = VFS.DirList('features/corpses/',    '*.tdf', VFS.MAP)
-  for _, f in ipairs(features) do
-    tdfFiles[f] = 'map'
-  end
-  for _, f in ipairs(corpses) do
-    tdfFiles[f] = 'map'
-  end
+local tdfFiles = RecursiveFileSearch('features/', '*.tdf') 
 
-  local features = VFS.DirList('features/all worlds/', '*.tdf', VFS.MOD)
-  local corpses  = VFS.DirList('features/corpses/',    '*.tdf', VFS.MOD)
-  for _, f in ipairs(features) do
-    tdfFiles[f] = 'mod'
-  end
-  for _, f in ipairs(corpses) do
-    tdfFiles[f] = 'mod'
-  end
-end
-
-for filename, archive in pairs(tdfFiles) do
+for _, filename in ipairs(tdfFiles) do
   local fds, err = TDF.Parse(filename)
   if (fds == nil) then
     Spring.Echo('Error parsing ' .. filename .. ': ' .. err)
   else
     for name, fd in pairs(fds) do
-      ProcessFeature(name, fd, archive)
+      fd.filename = filename
+      featureDefs[name] = fd
     end
   end
 end
+
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -112,28 +95,9 @@ end
 --  (these will override the TDF versions)
 --
 
-local luaFiles = {}
-do
-  local features = VFS.DirList('features/all worlds/', '*.lua', VFS.MAP)
-  local corpses  = VFS.DirList('features/corpses/',    '*.lua', VFS.MAP)
-  for _, f in ipairs(features) do
-    luaFiles[f] = 'map'
-  end
-  for _, f in ipairs(corpses) do
-    luaFiles[f] = 'map'
-  end
+local luaFiles = RecursiveFileSearch('features/', '*.lua')
 
-  local features = VFS.DirList('features/all worlds/', '*.lua', VFS.MOD)
-  local corpses  = VFS.DirList('features/corpses/',    '*.lua', VFS.MOD)
-  for _, f in ipairs(features) do
-    luaFiles[f] = 'mod'
-  end
-  for _, f in ipairs(corpses) do
-    luaFiles[f] = 'mod'
-  end
-end
-
-for filename, archive in pairs(luaFiles) do
+for _, filename in ipairs(luaFiles) do
   local fdEnv = {}
   fdEnv._G = fdEnv
   fdEnv.Shared = shared
@@ -146,11 +110,12 @@ for filename, archive in pairs(luaFiles) do
     Spring.Echo('Missing return table from: ' .. filename)
   else
     for fdName, fd in pairs(fds) do
-      if (isstring(fdName) and istable(fd)) then
-        ProcessFeature(fdName, fd, archive)
+      if ((type(fdName) == 'string') and (type(fd) == 'table')) then
+        fd.filename = filename
+        featureDefs[fdName] = fd
       end
     end
-  end
+  end  
 end
 
 
