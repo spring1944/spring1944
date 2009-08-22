@@ -37,7 +37,7 @@
   windGenerator=1e-06;
   yardMap=ooooooooo;
 
-  weapon1=flag;
+  //weapon1=flag;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
