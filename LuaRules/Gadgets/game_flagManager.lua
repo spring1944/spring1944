@@ -41,7 +41,7 @@ local FLAG_CAP_THRESHOLD					=	10 -- number of capping points needed for a flag 
 local FLAG_REGEN							=	1		-- how fast a flag with no defenders or attackers will reduce capping statuses
 local CAP_MULT								=	0.25 --multiplies against the FBI defined CapRate
 local DEF_MULT								=	1 --multiplies against the FBI defined DefRate
-local SIDES									=	{gbr = 1, ger = 2, rus = 3, us = 4}
+local SIDES									=	{gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
 local DEBUG									=	false -- enable to print out flag locations in profile format
 
 -- variables
