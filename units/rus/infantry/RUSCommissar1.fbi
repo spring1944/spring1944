@@ -8,6 +8,7 @@
   buildCostMetal=325;
   buildDistance=5;
   builder=1;
+  buildPic=RUSCommissar.png;
   buildTime=325;
   canAttack=0;
   canMove=1;
