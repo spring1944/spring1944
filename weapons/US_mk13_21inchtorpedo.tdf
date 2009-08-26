@@ -9,7 +9,7 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=90000;
+    default=50000;
   }
   edgeEffectiveness=0.5;
   explosionSpeed=30;
@@ -20,7 +20,7 @@
   model=mk13torpedo;
   noautorange=1;
   propeller=1;
-  range=900;
+  range=1100;
   reloadTime=300;
   rendertype=1;
   selfprop=1;

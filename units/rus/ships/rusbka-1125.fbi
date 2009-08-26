@@ -2,15 +2,18 @@
   unitname=RUSBKA-1125;
   name=Pr.1125 Armored Boat;
   description=armored river gunboat;
-  acceleration=0.1;
+  acceleration=0.05;
   airSightDistance=1500;
-  brakeRate=0.1;
+  brakeRate=0.025;
   buildCostEnergy=0;
-  buildCostMetal=4800;
-  buildTime=3200;
+  buildTime=3300;
+  buildTime=3300;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=24.0 24.0 160.0;
+  collisionVolumeType=box;
   corpse=RUSBKA-1125_dead;
   [customParams] {
     dontCount=1;
@@ -24,8 +27,8 @@
   iconType=gunboat;
   mass=2660;
   maxDamage=2660;
-  maxReverseVelocity=1.235;
-  maxVelocity=2.47;
+  maxReverseVelocity=2.47;
+  maxVelocity=4.94;
   minWaterDepth=6;
   movementClass=BOAT_RiverSmall;
   objectName=RUSBKA1125.s3o;
@@ -44,13 +47,13 @@
     explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=900;
+  sightDistance=1600;
   smoothAnim=0;
   stealth=1;
   SoundCategory=RUSBoat;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=30;
+  turnRate=250;
 
   weapon1=F3476mmHE;
   maxAngleDif1=300;

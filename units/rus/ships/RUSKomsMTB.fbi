@@ -2,15 +2,18 @@
   unitname=RUSKomsMTB;
   name=Komsomolets class MTB;
   description=torpedo boat;
-  acceleration=0.2;
-  airSightDistance=1500;
-  brakeRate=0.2;
+  acceleration=0.1;
+  airSightDistance=3000;
+  brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=1250;
-  buildTime=750;
+  buildCostMetal=1800;
+  buildTime=1800;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=24.0 24.0 120.0;
+  collisionVolumeType=box;
   corpse=RUSKomsMTB_dead;
   [customParams] {
     dontCount=1;
@@ -24,8 +27,8 @@
   iconType=torpboat;
   mass=2090;
   maxDamage=2090;
-  maxReverseVelocity=3.29;
-  maxVelocity=6.58;
+  maxReverseVelocity=6.58;
+  maxVelocity=13.16;
   minWaterDepth=10;
   movementClass=BOAT_Destroyer;
   objectName=RUSKomsMTB;
@@ -42,13 +45,13 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  sightDistance=1000;
+  sightDistance=1600;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=50;
+  turnRate=350;
 
   weapon1=533mmtorpedo;
   maxAngleDif1=40;

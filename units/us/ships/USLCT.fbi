@@ -38,7 +38,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=700;
+  sightDistance=1600;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;

@@ -4,7 +4,7 @@
   description=Infantry Water Transport;
   acceleration=0.3;
   airSightDistance=1500;
-  brakeRate=0.2;
+  brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=700;
   buildPic=RUSPG117.png;
@@ -24,7 +24,8 @@
   isFirePlatform=0;
   mass=500;
   maxDamage=500;
-  maxVelocity=3.7;
+  maxReverseVelocity=3.7;
+  maxVelocity=7.4;
   minWaterDepth=5;
   movementClass=BOAT_Small;
   objectName=RUSPG117.S3O;

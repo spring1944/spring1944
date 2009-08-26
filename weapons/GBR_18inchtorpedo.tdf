@@ -10,7 +10,7 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=8000;
+    default=50000;
   }
   edgeEffectiveness=0.5;
   explosionSpeed=30;
@@ -21,7 +21,7 @@
   model=GBR18inchtorpedo;
   noautorange=1;
   propeller=1;
-  range=780;
+  range=980;
   reloadTime=300;
   rendertype=1;
   selfprop=1;

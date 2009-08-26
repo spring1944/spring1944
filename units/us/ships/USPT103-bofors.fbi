@@ -3,7 +3,7 @@
   name=PT-103 type boat;
   description=torpedo boat;
   acceleration=0.3;
-  airSightDistance=1500;
+  airSightDistance=3000;
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=3500;
@@ -49,7 +49,7 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=900;
+  sightDistance=1600;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
@@ -58,7 +58,7 @@
   badTargetCategory=FLAG;
 
   weapon10=KwK3020mmHE;
-  onlyTargetCategory10=BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  onlyTargetCategory10=SHIP BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
   weaponMainDir10=0 0 1;
 
   weapon1=mk13torpedo;
@@ -82,7 +82,7 @@
   weaponMainDir4=0 0 1;
 
   weapon5=bofors40mmaa;
-  maxAngleDif5=270;
+  maxAngleDif5=350;
   onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
@@ -91,13 +91,13 @@
   weaponMainDir6=0 0 1;
 
   weapon7=m2browningaa;
-  onlyTargetCategory7=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  onlyTargetCategory7=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
 
   weapon8=m2browningaa;
-  onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
 
   weapon9=bofors40mmhe;
-  maxAngleDif9=270;
+  maxAngleDif9=350;
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }

@@ -4,7 +4,7 @@
   description=Light Attack Submarine;
   acceleration=0.2;
   airSightDistance=600;
-  brakeRate=0.2;
+  brakeRate=0.1;
   buildCostEnergy=0;
   buildCostMetal=58000;
   buildTime=42000;
@@ -24,8 +24,8 @@
   iconType=sub;
   mass=2500;
   maxDamage=2500;
-  maxReverseVelocity=0.41;
-  maxVelocity=0.82; // 8.2 knots submerged
+  maxReverseVelocity=0.82;
+  maxVelocity=1.64; // 8.2 knots submerged
   minWaterDepth=40;
   movementClass=BOAT_Sub;
   objectName=RUSTYPEM;
@@ -40,7 +40,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=35;
+  turnRate=160;
   waterline=60;
 
   weapon1=533mmtorpedo; //450mmtorp;

@@ -6,7 +6,7 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=1400;
+  buildCostMetal=1200;
   buildTime=1200;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -24,8 +24,8 @@
   iconType=landingship;
   mass=1360;
   maxDamage=1360;
-  maxReverseVelocity=0.55;
-  maxVelocity=1.1;
+  maxReverseVelocity=1.1;
+  maxVelocity=2.2;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=RUSTender15t;
@@ -43,7 +43,7 @@
   transportMass=8000;
   transportSize=1;
   turninplace=0;
-  turnRate=35;
+  turnRate=220;
 
   weapon1=dshk;
   maxAngleDif1=270;

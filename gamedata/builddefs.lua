@@ -42,8 +42,8 @@ buildoptions =
     "apminesign",
     "tankobstacle",
     --"sandbags",
-    "rubberdingy",
-    "pontoonraft",
+    --"rubberdingy",
+    --"pontoonraft",
   },
 
   usbarracks =
@@ -76,8 +76,8 @@ buildoptions =
     "apminesign",
     "tankobstacle",
     --"sandbags",
-    "rubberdingy",
-    "pontoonraft",
+    --"rubberdingy",
+   -- "pontoonraft",
 
   },
 
@@ -240,8 +240,8 @@ buildoptions =
     --"sandbags",
     "tankobstacle",
     --"geropelblitz",
-    "gersturmboot",
-    "pontoonraft",
+   -- "gersturmboot",
+    --"pontoonraft",
   },
 
   gerbarracks =
@@ -272,8 +272,8 @@ buildoptions =
     --"sandbags",
     "tankobstacle",
     --"geropelblitz",
-    "gersturmboot",
-    "pontoonraft",
+    --"gersturmboot",
+    --"pontoonraft",
   },
 
   gervehicleyard =
@@ -405,8 +405,8 @@ buildoptions =
   gerboatyard =
   {
     "gersturmboot",
+	"pontoonraft",
     "gerschsturmboot",
-    "pontoonraft",
     "gerrboot",
     "gersboot",
   },
@@ -418,6 +418,7 @@ buildoptions =
     "gersboot",
     "germfp",
     "gerafp",
+	"gertype1934",
   },
 
         ----------------------
@@ -448,8 +449,8 @@ buildoptions =
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    "rubberdingy",
-    "pontoonraft",
+    --"rubberdingy",
+    --"pontoonraft",
   },
 
   gbrbarracks =
@@ -522,8 +523,8 @@ buildoptions =
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    "rubberdingy",
-    "pontoonraft",
+    --"rubberdingy",
+    --"pontoonraft",
 
   },
 
@@ -649,8 +650,8 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    "ruspg117",
-    "pontoonraft",
+    --"ruspg117",
+    --"pontoonraft",
   },
   
   ruscommissar1 =
@@ -663,8 +664,8 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    "ruspg117",
-    "pontoonraft",
+    --"ruspg117",
+    --"pontoonraft",
   },
   ruspshack =
   {
@@ -704,8 +705,8 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    "ruspg117",
-    "pontoonraft",
+    --"ruspg117",
+    --"pontoonraft",
   },
 
   ruscommissar =
@@ -722,8 +723,8 @@ buildoptions =
     "tankobstacle",
     --"sandbags",
     "russtorage",
-    "ruspg117",
-    "pontoonraft",
+    --"ruspg117",
+    --"pontoonraft",
   },
 
   rusk31 =
@@ -846,23 +847,25 @@ buildoptions =
   
   rusboatyard =
   {
-    "ruspg117",
-    "pontoonraft",
+	"ruspg117",
+	"pontoonraft",
     "rustender15t",
-    "rusbka-1125",
-    "rusbmo",
+    "ruslct",
     "ruskomsmtb",
+    "rusbmo",
+    "rusbka-1125",
   },
   rusboatyardlarge =
   {
-    "ruspg117",
-    "pontoonraft",
+	"ruspg117",
+	"pontoonraft",
     "rustender15t",
-    "rusbka-1125",
-    "rusbmo",
-    "ruskomsmtb",
     "ruslct",
-    "rusmonitor",
+    "ruskomsmtb",
+    "rusbmo",
+    "rusbka-1125",
+    "ruspsk",
+    "ruspr7",
   },
   
   ---GAME MASTER TOOLBOX

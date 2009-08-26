@@ -2,13 +2,13 @@
   unitname=RUSMonitor;
   name=Zhelezniakov-class monitor;
   description=Fire Support Ship;
-  acceleration=0.15;
+  acceleration=0.05;
   airSightDistance=1500;
-  brakeRate=0.14;
+  brakeRate=0.025;
   buildCostEnergy=0;
-  buildCostMetal=32000;
   buildPic=rusmonitor.png;
-  buildTime=27000;
+  buildCostMetal=11000;
+  buildTime=11000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -25,8 +25,8 @@
   iconType=gunboat;
   mass=26300;
   maxDamage=26300;
-  maxReverseVelocity=0.525;
-  maxVelocity=1.05; //8.3 knots max. It's really sluggish
+  maxReverseVelocity=0.83;
+  maxVelocity=1.66; //8.3 knots max. It's really sluggish
   minWaterDepth=6;
   movementClass=BOAT_River;
   objectName=RUSMonitor;
@@ -45,13 +45,14 @@
     explosionGenerator9=custom:LARGE_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=900;
+  sightDistance=2000;
+  radardistance=4000;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=35;
+  turnRate=115;
 
   weapon1=mk_2_4;
   maxAngleDif1=300;

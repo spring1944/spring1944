@@ -23,7 +23,7 @@
   mass=950;
   maxDamage=650;
   maxSlope=10;
-  maxVelocity=4;
+  maxVelocity=4.5;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
   objectName=usdukw.s3o;

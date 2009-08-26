@@ -11,7 +11,7 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=90000;
+    default=50000;
   }
   edgeEffectiveness=0.5;
   explosionSpeed=30;
@@ -23,7 +23,7 @@
   noautorange=1;
   projectiles=2;
   propeller=1;
-  range=780;
+  range=980;
   reloadTime=300;
   rendertype=1;
   selfprop=1;

@@ -6,11 +6,14 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=120000;
-  buildTime=100000;
+  buildTime=12000;
+  buildTime=12000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -40.0 0.0;
+  collisionVolumeScales=60.0 120.0 360.0;
+  collisionVolumeType=box;
   corpse=RUSPSK_dead;
   [customParams] {
     dontCount=1;
@@ -34,7 +37,8 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=1100;
+  sightDistance=2000;
+  radardistance=4000;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
