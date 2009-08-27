@@ -62,6 +62,7 @@
   transportMass=750;
   transportRadius=50;
   transportSize=1;
+  transportUnloadMethod=2;
   turninplace=0;
   turnRate=400;
   badTargetCategory=FLAG;

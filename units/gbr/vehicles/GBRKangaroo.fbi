@@ -59,6 +59,7 @@
   transportCapacity=12;
   transportMass=750;
   transportSize=1;
+  transportUnloadMethod=2;
   turninplace=0;
   turnRate=400;
   badTargetCategory=FLAG;
