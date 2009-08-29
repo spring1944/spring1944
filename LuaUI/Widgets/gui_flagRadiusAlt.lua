@@ -2,8 +2,8 @@ function widget:GetInfo()
   return {
     name      = "1944 Flag Ranges",
     desc      = "Shows a flag's capping radius and team colour",
-    author    = "CarRepairer",
-    date      = "2009-08-08",
+    author    = "CarRepairer and Evil4Zerggin",
+    date      = "28 August 2009",
     license   = "GNU GPL v2",
     layer     = 5,
     enabled   = true  --  loaded by default?
@@ -13,101 +13,112 @@ end
 -- function localisations
 -- Synced Read
 --local GetGroundNormal     = Spring.GetGroundNormal
-local GetTeamUnitsByDefs 	= Spring.GetTeamUnitsByDefs
+local GetTeamUnitsByDefs   = Spring.GetTeamUnitsByDefs
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GetUnitTeam         = Spring.GetUnitTeam
 local GetUnitViewPosition = Spring.GetUnitViewPosition
-local GetUnitRulesParam		= Spring.GetUnitRulesParam
+local GetUnitRulesParam    = Spring.GetUnitRulesParam
+local GetTeamColor = Spring.GetTeamColor --cacheing not appreciably faster, if at all
 -- Unsynced Read
 local IsUnitVisible       = Spring.IsUnitVisible
 
-local spGetCameraPosition       = Spring.GetCameraPosition
 -- OpenGL
-local glColor          			= gl.Color
-local glDrawGroundCircle        = gl.DrawGroundCircle
-local gl_LineWidth          	= gl.LineWidth
-local gl_DepthTest          	= gl.DepthTest
+local glCallList =  gl.CallList
+local glSmoothing = gl.Smoothing
+local glShape = gl.Shape
+local glPushMatrix = gl.PushMatrix
+local glPopMatrix = gl.PopMatrix
+local glTranslate = gl.Translate
+local glScale = gl.Scale
+local GL_QUAD_STRIP = GL.QUAD_STRIP
+
+local PI = math.pi
+local sin, cos = math.sin, math.cos
 
 -- constants
-local FLAG_DEF_ID					= UnitDefNames["flag"].id
-local FLAG_RADIUS					= 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local FLAG_CAP_THRESHOLD	= 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
+local FLAG_DEF_ID          = UnitDefNames["flag"].id
+local FLAG_RADIUS          = 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
+local FLAG_CAP_THRESHOLD  = 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 
-local loop = 20
-local alphamax = 0.7
-
+local maxAlpha = 0.75
+local innerSize = 0.875
+local circleDivs = 64
+local circleInc = 2 * PI / circleDivs
 
 -- variables
-local teamColors = {}
 local flags = {}
-local teams									= Spring.GetTeamList()
+local teams = Spring.GetTeamList()
 
 local alphavals = {}
 
-function widget:Initialize()
-	-- pre-cache team colours
-	for i = 1, #teams do
-		local teamID = teams[i]
-		local r,g,b = Spring.GetTeamColor(teamID)
-		teamColors[teamID] = {{ r, g, b, alphamax },{ r, g, b, alphamax }}
-	end
-	
-	for i=0,loop do
-		alphavals[i] = alphamax - math.log(i) / math.log(loop) * alphamax 
-	end
+local circleLists = {}
+
+local function DrawTeamCircle(teamID)
+  local vertices = {}
+  local r, g, b = GetTeamColor(teamID)
+  
+  for i = 0, circleDivs do
+    local angle = i * circleInc
+    local ox = cos(angle)
+    local oz = sin(angle)
+    local ix = ox * innerSize
+    local iz = oz * innerSize
+    vertices[2*i+1] = { v = {ix, 0, iz}, c = {r, g, b, 0} }
+    vertices[2*i+2] = { v = {ox, 0, oz}, c = {r, g, b, 1} }
+  end
+  
+  glShape(GL_QUAD_STRIP, vertices)
 end
 
+function widget:Initialize()
+  local glCreateList = gl.CreateList
+  for i = 1, #teams do
+    local teamID = teams[i]
+    circleLists[teamID] = glCreateList(DrawTeamCircle, teamID, FLAG_RADIUS)
+  end
+end
 
 function widget:Shutdown()
+  local glDeleteList = gl.DeleteList
+  for i = 1, #teams do
+    local teamID = teams[i]
+    glDeleteList(circleLists[teamID])
+  end
 end
 
-
 function widget:DrawWorldPreUnit()
-  local _,cy = spGetCameraPosition()
-  
-    gl_DepthTest(false) -- should be already set this way
-	if cy < 500 then
-		gl_LineWidth(4)
-	elseif cy < 1000 then
-		gl_LineWidth(2)
-	else
-		gl_LineWidth(1)
-	end
+  --glSmoothing(true, true, true)
 
-	for i = 1, #teams do
-		teamID = teams[i]
-		teamFlags = GetTeamUnitsByDefs (teamID, FLAG_DEF_ID)
-		if teamFlags then
-			for j = 1, #teamFlags do
-				unitID = teamFlags[j]
-				if (IsUnitVisible(unitID, FLAG_RADIUS, true) ) then
-					local colorSet  = teamColors[teamID]
-					local x, y, z = GetUnitBasePosition(unitID)
-					
-					local coltemp = colorSet[1]
-					for i=0,loop do
-						glColor({coltemp[1], coltemp[2], coltemp[3], alphavals[i]})
-						glDrawGroundCircle(x,y,z, FLAG_RADIUS-i, 48)
-					end
-					
-					for j = 1, #teams do
-						capTeamID = teams[j]
-						teamCapValue = GetUnitRulesParam(unitID, "cap" .. tostring(capTeamID))
-						if (teamCapValue or 0) > 0 then
-							colorSet = teamColors[capTeamID]
-							local capVisualRadius = (FLAG_RADIUS - 5)/ FLAG_CAP_THRESHOLD * teamCapValue
-							local coltemp = colorSet[2]
-							for i=0,loop do
-								glColor({coltemp[1], coltemp[2], coltemp[3], alphavals[i], })
-								glDrawGroundCircle(x,y,z, capVisualRadius-i, 48)		
-							end
-							
-							
-						end
-					end
-				end
-			end
-		end
-	end
-	gl_LineWidth(1)
+  for i = 1, #teams do
+    local teamID = teams[i]
+    local teamFlags = GetTeamUnitsByDefs(teamID, FLAG_DEF_ID)
+    if teamFlags then
+      for j = 1, #teamFlags do
+        unitID = teamFlags[j]
+        if IsUnitVisible(unitID, FLAG_RADIUS, true) then
+          local x, y, z = GetUnitBasePosition(unitID)
+          glPushMatrix()
+            glTranslate(x, y, z)
+            glScale(FLAG_RADIUS, 1, FLAG_RADIUS)
+            glCallList(circleLists[teamID])
+          
+            for j = 1, #teams do
+              local capTeamID = teams[j]
+              local teamCapValue = GetUnitRulesParam(unitID, "cap" .. tostring(capTeamID))
+              if (teamCapValue or 0) > 0 then
+                local scale = teamCapValue / FLAG_CAP_THRESHOLD
+                glPushMatrix()
+                  glScale(scale, 1, scale)
+                  glCallList(circleLists[capTeamID])
+                glPopMatrix()
+              end
+            end
+          
+          glPopMatrix()
+        end
+      end
+    end
+  end
+  
+  --glSmoothing(false, false, false)
 end
