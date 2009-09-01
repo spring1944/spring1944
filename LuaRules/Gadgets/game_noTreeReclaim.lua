@@ -47,7 +47,8 @@ if gadgetHandler:IsSyncedCode() then
 	local reclaimLeft = {}
 
 	function gadget:AllowFeatureBuildStep(builderID, builderTeam, featureID, featureDefID, part)
-		reclaimLeft[featureID] = (reclaimLeft[featureID] or 1) - part
+		-- 2009/09/01: 10x faster reclaim (hence 0.1), 110 sec for standard tree seems tad bit much
+		reclaimLeft[featureID] = (reclaimLeft[featureID] or 0.1) + part
 		if (reclaimLeft[featureID] <= 0) then
 			Spring.DestroyFeature(featureID)
 		end
