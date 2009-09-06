@@ -33,7 +33,7 @@
   soundStart=GER_MG34;
   soundTrigger=1;
   sprayAngle=300;
-  tolerance=6;
+  tolerance=3000;
   turret=1;
   weaponTimer=1;
   weaponVelocity=1500;
