@@ -38,7 +38,7 @@
   showNanoFrame=0;
   side=GER;
   sightDistance=800;
-  soundcategory=GERVeh;
+  soundcategory=GERTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;
