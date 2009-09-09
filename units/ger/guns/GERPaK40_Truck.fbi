@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1750;
+  buildCostMetal=1400;
   buildPic=GERPaK40.png;
-  buildTime=1750;
+  buildTime=1400;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;

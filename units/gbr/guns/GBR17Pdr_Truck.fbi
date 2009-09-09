@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=2000;
+  buildCostMetal=1600;
   buildPic=GBR17Pdr.png;
-  buildTime=2000;
+  buildTime=1600;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GBRBedfordTruck_Destroyed;

@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=3850;
+  buildCostMetal=3080;
   buildPic=RUSM30.png;
-  buildTime=3850;
+  buildTime=3080;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=RUSZiS5_Destroyed;
