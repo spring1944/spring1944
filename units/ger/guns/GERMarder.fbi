@@ -69,7 +69,7 @@
   weapon1=KwK75mmL48AP;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=15;
-  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
 }
 

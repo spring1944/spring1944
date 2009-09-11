@@ -69,7 +69,7 @@
 
   weapon1=17pdrAP;
   badTargetCategory1=SOFTVEH;
-  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
 
   weapon2=M2BrowningAA;
   onlyTargetCategory2=AIR;

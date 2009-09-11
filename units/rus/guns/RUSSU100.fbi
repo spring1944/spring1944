@@ -68,7 +68,7 @@
   weapon1=D10S100mmAP;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=25;
-  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
 
   weapon2=.50calproof;

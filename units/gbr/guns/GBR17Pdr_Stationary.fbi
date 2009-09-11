@@ -57,7 +57,7 @@
   weapon1=17pdrap;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
-  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
 }
 
