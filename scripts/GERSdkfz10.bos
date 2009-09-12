@@ -3,7 +3,7 @@
 piece  base, turret, sleeve, barrel, flare, exhaust, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, tracks1, tracks2;
 piece flap1, flap2, flap3;
 
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, CannonFearOk, MGFearOk, shotCount;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -60,6 +60,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 
 //tracers
 #define LARGE_TRACER		2048+1
+#define TRACER_PER_X_SHOTS	3
 
 treads() 
 { 
@@ -91,6 +92,7 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	shotCount=0;
 		// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
@@ -215,7 +217,12 @@ FireWeapon1()
 
 Shot1(just_a_zero)
 {
-	emit-sfx LARGE_TRACER from flare;
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx LARGE_TRACER from flare;
+		shotCount=0;
+	}
 	emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from flare;
 	// barrel recoil
