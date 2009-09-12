@@ -6,7 +6,7 @@
 piece  base, load_shoulder, load_arm, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tow_point, 
 tracks1, tracks2, turret, gun, flare;
  
-static-var restore_delay, bMoving, treadnum, aim1;
+static-var restore_delay, bMoving, treadnum, aim1, shotCount;
 
 #define FX_HIDE\
 	hide flare;\
@@ -19,6 +19,7 @@ static-var restore_delay, bMoving, treadnum, aim1;
 
 // tracers
 #define MEDIUM_TRACER 	2048+2
+#define TRACER_PER_X_SHOTS	3
 
 treads() 
 { 
@@ -133,6 +134,7 @@ Create()
 //	spin tow_point around y-axis speed <100>;
 	aim1 = FALSE;
 	treadnum=0;
+	shotCount=0;
 	FX_HIDE
 	start-script SmokeUnit();
 }
@@ -166,7 +168,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 	{
-	emit-sfx MEDIUM_TRACER from flare;
+	/*emit-sfx MEDIUM_TRACER from flare;
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep 75;
 	emit-sfx MG_MUZZLEFLASH from flare;
@@ -179,10 +181,21 @@ FireWeapon1()
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep 75;
 	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 75;
+	sleep 75;*/
 	return(0);
 	}
-	
+
+Shot1(just_a_zero)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare;
+		shotCount=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare;
+}
+
 	// Weapon 2 - MG AA
 QueryWeapon2 (piecenum)
 	{
@@ -212,7 +225,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 	{
-	emit-sfx MEDIUM_TRACER from flare;
+	/*emit-sfx MEDIUM_TRACER from flare;
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep 75;
 	emit-sfx MG_MUZZLEFLASH from flare;
@@ -225,10 +238,20 @@ FireWeapon2()
 	emit-sfx MG_MUZZLEFLASH from flare;
 	sleep 75;
 	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 75;
+	sleep 75;*/
 	return(0);
 	}
-	
+
+Shot2(just_a_zero)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare;
+		shotCount=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare;
+}
 	
 SweetSpot(piecenum)
 {

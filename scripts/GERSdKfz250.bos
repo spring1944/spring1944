@@ -2,7 +2,7 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxFlare, exhaust, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming, shotCount1, shotCount3;
 
 // Signal definitions
 #define SIG_AIM		2 // Main Cannon
@@ -62,6 +62,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 //tracers
 #define SMALL_TRACER 	2048+3
 #define LARGE_TRACER		2048+4
+#define TRACER_PER_X_SHOTS_1	3
+#define TRACER_PER_X_SHOTS_2	5
 
 treads() 
 { 
@@ -93,6 +95,8 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	shotCount1=0;
+	shotCount3=0;
 		// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
@@ -207,7 +211,12 @@ Shot1(foo)
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from flare;
-	emit-sfx LARGE_TRACER from flare;
+	++shotCount1;
+	if(shotCount1>=TRACER_PER_X_SHOTS_1)
+	{
+		emit-sfx LARGE_TRACER from flare;
+		shotCount1=0;
+	}
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 50;
@@ -271,7 +280,12 @@ Shot2(foo)
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare;
 	emit-sfx XSMALL_MUZZLEDUST from flare;
-	emit-sfx LARGE_TRACER from flare;
+	++shotCount1;
+	if(shotCount1>=TRACER_PER_X_SHOTS_1)
+	{
+		emit-sfx LARGE_TRACER from flare;
+		shotCount1=0;
+	}
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 50;
@@ -338,7 +352,12 @@ FireWeapon3()
 
 Shot3(foo)
 {
-	emit-sfx SMALL_TRACER from coaxflare;
+	++shotCount3;
+	if(shotCount3>=TRACER_PER_X_SHOTS_2)
+	{
+		emit-sfx SMALL_TRACER from coaxflare;
+		shotCount3=0;
+	}
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 }
 
