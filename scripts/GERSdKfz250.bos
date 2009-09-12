@@ -183,7 +183,7 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	rock = TRUE; // firing a heavy weapon
-	
+	/*
 	emit-sfx LARGE_TRACER from flare;
 	var i;
 	for (i=0; i < BURST; ++i) 
@@ -197,11 +197,22 @@ FireWeapon1()
 	  sleep 50;
 	}
 	emit-sfx LARGE_TRACER from flare;
+	*/
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;
 }
 
+Shot1(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	emit-sfx LARGE_TRACER from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 50;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+}
 
 // Weapon 2 - Main cannon, AP
 QueryWeapon2(piecenum)
@@ -240,7 +251,7 @@ FireWeapon2()
 	// TODO: Add to SFX
 	// Do SFX
 	//emit-sfx 1  from flare;
-	var i;
+/*	var i;
 	for (i=0; i < BURST; ++i) 
 	{
 	emit-sfx XSMALL_MUZZLEFLASH from flare;
@@ -250,10 +261,21 @@ FireWeapon2()
 	  sleep 50;
 	  move barrel to z-axis 0 speed RETURN_SPEED;
 	  sleep 50;
-	}	
+	}	*/
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;
+}
+
+Shot2(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	emit-sfx LARGE_TRACER from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 50;
+	move barrel to z-axis 0 speed RETURN_SPEED;
 }
 
 // Weapon 3 - Coax MG
@@ -290,7 +312,7 @@ AimWeapon3(heading, pitch)
 FireWeapon3()
 {
 	rock = FALSE;
-	emit-sfx SMALL_TRACER from coaxflare;
+/*	emit-sfx SMALL_TRACER from coaxflare;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
@@ -310,10 +332,15 @@ FireWeapon3()
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
+	sleep 67;*/
 	return(0);
 }
 
+Shot3(foo)
+{
+	emit-sfx SMALL_TRACER from coaxflare;
+	emit-sfx MG_MUZZLEFLASH from coaxflare;
+}
 
 // TODO: make this pretty
 Killed(severity, corpsetype)
