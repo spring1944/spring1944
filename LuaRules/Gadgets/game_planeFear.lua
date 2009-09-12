@@ -28,8 +28,8 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
-local SetUnitNoSelect = GG.SetUnitNoSelect --uses game_noselect gadget
-local GiveOrderToUnit = GG.GiveOrderToUnitDisregardingNoSelect
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+local GiveOrderToUnit = Spring.GiveOrderToUnit
 
 local bugOutLevel = 1 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE

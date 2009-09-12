@@ -57,8 +57,8 @@ local vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
 
 local DelayCall = GG.Delay.DelayCall
 
-local SetUnitNoSelect = GG.SetUnitNoSelect --uses game_noselect gadget
-local GiveOrderToUnit = GG.GiveOrderToUnitDisregardingNoSelect
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+local GiveOrderToUnit = Spring.GiveOrderToUnit
 
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 
@@ -116,7 +116,7 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
   local sortieUnitDef = UnitDefNames[sortieUnitName]
   if sortieUnitDef then
     local sortieUnitDefID = sortieUnitDef.id
-    
+
     local cmdDesc = {
       id = currCmdID,
       name = "0 Ready",
@@ -125,19 +125,19 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
       tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),
       texture = sortie.texture or "unitpics/" .. sortieUnitDef.buildpicname,
     }
-    
+
     if sortie.groundOnly then
       cmdDesc.type = CMDTYPE_ICON_MAP
     else
       cmdDesc.type = CMDTYPE_ICON_UNIT_OR_MAP
     end
-    
+
     sortie.cmdDesc = cmdDesc
     sortie.name = sortieUnitDef.humanName
     sortie.weight = sortie.weight or 0
     sortieCmdIDs[currCmdID] = sortie
     sortieDefs[sortieUnitDefID] = sortie
-    
+
     currCmdID = currCmdID + 1
   else
     Spring.Echo("<game_planes>: Warning: no UnitDef found for " .. sortieUnitName)
@@ -150,9 +150,9 @@ local radioDefs = {}
 for unitDefID=1, #UnitDefs do
   local unitDef = UnitDefs[unitDefID]
   local buildOptions = unitDef.buildOptions
-  
+
   local sortieCmdDescs = {}
-  
+
   for i=1, #buildOptions do
     local buildDefID = buildOptions[i]
     local sortie = sortieDefs[buildDefID]
@@ -160,7 +160,7 @@ for unitDefID=1, #UnitDefs do
       sortieCmdDescs[#sortieCmdDescs+1] = sortie.cmdDesc
     end
   end
-  
+
   if #sortieCmdDescs > 0 then
     radioDefs[unitDefID] = sortieCmdDescs
   end
@@ -310,19 +310,19 @@ end
 local function ModifyStockpile(teamID, sortie, amount)
   local cmdID = sortie.cmdDesc.id
   local rulesParamName = "game_planes.stockpile" .. cmdID
-  local stockpile = GetTeamRulesParam(teamID, rulesParamName) or 0 
+  local stockpile = GetTeamRulesParam(teamID, rulesParamName) or 0
   stockpile = stockpile + amount
   SetTeamRulesParam(teamID, rulesParamName, stockpile)
-  
+
   ModifyWeight(teamID, sortie, amount)
-  
+
   local disabled = (stockpile <= 0)
-  
+
   local editTable = {
     name = stockpile .. " Ready",
     disabled = disabled,
   }
-  
+
   for unitID, _ in pairs(radios[teamID]) do
     local cmdDescs = GetUnitCmdDescs(unitID)
     for i = 1, #cmdDescs do
@@ -339,13 +339,13 @@ function gadget:Initialize()
   for i=1, #allTeams do
     radios[allTeams[i]] = {}
   end
-  
+
   local allUnits = Spring.GetAllUnits()
   for i=1, #allUnits do
     local unitID = allUnits[i]
     local unitDefID = GetUnitDefID(unitID)
     local teamID = GetUnitTeam(unitID)
-    Spring.Echo(unitID, unitDefID, unitTeam)
+    --Spring.Echo(unitID, unitDefID, unitTeam)
     gadget:UnitCreated(unitID, unitDefID, teamID)
   end
 end
@@ -361,7 +361,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
   if not sortieCmdDescs then return end
 
   radios[teamID][unitID] = true
-  
+
   for i=1,#sortieCmdDescs do
     InsertUnitCmdDesc(unitID, sortieCmdDescs[i])
   end
@@ -370,7 +370,7 @@ end
 function gadget:UnitFinished(unitID, unitDefID, teamID)
   local sortie = sortieDefs[unitDefID]
   if not sortie then return end
-  
+
   ModifyStockpile(teamID, sortie, 1)
   DestroyUnit(unitID, false, true)
 end
@@ -381,7 +381,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   if planeState == PLANE_STATE_RETREAT or (planeState and cmdID == CMD_IDLEMODE) then
     return false
   end
-  
+
   local sortie = sortieCmdIDs[cmdID]
   if not sortie then
     return true
@@ -393,7 +393,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     -- can't order
   else
     local stockpile = GetStockpile(teamID, sortie)
-    
+
     if stockpile > 0 then
       ModifyStockpile(teamID, sortie, -1)
       local sx, sy, sz = GetSpawnPoint(teamID, #sortie)
@@ -450,16 +450,16 @@ end
 
 function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, part)
   local sortie = sortieDefs[unitDefID]
-  
+
   if not sortie or sortie.weight <= 0 then return true end
-  
+
   local rulesParamName = "game_planes.weight"
   local weight = GetTeamRulesParam(builderTeam, rulesParamName) or 0
-  
+
   if weight > airfieldCapacity then
     return false
   end
-  
+
   return true
 end
 
@@ -469,7 +469,7 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
     ModifyWeight(unitTeam, sortie, -1)
     return
   end
-  
+
   radios[unitTeam][unitID] = nil
 end
 
