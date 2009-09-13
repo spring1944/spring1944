@@ -3,7 +3,7 @@
 
 piece base, stand, turret, sleeve, barrel, flare, crewman1, crewman2;
  
-static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange;
+static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange, shotCount;
 
 #include "inf_sharedDefs.h"
 #include "constants.h"
@@ -37,6 +37,7 @@ static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRan
 
 //tracers
 #define LARGE_TRACER		2048+2
+#define TRACER_PER_X_SHOTS	3
 
 //poses
 #define CREW_SUPRESSED\
@@ -54,6 +55,7 @@ Create()
 	hide flare;
 	reloading = FALSE;
 	aim1 = FALSE;
+	shotCount=0;
 	set ACTIVATION to TRUE;
 	originalRange = get WEAPON_RANGE(1);
 	isRangeAdjusted = FALSE;
@@ -193,9 +195,9 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	// barrel recoil
-	emit-sfx LARGE_TRACER from flare;
+//	emit-sfx LARGE_TRACER from flare;
 	sleep 50;
-	emit-sfx LARGE_TRACER from flare;
+/*	emit-sfx LARGE_TRACER from flare;
 	var i;
 	for (i=0; i < BURST1; ++i) 
 	{
@@ -205,12 +207,28 @@ FireWeapon1()
 		sleep 50;
 		move barrel to z-axis 0 speed RETURN_SPEED;
 		sleep 200;
-	}
+	}*/
+	sleep 750;
 	sleep 400;
 	start-script Reload(); // start reload timer after firing
 	// signal the rangefinder we need a new range reading
 	isRangeAdjusted = FALSE;
 	call-script RangefinderReset();
+}
+
+Shot1(just_a_zero)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		shotCount=0;
+		emit-sfx LARGE_TRACER from flare;
+	}
+	move barrel to z-axis RECOIL now;
+	sleep 50;
+	move barrel to z-axis 0 speed RETURN_SPEED;
 }
 
 // Weapon 2 - HE Ammo
@@ -240,7 +258,7 @@ AimWeapon2(heading, pitch)
 FireWeapon2()
 {
 	// barrel recoil
-	emit-sfx LARGE_TRACER from flare;
+/*	emit-sfx LARGE_TRACER from flare;
 	var i;
 	for (i=0; i < BURST2; ++i) 
 	{
@@ -250,9 +268,25 @@ FireWeapon2()
 		sleep 50;
 		move barrel to z-axis 0 speed RETURN_SPEED;
 		sleep 300;
-	}
+	}*/
+	sleep 700;
 	sleep 200;
 	start-script Reload(); // start reload timer after firing
+}
+
+Shot2(just_a_zero)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		shotCount=0;
+		emit-sfx LARGE_TRACER from flare;
+	}
+	move barrel to z-axis RECOIL now;
+	sleep 50;
+	move barrel to z-axis 0 speed RETURN_SPEED;
 }
 
 Killed(severity, corpsetype)

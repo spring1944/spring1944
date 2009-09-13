@@ -4,7 +4,7 @@
 
 piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, turret, lfoot, luparm, lloarm, base, gun, ruparm, rloarm, head, carriage;
 
-static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
+static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed, shotCount,
  nade_speed, walk_speed, fear, prone_speed, IsProne, DEATH_SPEED, PickDeath, IsPinned, InAimStance, HipAim;
 
 #define SIG_AIM            2
@@ -17,6 +17,8 @@ static-var bAiming, DecreasingFear, last_pos, bMoving, nade_active, run_speed,
 #define placeholder_EFFECT06 1024+6
 #define MG_MUZZLEFLASH 1024+7
 #define SMALL_TRACER 2048+1
+
+#define TRACER_PER_X_SHOTS	5
 
 #define FearLimit	14 //max amount of fear they can possibly get. any additional is ignored
 #define RecoverConstant 1  //how much fear they subtract from the total each RecoverRate
@@ -286,6 +288,7 @@ luaFunction(arg1)
 Create()
 {
 	nade_active=0;
+	shotCount=0;
 	start-script WeaponReady();
 	RUN_SPEED = rand(16,20); // de-sync the speed of the running anims, and add some variation between troops
 	nade_speed = 4;
@@ -336,7 +339,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	emit-sfx MG_MUZZLEFLASH from flare;
+/*	emit-sfx MG_MUZZLEFLASH from flare;
 	emit-sfx SMALL_TRACER from flare;
 	sleep BURSTRATE;
 	emit-sfx MG_MUZZLEFLASH from flare;
@@ -353,9 +356,20 @@ FireWeapon1()
 	sleep BURSTRATE;
 	emit-sfx MG_MUZZLEFLASH from flare;
 	emit-sfx SMALL_TRACER from flare;
-	sleep BURSTRATE;
+	sleep BURSTRATE;*/
 	return (0);
 
+}
+
+Shot1(just_a_zero)
+{
+	emit-sfx MG_MUZZLEFLASH from flare;
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx SMALL_TRACER from flare;
+		shotCount=0;
+	}
 }
 
 #include "Inf_death.h"
