@@ -26,8 +26,8 @@ function gadget:Initialize()
 		local name = featureDef.name
 		local height = featureDef.radius
 		local metal = featureDef.metal
-		if (name and strFind(name, "treetype"))
-				or metal == 0 then
+		if (name and strFind(name, "tree"))
+				--or metal == 0 then
 			SetFeatureCollisionVolumeData(featureID, 
 					horizScale, height, horizScale, --scales
 					0, 0, 0, --offset
