@@ -41,12 +41,12 @@
   maxPitch=0.1;
   maxRudder=0.002765;
   maxSlope=10;
-  maxVelocity=24;
+  maxVelocity=12;//24;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=USC47.s3o;
+  objectName=GBRAS51.s3o;//USC47.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=noweapon;

@@ -1,6 +1,6 @@
 #include "constants.h"
 
-piece  base;
+piece  base, hull, wing1, wing2, rear_wheels, front_wheel;
 
 static-var isFalling;
 
@@ -52,4 +52,11 @@ SweetSpot(piecenum)
 
 Killed(severity, corpsetype)
 {
+  if (severity > 1) {
+  	explode base type BITMAPONLY;
+	explode hull type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wing2 type SHATTER;
+  	corpsetype = 4;
+  }
 }
