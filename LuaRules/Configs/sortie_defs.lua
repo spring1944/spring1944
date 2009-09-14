@@ -45,6 +45,15 @@ local sortieDefs = {
     weight = 1,
   },
   
+	gbr_sortie_glider_horsa = {
+    "gbrhorsa",
+    
+    groundOnly = 1,
+    alwaysAttack = 1,
+    delay = 45,
+    weight = 1,
+  },
+	
   ger_sortie_recon = {
     "gerfi156",
     

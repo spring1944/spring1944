@@ -598,20 +598,13 @@ buildoptions =
   {
     "gbrm5halftrack",
   },
-
-  gbrairfield =
-  {
-    "gbrauster",
-    "gbrspitfiremkxiv",
-    "gbrtyphoon",
-    "gbrspitfiremkix",
-  },
   
   gbrradar = {
     "gbr_sortie_recon",
     "gbr_sortie_interceptor",
     "gbr_sortie_fighter_bomber",
     "gbr_sortie_attack",
+		"gbr_sortie_glider_horsa",
   },
   
   gbrboatyard =
