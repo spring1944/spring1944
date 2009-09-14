@@ -1,8 +1,8 @@
 function gadget:GetInfo()
   return {
     name      = "Cruise Missiles",
-    desc      = "Handles cruise missle movement.",
-    author    = "Evil4Zerggin",
+    desc      = "Handles cruise missle/glider movement.",
+    author    = "Evil4Zerggin, FLOZi",
     date      = "13 August 2008",
     license   = "GNU LGPL, v2.1 or later",
     layer     = -5,
@@ -19,7 +19,6 @@ local cruiseDefIDs = {}
 local cruiseIDs = {}
 
 local terminalIDs = {}
-local finalDestination = {}
 
 local MIN_HEIGHT = 100
 local HEIGHT_SMOOTHING = 0.05
@@ -49,7 +48,6 @@ local vNormalized = GG.Vector.Normalized
 local CallCOBScript = Spring.CallCOBScript
 local DestroyUnit = Spring.DestroyUnit
 local GetUnitDirection = Spring.GetUnitDirection
-local GetUnitHeading = Spring.GetUnitHeading
 local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitVelocity = Spring.GetUnitVelocity
 local GetGroundHeight = Spring.GetGroundHeight
@@ -186,15 +184,13 @@ end
 function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   if terminalIDs[unitID] then
 		local x,y,z = GetUnitPosition(unitID)
-		local teamID = GetUnitTeam(unitID)
-		local heading = GetUnitHeading(unitID)
 		local vx, _, vz = GetUnitVelocity(unitID)
 		SetUnitVelocity(unitID, 0.1 * vx, 0, 0.1 * vz) -- this prevents excessive corpse travelling
 		DestroyUnit(unitID)
 		local ud = UnitDefs[unitDefID]
 		local gliderSquad = ud.customParams.spawn_on_death or nil
 		if gliderSquad then
-			Spring.CreateUnit(gliderSquad, x, y, z, 0, teamID)
+			Spring.CreateUnit(gliderSquad, x, y, z, 0, unitTeam)
 		end
     return true
   end
