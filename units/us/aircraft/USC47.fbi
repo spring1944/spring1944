@@ -29,7 +29,7 @@
   explodeAs=Vehicle_Explosion_Med;
   footprintX=6;
   footprintZ=6;
-  iconType=recon;
+  iconType=transportplane;
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
