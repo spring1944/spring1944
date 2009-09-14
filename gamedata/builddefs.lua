@@ -42,7 +42,7 @@ buildoptions =
     "apminesign",
     "tankobstacle",
     --"sandbags",
-    --"rubberdingy",
+    "rubberdingy",
     --"pontoonraft",
   },
 
@@ -76,8 +76,8 @@ buildoptions =
     "apminesign",
     "tankobstacle",
     --"sandbags",
-    --"rubberdingy",
-   -- "pontoonraft",
+    "rubberdingy",
+    --"pontoonraft",
 
   },
 
@@ -240,7 +240,7 @@ buildoptions =
     --"sandbags",
     "tankobstacle",
     --"geropelblitz",
-   -- "gersturmboot",
+    "gersturmboot",
     --"pontoonraft",
   },
 
@@ -272,7 +272,7 @@ buildoptions =
     --"sandbags",
     "tankobstacle",
     --"geropelblitz",
-    --"gersturmboot",
+    "gersturmboot",
     --"pontoonraft",
   },
 
@@ -449,7 +449,7 @@ buildoptions =
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    --"rubberdingy",
+    "rubberdingy",
     --"pontoonraft",
   },
 
@@ -523,7 +523,7 @@ buildoptions =
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    --"rubberdingy",
+    "rubberdingy",
     --"pontoonraft",
 
   },
@@ -643,7 +643,7 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    --"ruspg117",
+    "ruspg117",
     --"pontoonraft",
   },
   
@@ -657,7 +657,7 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    --"ruspg117",
+    "ruspg117",
     --"pontoonraft",
   },
   ruspshack =
@@ -698,7 +698,7 @@ buildoptions =
     "tankobstacle",
     "russtorage",
     --"sandbags",
-    --"ruspg117",
+    "ruspg117",
     --"pontoonraft",
   },
 
@@ -716,7 +716,7 @@ buildoptions =
     "tankobstacle",
     --"sandbags",
     "russtorage",
-    --"ruspg117",
+    "ruspg117",
     --"pontoonraft",
   },
 
