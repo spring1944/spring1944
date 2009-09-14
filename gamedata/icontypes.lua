@@ -315,6 +315,11 @@ local iconTypes = {
 		size			=	5,
 		distance	=	0.3,
 	},
+	transportplane = {
+		bitmap		=	"icons/transportplane.tga",
+		size			=	2.5,
+		distance	=	1,
+	},
 	flametank = {
 		bitmap		=	"icons/flametank.tga",
 		size			=	2.25,
