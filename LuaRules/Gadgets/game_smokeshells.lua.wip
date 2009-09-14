@@ -1,0 +1,120 @@
+function gadget:GetInfo()
+  return {
+    name      = "Smoke shells",
+    desc      = "Implements smoke screens from artillery strikes",
+    author    = "yuritch",
+    date      = "14 September 2009",
+    license   = "GNU LGPL, v2.1 or later",
+    layer     = 100,
+    enabled   = true  --  loaded by default?
+  }
+end
+
+-- how often to check units
+local UPDATE_PERIOD = 32
+local UPDATE_OFFSET = 5
+
+if (not gadgetHandler:IsSyncedCode()) then
+  return false
+end
+
+local SmokeSources={}
+local SmokedUnits={}
+
+function gadget:Initialize()
+	for weaponId, weaponDef in pairs (WeaponDefs) do
+		if weaponDef.customParams.smokeradius then
+			Script.SetWatchWeapon(weaponId, true)
+		end
+	end
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+	-- remove units from tracking if they die
+	SmokedUnits[unitID] = nil
+end
+
+function gadget:Explosion(weaponID, px, py, pz, ownerID)
+	tmpWeaponParms=WeaponDefs[weaponID].customParams
+	if ~tmpWeaponParms then
+		return false
+	end
+	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius)
+	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration)
+	if (SmokeRadius>0) and (SmokeDuration>0) then
+		local tmpSmoke
+		tmpSmoke.radius=SmokeRadius
+		tmpSmoke.remainingTimer=SmokeDuration*32
+		tmpSmoke.x = px
+		tmpSmoke.y = py
+		tmpSmoke.z = pz
+		-- find the first empty SmokeSource
+		local foundEmptySource=false
+		for i=1, #SmokeSources do
+			if SmokeSources[i]=nil then
+				foundEmptySource=true
+				break
+			end
+		end
+		if not foundEmptySource then
+			i=i+1
+		end
+		SmokeSources[i]=tmpSmoke
+	end
+end
+
+function ApplySmoke(unitID)
+	Spring.SetUnitSensorRadius(unitID, "los", 0)
+end
+
+function RemoveSmoke(unitID)
+	-- find out the 'default' los value for that unittype
+	udID = Spring.GetUnitDefID(unitID)
+	local defaultLos = UnitDefs[udID].losRadius
+	-- set the unit's los to that value
+	Spring.SetUnitSensorRadius(unitID, "los", defaultLos)
+end
+
+function gadget:GameFrame(n)
+	-- implement smoke decay - each frame
+	for i = 1, #SmokeSources do
+		tmpSource = SmokeSources[i]
+		if tmpSource then
+			tmpSource.remainingTimer = tmpSource.remainingTimer - 1
+			if tmpSource.remainingTimer <= 0 then
+				SmokeSources[i] = nil
+			end
+		end
+	end
+	-- check units in smoke - NOT each frame
+	if n % UPDATE_PERIOD = UPDATE_OFFSET then
+		-- mark smoked units as not smoked first (to keep track of units leaving smoked area)
+		for _, curUnit in SmokedUnits do
+			curUnit.isSmoked = false
+		end
+		-- loop through all the smokes, search for units
+		for _, tmpSmoke in pairs(SmokeSources) do
+			if tmpSmoke then
+				local unitsInSmoke = Spring.GetUnitsInSphere(tmpSmoke.x, tmpSmoke.y, tmpSmoke.z, tmpSmoke.radius)
+				if unitsInSmoke then
+					for _, unitID in pairs(unitsInSmoke) do
+						-- mark units for smoke effect
+						SmokedUnits[unitID].isSmoked = true
+					end
+				end
+			end
+		end
+		-- now loop trough units again, and apply/unapply smoke effects based on marks
+		for UnitID, curUnit in SmokedUnits do
+			if curUnit.isSmoked = false then
+				-- remove effect from unit
+				RemoveSmoke(UnitID)
+				-- remove unit from tracking
+				SmokedUnits[UnitID] = nil
+			else
+				-- apply effect to unit
+				ApplySmoke(UnitID)
+			end
+		end
+	end
+end
