@@ -24,7 +24,7 @@
     //enginesound=v1-;
     //enginesoundnr=20;
     cruise_missile_accuracy=500;
-    spawn_on_death=gbr_platoon_rifle;
+    spawn_on_death=gbr_platoon_glider_horsa;
   }
   explodeAs=noweapon;
   footprintX=4;

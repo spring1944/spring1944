@@ -186,6 +186,31 @@ local squadDefs = {
 		"gbrcommando",
 	},
 	
+	["gbr_platoon_glider_horsa"] =
+	{
+		"gbrcommando",
+		"gbrcommando",
+		"gbrcommando",
+		"gbrcommando",
+		"gbrcommando",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbrrifle",
+		"gbr3inmortar",
+		"gbrobserv",
+		"gbrbren",
+		"gbrbren",
+		"gbrbren",
+		"gbrpiat",
+		"gbrpiat",
+		"usm8gun",
+	},
+	
 	 -----------------------------
 	 -- GER Platoons and Squads --
 	 -----------------------------
