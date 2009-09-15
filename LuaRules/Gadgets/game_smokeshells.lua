@@ -36,77 +36,79 @@ end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	tmpWeaponParms=WeaponDefs[weaponID].customParams
-	if ~tmpWeaponParms then
+	if not tmpWeaponParms then
 		return false
 	end
 	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius)
 	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration)
 	if (SmokeRadius>0) and (SmokeDuration>0) then
-		local tmpSmoke
-		tmpSmoke.radius=SmokeRadius
-		tmpSmoke.remainingTimer=SmokeDuration*32
-		tmpSmoke.x = px
-		tmpSmoke.y = py
-		tmpSmoke.z = pz
-		-- find the first empty SmokeSource
-		local foundEmptySource=false
-		for i=1, #SmokeSources do
-			if SmokeSources[i]=nil then
-				foundEmptySource=true
-				break
-			end
-		end
-		if not foundEmptySource then
-			i=i+1
-		end
-		SmokeSources[i]=tmpSmoke
+		local tmpSmoke =
+		{
+			radius = SmokeRadius,
+			remainingTimer = SmokeDuration*32,
+			x = px,
+			y = py,
+			z = pz,
+		}
+		table.insert(SmokeSources, tmpSmoke)
 	end
+	return false
 end
 
 function ApplySmoke(unitID)
+	local oldSight = Spring.GetUnitSensorRadius(unitID, "los")
+	if oldSight > 0 then
+		SmokedUnits[unitID].oldLos = oldSight
+	end
 	Spring.SetUnitSensorRadius(unitID, "los", 0)
 end
 
 function RemoveSmoke(unitID)
 	-- find out the 'default' los value for that unittype
-	udID = Spring.GetUnitDefID(unitID)
-	local defaultLos = UnitDefs[udID].losRadius
+	local defaultLos = SmokedUnits[unitID].oldLos
 	-- set the unit's los to that value
-	Spring.SetUnitSensorRadius(unitID, "los", defaultLos)
+	local tmpResult = Spring.SetUnitSensorRadius(unitID, "los", defaultLos)
 end
 
 function gadget:GameFrame(n)
 	-- implement smoke decay - each frame
-	for i = 1, #SmokeSources do
-		tmpSource = SmokeSources[i]
+	for i, tmpSource in pairs(SmokeSources) do
 		if tmpSource then
 			tmpSource.remainingTimer = tmpSource.remainingTimer - 1
 			if tmpSource.remainingTimer <= 0 then
-				SmokeSources[i] = nil
+				table.remove(SmokeSources, i)
 			end
 		end
 	end
 	-- check units in smoke - NOT each frame
-	if n % UPDATE_PERIOD = UPDATE_OFFSET then
+	if n % UPDATE_PERIOD == UPDATE_OFFSET then
 		-- mark smoked units as not smoked first (to keep track of units leaving smoked area)
-		for _, curUnit in SmokedUnits do
-			curUnit.isSmoked = false
+		for i, tmpUnit in pairs(SmokedUnits) do
+			if tmpUnit.isSmoked then
+				SmokedUnits[i].isSmoked = false
+			end
 		end
 		-- loop through all the smokes, search for units
-		for _, tmpSmoke in pairs(SmokeSources) do
-			if tmpSmoke then
-				local unitsInSmoke = Spring.GetUnitsInSphere(tmpSmoke.x, tmpSmoke.y, tmpSmoke.z, tmpSmoke.radius)
-				if unitsInSmoke then
-					for _, unitID in pairs(unitsInSmoke) do
-						-- mark units for smoke effect
-						SmokedUnits[unitID].isSmoked = true
+		if #SmokeSources > 0 then
+			for _, tmpSmoke in pairs(SmokeSources) do
+				if tmpSmoke then
+					local unitsInSmoke = Spring.GetUnitsInSphere(tmpSmoke.x, tmpSmoke.y, tmpSmoke.z, tmpSmoke.radius)
+					if (unitsInSmoke) and (#unitsInSmoke > 0) then
+						for _, unitID in ipairs(unitsInSmoke) do
+							-- mark units for smoke effect
+							if (SmokedUnits[unitID]) then
+								SmokedUnits[unitID].isSmoked = true
+							else
+								SmokedUnits[unitID] = {isSmoked = true, oldLos = 0,}
+							end
+						end
 					end
 				end
 			end
 		end
 		-- now loop trough units again, and apply/unapply smoke effects based on marks
-		for UnitID, curUnit in SmokedUnits do
-			if curUnit.isSmoked = false then
+		for UnitID, tmpUnit in pairs(SmokedUnits) do
+			if not tmpUnit.isSmoked then
 				-- remove effect from unit
 				RemoveSmoke(UnitID)
 				-- remove unit from tracking
