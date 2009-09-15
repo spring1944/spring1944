@@ -6,7 +6,7 @@
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=5000;
-  buildPic=GERV1.png;
+  buildPic=GBRHorsa.png;
   buildTime=5000;
   canMove=1;
   category=FLAG;

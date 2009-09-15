@@ -8,7 +8,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=6000;
-  //buildPic=GERV1.png;
+  buildPic=GBRHorsa.png;
   buildTime=6000;
   canAttack=1;
   canDropFlare=0;
@@ -41,7 +41,7 @@
   maxPitch=0.1;
   maxRudder=0.002765;
   maxSlope=10;
-  maxVelocity=12;//24;
+  maxVelocity=14;//24;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;

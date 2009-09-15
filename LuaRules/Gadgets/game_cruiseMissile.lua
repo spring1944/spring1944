@@ -46,6 +46,7 @@ local mcSetRotation = Spring.MoveCtrl.SetRotation
 local vNormalized = GG.Vector.Normalized
 
 local CallCOBScript = Spring.CallCOBScript
+local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local GetUnitDirection = Spring.GetUnitDirection
 local GetUnitPosition = Spring.GetUnitPosition
@@ -56,6 +57,8 @@ local GetUnitTeam = Spring.GetUnitTeam
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 local SetUnitAlwaysVisible = Spring.SetUnitAlwaysVisible
 local SetUnitVelocity = Spring.SetUnitVelocity
+
+local DelayCall = GG.Delay.DelayCall
 
 function gadget:Initialize()
   for unitDefID = 1, #UnitDefs do
@@ -185,12 +188,13 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   if terminalIDs[unitID] then
 		local x,y,z = GetUnitPosition(unitID)
 		local vx, _, vz = GetUnitVelocity(unitID)
-		SetUnitVelocity(unitID, 0.1 * vx, 0, 0.1 * vz) -- this prevents excessive corpse travelling
+		--SetUnitVelocity(unitID, 0.4 * vx, 0, 0.4 * vz) -- this prevents excessive corpse travelling
 		DestroyUnit(unitID)
 		local ud = UnitDefs[unitDefID]
 		local gliderSquad = ud.customParams.spawn_on_death or nil
 		if gliderSquad then
-			Spring.CreateUnit(gliderSquad, x, y, z, 0, unitTeam)
+			local delay = 64
+			DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.25, y, z + vz * delay * 0.25, 0, unitTeam}, delay)
 		end
     return true
   end
