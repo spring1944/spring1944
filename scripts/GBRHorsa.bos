@@ -38,7 +38,7 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 Falling() {
 	isFalling = 1;
-	turn hull to x-axis 0 - <30> speed <15>;
+	turn hull to x-axis 0 - <40> speed <10>;
 }
 
 Create()
