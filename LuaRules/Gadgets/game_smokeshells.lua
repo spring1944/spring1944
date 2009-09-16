@@ -60,7 +60,11 @@ function ApplySmoke(unitID)
 	if oldSight > 0 then
 		SmokedUnits[unitID].oldLos = oldSight
 	end
+	-- make the unit blind
 	Spring.SetUnitSensorRadius(unitID, "los", 0)
+	-- hide the unit
+	Spring.SetUnitCloak(unitID, 4)
+	Spring.SetUnitCloak(unitID, true)
 end
 
 function RemoveSmoke(unitID)
@@ -68,6 +72,20 @@ function RemoveSmoke(unitID)
 	local defaultLos = SmokedUnits[unitID].oldLos
 	-- set the unit's los to that value
 	local tmpResult = Spring.SetUnitSensorRadius(unitID, "los", defaultLos)
+	-- unhide the unit
+	Spring.SetUnitCloak(unitID, 1)
+	-- and make it cloak by its own if it can
+	Spring.Echo("decloaking...")
+	local tmpUDID = Spring.GetUnitDefID(unitID)
+	if tmpUDID then
+		if UnitDefs[tmpUDID].canCloak then
+			Spring.SetUnitCloak(unitID, true)
+			Spring.Echo(" - not needed")
+		else
+			Spring.SetUnitCloak(unitID, false)
+			Spring.Echo("done")
+		end
+	end
 end
 
 function gadget:GameFrame(n)
