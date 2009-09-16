@@ -39,8 +39,8 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	if not tmpWeaponParms then
 		return false
 	end
-	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius)
-	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration)
+	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius) or 0
+	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration) or 0
 	if (SmokeRadius>0) and (SmokeDuration>0) then
 		local tmpSmoke =
 		{
