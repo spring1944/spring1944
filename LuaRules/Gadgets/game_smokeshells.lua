@@ -16,6 +16,10 @@ local UPDATE_OFFSET = 5
 local VFX_SMOKE_PERIOD = 16
 local VFX_SMOKE_OFFSET = 1
 
+-- effect on accuracy of smoked units (multiply by MULT, then increase by ADD)
+local ACCURACY_MULT = 5
+local ACCURACY_ADD = 100
+
 -- localize functions
 local GetUnitSensorRadius = Spring.GetUnitSensorRadius
 local SetUnitSensorRadius = Spring.SetUnitSensorRadius
@@ -25,6 +29,7 @@ local GetUnitDefID = Spring.GetUnitDefID
 local SpawnCEG = Spring.SpawnCEG
 local GetUnitsInSphere = Spring.GetUnitsInSphere
 local GetWind = Spring.GetWind
+local SetUnitWeaponState = Spring.SetUnitWeaponState
 
 if (not gadgetHandler:IsSyncedCode()) then
   return false
@@ -77,6 +82,18 @@ function ApplySmoke(unitID)
 	-- hide the unit
 	SetUnitCloak(unitID, 4)
 	SetUnitCloak(unitID, true)
+	-- affect the weapons
+	local tmpUDID = GetUnitDefID(unitID)
+	if tmpUDID then
+		local tmpWeapons = UnitDefs[tmpUDID].weapons
+		for i, tmpWeapon in pairs(tmpWeapons) do
+			if (tmpWeapon) and (type(tmpWeapon) == "table") then
+				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
+				tmpAccuracy = tmpAccuracy * ACCURACY_MULT + ACCURACY_ADD
+				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
+			end
+		end
+	end
 end
 
 function RemoveSmoke(unitID)
@@ -93,6 +110,14 @@ function RemoveSmoke(unitID)
 			SetUnitCloak(unitID, true)
 		else
 			SetUnitCloak(unitID, false)
+		end
+		-- also restore it's weapon accuracy
+		local tmpWeapons = UnitDefs[tmpUDID].weapons
+		for i, tmpWeapon in pairs(tmpWeapons) do
+			if (tmpWeapon) and (type(tmpWeapon) == "table") then
+				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
+				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
+			end
 		end
 	end
 end
