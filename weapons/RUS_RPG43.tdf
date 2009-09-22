@@ -4,7 +4,6 @@
   areaOfEffect=24;
   canAttackGround=0;
   [customParams] {
-    armor_hit_side=top;
     armor_penetration=75;
     damagetype=shapedcharge;
   }
