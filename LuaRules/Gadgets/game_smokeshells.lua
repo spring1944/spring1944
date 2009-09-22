@@ -13,6 +13,18 @@ end
 -- how often to check units
 local UPDATE_PERIOD = 32
 local UPDATE_OFFSET = 5
+local VFX_SMOKE_PERIOD = 16
+local VFX_SMOKE_OFFSET = 1
+
+-- localize functions
+local GetUnitSensorRadius = Spring.GetUnitSensorRadius
+local SetUnitSensorRadius = Spring.SetUnitSensorRadius
+local SetUnitCloak = Spring.SetUnitCloak
+local GetUnitCloak = Spring.GetUnitCloak
+local GetUnitDefID = Spring.GetUnitDefID
+local SpawnCEG = Spring.SpawnCEG
+local GetUnitsInSphere = Spring.GetUnitsInSphere
+local GetWind = Spring.GetWind
 
 if (not gadgetHandler:IsSyncedCode()) then
   return false
@@ -56,34 +68,31 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function ApplySmoke(unitID)
-	local oldSight = Spring.GetUnitSensorRadius(unitID, "los")
+	local oldSight = GetUnitSensorRadius(unitID, "los")
 	if oldSight > 0 then
 		SmokedUnits[unitID].oldLos = oldSight
 	end
 	-- make the unit blind
-	Spring.SetUnitSensorRadius(unitID, "los", 0)
+	SetUnitSensorRadius(unitID, "los", 0)
 	-- hide the unit
-	Spring.SetUnitCloak(unitID, 4)
-	Spring.SetUnitCloak(unitID, true)
+	SetUnitCloak(unitID, 4)
+	SetUnitCloak(unitID, true)
 end
 
 function RemoveSmoke(unitID)
 	-- find out the 'default' los value for that unittype
 	local defaultLos = SmokedUnits[unitID].oldLos
 	-- set the unit's los to that value
-	local tmpResult = Spring.SetUnitSensorRadius(unitID, "los", defaultLos)
+	local tmpResult = SetUnitSensorRadius(unitID, "los", defaultLos)
 	-- unhide the unit
-	Spring.SetUnitCloak(unitID, 1)
+	SetUnitCloak(unitID, 1)
 	-- and make it cloak by its own if it can
-	Spring.Echo("decloaking...")
-	local tmpUDID = Spring.GetUnitDefID(unitID)
+	local tmpUDID = GetUnitDefID(unitID)
 	if tmpUDID then
 		if UnitDefs[tmpUDID].canCloak then
-			Spring.SetUnitCloak(unitID, true)
-			Spring.Echo(" - not needed")
+			SetUnitCloak(unitID, true)
 		else
-			Spring.SetUnitCloak(unitID, false)
-			Spring.Echo("done")
+			SetUnitCloak(unitID, false)
 		end
 	end
 end
@@ -95,6 +104,20 @@ function gadget:GameFrame(n)
 			tmpSource.remainingTimer = tmpSource.remainingTimer - 1
 			if tmpSource.remainingTimer <= 0 then
 				table.remove(SmokeSources, i)
+			else
+				-- wind blowing the smoke away
+				local dx, dy, dz = GetWind()
+				tmpSource.x = tmpSource.x + dx/32
+				tmpSource.y = tmpSource.y + dy/32
+				tmpSource.z = tmpSource.z + dz/32
+			end
+		end
+	end
+	-- emit vfx
+	if n % VFX_SMOKE_PERIOD == VFX_SMOKE_OFFSET then
+		for _, tmpSource in pairs(SmokeSources) do
+			if tmpSource then
+				SpawnCEG("SMOKEPUFF_GPL_FX", tmpSource.x, tmpSource.y, tmpSource.z)
 			end
 		end
 	end
@@ -110,7 +133,7 @@ function gadget:GameFrame(n)
 		if #SmokeSources > 0 then
 			for _, tmpSmoke in pairs(SmokeSources) do
 				if tmpSmoke then
-					local unitsInSmoke = Spring.GetUnitsInSphere(tmpSmoke.x, tmpSmoke.y, tmpSmoke.z, tmpSmoke.radius)
+					local unitsInSmoke = GetUnitsInSphere(tmpSmoke.x, tmpSmoke.y, tmpSmoke.z, tmpSmoke.radius)
 					if (unitsInSmoke) and (#unitsInSmoke > 0) then
 						for _, unitID in ipairs(unitsInSmoke) do
 							-- mark units for smoke effect
