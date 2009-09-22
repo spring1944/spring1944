@@ -23,6 +23,7 @@ if (gadgetHandler:IsSyncedCode()) then
 local CMD_FIRESTATE		=	CMD.FIRE_STATE
 local CMD_MOVESTATE		=	CMD.MOVE_STATE
 local CMD_MOVE			=	CMD.MOVE
+local CMD_STOP			=	CMD.STOP
 
 local GetTeamStartPosition	=	Spring.GetTeamStartPosition
 local GetUnitTransporter	=	Spring.GetUnitTransporter
@@ -46,6 +47,7 @@ local surrenderedUnits		= 	{}
 local escapeRadius 			=	400 --how far away enemy 'guards' can go before the escape countdown timer begins. Also used for checking nearby units when a unit is scared and considering surrender.
 local enemyMult				=	2 --the 'advantage' given to enemies in counting friendlies and enemies to determine surrendering - 2 means that if there are half the # of enemies as there are allies, and the unit is scared enough, they'll surrender
 local surrenderDestDistance	=	700 --the distance that the 4 "holding spots" for prisoners will be from that team's starting pos.
+local prisonFudge 			=	150
 --[[
 esTime is given by the call to GG.surrender,
 and sets how long the unit can be guard-free
@@ -90,16 +92,6 @@ function GG.surrender(unitID, esTime)
 			if nearestGuard ~= nil then -- shouldn't ever be nil, really; the count just happened!
 				local guardTeam = GetUnitTeam(nearestGuard)
 				if (currentTeam ~= GAIA_TEAM_ID) and (surrenderedUnits[unitID] == nil) then
-					surrenderedUnits[unitID] = {
-						originalTeam = currentTeam,
-						surrenderTime = currentTime,
-						escapeTime = esTime,
-						capturingTeam = guardTeam,
-					}
-					TransferUnit(unitID, GAIA_TEAM_ID)
-					GiveOrderToUnit(unitID, CMD_FIRESTATE, { 0 }, 0)
-					GiveOrderToUnit(unitID, CMD_MOVESTATE, { 0 }, 0)
-
 					local px, py, pz = GetTeamStartPosition(guardTeam)
 					local pickDest = math.random(1,4)
 					if pickDest == 1 then
@@ -118,8 +110,19 @@ function GG.surrender(unitID, esTime)
 					px = (px - surrenderDestDistance)
 					pz = (pz + surrenderDestDistance)
 					end
+					surrenderedUnits[unitID] = {
+						originalTeam = currentTeam,
+						surrenderTime = currentTime,
+						escapeTime = esTime,
+						capturingTeam = guardTeam,
+						prisonX = px,
+						prisonZ = pz,
+					}
+					TransferUnit(unitID, GAIA_TEAM_ID, false)
+					GiveOrderToUnit(unitID, CMD_FIRESTATE, { 0 }, 0)
+					GiveOrderToUnit(unitID, CMD_MOVESTATE, { 0 }, 0)
+					GiveOrderToUnit(unitID, CMD_STOP, {}, 0)
 
-					GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
 				end
 			end
 		end
@@ -136,8 +139,16 @@ function gadget:GameFrame(n)
 	if n == 5 then
 		SendToUnsynced('allytogaia')
 	end
-	if n % (1*30) < 0.1 then
+	if n % (1*30) < 0.5 then
 		for unitID, someThing in pairs(surrenderedUnits) do
+			px, py, pz = GetUnitPosition(unitID)
+			if surrenderedUnits[unitID].prisonX - px > prisonFudge or surrenderedUnits[unitID].prisonX - px < ((0-1) * prisonFudge) then 
+				GiveOrderToUnit(unitID, CMD_MOVE, {surrenderedUnits[unitID].prisonX, py, surrenderedUnits[unitID].prisonZ}, {})
+			else
+				GiveOrderToUnit(unitID, CMD_FIRESTATE, { 0 }, 0)
+				GiveOrderToUnit(unitID, CMD_MOVESTATE, { 0 }, 0)
+				GiveOrderToUnit(unitID, CMD_STOP, {}, 0)
+			end
 			local nearestGuard = GetUnitNearestEnemy(unitID, escapeRadius, 0)
 			local inTransport = GetUnitTransporter(unitID)
 			local currentTime = GetGameSeconds()
