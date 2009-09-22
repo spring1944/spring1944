@@ -1,0 +1,34 @@
+[SMOKESHELL]
+{
+[smoke]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=5 r0.25;
+			sizeMod=1.0;
+			dir= 0, 0, 0;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0 0 0 0.025  0.5 0.5 0.5 0.8     0 0 0 0.01;
+			Texture=smokesmall;
+			airdrag=0.55;
+			numParticles=5;
+			particleLife=300;
+			particleLifeSpread=50;
+			particleSpeed=100 i-10;
+			particleSpeedSpread=50;
+			particleSize=30 i-0.4;
+			particleSizeSpread=20;
+			emitRot=0;
+			emitRotSpread=60;
+			directional=0;
+			alwaysvisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=10;
+	}
+}

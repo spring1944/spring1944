@@ -16,7 +16,7 @@
     default=33;
   }
   duration=0.01;
-  explosionGenerator=custom:Bullet;
+  explosionGenerator=custom:SMOKESHELL;
   fireStarter=0;
   id=2;
   impactOnly=1;
