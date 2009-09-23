@@ -10,13 +10,15 @@
   collisionSize=2.5;
   coreThickness=0.15;
   [customParams] {
+	smokeRadius=300;
+	smokeDuration=30;
     damagetype=smallarm;
   }
   [damage] {
     default=33;
   }
   duration=0.01;
-  explosionGenerator=custom:SMOKESHELL;
+  explosionGenerator=custom:Bullet;
   fireStarter=0;
   id=2;
   impactOnly=1;

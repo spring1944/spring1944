@@ -142,7 +142,7 @@ function gadget:GameFrame(n)
 	if n % VFX_SMOKE_PERIOD == VFX_SMOKE_OFFSET then
 		for _, tmpSource in pairs(SmokeSources) do
 			if tmpSource then
-				SpawnCEG("SMOKEPUFF_GPL_FX", tmpSource.x, tmpSource.y, tmpSource.z)
+				SpawnCEG("SMOKESHELL", tmpSource.x, tmpSource.y, tmpSource.z)
 			end
 		end
 	end
