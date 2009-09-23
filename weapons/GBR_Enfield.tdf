@@ -10,8 +10,6 @@
   collisionSize=2.5;
   coreThickness=0.15;
   [customParams] {
-	smokeRadius=300;
-	smokeDuration=30;
     damagetype=smallarm;
   }
   [damage] {

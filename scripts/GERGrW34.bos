@@ -117,6 +117,10 @@ static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 //transport state handling
 #include "inf_transportHandling.h"
 
+// smoke shells stuff
+static-var	isSmoking;
+#include "smokeshellstoggle.h"
+
 StartMoving()
 {
 	signal SIG_IDLE;

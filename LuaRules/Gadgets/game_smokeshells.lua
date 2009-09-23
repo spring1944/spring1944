@@ -58,11 +58,13 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	end
 	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius) or 0
 	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration) or 0
+	local SmokeCEG=tmpWeaponParms.smokeceg
 	if (SmokeRadius>0) and (SmokeDuration>0) then
 		local tmpSmoke =
 		{
 			radius = SmokeRadius,
 			remainingTimer = SmokeDuration*32,
+			ceg = SmokeCEG,
 			x = px,
 			y = py,
 			z = pz,
@@ -142,7 +144,7 @@ function gadget:GameFrame(n)
 	if n % VFX_SMOKE_PERIOD == VFX_SMOKE_OFFSET then
 		for _, tmpSource in pairs(SmokeSources) do
 			if tmpSource then
-				SpawnCEG("SMOKESHELL", tmpSource.x, tmpSource.y, tmpSource.z)
+				SpawnCEG(tmpSource.ceg, tmpSource.x, tmpSource.y, tmpSource.z)
 			end
 		end
 	end

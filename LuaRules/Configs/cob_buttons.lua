@@ -61,7 +61,92 @@ return {
 		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
+	gbr25pdr_stationary = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},
+	gerlefh18_stationary = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},
 	rusm30_stationary = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},	
+	usm2gun_stationary = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},
+	gbr3inmortar = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},	
+	gergrw34 = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},	
+	rusmortar = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},
+	
+	usm1mortar = {
 		{
 			cob = "SwitchToSmoke",
 			name = "Smoke",

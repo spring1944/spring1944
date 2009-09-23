@@ -18,7 +18,7 @@
     lowammolevel=1;
     maxammo=4;
     weaponcost=18;
-    weaponswithammo=1;
+    weaponswithammo=2;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -61,5 +61,10 @@
   maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
+  
+  weapon2=25PdrSmoke;
+  maxAngleDif2=35;
+  onlyTargetCategory2=NOTHING;
+  weaponMainDir2=0 0 1;
 }
 

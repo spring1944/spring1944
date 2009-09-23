@@ -50,16 +50,15 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-    fearaoe=150;
-    fearid=501;
-	smokeradius=180;
-	smokeduration=5;
+	smokeradius=220;
+	smokeduration=20;
+	smokeceg=SMOKESHELL_Medium;
   }
   [damage] {
     default=100;
   }
   edgeEffectiveness=0.15;
-  explosionGenerator=custom:HE_XLarge;
+  explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   fireStarter=0;
   id=103;

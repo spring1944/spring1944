@@ -1,4 +1,4 @@
-[SMOKESHELL]
+[SMOKESHELL_Medium]
 {
 [smoke]
 	{
@@ -13,13 +13,13 @@
 			gravity=0, 1, 0;
 			colorMap=0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01;
 			Texture=smokesmall;
-			airdrag=0.30;
-			numParticles=5;
+			airdrag=0.45;
+			numParticles=7;
 			particleLife=120;
 			particleLifeSpread=50;
 			particleSpeed=100 i-10;
 			particleSpeedSpread=50;
-			particleSize=50 i-0.4;
+			particleSize=60 i-0.4;
 			particleSizeSpread=15;
 			emitRot=0;
 			emitRotSpread=360;

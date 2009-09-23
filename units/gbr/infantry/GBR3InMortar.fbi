@@ -16,7 +16,7 @@
     lowammolevel=3;
     maxammo=10;
     weaponcost=15;
-    weaponswithammo=1;
+    weaponswithammo=2;
   }
   damageModifier=0.23;
   flankingBonusMode=1;
@@ -59,5 +59,7 @@
 
   weapon1=3InMortar;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon2=3InMortarsmoke;
+  onlyTargetCategory1=NOTHING;
 }
 
