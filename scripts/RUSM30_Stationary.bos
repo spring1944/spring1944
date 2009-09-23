@@ -230,7 +230,7 @@ AimFromWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
-	signal SIG_AIM1;
+	// signal SIG_AIM1; - no way
 	set-signal-mask SIG_AIM1;
 	if ((fear>0) || !isSmoking) return 0;
 	bAiming=1;
