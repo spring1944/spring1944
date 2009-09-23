@@ -32,7 +32,7 @@
   soundStart=GER_K98K;
   soundTrigger=0;
   thickness=0.2;
-  tolerance=5;
+  tolerance=2000;
   turret=1;
   weaponVelocity=1500;
 }
