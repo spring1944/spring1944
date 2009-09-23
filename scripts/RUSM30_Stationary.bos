@@ -79,6 +79,9 @@ turn rloarm1 to x-axis <-115> now;\
 turn luparm1 to z-axis <20> now;\
 turn ruparm1 to z-axis <-20> now;\
 
+// smoke shells stuff
+static-var	isSmoking;
+#include "smokeshellstoggle.h"
 
 Create()
 {
@@ -88,6 +91,7 @@ Create()
 	hide brakeright;
 	// init vars
 	set ACTIVATION to TRUE;
+	isSmoking = FALSE;
 }
 
 TakeCover()
@@ -183,7 +187,7 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
-	if (fear>0) return 0;
+	if ((fear>0) || isSmoking) return 0;
 	bAiming=1;
 		//TODO: anim	
 	turn carriage to y-axis heading speed TURR_TRAVERSE;
@@ -195,6 +199,51 @@ AimWeapon1(heading, pitch)
 }
 
 FireWeapon1()
+{
+	emit-sfx LARGE_Muzzleflash from flare;
+	emit-sfx LARGE_MuzzleDust from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	move barrel to z-axis RECOIL now;
+	//Fire teh weap0n!!!11
+	CREW_FIRING;
+	get DO_SEISMIC_PING(15);
+	sleep 100;
+	move barrel to z-axis [0] speed RETURN_SPEED;
+	//Now reload...
+	CREW_RELOADING
+	set STEALTH to 0;
+	sleep VISIBLE_PERIOD;
+	set STEALTH to 1;
+}
+
+// Weapon 2 122mm smoke
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = barrel;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	if ((fear>0) || !isSmoking) return 0;
+	bAiming=1;
+		//TODO: anim	
+	turn carriage to y-axis heading speed TURR_TRAVERSE;
+	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn carriage around y-axis;
+	wait-for-turn carriage around x-axis;
+	bAiming=0;
+	return 1;
+}
+
+FireWeapon2()
 {
 	emit-sfx LARGE_Muzzleflash from flare;
 	emit-sfx LARGE_MuzzleDust from flare;

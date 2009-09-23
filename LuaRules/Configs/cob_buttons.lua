@@ -61,6 +61,18 @@ return {
 		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
+	rusm30_stationary = {
+		{
+			cob = "SwitchToSmoke",
+			name = "Smoke",
+			tooltip = "Switch to smoke shells"
+		},
+		{
+			cob = "SwitchToHE",
+			name = "HE",
+			tooltip = "Switch to HE shells"
+		},
+	},
 	gerkarl = {
 	{
 		cob = "TriggerDeploy",
