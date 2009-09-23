@@ -32,13 +32,13 @@
 [m1_81mmmortarSmoke] {
   name=M1 81mm Mortar Smoke Ammo;
   accuracy=485;
-  areaOfEffect=104;
+  areaOfEffect=20;
   color=255;
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
 	smokeradius=140;
-	smokeduration=10;
+	smokeduration=15;
 	smokeceg=SMOKESHELL_Small;
   }
   [damage] {

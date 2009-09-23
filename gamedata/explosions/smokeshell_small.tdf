@@ -15,11 +15,11 @@
 			Texture=smokesmall;
 			airdrag=0.18;
 			numParticles=5;
-			particleLife=120;
+			particleLife=100;
 			particleLifeSpread=50;
-			particleSpeed=100 i-10;
-			particleSpeedSpread=50;
-			particleSize=50 i-0.4;
+			particleSpeed=90 i-10;
+			particleSpeedSpread=30;
+			particleSize=30 i-0.4;
 			particleSizeSpread=15;
 			emitRot=0;
 			emitRotSpread=360;

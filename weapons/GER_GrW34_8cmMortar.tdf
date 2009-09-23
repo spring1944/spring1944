@@ -33,13 +33,13 @@
 [grw34_8cmmortarsmoke] {
   name=granatwerfer 34 81.4mm Mortar Smoke Ammo;
   accuracy=485;
-  areaOfEffect=81;
+  areaOfEffect=20;
   color=255;
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
 	smokeradius=140;
-	smokeduration=10;
+	smokeduration=15;
 	smokeceg=SMOKESHELL_Small;
   }
   [damage] {

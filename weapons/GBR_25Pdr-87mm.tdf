@@ -43,7 +43,7 @@
 [25pdrsmoke] {
   name=25 Pounder Light Howitzer Smoke Ammunition;
   accuracy=315;
-  areaOfEffect=94;
+  areaOfEffect=30;
   ballistic=1;
   collisionSize=4;
   craterBoost=0;
@@ -51,7 +51,7 @@
   [customParams] {
     damagetype=explosive;
 	smokeradius=220;
-	smokeduration=20;
+	smokeduration=25;
 	smokeceg=SMOKESHELL_Medium;
   }
   [damage] {

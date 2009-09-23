@@ -33,13 +33,13 @@
 [m1937_mortarsmoke] {
   name=M1937 Mortar Smoke Ammo;
   accuracy=485;
-  areaOfEffect=88;
+  areaOfEffect=20;
   color=255;
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
 	smokeradius=140;
-	smokeduration=10;
+	smokeduration=15;
 	smokeceg=SMOKESHELL_Small;
   }
   [damage] {
