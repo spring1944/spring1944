@@ -177,7 +177,7 @@ local sortieDefs = {
     
     delay = 45,
     weight = 1,
-    alwaysAttack = true,
+    alwaysAttack = 1,
   },
 }
 

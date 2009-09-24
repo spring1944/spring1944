@@ -24,7 +24,7 @@
 			emitRot=0;
 			emitRotSpread=360;
 			directional=0;
-			alwaysvisible=0;
+			alwaysvisible=1;
 		}
 		air=1;
 		water=1;

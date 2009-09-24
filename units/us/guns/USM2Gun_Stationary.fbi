@@ -62,7 +62,7 @@
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
   
-  weapon1=M2Smoke;
+  weapon2=M2Smoke;
   maxAngleDif2=25;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;
