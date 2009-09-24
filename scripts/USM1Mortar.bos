@@ -143,6 +143,7 @@ Create()
 	#ifdef WEAPON_GRENADE
 	bNading = 0;
 	#endif
+	isSmoking = 0;
 	iState = 1;
 	iFear = 0;
 	iSpeed = GET MAX_SPEED;

@@ -86,6 +86,7 @@ static-var	isSmoking;
 
 Create()
 {
+	isSmoking = 0;
 	set STEALTH to 1;
 	hide flare;
 	hide brakeleft;

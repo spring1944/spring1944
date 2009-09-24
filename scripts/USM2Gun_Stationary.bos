@@ -87,6 +87,7 @@ Create()
 {
 	hide flare;
 	// init vars
+	isSmoking = 0;
 	set STEALTH to 1;
 }
 

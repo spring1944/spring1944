@@ -137,6 +137,7 @@ StopMoving()
 
 Create()
 {
+	isSmoking = 0;
 	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
 	bMoving = 0;
 	bAiming = 0;

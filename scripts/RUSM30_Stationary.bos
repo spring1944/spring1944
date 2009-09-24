@@ -91,7 +91,7 @@ Create()
 	hide brakeright;
 	// init vars
 	set ACTIVATION to TRUE;
-	isSmoking = FALSE;
+	isSmoking = 0;
 }
 
 TakeCover()
