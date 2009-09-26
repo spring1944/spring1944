@@ -43,7 +43,8 @@ function gadget:GameFrame(f)
 end
 
 function gadget:CommandFallback(u,ud,team,cmd,param,opt)
-	if cmd == CMD_AREAATTACK then
+	-- Note the command is given to ALL units in selection if ONE has the "area attack" button.
+	if cmd == CMD_AREAATTACK and range[ud] then
 		local x,_,z = Spring.GetUnitPosition(u)
 		local dist = math.sqrt((x-param[1])*(x-param[1]) + (z-param[3])*(z-param[3]))
 		if dist <= range[ud] - (param[4] or 1) then
@@ -65,16 +66,20 @@ end
 
 function gadget:Initialize()
 	gadgetHandler:RegisterCMDID(CMD_AREAATTACK)
+	-- Fake UnitCreated events for existing units. (for '/luarules reload')
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
+	end
 end
 
 else
 
--- no UNSYNCED code
+-- UNSYNCED
 
 function gadget:Initialize()
 	Spring.SetCustomCommandDrawData(CMD_AREAATTACK, CMDTYPE.ICON_AREA, {1,0,0,.8},true)
 end
-
---return false
 
 end
