@@ -19,6 +19,17 @@ return {
 		name = "Clear Mines",
 		tooltip = "Search for mines"},
 	},
+
+	rusisu152 = {
+		{
+			cob = "RotateHere",
+			name = "Turn",
+			tooltip = "Turn to face a given point",
+			requiresdirection = "1",
+			type = CMDTYPE.ICON_MAP,
+			cursor = "Patrol",
+		},
+	},
 	
 	gbrengineer = {
 	{

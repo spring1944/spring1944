@@ -16,8 +16,8 @@ function gadget:GetInfo()
   return {
     name      = "CobButton",
     desc      = "Easy cob button Creation",
-    author    = "quantum",
-    date      = "June 28, 2008",
+    author    = "quantum, modified by yuritch",
+    date      = "June 28, 2008, mod. Sep. 27, 2009",
     license   = "GNU GPL, v2 or later",
     layer     = -10,
     enabled   = true  --  loaded by default?
@@ -66,6 +66,9 @@ for unit, cmds in pairs(buttonDefs) do
       type    = cmd.type or CMDTYPE.ICON,
       tooltip = cmd.tooltip,
     }
+	if (cmd.cursor) then
+		cmd.cmdDesc.cursor = cmd.cursor
+	end
   end
 end
 
@@ -162,7 +165,7 @@ function gadget:UnitDestroyed(unitID)
 end
 
 
-function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID)
+function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
   if (buttons[cmdID] and buttonDefs[UnitDefs[unitDefID].name]) then
     local cmd = buttons[cmdID]
     if (cmd.reload) then
@@ -172,7 +175,26 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID)
         Spring.CallCOBScript(unitID, cmd.cob, 0)
       end
     else
-      Spring.CallCOBScript(unitID, cmd.cob, 0)
+	-- by yuritch: make commands that need map information
+	if (cmd.requiresdirection) then
+		-- command needs a direction
+		local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
+		local ux, _, uz = Spring.GetUnitPosition(unitID)
+		local dx, dz = tx - ux, tz - uz
+		local rotation = math.atan2(dx, dz)
+		-- convert to COB angular units
+		local COBAngularConstant = 182
+		rotation = rotation * 180 / math.pi * COBAngularConstant
+		Spring.CallCOBScript(unitID, cmd.cob, 1, rotation)
+	elseif (cmd.requirescoords) then
+		-- command needs coords of a map point
+		local tx, ty, tz = cmdParams[1], cmdParams[2], cmdParams[3]
+		Spring.CallCOBScript(unitID, cmd.cob, 3, tx, ty, tz)
+	else
+		-- command does not need anything
+		Spring.CallCOBScript(unitID, cmd.cob, 0)
+	end
+	-- by yuritch: here my code ends
     end
     return false  -- command was used
   end
