@@ -1,5 +1,5 @@
 -- $Id: cob_buttons.lua 3171 2008-11-06 09:06:29Z det $
-return {
+local tmpReturn = {
 	ruscommissar = {
 	{
 		cob = "LookForMines",
@@ -20,17 +20,6 @@ return {
 		tooltip = "Search for mines"},
 	},
 
-	rusisu152 = {
-		{
-			cob = "RotateHere",
-			name = "Turn",
-			tooltip = "Turn to face a given point",
-			requiresdirection = "1",
-			type = CMDTYPE.ICON_MAP,
-			cursor = "Patrol",
-		},
-	},
-	
 	gbrengineer = {
 	{
 		cob = "LookForMines",
@@ -176,3 +165,31 @@ return {
 		tooltip = "Prepare the gun for firing or moving"},
 	},
 }
+
+-- process things caused by customparams tags
+for _, tmpUnitDef in pairs(UnitDefs) do
+	if (tmpUnitDef.customParams) then
+		local tmpParams = tmpUnitDef.customParams
+		-- Turn button
+		if (tmpParams.hasturnbutton) then
+			local tmpCmd = {
+				cob = "RotateHere",
+				name = "Turn",
+				tooltip = "Turn to face a given point",
+				requiresdirection = "1",
+				type = CMDTYPE.ICON_MAP,
+				cursor = "Patrol",
+			}
+			if (tmpReturn[tmpUnitDef.name]) then
+				table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
+			else
+				tmpReturn[tmpUnitDef.name] ={
+					tmpCmd,
+				}
+			end
+		end
+		-- other things to come later
+	end
+end
+
+return tmpReturn

@@ -61,6 +61,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 // tracers
 #define SMALL_TRACER 	2048+4
 
+#include "TurnButton.h"
+
 treads() 
 { 
    while( TRUE ) 

@@ -21,6 +21,7 @@
     maxammo=4;
     weaponcost=35;
     weaponswithammo=2;
+	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Large;
   footprintX=3;
