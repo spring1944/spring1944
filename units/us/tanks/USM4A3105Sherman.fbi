@@ -23,6 +23,7 @@
     weaponcost=20;
     weaponswithammo=1;
 	hasturnbutton=1;
+	canfiresmoke=1;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -72,16 +73,20 @@
   badTargetCategory1=OPENVEH HARDVEH;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=M1919A4Browning;
+  weapon2=m4105mmsmoke;
+  badTargetCategory2=OPENVEH HARDVEH;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  
+  weapon3=M1919A4Browning;
   onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon3=M2Browning;
+  weapon4=M2Browning;
   onlyTargetCategory3=AIR;
 
-  weapon4=.50calproof;
+  weapon5=.50calproof;
 
-  weapon5=Small_Tracer;
+  weapon6=Small_Tracer;
 
-  weapon6=Medium_Tracer;
+  weapon7=Medium_Tracer;
 }
 

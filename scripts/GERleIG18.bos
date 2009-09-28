@@ -284,11 +284,11 @@ CrewWalk()
 {
 	//TODO: crew walking anim
 	
-	var bMoving;
-	bMoving = TRUE; // lazy hack!
+	var walking;
+	walking = TRUE; // lazy hack!
 	
 	while (TRUE) {
-	if( bMoving )
+	if( walking )
 	{
 		turn torso1 to x-axis <30> now;
 		turn head1 to x-axis <-30> now;
@@ -323,7 +323,7 @@ CrewWalk()
 
 		sleep 60;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <10.000000> now;
 		turn lthigh1 to x-axis <4.000000> now;
@@ -337,7 +337,7 @@ CrewWalk()
 
 		sleep 70;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <14.000000> now;
 		turn lthigh1 to x-axis <-19.000000> now;
@@ -349,7 +349,7 @@ CrewWalk()
 
 		sleep 60;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <21.000000> now;
 		turn lthigh1 to x-axis <-40.005495> now;
@@ -362,7 +362,7 @@ CrewWalk()
 		
 		sleep 50;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <23.005495> now;
 		turn lthigh1 to x-axis <-54.005495> now;
@@ -375,7 +375,7 @@ CrewWalk()
 		
 		sleep 40;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <30.005495> now;
 		turn lthigh1 to x-axis <-44.005495> now;
@@ -389,7 +389,7 @@ CrewWalk()
 
 		sleep 30;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <19.000000> now;
 		turn lthigh1 to x-axis <-42.005495> now;
@@ -405,7 +405,7 @@ CrewWalk()
 
 		sleep 40;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <13.000000> now;
 		turn lthigh1 to x-axis <-33.005495> now;
@@ -419,7 +419,7 @@ CrewWalk()
 
 		sleep 50;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <2.000000> now;
 		turn lthigh1 to x-axis <-23.005495> now;
@@ -431,7 +431,7 @@ CrewWalk()
 
 		sleep 60;
 	}
-	if( bMoving )
+	if( walking )
 	{
 
 		turn rthigh1 to x-axis <-17.000000> now;
@@ -447,7 +447,7 @@ CrewWalk()
 
 		sleep 70;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <-32.005495> now;
 		turn lthigh1 to x-axis <5.000000> now;
@@ -460,7 +460,7 @@ CrewWalk()
 
 		sleep 60;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <-45.005495> now;
 		turn lthigh1 to x-axis <13.000000> now;
@@ -473,7 +473,7 @@ CrewWalk()
 
 		sleep 50;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <-50.005495> now;
 		turn lthigh1 to x-axis <17.000000> now;
@@ -485,7 +485,7 @@ CrewWalk()
 
 		sleep 40;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn lthigh1 to x-axis <24.005495> now;
 		turn rleg1 to x-axis <37.005495> now;
@@ -496,7 +496,7 @@ CrewWalk()
 		
 		sleep 30;
 	}
-	if( bMoving )
+	if( walking )
 	{
 		turn rthigh1 to x-axis <-41.005495> now;
 		turn lthigh1 to x-axis <20.000000> now;
