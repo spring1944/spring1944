@@ -22,6 +22,7 @@
     flagCapRate=8;
     hq=1;
     refillamount=1e+06;
+	canclearmines=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

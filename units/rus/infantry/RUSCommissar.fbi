@@ -19,6 +19,7 @@
   [customParams] {
     feartarget=1;
     flagCapRate=2.5;
+	canclearmines=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

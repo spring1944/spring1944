@@ -21,6 +21,7 @@
     feartarget=1;
     flagCapRate=2.5;
 	hq=1;
+	canclearmines=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

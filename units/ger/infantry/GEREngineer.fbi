@@ -15,6 +15,7 @@
   [customParams] {
     defaultMove=1;
     feartarget=1;
+	canclearmines=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

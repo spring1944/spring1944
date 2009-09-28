@@ -15,6 +15,7 @@
   corpse=GERSoldier_dead;
   [customParams] {
     feartarget=1;
+	canclearmines=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;

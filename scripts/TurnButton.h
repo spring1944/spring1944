@@ -3,6 +3,8 @@
 // Turn the unit to face the new direction
 RotateHere(newDirection)
 {
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
 	var curHeading, turnSpeed, deltaHeading, numSteps;
 	
 	turnSpeed = <5>;

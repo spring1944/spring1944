@@ -1,66 +1,5 @@
 -- $Id: cob_buttons.lua 3171 2008-11-06 09:06:29Z det $
 local tmpReturn = {
-	ruscommissar = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	ruscommander = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	
-	rusengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-
-	gbrengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	
-	gbrhqengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	
-	gerengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	
-	gerhqengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-	
-	usengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
-
-	ushqengineer = {
-	{
-		cob = "LookForMines",
-		name = "Clear Mines",
-		tooltip = "Search for mines"},
-	},
 	gbr25pdr_stationary = {
 		{
 			cob = "SwitchToSmoke",
@@ -179,6 +118,20 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 				requiresdirection = "1",
 				type = CMDTYPE.ICON_MAP,
 				cursor = "Patrol",
+			}
+			if (tmpReturn[tmpUnitDef.name]) then
+				table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
+			else
+				tmpReturn[tmpUnitDef.name] ={
+					tmpCmd,
+				}
+			end
+		end
+		if (tmpParams.canclearmines) then
+			local tmpCmd = {
+				cob = "LookForMines",
+				name = "Clear Mines",
+				tooltip = "Search for mines",
 			}
 			if (tmpReturn[tmpUnitDef.name]) then
 				table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)

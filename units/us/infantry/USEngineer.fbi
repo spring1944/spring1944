@@ -14,6 +14,7 @@
   corpse=USsoldier_dead;
   [customParams] {
     feartarget=1;
+	canclearmines=1;
   }
   energyStorage=0.01;
   footprintX=1;

@@ -10,6 +10,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define VISIBLE_PERIOD	5000
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 
 // definitions for SmokeUnit_GPL
@@ -95,6 +96,7 @@ Create()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	bMoving = TRUE;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -108,6 +110,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;
