@@ -9,6 +9,7 @@ static-var  restore_delay, rock, reloading, bMoving, treadnum, gunaiming, MGAimi
 #define VISIBLE_PERIOD	5000
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
 #define SIG_AIM_3	8 // AA MG
@@ -67,6 +68,8 @@ static-var  restore_delay, rock, reloading, bMoving, treadnum, gunaiming, MGAimi
 // tracers
 //#define MEDIUM_TRACER 	2048+4
 
+#include "TurnButton.h"
+
 treads() 
 { 
    while( TRUE ) 
@@ -103,6 +106,7 @@ Create()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	bMoving = TRUE;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -116,6 +120,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;

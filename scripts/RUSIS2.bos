@@ -6,6 +6,7 @@ piece wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, MGAiming, treadnum;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
 
@@ -62,6 +63,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 // tracers
 #define SMALL_TRACER 	2048+4
 
+#include "TurnButton.h"
+
 treads() 
 { 
    while( TRUE ) 
@@ -99,6 +102,7 @@ Create()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	bMoving = TRUE;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -112,6 +116,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;

@@ -1,4 +1,4 @@
-#define TA			// This is a TA script
+#define TAK
 
 #include "sfxtype.h"
 #include "exptype.h"
@@ -9,6 +9,7 @@ guns, flare1, flare2, flare3, flare4;
 static-var restore_delay, bMoving, treadnum, aim1;
 
 // Signal definitions
+#define SIG_MOVE			1
 #define SIG_AIM				2
 #define SIG_AIM2			4
 #define SIG_AIM3			8
@@ -25,6 +26,8 @@ static-var restore_delay, bMoving, treadnum, aim1;
 
 // tracers
 #define MEDIUM_TRACER 	2048+4
+
+#include "TurnButton.h"
 
 treads() 
 { 
@@ -77,6 +80,7 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 1;
 	bMoving = TRUE;
 	/*emit-sfx 257 from exhaust;
@@ -95,6 +99,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;

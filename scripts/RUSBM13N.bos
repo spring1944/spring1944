@@ -3,9 +3,10 @@
 piece  base, turret, backblast, rails, rocket1, rocket2, rocket3, rocket4, rocket5, rocket6, rocket7, rocket8;
 piece  rocket9, rocket10, rocket11, rocket12, rocket13, rocket14, rocket15, rocket16, wheel1, wheel2, wheel3;
  
-static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, rocket, canMove;
+static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, rocket, canMove, bMoving;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Machinegun
 #define SIG_DEPLOY	4
 #define SIG_NOMOVE	8
@@ -55,6 +56,8 @@ static-var  restore_delay, rock, reloading, mainHead, isDeployed, normalSpeed, r
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
 #define MEDIUM_Muzzleflash 1024+7
+
+#include "TurnButton.h"
 
 Create()
 {
@@ -139,8 +142,10 @@ KeepHeading()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	signal SIG_DEPLOY;
 	set-signal-mask SIG_DEPLOY;
+	bMoving = TRUE;
 	call-script UnDeploy();
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -149,8 +154,10 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	signal SIG_DEPLOY;
 	set-signal-mask SIG_DEPLOY;
+	bMoving = FALSE;
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;
   	stop-spin wheel3 around x-axis;

@@ -12,6 +12,7 @@ static-var restore_delay, bMoving, treadnum, aim1, shotCount;
 	hide flare;\
 
 // Signal definitions
+#define SIG_MOVE			1
 #define SIG_AIM				2 // Machinemg
 #define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
 #define FUDGE				50 // isn't enough even between smg and rifle
@@ -20,6 +21,8 @@ static-var restore_delay, bMoving, treadnum, aim1, shotCount;
 // tracers
 #define MEDIUM_TRACER 	2048+2
 #define TRACER_PER_X_SHOTS	3
+
+#include "TurnButton.h"
 
 treads() 
 { 
@@ -98,6 +101,7 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 1;
 	bMoving = TRUE;
 	/*emit-sfx 257 from exhaust;
@@ -116,6 +120,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;

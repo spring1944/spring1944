@@ -21,6 +21,7 @@
     maxammo=5;
     weaponcost=12;
     weaponswithammo=1;
+	hasturnbutton=1;
   }
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;

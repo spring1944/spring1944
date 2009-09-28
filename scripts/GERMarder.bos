@@ -6,6 +6,7 @@ piece  base, mantlet, barrel, flare, brakeleft, brakeright, exhaust, frontwheel,
 static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // AA MG
 
@@ -55,7 +56,7 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum;
 #define MEDIUM_MUZZLEDUST 1024+9
 #define MuzzleBrakeSmoke 1024+10
 
-
+#include "TurnButton.h"
 treads() 
 { 
    while( TRUE ) 
@@ -91,6 +92,7 @@ Create()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	bMoving = TRUE;
 	set ACTIVATION to 1;
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -103,6 +105,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	bMoving = FALSE;
 	set ACTIVATION to 0;
 	stop-spin frontwheel around x-axis;

@@ -3,9 +3,10 @@
 piece gp, base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust;
 piece wheel1, wheel2, wheel3;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
 #define SIG_AIM_3	8 // AA MG
@@ -67,6 +68,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead;
 #define SMALL_TRACER 	2048+4
 #define MEDIUM_TRACER 	2048+5
 
+#include "TurnButton.h"
+
 Create()
 {
 	FX_HIDE
@@ -92,7 +95,9 @@ RestoreAfterDelay()
 
 StartMoving()
 {
-		set ACTIVATION to 1;
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	set ACTIVATION to 1;
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -100,6 +105,8 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
+	bMoving = FALSE;
 	set ACTIVATION to 0;
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;

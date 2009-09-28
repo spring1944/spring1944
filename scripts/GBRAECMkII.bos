@@ -6,6 +6,7 @@ piece wheel1, wheel2;
 static-var  restore_delay, rock, aim2, reloading, mainHead;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
 
@@ -66,6 +67,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead;
 // tracers
 #define SMALL_TRACER 	2048+5
 
+#include "TurnButton.h"
+
 Create()
 {
 	FX_HIDE
@@ -91,6 +94,7 @@ RestoreAfterDelay()
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 1;
 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -98,6 +102,7 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	set ACTIVATION to 0;
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;

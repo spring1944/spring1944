@@ -11,6 +11,10 @@
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=USM3Halftrack_Destroyed;
+	[customParams]
+	{
+		hasturnbutton=1;
+	}
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;

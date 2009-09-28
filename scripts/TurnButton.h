@@ -17,7 +17,11 @@ RotateHere(newDirection)
 	signal SIG_MOVE;
 	set-signal-mask SIG_MOVE;
 	var curHeading, turnSpeed, deltaHeading, numSteps;
-	
+
+	if(bMoving)
+	{
+		return FALSE;
+	}
 	turnSpeed = unitTurnSpeed;
 	curHeading = get HEADING;
 	deltaHeading = newDirection - curHeading;
