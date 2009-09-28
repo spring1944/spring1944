@@ -5,7 +5,7 @@ piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthi
 piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
  
  
-static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned;
+static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned, bMoving;
 #include "Inf_sharedDefs.h"
 // Signal definitions
 #define SIG_AIM1	2
@@ -13,6 +13,7 @@ static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, last
 #define SIG_AIM3	8
 #define SIG_AIM4	16
 #define SIG_DEPLOY	32
+#define SIG_MOVE	64
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -545,8 +546,10 @@ setSFXoccupy(terrain)
 
 StartMoving()
 {
+	signal SIG_MOVE;
 	signal SIG_DEPLOY;
 	set-signal-mask SIG_DEPLOY;
+	bMoving=TRUE;
 	sleep 200;
 	call-script UnDeploy();
  	spin wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -556,6 +559,8 @@ StartMoving()
 StopMoving()
 {
 	signal SIG_DEPLOY;
+	signal SIG_MOVE;
+	bMoving=FALSE;
 	set-signal-mask SIG_DEPLOY;
  	stop-spin wheels around x-axis;
 	CREW_STOP;
