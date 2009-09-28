@@ -17,6 +17,7 @@
     maxammo=10;
     weaponcost=15;
     weaponswithammo=2;
+    canareaattack=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;
@@ -60,6 +61,6 @@
   weapon1=M1937_Mortar;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weapon2=M1937_Mortarsmoke;
-  onlyTargetCategory1=nothing;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 
