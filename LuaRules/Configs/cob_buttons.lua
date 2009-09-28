@@ -1,102 +1,5 @@
 -- $Id: cob_buttons.lua 3171 2008-11-06 09:06:29Z det $
 local tmpReturn = {
-	gbr25pdr_stationary = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},
-	gerlefh18_stationary = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},
-	rusm30_stationary = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},	
-	usm2gun_stationary = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},
-	gbr3inmortar = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},	
-	gergrw34 = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},	
-	rusmortar = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},
-	
-	usm1mortar = {
-		{
-			cob = "SwitchToSmoke",
-			name = "Smoke",
-			tooltip = "Switch to smoke shells"
-		},
-		{
-			cob = "SwitchToHE",
-			name = "HE",
-			tooltip = "Switch to HE shells"
-		},
-	},
 	gerkarl = {
 	{
 		cob = "TriggerDeploy",
@@ -140,6 +43,29 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 					tmpCmd,
 				}
 			end
+		end
+		if (tmpParams.canfiresmoke) then
+			-- add Smoke button
+			local tmpCmd = {
+				cob = "SwitchToSmoke",
+				name = "Smoke",
+				tooltip = "Switch to smoke shells"
+			}
+			if (tmpReturn[tmpUnitDef.name]) then
+				table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
+			else
+				tmpReturn[tmpUnitDef.name] ={
+					tmpCmd,
+				}
+			end
+			-- add HE button
+			tmpCmd = {
+				cob = "SwitchToHE",
+				name = "HE",
+				tooltip = "Switch to HE shells"
+			}
+			-- no need to check for existing cmddescs since we just added one
+			table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
 		end
 		-- other things to come later
 	end

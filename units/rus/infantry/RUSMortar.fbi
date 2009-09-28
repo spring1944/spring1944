@@ -18,6 +18,7 @@
     weaponcost=15;
     weaponswithammo=2;
     canareaattack=1;
+	canfiresmoke=1;
   }
   damageModifier=0.23;
   flankingBonusMode=1;
