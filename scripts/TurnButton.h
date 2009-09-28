@@ -1,5 +1,16 @@
 #ifndef _TURNBUTTON_H_
 #define _TURNBUTTON_H_
+// A var to hold unit's turn speed
+static-var unitTurnSpeed;
+
+// call-in to set that var
+SetTurnSpeed(newSpeed)
+{
+	// what's the proper coeff for turnRate -> degrees/s?
+	unitTurnSpeed = newSpeed * 32;
+	return;
+}
+
 // Turn the unit to face the new direction
 RotateHere(newDirection)
 {
@@ -7,7 +18,7 @@ RotateHere(newDirection)
 	set-signal-mask SIG_MOVE;
 	var curHeading, turnSpeed, deltaHeading, numSteps;
 	
-	turnSpeed = <5>;
+	turnSpeed = unitTurnSpeed;
 	curHeading = get HEADING;
 	deltaHeading = newDirection - curHeading;
 	// find the direction for shortest turn

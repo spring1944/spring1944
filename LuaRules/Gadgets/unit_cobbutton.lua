@@ -175,6 +175,11 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         Spring.CallCOBScript(unitID, cmd.cob, 0)
       end
     else
+	-- pre-call to cob (to pass some parameter, etc)
+	-- for ex. pass turnRate to cob (which is not available otherwise)
+	if (cmd.precob) then
+		Spring.CallCOBScript(unitID, cmd.precob, 1, cmd.precobparam)
+	end
 	-- by yuritch: make commands that need map information
 	if (cmd.requiresdirection) then
 		-- command needs a direction

@@ -14,6 +14,8 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 		local tmpParams = tmpUnitDef.customParams
 		-- Turn button
 		if (tmpParams.hasturnbutton) then
+			-- determine unit's turn speed
+			local turnSpeed = tmpUnitDef.turnRate or 5*182
 			local tmpCmd = {
 				cob = "RotateHere",
 				name = "Turn",
@@ -21,6 +23,8 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 				requiresdirection = "1",
 				type = CMDTYPE.ICON_MAP,
 				cursor = "Patrol",
+				precob = "SetTurnSpeed",
+				precobparam = turnSpeed,
 			}
 			if (tmpReturn[tmpUnitDef.name]) then
 				table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
