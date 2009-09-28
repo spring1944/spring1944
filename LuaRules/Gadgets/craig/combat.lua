@@ -56,15 +56,17 @@ function CombatMgr.GameFrame(f)
 
 	if newUnitCount >= SQUAD_SIZE then
 		local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
-		lastWaypoint = (lastWaypoint % #frontline) + 1
-		local target = frontline[lastWaypoint]
-		if target then
-			PathFinder.GiveOrdersToUnitMap(previous, target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
-			for u,_ in pairs(newUnits) do
-				units[u] = target -- remember where we are going for UnitIdle
+		if #frontline > 0 then
+			lastWaypoint = (lastWaypoint % #frontline) + 1
+			local target = frontline[lastWaypoint]
+			if target then
+				PathFinder.GiveOrdersToUnitMap(previous, target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
+				for u,_ in pairs(newUnits) do
+					units[u] = target -- remember where we are going for UnitIdle
+				end
+				newUnits = {}
+				newUnitCount = 0
 			end
-			newUnits = {}
-			newUnitCount = 0
 		end
 	end
 
