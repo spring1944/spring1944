@@ -71,7 +71,7 @@ end
 
 -- Returns the nearest waypoint to point x, z, and the distance to it.
 local function GetNearestWaypoint2D(x, z)
-	local minDist = 1.0e20
+	local minDist = 1.0e9
 	local nearest
 	for _,p in ipairs(waypoints) do
 		local dist = GetDist2D(x, z, p.x, p.z)

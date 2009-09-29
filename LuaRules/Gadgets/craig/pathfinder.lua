@@ -63,7 +63,7 @@ PathFinder = {}
 
 
 local function ExtractMin(dist, q)
-	local minDist = 1.0e20
+	local minDist = 1.0e9
 	local nearest = nil
 	-- TODO: this is the most naive implementation, bumping up the complexity
 	-- of Dijkstra below to O(n^2) with n = number of vertices in the graph.
@@ -92,7 +92,7 @@ function PathFinder.Dijkstra(graph, source, blocked, predicate)
 	for _,v in ipairs(graph) do
 		if (not blocked[v]) then
 			q[v] = true
-			dist[v] = 1.0e20
+			dist[v] = 1.0e9
 		end
 	end
 	dist[source] = 0
