@@ -91,6 +91,10 @@ function gadget:UnitCreated(unitID, unitDefID)
   if (buttonDefs[name]) then
     for i, button in ipairs(buttonDefs[name]) do
       Spring.InsertUnitCmdDesc(unitID, button.position or 500, button.cmdDesc)
+	-- init pre-cob call
+	if (button.precob) then
+		Spring.CallCOBScript(unitID, button.precob, 1, button.precobparam)
+	end
     end
     reloads[unitID] = {}
   end
@@ -175,11 +179,6 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         Spring.CallCOBScript(unitID, cmd.cob, 0)
       end
     else
-	-- pre-call to cob (to pass some parameter, etc)
-	-- for ex. pass turnRate to cob (which is not available otherwise)
-	if (cmd.precob) then
-		Spring.CallCOBScript(unitID, cmd.precob, 1, cmd.precobparam)
-	end
 	-- by yuritch: make commands that need map information
 	if (cmd.requiresdirection) then
 		-- command needs a direction
