@@ -85,6 +85,9 @@ static-var bAiming, bMoving, iState, iFear, iSpeed;
 static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #endif
 
+#define AMBUSH
+static-var bAmbush;
+
 //FX definitions
 	//frivolous
 #define BLOOD_SM 1024+1
@@ -132,9 +135,20 @@ StopMoving()
 	bMoving = 0;
 }
 
+SetAmbush()
+{
+	bAmbush = TRUE;
+}
+
+CancelAmbush()
+{
+	bAmbush = FALSE;
+}
+
 Create()
 {
 	hide GUN_QUERY_PIECENUM; //thanks to gnome for this inspired idea. no more stupid showing flares...
+	bAmbush = FALSE;
 	bMoving = 0;
 	bAiming = 0;
 	#ifdef WEAPON_GRENADE

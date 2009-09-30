@@ -6,6 +6,16 @@ local tmpReturn = {
 		name = "Deploy",
 		tooltip = "Prepare the gun for firing or moving"},
 	},
+	ruspartisan = {
+	{
+		cob = "SetAmbush",
+		name = "Ambush",
+		tooltip = "Prepare for ambush",},
+	{
+		cob = "CancelAmbush",
+		name = "Cancel Ambush",
+		tooltip = "Cancel Ambush",},
+	}
 }
 
 -- process things caused by customparams tags

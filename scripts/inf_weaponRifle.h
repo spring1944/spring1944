@@ -25,6 +25,12 @@ QueryWeapon1(piecenum)
 AimWeapon1(heading, pitch)
 {
 	var pickPose;
+#ifdef AMBUSH
+	if (bAmbush)
+	{
+		return FALSE;
+	}
+#endif
 	if (bAiming == 0)
 	{
 	pickPose = rand(1,1);
