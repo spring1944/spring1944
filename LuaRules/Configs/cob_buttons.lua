@@ -6,7 +6,7 @@ local tmpReturn = {
 		name = "Deploy",
 		tooltip = "Prepare the gun for firing or moving"},
 	},
-	ruspartisan = {
+	ruspartisanrifle = {
 	{
 		cob = "SetAmbush",
 		name = "Ambush",
