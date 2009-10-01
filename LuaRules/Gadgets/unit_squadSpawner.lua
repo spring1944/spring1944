@@ -29,152 +29,124 @@ function gadget:GetInfo()
 	}
 end
 
+
+if (not gadgetHandler:IsSyncedCode()) then
+	return false
+end
+
+
 	-- Speed ups
-local GetCommandQueue     = Spring.GetCommandQueue
-local CreateUnit          = Spring.CreateUnit
-local DestroyUnit         = Spring.DestroyUnit
-local GetUnitBasePosition = Spring.GetUnitBasePosition
-local GiveOrderToUnits    = Spring.GiveOrderToUnitArray
+local GetCommandQueue      = Spring.GetCommandQueue
+local CreateUnit           = Spring.CreateUnit
+local DestroyUnit          = Spring.DestroyUnit
+local GetUnitBasePosition  = Spring.GetUnitBasePosition
+local GiveOrderToUnitArray = Spring.GiveOrderToUnitArray
+local DelayCall            = GG.Delay.DelayCall
 
-local ADD_BAR = "AddBar"
-local SET_BAR = "SetBar"
-local REMOVE_BAR = "RemoveBar"
-local initFrame
-if (gadgetHandler:IsSyncedCode()) then
 
-	local squadDefs = { }
-	local newSquads = { }
-	local watchUnits = { }
+local squadDefs = { }
+local builderOf = { }  -- maps unitID -> builderID
+local builders  = { }  -- keep track of builders
 
-	function gadget:Initialize()
-		squadDefs = include("LuaRules/Configs/squad_defs.lua")
-		initFrame = Spring.GetGameFrame()
-		watchUnits = { }
+
+function gadget:Initialize()
+	squadDefs = include("LuaRules/Configs/squad_defs.lua")
+	for _, unitID in ipairs(Spring.GetAllUnits()) do
+		local teamID = Spring.GetUnitTeam(unitID)
+		local unitDefID = Spring.GetUnitDefID(unitID)
+		gadget:UnitCreated(unitID, unitDefID, teamID)
+	end
+end
+
+
+local function CreateSquad(unitID, unitDefID, teamID, builderID)
+	local squadDef = squadDefs[unitDefID]
+
+	if squadDef == nil then return end
+
+	local px, py, pz = GetUnitBasePosition(unitID)
+
+	-- Get the orders for the squad spawner
+	local unitHeading = 0
+	local states = nil
+	local queue = GetCommandQueue(unitID)
+
+	if builderID then
+		unitHeading = Spring.GetUnitBuildFacing(builderID)
+		states = Spring.GetUnitStates(builderID)
 	end
 
-	function gadget:GameFrame(n)
-		--while # newSquads ~= 0 do
-		if (n == initFrame+4) then
-			for _, unitID in ipairs(Spring.GetAllUnits()) do
-			 local teamID = Spring.GetUnitTeam(unitID)
-			 local unitDefID = Spring.GetUnitDefID(unitID)
-			 gadget:UnitCreated(unitID, unitDefID, teamID)
-			end
+	local squad_units = {}
+
+	local xSpace, zSpace = -5, -5
+
+	-- Spawn the units
+	for i, unitName in ipairs(squadDef) do
+		local newUnitID = CreateUnit(unitName, px + xSpace,py, pz + zSpace, unitHeading, teamID)
+		if newUnitID then
+			squad_units[#squad_units+1] = newUnitID
 		end
-		for index, squad in ipairs(newSquads) do
 
-				-- Get the orders for the squad spawner
-			local squad_spawner = squad.unitID
-			if watchUnits[squad_spawner] == true then
-				_,_,_,_,buildprog = Spring.GetUnitHealth(squad_spawner)
-				if(buildprog ~= nil and buildprog >= 1) then
-					local squad_members = squad.members
-					local squad_builder = squad.builderID
-					local squad_units = {}
-					local states = {}
+		if (i % 4 == 0) then
+			xSpace = -10
+			zSpace = zSpace + 10
+		else
+			xSpace = xSpace + 10
+		end
+	end
 
-					local queue = GetCommandQueue(squad_spawner)
-					if squad_builder then
-						states = Spring.GetUnitStates(squad_builder)
-					end
+	if states then
+		-- 2009/10/02: T: movestate is overridden later on (not in this gadget) ...
+		GiveOrderToUnitArray(squad_units, CMD.FIRE_STATE, { states.firestate }, 0)
+		GiveOrderToUnitArray(squad_units, CMD.MOVE_STATE, { states.movestate }, 0)
+	end
 
-					for _,unit in ipairs(squad_members) do
-						local newUnitID = CreateUnit(unit.unitname,unit.x,unit.y,unit.z,unit.heading,unit.team)
-						if (states and newUnitID) then
-							if(states.movestate ~= nil) then
-								Spring.GiveOrderToUnit(newUnitID, CMD.FIRE_STATE, { states.firestate }, 0)
-								Spring.GiveOrderToUnit(newUnitID, CMD.MOVE_STATE, { states.movestate }, 0)
-							end
-							table.insert(squad_units,newUnitID)
-						end
-					end
-					--Spring.Echo("Squad Members Created")
-
-					-- If its a valid queue
-					if (queue ~= nil) then
-
-						local first = next(queue, nil)
-
-						-- Fix some things up
-						for k,v in ipairs(queue) do
-
-							local opts = v.options
-							if (not opts.internal) then
-
-								local newopts = {}
-								if (opts.alt)   then table.insert(newopts, "alt")   end
-								if (opts.ctrl)  then table.insert(newopts, "ctrl")  end
-								if (opts.shift) then table.insert(newopts, "shift") end
-								if (opts.right) then table.insert(newopts, "right") end
-
-								if (k == first) then
-									if (opts.ctrl) then
-										table.insert(newopts, "shift")
-									end
-								end
-
-								-- Give order to the units
-								GiveOrderToUnits(squad_units, v.id, v.params, newopts)
-							end
-						end
-					end
-
-					table.remove(newSquads[index])
-					DestroyUnit(squad_spawner, false, true)
-					watchUnits[squad_spawner] = nil
-					--Spring.Echo("Spawner Destroyed")
-				end
+	-- If its a valid queue
+	if queue then
+		-- Fix some things up
+		for k,v in ipairs(queue) do
+			local opts = v.options
+			if (not opts.internal) then
+				-- Give order to the units
+				GiveOrderToUnitArray(squad_units, v.id, v.params, opts.coded)
 			end
 		end
 	end
 
---	function gadget:UnitFromFactory(unitID, unitDefID, teamID, factID, factDefID, userOrders)
-	function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	DestroyUnit(unitID, false, true)
+end
 
-		local squadDef = squadDefs[unitDefID]
 
-		if squadDef ~= nil then
-			--Spring.Echo("Spawner Created")
-			watchUnits[unitID] = true
-			local px, py, pz = GetUnitBasePosition(unitID)
+function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	if squadDefs[unitDefID] then
+		builderOf[unitID] = builderID
+		if builderID then
+			builders[builderID] = true
+		end
+	end
+end
 
-			local unitArray = { }
 
-			local xSpace, zSpace = -5, -5
+function gadget:UnitFinished(unitID, unitDefID, teamID)
+	if squadDefs[unitDefID] then
+		DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
+	end
+end
 
-			for i, unitName in ipairs(squadDef) do
-				local unitHeading = 0
-				if builderID then
-					unitHeading = Spring.GetUnitBuildFacing(builderID)
-				end
-				local newUnit = {
-					unitname = unitName,
-					x = px + xSpace,
-					y = py,
-					z = pz + zSpace,
-					heading = unitHeading,
-					team = teamID,
-				}
 
-				table.insert(unitArray,newUnit)
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+	builderOf[unitID] = nil
 
-				if(i % 4 == 0) then
-					xSpace = -10
-					zSpace = zSpace + 10
-				else
-					xSpace = xSpace + 10
-				end
+	if builders[unitID] then
+		-- A factory was destroyed: kill any squad spawners it has created
+		local builderID = builders[unitID]
+		builders[unitID] = nil
+		for k,v in pairs(builderOf) do
+			if (v == builderID) then
+				builderOf[k] = nil
+				DestroyUnit(k, false, true)
+				return
 			end
-
-			table.insert(newSquads, {unitID = unitID, builderID = builderID, members = unitArray})
 		end
 	end
-
-	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
-		if (watchUnits[unitID] ~= nil) then
-			watchUnits[unitID] = nil
-			--Spring.Echo("Spawner Destroyed 2")
-		end
-	end
-
 end
