@@ -148,7 +148,7 @@ SetMaxReloadTime(longestReloadTime)
 
 RestoreAfterDelay()
 {
-	set-signal-mask SIG_AIM||SIG_AIM_2;
+	set-signal-mask SIG_AIM|SIG_AIM_2;
 	sleep restore_delay;
 	turn turret to y-axis <0.000000> speed TURR_TRAVERSE;
 	turn barrel to x-axis <0.000000> speed TURR_ELEVATE;

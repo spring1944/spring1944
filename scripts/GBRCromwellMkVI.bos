@@ -6,8 +6,9 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, M
 
 // Signal definitions
 #define SIG_MOVE	1
-#define SIG_AIM		2 // Main Cannon
-#define SIG_AIM_2	4 // Coax MG
+#define SIG_AIM		2 // Main Cannon - HE
+#define SIG_AIM_2	4 // Smoke shells
+#define SIG_AIM_3	8 // Coax MG
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
@@ -141,9 +142,10 @@ SetMaxReloadTime(longestReloadTime)
 
 RestoreAfterDelay()
 {
+	set-signal-mask SIG_AIM|SIG_AIM_2;
 	sleep restore_delay;
-	turn turret to y-axis <0.000000> speed <60>;
-	turn barrel to x-axis <0.000000> speed <10>;
+	turn turret to y-axis <0.000000> speed TURR_TRAVERSE;
+	turn barrel to x-axis <0.000000> speed TURR_ELEVATE;
 }
 
 Reload()
@@ -172,6 +174,7 @@ AimFromWeapon1(piecenum)
 AimWeapon1(heading, pitch)
 {
 	if (aim2) return 0; // don't aim weap1 if aiming AP
+	if (isSmoking) return FALSE;	// don't aim weapon1 if smoke shells are active
 	
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
@@ -223,9 +226,10 @@ AimFromWeapon2(piecenum)
 AimWeapon2(heading, pitch)
 {
 	if (!isSmoking) return 0; // don't aim weap1 if aiming AP
-	
-//	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
+
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+		
 	GunAiming=1;
 	mainHead = heading;
 	turn turret to y-axis heading speed TURR_TRAVERSE;
@@ -272,8 +276,8 @@ AimFromWeapon3 (piecenum)
 
 AimWeapon3(heading, pitch)
 	{
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
+	signal SIG_AIM_3;
+	set-signal-mask SIG_AIM_3;
 	MGAiming=1;
 	if (mainHead > 0) {
 	  if (heading < mainHead - COAX_ARC || heading > mainHead + COAX_ARC) return 0;
