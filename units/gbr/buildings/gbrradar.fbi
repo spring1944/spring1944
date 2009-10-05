@@ -8,7 +8,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=GBRBackground.png;
+  //buildPic=GBRBackground.png;
   buildTime=5138;
   canBeAssisted=0;
   canMove=1;
