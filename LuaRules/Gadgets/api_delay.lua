@@ -36,19 +36,20 @@ local function DelayCall(f, args, delay)
 	else
 		delay = floor(delay)
 	end
-	
+
 	local targetFrame = currentFrame + delay
-	
+
 	if not calls[targetFrame] then
 		calls[targetFrame] = {}
 	end
-		
+
 	local frameCalls = calls[targetFrame]
-	
+
 	frameCalls[#frameCalls+1] = {f, args}
 end
 
 function gadget:GameFrame(n)
+	currentFrame = n
 	local frameCalls = calls[n]
 	if frameCalls then
 		for i=1,#frameCalls do
@@ -58,7 +59,6 @@ function gadget:GameFrame(n)
 		--delete
 		calls[n] = nil
 	end
-	currentFrame = n
 end
 
 GG.Delay = {
