@@ -187,9 +187,9 @@ AimWeapon1(heading, pitch)
 	bAiming=1;
 		//TODO: anim	
 	turn carriage to y-axis heading speed TURR_TRAVERSE;
-	turn carriage to x-axis 0 - pitch speed TURR_ELEVATE;
+	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn carriage around y-axis;
-	wait-for-turn carriage around x-axis;
+	wait-for-turn sleeve around x-axis;
 	bAiming=0;
 	return 1;
 }
