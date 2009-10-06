@@ -14,6 +14,8 @@
 --  Per-unitDef weaponDefs
 --
 
+local GRAVITY = 120
+
 local function isbool(x)   return (type(x) == 'boolean') end
 local function istable(x)  return (type(x) == 'table')   end
 local function isnumber(x) return (type(x) == 'number')  end
@@ -86,6 +88,7 @@ local function BackwardCompability(wdName,wd)
   -- 
   if (tobool(wd.ballistic) or tobool(wd.dropped)) then
     wd.gravityaffected = true
+		wd.myGravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
   end
 end
 
@@ -214,13 +217,6 @@ for _, weaponDef in pairs(WeaponDefs) do
   end
 end
 
--- set weapon velocities to arc at 45 degrees at max range
-for name in pairs(WeaponDefs) do
-	if WeaponDefs[name].customparams.howitzer then
-		WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * 120) --Game.gravity)
-	end
-end
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Range Multiplier
@@ -338,5 +334,11 @@ if (modOptions) then
   end
 end
 
+-- set weapon velocities to arc at 45 degrees at max range
+for name in pairs(WeaponDefs) do
+	if WeaponDefs[name].customparams.howitzer then
+		WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * GRAVITY) --Game.gravity)
+	end
+end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
