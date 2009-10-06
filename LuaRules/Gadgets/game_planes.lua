@@ -401,7 +401,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
       SendMessageToTeam(teamID, sortie.name .. " ordered. ETE " .. (sortie.delay or 0) .. "s.")
       local _, _, _, _, _, allyTeam = Spring.GetTeamInfo(teamID)
       for _, alliance in ipairs(Spring.GetAllyTeamList()) do
-        if alliance ~= allyTeam and sortie.weight > 0 then
+        if alliance ~= allyTeam and sortie.weight > 0 and not sortie.silent then
           Spring.SendMessageToAllyTeam(alliance, "Incoming enemy aircraft spotted, arriving in 15-45 seconds")
         end
       end

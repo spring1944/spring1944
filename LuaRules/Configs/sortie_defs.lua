@@ -52,6 +52,7 @@ local sortieDefs = {
     alwaysAttack = 1,
     delay = 45,
     weight = 1,
+		silent = 1,
   },
 	
   ger_sortie_recon = {
