@@ -1,43 +1,44 @@
 [25pdrhe] {
-  name=25 Pounder Light Howitzer High-Explosive Ammunition;
+  name=25 pounder light howitzer high-explosive ammunition;
   accuracy=315;
-  areaOfEffect=94;
+  areaofeffect=94;
   ballistic=1;
-  collisionSize=4;
-  craterBoost=0;
-  craterMult=0;
-  [customParams] {
+  collisionsize=4;
+  craterboost=0;
+  cratermult=0;
+  [customparams] {
     damagetype=explosive;
     fearaoe=125;
     fearid=501;
+    howitzer=1;
   }
   [damage] {
     default=1632;
   }
-  edgeEffectiveness=0.2;
-  explosionGenerator=custom:HE_Large;
-  explosionSpeed=30;
-  fireStarter=0;
+  edgeeffectiveness=0.2;
+  explosiongenerator=custom:he_large;
+  explosionspeed=30;
+  firestarter=0;
   id=99;
-  impulseBoost=0;
-  impulseFactor=0;
+  impulseboost=0;
+  impulsefactor=0;
   intensity=0.1;
-  leadLimit=0.05;
-  noSelfDamage=1;
+  leadlimit=0.05;
+  noselfdamage=1;
   range=2810;
-  reloadTime=8; //4.5
+  reloadtime=8; //4.5
   rendertype=1;
-  rgbColor=0.5 0.5 0.0;
+  rgbcolor=0.5 0.5 0.0;
   separation=2;
   size=1;
-  sizeDecay=0;
-  soundHit=GEN_Explo_4;
-  soundStart=GEN_105mm;
+  sizedecay=0;
+  soundhit=gen_explo_4;
+  soundstart=gen_105mm;
   stages=50;
-  targetMoveError=0.75;
+  targetmoveerror=0.75;
   tolerance=3000;
   turret=1;
-  weaponVelocity=1200;
+  weaponvelocity=1200;
 }
 
 [25pdrsmoke] {
@@ -53,6 +54,7 @@
 	smokeradius=220;
 	smokeduration=25;
 	smokeceg=SMOKESHELL_Medium;
+    howitzer=1;
   }
   [damage] {
     default=100;

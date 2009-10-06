@@ -202,8 +202,8 @@ FireWeapon1()
 {
 	emit-sfx LARGE_Muzzleflash from flare;
 	emit-sfx LARGE_MuzzleDust from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
+	//emit-sfx MuzzleBrakeSmoke from brakeleft;
+	//emit-sfx MuzzleBrakeSmoke from brakeright;
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
@@ -247,8 +247,8 @@ FireWeapon2()
 {
 	emit-sfx LARGE_Muzzleflash from flare;
 	emit-sfx LARGE_MuzzleDust from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
+	//emit-sfx MuzzleBrakeSmoke from brakeleft;
+	//emit-sfx MuzzleBrakeSmoke from brakeright;
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;

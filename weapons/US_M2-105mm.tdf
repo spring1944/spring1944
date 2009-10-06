@@ -10,6 +10,7 @@
     damagetype=explosive;
     fearaoe=125;
     fearid=501;
+    howitzer=1;
   }
   [damage] {
     default=4360;
@@ -53,6 +54,7 @@
 	smokeradius=220;
 	smokeduration=25;
 	smokeceg=SMOKESHELL_Medium;
+    howitzer=1;
   }
   [damage] {
     default=100;

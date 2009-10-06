@@ -10,6 +10,7 @@
     damagetype=explosive;
     fearaoe=75;
     fearid=401;
+    howitzer=1;
   }
   [damage] {
     default=1340;
