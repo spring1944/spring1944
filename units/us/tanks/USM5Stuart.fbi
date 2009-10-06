@@ -67,23 +67,25 @@
   turnRate=280;
   badTargetCategory=FLAG;
 
-  weapon1=M637mmCanister;
-  badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weapon1=M637mmHE;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
   weapon2=M637mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=M1919A4Browning;
-  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weapon3=M637mmCanister;
+  onlyTargetCategory3=INFANTRY DEPLOYED;
 
-  weapon4=M2Browning;
-  onlyTargetCategory4=AIR;
+  weapon4=M1919A4Browning;
+  onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon5=.50calproof;
+  weapon5=M2Browning;
+  onlyTargetCategory5=AIR;
 
-  weapon6=Small_Tracer;
+  weapon6=.50calproof;
 
-  weapon7=Medium_Tracer;
+  weapon7=Small_Tracer;
+
+  weapon8=Medium_Tracer;
 }
 
