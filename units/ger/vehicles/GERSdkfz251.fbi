@@ -32,7 +32,7 @@
   maxVelocity=3.85;
   maxWaterDepth=5;
   movementClass=TANK_Light;
-  noChaseCategory=FLAG AIR MINE;
+  noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=GERSdkfz251.S3O;
   releaseHeld=1;
   seismicSignature=0;

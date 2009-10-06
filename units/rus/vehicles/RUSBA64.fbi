@@ -30,7 +30,7 @@
   maxVelocity=5.2;
   maxWaterDepth=5;
   movementClass=TANK_Car;
-  noChaseCategory=FLAG AIR MINE;
+  noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=RUSBA64.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -61,7 +61,7 @@
   badTargetCategory=FLAG;
 
   weapon1=DT;
-  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
 
   weapon2=Small_Tracer_Green;
 }
