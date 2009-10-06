@@ -38,7 +38,7 @@ static-var  restore_delay, bMoving, bAAMode, bTurretAimingDone, shotCount, curFl
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<25> // manual?
+#define TURR_TRAVERSE	<43> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
 #define TURR_ELEVATE	<14>
 
 // definitions for weapons behaviour

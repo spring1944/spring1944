@@ -12,10 +12,10 @@
   category=MINETRIGGER OPENVEH;
   corpse=GBRStaghound_Destroyed;
   [customParams] {
-    armor_front=15;
-    armor_rear=14;
-    armor_side=11;
-    armor_top=8;
+    armor_front=25;
+    armor_rear=16;
+    armor_side=19;
+    armor_top=13;
 	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
@@ -23,8 +23,8 @@
   footprintZ=2;
   iconType=armoredcar;
   leaveTracks=1;
-  mass=680.3;
-  maxDamage=680.3;
+  mass=1270;
+  maxDamage=1270;
   maxReverseVelocity=2.965;
   maxSlope=6;
   maxVelocity=5.93;
@@ -57,7 +57,7 @@
   trackStrength=6.5;
   trackStretch=1;
   trackType=Stdtank;
-  trackWidth=13;
+  trackWidth=16;
   turninplace=0;
   turnRate=405;
   badTargetCategory=FLAG;
