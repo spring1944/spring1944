@@ -28,6 +28,7 @@ function gadget:GameFrame(n)
 					local _, currStorage = GetTeamResources(teamID, "metal")
 					if commandStorage > currStorage then
 						SetTeamResource(teamID, "ms", commandStorage)
+						SetTeamResource(teamID, "m", 1000) -- make sure rus also starts with 1k command
 					end
 				end
 			end
