@@ -54,9 +54,11 @@ if (gadgetHandler:IsSyncedCode()) then
 	end
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
-		local ud = UnitDefs[unitDefID]
-		if (ud.customParams.hq == "1") then
-			spawnQueue[unitID] = true
+		if Spring.GetGameFrame() == 1 then
+			local ud = UnitDefs[unitDefID]
+			if (ud.customParams.hq == "1") then
+				spawnQueue[unitID] = true
+			end
 		end
 	end
 
