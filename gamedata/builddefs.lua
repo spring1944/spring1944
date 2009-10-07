@@ -84,7 +84,7 @@ buildoptions =
   usvehicleyard =
   {
     "usgmcengvehicle",
-    "uspontoontruck",
+    --"uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
 		"usm16mgmc",
@@ -96,7 +96,7 @@ buildoptions =
   usvehicleyard1 =
   {
     "usgmcengvehicle",
-    "uspontoontruck",
+    --"uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
 		"usm16mgmc",
@@ -281,7 +281,7 @@ buildoptions =
   gervehicleyard =
   {
     "gersdkfz9",
-    "gerpontoontruck",
+    --"gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -292,7 +292,7 @@ buildoptions =
   gervehicleyard1 =
   {
     "gersdkfz9",
-    "gerpontoontruck",
+    --"gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -533,7 +533,7 @@ buildoptions =
   gbrvehicleyard =
   {
     "gbrmatadorengvehicle",
-    "gbrpontoontruck",
+    --"gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 		"gbrstaghound",
@@ -545,7 +545,7 @@ buildoptions =
   gbrvehicleyard1 =
   {
     "gbrmatadorengvehicle",
-    "gbrpontoontruck",
+    --"gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 		"gbrstaghound",
@@ -741,7 +741,7 @@ buildoptions =
   rusvehicleyard =
   {
     "rusk31",
-    "ruspontoontruck",
+    --"ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
@@ -753,7 +753,7 @@ buildoptions =
   rusvehicleyard1 =
   {
     "rusk31",
-    "ruspontoontruck",
+    --"ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
@@ -1077,7 +1077,7 @@ buildoptions =
   }
 }
 if (modOptions) then
-  if (modOptions.simple_tanks) then
+  --[[if (modOptions.simple_tanks) then
     local gertankyard = {
       "gerstugiii",
       "gerpanzeriv",
@@ -1090,7 +1090,16 @@ if (modOptions) then
       "gerwespe",
     }
     buildoptions.gertankyard = gertankyard
-    buildoptions.gertankyard1 = gertankyard1
+    buildoptions.gertankyard1 = gertankyard1]]
+	if modOptions.navies == "1" then
+		table.insert(buildoptions.usvehicleyard, 2, "uspontoontruck")
+		table.insert(buildoptions.usvehicleyard1, 2, "uspontoontruck")
+		table.insert(buildoptions.gbrvehicleyard, 2, "gbrpontoontruck")
+		table.insert(buildoptions.gbrvehicleyard1, 2, "gbrpontoontruck")
+		table.insert(buildoptions.gervehicleyard, 2, "gerpontoontruck")
+		table.insert(buildoptions.gervehicleyard1, 2, "gerpontoontruck")
+		table.insert(buildoptions.rusvehicleyard, 2, "ruspontoontruck")
+		table.insert(buildoptions.rusvehicleyard1, 2, "ruspontoontruck")
   end
 end
 

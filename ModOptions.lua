@@ -53,7 +53,15 @@ local options = {
 	desc   = 'Sets Normal vs Deployment Mode, as well as Point vs Traditional Victory',
 	type   = 'section',
   },
-  
+	
+  {
+		key = "navies",
+		name = "Naval Units",
+		desc = "Enable the production of naval units",
+		type = "bool",
+		def = false,
+	},
+	
       {
 	key		= "gametype",
 	name	= "Game Modes",
