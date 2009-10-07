@@ -44,7 +44,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=GERV1;
+  objectName=GERV1.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=v1;
