@@ -67,7 +67,7 @@
   size=1e-16;
   soundStart=US_50CAL;
   soundTrigger=1;
-  sprayAngle=600;
+  sprayAngle=400;
   tolerance=3000;
   turret=1;
   weaponTimer=1;
