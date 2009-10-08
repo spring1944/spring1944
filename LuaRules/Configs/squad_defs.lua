@@ -483,6 +483,20 @@ local squadDefs = {
 		"rusppsh",
 		"rusppsh",
 	},
+
+	 ["rus_platoon_guards"] =
+	{
+		"rusguardsdp",
+		"rusguardsrifle",
+  		"rusguardsrifle",
+  		"rusguardsrifle",
+  		"rusguardsrifle",
+  		"rusguardsrifle",
+  		"rusguardsrifle",
+  		"rusguardsrifle",
+		"rusguardsppsh",
+		"rusguardsppsh",
+	},
 	
 	["rus_platoon_big_assault"] =
 	{

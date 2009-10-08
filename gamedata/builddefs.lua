@@ -689,6 +689,21 @@ buildoptions =
     "ruszis5",
   },
 
+  rusguardsbarracks =
+  {
+    "rus_sortie_recon",
+    "rus_platoon_commissar",
+    "rusengineer",
+	"rus_platoon_guards",
+    "rus_platoon_rifle",
+    "rus_platoon_assault",
+    "rus_platoon_mg",
+    "rus_platoon_atheavy",
+    "rus_platoon_sniper",
+    "rus_platoon_mortar",
+    "ruszis5",
+  },
+
   rusengineer =
   {
     "rusvehicleyard",

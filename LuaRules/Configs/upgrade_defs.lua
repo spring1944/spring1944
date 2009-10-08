@@ -42,6 +42,20 @@ local upgradeDefs = {
 
 local upgradeDefs = {
 
+	rusbarracks = {
+		{
+			into = 'rusguardsbarracks',
+			mcost = 2000,
+			ecost = 0,
+			time = 65,
+			buttonname = 'Upg: Guards',
+			name = 'Upgrade: Guards',
+			desc = 'Makes Guards Infantry available in this barracks',
+			notext = true,
+			buildpic = 'rusguards.png',
+		},
+	},
+
 	rusvehicleyard = {
 		{
 			into = 'rusvehicleyard1',
