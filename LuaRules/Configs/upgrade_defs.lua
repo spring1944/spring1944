@@ -41,7 +41,7 @@ local upgradeDefs = {
 
 
 local upgradeDefs = {
-
+--[[
 	rusbarracks = {
 		{
 			into = 'rusguardsbarracks',
@@ -55,7 +55,7 @@ local upgradeDefs = {
 			buildpic = 'rusguards.png',
 		},
 	},
-
+]]--
 	rusvehicleyard = {
 		{
 			into = 'rusvehicleyard1',

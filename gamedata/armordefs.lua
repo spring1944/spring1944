@@ -53,6 +53,9 @@ local armorDefs = {
     "RUSCommissar",
 	"RUSCommissar1",
     "AI_RUSCommissar",
+	"RUSGuardsRifle",
+	"RUSGuardsPPsh",
+	"RUSGuardsDP",
 
     --Britain--
     "GBRHQEngineer",
@@ -160,6 +163,7 @@ local armorDefs = {
     "RUSTankYard",
     "RUSTankYard1",
     "RUSTankYard2",
+	"RUSGuardsBarracks",
 
     --Britain--
     "GBRResource",
