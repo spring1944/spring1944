@@ -28,7 +28,7 @@
   maxVelocity=3.2;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
-  objectName=USLCVP;
+  objectName=USLCVP.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
