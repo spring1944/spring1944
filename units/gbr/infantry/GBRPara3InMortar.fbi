@@ -1,0 +1,67 @@
+[unitinfo] {
+  unitname=GBRPara3InMortar;
+  name=3" Mortar;
+  description=Heavy Infantry Fire Support;
+  acceleration=0.2;
+  airSightDistance=2500;
+  brakeRate=0.6;
+  buildCostEnergy=0;
+  buildCostMetal=300;
+  buildTime=300;
+  canMove=1;
+  category=INFANTRY MINETRIGGER;
+  corpse=gbrsoldier_dead;
+  [customParams] {
+    feartarget=1;
+    lowammolevel=3;
+    maxammo=10;
+    weaponcost=15;
+    weaponswithammo=2;
+    canareaattack=1;
+	canfiresmoke=1;
+  }
+  damageModifier=0.23;
+  flankingBonusMode=1;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
+  flankingBonusMobilityAdd=0.01;
+  footprintX=1;
+  footprintZ=1;
+  highTrajectory=1;
+  iconType=mortar;
+  mass=100;
+  maxDamage=280;
+  maxSlope=15;
+  maxVelocity=1.25;
+  maxWaterDepth=10;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRParaMortar.S3O;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MORTAR_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=GbrInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
+
+  weapon1=3InMortar;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon2=3InMortarsmoke;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+
