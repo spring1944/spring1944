@@ -21,7 +21,7 @@
   cruiseAlt=1000;
   [customParams] {
     enginesound=v1-;
-    enginesoundnr=20;
+    enginesoundnr=19;
     cruise_missile_accuracy=500;
   }
   explodeAs=v1;
