@@ -25,7 +25,7 @@
   footprintX=4;
   footprintZ=6;
   iconType=barracks;
-  maxDamage=4250;
+  maxDamage=5315;
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GBRBarracks.S3O;

@@ -13,6 +13,7 @@
     damagetype=explosive;
     fearaoe=200;
     fearid=501;
+    howitzer=1;
   }
   [damage] {
     default=5525;
@@ -21,13 +22,13 @@
   explosionGenerator=custom:HE_XLarge;
   explosionSpeed=30;
   fireStarter=0;
-  flightTime=4;
+  flightTime=9;
   guidance=1;
   id=99;
   impulseBoost=0;
   impulseFactor=0;
   model=KatyushaRocket.S3O;
-  range=2120;
+  range=4770;
   reloadTime=45;
   rendertype=1;
   soundHit=GEN_Explo_5;
@@ -42,6 +43,6 @@
   weaponTimer=1;
   weaponType=MissileLauncher;
   weaponVelocity=700;
-  wobble=3000;
+  wobble=1300;
 }
 

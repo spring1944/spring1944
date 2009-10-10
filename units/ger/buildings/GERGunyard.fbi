@@ -24,7 +24,7 @@
   footprintZ=7;
   iconType=factory;
   idleAutoHeal=3;
-  maxDamage=5000;
+  maxDamage=6250;
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GERGunyard.S3O;

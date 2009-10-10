@@ -34,7 +34,7 @@
   footprintZ=7;
   hideDamage=1;
   iconType=gbrhq;
-  maxDamage=8500;
+  maxDamage=10625;
   maxSlope=10;
   maxWaterDepth=0;
   metalMake=0;

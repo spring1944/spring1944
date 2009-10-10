@@ -26,7 +26,7 @@
   footprintZ=14;
   iconType=hshipyard;
   idleAutoHeal=3;
-  maxDamage=5000;
+  maxDamage=6250;
   maxSlope=10;
   metalStorage=300;
   minWaterDepth=10;

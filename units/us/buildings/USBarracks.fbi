@@ -26,7 +26,7 @@
   footprintZ=6;
   hideDamage=0;
   iconType=barracks;
-  maxDamage=4250;
+  maxDamage=5315;
   maxSlope=10;
   maxWaterDepth=0;
   objectName=USBarracks.S3O;

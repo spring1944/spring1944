@@ -20,7 +20,7 @@
   footprintZ=5;
   iconType=radar;
   levelGround=0;
-  maxDamage=5000;
+  maxDamage=6250;
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GBRRadar.S3O;

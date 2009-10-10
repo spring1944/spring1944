@@ -24,7 +24,7 @@
   footprintZ=7;
   iconType=factory;
   idleAutoHeal=3;
-  maxDamage=8000;
+  maxDamage=10000;
   maxSlope=10;
   maxWaterDepth=0;
   objectName=RUSTankYard.S3O;

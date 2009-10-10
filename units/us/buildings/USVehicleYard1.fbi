@@ -24,7 +24,7 @@
   footprintX=7;
   footprintZ=7;
   iconType=factory;
-  maxDamage=5500;
+  maxDamage=6250;
   maxSlope=10;
   maxWaterDepth=0;
   metalMake=0;
