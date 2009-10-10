@@ -1,6 +1,6 @@
 [m30122mmhe] {
   name=M-30 122mm High-Explosive Ammunition;
-  accuracy=550;
+  accuracy=1150;
   areaOfEffect=154;
   ballistic=1;
   collisionSize=4;
@@ -8,7 +8,7 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-    fearaoe=150;
+    fearaoe=250;
     fearid=501;
     howitzer=1;
   }
@@ -25,7 +25,7 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=3095;
+  range=6965;
   reloadTime=15; //6.5
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
@@ -43,7 +43,7 @@
 
 [m30122mmsmoke] {
   name=M-30 122mm Smoke Ammunition;
-  accuracy=550;
+  accuracy=1150;
   areaOfEffect=30;
   ballistic=1;
   collisionSize=4;
@@ -69,7 +69,7 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=3095;
+  range=6965;
   reloadTime=15; //6.5
   rendertype=1;
   rgbColor=0.5 0.5 0.0;

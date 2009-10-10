@@ -17,7 +17,7 @@
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
-    weaponcost=20;
+    weaponcost=25;
     weaponswithammo=2;
 	canfiresmoke=1;
   }

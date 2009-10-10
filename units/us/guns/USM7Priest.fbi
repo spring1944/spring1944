@@ -22,7 +22,7 @@
     defaultMove=1;
     lowammolevel=4;
     maxammo=13;
-    weaponcost=20;
+    weaponcost=25;
     weaponswithammo=1;
 	hasturnbutton=1;
   }

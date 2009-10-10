@@ -8,7 +8,7 @@
   cratermult=0;
   [customparams] {
     damagetype=explosive;
-    fearaoe=125;
+    fearaoe=210;
     fearid=501;
     howitzer=1;
   }

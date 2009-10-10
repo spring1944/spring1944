@@ -1,6 +1,6 @@
 [m2he] {
   name=US 105mm Light Field Gun;
-  accuracy=435;
+  accuracy=1050;
   areaOfEffect=131;
   ballistic=1;
   collisionSize=4;
@@ -25,7 +25,7 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=3190;
+  range=7200;
   reloadTime=11.25; //5
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
@@ -43,7 +43,7 @@
 
 [m2smoke] {
   name=US 105mm Light Field Gun Smoke Ammo;
-  accuracy=435;
+  accuracy=1050;
   areaOfEffect=30;
   ballistic=1;
   collisionSize=4;
@@ -69,7 +69,7 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=3190;
+  range=7200;
   reloadTime=11.25; //5
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
