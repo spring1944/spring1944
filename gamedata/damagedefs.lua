@@ -33,6 +33,7 @@ local damagedefs = {
     infantry = 8,
     unarmouredvehicles = 2,
     armouredvehicles = 1/2,
+    lightbuildings = 2/3,
     guns = 3/4,
     tanks = 1/2,
     flag = 0,
