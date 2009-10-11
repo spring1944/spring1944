@@ -262,7 +262,7 @@ local options = {
 		name = "Command Income per tick per prisoner",
 		desc = "Changes the amount you recieve for holding prisoners (key = 'prisoner_income')",
 	    type   = "number",
-		def    = 2,
+		def    = 0,
 		min    = 0,
 		max    = 5,
 		section= '1balance',
