@@ -54,8 +54,13 @@ if (gadgetHandler:IsSyncedCode()) then
 	end
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
+		local ud = UnitDefs[unitDefID]
+		-- special case for Soviet commander
+		if ud.name:lower() == "ruscommissar1" then
+			spawnQueue[unitID] = true
+			return
+		end
 		if Spring.GetGameFrame() == 1 then
-			local ud = UnitDefs[unitDefID]
 			if (ud.customParams.hq == "1") then
 				spawnQueue[unitID] = true
 			end
