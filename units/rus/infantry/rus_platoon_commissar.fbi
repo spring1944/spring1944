@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=830;
+  buildCostMetal=960;
   buildPic=ruscommissar.png;
-  buildTime=830;
+  buildTime=960;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

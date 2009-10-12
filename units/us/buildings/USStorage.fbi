@@ -4,24 +4,24 @@
   description=General Logistics & Ammunition Stockpile;
   activateWhenBuilt=1;
   buildCostEnergy=0;
-  buildCostMetal=2025;
+  buildCostMetal=3040;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsLarge.png;
-  buildTime=2025;
+  buildTime=3040;
   category=BUILDING;
   corpse=Debris_Large;
   [customParams] {
     dontCount=1;
   }
   energyMake=0;
-  energyStorage=625;
+  energyStorage=1040;
   explodeAs=Massive_Explosion;
   footprintX=4;
   footprintZ=6;
   iconType=stockpile;
-  maxDamage=2500;
+  maxDamage=500;
   maxSlope=15;
   maxWaterDepth=0;
   objectName=LogisticsLarge.S3O;

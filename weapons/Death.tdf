@@ -80,15 +80,16 @@
 
 [huge_explosion] {
   name=Large Building Explosion;
-  areaOfEffect=200;
+  areaOfEffect=250;
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  explosionGenerator=custom:HE_XLarge;
   [customParams] {
     damagetype=explosive;
   }
   [damage] {
-    default=150;
+    default=2500;
     squadSpawners=100000;
   }
   explosionSpeed=30;
@@ -110,11 +111,12 @@
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  explosionGenerator=custom:HE_Large;
   [customParams] {
     damagetype=explosive;
   }
   [damage] {
-    default=90;
+    default=1000;
     squadSpawners=100000;
   }
   explosionSpeed=30;
@@ -133,15 +135,16 @@
 
 [massive_explosion] {
   name=Large Building Explosion;
-  areaOfEffect=250;
+  areaOfEffect=200;
   ballistic=1;
   craterBoost=0;
   craterMult=0;
+  explosionGenerator=custom:HE_XXLarge;
   [customParams] {
     damagetype=explosive;
   }
   [damage] {
-    default=225;
+    default=4000;
     squadSpawners=100000;
   }
   explosionSpeed=30;

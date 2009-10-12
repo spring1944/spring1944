@@ -3,13 +3,13 @@
   name=Barracks;
   description=Infantry Training & Housing Facility;
   buildCostEnergy=0;
-  buildCostMetal=1635;
+  buildCostMetal=1800;
   builder=1;
   buildingGroundDecalDecaySpeed=0.05;
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=1635;
+  buildTime=1800;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
