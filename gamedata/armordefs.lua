@@ -194,7 +194,8 @@ local armorDefs = {
     --**Germany**--
     "GERHQBunker",
     "AI_GERHQBunker",
-  
+	"GERBarracksBunker",
+	"GERStorageBunker",
     --US--
 
     --USSR--

@@ -349,6 +349,8 @@ buildoptions =
     --"gerairfield",
     "gerstorage",
     "gersupplydepot",
+	"gerbarracksbunker",
+	"gerstoragebunker",
     "tankobstacle",
   },
 

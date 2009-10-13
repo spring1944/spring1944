@@ -28,7 +28,7 @@
   maxDamage=18250;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=GERBarracks.S3O;
+  objectName=GERBarracksBunker.S3O;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }
