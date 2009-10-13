@@ -83,7 +83,21 @@ local upgradeDefs = {
 			buildpic = 'uslightarmorupg.png',
 		},
 	},
-	
+--[[	
+	gerbarracks = {
+		{
+			into = 'gerbarracksvolkssturm',
+			mcost = 2000,
+			ecost = 0,
+			time = 65,
+			buttonname = 'Upg: Volkssturm',
+			name = 'Upgrade: Volkssturm',
+			desc = 'Makes Volkssturm infantry available in this barracks',
+			notext = true,
+			buildpic = 'gervolkssturm.png',
+		},
+	},
+]]--
 	gervehicleyard = {
 		{
 			into = 'gervehicleyard1',

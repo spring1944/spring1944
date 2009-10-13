@@ -261,6 +261,22 @@ buildoptions =
     "geropelblitz",
   },
 
+  gerbarracksvolkssturm =
+  {
+    "gerhqengineer",
+    --"gerengineer",
+	"ger_platoon_volkssturm",
+    "ger_platoon_rifle",
+    "ger_platoon_assault",
+    "ger_platoon_mg",
+    --"ger_platoon_scout",
+    "ger_platoon_at",
+    "ger_platoon_sniper",
+    "ger_platoon_mortar",
+    "gerleig18",
+    "geropelblitz",
+  },
+
   gerengineer =
   {
     "gervehicleyard",

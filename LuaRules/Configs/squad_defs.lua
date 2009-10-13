@@ -348,7 +348,18 @@ local squadDefs = {
 		"gerobserv",
 		"gerobserv",
 	},  
-	
+
+	["ger_platoon_volkssturm"] = 
+	{
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+		"gervolkssturm",
+	},
 	 -----------------------------
 	 -- ITA Platoons and Squads --
 	 -----------------------------

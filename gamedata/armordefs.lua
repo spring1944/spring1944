@@ -13,6 +13,7 @@ local armorDefs = {
     "GERPanzerschrek",
     "GERRifle",
     "GERSniper",
+	"GERVolksSturm",
 
     --US--
     "USAirEngineer",
@@ -135,6 +136,7 @@ local armorDefs = {
     "GERVehicleYard1",
     "GERTankYard1",
     "GERTankYard2",
+	"GERBarracksVolksSturm",
 
     --US--
     "USHQ",
