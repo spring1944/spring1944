@@ -7,6 +7,7 @@
   brakeRate=0.9;
   buildCostEnergy=0;
   buildCostMetal=150;
+  buildPic=USGIBazooka.png;
   buildTime=150;
   canMove=1;
   category=INFANTRY MINETRIGGER;

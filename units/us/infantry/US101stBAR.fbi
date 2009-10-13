@@ -7,6 +7,7 @@
   brakeRate=0.9;
   buildCostEnergy=0;
   buildCostMetal=100;
+  buildPic=USGIBAR.png;
   buildTime=100;
   canMove=1;
   category=INFANTRY MINETRIGGER;
