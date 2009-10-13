@@ -1,6 +1,6 @@
 #define TAK
 
-piece base, hull, railings, boats, radar,
+piece base, hull, r1, r2, boats, radar,
 	  main_turret_1, main_sleeve_1, main_barrel_1, main_flare_1, main_turret_2, main_sleeve_2, main_barrel_2, main_flare_2,
 	  main_turret_3, main_sleeve_3, main_barrel_3, main_flare_3,
 	  aa40_turret_1, aa40_sleeve_1, aa40_barrel_11, aa40_flare_11, aa40_barrel_21, aa40_flare_21,
