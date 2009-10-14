@@ -30,7 +30,7 @@
   maxVelocity=5.93;
   maxWaterDepth=15;
   movementClass=TANK_Car;
-  noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
+  noChaseCategory=INFANTRY MINE BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   objectName=GBRStaghound.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

@@ -23,7 +23,7 @@
   maxVelocity=4.11;
   maxWaterDepth=5;
   movementClass=TANK_Truck;
-  noChaseCategory=FLAG AIR MINE;
+  noChaseCategory=INFANTRY MINE BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   objectName=RUSGAZAAA.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

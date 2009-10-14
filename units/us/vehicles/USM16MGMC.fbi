@@ -27,7 +27,7 @@
   maxVelocity=5;
   maxWaterDepth=5;
   movementClass=TANK_Light;
-  noChaseCategory=FLAG AIR MINE;
+  noChaseCategory=INFANTRY MINE BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   objectName=USM16MGMC.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
