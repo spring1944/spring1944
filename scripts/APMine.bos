@@ -1,8 +1,4 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
-
+#include "constants.h"
 piece  base;
 
 
@@ -10,11 +6,6 @@ Create()
 {
 	dont-cache base;
 	dont-shade base;
-}
-
-Die()
-{
-	emit-sfx 2048 + 1 from base;
 }
 
 AimFromWeapon1(Func_Var_1)
@@ -34,7 +25,10 @@ AimWeapon1(Func_Var_1, Func_Var_2)
 
 FireWeapon1()
 {
-	start-script Die();
+	var me;
+	me = GET MY_ID;
+	get KILL_UNIT(me, 0, 1)
+	
 }
 
 AimFromWeapon2(Func_Var_1)

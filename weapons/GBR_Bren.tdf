@@ -4,7 +4,7 @@
   avoidFeature=0;
   avoidFriendly=0;
   burnblow=1;
-  burst=3;
+  burst=5;
   burstRate=0.109;
   collideFeature=1;
   collideFriendly=0;
@@ -26,7 +26,7 @@
   movingAccuracy=7111;
   noSelfDamage=1;
   range=735;
-  reloadTime=2.8;
+  reloadTime=2.5;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=1e-10; //2.5;

@@ -40,8 +40,5 @@
 
   weapon1=APMine;
   onlyTargetCategory1=MINETRIGGER;
-
-  weapon2=APMineDet;
-  onlyTargetCategory2=NONE;
 }
 

@@ -6,8 +6,8 @@
   airSightDistance=2500;
   buildCostEnergy=0;
   buildCostMetal=1250;
-  buildingGroundDecalSizeX=1;
-  buildingGroundDecalSizeY=1;
+  buildingGroundDecalSizeX=3;
+  buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1250;
   category=DEPLOYED;
