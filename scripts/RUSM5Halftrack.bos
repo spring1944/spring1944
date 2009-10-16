@@ -136,6 +136,7 @@ StopMoving()
 
 Create()
 {
+	set STANDINGMOVEORDERS to 0; //hold pos by default.
 //	spin tow_point around y-axis speed <100>;
 	aim1 = FALSE;
 	treadnum=0;

@@ -142,6 +142,7 @@ StopMoving()
 
 Create()
 {
+	set STANDINGMOVEORDERS to 0; //hold pos by default.
 	FX_HIDE
 //	spin tow_point around y-axis speed <100>;
 	aim1 = FALSE;

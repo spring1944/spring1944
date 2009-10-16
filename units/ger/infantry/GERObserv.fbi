@@ -18,6 +18,7 @@
     feartarget=1;
   }
   damageModifier=0.23;
+  fireState=1;
   flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;

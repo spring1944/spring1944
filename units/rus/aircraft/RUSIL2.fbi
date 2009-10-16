@@ -31,6 +31,7 @@
     weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
+  fireState=0;
   footprintX=4;
   footprintZ=4;
   iconType=bomber;
