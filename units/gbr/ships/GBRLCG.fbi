@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=57500;
+  buildCostMetal=11000;
   buildPic=GBRLCG.png;
-  buildTime=40000;
+  buildTime=11000;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GBRLCG_dead;

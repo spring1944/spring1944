@@ -6,7 +6,7 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildTime=12000;
+  buildCostMetal=12000;
   buildTime=12000;
   canAttack=1;
   canMove=1;

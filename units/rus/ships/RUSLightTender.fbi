@@ -6,7 +6,7 @@
   airSightDistance=2500;
   brakeRate=0.2;
   buildCostEnergy=0;
-  buildCostMetal=1400;
+  buildCostMetal=1200;
   buildPic=RUSTender15t.png;
   buildTime=1200;
   canMove=1;
