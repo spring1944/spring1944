@@ -316,7 +316,7 @@ local upgradeDefs = {
 			buildpic = 'gbrheavyarmorupg.png',
 		},
 	},
-	gbrboatyard = {
+	--[[gbrboatyard = {
 		{
 			into = 'gbrboatyardlarge',
 			mcost = 3000,
@@ -370,7 +370,7 @@ local upgradeDefs = {
 			notext = true,
 			buildpic = 'usboatyard.png',
 		},
-	},
+	},]]--
 }
 
 
