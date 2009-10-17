@@ -191,6 +191,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			upgradeUnits[unitID].def.onStart(unitID)
 		end
 		
+		SendToUnsynced(ADD_BAR, unitID, "Upgrading:")
 	end
 	
 	
@@ -241,6 +242,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		Spring.SetUnitHealth(newUnit, newHealth)
 
 		Spring.SetUnitRulesParam(unitID, "upgradeProgress", 0)
+		SendToUnsynced(REMOVE_BAR, unitID)
 		
 		if upgradeData.def.onUpgrade then
 			upgradeData.def.onUpgrade(unitID, newUnit, upgradeData)
@@ -272,6 +274,7 @@ if (gadgetHandler:IsSyncedCode()) then
 		end
 
 		Spring.SetUnitRulesParam(unitID, "upgradeProgress", upgradeData.progress)
+		SendToUnsynced(SET_BAR, unitID, upgradeData.progress)
 		
 		if (upgradeData.progress >= 1.0) then
 			FinishUpgrade(unitID, upgradeData)
@@ -299,6 +302,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			upgradeUnits[unitID] = nil
 
 			Spring.SetUnitRulesParam(unitID, "upgradeProgress", 0)
+			SendToUnsynced(REMOVE_BAR, unitID)
 			
 		end
 	end
