@@ -14,10 +14,13 @@ end
 -- Synced Read
 local GetUnitAllyTeam		 		=	Spring.GetUnitAllyTeam
 local GetUnitDefID			 		=	Spring.GetUnitDefID
-local GetUnitSeparation				=	Spring.GetUnitSeparation
-local GetUnitTeam					=	Spring.GetUnitTeam
-local GetUnitIsStunned				=	Spring.GetUnitIsStunned
+local GetUnitSeparation			=	Spring.GetUnitSeparation
+local GetUnitTeam						=	Spring.GetUnitTeam
+local GetUnitIsStunned			=	Spring.GetUnitIsStunned
+local ValidUnitID						= Spring.ValidUnitID
 -- Synced Ctrl
+local SetUnitWeaponState		= Spring.SetUnitWeaponState
+local UseUnitResource				= Spring.UseUnitResource
 
 -- Constants
 local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
@@ -112,31 +115,32 @@ local function ProcessUnit(unitID, unitDefID, teamID)
 	local reload = WeaponDefs[weaponID].reload
 	local reloadFrameLength = (reload*30)
 
-	-- Stalling. (stall penalty!)
-	local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
-	if (logisticsLevel < 5) then
-		Spring.SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
-		return
-	end
+	if ValidUnitID(unitID) then
+		-- Stalling. (stall penalty!)
+		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
+		if (logisticsLevel < 5) then
+			SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
+			return
+		end
 
-	-- In supply radius. (supply bonus!)
-	local supplierID = FindSupplier(unitID)
-	if supplierID then
-		Spring.SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
-		return
-	end
+		-- In supply radius. (supply bonus!)
+		local supplierID = FindSupplier(unitID)
+		if supplierID then
+			SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
+			return
+		end
 
-	local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
-	if (savedFrame[unitID] == 0) then
-		savedFrame[unitID] = reloadFrame + reloadFrameLength
-	end
-	Spring.SetUnitWeaponState(unitID, 0, {reloadTime = reload})
-	if (reloadFrame > savedFrame[unitID]) then
-		savedFrame[unitID] = reloadFrame
-		Spring.UseUnitResource(unitID, "e", weaponCost)
+		local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
+		if (savedFrame[unitID] == 0) then
+			savedFrame[unitID] = reloadFrame + reloadFrameLength
+		end
+		SetUnitWeaponState(unitID, 0, {reloadTime = reload})
+		if (reloadFrame > savedFrame[unitID]) then
+			savedFrame[unitID] = reloadFrame
+			UseUnitResource(unitID, "e", weaponCost)
+		end
 	end
 end
-
 
 function gadget:GameFrame(n)
 	if n % (1*30) < 0.1 then

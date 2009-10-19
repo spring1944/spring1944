@@ -16,7 +16,7 @@ local sidedata = {
 	startUnit = "USHQ",
 	},
 	{
-	name = "Random Team/GM",
+	name = "Random Team (GM)",
 	startUnit = "GMToolbox",
 	},
 }
