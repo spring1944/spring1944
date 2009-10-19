@@ -40,7 +40,7 @@ local FLAG_DEF_ID          = UnitDefNames["flag"].id
 local FLAG_RADIUS          = 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
 local FLAG_CAP_THRESHOLD  = 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 
-local maxAlpha = 0.75
+local maxAlpha = 0.5
 local innerSize = 0.875
 local circleDivs = 64
 local circleInc = 2 * PI / circleDivs
@@ -64,7 +64,7 @@ local function DrawTeamCircle(teamID)
     local ix = ox * innerSize
     local iz = oz * innerSize
     vertices[2*i+1] = { v = {ix, 0, iz}, c = {r, g, b, 0} }
-    vertices[2*i+2] = { v = {ox, 0, oz}, c = {r, g, b, 1} }
+    vertices[2*i+2] = { v = {ox, 0, oz}, c = {r, g, b, maxAlpha} }
   end
   
   glShape(GL_QUAD_STRIP, vertices)
