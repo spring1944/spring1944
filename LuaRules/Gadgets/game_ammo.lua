@@ -70,15 +70,18 @@ end
 
 local function ProcessWeapons(unitID)
 	local unitDefID = GetUnitDefID(unitID)
-	local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 2
+	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo) or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
 	local reloadFrame = 0
+	local weapNum = 0
 
-	for weapNum = 0, weaponsWithAmmo - 1 do
+	--for weapNum = 0, weaponsWithAmmo - 1 do
+	while not weaponFired and weapNum < weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
 		--Spring.Echo(reloadFrame)
 		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
+		weapNum = weapNum + 1
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
