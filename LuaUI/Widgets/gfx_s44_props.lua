@@ -53,7 +53,7 @@ function widget:DrawWorld()
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
-		if not infos[unitDefID] then
+		if not infos[unitDefID] and UnitDefs[unitDefID].canFly then
 			local pieces = GetUnitPieceList(unitID)
 			local propellers = {}
 			local tex = UnitDefs[unitDefID]["customParams"]["proptexture"] or "bitmaps/prop.tga"
@@ -67,7 +67,7 @@ function widget:DrawWorld()
 			infos[unitDefID] = propellers
 		end
 		
-		local propellers = infos[unitDefID]
+		local propellers = infos[unitDefID] or {}
 		if propellers[1] then
 			glPushMatrix()
 				glUnitMultMatrix(unitID)
