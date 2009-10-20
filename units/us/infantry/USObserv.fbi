@@ -18,7 +18,7 @@
     feartarget=1;
 	helptext = Short range, good accuracy, light damage, low rate of fire. Has large line-of-sight radius, can move around undetected.;
   }
-  damageModifier=0.23;
+  damageModifier=0.265;
   fireState=1;
   flankingBonusMode=1;
   flankingBonusMax=1.5;

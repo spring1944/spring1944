@@ -16,6 +16,7 @@
     feartarget=1;
 	canclearmines=1;
   }
+  damageModifier=0.265;
   energyStorage=0.01;
   footprintX=1;
   footprintZ=1;

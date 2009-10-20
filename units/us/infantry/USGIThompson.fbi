@@ -16,7 +16,7 @@
     flagCapRate=1;
 	helptext = Medium range and accuracy, low damage, high rate of fire. Armed with secondary grenades.;
   }
-  damageModifier=0.23;
+  damageModifier=0.265;
   flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;

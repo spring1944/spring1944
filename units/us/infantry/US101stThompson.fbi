@@ -16,7 +16,7 @@
     feartarget=1;
     flagCapRate=1;
   }
-  damageModifier=0.23;
+  damageModifier=0.265;
   flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;

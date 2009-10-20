@@ -22,7 +22,7 @@
     weaponswithammo=1;
 	helptext = Short range, medium accuracy, brutal damage, high rate of fire. Incredibly effective at pinning troops. Can move around undetected, although ineffectively. Very good at destroying buildings and burning group of infantry. Damage on target will continue for several seconds after firing.;
   }
-  damageModifier=0.23;
+  damageModifier=0.265;
   flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
