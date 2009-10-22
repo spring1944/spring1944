@@ -53,7 +53,7 @@
     explosionGenerator7=custom:SMG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  sightDistance=840;
+  sightDistance=540;
   smoothAnim=0;
   soundcategory=USInf;
   stealth=1;
