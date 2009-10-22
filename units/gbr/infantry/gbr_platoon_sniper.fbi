@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1485;
+  buildCostMetal=1330;
   buildPic=GBRSniper.png;
-  buildTime=1485;
+  buildTime=1330;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1287;
+  buildCostMetal=1155;
   buildPic=usgisniper.png;
-  buildTime=1287;
+  buildTime=1155;
   canMove=1;
   category=FLAG;
   [customParams] {
