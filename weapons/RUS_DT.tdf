@@ -28,7 +28,7 @@
   interceptedByShieldType=8;
   laserFlareSize=0.0001;
   lineofsight=1;
-  movingAccuracy=1777;
+  movingAccuracy=300;
   range=910;
   reloadTime=3;
   rendertype=0;
@@ -36,7 +36,7 @@
   size=1e-14;
   soundStart=RUS_DP;
   soundTrigger=1;
-  sprayAngle=350;
+  sprayAngle=250;
   thickness=0.4;
   tolerance=6000;
   turret=1;
