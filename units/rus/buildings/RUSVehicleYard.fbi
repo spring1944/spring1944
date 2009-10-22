@@ -3,13 +3,13 @@
   name=Light Vehicle Yard;
   description=Light Ordnance & Vehicle Production Facility (Requires Barracks);
   buildCostEnergy=0;
-  buildCostMetal=6265;
+  buildCostMetal=4700;
   builder=1;
   buildingGroundDecalDecaySpeed=0.05;
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=6265;
+  buildTime=4700;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

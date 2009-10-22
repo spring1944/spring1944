@@ -45,6 +45,7 @@ local hqDefs = {
 				"rus61k_stationary",
 				"rus_platoon_commissar",
 				"rusmortar",
+				"rus_platoon_partisan,",
 			},
 		},
 }

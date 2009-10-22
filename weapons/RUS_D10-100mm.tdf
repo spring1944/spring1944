@@ -1,6 +1,6 @@
 [d10s100mmap] {
   name=D-10/D-10S 100mm Armour Piercing Ammo;
-  accuracy=290;
+  accuracy=275;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;

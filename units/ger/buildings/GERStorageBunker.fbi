@@ -16,7 +16,7 @@
     dontCount=1;
   }
   energyMake=0;
-  energyStorage=2800;
+  energyStorage=2200;
   explodeAs=Massive_Explosion;
   footprintX=4;
   footprintZ=6;

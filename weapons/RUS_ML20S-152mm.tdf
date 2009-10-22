@@ -1,6 +1,6 @@
 [ml20s152mmap] {
   name=Soviet ML-20S 152mm Gun-Howitzer AP Ammo;
-  accuracy=290;
+  accuracy=350;
   areaOfEffect=32;
   ballistic=1;
   canAttackGround=0;
@@ -42,7 +42,7 @@
 
 [ml20s152mmhe] {
   name=Soviet ML-20s 152mm Gun-Howitzer High-Explosive Ammo;
-  accuracy=290;
+  accuracy=350;
   areaOfEffect=183;
   ballistic=1;
   collisionSize=5;

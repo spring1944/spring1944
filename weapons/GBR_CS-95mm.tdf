@@ -9,7 +9,7 @@
   [customParams] {
     damagetype=explosive;
     fearaoe=125;
-    fearid=401;
+    fearid=501;
   }
   [damage] {
     default=2500;
