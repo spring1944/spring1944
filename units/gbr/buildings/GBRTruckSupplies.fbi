@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBRTruckSupplies;
-  name=Unloaded Halftrack Supplies;
-  description=Supplies A Moderate Area;
+  name=Unloaded Truck Supplies;
+  description=Supplies A Small Area;
   activateWhenBuilt=1;
   buildCostEnergy=0;
   buildCostMetal=720;
@@ -15,7 +15,7 @@
   [customParams] {
     ammoSupplier=1;
     dontCount=1;
-    supplyRange=625;
+    supplyRange=450;
   }
   energyMake=0;
   energyStorage=0;
@@ -39,9 +39,6 @@
   TEDClass=ENERGY;
   useBuildingGroundDecal=1;
   yardMap=o;
-
   weapon1=noweapon;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 

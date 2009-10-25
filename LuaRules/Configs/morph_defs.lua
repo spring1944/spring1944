@@ -375,65 +375,72 @@ local morphDefs = {
     energy = 0,
   },
   
--- Resource Trucks
+-- Halftracks / Resource Piles
 
 	gbrm5halftrack =
   {
-    into = 'gbrtrucksupplies',
+    into = 'gbrresource',
     tech = 0,
     time = 15,
     metal = 0,
     energy = 0,
-  },  
-    gbrtrucksupplies =
+  },
+	
+	gbrresource =
   {
     into = 'gbrm5halftrack',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
-  },  
-    gersdkfz251 =
+  },
+	
+   gersdkfz251 =
   {
-    into = 'gertrucksupplies',
+    into = 'gerresource',
     tech = 0,
     time = 15,
     metal = 0,
     energy = 0,
-  },  
-    gertrucksupplies =
+  },
+	
+	gerresource =
   {
     into = 'gersdkfz251',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
-  },  
+  },
+	
     rusm5halftrack =
   {
-    into = 'rustrucksupplies',
+    into = 'rusresource',
     tech = 0,
     time = 15,
     metal = 0,
     energy = 0,
   }, 
-    rustrucksupplies =
+	
+  rusresource =
   {
     into = 'rusm5halftrack',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
-  },  
-    usm3halftrack =
+  },
+	
+  usm3halftrack =
   {
-    into = 'ustrucksupplies',
+    into = 'usresource',
     tech = 0,
     time = 15,
     metal = 0,
     energy = 0,
   },
-    ustrucksupplies =
+	
+  usresource =
   {
     into = 'usm3halftrack',
     tech = 0,
@@ -442,53 +449,53 @@ local morphDefs = {
     energy = 0,
   },
   
-  --regular trucks and tiny supplies
-    geropelblitz =
+  -- Trucks / Trucksupplies
+  geropelblitz =
   {
-    into = 'gerresource',
+    into = 'gertrucksupplies',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  
-	gerresource =
+
+  gertrucksupplies =
   {
     into = 'geropelblitz',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
-  },
+  },  
   
-      gbrbedfordtruck =
+  gbrbedfordtruck =
   {
-    into = 'gbrresource',
+    into = 'gbrtrucksupplies',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  
-	gbrresource =
+	
+  gbrtrucksupplies =
   {
     into = 'gbrbedfordtruck',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
-  },
+  },    
   
-    ruszis5 =
+   ruszis5 =
   {
-    into = 'rusresource',
+    into = 'rustrucksupplies',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
   
-	rusresource =
+	rustrucksupplies=
   {
     into = 'ruszis5',
     tech = 0,
@@ -497,16 +504,16 @@ local morphDefs = {
     energy = 0,
   },
   
-    usgmctruck =
+  usgmctruck =
   {
-    into = 'usresource',
+    into = 'ustrucksupplies',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
   
-	usresource =
+	ustrucksupplies =
   {
     into = 'usgmctruck',
     tech = 0,
@@ -515,6 +522,7 @@ local morphDefs = {
     energy = 0,
   },
   
+	-- Pontoon trucks
 	ruspontoontruck =
   {
     into = 'rusboatyard',

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GerResource;
-  name=Small Supply Dump;
-  description=Supplies A Small Area;
+  name=Unloaded Halftrack Supplies;
+  description=Supplies A Moderate Area;
   activateWhenBuilt=1;
   buildCostEnergy=0;
   buildCostMetal=720;
@@ -15,7 +15,7 @@
   [customParams] {
     ammoSupplier=1;
     dontCount=1;
-    supplyRange=450;
+    supplyRange=625;
   }
   energyMake=0;
   energyStorage=0;
@@ -41,7 +41,5 @@
   yardMap=o;
 
   weapon1=noweapon;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 
