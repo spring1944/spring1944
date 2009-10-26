@@ -93,7 +93,8 @@ function gadget:Initialize()
   
 end
 
-function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+--function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+function gadget:UnitCreated(unitID, unitDefID, unitTeam)
   local enable = enables[unitDefID]
   if enable then
     for i = 1, #enable do
