@@ -149,7 +149,8 @@ end
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
   local _, _, inBuild = GetUnitIsStunned(unitID)
   if not inBuild then
-    gadget:UnitFinished(unitID, unitDefID, unitTeam)
+    --gadget:UnitFinished(unitID, unitDefID, unitTeam)
+		gadget:UnitCreated(unitID, unitDefID, unitTeam)
   end
 end
 
