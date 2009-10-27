@@ -17,7 +17,7 @@ local VFX_SMOKE_PERIOD = 16
 local VFX_SMOKE_OFFSET = 1
 
 -- effect on accuracy of smoked units
-local ACCURACY_MULT = 5
+local ACCURACY_MULT = 10
 
 -- localize functions
 local GetUnitSensorRadius = Spring.GetUnitSensorRadius
