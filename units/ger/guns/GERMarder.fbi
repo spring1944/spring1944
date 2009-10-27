@@ -34,7 +34,7 @@
   maxVelocity=3.11;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
+  noChaseCategory=BUILDING FLAG INFANTRY AIR DEPLOYED MINE;
   objectName=GERMarder.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
