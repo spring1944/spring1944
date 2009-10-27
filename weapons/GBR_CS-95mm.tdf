@@ -49,7 +49,7 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-	smokeradius=240;
+	smokeradius=220;
 	smokeduration=25;
 	smokeceg=SMOKESHELL_Medium;
   }
