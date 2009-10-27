@@ -1,7 +1,7 @@
 #define TAK
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
-piece base, turret, sleeve, guns, flare1, flare2, crewman;
+piece base, turret, turret_floor, sleeve, guns, flare1, flare2, crewman;
 piece wheel1, wheel2;
  
 static-var  restore_delay, bMoving, bAAMode, bTurretAimingDone, shotCount, curFlare;
