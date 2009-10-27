@@ -16,9 +16,8 @@ local UPDATE_OFFSET = 5
 local VFX_SMOKE_PERIOD = 16
 local VFX_SMOKE_OFFSET = 1
 
--- effect on accuracy of smoked units (multiply by MULT, then increase by ADD)
+-- effect on accuracy of smoked units
 local ACCURACY_MULT = 5
-local ACCURACY_ADD = 100
 
 -- localize functions
 local GetUnitSensorRadius = Spring.GetUnitSensorRadius
@@ -91,8 +90,8 @@ function ApplySmoke(unitID)
 		for i, tmpWeapon in pairs(tmpWeapons) do
 			if (tmpWeapon) and (type(tmpWeapon) == "table") then
 				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
-				tmpAccuracy = tmpAccuracy * ACCURACY_MULT + ACCURACY_ADD
-				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
+				tmpAccuracy = tmpAccuracy * ACCURACY_MULT
+				SetUnitWeaponState(unitID, i - 1, {accuracy = tmpAccuracy})
 			end
 		end
 	end
@@ -118,7 +117,7 @@ function RemoveSmoke(unitID)
 		for i, tmpWeapon in pairs(tmpWeapons) do
 			if (tmpWeapon) and (type(tmpWeapon) == "table") then
 				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
-				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
+				SetUnitWeaponState(unitID, i - 1, {accuracy = tmpAccuracy})
 			end
 		end
 	end
