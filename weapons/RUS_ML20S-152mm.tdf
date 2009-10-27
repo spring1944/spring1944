@@ -24,7 +24,7 @@
   impulseFactor=0;
   intensity=0.25;
   noSelfDamage=1;
-  range=1700;
+  range=2530;
   reloadTime=11.5;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
@@ -66,7 +66,7 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=1700;
+  range=2530;
   reloadTime=11.5;
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
