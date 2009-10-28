@@ -1146,7 +1146,20 @@ if (modOptions) then
 		table.insert(buildoptions.gervehicleyard1, 2, "gerpontoontruck")
 		table.insert(buildoptions.rusvehicleyard, 2, "ruspontoontruck")
 		table.insert(buildoptions.rusvehicleyard1, 2, "ruspontoontruck")
-  end
+	else
+		-- make sure THERE IS A WAY TO GET VEHS ACROSS WATER damnit!
+		table.insert(buildoptions.ushqengineer, "pontoonraft")
+		table.insert(buildoptions.usengineer, "pontoonraft")
+		table.insert(buildoptions.gerhqengineer, "pontoonraft")
+		table.insert(buildoptions.gerengineer, "pontoonraft")
+		table.insert(buildoptions.gbrhqengineer, "pontoonraft")
+		table.insert(buildoptions.gbrengineer, "pontoonraft")
+		table.insert(buildoptions.ruscommander, "pontoonraft")
+		table.insert(buildoptions.ruscommissar1, "pontoonraft")
+		table.insert(buildoptions.ruscommissar, "pontoonraft")
+		table.insert(buildoptions.rusengineer, "pontoonraft")
+
+	end
 end
 
 return buildoptions
