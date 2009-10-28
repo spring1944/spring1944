@@ -7,7 +7,7 @@
   brakeRate=0.2;
   buildCostEnergy=0;
   buildCostMetal=42000;
-  buildTime=30000;
+  buildTime=42000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
