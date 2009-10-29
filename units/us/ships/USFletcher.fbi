@@ -7,8 +7,8 @@
   airSightDistance=1700;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=22000;
-  buildTime=22000;
+  buildCostMetal=32000;
+  buildTime=32000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
