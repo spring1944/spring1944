@@ -30,6 +30,20 @@ local GetUnitsInSphere = Spring.GetUnitsInSphere
 local GetWind = Spring.GetWind
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 
+local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
+local CMD_SMOKE = 35520 -- this should be changed
+local smokeCmdDesc = {
+--  id     = CMD_MORPH, -- added by the calling function because there is now more than one option
+	id 		 = CMD_SMOKE,
+  type   = CMDTYPE.ICON_MODE,
+  name   = 'T',
+  --cursor = 'Deploy',  -- add with LuaUI?
+  cursor = 'Fight',
+  action = 'bob',
+	tooltip = 'Toggle between High Explosive and Smoke rounds',
+	params = {0, 'Fire HE', 'Fire Smoke'},
+}
+
 if (not gadgetHandler:IsSyncedCode()) then
   return false
 end
@@ -45,9 +59,34 @@ function gadget:Initialize()
 	end
 end
 
+function gadget:UnitCreated(unitID, unitDefID, teamID)
+	local weapons = UnitDefs[unitDefID].weapons
+	if weapons and #weapons > 1 then
+		local hasSmoke = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.smokeradius
+		if hasSmoke then
+			Spring.InsertUnitCmdDesc(unitID, 500, smokeCmdDesc)
+		end
+	end
+end
+
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- remove units from tracking if they die
 	SmokedUnits[unitID] = nil
+end
+
+function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
+	if cmdID == CMD_SMOKE then
+		if cmdParams[1] == 1 then
+			Spring.CallCOBScript(unitID, "SwitchToSmoke", 0)
+		else
+			Spring.CallCOBScript(unitID, "SwitchToHE", 0)
+		end
+		local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_SMOKE) 
+		smokeCmdDesc.params[1] = cmdParams[1]
+		Spring.EditUnitCmdDesc(unitID, cmdDescID, { params = smokeCmdDesc.params}) 
+		return false
+	end
+	return true
 end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)

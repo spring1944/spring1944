@@ -58,7 +58,7 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 				}
 			end
 		end
-		if (tmpParams.canfiresmoke) then
+		--[[if (tmpParams.canfiresmoke) then
 			-- add Smoke button
 			local tmpCmd = {
 				cob = "SwitchToSmoke",
@@ -80,7 +80,7 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 			}
 			-- no need to check for existing cmddescs since we just added one
 			table.insert(tmpReturn[tmpUnitDef.name], tmpCmd)
-		end
+		end]]
 		-- other things to come later
 	end
 end
