@@ -196,7 +196,7 @@ AimWeapon1(heading, pitch)
 	
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
-	if (iState>6) return 0;
+	if (iState >= 6) return 0;
 	bAiming=1;
 		//TODO: anim	
 	turn carriage to y-axis heading speed TURR_TRAVERSE;
@@ -243,7 +243,7 @@ AimWeapon2(heading, pitch)
 	
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1;
-	if (iState>6) return 0;
+	if (iState >= 6) return 0;
 	bAiming=1;
 		//TODO: anim	
 	turn carriage to y-axis heading speed TURR_TRAVERSE;
