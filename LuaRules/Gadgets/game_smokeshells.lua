@@ -32,14 +32,10 @@ local SetUnitWeaponState = Spring.SetUnitWeaponState
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
 local CMD_SMOKE = 35520 -- this should be changed
+
 local smokeCmdDesc = {
---  id     = CMD_MORPH, -- added by the calling function because there is now more than one option
 	id 		 = CMD_SMOKE,
   type   = CMDTYPE.ICON_MODE,
-  name   = 'T',
-  --cursor = 'Deploy',  -- add with LuaUI?
-  cursor = 'Fight',
-  action = 'bob',
 	tooltip = 'Toggle between High Explosive and Smoke rounds',
 	params = {0, 'Fire HE', 'Fire Smoke'},
 }
