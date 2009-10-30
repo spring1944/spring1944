@@ -58,8 +58,30 @@ local options = {
 		key = "navies",
 		name = "Naval Units",
 		desc = "Enable the production of naval units",
-		type = "bool",
-		def = false,
+		type = "list",
+		def = 2,
+		items	= {
+			{
+				key	= "0",
+				name	= "Disabled",
+				desc	= "No naval units except for rafts buildable by engineers",
+			},
+			{
+				key	= "1",
+				name	= "Transports Only",
+				desc	= "Infantry and Vehicle Landing Craft only",
+			},
+			{
+				key	= "2",
+				name	= "Transports And Light Boats",
+				desc	= "Transports and Light Combat Ships",
+			},
+			{
+				key	= "3",
+				name	= "Full Navies",
+				desc	= "Same + Coastal Bombardment ships (still no destroyers)",
+			},
+		}
 	},
 	
       {
