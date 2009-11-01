@@ -93,8 +93,7 @@ function gadget:Initialize()
   
 end
 
---function gadget:UnitFinished(unitID, unitDefID, unitTeam)
-function gadget:UnitCreated(unitID, unitDefID, unitTeam)
+function gadget:UnitFinished(unitID, unitDefID, unitTeam)
   local enable = enables[unitDefID]
   if enable then
     for i = 1, #enable do
@@ -109,8 +108,10 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam)
       end
     end
   end
-  
-  --enable/disable for the unit just finished
+end
+
+function gadget:UnitCreated(unitID, unitDefID, unitTeam)
+  --enable/disable for the constructor
   for buildDefID, buildability in pairs(buildables) do
     if not buildability[unitTeam] then
       
@@ -147,9 +148,12 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-  local _, _, inBuild = GetUnitIsStunned(unitID)
-  if not inBuild then
-    --gadget:UnitFinished(unitID, unitDefID, unitTeam)
+	if enables[unitDefID] then
+		local _, _, inBuild = GetUnitIsStunned(unitID)
+		if not inBuild then
+			gadget:UnitFinished(unitID, unitDefID, unitTeam)
+		end
+	else
 		gadget:UnitCreated(unitID, unitDefID, unitTeam)
   end
 end
