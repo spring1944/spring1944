@@ -134,13 +134,15 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
     for i = 1, #enable do
       local enableID = enable[i]
       local buildabilty = buildables[enableID]
-      if (buildabilty[unitTeam] or 0) >= 1 then
-        buildabilty[unitTeam] = buildabilty[unitTeam] - 1
-        if buildabilty[unitTeam] == 0 then
+
+      if (buildabilty[unitTeam] or 1) >= 1 then
+        if buildabilty[unitTeam] == 1 then
           --disable
           buildabilty[unitTeam] = nil
           SetBuildoptionDisabled(enableID, unitTeam, true)
-        end
+        else
+				  buildabilty[unitTeam] = buildabilty[unitTeam] - 1
+				end
       else
         Spring.Echo("<prereqs>: Counting error", UnitDefs[enableID].name, buildabilty[unitTeam])
       end
@@ -148,19 +150,15 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   end
 end
 
-function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-	--gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
+function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+  gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+
 	if enables[unitDefID] then
 		local _, _, inBuild = GetUnitIsStunned(unitID)
 		if not inBuild then
-			gadget:UnitFinished(unitID, unitDefID, unitTeam)
+			gadget:UnitFinished(unitID, unitDefID, newTeam)
 		end
 	else
 		gadget:UnitCreated(unitID, unitDefID, unitTeam)
   end
-end
-
-function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-  gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	gadget:UnitGiven(unitID, unitDefID, newTeam, unitTeam)
 end
