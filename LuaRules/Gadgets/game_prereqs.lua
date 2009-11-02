@@ -156,6 +156,7 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	else
 		gadget:UnitCreated(unitID, unitDefID, unitTeam)
   end
+	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
