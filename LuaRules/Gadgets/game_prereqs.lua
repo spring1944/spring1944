@@ -127,6 +127,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   local _, _, inBuild = GetUnitIsStunned(unitID)
   
   if inBuild then return end
+	
   --update prereqs
   local enable = enables[unitDefID]
   if enable then
@@ -148,6 +149,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+	--gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 	if enables[unitDefID] then
 		local _, _, inBuild = GetUnitIsStunned(unitID)
 		if not inBuild then
@@ -156,10 +158,9 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	else
 		gadget:UnitCreated(unitID, unitDefID, unitTeam)
   end
-	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-  --gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+  gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	gadget:UnitGiven(unitID, unitDefID, newTeam, unitTeam)
 end
