@@ -160,4 +160,5 @@ end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
   gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+	gadget:UnitGiven(unitID, unitDefID, newTeam)
 end
