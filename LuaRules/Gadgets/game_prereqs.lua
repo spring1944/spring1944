@@ -160,6 +160,6 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-  gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	gadget:UnitGiven(unitID, unitDefID, newTeam)
+  --gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+	gadget:UnitGiven(unitID, unitDefID, newTeam, unitTeam)
 end
