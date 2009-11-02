@@ -151,11 +151,10 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
-  gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-
 	if enables[unitDefID] then
 		local _, _, inBuild = GetUnitIsStunned(unitID)
 		if not inBuild then
+			gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 			gadget:UnitFinished(unitID, unitDefID, newTeam)
 		end
 	else
