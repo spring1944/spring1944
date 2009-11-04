@@ -5,11 +5,11 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=10500;
+  buildCostMetal=2800;
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=3500;
+  buildTime=2800;
   category=DEPLOYED;
   corpse=gbr25pdr_destroyed;
   [customParams] {
