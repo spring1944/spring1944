@@ -12,6 +12,8 @@ format:
 local anyBarracks = {
   "gbrbarracks",
   "gerbarracks",
+  "gerbarracksbunker",
+  "getbarracksvolkssturm",
   "rusbarracks",
   "usbarracks",
 }

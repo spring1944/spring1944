@@ -3,12 +3,12 @@
   name=Hardened Wehrmacht Barracks;
   description=Infantry Training & Housing Bunker;
   buildCostEnergy=0;
-  buildCostMetal=6520;
+  buildCostMetal=5640;
   builder=1;
   buildingGroundDecalSizeX=6;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=6520;
+  buildTime=5640;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
@@ -18,7 +18,7 @@
     ammoSupplier=1;
     blockfear=1;
     separatebuildspot=1;
-    supplyRange=500;
+    supplyRange=600;
   }
   energyStorage=400;
   explodeAs=Large_Explosion;
