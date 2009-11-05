@@ -112,15 +112,23 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam)
   --enable/disable for the constructor
-  for buildDefID, buildability in pairs(buildables) do
-    if not buildability[unitTeam] then
-      
-      local cmdDescID = FindUnitCmdDesc(unitID, -buildDefID)
-      if cmdDescID then
-        EditUnitCmdDesc(unitID, cmdDescID, {disabled = true})
-      end
-    end
-  end
+	local ud = UnitDefs[unitDefID]
+	if ud.buildDistance and ud.speed > 0 then
+		--Spring.Echo("Builder! ", unitTeam)
+		for buildDefID, buildability in pairs(buildables) do
+			--Spring.Echo(unitTeam, " : ", (buildability[unitTeam] or "nil"))
+			local cmdDescID = FindUnitCmdDesc(unitID, -buildDefID)
+			if cmdDescID then
+				if not buildability[unitTeam] then
+					--Spring.Echo("Disabling unit!")
+					EditUnitCmdDesc(unitID, cmdDescID, {disabled = true})
+				else
+					--Spring.Echo("Enabling unit!")
+					EditUnitCmdDesc(unitID, cmdDescID, {disabled = false})
+				end
+			end
+		end
+	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
@@ -150,6 +158,8 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   end
 end
 
+-- problem is when units without a rax are transferred to team with rax?
+
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	if enables[unitDefID] then
 		local _, _, inBuild = GetUnitIsStunned(unitID)
@@ -158,6 +168,6 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 			gadget:UnitFinished(unitID, unitDefID, newTeam)
 		end
 	else
-		gadget:UnitCreated(unitID, unitDefID, unitTeam)
+		gadget:UnitCreated(unitID, unitDefID, newTeam)
   end
 end
