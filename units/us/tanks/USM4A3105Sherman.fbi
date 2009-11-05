@@ -78,10 +78,10 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   
   weapon3=M1919A4Browning;
-  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=M2Browning;
-  onlyTargetCategory3=AIR;
+  onlyTargetCategory4=AIR;
 
   weapon5=.50calproof;
 
