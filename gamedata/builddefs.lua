@@ -582,6 +582,7 @@ buildoptions =
 		"gbrstaghound",
     "gbrdaimler",
     "gbrkangaroo",
+		"gbrwasp",
     "gbraecmkii",
   },
 
