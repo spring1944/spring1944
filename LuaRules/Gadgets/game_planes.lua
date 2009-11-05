@@ -478,6 +478,10 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
   if inBuild then
     gadget:UnitCreated(unitID, unitDefID, unitTeam)
   else
+	  local sortieCmdDescs = radioDefs[unitDefID]
+			if sortieCmdDescs then
+				radios[unitTeam][unitID] = true
+			end
     gadget:UnitFinished(unitID, unitDefID, unitTeam)
   end
 end
