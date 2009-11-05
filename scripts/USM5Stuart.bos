@@ -5,6 +5,7 @@ piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, 
 static-var  restore_delay, rock, aim2, aim3, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
 
 // Signal definitions
+#define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
 #define SIG_AIM_3	8 // AA MG
@@ -61,6 +62,7 @@ static-var  restore_delay, rock, aim2, aim3, reloading, mainHead, bMoving, tread
 #define SMALL_MUZZLEFLASH 1024+5
 #define SMALL_MUZZLEDUST 1024+6
 
+#include "TurnButton.h"
 
 treads() 
 { 
