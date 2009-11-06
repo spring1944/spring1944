@@ -363,7 +363,11 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
   radios[teamID][unitID] = true
 
   for i=1,#sortieCmdDescs do
-    InsertUnitCmdDesc(unitID, sortieCmdDescs[i])
+		local sortieCmdDesc = sortieCmdDescs[i]
+		local stockpile = GetTeamRulesParam(teamID, "game_planes.stockpile" .. sortieCmdDesc.id) or 0
+		sortieCmdDesc.name = stockpile .. " Ready"
+		sortieCmdDesc.disabled = not (stockpile > 0)
+    InsertUnitCmdDesc(unitID, sortieCmdDesc)
   end
 end
 
