@@ -43,7 +43,7 @@ buildoptions =
     "tankobstacle",
     --"sandbags",
     "rubberdingy",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   usbarracks =
@@ -77,7 +77,7 @@ buildoptions =
     "tankobstacle",
     --"sandbags",
     "rubberdingy",
-    --"pontoonraft",
+    "pontoonraft",
 
   },
 
@@ -243,7 +243,7 @@ buildoptions =
     "tankobstacle",
     --"geropelblitz",
     "gersturmboot",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   gerbarracks =
@@ -291,7 +291,7 @@ buildoptions =
     "tankobstacle",
     --"geropelblitz",
     "gersturmboot",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   gervehicleyard =
@@ -483,7 +483,7 @@ buildoptions =
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   gbrbarracks =
@@ -557,7 +557,7 @@ buildoptions =
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
-    --"pontoonraft",
+    "pontoonraft",
 
   },
 
@@ -680,7 +680,7 @@ buildoptions =
     "russtorage",
     --"sandbags",
     "ruspg117",
-    --"pontoonraft",
+    "pontoonraft",
   },
   
   ruscommissar1 =
@@ -694,7 +694,7 @@ buildoptions =
     "russtorage",
     --"sandbags",
     "ruspg117",
-    --"pontoonraft",
+    "pontoonraft",
   },
   ruspshack =
   {
@@ -750,7 +750,7 @@ buildoptions =
     "russtorage",
     --"sandbags",
     "ruspg117",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   ruscommissar =
@@ -768,7 +768,7 @@ buildoptions =
     --"sandbags",
     "russtorage",
     "ruspg117",
-    --"pontoonraft",
+    "pontoonraft",
   },
 
   rusk31 =
@@ -1194,31 +1194,6 @@ if (modOptions) then
 			table.insert(buildoptions.usboatyardlarge, "uslcsl")
 		end
 	end
---[[
-	if modOptions.navies == "1" then
-		table.insert(buildoptions.usvehicleyard, 2, "uspontoontruck")
-		table.insert(buildoptions.usvehicleyard1, 2, "uspontoontruck")
-		table.insert(buildoptions.gbrvehicleyard, 2, "gbrpontoontruck")
-		table.insert(buildoptions.gbrvehicleyard1, 2, "gbrpontoontruck")
-		table.insert(buildoptions.gervehicleyard, 2, "gerpontoontruck")
-		table.insert(buildoptions.gervehicleyard1, 2, "gerpontoontruck")
-		table.insert(buildoptions.rusvehicleyard, 2, "ruspontoontruck")
-		table.insert(buildoptions.rusvehicleyard1, 2, "ruspontoontruck")
-	else
-		-- make sure THERE IS A WAY TO GET VEHS ACROSS WATER damnit!
-		table.insert(buildoptions.ushqengineer, "pontoonraft")
-		table.insert(buildoptions.usengineer, "pontoonraft")
-		table.insert(buildoptions.gerhqengineer, "pontoonraft")
-		table.insert(buildoptions.gerengineer, "pontoonraft")
-		table.insert(buildoptions.gbrhqengineer, "pontoonraft")
-		table.insert(buildoptions.gbrengineer, "pontoonraft")
-		table.insert(buildoptions.ruscommander, "pontoonraft")
-		table.insert(buildoptions.ruscommissar1, "pontoonraft")
-		table.insert(buildoptions.ruscommissar, "pontoonraft")
-		table.insert(buildoptions.rusengineer, "pontoonraft")
-
-	end
-]]--
 end
 
 return buildoptions
