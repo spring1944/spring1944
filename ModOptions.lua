@@ -29,13 +29,7 @@ local options = {
 		type = "bool",
 		def = true,
 	},]]--
-	--[[{
-		key = "always_visible_flags",
-		name = "Always Visible Flags",
-		desc = "Flags and their capping status can be seen without LOS",
-		type = "bool",
-		def = true,
-	},]]--
+
 	--[[{
     key    = "maxammo_mult",
     name   = "Vehicle maxammmo multiplier",
@@ -317,6 +311,26 @@ local options = {
     max    = 8.0,
 	section = '4other',
     step   = 0.1,
+	
+	 {
+    key    = "unit_los_mult",
+    name   = "Unit sight (los/airLoS) multiplier",
+    desc   = "Applies a multiplier to all the LoS ranges ingame",
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+	section = '4other',
+    step   = 0.1,
+  },
+	{
+		key = "always_visible_flags",
+		name = "Always Visible Flags",
+		desc = "Flags and their capping status can be seen without LOS",
+		type = "bool",
+		def = true,
+		section = '4other',
+	},
 },
 
 
@@ -332,16 +346,7 @@ local options = {
     max    = 10,
     step   = 0.1,
   },
-  {
-    key    = "unit_los_mult",
-    name   = "Unit sight (los/airLoS) multiplier",
-    desc   = "Applies a multiplier to all the LoS ranges ingame",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.1,
-  },
+
   {
     key    = "unit_speed_mult",
     name   = "Unit speed multiplier",
