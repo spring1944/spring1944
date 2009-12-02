@@ -118,7 +118,9 @@ RunControl()
 	signal SIG_RUN;
 	set-signal-mask SIG_RUN;
 	signal SIG_CRAWL;
-
+	#ifdef ATROCKET
+	set CLOAKED to 0;
+	#endif
 	signal SIG_AIMRUN;
 	start-script WeaponReady();
 	var pickStance;
@@ -150,6 +152,10 @@ RunControl()
 	  	iState=1;
 		start-script Stand(pickStance);
 		sleep 200;
+		#ifdef ATROCKET
+		start-script CrawlControl();
+		set CLOAKED to 1;
+		#endif
 		//call-script StandingIdle();
 		}
 		

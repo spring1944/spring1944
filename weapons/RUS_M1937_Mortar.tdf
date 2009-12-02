@@ -18,6 +18,7 @@
   fireStarter=0;
   id=28;
   impulseFactor=1e-07;
+  leadlimit=500;
   model=MortarShell.S3O;
   range=1365;
   reloadTime=12;
@@ -51,6 +52,7 @@
   fireStarter=0;
   id=28;
   impulseFactor=1e-07;
+  leadlimit=500;
   model=MortarShell.S3O;
   range=1365;
   reloadTime=12;

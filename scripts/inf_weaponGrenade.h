@@ -14,7 +14,7 @@ AimWeapon2(heading, pitch)
 	signal SIG_AIM2;
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM2;
-	if (bMoving || iState==9) return 0;
+	if (iState==9) return 0;
 	//turn pelvis to y-axis heading - <30> now;
 //	if (NadeReloading==1) return (0); //slow nades while prone
 

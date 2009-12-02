@@ -154,14 +154,10 @@ Create()
 
 RestoreAfterDelay()
 {
+	set-signal-mask SIG_AIM1;
 	sleep RestoreDelay;
 //	bAiming=0;	
-	if (iFear > 0) start-script CrawlControl();
-	if (iFear <= 0)
-		{
-		if (iState > 6) call-script RestoreAfterCover();
-		start-script RunControl();
-		}
+	start-script FearRecovery();
 }
 
 //start weapons

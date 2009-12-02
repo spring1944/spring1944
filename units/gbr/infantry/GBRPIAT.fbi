@@ -10,8 +10,8 @@
   buildTime=390;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  cloakCost=0;
-  cloakCostMoving=0;
+  //cloakCost=0;
+  //cloakCostMoving=0;
   corpse=gbrsoldier_dead;
   [customParams] {
     dontCount=1;
@@ -25,13 +25,13 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  init_cloaked=1;
+  //init_cloaked=1;
   mass=50;
   maxDamage=140;
   maxSlope=15;
   maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=230;
+  minCloakDistance=80;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=GBRPIAT.S3O;

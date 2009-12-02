@@ -11,8 +11,8 @@
   buildTime=150;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  cloakCost=0;
-  cloakCostMoving=0;
+  //cloakCost=0;
+  //cloakCostMoving=0;
   corpse=USsoldier_dead;
   [customParams] {
     dontCount=1;
@@ -26,13 +26,13 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  init_cloaked=1;
+  //init_cloaked=1;
   mass=75;
   maxDamage=140;
   maxSlope=20;
   maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=230;
+  minCloakDistance=80;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=USParaHAT.S3O;

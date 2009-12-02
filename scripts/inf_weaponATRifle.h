@@ -28,6 +28,7 @@ AimWeapon1(heading, pitch)
 	set-signal-mask SIG_AIM1;
 	signal SIG_IDLE;
 	bAiming=4;
+	start-script RestoreAfterDelay();
 	if (iState == 9) return 0; //if the unit is pinned, we don't even bother aiming or calling the control loop
 	if (bMoving == 1) return 0;
 	if (bMoving == 0)
@@ -63,5 +64,10 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	SHOT_ANIM_PRONE
+	if (iFear <= 1)
+	{
+	iFear = 1;
+	}
+	start-script FearRecovery();
 	return (0);
 }

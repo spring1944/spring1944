@@ -12,6 +12,7 @@
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   fireStarter=0;
+  fireSubmersed=1;
   id=12;
   impulseFactor=0.1;
   range=25;

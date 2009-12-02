@@ -219,6 +219,7 @@ show gun;
 StartMoving()
 {
 	signal SIG_IDLE;
+	start-script FearRecovery();
 	bAiming = 0;
 	bMoving = 1;
 }
