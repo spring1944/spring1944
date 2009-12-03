@@ -192,8 +192,9 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 		DestroyUnit(unitID)
 		local ud = UnitDefs[unitDefID]
 		local gliderSquad = ud.customParams.spawn_on_death or nil
+		local spawnDelay = ud.customParams.deathspawn_delay or 70
 		if gliderSquad then
-			local delay = 70
+			local delay = spawnDelay
 			DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.2, y, z + vz * delay * 0.2, 0, unitTeam}, delay)
 			DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.15, y, z + vz * delay * 0.15, 0, unitTeam}, delay)
 		end
