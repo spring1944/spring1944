@@ -318,7 +318,8 @@
 	turn head to z-axis <0> now;\
 	turn torso to y-axis <0> now;\
 	turn torso to x-axis <0> now;\
-	turn torso to z-axis <0> now;
+	turn torso to z-axis <0> now;\
+	
 	
 	
 #define ATROCKET_STANCE2 \
@@ -442,7 +443,49 @@
 	turn torso to y-axis <0> now;\
 	turn torso to x-axis <0> now;\
 	turn torso to z-axis <0> now;	
-
+	
+#define ATROCKETAMBUSH\
+	sleep 5000;\
+	set CLOAKED to 1;\
+	iState=3;\
+	move pelvis to y-axis [-1] speed <2000>;\
+	turn pelvis to x-axis <0> speed <200>;\
+	turn pelvis to y-axis <0> speed <300>;\
+	turn pelvis to z-axis <0> speed <300>;\
+	turn torso to x-axis <10> speed <200>;\
+	turn torso to y-axis <-40> speed <200>;\
+	turn torso to z-axis <10> speed <200>;\
+	turn head to x-axis <0> speed <200>;\
+	turn head to y-axis <40> speed <200>;\
+	turn head to z-axis <-20> speed <200>;\
+	turn rthigh to x-axis <0> speed <199>;\
+	turn rthigh to y-axis <0> speed <199>;\
+	turn rthigh to z-axis <0> speed <199>;\
+	turn rleg to x-axis <90> speed <199>;\
+	turn rleg to y-axis <0> speed <199>;\
+	turn rleg to z-axis <0> speed <199>;\
+	turn lthigh to x-axis <-80> speed <199>;\
+	turn lthigh to y-axis <0> speed <199>;\
+	turn lthigh to z-axis <0> speed <199>;\
+	turn lleg to x-axis <80> speed <199>;\
+	turn lleg to y-axis <0> speed <199>;\
+	turn lleg to z-axis <0> speed <199>;\
+	turn ruparm to x-axis <0> speed <300>;\
+	turn ruparm to y-axis <60> speed <300>;\
+	turn ruparm to z-axis <0> speed <300>;\
+	turn rloarm to x-axis <-150> speed <300>;\
+	turn rloarm to y-axis <0> speed <300>;\
+	turn rloarm to z-axis <0> speed <300>;\
+	turn gun to x-axis <45> speed <300>;\
+	turn gun to y-axis <0> speed <300>;\
+	turn gun to z-axis <20> speed <300>;\
+	turn luparm to x-axis <-80> speed <300>;\
+	turn luparm to y-axis <0> speed <300>;\
+	turn luparm to z-axis <0> speed <300>;\
+	turn lloarm to x-axis <-60> speed <300>;\
+	turn lloarm to y-axis <0> speed <300>;\
+	turn lloarm to z-axis <0> speed <300>;
+	
 HipAim()
 	{
 	turn torso to y-axis <0> now;
@@ -552,6 +595,7 @@ Prone(pickSide)
 
 Stand(pickStance) //just resetting legs and such while still
 {
+	set-signal-mask SIG_IDLE;
 	if (bAiming == 0)
 	{
 		move pelvis to x-axis [0.0] now;
@@ -579,6 +623,7 @@ Stand(pickStance) //just resetting legs and such while still
 		if (pickStance == 1)
 		{
 		ATROCKET_STANCE1
+		ATROCKETAMBUSH
 		}
 		#endif
 		#ifdef SNIPER

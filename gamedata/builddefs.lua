@@ -324,7 +324,6 @@ buildoptions =
     "gerleig18",
     "gerpak40_truck",
     "gerlefh18_truck",
-    "gernebelwerfer_truck",
     "gerflak38_truck",
   },
   

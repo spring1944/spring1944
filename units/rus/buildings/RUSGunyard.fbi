@@ -3,13 +3,13 @@
   name=Towed Gun Yard;
   description=Towed Artillery Production Facility;
   buildCostEnergy=0;
-  buildCostMetal=1800;
+  buildCostMetal=2070;
   builder=1;
   buildingGroundDecalDecaySpeed=0.05;
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=1800;
+  buildTime=2070;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

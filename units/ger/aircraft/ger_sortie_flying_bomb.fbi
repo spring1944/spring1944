@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=4250;
+  buildCostMetal=3825;
   buildPic=GERV1.png;
-  buildTime=4250;
+  buildTime=3825;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

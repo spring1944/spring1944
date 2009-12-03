@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+piece  torso, flare, pelvis, backblast, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 		
 
@@ -25,12 +25,11 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 
 //individual unit definitions
 #define ATROCKET
-#define PIAT
 #define NoAimRun
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000
 #define RestoreDelay			5000
-#define StanceNumber			2 //number of WeaponReady stances
+#define StanceNumber			1 //number of WeaponReady stances
 #define BurstRate				100 //marginally less than the actual so there's visible movement
 
 /* --Var defs:
@@ -63,6 +62,8 @@ iState - what the unit is currently doing //todo: add states for being in a tran
 		running aiming - 5
 		-
 		prone 'idle' - 6
+		/
+		
 		prone aiming - 7
 		crawling - 8
 		-
@@ -219,7 +220,7 @@ show gun;
 StartMoving()
 {
 	signal SIG_IDLE;
-	start-script FearRecovery();
+	set CLOAKED to 0;
 	bAiming = 0;
 	bMoving = 1;
 }

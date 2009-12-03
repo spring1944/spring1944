@@ -39,7 +39,7 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  workerTime=30;
+  workerTime=50;
   yardMap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
 }
 

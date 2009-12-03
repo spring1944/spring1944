@@ -23,9 +23,9 @@ end
 --format: unitID = xmin, zmin, xmax, zmax, facing
 local infos = {}
 
-local PUSH_SPEED = 0.5
+local PUSH_SPEED = 2
 
-local FRONT_BUFFER = 8
+local FRONT_BUFFER = 14
 
 ----------------------------------------------------------------
 --speedups
