@@ -311,6 +311,19 @@ local options = {
     max    = 8.0,
 	section = '4other',
     step   = 0.1,
+	},
+
+	{
+    key    = "weapon_bulletdamage_mult",
+    name   = "Bullet Damage Multiplier",
+    desc   = 'Multiplies the damage of smallarms (high smallarms damage best used with high range multipliers)',
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10.0,
+	section = '4other',
+    step   = 0.1,
+	},
 	
 	 {
     key    = "unit_los_mult",
@@ -331,7 +344,7 @@ local options = {
 		def = true,
 		section = '4other',
 	},
-},
+
 
 
   --[[ 

@@ -247,12 +247,13 @@ if (modOptions) then
     
     Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
     for name, weaponDef in pairs(WeaponDefs) do
-      
-      for tag, mult in pairs(mults) do
-        if weaponDef[tag] then
-          weaponDef[tag] = weaponDef[tag] * mult
-        end
-      end
+		if (weaponDef.dynDamageRange == nil) or (weaponDef.dynDamageRange > 220) then
+			for tag, mult in pairs(mults) do
+				if weaponDef[tag] then
+				weaponDef[tag] = weaponDef[tag] * mult
+				end
+			end
+		end
       
       local customParams = weaponDef.customparams
       
@@ -321,13 +322,13 @@ if (modOptions) then
     end
   end
     
-  if (modOptions.weapon_apdamage_mult) then
-    local apCoeff
-    apCoeff = modOptions.weapon_apdamage_mult
+  if (modOptions.weapon_bulletdamage_mult) then
+    local bulletCoeff
+    bulletCoeff = modOptions.weapon_bulletdamage_mult
     for name in pairs(WeaponDefs) do
-      if (WeaponDefs[name].customparams.damagetype == 'kinetic') then
+      if (WeaponDefs[name].customparams.damagetype == 'smallarms') then
         for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
-          WeaponDefs[name].damage[armorType] = armorDamage * apCoeff
+          WeaponDefs[name].damage[armorType] = armorDamage * bulletCoeff
         end
       end
     end
