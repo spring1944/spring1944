@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  torso, flare, pelvis, backblast, rthigh, lthigh, lleg, rleg, rfoot, 
+piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
 		
 
@@ -25,6 +25,7 @@ the numbers that control pinned levels, how scary various weapons are, ect.
 
 //individual unit definitions
 #define ATROCKET
+#define PIAT
 #define NoAimRun
 #define GUN_QUERY_PIECENUM		flare
 #define IdleDelay				10000
