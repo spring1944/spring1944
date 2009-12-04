@@ -14,7 +14,7 @@ local unitIconDist = 0
 
 function widget:Initialize()
   unitIconDist = Spring.GetConfigInt('UnitIconDist')
-	Spring.SendCommands("disticon 500")
+	Spring.SendCommands("disticon 250")
 end
 
 function widget:Shutdown()
