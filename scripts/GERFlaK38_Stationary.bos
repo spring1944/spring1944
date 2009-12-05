@@ -3,7 +3,7 @@ piece base, stand, turret, sleeve, barrel, flare, pelvis;
  
 static-var iState, iFear, lasthit, aim1, reloading, isRangeAdjusted, originalRange, shotCount;
 
-#include "inf_sharedDefs.h"
+#include "AA_sharedDefs.h"
 #include "constants.h"
 
 // Signal definitions

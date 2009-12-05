@@ -2,14 +2,15 @@
   name=37mm M-1939 61-K Anti-Aircraft Gun;
   areaOfEffect=80;
   burnblow=1;
-  burstRate=1;
+  burst=2;
+  burstRate=0.5;
   canAttackGround=0;
   collisionSize=1e-05;
   craterBoost=0.2;
   craterMult=0.2;
   [customParams] {
     damagetype=explosive;
-    fearaoe=400;
+    fearaoe=450;
     fearid=701;
   }
   [damage] {

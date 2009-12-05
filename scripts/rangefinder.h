@@ -22,7 +22,7 @@ RangeFinder(weaponNum)
 		range = get HYPOT(range, dY);
 		
 		// add a random spread to range
-		range = range*((100 - RANGE_INACCURACY_PERCENT/2)/100) + rand(0, range)*RANGE_INACCURACY_PERCENT/100;
+		range = (range - 50)*((100 - RANGE_INACCURACY_PERCENT/2)/100) + rand(0, range)*RANGE_INACCURACY_PERCENT/100;
 
 		//get PRINT(range);
 		

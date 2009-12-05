@@ -15,7 +15,7 @@ if not gadgetHandler:IsSyncedCode() then return end
 local sqrt = math.sqrt
 local sin, cos, atan2 = math.sin, math.cos, math.atan2
 
-local airfieldCapacity = 5
+local airfieldCapacity = 10
 
 local CMD_PLANES = 34400
 local PATROL_DISTANCE = 1000

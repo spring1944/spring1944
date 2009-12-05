@@ -10,7 +10,7 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-    fearaoe=400;
+    fearaoe=450;
     fearid=701;
   }
   [damage] {
