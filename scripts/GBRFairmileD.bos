@@ -388,8 +388,8 @@ AimWeapon6(heading, pitch)
 FireWeapon6()
 {
 	//show flare6_2;
-	emit-sfx XSMALL_MUZZLEFLASH from flare6_1;
-	emit-sfx XSMALL_MUZZLEDUST from flare6_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare6_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare6_2;
 	move barrel6_2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel6_2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
