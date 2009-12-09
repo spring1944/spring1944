@@ -49,6 +49,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 			CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID) --unitTeam
 			mineCount = mineCount + 1
 		end
+		Spring.TransferUnit(unitID, GAIA_TEAM_ID)
 	end
 	
 	if ud.name == "atminesign" and engineerBuilt[unitID] ~= nil then		
@@ -60,6 +61,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 			CreateUnit("atmine", xpos, y, zpos, 0, GAIA_TEAM_ID)
 			mineCount = mineCount + 1
 		end
+		Spring.TransferUnit(unitID, GAIA_TEAM_ID)
 	end
 end
 
