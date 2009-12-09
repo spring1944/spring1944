@@ -25,6 +25,10 @@ static-var restore_delay, aim1;
 // tracers
 #define SMALL_TRACER 	2048+4
 
+//aim rates
+#define TURR_TRAVERSE	<500>
+#define TURR_ELEVATE	<300>
+
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
 	while( get BUILD_PERCENT_LEFT )
@@ -97,7 +101,7 @@ AimWeapon1(heading, pitch)
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 
-	turn turret to y-axis heading speed <150>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
 	turn guns to x-axis 0 - pitch speed <100>; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
@@ -148,7 +152,7 @@ AimWeapon2(heading, pitch)
 	signal SIG_AIM2;
 	set-signal-mask SIG_AIM2;
 
-	turn turret to y-axis heading speed <150>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
 	turn guns to x-axis 0 - pitch speed <100>; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
@@ -199,8 +203,8 @@ AimWeapon3(heading, pitch)
 	signal SIG_AIM3;
 	set-signal-mask SIG_AIM3;
 
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	return (1);
@@ -250,8 +254,8 @@ AimWeapon4(heading, pitch)
 	signal SIG_AIM4;
 	set-signal-mask SIG_AIM4;
 
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	return (1);
@@ -300,8 +304,8 @@ AimWeapon5(heading, pitch)
 	set-signal-mask SIG_AIM;
 	
 	aim1 = TRUE;
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	aim1 = FALSE;
@@ -346,8 +350,8 @@ AimWeapon6(heading, pitch)
 	set-signal-mask SIG_AIM2;
 
 	aim1 = TRUE;
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	aim1 = FALSE;
@@ -391,8 +395,8 @@ AimWeapon7(heading, pitch)
 	set-signal-mask SIG_AIM3;
 
 	aim1 = TRUE;
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	aim1 = FALSE;
@@ -436,8 +440,8 @@ AimWeapon8(heading, pitch)
 	set-signal-mask SIG_AIM4;
 
 	aim1 = TRUE;
-	turn turret to y-axis heading speed <150>; 
-	turn guns to x-axis 0 - pitch speed <100>; 
+	turn turret to y-axis heading speed TURR_TRAVERSE; 
+	turn guns to x-axis 0 - pitch speed TURR_ELEVATE; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn guns around x-axis;
 	aim1 = FALSE;

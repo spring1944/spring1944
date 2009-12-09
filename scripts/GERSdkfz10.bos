@@ -38,8 +38,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<200> // manual
-#define TURR_ELEVATE	<150>
+#define TURR_TRAVERSE	<400> // manual
+#define TURR_ELEVATE	<300>
 
 // definitions for weapons behaviour
 #define RELOAD		300 // time in milliseconds between shots

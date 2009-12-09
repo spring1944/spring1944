@@ -38,8 +38,8 @@ static-var  restore_delay, bMoving, bAAMode, bTurretAimingDone, shotCount, curFl
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<43> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
-#define TURR_ELEVATE	<14>
+#define TURR_TRAVERSE	<430> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
+#define TURR_ELEVATE	<140>
 
 // definitions for weapons behaviour
 #define RELOAD		3000 // time in milliseconds between shots
