@@ -326,7 +326,7 @@ if (modOptions) then
     local bulletCoeff
     bulletCoeff = modOptions.weapon_bulletdamage_mult
     for name in pairs(WeaponDefs) do
-      if (WeaponDefs[name].customparams.damagetype == 'smallarms') then
+      if (WeaponDefs[name].customParams.damagetype == 'smallarms') then
         for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
           WeaponDefs[name].damage[armorType] = armorDamage * bulletCoeff
         end
@@ -337,7 +337,7 @@ end
 
 -- set weapon velocities to arc at 45 degrees at max range
 for name in pairs(WeaponDefs) do
-	if WeaponDefs[name].customparams.howitzer then
+	if WeaponDefs[name].customParams.howitzer then
 		WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * GRAVITY) --Game.gravity)
 	end
 end
