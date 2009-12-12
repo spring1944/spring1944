@@ -6,7 +6,7 @@
   collisionsize=4;
   craterboost=0;
   cratermult=0;
-  [customparams] {
+  [customParams] {
     damagetype=explosive;
     fearaoe=210;
     fearid=501;

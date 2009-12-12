@@ -337,8 +337,10 @@ end
 
 -- set weapon velocities to arc at 45 degrees at max range
 for name in pairs(WeaponDefs) do
-	if WeaponDefs[name].customParams.howitzer then
-		WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * GRAVITY) --Game.gravity)
+	if WeaponDefs[name].customParams then
+		if WeaponDefs[name].customParams.howitzer then
+			WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * GRAVITY) --Game.gravity)
+		end
 	end
 end
 --------------------------------------------------------------------------------
