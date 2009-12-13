@@ -10,7 +10,7 @@
   buildTime=150;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  //cloakCost=0;
+  cloakCost=0;
   cloakCostMoving=0;
   corpse=USsoldier_dead;
   [customParams] {
@@ -26,13 +26,13 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  //init_cloaked=1;
+  init_cloaked=1;
   mass=75;
   maxDamage=100;
   maxSlope=20;
   maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=75; //230
+  minCloakDistance=310; //230
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=USHAT.S3O;
@@ -62,4 +62,3 @@
   weapon1=M9A1Bazooka;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
-

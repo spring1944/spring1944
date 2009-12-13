@@ -10,8 +10,8 @@
   buildTime=100;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  //cloakCost=0;
- //cloakCostMoving=0;
+  cloakCost=0;
+  cloakCostMoving=0;
   corpse=gersoldier_dead;
   [customParams] {
     dontCount=1;
@@ -25,13 +25,13 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  //init_cloaked=1;
+  init_cloaked=1;
   mass=50;
   maxDamage=110;
   maxSlope=15;
   maxVelocity=1.3;
   maxWaterDepth=5;
-  minCloakDistance=70;
+  minCloakDistance=270;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=GERPanzerfaust.S3O;

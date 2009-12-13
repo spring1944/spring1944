@@ -146,26 +146,15 @@ RunControl()
 		#endif
 		if (bMoving == 0)
 		{
-	  	#ifdef ATROCKET
-		if (iState == 3) sleep 200;
-		if (iState != 3)
-		{
-		#endif
 		start-script Stand(pickStance);
 		iState=1;
 		sleep 200;
-		#ifdef ATROCKET
-		}
-		#endif
 		//call-script StandingIdle();
 		}
 		
 		if (bMoving == 1)
 		{
 		iState=4; 
-		#ifdef ATROCKET
-		ATROCKET_STANCE1
-		#endif
 		call-script Run();
 		}
 	}
