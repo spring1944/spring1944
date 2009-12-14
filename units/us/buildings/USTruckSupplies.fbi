@@ -15,7 +15,7 @@
   [customParams] {
     ammoSupplier=1;
     dontCount=1;
-    supplyRange=450;
+    supplyRange=560;
   }
   energyMake=0;
   energyStorage=0;

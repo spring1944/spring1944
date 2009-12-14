@@ -377,7 +377,7 @@ local morphDefs = {
   
 -- Halftracks / Resource Piles
 
-	gbrm5halftrack =
+--[[	gbrm5halftrack =
   {
     into = 'gbrresource',
     tech = 0,
@@ -447,7 +447,7 @@ local morphDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-  },
+  },]]--
   
   -- Trucks / Trucksupplies
   geropelblitz =
