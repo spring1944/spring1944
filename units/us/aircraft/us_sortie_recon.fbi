@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=350;
+  buildCostMetal=1000;
   buildPic=USL4.png;
-  buildTime=350;
+  buildTime=1000;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

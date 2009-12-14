@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=170;
+  buildCostMetal=510;
   buildPic=GEROpelBlitz.png;
-  buildTime=170;
+  buildTime=510;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;
