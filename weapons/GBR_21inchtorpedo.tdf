@@ -24,7 +24,7 @@
   projectiles=2;
   propeller=1;
   range=980;
-  reloadTime=300;
+  reloadTime=60;
   rendertype=1;
   selfprop=1;
   soundHit=gen_explo_11;
