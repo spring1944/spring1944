@@ -7,8 +7,8 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=12000;
-  buildTime=12000;
+  buildCostMetal=15000;
+  buildTime=15000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
@@ -17,7 +17,10 @@
   collisionVolumeType=box;
   corpse=GERVorpostenBoot_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=20;
+    weaponswithammo=1;
   }
   energyMake=0;
   energyUse=0;

@@ -16,7 +16,10 @@
   collisionVolumeType=box;
   corpse=GBRFairmileD_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=40;
+    weaponswithammo=4;
   }
   energyMake=0;
   energyUse=0;

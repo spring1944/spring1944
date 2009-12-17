@@ -16,7 +16,10 @@
   collisionVolumeType=box;
   corpse=RUSKomsMTB_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=1;
+    maxammo=2;
+    weaponcost=40;
+    weaponswithammo=2;
   }
   energyMake=0;
   energyUse=0;
@@ -30,7 +33,7 @@
   maxReverseVelocity=2.4;
   maxvelocity=4.8;
   minWaterDepth=10;
-  movementClass=BOAT_Destroyer;
+  movementClass=BOAT_Small;
   objectName=RUSKomsMTB;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

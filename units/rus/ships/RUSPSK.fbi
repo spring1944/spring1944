@@ -6,8 +6,8 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=13500;
-  buildCostMetal=13500;
+  buildCostMetal=17000;
+  buildCostMetal=17000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
@@ -16,7 +16,10 @@
   collisionVolumeType=box;
   corpse=RUSPSK_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=25;
+    weaponswithammo=1;
   }
   energyMake=0;
   energyUse=0;

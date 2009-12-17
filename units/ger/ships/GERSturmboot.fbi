@@ -23,7 +23,7 @@
   maxDamage=950;
   maxVelocity=3.4;
   minWaterDepth=5;
-  movementClass=BOAT_Small;
+  movementClass=BOAT_LandingCraft;
   objectName=GERSturmboot.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

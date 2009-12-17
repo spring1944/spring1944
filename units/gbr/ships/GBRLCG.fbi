@@ -16,7 +16,10 @@
   collisionVolumeType=box;
   corpse=GBRLCG_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=25;
+    weaponswithammo=2;
   }
   energyMake=0;
   energyUse=0;

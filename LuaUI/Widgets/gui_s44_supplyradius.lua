@@ -344,7 +344,7 @@ local function DrawTrucks()
 				DrawSupplyRingFull(generalTruckDefInfo, x, z)
 			elseif supplyTruckDefIDs[unitDefID] then
 				glColor(previewColor)
-				DrawSupplyRingFull(supplyTruckDefInfo, x, z)
+				--DrawSupplyRingFull(supplyTruckDefInfo, x, z)
 				glColor(color)
 				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z)
 			end

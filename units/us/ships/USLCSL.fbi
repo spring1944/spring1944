@@ -7,9 +7,9 @@
   airSightDistance=1700;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=8400;
+  buildCostMetal=10500;
   buildPic=uslcsl.png;
-  buildTime=8400;
+  buildTime=10500;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -18,7 +18,10 @@
   collisionVolumeType=box;
   corpse=USLCSL_dead;
   [customParams] {
-    dontCount=1;
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=15;
+    weaponswithammo=1;
   }
   energyMake=0;
   energyUse=0;

@@ -27,7 +27,7 @@
   maxReverseVelocity=2.15;
   maxvelocity=4.3; // 43 knots
   minWaterDepth=10;
-  movementClass=BOAT_LightPatrol;
+  movementClass=BOAT_Medium;
   objectName=USPT103;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
