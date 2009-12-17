@@ -6,21 +6,24 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2500;
-  buildTime=2500;
+  buildCostMetal=3750;
+  buildTime=3750;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 55.0 280.0;
+  collisionVolumeType=box;
   corpse=GERRBoot_dead;
   [customParams] {
-    dontCount=1;
+    dontCount=0;
   }
   energyMake=0;
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=4;
-  footprintZ=4;
+  footprintX=14;
+  footprintZ=14;
   iconType=gunboat;
   mass=16000;
   maxDamage=16000;
@@ -49,7 +52,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=42.5;
+  turnRate=205;
 
   weapon1=37mmflak43;
   maxAngleDif1=270;

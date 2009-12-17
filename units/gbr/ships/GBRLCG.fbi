@@ -6,11 +6,14 @@
   airSightDistance=1100;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=11000;
+  buildCostMetal=7850;
   buildPic=GBRLCG.png;
-  buildTime=11000;
+  buildTime=7850;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=80.0 60.0 280.0;
+  collisionVolumeType=box;
   corpse=GBRLCG_dead;
   [customParams] {
     dontCount=1;
@@ -19,8 +22,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=20;
+  footprintZ=20;
   holdSteady=1;
   iconType=gunboat;
   mass=25000;
@@ -45,7 +48,7 @@
     explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=700;
+  sightDistance=900;
   smoothAnim=0;
   stealth=0;
   TEDClass=SHIP;
@@ -53,7 +56,7 @@
   transportMass=27000;
   transportSize=54;
   turninplace=0;
-  turnRate=42.5;
+  turnRate=130;
 
   weapon1=gbr4_7inchmkix;
   maxAngleDif1=270;

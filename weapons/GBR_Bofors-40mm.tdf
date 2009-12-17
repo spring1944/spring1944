@@ -86,7 +86,7 @@
   name=2x 40mm Bofors Anti-Aircraft Gun;
   areaOfEffect=80;
   burnblow=1;
-  burst=2;
+  burst=4;
   burstRate=0.5;
   canAttackGround=0;
   collisionSize=1e-05;
@@ -94,7 +94,7 @@
   craterMult=0.2;
   [customParams] {
     damagetype=explosive;
-    fearaoe=250;
+    fearaoe=450;
     fearid=701;
   }
   [damage] {
@@ -110,14 +110,14 @@
   intensity=0.9;
   lineofsight=1;
   predictBoost=0.9;
-  range=2100;
-  reloadTime=1.25;
+  range=1575;
+  reloadTime=1.125;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   size=0.001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GEN_37mmAA;
-  sprayAngle=550;
+  sprayAngle=1050;
   tolerance=700;
   turret=1;
   weaponTimer=1;

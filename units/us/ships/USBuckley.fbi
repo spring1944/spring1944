@@ -28,8 +28,8 @@
   iconType=destroyer;
   mass=157900;
   maxDamage=157900;
-  maxReverseVelocity=2.5;
-  maxVelocity=5;
+  maxReverseVelocity=1.8;
+  maxVelocity=2.5;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USBuckley;
@@ -38,8 +38,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=2000;
-  radardistance=2000;
+  sightDistance=1100;
   smoothAnim=0;
   stealth=0;
   TEDClass=SHIP;

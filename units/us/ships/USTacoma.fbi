@@ -28,8 +28,8 @@
   iconType=destroyer;
   mass=128400;
   maxDamage=128400;
-  maxReverseVelocity=2;
-  maxVelocity=4;
+  maxReverseVelocity=1;
+  maxvelocity=2.0;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USTacoma;
@@ -44,7 +44,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=124;
+  turnRate=100;
 
   weapon10=20mmOerlikonaa;
   maxAngleDif10=270;

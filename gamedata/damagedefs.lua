@@ -27,10 +27,12 @@ local damagedefs = {
     bunkers = 0,
     tanks = 0,
     flag = 0,
+	ships = 1;
     mines = 0,
   },
   explosive = {
     infantry = 9,
+	ships = 2,
     unarmouredvehicles = 2,
     armouredvehicles = 1/2,
     lightbuildings = 2/3,
@@ -40,6 +42,7 @@ local damagedefs = {
   },
   kinetic = {
 	default = 3/4,
+	ships = 1/2,
     unarmouredvehicles = 1/2,
     bunkers = 1/2,
     lightbuildings = 1/16,
@@ -47,11 +50,13 @@ local damagedefs = {
     mines = 0,
   },
   shapedcharge = {
+	ships = 2,
     lightbuildings = 1/4,
     flag = 0,
   },
   fire = {
     bunkers = 4,
+	ships = 1.5,
     unarmouredvehicles = 2,
     tanks = 1/2,
     flag = 0,

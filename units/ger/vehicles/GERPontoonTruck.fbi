@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=2100;
+  buildCostMetal=2800;
   buildPic=GERPontoonTruck.png;
-  buildTime=2100;
+  buildTime=2800;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GERPontoonTruck_Dead;

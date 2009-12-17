@@ -7,14 +7,14 @@
   airSightDistance=1700;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=7000;
+  buildCostMetal=8400;
   buildPic=uslcsl.png;
-  buildTime=7000;
+  buildTime=8400;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  collisionVolumeOffsets=0.0 -40.0 0.0;
-  collisionVolumeScales=60.0 80.0 280.0;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=70.0 80.0 280.0;
   collisionVolumeType=box;
   corpse=USLCSL_dead;
   [customParams] {
@@ -29,8 +29,8 @@
   iconType=gunboat;
   mass=25400;
   maxDamage=25400;
-  maxReverseVelocity=1.2;
-  maxVelocity=2.4;
+  maxReverseVelocity=0.6;
+  maxvelocity=1.2; // 12 kn
   minWaterDepth=10;
   movementClass=BOAT_LandingCraft;
   objectName=USLCSL;
@@ -49,7 +49,7 @@
     explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=1800;
+  sightDistance=1100;
   smoothAnim=0;
   stealth=0;
   TEDClass=SHIP;
@@ -73,22 +73,22 @@
 
   weapon4=20mmOerlikonaa;
   maxAngleDif4=200;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=1 0 0;
 
   weapon5=20mmOerlikonaa;
   maxAngleDif5=200;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=-1 0 0;
 
   weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=1 0 0;
 
   weapon7=20mmOerlikonaa;
   maxAngleDif7=200;
-  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir7=-1 0 0;
 }
 

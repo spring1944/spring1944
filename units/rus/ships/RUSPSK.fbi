@@ -6,13 +6,13 @@
   airSightDistance=1700;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=9000;
-  buildTime=9000;
+  buildCostMetal=13500;
+  buildCostMetal=13500;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  collisionVolumeOffsets=0.0 -40.0 0.0;
-  collisionVolumeScales=60.0 120.0 360.0;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 150.0 360.0;
   collisionVolumeType=box;
   corpse=RUSPSK_dead;
   [customParams] {
@@ -22,13 +22,13 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=20;
+  footprintZ=20;
   iconType=destroyer;
   mass=100000;
   maxDamage=100000;
-  maxReverseVelocity=3;
-  maxVelocity=6;
+  maxReverseVelocity=0.84;
+  maxVelocity=1.68;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=RUSPSK;
@@ -37,7 +37,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=2000;
+  sightDistance=1100;
   radardistance=4000;
   smoothAnim=0;
   SoundCategory=RUSBoat;

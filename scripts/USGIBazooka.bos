@@ -220,7 +220,6 @@ show gun;
 StartMoving()
 {
 	signal SIG_IDLE;
-	set CLOAKED to 0;
 	bAiming = 0;
 	bMoving = 1;
 }

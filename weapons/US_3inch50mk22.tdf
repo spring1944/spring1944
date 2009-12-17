@@ -10,7 +10,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=1500;
+    default=1152;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_Large;
@@ -34,6 +34,6 @@
   targetMoveError=0.1;
   tolerance=3000;
   turret=1;
-  weaponVelocity=1400;
+  weaponVelocity=926;
 }
 

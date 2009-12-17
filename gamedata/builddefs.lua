@@ -198,7 +198,7 @@ buildoptions =
     "pontoonraft",
     "usdukw",
     "uslcvp",
-    -- "uspt103-bofors",
+    "uspt103-bofors",
 	-- "uslct",
 --    "uslcsl",
   },
@@ -208,9 +208,9 @@ buildoptions =
     "pontoonraft",
     "usdukw",
     "uslcvp",
-  --  "uspt103-bofors",
+    "uspt103-bofors",
     "uslct",
---    "uslcsl",
+    "uslcsl",
 --	"ustacoma",
 --	"usfletcher",
   },
@@ -439,17 +439,18 @@ buildoptions =
     "gersturmboot",
 	"pontoonraft",
     "gerschsturmboot",
---    "gerrboot",
---    "gersboot",
+    "gerrboot",
+    "gersboot",
   },
   gerboatyardlarge =
   {
     "gersturmboot",
     "pontoonraft",
-  --  "gerrboot",
---    "gersboot",
+    "gerrboot",
+    "gersboot",
     "germfp",
-  --  "gerafp",
+    "gerafp",
+	"gervorpostenboot",
 --	"gertype1934",
   },
 
@@ -647,16 +648,17 @@ buildoptions =
     "rubberdingy",
     "pontoonraft",
     "gbrlca",
---    "gbrfairmiled",
+    "gbrfairmiled",
   },
   gbrboatyardlarge =
   {
     "rubberdingy",
     "pontoonraft",
     "gbrlca",
-  --  "gbrfairmiled",
+    "gbrfairmiled",
     "gbrlct",
---    "gbrlcg",
+    "gbrlcg",
+	"gbrflower",
   },
 
         --------------------
@@ -894,9 +896,9 @@ buildoptions =
 	"pontoonraft",
     "rustender15t",
 --    "ruslct",
---    "ruskomsmtb",
---    "rusbmo",
---    "rusbka-1125",
+    "ruskomsmtb",
+    "rusbmo",
+	"rusbka-1125",
   },
   rusboatyardlarge =
   {
@@ -904,10 +906,10 @@ buildoptions =
 	"pontoonraft",
     "rustender15t",
     "ruslct",
---    "ruskomsmtb",
---    "rusbmo",
---    "rusbka-1125",
---    "ruspsk",
+    "ruskomsmtb",
+    "rusbmo",
+    "rusbka-1125",
+    "ruspsk",
 --    "ruspr7",
   },
   
@@ -1150,47 +1152,18 @@ if (modOptions) then
 	if (modOptions.navies) then
 		local tmpNavies = tonumber(modOptions.navies)
 		if tmpNavies > 0 then
-			-- at least transports are available
-			-- enable pontoon trucks
-			table.insert(buildoptions.usvehicleyard, 2, "uspontoontruck")
-			table.insert(buildoptions.usvehicleyard1, 2, "uspontoontruck")
-			table.insert(buildoptions.gbrvehicleyard, 2, "gbrpontoontruck")
-			table.insert(buildoptions.gbrvehicleyard1, 2, "gbrpontoontruck")
-			table.insert(buildoptions.gervehicleyard, 2, "gerpontoontruck")
-			table.insert(buildoptions.gervehicleyard1, 2, "gerpontoontruck")
-			table.insert(buildoptions.rusvehicleyard, 2, "ruspontoontruck")
-			table.insert(buildoptions.rusvehicleyard1, 2, "ruspontoontruck")
-			-- transports are in list by default
-		end
-		if tmpNavies > 1 then
 			-- add Light ships
-			table.insert(buildoptions.rusboatyard, "ruskomsmtb")
-			table.insert(buildoptions.rusboatyard, "rusbmo")
-			table.insert(buildoptions.rusboatyard, "rusbka-1125")
-			table.insert(buildoptions.rusboatyardlarge, "ruskomsmtb")
-			table.insert(buildoptions.rusboatyardlarge, "rusbmo")
-			table.insert(buildoptions.rusboatyardlarge, "rusbka-1125")
-
-			table.insert(buildoptions.gerboatyard, "gerrboot")
-			table.insert(buildoptions.gerboatyard, "gersboot")
-			table.insert(buildoptions.gerboatyardlarge, "gerrboot")
-			table.insert(buildoptions.gerboatyardlarge, "gersboot")
-
-			table.insert(buildoptions.gbrboatyard, "gbrfairmiled")
-			table.insert(buildoptions.gbrboatyardlarge, "gbrfairmiled")
-
-			table.insert(buildoptions.usboatyard, "uspt103-bofors")
-			table.insert(buildoptions.usboatyardlarge, "uspt103-bofors")
-		end
-		if tmpNavies > 2 then
-			-- add Coastal Bombardment ships
 			table.insert(buildoptions.rusboatyardlarge, "rusmonitor")
+			table.insert(buildoptions.rusboatyardlarge, "ruspr7")
+			
+			table.insert(buildoptions.gerboatyardlarge, "gerflottentorpboot")
+			table.insert(buildoptions.gerboatyardlarge, "gertype1934")	
+			
+			table.insert(buildoptions.gbrboatyardlarge, "gbrhuntii")
+			table.insert(buildoptions.gbrboatyardlarge, "gbroclass")
 
-			table.insert(buildoptions.gerboatyardlarge, "gerafp")
-
-			table.insert(buildoptions.gbrboatyardlarge, "gbrlcg")
-
-			table.insert(buildoptions.usboatyardlarge, "uslcsl")
+			table.insert(buildoptions.usboatyardlarge, "ustacoma")
+			table.insert(buildoptions.usboatyardlarge, "usfletcher")
 		end
 	end
 end

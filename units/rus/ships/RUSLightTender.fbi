@@ -6,9 +6,9 @@
   airSightDistance=2500;
   brakeRate=0.2;
   buildCostEnergy=0;
-  buildCostMetal=1200;
+  buildCostMetal=450;
   buildPic=RUSTender15t.png;
-  buildTime=1200;
+  buildTime=450;
   canMove=1;
   category=SHIP MINETRIGGER;
   [customParams] {
@@ -34,7 +34,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=600;
+  sightDistance=800;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;

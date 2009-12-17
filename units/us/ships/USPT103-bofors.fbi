@@ -6,9 +6,9 @@
   airSightDistance=3000;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=3500;
+  buildCostMetal=2400;
   buildPic=USPT103.png;
-  buildTime=3500;
+  buildTime=2400;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -17,7 +17,7 @@
   collisionVolumeType=box;
   corpse=USPT103_dead;
   [customParams] {
-    dontCount=1;
+    dontCount=0;
   }
   energyMake=0;
   energyUse=0;
@@ -28,8 +28,8 @@
   iconType=torpboat;
   mass=4000;
   maxDamage=4000;
-  maxReverseVelocity=4.3;
-  maxVelocity=8.6; // 43 knots
+  maxReverseVelocity=2.15;
+  maxvelocity=4.3; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   noChaseCategory=FLAG AIR MINE;
@@ -49,12 +49,12 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=1600;
+  sightDistance=900;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=375;
+  turnRate=300;
   badTargetCategory=FLAG;
 
   weapon10=KwK3020mmHE;
@@ -82,12 +82,12 @@
   weaponMainDir4=0 0 1;
 
   weapon5=bofors40mmaa;
-  maxAngleDif5=350;
+  //maxAngleDif5=350;
   onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
   weapon6=flak3820mmaa;
-  onlyTargetCategory6=AIR;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 1;
 
   weapon7=m2browningaa;
@@ -97,7 +97,7 @@
   onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
 
   weapon9=bofors40mmhe;
-  maxAngleDif9=350;
+ //maxAngleDif9=350;
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }

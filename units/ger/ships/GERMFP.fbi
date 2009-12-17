@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=3500;
+  buildCostMetal=1000;
   buildPic=germfp.png;
-  buildTime=3500;
+  buildTime=1000;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GERMFP_dead;

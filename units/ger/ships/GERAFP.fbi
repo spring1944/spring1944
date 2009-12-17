@@ -6,12 +6,15 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=12000;
+  buildCostMetal=7500;
   buildPic=gerafp.png;
-  buildTime=12000;
+  buildTime=7500;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=80.0 60.0 280.0;
+  collisionVolumeType=box;
   corpse=GERAFP_dead;
   [customParams] {
     dontCount=1;
@@ -20,8 +23,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=20;
+  footprintZ=20;
   iconType=gunboat;
   mass=27200;
   maxDamage=27200;

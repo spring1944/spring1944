@@ -28,8 +28,8 @@
   iconType=destroyer;
   mass=190500;
   maxDamage=190500;
-  maxReverseVelocity=4;
-  maxVelocity=8;
+  maxReverseVelocity=1.9;
+  maxVelocity=3.8;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=RUSPr7;

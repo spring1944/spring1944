@@ -12,6 +12,9 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -50.0 0.0;
+  collisionVolumeScales=85.0 130.0 600.0;
+  collisionVolumeType=box;
   corpse=GBROClass_dead;
   [customParams] {
     dontCount=1;
@@ -40,7 +43,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=25;
+  turnRate=130;
 
   weapon10=20mmOerlikonaa;
   maxAngleDif10=200;

@@ -25,7 +25,7 @@
   mass=5000;
   maxDamage=5000;
   maxReverseVelocity=2.15;
-  maxVelocity=4.3; // 43 knots
+  maxvelocity=4.3; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   objectName=USPT103;
@@ -39,7 +39,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=55;
+  turnRate=300;
 
   weapon1=mk13torpedo;
   maxAngleDif1=40;

@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=1100;
-  buildTime=1100;
+  buildCostMetal=600;
+  buildTime=600;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=USLCVP_dead;
@@ -24,8 +24,8 @@
   iconType=landingship;
   mass=820;
   maxDamage=820;
-  maxReverseVelocity=0.6;
-  maxVelocity=3.2;
+  maxReverseVelocity=0.5;
+  maxVelocity=0.9;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   objectName=USLCVP.S3O;
@@ -42,7 +42,7 @@
   transportMass=8000;
   transportSize=1;
   turninplace=0;
-  turnRate=225;
+  turnRate=180;
 
   weapon1=m1919a4browning;
   maxAngleDif1=200;

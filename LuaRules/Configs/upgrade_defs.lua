@@ -319,9 +319,9 @@ local upgradeDefs = {
 	gbrboatyard = {
 		{
 			into = 'gbrboatyardlarge',
-			mcost = 3000,
+			mcost = 6000,
 			ecost = 0,
-			time = 30,
+			time = 60,
 			buttonname = 'Upg: Large BY',
 			name = 'Upgrade: Large Boatyard',
 			desc = 'Makes larger ships available',
@@ -333,9 +333,9 @@ local upgradeDefs = {
 	gerboatyard = {
 		{
 			into = 'gerboatyardlarge',
-			mcost = 3000,
+			mcost = 6000,
 			ecost = 0,
-			time = 30,
+			time = 60,
 			buttonname = 'Upg: Large BY',
 			name = 'Upgrade: Large Boatyard',
 			desc = 'Makes larger ships available',
@@ -347,9 +347,9 @@ local upgradeDefs = {
 	rusboatyard = {
 		{
 			into = 'rusboatyardlarge',
-			mcost = 3000,
+			mcost = 6000,
 			ecost = 0,
-			time = 30,
+			time = 60,
 			buttonname = 'Upg: Large BY',
 			name = 'Upgrade: Large Boatyard',
 			desc = 'Makes larger ships available',
@@ -361,9 +361,9 @@ local upgradeDefs = {
 	usboatyard = {
 		{
 			into = 'usboatyardlarge',
-			mcost = 3000,
+			mcost = 6000,
 			ecost = 0,
-			time = 30,
+			time = 60,
 			buttonname = 'Upg: Large BY',
 			name = 'Upgrade: Large Boatyard',
 			desc = 'Makes larger ships available',

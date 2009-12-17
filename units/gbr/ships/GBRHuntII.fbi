@@ -12,6 +12,7 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+
   corpse=GBRHuntII_dead;
   [customParams] {
     dontCount=1;
@@ -40,7 +41,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=25;
+  turnRate=124;
 
   weapon1=gbr4inch45mkxvi;
   maxAngleDif1=270;

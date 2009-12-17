@@ -27,8 +27,8 @@
   iconType=gunboat;
   mass=5620;
   maxDamage=5620;
-  maxReverseVelocity=3.02;
-  maxVelocity=6.04;
+  maxReverseVelocity=1.1;
+  maxVelocity=2.2;
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   objectName=RUSBMO;
@@ -47,7 +47,7 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=1600;
+  sightDistance=900;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;

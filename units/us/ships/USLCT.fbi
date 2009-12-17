@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=2800;
+  buildCostMetal=1200;
   buildPic=uslct.png;
-  buildTime=2800;
+  buildTime=1200;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 -30.0 0.0;
@@ -28,9 +28,8 @@
   iconType=transportship;
   mass=29100;
   maxDamage=29100;
-  maxReverseVelocity=0.8;
-  maxVelocity=1.6;
-  minWaterDepth=2;
+  maxReverseVelocity=0.35;
+  maxvelocity=0.7; // 7 knots
   movementClass=BOAT_LandingCraft;
   objectName=USLCT;
   seismicSignature=0;
@@ -38,7 +37,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=1600;
+  sightDistance=900;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
@@ -46,16 +45,16 @@
   transportMass=15000;
   transportSize=30;
   turninplace=0;
-  turnRate=170;
+  turnRate=140;
 
   weapon1=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif1=240;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=1 0 0;
 
   weapon2=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif2=240;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=-1 0 0;
 }
 

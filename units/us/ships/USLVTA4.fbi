@@ -31,7 +31,7 @@
   mass=2750;
   maxDamage=1814;
   maxSlope=2;
-  maxVelocity=3.5;
+  maxvelocity=3.5;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG MINE;
   objectName=USLVTA4;

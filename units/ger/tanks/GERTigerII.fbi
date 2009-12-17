@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GERTigerII;
   name=Pzkpfw VI B Koenigstiger;
-  description=Super HeavyCombat Tank;
+  description=Super-Heavy Combat Tank;
   acceleration=0.033;
   airSightDistance=1500;
   brakeRate=0.105;

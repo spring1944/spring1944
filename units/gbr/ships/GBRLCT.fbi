@@ -6,11 +6,14 @@
   airSightDistance=1100;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2800;
+  buildCostMetal=1400;
   buildPic=gbrlct.png;
-  buildTime=2800;
+  buildTime=1400;
   canMove=1;
   category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 100.0 220.0;
+  collisionVolumeType=box;
   corpse=GBRLCT_dead;
   [customParams] {
     dontCount=1;
@@ -45,7 +48,7 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=700;
+  sightDistance=900;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
@@ -53,7 +56,7 @@
   transportMass=27000;
   transportSize=54;
   turninplace=0;
-  turnRate=42.5;
+  turnRate=140;
 
   weapon1=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif1=240;

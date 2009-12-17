@@ -6,8 +6,8 @@
   airSightDistance=3000;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=1800;
-  buildTime=1800;
+  buildCostMetal=1350;
+  buildTime=1350;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -27,8 +27,8 @@
   iconType=torpboat;
   mass=2090;
   maxDamage=2090;
-  maxReverseVelocity=6.58;
-  maxVelocity=13.16;
+  maxReverseVelocity=2.4;
+  maxvelocity=4.8;
   minWaterDepth=10;
   movementClass=BOAT_Destroyer;
   objectName=RUSKomsMTB;
@@ -45,7 +45,7 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  sightDistance=1600;
+  sightDistance=800;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;

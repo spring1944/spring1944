@@ -28,8 +28,8 @@
   iconType=destroyer;
   mass=226800;
   maxDamage=226800;
-  maxReverseVelocity=2.505;
-  maxVelocity=7;
+  maxReverseVelocity=1.75;
+  maxvelocity=3.5; // 35 kn
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
   objectName=USFletcher;
