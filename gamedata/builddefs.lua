@@ -84,7 +84,7 @@ buildoptions =
   usvehicleyard =
   {
     "usgmcengvehicle",
-    --"uspontoontruck",
+    "uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
 	"usm16mgmc",
@@ -96,10 +96,10 @@ buildoptions =
   usvehicleyard1 =
   {
     "usgmcengvehicle",
-    --"uspontoontruck",
+    "uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
-		"usm16mgmc",
+	"usm16mgmc",
     "usdukw",
     "usm8greyhound",
     "usm8scott",
@@ -297,7 +297,7 @@ buildoptions =
   gervehicleyard =
   {
     "gersdkfz9",
-    --"gerpontoontruck",
+    "gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -308,7 +308,7 @@ buildoptions =
   gervehicleyard1 =
   {
     "gersdkfz9",
-    --"gerpontoontruck",
+    "gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -564,7 +564,7 @@ buildoptions =
   gbrvehicleyard =
   {
     "gbrmatadorengvehicle",
-    --"gbrpontoontruck",
+    "gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 	"gbrstaghound",
@@ -576,7 +576,7 @@ buildoptions =
   gbrvehicleyard1 =
   {
     "gbrmatadorengvehicle",
-    --"gbrpontoontruck",
+    "gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 		"gbrstaghound",
@@ -789,7 +789,7 @@ buildoptions =
   rusvehicleyard =
   {
     "rusk31",
-    --"ruspontoontruck",
+    "ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
@@ -801,7 +801,7 @@ buildoptions =
   rusvehicleyard1 =
   {
     "rusk31",
-    --"ruspontoontruck",
+    "ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
