@@ -12,7 +12,7 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeOffsets=0.0 -30.0 0.0;
   collisionVolumeScales=70.0 80.0 280.0;
   collisionVolumeType=box;
   corpse=GERVorpostenBoot_dead;

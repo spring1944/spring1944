@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildTime=2800;
-  buildCostMetal=2800;
+  buildTime=2500;
+  buildCostMetal=2500;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -26,7 +26,7 @@
   footprintZ=4;
   iconType=gunboat;
   mass=5620;
-  maxDamage=5620;
+  maxDamage=5880; //+10% for armor
   maxReverseVelocity=1.1;
   maxVelocity=2.2;
   minWaterDepth=10;

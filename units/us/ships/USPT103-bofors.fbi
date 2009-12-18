@@ -6,9 +6,9 @@
   airSightDistance=3000;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2400;
+  buildCostMetal=2300;
   buildPic=USPT103.png;
-  buildTime=2400;
+  buildTime=2300;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
