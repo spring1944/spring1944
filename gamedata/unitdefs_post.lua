@@ -195,10 +195,11 @@ for name, ud in pairs(UnitDefs) do
 	-- ammo users
 	if (ud.customparams) then
 		if (ud.customparams.weaponcost) and (ud.customparams.maxammo) then
+			local newDescrLine = "max. ammo: "..ud.customparams.maxammo..", log. per shot: "..ud.customparams.weaponcost..", total: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
 			if not (ud.description) then
-				ud.description = "log. for full reload: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
+				ud.description = newDescrLine
 			end
-			ud.description = ud.description.." (log. for full reload: "..(ud.customparams.weaponcost*ud.customparams.maxammo)..")"
+			ud.description = ud.description.." ("..newDescrLine..")"
 			
 		end
 	end
