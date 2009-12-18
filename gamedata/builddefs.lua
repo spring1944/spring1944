@@ -199,7 +199,7 @@ buildoptions =
     "usdukw",
     "uslcvp",
     "uspt103-bofors",
-	-- "uslct",
+	"uslvta4",
 --    "uslcsl",
   },
   usboatyardlarge =
@@ -209,6 +209,7 @@ buildoptions =
     "usdukw",
     "uslcvp",
     "uspt103-bofors",
+	"uslvta4",
     "uslct",
     "uslcsl",
 --	"ustacoma",

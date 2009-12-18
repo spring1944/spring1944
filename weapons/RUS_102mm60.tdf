@@ -21,7 +21,7 @@
   impulseFactor=0;
   intensity=0.1;
   noSelfDamage=1;
-  range=4250;
+  range=3400;
   reloadTime=5; // 12 rpm
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
