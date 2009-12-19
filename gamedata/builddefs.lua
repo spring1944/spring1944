@@ -173,6 +173,7 @@ buildoptions =
 
   ussupplydepot =
   {
+    "usgmctruck",
     "usm3halftrack",
   },
 
@@ -414,6 +415,7 @@ buildoptions =
 
   gersupplydepot =
   {
+	"geropelblitz",
     "gersdkfz251",
   },
 
@@ -634,6 +636,7 @@ buildoptions =
 
   gbrsupplydepot =
   {
+	"gbrbedfordtruck",
     "gbrm5halftrack",
   },
   
@@ -875,6 +878,7 @@ buildoptions =
 
   russupplydepot =
   {
+	"ruszis5",
     "rusm5halftrack",
   },
   

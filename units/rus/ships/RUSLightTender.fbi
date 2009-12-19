@@ -12,6 +12,8 @@
   canMove=1;
   category=SHIP MINETRIGGER;
   [customParams] {
+    ammoSupplier=1;
+    supplyRange=350;
     dontCount=1;
   }
   energyMake=0;

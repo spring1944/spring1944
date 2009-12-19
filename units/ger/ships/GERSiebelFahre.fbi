@@ -6,13 +6,14 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=1800;
-  buildTime=1800;
+  buildCostMetal=2400;
+  buildTime=2400;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GERSiebelFahre_dead;
   [customParams] {
-    dontCount=1;
+    ammoSupplier=1;
+    supplyRange=400;
   }
   energyMake=0;
   energyUse=0;
@@ -38,7 +39,7 @@
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
-  transportCapacity=32;
+  transportCapacity=48;
   transportMass=4000;
   transportSize=2;
   turninplace=0;

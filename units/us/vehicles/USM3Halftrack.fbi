@@ -20,8 +20,6 @@
     supplyRange=200;
 	hasturnbutton=1;
   }
-  energyMake=0;
-  energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;

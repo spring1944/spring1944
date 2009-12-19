@@ -16,7 +16,8 @@
   collisionVolumeType=box;
   corpse=USLCT_dead;
   [customParams] {
-    dontCount=1;
+    ammoSupplier=1;
+    supplyRange=600;
   }
   energyMake=0;
   energyUse=0;
