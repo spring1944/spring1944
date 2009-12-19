@@ -449,6 +449,7 @@ buildoptions =
     "pontoonraft",
     "gerrboot",
     "gersboot",
+	"gersiebelfahre",
     "germfp",
     "gerafp",
 	"gervorpostenboot",

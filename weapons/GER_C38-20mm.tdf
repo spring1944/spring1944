@@ -1,6 +1,6 @@
 [20mmc38] {
   name=2cm C/38 single-gun High-Explosive Shells;
-  areaOfEffect=5;
+  areaOfEffect=24;
   burnblow=1;
   burst=5;
   burstRate=0.16;
@@ -12,7 +12,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=200;
+    default=41;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_XSmall;
@@ -22,8 +22,8 @@
   impulseFactor=0;
   intensity=0.9;
   lineofsight=1;
-  range=1500;
-  reloadTime=6;
+  range=730;
+  reloadTime=3;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   separation=2;

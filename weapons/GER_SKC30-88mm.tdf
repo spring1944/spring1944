@@ -20,6 +20,7 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadlimit=50;
   movingAccuracy=600;
   noSelfDamage=1;
   range=2110;
@@ -32,7 +33,7 @@
   soundHit=GEN_Explo_3;
   soundStart=GER_88mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.5;
   tolerance=3000;
   turret=1;
   weaponVelocity=1250;

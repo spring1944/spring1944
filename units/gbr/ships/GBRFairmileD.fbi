@@ -98,12 +98,12 @@
   onlyTargetCategory4=LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
-  weapon5=6pdr57mmap;
+  weapon5=6pdr57mmhe;
   maxAngleDif5=270;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
 
-  weapon6=6pdr57mmap;
+  weapon6=6pdr57mmhe;
   maxAngleDif6=270;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 -1;
