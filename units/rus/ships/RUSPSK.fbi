@@ -44,7 +44,7 @@
   radardistance=4000;
   smoothAnim=0;
   SoundCategory=RUSBoat;
-  stealth=1;
+  stealth=0;
   TEDClass=SHIP;
   turninplace=0;
   turnRate=160;

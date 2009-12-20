@@ -14,7 +14,6 @@
 
 
 local noCustomBuilds = false
-
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
@@ -36,9 +35,9 @@ if (modOptions.command_mult) then
 		commandLimit = 80000
 	end
 end
+local timeMult = modOptions.command_mult or 1
 local deployment = {
-
-  maxFrames = 600 * Game.gameSpeed,
+  maxFrames = (60 + (30 * timeMult)) * Game.gameSpeed,
 
   maxUnits  = 5000,
 

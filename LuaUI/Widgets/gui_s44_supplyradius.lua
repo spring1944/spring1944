@@ -305,7 +305,7 @@ local function DrawSupplyRing(supplyInfo)
 	glPopMatrix()
 end
 
-local function DrawSupplyRingFull(supplyDefInfo, x, z)
+local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
 	local r = supplyDefInfo[1]
 	local segmentAngle = supplyDefInfo[3]
 
@@ -313,7 +313,7 @@ local function DrawSupplyRingFull(supplyDefInfo, x, z)
 	local angle = 0
 	local vi = 1
 	for i=1, supplyDefInfo[2] do
-		local gx, gz = x + r * cos(angle), z + r * sin(angle)
+		local gx, gz = x + radius * cos(angle), z + radius * sin(angle)
 		local gy =  max(GetGroundHeight(gx, gz), 0)
 		if gy then
 			vertices[vi] = {
@@ -336,17 +336,18 @@ local function DrawTrucks()
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
+		local radius = UnitDefs[unitDefID].customParams.supplyrange
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
 		if AreTeamsAllied(unitTeam, myTeamID) then
 			if generalTruckDefIDs[unitDefID] then
 				glColor(previewColor)
-				DrawSupplyRingFull(generalTruckDefInfo, x, z)
+				DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
 			elseif supplyTruckDefIDs[unitDefID] then
 				glColor(previewColor)
 				--DrawSupplyRingFull(supplyTruckDefInfo, x, z)
 				glColor(color)
-				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z)
+				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z, radius)
 			end
 		end
 	end
@@ -630,7 +631,7 @@ function widget:Initialize()
 		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) and unitDef.name ~= "usdukw" then
 			generalTruckDefIDs[unitDefID] = true
 		end
-		if unitDef.humanName and strFind(unitDef.humanName, "Halftrack") and not strFind(unitDef.humanName, "Unloaded") then
+		if unitDef.customParams.ammosupplier == "1" and unitDef.speed > 0 then
 			--Spring.Echo(unitDef.humanName)
 			supplyTruckDefIDs[unitDefID] = true
 		end

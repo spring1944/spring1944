@@ -42,7 +42,7 @@ local DestroyUnit          = Spring.DestroyUnit
 local GetUnitBasePosition  = Spring.GetUnitBasePosition
 local GiveOrderToUnitArray = Spring.GiveOrderToUnitArray
 local DelayCall            = GG.Delay.DelayCall
-
+local initFrame
 
 local squadDefs = { }
 local builderOf = { }  -- maps unitID -> builderID
@@ -51,10 +51,16 @@ local builders  = { }  -- keep track of builders
 
 function gadget:Initialize()
 	squadDefs = include("LuaRules/Configs/squad_defs.lua")
-	for _, unitID in ipairs(Spring.GetAllUnits()) do
-		local teamID = Spring.GetUnitTeam(unitID)
-		local unitDefID = Spring.GetUnitDefID(unitID)
-		gadget:UnitCreated(unitID, unitDefID, teamID)
+	initFrame = Spring.GetGameFrame()
+end
+
+function gadget:gameFrame(n)
+	if n == initFrame then
+		for _, unitID in ipairs(Spring.GetAllUnits()) do
+			local teamID = Spring.GetUnitTeam(unitID)
+			local unitDefID = Spring.GetUnitDefID(unitID)
+			gadget:UnitCreated(unitID, unitDefID, teamID)
+		end
 	end
 end
 

@@ -70,6 +70,8 @@ piece base, hull, main_turret_a, sleeve_ma, barrel_ma, flare_ma, main_turret_b, 
 #define MEDIUMLARGE_MUZZLEFLASH 1024+8
 #define MEDIUMLARGE_MUZZLEDUST 1024+9
 
+#define VISIBLE_PERIOD	5000
+
 static-var					CurrentSpeed, bMoving, QuadA, QuadB, flak20mmBurstRate;
 
 WorkingLoop()
@@ -235,6 +237,9 @@ FireWeapon1()
 	move barrel_ma to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_ma to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+	set STEALTH to 0;
+	sleep VISIBLE_PERIOD;
+	set STEALTH to 1;
 	//hide flare_ma;
 }
 

@@ -10,9 +10,15 @@ function gadget:GetInfo()
   }
 end
 
+if (Spring.GetModOptions) then
+  modOptions = Spring.GetModOptions()
+end
+
 --synced only
+
 if not gadgetHandler:IsSyncedCode() then return end
 
+if (modOptions.gametype == "0") then
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
@@ -76,21 +82,19 @@ end
 function gadget:Initialize()
   local allUnits = Spring.GetAllUnits()
   local allTeams = Spring.GetTeamList()
-  
   for unitDefID, _ in pairs(buildables) do
-    for i = 1, #allTeams do
-      local teamID = allTeams[i]
-      SetBuildoptionDisabled(unitDefID, teamID, true)
-    end
+	for i = 1, #allTeams do
+	  local teamID = allTeams[i]
+	  SetBuildoptionDisabled(unitDefID, teamID, true)
+	end
   end
-  
+
   for i = 1, #allUnits do
-    local unitID = allUnits[i]
-    local unitDefID = GetUnitDefID(unitID)
-    local unitTeam = GetUnitTeam(unitID)
-    gadget:UnitGiven(unitID, unitDefID, unitTeam)
+	local unitID = allUnits[i]
+	local unitDefID = GetUnitDefID(unitID)
+	local unitTeam = GetUnitTeam(unitID)
+	gadget:UnitGiven(unitID, unitDefID, unitTeam)
   end
-  
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
@@ -171,3 +175,4 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 		gadget:UnitCreated(unitID, unitDefID, newTeam)
   end
 end
+end 

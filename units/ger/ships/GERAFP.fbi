@@ -53,7 +53,7 @@
   showNanoFrame=0;
   sightDistance=900;
   smoothAnim=0;
-  stealth=0;
+  stealth=1;
   TEDClass=SHIP;
   turninplace=0;
   turnRate=35;

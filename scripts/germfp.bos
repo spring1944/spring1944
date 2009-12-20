@@ -71,6 +71,7 @@ piece base, hull, main_turret, sleeve, barrel, flare, turret_37, sleeve_37, barr
 #define MEDIUMLARGE_MUZZLEFLASH 1024+8
 #define MEDIUMLARGE_MUZZLEDUST 1024+9
 
+#define VISIBLE_PERIOD	5000
 
 static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, flak20mmBurstRate;
 
@@ -322,7 +323,9 @@ FireWeapon1()
 	move barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-//	hide flare;
+	set STEALTH to 0;
+	sleep VISIBLE_PERIOD;
+	set STEALTH to 1;
 }
 
 QueryWeapon2(piecenum)
