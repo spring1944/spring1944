@@ -22,6 +22,7 @@
     maxammo=9;
     weaponcost=8;
     weaponswithammo=1;
+	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -32,6 +33,7 @@
   maxDamage=1814;
   maxSlope=2;
   maxvelocity=3.5;
+  maxReverseVelocity=1.75;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG MINE;
   objectName=USLVTA4;

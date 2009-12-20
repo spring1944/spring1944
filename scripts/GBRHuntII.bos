@@ -6,7 +6,7 @@ piece base, hull1, hull2, railings1, railings2, boats,
 	  main_turret_c, main_sleeve_c, main_barrel1_c, main_flare1_c, main_barrel2_c, main_flare2_c,
 	  pom_turret, pom_sleeve, pom_barrel1, pom_flare1, pom_barrel2, pom_flare2, pom_barrel3, pom_flare3, pom_barrel4, pom_flare4,
 	  turret_20_1, sleeve_20_1, barrel_20_1, flare_20_1, turret_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
-	  exhaust1, wake1, wake2, wake3, wake4;
+	  exhaust, wake1, wake2, wake3, wake4;
 
 #define BASE_SMOKE_PERIOD	40
 #define MIN_SMOKE_PERIOD	240
@@ -39,7 +39,7 @@ piece base, hull1, hull2, railings1, railings2, boats,
 #define HULL_LIST_ANGLE			<90>
 
 //********************Engine smoke
-#define ENGINE_SMOKE_PIECE	exhaust1
+#define ENGINE_SMOKE_PIECE	exhaust
 #define ENGINE_SMOKE_PERIOD	200
 
 #define RESTORE_PERIOD		2500
