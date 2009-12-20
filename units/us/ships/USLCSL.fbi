@@ -65,12 +65,12 @@
   weaponMainDir1=0 0 1;
 
   weapon2=twin_bofors40mmaa;
-  maxAngleDif2=200;
+  maxAngleDif2=270;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=twin_bofors40mmaa;
-  maxAngleDif3=200;
+  maxAngleDif3=270;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 -1;
 
