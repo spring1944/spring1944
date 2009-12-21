@@ -25,6 +25,20 @@ piece base, hull, ramp, turret, grabber, link,
 
 #define SMOKEPIECE	hull
 
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
+
+// tracers
+#define SMALL_TRACER 	2048+2
+
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
@@ -254,9 +268,15 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show flare1;
+/*	show flare1;
 	sleep 200;
-	hide flare1;
+	hide flare1;*/
+}
+
+Shot1(foo)
+{
+	emit-sfx SMALL_TRACER from flare1;
+	emit-sfx MG_MUZZLEFLASH from flare1;
 }
 
 QueryWeapon2(piecenum)
@@ -283,9 +303,15 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show flare2;
+/*	show flare2;
 	sleep 200;
-	hide flare2;
+	hide flare2;*/
+}
+
+Shot2(foo)
+{
+	emit-sfx SMALL_TRACER from flare2;
+	emit-sfx MG_MUZZLEFLASH from flare2;
 }
 
 Killed(severity, corpsetype)

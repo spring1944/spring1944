@@ -33,6 +33,16 @@
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
   sightDistance=900;
@@ -54,5 +64,7 @@
   maxAngleDif2=200;
   onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir2=-1 0 0;
+
+  weapon3=Small_Tracer;
 }
 
