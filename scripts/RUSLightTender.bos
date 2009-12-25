@@ -14,6 +14,19 @@ static-var restore_delay, skip, transportcount;
 //#define FUDGE				50 // isn't enough even between smg and rifle
 #define UNIT_ALLIED			74
 
+// effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+3
+#define SMALL_MUZZLEDUST 1024+4
+#define LARGE_MUZZLEFLASH 1024+8
+#define LARGE_MUZZLEDUST 1024+9
+
 // Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
 {

@@ -53,6 +53,19 @@ piece base, hull, railings, turret1, sleeve1, barrel1, flare1, aa_turret1, aa_sl
 #include "damageSmoke.h"
 static-var					CurrentSpeed, bMoving;
 
+// effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+3
+#define SMALL_MUZZLEDUST 1024+4
+#define LARGE_MUZZLEFLASH 1024+8
+#define LARGE_MUZZLEDUST 1024+9
+
 WorkingLoop()
 {
 	while(TRUE)
@@ -200,11 +213,13 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show flare1;
+//	show flare1;
+	emit-sfx LARGE_MUZZLEFLASH from flare1;
+	emit-sfx LARGE_MUZZLEDUST from flare1;
 	move barrel1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide flare1;
+//	hide flare1;
 }
 
 QueryWeapon2(piecenum)
@@ -231,11 +246,18 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show aa_flare1;
+	//show aa_flare1;
+	//hide aa_flare1;
+}
+
+Shot2(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from aa_flare1;
+	emit-sfx SMALL_MUZZLEDUST from aa_flare1;
+
 	move aa_barrel1 to z-axis (0-AA_GUN_RECOIL) speed AA_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa_barrel1 to z-axis [0] speed AA_GUN_BACK_SPEED;
-	hide aa_flare1;
 }
 
 QueryWeapon3(piecenum)
@@ -262,11 +284,17 @@ AimWeapon3(heading, pitch)
 
 FireWeapon3()
 {
-	show aa_flare2;
+//	show aa_flare2;
+//	hide aa_flare2;
+}
+
+Shot3(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from aa_flare2;
+	emit-sfx SMALL_MUZZLEDUST from aa_flare2;
 	move aa_barrel2 to z-axis (0-AA_GUN_RECOIL) speed AA_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa_barrel2 to z-axis [0] speed AA_GUN_BACK_SPEED;
-	hide aa_flare2;
 }
 
 QueryWeapon4(piecenum)
@@ -293,11 +321,18 @@ AimWeapon4(heading, pitch)
 
 FireWeapon4()
 {
-	show aa_flare3;
+//	show aa_flare3;
+
+//	hide aa_flare3;
+}
+
+Shot4(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from aa_flare3;
+	emit-sfx SMALL_MUZZLEDUST from aa_flare3;
 	move aa_barrel3 to z-axis (0-AA_GUN_RECOIL) speed AA_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa_barrel3 to z-axis [0] speed AA_GUN_BACK_SPEED;
-	hide aa_flare3;
 }
 
 QueryWeapon5(piecenum)
@@ -324,9 +359,14 @@ AimWeapon5(heading, pitch)
 
 FireWeapon5()
 {
-	show mg_flare1;
+/*	show mg_flare1;
 	sleep 200;
-	hide mg_flare1;
+	hide mg_flare1;*/
+}
+
+Shot5(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare1;
 }
 
 QueryWeapon6(piecenum)
@@ -353,9 +393,14 @@ AimWeapon6(heading, pitch)
 
 FireWeapon6()
 {
-	show mg_flare2;
+/*	show mg_flare2;
 	sleep 200;
-	hide mg_flare2;
+	hide mg_flare2;*/
+}
+
+Shot6(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare2;
 }
 
 Killed(severity, corpsetype)
