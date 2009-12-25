@@ -306,14 +306,14 @@ local function DrawSupplyRing(supplyInfo)
 end
 
 local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
-	local r = supplyDefInfo[1]
+	local r = radius or DEFAULT_SUPPLY_RANGE--supplyDefInfo[1]
 	local segmentAngle = supplyDefInfo[3]
 
 	local vertices = {}
 	local angle = 0
 	local vi = 1
 	for i=1, supplyDefInfo[2] do
-		local gx, gz = x + radius * cos(angle), z + radius * sin(angle)
+		local gx, gz = x + r * cos(angle), z + r * sin(angle)
 		local gy =  max(GetGroundHeight(gx, gz), 0)
 		if gy then
 			vertices[vi] = {
