@@ -11,6 +11,7 @@
   buildTime=4600;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=GERMFP_dead;
   [customParams] {
     ammoSupplier=1;

@@ -10,6 +10,7 @@
   buildTime=600;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=USLCVP_dead;
   [customParams] {
     ammoSupplier=1;

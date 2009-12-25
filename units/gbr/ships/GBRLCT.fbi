@@ -11,6 +11,7 @@
   buildTime=2100;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=60.0 100.0 220.0;
   collisionVolumeType=box;

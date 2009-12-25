@@ -10,6 +10,7 @@
   buildTime=2400;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=GERSiebelFahre_dead;
   [customParams] {
     ammoSupplier=1;

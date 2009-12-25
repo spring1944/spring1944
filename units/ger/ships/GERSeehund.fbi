@@ -11,6 +11,7 @@
   canAttack=1;
   canMove=1;
   category=MINETRIGGER SUB;
+  noChaseCategory=FLAG AIR MINE;
   corpse=GERSeehund_dead;
   [customParams] {
     dontCount=1;

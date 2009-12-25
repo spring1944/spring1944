@@ -10,6 +10,7 @@
   buildTime=700;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=RUSTender15t_dead;
   [customParams] {
     ammoSupplier=1;

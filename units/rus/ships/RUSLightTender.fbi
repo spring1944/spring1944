@@ -11,6 +11,7 @@
   buildTime=450;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   [customParams] {
     ammoSupplier=1;
     supplyRange=350;

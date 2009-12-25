@@ -11,6 +11,7 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=USPT103_dead;
   [customParams] {
     dontCount=1;

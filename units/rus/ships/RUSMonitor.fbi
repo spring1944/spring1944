@@ -12,6 +12,7 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=RUSMonitor_dead;
   [customParams] {
     dontCount=1;

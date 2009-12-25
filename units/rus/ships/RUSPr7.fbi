@@ -12,6 +12,7 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 -50.0 0.0;
   collisionVolumeScales=85.0 130.0 600.0;
   collisionVolumeType=box;

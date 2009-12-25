@@ -12,6 +12,7 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
+  noChaseCategory=FLAG AIR MINE;
   corpse=GERType1934_dead;
   [customParams] {
     dontCount=1;
