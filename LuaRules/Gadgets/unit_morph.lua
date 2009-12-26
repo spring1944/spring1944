@@ -420,12 +420,12 @@ local function FinishMorph(unitID, morphData)
   local h = Spring.GetUnitHeading(unitID)
   local useBuildFacing, facing = GetBuildFacing(h, udDst)
   local newUnit = Spring.CreateUnit(defName, px, py, pz, facing, unitTeam)
-
-  Spring.SetUnitPosition(newUnit, px, py, pz)
-  if (not useBuildFacing) then
-    Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-  end
-
+	if newUnit ~= nil then
+	  Spring.SetUnitPosition(newUnit, px, py, pz)
+	  if (not useBuildFacing) then
+		Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
+	  end
+	end
 	if (udDst.customParams.maxammo) then
 		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
 		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)

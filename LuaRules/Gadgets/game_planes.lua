@@ -188,35 +188,37 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
   local altitude = unitDef.wantedHeight
   sy = sy + altitude
   local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
-  SetUnitPosition(unitID, sx, sy, sz)
-  SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
-  SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
-  GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
-  if alwaysAttack then
-    GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
-    if waypoint then
-      GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
-    end
-  else
-    if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
-      GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
-      if waypoint then
-        GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
-      end
-    else --location: fight to waypoint, then patrol to target
-      if waypoint then
-        GiveOrderToUnit(unitID, CMD_FIGHT, waypoint, {"shift"})
-      end
-      GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
-    end
-  end
-  planeStates[unitID] = PLANE_STATE_ACTIVE
-  -- make the plane say something if it's the first in its group
-  if numInFlight==1 then
-    if unitDef.customParams.planevoice=="1" then
-      Spring.CallCOBScript(unitID, "PlaneVoice", 1, 1)
-    end
-  end
+	if unitID ~= nil then
+	  SetUnitPosition(unitID, sx, sy, sz)
+	  SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
+	  SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
+	  GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
+	  if alwaysAttack then
+		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
+		if waypoint then
+		  GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
+		end
+	  else
+		if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
+		  GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
+		  if waypoint then
+			GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
+		  end
+		else --location: fight to waypoint, then patrol to target
+		  if waypoint then
+			GiveOrderToUnit(unitID, CMD_FIGHT, waypoint, {"shift"})
+		  end
+		  GiveOrderToUnit(unitID, CMD_PATROL, cmdParams, {"shift"})
+		end
+	  end
+	  planeStates[unitID] = PLANE_STATE_ACTIVE
+	  -- make the plane say something if it's the first in its group
+	  if numInFlight==1 then
+		if unitDef.customParams.planevoice=="1" then
+		  Spring.CallCOBScript(unitID, "PlaneVoice", 1, 1)
+		end
+	  end
+	end
 end
 
 local function GetFormationOffsets(numUnits, rotation)
