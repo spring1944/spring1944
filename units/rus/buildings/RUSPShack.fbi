@@ -37,6 +37,6 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20;
-  yardMap=ccc coc ccc;
+  //yardMap=ccc ccc ccc;
 }
 

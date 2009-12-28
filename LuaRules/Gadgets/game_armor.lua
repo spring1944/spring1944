@@ -46,7 +46,7 @@ end
 --higher = more quickly
 --along with cost, controls how hard counters are; higher = harder counters
 --recommend somewhere around 4-8?
-local ARMOR_POWER = 6
+local ARMOR_POWER = 3.7
 
 --effective penetration = HE_MULT * damage^HE_POWER
 --local HE_POWER = 1/2

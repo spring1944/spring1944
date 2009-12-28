@@ -1,6 +1,6 @@
 [bk37mmap] {
   name=BK-37 37mm Semi-Automatic Cannon;
-  accuracy=290;
+  accuracy=100;
   areaOfEffect=12;
   ballistic=1;
   burst=3;
@@ -27,7 +27,6 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
-  movingAccuracy=400;
   noSelfDamage=1;
   range=1500;
   reloadTime=5;
@@ -39,7 +38,7 @@
   soundHit=GEN_Explo_1;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1768;

@@ -33,7 +33,7 @@
   soundHit=GEN_Explo_3;
   soundStart=GER_75mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=5000;
   turret=1;
   weaponVelocity=700;

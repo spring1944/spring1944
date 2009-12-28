@@ -34,7 +34,7 @@
   soundStart=GER_Panzerfaust;
   stages=50;
   startVelocity=200;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=6000;
   turret=1;
   weaponVelocity=400;

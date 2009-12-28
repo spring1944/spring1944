@@ -35,7 +35,7 @@
   soundHit=GEN_Explo_1;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1768;
@@ -78,7 +78,7 @@
   rgbColor=1.0 0.75 0.0;
   soundTrigger=1;
   sprayAngle=3000;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   thickness=0.3;
   tolerance=3000;
   turret=1;
@@ -121,7 +121,7 @@
   soundHit=GEN_Explo_2;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=3000;
   turret=1;
   weaponVelocity=1584;

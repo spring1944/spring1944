@@ -35,7 +35,7 @@
   soundHit=GEN_Explo_1;
   soundStart=US_76mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1584;
@@ -77,7 +77,7 @@
   soundHit=GEN_Explo_3;
   soundStart=US_76mm;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=3000;
   turret=1;
   weaponVelocity=1646;

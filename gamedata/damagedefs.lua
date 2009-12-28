@@ -23,6 +23,7 @@ local damagedefs = {
     guns = 1,
     unarmouredvehicles = 1/5,
     default = 1/6,
+	armouredvehicles = 1/10,
     lightbuildings = 1/16,
     bunkers = 0,
     tanks = 0,

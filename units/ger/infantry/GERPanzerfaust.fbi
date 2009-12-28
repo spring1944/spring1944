@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.9;
   buildCostEnergy=0;
-  buildCostMetal=100;
-  buildTime=100;
+  buildCostMetal=50;
+  buildTime=50;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;

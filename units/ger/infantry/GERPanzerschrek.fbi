@@ -6,9 +6,9 @@
   airSightDistance=2500;
   brakeRate=0.9;
   buildCostEnergy=0;
-  buildCostMetal=150;
+  buildCostMetal=50;
   buildPic=GERPanzerfaust.png;
-  buildTime=150;
+  buildTime=50;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   //cloakCost=0;

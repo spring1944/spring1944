@@ -124,7 +124,7 @@
   soundStart=GER_20mm;
   sprayAngle=400;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=700;
   turret=1;
   weaponVelocity=2000;

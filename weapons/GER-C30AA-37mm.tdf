@@ -38,7 +38,7 @@
   soundStart=US_37mm;
   sprayAngle=200;
   stages=50;
-  targetMoveError=0.075;
+  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1768;
