@@ -353,8 +353,8 @@ AimWeapon2(heading, pitch)
 FireWeapon2()
 {
 //	show flare_37;
-	emit-sfx SMALL_MUZZLEFLASH from flare;
-	emit-sfx SMALL_MUZZLEDUST from flare;
+	emit-sfx SMALL_MUZZLEFLASH from flare_37;
+	emit-sfx SMALL_MUZZLEDUST from flare_37;
 	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_37 to z-axis 0 speed AA37_GUN_BACK_SPEED;
