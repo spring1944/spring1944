@@ -41,12 +41,31 @@ Snipawolf
 	2D Artwork
 Journier
 	Scripting
+Kartoffel200
+	3D Models
+bobthedinosaur
+	3D Models
+ash2life
+	3D Models
+N3mesis
+	3D Models, 2D Artwork
 
 Testers:
 [Developers]
 [Contributors]
 PressureLine
 1v0ry_k1ng
+zCram
+Godde
+Pintle
+Google Frog
+Totubae
+Goldsie
+Ashnal
+JAL
+Luckywaldo7
+TheMightyOne
+Big Take
 
 References:
 http://tarrif.net/
