@@ -2,10 +2,12 @@
   name=Molotov Cocktail;
   accuracy=1250;
   areaOfEffect=32;
-  canAttackGround=0;
+  //canAttackGround=1;
   cegTag=Flametrail;
   [customParams] {
     damagetype=fire;
+	damagetime=20;
+	ceg=Molotov;
   }
   [damage] {
     default=1000;
@@ -19,12 +21,12 @@
   movingAccuracy=500;
   range=180;
   reloadTime=8;
-  rendertype=3;
+  rendertype=1;
   soundHit=GEN_Molotov;
   targetBorder=1;
   tolerance=10000;
   turret=1;
-  weaponTimer=5;
+  //weaponTimer=5;
   weaponVelocity=210;
 }
 
