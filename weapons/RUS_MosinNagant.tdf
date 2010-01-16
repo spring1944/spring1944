@@ -41,8 +41,9 @@
 
 [partisanmosinnagant] {
   name=Mosin-Nagant;
-  accuracy=200;
+  accuracy=225;
   areaOfEffect=1;
+  avoidFeature=0;
   avoidFriendly=0;
   beamweapon=1;
   collideFriendly=0;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSPartisanRifle;
   name=Rifle Partisan;
-  description=Very light ambusher;
+  description=Very Light Defensive Ambusher;
   acceleration=0.375;
   airSightDistance=1500;
   brakeRate=0.9;
@@ -11,7 +11,7 @@
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
-  cloakCostMoving=0;
+  cloakCostMoving=0.1;
   [customParams] {
     dontCount=1;
     flagCapRate=0.05;
@@ -37,7 +37,7 @@
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSPartisanRifle.S3O;
   repairable=0;
-  seismicSignature=0;
+  seismicSignature=1;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
