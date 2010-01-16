@@ -40,7 +40,7 @@
   metalMake=0;
   noChaseCategory=FLAG AIR MINE;
   objectName=GERHQBunker.S3O;
-  radarDistance=2000000;
+  ////radarDistance=2000000;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {
     explosionGenerator0=custom:MG_MUZZLEFLASH;

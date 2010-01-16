@@ -24,7 +24,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=RUSRadar.S3O;
-  radarDistance=20000;
+  //radarDistance=20000;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }

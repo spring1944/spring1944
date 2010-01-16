@@ -40,7 +40,7 @@
   metalMake=0;
   objectName=GBRHQ.S3O;
   onoffable=1;
-  radarDistance=2000000;
+  //radarDistance=2000000;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {
   }
