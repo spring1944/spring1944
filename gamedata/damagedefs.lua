@@ -34,11 +34,11 @@ local damagedefs = {
   explosive = {
     infantry = 9,
 	ships = 2,
-    unarmouredvehicles = 2,
-    armouredvehicles = 1/2,
+    unarmouredvehicles = 1,
+    armouredvehicles = 1/3,
     lightbuildings = 2/3,
     guns = 3/4,
-    tanks = 1/2,
+    tanks = 1/3,
     flag = 0,
   },
   kinetic = {
