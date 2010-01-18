@@ -8,6 +8,7 @@
   metal=-1;
   object=GER_shoulderhit.S3O;
   reclaimable=1;
+  smoketime=0;
 }
 
 [gersoldier_dead] {
@@ -21,5 +22,6 @@
   metal=-1;
   object=GERTrooper_dead.S3O;
   reclaimable=1;
+  smoketime=0;
 }
 

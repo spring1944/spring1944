@@ -8,5 +8,6 @@
   metal=-1;
   object=GBRTrooper_dead.S3O;
   reclaimable=1;
+  smoketime=0;
 }
 

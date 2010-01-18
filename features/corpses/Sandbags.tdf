@@ -22,6 +22,7 @@
   metal=0;
   object=Sandbags_Destroyed.S3O;
   reclaimable=1;
+  smoketime=0;
 }
 
 [Sandbags] {
@@ -47,5 +48,6 @@
   metal=0;
   object=Sandbags_Destroyed.S3O;
   reclaimable=1;
+  smoketime=0;
 }
 
