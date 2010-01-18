@@ -2,13 +2,13 @@
   name=M2-2 Flamethrower;
   areaOfEffect=80;
   burst=5;
-  burstRate=0.1;
+  burstRate=0.05;
   cegTag=Flametrail;
   [customParams] {
-    damagetype=fire;
-    fearaoe=60;
-    fearid=501;
-	damagetime=10;
+	damagetype=fire;
+	fearaoe=60;
+	fearid=501;
+	damagetime=25;
 	ceg=Flamethrower;
   }
   [damage] {

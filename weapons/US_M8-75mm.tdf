@@ -1,6 +1,6 @@
 [m875mmhe] {
   name=US M8 75mm Pack Howitzer;
-  accuracy=400;
+  accuracy=700;
   areaOfEffect=94;
   ballistic=1;
   collisionSize=4;
@@ -33,7 +33,7 @@
   soundHit=GEN_Explo_3;
   soundStart=US_75mm;
   stages=50;
-  targetMoveError=0.1;
+  targetMoveError=0.5;
   tolerance=5000;
   turret=1;
   weaponVelocity=700;

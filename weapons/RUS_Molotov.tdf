@@ -1,22 +1,26 @@
-[molotov] {
+[molotov2] {
   name=Molotov Cocktail;
   accuracy=1250;
   areaOfEffect=32;
+  ballistic=1;
   //canAttackGround=1;
   cegTag=Flametrail;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
   [customParams] {
-    damagetype=fire;
-	damagetime=20;
-	ceg=Molotov;
+	damagetype=fire;
+	damagetime=10;
+	ceg=Flamethrower;
   }
   [damage] {
-    default=1000;
+    default=500;
   }
   edgeEffectiveness=0.8;
   explosionGenerator=custom:Molotov;
   explosionSpeed=30;
-  id=31;
-  impulseFactor=1e-05;
+  impulseBoost=0;
+  impulseFactor=0;
   model=MortarShell.S3O;
   movingAccuracy=500;
   range=180;
@@ -24,9 +28,43 @@
   rendertype=1;
   soundHit=GEN_Molotov;
   targetBorder=1;
-  tolerance=10000;
+  tolerance=3000;
   turret=1;
-  //weaponTimer=5;
+  weaponTimer=5;
   weaponVelocity=210;
+}
+
+[molotov] {
+  name=Molotov;
+  areaOfEffect=32;
+  cegTag=Flametrail;
+  [customParams] {
+	damagetype=fire;
+	damagetime=25;
+	ceg=Molotov;
+  }
+  [damage] {
+    default=32;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:Molotov;
+  explosionSpeed=0.01;
+  fireStarter=100;
+  groundBounce=0;
+  id=76;
+  impulseFactor=1e-06;
+  lineofsight=1;
+  range=180;
+  reloadTime=8;
+  rendertype=1;
+  size=0.01;
+  soundHit=none;
+  soundStart=GEN_Flamethrower;
+  soundTrigger=1;
+  sprayAngle=500;
+  tolerance=200;
+  turret=1;
+  weaponTimer=2;
+  weaponVelocity=240;
 }
 

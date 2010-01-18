@@ -10,14 +10,14 @@
   buildTime=300;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  cloakCost=0;
-  cloakCostMoving=0;
+  //cloakCost=0;
+  //cloakCostMoving=0;
   corpse=USsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
 	lowammolevel=5;
-    maxammo=4;
+    maxammo=10;
     weaponcost=8;
     weaponswithammo=1;
 	helptext = Short range, medium accuracy, brutal damage, high rate of fire. Incredibly effective at pinning troops. Can move around undetected, although ineffectively. Very good at destroying buildings and burning group of infantry. Damage on target will continue for several seconds after firing.;
@@ -31,13 +31,13 @@
   footprintX=1;
   footprintZ=1;
   iconType=flame;
-  init_cloaked=1;
+  init_cloaked=0;
   mass=75;
   maxDamage=100;
   maxSlope=25;
   maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=205;
+  //minCloakDistance=205;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
   objectName=USflamethrower.S3O;
