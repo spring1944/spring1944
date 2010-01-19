@@ -35,16 +35,18 @@
 }
 
 [molotov] {
-  name=Molotov;
+  name=molotov!;
   areaOfEffect=32;
   cegTag=Flametrail;
   [customParams] {
 	damagetype=fire;
+	fearaoe=1;
+	fearid=1;
 	damagetime=25;
 	ceg=Molotov;
   }
   [damage] {
-    default=32;
+    default=100;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Molotov;
@@ -58,13 +60,13 @@
   reloadTime=10;
   rendertype=1;
   size=0.01;
-  soundHit=none;
-  soundStart=GEN_Flamethrower;
-  soundTrigger=1;
-  sprayAngle=500;
+  soundHit=GEN_Molotov;
+  targetBorder=1;
   tolerance=200;
   turret=1;
   weaponTimer=2;
   weaponVelocity=240;
 }
+
+
 
