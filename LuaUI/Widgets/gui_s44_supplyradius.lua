@@ -70,7 +70,7 @@ local inBuildSupplyInfos = {}
 local generalTruckDefIDs = {}
 local supplyTruckDefIDs = {}
 
-local generalTruckDefInfo = {450, ceil(450 / segmentLength), 2 * PI / ceil(450 / segmentLength)}
+local generalTruckDefInfo = {560, ceil(560 / segmentLength), 2 * PI / ceil(560 / segmentLength)} --Update this when you change the truck deployment radii
 local supplyTruckDefInfo = {625, ceil(625 / segmentLength), 2 * PI / ceil(625 / segmentLength)}
 local supplyTruckMobileDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
 
@@ -279,6 +279,7 @@ end
 --drawing
 ------------------------------------------------
 local function DrawSupplyRing(supplyInfo)
+	Spring.Echo('ring', radius)
 	local supplyDefInfo = supplyInfo.supplyDefInfo
 	local angle = 0
 	local r = supplyInfo.r
@@ -306,7 +307,8 @@ local function DrawSupplyRing(supplyInfo)
 end
 
 local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
-	local r = radius or DEFAULT_SUPPLY_RANGE--supplyDefInfo[1]
+	 Spring.Echo('full', radius)
+	local r = radius or supplyDefInfo[1] or DEFAULT_SUPPLY_RANGE
 	local segmentAngle = supplyDefInfo[3]
 
 	local vertices = {}
@@ -337,6 +339,7 @@ local function DrawTrucks()
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local radius = UnitDefs[unitDefID].customParams.supplyrange
+		Spring.Echo('truck', radius)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
 		if AreTeamsAllied(unitTeam, myTeamID) then
@@ -345,7 +348,7 @@ local function DrawTrucks()
 				DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
 			elseif supplyTruckDefIDs[unitDefID] then
 				glColor(previewColor)
-				--DrawSupplyRingFull(supplyTruckDefInfo, x, z)
+				DrawSupplyRingFull(supplyTruckDefInfo, x, z)
 				glColor(color)
 				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z, radius)
 			end

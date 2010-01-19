@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=GBRResource;
-  name=Unloaded Halftrac Supplies;
+  name=Unloaded Halftrack Supplies;
   description=Supplies A Moderate Area;
   activateWhenBuilt=1;
   buildCostEnergy=0;

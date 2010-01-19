@@ -50,7 +50,7 @@
   }
   showNanoFrame=0;
   side=GBR;
-  sightDistance=950;
+  sightDistance=460;
   smoothAnim=0;
   soundcategory=GBRInf;
   stealth=1;
