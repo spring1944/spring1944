@@ -56,7 +56,7 @@
   id=76;
   impulseFactor=1e-06;
   lineofsight=1;
-  range=140;
+  range=160;
   reloadTime=10;
   rendertype=1;
   size=0.01;

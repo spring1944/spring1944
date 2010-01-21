@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=1600;
-  buildTime=1600;
+  buildCostMetal=2000;
+  buildTime=2000;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERMarder_Destroyed;

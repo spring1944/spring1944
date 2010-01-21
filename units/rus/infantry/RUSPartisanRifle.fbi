@@ -11,7 +11,7 @@
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
-  cloakCostMoving=0.1;
+  cloakCostMoving=0;
   [customParams] {
     dontCount=1;
     flagCapRate=0.05;
@@ -37,7 +37,7 @@
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSPartisanRifle.S3O;
   repairable=0;
-  seismicSignature=1;
+  seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
