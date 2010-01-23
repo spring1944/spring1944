@@ -279,7 +279,7 @@ end
 --drawing
 ------------------------------------------------
 local function DrawSupplyRing(supplyInfo)
-	Spring.Echo('ring', radius)
+	--Spring.Echo('ring', radius)
 	local supplyDefInfo = supplyInfo.supplyDefInfo
 	local angle = 0
 	local r = supplyInfo.r
@@ -307,7 +307,7 @@ local function DrawSupplyRing(supplyInfo)
 end
 
 local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
-	 Spring.Echo('full', radius)
+	-- Spring.Echo('full', radius)
 	local r = radius or supplyDefInfo[1] or DEFAULT_SUPPLY_RANGE
 	local segmentAngle = supplyDefInfo[3]
 
@@ -339,7 +339,7 @@ local function DrawTrucks()
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local radius = UnitDefs[unitDefID].customParams.supplyrange
-		Spring.Echo('truck', radius)
+		--Spring.Echo('truck', radius)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
 		if AreTeamsAllied(unitTeam, myTeamID) then
