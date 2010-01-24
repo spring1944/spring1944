@@ -16,7 +16,7 @@
     howitzer=1;
   }
   [damage] {
-    default=1800;
+    default=3600;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:HE_Large;

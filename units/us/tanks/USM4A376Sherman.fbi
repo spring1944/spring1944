@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=3500;
-  buildTime=3500;
+  buildCostMetal=3000;
+  buildTime=3000;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM4A376Sherman_Damaged;

@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=3200;
-  buildTime=3200;
+  buildCostMetal=2400;
+  buildTime=2400;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRM10Achilles_Destroyed;

@@ -7,8 +7,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=7800;
-  buildTime=7800;
+  buildCostMetal=6200;
+  buildTime=6200;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM4Jumbo_Damaged;

@@ -1,6 +1,6 @@
 [molotov] {
   name=molotov!;
-  areaOfEffect=32;
+  areaOfEffect=40;
   cegTag=Flametrail;
   [customParams] {
 	damagetype=fire;
@@ -10,7 +10,7 @@
 	ceg=Molotov;
   }
   [damage] {
-    default=100;
+    default=60;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Molotov;
@@ -29,7 +29,7 @@
   tolerance=200;
   turret=1;
   weaponTimer=2;
-  weaponVelocity=200;
+  weaponVelocity=100;
 }
 
 

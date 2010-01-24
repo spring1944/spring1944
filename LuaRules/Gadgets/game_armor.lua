@@ -50,7 +50,7 @@ local ARMOR_POWER = 4.5 --3.7
 
 --effective penetration = HE_MULT * sqrt(damage)
 
-local HE_MULT = 1.9
+local HE_MULT = 2.5 --1.9/2.2
 
 local DIRECT_HIT_THRESHOLD = 0.98
 

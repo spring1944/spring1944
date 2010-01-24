@@ -12,7 +12,7 @@
 	ceg=Flamethrower;
   }
   [damage] {
-    default=100;
+    default=60;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Flamethrower;

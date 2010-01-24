@@ -7,8 +7,8 @@
   airSightDistance=1500;
   brakeRate=0.105;
   buildCostEnergy=0;
-  buildCostMetal=6410;
-  buildTime=6410;
+  buildCostMetal=6010;
+  buildTime=6010;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GBRChurchillMkVII_Damaged;
