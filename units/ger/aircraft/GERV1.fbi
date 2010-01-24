@@ -33,13 +33,13 @@
   maneuverleashlength=1280;
   maxAileron=0.00465;
   maxBank=1;
-  maxDamage=215;
+  maxDamage=400;
   maxElevator=0.0036;
   maxFuel=120;
   maxPitch=0.1;
   maxRudder=0.002765;
   maxSlope=10;
-  maxVelocity=24;
+  maxVelocity=26;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
