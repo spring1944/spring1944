@@ -19,7 +19,7 @@
   id=31;
   impulseFactor=1e-05;
   model=MortarShell.S3O;
-  movingAccuracy=6222;
+  movingAccuracy=3500;
   range=180;
   reloadTime=8;
   rendertype=1;
