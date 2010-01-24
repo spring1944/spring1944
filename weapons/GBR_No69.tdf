@@ -4,8 +4,8 @@
   areaOfEffect=32;
   canAttackGround=0;
   [customParams] {
-    armor_penetration=80;
-    damagetype=explosive;
+	armor_penetration=80;
+    damagetype=grenade;
   }
   [damage] {
     default=1250;

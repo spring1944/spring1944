@@ -3,12 +3,12 @@
   name=U.S. Light Ordnance Depot;
   description=Light Ordnance & Vehicle Production Facility (Requires Barracks);
   buildCostEnergy=0;
-  buildCostMetal=4660;
+  buildCostMetal=5200;
   builder=1;
   buildingGroundDecalSizeX=6;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=4660;
+  buildTime=5200;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

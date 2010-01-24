@@ -3,13 +3,13 @@
   name=Tank Depot;
   description=Basic Armour Production Facility (Requires Barracks);
   buildCostEnergy=0;
-  buildCostMetal=8775;
+  buildCostMetal=9675;
   builder=1;
   buildingGroundDecalDecaySpeed=0.05;
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=8775;
+  buildTime=9675;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

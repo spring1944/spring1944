@@ -3,10 +3,10 @@
   name=Towed Q.F. 17 Pounder;
   description=Anti-Tank Gun;
   acceleration=0.3;
-  airSightDistance=1500;
+  airSightDistance=1350;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1500;
+  buildCostMetal=1350;
   buildPic=GBR17Pdr.png;
   buildTime=1500;
   canMove=1;

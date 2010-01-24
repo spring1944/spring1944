@@ -222,53 +222,56 @@ local armorDefs = {
     "GBRFlag",
     "flag",
   },
-
-  tanks  =  {
-    --**Germany**--
-    "GERPanzerIII",
-    "GERPanzerIII_veh",
+  
+  lighttanks  =  {
+	--**US**--
+	"USM5Stuart",
+    "USM8Scott",
+	--USSR--
+	"RUST60",
+    "RUST70",
+    "rust28",
+	},
+	
+  mediumtanks  =  {
+      --**Germany**--
+	"GERPanzerIII",
     "GERStuGIII",
     "GERPanzerIV",
+    "GERJagdpanzerIV",
+	--**US**--
+    "USM4A4Sherman",
+    "USM4A376Sherman",
+    "USM4A3105Sherman",
+	--**USSR**--
+    "RUST3485",
+    "RUST3476",
+	"RUSSU85",
+    "RUSSU100",	
+    "RUSSU122",
+	--**Britain**--
+	"GBRShermanFirefly",
+    "GBRCromwell",
+    "GBRCromwellMkVI",
+    "GBRKangaroo",
+	},
+	
+	
+  heavytanks  =  {
+    --**Germany**--
     "GERPanther",
     "GERTiger",
     "GERTigerII",
     "GERJagdpanther",
-    "GERJagdpanzerIV",
-
     --US--
-    "USM4A4Sherman",
-    "USM4A376Sherman",
-    "USM4A3105Sherman",
     "usm4jumbo",
-    "USM5Stuart",
-    "USM5Stuart_veh",
-    "USM8Scott",
-    "USM8Scott_sp",
-
     --USSR--
-    "RUSISU152",
-    "RUST60",
-    "RUST70",
-    "RUST70_veh",
-    "RUST3485",
-    "RUST3476",
     "RUSISU122",
     "RUSISU152",
     "RUSKV1",
     "RUSIS2",
-    "RUSSU85",
-    "RUSSU100",
-    "RUSSU122",
-    "rust28",
-
     --Britain--
-
-    "GBRShermanFirefly",
-    "GBRCromwell",
-    "GBRCromwellMkVI",
     "GBRChurchillMkVII",
-    "GBRKangaroo",
-    "GBRKangaroo_tank",
   },
 
   armouredVehicles  =  {
@@ -291,14 +294,11 @@ local armorDefs = {
     "RUSBA64",
     "RUSM5Halftrack",
     "RUSSU76",
-    "RUSSU76_sp",
 
     --Britain--
     "GBRDaimler",
     "GBRM5Halftrack",
     "GBRAECMkII",
-    "GBRAECMkII_veh",
-    "GBRAECMkII_sp",
     "GBRSexton",
     "GBRWasp",
     "gbrm10achilles",

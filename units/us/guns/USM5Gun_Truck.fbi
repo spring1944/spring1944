@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1200;
+  buildCostMetal=1000;
   buildPic=USM5Gun.png;
-  buildTime=1200;
+  buildTime=1000;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=USGMCTruck_Destroyed;
