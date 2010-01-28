@@ -8,11 +8,11 @@
     damagetype=fire;
     fearaoe=75;
     fearid=501;
-	damagetime=25;
+	damagetime=15;
 	ceg=Flamethrower;
   }
   [damage] {
-    default=60;
+    default=20;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Flamethrower;

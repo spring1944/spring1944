@@ -28,7 +28,7 @@
   idleAutoHeal=3;
   maxDamage=6250;
   maxSlope=10;
-  metalStorage=300;
+  
   minWaterDepth=10;
   objectName=GERBoatyardLarge;
   selfDestructAs=LARGE_EXPLOSION;

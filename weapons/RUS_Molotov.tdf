@@ -10,7 +10,7 @@
 	ceg=Molotov;
   }
   [damage] {
-    default=60;
+    default=20;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Molotov;

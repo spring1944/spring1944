@@ -39,7 +39,7 @@
   maxSlope=15;
   maxVelocity=1.6;
   maxWaterDepth=10;
-  metalStorage=5;
+  
   minCloakDistance=225;
   movementClass=KBOT_Infantry;
   objectName=RUSCommissar.S3O;
