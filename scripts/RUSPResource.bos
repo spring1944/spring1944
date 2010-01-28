@@ -13,7 +13,7 @@ Create()
     sleep 10;
  	}
   move base to y-axis 0 now;
-  
+  set BUGGER_OFF to 1;
 }
 
 SweetSpot(piecenum)

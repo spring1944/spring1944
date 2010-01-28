@@ -140,6 +140,14 @@ local sortieDefs = {
     delay = 45,
     weight = 1,
   },
+
+  rus_sortie_partisan = {
+    "ruspo2partisan",
+    
+    delay = 45,
+    weight = 1,
+    alwaysAttack = 1,
+  },
   
   us_sortie_recon = {
     "usl4",

@@ -5,16 +5,21 @@
   activateWhenBuilt=1;
   buildCostEnergy=0;
   buildCostMetal=30;
+  builder=1;
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
   buildTime=30;
   category=BUILDING;
+  canMove=1;
+  //canPatrol=1;
   cloakCost=1;
   corpse=Debris_Small;
   [customParams] {
+    ammoSupplier=1;
     dontCount=1;
+    supplyRange=275;
   }
   energyMake=15;
   energyStorage=100;
@@ -36,8 +41,9 @@
   smoothAnim=0;
   soundcategory=RUSInf;
   stealth=1;
-  TEDClass=ENERGY;
+  TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  yardMap=o;
+  workertime=20;
+  yardMap=c;
 }
 
