@@ -19,6 +19,8 @@ local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam						= Spring.GetUnitTeam
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetTeamInfo						= Spring.GetTeamInfo
+local GetTeamRulesParam			= Spring.GetTeamRulesParam
+
 -- Synced Ctrl
 local CreateUnit						= Spring.CreateUnit
 local SetUnitNeutral				=	Spring.SetUnitNeutral
@@ -27,6 +29,7 @@ local TransferUnit					= Spring.TransferUnit
 local GiveOrderToUnit				= Spring.GiveOrderToUnit
 local CallCOBScript					= Spring.CallCOBScript
 local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local SetTeamRulesParam			= Spring.SetTeamRulesParam
 local SetUnitNoSelect				= Spring.SetUnitNoSelect
 local SetUnitMetalExtraction= Spring.SetUnitMetalExtraction
 
@@ -196,11 +199,13 @@ function gadget:GameFrame(n)
 								Spring.SendMessageToTeam(teamID, "Flag Captured!")
 								TransferUnit(flagID, teamID, false)
 								SetUnitRulesParam(flagID, "lifespan", 0)
+								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1)
 								CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
 							else
 								Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 								TransferUnit(flagID, GAIA_TEAM_ID, false)
 								SetUnitRulesParam(flagID, "lifespan", 0)
+								SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1)
 								CallCOBScript(flagID, "ShowFlag", 0, 0)
 							end
 							GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
