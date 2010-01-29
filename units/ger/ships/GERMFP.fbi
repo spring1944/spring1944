@@ -11,7 +11,6 @@
   buildTime=4600;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   corpse=GERMFP_dead;
   [customParams] {
     ammoSupplier=1;
@@ -31,6 +30,7 @@
   maxVelocity=1.44;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERMFP;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

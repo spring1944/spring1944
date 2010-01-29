@@ -29,6 +29,6 @@
   soundcategory=Nothing;
   stealth=1;
   TEDClass=SPECIAL;
-  yardMap=y;
+  yardmap=y;
 }
 

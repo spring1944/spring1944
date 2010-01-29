@@ -28,7 +28,6 @@
   idleAutoHeal=3;
   maxDamage=6250;
   maxSlope=10;
-  
   minWaterDepth=10;
   objectName=GERBoatyardLarge;
   selfDestructAs=LARGE_EXPLOSION;
@@ -44,6 +43,6 @@
   useBuildingGroundDecal=1;
   waterline=0;
   workerTime=75;
-  yardMap=ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo;
+  yardmap=ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo ooyyyyyyyyyyoo;
 }
 

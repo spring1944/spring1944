@@ -14,11 +14,11 @@
   corpse=USM8Gun_Destroyed;
   [customParams] {
     feartarget=1;
+    hasturnbutton=1;
     lowammolevel=1;
     maxammo=4;
     weaponcost=8;
     weaponswithammo=1;
-	hasturnbutton=1;
   }
   explodeAs=Tiny_Explosion;
   footprintX=1;

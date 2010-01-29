@@ -17,8 +17,8 @@
     armor_rear=6;
     armor_side=6;
     armor_top=6;
+    hasturnbutton=1;
     supplyRange=200;
-	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;

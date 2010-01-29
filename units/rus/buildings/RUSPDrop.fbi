@@ -18,15 +18,14 @@
   footprintX=2;
   footprintZ=2;
   iconType=paratrooper;
-  //init_cloaked=1;
   maxDamage=1500;
   maxSlope=15;
   maxWaterDepth=0;
   objectName=RUSPDrop.S3O;
+  script=rus_sortie_recon.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
-  script=rus_sortie_recon.cob;
   showNanoFrame=0;
   side=RUS;
   sightDistance=1;

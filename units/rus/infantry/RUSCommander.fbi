@@ -18,18 +18,18 @@
   corpse=RUSSoldier_dead;
   [customParams] {
     arrivalgap=450;
+    canclearmines=1;
     feartarget=1;
     flagCapRate=8;
     hq=1;
     refillamount=1e+06;
-	canclearmines=1;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
+  energyStorage=0.01;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
-  energyStorage=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=engineer;

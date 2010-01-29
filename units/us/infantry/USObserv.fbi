@@ -16,14 +16,14 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
-	helptext = Short range, good accuracy, light damage, low rate of fire. Has large line-of-sight radius, can move around undetected.;
+    helptext=Short range, good accuracy, light damage, low rate of fire. Has large line-of-sight radius, can move around undetected.;
   }
   damageModifier=0.265;
   fireState=1;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=officer;

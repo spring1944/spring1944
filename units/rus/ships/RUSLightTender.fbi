@@ -11,11 +11,10 @@
   buildTime=450;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   [customParams] {
     ammoSupplier=1;
-    supplyRange=350;
     dontCount=1;
+    supplyRange=350;
   }
   energyMake=0;
   energyUse=0;
@@ -31,6 +30,7 @@
   maxVelocity=1.1;
   minWaterDepth=5;
   movementClass=BOAT_Medium;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSLightTender.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

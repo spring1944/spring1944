@@ -11,22 +11,19 @@
   buildTime=50;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  //cloakCost=0;
-  //cloakCostMoving=0;
   corpse=GERsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  //init_cloaked=1;
   mass=50;
   maxDamage=110;
   maxSlope=20;

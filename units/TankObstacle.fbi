@@ -24,6 +24,6 @@
   smoothAnim=0;
   stealth=1;
   TEDClass=FORT;
-  yardMap=y;
+  yardmap=y;
 }
 

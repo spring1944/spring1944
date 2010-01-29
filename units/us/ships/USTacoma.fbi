@@ -12,7 +12,6 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 -65.0 0.0;
   collisionVolumeScales=80.0 130.0 520.0;
   collisionVolumeType=box;
@@ -30,17 +29,18 @@
   mass=128400;
   maxDamage=128400;
   maxReverseVelocity=1;
-  maxvelocity=2.0;
+  maxVelocity=2;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USTacoma;
+  radarDistance=4000;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
   showNanoFrame=0;
   sightDistance=2000;
-  radardistance=4000;
   smoothAnim=0;
   stealth=0;
   TEDClass=SHIP;

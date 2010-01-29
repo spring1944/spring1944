@@ -14,13 +14,13 @@
   [customParams] {
     feartarget=1;
     flagCapRate=1;
-	helptext = Medium range and accuracy, low damage, high rate of fire. Armed with secondary grenades.;
+    helptext=Medium range and accuracy, low damage, high rate of fire. Armed with secondary grenades.;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=assault;

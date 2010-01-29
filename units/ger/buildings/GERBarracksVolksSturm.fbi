@@ -41,7 +41,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20;
-  yardMap=ooccc ccccc ccccc ccccc ooccc ooccc ooccc;
+  yardmap=ooyyy yyyyy yyyyy yyyyy ooyyy ooyyy ooyyy;
 
   weapon1=BuildingFearShield;
 }

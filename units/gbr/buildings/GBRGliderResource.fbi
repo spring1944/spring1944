@@ -11,6 +11,11 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
   buildTime=720;
+  canAttack=0;
+  canFight=0;
+  canGuard=0;
+  canPatrol=0;
+  canRepeat=0;
   category=BUILDING;
   corpse=Debris_Small;
   [customParams] {
@@ -28,6 +33,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   objectName=LogisticsSmall.S3O;
+  script=ruspresource.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
@@ -39,17 +45,11 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  yardMap=yyy yyy yyy;
+  workerTime=0.01;
+  yardmap=yyy yyy yyy;
 
   weapon1=noweapon;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  script=ruspresource.cob;
-  workertime=0.01;
-  canAttack=0;
-  canFight=0;
-  canPatrol=0;
-  canGuard=0;
-  canRepeat=0;
 }
 

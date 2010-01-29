@@ -11,7 +11,6 @@
   canAttack=1;
   canMove=1;
   category=MINETRIGGER SUB;
-  noChaseCategory=FLAG AIR MINE;
   corpse=GERSeehund_dead;
   [customParams] {
     dontCount=1;
@@ -29,6 +28,7 @@
   maxVelocity=0.6; // 6 knots submerged
   minWaterDepth=40;
   movementClass=BOAT_Sub;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERSeehund;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

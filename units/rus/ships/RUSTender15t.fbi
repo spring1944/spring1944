@@ -10,12 +10,11 @@
   buildTime=700;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   corpse=RUSTender15t_dead;
   [customParams] {
     ammoSupplier=1;
-    supplyRange=350;
     dontCount=1;
+    supplyRange=350;
   }
   energyMake=0;
   energyUse=0;
@@ -31,6 +30,7 @@
   maxVelocity=2.2;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSTender15t;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

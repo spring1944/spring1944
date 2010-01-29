@@ -12,7 +12,7 @@
   category=MINETRIGGER OPENVEH;
   corpse=GERKarl_Dead;
   [customParams] {
-	hasturnbutton=1;
+    hasturnbutton=1;
   }
   energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;

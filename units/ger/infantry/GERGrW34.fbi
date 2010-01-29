@@ -12,19 +12,19 @@
   category=INFANTRY MINETRIGGER;
   corpse=GerSoldier_dead;
   [customParams] {
+    canareaattack=1;
+    canfiresmoke=1;
     feartarget=1;
     lowammolevel=3;
     maxammo=10;
     weaponcost=15;
     weaponswithammo=2;
-    canareaattack=1;
-	canfiresmoke=1;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   highTrajectory=1;
@@ -61,6 +61,7 @@
 
   weapon1=GrW34_8cmMortar;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
   weapon2=GrW34_8cmMortarsmoke;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }

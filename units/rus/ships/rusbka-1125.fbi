@@ -6,12 +6,11 @@
   airSightDistance=1500;
   brakeRate=0.025;
   buildCostEnergy=0;
-  buildTime=2650;
   buildCostMetal=2650;
+  buildTime=2650;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=24.0 24.0 160.0;
   collisionVolumeType=box;
@@ -32,6 +31,7 @@
   maxVelocity=1.8;
   minWaterDepth=6;
   movementClass=BOAT_RiverSmall;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSBKA1125.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -50,8 +50,8 @@
   showNanoFrame=0;
   sightDistance=750;
   smoothAnim=0;
-  stealth=1;
   SoundCategory=RUSBoat;
+  stealth=1;
   TEDClass=SHIP;
   turninplace=0;
   turnRate=250;

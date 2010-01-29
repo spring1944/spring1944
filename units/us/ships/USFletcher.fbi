@@ -12,11 +12,10 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
-  corpse=USFletcher_dead;
   collisionVolumeOffsets=0.0 -50.0 0.0;
   collisionVolumeScales=85.0 130.0 600.0;
   collisionVolumeType=box;
+  corpse=USFletcher_dead;
   [customParams] {
     dontCount=1;
   }
@@ -30,17 +29,18 @@
   mass=226800;
   maxDamage=226800;
   maxReverseVelocity=1.75;
-  maxvelocity=3.5; // 35 kn
+  maxVelocity=3.5; // 35 kn
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USFletcher;
+  radarDistance=4000;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
   showNanoFrame=0;
   sightDistance=2000;
-  radardistance=4000;
   smoothAnim=0;
   stealth=0;
   TEDClass=SHIP;

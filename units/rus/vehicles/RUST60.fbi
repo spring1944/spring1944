@@ -16,11 +16,11 @@
     armor_rear=28;
     armor_side=18;
     armor_top=10;
+    hasturnbutton=1;
     lowammolevel=12;
     maxammo=36;
     weaponcost=10;
     weaponswithammo=2;
-	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;

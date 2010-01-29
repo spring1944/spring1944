@@ -11,12 +11,11 @@
   canMove=1;
   category=FLAG;
   [customParams] {
-    helptext=A Sniper team, containing one Sniper rifle and one recon infantryman. ||| Sniper teams operate in two-man teams, with a gunner and a scout. While the scout hurries ahead to spot enemy targets, the Sniper can sit back away from harm and pick off the enemy. ;
-  }      
+    helptext=A Sniper team, containing one Sniper rifle and one recon infantryman. ||| Sniper teams operate in two-man teams, with a gunner and a scout. While the scout hurries ahead to spot enemy targets, the Sniper can sit back away from harm and pick off the enemy.;
+  }
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;

@@ -11,7 +11,6 @@
   buildTime=1600;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 -30.0 0.0;
   collisionVolumeScales=60.0 100.0 220.0;
   collisionVolumeType=box;
@@ -31,8 +30,9 @@
   mass=29100;
   maxDamage=29100;
   maxReverseVelocity=0.35;
-  maxvelocity=0.7; // 7 knots
+  maxVelocity=0.7; // 7 knots
   movementClass=BOAT_LandingCraft;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USLCT;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

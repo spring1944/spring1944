@@ -36,7 +36,7 @@
   stealth=1;
   TEDClass=SPECIAL;
   useBuildingGroundDecal=1;
-  yardMap=y;
+  yardmap=y;
 
   weapon1=APMine;
   onlyTargetCategory1=MINETRIGGER;

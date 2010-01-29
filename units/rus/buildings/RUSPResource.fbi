@@ -11,8 +11,8 @@
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsSmall.png;
   buildTime=30;
-  category=BUILDING;
   canMove=1;
+  category=BUILDING;
   cloakCost=1;
   corpse=Debris_Small;
   [customParams] {
@@ -42,7 +42,7 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  workertime=20;
-  yardMap=yyy yyy yyy;
+  workerTime=20;
+  yardmap=yyy yyy yyy;
 }
 

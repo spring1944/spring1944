@@ -24,6 +24,6 @@
   sightDistance=1;
   soundcategory=Nothing;
   TEDClass=SPECIAL;
-  yardMap=o;
+  yardmap=o;
 }
 

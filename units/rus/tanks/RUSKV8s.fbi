@@ -10,17 +10,17 @@
   buildTime=2361;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-	corpse=RUSKV8s_Damaged;
+  corpse=RUSKV8s_Damaged;
   [customParams] {
     armor_front=90;
     armor_rear=75;
     armor_side=75;
     armor_top=30;
+    hasturnbutton=1;
     lowammolevel=10;
     maxammo=30;
     weaponcost=10;
     weaponswithammo=2;
-	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -77,9 +77,9 @@
   onlyTargetCategory3=BUILDING OPENVEH INFANTRY SOFTVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
   weapon4=DT;
+  maxAngleDif4=10;
   onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir4=0 0 1;
-  maxAngleDif4=10;
 
   weapon5=DT;
   onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;

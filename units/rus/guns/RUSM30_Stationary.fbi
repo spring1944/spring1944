@@ -14,12 +14,12 @@
   corpse=RUSM30_Destroyed;
   [customParams] {
     canareaattack=1;
+    canfiresmoke=1;
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
     weaponcost=28;
     weaponswithammo=2;
-	canfiresmoke=1;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -56,7 +56,7 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardMap=o;
+  yardmap=o;
 
   weapon1=m30122mmHE;
   maxAngleDif1=30;

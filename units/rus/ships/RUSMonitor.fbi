@@ -6,13 +6,12 @@
   airSightDistance=1500;
   brakeRate=0.025;
   buildCostEnergy=0;
-  buildPic=rusmonitor.png;
   buildCostMetal=11000;
+  buildPic=rusmonitor.png;
   buildTime=11000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   corpse=RUSMonitor_dead;
   [customParams] {
     dontCount=1;
@@ -30,6 +29,7 @@
   maxVelocity=1.66; //8.3 knots max. It's really sluggish
   minWaterDepth=6;
   movementClass=BOAT_River;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSMonitor;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

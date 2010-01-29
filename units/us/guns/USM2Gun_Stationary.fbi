@@ -14,12 +14,12 @@
   corpse=USM2Gun_Destroyed;
   [customParams] {
     canareaattack=1;
+    canfiresmoke=1;
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
     weaponcost=25;
     weaponswithammo=2;
-	canfiresmoke=1;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -56,13 +56,13 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardMap=o;
+  yardmap=o;
 
   weapon1=M2HE;
   maxAngleDif1=25;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
-  
+
   weapon2=M2Smoke;
   maxAngleDif2=25;
   onlyTargetCategory2=NOTHING;

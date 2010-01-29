@@ -12,7 +12,6 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   corpse=GERType1934_dead;
   [customParams] {
     dontCount=1;
@@ -30,6 +29,7 @@
   maxVelocity=5.01;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERType1934;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

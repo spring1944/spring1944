@@ -11,7 +11,6 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=60.0 55.0 280.0;
   collisionVolumeType=box;
@@ -35,6 +34,7 @@
   maxVelocity=6.01;
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GERSBoot;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

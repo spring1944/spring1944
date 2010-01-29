@@ -16,14 +16,14 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
-	helptext = Long range, excellent accuracy, excellent damage, low rate of fire. Very effective at pinning troops at long range. Can usually kill with one hit. Can remain undetected when firing.;
+    helptext=Long range, excellent accuracy, excellent damage, low rate of fire. Very effective at pinning troops at long range. Can usually kill with one hit. Can remain undetected when firing.;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
+  decloakOnFire=0;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
-  decloakOnFire=0;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   hideDamage=0;

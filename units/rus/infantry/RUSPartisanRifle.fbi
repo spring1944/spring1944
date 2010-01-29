@@ -17,11 +17,11 @@
     flagCapRate=0.05;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
+  energyUse=0;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
-  energyUse=0;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=partisan;

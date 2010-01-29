@@ -13,11 +13,11 @@
   corpse=RUSBM13N_Destroyed;
   [customParams] {
     defaultMove=1;
+    hasturnbutton=1;
     lowammolevel=1;
     maxammo=1;
     weaponcost=800;
     weaponswithammo=1;
-	hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;

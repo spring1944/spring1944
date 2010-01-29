@@ -12,7 +12,6 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=24.0 24.0 120.0;
   collisionVolumeType=box;
@@ -33,9 +32,10 @@
   mass=4000;
   maxDamage=4000;
   maxReverseVelocity=2.15;
-  maxvelocity=4.3; // 43 knots
+  maxVelocity=4.3; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_Medium;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USPT103-bofors;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -85,7 +85,6 @@
   weaponMainDir4=0 0 1;
 
   weapon5=bofors40mmaa;
-  //maxAngleDif5=350;
   onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
@@ -100,7 +99,6 @@
   onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
 
   weapon9=bofors40mmhe;
- //maxAngleDif9=350;
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }

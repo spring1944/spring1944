@@ -12,7 +12,6 @@
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 -50.0 0.0;
   collisionVolumeScales=85.0 130.0 600.0;
   collisionVolumeType=box;
@@ -33,7 +32,9 @@
   maxVelocity=3.8;
   minWaterDepth=20;
   movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSPr7;
+  radarDistance=4000;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -50,7 +51,6 @@
   }
   showNanoFrame=0;
   sightDistance=2000;
-  radardistance=4000;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=0;

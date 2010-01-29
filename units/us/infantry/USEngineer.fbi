@@ -13,8 +13,8 @@
   category=INFANTRY;
   corpse=USsoldier_dead;
   [customParams] {
+    canclearmines=1;
     feartarget=1;
-	canclearmines=1;
   }
   damageModifier=0.265;
   energyStorage=0.01;

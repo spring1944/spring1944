@@ -40,7 +40,6 @@
   metalMake=0;
   noChaseCategory=FLAG AIR MINE;
   objectName=GERHQBunker.S3O;
-  ////radarDistance=2000000;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {
     explosionGenerator0=custom:MG_MUZZLEFLASH;
@@ -56,7 +55,7 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   workerTime=20;
-  yardMap=oooooooooo oooooooooo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo ooccccccoo;
+  yardmap=oooooooooo oooooooooo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo;
 
   weapon1=MG34;
   maxAngleDif1=360;

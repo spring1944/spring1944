@@ -19,11 +19,11 @@
     killvoice=1;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
+  decloakOnFire=0;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
-  decloakOnFire=0;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=sniper;

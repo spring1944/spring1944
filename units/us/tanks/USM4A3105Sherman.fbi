@@ -18,12 +18,12 @@
     armor_side=50;
     armor_top=21;
     blockfear=1;
+    canfiresmoke=1;
+    hasturnbutton=1;
     lowammolevel=4;
     maxammo=12;
     weaponcost=20;
     weaponswithammo=2;
-	hasturnbutton=1;
-	canfiresmoke=1;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -76,7 +76,7 @@
   weapon2=m4105mmsmoke;
   badTargetCategory2=OPENVEH HARDVEH;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  
+
   weapon3=M1919A4Browning;
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 

@@ -11,7 +11,6 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=24.0 24.0 120.0;
   collisionVolumeType=box;
@@ -32,9 +31,10 @@
   mass=2090;
   maxDamage=2090;
   maxReverseVelocity=2.4;
-  maxvelocity=4.8;
+  maxVelocity=4.8;
   minWaterDepth=10;
   movementClass=BOAT_Small;
+  noChaseCategory=FLAG AIR MINE;
   objectName=RUSKomsMTB;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

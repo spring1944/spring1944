@@ -11,7 +11,6 @@
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   corpse=USPT103_dead;
   [customParams] {
     dontCount=1;
@@ -26,9 +25,10 @@
   mass=5000;
   maxDamage=5000;
   maxReverseVelocity=2.15;
-  maxvelocity=4.3; // 43 knots
+  maxVelocity=4.3; // 43 knots
   minWaterDepth=10;
   movementClass=BOAT_Medium;
+  noChaseCategory=FLAG AIR MINE;
   objectName=USPT103;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

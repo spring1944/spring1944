@@ -21,6 +21,7 @@
   footprintX=3;
   footprintZ=3;
   iconType=halftrack;
+  isFirePlatform=1;
   leaveTracks=1;
   mass=930;
   maxDamage=930;
@@ -52,6 +53,5 @@
   transportCapacity=5;
   transportMass=750;
   transportSize=1;
-  isfireplatform=1;
 }
 

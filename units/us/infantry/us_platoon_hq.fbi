@@ -12,11 +12,10 @@
   category=FLAG;
   [customParams] {
     helptext=12-man combat section containing 8 Garand riflemen, 2 Thompson submachinegunners, and 2 BAR automatic riflemen. ||| The Rifle platoon is the standard infantry fighting unit. The Garand with which they are equipped is semi-automatic, capable of faster firing than bolt-action rifles but at slightly reduced ranges. The two Browning Automatic Rifles (BAR) afford the rifle platoon increased long-range suppressive firepower. Overall, American rifle platoons can put out more shots than most other rifle platoons.;
-  }    
+  }
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
-  //iconType=mines;
   idleAutoHeal=0;
   maxDamage=100;
   maxSlope=82;

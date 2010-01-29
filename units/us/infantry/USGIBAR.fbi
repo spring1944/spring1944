@@ -13,13 +13,13 @@
   corpse=USsoldier_dead;
   [customParams] {
     feartarget=1;
-	helptext = Long range, medium accuracy, medium rate of fire. Good at pinning troops. Fires in short bursts. Armed with secondary grenades.;
+    helptext=Long range, medium accuracy, medium rate of fire. Good at pinning troops. Fires in short bursts. Armed with secondary grenades.;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=bar;

@@ -18,12 +18,12 @@
     armor_side=37;
     armor_top=20;
     blockfear=1;
+    canfiresmoke=1;
+    hasturnbutton=1;
     lowammolevel=3;
     maxammo=10;
     weaponcost=20;
     weaponswithammo=2;
-	hasturnbutton=1;
-	canfiresmoke=1;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -76,7 +76,7 @@
   weapon2=cs95mmsmoke;
   badTargetCategory2=OPENVEH HARDVEH;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  
+
   weapon3=Bren;
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 

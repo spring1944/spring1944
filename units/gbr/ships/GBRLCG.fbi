@@ -11,7 +11,6 @@
   buildTime=7850;
   canMove=1;
   category=SHIP MINETRIGGER;
-  noChaseCategory=FLAG AIR MINE;
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=80.0 60.0 280.0;
   collisionVolumeType=box;
@@ -36,6 +35,7 @@
   maxVelocity=1.1;
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
+  noChaseCategory=FLAG AIR MINE;
   objectName=GBRLCG;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

@@ -16,13 +16,13 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
-	helptext = Medium range, good accuracy, excellent damage, low rate of fire. Can kill vehicles in one hit. Larger tanks may take several hits. Can move around undetected. Ineffective against infantry.;
+    helptext=Medium range, good accuracy, excellent damage, low rate of fire. Can kill vehicles in one hit. Larger tanks may take several hits. Can move around undetected. Ineffective against infantry.;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
@@ -62,3 +62,4 @@
   weapon1=M9A1Bazooka;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
+

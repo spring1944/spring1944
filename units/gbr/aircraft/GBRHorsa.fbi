@@ -21,8 +21,6 @@
   corpse=GBRHorsa_Damaged;
   cruiseAlt=1000;
   [customParams] {
-    //enginesound=v1-;
-    //enginesoundnr=20;
     cruise_missile_accuracy=150;
     spawn_on_death=gbr_platoon_glider_horsa;
   }
@@ -41,12 +39,12 @@
   maxPitch=0.1;
   maxRudder=0.002765;
   maxSlope=10;
-  maxVelocity=14;//24;
+  maxVelocity=14; //24;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=GBRAS51.s3o;//USC47.s3o;
+  objectName=GBRAS51.s3o; //USC47.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=noweapon;

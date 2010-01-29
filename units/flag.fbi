@@ -25,7 +25,6 @@
   maxWaterDepth=255;
   objectName=flag.S3O;
   onoffable=1;
-  //////radarDistance=2000000;
   [sfxtypes] {
   }
   showNanoFrame=0;
@@ -35,7 +34,7 @@
   stealth=1;
   TEDClass=METAL;
   windGenerator=1e-06;
-  yardMap=ooooooooo;
+  yardmap=ooooooooo;
 
   weapon1=flag;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;

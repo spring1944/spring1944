@@ -18,11 +18,11 @@
     feartarget=1;
   }
   damageModifier=0.265;
-  flankingBonusMode=1;
+  explodeAs=Small_Explosion;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
-  explodeAs=Small_Explosion;
+  flankingBonusMode=1;
   footprintX=1;
   footprintZ=1;
   iconType=flame;
