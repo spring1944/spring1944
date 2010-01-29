@@ -5,6 +5,7 @@
   activateWhenBuilt=1;
   buildCostEnergy=0;
   buildCostMetal=720;
+  builder=1;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
@@ -36,13 +37,19 @@
   smoothAnim=0;
   soundcategory=GBRInf;
   stealth=1;
-  TEDClass=ENERGY;
+  TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  yardMap=o;
+  yardMap=yyy yyy yyy;
 
   weapon1=noweapon;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  script=gbrresource.cob;
+  script=ruspresource.cob;
+  workertime=0.01;
+  canAttack=0;
+  canFight=0;
+  canPatrol=0;
+  canGuard=0;
+  canRepeat=0;
 }
 

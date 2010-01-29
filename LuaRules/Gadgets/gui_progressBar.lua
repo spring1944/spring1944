@@ -31,6 +31,9 @@ local ADD_BAR = "AddBar"
 local SET_BAR = "SetBar"
 local REMOVE_BAR = "RemoveBar"
 
+local BAR_WIDTH = 40 / 2 -- 100
+local BAR_HEIGHT = 4 / 2 -- 14
+
 local GetUnitTeam         = Spring.GetUnitTeam
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GetSpectatingState  = Spring.GetSpectatingState
@@ -62,16 +65,16 @@ local function DrawBar(unitID, barData, localTeamID)
 		glPushMatrix()
 		glTranslate(px, py + 20, pz)
 		gl.Billboard()
-		local progStr = barData.title .. string.format("%.1f%%", 100 * progress)
+		local progStr = "\255\255\255\1" .. barData.title .. "\255\255\255\255:" .. string.format("\255\1\255\1%.1f", 100 * progress) .. "%"
 		
 			-- Drawing Progress bar
 		gl.Color({0.0, 0.0, 0.0, 0.7})
-		gl.Rect(-51, -8, 51, 8)
+		gl.Rect(-(BAR_WIDTH + 1), -(BAR_HEIGHT + 1), BAR_WIDTH + 1, BAR_HEIGHT + 1)
 		gl.Color({2 * (1-progress), 2.0 * progress, 0.0, 0.7})
-		gl.Rect(-50, -7, (100 * progress) - 50, 7)
+		gl.Rect(-BAR_WIDTH, -BAR_HEIGHT, (BAR_WIDTH * 2 * progress) - BAR_WIDTH, BAR_HEIGHT)
 			-- Drawing text
 		gl.Color({1.0, 1.0, 1.0, 0.7})
-		gl.Text(progStr, 0, -6, 10, "cnd")
+		gl.Text(progStr, 0, BAR_HEIGHT * 2, 10, "cnd")
 		glPopMatrix()
 	end
 end

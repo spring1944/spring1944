@@ -13,6 +13,7 @@ Create()
     sleep 10;
  	}
   move base to y-axis 0 now;
+  set YARD_OPEN to 1;
   set BUGGER_OFF to 1;
 }
 

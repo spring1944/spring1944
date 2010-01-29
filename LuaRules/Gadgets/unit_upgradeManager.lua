@@ -191,7 +191,7 @@ if (gadgetHandler:IsSyncedCode()) then
 			upgradeUnits[unitID].def.onStart(unitID)
 		end
 		
-		SendToUnsynced(ADD_BAR, unitID, "Upgrading:")
+		SendToUnsynced(ADD_BAR, unitID, "Upgrading")
 	end
 	
 	

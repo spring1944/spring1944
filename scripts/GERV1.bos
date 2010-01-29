@@ -9,6 +9,7 @@ static-var isFalling;
 #define SIG_BANK 				2
 #define SIG_FEARRECOVERY		4
 
+
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
 	while( get BUILD_PERCENT_LEFT )
@@ -62,5 +63,6 @@ SweetSpot(piecenum)
 
 Killed(severity, corpsetype)
 {
-	corpsetype = 1;
+	set CRASHING to 1;
+	
 }
