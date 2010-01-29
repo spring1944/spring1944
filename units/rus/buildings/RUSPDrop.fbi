@@ -1,0 +1,37 @@
+[unitinfo] {
+  unitname=RUSPDrop;
+  name=Partisan Supplies;
+  description=Partisan Supply Drop;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=30;
+  builder=1;
+  buildPic=LogisticsSmall.png;
+  buildTime=30;
+  category=BUILDING;
+  cloakCost=1;
+  corpse=Debris_Small;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Med_Explosion;
+  footprintX=2;
+  footprintZ=2;
+  iconType=paratrooper;
+  //init_cloaked=1;
+  maxDamage=1500;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=RUSPDrop.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  script=rus_sortie_recon.cob;
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+}
+

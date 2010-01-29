@@ -27,7 +27,7 @@ local paratrooperDefs = {
     { "usparatrooper", "us101stbazooka" },
   },
   ruspo2partisan = {
-    { "usparatrooper", "ruspresource"},
+    { "ruspdrop", "ruspresource"},
   }
 }
 
