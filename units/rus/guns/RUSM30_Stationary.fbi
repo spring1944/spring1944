@@ -64,8 +64,8 @@
   weaponMainDir1=0 0 1;
 
   weapon2=m30122mmSmoke;
-  maxAngleDif1=30;
+  maxAngleDif2=30;
   onlyTargetCategory2=NOTHING;
-  weaponMainDir1=0 0 1;
+  weaponMainDir2=0 0 1;
 }
 
