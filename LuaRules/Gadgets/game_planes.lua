@@ -26,6 +26,7 @@ local CRUISE_SPEED = 0.75
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
 local DEPOSIT_AMOUNT = 0.5
+local PENALTY_AMOUNT = 0.5
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
@@ -33,6 +34,7 @@ local SetUnitPosition = Spring.SetUnitPosition
 local SetUnitRotation = Spring.SetUnitRotation
 local SetUnitVelocity = Spring.SetUnitVelocity
 local AddTeamResource = Spring.AddTeamResource
+local UseTeamResource = Spring.UseTeamResource
 local GetTeamResources = Spring.GetTeamResources
 local GetTeamStartPosition = Spring.GetTeamStartPosition
 local GetUnitCmdDescs = Spring.GetUnitCmdDescs
@@ -458,6 +460,13 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
   if sortie then
     ModifyWeight(teamID, sortie, -1)
     return
+  end
+  if planeStates[unitID] then
+    local unitDef = UnitDefs[unitDefID]
+	local curCommand = GetTeamResources(teamID, "metal")
+    local penalty = math.min((unitDef.customParams.penalty or PENALTY_AMOUNT) * unitDef.metalCost, curCommand)
+    UseTeamResource(teamID, "m", penalty)
+	--Spring.Echo("Plane destroyed! " .. penalty .. " additional Command lost!")
   end
   planeStates[unitID] = nil
   radios[teamID][unitID] = nil
