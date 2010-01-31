@@ -25,12 +25,14 @@ local RETREAT_TOLERANCE = 64 --retreating planes disappear when they reach this 
 local CRUISE_SPEED = 0.75
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
+local DEPOSIT_AMOUNT = 0.5
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local SetUnitPosition = Spring.SetUnitPosition
 local SetUnitRotation = Spring.SetUnitRotation
 local SetUnitVelocity = Spring.SetUnitVelocity
+local AddTeamResource = Spring.AddTeamResource
 local GetTeamResources = Spring.GetTeamResources
 local GetTeamStartPosition = Spring.GetTeamStartPosition
 local GetUnitCmdDescs = Spring.GetUnitCmdDescs
@@ -42,9 +44,11 @@ local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitPosition = Spring.GetUnitPosition
+local GetUnitHealth = Spring.GetUnitHealth
 local GetGameFrame = Spring.GetGameFrame
 local GetGroundHeight = Spring.GetGroundHeight
 local SendMessageToTeam = Spring.SendMessageToTeam
+
 
 local GetTeamRulesParam = Spring.GetTeamRulesParam
 local SetTeamRulesParam = Spring.SetTeamRulesParam
@@ -438,7 +442,12 @@ function gadget:GameFrame(n)
     elseif state == PLANE_STATE_RETREAT then
       local ux, uy, uz = GetUnitPosition(unitID)
       if vDistanceToMapEdge(ux, uy, uz) <= RETREAT_TOLERANCE then
+	    local hpLeft, totalHp = GetUnitHealth(unitID)
+		local deposit = (unitDef.customParams.deposit or DEPOSIT_AMOUNT) * unitDef.metalCost
+		local depositReturn = (hpLeft / totalHp) * deposit
         DestroyUnit(unitID, false, true)
+		AddTeamResource(teamID, "m", depositReturn)
+		--Spring.Echo("Plane safe! " .. depositReturn .. " Command returned!")
       end
     end
   end
