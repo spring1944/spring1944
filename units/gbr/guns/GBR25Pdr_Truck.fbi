@@ -6,16 +6,16 @@
   airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=2800;
+  buildCostMetal=3780;
   buildPic=GBR25Pdr.png;
-  buildTime=2800;
+  buildTime=3780;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     lowammolevel=1;
     maxammo=4;
-    weaponcost=22;
+    weaponcost=30;
     weaponswithammo=0;
   }
   explodeAs=Vehicle_Explosion_Sm;

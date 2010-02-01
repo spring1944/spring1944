@@ -19,7 +19,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=480;
+  cruiseAlt=100;
   [customParams] {
     enginesound=po2-;
     enginesoundnr=11;
@@ -59,8 +59,8 @@
   }
   showNanoFrame=0;
   Side=RUS;
-  sightDistance=2000;
-  smoothAnim=1;
+  sightDistance=600;
+  smoothAnim=0;
   SoundCategory=RUSPo2;
   stealth=1;
   steeringmode=1;

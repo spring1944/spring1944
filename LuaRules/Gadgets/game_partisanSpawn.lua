@@ -20,8 +20,8 @@ local GetUnitCommands	= Spring.GetUnitCommands
 -- Unsynced Ctrl
 local GiveOrderToUnit	= Spring.GiveOrderToUnit
 -- constants
-local INTERVAL = 60 -- 1 minute
-local PROBABILITY = 0.5 -- 50% chance of spawn
+local INTERVAL = 20 -- 20 seconds
+local PROBABILITY = 0.50 -- 50% chance of spawn
 -- variables
 local spawners = {}
 

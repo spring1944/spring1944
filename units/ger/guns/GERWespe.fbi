@@ -23,7 +23,7 @@
     hasturnbutton=1;
     lowammolevel=2;
     maxammo=6;
-    weaponcost=25;
+    weaponcost=35;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;
@@ -74,7 +74,7 @@
 
   weapon1=leFH18HE;
   badTargetCategory1=OPENVEH HARDVEH;
-  maxAngleDif1=25;
+  maxAngleDif1=20;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 

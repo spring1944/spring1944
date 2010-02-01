@@ -20,7 +20,7 @@
   id=76;
   impulseFactor=1e-06;
   lineofsight=0;
-  range=160;
+  range=180;
   reloadTime=10;
   rendertype=1;
   size=0.01;
@@ -29,7 +29,7 @@
   tolerance=200;
   turret=1;
   weaponTimer=2;
-  weaponVelocity=100;
+  weaponVelocity=260;
 }
 
 

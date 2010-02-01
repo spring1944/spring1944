@@ -55,7 +55,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 					expCeg = weaponCeg,
 				}		
 		else
-			if ((damageZones[damageSiteIndex].x - px) > damageZone) or ((damageZones[damageSiteIndex].z - pz) > damageZone) then
+			if ((damageZones[damageSiteIndex].x - px) > damageZone) or ((damageZones[damageSiteIndex].z - pz) > (damageZone/4)) then
 				damageSiteIndex = damageSiteIndex + 1
 				damageZones[damageSiteIndex] = {
 					x = px,
