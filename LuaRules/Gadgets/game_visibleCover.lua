@@ -13,7 +13,7 @@ end
 --[[
 TODO
 restrict hiding to unit types - DONE, fearTarget units (guns and inf)
-create config format, load from that
+create config format, load from that - DONE (see maps/hideZoneConfig)
 set a limit for number of units each section can hold 
 reduce efficiency as features are destroyed in the area (fewer guys hidden)
 dynamically create zones as features are created (vehicle corpses) based on some required density param (# of features in whatever radius)
@@ -52,8 +52,11 @@ local cloakAreas		=	{} --table of areas that provide cover
 local savedAreaUnits	=	{}	-- table 
 
 --Constants!
-local newFieldRadiusCheck	=	200 --the area that is checked when a new feature is created to see if a new cloaking field is in order
-local sneakyFactor			=	2.5 --the normal cloak radius of sneaky units is divided by this when they're in cover
+local newFieldRadiusCheck			=	200 --the area that is checked when a new feature is created to see if a new cloaking field is in order
+local sneakyFactor					=	2.5 --the normal cloak radius of sneaky units is divided by this when they're in cover
+local hideDensityFactor		=	10 -- area of the hide zone is divided by this to figure out how many guys can hide in that zone at most
+local hideDensityFactorRectangle	=	10 --likewise, but for rectangles
+
 --the config file
 local PROFILE_PATH			=	"maps/hideZoneConfig/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. ".lua" --<3 floz
 if VFS.FileExists(PROFILE_PATH) then
@@ -67,8 +70,10 @@ function gadget:Initialize()
 				px2 = zones[areaID].px2,
 				pz2 = zones[areaID].pz2,
 				unitsToHide = {},
+				maxToHide = (math.sqrt(math.abs(zones[areaID].px1-zones[areaID].px2) * math.abs(zones[areaID].pz1 - zones[areaID].pz2))/hideDensityFactor),
 				decloakRadius = zones[areaID].decloakRadius,
 				}
+			Spring.Echo(areaID, "can hold this many units:", cloakAreas[areaID].maxToHide)
 		--Spring.Echo("rectangular zone!", areaID)
 		else 
 			cloakAreas[areaID] = {
@@ -77,7 +82,9 @@ function gadget:Initialize()
 				radius = zones[areaID].radius,
 				unitsToHide = {},
 				decloakRadius = zones[areaID].decloakRadius,
+				maxToHide = ((math.sqrt(math.pi * zones[areaID].radius^2))/hideDensityFactor),
 				}
+			Spring.Echo(areaID, "can hold this many units:", cloakAreas[areaID].maxToHide)
 		end
 		--Spring.Echo("circular zone!", areaID)
 	end
@@ -122,11 +129,16 @@ function gadget:GameFrame(n)
 	if (n % (3*30)) < 0.1 then
 		for areaID, something in pairs(cloakAreas) do
 				savedAreaUnits[areaID] = cloakAreas[areaID].unitsToHide
+				local unitsInArea = 0
 				for unitID, someThing in pairs(savedAreaUnits[areaID]) do
-					if Spring.GetUnitIsDead(unitID) == true then
+					unitsInArea = unitsInArea + 1
+					Spring.Echo("there are ",unitsInArea, "in area", areaID)
+					--Spring.Echo("this should print true", unitID, savedAreaUnits[areaID][unitID])
+					if Spring.GetUnitIsDead(unitID) == true or (unitsInArea > cloakAreas[areaID].maxToHide) then
 						savedAreaUnits[areaID][unitID] = nil
 					end
 				end
+
 				cloakAreas[areaID].unitsToHide = {}
 				
 				if cloakAreas[areaID].radius ~= nil then --circular zone
@@ -147,7 +159,7 @@ function gadget:GameFrame(n)
 					end
 				end		
 				
-			for unitID, someThing in pairs(savedAreaUnits[areaID]) do
+			for unitID, value in pairs(savedAreaUnits[areaID]) do
 				local unitDefID = GetUnitDefID(unitID)
 				local ud = UnitDefs[unitDefID]
 				if ud ~= nil then
