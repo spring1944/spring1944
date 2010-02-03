@@ -541,7 +541,7 @@ local function DrawUnitInfos(unitID,height,canStockpile,reloadTime,primaryWeapon
     if (reloadTime>=minReloadTime) then
       local _,reloaded,reloadFrame = GetUnitWeaponState(unitID,primaryWeapon-1)
       if (reloaded==false) then
-        local reload = 1 - ((reloadFrame-gameFrame)/30) / reloadTime;
+        local reload = max(0, 1 - ((reloadFrame-gameFrame)/30) / reloadTime);
         n=n+1
         bars[n]={title="reload",progress=reload,color=reloadcolor,text=floor(reload*100)..'%'}
       end
