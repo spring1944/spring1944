@@ -37,7 +37,7 @@ function gadget:Explosion(weaponId, px, py, pz, ownerID)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
 	if weapDef.customParams.howitzer then
-		--SetUnitExperience(ownerID, 0)
+		SetUnitExperience(ownerID, 0)
 	end
 	
 	--local fearBlockerFound	= false
