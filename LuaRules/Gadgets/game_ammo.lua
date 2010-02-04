@@ -23,6 +23,7 @@ local GetUnitsInCylinder = Spring.GetUnitsInCylinder
 local GetUnitTeam        = Spring.GetUnitTeam
 local GetUnitWeaponState = Spring.GetUnitWeaponState
 -- Synced Ctrl
+local SetUnitExperience  = Spring.SetUnitExperience
 local SetUnitRulesParam  = Spring.SetUnitRulesParam
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 
@@ -86,6 +87,10 @@ local function ProcessWeapons(unitID)
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
 		--Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
+		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
+		if howitzer then
+			SetUnitExperience(unitID, 0)
+		end]]
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
 			for weapNum = 0, weaponsWithAmmo - 1 do

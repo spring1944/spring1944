@@ -14,10 +14,10 @@ end
 -- Synced Read
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitDefID       		= Spring.GetUnitDefID
-local GetUnitAllyTeam				= Spring.GetUnitAllyTeam
+local GetUnitAllyTeam			= Spring.GetUnitAllyTeam
 -- Synced Ctrl
-local CallCOBScript					= Spring.CallCOBScript
-
+local CallCOBScript				= Spring.CallCOBScript
+local SetUnitExperience			= Spring.SetUnitExperience
 -- constants
 
 -- variables
@@ -28,16 +28,17 @@ local blockAllyTeams = {}
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
-function gadget:Explosion(weaponId, px, py, pz, ownerId)
+function gadget:Explosion(weaponId, px, py, pz, ownerID)
 	local weapDef = WeaponDefs[weaponId]
 	
 	if not weapDef.customParams.fearid then return false end
   
 	local unitsAtSpot = GetUnitsInCylinder(px, pz, weapDef.customParams.fearaoe)
 	
-	-- insert code for tank fear shields here
-	-- compile table of ud.customParams.fearshieldradius units in fearshieldradius+fearaoe, check seperation between all feartarget units and each of these, apply fear if seperation > fearshieldradius
-	-- optimisation? if fearshieldradius > fearaoe, all units are protected
+	-- if the weapon is a howitzer shell reset the gun's experience to 0
+	if weapDef.customParams.howitzer then
+		--SetUnitExperience(ownerID, 0)
+	end
 	
 	--local fearBlockerFound	= false
 	for i = 1, #unitsAtSpot do
@@ -52,7 +53,7 @@ function gadget:Explosion(weaponId, px, py, pz, ownerId)
 	
 	for i = 1, #targets do
 		local unitId = targets[i]
-		if unitId ~= ownerId and not blockAllyTeams[GetUnitAllyTeam(unitId)] then
+		if unitId ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitId)] then
 			Spring.CallCOBScript(unitId, "HitByWeaponId", 0, 0, 0, weapDef.customParams.fearid, 0)
 		end
 		targets[i] = nil
