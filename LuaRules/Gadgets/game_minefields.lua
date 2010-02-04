@@ -11,6 +11,7 @@ function gadget:GetInfo()
 end
 	
 -- function localisations
+local DelayCall = GG.Delay.DelayCall
 -- Synced Read
 local GetUnitPosition	=	Spring.GetUnitPosition
 local GetUnitHealth		=	Spring.GetUnitHealth
@@ -49,7 +50,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 			CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID) --unitTeam
 			mineCount = mineCount + 1
 		end
-		Spring.TransferUnit(unitID, GAIA_TEAM_ID)
+		DelayCall(Spring.TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
 	end
 	
 	if ud.name == "atminesign" and engineerBuilt[unitID] ~= nil then		
