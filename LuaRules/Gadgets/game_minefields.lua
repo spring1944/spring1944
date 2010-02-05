@@ -11,7 +11,6 @@ function gadget:GetInfo()
 end
 	
 -- function localisations
-local DelayCall = GG.Delay.DelayCall
 -- Synced Read
 local GetUnitPosition	=	Spring.GetUnitPosition
 local GetUnitHealth		=	Spring.GetUnitHealth
@@ -30,7 +29,8 @@ local engineerBuilt	=	{}
 
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
-
+local DelayCall = GG.Delay.DelayCall
+  
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if (ud.name == "apminesign" and builderID ~= nil) or (ud.name == "atminesign" and builderID ~= nil) then
@@ -62,7 +62,14 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 			CreateUnit("atmine", xpos, y, zpos, 0, GAIA_TEAM_ID)
 			mineCount = mineCount + 1
 		end
-		Spring.TransferUnit(unitID, GAIA_TEAM_ID)
+		DelayCall(Spring.TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
+	end
+end
+
+function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+	local ud = UnitDefs[unitDefID]
+	if ud.name == "apminesign" or ud.name == "atminesign" and unitTeam == GAIA_TEAM_ID then
+		Spring.SetUnitCloak(unitID, true)
 	end
 end
 
