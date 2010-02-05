@@ -23,7 +23,7 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 	if (tmpUnitDef.customParams) then
 		local tmpParams = tmpUnitDef.customParams
 		-- Turn button
-		if (tmpParams.hasturnbutton) then
+		--[[if (tmpParams.hasturnbutton) then
 			-- determine unit's turn speed
 			local turnSpeed = tmpUnitDef.turnRate or 5*182
 			local tmpCmd = {
@@ -43,7 +43,7 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 					tmpCmd,
 				}
 			end
-		end
+		end]]
 		if (tmpParams.canclearmines) then
 			local tmpCmd = {
 				cob = "LookForMines",
