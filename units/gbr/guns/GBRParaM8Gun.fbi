@@ -34,6 +34,7 @@
   movementClass=KBOT_Gun;
   noChaseCategory=FLAG AIR MINE;
   objectName=GBRParaM8Gun.S3O;
+  script=GERLeiG18.cob;
   seismicSignature=0;
   selfDestructAs=Tiny_Explosion;
   [sfxtypes] {
