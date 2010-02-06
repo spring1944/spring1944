@@ -1,8 +1,8 @@
 #include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
 
 piece ground, carriage, wheels, sleeve, barrel, flare;
-piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
-piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, lthigh2, lleg2;
+piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, rfoot1, lthigh1, lleg1, lfoot1;
+piece crewman2, pelvis2, torso2, head2, luparm2, lloarm2, ruparm2, rloarm2, rthigh2, rleg2, rfoot2, lthigh2, lleg2, lfoot2;
  
  
 static-var isDeployed, normalSpeed, bAiming, DecreasingFear, fear, IsProne, lasthit, PickDeath, IsPinned, bMoving;
@@ -157,6 +157,67 @@ turn luparm2 to z-axis <20> now;\
 turn ruparm1 to z-axis <-20> now;\
 turn ruparm2 to z-axis <-20> now;\
 
+#define TRANSPORT \
+hide crewman1;\
+hide pelvis1;\
+hide torso1;\
+hide head1;\
+hide luparm1;\
+hide lloarm1;\
+hide ruparm1;\
+hide rloarm1;\
+hide rthigh1;\
+hide rleg1;\
+hide rfoot1;\
+hide lthigh1;\
+hide lleg1;\
+hide lfoot1;\
+hide crewman2;\
+hide pelvis2;\
+hide torso2;\
+hide head2;\
+hide luparm2;\
+hide lloarm2;\
+hide ruparm2;\
+hide rloarm2;\
+hide rthigh2;\
+hide rleg2;\
+hide rfoot2;\
+hide lthigh2;\
+hide lleg2;\
+hide lfoot2;\
+turn ground to y-axis <180> now;\
+
+#define UNTRANSPORT \
+show crewman1;\
+show pelvis1;\
+show torso1;\
+show head1;\
+show luparm1;\
+show lloarm1;\
+show ruparm1;\
+show rloarm1;\
+show rthigh1;\
+show rleg1;\
+show rfoot1;\
+show lthigh1;\
+show lleg1;\
+show lfoot1;\
+show crewman2;\
+show pelvis2;\
+show torso2;\
+show head2;\
+show luparm2;\
+show lloarm2;\
+show ruparm2;\
+show rloarm2;\
+show rthigh2;\
+show rleg2;\
+show rfoot2;\
+show lthigh2;\
+show lleg2;\
+show lfoot2;\
+turn ground to y-axis <0> now;\
 
 Create()
 {
@@ -536,11 +597,11 @@ setSFXoccupy(terrain)
 		//TODO: change to being transported anim
 		
 		call-script UnDeploy();
-		CREW_UNDEPLOY;
+		TRANSPORT;
 	}	
 	if(terrain)
 	{
-		CREW_DEPLOY;
+		UNTRANSPORT;
 	}
 }
 

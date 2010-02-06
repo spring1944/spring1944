@@ -47,7 +47,7 @@
   trackType=Stdtank;
   trackWidth=13;
   transportCapacity=15;
-  transportMass=750;
+  //transportMass=750;
   transportRadius=50;
   transportSize=1;
   transportUnloadMethod=2;
