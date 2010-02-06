@@ -68,11 +68,10 @@ local inBuildSupplyInfos = {}
 
 --format: unitDefID = bool
 local generalTruckDefIDs = {}
-local supplyTruckDefIDs = {}
+local halftrackDefIDs = {}
 
 local generalTruckDefInfo = {560, ceil(560 / segmentLength), 2 * PI / ceil(560 / segmentLength)} --Update this when you change the truck deployment radii
-local supplyTruckDefInfo = {625, ceil(625 / segmentLength), 2 * PI / ceil(625 / segmentLength)}
-local supplyTruckMobileDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
+local halftrackDefInfo = {200, ceil(200 / segmentLength), 2 * PI / ceil(200 / segmentLength)}
 
 local myTeamID
 
@@ -346,11 +345,11 @@ local function DrawTrucks()
 			if generalTruckDefIDs[unitDefID] then
 				glColor(previewColor)
 				DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
-			elseif supplyTruckDefIDs[unitDefID] then
+			elseif halftrackDefIDs[unitDefID] then
 				glColor(previewColor)
-				DrawSupplyRingFull(supplyTruckDefInfo, x, z)
+				--DrawSupplyRingFull(halftrackDefInfo, x, z)
 				glColor(color)
-				DrawSupplyRingFull(supplyTruckMobileDefInfo, x, z, radius)
+				DrawSupplyRingFull(halftrackDefInfo, x, z, radius)
 			end
 		end
 	end
@@ -404,7 +403,7 @@ local function CallMain()
 			if supplyInfos[mouseTarget]
 					or inBuildSupplyInfos[mouseTarget]
 					or generalTruckDefIDs[targetDefID]
-					or supplyTruckDefIDs[targetDefID] then
+					or halftrackDefIDs[targetDefID] then
 				DrawTrucks()
 				glCallList(mainList)
 				return
@@ -417,7 +416,7 @@ local function CallMain()
 		for unitDefID, _ in pairs(selectedUnitsCounts) do
 			if supplyDefInfos[unitDefID]
 					or generalTruckDefIDs[unitDefID]
-					or supplyTruckDefIDs[unitDefID] then
+					or halftrackDefIDs[unitDefID] then
 				DrawTrucks()
 				glCallList(mainList)
 				return
@@ -636,7 +635,7 @@ function widget:Initialize()
 		end
 		if unitDef.customParams.ammosupplier == "1" and unitDef.speed > 0 then
 			--Spring.Echo(unitDef.humanName)
-			supplyTruckDefIDs[unitDefID] = true
+			halftrackDefIDs[unitDefID] = true
 		end
 	end
 
