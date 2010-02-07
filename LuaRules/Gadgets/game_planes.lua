@@ -126,6 +126,7 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
     local cmdDesc = {
       id = currCmdID,
       name = "0 Ready",
+	  action = sortieUnitName,
       disabled = true,
       cursor = sortie.cursor or "Attack",
       tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),

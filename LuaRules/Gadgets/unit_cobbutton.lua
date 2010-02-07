@@ -62,7 +62,7 @@ for unit, cmds in pairs(buttonDefs) do
     cmd.cmdDesc = {
       id      = cmd.id,
       name    = cmd.name or cmd.cob,
-      action  = string.lower(cmd.name),
+      action  = cmd.action or string.lower(cmd.cob),
       type    = cmd.type or CMDTYPE.ICON,
       tooltip = cmd.tooltip,
     }

@@ -138,7 +138,7 @@ local morphCmdDesc = {
   name   = 'Deploy',
   --cursor = 'Deploy',  -- add with LuaUI?
   cursor = 'Fight',
-  action = 'Deploy',
+  action = 'deploy',
 }
 
 --// will be replaced in Initialize()

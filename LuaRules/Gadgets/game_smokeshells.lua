@@ -36,6 +36,7 @@ local CMD_SMOKE = 35520 -- this should be changed
 local smokeCmdDesc = {
 	id 		 = CMD_SMOKE,
   type   = CMDTYPE.ICON_MODE,
+	action = "togglesmoke",
 	tooltip = 'Toggle between High Explosive and Smoke rounds',
 	params = {0, 'Fire HE', 'Fire Smoke'},
 }
