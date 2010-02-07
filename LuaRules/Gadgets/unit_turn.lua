@@ -2,7 +2,7 @@ function gadget:GetInfo()
 	return {
 		name      = "Turn Command",
 		desc      = "Implements Turn command for vehicles",
-		author    = "FLOZi",
+		author    = "FLOZi, yuritch", -- yuritch is magical
 		date      = "5/02/10",
 		license   = "PD",
 		layer     = -5,
@@ -11,9 +11,13 @@ function gadget:GetInfo()
 end
 
 -- SyncedCtrl
+local SetUnitCOBValue = Spring.SetUnitCOBValue
 -- SyncedRead
+local GetUnitCOBValue = Spring.GetUnitCOBValue
+local GetUnitPosition = Spring.GetUnitPosition
 -- Constants
 local CMD_TURN = 35521 -- this should be changed, we really need some centralised 'commands.h.lua' file with our used command ids
+local COB_ANGULAR = 182
 
 local turnCmdDesc = {
 	id = CMD_TURN,
@@ -23,9 +27,48 @@ local turnCmdDesc = {
 	cursor = "Patrol",
 }
 
+-- Variables
+local turning = {} -- structure: turns = {unitID={turnSpeed=number, numFrames=number, currHeading=number}}
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+
+local function StartTurn(unitID, unitDefID, tx, tz)
+	local ud = UnitDefs[unitDefID]
+	local turnRate = ud.turnRate
+	local ux, _, uz = GetUnitPosition(unitID)
+	local dx, dz = tx - ux, tz - uz
+
+	local newHeading = math.deg(math.atan2(dx, dz)) * COB_ANGULAR	
+	local currHeading = GetUnitCOBValue(unitID, COB.HEADING)
+	local deltaHeading = newHeading - currHeading;
+	--  find the direction for shortest turn
+	if deltaHeading > (180 * COB_ANGULAR) then deltaHeading = deltaHeading - (360 * COB_ANGULAR) end
+	if deltaHeading < (-180 * COB_ANGULAR) then deltaHeading = deltaHeading + (360 * COB_ANGULAR) end
+	-- how many frames the turn should take
+	local numFrames = deltaHeading / turnRate
+	if numFrames < 0 then
+		numFrames = -numFrames
+		turnRate = - turnRate
+	end
+	local turnTable = {}
+	turnTable["turnRate"] = turnRate
+	turnTable["numFrames"] = numFrames
+	turnTable["currHeading"] = currHeading
+	turning[unitID] = turnTable
+end
+
+function gadget:GameFrame(n)
+	for unitID, turnTable in pairs(turning) do
+		if turnTable.numFrames > 0 then
+			turnTable.currHeading = turnTable.currHeading + turnTable.turnRate
+			if turnTable.currHeading < -180 * COB_ANGULAR then turnTable.currHeading = turnTable.currHeading + 360 * COB_ANGULAR end
+			if turnTable.currHeading > 180 * COB_ANGULAR then turnTable.currHeading = turnTable.currHeading - 360 * COB_ANGULAR end
+			turnTable.numFrames = turnTable.numFrames - 1
+			SetUnitCOBValue(unitID, COB.HEADING, turnTable.currHeading)
+		end
+	end
+end
 
 function gadget:Initialize()
 	gadgetHandler:RegisterCMDID(CMD_TURN)
@@ -35,7 +78,6 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.hasturnbutton then
 		Spring.InsertUnitCmdDesc(unitID, 500, turnCmdDesc)
-		Spring.CallCOBScript(unitID, "SetTurnSpeed", 1, ud.turnRate or 5*182)
 	end
 end
 
@@ -44,22 +86,25 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 	if cmdID == CMD_TURN and not ud.customParams.hasturnbutton then
 		return false
 	end
+	turning[unitID] = nil -- Abort turn if another command issued directly (not queued)
 	return true
 end
 
 function gadget:CommandFallback(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions)
 	local ud = UnitDefs[unitDefID]
 	if cmdID == CMD_TURN then
-		Spring.Echo("CMD_TURN")
-		local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
-		local ux, _, uz = Spring.GetUnitPosition(unitID)
-		local dx, dz = tx - ux, tz - uz
-		local rotation = math.atan2(dx, dz)
-		-- convert to COB angular units
-		local COBAngularConstant = 182
-		rotation = rotation * 180 / math.pi * COBAngularConstant
-		Spring.CallCOBScript(unitID, "RotateHere", 1, rotation)
-		return true, true
+		if turning[unitID] == nil then
+			local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
+			StartTurn(unitID, unitDefID, tx, tz)
+			return true, false -- start turn and continue
+		else
+			if turning[unitID].numFrames > 0 then
+				return true, false -- still turning
+			else
+				turning[unitID] = nil
+				return true, true -- turn finished
+			end
+		end
 	end
 	return false
 end
