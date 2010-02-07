@@ -23,12 +23,13 @@ local turnCmdDesc = {
 	id = CMD_TURN,
 	type = CMDTYPE.ICON_MAP,
 	name = "Turn",
+	action = "turn",
 	tooltip = "Turn to face a given point",
 	cursor = "Patrol",
 }
 
 -- Variables
-local turning = {} -- structure: turns = {unitID={turnSpeed=number, numFrames=number, currHeading=number}}
+local turning = {} -- structure: turning = {unitID={turnRate=number COB units to rotate per frame, numFrames=number of frames left to rotate in, currHeading= current heading}}
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
