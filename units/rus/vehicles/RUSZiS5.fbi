@@ -21,6 +21,7 @@
   idleAutoHeal=2;
   idleTime=1000;
   leaveTracks=1;
+  loadingRadius=120;
   mass=300;
   maxDamage=300;
   maxReverseVelocity=2.25;
@@ -31,27 +32,30 @@
   noChaseCategory=AIR MINE;
   objectName=RUSZiS5.S3O;
   releaseHeld=1;
+  script=GEROpelBlitz.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=RUS;
   sightDistance=800;
-  soundcategory=RUSVeh;
+  smoothAnim=0;
+  soundcategory=GERTank;
   stealth=1;
   TEDClass=TANK;
-  trackOffset=5;
+  trackOffset=10;
   trackStrength=6.5;
   trackStretch=1;
   trackType=Stdtank;
-  trackWidth=12;
+  trackWidth=13;
   transportCapacity=15;
   transportMass=750;
-  transportRadius=50;
   transportSize=1;
-  transportUnloadMethod=2;
+  transportUnloadMethod=0;
   turninplace=0;
   turnRate=440;
+  unloadSpread=3;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 
