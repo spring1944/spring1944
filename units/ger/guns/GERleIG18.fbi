@@ -26,7 +26,7 @@
   iconType=artillery;
   idleAutoHeal=2;
   idleTime=2000;
-  mass=600;
+  mass=100; // 600
   maxDamage=300;
   maxSlope=10;
   maxVelocity=0.75;

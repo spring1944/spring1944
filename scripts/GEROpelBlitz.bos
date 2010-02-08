@@ -4,14 +4,12 @@
 #include "exptype.h"
 
 piece  base, load_shoulder, load_arm, wheel1, wheel2, tow_point;
- 
-static-var restore_delay, skip;
+static-var bGun;
 
 // Signal definitions
 #define SIG_AIM				2
 #define INFANTRY			412876 //458752 //983040 // this is 65536 * s3o model radius
 
-// Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
 {
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
@@ -20,9 +18,10 @@ TransportPickup(unitid)
 			{ 
 			  attach-unit unitid to 0 - 1; // hide infantry models
 			}
-			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+			if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
 			{ 
 			  attach-unit unitid to tow_point; // don't hide other units
+			  bGun = 1;
 			}
 			set BUSY to 0;
 	}
@@ -35,6 +34,7 @@ TransportDrop(unitid, position)
 	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
 	{ 
 		drop-unit unitid;
+		bGun = 0;
 	}
 	else
 	{
@@ -81,30 +81,20 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
-	set ACTIVATION to 1;
-	/*emit-sfx 257 from exhaust;
-	sleep 50;
-	emit-sfx 257 from exhaust;
-	sleep 50;
-	emit-sfx 257 from exhaust;*/
 	spin wheel1 around x-axis speed <350.082418>;
 	spin wheel2 around x-axis speed <350.082418>;
 }
 
 StopMoving()
 {
-	set ACTIVATION to 0;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
 	stop-spin wheel2 around x-axis decelerate <100.000000>;
 }
 
 Create()
 {
-//	spin tow_point around y-axis speed <100>;
+	bGun = 0;
 	start-script SmokeUnit();
-	skip = 0;
-//	spin base around y-axis speed <50>;
-//	move wheel1 to z-axis [100] now;
 }
 
 SweetSpot(piecenum)
