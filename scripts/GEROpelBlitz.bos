@@ -16,12 +16,6 @@ TransportPickup(unitid)
 {
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
 			set BUSY to 1;
-			/*turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
-			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
-			attach-unit unitid to load_arm;
-			move load_arm to z-axis [10.000000] speed [300.000000];
-			wait-for-move load_arm along z-axis;*/
 			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
 			{ 
 			  attach-unit unitid to 0 - 1; // hide infantry models
@@ -37,6 +31,12 @@ TransportPickup(unitid)
 TransportDrop(unitid, position)
 {
 	set BUSY to 1;
+	// just dump guns off where they are
+	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+	{ 
+		drop-unit unitid;
+		return;
+	}
 	// turn shoulder to face the drop off point
 	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
 	attach-unit unitid to load_arm;
@@ -44,7 +44,7 @@ TransportDrop(unitid, position)
 	move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
 	// sleep for at least a frame (so unit is not dropped by attach-unit)
 	sleep 50;
-	get PRINT (unitid, position / 65536, position & 65535);
+	//get PRINT (unitid, position / 65536, position & 65535);
 	drop-unit unitid;
 	move load_arm to z-axis 0 now;
 	set BUSY to 0;

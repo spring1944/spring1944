@@ -47,13 +47,13 @@
   trackType=Stdtank;
   trackWidth=13;
   transportCapacity=15;
-  //transportMass=750;
-  transportRadius=50;
+  transportMass=750;
   transportSize=1;
   transportUnloadMethod=0;
   turninplace=0;
   turnRate=440;
-  unloadspread=3;
+  unloadRadius=120;
+  unloadSpread=3;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
