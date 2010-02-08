@@ -35,18 +35,20 @@ TransportDrop(unitid, position)
 	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
 	{ 
 		drop-unit unitid;
-		return;
 	}
-	// turn shoulder to face the drop off point
-	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-	attach-unit unitid to load_arm;
-	// move arm toward drop off point
-	move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
-	// sleep for at least a frame (so unit is not dropped by attach-unit)
-	sleep 50;
-	//get PRINT (unitid, position / 65536, position & 65535);
-	drop-unit unitid;
-	move load_arm to z-axis 0 now;
+	else
+	{
+		// turn shoulder to face the drop off point
+		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		attach-unit unitid to load_arm;
+		// move arm toward drop off point
+		move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+		// sleep for at least a frame (so unit is not dropped by attach-unit)
+		sleep 50;
+		//get PRINT (unitid, position / 65536, position & 65535);
+		drop-unit unitid;
+		move load_arm to z-axis 0 now;
+	}
 	set BUSY to 0;
 }
 

@@ -21,6 +21,7 @@
   footprintZ=3;
   iconType=truck;
   leaveTracks=1;
+  loadingRadius=120;
   mass=300;
   maxDamage=300;
   maxReverseVelocity=2.25;
@@ -52,7 +53,6 @@
   transportUnloadMethod=0;
   turninplace=0;
   turnRate=440;
-  unloadRadius=120;
   unloadSpread=3;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
