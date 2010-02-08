@@ -10,27 +10,24 @@ static-var restore_delay, skip;
 // Signal definitions
 #define SIG_AIM				2
 #define INFANTRY			412876 //458752 //983040 // this is 65536 * s3o model radius
-#define FUDGE				50 // isn't enough even between smg and rifle
 
 // Transport script courtesy of Zwzsg's script for Spring SW imptroopc
 TransportPickup(unitid)
 {
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
 			set BUSY to 1;
-			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
+			/*turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
 			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
 			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
 			attach-unit unitid to load_arm;
 			move load_arm to z-axis [10.000000] speed [300.000000];
-			wait-for-move load_arm along z-axis;
+			wait-for-move load_arm along z-axis;*/
 			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
 			{ 
-			//<= INFANTRY + FUDGE ) { // when using FUDGE
 			  attach-unit unitid to 0 - 1; // hide infantry models
 			}
 			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
 			{ 
-			//> INFANTRY + FUDGE ) {  // when using FUDGE
 			  attach-unit unitid to tow_point; // don't hide other units
 			}
 			set BUSY to 0;
@@ -39,32 +36,18 @@ TransportPickup(unitid)
 
 TransportDrop(unitid, position)
 {
-	skip = skip + 1;
-	if (skip == 2) skip = 0;
-	if (skip != 0) return;
-	var Func_Var_3;
-	Func_Var_3 = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
-	//if( Func_Var_3 >= 0 AND Func_Var_3 <= [95.000000] )
-	//{
-		set BUSY to 1;
-		//spin load_shoulder around y-axis speed <50>;
-		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-		//move load_arm to z-axis [10.000000] now;
-		//turn load_arm to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-		attach-unit unitid to load_arm;
-		move load_arm to z-axis Func_Var_3 speed [600.000000];
-		wait-for-move load_arm along z-axis;
-		drop-unit unitid;
-		move load_arm to z-axis [0.000000] now;
-		wait-for-move load_arm along z-axis;
-		if( get XZ_HYPOT(get PIECE_XZ(base) - get UNIT_XZ(unitid)) < [1.000000] )
-		{
-			attach-unit unitid to 0 - 1;
-		}
-		//stop-spin load_shoulder around y-axis;
-		sleep 10;
-		set BUSY to 0;
-	//}
+	set BUSY to 1;
+	// turn shoulder to face the drop off point
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	// move arm toward drop off point
+	move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+	// sleep for at least a frame (so unit is not dropped by attach-unit)
+	sleep 50;
+	get PRINT (unitid, position / 65536, position & 65535);
+	drop-unit unitid;
+	move load_arm to z-axis 0 now;
+	set BUSY to 0;
 }
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
@@ -118,6 +101,8 @@ Create()
 //	spin tow_point around y-axis speed <100>;
 	start-script SmokeUnit();
 	skip = 0;
+//	spin base around y-axis speed <50>;
+//	move wheel1 to z-axis [100] now;
 }
 
 SweetSpot(piecenum)
