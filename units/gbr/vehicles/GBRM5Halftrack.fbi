@@ -25,6 +25,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
+  loadingRadius=120;
   mass=930;
   maxDamage=930;
   maxReverseVelocity=2.52;
@@ -48,7 +49,6 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=GBR;
   sightDistance=840;
   smoothAnim=0;
   soundcategory=GBRVeh;
@@ -61,11 +61,11 @@
   trackWidth=15;
   transportCapacity=15;
   transportMass=750;
-  transportRadius=50;
   transportSize=1;
-  transportUnloadMethod=2;
+  transportUnloadMethod=0;
   turninplace=0;
   turnRate=400;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
   weapon1=M2Browning;

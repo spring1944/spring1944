@@ -40,7 +40,7 @@
   showNanoFrame=0;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=GERTank;
+  soundcategory=USVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;

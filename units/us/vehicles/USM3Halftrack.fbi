@@ -25,6 +25,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
+  loadingRadius=120;
   mass=930;
   maxDamage=930;
   maxReverseVelocity=2.665;
@@ -35,6 +36,7 @@
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=USM3Halftrack.S3O;
   releaseHeld=1;
+  script=GBRM5Halftrack.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -60,11 +62,11 @@
   trackWidth=15;
   transportCapacity=15;
   transportMass=750;
-  transportRadius=50;
   transportSize=1;
-  transportUnloadMethod=2;
+  transportUnloadMethod=0;
   turninplace=0;
   turnRate=400;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
   weapon1=M2Browning;
