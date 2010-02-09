@@ -1,12 +1,13 @@
-#include "STANDARD_COMMANDS_GPL.h"
+#include "constants.h"
 
-piece  base, tracks2, tracks1, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, 
- exhaust, aaref, aaturret, aagun, aaflare, load_shoulder, load_arm;
+piece  base, tracks1, tracks2, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6; 
+piece exhaust, aaturret, aagun, aaflare, hullmg, flare, load_shoulder, load_arm, tow_point;
  
-static-var restore_delay, bMoving, treadnum;
+static-var restore_delay, bMoving, treadnum, bGun;
 
 #define FX_HIDE\
 	hide aaflare;\
+	hide flare;\
 
 // definitions for HitWeapId_S44
 #define ARMOUR		5905
@@ -14,12 +15,10 @@ static-var restore_delay, bMoving, treadnum;
 
 // Signal definitions
 #define SIG_MOVE			1
-#define SIG_AIM				2 // Machinemg
-#define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
-#define FUDGE				50 // isn't enough even between smg and rifle
+#define SIG_AIM				2 // Hull MG
+#define SIG_AIM2			4 // AA MG
+#define INFANTRY			412876 // this is 65536 * s3o model radius
 #define MG_MUZZLEFLASH		1024+7
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -43,33 +42,45 @@ treads()
    } 
 }
 
-
-
-// Transport script courtesy of Gnome's script for Spring SW reb ground trans
-TransportPickup(unitid) {
-if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-	if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200]) {
-		attach-unit unitid to base;
+TransportPickup(unitid)
+{
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			set BUSY to 1;
+			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+			{ 
+			  attach-unit unitid to 0 - 1; // hide infantry models
+			}
+			if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
+			{ 
+			  attach-unit unitid to tow_point; // don't hide other units
+			  bGun = 1;
+			}
+			set BUSY to 0;
 	}
 }
-}
 
-TransportDrop(unitid, position) {
-	var depth, pos;
-	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
-	if(depth < 3) {
-		return 0;
-	}
-	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+TransportDrop(unitid, position)
+{
 	set BUSY to 1;
-	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-	attach-unit unitid to load_arm;
-	move load_arm to z-axis pos speed [10000];
-	wait-for-move load_arm along z-axis;
-	drop-unit unitid;
-	move load_arm to z-axis [0] now;
-	wait-for-move load_arm along z-axis;
-	sleep 1;
+	// just dump guns off where they are
+	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+	{ 
+		drop-unit unitid;
+		bGun = 0;
+	}
+	else
+	{
+		// turn shoulder to face the drop off point
+		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		attach-unit unitid to load_arm;
+		// move arm toward drop off point
+		move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+		// sleep for at least a frame (so unit is not dropped by attach-unit)
+		sleep 50;
+		//get PRINT (unitid, position / 65536, position & 65535);
+		drop-unit unitid;
+		move load_arm to z-axis 0 now;
+	}
 	set BUSY to 0;
 }
 
@@ -103,7 +114,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 StartMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 1;
 	bMoving = TRUE;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
@@ -123,7 +133,6 @@ StartMoving()
 StopMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;
 	stop-spin rearwheel around x-axis decelerate <100.000000>;
@@ -137,32 +146,16 @@ StopMoving()
 
 Create()
 {
-//	spin tow_point around y-axis speed <100>;
-	treadnum=0;
+	bGun = 0;
+	treadnum = 0;
 	FX_HIDE
+	// hide AAMG for now as it is not used
+	hide aaturret;
+	hide aagun;
 	start-script SmokeUnit();
 }
-AimFromWeapon1(piecenum) //fear shield
-{
-	piecenum = base;
-}
 
-QueryWeapon1(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon1(heading, pitch)
-{
-return (1);
-}
-
-FireWeapon1()
-{
-return (0);
-}
-
-// Weapon 1 - MG
+// Weapon 1 - Hull MG
 /*QueryWeapon1 (piecenum)
 	{
 	piecenum = flare;
@@ -170,7 +163,7 @@ return (0);
 
 AimFromWeapon1 (piecenum)
 	{
-	piecenum = gun
+	piecenum = hullmg;
 	;
 	}
 
@@ -178,12 +171,10 @@ AimWeapon1(heading, pitch)
 	{
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-
-	// thanks to Fang and zwzsg for this!
-	turn turret to y-axis heading speed <150>; 
-	turn gun to x-axis 0 - pitch speed <100>; 
-	wait-for-turn turret around y-axis; 
-	wait-for-turn gun around x-axis;
+	turn hullmg to y-axis heading speed <150>; 
+	turn hullmg to x-axis 0 - pitch speed <100>; 
+	wait-for-turn hullmg around y-axis; 
+	wait-for-turn hullmg around x-axis;
 	return (1);
 	}
 
@@ -204,28 +195,47 @@ FireWeapon1()
 	
 	return(0);
 	}
-	
-AimFromWeapon2(piecenum) // fear 
-{
-	piecenum = turret;
-}
 
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
+// Weapon 2 - AAMG
+QueryWeapon2 (piecenum)
+	{
+	piecenum = aaflare;
+	}
+
+AimFromWeapon2 (piecenum)
+	{
+	piecenum = aagun;
+	;
+	}
 
 AimWeapon2(heading, pitch)
-{
-	wait-for-turn turret around y-axis;
-	wait-for-turn gun around x-axis;
-return (1);
-}
+	{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	turn aaturret to y-axis heading speed <150>; 
+	turn aagun to x-axis 0 - pitch speed <100>; 
+	wait-for-turn aaturret around y-axis; 
+	wait-for-turn aagun around x-axis;
+	return (1);
+	}
 
 FireWeapon2()
-{
-return (0);
-}*/
+	{
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	
+	return(0);
+	}*/
 	
 SweetSpot(piecenum)
 {
