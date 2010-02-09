@@ -12,7 +12,7 @@ function widget:GetInfo()
 	}
 end
 
-local soundVolume = 4
+local DEFAULT_VOLUME = 4
 local updatePeriod = 0.1
 
 local SOUND_DIR = "sounds/engine/"
@@ -49,7 +49,8 @@ function widget:Initialize()
 		if engineSound then
 			local engineSoundNr = tonumber(unitDef.customParams.enginesoundnr)
 			local maxSpeed = unitDef.speed / 30
-			infos[unitDefID] = {engineSound, engineSoundNr, maxSpeed}
+			local soundVolume = tonumber(unitDef.customParams.enginevolume) or DEFAULT_VOLUME
+			infos[unitDefID] = {engineSound, engineSoundNr, maxSpeed, soundVolume}
 		end
 	end
 end
@@ -71,7 +72,7 @@ function widget:Update(dt)
 			if times[unitID] > updatePeriod then
 				times[unitID] = times[unitID] - updatePeriod
 				
-				local engineSound, engineSoundNr, maxSpeed = info[1], info[2], info[3]
+				local engineSound, engineSoundNr, maxSpeed, soundVolume = info[1], info[2], info[3], info[4]
 				local ux, uy, uz = GetUnitPosition(unitID)
 				local vx, vy, vz = GetUnitVelocity(unitID)
 				
