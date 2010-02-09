@@ -25,6 +25,7 @@
   footprintZ=2;
   iconType=halftrack;
   leaveTracks=1;
+  loadingRadius=120;
   mass=850;
   maxDamage=850;
   maxReverseVelocity=1.925;
@@ -60,12 +61,12 @@
   trackType=Stdtank;
   trackWidth=15;
   transportCapacity=12;
-  transportMass=1200;
-  transportRadius=50;
+  transportMass=600;
   transportSize=1;
-  transportUnloadMethod=2;
+  transportUnloadMethod=0;
   turninplace=0;
   turnRate=405;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
   weapon1=MG34;

@@ -1,12 +1,9 @@
-#define TA			// This is a TA script
+#include "constants.h"
 
-#include "sfxtype.h"
-#include "exptype.h"
-
-piece  base, load_shoulder, load_arm, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tow_point, 
-tracks1, tracks2, turret, gun, flare;
+piece  base, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, tracks1, tracks2;
+piece load_shoulder, load_arm, tow_point, turret, gun, flare;
  
-static-var restore_delay, bMoving, treadnum, aim1, shotCount;
+static-var bMoving, treadnum, shotCount, bGun;
 
 
 #define FX_HIDE\
@@ -16,15 +13,12 @@ static-var restore_delay, bMoving, treadnum, aim1, shotCount;
 #define SIG_MOVE			1
 #define SIG_AIM				2 // Machinemg
 #define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
-#define FUDGE				50 // isn't enough even between smg and rifle
 
 //weapon stuff
 #define MG_MUZZLEFLASH		1024+7
 // tracers
 #define SMALL_TRACER 	2048+1
 #define TRACER_PER_X_SHOTS	5
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -49,30 +43,45 @@ treads()
 }
 
 
-
-// Transport script courtesy of Gnome's script for Spring SW reb ground trans
-TransportPickup(unitid) {
+TransportPickup(unitid)
+{
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-			attach-unit unitid to base;
+			set BUSY to 1;
+			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+			{ 
+			  attach-unit unitid to 0 - 1; // hide infantry models
+			}
+			if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
+			{ 
+			  attach-unit unitid to tow_point; // don't hide other units
+			  bGun = 1;
+			}
+			set BUSY to 0;
 	}
 }
 
-TransportDrop(unitid, position) {
-	var depth, pos;
-	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
-	if(depth < 3) {
-		return 0;
-	}
-	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+TransportDrop(unitid, position)
+{
 	set BUSY to 1;
-	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
-	attach-unit unitid to load_arm;
-	move load_arm to z-axis pos speed [10000];
-	wait-for-move load_arm along z-axis;
-	drop-unit unitid;
-	move load_arm to z-axis [0] now;
-	wait-for-move load_arm along z-axis;
-	sleep 1;
+	// just dump guns off where they are
+	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+	{ 
+		drop-unit unitid;
+		bGun = 0;
+	}
+	else
+	{
+		// turn shoulder to face the drop off point
+		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		attach-unit unitid to load_arm;
+		// move arm toward drop off point
+		move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+		// sleep for at least a frame (so unit is not dropped by attach-unit)
+		sleep 50;
+		//get PRINT (unitid, position / 65536, position & 65535);
+		drop-unit unitid;
+		move load_arm to z-axis 0 now;
+	}
 	set BUSY to 0;
 }
 
@@ -106,7 +115,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 StartMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 1;
 	bMoving = TRUE;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
@@ -127,7 +135,6 @@ StartMoving()
 StopMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
@@ -144,64 +151,39 @@ Create()
 {
 	set STANDINGMOVEORDERS to 0; //hold pos by default.
 	FX_HIDE
-//	spin tow_point around y-axis speed <100>;
-	aim1 = FALSE;
-	treadnum=0;
-	shotCount=0;
+	treadnum = 0;
+	shotCount = 0;
+	bGun = 0;
 	start-script SmokeUnit();
 }
 
 // Weapon 1 - MG
 QueryWeapon1 (piecenum)
-	{
+{
 	piecenum = flare;
-	}
+}
 
 AimFromWeapon1 (piecenum)
-	{
+{
 	piecenum = gun;
-	}
+}
 
 AimWeapon1(heading, pitch)
-	{
-	aim1 = TRUE;
+{
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
 
-	// thanks to Fang and zwzsg for this!
 	turn turret to y-axis heading speed <150>; 
 	turn gun to x-axis 0 - pitch speed <100>; 
 	wait-for-turn turret around y-axis; 
 	wait-for-turn gun around x-axis;
-	aim1 = FALSE;
-	return (1);
-	}
+	return 1;
+}
 
 FireWeapon1()
-	{
-/*	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx SMALL_TRACER from flare;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from flare;
-	sleep 67;*/
-	return(0);
-	}
+{
+	return 0;
+}
 	
 Shot1(just_a_zero)
 {
