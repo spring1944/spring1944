@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=3600;
+  buildCostMetal=9000;
   buildPic=GERFw190.png;
-  buildTime=3600;
+  buildTime=9000;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

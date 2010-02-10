@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=7000;
+  buildCostMetal=2250;
   buildPic=GERFw190.png;
-  buildTime=7000;
+  buildTime=2250;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

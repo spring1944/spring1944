@@ -5,12 +5,12 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=1500;
+  buildCostMetal=3000;
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=RUS61K.png;
-  buildTime=1500;
+  buildTime=3000;
   category=DEPLOYED;
   corpse=RUS61K_Destroyed;
   [customParams] {

@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=5400;
+  buildCostMetal=13500;
   buildPic=USP47Thunderbolt.png;
-  buildTime=5400;
+  buildTime=13500;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

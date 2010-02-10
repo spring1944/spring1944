@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=9500;
+  buildCostMetal=6750;
   buildPic=GBRSpitfireMkIX.png;
-  buildTime=9500;
+  buildTime=6750;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

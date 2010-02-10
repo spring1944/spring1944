@@ -26,7 +26,7 @@ local CRUISE_SPEED = 0.75
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
 local DEPOSIT_AMOUNT = 0.5
-local PENALTY_AMOUNT = 0.5
+local PENALTY_AMOUNT = 0
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
@@ -126,7 +126,6 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
     local cmdDesc = {
       id = currCmdID,
       name = "0 Ready",
-	  action = sortieUnitName,
       disabled = true,
       cursor = sortie.cursor or "Attack",
       tooltip = sortie.tooltip or GetDefaultTooltip(sortie, sortieUnitDef),

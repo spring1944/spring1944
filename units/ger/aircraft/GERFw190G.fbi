@@ -6,9 +6,9 @@
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=8500;
+  buildCostMetal=6750;
   buildPic=GERFw190G.png;
-  buildTime=8500;
+  buildTime=6750;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

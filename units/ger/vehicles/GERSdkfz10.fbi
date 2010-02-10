@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=1350;
-  buildTime=1350;
+  buildCostMetal=2025;
+  buildTime=2025;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   [customParams] {

@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=6000;
+  buildCostMetal=2163;
   buildPic=GBRSPitfireMkXIV.png;
-  buildTime=6000;
+  buildTime=2163;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

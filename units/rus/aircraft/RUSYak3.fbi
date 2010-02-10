@@ -6,10 +6,9 @@
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
-  buildCostEnergy=9000;
-  buildCostMetal=5500;
+  buildCostMetal=1969;
   buildPic=RUSYak3.png;
-  buildTime=5500;
+  buildTime=1969;
   canAttack=1;
   canDropFlare=1;
   canFly=1;
