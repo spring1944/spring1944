@@ -25,6 +25,7 @@
     feartarget=1;
     proptexture=bitmaps/prop3.tga;
     troopdropper=1;
+	deposit=0;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=6;
