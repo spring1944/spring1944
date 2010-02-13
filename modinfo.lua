@@ -5,7 +5,7 @@ local modinfo = {
 		shortGame				= "S44",
 		mutator					= "Official",
 		description			=	"Epic World War II RTS!",
-		url							=	"http://www.spring1944.com",
+		url							=	"http://www.spring1944.net/",
 		modtype					=	"1",
 }
 
