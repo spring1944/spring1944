@@ -118,7 +118,7 @@ end
 local currCmdID = CMD_PLANES
 
 for sortieUnitName, sortie in pairs(sortieInclude) do
-  Spring.Echo(sortieUnitName)
+  --Spring.Echo(sortieUnitName)
   local sortieUnitDef = UnitDefNames[sortieUnitName]
   if sortieUnitDef then
     local sortieUnitDefID = sortieUnitDef.id
