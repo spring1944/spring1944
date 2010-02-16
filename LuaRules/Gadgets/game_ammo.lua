@@ -293,7 +293,7 @@ function gadget:GameFrame(n)
 				if (not stunned) then
 					ProcessWeapons(unitID)
 					local ud = UnitDefs[GetUnitDefID(unitID)]
-					if not ud.canfly then
+					if not ud.canFly then
 						Resupply(unitID)
 					end
 				end
