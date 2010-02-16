@@ -72,8 +72,8 @@
   range=480;
   reloadTime=3.6;
   rendertype=4;
-  soundHit=GER_Inf_Dead;
-  soundStart=GER_Inf_Dead;
+  //soundHit=GER_Inf_Dead;
+  //soundStart=GER_Inf_Dead;
   turret=1;
   weaponVelocity=250;
 }
@@ -301,8 +301,8 @@
   range=480;
   reloadTime=3.6;
   rendertype=4;
-  soundHit=GER_Inf_Dead;
-  soundStart=GER_Inf_Dead;
+  //soundHit=GER_Inf_Dead;
+  //soundStart=GER_Inf_Dead;
   turret=1;
   weaponVelocity=250;
 }

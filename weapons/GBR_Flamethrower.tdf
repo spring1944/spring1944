@@ -26,7 +26,7 @@
   reloadTime=1;
   rendertype=1;
   size=0.01;
-  soundHit=none;
+  //soundHit=none;
   soundStart=GEN_Flamethrower;
   soundTrigger=1;
   sprayAngle=500;
