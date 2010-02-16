@@ -38,6 +38,7 @@ end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	massLeft[unitID] = nil
+	switch[unitID] = nil
 end
 
 local function TransportIsFull(transportID, transportDefID, teamID)
@@ -65,7 +66,7 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	local unitDef = UnitDefs[unitDefID]
 	massLeft[transportID] = massLeft[transportID] - unitDef.mass
 	if massLeft[transportID] == 0 then
-		switch[transportID] = not switch[transportID] -- this is a hack required because UnitLoaded is called when a unit is unloaded, due to attach-script being called
+		switch[transportID] = not switch[transportID] -- this is a hack required because UnitLoaded is called when a unit is unloaded, due to attach-unit being called
 		if switch[transportID] then
 			TransportIsFull(transportID, GetUnitDefID(transportID), transportTeam)
 		end
