@@ -51,9 +51,11 @@ local function TransportIsFull(transportID, transportDefID, teamID)
 			local unitDef = UnitDefs[GetUnitDefID(unitID)]
 			if unitDef.xsize / 2 == transportDef.transportSize then
 				local commandQueue = Spring.GetUnitCommands(unitID)
-				if commandQueue[1].id == CMD.LOAD_ONTO and commandQueue[1].params[1] == transportID then
-					--Spring.Echo("Trying to load onto a full transport!")
-					GiveOrderToUnit(unitID, CMD.STOP, {}, {})
+				if commandQueue then
+					if commandQueue[1].id == CMD.LOAD_ONTO and commandQueue[1].params[1] == transportID then
+						--Spring.Echo("Trying to load onto a full transport!")
+						GiveOrderToUnit(unitID, CMD.STOP, {}, {})
+					end
 				end
 			end
 		end
