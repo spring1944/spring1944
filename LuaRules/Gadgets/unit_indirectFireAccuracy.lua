@@ -36,7 +36,7 @@ local GetGameSeconds		= Spring.GetGameSeconds
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
 
 --constants
-local losMult 				= 0.01 --how much more accurate the weapon gets
+local losMult 				= 0.25 --how much more accurate the weapon gets
 local accuracyDelay			= 20 --# of seconds before the accuracy improvement kicks in
 --vars
 local visibleAreas			= {}
