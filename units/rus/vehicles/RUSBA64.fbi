@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=350;
-  buildTime=350;
+  buildCostMetal=420;
+  buildTime=420;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=RUSBA64_Destroyed;

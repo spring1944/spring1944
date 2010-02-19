@@ -13,7 +13,7 @@
   coreThickness=0.15;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {

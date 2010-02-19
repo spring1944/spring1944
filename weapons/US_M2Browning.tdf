@@ -12,7 +12,7 @@
   collisionVolumeTest=1;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=30;
+    fearaoe=45;
     fearid=401;
   }
   [damage] {
@@ -84,7 +84,7 @@
   collisionVolumeTest=1;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {

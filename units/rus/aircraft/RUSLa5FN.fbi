@@ -6,9 +6,9 @@
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
-  buildCostMetal=2250;
+  buildCostMetal=1125;
   buildPic=RUSLa5FN.png;
-  buildTime=2250;
+  buildTime=1125;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

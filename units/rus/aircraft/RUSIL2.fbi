@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=6750;
+  buildCostMetal=3375;
   buildPic=RUSIL2.png;
-  buildTime=6750;
+  buildTime=3375;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

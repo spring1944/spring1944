@@ -117,7 +117,7 @@ local morphDefs = {
   {
     into = 'gbr17pdr_stationary',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -127,7 +127,7 @@ local morphDefs = {
   {
     into = 'gbr17pdr_truck',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },
@@ -191,7 +191,7 @@ local morphDefs = {
   {
     into = 'gerpak40_stationary',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -201,7 +201,7 @@ local morphDefs = {
   {
     into = 'gerpak40_truck',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },
@@ -266,7 +266,7 @@ local morphDefs = {
   {
     into = 'ruszis2_stationary',
     tech = 0,
-    time = 20,
+    time = 5,
     metal = 0,
     energy = 0,
     directional = true,
@@ -276,7 +276,7 @@ local morphDefs = {
   {
     into = 'ruszis2_truck',
     tech = 0,
-    time = 20,
+    time = 5,
     metal = 0,
     energy = 0,
   },
@@ -285,7 +285,7 @@ local morphDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -295,7 +295,7 @@ local morphDefs = {
   {
     into = 'ruszis3_truck',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },
@@ -323,7 +323,7 @@ local morphDefs = {
   {
     into = 'usm5gun_stationary',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
     directional = true,
@@ -333,7 +333,7 @@ local morphDefs = {
   {
     into = 'usm5gun_truck',
     tech = 0,
-    time = 20,
+    time = 10,
     metal = 0,
     energy = 0,
   },

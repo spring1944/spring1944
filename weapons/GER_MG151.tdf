@@ -8,7 +8,7 @@
   collisionVolumeTest=1;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {
@@ -44,7 +44,7 @@
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {

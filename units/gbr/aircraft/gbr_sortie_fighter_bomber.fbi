@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=13500;
+  buildCostMetal=6750;
   buildPic=GBRSpitfireMkIX.png;
-  buildTime=13500;
+  buildTime=6750;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

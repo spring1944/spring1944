@@ -9,6 +9,8 @@ local hqDefs = {
 				"usm1bofors_stationary",
 				"usobserv",
 				"ushqengineer",
+				"usm5gun_truck",
+				"usm5gun_truck",
 			},
 	},
 
@@ -22,6 +24,8 @@ local hqDefs = {
 				"gbrbofors_stationary",
 				"gbrobserv",
 				"gbrhqengineer",
+				"gbr17pdr_truck",
+				"gbr17pdr_truck",
 			},
 	},
 
@@ -34,6 +38,8 @@ local hqDefs = {
 				"gerflak38_stationary",
 				"gerobserv",
 				"gerhqengineer",
+				"gerpak40_truck",
+				"gerpak40_truck",
 				},
 	},
 	ruscommissar1 = {
@@ -47,6 +53,8 @@ local hqDefs = {
 				"ruscommissar",
 				"rusmortar",
 				"rus_platoon_partisan",
+				"ruszis3_truck",
+				"ruszis2_truck",
 			},
 		},
 }

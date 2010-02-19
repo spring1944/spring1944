@@ -9,11 +9,11 @@
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {
-    default=40;
+    default=110;
   }
   explosionGenerator=custom:HE_XSmall;
   fireStarter=10;

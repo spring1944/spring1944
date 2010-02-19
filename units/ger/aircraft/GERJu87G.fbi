@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=3600;
+  buildCostMetal=1800;
   buildPic=GERJu87G.png;
-  buildTime=3600;
+  buildTime=1800;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

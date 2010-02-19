@@ -9,7 +9,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=59;
+    default=110;
   }
   explosionGenerator=custom:HE_XSmall;
   explosionSpeed=30;

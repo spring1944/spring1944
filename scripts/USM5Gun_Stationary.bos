@@ -7,6 +7,7 @@ static-var bAiming, iFear, iState, PickDeath, lasthit;
 
 #include "inf_sharedDefs.h"
 #define RecoverRate 	2000
+#define pinnedValue		10
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
@@ -140,7 +141,7 @@ HitByWeaponId(z,x,id,damage)
 	if (Id<=300 || Id>700)
 	{
 	iFear = iFear + 1;
-		if (iState < 6) 
+		if (iState < 6 && iFear > pinnedValue) 
 		{
 		call-script TakeCover();
 		//sleep initialDelay;
@@ -154,7 +155,7 @@ HitByWeaponId(z,x,id,damage)
 	if (Id==501) iFear = iFear + BigFear;
 	if (Id==601) iFear = iFear + MortalFear;
 	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
-	if (iState < 6)
+	if (iState < 6 && iFear > pinnedValue)
 	{
 	call-script TakeCover();
 	//sleep initialDelay;

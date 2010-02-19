@@ -14,7 +14,7 @@
     fearid=701;
   }
   [damage] {
-    default=41;
+    default=110;
   }
   edgeEffectiveness=0.95;
   explosionGenerator=custom:HE_Small;
@@ -98,11 +98,11 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {
-    default=41;
+    default=110;
   }
   edgeEffectiveness=0.5;
   explosionGenerator=custom:HE_XSmall;

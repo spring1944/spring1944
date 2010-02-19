@@ -7,9 +7,9 @@
   bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=2163;
+  buildCostMetal=1080;
   buildPic=USP51DMustang.png;
-  buildTime=2163;
+  buildTime=1080;
   canAttack=1;
   canDropFlare=1;
   canFly=1;

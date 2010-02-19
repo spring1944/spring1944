@@ -7,8 +7,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2205;
-  buildTime=2205;
+  buildCostMetal=1800;
+  buildTime=1800;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=USM8Scott_Damaged;
