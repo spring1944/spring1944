@@ -11,6 +11,7 @@ local hqDefs = {
 				"ushqengineer",
 				"usm5gun_truck",
 				"usm5gun_truck",
+				"usgmctruck",
 			},
 	},
 
@@ -26,6 +27,7 @@ local hqDefs = {
 				"gbrhqengineer",
 				"gbr17pdr_truck",
 				"gbr17pdr_truck",
+				"gbrbedfordtruck",
 			},
 	},
 
@@ -40,6 +42,7 @@ local hqDefs = {
 				"gerhqengineer",
 				"gerpak40_truck",
 				"gerpak40_truck",
+				"geropelblitz",
 				},
 	},
 	ruscommissar1 = {
@@ -55,6 +58,7 @@ local hqDefs = {
 				"rus_platoon_partisan",
 				"ruszis3_truck",
 				"ruszis2_truck",
+				"ruszis5",
 			},
 		},
 }
