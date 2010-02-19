@@ -56,7 +56,7 @@ local hqDefs = {
 				"ruscommissar",
 				"rusmortar",
 				"rus_platoon_partisan",
-				"ruszis3_truck",
+				"ruszis2_truck",
 				"ruszis2_truck",
 				"ruszis5",
 			},
