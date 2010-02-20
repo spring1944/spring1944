@@ -44,9 +44,10 @@ local function updateUnit(allyTeam, unitID)
 			newAccuracy = WeaponDefs[weapons[1].weaponDef].accuracy
 		end
 	end
-	
-	for i=0, #weapons do
-		SetUnitWeaponState(unitID, i, {accuracy = newAccuracy})
+	if weapons ~= nil then
+		for i=0, #weapons do
+			SetUnitWeaponState(unitID, i, {accuracy = newAccuracy})
+		end
 	end
 end
 
