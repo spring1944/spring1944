@@ -20,6 +20,7 @@ local cruiseIDs = {}
 
 local terminalIDs = {}
 
+local INF_WATER_LEVEL	= -9
 local MIN_HEIGHT = 100
 local HEIGHT_SMOOTHING = 0.05
 local GRAVITY = Game.gravity
@@ -194,9 +195,11 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 		local gliderSquad = ud.customParams.spawn_on_death or nil
 		local spawnDelay = ud.customParams.deathspawn_delay or 70
 		if gliderSquad then
-			local delay = spawnDelay
-			DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.2, y, z + vz * delay * 0.2, 0, unitTeam}, delay)
-			DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.15, y, z + vz * delay * 0.15, 0, unitTeam}, delay)
+			if y > INF_WATER_LEVEL then
+				local delay = spawnDelay
+				DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.2, y, z + vz * delay * 0.2, 0, unitTeam}, delay)
+				DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.15, y, z + vz * delay * 0.15, 0, unitTeam}, delay)
+			end
 		end
     return true
   end

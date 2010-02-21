@@ -16,6 +16,7 @@ local windFactor = 0.1
 local drag = 0.06
 local relVelHoriz = 0.25
 local relVelVert = 1
+local INF_WATER_LEVEL = -5
 
 local paratrooperWeaponDefIDs = {}
 
@@ -120,7 +121,11 @@ end
 function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   local paratrooperInfo = paratroopers[unitID]
   if not paratrooperInfo then return false end
-  
-  uReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
+  local x, y, z = GetUnitPosition(unitID)
+  if y > INF_WATER_LEVEL then
+	uReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
+  else
+	DestroyUnit(unitID)
+  end
   return true
 end
