@@ -94,6 +94,7 @@ end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	-- Reset visibleAreas if unit is given to an enemy player
+	local allyTeam = GetUnitAllyTeam(unitID)
 	if not Spring.AreTeamsAllied (unitTeam, oldTeam) then
 		visibleAreas[allyTeam][unitID] = nil
 	end
