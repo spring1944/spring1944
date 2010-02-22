@@ -2,7 +2,7 @@ function gadget:GetInfo()
     return {
         name      = "Indirect Fire Accuracy Manager",
         desc      = "Changes the accuracy of weapons fire based on the LoS status of the target",
-        author    = "Ben Tyler (Nemo)",
+        author    = "Ben Tyler (Nemo), Craig Lawrence (FLOZi)",
         date      = "Feb 10th, 2009",
         license   = "LGPL v2.1 or later",
         layer     = 0,
@@ -85,6 +85,18 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			end
 		end
 	return true	
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+	local allyTeam = GetUnitAllyTeam(unitID)
+	visibleAreas[allyTeam][unitID] = nil
+end
+
+function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+	-- Reset visibleAreas if unit is given to an enemy player
+	if not Spring.AreTeamsAllied (unitTeam, oldTeam) then
+		visibleAreas[allyTeam][unitID] = nil
+	end
 end
 
 function gadget:GameFrame(n)
