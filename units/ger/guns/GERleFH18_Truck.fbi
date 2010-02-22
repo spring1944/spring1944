@@ -21,7 +21,7 @@
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;
-  iconType=truck;
+  iconType=htruck;
   leaveTracks=1;
   mass=300;
   maxDamage=300;

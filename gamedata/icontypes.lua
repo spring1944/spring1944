@@ -195,6 +195,16 @@ local iconTypes = {
 		size			=	2,
 		distance	=	0.2,
 	},
+	htruck = {
+		bitmap		=	"icons/Htruck.tga",
+		size			=	2,
+		distance	=	0.2,
+	},
+	rtruck = {
+		bitmap		=	"icons/Rtruck.tga",
+		size			=	2,
+		distance	=	0.2,
+	},
 	ammo = {
 		bitmap		=	"icons/ammo.tga",
 		size			=	2.25,
