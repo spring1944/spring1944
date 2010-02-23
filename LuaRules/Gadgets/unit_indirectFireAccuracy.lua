@@ -57,20 +57,20 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			if cmdID == CMD_ATTACK or cmdID == CMD_AREA_ATTACK then
 				local allyTeam = GetUnitAllyTeam(unitID)
 				local targetX, targetY, targetZ
-				
+
 				if IsValidUnitID(cmdParams[1]) == true then --shooting at a unit
 					targetX, targetY, targetZ = GetUnitPosition(cmdParams[1])
 				else --shooting at the ground
 					targetX, targetY, targetZ = cmdParams[1], cmdParams[2], cmdParams[3]
 				end
-				
+
 				if visibleAreas[allyTeam] == nil then
 					visibleAreas[allyTeam] = {}
 				end
 				if visibleAreas[allyTeam][unitID] == nil then
 					visibleAreas[allyTeam][unitID] = {}
 				end
-				
+
 				visibleAreas[allyTeam][unitID] = {
 							targetTime = nil, --just until the next update calls
 							zeroed = false,
@@ -78,35 +78,36 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							y = targetY,
 							z = targetZ,
 						}
-				
+
 				if IsPosInLos(targetX, targetY, targetZ) == true then
 					visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
 				end
 			end
 		end
-	return true	
+	return true
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	local allyTeam = GetUnitAllyTeam(unitID)
-	visibleAreas[allyTeam][unitID] = nil
+	if visibleAreas[allyTeam] then
+		visibleAreas[allyTeam][unitID] = nil
+	end
 end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	-- Reset visibleAreas if unit is given to an enemy player
 	local allyTeam = GetUnitAllyTeam(unitID)
-	if not Spring.AreTeamsAllied (unitTeam, oldTeam) then
+	if not Spring.AreTeamsAllied (unitTeam, oldTeam) and visibleAreas[allyTeam] then
 		visibleAreas[allyTeam][unitID] = nil
 	end
 end
 
 function gadget:GameFrame(n)
 	if (n % (2*30)) < 0.1 then --update every two seconds
-		for allyID, someThing in pairs(visibleAreas) do
-			for unitID, someThing in pairs(visibleAreas[allyID]) do
-				local unitArea = visibleAreas[allyID][unitID]
+		for allyID, units in pairs(visibleAreas) do
+			for unitID, unitArea in pairs(units) do
 					if IsPosInLos(unitArea.x, unitArea.y, unitArea.z) == true then
-						if unitArea.targetTime == nil then 
+						if unitArea.targetTime == nil then
 							unitArea.targetTime = GetGameSeconds()
 						end
 						if ((n/30) - unitArea.targetTime) > accuracyDelay then
