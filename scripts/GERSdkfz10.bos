@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, turret, sleeve, barrel, flare, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, tracks1, tracks2;
 piece flap1, flap2, flap3;
@@ -40,6 +40,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 // definitions for turret movement
 #define TURR_TRAVERSE	<400> // manual
 #define TURR_ELEVATE	<300>
+#define DEPLOY_SPEED	<100> // speed which the sideflaps fall
 
 // definitions for weapons behaviour
 #define RELOAD		300 // time in milliseconds between shots
@@ -62,8 +63,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 //tracers
 #define LARGE_TRACER		2048+1
 #define TRACER_PER_X_SHOTS	3
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -141,9 +140,9 @@ RestoreAfterDelay()
 	sleep restore_delay;
 	turn turret to y-axis <0.000000> speed <60>;
 	turn barrel to x-axis <0.000000> speed <10>;
-	turn flap1 to z-axis <0.000000> speed <50>;
-	turn flap2 to z-axis <0.000000> speed <50>;
-	turn flap3 to x-axis <0.000000> speed <50>;
+	turn flap1 to z-axis <0.000000> speed DEPLOY_SPEED / 2;
+	turn flap2 to z-axis <0.000000> speed DEPLOY_SPEED / 2;
+	turn flap3 to x-axis <0.000000> speed DEPLOY_SPEED / 2;
 }
 
 Reload()
@@ -178,17 +177,15 @@ AimWeapon1(heading, pitch)
 	GunAiming=1;
 	
 	mainHead = heading;
-	turn flap1 to z-axis <90.00000> speed <50>;
-	turn flap2 to z-axis <-90.00000> speed <50>;
-	turn flap3 to x-axis <-90.00000> speed <50>;
+	turn flap1 to z-axis <90.00000> speed DEPLOY_SPEED;
+	turn flap2 to z-axis <-90.00000> speed DEPLOY_SPEED;
+	turn flap3 to x-axis <-90.00000> speed DEPLOY_SPEED;
 	
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn turret around y-axis;
 	wait-for-turn sleeve around x-axis;
 	wait-for-turn flap1 around z-axis;
-	wait-for-turn flap2 around z-axis;
-	wait-for-turn flap3 around x-axis;
 	
 	start-script RestoreAfterDelay();
 	if (reloading) return 0; // aim first, then pause if the shot cannot fire
