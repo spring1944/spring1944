@@ -26,6 +26,7 @@
   minWaterDepth=10;
   movementClass=BOAT_Medium;
   objectName=GERPontoonRaft.S3O;
+  script=PontoonRaft.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
