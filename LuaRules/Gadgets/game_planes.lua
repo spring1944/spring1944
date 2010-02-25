@@ -125,6 +125,7 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
 
     local cmdDesc = {
       id = currCmdID,
+	  action = sortieUnitName,
       name = "0 Ready",
       disabled = true,
       cursor = sortie.cursor or "Attack",
