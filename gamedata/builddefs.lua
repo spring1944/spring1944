@@ -691,7 +691,7 @@ buildoptions =
   
   ruscommissar1 =
   {
-    "ruspshack",
+    --"ruspshack",
     "rusbarracks",
     "rusgunyard",
     "apminesign",
