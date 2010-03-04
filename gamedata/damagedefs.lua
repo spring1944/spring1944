@@ -56,7 +56,7 @@ local damagedefs = {
   },
   shapedcharge = {
 	ships = 2,
-    lightbuildings = 1/4,
+    lightbuildings = 1/10,
     flag = 0,
   },
   fire = {

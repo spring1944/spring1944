@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=2025;
-  buildTime=2025;
+  buildCostMetal=1650;
+  buildTime=1650;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRStaghound_Destroyed;

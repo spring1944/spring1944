@@ -26,7 +26,7 @@
   intensity=0.9;
   lineofsight=1;
   predictBoost=0.99;
-  range=1460;
+  range=1700;
   reloadTime=1.5;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;

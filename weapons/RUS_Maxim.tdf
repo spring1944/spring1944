@@ -65,7 +65,7 @@
   movingAccuracy=400;
   noSelfDamage=1;
   predictBoost=0.75;
-  range=910;
+  range=1050;
   reloadTime=1;
   rendertype=0;
   rgbColor=0.0 0.7 0.0;

@@ -26,14 +26,14 @@
   intensity=0.9;
   lineofsight=1;
   predictBoost=0.9;
-  range=1575;
+  range=1800;
   reloadTime=1.25;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   size=0.001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GEN_37mmAA;
-  sprayAngle=550;
+  sprayAngle=450;
   tolerance=700;
   turret=1;
   weaponTimer=1;

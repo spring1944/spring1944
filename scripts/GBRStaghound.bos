@@ -1,5 +1,4 @@
-#define TAK
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece base, turret, turret_floor, sleeve, guns, flare1, flare2, crewman;
 piece wheel1, wheel2;
@@ -38,8 +37,8 @@ static-var  restore_delay, bMoving, bAAMode, bTurretAimingDone, shotCount, curFl
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<430> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
-#define TURR_ELEVATE	<140>
+#define TURR_TRAVERSE	<830> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
+#define TURR_ELEVATE	<240>
 
 // definitions for weapons behaviour
 #define RELOAD		3000 // time in milliseconds between shots
