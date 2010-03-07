@@ -13,7 +13,7 @@
   corpse=RUSZiS5_Destroyed;
   [customParams] {
     lowammolevel=1;
-    maxammo=4;
+    maxammo=16;
     weaponcost=3;
     weaponswithammo=0;
   }

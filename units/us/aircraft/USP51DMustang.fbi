@@ -56,7 +56,7 @@
   }
   showNanoFrame=0;
   Side=US;
-  sightDistance=500;
+  sightDistance=200;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;
