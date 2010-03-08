@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.11;
   buildCostEnergy=0;
-  buildCostMetal=1900;
-  buildTime=1900;
+  buildCostMetal=1700;
+  buildTime=1700;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERPuma_Destroyed;

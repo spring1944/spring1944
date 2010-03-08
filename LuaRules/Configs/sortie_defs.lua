@@ -52,7 +52,7 @@ local sortieDefs = {
     alwaysAttack = 1,
     delay = 45,
     weight = 1,
-		silent = 1,
+	silent = 1,
   },
 	
   ger_sortie_recon = {
@@ -143,7 +143,7 @@ local sortieDefs = {
 
   rus_sortie_partisan = {
     "ruspo2partisan",
-    
+    silent = 1,
     delay = 45,
     weight = 1,
     alwaysAttack = 1,
