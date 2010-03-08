@@ -73,12 +73,13 @@ end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
 	if cmdID == CMD_SMOKE then
+		local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_SMOKE)
+		if not cmdDescID then return false end
 		if cmdParams[1] == 1 then
 			Spring.CallCOBScript(unitID, "SwitchToSmoke", 0)
 		else
 			Spring.CallCOBScript(unitID, "SwitchToHE", 0)
 		end
-		local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_SMOKE) 
 		smokeCmdDesc.params[1] = cmdParams[1]
 		Spring.EditUnitCmdDesc(unitID, cmdDescID, { params = smokeCmdDesc.params}) 
 		return false
