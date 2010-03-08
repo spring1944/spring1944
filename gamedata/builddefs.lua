@@ -316,7 +316,7 @@ buildoptions =
     "gersdkfz251",
     "gersdkfz10",
     "germarder",
-    "gerpanzeriii",
+    "gerpuma",
   },
 
   gergunyard =
