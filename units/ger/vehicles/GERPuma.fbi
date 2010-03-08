@@ -49,6 +49,7 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
     explosionGenerator8=custom:MEDIUMSMALL_MUZZLEFLASH;
     explosionGenerator9=custom:MEDIUMSMALL_MUZZLEDUST;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
   }
   showNanoFrame=0;
   side=GER;
