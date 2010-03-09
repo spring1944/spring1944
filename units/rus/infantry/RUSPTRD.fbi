@@ -29,7 +29,7 @@
   maxVelocity=1.6;
   maxWaterDepth=15;
   movementClass=KBOT_Infantry;
-  noChaseCategory=FLAG AIR MINE;
+  noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=RUSPTRD.S3O;
   repairable=0;
   seismicSignature=0;

@@ -34,7 +34,7 @@
   maxWaterDepth=5;
   minCloakDistance=310; //230
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
+  noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=USHAT.S3O;
   seismicSignature=0;
   [sfxtypes] {
