@@ -37,7 +37,7 @@
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
   objectName=GERSniper.S3O;
   repairable=0;
-  seismicDistance=950;
+  seismicDistance=800;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
