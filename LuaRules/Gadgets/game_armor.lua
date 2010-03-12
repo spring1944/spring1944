@@ -158,7 +158,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   
   local unitInfo = unitInfos[unitDefID]
   local weaponInfo = weaponInfos[weaponDefID]
-  local weaponDef = WeaponDefs[weaponDefID] 
+  local weaponDef = WeaponDefs[weaponDefID]
+  
+  if unitinfo and weaponDef.customParams.damagetype == "smallarm" then return 0 end -- smallarms do 0 damage to armour
   
   if not unitInfo or not weaponInfo or not weaponDef then return damage end
 
