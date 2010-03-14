@@ -67,13 +67,20 @@ local options = {
 		def    = "icons/sl_app.png", 	--bmp/png
 	},
 	{
+		key    = "battlelist_filter",
+		name   = "battlelist_filter",
+		desc   = "simple string/regex filter that defines which battles are shown in multiplayer",
+		type   = "string",
+		def    = "1944",
+	},
+	{
 		key    = "default_ai",
 		name   = "default_ai",
 		desc   = "default_ai",
 		type   = "string",
 		def    = "C.R.A.I.G.",
 	},
-	{
+	{	-- optional
 		key    = "help_url",
 		name   = "help_url",
 		desc   = "the url that is opened in browser if help button is clicked",
