@@ -153,76 +153,73 @@ function gadget:GameFrame(n)
 	end
 
 	-- FLAG CONTROL
-	if (modOptions.gametype == "0" or modOptions.gametype == nil) then
-		if n % 30 == 5 and n > (initFrame + 40) then
-			for spotNum, flagID in pairs(flags) do
-				local flagTeamID = GetUnitTeam(flagID)
-				local defendTotal = 0
-				local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
-				--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
-				if #unitsAtFlag == 1 then -- Only the flag, no other units
-					for teamID = 0, #teams-1 do
-						if teamID ~= flagTeamID then
-							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
-								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
-								SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
-							end
+	if n % 30 == 5 and n > (initFrame + 40) then
+		for spotNum, flagID in pairs(flags) do
+			local flagTeamID = GetUnitTeam(flagID)
+			local defendTotal = 0
+			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
+			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
+			if #unitsAtFlag == 1 then -- Only the flag, no other units
+				for teamID = 0, #teams-1 do
+					if teamID ~= flagTeamID then
+						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
 						end
 					end
-				else -- Attackers or defenders (or both) present
-					for i = 1, #unitsAtFlag do
-						local unitID = unitsAtFlag[i]
-						local unitTeamID = GetUnitTeam(unitID)
-						if AreTeamsAllied(unitTeamID, flagTeamID) and defenders[unitID] then
-							--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
-							defendTotal = defendTotal + defenders[unitID]
-						end
-						if (not AreTeamsAllied(unitTeamID, flagTeamID)) and cappers[unitID] then
-							--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
-							flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
+				end
+			else -- Attackers or defenders (or both) present
+				for i = 1, #unitsAtFlag do
+					local unitID = unitsAtFlag[i]
+					local unitTeamID = GetUnitTeam(unitID)
+					if AreTeamsAllied(unitTeamID, flagTeamID) and defenders[unitID] then
+						--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
+						defendTotal = defendTotal + defenders[unitID]
+					end
+					if (not AreTeamsAllied(unitTeamID, flagTeamID)) and cappers[unitID] then
+						--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
+						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
+					end
+				end
+				for j = 1, #teams do
+					teamID = teams[j]
+					if teamID ~= flagTeamID then
+						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+							--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
+							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
+							if flagCapStatuses[flagID][teamID] < 0 then
+								flagCapStatuses[flagID][teamID] = 0
+							end
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
 						end
 					end
-					for j = 1, #teams do
-						teamID = teams[j]
-						if teamID ~= flagTeamID then
-							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
-								--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
-								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
-								if flagCapStatuses[flagID][teamID] < 0 then
-									flagCapStatuses[flagID][teamID] = 0
-								end
-								SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
-							end
+					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
+						if (flagTeamID == GAIA_TEAM_ID) then
+							Spring.SendMessageToTeam(teamID, "Flag Captured!")
+							TransferUnit(flagID, teamID, false)
+							SetUnitRulesParam(flagID, "lifespan", 0)
+							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1)
+							CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
+						else
+							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
+							TransferUnit(flagID, GAIA_TEAM_ID, false)
+							SetUnitRulesParam(flagID, "lifespan", 0)
+							SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1)
+							CallCOBScript(flagID, "ShowFlag", 0, 0)
 						end
-						if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
-							if (flagTeamID == GAIA_TEAM_ID) then
-								Spring.SendMessageToTeam(teamID, "Flag Captured!")
-								TransferUnit(flagID, teamID, false)
-								SetUnitRulesParam(flagID, "lifespan", 0)
-								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1)
-								CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
-							else
-								Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
-								TransferUnit(flagID, GAIA_TEAM_ID, false)
-								SetUnitRulesParam(flagID, "lifespan", 0)
-								SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1)
-								CallCOBScript(flagID, "ShowFlag", 0, 0)
-							end
-							GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
-							for cleanTeamID = 0, #teams-1 do
-								flagCapStatuses[flagID][cleanTeamID] = 0
-								SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0)
-							end
+						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
+						for cleanTeamID = 0, #teams-1 do
+							flagCapStatuses[flagID][cleanTeamID] = 0
+							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0)
 						end
-						-- cleanup defenders
-						flagCapStatuses[flagID][flagTeamID] = 0
 					end
+					-- cleanup defenders
+					flagCapStatuses[flagID][flagTeamID] = 0
 				end
 			end
 		end
 	end
 end
-
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]

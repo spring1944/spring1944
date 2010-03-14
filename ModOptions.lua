@@ -22,13 +22,6 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 local options = {
-	--[[{
-		key = "simple_tanks",
-		name = "Simplified Tank Buildtree",
-		desc = "Different german tank buildtree",
-		type = "bool",
-		def = true,
-	},]]--
 
 	--[[{
     key    = "maxammo_mult",
@@ -44,7 +37,7 @@ local options = {
   {
 	key    = '2gamemode',
 	name   = 'Game Mode Settings',
-	desc   = 'Sets Normal vs Deployment Mode, as well as Point vs Traditional Victory',
+	desc   = 'Point vs Traditional Victory and Naval settings',
 	type   = 'section',
   },
 	
@@ -68,26 +61,6 @@ local options = {
 		}
 	},
 	
-      {
-	key		= "gametype",
-	name	= "Game Modes",
-	desc	= "Change the game mode (key = 'gametype')",
-	type  	= "list",
-	section	= '2gamemode',
-	def		= "0",
-	items	= {
-		{ 
-		key  = "0",
-		name = "Traditional",
-		desc = "Traditional RTS style unit construction",
-		},
-		{
-		key  = "1",
-		name = "Deployment",
-		desc = "Place your army on the map and fight it out with limited resources",
-		},
-	  },
-  },
  {
       key="scoremode",
       name="Victory Condition",

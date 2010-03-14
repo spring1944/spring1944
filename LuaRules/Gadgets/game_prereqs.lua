@@ -10,15 +10,9 @@ function gadget:GetInfo()
   }
 end
 
-if (Spring.GetModOptions) then
-  modOptions = Spring.GetModOptions()
-end
-
 --synced only
 
 if not gadgetHandler:IsSyncedCode() then return end
-
-if (modOptions.gametype == "0") then
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
@@ -175,4 +169,3 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 		gadget:UnitCreated(unitID, unitDefID, newTeam)
   end
 end
-end 

@@ -21,15 +21,6 @@ local AddTeamResource = Spring.AddTeamResource
 local GetTeamList = Spring.GetTeamList
 
 function gadget:GameFrame(n)
-  if n == 64 and (modOptions.gametype == "1") then
-    for _, unitID in ipairs(Spring.GetAllUnits()) do
-      local unitDefID = Spring.GetUnitDefID(unitID)  
-      local ud = UnitDefs[unitDefID]
-      if ud.customParams.hq == '1' then
-        Spring.DestroyUnit(unitID, false, true)
-      end
-    end
-  end
   if n % resupplyPeriod < 0.1 then
     local allTeams = GetTeamList()
     for i = 1, #allTeams do
