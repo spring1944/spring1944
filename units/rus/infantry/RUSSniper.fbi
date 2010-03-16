@@ -39,6 +39,7 @@
   objectName=RUSSniper.S3O;
   repairable=0;
   seismicDistance=800;
+  seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

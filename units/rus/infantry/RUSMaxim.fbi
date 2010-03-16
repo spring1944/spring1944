@@ -31,6 +31,7 @@
   movementClass=KBOT_Gun;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSMaxim.S3O;
+  seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

@@ -32,6 +32,7 @@
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
   objectName=GERRifle.S3O;
   repairable=0;
+  seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

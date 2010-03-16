@@ -33,6 +33,8 @@
   noChaseCategory=FLAG AIR MINE;
   objectName=USRifle.S3O;
   repairable=0;
+  seismicDistance=840;
+  seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
