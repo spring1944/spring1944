@@ -17,6 +17,7 @@
   [damage] {
     default=625;
     infantry=1700;
+	sandbags=325;
   }
   explosionGenerator=custom:Bullet;
   fireStarter=0;

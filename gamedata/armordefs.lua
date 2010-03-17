@@ -86,7 +86,6 @@ local armorDefs = {
     "GERPaK40",
     "GERleFH18",
     "GERleFH18_Stationary",
-    "germg42_sandbag",
     "GERPaK40_Stationary",
     "GERFlak38_Stationary",
     "GERNebelwerfer",
@@ -97,7 +96,6 @@ local armorDefs = {
     "USM2Gun",
     "USM2Gun_Stationary",
     "USM5Gun",
-    "usgimg_sandbag",
     "USM5Gun_Stationary",
     "USM1Bofors_Stationary",
 
@@ -107,7 +105,6 @@ local armorDefs = {
     "RUSZiS2_Stationary",
     "RUSZiS3",
     "RUSZiS3_Stationary",
-    "rusmaxim_sandbag",
     "RUSM30",
     "RUSM30_Stationary",
     "RUS61K_Stationary",
@@ -116,7 +113,6 @@ local armorDefs = {
     "GBR25Pdr",
     "GBR25Pdr_Stationary",
     "GBR17Pdr",
-    "gbrvickers_sandbag",
     "GBR17Pdr_Stationary",  
     "GBRBofors_Stationary",
   },
@@ -208,6 +204,14 @@ local armorDefs = {
 
   sandbags  =  {
       "Sandbags",
+	  --**Germany**--
+	  "germg42_sandbag",
+	  --**US**--
+	  "usgimg_sandbag",
+	  --**USSR**--
+	  "rusmaxim_sandbag",
+	  --**Britain**--
+	  "gbrvickers_sandbag",
   },
 
   mines  =  {
