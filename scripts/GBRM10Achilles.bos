@@ -1,6 +1,6 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
-piece  base, turret, mantlet, barrel, flare, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, brakeleft, brakeright, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim, reloading, mainHead, bMoving, treadnum, GunAiming, MGAiming;
 
@@ -20,6 +20,8 @@ static-var  restore_delay, rock, aim, reloading, mainHead, bMoving, treadnum, Gu
 //hiding FX emit points
 #define FX_HIDE\
 	hide flare;\
+	hide brakeleft;\
+	hide brakeright;\
 	hide aaflare;
 
 // definitions for RockUnit_Set
@@ -59,11 +61,10 @@ static-var  restore_delay, rock, aim, reloading, mainHead, bMoving, treadnum, Gu
 #define MG_MUZZLEFLASH 1024+7
 #define MEDIUM_MUZZLEFLASH 1024+8
 #define MEDIUM_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
 
 // tracers
 #define MEDIUM_TRACER 	2048+3
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -186,11 +187,10 @@ AimWeapon1(heading, pitch)
 FireWeapon1()
 {
 	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX - done!
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
