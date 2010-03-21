@@ -36,7 +36,7 @@ function gadget:Explosion(weaponId, px, py, pz, ownerID)
 	local unitsAtSpot = GetUnitsInCylinder(px, pz, weapDef.customParams.fearaoe)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
-	if weapDef.customParams.howitzer then
+	if weapDef.customParams.howitzer and Spring.ValidUnitID(ownerID) then
 		SetUnitExperience(ownerID, 0)
 	end
 	
