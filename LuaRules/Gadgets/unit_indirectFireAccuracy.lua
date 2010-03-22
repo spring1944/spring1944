@@ -106,6 +106,7 @@ function gadget:GameFrame(n)
 	if (n % (2*30)) < 0.1 then --update every two seconds
 		for allyID, units in pairs(visibleAreas) do
 			for unitID, unitArea in pairs(units) do
+				if IsValidUnitID(unitID) and unitArea then
 					if IsPosInLos(unitArea.x, unitArea.y, unitArea.z) == true then
 						if unitArea.targetTime == nil then
 							unitArea.targetTime = GetGameSeconds()
@@ -117,7 +118,8 @@ function gadget:GameFrame(n)
 						unitArea.targetTime = GetGameSeconds()
 						unitArea.zeroed = false
 					end
-				updateUnit(allyID, unitID)
+					updateUnit(allyID, unitID)
+				end
 			end
 		end
 	end
