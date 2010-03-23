@@ -122,3 +122,13 @@ function widget:DrawWorldPreUnit()
   
   --glSmoothing(false, false, false)
 end
+
+function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+	local ud = UnitDefs[unitDefID]
+	if ud.name == "flag" then
+		if unitTeam == Spring.GetMyPlayerID() then
+			local x,y,z = Spring.GetUnitPosition(unitID)
+			Spring.PlaySoundFile("sounds/GEN_Explo_Flag.wav", 1, x, y, z)
+		end
+	end
+end
