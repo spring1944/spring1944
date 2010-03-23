@@ -1,7 +1,4 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base;
 piece  gerflagpiece1, gerflagpiece2, gerflagpiece3;
@@ -49,7 +46,7 @@ wait-for-move usflagpiece1 along y-axis;
 
 ShowFlag(team)
 {
-	emit-sfx ALARM from base;
+	//emit-sfx ALARM from base;
 	if(team == 0) { // GAIA
 		HIDE_GER
 		HIDE_GBR
