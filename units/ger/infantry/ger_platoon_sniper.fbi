@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1350;
+  buildCostMetal=1525;
   buildPic=GERSniper.png;
-  buildTime=1350;
+  buildTime=1525;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

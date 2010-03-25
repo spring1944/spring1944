@@ -25,13 +25,14 @@ local GetUnitAllyTeam		= Spring.GetUnitAllyTeam
 local GetGameSeconds		= Spring.GetGameSeconds
 --synced control
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
+local SetUnitExperience  	= Spring.SetUnitExperience
 
 --constants
 local losMult 				= 0.25 --how much more accurate the weapon gets (lower accuracy number = more accurate, this is multiplied by the regular accuracy)
 local accuracyDelay			= 20 --# of seconds after LoS is established on attack location before the accuracy improvement kicks in
 --vars
 local visibleAreas			= {}
-
+local guns					= {}
 
 local function updateUnit(allyTeam, unitID)
 	local unitDefID = Spring.GetUnitDefID(unitID)
@@ -87,8 +88,19 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 	return true
 end
 
+function gadget:UnitCreated(unitID, unitDefID, unitTeam)
+	local ud = UnitDefs[unitDefID] 
+	if ud.customParams.canfiresmoke == "1" and ud.customParams.canareaattack == "1" then
+		guns[unitID] = true
+	end
+	local allyTeam = GetUnitAllyTeam(unitID)
+end
+
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	local allyTeam = GetUnitAllyTeam(unitID)
+	if guns[unitID] then
+		guns[unitID] = nil
+	end
 	if visibleAreas[allyTeam] then
 		visibleAreas[allyTeam][unitID] = nil
 	end
@@ -103,6 +115,9 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 end
 
 function gadget:GameFrame(n)
+	for unitID, someThing in pairs(guns) do
+		SetUnitExperience(unitID, 0)
+	end
 	if (n % (2*30)) < 0.1 then --update every two seconds
 		for allyID, units in pairs(visibleAreas) do
 			for unitID, unitArea in pairs(units) do

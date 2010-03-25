@@ -25,6 +25,7 @@
     enginesoundnr=19;
     enginevolume=8;
 	deposit=0;
+	
   }
   explodeAs=v1;
   footprintX=4;
