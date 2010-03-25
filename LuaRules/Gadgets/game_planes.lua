@@ -395,11 +395,17 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     return false
   end
 
+  -- check if command is a sortie
   local sortie = sortieCmdIDs[cmdID]
   if not sortie then
     return true
   end
 
+  -- check if unit is a radio
+  if not radios[teamID][unitID] then
+    return true
+  end
+  
   local _, _, inBuild = GetUnitIsStunned(unitID)
 
   if inBuild then
