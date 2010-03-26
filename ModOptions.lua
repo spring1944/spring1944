@@ -41,7 +41,7 @@ local options = {
 	type   = 'section',
   },
 	
-  {
+ --[[ {
 		key = "navies",
 		name = "Naval Units",
 		desc = "Enable the production of naval units",
@@ -59,7 +59,7 @@ local options = {
 				desc	= "Includes Destroyers and other Heavy Ships",
 			},
 		}
-	},
+	},]]--
 	
  {
       key="scoremode",

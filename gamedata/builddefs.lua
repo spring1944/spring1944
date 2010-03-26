@@ -202,6 +202,7 @@ buildoptions =
     "uslcvp",
     "uspt103-bofors",
 	"uslvta4",
+	"uslct",
 --    "uslcsl",
   },
   usboatyardlarge =
@@ -446,7 +447,10 @@ buildoptions =
 	"gerpontoonraft",
     "gerschsturmboot",
     "gerrboot",
-    "gersboot",
+    --"gersboot",
+	"gersiebelfahre",
+	"germfp",
+	--"gerafp",
   },
   gerboatyardlarge =
   {
@@ -659,6 +663,8 @@ buildoptions =
     "pontoonraft",
     "gbrlca",
     "gbrfairmiled",
+	"gbrlct",
+    --"gbrlcg",
   },
   gbrboatyardlarge =
   {
@@ -910,10 +916,11 @@ buildoptions =
 	"ruspg117",
 	"pontoonraft",
     "rustender15t",
---    "ruslct",
-    "ruskomsmtb",
+    "ruslct",
+    --"ruskomsmtb",
     "rusbmo",
 	"rusbka-1125",
+	--"rusmonitor",
   },
   rusboatyardlarge =
   {
