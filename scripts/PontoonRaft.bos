@@ -15,6 +15,13 @@ TransportPickup(unitid)
 }
 TransportDrop(unitid, position)
 {
+	var heightDiff;
+	// check height difference between transport and unload point. Not sure what would be reasonable yet
+	heightDiff = get GROUND_HEIGHT(position) - get PIECE_Y(base);
+	if (heightDiff > [5])
+	{
+		return FALSE;
+	}
 	set BUSY to 1;
 	// turn shoulder to face the drop off point
 	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
