@@ -80,7 +80,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							z = targetZ,
 						}
 
-				if IsPosInLos(targetX, targetY, targetZ) == true then
+				if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true then
 					visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
 				end
 			end
@@ -122,7 +122,7 @@ function gadget:GameFrame(n)
 		for allyID, units in pairs(visibleAreas) do
 			for unitID, unitArea in pairs(units) do
 				if IsValidUnitID(unitID) and unitArea then
-					if IsPosInLos(unitArea.x, unitArea.y, unitArea.z) == true then
+					if IsPosInLos(unitArea.x, unitArea.y, unitArea.z, allyID) == true then
 						if unitArea.targetTime == nil then
 							unitArea.targetTime = GetGameSeconds()
 						end
