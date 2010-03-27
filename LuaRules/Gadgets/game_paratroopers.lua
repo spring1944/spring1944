@@ -47,6 +47,7 @@ local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local ValidUnitID = Spring.ValidUnitID
 local GetUnitDefID = Spring.GetUnitDefID
+local GetGroundHeight = Spring.GetGroundHeight
 
 local GetUnitTeam = Spring.GetUnitTeam
 local CallCOBScript = Spring.CallCOBScript
@@ -121,8 +122,9 @@ end
 function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   local paratrooperInfo = paratroopers[unitID]
   if not paratrooperInfo then return false end
-  local x, y, z = GetUnitPosition(unitID)
-  if y > INF_WATER_LEVEL then
+  local x,_, z = GetUnitPosition(unitID)
+  local groundHeight = GetGroundHeight(x,z)
+  if groundHeight > INF_WATER_LEVEL then
 	uReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
   else
 	DestroyUnit(unitID)
