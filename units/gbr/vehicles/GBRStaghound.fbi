@@ -21,7 +21,7 @@
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
   footprintZ=2;
-  iconType=armoredcar;
+  iconType=aacar;
   leaveTracks=1;
   mass=1270;
   maxDamage=1270;
