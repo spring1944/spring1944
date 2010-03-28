@@ -11,6 +11,7 @@
   }
   [damage] {
     default=20;
+	lightbuildings=400;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:Molotov;
