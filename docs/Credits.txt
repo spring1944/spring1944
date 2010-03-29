@@ -13,8 +13,6 @@ Neddie	Public Relations, American
 	2D Artwork, Balance, Advertising, American Voices, Writing
 Zerggin	Lua Developer, American
 	Game Design, Balance, Scripting
-Felix	Developer, American
-	3D Models, UVMapping, Texturing
 Tobi	Programmer, Dutch
 	AI Coding, Scripting, Engine Code
 
@@ -31,6 +29,8 @@ Zsinj
 	Advising, Rivalry
 Hootie
 	3D Models, 2D Artwork
+Felix	
+	3D Models, UVMapping, Texturing
 Neuralize
 	2D Artwork
 Secure
