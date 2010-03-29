@@ -1,5 +1,5 @@
 local modinfo = {
-		name						=	"Spring: 1944 SVN",
+		name						=	"Spring: 1944 $VERSION",
 		shortName				= "S44",
 		game						= "Spring 1944",
 		shortGame				= "S44",
