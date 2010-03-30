@@ -39,10 +39,10 @@ if (gadgetHandler:IsSyncedCode()) then
 		local ud = UnitDefs[unitDefID]
 		-- special case for Soviet commander
 		if ud.name:lower() == "ruspresource" then
-			spawners[unitID] = false
+			spawners[unitID] = nil
 		end
 	end
-	
+
 	function gadget:GameFrame(n)
 		if n % (INTERVAL * 30) < 0.1 then
 			for spawnerID in pairs(spawners) do
@@ -60,7 +60,7 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 			end
 		end
-	
+
 	end
 
 
