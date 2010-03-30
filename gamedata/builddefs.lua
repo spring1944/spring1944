@@ -920,7 +920,7 @@ buildoptions =
     --"ruskomsmtb",
     "rusbmo",
 	"rusbka-1125",
-	--"rusmonitor",
+	--"ruspr161",
   },
   rusboatyardlarge =
   {
@@ -1090,6 +1090,7 @@ buildoptions =
       "rusbka-1125",
       "rusbmo",
       "ruskomsmtb",
+      "ruspr161",
       "ruslct",
       "ruspsk",
       "rusmonitor",
@@ -1175,7 +1176,7 @@ if (modOptions) then
 		local tmpNavies = tonumber(modOptions.navies)
 		if tmpNavies > 0 then
 			-- add Light ships
-			table.insert(buildoptions.rusboatyardlarge, "rusmonitor")
+			table.insert(buildoptions.rusboatyardlarge, "ruspr161")
 			table.insert(buildoptions.rusboatyardlarge, "ruspr7")
 			
 			table.insert(buildoptions.gerboatyardlarge, "gerflottentorpboot")
