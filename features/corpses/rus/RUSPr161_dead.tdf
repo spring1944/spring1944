@@ -1,0 +1,13 @@
+[RUSPr161_dead] {
+  description=Sunk Armored Boat;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=4;
+  hitdensity=70;
+  object=RUSPr161_dead;
+  reclaimable=1;
+}
+
