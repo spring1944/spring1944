@@ -29,7 +29,6 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		-- special case for Soviet commander
 		if ud.name:lower() == "ruspresource" then
 			spawners[unitID] = true
 		end
@@ -37,7 +36,6 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		-- special case for Soviet commander
 		if ud.name:lower() == "ruspresource" then
 			spawners[unitID] = nil
 		end
