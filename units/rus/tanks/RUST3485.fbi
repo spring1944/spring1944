@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=4575;
-  buildTime=4575;
+  buildCostMetal=4110;
+  buildTime=4110;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=RUST3485_Damaged;

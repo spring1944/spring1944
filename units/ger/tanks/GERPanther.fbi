@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.105;
   buildCostEnergy=0;
-  buildCostMetal=6940;
-  buildTime=6940;
+  buildCostMetal=6550;
+  buildTime=6550;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   corpse=GERPanther_Damaged;
