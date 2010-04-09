@@ -82,6 +82,8 @@ local RAD1 = rad(1)
 --helper functions
 ------------------------------------------------
 
+-- FIXME: duplicated in LuaRules/Gadgets/unit_morph.lua
+
 -- Returns the position the unit will (probably) have when it reached the end
 -- of it's command queue.  Only supports MOVE and FIGHT commands.
 local function GetUnitPositionAtEndOfQueue(unitID)

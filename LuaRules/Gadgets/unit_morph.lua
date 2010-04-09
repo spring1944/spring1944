@@ -707,6 +707,23 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+-- FIXME: duplicated in LuaUI/Widgets/gui_s44_fieldoffire.lua
+
+-- Returns the position the unit will (probably) have when it reached the end
+-- of it's command queue.  Only supports MOVE and FIGHT commands.
+local function GetUnitPositionAtEndOfQueue(unitID)
+	local queue = Spring.GetUnitCommands(unitID)
+	if queue then
+		for i=#queue,1,-1 do
+			local cmd = queue[i]
+			if ((cmd.id == CMD.MOVE) or (cmd.id == CMD.FIGHT)) and (#cmd.params >= 3) then
+				return unpack(cmd.params)
+			end
+		end
+	end
+	return Spring.GetUnitPosition(unitID)
+end
+
 function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 	-- check if morph destination unit can be built here
 	-- if morph is called by an immobile unit, then the check should auto-succeed
@@ -715,7 +732,7 @@ function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 		return true
 	end
 	local destID = targetDef.into
-	local unitX, unitY, unitZ = Spring.GetUnitPosition(unitID)
+	local unitX, unitY, unitZ = GetUnitPositionAtEndOfQueue(unitID)
 	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
 	if result == 0 then
 		Spring.SendMessageToTeam(teamID, "Morph failed: unable to morph here.")
