@@ -51,7 +51,7 @@
   }
   showNanoFrame=0;
   side=RUS;
-  sightDistance=840;
+  sightDistance=570;
   soundcategory=RUSInf;
   stealth=1;
   TEDClass=KBOT;
