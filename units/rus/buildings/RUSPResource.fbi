@@ -13,14 +13,14 @@
   buildTime=30;
   canMove=1;
   category=BUILDING;
-  cloakCost=1;
+  cloakCost=0;
   corpse=Debris_Small;
   [customParams] {
     ammoSupplier=1;
     dontCount=1;
     supplyRange=275;
   }
-  energyMake=15;
+  energyMake=0;
   energyStorage=100;
   explodeAs=Med_Explosion;
   footprintX=2;

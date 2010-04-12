@@ -9,7 +9,7 @@
   buildPic=LogisticsSmall.png;
   buildTime=30;
   category=BUILDING;
-  cloakCost=1;
+  cloakCost=0;
   corpse=Debris_Small;
   [customParams] {
     dontCount=1;
