@@ -37,11 +37,11 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.0052;
-  maxBank=0.105;
+  maxBank=0.9;
   maxDamage=346.5;
   maxElevator=0.004;
   maxFuel=180;
-  maxPitch=0.105;
+  maxPitch=0.3;
   maxRudder=0.003;
   maxSlope=10;
   maxVelocity=25;
@@ -74,13 +74,13 @@
   weapon1=HVARRocket;
   badTargetCategory1=INFANTRY SOFTVEH;
   maxAngleDif1=30;
-  onlyTargetCategory1=HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   badTargetCategory2=INFANTRY SOFTVEH;
   maxAngleDif2=30;
-  onlyTargetCategory2=HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

@@ -21,6 +21,7 @@
   maxDamage=1500;
   maxSlope=15;
   maxWaterDepth=0;
+  minCloakDistance=300;
   objectName=RUSPDrop.S3O;
   script=rus_sortie_recon.cob;
   selfDestructAs=Med_Explosion;

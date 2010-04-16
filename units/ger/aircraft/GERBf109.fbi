@@ -2,7 +2,7 @@
   UnitName=GERBf109;
   name=Bf 109K-4;
   description=Interceptor;
-  acceleration=0.5;
+  acceleration=1.2;
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
@@ -37,7 +37,7 @@
   maxDamage=224.7;
   maxElevator=0.0036;
   maxFuel=120;
-  maxPitch=0.1;
+  maxPitch=0.2857;
   maxRudder=0.002765;
   maxSlope=10;
   maxVelocity=24;

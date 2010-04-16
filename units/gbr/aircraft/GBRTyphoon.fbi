@@ -2,7 +2,7 @@
   UnitName=GBRTyphoon;
   name=Hawker Typhoon Mk.IB;
   description=Attack Fighter;
-  acceleration=0.5;
+  acceleration=0.25;
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
@@ -37,11 +37,11 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.0044;
-  maxBank=0.09;
+  maxBank=0.9;
   maxDamage=444.5;
   maxElevator=0.0031;
   maxFuel=120;
-  maxPitch=0.09;
+  maxPitch=0.257;
   maxRudder=0.0023;
   maxSlope=10;
   maxVelocity=20;
@@ -73,15 +73,13 @@
   wingDrag=0.1;
 
   weapon1=HVARRocket;
-  badTargetCategory1=INFANTRY SOFTVEH;
   maxAngleDif1=30;
-  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
-  badTargetCategory2=INFANTRY SOFTVEH;
   maxAngleDif2=30;
-  onlyTargetCategory2=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

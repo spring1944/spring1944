@@ -30,6 +30,7 @@
   maxDamage=1500;
   maxSlope=15;
   maxWaterDepth=0;
+  minCloakDistance=300;
   objectName=LogisticsSmall.S3O;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {

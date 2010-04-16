@@ -33,11 +33,11 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.0044;
-  maxBank=0.09;
+  maxBank=0.9;
   maxDamage=453.6;
   maxElevator=0.0031;
   maxFuel=180;
-  maxPitch=0.09;
+  maxPitch=0.25;
   maxRudder=0.0023;
   maxSlope=10;
   maxVelocity=25;

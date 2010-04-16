@@ -37,11 +37,11 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.00375;
-  maxBank=0.065;
+  maxBank=0.9;
   maxDamage=360;
   maxElevator=0.00275;
   maxFuel=160;
-  maxPitch=0.07;
+  maxPitch=0.2;
   maxRudder=0.0015;
   maxSlope=10;
   maxVelocity=20;
@@ -79,6 +79,7 @@
   weaponMainDir1=0 0 1;
 
   weapon2=bk37mmap;
+  badTargetCategory2=SOFTVEH;
   maxAngleDif2=10;
   onlyTargetCategory2=SOFTVEH OPENVEH HARDVEH;
   weaponMainDir2=0 0 1;

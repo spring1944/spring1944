@@ -33,11 +33,11 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.0054;
-  maxBank=0.115;
+  maxBank=0.9;
   maxDamage=320;
   maxElevator=0.0042;
   maxFuel=60;
-  maxPitch=0.115;
+  maxPitch=0.3286;
   maxRudder=0.003;
   maxSlope=10;
   maxVelocity=25;
@@ -70,7 +70,7 @@
 
   weapon1=bomb;
   maxAngleDif1=20;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 -0.18 1;
 
   weapon2=mg15115mm;

@@ -2,7 +2,7 @@
   UnitName=RUSLa5FN;
   name=La-5FN;
   description=Air Superiority Fighter;
-  acceleration=0.5;
+  acceleration=1.4;
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
@@ -37,7 +37,7 @@
   maxDamage=260.5;
   maxElevator=0.0043;
   maxFuel=180;
-  maxPitch=0.2;
+  maxPitch=0.57;
   maxRudder=0.0035;
   maxSlope=10;
   maxVelocity=30;
@@ -63,18 +63,17 @@
   TEDClass=VTOL;
   turnRadius=1500;
   turnRate=50;
-  badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
   wingAngle=0.1;
   wingDrag=0.1;
 
   weapon1=ShVAK20mm;
   maxAngleDif1=10;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=AIR;
   weaponMainDir1=0 0 1;
 
   weapon2=ShVAK20mm;
   maxAngleDif2=10;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=AIR;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

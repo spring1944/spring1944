@@ -2,7 +2,7 @@
   UnitName=GBRSpitfireMkIX;
   name=Spitfire Mk IXe LF;
   description=Fighter-Bomber;
-  acceleration=0.5;
+  acceleration=0.25;
   airSightDistance=4000;
   bmcode=1;
   brakeRate=5;
@@ -34,14 +34,14 @@
   idleTime=1800;
   maneuverleashlength=1280;
   maxAileron=0.006;
-  maxBank=0.13;
+  maxBank=0.9;
   maxDamage=254.5;
   maxElevator=0.005;
   maxFuel=60;
-  maxPitch=0.13;
+  maxPitch=0.3714;
   maxRudder=0.004;
   maxSlope=10;
-  maxVelocity=25;
+  maxVelocity=18;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
@@ -71,7 +71,7 @@
 
   weapon1=bomb;
   maxAngleDif1=20;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 -0.18 1;
 
   weapon2=m2browningamg;
