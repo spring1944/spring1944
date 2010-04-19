@@ -49,7 +49,7 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  sightDistance=800;
+  sightDistance=840;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;

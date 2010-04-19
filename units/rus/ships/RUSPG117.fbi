@@ -34,7 +34,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=600;
+  sightDistance=840;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
