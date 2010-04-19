@@ -52,7 +52,7 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=900;
+  sightDistance=840;
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
@@ -89,17 +89,27 @@
   weaponMainDir5=0 0 -1;
 
   weapon6=flak3820mmaa;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory6=AIR;
   weaponMainDir6=0 0 1;
-
-  weapon7=m2browningaa;
-  onlyTargetCategory7=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
+  
+  weapon7=flak3820mmhe;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir=0 0 1;
 
   weapon8=m2browningaa;
-  onlyTargetCategory8=INFANTRY OPENVEH AIR SOFTVEH DEPLOYED SHIP;
+  onlyTargetCategory7=AIR;
+  
+  weapon9=m2browning;
+  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
+  
+  weapon10=m2browningaa;
+  onlyTargetCategory8=AIR;
+  
+  weapon11=m2browning;
+  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
 
-  weapon9=bofors40mmhe;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon12=bofors40mmhe;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;
 }
 

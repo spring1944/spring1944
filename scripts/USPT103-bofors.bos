@@ -417,17 +417,17 @@ FireWeapon5()
 	SHOT_40mm
 }
 //bofors HE (ground target)
-QueryWeapon9(piecenum)
+QueryWeapon12(piecenum)
 {
 	piecenum = flare_40;
 }
 
-AimFromWeapon9(piecenum)
+AimFromWeapon12(piecenum)
 {
 	piecenum = turret_40;
 }
 
-AimWeapon9(heading, pitch)
+AimWeapon12(heading, pitch)
 {
 	signal SIG_AIM5;
 	set-signal-mask SIG_AIM5|SIG_DEATH;
@@ -439,7 +439,7 @@ AimWeapon9(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon9()
+FireWeapon12()
 {
 	SHOT_40mm
 	SHOT_40mm
@@ -478,17 +478,17 @@ FireWeapon6()
 }
 
 //20mm HE/ground target
-QueryWeapon10(piecenum)
+QueryWeapon7(piecenum)
 {
 	piecenum = flare_20;
 }
 
-AimFromWeapon10(piecenum)
+AimFromWeapon7(piecenum)
 {
 	piecenum = turret_20;
 }
 
-AimWeapon10(heading, pitch)
+AimWeapon7(heading, pitch)
 {
 	signal SIG_AIM6;
 	set-signal-mask SIG_AIM6|SIG_DEATH;
@@ -500,14 +500,15 @@ AimWeapon10(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon10()
+FireWeapon7()
 {
 	SHOT_20mm
 	SHOT_20mm
 	SHOT_20mm
 }
 
-QueryWeapon7(piecenum)
+//.50 cal #1 air targets
+QueryWeapon8(piecenum)
 {
 	if(mg_flare1)
 	{
@@ -518,12 +519,12 @@ QueryWeapon7(piecenum)
 	}
 }
 
-AimFromWeapon7(piecenum)
+AimFromWeapon8(piecenum)
 {
 	piecenum = mg_turret1;
 }
 
-AimWeapon7(heading, pitch)
+AimWeapon8(heading, pitch)
 {
 	signal SIG_AIM7;
 	set-signal-mask SIG_AIM7|SIG_DEATH;
@@ -535,7 +536,7 @@ AimWeapon7(heading, pitch)
 	return (TRUE);
 }
 
-ShotWeapon7()
+ShotWeapon8()
 {
 	if (mg_flare1)
 	{
@@ -548,8 +549,8 @@ ShotWeapon7()
 	}
 	mg_flare1 = !mg_flare1;
 }
-
-QueryWeapon8(piecenum)
+//.50 cal #1 ground targets
+QueryWeapon9(piecenum)
 {
 	if(mg_flare2)
 	{
@@ -560,12 +561,12 @@ QueryWeapon8(piecenum)
 	}
 }
 
-AimFromWeapon8(piecenum)
+AimFromWeapon9(piecenum)
 {
 	piecenum = mg_turret2;
 }
 
-AimWeapon8(heading, pitch)
+AimWeapon9(heading, pitch)
 {
 	signal SIG_AIM8;
 	set-signal-mask SIG_AIM8|SIG_DEATH;
@@ -577,7 +578,93 @@ AimWeapon8(heading, pitch)
 	return (TRUE);
 }
 
-ShotWeapon8()
+ShotWeapon9()
+{
+	if (mg_flare2)
+	{
+		emit-sfx MG_MUZZLEFLASH from mg_flare2_1;
+		sleep 200;
+	} else
+	{
+	emit-sfx MG_MUZZLEFLASH from mg_flare2_2;
+		sleep 200;
+	}
+	mg_flare2 = !mg_flare2;
+}
+
+//.50 cal #2 air targets
+QueryWeapon10(piecenum)
+{
+	if(mg_flare2)
+	{
+		piecenum = mg_flare2_1;
+	} else
+	{
+		piecenum = mg_flare2_2;
+	}
+}
+
+AimFromWeapon10(piecenum)
+{
+	piecenum = mg_turret2;
+}
+
+AimWeapon10(heading, pitch)
+{
+	signal SIG_AIM8;
+	set-signal-mask SIG_AIM8|SIG_DEATH;
+	turn mg_turret2 to y-axis heading speed MG05_TURRET_TURN;
+	turn mg_guns2 to x-axis (0-pitch) speed MG05_TURRET_PITCH;
+	wait-for-turn mg_turret2 around y-axis;
+	wait-for-turn mg_guns2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+ShotWeapon10()
+{
+	if (mg_flare2)
+	{
+		emit-sfx MG_MUZZLEFLASH from mg_flare2_1;
+		sleep 200;
+	} else
+	{
+	emit-sfx MG_MUZZLEFLASH from mg_flare2_2;
+		sleep 200;
+	}
+	mg_flare2 = !mg_flare2;
+}
+
+//.50 cal #2 ground targets
+QueryWeapon11(piecenum)
+{
+	if(mg_flare2)
+	{
+		piecenum = mg_flare2_1;
+	} else
+	{
+		piecenum = mg_flare2_2;
+	}
+}
+
+AimFromWeapon11(piecenum)
+{
+	piecenum = mg_turret2;
+}
+
+AimWeapon11(heading, pitch)
+{
+	signal SIG_AIM8;
+	set-signal-mask SIG_AIM8|SIG_DEATH;
+	turn mg_turret2 to y-axis heading speed MG05_TURRET_TURN;
+	turn mg_guns2 to x-axis (0-pitch) speed MG05_TURRET_PITCH;
+	wait-for-turn mg_turret2 around y-axis;
+	wait-for-turn mg_guns2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+ShotWeapon11()
 {
 	if (mg_flare2)
 	{
@@ -601,26 +688,26 @@ Killed(severity, corpsetype)
 		turn hull to x-axis HULL_LIST_ANGLE_X speed HULL_LIST_SPEED;
 		wait-for-turn hull around z-axis;
 		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		//explode hull type BITMAPONLY|BITMAP1;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type SHATTER|FALL;
 	if(isTorp1Ready)
 	{
-		explode torpedo1 type SHATTER|BITMAP1;
+		explode torpedo1 type SHATTER|FALL;
 	}
 	if(isTorp2Ready)
 	{
-		explode torpedo2 type SHATTER|BITMAP1;
+		explode torpedo2 type SHATTER|FALL;
 	}
 	if(isTorp3Ready)
 	{
-		explode torpedo3 type SHATTER|BITMAP1;
+		explode torpedo3 type SHATTER|FALL;
 	}
 	if(isTorp4Ready)
 	{
-		explode torpedo4 type SHATTER|BITMAP1;
+		explode torpedo4 type SHATTER|FALL;
 	}
 	return (TRUE);
 }
