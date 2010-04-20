@@ -15,7 +15,7 @@
   footprintZ=1;
   idleAutoHeal=0;
   maxDamage=100;
-  maxSlope=82;
+  maxSlope=30;
   maxVelocity=0.01;
   movementClass=KBOT_Infantry;
   objectName=MortarShell.S3O;
