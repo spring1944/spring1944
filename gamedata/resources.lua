@@ -1,79 +1,25 @@
 local	resources = {
 		graphics = {
-			caustics = {
-				'caustics/caustic00.jpg',
-				'caustics/caustic01.jpg',
-				'caustics/caustic02.jpg',
-				'caustics/caustic03.jpg',
-				'caustics/caustic04.jpg',
-				'caustics/caustic05.jpg',
-				'caustics/caustic06.jpg',
-				'caustics/caustic07.jpg',
-				'caustics/caustic08.jpg',
-				'caustics/caustic09.jpg',
-				'caustics/caustic10.jpg',
-				'caustics/caustic11.jpg',
-				'caustics/caustic12.jpg',
-				'caustics/caustic13.jpg',
-				'caustics/caustic14.jpg',
-				'caustics/caustic15.jpg',
-				'caustics/caustic16.jpg',
-				'caustics/caustic17.jpg',
-				'caustics/caustic18.jpg',
-				'caustics/caustic19.jpg',
-				'caustics/caustic20.jpg',
-				'caustics/caustic21.jpg',
-				'caustics/caustic22.jpg',
-				'caustics/caustic23.jpg',
-				'caustics/caustic24.jpg',
-				'caustics/caustic25.jpg',
-				'caustics/caustic26.jpg',
-				'caustics/caustic27.jpg',
-				'caustics/caustic28.jpg',
-				'caustics/caustic29.jpg',
-				'caustics/caustic30.jpg',
-				'caustics/caustic31.jpg',
-			},
-			smoke = {
-				'smoke/smoke00.tga',
-				'smoke/smoke01.tga',
-				'smoke/smoke02.tga',
-				'smoke/smoke03.tga',
-				'smoke/smoke04.tga',
-				'smoke/smoke05.tga',
-				'smoke/smoke06.tga',
-				'smoke/smoke07.tga',
-				'smoke/smoke08.tga',
-				'smoke/smoke09.tga',
-				'smoke/smoke10.tga',
-				'smoke/smoke11.tga',
-			},
-			scars = {
-				'scars/scar1.bmp',
-				'scars/scar2.bmp',
-				'scars/scar3.bmp',
-				'scars/scar4.bmp',
-			},
+			-- Spring Defaults
 			trees = {
-				bark		=	'Bark.bmp',
-				leaf		=	'bleaf.bmp',
-				gran1		=	'gran.bmp',
-				gran2		=	'gran2.bmp',
-				birch1	=	'birch1.bmp',
-				birch2	=	'birch2.bmp',
-				birch3	=	'birch3.bmp',
+				bark		= 'Bark.bmp',
+				leaf		= 'bleaf.bmp',
+				gran1		= 'gran.bmp',
+				gran2		= 'gran2.bmp',
+				birch1		= 'birch1.bmp',
+				birch2		= 'birch2.bmp',
+				birch3		= 'birch3.bmp',
 			},
 			maps = {
-				detailtex	=	'detailtex2.bmp',
-				watertex	=	'ocean.jpg',
+				detailtex	= 'detailtex2.bmp',
+				watertex	= 'ocean.jpg',
 			},
 			groundfx = {
-				groundflash	=	'groundflash.tga',
-				groundring	=	'groundring.tga',
-				seismic			=	'circles.tga',
+				groundflash	= 'groundflash.tga',
+				groundring	= 'groundring.tga',
+				seismic		= 'circles.tga',
 			},
 			projectiletextures = {
-				-- Spring Defaults
 				circularthingy		= 'circularthingy.tga',
 				laserend			= 'laserend.tga',
 				laserfalloff		= 'laserfalloff.tga',
@@ -88,28 +34,31 @@ local	resources = {
 				muzzleside			= 'muzzleside.tga',
 				muzzlefront			= 'muzzlefront.tga',
 				largebeam			= 'largelaserfalloff.tga',
-				-- S44 Specific
-				GenericSmokeCloud	= 'GenericSmokeCloud.tga',
-				plasma2				= 'plasma2.tga',
-				plasma0029			= 'plasma0029.tga',
-				flowerflash			= 'flowerflash.tga',
-				shell				= 'shell.tga',
-				smokesmall			= 'smokesmall.tga',
-				longersmokesmall	= 'longersmokesmall.tga',
-				shotgunflare		= 'shotgunflare.tga',
-				kfoam				= 'kfoam.tga',
-				debris2				= 'debris2.tga',
-				dirtplosion2		= 'dirtplosion2.tga',	
-				diamondstar			= 'diamondstar.tga',	
-				kfoom				= 'kfoom.tga',
-				plasma				= 'GPL/plasma.tga',
-				dust2				= 'dust2.png',
-				dirt				= 'dirt.png',
-				splashside			= 'PD/splashside.tga',
-				splashbase			= 'PD/splashbase.tga',
-				fireball			= 'PD/fireball.tga',
 			},
 		}
 	}
 
-	return resources
+local VFSUtils = VFS.Include('gamedata/VFSUtils.lua')
+
+local function AutoAdd(subDir, map, filter)
+  local dirList = RecursiveFileSearch("bitmaps/" .. subDir)
+  for _, fullPath in ipairs(dirList) do
+    local path, key, ext = fullPath:match("bitmaps/(.*/(.*)%.(.*))")
+    if not fullPath:match("/%.svn") then
+    local subTable = resources["graphics"][subDir] or {}
+    resources["graphics"][subDir] = subTable
+      if not filter or filter == ext then
+        if not map then
+          table.insert(subTable, path)
+        else -- a mapped subtable
+          subTable[key] = path
+        end
+      end
+    end
+  end
+end
+
+-- Add mod projectiletextures
+AutoAdd("projectiletextures", true)
+
+return resources
