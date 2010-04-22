@@ -1,7 +1,0 @@
-#define TAK
-
-piece base;
-
-Create() {}
-
-Killed(severity, corpsetype) {}
