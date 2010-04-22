@@ -23,7 +23,7 @@
     enginesound=fw190b-;
     enginesoundnr=12;
     feartarget=1;
-    proptexture=bitmaps/prop3.tga;
+    proptexture=prop3.tga;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

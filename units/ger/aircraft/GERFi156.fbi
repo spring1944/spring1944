@@ -25,7 +25,7 @@
     enginesound=spitfireb-;
     enginesoundnr=18;
     feartarget=1;
-    proptexture=bitmaps/prop3.tga;
+    proptexture=prop3.tga;
   }
   drag=0.1;
   explodeAs=Vehicle_Explosion_Med;

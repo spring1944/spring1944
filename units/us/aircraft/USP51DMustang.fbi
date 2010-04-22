@@ -23,7 +23,7 @@
     enginesound=p51b-;
     enginesoundnr=16;
     feartarget=1;
-    proptexture=bitmaps/prop3.tga;
+    proptexture=prop3.tga;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

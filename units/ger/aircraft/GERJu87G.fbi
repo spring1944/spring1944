@@ -25,7 +25,7 @@
     feartarget=1;
     lowammolevel=1;
     maxammo=12;
-    proptexture=bitmaps/prop3.tga;
+    proptexture=prop3.tga;
     weaponcost=-1;
     weaponswithammo=2;
   }

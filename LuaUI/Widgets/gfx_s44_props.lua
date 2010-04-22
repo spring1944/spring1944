@@ -40,6 +40,8 @@ local infos = {}
 --unitID = rotation
 local rotations = {}
 
+local path = "LuaUI/Images/Props/"
+
 function widget:Initialize()
 	if (Game.modShortName ~= "S44") then
 		widgetHandler:RemoveWidget()
@@ -56,7 +58,7 @@ function widget:DrawWorld()
 		if not infos[unitDefID] and UnitDefs[unitDefID].canFly then
 			local pieces = GetUnitPieceList(unitID)
 			local propellers = {}
-			local tex = UnitDefs[unitDefID]["customParams"]["proptexture"] or "bitmaps/prop.tga"
+			local tex = path .. (UnitDefs[unitDefID]["customParams"]["proptexture"] or "prop.tga")
 			for pieceNum=1,#pieces do
 				local pieceName = pieces[pieceNum]
 				if strFind(pieceName, "propeller") then
