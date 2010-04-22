@@ -1,6 +1,6 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
-piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+piece  base, turret, mantlet, barrel, flare, coaxflare, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, gunaiming, MGAiming;
 
@@ -67,8 +67,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, g
 // tracers
 #define SMALL_TRACER 	2048+5
 #define MEDIUM_TRACER 	2048+6
-
-#include "TurnButton.h"
 
 // smoke shells stuff
 static-var	isSmoking;

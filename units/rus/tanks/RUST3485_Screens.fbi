@@ -37,6 +37,7 @@
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUST3485_Screens.S3O;
+  script=RUST3485.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {

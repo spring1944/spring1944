@@ -23,6 +23,7 @@
   selfDestructAs=noweapon;
   [sfxtypes] {
   }
+  script=null.cob;
   side=GER;
   stealth=1;
   turnRate=1;
