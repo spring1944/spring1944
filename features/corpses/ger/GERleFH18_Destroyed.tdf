@@ -1,0 +1,11 @@
+[gerlefh18_destroyed] {
+  description=Destroyed Howitzer;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GERleFH18_Destroyed.S3O;
+  reclaimable=1;
+}
+

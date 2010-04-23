@@ -1,0 +1,643 @@
+// unit sounds
+
+[Nothing]
+	{
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+	}
+
+[GBRYard]
+	{
+	//select1=GBR_Anthem;
+	unitcomplete=GEN_YardDone;
+	underattack=;
+	build=GEN_YardSelect;
+	working=;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+	}
+
+[GERYard]
+	{
+	//select1=GER_Anthem;
+	unitcomplete=GEN_YardDone;
+	underattack=;
+	build=GEN_YardSelect;
+	working=;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+	}
+
+[RUSYard]
+	{
+	//select1=RUS_Anthem;
+	unitcomplete=GEN_YardDone;
+	underattack=;
+	build=GEN_YardSelect;
+	working=;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+	}
+
+[USYard]
+	{
+	//select1=US_Anthem;
+	unitcomplete=GEN_YardDone;
+	underattack=;
+	build=GEN_YardSelect;
+	working=;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+	}
+
+[USInf]
+	{
+	select1=US_INF_Select1;
+	select2=US_INF_Select2;
+	select3=US_INF_Select3;
+	ok1=US_INF_OK1;
+	ok2=US_INF_OK2;
+	ok3=US_INF_OK3;
+	//arrived1=US_INF_Arrived1;
+	//arrived2=US_INF_Arrived2;
+	//arrived3=US_INF_Arrived3;
+	underattack=US_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[USTank]
+	{
+	select1=US_Tank_Select1;
+	select2=US_Tank_Select2;
+	select3=US_Tank_Select3;
+	ok1=US_Tank_OK1;
+	ok2=US_Tank_OK2;
+	ok3=US_Tank_OK3;
+	arrived1=US_Tank_Arrived1;
+	arrived2=US_Tank_Arrived2;
+	//arrived3=US_Tank_Arrived3;
+	underattack=US_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[USVeh]
+	{
+	select1=US_Veh_Select1;
+	select2=US_Veh_Select2;
+	select3=US_Veh_Select3;
+	ok1=US_Veh_OK1;
+	ok2=US_Veh_OK2;
+	ok3=US_Veh_OK3;
+	arrived1=US_Veh_Arrived;
+	underattack=US_Veh_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[USGun]//Meh, Incomplete, Unclean, Joy Joy
+	{
+	select1=US_Veh_Select1;
+	select2=US_Veh_Select2;
+	select3=US_Veh_Select3;
+	ok1=US_GUN_OK1;
+	ok2=US_GUN_OK2;
+	cant1=US_GUN_WITHDRAW;
+	arrived1=US_GUN_DEPLOY;
+	arrived2=US_GUN_OK3;
+	underattack=US_GUN_UnderAttack;
+	//deploy=US_GUN_DEPLOY; //Can we call sfx in morphs through sounds.tdf?
+	//stop=US_GUN_STOP;
+	//withdraw=US_GUN_WITHDRAW;
+		}
+
+[RUSInf]
+	{
+	select1=RUS_INF_Select1;
+	select2=RUS_INF_Select2;
+	select3=RUS_INF_Select3;
+	ok1=RUS_INF_OK1;
+	ok2=RUS_INF_OK2;
+	ok3=RUS_INF_OK3;
+	//cant1=RUS_INF_Cant;
+	//arrived1=RUS_INF_Arrived1;
+	//arrived2=RUS_INF_Arrived2;
+	//arrived3=RUS_INF_Arrived3;
+	underattack=RUS_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSSniper]
+	{
+	select1=RUS_SNIPER_Select1;
+	select2=RUS_SNIPER_Select2;
+	select3=RUS_SNIPER_Select3;
+	ok1=RUS_SNIPER_OK1;
+	ok2=RUS_SNIPER_OK2;
+	ok3=RUS_SNIPER_OK3;
+	ok4=RUS_SNIPER_OK4;
+	cant1=RUS_SNIPER_CANT;
+	//arrived1=RUS_INF_Arrived1;
+	//arrived2=RUS_INF_Arrived2;
+	//arrived3=RUS_INF_Arrived3;
+	underattack=RUS_SNIPER_UnderAttack1;
+	underattack2=RUS_SNIPER_UnderAttack2;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSGun]
+	{
+	select1=RUS_ARTY_SELECT1;
+	select2=RUS_ARTY_SELECT2;
+	select3=RUS_ARTY_SELECT3;
+	select3=RUS_ARTY_SELECT4;
+	ok1=RUS_ARTY_OK1;
+	ok2=RUS_ARTY_OK2;
+	ok3=RUS_ARTY_OK3;
+	ok3=RUS_ARTY_OK4;
+	cant1=RUS_ARTY_CANT;
+	//arrived1=RUS_INF_Arrived1;
+	//arrived2=RUS_INF_Arrived2;
+	//arrived3=RUS_INF_Arrived3;
+	underattack=RUS_ARTY_UNDERATTACK;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSTank]
+	{
+	select1=RUS_Tank_Select1;
+	select2=RUS_Tank_Select2;
+	select3=RUS_Tank_Select3;
+	ok1=RUS_Tank_OK1;
+	ok2=RUS_Tank_OK2;
+	ok3=RUS_Tank_OK3;
+	cant1=RUS_Tank_Cant;
+	arrived1=RUS_Tank_Arrived1;
+	arrived2=RUS_Tank_Arrived2;
+	arrived3=RUS_Tank_Arrived3;
+	underattack=RUS_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSBoat]
+	{
+	select1=RUS_BOAT_Select1;
+	select2=RUS_BOAT_Select2;
+	select3=RUS_BOAT_Select3;
+	ok1=RUS_BOAT_OK1;
+	ok2=RUS_BOAT_OK2;
+	ok3=RUS_BOAT_OK3;
+	cant1=RUS_BOAT_Cant;
+	arrived1=RUS_BOAT_Arrived1;
+	arrived2=RUS_BOAT_Arrived2;
+	arrived3=RUS_BOAT_Arrived3;
+	underattack=RUS_BOAT_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSZveroboy]
+	{
+	select1=RUS_Zveroboy_Select1;
+	select2=RUS_Zveroboy_Select2;
+	select3=RUS_Zveroboy_Select3;
+	select4=RUS_Zveroboy_Select4;
+	ok1=RUS_Zveroboy_OK1;
+	ok2=RUS_Zveroboy_OK2;
+	ok3=RUS_Zveroboy_OK3;
+	cant1=RUS_Zveroboy_Cant;
+	arrived1=RUS_Zveroboy_Arrived1;
+	arrived2=RUS_Zveroboy_Arrived2;
+	arrived3=RUS_Zveroboy_Arrived3;
+	underattack=RUS_Zveroboy_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[RUSVeh]
+	{
+	select1=RUS_Veh_Select1;
+	select2=RUS_Veh_Select2;
+	ok1=RUS_Veh_OK1;
+	ok2=RUS_Veh_OK2;
+	cant=RUS_Veh_Cant;
+	arrived1=RUS_Veh_Arrived1;
+	arrived2=RUS_Veh_Arrived2;
+	underattack=RUS_Veh_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[RUSPo2]
+	{
+	select1=RUS_AIR_PO2_SELECT;
+	ok1=RUS_AIR_OK1;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_UNDERATTACK;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[RUSIl2]
+	{
+	select1=RUS_AIR_IL2_SELECT;
+	ok1=RUS_AIR_IL2_OK;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_UNDERAAFIRE;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[RUSFighter]
+	{
+	select1=RUS_AIR_FIGHTER_SELECT;
+	ok1=RUS_AIR_OK1;
+	ok2=RUS_AIR_OK2;
+	ok3=RUS_AIR_OK3;
+	ok4=RUS_AIR_OK4;
+	ok5=RUS_AIR_OK5;
+	ok6=RUS_AIR_OK6;
+	ok7=RUS_AIR_OK7;
+	ok8=RUS_AIR_OK8;
+	ok9=RUS_AIR_OK9;
+	cant=RUS_AIR_CANT;
+	underattack=RUS_AIR_IMGOINGDOWN!;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	}
+
+[GBRInf]
+	{
+	select1=GBR_INF_Select1;
+	select2=GBR_INF_Select2;
+	select3=GBR_INF_Select3;
+	ok1=GBR_INF_OK1;
+	ok2=GBR_INF_OK2;
+	ok3=GBR_INF_OK3;
+	//cant1=GBR_INF_Cant;
+	underattack=GBR_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GBRTank]
+	{
+	select1=GBR_Tank_Select1;
+	select2=GBR_Tank_Select2;
+	select3=GBR_Tank_Select3;
+	ok1=GBR_Tank_OK1;
+	ok2=GBR_Tank_OK2;
+	ok3=GBR_Tank_OK3;
+	cant1=GBR_Tank_Cant;
+	arrived1=GBR_Tank_Arrived1;
+	arrived2=GBR_Tank_Arrived2;
+	underattack=GBR_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GBRSP]
+	{
+	select1=GBR_SP_Select1;
+	select2=GBR_Tank_Select2;
+	select3=GBR_Tank_Select3;
+	ok1=GBR_SP_OK1;
+	ok2=GBR_Tank_OK2;
+	ok3=GBR_Tank_OK3;
+	cant1=GBR_Tank_Cant;
+	arrived1=GBR_Tank_Arrived1;
+	arrived2=GBR_Tank_Arrived2;
+	underattack=GBR_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GBRChurchill]
+	{
+	select1=GBR_Churchill_Select1;
+	select2=GBR_Tank_Select2;
+	select3=GBR_Tank_Select3;
+	ok1=GBR_Churchill_OK1;
+	ok2=GBR_Tank_OK2;
+	ok3=GBR_Tank_OK3;
+	cant1=GBR_Tank_Cant;
+	arrived1=GBR_Tank_Arrived1;
+	arrived2=GBR_Tank_Arrived2;
+	underattack=GBR_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GBRVeh]
+	{
+	select1=GBR_Vehicle_Select1;
+	select2=GBR_Vehicle_Select2;
+	select3=GBR_Vehicle_Select3;
+	ok1=GBR_Vehicle_OK1;
+	ok2=GBR_Vehicle_OK2;
+	ok3=GBR_Vehicle_OK3;
+	//cant1=GBR_Vehicle_Cant;
+	arrived1=GBR_Vehicle_Arrived1;
+	//arrived2=GBR_Vehicle_Arrived2;
+	underattack=GBR_Vehicle_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERInf]
+	{
+	select1=GER_INF_Select1;
+	select2=GER_INF_Select2;
+	select3=GER_INF_Select3;
+	ok1=GER_INF_OK1;
+	ok2=GER_INF_OK2;
+	ok3=GER_INF_OK3;
+	//cant1=;
+	underattack=GER_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERTank]
+	{
+	select1=GER_Tank_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_Tank_OK1;
+	//ok2=GER_Tank_OK2;
+	//ok3=GER_Tank_OK3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_Tank_Arrived1;
+	arrived2=GER_Tank_Arrived2;
+	underattack=GER_Tank_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[CDNInf]
+	{
+	select1=CDN_INF_Select1;
+	select2=CDN_INF_Select2;
+	select3=CDN_INF_Select3;
+	ok1=CDN_INF_OK1;
+	ok2=CDN_INF_OK2;
+	ok3=CDN_INF_OK3;
+	//arrived1=US_INF_Arrived1;
+	//arrived2=US_INF_Arrived2;
+	//arrived3=US_INF_Arrived3;
+	underattack=CDN_INF_UnderAttack;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERStug]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_STUG_Ok1;
+	//ok2=GER_Tank_OK2;
+	//ok3=GER_Tank_OK3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_STUG_Arrived1;
+	arrived2=GER_TankNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERTANKNew]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_TANKNew_Ok1;
+	ok2=GER_TANKNew_Ok2;
+	ok3=GER_TANKNew_Ok3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_TANKNew_Arrived1;
+	arrived2=GER_TANKNew_Arrived2;
+	arrived3=GER_TANKNew_Arrived3;
+	arrived4=GER_TANKNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERJgPz]
+	{
+	select1=GER_ARMOR_Select1;
+	//select2=GER_Tank_Select2;
+	//select3=GER_Tank_Select3;
+	ok1=GER_JGPZ_Ok1;
+	//ok2=GER_Tank_OK2;
+	//ok3=GER_Tank_OK3;
+	//cant1=GER_Tank_Cant;
+	arrived1=GER_JGPZ_Arrived1;
+	arrived2=GER_TankNew_Arrived4;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERFaust]
+	{
+	select1=GER_INFNew_Select1;
+//	select2=GER_INF_Select2;
+//	select3=GER_INF_Select3;
+	ok1=GER_FAUST_OK1;
+	ok2=GER_INF_OK4;
+	//cant1=;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 
+
+[GERSniper]
+	{
+	select1=GER_INFNew_Select1;
+//	select2=GER_INF_Select2;
+//	select3=GER_INF_Select3;
+	ok1=GER_SNIPER_OK1;
+	ok2=GER_INF_OK4;
+	//cant1=;
+	underattack=GER_UNDERATTACK_NEW;
+	count5=GEN_alarm;
+	count4=GEN_alarm;
+	count3=GEN_alarm;
+	count2=GEN_alarm;
+	count1=GEN_alarm;
+	count0=GEN_alarm;
+	canceldestruct=;
+      	} 

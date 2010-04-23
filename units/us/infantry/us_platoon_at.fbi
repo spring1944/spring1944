@@ -1,0 +1,32 @@
+[unitinfo] {
+  unitname=us_platoon_at;
+  name=Anti-Tank Squad;
+  description=3 x Bazooka: Anti-Tank Infantry;
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=700;
+  buildPic=usgibazooka.png;
+  buildTime=700;
+  canMove=1;
+  category=FLAG;
+  [customParams] {
+    helptext=3-man team armed with Bazookas. ||| Bazookas are large weapons which fire a rocket-ignited anti-tank warhead over short distances. They are too large to allow their wielders to sneak, but are generally longer-ranged than weapons like the Panzerfaust and PIAT, though slightly less powerful.;
+  }
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  idleAutoHeal=0;
+  maxDamage=100;
+  maxSlope=30;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+  }
+  side=US;
+  stealth=1;
+  turnRate=1;
+}
+

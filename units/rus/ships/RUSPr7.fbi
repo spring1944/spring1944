@@ -1,0 +1,140 @@
+[unitinfo] {
+  unitname=RUSPr7;
+  name=Soobrazitelny-class Destroyer;
+  description=Surface Superiority Ship;
+  acceleration=0.05;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.025;
+  buildCostEnergy=0;
+  buildCostMetal=27000;
+  buildTime=27000;
+  canAttack=1;
+  canMove=1;
+  category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -50.0 0.0;
+  collisionVolumeScales=85.0 130.0 600.0;
+  collisionVolumeType=box;
+  corpse=RUSPr7_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=190500;
+  maxDamage=190500;
+  maxReverseVelocity=1.9;
+  maxVelocity=3.8;
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=RUSPr7;
+  radarDistance=4000;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator2=custom:MEDIUM_MUZZLEDUST;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:LARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:LARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=2000;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=0;
+  TEDClass=SHIP;
+  turnRate=112.5;
+
+  weapon10=61k37mmaa;
+  maxAngleDif10=270;
+  onlyTargetCategory10=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir10=0 0 -1;
+
+  weapon11=twin_dshk;
+  maxAngleDif11=270;
+  onlyTargetCategory11=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir11=1 0 0;
+
+  weapon12=twin_dshk;
+  maxAngleDif12=270;
+  onlyTargetCategory12=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir12=-1 0 0;
+
+  weapon13=dshk;
+  maxAngleDif13=270;
+  onlyTargetCategory13=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir13=1 0 0;
+
+  weapon14=dshk;
+  maxAngleDif14=270;
+  onlyTargetCategory14=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir14=-1 0 0;
+
+  weapon15=triple533mmtorpedo;
+  maxAngleDif15=270;
+  onlyTargetCategory15=LARGESHIP SUB;
+  weaponMainDir15=0 0 -1;
+
+  weapon16=triple533mmtorpedo;
+  maxAngleDif16=270;
+  onlyTargetCategory16=SHIP SUB;
+  weaponMainDir16=0 0 -1;
+
+  weapon1=130mmB13;
+  maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=130mmB13;
+  maxAngleDif2=270;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 1;
+
+  weapon3=130mmB13;
+  maxAngleDif3=270;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 -1;
+
+  weapon4=130mmB13;
+  maxAngleDif4=270;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 -1;
+
+  weapon5=34k76mmaa;
+  maxAngleDif5=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=1 0 -1;
+
+  weapon6=34k76mmaa;
+  maxAngleDif6=270;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=-1 0 -1;
+
+  weapon7=61k37mmaa;
+  maxAngleDif7=190;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir7=1 0 0;
+
+  weapon8=61k37mmaa;
+  maxAngleDif8=190;
+  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir8=-1 0 0;
+
+  weapon9=61k37mmaa;
+  maxAngleDif9=250;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=0 0 -1;
+}
+

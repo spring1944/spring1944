@@ -1,0 +1,41 @@
+[k98k] {
+  name=Karabiner 98k;
+  accuracy=100;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=1.5;
+  coreThickness=0.65;
+  [customParams] {
+    damagetype=smallarm;
+  }
+  [damage] {
+    default=33;
+  }
+  duration=0.005;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=2;
+  impactOnly=1;
+  intensity=0.9;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=665;
+  reloadTime=2.8;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  soundStart=GER_K98K;
+  soundTrigger=0;
+  sprayAngle=100;
+  thickness=0.25;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+

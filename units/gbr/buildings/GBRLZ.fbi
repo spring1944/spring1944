@@ -1,0 +1,31 @@
+[unitinfo] {
+  unitname=GBRLZ;
+  name=Commando Landing Zone;
+  buildCostEnergy=0;
+  buildCostMetal=3000;
+  buildPic=GBRLZ.png;
+  buildTime=3000;
+  category=BUILDING;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=GBRLZ_death;
+  footprintX=1;
+  footprintZ=1;
+  idleAutoHeal=0;
+  levelGround=0;
+  maxDamage=5;
+  maxSlope=60;
+  maxWaterDepth=0;
+  objectName=GBRLZ2.S3O;
+  [sfxtypes] {
+    explosionGenerator0=custom:LZflare;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=5;
+  stealth=1;
+  TEDClass=PLANT;
+  yardmap=c;
+}
+

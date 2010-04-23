@@ -1,0 +1,359 @@
+#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+
+piece  base, mantlet, barrel, flare, brakeright, brakeleft;
+piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+
+ 
+static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming;
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_AIM		2 // Main Cannon
+#define SIG_AIM_2	4 // AA MG
+#define SIG_STOPTURN	8
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 base
+#define SMOKEPIECE3 mantlet
+#define SMOKEPIECE4 mantlet
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+// definitions for wheels
+#define WHEEL_SPIN		<600>
+#define WHEEL_ACCEL		<150>
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<50> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+#include "RockUnit_Set.h"
+
+// definitions for HitWeapId_S44
+#define ARMOUR		6044
+#include "HitWeapId_S44.h"
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<9>
+#define TURR_ELEVATE	<5>
+#define AA_TRAVERSE		<225>
+#define AA_ELEVATE		<150>
+
+// definitions for weapons behaviour
+#define RELOAD		4300 // time in milliseconds between shots
+#define RECOIL		[-2] // distance to recoil the gun
+#define RETURN_SPEED	[5] // speed at which the barrel returns
+
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define MEDIUM_MUZZLEFLASH 1024+8
+#define MEDIUM_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
+
+//Pressure Line's stuff
+#define TURNRATE 175 //set to whatever the unit's fbi turnrate is
+
+#include "TurnButton.h"
+
+treads() 
+{ 
+   while( TRUE ) 
+   { 
+        if(bMoving) 
+           { 
+              if(treadnum == 0) 
+              {             
+              hide tracks2; 
+              show tracks1; 
+              } 
+            if(treadnum == 1) 
+            { 
+            hide tracks1; 
+            show tracks2; 
+			}
+            treadnum = !treadnum; 
+         } 
+      sleep 90; 
+   } 
+}
+
+Create()
+{
+	hide flare;
+	hide brakeleft;
+	hide brakeright;
+	// init vars
+	rock = FALSE;
+	aim2 = FALSE;
+	reloading = FALSE;
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+	start-script treads();
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	set ACTIVATION to 1;
+	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel4 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel5 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel6 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	set ACTIVATION to 0;
+	stop-spin frontwheel around x-axis;
+ 	stop-spin rearwheel around x-axis;
+	stop-spin wheel1 around x-axis;
+ 	stop-spin wheel2 around x-axis;
+ 	stop-spin wheel3 around x-axis;
+ 	stop-spin wheel4 around x-axis;
+ 	stop-spin wheel5 around x-axis;
+ 	stop-spin wheel6 around x-axis;
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+RestoreAfterDelay()
+{
+	sleep restore_delay;
+	turn mantlet to y-axis <0.000000> speed <10>;
+	turn mantlet to x-axis <0.000000> speed <10>;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep RELOAD;
+	reloading = FALSE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+// Weapon 1 - Main cannon, HE
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = mantlet;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (aim2) return 0; // don't aim weap1 if aiming AP
+	
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	turn mantlet to y-axis heading speed TURR_ELEVATE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
+	
+	start-script RestoreAfterDelay();
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon1()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	emit-sfx MEDIUM_MUZZLEFLASH from flare;
+	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+// Weapon 2 - Main cannon, AP
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = mantlet;
+}
+
+AimWeapon2(heading, pitch)
+{
+	aim2 = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+
+	turn mantlet to y-axis heading speed TURR_ELEVATE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn mantlet around y-axis;
+	wait-for-turn mantlet around x-axis;
+	
+	start-script RestoreAfterDelay();
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon2()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	emit-sfx MEDIUM_MUZZLEFLASH from flare;
+	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	emit-sfx MuzzleBrakeSmoke from brakeright;
+	emit-sfx MuzzleBrakeSmoke from brakeleft;
+
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+// Weapon 3 - AA MG
+/*QueryWeapon3 (piecenum)
+	{
+	piecenum = aaFlare;
+	}
+
+AimFromWeapon3 (piecenum)
+	{
+	piecenum = aaGun;
+	}
+
+AimWeapon3(heading, pitch)
+	{
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+
+	// thanks to Fang and zwzsg for this!
+	turn aaTurret to y-axis heading speed AA_TRAVERSE; 
+	turn aaGun to x-axis 0 - pitch speed AA_ELEVATE; 
+	wait-for-turn aaTurret around y-axis; 
+	wait-for-turn aaGun around x-axis;
+	
+	start-script RestoreAfterDelay();
+	return (1);
+	}
+
+FireWeapon3()
+	{
+	rock = FALSE;
+	
+	// TODO: nice SFX
+	show aaFlare;
+	sleep 50;
+	hide aaFlare;
+	
+	return(0);
+	}
+*/
+
+
+AimFromWeapon4(piecenum) //bulletproof effect 
+{
+	piecenum = base;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon4(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon4()
+{
+return (0);
+}
+
+// TODO: make this pretty
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		corpsetype = 1;
+		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
+		return (0);
+	}
+	if( severity <= 250 )
+	{
+		corpsetype = 1;
+		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel4 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
+	}
+	if(severity <= 1000)
+	{
+		corpsetype = 2;
+		explode mantlet type EXPLODE_ON_HIT | FIRE | FALL;
+		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel6 type SHATTER | EXPLODE_ON_HIT;
+	}
+	corpsetype = 2;
+	explode mantlet type EXPLODE_ON_HIT | FIRE | FALL;
+	explode barrel type SHATTER;
+	explode frontwheel type SHATTER;
+	explode rearwheel type SHATTER;
+	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel5 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel6 type SHATTER | EXPLODE_ON_HIT;
+}
+

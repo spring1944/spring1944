@@ -1,0 +1,187 @@
+[RIFLE_MUZZLEFLASH] //thanks to quantum, he rocks! Please credit him if you use this effect.
+
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=1.75;
+          	length=2.25;
+          	sizeGrowth=1;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=shotgunflare;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   /*	[GROUNDFLASH]
+	{
+		flashsize=5;
+		flashalpha=0.9;
+		circlegrowth=0;
+		circlealpha=1;
+		ttl=3;
+		color=1,0.7,0;
+	}*/
+   }
+}
+
+[SMG_MUZZLEFLASH]
+{
+  	 [BitmapMuzzleFlame]
+   	{
+	class = CBitmapMuzzleFlame;
+      		[properties]
+      		{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=2.5;
+          	length=3.5;
+          	sizeGrowth=-0.5;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=flowerflash;
+      		}
+	water=1;   
+	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+   	}
+}
+
+[PISTOL_MUZZLEFLASH]
+{
+  	[BitmapMuzzleFlame]
+   	{
+	class = CBitmapMuzzleFlame;
+      		[properties]
+      		{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=2.5;
+          	length=3.5;
+          	sizeGrowth=-0.5;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=flowerflash;
+      		}
+	water=1;   
+	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+   	}
+}
+
+
+[MG_SHELLCASINGS] //thanks to quantum, he rocks! Please credit him if you use this effect.
+{
+	usedefaultexplosions=0;
+   	[sparks]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=0;
+		sizeMod=1.0;
+		pos=0, 0, 0;
+		emitVector=dir;
+		gravity=0, -0.1, 0;
+		colorMap=1 1 1 0.01   1 1 1 0.01   1 1 1 0.01   0 0 0 0.01;
+		Texture=shell;
+		airdrag=1;
+		particleLife=15;
+		particleLifeSpread=0;
+		numParticles=1;
+		particleSpeed=2.5;
+		particleSpeedSpread=1;
+		particleSize=0.25;
+		particleSizeSpread=0;
+
+		emitRot=0;
+		emitRotSpread=20;
+		directional=1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+}
+
+[MG_MUZZLEFLASH] //thanks to quantum, he rocks! Please credit him if you use this effect.
+
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=2.25;
+          	length=3;
+          	sizeGrowth=1;
+          	ttl=3;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=flowerflash;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   	[GROUNDFLASH]
+	{
+		flashsize=10;
+		flashalpha=0.9;
+		circlegrowth=0;
+		circlealpha=1;
+		ttl=3;
+		color=1,0.7,0;
+	}
+    }
+}
+
+
+
+//PTRD
+[PTRD_MUZZLEFLASH] 
+
+{
+   [BitmapMuzzleFlame]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=2.6;
+          	length=3.375;
+          	sizeGrowth=1;
+          	ttl=4;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=shotgunflare;
+      	}
+   water=1;
+   air=1;
+   underwater=1;
+   ground=1;
+   count=1;
+   }
+}

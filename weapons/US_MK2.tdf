@@ -1,0 +1,33 @@
+[mk2] {
+  name=Mk2 Hand Grenade;
+  accuracy=1777;
+  areaOfEffect=40;
+  canAttackGround=0;
+  [customParams] {
+    armor_penetration=80;
+    damagetype=grenade;
+  }
+  [damage] {
+    default=1250;
+  }
+  dynDamageExp=1;
+  dynDamageRange=200;
+  edgeEffectiveness=0.8;
+  explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=31;
+  impulseFactor=1e-05;
+  model=MortarShell.S3O;
+  movingAccuracy=3500;
+  range=180;
+  reloadTime=8;
+  rendertype=1;
+  soundHit=GEN_Explo_Grenade;
+  targetBorder=1;
+  tolerance=10000;
+  turret=1;
+  weaponTimer=5;
+  weaponVelocity=310;
+}
+

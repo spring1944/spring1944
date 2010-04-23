@@ -1,0 +1,292 @@
+#include "constants.h"
+
+piece base, turret, turret_floor, sleeve, guns, flare1, flare2, crewman;
+piece wheel1, wheel2;
+ 
+static-var  restore_delay, bMoving, bAAMode, bTurretAimingDone, shotCount, curFlare;
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_AIM_1	2
+#define SIG_AIM_2	4
+#define SIG_AIM_3	8
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 sleeve
+#define SMOKEPIECE4 base
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<50> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+
+#define FX_HIDE\
+	hide flare1;\
+	hide flare2;\
+	
+// definitions for HitWeapId_S44
+#define QUALITY		20010
+#define ARMOUR		1549
+#include "HitWeapId_S44.h"
+
+// definitions for wheels
+#define WHEEL_SPIN		<500>
+#define WHEEL_ACCEL		<150>
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<830> // http://www.wwiivehicles.com/usa/armored-cars/t-17.asp
+#define TURR_ELEVATE	<240>
+
+// definitions for weapons behaviour
+#define RELOAD		3000 // time in milliseconds between shots
+#define RECOIL		[-1] // distance to recoil the gun
+#define RETURN_SPEED	[5] // speed at which the guns returns
+
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+
+// tracers
+#define MEDIUM_TRACER 	2048+4
+#define TRACER_PER_X_SHOTS	3
+
+#include "TurnButton.h"
+
+Create()
+{
+	FX_HIDE
+		//init vars
+	bAAMode = FALSE;
+	shotCount = 0;
+	curFlare = TRUE;
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+RestoreAfterDelay()
+{
+	set-signal-mask SIG_AIM_1|SIG_AIM_2|SIG_AIM_3;
+	sleep restore_delay;
+	turn turret to y-axis <0.000000> speed TURR_TRAVERSE;
+	turn guns to x-axis <0.000000> speed TURR_ELEVATE;
+	bAAMode = FALSE;
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	set ACTIVATION to 1;
+ 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	set ACTIVATION to 0;
+ 	stop-spin wheel1 around x-axis;
+ 	stop-spin wheel2 around x-axis;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	// Kill all other aiming
+	signal SIG_AIM_1|SIG_AIM_2|SIG_AIM_3;
+	set-signal-mask SIG_AIM_1;
+
+	bTurretAimingDone = FALSE;
+	bAAMode = TRUE;
+		
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	bTurretAimingDone = TRUE;
+	return 1;
+}
+
+FireWeapon1()
+{
+}
+
+Shot1(foo)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare1;
+		shotCount=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare1;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+
+	while(!bTurretAimingDone)
+	{
+		sleep 30;
+	}
+
+	return 1;
+}
+
+FireWeapon2()
+{
+}
+
+Shot2(foo)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare2;
+		shotCount=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare2;
+}
+
+// Weapon 3 - Anti-ground machinegun
+QueryWeapon3 (piecenum)
+{
+	if(curFlare)
+	{
+		piecenum = flare1;
+	} else {
+		piecenum = flare2;
+	}
+}
+
+AimFromWeapon3 (piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM_3;
+	set-signal-mask SIG_AIM_3|SIG_AIM_1|SIG_AIM_2;
+
+	// do not fire at ground if air units are in range
+	if(bAAMode)
+	{
+		return FALSE;
+	}
+	
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis (0-pitch) speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	return (1);
+}
+
+FireWeapon3()
+{
+}
+
+Shot3(foo)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		if(curFlare)
+		{
+			emit-sfx MEDIUM_TRACER from flare1;
+		} else {
+			emit-sfx MEDIUM_TRACER from flare2;
+		}
+		shotCount=0;
+	}
+	if(curFlare)
+	{
+		emit-sfx MG_MUZZLEFLASH from flare1;
+	} else {
+		emit-sfx MG_MUZZLEFLASH from flare2;
+	}
+	curFlare = !curFlare;
+}
+
+AimFromWeapon4(piecenum) //bulletproof effect 
+{
+	piecenum = base;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon4(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon4()
+{
+return (0);
+}
+
+
+
+// TODO: make this pretty
+Killed(severity, corpsetype)
+{
+	if(severity <= 1000)
+	{
+		corpsetype = 1;
+		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+	}
+	corpsetype = 1;
+	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+	explode sleeve type SHATTER;
+	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+}
+

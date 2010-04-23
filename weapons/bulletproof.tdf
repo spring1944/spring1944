@@ -1,0 +1,67 @@
+[.30calproof] {
+  name=Deflecting .30 cal and under bullets;
+  [customParams] {
+  }
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=1313;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=16;
+  shieldMaxSpeed=900;
+  shieldRadius=35;
+  shieldRepulser=1;
+}
+
+[.50calproof] {
+  name=Deflecting bullets;
+  [customParams] {
+  }
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=133;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=24;
+  shieldMaxSpeed=900;
+  shieldRadius=40;
+  shieldRepulser=1;
+}
+
+[small30calproof] {
+  name=Deflecting .30 cal and under bullets;
+  [customParams] {
+  }
+  [damage] {
+    default=10;
+  }
+  exteriorShield=1;
+  id=1313;
+  isShield=1;
+  shieldAlpha=0.8;
+  shieldBadColor=0.0 0.0 0.0;
+  shieldEnergyUse=0;
+  shieldForce=500;
+  shieldGoodColor=1.0 1.0 1.0;
+  shieldInterceptType=16;
+  shieldMaxSpeed=900;
+  shieldPower=9e+06;
+  shieldPowerRegen=1000;
+  shieldRadius=16;
+  shieldRepulser=1;
+  visibleShield=1;
+  visibleShieldRepulse=1;
+}
+

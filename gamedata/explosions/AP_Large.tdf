@@ -1,0 +1,148 @@
+[AP_Large] {
+	usedefaultexplosions=0;
+	[smoke] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=3 r3;
+			sizeMod=0.5;
+			pos=0, 0, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0, 0;
+			colorMap=0.5 0.5 0.5 1  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.75;
+			particleLife=12;
+			particleLifeSpread=4;
+			numParticles=8;
+			particleSpeed=3;
+			particleSpeedSpread=2;
+			particleSize=1;
+			particleSizeSpread=0;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+	
+	[pikes] {
+		class=CExploSpikeProjectile;
+		[properties] {
+			dir= -4 r8, -4 r8, -4 r8;
+			width=4;
+			length=1;
+			lengthGrowth=1;
+			alpha=1;
+			alphadecay=0.08;
+			color=1,0.75,0.5;
+			alwaysVisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=16; 
+	}
+	
+	[hit] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0,  0;
+			delay=0;				
+			explosionGenerator=custom:AP_Medium_Hit;
+		}
+		unit=1;
+		count=1;
+	}
+	
+	[miss] {
+		class=CExpGenSpawner;
+		[properties]{
+			pos=0, 0, 0;
+			delay=0;				
+			explosionGenerator=custom:AP_Medium_Miss;
+		}
+		nounit=1;
+		count=1;
+	}
+	
+	[groundflash] {
+		flashsize=48;
+		flashalpha=1;
+		circlegrowth=10;
+		circlealpha=0;
+		ttl=8;
+		color=1,0.75,0.5;
+	}
+}
+
+[AP_Large_Hit] {
+	
+	[sparks] {
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 1, 0;
+			emitVector=0, 1, 0;
+			gravity=0, -0.1, 0;
+			colorMap=1 0.75 0.5 0.01   1 0.75 0.5 0.01   0 0 0 0;
+			Texture=plasma;
+			airdrag=0.95;
+			particleLife=32;
+			particleLifeSpread=0;
+			numParticles=64;
+			particleSpeed=1;
+			particleSpeedSpread=2;
+			particleSize=0.5;
+			particleSizeSpread=1;
+			emitRot=0;
+			emitRotSpread=90;
+			directional=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}
+
+[AP_Large_Miss] {
+	[ground]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.5 0.4 0.3 1  0.05 0.04 0.03 0.1;
+			size=4 r2;
+			length=16 r8;
+			sizeGrowth=1;
+			ttl=16;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		ground=1;
+		count=4;
+	}
+	
+	[water]{
+		class = CBitmapMuzzleFlame;  
+		[properties]{
+			dir = -0.1 r0.2, 1, -0.1 r0.2;
+			colorMap=0.45 0.45 0.5 0.5  0.045 0.045 0.05 0.05; 
+			size=4 r2;
+			length=16 r8;
+			sizeGrowth=1;
+			ttl=16;
+			frontOffset=0;
+			sideTexture=splashside;
+			frontTexture=splashbase;
+		}
+		water=1;
+		count=4;
+	}
+}

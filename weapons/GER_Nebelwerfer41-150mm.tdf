@@ -1,0 +1,48 @@
+[nebelwerfer41] {
+  name=Nebelwerfer 41 150mm unguided artillery rocket;
+  areaOfEffect=184;
+  ballistic=1;
+  burst=6;
+  burstRate=0.8;
+  cegTag=RocketTrail;
+  commandfire=1;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_hit_side=top;
+    damagetype=explosive;
+    fearaoe=200;
+    fearid=501;
+    howitzer=1;
+  }
+  [damage] {
+    default=5525;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:HE_XLarge;
+  explosionSpeed=30;
+  fireStarter=0;
+  flightTime=10;
+  guidance=1;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  model=KatyushaRocket.S3O;
+  range=4770;
+  reloadTime=45;
+  rendertype=1;
+  soundHit=GEN_Explo_5;
+  soundStart=GER_Nebelwerfer;
+  soundTrigger=0;
+  startVelocity=10;
+  targetMoveError=0.1;
+  tolerance=2000;
+  trajectoryHeight=0.5;
+  turret=1;
+  weaponAcceleration=2000;
+  weaponTimer=1;
+  weaponType=MissileLauncher;
+  weaponVelocity=1400;
+  wobble=1300;
+}
+

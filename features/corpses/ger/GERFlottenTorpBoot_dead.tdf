@@ -1,0 +1,13 @@
+[GERFlottenTorpBoot_dead] {
+  description=Sunk Flottentorpedoboot;
+  blocking=0;
+  damage=50000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=15;
+  hitdensity=50;
+  object=GERFlottenTorpBoot_dead;
+  reclaimable=1;
+}
+

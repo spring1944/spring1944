@@ -1,0 +1,34 @@
+[unitinfo] {
+  unitname=APMineSign;
+  name=Anti-Personelle Minefield;
+  buildCostEnergy=0;
+  buildCostMetal=360;
+  buildPic=APMine.png;
+  buildTime=360;
+  category=FLAG;
+  cloakCost=0;
+  [customParams] {
+    dontCount=1;
+    ismine=1;
+  }
+  footprintX=1;
+  footprintZ=1;
+  init_cloaked=1;
+  levelGround=0;
+  maxDamage=100;
+  maxSlope=3;
+  maxWaterDepth=50;
+  minCloakDistance=160;
+  objectName=MineSign.S3O;
+  selfDestructCountdown=1;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=Nothing;
+  stealth=1;
+  TEDClass=SPECIAL;
+  yardmap=y;
+}
+

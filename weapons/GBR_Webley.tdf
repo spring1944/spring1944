@@ -1,0 +1,37 @@
+[webley] {
+  name=Webley Revolver;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=2.5;
+  color=255;
+  color2=226;
+  [customParams] {
+    damagetype=smallarm;
+  }
+  [damage] {
+    default=35;
+  }
+  duration=0.025;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=1;
+  impactOnly=1;
+  intensity=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=180;
+  reloadTime=1.5;
+  rendertype=0;
+  soundStart=GBR_Webley;
+  soundTrigger=0;
+  thickness=0.2;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+

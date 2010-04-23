@@ -1,0 +1,44 @@
+[unitinfo] {
+  unitname=APMine;
+  name=Anti-Personnel Mine;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildingGroundDecalSizeX=1;
+  buildingGroundDecalSizeY=1;
+  buildingGroundDecalType=MineDirt.dds;
+  buildTime=1;
+  category=MINE;
+  cloakCost=0;
+  [customParams] {
+    dontCount=1;
+    isMine=1;
+  }
+  explodeAs=APMine;
+  footprintX=1;
+  footprintZ=1;
+  iconType=mines;
+  init_cloaked=1;
+  kamikaze=1;
+  levelGround=0;
+  maxDamage=10;
+  maxSlope=3;
+  maxWaterDepth=50;
+  minCloakDistance=1e-07;
+  objectName=APMine2.S3O;
+  selfDestructAs=APMine;
+  selfDestructCountdown=1;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=160;
+  smoothAnim=0;
+  soundcategory=Nothing;
+  stealth=1;
+  TEDClass=SPECIAL;
+  useBuildingGroundDecal=1;
+  yardmap=y;
+
+  weapon1=APMine;
+  onlyTargetCategory1=MINETRIGGER;
+}
+

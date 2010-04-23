@@ -1,0 +1,71 @@
+[UNITINFO] {
+  UnitName=GBRHorsa;
+  name=AS 51 Horsa;
+  description=Troop-Carrying Glider;
+  acceleration=0.5;
+  airSightDistance=0;
+  bmcode=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=6000;
+  buildPic=GBRHorsa.png;
+  buildTime=6000;
+  canAttack=1;
+  canDropFlare=0;
+  canFly=1;
+  canGuard=0;
+  canMove=1;
+  canPatrol=0;
+  CanStop=0;
+  category=AIR;
+  corpse=GBRHorsa_Damaged;
+  cruiseAlt=1000;
+  [customParams] {
+    cruise_missile_accuracy=150;
+    spawn_on_death=gbr_platoon_glider_horsa;
+	deposit=0;
+  }
+  explodeAs=noweapon;
+  footprintX=4;
+  footprintZ=4;
+  iconType=transportplane;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.00465;
+  maxBank=1;
+  maxDamage=215;
+  maxElevator=0.0036;
+  maxFuel=120;
+  maxPitch=0.1;
+  maxRudder=0.002765;
+  maxSlope=10;
+  maxVelocity=14; //24;
+  maxWaterDepth=0;
+  moverate1=4; //does this tag even work?
+  myGravity=0.6;
+  noChaseCategory=FLAG MINE;
+  objectName=GBRAS51.s3o; //USC47.s3o;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_MUZZLEFLASH;
+    explosionGenerator2=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator3=custom:MG_SHELLCASINGS;
+  }
+  showNanoFrame=0;
+  Side=GBR;
+  sightDistance=0;
+  smoothAnim=1;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRadius=1500;
+  turnRate=50;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  wingAngle=0.1;
+  wingDrag=0.1;
+}
+

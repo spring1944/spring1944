@@ -1,0 +1,41 @@
+[mg34] {
+  name=Maschinengewehr 34;
+  accuracy=100;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  burst=10;
+  burstRate=0.069;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=1.5;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=45;
+    fearid=301;
+  }
+  [damage] {
+    default=33;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=7;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  movingAccuracy=2666;
+  pitchtolerance=700;
+  range=945;
+  reloadTime=2.55;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-13;
+  soundStart=GER_MG34;
+  soundTrigger=1;
+  sprayAngle=300;
+  tolerance=3000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+

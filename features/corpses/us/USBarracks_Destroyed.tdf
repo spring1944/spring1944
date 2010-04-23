@@ -1,0 +1,11 @@
+[USBarracks_Destroyed] {
+  description=Destroyed Barracks;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=4;
+  footprintZ=6;
+  object=USBarracks_Destroyed.S3O;
+  reclaimable=1;
+}
+

@@ -1,0 +1,13 @@
+[RUSPSK_dead] {
+  description=Sunk Brilliant-class;
+  blocking=0;
+  damage=20000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=10;
+  hitdensity=50;
+  object=RUSPSK_dead;
+  reclaimable=1;
+}
+

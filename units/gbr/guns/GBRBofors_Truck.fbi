@@ -1,0 +1,55 @@
+[unitinfo] {
+  unitname=GBRBofors_Truck;
+  name=Towed Q.F. 40mm Bofors;
+  description=Anti-Aircraft Gun;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=3000;
+  buildPic=GBRBofors.png;
+  buildTime=3000;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=GBRBedfordTruck_Destroyed;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=16;
+    weaponcost=3;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=aatruck;
+  leaveTracks=1;
+  mass=300;
+  maxDamage=300;
+  maxReverseVelocity=1.59;
+  maxSlope=10;
+  maxVelocity=3.8; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=GBRBofors_Truck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=450;
+  smoothAnim=0;
+  soundcategory=GBRVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

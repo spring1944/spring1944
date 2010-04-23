@@ -1,0 +1,115 @@
+[unitinfo] {
+  unitname=USPT103-bofors;
+  name=PT-103 type boat;
+  description=torpedo boat;
+  acceleration=0.3;
+  airSightDistance=3000;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=2300;
+  buildPic=USPT103.png;
+  buildTime=2300;
+  canAttack=1;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=24.0 24.0 120.0;
+  collisionVolumeType=box;
+  corpse=USPT103_dead;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=40;
+    weaponswithammo=4;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=torpboat;
+  mass=4000;
+  maxDamage=4000;
+  maxReverseVelocity=2.15;
+  maxVelocity=4.3; // 43 knots
+  minWaterDepth=10;
+  movementClass=BOAT_Medium;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=USPT103-bofors;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:SMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=300;
+  badTargetCategory=FLAG;
+
+  weapon10=KwK3020mmHE;
+  onlyTargetCategory10=SHIP BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
+  weaponMainDir10=0 0 1;
+
+  weapon1=mk13torpedo;
+  maxAngleDif1=40;
+  onlyTargetCategory1=LARGESHIP SUB;
+  weaponMainDir1=0 0 1;
+
+  weapon2=mk13torpedo;
+  maxAngleDif2=40;
+  onlyTargetCategory2=LARGESHIP SUB;
+  weaponMainDir2=0 0 1;
+
+  weapon3=mk13torpedo;
+  maxAngleDif3=40;
+  onlyTargetCategory3=LARGESHIP SUB;
+  weaponMainDir3=0 0 1;
+
+  weapon4=mk13torpedo;
+  maxAngleDif4=40;
+  onlyTargetCategory4=LARGESHIP SUB;
+  weaponMainDir4=0 0 1;
+
+  weapon5=bofors40mmaa;
+  onlyTargetCategory5=AIR;
+  weaponMainDir5=0 0 -1;
+
+  weapon6=flak3820mmaa;
+  onlyTargetCategory6=AIR;
+  weaponMainDir6=0 0 1;
+  
+  weapon7=flak3820mmhe;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir=0 0 1;
+
+  weapon8=m2browningaa;
+  onlyTargetCategory7=AIR;
+  
+  weapon9=m2browning;
+  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
+  
+  weapon10=m2browningaa;
+  onlyTargetCategory8=AIR;
+  
+  weapon11=m2browning;
+  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
+
+  weapon12=bofors40mmhe;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=0 0 -1;
+}
+

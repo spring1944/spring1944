@@ -1,0 +1,55 @@
+[unitinfo] {
+  unitname=GERKarl;
+  name=Karl Geraet 040;
+  description=600mm Superheavy Mortar;
+  acceleration=0.05;
+  activateWhenBuilt=1;
+  brakeRate=0.25;
+  buildCostEnergy=0;
+  buildCostMetal=10000;
+  buildTime=10000;
+  canMove=1;
+  category=MINETRIGGER OPENVEH;
+  corpse=GERKarl_Dead;
+  [customParams] {
+    hasturnbutton=1;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=5;
+  footprintZ=5;
+  iconType=truck;
+  leaveTracks=1;
+  mass=12400;
+  maxDamage=12400;
+  maxReverseVelocity=0.25;
+  maxSlope=10;
+  maxVelocity=0.5;
+  movementClass=TANK_VeryLarge;
+  noChaseCategory=AIR MINE;
+  objectName=GERKarl;
+  onoffable=1;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=USTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turninplace=0;
+  turnRate=50;
+
+  weapon1=GERKarlGeraet;
+  maxAngleDif1=10;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+}
+

@@ -1,0 +1,79 @@
+[Smallarms_TracerX] //thanks to quantum, he rocks! Please credit him if you use this effect.
+
+{
+   [Tracer]
+   {
+	class = CBitmapMuzzleFlame;
+      
+	[properties]
+      	{
+         	dir = 0 0 1;//dir;
+         	colorMap=1 1 0 0.01	1 0.5 0 0.01	0 0 0 0.01; 
+          	size=2.25;
+          	length=3;
+          	sizeGrowth=1;
+          	ttl=20;
+		particleSpeed=50;
+          	frontOffset=0.1;
+          	sideTexture=plasma2;
+          	frontTexture=flowerflash;
+      	}
+   	water=1;
+   	air=1;
+   	underwater=1;
+   	ground=1;
+   	count=1;
+    }
+}
+
+[Smallarms_Tracer]
+{
+	usedefaultexplosions=0;
+   	[sparks]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+		sizeGrowth=0;
+		sizeMod=1.0;
+		pos=0, 0, 0;
+		emitVector=dir;
+		gravity=0, -0.1, 0;
+		colorMap=1 1 0 0.01   1 1 0 0.01   1 1 1 0.01   0 0 0 0.01;
+		Texture=Tracer.png;
+		airdrag=0.97;
+		particleLife=15;
+		particleLifeSpread=15;
+		numParticles=1;
+		particleSpeed=50;
+		particleSpeedSpread=1;
+		particleSize=1;
+		particleSizeSpread=1;
+
+		emitRot=0;
+		emitRotSpread=0;
+		directional=1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+}
+
+[TracerLightSmall]
+{
+usedefaultexplosions=0;	
+[groundflash]
+   	{
+      	flashSize = 10;
+      	flashAlpha = 0.8;
+      	circleGrowth = 0;
+      	circleAlpha = 0;
+      	ttl = 2;
+      	color = 1, 0.75, 0;
+		air=1;
+     	ground=1;
+      	water=1;
+	}
+}

@@ -1,0 +1,50 @@
+[unitinfo] {
+  unitname=USEngineer;
+  name=Engineer;
+  description=Advanced Engineer;
+  acceleration=0.375;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=290;
+  buildDistance=20;
+  builder=1;
+  buildTime=290;
+  canMove=1;
+  category=INFANTRY;
+  corpse=USsoldier_dead;
+  [customParams] {
+    canclearmines=1;
+    feartarget=1;
+  }
+  damageModifier=0.265;
+  energyStorage=0.01;
+  footprintX=1;
+  footprintZ=1;
+  iconType=advancedengineer;
+  mass=50;
+  maxDamage=100;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=30;
+  movementClass=KBOT_Infantry;
+  objectName=USCommander.S3O;
+  repairable=0;
+  seismicDistance=840;
+  seismicSignature=0;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  turnRate=1010;
+  upright=1;
+  workerTime=15;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

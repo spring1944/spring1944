@@ -1,0 +1,85 @@
+[kwk75mml48ap] {
+  name=German 75mm KwK 40 L/48 Armour-Piercing;
+  accuracy=255;
+  areaOfEffect=15;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration_1000m=81;
+    armor_penetration_100m=91;
+    damagetype=kinetic;
+  }
+  [damage] {
+    default=2932;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Medium;
+  explosionSpeed=100;
+  fireStarter=0;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1520;
+  reloadTime=6.45;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=GER_75mm;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1480;
+}
+
+[kwk75mml48he] {
+  name=German 75mm KwK 40 L/48 High-Explosive;
+  accuracy=255;
+  areaOfEffect=87;
+  ballistic=1;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=75;
+    fearid=401;
+  }
+  [damage] {
+    default=1280;
+  }
+  edgeEffectiveness=0.15;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=107;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1520;
+  reloadTime=6.45;
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=GER_75mm;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1096;
+}
+

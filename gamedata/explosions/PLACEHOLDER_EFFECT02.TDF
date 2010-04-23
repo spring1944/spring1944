@@ -1,0 +1,15 @@
+[PLACEHOLDER_EFFECT02]
+{
+[groundflash]
+   	{
+      	flashSize = 0.000001;
+      	flashAlpha = 0;
+      	circleGrowth = 0;
+      	circleAlpha = 0;
+      	ttl = 1;
+      	color = 0, 0, 0;
+	air=0;
+     	ground=0;
+      	water=0;
+	}
+}

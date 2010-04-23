@@ -1,0 +1,53 @@
+[unitinfo] {
+  unitname=USGMCEngVehicle;
+  name=CCKW-353 Engineer Vehicle;
+  description=Construction Vehicle;
+  acceleration=0.25;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=2700;
+  buildDistance=128;
+  builder=1;
+  buildTime=2700;
+  canAttack=0;
+  canMove=1;
+  category=SOFTVEH;
+  corpse=USGMCEngVehicle_Destroyed;
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=engineervehicle;
+  leaveTracks=1;
+  mass=1800;
+  maxDamage=1800;
+  maxReverseVelocity=1.8;
+  maxSlope=10;
+  maxVelocity=3.6;
+  maxWaterDepth=20;
+  movementClass=TANK_Truck;
+  objectName=USGMCEngVehicle.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=US;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=USVeh;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turnRate=360;
+  workerTime=30;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

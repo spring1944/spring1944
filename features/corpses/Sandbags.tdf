@@ -1,0 +1,53 @@
+[ATGun_Destroyed] {
+  description=Debris;
+  blocking=0;
+  damage=1000;
+  energy=50;
+  footprintX=3;
+  footprintZ=3;
+  indestructible=1;
+  metal=0;
+  object=ATGun_Destroyed.S3O;
+  reclaimable=1;
+}
+
+[SandbagMG_Destroyed] {
+  description=Debris;
+  blocking=0;
+  damage=1000;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  indestructible=1;
+  metal=0;
+  object=Sandbags_Destroyed.S3O;
+  reclaimable=1;
+  smoketime=0;
+}
+
+[Sandbags] {
+  description=Sandbags;
+  damage=1000;
+  energy=25;
+  featureDead=Sandbags_Destroyed;
+  footprintX=2;
+  footprintZ=1;
+  height=5;
+  object=Sandbags.S3O;
+  reclaimable=1;
+}
+
+[Sandbags_Destroyed] {
+  description=Debris;
+  blocking=0;
+  damage=1000;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  indestructible=1;
+  metal=0;
+  object=Sandbags_Destroyed.S3O;
+  reclaimable=1;
+  smoketime=0;
+}
+

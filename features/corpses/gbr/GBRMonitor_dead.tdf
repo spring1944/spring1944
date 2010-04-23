@@ -1,0 +1,13 @@
+[GBRMonitor_dead] {
+  description=Sunk Roberts class;
+  blocking=0;
+  damage=75000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=15;
+  hitdensity=50;
+  object=GBRMonitor_dead;
+  reclaimable=1;
+}
+

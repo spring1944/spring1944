@@ -1,0 +1,124 @@
+[UNITINFO] {
+  UnitName=USP47Thunderbolt;
+  name=P-47D Thunderbolt;
+  description=Fighter-Bomber;
+  acceleration=0.48;
+  airSightDistance=4000;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=3375;
+  buildPic=USP47Thunderbolt.png;
+  buildTime=3375;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=AIR;
+  cruiseAlt=500;
+  [customParams] {
+    enginesound=p51b-;
+    enginesoundnr=16;
+    feartarget=1;
+    proptexture=prop5.tga;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  fireState=0;
+  footprintX=4;
+  footprintZ=4;
+  iconType=bomber;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.0044;
+  maxBank=0.9;
+  maxDamage=453.6;
+  maxElevator=0.0031;
+  maxFuel=180;
+  maxPitch=0.25;
+  maxRudder=0.0023;
+  maxSlope=10;
+  maxVelocity=25;
+  maxWaterDepth=0;
+  moverate1=4; //does this tag even work?
+  myGravity=0.6;
+  noChaseCategory=FLAG MINE;
+  objectName=USP47Thunderbolt.S3O;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_SHELLCASINGS;
+    explosionGenerator2=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  Side=US;
+  sightDistance=750;
+  smoothAnim=1;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRadius=1650;
+  turnRate=50;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  wingAngle=0.1;
+  wingDrag=0.1;
+
+  weapon10=Medium_Tracer;
+
+  weapon1=bomb;
+  maxAngleDif1=20;
+  onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 -0.18 1;
+
+  weapon2=m2browningamg;
+  maxAngleDif2=10;
+  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 1;
+
+  weapon3=m2browningamg;
+  maxAngleDif3=10;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 1;
+  weaponSlaveTo3=2;
+
+  weapon4=m2browningamg;
+  maxAngleDif4=10;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 1;
+  weaponSlaveTo4=2;
+
+  weapon5=m2browningamg;
+  maxAngleDif5=10;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=0 0 1;
+  weaponSlaveTo5=2;
+
+  weapon6=m2browningamg;
+  maxAngleDif6=10;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=0 0 1;
+  weaponSlaveTo6=2;
+
+  weapon7=m2browningamg;
+  maxAngleDif7=10;
+  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir7=0 0 1;
+  weaponSlaveTo7=2;
+
+  weapon8=m2browningamg;
+  maxAngleDif8=10;
+  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir8=0 0 1;
+  weaponSlaveTo8=2;
+
+  weapon9=m2browningamg;
+  maxAngleDif9=10;
+  onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=0 0 1;
+  weaponSlaveTo9=2;
+}
+

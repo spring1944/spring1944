@@ -1,0 +1,20 @@
+[gersdkfz10_destroyed] {
+  description=Wrecked Halftrack;
+  damage=501;
+  energy=25;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GERSdkfz10_destroyed.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
+}
+

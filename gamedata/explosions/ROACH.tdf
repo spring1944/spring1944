@@ -1,0 +1,40 @@
+[ROACHPLOSION]
+{
+	[foom]
+	{
+	  class=CExpGenSpawner;
+		[properties]
+		{
+  		pos=0, 0,  0;
+  		delay=0;
+  		explosionGenerator=custom:KLARA;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+	[boom]
+	{
+	  class=CExpGenSpawner;
+		[properties]
+		{
+  		pos=0, 0,  0;
+  		delay=0;
+  		explosionGenerator=custom:ROME;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+	[groundflash]
+	{
+		flashsize=150;
+		flashalpha=1;
+		circlegrowth=0;
+		circlealpha=0.5;
+		ttl=40;
+		color=1,0.7,0.2;
+	}
+}

@@ -1,0 +1,43 @@
+[unitinfo] {
+  unitname=RUSStorage;
+  name=Supply Storage;
+  description=General Logistics & Ammunition Stockpile;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=3040;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=6;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=LogisticsLarge.png;
+  buildTime=3040;
+  category=BUILDING;
+  corpse=Debris_Large;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyStorage=1040;
+  explodeAs=Massive_Explosion;
+  footprintX=4;
+  footprintZ=6;
+  iconType=stockpile;
+  maxDamage=500;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsLarge.S3O;
+  selfDestructAs=Massive_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=ENERGY;
+  useBuildingGroundDecal=1;
+  yardmap=o;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

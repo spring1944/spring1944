@@ -1,0 +1,86 @@
+[unitinfo] {
+  unitname=GBRChurchillMkVII;
+  name=Churchill Mk VII;
+  description=Heavily Armoured Support Tank;
+  acceleration=0.029;
+  activateWhenBuilt=1;
+  airSightDistance=1500;
+  brakeRate=0.105;
+  buildCostEnergy=0;
+  buildCostMetal=5800;
+  buildTime=5800;
+  canMove=1;
+  category=MINETRIGGER HARDVEH;
+  corpse=GBRChurchillMkVII_Damaged;
+  [customParams] {
+    armor_front=148;
+    armor_rear=57;
+    armor_side=75;
+    armor_top=19;
+    blockfear=1;
+    hasturnbutton=1;
+    lowammolevel=5;
+    maxammo=14;
+    weaponcost=10;
+    weaponswithammo=2;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=3;
+  footprintZ=3;
+  iconType=heavytank;
+  leaveTracks=1;
+  mass=4060;
+  maxDamage=4060;
+  maxReverseVelocity=0.74;
+  maxSlope=2;
+  maxVelocity=1.48;
+  maxWaterDepth=15;
+  movementClass=TANK_Heavy;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRChurchillMkVII.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=750;
+  smoothAnim=0;
+  soundcategory=GBRChurchill;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=18;
+  turninplace=0;
+  turnRate=175;
+  badTargetCategory=FLAG;
+
+  weapon1=QF75mmHE;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+  weapon2=QF75mmAP;
+  onlyTargetCategory2=OPENVEH HARDVEH;
+
+  weapon3=Besa;
+  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+
+  weapon4=.50calproof;
+
+  weapon5=Small_Tracer;
+}
+

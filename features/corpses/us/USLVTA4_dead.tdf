@@ -1,0 +1,13 @@
+[USLVTA4_dead] {
+  description=Disabled LVT(A);
+  blocking=0;
+  damage=2500;
+  energy=5000;
+  footprintX=4;
+  footprintZ=4;
+  height=10;
+  hitdensity=50;
+  object=USLVTA4_dead;
+  reclaimable=1;
+}
+

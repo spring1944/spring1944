@@ -1,0 +1,174 @@
+#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+
+piece  base, turret, gun, flare, exhaust;
+piece wheel1, wheel2, wheel3;
+ 
+static-var  restore_delay, rock, reloading, mainHead, bMoving;
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_AIM		2 // Machinegun
+#define SIG_AIM2	4 //fear
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 exhaust
+#define SMOKEPIECE4 gun
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+//hiding FX emit points
+#define FX_HIDE\
+	hide flare;\
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<50> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+//#include "RockUnit_Set.h"
+
+// definitions for HitWeap_Set
+#define HIT_ROCK_SPEED	<105>
+#define HIT_RESTORE_SPEED	<30>
+
+#include "HitWeap_Set.h"
+
+//restore delay
+
+// definitions for wheels
+#define WHEEL_SPIN		<500>
+#define WHEEL_ACCEL		<150>
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<50> // very light
+#define TURR_ELEVATE	<50> //it's just a machinegun on a pivot
+
+// definitions for weapons behaviour
+#define RELOAD		2500 // time in milliseconds between shots
+#define RECOIL		[-1] // distance to recoil the gun
+#define RETURN_SPEED	[20] // speed at which the barrel returns
+#define BURST		5
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+
+// tracers
+#define SMALL_TRACER 	2048+1
+
+#include "TurnButton.h"
+
+Create()
+{
+	FX_HIDE
+	// init vars
+	rock = FALSE;
+	reloading = FALSE;
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+}
+
+RestoreAfterDelay()
+{
+	sleep 5000;
+	turn turret to y-axis <0.000000> speed <100>;
+	turn gun to x-axis <0.000000> speed <100>;
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	set ACTIVATION to 1;
+ 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	set ACTIVATION to 0;
+ 	stop-spin wheel1 around x-axis;
+ 	stop-spin wheel2 around x-axis;
+}
+
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+// Weapon 1 - Main cannon, HE
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	
+	mainHead = heading;
+		
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn gun to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn gun around x-axis;
+	
+	start-script RestoreAfterDelay();
+//if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon1()
+{
+	emit-sfx SMALL_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx SMALL_TRACER from flare;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 67;
+	return 0;
+}
+
+// TODO: make this pretty
+Killed(severity, corpsetype)
+{
+	if(severity <= 1000)
+	{
+		corpsetype = 1;
+		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+		explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+	}
+	corpsetype = 1;
+	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+	explode gun type SHATTER;
+	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel3 type SHATTER | EXPLODE_ON_HIT;
+}
+

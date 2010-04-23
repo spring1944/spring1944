@@ -1,0 +1,81 @@
+[unitinfo] {
+  unitname=GERSBoot;
+  name=Schnellboot;
+  description=Torpedo boat;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.3;
+  buildCostEnergy=0;
+  buildCostMetal=2200;
+  buildTime=2200;
+  canAttack=1;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 55.0 280.0;
+  collisionVolumeType=box;
+  corpse=GERSBoot_dead;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=2;
+    weaponcost=40;
+    weaponswithammo=2;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=14;
+  footprintZ=14;
+  iconType=torpboat;
+  mass=9070;
+  maxDamage=9070;
+  maxReverseVelocity=3.005;
+  maxVelocity=6.01;
+  minWaterDepth=10;
+  movementClass=BOAT_LightPatrol;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GERSBoot;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:SMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=205;
+
+  weapon1=g7a533mmtorpedo;
+  maxAngleDif1=40;
+  onlyTargetCategory1=LARGESHIP SUB;
+  weaponMainDir1=0 0 1;
+
+  weapon2=g7a533mmtorpedo;
+  maxAngleDif2=40;
+  onlyTargetCategory2=LARGESHIP SUB;
+  weaponMainDir2=0 0 1;
+
+  weapon3=20mmc38;
+  maxAngleDif3=270;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 1;
+
+  weapon4=20mmc38;
+  maxAngleDif4=330;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 -1;
+}
+

@@ -1,0 +1,55 @@
+[unitinfo] {
+  unitname=GBRGliderResource;
+  name=Small Supply Dump;
+  description=Supplies A Small Area;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=720;
+  builder=1;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=LogisticsSmall.png;
+  buildTime=720;
+  canAttack=0;
+  canFight=0;
+  canGuard=0;
+  canPatrol=0;
+  canRepeat=0;
+  category=BUILDING;
+  corpse=Debris_Small;
+  [customParams] {
+    ammoSupplier=1;
+    dontCount=1;
+    supplyRange=275;
+  }
+  energyMake=0;
+  energyStorage=0;
+  explodeAs=ResourceBoom;
+  footprintX=3;
+  footprintZ=3;
+  iconType=ammo;
+  maxDamage=400;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsSmall.S3O;
+  script=ruspresource.cob;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=GBRInf;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=0.01;
+  yardmap=yyy yyy yyy;
+
+  weapon1=noweapon;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

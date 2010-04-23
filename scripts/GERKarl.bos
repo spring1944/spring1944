@@ -1,0 +1,287 @@
+#define TAK			// This is a TA script
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece	base, hull, gun_base, sleeve, barrel, tracks, front_wheels, rear_wheels, shell, pusher,
+		torsion1, roller1, torsion2, roller2, torsion3, roller3, torsion4, roller4, torsion5, roller5,
+		torsion6, roller6, torsion7, roller7, torsion8, roller8, torsion9, roller9, torsion10, roller10,
+		torsion11, roller11,
+		support_wheel1, support_wheel2, support_wheel3, support_wheel4, support_wheel6, support_wheel7;
+ 
+static-var restore_delay, bMoving, bCanFire, bDeployed, bDeploying, bLoaded, normalSpeed, haltSpeed;
+
+// Signal definitions
+#define SIG_MOVE			1
+#define SIG_AIM1			2
+
+#define SCALE_FACTOR			2.5
+#define RECOIL					[1] * SCALE_FACTOR
+#define RECOIL_SPEED			[10] * SCALE_FACTOR
+#define RECOIL_BACK_SPEED		[2.5]
+#define GUN_BASE_FORWARD		[1.75] * SCALE_FACTOR
+#define GUN_BASE_FORWARD_SPEED	[0.25] * SCALE_FACTOR
+#define GUN_BASE_RECOIL_SPEED	[2] * SCALE_FACTOR
+#define SHELL_MOVE				[1.7] * SCALE_FACTOR
+#define SHELL_SPEED				[0.1] * SCALE_FACTOR
+#define GUN_PITCH_SPEED			<1.5>
+
+#define LARGE_WHEEL_SPIN		<90>
+#define SMALL_WHEEL_SPIN		<120>
+#define SUPPORT_WHEEL_SPIN		<150>
+
+#define DEPLOY_HULL_MOVE		[0.3] * SCALE_FACTOR
+#define DEPLOY_HULL_MOVE_SPEED	[0.1] * SCALE_FACTOR
+
+#include "TurnButton.h"
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from hull;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+WheelsSpin(trigger)
+{
+	spin front_wheels around x-axis speed LARGE_WHEEL_SPIN*trigger;
+	spin rear_wheels around x-axis speed LARGE_WHEEL_SPIN*trigger;
+	spin roller1 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller2 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller3 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller4 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller5 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller6 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller7 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller8 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller9 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller10 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin roller11 around x-axis speed SMALL_WHEEL_SPIN*trigger;
+	spin support_wheel1 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+	spin support_wheel2 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+	spin support_wheel3 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+	spin support_wheel4 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+	spin support_wheel6 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+	spin support_wheel7 around x-axis speed SUPPORT_WHEEL_SPIN*trigger;
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// don't move if deployed
+	if(bDeployed)
+	{
+		return;
+	}
+	bMoving = TRUE;
+	call-script WheelsSpin(1);
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	bMoving = FALSE;
+	call-script WheelsSpin(0);
+}
+
+Deploy()
+{
+	if(bDeploying)
+	{
+		return;
+	}
+	if(bDeployed)
+	{
+		return;
+	}
+	bDeploying = TRUE;
+	signal SIG_MOVE;
+	start-script StopMoving();
+	set MAX_SPEED to haltSpeed;
+	move hull to y-axis (0 - DEPLOY_HULL_MOVE) speed DEPLOY_HULL_MOVE_SPEED;
+	wait-for-move hull along y-axis;
+	if(bLoaded)
+	{
+		move gun_base to z-axis GUN_BASE_FORWARD speed GUN_BASE_FORWARD_SPEED;
+		wait-for-move gun_base along z-axis;
+	}
+	bDeployed = TRUE;
+	bCanFire = TRUE;
+	bDeploying = FALSE;
+}
+
+Undeploy()
+{
+	if(bDeploying)
+	{
+		return;
+	}
+	if(!bDeployed)
+	{
+		return;
+	}
+	bDeploying = TRUE;
+	signal SIG_MOVE;
+	bCanFire = FALSE;
+	move gun_base to z-axis 0 speed GUN_BASE_FORWARD_SPEED;
+	wait-for-move gun_base along z-axis;
+	move hull to y-axis 0 speed DEPLOY_HULL_MOVE_SPEED;
+	wait-for-move hull along y-axis;
+	bDeployed = FALSE;
+	set MAX_SPEED to normalSpeed;
+	bDeploying = FALSE;
+}
+
+Deactivate()
+{
+	call-script Deploy();
+	bCanFire = TRUE;
+	set ACTIVATION to 0;
+}
+
+Activate()
+{
+	call-script Undeploy();
+	bCanFire = FALSE;
+	set ACTIVATION to 1;
+}
+
+TriggerDeploy()
+{
+	if(bDeploying)
+	{
+		return;
+	}
+	if(bDeployed)
+	{
+		start-script Activate();
+	} else {
+		start-script Deactivate();
+	}
+}
+
+Create()
+{
+	haltSpeed = 1;
+	normalSpeed = get MAX_SPEED;
+	hide shell;
+	start-script SmokeUnit();
+	bDeployed = FALSE;
+	bCanFire = FALSE;
+	bMoving = FALSE;
+	bLoaded = TRUE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+Reload()
+{
+	if(bLoaded)
+	{
+		return;
+	}
+	while(!bDeployed)
+	{
+		sleep 50;
+	}
+	bCanFire = FALSE;
+	// reloading anim
+	// position gun for reloading
+	move gun_base to z-axis 0 speed GUN_BASE_FORWARD_SPEED;
+	turn sleeve to x-axis 0 speed GUN_PITCH_SPEED;
+	wait-for-move gun_base along z-axis;
+	wait-for-turn sleeve around x-axis;
+	// load a new shell
+	show shell;
+	move shell to z-axis SHELL_MOVE speed SHELL_SPEED;
+	move pusher to z-axis SHELL_MOVE speed SHELL_SPEED;
+	wait-for-move shell along z-axis;
+	hide shell;
+	// reset the loading device
+	move shell to z-axis 0 now;
+	move pusher to z-axis 0  speed SHELL_SPEED;
+	wait-for-move pusher along z-axis;
+	bLoaded = TRUE;
+	// move gun to firing position
+	move gun_base to z-axis GUN_BASE_FORWARD speed GUN_BASE_FORWARD_SPEED;
+	wait-for-move gun_base along z-axis;
+	bCanFire = TRUE;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = barrel;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = gun_base;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+	/*
+	while(!bCanFire)
+	{
+		sleep 50;
+	}
+	if(!bLoaded)
+	{
+		return FALSE;
+	}
+	*/
+	turn sleeve to x-axis (0 - pitch) speed GUN_PITCH_SPEED;
+	wait-for-turn sleeve around x-axis;
+	return(TRUE);
+}
+
+FireWeapon1()
+{
+	bCanFire = FALSE;
+	bLoaded = FALSE;
+	move barrel to z-axis (0 - RECOIL) speed RECOIL_SPEED;
+	move gun_base to z-axis 0 speed GUN_BASE_RECOIL_SPEED;
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis 0 speed RECOIL_BACK_SPEED;
+	wait-for-move gun_base along z-axis;
+	sleep 500;
+	start-script Reload();
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 999 )
+	{
+		corpsetype = 1;
+		return;
+	}
+	corpsetype = 1;
+	explode hull type SHATTER;
+}

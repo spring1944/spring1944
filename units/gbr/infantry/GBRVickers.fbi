@@ -1,0 +1,56 @@
+[unitinfo] {
+  unitname=GBRVickers;
+  name=Vickers Heavy Machinegun;
+  description=Heavy Infantry Fire Support;
+  acceleration=0.2;
+  airSightDistance=2500;
+  brakeRate=0.6;
+  buildCostEnergy=0;
+  buildCostMetal=800;
+  buildTime=800;
+  canMove=1;
+  category=INFANTRY MINETRIGGER;
+  corpse=GBRsoldier_dead;
+  [customParams] {
+    feartarget=1;
+  }
+  damageModifier=0.265;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
+  flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
+  footprintX=1;
+  footprintZ=1;
+  iconType=lightmg;
+  mass=75;
+  maxDamage=140;
+  maxSlope=15;
+  maxVelocity=0.8;
+  maxWaterDepth=5;
+  movementClass=KBOT_Gun;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRVickers.S3O;
+  seismicDistance=840;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:MG_SHELLCASINGS;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=GBRInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=420;
+  upright=1;
+  badTargetCategory=FLAG;
+}
+

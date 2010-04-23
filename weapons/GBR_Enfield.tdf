@@ -1,0 +1,41 @@
+[enfield] {
+  name=Lee-Enfield No. 4 Mk. I;
+  accuracy=50;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=2.5;
+  coreThickness=0.15;
+  [customParams] {
+    damagetype=smallarm;
+  }
+  [damage] {
+    default=33;
+  }
+  duration=0.01;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=2;
+  impactOnly=1;
+  intensity=0.9;
+  interceptedByShieldType=8;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=680;
+  reloadTime=2.5;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  soundStart=GBR_Enfield;
+  soundTrigger=0;
+  sprayAngle=100;
+  thickness=0.4;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+

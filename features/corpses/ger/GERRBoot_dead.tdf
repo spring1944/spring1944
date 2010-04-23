@@ -1,0 +1,13 @@
+[GERRBoot_dead] {
+  description=Sunk Raumboot;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=GERRBoot_dead;
+  reclaimable=1;
+}
+

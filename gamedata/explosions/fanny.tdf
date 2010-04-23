@@ -1,0 +1,166 @@
+[FANNY]
+{
+	[quadrant1] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i5, 0, 0i5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[quadrant2] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i5, 0, 0i-5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[quadrant3] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i-5, 0, 0i-5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[quadrant4] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i-5, 0, 0i5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[N] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i5, 0, 0;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[E] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0, 0, i5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[S] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0, 0, 0 i-5;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+	[W] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=0 i-5, 0, 0;
+		delay=10 i1;
+		explosionGenerator=custom:FANNY_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=30;
+	}
+}
+[FANNY_1]
+{
+	[dust] 
+	{
+	    class=CExpGenSpawner;
+		[properties]
+		{
+		pos=-200 r400, 0, -200 r400;  
+		delay=0;				  
+		explosionGenerator=custom:FANNY_1_1;
+		}
+	air=1;
+	water=1;
+	ground=1;
+	count=1;
+	}
+}
+
+[FANNY_1_1]
+{	
+	[wezels]
+	{
+		class=CSimpleParticleSystem;
+		[properties]
+		{
+			sizeGrowth=0;
+			sizeMod=1.0;
+			pos=0, 3, 0;
+			emitVector=0, 1, 0;
+			gravity=0, 0.5, 0;
+			colorMap=0.22 0.18 0.15 1      0 0 0 0.01;
+			Texture=kfoom;
+			airdrag=0.5;
+			particleLife=5;
+			particleLifeSpread=10;
+			numParticles=1;
+			particleSpeed=0;
+			particleSpeedSpread=0;
+			particleSize=5;
+			particleSizeSpread=10;
+			emitRot=90;
+			emitRotSpread=0;
+			directional=1;
+			alwaysvisible=1;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=1;
+	}
+}

@@ -1,0 +1,11 @@
+[RUSBarracks_Destroyed] {
+  description=Destroyed Barracks;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=7;
+  footprintZ=7;
+  object=RUSBarracks_Destroyed.S3O;
+  reclaimable=1;
+}
+

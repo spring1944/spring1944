@@ -1,0 +1,52 @@
+[unitinfo] {
+  unitname=GERSdKfz9;
+  name=Sd.Kfz. 9;
+  description=Construction Vehicle;
+  acceleration=0.25;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=2700;
+  buildDistance=128;
+  builder=1;
+  buildTime=2700;
+  canAttack=0;
+  canMove=1;
+  category=SOFTVEH;
+  corpse=GERSdKfz9_Destroyed;
+  explodeAs=Vehicle;
+  footprintX=3;
+  footprintZ=3;
+  iconType=engineervehicle;
+  leaveTracks=1;
+  mass=1800;
+  maxDamage=1800;
+  maxReverseVelocity=1.5;
+  maxSlope=10;
+  maxVelocity=3;
+  maxWaterDepth=5;
+  movementClass=TANK_Medium;
+  objectName=GERSdKfz9.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=GER;
+  sightDistance=720;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  trackOffset=3;
+  trackStrength=6;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turnRate=180;
+  workerTime=30;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

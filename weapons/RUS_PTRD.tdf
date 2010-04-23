@@ -1,0 +1,41 @@
+[ptrd] {
+  name=PTRD;
+  accuracy=450;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  coreThickness=0.15;
+  [customParams] {
+    armor_penetration_1000m=16;
+    armor_penetration_100m=35;
+    damagetype=kinetic;
+  }
+  [damage] {
+    default=448;
+  }
+  duration=0.01;
+  explosionGenerator=custom:AP_XSmall;
+  fireStarter=0;
+  impactOnly=1;
+  intensity=0.9;
+  interceptedByShieldType=32;
+  laserFlareSize=0.0001;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=655;
+  reloadTime=12;
+  rendertype=0;
+  rgbColor=0.0 0.7 0.0;
+  size=1;
+  soundStart=RUS_PTRD;
+  soundTrigger=0;
+  thickness=0.8;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2024;
+}
+

@@ -1,0 +1,79 @@
+[unitinfo] {
+  unitname=RUSBKA-1125;
+  name=Pr.1125 Armored Boat;
+  description=armored river gunboat;
+  acceleration=0.05;
+  airSightDistance=1500;
+  brakeRate=0.025;
+  buildCostEnergy=0;
+  buildCostMetal=2650;
+  buildTime=2650;
+  canAttack=1;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=24.0 24.0 160.0;
+  collisionVolumeType=box;
+  corpse=RUSBKA-1125_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=gunboat;
+  mass=2660;
+  maxDamage=3060; //+15% because it has armor
+  maxReverseVelocity=0.9;
+  maxVelocity=1.8;
+  minWaterDepth=6;
+  movementClass=BOAT_RiverSmall;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=RUSBKA1125.s3o;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=250;
+
+  weapon1=F3476mmHE;
+  maxAngleDif1=300;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=dshk;
+  maxAngleDif2=270;
+  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 1;
+
+  weapon3=dshk;
+  maxAngleDif3=358;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 1;
+
+  weapon4=dshk;
+  maxAngleDif4=270;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 -1;
+}
+

@@ -1,0 +1,93 @@
+[unitinfo] {
+  unitname=RUSPSK;
+  name=Brilliant-class Border Guard Ship;
+  description=Large Patrol Ship;
+  acceleration=0.15;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=17000;
+  buildTime=17000;
+  canAttack=1;
+  canMove=1;
+  category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 150.0 360.0;
+  collisionVolumeType=box;
+  corpse=RUSPSK_dead;
+  [customParams] {
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=25;
+    weaponswithammo=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=20;
+  footprintZ=20;
+  iconType=destroyer;
+  mass=100000;
+  maxDamage=100000;
+  maxReverseVelocity=0.84;
+  maxVelocity=1.68;
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=RUSPSK;
+  radarDistance=4000;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:LARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:LARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=1100;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=160;
+
+  weapon1=102mmL60;
+  maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=61k37mmaa;
+  maxAngleDif2=300;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 -1;
+
+  weapon3=61k37mmaa;
+  maxAngleDif3=270;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 -1;
+
+  weapon4=61k37mmaa; //20mmflakvierling;
+  maxAngleDif4=270;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 -1;
+
+  weapon5=dshk; //20mmflakvierling;
+  maxAngleDif5=270;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=1 0 0;
+
+  weapon6=dshk;
+  maxAngleDif6=270;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=-1 0 0;
+}
+

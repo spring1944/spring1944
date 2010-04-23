@@ -1,0 +1,43 @@
+[unitinfo] {
+  unitname=target;
+  name=Target ship;
+  description=spawn it to test your shooting skill;
+  acceleration=0.2;
+  airSightDistance=1100;
+  autoHeal=1000;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=100;
+  buildTime=100;
+  canMove=1;
+  category=LARGESHIP MINETRIGGER;
+  corpse=target_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=pontoon;
+  mass=100000;
+  maxDamage=100000;
+  maxReverseVelocity=1;
+  maxVelocity=2;
+  minWaterDepth=10;
+  movementClass=BOAT_Destroyer;
+  objectName=target;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=700;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turnRate=42.5;
+}
+

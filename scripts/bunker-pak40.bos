@@ -1,0 +1,231 @@
+#define TAK
+
+#include "sfxtype.h"
+#include "exptype.h"
+
+piece  base, bunker, pos1, pos2, pos3, pos4, pos5, load_shoulder, load_arm;
+static-var	unit1, unit2, unit3, unit4, unit5;
+ 
+// Signal definitions
+#define SIG_LOAD			2
+
+// Try to find out if the units held withing are killed
+// We'll check for unit coords (in case the ID was already reused by the engine), and for health (in case it wasn't)
+// WARNING: this can cause small borks if groups of units try to enter at once (some of them will be assigned to same pos)
+// Not critical though, and doesn't happen if they enter 1 by 1.
+CheckStoredUnits()
+{
+	while(TRUE)
+	{
+		if(unit1>0)
+		{
+			if(!(get UNIT_XZ(unit1)==get PIECE_XZ(pos1)))
+			{
+				unit1= -1;
+				get PRINT(1,1);
+			}
+			if(get HEALTH(unit1)<=0)
+			{
+				unit1= -1;
+				get PRINT(1,2);
+			}
+		}
+		if(unit2>0)
+		{
+			if(!(get UNIT_XZ(unit2)==get PIECE_XZ(pos2)))
+			{
+				unit2= -1;
+				get PRINT(2,1);
+			}
+			if(get HEALTH(unit2)<=0)
+			{
+				unit2= -1;
+				get PRINT(2,2);
+			}
+		}
+		if(unit3>0)
+		{
+			if(!(get UNIT_XZ(unit3)==get PIECE_XZ(pos3)))
+			{
+				unit3= -1;
+				get PRINT(3,1);
+			}
+			if(get HEALTH(unit3)<=0)
+			{
+				unit3= -1;
+				get PRINT(3,2);
+			}
+		}
+		if(unit4>0)
+		{
+			if(!(get UNIT_XZ(unit4)==get PIECE_XZ(pos4)))
+			{
+				unit4= -1;
+				get PRINT(4,1);
+			}
+			if(get HEALTH(unit4)<=0)
+			{
+				unit4= -1;
+				get PRINT(4,2);
+			}
+		}
+		if(unit5>0)
+		{
+			if(!(get UNIT_XZ(unit5)==get PIECE_XZ(pos5)))
+			{
+				unit5= -1;
+				get PRINT(5,1);
+			}
+			if(get HEALTH(unit5)<=0)
+			{
+				unit5= -1;
+				get PRINT(5,2);
+			}
+		}
+		sleep 300;
+	}
+}
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid)
+{
+	signal SIG_LOAD;
+	set-signal-mask SIG_LOAD;
+	if( get UNIT_ALLIED(unitid) == 1)
+	{ // only pick up allied units
+		if(get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) <= [200])
+		{
+			if(unit1== -1)
+			{
+				unit1=unitid;
+				attach-unit unitid to pos1;
+				get PRINT(1);
+				return;
+			}
+			if(unit2== -1)
+			{
+				unit2=unitid;
+				attach-unit unitid to pos2;
+				get PRINT(2);
+				return;
+			}
+			if(unit3== -1)
+			{
+				unit3=unitid;
+				attach-unit unitid to pos3;
+				get PRINT(3);
+				return;
+			}
+			if(unit4== -1)
+			{
+				unit4=unitid;
+				attach-unit unitid to pos4;
+				get PRINT(4);
+				return;
+			}
+			if(unit5== -1)
+			{
+				unit5=unitid;
+				attach-unit unitid to pos5;
+				get PRINT(5);
+				return;
+			}
+			attach-unit unitid to base;
+			get PRINT(6);
+		}
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	if(unitid==unit1)
+	{
+		unit1= -1;
+	}
+	if(unitid==unit2)
+	{
+		unit2= -1;
+	}
+	if(unitid==unit3)
+	{
+		unit3= -1;
+	}
+	if(unitid==unit4)
+	{
+		unit4= -1;
+	}
+	if(unitid==unit5)
+	{
+		unit5= -1;
+	}
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+Create()
+{
+	unit1= -1;
+	unit2= -1;
+	unit3= -1;
+	unit4= -1;
+	unit5= -1;
+	start-script SmokeUnit();
+	start-script CheckStoredUnits();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 999 )
+	{
+		corpsetype = 1;
+		explode bunker type SHATTER | EXPLODE_ON_HIT;
+		return (0);
+	}
+	corpsetype = 1;
+	explode bunker type SHATTER | EXPLODE_ON_HIT;
+}

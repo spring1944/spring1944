@@ -1,0 +1,34 @@
+[gbr15inch42mki] {
+  name=15"/42 mkI Naval Gun;
+  accuracy=540;
+  areaOfEffect=512;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0.5;
+  [customParams] {
+    damagetype=explosive;
+  }
+  [damage] {
+    default=30000;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_XXLarge;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  model=gbr15inchround;
+  noSelfDamage=0; // if we are stupid enough to hit something close with THAT, then we deserved it
+  range=9000;
+  reloadTime=30; // 2 rpm
+  rendertype=1;
+  soundHit=GEN_Explo_4;
+  soundStart=16inch;
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1500;
+}
+

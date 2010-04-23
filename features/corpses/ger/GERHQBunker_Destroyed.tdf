@@ -1,0 +1,11 @@
+[gerhqbunker_destroyed] {
+  description=Destroyed HQ;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=10;
+  footprintZ=8;
+  object=GERHQBunker_Destroyed.S3O;
+  reclaimable=1;
+}
+

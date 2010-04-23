@@ -1,0 +1,42 @@
+[piat] {
+  name=P.I.A.T.;
+  accuracy=500;
+  areaOfEffect=46;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration=100;
+    damagetype=shapedcharge;
+  }
+  [damage] {
+    default=8800;
+  }
+  edgeEffectiveness=0.8;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=30;
+  fireStarter=0;
+  flightTime=2;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  lineofsight=1;
+  model=Bomb_Tiny.S3O;
+  noSelfDamage=1;
+  range=225;
+  reloadTime=15;
+  rendertype=4;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=GBR_PIAT;
+  stages=50;
+  startVelocity=200;
+  targetMoveError=0.02;
+  tolerance=6000;
+  turret=1;
+  weaponVelocity=400;
+}
+

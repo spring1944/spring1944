@@ -1,0 +1,1367 @@
+#define TAK
+
+piece base, hull, railings, boats,
+	  main_turret, main_sleeve, main_barrel_1, main_flare_1, main_barrel_2, main_flare_2,
+	  secondary_turret_1, secondary_sleeve_1, secondary_barrel1_1, secondary_flare1_1, secondary_barrel2_1, secondary_flare2_1,
+	  secondary_turret_2, secondary_sleeve_2, secondary_barrel1_2, secondary_flare1_2, secondary_barrel2_2, secondary_flare2_2,
+	  secondary_turret_3, secondary_sleeve_3, secondary_barrel1_3, secondary_flare1_3, secondary_barrel2_3, secondary_flare2_3,
+	  secondary_turret_4, secondary_sleeve_4, secondary_barrel1_4, secondary_flare1_4, secondary_barrel2_4, secondary_flare2_4,
+	  pompom_8, pom_sleeve, pom_barrel1, pom_flare1, pom_barrel2, pom_flare2, pom_barrel3, pom_flare3, pom_barrel4, pom_flare4,
+	  			pom_barrel5, pom_flare5, pom_barrel6, pom_flare6, pom_barrel7, pom_flare7, pom_barrel8, pom_flare8,
+	  pompom4_1, pom1_sleeve, pom1_barrel1, pom1_flare1, pom1_barrel2, pom1_flare2, pom1_barrel3, pom1_flare3, pom1_barrel4, pom1_flare4,
+	  pompom4_2, pom2_sleeve, pom2_barrel1, pom2_flare1, pom2_barrel2, pom2_flare2, pom2_barrel3, pom2_flare3, pom2_barrel4, pom2_flare4,
+	  aa2x20_turret_1, aa2x20_sleeve_1, aa2x20_barrel1_1, aa2x20_flare1_1, aa2x20_barrel2_1, aa2x20_flare2_1,
+	  aa2x20_turret_2, aa2x20_sleeve_2, aa2x20_barrel1_2, aa2x20_flare1_2, aa2x20_barrel2_2, aa2x20_flare2_2,
+	  aa2x20_turret_3, aa2x20_sleeve_3, aa2x20_barrel1_3, aa2x20_flare1_3, aa2x20_barrel2_3, aa2x20_flare2_3,
+	  aa2x20_turret_4, aa2x20_sleeve_4, aa2x20_barrel1_4, aa2x20_flare1_4, aa2x20_barrel2_4, aa2x20_flare2_4,
+	  aa2x20_turret_5, aa2x20_sleeve_5, aa2x20_barrel1_5, aa2x20_flare1_5, aa2x20_barrel2_5, aa2x20_flare2_5,
+	  aa2x20_turret_6, aa2x20_sleeve_6, aa2x20_barrel1_6, aa2x20_flare1_6, aa2x20_barrel2_6, aa2x20_flare2_6,
+	  aa2x20_turret_7, aa2x20_sleeve_7, aa2x20_barrel1_7, aa2x20_flare1_7, aa2x20_barrel2_7, aa2x20_flare2_7,
+	  aa2x20_turret_8, aa2x20_sleeve_8, aa2x20_barrel1_8, aa2x20_flare1_8, aa2x20_barrel2_8, aa2x20_flare2_8,
+	  aa20_turret_1, aa20_sleeve_1, aa20_barrel_1, aa20_flare_1, aa20_turret_2, aa20_sleeve_2, aa20_barrel_2, aa20_flare_2,
+	  aa20_turret_3, aa20_sleeve_3, aa20_barrel_3, aa20_flare_3, aa20_turret_4, aa20_sleeve_4, aa20_barrel_4, aa20_flare_4,
+	  exhaust, wake1, wake2, wake3, wake4;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define MAIN_TURRET_TURN		<2>
+#define MAIN_TURRET_PITCH		<5>
+
+#define AA4IN_TURRET_TURN		<20>
+#define AA4IN_TURRET_PITCH		<20>
+
+#define POM_TURRET_TURN			<25>
+#define POM_TURRET_PITCH		<25>
+
+#define AA20_TURRET_TURN			<30>
+#define AA20_TURRET_PITCH			<45>
+
+//*********************Recoil
+#define MAIN_GUN_RECOIL			[2.925]
+#define MAIN_GUN_RECOIL_SPEED	[10]
+#define MAIN_GUN_BACK_SPEED		[3]
+
+#define AA4IN_GUN_RECOIL		[1]
+#define AA4IN_GUN_RECOIL_SPEED	[10]
+#define AA4IN_GUN_BACK_SPEED	[2]
+
+#define POM_GUN_RECOIL			[0.4]
+#define POM_GUN_RECOIL_SPEED	[10]
+#define POM_GUN_BACK_SPEED		[2]
+
+#define AA20_GUN_RECOIL			[0.3]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[3]
+
+//*********************Death anim
+#define HULL_LIST_SPEED			<1>
+#define HULL_LIST_ANGLE			<5>
+
+//********************Engine smoke
+#define ENGINE_SMOKE_PIECE	exhaust
+#define ENGINE_SMOKE_PERIOD	150
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+#define SIG_AIM4			32
+#define SIG_AIM5			64
+#define SIG_AIM6			128
+#define SIG_AIM7			256
+#define SIG_AIM8			512
+#define SIG_AIM9			1024
+#define SIG_AIM10			2048
+#define SIG_AIM11			4096
+#define SIG_AIM12			8192
+#define SIG_AIM13			16384
+#define SIG_AIM14			32768
+#define SIG_AIM15			64536
+#define SIG_AIM16			131072
+#define SIG_AIM17			262144
+#define SIG_AIM18			524288
+#define SIG_AIM19			1048576
+#define SIG_AIM20			2019152
+
+#define ALL_WEAPON_SIGS		4194301
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var	CurrentSpeed, bMoving, main_flare, sec_flare_1, sec_flare_2, sec_flare_3, sec_flare_4,
+			pom8_flare, pom1_flare, pom2_flare,
+			aa220_flare1, aa220_flare2, aa220_flare3, aa220_flare4, aa220_flare5, aa220_flare6, aa220_flare7, aa220_flare8,
+			oldXZ, oldHeading;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			emit-sfx SFXTYPE_BLACKSMOKE from ENGINE_SMOKE_PIECE;
+			sleep ENGINE_SMOKE_PERIOD;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	turn secondary_turret_3 to y-axis <180> now;
+	turn secondary_turret_4 to y-axis <180> now;
+	turn pompom_8 to y-axis <180> now;
+	turn aa2x20_turret_5 to y-axis <180> now;
+	turn aa2x20_turret_6 to y-axis <180> now;
+	turn aa2x20_turret_7 to y-axis <180> now;
+	turn aa2x20_turret_8 to y-axis <180> now;
+	main_flare = TRUE;
+	sec_flare_1 = TRUE;
+	sec_flare_2 = TRUE;
+	sec_flare_3 = TRUE;
+	sec_flare_4 = TRUE;
+	pom8_flare = 1;
+	pom1_flare = 1;
+	pom2_flare = 1;
+	aa220_flare1 = TRUE;
+	aa220_flare2 = TRUE;
+	aa220_flare3 = TRUE;
+	aa220_flare4 = TRUE;
+	aa220_flare5 = TRUE;
+	aa220_flare6 = TRUE;
+	aa220_flare7 = TRUE;
+	aa220_flare8 = TRUE;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+HideFlares()
+{
+	hide main_flare_1;
+	hide main_flare_2;
+	hide secondary_flare1_1;
+	hide secondary_flare2_1;
+	hide secondary_flare1_2;
+	hide secondary_flare2_2;
+	hide secondary_flare1_3;
+	hide secondary_flare2_3;
+	hide secondary_flare1_4;
+	hide secondary_flare2_4;
+	hide pom_flare1;
+	hide pom_flare2;
+	hide pom_flare3;
+	hide pom_flare4;
+	hide pom_flare5;
+	hide pom_flare6;
+	hide pom_flare7;
+	hide pom_flare8;
+	hide pom1_flare1;
+	hide pom1_flare2;
+	hide pom1_flare3;
+	hide pom1_flare4;
+	hide pom2_flare1;
+	hide pom2_flare2;
+	hide pom2_flare3;
+	hide pom2_flare4;
+	hide aa2x20_flare1_1;
+	hide aa2x20_flare2_1;
+	hide aa2x20_flare1_2;
+	hide aa2x20_flare2_2;
+	hide aa2x20_flare1_3;
+	hide aa2x20_flare2_3;
+	hide aa2x20_flare1_4;
+	hide aa2x20_flare2_4;
+	hide aa2x20_flare1_5;
+	hide aa2x20_flare2_5;
+	hide aa2x20_flare1_6;
+	hide aa2x20_flare2_6;
+	hide aa2x20_flare1_7;
+	hide aa2x20_flare2_7;
+	hide aa2x20_flare1_8;
+	hide aa2x20_flare2_8;
+	hide aa20_flare_1;
+	hide aa20_flare_2;
+	hide aa20_flare_3;
+	hide aa20_flare_4;
+}
+
+Create()
+{
+	start-script HideFlares();
+	bMoving = FALSE;
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		emit-sfx 2 from wake4;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, newHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	bMoving = TRUE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_DEATH|ALL_WEAPON_SIGS;
+	sleep RESTORE_PERIOD;
+
+	turn main_turret to y-axis <0> speed MAIN_TURRET_TURN;
+	turn main_sleeve to x-axis <0> speed MAIN_TURRET_PITCH;
+
+	turn secondary_turret_1 to y-axis <0> speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_1 to x-axis <0> speed AA4IN_TURRET_PITCH;
+	turn secondary_turret_2 to y-axis <0> speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_2 to x-axis <0> speed AA4IN_TURRET_PITCH;
+	turn secondary_turret_3 to y-axis <180> speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_3 to x-axis <0> speed AA4IN_TURRET_PITCH;
+	turn secondary_turret_4 to y-axis <180> speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_4 to x-axis <0> speed AA4IN_TURRET_PITCH;
+
+	turn pompom_8 to y-axis <180> speed POM_TURRET_TURN;
+	turn pom_sleeve to x-axis <0> speed POM_TURRET_PITCH;
+	turn pompom4_1 to y-axis <0> speed POM_TURRET_TURN;
+	turn pom1_sleeve to x-axis <0> speed POM_TURRET_PITCH;
+	turn pompom4_2 to y-axis <0> speed POM_TURRET_TURN;
+	turn pom2_sleeve to x-axis <0> speed POM_TURRET_PITCH;
+
+	turn aa2x20_turret_1 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_1 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_2 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_2 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_3 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_3 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_4 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_4 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_5 to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_5 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_6 to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_6 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_7 to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_7 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa2x20_turret_8 to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_8 to x-axis <0> speed AA20_TURRET_PITCH;
+	
+	turn aa20_turret_1 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa20_sleeve_1 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa20_turret_2 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa20_sleeve_2 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa20_turret_3 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa20_sleeve_3 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn aa20_turret_4 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa20_sleeve_4 to x-axis <0> speed AA20_TURRET_PITCH;
+}
+
+// 15" gun turret
+QueryWeapon1(piecenum)
+{
+	if(main_flare)
+	{
+		piecenum = main_flare_1;
+	} else
+	{
+		piecenum = main_flare_2;
+	}
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = main_turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn main_turret to y-axis heading speed MAIN_TURRET_TURN;
+	turn main_sleeve to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn main_turret around y-axis;
+	wait-for-turn main_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	if(main_flare)
+	{
+		show main_flare_1;
+		move main_barrel_1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move main_barrel_1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+		hide main_flare_1;
+	} else
+	{
+		show main_flare_2;
+		move main_barrel_2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move main_barrel_2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+		hide main_flare_2;
+	}
+	main_flare = !main_flare;
+}
+
+// 4-inch AA turrets (4 turrets)
+QueryWeapon2(piecenum)
+{
+	if(sec_flare_1)
+	{
+		piecenum = secondary_flare1_1;
+	} else
+	{
+		piecenum = secondary_flare2_1;
+	}
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = secondary_turret_1;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn secondary_turret_1 to y-axis heading speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_1 to x-axis (0-pitch) speed AA4IN_TURRET_PITCH;
+	wait-for-turn secondary_turret_1 around y-axis;
+	wait-for-turn secondary_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	if(sec_flare_1)
+	{
+		show secondary_flare1_1;
+		move secondary_barrel1_1 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel1_1 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare1_1;
+	} else
+	{
+		show secondary_flare2_1;
+		move secondary_barrel2_1 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel2_1 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare2_1;
+	}
+	sec_flare_1 = !sec_flare_1;
+}
+
+QueryWeapon3(piecenum)
+{
+	if(sec_flare_2)
+	{
+		piecenum = secondary_flare1_2;
+	} else
+	{
+		piecenum = secondary_flare2_2;
+	}
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = secondary_turret_2;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn secondary_turret_2 to y-axis heading speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_2 to x-axis (0-pitch) speed AA4IN_TURRET_PITCH;
+	wait-for-turn secondary_turret_2 around y-axis;
+	wait-for-turn secondary_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+	if(sec_flare_2)
+	{
+		show secondary_flare1_2;
+		move secondary_barrel1_2 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel1_2 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare1_2;
+	} else
+	{
+		show secondary_flare2_2;
+		move secondary_barrel2_2 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel2_2 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare2_2;
+	}
+	sec_flare_2 = !sec_flare_2;
+}
+
+QueryWeapon4(piecenum)
+{
+	if(sec_flare_3)
+	{
+		piecenum = secondary_flare1_3;
+	} else
+	{
+		piecenum = secondary_flare2_3;
+	}
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = secondary_turret_3;
+}
+
+AimWeapon4(heading, pitch)
+{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn secondary_turret_3 to y-axis heading speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_3 to x-axis (0-pitch) speed AA4IN_TURRET_PITCH;
+	wait-for-turn secondary_turret_3 around y-axis;
+	wait-for-turn secondary_sleeve_3 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+	if(sec_flare_3)
+	{
+		show secondary_flare1_3;
+		move secondary_barrel1_3 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel1_3 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare1_3;
+	} else
+	{
+		show secondary_flare2_3;
+		move secondary_barrel2_3 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel2_3 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare2_3;
+	}
+	sec_flare_3 = !sec_flare_3;
+}
+
+QueryWeapon5(piecenum)
+{
+	if(sec_flare_4)
+	{
+		piecenum = secondary_flare1_4;
+	} else
+	{
+		piecenum = secondary_flare2_4;
+	}
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = secondary_turret_4;
+}
+
+AimWeapon5(heading, pitch)
+{
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
+	turn secondary_turret_4 to y-axis heading speed AA4IN_TURRET_TURN;
+	turn secondary_sleeve_4 to x-axis (0-pitch) speed AA4IN_TURRET_PITCH;
+	wait-for-turn secondary_turret_4 around y-axis;
+	wait-for-turn secondary_sleeve_4 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+	if(sec_flare_4)
+	{
+		show secondary_flare1_4;
+		move secondary_barrel1_4 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel1_4 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare1_4;
+	} else
+	{
+		show secondary_flare2_4;
+		move secondary_barrel2_4 to z-axis (0-AA4IN_GUN_RECOIL) speed AA4IN_GUN_RECOIL_SPEED;
+		sleep 200;
+		move secondary_barrel2_4 to z-axis [0] speed AA4IN_GUN_BACK_SPEED;
+		hide secondary_flare2_4;
+	}
+	sec_flare_4 = !sec_flare_4;
+}
+
+// pom-poms
+// Octuple mounting
+QueryWeapon6(piecenum)
+{
+	if(pom8_flare == 1)
+	{
+		piecenum = pom_flare1;
+	}
+	if(pom8_flare == 2)
+	{
+		piecenum = pom_flare2;
+	}
+	if(pom8_flare == 3)
+	{
+		piecenum = pom_flare3;
+	}
+	if(pom8_flare == 4)
+	{
+		piecenum = pom_flare4;
+	}
+	if(pom8_flare == 5)
+	{
+		piecenum = pom_flare5;
+	}
+	if(pom8_flare == 6)
+	{
+		piecenum = pom_flare6;
+	}
+	if(pom8_flare == 7)
+	{
+		piecenum = pom_flare7;
+	}
+	if(pom8_flare == 8)
+	{
+		piecenum = pom_flare8;
+	}
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = pompom_8;
+}
+
+AimWeapon6(heading, pitch)
+{
+	signal SIG_AIM6;
+	set-signal-mask SIG_AIM6|SIG_DEATH;
+	turn pompom_8 to y-axis heading speed POM_TURRET_TURN;
+	turn pom_sleeve to x-axis (0-pitch) speed POM_TURRET_PITCH;
+	wait-for-turn pompom_8 around y-axis;
+	wait-for-turn pom_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+	if(pom8_flare == 1)
+	{
+		show pom_flare1;
+		move pom_barrel1 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel1 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare1;
+	}
+	if(pom8_flare == 2)
+	{
+		show pom_flare2;
+		move pom_barrel2 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel2 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare2;
+	}
+	if(pom8_flare == 3)
+	{
+		show pom_flare3;
+		move pom_barrel3 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel3 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare3;
+	}
+	if(pom8_flare == 4)
+	{
+		show pom_flare4;
+		move pom_barrel4 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel4 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare4;
+	}
+	if(pom8_flare == 5)
+	{
+		show pom_flare5;
+		move pom_barrel5 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel5 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare5;
+	}
+	if(pom8_flare == 6)
+	{
+		show pom_flare6;
+		move pom_barrel6 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel6 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare6;
+	}
+	if(pom8_flare == 7)
+	{
+		show pom_flare7;
+		move pom_barrel7 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel7 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare7;
+	}
+	if(pom8_flare == 8)
+	{
+		show pom_flare8;
+		move pom_barrel8 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom_barrel8 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom_flare8;
+	}
+	pom8_flare = pom8_flare + 1;
+	if(pom8_flare>8)
+	{
+		pom8_flare = 1;
+	}
+}
+
+QueryWeapon7(piecenum)
+{
+	if(pom1_flare == 1)
+	{
+		piecenum = pom1_flare1;
+	}
+	if(pom1_flare == 2)
+	{
+		piecenum = pom1_flare2;
+	}
+	if(pom1_flare == 3)
+	{
+		piecenum = pom1_flare3;
+	}
+	if(pom1_flare == 4)
+	{
+		piecenum = pom1_flare4;
+	}
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum = pompom4_1;
+}
+
+AimWeapon7(heading, pitch)
+{
+	signal SIG_AIM7;
+	set-signal-mask SIG_AIM7|SIG_DEATH;
+	turn pompom4_1 to y-axis heading speed POM_TURRET_TURN;
+	turn pom1_sleeve to x-axis (0-pitch) speed POM_TURRET_PITCH;
+	wait-for-turn pompom4_1 around y-axis;
+	wait-for-turn pom1_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon7()
+{
+	if(pom1_flare == 1)
+	{
+		show pom1_flare1;
+		move pom1_barrel1 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom1_barrel1 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom1_flare1;
+	}
+	if(pom1_flare == 2)
+	{
+		show pom1_flare2;
+		move pom1_barrel2 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom1_barrel2 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom1_flare2;
+	}
+	if(pom1_flare == 3)
+	{
+		show pom1_flare3;
+		move pom1_barrel3 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom1_barrel3 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom1_flare3;
+	}
+	if(pom1_flare == 4)
+	{
+		show pom1_flare4;
+		move pom1_barrel4 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom1_barrel4 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom1_flare4;
+	}
+	pom1_flare = pom1_flare + 1;
+	if(pom1_flare>4)
+	{
+		pom1_flare = 1;
+	}
+}
+
+
+QueryWeapon8(piecenum)
+{
+	if(pom2_flare == 1)
+	{
+		piecenum = pom2_flare1;
+	}
+	if(pom2_flare == 2)
+	{
+		piecenum = pom2_flare2;
+	}
+	if(pom2_flare == 3)
+	{
+		piecenum = pom2_flare3;
+	}
+	if(pom2_flare == 4)
+	{
+		piecenum = pom2_flare4;
+	}
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = pompom4_2;
+}
+
+AimWeapon8(heading, pitch)
+{
+	signal SIG_AIM8;
+	set-signal-mask SIG_AIM8|SIG_DEATH;
+	turn pompom4_2 to y-axis heading speed POM_TURRET_TURN;
+	turn pom2_sleeve to x-axis (0-pitch) speed POM_TURRET_PITCH;
+	wait-for-turn pompom4_2 around y-axis;
+	wait-for-turn pom2_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon8()
+{
+	if(pom2_flare == 1)
+	{
+		show pom2_flare1;
+		move pom2_barrel1 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom2_barrel1 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom2_flare1;
+	}
+	if(pom2_flare == 2)
+	{
+		show pom2_flare2;
+		move pom2_barrel2 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom2_barrel2 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom2_flare2;
+	}
+	if(pom2_flare == 3)
+	{
+		show pom2_flare3;
+		move pom2_barrel3 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom2_barrel3 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom2_flare3;
+	}
+	if(pom2_flare == 4)
+	{
+		show pom2_flare4;
+		move pom2_barrel4 to z-axis (0-POM_GUN_RECOIL) speed POM_GUN_RECOIL_SPEED;
+		sleep 200;
+		move pom2_barrel4 to z-axis [0] speed POM_GUN_BACK_SPEED;
+		hide pom2_flare4;
+	}
+	pom2_flare = pom2_flare + 1;
+	if(pom2_flare>4)
+	{
+		pom2_flare = 1;
+	}
+}
+
+// Twin 20mm Oerlikons
+QueryWeapon9(piecenum)
+{
+	if(aa220_flare1)
+	{
+		piecenum = aa2x20_flare1_1;
+	} else
+	{
+		piecenum = aa2x20_flare2_1;
+	}
+}
+
+AimFromWeapon9(piecenum)
+{
+	piecenum = aa2x20_turret_1;
+}
+
+AimWeapon9(heading, pitch)
+{
+	signal SIG_AIM9;
+	set-signal-mask SIG_AIM9|SIG_DEATH;
+	turn aa2x20_turret_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_1 around y-axis;
+	wait-for-turn aa2x20_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon9()
+{
+	if(aa220_flare1)
+	{
+		show aa2x20_flare1_1;
+		move aa2x20_barrel1_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_1;
+	} else
+	{
+		show aa2x20_flare2_1;
+		move aa2x20_barrel2_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_1;
+	}
+	aa220_flare1 = !aa220_flare1;
+}
+
+QueryWeapon10(piecenum)
+{
+	if(aa220_flare2)
+	{
+		piecenum = aa2x20_flare1_2;
+	} else
+	{
+		piecenum = aa2x20_flare2_2;
+	}
+}
+
+AimFromWeapon10(piecenum)
+{
+	piecenum = aa2x20_turret_2;
+}
+
+AimWeapon10(heading, pitch)
+{
+	signal SIG_AIM10;
+	set-signal-mask SIG_AIM10|SIG_DEATH;
+	turn aa2x20_turret_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_2 around y-axis;
+	wait-for-turn aa2x20_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon10()
+{
+	if(aa220_flare2)
+	{
+		show aa2x20_flare1_2;
+		move aa2x20_barrel1_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_2;
+	} else
+	{
+		show aa2x20_flare2_2;
+		move aa2x20_barrel2_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_2;
+	}
+	aa220_flare2 = ! aa220_flare2;
+}
+
+QueryWeapon11(piecenum)
+{
+	if(aa220_flare3)
+	{
+		piecenum = aa2x20_flare1_3;
+	} else
+	{
+		piecenum = aa2x20_flare2_3;
+	}
+}
+
+AimFromWeapon11(piecenum)
+{
+	piecenum = aa2x20_turret_3;
+}
+
+AimWeapon11(heading, pitch)
+{
+	signal SIG_AIM11;
+	set-signal-mask SIG_AIM11|SIG_DEATH;
+	turn aa2x20_turret_3 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_3 around y-axis;
+	wait-for-turn aa2x20_sleeve_3 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon11()
+{
+	if(aa220_flare3)
+	{
+		show aa2x20_flare1_3;
+		move aa2x20_barrel1_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_3;
+	} else
+	{
+		show aa2x20_flare2_3;
+		move aa2x20_barrel2_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_3;
+	}
+	aa220_flare3 = ! aa220_flare3;
+}
+
+QueryWeapon12(piecenum)
+{
+	if(aa220_flare4)
+	{
+		piecenum = aa2x20_flare1_4;
+	} else
+	{
+		piecenum = aa2x20_flare2_4;
+	}
+}
+
+AimFromWeapon12(piecenum)
+{
+	piecenum = aa2x20_turret_4;
+}
+
+AimWeapon12(heading, pitch)
+{
+	signal SIG_AIM12;
+	set-signal-mask SIG_AIM12|SIG_DEATH;
+	turn aa2x20_turret_4 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_4 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_4 around y-axis;
+	wait-for-turn aa2x20_sleeve_4 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon12()
+{
+	if(aa220_flare4)
+	{
+		show aa2x20_flare1_4;
+		move aa2x20_barrel1_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_4;
+	} else
+	{
+		show aa2x20_flare2_4;
+		move aa2x20_barrel2_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_4;
+	}
+	aa220_flare4 = ! aa220_flare4;
+}
+
+QueryWeapon13(piecenum)
+{
+	if(aa220_flare5)
+	{
+		piecenum = aa2x20_flare1_5;
+	} else
+	{
+		piecenum = aa2x20_flare2_5;
+	}
+}
+
+AimFromWeapon13(piecenum)
+{
+	piecenum = aa2x20_turret_5;
+}
+
+AimWeapon13(heading, pitch)
+{
+	signal SIG_AIM13;
+	set-signal-mask SIG_AIM13|SIG_DEATH;
+	turn aa2x20_turret_5 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_5 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_5 around y-axis;
+	wait-for-turn aa2x20_sleeve_5 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon13()
+{
+	if(aa220_flare5)
+	{
+		show aa2x20_flare1_5;
+		move aa2x20_barrel1_5 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_5 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_5;
+	} else
+	{
+		show aa2x20_flare2_5;
+		move aa2x20_barrel2_5 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_5 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_5;
+	}
+	aa220_flare5 = ! aa220_flare5;
+}
+
+QueryWeapon14(piecenum)
+{
+	if(aa220_flare6)
+	{
+		piecenum = aa2x20_flare1_6;
+	} else
+	{
+		piecenum = aa2x20_flare2_6;
+	}
+}
+
+AimFromWeapon14(piecenum)
+{
+	piecenum = aa2x20_turret_6;
+}
+
+AimWeapon14(heading, pitch)
+{
+	signal SIG_AIM14;
+	set-signal-mask SIG_AIM14|SIG_DEATH;
+	turn aa2x20_turret_6 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_6 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_6 around y-axis;
+	wait-for-turn aa2x20_sleeve_6 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon14()
+{
+	if(aa220_flare6)
+	{
+		show aa2x20_flare1_6;
+		move aa2x20_barrel1_6 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_6 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_6;
+	} else
+	{
+		show aa2x20_flare2_6;
+		move aa2x20_barrel2_6 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_6 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_6;
+	}
+	aa220_flare6 = ! aa220_flare6;
+}
+
+QueryWeapon15(piecenum)
+{
+	if(aa220_flare7)
+	{
+		piecenum = aa2x20_flare1_7;
+	} else
+	{
+		piecenum = aa2x20_flare2_7;
+	}
+}
+
+AimFromWeapon15(piecenum)
+{
+	piecenum = aa2x20_turret_7;
+}
+
+AimWeapon15(heading, pitch)
+{
+	signal SIG_AIM15;
+	set-signal-mask SIG_AIM15|SIG_DEATH;
+	turn aa2x20_turret_7 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_7 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_7 around y-axis;
+	wait-for-turn aa2x20_sleeve_7 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon15()
+{
+	if(aa220_flare7)
+	{
+		show aa2x20_flare1_7;
+		move aa2x20_barrel1_7 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_7 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_7;
+	} else
+	{
+		show aa2x20_flare2_7;
+		move aa2x20_barrel2_7 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_7 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_7;
+	}
+	aa220_flare7 = ! aa220_flare7;
+}
+
+QueryWeapon16(piecenum)
+{
+	if(aa220_flare8)
+	{
+		piecenum = aa2x20_flare1_8;
+	} else
+	{
+		piecenum = aa2x20_flare2_8;
+	}
+}
+
+AimFromWeapon16(piecenum)
+{
+	piecenum = aa2x20_turret_8;
+}
+
+AimWeapon16(heading, pitch)
+{
+	signal SIG_AIM16;
+	set-signal-mask SIG_AIM16|SIG_DEATH;
+	turn aa2x20_turret_8 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa2x20_sleeve_8 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa2x20_turret_8 around y-axis;
+	wait-for-turn aa2x20_sleeve_8 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon16()
+{
+	if(aa220_flare8)
+	{
+		show aa2x20_flare1_8;
+		move aa2x20_barrel1_8 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel1_8 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare1_8;
+	} else
+	{
+		show aa2x20_flare2_8;
+		move aa2x20_barrel2_8 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa2x20_barrel2_8 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+		hide aa2x20_flare2_8;
+	}
+	aa220_flare8 = ! aa220_flare8;
+}
+
+// Single 20mm Oerlikons
+QueryWeapon17(piecenum)
+{
+	piecenum = aa20_flare_1;
+}
+
+AimFromWeapon17(piecenum)
+{
+	piecenum = aa20_turret_1;
+}
+
+AimWeapon17(heading, pitch)
+{
+	signal SIG_AIM17;
+	set-signal-mask SIG_AIM17|SIG_DEATH;
+	turn aa20_turret_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_1 around y-axis;
+	wait-for-turn aa20_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon17()
+{
+	show aa20_flare_1;
+	move aa20_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare_1;
+}
+
+QueryWeapon18(piecenum)
+{
+	piecenum = aa20_flare_2;
+}
+
+AimFromWeapon18(piecenum)
+{
+	piecenum = aa20_turret_2;
+}
+
+AimWeapon18(heading, pitch)
+{
+	signal SIG_AIM18;
+	set-signal-mask SIG_AIM18|SIG_DEATH;
+	turn aa20_turret_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_2 around y-axis;
+	wait-for-turn aa20_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon18()
+{
+	show aa20_flare_2;
+	move aa20_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare_2;
+}
+
+QueryWeapon19(piecenum)
+{
+	piecenum = aa20_flare_3;
+}
+
+AimFromWeapon19(piecenum)
+{
+	piecenum = aa20_turret_3;
+}
+
+AimWeapon19(heading, pitch)
+{
+	signal SIG_AIM19;
+	set-signal-mask SIG_AIM19|SIG_DEATH;
+	turn aa20_turret_3 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_3 around y-axis;
+	wait-for-turn aa20_sleeve_3 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon19()
+{
+	show aa20_flare_3;
+	move aa20_barrel_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare_3;
+}
+
+QueryWeapon20(piecenum)
+{
+	piecenum = aa20_flare_4;
+}
+
+AimFromWeapon20(piecenum)
+{
+	piecenum = aa20_turret_4;
+}
+
+AimWeapon20(heading, pitch)
+{
+	signal SIG_AIM20;
+	set-signal-mask SIG_AIM20|SIG_DEATH;
+	turn aa20_turret_4 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_4 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_4 around y-axis;
+	wait-for-turn aa20_sleeve_4 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon20()
+{
+	show aa20_flare_4;
+	move aa20_barrel_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare_4;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn hull around x-axis;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	return (TRUE);
+}

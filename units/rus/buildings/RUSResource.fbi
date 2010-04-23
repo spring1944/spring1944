@@ -1,0 +1,45 @@
+[unitinfo] {
+  unitname=RUSResource;
+  name=Unloaded Halftrack Supplies;
+  description=Supplies A Moderate Area;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=720;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=LogisticsSmall.png;
+  buildTime=720;
+  category=BUILDING;
+  corpse=Debris_Small;
+  [customParams] {
+    ammoSupplier=1;
+    dontCount=1;
+    supplyRange=625;
+  }
+  energyMake=0;
+  energyStorage=0;
+  explodeAs=ResourceBoom;
+  footprintX=3;
+  footprintZ=3;
+  iconType=ammo;
+  maxDamage=400;
+  maxSlope=15;
+  maxWaterDepth=0;
+  objectName=LogisticsSmall.S3O;
+  selfDestructAs=Med_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=RUS;
+  sightDistance=1;
+  smoothAnim=0;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=ENERGY;
+  useBuildingGroundDecal=1;
+  yardmap=o;
+
+  weapon1=noweapon;
+}
+

@@ -1,0 +1,60 @@
+[unitinfo] {
+  unitname=GBRHQ;
+  name=British Army HQ;
+  description=Command Outpost;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=2050;
+  builder=1;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=GBRHQ.png;
+  buildTime=2050;
+  canBeAssisted=0;
+  canMove=1;
+  category=BUILDING;
+  collisionVolumeType=ellipsoid;
+  commander=1;
+  corpse=GBRHQ_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    arrivalgap=450;
+    blockfear=1;
+    flagCapRate=10;
+    hq=1;
+    refillamount=1e+06;
+    separatebuildspot=1;
+    supplyRange=500;
+  }
+  energyStorage=0.01;
+  explodeAs=Huge_Explosion;
+  footprintX=7;
+  footprintZ=7;
+  hideDamage=1;
+  iconType=gbrhq;
+  maxDamage=10625;
+  maxSlope=10;
+  maxWaterDepth=0;
+  metalMake=0;
+  objectName=GBRHQ.S3O;
+  onoffable=1;
+  selfDestructAs=Huge_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  showPlayerName=1;
+  sightDistance=146;
+  smoothAnim=0;
+  soundcategory=GBRYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=20; //60
+  yardmap=ooooooo ooyyyoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

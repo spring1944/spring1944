@@ -1,0 +1,86 @@
+[lefh18he] {
+  name=German 105mm Light Howitzer (leFH) 18 High-Explosive Ammunition;
+  accuracy=1050;
+  areaOfEffect=129;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=210;
+    fearid=501;
+    howitzer=1;
+  }
+  [damage] {
+    default=4200;
+  }
+  edgeEffectiveness=0.15;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  leadLimit=0.05;
+  noSelfDamage=1;
+  range=7200;
+  reloadTime=11.25; //5
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_105mm;
+  stages=50;
+  targetMoveError=0.75;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1200;
+}
+
+[lefh18smoke] {
+  name=German 105mm Light Howitzer (leFH) 18 Smoke Ammunition;
+  accuracy=1050;
+  areaOfEffect=30;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+	smokeradius=220;
+	smokeduration=25;
+	smokeceg=SMOKESHELL_Medium;
+    howitzer=1;
+  }
+  [damage] {
+    default=100;
+  }
+  edgeEffectiveness=0.15;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=99;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  leadLimit=0.05;
+  noSelfDamage=1;
+  range=7200;
+  reloadTime=11.25; //5
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_105mm;
+  stages=50;
+  targetMoveError=0.75;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1200;
+}

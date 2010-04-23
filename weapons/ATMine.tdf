@@ -1,0 +1,55 @@
+[atmine] {
+  name=A Mine!;
+  areaOfEffect=46;
+  craterBoost=1;
+  craterMult=1;
+  [customParams] {
+    armor_hit_side=top;
+    armor_penetration=100;
+    damagetype=shapedcharge;
+  }
+  [damage] {
+    default=10000;
+	mines=0;
+  }
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=30;
+  fireStarter=0;
+  fireSubmersed=1;
+  id=64;
+  lineofsight=1;
+  range=35;
+  reloadTime=10;
+  rendertype=2;
+  size=1e-05;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_Explo_4;
+  turret=1;
+  weaponTimer=0;
+  weaponVelocity=90;
+}
+
+[atminedet] {
+  name=A Mine detonator;
+  areaOfEffect=12;
+  ballistic=1;
+  craterBoost=1;
+  craterMult=1;
+  [customParams] {
+  }
+  [damage] {
+    default=1e-06;
+    mines=10000;
+  }
+  id=64;
+  range=30;
+  reloadTime=1e+09;
+  rendertype=1;
+  size=1e-06;
+  soundHit=GEN_Explo_4;
+  soundStart=GEN_Explo_4;
+  tolerance=64000;
+  turret=1;
+  weaponVelocity=1;
+}
+

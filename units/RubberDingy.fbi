@@ -1,0 +1,44 @@
+[unitinfo] {
+  unitname=RubberDingy;
+  name=Rubber Dingy;
+  description=Infantry Water Transport;
+  acceleration=0.3;
+  airSightDistance=2500;
+  brakeRate=0.2;
+  buildCostEnergy=0;
+  buildCostMetal=200;
+  buildTime=200;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=3;
+  footprintZ=3;
+  iconType=rubber;
+  isFirePlatform=0;
+  mass=500;
+  maxDamage=500;
+  maxVelocity=3.55;
+  minWaterDepth=5;
+  movementClass=BOAT_Small;
+  objectName=RubberDingy.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=9;
+  transportMass=750;
+  transportSize=1;
+  turninplace=0;
+  turnRate=350;
+  waterline=0.2;
+}
+

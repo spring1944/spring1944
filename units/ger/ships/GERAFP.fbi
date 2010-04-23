@@ -1,0 +1,97 @@
+[unitinfo] {
+  unitname=GERAFP;
+  name=Artilleriefahrprahm;
+  description=Landing Fire Support Ship;
+  acceleration=0.15;
+  airSightDistance=1500;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=7500;
+  buildPic=gerafp.png;
+  buildTime=7500;
+  canAttack=1;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=80.0 60.0 280.0;
+  collisionVolumeType=box;
+  corpse=GERAFP_dead;
+  [customParams] {
+    lowammolevel=5;
+    maxammo=26;
+    weaponcost=20;
+    weaponswithammo=2;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=20;
+  footprintZ=20;
+  iconType=gunboat;
+  mass=27200;
+  maxDamage=27200;
+  maxReverseVelocity=0.55;
+  maxVelocity=1.1;
+  minWaterDepth=6;
+  movementClass=BOAT_River;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GERAFP;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=35;
+
+  weapon1=88mmskc30;
+  maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=88mmskc30;
+  maxAngleDif2=270;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 -1;
+
+  weapon3=37mmflak43;
+  maxAngleDif3=270;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 1;
+
+  weapon4=flak3820mmaa; //20mmflakvierling;
+  maxAngleDif4=270;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 1;
+
+  weapon5=flak3820mmaa; //20mmflakvierling;
+  maxAngleDif5=270;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=0 0 -1;
+
+  weapon6=20mmc38;
+  maxAngleDif6=270;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=1 0 0;
+
+  weapon7=20mmc38;
+  maxAngleDif7=270;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir7=-1 0 0;
+}
+

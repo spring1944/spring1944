@@ -1,0 +1,13 @@
+[RUSTypeM_dead] {
+  description=Sunk Type M submarine;
+  blocking=0;
+  damage=2500;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=RUSTypeM_sunk;
+  reclaimable=1;
+}
+

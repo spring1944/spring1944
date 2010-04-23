@@ -1,0 +1,48 @@
+[unitinfo] {
+  unitname=GERBarracksBunker;
+  name=Hardened Wehrmacht Barracks;
+  description=Infantry Training & Housing Bunker;
+  buildCostEnergy=0;
+  buildCostMetal=5640;
+  builder=1;
+  buildingGroundDecalSizeX=6;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=5640;
+  canBeAssisted=0;
+  canMove=1;
+  category=BUILDING;
+  collisionVolumeType=ellipsoid;
+  corpse=GERBarracksBunker_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    blockfear=1;
+    separatebuildspot=1;
+    supplyRange=600;
+  }
+  energyStorage=400;
+  explodeAs=Large_Explosion;
+  footprintX=5;
+  footprintZ=7;
+  iconType=barracks;
+  maxDamage=18250;
+  maxSlope=10;
+  maxWaterDepth=0;
+  objectName=GERBarracksBunker.S3O;
+  selfDestructAs=Large_Explosion;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  sightDistance=146;
+  smoothAnim=0;
+  soundcategory=GERYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  workerTime=20;
+  yardmap=ooyyy yyyyy yyyyy yycyy ooyyy ooyyy ooyyy;
+
+  weapon1=BuildingFearShield;
+}
+

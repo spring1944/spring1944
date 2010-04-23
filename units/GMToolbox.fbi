@@ -1,0 +1,71 @@
+[UNITINFO] {
+  UnitName=GMToolbox;
+  name=Game Master Toolbox;
+  description=Allows the game master to do game-mastery things;
+  acceleration=0.5;
+  airHoverFactor=0;
+  airSightDistance=4000;
+  airStrafe=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=8000;
+  buildDistance=500;
+  builder=1;
+  buildPic=USP51DMustangGA.png;
+  buildTime=8000;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=AIR;
+  cloakCost=0;
+  cloakCostMoving=0;
+  commander=1;
+  cruiseAlt=200;
+  [customParams] {
+    gm=1;
+  }
+  energyMake=1e+06;
+  energyStorage=1e+10;
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  hoverAttack=1;
+  iconType=GM;
+  idleAutoHeal=2;
+  init_cloaked=1;
+  maxDamage=3.465e+06;
+  maxSlope=10;
+  maxVelocity=15;
+  maxWaterDepth=0;
+  metalMake=1e+07;
+  metalStorage=1e+11;
+  minCloakDistance=1;
+  noChaseCategory=FLAG MINE;
+  objectName=USP51DMustangGA.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_SHELLCASINGS;
+    explosionGenerator2=custom:MG_MUZZLEFLASH;
+    explosionGenerator3=custom:XLARGE_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  Side=US;
+  sightDistance=2000;
+  smoothAnim=1;
+  stealth=1;
+  TEDClass=VTOL;
+  turnRate=500;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  workerTime=1000;
+
+  weapon1=trenchmaker;
+  onlyTargetCategory1=NONE;
+}
+

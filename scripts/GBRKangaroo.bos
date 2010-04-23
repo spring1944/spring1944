@@ -1,0 +1,263 @@
+#include "constants.h"
+
+piece  base, tracks1, tracks2, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6; 
+piece exhaust, aaturret, aagun, aaflare, hullmg, flare, load_shoulder, load_arm, tow_point;
+ 
+static-var restore_delay, bMoving, treadnum, bGun;
+
+#define FX_HIDE\
+	hide aaflare;\
+	hide flare;\
+
+// definitions for HitWeapId_S44
+#define ARMOUR		5905
+#include "HitWeapId_S44.h"
+
+// Signal definitions
+#define SIG_MOVE			1
+#define SIG_AIM				2 // Hull MG
+#define SIG_AIM2			4 // AA MG
+#define INFANTRY			412876 // this is 65536 * s3o model radius
+#define MG_MUZZLEFLASH		1024+7
+
+treads() 
+{ 
+   while( TRUE ) 
+   { 
+        if(bMoving) 
+           { 
+              if(treadnum == 0) 
+              {             
+              hide tracks2; 
+              show tracks1; 
+              } 
+            if(treadnum == 1) 
+            { 
+            hide tracks1; 
+            show tracks2; 
+			}
+            treadnum = !treadnum; 
+         } 
+      sleep 90; 
+   } 
+}
+
+TransportPickup(unitid)
+{
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			set BUSY to 1;
+			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+			{ 
+			  attach-unit unitid to 0 - 1; // hide infantry models
+			}
+			if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
+			{ 
+			  attach-unit unitid to tow_point; // don't hide other units
+			  bGun = 1;
+			}
+			set BUSY to 0;
+	}
+}
+
+TransportDrop(unitid, position)
+{
+	set BUSY to 1;
+	// just dump guns off where they are
+	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+	{ 
+		drop-unit unitid;
+		bGun = 0;
+	}
+	else
+	{
+		// turn shoulder to face the drop off point
+		turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+		attach-unit unitid to load_arm;
+		// move arm toward drop off point
+		move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+		// sleep for at least a frame (so unit is not dropped by attach-unit)
+		sleep 50;
+		//get PRINT (unitid, position / 65536, position & 65535);
+		drop-unit unitid;
+		move load_arm to z-axis 0 now;
+	}
+	set BUSY to 0;
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	/*emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;*/
+	spin frontwheel around x-axis speed <350.082418>;
+	spin rearwheel around x-axis speed <350.082418>;
+	spin wheel1 around x-axis speed <350.082418>;
+	spin wheel2 around x-axis speed <350.082418>;
+	spin wheel3 around x-axis speed <350.082418>;
+	spin wheel4 around x-axis speed <350.082418>;
+	spin wheel5 around x-axis speed <350.082418>;
+	spin wheel6 around x-axis speed <350.082418>;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	stop-spin frontwheel around x-axis decelerate <100.000000>;
+	stop-spin rearwheel around x-axis decelerate <100.000000>;
+	stop-spin wheel1 around x-axis decelerate <100.000000>;
+	stop-spin wheel2 around x-axis decelerate <100.000000>;
+	stop-spin wheel3 around x-axis decelerate <100.000000>;
+	stop-spin wheel4 around x-axis decelerate <100.000000>;
+	stop-spin wheel5 around x-axis decelerate <100.000000>;
+	stop-spin wheel6 around x-axis decelerate <100.000000>;
+}
+
+Create()
+{
+	bGun = 0;
+	treadnum = 0;
+	FX_HIDE
+	// hide AAMG for now as it is not used
+	hide aaturret;
+	hide aagun;
+	start-script SmokeUnit();
+}
+
+// Weapon 1 - Hull MG
+/*QueryWeapon1 (piecenum)
+	{
+	piecenum = flare;
+	}
+
+AimFromWeapon1 (piecenum)
+	{
+	piecenum = hullmg;
+	;
+	}
+
+AimWeapon1(heading, pitch)
+	{
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	turn hullmg to y-axis heading speed <150>; 
+	turn hullmg to x-axis 0 - pitch speed <100>; 
+	wait-for-turn hullmg around y-axis; 
+	wait-for-turn hullmg around x-axis;
+	return (1);
+	}
+
+FireWeapon1()
+	{
+	emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from flare;
+	sleep 109;
+	
+	return(0);
+	}
+
+// Weapon 2 - AAMG
+QueryWeapon2 (piecenum)
+	{
+	piecenum = aaflare;
+	}
+
+AimFromWeapon2 (piecenum)
+	{
+	piecenum = aagun;
+	;
+	}
+
+AimWeapon2(heading, pitch)
+	{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+	turn aaturret to y-axis heading speed <150>; 
+	turn aagun to x-axis 0 - pitch speed <100>; 
+	wait-for-turn aaturret around y-axis; 
+	wait-for-turn aagun around x-axis;
+	return (1);
+	}
+
+FireWeapon2()
+	{
+	emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+		emit-sfx MG_MUZZLEFLASH from aaflare;
+	sleep 109;
+	
+	return(0);
+	}*/
+	
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 999 )
+	{
+		corpsetype = 1;
+		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode wheel3 type FIRE | EXPLODE_ON_HIT;
+		explode wheel4 type FIRE | EXPLODE_ON_HIT;
+		
+		return (0);
+	}
+	corpsetype = 1;
+	explode wheel1 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+	explode wheel3 type FIRE | EXPLODE_ON_HIT;
+	explode wheel4 type FIRE | EXPLODE_ON_HIT;
+	explode base type SHATTER;
+}

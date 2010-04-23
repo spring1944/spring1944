@@ -1,0 +1,68 @@
+[unitinfo] {
+  unitname=USGIFlamethrower;
+  name=G.I. M2 Flamethrower;
+  description=Close Range Heavy Assault Infantry;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=50;
+  buildTime=50;
+  canMove=1;
+  category=INFANTRY MINETRIGGER;
+  corpse=USsoldier_dead;
+  [customParams] {
+    dontCount=1;
+    feartarget=1;
+    helptext=Short range, medium accuracy, brutal damage, high rate of fire. Incredibly effective at pinning troops. Can move around undetected, although ineffectively. Very good at destroying buildings and burning group of infantry. Damage on target will continue for several seconds after firing.;
+    lowammolevel=5;
+    maxammo=5;
+    weaponcost=8;
+    weaponswithammo=1;
+  }
+  damageModifier=0.265;
+  explodeAs=Small_Explosion;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
+  flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
+  footprintX=1;
+  footprintZ=1;
+  iconType=flame;
+  init_cloaked=0;
+  mass=75;
+  maxDamage=100;
+  maxSlope=25;
+  maxVelocity=1;
+  maxWaterDepth=5;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=USflamethrower.S3O;
+  seismicDistance=840;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:SMG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  sightDistance=540;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
+
+  weapon1=M2Flamethrower;
+  maxAngleDif1=170;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+}
+

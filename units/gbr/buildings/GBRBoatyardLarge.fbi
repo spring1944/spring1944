@@ -1,0 +1,48 @@
+[unitinfo] {
+  unitname=GBRBoatyardLarge;
+  name=Large Boat Yard;
+  description=Naval Production Facility;
+  buildCostEnergy=0;
+  buildCostMetal=5445;
+  builder=1;
+  buildingGroundDecalDecaySpeed=0.05;
+  buildingGroundDecalSizeX=8;
+  buildingGroundDecalSizeY=8;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=GBRBoatyard.png;
+  buildTime=5445;
+  canBeAssisted=0;
+  canMove=1;
+  category=BUILDING;
+  corpse=GBRBoatyardLarge_dead;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=500;
+  }
+  energyStorage=0;
+  explodeAs=LARGE_EXPLOSION;
+  floater=1;
+  footprintX=14;
+  footprintZ=14;
+  iconType=hshipyard;
+  idleAutoHeal=3;
+  maxDamage=6250;
+  maxSlope=10;
+  minWaterDepth=10;
+  objectName=GBRBoatyardLarge;
+  selfDestructAs=LARGE_EXPLOSION;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=GBR;
+  sightDistance=146;
+  soundcategory=GBRYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  waterline=0;
+  workerTime=75;
+  yardmap=ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo ooccccccccccoo;
+}
+

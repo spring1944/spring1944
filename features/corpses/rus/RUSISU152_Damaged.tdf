@@ -1,0 +1,41 @@
+[rusisu152_damaged] {
+  description=Abandoned Assault Gun;
+  damage=1251;
+  energy=1000;
+  featureDead=RUSISU152_Destroyed;
+  footprintX=3;
+  footprintZ=3;
+  object=RUSISU152_Damaged.S3O;
+  reclaimable=1;
+ 	collisionVolumeType=cylX;
+	collisionVolumeScales=22 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=60;
+		}
+}
+
+[rusisu152_destroyed] {
+  description=Destroyed Assault Gun;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=3;
+  footprintZ=3;
+  object=RUSISU152_Destroyed.S3O;
+  reclaimable=1;
+ 	collisionVolumeType=cylX;
+	collisionVolumeScales=22 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=45;
+		}
+}
+

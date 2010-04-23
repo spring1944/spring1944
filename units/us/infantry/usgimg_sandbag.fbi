@@ -1,0 +1,55 @@
+[unitinfo] {
+  unitname=usgimg_sandbag;
+  name=Light Defensive Position;
+  description=Dug-in Heavy Infantry Fire Support;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=500;
+  buildingGroundDecalSizeX=4;
+  buildingGroundDecalSizeY=4;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=USSandbagMG.png;
+  buildTime=500;
+  category=DEPLOYED;
+  corpse=SandbagMG_Destroyed;
+  [customParams] {
+    feartarget=1;
+  }
+  footprintX=2;
+  footprintZ=2;
+  iconType=lightmg;
+  maxDamage=1600;
+  maxSlope=15;
+  maxWaterDepth=0;
+  noChaseCategory=OPENVEH AIR FLAG SOFTVEH MINE;
+  objectName=USSandbagMG.S3O;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:MG_SHELLCASINGS;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=US;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=USInf;
+  stealth=1;
+  TEDClass=TURRET;
+  useBuildingGroundDecal=1;
+  badTargetCategory=OPENVEH FLAG SOFTVEH;
+  yardmap=o;
+
+  weapon1=m1919a4browning_deployed;
+  maxAngleDif1=90;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=Small_Tracer;
+}
+

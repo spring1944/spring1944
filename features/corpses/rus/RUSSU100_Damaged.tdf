@@ -1,0 +1,39 @@
+[russu100_damaged] {
+  description=Abandoned Tank Destroyer;
+  damage=1251;
+  energy=1000;
+  featureDead=RUSSU100_Destroyed;
+  footprintX=3;
+  footprintZ=3;
+  object=RUSSU100_Damaged.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
+}
+
+[russu100_destroyed] {
+  description=Destroyed Tank Destroyer;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=3;
+  footprintZ=3;
+  object=RUSSU100_Destroyed.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=35;
+		}
+}
+

@@ -1,0 +1,20 @@
+[GERmarder_destroyed] {
+  description=Destroyed TD;
+  damage=501;
+  energy=75;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GERMarder_destroyed.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 40;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
+}
+

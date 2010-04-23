@@ -1,0 +1,76 @@
+[unitinfo] {
+  unitname=GBRHuntII;
+  name=Hunt II class;
+  description=Escort Destroyer;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=21000;
+  buildTime=21000;
+  canAttack=1;
+  canMove=1;
+  category=LARGESHIP MINETRIGGER;
+  corpse=GBRHuntII_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=136000;
+  maxDamage=136000;
+  maxReverseVelocity=1.78;
+  maxVelocity=3.56;
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRHuntII;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=124;
+
+  weapon1=gbr4inch45mkxvi;
+  maxAngleDif1=270;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=gbr4inch45mkxvi;
+  maxAngleDif2=270;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 -1;
+
+  weapon3=gbr4inch45mkxvi;
+  maxAngleDif3=270;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 0 -1;
+
+  weapon4=quadpompom;
+  maxAngleDif4=270;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=0 0 -1;
+
+  weapon5=20mmOerlikonaa;
+  maxAngleDif5=200;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=1 0 0;
+
+  weapon6=20mmOerlikonaa;
+  maxAngleDif6=200;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=-1 0 0;
+}
+

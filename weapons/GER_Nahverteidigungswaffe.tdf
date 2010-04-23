@@ -1,0 +1,34 @@
+[nahverteidigungswaffe] {
+  name=Nahverteidigungswaffe Anti-Infantry Grenade Launchers;
+  accuracy=1250;
+  areaOfEffect=24;
+  canAttackGround=0;
+  [customParams] {
+    armor_penetration=200;
+    damagetype=explosive;
+  }
+  [damage] {
+    default=1437.5;
+  }
+  dynDamageExp=1;
+  dynDamageRange=220;
+  edgeEffectiveness=0.5;
+  explosionGenerator=custom:HE_Small;
+  id=31;
+  impulseFactor=1e-05;
+  model=MortarShell.S3O;
+  movingAccuracy=6400;
+  noSelfDamage=1;
+  projectiles=10;
+  range=300;
+  reloadTime=5;
+  rendertype=3;
+  soundHit=GEN_Explo_Grenade;
+  sprayangle=16000;
+  targetBorder=1;
+  tolerance=10000;
+  turret=1;
+  weaponTimer=5;
+  weaponVelocity=210;
+}
+

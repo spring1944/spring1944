@@ -1,0 +1,56 @@
+[unitinfo] {
+  unitname=usdukw;
+  name=DUKW;
+  description=Amphibious Transport Truck;
+  acceleration=0.35;
+  brakeRate=0.45;
+  buildCostEnergy=0;
+  buildCostMetal=500;
+  buildTime=500;
+  canHover=1;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=usgmctruck_destroyed;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  loadingRadius=120;
+  mass=950;
+  maxDamage=650;
+  maxSlope=10;
+  maxVelocity=4.5;
+  movementClass=HOVER_AmphibTruck;
+  noChaseCategory=AIR MINE;
+  objectName=usdukw.s3o;
+  releaseHeld=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=USTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  transportCapacity=15;
+  transportMass=750;
+  transportSize=1;
+  turninplace=0;
+  turnRate=440;
+  unloadSpread=3;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

@@ -1,0 +1,68 @@
+[unitinfo] {
+  unitname=GERHQBunker;
+  name=Wehrmacht HQ Bunker;
+  description=Fortified Command Post;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=40500;
+  builder=1;
+  buildingGroundDecalSizeX=12;
+  buildingGroundDecalSizeY=12;
+  buildingGroundDecalType=Dirt2.dds;
+  buildPic=GERHQBunker.png;
+  buildTime=40500;
+  canBeAssisted=0;
+  canMove=1;
+  category=BUILDING;
+  collisionVolumeType=ellipsoid;
+  commander=1;
+  corpse=GERHQBunker_Destroyed;
+  [customParams] {
+    ammoSupplier=1;
+    arrivalgap=450;
+    blockfear=1;
+    flagCapRate=10;
+    hq=1;
+    refillamount=1e+06;
+    supplyRange=1000;
+  }
+  energyStorage=0.01;
+  explodeAs=Huge_Explosion;
+  footprintX=10;
+  footprintZ=10;
+  hideDamage=1;
+  highTrajectory=0;
+  iconType=gerhq;
+  maxDamage=32000;
+  maxSlope=10;
+  maxWaterDepth=0;
+  metalMake=0;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GERHQBunker.S3O;
+  selfDestructAs=Huge_Explosion;
+  [sfxtypes] {
+    explosionGenerator0=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  showPlayerName=1;
+  sightDistance=700;
+  smoothAnim=0;
+  soundcategory=GERYard;
+  stealth=1;
+  TEDClass=PLANT;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+  workerTime=20;
+  yardmap=oooooooooo oooooooooo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo ooyyyyyyoo;
+
+  weapon1=MG34;
+  maxAngleDif1=360;
+  onlyTargetCategory1=INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 -1;
+
+  weapon2=Small_Tracer;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

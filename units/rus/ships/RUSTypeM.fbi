@@ -1,0 +1,57 @@
+[unitinfo] {
+  unitname=RUSTYPEM;
+  name=Type M submarine;
+  description=Light Attack Submarine;
+  acceleration=0.2;
+  airSightDistance=600;
+  brakeRate=0.1;
+  buildCostEnergy=0;
+  buildCostMetal=58000;
+  buildTime=58000;
+  canAttack=1;
+  canMove=1;
+  category=MINETRIGGER SUB;
+  corpse=RUSTypeM_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=sub;
+  mass=2500;
+  maxDamage=2500;
+  maxReverseVelocity=0.82;
+  maxVelocity=1.64; // 8.2 knots submerged
+  minWaterDepth=40;
+  movementClass=BOAT_Sub;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=RUSTYPEM;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=160;
+  waterline=60;
+
+  weapon1=533mmtorpedo; //450mmtorp;
+  maxAngleDif1=60;
+  onlyTargetCategory1=LARGESHIP SUB;
+  weaponMainDir1=0 0 1;
+
+  weapon2=533mmtorpedo; //450mmtorp;
+  maxAngleDif2=60;
+  onlyTargetCategory2=LARGESHIP SUB;
+  weaponMainDir2=0 0 1;
+}
+

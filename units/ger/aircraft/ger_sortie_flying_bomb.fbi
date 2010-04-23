@@ -1,0 +1,29 @@
+[unitinfo] {
+  unitname=ger_sortie_flying_bomb;
+  name=Flying Bomb Strike;
+  description=1 x V-1 (Fi-103);
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=1825;
+  buildPic=GERV1.png;
+  buildTime=1825;
+  canMove=1;
+  category=FLAG;
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  idleAutoHeal=0;
+  maxDamage=1e+06;
+  maxSlope=82;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+  }
+  side=GER;
+  stealth=1;
+  turnRate=1;
+}
+

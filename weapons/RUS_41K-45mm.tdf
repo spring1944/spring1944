@@ -1,0 +1,83 @@
+[41k45mmap] {
+  name=41K 45mm Armour Piercing;
+  accuracy=290;
+  areaOfEffect=5;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration_1000m=20;
+    armor_penetration_100m=43;
+    damagetype=kinetic;
+  }
+  [damage] {
+    default=1180;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Small;
+  explosionSpeed=100;
+  fireStarter=0;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1310;
+  reloadTime=2.1;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=US_37mm;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1768;
+}
+
+[41k45mmhe] {
+  name=41K 45mm Naval Gun;
+  accuracy=354;
+  areaOfEffect=47;
+  ballistic=1;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+  }
+  [damage] {
+    default=200;
+  }
+  edgeEffectiveness=0.2;
+  explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=59;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=1310;
+  reloadTime=1.6; // 1.5 times as fast as the single gun
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=RUS_45mm;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=1584;
+}
+

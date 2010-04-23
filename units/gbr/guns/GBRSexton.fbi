@@ -1,0 +1,84 @@
+[unitinfo] {
+  unitname=GBRSexton;
+  name=SP Sexton Mk. II;
+  description=Self-Propelled Light Howitzer;
+  acceleration=0.052;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=5250;
+  buildTime=5250;
+  canMove=1;
+  category=MINETRIGGER OPENVEH;
+  corpse=GBRSexton_Destroyed;
+  [customParams] {
+    armor_front=63;
+    armor_rear=38;
+    armor_side=38;
+    armor_top=6;
+    blockfear=1;
+    canareaattack=1;
+    defaultMove=1;
+    hasturnbutton=1;
+    lowammolevel=7;
+    maxammo=21;
+    weaponcost=30;
+    weaponswithammo=1;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=3;
+  footprintZ=3;
+  iconType=sparty;
+  leaveTracks=1;
+  mass=2585.5;
+  maxDamage=2585.5;
+  maxReverseVelocity=1.52;
+  maxSlope=2;
+  maxVelocity=3.04;
+  maxWaterDepth=15;
+  movementClass=TANK_Medium;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRSexton.S3O;
+  onoffable=1;
+  radarDistanceJam=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=US;
+  sightDistance=750;
+  smoothAnim=0;
+  soundcategory=GBRSP;
+  stealth=0;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=18;
+  turninplace=0;
+  turnRate=280;
+  badTargetCategory=FLAG;
+
+  weapon1=25PdrHE;
+  badTargetCategory1=OPENVEH HARDVEH;
+  maxAngleDif1=15;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=.50calproof;
+}
+

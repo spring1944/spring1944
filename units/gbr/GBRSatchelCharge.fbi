@@ -1,0 +1,29 @@
+[unitinfo] {
+  unitname=GBRSatchelCharge;
+  name=Satchel Charge;
+  description=Anti-Building Demolitions Pack;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildTime=750;
+  category=BUILDING;
+  [customParams] {
+    dontCount=1;
+    isMine=1;
+  }
+  explodeAs=SatchelCharge;
+  footprintX=1;
+  footprintZ=1;
+  init_cloaked=1;
+  maxDamage=5;
+  maxSlope=80;
+  maxWaterDepth=50;
+  minCloakDistance=20;
+  objectName=ATMine.S3O;
+  selfDestructAs=SatchelCharge;
+  selfDestructCountdown=10;
+  sightDistance=1;
+  soundcategory=Nothing;
+  TEDClass=SPECIAL;
+  yardmap=o;
+}
+

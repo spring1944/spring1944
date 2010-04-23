@@ -1,0 +1,149 @@
+[unitinfo] {
+  unitname=GBRMonitor;
+  name=Roberts class;
+  description=Heavy Monitor;
+  acceleration=0.15;
+  activateWhenBuilt=1;
+  airSightDistance=1700;
+  brakeRate=0.14;
+  buildCostEnergy=0;
+  buildCostMetal=30000;
+  buildTime=30000;
+  canAttack=1;
+  canMove=1;
+  category=LARGESHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -60.0 0.0;
+  collisionVolumeScales=120.0 180.0 600.0;
+  collisionVolumeType=box;
+  corpse=GBRMonitor_dead;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=8;
+  footprintZ=8;
+  iconType=destroyer;
+  mass=830000;
+  maxDamage=830000;
+  maxReverseVelocity=0.855;
+  maxVelocity=1.71;
+  minWaterDepth=20;
+  movementClass=BOAT_Destroyer;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRMonitor;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=1300;
+  smoothAnim=0;
+  stealth=0;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=25;
+
+  weapon10=twin_20mmOerlikonaa;
+  maxAngleDif10=270;
+  onlyTargetCategory10=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir10=-1 0 1;
+
+  weapon11=twin_20mmOerlikonaa;
+  maxAngleDif11=270;
+  onlyTargetCategory11=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir11=1 0 1;
+
+  weapon12=twin_20mmOerlikonaa;
+  maxAngleDif12=270;
+  onlyTargetCategory12=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir12=-1 0 1;
+
+  weapon13=twin_20mmOerlikonaa;
+  maxAngleDif13=270;
+  onlyTargetCategory13=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir13=1 0 1;
+
+  weapon14=twin_20mmOerlikonaa;
+  maxAngleDif14=270;
+  onlyTargetCategory14=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir14=-1 0 1;
+
+  weapon15=twin_20mmOerlikonaa;
+  maxAngleDif15=270;
+  onlyTargetCategory15=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir15=1 0 1;
+
+  weapon16=twin_20mmOerlikonaa;
+  maxAngleDif16=270;
+  onlyTargetCategory16=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir16=-1 0 1;
+
+  weapon17=20mmOerlikonaa;
+  maxAngleDif17=270;
+  onlyTargetCategory17=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir17=1 0 1;
+
+  weapon18=20mmOerlikonaa;
+  maxAngleDif18=270;
+  onlyTargetCategory18=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir18=-1 0 1;
+
+  weapon19=20mmOerlikonaa;
+  maxAngleDif19=270;
+  onlyTargetCategory19=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir19=1 0 1;
+
+  weapon1=gbr15inch42mki;
+  maxAngleDif1=200;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon20=20mmOerlikonaa;
+  maxAngleDif20=270;
+  onlyTargetCategory20=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir20=-1 0 1;
+
+  weapon2=gbr4inch45mkxvi;
+  maxAngleDif2=200;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=1 0 0;
+
+  weapon3=gbr4inch45mkxvi;
+  maxAngleDif3=200;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=-1 0 0;
+
+  weapon4=gbr4inch45mkxvi;
+  maxAngleDif4=200;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=1 0 0;
+
+  weapon5=gbr4inch45mkxvi;
+  maxAngleDif5=200;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=-1 0 0;
+
+  weapon6=octpompom;
+  maxAngleDif6=240;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=0 0 -1;
+
+  weapon7=quadpompom;
+  maxAngleDif7=270;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir7=1 0 1;
+
+  weapon8=quadpompom;
+  maxAngleDif8=270;
+  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir8=-1 0 1;
+
+  weapon9=twin_20mmOerlikonaa;
+  maxAngleDif9=270;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=1 0 1;
+}
+

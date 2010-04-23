@@ -1,0 +1,71 @@
+[unitinfo] {
+  unitname=GBR25Pdr_Stationary;
+  name=Dug-In 25-Pounder;
+  description=Stationary Howitzer;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=3780;
+  buildingGroundDecalSizeX=5;
+  buildingGroundDecalSizeY=5;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=3780;
+  category=DEPLOYED;
+  corpse=gbr25pdr_destroyed;
+  [customParams] {
+    canAreaAttack=1;
+    canfiresmoke=1;
+    feartarget=1;
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=30;
+    weaponswithammo=2;
+  }
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=1.25;
+  flankingBonusMin=0.75;
+  flankingBonusMode=1;
+  footprintX=3;
+  footprintZ=3;
+  iconType=artillery;
+  maxDamage=2500;
+  maxSlope=15;
+  maxWaterDepth=0;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBR25Pdr_Stationary.S3O;
+  onoffable=1;
+  radarDistanceJam=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEDUST;
+    explosionGenerator9=custom:MuzzleBrakeSmoke;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=701;
+  smoothAnim=0;
+  soundcategory=GbrInf;
+  stealth=0;
+  TEDClass=TURRET;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+  yardmap=o;
+
+  weapon1=25PdrHE;
+  maxAngleDif1=35;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=25PdrSmoke;
+  maxAngleDif2=35;
+  onlyTargetCategory2=NOTHING;
+  weaponMainDir2=0 0 1;
+}
+

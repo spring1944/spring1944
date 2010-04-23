@@ -1,0 +1,28 @@
+[us_paratrooper] {
+  name=Paratroops;
+  areaOfEffect=1;
+  burst=18;
+  burstrate=0.15;
+  collideFriendly=0;
+  commandfire=1;
+  [customParams] {
+    damagetype=none;
+    paratrooper=1;
+  }
+  [damage] {
+    default=0;
+  }
+  edgeEffectiveness=0;
+  explosionGenerator=custom:nothing;
+  impulseFactor=0;
+  manualBombSettings=1;
+  mygravity=1;
+  model=Bomb_Tiny.S3O;
+  range=1000;
+  reloadTime=600;
+  rendertype=4;
+  texture1=none;
+  tolerance=4000;
+  turret=1;
+  weaponType=AircraftBomb;
+}

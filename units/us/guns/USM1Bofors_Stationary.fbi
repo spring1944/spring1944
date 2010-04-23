@@ -1,0 +1,63 @@
+[unitinfo] {
+  unitname=USM1Bofors_Stationary;
+  name=Dug-In M1 Bofors;
+  description=Stationary 40mm Anti-Aircraft Gun;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=3000;
+  buildingGroundDecalSizeX=3;
+  buildingGroundDecalSizeY=3;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=3000;
+  category=DEPLOYED;
+  corpse=USM1Bofors_Destroyed;
+  [customParams] {
+    feartarget=1;
+    lowammolevel=8;
+    maxammo=16;
+    weaponcost=3;
+    weaponswithammo=2;
+  }
+  footprintX=2;
+  footprintZ=2;
+  iconType=aaartillery;
+  maxDamage=1250;
+  maxSlope=15;
+  maxWaterDepth=0;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=USM1Bofors_Stationary.S3O;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=GBR;
+  sightDistance=701;
+  smoothAnim=0;
+  soundcategory=USGun;
+  stealth=1;
+  TEDClass=TURRET;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+  yardmap=o;
+
+  weapon1=bofors40mmaa;
+  badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory1=AIR;
+
+  weapon2=bofors40mmhe;
+  badTargetCategory2=AIR;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+  weapon3=Large_Tracer;
+}
+

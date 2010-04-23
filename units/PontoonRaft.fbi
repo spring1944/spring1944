@@ -1,0 +1,44 @@
+[unitinfo] {
+  unitname=PontoonRaft;
+  name=Pontoon Raft;
+  description=Heavy Equipment Transport;
+  acceleration=0.15;
+  airSightDistance=2500;
+  brakeRate=0.1;
+  buildCostEnergy=0;
+  buildCostMetal=200;
+  buildTime=200;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=5;
+  footprintZ=5;
+  iconType=raft;
+  isFirePlatform=0;
+  mass=1000;
+  maxDamage=1000;
+  maxVelocity=2.5;
+  minTransportSize=1;
+  minWaterDepth=10;
+  movementClass=BOAT_Medium;
+  objectName=USPontoonRaft.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=1;
+  transportSize=9;
+  turninplace=0;
+  turnRate=200;
+  waterline=2.5;
+}
+

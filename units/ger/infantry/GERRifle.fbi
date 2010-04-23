@@ -1,0 +1,68 @@
+[unitinfo] {
+  unitname=GERRifle;
+  name=Kar 98K Rifleman;
+  description=Long-range Rifle Infantry;
+  acceleration=0.375;
+  airSightDistance=2500;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=50;
+  buildTime=50;
+  canMove=1;
+  category=INFANTRY MINETRIGGER;
+  corpse=GERSoldier_dead;
+  [customParams] {
+    feartarget=1;
+    flagCapRate=1;
+  }
+  damageModifier=0.265;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
+  flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
+  footprintX=1;
+  footprintZ=1;
+  iconType=rifle;
+  mass=50;
+  maxDamage=110;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=10;
+  movementClass=KBOT_Infantry;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GERRifle.S3O;
+  repairable=0;
+  seismicDistance=840;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  side=GER;
+  sightDistance=840;
+  smoothAnim=0;
+  soundcategory=GERInf;
+  stealth=1;
+  TEDClass=KBOT;
+  turnRate=1010;
+  upright=1;
+  badTargetCategory=FLAG;
+
+  weapon1=k98k;
+  maxAngleDif1=170;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=Model24;
+  maxAngleDif2=170;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 1;
+}
+

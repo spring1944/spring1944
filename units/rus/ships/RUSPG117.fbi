@@ -1,0 +1,48 @@
+[unitinfo] {
+  unitname=RUSPG117;
+  name=PG-117;
+  description=Infantry Water Transport;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=300;
+  buildPic=RUSPG117.png;
+  buildTime=300;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  iconType=lttrans;
+  isFirePlatform=0;
+  mass=500;
+  maxDamage=500;
+  maxReverseVelocity=3.7;
+  maxVelocity=7.4;
+  minWaterDepth=5;
+  movementClass=BOAT_Small;
+  objectName=RUSPG117.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=9;
+  transportMass=750;
+  transportSize=1;
+  turnRate=350;
+  waterline=0.2;
+}
+

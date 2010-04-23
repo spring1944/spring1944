@@ -1,0 +1,13 @@
+[RUSBoatyard_dead] {
+  description=Destroyed Boat Yard;
+  blocking=0;
+  damage=5000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=RUSBoatyard_dead;
+  reclaimable=1;
+}
+

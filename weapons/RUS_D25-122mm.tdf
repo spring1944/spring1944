@@ -1,0 +1,83 @@
+[d25122mmap] {
+  name=D-25T 122mm Armour-Piercing Ammunition;
+  accuracy=290;
+  areaOfEffect=10;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration_1000m=131;
+    armor_penetration_100m=162;
+    damagetype=kinetic;
+  }
+  [damage] {
+    default=10160;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:AP_Large;
+  explosionSpeed=100;
+  fireStarter=0;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  noSelfDamage=1;
+  range=2530;
+  reloadTime=15; //7.5
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=RUS_122mm;
+  stages=50;
+  targetMoveError=0.05;
+  tolerance=300;
+  turret=1;
+  weaponVelocity=1584;
+}
+
+[d25122mmhe] {
+  name=D-25T 122mm High-Explosive Ammunition;
+  accuracy=200;
+  areaOfEffect=154;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0.75;
+  craterMult=0.75;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=75;
+    fearid=501;
+  }
+  [damage] {
+    default=7200;
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:HE_XLarge;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=103;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  noSelfDamage=1;
+  range=2530;
+  reloadTime=15; //7.5 - because it is not specifically an artillery gun
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_4;
+  soundStart=RUS_122mm;
+  stages=50;
+  targetMoveError=0.05;
+  tolerance=3000;
+  turret=1;
+  weaponVelocity=900;
+}
+

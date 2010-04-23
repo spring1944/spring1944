@@ -1,0 +1,40 @@
+[m1911a1colt] {
+  name=Pistols;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  beamweapon=1;
+  collideFeature=1;
+  collideFriendly=0;
+  color=255;
+  color2=226;
+  coreThickness=0.15;
+  [customParams] {
+    damagetype=smallarm;
+  }
+  [damage] {
+    default=31;
+  }
+  duration=0.025;
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=1;
+  impactOnly=1;
+  intensity=0.8;
+  lineofsight=1;
+  movingAccuracy=888;
+  range=180;
+  reloadTime=1;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=2.5;
+  soundStart=US_Colt;
+  soundTrigger=0;
+  sprayAngle=50;
+  thickness=0.2;
+  tolerance=6000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}
+

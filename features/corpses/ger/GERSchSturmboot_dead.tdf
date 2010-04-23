@@ -1,0 +1,13 @@
+[GERSchSturmboot_dead] {
+  description=Sunk Schwere Sturmboot;
+  blocking=0;
+  damage=2500;
+  energy=5000;
+  footprintX=4;
+  footprintZ=4;
+  height=10;
+  hitdensity=50;
+  object=GERSchSturmboot;
+  reclaimable=1;
+}
+

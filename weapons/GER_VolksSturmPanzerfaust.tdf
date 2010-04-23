@@ -1,0 +1,42 @@
+[volkssturmpanzerfaust] {
+  name=Panzerfaust 100, Faustpatrone, etc;
+  accuracy=800;
+  areaOfEffect=55;
+  collisionSize=3;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration=170;
+    damagetype=shapedcharge;
+  }
+  [damage] {
+    default=6400;
+  }
+  edgeEffectiveness=0.01;
+  explosionGenerator=custom:HE_Large;
+  explosionSpeed=30;
+  fireStarter=0;
+  flightTime=2;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  lineofsight=1;
+  model=Bomb_Small.S3O;
+  noSelfDamage=1;
+  range=235;
+  reloadTime=75;
+  rendertype=4;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=GER_Panzerfaust;
+  stages=50;
+  startVelocity=200;
+  targetMoveError=0.1;
+  tolerance=6000;
+  turret=1;
+  weaponVelocity=400;
+}
+

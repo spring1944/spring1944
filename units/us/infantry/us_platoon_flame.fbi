@@ -1,0 +1,32 @@
+[unitinfo] {
+  unitname=us_platoon_flame;
+  name=Flamethrower Squad;
+  description=4 x Flamethrower: Specialized Assault Infantry;
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=800;
+  buildPic=usgiflamethrower.png;
+  buildTime=800;
+  canMove=1;
+  category=FLAG;
+  [customParams] {
+    helptext=3-man team armed with flamethrowers. ||| Flamethrowers are unique weapons which unleash torrents of liquid flame. They are excellent for use against buildings, bunkers, and often vehicles, and are potent against closely-grouped enemy infantry. They are also highly demoralizing.;
+  }
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  idleAutoHeal=0;
+  maxDamage=100;
+  maxSlope=30;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+  }
+  side=US;
+  stealth=1;
+  turnRate=1;
+}
+

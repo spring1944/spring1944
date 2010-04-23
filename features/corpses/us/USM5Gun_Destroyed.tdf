@@ -1,0 +1,11 @@
+[USM5Gun_Destroyed] {
+  description=Destroyed Gun;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=USM5Gun_Destroyed.S3O;
+  reclaimable=1;
+}
+

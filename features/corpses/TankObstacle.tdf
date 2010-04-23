@@ -1,0 +1,11 @@
+[tankobstacle] {
+  description=Tank Obstacle;
+  damage=2500;
+  energy=25;
+  featureDead=Debris_Small;
+  footprintX=1;
+  footprintZ=1;
+  object=TankObstacle.S3O;
+  reclaimable=1;
+}
+

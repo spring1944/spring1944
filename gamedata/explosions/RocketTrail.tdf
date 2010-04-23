@@ -1,0 +1,30 @@
+[RocketTrail] {
+	[smoke] {
+		class=CSimpleParticleSystem;
+		[properties]{
+			sizeGrowth=0.4 r0.2;
+			sizeMod=1;
+			pos=0, 0, 0;
+			emitVector=dir;
+			gravity=0, 0, 0;
+			colorMap=1 1 0.625 0.25  0.18 0.18 0.18 0.24  0.15 0.15 0.15 0.20  0.12 0.12 0.12 0.16  0.09 0.09 0.09 0.12  0.06 0.06 0.06 0.08  0.03 0.03 0.03 0.04  0 0 0 0;
+			Texture=smokesmall;
+			airdrag=0.5;
+			particleLife=16;
+			particleLifeSpread=24;
+			numParticles=1;
+			particleSpeed=i3;
+			particleSpeedSpread=1;
+			particleSize=1;
+			particleSizeSpread=2;
+			emitRot=0;
+			emitRotSpread=5;
+			directional=0;
+			alwaysVisible=0;
+		}
+		air=1;
+		water=1;
+		ground=1;
+		count=8;
+	}
+}

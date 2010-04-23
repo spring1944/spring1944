@@ -1,0 +1,72 @@
+[UNITINFO] {
+  UnitName=USC47;
+  name=C-47 Skytrain;
+  description=Paratroop Transport Plane;
+  acceleration=0.48;
+  airSightDistance=4000;
+  bankscale=1;
+  brakeRate=5;
+  buildCostEnergy=0;
+  buildCostMetal=3000;
+  buildPic=USC47.png;
+  buildTime=3000;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=AIR;
+  cruiseAlt=1200;
+  [customParams] {
+    enginesound=spitfireb-;
+    enginesoundnr=18;
+    feartarget=1;
+    proptexture=prop3.tga;
+    troopdropper=1;
+	deposit=0;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=6;
+  footprintZ=6;
+  iconType=transportplane;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAileron=0.003;
+  maxBank=0.25;
+  maxDamage=1705.7;
+  maxElevator=0.0025;
+  maxFuel=180;
+  maxPitch=0.1;
+  maxRudder=0.002;
+  maxSlope=10;
+  maxVelocity=16;
+  maxWaterDepth=0;
+  moverate1=4;
+  myGravity=0.6;
+  objectName=USC47.S3O;
+  refuelTime=10;
+  repairable=0;
+  seismicSignature=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_MUZZLEFLASH;
+    explosionGenerator2=custom:MG_SHELLCASINGS;
+  }
+  showNanoFrame=0;
+  Side=US;
+  sightDistance=2000;
+  smoothAnim=0;
+  stealth=1;
+  steeringmode=1;
+  TEDClass=VTOL;
+  turnRate=50;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  wingAngle=0.1;
+  wingDrag=0.1;
+
+  weapon1=us_paratrooper;
+}
+

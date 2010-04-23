@@ -1,0 +1,67 @@
+[3inmortar] {
+  name=Ordinance ML 3 Inch Mortar;
+  accuracy=485;
+  areaOfEffect=112;
+  color=255;
+  [customParams] {
+    armor_hit_side=top;
+    damagetype=explosive;
+    fearaoe=105;
+    fearid=301;
+  }
+  [damage] {
+    default=1088;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=28;
+  impulseFactor=1e-07;
+  leadlimit=500;
+  model=MortarShell.S3O;
+  range=1450;
+  reloadTime=12;
+  rendertype=1;
+  size=1.5;
+  soundHit=GEN_Explo_3;
+  soundStart=GEN_Mortar;
+  startVelocity=1000;
+  turret=1;
+  weaponVelocity=550;
+}
+
+[3inmortarsmoke] {
+  name=Ordinance ML 3 Inch Mortar Smoke Ammo;
+  accuracy=485;
+  areaOfEffect=20;
+  color=255;
+  [customParams] {
+    armor_hit_side=top;
+    damagetype=explosive;
+	smokeradius=140;
+	smokeduration=15;
+	smokeceg=SMOKESHELL_Small;
+  }
+  [damage] {
+    default=100;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=28;
+  impulseFactor=1e-07;
+  leadlimit=500;
+  model=MortarShell.S3O;
+  range=1450;
+  reloadTime=12;
+  rendertype=1;
+  size=1.5;
+  soundHit=GEN_Explo_3;
+  soundStart=GEN_Mortar;
+  startVelocity=1000;
+  turret=1;
+  weaponVelocity=550;
+}
+

@@ -1,0 +1,76 @@
+[unitinfo] {
+  unitname=RUSLCT;
+  name=LCT mk.6;
+  description=transports up to 5 tanks;
+  acceleration=0.075;
+  airSightDistance=1100;
+  brakeRate=0.05;
+  buildCostEnergy=0;
+  buildCostMetal=1600;
+  buildPic=ruslct.png;
+  buildTime=1600;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 -30.0 0.0;
+  collisionVolumeScales=60.0 100.0 220.0;
+  collisionVolumeType=box;
+  corpse=RUSLCT_dead;
+  [customParams] {
+    ammoSupplier=1;
+    supplyRange=600;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=14;
+  footprintZ=14;
+  holdSteady=1;
+  iconType=transportship;
+  mass=29100;
+  maxDamage=29100;
+  maxReverseVelocity=0.8;
+  maxVelocity=1.6;
+  minWaterDepth=2;
+  movementClass=BOAT_LandingCraft;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=RUSLCT;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:XSMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=1600;
+  smoothAnim=0;
+  SoundCategory=RUSBoat;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=30;
+  transportMass=15000;
+  transportSize=30;
+  turninplace=0;
+  turnRate=170;
+
+  weapon1=20mmOerlikonaa; //oerlikon20mm;
+  maxAngleDif1=240;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=1 0 0;
+
+  weapon2=20mmOerlikonaa; //oerlikon20mm;
+  maxAngleDif2=240;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=-1 0 0;
+
+  weapon3=Large_Tracer;
+}
+
