@@ -16,7 +16,7 @@ function gadget:GetInfo()
   return {
     name      = "UnitMorph",
     desc      = "Adds unit morphing",
-    author    = "trepan (improved by jK, Licho, aegis, CarRepairer)",
+    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi)",
     date      = "Jan, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
