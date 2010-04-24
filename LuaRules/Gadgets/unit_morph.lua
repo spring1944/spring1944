@@ -1,10 +1,10 @@
--- $Id$
+-- $Id: unit_morph.lua 4651 2009-05-23 17:04:46Z carrepairer $
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
 --  file:    unit_morph.lua
 --  brief:   Adds unit morphing command
---  author:  Dave Rodgers (improved by jK, Licho, aegis, yuritch, Tobi)
+--  author:  Dave Rodgers (improved by jK, Licho and aegis)
 --
 --  Copyright (C) 2007.
 --  Licensed under the terms of the GNU GPL, v2 or later.
@@ -16,13 +16,17 @@ function gadget:GetInfo()
   return {
     name      = "UnitMorph",
     desc      = "Adds unit morphing",
-    author    = "trepan (improved by jK, Licho and aegis)",
+    author    = "trepan (improved by jK, Licho, aegis, CarRepairer)",
     date      = "Jan, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
     enabled   = true
   }
 end
+
+-- Changes for "The Cursed"
+--		CarRepairer: may add a customized texture in the morphdefs, otherwise uses original behavior (unit buildicon and the word Morph). Break changes made in CA.
+--		aZaremoth: may add a customized text in the morphdefs
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -36,8 +40,6 @@ end
 --   20000 - 29999:  LuaCob
 --   30000 - 39999:  LuaRules
 --
-
--- USES C++ ARRAY CONVENTION (e.g. for i=0,MAX_MORPH-1)!!!
 
 local CMD_MORPH_STOP = 32210
 local CMD_MORPH = 31210
@@ -83,16 +85,10 @@ local function isFinished(UnitID)
   return (buildProgress==nil)or(buildProgress>=1)
 end
 
-
-local function GetBuildFacing(heading, unitDef)
-  --tweak this to change which units need to rotate using buildfacing
-  if (unitDef.TEDClass == "PLANT") then
-    return true, math.floor((heading + 8192) / 16384) % 4
-  else
-    return false, 0
-  end
+local function HeadingToFacing(heading)
+	--return math.floor((-heading - 24576) / 16384) % 4
+	return ((heading + 8192) / 16384) % 4
 end
-
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -119,8 +115,12 @@ local stopMorphOnDevolution = true --// should morphing stop during devolution
 --------------------------------------------------------------------------------
 
 local morphDefs  = {} --// make it global in Initialize()
+local extraUnitMorphDefs = {} -- stores mainly planetwars morphs
+local hostName = nil -- planetwars hostname
+local PWUnits = {} -- planetwars units
 local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
+local morphToStart = {} -- morphes to start next frame
 
 --// per team techlevel and owned MorphReq. units table
 local teamTechLevel = {}
@@ -191,6 +191,7 @@ local function BuildMorphDef(udSrc, morphData)
     newData.tech = morphData.tech or 0
     newData.xp   = morphData.xp or 0
     newData.rank = morphData.rank or 0
+    newData.facing = morphData.facing
     newData.directional = morphData.directional
     local require = -1
     if (morphData.require) then
@@ -207,7 +208,11 @@ local function BuildMorphDef(udSrc, morphData)
     newData.cmd     = CMD_MORPH      + MAX_MORPH
     newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
     MAX_MORPH = MAX_MORPH + 1
+    if (type(GG.MorphInfo)~="table") then GG.MorphInfo = {} end
+    GG.MorphInfo["MAX_MORPH"] = MAX_MORPH
 
+	newData.texture = morphData.texture
+	newData.text = morphData.text
     return newData
   end
 end
@@ -249,10 +254,21 @@ end
 local function GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
   local ud = UnitDefs[morphDef.into]
   local tt = ''
-  tt = tt .. WhiteStr  .. 'Deploy into a ' .. ud.humanName .. '\n'
-  tt = tt .. GreenStr  .. 'time: '   .. morphDef.time     .. '\n'
-  tt = tt .. CyanStr   .. 'metal: '  .. morphDef.metal    .. '\n'
-  tt = tt .. YellowStr .. 'energy: ' .. morphDef.energy   .. '\n'
+  if (morphDef.text ~= nil) then
+	tt = tt .. WhiteStr  .. morphDef.text .. '\n'
+  else
+  	--tt = tt .. WhiteStr  .. 'Deploy into a ' .. ud.humanName .. '\n'
+  	tt = tt .. 'Morph into a ' .. ud.humanName .. '\n'
+  end
+  if (morphDef.time > 0) then
+  	tt = tt .. GreenStr  .. 'time: '   .. morphDef.time     .. '\n'
+  end	
+  if (morphDef.metal > 0) then
+  	tt = tt .. CyanStr   .. 'metal: '  .. morphDef.metal    .. '\n'
+  end
+  if (morphDef.energy > 0) then
+    tt = tt .. YellowStr .. 'energy: ' .. morphDef.energy   .. '\n'
+  end
   if (morphDef.tech > teamTech) or
      (morphDef.xp > unitXP) or
      (morphDef.rank > unitRank) or
@@ -296,7 +312,15 @@ local function AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTech)
   local unitRank = GetUnitRank(unitID)
   local teamOwnsReqUnit = UnitReqCheck(teamID,morphDef.require)
   morphCmdDesc.tooltip = GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
-  morphCmdDesc.texture = "#" .. morphDef.into   --//only works with a patched layout.lua or the TweakedLayout widget!
+  
+  if morphDef.texture then
+	morphCmdDesc.texture = "LuaRules/Images/Morph/".. morphDef.texture
+	morphCmdDesc.name = ''
+  else
+	morphCmdDesc.texture = "#" .. morphDef.into   --//only works with a patched layout.lua or the TweakedLayout widget!
+  end
+  
+  
   morphCmdDesc.disabled= (morphDef.tech > teamTech)or(morphDef.rank > unitRank)or(morphDef.xp > unitXP)or(not teamOwnsReqUnit)
   if morphDef.directional then
     morphCmdDesc.type = CMDTYPE.ICON_MAP
@@ -311,11 +335,19 @@ local function AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTech)
     Spring.InsertUnitCmdDesc(unitID, morphCmdDesc)
   end
 
-  --reset to default
   morphCmdDesc.tooltip = nil
   morphCmdDesc.texture = nil
+  morphCmdDesc.text = nil
   morphCmdDesc.type = CMDTYPE.ICON
 end
+
+
+local function AddExtraUnitMorph(unitID, unitDef, teamID, morphDef)  -- adds extra unit morph (planetwars morphing)
+	morphDef = BuildMorphDef(unitDef, morphDef)
+	extraUnitMorphDefs[unitID] = morphDef
+	AddMorphCmdDesc(unitID, unitDef.id, teamID, morphDef, 0)
+end
+
 
 
 --------------------------------------------------------------------------------
@@ -365,6 +397,13 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
     local rotation = math.atan2(dx, dz)
     Spring.SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
   end
+  -- do not allow morph for unfinsihed units
+  if not isFinished(unitID) then return true end
+
+  Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
+  Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
+  Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
+
   morphUnits[unitID] = {
     def = morphDef,
     progress = 0.0,
@@ -404,36 +443,81 @@ local function StopMorph(unitID, morphData)
     newType = CMDTYPE.ICON_MAP
   end
   if (cmdDescID) then
-    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name, type = newType })
+    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name})
   end
 end
 
 
 local function FinishMorph(unitID, morphData)
   local udDst = UnitDefs[morphData.def.into]
+  local ud = UnitDefs[unitID]
   local defName = udDst.name
   local unitTeam = morphData.teamID
   local px, py, pz = Spring.GetUnitBasePosition(unitID)
+  local h = Spring.GetUnitHeading(unitID)
   Spring.SetUnitBlocking(unitID, false)
   morphUnits[unitID] = nil
 
-  local h = Spring.GetUnitHeading(unitID)
-  local useBuildFacing, facing = GetBuildFacing(h, udDst)
-  local newUnit = Spring.CreateUnit(defName, px, py, pz, facing, unitTeam)
-	if newUnit ~= nil then
-	  Spring.SetUnitPosition(newUnit, px, py, pz)
-	  if (not useBuildFacing) then
-		Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-	  end
+  local oldHealth,oldMaxHealth,paralyzeDamage,captureProgress,buildProgress = Spring.GetUnitHealth(unitID)
+  local isBeingBuilt = false
+  if buildProgress < 1 then
+    isBeingBuilt = true
+  end
+
+  local newUnit
+
+  if udDst.isBuilding or udDst.isFactory then
+  --if udDst.isBuilding then
+  
+	local x = math.floor(px/16)*16
+	local y = py
+	local z = math.floor(pz/16)*16
+	local face = HeadingToFacing(h)
+	local xsize = udDst.xsize
+	local zsize =(udDst.zsize or udDst.ysize)	
+	if ((face == 1) or(face == 3)) then
+	  xsize, zsize = zsize, xsize
+	end	
+	if xsize/4 ~= math.floor(xsize/4) then
+	  x = x+8
 	end
+	if zsize/4 ~= math.floor(zsize/4) then
+	  z = z+8
+	end	
+	newUnit = Spring.CreateUnit(defName, x, y, z, face, unitTeam, isBeingBuilt)
+	Spring.SetUnitPosition(newUnit, x, y, z)
+  else
+	newUnit = Spring.CreateUnit(defName, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt)
+	Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
 	if (udDst.customParams.maxammo) then
-		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
+		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
 		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
 		local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
 		if (weapon1) then
 			Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
 		end
 	end
+	Spring.SetUnitPosition(newUnit, px, py, pz)
+  end  
+  
+  if (extraUnitMorphDefs[unitID] ~= nil) then
+    -- nothing here for now
+  end
+  if (hostName ~= nil) and PWUnits[unitID] then
+    -- send planetwars deployment message
+    PWUnit = PWUnits[unitID]
+    PWUnit.currentDef=udDst
+	local data = PWUnit.owner..","..defName..","..math.floor(px)..","..math.floor(pz)..",".."S" -- todo determine and apply smart orientation of the structure
+	Spring.SendCommands("w "..hostName.." pwmorph:"..data)
+	extraUnitMorphDefs[unitID] = nil
+	GG.PlanetWars.units[unitID] = nil
+	GG.PlanetWars.units[newUnit] = PWUnit
+	SendToUnsynced('PWCreate', unitTeam, newUnit)
+  elseif (not morphData.def.facing) then  -- set rotation only if unit is not planetwars and facing is not true
+    --Spring.Echo(morphData.def.facing)
+    Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
+  end
+
 
   --//copy experience
   local newXp = Spring.GetUnitExperience(unitID)*XpScale
@@ -454,7 +538,6 @@ local function FinishMorph(unitID, morphData)
     newXp = math.min( newXp, maxXp*0.9)
   end
   Spring.SetUnitExperience(newUnit, newXp)
-
 
   --//copy some state
   local states = Spring.GetUnitStates(unitID)
@@ -478,12 +561,25 @@ local function FinishMorph(unitID, morphData)
   ReAssignAssists(newUnit,unitID)
 
   --// copy health
-  local oldHealth,oldMaxHealth = Spring.GetUnitHealth(unitID)
+  -- old health is declared above
   local _,newMaxHealth         = Spring.GetUnitHealth(newUnit)
   local newHealth = (oldHealth / oldMaxHealth) * newMaxHealth
+  local hpercent = newHealth/newMaxHealth
   if newHealth<=1 then newHealth = 1 end
-  Spring.SetUnitHealth(newUnit, newHealth)
 
+  -- prevent conflict with rezz gadget
+  if hpercent > 0.045 and hpercent < 0.055 then
+    newHealth = newMaxHealth * 0.056 + 1
+  end
+
+  Spring.SetUnitHealth(newUnit, {health = newHealth, build = buildProgress})
+  
+  --// copy shield power
+  local enabled,oldShieldState = Spring.GetUnitShieldState(unitID) 
+  if oldShieldState and Spring.GetUnitShieldState(newUnit) then
+    Spring.SetUnitShieldState(newUnit, enabled,oldShieldState)
+  end
+	
   local lineage = Spring.GetUnitLineage(unitID)
   Spring.SetUnitLineage(newUnit,lineage,true)
 
@@ -497,6 +593,8 @@ end
 
 
 local function UpdateMorph(unitID, morphData)
+  if Spring.GetUnitTransporter(unitID) then return true end
+	
   if (Spring.UseUnitResource(unitID, morphData.def.resTable)) then
     morphData.progress = morphData.progress + morphData.increment
   end
@@ -519,6 +617,14 @@ function gadget:Initialize()
     GetUnitRank = GG.rankHandler.GetUnitRank
     RankToXp    = GG.rankHandler.RankToXp
   end
+  
+  -- self linking for planetwars
+  GG['morphHandler'] = {}
+  GG['morphHandler'].AddExtraUnitMorph = AddExtraUnitMorph
+
+  hostName = GG.PlanetWars and GG.PlanetWars.options.hostname or nil
+  PWUnits = GG.PlanetWars and GG.PlanetWars.units or {}
+  
   if (type(GG.UnitRanked)~="table") then GG.UnitRanked = {} end
   table.insert(GG.UnitRanked, UnitRanked)
 
@@ -530,6 +636,7 @@ function gadget:Initialize()
   --// make it global for unsynced access via SYNCED
   _G.morphUnits = morphUnits
   _G.morphDefs  = morphDefs
+  _G.extraUnitMorphDefs  = extraUnitMorphDefs
 
   --// Register CmdIDs
   for number=0,MAX_MORPH-1 do
@@ -796,6 +903,13 @@ end
 
 
 function gadget:GameFrame(n)
+
+  -- start pending morphs
+  for unitid, data in pairs(morphToStart) do
+    StartMorph(unitid, unpack(data))
+  end
+  morphToStart = {}
+
   if ((n+24)%150<1) then
     local unitCount = #XpMorphUnits
     local i = 1
@@ -847,26 +961,32 @@ function gadget:GameFrame(n)
   end
 end
 
+
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
   local morphData = morphUnits[unitID]
   if (morphData) then
     if (cmdID==morphData.def.stopCmd)or(cmdID == CMD.STOP) then
-      StopMorph(unitID, morphData)
-      morphUnits[unitID] = nil
-      return false
+	  if not Spring.GetUnitTransporter(unitID) then
+        StopMorph(unitID, morphData)
+        morphUnits[unitID] = nil
+        return false
+	  end
     elseif (cmdID == CMD.ONOFF) then
       return false
+	elseif cmdID == CMD.SELFD then
+	  StopMorph(unitID, morphData)
+      morphUnits[unitID] = nil
     --else --// disallow ANY command to units in morph
     --  return false
     end
   elseif (cmdID >= CMD_MORPH and cmdID < CMD_MORPH+MAX_MORPH) then
-    local morphDef = (morphDefs[unitDefID] or {})[cmdID]
+    local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]
     if ((morphDef)and
         (morphDef.tech<=teamTechLevel[teamID])and
         (morphDef.rank<=GetUnitRank(unitID))and
         (morphDef.xp<=Spring.GetUnitExperience(unitID))and
-        (UnitReqCheck(teamID, morphDef.require))and
-	(CheckMorphPlace(unitID, unitDefID, teamID, morphDef)) )
+        (UnitReqCheck(teamID, morphDef.require)) and
+		(CheckMorphPlace(unitID, unitDefID, teamID, morphDef)) )
     then
       if (isFactory(unitDefID)) then
         --// the factory cai is broken and doesn't call CommandFallback(),
@@ -888,17 +1008,21 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
   if (cmdID < CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH) then
     return false  --// command was not used
   end
-  local morphDef = (morphDefs[unitDefID] or {})[cmdID]
+  local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]
   if (not morphDef) then
     return true, true  --// command was used, remove it
   end
   local morphData = morphUnits[unitID]
   if (not morphData) then
-    StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
+    -- dont start directly to break recursion
+    --StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
+    morphToStart[unitID] = {unitDefID, teamID, morphDef, cmdParams}
     return true, true
   end
   return true, false  --// command was used, do not remove it
 end
+
+
 
 --------------------------------------------------------------------------------
 --  END SYNCED
@@ -1013,7 +1137,7 @@ local function StartMorph(cmd, unitID, unitDefID, morphID)
         else readTeam = GetLocalTeamID() end
       CallAsTeam({ ['read'] = readTeam }, function()
         if (unitID)and(IsUnitVisible(unitID)) then
-          Script.LuaUI.MorphStart(unitID, SYNCED.morphDefs[unitDefID][morphID])
+          Script.LuaUI.MorphStart(unitID, (SYNCED.morphDefs[unitDefID] or {})[morphID] or SYNCED.extraUnitMorphDefs[unitID])
         end
       end)
     end
@@ -1129,21 +1253,23 @@ local function DrawMorphUnit(unitID, morphData, localTeamID)
   if (px==nil) then
     return
   end
-  local useBuildFacing, facing = GetBuildFacing(h, UnitDefs[morphData.def.into])
-  if (useBuildFacing) then
-    h = facing * 16384
-  end
   local unitTeam = morphData.teamID
 
   InitializeUnitShape(morphData.def.into,unitTeam) --BUGFIX
 
   local frac = ((gameFrame + unitID) % 30) / 30
   local alpha = 2.0 * math.abs(0.5 - frac)
+  local angle
+  if morphData.def.facing then
+    angle = -HeadingToFacing(h) * 90 + 180
+  else
+    angle = h * headingToDegree
+  end
 
   SetTeamColor(unitTeam,alpha)
   glPushMatrix()
   glTranslate(px, py, pz)
-  glRotate(h * headingToDegree, 0, 1, 0)
+  glRotate(angle, 0, 1, 0)
   glUnitShape(morphData.def.into, unitTeam)
   glPopMatrix()
 
