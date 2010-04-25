@@ -485,17 +485,18 @@ local function FinishMorph(unitID, morphData)
   else
 	newUnit = Spring.CreateUnit(defName, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt)
 	Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-	if (udDst.customParams.maxammo) then
-		local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
-		Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
-		local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
-		if (weapon1) then
-			Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
-		end
-	end
 	Spring.SetUnitPosition(newUnit, px, py, pz)
   end  
   
+  if (udDst.customParams.maxammo) then
+	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
+	Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
+	local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
+	if (weapon1) then
+		Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
+	end
+  end
+	
   if (extraUnitMorphDefs[unitID] ~= nil) then
     -- nothing here for now
   end
