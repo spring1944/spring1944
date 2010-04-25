@@ -16,7 +16,7 @@
     hasturnbutton=1;
     lowammolevel=1;
     maxammo=1;
-    weaponcost=1080;
+    weaponcost=1040;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
