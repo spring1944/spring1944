@@ -385,12 +385,8 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 		Spring.GiveOrderToUnit(unitID, CMD.UNLOAD_UNITS, { unitid_x_coord, unitid_y_coord, unitid_z_coord, 50 }, {})
 	end
 	if (UnitDefs[unitDefID].transportCapacity == nil) or (UnitDefs[unitDefID].transportCapacity <= 0) then]]--
-	Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
-	--end
-	Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
-	Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
 
-  if morphDef.directional then
+  if morphDef.directional and cmdParams then
     local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
     local ux, _, uz = Spring.GetUnitPosition(unitID)
     local dx, dz = tx - ux, tz - uz
