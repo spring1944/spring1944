@@ -439,7 +439,7 @@ local function StopMorph(unitID, morphData)
     newType = CMDTYPE.ICON_MAP
   end
   if (cmdDescID) then
-    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name})
+    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphData.def.cmd, name=morphCmdDesc.name, type = newType })
   end
 end
 
