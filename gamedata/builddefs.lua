@@ -34,8 +34,6 @@ buildoptions =
     "usvehicleyard",
     "usgunyard",
     "usradar",
-    --"uscp",
---    "usflag",
     "usstorage",
     --"usgmctruck",
     "atminesign",
@@ -68,8 +66,6 @@ buildoptions =
     "usvehicleyard",
     "usgunyard",
     "usradar",
-    --"uscp",
---    "usflag",
     "usstorage",
     --"usgmctruck",
     "atminesign",
@@ -239,7 +235,6 @@ buildoptions =
     "gerbarracks",
     "gergunyard",
     "gerradar",
---    "gerflag",
     "gerstorage",
     "atminesign",
     "apminesign",
@@ -287,7 +282,6 @@ buildoptions =
     "gerbarracks",
     "gergunyard",
     "gerradar",
---    "gerflag",
     "gerstorage",
     "atminesign",
     "apminesign",
@@ -367,7 +361,6 @@ buildoptions =
     "gerradar",
     --"gerspyard",
     "gertankyard",
-    --"gerairfield",
     "gerstorage",
     "gersupplydepot",
 	"gerbarracksbunker",
@@ -473,7 +466,6 @@ buildoptions =
   {
     "gbr_sortie_recon",
     "gbrhqengineer",
-    --"usairengineer",
     "gbr_platoon_hq",
     --"gbr_platoon_hq_rifle",
     --"gbr_platoon_hq_assault",
@@ -485,11 +477,9 @@ buildoptions =
     "gbrvehicleyard",
     "gbrgunyard",
     "gbrradar",
---    "gbrflag",
     "gbrstorage",
     "atminesign",
     "apminesign",
-    --"sandbags",
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
@@ -561,11 +551,9 @@ buildoptions =
     "gbrvehicleyard",
     "gbrgunyard",
     "gbrradar",
---    "gbrflag",
     "gbrstorage",
     "atminesign",
     "apminesign",
-    --"sandbags",
     "tankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
@@ -684,9 +672,6 @@ buildoptions =
 
   ruscommander =
   {
---    "rusflag",
-    --"rusresource",
-    --"ruscommissar",
     "ruspshack",
     "rusbarracks",
     "rusgunyard",
@@ -695,21 +680,18 @@ buildoptions =
     "atminesign",
     "tankobstacle",
     "russtorage",
-    --"sandbags",
     "ruspg117",
     "pontoonraft",
   },
   
   ruscommissar1 =
   {
-    --"ruspshack",
     "rusbarracks",
     "rusgunyard",
     "apminesign",
     "atminesign",
     "tankobstacle",
     "russtorage",
-    --"sandbags",
     "ruspg117",
     "pontoonraft",
   },
@@ -759,31 +741,23 @@ buildoptions =
     "rusvehicleyard",
     "rusgunyard",
     "rusradar",
---    "rusflag",
-    --"rusresource",
     --"ruszis5",
     "apminesign",
     "atminesign",
     "tankobstacle",
     "russtorage",
-    --"sandbags",
     "ruspg117",
     "pontoonraft",
   },
 
   ruscommissar =
   {
---    "rusflag",
-    --"rusresource",
-    --"ruscommissar",
-    --"ruspshack",
     "rusbarracks",
     "rusgunyard",
     --"ruszis5",
     "apminesign",
     "atminesign",
     "tankobstacle",
-    --"sandbags",
     "russtorage",
     "ruspg117",
     "pontoonraft",
@@ -1158,20 +1132,6 @@ buildoptions =
   }
 }
 if (modOptions) then
-  --[[if (modOptions.simple_tanks) then
-    local gertankyard = {
-      "gerstugiii",
-      "gerpanzeriv",
-      "gerjagdpanzeriv",
-      "gertiger",
-      }
-    local gertankyard1 = {
-      "gerpanther",
-      "gertigerii",
-      "gerwespe",
-    }
-    buildoptions.gertankyard = gertankyard
-    buildoptions.gertankyard1 = gertankyard1]]
 	if (modOptions.navies) then
 		local tmpNavies = tonumber(modOptions.navies)
 		if tmpNavies > 0 then
