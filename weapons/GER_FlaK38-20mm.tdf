@@ -34,7 +34,7 @@
   soundHit=GEN_Explo_Flak1;
   soundStart=GER_20mm;
   sprayAngle=475;
-  tolerance=2000;
+  tolerance=700;
   turret=1;
   weaponTimer=1;
   weaponVelocity=5000;
