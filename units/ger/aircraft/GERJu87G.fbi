@@ -96,8 +96,19 @@
   weaponMainDir4=0 .5 -1;
   weaponSlaveTo4=3;
 
-  weapon5=Small_Tracer;
+  weapon5=mg15115mm;
+  maxAngleDif5=25;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=0 0 1;
 
-  weapon6=Large_Tracer;
+  weapon6=mg15115mm;
+  maxAngleDif6=25;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=0 0 1;
+  weaponSlaveTo6=1;
+
+  weapon7=Small_Tracer;
+
+  weapon8=Large_Tracer;
 }
 

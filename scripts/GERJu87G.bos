@@ -3,7 +3,7 @@
 
 
 piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, blades, gun1, gun2;
-piece turret, machineguns, flare1, flare2, mgflare1, mgflare2;
+piece turret, machineguns, flare1, flare2, mgflare1, mgflare2, mg1, mg2;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 
@@ -22,8 +22,8 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 #define SIG_AIM4				32
 #define SIG_FEARRECOVERY		64
 
-#define SMALL_TRACER 			2048+5
-#define LARGE_TRACER			2048+6
+#define SMALL_TRACER 			2048+7
+#define LARGE_TRACER			2048+8
 
 #include "air_fearHandling.h"
 
@@ -340,6 +340,84 @@ FireWeapon4()
 	emit-sfx MG_MUZZLEFLASH from mgflare2;
 	emit-sfx MG_SHELLCASINGS from machineguns;
 	sleep 67;
+	return (0);
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum = mg1;
+}
+
+AimWeapon5(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon5()
+{
+	emit-sfx SMALL_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx SMALL_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	return (0);
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = mg2;
+}
+
+AimWeapon6(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon6()
+{
+	emit-sfx SMALL_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx SMALL_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
 	return (0);
 }
 
