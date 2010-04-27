@@ -79,7 +79,7 @@
   weapon4=M1919A4Browning;
   onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon5=M2Browning;
+  weapon5=m2browningaa;
   onlyTargetCategory5=AIR;
 
   weapon6=.50calproof;
