@@ -292,6 +292,7 @@ local armorDefs = {
     "USM3Halftrack",
     "USM7Priest",
     "USM10Wolverine",
+	"USM36Jackson",
     "uslvta4",
 
     --USSR--
