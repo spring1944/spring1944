@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=USTruckSupplies;
-  name=Unloaded Truck Supploes;
+  name=Unloaded Truck Supplies;
   description=Supplies A Small Area;
   activateWhenBuilt=1;
   buildCostEnergy=0;
