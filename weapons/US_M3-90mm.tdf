@@ -9,8 +9,8 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    armor_penetration_1000m=122;
-    armor_penetration_100m=150; //penetration at 30 deg in mm
+    armor_penetration_1000m=107;
+    armor_penetration_100m=151; //penetration at 30 deg in mm
     damagetype=kinetic;
   }
   [damage] {
