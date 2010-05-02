@@ -371,6 +371,7 @@ local armorDefs = {
     "GERBf109",
     "GERFw190",
     "GERFw190G",
+	"GERMe262",
     "GERJu87G",
     "gerv1",
   
