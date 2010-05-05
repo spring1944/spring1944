@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
@@ -61,8 +61,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 
 // tracers
 #define SMALL_TRACER 	2048+4
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -253,7 +251,7 @@ FireWeapon2()
 // Weapon 3 - Coax MG
 QueryWeapon3 (piecenum)
 	{
-	piecenum = coaxFlare;
+	piecenum = coaxflare;
 	}
 
 AimFromWeapon3 (piecenum)
