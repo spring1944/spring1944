@@ -72,6 +72,9 @@
   weapon1=MG34;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon2=Small_Tracer;
+  weapon2=MG34;
+  onlyTargetCategory2=AIR;
+
+  weapon3=Small_Tracer;
 }
 
