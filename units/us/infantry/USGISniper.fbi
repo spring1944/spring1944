@@ -19,7 +19,7 @@
     helptext=Long range, excellent accuracy, excellent damage, low rate of fire. Very effective at pinning troops at long range. Can usually kill with one hit. Can remain undetected when firing.;
   }
   damageModifier=0.265;
-  decloakOnFire=0;
+  decloakOnFire=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
@@ -39,7 +39,7 @@
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
   objectName=USSniper.S3O;
   repairable=0;
-  seismicDistance=840;
+  seismicDistance=0;
 
   seismicSignature=0;
   [sfxtypes] {

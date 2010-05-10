@@ -19,7 +19,7 @@
     killvoice=1;
   }
   damageModifier=0.265;
-  decloakOnFire=0;
+  decloakOnFire=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
@@ -38,7 +38,7 @@
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
   objectName=RUSSniper.S3O;
   repairable=0;
-  seismicDistance=840;
+  seismicDistance=0;
 
   seismicSignature=0;
   [sfxtypes] {

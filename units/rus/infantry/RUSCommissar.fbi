@@ -14,7 +14,7 @@
   category=INFANTRY;
   cloakCost=0;
   cloakCostMoving=0;
-  commander=1;
+  commander=0;
   corpse=RUSSoldier_dead;
   [customParams] {
     canclearmines=1;
