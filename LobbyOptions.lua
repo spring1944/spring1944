@@ -87,6 +87,22 @@ local options = {
 		type   = "string",
 		def    = "http://spring1944.net/phpBB3",
 	}
+	{
+		-- optional
+		key    = "gradient_top",
+		name   = "gradient_top",
+		desc   = "a rgb -> rgb gradient used on controls",
+		type   = "string",
+		def    = "132,125,132|74,69,74",
+	}
+	{
+		-- optional
+		key    = "gradient_bottom",
+		name   = "gradient_bottom",
+		desc   = "another rgb -> rgb gradient used on controls",
+		type   = "string",
+		def    = "0,0,0|57,56,75",
+	}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 }
