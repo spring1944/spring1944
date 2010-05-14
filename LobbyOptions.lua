@@ -86,7 +86,7 @@ local options = {
 		desc   = "the url that is opened in browser if help button is clicked",
 		type   = "string",
 		def    = "http://spring1944.net/phpBB3",
-	}
+	},
 	{
 		-- optional
 		key    = "gradient_top",
@@ -94,7 +94,7 @@ local options = {
 		desc   = "a rgb -> rgb gradient used on controls",
 		type   = "string",
 		def    = "132,125,132|74,69,74",
-	}
+	},
 	{
 		-- optional
 		key    = "gradient_bottom",
