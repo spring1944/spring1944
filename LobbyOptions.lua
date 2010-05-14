@@ -102,6 +102,22 @@ local options = {
 		desc   = "another rgb -> rgb gradient used on controls",
 		type   = "string",
 		def    = "0,0,0|57,56,75",
+	},
+	{
+		-- mandatory
+		key    = "fontcolour",
+		name   = "fontcolour",
+		desc   = "r,g,b",
+		type   = "string",
+		def    = "255,255,255",
+	},
+	{
+		-- mandatory
+		key    = "controls_background",
+		name   = "controls_background",
+		desc   = "r,g,b",
+		type   = "string",
+		def    = "0,0,0",
 	}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
