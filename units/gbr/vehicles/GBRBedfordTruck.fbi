@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=GBRBedfordTruck;
   name=Bedford QL;
-  description=Light Transport Truck;
+  description=Transport/Supply Truck;
   acceleration=0.3;
   airSightDistance=1500;
   brakeRate=0.96;

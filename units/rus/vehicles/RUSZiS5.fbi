@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSZiS5;
   name=ZiS-5;
-  description=Transport Truck;
+  description=Transport/Supply Truck;
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=USGMCTruck;
   name=GMC 2.5t Truck;
-  description=General Transport Truck;
+  description=General Transport/Supply Truck;
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
