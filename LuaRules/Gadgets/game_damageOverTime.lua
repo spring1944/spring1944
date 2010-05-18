@@ -18,7 +18,7 @@ end
 local AddUnitDamage 		=	Spring.AddUnitDamage
 local SpawnCEG 				=	Spring.SpawnCEG
 local GetGameFrame			=	Spring.GetGameFrame
-local GetUnitsInCylinder	=	Spring.GetUnitsInCylinder
+local GetUnitsInSphere		=	Spring.GetUnitsInSphere
 local GetUnitHeight			=	Spring.GetUnitHeight
 local GetUnitPosition		=	Spring.GetUnitPosition
 
@@ -35,7 +35,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 		local damageZone = WeaponDefs[weaponID].areaOfEffect
 		local damagePerSecond = WeaponDefs[weaponID].damages[1]
 		local weaponCeg = WeaponDefs[weaponID].customParams.ceg
-		for _, unitID in ipairs(GetUnitsInCylinder(px, pz, damageZone)) do
+		for _, unitID in ipairs(GetUnitsInSphere(px, py, pz, damageZone)) do
 			burningUnits[unitID] = {
 				exTime = gameFrame,
 				dmgPerSecond = damagePerSecond,
@@ -101,7 +101,7 @@ function gadget:GameFrame(n)
 				SpawnCEG(weaponCeg, px, py, pz)
 				local damageZone = damageZones[damageSiteIndex].damageArea
 				local damagePerSecond = damageZones[damageSiteIndex].dmgPerSecond
-				unitsToDamage = GetUnitsInCylinder(px, pz, damageZone)
+				unitsToDamage = GetUnitsInSphere(px, py, pz, damageZone)
 				if unitsToDamage ~= nil then
 					 for i = 1, #unitsToDamage do
 						local unitToDamage = unitsToDamage[i]
