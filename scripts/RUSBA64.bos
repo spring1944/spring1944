@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, turret, gun, flare, exhaust;
 piece wheel1, wheel2, wheel3;
@@ -63,7 +63,6 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving;
 // tracers
 #define SMALL_TRACER 	2048+1
 
-#include "TurnButton.h"
 
 Create()
 {
@@ -78,8 +77,8 @@ Create()
 RestoreAfterDelay()
 {
 	sleep 5000;
-	turn turret to y-axis <0.000000> speed <100>;
-	turn gun to x-axis <0.000000> speed <100>;
+	turn turret to y-axis 0 speed TURR_TRAVERSE;
+	turn gun to x-axis 0 speed TURR_ELEVATE;
 }
 
 StartMoving()

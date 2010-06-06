@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, turret, sleeve, barrel, flare, brakeleft, brakeright, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
@@ -72,7 +72,6 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 //Pressure Line's stuff
 #define TURNRATE 280 //set to whatever the unit's fbi turnrate is
 
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -144,8 +143,8 @@ SetMaxReloadTime(longestReloadTime)
 RestoreAfterDelay()
 {
 	sleep restore_delay;
-	turn turret to y-axis <0.000000> speed <60>;
-	turn barrel to x-axis <0.000000> speed <10>;
+	turn turret to y-axis 0 speed TURR_TRAVERSE;
+	turn sleeve to x-axis 0 speed TURR_ELEVATE;
 }
 
 SweetSpot(piecenum)

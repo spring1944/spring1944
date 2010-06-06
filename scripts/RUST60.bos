@@ -58,7 +58,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define LARGE_TRACER	2048+4
 #define SMALL_TRACER 	2048+5
 
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -129,8 +128,8 @@ SetMaxReloadTime(longestReloadTime)
 RestoreAfterDelay()
 {
 	sleep restore_delay;
-	turn turret to y-axis <0.000000> speed <60>;
-	turn barrel to x-axis <0.000000> speed <10>;
+	turn turret to y-axis 0 speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 speed TURR_ELEVATE;
 }
 
 Reload()

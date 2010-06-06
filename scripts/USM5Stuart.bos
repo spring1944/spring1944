@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, aaref, aaturret, aagun, aaflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, tracks1, tracks2;
  
@@ -61,8 +61,6 @@ static-var  restore_delay, rock, aim2, aim3, reloading, mainHead, bMoving, tread
 #define MG_MUZZLEFLASH 1024+7
 #define SMALL_MUZZLEFLASH 1024+5
 #define SMALL_MUZZLEDUST 1024+6
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -131,8 +129,8 @@ SetMaxReloadTime(longestReloadTime)
 RestoreAfterDelay()
 {
 	sleep restore_delay;
-	turn turret to y-axis <0.000000> speed <60>;
-	turn barrel to x-axis <0.000000> speed <10>;
+	turn turret to y-axis 0 speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 speed TURR_ELEVATE;
 }
 
 Reload()
