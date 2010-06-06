@@ -8,7 +8,6 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=LogisticsLarge.png;
   buildTime=8200;
   category=BUILDING;
   corpse=Debris_Large;
