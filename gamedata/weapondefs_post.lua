@@ -338,10 +338,31 @@ if (modOptions) then
 end
 
 -- set weapon velocities to arc at 45 degrees at max range
-for name in pairs(WeaponDefs) do 
-	if WeaponDefs[name].customparams then --for whatever reason, customparams needs to be lowercase here.
-		if WeaponDefs[name].customparams.howitzer then
-			WeaponDefs[name].weaponvelocity = math.sqrt(WeaponDefs[name].range * GRAVITY) --Game.gravity)
+for weapName in pairs(WeaponDefs) do 
+	if WeaponDefs[weapName].customparams then --for whatever reason, customparams needs to be lowercase here.
+		if WeaponDefs[weapName].customparams.howitzer then
+			WeaponDefs[weapName].weaponvelocity = math.sqrt(WeaponDefs[weapName].range * GRAVITY) --Game.gravity)
+		end
+		-- add PARA onlytargetcategory to all weapons which use 'smallarm' damagetype customparam
+		if WeaponDefs[weapName].customparams.damagetype == "smallarm" then
+			--Spring.Echo("Weapon " .. weapName .. " is a smallarm")
+			for unitname, ud in pairs(UnitDefs) do
+				--Spring.Echo(unitname)
+				if ud.weapons then
+					--Spring.Echo(unitname .. " has " .. #ud.weapons .. " weapons")
+					for i in pairs(ud.weapons) do
+						--Spring.Echo("weapon " .. i .. " is " .. ud.weapons[i].name)
+						--Spring.Echo(ud.weapons[i].name .. " vs " .. weapName)
+						if string.lower(ud.weapons[i].name) == weapName then
+							local targets = ud.weapons[i].onlytargetcategory
+							if targets then
+								targets = targets .. " PARA"
+								--Spring.Echo("PARA added to " .. unitname .. " weapon " .. weapName)
+							end
+						end
+					end
+				end
+			end
 		end
 	end
 end

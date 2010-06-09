@@ -10,7 +10,7 @@
   buildTime=50;
   canFly=1;
   canMove=1;
-  category=AIR INFANTRY;
+  category=AIR PARA; //INFANTRY;
   corpse=USSoldier_dead;
   [customParams] {
     feartarget=1;
