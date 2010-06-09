@@ -38,13 +38,13 @@ local function tobool(val)
   return false
 end
 
-	--[[if (modOptions and modOptions.unit_los_mult) then
+	if (modOptions and modOptions.unit_los_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.sightdistance) then
 			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
 			end
 		end
-	end]]--
+	end
 
 	if (modOptions and modOptions.maxammo_mult) then
 		for name, ud in pairs(UnitDefs) do
