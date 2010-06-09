@@ -326,8 +326,8 @@ if (modOptions) then
     local bulletCoeff
     bulletCoeff = modOptions.weapon_bulletdamage_mult
     for name in pairs(WeaponDefs) do
-	 if WeaponDefs[name].customParams then
-       if (WeaponDefs[name].customParams.damagetype == 'smallarm') then
+	 if WeaponDefs[name].customparams then
+       if (WeaponDefs[name].customparams.damagetype == 'smallarm') then
          for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
            WeaponDefs[name].damage[armorType] = armorDamage * bulletCoeff
          end
