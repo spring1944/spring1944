@@ -356,7 +356,7 @@ for weapName in pairs(WeaponDefs) do
 						if string.lower(ud.weapons[i].name) == weapName then
 							local targets = ud.weapons[i].onlytargetcategory
 							if targets then
-								targets = targets .. " PARA"
+								ud.weapons[i].onlytargetcategory = targets .. " PARA"
 								--Spring.Echo("PARA added to " .. unitname .. " weapon " .. weapName)
 							end
 						end
