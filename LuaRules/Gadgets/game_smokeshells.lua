@@ -48,6 +48,13 @@ end
 local SmokeSources={}
 local SmokedUnits={}
 
+local DURATION_MULT = 1
+
+local modOptions = Spring.GetModOptions()
+if modOptions and modOptions.smoke_mult then
+	DURATION_MULT = modOptions.smoke_mult
+end
+
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do
 		if weaponDef.customParams.smokeradius then
@@ -93,7 +100,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 		return false
 	end
 	local SmokeRadius=tonumber(tmpWeaponParms.smokeradius) or 0
-	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration) or 0
+	local SmokeDuration=tonumber(tmpWeaponParms.smokeduration) or 0 * DURATION_MULT
 	local SmokeCEG=tmpWeaponParms.smokeceg
 	if (SmokeRadius>0) and (SmokeDuration>0) then
 		local tmpSmoke =

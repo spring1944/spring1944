@@ -299,6 +299,19 @@ local options = {
 	section = '4other',
     step   = 0.1,
   },
+  
+	{
+		key = "smoke_mult",
+		name = "Smoke Duration Multiplier",
+		desc = "Multiplies the duration of smoke shells",
+		type = "number",
+		def = 1.0,
+		min	   = 0.1,
+		max    = 10,
+		section = '4other',
+		step   = 0.1,
+	},
+	
 	{
 		key = "always_visible_flags",
 		name = "Always Visible Flags",
