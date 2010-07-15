@@ -9,7 +9,7 @@ local sidedata = {
 	},
 	{
 	name = "RUS",
-	startUnit = "RUSCommissar1",
+	startUnit = "RUSCommissar",
 	},
 	{
 	name = "US",

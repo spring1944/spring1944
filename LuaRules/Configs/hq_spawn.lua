@@ -42,7 +42,7 @@ local hqDefs = {
 				"gerpak40_truck",
 				},
 	},
-	ruscommissar1 = {
+	ruscommissar = {
 			spread = 200,
 			units = {
 				"rus_platoon_rifle",
