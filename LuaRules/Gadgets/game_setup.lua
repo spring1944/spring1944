@@ -1,16 +1,3 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  file:    game_spawn.lua
---  brief:   spawns start unit and sets storage levels
---  author:  Tobi Vollebregt
---
---  Copyright (C) 2010.
---  Licensed under the terms of the GNU GPL, v2 or later.
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 function gadget:GetInfo()
 	return {
 		name      = "Spawn",
@@ -35,8 +22,23 @@ end
 --------------------------------------------------------------------------------
 
 -- localisations
+-- SyncedRead
+local GetFeaturesInRectangle	= Spring.GetFeaturesInRectangle
+local GetGroundHeight			= Spring.GetGroundHeight
+local GetSideData				= Spring.GetSideData
+local GetTeamInfo				= Spring.GetTeamInfo
+local GetTeamStartPosition		= Spring.GetTeamStartPosition
+local GetTeamUnits				= Spring.GetTeamUnits -- backwards compat
+local GetUnitDefID				= Spring.GetUnitDefID
+local GetUnitPosition			= Spring.GetUnitPosition
+local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
+local TestBuildOrder			= Spring.TestBuildOrder
 -- SyncedCtrl
-local SetTeamResource = Spring.SetTeamResource
+local CreateUnit				= Spring.CreateUnit
+local DestroyFeature			= Spring.DestroyFeature
+local SetTeamResource			= Spring.SetTeamResource
+local SetUnitLineage			= Spring.SetUnitLineage
+
 
 -- constants
 -- Each time an invalid position is randomly chosen, spread is multiplied by SPREAD_MULT.
@@ -54,6 +56,8 @@ local SPREAD_MULT = 1.02
 local CLEARANCE = 125
 -- Minimum distance bewteen each unit and the spawn center (HQ position)
 local HQ_CLEARANCE = 200
+local HALF_MAP_X = Game.mapSizeX/2
+local HALF_MAP_Z = Game.mapSizeZ/2
 
 local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
 local modOptions = Spring.GetModOptions()
@@ -61,18 +65,18 @@ local modOptions = Spring.GetModOptions()
 local function IsPositionValid(unitDefID, x, z)
 	-- Don't place units underwater. (this is also checked by TestBuildOrder
 	-- but that needs proper maxWaterDepth/floater/etc. in the UnitDef.)
-	local y = Spring.GetGroundHeight(x, z)
+	local y = GetGroundHeight(x, z)
 	if (y <= 0) then
 		return false
 	end
 	-- Don't place units where it isn't be possible to build them normally.
-	local test = Spring.TestBuildOrder(unitDefID, x, y, z, 0)
+	local test = TestBuildOrder(unitDefID, x, y, z, 0)
 	if (test ~= 2) then
 		return false
 	end
 	-- Don't place units too close together.
 	local ud = UnitDefs[unitDefID]
-	local units = Spring.GetUnitsInCylinder(x, z, CLEARANCE)
+	local units = GetUnitsInCylinder(x, z, CLEARANCE)
 	if (units[1] ~= nil) then
 		return false
 	end
@@ -80,21 +84,21 @@ local function IsPositionValid(unitDefID, x, z)
 end
 
 local function ClearUnitPosition(unitID)
-	local unitDefID = Spring.GetUnitDefID(unitID)
+	local unitDefID = GetUnitDefID(unitID)
 	local ud = UnitDefs[unitDefID]
 	
-	local px, py, pz = Spring.GetUnitPosition(unitID)
+	local px, py, pz = GetUnitPosition(unitID)
 	local sideLength = math.max(ud.xsize, ud.zsize) * 7 -- why 14/2?
 	local xmin = px - sideLength
 	local xmax = px + sideLength
 	local zmin = pz - sideLength
 	local zmax = pz + sideLength
 			
-	local features = Spring.GetFeaturesInRectangle(xmin, zmin, xmax, zmax)
+	local features = GetFeaturesInRectangle(xmin, zmin, xmax, zmax)
 			
 	if features then
 		for i = 1, #features do
-			Spring.DestroyFeature(features[i])
+			DestroyFeature(features[i])
 		end
 	end
 end
@@ -111,7 +115,7 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 			local x = px + dx
 			local z = pz + dz
 			if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
-				local unitID = Spring.CreateUnit(unitName, x, 0, z, 0, teamID)
+				local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
 				ClearUnitPosition(unitID)
 				break
 			end
@@ -122,16 +126,16 @@ end
 
 local function GetStartUnit(teamID)
 	-- get the team startup info
-	local side = select(5, Spring.GetTeamInfo(teamID))
+	local side = select(5, GetTeamInfo(teamID))
 	local startUnit
 	if (side == "") then
 		-- startscript didn't specify a side for this team
-		local sidedata = Spring.GetSideData()
+		local sidedata = GetSideData()
 		if (sidedata and #sidedata > 0) then
 			startUnit = sidedata[1 + teamID % #sidedata].startUnit
 		end
 	else
-		startUnit = Spring.GetSideData(side)
+		startUnit = GetSideData(side)
 	end
 	return startUnit
 end
@@ -140,20 +144,20 @@ local function SpawnStartUnit(teamID)
 	local startUnit = GetStartUnit(teamID)
 	if (startUnit and startUnit ~= "") then
 		-- spawn the specified start unit
-		local x,y,z = Spring.GetTeamStartPosition(teamID)
+		local x,y,z = GetTeamStartPosition(teamID)
 		-- snap to 16x16 grid
 		x, z = 16*math.floor((x+8)/16), 16*math.floor((z+8)/16)
-		y = Spring.GetGroundHeight(x, z)
+		y = GetGroundHeight(x, z)
 		-- facing toward map center
-		local facing=math.abs(Game.mapSizeX/2 - x) > math.abs(Game.mapSizeZ/2 - z)
-			and ((x>Game.mapSizeX/2) and "west" or "east")
-			or ((z>Game.mapSizeZ/2) and "north" or "south")
+		local facing=math.abs(HALF_MAP_X - x) > math.abs(HALF_MAP_Z - z)
+			and ((x > HALF_MAP_X) and "west" or "east")
+			or ((z > HALF_MAP_Z) and "north" or "south")
 		
 		-- only spawn start unit if not already spawned by engine (backwards compat)
-		if not (#Spring.GetTeamUnits(teamID) > 0) then
-			local unitID = Spring.CreateUnit(startUnit, x, y, z, facing, teamID)
+		if not (#GetTeamUnits(teamID) > 0) then
+			local unitID = CreateUnit(startUnit, x, y, z, facing, teamID)
 			-- set the *team's* lineage root
-			Spring.SetUnitLineage(unitID, teamID, true)
+			SetUnitLineage(unitID, teamID, true)
 		end
 		ClearUnitPosition(Spring.GetTeamUnits(teamID)[1]) -- simplify to CUP(unitID) when removing backwards compat
 		SpawnBaseUnits(teamID, startUnit, x, z)
@@ -186,4 +190,6 @@ function gadget:GameStart()
 			SetStartResources(teamID)
 		end
 	end
+	-- Run once then remove the gadget
+	gadgetHandler:RemoveGadget()
 end
