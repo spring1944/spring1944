@@ -58,6 +58,7 @@ local CLEARANCE = 125
 local HQ_CLEARANCE = 200
 local HALF_MAP_X = Game.mapSizeX/2
 local HALF_MAP_Z = Game.mapSizeZ/2
+local STARTING_LOGISTICS = 1040 + 1 -- Add 1 storage so losing all storage buildings doesn't cause everything to cease working
 
 local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
 local modOptions = Spring.GetModOptions()
@@ -166,13 +167,13 @@ end
 
 local function SetStartResources(teamID)
 	-- in S44, starting logisticsStorage is always 1k
-	SetTeamResource(teamID, "es", 1000)
+	SetTeamResource(teamID, "es", STARTING_LOGISTICS)
 	-- and teams start with full logistics
-	SetTeamResource(teamID, "e", 1000)
+	SetTeamResource(teamID, "e", STARTING_LOGISTICS)
 	-- commandStorage is set through modOptions, default 1k
 	local commandStorage = tonumber(modOptions.command_storage) or 1000
 	SetTeamResource(teamID, "ms", commandStorage)
-	-- and teams start with full command
+	-- and teams start with 1k command
 	SetTeamResource(teamID, "m", 1000)
 end
 
