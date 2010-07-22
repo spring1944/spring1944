@@ -134,7 +134,7 @@ include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
 
 -- locals
-local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
+local CRAIG_Debug_Mode = 1 -- Must be 0 or 1
 local team = {}
 local waypointMgrGameFrameRate = 0
 
@@ -249,20 +249,19 @@ local function CreateTeams()
 	end
 end
 
-function gadget:GameStart()
-	-- This is executed AFTER headquarters / commander is spawned
-	Log("gadget:GameStart")
-	if waypointMgr then
-		waypointMgr.GameStart()
-	end
-
-	-- We perform this only this late, and then fake UnitFinished for all units
-	-- in the team, to support random faction (implemented by swapping out HQ
-	-- in GameStart of that gadget.)
-	CreateTeams()
-end
-
 function gadget:GameFrame(f)
+	if f == 1 then
+		-- This is executed AFTER headquarters / commander is spawned
+		Log("gadget:GameFrame 1")
+		if waypointMgr then
+			waypointMgr.GameStart()
+		end
+
+		-- We perform this only this late, and then fake UnitFinished for all units
+		-- in the team, to support random faction (implemented by swapping out HQ
+		-- in GameStart of that gadget.)
+		CreateTeams()
+	end
 	-- waypointMgr update
 	if waypointMgr and f % waypointMgrGameFrameRate < .1 then
 		waypointMgr.GameFrame(f)
