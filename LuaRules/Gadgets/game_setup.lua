@@ -138,6 +138,14 @@ local function GetStartUnit(teamID)
 	else
 		startUnit = GetSideData(side)
 	end
+	-- Check for GM / Random team
+	if (modOptions.gm_team_enable == "0") then
+		if startUnit == "gmtoolbox" then
+			local randSide = math.random(1,4)	
+			side, startUnit = Spring.GetSideData(randSide)
+		end
+	end
+	GG.teamSide[teamID] = side
 	return startUnit
 end
 
@@ -160,6 +168,15 @@ local function SpawnStartUnit(teamID)
 			-- set the *team's* lineage root
 			SetUnitLineage(unitID, teamID, true)
 		end
+		-- more backwards compat gubbins
+		local unitID = GetTeamUnits(teamID)[1]
+		local unitDefID = GetUnitDefID(unitID)
+		local unitName = UnitDefs[unitDefID].name
+		if unitName == "gmtoolbox" then
+			CreateUnit(startUnit, x, y, z, facing, teamID)
+			Spring.DestroyUnit(unitID, false, true)
+		end
+
 		ClearUnitPosition(Spring.GetTeamUnits(teamID)[1]) -- simplify to CUP(unitID) when removing backwards compat
 		SpawnBaseUnits(teamID, startUnit, x, z)
 	end
@@ -179,10 +196,15 @@ end
 
 
 function gadget:GameStart()
-	-- spawn start units
 	local gaiaTeamID = Spring.GetGaiaTeamID()
 	local teams = Spring.GetTeamList()
 	
+	--Make a global list of the side for each team, because with random faction
+	--it is not trivial to find out the side of a team using Spring's API.
+	-- data set in GetStartUnit function
+	GG.teamSide = {}
+
+	-- spawn start units
 	for i = 1,#teams do
 		local teamID = teams[i]
 		-- don't spawn a start unit for the Gaia team
