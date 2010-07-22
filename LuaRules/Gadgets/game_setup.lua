@@ -175,6 +175,8 @@ local function SpawnStartUnit(teamID)
 			local unitName = UnitDefs[unitDefID].name
 			if unitName == "gmtoolbox" then
 				CreateUnit(startUnit, x, y, z, facing, teamID)
+				GG.Delay.DelayCall(Spring.SetTeamResource, {teamID, "es", STARTING_LOGISTICS}, 1)
+				GG.Delay.DelayCall(Spring.SetTeamResource, {teamID, "e", STARTING_LOGISTICS}, 1)
 				Spring.DestroyUnit(unitID, false, true)
 			end
 		end
