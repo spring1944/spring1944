@@ -134,7 +134,7 @@ include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
 
 -- locals
-local CRAIG_Debug_Mode = 1 -- Must be 0 or 1
+local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
 local team = {}
 local waypointMgrGameFrameRate = 0
 
