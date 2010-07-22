@@ -142,7 +142,7 @@ local function GetStartUnit(teamID)
 	if (modOptions.gm_team_enable == "0") then
 		if startUnit == "gmtoolbox" then
 			local randSide = math.random(1,4)	
-			side, startUnit = Spring.GetSideData(randSide)
+			side, startUnit = GetSideData(randSide)
 		end
 	end
 	GG.teamSide[teamID] = side
@@ -201,7 +201,7 @@ function gadget:GameStart()
 	
 	--Make a global list of the side for each team, because with random faction
 	--it is not trivial to find out the side of a team using Spring's API.
-	-- data set in GetStartUnit function
+	-- data set in GetStartUnit function. NB. The only use for this is flags
 	GG.teamSide = {}
 
 	-- spawn start units
