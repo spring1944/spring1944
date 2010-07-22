@@ -169,12 +169,14 @@ local function SpawnStartUnit(teamID)
 			SetUnitLineage(unitID, teamID, true)
 		end
 		-- more backwards compat gubbins
-		local unitID = GetTeamUnits(teamID)[1]
-		local unitDefID = GetUnitDefID(unitID)
-		local unitName = UnitDefs[unitDefID].name
-		if unitName == "gmtoolbox" then
-			CreateUnit(startUnit, x, y, z, facing, teamID)
-			Spring.DestroyUnit(unitID, false, true)
+		if (modOptions.gm_team_enable == "0") then
+			local unitID = GetTeamUnits(teamID)[1]
+			local unitDefID = GetUnitDefID(unitID)
+			local unitName = UnitDefs[unitDefID].name
+			if unitName == "gmtoolbox" then
+				CreateUnit(startUnit, x, y, z, facing, teamID)
+				Spring.DestroyUnit(unitID, false, true)
+			end
 		end
 
 		ClearUnitPosition(Spring.GetTeamUnits(teamID)[1]) -- simplify to CUP(unitID) when removing backwards compat
@@ -201,7 +203,7 @@ function gadget:GameStart()
 	
 	--Make a global list of the side for each team, because with random faction
 	--it is not trivial to find out the side of a team using Spring's API.
-	-- data set in GetStartUnit function. NB. The only use for this is flags
+	-- data set in GetStartUnit function. NB. The only use for this currently is flags
 	GG.teamSide = {}
 
 	-- spawn start units
