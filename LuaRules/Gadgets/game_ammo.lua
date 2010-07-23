@@ -131,7 +131,7 @@ local function Resupply(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local supplierID = FindSupplier(unitID)
 	if supplierID then
-		local teamID = GetUnitTeam(supplierID)
+		local teamID = GetUnitTeam(unitID)
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
 		if logisticsLevel < 50 then
 			return
