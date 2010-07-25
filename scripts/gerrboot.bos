@@ -8,11 +8,11 @@ piece base, hull, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleev
 #define MIN_SMOKE_PERIOD	240
 
 //********************Turret turn speeds
-#define AA37_TURRET_TURN		<30>
+#define AA37_TURRET_TURN		<60>
 #define AA37_TURRET_PITCH		<30>
 
-#define AA20_TURRET_TURN		<45>
-#define AA20_TURRET_PITCH		<45>
+#define AA20_TURRET_TURN		<90>
+#define AA20_TURRET_PITCH		<80>
 
 //*********************Recoil
 #define AA37_GUN_RECOIL			[0.4]
