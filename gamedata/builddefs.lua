@@ -1017,7 +1017,7 @@ buildoptions =
       "gbrspitfiremkxiv",
       "gbrspitfiremkix",
       "gbrtyphoon",
-      "ruscommander",
+      --"ruscommander",
 	"russtorage",
 	"russupplydepot",
       "rusbarracks",

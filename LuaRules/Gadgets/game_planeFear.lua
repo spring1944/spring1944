@@ -40,7 +40,7 @@ local hqIDs = {}
 --------------------------------------------------------------------------------
 function gadget:Initialize()
 	-- adjust bugOutLevel using the multiplier
-	local fear_mult = tonumber(modOptions.air_fear_mult) or 1
+	local fear_mult = tonumber(Spring.GetModOptions().air_fear_mult) or 1
 	if (fear_mult ~= 1) then
 		bugOutLevel = bugOutLevel * fear_mult
 	end
