@@ -248,6 +248,18 @@ local options = {
 		step   = 0.25,
 	},
 
+  	{
+		key = "air_fear_mult",
+		name = "Aircraft fear tolerance multiplier",
+		desc = "Changes the amount of AA fire required to scare off a plane (key = 'air_fear_mult')",
+	    type   = "number",
+		def    = 1,
+		min    = 0,
+		max    = 100,
+		section= '1balance',
+		step   = 1,
+	},
+
 	{
 	key    = '4other',
 	name   = 'Other Settings',
