@@ -670,34 +670,8 @@ buildoptions =
         --------------------
 
 
-  ruscommander =
-  {
-    "ruspshack",
-    "rusbarracks",
-    "rusgunyard",
-    --"ruszis5",
-    "apminesign",
-    "atminesign",
-    "tankobstacle",
-    "russtorage",
-    "ruspg117",
-    "pontoonraft",
-  },
-  
-  ruscommissar1 =
-  {
-    "rusbarracks",
-    "rusgunyard",
-    "apminesign",
-    "atminesign",
-    "tankobstacle",
-    "russtorage",
-    "ruspg117",
-    "pontoonraft",
-  },
   ruspshack =
   {
-    --"ruscommissar1",
     "rus_platoon_partisan",
   },
 
@@ -1017,7 +991,6 @@ buildoptions =
       "gbrspitfiremkxiv",
       "gbrspitfiremkix",
       "gbrtyphoon",
-      --"ruscommander",
 	"russtorage",
 	"russupplydepot",
       "rusbarracks",
