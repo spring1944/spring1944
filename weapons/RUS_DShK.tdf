@@ -21,7 +21,7 @@
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=1e-21;
-  soundStart=US_50CAL;
+  soundStart=RUS_DShK;
   soundTrigger=1;
   sprayAngle=300;
   targetMoveError=0.25;
@@ -54,7 +54,7 @@
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=1e-21;
-  soundStart=US_50CAL;
+  soundStart=RUS_DShK;
   soundTrigger=1;
   sprayAngle=300;
   targetMoveError=0.25;
