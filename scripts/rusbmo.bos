@@ -40,7 +40,8 @@ piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_4
 #define SIG_AIM2			8
 #define SIG_AIM3			16
 #define SIG_AIM4			32
-#define SIG_DEATH			64
+#define SIG_AIM5			64
+#define SIG_DEATH			128
 
 #define SMOKEPIECE	hull
 
@@ -59,7 +60,7 @@ piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_4
 #define XSMALL_MUZZLEFLASH 1024+8
 #define XSMALL_MUZZLEDUST 1024+9
 
-static-var					CurrentSpeed, bMoving, aamgFlare, mgFlare;
+static-var					CurrentSpeed, bMoving, aamgFlare, mgFlare, bAimingAA;
 
 WorkingLoop()
 {
@@ -133,6 +134,7 @@ Create()
 {
 	start-script HideFlares();
 	bMoving = FALSE;
+	bAimingAA = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
@@ -167,7 +169,7 @@ StartMoving()
 
 RestoreTurret()
 {
-	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_AIM4|SIG_DEATH;
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_AIM4|SIG_AIM5|SIG_DEATH;
 	sleep RESTORE_PERIOD;
 
 	turn turret_37 to y-axis <0> speed AA37_TURRET_TURN;
@@ -195,6 +197,49 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1|SIG_DEATH;
+	bAimingAA = TRUE;
+	turn turret_37 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37 around y-axis;
+	wait-for-turn sleeve_37 around x-axis;
+	start-script RestoreTurret();
+	bAimingAA = FALSE;
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+//	show flare_37;
+//	hide flare_37;
+}
+
+Shot1(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare_37;
+	emit-sfx XSMALL_MUZZLEDUST from flare_37;
+	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37 to z-axis [0] speed AA37_GUN_BACK_SPEED;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare_37;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret_37;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if(bAimingAA)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
 	turn turret_37 to y-axis heading speed AA37_TURRET_TURN;
 	turn sleeve_37 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
 	wait-for-turn turret_37 around y-axis;
@@ -203,31 +248,35 @@ AimWeapon1(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon1()
+FireWeapon2()
 {
 //	show flare_37;
+//	hide flare_37;
+}
+
+Shot2(foo)
+{
 	emit-sfx XSMALL_MUZZLEFLASH from flare_37;
 	emit-sfx XSMALL_MUZZLEDUST from flare_37;
 	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_37 to z-axis [0] speed AA37_GUN_BACK_SPEED;
-//	hide flare_37;
 }
 
-QueryWeapon2(piecenum)
+QueryWeapon3(piecenum)
 {
 	piecenum = flare_45;
 }
 
-AimFromWeapon2(piecenum)
+AimFromWeapon3(piecenum)
 {
 	piecenum = turret_45;
 }
 
-AimWeapon2(heading, pitch)
+AimWeapon3(heading, pitch)
 {
-	signal SIG_AIM2;
-	set-signal-mask SIG_AIM2|SIG_DEATH;
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
 	turn turret_45 to y-axis heading speed GUN45_TURRET_TURN;
 	turn sleeve_45 to x-axis (0-pitch) speed GUN45_TURRET_PITCH;
 	wait-for-turn turret_45 around y-axis;
@@ -236,7 +285,7 @@ AimWeapon2(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon2()
+FireWeapon3()
 {
 //	show flare_45;
 	emit-sfx XSMALL_MUZZLEFLASH from flare_45;
@@ -247,7 +296,7 @@ FireWeapon2()
 //	hide flare_45;
 }
 
-QueryWeapon3(piecenum)
+QueryWeapon4(piecenum)
 {
 	if(aamgFlare)
 	{
@@ -257,15 +306,15 @@ QueryWeapon3(piecenum)
 	}
 }
 
-AimFromWeapon3(piecenum)
+AimFromWeapon4(piecenum)
 {
 	piecenum = turret_aa;
 }
 
-AimWeapon3(heading, pitch)
+AimWeapon4(heading, pitch)
 {
-	signal SIG_AIM3;
-	set-signal-mask SIG_AIM3|SIG_DEATH;
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
 	turn turret_aa to y-axis heading speed AAMG_TURRET_TURN;
 	turn guns_aa to x-axis (0-pitch) speed AAMG_TURRET_PITCH;
 	wait-for-turn turret_aa around y-axis;
@@ -274,40 +323,22 @@ AimWeapon3(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon3()
+FireWeapon4()
+{
+}
+
+Shot4(foo)
 {
 	if(aamgFlare)
 	{
-		//show flare_aa_1;
 		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_1;
-		//sleep 200;
-		//hide flare_aa_1;
 	} else {
-		//show flare_aa_2;
 		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_aa_2;
-		//sleep 200;
-		//hide flare_aa_2;
 	}
 	aamgFlare = !aamgFlare;
 }
 
-QueryWeapon4(piecenum)
+QueryWeapon5(piecenum)
 {
 	if(mgFlare)
 	{
@@ -317,15 +348,15 @@ QueryWeapon4(piecenum)
 	}
 }
 
-AimFromWeapon4(piecenum)
+AimFromWeapon5(piecenum)
 {
 	piecenum = turret_mg;
 }
 
-AimWeapon4(heading, pitch)
+AimWeapon5(heading, pitch)
 {
-	signal SIG_AIM4;
-	set-signal-mask SIG_AIM4|SIG_DEATH;
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
 	turn turret_mg to y-axis heading speed MG_TURRET_TURN;
 	turn guns_mg to x-axis (0-pitch) speed MG_TURRET_PITCH;
 	wait-for-turn turret_mg around y-axis;
@@ -334,39 +365,20 @@ AimWeapon4(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon4()
+FireWeapon5()
+{
+}
+
+Shot5(foo)
 {
 	if(mgFlare)
 	{
-		//show flare_mg_1;
 		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_1;
-		//sleep 200;
-		//hide flare_mg_1;
 	} else {
-		//show flare_mg_2;
 		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
-		sleep 67;
-		emit-sfx MG_MUZZLEFLASH from flare_mg_2;
-		//sleep 200;
-		//hide flare_mg_2;
 	}
 	mgFlare = !mgFlare;
 }
-
 
 Killed(severity, corpsetype)
 {
