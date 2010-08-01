@@ -73,7 +73,7 @@ piece base, hull, main_turret, sleeve, barrel, flare, turret_37, sleeve_37, barr
 
 #define VISIBLE_PERIOD	5000
 
-static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, flak20mmBurstRate;
+static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, flak20mmBurstRate, bAimAA1, bAimAA2, bAimAA3;
 
 WorkingLoop()
 {
@@ -118,6 +118,9 @@ Create()
 	start-script HideFlares();
 	bMoving = FALSE;
 	MaxSpeed = get MAX_SPEED;
+	bAimAA1 = FALSE;
+	bAimAA2 = FALSE;
+	bAimAA3 = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
@@ -375,21 +378,18 @@ AimWeapon3(heading, pitch)
 {
 	signal SIG_AIM3;
 	set-signal-mask SIG_AIM3|SIG_DEATH;
+	bAimAA1 = TRUE;
 	turn turret_20_1 to y-axis heading speed AA20_TURRET_TURN;
 	turn sleeve_20_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
 	wait-for-turn turret_20_1 around y-axis;
 	wait-for-turn sleeve_20_1 around x-axis;
 	start-script RestoreTurret();
+	bAimAA1 = FALSE;
 	return (TRUE);
 }
 
 FireWeapon3()
 {
-/*	show flare_20_1;
-	move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel_20_1 to z-axis 0 speed AA20_GUN_BACK_SPEED;
-	hide flare_20_1;*/
 }
 
 Shot3(foo)
@@ -415,21 +415,18 @@ AimWeapon4(heading, pitch)
 {
 	signal SIG_AIM4;
 	set-signal-mask SIG_AIM4|SIG_DEATH;
+	bAimAA2 = TRUE;
 	turn turret_20_2 to y-axis heading speed AA20_TURRET_TURN;
 	turn sleeve_20_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
 	wait-for-turn turret_20_2 around y-axis;
 	wait-for-turn sleeve_20_2 around x-axis;
 	start-script RestoreTurret();
+	bAimAA2 = FALSE;
 	return (TRUE);
 }
 
 FireWeapon4()
 {
-/*	show flare_20_2;
-	move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel_20_2 to z-axis 0 speed AA20_GUN_BACK_SPEED;
-	hide flare_20_2;*/
 }
 
 Shot4(foo)
@@ -455,6 +452,125 @@ AimWeapon5(heading, pitch)
 {
 	signal SIG_AIM5;
 	set-signal-mask SIG_AIM5|SIG_DEATH;
+	bAimAA3 = TRUE;
+	turn turret_20_3 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_3 around y-axis;
+	wait-for-turn sleeve_20_3 around x-axis;
+	start-script RestoreTurret();
+	bAimAA3 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+}
+
+Shot5(foo)
+{
+	move barrel_20_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_3;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_3;
+	sleep flak20mmBurstRate;
+	move barrel_20_3 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = flare_20_1;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = turret_20_1;
+}
+
+AimWeapon6(heading, pitch)
+{
+	if(bAimAA1)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn turret_20_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_1 around y-axis;
+	wait-for-turn sleeve_20_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+}
+
+Shot6(foo)
+{
+	move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_1;
+	sleep flak20mmBurstRate;
+	move barrel_20_1 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon7(piecenum)
+{
+	piecenum = flare_20_2;
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum = turret_20_2;
+}
+
+AimWeapon7(heading, pitch)
+{
+	if(bAimAA2)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn turret_20_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_2 around y-axis;
+	wait-for-turn sleeve_20_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon7()
+{
+}
+
+Shot7(foo)
+{
+	move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_2;
+	sleep flak20mmBurstRate;
+	move barrel_20_2 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon8(piecenum)
+{
+	piecenum = flare_20_3;
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = turret_20_3;
+}
+
+AimWeapon8(heading, pitch)
+{
+	if(bAimAA3)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
 	turn turret_20_3 to y-axis heading speed AA20_TURRET_TURN;
 	turn sleeve_20_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
 	wait-for-turn turret_20_3 around y-axis;
@@ -463,16 +579,11 @@ AimWeapon5(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon5()
+FireWeapon8()
 {
-/*	show flare_20_3;
-	move barrel_20_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel_20_3 to z-axis 0 speed AA20_GUN_BACK_SPEED;
-	hide flare_20_3;*/
 }
 
-Shot5(foo)
+Shot8(foo)
 {
 	move barrel_20_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	emit-sfx XSMALL_MUZZLEFLASH from flare_20_3;
