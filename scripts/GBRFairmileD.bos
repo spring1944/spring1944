@@ -82,7 +82,7 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #include "exptype.h"
 #include "sfxtype.h"
 #include "damageSmoke.h"
-static-var					MaxSpeed, CruiseTriggerSpeed, bMoving, flare05_1, flare05_2, is20mmAimed;
+static-var					MaxSpeed, CruiseTriggerSpeed, bMoving, flare05_1, flare05_2, is20mmAimed, bAimAA;
 
 WorkingLoop()
 {
@@ -178,6 +178,7 @@ Create()
 	is20mmAimed = FALSE;
 	flare05_1 = TRUE;
 	flare05_2 = TRUE;
+	bAimAA = FALSE;
 	MaxSpeed = get MAX_SPEED;
 	CruiseTriggerSpeed = MaxSpeed * CRUISE_MODE_START_MULTIPLIER / CRUISE_MODE_START_DIVIDER;
 	call-script InitTurrets();
@@ -410,6 +411,7 @@ AimWeapon7(heading, pitch)
 {
 	signal SIG_AIM7;
 	set-signal-mask SIG_AIM7|SIG_DEATH;
+	bAimAA = TRUE;
 	is20mmAimed = FALSE;
 	turn turret20 to y-axis heading speed AA20_TURRET_TURN;
 	turn sleeve20 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
@@ -417,16 +419,12 @@ AimWeapon7(heading, pitch)
 	wait-for-turn sleeve20 around x-axis;
 	start-script RestoreTurret();
 	is20mmAimed = TRUE;
+	bAimAA = FALSE;
 	return (TRUE);
 }
 
 FireWeapon7()
 {
-/*	show flare20_1;
-	move barrel20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide flare20_1;*/
 }
 
 Shot7(foo)
@@ -453,20 +451,17 @@ AimWeapon8(heading, pitch)
 {
 	signal SIG_AIM7;
 	set-signal-mask SIG_AIM7|SIG_DEATH;
+	bAimAA = TRUE;
 	while(!is20mmAimed)
 	{
 		sleep 100;
 	}
+	bAimAA = FALSE;
 	return (TRUE);
 }
 
 FireWeapon8()
 {
-/*	show flare20_2;
-	move barrel20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
-	sleep 200;
-	move barrel20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide flare20_2;*/
 }
 
 Shot8(foo)
@@ -509,44 +504,17 @@ AimWeapon9(heading, pitch)
 
 FireWeapon9()
 {
+}
+
+Shot9(foo)
+{
 	if (flare05_1)
 	{
 		emit-sfx MEDIUM_TRACER from flare05_1_1;
 		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-		emit-sfx MEDIUM_TRACER from flare05_1_1;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_1;
-		sleep 75;
-/*		show flare05_1_1;
-		sleep 200;
-		hide flare05_1_1;*/
-	} else
-	{
+	} else {
 		emit-sfx MEDIUM_TRACER from flare05_1_2;
 		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-		emit-sfx MEDIUM_TRACER from flare05_1_2;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_1_2;
-		sleep 75;
-/*		show flare05_1_2;
-		sleep 200;
-		hide flare05_1_2;*/
 	}
 	flare05_1 = !flare05_1;
 }
@@ -581,46 +549,17 @@ AimWeapon10(heading, pitch)
 
 FireWeapon10()
 {
+}
+
+Shot10(foo)
+{
 	if (flare05_2)
 	{
 		emit-sfx MEDIUM_TRACER from flare05_2_1;
 		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-		emit-sfx MEDIUM_TRACER from flare05_2_1;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_1;
-		sleep 75;
-/*
-		show flare05_2_1;
-		sleep 200;
-		hide flare05_2_1;*/
-	} else
-	{
+	} else {
 		emit-sfx MEDIUM_TRACER from flare05_2_2;
 		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-		emit-sfx MEDIUM_TRACER from flare05_2_2;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-		emit-sfx MG_MUZZLEFLASH from flare05_2_2;
-		sleep 75;
-/*
-		show flare05_2_2;
-		sleep 200;
-		hide flare05_2_2;*/
 	}
 	flare05_2 = !flare05_2;
 }
@@ -649,27 +588,12 @@ AimWeapon11(heading, pitch)
 
 FireWeapon11()
 {
-/*	show flare303_1;
-	sleep 200;
-	hide flare303_1;*/
+}
+
+Shot11(foo)
+{
 	emit-sfx MG_MUZZLEFLASH from flare303_1;
 	emit-sfx SMALL_TRACER from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	emit-sfx SMALL_TRACER from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	emit-sfx SMALL_TRACER from flare303_1;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_1;
-	emit-sfx SMALL_TRACER from flare303_1;
-	sleep 100;
 }
 
 QueryWeapon12(piecenum)
@@ -696,27 +620,93 @@ AimWeapon12(heading, pitch)
 
 FireWeapon12()
 {
-/*	show flare303_2;
+}
+
+Shot12(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from flare303_2;
+	emit-sfx SMALL_TRACER from flare303_2;
+}
+
+QueryWeapon16(piecenum)
+{
+	piecenum = flare20_1;
+}
+
+AimFromWeapon16(piecenum)
+{
+	piecenum = turret20;
+}
+
+AimWeapon16(heading, pitch)
+{
+	if(bAimAA)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM7;
+	set-signal-mask SIG_AIM7|SIG_DEATH;
+	is20mmAimed = FALSE;
+	turn turret20 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve20 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret20 around y-axis;
+	wait-for-turn sleeve20 around x-axis;
+	start-script RestoreTurret();
+	is20mmAimed = TRUE;
+	return (TRUE);
+}
+
+FireWeapon16()
+{
+}
+
+Shot16(foo)
+{
+	emit-sfx LARGE_TRACER from flare20_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare20_1;
+	move barrel20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
-	hide flare303_2;*/
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	emit-sfx SMALL_TRACER from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	emit-sfx SMALL_TRACER from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	emit-sfx SMALL_TRACER from flare303_2;
-	sleep 100;
-	emit-sfx MG_MUZZLEFLASH from flare303_2;
-	emit-sfx SMALL_TRACER from flare303_2;
-	sleep 100;
+	move barrel20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon17(piecenum)
+{
+	piecenum = flare20_2;
+}
+
+AimFromWeapon17(piecenum)
+{
+	piecenum = turret20;
+}
+
+AimWeapon17(heading, pitch)
+{
+	if(bAimAA)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM7;
+	set-signal-mask SIG_AIM7|SIG_DEATH;
+	while(!is20mmAimed)
+	{
+		sleep 100;
+	}
+	return (TRUE);
+}
+
+FireWeapon17()
+{
+}
+
+Shot17(foo)
+{
+	emit-sfx LARGE_TRACER from flare20_2;
+	emit-sfx XSMALL_MUZZLEFLASH from flare20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare20_2;
+	move barrel20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
 Killed(severity, corpsetype)

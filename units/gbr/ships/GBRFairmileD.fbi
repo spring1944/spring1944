@@ -111,16 +111,25 @@
 
   weapon7=20mmOerlikonaa;
   maxAngleDif7=300;
-  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory7=AIR;
   weaponMainDir7=0 0 -1;
 
   weapon8=20mmOerlikonaa;
-  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory8=AIR;
   weaponSlaveTo8=7;
 
   weapon9=twin05calVickers;
   maxAngleDif9=270;
   onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=1 0 0;
+
+  weapon16=20mmOerlikonhe;
+  maxAngleDif16=300;
+  onlyTargetCategory16=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir16=0 0 -1;
+
+  weapon17=20mmOerlikonhe;
+  onlyTargetCategory17=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponSlaveTo17=16;
 }
 
