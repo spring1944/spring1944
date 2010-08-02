@@ -106,21 +106,23 @@ end
 
 local function SpawnBaseUnits(teamID, startUnit, px, pz)
 	local spawnList = hqDefs[startUnit]
-	for i = 1, #spawnList.units do
-		local unitName = spawnList.units[i]
-		local udid = UnitDefNames[unitName].id
-		local spread = spawnList.spread
-		while (spread < MAX_SPREAD) do
-			local dx = math.random(-spread, spread)
-			local dz = math.random(-spread, spread)
-			local x = px + dx
-			local z = pz + dz
-			if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
-				local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
-				ClearUnitPosition(unitID)
-				break
+	if spawnList then
+		for i = 1, #spawnList.units do
+			local unitName = spawnList.units[i]
+			local udid = UnitDefNames[unitName].id
+			local spread = spawnList.spread
+			while (spread < MAX_SPREAD) do
+				local dx = math.random(-spread, spread)
+				local dz = math.random(-spread, spread)
+				local x = px + dx
+				local z = pz + dz
+				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
+					local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
+					ClearUnitPosition(unitID)
+					break
+				end
+				spread = spread * SPREAD_MULT
 			end
-			spread = spread * SPREAD_MULT
 		end
 	end
 end
