@@ -49,12 +49,14 @@ if (gadgetHandler:IsSyncedCode()) then
 					local x,y,z = GetUnitPosition(spawnerID)
 					local teamID = GetUnitTeam(spawnerID)
 					local newUnit = CreateUnit("ruspartisanrifle", x + math.random(50),y,z + math.random(50), 1, teamID, false)
-					local cmds = GetUnitCommands(spawnerID)
-					for i = 1, cmds.n do
-						local cmd = cmds[i]
-						GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
+					if newUnit then -- unit was successfully created
+						local cmds = GetUnitCommands(spawnerID)
+						for i = 1, cmds.n do
+							local cmd = cmds[i]
+							GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
+						end
+						Spring.SendMessageToTeam(teamID, "Partisan spawned!")
 					end
-					Spring.SendMessageToTeam(teamID, "Partisan spawned!")
 				end
 			end
 		end
