@@ -22,15 +22,17 @@ local GiveOrderToUnit	= Spring.GiveOrderToUnit
 -- constants
 local INTERVAL = 20 -- 20 seconds
 local PROBABILITY = 0.40 -- 60% chance of spawn
+local SPAWN_LIMIT = 10 -- Number of partisans a single supply dump can support at once
 -- variables
 local spawners = {}
+local couples = {}
 
 if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
 		if ud.name:lower() == "ruspresource" then
-			spawners[unitID] = true
+			spawners[unitID] = 0
 		end
 	end
 
@@ -39,23 +41,35 @@ if (gadgetHandler:IsSyncedCode()) then
 		if ud.name:lower() == "ruspresource" then
 			spawners[unitID] = nil
 		end
+		if ud.name:lower() == "ruspartisanrifle" then
+			local spawnerID = couples[unitID]
+			if spawnerID then -- spawner is still alive
+				local numSpawned = spawners[spawnerID]
+				spawners[spawnerID] = numSpawned - 1
+			end
+			couples[unitID] = nil
+		end
 	end
 
 	function gadget:GameFrame(n)
 		if n % (INTERVAL * 30) < 0.1 then
-			for spawnerID in pairs(spawners) do
-				local chance = math.random()
-				if chance >= PROBABILITY then
-					local x,y,z = GetUnitPosition(spawnerID)
-					local teamID = GetUnitTeam(spawnerID)
-					local newUnit = CreateUnit("ruspartisanrifle", x + math.random(50),y,z + math.random(50), 1, teamID, false)
-					if newUnit then -- unit was successfully created
-						local cmds = GetUnitCommands(spawnerID)
-						for i = 1, cmds.n do
-							local cmd = cmds[i]
-							GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
+			for spawnerID, numSpawned in pairs(spawners) do
+				if numSpawned < SPAWN_LIMIT then
+					local chance = math.random()
+					if chance >= PROBABILITY then
+						local x,y,z = GetUnitPosition(spawnerID)
+						local teamID = GetUnitTeam(spawnerID)
+						local newUnit = CreateUnit("ruspartisanrifle", x + math.random(50),y,z + math.random(50), 1, teamID, false)
+						if newUnit then -- unit was successfully created
+							spawners[spawnerID] = numSpawned + 1
+							couples[newUnit] = spawnerID
+							local cmds = GetUnitCommands(spawnerID)
+							for i = 1, cmds.n do
+								local cmd = cmds[i]
+								GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
+							end
+							Spring.SendMessageToTeam(teamID, "Partisan spawned!")
 						end
-						Spring.SendMessageToTeam(teamID, "Partisan spawned!")
 					end
 				end
 			end
