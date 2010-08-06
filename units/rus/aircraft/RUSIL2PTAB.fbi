@@ -105,7 +105,7 @@
   weaponSlaveTo4=1;
 
   weapon5=ptab;
-  onlyTargetCategory5=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=OPENVEH HARDVEH;
   weaponMainDir5=0 -0.18 1;
 
   weapon6=m2browningaa;
