@@ -14,7 +14,10 @@
     damagetype=shapedcharge;
   }
   [damage] {
-    default=4896;
+    default=4896; // Same damage as RPG43, but in fact it had nearly 3 time more weight of explosive than rpg43. Nerfed for balance.
+    infantry=250; // I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
+    lightBuildings=275; // Nerfed to avoid usages different of historical usage. Still very effective vs storages.
+    bunkers=500;
   }
   dropped=1;
   edgeEffectiveness=0.5;
