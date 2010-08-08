@@ -1,8 +1,9 @@
-VFS.Include('scripts/UnitScriptConstants.lua')
+--VFS.Include('scripts/UnitScriptConstants.lua')
 
 local deg, rad = math.deg, math.rad
 
-local MoveRate=false, iFear
+local MoveRate=false
+local iFear = 0
 local RecoverRate		=	1000
 local RecoverConstant	=	1
 
@@ -47,7 +48,7 @@ LARGE_TRACER		= 	2048+8
 local sound_files	=	{'sounds/rus_air_il2_select', 'sounds/rus_air_underaafire', 'sounds/rus_air_return'}
 
 function script.PlaneVoice(phraseNum)
-	local my_id = GetUnitValue(GET_CONSTANTS.my_id)
+	local my_id = GetUnitValue(COB.MY_ID)
 	local x, y, z = Spring.GetUnitPosition(my_id)
 	Spring.PlaySoundFile(sound_files[phraseNum], 1, x, y, z)
 end
@@ -107,15 +108,15 @@ end
 function SmokeControl()
 	local healthpercent, sleeptime, smoketype
 	-- wait until construction ends
-	while GetUnitValue(GET_CONSTANTS.build_percent_left) > 0 do
+	while GetUnitValue(COB.BUILD_PERCENT_LEFT) > 0 do
 		Sleep(400)
 	end
 	while (1 == 1) do
-		healthpercent = GetUnitValue(GET_CONSTANTS.health)
+		healthpercent = GetUnitValue(COB.HEALTH)
 		if healthpercent < 66 then
-			smoketype = SFXTYPE.blacksmoke
+			smoketype = SFX.BLACK_SMOKE
 			if math.random(66) < healthpercent then
-				smoketype = SFXTYPE.whitesmoke
+				smoketype = SFX.WHITE_SMOKE
 			end
 			EmitSfx(base, smoketype)
 		end
@@ -140,7 +141,7 @@ function script.MoveRate2()
 end
 
 function script.Create()
-	SetUnitValue(GET_CONSTANTS.standingfireorders, 1)
+	SetUnitValue(COB.STANDINGFIREORDERS, 1)
 	MoveRate = false
 	StartThread(SmokeControl)
 	SetUnitValue(1024, 0)
@@ -166,22 +167,24 @@ function script.HitByWeaponId(z,x,id,damage)
 		Return(100)
 	end
 
-	local health = GetUnitValue(GET_CONSTANTS.health)
-	local bombReloadFrame = GetUnitValue(GET_CONSTANTS.weapon_reloadstate, 1)
-	local curFrame = GetUnitValue(GET_CONSTANTS.game_frame)
+	local health = GetUnitValue(COB.HEALTH)
+	local bombReloadFrame = GetUnitValue(COB.WEAPON_RELOADSTATE, 1)
+	local curFrame = GetUnitValue(COB.GAME_FRAME)
 	
 	if (health <= BugOutLevel) and (bombReloadFrame < (curFrame + 1)) then
-		GetUnitValue(GET_CONSTANTS.weapon_projectile_speed, -1, 100)
+		GetUnitValue(COB.WEAPON_PROJECTILE_SPEED, -1, 100)
 		EmitSfx(bombemit1, 2048+1)
 		Hide(bomb1)
 		Hide(bomb2)
-		GetUnitValue(GET_CONSTANTS.weapon_reloadstate, -1, curFrame+108000);
+		GetUnitValue(COB.WEAPON_RELOADSTATE, -1, curFrame+108000);
 	end
 	return 100
 end
 
-function luaFunction(arg1)
-	arg1 = iFear
+function luaFunction(foo)
+	foo = iFear
+	SetUnitValue(1025, iFear)
+	return iFear
 end
 
 -- bombs
@@ -316,11 +319,10 @@ end
 
 function script.Killed(recentDamage, maxHealth)
 	local corpsetype = 1
-	Explode(base, EXPLOSION.bitmaponly)
-	Explode(fuselage, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
-	Explode(wing1, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
-	Explode(wing2, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
-	Explode(gear1, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
-	Explode(gear2, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
-	Explode(propeller, EXPLOSION.fall + EXPLOSION.smoke + EXPLOSION.fire + EXPLOSION.explode_on_hit)
+	Explode(fuselage, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+	Explode(wing1, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+	Explode(wing2, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+	Explode(gear1, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+	Explode(gear2, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+	Explode(propeller, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
 end
