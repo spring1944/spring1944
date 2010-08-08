@@ -23,12 +23,8 @@
     enginesound=p51b-;
     enginesoundnr=16;
     feartarget=1;
-    lowammolevel=1;
-    maxammo=8;
     planevoice=1;
     proptexture=prop3.tga;
-    weaponcost=-1;
-    weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
   fireState=0;
@@ -73,7 +69,6 @@
   turnRadius=3000;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
-  maxAngleDif=20;
   wingAngle=0.1;
   wingDrag=0.1;
 
@@ -81,32 +76,32 @@
 
   weapon9=Large_Tracer;
 
-  weapon1=VYa23mm;
-  maxAngleDif1=10;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir1=0 0 1;
+  weapon1=ptab;
+  onlyTargetCategory1=OPENVEH HARDVEH;
+  weaponMainDir1=0 -0.18 1;
 
-  weapon2=YVa23mm;
-  maxAngleDif2=10;
+  weapon2=VYa23mm;
+  maxAngleDif2=30;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
-  weaponSlaveTo2=1;
 
-  weapon3=m2browningamg;
-  maxAngleDif3=10;
+  weapon3=VYa23mm;
+  maxAngleDif3=30;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
-  weaponSlaveTo3=1;
+  weaponSlaveTo3=2;
 
   weapon4=m2browningamg;
-  maxAngleDif4=10;
+  maxAngleDif4=30;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 1;
-  weaponSlaveTo4=1;
+  weaponSlaveTo4=2;
 
-  weapon5=ptab;
-  onlyTargetCategory5=OPENVEH HARDVEH;
-  weaponMainDir5=0 -0.18 1;
+  weapon5=m2browningamg;
+  maxAngleDif5=30;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=0 0 1;
+  weaponSlaveTo5=2;
 
   weapon6=m2browningaa;
   maxAngleDif6=90;
