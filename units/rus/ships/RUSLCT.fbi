@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=1600;
+  buildCostMetal=3200;
   buildPic=ruslct.png;
-  buildTime=1600;
+  buildTime=3200;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 -30.0 0.0;
@@ -50,7 +50,7 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  sightDistance=1600;
+  sightDistance=840;
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
