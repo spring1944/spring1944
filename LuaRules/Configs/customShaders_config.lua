@@ -68,9 +68,9 @@ for i=1,#UnitDefs do
 	    -- strip non-printable chars (and tex2 filename!) off the string
 		tex1 = tex1:sub(1,tex1:find("[^%w%p]") - 1)
         local basefilename = tex1:sub(1,-5)--:gsub("%....","")
-        --[[if (tonumber(basefilename:sub(-1,-1))) then
+        if (tonumber(basefilename:sub(-1,-1))) then
           basefilename = basefilename:sub(1,-2)
-        end--]] -- This code removes trailing numbers, but many S44 units end in a number, e.g. SU-76
+        end
         if (basefilename:sub(-1,-1) == "_") then
           basefilename = basefilename:sub(1,-2)
         end
