@@ -58,7 +58,7 @@
   side=GBR;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=GBRChurchill;
+  soundcategory=GBRSP;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;
