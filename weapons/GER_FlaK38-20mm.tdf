@@ -5,7 +5,7 @@
   burst=5;
   burstRate=0.16;
   canAttackGround=0;
-  collisionSize=4;
+  collisionSize=1;
   craterBoost=0;
   craterMult=0;
   [customParams] {
@@ -16,7 +16,7 @@
   [damage] {
     default=110;
   }
-  edgeEffectiveness=0.95;
+  edgeEffectiveness=0.75;
   explosionGenerator=custom:HE_Small;
   explosionSpeed=30;
   fireStarter=0;
@@ -26,15 +26,15 @@
   intensity=0.9;
   lineofsight=1;
   predictBoost=0.99;
-  range=1700;
-  reloadTime=1.5;
+  range=2125;
+  reloadTime=1;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   size=0.0001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GER_20mm;
-  sprayAngle=475;
-  tolerance=700;
+  sprayAngle=500;
+  tolerance=1400;
   turret=1;
   weaponTimer=1;
   weaponVelocity=5000;

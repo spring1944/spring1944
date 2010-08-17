@@ -3,9 +3,9 @@
   name=Dug-In FlaK 38;
   description=Stationary Anti-Aircraft Gun;
   activateWhenBuilt=1;
-  airSightDistance=2500;
+  airSightDistance=1250;
   buildCostEnergy=0;
-  buildCostMetal=2500;
+  buildCostMetal=1250;
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;

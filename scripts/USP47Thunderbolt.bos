@@ -13,7 +13,6 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 #define SIG_BANK			2
 #define SIG_FEARRECOVERY	4
 
-#define BugOutLevel			90 //% of health when pilot drops bombs for more speed
 //tracers
 #define MEDIUM_TRACER 	2048+9
 
@@ -190,16 +189,6 @@ HitByWeaponId(z,x,id,damage)
 	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
 	start-script FearRecovery();
 	return (100);
-	}
-	
-	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
-	{
-	get WEAPON_PROJECTILE_SPEED (-1, 100);
-	emit-sfx 2048+1 from bombemit;
-	hide bomb;
-	var gameFrame;
-	gameFrame = get GAME_FRAME;
-	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
 	}
 	return (100); 
 }

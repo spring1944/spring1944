@@ -31,11 +31,11 @@ if (gadgetHandler:IsSyncedCode()) then
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
+local fuelLossRate = 10 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
 local bugOutLevel = 1 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
-local hqIDs = {}
-
+local accuracyTable = {}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 function gadget:Initialize()
@@ -51,15 +51,17 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if ud.canFly then
 		local planeScriptID = Spring.GetCOBScriptID(unitID, "luaFunction")
   		if (planeScriptID) then
+			local properAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")
 			SetUnitRulesParam(unitID, "suppress", 0)
 			planeScriptIDs[unitID] = planeScriptID
+			accuracyTable[unitID] = properAccuracy
 		end
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID)
-
+  accuracyTable[unitID] = nil
   planeScriptIDs[unitID] = nil
 end
 
@@ -72,20 +74,22 @@ end
 
 
 function gadget:GameFrame(n)
-	if (n % (0.25*30) < 0.1) then
+	if (n % (1*30) < 0.1) then
 	  for unitID, funcID in pairs(planeScriptIDs) do
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
+		local fuel = Spring.GetUnitFuel(unitID)
 		local teamID = Spring.GetUnitTeam(unitID)
 		--Spring.Echo("Plane TeamID", teamID)
-			if suppression > bugOutLevel then
+			if suppression > 1 then
+				local newFuel = fuel - fuelLossRate
+				local oldAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")
+				Spring.SetUnitWeaponState(unitID, 0, {accuracy = oldAccuracy*suppression})
+				Spring.Echo("unit's fear level: ", suppression)
 				SetUnitRulesParam(unitID, "suppress", suppression)
-				local px, py, pz = Spring.GetTeamStartPosition(teamID)
-				GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
-				--Spring.Echo("Move order issued,", "Fear level:", suppression)
-				SetUnitNoSelect(unitID, true)
+				Spring.SetUnitFuel(unitID, newFuel)
+				Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel) 
 			else
-				--Spring.Echo("No Fear, selectable:", suppression)
-				SetUnitNoSelect(unitID, false)
+				Spring.SetUnitWeaponState(unitID, 0, {accuracy = accuracyTable[unitID]})
 			end
 		end
 	end

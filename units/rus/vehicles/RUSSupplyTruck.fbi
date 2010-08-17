@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=RUSSupplyTruck;
   name=Supply Truck;
-  description=Deploys Into Supply Point;
+  description=Deploys Into Storage Point;
   acceleration=0.3;
   brakeRate=0.45;
   buildCostEnergy=0;

@@ -16,7 +16,6 @@ static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 
 #define SIG_BANK 				2
 #define SIG_FEARRECOVERY		4
-#define BugOutLevel				90 //% of health when plane ditches its bombs
 #define MEDIUM_TRACER 			2048+4
 #define LARGE_TRACER			2048+5
 
@@ -196,15 +195,6 @@ HitByWeaponId(z,x,id,damage)
 	return (100);
 	}
 	
-	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (1)) < (get (GAME_FRAME)) + 1))
-	{
-	get WEAPON_PROJECTILE_SPEED (-1, 100);
-	emit-sfx 2048+1 from bombemit;
-	hide bomb;
-	var gameFrame;
-	gameFrame = get GAME_FRAME;
-	get WEAPON_RELOADSTATE (-1, (gameFrame+108000));
-	}
 	return (100); 
 }
 

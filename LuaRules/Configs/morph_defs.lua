@@ -557,6 +557,16 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+  
+     russupplytruck =
+  {
+    into = 'russtorage',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+  },
+  
 }
 --
 -- Here's an example of why active configuration

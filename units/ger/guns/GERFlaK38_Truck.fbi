@@ -3,12 +3,12 @@
   name=Towed 2.0cm FlaK 38;
   description=Anti-Aircraft Gun;
   acceleration=0.3;
-  airSightDistance=1500;
+  airSightDistance=1250;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=2500;
+  buildCostMetal=1250;
   buildPic=GERFlaK38.png;
-  buildTime=2500;
+  buildTime=1500;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GEROpelBlitz_Destroyed;
