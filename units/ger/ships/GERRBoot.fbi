@@ -17,6 +17,7 @@
   corpse=GERRBoot_dead;
   [customParams] {
     dontCount=0;
+    hasturnbutton=1;
   }
   energyMake=0;
   energyUse=0;

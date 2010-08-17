@@ -14,6 +14,7 @@
   [customParams] {
     ammoSupplier=1;
     supplyRange=350;
+    hasturnbutton=1;
   }
   energyMake=0;
   energyUse=0;

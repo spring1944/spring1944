@@ -20,6 +20,7 @@
     maxammo=26;
     weaponcost=25;
     weaponswithammo=2;
+    hasturnbutton=1;
   }
   energyMake=0;
   energyUse=0;

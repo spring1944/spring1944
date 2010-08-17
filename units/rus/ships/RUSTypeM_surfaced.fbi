@@ -14,6 +14,7 @@
   corpse=RUSTypeM_dead;
   [customParams] {
     dontCount=1;
+    hasturnbutton=1;
   }
   energyMake=0;
   energyUse=0;
