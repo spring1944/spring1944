@@ -4,12 +4,12 @@
   description=General Logistics & Ammunition Stockpile;
   activateWhenBuilt=1;
   buildCostEnergy=0;
-  buildCostMetal=3040;
+  buildCostMetal=4500;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
   buildPic=LogisticsLarge.png;
-  buildTime=3040;
+  buildTime=4500;
   category=BUILDING;
   corpse=Debris_Large;
   [customParams] {

@@ -110,7 +110,7 @@ gadget.UnitUnloaded = gadget.UnitCreated
 
 
 local function ProcessUnit(unitID, unitDefID, teamID)
-	local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 1.25
+	local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 0.15
 	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
 	local reload = WeaponDefs[weaponID].reload
 	local reloadFrameLength = (reload*30)
