@@ -1,6 +1,6 @@
 [bofors40mmaa] {
   name=40mm Bofors Anti-Aircraft Gun;
-  areaOfEffect=80;
+  areaOfEffect=60;
   burnblow=1;
   burst=4;
   burstRate=0.5;
@@ -33,7 +33,7 @@
   size=0.001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GEN_37mmAA;
-  sprayAngle=700;
+  sprayAngle=750;
   tolerance=1400;
   turret=1;
   weaponTimer=1;

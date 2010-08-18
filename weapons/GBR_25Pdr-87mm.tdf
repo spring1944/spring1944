@@ -25,7 +25,7 @@
   intensity=0.1;
   leadlimit=0.05;
   noselfdamage=1;
-  range=6320;
+  range=7780;
   reloadtime=8; //4.5
   rendertype=1;
   rgbcolor=0.5 0.5 0.0;

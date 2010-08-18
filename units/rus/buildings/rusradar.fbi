@@ -36,7 +36,7 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  workerTime=150;
+  workerTime=100;
   yardmap=occco ccccc ccccc ccccc occco;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;

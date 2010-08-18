@@ -1,6 +1,6 @@
 [flak3820mmaa] {
   name=2cm FlaK 30/38 High-Explosive Shells;
-  areaOfEffect=40;
+  areaOfEffect=30;
   burnblow=1;
   burst=5;
   burstRate=0.16;
@@ -16,7 +16,7 @@
   [damage] {
     default=110;
   }
-  edgeEffectiveness=0.75;
+  edgeEffectiveness=0.45;
   explosionGenerator=custom:HE_Small;
   explosionSpeed=30;
   fireStarter=0;
@@ -33,7 +33,7 @@
   size=0.0001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GER_20mm;
-  sprayAngle=500;
+  sprayAngle=600;
   tolerance=1400;
   turret=1;
   weaponTimer=1;

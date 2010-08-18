@@ -31,8 +31,8 @@ if (gadgetHandler:IsSyncedCode()) then
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
-local fuelLossRate = 10 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
-local bugOutLevel = 1 --amount of fear where the plane bugs out back to HQ
+local fuelLossRate = 6 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
+local bugOutLevel = 4 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
 local accuracyTable = {}
@@ -87,7 +87,16 @@ function gadget:GameFrame(n)
 				Spring.Echo("unit's fear level: ", suppression)
 				SetUnitRulesParam(unitID, "suppress", suppression)
 				Spring.SetUnitFuel(unitID, newFuel)
-				Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel) 
+				Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
+				if suppression > bugOutLevel then
+					local px, py, pz = Spring.GetTeamStartPosition(teamID)
+					GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
+					--Spring.Echo("Move order issued,", "Fear level:", suppression)
+					SetUnitNoSelect(unitID, true)
+				else
+					--Spring.Echo("No Fear, selectable:", suppression)
+					SetUnitNoSelect(unitID, false)
+				end
 			else
 				Spring.SetUnitWeaponState(unitID, 0, {accuracy = accuracyTable[unitID]})
 			end
