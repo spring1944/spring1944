@@ -4,11 +4,11 @@
   description=Logistics & Ammunition Stockpile Bunker;
   activateWhenBuilt=1;
   buildCostEnergy=0;
-  buildCostMetal=8200;
+  buildCostMetal=12300;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=8200;
+  buildTime=12300;
   category=BUILDING;
   corpse=Debris_Large;
   [customParams] {
@@ -36,7 +36,5 @@
   TEDClass=ENERGY;
   useBuildingGroundDecal=1;
   yardmap=o;
-
-  weapon1=bigsupply;
 }
 
