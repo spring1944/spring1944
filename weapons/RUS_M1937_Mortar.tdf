@@ -39,8 +39,8 @@
   [customParams] {
     armor_hit_side=top;
     damagetype=explosive;
-	smokeradius=140;
-	smokeduration=15;
+	smokeradius=160;
+	smokeduration=25;
 	smokeceg=SMOKESHELL_Small;
   }
   [damage] {

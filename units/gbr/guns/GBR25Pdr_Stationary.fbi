@@ -18,7 +18,7 @@
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
-    weaponcost=30;
+    weaponcost=20;
     weaponswithammo=2;
   }
   flankingBonusDir=0.0 0.0 1.0;

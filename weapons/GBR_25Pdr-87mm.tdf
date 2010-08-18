@@ -1,6 +1,6 @@
 [25pdrhe] {
   name=25 pounder light howitzer high-explosive ammunition;
-  accuracy=850;
+  accuracy=720;
   areaofeffect=94;
   ballistic=1;
   collisionsize=4;
@@ -26,7 +26,7 @@
   leadlimit=0.05;
   noselfdamage=1;
   range=7780;
-  reloadtime=8; //4.5
+  reloadtime=7.2; //4.5
   rendertype=1;
   rgbcolor=0.5 0.5 0.0;
   separation=2;
@@ -43,7 +43,7 @@
 
 [25pdrsmoke] {
   name=25 Pounder Light Howitzer Smoke Ammunition;
-  accuracy=850;
+  accuracy=720;
   areaOfEffect=30;
   ballistic=1;
   collisionSize=4;
@@ -51,8 +51,8 @@
   craterMult=0;
   [customParams] {
     damagetype=explosive;
-	smokeradius=220;
-	smokeduration=25;
+	smokeradius=250;
+	smokeduration=40;
 	smokeceg=SMOKESHELL_Medium;
     howitzer=1;
   }
@@ -69,8 +69,8 @@
   intensity=0.1;
   leadLimit=0.05;
   noSelfDamage=1;
-  range=6320;
-  reloadTime=8; //4.5
+  range=7780;
+  reloadTime=7.2; //4.5
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;
