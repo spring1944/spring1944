@@ -1,0 +1,55 @@
+#include "constants.h"
+piece  base;
+
+#define lifetime	2250
+Create()
+{
+	dont-cache base;
+	dont-shade base;
+	sleep lifetime;
+	var me;
+	me = GET MY_ID;
+	GET KILL_UNIT(me, FALSE, TRUE);
+	
+}
+
+AimFromWeapon1(Func_Var_1)
+{
+	Func_Var_1 = 0;
+}
+
+QueryWeapon1(Func_Var_1)
+{
+	Func_Var_1 = 0;
+}
+
+AimWeapon1(Func_Var_1, Func_Var_2)
+{
+	return (1);
+}
+
+FireWeapon1()
+{
+	var me;
+	me = GET MY_ID;
+	get KILL_UNIT(me, 0, 1)
+	
+}
+
+AimFromWeapon2(Func_Var_1)
+{
+	Func_Var_1 = 0;
+}
+
+QueryWeapon2(Func_Var_1)
+{
+	Func_Var_1 = 0;
+}
+
+AimWeapon2(Func_Var_1, Func_Var_2)
+{
+}
+
+FireWeapon2()
+{
+}

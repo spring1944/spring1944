@@ -1,0 +1,28 @@
+[unitinfo] {
+  unitname=binocSpot;
+  name=binocSpot;
+  description=binocSpot;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildTime=1;
+  category=FLAG;
+  [customParams] {
+    dontCount=1;
+  }
+  footprintX=1;
+  footprintZ=1;
+  iconType=mines;
+  maxDamage=8000;
+  maxSlope=20000;
+  maxWaterDepth=50000;
+  objectName=APMine2.S3O;
+  [sfxtypes] {
+  }
+  levelground=0;
+  sightDistance=200;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SPECIAL;
+  yardmap=y;
+}
+

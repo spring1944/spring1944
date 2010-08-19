@@ -1,0 +1,31 @@
+[binocs] {
+  name=BINOCS;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  burnblow=1;
+  collideFeature=0;
+  collideFriendly=0;
+  collisionSize=1;
+  [customParams] {
+    damagetype=none;
+    binocs=1;
+  }
+  [damage] {
+    default=0;
+  }
+  edgeEffectiveness=1;
+  explosionGenerator=custom:nothing;
+  fireStarter=1;
+  lineofsight=1;
+  noSelfDamage=1;
+  range=2000;
+  reloadTime=2;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-12;
+  tolerance=600;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1500;
+}

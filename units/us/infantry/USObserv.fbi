@@ -59,12 +59,11 @@
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;
-  upright=1;
-  badTargetCategory=BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED;
 
-  weapon1=M1911A1Colt;
-  badTargetCategory1=OPENVEH SOFTVEH;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon1=binocs;
+  onlyTargetCategory1=NONE;
+  weapon2=m1911a1colt;
+  badTargetCategory2=OPENVEH SOFTVEH;
+  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 }
 

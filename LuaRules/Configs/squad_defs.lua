@@ -137,7 +137,6 @@ local squadDefs = {
 		"gbrvickers",
 		"gbrbren",
 		"gbrobserv",
-		"gbrobserv",
 	},
 
 	["gbr_platoon_sniper"] =
@@ -151,7 +150,6 @@ local squadDefs = {
 		"gbr3inmortar",
 		"gbr3inmortar",
 		"gbr3inmortar",
-		"gbrobserv",
 		"gbrobserv",
 	},
 
@@ -316,8 +314,6 @@ local squadDefs = {
 		"germg42",
 		"germg42",
 		"germg42",
-		"gerobserv",
-		"gerobserv",
 	},
 	
 	["ger_platoon_sniper"] = 
@@ -331,7 +327,6 @@ local squadDefs = {
 		"gergrw34",
 		"gerobserv",
 		"gergrw34",
-		"gerobserv",
 		"gergrw34",
 	},
 	
@@ -496,7 +491,6 @@ local squadDefs = {
 		"rusmaxim",
 		"rusdp",
 		"rusobserv",
-		"rusobserv",
 	},
 
 	["rus_platoon_sniper"] =
@@ -510,7 +504,6 @@ local squadDefs = {
 		"rusmortar",
 		"rusmortar",
 		"rusmortar",
-		"rusobserv",
 		"rusobserv",
 	},
 
@@ -645,7 +638,6 @@ local squadDefs = {
 		"usgimg",
 		"usgimg",
 		"usobserv",
-		"usobserv",
 	},
 	
 	["us_platoon_sniper"] = 
@@ -659,7 +651,6 @@ local squadDefs = {
 		"usm1mortar",
 		"usm1mortar",
 		"usm1mortar",
-		"usobserv",
 		"usobserv",
 	},
 	

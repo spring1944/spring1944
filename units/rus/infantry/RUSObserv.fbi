@@ -61,8 +61,10 @@
   upright=1;
   badTargetCategory=BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED;
 
-  weapon1=TT33;
-  badTargetCategory1=OPENVEH SOFTVEH;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weapon1=binocs;
+  onlyTargetCategory1=NONE;
+  weapon2=TT33;
+  badTargetCategory2=OPENVEH SOFTVEH;
+  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 }
 
