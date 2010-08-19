@@ -2,12 +2,13 @@
 
 piece  base, turret, mantlet, barrel, flare, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
-static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, MGAiming, treadnum;
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, MGAiming, treadnum, originalLos;
 
 // Signal definitions
 #define SIG_MOVE	1
 #define SIG_AIM		2 // Main Cannon
 #define SIG_AIM_2	4 // Coax MG
+#define SIG_AIM_3	6 //spotting weapon
 
 // definitions for SmokeUnit_GPL
 #define SMOKEPIECE1	base
@@ -92,6 +93,7 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	originalLos = GET LOS_RADIUS;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
@@ -135,6 +137,7 @@ SetMaxReloadTime(longestReloadTime)
 RestoreAfterDelay()
 {
 	sleep restore_delay;
+	SET LOS_RADIUS to originalLos;	
 	turn turret to y-axis <0.000000> speed <60>;
 	turn barrel to x-axis <0.000000> speed <10>;
 }
@@ -151,7 +154,8 @@ SweetSpot(piecenum)
 	piecenum = base;
 }
 
-// Weapon 1 - Main cannon, HE
+
+// Weapon 1 - spotting weapon
 QueryWeapon1(piecenum)
 {
 	piecenum = flare;
@@ -164,43 +168,22 @@ AimFromWeapon1(piecenum)
 
 AimWeapon1(heading, pitch)
 {
-	if (aim2) return 0; // don't aim weap1 if aiming AP
-	
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-	GunAiming=1;
-	mainHead = heading;
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn turret around y-axis;
 	wait-for-turn mantlet around x-axis;
-	
-	start-script RestoreAfterDelay();
-	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	GunAiming=0;
 	return 1;
 }
 
 FireWeapon1()
 {
-	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX
-	//emit-sfx 1  from flare;
-	emit-sfx MEDIUM_MUZZLEFLASH from flare;
-	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	// barrel recoil
-	move barrel to z-axis RECOIL now;
-	sleep 200;
-	move barrel to z-axis 0 speed RETURN_SPEED;
-	
-	rock = FALSE;
-	start-script Reload(); // start reload timer after firing
+	SET LOS_RADIUS to (originalLos/2);
 	return 0;
 }
 
-// Weapon 2 - Main cannon, AP
+// Weapon 1 - Main cannon, HE
 QueryWeapon2(piecenum)
 {
 	piecenum = flare;
@@ -212,11 +195,12 @@ AimFromWeapon2(piecenum)
 }
 
 AimWeapon2(heading, pitch)
-{	
-	aim2 = TRUE;
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-
+{
+	if (aim2) return 0; // don't aim weap1 if aiming AP
+	
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+	GunAiming=1;
 	mainHead = heading;
 	turn turret to y-axis heading speed TURR_TRAVERSE;
 	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
@@ -224,8 +208,8 @@ AimWeapon2(heading, pitch)
 	wait-for-turn mantlet around x-axis;
 	
 	start-script RestoreAfterDelay();
-	aim2 = FALSE;
 	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	GunAiming=0;
 	return 1;
 }
 
@@ -248,21 +232,69 @@ FireWeapon2()
 	return 0;
 }
 
+// Weapon 2 - Main cannon, AP
+QueryWeapon3(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon3(heading, pitch)
+{	
+	aim2 = TRUE;
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+
+	mainHead = heading;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn mantlet around x-axis;
+	
+	start-script RestoreAfterDelay();
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon3()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	//emit-sfx 1  from flare;
+	emit-sfx MEDIUM_MUZZLEFLASH from flare;
+	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
 // Weapon 3 - Coax MG
-QueryWeapon3 (piecenum)
+QueryWeapon4 (piecenum)
 	{
 	piecenum = coaxflare;
 	}
 
-AimFromWeapon3 (piecenum)
+AimFromWeapon4 (piecenum)
 	{
 	piecenum = turret;
 	}
 
-AimWeapon3(heading, pitch)
+AimWeapon4(heading, pitch)
 	{
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
+	signal SIG_AIM_3;
+	set-signal-mask SIG_AIM_3;
 	MGAiming=1;
 	if (mainHead > 0) {
 	  if (heading < mainHead - COAX_ARC || heading > mainHead + COAX_ARC) return 0;
@@ -279,7 +311,7 @@ AimWeapon3(heading, pitch)
 	return (1);
 	}
 
-FireWeapon3()
+FireWeapon4()
 	{
 	rock = FALSE;
 	emit-sfx SMALL_TRACER from coaxflare;
@@ -299,22 +331,22 @@ FireWeapon3()
 	return(0);
 	}
 	
-AimFromWeapon4(piecenum) //bulletproof effect 
+AimFromWeapon5(piecenum) //bulletproof effect 
 {
 	piecenum = base;
 }
 
-QueryWeapon4(piecenum)
+QueryWeapon5(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon4(heading, pitch)
+AimWeapon5(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon4()
+FireWeapon5()
 {
 return (0);
 }

@@ -14,6 +14,7 @@
   [customParams] {
     dontCount=1;
   }
+  energyStorage=1040;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;

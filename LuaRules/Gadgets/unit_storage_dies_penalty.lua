@@ -23,7 +23,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
   local _, _, _, _, buildProgress = GetUnitHealth(unitID)
   if buildProgress == 1 then
     local eStore = UnitDefs[unitDefID].energyStorage
-    if (eStore > 0) then
+    if (eStore > 0 and UnitDefs[unitDefID].name ~= "russupplytruck") then
       local eCur, eMax = GetTeamResources(unitTeam, "energy")
       local stored = (eStore / eMax)
 	  UseTeamResource(unitTeam, "e", (eCur * stored))

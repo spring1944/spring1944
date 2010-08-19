@@ -51,7 +51,7 @@
   }
   showNanoFrame=0;
   side=RUS;
-  sightDistance=750;
+  sightDistance=450;
   smoothAnim=0;
   soundcategory=RUSTank;
   stealth=1;
@@ -65,20 +65,23 @@
   turnRate=150;
   badTargetCategory=FLAG;
 
-  weapon1=F3476mmHE;
-  badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon1=KV1Optics;
+  onlyTargetCategory1=BUILDING SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  
+  weapon2=F3476mmHE;
+  badTargetCategory2=OPENVEH HARDVEH;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=F3476mmAP;
-  onlyTargetCategory2=OPENVEH HARDVEH;
+  weapon3=F3476mmAP;
+  onlyTargetCategory3=OPENVEH HARDVEH;
 
-  weapon3=DT;
-  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weapon4=DT;
+  onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon4=.50calproof;
+  weapon5=.50calproof;
 
-  weapon5=TankFearShield;
+  weapon6=TankFearShield;
 
-  weapon8=Small_Tracer_Green;
+  weapon7=Small_Tracer_Green;
 }
 
