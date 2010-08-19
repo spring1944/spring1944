@@ -164,7 +164,7 @@ function gadget:GameFrame(n)
 					if teamID ~= flagTeamID then
 						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
-							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
 						end
 					end
 				end
@@ -190,7 +190,7 @@ function gadget:GameFrame(n)
 							if flagCapStatuses[flagID][teamID] < 0 then
 								flagCapStatuses[flagID][teamID] = 0
 							end
-							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID])
+							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
 						end
 					end
 					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
@@ -198,19 +198,19 @@ function gadget:GameFrame(n)
 							Spring.SendMessageToTeam(teamID, "Flag Captured!")
 							TransferUnit(flagID, teamID, false)
 							SetUnitRulesParam(flagID, "lifespan", 0)
-							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1)
+							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1, {public = true})
 							CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
 						else
 							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 							TransferUnit(flagID, GAIA_TEAM_ID, false)
 							SetUnitRulesParam(flagID, "lifespan", 0)
-							SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1)
+							SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1, {public = true})
 							CallCOBScript(flagID, "ShowFlag", 0, 0)
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
 						for cleanTeamID = 0, #teams-1 do
 							flagCapStatuses[flagID][cleanTeamID] = 0
-							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0)
+							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0, {public = true})
 						end
 					end
 					-- cleanup defenders
