@@ -155,7 +155,35 @@ SweetSpot(piecenum)
 }
 
 
-// Weapon 1 - spotting weapon
+// Weapon 6 - spotting weapon
+QueryWeapon6(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon6(heading, pitch)
+{
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn mantlet around x-axis;
+	return 1;
+}
+
+FireWeapon6()
+{
+	SET LOS_RADIUS to (originalLos/2);
+	return 0;
+}
+
+// Weapon 1 - Main cannon, HE
 QueryWeapon1(piecenum)
 {
 	piecenum = flare;
@@ -167,34 +195,6 @@ AimFromWeapon1(piecenum)
 }
 
 AimWeapon1(heading, pitch)
-{
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
-	wait-for-turn mantlet around x-axis;
-	return 1;
-}
-
-FireWeapon1()
-{
-	SET LOS_RADIUS to (originalLos/2);
-	return 0;
-}
-
-// Weapon 1 - Main cannon, HE
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon2(heading, pitch)
 {
 	if (aim2) return 0; // don't aim weap1 if aiming AP
 	
@@ -210,6 +210,54 @@ AimWeapon2(heading, pitch)
 	start-script RestoreAfterDelay();
 	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	GunAiming=0;
+	return 1;
+}
+
+FireWeapon1()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	//emit-sfx 1  from flare;
+	emit-sfx MEDIUM_MUZZLEFLASH from flare;
+	emit-sfx MEDIUM_MUZZLEDUST from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+// Weapon 2 - Main cannon, AP
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{	
+	aim2 = TRUE;
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+
+	mainHead = heading;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn mantlet around x-axis;
+	
+	start-script RestoreAfterDelay();
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	return 1;
 }
 
@@ -232,66 +280,18 @@ FireWeapon2()
 	return 0;
 }
 
-// Weapon 2 - Main cannon, AP
-QueryWeapon3(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon3(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon3(heading, pitch)
-{	
-	aim2 = TRUE;
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
-
-	mainHead = heading;
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
-	wait-for-turn mantlet around x-axis;
-	
-	start-script RestoreAfterDelay();
-	aim2 = FALSE;
-	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	return 1;
-}
-
-FireWeapon3()
-{
-	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX
-	//emit-sfx 1  from flare;
-	emit-sfx MEDIUM_MUZZLEFLASH from flare;
-	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	// barrel recoil
-	move barrel to z-axis RECOIL now;
-	sleep 200;
-	move barrel to z-axis 0 speed RETURN_SPEED;
-	
-	rock = FALSE;
-	start-script Reload(); // start reload timer after firing
-	return 0;
-}
-
 // Weapon 3 - Coax MG
-QueryWeapon4 (piecenum)
+QueryWeapon3(piecenum)
 	{
 	piecenum = coaxflare;
 	}
 
-AimFromWeapon4 (piecenum)
+AimFromWeapon3(piecenum)
 	{
 	piecenum = turret;
 	}
 
-AimWeapon4(heading, pitch)
+AimWeapon3(heading, pitch)
 	{
 	signal SIG_AIM_3;
 	set-signal-mask SIG_AIM_3;
@@ -311,7 +311,7 @@ AimWeapon4(heading, pitch)
 	return (1);
 	}
 
-FireWeapon4()
+FireWeapon3()
 	{
 	rock = FALSE;
 	emit-sfx SMALL_TRACER from coaxflare;
@@ -331,7 +331,27 @@ FireWeapon4()
 	return(0);
 	}
 	
-AimFromWeapon5(piecenum) //bulletproof effect 
+AimFromWeapon4(piecenum) //bulletproof effect 
+{
+	piecenum = base;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon4(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon4()
+{
+return (0);
+}
+
+AimFromWeapon5(piecenum) //tracer
 {
 	piecenum = base;
 }
@@ -343,7 +363,7 @@ QueryWeapon5(piecenum)
 
 AimWeapon5(heading, pitch)
 {
-return (1);
+return (0);
 }
 
 FireWeapon5()

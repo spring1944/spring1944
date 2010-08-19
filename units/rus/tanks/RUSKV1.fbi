@@ -65,23 +65,21 @@
   turnRate=150;
   badTargetCategory=FLAG;
 
-  weapon1=KV1Optics;
-  onlyTargetCategory1=BUILDING SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon6=KV1Optics;
+  onlyTargetCategory7=BUILDING SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   
-  weapon2=F3476mmHE;
-  badTargetCategory2=OPENVEH HARDVEH;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon1=KwK75mmL71HE;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon3=F3476mmAP;
-  onlyTargetCategory3=OPENVEH HARDVEH;
+  weapon2=KwK75mmL71AP;
+  onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon4=DT;
-  onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weapon3=DT;
+  onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
-  weapon5=.50calproof;
+  weapon4=.50calproof;
 
-  weapon6=TankFearShield;
-
-  weapon7=Small_Tracer_Green;
+  weapon5=Small_Tracer_Green;
 }
 
