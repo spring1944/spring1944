@@ -23,7 +23,6 @@ function gadget:Explosion(weaponId, px, py, pz, ownerID)
 		--Spring.Echo("Made a binocspot!")
 		Spring.CreateUnit("binocspot", px, py, pz, 0, team)
 	end
-	Spring.Echo("nothing happened?")
 	
 end
 
