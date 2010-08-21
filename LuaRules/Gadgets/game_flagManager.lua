@@ -38,7 +38,8 @@ local GAIA_TEAM_ID							=	Spring.GetGaiaTeamID()
 local BLOCK_SIZE							=	32	-- size of map to check at once
 local EXTRACT_RADIUS_MOD					=	1.5 -- Another handy thing to tweak for profiles ALWAYS REVERT TO 1.5
 local METAL_THRESHOLD						=	1 -- Handy for creating profiles, set to just less than the lowest metal spot you want to include. ALWAYS REVERT TO 1
-local PROFILE_PATH							=	"maps/flagConfig/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. "_profile.lua"
+local PROFILE_PATH							=	"maps/flagConfig/" .. Game.mapName .. "_profile.lua"
+Spring.Echo(PROFILE_PATH)
 local FLAG_RADIUS							=	230 -- current flagkiller weapon radius, we may want to open this up to modoptions
 local FLAG_CAP_THRESHOLD					=	10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 local FLAG_REGEN							=	1		-- how fast a flag with no defenders or attackers will reduce capping statuses
