@@ -58,7 +58,7 @@ local hideDensityFactor		=	10 -- area of the hide zone is divided by this to fig
 local hideDensityFactorRectangle	=	10 --likewise, but for rectangles
 
 --the config file
-local PROFILE_PATH			=	"maps/hideZoneConfig/" .. string.sub(Game.mapName, 1, string.len(Game.mapName) - 4) .. ".lua" --<3 floz
+local PROFILE_PATH			=	"maps/hideZoneConfig/" .. Game.mapName .. ".lua"
 if VFS.FileExists(PROFILE_PATH) then
 function gadget:Initialize()
 	local zones = VFS.Include(PROFILE_PATH)

@@ -1,12 +1,12 @@
 [binocs] {
   name=BINOCS;
-  areaOfEffect=1;
+  areaOfEffect=0;
   avoidFeature=0;
   avoidFriendly=0;
   burnblow=1;
   collideFeature=0;
   collideFriendly=0;
-  collisionSize=1;
+  collisionSize=0.000001;
   [customParams] {
     damagetype=none;
     binocs=1;
@@ -38,7 +38,7 @@
   burnblow=1;
   collideFeature=0;
   collideFriendly=0;
-  collisionSize=1;
+  collisionSize=0.00001;
   [customParams] {
     damagetype=none;
     binocs=1;
