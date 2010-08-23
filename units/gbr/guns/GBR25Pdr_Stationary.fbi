@@ -52,7 +52,7 @@
   sightDistance=701;
   smoothAnim=0;
   soundcategory=GbrInf;
-  stealth=0;
+  stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

@@ -59,7 +59,7 @@
   sightDistance=720;
   smoothAnim=0;
   soundcategory=RUSZveroboy;
-  stealth=0;
+  stealth=1;
   TEDClass=TANK;
   trackOffset=5;
   trackStrength=7;

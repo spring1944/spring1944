@@ -53,7 +53,7 @@
   sightDistance=825;
   smoothAnim=0;
   soundcategory=RUSVeh;
-  stealth=0;
+  stealth=1;
   TEDClass=TANK;
   trackOffset=4;
   trackStrength=5;
