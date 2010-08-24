@@ -2,9 +2,9 @@
   unitname=GBRLCT;
   name=LCT mk.4;
   description=transports up to 9 tanks;
-  acceleration=0.2;
+  acceleration=0.001;
   airSightDistance=1100;
-  brakeRate=0.15;
+  brakeRate=0.001;
   buildCostEnergy=0;
   buildCostMetal=2100;
   buildPic=gbrlct.png;
@@ -59,26 +59,28 @@
   transportMass=27000;
   transportSize=54;
   turninplace=0;
-  turnRate=140;
+  turnRate=35;
 
-  weapon1=20mmOerlikonaa; //oerlikon20mm;
+
+
+  weapon1=20mmOerlikonhe; //oerlikon20mm;
   maxAngleDif1=240;
-  onlyTargetCategory1=AIR;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=1 0 0;
 
-  weapon2=20mmOerlikonaa; //oerlikon20mm;
+  weapon2=20mmOerlikonhe; //oerlikon20mm;
   maxAngleDif2=240;
-  onlyTargetCategory2=AIR;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=-1 0 0;
 
-  weapon3=20mmOerlikonhe; //oerlikon20mm;
+  weapon3=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif3=240;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory3=AIR;
   weaponMainDir3=1 0 0;
 
-  weapon4=20mmOerlikonhe; //oerlikon20mm;
+  weapon4=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif4=240;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=AIR;
   weaponMainDir4=-1 0 0;
 
   weapon5=Large_Tracer;

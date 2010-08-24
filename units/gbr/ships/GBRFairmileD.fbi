@@ -2,9 +2,9 @@
   unitname=GBRFairmileD;
   name=Fairmile D;
   description=Gun/torpedo boat;
-  acceleration=0.3;
+  acceleration=0.01;
   airSightDistance=1500;
-  brakeRate=0.3;
+  brakeRate=0.01;
   buildCostEnergy=0;
   buildCostMetal=3100;
   buildTime=3100;
@@ -57,7 +57,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=225;
+  turnRate=112;
 
   weapon10=twin05calVickers;
   maxAngleDif10=270;
