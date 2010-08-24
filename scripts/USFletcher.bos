@@ -87,8 +87,18 @@ piece base, hull, railings, boats,
 
 #define SMOKEPIECE	hull
 
-#include "exptype.h"
-#include "sfxtype.h"
+#define XSMALL_MUZZLEFLASH	1024+3
+#define XSMALL_SMOKE		1024+4
+
+#define SMALL_MUZZLEFLASH	1024+5
+#define SMALL_SMOKE			1024+6
+
+#define MG_MUZZLEFLASH		1024+7
+
+#define MEDIUMLARGE_MUZZLEFLASH	1024+8
+#define MEDIUMLARGE_SMOKE		1024+9
+
+#include "constants.h"
 #include "damageSmoke.h"
 static-var	CurrentSpeed, bMoving, aa40_1_flare, aa40_2_flare, aa40_3_flare, aa40_4_flare, aa40_5_flare,
  			tl1Flare, tl2Flare, oldXZ, oldHeading;
@@ -297,11 +307,11 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	show main_flare_a;
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from main_flare_a;
+	emit-sfx MEDIUMLARGE_SMOKE from main_flare_a;
 	move main_barrel_a to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel_a to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare_a;
 }
 
 QueryWeapon2(piecenum)
@@ -328,11 +338,11 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	show main_flare_b;
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from main_flare_b;
+	emit-sfx MEDIUMLARGE_SMOKE from main_flare_b;
 	move main_barrel_b to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel_b to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare_b;
 }
 
 QueryWeapon3(piecenum)
@@ -359,11 +369,11 @@ AimWeapon3(heading, pitch)
 
 FireWeapon3()
 {
-	show main_flare_c;
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from main_flare_c;
+	emit-sfx MEDIUMLARGE_SMOKE from main_flare_c;
 	move main_barrel_c to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel_c to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare_c;
 }
 
 QueryWeapon4(piecenum)
@@ -390,11 +400,11 @@ AimWeapon4(heading, pitch)
 
 FireWeapon4()
 {
-	show main_flare_d;
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from main_flare_d;
+	emit-sfx MEDIUMLARGE_SMOKE from main_flare_d;
 	move main_barrel_d to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel_d to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare_d;
 }
 
 QueryWeapon5(piecenum)
@@ -421,11 +431,11 @@ AimWeapon5(heading, pitch)
 
 FireWeapon5()
 {
-	show main_flare_e;
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from main_flare_e;
+	emit-sfx MEDIUMLARGE_SMOKE from main_flare_e;
 	move main_barrel_e to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move main_barrel_e to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	hide main_flare_e;
 }
 
 QueryWeapon6(piecenum)
@@ -465,18 +475,18 @@ FireWeapon6()
 {
 	if(aa40_1_flare)
 	{
-		show aa40_flare_11;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_11;
+		emit-sfx SMALL_SMOKE from aa40_flare_11;
 		move aa40_barrel_11 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_11 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_11;
 	} else
 	{
-		show aa40_flare_21;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_21;
+		emit-sfx SMALL_SMOKE from aa40_flare_21;
 		move aa40_barrel_21 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_21 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_21;
 	}
 }
 
@@ -517,18 +527,18 @@ FireWeapon7()
 {
 	if(aa40_2_flare)
 	{
-		show aa40_flare_12;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_12;
+		emit-sfx SMALL_SMOKE from aa40_flare_12;
 		move aa40_barrel_12 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_12 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_12;
 	} else
 	{
-		show aa40_flare_22;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_22;
+		emit-sfx SMALL_SMOKE from aa40_flare_22;
 		move aa40_barrel_22 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_22 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_22;
 	}
 }
 
@@ -569,18 +579,18 @@ FireWeapon8()
 {
 	if(aa40_3_flare)
 	{
-		show aa40_flare_13;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_13;
+		emit-sfx SMALL_SMOKE from aa40_flare_13;
 		move aa40_barrel_13 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_13 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_13;
 	} else
 	{
-		show aa40_flare_23;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_23;
+		emit-sfx SMALL_SMOKE from aa40_flare_23;
 		move aa40_barrel_23 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_23 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_23;
 	}
 }
 
@@ -621,18 +631,18 @@ FireWeapon9()
 {
 	if(aa40_4_flare)
 	{
-		show aa40_flare_14;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_14;
+		emit-sfx SMALL_SMOKE from aa40_flare_14;
 		move aa40_barrel_14 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_14 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_14;
 	} else
 	{
-		show aa40_flare_24;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_24;
+		emit-sfx SMALL_SMOKE from aa40_flare_24;
 		move aa40_barrel_24 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_24 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_24;
 	}
 }
 
@@ -673,18 +683,18 @@ FireWeapon10()
 {
 	if(aa40_5_flare)
 	{
-		show aa40_flare_15;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_15;
+		emit-sfx SMALL_SMOKE from aa40_flare_15;
 		move aa40_barrel_15 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_15 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_15;
 	} else
 	{
-		show aa40_flare_25;
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_25;
+		emit-sfx SMALL_SMOKE from aa40_flare_25;
 		move aa40_barrel_25 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
 		sleep 200;
 		move aa40_barrel_25 to z-axis [0] speed AA40_GUN_BACK_SPEED;
-		hide aa40_flare_25;
 	}
 }
 
@@ -712,11 +722,11 @@ AimWeapon11(heading, pitch)
 
 FireWeapon11()
 {
-	show aa20_flare_1;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_1;
+	emit-sfx XSMALL_SMOKE from aa20_flare_1;
 	move aa20_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_1;
 }
 
 QueryWeapon12(piecenum)
@@ -743,11 +753,11 @@ AimWeapon12(heading, pitch)
 
 FireWeapon12()
 {
-	show aa20_flare_2;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_2;
+	emit-sfx XSMALL_SMOKE from aa20_flare_2;
 	move aa20_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_2;
 }
 
 QueryWeapon13(piecenum)
@@ -774,11 +784,11 @@ AimWeapon13(heading, pitch)
 
 FireWeapon13()
 {
-	show aa20_flare_3;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_3;
+	emit-sfx XSMALL_SMOKE from aa20_flare_3;
 	move aa20_barrel_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_3;
 }
 
 QueryWeapon14(piecenum)
@@ -805,11 +815,11 @@ AimWeapon14(heading, pitch)
 
 FireWeapon14()
 {
-	show aa20_flare_4;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_4;
+	emit-sfx XSMALL_SMOKE from aa20_flare_4;
 	move aa20_barrel_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_4;
 }
 
 QueryWeapon15(piecenum)
@@ -836,11 +846,11 @@ AimWeapon15(heading, pitch)
 
 FireWeapon15()
 {
-	show aa20_flare_5;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_5;
+	emit-sfx XSMALL_SMOKE from aa20_flare_5;
 	move aa20_barrel_5 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_5 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_5;
 }
 
 QueryWeapon16(piecenum)
@@ -867,11 +877,11 @@ AimWeapon16(heading, pitch)
 
 FireWeapon16()
 {
-	show aa20_flare_6;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_6;
+	emit-sfx XSMALL_SMOKE from aa20_flare_6;
 	move aa20_barrel_6 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_6 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_6;
 }
 
 QueryWeapon17(piecenum)
@@ -898,11 +908,11 @@ AimWeapon17(heading, pitch)
 
 FireWeapon17()
 {
-	show aa20_flare_7;
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_7;
+	emit-sfx XSMALL_SMOKE from aa20_flare_7;
 	move aa20_barrel_7 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
 	sleep 200;
 	move aa20_barrel_7 to z-axis [0] speed AA20_GUN_BACK_SPEED;
-	hide aa20_flare_7;
 }
 
 QueryWeapon18(piecenum)
@@ -1082,6 +1092,6 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type		SHATTER|BITMAP;
 	return (TRUE);
 }
