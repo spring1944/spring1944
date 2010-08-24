@@ -40,6 +40,43 @@ local unitMaterials = {}
 --------------------------------------------------------------------------------
 -- Automated normalmap detection
 
+local function FindNormalmap(tex1, tex2)
+  local normaltex
+
+  --// check if there is a corresponding _normals.dds file
+  if (VFS.FileExists(tex1)) then
+    local basefilename = tex1:gsub("%....","")
+    --[[if (tonumber(basefilename:sub(-1,-1))) then
+      basefilename = basefilename:sub(1,-2)
+    end]]-- -- This code removes trailing numbers, but many S44 units end in a number, e.g. SU-76
+    if (basefilename:sub(-1,-1) == "_") then
+       basefilename = basefilename:sub(1,-2)
+    end
+    normaltex = basefilename .. "_normals.dds"
+    if (not VFS.FileExists(normaltex)) then
+      normaltex = nil
+    end
+  end --if FileExists
+
+  --[[if (not normaltex) and tex2 and (VFS.FileExists(tex2)) then
+    local basefilename = tex2:gsub("%....","")
+    if (tonumber(basefilename:sub(-1,-1))) then
+      basefilename = basefilename:sub(1,-2)
+    end
+    if (basefilename:sub(-1,-1) == "_") then
+      basefilename = basefilename:sub(1,-2)
+    end
+    normaltex = basefilename .. "_normals.dds"
+    if (not VFS.FileExists(normaltex)) then
+      normaltex = nil
+    end
+  end --if FileExists ]] -- disable tex2 detection for S44
+
+  return normaltex
+end
+
+
+
 for i=1,#UnitDefs do
   local udef = UnitDefs[i]
 
@@ -47,40 +84,55 @@ for i=1,#UnitDefs do
     unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = udef.customParams.normaltex}
 
   elseif (udef.model.type == "s3o") then
-    local model = udef.model.path
-    if (model) then
-      --// udef.model.textures is empty, so read the texture filenames from the s3o directly
-      --// some s3o data struct info:
-      --// the texture informations is saved right at the end of the file, in the form:
-      --// ...\000texture1_filename\000texture2_filename\000EOF
+    local modelpath = udef.model.path
+    if (modelpath) then
+      --// udef.model.textures is empty at gamestart, so read the texture filenames from the s3o directly
 
-      local rawstr = VFS.LoadFile(udef.model.path)
+      local rawstr = VFS.LoadFile(modelpath)
       local header = rawstr:sub(1,60)
       local texPtrs = VFS.UnpackU32(header, 45, 2)
       local tex1,tex2
-      if (texPtrs[1] > 0)
-        then tex1 = "unittextures/" .. rawstr:sub(texPtrs[1]+1) end
       if (texPtrs[2] > 0)
-        then tex2 = "unittextures/" .. rawstr:sub(texPtrs[2]+1) end
+        then tex2 = "unittextures/" .. rawstr:sub(texPtrs[2]+1, rawstr:len()-1)
+        else texPtrs[2] = rawstr:len() end
+      if (texPtrs[1] > 0)
+        then tex1 = "unittextures/" .. rawstr:sub(texPtrs[1]+1, texPtrs[2]-1) end
 
-      --// check if there is a corresponding _normals.dds file for tex1, original CA gadget checks for tex2 if none found for tex1
-      if (VFS.FileExists(tex1)) then
-	    -- strip non-printable chars (and tex2 filename!) off the string
-		tex1 = tex1:sub(1,tex1:find("[^%w%p]") - 1)
-        local basefilename = tex1:sub(1,-5)--:gsub("%....","")
-        --[[if (tonumber(basefilename:sub(-1,-1))) then
-          basefilename = basefilename:sub(1,-2)
-        end--]] -- This code removes trailing numbers, but many S44 units end in a number, e.g. SU-76
-        if (basefilename:sub(-1,-1) == "_") then
-          basefilename = basefilename:sub(1,-2)
-        end
-        local normaltex = basefilename .. "_normals.dds"
-        if (VFS.FileExists(normaltex)) then
-          unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
-		  --Spring.Echo("Normal map '".. normaltex .. "' found for " ..udef.name)
-        end
-      end --if FileExists
+      -- output units without tex2
+      if not tex2 then
+        Spring.Echo("CustomUnitShaders: " .. udef.name .. " no tex2")
+      end
+
+      local normaltex = FindNormalmap(tex1,tex2)
+      if (normaltex) then
+        unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
+      end
     end --if model
+
+  elseif (udef.model.type == "obj") then
+    local modelinfopath = udef.model.path
+    if (modelinfopath) then
+      modelinfopath = modelinfopath .. ".lua"
+
+      if (VFS.FileExists(modelinfopath)) then
+        local infoTbl = Include(modelinfopath)
+        if (infoTbl) then
+          local tex1 = "unittextures/" .. (infoTbl.tex1 or "")
+          local tex2 = "unittextures/" .. (infoTbl.tex2 or "")
+
+          -- output units without tex2
+          --[[if not tex2 then
+            Spring.Echo("CustomUnitShaders: " .. udef.name .. " no tex2")
+          end]]
+
+          local normaltex = FindNormalmap(tex1,tex2)
+          if (normaltex) then
+            unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
+          end
+        end
+      end
+    end
+
   end --elseif
 end --for
 
