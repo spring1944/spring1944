@@ -83,19 +83,21 @@ function gadget:GameFrame(n)
 			if suppression > 1 then
 				local newFuel = fuel - fuelLossRate
 				local oldAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")
-				Spring.SetUnitWeaponState(unitID, 0, {accuracy = oldAccuracy*suppression})
-				--Spring.Echo("unit's fear level: ", suppression)
-				SetUnitRulesParam(unitID, "suppress", suppression)
-				Spring.SetUnitFuel(unitID, newFuel)
-				--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
-				if suppression > bugOutLevel then
-					local px, py, pz = Spring.GetTeamStartPosition(teamID)
-					GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
-					--Spring.Echo("Move order issued,", "Fear level:", suppression)
-					SetUnitNoSelect(unitID, true)
-				else
-					--Spring.Echo("No Fear, selectable:", suppression)
-					SetUnitNoSelect(unitID, false)
+				if oldAccuracy ~= nil then
+					Spring.SetUnitWeaponState(unitID, 0, {accuracy = oldAccuracy*suppression})
+					--Spring.Echo("unit's fear level: ", suppression)
+					SetUnitRulesParam(unitID, "suppress", suppression)
+					Spring.SetUnitFuel(unitID, newFuel)
+					--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
+					if suppression > bugOutLevel then
+						local px, py, pz = Spring.GetTeamStartPosition(teamID)
+						GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
+						--Spring.Echo("Move order issued,", "Fear level:", suppression)
+						SetUnitNoSelect(unitID, true)
+					else
+						--Spring.Echo("No Fear, selectable:", suppression)
+						SetUnitNoSelect(unitID, false)
+					end
 				end
 			else
 				Spring.SetUnitWeaponState(unitID, 0, {accuracy = accuracyTable[unitID]})
