@@ -28,7 +28,6 @@ local OUTPUT_BASE			=	1.025
 
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
-
 local function OutputCalc(lifespan)
 	return DEFAULT_OUTPUT * OUTPUT_BASE ^ lifespan
 end
@@ -36,24 +35,28 @@ end
 function gadget:GameFrame(t)
 
 	if t == 6 then
-		local flagDefID = GetUnitDefID(GG['flags'][1])
-		local flagUD = UnitDefs[flagDefID]
-		DEFAULT_OUTPUT = flagUD.extractsMetal
+		if GG['flags'][1]~=nil then
+			local flagDefID = GetUnitDefID(GG['flags'][1])
+			local flagUD = UnitDefs[flagDefID]
+			DEFAULT_OUTPUT = flagUD.extractsMetal
+		end
 		--Spring.Echo("Flag Default Output: " .. DEFAULT_OUTPUT)
 	end
 	
 	if (t % (60*30) < 0.1) and t > 6 then	-- every minute
-		for i = 1, #GG['flags'] do
-			flagID = GG['flags'][i]
-			
-			if GetUnitTeam(flagID) ~= GAIA_TEAM_ID then -- Neutral flags do not gain lifespan
-				local lifespan = GetUnitRulesParam(flagID, "lifespan") or 0
-				lifespan = lifespan + 1
-				SetUnitRulesParam(flagID, "lifespan", lifespan)
+		if GG['flags'][1]~=nil then
+			for i = 1, #GG['flags'] do
+				flagID = GG['flags'][i]
 				
-				local output = OutputCalc(lifespan)
-				if output < MULTIPLIER_CAP * DEFAULT_OUTPUT then
-					SetUnitMetalExtraction (flagID, output)	
+				if GetUnitTeam(flagID) ~= GAIA_TEAM_ID then -- Neutral flags do not gain lifespan
+					local lifespan = GetUnitRulesParam(flagID, "lifespan") or 0
+					lifespan = lifespan + 1
+					SetUnitRulesParam(flagID, "lifespan", lifespan)
+					
+					local output = OutputCalc(lifespan)
+					if output < MULTIPLIER_CAP * DEFAULT_OUTPUT then
+						SetUnitMetalExtraction (flagID, output)	
+					end
 				end
 			end
 		end
