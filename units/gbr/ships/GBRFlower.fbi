@@ -2,13 +2,14 @@
   unitname=GBRFlower;
   name=Flower class;
   description=Corvette;
-  acceleration=0.15;
+  acceleration=0.001;
   activateWhenBuilt=1;
   airSightDistance=1700;
-  brakeRate=0.14;
+  brakeRate=0.001;
+  buildPic=Destroyersall.png;
   buildCostEnergy=0;
-  buildCostMetal=12250;
-  buildTime=12250;
+  buildCostMetal=15250;
+  buildTime=15250;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
@@ -17,14 +18,15 @@
   collisionVolumeType=box;
   corpse=GBRFlower_dead;
   [customParams] {
+    hasturnbutton=1;
     lowammolevel=5;
     maxammo=26;
     weaponcost=20;
     weaponswithammo=1;
-    hasturnbutton=1;
   }
   energyMake=0;
   energyUse=0;
+    sonardistance=880;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
   footprintX=20;
@@ -48,7 +50,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=150;
+  turnRate=37;
 
   weapon1=gbr4inchmkxix;
   maxAngleDif1=270;
@@ -60,8 +62,8 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
-  weapon3=20mmOerlikonaa;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon3=hedgehog;
+  onlyTargetCategory3=SUB;
   weaponMainDir3=1 0 0;
 
   weapon4=20mmOerlikonaa;
@@ -70,4 +72,5 @@
   maxAngleDif8=200;
   maxAngleDif9=200;
 }
+
 

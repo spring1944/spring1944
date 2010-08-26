@@ -2,13 +2,14 @@
   unitname=GBRHuntII;
   name=Hunt II class;
   description=Escort Destroyer;
-  acceleration=0.15;
+  acceleration=0.001;
   activateWhenBuilt=1;
   airSightDistance=1700;
-  brakeRate=0.14;
+  brakeRate=0.001;
+  buildPic=Destroyersall.png;
   buildCostEnergy=0;
-  buildCostMetal=21000;
-  buildTime=21000;
+  buildCostMetal=26000;
+  buildTime=26000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
@@ -16,6 +17,10 @@
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
+    lowammolevel=2;
+    maxammo=26;
+    weaponcost=15;
+    weaponswithammo=3;
   }
   energyMake=0;
   energyUse=0;
@@ -42,7 +47,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=124;
+  turnRate=31;
 
   weapon1=gbr4inch45mkxvi;
   maxAngleDif1=270;
@@ -74,4 +79,5 @@
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=-1 0 0;
 }
+
 

@@ -2,13 +2,14 @@
   unitname=GBROClass;
   name=O class Destroyer;
   description=Fleet Destroyer;
-  acceleration=0.15;
+  acceleration=0.001;
   activateWhenBuilt=1;
   airSightDistance=1700;
-  brakeRate=0.14;
+  brakeRate=0.001;
+  buildPic=Destroyersall.png;
   buildCostEnergy=0;
-  buildCostMetal=27000;
-  buildTime=27000;
+  buildCostMetal=34000;
+  buildTime=34000;
   canAttack=1;
   canMove=1;
   category=LARGESHIP MINETRIGGER;
@@ -19,6 +20,10 @@
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
+    lowammolevel=2;
+    maxammo=28;
+    weaponcost=15;
+    weaponswithammo=4;
   }
   energyMake=0;
   energyUse=0;
@@ -45,7 +50,7 @@
   stealth=0;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=130;
+  turnRate=32;
 
   weapon10=20mmOerlikonaa;
   maxAngleDif10=200;
@@ -102,4 +107,5 @@
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=1 0 0;
 }
+
 

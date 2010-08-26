@@ -2,9 +2,9 @@
   unitname=GBRLCG;
   name=LCG mk.4;
   description=Fire Support Ship;
-  acceleration=0.2;
+  acceleration=0.001;
   airSightDistance=1100;
-  brakeRate=0.15;
+  brakeRate=0.001;
   buildCostEnergy=0;
   buildCostMetal=7850;
   buildPic=GBRLCG.png;
@@ -61,7 +61,7 @@
   transportMass=27000;
   transportSize=54;
   turninplace=0;
-  turnRate=130;
+  turnRate=32;
 
   weapon1=gbr4_7inchmkix;
   maxAngleDif1=270;
@@ -75,12 +75,12 @@
 
   weapon3=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif3=240;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory3=AIR;
   weaponMainDir3=1 0 0;
 
   weapon4=20mmOerlikonaa; //oerlikon20mm;
   maxAngleDif4=240;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=AIR;
   weaponMainDir4=-1 0 0;
 
   weapon5=Large_Tracer;

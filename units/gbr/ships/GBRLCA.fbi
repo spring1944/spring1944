@@ -2,9 +2,9 @@
   unitname=GBRLCA;
   name=Landing Craft, Assault;
   description=Infantry Landing Craft;
-  acceleration=0.15;
+  acceleration=0.05;
   airSightDistance=1500;
-  brakeRate=0.14;
+  brakeRate=0.05;
   buildCostEnergy=0;
   buildCostMetal=800;
   buildTime=800;
@@ -46,7 +46,7 @@
   transportMass=8000;
   transportSize=1;
   turninplace=0;
-  turnRate=180;
+  turnRate=100;
 
   weapon1=bren;
   maxAngleDif1=270;
