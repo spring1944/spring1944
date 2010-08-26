@@ -1,0 +1,36 @@
+[unitinfo] {
+  unitname=PontoonBridge;
+  name=Pontoon Bridge Section;
+  description=Bridge;
+  brakeRate=0.1;
+  buildCostEnergy=0;
+  buildCostMetal=200;
+  buildTime=200;
+  canMove=0;
+  category=SHIP MINETRIGGER;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=1;
+  footprintZ=1;
+  iconType=raft;
+  isFirePlatform=0;
+  mass=1000;
+  maxDamage=1000;
+  minWaterDepth=10;
+  objectName=USPontoonRaft.S3O;
+  script=PontoonRaft.cob;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  stealth=1;
+  waterline=2.5;
+  //yardmap=yyyyy yyyyy yyyyy yyyyy yyyyy;
+}
+
