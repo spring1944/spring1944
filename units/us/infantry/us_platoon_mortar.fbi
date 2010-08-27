@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=us_platoon_mortar;
   name=Mortar Team;
-  description=3 x M1 Mortar, 2 x Scout: Heavy Infantry Fire Support;
+  description=3 x M1 Mortar, 1 x Scout: Heavy Infantry Fire Support;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

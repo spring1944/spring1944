@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=gbr_platoon_mg;
   name=Machinegun Squad;
-  description=1 x Vickers, 2 x Bren Machineguns, 2 x Scout: Infantry Fire Support Squad;
+  description=1 x Vickers, 2 x Bren Machineguns, 1 x Scout: Infantry Fire Support Squad;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

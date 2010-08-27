@@ -314,6 +314,7 @@ local squadDefs = {
 		"germg42",
 		"germg42",
 		"germg42",
+		"gerobserv",
 	},
 	
 	["ger_platoon_sniper"] = 

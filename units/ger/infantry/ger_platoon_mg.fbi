@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=ger_platoon_mg;
   name=Machinegun Squad;
-  description=3 x MG42 Machinegun, 2 x Scout: Infantry Fire Support Squad;
+  description=3 x MG42 Machinegun, 1 x Scout: Infantry Fire Support Squad;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

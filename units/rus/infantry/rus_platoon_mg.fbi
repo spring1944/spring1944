@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=rus_platoon_mg;
   name=Machinegun Squad;
-  description=1 x Maxim Heavy Machinegun, 2 x DP Light Machinegun, 2 x Scout: Infantry Fire Support Squad;
+  description=1 x Maxim Heavy Machinegun, 2 x DP Light Machinegun, 1 x Scout: Infantry Fire Support Squad;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
