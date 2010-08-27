@@ -99,9 +99,9 @@ for i=1,#UnitDefs do
         then tex1 = "unittextures/" .. rawstr:sub(texPtrs[1]+1, texPtrs[2]-1) end
 
       -- output units without tex2
-      if not tex2 then
+      --[[if not tex2 then
         Spring.Echo("CustomUnitShaders: " .. udef.name .. " no tex2")
-      end
+      end]]
 
       local normaltex = FindNormalmap(tex1,tex2)
       if (normaltex) then
