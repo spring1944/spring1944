@@ -62,15 +62,13 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
-  weapon3=hedgehog;
-  onlyTargetCategory3=SUB;
+  weapon3=20mmOerlikonaa;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=1 0 0;
 
   weapon4=20mmOerlikonaa;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=-1 0 0;
-  maxAngleDif8=200;
-  maxAngleDif9=200;
 }
 
 
