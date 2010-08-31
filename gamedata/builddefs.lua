@@ -122,6 +122,7 @@ buildoptions =
     "usm1bofors_truck",
 	"usm16mgmc",
     "usm8scott",
+	"usm10wolverine",
     "usm7priest",
   },
 

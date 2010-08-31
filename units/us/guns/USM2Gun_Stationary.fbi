@@ -5,11 +5,11 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=3780;
+  buildCostMetal=1800;
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=3780;
+  buildTime=1800;
   category=DEPLOYED;
   corpse=USM2Gun_Destroyed;
   [customParams] {
