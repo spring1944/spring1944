@@ -361,7 +361,7 @@ local function AddConnection(a, b)
 end
 
 -- load chunk
-local chunk = LoadFile("LuaRules/Configs/craig/maps/" .. Game.mapName .. ".lua")
+local chunk = LoadFile("LuaRules/Configs/craig/maps/" .. Game.mapName .. ".smf.lua")
 if (chunk == nil) then
 	Warning("No waypoint profile found. Will not use waypoints on this map.")
 	return false
