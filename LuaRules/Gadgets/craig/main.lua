@@ -13,7 +13,7 @@ function gadget:GetInfo()
 		author = "Tobi Vollebregt",
 		date = "2009-02-12",
 		license = "GNU General Public License",
-  		layer = 82,
+  		layer = -1,
 		enabled = true
 	}
 end
@@ -266,7 +266,7 @@ function gadget:GameFrame(f)
 	if waypointMgr and f % waypointMgrGameFrameRate < .1 then
 		waypointMgr.GameFrame(f)
 	end
-
+	
 	-- AI update
 	if f % 128 < .1 then
 		for _,t in pairs(team) do
