@@ -1,7 +1,7 @@
 [maxim] {
   name=Maxim Machinegun;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   burnblow=1;
   burst=14;

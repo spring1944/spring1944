@@ -1,7 +1,7 @@
 [dp] {
   name=DP Machinegun;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   burst=5;
   burstRate=0.12;

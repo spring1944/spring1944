@@ -1,7 +1,7 @@
 [tt33] {
   name=TT-33 Pistol;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   beamweapon=1;
   collideFeature=1;

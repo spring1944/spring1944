@@ -1,7 +1,7 @@
 [bar] {
   name=Browning Automatic Rifle;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   beamweapon=1;
   burst=3;

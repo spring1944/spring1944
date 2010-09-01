@@ -1,7 +1,7 @@
 [enfield_t] {
   name=Lee-Enfield No. 4 Mk. I Scoped;
   areaOfEffect=2;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   beamweapon=1;
   collideFeature=1;

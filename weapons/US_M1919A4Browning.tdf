@@ -1,7 +1,7 @@
 [m1919a4browning] {
   name=M1919A4 Browning .30 caliber machinegun;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   burst=7;
   burstRate=0.14;
@@ -40,7 +40,7 @@
 [m1919a4browning_deployed] {
   name=M1919A4 Browning .30 caliber machinegun;
   areaOfEffect=1;
-  avoidFeature=0;
+  avoidFeature=1;
   avoidFriendly=0;
   burst=7;
   burstRate=0.14;
