@@ -101,10 +101,30 @@ local morphDefs = {
     energy = 0,
     directional = true,
   },
+  
 
   usgimg_sandbag =
   {
     into = 'usgimg',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+  },
+
+  us101stmg =
+  {
+    into = 'us101stmg_sandbag',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
+  
+    us101stmg_sandbag =
+  {
+    into = 'us101stmg',
     tech = 0,
     time = 20,
     metal = 0,
