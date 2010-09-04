@@ -130,15 +130,16 @@ end
 local function Resupply(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local supplierID = FindSupplier(unitID)
+	local oldAmmo = GetUnitRulesParam(unitID, "ammo")
+	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
+	
 	if supplierID then
 
 		local teamID = GetUnitTeam(unitID)
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
 		local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
 		local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)
-		local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
-		--local ammoRegen = DefaultRegen(unitDefID)
-		local oldAmmo = GetUnitRulesParam(unitID, "ammo")
+		--local ammoRegen = DefaultRegen(unitDefID)		
 		
 		if oldAmmo < maxAmmo and weaponCost >= 0 and logisticsLevel > weaponCost then
 			local newAmmo = oldAmmo + 1
@@ -147,37 +148,40 @@ local function Resupply(unitID)
 			SetUnitRulesParam(unitID, "ammo",	newAmmo)
 		end
 
-		local hasWeapon = UnitDefs[unitDefID].weapons[1]
-		local reload = 0
-		if hasWeapon then
-			reload = tonumber(WeaponDefs[hasWeapon.weaponDef].reload)
-		else
-			reload = GetUnitRulesParam(unitID, "defRegen")
-		end
-
-		if oldAmmo < 1 then
-			local savedFrame = 0
-			local currFrame = GetGameFrame()
-			if savedFrames[unitID] then
-				savedFrame = savedFrames[unitID]
-			end
-			reloadState = savedFrame
-			if UnitDefs[unitDefID].name == "rusbm13n" or UnitDefs[unitDefID].name == "gernebelwerfer_stationary" then
-				local difference = savedFrame - currFrame
-				if difference < 0 then
-					difference = 0
-					reloadState = currFrame + 90 -- add three seconds
-				end
-				Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
-			end
-			for weapNum = 0, weaponsWithAmmo - 1 do
-				SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
-				vehicles[unitID].reloadFrame[weapNum] = reloadState
-			end
-		end
 	else
 		return
 	end
+	
+	local hasWeapon = UnitDefs[unitDefID].weapons[1]
+	local reload = 0
+	
+	if hasWeapon then
+		reload = tonumber(WeaponDefs[hasWeapon.weaponDef].reload)
+	else
+		reload = GetUnitRulesParam(unitID, "defRegen")
+	end
+		
+	if oldAmmo < 1 then
+		local savedFrame = 0
+		local currFrame = GetGameFrame()
+		if savedFrames[unitID] then
+			savedFrame = savedFrames[unitID]
+		end
+		reloadState = savedFrame
+		if UnitDefs[unitDefID].name == "rusbm13n" or UnitDefs[unitDefID].name == "gernebelwerfer_stationary" then
+			local difference = savedFrame - currFrame
+			if difference < 0 then
+				difference = 0
+				reloadState = currFrame + 90 -- add three seconds
+			end
+			Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
+		end
+		for weapNum = 0, weaponsWithAmmo - 1 do
+			SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
+			vehicles[unitID].reloadFrame[weapNum] = reloadState
+		end
+	end
+
 end
 
 function gadget:Initialize()
