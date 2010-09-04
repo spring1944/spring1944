@@ -29,7 +29,7 @@
   laserFlareSize=0.0001;
   lineofsight=1;
   movingAccuracy=888;
-  range=945;
+  range=1040;
   reloadTime=10;
   rendertype=0;
   soundStart=US_Springfield;

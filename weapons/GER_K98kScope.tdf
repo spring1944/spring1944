@@ -27,7 +27,7 @@
   interceptedByShieldType=8;
   lineofsight=1;
   movingAccuracy=1777;
-  range=910;
+  range=1010;
   reloadTime=10;
   rendertype=0;
   soundStart=GER_K98K;
