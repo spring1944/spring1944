@@ -858,6 +858,7 @@ buildoptions =
     "rus_sortie_interceptor",
     "rus_sortie_fighter",
     "rus_sortie_attack",
+	"rus_sortie_tankbuster",
   },
   
   rusboatyard =

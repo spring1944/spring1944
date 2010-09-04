@@ -4,8 +4,8 @@
   AvoidFeature=1;
   ballistic=0;
   burnblow=0;
-  burst=15;
-  burstrate=0.25;
+  burst=12;
+  burstrate=0.12;
   collideFriendly=0;
   CylinderTargetting=1;
   [customParams] {
@@ -24,21 +24,20 @@
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   flightTime=0.5;
-  id=31;
   impulseFactor=0.01;
   manualBombSettings=1;
   model=MortarShell.S3O;
-  projectiles=10;
-  range=1050;
+  projectiles=3;
+  range=650;
   reloadTime=600;
   rendertype=4;
   soundHit=GEN_Explo_3;
   sprayangle=65535;
-  startVelocity=300;
+  startVelocity=110;
   texture1=none;
   tolerance=4000;
   trajectoryHeight=0.15;
   turret=1;
   weaponType=MissileLauncher;
-  weaponVelocity=300;
+  weaponVelocity=110;
 }

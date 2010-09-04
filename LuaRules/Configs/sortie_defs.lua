@@ -140,6 +140,14 @@ local sortieDefs = {
     delay = 45,
     weight = 1,
   },
+  
+  rus_sortie_tankbuster = {
+    "rusil2ptab",
+    "rusil2ptab",
+    
+    delay = 45,
+    weight = 1,
+  },
 
   rus_sortie_partisan = {
     "ruspo2partisan",
