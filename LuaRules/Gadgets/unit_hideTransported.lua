@@ -83,7 +83,7 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	--Spring.Echo("UnitUnloaded")
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
-	massLeft[transportID] = massLeft[transportID] + unitDef.mass
+	--massLeft[transportID] = massLeft[transportID] + unitDef.mass
 	if unitDef.xsize == 2 and not (transportDef.minWaterDepth > 0) and not unitDef.customParams.hasturnbutton then 
 		SetUnitNoDraw(unitID, false)
 	end
