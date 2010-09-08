@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.001;
   buildCostEnergy=0;
-  buildCostMetal=7850;
+  buildCostMetal=12850;
   buildPic=GBRLCG.png;
-  buildTime=7850;
+  buildTime=12850;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 0.0 0.0;

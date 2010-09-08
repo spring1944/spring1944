@@ -53,7 +53,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20; //60
-  yardmap=ooooooo	ooyyyoo	ooyyyoo	ooyyyoo	oyyyyyo	yyyyyyy	yyyyyyy;
+  yardmap=ooooooo ooyyyoo ooyyyoo ooyyyoo oyyyyyo yyyyyyy yyyyyyy;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }

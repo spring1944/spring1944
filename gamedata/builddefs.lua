@@ -80,7 +80,6 @@ buildoptions =
   usvehicleyard =
   {
     "usgmcengvehicle",
-    "uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
 	"usm16mgmc",
@@ -200,7 +199,7 @@ buildoptions =
     "uspt103-bofors",
 	"uslvta4",
 	"uslct",
---    "uslcsl",
+    "uslcsl",
   },
   usboatyardlarge =
   {
@@ -296,7 +295,6 @@ buildoptions =
   gervehicleyard =
   {
     "gersdkfz9",
-    "gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -444,7 +442,7 @@ buildoptions =
     --"gersboot",
 	"gersiebelfahre",
 	"germfp",
-	--"gerafp",
+	"gerafp",
   },
   gerboatyardlarge =
   {
@@ -566,7 +564,6 @@ buildoptions =
   gbrvehicleyard =
   {
     "gbrmatadorengvehicle",
-    "gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 	"gbrstaghound",
@@ -653,7 +650,7 @@ buildoptions =
     "gbrlca",
     "gbrfairmiled",
 	"gbrlct",
-    --"gbrlcg",
+    "gbrlcg",
   },
   gbrboatyardlarge =
   {
@@ -755,7 +752,6 @@ buildoptions =
   rusvehicleyard =
   {
     "rusk31",
-    "ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
@@ -868,9 +864,9 @@ buildoptions =
     "rustender15t",
     "ruslct",
     --"ruskomsmtb",
-    "rusbmo",
+    --"rusbmo",
 	"rusbka-1125",
-	--"ruspr161",
+	"ruspr161",
   },
   rusboatyardlarge =
   {

@@ -6,13 +6,13 @@
   airSightDistance=1500;
   brakeRate=0.025;
   buildCostEnergy=0;
-  buildCostMetal=7500;
-  buildTime=7500;
+  buildCostMetal=8500;
+  buildTime=8500;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 0.0 0.0;
-  collisionVolumeScales=24.0 24.0 160.0;
+  collisionVolumeScales=70.0 80.0 280.0;
   collisionVolumeType=box;
   corpse=RUSPr161_dead;
   [customParams] {
@@ -23,11 +23,11 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=4;
-  footprintZ=4;
+  footprintX=16;
+  footprintZ=16;
   iconType=gunboat;
   mass=13000;
-  maxDamage=6000;
+  maxDamage=13000;
   maxReverseVelocity=0.9;
   maxVelocity=1.8;
   minWaterDepth=6;
@@ -55,7 +55,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=250;
+  turnRate=150;
 
   weapon1=S5385mmHE;
   maxAngleDif1=300;
@@ -79,7 +79,7 @@
 
   weapon5=61k37mmaa;
   maxAngleDif5=300;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
   weapon6=dshk;

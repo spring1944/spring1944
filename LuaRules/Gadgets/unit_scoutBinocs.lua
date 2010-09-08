@@ -15,7 +15,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 function gadget:Explosion(weaponId, px, py, pz, ownerID)
 	local weapDef = WeaponDefs[weaponId]
-	if not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" then
+	if not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" or ownerID == nil then
 		--Spring.Echo("not binocs :(")
 		return false
 	else

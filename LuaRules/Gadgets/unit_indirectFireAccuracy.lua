@@ -79,9 +79,10 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							y = targetY,
 							z = targetZ,
 						}
-
-				if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true then
-					visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
+				if targetX ~= nil and targetY ~= nil and targetZ ~= nil then
+					if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true then
+						visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
+					end
 				end
 			end
 		end
@@ -122,18 +123,20 @@ function gadget:GameFrame(n)
 		for allyID, units in pairs(visibleAreas) do
 			for unitID, unitArea in pairs(units) do
 				if IsValidUnitID(unitID) and unitArea then
-					if IsPosInLos(unitArea.x, unitArea.y, unitArea.z, allyID) == true then
-						if unitArea.targetTime == nil then
+					if unitArea.x ~= nil and unitArea.y ~= nil and unitArea.z ~= nil then
+						if IsPosInLos(unitArea.x, unitArea.y, unitArea.z, allyID) == true then
+							if unitArea.targetTime == nil then
+								unitArea.targetTime = GetGameSeconds()
+							end
+							if ((n/30) - unitArea.targetTime) > accuracyDelay then
+								unitArea.zeroed = true
+							end
+						else
 							unitArea.targetTime = GetGameSeconds()
+							unitArea.zeroed = false
 						end
-						if ((n/30) - unitArea.targetTime) > accuracyDelay then
-							unitArea.zeroed = true
-						end
-					else
-						unitArea.targetTime = GetGameSeconds()
-						unitArea.zeroed = false
+						updateUnit(allyID, unitID)
 					end
-					updateUnit(allyID, unitID)
 				end
 			end
 		end

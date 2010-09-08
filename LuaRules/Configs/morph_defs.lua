@@ -547,7 +547,7 @@ local morphDefs = {
   {
     into = 'rusboatyard',
     tech = 0,
-    time = 30,
+    time = 60,
     metal = 0,
     energy = 0,
   },
@@ -556,7 +556,7 @@ local morphDefs = {
   {
     into = 'usboatyard',
     tech = 0,
-    time = 30,
+    time = 60,
     metal = 0,
     energy = 0,
   },
@@ -565,7 +565,7 @@ local morphDefs = {
   {
     into = 'gerboatyard',
     tech = 0,
-    time = 30,
+    time = 60,
     metal = 0,
     energy = 0,
   },
@@ -573,7 +573,7 @@ local morphDefs = {
   {
     into = 'gbrboatyard',
     tech = 0,
-    time = 30,
+    time = 60,
     metal = 0,
     energy = 0,
   },

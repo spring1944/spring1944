@@ -47,7 +47,7 @@ local damagedefs = {
   },
   kinetic = {
 	default = 6/7,
-	ships = 1/2,
+	ships = 1,
     unarmouredvehicles = 1/2,
     bunkers = 1/2,
     lightbuildings = 1/16,
