@@ -168,8 +168,8 @@ else
 			local bEnd = (buildProg and ((buildProg * 0.8) * 10.0)) or 0.0
 			local sEnd = (stockPileBuildPercent and ((stockPileBuildPercent * 0.8) * 10.0)) or 0.0
 
-			glColor(1.0, 1.0, 1.0)
-			glRect(6.0, -2.0, 8.0, eEnd - 2.0)
+			--glColor(1.0, 1.0, 1.0)
+			--glRect(6.0, -2.0, 8.0, eEnd - 2.0)
 
 			if (beingBuilt) then
 				glColor(1.0, 0.0, 0.0)
