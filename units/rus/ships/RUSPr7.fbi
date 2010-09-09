@@ -90,7 +90,7 @@
 
   weapon16=triple533mmtorpedo;
   maxAngleDif16=270;
-  onlyTargetCategory16=SHIP SUB;
+  onlyTargetCategory16=LARGESHIP SUB;
   weaponMainDir16=0 0 -1;
 
   weapon1=130mmB13;
