@@ -100,12 +100,12 @@
 
   weapon18=mk14_533mmtorpedo;
   maxAngleDif18=270;
-  onlyTargetCategory18=SHIP SUB;
+  onlyTargetCategory18=LARGESHIP SUB;
   weaponMainDir18=0 0 1;
 
   weapon19=mk14_533mmtorpedo;
   maxAngleDif19=270;
-  onlyTargetCategory19=SHIP SUB;
+  onlyTargetCategory19=LARGESHIP SUB;
   weaponMainDir19=0 0 1;
 
   weapon1=5in38mk30;
