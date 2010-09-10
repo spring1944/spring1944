@@ -550,6 +550,7 @@ local morphDefs = {
     time = 60,
     metal = 0,
     energy = 0,
+	facing = true,
   },
 
     uspontoontruck =
@@ -559,6 +560,7 @@ local morphDefs = {
     time = 60,
     metal = 0,
     energy = 0,
+	facing = true,
   },
 
     gerpontoontruck =
@@ -568,6 +570,7 @@ local morphDefs = {
     time = 60,
     metal = 0,
     energy = 0,
+	facing = true,
   },
     gbrpontoontruck =
   {
@@ -576,6 +579,7 @@ local morphDefs = {
     time = 60,
     metal = 0,
     energy = 0,
+	facing = true,
   },
   
      russupplytruck =
