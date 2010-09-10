@@ -29,14 +29,16 @@ local burningUnits			=	{}
 local movingZones			=	{}
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
-	if WeaponDefs[weaponID].customParams.damagetime then
-		local damageTime = WeaponDefs[weaponID].customParams.damagetime
+	local wd = WeaponDefs[weaponID]
+	local damageTime = tonumber(wd.customParams.damagetime)
+	if damageTime then
 		local gameFrame = GetGameFrame()
-		local damageZone = WeaponDefs[weaponID].areaOfEffect
-		local damagePerSecond = WeaponDefs[weaponID].damages[1]
-		local weaponCeg = WeaponDefs[weaponID].customParams.ceg
-		for _, unitID in ipairs(GetUnitsInSphere(px, py, pz, damageZone)) do
-			burningUnits[unitID] = {
+		local damageZone = wd.areaOfEffect
+		local damagePerSecond = wd.damages[1]
+		local weaponCeg = wd.customParams.ceg
+		local units = GetUnitsInSphere(px, py, pz, damageZone)
+		for i = 1, #units do
+			burningUnits[units[i]] = {
 				exTime = gameFrame,
 				dmgPerSecond = damagePerSecond,
 				damageDuration = damageTime,
@@ -74,16 +76,16 @@ end
 
 function gadget:GameFrame(n)
 	if (n % (0.1*30) < 0.1) then
-		for unitID,someThing in pairs(burningUnits) do
+		for unitID, info in pairs(burningUnits) do
 			if unitID ~= nil then
-				local explodeTime = tonumber(burningUnits[unitID].exTime)
-				local damageTime = tonumber(burningUnits[unitID].damageDuration)
+				local explodeTime = info.exTime
+				local damageTime = info.damageDuration
 				if (n - explodeTime)/32 < damageTime then
 					local px, py, pz = GetUnitPosition(unitID)
 					if py then
 						local height = (GetUnitHeight(unitID)/3) + py
-						local weaponCeg = burningUnits[unitID].expCeg
-						local damagePerSecond = (burningUnits[unitID].dmgPerSecond/10)
+						local weaponCeg = info.expCeg
+						local damagePerSecond = (info.dmgPerSecond/10)
 						SpawnCEG(weaponCeg, px, height, pz)
 						AddUnitDamage(unitID, damagePerSecond)
 					end
@@ -92,15 +94,15 @@ function gadget:GameFrame(n)
 				end	
 			end
 		end
-		for damageSiteIndex,someThing in pairs(damageZones) do
-			local explodeTime = tonumber(damageZones[damageSiteIndex].exTime)
-			local damageTime = tonumber(damageZones[damageSiteIndex].damageDuration)
+		for damageSiteIndex, siteInfo in pairs(damageZones) do
+			local explodeTime = siteInfo.exTime
+			local damageTime = siteInfo.damageDuration
 			if (n - explodeTime)/32 < damageTime then
-				local px, py, pz = damageZones[damageSiteIndex].x, damageZones[damageSiteIndex].y, damageZones[damageSiteIndex].z
-				local weaponCeg = damageZones[damageSiteIndex].expCeg
+				local px, py, pz = siteInfo.x, siteInfo.y, siteInfo.z
+				local weaponCeg = siteInfo.expCeg
 				SpawnCEG(weaponCeg, px, py, pz)
-				local damageZone = damageZones[damageSiteIndex].damageArea
-				local damagePerSecond = damageZones[damageSiteIndex].dmgPerSecond
+				local damageZone = siteInfo.damageArea
+				local damagePerSecond = siteInfo.dmgPerSecond
 				unitsToDamage = GetUnitsInSphere(px, py, pz, damageZone)
 				if unitsToDamage ~= nil then
 					 for i = 1, #unitsToDamage do
