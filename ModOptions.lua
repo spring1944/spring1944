@@ -217,7 +217,7 @@ local options = {
 	
 
 	
-	  {
+	--[[  {
 	key    = '1balance',
 	name   = 'Balance Settings. REMOVE BEFORE RELEASE',
 	desc   = "Sets experimental balance options.",
@@ -258,7 +258,7 @@ local options = {
 		max    = 100,
 		section= '1balance',
 		step   = 1,
-	},
+	},]]--
 
 	{
 	key    = '4other',
@@ -312,7 +312,7 @@ local options = {
     step   = 0.1,
   },
   
-	{
+--[[	{
 		key = "smoke_mult",
 		name = "Smoke Duration Multiplier",
 		desc = "Multiplies the duration of smoke shells",
@@ -322,7 +322,7 @@ local options = {
 		max    = 10,
 		section = '4other',
 		step   = 0.1,
-	},
+	},]]--
 	
 	{
 		key = "always_visible_flags",
