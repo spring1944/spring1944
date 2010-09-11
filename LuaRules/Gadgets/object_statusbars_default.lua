@@ -104,10 +104,10 @@ else
 			Echo("[object_statusbars_default] feature status-bar drawing " .. drawStatusString)
 		end
 
-		local function ___UnitCreated(_asa_, unitID)   SetUnitLuaDraw(unitID, true)   end
-		local function ___UnitDestroyed(_asa_, unitID)   SetUnitLuaDraw(unitID, false)   end
-		local function ___FeatureCreated(_asa_, featureID)   SetFeatureLuaDraw(featureID, true)   end
-		local function ___FeatureDestroyed(_asa_, featureID)   SetFeatureLuaDraw(featureID, false)   end
+		local function ___UnitCreated(--[[_asa_, ]]unitID)   SetUnitLuaDraw(unitID, true)   end
+		local function ___UnitDestroyed(--[[_asa_, ]]unitID)   SetUnitLuaDraw(unitID, false)   end
+		local function ___FeatureCreated(--[[_asa_, ]]featureID)   SetFeatureLuaDraw(featureID, true)   end
+		local function ___FeatureDestroyed(--[[_asa_, ]]featureID)   SetFeatureLuaDraw(featureID, false)   end
 
 
 		local function ___DrawUnitStatusBars(unitID)
@@ -242,12 +242,12 @@ else
 			callinHandlers["FeatureDestroyed"] = ___FeatureDestroyed
 
 			-- listen to "/luarules show*"
-			gadgetHandler:AddChatAction("showhealthbars", ___ToggleDrawUnitStatusBars, "toggle whether unit status-bars are drawn")
+			--[[gadgetHandler:AddChatAction("showhealthbars", ___ToggleDrawUnitStatusBars, "toggle whether unit status-bars are drawn")
 			gadgetHandler:AddChatAction("showrezbars", ___ToggleDrawFeatureStatusBars, "toggle whether feature status-bars are drawn")
 
 			for funcName, func in pairs(callinHandlers) do
 				gadgetHandler:AddSyncAction(funcName, func, "")
-			end
+			end--]]
 
 			Spring.SendCommands({"showhealthbars 0", "showrezbars 0"})
 		end
@@ -262,7 +262,7 @@ else
 		end
 
 
-		--[[
+		
 		-- less efficient than the AddSyncAction route
 		function gadget:RecvFromSynced(callinName, objectID)
 			local handler = callinHandlers[callinName]
