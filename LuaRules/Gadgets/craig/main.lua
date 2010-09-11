@@ -13,7 +13,7 @@ function gadget:GetInfo()
 		author = "Tobi Vollebregt",
 		date = "2009-02-12",
 		license = "GNU General Public License",
-  		layer = -1,
+  		layer = 1,
 		enabled = true
 	}
 end
