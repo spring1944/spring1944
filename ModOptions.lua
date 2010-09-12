@@ -224,7 +224,7 @@ local options = {
 	type   = 'section',
   },
   
-   --[[  {
+     {
     key    = "weapon_apdamage_mult",
     name   = "AP damage multiplier",
     desc   = "Applies a multiplier to all the AP damage values",
@@ -234,7 +234,7 @@ local options = {
     max    = 2,
 	section= '1balance',
     step   = 0.05,
-  },]]--
+  },
   
   	{
 		key = "prisoner_income",
