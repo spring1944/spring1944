@@ -1,13 +1,13 @@
 [unitinfo] {
   unitname=gbr_platoon_commando;
   name=Commando Pathfinder Squad;
-  description=3 x Commando Leaders: Special-Ops, Can Call Airdrop;
+  description=1 x Commando Pathfinder: Special-Ops, Can Call Airdrop;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=2920;
+  buildCostMetal=970;
   buildPic=GBRCommando.png;
-  buildTime=2920;
+  buildTime=970;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

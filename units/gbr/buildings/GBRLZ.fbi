@@ -2,9 +2,9 @@
   unitname=GBRLZ;
   name=Commando Landing Zone;
   buildCostEnergy=0;
-  buildCostMetal=3000;
+  buildCostMetal=2700;
   buildPic=GBRLZ.png;
-  buildTime=3000;
+  buildTime=2700;
   category=BUILDING;
   [customParams] {
     dontCount=1;
