@@ -56,23 +56,23 @@ end
 
 function gadget:GameFrame(n)
 	if (n % (1.5*30) < 0.1) then
-	  for unitID, funcID in pairs(scriptIDs) do
-		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
-		fear[unitID] = suppression
-		GG.fear = fear
-		--[[local udid = Spring.GetUnitDefID(unitID)
-		local ud = UnitDefs[udid]
-		local mass = ud.mass
-		--SendToUnsynced("supressed", unitID, supression)
-		if (modOptions.prisoner_income ~= nil) then
-			if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
-				if suppression > 20 then 
-					GG.surrender(unitID, 10)
+		for unitID, funcID in pairs(scriptIDs) do
+			local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
+			fear[unitID] = suppression
+			GG.fear = fear
+			--[[local udid = Spring.GetUnitDefID(unitID)
+			local ud = UnitDefs[udid]
+			local mass = ud.mass
+			--SendToUnsynced("supressed", unitID, supression)
+			if (modOptions.prisoner_income ~= nil) then
+				if (tonumber(modOptions.prisoner_income) > 0) and (ud.mass < 101) then
+					if suppression > 20 then 
+						GG.surrender(unitID, 10)
+					end
 				end
-			end
-		end]]--
+			end]]
 			SetUnitRulesParam(unitID, "suppress", suppression)
-	  end
+		end
 	end
 end
 
