@@ -60,7 +60,7 @@ function gadget:GameFrame(n)
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
 		fear[unitID] = suppression
 		GG.fear = fear
-		local udid = Spring.GetUnitDefID(unitID)
+		--[[local udid = Spring.GetUnitDefID(unitID)
 		local ud = UnitDefs[udid]
 		local mass = ud.mass
 		--SendToUnsynced("supressed", unitID, supression)
@@ -70,7 +70,7 @@ function gadget:GameFrame(n)
 					GG.surrender(unitID, 10)
 				end
 			end
-		end
+		end]]--
 			SetUnitRulesParam(unitID, "suppress", suppression)
 	  end
 	end
