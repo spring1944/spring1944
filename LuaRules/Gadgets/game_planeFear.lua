@@ -31,7 +31,7 @@ if (gadgetHandler:IsSyncedCode()) then
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
-local fuelLossRate = 6 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
+local fuelLossRate = 4 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
 local bugOutLevel = 4 --amount of fear where the plane bugs out back to HQ
 local CMD_MOVE = CMD.MOVE
 local planeScriptIDs = {}
