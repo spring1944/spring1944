@@ -153,6 +153,7 @@ end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
   if not weaponDefID or not ValidUnitID(unitID) then return damage end
+  if weaponDefID == WeaponDefNames["binocs"].id then return 0 end --  binocs do 0 damage to all units
   
   if damage == 0 then return damage end
   

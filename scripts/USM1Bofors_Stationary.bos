@@ -122,6 +122,9 @@ return (1);
 
 HitByWeaponId(z,x,id,damage)
 {	
+	if (id == 999) { // binocs
+		return 0;
+	}
 	if (Id<=300 || Id>700)
 	{
 	iFear = iFear + 1;

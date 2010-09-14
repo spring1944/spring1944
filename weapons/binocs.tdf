@@ -14,9 +14,8 @@
   [damage] {
     default=0;
   }
-  edgeEffectiveness=1;
+  edgeEffectiveness=0;
   explosionGenerator=custom:nothing;
-  fireStarter=1;
   lineofsight=1;
   noSelfDamage=1;
   range=2000;
@@ -28,6 +27,7 @@
   turret=1;
   weaponTimer=1;
   weaponVelocity=1500;
+  id=999;
 }
 
 [KV1Optics] {

@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
@@ -147,6 +147,9 @@ return (1);
 
 HitByWeaponId(z,x,id,damage)
 {	
+	if (id == 999) { // binocs
+		return 0;
+	}
 	if (Id<=300 || Id>700)
 	{
 	iFear = iFear + 1;
