@@ -20,7 +20,7 @@ local GetUnitViewPosition = Spring.GetUnitViewPosition
 local GetUnitRulesParam    = Spring.GetUnitRulesParam
 local GetTeamColor = Spring.GetTeamColor --cacheing not appreciably faster, if at all
 -- Unsynced Read
-local IsUnitVisible       = Spring.IsUnitVisible
+local IsUnitInView       = Spring.IsUnitInView
 
 -- OpenGL
 local glCallList =  gl.CallList
@@ -95,7 +95,7 @@ function widget:DrawWorldPreUnit()
     if teamFlags then
       for j = 1, #teamFlags do
         unitID = teamFlags[j]
-        if IsUnitVisible(unitID, FLAG_RADIUS, true) then
+        if IsUnitInView(unitID, FLAG_RADIUS, true) then
           local x, y, z = GetUnitBasePosition(unitID)
           glPushMatrix()
             glTranslate(x, y, z)
