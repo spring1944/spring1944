@@ -37,7 +37,6 @@ local TestBuildOrder			= Spring.TestBuildOrder
 local CreateUnit				= Spring.CreateUnit
 local DestroyFeature			= Spring.DestroyFeature
 local SetTeamResource			= Spring.SetTeamResource
-local SetUnitLineage			= Spring.SetUnitLineage
 
 
 -- constants
@@ -167,8 +166,6 @@ local function SpawnStartUnit(teamID)
 		-- only spawn start unit if not already spawned by engine (backwards compat)
 		if not (#GetTeamUnits(teamID) > 0) then
 			local unitID = CreateUnit(startUnit, x, y, z, facing, teamID)
-			-- set the *team's* lineage root
-			SetUnitLineage(unitID, teamID, true)
 		end
 		-- more backwards compat gubbins
 		if (modOptions.gm_team_enable == "0") then
