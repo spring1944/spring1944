@@ -159,9 +159,9 @@ for name, ud in pairs(UnitDefs) do
 			
 		end
 	end
-	-- Make all vehicles push resistant
-	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
+	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
+	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
 		--Spring.Echo(name)
-		--ud.pushresistant = true
+		ud.pushresistant = true
 	end
 end
