@@ -13,6 +13,7 @@ end
 -- Synced Read
 local GetUnitPosition 	= Spring.GetUnitPosition
 local GetUnitTeam		= Spring.GetUnitTeam
+local ValidUnitID		= Spring.ValidUnitID
 -- Synced Ctrl
 local CreateUnit 		= Spring.CreateUnit
 -- Unsynced Read
@@ -43,9 +44,11 @@ if (gadgetHandler:IsSyncedCode()) then
 		end
 		if ud.name:lower() == "ruspartisanrifle" then
 			local spawnerID = couples[unitID]
-			if spawnerID then -- spawner is still alive
+			if ValidUnitID(spawnerID) then -- spawner is still alive, probably (unitID reuse >_>)
 				local numSpawned = spawners[spawnerID]
-				spawners[spawnerID] = numSpawned - 1
+				if numSpawned then -- check numSpawned isn't nil to make doubley sure
+					spawners[spawnerID] = numSpawned - 1
+				end
 			end
 			couples[unitID] = nil
 		end
