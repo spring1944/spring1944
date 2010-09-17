@@ -837,7 +837,7 @@ function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 	local unitX, unitY, unitZ = GetUnitPositionAtEndOfQueue(unitID)
 	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
 	if result == 0 then
-		Spring.SendMessageToTeam(teamID, "Morph failed: unable to morph here.")
+		Spring.SendMessageToTeam(teamID, "Can't deploy here!")
 	end
 	return (result>0)
 end
