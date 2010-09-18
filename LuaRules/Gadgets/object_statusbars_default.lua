@@ -309,23 +309,25 @@ else
 			glPushMatrix()
 				if (drawUnitStatusBars) then
 					for unitID, _ in pairs(drawnUnitIDs) do
-						local px, py, pz = GetUnitPosition(unitID)
-						local vx, vy, vz = GetUnitVelocity(unitID)
-						local dx, dy, dz = ((px - cx) * (px - cx)), ((py - cy) * (py - cy)), ((pz - cz) * (pz - cz))
+						if unitID then
+							local px, py, pz = GetUnitPosition(unitID)
+							local vx, vy, vz = GetUnitVelocity(unitID)
+							local dx, dy, dz = ((px - cx) * (px - cx)), ((py - cy) * (py - cy)), ((pz - cz) * (pz - cz))
 
-						if ((dx + dy + dz) < (drawDistSq * 500)) then
-							-- note: better add a GetUnitDrawPosition callout
-							local t = GetFrameTimeOffset()
-							local h = GetUnitHeight(unitID) + 5.0
+							if ((dx + dy + dz) < (drawDistSq * 500)) then
+								-- note: better add a GetUnitDrawPosition callout
+								local t = GetFrameTimeOffset()
+								local h = GetUnitHeight(unitID) + 5.0
 
-							glPushMatrix()
-								glTranslate(px + vx * t, py + h + vy * t, pz + vz * t)
-								glBillboard()
-								___DrawUnitStatusBars(unitID)
-							glPopMatrix()
+								glPushMatrix()
+									glTranslate(px + vx * t, py + h + vy * t, pz + vz * t)
+									glBillboard()
+									___DrawUnitStatusBars(unitID)
+								glPopMatrix()
+							end
+
+							drawnUnitIDs[unitID] = nil
 						end
-
-						drawnUnitIDs[unitID] = nil
 					end
 				end
 
