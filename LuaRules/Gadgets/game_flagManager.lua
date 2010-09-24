@@ -205,7 +205,7 @@ function gadget:GameFrame(n)
 							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
 							TransferUnit(flagID, GAIA_TEAM_ID, false)
 							SetUnitRulesParam(flagID, "lifespan", 0)
-							SetTeamRulesParam(teamID, "flags", GetTeamRulesParam(teamID, "flags") - 1, {public = true})
+							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) - 1, {public = true})
 							CallCOBScript(flagID, "ShowFlag", 0, 0)
 						end
 						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
