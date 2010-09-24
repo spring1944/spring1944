@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=RUSSU85;
-  name=Su-85;
+  name=SU-85;
   description=Tank Destroyer;
   acceleration=0.056;
   airSightDistance=1500;

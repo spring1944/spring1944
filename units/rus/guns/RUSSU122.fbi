@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=RUSSU122;
-  name=Su-122;
+  name=SU-122;
   description=Self-Propelled 122mm Howitzer;
   acceleration=0.054;
   brakeRate=0.15;
