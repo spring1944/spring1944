@@ -2,6 +2,7 @@
   name=M1937;
   accuracy=485;
   areaOfEffect=88;
+  collideFriendly=0;
   color=255;
   [customParams] {
     armor_hit_side=top;

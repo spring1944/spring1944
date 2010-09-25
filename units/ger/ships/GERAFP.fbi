@@ -77,12 +77,12 @@
 
   weapon4=flak3820mmaa; //20mmflakvierling;
   maxAngleDif4=270;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=AIR;
   weaponMainDir4=0 0 1;
 
   weapon5=flak3820mmaa; //20mmflakvierling;
   maxAngleDif5=270;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
   weapon6=20mmc38;

@@ -2,6 +2,7 @@
   name=M1 81mm Mortar;
   accuracy=485;
   areaOfEffect=104;
+  collideFriendly=0;
   color=255;
   [customParams] {
     armor_hit_side=top;

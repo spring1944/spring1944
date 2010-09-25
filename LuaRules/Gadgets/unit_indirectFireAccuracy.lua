@@ -54,7 +54,7 @@ end
 
 function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 	local ud = UnitDefs[unitDefID]
-		if ud.customParams.canfiresmoke == "1" and ud.customParams.feartarget=="1" then
+		if ud.customParams.canfiresmoke == "1" and ud.customParams.canareaattack == "1" then
 			if cmdID == CMD_ATTACK or cmdID == CMD_AREA_ATTACK then
 				local allyTeam = GetUnitAllyTeam(unitID)
 				local targetX, targetY, targetZ

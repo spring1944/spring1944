@@ -2,6 +2,7 @@
   name=Ordinance ML 3 Inch Mortar;
   accuracy=485;
   areaOfEffect=112;
+  collideFriendly=0;
   color=255;
   [customParams] {
     armor_hit_side=top;

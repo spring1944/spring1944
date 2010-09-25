@@ -75,13 +75,13 @@
   weapon1=bk37mmap;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=10;
-  onlyTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 -1 9;
 
   weapon2=bk37mmap;
   badTargetCategory2=SOFTVEH;
   maxAngleDif2=10;
-  onlyTargetCategory2=OPENVEH HARDVEH;
+  onlyTargetCategory2=OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir2=0 -1 9;
   weaponSlaveTo2=1;
 

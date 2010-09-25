@@ -2,6 +2,7 @@
   name=granatwerfer 34 81.4mm mortar;
   accuracy=485;
   areaOfEffect=81;
+  collideFriendly=0;
   color=255;
   [customParams] {
     armor_hit_side=top;
