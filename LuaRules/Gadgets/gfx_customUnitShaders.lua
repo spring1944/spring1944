@@ -31,8 +31,8 @@ end
 
 if (gadgetHandler:IsSyncedCode()) then
 
-  function gadget:UnitFinished(unitID,unitDefID,teamID)
-    SendToUnsynced("unitshaders_finished", unitID, unitDefID,teamID)
+  function gadget:UnitCreated(unitID,unitDefID,teamID)
+    SendToUnsynced("unitshaders_created", unitID, unitDefID,teamID)
   end
 
   function gadget:UnitDestroyed(unitID,unitDefID,teamID)
@@ -73,7 +73,7 @@ if (gadgetHandler:IsSyncedCode()) then
   function gadget:GameFrame()
     for i,uid in ipairs(Spring.GetAllUnits()) do
       if not select(3,Spring.GetUnitIsStunned(uid)) then --// inbuild?
-        gadget:UnitFinished(uid,Spring.GetUnitDefID(uid),Spring.GetUnitTeam(uid))
+        gadget:UnitCreated(uid,Spring.GetUnitDefID(uid),Spring.GetUnitTeam(uid))
       end
     end
     gadgetHandler:RemoveCallIn('GameFrame')
@@ -245,7 +245,7 @@ function ToggleShadows()
     UnitDestroyed(nil,unitID)
     Spring.UnitRendering.DeactivateMaterial(unitID,3)
     if not select(3,Spring.GetUnitIsStunned(unitID)) then --// inbuild?
-      UnitFinished(nil,unitID,unitDefID,teamID)
+      UnitCreated(nil,unitID,unitDefID,teamID)
     end
   end
 end
@@ -309,7 +309,7 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-function gadget:UnitFinished(unitID,unitDefID,teamID)
+function gadget:UnitCreated(unitID,unitDefID,teamID)
   local unitMat = unitMaterialInfos[unitDefID]
   if (unitMat and (normalmapping or unitMat.force)) then
     Spring.UnitRendering.ActivateMaterial(unitID,3)
@@ -351,7 +351,7 @@ function gadget:UnitCloaked(unitID)
 end
 
 function gadget:UnitDecloaked(...)
-  gadget:UnitFinished(...)
+  gadget:UnitCreated(...)
 end
 
 --------------------------------------------------------------------------------
@@ -392,7 +392,7 @@ function gadget:Initialize()
     unitMaterialInfos[(UnitDefNames[unitName] or {id=-1}).id] = materialInfo
   end
 
-  gadgetHandler:AddSyncAction("unitshaders_finished", UnitFinished)
+  gadgetHandler:AddSyncAction("unitshaders_created", UnitCreated)
   gadgetHandler:AddSyncAction("unitshaders_destroyed", UnitDestroyed)
   gadgetHandler:AddSyncAction("unitshaders_reverse", UnitReverseBuild)
   gadgetHandler:AddSyncAction("unitshaders_cloak", UnitCloaked)
