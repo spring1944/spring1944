@@ -118,6 +118,14 @@ local options = {
 		desc   = "r,g,b",
 		type   = "string",
 		def    = "0,0,0",
+	},
+	{
+		-- mandatory
+		key    = "intro_file",
+		name   = "intro_file",
+		desc   = "path from archive root",
+		type   = "string",
+		def    = "lobby/intro.txt",
 	}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
