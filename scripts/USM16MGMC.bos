@@ -1,7 +1,4 @@
-#define TAK
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, frontwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, turret, tracks1, tracks2, 
 guns, flare1, flare2, flare3, flare4;
@@ -31,8 +28,6 @@ static-var restore_delay, bMoving, treadnum, aim1;
 
 // tracers
 #define MEDIUM_TRACER 	2048+4
-
-#include "TurnButton.h"
 
 
 treads() 
@@ -119,6 +114,10 @@ StopMoving()
 
 Create()
 {
+	hide flare1;
+	hide flare2;
+	hide flare3;
+	hide flare4;
 	aim1 = FALSE;
 	treadnum=0;
 	start-script SmokeUnit();

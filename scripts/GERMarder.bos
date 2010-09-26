@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, mantlet, barrel, flare, brakeleft, brakeright, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, tracks1, tracks2;
 
@@ -16,7 +16,7 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum;
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 mantlet
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 // definitions for wheels
 #define WHEEL_SPIN		<600>
@@ -56,7 +56,6 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum;
 #define MEDIUM_MUZZLEDUST 1024+9
 #define MuzzleBrakeSmoke 1024+10
 
-#include "TurnButton.h"
 treads() 
 { 
    while( TRUE ) 
@@ -81,6 +80,9 @@ treads()
 
 Create()
 {
+	hide flare; 
+	hide brakeleft;
+	hide brakeright;
 	// init vars
 	rock = FALSE;
 	aim2 = FALSE;
