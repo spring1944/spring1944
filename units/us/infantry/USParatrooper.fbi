@@ -11,7 +11,7 @@
   canFly=1;
   canMove=1;
   category=AIR PARA; //INFANTRY;
-  corpse=USSoldier_dead;
+  //corpse=USSoldier_dead;
   [customParams] {
     feartarget=1;
   }
