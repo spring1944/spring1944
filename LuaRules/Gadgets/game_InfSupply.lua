@@ -12,23 +12,33 @@ end
 
 -- function localisations
 -- Synced Read
-local GetUnitAllyTeam		 		=	Spring.GetUnitAllyTeam
-local GetUnitDefID			 		=	Spring.GetUnitDefID
-local GetUnitSeparation			=	Spring.GetUnitSeparation
-local GetUnitTeam						=	Spring.GetUnitTeam
-local GetUnitIsStunned			=	Spring.GetUnitIsStunned
-local ValidUnitID						= Spring.ValidUnitID
+local GetTeamResources		 	= Spring.GetTeamResources
+local GetUnitAllyTeam		 	= Spring.GetUnitAllyTeam
+local GetUnitDefID			 	= Spring.GetUnitDefID
+local GetUnitSeparation			= Spring.GetUnitSeparation
+local GetUnitTeam				= Spring.GetUnitTeam
+local GetUnitIsStunned			= Spring.GetUnitIsStunned
+--local GetUnitWeaponState		= Spring.GetUnitWeaponState
+local ValidUnitID				= Spring.ValidUnitID
 -- Synced Ctrl
 local SetUnitWeaponState		= Spring.SetUnitWeaponState
-local UseUnitResource				= Spring.UseUnitResource
+--local UseUnitResource			= Spring.UseUnitResource
 
 -- Constants
 local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
-local stallPenalty				=	1.35 --1.35
-local supplyBonus				=	0.65 --65
+local STALL_PENALTY				=	1.35 --1.35
+local SUPPLY_BONUS				=	0.65 --65
 -- Variables
 local ammoSuppliers		=	{}
-local savedFrame		=	{}  -- infantry
+--local savedFrame		=	{}  -- infantry
+local infantry 			= {}
+local teams 			= Spring.GetTeamList()
+local numTeams			= #teams
+
+for i = 1, numTeams do
+	infantry[teams[i]] = {}
+end
+
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
@@ -74,14 +84,14 @@ function gadget:Initialize()
 	end
 end
 
-function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.feartarget and not(ud.customParams.maxammo) and (ud.weapons[1]) then
-		savedFrame[unitID] = 0
+		infantry[teamID][unitID] = true
 	end
 end
 
-function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.ammosupplier == '1' then
 		ammoSuppliers[unitID] = true
@@ -89,18 +99,21 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 
-function gadget:UnitDestroyed(unitID)
-	savedFrame[unitID] = nil
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+	infantry[teamID][unitID] = nil
 	ammoSuppliers[unitID] = nil
 end
 
+function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+	gadget:UnitCreated(unitID, unitDefID, newTeam)
+end
 
 function gadget:UnitLoaded(unitID)
 	-- If a unit is loaded into a transport and temporarily can't fire,
 	-- behave as if it didn't exist until it gets unloaded again.
 	local _, stunned = GetUnitIsStunned(unitID)
 	if stunned then
-		savedFrame[unitID] = nil
+		infantry[unitID] = nil
 	end
 end
 
@@ -108,46 +121,56 @@ end
 -- If a unit is unloaded, do exactly the same as for newly created units.
 gadget.UnitUnloaded = gadget.UnitCreated
 
+function gadget:TeamDied(teamID)
+	numTeams = numTeams - 1
+	teams = Spring.GetTeamList()
+	infantry[teamID] = nil
+end
 
-local function ProcessUnit(unitID, unitDefID, teamID)
-	local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 0.15
+local function ProcessUnit(unitID, unitDefID, teamID, stalling)
+	--local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 0.15
 	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
 	local reload = WeaponDefs[weaponID].reload
-	local reloadFrameLength = (reload*30)
+	--local reloadFrameLength = (reload*30)
 
 	if ValidUnitID(unitID) then
 		-- Stalling. (stall penalty!)
-		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
-		if (logisticsLevel < 5) then
-			SetUnitWeaponState(unitID, 0, {reloadTime = stallPenalty*reload})
+		if (stalling) then
+			SetUnitWeaponState(unitID, 0, {reloadTime = STALL_PENALTY*reload})
 			return
 		end
 
 		-- In supply radius. (supply bonus!)
 		local supplierID = FindSupplier(unitID)
 		if supplierID then
-			SetUnitWeaponState(unitID, 0, {reloadTime = supplyBonus*reload})
+			SetUnitWeaponState(unitID, 0, {reloadTime = SUPPLY_BONUS*reload})
 			return
 		end
 
-		local _, _, reloadFrame = Spring.GetUnitWeaponState(unitID, 0)
-		if (savedFrame[unitID] == 0) then
-			savedFrame[unitID] = reloadFrame + reloadFrameLength
-		end
+		-- reset reload time otherwise
 		SetUnitWeaponState(unitID, 0, {reloadTime = reload})
-		if (reloadFrame > savedFrame[unitID]) then
+		
+		-- Use resources if outside of supply
+		--[[if (reloadFrame > savedFrame[unitID]) then
 			savedFrame[unitID] = reloadFrame
 			UseUnitResource(unitID, "e", weaponCost)
-		end
+		end]]
 	end
 end
 
 function gadget:GameFrame(n)
-	if n % (1*30) < 0.1 then
-		for unitID in pairs(savedFrame) do
-			local unitDefID = GetUnitDefID(unitID)
-			local teamID = GetUnitTeam(unitID)
-			ProcessUnit(unitID, unitDefID, teamID)
+	for i = 1, numTeams do
+		--Spring.Echo((n + (math.floor(32 / numTeams) * i)) % (32 * 3))
+		--if n % (1*30) < 0.1 then
+		if (n + (math.floor(32 / numTeams) * i)) % (32 * 3) < 0.1 then -- every 3 seconds with each team offset by 32 / numTeams * teamNum frames
+			for unitID in pairs(infantry[teams[i]]) do
+				local unitDefID = GetUnitDefID(unitID)
+				--local teamID = GetUnitTeam(unitID)
+				local teamID = teams[i]
+				local logisticsLevel = GetTeamResources(teamID, "energy")
+				local stalling = logisticsLevel < 5
+				ProcessUnit(unitID, unitDefID, teamID, stalling)
+			end
 		end
 	end
 end
