@@ -108,12 +108,12 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	gadget:UnitCreated(unitID, unitDefID, newTeam)
 end
 
-function gadget:UnitLoaded(unitID)
+function gadget:UnitLoaded(unitID, unitDefID, teamID)
 	-- If a unit is loaded into a transport and temporarily can't fire,
 	-- behave as if it didn't exist until it gets unloaded again.
 	local _, stunned = GetUnitIsStunned(unitID)
 	if stunned then
-		infantry[unitID] = nil
+		infantry[teamID][unitID] = nil
 	end
 end
 
