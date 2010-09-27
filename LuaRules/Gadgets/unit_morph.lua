@@ -574,9 +574,6 @@ local function FinishMorph(unitID, morphData)
   if oldShieldState and Spring.GetUnitShieldState(newUnit) then
     Spring.SetUnitShieldState(newUnit, enabled,oldShieldState)
   end
-	
-  local lineage = Spring.GetUnitLineage(unitID)
-  Spring.SetUnitLineage(newUnit,lineage,true)
 
   --// FIXME: - re-attach to current transport?
   --// update selection
