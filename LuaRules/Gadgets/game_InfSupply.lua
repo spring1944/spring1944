@@ -160,9 +160,9 @@ end
 
 function gadget:GameFrame(n)
 	for i = 1, numTeams do
-		--Spring.Echo((n + (math.floor(32 / numTeams) * i)) % (32 * 3))
+		--Spring.Echo((n + (math.floor(30 / numTeams) * i)) % (30 * 3))
 		--if n % (1*30) < 0.1 then
-		if (n + (math.floor(32 / numTeams) * i)) % (32 * 3) < 0.1 then -- every 3 seconds with each team offset by 32 / numTeams * teamNum frames
+		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
 			for unitID in pairs(infantry[teams[i]]) do
 				local unitDefID = GetUnitDefID(unitID)
 				--local teamID = GetUnitTeam(unitID)
