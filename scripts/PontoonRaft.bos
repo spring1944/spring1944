@@ -4,6 +4,7 @@ piece  base, deck, load_shoulder, load_arm, wake1, wake2;
 
 // Signal definitions
 #define SIG_MOVE			2
+#define ALLOWED_DIFF			[10]
 
 TransportPickup(unitid)
 {
@@ -18,7 +19,7 @@ TransportDrop(unitid, position)
 	var heightDiff;
 	// check height difference between transport and unload point. Not sure what would be reasonable yet
 	heightDiff = get GROUND_HEIGHT(position) - get PIECE_Y(base);
-	if (heightDiff > [5])
+	if (heightDiff > ALLOWED_DIFF)
 	{
 		return FALSE;
 	}
