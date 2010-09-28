@@ -122,9 +122,9 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		ammoSuppliers[aLength] = nil
 	-- Check if the unit was infantry
 	elseif cp and cp.feartarget and ud.weapons[1] then
-		iIndices[teamID][infantry[teamID][iLength[teamID]]] = iIndices[teamID][unitID]
-		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLength[teamID]]
-		infantry[teamID][iLength[teamID]] = nil
+		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
+		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
+		infantry[teamID][iLengths[teamID]] = nil
 	end
 end
 
