@@ -64,7 +64,7 @@ local options = {
 		name   = "icon",
 		desc   = "application icon",
 		type   = "string",
-		def    = "icons/sl_app.png", 	--bmp/png
+		def    = "lobby/application_icon.png", 	--bmp/png
 	},
 	{
 		key    = "battlelist_filter",
