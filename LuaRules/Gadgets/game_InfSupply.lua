@@ -29,14 +29,21 @@ local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local STALL_PENALTY				=	1.35 --1.35
 local SUPPLY_BONUS				=	0.65 --65
 -- Variables
-local ammoSuppliers		=	{}
+local ammoSuppliers		= {}
+local aIndices			= {}
+local aLength			= 0
+
 --local savedFrame		=	{}  -- infantry
 local infantry 			= {}
+local iIndices			= {}
+local iLengths			= {}
 local teams 			= Spring.GetTeamList()
 local numTeams			= #teams
 
 for i = 1, numTeams do
 	infantry[teams[i]] = {}
+	iIndices[teams[i]] = {}
+	iLengths[teams[i]] = 0
 end
 
 local modOptions
@@ -51,7 +58,9 @@ local function FindSupplier(unitID)
 	local closestSupplier
 	local closestDistance = math.huge
 	local allyTeam = GetUnitAllyTeam(unitID)
-	for supplierID in pairs(ammoSuppliers) do
+	--for supplierID in pairs(ammoSuppliers) do
+	for i = 1, aLength do
+		local supplierID = ammoSuppliers[i]
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
 		local supTeam = GetUnitTeam(supplierID)
 		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
@@ -87,21 +96,36 @@ end
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.feartarget and not(ud.customParams.maxammo) and (ud.weapons[1]) then
-		infantry[teamID][unitID] = true
+		iLengths[teamID] = iLengths[teamID] + 1
+		infantry[teamID][iLengths[teamID]] = unitID
+		iIndices[teamID][unitID] = iLengths[teamID]
 	end
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.ammosupplier == '1' then
-		ammoSuppliers[unitID] = true
+		aLength = aLength + 1
+		ammoSuppliers[aLength] = unitID
+		aIndices[unitID] = aLength
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
-	infantry[teamID][unitID] = nil
-	ammoSuppliers[unitID] = nil
+	local ud = UnitDefs[unitDefID]
+	local cp = ud.customParams
+	-- Check if the unit was a supplier
+	if cp and cp.supplyrange then
+		aIndices[ammoSuppliers[aLength]] = aIndices[unitID]
+		ammoSuppliers[aIndices[unitID]] = ammoSuppliers[aLength]
+		ammoSuppliers[aLength] = nil
+	-- Check if the unit was infantry
+	elseif cp and cp.feartarget and ud.weapons[1] then
+		iIndices[teamID][infantry[teamID][iLength[teamID]]] = iIndices[teamID][unitID]
+		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLength[teamID]]
+		infantry[teamID][iLength[teamID]] = nil
+	end
 end
 
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
@@ -163,10 +187,12 @@ function gadget:GameFrame(n)
 		--Spring.Echo((n + (math.floor(30 / numTeams) * i)) % (30 * 3))
 		--if n % (1*30) < 0.1 then
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
-			for unitID in pairs(infantry[teams[i]]) do
+			--for unitID in pairs(infantry[teams[i]]) do
+			local teamID = teams[i]
+			for j = 1, iLengths[teamID] do
+				local unitID = infantry[teamID][j]
 				local unitDefID = GetUnitDefID(unitID)
-				--local teamID = GetUnitTeam(unitID)
-				local teamID = teams[i]
+				--local teamID = GetUnitTeam(unitID
 				local logisticsLevel = GetTeamResources(teamID, "energy")
 				local stalling = logisticsLevel < 5
 				ProcessUnit(unitID, unitDefID, teamID, stalling)
