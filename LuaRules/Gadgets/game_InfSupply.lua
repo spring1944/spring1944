@@ -120,11 +120,13 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		aIndices[ammoSuppliers[aLength]] = aIndices[unitID]
 		ammoSuppliers[aIndices[unitID]] = ammoSuppliers[aLength]
 		ammoSuppliers[aLength] = nil
+		aLength = aLength - 1
 	-- Check if the unit was infantry
 	elseif cp and cp.feartarget and ud.weapons[1] then
 		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
 		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
 		infantry[teamID][iLengths[teamID]] = nil
+		iLengths[teamID] = iLengths[teamID] - 1
 	end
 end
 
@@ -149,6 +151,8 @@ function gadget:TeamDied(teamID)
 	numTeams = numTeams - 1
 	teams = Spring.GetTeamList()
 	infantry[teamID] = nil
+	iIndices[teamID] = nil
+	iLenghts[teamID] = nil
 end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
