@@ -2,9 +2,9 @@ function gadget:GetInfo()
 	return {
 		name    = "Ammo Limiter",
 		desc    = "Gives each unit a personal 'ammo' storage that it draws from to fire, when empty it fires much more slowly",
-		author  = "quantum, FLOZi",
+		author  = "quantum, FLOZi (C. Lawrence)",
 		date    = "Feb 01, 2007",
-		license = "CC attribution-noncommerical 3.0 or later",
+		license = "GNU GPL v2",
 		layer   = 0,
 		enabled = true -- loaded by default?
 	}
@@ -36,22 +36,18 @@ local vehicles = {}
 local newVehicles = {}
 local savedFrames = {}
 local initFrame
---[[a note on the customParams (custom FBI tags) used by this script:
 
-maxammo				The total ammo capacity of this unit;
-ammosupplier			Is this a ammo supplying unit?
-supplyrange				How far this supply unit can supply
-weaponcost				The cost to reload the weapons with ammo per tick.
-weaponswithammo		Number of weapons that use ammo. Must be the first ones. Default is 2.]]
+--[[ 
+NB: the customParams used by this script:
+
+	maxammo				The total ammo capacity of this unit
+	supplyrange				How far this supply unit can supply
+	weaponcost				The cost to reload the weapons with ammo per tick
+	weaponswithammo			Number of weapons that use ammo. Must be the first ones. Default is 2
+]]
 
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
-
-local function DefaultRegen(unitDefID)
-	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-	local reload = WeaponDefs[weaponID].reload
-	return reload
-end
 
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
@@ -106,8 +102,6 @@ end
 
 
 local function FindSupplier(vehicleID)
-	local closestSupplier
-	local closestDistance = math.huge
 	local allyTeam = GetUnitAllyTeam(vehicleID)
 	for supplierID in pairs(ammoSuppliers) do
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
@@ -116,14 +110,13 @@ local function FindSupplier(vehicleID)
 			local separation = GetUnitSeparation(vehicleID, supplierID, true)
 			local supplierDefID = GetUnitDefID(supplierID)
 			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-			if separation < closestDistance and separation <= supplyRange then
-				closestSupplier = supplierID
-				closestDistance = separation
+			if separation <= supplyRange then
+				return supplierID
 			end
 		end
 	end
-
-	return closestSupplier
+	-- No supplier found
+	return
 end
 
 
