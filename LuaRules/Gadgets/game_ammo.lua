@@ -12,8 +12,9 @@ end
 
 -- function localisations
 -- Synced Read
+local AreTeamsAllied	 = Spring.AreTeamsAllied
 local GetGameFrame       = Spring.GetGameFrame
-local GetUnitAllyTeam    = Spring.GetUnitAllyTeam
+--local GetUnitAllyTeam    = Spring.GetUnitAllyTeam
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitIsStunned   = Spring.GetUnitIsStunned
 local GetUnitPosition    = Spring.GetUnitPosition
@@ -31,7 +32,20 @@ local SetUnitWeaponState = Spring.SetUnitWeaponState
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
 -- Variables
-local ammoSuppliers = {}
+local ammoSuppliers		= {}
+local aIndices			= {}
+local aLengths			= {}
+
+local teams 			= Spring.GetTeamList()
+local numTeams			= #teams
+
+for i = 1, numTeams do
+	-- setup per-team ammo supplier arrays
+	ammoSuppliers[teams[i]] = {}
+	aIndices[teams[i]] = {}
+	aLengths[teams[i]] = 0
+end
+
 local vehicles = {}
 local newVehicles = {}
 local savedFrames = {}
@@ -101,33 +115,36 @@ local function ProcessWeapons(unitID)
 end
 
 
-local function FindSupplier(vehicleID)
-	local allyTeam = GetUnitAllyTeam(vehicleID)
-	for supplierID in pairs(ammoSuppliers) do
-		local supAllyTeam = GetUnitAllyTeam(supplierID)
-		local supTeam = GetUnitTeam(supplierID)
-		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
-			local separation = GetUnitSeparation(vehicleID, supplierID, true)
-			local supplierDefID = GetUnitDefID(supplierID)
-			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-			if separation <= supplyRange then
-				return supplierID
-			end
+local function FindSupplier(unitID, teamID)
+	for i = 1, aLengths[teamID] do
+		local supplier = ammoSuppliers[teamID][i]
+		local separation = GetUnitSeparation(unitID, supplier.id, true)
+		if separation <= supplier.range then
+			return supplier.id
 		end
 	end
-	-- No supplier found
+	-- no supplier found
 	return
 end
 
 
 local function Resupply(unitID)
 	local unitDefID = GetUnitDefID(unitID)
-	local supplierID = FindSupplier(unitID)
+	local teamID = GetUnitTeam(unitID)
+	-- First check own team
+	local supplierID = FindSupplier(unitID, teamID)
+	-- Then check all allied teams if no supplier found
+	local i = 1
+	while not supplierID and i <= numTeams do
+		local supTeam = teams[i]
+		if supTeam ~= teamID and (AreTeamsAllied(supTeam, teamID) or supTeam == GAIA_TEAM_ID) then
+			supplierID = FindSupplier(unitID, supTeam)
+		end
+		i = i + 1
+	end
 	if supplierID then
 		local oldAmmo = GetUnitRulesParam(unitID, "ammo")
 		local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo)
-
-		local teamID = GetUnitTeam(unitID)
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
 		local weaponCost = tonumber(UnitDefs[unitDefID].customParams.weaponcost)
 		local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)		
@@ -185,7 +202,7 @@ function gadget:Initialize()
 end
 
 
-function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.customParams.maxammo then
 		if ud.canFly then
@@ -202,17 +219,34 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 end
 
-function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.ammosupplier == '1' then
-		ammoSuppliers[unitID] = true
+	local cp = ud.customParams
+	-- Build table of suppliers
+	if cp and cp.supplyrange then
+		local supplier = {}
+		supplier["id"] = unitID
+		supplier["range"] = tonumber(cp.supplyrange)
+		
+		aLengths[teamID] = aLengths[teamID] + 1
+		ammoSuppliers[teamID][aLengths[teamID]] = supplier
+		aIndices[teamID][unitID] = aLengths[teamID]
 	end
 end
 
-function gadget:UnitDestroyed(unitID)
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	newVehicles[unitID] = nil
 	vehicles[unitID] = nil
-	ammoSuppliers[unitID] = nil
+	
+	local ud = UnitDefs[unitDefID]
+	local cp = ud.customParams
+	-- Check if the unit was a supplier
+	if cp and cp.supplyrange then
+		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
+		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
+		ammoSuppliers[teamID][aLengths[teamID]] = nil
+		aLengths[teamID] = aLengths[teamID] - 1
+	end
 end
 
 --If unit is loaded into a transport, do a last call to ProcessWeapons
@@ -239,6 +273,16 @@ function gadget:UnitUnloaded(unitID, unitDefID)
 		savedFrames[unitID] = nil
 	end
 end
+
+
+function gadget:TeamDied(teamID)
+	numTeams = numTeams - 1
+	teams = Spring.GetTeamList()
+	ammoSuppliers[teamID] = nil
+	aIndices[teamID] = nil
+	aLenghts[teamID] = nil
+end
+
 
 function gadget:GameFrame(n)
 	if (n == initFrame+4) then
