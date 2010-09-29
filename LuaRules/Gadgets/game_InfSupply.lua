@@ -1,10 +1,10 @@
 function gadget:GetInfo()
 	return {
 		name		= "Infantry supply rules",
-		desc		= "Infantry drain logistics when not in supply range and firing, firing rate bonus while in supply range, firing rate penalty when out of logistics",
-		author	= "Nemo (B. Tyler), built on work by quantum and FLOZi",
+		desc		= "Infantry firing rate bonus while in supply range, firing rate penalty when out of logistics",
+		author		= "Nemo (B. Tyler), FLOZi (C.Lawrence), quantum",
 		date		= "December 19, 2008",
-		license = "CC attribution-noncommerical 3.0 or later",
+		license 	= "GNU GPL v2",
 		layer		= 0,
 		enabled	= true	--	loaded by default?
 	}
