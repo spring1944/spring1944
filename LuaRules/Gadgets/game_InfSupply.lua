@@ -58,7 +58,6 @@ local function FindSupplier(unitID)
 	local closestSupplier
 	local closestDistance = math.huge
 	local allyTeam = GetUnitAllyTeam(unitID)
-	--for supplierID in pairs(ammoSuppliers) do
 	for i = 1, aLength do
 		local supplierID = ammoSuppliers[i]
 		local supAllyTeam = GetUnitAllyTeam(supplierID)
@@ -130,7 +129,8 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	end
 end
 
-function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
+function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
+	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 	gadget:UnitCreated(unitID, unitDefID, newTeam)
 end
 
@@ -188,15 +188,11 @@ end
 
 function gadget:GameFrame(n)
 	for i = 1, numTeams do
-		--Spring.Echo((n + (math.floor(30 / numTeams) * i)) % (30 * 3))
-		--if n % (1*30) < 0.1 then
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
-			--for unitID in pairs(infantry[teams[i]]) do
 			local teamID = teams[i]
 			for j = 1, iLengths[teamID] do
 				local unitID = infantry[teamID][j]
 				local unitDefID = GetUnitDefID(unitID)
-				--local teamID = GetUnitTeam(unitID
 				local logisticsLevel = GetTeamResources(teamID, "energy")
 				local stalling = logisticsLevel < 5
 				ProcessUnit(unitID, unitDefID, teamID, stalling)
