@@ -177,15 +177,13 @@ local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 		-- First check own team
 		local supplierID = FindSupplier(unitID, teamID)
 		-- Then check all allied teams if no supplier found
-		if not supplierID then
-			for  i = 1, numTeams do
-				local supTeam = teams[i]
-				if supTeam ~= teamID and (AreTeamsAllied(supTeam, teamID) or supTeam == GAIA_TEAM_ID) then
-					supplierID = FindSupplier(unitID, supTeam)
-				end
-				-- Stop searching if we find a supplier
-				if supplierID then break end
+		local i = 1
+		while not supplierID and i <= numTeams do
+			local supTeam = teams[i]
+			if supTeam ~= teamID and (AreTeamsAllied(supTeam, teamID) or supTeam == GAIA_TEAM_ID) then
+				supplierID = FindSupplier(unitID, supTeam)
 			end
+			i = i + 1
 		end
 		if supplierID then
 			SetUnitWeaponState(unitID, 0, {reloadTime = SUPPLY_BONUS*reload})
