@@ -12,8 +12,8 @@ end
 
 -- function localisations
 -- Synced Read
+local AreTeamsAllied			= Spring.AreTeamsAllied
 local GetTeamResources		 	= Spring.GetTeamResources
-local GetUnitAllyTeam		 	= Spring.GetUnitAllyTeam
 local GetUnitDefID			 	= Spring.GetUnitDefID
 local GetUnitSeparation			= Spring.GetUnitSeparation
 local GetUnitTeam				= Spring.GetUnitTeam
@@ -31,19 +31,24 @@ local SUPPLY_BONUS				=	0.65 --65
 -- Variables
 local ammoSuppliers		= {}
 local aIndices			= {}
-local aLength			= 0
+local aLengths			= {}
 
---local savedFrame		=	{}  -- infantry
 local infantry 			= {}
 local iIndices			= {}
 local iLengths			= {}
+
 local teams 			= Spring.GetTeamList()
 local numTeams			= #teams
 
 for i = 1, numTeams do
+	-- setup per-team infantry arrays
 	infantry[teams[i]] = {}
 	iIndices[teams[i]] = {}
 	iLengths[teams[i]] = 0
+	-- setup per-team ammo supplier arrays
+	ammoSuppliers[teams[i]] = {}
+	aIndices[teams[i]] = {}
+	aLengths[teams[i]] = 0
 end
 
 local modOptions
@@ -54,26 +59,16 @@ end
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
-local function FindSupplier(unitID)
-	local closestSupplier
-	local closestDistance = math.huge
-	local allyTeam = GetUnitAllyTeam(unitID)
-	for i = 1, aLength do
-		local supplierID = ammoSuppliers[i]
-		local supAllyTeam = GetUnitAllyTeam(supplierID)
-		local supTeam = GetUnitTeam(supplierID)
-		if allyTeam == supAllyTeam or supTeam == GAIA_TEAM_ID then
-			local separation = GetUnitSeparation(unitID, supplierID, true)
-			local supplierDefID = GetUnitDefID(supplierID)
-			local supplyRange = tonumber(UnitDefs[supplierDefID].customParams.supplyrange)
-			if separation < closestDistance and separation <= supplyRange then
-				closestSupplier = supplierID
-				closestDistance = separation
-			end
+local function FindSupplier(unitID, teamID)
+	for i = 1, aLengths[teamID] do
+		local supplier = ammoSuppliers[teamID][i]
+		local separation = GetUnitSeparation(unitID, supplier.id, true)
+		if separation <= supplier.range then
+			return supplier.id
 		end
 	end
-
-	return closestSupplier
+	-- no supplier found
+	return
 end
 
 function gadget:Initialize()
@@ -103,10 +98,16 @@ end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.ammosupplier == '1' then
-		aLength = aLength + 1
-		ammoSuppliers[aLength] = unitID
-		aIndices[unitID] = aLength
+	local cp = ud.customParams
+	-- Build table of suppliers
+	if cp and cp.supplyrange then
+		local supplier = {}
+		supplier["id"] = unitID
+		supplier["range"] = tonumber(cp.supplyrange)
+		
+		aLengths[teamID] = aLengths[teamID] + 1
+		ammoSuppliers[teamID][aLengths[teamID]] = supplier
+		aIndices[teamID][unitID] = aLengths[teamID]
 	end
 end
 
@@ -116,10 +117,10 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	-- Check if the unit was a supplier
 	if cp and cp.supplyrange then
-		aIndices[ammoSuppliers[aLength]] = aIndices[unitID]
-		ammoSuppliers[aIndices[unitID]] = ammoSuppliers[aLength]
-		ammoSuppliers[aLength] = nil
-		aLength = aLength - 1
+		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
+		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
+		ammoSuppliers[teamID][aLengths[teamID]] = nil
+		aLengths[teamID] = aLengths[teamID] - 1
 	-- Check if the unit was infantry
 	elseif cp and cp.feartarget and ud.weapons[1] then
 		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
@@ -132,6 +133,7 @@ end
 function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
 	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 	gadget:UnitCreated(unitID, unitDefID, newTeam)
+	gadget:UnitFinished(unitID, unitDefID, newTeam)
 end
 
 function gadget:UnitLoaded(unitID, unitDefID, teamID)
@@ -153,6 +155,9 @@ function gadget:TeamDied(teamID)
 	infantry[teamID] = nil
 	iIndices[teamID] = nil
 	iLenghts[teamID] = nil
+	ammoSuppliers[teamID] = nil
+	aIndices[teamID] = nil
+	aLenghts[teamID] = nil
 end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
@@ -169,7 +174,19 @@ local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 		end
 
 		-- In supply radius. (supply bonus!)
-		local supplierID = FindSupplier(unitID)
+		-- First check own team
+		local supplierID = FindSupplier(unitID, teamID)
+		-- Then check all allied teams if no supplier found
+		if not supplierID then
+			for  i = 1, numTeams do
+				local supTeam = teams[i]
+				if supTeam ~= teamID and (AreTeamsAllied(supTeam, teamID) or supTeam == GAIA_TEAM_ID) then
+					supplierID = FindSupplier(unitID, supTeam)
+				end
+				-- Stop searching if we find a supplier
+				if supplierID then break end
+			end
+		end
 		if supplierID then
 			SetUnitWeaponState(unitID, 0, {reloadTime = SUPPLY_BONUS*reload})
 			return
