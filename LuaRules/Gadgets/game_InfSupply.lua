@@ -89,7 +89,8 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.customParams.feartarget and not(ud.customParams.maxammo) and (ud.weapons[1]) then
+	local cp = ud.customParams
+	if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then
 		iLengths[teamID] = iLengths[teamID] + 1
 		infantry[teamID][iLengths[teamID]] = unitID
 		iIndices[teamID][unitID] = iLengths[teamID]
@@ -122,7 +123,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		ammoSuppliers[teamID][aLengths[teamID]] = nil
 		aLengths[teamID] = aLengths[teamID] - 1
 	-- Check if the unit was infantry
-	elseif cp and cp.feartarget and ud.weapons[1] then
+	elseif cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then
 		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
 		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
 		infantry[teamID][iLengths[teamID]] = nil
