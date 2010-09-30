@@ -589,6 +589,7 @@ local morphDefs = {
     time = 20,
     metal = 0,
     energy = 0,
+	facing = true,
   },
   
 }
