@@ -275,6 +275,11 @@ function gadget:UnitUnloaded(unitID, unitDefID)
 end
 
 
+function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
+	gadget:UnitFinished(unitID, unitDefID, newTeam)
+end
+
+
 function gadget:TeamDied(teamID)
 	numTeams = numTeams - 1
 	teams = Spring.GetTeamList()
