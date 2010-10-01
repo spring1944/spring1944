@@ -10,6 +10,9 @@
   buildTime=1825;
   canMove=1;
   category=FLAG;
+  [customParams] {
+    silent=1;
+  }
   explodeAs=noweapon;
   footprintX=1;
   footprintZ=1;
