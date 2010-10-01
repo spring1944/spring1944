@@ -33,7 +33,7 @@
   smoothAnim=0;
   stealth=1;
   TEDClass=METAL;
-  windGenerator=1e-06;
+  windGenerator=0.00001;
   yardmap=ooooooooo;
 
   weapon1=flag;

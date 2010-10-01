@@ -2,43 +2,33 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 local GADGET_DIR = "LuaRules/Configs/"
+
 local materials = {
-   copyEngineS3o = {
-      shader = include(GADGET_DIR .. "UnitShaders/default.lua"),
-      usecamera   = false,
-      culling     = GL.BACK,
-      texunits    = {
-        [0] = '%%UNITDEFID:0',
-        [1] = '%%UNITDEFID:1',
-        [2] = '$shadow',
-        [3] = '$specular',
-        [4] = '$reflection',
-      },
-   },
    normalMappedS3o = {
-      shaderDefinitions = {
-        "#define use_normalmapping",
-        --"#define flip_normalmap",
-      },
-      shader = include(GADGET_DIR .. "UnitShaders/default.lua"),
-      usecamera   = false,
-      culling     = GL.BACK,
-      texunits    = {
-        [0] = '%%UNITDEFID:0',
-        [1] = '%%UNITDEFID:1',
-        [2] = '$shadow',
-        [3] = '$specular',
-        [4] = '$reflection',
-        [5] = '%NORMALTEX',
-      },
+       shaderDefinitions = {
+	"#define use_perspective_correct_shadows",
+         "#define use_normalmapping",
+         --"#define flip_normalmap",
+       },
+       shader    = include(GADGET_DIR .. "UnitMaterials/Shaders/default.lua"),
+       usecamera = false,
+       culling   = GL.BACK,
+       texunits  = {
+         [0] = '%%UNITDEFID:0',
+         [1] = '%%UNITDEFID:1',
+         [2] = '$shadow',
+         [3] = '$specular',
+         [4] = '$reflection',
+         [5] = '%NORMALTEX',
+       },
    },
 }
-
-local unitMaterials = {}
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Automated normalmap detection
+
+local unitMaterials = {}
 
 local function FindNormalmap(tex1, tex2)
   local normaltex
@@ -104,7 +94,7 @@ for i=1,#UnitDefs do
       end]]
 
       local normaltex = FindNormalmap(tex1,tex2)
-      if (normaltex) then
+      if (normaltex and not unitMaterials[udef.name]) then
         unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
       end
     end --if model
@@ -126,7 +116,7 @@ for i=1,#UnitDefs do
           end]]
 
           local normaltex = FindNormalmap(tex1,tex2)
-          if (normaltex) then
+          if (normaltex and not unitMaterials[udef.name]) then
             unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
           end
         end

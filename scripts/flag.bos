@@ -1,48 +1,46 @@
 #include "constants.h"
 
 piece  base;
-piece  gerflagpiece1, gerflagpiece2, gerflagpiece3;
-piece  gbrflagpiece1, gbrflagpiece2, gbrflagpiece3;
-piece  rusflagpiece1, rusflagpiece2, rusflagpiece3;
-piece  usflagpiece1, usflagpiece2, usflagpiece3;
-
-static-var  Static_Var_1, Static_Var_2, Static_Var_3, Static_Var_4, Static_Var_5;
+piece  gerflag;
+piece  gbrflag;
+piece  rusflag;
+piece  usflag;
 
 #define ALARM			 4096+0
 
 #define MAX_HEIGHT	[22]
 
 #define HIDE_GER \
-\move gerflagpiece1 to y-axis 0 speed [20]; \
-wait-for-move gerflagpiece1 along y-axis;
+\move gerflag to y-axis 0 speed [20]; \
+wait-for-move gerflag along y-axis;
 
 #define HIDE_GBR \
-\move gbrflagpiece1 to y-axis 0 speed [20]; \
-wait-for-move gbrflagpiece1 along y-axis;
+\move gbrflag to y-axis 0 speed [20]; \
+wait-for-move gbrflag along y-axis;
 
 #define HIDE_RUS \
-\move rusflagpiece1 to y-axis 0 speed [20]; \
-wait-for-move rusflagpiece1 along y-axis;
+\move rusflag to y-axis 0 speed [20]; \
+wait-for-move rusflag along y-axis;
 
 #define HIDE_US \
-\move usflagpiece1 to y-axis 0 speed [20]; \
-wait-for-move usflagpiece1 along y-axis;
+\move usflag to y-axis 0 speed [20]; \
+wait-for-move usflag along y-axis;
 
 #define SHOW_GER \
-\move gerflagpiece1 to y-axis [25] speed [10]; \
-wait-for-move gerflagpiece1 along y-axis;
+\move gerflag to y-axis [25] speed [10]; \
+wait-for-move gerflag along y-axis;
 
 #define SHOW_GBR \
-\move gbrflagpiece1 to y-axis [25] speed [10]; \
-wait-for-move gbrflagpiece1 along y-axis;
+\move gbrflag to y-axis [25] speed [10]; \
+wait-for-move gbrflag along y-axis;
 
 #define SHOW_RUS \
-\move rusflagpiece1 to y-axis [25] speed [10]; \
-wait-for-move rusflagpiece1 along y-axis;
+\move rusflag to y-axis [25] speed [10]; \
+wait-for-move rusflag along y-axis;
 
 #define SHOW_US \
-\move usflagpiece1 to y-axis [25] speed [10]; \
-wait-for-move usflagpiece1 along y-axis;
+\move usflag to y-axis [25] speed [10]; \
+wait-for-move usflag along y-axis;
 
 ShowFlag(team)
 {
@@ -81,110 +79,34 @@ ShowFlag(team)
 
 SetFlag()
 {
-	/*while ( TRUE ) {
-	  move flagpiece1 to y-axis MAX_HEIGHT * (get 4) / 100 now;
-	  sleep 500;
-	}*/
 		HIDE_GER
 		HIDE_GBR
 		HIDE_RUS
 		HIDE_US
 }
 
-Go()
-{
-	/*while( Static_Var_1 == 1 )
-	{
-	turn flagpiece1 to y-axis <-20> speed <200>;
-	turn flagpiece2 to y-axis <20> speed <200>;
-	turn flagpiece3 to y-axis <-20> speed <200>;
-	sleep 200;
-	turn flagpiece1 to y-axis <20> speed <200>;
-	turn flagpiece2 to y-axis <-20> speed <200>;
-	turn flagpiece3 to y-axis <20> speed <200>;
-	sleep 200;
-	}*/
-}
-
-Stop()
-{	
-}
-
-InitState()
-{
-
-	Static_Var_4 = 1;
-	Static_Var_5 = 0;
-}
-
-RequestState(requestedstate, currentstate)
-{
-	if( Static_Var_5 )
-	{
-		Static_Var_4 = requestedstate;
-		return (0);
-	}
-	Static_Var_5 = 1;
-	currentstate = Static_Var_4;
-	Static_Var_4 = requestedstate;
-	while( Static_Var_4 != currentstate )
-	{
-		if( Static_Var_4 == 0 )
-		{
-			call-script Go();
-			currentstate = 0;
-		}
-		if( Static_Var_4 == 1 )
-		{
-			call-script Stop();
-			currentstate = 1;
-		}
-	}
-	Static_Var_5 = 0;
-}
 
 Create()
 {
-	Static_Var_1 = 1;
-	Static_Var_2 = 1820;
-	Static_Var_3 = 0;
-	call-script InitState();
 	start-script SetFlag();
 }
 
-Activate()
+
+/*SetSpeed(Func_Var_1)
 {
-	Static_Var_1 = 1;
-	start-script RequestState(0);
-}
+	if( get BUILD_PERCENT_LEFT == 0 )
+	{
+		Static_Var_2 = Func_Var_1;
+		//spin blades around z-axis speed Func_Var_1;
+	}
+}*/
 
-Deactivate()
+SetDirection(windDir)
 {
-	Static_Var_1 = 0;
-	start-script RequestState(1);
-}
-
-//SetSpeed(Func_Var_1)
-//{
-//	if( get BUILD_PERCENT_LEFT == 0 )
-//	{
-//		Static_Var_2 = Func_Var_1;
-//		//spin blades around z-axis speed Func_Var_1;
-//	}
-//}
-
-//SetDirection(Func_Var_1)
-//{
-//	if( get BUILD_PERCENT_LEFT == 0 )
-//	{
-//		Static_Var_3 = Func_Var_1;
-//		turn pole to y-axis Func_Var_1 speed <20.000000>;
-//	}
-//}
-
-SweetSpot(piecenum)
-{
-	piecenum = base;
+	turn gerflag to y-axis windDir speed <20.000000>;
+	turn usflag to y-axis windDir speed <20.000000>;
+	turn rusflag to y-axis windDir speed <20.000000>;
+	turn gbrflag to y-axis windDir speed <20.000000>;
 }
 
 Killed(severity, corpsetype)
