@@ -13,7 +13,10 @@ function ClearMines(unitID, unitDefID, teamID, radius)
 			if tmpUnitDef.customParams then
 				if tonumber(UnitDefs[tmpUD].customParams.ismine) == 1 then
 					-- remove this unit (maybe needs a special anim?)
+					local px, py, pz = Spring.GetUnitPosition(tmpUnitID)
 					Spring.DestroyUnit(tmpUnitID, false, true)
+					Spring.SpawnCEG("HE_Small", px, py, pz)
+					Spring.RemoveBuildingDecal(tmpUnitID)
 				end
 			end
 		end

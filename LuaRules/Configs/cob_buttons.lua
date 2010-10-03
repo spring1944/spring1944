@@ -22,7 +22,7 @@ local tmpReturn = {
 for _, tmpUnitDef in pairs(UnitDefs) do
 	if (tmpUnitDef.customParams) then
 		local tmpParams = tmpUnitDef.customParams
-		if (tmpParams.canclearmines) then
+		--[[if (tmpParams.canclearmines) then
 			local tmpCmd = {
 				cob = "LookForMines",
 				name = "Clear Mines",
@@ -35,7 +35,7 @@ for _, tmpUnitDef in pairs(UnitDefs) do
 					tmpCmd,
 				}
 			end
-		end
+		end]]
 	end
 end
 
