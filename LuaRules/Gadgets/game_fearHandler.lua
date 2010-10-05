@@ -41,7 +41,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local unitsAtSpot = GetUnitsInCylinder(px, pz, cp.fearaoe)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
-	if cp.howitzer and ValidUnitID(ownerID) then
+	if ValidUnitID(ownerID) and (cp.howitzer or cp.infgun) then
 		SetUnitExperience(ownerID, 0)
 	end
 	
