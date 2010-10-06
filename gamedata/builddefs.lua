@@ -484,7 +484,7 @@ buildoptions =
     --"gbrbedfordtruck",
     "rubberdingy",
     "pontoonraft",
-	"pontoonbridge",
+	--"pontoonbridge",
   },
 
   gbrbarracks =
