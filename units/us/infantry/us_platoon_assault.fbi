@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=us_platoon_assault;
   name=Assault Platoon;
-  description=8 x Thompson SMG, 2 x BAR, 2 x Flamethrower: Close Quarters Assault Infantry;
+  description=8 x Thompson SMG, 2 x BAR, 1 x Flamethrower, 1 x Bazooka: Close Quarters Assault Infantry;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=gbr_sortie_glider_horsa;
   name=Glider-Borne Infantry Sortie;
-  description=1 x AS 51 Horsa;
+  description=3 x Commando, 8 x Rifle, 2 x Sten SMG, 3 x Bren LMG, 2 x PIAT, 1 x Scout, 1 x 3" Mortar, 1 x 75mm Pack Howitzer;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
