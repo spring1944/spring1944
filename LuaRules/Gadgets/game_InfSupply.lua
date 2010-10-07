@@ -209,7 +209,7 @@ function gadget:GameFrame(n)
 			for j = 1, iLengths[teamID] do
 				local unitID = infantry[teamID][j]
 				if not unitID then Spring.Echo("NIL UNITID!") end
-				if not Spring.ValidUnit(unitID) then Spring.Echo("BAD UNITID!") end
+				if not Spring.ValidUnitID(unitID) then Spring.Echo("BAD UNITID!") end
 				local unitDefID = GetUnitDefID(unitID)
 				local logisticsLevel = GetTeamResources(teamID, "energy")
 				local stalling = logisticsLevel < 5
