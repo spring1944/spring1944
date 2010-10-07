@@ -16,7 +16,7 @@ function widget:GetInfo()
     date      = "July 5, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 9999, -- before the custom formations widget
-    enabled   = false,
+    enabled   = true,
   }
 end
 
