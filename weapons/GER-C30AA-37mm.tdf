@@ -27,7 +27,7 @@
   intensity=0.25;
   movingAccuracy=400;
   noSelfDamage=1;
-  range=1750;
+  range=1575;
   reloadTime=1.5;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;

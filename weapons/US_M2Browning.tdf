@@ -60,7 +60,7 @@
   interceptedByShieldType=16;
   lineofsight=1;
   movingAccuracy=200;
-  range=1300;
+  range=1170;
   reloadTime=1.5;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;

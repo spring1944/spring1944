@@ -140,7 +140,7 @@
   lineofsight=1;
   movingAccuracy=300;
   noSelfDamage=1;
-  range=1300;
+  range=1170;
   reloadTime=1.7;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
