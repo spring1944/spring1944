@@ -88,16 +88,18 @@ function widget:Initialize()
       local weaponDef = WeaponDefs[weapon.weaponDef]
       local customParams = weaponDef.customParams
 
-      if (tonumber(customParams.armor_penetration) or 0) > (penetration or 0) then
-        local armor_penetration = customParams.armor_penetration
-        local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
-        penetration = tonumber(armor_penetration)
-        dropoff = log(armor_penetration_1000m / armor_penetration) / 1000
-      elseif (tonumber(customParams.armor_penetration_100m) or 0) > (penetration or 0) then
-        local armor_penetration_100m = customParams.armor_penetration_100m
-        local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
-        penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
-        dropoff = log(armor_penetration_1000m / armor_penetration_100m) / 900
+	  if (customParams.damagetype ~= "grenade") then
+        if (tonumber(customParams.armor_penetration) or 0) > (penetration or 0) then
+          local armor_penetration = customParams.armor_penetration
+          local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
+          penetration = tonumber(armor_penetration)
+          dropoff = log(armor_penetration_1000m / armor_penetration) / 1000
+        elseif (tonumber(customParams.armor_penetration_100m) or 0) > (penetration or 0) then
+          local armor_penetration_100m = customParams.armor_penetration_100m
+          local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
+          penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
+          dropoff = log(armor_penetration_1000m / armor_penetration_100m) / 900
+		end
       end
     end
 
