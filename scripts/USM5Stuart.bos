@@ -59,8 +59,8 @@ static-var  restore_delay, rock, aim2, aim3, reloading, mainHead, bMoving, tread
 #define placeholder_EFFECT05 1024+5
 #define placeholder_EFFECT06 1024+6
 #define MG_MUZZLEFLASH 1024+7
-#define SMALL_MUZZLEFLASH 1024+5
-#define SMALL_MUZZLEDUST 1024+6
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
 
 treads() 
 { 
