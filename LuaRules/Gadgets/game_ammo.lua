@@ -14,6 +14,7 @@ end
 -- Synced Read
 local AreTeamsAllied	 = Spring.AreTeamsAllied
 local GetGameFrame       = Spring.GetGameFrame
+local ValidUnitID		 = Spring.ValidUnitID
 --local GetUnitAllyTeam    = Spring.GetUnitAllyTeam
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitIsStunned   = Spring.GetUnitIsStunned
@@ -118,9 +119,17 @@ end
 local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
 		local supplier = ammoSuppliers[teamID][i]
-		local separation = GetUnitSeparation(unitID, supplier.id, true)
-		if separation <= supplier.range then
-			return supplier.id
+		
+		if not supplier then Spring.Echo ("game_ammo: NIL SUPPLIER OBJECT") end
+		if not ValidUnitID(supplier.id) then Spring.Echo ("game_ammo: BAD SUPPLIER ID" .. supplier.id) end
+		if not Spring.ValidUnitID(unitID) then Spring.Echo ("game_ammo: BAD UNIT ID") end
+		
+		if ValidUnitID(supplier.id) then
+			local separation = GetUnitSeparation(unitID, supplier.id, true)
+			if not separation then Spring.Echo ("game_ammo: NIL SEPERATION") end
+			if separation <= supplier.range then
+				return supplier.id
+			end
 		end
 	end
 	-- no supplier found
@@ -242,9 +251,15 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	-- Check if the unit was a supplier
 	if cp and cp.supplyrange then
+		-- set index of current end unit as index of unit to be deleted
 		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
-		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
+		-- copy unit info from old index (end of table) to new index (of unit to be deleted)
+		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]] --table index is nil
+		-- delete unit info of destroyed unit
 		ammoSuppliers[teamID][aLengths[teamID]] = nil
+		-- delete index of destroyed unit
+		aIndices[teamID][unitID] = nil
+		-- subtract from length
 		aLengths[teamID] = aLengths[teamID] - 1
 	end
 end

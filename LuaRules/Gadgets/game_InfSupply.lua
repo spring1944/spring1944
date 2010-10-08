@@ -29,6 +29,8 @@ local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local STALL_PENALTY				=	1.35 --1.35
 local SUPPLY_BONUS				=	0.65 --65
 -- Variables
+local ammoRanges		= {}
+
 local ammoSuppliers		= {}
 local aIndices			= {}
 local aLengths			= {}
@@ -61,10 +63,20 @@ if gadgetHandler:IsSyncedCode() then
 
 local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
-		local supplier = ammoSuppliers[teamID][i]
-		local separation = GetUnitSeparation(unitID, supplier.id, true)
-		if separation <= supplier.range then
-			return supplier.id
+		local supplierID = ammoSuppliers[teamID][i]
+		
+		if not ValidUnitID(supplierID) then 
+			Spring.Echo ("game_infSupply: BAD SUPPLIER ID" .. supplierID) 
+			Spring.Echo (i, aLengths[teamID])
+		end
+		if not Spring.ValidUnitID(unitID) then Spring.Echo ("game_infSupply: BAD UNIT ID") end
+		
+		if ValidUnitID(supplierID) then
+			local separation = GetUnitSeparation(unitID, supplierID, true)
+			if not separation then Spring.Echo ("game_infSupply: NIL SEPERATION") end
+			if separation <= ammoRanges[supplierID] then
+				return supplierID
+			end
 		end
 	end
 	-- no supplier found
@@ -102,31 +114,43 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	-- Build table of suppliers
 	if cp and cp.supplyrange then
-		local supplier = {}
-		supplier["id"] = unitID
-		supplier["range"] = tonumber(cp.supplyrange)
+		ammoRanges[unitID] = tonumber(cp.supplyrange)
 		
 		aLengths[teamID] = aLengths[teamID] + 1
-		ammoSuppliers[teamID][aLengths[teamID]] = supplier
+		ammoSuppliers[teamID][aLengths[teamID]] = unitID
 		aIndices[teamID][unitID] = aLengths[teamID]
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+--indices[myTable[#myTable]] =  indices[unitID]
+--myTable[indices[unitID]] = myTable[#myTable]
+--myTable[#myTable] = nil
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	-- Check if the unit was a supplier
 	if cp and cp.supplyrange then
+		Spring.Echo("Supplier Died! " .. unitID)
+		Spring.Echo("Supplier check: " .. ammoSuppliers[teamID][aIndices[teamID][unitID]])
+		Spring.Echo("Current end unit: " .. ammoSuppliers[teamID][aLengths[teamID]])
+		Spring.Echo("Supplier index: " .. aIndices[teamID][unitID])
+		Spring.Echo("Current end unit index: " .. aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]])
+		--Spring.Echo(aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]], aIndices[teamID][unitID])
 		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
+		--Spring.Echo(ammoSuppliers[teamID][aIndices[teamID][unitID]].id, ammoSuppliers[teamID][aLengths[teamID]].id)
 		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
+		--Spring.Echo(ammoSuppliers[teamID][aLengths[teamID]].id)
 		ammoSuppliers[teamID][aLengths[teamID]] = nil
+		aIndices[teamID][unitID] = nil
 		aLengths[teamID] = aLengths[teamID] - 1
+		ammoRanges[unitID] = nil
 	-- Check if the unit was infantry
 	elseif cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then
 		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
 		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
 		infantry[teamID][iLengths[teamID]] = nil
+		iIndices[teamID][unitID] = nil
 		iLengths[teamID] = iLengths[teamID] - 1
 	end
 end
