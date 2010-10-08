@@ -64,19 +64,9 @@ if gadgetHandler:IsSyncedCode() then
 local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
 		local supplierID = ammoSuppliers[teamID][i]
-		
-		if not ValidUnitID(supplierID) then 
-			Spring.Echo ("game_infSupply: BAD SUPPLIER ID" .. supplierID) 
-			Spring.Echo (i, aLengths[teamID])
-		end
-		if not Spring.ValidUnitID(unitID) then Spring.Echo ("game_infSupply: BAD UNIT ID") end
-		
-		if ValidUnitID(supplierID) then
-			local separation = GetUnitSeparation(unitID, supplierID, true)
-			if not separation then Spring.Echo ("game_infSupply: NIL SEPERATION") end
-			if separation <= ammoRanges[supplierID] then
-				return supplierID
-			end
+		local separation = GetUnitSeparation(unitID, supplierID, true)
+		if separation <= ammoRanges[supplierID] then
+			return supplierID
 		end
 	end
 	-- no supplier found
@@ -84,6 +74,7 @@ local function FindSupplier(unitID, teamID)
 end
 
 function gadget:Initialize()
+	-- This is all actually redundant as base units are spawned after this gadget starts!
 	for _, unitID in ipairs(Spring.GetAllUnits()) do
 		local unitTeam = GetUnitTeam(unitID)
 		local unitDefID = GetUnitDefID(unitID)
@@ -124,23 +115,12 @@ end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
---indices[myTable[#myTable]] =  indices[unitID]
---myTable[indices[unitID]] = myTable[#myTable]
---myTable[#myTable] = nil
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
-	-- Check if the unit was a supplier
-	if cp and cp.supplyrange then
-		Spring.Echo("Supplier Died! " .. unitID)
-		Spring.Echo("Supplier check: " .. ammoSuppliers[teamID][aIndices[teamID][unitID]])
-		Spring.Echo("Current end unit: " .. ammoSuppliers[teamID][aLengths[teamID]])
-		Spring.Echo("Supplier index: " .. aIndices[teamID][unitID])
-		Spring.Echo("Current end unit index: " .. aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]])
-		--Spring.Echo(aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]], aIndices[teamID][unitID])
+	-- Check if the unit was a supplier and was fully built
+	if cp and cp.supplyrange and aIndices[teamID][unitID] then
 		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
-		--Spring.Echo(ammoSuppliers[teamID][aIndices[teamID][unitID]].id, ammoSuppliers[teamID][aLengths[teamID]].id)
 		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
-		--Spring.Echo(ammoSuppliers[teamID][aLengths[teamID]].id)
 		ammoSuppliers[teamID][aLengths[teamID]] = nil
 		aIndices[teamID][unitID] = nil
 		aLengths[teamID] = aLengths[teamID] - 1
@@ -179,10 +159,10 @@ function gadget:TeamDied(teamID)
 	teams = Spring.GetTeamList()
 	infantry[teamID] = nil
 	iIndices[teamID] = nil
-	iLenghts[teamID] = nil
+	iLengths[teamID] = nil
 	ammoSuppliers[teamID] = nil
 	aIndices[teamID] = nil
-	aLenghts[teamID] = nil
+	aLengths[teamID] = nil
 end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
@@ -230,6 +210,7 @@ function gadget:GameFrame(n)
 	for i = 1, numTeams do
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
 			local teamID = teams[i]
+			if not iLengths[teamID] then Spring.Echo("Something went very wrong! " .. teamID) end
 			for j = 1, iLengths[teamID] do
 				local unitID = infantry[teamID][j]
 				if not unitID then Spring.Echo("NIL UNITID!") end
