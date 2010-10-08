@@ -17,23 +17,19 @@
 local unitLimits = UnitBag{
 	-- engineers
 	gbrhqengineer        = { 2, 2, 4 },
-	gbrengineer          = { 1, 2, 2 },
 	gbrmatadorengvehicle = 1,
 	gerhqengineer        = { 2, 2, 4 },
-	gerengineer          = { 1, 2, 2 },
 	gersdkfz9            = 1,
 	ruscommissar         = { 4, 4, 5 }, --2 for flag capping + 2-3 for base building
 	rusengineer          = { 1, 2, 2 },
 	rusk31               = 1,
 	ushqengineer         = { 2, 2, 4 },
-	usengineer           = { 1, 2, 2 },
 	usgmcengvehicle      = 1,
 	-- buildings
 	gbrbarracks    = { 3, 3, 4 },
 	gerbarracks    = { 3, 3, 4 },
 	rusbarracks    = { 3, 3, 4 },
 	usbarracks     = { 3, 3, 4 },
-	ruspshack      = { 2, 2, 2 }, --partisan shack (not used effectively)
 	gbrstorage     = 10,
 	gerstorage     = 10,
 	russtorage     = 10,

@@ -30,6 +30,7 @@ gadget.unitBuildOrder = UnitBag{
 		"gbrmatadorengvehicle",
 		"gbrdaimler",
 		"gbrm5halftrack",
+		"gbrwasp",
 	},
 	gbrsupplydepot = UnitArray{
 		"gbrm5halftrack",
@@ -37,8 +38,7 @@ gadget.unitBuildOrder = UnitBag{
 	-- it can not upgrade tank yard yet!
 	gbrtankyard = UnitArray{
 		"gbrcromwell", "gbrcromwell",
-		"gbrcromwell", "gbrshermanfirefly",
-		"gbrshermanfirefly", "gbrcromwellmkvi",
+		"gbrcromwell", "gbrcromwellmkvi",
 		"gbraecmkii",
 	},
 	-- Russia

@@ -290,11 +290,9 @@ end
 
 
 function gadget:TeamDied(teamID)
-	numTeams = numTeams - 1
-	teams = Spring.GetTeamList()
 	ammoSuppliers[teamID] = nil
 	aIndices[teamID] = nil
-	aLenghts[teamID] = nil
+	aLengths[teamID] = nil
 end
 
 
