@@ -13,6 +13,7 @@ end
 -- function localisations
 -- Synced Read
 local AreTeamsAllied			= Spring.AreTeamsAllied
+local GetTeamInfo				= Spring.GetTeamInfo
 local GetTeamResources		 	= Spring.GetTeamResources
 local GetUnitDefID			 	= Spring.GetUnitDefID
 local GetUnitSeparation			= Spring.GetUnitSeparation
@@ -155,8 +156,6 @@ end
 gadget.UnitUnloaded = gadget.UnitCreated
 
 function gadget:TeamDied(teamID)
-	numTeams = numTeams - 1
-	teams = Spring.GetTeamList()
 	infantry[teamID] = nil
 	iIndices[teamID] = nil
 	iLengths[teamID] = nil
@@ -210,15 +209,15 @@ function gadget:GameFrame(n)
 	for i = 1, numTeams do
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
 			local teamID = teams[i]
-			if not iLengths[teamID] then Spring.Echo("Something went very wrong! " .. teamID) end
-			for j = 1, iLengths[teamID] do
-				local unitID = infantry[teamID][j]
-				if not unitID then Spring.Echo("NIL UNITID!") end
-				if not Spring.ValidUnitID(unitID) then Spring.Echo("BAD UNITID!") end
-				local unitDefID = GetUnitDefID(unitID)
-				local logisticsLevel = GetTeamResources(teamID, "energy")
-				local stalling = logisticsLevel < 5
-				ProcessUnit(unitID, unitDefID, teamID, stalling)
+			local teamIsDead = select(3, GetTeamInfo(teamID)
+			if not teamIsDead then
+				for j = 1, iLengths[teamID] do
+					local unitID = infantry[teamID][j]
+					local unitDefID = GetUnitDefID(unitID)
+					local logisticsLevel = GetTeamResources(teamID, "energy")
+					local stalling = logisticsLevel < 5
+					ProcessUnit(unitID, unitDefID, teamID, stalling)
+				end
 			end
 		end
 	end

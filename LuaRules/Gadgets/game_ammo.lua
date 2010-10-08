@@ -1,7 +1,7 @@
 function gadget:GetInfo()
 	return {
 		name    = "Ammo Limiter",
-		desc    = "Gives each unit a personal 'ammo' storage that it draws from to fire, when empty it fires much more slowly",
+		desc    = "Gives units a personal 'ammo' storage that it draws from to fire",
 		author  = "quantum, FLOZi (C. Lawrence)",
 		date    = "Feb 01, 2007",
 		license = "GNU GPL v2",
@@ -33,6 +33,8 @@ local SetUnitWeaponState = Spring.SetUnitWeaponState
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
 -- Variables
+local ammoRanges		= {}
+
 local ammoSuppliers		= {}
 local aIndices			= {}
 local aLengths			= {}
@@ -118,18 +120,10 @@ end
 
 local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
-		local supplier = ammoSuppliers[teamID][i]
-		
-		if not supplier then Spring.Echo ("game_ammo: NIL SUPPLIER OBJECT") end
-		if not ValidUnitID(supplier.id) then Spring.Echo ("game_ammo: BAD SUPPLIER ID" .. supplier.id) end
-		if not Spring.ValidUnitID(unitID) then Spring.Echo ("game_ammo: BAD UNIT ID") end
-		
-		if ValidUnitID(supplier.id) then
-			local separation = GetUnitSeparation(unitID, supplier.id, true)
-			if not separation then Spring.Echo ("game_ammo: NIL SEPERATION") end
-			if separation <= supplier.range then
-				return supplier.id
-			end
+		local supplierID = ammoSuppliers[teamID][i]
+		local separation = GetUnitSeparation(unitID, supplierID, true)
+		if separation <= ammoRanges[supplierID] then
+			return supplierID
 		end
 	end
 	-- no supplier found
@@ -233,12 +227,10 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	-- Build table of suppliers
 	if cp and cp.supplyrange then
-		local supplier = {}
-		supplier["id"] = unitID
-		supplier["range"] = tonumber(cp.supplyrange)
+		ammoRanges[unitID] = tonumber(cp.supplyrange)
 		
 		aLengths[teamID] = aLengths[teamID] + 1
-		ammoSuppliers[teamID][aLengths[teamID]] = supplier
+		ammoSuppliers[teamID][aLengths[teamID]] = unitID
 		aIndices[teamID][unitID] = aLengths[teamID]
 	end
 end
@@ -249,18 +241,20 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
-	-- Check if the unit was a supplier
-	if cp and cp.supplyrange then
+	-- Check if the unit was a supplier and was fully built
+	if cp and cp.supplyrange and aIndices[teamID][unitID] then
 		-- set index of current end unit as index of unit to be deleted
 		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
 		-- copy unit info from old index (end of table) to new index (of unit to be deleted)
-		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]] --table index is nil
+		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
 		-- delete unit info of destroyed unit
 		ammoSuppliers[teamID][aLengths[teamID]] = nil
 		-- delete index of destroyed unit
 		aIndices[teamID][unitID] = nil
 		-- subtract from length
 		aLengths[teamID] = aLengths[teamID] - 1
+		-- clean up range cache
+		ammoRanges[unitID] = nil
 	end
 end
 
