@@ -285,6 +285,7 @@ local armorDefs = {
     "GERMarder",
     "GERMarder_sp",
     "GERWespe",
+    "GERPuma",
     "gerkarl",
 
     --US--
