@@ -228,6 +228,7 @@ local function CreateTeams()
 				end
 				if (side) then
 					team[t] = CreateTeam(t, at, side)
+					team[t].GameStart()
 					-- Call UnitCreated and UnitFinished for the units we have.
 					-- (the team didn't exist when those were originally called)
 					for _,u in ipairs(units) do
@@ -242,10 +243,6 @@ local function CreateTeams()
 				end
 			end
 		end
-	end
-
-	for _,t in pairs(team) do
-		t.GameStart()
 	end
 end
 
