@@ -209,7 +209,7 @@ function gadget:GameFrame(n)
 	for i = 1, numTeams do
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
 			local teamID = teams[i]
-			local teamIsDead = select(3, GetTeamInfo(teamID)
+			local teamIsDead = select(3, GetTeamInfo(teamID))
 			if not teamIsDead then
 				for j = 1, iLengths[teamID] do
 					local unitID = infantry[teamID][j]
