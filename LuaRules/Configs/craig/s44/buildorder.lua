@@ -47,7 +47,7 @@ gadget.unitBuildOrder = UnitBag{
 		"rusengineer",
 		"rus_platoon_rifle", "rus_platoon_assault",
 		"rus_platoon_rifle", "rus_platoon_atheavy",
-		"rus_platoon_rifle", "rus_platoon_atlight",
+		"rus_platoon_rifle",
 		"rus_platoon_rifle",
 		"rus_platoon_rifle",
 		"rus_platoon_rifle", "rus_platoon_mortar",
