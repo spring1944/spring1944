@@ -168,7 +168,7 @@ local function DrawUnitIcons(number)
 		gl.Scissor(X1, Y_MIN, X2 - X1, Y_MAX - Y_MIN)
 	
 		gl.Translate(0.5*(X2+X1), 0.5*(Y_MAX+Y_MIN), 0)
-		gl.Rotate(15.0, 1, 0, 0)
+		gl.Rotate(-90.0, 1, 0, 0)
 		
 		CenterUnitDef(drawTable[ct].unitDefID)
 		
