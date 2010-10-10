@@ -461,7 +461,7 @@ local function FinishMorph(unitID, morphData)
   end
 
   local newUnit
-  if udDst.speed == 0 and udDst.builder then
+  if udDst.speed == 0 and udDst.builder or defName == "russtorage" then
   --if udDst.isBuilding then
 	local x = math.floor(px/16)*16
 	local y = py
