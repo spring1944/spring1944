@@ -91,7 +91,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam)
 	local ud = UnitDefs[unitDefID] 
-	if ud.customParams.canfiresmoke == "1" and ud.customParams.canareaattack == "1" then
+	if ud.customParams.canareaattack == "1" then
 		guns[unitID] = true
 	end
 	local allyTeam = GetUnitAllyTeam(unitID)

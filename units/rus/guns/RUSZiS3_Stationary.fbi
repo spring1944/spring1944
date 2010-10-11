@@ -14,7 +14,6 @@
   category=DEPLOYED;
   corpse=RUSZiS3_Destroyed;
   [customParams] {
-    canareaattack=1;
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
