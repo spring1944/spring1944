@@ -116,6 +116,12 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 				local x = px + dx
 				local z = pz + dz
 				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
+					-- hack to make soviet AIs spawn with static storage instead of deployable truck
+					if unitName == "russupplytruck" and Spring.GetAIInfo(teamID) then
+						local unitID = CreateUnit("russtorage", x, 0, z, 0, teamID)
+						ClearUnitPosition(unitID)
+						break
+					end
 					local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
 					ClearUnitPosition(unitID)
 					break
@@ -163,24 +169,8 @@ local function SpawnStartUnit(teamID)
 			and ((x > HALF_MAP_X) and "west" or "east")
 			or ((z > HALF_MAP_Z) and "north" or "south")
 		
-		-- only spawn start unit if not already spawned by engine (backwards compat)
-		if not (#GetTeamUnits(teamID) > 0) then
-			local unitID = CreateUnit(startUnit, x, y, z, facing, teamID)
-		end
-		-- more backwards compat gubbins
-		if (modOptions.gm_team_enable == "0") then
-			local unitID = GetTeamUnits(teamID)[1]
-			local unitDefID = GetUnitDefID(unitID)
-			local unitName = UnitDefs[unitDefID].name
-			if unitName == "gmtoolbox" then
-				CreateUnit(startUnit, x, y, z, facing, teamID)
-				GG.Delay.DelayCall(Spring.SetTeamResource, {teamID, "es", STARTING_LOGISTICS}, 1)
-				GG.Delay.DelayCall(Spring.SetTeamResource, {teamID, "e", STARTING_LOGISTICS}, 1)
-				Spring.DestroyUnit(unitID, false, true)
-			end
-		end
-
-		ClearUnitPosition(Spring.GetTeamUnits(teamID)[1]) -- simplify to CUP(unitID) when removing backwards compat
+		local unitID = CreateUnit(startUnit, x, y, z, facing, teamID)
+		ClearUnitPosition(unitID)
 		SpawnBaseUnits(teamID, startUnit, x, z)
 	end
 end
