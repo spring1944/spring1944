@@ -54,9 +54,6 @@ gadget.unitBuildOrder = UnitBag{
 		"rus_platoon_rifle", "rus_platoon_sniper",
 		"rus_platoon_rifle", "rus_platoon_rifle",
 	},
-	ruspshack = UnitArray{
-		"rus_platoon_partisan",
-	},
 	rusvehicleyard = UnitArray{
 		-- Works J
 		"rusk31",
@@ -170,7 +167,6 @@ gadget.baseBuildOrder = {
 	rus = UnitArray{
 		-- TODO: add veh / tanks / towed guns (if rus has packed howitzers) Russia will be the "expert"
 		"rusbarracks", "rusbarracks",
-		"ruspshack", "ruspshack",
 		"rusvehicleyard",
 		"russtorage", "russtorage",
 		"rustankyard",
