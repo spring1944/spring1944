@@ -44,14 +44,15 @@ local teams 			= Spring.GetTeamList()
 local numTeams			= #teams
 
 for i = 1, numTeams do
+	local teamID = teams[i]
 	-- setup per-team infantry arrays
-	infantry[teams[i]] = {}
-	iIndices[teams[i]] = {}
-	iLengths[teams[i]] = 0
+	infantry[teamID] = {}
+	iIndices[teamID] = {}
+	iLengths[teamID] = 0
 	-- setup per-team ammo supplier arrays
-	ammoSuppliers[teams[i]] = {}
-	aIndices[teams[i]] = {}
-	aLengths[teams[i]] = 0
+	ammoSuppliers[teamID] = {}
+	aIndices[teamID] = {}
+	aLengths[teamID] = 0
 end
 
 local modOptions
@@ -106,8 +107,7 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	-- Build table of suppliers
 	if cp and cp.supplyrange then
-		ammoRanges[unitID] = tonumber(cp.supplyrange)
-		
+		ammoRanges[unitID] = tonumber(cp.supplyrange)	
 		aLengths[teamID] = aLengths[teamID] + 1
 		ammoSuppliers[teamID][aLengths[teamID]] = unitID
 		aIndices[teamID][unitID] = aLengths[teamID]
@@ -141,19 +141,6 @@ function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
 	gadget:UnitCreated(unitID, unitDefID, newTeam)
 	gadget:UnitFinished(unitID, unitDefID, newTeam)
 end
-
-function gadget:UnitLoaded(unitID, unitDefID, teamID)
-	-- If a unit is loaded into a transport and temporarily can't fire,
-	-- behave as if it didn't exist until it gets unloaded again.
-	local _, stunned = GetUnitIsStunned(unitID)
-	if stunned then
-		infantry[teamID][unitID] = nil
-	end
-end
-
-
--- If a unit is unloaded, do exactly the same as for newly created units.
-gadget.UnitUnloaded = gadget.UnitCreated
 
 function gadget:TeamDied(teamID)
 	infantry[teamID] = nil
@@ -210,7 +197,7 @@ function gadget:GameFrame(n)
 		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
 			local teamID = teams[i]
 			local teamIsDead = select(3, GetTeamInfo(teamID))
-			if not teamIsDead then
+			if not teamIsDead and teamID ~= GAIA_TEAM_ID then
 				for j = 1, iLengths[teamID] do
 					local unitID = infantry[teamID][j]
 					local unitDefID = GetUnitDefID(unitID)
