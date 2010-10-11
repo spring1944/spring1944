@@ -63,6 +63,7 @@ else
 		local GetLocalTeamID     = Spring.GetLocalTeamID
 		local GetMyAllyTeamID    = Spring.GetMyAllyTeamID
 		local GetSpectatingState = Spring.GetSpectatingState
+		local ValidUnitID		 = Spring.ValidUnitID
 
 		local GetUnitDefID        = Spring.GetUnitDefID
 		local GetUnitHealth       = Spring.GetUnitHealth
@@ -309,7 +310,7 @@ else
 			glPushMatrix()
 				if (drawUnitStatusBars) then
 					for unitID, _ in pairs(drawnUnitIDs) do
-						if unitID then
+						if ValidUnitID(unitID) then
 							local px, py, pz = GetUnitPosition(unitID)
 							local vx, vy, vz = GetUnitVelocity(unitID)
 							local dx, dy, dz = ((px - cx) * (px - cx)), ((py - cy) * (py - cy)), ((pz - cz) * (pz - cz))
