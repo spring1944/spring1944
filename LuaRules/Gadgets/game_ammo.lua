@@ -28,6 +28,7 @@ local GetUnitWeaponState = Spring.GetUnitWeaponState
 local SetUnitExperience  = Spring.SetUnitExperience
 local SetUnitRulesParam  = Spring.SetUnitRulesParam
 local SetUnitWeaponState = Spring.SetUnitWeaponState
+local UseUnitResource	 = Spring.UseUnitResource
 
 -- Constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -158,7 +159,7 @@ local function Resupply(unitID)
 		
 			if oldAmmo < maxAmmo and weaponCost >= 0 then
 				local newAmmo = oldAmmo + 1
-				Spring.UseUnitResource(supplierID, "e", weaponCost)
+				UseUnitResource(unitID, "e", weaponCost)
 				vehicles[unitID].ammoLevel = newAmmo
 				SetUnitRulesParam(unitID, "ammo",	newAmmo)
 			end
