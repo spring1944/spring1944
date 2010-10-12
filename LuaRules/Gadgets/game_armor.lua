@@ -152,7 +152,7 @@ function gadget:Initialize()
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
-  if not weaponDefID or not ValidUnitID(unitID) then return damage end
+  if not weaponDefID or weaponDefID < 0 or not ValidUnitID(unitID) then return damage end
   if weaponDefID == WeaponDefNames["binocs"].id or WeaponDefs[weaponDefID].name:lower():find("tracer", 1, true) then return 0 end --  binocs and tracers do 0 damage to all units
   
   if damage == 0 then return damage end
