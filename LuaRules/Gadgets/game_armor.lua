@@ -153,15 +153,15 @@ end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
   if not weaponDefID or not ValidUnitID(unitID) then return damage end
-  if weaponDefID == WeaponDefNames["binocs"].id then return 0 end --  binocs do 0 damage to all units
+  if weaponDefID == WeaponDefNames["binocs"].id or WeaponDefs[weaponDefID].name:lower():find("tracer", 1, true) then return 0 end --  binocs and tracers do 0 damage to all units
   
   if damage == 0 then return damage end
   
   local unitInfo = unitInfos[unitDefID]
   local weaponInfo = weaponInfos[weaponDefID]
   local weaponDef = WeaponDefs[weaponDefID]
-  
-  if unitinfo and weaponDef.customParams.damagetype == "smallarm" then return 0 end -- smallarms do 0 damage to armour
+
+  if unitInfo and weaponDef.customParams.damagetype == "smallarm" and Game.armorTypes[UnitDefs[unitDefID].armorType] ~= "armouredvehicles" then return 0 end -- smallarms do 0 damage to heavy armour
   
   if not unitInfo or not weaponInfo or not weaponDef then return damage end
 
