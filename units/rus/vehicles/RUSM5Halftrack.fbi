@@ -19,6 +19,7 @@
     armor_top=8;
     hasturnbutton=1;
     supplyRange=200;
+    normaltex=unittextures/GBRM5Halftrack_normals.dds;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
