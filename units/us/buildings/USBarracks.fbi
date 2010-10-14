@@ -19,6 +19,7 @@
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;
+    normaltex=unittextures/gbrbarracks_normals.dds;
   }
   energyStorage=0.01;
   explodeAs=Med_Explosion;
