@@ -45,6 +45,7 @@ gadget.unitBuildOrder = UnitBag{
 	rusbarracks = UnitArray{
 		"rus_platoon_rifle",
 		"rusengineer",
+		"rus_platoon_commissar",
 		"rus_platoon_rifle", "rus_platoon_assault",
 		"rus_platoon_rifle", "rus_platoon_atheavy",
 		"rus_platoon_rifle",
