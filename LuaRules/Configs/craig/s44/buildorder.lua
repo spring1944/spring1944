@@ -146,7 +146,7 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	ustankyard = UnitArray{
 		-- Works J
-		"usm5a1stuart",
+		"usm5stuart",
 		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
 		"usm10wolverine",
 	},
