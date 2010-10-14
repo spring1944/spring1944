@@ -110,7 +110,7 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	gertankyard = UnitArray{
 		-- Works J
-		"gerpanzeriii", "gerpanzeriii", "gerpanzeriii",
+		"gerpanzeriii", "gerpanzeriv", "gerpanzeriv",
 		"gerstugiii", "gerstugiii", "gerstugiii",
 		"gertiger",
 	},
@@ -146,6 +146,7 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	ustankyard = UnitArray{
 		-- Works J
+		"usm5a1stuart",
 		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
 		"usm10wolverine",
 	},
