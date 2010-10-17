@@ -17,7 +17,7 @@
   maxDamage=5;
   maxSlope=60;
   maxWaterDepth=0;
-  objectName=GBRLZ2.S3O;
+  objectName=GBRLZ.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:LZflare;
   }
