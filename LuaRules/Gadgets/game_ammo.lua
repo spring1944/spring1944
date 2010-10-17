@@ -286,6 +286,7 @@ end
 
 
 function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
+	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 	gadget:UnitFinished(unitID, unitDefID, newTeam)
 end
 
