@@ -11,6 +11,8 @@
   buildTime=50;
   canMove=1;
   category=INFANTRY MINETRIGGER;
+  cloakCost=0;
+  cloakCostMoving=0;
   corpse=GERsoldier_dead;
   [customParams] {
     dontCount=1;
