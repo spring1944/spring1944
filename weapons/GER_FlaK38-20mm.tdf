@@ -3,7 +3,7 @@
   areaOfEffect=30;
   burnblow=1;
   burst=5;
-  burstRate=0.16;
+  burstRate=0.13;
   canAttackGround=0;
   collisionSize=1;
   craterBoost=0;
