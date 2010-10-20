@@ -14,7 +14,9 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeType=box;
+  collisionVolumeScales=100 20 100;
+  collisionVolumeOffsets=-5 0 0;
   [customParams] {
     ammoSupplier=1;
     supplyRange=500;
