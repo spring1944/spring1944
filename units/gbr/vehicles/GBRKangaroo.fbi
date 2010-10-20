@@ -19,8 +19,8 @@
     hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
-  footprintX=3;
-  footprintZ=3;
+  footprintX=2;
+  footprintZ=2;
   iconType=halftrack;
   leaveTracks=1;
   loadingRadius=120;

@@ -15,8 +15,8 @@
     hasturnbutton=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
-  footprintX=3;
-  footprintZ=3;
+  footprintX=2;
+  footprintZ=2;
   iconType=aacar;
   leaveTracks=1;
   mass=600;
