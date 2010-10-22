@@ -21,7 +21,7 @@
   impulseFactor=0.01;
   manualBombSettings=1;
   model=Bomb_Medium.S3O;
-  range=980;
+  range=600;
   reloadTime=600;
   rendertype=4;
   soundHit=GEN_Explo_9;
