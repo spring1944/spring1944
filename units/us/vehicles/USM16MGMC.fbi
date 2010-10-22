@@ -10,6 +10,10 @@
   buildTime=1650;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=16 14 45;
+  collisionVolumeOffsets=0 1 2;
+  collisionVolumeTest=1;
   corpse=USM3Halftrack_Destroyed;
   [customParams] {
     hasturnbutton=1;

@@ -10,6 +10,10 @@
   buildTime=950;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=20 12 39;
+  collisionVolumeOffsets=0 2 0;
+  collisionVolumeTest=1;
   corpse=GBRKangaroo_Destroyed;
   [customParams] {
     armor_front=63;

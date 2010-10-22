@@ -10,6 +10,10 @@
   buildTime=1650;
   canMove=1;
   category=MINETRIGGER OPENVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=16 11 30;
+  collisionVolumeOffsets=0 1 0;
+  collisionVolumeTest=1;
   corpse=GBRStaghound_Destroyed;
   [customParams] {
     armor_front=25;

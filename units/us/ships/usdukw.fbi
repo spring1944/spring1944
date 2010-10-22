@@ -10,6 +10,9 @@
   canHover=1;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
+  collisionVolumeScales=16 15 57;
+  collisionVolumeOffsets=0 -3 0;
+  collisionVolumeTest=1;
   corpse=usgmctruck_destroyed;
   [customParams] {
     dontCount=1;

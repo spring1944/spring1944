@@ -10,6 +10,10 @@
   buildTime=925;
   canMove=1;
   category=MINETRIGGER OPENVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=14 13 32;
+  collisionVolumeOffsets=0 -1 0;
+  collisionVolumeTest=1;
   corpse=GERSdKfz250_Destroyed;
   [customParams] {
     armor_front=12;

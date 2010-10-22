@@ -11,6 +11,10 @@
   buildTime=1725;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=16 13 29;
+  collisionVolumeOffsets=0 -2 0.5;
+  collisionVolumeTest=1;
   corpse=USM5Stuart_Destroyed;
   [customParams] {
     armor_front=43;

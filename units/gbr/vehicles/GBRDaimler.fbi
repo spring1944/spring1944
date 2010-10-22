@@ -10,6 +10,10 @@
   buildTime=1350;
   canMove=1;
   category=MINETRIGGER OPENVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=16 11 24;
+  collisionVolumeOffsets=0 -1 0;
+  collisionVolumeTest=1;
   corpse=GBRDaimler_Destroyed;
   [customParams] {
     armor_front=15;

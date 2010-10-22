@@ -10,6 +10,10 @@
   buildTime=1740;
   canMove=1;
   category=MINETRIGGER OPENVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=17 14 31;
+  collisionVolumeOffsets=-0.5 0 0;
+  collisionVolumeTest=1;
   corpse=RUSSU76_Destroyed;
   [customParams] {
     armor_front=29;
