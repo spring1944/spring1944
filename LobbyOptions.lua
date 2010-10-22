@@ -81,6 +81,13 @@ local options = {
 		def    = "C.R.A.I.G.",
 	},
 	{	-- optional
+		key    = "notification_background",
+		name   = "notification_background",
+		desc   = "a background image applied to SL's notifications (in absence of libnotify)",
+		type   = "string",
+		def    = "lobby/notification_popup_background.png",
+	},
+	{	-- optional
 		key    = "help_url",
 		name   = "help_url",
 		desc   = "the url that is opened in browser if help button is clicked",
