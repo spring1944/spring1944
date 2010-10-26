@@ -1,4 +1,3 @@
--- $Id: gui_selbuttons_ca.lua 3984 2009-02-21 23:31:01Z carrepairer $
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -14,12 +13,12 @@
 
 function widget:GetInfo()
   return {
-    name      = "SelectionButtons_CA",
-    desc      = "v1.1 Clickable buttons for selected units, grouped by type.\n\255\90\90\255Left\255\255\255\255 = select. \255\90\90\255Right\255\255\255\255 = remove from selection. \255\90\90\255Middle\255\255\255\255 = goto",
-    author    = "trepan, tweakmode by CarRepairer",
+    name      = "1944 Selection Buttons",
+    desc      = "Buttons for the current selection (incomplete)",
+    author    = "trepan, edited for S44 by FLOZi",
     date      = "Jan 8, 2007",
     license   = "GNU GPL, v2 or later",
-    layer     = 1,
+    layer     = 0,
     enabled   = true  --  loaded by default?
   }
 end
@@ -85,6 +84,7 @@ function widget:ViewResize(viewSizeX, viewSizeY)
   vsy = viewSizeY
 end
 
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 --
@@ -100,7 +100,7 @@ local mouseIcon = -1
 local currentDef = nil
 
 local iconSizeX = math.floor(useModels and 80 or 64)
-local iconSizeY = math.floor(iconSizeX * 0.75)
+local iconSizeY = math.floor(iconSizeX * 1.0)
 local fontSize = iconSizeY * 0.25
 
 local rectMinX = 0
@@ -108,17 +108,6 @@ local rectMaxX = 0
 local rectMinY = 0
 local rectMaxY = 0
 
-local POS_Y = vsy/5
-local POS_X = vsx/2
-
-local fakeCount = 6
-
-function widget:GetConfigData(data)      -- send
-  return {x = POS_X, y = POS_Y}
-end
-function widget:SetConfigData(data)      -- load
-  POS_X, POS_Y = data.x, data.y
-end
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -126,18 +115,7 @@ end
 function widget:DrawScreen()
   unitCounts = spGetSelectedUnitsCounts()
   unitTypes = unitCounts.n;
-  if widgetHandler:InTweakMode() then
-	SetupDimensions(fakeCount)
-
-	local x,y,lb,mb,rb = spGetMouseState()
-    local mouseIcon = MouseOverIcon(x, y)
-	for i = 0, fakeCount-1 do
-		DrawUnitDefTexture(-1, i, 0)
-	end
-	glText('SelectButtonsCA Tweak Mode (Drag to move)', POS_X , POS_Y, fontSize, "oc")
-	
-	return
-  elseif (unitTypes <= 0) then
+  if (unitTypes <= 0) then
     countsTable = {}
     activePress = false
     currentDef  = nil
@@ -180,16 +158,12 @@ end
 
 
 function SetupDimensions(count)
-  --local xmid = vsx * 0.5
-  local xmid = POS_X
-  
+  local xmid = vsx * 0.5
   local width = math.floor(iconSizeX * count)
   rectMinX = math.floor(xmid - (0.5 * width))
   rectMaxX = math.floor(xmid + (0.5 * width))
-  rectMinY = POS_Y - iconSizeY/2
+  rectMinY = math.floor(0)
   rectMaxY = math.floor(rectMinY + iconSizeY)
-
-
 end
 
 
@@ -288,12 +262,12 @@ function DrawUnitDefModel(unitDefID, iconPos, count)
 --  glColor(0.3, 0.3, 0.3, 1.0)
 --  glTexture('#'..unitDefID)
   glTexture(false)
-  SetupBackgroundColor(ud)
+  --SetupBackgroundColor(ud)
   glRect(xmin + 1, ymin + 1, xmax, ymax)
 
 
   -- draw the 3D unit
-	SetupModelDrawing()
+	--[[SetupModelDrawing()
 
   glPushMatrix()
   glScissor(xmin, ymin, xmax - xmin, ymax - ymin)
@@ -328,7 +302,7 @@ function DrawUnitDefModel(unitDefID, iconPos, count)
   glScissor(false)
   glPopMatrix()
 
-	RevertModelDrawing()
+	RevertModelDrawing()]]
 
   -- draw the count text
   glText(count, (xmin + xmax) * 0.5, ymax + 2, fontSize, "oc")
@@ -345,33 +319,32 @@ end
 
 
 function DrawUnitDefTexture(unitDefID, iconPos, count)
+  local xmin = math.floor(rectMinX + (iconSizeX * iconPos))
+  local xmax = xmin + iconSizeX
+  if ((xmax < 0) or (xmin > vsx)) then return end  -- bail
   
-	local xmin = math.floor(rectMinX + (iconSizeX * iconPos))
-	local xmax = xmin + iconSizeX
-	if ((xmax < 0) or (xmin > vsx)) then return end  -- bail
+  local ymin = rectMinY
+  local ymax = rectMaxY
+  local xmid = (xmin + xmax) * 0.5
+  local ymid = (ymin + ymax) * 0.5
 
-	local ymin = rectMinY
-	local ymax = rectMaxY
-	local xmid = (xmin + xmax) * 0.5
-	local ymid = (ymin + ymax) * 0.5
-	if unitDefID ~= -1 then
-		local ud = UnitDefs[unitDefID] 
+  local ud = UnitDefs[unitDefID] 
 
-		glColor(1, 1, 1)
-		glTexture('#' .. unitDefID)
-		glTexRect(xmin, ymin, xmax, ymax)
-		glTexture(false)
+  glColor(1, 1, 1)
+  glTexture('#' .. unitDefID)
+  glTexRect(xmin, ymin, xmax, ymax)
+  glTexture(false)
 
-		-- draw the count text
-		glText(count, (xmin + xmax) * 0.5, ymax + 2, fontSize, "oc")
-	end
-	-- draw the border  (note the half pixel shift for drawing lines)
-	glBeginEnd(GL_LINE_LOOP, function()
-		glVertex(xmin + 0.5, ymin + 0.5)
-		glVertex(xmax + 0.5, ymin + 0.5)
-		glVertex(xmax + 0.5, ymax + 0.5)
-		glVertex(xmin + 0.5, ymax + 0.5)
-	end)
+  -- draw the count text
+  glText(count, (xmin + xmax) * 0.5, ymax + 2, fontSize, "oc")
+
+  -- draw the border  (note the half pixel shift for drawing lines)
+  glBeginEnd(GL_LINE_LOOP, function()
+    glVertex(xmin + 0.5, ymin + 0.5)
+    glVertex(xmax + 0.5, ymin + 0.5)
+    glVertex(xmax + 0.5, ymax + 0.5)
+    glVertex(xmin + 0.5, ymax + 0.5)
+  end)
 end
 
 
@@ -494,8 +467,7 @@ end
 
 
 function MouseOverIcon(x, y)
-  local count = widgetHandler:InTweakMode() and fakeCount or unitTypes
-  if (count <= 0) then return -1 end
+  if (unitTypes <= 0) then return -1 end
   if (x < rectMinX)   then return -1 end
   if (x > rectMaxX)   then return -1 end
   if (y < rectMinY)   then return -1 end
@@ -506,12 +478,11 @@ function MouseOverIcon(x, y)
   if (icon < 0) then
     icon = 0
   end
-  if (icon >= count) then
-    icon = (count - 1)
+  if (icon >= unitTypes) then
+    icon = (unitTypes - 1)
   end
   return icon
 end
-
 
 
 -------------------------------------------------------------------------------
@@ -525,27 +496,14 @@ function widget:IsAbove(x, y)
 end
 
 
-
-
 function widget:GetTooltip(x, y)
   local ud = currentDef
   if (not ud) then
     return ''
   end
-  return 'Selected: ' ..ud.humanName .. ' - ' .. ud.tooltip
+  return ud.humanName .. ' - ' .. ud.tooltip
 end
 
-
-
-function widget:TweakMousePress(x, y, button)
-	local iconNum = MouseOverIcon(x, y)
-  if iconNum >= 0 then return true end
-end
-
-function widget:TweakMouseMove(x, y, dx, dy, button)
-	POS_Y = y
-	POS_X = x
-end
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

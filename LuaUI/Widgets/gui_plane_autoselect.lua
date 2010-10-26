@@ -27,7 +27,7 @@ local ICON_SIZE_X = 70
 local ICON_SIZE_Y = 70
 local CONDENSE = false -- show one icon for all builders of same type
 local POSITION_X = 0.5 -- horizontal centre of screen
-local POSITION_Y = 0.1 -- near bottom
+local POSITION_Y = 0.175 -- near bottom
 local NEAR_IDLE = 8 -- this means that factories with only 8 build items left will be shown as idle
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -180,7 +180,7 @@ local function DrawUnitIcons(number)
 		if CONDENSE then
 			local NumberCondensed = table.getn(drawTable[ct].units)
 			if NumberCondensed > 1 then
-				gl.Text(NumberCondensed, X1, Y_MIN, 10, "o")
+				gl.Text(NumberCondensed, (X_MIN + X_MAX) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "o")
 			end
 			
 		end
@@ -190,7 +190,7 @@ local function DrawUnitIcons(number)
 			unitID = unitID[1]
 		end
 		if QCount[unitID] then
-			gl.Text(QCount[unitID], X1+(0.5*ICON_SIZE_X),Y_MIN,15,"ocn")
+			gl.Text(QCount[unitID], X_MIN + (0.5 * ICON_SIZE_X),Y_MAX + 2,ICON_SIZE_Y * 0.25,"ocn")
 		end
 			
 	end
@@ -251,7 +251,7 @@ function widget:Initialize()
 	
 end
 
-function widget:GetConfigData(data)
+--[[function widget:GetConfigData(data)
   return {
     position_x = POSITION_X,
     position_y = POSITION_Y,
@@ -263,7 +263,7 @@ function widget:SetConfigData(data)
   POSITION_X = data.position_x or POSITION_X
 	POSITION_Y = data.position_y or POSITION_Y
 	MAX_ICONS = data.max_icons or MAX_ICONS
-end
+end]]
 
 
 function widget:Update()
@@ -298,7 +298,7 @@ end
 
 
 
-function widget:TweakMouseMove(x, y, dx, dy, button)
+--[[function widget:TweakMouseMove(x, y, dx, dy, button)
 	local right = (x + (0.5*MAX_ICONS*ICON_SIZE_X))/vsx
 	local left = (x - (0.5*MAX_ICONS*ICON_SIZE_X))/vsx
 	local top = (y + (0.5*ICON_SIZE_Y))/vsy
@@ -343,18 +343,18 @@ function widget:MouseWheel(up, value)
 		if MAX_ICONS < 1 then MAX_ICONS = 1 end
 	end
 	return true
-end
+end]]
 
 function widget:DrawScreen()
 
-	if widgetHandler:InTweakMode() then	
+	--[[if widgetHandler:InTweakMode() then	
 		DrawBoxes(MAX_ICONS)
 		local line1 = "Idle cons tweak mode"
 		local line2 = "Click and drag here to move icons around, hover over icons and move mouse wheel to change max number of icons"
 		gl.Text(line1, POSITION_X*vsx, POSITION_Y*vsy, 15, "c")
 		gl.Text(line2, POSITION_X*vsx, (POSITION_Y*vsy)-10, 10, "c")
 		return
-	end
+	end]]
 
 	local noOfIcons = 0
 	drawTable = {}
