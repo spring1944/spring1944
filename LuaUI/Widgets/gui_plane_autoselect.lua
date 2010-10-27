@@ -61,8 +61,8 @@ local function DrawBoxes(number)
 	gl.Color({ 0, 0, 0, 0.65 })
 	X_MIN = POSITION_X*vsx-0.5*number*ICON_SIZE_X
 	X_MAX = POSITION_X*vsx+0.5*number*ICON_SIZE_X
-	Y_MIN = POSITION_Y*vsy-0.5*ICON_SIZE_Y
-	Y_MAX = POSITION_Y*vsy+0.5*ICON_SIZE_Y
+	Y_MIN = 128 + 16--POSITION_Y*vsy+0.5*ICON_SIZE_Y
+	Y_MAX = Y_MIN + ICON_SIZE_Y--POSITION_Y*vsy-0.5*ICON_SIZE_Y
 	local X1 = X_MIN
 	local ct = 0
 	while (ct < number) do
@@ -180,7 +180,7 @@ local function DrawUnitIcons(number)
 		if CONDENSE then
 			local NumberCondensed = table.getn(drawTable[ct].units)
 			if NumberCondensed > 1 then
-				gl.Text(NumberCondensed, (X_MIN + X_MAX) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "o")
+				gl.Text(NumberCondensed, (X_MIN + X_MAX) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "oc")
 			end
 			
 		end
