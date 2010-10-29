@@ -35,7 +35,9 @@
   movementClass=KBOT_Infantry;
   objectName=RUSEngineer.S3O;
   repairable=0;
+  script=GBRHQEngineer.cob;
   seismicDistance=840;
+
   seismicSignature=0;
   [sfxtypes] {
   }

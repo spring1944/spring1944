@@ -22,11 +22,16 @@ local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
 
 -- Constants
 local CMD_CLEARMINES = 35522
-local MIN_DIST = 15
+local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
+local MINE_SEARCH_TIME = 5 -- time in seconds to clear spot
 -- Variables
 local sweepers = {}
 
+if gadgetHandler:IsSyncedCode() then
+--	SYNCED
+
+local DelayCall = GG.Delay.DelayCall
 
 local clearDesc = {
 	name	= "Clear Mines",
@@ -34,17 +39,21 @@ local clearDesc = {
 	id		= CMD_CLEARMINES,
 	type	= CMDTYPE.ICON_MAP, -- change to ICON_AREA?
 	tooltip	= "Clear mines at a given location",
-	cursor	= "Attack", -- Add new cursor?
+	cursor	= "Clear Mines",
 }
 
-if gadgetHandler:IsSyncedCode() then
---	SYNCED
-
 --	Custom Functions
+function BlowMine(mineID)
+	local px, py, pz = GetUnitPosition(mineID)
+	DestroyUnit(mineID, false, true)
+	Spring.SpawnCEG("HE_Small", px, py, pz)
+	Spring.RemoveBuildingDecal(mineID)
+end
 
 function ClearMines(unitID, x, z)
 	local tmpNearbyUnits = GetUnitsInCylinder(x, z, MINE_CLEAR_RADIUS)
-	for tmpUnitID in pairs(tmpNearbyUnits) do
+	local mines = {}
+	for _, tmpUnitID in pairs(tmpNearbyUnits) do
 		-- check if that is a mine
 		local tmpUD
 		tmpUD = GetUnitDefID(tmpUnitID)
@@ -52,13 +61,15 @@ function ClearMines(unitID, x, z)
 		if tmpUnitDef then
 			if tmpUnitDef.customParams then
 				if tonumber(UnitDefs[tmpUD].customParams.ismine) == 1 then
-					-- remove this unit (maybe needs a special anim?)
-					DestroyUnit(tmpUnitID, false, true)
-					Spring.SpawnCEG("HE_Small", px, py, pz)
-					Spring.RemoveBuildingDecal(tmpUnitID)
+					table.insert(mines, tmpUnitID)
 				end
 			end
 		end
+	end
+	for i = 1, #mines do
+		-- remove this unit (maybe needs a special anim?)
+		local mineID = mines[i]
+		DelayCall(BlowMine, {mineID}, MINE_SEARCH_TIME / #mines * i * 30)
 	end
 end
 
@@ -102,7 +113,7 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 				else
 					sweepers[unitID] = false
 					CallCOBScript(unitID, "LookForMines", 0)
-					--ClearMines(unitID, x, z)
+					ClearMines(unitID, x, z)
 					return true, true
 				end
 			end
@@ -134,13 +145,11 @@ function gadget:Initialize()
 		local unitID = allUnits[i]
 		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
 	end
+	Spring.AssignMouseCursor("Clear Mines", "cursordemine", true, true)
+	Spring.SetCustomCommandDrawData(CMD_CLEARMINES, "Clear Mines", {1,0.5,0,.8}, false)
 end
 
 else
 --	UNSYNCED
-
-function gadget:Initialize()
-	Spring.SetCustomCommandDrawData(CMD_CLEARMINES, "Attack", {1,0.5,0,.8}, true)
-end
 
 end

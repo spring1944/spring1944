@@ -196,16 +196,13 @@ gadget.baseBuildOrder = {
 -- This lists all the units (of all sides) that are considered "base builders"
 gadget.baseBuilders = UnitSet{
 	"gbrhqengineer",
-	"gbrengineer",
 	"gbrmatadorengvehicle",
 	"gerhqengineer",
-	"gerengineer",
 	"gersdkfz9",
 	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building...
 	"rusengineer",
 	"rusk31",
 	"ushqengineer",
-	"usengineer",
 	"usgmcengvehicle",
 }
 

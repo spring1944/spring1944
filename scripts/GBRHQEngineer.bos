@@ -1,5 +1,3 @@
-#define TAK //this is a TAK script
-
 #include "constants.h"
 
 piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 

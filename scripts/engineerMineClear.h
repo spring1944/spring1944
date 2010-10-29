@@ -2,18 +2,10 @@
 #define _MINECLEAR_H
 
 // some defines for the mine-clearing. Can be defined in unit script to be unit-specific
-// mine search radius should NOT be in linear units
-#ifndef MINE_SEARCH_RADIUS
-#define MINE_SEARCH_RADIUS	200
-#endif
 #ifndef MINE_SERACH_TIME
 #define MINE_SEARCH_TIME	5000
 #endif
 
-// called by cob to actually look for and clear the mines
-lua_ClearMines(radius)
-{
-}
 
 // called by lua button
 LookForMines()
@@ -58,7 +50,6 @@ LookForMines()
 	turn head to x-axis <0> now;
 	hide detector;
 	start-script RunControl();
-	call-script lua_ClearMines(MINE_SEARCH_RADIUS);
 	// done
 }
 #endif
