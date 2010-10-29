@@ -145,7 +145,7 @@ function gadget:Initialize()
 		local unitID = allUnits[i]
 		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
 	end
-	Spring.AssignMouseCursor("Clear Mines", "cursordemine", true, true)
+	Spring.AssignMouseCursor("Clear Mines", "cursordemine", true, false)
 	Spring.SetCustomCommandDrawData(CMD_CLEARMINES, "Clear Mines", {1,0.5,0,.8}, false)
 end
 
