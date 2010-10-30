@@ -19,7 +19,7 @@
   maxVelocity=0.01;
   movementClass=KBOT_Infantry;
   objectName=MortarShell.S3O;
-  script=rus_sortie_recon.cob;
+  script=null.cob;
   selfDestructAs=noweapon;
   [sfxtypes] {
   }
