@@ -64,7 +64,7 @@
   trackOffset=5;
   trackStrength=7;
   trackStretch=1;
-  trackType=Stdtank;
+  trackType=T60-70-SU76;
   trackWidth=18;
   turninplace=0;
   turnRate=280;

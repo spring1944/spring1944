@@ -57,7 +57,7 @@
   trackOffset=4;
   trackStrength=5;
   trackStretch=1;
-  trackType=Stdtank;
+  trackType=BA-64;
   trackWidth=11;
   turninplace=0;
   turnRate=425;

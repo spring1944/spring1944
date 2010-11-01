@@ -63,7 +63,7 @@
   trackOffset=5;
   trackStrength=10;
   trackStretch=1;
-  trackType=Stdtank;
+  trackType=USShermanA;
   trackWidth=18;
   turninplace=0;
   turnRate=280;

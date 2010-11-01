@@ -45,7 +45,7 @@
   trackOffset=10;
   trackStrength=6.5;
   trackStretch=1;
-  trackType=Stdtank;
+  trackType=USGun;
   trackWidth=15;
   turninplace=0;
   turnRate=440;
