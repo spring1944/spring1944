@@ -20,6 +20,7 @@
   maxWaterDepth=50;
   minCloakDistance=160;
   objectName=MineSign.S3O;
+  script=null.cob;
   selfDestructCountdown=1;
   [sfxtypes] {
   }

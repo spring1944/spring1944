@@ -19,6 +19,7 @@
   objectName=TankObstacle.S3O;
   [sfxtypes] {
   }
+  script=null.cob;
   showNanoFrame=0;
   sightDistance=50;
   smoothAnim=0;
