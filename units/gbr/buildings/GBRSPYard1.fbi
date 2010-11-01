@@ -30,6 +30,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GBRGunYard.S3O;
+  script=Yard.cob;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }

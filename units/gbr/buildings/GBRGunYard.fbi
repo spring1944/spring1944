@@ -35,6 +35,7 @@
   }
   showNanoFrame=0;
   showNanoSpray=0;
+  script=Yard.cob;
   side=GBR;
   sightDistance=146;
   soundcategory=GBRYard;

@@ -30,6 +30,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=RUSGunyard.S3O;
+  script=Yard.cob;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }
