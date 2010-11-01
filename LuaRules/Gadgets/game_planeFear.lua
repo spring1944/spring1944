@@ -74,13 +74,13 @@ end
 
 
 function gadget:GameFrame(n)
-	if (n % (1*30) < 0.1) then
+	if (n % (0.5*30) < 0.1) then
 	  for unitID, funcID in pairs(planeScriptIDs) do
 		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
 		local fuel = Spring.GetUnitFuel(unitID)
 		local teamID = Spring.GetUnitTeam(unitID)
 		--Spring.Echo("Plane TeamID", teamID)
-			if suppression > 1 then
+			if suppression > 0 then
 				local newFuel = fuel - fuelLossRate
 				local oldAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")
 				if oldAccuracy ~= nil then
