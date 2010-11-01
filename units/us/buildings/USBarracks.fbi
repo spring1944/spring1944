@@ -31,6 +31,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=USBarracks.S3O;
+  script=Barracks.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
