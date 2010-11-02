@@ -29,6 +29,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   objectName=LogisticsLarge.S3O;
+  script=Storage.cob;
   selfDestructAs=Massive_Explosion;
   [sfxtypes] {
   }
