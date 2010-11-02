@@ -11,6 +11,9 @@
   buildTime=3000;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeScales=25 25 43;
+  collisionVolumeOffsets=0 -3 0;
+  collisionVolumeTest=1;
   corpse=GBRCromwell_Damaged;
   [customParams] {
     armor_front=71;
