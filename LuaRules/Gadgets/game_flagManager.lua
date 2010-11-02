@@ -2,64 +2,68 @@ function gadget:GetInfo()
 	return {
 		name      = "Flag Manager",
 		desc      = "Populates maps with flags and handles control",
-		author    = "FLOZi",
+		author    = "FLOZi, AnalyseMetalMap algorithm from easymetal.lua by CarRepairer",
 		date      = "31st July 2008",
-		license   = "CC by-nc, version 3.0",
+		license   = "GNU GPL v2",
 		layer     = -5,
 		enabled   = true  --  loaded by default?
 	}
 end
 
 -- function localisations
+local floor						= math.floor
 -- Synced Read
-local AreTeamsAllied				= Spring.AreTeamsAllied
-local GetGroundInfo					= Spring.GetGroundInfo
-local GetGroundHeight				=	Spring.GetGroundHeight
+local AreTeamsAllied			= Spring.AreTeamsAllied
+local GetGroundInfo				= Spring.GetGroundInfo
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
-local GetUnitTeam						= Spring.GetUnitTeam
-local GetUnitDefID       		= Spring.GetUnitDefID
-local GetTeamInfo						= Spring.GetTeamInfo
+local GetUnitTeam				= Spring.GetUnitTeam
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
 
 -- Synced Ctrl
-local CreateUnit						= Spring.CreateUnit
-local SetUnitNeutral				=	Spring.SetUnitNeutral
-local SetUnitAlwaysVisible	= Spring.SetUnitAlwaysVisible
-local TransferUnit					= Spring.TransferUnit
-local GiveOrderToUnit				= Spring.GiveOrderToUnit
-local CallCOBScript					= Spring.CallCOBScript
+local CreateUnit				= Spring.CreateUnit
+local SetUnitNeutral			= Spring.SetUnitNeutral
+local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
+local TransferUnit				= Spring.TransferUnit
+local GiveOrderToUnit			= Spring.GiveOrderToUnit
+local CallCOBScript				= Spring.CallCOBScript
 local SetUnitRulesParam			= Spring.SetUnitRulesParam
 local SetTeamRulesParam			= Spring.SetTeamRulesParam
-local SetUnitNoSelect				= Spring.SetUnitNoSelect
-local SetUnitMetalExtraction= Spring.SetUnitMetalExtraction
+local SetUnitNoSelect			= Spring.SetUnitNoSelect
+local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
 
 -- constants
-local GAIA_TEAM_ID							=	Spring.GetGaiaTeamID()
-local BLOCK_SIZE							=	32	-- size of map to check at once
-local EXTRACT_RADIUS_MOD					=	1.5 -- Another handy thing to tweak for profiles ALWAYS REVERT TO 1.5
-local METAL_THRESHOLD						=	1 -- Handy for creating profiles, set to just less than the lowest metal spot you want to include. ALWAYS REVERT TO 1
-local PROFILE_PATH							=	"maps/flagConfig/" .. Game.mapName .. "_profile.lua"
-Spring.Echo(PROFILE_PATH)
-local FLAG_RADIUS							=	230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local FLAG_CAP_THRESHOLD					=	10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
-local FLAG_REGEN							=	1		-- how fast a flag with no defenders or attackers will reduce capping statuses
-local CAP_MULT								=	0.25 --multiplies against the FBI defined CapRate
-local DEF_MULT								=	1 --multiplies against the FBI defined DefRate
-local SIDES									=	{gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
-local DEBUG									=	false -- enable to print out flag locations in profile format
+local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
+local PROFILE_PATH = "maps/flagConfig/" .. Game.mapName .. "_profile.lua"
+
+local EXTRACT_RADIUS = Game.extractorRadius > 125 and Game.extractorRadius or 125
+local GRID_SIZE	= 4
+local THRESH_FRACTION = 0.4
+local MAP_WIDTH = floor(Game.mapSizeX / GRID_SIZE)
+local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
+
+local FLAG_RADIUS = 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
+local FLAG_CAP_THRESHOLD = 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
+local FLAG_REGEN = 1 -- how fast a flag with no defenders or attackers will reduce capping statuses
+local CAP_MULT = 0.25 --multiplies against the FBI defined CapRate
+local DEF_MULT = 1 --multiplies against the FBI defined DefRate
+local SIDES	= {gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
+local DEBUG	= false -- enable to print out flag locations in profile format
 
 -- variables
-local avgMetal							= 0	-- average metal per spot
-local totalMetal						= 0 -- total metal found
-local minMetalLimit 				= 0	-- minimum metal to place a flag at
-local numSpots							= 0 -- number of spots found
-local spots 								= {} -- table of flag locations
-local flags 								= {} -- table of flag unitIDs
-local cappers 							= {} -- table of flag cappers
-local defenders							= {} -- table of flag defenders
-local flagCapStatuses				= {} -- table of flag's capping statuses
-local teams									= Spring.GetTeamList()
-local initFrame
+local metalMap = {}
+local maxMetal = 0
+local spots = {}
+local spotCount	= 0
+local metalData = {}
+local metalDataCount = 0
+
+local flags = {}
+local numFlags = 0
+local cappers = {} -- table of flag cappers
+local defenders	= {} -- table of flag defenders
+local flagCapStatuses = {} -- table of flag's capping statuses
+local teams	= Spring.GetTeamList()
+
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
@@ -67,9 +71,107 @@ end
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+local function round(num, idp)
+  local mult = 10^(idp or 0)
+  return floor(num * mult + 0.5) / mult
+end
+
+
+local function mergeToSpot(spotNum, px, pz, pWeight)
+	local sx = spots[spotNum].x
+	local sz = spots[spotNum].z
+	local sWeight = spots[spotNum].weight
+	
+	local avgX, avgZ
+	
+	if sWeight > pWeight then
+		local sStrength = round(sWeight / pWeight)
+		avgX = (sx*sStrength + px) / (sStrength +1)
+		avgZ = (sz*sStrength + pz) / (sStrength +1)
+	else
+		local pStrength = (pWeight / sWeight)
+		avgX = (px*pStrength + sx) / (pStrength +1)
+		avgZ = (pz*pStrength + sz) / (pStrength +1)		
+	end
+	
+	spots[spotNum].x = avgX
+	spots[spotNum].z = avgZ
+	spots[spotNum].weight = sWeight + pWeight
+end
+
+
+local function NearSpot(px, pz, dist)
+	for k, spot in pairs(spots) do
+		local sx, sz = spot.x, spot.z
+		if (px-sx)^2 + (pz-sz)^2 < dist then
+			return k
+		end
+	end
+	return false
+end
+
+
+local function AnalyzeMetalMap()	
+	for mx_i = 1, MAP_WIDTH do
+		metalMap[mx_i] = {}
+		for mz_i = 1, MAP_HEIGHT do
+			local mx = mx_i * GRID_SIZE
+			local mz = mz_i * GRID_SIZE
+			local _, curMetal = GetGroundInfo(mx, mz)
+			curMetal = floor(curMetal * 100)
+			metalMap[mx_i][mz_i] = curMetal
+			if (curMetal > maxMetal) then
+				maxMetal = curMetal
+			end	
+		end
+	end
+	
+	local lowMetalThresh = floor(maxMetal * THRESH_FRACTION)
+	
+	for mx_i = 1, MAP_WIDTH do
+		for mz_i = 1, MAP_HEIGHT do
+			local mCur = metalMap[mx_i][mz_i]
+			if mCur > lowMetalThresh then
+				metalDataCount = metalDataCount +1
+				
+				metalData[metalDataCount] = {
+					x = mx_i * GRID_SIZE,
+					z = mz_i * GRID_SIZE,
+					metal = mCur
+				}
+				
+			end
+		end
+	end
+	
+	table.sort(metalData, function(a,b) return a.metal > b.metal end)
+	
+	for index = 1, metalDataCount do
+		local mx = metalData[index].x
+		local mz = metalData[index].z
+		local mCur = metalData[index].metal
+		
+		local nearSpotNum = NearSpot(mx, mz, EXTRACT_RADIUS*EXTRACT_RADIUS)
+	
+		if nearSpotNum then
+			mergeToSpot(nearSpotNum, mx, mz, mCur)
+		else
+			spotCount = spotCount + 1
+			spots[spotCount] = {
+				x = mx,
+				z = mz,
+				weight = mCur
+			}
+		end
+	end
+end
+
 
 function PlaceFlag(spot)
-	newFlag = CreateUnit("flag", spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	local newFlag = CreateUnit("flag", spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	numFlags = numFlags + 1
+	flags[numFlags] = newFlag
+	
 	if DEBUG then
 		Spring.Echo("{")
 		Spring.Echo("	x = " .. spot.x .. ",")
@@ -77,6 +179,7 @@ function PlaceFlag(spot)
 		Spring.Echo("	feature = nil")
 		Spring.Echo("},")
 	end
+	
 	SetUnitNeutral(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
@@ -84,52 +187,28 @@ function PlaceFlag(spot)
 		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / GG.Metal.totalMetal
 		SetUnitMetalExtraction(newFlag, extraction)
 	end
-	table.insert(flags, newFlag)
 end
 
-function gadget:Initialize()
-	initFrame = Spring.GetGameFrame()
-end
 
-function getFlagControl(flagID)
-	local flagControl = 0
+function gadget:GamePreload()
+	-- FIND METAL SPOTS
+	if not VFS.FileExists(PROFILE_PATH) then
+		Spring.Echo("Map Flag Profile not found. Autogenerating flag positions.")
+		AnalyzeMetalMap()
+	end
 end
 
 
 function gadget:GameFrame(n)
 	-- FLAG PLACEMENT
-	if n == (initFrame+5) then
+	if n == 5 then
 		if DEBUG then
 			Spring.Echo(PROFILE_PATH)
 		end
 		if not VFS.FileExists(PROFILE_PATH) then
-			Spring.Echo("Map Flag Profile not found. Autogenerating flag positions.")
-			for z = 0, Game.mapSizeZ, BLOCK_SIZE do
-				for x = 0, Game.mapSizeX, BLOCK_SIZE do
-					if GetGroundHeight(x,z) > 0 then
-						_, metal = GetGroundInfo(x, z)
-						if metal >= METAL_THRESHOLD then
-							table.insert(spots, {x = x, z = z, metal = metal})
-							numSpots = numSpots + 1
-							totalMetal = totalMetal + metal
-						end
-					end
-				end
-			end
-			avgMetal = totalMetal / numSpots
-			minMetalLimit = 0.75 * avgMetal
-			local onlyFlagSpots = {}
 			for _, spot in pairs(spots) do
-				if spot.metal >= minMetalLimit then
-					local unitsAtSpot = GetUnitsInCylinder(spot.x, spot.z, Game.extractorRadius * EXTRACT_RADIUS_MOD, GAIA_TEAM_ID)
-					if #unitsAtSpot == 0 then
-						PlaceFlag(spot)
-						table.insert(onlyFlagSpots, {x = spot.x, z = spot.z})
-					end
-				end
+				PlaceFlag(spot)
 			end
-			spots = onlyFlagSpots
-
 		else -- load the flag positions from profile
 			Spring.Echo("Map Flag Profile found. Loading flag positions.")
 			spots = VFS.Include(PROFILE_PATH)
@@ -139,8 +218,9 @@ function gadget:GameFrame(n)
 		end
 		GG['flags'] = flags
 
-	elseif n == (initFrame + 40) then
-		for _, flagID in pairs(flags) do
+	elseif n == 40 then
+		for i = 1, numFlags do
+			local flagID = flags[i]
 			if (modOptions) then
 				if (modOptions.always_visible_flags == "0") then
 					SetUnitAlwaysVisible(flagID, false)
@@ -154,7 +234,7 @@ function gadget:GameFrame(n)
 	end
 
 	-- FLAG CONTROL
-	if n % 30 == 5 and n > (initFrame + 40) then
+	if n % 30 == 5 and n > 40 then
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
 			local defendTotal = 0
@@ -221,6 +301,7 @@ function gadget:GameFrame(n)
 		end
 	end
 end
+
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
