@@ -12,6 +12,10 @@
   canHover=1;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=20.5 16.5 49;
+  collisionVolumeOffsets=0 -3 1;
+  collisionVolumeTest=1;
   corpse=USLVTA4_Dead;
   [customParams] {
     armor_front=15;

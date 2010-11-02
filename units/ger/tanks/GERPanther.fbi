@@ -10,6 +10,10 @@
   buildTime=5985;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=20.5 17 42.5;
+  collisionVolumeOffsets=0 -1.5 0.5;
+  collisionVolumeTest=1;
   corpse=GERPanther_Damaged;
   [customParams] {
     armor_front=113;

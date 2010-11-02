@@ -10,6 +10,10 @@
   buildTime=1900;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=19 17.8 38.35;
+  collisionVolumeOffsets=0 -4 -0.4;
+  collisionVolumeTest=1;
   corpse=USM10Wolverine_Destroyed;
   [customParams] {
     armor_front=60;

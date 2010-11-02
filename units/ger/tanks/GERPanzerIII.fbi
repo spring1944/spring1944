@@ -10,6 +10,10 @@
   buildTime=2150;
   canMove=1;
   category=MINETRIGGER HARDVEH;
+  collisionVolumeType=box;
+  collisionVolumeScales=19.25 14 36;
+  collisionVolumeOffsets=0 -1.5 -1;
+  collisionVolumeTest=1;
   corpse=GERPanzerIII_Damaged;
   [customParams] {
     armor_front=62;
