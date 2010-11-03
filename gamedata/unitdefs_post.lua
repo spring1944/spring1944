@@ -158,6 +158,9 @@ for name, ud in pairs(UnitDefs) do
 			ud.description = ud.description.." ("..newDescrLine..")"
 			
 		end
+		if ud.customparams.armor_front then
+			ud.usepiececollisionvolumes = true
+		end
 	end
 	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
