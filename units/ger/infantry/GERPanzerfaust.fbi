@@ -51,7 +51,7 @@
   }
   showNanoFrame=0;
   side=GER;
-  sightDistance=420;
+  sightDistance=570;
   smoothAnim=0;
   soundcategory=GERFaust;
   stealth=1;

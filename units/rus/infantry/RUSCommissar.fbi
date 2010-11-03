@@ -50,7 +50,7 @@
   showNanoFrame=0;
   showNanoSpray=0;
   side=RUS;
-  sightDistance=840;
+  sightDistance=570;
   soundcategory=RUSInf;
   stealth=1;
   TEDClass=CONSTR;
