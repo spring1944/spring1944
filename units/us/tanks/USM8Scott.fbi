@@ -72,6 +72,8 @@
   badTargetCategory=FLAG;
 
   weapon1=M875mmHE;
+  weaponMainDir1=0 16 1;
+  maxAngleDif1=210;
   badTargetCategory1=OPENVEH HARDVEH;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 

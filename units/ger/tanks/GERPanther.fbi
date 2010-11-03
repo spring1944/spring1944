@@ -73,12 +73,18 @@
   badTargetCategory=FLAG;
 
   weapon1=KwK75mmL71HE;
+  weaponMainDir1=0 16 1;
+  maxAngleDif1=210;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
   weapon2=KwK75mmL71AP;
+  weaponMainDir2=0 16 1;
+  maxAngleDif2=210;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=MG34;
+  weaponMainDir3=0 16 1;
+  maxAngleDif3=210;
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
