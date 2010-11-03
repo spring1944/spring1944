@@ -243,10 +243,10 @@ else
 			callinHandlers["FeatureDestroyed"] = ___FeatureDestroyed
 
 			-- listen to "/luarules show*"
-			--[[gadgetHandler:AddChatAction("showhealthbars", ___ToggleDrawUnitStatusBars, "toggle whether unit status-bars are drawn")
+			gadgetHandler:AddChatAction("showhealthbars", ___ToggleDrawUnitStatusBars, "toggle whether unit status-bars are drawn")
 			gadgetHandler:AddChatAction("showrezbars", ___ToggleDrawFeatureStatusBars, "toggle whether feature status-bars are drawn")
 
-			for funcName, func in pairs(callinHandlers) do
+			--[[for funcName, func in pairs(callinHandlers) do
 				gadgetHandler:AddSyncAction(funcName, func, "")
 			end--]]
 
