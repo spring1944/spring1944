@@ -202,7 +202,7 @@ function gadget:GameFrame(n)
 					local unitID = infantry[teamID][j]
 					local unitDefID = GetUnitDefID(unitID)
 					local logisticsLevel = GetTeamResources(teamID, "energy")
-					local stalling = logisticsLevel < 5
+					local stalling = logisticsLevel < 50
 					ProcessUnit(unitID, unitDefID, teamID, stalling)
 				end
 			end
