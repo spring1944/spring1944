@@ -72,6 +72,8 @@
   badTargetCategory=BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED;
 
   weapon1=M7AP;
+  weaponMainDir1=0 16 1;
+  maxAngleDif1=210;
   badTargetCategory1=SOFTVEH;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
 

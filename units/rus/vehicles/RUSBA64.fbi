@@ -64,6 +64,8 @@
   badTargetCategory=FLAG;
 
   weapon1=DT;
+  weaponMainDir1=0 16 1;
+  maxAngleDif1=220;
   onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
 
   weapon2=Small_Tracer_Green;
