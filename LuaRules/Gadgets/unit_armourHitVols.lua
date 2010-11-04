@@ -25,7 +25,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			--Spring.Echo(i, pieceName)
 			if pieceName ~= "base" and pieceName ~= "turret" and i ~= "n" then
 				--Spring.Echo("piece " .. i .. " called " .. pieceName .. " to be disabled")
-				Spring.SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, true,true, 0,0,0, 0,0,0, -1, 0)
+				Spring.SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, false,false, 0,0,0, 0,0,0, -1, 0)
 			end
 		end
 	end
