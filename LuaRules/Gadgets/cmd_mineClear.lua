@@ -15,10 +15,13 @@ end
 local GetUnitDefID			= Spring.GetUnitDefID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
+local ValidUnitID			= Spring.ValidUnitID
 -- Synced Ctrl
 local CallCOBScript			= Spring.CallCOBScript
 local DestroyUnit			= Spring.DestroyUnit
+local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
+local SpawnCEG				= Spring.SpawnCEG
 
 -- Constants
 local CMD_CLEARMINES = 35522
@@ -43,11 +46,13 @@ local clearDesc = {
 }
 
 --	Custom Functions
-function BlowMine(mineID)
-	local px, py, pz = GetUnitPosition(mineID)
-	DestroyUnit(mineID, false, true)
-	Spring.SpawnCEG("HE_Small", px, py, pz)
-	Spring.RemoveBuildingDecal(mineID)
+function BlowMine(mineID, engineerID)
+	if ValidUnitID(engineerID) then -- only destroy mines if clearer is still alive
+		local px, py, pz = GetUnitPosition(mineID)
+		DestroyUnit(mineID, false, true)
+		SpawnCEG("HE_Small", px, py, pz)
+		RemoveBuildingDecal(mineID)
+	end
 end
 
 function ClearMines(unitID, x, z)
@@ -69,7 +74,7 @@ function ClearMines(unitID, x, z)
 	for i = 1, #mines do
 		-- remove this unit (maybe needs a special anim?)
 		local mineID = mines[i]
-		DelayCall(BlowMine, {mineID}, MINE_SEARCH_TIME / #mines * i * 30)
+		DelayCall(BlowMine, {mineID, unitID}, MINE_SEARCH_TIME / #mines * i * 30)
 	end
 end
 
