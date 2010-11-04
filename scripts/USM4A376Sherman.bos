@@ -16,7 +16,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 exhaust
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 //hiding FX emit points
 #define FX_HIDE\
@@ -45,7 +45,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define COAX_ARC		<3>
 
 // definitions for weapons behaviour
-#define RELOAD		4500 // time in milliseconds between shots
 #define RECOIL		[-2.25] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
@@ -149,7 +148,7 @@ RestoreAfterDelay()
 Reload()
 {
 	reloading = TRUE;
-	sleep RELOAD;
+	sleep restore_delay / 2;
 	reloading = FALSE;
 }
 

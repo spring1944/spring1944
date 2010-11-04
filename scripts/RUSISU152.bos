@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
@@ -19,7 +19,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 mantlet
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 // definitions for wheels
 #define WHEEL_SPIN		<500>
@@ -57,8 +57,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum;
 #define XLARGE_Muzzleflash	1024+7
 #define XLARGE_MuzzleDust	1024+8
 #define MuzzleBrakeSmoke	1024+9
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -136,7 +134,7 @@ RestoreAfterDelay()
 Reload()
 {
 	reloading = TRUE;
-	sleep RELOAD;
+	sleep restore_delay / 2;
 	reloading = FALSE;
 }
 

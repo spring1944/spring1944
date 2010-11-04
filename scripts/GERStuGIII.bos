@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece  base, mantlet, barrel, flare, brakeright, brakeleft;
 piece exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
@@ -17,7 +17,7 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming;
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 mantlet
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 // definitions for wheels
 #define WHEEL_SPIN		<600>
@@ -41,7 +41,6 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming;
 #define AA_ELEVATE		<150>
 
 // definitions for weapons behaviour
-#define RELOAD		4300 // time in milliseconds between shots
 #define RECOIL		[-2] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
@@ -57,11 +56,6 @@ static-var  restore_delay, rock, aim2, reloading, bMoving, treadnum, GunAiming;
 #define MEDIUM_MUZZLEFLASH 1024+8
 #define MEDIUM_MUZZLEDUST 1024+9
 #define MuzzleBrakeSmoke 1024+10
-
-//Pressure Line's stuff
-#define TURNRATE 175 //set to whatever the unit's fbi turnrate is
-
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -144,7 +138,7 @@ RestoreAfterDelay()
 Reload()
 {
 	reloading = TRUE;
-	sleep RELOAD;
+	sleep restore_delay / 2;
 	reloading = FALSE;
 }
 

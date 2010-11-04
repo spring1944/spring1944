@@ -3,7 +3,7 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
  
-static-var bAiming, iFear, iState, PickDeath, lasthit, reloading, aim2;
+static-var bAiming, iFear, iState, PickDeath, lasthit, reloading, aim2, restore_delay;
 
 #include "inf_sharedDefs.h"
 #define RecoverRate 	2000
@@ -29,7 +29,6 @@ static-var bAiming, iFear, iState, PickDeath, lasthit, reloading, aim2;
 #define TURR_ARC		<30>
 
 // definitions for weapons behaviour
-#define RELOAD		5250
 #define RECOIL		[-2.5] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
@@ -174,11 +173,15 @@ luaFunction(arg1)
  arg1 = iFear;
 }
 
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
 
 Reload()
 {
 	reloading = TRUE;
-	sleep RELOAD;
+	sleep restore_delay / 2;
 	reloading = FALSE;
 }
 

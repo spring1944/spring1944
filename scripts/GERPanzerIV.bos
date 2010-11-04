@@ -43,7 +43,6 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, G
 #define COAX_ARC		<3>
 
 // definitions for weapons behaviour
-#define RELOAD		3300 // time in milliseconds between shots
 #define RECOIL		[-2] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
@@ -173,7 +172,7 @@ RestoreAfterDelay()
 Reload()
 {
 	reloading = TRUE;
-	sleep RELOAD;
+	sleep restore_delay / 2;
 	reloading = FALSE;
 }
 
