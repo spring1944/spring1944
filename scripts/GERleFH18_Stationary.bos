@@ -3,7 +3,7 @@
 piece base, carriage, sleeve, barrel, flare, brakeleft, brakeright;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, lthigh1, lleg1;
 
-static-var bAiming, iFear, iState, PickDeath, lasthit;
+static-var bAiming, iFear, iState, PickDeath, lasthit, reloadTime, reloading;
 
 #include "inf_sharedDefs.h"
 #define RecoverRate 	2000
@@ -93,6 +93,18 @@ Create()
 	hide brakeright;
 	// init vars
 	set ACTIVATION to TRUE;
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	reloadTime = longestReloadTime;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep reloadTime;
+	reloading = FALSE;
 }
 
 TakeCover()
@@ -205,6 +217,7 @@ AimWeapon1(heading, pitch)
 	wait-for-turn carriage around y-axis;
 	wait-for-turn sleeve around x-axis;
 	bAiming=0;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	return 1;
 }
 
@@ -250,6 +263,7 @@ AimWeapon2(heading, pitch)
 	wait-for-turn carriage around y-axis;
 	wait-for-turn sleeve around x-axis;
 	bAiming=0;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
 	return 1;
 }
 
