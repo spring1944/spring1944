@@ -145,10 +145,10 @@ end
 function gadget:TeamDied(teamID)
 	infantry[teamID] = nil
 	iIndices[teamID] = nil
-	iLengths[teamID] = nil
+	iLengths[teamID] = 0
 	ammoSuppliers[teamID] = nil
 	aIndices[teamID] = nil
-	aLengths[teamID] = nil
+	aLengths[teamID] = 0
 end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
