@@ -3,19 +3,25 @@
 //#include "sfxtype.h"
 #include "constants.h"
 
-piece  base, body, wheel1, wheel2, carriage, wheel3;
+piece  base, body, wheel1, wheel2, carriage, wheel3, hitch, height, null;
  
 static-var gunTowHeading, isTowed, normalSpeed;
 
 // *** added by Yuritch
 static-var isMoving, curTrailerDir, oldMainDir;
-#define TRAILER_CHECK_PERIOD	30
+/*#define TRAILER_CHECK_PERIOD	30
 #define TRAILER_TURN_SPEED		<0.5>
 #define MAX_DELTA_ANGLE			<70>
 #define MIN_DELTA_ANGLE			1.1*TRAILER_TURN_SPEED
-#define MAX_VEH_TURN_ANGLE		<5>
+#define MAX_VEH_TURN_ANGLE		<5>*/
 
-#define SIG_DEATH				1
+#define SIG_MOVE				1
+
+#define ANIM_PERIOD				50
+#define MAX_PIVOT				<25>
+#define MIN_PIVOT				<-25>
+#define PIVOT_MOD				MAX_PIVOT / 440 //appox. equal to MAX_PIVOT / turnrate
+#define PIVOT_SPEED				<60>
 // ***
 
 // Signal definitions
@@ -28,7 +34,28 @@ static-var isMoving, curTrailerDir, oldMainDir;
 // *** added by Yuritch
 TrailerCheck()
 {
-	set-signal-mask SIG_DEATH;
+	var lastHeading, currHeading, diffHeading, pivotAngle, opp, adj;
+	lastHeading = GET HEADING;
+	while (1) {
+		//pivot
+		currHeading = GET HEADING;
+		diffHeading = currHeading - lastHeading;
+		if (diffHeading > 0x7fff) diffHeading = diffHeading - 0x10000;
+		if (diffHeading < -0x8000) diffHeading = diffHeading + 0x10000;
+		pivotAngle = diffHeading * PIVOT_MOD;
+		if (pivotAngle > MAX_PIVOT) pivotAngle = MAX_PIVOT;
+		if (pivotAngle < MIN_PIVOT) pivotAngle = MIN_PIVOT;
+		//turn front to y-axis pivotAngle speed PIVOT_SPEED;
+		turn hitch to y-axis 0 - pivotAngle speed PIVOT_SPEED;
+		opp = (get PIECE_Y(null)) - (get PIECE_Y(height));
+		adj = get XZ_HYPOT( (get PIECE_XZ(null)) - (get PIECE_XZ(height) ));
+		//get PRINT(opp, adj, (get ATAN (opp, adj) / 182));
+		turn carriage to x-axis get ATAN (opp, adj) now;
+		
+		lastHeading = currHeading;
+		sleep ANIM_PERIOD;
+	}
+	/*set-signal-mask SIG_DEATH;
 	var deltaAngle, mainAngle;
 	while(TRUE)
 	{
@@ -79,14 +106,14 @@ TrailerCheck()
 			}
 			turn carriage to y-axis (0 - (mainAngle - curTrailerDir)) now;
 		}
-	}
+	}*/
 }
 
-TrailerInit()
+/*TrailerInit()
 {
 	curTrailerDir = get HEADING;
 	oldMainDir = curTrailerDir;
-}
+}*/
 // ***
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
@@ -119,6 +146,9 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	start-script TrailerCheck();
 	set ACTIVATION to 1;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
@@ -133,6 +163,8 @@ StartMoving()
 
 StopMoving()
 {
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
 	set ACTIVATION to 0;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
 	stop-spin wheel2 around x-axis decelerate <100.000000>;
@@ -144,8 +176,8 @@ Create()
 {
 //	spin tow_point around y-axis speed <100>;
 	start-script SmokeUnit();
-	start-script TrailerInit();
-	start-script TrailerCheck();
+	//start-script TrailerInit();
+	//start-script TrailerCheck();
 }
 
 SweetSpot(piecenum)
@@ -155,7 +187,7 @@ SweetSpot(piecenum)
 
 Killed(severity, corpsetype)
 {
-	signal SIG_DEATH;
+	//signal SIG_DEATH;
 	if( severity <= 999 )
 	{
 		corpsetype = 1;
