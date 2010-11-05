@@ -14,7 +14,7 @@
   canMove=1;
   canReclaim=0;
   canRepair=0;
-  category=INFANTRY;
+  category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
   corpse=GBRSoldier_dead;
