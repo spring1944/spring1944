@@ -40,7 +40,7 @@
   maxVelocity=3; //4
   maxWaterDepth=15;
   movementClass=TANK_Car;
-  noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED MINE;
+  noChaseCategory=BUILDING FLAG INFANTRY AIR DEPLOYED MINE;
   objectName=GBRAECMkIII.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
