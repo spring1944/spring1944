@@ -27,7 +27,7 @@ local SpawnCEG				= Spring.SpawnCEG
 local CMD_CLEARMINES = 35522
 local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
-local MINE_SEARCH_TIME = 5 -- time in seconds to clear spot
+local MINE_CLEAR_TIME = 5 -- time in seconds to clear single mine
 -- Variables
 local sweepers = {}
 
@@ -74,8 +74,9 @@ function ClearMines(unitID, x, z)
 	for i = 1, #mines do
 		-- remove this unit (maybe needs a special anim?)
 		local mineID = mines[i]
-		DelayCall(BlowMine, {mineID, unitID}, MINE_SEARCH_TIME / #mines * i * 30)
+		DelayCall(BlowMine, {mineID, unitID}, MINE_CLEAR_TIME * i * 30)
 	end
+	CallCOBScript(unitID, "LookForMines", 0, #mines * MINE_CLEAR_TIME * 1000)
 end
 
 --	CallIns
@@ -117,7 +118,6 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 					return true, false
 				else
 					sweepers[unitID] = false
-					CallCOBScript(unitID, "LookForMines", 0)
 					ClearMines(unitID, x, z)
 					return true, true
 				end

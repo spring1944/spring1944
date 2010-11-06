@@ -1,19 +1,13 @@
 #ifndef _MINECLEAR_H
 #define _MINECLEAR_H
 
-// some defines for the mine-clearing. Can be defined in unit script to be unit-specific
-#ifndef MINE_SERACH_TIME
-#define MINE_SEARCH_TIME	5000
-#endif
-
-
 // called by lua button
-LookForMines()
+LookForMines(searchTime)
 {
 	if (iState > 6) return 0;
 	signal SIG_RUN;
 	var sweepNum;
-	sweepNum = (MINE_SEARCH_TIME/1000);
+	sweepNum = (searchTime/1000);
 	show detector;
 	set MAX_SPEED to 1;
 	turn head to x-axis <20> speed <400>;
@@ -36,9 +30,9 @@ LookForMines()
 	while (count < sweepNum)
 		{
 		turn torso to y-axis <-40> speed <200>;
-		sleep ((MINE_SEARCH_TIME/sweepNum)/2);
+		sleep ((searchTime/sweepNum)/2);
 		turn torso to y-axis <40> speed <200>;
-		sleep((MINE_SEARCH_TIME/sweepNum)/2);
+		sleep((searchTime/sweepNum)/2);
 		count = count +1;
 		}		
 	// wait a specified amount of time
