@@ -27,7 +27,7 @@ local SpawnCEG				= Spring.SpawnCEG
 local CMD_CLEARMINES = 35522
 local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
-local MINE_CLEAR_TIME = 5 -- time in seconds to clear single mine
+local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
 -- Variables
 local sweepers = {}
 
