@@ -66,7 +66,8 @@
   turnRate=24;
   wingAngle=0.1;
   wingDrag=0.1;
-
+  
+  badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
   weapon1=m2browningamg;
   maxAngleDif1=10;
   onlyTargetCategory1=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
