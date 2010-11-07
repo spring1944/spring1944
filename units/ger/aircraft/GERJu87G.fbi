@@ -68,7 +68,7 @@
   TEDClass=VTOL;
   turnRadius=1700;
   turnRate=60;
-  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH SHIP DEPLOYED;
   wingAngle=0.1;
   wingDrag=0.1;
 

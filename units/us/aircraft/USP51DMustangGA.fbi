@@ -48,7 +48,7 @@
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;
-  noChaseCategory=FLAG MINE;
+  noChaseCategory=FLAG MINE BUILDING;
   objectName=USP51DMustangGA.S3O;
   repairable=0;
   seismicSignature=0;
