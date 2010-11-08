@@ -15,7 +15,7 @@
   impulseFactor=1e-05;
   model=MortarShell.S3O;
   movingAccuracy=7111;
-  range=235;
+  range=215;
   reloadTime=5;
   rendertype=3;
   soundHit=GEN_Explo_3;
