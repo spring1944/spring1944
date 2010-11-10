@@ -2,9 +2,9 @@ function gadget:GetInfo()
 	return {
 		name		= "Minefield spawner",
 		desc		= "Randomly spawns mines in a small area when an engineer builds one.",
-		author	= "Nemo (B. Tyler)",
+		author		= "Nemo (B. Tyler), FLOZi (C. Lawrence)",
 		date		= "December 30, 2008",
-		license = "Public domain",
+		license		 = "Public domain",
 		layer		= 0,
 		enabled	= true	--	loaded by default?
 	}
@@ -12,40 +12,40 @@ end
 	
 -- function localisations
 -- Synced Read
-local GetUnitPosition	=	Spring.GetUnitPosition
-local GetUnitHealth		=	Spring.GetUnitHealth
-local GetGroundHeight	=	Spring.GetGroundHeight
-local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
+local GetUnitPosition		= Spring.GetUnitPosition
+local GetUnitHealth			= Spring.GetUnitHealth
+local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
+local GetGroundHeight		= Spring.GetGroundHeight
 -- Synced Ctrl
-local CreateUnit		=	Spring.CreateUnit
+local CreateUnit			= Spring.CreateUnit
 -- Constants
-local APMineNumber		=	16
-local APMineSpread		= 	25
+local GAIA_TEAM_ID 			= Spring.GetGaiaTeamID()
 
-local ATMineNumber		=	5
-local ATMineSpread		=	23
--- Variables
-local engineerBuilt	=	{}
+local APMineNumber			= 16
+local APMineSpread			= 25
+
+local ATMineNumber			= 5
+local ATMineSpread			= 23
+
+local APMineMinDist			= 2.5
+local ATMineMinDist			= 1.5
 
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 local DelayCall = GG.Delay.DelayCall
-  
-function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	local ud = UnitDefs[unitDefID]
-	if (ud.name == "apminesign" and builderID ~= nil) or (ud.name == "atminesign" and builderID ~= nil) then
-	engineerBuilt[unitID] = 1
-	end
-end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 	local ud = UnitDefs[unitDefID]
-	if ud.name == "apminesign" and engineerBuilt[unitID] ~= nil then		
+	if ud.name == "apminesign" then		
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < APMineNumber do
 			local xpos = (math.random(-5, 5) * APMineSpread) + x
 			local zpos = (math.random(-5, 5) * APMineSpread) + z
+			while #GetUnitsInCylinder(xpos, zpos, APMineMinDist, GAIA_TEAM_ID) > 0 do
+				xpos = (math.random(-5, 5) * APMineSpread) + x
+				zpos = (math.random(-5, 5) * APMineSpread) + z
+			end
 			local ypos = GetGroundHeight(xpos, zpos)
 			CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID) --unitTeam
 			mineCount = mineCount + 1
@@ -53,7 +53,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		DelayCall(Spring.TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
 	end
 	
-	if ud.name == "atminesign" and engineerBuilt[unitID] ~= nil then		
+	if ud.name == "atminesign" then		
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < ATMineNumber do
