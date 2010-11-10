@@ -11,10 +11,10 @@
   buildTime=2550;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=19.25 17 38.8;
-  collisionVolumeOffsets=0 -3.3 -0.1;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=19.25 17 38.8;
+  //collisionVolumeOffsets=0 -3.3 -0.1;
+  //collisionVolumeTest=1;
   corpse=USM4A4Sherman_Damaged;
   [customParams] {
     armor_front=70;

@@ -10,10 +10,10 @@
   buildTime=2400;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=19 17.8 38.35;
-  collisionVolumeOffsets=0 -4 -0.4;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=19 17.8 38.35;
+  //collisionVolumeOffsets=0 -4 -0.4;
+  //collisionVolumeTest=1;
   corpse=GBRM10Achilles_Destroyed;
   [customParams] {
     armor_front=60;

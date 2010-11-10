@@ -10,10 +10,10 @@
   buildTime=3300;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=20 12 40;
-  collisionVolumeOffsets=0 -1 0.5;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=20 12 40;
+  //collisionVolumeOffsets=0 -1 0.5;
+  //collisionVolumeTest=1;
   corpse=GERJagdpanzerIV_Destroyed;
   [customParams] {
     armor_front=106;

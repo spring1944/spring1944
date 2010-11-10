@@ -11,10 +11,10 @@
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERPuma_Destroyed;
-  collisionVolumeType=box;
-  collisionVolumeScales=16 16 40;
-  collisionVolumeOffsets=0 -1 0;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=16 16 40;
+  //collisionVolumeOffsets=0 -1 0;
+  //collisionVolumeTest=1;
   [customParams] {
     armor_front=37;
     armor_rear=11;

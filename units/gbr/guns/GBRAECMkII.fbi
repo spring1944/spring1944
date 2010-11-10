@@ -10,10 +10,10 @@
   buildTime=1400;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=16 15 29;
-  collisionVolumeOffsets=0 1 0.5;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=16 15 29;
+  //collisionVolumeOffsets=0 1 0.5;
+  //collisionVolumeTest=1;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
     armor_front=57;

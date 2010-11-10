@@ -10,10 +10,10 @@
   buildTime=1200;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=16 12 40.5;
-  collisionVolumeOffsets=0 0 1;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=16 12 40.5;
+  //collisionVolumeOffsets=0 0 1;
+  //collisionVolumeTest=1;
   corpse=RUSM5Halftrack_Destroyed;
   [customParams] {
     ammoSupplier=1;

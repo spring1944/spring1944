@@ -10,10 +10,10 @@
   buildTime=1400;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=14 15 33;
-  collisionVolumeOffsets=0 0 1;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=14 15 33;
+  //collisionVolumeOffsets=0 0 1;
+  //collisionVolumeTest=1;
   corpse=GERMarder_Destroyed;
   [customParams] {
     armor_front=10;

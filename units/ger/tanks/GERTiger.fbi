@@ -10,11 +10,11 @@
   buildTime=9770;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=25.5 17 43;
-  collisionVolumeOffsets=0 -2.5 -1;
-  collisionVolumeTest=1;
-  corpse=GERTiger_Damaged;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=25.5 17 43;
+  //collisionVolumeOffsets=0 -2.5 -1;
+  //collisionVolumeTest=1;
+  //corpse=GERTiger_Damaged;
   [customParams] {
     armor_front=103;
     armor_rear=81;

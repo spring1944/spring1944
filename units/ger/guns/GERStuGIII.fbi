@@ -10,10 +10,10 @@
   buildTime=2750;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=20 12 37;
-  collisionVolumeOffsets=0 -1 1;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=20 12 37;
+  //collisionVolumeOffsets=0 -1 1;
+  //collisionVolumeTest=1;
   corpse=GERStuGIII_Damaged;
   [customParams] {
     armor_front=83;

@@ -10,9 +10,9 @@
   buildTime=420;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeScales=13 12 30;
-  collisionVolumeOffsets=0 2 0;
-  collisionVolumeTest=1;
+  //collisionVolumeScales=13 12 30;
+  //collisionVolumeOffsets=0 2 0;
+  //collisionVolumeTest=1;
   corpse=RUSBA64_Destroyed;
   [customParams] {
     armor_front=15;

@@ -10,10 +10,10 @@
   buildTime=1100;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=14 11 24;
-  collisionVolumeOffsets=0 0 0;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=14 11 24;
+  //collisionVolumeOffsets=0 0 0;
+  //collisionVolumeTest=1;
   corpse=GBRWasp_Destroyed;
   [customParams] {
     armor_front=10;

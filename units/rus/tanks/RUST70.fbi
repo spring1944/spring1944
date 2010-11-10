@@ -10,10 +10,10 @@
   buildTime=1500;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=17 15 31;
-  collisionVolumeOffsets=0 -1 0;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=17 15 31;
+  //collisionVolumeOffsets=0 -1 0;
+  //collisionVolumeTest=1;
   corpse=RUST70_Destroyed;
   [customParams] {
     armor_front=60;

@@ -10,10 +10,10 @@
   buildTime=1400;
   canMove=1;
   category=MINETRIGGER OPENVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=16 12 34;
-  collisionVolumeOffsets=0 -1 0;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=16 12 34;
+  //collisionVolumeOffsets=0 -1 0;
+  //collisionVolumeTest=1;
   corpse=USM8Greyhound_Destroyed;
   [customParams] {
     armor_front=18;

@@ -11,10 +11,10 @@
   buildTime=1800;
   canMove=1;
   category=MINETRIGGER HARDVEH;
-  collisionVolumeType=box;
-  collisionVolumeScales=16 14 29;
-  collisionVolumeOffsets=0 -2 0.5;
-  collisionVolumeTest=1;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=16 14 29;
+  //collisionVolumeOffsets=0 -2 0.5;
+  //collisionVolumeTest=1;
   corpse=USM8Scott_Damaged;
   [customParams] {
     armor_front=43;
