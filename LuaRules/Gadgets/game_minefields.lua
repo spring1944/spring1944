@@ -59,6 +59,10 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		while mineCount < ATMineNumber do
 			local xpos = (math.random(-3, 3) * ATMineSpread) + x
 			local zpos = (math.random(-3, 3) * ATMineSpread) + z
+			while #GetUnitsInCylinder(xpos, zpos, ATMineMinDist, GAIA_TEAM_ID) > 0 do
+				xpos = (math.random(-3, 3) * ATMineSpread) + x
+				zpos = (math.random(-3, 3) * ATMineSpread) + z
+			end
 			CreateUnit("atmine", xpos, y, zpos, 0, GAIA_TEAM_ID)
 			mineCount = mineCount + 1
 		end
