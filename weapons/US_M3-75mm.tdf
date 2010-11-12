@@ -80,6 +80,6 @@
   targetMoveError=0.1;
   tolerance=3000;
   turret=1;
-  weaponVelocity=926;
+  weaponVelocity=1176;
 }
 
