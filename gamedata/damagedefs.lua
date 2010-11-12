@@ -30,7 +30,7 @@ local damagedefs = {
     mediumtanks = 0,
     heavytanks = 0,
     flag = 0,
-	ships = 1;
+	ships = 1,
     mines = 0,
   },
   explosive = {
@@ -61,10 +61,13 @@ local damagedefs = {
   },
   fire = {
     bunkers = 4,
+	lightbuildings = 3/2,
 	ships = 3/2,
     unarmouredvehicles = 2,
 	armouredvehicles = 3/2,
-    tanks = 1/2,
+	lighttanks = 1,
+    mediumtanks = 3/4,
+	heavytanks = 1/2,
     flag = 0,
   },
   grenade = {
