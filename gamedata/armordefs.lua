@@ -287,6 +287,7 @@ local armorDefs = {
     "GERWespe",
     "GERPuma",
     "gerkarl",
+	"GERSdkfz10",
 
     --US--
     "USM8Greyhound",
@@ -319,7 +320,6 @@ local armorDefs = {
     "GERFlaK38_Truck",
     "GERPaK40_Truck",
     "GERleFH18_Truck",
-    "GERSdkfz10",
     "GERSdkfz9",
     "gerpontoontruck",
     "gernebelwerfer_truck",
