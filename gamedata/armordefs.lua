@@ -308,6 +308,7 @@ local armorDefs = {
     "GBRSexton",
     "GBRWasp",
     "gbrm10achilles",
+	"gbrstaghound",
   },
 
     --**Germany**--
