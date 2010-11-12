@@ -143,11 +143,11 @@ function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
 end
 
 function gadget:TeamDied(teamID)
-	infantry[teamID] = nil
-	iIndices[teamID] = nil
+	infantry[teamID] = {}
+	iIndices[teamID] = {}
 	iLengths[teamID] = 0
-	ammoSuppliers[teamID] = nil
-	aIndices[teamID] = nil
+	ammoSuppliers[teamID] = {}
+	aIndices[teamID] = {}
 	aLengths[teamID] = 0
 end
 

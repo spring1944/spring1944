@@ -292,8 +292,8 @@ end
 
 
 function gadget:TeamDied(teamID)
-	ammoSuppliers[teamID] = nil
-	aIndices[teamID] = nil
+	ammoSuppliers[teamID] = {}
+	aIndices[teamID] = {}
 	aLengths[teamID] = 0
 end
 
