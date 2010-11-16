@@ -23,7 +23,7 @@
   lineofsight=1;
   model=Bomb_Tiny.S3O;
   noSelfDamage=1;
-  range=225;
+  range=245;
   reloadTime=15;
   rendertype=4;
   rgbColor=0.5 0.5 0.0;
