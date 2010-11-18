@@ -12,7 +12,7 @@ end
 
 -- function localisations
 -- Synced Read
-local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
+local GetUnitsInSphere			= Spring.GetUnitsInSphere
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetUnitAllyTeam			= Spring.GetUnitAllyTeam
 local ValidUnitID				= Spring.ValidUnitID
@@ -38,7 +38,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	
 	if not fearID then return false end
   
-	local unitsAtSpot = GetUnitsInCylinder(px, pz, cp.fearaoe)
+	local unitsAtSpot = GetUnitsInSphere(px, py, pz, cp.fearaoe)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
 	if ValidUnitID(ownerID) and (cp.howitzer or cp.infgun) then
