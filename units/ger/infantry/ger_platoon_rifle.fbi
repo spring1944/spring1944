@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1930;
+  buildCostMetal=1830;
   buildPic=GERRifle.png;
-  buildTime=1930;
+  buildTime=1830;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

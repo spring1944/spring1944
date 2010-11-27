@@ -26,7 +26,7 @@
   lineofsight=1;
   movingAccuracy=7111;
   noSelfDamage=1;
-  range=770;
+  range=850;
   reloadTime=2.55;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
@@ -68,7 +68,7 @@
   lineofsight=1;
   movingAccuracy=7111;
   noSelfDamage=1;
-  range=945;
+  range=1040;
   reloadTime=2.55;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;

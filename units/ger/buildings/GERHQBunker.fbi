@@ -25,7 +25,7 @@
     flagCapRate=10;
     hq=1;
     refillamount=1e+06;
-    supplyRange=1000;
+    supplyRange=500;
   }
   energyStorage=0.01;
   explodeAs=Huge_Explosion;
