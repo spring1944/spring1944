@@ -2,6 +2,13 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 local options = {
+	--mandatory descriptive text
+	{
+		key 	= "description",
+		type	= "string",
+		desc	= "basic html allowed",
+		def 	= "<h1>Battle for that other place</h1><p>some other text</p>",
+	},
     {
 	key    = "ai_team_ids",
 	name   = "AI Teams",

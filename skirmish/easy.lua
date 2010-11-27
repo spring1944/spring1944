@@ -3,6 +3,13 @@
 --------------------------------------------------------------------------------
 local options = {
 
+	--mandatory descriptive text
+	{
+		key 	= "description",
+		type	= "string",
+		desc	= "basic html allowed",
+		def 	= "<h1>Battle for Jugahut</h1><p>some other text</p>",
+	},
 	--this is mandatory, min. 1 listitem
     {
 	key    = "ai_team_ids",
