@@ -7,8 +7,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=5250;
-  buildTime=5250;
+  buildCostMetal=4725;
+  buildTime=4725;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GBRSexton_Destroyed;
@@ -23,7 +23,7 @@
     hasturnbutton=1;
     lowammolevel=7;
     maxammo=21;
-    weaponcost=20;
+    weaponcost=18;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;

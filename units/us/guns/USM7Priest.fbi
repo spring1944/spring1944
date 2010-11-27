@@ -7,8 +7,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=5250;
-  buildTime=5250;
+  buildCostMetal=4500;
+  buildTime=4500;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=USM7Priest_Destroyed;
@@ -23,7 +23,7 @@
     hasturnbutton=1;
     lowammolevel=4;
     maxammo=13;
-    weaponcost=35;
+    weaponcost=30;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;

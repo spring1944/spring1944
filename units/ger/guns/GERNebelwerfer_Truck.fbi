@@ -15,7 +15,7 @@
   [customParams] {
     lowammolevel=1;
     maxammo=1;
-    weaponcost=405;
+    weaponcost=360;
     weaponswithammo=0;
   }
   explodeAs=Vehicle_Explosion_Sm;

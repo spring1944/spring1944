@@ -7,8 +7,8 @@
   airSightDistance=2500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=5250;
-  buildTime=5250;
+  buildCostMetal=4200;
+  buildTime=4200;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   corpse=GERWespe_Destroyed;
@@ -23,7 +23,7 @@
     hasturnbutton=1;
     lowammolevel=2;
     maxammo=6;
-    weaponcost=35;
+    weaponcost=30;
     weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Med;

@@ -17,7 +17,7 @@
     hasturnbutton=1;
     lowammolevel=1;
     maxammo=4;
-    weaponcost=8;
+    weaponcost=12;
     weaponswithammo=1;
     infgun=1;
   }
