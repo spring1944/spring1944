@@ -17,7 +17,6 @@ else
 --	UNSYNCED
 local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
 local sides = {"gbr", "ger", "us", "rus"} -- this is unpleasant
-local drawCount = 0
 
 local function PreloadUnitTexture(unitName)
 	gl.PushMatrix()
@@ -29,20 +28,17 @@ local function PreloadUnitTexture(unitName)
 end
 
 function gadget:DrawWorld()
-	if(drawCount == 0) then
-		PreloadUnitTexture("flag")
-		for _, side in pairs(sides) do
-			local startUnit = Spring.GetSideData(side)
-			local spawnList = hqDefs[startUnit]
-			for i = 1, #spawnList.units do
-				local unitName = spawnList.units[i]
-				PreloadUnitTexture(unitName)
-			end
+	PreloadUnitTexture("flag")
+	for _, side in pairs(sides) do
+		local startUnit = Spring.GetSideData(side)
+		local spawnList = hqDefs[startUnit]
+		for i = 1, #spawnList.units do
+			local unitName = spawnList.units[i]
+			PreloadUnitTexture(unitName)
 		end
-		drawCount = 1
-	else
-		gadgetHandler:RemoveGadget()
 	end
+	Spring.Echo("active")
+	gadgetHandler:RemoveGadget()
 end
 
 end
