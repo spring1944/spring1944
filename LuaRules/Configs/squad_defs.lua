@@ -343,18 +343,6 @@ local squadDefs = {
 		"gerobserv",
 	},  
 
-	["ger_platoon_volkssturm"] = 
-	{
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-		"gervolkssturm",
-	},
-
 	 -----------------------------
 	 -- RUS Platoons and Squads --
 	 -----------------------------
@@ -407,20 +395,6 @@ local squadDefs = {
 		"rusppsh",
 		"rusppsh",
 		"rusppsh",
-	},
-
-	 ["rus_platoon_guards"] =
-	{
-		"rusguardsdp",
-		"rusguardsrifle",
-  		"rusguardsrifle",
-  		"rusguardsrifle",
-  		"rusguardsrifle",
-  		"rusguardsrifle",
-  		"rusguardsrifle",
-  		"rusguardsrifle",
-		"rusguardsppsh",
-		"rusguardsppsh",
 	},
 	
 	["rus_platoon_big_assault"] =
