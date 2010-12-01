@@ -13,7 +13,6 @@ local anyBarracks = {
   "gbrbarracks",
   "gerbarracks",
   "gerbarracksbunker",
-  "gerbarracksvolkssturm",
   "rusbarracks",
   "usbarracks",
 }
