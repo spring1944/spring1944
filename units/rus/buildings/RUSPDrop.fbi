@@ -23,7 +23,7 @@
   maxWaterDepth=0;
   minCloakDistance=300;
   objectName=RUSPDrop.S3O;
-  script=rus_sortie_recon.cob;
+  script=null.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
