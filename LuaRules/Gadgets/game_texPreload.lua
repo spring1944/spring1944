@@ -37,7 +37,6 @@ function gadget:DrawWorld()
 			PreloadUnitTexture(unitName)
 		end
 	end
-	Spring.Echo("active")
 	gadgetHandler:RemoveGadget()
 end
 
