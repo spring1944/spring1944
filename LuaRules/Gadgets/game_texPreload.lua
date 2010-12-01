@@ -2,7 +2,7 @@ function gadget:GetInfo()
 	return {
 		name      = "Texture preloader",
 		desc      = "Loads select models/skins during the pre-game time instead of at game start",
-		author    = "Gnome",
+		author    = "Gnome, FLOZi",
 		date      = "October 2008",
 		license   = "PD",
 		layer     = -math.huge,
@@ -15,20 +15,31 @@ if(gadgetHandler:IsSyncedCode()) then
 
 else
 --	UNSYNCED
+local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
+local sides = {"gbr", "ger", "us", "rus"} -- this is unpleasant
+local drawCount = 0
 
-function gadget:DrawWorld()
-	local seconds = Spring.GetGameSeconds()
-	if(seconds == 0) then
-		gl.PushMatrix()
+local function PreloadUnitTexture(unitName)
+	gl.PushMatrix()
 		gl.Translate(100, -1000, 100)
 		gl.Color(1,1,1,0)
-		gl.UnitShape(UnitDefNames["gerhqbunker"].id,0)
-		gl.UnitShape(UnitDefNames["gbrhq"].id,0)
-		gl.UnitShape(UnitDefNames["ushq"].id,0)
-		gl.UnitShape(UnitDefNames["flag"].id,0)
-		gl.UnitShape(UnitDefNames["gerstorage"].id,0)
+		gl.UnitShape(UnitDefNames[unitName].id,0)
 		gl.Color(1,1,1,1)
-		gl.PopMatrix()
+	gl.PopMatrix()
+end
+
+function gadget:DrawWorld()
+	if(drawCount == 0) then
+		PreloadUnitTexture("flag")
+		for _, side in pairs(sides) do
+			local startUnit = Spring.GetSideData(side)
+			local spawnList = hqDefs[startUnit]
+			for i = 1, #spawnList.units do
+				local unitName = spawnList.units[i]
+				PreloadUnitTexture(unitName)
+			end
+		end
+		drawCount = 1
 	else
 		gadgetHandler:RemoveGadget()
 	end
