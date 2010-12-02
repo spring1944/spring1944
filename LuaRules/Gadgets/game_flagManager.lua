@@ -52,6 +52,7 @@ local DEBUG	= false -- enable to print out flag locations in profile format
 -- variables
 local metalMap = {}
 local maxMetal = 0
+local totalMetal = 0
 local spots = {}
 local spotCount	= 0
 local metalData = {}
@@ -118,7 +119,8 @@ local function AnalyzeMetalMap()
 			local mx = mx_i * GRID_SIZE
 			local mz = mz_i * GRID_SIZE
 			local _, curMetal = GetGroundInfo(mx, mz)
-			curMetal = floor(curMetal * 100)
+			totalMetal = totalMetal + curMetal
+			--curMetal = floor(curMetal * 100)
 			metalMap[mx_i][mz_i] = curMetal
 			if (curMetal > maxMetal) then
 				maxMetal = curMetal
@@ -184,7 +186,7 @@ function PlaceFlag(spot)
 	SetUnitAlwaysVisible(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
 	if ((tonumber(modOptions.map_command_per_player) or -1) >= 0) then
-		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / GG.Metal.totalMetal
+		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / totalMetal
 		SetUnitMetalExtraction(newFlag, extraction)
 	end
 end
