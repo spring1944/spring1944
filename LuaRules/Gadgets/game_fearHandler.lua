@@ -16,7 +16,7 @@ local GetCOBScriptID			= Spring.GetCOBScriptID
 local GetUnitAllyTeam			= Spring.GetUnitAllyTeam
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetUnitIsDead 			= Spring.GetUnitIsDead
-local GetUnitsInSphere			= Spring.GetUnitsInSpher
+local GetUnitsInSphere			= Spring.GetUnitsInSphere
 local ValidUnitID				= Spring.ValidUnitID
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
