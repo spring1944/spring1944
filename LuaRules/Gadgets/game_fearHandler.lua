@@ -44,6 +44,7 @@ local function UpdateSuppression(unitID)
 	end
 end
 
+
 function gadget:UnitCreated(unitID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
 	if (scriptID) then 
@@ -52,9 +53,11 @@ function gadget:UnitCreated(unitID)
 	end
 end
 
+
 function gadget:UnitDestroyed(unitID)
 	scriptIDs[unitID] = nil
 end
+
 
 function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID, attackerID, attackerDefID, attackerTeam)
 	if scriptIDs[unitID] then
@@ -66,6 +69,7 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 		end
 	end
 end
+
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local wd = WeaponDefs[weaponID]
@@ -117,6 +121,14 @@ function gadget:Initialize()
 	end
 end
 
+-- Until we move to LUS or someone bothers to update the COBs; keep polling in order to reset fear levels due to recovery
+function gadget:GameFrame(n)
+	if (n % (1.5*30) < 0.1) then
+		for unitID, funcID in pairs(scriptIDs) do
+			UpdateSuppression(unitID)
+		end
+	end
+end
 else
 -- UNSYNCED
 end
