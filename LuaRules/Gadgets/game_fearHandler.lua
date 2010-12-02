@@ -12,7 +12,7 @@ end
 
 -- function localisations
 -- Synced Read
-local GetCOBScriptID			= Spring.GetCOBScriptIDe
+local GetCOBScriptID			= Spring.GetCOBScriptID
 local GetUnitAllyTeam			= Spring.GetUnitAllyTeam
 local GetUnitDefID       		= Spring.GetUnitDefID
 local GetUnitIsDead 			= Spring.GetUnitIsDead
