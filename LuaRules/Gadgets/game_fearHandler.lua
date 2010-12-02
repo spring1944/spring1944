@@ -12,16 +12,21 @@ end
 
 -- function localisations
 -- Synced Read
-local GetUnitsInSphere			= Spring.GetUnitsInSphere
-local GetUnitDefID       		= Spring.GetUnitDefID
+local GetCOBScriptID			= Spring.GetCOBScriptIDe
 local GetUnitAllyTeam			= Spring.GetUnitAllyTeam
+local GetUnitDefID       		= Spring.GetUnitDefID
+local GetUnitIsDead 			= Spring.GetUnitIsDead
+local GetUnitsInSphere			= Spring.GetUnitsInSpher
 local ValidUnitID				= Spring.ValidUnitID
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
+local SetUnitRulesParam 		= Spring.SetUnitRulesParam
 -- constants
 
 -- variables
+local scriptIDs = {}
+local fearLevels = {}
 
 local targets = {}
 local tLength = 0
@@ -31,9 +36,40 @@ local blockAllyTeams = {}
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
+local function UpdateSuppression(unitID)
+	if not GetUnitIsDead(unitID) then
+		local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
+		fearLevels[unitID] = currFear
+		SetUnitRulesParam(unitID, "suppress", currFear)
+	end
+end
+
+function gadget:UnitCreated(unitID)
+	local scriptID = GetCOBScriptID(unitID, "luaFunction")
+	if (scriptID) then 
+		SetUnitRulesParam(unitID, "suppress", 0)
+		scriptIDs[unitID] = scriptID
+	end
+end
+
+function gadget:UnitDestroyed(unitID)
+	scriptIDs[unitID] = nil
+end
+
+function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID, attackerID, attackerDefID, attackerTeam)
+	if scriptIDs[unitID] then
+		local wd = WeaponDefs[weaponID]
+		local cp = wd.customParams
+		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
+		if cp and cp.damagetype == "smallarms" and not cp.fearid then
+			UpdateSuppression(unitID)
+		end
+	end
+end
+
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
-	local weapDef = WeaponDefs[weaponID]
-	local cp = weapDef.customParams
+	local wd = WeaponDefs[weaponID]
+	local cp = wd.customParams
 	local fearID = cp.fearid
 	
 	if not fearID then return false end
@@ -59,7 +95,8 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	for i = 1, tLength do
 		local unitID = targets[i]
 		if unitID ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitID)] then
-			Spring.CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
+			CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
+			UpdateSuppression(unitID)
 		end
 	end
 	-- reset tables
