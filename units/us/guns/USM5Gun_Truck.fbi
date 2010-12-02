@@ -14,7 +14,7 @@
   [customParams] {
     lowammolevel=1;
     maxammo=4;
-    weaponcost=16;
+    weaponcost=14;
     weaponswithammo=0;
   }
   energyMake=0;
