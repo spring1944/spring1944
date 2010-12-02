@@ -161,6 +161,8 @@ local function SpawnStartUnit(teamID)
 	if (startUnit and startUnit ~= "") then
 		-- spawn the specified start unit
 		local x,y,z = GetTeamStartPosition(teamID)
+		-- Erase start position marker while we're here
+		Spring.MarkerErasePosition(x or 0, y or 0, z or 0)
 		-- snap to 16x16 grid
 		x, z = 16*math.floor((x+8)/16), 16*math.floor((z+8)/16)
 		y = GetGroundHeight(x, z)
