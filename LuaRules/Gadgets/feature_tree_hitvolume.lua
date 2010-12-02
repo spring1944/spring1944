@@ -36,29 +36,7 @@ function gadget:Initialize()
 					1 -- y-axis
 					)
 			--debug
-			--Spring.Echo("tree changed")
+			--Spring.Echo("tree changed: .. name")
 		end
-	end
-end
-
-function gadget:FeatureCreated(featureID)
-	local featureDef = FeatureDefs[GetFeatureDefID(featureID)]
-	local tooltip = featureDef.tooltip
-	local height = featureDef.radius
-	if not (
-			strFind(tooltip, "Dead") 
-			or strFind(tooltip, "Abandoned") 
-			or strFind(tooltip, "Destroyed") 
-			or strFind(tooltip, "Debris")
-			) then
-		SetFeatureCollisionVolumeData(featureID, 
-				horizScale, height, horizScale, --scales
-				0, 0, 0, --offset
-				1, -- cylinder
-				1, -- ray-trace
-				1 -- y-axis
-				)
-		--debug
-		--Spring.Echo("tree changed")
 	end
 end
