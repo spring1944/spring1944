@@ -24,7 +24,7 @@
   startVelocity=10;
   targetMoveError=0.1;
   tolerance=6000;
-  trajectoryHeight=0.1;
+  trajectoryHeight=0;
   turret=1;
   weaponAcceleration=2000;
   weaponTimer=1;
