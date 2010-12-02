@@ -112,23 +112,18 @@ end
 local magic = '\001'
 
 function widget:WorldTooltip(ttType, data1, data2, data3)
---  do return end
-  if (ttType == 'unit') then
-    return magic .. 'unit #' .. data1
-  elseif (ttType == 'feature') then
-    return magic .. 'feature #' .. data1
-  elseif (ttType == 'ground') then
-    return magic .. ('ground @ %.1f %.1f %.1f'):format(data1, data2, data3)
-  elseif (ttType == 'selection') then
-    return magic .. 'selected ' .. spGetSelectedUnitsCount()
-  else
-    return 'WTF? ' .. '\'' .. tostring(ttType) .. '\''
+  if (ttType == 'feature') then
+    local fColor = "\255\255\128\255" 
+    local fd = FeatureDefs[Spring.GetFeatureDefID(data1)]
+    local description = fd.tooltip
+    if description then return fColor .. description end
+    return fColor .. fd.name
   end
 end
 
 
 if (true) then
-  widget.WorldTooltip = nil
+  --widget.WorldTooltip = nil
 end
 
 
