@@ -66,7 +66,7 @@ local fbkTop      = { 0.06,0.06,0.06,featureBarAlpha }
 local fhpcolormap = { {0.8, 0.0, 0.0, featureBarAlpha},  {0.8, 0.6, 0.0, featureBarAlpha}, {0.0,0.70,0.0,featureBarAlpha} }
 
 local barColors = {
-  ammo = { 1.00,0.50,0.00,barAlpha },
+  ammo = { 1.00,1.00,0.00,barAlpha },
   build   = { 0.75,0.75,0.75,barAlpha },
   reload  = { 0.00,0.60,0.60,barAlpha },
   fear    = { 0.80,0.10,0.10,barAlpha },
@@ -527,7 +527,7 @@ do
       --// AMMO
       if (ci.ammo) then
         local ammo = GetUnitRulesParam(unitID,"ammo")
-        if (ammo) then
+        if (ammo and ammo < ci.ammo) then
 		  ammo = (ammo / ci.ammo)
           AddBar("ammo",ammo,"ammo",(fullText and floor(ammo*100)..'%') or '')
         end
