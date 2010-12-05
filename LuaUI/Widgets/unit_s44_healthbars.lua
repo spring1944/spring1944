@@ -70,7 +70,8 @@ local barColors = {
   build   = { 0.75,0.75,0.75,barAlpha },
   reload  = { 0.00,0.60,0.60,barAlpha },
   fear    = { 0.80,0.10,0.10,barAlpha },
-
+  transport = { 1.00,0.50,0.00,barAlpha },
+  
   resurrect = { 1.00,0.50,0.00,featureBarAlpha },
   reclaim   = { 0.75,0.75,0.75,featureBarAlpha },
 }
@@ -440,6 +441,8 @@ do
   local glPopMatrix     = gl.PopMatrix
   local glBillboard     = gl.Billboard
   local GetUnitIsStunned     = Spring.GetUnitIsStunned
+  local GetUnitDefID         = Spring.GetUnitDefID
+  local GetUnitIsTransporting= Spring.GetUnitIsTransporting
   local GetUnitHealth        = Spring.GetUnitHealth
   local GetUnitWeaponState   = Spring.GetUnitWeaponState
   local GetUnitShieldState   = Spring.GetUnitShieldState
@@ -466,6 +469,7 @@ do
 		fear		  = ud.customParams.feartarget,
         reloadTime    = ud.reloadTime,
         primaryWeapon = ud.primaryWeapon-1,
+		transCap      = ud.transportCapacity,
       }
     end
     ci = customInfo[unitDefID]
@@ -541,6 +545,22 @@ do
           AddBar("fear",fear,"fear",(fullText and floor(fear*100)..'%') or '')
         end
       end
+	  
+	  --// TRANSPORT
+	  if (ci.transCap) then
+	    local passengers = GetUnitIsTransporting(unitID)
+		if passengers and #passengers > 0 then
+		  local totalMass = 0
+		  for i = 1, #passengers do
+		    local passDefID = GetUnitDefID(passengers[i])
+		    totalMass = totalMass + UnitDefs[passDefID].mass
+		  end
+		  if totalMass > 0 then
+		    totalMass = (totalMass / UnitDefs[unitDefID].transportMass)
+		    AddBar("transport",totalMass,"transport",(fullText and floor(totalMass*100)..'%') or '')
+		  end
+		end
+	  end
 	 
 	if (barsN>0) then
       glPushMatrix()
