@@ -61,7 +61,7 @@ local function DrawBoxes(number)
 	gl.Color({ 0, 0, 0, 0.65 })
 	X_MIN = POSITION_X*vsx-0.5*number*ICON_SIZE_X
 	X_MAX = POSITION_X*vsx+0.5*number*ICON_SIZE_X
-	Y_MIN = 128 + 16--POSITION_Y*vsy+0.5*ICON_SIZE_Y
+	Y_MIN = 64 + 16--POSITION_Y*vsy+0.5*ICON_SIZE_Y
 	Y_MAX = Y_MIN + ICON_SIZE_Y--POSITION_Y*vsy-0.5*ICON_SIZE_Y
 	local X1 = X_MIN
 	local ct = 0

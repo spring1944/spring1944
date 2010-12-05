@@ -1,21 +1,8 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  file:    gui_selbuttons.lua
---  brief:   adds a selected units button control panel
---  author:  Dave Rodgers
---
---  Copyright (C) 2007.
---  Licensed under the terms of the GNU GPL, v2 or later.
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 function widget:GetInfo()
   return {
     name      = "1944 Selection Buttons",
-    desc      = "Buttons for the current selection (incomplete)",
-    author    = "trepan, edited for S44 by FLOZi",
+    desc      = "Buttons for the current selection or transport passengers",
+    author    = "trepan (D. Rodgers), edited for S44 by FLOZi (C. Lawrence)",
     date      = "Jan 8, 2007",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
@@ -26,16 +13,8 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
--- Automatically generated local definitions
-
-local GL_DEPTH_BUFFER_BIT      = GL.DEPTH_BUFFER_BIT
-local GL_FILL                  = GL.FILL
-local GL_FRONT_AND_BACK        = GL.FRONT_AND_BACK
-local GL_LINE                  = GL.LINE
-local GL_LINE_LOOP             = GL.LINE_LOOP
-local GL_ONE                   = GL.ONE
-local GL_ONE_MINUS_SRC_ALPHA   = GL.ONE_MINUS_SRC_ALPHA
-local GL_SRC_ALPHA             = GL.SRC_ALPHA
+-- localisations
+-- OpenGL
 local glBeginEnd               = gl.BeginEnd
 local glBlending               = gl.Blending
 local glClear                  = gl.Clear
@@ -60,36 +39,40 @@ local glTranslate              = gl.Translate
 local glUnitDef                = gl.UnitDef
 local glUnitShape              = gl.UnitShape
 local glVertex                 = gl.Vertex
+
+-- Synced Read
+local spGetTeamUnitsSorted     = Spring.GetTeamUnitsSorted
+local spGetUnitDefDimensions   = Spring.GetUnitDefDimensions
+local spGetUnitDefID           = Spring.GetUnitDefID
+local spGetUnitIsTransporting  = Spring.GetUnitIsTransporting
+
+-- Unsynced Read
 local spGetModKeyState         = Spring.GetModKeyState
 local spGetMouseState          = Spring.GetMouseState
 local spGetMyTeamID            = Spring.GetMyTeamID
 local spGetSelectedUnits       = Spring.GetSelectedUnits
 local spGetSelectedUnitsCounts = Spring.GetSelectedUnitsCounts
 local spGetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
-local spGetTeamUnitsSorted     = Spring.GetTeamUnitsSorted
-local spGetUnitDefDimensions   = Spring.GetUnitDefDimensions
+
+-- Unsynced Ctrl
 local spSelectUnitArray        = Spring.SelectUnitArray
 local spSelectUnitMap          = Spring.SelectUnitMap
 local spSendCommands           = Spring.SendCommands
 
+-- Constants
+local GL_DEPTH_BUFFER_BIT      = GL.DEPTH_BUFFER_BIT
+local GL_FILL                  = GL.FILL
+local GL_FRONT_AND_BACK        = GL.FRONT_AND_BACK
+local GL_LINE                  = GL.LINE
+local GL_LINE_LOOP             = GL.LINE_LOOP
+local GL_ONE                   = GL.ONE
+local GL_ONE_MINUS_SRC_ALPHA   = GL.ONE_MINUS_SRC_ALPHA
+local GL_SRC_ALPHA             = GL.SRC_ALPHA
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-
+-- Variables
 include("colors.h.lua")
 
 local vsx, vsy = widgetHandler:GetViewSizes()
-function widget:ViewResize(viewSizeX, viewSizeY)
-  vsx = viewSizeX
-  vsy = viewSizeY
-end
-
-
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
---
---  Selection Icons (rough around the edges)
---
 
 local useModels = false
 
@@ -109,60 +92,41 @@ local rectMinY = 0
 local rectMaxY = 0
 
 
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-
-function widget:DrawScreen()
-  unitCounts = spGetSelectedUnitsCounts()
-  unitTypes = unitCounts.n;
-  if (unitTypes <= 0) then
-    countsTable = {}
-    activePress = false
-    currentDef  = nil
-    return
+-- Local Functions
+local function SortedUnits()
+  local selUnits = spGetSelectedUnits()
+  if (selUnits.n ~= 1) then
+    return spGetSelectedUnitsCounts() --{ n = 0 }
   end
-  
-  SetupDimensions(unitTypes)
-
-  -- unit model rendering uses the depth-buffer
-  glClear(GL_DEPTH_BUFFER_BIT)
-
-  local x,y,lb,mb,rb = spGetMouseState()
-  local mouseIcon = MouseOverIcon(x, y)
-
-  -- draw the buildpics
-  unitCounts.n = nil  
-  local icon = 0
-  for udid,count in pairs(unitCounts) do
-    if (useModels) then
-      DrawUnitDefModel(udid, icon, count)
-    else
-      DrawUnitDefTexture(udid, icon, count)
-    end
-      
-    if (icon == mouseIcon) then
-      currentDef = UnitDefs[udid]
-    end
-    icon = icon + 1
+  local transID = selUnits[1]
+  local units = spGetUnitIsTransporting(transID)
+  if (units == nil) then
+    return spGetSelectedUnitsCounts() --{ n = 0 }
   end
-
-  -- draw the highlights
-  if (not widgetHandler:InTweakMode() and (mouseIcon >= 0)) then
-    if (lb or mb or rb) then
-      DrawIconQuad(mouseIcon, { 1, 0, 0, 0.333 })  --  red highlight
-    else
-      DrawIconQuad(mouseIcon, { 0, 0, 1, 0.333 })  --  blue highlight
+  local typed = {}
+  local typeCount = 0
+  for _,uid in ipairs(units) do
+    local udid = spGetUnitDefID(uid)
+    if (udid) then
+      if (typed[udid] == nil) then
+        typed[udid] = 1
+        typeCount = typeCount + 1
+      else
+        typed[udid] = typed[udid] + 1
+      end
     end
   end
+  typed.n = typeCount
+  return typed, transID
 end
 
-
+-- Setup Functions
 function SetupDimensions(count)
   local xmid = vsx * 0.5
   local width = math.floor(iconSizeX * count)
   rectMinX = math.floor(xmid - (0.5 * width))
   rectMaxX = math.floor(xmid + (0.5 * width))
-  rectMinY = math.floor(0)
+  rectMinY = math.floor(0) --floor(0 + iconSizeY * 2)
   rectMaxY = math.floor(rectMinY + iconSizeY)
 end
 
@@ -245,7 +209,7 @@ local function SetupBackgroundColor(ud)
   end
 end
 
-
+-- Draw Functions
 function DrawUnitDefModel(unitDefID, iconPos, count)
   local xmin = math.floor(rectMinX + (iconSizeX * iconPos))
   local xmax = xmin + iconSizeX
@@ -330,7 +294,7 @@ function DrawUnitDefTexture(unitDefID, iconPos, count)
 
   local ud = UnitDefs[unitDefID] 
 
-  glColor(1, 1, 1)
+  --glColor(1, 1, 1)
   glTexture('#' .. unitDefID)
   glTexRect(xmin, ymin, xmax, ymax)
   glTexture(false)
@@ -359,19 +323,7 @@ function DrawIconQuad(iconPos, color)
   glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 end
 
-
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-
-function widget:MousePress(x, y, button)
-  mouseIcon = MouseOverIcon(x, y)
-  activePress = (mouseIcon >= 0)
-  return activePress
-end
-
-
--------------------------------------------------------------------------------
-
+-- Mouse functions
 local function LeftMouseButton(unitDefID, unitTable)
   local alt, ctrl, meta, shift = spGetModKeyState()
   if (not ctrl) then
@@ -422,7 +374,133 @@ local function RightMouseButton(unitDefID, unitTable)
 end
 
 
--------------------------------------------------------------------------------
+function MouseOverIcon(x, y)
+  if (unitTypes <= 0) then return -1 end
+  if (x < rectMinX)   then return -1 end
+  if (x > rectMaxX)   then return -1 end
+  if (y < rectMinY)   then return -1 end
+  if (y > rectMaxY)   then return -1 end
+
+  local icon = math.floor((x - rectMinX) / iconSizeX)
+  -- clamp the icon range
+  if (icon < 0) then
+    icon = 0
+  end
+  if (icon >= unitTypes) then
+    icon = (unitTypes - 1)
+  end
+  return icon
+end
+
+
+-- Call Ins
+
+function widget:DrawScreen()
+  unitCounts, transID = SortedUnits()--spGetSelectedUnitsCounts()
+  unitTypes = unitCounts.n;
+  if transID then unitTypes = unitTypes + 1 end
+  if (unitTypes <= 0) then
+    countsTable = {}
+    activePress = false
+    currentDef  = nil
+    return
+  end
+  
+  SetupDimensions(unitTypes)
+
+  -- unit model rendering uses the depth-buffer
+  glClear(GL_DEPTH_BUFFER_BIT)
+
+  local x,y,lb,mb,rb = spGetMouseState()
+  local mouseIcon = MouseOverIcon(x, y)
+
+  -- draw the buildpics
+  unitCounts.n = nil  
+  local icon = 0
+  -- draw transporter first
+  if transID then
+    local udid = spGetUnitDefID(transID)
+    if (useModels) then
+      DrawUnitDefModel(udid, icon, 1)
+    else
+      DrawUnitDefTexture(udid, icon, 1)
+    end
+	
+	if (icon == mouseIcon) then
+      currentDef = UnitDefs[udid]
+    end
+    icon = icon + 1
+	glColor(0.5, 0.5, 0.5, 0.8)
+  else -- This block is all rather ugly
+    local transCount = {}
+	local units = spGetSelectedUnits()
+	for _,uid in ipairs(units) do
+      local udid = spGetUnitDefID(uid)
+      if (udid) then
+	    local transported = spGetUnitIsTransporting(uid)
+		if transported then
+			if not transCount[udid] then 
+			  transCount[udid] = #transported
+			else 
+			  transCount[udid] = transCount[udid] + #transported
+			end
+		end
+	  end
+	end
+	for udid,count in pairs(unitCounts) do
+	  if transCount[udid] and transCount[udid] > 0 then
+	    unitCounts[udid] = count .. "(+" .. transCount[udid] .. ")"
+	  end
+	end
+  end
+  for udid,count in pairs(unitCounts) do
+    if (useModels) then
+      DrawUnitDefModel(udid, icon, count)
+    else
+      DrawUnitDefTexture(udid, icon, count)
+    end
+      
+    if (icon == mouseIcon) then
+      currentDef = UnitDefs[udid]
+    end
+    icon = icon + 1
+  end
+  glColor(1,1,1,1)
+  -- draw the highlights
+  if (not widgetHandler:InTweakMode() and (mouseIcon >= 0)) then
+    if (lb or mb or rb) then
+      DrawIconQuad(mouseIcon, { 1, 0, 0, 0.333 })  --  red highlight
+    else
+      DrawIconQuad(mouseIcon, { 0, 0, 1, 0.333 })  --  blue highlight
+    end
+  end
+end
+
+
+function widget:IsAbove(x, y)
+  local icon = MouseOverIcon(x, y)
+  if (icon < 0) then
+    return false
+  end
+  return true
+end
+
+
+function widget:GetTooltip(x, y)
+  local ud = currentDef
+  if (not ud) then
+    return ''
+  end
+  return ud.humanName .. ' - ' .. ud.tooltip
+end
+
+
+function widget:MousePress(x, y, button)
+  mouseIcon = MouseOverIcon(x, y)
+  activePress = (mouseIcon >= 0)
+  return activePress
+end
+
 
 function widget:MouseRelease(x, y, button)
   if (not activePress) then
@@ -466,44 +544,9 @@ function widget:MouseRelease(x, y, button)
 end
 
 
-function MouseOverIcon(x, y)
-  if (unitTypes <= 0) then return -1 end
-  if (x < rectMinX)   then return -1 end
-  if (x > rectMaxX)   then return -1 end
-  if (y < rectMinY)   then return -1 end
-  if (y > rectMaxY)   then return -1 end
-
-  local icon = math.floor((x - rectMinX) / iconSizeX)
-  -- clamp the icon range
-  if (icon < 0) then
-    icon = 0
-  end
-  if (icon >= unitTypes) then
-    icon = (unitTypes - 1)
-  end
-  return icon
+function widget:ViewResize(viewSizeX, viewSizeY)
+  vsx = viewSizeX
+  vsy = viewSizeY
 end
-
-
--------------------------------------------------------------------------------
-
-function widget:IsAbove(x, y)
-  local icon = MouseOverIcon(x, y)
-  if (icon < 0) then
-    return false
-  end
-  return true
-end
-
-
-function widget:GetTooltip(x, y)
-  local ud = currentDef
-  if (not ud) then
-    return ''
-  end
-  return ud.humanName .. ' - ' .. ud.tooltip
-end
-
-
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
