@@ -13,19 +13,18 @@ end
 
 -- function localisations
 -- Synced Read
-local GetUnitDefID				= Spring.GetUnitDefID
-local GetUnitMetalExtraction	= Spring.GetUnitMetalExtraction
-local GetUnitRulesParam			= Spring.GetUnitRulesParam
-local GetUnitTeam				= Spring.GetUnitTeam
+local GetUnitDefID						= Spring.GetUnitDefID
+local GetUnitRulesParam				=	Spring.GetUnitRulesParam
+local GetUnitTeam							= Spring.GetUnitTeam
 -- Synced Ctrl
 local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
-local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local SetUnitRulesParam				= Spring.SetUnitRulesParam
 
 -- constants
 local GAIA_TEAM_ID		= Spring.GetGaiaTeamID()
 local DEFAULT_OUTPUT 	= 0
 local MULTIPLIER_CAP	= 2
-local OUTPUT_BASE		= 1.025
+local OUTPUT_BASE			=	1.025
 
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
@@ -37,10 +36,11 @@ function gadget:GameFrame(t)
 
 	if t == 6 then
 		if GG['flags'][1]~=nil then
-			-- read from the unit, not the def, as modOptions.map_command_per_player changes the extraction level
-			DEFAULT_OUTPUT = GetUnitMetalExtraction(GG['flags'][1])
+			local flagDefID = GetUnitDefID(GG['flags'][1])
+			local flagUD = UnitDefs[flagDefID]
+			DEFAULT_OUTPUT = flagUD.extractsMetal
 		end
-		--Spring.Echo("Flag Default Output: " .. DEFAULT_OUTPUT)
+		Spring.Echo("Flag Default Output: " .. DEFAULT_OUTPUT)
 	end
 	
 	if (t % (60*30) < 0.1) and t > 6 then	-- every minute
