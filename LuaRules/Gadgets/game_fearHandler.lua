@@ -60,7 +60,7 @@ end
 
 
 function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID, attackerID, attackerDefID, attackerTeam)
-	if scriptIDs[unitID] then
+	if scriptIDs[unitID] and weaponID and weaponID > 0 then
 		local wd = WeaponDefs[weaponID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
