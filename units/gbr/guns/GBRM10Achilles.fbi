@@ -30,7 +30,7 @@
   footprintX=3;
   footprintZ=3;
   healthScale=0;
-  iconType=medtank;
+  iconType=selfprop;
   leaveTracks=1;
   mass=2960;
   maxDamage=2960;
