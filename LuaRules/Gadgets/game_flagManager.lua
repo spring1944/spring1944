@@ -11,6 +11,7 @@ function gadget:GetInfo()
 end
 
 -- function localisations
+local DelayCall 				= GG.Delay.DelayCall
 local floor						= math.floor
 -- Synced Read
 local AreTeamsAllied			= Spring.AreTeamsAllied
@@ -183,12 +184,18 @@ function PlaceFlag(spot)
 	end
 	
 	SetUnitNeutral(newFlag, true)
-	SetUnitAlwaysVisible(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
+	SetUnitAlwaysVisible(newFlag, true)
+	if modOptions and modOptions.always_visible_flags == "0" then
+		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
+		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
+	end
 	if ((tonumber(modOptions.map_command_per_player) or -1) >= 0) then
 		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / totalMetal
 		SetUnitMetalExtraction(newFlag, extraction)
 	end
+	
+	flagCapStatuses[newFlag] = {}
 end
 
 
@@ -201,42 +208,29 @@ function gadget:GamePreload()
 end
 
 
-function gadget:GameFrame(n)
+function gadget:GameStart()
 	-- FLAG PLACEMENT
-	if n == 5 then
-		if DEBUG then
-			Spring.Echo(PROFILE_PATH)
-		end
-		if not VFS.FileExists(PROFILE_PATH) then
-			for _, spot in pairs(spots) do
-				PlaceFlag(spot)
-			end
-		else -- load the flag positions from profile
-			Spring.Echo("Map Flag Profile found. Loading flag positions.")
-			spots = VFS.Include(PROFILE_PATH)
-			for _, spot in pairs(spots) do
-				PlaceFlag(spot)
-			end
-		end
-		GG['flags'] = flags
-
-	elseif n == 40 then
-		for i = 1, numFlags do
-			local flagID = flags[i]
-			if (modOptions) then
-				if (modOptions.always_visible_flags == "0") then
-					SetUnitAlwaysVisible(flagID, false)
-				end
-			else
-				SetUnitAlwaysVisible(flagID, false)
-			end
-			flagCapStatuses[flagID] = {}
-		end
-
+	if DEBUG then
+		Spring.Echo(PROFILE_PATH)
 	end
+	if not VFS.FileExists(PROFILE_PATH) then
+		for _, spot in pairs(spots) do
+			PlaceFlag(spot)
+		end
+	else -- load the flag positions from profile
+		Spring.Echo("Map Flag Profile found. Loading flag positions.")
+		spots = VFS.Include(PROFILE_PATH)
+		for _, spot in pairs(spots) do
+			PlaceFlag(spot)
+		end
+	end
+	GG['flags'] = flags
+end
 
+
+function gadget:GameFrame(n)
 	-- FLAG CONTROL
-	if n % 30 == 5 and n > 40 then
+	if n % 30 == 5 then -- every 5 seconds
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
 			local defendTotal = 0
