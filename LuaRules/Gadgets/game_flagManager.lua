@@ -230,7 +230,7 @@ end
 
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
-	if n % 30 == 5 then -- every 5 seconds
+	if n % 30 == 5 then -- every second with a 5 frame offset
 		for spotNum, flagID in pairs(flags) do
 			local flagTeamID = GetUnitTeam(flagID)
 			local defendTotal = 0
