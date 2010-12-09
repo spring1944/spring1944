@@ -21,16 +21,17 @@ local GetUnitTeam				= Spring.GetUnitTeam
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
 
 -- Synced Ctrl
-local CreateUnit				= Spring.CreateUnit
-local SetUnitNeutral			= Spring.SetUnitNeutral
-local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
-local TransferUnit				= Spring.TransferUnit
-local GiveOrderToUnit			= Spring.GiveOrderToUnit
 local CallCOBScript				= Spring.CallCOBScript
-local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local CreateUnit				= Spring.CreateUnit
+local GiveOrderToUnit			= Spring.GiveOrderToUnit
 local SetTeamRulesParam			= Spring.SetTeamRulesParam
-local SetUnitNoSelect			= Spring.SetUnitNoSelect
+local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
 local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
+local SetUnitNeutral			= Spring.SetUnitNeutral
+local SetUnitNoSelect			= Spring.SetUnitNoSelect
+local SetUnitResourcing			= Spring.SetUnitResourcing
+local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local TransferUnit				= Spring.TransferUnit
 
 -- constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -70,6 +71,7 @@ local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
+local metalMake = tonumber(modOptions.map_command_per_player) or -1
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
@@ -167,6 +169,9 @@ local function AnalyzeMetalMap()
 			}
 		end
 	end
+	if metalMake >= 0 then
+		metalMake = metalMake * (#teams - 1) / #spots
+	end
 end
 
 
@@ -190,9 +195,9 @@ function PlaceFlag(spot)
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
-	if ((tonumber(modOptions.map_command_per_player) or -1) >= 0) then
-		local extraction = tonumber(modOptions.map_command_per_player) * (#teams - 1) / totalMetal
-		SetUnitMetalExtraction(newFlag, extraction)
+	if metalMake then
+		SetUnitMetalExtraction(newFlag, 0, 0) -- remove extracted metal
+		SetUnitResourcing(newFlag, "umm", metalMake)
 	end
 	
 	flagCapStatuses[newFlag] = {}
