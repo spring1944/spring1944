@@ -4,7 +4,7 @@ function gadget:GetInfo()
 		desc = "Increases the output of flags according to how long they've been held",
 		author = "Nemo (B. Tyler), FLOZi (C. Lawrence)",
 		date = "2008-03-06",
-		license = "Public domain",
+		license = "GNU GPL v2",
 		layer = 1,
 		enabled = true
 	}

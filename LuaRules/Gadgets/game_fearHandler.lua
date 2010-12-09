@@ -4,7 +4,7 @@ function gadget:GetInfo()
 		desc      = "Lua Implementation of fear weapons causing suppression",
 		author    = "FLOZi",
 		date      = "13 October 2008", -- Happy Birthday Charlie!
-		license   = "GNU CPL v2",
+		license   = "GNU GPL v2",
 		layer     = 0,
 		enabled   = true
 	}

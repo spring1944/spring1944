@@ -4,7 +4,7 @@ function gadget:GetInfo()
 		desc      = "Loads select models/skins during the pre-game time instead of at game start",
 		author    = "Gnome, FLOZi",
 		date      = "October 2008",
-		license   = "PD",
+		license   = "GNU GPL v2",
 		layer     = -math.huge,
 		enabled   = true
 }
