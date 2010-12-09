@@ -195,7 +195,7 @@ function PlaceFlag(spot)
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
-	if metalMake then
+	if metalMake >= 0 then
 		SetUnitMetalExtraction(newFlag, 0, 0) -- remove extracted metal
 		SetUnitResourcing(newFlag, "umm", metalMake)
 	end
