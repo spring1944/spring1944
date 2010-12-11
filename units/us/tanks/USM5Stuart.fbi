@@ -21,6 +21,7 @@
     armor_rear=28;
     armor_side=28;
     armor_top=13;
+	blockfear=1;
     hasturnbutton=1;
     lowammolevel=9;
     maxammo=27;
