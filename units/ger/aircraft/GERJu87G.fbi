@@ -24,7 +24,7 @@
     enginesoundnr=12;
     feartarget=1;
     lowammolevel=1;
-    maxammo=24;
+    maxammo=36;
     proptexture=prop3.tga;
     weaponcost=-1;
     weaponswithammo=2;
@@ -75,13 +75,13 @@
   weapon1=bk37mmap;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=10;
-  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 -1 9;
 
   weapon2=bk37mmap;
   badTargetCategory2=SOFTVEH;
   maxAngleDif2=10;
-  onlyTargetCategory2=OPENVEH HARDVEH SHIP LARGESHIP;
+  onlyTargetCategory2=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir2=0 -1 9;
   weaponSlaveTo2=1;
 
