@@ -154,9 +154,9 @@ local upgradeDefs = {
 	usgunyard = {
 		{
 			into = 'usspyard',
-			mcost = 3000,
+			mcost = 4500,
 			ecost = 0,
-			time = 85,
+			time = 130,
 			buttonname = 'Upg: SP Guns',
 			name = 'Upgrade: Self Prop. Guns',
 			desc = 'Makes Self-Propelled Artillery available in this yard',
