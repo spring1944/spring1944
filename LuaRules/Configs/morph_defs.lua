@@ -58,7 +58,7 @@ local morphDefs = {
   {
     into = 'germg42_sandbag',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
     directional = true,
@@ -68,7 +68,7 @@ local morphDefs = {
   {
     into = 'germg42',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
   },
@@ -96,7 +96,7 @@ local morphDefs = {
   {
     into = 'usgimg_sandbag',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
     directional = true,
@@ -107,7 +107,7 @@ local morphDefs = {
   {
     into = 'usgimg',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
   },
@@ -116,7 +116,7 @@ local morphDefs = {
   {
     into = 'us101stmg_sandbag',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
     directional = true,
@@ -126,7 +126,7 @@ local morphDefs = {
   {
     into = 'us101stmg',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
   },
