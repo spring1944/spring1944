@@ -37,11 +37,9 @@ if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
 local function UpdateSuppression(unitID)
-	if not GetUnitIsDead(unitID) then
-		local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
-		fearLevels[unitID] = currFear
-		SetUnitRulesParam(unitID, "suppress", currFear)
-	end
+	local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
+	fearLevels[unitID] = currFear
+	SetUnitRulesParam(unitID, "suppress", currFear)
 end
 
 
@@ -64,7 +62,8 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 		local wd = WeaponDefs[weaponID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
-		if cp and cp.damagetype == "smallarms" and not cp.fearid then
+		-- ... but be sure not to update suppression for a dead unit
+		if cp and cp.damagetype == "smallarms" and not cp.fearid and not GetUnitIsDead(unitID) then
 			UpdateSuppression(unitID)
 		end
 	end
@@ -98,7 +97,8 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	
 	for i = 1, tLength do
 		local unitID = targets[i]
-		if unitID ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitID)] then
+		-- exactly how scriptIDs[unitID] can be nil at this point I am not sure, but it will crash without it
+		if unitID ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitID)] and scriptIDs[unitID] then
 			CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
 			UpdateSuppression(unitID)
 		end
