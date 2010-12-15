@@ -62,7 +62,7 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 		local wd = WeaponDefs[weaponID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
-		-- ... but be sure not to update suppression for a dead unit
+		-- ... but be sure not to update suppression for a dead unit (UnitDamaged is called before UnitDestroyed, so scriptIDs[unitID] is still valid!)
 		if cp and cp.damagetype == "smallarms" and not cp.fearid and not GetUnitIsDead(unitID) then
 			UpdateSuppression(unitID)
 		end
@@ -97,7 +97,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	
 	for i = 1, tLength do
 		local unitID = targets[i]
-		-- exactly how scriptIDs[unitID] can be nil at this point I am not sure, but it will crash without it
+		-- GetUnitInSphere can catch tombstoned units, so check that scriptIDs[unitID] is valid (unit is not dead)
 		if unitID ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitID)] and scriptIDs[unitID] then
 			CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
 			UpdateSuppression(unitID)
