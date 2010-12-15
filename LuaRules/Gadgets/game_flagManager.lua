@@ -11,7 +11,6 @@ function gadget:GetInfo()
 end
 
 -- function localisations
-local DelayCall 				= GG.Delay.DelayCall
 local floor						= math.floor
 -- Synced Read
 local AreTeamsAllied			= Spring.AreTeamsAllied
@@ -75,6 +74,9 @@ local metalMake = tonumber(modOptions.map_command_per_player) or -1
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+
+local DelayCall = GG.Delay.DelayCall
+
 local function round(num, idp)
   local mult = 10^(idp or 0)
   return floor(num * mult + 0.5) / mult
