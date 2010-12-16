@@ -29,14 +29,17 @@ local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
-
--- Remove the gadget is using map command per player
-if tonumber(modOptions.map_command_per_player) or -1 >= 0 then
-	gadgetHandler:RemoveGadget()
-end
 		
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
+
+function gadget:Initialize()
+	-- Remove the gadget if using map command per player
+	if tonumber(modOptions.map_command_per_player) or -1 >= 0 then
+		gadgetHandler:RemoveGadget()
+	end
+end
+
 local function OutputCalc(lifespan)
 	return DEFAULT_OUTPUT * OUTPUT_BASE ^ lifespan
 end
