@@ -14,7 +14,7 @@
   }
   energyUse=0;
   explodeAs=Flag;
-  extractsMetal=0.0002945;
+  extractsMetal=0.000265;
   footprintX=0;
   footprintZ=0;
   hideDamage=1;

@@ -23,7 +23,7 @@ local SetUnitRulesParam			= Spring.SetUnitRulesParam
 local GAIA_TEAM_ID		= Spring.GetGaiaTeamID()
 local DEFAULT_OUTPUT 	= UnitDefNames["flag"].extractsMetal
 local MULTIPLIER_CAP	= 10
-local OUTPUT_BASE		= 1.25
+local OUTPUT_BASE		= 1.12
 
 local modOptions
 if (Spring.GetModOptions) then
