@@ -220,16 +220,12 @@ function gadget:GameStart()
 	if DEBUG then
 		Spring.Echo(PROFILE_PATH)
 	end
-	if not VFS.FileExists(PROFILE_PATH) then
-		for _, spot in pairs(spots) do
-			PlaceFlag(spot)
-		end
-	else -- load the flag positions from profile
+	if  VFS.FileExists(PROFILE_PATH) then -- load the flag positions from profile
 		Spring.Echo("Map Flag Profile found. Loading flag positions.")
 		spots = VFS.Include(PROFILE_PATH)
-		for _, spot in pairs(spots) do
-			PlaceFlag(spot)
-		end
+	end
+	for i = 1, spotCount do
+		PlaceFlag(spots[i])
 	end
 	GG['flags'] = flags
 end
