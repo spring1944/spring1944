@@ -35,7 +35,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 function gadget:Initialize()
 	-- Remove the gadget if using map command per player
-	if tonumber(modOptions.map_command_per_player) or -1 >= 0 then
+	if (tonumber(modOptions.map_command_per_player) or -1) >= 0 then
 		gadgetHandler:RemoveGadget()
 	end
 end
