@@ -1,9 +1,6 @@
-#define TA
+#include "constants.h"
 
 piece base, radar;
-
-#include "sfxtype.h"
-#include "exptype.h"
 
 static-var  Static_Var_3, Static_Var_4;
 
@@ -118,6 +115,11 @@ QueryNanoPiece(piecenum)
 	piecenum = base;
 }
 
+QueryBuildInfo(piecenum)
+{
+	piecenum = base;
+}
+
 Activate()
 {
 	signal 2;
@@ -132,24 +134,23 @@ Deactivate()
 	start-script RequestState(1);
 }
 
-StartBuilding(){}
-
-StopBuilding(){}
-
 Killed(severity, corpsetype)
 {
 	if( severity <= 50 )
 	{
 		corpsetype = 1;
-		explode base type BITMAPONLY | BITMAP1;
+		explode base type SHATTER | EXPLODE_ON_HIT;
+		explode radar type FIRE | FALL | EXPLODE_ON_HIT;
 		return (0);
 	}
 	if( severity <= 99 )
 	{
 		corpsetype = 2;
-		explode base type BITMAPONLY | BITMAP1;
+		explode base type SHATTER | EXPLODE_ON_HIT;
+		explode radar type FIRE | FALL | EXPLODE_ON_HIT;
 		return (0);
 	}
 	corpsetype = 2;
-	explode base type BITMAPONLY | BITMAP1;
+		explode base type SHATTER | EXPLODE_ON_HIT;
+		explode radar type FIRE | FALL | EXPLODE_ON_HIT;
 }

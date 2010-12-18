@@ -23,6 +23,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=USRadar.S3O;
+  script=Radar.cob;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }
