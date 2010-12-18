@@ -14,6 +14,7 @@ end
 local floor						= math.floor
 -- Synced Read
 local AreTeamsAllied			= Spring.AreTeamsAllied
+local GetGroundHeight			= Spring.GetGroundHeight
 local GetGroundInfo				= Spring.GetGroundInfo
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam				= Spring.GetUnitTeam
@@ -124,6 +125,7 @@ local function AnalyzeMetalMap()
 			local mx = mx_i * GRID_SIZE
 			local mz = mz_i * GRID_SIZE
 			local _, curMetal = GetGroundInfo(mx, mz)
+			if GetGroundHeight(mx, mz) <= 0 then curMetal = 0 end -- ignore water metal
 			totalMetal = totalMetal + curMetal
 			--curMetal = floor(curMetal * 100)
 			metalMap[mx_i][mz_i] = curMetal
