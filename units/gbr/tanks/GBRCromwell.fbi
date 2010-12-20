@@ -39,7 +39,7 @@
   maxSlope=2;
   maxVelocity=3.85;
   maxWaterDepth=15;
-  movementClass=TANK_Heavy;
+  movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
   objectName=GBRCromwell.S3O;
   seismicSignature=0;
