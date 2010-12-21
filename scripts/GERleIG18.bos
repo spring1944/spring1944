@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece ground, carriage, wheels, sleeve, barrel, flare;
 piece crewman1, pelvis1, torso1, head1, luparm1, lloarm1, ruparm1, rloarm1, rthigh1, rleg1, rfoot1, lthigh1, lleg1, lfoot1;
@@ -221,6 +221,7 @@ turn ground to y-axis <0> now;\
 
 Create()
 {
+	UNTRANSPORT
 	hide flare;
 	// init vars
 	isDeployed = FALSE;
