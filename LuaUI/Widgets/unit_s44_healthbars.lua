@@ -115,21 +115,16 @@ do
   end
 end --//end do
 
-function widget:GameStart()
-  -- hack to kill off healthbar gadget if widget is already turned on
-  Spring.SendCommands({"luarules showhealthbars 0"})
-  Spring.SendCommands({"luarules showrezbars 0"})
-end
-
 function widget:Initialize()
   --// catch f9
-  Spring.SendCommands({"luarules showhealthbars 0"})
-  Spring.SendCommands({"luarules showrezbars 0"})
+  Spring.SendCommands({"showhealthbars 0"})
+  Spring.SendCommands({"showrezbars 0"})
   widgetHandler:AddAction("showhealthbars", showhealthbars)
   Spring.SendCommands({"unbind f9 showhealthbars"})
   Spring.SendCommands({"bind f9 luaui showhealthbars"})
   
   -- Disable other S44 widgets
+  Spring.SendCommands("disablewidget object_statusbars_default (v1.0)")
   Spring.SendCommands("disablewidget 1944 Ammo Icons")
   Spring.SendCommands("disablewidget 1944 Suppression Icons")
   Spring.SendCommands("disablewidget 1944 Ranks")
@@ -254,6 +249,7 @@ function widget:Shutdown()
   Spring.SendCommands({"luarules showhealthbars 1"})
 
   -- Enable other s44 widgets
+  Spring.SendCommands("enablewidget object_statusbars_default (v1.0)")
   Spring.SendCommands("enablewidget 1944 Ammo Icons")
   Spring.SendCommands("enablewidget 1944 Suppression Icons")
   Spring.SendCommands("enablewidget 1944 Ranks")

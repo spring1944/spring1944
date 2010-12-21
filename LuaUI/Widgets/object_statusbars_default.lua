@@ -1,48 +1,5 @@
-if (gadgetHandler:IsSyncedCode()) then
-
-		local GetAllFeatures     = Spring.GetAllFeatures
-		local GetFeatureAllyTeam = Spring.GetFeatureAllyTeam
-
-		function gadget:Initialize()
-		end
-
-		function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
-			SendToUnsynced("UnitCreated", unitID)
-		end
-		function gadget:UnitDestroyed(unitID, unitDefID, teamID, attackerID, attackerDefID, attackerTeamID)
-			SendToUnsynced("UnitDestroyed", unitID)
-		end
-
-		function gadget:FeatureCreated(featureID, allyTeamID)
-			SendToUnsynced("FeatureCreated", featureID)
-		end
-		function gadget:FeatureDestroyed(featureID, allyTeamID)
-			SendToUnsynced("FeatureDestroyed", featureID)
-		end
-
-		function gadget:GameFrame(n)
-			if (n == 0) then
-				-- map features get created before the LuaRules environment is up, so
-				-- we trigger the events ourselves (we can not do this in Initialize)
-				local features = GetAllFeatures()
-				local featureID = -1
-
-				for i = 1, #features do
-					featureID = features[i]
-					self:FeatureCreated(featureID, GetFeatureAllyTeam(featureID))
-				end
-			end
-		end
-else
-
-		local callinHandlers = {}
-
 		local drawDistSq            = 0
 		local drawUnitStatusBars    = false
-		local drawFeatureStatusBars = false
-
-		local drawnUnitIDs    = {}
-		local drawnFeatureIDs = {}
 
 		local m_min    = math.min
 		local m_max    = math.max
@@ -52,15 +9,13 @@ else
 		local GetConfigInt       = Spring.GetConfigInt
 		local SetConfigInt       = Spring.SetConfigInt
 		local GetCameraPosition  = Spring.GetCameraPosition
-		local SetUnitLuaDraw     = Spring.UnitRendering.SetUnitLuaDraw
-		local SetFeatureLuaDraw  = Spring.UnitRendering.SetFeatureLuaDraw
 		local GetUnitPosition    = Spring.GetUnitPosition
 		local GetFeaturePosition = Spring.GetFeaturePosition
 		local GetUnitVelocity    = Spring.GetUnitVelocity
 		local GetFrameTimeOffset = Spring.GetFrameTimeOffset
 		local GetUnitTeam        = Spring.GetUnitTeam
 		local GetUnitAllyTeam    = Spring.GetUnitAllyTeam
-		local GetLocalTeamID     = Spring.GetLocalTeamID
+		local GetMyTeamID     = Spring.GetLocalTeamID
 		local GetMyAllyTeamID    = Spring.GetMyAllyTeamID
 		local GetSpectatingState = Spring.GetSpectatingState
 		local ValidUnitID		 = Spring.ValidUnitID
@@ -90,25 +45,6 @@ else
 		local glFont         = gl.Font -- table
 		local GL_CURRENT_BIT = GL.CURRENT_BIT
 		local GL_ENABLE_BIT  = GL.ENABLE_BIT
-
-
-		local function ___ToggleDrawUnitStatusBars()
-			drawUnitStatusBars = not drawUnitStatusBars
-			drawStatusString = (drawUnitStatusBars and "enabled") or "disabled"
-
-			Echo("[object_statusbars_default] unit status-bar drawing " .. drawStatusString)
-		end
-		local function ___ToggleDrawFeatureStatusBars()
-			drawFeatureStatusBars = not drawFeatureStatusBars
-			drawStatusString = (drawFeatureStatusBars and "enabled") or "disabled"
-
-			Echo("[object_statusbars_default] feature status-bar drawing " .. drawStatusString)
-		end
-
-		local function ___UnitCreated(--[[_asa_, ]]unitID)   SetUnitLuaDraw(unitID, true)   end
-		local function ___UnitDestroyed(--[[_asa_, ]]unitID)   SetUnitLuaDraw(unitID, false)   end
-		local function ___FeatureCreated(--[[_asa_, ]]featureID)   SetFeatureLuaDraw(featureID, true)   end
-		local function ___FeatureDestroyed(--[[_asa_, ]]featureID)   SetFeatureLuaDraw(featureID, false)   end
 
 
 		local function ___DrawUnitStatusBars(unitID)
@@ -156,10 +92,9 @@ else
 			end
 
 			-- skip the rest of the indicators if it isn't a local unit
-			if ((GetLocalTeamID() ~= GetUnitTeam(unitID)) and (not specFullView)) then
+			if ((GetMyTeamID() ~= GetUnitTeam(unitID)) and (not specFullView)) then
 				return
 			end
-
 			local groupID = GetUnitGroup(unitID)
 			local _, _, beingBuilt = GetUnitIsStunned(unitID)
 			local _, _, stockPileBuildPercent = GetUnitStockpile(unitID)
@@ -186,117 +121,37 @@ else
 			end
 		end
 
-		local function ___DrawFeatureStatusBars(featureID)
-			-- reclaimLeft, resurrectProgress
-			local _, _, _, _, recl = GetFeatureResources(featureID)
-			local _, _, resp = GetFeatureHealth(featureID)
 
-			if (recl < 1.0 or resp > 0.0) then
-				-- black background for the bar
-				glColor(0.0, 0.0, 0.0)
-				glRect(-5.0, 4.0, 5.0, 6.0)
-
-				-- rez/metalbar
-				rmin = m_min(recl, resp) * 10.0
-				if (rmin > 0.0) then
-					glColor(1.0, 0.0, 1.0)
-					glRect(-5.0, 4.0, rmin - 5.0, 6.0)
-				end
-				if (recl > resp) then
-					col = 0.8 - 0.3 * recl
-					glColor(col, col, col)
-					glRect(rmin - 5.0, 4.0, recl * 10.0 - 5.0, 6.0)
-				end
-				if (recl < resp) then
-					glColor(0.5, 0.0, 1.0)
-					glRect(rmin - 5.0, 4.0, resp * 10.0 - 5.0, 6.0)
-				end
-
-				glColor(1.0, 1.0, 1.0)
-			end
-		end
-
-
-
-		function gadget:GetInfo()
+		function widget:GetInfo()
 			return {
 				name    = "object_statusbars_default (v1.0)",
 				desc    = "draws default unit and feature status-bars",
-				author  = "Kloot",
+				author  = "Kloot, stripped down and widget-ized by FLOZi (C. Lawrence(",
 				date    = "August 2, 2010",
 				license = "GPL v2",
-				layer   = -99999999, -- other gadgets could block the Draw* callins
+				layer   = -99999999, -- other widgets could block the Draw* callins
 				enabled = true,
 			}
 		end
 
-		function gadget:Initialize()
+		function widget:Initialize()
 			drawUnitStatusBars    = (GetConfigInt("ShowHealthBars", 1) ~= 0)
 			drawFeatureStatusBars = (GetConfigInt("ShowRezBars",    1) ~= 0)
 
 			drawDistSq = GetConfigInt("UnitLodDist", 1000)
 			drawDistSq = drawDistSq * drawDistSq
 
-			callinHandlers["UnitCreated"]      = ___UnitCreated
-			callinHandlers["UnitDestroyed"]    = ___UnitDestroyed
-			callinHandlers["FeatureCreated"]   = ___FeatureCreated
-			callinHandlers["FeatureDestroyed"] = ___FeatureDestroyed
-
-			-- listen to "/luarules show*"
-			gadgetHandler:AddChatAction("showhealthbars", ___ToggleDrawUnitStatusBars, "toggle whether unit status-bars are drawn")
-			gadgetHandler:AddChatAction("showrezbars", ___ToggleDrawFeatureStatusBars, "toggle whether feature status-bars are drawn")
-
-			--[[for funcName, func in pairs(callinHandlers) do
-				gadgetHandler:AddSyncAction(funcName, func, "")
-			end--]]
-
 			Spring.SendCommands({"showhealthbars 0", "showrezbars 0"})
 		end
 
-		function gadget:Shutdown()
+		function widget:Shutdown()
 			SetConfigInt("ShowHealthBars", (drawUnitStatusBars    and 1) or 0)
 			SetConfigInt("ShowRezBars",    (drawFeatureStatusBars and 1) or 0)
-
-			for funcName, func in pairs(callinHandlers) do
-				gadgetHandler:RemoveSyncAction(funcName)
-			end
-		end
-
-
-		
-		-- less efficient than the AddSyncAction route
-		function gadget:RecvFromSynced(callinName, objectID)
-			local handler = callinHandlers[callinName]
-
-			if (handler) then
-				handler(objectID)
-			end
-		end
-		--]]
-
-
-
-		function gadget:DrawUnit(unitID, drawMode)
-			-- skip the reflection pass
-			if (drawUnitStatusBars and drawMode ~= 3) then
-				drawnUnitIDs[unitID] = true
-			end
-
-			return false
-		end
-
-		function gadget:DrawFeature(featureID, drawMode)
-			-- skip the reflection pass
-			if (drawFeatureStatusBars and drawMode ~= 3) then
-				drawnFeatureIDs[featureID] = true
-			end
-
-			return false
 		end
 
 
 
-		function gadget:DrawWorld()
+		function widget:DrawWorld()
 			if ((not drawUnitStatusBars) and (not drawFeatureStatusBars)) then
 				return
 			end
@@ -309,7 +164,7 @@ else
 			glDepthTest(true)
 			glPushMatrix()
 				if (drawUnitStatusBars) then
-					for unitID, _ in pairs(drawnUnitIDs) do
+					for _, unitID in pairs(Spring.GetVisibleUnits()) do
 						if ValidUnitID(unitID) then
 							local px, py, pz = GetUnitPosition(unitID)
 							local vx, vy, vz = GetUnitVelocity(unitID)
@@ -326,28 +181,10 @@ else
 									___DrawUnitStatusBars(unitID)
 								glPopMatrix()
 							end
-
-							drawnUnitIDs[unitID] = nil
 						end
-					end
-				end
-
-				if (drawFeatureStatusBars) then
-					for featureID, _ in pairs(drawnFeatureIDs) do
-						local px, py, pz = GetFeaturePosition(featureID)
-						local h = GetFeatureHeight(featureID) + 5.0
-
-						glPushMatrix()
-							glTranslate(px, py + h, pz)
-							glBillboard()
-							___DrawFeatureStatusBars(featureID)
-						glPopMatrix()
-
-						drawnFeatureIDs[featureID] = nil
 					end
 				end
 
 			glPopMatrix()
 			glPopAttrib()
 		end
-end
