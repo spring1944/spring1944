@@ -630,7 +630,7 @@ function widget:Initialize()
 			supplyDefInfos[unitDefID] = {radius, numSegments, segmentAngle, oddX, oddZ}
 			inUse = true
 		end
-		if unitDef.tooltip and (strFind(unitDef.tooltip, "Transport Truck") or strFind(unitDef.tooltip, "Lorry Truck")) and unitDef.name ~= "usdukw" then
+		if unitDef.tooltip and strFind(unitDef.tooltip, "Supply Truck") and unitDef.name ~= "usdukw" then
 			generalTruckDefIDs[unitDefID] = true
 		end
 		if unitDef.customParams.ammosupplier == "1" and unitDef.speed > 0 then
