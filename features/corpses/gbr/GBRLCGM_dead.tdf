@@ -1,0 +1,13 @@
+[GBRLCGM_dead] {
+  description=Sunk LCG(M);
+  blocking=0;
+  damage=15000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=GBRLCGM_dead;
+  reclaimable=1;
+}
+

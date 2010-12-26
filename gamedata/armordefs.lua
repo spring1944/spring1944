@@ -515,6 +515,7 @@ local armorDefs = {
   "GBRMonitor",
   "GBRLCA",
   "GBRLCG",
+  "GBRLCGM",
   },
 }
 
