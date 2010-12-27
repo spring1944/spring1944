@@ -37,7 +37,7 @@
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GBRLCGM;
+  objectName=GBRLCGM-25pdr;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
