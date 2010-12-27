@@ -37,7 +37,7 @@
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GBRLCG;
+  objectName=GBRLCGM;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -63,12 +63,12 @@
   turninplace=0;
   turnRate=32;
 
-  weapon1=gbr4_7inchmkix;
+  weapon1=25PdrHE;
   maxAngleDif1=270;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=1 0 1;
 
-  weapon2=gbr4_7inchmkix;
+  weapon2=25PdrHE;
   maxAngleDif2=270;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=-1 0 1;
