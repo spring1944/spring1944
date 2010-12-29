@@ -22,6 +22,7 @@
     weaponswithammo=2;
     hasturnbutton=1;
   }
+  damageModifier=0.0001;
   energyMake=0;
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
@@ -56,10 +57,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
-  transportCapacity=30;
-  transportMass=27000;
-  transportSize=54;
   turninplace=0;
   turnRate=32;
 
