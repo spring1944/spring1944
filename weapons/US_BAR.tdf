@@ -13,7 +13,7 @@
   coreThickness=0.15;
   [customParams] {
     damagetype=smallarm;
-    fearaoe=30;
+    fearaoe=45;
     fearid=301;
   }
   [damage] {
@@ -35,11 +35,11 @@
   rgbColor=1.0 0.75 0.0;
   soundStart=US_BAR;
   soundTrigger=1;
-  sprayAngle=400;
+  sprayAngle=300;
   thickness=0.3;
   tolerance=6000;
   turret=1;
   weaponTimer=1;
-  weaponVelocity=2000;
+  weaponVelocity=1500;
 }
 
