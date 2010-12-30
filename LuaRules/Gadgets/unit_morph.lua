@@ -1253,11 +1253,11 @@ local function DrawMorphUnit(unitID, morphData, localTeamID)
   local frac = ((gameFrame + unitID) % 30) / 30
   local alpha = 2.0 * math.abs(0.5 - frac)
   local angle
-  --[[if morphData.def.facing then
-    angle = -HeadingToFacing(h) * 90 + 180
-  else]]
+  if morphData.def.facing then
+	angle = math.floor(HeadingToFacing(h)) * 90
+  else
     angle = h * headingToDegree
-  --end
+  end
 
   SetTeamColor(unitTeam,alpha)
   glPushMatrix()
