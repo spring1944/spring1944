@@ -193,6 +193,7 @@ local function BuildMorphDef(udSrc, morphData)
     newData.rank = morphData.rank or 0
     newData.facing = morphData.facing
     newData.directional = morphData.directional
+	newData.name = morphData.name
     local require = -1
     if (morphData.require) then
       require = (UnitDefNames[defNamesL[string.lower(morphData.require)] or -1] or {}).id
@@ -258,7 +259,7 @@ local function GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, un
 	tt = tt .. WhiteStr  .. morphDef.text .. '\n'
   else
   	--tt = tt .. WhiteStr  .. 'Deploy into a ' .. ud.humanName .. '\n'
-  	tt = tt .. 'Morph into a ' .. ud.humanName .. '\n'
+  	tt = tt .. 'Deploy into a ' .. ud.humanName .. '\n'
   end
   if (morphDef.time > 0) then
   	tt = tt .. GreenStr  .. 'time: '   .. morphDef.time     .. '\n'
@@ -312,7 +313,7 @@ local function AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTech)
   local unitRank = GetUnitRank(unitID)
   local teamOwnsReqUnit = UnitReqCheck(teamID,morphDef.require)
   morphCmdDesc.tooltip = GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
-  
+  morphCmdDesc.name = morphDef.name or "Deploy"
   if morphDef.texture then
 	morphCmdDesc.texture = "LuaRules/Images/Morph/".. morphDef.texture
 	morphCmdDesc.name = ''
@@ -826,7 +827,7 @@ end
 function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 	-- check if morph destination unit can be built here
 	-- if morph is called by an immobile unit, then the check should auto-succeed
-	local callerMobile = UnitDefs[unitDefID].canMove
+	local callerMobile = UnitDefs[unitDefID].speed > 0
 	if not callerMobile then
 		return true
 	end
@@ -1252,11 +1253,11 @@ local function DrawMorphUnit(unitID, morphData, localTeamID)
   local frac = ((gameFrame + unitID) % 30) / 30
   local alpha = 2.0 * math.abs(0.5 - frac)
   local angle
-  if morphData.def.facing then
+  --[[if morphData.def.facing then
     angle = -HeadingToFacing(h) * 90 + 180
-  else
+  else]]
     angle = h * headingToDegree
-  end
+  --end
 
   SetTeamColor(unitTeam,alpha)
   glPushMatrix()

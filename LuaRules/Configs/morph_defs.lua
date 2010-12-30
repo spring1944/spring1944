@@ -6,24 +6,215 @@ local devolution = (-1 > 0)
 
 
 local morphDefs = {
+  -- Upgrade Defs
+ 	rusvehicleyard = {
+		{
+			into = 'rusvehicleyard1',
+			metal = 2000,
+			energy = 0,
+			time = 65,
+			name = '  Light  \n  Armor  ',
+			text = 'Makes Light Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	usvehicleyard = {
+		{
+			into = 'usvehicleyard1',
+			metal = 2000,
+			energy = 0,
+			time = 65,
+			name = '  Light  \n  Armor  ',
+			text = 'Makes Light Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	gervehicleyard = {
+		{
+			into = 'gervehicleyard1',
+			metal = 2000,
+			energy = 0,
+			time = 65,
+			name = '  Light  \n  Armor  ',
+			text = 'Makes Light Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	gbrvehicleyard = {
+		{
+			into = 'gbrvehicleyard1',
+			metal = 2000,
+			energy = 0,
+			time = 65,
+			name = '  Light  \n  Armor  ',
+			text = 'Makes Light Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	rusgunyard = {
+		{
+			into = 'russpyard',
+			metal = 3500,
+			energy = 0,
+			time = 100,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		{
+			into = 'russpyard1',
+			metal = 5700,
+			energy = 0,
+			time = 165,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
+			facing = true,
+		},
+	},
+	
+	usgunyard = {
+		{
+			into = 'usspyard',
+			metal = 4500,
+			energy = 0,
+			time = 130,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+	},
+	
+	gergunyard = {
+		{
+			into = 'gerspyard',
+			metal = 3000,
+			energy = 0,
+			time = 85,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		{
+			into = 'gerspyard1',
+			metal = 5700,
+			energy = 0,
+			time = 165,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
+			facing = true,
+		},
+	},	
+	
+	gbrgunyard = {
+		{
+			into = 'gbrspyard',
+			metal = 3000,
+			energy = 0,
+			time = 85,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		{
+			into = 'gbrspyard1',
+			metal = 5700,
+			energy = 0,
+			time = 165,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
+			facing = true,
+		},
+	},	
+	
+	rustankyard = {
+		{
+			into = 'rustankyard1',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Advanced  \n  Mediums  ',
+			text = 'Makes Advanced Medium Armor available in this yard',
+			facing = true,
+		},
+		{
+			into = 'rustankyard2',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Heavy  \n  Armor  ',
+			text = 'Makes Heavy Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	ustankyard = {
+		{
+			into = 'ustankyard1',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Advanced  \n  Mediums  ',
+			text = 'Makes Advanced Medium Armor available in this yard',
+			facing = true,
+		},
+		{
+			into = 'ustankyard2',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Heavy  \n  Armor  ',
+			text = 'Makes Heavy Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	gertankyard = {
+		{
+			into = 'gertankyard1',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Advanced  \n  Mediums  ',
+			text = 'Makes Advanced Medium Armor available in this yard',
+			facing = true,
+		},
 
-  --[[armdecom = {
-    into = 'acom',
-    time   = 200,    -- game seconds
-    metal  = 10000, -- metal cost
-    energy = 60000, -- energy cost
-      tech = 2,            -- tech level
-      xp = 0.5,            -- required unit XP
-  },
-
-  cordecom = {
-    into = 'ccom',
-    time   = 200,    -- game seconds
-    metal  = 10000, -- metal cost
-    energy = 60000, -- energy cost
-      tech = 2,            -- tech level
-  },]]--
-
+		{
+			into = 'gertankyard2',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Heavy  \n  Armor  ',
+			text = 'Makes Heavy Armor available in this yard',
+			facing = true,
+		},
+	},
+	
+	gbrtankyard = {
+		{
+			into = 'gbrtankyard1',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Advanced  \n  Mediums  ',
+			text = 'Makes Advanced Medium Armor available in this yard',
+			facing = true,
+		},
+	
+		{
+			into = 'gbrtankyard2',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Heavy  \n  Armor  ',
+			text = 'Makes Heavy Armor available in this yard',
+			facing = true,
+		},
+	},
   -- Machineguns
   
     gbrlz =
