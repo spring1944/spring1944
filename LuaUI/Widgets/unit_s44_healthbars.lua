@@ -509,7 +509,9 @@ do
       --// MORPHING
       if (morph) then
         local build = morph.progress
-        AddBar("deploy",build,"build",(fullText and floor(build*100)..'%') or '')
+		local text = "deploy"
+		if UnitDefs[unitDefID].builder then text = "upgrade" end -- may not be a reliable heuristic
+        AddBar(text,build,"build",(fullText and floor(build*100)..'%') or '')
       end
 
       --// RELOAD
