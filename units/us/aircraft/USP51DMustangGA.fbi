@@ -74,13 +74,13 @@
   weapon1=HVARRocket;
   badTargetCategory1=INFANTRY SOFTVEH;
   maxAngleDif1=30;
-  onlyTargetCategory1=HARDVEH LARGESHIP;
+  onlyTargetCategory1=HARDVEH SHIP OPENVEH LARGESHIP;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   badTargetCategory2=INFANTRY SOFTVEH;
   maxAngleDif2=30;
-  onlyTargetCategory2=HARDVEH LARGESHIP;
+  onlyTargetCategory2=HARDVEH SHIP OPENVEH LARGESHIP;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

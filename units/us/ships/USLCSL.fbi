@@ -7,9 +7,9 @@
   airSightDistance=1700;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=10500;
+  buildCostMetal=9000;
   buildPic=uslcsl.png;
-  buildTime=10500;
+  buildTime=9000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -34,7 +34,7 @@
   mass=25400;
   maxDamage=25400;
   maxReverseVelocity=0.6;
-  maxVelocity=1.2; // 12 kn
+  maxVelocity=1.8; // 12 kn
   minWaterDepth=10;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
@@ -68,32 +68,62 @@
 
   weapon2=twin_bofors40mmaa;
   maxAngleDif2=270;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=AIR;
   weaponMainDir2=0 0 1;
+  
+  weapon8=twin_bofors40mmhe;
+  maxAngleDif8=270;
+  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir8=0 0 1;
 
   weapon3=twin_bofors40mmaa;
   maxAngleDif3=270;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory3=AIR;
   weaponMainDir3=0 0 -1;
+  
+  weapon9=twin_bofors40mmhe;
+  maxAngleDif9=270;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=0 0 -1;
 
   weapon4=20mmOerlikonaa;
   maxAngleDif4=200;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=AIR;
+  weaponMainDir4=1 0 0;
+  
+  weapon10=20mmOerlikonhe;
+  maxAngleDif4=200;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=1 0 0;
 
   weapon5=20mmOerlikonaa;
   maxAngleDif5=200;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=AIR;
+  weaponMainDir5=-1 0 0;
+  
+  weapon11=20mmOerlikonhe;
+  maxAngleDif5=200;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=-1 0 0;
 
   weapon6=20mmOerlikonaa;
   maxAngleDif6=200;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory6=AIR;
+  weaponMainDir6=1 0 0;
+
+  weapon12=20mmOerlikonhe;
+  maxAngleDif6=200;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=1 0 0;
 
   weapon7=20mmOerlikonaa;
   maxAngleDif7=200;
-  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory7=AIR;
+  weaponMainDir7=-1 0 0;
+  
+  weapon13=20mmOerlikonhe;
+  maxAngleDif7=200;
+  onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir7=-1 0 0;
 }
 

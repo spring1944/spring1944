@@ -73,7 +73,6 @@ piece base, hull, railings, boats,
 #define SMOKEPIECE	hull
 
 #include "exptype.h"
-#include "sfxtype.h"
 #include "damageSmoke.h"
 static-var	CurrentSpeed, bMoving, aa40_1_flare, aa40_2_flare, oldXZ, oldHeading;
 
@@ -205,6 +204,14 @@ RestoreTurret()
 	turn aa20_turret_4 to y-axis <180> speed AA20_TURRET_TURN;
 	turn aa20_sleeve_4 to x-axis <0> speed AA20_TURRET_PITCH;
 }
+/*
+--------------------
+Start Weapons
+--------------------
+*/
+
+//Main gun - 76mm dual purpose gun
+
 
 QueryWeapon1(piecenum)
 {
@@ -238,6 +245,15 @@ FireWeapon1()
 	move main_barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
 //	hide main_flare;
 }
+
+/*
+-----------------------------------
+Start Bofors AA/HE
+-----------------------------------
+*/
+
+
+//---------------------Twin 40mm Bofors #1 (AA)
 
 QueryWeapon2(piecenum)
 {
@@ -292,6 +308,62 @@ FireWeapon2()
 {
 }
 
+//--------------------Twin 40mm Bofors #1 (AA)
+
+QueryWeapon8(piecenum)
+{
+	if(aa40_1_flare)
+	{
+		piecenum = aa40_flare_11;
+	} else
+	{
+		piecenum = aa40_flare_12;
+	}
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = aa40_turret_1;
+}
+
+AimWeapon8(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn aa40_turret_1 to y-axis heading speed AA40_TURRET_TURN;
+	turn aa40_sleeve_1 to x-axis (0-pitch) speed AA40_TURRET_PITCH;
+	wait-for-turn aa40_turret_1 around y-axis;
+	wait-for-turn aa40_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+Shot8(foo)
+{
+	if(aa40_1_flare)
+	{
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_11;
+		emit-sfx SMALL_MUZZLEDUST from aa40_flare_11;
+		move aa40_barrel_11 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa40_barrel_11 to z-axis [0] speed AA40_GUN_BACK_SPEED;
+	} else
+	{
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_12;
+		emit-sfx SMALL_MUZZLEDUST from aa40_flare_12;
+		move aa40_barrel_12 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa40_barrel_12 to z-axis [0] speed AA40_GUN_BACK_SPEED;
+	}
+	aa40_1_flare = !aa40_1_flare;
+	
+}
+
+FireWeapon8()
+{
+}
+
+//-------------------Twin 40mm Bofors #2 (AA)
 QueryWeapon3(piecenum)
 {
 	if(aa40_2_flare)
@@ -344,6 +416,71 @@ FireWeapon3()
 {
 }
 
+//-------------------Twin 40mm Bofors #2 (HE)
+QueryWeapon9(piecenum)
+{
+	if(aa40_2_flare)
+	{
+		piecenum = aa40_flare_21;
+	} else
+	{
+		piecenum = aa40_flare_22;
+	}
+}
+
+AimFromWeapon9(piecenum)
+{
+	piecenum = aa40_turret_2;
+}
+
+AimWeapon9(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn aa40_turret_2 to y-axis heading speed AA40_TURRET_TURN;
+	turn aa40_sleeve_2 to x-axis (0-pitch) speed AA40_TURRET_PITCH;
+	wait-for-turn aa40_turret_2 around y-axis;
+	wait-for-turn aa40_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+Shot9(foo)
+{
+	if(aa40_2_flare)
+	{
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_21;
+		emit-sfx SMALL_MUZZLEDUST from aa40_flare_21;
+		move aa40_barrel_21 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa40_barrel_21 to z-axis [0] speed AA40_GUN_BACK_SPEED;
+	} else
+	{
+		emit-sfx SMALL_MUZZLEFLASH from aa40_flare_22;
+		emit-sfx SMALL_MUZZLEDUST from aa40_flare_22;
+		move aa40_barrel_22 to z-axis (0-AA40_GUN_RECOIL) speed AA40_GUN_RECOIL_SPEED;
+		sleep 200;
+		move aa40_barrel_22 to z-axis [0] speed AA40_GUN_BACK_SPEED;
+	}
+	aa40_2_flare = !aa40_2_flare;
+}
+
+FireWeapon9()
+{
+}
+/*
+-----------------------------------
+End Bofors AA/HE
+-----------------------------------
+*/
+
+/*
+-----------------------------------
+Start Oerlikon 20mm AA/HE
+-----------------------------------
+*/
+
+//----------------20mm Oerlikon #1 (AA)
 QueryWeapon4(piecenum)
 {
 	piecenum = aa20_flare_1;
@@ -380,6 +517,45 @@ Shot4()
 	move aa20_barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
+//----------------20mm Oerlikon #1 (HE)
+QueryWeapon10(piecenum)
+{
+	piecenum = aa20_flare_1;
+}
+
+AimFromWeapon10(piecenum)
+{
+	piecenum = aa20_turret_1;
+}
+
+AimWeapon10(heading, pitch)
+{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn aa20_turret_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_1 around y-axis;
+	wait-for-turn aa20_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon10()
+{
+
+}
+
+Shot10()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_1;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_1;
+	move aa20_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+
+//----------------20mm Oerlikon #2 (AA)
 QueryWeapon5(piecenum)
 {
 	piecenum = aa20_flare_2;
@@ -416,6 +592,44 @@ Shot5()
 	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
+//----------------20mm Oerlikon #2 (HE)
+QueryWeapon11(piecenum)
+{
+	piecenum = aa20_flare_2;
+}
+
+AimFromWeapon11(piecenum)
+{
+	piecenum = aa20_turret_2;
+}
+
+AimWeapon11(heading, pitch)
+{
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
+	turn aa20_turret_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_2 around y-axis;
+	wait-for-turn aa20_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon11()
+{
+
+}
+
+Shot11()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_2;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_2;
+	move aa20_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+//--------------20mm Oerlikon #3 (AA)
 QueryWeapon6(piecenum)
 {
 	piecenum = aa20_flare_3;
@@ -452,6 +666,44 @@ Shot6()
 	move aa20_barrel_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
+//--------------20mm Oerlikon #3 (HE)
+QueryWeapon12(piecenum)
+{
+	piecenum = aa20_flare_3;
+}
+
+AimFromWeapon12(piecenum)
+{
+	piecenum = aa20_turret_3;
+}
+
+AimWeapon12(heading, pitch)
+{
+	signal SIG_AIM6;
+	set-signal-mask SIG_AIM6|SIG_DEATH;
+	turn aa20_turret_3 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_3 around y-axis;
+	wait-for-turn aa20_sleeve_3 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon12()
+{
+
+}
+
+Shot12()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_3;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_3;
+	move aa20_barrel_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+//---------------20mm Oerlikon #4 (AA)
 QueryWeapon7(piecenum)
 {
 	piecenum = aa20_flare_4;
@@ -488,6 +740,52 @@ Shot7()
 	move aa20_barrel_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
+
+//---------------20mm Oerlikon #4 (HE)
+QueryWeapon13(piecenum)
+{
+	piecenum = aa20_flare_4;
+}
+
+AimFromWeapon13(piecenum)
+{
+	piecenum = aa20_turret_4;
+}
+
+AimWeapon13(heading, pitch)
+{
+	signal SIG_AIM7;
+	set-signal-mask SIG_AIM7|SIG_DEATH;
+	turn aa20_turret_4 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_4 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_4 around y-axis;
+	wait-for-turn aa20_sleeve_4 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon13()
+{
+
+}
+
+Shot13()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_4;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_4;
+	move aa20_barrel_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_4 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+/*
+-----------------------------------
+End Oerlikon 20mm AA/HE
+
+End Weapons
+-----------------------------------
+*/
+
 Killed(severity, corpsetype)
 {
 	signal SIG_DEATH;
@@ -499,6 +797,6 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type		SHATTER;
 	return (TRUE);
 }

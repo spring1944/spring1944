@@ -1,4 +1,4 @@
-[37mmflak43] {
+/*[37mmflak43] {
   name=FlaK43 37mm Semi-Automatic Cannon;
   accuracy=290;
   areaOfEffect=10;
@@ -40,5 +40,89 @@
   tolerance=300;
   turret=1;
   weaponVelocity=1490;
+}*/
+
+
+[37mmflak43aa] {
+  name=FlaK43 37mm Semi-Automatic Cannon AA;
+  areaOfEffect=60;
+  burnblow=1;
+  burst=2;
+  burstRate=0.3;
+  canAttackGround=0;
+  collisionSize=5;
+  craterBoost=0.2;
+  craterMult=0.2;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=450;
+    fearid=701;
+  }
+  [damage] {
+    default=182;
+  }
+  edgeEffectiveness=0.001;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=50;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.9;
+  lineofsight=1;
+  predictBoost=0;
+  range=2025;
+  reloadTime=0.85;
+  rendertype=1;
+  rgbColor=1.0 1.0 0.0;
+  size=0.001;
+  soundHit=GEN_Explo_Flak1;
+  soundStart=GEN_37mmAA;
+  sprayAngle=0;
+  tolerance=1400;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1760;
 }
 
+[37mmflak43he] {
+  name=FlaK43 37mm Semi-Automatic Cannon HE;
+  areaOfEffect=24;
+  burnblow=1;
+  burst=2;
+  burstRate=0.625;
+  collisionSize=2;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=45;
+    fearid=301;
+  }
+  [damage] {
+    default=182;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_XSmall;
+  fireStarter=0;
+  id=50;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.9;
+  lineofsight=1;
+  range=725;
+  reloadTime=1.625;
+  rendertype=1;
+  rgbColor=1.0 1.0 0.0;
+  separation=2;
+  size=1e-10;
+  soundHit=GEN_Explo_Flak1;
+  soundStart=GEN_37mmAA;
+  sprayAngle=400;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=700;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1760;
+}

@@ -58,6 +58,7 @@ buildoptions =
     "us_platoon_mortar",
     "usm8gun",
     "usgmctruck",
+	"uspontoontruck",
   },
 
   usengineer =
@@ -199,7 +200,6 @@ buildoptions =
     "uspt103-bofors",
 	"uslvta4",
 	"uslct",
-    "uslcsl",
   },
   usboatyardlarge =
   {
@@ -258,6 +258,7 @@ buildoptions =
     "ger_platoon_mortar",
     "gerleig18",
     "geropelblitz",
+	"gerpontoontruck",
   },
 
   gerbarracksvolkssturm =
@@ -305,7 +306,6 @@ buildoptions =
   gervehicleyard1 =
   {
     "gersdkfz9",
-    "gerpontoontruck",
     "geropelblitz",
     "gersdkfz250",
     "gersdkfz251",
@@ -442,18 +442,17 @@ buildoptions =
     --"gersboot",
 	"gersiebelfahre",
 	"germfp",
-	"gerafp",
+
   },
   gerboatyardlarge =
   {
     "gersturmboot",
     "pontoonraft",
     "gerrboot",
-    "gersboot",
+    --"gersboot",
 	"gersiebelfahre",
     "germfp",
     "gerafp",
-	"gervorpostenboot",
 --	"gertype1934",
   },
 
@@ -500,6 +499,7 @@ buildoptions =
     "gbr_platoon_mortar",
     "gbr_platoon_commando",
     "gbrbedfordtruck",
+	"gbrpontoontruck",
   },
 
   gbrgunyard =
@@ -576,7 +576,6 @@ buildoptions =
   gbrvehicleyard1 =
   {
     "gbrmatadorengvehicle",
-    "gbrpontoontruck",
     "gbrbedfordtruck",
     "gbrm5halftrack",
 		"gbrstaghound",
@@ -651,7 +650,6 @@ buildoptions =
     "gbrlca",
     "gbrfairmiled",
 	"gbrlct",
-    "gbrlcg",
   },
   gbrboatyardlarge =
   {
@@ -660,8 +658,7 @@ buildoptions =
     "gbrlca",
     "gbrfairmiled",
     "gbrlct",
-    "gbrlcg",
-	"gbrflower",
+    "gbrlcgm",
   },
 
         --------------------
@@ -692,6 +689,7 @@ buildoptions =
     "rus_platoon_sniper",
     "rus_platoon_mortar",
     "ruszis5",
+	"ruspontoontruck",
   },
 
   rusguardsbarracks =
@@ -764,7 +762,6 @@ buildoptions =
   rusvehicleyard1 =
   {
     "rusk31",
-    "ruspontoontruck",
     "ruszis5",
     "rusba64",
     "rusm5halftrack",
@@ -865,9 +862,9 @@ buildoptions =
     "rustender15t",
     "ruslct",
     --"ruskomsmtb",
-    --"rusbmo",
+    "rusbmo",
 	"rusbka-1125",
-	"ruspr161",
+	
   },
   rusboatyardlarge =
   {
@@ -875,10 +872,10 @@ buildoptions =
 	"pontoonraft",
     "rustender15t",
     "ruslct",
-    "ruskomsmtb",
+    --"ruskomsmtb",
     "rusbmo",
     "rusbka-1125",
-    "ruspsk",
+    "ruspr161",
 --    "ruspr7",
   },
   

@@ -1,6 +1,5 @@
 #define TAK			// This is a TA script
 
-#include "sfxtype.h"
 #include "exptype.h"
 
 piece  base, body, load_shoulder, load_arm, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, prop, wake;
@@ -115,8 +114,8 @@ Create()
 	bFloating = FALSE;
 	bMoving = FALSE;
 	LandSpeed = get MAX_SPEED;
-	WaterSpeed = LandSpeed / 50; // land speed: 50 mph, water speed: 6 mph
-	WaterSpeed = WaterSpeed * 6;
+	WaterSpeed = LandSpeed / 3; // land speed: 50 mph, water speed: 6 mph
+	//WaterSpeed = WaterSpeed * 6;
 	start-script SmokeUnit();
 	start-script WaterCheck();
 }

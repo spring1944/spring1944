@@ -31,7 +31,7 @@
   mass=29100;
   maxDamage=29100;
   maxReverseVelocity=0.35;
-  maxVelocity=0.7; // 7 knots
+  maxVelocity=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
   objectName=USLCT;

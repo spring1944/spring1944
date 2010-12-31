@@ -6,9 +6,9 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=4500;
+  buildCostMetal=5500;
   buildPic=germfp.png;
-  buildTime=4600;
+  buildTime=5500;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GERMFP_dead;
@@ -28,7 +28,7 @@
   mass=23900;
   maxDamage=23900;
   maxReverseVelocity=0.72;
-  maxVelocity=1.44;
+  maxVelocity=2;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
@@ -63,29 +63,34 @@
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=37mmflak43;
+  weapon2=37mmflak43aa;
   maxAngleDif2=270;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=AIR;
   weaponMainDir2=0 0 -1;
+  
+  weapon9=37mmflak43he;
+  maxAngleDif9=270;
+  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir9=0 0 -1;
 
-  weapon3=20mmc38;
+  weapon3=20mmc38aa;
   onlyTargetCategory3=AIR;
 
-  weapon4=20mmc38;
+  weapon4=20mmc38aa;
   onlyTargetCategory4=AIR;
 
-  weapon5=20mmc38;
+  weapon5=20mmc38aa;
   maxAngleDif5=270;
   onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
-  weapon6=KwK3020mmHE;
+  weapon6=20mmc38he;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon7=KwK3020mmHE;
+  weapon7=20mmc38he;
   onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon8=KwK3020mmHE;
+  weapon8=20mmc38he;
   maxAngleDif8=270;
   onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir8=0 0 -1;

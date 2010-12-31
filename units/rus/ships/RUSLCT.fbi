@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=3200;
+  buildCostMetal=1600;
   buildPic=ruslct.png;
-  buildTime=3200;
+  buildTime=1600;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 -30.0 0.0;
@@ -30,9 +30,8 @@
   iconType=transportship;
   mass=29100;
   maxDamage=29100;
-  maxReverseVelocity=0.8;
-  maxVelocity=1.6;
-  minWaterDepth=2;
+  maxReverseVelocity=0.35;
+  maxVelocity=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSLCT;

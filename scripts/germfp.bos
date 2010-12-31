@@ -55,7 +55,6 @@ piece base, hull, main_turret, sleeve, barrel, flare, turret_37, sleeve_37, barr
 #define SMOKEPIECE	hull
 
 #include "exptype.h"
-#include "sfxtype.h"
 #include "damageSmoke.h"
 
 // effects
@@ -331,6 +330,7 @@ FireWeapon1()
 	set STEALTH to 1;
 }
 
+//------------37mm flak43 (AA)
 QueryWeapon2(piecenum)
 {
 	piecenum = flare_37;
@@ -363,6 +363,42 @@ FireWeapon2()
 	move barrel_37 to z-axis 0 speed AA37_GUN_BACK_SPEED;
 //	hide flare_37;
 }
+
+//------------37mm flak43 (HE)
+QueryWeapon9(piecenum)
+{
+	piecenum = flare_37;
+}
+
+AimFromWeapon9(piecenum)
+{
+	piecenum = turret_37;
+}
+
+AimWeapon9(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn turret_37 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37 around y-axis;
+	wait-for-turn sleeve_37 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon9()
+{
+//	show flare_37;
+	emit-sfx SMALL_MUZZLEFLASH from flare_37;
+	emit-sfx SMALL_MUZZLEDUST from flare_37;
+	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37 to z-axis 0 speed AA37_GUN_BACK_SPEED;
+//	hide flare_37;
+}
+
+//-----20mm C38 AA/HE
 
 QueryWeapon3(piecenum)
 {
@@ -595,16 +631,16 @@ Shot8(foo)
 Killed(severity, corpsetype)
 {
 	signal SIG_DEATH;
-	if (severity<50)
+	if (severity<95)
 	{
 		corpsetype = 1;
 		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
 		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		explode hull type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type		SHATTER;
 	explode main_turret type	FALL|EXPLODE_ON_HIT|FIRE;
 	return (TRUE);
 }

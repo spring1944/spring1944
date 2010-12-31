@@ -9,25 +9,25 @@ piece base, hull, turret_20, gun_20, barrel_20, flare_20, turret_40, sleeve_40, 
 #define MIN_SMOKE_PERIOD	240
 
 //********************Turret turn speeds
-#define AA20_TURRET_TURN		<45>
-#define AA20_TURRET_PITCH		<45>
+#define AA20_TURRET_TURN		<225>
+#define AA20_TURRET_PITCH		<175>
 #define AA20_BURSTRATE			150
 
-#define AA40_TURRET_TURN		<30>
-#define AA40_TURRET_PITCH		<30>
+#define AA40_TURRET_TURN		<200>
+#define AA40_TURRET_PITCH		<150>
 #define AA40_BURSTRATE			290
 
-#define MG05_TURRET_TURN		<45>
-#define MG05_TURRET_PITCH		<45>
+#define MG05_TURRET_TURN		<250>
+#define MG05_TURRET_PITCH		<200>
 
 //*********************Recoil
-#define AA20_GUN_RECOIL			[0.4]
-#define AA20_GUN_RECOIL_SPEED	[10]
-#define AA20_GUN_BACK_SPEED		[2]
-
-#define AA40_GUN_RECOIL			[0.4]
+#define AA40_GUN_RECOIL			[0.06]
 #define AA40_GUN_RECOIL_SPEED	[10]
 #define AA40_GUN_BACK_SPEED		[4]
+
+#define AA20_GUN_RECOIL			[0.045]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[5]
 //*********************Death anim
 #define HULL_LIST_SPEED		<30>
 #define HULL_LIST_ANGLE_Z	<-45>
@@ -72,8 +72,7 @@ piece base, hull, turret_20, gun_20, barrel_20, flare_20, turret_40, sleeve_40, 
 
 #define SMOKEPIECE	hull
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 
 //weapon anims

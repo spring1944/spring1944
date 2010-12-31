@@ -1,9 +1,9 @@
-[20mmc38aa] {
-  name=2cm C/38 single-gun High-Explosive AA Shells;
+[flakvierling20mmaa] {
+  name=Quad FlaK 30/38 High-Explosive (AA) Shells;
   areaOfEffect=30;
   burnblow=1;
-  burst=5;
-  burstRate=0.13;
+  burst=20;
+  burstRate=0.0325;
   canAttackGround=0;
   collisionSize=5;
   craterBoost=0;
@@ -40,14 +40,14 @@
   weaponVelocity=1800;
 }
 
-[20mmc38he] {
-  name=2cm C/38 single-gun High-Explosive Shells;
+[flakvierling20mmhe] {
+  name=Quad FlaK 30/38 High-Explosive Shells;
   accuracy=255;
   areaOfEffect=24;
   ballistic=1;
   burnblow=0;
-  burst=3;
-  burstRate=0.16;
+  burst=12;
+  burstRate=0.04;
   collisionSize=2;
   craterBoost=0;
   craterMult=0;

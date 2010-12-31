@@ -77,7 +77,7 @@
   weapon9=Large_Tracer;
 
   weapon1=ptab;
-  onlyTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=OPENVEH SHIP LARGESHIP HARDVEH;
   weaponMainDir1=0 -0.18 1;
 
   weapon2=VYa23mm;

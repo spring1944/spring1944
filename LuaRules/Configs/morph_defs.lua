@@ -215,6 +215,56 @@ local morphDefs = {
 			facing = true,
 		},
 	},
+	
+	gbrboatyard = {
+		{
+			into = 'gbrboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
+	},
+	
+	gerboatyard = {
+		{
+			into = 'gerboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
+	},
+	
+	rusboatyard = {
+		{
+			into = 'rusboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
+	},
+	
+	usboatyard = {
+		{
+			into = 'usboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
+	},
+	
+	
   -- Machineguns
   
     gbrlz =
@@ -733,12 +783,30 @@ local morphDefs = {
     energy = 0,
   },
   
+    usdukw =
+  {
+    into = 'usdukwsupplies',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+  },
+  
+  	usdukwsupplies =
+  {
+    into = 'usdukw',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+  },
+  
 	-- Pontoon trucks
 	ruspontoontruck =
   {
     into = 'rusboatyard',
     tech = 0,
-    time = 60,
+    time = 20,
     metal = 0,
     energy = 0,
 	facing = true,
@@ -748,7 +816,7 @@ local morphDefs = {
   {
     into = 'usboatyard',
     tech = 0,
-    time = 60,
+    time = 20,
     metal = 0,
     energy = 0,
 	facing = true,
@@ -758,7 +826,7 @@ local morphDefs = {
   {
     into = 'gerboatyard',
     tech = 0,
-    time = 60,
+    time = 20,
     metal = 0,
     energy = 0,
 	facing = true,
@@ -767,12 +835,13 @@ local morphDefs = {
   {
     into = 'gbrboatyard',
     tech = 0,
-    time = 60,
+    time = 20,
     metal = 0,
     energy = 0,
 	facing = true,
   },
   
+  --the Soviet supply storage truck they get at spawn
      russupplytruck =
   {
     into = 'russtorage',

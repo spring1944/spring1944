@@ -1,6 +1,6 @@
 [unitinfo] {
-  unitname=RUSTruckSupplies;
-  name=Unloaded Truck Supplies;
+  unitname=USDukwSupplies;
+  name=Unloaded DUKW Supplies;
   description=Supplies A Small Area;
   activateWhenBuilt=1;
   buildCostEnergy=0;
@@ -8,7 +8,7 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=RUSTruckSupplies.png;
+  buildPic=USTruckSupplies.png;
   buildTime=720;
   category=BUILDING;
   corpse=Debris_Large;
@@ -26,16 +26,16 @@
   maxDamage=400;
   maxSlope=15;
   maxWaterDepth=0;
-  objectName=RUSTruckSupplies.S3O;
-  script=truckSupplies.cob;
+  objectName=USTruckSupplies.S3O;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
+  script=truckSupplies.cob;
   showNanoFrame=0;
-  side=RUS;
+  side=US;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=RUSInf;
+  soundcategory=USInf;
   stealth=1;
   TEDClass=ENERGY;
   useBuildingGroundDecal=1;

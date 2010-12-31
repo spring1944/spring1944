@@ -6,9 +6,9 @@
   airSightDistance=3000;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=3100;
+  buildCostMetal=2000;
   buildPic=USPT103.png;
-  buildTime=3100;
+  buildTime=2000;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -19,7 +19,7 @@
   [customParams] {
     lowammolevel=1;
     maxammo=4;
-    weaponcost=40;
+    weaponcost=0;
     weaponswithammo=4;
     hasturnbutton=1;
   }
@@ -61,10 +61,6 @@
   turnRate=300;
   badTargetCategory=FLAG;
 
-  weapon10=KwK3020mmHE;
-  onlyTargetCategory10=SHIP BUILDING INFANTRY OPENVEH AIR SOFTVEH DEPLOYED;
-  weaponMainDir10=0 0 1;
-
   weapon1=mk13torpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP SUB;
@@ -89,28 +85,28 @@
   onlyTargetCategory5=AIR;
   weaponMainDir5=0 0 -1;
 
-  weapon6=flak3820mmaa;
+  weapon6=20mmOerlikonaa;
   onlyTargetCategory6=AIR;
   weaponMainDir6=0 0 1;
   
-  weapon7=flak3820mmhe;
+  weapon7=20mmOerlikonhe;
   onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir=0 0 1;
+  weaponMainDir7=0 0 1;
 
   weapon8=m2browningaa;
-  onlyTargetCategory7=AIR;
-  
-  weapon9=m2browning;
-  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
-  
-  weapon10=m2browningaa;
   onlyTargetCategory8=AIR;
   
+  weapon9=m2browning;
+  onlyTargetCategory9=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
+  
+  weapon10=m2browningaa;
+  onlyTargetCategory10=AIR;
+  
   weapon11=m2browning;
-  onlyTargetCategory7=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
+  onlyTargetCategory11=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
 
   weapon12=bofors40mmhe;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir9=0 0 -1;
+  onlyTargetCategory12=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir12=0 0 -1;
 }
 

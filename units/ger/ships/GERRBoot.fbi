@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=3750;
-  buildTime=3750;
+  buildCostMetal=2170;
+  buildTime=2170;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -56,27 +56,27 @@
   turninplace=0;
   turnRate=205;
 
-  weapon1=37mmflak43;
+  weapon1=37mmflak43he;
   maxAngleDif1=270;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=20mmc38;
+  weapon2=20mmc38aa;
   maxAngleDif2=270;
   onlyTargetCategory2=AIR;
   weaponMainDir2=0 0 -1;
 
-  weapon3=20mmc38;
+  weapon3=20mmc38aa;
   maxAngleDif3=300;
   onlyTargetCategory3=AIR;
   weaponMainDir3=0 0 -1;
 
-  weapon4=KwK3020mmHE;
+  weapon4=20mmc38he;
   maxAngleDif4=270;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 -1;
 
-  weapon5=KwK3020mmHE;
+  weapon5=20mmc38he;
   maxAngleDif5=300;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 -1;

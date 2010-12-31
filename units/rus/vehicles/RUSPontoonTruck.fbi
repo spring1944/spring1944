@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=5400;
+  buildCostMetal=1400;
   buildPic=RUSPontoonTruck.png;
-  buildTime=5400;
+  buildTime=1400;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=RUSPontoonTruck_Dead;

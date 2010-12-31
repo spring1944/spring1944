@@ -79,6 +79,6 @@
   tolerance=700;
   turret=1;
   weaponTimer=1;
-  weaponVelocity=1760;
+  weaponVelocity=1260;
 }
 

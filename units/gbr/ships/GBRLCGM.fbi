@@ -6,9 +6,9 @@
   airSightDistance=1100;
   brakeRate=0.001;
   buildCostEnergy=0;
-  buildCostMetal=12850;
+  buildCostMetal=10500;
   buildPic=GBRLCG.png;
-  buildTime=12850;
+  buildTime=10500;
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 0.0 0.0;
@@ -18,11 +18,11 @@
   [customParams] {
     lowammolevel=5;
     maxammo=26;
-    weaponcost=25;
+    weaponcost=18;
     weaponswithammo=2;
     hasturnbutton=1;
   }
-  damageModifier=0.0001;
+  damageModifier=0.5;
   energyMake=0;
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;

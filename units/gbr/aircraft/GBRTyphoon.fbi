@@ -74,12 +74,12 @@
 
   weapon1=HVARRocket;
   maxAngleDif1=30;
-  onlyTargetCategory1=HARDVEH LARGESHIP;
+  onlyTargetCategory1=HARDVEH OPENVEH LARGESHIP;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   maxAngleDif2=30;
-  onlyTargetCategory2=HARDVEH LARGESHIP;
+  onlyTargetCategory2=HARDVEH OPENVEH LARGESHIP;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 

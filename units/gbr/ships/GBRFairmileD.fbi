@@ -2,12 +2,12 @@
   unitname=GBRFairmileD;
   name=Fairmile D;
   description=Gun/torpedo boat;
-  acceleration=0.01;
+  acceleration=0.025;
   airSightDistance=1500;
   brakeRate=0.01;
   buildCostEnergy=0;
-  buildCostMetal=3300;
-  buildTime=3300;
+  buildCostMetal=1900;
+  buildTime=1900;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -57,7 +57,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
-  turnRate=112;
+  turnRate=240;
 
   weapon10=twin05calVickers;
   maxAngleDif10=270;

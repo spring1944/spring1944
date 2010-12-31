@@ -83,12 +83,12 @@
 
   weapon1=HVARRocket;
   maxAngleDif1=30;
-  onlyTargetCategory1=HARDVEH LARGESHIP;
+  onlyTargetCategory1=HARDVEH SHIP OPENVEH LARGESHIP;
   weaponMainDir1=0 0 1;
 
   weapon2=HVARRocket;
   maxAngleDif2=30;
-  onlyTargetCategory2=HARDVEH LARGESHIP;
+  onlyTargetCategory2=HARDVEH SHIP OPENVEH LARGESHIP;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
@@ -116,7 +116,7 @@
   weaponSlaveTo6=3;
 
   weapon7=bomb;
-  onlyTargetCategory7=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory7=BUILDING HARDVEH SHIP OPENVEH INFANTRY LARGESHIP DEPLOYED;
   weaponMainDir7=0 -0.18 1;
 
   weapon8=m2browningaa;

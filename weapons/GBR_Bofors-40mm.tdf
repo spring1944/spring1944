@@ -83,13 +83,13 @@
 }
 
 [twin_bofors40mmaa] {
-  name=2x 40mm Bofors Anti-Aircraft Gun;
-  areaOfEffect=80;
+  name=2x 40mm Bofors Anti-Aircraft Gun (Frag/AA shells);
+  areaOfEffect=60;
   burnblow=1;
-  burst=8;
-  burstRate=0.16;
+  burst=4;
+  burstRate=0.33;
   canAttackGround=0;
-  collisionSize=1e-05;
+  collisionSize=5;
   craterBoost=0.2;
   craterMult=0.2;
   [customParams] {
@@ -100,7 +100,7 @@
   [damage] {
     default=275;
   }
-  edgeEffectiveness=1e-07;
+  edgeEffectiveness=0.001;
   explosionGenerator=custom:HE_Medium;
   explosionSpeed=30;
   fireStarter=0;
@@ -110,17 +110,58 @@
   intensity=0.9;
   lineofsight=1;
   predictBoost=0;
-  range=1575;
-  reloadTime=1.5;
+  range=2025;
+  reloadTime=0.75;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   size=0.001;
   soundHit=GEN_Explo_Flak1;
   soundStart=GEN_37mmAA;
-  sprayAngle=1050;
-  tolerance=700;
+  sprayAngle=0;
+  tolerance=1400;
   turret=1;
   weaponTimer=1;
   weaponVelocity=1646;
 }
 
+[twin_bofors40mmhe] {
+  name=2x 40mm Bofors Anti-Aircraft Gun (HE shells);
+  areaOfEffect=24;
+  burnblow=1;
+  burst=2;
+  burstRate=0.5;
+  collisionSize=2;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=45;
+    fearid=301;
+  }
+  [damage] {
+    default=275;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_XSmall;
+  fireStarter=0;
+  id=50;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.9;
+  lineofsight=1;
+  range=725;
+  reloadTime=0.8125;
+  rendertype=1;
+  rgbColor=1.0 1.0 0.0;
+  separation=2;
+  size=1e-10;
+  soundHit=GEN_Explo_Flak1;
+  soundStart=GEN_37mmAA;
+  sprayAngle=400;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=700;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=1646;
+}

@@ -41,8 +41,8 @@ local MIN_DEPTH = -150 -- lowest depth that we allow the command for
 local ACTUAL_MIN_DEPTH = -15 -- lowest depth that the model should be lowered to
 local SINK_RATE = -0.1
 local SINK_TIME = math.floor(ACTUAL_MIN_DEPTH / SINK_RATE)
-local ARMOUR_MULTIPLE = 0.25
-local ACCURACY_MULT = 0.025
+local ARMOUR_MULTIPLE = 0.50
+local ACCURACY_MULT = 0.50
 local BASE_ACCURACY = WeaponDefs[ UnitDefNames["gbrlcgm"].weapons[1].weaponDef ].accuracy -- ;_;
 
 -- Variables
