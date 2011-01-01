@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
-  buildCostMetal=2400;
-  buildTime=2400;
+  buildCostMetal=1200;
+  buildTime=1200;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GERSiebelFahre_dead;
@@ -55,7 +55,7 @@
   transportMass=4000;
   transportSize=2;
   turninplace=0;
-  turnRate=35;
+  turnRate=100;
 
   weapon1=20mmc38;
   maxAngleDif1=320;

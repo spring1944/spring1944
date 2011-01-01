@@ -2,12 +2,12 @@
   unitname=GBRLCA;
   name=Landing Craft, Assault;
   description=Infantry Landing Craft;
-  acceleration=0.05;
+  acceleration=0.09;
   airSightDistance=1500;
   brakeRate=0.05;
   buildCostEnergy=0;
-  buildCostMetal=800;
-  buildTime=800;
+  buildCostMetal=700;
+  buildTime=700;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=GBRLCA_dead;
@@ -53,8 +53,6 @@
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=BrenFear;
-  weaponSlaveTo2=1;
 
   weapon3=Small_Tracer;
 }
