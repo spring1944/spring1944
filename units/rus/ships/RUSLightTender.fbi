@@ -28,7 +28,7 @@
   mass=1360;
   maxDamage=1360;
   maxReverseVelocity=0.55;
-  maxVelocity=1.1;
+  maxVelocity=2;
   minWaterDepth=5;
   movementClass=BOAT_Medium;
   noChaseCategory=FLAG AIR MINE;

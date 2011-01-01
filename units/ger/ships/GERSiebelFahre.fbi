@@ -27,7 +27,7 @@
   mass=10000;
   maxDamage=10000;
   maxReverseVelocity=0.325;
-  maxVelocity=0.65; // 12 km/h ~= 6.5 kn
+  maxVelocity=1.7; // 12 km/h ~= 6.5 kn
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;

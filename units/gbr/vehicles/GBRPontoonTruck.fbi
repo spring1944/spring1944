@@ -12,6 +12,7 @@
   category=MINETRIGGER SOFTVEH;
   corpse=GBRPontoonTruck_Dead;
   [customParams] {
+    buildOutside=1;
     dontCount=1;
   }
   explodeAs=Vehicle_Explosion_Sm;
