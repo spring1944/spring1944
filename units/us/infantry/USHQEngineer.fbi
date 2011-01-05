@@ -6,7 +6,7 @@
   brakeRate=0.9;
   buildCostEnergy=0;
   buildCostMetal=280;
-  buildDistance=5;
+  buildDistance=128;
   builder=1;
   buildTime=280;
   canMove=1;
