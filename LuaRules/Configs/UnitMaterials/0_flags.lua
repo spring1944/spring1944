@@ -11,8 +11,7 @@ local pieceDLs = {}
 
 local function UnitCreated(unitID, material, materialID)
   local pieceMap = Spring.GetUnitPieceMap(unitID)
-  local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag"}
-
+  local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag", "flag", "teamflag"}
   for i=1,#flagPieces do
     local pieceID = pieceMap[ flagPieces[i] ]
     if (pieceID) then
@@ -82,7 +81,8 @@ local materials = {
         [2] = '$shadow',
         [3] = '$specular',
         [4] = '$reflection',
-        [5] = 'unittextures/Flags_normals.dds',
+        --[5] = 'unittextures/Flags_normals.dds',
+		[5] = '%NORMALTEX',
       },
       UnitCreated = UnitCreated,
       DrawUnit = DrawUnit,
@@ -99,6 +99,12 @@ local unitMaterials = {}
 
 unitMaterials.flag = {
 	"flagShader",
+	NORMALTEX = "unittextures/Flags_normals.dds",
+}
+
+unitMaterials.buoy = {
+	"flagShader",
+	NORMALTEX = "unittextures/Buoy_normals.dds",
 }
 
 --------------------------------------------------------------------------------

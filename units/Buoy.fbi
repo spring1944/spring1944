@@ -1,0 +1,38 @@
+[unitinfo] {
+  unitname=Buoy;
+  name=Buoy;
+  description=Naval Spawn Point;
+  activateWhenBuilt=1;
+  buildCostEnergy=0;
+  buildCostMetal=1;
+  buildTime=1;
+  canSelfDestruct=0;
+  category=FLAG;
+  [customParams] {
+    dontCount=1;
+    flag=1;
+  }
+  energyUse=0;
+  explodeAs=Flag;
+  //extractsMetal=0.000265;
+  floater=1;
+  footprintX=0;
+  footprintZ=0;
+  hideDamage=1;
+  iconType=flag;
+  levelGround=0;
+  maxDamage=5e+06;
+  maxSlope=20;
+  maxWaterDepth=255;
+  objectName=buoy.S3O;
+  onoffable=1;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=0;
+  smoothAnim=0;
+  stealth=1;
+  windGenerator=0.00001;
+  yardmap=o;
+}
+
