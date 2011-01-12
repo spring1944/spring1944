@@ -70,7 +70,7 @@
 
   weapon1=bomb;
   maxAngleDif1=20;
-  onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP OPENVEH INFANTRY DEPLOYED;
   weaponMainDir1=0 -0.18 1;
 
   weapon2=mg15115mm;
