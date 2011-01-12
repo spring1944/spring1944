@@ -8,7 +8,7 @@
     damagetype=grenade;
   }
   [damage] {
-    default=1250;
+    default=1450;
   }
   dynDamageExp=1;
   dynDamageRange=200;

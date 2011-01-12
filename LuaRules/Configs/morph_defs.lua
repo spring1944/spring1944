@@ -67,9 +67,9 @@ local morphDefs = {
 		},
 		{
 			into = 'russpyard1',
-			metal = 5700,
+			metal = 6500,
 			energy = 0,
-			time = 165,
+			time = 185,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
@@ -79,9 +79,9 @@ local morphDefs = {
 	usgunyard = {
 		{
 			into = 'usspyard',
-			metal = 4500,
+			metal = 5175,
 			energy = 0,
-			time = 130,
+			time = 150,
 			name = '  Self  \n  Propelled  ',
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
@@ -100,9 +100,9 @@ local morphDefs = {
 		},
 		{
 			into = 'gerspyard1',
-			metal = 5700,
+			metal = 6500,
 			energy = 0,
-			time = 165,
+			time = 185,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
@@ -121,9 +121,9 @@ local morphDefs = {
 		},
 		{
 			into = 'gbrspyard1',
-			metal = 5700,
+			metal = 6500,
 			energy = 0,
-			time = 165,
+			time = 185,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,

@@ -25,7 +25,7 @@ local RETREAT_TOLERANCE = 64 --retreating planes disappear when they reach this 
 local CRUISE_SPEED = 0.75
 local PLANE_STATE_ACTIVE = 0
 local PLANE_STATE_RETREAT = 1
-local DEPOSIT_AMOUNT = 0.5
+local DEPOSIT_AMOUNT = 0.65
 local PENALTY_AMOUNT = 0.1
 
 local CreateUnit = Spring.CreateUnit
