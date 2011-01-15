@@ -30,7 +30,6 @@ local EditUnitCmdDesc		= Spring.EditUnitCmdDesc
 local FindUnitCmdDesc		= Spring.FindUnitCmdDesc
 local InsertUnitCmdDesc		= Spring.InsertUnitCmdDesc
 local SetUnitArmored		= Spring.SetUnitArmored
-local SetUnitCOBValue		= Spring.SetUnitCOBValue
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
 -- Unsynced Ctrl
 local SendMessageToTeam		= Spring.SendMessageToTeam
@@ -64,15 +63,11 @@ local function EndBeach(unitID, disable)
 	activeUnits[unitID] = nil
 	if disable then -- unit has surfaced
 		mcDisable(unitID) 
-		--SetUnitArmored(unitID, false)
-		SetUnitCOBValue(unitID, COB.ARMORED, 0) -- delete me
+		SetUnitArmored(unitID, false)
 		SetUnitWeaponState(unitID, 0, {accuracy = BASE_ACCURACY})
 		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY})
 	else -- unit is grounded
-		-- 3rd param won't work till next Spring version, and the callin is broken till then anyway!
-		--SetUnitArmored(unitID, true, ARMOUR_MULTIPLE) 
-		-- so do this for now instead
-		SetUnitCOBValue(unitID, COB.ARMORED, 1)
+		SetUnitArmored(unitID, true, ARMOUR_MULTIPLE) 
 		SetUnitWeaponState(unitID, 0, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
 		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
 	end
