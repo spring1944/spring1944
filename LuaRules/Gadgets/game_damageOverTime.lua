@@ -33,7 +33,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local damageTime = tonumber(wd.customParams.damagetime)
 	if damageTime then
 		local gameFrame = GetGameFrame()
-		local damageZone = wd.areaOfEffect
+		local damageZone = wd.areaOfEffect*1.15
 		local damagePerSecond = wd.damages[1]
 		local weaponCeg = wd.customParams.ceg
 		local units = GetUnitsInSphere(px, py, pz, damageZone)

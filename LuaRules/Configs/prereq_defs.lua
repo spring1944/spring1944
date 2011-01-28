@@ -18,7 +18,7 @@ local anyBarracks = {
 }
 
 local result = {
-  gbrgunyard = anyBarracks,
+--[[  gbrgunyard = anyBarracks,
   gbrvehicleyard = anyBarracks,
   gbrtankyard = anyBarracks,
   gbrradar = anyBarracks,
@@ -32,7 +32,7 @@ local result = {
   usgunyard = anyBarracks,
   usvehicleyard = anyBarracks,
   ustankyard = anyBarracks,
-  usradar = anyBarracks,
+  usradar = anyBarracks,]]--
 }
 
 return result
