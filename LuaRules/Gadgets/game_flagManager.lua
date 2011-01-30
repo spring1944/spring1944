@@ -14,15 +14,19 @@ end
 local floor						= math.floor
 -- Synced Read
 local AreTeamsAllied			= Spring.AreTeamsAllied
+local GetFeatureDefID			= Spring.GetFeatureDefID
+local GetFeaturePosition		= Spring.GetFeaturePosition
 local GetGroundHeight			= Spring.GetGroundHeight
 local GetGroundInfo				= Spring.GetGroundInfo
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
+local GetTeamUnitDefCount 		= Spring.GetTeamUnitDefCount
 
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local CreateUnit				= Spring.CreateUnit
+local DestroyFeature			= Spring.DestroyFeature
 local GiveOrderToUnit			= Spring.GiveOrderToUnit
 local SetTeamRulesParam			= Spring.SetTeamRulesParam
 local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
@@ -36,34 +40,56 @@ local TransferUnit				= Spring.TransferUnit
 -- constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local PROFILE_PATH = "maps/flagConfig/" .. Game.mapName .. "_profile.lua"
+local DEBUG	= false -- enable to print out flag locations in profile format
 
+local CAP_MULT = 0.25 --multiplies against the FBI defined CapRate
+local DEF_MULT = 0.25 --multiplies against the FBI defined DefRate
+local SIDES	= {gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
+
+-- easymetal constants
 local EXTRACT_RADIUS = Game.extractorRadius > 125 and Game.extractorRadius or 125
 local GRID_SIZE	= 4
 local THRESH_FRACTION = 0.4
 local MAP_WIDTH = floor(Game.mapSizeX / GRID_SIZE)
 local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
 
-local FLAG_RADIUS = 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
-local FLAG_CAP_THRESHOLD = 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
-local FLAG_REGEN = 1 -- how fast a flag with no defenders or attackers will reduce capping statuses
-local CAP_MULT = 0.25 --multiplies against the FBI defined CapRate
-local DEF_MULT = 1 --multiplies against the FBI defined DefRate
-local SIDES	= {gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
-local DEBUG	= false -- enable to print out flag locations in profile format
-
 -- variables
 local metalMap = {}
 local maxMetal = 0
 local totalMetal = 0
-local spots = {}
-local spotCount	= 0
+local metalSpots = {}
+local metalSpotCount	= 0
 local metalData = {}
 local metalDataCount = 0
 
-local flags = {}
-local numFlags = 0
-local cappers = {} -- table of flag cappers
-local defenders	= {} -- table of flag defenders
+local buoySpots = {}
+local numBuoySpots = 0
+
+local flagTypes = {"flag", "buoy"}
+local flags = {} -- flags[flagType][index] == flagUnitID
+local numFlags = {} -- numFlags[flagType] == numberOfFlagsOfType
+local flagTypeData = {} -- flagTypeData[flagType] = {radius = radius, etc}
+local flagTypeSpots = {} -- flagTypeSpots[flagType][metalSpotCount] == {x = x_coord, z = z_coord}
+local flagTypeCappers = {} -- cappers[flagType][unitID] = true
+local flagTypeDefenders	= {} -- defenders[flagType][unitID] = true
+
+for _, flagType in pairs(flagTypes) do
+	local cp = UnitDefNames[flagType].customParams
+	flagTypeData[flagType] = {
+		radius = tonumber(cp.flagradius) or 230, -- radius of flagTypes capping area
+		capThreshold = tonumber(cp.capthreshold) or 10, -- number of capping points needed for flagType to switch teams
+		regen = tonumber(cp.flagregen) or 1, -- how fast a flagType with no defenders or attackers will reduce capping statuses
+		tooltip = UnitDefNames[flagType].tooltip or "Flag", -- what to call the flagType when it switches teams
+		limit = UnitDefNames[flagType].customParams.flaglimit or Game.maxUnits, -- How many of this flagType a player can hold at once
+	}
+	flags[flagType] = {}
+	numFlags[flagType] = 0
+	flagTypeSpots[flagType] = {}
+	flagTypeCappers[flagType] = {}
+	flagTypeDefenders[flagType] = {}
+end
+
+
 local flagCapStatuses = {} -- table of flag's capping statuses
 local teams	= Spring.GetTeamList()
 
@@ -78,6 +104,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local DelayCall = GG.Delay.DelayCall
 
+-- easymetal code startrs
 local function round(num, idp)
   local mult = 10^(idp or 0)
   return floor(num * mult + 0.5) / mult
@@ -85,9 +112,9 @@ end
 
 
 local function mergeToSpot(spotNum, px, pz, pWeight)
-	local sx = spots[spotNum].x
-	local sz = spots[spotNum].z
-	local sWeight = spots[spotNum].weight
+	local sx = metalSpots[spotNum].x
+	local sz = metalSpots[spotNum].z
+	local sWeight = metalSpots[spotNum].weight
 	
 	local avgX, avgZ
 	
@@ -101,14 +128,14 @@ local function mergeToSpot(spotNum, px, pz, pWeight)
 		avgZ = (pz*pStrength + sz) / (pStrength +1)		
 	end
 	
-	spots[spotNum].x = avgX
-	spots[spotNum].z = avgZ
-	spots[spotNum].weight = sWeight + pWeight
+	metalSpots[spotNum].x = avgX
+	metalSpots[spotNum].z = avgZ
+	metalSpots[spotNum].weight = sWeight + pWeight
 end
 
 
 local function NearSpot(px, pz, dist)
-	for k, spot in pairs(spots) do
+	for k, spot in pairs(metalSpots) do
 		local sx, sz = spot.x, spot.z
 		if (px-sx)^2 + (pz-sz)^2 < dist then
 			return k
@@ -165,8 +192,8 @@ local function AnalyzeMetalMap()
 		if nearSpotNum then
 			mergeToSpot(nearSpotNum, mx, mz, mCur)
 		else
-			spotCount = spotCount + 1
-			spots[spotCount] = {
+			metalSpotCount = metalSpotCount + 1
+			metalSpots[metalSpotCount] = {
 				x = mx,
 				z = mz,
 				weight = mCur
@@ -174,151 +201,221 @@ local function AnalyzeMetalMap()
 		end
 	end
 	if metalMake >= 0 then
-		metalMake = metalMake * (#teams - 1) / #spots
+		metalMake = metalMake * (#teams - 1) / #metalSpots
+	end
+	return "flag", metalSpots
+end
+-- easymetal code ends
+
+function FindBuoyFeatures()
+	local BUOY_MIN_DEPTH = UnitDefNames["buoy"].minWaterDepth or 20
+	for _, featureID in pairs(Spring.GetAllFeatures()) do
+		local fd = FeatureDefs[GetFeatureDefID(featureID)]
+		if fd and fd.name == "buoy_placer" then
+			local fx, _, fz = GetFeaturePosition(featureID)
+			-- sanity check for water depth
+			if GetGroundHeight(x,z) <= -BUOY_MIN_DEPTH then
+				numBuoySpots = numBuoySpots + 1
+				buoySpots[numBuoySpots] = {
+					x = fx,
+					z = fz,
+				}
+			end
+			-- get rid of the feature regardless of whether or not it is valid
+			DestroyFeature(featureID)
+		end
+	end
+	return "buoy", buoySpots
+end
+
+-- this function is used to add any additional flagType specific behaviour
+function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
+	if flagType == "flag" then
+		SetUnitRulesParam(flagID, "lifespan", 0)
+		if flagTeamID == GAIA_TEAM_ID then
+			CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
+		else
+			CallCOBScript(flagID, "ShowFlag", 0, 0)
+		end
 	end
 end
 
-
-function PlaceFlag(spot)
-	local newFlag = CreateUnit("flag", spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
-	numFlags = numFlags + 1
-	flags[numFlags] = newFlag
-	
+function PlaceFlag(spot, flagType)
 	if DEBUG then
 		Spring.Echo("{")
 		Spring.Echo("	x = " .. spot.x .. ",")
 		Spring.Echo("	z = " .. spot.z .. ",")
-		Spring.Echo("	feature = nil")
 		Spring.Echo("},")
 	end
+	
+	local newFlag = CreateUnit(flagType, spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	numFlags[flagType] = numFlags[flagType] + 1
+	flags[flagType][numFlags[flagType]] = newFlag
+	flagCapStatuses[newFlag] = {}
 	
 	SetUnitNeutral(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
+	
 	if modOptions and modOptions.always_visible_flags == "0" then
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
-	if metalMake >= 0 then
+	
+	if metalMake >= 0 and flagType == "flag" then -- this is a little messy
 		SetUnitMetalExtraction(newFlag, 0, 0) -- remove extracted metal
 		SetUnitResourcing(newFlag, "umm", metalMake)
 	end
-	
-	flagCapStatuses[newFlag] = {}
 end
 
 
 function gadget:GamePreload()
-	-- FIND METAL SPOTS
-	if not VFS.FileExists(PROFILE_PATH) then
-		Spring.Echo("Map Flag Profile not found. Autogenerating flag positions.")
-		AnalyzeMetalMap()
+	if DEBUG then Spring.Echo(PROFILE_PATH) end
+	-- CHECK FOR PROFILES
+	if VFS.FileExists(PROFILE_PATH) then
+		local flagSpots, buoySpots = VFS.Include(PROFILE_PATH)
+		if flagSpots and #flagSpots > 0 then 
+			Spring.Echo("Map Flag Profile found. Loading Flag positions...")
+			flagTypeSpots["flag"] = flagSpots 
+		end
+		if buoySpots and #buoySpots > 0 then 
+			Spring.Echo("Map Buoy Profile found. Loading Buoy positions...")
+			flagTypeSpots["buoy"] = buoySpots 
+		end
+	end
+	-- TODO: for loop this somehow (table values can't be called, table keys can?)
+	-- IF NO FLAG PROFILE FOUND, ANALYSE METAL MAP
+	if #flagTypeSpots["flag"] == 0 then
+		Spring.Echo("Map Flag Profile not found. Autogenerating Flag positions...")
+		local flagType, spotTable = AnalyzeMetalMap() 
+		flagTypeSpots[flagType] = spotTable
+	end
+	-- IF NO BUOY PROFILE FOUND, CHECK FOR FEATURES
+	if #flagTypeSpots["buoy"] == 0 then
+		Spring.Echo("Map Buoy Profile not found. Looking for Buoy features...")
+		local flagType, spotTable = FindBuoyFeatures() 
+		flagTypeSpots[flagType] = spotTable
 	end
 end
 
 
 function gadget:GameStart()
 	-- FLAG PLACEMENT
-	if DEBUG then
-		Spring.Echo(PROFILE_PATH)
+	for _, flagType in pairs(flagTypes) do
+		if DEBUG then Spring.Echo("-- flagType is " .. flagType) end
+		for i = 1, #flagTypeSpots[flagType] do
+			PlaceFlag(flagTypeSpots[flagType][i], flagType)
+		end
+		GG[flagType .. "s"] = flags[flagType] -- nicer to have GG.flags rather than GG.flag
 	end
-	if  VFS.FileExists(PROFILE_PATH) then -- load the flag positions from profile
-		Spring.Echo("Map Flag Profile found. Loading flag positions.")
-		spots = VFS.Include(PROFILE_PATH)
-	end
-	for i = 1, spotCount do
-		PlaceFlag(spots[i])
-	end
-	GG['flags'] = flags
 end
 
 
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
-		for spotNum, flagID in pairs(flags) do
-			local flagTeamID = GetUnitTeam(flagID)
-			local defendTotal = 0
-			local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, FLAG_RADIUS)
-			--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
-			if #unitsAtFlag == 1 then -- Only the flag, no other units
-				for teamID = 0, #teams-1 do
-					if teamID ~= flagTeamID then
-						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
-							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - FLAG_REGEN
-							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
-						end
-					end
-				end
-			else -- Attackers or defenders (or both) present
-				for i = 1, #unitsAtFlag do
-					local unitID = unitsAtFlag[i]
-					local unitTeamID = GetUnitTeam(unitID)
-					if AreTeamsAllied(unitTeamID, flagTeamID) and defenders[unitID] then
-						--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
-						defendTotal = defendTotal + defenders[unitID]
-					end
-					if (not AreTeamsAllied(unitTeamID, flagTeamID)) and cappers[unitID] then
-						--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
-						flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
-					end
-				end
-				for j = 1, #teams do
-					teamID = teams[j]
-					if teamID ~= flagTeamID then
-						if (flagCapStatuses[flagID][teamID] or 0) > 0 then
-							--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
-							flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
-							if flagCapStatuses[flagID][teamID] < 0 then
-								flagCapStatuses[flagID][teamID] = 0
+		for _, flagType in pairs(flagTypes) do
+			local flagData = flagTypeData[flagType]
+			--for spotNum, flagID in pairs(flags[flagType]) do
+			for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
+				local flagID = flags[flagType][spotNum]
+				local flagTeamID = GetUnitTeam(flagID)
+				local spots = flagTypeSpots[flagType]
+				local cappers = flagTypeCappers[flagType]
+				local defenders = flagTypeDefenders[flagType]
+				local defendTotal = 0
+				local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, flagData.radius)
+				--Spring.Echo ("There are " .. #unitsAtFlag .. " units at flag " .. flagID)
+				if #unitsAtFlag == 1 then -- Only the flag, no other units
+					for teamID = 0, #teams-1 do
+						if teamID ~= flagTeamID then
+							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - flagData.regen
+								SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
 							end
-							SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
 						end
 					end
-					if (flagCapStatuses[flagID][teamID] or 0) > FLAG_CAP_THRESHOLD and teamID ~= flagTeamID then
-						if (flagTeamID == GAIA_TEAM_ID) then
-							Spring.SendMessageToTeam(teamID, "Flag Captured!")
-							TransferUnit(flagID, teamID, false)
-							SetUnitRulesParam(flagID, "lifespan", 0)
-							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1, {public = true})
-							CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
-						else
-							Spring.SendMessageToTeam(teamID, "Flag Neutralised!")
-							TransferUnit(flagID, GAIA_TEAM_ID, false)
-							SetUnitRulesParam(flagID, "lifespan", 0)
-							SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) - 1, {public = true})
-							CallCOBScript(flagID, "ShowFlag", 0, 0)
+				else -- Attackers or defenders (or both) present
+					for i = 1, #unitsAtFlag do
+						local unitID = unitsAtFlag[i]
+						local unitTeamID = GetUnitTeam(unitID)
+						if defenders[unitID] and AreTeamsAllied(unitTeamID, flagTeamID) then
+							--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
+							defendTotal = defendTotal + defenders[unitID]
 						end
-						GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
-						for cleanTeamID = 0, #teams-1 do
-							flagCapStatuses[flagID][cleanTeamID] = 0
-							SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0, {public = true})
+						if cappers[unitID] and (not AreTeamsAllied(unitTeamID, flagTeamID)) then
+							if (flagTeamID ~= GAIA_TEAM_ID or GetTeamUnitDefCount(unitTeamID, UnitDefNames[flagType].id) < flagData.limit) then
+								--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
+								flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
+							end
 						end
 					end
-					-- cleanup defenders
-					flagCapStatuses[flagID][flagTeamID] = 0
+					for j = 1, #teams do
+						teamID = teams[j]
+						if teamID ~= flagTeamID then
+							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
+								--Spring.Echo("Capping: " .. flagCapStatuses[flagID][teamID] .. " Defending: " .. defendTotal)
+								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
+								if flagCapStatuses[flagID][teamID] < 0 then
+									flagCapStatuses[flagID][teamID] = 0
+								end
+								SetUnitRulesParam(flagID, "cap" .. tostring(teamID), flagCapStatuses[flagID][teamID], {public = true})
+							end
+						end
+						if (flagCapStatuses[flagID][teamID] or 0) > flagData.capThreshold and teamID ~= flagTeamID then
+							-- Flag is ready to change team
+							if (flagTeamID == GAIA_TEAM_ID) then
+								-- Neutral flag being capped
+								Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Captured!")
+								TransferUnit(flagID, teamID, false)
+								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) + 1, {public = true})
+							else
+								-- Team flag being neutralised
+								Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
+								TransferUnit(flagID, GAIA_TEAM_ID, false)
+								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) - 1, {public = true})
+							end
+							-- Perform any flagType specific behaviours
+							FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
+							-- Turn flag back on
+							GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
+							-- Flag has changed team, reset capping statuses
+							for cleanTeamID = 0, #teams-1 do
+								flagCapStatuses[flagID][cleanTeamID] = 0
+								SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0, {public = true})
+							end
+						end
+						-- cleanup defenders
+						flagCapStatuses[flagID][flagTeamID] = 0
+					end
 				end
 			end
 		end
 	end
 end
 
-
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if (ud.customParams.flagcaprate) then
-		cappers[unitID] = (CAP_MULT*ud.customParams.flagcaprate)
-		defenders[unitID] = (CAP_MULT*ud.customParams.flagcaprate)
-	end
-	if (ud.customParams.flagdefendrate) then
-		defenders[unitID] = (DEF_MULT*ud.customParams.flagdefendrate)
+	local cp = ud.customParams
+	local flagCapRate = cp.flagcaprate
+	local flagDefendRate = cp.flagdefendrate or flagCapRate
+	local flagCapType = ud.customParams.flagcaptype or "flag"
+	if flagCapRate then
+		flagTypeCappers[flagCapType][unitID] = (CAP_MULT * flagCapRate)
+		flagTypeDefenders[flagCapType][unitID] = (DEF_MULT * flagCapRate)
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-	cappers[unitID] = nil
-	defenders[unitID] = nil
+	local ud = UnitDefs[unitDefID]
+	local cp = ud.customParams
+	local flagCapRate = cp.flagcaprate
+	local flagCapType = ud.customParams.flagcaptype or "flag"
+	if flagCapRate then
+		flagTypeCappers[flagCapType][unitID] = nil
+		flagTypeDefenders[flagCapType][unitID] = nil
+	end
 end
 
 else

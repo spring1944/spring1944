@@ -24,6 +24,7 @@
   maxDamage=5e+06;
   maxSlope=20;
   maxWaterDepth=255;
+  minWaterDepth=20;
   objectName=buoy.S3O;
   onoffable=1;
   [sfxtypes] {
