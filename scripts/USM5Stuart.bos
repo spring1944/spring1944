@@ -206,8 +206,7 @@ AimFromWeapon2(piecenum)
 }
 
 AimWeapon2(heading, pitch)
-{	
-	if (aim3) return 0; // don't aim AP if aiming cannister
+{	 
 	aim2 = TRUE;
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
@@ -255,6 +254,7 @@ AimFromWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {	
+	if (aim2) return 0; // don't aim cannister if aiming AP
 	aim3 = TRUE;
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
