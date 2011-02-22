@@ -1,19 +1,11 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  Copyright (C) 2008.
---  Licensed under the terms of the GNU GPL, v2 or later.
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 
 function widget:GetInfo()
 	return {
 		name      = "CustomFormations2",
 		desc      = "Allows you to draw your own formation line.",
-		author    = "Niobium", -- Based on 'Custom Formations v2.3' by jK and gunblob
-		version   = "v2.9",
-		date      = "Jan, 2008",
+		author    = "Niobium", -- Based on 'Custom Formations' by jK and gunblob
+		version   = "v3.3",
+		date      = "Mar, 2010",
 		license   = "GNU GPL, v2 or later",
 		layer     = 10000,
 		enabled   = true,
@@ -22,121 +14,137 @@ function widget:GetInfo()
 end
 
 --------------------------------------------------------------------------------
--- User Configurable
+-- User Configurable Constants
 --------------------------------------------------------------------------------
--- Minimum spacing between commands (Squared) when drawing a path for single unit, must be >= 17*17 (Or orders overlap and cancel)
+-- Minimum spacing between commands (Squared) when drawing a path for a single unit, must be >16*16 (Or orders overlap and cancel)
 local minPathSpacingSq = 50 * 50
 
--- How long should algorithms take. (>0.1 gives visible stutter, default: 0.05)
+-- Minimum line length to cause formation move instead of single-click-style order
+local minFormationLength = 20
+
+-- How long should algorithms take. (~0.1 gives visible stutter, default: 0.05)
 local maxHngTime = 0.05 -- Desired maximum time for hungarian algorithm
-local maxNoXTime = 0.05 -- Strict maximum time for nox algorithm
+local maxNoXTime = 0.05 -- Strict maximum time for backup algorithm
 
--- Need a baseline to start from when no config data saved
-local defaultHungarianUnits	= 20
+local defaultHungarianUnits	= 20 -- Need a baseline to start from when no config data saved
+local minHungarianUnits		= 10 -- If we kept reducing maxUnits it can get to a point where it can never increase, so we enforce minimums on the algorithms.
+local unitIncreaseThresh	= 0.85 -- We only increase maxUnits if the units are great enough for time to be meaningful
 
--- If we kept reducing maxUnits, it can get to a point where it can never increase
--- So we enforce minimums on the algorithms, if peoples CPUs cannot handle these minimums then the widget is not suited to them
-local minHungarianUnits		= 10
+-- Alpha loss per second after releasing mouse
+local lineFadeRate = 2.0
 
--- We only increase maxUnits if the units are great enough for time to be meaningful
-local unitIncreaseThresh	= 0.85
+-- What commands are eligible for custom formations
+local formationCmds = {
+	[CMD.MOVE] = true,
+	[CMD.FIGHT] = true,
+	[CMD.ATTACK] = true,
+	[CMD.PATROL] = true,
+	[CMD.UNLOAD_UNIT] = true,
+	[38521] = true -- Jump
+}
+
+-- What commands require alt to be held (Must also appear in formationCmds)
+local requiresAlt = {
+	[CMD.ATTACK] = true,
+	[CMD.UNLOAD_UNIT] = true
+}
+
+-- Context-based default commands that can be overridden (i.e. guard when mouseover unit)
+-- If the mouse remains on the same target for both Press/Release then the formation is ignored and original command is issued.
+-- Normal logic will follow after override, i.e. must be a formationCmd to get formation, alt must be held if requiresAlt, etc.
+local overrideCmds = {
+	[CMD.GUARD] = CMD.MOVE,
+}
+
+-- What commands are issued at a position or unit/feature ID (Only used by GetUnitPosition)
+local positionCmds = {
+	[CMD.MOVE]=true,		[CMD.ATTACK]=true,		[CMD.RECLAIM]=true,		[CMD.RESTORE]=true,		[CMD.RESURRECT]=true,
+	[CMD.PATROL]=true,		[CMD.CAPTURE]=true,		[CMD.FIGHT]=true, 		[CMD.DGUN]=true,		[38521]=true, -- jump
+	[CMD.UNLOAD_UNIT]=true,	[CMD.UNLOAD_UNITS]=true,[CMD.LOAD_UNITS]=true,	[CMD.GUARD]=true,		[CMD.AREA_ATTACK] = true,
+}
 
 --------------------------------------------------------------------------------
 -- Globals
 --------------------------------------------------------------------------------
--- These get changed when loading config, they don't technically need values here
-local maxHungarianUnits         = defaultHungarianUnits
-local maxOptimizationUnits      = defaultOptimizationUnits
+local maxHungarianUnits = defaultHungarianUnits -- Also set when loading config
 
-local fNodes = {}
-local fNodeCount = 0
-local fLength = 0
-local fDists = {}
-local totaldxy = 0  --// moved mouse distance 
+local fNodes = {} -- Formation nodes, filled as we draw
+local fDists = {} -- fDists[i] = distance from node 1 to node i
+local totaldxy = 0 -- Measure of distance mouse has moved, used to unjag lines drawn in minimap
 
-local dimmNodes = {}
-local dimmNodeCount = 0
-local alphaDimm = 1
+local dimmCmd = nil -- The dimming command (Used for color)
+local dimmNodes = {} -- The current nodes of dimming line
+local dimmAlpha = 0 -- The current alpha of dimming line
 
-local draggingPath = false
-local lastPathPos = {}
+local pathCandidate = false -- True if we should start a path on mouse move
+local draggingPath = false -- True if we are dragging a path for unit(s) to follow
+local lastPathPos = nil -- The last point added to the path, used for min-distance check
 
-local inMinimap = false
+local overriddenCmd = nil -- The command we ignored in favor of move
+local overriddenTarget = nil -- The target (for params) we ignored
 
-local endShift = false
-local activeCmdIndex = -1
-local cmdTag = CMD.MOVE
-local inButtonEvent = false  --//if you click the command menu the move/fight command is handled with left click instead of right one
+local usingCmd = nil -- The command to execute across the line
+local usingRMB = false -- If the command is the default it uses right click, otherwise it is active and uses left click
+local inMinimap = false -- Is the line being drawn in the minimap
+local endShift = false -- True to reset command when shift is released
 
-local invertQueueKey = (Spring.GetConfigInt("InvertQueueKey", 0) == 1)
 local MiniMapFullProxy = (Spring.GetConfigInt("MiniMapFullProxy", 0) == 1)
 
 --------------------------------------------------------------------------------
 -- Speedups
 --------------------------------------------------------------------------------
-local osclock	= os.clock
+local GL_LINE_STRIP = GL.LINE_STRIP
+local glVertex = gl.Vertex
+local glLineStipple = gl.LineStipple
+local glLineWidth = gl.LineWidth
+local glColor = gl.Color
+local glBeginEnd = gl.BeginEnd
+local glPushMatrix = gl.PushMatrix
+local glPopMatrix = gl.PopMatrix
+local glScale = gl.Scale
+local glTranslate = gl.Translate
+local glLoadIdentity = gl.LoadIdentity
 
-local GL_LINE_STRIP		= GL.LINE_STRIP
-local glVertex			= gl.Vertex
-local glLineStipple 	= gl.LineStipple
-local glLineWidth   	= gl.LineWidth
-local glColor       	= gl.Color
-local glBeginEnd    	= gl.BeginEnd
-local glPushMatrix		= gl.PushMatrix
-local glPopMatrix		= gl.PopMatrix
-local glScale			= gl.Scale
-local glTranslate		= gl.Translate
-local glLoadIdentity	= gl.LoadIdentity
-
-local spEcho				= Spring.Echo
-
-local spGetActiveCommand 	= Spring.GetActiveCommand
-local spSetActiveCommand	= Spring.SetActiveCommand
-local spGetDefaultCommand	= Spring.GetDefaultCommand
-
-local spGetModKeyState		= Spring.GetModKeyState
-local spGetInvertQueueKey	= Spring.GetInvertQueueKey
-local spGetMouseState		= Spring.GetMouseState
-
-local spIsAboveMiniMap		= Spring.IsAboveMiniMap
-
-local spGetSelUnitCount		= Spring.GetSelectedUnitsCount
-local spGetSelUnits			= Spring.GetSelectedUnits
-local spGetSelUnitsSorted	= Spring.GetSelectedUnitsSorted
-
-local spGiveOrder			= Spring.GiveOrder
-local spGetUnitDefID 		= Spring.GetUnitDefID
+local spGetActiveCommand = Spring.GetActiveCommand
+local spSetActiveCommand = Spring.SetActiveCommand
+local spGetDefaultCommand = Spring.GetDefaultCommand
+local spFindUnitCmdDesc = Spring.FindUnitCmdDesc
+local spGetModKeyState = Spring.GetModKeyState
+local spGetInvertQueueKey = Spring.GetInvertQueueKey
+local spIsAboveMiniMap = Spring.IsAboveMiniMap
+local spGetSelectedUnitCount = Spring.GetSelectedUnitsCount
+local spGetSelectedUnits = Spring.GetSelectedUnits
+local spGetUnitDefID = Spring.GetUnitDefID
+local spGiveOrder = Spring.GiveOrder
 local spGetUnitIsTransporting = Spring.GetUnitIsTransporting
-local spGetCommandQueue		= Spring.GetCommandQueue
-local spGiveOrderToUnit   	= Spring.GiveOrderToUnit
-local spGetUnitPosition		= Spring.GetUnitPosition
+local spGetCommandQueue = Spring.GetCommandQueue
+local spGetUnitPosition = Spring.GetUnitPosition
+local spTraceScreenRay = Spring.TraceScreenRay
+local spGetGroundHeight = Spring.GetGroundHeight
+local spGetFeaturePosition = Spring.GetFeaturePosition
+local spGiveOrderToUnit = Spring.GiveOrderToUnit
 
-local spTraceScreenRay		= Spring.TraceScreenRay
-local spGetGroundHeight		= Spring.GetGroundHeight
-local spGetFeaturePosition	= Spring.GetFeaturePosition
+local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
+local maxUnits = Game.maxUnits
 
-local mapWidth, mapHeight 	= Game.mapSizeX, Game.mapSizeZ
-local maxUnits				= Game.maxUnits
-
-local uDefs = UnitDefs
-
-local sfind = string.find
-
+local osclock = os.clock
 local tsort = table.sort
-local tinsert = table.insert
-
+local floor = math.floor
 local ceil = math.ceil
-local sqrt	= math.sqrt
-local huge	= math.huge
+local sqrt = math.sqrt
+local huge = math.huge
 
 local CMD_INSERT = CMD.INSERT
 local CMD_MOVE = CMD.MOVE
-local CMD_FIGHT = CMD.FIGHT
-local CMD_PATROL = CMD.PATROL
 local CMD_ATTACK = CMD.ATTACK
 local CMD_UNLOADUNIT = CMD.UNLOAD_UNIT
 local CMD_UNLOADUNITS = CMD.UNLOAD_UNITS
-local CMD_JUMP = 38521
+local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED
+local CMD_OPT_ALT = CMD.OPT_ALT
+local CMD_OPT_CTRL = CMD.OPT_CTRL
+local CMD_OPT_META = CMD.OPT_META
+local CMD_OPT_SHIFT = CMD.OPT_SHIFT
+local CMD_OPT_RIGHT = CMD.OPT_RIGHT
 
 local keyShift = 304
 
@@ -144,54 +152,30 @@ local keyShift = 304
 -- Helper Functions
 --------------------------------------------------------------------------------
 local function GetModKeys()
-
-	--// Create modkeystate list
+	
 	local alt, ctrl, meta, shift = spGetModKeyState()
 	
-	-- Shift inversion
-	if spGetInvertQueueKey() then
-		
+	if spGetInvertQueueKey() then -- Shift inversion
 		shift = not shift
-		
-		-- check for immediate mode mouse 'rocker' gestures
-		--[[
-		local x, y, b1, b2, b3 = spGetMouseState()
-		if (((button == 1) and b3) or
-			((button == 3) and b1)) then
-			shift = false
-		end
-		]]--
 	end
 	
 	return alt, ctrl, meta, shift
 end
-
-local moveCmds = {
-	[CMD_MOVE]=true,	[CMD_ATTACK]=true,	[CMD.RECLAIM]=true,	[CMD.RESTORE]=true,	[CMD.RESURRECT]=true,
-	[CMD_PATROL]=true,	[CMD.CAPTURE]=true,	[CMD_FIGHT]=true,	[CMD.DGUN]=true,	[CMD_JUMP]=true, 
-	[CMD_UNLOADUNIT]=true,	[CMD_UNLOADUNITS]=true,	[CMD.LOAD_UNITS]=true,
-} -- Only used by GetUnitPosition
-
-local function GetUnitPosition(uID)
+local function GetUnitFinalPosition(uID)
 	
-	local x, y, z = spGetUnitPosition(uID)
+	local ux, uy, uz = spGetUnitPosition(uID)
 	
-	local cmds = spGetCommandQueue(uID) ; if not cmds then return x, y, z end
-	
+	local cmds = spGetCommandQueue(uID)
 	for i = #cmds, 1, -1 do
 		
 		local cmd = cmds[i]
-		
-		if (cmd.id < 0) or moveCmds[cmd.id] then
+		if (cmd.id < 0) or positionCmds[cmd.id] then
 			
 			local params = cmd.params
-			
-			if (#params >= 3) then
-				
+			if #params >= 3 then
 				return params[1], params[2], params[3]
-				
 			else
-				if (#params == 1) then
+				if #params == 1 then
 					
 					local pID = params[1]
 					local px, py, pz
@@ -210,64 +194,64 @@ local function GetUnitPosition(uID)
 		end
 	end
 	
-	return x, y, z
+	return ux, uy, uz
 end
-
-local function setColor(cmdID, alpha)
-	if (cmdID == CMD_MOVE) then glColor(0.5, 1.0, 0.5, alpha) -- Green
-	elseif (cmdID == CMD_ATTACK) then glColor(1.0, 0.2, 0.2, alpha) -- Red
-	elseif (cmdID == CMD_UNLOADUNIT) then glColor(1.0, 1.0, 0.0, alpha) -- Yellow
-	else glColor(0.5, 0.5, 1.0, alpha) -- Blue
+local function SetColor(cmdID, alpha)
+	if     cmdID == CMD_MOVE       then glColor(0.5, 1.0, 0.5, alpha) -- Green
+	elseif cmdID == CMD_ATTACK     then glColor(1.0, 0.2, 0.2, alpha) -- Red
+	elseif cmdID == CMD_UNLOADUNIT then glColor(1.0, 1.0, 0.0, alpha) -- Yellow
+	else                                glColor(0.5, 0.5, 1.0, alpha) -- Blue
 	end
 end
-
-local function commandApplies(uID, uDefID, cmdID)
+local function CanUnitExecute(uID, cmdID)
 	
-	if (cmdID == CMD_UNLOADUNIT) then
+	if cmdID == CMD_UNLOADUNIT then
 		local transporting = spGetUnitIsTransporting(uID)
 		return (transporting and #transporting > 0)
 	end
 	
-	return (((cmdID == CMD_MOVE) or (cmdID == CMD_FIGHT) or (cmdID == CMD_PATROL)) and uDefs[uDefID].canMove) or
-			((cmdID == CMD_ATTACK) and (uDefs[uDefID].weapons.n > 0)) or
-			(cmdID == CMD_JUMP) -- TODO: How to tell if a unit can jump or not
+	return (spFindUnitCmdDesc(uID, cmdID) ~= nil)
 end
-
+local function GetExecutingUnits(cmdID)
+	local units = {}
+	local selUnits = spGetSelectedUnits()
+	for i = 1, #selUnits do
+		local uID = selUnits[i]
+		if CanUnitExecute(uID, cmdID) then
+			units[#units + 1] = uID
+		end
+	end
+	return units
+end
 local function AddFNode(pos)
 	
-	if (fNodeCount > 0) then
-		
-		local prevNode = fNodes[fNodeCount]
-		local dx, dz = pos[1] - prevNode[1], pos[3] - prevNode[3]
-		local dist = sqrt(dx*dx + dz*dz)
-		
-		if (dist == 0.0) then
-			-- Duplicate node. Don't add
-			return
-		end
-		
-		fLength = fLength + dist
-		
-	--else fLength = 0 -- This is done at ClearFNodes instead
+	local px, pz = pos[1], pos[3]
+	if px < 0 or pz < 0 or px > mapSizeX or pz > mapSizeZ then
+		return false
 	end
 	
-	fNodeCount = fNodeCount + 1
-	fNodes[fNodeCount] = pos
-	fDists[fNodeCount] = fLength
+	local n = #fNodes
+	if n == 0 then
+		fNodes[1] = pos
+		fDists[1] = 0
+	else
+		local prevNode = fNodes[n]
+		local dx, dz = px - prevNode[1], pz - prevNode[3]
+		local distSq = dx*dx + dz*dz
+		if distSq == 0.0 then -- Don't add if duplicate
+			return false
+		end
+		
+		fNodes[n + 1] = pos
+		fDists[n + 1] = fDists[n] + sqrt(distSq)
+	end
 	
 	totaldxy = 0
+	return true
 end
-
-local function ClearFNodes()
-	
-	fNodes = {}
-	fNodeCount = 0
-	fLength = 0
-end
-
 local function GetInterpNodes(number)
 	
-	local spacing = fLength / (number - 1)
+	local spacing = fDists[#fNodes] / (number - 1)
 	
 	local interpNodes = {}
 	
@@ -284,10 +268,9 @@ local function GetInterpNodes(number)
 	
 	interpNodes[1] = {sX, spGetGroundHeight(sX, sZ), sZ}
 	
-	for n=1, (number - 2) do
+	for n = 1, number - 2 do
 		
 		local reqDist = n * spacing
-		
 		while (reqDist > eDist) do
 			
 			sX = eX
@@ -302,418 +285,389 @@ local function GetInterpNodes(number)
 		end
 		
 		local nFrac = (reqDist - sDist) / (eDist - sDist)
-		
 		local nX = sX * (1 - nFrac) + eX * nFrac
 		local nZ = sZ * (1 - nFrac) + eZ * nFrac
-		
 		interpNodes[n + 1] = {nX, spGetGroundHeight(nX, nZ), nZ}
 	end
 	
-	ePos = fNodes[fNodeCount]
+	ePos = fNodes[#fNodes]
 	eX = ePos[1]
 	eZ = ePos[3]
-	
 	interpNodes[number] = {eX, spGetGroundHeight(eX, eZ), eZ}
 	
 	return interpNodes
 end
-
+local function GetCmdOpts(alt, ctrl, meta, shift, right)
+	
+	local opts = { alt=alt, ctrl=ctrl, meta=meta, shift=shift, right=right }
+	local coded = 0
+	
+	if alt   then coded = coded + CMD_OPT_ALT   end
+	if ctrl  then coded = coded + CMD_OPT_CTRL  end
+	if meta  then coded = coded + CMD_OPT_META  end
+	if shift then coded = coded + CMD_OPT_SHIFT end
+	if right then coded = coded + CMD_OPT_RIGHT end
+	
+	opts.coded = coded
+	return opts
+end
 local function GiveNotifyingOrder(cmdID, cmdParams, cmdOpts)
 	
-	-- Because we have ONE order for ALL selected units, there are no conflicts
-	-- If something wants to handle it, then it is allowed to and we exit
+	if widgetHandler:CommandNotify(cmdID, cmdParams, cmdOpts) then
+		return
+	end
 	
-	-- Loop through all widgets with :CommandNotify
-	for _, w in ipairs(widgetHandler.CommandNotifyList) do
-		
-		-- Don't look at command insert widget (It conflicts due to the way it is written)
-		-- Else get return value, if true then return
-		if not sfind(w:GetInfo().name, "CommandInsert") and w:CommandNotify(cmdID, cmdParams, cmdOpts) then
+	spGiveOrder(cmdID, cmdParams, cmdOpts.coded)
+end
+local function GiveNotifyingOrderToUnit(uID, cmdID, cmdParams, cmdOpts)
+	
+	for _, w in ipairs(widgetHandler.widgets) do
+		if w.UnitCommandNotify and w:UnitCommandNotify(uID, cmdID, cmdParams, cmdOpts) then
 			return
 		end
 	end
 	
-	-- Give order
-	spGiveOrder(cmdID, cmdParams, cmdOpts)
+	spGiveOrderToUnit(uID, cmdID, cmdParams, cmdOpts.coded)
 end
 
 --------------------------------------------------------------------------------
 -- Mouse/keyboard Callins
 --------------------------------------------------------------------------------
-function widget:MousePress(mx, my, button)
+function widget:MousePress(mx, my, mButton)
 	
-	local activeid
-	endShift = false
-	activeCmdIndex, activeid = spGetActiveCommand()
-	
-	if (activeid == CMD_UNLOADUNITS) then
-		activeid = CMD_UNLOADUNIT -- Without this, the unloads issued will use the area of the last area unload
-	end
-	
-	local alt, ctrl, meta, shift = GetModKeys()
-	
-	inButtonEvent = (activeid) and (button == 1) and ((activeid == CMD_PATROL) or 
-													(activeid == CMD_FIGHT) or 
-													(activeid == CMD_MOVE) or 
-													(activeid == CMD_JUMP) or 
-													(alt and ((activeid == CMD_ATTACK) or (activeid == CMD_UNLOADUNIT)))
-													)
-	
-	if not (inButtonEvent or ((activeid == nil) and (button == 3))) then return false end
-	
-	local _,defid    = spGetDefaultCommand()
-	cmdTag = activeid or defid   --// CMD.MOVE or CMD.FIGHT
-	
-	if not (inButtonEvent or (defid == CMD_MOVE)) then return false end
-	
+	-- Where did we click
 	inMinimap = spIsAboveMiniMap(mx, my)
-	
 	if inMinimap and not MiniMapFullProxy then return false end
 	
-	local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
+	-- Get command that would've been issued
+	local _, activeCmdID = spGetActiveCommand()
+	if activeCmdID then
+		if mButton ~= 1 then return false end
+		
+		usingCmd = activeCmdID
+		usingRMB = false
+	else
+		if mButton ~= 3 then return false end
+		
+		local _, defaultCmdID = spGetDefaultCommand()
+		if not defaultCmdID then return false end
+		
+		local overrideCmdID = overrideCmds[defaultCmdID]
+		if overrideCmdID then
+			
+			local targType, targID = spTraceScreenRay(mx, my, false, inMinimap)
+			if targType == 'unit' then
+				overriddenCmd = defaultCmdID
+				overriddenTarget = targID
+			elseif targType == 'feature' then
+				overriddenCmd = defaultCmdID
+				overriddenTarget = targID + maxUnits
+			else
+				-- We can't reversibly override a command if we can't get the original target, so we give up overriding it.
+				return false
+			end
+			
+			usingCmd = overrideCmdID
+		else
+			overriddenCmd = nil
+			overriddenTarget = nil
+			
+			usingCmd = defaultCmdID
+		end
+		
+		usingRMB = true
+	end
 	
-	if pos then
+	-- Without this, the unloads issued will use the area of the last area unload
+	if usingCmd == CMD_UNLOADUNITS then
+		usingCmd = CMD_UNLOADUNIT
+	end
+	
+	-- Is this command eligible for a custom formation ?
+	local alt, ctrl, meta, shift = GetModKeys()
+	if not (formationCmds[usingCmd] and (alt or not requiresAlt[usingCmd])) then
+		return false
+	end
+	
+	-- Get clicked position
+	local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
+	if not pos then return false end
+	
+	-- Setup formation node array
+	if not AddFNode(pos) then return false end
+	
+	-- Is this line a path candidate (We don't do a path off an overriden command)
+	pathCandidate = (not overriddenCmd) and (spGetSelectedUnitCount()==1 or (alt and not requiresAlt[usingCmd]))
+	
+	-- We handled the mouse press
+	return true
+end
+function widget:MouseMove(mx, my, dx, dy, mButton)
+	
+	-- It is possible for MouseMove to fire after MouseRelease
+	if #fNodes == 0 then
+		return false
+	end
+	
+	-- Minimap-specific checks
+	if inMinimap then
+		totaldxy = totaldxy + dx*dx + dy*dy
+		if (totaldxy < 5) or not spIsAboveMiniMap(mx, my) then
+			return false
+		end
+	end
+	
+	-- Get clicked position
+	local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
+	if not pos then return false end
+	
+	-- Add the new formation node
+	if not AddFNode(pos) then return false end
+	
+	-- Have we started drawing a line?
+	if #fNodes == 2 then
+		
+		-- We have enough nodes to start drawing now
 		widgetHandler:UpdateWidgetCallIn("DrawInMiniMap", self)
 		widgetHandler:UpdateWidgetCallIn("DrawWorld", self)
 		
-		AddFNode(pos)
-		
-		if ((spGetSelUnitCount() == 1) or (alt and (activeid ~= CMD_ATTACK) and (activeid ~= CMD_UNLOADUNIT))) then
+		-- If the line is a path, start the units moving to this node
+		if pathCandidate then
 			
-			-- Start ordering unit immediately
-			-- Need keyState
-			local keyState = {}
-			-- if alt   then tinsert(keyState, "alt") end -- A move order with "alt" in keystate does a box formation - we want a normal move
-			if ctrl  then tinsert(keyState, "ctrl") end
-			if meta  then tinsert(keyState, "meta") end
-			if shift then tinsert(keyState, "shift") end
-			
-			-- Issue order (Insert if meta)
-			if meta then
-				GiveNotifyingOrder(CMD_INSERT, {0, cmdTag, 0, pos[1], pos[2], pos[3]}, {"alt"})
-			else
-				GiveNotifyingOrder(cmdTag, pos, keyState)
-			end
-			
+			local alt, ctrl, meta, shift = GetModKeys()
+			local cmdOpts = GetCmdOpts(false, ctrl, meta, shift, usingRMB) -- using alt uses springs box formation, so we set it off always
+			GiveNotifyingOrder(usingCmd, pos, cmdOpts)
 			lastPathPos = pos
 			
 			draggingPath = true
 		end
-		
-		return true
+	else
+		-- Are we dragging a path?
+		if draggingPath then
+			
+			local dx, dz = pos[1] - lastPathPos[1], pos[3] - lastPathPos[3]
+			if (dx*dx + dz*dz) > minPathSpacingSq then
+				
+				local alt, ctrl, meta, shift = GetModKeys()
+				local cmdOpts = GetCmdOpts(false, ctrl, meta, true, usingRMB) -- using alt uses springs box formation, so we set it off always
+				GiveNotifyingOrder(usingCmd, pos, cmdOpts)
+				lastPathPos = pos
+			end
+		end
 	end
 	
 	return false
 end
-
-function widget:MouseMove(mx, my, dx, dy, button)
+function widget:MouseRelease(mx, my, mButton)
 	
-	if (inButtonEvent and (button == 3)) or
-		(not inButtonEvent and (button ~= 3)) then
-		
+	-- It is possible for MouseRelease to fire after MouseRelease
+	if #fNodes == 0 then
 		return false
 	end
 	
-	if (fNodeCount > 0) then
+	-- Modkeys / command reset
+	local alt, ctrl, meta, shift = GetModKeys()
+	if not usingRMB then
+		if shift then
+			endShift = true -- Reset on release of shift
+		else
+			spSetActiveCommand(0) -- Reset immediately
+		end
+	end
+	
+	-- Are we going to use the drawn formation?
+	local usingFormation = true
+	
+	-- Override checking
+	if overriddenCmd then
 		
-		if not inMinimap or (totaldxy > 5) then
-			
-			if not inMinimap or spIsAboveMiniMap(mx, my) then
-				
-				local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
-				
-				if pos then
-					
-					AddFNode(pos)
-					
-					-- We may be giving path to a single unit, check
-					if draggingPath then
-						
-						local dx, dz = pos[1] - lastPathPos[1], pos[3] - lastPathPos[3]
-						
-						if ((dx*dx + dz*dz) > minPathSpacingSq) then
-							
-							local alt, ctrl, meta, shift = GetModKeys()
-							if meta then
-								GiveNotifyingOrder(CMD_INSERT, {0, cmdTag, 0, pos[1], pos[2], pos[3]}, {"alt"})
-							else
-								GiveNotifyingOrder(cmdTag, pos, {"shift"})
-							end
-							
-							lastPathPos = pos
-						end
-					end
-				end
-			end
+		local targetID
+		local targType, targID = spTraceScreenRay(mx, my, false, inMinimap)
+		if targType == 'unit' then
+			targetID = targID
+		elseif targType == 'feature' then
+			targetID = targID + maxUnits
 		end
 		
-		totaldxy = totaldxy + dx*dx + dy*dy
+		if targetID and targetID == overriddenTarget then
+			
+			-- Signal that we are no longer using the drawn formation
+			usingFormation = false
+			
+			-- Process the original command instead
+			local cmdOpts = GetCmdOpts(alt, ctrl, meta, shift, usingRMB)
+			GiveNotifyingOrder(overriddenCmd, {overriddenTarget}, cmdOpts)
+		end
 	end
 	
-	return false
-end
-
-function widget:MouseRelease(mx, my, button)
-	
-	-- Check for no nodes...
-	if (fNodeCount == 0) then 
-		return -1
-	end
-	
-	-- Modkeys
-	local alt, ctrl, meta, shift = GetModKeys()
-	
-	-- MouseRelease -> Reset command if not shifting commands
-	if (inButtonEvent and not shift) then
-		spSetActiveCommand(-1)
-	end
-	
-	-- Order issued -> Releasing shift will reset command
-	if shift and (activeCmdIndex > -1) then
-		endShift = true
-	end
-	
-	-- Unit Path
+	-- Using path? If so then we do nothing
 	if draggingPath then
 		
-		-- Nothing to do here but end / cleanup
 		draggingPath = false
 		
-		dimmNodes = fNodes
-		dimmNodeCount = fNodeCount
+	-- Using formation? If so then it's time to calculate and issue orders.
+	elseif usingFormation then
 		
-		alphaDimm = 1.0
+		-- Add final position (Sometimes we don't get the last MouseMove before this MouseRelease)
+		if (not inMinimap) or spIsAboveMiniMap(mx, my) then
+			local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
+			if pos then
+				AddFNode(pos)
+			end
+		end
 		
-		ClearFNodes()
+		-- Get command options
+		local cmdOpts = GetCmdOpts(alt, ctrl, meta, shift, usingRMB)
 		
-		return -1
-	end
-	
-	-- Work out keystates (keyState is for GiveOrder and keyState2 is for CommandNotify)
-	local keyState, keyState2 = {}, {coded=0, alt=false, ctrl=false, shift=false, right=false}    
-	if alt   then tinsert(keyState,"alt");   keyState2.alt =true;  end
-	if ctrl  then tinsert(keyState,"ctrl");  keyState2.ctrl=true;  end
-	if meta  then tinsert(keyState,"meta");                        end
-	if shift then tinsert(keyState,"shift"); keyState2.shift=true; end
-	if not inButtonEvent then                keyState2.right=true; end
-	
-	-- Calculate coded of keyState2
-	if keyState2.alt   then keyState2.coded = keyState2.coded + CMD.OPT_ALT   end
-	if keyState2.ctrl  then keyState2.coded = keyState2.coded + CMD.OPT_CTRL  end
-	if keyState2.shift then keyState2.coded = keyState2.coded + CMD.OPT_SHIFT end
-	if keyState2.right then keyState2.coded = keyState2.coded + CMD.OPT_RIGHT end
-	
-	-- Single click? (no line drawn)
-	if (fNodeCount == 1) then
-		
-		local pos = fNodes[1]
-		
-		if meta then
-			GiveNotifyingOrder(CMD_INSERT, {0, cmdTag, 0, pos[1], pos[2], pos[3]}, {"alt"})
+		-- Single click ? (no line drawn)
+		--if (#fNodes == 1) then
+		if fDists[#fNodes] < minFormationLength then
+			-- We should check if any units are able to execute it,
+			-- but the order is small enough network-wise that the tiny bug potential isn't worth it.
+			GiveNotifyingOrder(usingCmd, fNodes[1], cmdOpts)
 		else
-			GiveNotifyingOrder(cmdTag, pos, keyState)
-		end
-		
-		ClearFNodes()
-		
-		return -1
-	end
-	
-	-- Loop over widgets with CommandNotify callin, calling it
-	for _, w in ipairs(widgetHandler.CommandNotifyList) do
-		
-		-- Exclude CommandInsert (Note: We have other code which causes meta to insert the line at front of queues)
-		local wName = w:GetInfo().name
-		if not sfind(wName, "CommandInsert") and w:CommandNotify(cmdTag, fNodes[1], keyState2) then
-			
-			spEcho("<CustomFormations2> Conflict detected with " .. wName .. " widget on " .. CMD[cmdTag] .. " command, expect anomalies")
-		end
-	end
-	
-	-- Add final position
-	if not inMinimap or spIsAboveMiniMap(mx, my) then
-		
-		local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
-		
-		if pos then
-			AddFNode(pos)
-		end
-	end
-	
-	-- Get sorted units
-    local units  = spGetSelUnitsSorted()
-    units.n = nil
-
-    -- Get units command applies to
-    local mUnits = {}
-    local mUnitsCount = 0
-	
-	-- Unloading is unit-specific, else unitdef-specific
-	if cmdTag == CMD_UNLOADUNIT then
-		for uDefID, uIDs in pairs(units) do
-			if uDefs[uDefID].isTransport then
-				for ui=1, #uIDs do
-					local uID = uIDs[ui]
-					if commandApplies(uID, uDefID, cmdTag) then
-						mUnitsCount = mUnitsCount + 1
-						mUnits[mUnitsCount] = uID
+			-- Order is a formation
+			-- Are any units able to execute it?
+			local mUnits = GetExecutingUnits(usingCmd)
+			if #mUnits > 0 then
+				
+				local interpNodes = GetInterpNodes(#mUnits)
+				
+				local orders
+				if (#mUnits <= maxHungarianUnits) then
+					orders = GetOrdersHungarian(interpNodes, mUnits, #mUnits, shift and not meta)
+				else
+					orders = GetOrdersNoX(interpNodes, mUnits, #mUnits, shift and not meta)
+				end
+				
+				if meta then
+					local altOpts = GetCmdOpts(true, false, false, false, false)
+					for i = 1, #orders do
+						local orderPair = orders[i]
+						local orderPos = orderPair[2]
+						GiveNotifyingOrderToUnit(orderPair[1], CMD_INSERT, {0, usingCmd, cmdOpts.coded, orderPos[1], orderPos[2], orderPos[3]}, altOpts)
+					end
+				else
+					for i = 1, #orders do
+						local orderPair = orders[i]
+						GiveNotifyingOrderToUnit(orderPair[1], usingCmd, orderPair[2], cmdOpts)
 					end
 				end
 			end
 		end
-	else
-		for uDefID, uIDs in pairs(units) do
-			if commandApplies(0, uDefID, cmdTag) then
-				for ui=1, #uIDs do
-					mUnitsCount = mUnitsCount + 1
-					mUnits[mUnitsCount] = uIDs[ui]
+		
+		-- Move Speed (Applicable to every order)
+		local wantedSpeed = 99999 -- High enough to exceed all units speed, but not high enough to cause errors (i.e. vs math.huge)
+		
+		if ctrl then
+			local selUnits = spGetSelectedUnits()
+			for i = 1, #selUnits do
+				local uSpeed = UnitDefs[spGetUnitDefID(selUnits[i])].speed
+				if uSpeed > 0 and uSpeed < wantedSpeed then
+					wantedSpeed = uSpeed
 				end
 			end
 		end
+		
+		-- Directly giving speed order appears to work perfectly, including with shifted orders ...
+		-- ... But other widgets CMD.INSERT the speed order into the front (Posn 1) of the queue instead (which doesn't work with shifted orders)
+		local speedOpts = GetCmdOpts(alt, ctrl, meta, shift, true)
+		GiveNotifyingOrder(CMD_SET_WANTED_MAX_SPEED, {wantedSpeed / 30}, speedOpts)
 	end
 	
-	-- Any units?
-    if (mUnitsCount > 0) then
-		
-		-- Get interpolated nodes, one for each unit
-		local interNodes = GetInterpNodes(mUnitsCount)
-		local orders
-		
-		-- Get orders
-		if (mUnitsCount <= maxHungarianUnits) then
-			orders = GetOrdersHungarian(interNodes, mUnits, mUnitsCount, shift and not meta)
-		else
-			orders = GetOrdersNoX(interNodes, mUnits, mUnitsCount, shift and not meta)
-		end
-		
-		-- Issue the orders
-		for i=1, #orders do
-			
-			local oPair = orders[i]
-			
-			if meta then
-				local cPos = oPair[1]
-				spGiveOrderToUnit(oPair[2], CMD_INSERT, {0, cmdTag, keyState2.coded, cPos[1], cPos[2], cPos[3]}, {"alt"})
-			else
-				spGiveOrderToUnit(oPair[2], cmdTag, oPair[1], keyState)
-			end
-		end
-    end
+	if #fNodes > 1 then
+		dimmCmd = usingCmd
+		dimmNodes = fNodes
+		dimmAlpha = 1.0
+		widgetHandler:UpdateWidgetCallIn("Update", self)
+	end
 	
-    dimmNodes = fNodes
-	dimmNodeCount = fNodeCount
+	fNodes = {}
+	fDists = {}
 	
-	alphaDimm = 1.0
-    
-	ClearFNodes()
-	
-	return -1
+	return true
 end
-
 function widget:KeyRelease(key)
 	if (key == keyShift) and endShift then
+		spSetActiveCommand(0)
 		endShift = false
-		spSetActiveCommand(-1)
-		return true
 	end
 end
 
 --------------------------------------------------------------------------------
 -- Drawing
 --------------------------------------------------------------------------------
-local function DrawFormationLine(dimmNodes)
-	for _, v in pairs(dimmNodes) do
-		glVertex(v[1],v[2],v[3])
+local function tVerts(verts)
+	for i = 1, #verts do
+		local v = verts[i]
+		glVertex(v[1], v[2], v[3])
 	end
 end
-
-local function DrawMinimapFormationLine(dimmNodes)
-	for _, v in pairs(dimmNodes) do
+local function tVertsMinimap(verts)
+	for i = 1, #verts do
+		local v = verts[i]
 		glVertex(v[1], v[3], 1)
 	end
+end
+local function DrawFormationLines(vertFunction, lineStipple)
+	
+	glLineStipple(lineStipple, 4095)
+	glLineWidth(2.0)
+	
+	if #fNodes > 1 then
+		SetColor(usingCmd, 1.0)
+		glBeginEnd(GL_LINE_STRIP, vertFunction, fNodes)
+	end
+	
+	if #dimmNodes > 1 then
+		SetColor(dimmCmd, dimmAlpha)
+		glBeginEnd(GL_LINE_STRIP, vertFunction, dimmNodes)
+	end
+	
+	glLineWidth(1.0)
+	glLineStipple(false)
 end
 
 function widget:DrawWorld()
 	
-	if (fNodeCount < 1) and (dimmNodeCount < 1) then
-		widgetHandler:RemoveWidgetCallIn("DrawWorld", self)
-		return
-	end
-	
-	--// draw the lines
-	glLineStipple(2, 4095)
-	glLineWidth(2.0)
-	
-	setColor(cmdTag, 1.0)
-	glBeginEnd(GL_LINE_STRIP, DrawFormationLine, fNodes)
-	
-	if (dimmNodeCount > 1) then
-		
-		setColor(cmdTag, alphaDimm)
-		glBeginEnd(GL_LINE_STRIP, DrawFormationLine, dimmNodes)
-		
-		alphaDimm = alphaDimm - 0.03
-		if (alphaDimm <= 0) then
-			dimmNodes = {}
-			dimmNodeCount = 0
-		end
-	end
-
-	glColor(1, 1, 1, 1)
-	glLineWidth(1.0)
-	glLineStipple(false)
+	DrawFormationLines(tVerts, 2)
 end
-
 function widget:DrawInMiniMap()
 	
-	if (fNodeCount < 1) and (dimmNodeCount < 1) then
-		widgetHandler:RemoveWidgetCallIn("DrawInMiniMap", self)
-		return
-	end
-	
-	--// draw the lines
-	glLineStipple(1, 4095)
-	glLineWidth(2.0)
-	
-	setColor(cmdTag, 1.0)
-	
 	glPushMatrix()
-	glLoadIdentity()
-	glTranslate(0,1,0)
-	glScale(1/mapWidth, -1/mapHeight, 1)
-	
-	glBeginEnd(GL_LINE_STRIP, DrawMinimapFormationLine, fNodes)
-	
-	if (dimmNodeCount > 1) then
+		glLoadIdentity()
+		glTranslate(0, 1, 0)
+		glScale(1 / mapSizeX, -1 / mapSizeZ, 1)
 		
-		setColor(cmdTag, alphaDimm)
-		glBeginEnd(GL_LINE_STRIP, DrawMinimapFormationLine, dimmNodes)
+		DrawFormationLines(tVertsMinimap, 1)
+	glPopMatrix()
+end
+function widget:Update(deltaTime)
+	
+	dimmAlpha = dimmAlpha - lineFadeRate * deltaTime
+	
+	if dimmAlpha <= 0 then
 		
-		alphaDimm = alphaDimm - 0.03
-		if (alphaDimm <= 0) then 
-			dimmNodes = {}
-			dimmNodeCount = 0
+		dimmNodes = {}
+		widgetHandler:RemoveWidgetCallIn("Update", self)
+		
+		if #fNodes == 0 then
+			widgetHandler:RemoveWidgetCallIn("DrawWorld", self)
+			widgetHandler:RemoveWidgetCallIn("DrawInMiniMap", self)
 		end
 	end
-	
-	glPopMatrix()
-	
-	glColor(1, 1, 1, 1)
-	glLineWidth(1.0)
-	glLineStipple(false)
 end
 
 ---------------------------------------------------------------------------------------------------------
--- Configuration
+-- Config
 ---------------------------------------------------------------------------------------------------------
 function widget:GetConfigData() -- Saving
-	local data = {}
-	data["maxHungarianUnits"] = maxHungarianUnits
-	return data
+	return {
+		['maxHungarianUnits'] = maxHungarianUnits,
+	}
 end
-
 function widget:SetConfigData(data) -- Loading
-	maxHungarianUnits = data["maxHungarianUnits"] or defaultHungarianUnits
+	maxHungarianUnits = data['maxHungarianUnits'] or defaultHungarianUnits
 end
 
 ---------------------------------------------------------------------------------------------------------
@@ -738,7 +692,7 @@ function GetOrdersNoX(nodes, units, unitCount, shifted)
 		-- Get unit position
 		local ux, uz
 		if shifted then
-			ux, _, uz = GetUnitPosition(units[u])
+			ux, _, uz = GetUnitFinalPosition(units[u])
 		else
 			ux, _, uz = spGetUnitPosition(units[u])
 		end
@@ -886,13 +840,12 @@ function GetOrdersNoX(nodes, units, unitCount, shifted)
 	-- Return orders
 	---------------------------------------------------------------------------------------------------------
 	local orders = {}
-	for u = 1, unitCount do
-		local unit = unitSet[u]
-		orders[u] = {unit[4], unit[2]}
+	for i = 1, unitCount do
+		local unit = unitSet[i]
+		orders[i] = {unit[2], unit[4]}
 	end
 	return orders
 end
-
 function GetOrdersHungarian(nodes, units, unitCount, shifted)
 	-------------------------------------------------------------------------------------
 	-------------------------------------------------------------------------------------
@@ -909,34 +862,33 @@ function GetOrdersHungarian(nodes, units, unitCount, shifted)
 	-- cache node<->unit distances
 	
 	local distances = {}
-	for n=1, unitCount do distances[n] = {} end
+	--for i = 1, unitCount do distances[i] = {} end
 	
-	for i=1, unitCount do
+	for i = 1, unitCount do
 		
 		local uID = units[i]
 		local ux, uz 
 		
 		if shifted then
-			ux, _, uz = GetUnitPosition(uID)
+			ux, _, uz = GetUnitFinalPosition(uID)
 		else
 			ux, _, uz = spGetUnitPosition(uID)
 		end
 		
-		for n=1, unitCount do
+		distances[i] = {}
+		local dists = distances[i]
+		for j = 1, unitCount do
 			
-			local nodePos   = nodes[n]
-			local dx,dz     = nodePos[1] - ux, nodePos[3] - uz
-			distances[n][i] = ceil(sqrt(dx*dx + dz*dz) + 0.5)
+			local nodePos = nodes[j]
+			local dx, dz = nodePos[1] - ux, nodePos[3] - uz
+			dists[j] = floor(sqrt(dx*dx + dz*dz) + 0.5)
 			 -- Integer distances = greatly improved algorithm speed
-			 -- multiplying all distances by a constant does not affect optimality
-			 -- but gives us some decimal place accuracy (Not required)
 		end
 	end
 	
 	--------------------------------------------------------------------------------------------
 	--------------------------------------------------------------------------------------------
 	-- find optimal solution and send orders
-	
 	local result = findHungarian(distances, unitCount)
 	
 	--------------------------------------------------------------------------------------------
@@ -950,19 +902,17 @@ function GetOrdersHungarian(nodes, units, unitCount, shifted)
 		-- Delay is greater than desired, we have to reduce units
 		maxHungarianUnits = maxHungarianUnits - 1
 	else
-		local nUnits = #units
-		
 		-- Delay is less than desired, so thats OK
 		-- To make judgements we need number of units to be close to max
 		-- Because we are making predictions of time and we want them to be accurate
-		if (nUnits > maxHungarianUnits*unitIncreaseThresh) then
+		if (#units > maxHungarianUnits*unitIncreaseThresh) then
 			
 			-- This implementation of Hungarian algorithm is O(n3)
 			-- Because we have less than maxUnits, but are altering maxUnits...
 			-- We alter the time, to 'predict' time we would be getting at maxUnits
 			-- We then recheck that against maxHngTime
 			
-			local nMult = maxHungarianUnits / nUnits
+			local nMult = maxHungarianUnits / #units
 			
 			if ((delay*nMult*nMult*nMult) < maxHngTime) then
 				maxHungarianUnits = maxHungarianUnits + 1
@@ -976,10 +926,9 @@ function GetOrdersHungarian(nodes, units, unitCount, shifted)
 	
 	-- Return orders
 	local orders = {}
-	
-	for j=1, unitCount do
-		local rPair = result[j]
-		orders[j] = {nodes[rPair[1]], units[rPair[2]]}
+	for i = 1, unitCount do
+		local rPair = result[i]
+		orders[i] = {units[rPair[1]], nodes[rPair[2]]}
 	end
 	
 	return orders
@@ -988,48 +937,55 @@ end
 function findHungarian(array, n)
 	
 	-- Vars
-	local starmask = {}
 	local colcover = {}
 	local rowcover = {}
 	local starscol = {}
+	local primescol = {}
 	
 	-- Initialization
 	for i = 1, n do
-		
 		rowcover[i] = false
 		colcover[i] = false
 		starscol[i] = false
-		
-		starmask[i] = {}
-		local starRow = starmask[i]
-		for j = 1, n do
-			starRow[j] = 0
-		end
+		primescol[i] = false
 	end
 	
 	-- Subtract minimum from rows
 	for i = 1, n do
 		
 		local aRow = array[i]
-		local starRow = starmask[i]
 		local minVal = aRow[1]
-		
-		-- Find minimum
 		for j = 2, n do
 			if aRow[j] < minVal then
 				minVal = aRow[j]
 			end
 		end
 		
-		-- Subtract minimum
 		for j = 1, n do
 			aRow[j] = aRow[j] - minVal
 		end
+	end
+	
+	-- Subtract minimum from columns
+	for j = 1, n do
 		
-		-- Star zeroes
+		local minVal = array[1][j]
+		for i = 2, n do
+			if array[i][j] < minVal then
+				minVal = array[i][j]
+			end
+		end
+		
+		for i = 1, n do
+			array[i][j] = array[i][j] - minVal
+		end
+	end
+	
+	-- Star zeroes
+	for i = 1, n do
+		local aRow = array[i]
 		for j = 1, n do
 			if (aRow[j] == 0) and not colcover[j] then
-				starRow[j] = 1
 				colcover[j] = true
 				starscol[i] = j
 				break
@@ -1037,55 +993,71 @@ function findHungarian(array, n)
 		end
 	end
 	
-	return stepCoverStarCol(array, starmask, colcover, rowcover, n, starscol)
-end
-
-function stepCoverStarCol(array, starmask, colcover, rowcover, n, starscol)
-	
-	-- Are we done? (All columns covered)
-	for i = 1, n do
-		if not colcover[i] then
-			return stepPrimeZeroes(array, starmask, colcover, rowcover, n, starscol)
+	-- Start solving system
+	while true do
+		
+		-- Are we done ?
+		local done = true
+		for i = 1, n do
+			if not colcover[i] then
+				done = false
+				break
+			end
 		end
+		
+		if done then
+			local pairings = {}
+			for i = 1, n do
+				pairings[i] = {i, starscol[i]}
+			end
+			return pairings
+		end
+		
+		-- Not done
+		local r, c = stepPrimeZeroes(array, colcover, rowcover, n, starscol, primescol)
+		stepFiveStar(colcover, rowcover, r, c, n, starscol, primescol)
 	end
-	
-	-- All columns were covered
-	-- Return the solution
-	local pairings = {}
-	for i = 1, n do
-		pairings[i] = {i, starscol[i]}
-	end
-	
-	return pairings
 end
-
-function stepPrimeZeroes(array, starmask, colcover, rowcover, n, starscol)
+function doPrime(array, colcover, rowcover, n, starscol, r, c, rmax, primescol)
+	
+	primescol[r] = c
+	
+	local starCol = starscol[r]
+	if starCol then
+		
+		rowcover[r] = true
+		colcover[starCol] = false
+		
+		for i = 1, rmax do
+			if not rowcover[i] and (array[i][starCol] == 0) then
+				local rr, cc = doPrime(array, colcover, rowcover, n, starscol, i, starCol, rmax, primescol)
+				if rr then
+					return rr, cc
+				end
+			end
+		end
+		
+		return
+	else
+		return r, c
+	end
+end
+function stepPrimeZeroes(array, colcover, rowcover, n, starscol, primescol)
 	
 	-- Infinite loop
 	while true do
 		
+		-- Find uncovered zeros and prime them
 		for i = 1, n do
-			
 			if not rowcover[i] then
-				
 				local aRow = array[i]
-				local starRow = starmask[i]
-				
 				for j = 1, n do
-					
 					if (aRow[j] == 0) and not colcover[j] then
-						
-						starRow[j] = 2
-						
-						local starpos = starscol[i]
-						if starpos then
-							
-							rowcover[i] = true
-							colcover[starpos] = false
-							break -- This row is now covered
-						else
-							return stepFiveStar(array, starmask, colcover, rowcover, i, j, n, starscol)
+						local i, j = doPrime(array, colcover, rowcover, n, starscol, i, j, i-1, primescol)
+						if i then
+							return i, j
 						end
+						break -- this row is covered
 					end
 				end
 			end
@@ -1094,127 +1066,78 @@ function stepPrimeZeroes(array, starmask, colcover, rowcover, n, starscol)
 		-- Find minimum uncovered
 		local minVal = huge
 		for i = 1, n do
-			
 			if not rowcover[i] then
-				
 				local aRow = array[i]
-				
 				for j = 1, n do
 					if (aRow[j] < minVal) and not colcover[j] then
 						minVal = aRow[j]
 					end
 				end
-				
-				-- Lowest we can go is zero, break early if so
-				if minVal == 0 then
-					break
-				end
 			end
 		end
 		
-		-- Only update if things will change
-		if minVal ~= 0 then
-			
-			-- Covered rows = +
-			-- Uncovered cols = -
-			for i = 1, n do
-				local aRow = array[i]
-				if rowcover[i] then
-					for j = 1, n do
-						if colcover[j] then
-							aRow[j] = aRow[j] + minVal
-						end
+		-- There is the potential for minVal to be 0, very very rarely though. (Checking for it costs more than the +/- 0's)
+		
+		-- Covered rows = +
+		-- Uncovered cols = -
+		for i = 1, n do
+			local aRow = array[i]
+			if rowcover[i] then
+				for j = 1, n do
+					if colcover[j] then
+						aRow[j] = aRow[j] + minVal
 					end
-				else
-					for j = 1, n do
-						if not colcover[j] then
-							aRow[j] = aRow[j] - minVal
-						end
+				end
+			else
+				for j = 1, n do
+					if not colcover[j] then
+						aRow[j] = aRow[j] - minVal
 					end
 				end
 			end
 		end
 	end
 end
-
-function stepFiveStar(array, starmask, colcover, rowcover, row, col, n, starscol)
+function stepFiveStar(colcover, rowcover, row, col, n, starscol, primescol)
 	
-	local stars = {}
-	local primes = {}
-	local orow, ocol = row, col
-	
-	local nStars = 0
-	local nPrimes = 0
+	-- Star the initial prime
+	primescol[row] = false
+	starscol[row] = col
+	local ignoreRow = row -- Ignore the star on this row when looking for next
 	
 	repeat
 		local noFind = true
 		
 		for i = 1, n do
 			
-			local starRow = starmask[i]
-			if starRow[col] == 1 then
+			if (starscol[i] == col) and (i ~= ignoreRow) then
 				
 				noFind = false
 				
-				nStars = nStars + 1
-				stars[nStars] = {i, col}
+				-- Unstar the star
+				-- Turn the prime on the same row into a star (And ignore this row (aka star) when searching for next star)
 				
-				for j = 1, n do
-					
-					if starRow[j] == 2 then
-						
-						nPrimes = nPrimes + 1
-						primes[nPrimes] = {i, j}
-						
-						col = j
-						break
-					end
-				end
+				local pcol = primescol[i]
+				primescol[i] = false
+				starscol[i] = pcol
+				ignoreRow = i
+				col = pcol
 				
 				break
 			end
 		end
 	until noFind
 	
-	for s = 1, nStars do
-		local star = stars[s]
-		local r, c = star[1], star[2]
-		starmask[r][c] = 0
-		starscol[r] = false
-	end
-	
-	-- Apply initial prime
-	starmask[orow][ocol] = 1
-	starscol[orow] = ocol
-	
-	for p = 1, nPrimes do
-		local prime = primes[p]
-		local r, c = prime[1], prime[2]
-		starmask[r][c] = 1
-		starscol[r] = c
-	end
-	
 	for i = 1, n do
-		colcover[i] = false
-	end
-	
-	for i = 1, n do
-		
 		rowcover[i] = false
-		
-		local starRow = starmask[i]
-		for j = 1, n do
-			if starRow[j] == 2 then
-				starRow[j] = 0
-				break
-			end
-		end
-		
+		colcover[i] = false
+		primescol[i] = false
+	end
+	
+	for i = 1, n do
 		local scol = starscol[i]
 		if scol then
 			colcover[scol] = true
 		end
 	end
-	
-	return stepCoverStarCol(array, starmask, colcover, rowcover, n, starscol)
 end
