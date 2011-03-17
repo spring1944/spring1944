@@ -4,8 +4,8 @@
   AvoidFeature=1;
   ballistic=0;
   burnblow=0;
-  burst=12;
-  burstrate=0.12;
+  burst=13;
+  burstrate=0.1;
   collideFriendly=0;
   CylinderTargetting=1;
   [customParams] {
@@ -27,8 +27,8 @@
   impulseFactor=0.01;
   manualBombSettings=1;
   model=MortarShell.S3O;
-  projectiles=3;
-  range=650;
+  projectiles=9;
+  range=700;
   reloadTime=600;
   rendertype=4;
   soundHit=GEN_Explo_3;
