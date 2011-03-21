@@ -28,7 +28,7 @@
   manualBombSettings=1;
   model=MortarShell.S3O;
   projectiles=9;
-  range=700;
+  range=525;
   reloadTime=600;
   rendertype=4;
   soundHit=GEN_Explo_3;
