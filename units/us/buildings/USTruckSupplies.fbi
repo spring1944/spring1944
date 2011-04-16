@@ -27,6 +27,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   objectName=USTruckSupplies.S3O;
+  script=truckSupplies.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
