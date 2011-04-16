@@ -236,10 +236,7 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 	end
 end
 
-function gadget:UnitDestroyed(unitID, unitDefID, teamID)
-	newVehicles[unitID] = nil
-	vehicles[unitID] = nil
-	
+local function CleanUp(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	-- Check if the unit was a supplier and was fully built
@@ -257,6 +254,12 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		-- clean up range cache
 		ammoRanges[unitID] = nil
 	end
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+	newVehicles[unitID] = nil
+	vehicles[unitID] = nil
+	CleanUp(unitID, unitDefID, teamID)
 end
 
 --If unit is loaded into a transport, do a last call to ProcessWeapons
@@ -286,7 +289,8 @@ end
 
 
 function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
-	gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
+	CleanUp(unitID, unitDefID, oldTeam)
+	--gadget:UnitDestroyed(unitID, unitDefID, oldTeam)
 	gadget:UnitFinished(unitID, unitDefID, newTeam)
 end
 
