@@ -78,7 +78,7 @@ end
 function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
   if paratrooperWeaponDefIDs[weaponDefID] and ValidUnitID(ownerID) then
     local transportDefID = GetUnitDefID(ownerID)
-    local transportInfo = transportInfos[transportDefID]
+    local transportInfo = transportInfos[transportDefID] or {}
     
     local paratrooperNumber = (transports[ownerID] or 0) + 1
     if paratrooperNumber > #transportInfo then
