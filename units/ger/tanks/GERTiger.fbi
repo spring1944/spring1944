@@ -14,7 +14,7 @@
   //collisionVolumeScales=25.5 17 43;
   //collisionVolumeOffsets=0 -2.5 -1;
   //collisionVolumeTest=1;
-  //corpse=GERTiger_Damaged;
+  corpse=GERTiger_Damaged;
   [customParams] {
     armor_front=103;
     armor_rear=81;
