@@ -71,6 +71,7 @@ local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
 local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
 local CMDTYPE_ICON_UNIT_OR_MAP = CMDTYPE.ICON_UNIT_OR_MAP
 local CMD_IDLEMODE = CMD.IDLEMODE
+local CMD_AUTOREPAIRLEVEL = CMD.AUTOREPAIRLEVEL
 local CMD_MOVE = CMD.MOVE
 local CMD_FIGHT = CMD.FIGHT
 local CMD_PATROL = CMD.PATROL
@@ -225,6 +226,12 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 		  Spring.CallCOBScript(unitID, "PlaneVoice", 1, 1)
 		end
 	  end
+		-- remove fly/land and land at x buttons
+		local toRemove = {CMD_IDLEMODE, CMD_AUTOREPAIRLEVEL}
+		for _, cmdID in pairs(toRemove) do
+			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
+			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
+		end
 	end
 end
 
