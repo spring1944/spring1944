@@ -27,7 +27,7 @@
   interceptedByShieldType=8;
   lineofsight=1;
   movingAccuracy=1777;
-  range=1010;
+  range=1040;
   reloadTime=8.5;
   rendertype=0;
   soundStart=GBR_Enfield;
