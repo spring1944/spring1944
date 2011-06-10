@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=GBRChurchillMkVII;
-  name=Churchill Mk VII;
+  name=A22F Churchill Mk VII;
   description=Heavily Armoured Support Tank;
   acceleration=0.029;
   activateWhenBuilt=1;
