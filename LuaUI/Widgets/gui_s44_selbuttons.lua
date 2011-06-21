@@ -510,7 +510,7 @@ function widget:MouseRelease(x, y, button)
   local icon = MouseOverIcon(x, y)
 
   local units = spGetSelectedUnitsSorted()
-  if (#units ~= unitTypes) then
+  if (units.n ~= unitTypes) then
     return -1  -- discard this click
   end
   units.n = nil
