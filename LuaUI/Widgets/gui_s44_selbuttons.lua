@@ -95,7 +95,7 @@ local rectMaxY = 0
 -- Local Functions
 local function SortedUnits()
   local selUnits = spGetSelectedUnits()
-  if (selUnits.n ~= 1) then
+  if (#selUnits ~= 1) then
     return spGetSelectedUnitsCounts() --{ n = 0 }
   end
   local transID = selUnits[1]
@@ -510,7 +510,7 @@ function widget:MouseRelease(x, y, button)
   local icon = MouseOverIcon(x, y)
 
   local units = spGetSelectedUnitsSorted()
-  if (units.n ~= unitTypes) then
+  if (#units ~= unitTypes) then
     return -1  -- discard this click
   end
   units.n = nil
