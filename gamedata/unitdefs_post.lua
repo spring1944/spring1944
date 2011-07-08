@@ -135,6 +135,8 @@ end
 	end
 
 
+local GMBuildOptions = {}
+local GM_UD
 
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
@@ -167,4 +169,9 @@ for name, ud in pairs(UnitDefs) do
 		--Spring.Echo(name)
 		ud.pushresistant = true
 	end
+	-- add the unit to gamemaster buildoptions
+	GMBuildOptions[#GMBuildOptions + 1] = name
+	if name == "gmtoolbox" then GM_UD = ud end
 end
+
+GM_UD["buildoptions"] = GMBuildOptions
