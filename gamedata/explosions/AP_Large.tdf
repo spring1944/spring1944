@@ -52,7 +52,7 @@
 		[properties]{
 			pos=0, 0,  0;
 			delay=0;				
-			explosionGenerator=custom:AP_Medium_Hit;
+			explosionGenerator=custom:AP_Large_Hit;
 		}
 		unit=1;
 		count=1;
@@ -63,7 +63,7 @@
 		[properties]{
 			pos=0, 0, 0;
 			delay=0;				
-			explosionGenerator=custom:AP_Medium_Miss;
+			explosionGenerator=custom:AP_Large_Miss;
 		}
 		nounit=1;
 		count=1;
