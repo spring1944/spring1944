@@ -795,6 +795,17 @@ function MenuHandler(x,y,button)
       else
         menuHovered= false
         openedMenu = pressedFac
+
+-------------------------------------------------------------------------------
+--lets you select a factory where ever you are on the map
+--by left clicking the appropriate buidbar button
+-------------------------------------------------------------------------------
+         unitID = facs[pressedFac+1].unitID
+         local unitDefID = GetUnitDefID(unitID)
+          if UnitDefs[unitDefID].isFactory then         
+            Spring.SelectUnitArray({unitID})               
+          end
+-------------------------------------------------------------------------------
         Spring.PlaySoundFile(sound_click, 0.9)
       end
     end
