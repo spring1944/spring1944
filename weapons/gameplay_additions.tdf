@@ -1,35 +1,5 @@
-[buildline] {
-  name=build line effect;
-  areaOfEffect=1e-06;
-  avoidFriendly=0;
-  beamweapon=1;
-  canAttackGround=0;
-  collideFriendly=1;
-  [customParams] {
-    damagetype=none;
-  }
-  [damage] {
-    default=1e-10;
-  }
-  duration=8e-06;
-  explosionGenerator=custom:nothing;
-  fireStarter=0;
-  id=650;
-  intensity=1e-05;
-  laserFlareSize=0.0001;
-  lineofsight=1;
-  range=10;
-  reloadTime=0.05;
-  rendertype=0;
-  rgbColor=0.9 0.9 0.9;
-  thickness=1e-06;
-  tolerance=64000;
-  turret=1;
-  weaponVelocity=50;
-}
-
 [noweapon] {
-  name=build line effect;
+  name=Missing Weapon! Please report as a bug;
   areaOfEffect=1e-06;
   avoidFriendly=0;
   beamweapon=1;

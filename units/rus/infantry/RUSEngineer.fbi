@@ -52,7 +52,5 @@
   turnRate=1010;
   upright=1;
   workerTime=15;
-
-  weapon1=buildline;
 }
 
