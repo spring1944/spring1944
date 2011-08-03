@@ -189,18 +189,6 @@
   weaponVelocity=250;
 }
 
-[noweapon] {
-  name=No Weapon;
-  [customParams] {
-    damagetype=none;
-  }
-  [damage] {
-    default=0;
-  }
-  id=0;
-  range=20;
-}
-
 [resourceboom] {
   name=Medium Building Explosion;
   areaOfEffect=120;
