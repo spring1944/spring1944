@@ -1,4 +1,4 @@
-[61k37mmaa] {
+[M1939_61k37mmaa] {
   name=37mm M-1939 61-K Anti-Aircraft Gun;
   areaOfEffect=60;
   burnblow=1;
@@ -40,7 +40,7 @@
   weaponVelocity=1760;
 }
 
-[61k37mmhe] {
+[M1939_61k37mmhe] {
   name=37mm M-1939 61-K Anti-Aircraft Gun;
   areaOfEffect=24;
   burnblow=1;

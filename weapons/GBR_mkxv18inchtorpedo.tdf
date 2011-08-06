@@ -1,4 +1,4 @@
-[18inchtorpedo] {
+[mkxv18inchtorpedo] {
   name=Mk.XV 18inch torpedo;
   areaOfEffect=32;
   avoidFriendly=1;

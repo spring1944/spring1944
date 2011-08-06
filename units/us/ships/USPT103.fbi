@@ -63,7 +63,7 @@
   onlyTargetCategory4=LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
-  weapon5=20mmOerlikonaa;
+  weapon5=Oerlikon20mmaa;
   maxAngleDif5=270;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 -1;

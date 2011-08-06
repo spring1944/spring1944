@@ -54,7 +54,7 @@
   badTargetCategory=FLAG;
   yardmap=o;
 
-  weapon1=17pdrap;
+  weapon1=qf17pdrap;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;

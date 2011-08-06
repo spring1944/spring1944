@@ -1,5 +1,5 @@
-[3in50mk22] {
-  name=mk22 3inch/50 Naval AA Gun;
+[M1935_34k76mmaa] {
+  name=34-K 76mm Naval AA Gun;
   accuracy=170;
   areaOfEffect=80;
   ballistic=1;
@@ -10,7 +10,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=1152;
+    default=1500;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_Large;
@@ -22,7 +22,7 @@
   intensity=0.1;
   noSelfDamage=1;
   range=2000;
-  reloadTime=3.5; // 15 - 20 rounds per minute, as per Russian sources
+  reloadTime=4; // 15 rounds per minute, as per Russian sources
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;
@@ -34,6 +34,6 @@
   targetMoveError=0.1;
   tolerance=3000;
   turret=1;
-  weaponVelocity=926;
+  weaponVelocity=1400;
 }
 

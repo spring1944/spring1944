@@ -1,4 +1,4 @@
-[mk14_533mmtorpedo] {
+[mk14_torpedo533mm] {
   name=mk.14 21inch torpedo;
   areaOfEffect=32;
   avoidFriendly=1;

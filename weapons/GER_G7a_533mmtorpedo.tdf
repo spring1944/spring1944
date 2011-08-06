@@ -1,4 +1,4 @@
-[g7a533mmtorpedo] {
+[g7atorpedo533mm] {
   name=G7a 533mm torpedo;
   areaOfEffect=32;
   avoidFriendly=1;
@@ -37,7 +37,7 @@
   weaponVelocity=500;
 }
 
-[quad_g7a533mmtorpedo] {
+[quad_g7atorpedo533mm] {
   name=4-tube G7a 533mm torpedo launcher;
   areaOfEffect=32;
   avoidFriendly=1;
@@ -78,7 +78,7 @@
   weaponVelocity=500;
 }
 
-[triple_g7a533mmtorpedo] {
+[triple_g7atorpedo533mm] {
   name=3-tube G7a 533mm torpedo launcher;
   areaOfEffect=32;
   avoidFriendly=1;

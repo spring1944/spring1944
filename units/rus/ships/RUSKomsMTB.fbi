@@ -58,12 +58,12 @@
   turninplace=0;
   turnRate=350;
 
-  weapon1=533mmtorpedo;
+  weapon1=torpedo533mm;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
-  weapon2=533mmtorpedo;
+  weapon2=torpedo533mm;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;

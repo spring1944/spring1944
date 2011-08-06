@@ -80,42 +80,42 @@
 
   weapon15=Large_Tracer;
 
-  weapon1=18inchtorpedo;
+  weapon1=mkxv18inchtorpedo;
   maxAngleDif1=40;
   onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
-  weapon2=18inchtorpedo;
+  weapon2=mkxv18inchtorpedo;
   maxAngleDif2=40;
   onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
-  weapon3=18inchtorpedo;
+  weapon3=mkxv18inchtorpedo;
   maxAngleDif3=40;
   onlyTargetCategory3=LARGESHIP SUB;
   weaponMainDir3=0 0 1;
 
-  weapon4=18inchtorpedo;
+  weapon4=mkxv18inchtorpedo;
   maxAngleDif4=40;
   onlyTargetCategory4=LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
-  weapon5=6pdr57mmhe;
+  weapon5=qf6pdr57mmhe;
   maxAngleDif5=270;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
 
-  weapon6=6pdr57mmhe;
+  weapon6=qf6pdr57mmhe;
   maxAngleDif6=270;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 -1;
 
-  weapon7=20mmOerlikonaa;
+  weapon7=Oerlikon20mmaa;
   maxAngleDif7=300;
   onlyTargetCategory7=AIR;
   weaponMainDir7=0 0 -1;
 
-  weapon8=20mmOerlikonaa;
+  weapon8=Oerlikon20mmaa;
   onlyTargetCategory8=AIR;
   weaponSlaveTo8=7;
 
@@ -124,12 +124,12 @@
   onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   weaponMainDir9=1 0 0;
 
-  weapon16=20mmOerlikonhe;
+  weapon16=Oerlikon20mmhe;
   maxAngleDif16=300;
   onlyTargetCategory16=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir16=0 0 -1;
 
-  weapon17=20mmOerlikonhe;
+  weapon17=Oerlikon20mmhe;
   onlyTargetCategory17=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponSlaveTo17=16;
 }

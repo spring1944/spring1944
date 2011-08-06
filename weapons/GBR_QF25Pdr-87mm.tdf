@@ -1,4 +1,4 @@
-[25pdrhe] {
+[qf25pdrhe] {
   name=25 pounder light howitzer high-explosive ammunition;
   accuracy=720;
   areaofeffect=94;
@@ -41,7 +41,7 @@
   weaponvelocity=1200;
 }
 
-[25pdrsmoke] {
+[qf25pdrsmoke] {
   name=25 Pounder Light Howitzer Smoke Ammunition;
   accuracy=720;
   areaOfEffect=30;

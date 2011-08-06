@@ -57,19 +57,19 @@
   turninplace=0;
   turnRate=300;
 
-  weapon1=61k37mmaa;
+  weapon1=M1939_61k37mmaa;
   maxAngleDif1=270;
   badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory1=AIR;
   weaponMainDir1=0 0 1;
 
-  weapon2=61k37mmhe;
+  weapon2=M1939_61k37mmhe;
   badTargetCategory2=AIR;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   maxAngleDif2=270;
   weaponMainDir2=0 0 1;
 
-  weapon3=40k45mmhe;
+  weapon3=M1937_40k45mmhe;
   maxAngleDif3=300;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 -1;

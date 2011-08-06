@@ -72,7 +72,7 @@
   turnRate=280;
   badTargetCategory=FLAG;
 
-  weapon1=17pdrAP;
+  weapon1=qf17pdrap;
   weaponMainDir1=0 16 1;
   maxAngleDif1=210;
   badTargetCategory1=SOFTVEH;

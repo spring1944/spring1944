@@ -1,4 +1,4 @@
-[20mmOerlikonaa] {
+[Oerlikon20mmaa] {
   name=20mm Oerlikon single-gun High-Explosive Shells;
   areaOfEffect=40;
   burnblow=1;
@@ -40,7 +40,7 @@
   weaponVelocity=5000;
 }
 
-[twin_20mmOerlikonaa] {
+[twin_Oerlikon20mmaa] {
   name=20mm Oerlikon single-gun High-Explosive Shells;
   areaOfEffect=40;
   burnblow=1;
@@ -82,7 +82,7 @@
   weaponVelocity=5000;
 }
 
-[20mmOerlikonhe] {
+[Oerlikon20mmhe] {
   name=20mm Oerlikon single-gun High-Explosive Shells;
   areaOfEffect=40;
   burnblow=1;

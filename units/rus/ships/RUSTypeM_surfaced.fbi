@@ -45,18 +45,18 @@
   turnRate=160;
   waterline=0;
 
-  weapon1=533mmtorpedo; //450mmtorp;
+  weapon1=torpedo533mm; //450mmtorp;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=60;
   onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
-  weapon2=533mmtorpedo; //450mmtorp;
+  weapon2=torpedo533mm; //450mmtorp;
   maxAngleDif2=60;
   onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;
 
-  weapon3=40k45mmhe;
+  weapon3=M1937_40k45mmhe;
   maxAngleDif3=270;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;

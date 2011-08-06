@@ -58,12 +58,12 @@
   badTargetCategory=FLAG;
   yardmap=o;
 
-  weapon1=25PdrHE;
+  weapon1=qf25pdrhe;
   maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=25PdrSmoke;
+  weapon2=qf25pdrsmoke;
   maxAngleDif2=35;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;

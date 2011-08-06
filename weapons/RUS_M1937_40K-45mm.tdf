@@ -1,5 +1,5 @@
-[20k45mmap] {
-  name=20K M1938 45mm Armour Piercing;
+[M1937_40k45mmap] {
+  name=40K 45mm Armour Piercing;
   accuracy=290;
   areaOfEffect=5;
   ballistic=1;
@@ -25,8 +25,8 @@
   intensity=0.25;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=980;
-  reloadTime=4.8;
+  range=1310;
+  reloadTime=3.2;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
   separation=2;
@@ -38,24 +38,22 @@
   targetMoveError=0.1;
   tolerance=300;
   turret=1;
-  weaponVelocity=1518;
+  weaponVelocity=1768;
 }
 
-[20k45mmhe] {
-  name=20K M1938 45mm Gun;
+[M1937_40k45mmhe] {
+  name=40K 45mm Naval Gun;
   accuracy=354;
-  areaOfEffect=52;
+  areaOfEffect=47;
   ballistic=1;
   collisionSize=3;
-  craterBoost=0.3;
-  craterMult=0.3;
+  craterBoost=0;
+  craterMult=0;
   [customParams] {
     damagetype=explosive;
-    fearaoe=40;
-    fearid=301;
   }
   [damage] {
-    default=270;
+    default=200;
   }
   edgeEffectiveness=0.2;
   explosionGenerator=custom:HE_Small;
@@ -67,8 +65,8 @@
   intensity=0.1;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=980;
-  reloadTime=4.8;
+  range=1310;
+  reloadTime=2.4; // 25 rounds per minute, although theoretical RoF should be 30, this was rarely achieved
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;

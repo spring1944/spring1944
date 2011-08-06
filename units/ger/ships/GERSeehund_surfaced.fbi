@@ -44,12 +44,12 @@
   turnRate=35;
   waterline=0;
 
-  weapon1=g7a533mmtorpedo;
+  weapon1=g7atorpedo533mm;
   maxAngleDif1=60;
   onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
-  weapon2=g7a533mmtorpedo;
+  weapon2=g7atorpedo533mm;
   maxAngleDif2=60;
   onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;

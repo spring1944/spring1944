@@ -1,5 +1,5 @@
-[105mmC32] {
-  name=105mm/45 SK C/32 Naval Gun;
+[SKC34_127mm] {
+  name=127mm/L45 SK C/34 Naval Gun;
   accuracy=470;
   areaOfEffect=105;
   ballistic=1;
@@ -10,7 +10,7 @@
     damagetype=explosive;
   }
   [damage] {
-    default=2000;
+    default=2900;
   }
   edgeEffectiveness=0.25;
   explosionGenerator=custom:HE_Large;
@@ -21,8 +21,8 @@
   impulseFactor=0;
   intensity=0.1;
   noSelfDamage=1;
-  range=4250;
-  reloadTime=4; // 15 rpm it is
+  range=4000;
+  reloadTime=7; // I don't believe in 15 rpm for this gun
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;
@@ -34,6 +34,6 @@
   targetMoveError=0.1;
   tolerance=3000;
   turret=1;
-  weaponVelocity=1200;
+  weaponVelocity=1400;
 }
 

@@ -1,4 +1,4 @@
-[17pdrap] {
+[qf17pdrap] {
   name=British 76mm Q.F. 17 Pounder Mk.IV L/55 -- Armour-Piercing Ammunition;
   accuracy=300;
   areaOfEffect=10;
@@ -41,7 +41,7 @@
   weaponVelocity=1584;
 }
 
-[17pdrhe] {
+[qf17pdrhe] {
   name=British 76mm Q.F. 17 Pounder Mk.IV L/55 High Explosive;
   accuracy=300;
   areaOfEffect=90;

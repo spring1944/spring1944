@@ -1,4 +1,4 @@
-[20mmc38aa] {
+[c3820mmaa] {
   name=2cm C/38 single-gun High-Explosive AA Shells;
   areaOfEffect=30;
   burnblow=1;
@@ -40,7 +40,7 @@
   weaponVelocity=1800;
 }
 
-[20mmc38he] {
+[c3820mmhe] {
   name=2cm C/38 single-gun High-Explosive Shells;
   accuracy=255;
   areaOfEffect=24;

@@ -52,52 +52,52 @@
   turninplace=0;
   turnRate=25;
 
-  weapon10=twin_20mmOerlikonaa;
+  weapon10=twin_Oerlikon20mmaa;
   maxAngleDif10=270;
   onlyTargetCategory10=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir10=-1 0 1;
 
-  weapon11=twin_20mmOerlikonaa;
+  weapon11=twin_Oerlikon20mmaa;
   maxAngleDif11=270;
   onlyTargetCategory11=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir11=1 0 1;
 
-  weapon12=twin_20mmOerlikonaa;
+  weapon12=twin_Oerlikon20mmaa;
   maxAngleDif12=270;
   onlyTargetCategory12=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir12=-1 0 1;
 
-  weapon13=twin_20mmOerlikonaa;
+  weapon13=twin_Oerlikon20mmaa;
   maxAngleDif13=270;
   onlyTargetCategory13=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir13=1 0 1;
 
-  weapon14=twin_20mmOerlikonaa;
+  weapon14=twin_Oerlikon20mmaa;
   maxAngleDif14=270;
   onlyTargetCategory14=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir14=-1 0 1;
 
-  weapon15=twin_20mmOerlikonaa;
+  weapon15=twin_Oerlikon20mmaa;
   maxAngleDif15=270;
   onlyTargetCategory15=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir15=1 0 1;
 
-  weapon16=twin_20mmOerlikonaa;
+  weapon16=twin_Oerlikon20mmaa;
   maxAngleDif16=270;
   onlyTargetCategory16=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir16=-1 0 1;
 
-  weapon17=20mmOerlikonaa;
+  weapon17=Oerlikon20mmaa;
   maxAngleDif17=270;
   onlyTargetCategory17=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir17=1 0 1;
 
-  weapon18=20mmOerlikonaa;
+  weapon18=Oerlikon20mmaa;
   maxAngleDif18=270;
   onlyTargetCategory18=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir18=-1 0 1;
 
-  weapon19=20mmOerlikonaa;
+  weapon19=Oerlikon20mmaa;
   maxAngleDif19=270;
   onlyTargetCategory19=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir19=1 0 1;
@@ -107,7 +107,7 @@
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon20=20mmOerlikonaa;
+  weapon20=Oerlikon20mmaa;
   maxAngleDif20=270;
   onlyTargetCategory20=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP DEPLOYED;
   weaponMainDir20=-1 0 1;
@@ -147,7 +147,7 @@
   onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir8=-1 0 1;
 
-  weapon9=twin_20mmOerlikonaa;
+  weapon9=twin_Oerlikon20mmaa;
   maxAngleDif9=270;
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=1 0 1;

@@ -61,10 +61,10 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=3InMortar;
+  weapon1=ml3InMortar;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=3InMortarsmoke;
+  weapon2=ml3InMortarsmoke;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 

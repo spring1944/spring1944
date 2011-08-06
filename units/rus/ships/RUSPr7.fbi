@@ -58,7 +58,7 @@
   TEDClass=SHIP;
   turnRate=112.5;
 
-  weapon10=61k37mmaa;
+  weapon10=M1939_61k37mmaa;
   maxAngleDif10=270;
   onlyTargetCategory10=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir10=0 0 -1;
@@ -83,12 +83,12 @@
   onlyTargetCategory14=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir14=-1 0 0;
 
-  weapon15=triple533mmtorpedo;
+  weapon15=tripletorpedo533mm;
   maxAngleDif15=270;
   onlyTargetCategory15=LARGESHIP SUB;
   weaponMainDir15=0 0 -1;
 
-  weapon16=triple533mmtorpedo;
+  weapon16=tripletorpedo533mm;
   maxAngleDif16=270;
   onlyTargetCategory16=LARGESHIP SUB;
   weaponMainDir16=0 0 -1;
@@ -113,27 +113,27 @@
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 -1;
 
-  weapon5=34k76mmaa;
+  weapon5=M1935_34k76mmaa;
   maxAngleDif5=270;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=1 0 -1;
 
-  weapon6=34k76mmaa;
+  weapon6=M1935_34k76mmaa;
   maxAngleDif6=270;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=-1 0 -1;
 
-  weapon7=61k37mmaa;
+  weapon7=M1939_61k37mmaa;
   maxAngleDif7=190;
   onlyTargetCategory7=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir7=1 0 0;
 
-  weapon8=61k37mmaa;
+  weapon8=M1939_61k37mmaa;
   maxAngleDif8=190;
   onlyTargetCategory8=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir8=-1 0 0;
 
-  weapon9=61k37mmaa;
+  weapon9=M1939_61k37mmaa;
   maxAngleDif9=250;
   onlyTargetCategory9=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir9=0 0 -1;

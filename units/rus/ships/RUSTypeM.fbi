@@ -45,12 +45,12 @@
   turnRate=160;
   waterline=60;
 
-  weapon1=533mmtorpedo; //450mmtorp;
+  weapon1=torpedo533mm; //450mmtorp;
   maxAngleDif1=60;
   onlyTargetCategory1=LARGESHIP SUB;
   weaponMainDir1=0 0 1;
 
-  weapon2=533mmtorpedo; //450mmtorp;
+  weapon2=torpedo533mm; //450mmtorp;
   maxAngleDif2=60;
   onlyTargetCategory2=LARGESHIP SUB;
   weaponMainDir2=0 0 1;

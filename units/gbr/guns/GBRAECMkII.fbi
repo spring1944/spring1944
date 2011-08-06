@@ -74,7 +74,7 @@
   turnRate=405;
   badTargetCategory=FLAG;
 
-  weapon1=6pdr57mmap;
+  weapon1=qf6pdr57mmap;
   weaponMainDir1=0 16 1;
   maxAngleDif1=210;
   badTargetCategory1=SOFTVEH;

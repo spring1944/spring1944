@@ -71,13 +71,13 @@
   turnRate=250;
   badTargetCategory=FLAG;
 
-  weapon1=20K45mmHE;
+  weapon1=M1938_20k45mmhe;
   weaponMainDir1=0 16 1;
   maxAngleDif1=210;
   badTargetCategory1=OPENVEH HARDVEH;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=20K45mmAP;
+  weapon2=M1938_20k45mmap;
   weaponMainDir2=0 16 1;
   maxAngleDif2=210;
   onlyTargetCategory2=OPENVEH HARDVEH;

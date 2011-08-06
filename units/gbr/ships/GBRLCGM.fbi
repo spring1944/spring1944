@@ -59,22 +59,22 @@
   turninplace=0;
   turnRate=32;
 
-  weapon1=25PdrHE;
+  weapon1=qf25pdrhe;
   maxAngleDif1=270;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=1 0 1;
 
-  weapon2=25PdrHE;
+  weapon2=qf25pdrhe;
   maxAngleDif2=270;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=-1 0 1;
 
-  weapon3=20mmOerlikonaa; //oerlikon20mm;
+  weapon3=Oerlikon20mmaa; //oerlikon20mm;
   maxAngleDif3=240;
   onlyTargetCategory3=AIR;
   weaponMainDir3=1 0 0;
 
-  weapon4=20mmOerlikonaa; //oerlikon20mm;
+  weapon4=Oerlikon20mmaa; //oerlikon20mm;
   maxAngleDif4=240;
   onlyTargetCategory4=AIR;
   weaponMainDir4=-1 0 0;

@@ -1,6 +1,6 @@
-[2pdr40mmap] {
-  name=Q.F. 2 Pounder Mk.X L / 50 Armour-Piercing;
-  accuracy=362;
+[M1938_20k45mmap] {
+  name=20K M1938 45mm Armour Piercing;
+  accuracy=290;
   areaOfEffect=5;
   ballistic=1;
   canAttackGround=0;
@@ -9,12 +9,12 @@
   craterBoost=0;
   craterMult=0;
   [customParams] {
-    armor_penetration_1000m=45;
-    armor_penetration_100m=59;
+    armor_penetration_1000m=20;
+    armor_penetration_100m=43;
     damagetype=kinetic;
   }
   [damage] {
-    default=688;
+    default=1180;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Small;
@@ -23,10 +23,10 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
-  movingAccuracy=590;
+  movingAccuracy=600;
   noSelfDamage=1;
-  range=1070;
-  reloadTime=4.5;
+  range=980;
+  reloadTime=4.8;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
   separation=2;
@@ -38,26 +38,26 @@
   targetMoveError=0.1;
   tolerance=300;
   turret=1;
-  weaponVelocity=1616;
+  weaponVelocity=1518;
 }
 
-[2pdr40mmhe] {
-  name=Q.F. 2 Pounder Mk.X L / 50 High-Explosive;
+[M1938_20k45mmhe] {
+  name=20K M1938 45mm Gun;
   accuracy=354;
-  areaOfEffect=42;
+  areaOfEffect=52;
   ballistic=1;
   collisionSize=3;
-  craterBoost=0;
-  craterMult=0;
+  craterBoost=0.3;
+  craterMult=0.3;
   [customParams] {
     damagetype=explosive;
     fearaoe=40;
     fearid=301;
   }
   [damage] {
-    default=350;
+    default=270;
   }
-  edgeEffectiveness=0.25;
+  edgeEffectiveness=0.2;
   explosionGenerator=custom:HE_Small;
   explosionSpeed=30;
   fireStarter=0;
@@ -65,17 +65,17 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
-  movingAccuracy=590;
+  movingAccuracy=600;
   noSelfDamage=1;
-  range=1070;
-  reloadTime=4.5;
+  range=980;
+  reloadTime=4.8;
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
   separation=2;
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_2;
-  soundStart=US_37mm;
+  soundStart=RUS_45mm;
   stages=50;
   targetMoveError=0.1;
   tolerance=3000;

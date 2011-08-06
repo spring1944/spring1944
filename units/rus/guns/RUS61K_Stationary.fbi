@@ -51,11 +51,11 @@
   badTargetCategory=FLAG;
   yardmap=o;
 
-  weapon1=61k37mmaa;
+  weapon1=M1939_61k37mmaa;
   badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory1=AIR;
 
-  weapon2=61k37mmhe;
+  weapon2=M1939_61k37mmhe;
   badTargetCategory2=AIR;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 

@@ -1,4 +1,4 @@
-[3inmortar] {
+[ml3inmortar] {
   name=Ordinance ML 3 Inch Mortar;
   accuracy=485;
   areaOfEffect=112;
@@ -32,7 +32,7 @@
   weaponVelocity=550;
 }
 
-[3inmortarsmoke] {
+[ml3inmortarsmoke] {
   name=Ordinance ML 3 Inch Mortar Smoke Ammo;
   accuracy=485;
   areaOfEffect=20;

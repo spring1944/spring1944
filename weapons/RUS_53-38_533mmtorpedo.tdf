@@ -1,4 +1,4 @@
-[533mmtorpedo] {
+[torpedo533mm] {
   name=53-38 533mm torpedo;
   areaOfEffect=32;
   avoidFriendly=1;
@@ -37,7 +37,7 @@
   weaponVelocity=500;
 }
 
-[triple533mmtorpedo] {
+[tripletorpedo533mm] {
   name=3-tube 39-Yu 533mm torpedo launcher;
   areaOfEffect=32;
   avoidFriendly=0;

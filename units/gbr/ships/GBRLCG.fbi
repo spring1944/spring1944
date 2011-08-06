@@ -73,12 +73,12 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
-  weapon3=20mmOerlikonaa; //oerlikon20mm;
+  weapon3=Oerlikon20mmaa; //oerlikon20mm;
   maxAngleDif3=240;
   onlyTargetCategory3=AIR;
   weaponMainDir3=1 0 0;
 
-  weapon4=20mmOerlikonaa; //oerlikon20mm;
+  weapon4=Oerlikon20mmaa; //oerlikon20mm;
   maxAngleDif4=240;
   onlyTargetCategory4=AIR;
   weaponMainDir4=-1 0 0;
