@@ -1,4 +1,4 @@
-/*[37mmflak43] {
+/*[flak4337mm] {
   name=FlaK43 37mm Semi-Automatic Cannon;
   accuracy=290;
   areaOfEffect=10;
@@ -43,7 +43,7 @@
 }*/
 
 
-[37mmflak43aa] {
+[flak4337mmaa] {
   name=FlaK43 37mm Semi-Automatic Cannon AA;
   areaOfEffect=60;
   burnblow=1;
@@ -85,7 +85,7 @@
   weaponVelocity=1760;
 }
 
-[37mmflak43he] {
+[flak4337mmhe] {
   name=FlaK43 37mm Semi-Automatic Cannon HE;
   areaOfEffect=24;
   burnblow=1;

@@ -70,12 +70,12 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
-  weapon3=37mmflak43aa;
+  weapon3=flak4337mmaa;
   maxAngleDif3=270;
   onlyTargetCategory3=AIR;
   weaponMainDir3=0 0 1;
   
-  weapon8=37mmflak43he;
+  weapon8=flak4337mmhe;
   maxAngleDif8=270;
   onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir8=0 0 1;
