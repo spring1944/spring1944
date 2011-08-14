@@ -85,7 +85,7 @@
   badTargetCategory2=OPENVEH HARDVEH;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon3=Bren;
+  weapon3=BESA;
   weaponMainDir3=0 16 1;
   maxAngleDif3=210;
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
