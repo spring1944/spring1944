@@ -1,26 +1,19 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
-
 function gadget:GetInfo()
   return {
     name      = "Plane Fear",
     desc      = "Causes Planes under heavy AA fire to abort attack runs",
-    author    = "B. Tyler",
+    author    = "Nemo (B. Tyler), FLOZi (C. Lawrence)",
     date      = "April 20th, 2009",
-    license   = "LGPL v2 or later",
+    license   = "GPL v2",
     layer     = 0,
     enabled   = true  --  loaded by default?
   }
 end
 
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
---local Spring = Spring
---local gl = gl
-local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 --------------------------------------------------------------------------------
 --  COMMON
 --------------------------------------------------------------------------------
@@ -28,21 +21,39 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
-local SetUnitNoSelect = Spring.SetUnitNoSelect
-local GiveOrderToUnit = Spring.GiveOrderToUnit
 
-local fuelLossRate = 3 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
-local bugOutLevel = 2 --amount of fear where the plane bugs out back to HQ
-local CMD_MOVE = CMD.MOVE
+-- function localisations
+local SetUnitRulesParam 	= Spring.SetUnitRulesParam
+local mcDisable				= Spring.MoveCtrl.Disable
+-- Synced Read
+local GetUnitFuel 			= Spring.GetUnitFuel
+local GetUnitHealth			= Spring.GetUnitHealth
+local GetUnitTeam			= Spring.GetUnitTeam
+-- Synced Ctrl
+local CallCOBScript			= Spring.CallCOBScript
+local SetUnitCOBValue		= Spring.SetUnitCOBValue
+local SetUnitFuel 			= Spring.SetUnitFuel
+local SetUnitWeaponState	= Spring.SetUnitWeaponState
+-- Unsynced Ctrl
+local GiveOrderToUnit		= Spring.GiveOrderToUnit
+local SetUnitNoSelect		= Spring.SetUnitNoSelect
+
+-- constants
+local CMD_MOVE				= CMD.MOVE
+
+local FUEL_LOSS_RATE = 3 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
+local BUGOUT_LEVEL = 2 --amount of fear where the plane bugs out back to HQ
+
+-- variables
 local planeScriptIDs = {}
 local accuracyTable = {}
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+
+
 function gadget:Initialize()
-	-- adjust bugOutLevel using the multiplier
+	-- adjust BUGOUT_LEVEL using the multiplier
 	local fear_mult = tonumber(Spring.GetModOptions().air_fear_mult) or 1
 	if (fear_mult ~= 1) then
-		bugOutLevel = bugOutLevel * fear_mult
+		BUGOUT_LEVEL = BUGOUT_LEVEL * fear_mult
 	end
 end
 
@@ -59,37 +70,44 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 end
 
-
-function gadget:UnitDestroyed(unitID)
-  accuracyTable[unitID] = nil
-  planeScriptIDs[unitID] = nil
-end
-
---[[function gadget:UnitIdle(unitIDIdle)
-	local unitDefID = Spring.GetUnitDefID(unitIDIdle)
+function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly then
-	for unitID, someThing in pairs(planeScriptIDs) do
-		if Spring.GetUnitNoSelect == true then]]--
+		--Spring.Echo("AIRCRAFT DAMAGED")
+		local health = GetUnitHealth(unitID)
+		if damage > health then
+			--Spring.Echo("DAMAGE", damage, "HEALTH", health)
+			SetUnitCOBValue(unitID, COB.CRASHING, 1)
+			mcDisable(unitID) -- disable movectrl for V1 / glider
+			return 0
+		end
+	end
+	return damage
+end
+
+function gadget:UnitDestroyed(unitID)
+	accuracyTable[unitID] = nil
+	planeScriptIDs[unitID] = nil
+end
 
 
 function gadget:GameFrame(n)
-	if (n % (0.5*30) < 0.1) then
-	  for unitID, funcID in pairs(planeScriptIDs) do
-		local _, suppression = Spring.CallCOBScript(unitID, funcID, 1, 1)
-		local fuel = Spring.GetUnitFuel(unitID)
-		local teamID = Spring.GetUnitTeam(unitID)
-		--Spring.Echo("Plane TeamID", teamID)
+	if (n % 15 == 0) then -- every 15 frames
+		for unitID, funcID in pairs(planeScriptIDs) do
+			local _, suppression = CallCOBScript(unitID, funcID, 1, 1)
+			local fuel = GetUnitFuel(unitID)
+			local teamID = GetUnitTeam(unitID)
+			--Spring.Echo("Plane TeamID", teamID, "Fuel", fuel, "Suppress", suppression)
 			if suppression > 0 then
-				local newFuel = fuel - fuelLossRate
+				local newFuel = fuel - FUEL_LOSS_RATE
 				local oldAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")
 				if oldAccuracy ~= nil then
-					Spring.SetUnitWeaponState(unitID, 0, {accuracy = oldAccuracy*suppression})
+					SetUnitWeaponState(unitID, 0, {accuracy = oldAccuracy*suppression})
 					--Spring.Echo("unit's fear level: ", suppression)
 					SetUnitRulesParam(unitID, "suppress", suppression)
-					Spring.SetUnitFuel(unitID, newFuel)
+					SetUnitFuel(unitID, newFuel)
 					--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
-					if suppression > bugOutLevel then
+					if suppression > BUGOUT_LEVEL then
 						local px, py, pz = Spring.GetTeamStartPosition(teamID)
 						GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
 						--Spring.Echo("Move order issued,", "Fear level:", suppression)
@@ -100,7 +118,7 @@ function gadget:GameFrame(n)
 					end
 				end
 			else
-				Spring.SetUnitWeaponState(unitID, 0, {accuracy = accuracyTable[unitID]})
+				SetUnitWeaponState(unitID, 0, {accuracy = accuracyTable[unitID]})
 			end
 		end
 	end
