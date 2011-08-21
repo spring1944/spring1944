@@ -20,14 +20,14 @@ QueryWeapon1(Func_Var_1)
 
 AimWeapon1(Func_Var_1, Func_Var_2)
 {
-	return (1);
+	var me;
+	me = GET MY_ID;
+	get KILL_UNIT(me, 0, 0)
+	return (0);
 }
 
 FireWeapon1()
 {
-	var me;
-	me = GET MY_ID;
-	get KILL_UNIT(me, 0, 1)
 	
 }
 
