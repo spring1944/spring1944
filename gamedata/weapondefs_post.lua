@@ -338,7 +338,10 @@ if (modOptions) then
 end
 
 -- set weapon velocities to arc at 45 degrees at max range
-for weapName in pairs(WeaponDefs) do 
+for weapName, weapDef in pairs(WeaponDefs) do 
+	if weapDef.gravityaffected then
+		weapDef.mygravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
+	end
 	if WeaponDefs[weapName].customparams then --for whatever reason, customparams needs to be lowercase here.
 		if WeaponDefs[weapName].customparams.howitzer then
 			WeaponDefs[weapName].weaponvelocity = math.sqrt(WeaponDefs[weapName].range * GRAVITY) --Game.gravity)
