@@ -10,22 +10,22 @@ function gadget:GetInfo()
 	}
 end
 
-local cache = {}
-
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
+local GetUnitPieceList					= Spring.GetUnitPieceList
+local SetUnitPieceCollisionVolumeData	= Spring.SetUnitPieceCollisionVolumeData
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
-	if not cache[unitDefID] and cp and cp.armor_front then
-		cache[unitDefID] = true
-		local pieces = Spring.GetUnitPieceList(unitID)
+	if cp and cp.armor_front then
+		local pieces = GetUnitPieceList(unitID)
 		for i, pieceName in pairs(pieces) do
 			--Spring.Echo(i, pieceName)
 			if pieceName ~= "base" and pieceName ~= "turret" and i ~= "n" then
 				--Spring.Echo("piece " .. i .. " called " .. pieceName .. " to be disabled")
-				Spring.SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, false,false, 0,0,0, 0,0,0, -1, 0)
+				SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, false,false, 0,0,0, 0,0,0, 0, 0)
+				--SetUnitPieceCollisionVolumeData(unitID, i - 1, false) -- for 0.83, above is backwards compat though
 			end
 		end
 	end
