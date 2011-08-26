@@ -31,7 +31,9 @@
   noChaseCategory=SOFTVEH OPENVEH HARDVEH FLAG AIR MINE;
   objectName=GBRLMG.S3O;
   repairable=0;
+  script=InfantryMG.cob;
   seismicDistance=840;
+
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

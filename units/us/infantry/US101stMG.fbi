@@ -31,7 +31,9 @@
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG HARDVEH OPENVEH AIR MINE;
   objectName=USParaMG.S3O;
+  script=InfantryMG.cob;
   seismicDistance=840;
+
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;

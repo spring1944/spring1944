@@ -4,7 +4,8 @@
 
 piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
 		lfoot, luparm, lloarm, ground, gun, ruparm, rloarm, head;
-		
+
+static-var shotCount;
 
 //signals to handle control of..everything
 #define SIG_RUN					8
@@ -93,6 +94,8 @@ static-var bAiming, bMoving, iState, iFear, bNading, iSpeed;
 #define PISS 1024+5
 #define CIG 1024+6
 #define MUZZLEFLASH 1024+7
+#define SMALL_TRACER 2048+1
+#define TRACER_PER_X_SHOTS	3
 //end FX
 
 //aiming poses
@@ -280,5 +283,16 @@ PinnedControl
 #ifdef WEAPON_GRENADE
 #include "inf_weaponGrenade.h"
 #endif
+
+Shot1(just_a_zero)
+{
+	emit-sfx MUZZLEFLASH from flare;
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx SMALL_TRACER from flare;
+		shotCount=0;
+	}
+}
 
 #include "inf_Death.h"
