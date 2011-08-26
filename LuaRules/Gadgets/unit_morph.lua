@@ -397,7 +397,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
   -- do not allow morph for unfinsihed units
   if not isFinished(unitID) then return true end
 
-  --Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
+  Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
   --Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
   --Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
   Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, { "alt" })
@@ -835,7 +835,7 @@ function CheckMorphPlace(unitID, unitDefID, teamID, targetDef)
 	local unitX, unitY, unitZ = GetUnitPositionAtEndOfQueue(unitID)
 	local result, feature = Spring.TestBuildOrder(destID, unitX, unitY, unitZ, 0)
 	if result == 0 then
-		Spring.SendMessageToTeam(teamID, "Can't deploy here!")
+		Spring.SendMessageToTeam(teamID, UnitDefs[unitDefID].humanName .. ": Can't deploy here!")
 	end
 	return (result>0)
 end
