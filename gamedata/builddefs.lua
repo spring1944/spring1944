@@ -879,8 +879,8 @@ buildoptions =
 --    "ruspr7",
   },
 }
-if (modOptions) then
+--[[if (modOptions) then
 
-end
+end]]
 
 return buildoptions
