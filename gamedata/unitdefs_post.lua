@@ -140,6 +140,10 @@ local GM_UD
 
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
+	if ud.floater then
+		ud.turninplace = false
+		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
+	end
 	-- ammo storage
 	if (ud.energystorage) then
 		-- this is to exclude things like builders having 0.01 storage
