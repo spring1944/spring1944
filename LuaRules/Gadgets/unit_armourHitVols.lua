@@ -19,13 +19,15 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	if cp and cp.armor_front then
-		local pieces = GetUnitPieceList(unitID)
-		for i, pieceName in pairs(pieces) do
-			--Spring.Echo(i, pieceName)
-			if pieceName ~= "base" and pieceName ~= "turret" and i ~= "n" then
-				--Spring.Echo("piece " .. i .. " called " .. pieceName .. " to be disabled")
-				SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, false,false, 0,0,0, 0,0,0, 0, 0)
-				--SetUnitPieceCollisionVolumeData(unitID, i - 1, false) -- for 0.83, above is backwards compat though
+		if ud.model.type ~= "3do" then
+			local pieces = GetUnitPieceList(unitID)
+			for i, pieceName in pairs(pieces) do
+				--Spring.Echo(i, pieceName)
+				if pieceName ~= "base" and pieceName ~= "turret" and i ~= "n" then
+					--Spring.Echo("piece " .. i .. " called " .. pieceName .. " to be disabled")
+					SetUnitPieceCollisionVolumeData(unitID, i - 1, true,true, false,false, 0,0,0, 0,0,0, 0, 0)
+					--SetUnitPieceCollisionVolumeData(unitID, i - 1, false) -- for 0.83, above is backwards compat though
+				end
 			end
 		end
 	end
