@@ -30,7 +30,7 @@
   maxReverseVelocity=1.1;
   maxVelocity=2.2;
   minWaterDepth=6;
-  movementClass=BOAT_LandingCraft;
+  movementClass=BOAT_LandingCraftSmall;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSTender15t;
   seismicSignature=0;

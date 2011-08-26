@@ -30,8 +30,8 @@
   footprintZ=20;
   holdSteady=1;
   iconType=gunboat;
-  mass=25000;
-  maxDamage=25000;
+  mass=30800;
+  maxDamage=30800;
   maxReverseVelocity=0.55;
   maxVelocity=1.1;
   minWaterDepth=2;

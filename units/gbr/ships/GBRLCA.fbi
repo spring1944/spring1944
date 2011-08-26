@@ -13,6 +13,10 @@
   corpse=GBRLCA_dead;
   [customParams] {
     ammoSupplier=1;
+    armor_front=28.5; // 3/8in for doors, + 3/4in? ramp
+    armor_rear=19;
+    armor_side=19; // wiki says 3/4in sides
+    armor_top=6; // 1/4in deck
     supplyRange=350;
     hasturnbutton=1;
   }
@@ -29,9 +33,9 @@
   maxReverseVelocity=0.685;
   maxVelocity=2;
   minWaterDepth=6;
-  movementClass=BOAT_LandingCraft;
+  movementClass=BOAT_LandingCraftSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GBRLCA;
+  objectName=GBRLCA.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

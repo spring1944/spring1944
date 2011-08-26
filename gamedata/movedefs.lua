@@ -64,44 +64,37 @@ local moveDefs 	=	 {
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_Small",
+		name					=	"BOAT_Small", -- Dinghy, PG 117
 		footprintX		=	3,
 		minWaterDepth	=	5,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_Medium",
+		name					=	"BOAT_Medium", -- Pontoon, PT 103, 
 		footprintX		=	15,
 		minWaterDepth	=	5,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_RiverSmall",
+		name					=	"BOAT_RiverSmall", -- BKA 1125, Pr. 161
 		footprintX		=	4,
 		minWaterDepth	=	6,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_River",
+		name					=	"BOAT_River", -- AFP?!
 		footprintX		=	8,
 		minWaterDepth	=	6,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_LightPatrol",
+		name					=	"BOAT_LightPatrol", -- Fairmile D, Rboot, BMO, 
 		footprintX		=	10,
 		minWaterDepth	=	10,
-		crushStrength	=	10,
-		heatmapping		=	false,
-	},
-	{
-		name					=	"BOAT_Destroyer",
-		footprintX		=	40,
-		minWaterDepth	=	20,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
@@ -113,7 +106,14 @@ local moveDefs 	=	 {
 		heatmapping		=	false,
 	},
 	{
-		name					=	"HOVER_AmphibTruck",
+		name					=	"BOAT_LandingCraftSmall",
+		footprintX		=	4,
+		minWaterDepth	=	2,
+		crushStrength	=	10,
+		heatmapping		=	false,
+	},
+	{
+		name					=	"HOVER_AmphibTruck", -- DUKW
 		footprintX		=	3,
 		footprintY		=	3,
 		MaxSlope		=	17,
@@ -122,15 +122,7 @@ local moveDefs 	=	 {
 		heatmapping		=	false,
 	},
 	{
-		name					=	"BOAT_Sub",
-		footprintX		=	8,
-		minWaterDepth	=	40,
-		crushStrength	=	10,
-		submarine	=	1,
-		heatmapping		=	false,
-	},
-	{
-		name					=	"TANK_Truck_deep",
+		name					=	"TANK_Truck_deep", -- boatyard trucks
 		footprintX		=	3,
 		maxWaterDepth	=	70,
 		maxSlope			=	30,
