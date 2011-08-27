@@ -72,7 +72,7 @@ local moveDefs 	=	 {
 	},
 	{
 		name					=	"BOAT_Medium", -- Pontoon, PT 103, 
-		footprintX		=	15,
+		footprintX		=	4, --15,
 		minWaterDepth	=	5,
 		crushStrength	=	10,
 		heatmapping		=	false,
@@ -86,21 +86,21 @@ local moveDefs 	=	 {
 	},
 	{
 		name					=	"BOAT_River", -- AFP?!
-		footprintX		=	8,
+		footprintX		=	4, --8,
 		minWaterDepth	=	6,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
 		name					=	"BOAT_LightPatrol", -- Fairmile D, Rboot, BMO, 
-		footprintX		=	10,
+		footprintX		=	4, --10,
 		minWaterDepth	=	10,
 		crushStrength	=	10,
 		heatmapping		=	false,
 	},
 	{
 		name					=	"BOAT_LandingCraft",
-		footprintX		=	16,
+		footprintX		=	4, --16,
 		minWaterDepth	=	2,
 		crushStrength	=	10,
 		heatmapping		=	false,

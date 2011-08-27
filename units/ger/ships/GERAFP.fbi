@@ -27,8 +27,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=20;
-  footprintZ=20;
+  footprintX=4; //20;
+  footprintZ=4; //20;
   iconType=gunboat;
   mass=27200;
   maxDamage=27200;

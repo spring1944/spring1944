@@ -26,8 +26,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=14;
-  footprintZ=14;
+  footprintX=4; // 14
+  footprintZ=4; // 14
   iconType=torpboat;
   mass=9253;
   maxDamage=9253;

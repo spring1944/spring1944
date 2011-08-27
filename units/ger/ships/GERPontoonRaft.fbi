@@ -16,8 +16,8 @@
   }
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=5;
-  footprintZ=5;
+  footprintX=4;
+  footprintZ=4;
   iconType=raft;
   isFirePlatform=0;
   mass=1000;

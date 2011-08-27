@@ -21,8 +21,8 @@
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;
-  footprintX=8;
-  footprintZ=8;
+  footprintX=4; //8;
+  footprintZ=4; //8;
   holdSteady=1;
   iconType=transportship;
   mass=23900;
