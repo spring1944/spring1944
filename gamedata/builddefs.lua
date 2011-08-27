@@ -530,7 +530,7 @@ buildoptions =
     "gbr25pdr_truck",
     "gbrbofors_truck",
 	"gbrstaghound",
-    "gbraecmkii",
+    --"gbraecmkii",
     "gbrm10achilles",
   },
   
