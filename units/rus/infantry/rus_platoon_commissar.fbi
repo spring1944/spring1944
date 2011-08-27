@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=rus_platoon_commissar;
   name=Political Commissar Group;
-  description=3 x Commissar: Rapidly Captures Territory, Recruits Partisans;
+  description=3 x Commissar: Rapidly Captures Territory;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

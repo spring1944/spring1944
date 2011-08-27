@@ -54,7 +54,7 @@ piece base, hull, main_turret, sleeve, barrel, flare, turret_37, sleeve_37, barr
 
 #define SMOKEPIECE	hull
 
-#include "exptype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 
 // effects
@@ -131,7 +131,7 @@ OpenRamp()
 	var newSpeed;
 	// we are opening the ramp, let's slow down (else we'll have the hold full of water)
 	newSpeed = MaxSpeed/10;
-	set MAX_SPEED to newSpeed;
+	//set MAX_SPEED to newSpeed;
 	turn ramp to x-axis RAMP_OPEN_ANGLE speed RAMP_OPEN_SPEED;
 	wait-for-turn ramp around x-axis;
 	bRampOpen = TRUE;
@@ -144,7 +144,7 @@ CloseRamp()
 	turn ramp to x-axis 0 speed RAMP_OPEN_SPEED;
 	wait-for-turn ramp around x-axis;
 	// now the ramp is closed, we can go full speed again
-	set MAX_SPEED to MaxSpeed;
+	//set MAX_SPEED to MaxSpeed;
 	return;
 }
 

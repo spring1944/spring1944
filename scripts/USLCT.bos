@@ -37,8 +37,7 @@ piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_
 
 #define SMOKEPIECE	hull
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 
 //tracers
@@ -122,7 +121,7 @@ OpenRamp()
 	var newSpeed;
 	// we are opening the ramp, let's slow down (else we'll have the hold full of water)
 	newSpeed = MaxSpeed/10;
-	set MAX_SPEED to newSpeed;
+	//set MAX_SPEED to newSpeed;
 	turn ramp to x-axis RAMP_OPEN_ANGLE speed RAMP_OPEN_SPEED;
 	wait-for-turn ramp around x-axis;
 	bRampOpen = TRUE;
@@ -135,7 +134,7 @@ CloseRamp()
 	turn ramp to x-axis 0 speed RAMP_OPEN_SPEED;
 	wait-for-turn ramp around x-axis;
 	// now the ramp is closed, we can go full speed again
-	set MAX_SPEED to MaxSpeed;
+	//set MAX_SPEED to MaxSpeed;
 	return;
 }
 
@@ -557,11 +556,11 @@ Killed(severity, corpsetype)
 		start-script OpenRamp();
 		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
 		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		explode hull type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type		SHATTER;
 	explode turret_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	return (TRUE);
