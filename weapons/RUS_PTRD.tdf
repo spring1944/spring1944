@@ -1,6 +1,6 @@
 [ptrd] {
   name=PTRD;
-  accuracy=450;
+  accuracy=225; //450
   areaOfEffect=1;
   avoidFeature=1;
   avoidFriendly=0;
