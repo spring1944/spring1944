@@ -1,47 +1,37 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  file: squad_spawner.lua
---  brief: Spawns set squads when certain units are built
---  author: Maelstrom
---
---  Copyright (C) 2007.
---  Licensed under the terms of the Creative Commons Attribution-Noncommercial 3.0 Unported
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---    Note:
---  Squad definitions are defined in 'LuaRules/Configs/squad_defs.lua'
---
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 function gadget:GetInfo()
 	return {
 		name      = "Squad Spawner",
 		desc      = "Spawns squads",
-		author    = "Maelstrom",
+		author    = "Maelstrom, FLOZi (C. Lawrence)",
 		date      = "31st August 2007",
-		license   = "CC by-nc, version 3.0",
+		license   = "GNU GPL v2",
 		layer     = -5,
 		enabled   = true  --  loaded by default?
 	}
 end
-
 
 if (not gadgetHandler:IsSyncedCode()) then
 	return false
 end
 
 
-	-- Speed ups
+-- Localisations
+local DelayCall            = GG.Delay.DelayCall
+-- Synced Read
 local GetCommandQueue      = Spring.GetCommandQueue
+local GetUnitBasePosition  = Spring.GetUnitBasePosition
+local GetUnitBuildFacing   = Spring.GetUnitBuildFacing
+local GetUnitStates        = Spring.GetUnitStates
+-- Synced Ctrl
 local CreateUnit           = Spring.CreateUnit
 local DestroyUnit          = Spring.DestroyUnit
-local GetUnitBasePosition  = Spring.GetUnitBasePosition
+-- Unsynced Ctrl
+local GiveOrderToUnit      = Spring.GiveOrderToUnit
 local GiveOrderToUnitArray = Spring.GiveOrderToUnitArray
-local DelayCall            = GG.Delay.DelayCall
+
+-- Constants
+
+-- Variables
 local initFrame
 
 local squadDefs = { }
@@ -78,8 +68,8 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 	local queue = GetCommandQueue(unitID)
 
 	if builderID then
-		unitHeading = Spring.GetUnitBuildFacing(builderID)
-		states = Spring.GetUnitStates(builderID)
+		unitHeading = GetUnitBuildFacing(builderID)
+		states = GetUnitStates(builderID)
 	end
 
 	local squad_units = {}
@@ -91,6 +81,14 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 		local newUnitID = CreateUnit(unitName, px + xSpace,py, pz + zSpace, unitHeading, teamID)
 		if newUnitID then
 			squad_units[#squad_units+1] = newUnitID
+			if states then
+				if UnitDefNames[unitName].fireState == -1 then -- unit set to inherit from builder
+					GiveOrderToUnit(newUnitID,  CMD.FIRE_STATE, { states.firestate }, 0)
+				end
+				if UnitDefNames[unitName].moveState == -1 then -- unit set to inherit from builder
+					GiveOrderToUnit(newUnitID,  CMD.MOVE_STATE, { states.movestate }, 0)
+				end
+			end
 		end
 
 		if (i % 4 == 0) then
@@ -99,12 +97,6 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 		else
 			xSpace = xSpace + 10
 		end
-	end
-
-	if states then
-		-- 2009/10/02: T: movestate is overridden later on (not in this gadget) ...
-		GiveOrderToUnitArray(squad_units, CMD.FIRE_STATE, { states.firestate }, 0)
-		GiveOrderToUnitArray(squad_units, CMD.MOVE_STATE, { states.movestate }, 0)
 	end
 
 	-- If its a valid queue
