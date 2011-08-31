@@ -437,10 +437,10 @@ buildoptions =
   {
     "gersturmboot",
 	"gerpontoonraft",
-    --"gerschsturmboot",
+    "gerschsturmboot",
     "gerrboot",
     --"gersboot",
-	"gersiebelfahre",
+	--"gersiebelfahre",
 	"germfp",
 
   },

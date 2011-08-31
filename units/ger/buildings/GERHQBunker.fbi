@@ -15,7 +15,9 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeType=box;
+  collisionVolumeScales=150 30 110;
+  collisionVolumeOffsets=0 -13 0;
   commander=1;
   corpse=GERHQBunker_Destroyed;
   [customParams] {
