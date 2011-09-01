@@ -44,6 +44,14 @@ local function OutputCalc(lifespan)
 	return DEFAULT_OUTPUT * OUTPUT_BASE ^ lifespan
 end
 
+function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
+	local ud = UnitDefs[unitDefID]
+	if ud.name == "flag" then
+		SetUnitRulesParam(unitID, "lifespan", 0) -- also reset in flagManager
+		SetUnitMetalExtraction (unitID, DEFAULT_OUTPUT)	
+	end
+end
+
 function gadget:GameFrame(n)
 	if n % (60 * 30) == 0 and n > 1 then -- every minute, from first minute onwards
 		for i = 1, #GG.flags do
