@@ -208,6 +208,4 @@ function gadget:GameStart()
 			SetStartResources(teamID)
 		end
 	end
-	-- Run once then remove the gadget
-	gadgetHandler:RemoveGadget()
 end

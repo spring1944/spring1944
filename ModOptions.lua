@@ -212,9 +212,15 @@ local options = {
     step   = 10,
   },
 
-
-
-	
+  {
+    key    = "communism_mode",
+    name   = "Communism Mode",
+    desc   = "Distributes income from flags evenly between allied players. (key = 'communism_mode')",
+    type   = "bool",
+    def    = false,
+	section= '3resources',
+  },
+  	
 
 	
 	--[[  {

@@ -30,10 +30,8 @@ local DestroyFeature			= Spring.DestroyFeature
 local GiveOrderToUnit			= Spring.GiveOrderToUnit
 local SetTeamRulesParam			= Spring.SetTeamRulesParam
 local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
-local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
 local SetUnitNeutral			= Spring.SetUnitNeutral
 local SetUnitNoSelect			= Spring.SetUnitNoSelect
-local SetUnitResourcing			= Spring.SetUnitResourcing
 local SetUnitRulesParam			= Spring.SetUnitRulesParam
 local TransferUnit				= Spring.TransferUnit
 
@@ -97,14 +95,13 @@ local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
-local metalMake = tonumber(modOptions.map_command_per_player) or -1
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
 local DelayCall = GG.Delay.DelayCall
 
--- easymetal code startrs
+-- easymetal code starts
 local function round(num, idp)
   local mult = 10^(idp or 0)
   return floor(num * mult + 0.5) / mult
@@ -200,9 +197,6 @@ local function AnalyzeMetalMap()
 			}
 		end
 	end
-	if metalMake >= 0 then
-		metalMake = metalMake * (#teams - 1) / #metalSpots
-	end
 	return "flag", metalSpots
 end
 -- easymetal code ends
@@ -260,11 +254,6 @@ function PlaceFlag(spot, flagType)
 	if modOptions and modOptions.always_visible_flags == "0" then
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
-	end
-	
-	if metalMake >= 0 and flagType == "flag" then -- this is a little messy
-		SetUnitMetalExtraction(newFlag, 0, 0) -- remove extracted metal
-		SetUnitResourcing(newFlag, "umm", metalMake)
 	end
 end
 
