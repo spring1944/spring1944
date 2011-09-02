@@ -165,22 +165,25 @@ Create()
 
 StartBuilding(Func_Var_1, pitch)
 {
-if (lock > 1)
- {
- set INBUILDSTANCE to 0;
- return (0);
- }
-if (lock<=1)
+	signal SIG_AIM1;
+	bNading = 1;
+	if (lock > 1)
+ 	{
+ 		set INBUILDSTANCE to 0;
+ 		return (0);
+ 	}
+	if (lock<=1)
 	{
-	set INBUILDSTANCE to 1;
-	lock=lock+1;
+		set INBUILDSTANCE to 1;
+		lock=lock+1;
 	return (0);
 	}
 }
 
 StopBuilding()
 {
-set INBUILDSTANCE to 0;
+	set INBUILDSTANCE to 0;
+	bNading = 0;
 }
 
 QueryNanoPiece(piecenum)
