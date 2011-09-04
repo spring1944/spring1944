@@ -8,7 +8,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3375;
-  buildPic=RUSIL2.png;
+  buildPic=RUSIL2PTAB.png;
   buildTime=3375;
   canAttack=1;
   canDropFlare=1;

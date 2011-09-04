@@ -84,10 +84,12 @@ local function getInitialFlagExtractRate(flagID)
 	return metal * DEFAULT_OUTPUT
 end
 
-local function setInitialProductionRulesParams(flagID, mMake)
+local function setInitialProductionAndRulesParams(flagID, mMake)
 	local init_production
 	if mMake >= 0 then
 		init_production = mMake
+		SetUnitMetalExtraction(flagID, 0, 0) -- remove extracted metal
+		SetUnitResourcing(flagID, "umm", mMake)
 	else
 		init_production = getInitialFlagExtractRate(flagID)
 	end
@@ -117,11 +119,7 @@ function gadget:GameStart()
 	--Spring.Echo(tostring(metalMake or "N/A"))
 	for i = 1, #GG.flags do
 		local flagID = GG.flags[i]
-		if metalMake >= 0 then -- this is a little messy
-			SetUnitMetalExtraction(flagID, 0, 0) -- remove extracted metal
-			SetUnitResourcing(flagID, "umm", metalMake)
-		end
-		setInitialProductionRulesParams(flagID, metalMake)
+		setInitialProductionAndRulesParams(flagID, metalMake)
 	end
 	-- Remove the gadget if using map command per player
 	if metalMake >= 0 then

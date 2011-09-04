@@ -6,7 +6,7 @@
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=6750;
-  buildPic=RUSIL2.png;
+  buildPic=RUSIL2PTAB.png;
   buildTime=6750;
   canMove=1;
   category=FLAG;
