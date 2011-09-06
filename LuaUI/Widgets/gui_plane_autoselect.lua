@@ -3,18 +3,100 @@ function widget:GetInfo()
   return {
     name      = "1944 Aircraft Selection Buttons",
     desc      = "Automatically creates selection buttons for newly entered aircraft.",
-    author    = "Ray Modified by Godde",
-    date      = "Jul 23, 2007",
+    author    = "Ray Modified by Godde, Szunti",
+    date      = "Sep 6, 2011",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
     enabled   = true  --  loaded by default?
   }
 end
 
+-----------------------------
+-- Customisable parameters
+-----------------------------
+local MAX_ICONS = 10
+local ICON_SIZE_X = 70
+local ICON_SIZE_Y = 70
+local CONDENSE = false -- show one icon for all planes of same type
+local POSITION_X = 0.5 -- horizontal centre of screen
+local POSITION_Y = 0.175 -- near bottom, not used
+local useModels = false
+
 -------------------------------------------------------------------------------
+-- Localisations
 -------------------------------------------------------------------------------
+
+local floor                    = math.floor
+local fmod                     = math.fmod
+local insert                   = table.insert
+
+----------------
+-- OpenGL
+----------------
+local glBlending               = gl.Blending
+local glClear                  = gl.Clear
+local glColor                  = gl.Color
+local glCulling                = gl.Culling
+local glDepthMask              = gl.DepthMask
+local glDepthTest              = gl.DepthTest
+local glLighting               = gl.Lighting
+local glMaterial               = gl.Material
+local glPopMatrix              = gl.PopMatrix
+local glPushMatrix             = gl.PushMatrix
+local glRect                   = gl.Rect
+local glRotate                 = gl.Rotate
+local glScale                  = gl.Scale
+local glScissor                = gl.Scissor
+local glShape                  = gl.Shape
+local glTexRect                = gl.TexRect
+local glText                   = gl.Text
+local glTexture                = gl.Texture
+local glTranslate              = gl.Translate
+local glUnit                   = gl.Unit
+local glUnitShape              = gl.UnitShape
+
+
+-----------------
+-- Unsynced Read
+-----------------
+local GetUnitDefDimensions   = Spring.GetUnitDefDimensions
+local GetUnitDefID           = Spring.GetUnitDefID
+local GetMyTeamID            = Spring.GetMyTeamID
+local GetTeamUnitsSorted     = Spring.GetTeamUnitsSorted
+local GetModKeyState         = Spring.GetModKeyState
+local GetMouseState          = Spring.GetMouseState
+local GetUnitPosition        = Spring.GetUnitPosition
+
+--------------------
+-- Unsynced Control
+--------------------
+local SelectUnitArray        = Spring.SelectUnitArray
+local SendCommands           = Spring.SendCommands
+
+-----------------------------------------------------
+-- Constants
+-----------------------------------------------------
+local MINIMAP_X_MUL          = 1/(Game.mapX*512)
+local MINIMAP_Y_MUL          = 1/(Game.mapY*512)
+
+-----------------
+-- OpenGl
+-----------------
+local GL_FRONT                  = GL.FRONT
+local GL_LINE_LOOP              = GL.LINE_LOOP
+local GL_QUADS                  = GL.QUADS
+local GL_ONE                    = GL.ONE
+local GL_ONE_MINUS_SRC_ALPHA    = GL.ONE_MINUS_SRC_ALPHA
+local GL_SRC_ALPHA              = GL.SRC_ALPHA
+local GL_DEPTH_BUFFER_BIT       = GL.DEPTH_BUFFER_BIT
+
 include("colors.h.lua")
 
+---------------------------------------------------------------------------
+-- Variables
+-------------------------------------------------------------------------------
+
+local DrawUnitIcons
 local vsx, vsy = widgetHandler:GetViewSizes()
 
 function widget:ViewResize(viewSizeX, viewSizeY)
@@ -22,54 +104,38 @@ function widget:ViewResize(viewSizeX, viewSizeY)
   vsy = viewSizeY
 end
 
-local MAX_ICONS = 10
-local ICON_SIZE_X = 70
-local ICON_SIZE_Y = 70
-local CONDENSE = false -- show one icon for all builders of same type
-local POSITION_X = 0.5 -- horizontal centre of screen
-local POSITION_Y = 0.175 -- near bottom
-local NEAR_IDLE = 8 -- this means that factories with only 8 build items left will be shown as idle
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
-
-
 local X_MIN = 0
 local X_MAX = 0
 local Y_MIN = 0
 local Y_MAX = 0
 local drawTable = {}
-local IdleList = {}
+local PlaneList = {}
 local activePress = false
-local QCount = {}
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
-local function IsIdleBuilder(unitID)
-  local udef = Spring.GetUnitDefID(unitID)
-  local ud = UnitDefs[udef] 
-	local qCount = 0
-  if ud.canFly == true then  --- can build
-    local bQueue = Spring.GetFullBuildQueue(unitID)
-    if not bQueue[1] then  --- has no build queue
-          return true 
+local function IsPlane(unitID)
+	local udef = GetUnitDefID(unitID)
+	local ud = UnitDefs[udef] 
+	if ud.canFly == true then  --- can fly
+		return true 
     end
-  end
-  return false
+	return false
 end
 
 local function DrawBoxes(number)
-	gl.Color({ 0, 0, 0, 0.65 })
+	glColor({ 0, 0, 0, 0.65 })
 	X_MIN = POSITION_X*vsx-0.5*number*ICON_SIZE_X
 	X_MAX = POSITION_X*vsx+0.5*number*ICON_SIZE_X
-	Y_MIN = 64 + 16--POSITION_Y*vsy+0.5*ICON_SIZE_Y
-	Y_MAX = Y_MIN + ICON_SIZE_Y--POSITION_Y*vsy-0.5*ICON_SIZE_Y
+	Y_MIN = 64 + 16  --POSITION_Y*vsy+0.5*ICON_SIZE_Y
+	Y_MAX = Y_MIN + ICON_SIZE_Y  --POSITION_Y*vsy-0.5*ICON_SIZE_Y
 	local X1 = X_MIN
 	local ct = 0
 	while (ct < number) do
 		ct = ct + 1
-		local X2 = X1+ICON_SIZE_X
+		local X2 = X1 + ICON_SIZE_X
 		
-		gl.Shape(GL.LINE_LOOP, {
+		glShape(GL_LINE_LOOP, {
 	    { v = { X1, Y_MIN } },
 	    { v = { X2, Y_MIN } },
 	    { v = { X2, Y_MAX } },
@@ -78,15 +144,15 @@ local function DrawBoxes(number)
 		X1 = X2
 		
 	end
-end--]]
+end
 
 local function SetupModelDrawing()
-  gl.DepthTest(true) 
-  gl.DepthMask(true)
-  gl.Culling(GL.FRONT)
-  gl.Lighting(true)
-  gl.Blending(false)
-  gl.Material({
+  glDepthTest(true) 
+  glDepthMask(true)
+  glCulling(GL_FRONT)
+  glLighting(true)
+  glBlending(false)
+  glMaterial({
     ambient  = { 1.0, 1.0, 1.0, 1.0 },
     diffuse  = { 1.0, 1.0, 1.0, 1.0 },
     emission = { 0.0, 0.0, 0.0, 1.0 },
@@ -97,11 +163,11 @@ end
 
 
 local function RevertModelDrawing()
-  gl.Blending(true)
-  gl.Lighting(false)
-  gl.Culling(false)
-  gl.DepthMask(false)
-  gl.DepthTest(false)
+  glBlending(true)
+  glLighting(false)
+  glCulling(false)
+  glDepthMask(false)
+  glDepthTest(false)
 end
 
 local function CenterUnitDef(unitDefID)
@@ -110,7 +176,7 @@ local function CenterUnitDef(unitDefID)
     return
   end
   if (not ud.dimensions) then
-    ud.dimensions = Spring.GetUnitDefDimensions(unitDefID)
+    ud.dimensions = GetUnitDefDimensions(unitDefID)
   end
   if (not ud.dimensions) then
     return
@@ -136,102 +202,123 @@ local function CenterUnitDef(unitDefID)
     scale = (ICON_SIZE_Y / ySize)
   end
   scale = scale * 0.8
-  gl.Scale(scale, scale, scale)
+  glScale(scale, scale, scale)
 
   -- translate to the unit's midpoint
   local xMid = 0.5 * (d.maxx + d.minx)
   local yMid = 0.5 * (d.maxy + d.miny)
   local zMid = 0.5 * (d.maxz + d.minz)
-  gl.Translate(-xMid, -yMid, -zMid)
+  glTranslate(-xMid, -yMid, -zMid)
 end
 
 
 
-local function DrawUnitIcons(number)
+local function DrawUnitModels(number)
 	if not drawTable then
 		return -1 
 	end
 	
 	local ct = 0
 	local X1, X2
-	gl.Texture(false)
+	glTexture(false)
 	SetupModelDrawing()
 	
-	gl.Scissor(true)
+	glScissor(true)
 	while (ct < number) do
 		ct = ct + 1
 		
-		gl.PushMatrix()
+		glPushMatrix()
 		X1 = X_MIN+(ICON_SIZE_X*(ct-1))
 		X2 = X1+ICON_SIZE_X
 		
-		gl.Scissor(X1, Y_MIN, X2 - X1, Y_MAX - Y_MIN)
+		glScissor(X1, Y_MIN, X2 - X1, Y_MAX - Y_MIN)
 	
-		gl.Translate(0.5*(X2+X1), 0.5*(Y_MAX+Y_MIN), 0)
-		gl.Rotate(-90.0, 1, 0, 0)
+		glTranslate(0.5*(X2+X1), 0.5*(Y_MAX+Y_MIN), 0)
+		glRotate(-90.0, 1, 0, 0)
 		
 		CenterUnitDef(drawTable[ct].unitDefID)
 		
-		gl.UnitShape(drawTable[ct].unitDefID, Spring.GetMyTeamID())
+		glUnitShape(drawTable[ct].unitDefID, GetMyTeamID())
 		
-		gl.Scissor(false)
-		gl.PopMatrix()
+		glScissor(false)
+		glPopMatrix()
 		
 		if CONDENSE then
-			local NumberCondensed = table.getn(drawTable[ct].units)
+			local NumberCondensed = #drawTable[ct].units
 			if NumberCondensed > 1 then
-				gl.Text(NumberCondensed, (X_MIN + X_MAX) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "oc")
+				glText(NumberCondensed, (X1 + X2) * 0.5, Y_MAX + 2, ICON_SIZE_Y * 0.25, "oc")
 			end
 			
 		end
-		
-		local unitID = drawTable[ct].units
-		if type(unitID) == 'table' then 
-			unitID = unitID[1]
-		end
-		if QCount[unitID] then
-			gl.Text(QCount[unitID], X_MIN + (0.5 * ICON_SIZE_X),Y_MAX + 2,ICON_SIZE_Y * 0.25,"ocn")
-		end
-			
 	end
 	RevertModelDrawing()
-end--]]
+end
+
+local function DrawUnitBuildPics(number)
+	if not drawTable then
+		return -1 
+	end
+	
+	local ct = 0
+	local X1, X2
+	X1 = X_MIN
+	
+	glColor(1,1,1,1)
+	while (ct < number) do
+		ct = ct + 1
+		X2 = X1+ICON_SIZE_X
+		
+		glTexture("#" .. drawTable[ct].unitDefID)
+		glTexRect(X1, Y_MIN, X2, Y_MAX)
+		glTexture(false)
+				
+		X1 = X2
+		
+		if CONDENSE then
+			local NumberCondensed = #drawTable[ct].units
+			if NumberCondensed > 1 then
+				glText(NumberCondensed, (X1 + X2) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "oc")
+			end
+			
+		end
+	end
+end
 
 local function MouseOverIcon(x, y)
 	if not drawTable then return -1 end
 	
-	local NumOfIcons = table.getn(drawTable)
-  if (x < X_MIN)   then return -1 end
-  if (x > X_MAX)   then return -1 end
-  if (y < Y_MIN)   then return -1 end
-  if (y > Y_MAX)   then return -1 end
+	local NumOfIcons = #drawTable
+	if (x < X_MIN)   then return -1 end
+	if (x > X_MAX)   then return -1 end
+	if (y < Y_MIN)   then return -1 end
+	if (y > Y_MAX)   then return -1 end
   
-  local icon = math.floor((x-X_MIN)/ICON_SIZE_X)
-  if (icon < 0) then
-    icon = 0
-  end
-  if (icon >= NumOfIcons) then
-    icon = (NumOfIcons - 1)
-  end
-  return icon
-end--]]
+	local icon = floor((x-X_MIN)/ICON_SIZE_X)
+	if (icon < 0) then
+		icon = 0
+	end
+	if (icon >= NumOfIcons) then
+		icon = (NumOfIcons - 1)
+	end
+	return icon
+end
 
 
 function DrawIconQuad(iconPos, color)
   local X1 = X_MIN + (ICON_SIZE_X * iconPos)
   local X2 = X1 + ICON_SIZE_X
   
-  gl.Color(color)
-  gl.Blending(GL.SRC_ALPHA, GL.ONE)
-  gl.Shape(GL.QUADS, {
+  glColor(color)
+  glBlending(GL_SRC_ALPHA, GL_ONE)
+  glShape(GL_QUADS, {
     { v = { X1, Y_MIN } },
     { v = { X2, Y_MIN } },
     { v = { X2, Y_MAX } },
     { v = { X1, Y_MAX } },
   })
   
-  gl.Blending(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA)
-end--]]
+  glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+end
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -242,12 +329,18 @@ local mouseOnUnitID = nil
 
 
 function widget:Initialize()
+	if useModels then
+		DrawUnitIcons = DrawUnitModels
+	else
+		DrawUnitIcons = DrawUnitBuildPics
+	end
+--[[
   local _, _, spec = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
   if spec then
    -- widgetHandler:RemoveWidget()
    -- return false
   end
-	
+]]--
 	
 end
 
@@ -267,19 +360,18 @@ end]]
 
 
 function widget:Update()
-	IdleList = {}
-	QCount = {}
-	local myUnits = Spring.GetTeamUnitsSorted(Spring.GetMyTeamID())
+	PlaneList = {}
+	local myUnits = GetTeamUnitsSorted(GetMyTeamID())
 	local unitCount = 0
 	for unitDefID, unitTable in pairs(myUnits) do
 		if type(unitTable) == 'table' then
 			for count, unitID in pairs(unitTable) do
-				if count ~= 'n' and IsIdleBuilder(unitID) then
+				if count ~= 'n' and IsPlane(unitID) then
 					unitCount = unitCount + 1
-					if IdleList[unitDefID] then
-						table.insert(IdleList[unitDefID], unitID)
+					if PlaneList[unitDefID] then
+						insert(PlaneList[unitDefID], unitID)
 					else
-						IdleList[unitDefID] = {unitID}
+						PlaneList[unitDefID] = {unitID}
 					end
 				end
 			end
@@ -359,15 +451,15 @@ function widget:DrawScreen()
 	local noOfIcons = 0
 	drawTable = {}
 	
-	for unitDefID, units in pairs(IdleList) do
+	for unitDefID, units in pairs(PlaneList) do
 		if CONDENSE then
-			table.insert(drawTable, {unitDefID = unitDefID, units = units})
+			insert(drawTable, {unitDefID = unitDefID, units = units})
 			noOfIcons = noOfIcons + 1
 		else
 			for _, unitID in pairs(units) do
-				table.insert(drawTable, {unitDefID = unitDefID, units = unitID})
+				insert(drawTable, {unitDefID = unitDefID, units = unitID})
 			end
-			noOfIcons = noOfIcons + table.getn(units)
+			noOfIcons = noOfIcons + #units
 		end
 
 	
@@ -377,13 +469,12 @@ function widget:DrawScreen()
 	elseif noOfIcons == 0 then
 		return
 	end
-	gl.Clear(GL.DEPTH_BUFFER_BIT)
+	glClear(GL_DEPTH_BUFFER_BIT)
 	
 	DrawBoxes(noOfIcons)
 	DrawUnitIcons(noOfIcons)
-	
 
-	local x, y, lb, mb, rb = Spring.GetMouseState()
+	local x, y, lb, mb, rb = GetMouseState()
 	local icon = MouseOverIcon(x, y)
 	if (icon >= 0) then
 		if (lb or mb or rb) then
@@ -400,7 +491,7 @@ end
 function widget:DrawWorld()
 	if widgetHandler:InTweakMode() then return -1 end
 	
-	local x,y,_,_,_ = Spring.GetMouseState()
+	local x,y,_,_,_ = GetMouseState()
 	local iconNum = MouseOverIcon(x, y)
   if iconNum < 0 then
 		mouseOnUnitID = nil
@@ -413,26 +504,26 @@ function widget:DrawWorld()
 		Clicks[unitDefID] = 1
 	end
 	if type(unitID) == 'table' then
-		unitID = unitID[math.fmod(Clicks[unitDefID]+1, table.getn(unitID))+1]
+		unitID = unitID[fmod(Clicks[unitDefID]+1, #unitID)+1]
 	end
 	
 	mouseOnUnitID = unitID
 	-- hilight the unit we are about to click on
-	gl.Unit(unitID, true)
+	glUnit(unitID, true)
 end
 
 
 function widget:DrawInMiniMap(sx, sz)
 	if not mouseOnUnitID then return -1 end
 	
-	local ux, uy, uz = Spring.GetUnitPosition(mouseOnUnitID)
+	local ux, uy, uz = GetUnitPosition(mouseOnUnitID)
   if (not ux or not uy or not uz) then
     return
   end
-	local xr = ux/(Game.mapX*512)
-	local yr = 1 - uz/(Game.mapY*512)
-	gl.Color(1,0,0)
-	gl.Rect(xr*sx, yr*sz, (xr*sx)+5, (yr*sz)+5)
+	local xr = ux*MINIMAP_X_MUL
+	local yr = 1 - uz*MINIMAP_X_MUL
+	glColor(1,0,0)
+	glRect(xr*sx, yr*sz, (xr*sx)+5, (yr*sz)+5)
 end
 
 
@@ -459,16 +550,16 @@ function widget:MouseRelease(x, y, button)
 		else
 			Clicks[unitDefID] = 1
 		end
-		unitID = unitID[math.fmod(Clicks[unitDefID], table.getn(unitID))+1]
+		unitID = unitID[fmod(Clicks[unitDefID], #unitID)+1]
 	end
 	
-  local alt, ctrl, meta, shift = Spring.GetModKeyState()
+  local alt, ctrl, meta, shift = GetModKeyState()
   
   if (button == 1) then -- left mouse
-    Spring.SelectUnitArray({unitID})
+  	SelectUnitArray({unitID})
   elseif (button == 2) then -- middle mouse
-    Spring.SelectUnitArray({unitID})
-    Spring.SendCommands({"viewselection"})   
+    SelectUnitArray({unitID})
+    SendCommands({"viewselection"})   
   end
 	
   return -1
@@ -480,7 +571,7 @@ function widget:GetTooltip(x, y)
 	if type(units) == 'table' then
 		units = units[1]
 	end
-  local unitDefID = Spring.GetUnitDefID(units)
+  local unitDefID = GetUnitDefID(units)
   local ud = UnitDefs[unitDefID]
   return ud.humanName .. "\nLeft mouse: select unit\nMiddle mouse: move to unit\n"
 end
@@ -495,10 +586,10 @@ end
 
 function echo(msg)
 	if type(msg) == 'string' or type(msg) == 'number' then
-		Spring.SendCommands({"echo " .. msg})
+		SendCommands({"echo " .. msg})
 	elseif type(msg) == 'table' then
-		Spring.SendCommands({"echo echo failed on table"})
+		SendCommands({"echo echo failed on table"})
 	else
-		Spring.SendCommands({"echo broke :-"})
+		SendCommands({"echo broke :-"})
 	end
 end

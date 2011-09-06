@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=1950;
-  buildTime=1950;
+  buildCostMetal=2050;
+  buildTime=2050;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   //collisionVolumeType=box;
@@ -16,9 +16,9 @@
   //collisionVolumeTest=1;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
-    armor_front=47.5;
-    armor_rear=30;
-    armor_side=40;
+    armor_front=42;
+    armor_rear=21;
+    armor_side=30;
     armor_top=10;
     blockfear=1;
     hasturnbutton=1;
@@ -42,7 +42,6 @@
   movementClass=TANK_Car;
   noChaseCategory=BUILDING FLAG INFANTRY AIR DEPLOYED MINE;
   objectName=GBRAECMkIII.S3O;
-  script=GBRDaimler.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
