@@ -343,7 +343,7 @@ for weapName, weapDef in pairs(WeaponDefs) do
 		weapDef.mygravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
 	end
 	if WeaponDefs[weapName].customparams then --for whatever reason, customparams needs to be lowercase here.
-		if WeaponDefs[weapName].customparams.howitzer then
+		if WeaponDefs[weapName].customparams.howitzer or WeaponDefs[weapName].customparams.damagetype == "grenade" then
 			WeaponDefs[weapName].weaponvelocity = math.sqrt(WeaponDefs[weapName].range * GRAVITY) --Game.gravity)
 		end
 		-- add PARA onlytargetcategory to all weapons which use 'smallarm' damagetype customparam
