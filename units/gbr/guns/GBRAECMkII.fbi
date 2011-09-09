@@ -23,7 +23,7 @@
     blockfear=1;
     hasturnbutton=1;
     lowammolevel=2;
-    maxammo=5;
+    maxammo=10; // 40 rounds
     weaponcost=10;
     weaponswithammo=1;
   }
