@@ -29,7 +29,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   objectName=LogisticsHuge.S3O;
-  script=supplyDepot.cob;
+  script=yard.cob;
   selfDestructAs=massive_explosion;
   [sfxtypes] {
   }

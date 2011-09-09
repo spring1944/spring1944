@@ -30,7 +30,7 @@
   maxWaterDepth=0;
   objectName=LogisticsHuge.S3O;
   selfDestructAs=massive_explosion;
-  script=supplyDepot.cob;
+  script=yard.cob;
   [sfxtypes] {
   }
   showNanoFrame=0;
