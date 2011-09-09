@@ -67,7 +67,9 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local weapons = UnitDefs[unitDefID].weapons
 	if weapons and #weapons > 1 then
 		local hasSmoke = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.smokeradius
-		if hasSmoke then
+		local noButton = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.nosmoketoggle
+		if hasSmoke and not noButton then
+			smokeCmdDesc.params[1] = 0 -- make sure units are correctly spawned with Fire HE as initial state
 			Spring.InsertUnitCmdDesc(unitID, 500, smokeCmdDesc)
 		end
 	end
@@ -87,7 +89,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		else
 			Spring.CallCOBScript(unitID, "SwitchToHE", 0)
 		end
-		smokeCmdDesc.params[1] = cmdParams[1]
+		smokeCmdDesc.params[1] = cmdParams[1] -- but seriously changing a global var like this is so unsafe
 		Spring.EditUnitCmdDesc(unitID, cmdDescID, { params = smokeCmdDesc.params}) 
 		return false
 	end
