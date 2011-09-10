@@ -71,5 +71,11 @@
   maxAngleDif1=170;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
+
+  candgun=1;
+  weapon2=No77;
+  badTargetCategory2=OPENVEH SOFTVEH;
+  maxAngleDif2=170;
+  weaponMainDir2=0 0 1;
 }
 
