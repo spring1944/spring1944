@@ -130,8 +130,6 @@ local No77 = SmokeGrenadeClass:New{
   name               = [[No. 77 Smoke Grenade]],
 }
 
-printTable(No77)
-
 -- Other nades
 local Molotov = GrenadeClass:New{
   areaOfEffect       = 40,
