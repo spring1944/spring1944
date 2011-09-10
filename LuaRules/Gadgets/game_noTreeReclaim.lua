@@ -1,10 +1,10 @@
 function gadget:GetInfo()
   return {
-    name      = "No reclaiming trees",
-    desc      = "Prevents default trees from being reclaimed",
-    author    = "Tobi and Nemo, based on a bit by lurker",
+    name      = "Command Controller",
+    desc      = "Prevents certain commands being issued",
+    author    = "Tobi, Nemo (B. Tyler), FLOZi (C. Lawrence) based on a bit by lurker",
     date      = "December, 2008",
-    license   = "public domain, except for line 20 and 21, because those were GPL'd by lurker. o_O",
+    license   = "GNU GPL v2",
     layer     = 0,
     enabled   = true  --  loaded by default?
   }
@@ -12,9 +12,10 @@ end
 
 if gadgetHandler:IsSyncedCode() then
 -- SYNCED
-	local GetFeatureDefID = Spring.GetFeatureDefID
-	local GetUnitDefID = Spring.GetUnitDefID
-	local CMD_RECLAIM = CMD.RECLAIM
+	local GetFeatureDefID	= Spring.GetFeatureDefID
+	local GetUnitDefID		= Spring.GetUnitDefID
+	local CMD_ATTACK		= CMD.ATTACK
+	local CMD_RECLAIM		= CMD.RECLAIM
 
 	function gadget:Initialize()
 		for _,feature in ipairs(Spring.GetAllFeatures()) do
@@ -35,6 +36,12 @@ if gadgetHandler:IsSyncedCode() then
 				--Note that xsize/zsize value in unitDef is twice the footprint value!
 				local ud = UnitDefs[udid]
 				return ud.xsize >= 8 or ud.zsize >= 8
+			end
+		elseif (cmdID == CMD_ATTACK and #cmdParams == 1) then
+			local unitID = cmdParams[1]
+			local ud = UnitDefs[GetUnitDefID(unitID)]
+			if ud.name == "flag" then
+				return false 
 			end
 		end
 		return true
