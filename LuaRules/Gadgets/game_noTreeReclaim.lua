@@ -39,7 +39,7 @@ if gadgetHandler:IsSyncedCode() then
 			end
 		elseif (cmdID == CMD_ATTACK and #cmdParams == 1) then
 			local unitID = cmdParams[1]
-			local ud = UnitDefs[GetUnitDefID(unitID)]
+			local ud = UnitDefs[GetUnitDefID(unitID)] or {} -- weird crash here
 			if ud.name == "flag" then
 				return false 
 			end
