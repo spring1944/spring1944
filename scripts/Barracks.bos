@@ -1,7 +1,4 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, pad, beam, door;
 
@@ -68,7 +65,7 @@ OpenYard()
 		sleep 1500;
 		set YARD_OPEN to 1;
 	}
-	set BUGGER_OFF to 0;
+	//set BUGGER_OFF to 0;
 }
 
 CloseYard()
@@ -80,7 +77,7 @@ CloseYard()
 		sleep 1500;
 		set YARD_OPEN to 0;
 	}
-	set BUGGER_OFF to 0;
+	//set BUGGER_OFF to 0;
 }
 
 Go()
@@ -139,7 +136,7 @@ Create()
  	}
   move base to y-axis 0 now;
   
-  
+    set BUGGER_OFF to 1;
 	call-script InitState();
 	start-script SmokeUnit();
 }
