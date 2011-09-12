@@ -26,7 +26,6 @@ local MGTracerClass = TracerClass:New{
   coreThickness      = 0.15,
   duration           = 0.01,
   intensity          = 0.7,
-  interceptedByShieldType = 8,
   laserFlareSize     = 0.0001,
   thickness          = 0.45,
   weaponType         = [[LaserCannon]],
@@ -41,6 +40,7 @@ local GreenTracerClass = Weapon:New{
 
 -- Small Tracer (8mm MG)
 local Small_Tracer = MGTracerClass:New{
+  interceptedByShieldType = 8,
   name               = [[Tracer for standard small-arms fire]],
   size               = 2.5, -- does this do anything for lasercannon?
 }
@@ -48,6 +48,7 @@ local Small_Tracer_Green = Small_Tracer:New(GreenTracerClass)
 
 -- Medium Tracer (12.7 - 15mm MG)
 local Medium_Tracer = MGTracerClass:New{
+  interceptedByShieldType = 16,
   name               = [[Tracer for HMGs and 15mm cannons, etc]],
   size               = 4, -- does this do anything for lasercannon?
   sprayAngle         = 410,

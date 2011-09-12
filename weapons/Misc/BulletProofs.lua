@@ -9,19 +9,21 @@ local BulletProofClass = Weapon:New{
   shieldMaxSpeed     = 900,
   shieldRepulser     = true,
   weaponType         = [[Shield]],
+  
+  visibleShield = true,
 }
 
 -- Implementations
 
 -- .30cal proof
 local Bounce30cal = BulletProofClass:New{
-  shieldInterceptType = 16,
+  shieldInterceptType = 8, -- 001000
   shieldRadius       = 35,
 }
 
 -- .50cal proof
 local Bounce50cal = BulletProofClass:New{
-  shieldInterceptType = 24,
+  shieldInterceptType = 24, -- 011000
   shieldRadius       = 40,
 }
 
