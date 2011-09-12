@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=APMineSign;
-  name=Warning Sign;
+  name=Warning! AT Mines!;
   buildCostEnergy=0;
   buildCostMetal=360;
   buildPic=ATMine.png;

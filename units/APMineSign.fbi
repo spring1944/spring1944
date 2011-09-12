@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=APMineSign;
-  name=Anti-Personelle Minefield;
+  name=Warning! AP Mines!;
   buildCostEnergy=0;
   buildCostMetal=360;
   buildPic=APMine.png;
