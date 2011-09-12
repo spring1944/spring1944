@@ -10,7 +10,7 @@ local BulletProofClass = Weapon:New{
   shieldRepulser     = true,
   weaponType         = [[Shield]],
   
-  visibleShield = true,
+  --visibleShield = true,
 }
 
 -- Implementations
