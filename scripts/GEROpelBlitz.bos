@@ -1,7 +1,4 @@
-#define TA			// This is a TA script
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 piece  base, load_shoulder, load_arm, wheel1, wheel2, tow_point;
 static-var bGun;

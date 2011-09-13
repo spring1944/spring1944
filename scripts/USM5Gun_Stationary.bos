@@ -205,7 +205,6 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	//Fire teh weap0n!!!11
 	CREW_FIRING;
-	get DO_SEISMIC_PING(15);
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...

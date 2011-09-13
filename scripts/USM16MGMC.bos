@@ -82,7 +82,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 StartMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 1;
 	bMoving = TRUE;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
@@ -101,7 +100,6 @@ StartMoving()
 StopMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 0;
 	bMoving = FALSE;
 	stop-spin frontwheel around x-axis decelerate <100.000000>;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;

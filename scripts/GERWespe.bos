@@ -1,4 +1,4 @@
-#include "STANDARD_COMMANDS_GPL.h" // Thank you Argh
+#include "constants.h"
 
 piece base, sleeve, barrel, flare, brakeright, brakeleft, aaref, aaturret, aagun, aaflare, exhaust;
 piece frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, tracks1, tracks2;
@@ -68,7 +68,6 @@ static-var  restore_delay, rock, reloading, mainHead, bMoving, treadnum, gunaimi
 #define LARGE_MuzzleDust	1024+8
 #define MuzzleBrakeSmoke	1024+9
 
-#include "TurnButton.h"
 
 treads() 
 { 
@@ -94,7 +93,6 @@ treads()
 
 Create()
 {
-	set STEALTH to 1;
 	FX_HIDE
 	// init vars
 	rock = FALSE;
@@ -188,9 +186,7 @@ FireWeapon1()
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	
 	rock = FALSE;
-	set STEALTH to 0;
-	sleep VISIBLE_PERIOD;
-	set STEALTH to 1;
+
 	return 0;
 }
 

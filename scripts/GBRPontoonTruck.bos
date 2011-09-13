@@ -1,7 +1,4 @@
-#define TAK
-
-#include "sfxtype.h"
-#include "exptype.h"
+#include "constants.h"
 
 #define WHEELS_SPIN		<350.082418>
 #define WHEELS_DECEL	<100.000000>
@@ -39,7 +36,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
-	set ACTIVATION to 1;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
 	emit-sfx 257 from exhaust;
@@ -51,7 +47,6 @@ StartMoving()
 
 StopMoving()
 {
-	set ACTIVATION to 0;
 	stop-spin wheel1 around x-axis decelerate WHEELS_DECEL;
 	stop-spin wheel2 around x-axis decelerate WHEELS_DECEL;
 }

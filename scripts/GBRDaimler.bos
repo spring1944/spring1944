@@ -89,7 +89,6 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	bMoving = TRUE;
-	set ACTIVATION to 1;
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
 }
@@ -98,7 +97,6 @@ StopMoving()
 {
 	signal SIG_MOVE;
 	bMoving = FALSE;
-	set ACTIVATION to 0;
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;
 }

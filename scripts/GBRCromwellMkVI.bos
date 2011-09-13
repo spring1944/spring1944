@@ -95,7 +95,7 @@ treads()
 Create()
 {
 	isSmoking = FALSE;
-	set STEALTH to 1;
+
 	FX_HIDE
 	// init vars
 	rock = FALSE;
@@ -202,9 +202,7 @@ FireWeapon1()
 	move barrel to z-axis RECOIL now;
 	sleep 200;
 	move barrel to z-axis 0 speed RETURN_SPEED;
-	set STEALTH to 0;
-	sleep VISIBLE_PERIOD;
-	set STEALTH to 1;
+
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;
@@ -254,9 +252,7 @@ FireWeapon2()
 	move barrel to z-axis RECOIL now;
 	sleep 200;
 	move barrel to z-axis 0 speed RETURN_SPEED;
-	set STEALTH to 0;
-	sleep VISIBLE_PERIOD;
-	set STEALTH to 1;
+
 	rock = FALSE;
 	start-script Reload(); // start reload timer after firing
 	return 0;

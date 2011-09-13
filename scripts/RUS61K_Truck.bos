@@ -1,6 +1,3 @@
-#define TA			// This is a TA script
-
-//#include "sfxtype.h"
 #include "constants.h"
 
 piece  base, body, wheel1, wheel2, carriage, wheel3, wheel4;
@@ -47,7 +44,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
-	set ACTIVATION to 1;
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
 	emit-sfx 257 from exhaust;
@@ -62,7 +58,6 @@ StartMoving()
 
 StopMoving()
 {
-	set ACTIVATION to 0;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
 	stop-spin wheel2 around x-axis decelerate <100.000000>;
 	stop-spin wheel3 around x-axis decelerate <100.000000>;
