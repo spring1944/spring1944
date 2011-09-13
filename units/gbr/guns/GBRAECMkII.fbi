@@ -1,13 +1,13 @@
 [unitinfo] {
   unitname=GBRAECMkII;
-  name=AEC Armoured Car Mk III;
+  name=AEC Armoured Car Mk II;
   description=Heavy Armoured Car;
   acceleration=0.03;
   airSightDistance=1500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=2050;
-  buildTime=2050;
+  buildCostMetal=1900;
+  buildTime=1900;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   //collisionVolumeType=box;
@@ -16,8 +16,8 @@
   //collisionVolumeTest=1;
   corpse=GBRAECMkIII_Destroyed;
   [customParams] {
-    armor_front=42;
-    armor_rear=21;
+    armor_front=57;
+    armor_rear=16;
     armor_side=30;
     armor_top=10;
     blockfear=1;
@@ -74,13 +74,13 @@
   turnRate=405;
   badTargetCategory=FLAG;
 
-  weapon1=QF75mmHE;
+  weapon1=qf6pdr57mmhe;
   weaponMainDir1=0 16 1;
   maxAngleDif1=210;
   badTargetCategory1=OPENVEH HARDVEH;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=QF75mmAP;
+  weapon2=qf6pdr57mmap;
   weaponMainDir2=0 16 1;
   maxAngleDif2=210;
   onlyTargetCategory2=OPENVEH HARDVEH;

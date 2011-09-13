@@ -93,7 +93,6 @@ RestoreAfterDelay()
 StartMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 1;
 	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
 }
@@ -101,7 +100,6 @@ StartMoving()
 StopMoving()
 {
 	signal SIG_MOVE;
-	set ACTIVATION to 0;
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;
 }
@@ -157,8 +155,8 @@ FireWeapon1()
 	//emit-sfx 1  from flare;
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;
+	//emit-sfx MuzzleBrakeSmoke from brakeright;
+	//emit-sfx MuzzleBrakeSmoke from brakeleft;
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
@@ -209,8 +207,8 @@ FireWeapon2()
 	
 	emit-sfx MEDIUM_MUZZLEFLASH from flare;
 	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	emit-sfx MuzzleBrakeSmoke from brakeright;
-	emit-sfx MuzzleBrakeSmoke from brakeleft;	
+	//emit-sfx MuzzleBrakeSmoke from brakeright;
+	//emit-sfx MuzzleBrakeSmoke from brakeleft;	
 	// barrel recoil
 	move barrel to z-axis RECOIL now;
 	sleep 200;
