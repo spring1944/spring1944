@@ -11,6 +11,7 @@ local BulletProofClass = Weapon:New{
   weaponType         = [[Shield]],
   
   --visibleShield = true,
+  --VisibleShieldHitFrames = 10,
 }
 
 -- Implementations

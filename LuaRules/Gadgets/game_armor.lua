@@ -75,6 +75,10 @@ local unitInfos = {}
 --armor_dropoff is in inverse elmos (exponential penetration decay)
 local weaponInfos = {}
 
+-- counters for piece hits
+local turretHits = 0
+local baseHits = 0
+
 ----------------------------------------------------------------
 --speedups
 ----------------------------------------------------------------
@@ -166,10 +170,20 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   local weaponDef = WeaponDefs[weaponDefID]
   
   -- smallarms do 0 damage to heavy armour
-  if unitInfo and weaponDef.customParams.damagetype == "smallarm" and Game.armorTypes[UnitDefs[unitDefID].armorType] ~= "armouredvehicles" then return 0 end
+  if unitInfo and weaponDef.customParams.damagetype == "smallarm" then 
+    -- 50cal damage to armoured vehicles
+    if Game.armorTypes[UnitDefs[unitDefID].armorType] == "armouredvehicles" and weaponDef.interceptedByShieldType == 16 then 
+	  return damage
+    end
+    return 0
+  end
   
   if not unitInfo or not weaponInfo or not weaponDef then return damage end
 
+  --- count how many turret and base hits we get
+  local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
+  if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
+  
   local armor
   
   local armor_hit_side = weaponInfo[3]
@@ -237,4 +251,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   ]]
   
   return damage * mult
+end
+
+function gadget:GameOver()
+	Spring.Echo("[Armour Gadget] Base Hits: " .. baseHits)
+	Spring.Echo("[Armour Gadget] Turret Hits: " .. turretHits)
 end
