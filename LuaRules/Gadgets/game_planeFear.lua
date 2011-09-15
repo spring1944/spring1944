@@ -72,7 +72,7 @@ end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	local ud = UnitDefs[unitDefID]
-	if ud.canFly then
+	if ud.canFly and ud.name ~= "usparatrooper" then
 		--Spring.Echo("AIRCRAFT DAMAGED")
 		local health = GetUnitHealth(unitID)
 		if damage > health then
