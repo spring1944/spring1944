@@ -138,8 +138,23 @@ end
 local GMBuildOptions = {}
 local GM_UD
 
+local sensors = modOptions and modOptions.sensors == '1' --true
+
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
+	if sensors and (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
+		if tonumber(ud.sightdistance ) > 600 then
+			ud.sightdistance = 650
+			ud.radardistance = 950
+		else
+			ud.radardistance = 800
+		end
+		ud.seismicdistance = 1400
+		ud.activatewhenbuilt = true
+	end
+	if sensors and not ud.maxvelocity then
+		ud.stealth = false
+	end
 	if ud.floater then
 		ud.turninplace = false
 		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
@@ -164,8 +179,17 @@ for name, ud in pairs(UnitDefs) do
 			ud.description = ud.description.." ("..newDescrLine..")"
 			
 		end
-		if ud.customparams.armor_front then
+		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
 			ud.usepiececollisionvolumes = true
+			if sensors then
+				ud.stealth = false
+				ud.sightdistance = tonumber(ud.sightdistance) * 0.5
+				ud.radardistance = 950
+				ud.activatewhenbuilt = true
+				--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
+				--if seisSig < 1 then seisSig = 1 end
+				ud.seismicsignature = 1 --seisSig
+			end
 		end
 	end
 	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots

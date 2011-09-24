@@ -1,7 +1,7 @@
 local iconTypes = {
 	default = {
 		bitmap		=	"icons/alert.tga",
-		size			=	5,
+		size			=	0, --5,
 		distance	=	5000,
 	},
 	rifle = {

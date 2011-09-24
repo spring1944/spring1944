@@ -41,6 +41,13 @@ local options = {
 	type   = 'section',
   },
 	
+  {
+    key = "sensors",
+	name = "New Sensors",
+	desc = "Experimental changes to intelligence",
+	type = "bool",
+	def = false,
+  },
  --[[ {
 		key = "navies",
 		name = "Naval Units",
