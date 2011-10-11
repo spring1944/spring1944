@@ -11,6 +11,8 @@
   buildingGroundDecalType=Dirt2.dds;
   buildTime=900;
   category=DEPLOYED;
+  cloakCost=0;
+  cloakCostMoving=0;
   corpse=RUSZiS2_Destroyed;
   [customParams] {
     feartarget=1;
@@ -26,9 +28,11 @@
   footprintX=3;
   footprintZ=3;
   iconType=atartillery;
+  init_cloaked=1;
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
+  minCloakDistance=250;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSZiS2_Stationary.S3O;
   [sfxtypes] {
@@ -58,9 +62,5 @@
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
-
-
-  init_cloaked=1;
-  minCloakDistance=250;
 }
 
