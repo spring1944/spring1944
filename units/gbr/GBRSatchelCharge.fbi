@@ -11,6 +11,7 @@
     isMine=1;
     candetonate=1;
   }
+  cloakCost=0;
   explodeAs=SatchelCharge;
   footprintX=1;
   footprintZ=1;
