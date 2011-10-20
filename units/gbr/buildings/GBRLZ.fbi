@@ -7,6 +7,7 @@
   buildTime=2700;
   category=BUILDING;
   [customParams] {
+	hiddenbuilding=1;
     dontCount=1;
   }
   explodeAs=GBRLZ_death;

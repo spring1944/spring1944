@@ -10,6 +10,7 @@
   category=MINE;
   cloakCost=0;
   [customParams] {
+	hiddenbuilding=1;
     dontCount=1;
     isMine=1;
   }

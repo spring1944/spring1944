@@ -21,8 +21,8 @@ local GetUnitCommands	= Spring.GetUnitCommands
 -- Unsynced Ctrl
 local GiveOrderToUnit	= Spring.GiveOrderToUnit
 -- constants
-local INTERVAL = 35 -- 35 seconds
-local PROBABILITY = 1 -- 100% chance of spawn
+local INTERVAL = 20 -- 20 seconds
+local PROBABILITY = 0 -- 100% chance of spawn
 local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
 -- variables
 local spawners = {}

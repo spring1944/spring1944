@@ -8,6 +8,7 @@
   category=FLAG;
   cloakCost=0;
   [customParams] {
+	hiddenbuilding=1;
     dontCount=1;
     ismine=1;
   }
