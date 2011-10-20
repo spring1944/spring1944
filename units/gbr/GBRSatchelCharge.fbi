@@ -21,6 +21,7 @@
   maxWaterDepth=50;
   minCloakDistance=20;
   objectName=ATMine.S3O;
+  stealth=1;
   selfDestructAs=SatchelCharge;
   selfDestructCountdown=10;
   sightDistance=1;

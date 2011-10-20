@@ -31,6 +31,7 @@
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
   objectName=RUSZiS5.S3O;
+  radardistance=950;
   releaseHeld=1;
   script=GEROpelBlitz.cob;
   seismicSignature=0;
@@ -38,7 +39,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=800;
+  sightDistance=400;
   smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;

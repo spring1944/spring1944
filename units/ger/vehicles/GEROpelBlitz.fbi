@@ -31,13 +31,14 @@
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
   objectName=GEROpelBlitz.S3O;
+  radardistance=950;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=800;
+  sightDistance=400;
   smoothAnim=0;
   soundcategory=GERTank;
   stealth=1;

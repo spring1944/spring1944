@@ -172,7 +172,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   -- smallarms do 0 damage to heavy armour
   if unitInfo and weaponDef.customParams.damagetype == "smallarm" then 
     -- 50cal damage to armoured vehicles
-    if Game.armorTypes[UnitDefs[unitDefID].armorType] == "armouredvehicles" and weaponDef.interceptedByShieldType == 16 then 
+    if Game.armorTypes[UnitDefs[unitDefID].armorType] == "armouredvehicles" then 
 	  return damage
     end
     return 0
