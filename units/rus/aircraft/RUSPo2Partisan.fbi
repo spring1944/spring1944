@@ -60,7 +60,7 @@
   }
   showNanoFrame=0;
   Side=RUS;
-  sightDistance=600;
+  sightDistance=400;
   smoothAnim=0;
   SoundCategory=RUSPo2;
   stealth=1;

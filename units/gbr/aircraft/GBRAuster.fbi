@@ -47,8 +47,10 @@
   moverate1=4;
   myGravity=0.6;
   objectName=GBRAuster.S3O;
+  radarDistance=1500;
   refuelTime=10;
   repairable=0;
+  seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -57,7 +59,7 @@
   }
   showNanoFrame=0;
   Side=GBR;
-  sightDistance=2000;
+  sightDistance=600;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;

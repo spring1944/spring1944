@@ -46,6 +46,7 @@
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=GERBf109.S3O;
+  radarDistance=1000;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -57,7 +58,7 @@
   }
   showNanoFrame=0;
   Side=GER;
-  sightDistance=175;
+  sightDistance=0;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;

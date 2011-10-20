@@ -46,6 +46,7 @@
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
   objectName=USP47Thunderbolt.S3O;
+  radarDistance=1000;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -56,7 +57,7 @@
   }
   showNanoFrame=0;
   Side=US;
-  sightDistance=750;
+  sightDistance=0;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;

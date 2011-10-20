@@ -50,6 +50,7 @@
   myGravity=0.6;
   noChaseCategory=FLAG MINE BUILDING;
   objectName=USP51DMustangGA.S3O;
+  radarDistance=1000;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -61,7 +62,7 @@
   }
   showNanoFrame=0;
   Side=US;
-  sightDistance=990;
+  sightDistance=200;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;

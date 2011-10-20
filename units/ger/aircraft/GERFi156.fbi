@@ -49,6 +49,7 @@
   myGravity=0.6;
   noChaseCategory=AIR MINE;
   objectName=GERFi156.S3O;
+  radarDistance=1500;
   refuelTime=10;
   repairable=0;
   seismicSignature=0;
@@ -59,7 +60,7 @@
   }
   showNanoFrame=0;
   Side=GER;
-  sightDistance=2000;
+  sightDistance=600;
   smoothAnim=1;
   stealth=1;
   steeringmode=1;

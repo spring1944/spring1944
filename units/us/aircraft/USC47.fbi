@@ -47,6 +47,7 @@
   moverate1=4;
   myGravity=0.6;
   objectName=USC47.S3O;
+  radarDistance=1000;
   refuelTime=10;
   repairable=0;
   seismicSignature=0;
@@ -57,7 +58,7 @@
   }
   showNanoFrame=0;
   Side=US;
-  sightDistance=2000;
+  sightDistance=0;
   smoothAnim=0;
   stealth=1;
   steeringmode=1;
