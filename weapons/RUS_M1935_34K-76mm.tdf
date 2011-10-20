@@ -20,6 +20,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   noSelfDamage=1;
   range=2000;
   reloadTime=4; // 15 rounds per minute, as per Russian sources
@@ -31,7 +33,6 @@
   soundHit=GEN_Explo_4;
   soundStart=GEN_105mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=3000;
   turret=1;
   weaponVelocity=1400;

@@ -1,6 +1,6 @@
 [M1937_40k45mmap] {
   name=40K 45mm Armour Piercing;
-  accuracy=290;
+  accuracy=100;
   areaOfEffect=5;
   ballistic=1;
   canAttackGround=0;
@@ -23,6 +23,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
   range=1310;
@@ -35,7 +37,6 @@
   soundHit=GEN_Explo_1;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1768;
@@ -63,6 +64,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
   range=1310;
@@ -75,7 +78,6 @@
   soundHit=GEN_Explo_2;
   soundStart=RUS_45mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=3000;
   turret=1;
   weaponVelocity=1584;

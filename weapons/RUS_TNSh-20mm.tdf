@@ -35,7 +35,7 @@
 
 [tnsh20mmap] {
   name=2.0cm TNSh L / 107 Cannon Armour Piercing;
-  accuracy=300;
+  accuracy=100;
   areaOfEffect=3;
   ballistic=1;
   burst=3;
@@ -59,6 +59,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=500;
   range=675;
   reloadTime=4.5;
@@ -79,7 +81,7 @@
 
 [tnsh20mmhe] {
   name=2.0cm TNSh Autocannon, tank-mounted version of the ShVAK;
-  accuracy=300;
+  accuracy=100;
   areaOfEffect=24;
   ballistic=1;
   burst=4;
@@ -103,6 +105,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=500;
   range=675;
   reloadTime=4.5;

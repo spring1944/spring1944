@@ -349,7 +349,7 @@ buildoptions =
 	"gersdkfz10",
     "germarder",
     "gerjagdpanzeriv",
-    "gerjagdpanther",
+    --"gerjagdpanther",
   },
 
   gersdkfz9 =

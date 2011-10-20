@@ -46,7 +46,7 @@ local options = {
 	name = "New Sensors",
 	desc = "Experimental changes to intelligence",
 	type = "bool",
-	def = false,
+	def = true,
   },
  --[[ {
 		key = "navies",

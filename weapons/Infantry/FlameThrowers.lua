@@ -49,7 +49,7 @@ local M2Flamethrower = FlamerClass:New{
   areaOfEffect       = 80,
   burst              = 5,
   name               = [[M2-2 Flamethrower]],
-  range              = 210,
+  range              = 260,
   customparams = {
     fearaoe            = 60,
   },

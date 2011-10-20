@@ -1,6 +1,6 @@
 [m637mmap] {
   name=US 37mm M6 Armour-Piercing;
-  accuracy=290;
+  accuracy=100;
   areaOfEffect=5;
   ballistic=1;
   canAttackGround=0;
@@ -23,6 +23,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=500;
   noSelfDamage=1;
   range=1010;
@@ -35,7 +37,6 @@
   soundHit=GEN_Explo_1;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1768;
@@ -43,7 +44,7 @@
 
 [m637mmCanister] {
   name=US 37mm M6 Canister;
-  accuracy=300;
+  accuracy=100;
   areaOfEffect=10;
   beamweapon=1;
   collisionSize=3;
@@ -87,7 +88,7 @@
 
 [m637mmhe] {
   name=US 37mm M6 High-Explosive;
-  accuracy=300;
+  accuracy=100;
   areaOfEffect=44;
   ballistic=1;
   collisionSize=3;
@@ -109,6 +110,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=500;
   noSelfDamage=1;
   range=1010;
@@ -121,7 +124,6 @@
   soundHit=GEN_Explo_2;
   soundStart=US_37mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=3000;
   turret=1;
   weaponVelocity=1584;

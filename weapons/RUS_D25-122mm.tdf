@@ -1,6 +1,6 @@
 [d25122mmap] {
   name=D-25T 122mm Armour-Piercing Ammunition;
-  accuracy=290;
+  accuracy=100;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;
@@ -23,6 +23,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
   range=2530;
@@ -43,7 +45,7 @@
 
 [d25122mmhe] {
   name=D-25T 122mm High-Explosive Ammunition;
-  accuracy=290;
+  accuracy=100;
   areaOfEffect=154;
   ballistic=1;
   collisionSize=4;
@@ -65,6 +67,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
   range=2530;

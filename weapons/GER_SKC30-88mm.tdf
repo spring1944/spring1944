@@ -20,6 +20,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   leadlimit=50;
   movingAccuracy=600;
   noSelfDamage=1;

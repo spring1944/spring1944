@@ -42,7 +42,7 @@
 
 [flakvierling20mmhe] {
   name=Quad FlaK 30/38 High-Explosive Shells;
-  accuracy=255;
+  accuracy=100;
   areaOfEffect=24;
   ballistic=1;
   burnblow=0;
@@ -79,7 +79,6 @@
   soundStart=GER_20mm;
   sprayAngle=400;
   stages=50;
-  targetMoveError=0.1;
   tolerance=700;
   turret=1;
   weaponVelocity=1800;

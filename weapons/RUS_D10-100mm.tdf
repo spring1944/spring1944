@@ -1,6 +1,6 @@
 [d10s100mmap] {
   name=D-10/D-10S 100mm Armour Piercing Ammo;
-  accuracy=275;
+  accuracy=100;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;
@@ -23,6 +23,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
   range=2260;
@@ -35,7 +37,6 @@
   soundHit=GEN_Explo_1;
   soundStart=RUS_85mm;
   stages=50;
-  targetMoveError=0.1;
   tolerance=300;
   turret=1;
   weaponVelocity=1760;

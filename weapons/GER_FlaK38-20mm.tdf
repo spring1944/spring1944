@@ -42,7 +42,7 @@
 
 [kwk3020mmap] {
   name=2cm kwk 30 AP;
-  accuracy=255;
+  accuracy=100;
   areaOfEffect=2;
   ballistic=1;
   burst=3;
@@ -67,6 +67,8 @@
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.1;
+  leadbonus=0.5; 
+  leadlimit=0;
   movingAccuracy=500;
   range=730;
   reloadTime=3;
@@ -87,7 +89,7 @@
 
 [kwk3020mmhe] {
   name=2cm KwK 30 High-Explosive Shells;
-  accuracy=255;
+  accuracy=100;
   areaOfEffect=24;
   ballistic=1;
   burnblow=0;
@@ -124,7 +126,6 @@
   soundStart=GER_20mm;
   sprayAngle=400;
   stages=50;
-  targetMoveError=0.1;
   tolerance=700;
   turret=1;
   weaponVelocity=1800;
