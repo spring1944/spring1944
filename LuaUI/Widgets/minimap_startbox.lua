@@ -1,0 +1,1 @@
+<html><body>You are being <a href="https://raw.github.com/spring/spring/28cc7201febb948974de845611319d0fe888c63d/cont/examples/Widgets/minimap_startbox.lua">redirected</a>.</body></html>
