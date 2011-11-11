@@ -16,6 +16,9 @@ local UPDATE_OFFSET = 5
 local VFX_SMOKE_PERIOD = 16
 local VFX_SMOKE_OFFSET = 1
 
+--windspeed is divided by this number before affecting smoke
+local WIND_SPEED_DIVISOR = 64
+
 -- effect on accuracy of smoked units
 local ACCURACY_MULT = 10
 
@@ -23,7 +26,6 @@ local ACCURACY_MULT = 10
 local GetUnitSensorRadius = Spring.GetUnitSensorRadius
 local SetUnitSensorRadius = Spring.SetUnitSensorRadius
 local SetUnitCloak = Spring.SetUnitCloak
-local GetUnitCloak = Spring.GetUnitCloak
 local GetUnitDefID = Spring.GetUnitDefID
 local SpawnCEG = Spring.SpawnCEG
 local GetUnitsInSphere = Spring.GetUnitsInSphere
@@ -121,14 +123,21 @@ end
 
 function ApplySmoke(unitID)
 	local oldSight = GetUnitSensorRadius(unitID, "los")
+	local oldRadar = GetUnitSensorRadius(unitID, "radar")
 	if oldSight > 0 then
 		SmokedUnits[unitID].oldLos = oldSight
 	end
+	if oldRadar > 0 then
+		SmokedUnits[unitID].oldRadar = oldRadar
+	end
+	
 	-- make the unit blind
 	SetUnitSensorRadius(unitID, "los", 0)
+	SetUnitSensorRadius(unitID, "radar", 0)
 	-- hide the unit
 	SetUnitCloak(unitID, 4)
-	SetUnitCloak(unitID, true)
+	--SetUnitCloak(unitID, true) this is redundant, I'm pretty sure.
+	Spring.SetUnitStealth(unitID, true)
 	-- affect the weapons
 	local tmpUDID = GetUnitDefID(unitID)
 	if tmpUDID then
@@ -146,11 +155,13 @@ end
 function RemoveSmoke(unitID)
 	-- find out the 'default' los value for that unittype
 	local defaultLos = SmokedUnits[unitID].oldLos
+	local defaultRadar = SmokedUnits[unitID].oldRadar
 	-- set the unit's los to that value
-	local tmpResult = SetUnitSensorRadius(unitID, "los", defaultLos)
+	SetUnitSensorRadius(unitID, "los", defaultLos)
+	SetUnitSensorRadius(unitID, "radar", defaultRadar)
 	-- unhide the unit
 	SetUnitCloak(unitID, 1)
-	-- and make it cloak by its own if it can
+	-- and make it cloak/stealth by its own if it can
 	local tmpUDID = GetUnitDefID(unitID)
 	if tmpUDID then
 		if UnitDefs[tmpUDID].canCloak then
@@ -158,6 +169,12 @@ function RemoveSmoke(unitID)
 		else
 			SetUnitCloak(unitID, false)
 		end
+		if UnitDefs[tmpUDID].steath then
+			Spring.SetUnitStealth(unitID, true)
+		else
+			Spring.SetUnitStealth(unitID, false)
+		end
+		
 		-- also restore it's weapon accuracy
 		local tmpWeapons = UnitDefs[tmpUDID].weapons
 		for i, tmpWeapon in pairs(tmpWeapons) do
@@ -179,9 +196,9 @@ function gadget:GameFrame(n)
 			else
 				-- wind blowing the smoke away
 				local dx, dy, dz = GetWind()
-				tmpSource.x = tmpSource.x + dx/32
-				tmpSource.y = tmpSource.y + dy/32
-				tmpSource.z = tmpSource.z + dz/32
+				tmpSource.x = tmpSource.x + dx/WIND_SPEED_DIVISOR
+				tmpSource.y = tmpSource.y + dy/WIND_SPEED_DIVISOR
+				tmpSource.z = tmpSource.z + dz/WIND_SPEED_DIVISOR
 			end
 		end
 	end
@@ -212,7 +229,7 @@ function gadget:GameFrame(n)
 							if (SmokedUnits[unitID]) then
 								SmokedUnits[unitID].isSmoked = true
 							else
-								SmokedUnits[unitID] = {isSmoked = true, oldLos = 0,}
+								SmokedUnits[unitID] = {isSmoked = true, oldLos = 0, oldRadar = 0,}
 							end
 						end
 					end
