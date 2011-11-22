@@ -151,6 +151,11 @@ for name, ud in pairs(UnitDefs) do
 		end
 		ud.seismicdistance = 1400
 		ud.activatewhenbuilt = true
+		if ud.floater then
+			ud.stealth = false
+			ud.sightdistance = 650
+			ud.radardistance = 950
+		end
 	end
 	if sensors and not ud.maxvelocity then
 		ud.stealth = false

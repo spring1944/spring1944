@@ -135,7 +135,7 @@ function ApplySmoke(unitID)
 	SetUnitSensorRadius(unitID, "los", 0)
 	SetUnitSensorRadius(unitID, "radar", 0)
 	-- hide the unit
-	SetUnitCloak(unitID, 4)
+	SetUnitCloak(unitID, 2)
 	--SetUnitCloak(unitID, true) this is redundant, I'm pretty sure.
 	Spring.SetUnitStealth(unitID, true)
 	-- affect the weapons
