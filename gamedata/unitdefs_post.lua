@@ -150,6 +150,7 @@ for name, ud in pairs(UnitDefs) do
 			ud.radardistance = 800
 		end
 		ud.seismicdistance = 1400
+		ud.activatewhenbuilt = true
 
 	end
 	if sensors and not ud.maxvelocity then
