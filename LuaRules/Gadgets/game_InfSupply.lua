@@ -127,7 +127,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		aLengths[teamID] = aLengths[teamID] - 1
 		ammoRanges[unitID] = nil
 	-- Check if the unit was infantry
-	elseif cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then
+	elseif cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] and teamID then
 		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
 		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
 		infantry[teamID][iLengths[teamID]] = nil
