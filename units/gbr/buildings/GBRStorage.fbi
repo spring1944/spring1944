@@ -11,6 +11,10 @@
   buildPic=LogisticsLarge.png;
   buildTime=4500;
   category=BUILDING;
+  collisionVolumeScales=39 40 64;
+  collisionVolumeOffsets=-1 -7 1;
+  collisionVolumeTest=1;
+  collisionVolumeType=CylZ;
   corpse=Debris_Large;
   [customParams] {
     armor_front=0;
