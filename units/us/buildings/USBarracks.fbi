@@ -12,7 +12,10 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeScales=41 44 82;
+  collisionVolumeOffsets=0 -11 -3;
+  collisionVolumeTest=1;
+  collisionVolumeType=CylZ;
   corpse=USBarracks_Destroyed;
   [customParams] {
     ammoSupplier=1;

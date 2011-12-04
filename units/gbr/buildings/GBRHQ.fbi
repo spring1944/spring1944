@@ -15,7 +15,10 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeScales=76 45 86;
+  collisionVolumeOffsets=0 -9 -3;
+  collisionVolumeTest=1;
+  collisionVolumeType=CylZ;
   commander=1;
   corpse=GBRHQ_Destroyed;
   [customParams] {

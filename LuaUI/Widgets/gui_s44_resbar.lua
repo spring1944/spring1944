@@ -244,10 +244,10 @@ end
 --callins
 ------------------------------------------------
 function widget:Initialize()
-  if (Game.modShortName ~= "S44") then
+  --[[if (Game.modShortName ~= "S44") then
     widgetHandler:RemoveWidget()
     return
-  end
+  end]]
   
   Spring.SendCommands("resbar 0")
   
