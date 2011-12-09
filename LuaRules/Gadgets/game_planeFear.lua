@@ -47,7 +47,7 @@ local BUGOUT_LEVEL = 2 --amount of fear where the plane bugs out back to HQ
 -- variables
 local planeScriptIDs = {}
 local accuracyTable = {}
-
+local teamStartPos = {}
 
 function gadget:Initialize()
 	-- adjust BUGOUT_LEVEL using the multiplier
@@ -90,6 +90,13 @@ function gadget:UnitDestroyed(unitID)
 	planeScriptIDs[unitID] = nil
 end
 
+function gadget:GameStart()
+	for _, teamID in pairs(Spring.GetTeamList()) do
+		local px, py, pz = Spring.GetTeamStartPosition(teamID)
+		teamStartPos[teamID] = {"x" = px, "y" = py, "z" = pz}
+	end
+end
+		
 
 function gadget:GameFrame(n)
 	if (n % 15 == 0) then -- every 15 frames
@@ -108,7 +115,7 @@ function gadget:GameFrame(n)
 					SetUnitFuel(unitID, newFuel)
 					--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
 					if suppression > BUGOUT_LEVEL then
-						local px, py, pz = Spring.GetTeamStartPosition(teamID)
+						local px, py, pz = unpack(teamStartPos[teamID])
 						GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
 						--Spring.Echo("Move order issued,", "Fear level:", suppression)
 						SetUnitNoSelect(unitID, true)
