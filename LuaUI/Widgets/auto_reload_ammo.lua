@@ -105,7 +105,7 @@ function checkAmmo()
             --Echo("in UNIT_BRAND_NEW", v.uID)
             v.cmds = GetUnitCommands(v.uID)
             if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then 
-                if (v.cmds.n < 1) then
+                if (#v.cmds < 1) then
                     v.unitSupplyState   = v.UNIT_READY 
                     --there's a chance we could leave the factory empty 
                 elseif (ammoLevel < 1) then 
@@ -134,7 +134,7 @@ function checkAmmo()
             --the order queue then get back for resupply   
             commands = GetUnitCommands(v.uID)
             if (commands ~= nil) then  
-                if (commands.n >=2) then            
+                if (#commands >=2) then            
                     v.unitSupplyState = v.UNIT_SOPS            
                 else                
                     --keep checking our position relative to the supply unit that we're moving to
@@ -160,7 +160,7 @@ function checkAmmo()
             v.cmds = GetUnitCommands(v.uID)
             if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then 
                 --when we've finished our order queue we can return for resupply
-                if ((v.cmds.n <= 1) and (ammoLevel < 3)) then
+                if ((#v.cmds <= 1) and (ammoLevel < 3)) then
                     --save our location so we can return after resupply
                     v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
                     FindClosestSupply(v)
@@ -214,13 +214,13 @@ function checkAmmo()
         --ready !!!    
         elseif (v.unitSupplyState == v.UNIT_FULL) then
             --Echo("in UNIT_FULL", v.uID) 
-            if ((v.cmds.n ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then           
-                if (v.cmds.n <= 2) then                            
+            if ((#v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then           
+                if (#v.cmds <= 2) then                            
                     --use CMD_FIGHT to get back to our original position
                     GiveOrderToUnit(v.uID, CMD_FIGHT, {v.unit_cx, _, v.unit_cz}, {""})           
                 else               
                     --now that we're reloaded we can finish our command queue            
-                    for i = 1, v.cmds.n do  
+                    for i = 1, #v.cmds do  
                         local cmd = v.cmds[i]
                         GiveOrderToUnit(v.uID, cmd.id, cmd.params, cmd.options.coded)
                     end
