@@ -93,7 +93,7 @@ end
 function gadget:GameStart()
 	for _, teamID in pairs(Spring.GetTeamList()) do
 		local px, py, pz = Spring.GetTeamStartPosition(teamID)
-		teamStartPos[teamID] = {"x" = px, "y" = py, "z" = pz}
+		teamStartPos[teamID] = {px, py, pz}
 	end
 end
 		
