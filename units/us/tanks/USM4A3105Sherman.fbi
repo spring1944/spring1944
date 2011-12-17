@@ -15,7 +15,7 @@
   //collisionVolumeScales=19.25 17 38.8;
   //collisionVolumeOffsets=0 -3.3 -0.1;
   //collisionVolumeTest=1;
-  corpse=USM4A4Sherman_Damaged;
+  corpse=usm4a3105sherman_damaged;
   [customParams] {
     armor_front=70;
     armor_rear=32;
