@@ -41,7 +41,7 @@ local aliveCount = {}
 local isAlive = {}
 
 function gadget:GameFrame(t)
-	if t % 32 < .1 then
+	if t % 32 < 5 then
 		for t,_ in pairs(destroyQueue) do
 			for _,u in ipairs(Spring.GetTeamUnits(t)) do
 			  TransferUnit(u, GAIA_TEAM_ID, false)

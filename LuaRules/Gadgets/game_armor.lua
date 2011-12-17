@@ -161,9 +161,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   -- prevent self damage
   if unitID == attackerID then return 0 end
   --  binocs and tracers do 0 damage to all units
-  if weaponDefID == WeaponDefNames["binocs"].id or WeaponDefs[weaponDefID].name:lower():find("tracer", 1, true) then return 0 end
+  --if weaponDefID == WeaponDefNames["binocs"].id or WeaponDefs[weaponDefID].name:lower():find("tracer", 1, true) then return 0 end
   
-  if damage == 0 then return damage end
+  --binocs and tracers do zero damage already, so we don't need to be doing a string search...
+  if damage <= 1 then return 0 end
   
   local unitInfo = unitInfos[unitDefID]
   local weaponInfo = weaponInfos[weaponDefID]

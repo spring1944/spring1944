@@ -157,7 +157,6 @@ for name, ud in pairs(UnitDefs) do
 		ud.stealth = false
 		if (ud.customparams) then
 			if (ud.customparams.hiddenbuilding == '1') then
-				Spring.Echo(ud.name)
 			    ud.stealth = true
 			end
 		end
