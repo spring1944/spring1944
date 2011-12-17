@@ -33,7 +33,8 @@
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
-  minCloakDistance=250;
+  minCloakDistance=500;
+  cloakTimeout=160;
   noChaseCategory=FLAG AIR MINE;
   objectName=RUSZiS2_Stationary.S3O;
   [sfxtypes] {

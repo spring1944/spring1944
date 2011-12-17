@@ -8,10 +8,13 @@ static-var bAiming, iFear, iState, PickDeath, lasthit;
 #include "inf_sharedDefs.h"
 #define RecoverRate 	2000
 #define pinnedValue		10
+
+#define FIRE_REVEAL_TIME 5000
 // Signal definitions
 #define SIG_AIM1	2
 #define SIG_DEPLOY	4
 #define SIG_FEARRECOVERY	8
+#define SIG_FIRE			16
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -201,6 +204,8 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
+	signal SIG_FIRE;
+	set-signal-mask SIG_FIRE;
 	emit-sfx MEDIUMSMALL_Muzzleflash from flare;
 	emit-sfx MEDIUMSMALL_MuzzleDust from flare;
 	move barrel to z-axis RECOIL now;
@@ -210,7 +215,10 @@ FireWeapon1()
 	sleep 100;
 	move barrel to z-axis [0] speed RETURN_SPEED;
 	//Now reload...
+	set STEALTH to 0;
 	CREW_RELOADING
+	sleep FIRE_REVEAL_TIME;
+	set STEALTH to 1;
 }
 
 Killed(severity, corpsetype)
