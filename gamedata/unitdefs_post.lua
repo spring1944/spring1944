@@ -142,7 +142,8 @@ local sensors = modOptions and modOptions.sensors == '1' --true
 
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
-	if sensors and (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
+	--new sensor stuff!
+	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
 			ud.sightdistance = 650
 			ud.radardistance = 950
@@ -153,7 +154,10 @@ for name, ud in pairs(UnitDefs) do
 		ud.activatewhenbuilt = true
 
 	end
-	if sensors and not ud.maxvelocity then
+	--end first chunk of new sensor stuff!
+	
+	--more new sensor stuff
+	if not ud.maxvelocity then
 		ud.stealth = false
 		if (ud.customparams) then
 			if (ud.customparams.hiddenbuilding == '1') then
@@ -161,15 +165,17 @@ for name, ud in pairs(UnitDefs) do
 			end
 		end
 	end
-	if sensors and ud.floater then
+	--end more new sensor stuff
+	
+	if ud.floater then
+		ud.turninplace = false
+		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
+		--new sensor stuff
 		ud.stealth = false
 		ud.sightdistance = 650
 		ud.radardistance = 950
 		ud.activatewhenbuilt = true
-	end
-	if ud.floater then
-		ud.turninplace = false
-		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
+		--end new sensor stuff
 	end
 	-- ammo storage
 	if (ud.energystorage) then
@@ -199,15 +205,16 @@ for name, ud in pairs(UnitDefs) do
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
 		--Spring.Echo(name)
 		ud.pushresistant = true
-		if sensors then
-			ud.stealth = false
-			ud.sightdistance = tonumber(ud.sightdistance) * 0.5
-			ud.radardistance = 950
-			ud.activatewhenbuilt = true
-			--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
-			--if seisSig < 1 then seisSig = 1 end
-			ud.seismicsignature = 1 --seisSig
-		end
+		--new sensor stuff
+		ud.stealth = false
+		ud.sightdistance = tonumber(ud.sightdistance) * 0.5
+		ud.radardistance = 950
+		ud.activatewhenbuilt = true
+		--end new sensor stuff
+		
+		--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
+		--if seisSig < 1 then seisSig = 1 end
+		ud.seismicsignature = 1 --seisSig
 	end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
