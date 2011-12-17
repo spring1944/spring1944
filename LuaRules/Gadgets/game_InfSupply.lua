@@ -116,6 +116,9 @@ end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
+	-- return if team has already 'died'
+	if #iIndices[teamID] == 0 then return end
+	
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	-- Check if the unit was a supplier and was fully built
