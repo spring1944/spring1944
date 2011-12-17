@@ -39,7 +39,7 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  sightDistance=400;
+  sightDistance=800;
   smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;

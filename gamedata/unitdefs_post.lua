@@ -194,21 +194,21 @@ for name, ud in pairs(UnitDefs) do
 		end
 		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
 			ud.usepiececollisionvolumes = true
-			if sensors then
-				ud.stealth = false
-				ud.sightdistance = tonumber(ud.sightdistance) * 0.5
-				ud.radardistance = 950
-				ud.activatewhenbuilt = true
-				--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
-				--if seisSig < 1 then seisSig = 1 end
-				ud.seismicsignature = 1 --seisSig
-			end
 		end
 	end
 	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
 		--Spring.Echo(name)
 		ud.pushresistant = true
+		if sensors then
+			ud.stealth = false
+			ud.sightdistance = tonumber(ud.sightdistance) * 0.5
+			ud.radardistance = 950
+			ud.activatewhenbuilt = true
+			--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
+			--if seisSig < 1 then seisSig = 1 end
+			ud.seismicsignature = 1 --seisSig
+		end
 	end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
