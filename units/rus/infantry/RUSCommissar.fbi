@@ -19,6 +19,7 @@
   [customParams] {
     canclearmines=1;
     feartarget=1;
+	blockfear=1;
     flagCapRate=3.125;
   }
   damageModifier=0.265;

@@ -90,11 +90,13 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 					local ux, uy, uz = GetUnitPosition(unitID)
 					local nearbyUnits = GetUnitsInSphere(ux, uy, uz, MORALE_RADIUS)
 					for i = 1, #nearbyUnits do
-						local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
-						local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
-						if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
-							CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
-							break
+						if nearbyUnits[i] ~= unitID then
+							local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
+							local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
+							if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
+								CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+								break
+							end
 						end
 					end
 				end
