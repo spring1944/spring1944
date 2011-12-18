@@ -13,7 +13,10 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeScales=50 32 110;
+  collisionVolumeOffsets=0 15 0;
+  collisionVolumeTest=1;
+  collisionVolumeType=box;
   [customParams] {
     ammoSupplier=1;
     blockfear=1;

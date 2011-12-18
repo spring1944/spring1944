@@ -12,7 +12,10 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  collisionVolumeType=ellipsoid;
+  collisionVolumeScales=70 30 105;
+  collisionVolumeOffsets=0 -10 0;
+  collisionVolumeTest=1;
+  collisionVolumeType=box;
   corpse=GERBarracks_Destroyed;
   [customParams] {
     ammoSupplier=1;
