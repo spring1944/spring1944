@@ -59,7 +59,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
-	if ud.canFly then
+	if ud.canFly and not ud.customParams.cruise_missile_accuracy then --gliders and V1s shouldn't get scared, just dead.
 		local planeScriptID = Spring.GetCOBScriptID(unitID, "luaFunction")
   		if (planeScriptID) then
 			local properAccuracy = Spring.GetUnitWeaponState(unitID, 0, "accuracy")

@@ -21,7 +21,7 @@
   corpse=GBRHorsa_Damaged;
   cruiseAlt=1000;
   [customParams] {
-    cruise_missile_accuracy=150;
+    cruise_missile_accuracy=50;
     spawn_on_death=gbr_platoon_glider_horsa;
 	deposit=0;
   }
