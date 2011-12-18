@@ -66,7 +66,7 @@ if gadgetHandler:IsSyncedCode() then
 local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
 		local supplierID = ammoSuppliers[teamID][i]
-		local separation = GetUnitSeparation(unitID, supplierID, true)
+		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
 		if separation <= ammoRanges[supplierID] then
 			return supplierID
 		end
