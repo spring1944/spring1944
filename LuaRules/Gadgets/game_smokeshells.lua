@@ -31,6 +31,8 @@ local SpawnCEG = Spring.SpawnCEG
 local GetUnitsInSphere = Spring.GetUnitsInSphere
 local GetWind = Spring.GetWind
 local SetUnitWeaponState = Spring.SetUnitWeaponState
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
 local CMD_SMOKE = 35520 -- this should be changed
@@ -130,7 +132,7 @@ function ApplySmoke(unitID)
 	if oldRadar > 0 then
 		SmokedUnits[unitID].oldRadar = oldRadar
 	end
-	
+	SetUnitRulesParam(unitID, "smoked", 1)
 	-- make the unit blind
 	SetUnitSensorRadius(unitID, "los", 0)
 	SetUnitSensorRadius(unitID, "radar", 0)
@@ -156,6 +158,7 @@ function RemoveSmoke(unitID)
 	-- find out the 'default' los value for that unittype
 	local defaultLos = SmokedUnits[unitID].oldLos
 	local defaultRadar = SmokedUnits[unitID].oldRadar
+	SetUnitRulesParam(unitID, "smoked", 0)
 	-- set the unit's los to that value
 	SetUnitSensorRadius(unitID, "los", defaultLos)
 	SetUnitSensorRadius(unitID, "radar", defaultRadar)

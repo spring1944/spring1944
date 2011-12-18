@@ -82,7 +82,8 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 				--Spring.Echo("dude should get up and run")
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 			elseif fearLevel > 2 then
-				local unitInSmoke = GetUnitSensorRadius(unitID, "los") == 0 --if they're in smoke, they don't have to fear...
+				--if they're in smoke, they don't have to fear...
+				local unitInSmoke = GetUnitRulesParam(unitID, "smoked") == 1 
 				if unitInSmoke then
 					CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 				else

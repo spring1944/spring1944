@@ -2,7 +2,7 @@
 
 -- Infantry Gun Base Class
 local InfGunClass = Weapon:New{
-  accuracy           = 700,
+  accuracy           = 150,
   collisionSize      = 4,
   edgeEffectiveness  = 0.25,
   explosionGenerator = [[custom:HE_Medium]],
@@ -19,6 +19,7 @@ local InfGunClass = Weapon:New{
   size               = 1,
   soundHit           = [[GEN_Explo_3]],
   stages             = 50,
+  targetMoveError    = 0.5, -- why different?
   tolerance          = 5000,
   turret             = true,
   weaponType         = [[Cannon]],
@@ -37,7 +38,6 @@ local LeIG18HE = InfGunClass:New{
   areaOfEffect       = 88,
   name               = [[75mm LeIG 18 HE Shell]],
   soundStart         = [[GER_75mm]],
-  targetMoveError    = 0.1, -- why different?
   damage = {
     default            = 1340,
   },
@@ -48,7 +48,6 @@ local M875mmHE = InfGunClass:New{
   areaOfEffect       = 94,
   name               = [[M8 75mm Pack Howitzer HE Shell]],
   soundStart         = [[US_75mm]],
-  targetMoveError    = 0.5, -- why different?
   damage = {
     default            = 1620,
   },
