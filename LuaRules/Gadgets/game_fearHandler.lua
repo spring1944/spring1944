@@ -20,13 +20,15 @@ local GetUnitsInSphere			= Spring.GetUnitsInSphere
 local ValidUnitID				= Spring.ValidUnitID
 local GetUnitRulesParam			= Spring.GetUnitRulesParam
 local GetUnitPosition			= Spring.GetUnitPosition
+local GetTeamInfo				= Spring.GetTeamInfo
+local GetUnitSensorRadius		= Spring.GetUnitSensorRadius --to figure out if they're smoked
 
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
 local SetUnitRulesParam 		= Spring.SetUnitRulesParam
 -- constants
-local MORALE_RADIUS = 200
+local MORALE_RADIUS = 150
 -- variables
 local scriptIDs = {}
 local fearLevels = {}
@@ -80,13 +82,20 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 				--Spring.Echo("dude should get up and run")
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 			elseif fearLevel > 2 then
-				local ux, uy, uz = GetUnitPosition(unitID)
-				local nearbyUnits = GetUnitsInSphere(ux, uy, uz, MORALE_RADIUS)
-				for i = 1, #nearbyUnits do
-					local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
-					if nearbyUD.customParams.blockfear == "1" then
-						CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
-						break
+				local unitInSmoke = GetUnitSensorRadius(unitID, "los") == 0 --if they're in smoke, they don't have to fear...
+				if unitInSmoke then
+					CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+				else
+					local unitAllyTeam = GetUnitAllyTeam(unitID)
+					local ux, uy, uz = GetUnitPosition(unitID)
+					local nearbyUnits = GetUnitsInSphere(ux, uy, uz, MORALE_RADIUS)
+					for i = 1, #nearbyUnits do
+						local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
+						local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
+						if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
+							CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+							break
+						end
 					end
 				end
 			end
