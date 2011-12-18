@@ -18,6 +18,7 @@ local GetUnitDefID       		= Spring.GetUnitDefID
 local GetUnitIsDead 			= Spring.GetUnitIsDead
 local GetUnitsInSphere			= Spring.GetUnitsInSphere
 local ValidUnitID				= Spring.ValidUnitID
+local GetUnitRulesParam			= Spring.GetUnitRulesParam
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
@@ -69,6 +70,17 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 	end
 end
 
+function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
+	local ud = UnitDefs[unitDefID]
+		if scriptIDs[unitID] then
+			local fearLevel = GetUnitRulesParam(unitID, "suppress")
+			if fearLevel > 0 and fearLevel <= 2 then
+				--Spring.Echo("dude should get up and run")
+				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+			end
+		end
+	return true
+end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local wd = WeaponDefs[weaponID]
