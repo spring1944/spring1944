@@ -12,19 +12,9 @@ end
 
 if gadgetHandler:IsSyncedCode() then
 -- SYNCED
-	local GetFeatureDefID	= Spring.GetFeatureDefID
 	local GetUnitDefID		= Spring.GetUnitDefID
 	local CMD_ATTACK		= CMD.ATTACK
 	local CMD_RECLAIM		= CMD.RECLAIM
-
-	function gadget:Initialize()
-		for _,feature in ipairs(Spring.GetAllFeatures()) do
-			local name = FeatureDefs[GetFeatureDefID(feature)].name
-			if name and string.find(name, "treetype") ~= nil then
-				Spring.SetFeatureNoSelect(feature, true)
-			end
-		end
-	end
 
 	function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions)
 		--Only even consider blocking the command if it's a reclaim command on a (single) unit.
