@@ -19,12 +19,14 @@ local GetUnitIsDead 			= Spring.GetUnitIsDead
 local GetUnitsInSphere			= Spring.GetUnitsInSphere
 local ValidUnitID				= Spring.ValidUnitID
 local GetUnitRulesParam			= Spring.GetUnitRulesParam
+local GetUnitPosition			= Spring.GetUnitPosition
+
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
 local SetUnitRulesParam 		= Spring.SetUnitRulesParam
 -- constants
-
+local MORALE_RADIUS = 200
 -- variables
 local scriptIDs = {}
 local fearLevels = {}
@@ -77,6 +79,16 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			if fearLevel > 0 and fearLevel <= 2 then
 				--Spring.Echo("dude should get up and run")
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+			elseif fearLevel > 2 then
+				local ux, uy, uz = GetUnitPosition(unitID)
+				local nearbyUnits = GetUnitsInSphere(ux, uy, uz, MORALE_RADIUS)
+				for i = 1, #nearbyUnits do
+					local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
+					if nearbyUD.customParams.blockfear == "1" then
+						CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+						break
+					end
+				end
 			end
 		end
 	return true
@@ -99,9 +111,10 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	for i = 1, #unitsAtSpot do
 		local unitID = unitsAtSpot[i]
 		local ud = UnitDefs[GetUnitDefID(unitID)]
-		if ud.customParams.blockfear == "1" then
-			blockAllyTeams[GetUnitAllyTeam(unitID)] = true
-		elseif ud.customParams.feartarget then
+		--[[if ud.customParams.blockfear == "1" then
+			blockAllyTeams[GetUnitAllyTeam(unitID)] = unitID
+		else]]--
+		if ud.customParams.feartarget then
 			tLength = tLength + 1
 			targets[tLength] = unitID
 		end
@@ -110,7 +123,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	for i = 1, tLength do
 		local unitID = targets[i]
 		-- GetUnitInSphere can catch tombstoned units, so check that scriptIDs[unitID] is valid (unit is not dead)
-		if unitID ~= ownerID and not blockAllyTeams[GetUnitAllyTeam(unitID)] and scriptIDs[unitID] then
+		if unitID ~= ownerID and scriptIDs[unitID] then --not blockAllyTeams[GetUnitAllyTeam(unitID)] and
 			CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
 			UpdateSuppression(unitID)
 		end
