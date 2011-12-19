@@ -38,14 +38,6 @@ local function tobool(val)
   return false
 end
 
-	if (modOptions and modOptions.unit_los_mult) then
-		for name, ud in pairs(UnitDefs) do
-			if (ud.sightdistance) then
-			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
-			end
-		end
-	end
-
 	if (modOptions and modOptions.maxammo_mult) then
 		for name, ud in pairs(UnitDefs) do
 			if (ud.customparams) then
@@ -138,7 +130,7 @@ end
 local GMBuildOptions = {}
 local GM_UD
 
-local sensors = modOptions and modOptions.sensors == '1' --true
+--local sensors = modOptions and modOptions.sensors == '1' --true
 
 -- adjust descriptions
 for name, ud in pairs(UnitDefs) do
@@ -215,6 +207,18 @@ for name, ud in pairs(UnitDefs) do
 		--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
 		--if seisSig < 1 then seisSig = 1 end
 		ud.seismicsignature = 1 --seisSig
+	end
+
+	if (modOptions.unit_los_mult) then
+		if ud.sightdistance then
+			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
+		end
+		if ud.radardistance then
+			ud.radardistance = (modOptions.unit_los_mult * ud.radardistance)
+		end
+		if ud.seismicdistance then
+			ud.seismicdistance = (modOptions.unit_los_mult * ud.seismicdistance)
+		end			
 	end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name

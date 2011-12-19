@@ -41,13 +41,15 @@ local options = {
 	type   = 'section',
   },
 	
-  {
+  --[[{
     key = "sensors",
 	name = "New Sensors",
 	desc = "Experimental changes to intelligence",
 	type = "bool",
 	def = true,
-  },
+  },]]--
+
+
  --[[ {
 		key = "navies",
 		name = "Naval Units",
