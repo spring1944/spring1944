@@ -74,6 +74,8 @@ function gadget:Initialize()
     
       local dropTime = sqrt(2 * wantedHeight / (GRAVITY * gravity))
       local dropDist = speed * dropTime
+	  -- the following is an ugly hack to improve glider landing behaviour
+	  if customParams.spawn_on_death then dropDist = dropDist * 1.25 end
       
       cruiseDefIDs[unitDefID] = {
         accuracy = accuracy,
