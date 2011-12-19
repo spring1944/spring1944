@@ -77,3 +77,14 @@ end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+
+-- S44 code begins
+for name, fd in pairs(FeatureDefs) do
+	if name:find("tree") then
+		if (fd.collisionvolumetype or ""):lower() ~= "cyly" then
+			fd.collisionvolumetype = "cyly"
+			fd.collisionvolumetest = 1
+			fd.collisionvolumescales = [[3 50 3]]
+		end
+	end
+end
