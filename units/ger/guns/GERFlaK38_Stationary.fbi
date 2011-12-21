@@ -54,7 +54,7 @@
   badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory1=AIR;
 
-  weapon2=KwK3020mmHE;
+  weapon2=flak3820mmhe;
   badTargetCategory2=AIR;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
