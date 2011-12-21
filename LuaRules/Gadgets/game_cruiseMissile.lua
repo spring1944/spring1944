@@ -74,7 +74,7 @@ function gadget:Initialize()
     
       local dropTime = sqrt(2 * wantedHeight / (GRAVITY * gravity))
       local dropDist = speed * dropTime
-	  Spring.Echo("dropTime: " .. dropTime, " dropDist: " .. dropDist)
+	  --Spring.Echo("dropTime: " .. dropTime, " dropDist: " .. dropDist)
       
       cruiseDefIDs[unitDefID] = {
         accuracy = accuracy,
