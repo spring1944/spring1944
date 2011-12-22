@@ -30,7 +30,7 @@
   maxWaterDepth=70;
   movementClass=TANK_Truck_deep;
   noChaseCategory=AIR MINE;
-  objectName=GERPontoonTruck.s3o;
+  objectName=GERPontoonRaft_Truck.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
