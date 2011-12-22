@@ -6,7 +6,7 @@ function gadget:GetInfo()
 		date      = "13 Jan 2010",
 		license   = "LGPL 2.0",
 		layer     = 1,
-		enabled   = true  --  loaded by default?
+		enabled   = true --  loaded by default?
 	}
 end
 
@@ -75,17 +75,17 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function gadget:GameFrame(n)
-	if (n % (0.1*30) < 0.1) then
+	if (n % (1*30) < 0.1) then
 		for unitID, info in pairs(burningUnits) do
 			if unitID ~= nil then
 				local explodeTime = info.exTime
 				local damageTime = info.damageDuration
-				if (n - explodeTime)/32 < damageTime then
+				if (n - explodeTime)/30 < damageTime then
 					local px, py, pz = GetUnitPosition(unitID)
 					if py then
 						local height = (GetUnitHeight(unitID)/3) + py
 						local weaponCeg = info.expCeg
-						local damagePerSecond = (info.dmgPerSecond/10)
+						local damagePerSecond = (info.dmgPerSecond)
 						SpawnCEG(weaponCeg, px, height, pz)
 						AddUnitDamage(unitID, damagePerSecond)
 					end
@@ -97,7 +97,7 @@ function gadget:GameFrame(n)
 		for damageSiteIndex, siteInfo in pairs(damageZones) do
 			local explodeTime = siteInfo.exTime
 			local damageTime = siteInfo.damageDuration
-			if (n - explodeTime)/32 < damageTime then
+			if (n - explodeTime)/30 < damageTime then
 				local px, py, pz = siteInfo.x, siteInfo.y, siteInfo.z
 				local weaponCeg = siteInfo.expCeg
 				SpawnCEG(weaponCeg, px, py, pz)
@@ -123,7 +123,7 @@ function gadget:GameFrame(n)
 								end
 							end
 						else
-							AddUnitDamage(unitToDamage, (damagePerSecond/10))
+							AddUnitDamage(unitToDamage, (damagePerSecond))
 						end
 						
 					end
