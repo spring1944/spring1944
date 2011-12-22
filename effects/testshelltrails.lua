@@ -1,0 +1,63 @@
+-- testtrail
+
+return {
+  ["testtrail"] = {
+    usedefaultexplosions = false,
+    exhale = {
+      air                = true,
+      class              = [[CSimpleParticleSystem]],
+      count              = 1,
+      ground             = true,
+      water              = true,
+      properties = {
+        airdrag            = 0.8,
+        colormap           = [[1.0 0.8 0.5 0.1 0.15 0.15 0.15 0.2 0.0 0.0 0.0 0.01]],
+        directional        = false,
+        emitrot            = 80,
+        emitrotspread      = 50,
+        emitvector         = [[0, 0, 0]],
+        gravity            = [[0, 0, 0]],
+        numparticles       = 20,
+        particlelife       = 25,
+        particlelifespread = 150,
+        particlesize       = 8,
+        particlesizespread = 1,
+        particlespeed      = 1,
+        particlespeedspread = 1,
+        pos                = [[0, 1, 0]],
+        sizegrowth         = 0.16,
+        sizemod            = 0.25,
+        texture            = [[GenericSmokeCloud]],
+      },
+    },
+    exhale2 = {
+      air                = true,
+      class              = [[CSimpleParticleSystem]],
+      count              = 1,
+      ground             = true,
+      water              = true,
+      properties = {
+        airdrag            = 0.8,
+        colormap           = [[1.0 0.7 0.4 0.1 0.1 0.1 0.1 0.2 0.0 0.0 0.0 0.01]],
+        directional        = false,
+        emitrot            = 80,
+        emitrotspread      = 50,
+        emitvector         = [[0, 0, 0]],
+        gravity            = [[0, 0, 0]],
+        numparticles       = 20,
+        particlelife       = 50,
+        particlelifespread = 150,
+        particlesize       = 8,
+        particlesizespread = 10,
+        particlespeed      = 1,
+        particlespeedspread = 100,
+        pos                = [[0, 1, 0]],
+        sizegrowth         = 0.16,
+        sizemod            = 0.5,
+        texture            = [[GenericSmokeCloud]],
+      },
+    },
+  },
+
+}
+
