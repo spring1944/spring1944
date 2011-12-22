@@ -49,8 +49,7 @@ end
 
 function gadget:UnitCreated(unitID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
-	if (scriptID) then 
-		Spring.Echo(scriptID, UnitDefs[Spring.GetUnitDefID(unitID)].name)
+	if (scriptID) then
 		SetUnitRulesParam(unitID, "suppress", 0)
 		scriptIDs[unitID] = scriptID
 	end
