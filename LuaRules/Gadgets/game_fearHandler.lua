@@ -21,7 +21,6 @@ local ValidUnitID				= Spring.ValidUnitID
 local GetUnitRulesParam			= Spring.GetUnitRulesParam
 local GetUnitPosition			= Spring.GetUnitPosition
 local GetTeamInfo				= Spring.GetTeamInfo
-local GetUnitSensorRadius		= Spring.GetUnitSensorRadius --to figure out if they're smoked
 
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
@@ -51,6 +50,7 @@ end
 function gadget:UnitCreated(unitID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
 	if (scriptID) then 
+		Spring.Echo(scriptID, UnitDefs[Spring.GetUnitDefID(unitID)].name)
 		SetUnitRulesParam(unitID, "suppress", 0)
 		scriptIDs[unitID] = scriptID
 	end
