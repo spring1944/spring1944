@@ -30,6 +30,7 @@ local DestroyFeature			= Spring.DestroyFeature
 local GiveOrderToUnit			= Spring.GiveOrderToUnit
 local SetTeamRulesParam			= Spring.SetTeamRulesParam
 local SetUnitAlwaysVisible		= Spring.SetUnitAlwaysVisible
+local SetUnitBlocking			= Spring.SetUnitBlocking
 local SetUnitNeutral			= Spring.SetUnitNeutral
 local SetUnitNoSelect			= Spring.SetUnitNoSelect
 local SetUnitRulesParam			= Spring.SetUnitRulesParam
@@ -247,6 +248,7 @@ function PlaceFlag(spot, flagType)
 	flags[flagType][numFlags[flagType]] = newFlag
 	flagCapStatuses[newFlag] = {}
 	
+	SetUnitBlocking(newFlag, false, false, false)
 	SetUnitNeutral(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
