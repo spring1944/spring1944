@@ -10,6 +10,7 @@
   buildTime=2125;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
+  corpse=GERSdKfz10_Destroyed;
   [customParams] {
     armor_front=11;
     armor_rear=0;
