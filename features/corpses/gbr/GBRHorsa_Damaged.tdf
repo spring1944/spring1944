@@ -7,6 +7,7 @@
   footprintZ=2;
   object=GBRAS51.s3o;//GBRCromwell_Damaged.S3O;
   reclaimable=1;
+  smoketime=0;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;
 	collisionVolumeOffsets=0 -5 0;
