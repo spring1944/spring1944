@@ -43,6 +43,6 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=30;
-  yardmap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;
+  yardmap=ooooooo ooooooo occccco oocccco oocccco occccco occccco;
 }
 
