@@ -337,7 +337,8 @@ local function DrawTrucks()
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
-		local radius = UnitDefs[unitDefID].customParams.supplyrange
+		local cp = UnitDefs[unitDefID].customParams or {}
+		local radius = cp.supplyrange or 0
 		--Spring.Echo('truck', radius)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
