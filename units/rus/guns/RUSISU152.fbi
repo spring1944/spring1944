@@ -79,11 +79,11 @@
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=ML20S152mmAP;
-  maxAngleDif2=25;
-  onlyTargetCategory2=OPENVEH HARDVEH;
-  weaponMainDir2=0 0 1;
+  //weapon2=ML20S152mmAP;
+  //maxAngleDif2=25;
+  //onlyTargetCategory2=OPENVEH HARDVEH;
+  //weaponMainDir2=0 0 1;
 
-  weapon3=.50calproof;
+  //weapon3=.50calproof;
 }
 

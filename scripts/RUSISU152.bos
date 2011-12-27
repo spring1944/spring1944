@@ -187,6 +187,7 @@ FireWeapon1()
 	start-script Reload(); // start reload timer after firing
 	return 0;
 }
+/*
 // Weapon 2 - Main cannon, AP
 QueryWeapon2(piecenum)
 {
@@ -235,7 +236,7 @@ FireWeapon2()
 	start-script Reload(); // start reload timer after firing
 
 	return 0;
-}
+}*/
 
 // Weapon 3 - AA MG
 /*QueryWeapon3 (piecenum)
