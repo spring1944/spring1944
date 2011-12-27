@@ -27,7 +27,7 @@
   leadlimit=0;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=1700;
+  range=1750;
   reloadTime=11.5;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
@@ -72,7 +72,7 @@
   leadLimit=0.05;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=1800;
+  range=1750;
   reloadTime=11.5;
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
