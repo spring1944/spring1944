@@ -25,7 +25,7 @@
     lowammolevel=1;
     maxammo=4;
     weaponcost=42;
-    weaponswithammo=2;
+    weaponswithammo=1;
   }
   explodeAs=Vehicle_Explosion_Large;
   footprintX=3;
