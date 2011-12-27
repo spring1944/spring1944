@@ -16,7 +16,7 @@
 -- Format: unitname = { easy limit, medium limit, hard limit }
 local unitLimits = UnitBag{
 	-- engineers
-	gbrhqengineer        = { 2, 2, 4 },
+	--[[gbrhqengineer        = { 2, 2, 4 },
 	gbrmatadorengvehicle = 1,
 	gerhqengineer        = { 2, 2, 4 },
 	gersdkfz9            = 1,
@@ -45,7 +45,7 @@ local unitLimits = UnitBag{
 	gbrvehicleyard = { 1, 1, 2 },
 	gervehicleyard = { 1, 1, 2 },
 	rusvehicleyard = { 1, 1, 2 },
-	usvehicleyard  = { 1, 1, 2 },
+	usvehicleyard  = { 1, 1, 2 },]]
 }
 
 -- Convert to format expected by C.R.A.I.G., based on the difficulty.
