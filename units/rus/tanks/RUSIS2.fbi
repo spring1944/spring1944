@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.105;
   buildCostEnergy=0;
-  buildCostMetal=9900;
-  buildTime=9900;
+  buildCostMetal=11400;
+  buildTime=11400;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   //collisionVolumeType=box;
