@@ -5,7 +5,7 @@
   acceleration=0.375;
   brakeRate=0.9;
   buildCostEnergy=0;
-  buildCostMetal=325;
+  buildCostMetal=370;
   buildDistance=128;
   builder=1;
   buildTime=325;
@@ -38,7 +38,7 @@
   maxSlope=15;
   maxVelocity=1.6;
   maxWaterDepth=10;
-  minCloakDistance=225;
+  minCloakDistance=250;
   movementClass=KBOT_Infantry;
   objectName=RUSCommissar.S3O;
   repairable=0;
