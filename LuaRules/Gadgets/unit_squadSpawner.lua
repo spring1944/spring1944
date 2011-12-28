@@ -25,6 +25,7 @@ local GetUnitStates        = Spring.GetUnitStates
 -- Synced Ctrl
 local CreateUnit           = Spring.CreateUnit
 local DestroyUnit          = Spring.DestroyUnit
+local SetUnitNoSelect      = Spring.SetUnitNoSelect
 -- Unsynced Ctrl
 local GiveOrderToUnit      = Spring.GiveOrderToUnit
 local GiveOrderToUnitArray = Spring.GiveOrderToUnitArray
@@ -117,6 +118,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	if squadDefs[unitDefID] then
+		SetUnitNoSelect(unitID, true)
 		builderOf[unitID] = builderID
 		if builderID then
 			builders[builderID] = true
