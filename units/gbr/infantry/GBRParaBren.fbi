@@ -58,8 +58,9 @@
   badTargetCategory=OPENVEH FLAG SOFTVEH;
 
   weapon1=Bren;
+  maxAngleDif1=170;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
-
+  weaponMainDir1=0 0 1;
   weapon2=Small_Tracer;
 }
 
