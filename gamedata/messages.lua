@@ -9,8 +9,8 @@ local messages = {
 	
 	["Player %i (%s) resigned and is now spectating!"] = {
 		"%s resigned their command.",
-		"%s has left their forces to another commander."
-		"%s abandoned their remaining troops."
+		"%s has left their forces to another commander.",
+		"%s abandoned their remaining troops.",
 	
 	}
 }
