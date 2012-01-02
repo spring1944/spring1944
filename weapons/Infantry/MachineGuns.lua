@@ -138,7 +138,7 @@ local DT = DP:New{
 -- Maxim (RUS)
 local Maxim = MGClass:New{
   burst              = 14,
-  burstRate          = 0.05,
+  burstRate          = 0.115,
   name               = [[M1910 Maxim]],
   range              = 1270,
   reloadTime         = 2.7,
