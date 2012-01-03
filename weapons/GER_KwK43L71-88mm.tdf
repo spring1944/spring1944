@@ -35,7 +35,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_1;
-  soundStart=GER_88mm;
+  soundStart=GER_88mmL71;
   stages=50;
   tolerance=300;
   turret=1;
@@ -78,7 +78,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_3;
-  soundStart=GER_88mm;
+  soundStart=GER_88mmL71;
   stages=50;
   tolerance=3000;
   turret=1;
