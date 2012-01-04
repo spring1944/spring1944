@@ -1,10 +1,10 @@
 local messages = {
 	["Team %i (lead by %s) is no more"] = {
-		"%s has been routed.",
-		"%s has been driven from the combat area.",
-		"%s has been eliminated.",
-		"%s has been liquidated.",
-		"%s surrendered to your forces.",
+		"Field commander %i, %s, has been routed.",
+		"Field commander %i, %s, has been driven from the combat area.",
+		"Field commander %i, %s, has been eliminated.",
+		"Field commander %i, %s, has been liquidated.",
+		"Field commander %i, %s, surrendered to your forces.",
 	},
 	
 	["Player %i (%s) resigned and is now spectating!"] = {
@@ -13,7 +13,11 @@ local messages = {
 		"%s abandoned their remaining troops.",	
 	},
 
- 	["Team %i is no more"] = {}
+ 	["Team %i is no more"] = {
+	" ",
+	" ",
+	" ",
+	}
 }
 
 return messages
