@@ -7,6 +7,43 @@ local devolution = (-1 > 0)
 
 local morphDefs = {
   -- Upgrade Defs
+  
+  
+   	gerstorage = {
+		{
+			into = 'gerstoragebunker',
+			metal = 7500,
+			energy = 0,
+			time = 100,
+			name = '  Bunker  ',
+			text = 'Turns into a bunker.',
+			facing = true,
+		},
+	},
+   	usstorage = {
+		{
+			into = 'usstoragelarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Upgrade  ',
+			text = 'Upgrades into a large storage shed.',
+			facing = true,
+		},
+	},	
+	
+   	gbrstorage = {
+		{
+			into = 'gbrstoragecamo',
+			metal = 2000,
+			energy = 0,
+			time = 25,
+			name = '  Camo  ',
+			text = 'Hides the storage shed from observation.',
+			facing = true,
+		},
+	},	
+	
  	rusvehicleyard = {
 		{
 			into = 'rusvehicleyard1',
@@ -851,7 +888,15 @@ local morphDefs = {
     energy = 0,
 	facing = true,
   },
-  
+     russtorage =
+  {
+    into = 'russupplytruck',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+	facing = true,
+  },
 }
 --
 -- Here's an example of why active configuration

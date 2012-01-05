@@ -142,6 +142,7 @@ local armorDefs = {
     "USVehicleYard",
     "USResource",
     "USStorage",
+    "USStorageLarge",
     "USGunYard",
     "USSupplyDepot",
     "USTruckSupplies",
@@ -172,6 +173,7 @@ local armorDefs = {
     --Britain--
     "GBRResource",
     "GBRStorage",
+	"GBRStorageCamo",
     "GBRGunYard",
     "GBRVehicleYard1",
     "GBRVehicleYard",

@@ -28,7 +28,7 @@
   maxDamage=3000;
   maxSlope=15;
   maxWaterDepth=0;
-  objectName=LogisticsHuge.S3O;
+  objectName=USCP.S3O;
   selfDestructAs=massive_explosion;
   script=yard.cob;
   [sfxtypes] {
