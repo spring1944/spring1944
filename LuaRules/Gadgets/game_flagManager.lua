@@ -357,12 +357,12 @@ function gadget:GameFrame(n)
 							-- Flag is ready to change team
 							if (flagTeamID == GAIA_TEAM_ID) then
 								-- Neutral flag being capped
-								Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Captured!")
+								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Captured!")
 								TransferUnit(flagID, teamID, false)
 								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) + 1, {public = true})
 							else
 								-- Team flag being neutralised
-								Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
+								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
 								TransferUnit(flagID, GAIA_TEAM_ID, false)
 								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) - 1, {public = true})
 							end

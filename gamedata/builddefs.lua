@@ -363,7 +363,7 @@ buildoptions =
     "gerstorage",
     "gersupplydepot",
 	"gerbarracksbunker",
-	"gerstoragebunker",
+	--"gerstoragebunker",
     "tankobstacle",
   },
 

@@ -204,18 +204,20 @@ local Twin_DShK = DShK:New{
 -- M2 Browning  (USA)
 local M2Browning = HeavyMGClass:New{
   name               = [[M2 Browning .50 Caliber Heavy Machine Gun]],
+  burst				 = 3,
   range              = 880,
-  reloadTime         = 4,
+  reloadTime         = 2,
   soundStart         = [[US_50CAL]],
 }
 -- M2 Browning AA
 local M2BrowningAA = M2Browning:New{
-  burst              = 6,
+  burst              = 3,
   canAttackGround    = false,
   predictBoost       = 1,
   movingAccuracy     = 200,
   range              = 1170,
-  reloadTime         = 0.75,
+  reloadTime         = 0.375,
+  soundStart         = [[US_50CAL]],
   sprayAngle         = 150,
   customParams = {
     fearaoe            = 1,
@@ -224,12 +226,12 @@ local M2BrowningAA = M2Browning:New{
 }
 -- M2 Browning Aircraft
 local M2BrowningAMG = M2Browning:New{
-  burst             = 6,
+  burst             = 3,
   burstRate         = 0.085,
   interceptedByShieldType = 8, --??
   predictBoost      = 0.75,
   range             = 900,
-  reloadTime        = 0.6,
+  reloadTime        = 0.3,
   soundStart        = [[US_50CALAir]],
   sprayAngle        = 250,
   tolerance         = 600, --?

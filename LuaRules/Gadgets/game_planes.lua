@@ -475,8 +475,9 @@ function gadget:GameFrame(n)
 	    local hpLeft, totalHp = GetUnitHealth(unitID)
 		local deposit = (unitDef.customParams.deposit or DEPOSIT_AMOUNT) * unitDef.metalCost
 		local depositReturn = (hpLeft / totalHp) * deposit
-        DestroyUnit(unitID, false, true)
 		AddTeamResource(teamID, "m", depositReturn)
+		planeStates[unitID] = nil --this looks redundant, but needs to happen so that you actually get your bonus.
+		DestroyUnit(unitID, false, true)
 		--Spring.Echo("Plane safe! " .. depositReturn .. " Command returned!")
       end
     end
