@@ -57,7 +57,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M1919A4Browning;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
   maxAngleDif1=170;
   weaponMainDir1=0 0 1;
   

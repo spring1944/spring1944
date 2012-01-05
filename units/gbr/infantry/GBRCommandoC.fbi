@@ -70,7 +70,7 @@
   weapon1=SilencedSTEN;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
   
   candgun=1;

@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=USM16MGMC;
-  name=M16 MMGMC;
+  name=M16 MGMC;
   description=Light Anti-Aircraft Halftrack;
   acceleration=0.053;
   airSightDistance=3000;
@@ -75,7 +75,13 @@
   onlyTargetCategory4=AIR;
   weaponSlaveTo4=1;
 
-  weapon5=Medium_Tracer;
-  onlyTargetCategory5=AIR;
+  weapon5=M2Browning;
+  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  
+  weapon6=M2Browning;
+  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  weaponSlaveTo6=5;
+  
+  weapon7=Medium_Tracer;
 }
 

@@ -4,6 +4,7 @@
 local TracerClass = Weapon:New{
   areaOfEffect       = 1,
   burnblow           = true,
+  canAttackGround	 = false,
   explosionGenerator = [[custom:nothing]],
   id                 = 666, -- needed?
   noSelfDamage       = true,

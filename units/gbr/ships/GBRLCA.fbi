@@ -54,7 +54,7 @@
 
   weapon1=bren;
   maxAngleDif1=270;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
 
