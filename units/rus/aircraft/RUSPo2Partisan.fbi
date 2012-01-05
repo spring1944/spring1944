@@ -1,6 +1,6 @@
 [UNITINFO] {
   UnitName=RUSPo2Partisan;
-  name=Po-2 Kukuruznik Partisan;
+  name=Po-2 Kukuruznik;
   description=Partisan Supply Plane;
   acceleration=0.48;
   airSightDistance=5000;

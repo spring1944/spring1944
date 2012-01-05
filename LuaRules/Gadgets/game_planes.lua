@@ -179,7 +179,8 @@ local planeStates = {}
 
 --teamID = { unitID = true, unitID = true, unitID = true... }
 local radios = {}
-
+-- allyTeamID = numberOfRadars
+local radars = {}
 ----------------------------------------------------------------
 --spawning
 ----------------------------------------------------------------
@@ -298,6 +299,15 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
   end
 
   SendMessageToTeam(teamID, sortie.name .. " arrived.")
+  if not sortie.silent then
+    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
+    for _, alliance in ipairs(Spring.GetAllyTeamList()) do
+      if alliance ~= allyTeam then
+	    -- assumes all aircraft in a sortie are the same
+        Spring.SendMessageToAllyTeam(alliance, "\255\255\001\001Enemy " .. UnitDefNames[sortie[1]].humanName .. " aircraft spotted overhead!")
+      end
+    end
+  end
 end
 
 local function GetSpawnPoint(teamID, numPlanes)
@@ -377,6 +387,10 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
   if not sortieCmdDescs then return end
 
   radios[teamID][unitID] = true
+  if UnitDefs[unitDefID].name:find("radar") then -- nasty, customParam?
+    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
+	radars[allyTeam] = (radars[allyTeam] or 0) + 1
+  end
 
   for i=1,#sortieCmdDescs do
 		local sortieCmdDesc = sortieCmdDescs[i]
@@ -425,10 +439,10 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
       local sx, sy, sz = GetSpawnPoint(teamID, #sortie)
       DelayCall(SpawnFlight, {teamID, sortie, sx, sy, sz, cmdParams}, sortie.delay * 30)
       SendMessageToTeam(teamID, sortie.name .. " ordered. ETE " .. (sortie.delay or 0) .. "s.")
-      local _, _, _, _, _, allyTeam = Spring.GetTeamInfo(teamID)
+      local allyTeam = select(6, Spring.GetTeamInfo(teamID))
       for _, alliance in ipairs(Spring.GetAllyTeamList()) do
-        if alliance ~= allyTeam and sortie.weight > 0 and not sortie.silent then
-          Spring.SendMessageToAllyTeam(alliance, "Incoming enemy aircraft spotted, arriving in 15-45 seconds")
+        if alliance ~= allyTeam and sortie.weight > 0 and not sortie.silent and (radars[alliance] or 0) > 0 then
+          Spring.SendMessageToAllyTeam(alliance, "\255\255\001\001Incoming enemy aircraft on radar, arriving in " .. sortie.delay .. " seconds")
         end
       end
     else
@@ -484,6 +498,11 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
   end
   planeStates[unitID] = nil
   radios[teamID][unitID] = nil
+  
+  if UnitDefs[unitDefID].name:find("radar") then
+    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
+    radars[allyTeam] = (radars[allyTeam] or 1) - 1 -- should never actually be nil
+  end
 end
 
 function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, part)
