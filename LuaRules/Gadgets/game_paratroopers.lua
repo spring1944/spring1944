@@ -12,7 +12,7 @@ end
 
 if not gadgetHandler:IsSyncedCode() then return end
 
-local windFactor = 0.025
+local windFactor = 0.0025
 local drag = 0.06
 local relVelHoriz = 0.25
 local relVelVert = 1
@@ -94,18 +94,18 @@ function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
     local unitID = CreateUnit(paratrooperInfo[1], ux, uy, uz, 0, teamID)
     mcEnable(unitID)
     mcSetPosition(unitID, ux, uy - 16, uz)
-    mcSetVelocity(unitID, vx, vy, vz)
-    mcSetGravity(unitID, 1)
+    --mcSetVelocity(unitID, vx, vy, vz)
+    mcSetGravity(unitID, 2)
     mcSetWindFactor(unitID, windFactor)
     mcSetDrag(unitID, drag)
     mcSetTrackGround(unitID, true)
     mcSetCollideStop(unitID, true)
     --CallCOBScript(unitID, "Falling", 0, 0)
     
-    local vx = (random() - 0.5) * relVelHoriz
-    local vy = (random() - 0.5) * relVelVert
-    local vz = (random() - 0.5) * relVelHoriz
-    mcSetRelativeVelocity(unitID, vx, vy, vz)
+    local vx = vx + (random() - 0.5) * relVelHoriz
+    local vy = vy + (random() - 0.5) * relVelVert
+    local vz = vz + (random() - 0.5) * relVelHoriz
+    mcSetVelocity(unitID, vx, vy, vz)
     
     paratroopers[unitID] = paratrooperInfo
   end
