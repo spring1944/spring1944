@@ -19,6 +19,7 @@ local CMD_ATTACK			= CMD.ATTACK
 local CMD_AREA_ATTACK		= CMD.AREA_ATTACK
 --synced read
 local IsPosInLos 			= Spring.IsPosInLos
+local IsPosInRadar			= Spring.IsPosInRadar
 local IsValidUnitID			= Spring.ValidUnitID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitAllyTeam		= Spring.GetUnitAllyTeam
@@ -80,7 +81,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							z = targetZ,
 						}
 				if targetX ~= nil and targetY ~= nil and targetZ ~= nil then
-					if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true then
+					if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true or IsPosInRadar(targetX, targetY, targetZ, allyTeam) == true then
 						visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
 					end
 				end

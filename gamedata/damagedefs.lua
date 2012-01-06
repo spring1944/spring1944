@@ -34,6 +34,7 @@ local damagedefs = {
     mines = 0,
   },
   explosive = {
+	bunkers = 1/2,
     infantry = 9,
 	ships = 2,
     unarmouredvehicles = 1,
