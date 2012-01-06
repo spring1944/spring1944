@@ -331,6 +331,7 @@ local armorDefs = {
     "USGMCTruck_Eng",
     "USGMCEngVehicle",
     "USSupplyTruck",
+	"USM16MGMC",
     "usdukw",
     "USM1Bofors_Truck",
     "USM2Gun_Truck",

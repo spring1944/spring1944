@@ -13,6 +13,10 @@
   buildTime=3600;
   canBeAssisted=0;
   category=BUILDING;
+  collisionVolumeScales=96 15 76;
+  collisionVolumeOffsets=14 0 5;
+  collisionVolumeTest=0;
+  collisionVolumeType=box;
   corpse=BuildingDebris_Large;
   [customParams] {
     ammoSupplier=1;
@@ -22,8 +26,8 @@
   energyMake=0;
   energyStorage=0;
   explodeAs=massive_explosion;
-  footprintX=7;
-  footprintZ=7;
+  footprintX=6;
+  footprintZ=6;
   iconType=ammo2;
   maxDamage=3000;
   maxSlope=15;
@@ -43,7 +47,7 @@
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=30;
-  yardmap=o;
+  yardmap=occcco occcco occcco occcco occcco occcco;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
