@@ -43,6 +43,10 @@ if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 local DelayCall = GG.Delay.DelayCall
 
+local function RandPos(mineData)
+	return math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread
+end
+
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 	local ud = UnitDefs[unitDefID]
 	local mineData = mineTypes[ud.name]
@@ -50,11 +54,11 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 		local x, y, z = GetUnitPosition(unitID)
 		local mineCount = 0
 		while mineCount < mineData.number do
-			local xpos = (math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread) + x
-			local zpos = (math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread) + z
+			local xpos = RandPos(mineData) + x
+			local zpos = RandPos(mineData) + z
 			while #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) > 0 do -- This could well be slow >_>
-				xpos = (math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread) + x
-				zpos = (math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread) + z
+				xpos = RandPos(mineData) + x
+				zpos = RandPos(mineData) + z
 			end
 			local ypos = GetGroundHeight(xpos, zpos)
 			local mineID = CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID)
