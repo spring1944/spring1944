@@ -253,6 +253,7 @@ function PlaceFlag(spot, flagType)
 	SetUnitNoSelect(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
 	
+	
 	if modOptions and modOptions.always_visible_flags == "0" then
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)

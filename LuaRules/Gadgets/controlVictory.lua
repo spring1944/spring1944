@@ -51,11 +51,12 @@ local function Loser(team)
    if team == gaia then
       return
    end
-   for _,u in ipairs(Spring.GetAllUnits()) do
+   Spring.KillTeam(team)
+   --[[for _,u in ipairs(Spring.GetAllUnits()) do
       if team == Spring.GetUnitAllyTeam(u) then
          Spring.TransferUnit(u, GAIA_TEAM_ID, false)
       end
-   end
+   end]]--
 end
 
 local function Winner(team)
@@ -101,6 +102,7 @@ function gadget:GameFrame(f)
    if f % 30 < .1 and f / 1800 > startTime then
       local owned = {}
       for _,a in ipairs(Spring.GetAllyTeamList()) do
+		 --set all teams owned flag count to 0
          owned[a]=0
       end
       for _,p in pairs(points) do
@@ -111,25 +113,26 @@ function gadget:GameFrame(f)
             local unitOwner = Spring.GetUnitAllyTeam(u)
 			local unitDefID = Spring.GetUnitDefID(u)
 			local ud = UnitDefs[unitDefID]
+			local unitCapRate = tonumber(ud.customParams.flagcaprate) or 1
 		   if (ud.customParams.flagcaprate ~= nil) or ((ud.customParams.flag == 1) and (unitOwner ~= GAIA_TEAM_ID)) then
 	            if owner then
 	               if owner == unitOwner then
 	                  count = 0
 	                  break
 	               else
-	                  count = count + 1
+	                  count = count + unitCapRate
 	               end
 	            else
 	               if target then
 	                  if target == unitOwner then
-	                     count = count + 1
+	                     count = count + unitCapRate
 	                  else
 	                     target = nil
 	                     break
 	                  end
 	               else
 	                  target = unitOwner
-	                  count = count + 1
+	                  count = count + unitCapRate
 	               end
 	            end
 			end
@@ -150,14 +153,14 @@ function gadget:GameFrame(f)
             p.capture = 0
          end
          if p.owner then
-            owned[p.owner]=owned[p.owner]+1
+            owned[p.owner]=owned[p.owner]+1 --increment the number of flags this team has
          end
       end
       if scoreMode == 1 then --Countdown
-         for owner, count in pairs(owned) do
+         for owner, flagCount in pairs(owned) do
             for _,a in ipairs(Spring.GetAllyTeamList()) do
                if a ~= owner and score[a] > 0 then
-                  score[a] = score[a] - count
+                  score[a] = score[a] - flagCount
                end
             end
          end
@@ -168,11 +171,11 @@ function gadget:GameFrame(f)
             end
          end
       elseif scoreMode ==2 then --Tug o'War
-         for owner, count in pairs(owned) do
+         for owner, flagCount in pairs(owned) do
             for _,a in ipairs(Spring.GetAllyTeamList()) do
                if a ~= owner and score[a] > 0 then
-                  score[a] = score[a] - count
-                  score[owner] = score[owner] + count
+                  score[a] = score[a] - flagCount
+                  score[owner] = score[owner] + flagCount
                end
             end
          end

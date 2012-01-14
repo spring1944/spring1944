@@ -339,14 +339,14 @@ local options = {
 		step   = 0.1,
 	},]]--
 	
-	{
+	--[[{
 		key = "always_visible_flags",
 		name = "Always Visible Flags",
 		desc = "Flags and their capping status can be seen without LOS",
 		type = "bool",
 		def = true,
 		section = '4other',
-	},
+	},]]--
 
 
 
