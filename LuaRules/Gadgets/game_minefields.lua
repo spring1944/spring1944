@@ -31,12 +31,14 @@ mineTypes["apminesign"] = {
 	spread = 25,
 	minDist = 2.5,
 	fieldSize = 5,
+	mineToSpawn = "apmine",
 }
 mineTypes["atminesign"] = {
 	number = 5,
 	spread = 23,
 	minDist = 1.5,
 	fieldSize = 3,
+	mineToSpawn = "atmine",
 }
 
 if gadgetHandler:IsSyncedCode() then
@@ -61,7 +63,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 				zpos = RandPos(mineData) + z
 			end
 			local ypos = GetGroundHeight(xpos, zpos)
-			local mineID = CreateUnit("apmine", xpos, ypos, zpos, 0, GAIA_TEAM_ID)
+			local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
 			SetUnitBlocking(mineID, false, false, false)
 			mineCount = mineCount + 1
 		end
