@@ -423,7 +423,8 @@ function gadget:Initialize()
   --// check user configs
   shadows = Spring.HaveShadows()
   advShading = Spring.HaveAdvShading()
-  normalmapping = (Spring.GetConfigInt("NormalMapping", 1)>0)
+  normalMappingConfigInt = Spring.GetConfigInt("NormalMapping", 1) or 0
+  normalmapping = (normalMappingConfigInt>0)
 
   --// load the materials config files
   local unitMaterialDefs = {}
