@@ -78,13 +78,26 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local treeNames = {"tree", "fir", "pine", "oak", "maple", "birch", "palm"}
+local bushNames = {"bush", "shrub"}
+
 -- S44 code begins
 for name, fd in pairs(FeatureDefs) do
-	if name:find("tree") then
-		if (fd.collisionvolumetype or ""):lower() ~= "cyly" then
-			fd.collisionvolumetype = "cyly"
-			fd.collisionvolumetest = 1
-			fd.collisionvolumescales = [[3 50 3]]
+	-- set tree feature colvols
+	for _, treeName in pairs(treeNames) do
+		if name:find(treeName) or fd.description:lower():find(treeName) then
+			if (fd.collisionvolumetype or ""):lower() ~= "cyly" then
+				fd.collisionvolumetype = "cyly"
+				fd.collisionvolumetest = 1
+				fd.collisionvolumescales = [[3 50 3]]
+			end
+		end
+	end
+	-- set bushes to non blocking
+	for _, bushName in pairs(bushNames) do
+		if name:find(bushName) or fd.description:lower():find(bushName) then
+			fd.blocking = false
+			fd.collisionvolumeoffsets= [[0 -100 0]]
 		end
 	end
 end

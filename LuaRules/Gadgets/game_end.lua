@@ -65,8 +65,8 @@ end
 
 
 function gadget:UnitTaken(unitID, unitDefID, oldTeamID, newTeamID)
-	UnitCreated(unitID, unitDefID, newTeamID)
-	UnitDestroyed(unitID, unitDefID, oldTeamID)
+	gadget:UnitCreated(unitID, unitDefID, newTeamID)
+	gadget:UnitDestroyed(unitID, unitDefID, oldTeamID)
 end
 
 
