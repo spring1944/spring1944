@@ -10,7 +10,8 @@ function gadget:GetInfo()
 	}
 end
 
-local CMD_AREAATTACK = 39954
+--custom command ID list
+VFS.Include("LuaRules/header/S44_commandIDs.lua")
 
 if (gadgetHandler:IsSyncedCode()) then
 

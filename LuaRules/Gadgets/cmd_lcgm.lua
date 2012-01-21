@@ -10,8 +10,12 @@ function gadget:GetInfo()
 	}
 end
 
-if (gadgetHandler:IsSyncedCode()) then
---SYNCED
+-- synced only
+if (not gadgetHandler:IsSyncedCode()) then
+	return false
+end
+
+VFS.Include("LuaRules/header/S44_commandIDs.lua")
 
 -- Localisations
 local DelayCall 			= GG.Delay.DelayCall
@@ -35,7 +39,6 @@ local SetUnitWeaponState	= Spring.SetUnitWeaponState
 local SendMessageToTeam		= Spring.SendMessageToTeam
 
 -- Constants
-local CMD_BEACH = 1000
 local MIN_DEPTH = -150 -- lowest depth that we allow the command for
 local ACTUAL_MIN_DEPTH = -15 -- lowest depth that the model should be lowered to
 local SINK_RATE = -0.1
@@ -138,8 +141,3 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 	return false
 end
 
-else
-
--- UNSYNCED
-
-end

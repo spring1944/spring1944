@@ -10,6 +10,15 @@ function gadget:GetInfo()
   }
 end
 
+-- synced only
+if (not gadgetHandler:IsSyncedCode()) then
+	return false
+end
+
+
+--custom command ID list
+VFS.Include("LuaRules/header/S44_commandIDs.lua")
+
 -- function localisations
 -- Synced Read
 local GetUnitDefID			= Spring.GetUnitDefID
@@ -24,15 +33,12 @@ local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
 local SpawnCEG				= Spring.SpawnCEG
 
 -- Constants
-local CMD_CLEARMINES = 35522
 local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
 local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
 -- Variables
 local sweepers = {}
 
-if gadgetHandler:IsSyncedCode() then
---	SYNCED
 
 local DelayCall = GG.Delay.DelayCall
 
@@ -152,9 +158,4 @@ function gadget:Initialize()
 	end
 	Spring.AssignMouseCursor("Clear Mines", "cursordemine", true, false)
 	Spring.SetCustomCommandDrawData(CMD_CLEARMINES, "Clear Mines", {1,0.5,0,.8}, false)
-end
-
-else
---	UNSYNCED
-
 end
