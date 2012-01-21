@@ -33,6 +33,7 @@
   objectName=GEROpelBlitz.S3O;
   radardistance=950;
   releaseHeld=1;
+  script=TransportTruck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

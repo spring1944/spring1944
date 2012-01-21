@@ -45,19 +45,17 @@ treads()
 
 TransportPickup(unitid)
 {
-	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-			set BUSY to 1;
-			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
-			{ 
-			  attach-unit unitid to 0 - 1; // hide infantry models
-			}
-			if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
-			{ 
-			  attach-unit unitid to tow_point; // don't hide other units
-			  bGun = 1;
-			}
-			set BUSY to 0;
+	set BUSY to 1;
+	if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+	{ 
+	  attach-unit unitid to 0 - 1; // hide infantry models
 	}
+	if( get UNIT_HEIGHT (unitid) != INFANTRY && !bGun) // only load one gun
+	{ 
+	  attach-unit unitid to tow_point; // don't hide other units
+	  bGun = 1;
+	}
+	set BUSY to 0;
 }
 
 TransportDrop(unitid, position)

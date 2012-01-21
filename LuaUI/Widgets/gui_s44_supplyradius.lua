@@ -338,7 +338,7 @@ local function DrawTrucks()
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local cp = UnitDefs[unitDefID].customParams or {}
-		local radius = cp.supplyrange or 0
+		local radius = cp.supplyrange
 		--Spring.Echo('truck', radius)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
@@ -347,7 +347,7 @@ local function DrawTrucks()
 				glColor(previewColor)
 				DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
 			elseif halftrackDefIDs[unitDefID] then
-				glColor(previewColor)
+				--glColor(previewColor)
 				--DrawSupplyRingFull(halftrackDefInfo, x, z)
 				glColor(color)
 				DrawSupplyRingFull(halftrackDefInfo, x, z, radius)

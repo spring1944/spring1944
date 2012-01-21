@@ -215,6 +215,9 @@ for name, ud in pairs(UnitDefs) do
 			ud.seismicdistance = (modOptions.unit_los_mult * ud.seismicdistance)
 		end			
 	end
+	
+	ud.transportbyenemy = false
+	
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
 	if name == "gmtoolbox" then GM_UD = ud end
