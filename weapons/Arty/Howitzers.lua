@@ -2,6 +2,7 @@
 
 -- Howitzer Base Class
 local HowitzerClass = Weapon:New{
+  avoidFeature		 = false,
   collisionSize      = 4,
   edgeEffectiveness  = 0.15,
   explosionGenerator = [[custom:HE_Large]],
