@@ -8,6 +8,7 @@ local BulletProofClass = Weapon:New{
   shieldForce        = 500,
   shieldMaxSpeed     = 900,
   shieldRepulser     = true,
+  smartShield		 = true,
   weaponType         = [[Shield]],
   
   --visibleShield = true,
