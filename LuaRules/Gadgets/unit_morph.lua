@@ -41,8 +41,8 @@ end
 --   30000 - 39999:  LuaRules
 --
 
-local CMD_MORPH_STOP = 32210
-local CMD_MORPH = 31210
+local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
+local CMD_MORPH_STOP = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP")
 
 local MAX_MORPH = 0 --// will increase dynamically
 
@@ -206,11 +206,13 @@ local function BuildMorphDef(udSrc, morphData)
     end
     newData.require = require
 
-    newData.cmd     = CMD_MORPH      + MAX_MORPH
-    newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
+    --newData.cmd     = CMD_MORPH      + MAX_MORPH
+	newData.cmd = GG.CustomCommands.GetCmdID("CMD_MORPH_" .. newData.into)
+    --newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
+	newData.stopCmd = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP_" .. newData.into)
     MAX_MORPH = MAX_MORPH + 1
     if (type(GG.MorphInfo)~="table") then GG.MorphInfo = {} end
-    GG.MorphInfo["MAX_MORPH"] = MAX_MORPH
+    GG.MorphInfo["MAX_MORPH"] = MAX_MORPH * 2
 
 	newData.texture = morphData.texture
 	newData.text = morphData.text
@@ -633,8 +635,8 @@ function gadget:Initialize()
 
   --// Register CmdIDs
   for number=0,MAX_MORPH-1 do
-    gadgetHandler:RegisterCMDID(CMD_MORPH+number)
-    gadgetHandler:RegisterCMDID(CMD_MORPH_STOP+number)
+    gadgetHandler:RegisterCMDID(CMD_MORPH+number*2)
+    gadgetHandler:RegisterCMDID(CMD_MORPH_STOP+number*2)
   end
 
 
@@ -693,7 +695,7 @@ function gadget:Shutdown()
       StopMorph(unitID, morphData)
     end
     for number=0,MAX_MORPH-1 do
-      local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_MORPH+number)
+      local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_MORPH+number*2)
       if (cmdDescID) then
         Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
       end
@@ -972,7 +974,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     --else --// disallow ANY command to units in morph
     --  return false
     end
-  elseif (cmdID >= CMD_MORPH and cmdID < CMD_MORPH+MAX_MORPH) then
+  elseif (cmdID >= CMD_MORPH and cmdID < CMD_MORPH+MAX_MORPH*2) then
     local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]
     if ((morphDef)and
         (morphDef.tech<=teamTechLevel[teamID])and
@@ -998,7 +1000,7 @@ end
 
 
 function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-  if (cmdID < CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH) then
+  if (cmdID < CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH*2) then
     return false  --// command was not used
   end
   local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]

@@ -3,19 +3,17 @@ function gadget:GetInfo()
 		name = "Beaching Command",
 		desc = "Give special beaching command to LCG(M)",
 		author = "FLOZi (C. Lawrence)",
-		date = "27/12/2010",
+		date = "27 December 2010",
 		license = "GNU GPL v2",
 		layer = 1,
 		enabled = true
 	}
 end
 
--- synced only
+-- SYNCED only
 if (not gadgetHandler:IsSyncedCode()) then
 	return false
 end
-
-VFS.Include("LuaRules/header/S44_commandIDs.lua")
 
 -- Localisations
 local DelayCall 			= GG.Delay.DelayCall
@@ -39,8 +37,9 @@ local SetUnitWeaponState	= Spring.SetUnitWeaponState
 local SendMessageToTeam		= Spring.SendMessageToTeam
 
 -- Constants
+local CMD_BEACH = GG.CustomCommands.GetCmdID("CMD_BEACH")
 local MIN_DEPTH = -150 -- lowest depth that we allow the command for
-local ACTUAL_MIN_DEPTH = -15 -- lowest depth that the model should be lowered to
+local ACTUAL_MIN_DEPTH = -11 -- lowest depth that the model should be lowered to
 local SINK_RATE = -0.1
 local SINK_TIME = math.floor(ACTUAL_MIN_DEPTH / SINK_RATE)
 local ARMOUR_MULTIPLE = 0.50

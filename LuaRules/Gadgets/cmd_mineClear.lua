@@ -3,7 +3,7 @@ function gadget:GetInfo()
 		name      = "Mine Clearance",
 		desc      = "Implements mine clearance command for engineers",
 		author    = "FLOZi (C.Lawrence)",
-		date      = "03/10/10",
+		date      = "03 October 2010",
 		license   = "GNU GPL v2",
 		layer     = 1,
 		enabled   = true  --  loaded by default?
@@ -14,10 +14,6 @@ end
 if (not gadgetHandler:IsSyncedCode()) then
 	return false
 end
-
-
---custom command ID list
-VFS.Include("LuaRules/header/S44_commandIDs.lua")
 
 -- function localisations
 -- Synced Read
@@ -33,6 +29,7 @@ local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
 local SpawnCEG				= Spring.SpawnCEG
 
 -- Constants
+local CMD_CLEARMINES = GG.CustomCommands.GetCmdID("CMD_CLEARMINES")
 local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
 local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine

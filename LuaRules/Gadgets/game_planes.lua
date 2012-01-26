@@ -4,7 +4,7 @@ function gadget:GetInfo()
     desc      = "Allows structures to order aircraft sorties.",
     author    = "Evil4Zerggin",
     date      = "13 February 2008",
-    license   = "GNU LGPL, v2.1 or later",
+    license   = "GNU GPL v2",
     layer     = -5,
     enabled   = true  --  loaded by default?
   }
@@ -17,7 +17,7 @@ local sin, cos, atan2 = math.sin, math.cos, math.atan2
 
 local airfieldCapacity = 10
 
-local CMD_PLANES = 34400
+local CMD_PLANES = GG.CustomCommands.GetCmdID("CMD_PLANES") --34400
 local PATROL_DISTANCE = 1000
 local FORMATION_SEPARATION = 128
 local DIAG_FORMATION_SEPARATION = FORMATION_SEPARATION * sqrt(2)
@@ -123,7 +123,8 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
   local sortieUnitDef = UnitDefNames[sortieUnitName]
   if sortieUnitDef then
     local sortieUnitDefID = sortieUnitDef.id
-
+    currCmdID = GG.CustomCommands.GetCmdID("CMD_PLANES_" .. sortieUnitDefID)
+	
     local cmdDesc = {
       id = currCmdID,
 	  action = sortieUnitName,
@@ -146,7 +147,6 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
     sortieCmdIDs[currCmdID] = sortie
     sortieDefs[sortieUnitDefID] = sortie
 
-    currCmdID = currCmdID + 1
   else
     Spring.Echo("<game_planes>: Warning: no UnitDef found for " .. sortieUnitName)
   end

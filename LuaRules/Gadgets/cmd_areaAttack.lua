@@ -2,16 +2,15 @@ function gadget:GetInfo()
 	return {
 		name = "Area Attack",
 		desc = "Give area attack commands to ground units",
-		author = "KDR_11k (David Becker)",
-		date = "2008-01-20",
-		license = "Public domain",
-		layer = 1,
+		author = "KDR_11k (D. Becker)",
+		date = "20 January 2008",
+		license = "Public Domain",
+		layer = 10,
 		enabled = true
 	}
 end
 
---custom command ID list
-VFS.Include("LuaRules/header/S44_commandIDs.lua")
+local CMD_AREAATTACK = GG.CustomCommands.GetCmdID("CMD_AREAATTACK")
 
 if (gadgetHandler:IsSyncedCode()) then
 
