@@ -47,7 +47,9 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 				}
 		end
 		--prevent units from setting themselves on fire
-		burningUnits[ownerID] = nil
+		if ownerID ~= nil then
+			burningUnits[ownerID] = nil
+		end
 
 		if damageZones[damageSiteIndex] == nil then
 			damageZones[damageSiteIndex] = {
