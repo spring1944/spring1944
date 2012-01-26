@@ -27,7 +27,7 @@ local FlamerClass = Weapon:New{
       fearid             = 501,
     },
     damage = {
-      default            = 20,
+      default            = 15,
     },
 }
 

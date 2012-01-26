@@ -7,7 +7,7 @@ return {
     fire = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
-      count              = 16,
+      count              = 12,
       ground             = true,
       water              = true,
       properties = {
@@ -34,7 +34,7 @@ return {
     },
     flames = {
       class              = [[CExpGenSpawner]],
-      count              = 64,
+      count              = 48,
       ground             = true,
       unit               = 1,
       properties = {
