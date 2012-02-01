@@ -2,6 +2,7 @@
 
 -- Flamethrower Class
 local FlamerClass = Weapon:New{
+	avoidFeature	   = false,
     burstrate          = 0.05,
     cegTag             = [[Flametrail]],
     edgeEffectiveness  = 0.25,

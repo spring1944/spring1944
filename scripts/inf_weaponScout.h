@@ -18,6 +18,8 @@ FireWeapon2()
 
 */
 
+#define VISIBLE_PERIOD	5000
+
 AimFromWeapon1(piecenum)
 {
 	piecenum = flare;
@@ -133,7 +135,9 @@ AimWeapon1(heading, pitch)
 }
 FireWeapon1()
 {
-
+	SET ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	SET ACTIVATION to 0;
 }
 
 AimFromWeapon2(piecenum)
@@ -324,5 +328,8 @@ FireWeapon2()
 		{
 		SHOT_ANIM_PRONE
 		}
+	SET ACTIVATION to 1;
+	sleep VISIBLE_PERIOD;
+	SET ACTIVATION to 0;
 	return (0);
 }
