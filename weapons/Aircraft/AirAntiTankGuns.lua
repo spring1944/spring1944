@@ -48,7 +48,7 @@ local BK37mmAP = AirATGunClass:New{
     armor_penetration_100m = 60,
   },
   damage = {
-    default            = 488.8,
+    default            = 825,
   },
 }
 

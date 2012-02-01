@@ -14,7 +14,7 @@
     damagetype=kinetic;
   }
   [damage] {
-    default=4280;
+    default=3194;
   }
   edgeEffectiveness=0.1;
   explosionGenerator=custom:AP_Large;

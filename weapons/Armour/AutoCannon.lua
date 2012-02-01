@@ -95,7 +95,7 @@ local FlaK3820mmAP = FlaK3820mm:New(ACAPClass, true):New{
     armor_penetration_100m  = 20,
   },
   damage = {
-    default            = 259.2,
+    default            = 385,
   },
 }
 
