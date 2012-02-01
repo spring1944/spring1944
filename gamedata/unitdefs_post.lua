@@ -140,7 +140,7 @@ for name, ud in pairs(UnitDefs) do
 		ud.seismicdistance = 1400
 		--slightly hackish; works out so that all cloaked units don't get radar
 		--but observs get it while decloaked.
-		if ud.cancloak == nil then
+		if ud.cloakcost == nil then
 			ud.activatewhenbuilt = true
 		end
 
