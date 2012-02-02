@@ -25,7 +25,7 @@
     lowammolevel=2;
     maxammo=10; // 40 rounds
     weaponcost=10;
-    weaponswithammo=1;
+    weaponswithammo=2;
   }
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
