@@ -162,7 +162,7 @@ local TNSh20mmAP = TNSh20mm:New(ACAPClass, true):New{
     armor_penetration_100m  = 35,
   },
   damage = {
-    default            = 238.4,
+    default            = 310,
   },
 }
 

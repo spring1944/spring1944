@@ -44,7 +44,7 @@ local PTRD = ATRifleClass:New{
     armor_penetration_100m = 35,
   },
   damage = {
-    default            = 997,
+    default            = 254,
   },
 }
 

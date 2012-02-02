@@ -9,7 +9,7 @@
   buildCostMetal=1100;
   buildTime=1100;
   canMove=1;
-  category=MINETRIGGER OPENVEH;
+  category=MINETRIGGER SOFTVEH;
   //collisionVolumeType=box;
   //collisionVolumeScales=14 11 24;
   //collisionVolumeOffsets=0 0 0;

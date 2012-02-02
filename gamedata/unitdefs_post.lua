@@ -45,7 +45,7 @@ local GM_UD
 
 for name, ud in pairs(UnitDefs) do
 	--MODOPTION CONTROLS
-	if (modOptions) then
+	if (modOptions) then	
 		if (modOptions.scoremode) then
 			if (modOptions.scoremode ~= 'disabled') then
 				if (ud.customparams) then
@@ -128,7 +128,9 @@ for name, ud in pairs(UnitDefs) do
  --END MODOPTION CONTROLS
  
  --BEGIN UNIT PROCESSING
+		
 
+	
 	--new sensor stuff!
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
@@ -206,6 +208,13 @@ for name, ud in pairs(UnitDefs) do
 		--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
 		--if seisSig < 1 then seisSig = 1 end
 		ud.seismicsignature = 1 --seisSig
+		
+		--set health
+		local powerBase = modOptions.power_base or 3.25
+		local scaleFactor = modOptions.scale_factor or 50
+		local logMass = math.log10(ud.mass) or 999 --a crazy default value so we see it when it happens
+		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
+		Spring.Echo(name, "changed health to", ud.maxdamage)
 	end
 
 	if (modOptions.unit_los_mult) then

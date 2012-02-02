@@ -309,7 +309,6 @@ local armorDefs = {
     "GBRM5Halftrack",
     "GBRAECMkII",
     "GBRSexton",
-    "GBRWasp",
     "gbrm10achilles",
 	"gbrstaghound",
   },
@@ -361,6 +360,7 @@ local armorDefs = {
     "GBR17Pdr_Truck",
     "GBR25Pdr_Truck",
     "gbrpontoontruck",
+    "GBRWasp",
 
     --All--
     "RubberDingy",
