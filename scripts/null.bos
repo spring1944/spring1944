@@ -1,6 +1,6 @@
 #define TAK
 
-piece base;
+//piece base;
 
 Create() {}
 
