@@ -3,7 +3,6 @@
   name=M5A1 Stuart;
   description=Light Tank;
   acceleration=0.065;
-  activateWhenBuilt=1;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -90,7 +89,7 @@
   weapon4=M1919A4Browning;
   weaponMainDir4=0 16 1;
   maxAngleDif4=210;
-  onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
 
   weapon5=m2browningaa;
   onlyTargetCategory5=AIR;

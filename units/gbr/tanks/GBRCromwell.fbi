@@ -87,7 +87,7 @@
   weapon3=BESA;
   weaponMainDir3=0 16 1;
   maxAngleDif3=210;
-  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
 
