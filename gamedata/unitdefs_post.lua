@@ -237,3 +237,5 @@ for name, ud in pairs(UnitDefs) do
 end
 
 GM_UD["buildoptions"] = GMBuildOptions
+
+VFS.Include("gamedata/unitdefs_post_dependency.lua")
