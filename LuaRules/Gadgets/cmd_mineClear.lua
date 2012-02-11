@@ -131,7 +131,7 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 		end
 	else
 		-- Allow any other command
-		return false
+		return true
 	end
 end
 

@@ -10,15 +10,17 @@ function gadget:GetInfo()
 	}
 end
 
-local CMD_AREAATTACK = GG.CustomCommands.GetCmdID("CMD_AREAATTACK")
+
 
 if (gadgetHandler:IsSyncedCode()) then
-
 --SYNCED
 
 local attackList={}
 local closeList={}
 local range={}
+
+
+local CMD_AREAATTACK = GG.CustomCommands.GetCmdID("CMD_AREAATTACK")
 
 local aadesc= {
 	name = "Area Attack",
@@ -78,7 +80,7 @@ else
 -- UNSYNCED
 
 function gadget:Initialize()
-	Spring.SetCustomCommandDrawData(CMD_AREAATTACK, CMDTYPE.ICON_AREA, {1,0,0,.8},true)
+	Spring.SetCustomCommandDrawData(SYNCED.CustomCommandIDs["CMD_AREAATTACK"], CMDTYPE.ICON_AREA, {1,0,0,.8},true)
 end
 
 end

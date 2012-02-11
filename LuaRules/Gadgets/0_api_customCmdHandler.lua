@@ -38,8 +38,8 @@ local function GetCmdID(name)
 		customCommands.IDs[name] = cmdID
 		_G.CustomCommandIDs[name] = cmdID
 		gadgetHandler:RegisterCMDID(cmdID)
+		--Spring.Echo(name, cmdID)
 	end
-	--Spring.Echo(name, cmdID)
 	return cmdID
 end
 

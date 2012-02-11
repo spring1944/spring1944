@@ -10,10 +10,9 @@ function gadget:GetInfo()
 	}
 end
 
-
-
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+
 -- SyncedCtrl
 local SetUnitCOBValue = Spring.SetUnitCOBValue
 -- SyncedRead
@@ -34,6 +33,9 @@ local turnCmdDesc = {
 
 -- Variables
 local turning = {} -- structure: turning = {unitID={turnRate=number COB units to rotate per frame, numFrames=number of frames left to rotate in, currHeading= current heading}}
+
+
+
 local function StartTurn(unitID, unitDefID, tx, tz)
 	local ud = UnitDefs[unitDefID]
 	local turnRate = ud.turnRate
@@ -58,6 +60,8 @@ local function StartTurn(unitID, unitDefID, tx, tz)
 	turnTable["currHeading"] = currHeading
 	turning[unitID] = turnTable
 end
+
+
 
 function gadget:GameFrame(n)
 	for unitID, turnTable in pairs(turning) do

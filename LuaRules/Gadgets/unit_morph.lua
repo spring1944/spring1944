@@ -16,7 +16,7 @@ function gadget:GetInfo()
   return {
     name      = "UnitMorph",
     desc      = "Adds unit morphing",
-    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi)",
+    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi, Nemo)",
     date      = "Jan, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
@@ -28,21 +28,6 @@ end
 --		CarRepairer: may add a customized texture in the morphdefs, otherwise uses original behavior (unit buildicon and the word Morph). Break changes made in CA.
 --		aZaremoth: may add a customized text in the morphdefs
 
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
---
---  Proposed Command ID Ranges:
---
---    all negative:  Engine (build commands)
---       0 -   999:  Engine
---    1000 -  9999:  Group AI
---   10000 - 19999:  LuaUI
---   20000 - 29999:  LuaCob
---   30000 - 39999:  LuaRules
---
-
-local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
-local CMD_MORPH_STOP = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP")
 
 local MAX_MORPH = 0 --// will increase dynamically
 
@@ -99,6 +84,9 @@ if (gadgetHandler:IsSyncedCode()) then
 --  SYNCED
 --------------------------------------------------------------------------------
 
+local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
+local CMD_MORPH_STOP = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP")
+
 include("LuaRules/colors.h.lua")
 
 local stopPenalty  = 0.0
@@ -114,10 +102,11 @@ local stopMorphOnDevolution = true --// should morphing stop during devolution
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local isAMorphCmdID = {} --used to determine if a morph command was received
+
+
 local morphDefs  = {} --// make it global in Initialize()
 local extraUnitMorphDefs = {} -- stores mainly planetwars morphs
-local hostName = nil -- planetwars hostname
-local PWUnits = {} -- planetwars units
 local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
@@ -208,8 +197,11 @@ local function BuildMorphDef(udSrc, morphData)
 
     --newData.cmd     = CMD_MORPH      + MAX_MORPH
 	newData.cmd = GG.CustomCommands.GetCmdID("CMD_MORPH_" .. newData.into)
+	isAMorphCmdID[newData.cmd] = true
     --newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
 	newData.stopCmd = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP_" .. newData.into)
+	isAMorphCmdID[newData.stopCmd] = true
+
     MAX_MORPH = MAX_MORPH + 1
     if (type(GG.MorphInfo)~="table") then GG.MorphInfo = {} end
     GG.MorphInfo["MAX_MORPH"] = MAX_MORPH * 2
@@ -501,21 +493,6 @@ local function FinishMorph(unitID, morphData)
   if (extraUnitMorphDefs[unitID] ~= nil) then
     -- nothing here for now
   end
-  if (hostName ~= nil) and PWUnits[unitID] then
-    -- send planetwars deployment message
-    PWUnit = PWUnits[unitID]
-    PWUnit.currentDef=udDst
-	local data = PWUnit.owner..","..defName..","..math.floor(px)..","..math.floor(pz)..",".."S" -- todo determine and apply smart orientation of the structure
-	Spring.SendCommands("w "..hostName.." pwmorph:"..data)
-	extraUnitMorphDefs[unitID] = nil
-	GG.PlanetWars.units[unitID] = nil
-	GG.PlanetWars.units[newUnit] = PWUnit
-	SendToUnsynced('PWCreate', unitTeam, newUnit)
-  elseif (not morphData.def.facing) then  -- set rotation only if unit is not planetwars and facing is not true
-    --Spring.Echo(morphData.def.facing)
-    Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-  end
-
 
   --//copy experience
   local newXp = Spring.GetUnitExperience(unitID)*XpScale
@@ -616,9 +593,6 @@ function gadget:Initialize()
   -- self linking for planetwars
   GG['morphHandler'] = {}
   GG['morphHandler'].AddExtraUnitMorph = AddExtraUnitMorph
-
-  hostName = GG.PlanetWars and GG.PlanetWars.options.hostname or nil
-  PWUnits = GG.PlanetWars and GG.PlanetWars.units or {}
   
   if (type(GG.UnitRanked)~="table") then GG.UnitRanked = {} end
   table.insert(GG.UnitRanked, UnitRanked)
@@ -976,7 +950,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     --else --// disallow ANY command to units in morph
     --  return false
     end
-  elseif (cmdID >= CMD_MORPH and cmdID < CMD_MORPH+MAX_MORPH*2) then
+  elseif isAMorphCmdID[cmdID] then
     local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]
     if ((morphDef)and
         (morphDef.tech<=teamTechLevel[teamID])and
@@ -1002,7 +976,7 @@ end
 
 
 function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-  if (cmdID < CMD_MORPH or cmdID >= CMD_MORPH+MAX_MORPH*2) then
+  if (isAMorphCmdID[cmdID] == nil) then
     return false  --// command was not used
   end
   local morphDef = (morphDefs[unitDefID] or {})[cmdID] or extraUnitMorphDefs[unitID]

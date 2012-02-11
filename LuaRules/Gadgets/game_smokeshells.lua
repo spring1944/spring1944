@@ -33,6 +33,9 @@ local GetWind = Spring.GetWind
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 
+if (not gadgetHandler:IsSyncedCode()) then
+  return false
+end
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
 local CMD_SMOKE = GG.CustomCommands.GetCmdID("CMD_SMOKE") 
@@ -45,9 +48,7 @@ local smokeCmdDesc = {
 	params = {0, 'Fire HE', 'Fire Smoke'},
 }
 
-if (not gadgetHandler:IsSyncedCode()) then
-  return false
-end
+
 
 local SmokeSources={}
 local SmokedUnits={}
