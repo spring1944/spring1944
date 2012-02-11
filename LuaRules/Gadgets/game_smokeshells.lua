@@ -35,7 +35,7 @@ local SetUnitRulesParam = Spring.SetUnitRulesParam
 
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
-local CMD_SMOKE = 35520 -- this should be changed
+local CMD_SMOKE = GG.CustomCommands.GetCmdID("CMD_SMOKE") 
 
 local smokeCmdDesc = {
 	id 		 = CMD_SMOKE,

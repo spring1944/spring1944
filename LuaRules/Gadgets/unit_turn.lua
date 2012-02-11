@@ -10,13 +10,17 @@ function gadget:GetInfo()
 	}
 end
 
+
+
+if (gadgetHandler:IsSyncedCode()) then
+-- SYNCED
 -- SyncedCtrl
 local SetUnitCOBValue = Spring.SetUnitCOBValue
 -- SyncedRead
 local GetUnitCOBValue = Spring.GetUnitCOBValue
 local GetUnitPosition = Spring.GetUnitPosition
 -- Constants
-local CMD_TURN = 35521 -- this should be changed, we really need some centralised 'commands.h.lua' file with our used command ids
+local CMD_TURN = GG.CustomCommands.GetCmdID("CMD_TURN")
 local COB_ANGULAR = 182
 
 local turnCmdDesc = {
@@ -30,10 +34,6 @@ local turnCmdDesc = {
 
 -- Variables
 local turning = {} -- structure: turning = {unitID={turnRate=number COB units to rotate per frame, numFrames=number of frames left to rotate in, currHeading= current heading}}
-
-if (gadgetHandler:IsSyncedCode()) then
--- SYNCED
-
 local function StartTurn(unitID, unitDefID, tx, tz)
 	local ud = UnitDefs[unitDefID]
 	local turnRate = ud.turnRate
@@ -69,10 +69,6 @@ function gadget:GameFrame(n)
 			SetUnitCOBValue(unitID, COB.HEADING, turnTable.currHeading)
 		end
 	end
-end
-
-function gadget:Initialize()
-	gadgetHandler:RegisterCMDID(CMD_TURN)
 end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -113,7 +109,7 @@ end
 else
 -- UNSYNCED
 function gadget:Initialize()
-	Spring.SetCustomCommandDrawData(CMD_TURN, "Patrol", {0,1,0,.8})
+	Spring.SetCustomCommandDrawData(SYNCED.CustomCommandIDs["CMD_TURN"], "Patrol", {0,1,0,.8})
 end
 
 end

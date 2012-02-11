@@ -38,7 +38,8 @@ local deadUnitID = 0
 --------------------------------------------------------------------------------
 -- Commands
 
-include("LuaRules/Configs/customcmds.h.lua")
+local CMD_UNIT_SET_TARGET = GG.CustomCommands.GetCmdID("CMD_UNIT_SET_TARGET")
+local CMD_UNIT_CANCEL_TARGET = GG.CustomCommands.GetCmdID("CMD_UNIT_CANCEL_TARGET")
 
 local unitSetTargetCmdDesc = {
 	id      = CMD_UNIT_SET_TARGET,
@@ -130,8 +131,7 @@ function gadget:Initialize()
     _G.drawPlayerAlways = drawPlayerAlways
     
 	-- register command
-	gadgetHandler:RegisterCMDID(CMD_UNIT_SET_TARGET)
-    gadgetHandler:RegisterCMDID(CMD_UNIT_CANCEL_TARGET)
+	--this is done in the customCmdHandler gadget
 	
 	-- load active units
 	for _, unitID in ipairs(Spring.GetAllUnits()) do

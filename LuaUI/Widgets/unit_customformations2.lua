@@ -33,9 +33,11 @@ local unitIncreaseThresh	= 0.85 -- We only increase maxUnits if the units are gr
 -- Alpha loss per second after releasing mouse
 local lineFadeRate = 2.0
 
-CMD_UNIT_SET_TARGET = 34923 
-CMD_TURN = 35521
-CMD_JUMP = 38521
+local GetGameRulesParam	= Spring.GetGameRulesParam
+
+local CMD_UNIT_SET_TARGET = GetGameRulesParam("CMD_UNIT_SET_TARGET") 
+local CMD_TURN = GetGameRulesParam("CMD_TURN") 
+local CMD_MORPH = GetGameRulesParam("CMD_MORPH")
 
 -- What commands are eligible for custom formations
 local formationCmds = {
@@ -44,9 +46,9 @@ local formationCmds = {
 	[CMD.ATTACK] = true,
 	[CMD.PATROL] = true,
 	[CMD.UNLOAD_UNIT] = true,
-	[CMD_JUMP] = true, -- jump
-	[CMD_UNIT_SET_TARGET] = true, -- settarget
-	[CMD_TURN] = true -- turn
+	[CMD_UNIT_SET_TARGET] = true,
+	[CMD_MORPH] = true,
+	[CMD_TURN] = true
 }
 
 -- What commands require alt to be held (Must also appear in formationCmds)
@@ -66,10 +68,9 @@ local overrideCmds = {
 -- What commands are issued at a position or unit/feature ID (Only used by GetUnitPosition)
 local positionCmds = {
 	[CMD.MOVE]=true,		[CMD.ATTACK]=true,		[CMD.RECLAIM]=true,		[CMD.RESTORE]=true,		[CMD.RESURRECT]=true,
-	[CMD.PATROL]=true,		[CMD.CAPTURE]=true,		[CMD.FIGHT]=true, 		[CMD.DGUN]=true,		[38521]=true, -- jump
+	[CMD.PATROL]=true,		[CMD.CAPTURE]=true,		[CMD.FIGHT]=true, 		[CMD.DGUN]=true,		[CMD_MORPH]=true,
 	[CMD.UNLOAD_UNIT]=true,	[CMD.UNLOAD_UNITS]=true,[CMD.LOAD_UNITS]=true,	[CMD.GUARD]=true,		[CMD.AREA_ATTACK] = true,
 }
-
 --------------------------------------------------------------------------------
 -- Globals
 --------------------------------------------------------------------------------

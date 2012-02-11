@@ -10,8 +10,12 @@ function widget:GetInfo()
   }
 end
 
-local CMD_UNIT_SET_TARGET = 34923
-local CMD_UNIT_CANCEL_TARGET = 34924
+local GetGameRulesParam = Spring.GetGameRulesParam
+
+local CMD_UNIT_SET_TARGET = GetGameRulesParam("CMD_UNIT_SET_TARGET")
+local CMD_UNIT_CANCEL_TARGET = GetGameRulesParam("CMD_UNIT_CANCEL_TARGET")
+
+Spring.Echo("CMDIDs in keeptarget:", CMD_UNIT_SET_TARGET, CMD_UNIT_CANCEL_TARGET)
 
 function widget:CommandNotify(id, params, options)
     if id == CMD.SET_WANTED_MAX_SPEED then

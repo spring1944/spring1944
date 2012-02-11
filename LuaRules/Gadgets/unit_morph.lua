@@ -634,10 +634,12 @@ function gadget:Initialize()
   _G.extraUnitMorphDefs  = extraUnitMorphDefs
 
   --// Register CmdIDs
+  --done automatically by the customCmdHandler gadget
+  --[[
   for number=0,MAX_MORPH-1 do
     gadgetHandler:RegisterCMDID(CMD_MORPH+number*2)
     gadgetHandler:RegisterCMDID(CMD_MORPH_STOP+number*2)
-  end
+  end]]--
 
 
   --// check existing ReqUnits+TechLevel

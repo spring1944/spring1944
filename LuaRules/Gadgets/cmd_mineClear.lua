@@ -146,7 +146,6 @@ end
 
 
 function gadget:Initialize()
-	gadgetHandler:RegisterCMDID(CMD_CLEARMINES)
 	-- Fake UnitCreated events for existing units. (for '/luarules reload')
 	local allUnits = Spring.GetAllUnits()
 	for i=1,#allUnits do
