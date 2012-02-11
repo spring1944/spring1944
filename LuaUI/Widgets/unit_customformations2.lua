@@ -33,6 +33,10 @@ local unitIncreaseThresh	= 0.85 -- We only increase maxUnits if the units are gr
 -- Alpha loss per second after releasing mouse
 local lineFadeRate = 2.0
 
+CMD_UNIT_SET_TARGET = 34923 
+CMD_TURN = 35521
+CMD_JUMP = 38521
+
 -- What commands are eligible for custom formations
 local formationCmds = {
 	[CMD.MOVE] = true,
@@ -40,13 +44,16 @@ local formationCmds = {
 	[CMD.ATTACK] = true,
 	[CMD.PATROL] = true,
 	[CMD.UNLOAD_UNIT] = true,
-	[38521] = true -- Jump
+	[CMD_JUMP] = true, -- jump
+	[CMD_UNIT_SET_TARGET] = true, -- settarget
+	[CMD_TURN] = true -- turn
 }
 
 -- What commands require alt to be held (Must also appear in formationCmds)
 local requiresAlt = {
 	[CMD.ATTACK] = true,
-	[CMD.UNLOAD_UNIT] = true
+	[CMD.UNLOAD_UNIT] = true,
+	[CMD_UNIT_SET_TARGET] = true, -- settarget
 }
 
 -- Context-based default commands that can be overridden (i.e. guard when mouseover unit)
