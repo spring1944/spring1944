@@ -126,12 +126,13 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 				end
 			end
 		else
-			-- Only allow CMD_CLEARMINES for units with the correct tag
+			-- Don't take any action, the unit shouldn't be able to clear mines 
+			--(we consider that they didn't get a mineclear command)
 			return false
 		end
 	else
-		-- Allow any other command
-		return true
+		-- It was a different command, do nothing
+		return false
 	end
 end
 
