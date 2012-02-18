@@ -84,6 +84,14 @@ for name, ud in pairs(UnitDefs) do
 			end
 		end
 	end
+	local infSpeedMult = tonumber(modOptions.inf_speed_mult) or 0.5
+	if ud.customparams then
+		if ud.customparams.feartarget then
+			if (ud.maxvelocity) then
+				ud.maxvelocity = ud.maxvelocity * infSpeedMult
+			end
+		end
+	end
 		--none of these have mod options that link to them atm
 		--[[
 		if (modOptions.maxammo_mult) then
@@ -127,10 +135,7 @@ for name, ud in pairs(UnitDefs) do
 
  --END MODOPTION CONTROLS
  
- --BEGIN UNIT PROCESSING
-		
-
-	
+ --BEGIN UNIT PROCESSING	
 	--new sensor stuff!
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
