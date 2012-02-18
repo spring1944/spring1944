@@ -92,6 +92,11 @@ for name, ud in pairs(UnitDefs) do
 			end
 		end
 	end
+	if (modOptions.cloak_radius_mult) then
+		if ud.mincloakdistance then
+			ud.mincloakdistance = tonumber(modOptions.cloak_radius_mult)*ud.mincloakdistance
+		end
+	end
 		--none of these have mod options that link to them atm
 		--[[
 		if (modOptions.maxammo_mult) then

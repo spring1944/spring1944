@@ -338,7 +338,30 @@ local options = {
 	section = '4other',
     step   = 0.1,
   },
+
+	 {
+    key    = "inf_speed_mult",
+    name   = "Infantry speed multiplier",
+    desc   = "Applies a multiplier to infantry movement speed",
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 2,
+	section = '4other',
+    step   = 0.1,
+  },
   
+	 {
+    key    = "cloak_radius_mult",
+    name   = "Decloak radius multiplier",
+    desc   = "Applies a multiplier to unit decloak distance",
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 2,
+	section = '4other',
+    step   = 0.1,
+  },
 --[[	{
 		key = "smoke_mult",
 		name = "Smoke Duration Multiplier",
