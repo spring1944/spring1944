@@ -72,7 +72,7 @@ end
 
 function gadget:TeamDied(teamID)
 	local allyTeamID = select(6, GetTeamInfo(teamID))
-	if allyTeamID then
+	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID then
 		allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
 		-- Check for game over
 		if allyTeamMemberCount[allyTeamID] == 0 then -- an allyteam has died
