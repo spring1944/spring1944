@@ -72,19 +72,21 @@ end
 
 function gadget:TeamDied(teamID)
 	local allyTeamID = select(6, GetTeamInfo(teamID))
-	allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
-	-- Check for game over
-	if allyTeamMemberCount[allyTeamID] == 0 then -- an allyteam has died
-		local allyTeamsAlive = 0
-		local livingAllyTeam
-		for allyTeam, memberCount in pairs(allyTeamMemberCount) do
-			if memberCount > 0 then
-				allyTeamsAlive = allyTeamsAlive + 1
-				livingAllyTeam = allyTeam
+	if allyTeamID then
+		allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
+		-- Check for game over
+		if allyTeamMemberCount[allyTeamID] == 0 then -- an allyteam has died
+			local allyTeamsAlive = 0
+			local livingAllyTeam
+			for allyTeam, memberCount in pairs(allyTeamMemberCount) do
+				if memberCount > 0 then
+					allyTeamsAlive = allyTeamsAlive + 1
+					livingAllyTeam = allyTeam
+				end
 			end
+			-- Game Over if only one allyTeam remains alive
+			if allyTeamsAlive == 1 then Spring.GameOver({livingAllyTeam}) end
 		end
-		-- Game Over if only one allyTeam remains alive
-		if allyTeamsAlive == 1 then Spring.GameOver({livingAllyTeam}) end
 	end
 end
 
