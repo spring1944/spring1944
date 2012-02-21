@@ -228,7 +228,6 @@ local M2BrowningAA = M2Browning:New{
 local M2BrowningAMG = M2Browning:New{
   burst             = 3,
   burstRate         = 0.085,
-  interceptedByShieldType = 8, --??
   predictBoost      = 0.75,
   range             = 900,
   reloadTime        = 0.3,

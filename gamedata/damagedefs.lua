@@ -22,7 +22,7 @@ local damagedefs = {
     --[[NOTE - armoredvehicles have a special clause in game_armor.lua which prevents them from taking damage from smallarms EXCEPT for heavy MGs, which still damage them.]]--
     infantry = 1.25,
     guns = 1,
-    unarmouredvehicles = 1/2,
+    unarmouredvehicles = 1,
     default = 1/6,
 	--armouredvehicles = 1/8,
     lightbuildings = 1/16,
