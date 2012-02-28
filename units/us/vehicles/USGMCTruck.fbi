@@ -32,7 +32,7 @@
   noChaseCategory=AIR MINE;
   objectName=USGMCTruck.S3O;
   radardistance=950;
-  releaseHeld=1;
+  releaseHeld=0;
   script=TransportTruck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
