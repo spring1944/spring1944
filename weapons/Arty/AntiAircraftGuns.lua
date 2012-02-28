@@ -24,6 +24,7 @@ local AAGunAAClass = Weapon:New{
   areaOfEffect       = 60,
   canattackground    = false,
   collisionSize      = 5,
+  cylinderTargetting = 2.5, --gragh typo in the tag name
   edgeEffectiveness  = 0.001,
   explosionGenerator = [[custom:HE_Medium]],
   name               = [[AA Shell]],

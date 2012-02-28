@@ -13,6 +13,7 @@ end
 if not gadgetHandler:IsSyncedCode() then return end
 
 local windFactor = 0.0025
+local gravityFactor = 0.75
 local drag = 0.06
 local relVelHoriz = 0.25
 local relVelVert = 1
@@ -95,7 +96,7 @@ function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
     mcEnable(unitID)
     mcSetPosition(unitID, ux, uy - 16, uz)
     --mcSetVelocity(unitID, vx, vy, vz)
-    mcSetGravity(unitID, 2)
+    mcSetGravity(unitID, gravityFactor)
     mcSetWindFactor(unitID, windFactor)
     mcSetDrag(unitID, drag)
     mcSetTrackGround(unitID, true)
