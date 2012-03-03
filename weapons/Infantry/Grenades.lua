@@ -21,8 +21,6 @@ local GrenadeClass = Weapon:New{
 -- Anti-Personel Grenade Class
 local APGrenadeClass = GrenadeClass:New{
   collisionSize      = 1e-100,
-  dynDamageExp       = 1,
-  dynDamageRange     = 200,
   edgeEffectiveness  = 0.8,
   explosionGenerator = [[custom:HE_Small]],
   movingAccuracy     = 3500,
@@ -82,7 +80,6 @@ local No69 = APGrenadeClass:New{
 local Model24 = APGrenadeClass:New{
   accuracy           = 1250,
   areaOfEffect       = 24,
-  dynDamageRange     = 220,
   edgeEffectiveness  = 0.5, -- intended?
   name               = [[Model 24 Stielhandgranate]],
   range              = 200,

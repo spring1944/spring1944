@@ -9,6 +9,7 @@ local MineClass = Weapon:New{
   turret             = true,
   weaponVelocity     = 90,
   customparams = {
+	no_range_adjust	   = true,
     damagetype         = [[explosive]], 
   },
   damage = {

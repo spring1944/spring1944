@@ -16,6 +16,7 @@ local ParaDropClass = Weapon:New{
   turret             = true,
   weaponType         = [[AircraftBomb]],
   customparams = {
+	no_range_adjust    = true,
     damagetype         = [[none]],
     paratrooper        = 1,
   },

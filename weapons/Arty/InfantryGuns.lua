@@ -2,7 +2,7 @@
 
 -- Infantry Gun Base Class
 local InfGunClass = Weapon:New{
-  accuracy           = 150,
+  accuracy           = 425,
   collisionSize      = 4,
   edgeEffectiveness  = 0.25,
   explosionGenerator = [[custom:HE_Medium]],
@@ -23,7 +23,7 @@ local InfGunClass = Weapon:New{
   tolerance          = 5000,
   turret             = true,
   weaponType         = [[Cannon]],
-  weaponVelocity     = 700,
+  weaponVelocity     = 825,
   customparams = {
     damagetype         = [[explosive]],
     fearaoe            = 75,

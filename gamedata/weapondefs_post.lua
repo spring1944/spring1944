@@ -222,11 +222,10 @@ end
 -- Range Multiplier
 --
 
-if (modOptions) then
-  if (tonumber(modOptions.weapon_range_mult) or 1 ~= 1) then
+	local baseMult = 0.6
     local totalWeapons
     totalWeapons = 0
-    local rangeCoeff = modOptions.weapon_range_mult
+    local rangeCoeff = baseMult * (modOptions.weapon_range_mult or 1)
     local velocityCoeff = rangeCoeff^(2/3)
     local flightTimeCoeff = rangeCoeff^(1/3)
     local accuracyMult = 1 / math.sqrt(rangeCoeff)
@@ -247,17 +246,19 @@ if (modOptions) then
     
     Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
     for name, weaponDef in pairs(WeaponDefs) do
-		if (weaponDef.dynDamageRange == nil) or (weaponDef.dynDamageRange > 220) then
-			for tag, mult in pairs(mults) do
-				if weaponDef[tag] then
-				weaponDef[tag] = weaponDef[tag] * mult
-				end
-			end
-		end
-      
       local customParams = weaponDef.customparams
+      if customParams then --all weapons have the damageType customParam
+		if not customParams.no_range_adjust then
+		  for tag, mult in pairs(mults) do
+			if weaponDef[tag] then
+              weaponDef[tag] = weaponDef[tag] * mult
+			end
+          end
+        end
       
-      if customParams then
+
+      
+
         local armor_penetration_100m = customParams.armor_penetration_100m
         local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
         if armor_penetration_100m then
@@ -268,12 +269,8 @@ if (modOptions) then
         end
       end
       
-      totalWeapons = totalWeapons + 1
-    end
+    totalWeapons = totalWeapons + 1
     Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
-    
-    
-  end
     
   if (modOptions.weapon_reload_mult) then
     local totalWeapons

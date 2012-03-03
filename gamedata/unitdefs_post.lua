@@ -84,19 +84,7 @@ for name, ud in pairs(UnitDefs) do
 			end
 		end
 	end
-	local infSpeedMult = tonumber(modOptions.inf_speed_mult) or 0.5
-	if ud.customparams then
-		if ud.customparams.feartarget then
-			if (ud.maxvelocity) then
-				ud.maxvelocity = ud.maxvelocity * infSpeedMult
-			end
-		end
-	end
-	if (modOptions.cloak_radius_mult) then
-		if ud.mincloakdistance then
-			ud.mincloakdistance = tonumber(modOptions.cloak_radius_mult)*ud.mincloakdistance
-		end
-	end
+
 		--none of these have mod options that link to them atm
 		--[[
 		if (modOptions.maxammo_mult) then
@@ -141,15 +129,31 @@ for name, ud in pairs(UnitDefs) do
  --END MODOPTION CONTROLS
  
  --BEGIN UNIT PROCESSING	
+	local LoSMult = 0.6
+    local decloakDistMult = 0.6
+    local infSpeedMult = 0.5
+
+	if ud.customparams then
+		if ud.customparams.feartarget then
+			if (ud.maxvelocity) then
+				ud.maxvelocity = ud.maxvelocity * infSpeedMult
+			end
+		end
+	end
+	if ud.mincloakdistance then
+		ud.mincloakdistance = ud.mincloakdistance * decloakDistMult
+	end
+
+
 	--new sensor stuff!
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
-			ud.sightdistance = 650
-			ud.radardistance = 950
+			ud.sightdistance = 650 * LoSMult
+			ud.radardistance = 950 * LoSMult
 		else
-			ud.radardistance = 800
+			ud.radardistance = 800 * LoSMult
 		end
-		ud.seismicdistance = 1400
+		ud.seismicdistance = 1400 * LoSMult
 		--slightly hackish; works out so that all cloaked units don't get radar
 		--but observs get it while decloaked.
 		if ud.cloakcost == nil then
@@ -175,8 +179,8 @@ for name, ud in pairs(UnitDefs) do
 		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
 		--new sensor stuff
 		ud.stealth = false
-		ud.sightdistance = 650
-		ud.radardistance = 950
+		ud.sightdistance = 650 * LoSMult
+		ud.radardistance = 950 * LoSMult
 		ud.activatewhenbuilt = true
 		--end new sensor stuff
 	end
@@ -210,8 +214,8 @@ for name, ud in pairs(UnitDefs) do
 		ud.pushresistant = true
 		--new sensor stuff
 		ud.stealth = false
-		ud.sightdistance = tonumber(ud.sightdistance) * 0.5
-		ud.radardistance = 950
+		ud.sightdistance = (tonumber(ud.sightdistance) * 0.5) * LoSMult --this is super gross
+		ud.radardistance = 950 * LoSMult
 		ud.activatewhenbuilt = true
 		--end new sensor stuff
 		

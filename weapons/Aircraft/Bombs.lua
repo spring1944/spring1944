@@ -16,6 +16,7 @@ local BombClass = Weapon:New{
   weaponType         = [[MissileLauncher]],
   weaponVelocity     = 400,
   customparams = {
+    no_range_adjust	   = true,
     damagetype         = [[explosive]],
   },
   damage = {
