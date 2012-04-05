@@ -228,7 +228,7 @@ for name, ud in pairs(UnitDefs) do
 		local scaleFactor = modOptions.scale_factor or 50
 		local logMass = math.log10(ud.mass) or 999 --a crazy default value so we see it when it happens
 		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
-		Spring.Echo(name, "changed health to", ud.maxdamage)
+		--Spring.Echo(name, "changed health to", ud.maxdamage)
 	end
 
 	if (modOptions.unit_los_mult) then

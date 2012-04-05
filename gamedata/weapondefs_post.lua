@@ -270,7 +270,7 @@ end
       end
       
     totalWeapons = totalWeapons + 1
-    Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
+    --Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
     
   if (modOptions.weapon_reload_mult) then
     local totalWeapons
