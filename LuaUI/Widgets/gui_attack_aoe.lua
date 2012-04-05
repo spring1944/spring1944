@@ -173,12 +173,12 @@ local function SetupUnitDef(unitDefID, unitDef)
       local weaponDef = WeaponDefs[weapon.weaponDef]
       if (weaponDef) then
         if (weaponDef.type == "DGun") then
-          dgunInfo[unitDefID] = {range = weaponDef.range, aoe = weaponDef.areaOfEffect}
+          dgunInfo[unitDefID] = {range = weaponDef.range, aoe = weaponDef.damageAreaOfEffect}
         elseif (not weaponDef.isShield 
                 and not ToBool(weaponDef.interceptor)
-                and (weaponDef.areaOfEffect > maxSpread or weaponDef.range * (weaponDef.accuracy + weaponDef.sprayAngle) > maxSpread )
+                and (weaponDef.damageAreaOfEffect > maxSpread or weaponDef.range * (weaponDef.accuracy + weaponDef.sprayAngle) > maxSpread )
                 and not string.find(weaponDef.name, "flak")) then
-          maxSpread = max(weaponDef.areaOfEffect, weaponDef.range * (weaponDef.accuracy + weaponDef.sprayAngle))
+          maxSpread = max(weaponDef.damageAreaOfEffect, weaponDef.range * (weaponDef.accuracy + weaponDef.sprayAngle))
           maxWeaponDef = weaponDef
         end
       end
@@ -189,7 +189,7 @@ local function SetupUnitDef(unitDefID, unitDef)
   
   local weaponType = maxWeaponDef.type
   local scatter = maxWeaponDef.accuracy + maxWeaponDef.sprayAngle
-  local aoe = maxWeaponDef.areaOfEffect
+  local aoe = maxWeaponDef.damageAreaOfEffect
   local cost = unitDef.cost
   local mobile = unitDef.speed > 0
   local waterWeapon = maxWeaponDef.waterWeapon
@@ -198,14 +198,14 @@ local function SetupUnitDef(unitDefID, unitDef)
   if (maxWeaponDef.cylinderTargetting >= 100) then
     aoeDefInfo[unitDefID] = {type = "orbital", scatter = scatter}
   elseif (weaponType == "Cannon") then
-    aoeDefInfo[unitDefID] = {type = "ballistic", scatter = scatter, v = maxWeaponDef.maxVelocity, range = maxWeaponDef.range}
+    aoeDefInfo[unitDefID] = {type = "ballistic", scatter = scatter, v = maxWeaponDef.projectilespeed, range = maxWeaponDef.range}
   elseif (weaponType == "MissileLauncher") then
     local turnRate = 0
     if (maxWeaponDef.tracks) then
       turnRate = maxWeaponDef.turnRate
     end
     if (maxWeaponDef.wobble > turnRate) then
-      scatter = (maxWeaponDef.wobble - maxWeaponDef.turnRate) * 10 * (maxWeaponDef.range + maxWeaponDef.maxVelocity)
+      scatter = (maxWeaponDef.wobble - maxWeaponDef.turnRate) * 10 * (maxWeaponDef.range + maxWeaponDef.projectilespeed)
       aoeDefInfo[unitDefID] = {type = "wobble", scatter = scatter}
     elseif (maxWeaponDef.tracks) then
       aoeDefInfo[unitDefID] = {type = "tracking"}
