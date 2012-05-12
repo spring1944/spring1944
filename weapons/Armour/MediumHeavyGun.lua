@@ -102,7 +102,7 @@ local KwK88mmL71AP = KwK88mmL71:New(MediumHeavyGunAPClass, true):New{
 }
 
 -- SK 8.8cm C/30 (GER)
-local SK88mmC30 = MediumGunClass:New{
+local SK88mmC30 = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
   areaOfEffect       = 85,
   name               = [[8.8cm SK C/30 Naval Gun]],
   range              = 2110,
@@ -112,7 +112,7 @@ local SK88mmC30 = MediumGunClass:New{
   damage = {
     default            = 1275,
   },  
-}:New(MediumHeavyGunHEClass, true)
+}
 
 
 -- S-53 85mm (RUS)
