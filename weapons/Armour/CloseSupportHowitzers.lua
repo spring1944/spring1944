@@ -2,9 +2,8 @@
 
 -- CSHowitzer Base Class
 local CSHowitzerClass = Weapon:New{
-  accuracy           = 100, -- should surely not be same as other tank guns! :(
+  accuracy           = 510,
   collisionSize      = 4,
-  explosionSpeed     = 30, -- needed?
   impulseFactor      = 0,
   intensity          = 0.25,
   leadBonus          = 0.5,
@@ -15,9 +14,11 @@ local CSHowitzerClass = Weapon:New{
   soundHit           = [[GEN_Explo_4]],
   soundStart         = [[GEN_105mm]], -- move later?
   stages             = 50,
+  targetMoveError    = 0.75,
   tolerance          = 300,
   turret             = true,
   weaponType         = [[Cannon]],
+  weaponVelocity     = 1000,
 }
 
 -- HE Round Class
@@ -56,7 +57,6 @@ local CS95mm = CSHowitzerClass:New{
   name               = [[CS 95mm]],
   range              = 1690, -- fwiw I object to this too
   reloadTime         = 9,
-  weaponVelocity     = 1200, -- seems rather high?
 }
 
 local CS95mmHE = CS95mm:New(CSHowitzerHEClass, true):New{
@@ -73,8 +73,6 @@ local M4105mm = CSHowitzerClass:New{
   name               = [[M4 105mm Howitzer]],
   range              = 1700, -- fwiw I object to this too
   reloadTime         = 11.25,
-  targetMoveError    = 0.75, -- should be for all CS hows?
-  weaponVelocity     = 1200, -- seems rather high?
 }
 
 local M4105mmHE = M4105mm:New(CSHowitzerHEClass, true):New{
