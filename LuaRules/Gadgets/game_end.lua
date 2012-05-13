@@ -89,7 +89,7 @@ function gadget:TeamDied(teamID)
 				end
 			end
 			-- Game Over if only one allyTeam remains alive
-			if allyTeamsAlive == 1 then Spring.Echo("test 4")
+			if allyTeamsAlive == 1 then Spring.Echo("test 4") end
 			--Spring.GameOver({livingAllyTeam}) end
 		end
 	end
