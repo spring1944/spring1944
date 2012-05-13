@@ -6,7 +6,7 @@ function gadget:GetInfo()
 		date = "19 January 2012",
 		license = "GNU GPL v2",
 		layer = 1,
-		enabled = false
+		enabled = true
 	}
 end
 
@@ -90,7 +90,7 @@ function gadget:TeamDied(teamID)
 			end
 			-- Game Over if only one allyTeam remains alive
 			if allyTeamsAlive == 1 then Spring.Echo("test 4")
-			Spring.GameOver({livingAllyTeam}) end
+			--Spring.GameOver({livingAllyTeam}) end
 		end
 	end
 end
