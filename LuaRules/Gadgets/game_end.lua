@@ -72,25 +72,28 @@ end
 
 function gadget:TeamDied(teamID)
 	Spring.Echo("Team died: " .. teamID)
-	local allyTeamID = select(6, GetTeamInfo(teamID))
-	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID then
-	Spring.Echo("test 1")
+	local _, leaderID, _, _, _, allyTeamID = GetTeamInfo(teamID)
+	local leaderWasSpec = select(3, Spring.GetPlayerInfo(leaderID))
+	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID and not leaderWasSpec then
+	Spring.Echo("test 1", allyTeamID)
 		allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
 		-- Check for game over
 		if allyTeamMemberCount[allyTeamID] == 0 then -- an allyteam has died
-		Spring.Echo("test 2")
+		Spring.Echo("test 2", allyTeamMemberCount[allyTeamID])
 			local allyTeamsAlive = 0
 			local livingAllyTeam
 			for allyTeam, memberCount in pairs(allyTeamMemberCount) do
 				if memberCount > 0 then
-					Spring.Echo("test 3")
+					Spring.Echo("test 3", memberCount, livingAllyTeam)
 					allyTeamsAlive = allyTeamsAlive + 1
 					livingAllyTeam = allyTeam
 				end
 			end
 			-- Game Over if only one allyTeam remains alive
-			if allyTeamsAlive == 1 then Spring.Echo("test 4") end
-			--Spring.GameOver({livingAllyTeam}) end
+			if allyTeamsAlive == 1 then 
+				Spring.Echo("test 4", livingAllyTeam)
+				Spring.GameOver({livingAllyTeam}) 
+			end
 		end
 	end
 end
