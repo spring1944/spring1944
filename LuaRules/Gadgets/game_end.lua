@@ -71,6 +71,7 @@ end
 
 
 function gadget:TeamDied(teamID)
+	Spring.Echo("Team died: " .. teamID)
 	local allyTeamID = select(6, GetTeamInfo(teamID))
 	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID then
 		allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
