@@ -71,10 +71,10 @@ end
 
 
 function gadget:TeamDied(teamID)
-	Spring.Echo("Team died: " .. teamID)
 	local _, leaderID, _, _, _, allyTeamID = GetTeamInfo(teamID)
-	local leaderWasSpec = select(3, Spring.GetPlayerInfo(leaderID))
-	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID and not leaderWasSpec then
+	Spring.Echo("Team died: " .. teamID, "AllyTeam: " .. allyTeamID)
+	Spring.Echo("Leader id:", leaderID, "expecting -1")
+	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID then
 	Spring.Echo("test 1", allyTeamID)
 		allyTeamMemberCount[allyTeamID] = allyTeamMemberCount[allyTeamID] - 1
 		-- Check for game over
