@@ -16,6 +16,8 @@ if gadgetHandler:IsSyncedCode() then
 
 --SYNCED
 -- localisations
+local DelayCall = GG.Delay.DelayCall
+
 -- SyncedCtrl
 local KillTeam			= Spring.KillTeam
 local TransferUnit		= Spring.TransferUnit
@@ -69,8 +71,7 @@ function gadget:UnitTaken(unitID, unitDefID, oldTeamID, newTeamID)
 	gadget:UnitDestroyed(unitID, unitDefID, oldTeamID)
 end
 
-
-function gadget:TeamDied(teamID)
+local function CheckTeams(teamID)
 	local _, leaderID, _, _, _, allyTeamID = GetTeamInfo(teamID)
 	Spring.Echo("Team died: " .. teamID, "AllyTeam: " .. allyTeamID)
 	Spring.Echo("Leader id:", leaderID, "expecting -1")
@@ -98,6 +99,9 @@ function gadget:TeamDied(teamID)
 	end
 end
 
+function gadget:TeamDied(teamID)
+	DelayCall(CheckTeams, {teamID}, 1)
+end
 
 function gadget:Initialize()
 	-- This is mainly for /luarules reload, 
