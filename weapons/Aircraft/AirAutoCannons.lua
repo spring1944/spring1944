@@ -28,7 +28,7 @@ local AirACClass = Weapon:New{
 
 -- Hispano HS.404 20mm (GBR)
 local HS40420mm = AirACClass:New{
-  areaOfEffect       = 1, -- why so small?
+  areaOfEffect       = 20,
   burst              = 3,
   burstrate          = 0.1,
   name               = [[Hispano HS.404 20mm Aircraft Cannon]],
@@ -76,29 +76,25 @@ local MG15120mm = AirACClass:New{
 -- treated like a machinegun in game, but
 -- this derives from the above 20mm
 local MG15115mm = MG15120mm:New{
-  areaOfEffect       = 1,
+  areaOfEffect       = 10,
   burstRate          = 0.08,
   explosionGenerator = [[custom:Bullet]],
   name               = [[15mm MG 151/15 Aircraft Cannon]],  
   predictBoost       = 0.75,
   reloadTime         = 0.8, -- why so different?
   soundStart         = [[GER_15mmAir]],
-  customparams = {
-    armor_hit_side     = nil, -- disable this
-    damagetype         = [[smallarm]],
-  },
   damage = {
-    default            = 128, -- higher damage? O_o
+    default            = 20,
   },
 } 
 
 -- ShVAK 20mm (RUS)
 local ShVAK20mm = AirACClass:New{
-  areaOfEffect       = 1, -- why so small?
+  areaOfEffect       = 20,
   burst              = 3,
   burstRate          = 0.085,
   name               = [[20mm ShVAK Aircraft Cannon]],
-  range              = 2500, -- O_o?
+  range              = 900,
   reloadtime         = 1,
   soundStart         = [[RUS_20mm]],
   weaponVelocity     = 2600,
