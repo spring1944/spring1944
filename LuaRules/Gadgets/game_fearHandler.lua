@@ -94,13 +94,13 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			local fearLevel = GetUnitRulesParam(unitID, "suppress")
 			if fearLevel > 0 and fearLevel <= 2 then
 				--Spring.Echo("dude should get up and run")
-				if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
+				if ud.canMove == true and ud.canFly == false then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 			elseif fearLevel > 2 then
 				--if they're in smoke, they don't have to fear...
 				local unitInSmoke = GetUnitRulesParam(unitID, "smoked") == 1 
 				if unitInSmoke then
-					if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
+					if ud.canMove == true and ud.canFly == false then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 					CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 				else
 					local unitAllyTeam = GetUnitAllyTeam(unitID)
@@ -111,7 +111,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
 							local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
 							if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
-								if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
+								if ud.canMove == true and ud.canFly == false then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 								CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 								break
 							end
