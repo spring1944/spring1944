@@ -26,8 +26,13 @@ local GetTeamInfo				= Spring.GetTeamInfo
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
 local SetUnitRulesParam 		= Spring.SetUnitRulesParam
+local SetGroundMoveTypeData		= Spring.MoveCtrl.SetGroundMoveTypeData
+
 -- constants
 local MORALE_RADIUS = 150
+local suppressedLevel = 2
+local suppressedMovePenalty = 0.2
+local pinnedLevel = 20
 -- variables
 local scriptIDs = {}
 local fearLevels = {}
@@ -44,6 +49,16 @@ local function UpdateSuppression(unitID)
 	local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
 	fearLevels[unitID] = currFear
 	SetUnitRulesParam(unitID, "suppress", currFear)
+	local ud = UnitDefs[GetUnitDefID(unitID)]
+	if ud.canMove == true and ud.canFly == false then
+		if currFear >= suppressedLevel and currFear < pinnedLevel then
+			SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed*suppressedMovePenalty)
+		elseif currFear > pinnedLevel then
+			SetGroundMoveTypeData(unitID, "maxSpeed", 0)
+		else
+			SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed)
+		end
+	end
 end
 
 
@@ -79,11 +94,13 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			local fearLevel = GetUnitRulesParam(unitID, "suppress")
 			if fearLevel > 0 and fearLevel <= 2 then
 				--Spring.Echo("dude should get up and run")
+				if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 			elseif fearLevel > 2 then
 				--if they're in smoke, they don't have to fear...
 				local unitInSmoke = GetUnitRulesParam(unitID, "smoked") == 1 
 				if unitInSmoke then
+					if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 					CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 				else
 					local unitAllyTeam = GetUnitAllyTeam(unitID)
@@ -94,6 +111,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
 							local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
 							if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
+								if ud.canMove == true then SetGroundMoveTypeData(unitID, "maxSpeed", ud.speed) end
 								CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 								break
 							end
