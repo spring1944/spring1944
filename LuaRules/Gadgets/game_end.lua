@@ -71,6 +71,14 @@ function gadget:UnitTaken(unitID, unitDefID, oldTeamID, newTeamID)
 	gadget:UnitDestroyed(unitID, unitDefID, oldTeamID)
 end
 
+function gadget:PlayerChanged(playerID)
+	Spring.Echo("PlayerChanged", playerID)
+end
+
+function gadget:PlayerRemoved(playerID, reason)
+	Spring.Echo("PlayerRemoved", playerID, reason)
+end
+
 local function CheckTeams(teamID)
 	local allyTeamID = select(6, GetTeamInfo(teamID))
 	if allyTeamID and allyTeamID ~= GAIA_TEAM_ID then
