@@ -57,7 +57,7 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardmap=o;
+  yardmap=ooo ooo ooo;
 
   weapon1=zis257mmap;
   badTargetCategory1=SOFTVEH;

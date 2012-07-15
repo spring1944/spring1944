@@ -48,7 +48,7 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardmap=o;
+  yardmap=oo oo;
 
   weapon1=bofors40mmaa;
   badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;

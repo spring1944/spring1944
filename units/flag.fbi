@@ -33,7 +33,7 @@
   stealth=1;
   TEDClass=METAL;
   windGenerator=0.00001;
-  yardmap=ooooooooo;
+  //yardmap=ooooooooo;
 
   //weapon1=flag;
   //onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;

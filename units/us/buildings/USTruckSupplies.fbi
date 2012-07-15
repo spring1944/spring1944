@@ -39,7 +39,7 @@
   stealth=1;
   TEDClass=ENERGY;
   useBuildingGroundDecal=1;
-  yardmap=o;
+  yardmap=oooo oooo oooo oooo;
 
   weapon1=noweapon;
 }
