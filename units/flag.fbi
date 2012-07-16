@@ -14,8 +14,8 @@
   }
   energyUse=0;
   extractsMetal=0.000292;
-  footprintX=0;
-  footprintZ=0;
+  footprintX=1;
+  footprintZ=1;
   hideDamage=1;
   iconType=flag;
   levelGround=0;
@@ -33,7 +33,7 @@
   stealth=1;
   TEDClass=METAL;
   windGenerator=0.00001;
-  //yardmap=ooooooooo;
+  yardmap=y;
 
   //weapon1=flag;
   //onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
