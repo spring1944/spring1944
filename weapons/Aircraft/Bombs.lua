@@ -36,14 +36,14 @@ local Bomb = BombClass:New{
   model              = [[Bomb_Medium.S3O]],
   name               = [[250kg Bomb]],
   range              = 600,
-  soundHit           = [[GEN_Explo_9]],
+  soundHitDry        = [[GEN_Explo_9]],
 }
 
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{
   areaOfEffect       = 200,
   name               = [[V1 Missile]],
-  soundHit           = [[GEN_Explo_9]],
+  soundHitDry        = [[GEN_Explo_9]],
 }
 
 -- PTAB "Antitank Aviation Bomb" (RUS)
@@ -59,7 +59,7 @@ local PTAB = BombClass:New{
   name               = [[PTAB Anti-Tank Bomblets]],
   projectiles        = 9,
   range              = 525,
-  soundHit           = [[GEN_Explo_3]],
+  soundHitDry        = [[GEN_Explo_3]],
   sprayangle         = 65535,
   startVelocity      = 110, -- overrides default
   weaponVelocity     = 110, -- overrides default

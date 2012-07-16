@@ -18,7 +18,7 @@ local DeathClass = Weapon:New{
 local Tiny_Explosion = DeathClass:New{
   areaOfEffect       = 64,
   impulseFactor      = 0,
-  soundHit           = [[GEN_Explo_1]],
+  soundHitDry        = [[GEN_Explo_1]],
   damage = {
     default            = 10,
   }
@@ -28,7 +28,7 @@ local Tiny_Explosion = DeathClass:New{
 -- Vehicle Explosion - Small
 local Vehicle_Explosion_Sm = DeathClass:New{
   areaOfEffect       = 64,
-  soundHit           = [[GEN_Explo_Vehicle1]],
+  soundHitDry        = [[GEN_Explo_Vehicle1]],
   damage = {
     default            = 10,
   }
@@ -37,7 +37,7 @@ local Vehicle_Explosion_Sm = DeathClass:New{
 -- Vehicle Explosion - medium
 local Vehicle_Explosion_Med = DeathClass:New{
   areaOfEffect       = 96,
-  soundHit           = [[GEN_Explo_Vehicle2]],
+  soundHitDry        = [[GEN_Explo_Vehicle2]],
   damage = {
     default            = 15,
   }
@@ -46,7 +46,7 @@ local Vehicle_Explosion_Med = DeathClass:New{
 -- Vehicle Explosion - Large
 local Vehicle_Explosion_Large = DeathClass:New{
   areaOfEffect       = 120,
-  soundHit           = [[GEN_Explo_Vehicle3]],
+  soundHitDry        = [[GEN_Explo_Vehicle3]],
   damage = {
     default            = 23,
   }
@@ -57,7 +57,7 @@ local Vehicle_Explosion_Large = DeathClass:New{
 -- Building Explosion - Small
 local Small_Explosion = DeathClass:New{
   areaOfEffect       = 65,
-  soundHit           = [[GEN_Explo_2]],
+  soundHitDry        = [[GEN_Explo_2]],
   damage = {
     default            = 25,
   }
@@ -67,7 +67,7 @@ local Small_Explosion = DeathClass:New{
 local Med_Explosion = DeathClass:New{
   areaOfEffect       = 112,
   explosionGenerator = [[custom:ROACHPLOSION]],
-  soundHit           = [[GEN_Explo_3]],
+  soundHitDry        = [[GEN_Explo_3]],
   damage = {
     default            = 40,
   }
@@ -78,7 +78,7 @@ local Large_Explosion = DeathClass:New{
   areaOfEffect       = 112,
   explosionGenerator = [[custom:HE_Large]],
   impulseFactor      = 2,
-  soundHit           = [[GEN_Explo_5]],
+  soundHitDry        = [[GEN_Explo_5]],
   damage = {
     default            = 1000,
   }
@@ -89,7 +89,7 @@ local Huge_Explosion = DeathClass:New{
   areaOfEffect       = 250,
   explosionGenerator = [[custom:HE_XLarge]],
   impulseFactor      = 2,
-  soundHit           = [[GEN_Explo_10]],
+  soundHitDry        = [[GEN_Explo_10]],
   damage = {
     default            = 2500,
   }
@@ -101,7 +101,7 @@ local Massive_Explosion = DeathClass:New{
   explosionGenerator = [[custom:HE_XXLarge]],
   explosionSpeed     = 2.5, -- overrides default
   impulseFactor      = 3,
-  soundHit           = [[GEN_Explo_11]],
+  soundHitDry        = [[GEN_Explo_11]],
   damage = {
     default            = 3000,
   }
@@ -112,7 +112,7 @@ local ResourceBoom = DeathClass:New{
   areaOfEffect       = 120,
   explosionGenerator = [[custom:SmallBuildingDeath]],
   impulseFactor      = 2,
-  soundHit           = [[GEN_Explo_3]],
+  soundHitDry        = [[GEN_Explo_3]],
   damage = {
     default            = 80,
   }

@@ -24,7 +24,7 @@ local HeavyGunHEClass = Weapon:New{
   explosionSpeed     = 30, -- needed?
   name               = [[HE Shell]],
   rgbColor           = [[0.5 0.5 0.0]],
-  soundHit           = [[GEN_Explo_4]],
+  soundHitDry        = [[GEN_Explo_4]],
   customparams = {
     damagetype         = [[explosive]],
     fearaoe            = 75,
@@ -41,7 +41,7 @@ local HeavyGunAPClass = Weapon:New{
   explosionGenerator = [[custom:AP_Large]],
   explosionSpeed     = 100, -- needed?
   name               = [[AP Shell]],
-  soundHit           = [[GEN_Explo_2]],
+  soundHitDry        = [[GEN_Explo_2]],
   customparams = {
     damagetype         = [[kinetic]],
   },  
@@ -85,7 +85,7 @@ local ML20S152mm = HeavyGunClass:New{
 
 local ML20S152mmHE = ML20S152mm:New(HeavyGunHEClass, true):New{
   areaOfEffect       = 183,
-  soundHit           = [[GEN_Explo_6]],
+  soundHitDry        = [[GEN_Explo_6]],
   weaponVelocity     = 1200, --?
   damage = {
     default            = 12000,
@@ -95,7 +95,7 @@ local ML20S152mmHE = ML20S152mm:New(HeavyGunHEClass, true):New{
   },
 }
 local ML20S152mmAP = ML20S152mm:New(HeavyGunAPClass, true):New{
-  soundHit           = [[GEN_Explo_4]],
+  soundHitDry        = [[GEN_Explo_4]],
   weaponVelocity     = 1200,
   customparams = {
     armor_penetration_1000m = 99,

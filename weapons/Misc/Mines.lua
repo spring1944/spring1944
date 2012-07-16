@@ -5,7 +5,7 @@ local MineClass = Weapon:New{
   explosionGenerator = [[custom:HE_Large]],
   explosionSpeed     = 30,
   fireSubmersed      = true,
-  soundHit           = [[GEN_Explo_4]],
+  soundHitDry        = [[GEN_Explo_4]],
   turret             = true,
   weaponVelocity     = 90,
   customparams = {
@@ -26,7 +26,7 @@ local APMine = MineClass:New{
   impulseFactor      = 0.1,
   name               = [[Anti-Personnel Mine]],
   range              = 25,
-  soundHit           = [[GEN_Explo_1]],
+  soundHitDry        = [[GEN_Explo_1]],
   damage = {
     default            = 400,
   },

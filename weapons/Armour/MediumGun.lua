@@ -24,7 +24,7 @@ local MediumGunHEClass = Weapon:New{
   explosionSpeed     = 30, -- needed?
   name               = [[HE Shell]],
   rgbColor           = [[0.5 0.5 0.0]],
-  soundHit           = [[GEN_Explo_3]],
+  soundHitDry        = [[GEN_Explo_3]],
   customparams = {
     damagetype         = [[explosive]],
     fearaoe            = 75,
@@ -41,7 +41,7 @@ local MediumGunAPClass = Weapon:New{
   explosionGenerator = [[custom:AP_Medium]],
   explosionSpeed     = 100, -- needed?
   name               = [[AP Shell]],
-  soundHit           = [[GEN_Explo_1]],
+  soundHitDry        = [[GEN_Explo_1]],
   customparams = {
     damagetype         = [[kinetic]],
   },  

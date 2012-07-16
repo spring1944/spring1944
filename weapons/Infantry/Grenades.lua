@@ -26,7 +26,7 @@ local APGrenadeClass = GrenadeClass:New{
   movingAccuracy     = 3500,
   range              = 180,
   reloadtime         = 8,
-  soundHit           = [[GEN_Explo_Grenade]],
+  soundHitDry        = [[GEN_Explo_Grenade]],
   customparams = {
     armor_penetration  = 80, -- more than AT nades??
     damagetype         = [[grenade]],
@@ -43,7 +43,7 @@ local ATGrenadeClass = GrenadeClass:New{
   movingAccuracy     = 7111,
   range              = 230,
   reloadTime         = 5,
-  soundHit           = [[GEN_Explo_3]],
+  soundHitDry        = [[GEN_Explo_3]],
   customparams = {
     damagetype         = [[shapedcharge]],
   },
