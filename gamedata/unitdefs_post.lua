@@ -244,6 +244,7 @@ for name, ud in pairs(UnitDefs) do
 	end
 	
 	ud.transportbyenemy = false
+	ud.collisionvolumetest = 1
 	
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
