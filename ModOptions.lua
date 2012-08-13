@@ -326,6 +326,17 @@ local options = {
 	section = '4other',
     step   = 0.1,
   },
+	 {
+    key    = "unit_radar_mult",
+    name   = "Unit radar multiplier",
+    desc   = "Applies a multiplier to all the radar ranges ingame, which affects spotting of tanks outside LoS",
+    type   = "number",
+    def    = 1.0,
+    min	   = 0.1,
+    max    = 10,
+	section = '4other',
+    step   = 0.1,
+  },
   
 --[[	{
 		key = "smoke_mult",

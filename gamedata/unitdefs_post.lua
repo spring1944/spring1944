@@ -235,12 +235,17 @@ for name, ud in pairs(UnitDefs) do
 		if ud.sightdistance then
 			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
 		end
-		if ud.radardistance then
-			ud.radardistance = (modOptions.unit_los_mult * ud.radardistance)
-		end
+--		if ud.radardistance then
+--			ud.radardistance = (modOptions.unit_los_mult * ud.radardistance)
+--		end
 		if ud.seismicdistance then
 			ud.seismicdistance = (modOptions.unit_los_mult * ud.seismicdistance)
 		end			
+	end
+	if (modOptions.unit_radar_mult) then
+		if ud.radardistance then
+			ud.radardistance = (modOptions.unit_radar_mult * ud.radardistance)
+		end
 	end
 	
 	ud.transportbyenemy = false
