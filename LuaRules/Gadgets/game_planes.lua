@@ -387,10 +387,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
   if not sortieCmdDescs then return end
 
   radios[teamID][unitID] = true
-  if UnitDefs[unitDefID].name:find("radar") then -- nasty, customParam?
-    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
-	radars[allyTeam] = (radars[allyTeam] or 0) + 1
-  end
 
   for i=1,#sortieCmdDescs do
 		local sortieCmdDesc = sortieCmdDescs[i]
@@ -402,6 +398,11 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
+  if UnitDefs[unitDefID].name:find("radar") then -- nasty, customParam?
+    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
+	radars[allyTeam] = (radars[allyTeam] or 0) + 1
+  end
+  
   local sortie = sortieDefs[unitDefID]
   if not sortie then return end
 
