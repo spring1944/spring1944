@@ -354,7 +354,7 @@ end
 -- Set up LUA AI framework.
 callInList = {
 	"GamePreload",
-	"GameStart",
+	--"GameStart",
 	"GameFrame",
 	"TeamDied",
 	"UnitCreated",
