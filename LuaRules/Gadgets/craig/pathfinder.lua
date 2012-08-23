@@ -163,12 +163,12 @@ local function DoGiveOrdersToUnit(previous, target, unitID, cmd, minMaxSpeed, sp
 		local dz = math.random() * spread * 2 - spread
 		for _,p in PathFinder.PathIterator(previous, target) do
 			GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz}, options)
-			GiveOrderToUnit(unitID, CMD.SET_WANTED_MAX_SPEED, {minMaxSpeed}, options)
+			--GiveOrderToUnit(unitID, CMD.SET_WANTED_MAX_SPEED, {minMaxSpeed}, options)
 		end
 	else
 		for _,p in PathFinder.PathIterator(previous, target) do
 			GiveOrderToUnit(unitID, cmd, {p.x, p.y, p.z}, options)
-			GiveOrderToUnit(unitID, CMD.SET_WANTED_MAX_SPEED, {minMaxSpeed}, options)
+			--GiveOrderToUnit(unitID, CMD.SET_WANTED_MAX_SPEED, {minMaxSpeed}, options)
 		end
 	end
 end
