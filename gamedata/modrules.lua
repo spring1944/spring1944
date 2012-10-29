@@ -17,6 +17,9 @@ local modRules = {
 	nanospray = {
 		allow_team_colours	=	false,
 	},
+	system = {
+		pathFinderSystem = (Spring.GetModOptions() and (Spring.GetModOptions().qtpfs == "1") and 1) or 0,
+	},
 }
 
 return modRules

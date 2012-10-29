@@ -292,6 +292,15 @@ local options = {
 	},
 
 	{
+		key = "qtpfs",
+		name = "QTPFS",
+		desc = "Switch between Legacy or QTPFS pathfinder.)",
+		type = "bool",
+		section = '4other',
+		def = false,
+	},
+	
+	{
     key    = "weapon_range_mult",
     name   = "Range multiplier",
     desc   = 'Multiplies the range of all weapons, adjusting accuracy and weapon velocity as well. 1 is default, 8 is "realistic".',
