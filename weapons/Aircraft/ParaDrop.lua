@@ -4,7 +4,6 @@
 local ParaDropClass = Weapon:New{
   areaOfEffect       = 1, -- needed?
   collideFriendly    = false,
-  commandfire        = true,
   explosionGenerator = [[custom:nothing]],
   impulseFactor      = 0,
   manualBombSettings = true,

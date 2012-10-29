@@ -67,10 +67,14 @@
   steeringmode=1;
   TEDClass=VTOL;
   turnRate=50;
-  badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  badTargetCategory=FLAG BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   wingAngle=0.1;
   wingDrag=0.1;
 
+  noChaseCategory=FLAG BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlytargetcategory1=NONE;
   weapon1=rus_partisandrop;
+  firestate=0;
+  noautofire=1;
 }
 

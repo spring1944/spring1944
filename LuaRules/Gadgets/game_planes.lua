@@ -203,10 +203,10 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	  SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
 	  GiveOrderToUnit(unitID, CMD_IDLEMODE, {0}, {}) --no land
 	  if alwaysAttack then
-		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
-		if waypoint then
+		GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {})
+		--[[if waypoint then
 		  GiveOrderToUnit(unitID, CMD_PATROL, waypoint, {"shift"})
-		end
+		end]]
 	  else
 		if #cmdParams == 1 then --specific target: attack it, then patrol to waypoint
 		  GiveOrderToUnit(unitID, CMD_ATTACK, cmdParams, {"shift"})
