@@ -20,6 +20,7 @@ local GetGroundHeight			= Spring.GetGroundHeight
 local GetGroundInfo				= Spring.GetGroundInfo
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitTeam				= Spring.GetUnitTeam
+local GetUnitTransporter		= Spring.GetUnitTransporter
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local GetTeamUnitDefCount 		= Spring.GetTeamUnitDefCount
 
@@ -331,11 +332,11 @@ function gadget:GameFrame(n)
 					for i = 1, #unitsAtFlag do
 						local unitID = unitsAtFlag[i]
 						local unitTeamID = GetUnitTeam(unitID)
-						if defenders[unitID] and AreTeamsAllied(unitTeamID, flagTeamID) then
+						if defenders[unitID] and AreTeamsAllied(unitTeamID, flagTeamID) and not GetUnitTransporter(unitID) then
 							--Spring.Echo("Defender at flag " .. flagID .. " Value is: " .. defenders[unitID])
 							defendTotal = defendTotal + defenders[unitID]
 						end
-						if cappers[unitID] and (not AreTeamsAllied(unitTeamID, flagTeamID)) then
+						if cappers[unitID] and (not AreTeamsAllied(unitTeamID, flagTeamID)) and not GetUnitTransporter(unitID) then
 							if (flagTeamID ~= GAIA_TEAM_ID or GetTeamUnitDefCount(unitTeamID, UnitDefNames[flagType].id) < flagData.limit) then
 								--Spring.Echo("Capper at flag " .. flagID .. " Value is: " .. cappers[unitID])
 								flagCapStatuses[flagID][unitTeamID] = (flagCapStatuses[flagID][unitTeamID] or 0) + cappers[unitID]
