@@ -21,7 +21,7 @@ local cruiseIDs = {}
 local terminalIDs = {}
 
 local INF_WATER_LEVEL	= -9
-local MIN_HEIGHT = 100
+local MIN_HEIGHT = 1000
 local HEIGHT_SMOOTHING = 0.05
 local GRAVITY = Game.gravity
 local CMD_ATTACK = CMD.ATTACK
@@ -130,7 +130,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   
   local dropDist = defInfo.dropDist
   -- the following bit on the end is an ugly hack to improve glider landing behaviour
-  local dropDelay = (30 * (s - dropDist) / defInfo.speed) - (0.0085 * s)
+  local dropDelay = (30 * (s - dropDist) / defInfo.speed) -- (0.0085 * s)
   --Spring.Echo("dropDelay: " .. dropDelay, " wantedAlt: " .. wantedAlt, "uy: " .. uy, "s: " .. s)
   
   if dropDelay < 0 then
@@ -200,8 +200,8 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 		if gliderSquad then
 			if y > INF_WATER_LEVEL then
 				local delay = spawnDelay
-				DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.2, y, z + vz * delay * 0.2, 0, unitTeam}, delay)
-				DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.15, y, z + vz * delay * 0.15, 0, unitTeam}, delay)
+				DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.02, y, z + vz * delay * 0.02, 0, unitTeam}, delay)
+				DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.015, y, z + vz * delay * 0.015, 0, unitTeam}, delay)
 			end
 		end
     return true
