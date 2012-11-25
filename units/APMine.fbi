@@ -25,7 +25,7 @@
   maxSlope=3;
   maxWaterDepth=50;
   minCloakDistance=1e-07;
-  objectName=APMine2.S3O;
+  objectName=APMine.S3O;
   script=Mine.cob;
   selfDestructAs=APMine;
   selfDestructCountdown=1;

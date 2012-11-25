@@ -2,6 +2,7 @@
 
 -- Rocket Artillery Base Class
 local ArtyRocketClass = Weapon:New{
+  avoidFeature		 = false,
   cegTag             = [[RocketTrail]],
   commandfire        = true,
   edgeEffectiveness  = 0.1,
