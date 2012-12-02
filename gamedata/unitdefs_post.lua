@@ -133,6 +133,39 @@ for name, ud in pairs(UnitDefs) do
     local decloakDistMult = 0.6
     local infSpeedMult = 0.5
 
+    --sets base values for detection radii
+    --index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
+    local detection = {
+        INFANTRY    = {650, 2000, 650, 1400},
+        SOFTVEH     = {300, 2000, 950, 0},
+        OPENVEH     = {300, 2000, 1250, 0},
+        HARDVEH     = {150, 1000, 650, 0},
+        SHIP        = {400, 1500, 950, 0},
+        DEPLOYED    = {650, 2000, 650, 1400},
+    }
+
+    --set detection values per unit category (with some special casing for
+    --cloaked inf)
+    ud.activatewhenbuilt = true
+    for category, detectValues in pairs(detection) do
+        local catStart, catEnd = string.find(ud.category, category);
+        if catStart ~= nil then
+            local cat = string.sub(ud.category, catStart, catEnd)
+            if detection[cat] then
+                ud.sightdistance = detection[cat][1] * LoSMult
+                ud.airsightdistance = detection[cat][2] * LoSMult
+                ud.radardistance = detection[cat][3] * LoSMult
+                ud.seismicdistance = detection[cat][4] * LoSMult
+                if ud.cloakcost then
+                    ud.sightdistance = ud.sightdistance * 0.5
+                    ud.radardistance = 0
+                end
+            print("set sight values for", ud.name, ud.sightdistance, ud.radardistance, ud.seismicdistance)
+            end
+        end
+    end
+    
+
 	if ud.customparams then
 		if ud.customparams.feartarget then
 			if (ud.maxvelocity) then
@@ -146,6 +179,8 @@ for name, ud in pairs(UnitDefs) do
 
 
 	--new sensor stuff!
+    --set radar/LoS for infantry (the only units with seismic distances)
+    --[[
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
 			ud.sightdistance = 650 * LoSMult
@@ -161,9 +196,12 @@ for name, ud in pairs(UnitDefs) do
 		end
 
 	end
+
+    ]]--
 	--end first chunk of new sensor stuff!
 	
 	--more new sensor stuff
+    --decide if stationary units should be stealth or not
 	if not ud.maxvelocity then
 		ud.stealth = false
 		if (ud.customparams) then
@@ -174,14 +212,12 @@ for name, ud in pairs(UnitDefs) do
 	end
 	--end more new sensor stuff
 	
+    --ship things
 	if ud.floater then
 		ud.turninplace = false
 		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
 		--new sensor stuff
 		ud.stealth = false
-		ud.sightdistance = 650 * LoSMult
-		ud.radardistance = 950 * LoSMult
-		ud.activatewhenbuilt = true
 		--end new sensor stuff
 	end
 	-- ammo storage
@@ -210,12 +246,9 @@ for name, ud in pairs(UnitDefs) do
 	end
 	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
-		--Spring.Echo(name)
 		ud.pushresistant = true
 		--new sensor stuff
 		ud.stealth = false
-		ud.sightdistance = (tonumber(ud.sightdistance) * 0.5) * LoSMult --this is super gross
-		ud.radardistance = 950 * LoSMult
 		ud.activatewhenbuilt = true
 		--end new sensor stuff
 		

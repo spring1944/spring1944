@@ -40,7 +40,6 @@
   objectName=USSniper.S3O;
   repairable=0;
   seismicDistance=0;
-
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
