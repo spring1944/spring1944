@@ -44,7 +44,7 @@ local moveDefs 	=	 {
 	},
 	{
 		name					=	"TANK_Goat",
-		footprintX		=	4,
+		footprintX		=	3,
 		maxWaterDepth	=	15,
 		maxSlope		=	30,
 		heatmapping		= false,

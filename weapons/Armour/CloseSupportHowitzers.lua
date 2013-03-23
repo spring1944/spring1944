@@ -3,6 +3,7 @@
 -- CSHowitzer Base Class
 local CSHowitzerClass = Weapon:New{
   accuracy           = 510,
+  avoidFeature		 = false,
   collisionSize      = 4,
   impulseFactor      = 0,
   intensity          = 0.25,

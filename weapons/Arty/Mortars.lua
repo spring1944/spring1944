@@ -3,6 +3,7 @@
 -- Mortar Base Class
 local MortarClass = Weapon:New{
   accuracy           = 485,
+  avoidFeature		 = false,
   collideFriendly    = false,
   edgeEffectiveness  = 0.2,
   explosionGenerator = [[custom:HE_Medium]],

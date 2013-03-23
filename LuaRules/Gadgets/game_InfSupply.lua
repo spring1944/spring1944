@@ -155,12 +155,12 @@ function gadget:TeamDied(teamID)
 end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
-	--local weaponCost = UnitDefs[unitDefID].customParams.weaponcost or 0.15
-	local weaponID = UnitDefs[unitDefID].weapons[1].weaponDef
-	local reload = WeaponDefs[weaponID].reload
-	--local reloadFrameLength = (reload*30)
-
 	if ValidUnitID(unitID) then
+		-- Check if the unit is armed
+		local hasWeapons = UnitDefs[unitDefID].weapons[1]
+		if not hasWeapons then return end
+		local reload = WeaponDefs[hasWeapons.weaponDef].reload
+		
 		-- Stalling. (stall penalty!)
 		if (stalling) then
 			SetUnitWeaponState(unitID, 0, {reloadTime = STALL_PENALTY*reload})

@@ -3,6 +3,7 @@
 -- Infantry Gun Base Class
 local InfGunClass = Weapon:New{
   accuracy           = 510,
+  avoidFeature		 = false,
   collisionSize      = 4,
   edgeEffectiveness  = 0.25,
   explosionGenerator = [[custom:HE_Medium]],

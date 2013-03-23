@@ -3,6 +3,7 @@
 -- HeavyGun Base Class
 local HeavyGunClass = Weapon:New{
   accuracy           = 100,
+  avoidFeature		 = false,
   collisionSize      = 4,
   impulseFactor      = 0,
   intensity          = 0.25,

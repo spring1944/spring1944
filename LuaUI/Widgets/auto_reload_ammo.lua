@@ -297,6 +297,10 @@ function FindClosestSupply(v)
     end 
     --save these
     v.closestSupply = targetSupplyUnit
+	-- what if we didn't find any supply sources?
+	if v.closestSupply == nil then
+		return
+	end
     --get separation between unit and supply
     local currentUnitSeparation = GetUnitSeparation(v.uID, v.closestSupply.uID, true)
     if ((currentUnitSeparation ~= nil) and (x ~= nil)  and (z ~= nil)) then
