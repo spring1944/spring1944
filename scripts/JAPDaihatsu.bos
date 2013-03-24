@@ -1,0 +1,170 @@
+#define TAK
+
+piece base, ramp, load_arm, load_shoulder,
+	  wake;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Ramp
+#define RAMP_OPEN_ANGLE		<90>
+#define RAMP_OPEN_SPEED		<30>
+
+#define LOAD_DIST			[125]
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_LOAD			4
+#define SIG_AIM1			8
+#define SIG_AIM2			16
+
+#define SMOKEPIECE	base
+
+#include "constants.h"
+#include "damageSmoke.h"
+static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, FearOk;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	FearOk=0;
+	MaxSpeed = get MAX_SPEED;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+OpenRamp()
+{
+	var newSpeed;
+	// we are opening the ramp, let's slow down (else we'll have the hold full of water)
+	newSpeed = MaxSpeed/10;
+	//set MAX_SPEED to newSpeed;
+	turn ramp to x-axis RAMP_OPEN_ANGLE speed RAMP_OPEN_SPEED;
+	wait-for-turn ramp around x-axis;
+	bRampOpen = TRUE;
+	return;
+}
+
+CloseRamp()
+{
+	bRampOpen = FALSE;
+	turn ramp to x-axis 0 speed RAMP_OPEN_SPEED;
+	wait-for-turn ramp around x-axis;
+	// now the ramp is closed, we can go full speed again
+	//set MAX_SPEED to MaxSpeed;
+	return;
+}
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid) {
+	call-script OpenRamp();
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			attach-unit unitid to base;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(position);
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	call-script OpenRamp();
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	start-script CloseRamp();
+	bMoving = TRUE;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<50)
+	{
+		corpsetype = 1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	return (TRUE);
+}

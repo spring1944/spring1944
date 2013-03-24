@@ -1,0 +1,73 @@
+[Type1Ho103] {
+  name=Type1 Ho-103 12.7mm;
+  areaOfEffect=1;
+  burnblow=1;
+  burst=8;
+  burstRate=0.055;
+  collisionSize=2;
+  collisionVolumeTest=1;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=45;
+    fearid=301;
+  }
+  [damage] {
+    default=35;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=10;
+  impactOnly=1;
+  interceptedByShieldType=16;
+  lineofsight=1;
+  predictBoost=0.75;
+  range=800;
+  reloadTime=0.8;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-14; //2
+  soundStart=US_50CAL;
+  soundTrigger=1;
+  sprayAngle=300;
+  tolerance=300;
+  turret=1;
+  seperation=2;
+  weaponTimer=1;
+  weaponVelocity=2500;
+}
+[TE4] {
+  name=7.7mm TE-4 Machinegun;
+  areaOfEffect=1;
+  burnblow=1;
+  burst=6;
+  burstRate=0.15;
+  collisionSize=2;
+  collisionVolumeTest=1;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=35;
+    fearid=301;
+  }
+  [damage] {
+    default=33;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=10;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  predictBoost=0.75;
+  range=925;
+  reloadTime=1.5;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-14; //2
+  soundStart=jap_TE4_MG;
+  soundTrigger=1;
+  sprayAngle=300;
+  tolerance=300;
+  seperation=2;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2500;
+}
+

@@ -1,0 +1,191 @@
+#include "constants.h" // Thank you Argh
+
+piece	base, front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, mid_wheels5, mid_wheels6, mid_wheels7, mid_wheels8, support_wheels1, support_wheels2,
+		tracks,
+		turret,
+		exhaust;
+ 
+static-var  bMoving, treadnum;
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_BUILD	2 // Main Cannon
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 exhaust
+#define SMOKEPIECE4 base
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+//hiding FX emit points
+#define FX_HIDE\
+	hide exhaust;\
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<15> // hand operated
+
+// definitions for HitWeapId_S44
+#define ARMOUR		4372
+#include "HitWeapId_S44.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
+
+// exhaust smoke
+#define EXHAUST_SMOKE 1024+1
+
+// definitions for wheels
+#define WHEEL_SPIN		<-600>
+#define WHEEL_ACCEL		<-150>
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	spin front_wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+	spin rear_wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+	spin mid_wheels1 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels2 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels3 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels4 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels5 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels6 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels7 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheels8 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;		
+	spin support_wheels1 around x-axis speed WHEEL_SPIN*6 accelerate WHEEL_ACCEL*6;
+	spin support_wheels2 around x-axis speed WHEEL_SPIN*6 accelerate WHEEL_ACCEL*6;
+	emit-sfx EXHAUST_SMOKE from exhaust;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	stop-spin front_wheels around x-axis;
+ 	stop-spin rear_wheels around x-axis;
+	stop-spin mid_wheels1 around x-axis;
+	stop-spin mid_wheels2 around x-axis;
+	stop-spin mid_wheels3 around x-axis;
+	stop-spin mid_wheels4 around x-axis;
+	stop-spin mid_wheels5 around x-axis;
+	stop-spin mid_wheels6 around x-axis;
+	stop-spin mid_wheels7 around x-axis;
+	stop-spin mid_wheels8 around x-axis;		
+	stop-spin support_wheels1 around x-axis;
+	stop-spin support_wheels2 around x-axis;
+}
+
+treads() 
+{ 
+/*   while( TRUE ) 
+   { 
+        if(bMoving) 
+           { 
+              if(treadnum == 0) 
+              {             
+              hide tracks2; 
+              show tracks1; 
+              } 
+            if(treadnum == 1) 
+            { 
+            hide tracks1; 
+            show tracks2; 
+			}
+            treadnum = !treadnum; 
+         } 
+      sleep 90; 
+   } */
+}
+
+Create()
+{
+	FX_HIDE
+	// init vars
+	treadnum=0;
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+	start-script treads();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+StartBuilding(heading, pitch)
+{
+	signal SIG_BUILD;
+	set-signal-mask SIG_BUILD;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	wait-for-turn turret around y-axis;
+	set INBUILDSTANCE to 1;
+	return TRUE;
+}
+
+StopBuilding()
+{
+	set INBUILDSTANCE to 0;
+	turn turret to y-axis 0 speed TURR_TRAVERSE;
+}
+
+QueryNanoPiece(piecenum)
+{
+	piecenum = turret;
+}
+
+// TODO: make this pretty
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		// abandoned tank - no visual damage
+		corpsetype = 1;
+		return (0);
+	}
+	if( severity <= 250 )
+	{
+		// burning tank
+		corpsetype = 2;
+		explode base type BITMAPONLY;
+		explode turret type BITMAPONLY;
+		return (0);
+	}
+	if(severity <= 1000)
+	{
+		// internal explosion!
+		corpsetype = 3;
+		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+		explode mid_wheels1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheels2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheels3 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheels4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheels5 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheels6 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		return (0);
+	}
+	// OMGWTF direct asteroid hit!
+	corpsetype = 4;
+	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+	explode base type SHATTER;
+	explode front_wheels type SHATTER;
+	explode rear_wheels type SHATTER;
+	explode mid_wheels1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheels2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheels3 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheels4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheels5 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheels6 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	return (0);
+}
+

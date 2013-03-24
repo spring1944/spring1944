@@ -1,0 +1,394 @@
+#include "constants.h"
+
+piece	base, turret, sleeve, barrel, flare, turret_mg, turret_mg_flare, exhaust,
+		bow_mg, bow_mg_flare,
+		front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, support_wheel1, support_wheel2,
+		tracks, prop1, prop2, floats, wake;
+
+
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, treadnum, barrelaiming, MGAiming,
+			WaterSpeed, LandSpeed;
+
+// water mobility def
+#define WATER_SPEED_MULTIPLIER		1
+#define WATER_SPEED_DIVIDER			3
+
+#define FLOAT_DEPTH					[-3]
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_AIM		2 // Main Cannon
+#define SIG_AIM_2	4 // Coax MG
+#define SIG_AIM_3	8 // bow MG
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 sleeve
+#define SMOKEPIECE4 exhaust
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+//hiding FX emit points
+#define FX_HIDE\
+	hide flare;\
+	hide turret_mg_flare;\
+	hide bow_mg_flare;
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<50> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+#include "RockUnit_Set.h"
+
+// definitions for wheels
+#define WHEEL_SPIN		<600>
+#define WHEEL_ACCEL		<150>
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<15>
+#define TURR_ELEVATE	<7>
+#define MG_TRAVERSE		<20>
+#define MG_ELEVATE		<20>
+#define COAX_ARC		<3>
+
+// definitions for weapons behaviour
+#define RELOAD		3500 // time in milliseconds between shots
+#define RECOIL		[-0.5] // distance to recoil the barrel
+#define RETURN_SPEED	[10] // speed at which the barrel returns
+
+// definitions for HitWeapId_S44
+#define ARMOUR		4275
+#include "HitWeapId_S44.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
+
+// tracers
+#define SMALL_TRACER 	2048+5
+
+// exhaust smoke
+#define EXHAUST_SMOKE 1024+1
+
+#include "amphib.h"
+
+// when it'll have some texture to show on tracks, then this will be needed
+treads() 
+{ 
+/*   while( TRUE ) 
+   { 
+        if(bMoving) 
+           { 
+              if(treadnum == 0) 
+              {             
+              hide tracks2; 
+              show tracks1; 
+              } 
+            if(treadnum == 1) 
+            { 
+            hide tracks1; 
+            show tracks2; 
+			}
+            treadnum = !treadnum; 
+         } 
+      sleep 90; 
+   } */
+}
+
+Create()
+{
+	LandSpeed = get MAX_SPEED;
+	WaterSpeed = LandSpeed * WATER_SPEED_MULTIPLIER / WATER_SPEED_DIVIDER;
+	FX_HIDE
+	// init vars
+	rock = FALSE;
+	aim2 = FALSE;
+	reloading = FALSE;
+	treadnum=0;
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+	start-script treads();
+	start-script WaterCheck();
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+
+	spin front_wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin rear_wheels around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin mid_wheels1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin mid_wheels2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin mid_wheels3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin mid_wheels4 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin support_wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	spin support_wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+ 	emit-sfx EXHAUST_SMOKE from exhaust;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+
+	stop-spin front_wheels around x-axis;
+ 	stop-spin rear_wheels around x-axis;
+	stop-spin mid_wheels1 around x-axis;
+	stop-spin mid_wheels2 around x-axis;
+	stop-spin mid_wheels3 around x-axis;
+	stop-spin mid_wheels4 around x-axis;
+	stop-spin support_wheel1 around x-axis;
+	stop-spin support_wheel2 around x-axis;
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+RestoreAfterDelay()
+{
+	sleep restore_delay;
+	turn turret to y-axis <0> speed TURR_TRAVERSE;
+	turn sleeve to x-axis <0> speed TURR_ELEVATE;
+	turn bow_mg to y-axis 0 speed MG_TRAVERSE;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep RELOAD;
+	reloading = FALSE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+// Weapon 1 - Main cannon, HE
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (aim2) return 0; // don't aim weap1 if aiming AP
+	
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	barrelAiming=1;
+	mainHead = heading;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	barrelAiming=0;
+	return 1;
+}
+
+FireWeapon1()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	//emit-sfx 1  from flare;
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+// Weapon 2 - Main cannon, AP
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{	
+	aim2 = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+
+	mainHead = heading;
+	turn turret to y-axis heading speed TURR_TRAVERSE;
+	turn sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon2()
+{
+	rock = TRUE; // firing a heavy weapon
+	
+	// TODO: Add to SFX
+	// Do SFX
+	//emit-sfx 1  from flare;
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+	// barrel recoil
+	move barrel to z-axis RECOIL now;
+	sleep 200;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	
+	rock = FALSE;
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+// Weapon 3 - Coax MG
+QueryWeapon3 (piecenum)
+	{
+	piecenum = turret_mg_flare;
+	}
+
+AimFromWeapon3 (piecenum)
+	{
+	piecenum = turret;
+	}
+
+AimWeapon3(heading, pitch)
+	{
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+	MGAiming=1;
+	if (mainHead > 0) {
+	  if (heading < mainHead - COAX_ARC || heading > mainHead + COAX_ARC) return 0;
+	}
+	if (mainHead < 0) {
+	  if (heading > mainHead - COAX_ARC || heading < mainHead + COAX_ARC) return 0;		
+	}
+	
+	//turn turret to y-axis heading speed TURR_TRAVERSE;
+	wait-for-turn turret around y-axis;
+	
+	//start-script RestoreAfterDelay();
+	MGAiming=0;
+	return (1);
+	}
+
+FireWeapon3()
+	{
+	rock = FALSE;
+	return(0);
+	}
+
+Shot3(foo)
+{
+	emit-sfx SMALL_TRACER from turret_mg_flare;
+	emit-sfx MG_MUZZLEFLASH from turret_mg_flare;
+}
+
+// Weapon 4 - Bow MG
+QueryWeapon4 (piecenum)
+	{
+	piecenum = bow_mg_flare;
+	}
+
+AimFromWeapon4 (piecenum)
+	{
+	piecenum = bow_mg;
+	}
+
+AimWeapon4(heading, pitch)
+	{
+	signal SIG_AIM_3;
+	set-signal-mask SIG_AIM_3;
+	MGAiming=1;
+	turn bow_mg to y-axis heading speed MG_TRAVERSE;
+	wait-for-turn bow_mg around y-axis;
+	
+	start-script RestoreAfterDelay();
+	MGAiming=0;
+	return (1);
+	}
+
+FireWeapon4()
+	{
+	rock = FALSE;
+	return(0);
+	}
+
+Shot4(foo)
+{
+	emit-sfx SMALL_TRACER from bow_mg_flare;
+	emit-sfx MG_MUZZLEFLASH from bow_mg_flare;
+}
+
+AimFromWeapon5(piecenum) //bulletproof effect
+{
+	piecenum = base;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum = base;
+}
+
+AimWeapon5(heading, pitch)
+{
+return (1);
+}
+
+FireWeapon5()
+{
+return (0);
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		corpsetype = 1;
+		return (0);
+	}
+	if( severity <= 250 )
+	{
+		corpsetype = 1;
+	}
+	if(severity <= 1000)
+	{
+		corpsetype = 2;
+		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+	}
+	corpsetype = 2;
+	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
+}
+

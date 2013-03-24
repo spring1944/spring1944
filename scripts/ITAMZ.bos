@@ -1,0 +1,274 @@
+#define TAK
+
+piece base, hull, main_turret, main_sleeve, main_barrel, main_flare,
+	  aa20_turret, aa20_sleeve, aa20_barrel, aa20_flare,
+	  turret, grabber, link,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+#define LOAD_DIST			[125]
+
+//********************Turret turn speeds
+#define MAIN_TURRET_TURN	<15>
+#define MAIN_TURRET_PITCH	<17>
+
+#define AA20_TURRET_TURN		<45>
+#define AA20_TURRET_PITCH		<45>
+
+//*********************Recoil
+#define MAIN_GUN_RECOIL			[0.8]
+#define MAIN_GUN_RECOIL_SPEED	[10]
+#define MAIN_GUN_BACK_SPEED		[0.2]
+
+#define AA20_GUN_RECOIL			[0.4]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[0.5]
+
+//*********************Death anim
+#define HULL_LIST_SPEED		<1>
+#define HULL_LIST_ANGLE		<-5>
+
+#define HULL_SINK_DEPTH		[-2]
+#define HULL_SINK_SPEED		[1]
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_LOAD			16
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	turn aa20_turret to y-axis <180> now;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	MaxSpeed = get MAX_SPEED;
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+//Transport stuff
+BoomCalc(posxz,posy)
+{
+	var dxz,dy,lenxz;
+
+	dxz = get PIECE_XZ(turret) - posxz;
+	dy = posy - get PIECE_Y(turret);
+	lenxz = get XZ_HYPOT(dxz);
+
+	boom_len = get HYPOT(lenxz,dy);
+	boom_heading = get XZ_ATAN(dxz);
+	boom_pitch = get ATAN(dy,lenxz);
+	bTooFar = (boom_len > LOAD_DIST);
+}
+
+PositionLink(posxz,posy)
+{
+	turn turret to y-axis boom_heading now;
+	turn grabber to x-axis 0-boom_pitch now;
+	move grabber to z-axis boom_len now;
+}
+
+ReturnLink()
+{
+	turn turret to y-axis <0> now;
+	turn grabber to x-axis <0> now;
+	move grabber to z-axis [0] now;
+}
+
+TransportPickup(unitid)
+{
+	signal SIG_LOAD;
+	set-signal-mask SIG_LOAD;
+    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+	if( bTooFar )
+	{
+		return (FALSE);
+	}
+	set BUSY to 1;
+	attach-unit unitid to (0-1);
+	sleep 500;
+	set BUSY to 0;
+	sleep 2500;
+}
+
+TransportDrop(unitid, position)
+{
+	signal SIG_LOAD;
+	set-signal-mask SIG_LOAD;
+    call-script BoomCalc(position,get GROUND_HEIGHT(position));
+	if( bTooFar )
+	{
+		return (1);
+	}
+	set BUSY to 1;
+	attach-unit unitid to link;
+	call-script PositionLink();
+	sleep 50;
+	drop-unit unitid;
+	call-script ReturnLink();
+	sleep 1000;
+	set BUSY to 0;
+	sleep 1500;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	bMoving = TRUE;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+	turn main_turret to y-axis <0> speed MAIN_TURRET_TURN;
+	turn main_sleeve to x-axis <0> speed MAIN_TURRET_PITCH;
+
+	turn aa20_turret to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa20_sleeve to x-axis <0> speed AA20_TURRET_PITCH;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = main_flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = main_turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn main_turret to y-axis heading speed MAIN_TURRET_TURN;
+	turn main_sleeve to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn main_turret around y-axis;
+	wait-for-turn main_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	show main_flare;
+	move main_barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move main_barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+	hide main_flare;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = aa20_flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = aa20_turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn aa20_turret to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret around y-axis;
+	wait-for-turn aa20_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	show aa20_flare;
+	move aa20_barrel to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	move aa20_barrel to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<50)
+	{
+		corpsetype = 1;
+		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		move base to y-axis HULL_SINK_DEPTH speed HULL_SINK_SPEED;
+		wait-for-turn hull around x-axis;
+		wait-for-move base along y-axis;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	explode main_turret type	FALL|EXPLODE_ON_HIT|FIRE;
+	return (TRUE);
+}

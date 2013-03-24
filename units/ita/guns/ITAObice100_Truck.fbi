@@ -1,0 +1,58 @@
+[unitinfo] {
+  unitname=ITAObice100_Truck;
+  name=Towed Obice da 100/22;
+  description=Light Howitzer;
+  acceleration=0.3;
+  airSightDistance=1500;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1800;
+  buildPic=ITAObice100_truck.png;
+  buildTime=1800;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=ITATL37_Abandoned;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=25;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=htruck;
+  leaveTracks=1;
+  mass=356;
+  maxDamage=356;
+  maxReverseVelocity=1.4;
+  maxSlope=10;
+  maxVelocity=3;
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=ITAObice100_Truck;
+  script=GERleFH18_Truck.cob;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=ITATank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=440;
+
+  weapon1=smallsupply;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

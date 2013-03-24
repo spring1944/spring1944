@@ -1,0 +1,60 @@
+[ITAP40_Abandoned]
+{
+  description=Abandoned M26/40;
+  damage=2501;
+  energy=50;
+  featureDead=ITAP40_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAP40;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[ITAP40_Burning]
+{
+  description=Destroyed M26/40;
+  damage=2501;
+  energy=50;
+  featureDead=ITAP40_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAP40_Dead;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[ITAP40_Wreck]
+{
+  description=Destroyed M26/40;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAP40_Wreck;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}

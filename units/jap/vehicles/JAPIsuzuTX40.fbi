@@ -1,0 +1,57 @@
+[unitinfo] {
+  unitname=JAPIsuzuTX40;
+  name=Type 97 Isuzu TX 40;
+  description=Transport Truck;
+  acceleration=0.3;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=510;
+  buildTime=510;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=JAPIsuzuTX40_Abandoned;
+  [customParams] {
+    buildOutside=1;
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  idleAutoHeal=2;
+  idleTime=1000;
+  leaveTracks=1;
+  mass=280;
+  maxDamage=280;
+  maxReverseVelocity=2.25;
+  maxSlope=10;
+  maxVelocity=4.5; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=JAPIsuzuTX40.s3o;
+  releaseHeld=1;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=JAP;
+  sightDistance=800;
+  soundcategory=JAPVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  transportCapacity=15;
+  transportMass=750;
+  transportRadius=50;
+  transportSize=1;
+  transportUnloadMethod=2;
+  turninplace=0;
+  turnRate=440;
+}
+

@@ -1,0 +1,79 @@
+[jap13mmtype93] {
+  name=Type 93 13mm Heavy Machine Gun;
+  areaOfEffect=1;
+  avoidFeature=0;
+  avoidFriendly=0;
+  burst=8;
+  burstRate=0.1;
+  canAttackGround=1;
+  collideFeature=1;
+  collideFriendly=0;
+  collisionSize=2.5;
+  collisionVolumeTest=1;
+  [customParams] {
+    armor_penetration_1000m=17;
+    armor_penetration_100m=22;
+    damagetype=kinetic;
+
+//    damagetype=smallarm;
+    fearaoe=45;
+    fearid=401;
+  }
+  [damage] {
+    default=50;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=7;
+  impactOnly=1;
+  interceptedByShieldType=16;
+  lineofsight=1;
+  movingAccuracy=500;
+  range=880;
+  reloadTime=4;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-21;
+  soundStart=US_50CAL;
+  soundTrigger=1;
+  sprayAngle=300;
+  targetMoveError=0.25;
+  tolerance=3000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=3000;
+}
+
+[jap13mmtype93aa] {
+  name=Type 93 13mm Heavy Machine Gun;
+  areaOfEffect=1;
+  burst=6;
+  burstRate=0.109;
+  canAttackGround=0;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=1;
+    fearid=701;
+  }
+  [damage] {
+    default=25;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=0;
+  id=71;
+  interceptedByShieldType=16;
+  lineofsight=1;
+  movingAccuracy=200;
+  range=1300;
+  reloadTime=1.5;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-16;
+  soundStart=US_50CAL;
+  soundTrigger=1;
+  sprayAngle=250;
+  tolerance=3000;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=3000;
+}

@@ -1,0 +1,101 @@
+[unitinfo]
+{
+	unitname=ITAGabbiano;
+	objectname=ITAGabbiano;
+	corpse=ITAGabbiano_dead;
+	icontype=destroyer;
+	category=LARGESHIP;
+	tedclass=SHIP;
+
+	name=Gabbiano class Corvette;
+	description=Corvette;
+	maxdamage=25000;
+	buildcostmetal=15000;
+	buildcostenergy=0;
+	buildtime=15000;
+	footprintx=8;
+	footprintz=8;
+	mass=500000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=1.8; // only 18 kn, quite slow
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=it100mm47_1928;
+
+	Weapon2=it20mm65breda;
+	Weapon3=breda3520mmhe;
+	Weapon4=breda3520mmhe;
+
+	Weapon5=it20mm65breda2x;
+	Weapon6=it20mm65breda2x;
+
+	Weapon7=it450mmtorpedo;
+	Weapon8=it450mmtorpedo;
+
+	// 100mm main gun
+	WeaponMainDir1=0 0 1;
+	onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	MaxAngleDif1=270;
+
+	// 20mm forward gun
+	WeaponMainDir2=0 0 1;
+	OnlyTargetCategory2=AIR;
+	MaxAngleDif2=270;
+
+	// single 20mm guns
+	WeaponMainDir3=1 0 1;
+	onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	MaxAngleDif3=180;
+
+	WeaponMainDir4=-1 0 1;
+	onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	MaxAngleDif4=180;
+
+        // twin 20mm guns
+	WeaponMainDir5=0 0 -1;
+	OnlyTargetCategory5=AIR;
+	MaxAngleDif5=270;
+	
+	WeaponMainDir6=0 0 -1;
+	OnlyTargetCategory6=AIR;
+	MaxAngleDif6=270;
+
+	// torpedoes
+	WeaponMainDir7=1 0 1;
+	MaxAngleDif7=90;
+	OnlyTargetCategory7=LARGESHIP;
+
+	WeaponMainDir8=-1 0 1;
+	MaxAngleDif8=90;
+	OnlyTargetCategory8=LARGESHIP;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

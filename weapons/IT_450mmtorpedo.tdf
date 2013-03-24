@@ -1,0 +1,109 @@
+[it450mmtorpedo]
+	{
+	name=450mm torpedo tube;
+	rendertype=1;
+	lineofsight=1;
+	noautorange=1;
+	AvoidFriendly=1;
+	CollideFriendly=1;
+	turret=1;
+	waterweapon=1;
+
+	model=ita450mmtorpedo;
+
+	range=1300;
+	reloadtime=300;
+	weapontimer=5.5;
+	burst=1;
+	burstrate=1;
+	sprayangle=1300;
+	burnblow=1;
+	weaponvelocity=450;
+	startvelocity=250;
+	weaponacceleration=230;
+	turnrate=50000;
+	areaofeffect=32;
+	edgeeffectiveness=0.5;
+	metalpershot=0;
+	propeller=1;
+
+	soundstart=watersplash;
+	soundhit=gen_explo_11;
+
+	firestarter=70;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	tolerance=9000;
+
+	[damage]
+	{
+		default=8000;
+		infantry=4000;
+		guns=4000;
+		mines=0;
+		flag=0;
+		tanks=8000;
+		armouredvehicles=12000;
+		unarmouredvehicles=12000;
+	}
+	[customParams]
+	{
+		damagetype=shapedcharge;
+	}
+}
+
+[it450mmtorpedo2x]
+	{
+	name=Twin 450mm torpedo tube;
+	rendertype=1;
+	lineofsight=1;
+	noautorange=1;
+	AvoidFriendly=1;
+	CollideFriendly=1;
+	turret=1;
+	waterweapon=1;
+
+	model=ita450mmtorpedo;
+
+	range=1300;
+	reloadtime=300;
+	weapontimer=5.5;
+	burst=2;
+	burstrate=1;
+	sprayangle=1300;
+	burnblow=1;
+	weaponvelocity=450;
+	startvelocity=250;
+	weaponacceleration=230;
+	turnrate=50000;
+	areaofeffect=32;
+	edgeeffectiveness=0.5;
+	metalpershot=0;
+	propeller=1;
+
+	soundstart=watersplash;
+	soundhit=gen_explo_11;
+
+	firestarter=70;
+	guidance=0;
+	tracks=1;
+	selfprop=1;
+	tolerance=9000;
+
+	[damage]
+	{
+		default=8000;
+		infantry=4000;
+		guns=4000;
+		mines=0;
+		flag=0;
+		tanks=8000;
+		armouredvehicles=12000;
+		unarmouredvehicles=12000;
+	}
+	[customParams]
+	{
+		damagetype=shapedcharge;
+	}
+}

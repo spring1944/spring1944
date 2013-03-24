@@ -1,0 +1,314 @@
+#define TA			// This is a TA script
+
+#include "constants.h"
+
+
+piece	base, hull, wheels1, wheels2, mg_turret, mg_gun, mg_flare,
+		aa20_turret, aa20_sleeve, aa20_barrel, aa20_flare;
+ 
+static-var restore_delay, bMoving, rock, GunAiming, aim1, aim2, shotCount1, shotCount3, reloading;
+
+
+#define FX_HIDE\
+	hide mg_flare;\
+	hide aa20_flare;\
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<50> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+#include "RockUnit_Set.h"
+
+// Signal definitions
+#define SIG_MOVE			1
+#define SIG_AIM				2 // 20mm
+#define SIG_AIM_2			4 // mg
+
+#define TURR_TRAVERSE		<60>
+#define TURR_ELEVATE		<30>
+#define MG_TRAVERSE			<20>
+
+//weapon stuff
+// definitions for weapons behaviour
+#define RELOAD		300 // time in milliseconds between shots
+#define RECOIL		[-1] // distance to recoil the gun
+#define RETURN_SPEED	[20] // speed at which the barrel returns
+#define BURST		5
+
+#define MG_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEFLASH 1024+8
+#define XSMALL_MUZZLEDUST 1024+9
+
+// tracers
+#define SMALL_TRACER 	2048+3
+#define LARGE_TRACER		2048+4
+#define TRACER_PER_X_SHOTS_1	3
+#define TRACER_PER_X_SHOTS_3	5
+
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	/*emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;*/
+	spin wheels1 around x-axis speed <350.082418>;
+	spin wheels2 around x-axis speed <350.082418>;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	stop-spin wheels1 around x-axis decelerate <100.000000>;
+	stop-spin wheels2 around x-axis decelerate <100.000000>;
+}
+
+Create()
+{
+	set STANDINGMOVEORDERS to 0; //hold pos by default.
+	FX_HIDE
+//	spin tow_point around y-axis speed <100>;
+	aim1 = FALSE;
+	shotCount3=0;
+	start-script SmokeUnit();
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+RestoreAfterDelay()
+{
+	sleep restore_delay;
+	turn aa20_turret to y-axis <0.000000> speed TURR_TRAVERSE;
+	turn aa20_sleeve to x-axis <0.000000> speed TURR_ELEVATE;
+	turn mg_turret to y-axis 0 speed MG_TRAVERSE;
+	turn mg_gun to x-axis 0 speed MG_TRAVERSE;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep RELOAD;
+	reloading = FALSE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+// Weapon 1 - Main cannon, HE
+QueryWeapon1(piecenum)
+{
+	piecenum = aa20_flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = aa20_turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (aim2) return 0; // don't aim weap1 if aiming AP
+	
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	GunAiming=1;
+	
+	turn aa20_turret to y-axis heading speed TURR_TRAVERSE;
+	turn aa20_sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn aa20_turret around y-axis;
+	wait-for-turn aa20_sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	GunAiming=0;
+	return 1;
+}
+
+FireWeapon1()
+{
+	rock = TRUE; // firing a heavy weapon
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+Shot1(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare;
+	++shotCount1;
+	if(shotCount1 >= TRACER_PER_X_SHOTS_1)
+	{
+		emit-sfx LARGE_TRACER from aa20_flare;
+		shotCount1=0;
+	}
+	// barrel recoil
+	move aa20_barrel to z-axis RECOIL now;
+	sleep 50;
+	move aa20_barrel to z-axis 0 speed RETURN_SPEED;
+}
+
+// Weapon 2 - Main cannon, AP
+QueryWeapon2(piecenum)
+{
+	piecenum = aa20_flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = aa20_turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	aim2 = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	
+	turn aa20_turret to y-axis heading speed TURR_TRAVERSE;
+	turn aa20_sleeve to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn aa20_turret around y-axis;
+	wait-for-turn aa20_sleeve around x-axis;
+	
+	start-script RestoreAfterDelay();
+	aim2 = FALSE;
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	return 1;
+}
+
+FireWeapon2()
+{
+	rock = TRUE; // firing a heavy weapon
+	start-script Reload(); // start reload timer after firing
+	return 0;
+}
+
+Shot2(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare;
+	++shotCount1;
+	if(shotCount1>=TRACER_PER_X_SHOTS_1)
+	{
+		emit-sfx LARGE_TRACER from aa20_flare;
+		shotCount1=0;
+	}
+	// barrel recoil
+	move aa20_barrel to z-axis RECOIL now;
+	sleep 50;
+	move aa20_barrel to z-axis 0 speed RETURN_SPEED;
+}
+
+// Weapon 3 - MG
+QueryWeapon3 (piecenum)
+{
+	piecenum = mg_flare;
+}
+
+AimFromWeapon3 (piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM_2;
+	set-signal-mask SIG_AIM_2;
+
+	turn mg_turret to y-axis heading speed MG_TRAVERSE;
+	turn mg_gun to x-axis (0-pitch) speed MG_TRAVERSE;
+	
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn mg_gun around x-axis;
+	
+	start-script RestoreAfterDelay();
+	return (1);
+}
+
+FireWeapon3()
+{
+	rock = FALSE;
+	return(0);
+}
+
+Shot3(foo)
+{
+	++shotCount3;
+	if(shotCount3>=TRACER_PER_X_SHOTS_3)
+	{
+		emit-sfx SMALL_TRACER from mg_flare;
+		shotCount3=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from mg_flare;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		// abandoned
+		corpsetype = 1;
+	
+		return (0);
+	}
+	if(severity<=250)
+	{
+		// burning
+		corpsetype=2;
+		explode hull type BITMAPONLY;
+		explode wheels1 type FIRE | EXPLODE_ON_HIT;
+		explode wheels2 type FIRE | EXPLODE_ON_HIT;
+		return 0;
+	}
+	if(severity<=1000)
+	{
+		// wrecked
+		corpsetype=3;
+		explode hull type BITMAPONLY;
+		explode wheels2 type FIRE | EXPLODE_ON_HIT;
+		explode wheels1 type FIRE | EXPLODE_ON_HIT;
+		explode aa20_turret type FIRE | EXPLODE_ON_HIT;
+		return 0;
+	}
+	corpsetype = 4;
+	explode wheels1 type SHATTER | EXPLODE_ON_HIT;
+	explode wheels2 type SHATTER | EXPLODE_ON_HIT;
+	explode hull type SHATTER | EXPLODE_ON_HIT;
+	explode aa20_turret type FIRE | EXPLODE_ON_HIT;
+}

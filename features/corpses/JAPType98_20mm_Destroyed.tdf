@@ -1,0 +1,11 @@
+[JAPType98_20mm_Destroyed] {
+  description=Destroyed AA Gun;
+  damage=3000;
+  energy=0;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=JAPType98_20mm_Destroyed;
+  reclaimable=1;
+}
+

@@ -1,0 +1,32 @@
+[unitinfo] {
+  unitname=ita_platoon_bersaglieri;
+  name=Bersaglieri Combat Platoon;
+  description=8 x Bersaglieri Rifles, 2 x Bersaglieri SMG Troopers, 1 x Elitesolothurn, 1 x Bersaglieri Machinegunner, 1 x Bersaglieri Scout: Bersaglieri Assault Marksmen;
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=2000;
+  buildPic=ITAbersaglieri.png;
+  buildTime=2000;
+  canMove=1;
+  category=FLAG;
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  iconType=mines;
+  idleAutoHeal=0;
+  maxDamage=100;
+  maxSlope=15;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  selfDestructAs=noweapon;
+  script=null.cob;
+  [sfxtypes] {
+  }
+  side=ITA;
+  stealth=1;
+  turnRate=1;
+}
+
+

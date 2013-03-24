@@ -1,0 +1,189 @@
+#define TA			// This is a TA script
+
+#include "constants.h"
+
+piece	base, hull, load_shoulder, load_arm, wheels1, wheels2, tow_point, 
+		mg_mount, mg_gun, mg_flare;
+ 
+static-var restore_delay, bMoving, treadnum, aim1, shotCount;
+
+
+#define FX_HIDE\
+	hide mg_flare;\
+	
+// Signal definitions
+#define SIG_MOVE			1
+#define SIG_AIM				2 // Machinemg
+#define INFANTRY			412876 //458752 // this is 65536 * s3o model radius
+#define FUDGE				50 // isn't enough even between smg and rifle
+
+//weapon stuff
+#define MG_MUZZLEFLASH		1024+7
+// tracers
+#define SMALL_TRACER 	2048+1
+#define TRACER_PER_X_SHOTS	5
+
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid) {
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			attach-unit unitid to base;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	/*emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;
+	sleep 50;
+	emit-sfx 257 from exhaust;*/
+	spin wheels1 around x-axis speed <350.082418>;
+	spin wheels2 around x-axis speed <350.082418>;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	stop-spin wheels1 around x-axis decelerate <100.000000>;
+	stop-spin wheels2 around x-axis decelerate <100.000000>;
+}
+
+Create()
+{
+	set STANDINGMOVEORDERS to 0; //hold pos by default.
+	FX_HIDE
+//	spin tow_point around y-axis speed <100>;
+	aim1 = FALSE;
+	treadnum=0;
+	shotCount=0;
+	start-script SmokeUnit();
+}
+
+// Weapon 1 - MG
+QueryWeapon1 (piecenum)
+	{
+	piecenum = mg_flare;
+	}
+
+AimFromWeapon1 (piecenum)
+	{
+	piecenum = mg_gun;
+	}
+
+AimWeapon1(heading, pitch)
+{
+	aim1 = TRUE;
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+
+	// thanks to Fang and zwzsg for this!
+	turn mg_mount to y-axis heading speed <150>; 
+	turn mg_gun to x-axis 0 - pitch speed <100>; 
+	wait-for-turn mg_mount around y-axis; 
+	wait-for-turn mg_gun around x-axis;
+	aim1 = FALSE;
+	return (1);
+}
+
+FireWeapon1()
+{
+	return(0);
+}
+	
+Shot1(just_a_zero)
+{
+	++shotCount;
+	if(shotCount>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx SMALL_TRACER from mg_flare;
+		shotCount=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from mg_flare;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		// abandoned
+		corpsetype = 1;
+	
+		return (0);
+	}
+	if(severity<=250)
+	{
+		// burning
+		corpsetype=2;
+		explode hull type BITMAPONLY;
+		explode wheels2 type FIRE | EXPLODE_ON_HIT;
+		return 0;
+	}
+	if(severity<=1000)
+	{
+		// burning
+		corpsetype=3;
+		explode hull type BITMAPONLY;
+		explode wheels2 type FIRE | EXPLODE_ON_HIT;
+		explode wheels1 type FIRE | EXPLODE_ON_HIT;
+		return 0;
+	}
+	corpsetype = 4;
+	explode wheels1 type SHATTER | EXPLODE_ON_HIT;
+	explode wheels2 type SHATTER | EXPLODE_ON_HIT;
+	explode hull type SHATTER | EXPLODE_ON_HIT;
+}

@@ -1,0 +1,94 @@
+[unitinfo]
+{
+	unitname=ITAOrsa;
+	objectname=ITAOrsa;
+	corpse=ITAOrsa_dead;
+	icontype=destroyer;
+	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	tedclass=SHIP;
+
+	name=Orsa class Escort Destroyer;
+	description=Escort Destroyer;
+	maxdamage=30000;	// little bit less than others - age shows
+	buildcostmetal=100;
+	buildcostenergy=0;
+	buildtime=375;
+	footprintx=8;
+	footprintz=8;
+	mass=500000;
+	floater=1;
+	minwaterdepth=20;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=1300;
+	airsightdistance=1700;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_Destroyer;
+	maxvelocity=2.8; // only 28 kn, not very fast
+	acceleration=0.15;
+	brakerate=0.14;
+	turnrate=25;
+	activatewhenbuilt=1;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=it100mm47_1928;
+	Weapon2=it100mm47_1928;
+
+	Weapon3=it37mm54_1938;
+	Weapon4=it37mm54_1938;
+
+	Weapon5=it450mmtorpedo2x;
+	Weapon6=it450mmtorpedo2x;
+
+	Weapon7=it20mm65breda2x;
+	Weapon8=it20mm65breda2x;
+
+	// 100mm main gun
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=270;
+
+	WeaponMainDir2=0 0 -1;
+	MaxAngleDif2=270;
+
+	// 37mm AA
+	WeaponMainDir3=0 0 -1;
+	MaxAngleDif3=270;
+
+	WeaponMainDir4=0 0 -1;
+	MaxAngleDif4=270;
+
+	// torpedoes
+	WeaponMainDir5=1 0 0;
+	MaxAngleDif5=180;
+	OnlyTargetCategory5=LARGESHIP;
+
+	WeaponMainDir6=-1 0 0;
+	MaxAngleDif6=180;
+	OnlyTargetCategory6=LARGESHIP;
+
+	// 20mm AA
+	WeaponMainDir7=1 0 0;
+	MaxAngleDif7=200;
+
+	WeaponMainDir8=-1 0 0;
+	MaxAngleDif8=200;
+
+	[sfxtypes]
+	{
+	}
+	[customParams]
+	{
+		dontCount=1;
+	}
+}

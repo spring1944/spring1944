@@ -1,0 +1,185 @@
+#define TAK			// This is a TA script
+
+
+#include "constants.h"
+
+piece  base, hull, f22, f12, f21, f11, support_pads, support_rods, leg2, leg1, turret, sleeve, barrel, front_wheels, rear_wheels, flare;
+ 
+static-var restore_delay, reloading, bMoving, GunAiming, rock;
+
+// Signal definitions
+#define SIG_MOVE			1
+#define SIG_AIM				2
+
+#define TURRET_TURN_SPEED	<15>
+#define TURRET_PITCH_SPEED	<10>
+
+#define RECOIL			[-1.5] // distance to recoil the gun
+#define RECOIL_SPEED	[10]
+#define RETURN_SPEED	[2] // speed at which the barrel returns
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret
+#define SMOKEPIECE3 f11
+#define SMOKEPIECE4 sleeve
+
+#include "SmokeUnit_GPL.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define LARGE_MUZZLEFLASH 1024+8
+#define LARGE_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
+
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<70> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+#include "RockUnit_Set.h"
+
+
+
+StartMoving()
+{
+	bMoving = TRUE;
+	hide support_pads;
+	hide support_rods;
+	hide leg1;
+	hide leg2;
+	spin front_wheels around x-axis speed <350.082418>;
+	spin rear_wheels around x-axis speed <350.082418>;
+}
+
+StopMoving()
+{
+	bMoving = FALSE;
+	show support_pads;
+	show support_rods;
+	show leg1;
+	show leg2;
+	stop-spin front_wheels around x-axis decelerate <100.000000>;
+	stop-spin rear_wheels around x-axis decelerate <100.000000>;
+}
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+Create()
+{
+	hide flare;
+	rock = FALSE;
+	
+	reloading = FALSE;
+
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM;
+
+	sleep restore_delay;
+	turn turret to y-axis 0 speed TURRET_TURN_SPEED;
+	turn sleeve to x-axis 0 speed TURRET_PITCH_SPEED;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep restore_delay / 2;
+	reloading = FALSE;
+}
+
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimWeapon1(heading, pitch)
+{
+
+	if (bMoving) return 0; // don't aim weap1 if moving
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	GunAiming=1;
+
+	turn turret to y-axis heading speed TURRET_TURN_SPEED;
+	turn sleeve to x-axis (0 - pitch) speed TURRET_PITCH_SPEED;
+
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+
+	start-script RestoreTurret();
+	if (reloading) return 0; // aim first, then pause if the shot cannot fire
+	GunAiming=0;
+	return TRUE;
+}
+
+FireWeapon1()
+{
+	rock = TRUE; // firing a heavy weapon
+
+	emit-sfx LARGE_MUZZLEFLASH from flare;
+	emit-sfx LARGE_MUZZLEDUST from flare;
+
+	move barrel to z-axis RECOIL speed RECOIL_SPEED;
+
+	wait-for-move barrel along z-axis;
+	move barrel to z-axis 0 speed RETURN_SPEED;
+	start-script Reload(); // start reload timer after firing
+	rock = FALSE;
+	return (0);
+}
+
+
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		// abandoned vehicle
+		corpsetype = 1;
+		
+		return (0);
+	}
+	if(severity <= 999)
+	{
+		// burning vehicle
+		corpsetype = 2;
+		explode front_wheels type SHATTER | EXPLODE_ON_HIT;
+		explode turret type FALL | FIRE | EXPLODE_ON_HIT;
+		explode hull type BITMAPONLY;
+		return(0);
+	}
+	// outright destroyed vehicle
+	corpsetype = 3;
+	explode front_wheels type SHATTER | EXPLODE_ON_HIT;
+	explode rear_wheels type SHATTER | EXPLODE_ON_HIT;
+	explode turret type FALL | FIRE | EXPLODE_ON_HIT;
+	explode sleeve type FALL | FIRE | EXPLODE_ON_HIT;
+	explode barrel type FALL | FIRE | EXPLODE_ON_HIT;
+	explode base type SHATTER;
+}

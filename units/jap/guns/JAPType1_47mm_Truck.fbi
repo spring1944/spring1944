@@ -1,0 +1,55 @@
+[unitinfo] {
+  unitname=JAPType1_47mm_Truck;
+  name=Towed Type 1 47mm Gun;
+  description=Anti-Tank Gun;
+  acceleration=0.3;
+  airSightDistance=1250;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1050;
+  buildPic=JAPType1_47mm.png;
+  buildTime=1050;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=JAPIsuzuTX40_Abandoned;
+  [customParams] {
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=10;
+    weaponswithammo=0;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=attruck;
+  leaveTracks=1;
+  mass=300;
+  maxDamage=300;
+  maxReverseVelocity=1.59;
+  maxSlope=10;
+  maxVelocity=3.8; //4.8
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=JAPType1_47mm_Truck;
+  script=gerflak38_truck.cob;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=JAPTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turninplace=0;
+  turnRate=440;
+
+}
+

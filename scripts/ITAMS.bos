@@ -1,0 +1,314 @@
+#define TAK
+
+piece base, hull, railings, turret1, aa20_sleeve1, aa20_barrel1, aa20_flare1,
+ 	  turret2, aa20_sleeve2, aa20_barrel2, aa20_flare2,
+	  torpedo1, torpedo2,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define AA20_TURRET_TURN		<45>
+#define AA20_TURRET_PITCH		<45>
+
+//*********************Recoil
+#define AA20_GUN_RECOIL			[0.4]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[0.5]
+
+//*********************Death anim
+#define HULL_LIST_SPEED		<20>
+#define HULL_LIST_ANGLE		<180>
+
+//*********************Cruise mode
+#define CRUISE_MODE_ANGLE	<-4>
+#define CRUISE_MODE_RAISE_SPEED	<1>
+#define CRUISE_MODE_START_DIVIDER	4
+#define CRUISE_MODE_START_MULTIPLIER	3
+#define CRUISE_MODE_PERIOD	250
+
+//********************Reload time
+#define TORPEDO_RELOAD		30000
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+#define SIG_AIM4			32
+
+#define SMOKEPIECE	hull
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+static-var					MaxSpeed, CruiseTriggerSpeed, bMoving, hasTorp1, hasTorp2;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	turn turret2 to y-axis <180> now;
+	hasTorp1=TRUE;
+	hasTorp2=TRUE;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Reload1()
+{
+	if(hasTorp1)
+	{
+		return;
+	} else
+	{
+		sleep TORPEDO_RELOAD;
+		hasTorp1 = TRUE;
+		show torpedo1;
+	}
+}
+
+Reload2()
+{
+	if(hasTorp2)
+	{
+		return;
+	} else
+	{
+		sleep TORPEDO_RELOAD;
+		hasTorp2 = TRUE;
+		show torpedo2;
+	}
+}
+
+CruiseControl()
+{
+	var CurrentSpeed;
+	set-signal-mask SIG_DEATH;
+	while(TRUE)
+	{
+		CurrentSpeed = get CURRENT_SPEED;
+		if(CurrentSpeed > CruiseTriggerSpeed)
+		{
+			turn hull to x-axis CRUISE_MODE_ANGLE speed CRUISE_MODE_RAISE_SPEED;		
+		} else
+		{
+			turn hull to x-axis <0> speed CRUISE_MODE_RAISE_SPEED;
+		}
+		sleep CRUISE_MODE_PERIOD;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	MaxSpeed = get MAX_SPEED;
+	CruiseTriggerSpeed = MaxSpeed * CRUISE_MODE_START_MULTIPLIER / CRUISE_MODE_START_DIVIDER;
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	start-script CruiseControl();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = hull;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	bMoving = TRUE;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_AIM4|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn turret1 to y-axis <0> speed AA20_TURRET_TURN;
+	turn aa20_sleeve1 to x-axis <0> speed AA20_TURRET_PITCH;
+
+	turn turret2 to y-axis <180> speed AA20_TURRET_TURN;
+	turn aa20_sleeve2 to x-axis <0> speed AA20_TURRET_PITCH;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = torpedo1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = torpedo1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	while(!hasTorp1)
+	{
+		sleep 50;
+	}
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	hide torpedo1;
+	start-script Reload1();
+	sleep 200;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = torpedo2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = torpedo2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	while(!hasTorp2)
+	{
+		sleep 50;
+	}
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	hide torpedo2;
+	start-script Reload2();
+	sleep 200;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = aa20_flare1;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = turret1;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn turret1 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret1 around y-axis;
+	wait-for-turn aa20_sleeve1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+	show aa20_flare1;
+	move aa20_barrel1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare1;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = aa20_flare2;
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = turret2;
+}
+
+AimWeapon4(heading, pitch)
+{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn turret2 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret2 around y-axis;
+	wait-for-turn aa20_sleeve2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+	show aa20_flare2;
+	move aa20_barrel2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+	hide aa20_flare2;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn hull around z-axis;
+		explode hull type		BITMAPONLY|BITMAP1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode hull type		SHATTER|BITMAP1;
+	return (TRUE);
+}
