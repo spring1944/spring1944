@@ -155,7 +155,7 @@ function gadget:Initialize()
   end
 end
 
-function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, attackerID, attackerDefID, attackerTeam)
+function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
   -- check if damage was done by a weapon (not falling or debris)
   if not weaponDefID or weaponDefID < 0 or not ValidUnitID(unitID) then return damage end
   -- prevent self damage
