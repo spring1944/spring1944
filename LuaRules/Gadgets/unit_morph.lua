@@ -392,6 +392,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
   if not isFinished(unitID) then return true end
 
   Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
+  Spring.MoveCtrl.Enable(unitID)
   --Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
   --Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
   Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, { "alt" })
