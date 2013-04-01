@@ -428,6 +428,7 @@ local function StopMorph(unitID, morphData)
   --Spring.AddUnitResource(unitID, 'energy', usedEnergy)
 
   SendToUnsynced("unit_morph_stop", unitID)
+  Spring.MoveCtrl.Disable(unitID)
 
   local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphData.def.stopCmd)
   local newType
