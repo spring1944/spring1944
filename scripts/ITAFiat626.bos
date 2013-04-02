@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  base, body, load_shoulder, load_arm, front_wheels, rear_wheels, tow_point;
+piece  base, load_shoulder, load_arm, front_wheels, rear_wheels, tow_point;
  
 static-var restore_delay, skip;
 
@@ -114,7 +114,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 AimFromWeapon1(piecenum) //supply range ring 
@@ -151,7 +151,7 @@ Killed(severity, corpsetype)
 		// burning vehicle
 		corpsetype = 2;
 		explode front_wheels type SHATTER | EXPLODE_ON_HIT;
-		explode body type BITMAPONLY;
+		explode base type BITMAPONLY;
 		return(0);
 	}
 	// outright destroyed vehicle
