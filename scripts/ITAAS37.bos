@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece	base, hull, load_shoulder, load_arm, wheels1, wheels2, tow_point, 
+piece	base, load_shoulder, load_arm, wheels1, wheels2, tow_point, 
 		mg_mount, mg_gun, mg_flare;
  
 static-var restore_delay, bMoving, treadnum, aim1, shotCount;
@@ -153,7 +153,7 @@ Shot1(just_a_zero)
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 Killed(severity, corpsetype)
@@ -169,7 +169,7 @@ Killed(severity, corpsetype)
 	{
 		// burning
 		corpsetype=2;
-		explode hull type BITMAPONLY;
+		explode base type BITMAPONLY;
 		explode wheels2 type FIRE | EXPLODE_ON_HIT;
 		return 0;
 	}
@@ -177,7 +177,7 @@ Killed(severity, corpsetype)
 	{
 		// burning
 		corpsetype=3;
-		explode hull type BITMAPONLY;
+		explode base type BITMAPONLY;
 		explode wheels2 type FIRE | EXPLODE_ON_HIT;
 		explode wheels1 type FIRE | EXPLODE_ON_HIT;
 		return 0;
@@ -185,5 +185,5 @@ Killed(severity, corpsetype)
 	corpsetype = 4;
 	explode wheels1 type SHATTER | EXPLODE_ON_HIT;
 	explode wheels2 type SHATTER | EXPLODE_ON_HIT;
-	explode hull type SHATTER | EXPLODE_ON_HIT;
+	explode base type SHATTER | EXPLODE_ON_HIT;
 }

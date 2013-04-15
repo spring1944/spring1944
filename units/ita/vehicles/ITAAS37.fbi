@@ -37,7 +37,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
-  objectName=ITAAS37;
+  objectName=ITAAS37.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
