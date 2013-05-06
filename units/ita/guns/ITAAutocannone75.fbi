@@ -66,7 +66,7 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=ansaldo75mml18he;
+  weapon1=ansaldo75mml27he;
   maxAngleDif1=30;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
