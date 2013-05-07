@@ -43,6 +43,7 @@
 [breda3520mmap] {
   name=Breda Model 35 AP;
   accuracy=100; // 255
+  avoidFeature=0;
   areaOfEffect=2;
   ballistic=1;
   burst=3;
@@ -88,6 +89,7 @@
 [breda3520mmhe] {
   name=Breda Model 35 High-Explosive Shells;
   accuracy=100;
+  avoidFeature=0;
   areaOfEffect=24;
   ballistic=1;
   burnblow=0;

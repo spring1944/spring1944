@@ -45,6 +45,7 @@
 [jap75mmtype3_he] {
   name=Type 3 75mm/38, High Explosives;
   accuracy=300;
+  avoidFeature=0;
   areaOfEffect=104;
   ballistic=1;
   collisionSize=3;
