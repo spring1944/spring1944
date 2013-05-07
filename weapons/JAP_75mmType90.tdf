@@ -1,6 +1,7 @@
 [jap75mmtype90_ap] {
   name=Type 90 75mm Field Gun, Armour-Piercing;
   accuracy=100; // 290
+  avoidFeature=0;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;

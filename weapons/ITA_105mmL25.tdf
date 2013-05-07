@@ -1,6 +1,7 @@
 [ita105mml25he] {
   name=Italian 105mm/L25 direct-fire gun;
   accuracy=370;
+  avoidFeature=0;
   areaOfEffect=129;
   ballistic=1;
   collisionSize=4;
@@ -42,6 +43,7 @@
 [ita105mml25smoke] {
   name=Italian 105mm/L25 direct-fire gun;
   accuracy=470;
+  avoidFeature=0;
   areaOfEffect=30;
   ballistic=1;
   collisionSize=4;
@@ -82,6 +84,7 @@
 [ita105mml25HEAT] {
   name=Italian 105mm/L25 Effeto Pronto;
   accuracy=300;
+  avoidFeature=0;
   areaOfEffect=28;
   ballistic=1;
   collisionSize=4;

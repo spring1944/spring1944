@@ -1,6 +1,7 @@
 [jap37mmtype1_ap] {
   name=Type 1 37 mm Gun - Armour Piercing;//caped
   accuracy=100; //290
+  avoidFeature=0;
   areaOfEffect=5;
   ballistic=1;
   canAttackGround=0;

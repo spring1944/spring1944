@@ -1,6 +1,7 @@
 [japshort120mm_he] {
   name=Short naval 120mm direct-fire gun;
   accuracy=370;
+  avoidFeature=0;
   areaOfEffect=129;
   ballistic=1;
   collisionSize=4;

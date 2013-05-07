@@ -1,6 +1,7 @@
 [ansaldo90mml53ap] {
   name=Italian 90mm Ansaldo 90/53 M41 L/53 Armour-Piercing;
   accuracy=100; // 135
+  avoidFeature=0;
   areaOfEffect=10;
   ballistic=1;
   canAttackGround=0;
@@ -43,6 +44,7 @@
 [ansaldo90mml53he] {
   name=Italian 90mm Ansaldo 90/53 M41 L/53 , High Explosives;
   accuracy=100;
+  avoidFeature=0;
   areaOfEffect=104;
   ballistic=1;
   collisionSize=3;
