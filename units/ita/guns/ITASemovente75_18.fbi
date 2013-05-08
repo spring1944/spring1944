@@ -40,7 +40,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITASemovente75_18;
+  objectName=ITASemovente75_18.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
@@ -67,7 +67,7 @@
   trackStrength=10;
   trackStretch=1;
   trackType=Stdtank;
-  trackWidth=19;
+  trackWidth=15;
   turninplace=0;
   turnRate=175;
   badTargetCategory=FLAG;

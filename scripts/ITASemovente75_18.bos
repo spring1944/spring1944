@@ -1,6 +1,6 @@
 #include "constants.h" // Thank you Argh
 
-piece	base, hull, front_wheels, rear_wheels,
+piece	base, front_wheels, rear_wheels,
 		roller1, roller2, roller3, roller4, roller5, roller6, roller7, roller8,
 		tracks,  exhaust1, exhaust2,
 		gun_base, barrel, flare;
@@ -148,7 +148,7 @@ Reload()
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 // Weapon 1 - Main cannon, HE
@@ -279,8 +279,8 @@ Killed(severity, corpsetype)
 	{
 		// burning tank
 		corpsetype = 2;
-		explode hull type BITMAPONLY;
-		explode tracks type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode base type BITMAPONLY;
+		explode tracks type SHATTER;
 		return (0);
 	}
 	if(severity <= 1000)
@@ -299,7 +299,7 @@ Killed(severity, corpsetype)
 	}
 	// OMGWTF direct asteroid hit!
 	corpsetype = 4;
-	explode hull type SHATTER;
+	explode base type SHATTER;
 	explode barrel type SHATTER;
 	explode front_wheels type SHATTER;
 	explode rear_wheels type SHATTER;
