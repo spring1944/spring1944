@@ -6,7 +6,7 @@
   featureDead=ITASemovente105_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITASemovente105;
+  object=ITASemovente105.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
