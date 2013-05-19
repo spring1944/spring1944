@@ -41,7 +41,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITASemovente75_46;
+  objectName=ITASemovente75_46.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
