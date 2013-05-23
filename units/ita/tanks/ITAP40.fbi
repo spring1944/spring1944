@@ -40,7 +40,7 @@
   maxWaterDepth=15;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITAP40;
+  objectName=ITAP40.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
