@@ -1,6 +1,6 @@
 #include "constants.h" // Thank you Argh
 
-piece  base, turret, mantlet, barrel, flare, brakeleft, brakeright, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
+piece  truebase, base, turret, mantlet, barrel, flare, brakeleft, brakeright, coaxflare, exhaust, frontwheel, rearwheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, tracks1, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, MGAiming, GunAiming;
 
@@ -101,6 +101,9 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	bMoving = TRUE;
+	turn base to x-axis <-5> speed <16>;
+	wait-for-turn base around x-axis;
+	turn base to x-axis 0 speed <8>;
 
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
