@@ -101,7 +101,15 @@ StartMoving()
 {
 	signal SIG_MOVE;
 	bMoving = TRUE;
-	turn base to x-axis <-5> speed <16>;
+	var angle;
+	angle = <-5>;
+	sleep (32);
+	//get PRINT (get 109);
+	if (get 109) {
+		angle = <5>;
+	}
+	
+	turn base to x-axis angle speed <16>;
 	wait-for-turn base around x-axis;
 	turn base to x-axis 0 speed <8>;
 
@@ -120,7 +128,15 @@ StopMoving()
 	signal SIG_MOVE;
 	bMoving = FALSE;
 	//sleep 1000;
-	turn base to x-axis <5> speed <16>;
+	
+	var angle;
+	angle = <5>;
+	sleep (32);
+	//get PRINT (get 109);
+	if (get 109) {
+		angle = <-5>;
+	}
+	turn base to x-axis angle speed <16>;
 	wait-for-turn base around x-axis;
 	turn base to x-axis 0 speed <8>;
 	stop-spin frontwheel around x-axis;
