@@ -15,7 +15,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, M
 #define SMOKEPIECE3 mantlet
 #define SMOKEPIECE4 exhaust
 
-#include "SmokeUnit_GPL.h" // Thanks again to Argh
+#include "SmokeUnit_GPL.h"
 
 #define FX_HIDE\
 	hide flare;\
@@ -119,7 +119,10 @@ StopMoving()
 {
 	signal SIG_MOVE;
 	bMoving = FALSE;
-
+	//sleep 1000;
+	turn base to x-axis <5> speed <16>;
+	wait-for-turn base around x-axis;
+	turn base to x-axis 0 speed <8>;
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;
 	stop-spin wheel1 around x-axis;
