@@ -33,6 +33,9 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, M
 // definitions for wheels
 #define WHEEL_SPIN		<600>
 #define WHEEL_ACCEL		<150>
+#define DIP				<4>
+#define DIP_REVERSE		<-4>
+#define DIP_SPEED		DIP * 2
 
 // definitions for turret movement
 #define TURR_TRAVERSE	<13>
@@ -102,16 +105,16 @@ StartMoving()
 	signal SIG_MOVE;
 	bMoving = TRUE;
 	var angle;
-	angle = <-5>;
+	angle = DIP_REVERSE;
 	sleep (32);
 	//get PRINT (get 109);
 	if (get 109) {
-		angle = <5>;
+		angle = DIP;
 	}
 	
-	turn base to x-axis angle speed <16>;
+	turn base to x-axis angle speed DIP_SPEED * 2;
 	wait-for-turn base around x-axis;
-	turn base to x-axis 0 speed <8>;
+	turn base to x-axis 0 speed DIP_SPEED;
 
 	spin frontwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin rearwheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -130,15 +133,16 @@ StopMoving()
 	//sleep 1000;
 	
 	var angle;
-	angle = <5>;
+	angle = DIP;
 	sleep (32);
 	//get PRINT (get 109);
 	if (get 109) {
-		angle = <-5>;
+		angle = DIP_REVERSE;
 	}
-	turn base to x-axis angle speed <16>;
+	turn base to x-axis angle speed DIP_SPEED * 2;
 	wait-for-turn base around x-axis;
-	turn base to x-axis 0 speed <8>;
+	turn base to x-axis 0 speed DIP_SPEED;
+	
 	stop-spin frontwheel around x-axis;
  	stop-spin rearwheel around x-axis;
 	stop-spin wheel1 around x-axis;
