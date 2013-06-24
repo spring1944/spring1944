@@ -5,6 +5,7 @@ local ATRifleClass = Weapon:New{
   areaOfEffect       = 1,
   avoidFeature       = true,
   avoidFriendly      = false,
+  impulseFactor      = 0.1,
   collideFeature     = true,
   collideFriendly    = false,
   collisionSize      = 2.5,
