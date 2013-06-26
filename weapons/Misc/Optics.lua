@@ -5,6 +5,7 @@ local OpticClass = Weapon:New{
   areaOfEffect       = 0,
   avoidFeature       = false,
   avoidFriendly      = false,
+  avoidGround        = false,
   burnblow           = true,
   collideFeature     = false,
   collideFriendly    = false,
