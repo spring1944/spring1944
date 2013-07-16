@@ -24,6 +24,7 @@ TransportPickup(unitid)
 
 TransportDrop(unitid, position)
 {
+	var dy;
 	set BUSY to 1;
 	// just dump guns off where they are
 	if( get UNIT_HEIGHT (unitid) != INFANTRY) 
@@ -40,9 +41,14 @@ TransportDrop(unitid, position)
 		move load_arm to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
 		// sleep for at least a frame (so unit is not dropped by attach-unit)
 		sleep 50;
+		// synchronize dropped unit's y coord with the ground so it does not get crazy impulse
+		dy = get GROUND_HEIGHT(position) - get PIECE_Y(load_arm);
+		move load_arm to y-axis dy now;
+		sleep 50;
 		//get PRINT (unitid, position / 65536, position & 65535);
 		drop-unit unitid;
 		move load_arm to z-axis 0 now;
+		move load_arm to y-axis 0 now;
 	}
 	set BUSY to 0;
 }
