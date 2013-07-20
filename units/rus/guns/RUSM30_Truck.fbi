@@ -10,7 +10,7 @@
   buildTime=2000;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=RUSZiS5_Destroyed;
+  corpse=RUSYa12_abandoned;
   [customParams] {
     lowammolevel=1;
     maxammo=4;
@@ -25,10 +25,10 @@
   idleTime=1000;
   leaveTracks=1;
   mass=300;
-  maxDamage=300;
-  maxReverseVelocity=2.25;
+  maxDamage=400;
+  maxReverseVelocity=1.2;
   maxSlope=10;
-  maxVelocity=4.5; //4.8
+  maxVelocity=2.5; //4.8
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
