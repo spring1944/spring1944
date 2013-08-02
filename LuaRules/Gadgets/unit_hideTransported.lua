@@ -29,6 +29,8 @@ local toBeLoaded = {}
 
 if (gadgetHandler:IsSyncedCode()) then
 
+local DelayCall = GG.Delay.DelayCall
+
 function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions)
 	if cmdID == CMD_LOAD_ONTO then
 		local transportID = cmdParams[1]
@@ -83,6 +85,7 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	if unitDef.xsize == 2 and not (transportDef.minWaterDepth > 0) and not unitDef.customParams.hasturnbutton then 
 		SetUnitNoDraw(unitID, false)
 	end
+	DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
 end
 
 else

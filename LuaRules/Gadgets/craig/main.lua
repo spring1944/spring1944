@@ -32,17 +32,12 @@ end
 -- Seed unsynced random number generator.
 if (math.randomseed ~= nil) then
 	--[[
-	This hack is based on the facts that:
-	1) A "timer" is a light userdata,
-	2) A "scream" is a userdata.
-	3) Spring.DiffTimers doesn't not check the type of it's userdata arguments,
-	   but just casts the userdata pointers to unsigned ints and returns their
-	   difference.
-	As such, the next line actually calculates the difference between
-	SDL_GetTicks() and an arbitrary (userdata) pointer value.
-	Credits to lurker and trepan for ideas for this hack :-)
+		initialize random generator:
+			could be more random, but should be ok,
+			sadly os.time() doesn't work here
 	]]--
-	local r = Spring.DiffTimers(Spring.GetTimer(), Script.CreateScream())
+	local x, y = Spring.GetMouseState()
+	local r = Spring.GetFPS() + x + y
 	--Spring.Echo("C.R.A.I.G.: Seeding random number generator: " .. r)
 	math.random()      -- first random() call calls randomseed(1) internally
 	math.randomseed(r) -- hack until spring seeds it itself

@@ -22,7 +22,7 @@ GG.CustomCommands.IDs = {}
 _G.CustomCommandIDs = {}
 
 -- Constants
-local BASE_CMD_ID = 30000 -- stupid gadgets.lua
+local BASE_CMD_ID = 1001
 
 -- Variables
 local customCommands = GG.CustomCommands
