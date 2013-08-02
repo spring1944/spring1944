@@ -1,6 +1,6 @@
 #include "constants.h"
 
-piece  base, body, wheel1, wheel2, carriage, wheel3;
+piece  base, tracks, tent, front_wheels, roller_1, roller_2, roller_3, roller_4, roller_5, roller_6, roller_7, roller_8, carriage, wheel3;
  
 static-var gunTowHeading, isTowed, normalSpeed;
 
@@ -8,10 +8,7 @@ static-var gunTowHeading, isTowed, normalSpeed;
 #define SIG_TOW		64
 
 // definitions for wheels
-#define WHEEL_SPIN		<100>
-#define WHEEL_ACCEL		<30>
-
-
+#define WHEEL_SPIN		<350>
 
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
@@ -41,26 +38,32 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 	}
 }
 
-
 StartMoving()
 {
-	/*emit-sfx 257 from exhaust;
-	sleep 50;
-	emit-sfx 257 from exhaust;
-	sleep 50;
-	emit-sfx 257 from exhaust;*/
-	spin wheel1 around x-axis speed <350.082418>;
-	spin wheel2 around x-axis speed <350.082418>;
-	spin wheel3 around x-axis speed <350.082418>;
-	
+	spin front_wheels around x-axis speed WHEEL_SPIN;
+	spin roller_1 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_2 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_3 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_4 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_5 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_6 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_7 around x-axis speed WHEEL_SPIN * 1.5;
+	spin roller_8 around x-axis speed WHEEL_SPIN * 1.5;
+	spin wheel3 around x-axis speed WHEEL_SPIN;
 }
 
 StopMoving()
 {
-	stop-spin wheel1 around x-axis decelerate <100.000000>;
-	stop-spin wheel2 around x-axis decelerate <100.000000>;
+	stop-spin front_wheels around x-axis decelerate <100.000000>;
+	stop-spin roller_1 around x-axis decelerate <100.000000>;
+	stop-spin roller_2 around x-axis decelerate <100.000000>;
+	stop-spin roller_3 around x-axis decelerate <100.000000>;
+	stop-spin roller_4 around x-axis decelerate <100.000000>;
+	stop-spin roller_5 around x-axis decelerate <100.000000>;
+	stop-spin roller_6 around x-axis decelerate <100.000000>;
+	stop-spin roller_7 around x-axis decelerate <100.000000>;
+	stop-spin roller_8 around x-axis decelerate <100.000000>;
 	stop-spin wheel3 around x-axis decelerate <100.000000>;
-
 }
 
 Create()
@@ -71,7 +74,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 Killed(severity, corpsetype)
@@ -79,15 +82,13 @@ Killed(severity, corpsetype)
 	if( severity <= 999 )
 	{
 		corpsetype = 1;
-		explode wheel1 type SHATTER | EXPLODE_ON_HIT;
-		explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+		explode front_wheels type SHATTER | EXPLODE_ON_HIT;
 		explode wheel3 type SHATTER | EXPLODE_ON_HIT;
 		
 		return (0);
 	}
 	corpsetype = 1;
-	explode wheel1 type SHATTER | EXPLODE_ON_HIT;
-	explode wheel2 type SHATTER | EXPLODE_ON_HIT;
+	explode front_wheels type SHATTER | EXPLODE_ON_HIT;
 	explode carriage type SHATTER | EXPLODE_ON_HIT;
-	explode base type SHATTER;
+	explode tent type SHATTER;
 }
