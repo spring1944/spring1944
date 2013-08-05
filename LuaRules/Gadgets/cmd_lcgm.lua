@@ -66,12 +66,12 @@ local function EndBeach(unitID, disable)
 	if disable then -- unit has surfaced
 		mcDisable(unitID) 
 		SetUnitArmored(unitID, false)
-		SetUnitWeaponState(unitID, 0, {accuracy = BASE_ACCURACY})
 		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY})
+		SetUnitWeaponState(unitID, 2, {accuracy = BASE_ACCURACY})
 	else -- unit is grounded
 		SetUnitArmored(unitID, true, ARMOUR_MULTIPLE) 
-		SetUnitWeaponState(unitID, 0, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
 		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
+		SetUnitWeaponState(unitID, 2, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
 	end
 end
 

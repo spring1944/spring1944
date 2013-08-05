@@ -154,7 +154,7 @@ function ApplySmoke(unitID)
 			if (tmpWeapon) and (type(tmpWeapon) == "table") then
 				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
 				tmpAccuracy = tmpAccuracy * ACCURACY_MULT
-				SetUnitWeaponState(unitID, i - 1, {accuracy = tmpAccuracy})
+				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
 			end
 		end
 	end
@@ -189,7 +189,7 @@ function RemoveSmoke(unitID)
 		for i, tmpWeapon in pairs(tmpWeapons) do
 			if (tmpWeapon) and (type(tmpWeapon) == "table") then
 				local tmpAccuracy = WeaponDefs[tmpWeapon.weaponDef].accuracy
-				SetUnitWeaponState(unitID, i - 1, {accuracy = tmpAccuracy})
+				SetUnitWeaponState(unitID, i, {accuracy = tmpAccuracy})
 			end
 		end
 	end

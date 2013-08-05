@@ -47,7 +47,7 @@ local function updateUnit(allyTeam, unitID)
 		end
 	end
 	if weapons ~= nil then
-		for i=0, #weapons do
+		for i=1, #weapons do
 			SetUnitWeaponState(unitID, i, {accuracy = newAccuracy})
 		end
 	end

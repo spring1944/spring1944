@@ -163,7 +163,7 @@ local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 		
 		-- Stalling. (stall penalty!)
 		if (stalling) then
-			SetUnitWeaponState(unitID, 0, {reloadTime = STALL_PENALTY*reload})
+			SetUnitWeaponState(unitID, 1, {reloadTime = STALL_PENALTY*reload})
 			return
 		end
 
@@ -180,12 +180,12 @@ local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 			i = i + 1
 		end
 		if supplierID then
-			SetUnitWeaponState(unitID, 0, {reloadTime = SUPPLY_BONUS*reload})
+			SetUnitWeaponState(unitID, 1, {reloadTime = SUPPLY_BONUS*reload})
 			return
 		end
 
 		-- reset reload time otherwise
-		SetUnitWeaponState(unitID, 0, {reloadTime = reload})
+		SetUnitWeaponState(unitID, 1, {reloadTime = reload})
 		
 		-- Use resources if outside of supply
 		--[[if (reloadFrame > savedFrame[unitID]) then

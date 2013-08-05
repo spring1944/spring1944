@@ -463,7 +463,7 @@ do
         ammo		  = tonumber(ud.customParams.maxammo),
 		fear		  = ud.customParams.feartarget,
         reloadTime    = ud.reloadTime,
-        primaryWeapon = ud.primaryWeapon-1,
+        primaryWeapon = ud.primaryWeapon,
 		transCap      = ud.transportCapacity,
       }
     end

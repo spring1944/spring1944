@@ -89,10 +89,10 @@ local function ProcessWeapons(unitID)
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
 	local weaponFired = false
 	local reloadFrame = 0
-	local weapNum = 0
+	local weapNum = 1
 
 	--for weapNum = 0, weaponsWithAmmo - 1 do
-	while not weaponFired and weapNum < weaponsWithAmmo do
+	while not weaponFired and weapNum <= weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
 		--Spring.Echo(reloadFrame)
 		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
@@ -107,7 +107,7 @@ local function ProcessWeapons(unitID)
 		end]]
 		if ammoLevel == 1 then
 			savedFrames[unitID] = reloadFrame
-			for weapNum = 0, weaponsWithAmmo - 1 do
+			for weapNum = 1, weaponsWithAmmo do
 				SetUnitWeaponState(unitID, weapNum, {reloadTime = 99999, reloadState = reloadFrame + 99999})
 			end
 		end
@@ -189,7 +189,7 @@ local function Resupply(unitID)
 					end
 					Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
 				end
-				for weapNum = 0, weaponsWithAmmo - 1 do
+				for weapNum = 1, weaponsWithAmmo do
 					SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
 					vehicles[unitID].reloadFrame[weapNum] = reloadState
 				end
@@ -278,7 +278,7 @@ function gadget:UnitUnloaded(unitID, unitDefID)
 	if ud.customParams.maxammo then
 		local weaponsWithAmmo = ud.customParams.weaponswithammo or 2
 
-		for weapNum = 0, weaponsWithAmmo - 1 do
+		for weapNum = 1, weaponsWithAmmo do
 			local reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
 			vehicles[unitID].reloadFrame[weapNum] = reloadFrame
 		end
@@ -335,7 +335,7 @@ function gadget:GameFrame(n)
 						ammoLevel = ammo,
 						reloadFrame = {},
 					}
-					for weaponNum = 0, ud.customParams.weaponswithammo - 1 do
+					for weaponNum = 1, ud.customParams.weaponswithammo do
 						vehicles[unitID].reloadFrame[weaponNum] = 0
 						if ammo == 0 then
 							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
