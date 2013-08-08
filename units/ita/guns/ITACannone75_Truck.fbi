@@ -32,7 +32,7 @@
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
   objectName=ITACannone75_Truck;
-  script=gerpak40_truck.cob;
+  script=ruszis3_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
