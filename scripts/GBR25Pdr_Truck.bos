@@ -3,7 +3,7 @@
 //#include "sfxtype.h"
 #include "constants.h"
 
-piece  base, body, wheel1, wheel2, carriage, wheel3;
+piece  base, wheel1, wheel2, spare, carriage, wheel3;
  
 static-var gunTowHeading, isTowed, normalSpeed;
 
@@ -13,7 +13,6 @@ static-var gunTowHeading, isTowed, normalSpeed;
 // definitions for wheels
 #define WHEEL_SPIN		<100>
 #define WHEEL_ACCEL		<30>
-
 
 
 
@@ -74,7 +73,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 Killed(severity, corpsetype)

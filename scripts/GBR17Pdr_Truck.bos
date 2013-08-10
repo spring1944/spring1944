@@ -3,26 +3,9 @@
 //#include "sfxtype.h"
 #include "constants.h"
 
-piece  base, body, wheel1, wheel2, carriage, wheel3, hitch, height, null;
+piece  base, wheel1, wheel2, spare, carriage, wheel3;
  
 static-var gunTowHeading, isTowed, normalSpeed;
-
-// *** added by Yuritch
-static-var isMoving, curTrailerDir, oldMainDir;
-/*#define TRAILER_CHECK_PERIOD	30
-#define TRAILER_TURN_SPEED		<0.5>
-#define MAX_DELTA_ANGLE			<70>
-#define MIN_DELTA_ANGLE			1.1*TRAILER_TURN_SPEED
-#define MAX_VEH_TURN_ANGLE		<5>*/
-
-#define SIG_MOVE				1
-
-#define ANIM_PERIOD				50
-#define MAX_PIVOT				<25>
-#define MIN_PIVOT				<-25>
-#define PIVOT_MOD				MAX_PIVOT / 440 //appox. equal to MAX_PIVOT / turnrate
-#define PIVOT_SPEED				<60>
-// ***
 
 // Signal definitions
 #define SIG_TOW		64
@@ -31,90 +14,7 @@ static-var isMoving, curTrailerDir, oldMainDir;
 #define WHEEL_SPIN		<100>
 #define WHEEL_ACCEL		<30>
 
-// *** added by Yuritch
-TrailerCheck()
-{
-	var lastHeading, currHeading, diffHeading, pivotAngle, opp, adj;
-	lastHeading = GET HEADING;
-	while (1) {
-		//pivot
-		currHeading = GET HEADING;
-		diffHeading = currHeading - lastHeading;
-		if (diffHeading > 0x7fff) diffHeading = diffHeading - 0x10000;
-		if (diffHeading < -0x8000) diffHeading = diffHeading + 0x10000;
-		pivotAngle = diffHeading * PIVOT_MOD;
-		if (pivotAngle > MAX_PIVOT) pivotAngle = MAX_PIVOT;
-		if (pivotAngle < MIN_PIVOT) pivotAngle = MIN_PIVOT;
-		//turn front to y-axis pivotAngle speed PIVOT_SPEED;
-		turn hitch to y-axis 0 - pivotAngle speed PIVOT_SPEED;
-		opp = (get PIECE_Y(null)) - (get PIECE_Y(height));
-		adj = get XZ_HYPOT( (get PIECE_XZ(null)) - (get PIECE_XZ(height) ));
-		//get PRINT(opp, adj, (get ATAN (opp, adj) / 182));
-		turn carriage to x-axis get ATAN (opp, adj) now;
-		
-		lastHeading = currHeading;
-		sleep ANIM_PERIOD;
-	}
-	/*set-signal-mask SIG_DEATH;
-	var deltaAngle, mainAngle;
-	while(TRUE)
-	{
-		sleep TRAILER_CHECK_PERIOD;
-		if(isMoving)
-		{
-			mainAngle = get HEADING;
-			// check the vehicle itself - if it turns fast, apply the correction to trailer angle immediately
-			deltaAngle = mainAngle - oldMainDir;
-			if((get ABS(deltaAngle)) > MAX_VEH_TURN_ANGLE)
-			{
-				curTrailerDir = curTrailerDir - deltaAngle;
-			}
-			oldMainDir = mainAngle;
-			// now proceed with the trailer
-			deltaAngle = curTrailerDir - mainAngle;
-			// normalize the angle
-			if(deltaAngle > <180>)
-			{
-				deltaAngle = deltaAngle - <360>;
-			}
-			if(deltaAngle < <-180>)
-			{
-				deltaAngle = deltaAngle + <360>;
-			}
-			// get PRINT(mainAngle, curTrailerDir, deltaAngle, MAX_DELTA_ANGLE);
-			if((get ABS(deltaAngle)) < MIN_DELTA_ANGLE)
-			{
-				deltaAngle = 0;
-				curTrailerDir = mainAngle;
-			}
-			if(deltaAngle > MAX_DELTA_ANGLE)
-			{
-				curTrailerDir = mainAngle + MAX_DELTA_ANGLE;
-			}
-			if(deltaAngle < (0-MAX_DELTA_ANGLE))
-			{
-				curTrailerDir = mainAngle - MAX_DELTA_ANGLE;
-			}
-			// now turn the trailer
-			if(deltaAngle > 0)
-			{
-				curTrailerDir = curTrailerDir - TRAILER_TURN_SPEED;
-			}
-			if(deltaAngle < 0)
-			{
-				curTrailerDir = curTrailerDir + TRAILER_TURN_SPEED;
-			}
-			turn carriage to y-axis (0 - (mainAngle - curTrailerDir)) now;
-		}
-	}*/
-}
 
-/*TrailerInit()
-{
-	curTrailerDir = get HEADING;
-	oldMainDir = curTrailerDir;
-}*/
-// ***
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
@@ -146,9 +46,6 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE;
-	start-script TrailerCheck();
 	/*emit-sfx 257 from exhaust;
 	sleep 50;
 	emit-sfx 257 from exhaust;
@@ -157,35 +54,30 @@ StartMoving()
 	spin wheel1 around x-axis speed <350.082418>;
 	spin wheel2 around x-axis speed <350.082418>;
 	spin wheel3 around x-axis speed <350.082418>;
-	isMoving = TRUE;
+	
 }
 
 StopMoving()
 {
-	signal SIG_MOVE;
-	set-signal-mask SIG_MOVE;
 	stop-spin wheel1 around x-axis decelerate <100.000000>;
 	stop-spin wheel2 around x-axis decelerate <100.000000>;
 	stop-spin wheel3 around x-axis decelerate <100.000000>;
-	isMoving = FALSE;
+
 }
 
 Create()
 {
 //	spin tow_point around y-axis speed <100>;
 	start-script SmokeUnit();
-	//start-script TrailerInit();
-	//start-script TrailerCheck();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 Killed(severity, corpsetype)
 {
-	//signal SIG_DEATH;
 	if( severity <= 999 )
 	{
 		corpsetype = 1;
