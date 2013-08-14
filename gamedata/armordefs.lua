@@ -255,6 +255,7 @@ local armorDefs = {
 	"RUSSU85",
     "RUSSU100",	
     "RUSSU122",
+	"RUSValentine",
 	--**Britain**--
 	"GBRShermanFirefly",
     "GBRCromwell",
