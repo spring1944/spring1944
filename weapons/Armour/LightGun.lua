@@ -41,6 +41,7 @@ local LightGunAPClass = Weapon:New{
   edgeEffectiveness  = 0.1,
   explosionGenerator = [[custom:AP_Small]],
   explosionSpeed     = 100, -- needed?
+  impactonly         = 1,
   name               = [[AP Shell]],
   soundHitDry        = [[GEN_Explo_1]],
   customparams = {
