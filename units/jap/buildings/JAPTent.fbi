@@ -29,8 +29,11 @@
   footprintZ=5;
   iconType=barracks;
   idleAutoHeal=3;
+  init_cloaked=1;
   maxDamage=2000;
   maxSlope=10;
+  maxWaterDepth=0;
+  minCloakDistance=300;
   maxWaterDepth=0;
   objectName=JAPTent;
   script=barracks.cob;
@@ -45,7 +48,7 @@
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;
-  workerTime=10;
+  workerTime=15;
   yardMap=ooooo ooooo occco occco occco;
 }
 

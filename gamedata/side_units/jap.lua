@@ -50,6 +50,7 @@ local japunits =
 	{
 		"japhqengineer",
 		"jap_platoon_rifle",
+		"jap_platoon_mg",
 	},
 	japvehicleyard =
 	{

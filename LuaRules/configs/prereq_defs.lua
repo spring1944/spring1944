@@ -8,20 +8,19 @@ format:
   ...
 }
 ]]
-
 local anyBarracks = {
   "gbrbarracks",
   "gerbarracks",
   "gerbarracksbunker",
   "rusbarracks",
   "usbarracks",
-}
+},
 
-local japgunyard = {
+local japguny = {
 	"japgunyard",
 	"japatyard",
 	"japspyard",
-}
+},
 
 local result = {
 --[[  gbrgunyard = anyBarracks,
@@ -39,7 +38,6 @@ local result = {
   usvehicleyard = anyBarracks,
   ustankyard = anyBarracks,
   usradar = anyBarracks,]]--
-  japtype4mortar_mobile = japgunyard,
+  japtype4mortar_mobile = japguny,
 }
-
 return result
