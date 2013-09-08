@@ -33,7 +33,7 @@
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   noChaseCategory=FLAG AIR MINE;
-  objectName=RUSBMO;
+  objectName=RUSBMO.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

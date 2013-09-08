@@ -1,7 +1,8 @@
 #define TAK
 
-piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_45, barrel_45, flare_45,
+piece base, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_45, barrel_45, flare_45,
 	  turret_aa, guns_aa, flare_aa_1, flare_aa_2, turret_mg, guns_mg, flare_mg_1, flare_mg_2,
+	  gunner_mg, gunner_aa, gunner_45_1, gunner_45_2, gunner_37_1, gunner_37_2,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -30,8 +31,8 @@ piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_4
 #define GUN45_GUN_BACK_SPEED	[0.2]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<10>
-#define HULL_LIST_ANGLE		<30>
+#define base_LIST_SPEED		<10>
+#define base_LIST_ANGLE		<30>
 
 #define RESTORE_PERIOD		2500
 
@@ -43,10 +44,9 @@ piece base, hull, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_4
 #define SIG_AIM5			64
 #define SIG_DEATH			128
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 
 //effects
@@ -144,7 +144,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -293,6 +293,10 @@ FireWeapon3()
 	move barrel_45 to z-axis (0-GUN45_GUN_RECOIL) speed GUN45_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_45 to z-axis [0] speed GUN45_GUN_BACK_SPEED;
+	// reload anim
+	turn gunner_45_2 to y-axis <45> speed <45>;
+	wait-for-turn gunner_45_2 around y-axis;
+	turn gunner_45_2 to y-axis 0 speed <45>;
 //	hide flare_45;
 }
 
@@ -386,13 +390,13 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
-		wait-for-turn hull around z-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to z-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	explode turret_37 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_45 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_aa type	FALL|EXPLODE_ON_HIT|FIRE;
