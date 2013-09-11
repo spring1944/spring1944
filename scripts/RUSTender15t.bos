@@ -1,6 +1,6 @@
 #define TAK
 
-piece base, hull, flag1, flag2, flag3, flag4, mg_mount, mg_turret, gun, flare,
+piece base, flag1, flag2, flag3, flag4, mg_turret, gun, flare,
   	  turret, grabber, link, wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -22,10 +22,9 @@ piece base, hull, flag1, flag2, flag3, flag4, mg_mount, mg_turret, gun, flare,
 #define SIG_LOAD			4
 #define SIG_AIM1			8
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 static-var					MaxSpeed, bMoving, bTooFar, boom_len, boom_heading, boom_pitch;
 
@@ -210,7 +209,7 @@ TransportDrop(unitid, position)
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -269,6 +268,6 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	return (TRUE);
 }
