@@ -84,7 +84,7 @@
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=BredaM38;
-  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=.50calproof;
 

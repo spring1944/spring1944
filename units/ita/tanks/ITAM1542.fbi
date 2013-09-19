@@ -77,21 +77,21 @@
   weaponMainDir2=0 16 1;
 
   weapon1=ita47mml40he;
-  onlyTargetCategory1=BUILDING OPENVEH HARDVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
   weapon2=ita47mml40ap;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=BredaM38;
-  onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
 
 	weapon4=BredaM38;
-	onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED;
+	onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
 	weaponMainDir4=0 0 1;
 	maxAngleDif4=30;
 
 	weapon5=BredaM38;
-	onlyTargetCategory5=INFANTRY OPENVEH SOFTVEH DEPLOYED;
+	onlyTargetCategory5=INFANTRY SOFTVEH DEPLOYED;
 	weaponSlaveTo5=4;
 
   weapon6=.50calproof;
