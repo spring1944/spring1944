@@ -53,6 +53,7 @@ local cKneeMortar = MortarClass:New{
   areaOfEffect       = 50,
   name               = [[Type 89 Grenade Discharger]],
   range              = 650,
+  weaponVelocity     = 350,
   damage = {
     default            = 300,
   },
