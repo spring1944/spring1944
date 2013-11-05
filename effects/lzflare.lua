@@ -9,7 +9,7 @@ return {
       ground             = true,
       water              = true,
       properties = {
-        agespeed           = 0.0000000001,
+--        agespeed           = 0.0000000001,	infolog warning: Unknown tag heatcloud::agespeed
         alwaysvisible      = false,
         heat               = 28,
         heatfalloff        = 4,
