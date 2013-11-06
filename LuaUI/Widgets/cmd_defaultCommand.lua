@@ -25,7 +25,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		--[[else]]if (ud.speed == 0 and ud.customParams.canareaattack) then
 				defCom[unitDefID] = CMD_AREA_ATTACK
 		-- Deployed AT and AA guns
-		elseif (ud.speed == 0 and ud.canAttack and not ud.customParams.canareaattack and not ud.builder) then
+		elseif (ud.speed == 0 and ud.canAttack and not ud.customParams.canareaattack and not ud.isBuilder) then
 				defCom[unitDefID] = CMD_ATTACK
 		end
 	end

@@ -239,7 +239,7 @@ function widget:DrawWorldPreUnit()
             glColor(colorSet[4])
             glDrawListAtUnit(unitID, squareLines,false,xs,1,zs)
           elseif (trackSlope and (not UnitDefs[udid].canFly)) then
-            if (UnitDefs[udid].builder == true) then
+            if (UnitDefs[udid].isBuilder == true) then
               glColor(colorSet[1])
               glDrawListAtUnit(unitID, diamondPolys, false, radius, 1.0, radius, degrot, gz, 0, -gx)
               glColor(colorSet[2])
@@ -293,7 +293,7 @@ function widget:DrawWorldPreUnit()
         local gx, gy, gz = spGetGroundNormal(x, z)
         local degrot = math.acos(gy) * 180 / math.pi
         
-        if (UnitDefs[udid].builder == true) then
+        if (UnitDefs[udid].isBuilder == true) then
           glColor(colorSet[2])
           glDrawListAtUnit(unitID, diamondPolys, false, radius, 1.0, radius, degrot, gz, 0, -gx)
           glColor(colorSet[3])

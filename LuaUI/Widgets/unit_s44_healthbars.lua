@@ -510,7 +510,7 @@ do
       if (morph) then
         local build = morph.progress
 		local text = "deploy"
-		if UnitDefs[unitDefID].builder then text = "upgrade" end -- may not be a reliable heuristic
+		if UnitDefs[unitDefID].isBuilder then text = "upgrade" end -- may not be a reliable heuristic
         AddBar(text,build,"build",(fullText and floor(build*100)..'%') or '')
       end
 
