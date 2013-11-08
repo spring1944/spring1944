@@ -47,7 +47,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 			RemoveUnitCmdDesc(unitID, unitOnOffCmdDesc)
 		end
 	end
-	if (ud.canDGun) then -- switch to canManualFire after 0.83
+	if (ud.canManualFire) then -- switch to canManualFire after 0.83
 		local dGunCmdDesc = FindUnitCmdDesc(unitID, CMD_DGUN)
 		if (dGunCmdDesc) then
 			EditUnitCmdDesc(unitID, dGunCmdDesc, {name = "Smoke\nGrenade", tooltip = "Smoke Grenade: Throw a smoke grenade"}) 
