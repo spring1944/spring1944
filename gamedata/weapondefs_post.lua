@@ -53,8 +53,6 @@ local function BackwardCompability(wdName,wd)
       wd.weapontype = "StarburstLauncher";
     elseif (tobool(wd.beamlaser)) then
       wd.weapontype = "BeamLaser";
-    elseif (tobool(wd.isshield)) then
-      wd.weapontype = "Shield";
     elseif (tobool(wd.waterweapon)) then
       wd.weapontype = "TorpedoLauncher";
     elseif (wdName:lower():find("disintegrator",1,true)) then
@@ -191,7 +189,7 @@ end
 local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 
 for _, weaponDef in pairs(WeaponDefs) do
-  if not weaponDef.isshield then
+    if weaponDef.damage then
     local damage = weaponDef.damage
     local defaultDamage = damage["default"]
     

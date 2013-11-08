@@ -3,7 +3,6 @@
 -- Bulletproofs Base Class
 local BulletProofClass = Weapon:New{
   exteriorShield     = true,
-  isShield           = true,
   shieldEnergyUse    = 0,
   shieldForce        = 500,
   shieldMaxSpeed     = 900,
