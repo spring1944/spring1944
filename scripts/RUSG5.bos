@@ -1,0 +1,387 @@
+#define TAK
+
+piece base, h2, mg_turret, mg_gun, mg_flare, backblast,
+	  r_turret, r_rails, r_rocket1, r_rocket2, r_rocket3, r_rocket4, r_rocket5, r_rocket6, r_rocket7, r_rocket8,
+	  flag0, flag1, flag2, flag3, prop1, prop2,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define MG_TURRET_TURN			<60>
+#define MG_TURRET_PITCH			<35>
+
+#define ROCKET_TURRET_TURN		<15>
+#define ROCKET_TURRET_PITCH		<5>
+
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
+// Propellers
+#define PROP_SPIN_SPEED		<600>
+
+//*********************Death anim
+#define base_LIST_SPEED		<10>
+#define base_LIST_ANGLE		<-15>
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_DEPLOY			16
+#define SIG_NOMOVE			32
+#define SIG_DEATH			128
+
+#define SMOKEPIECE	base
+
+#include "constants.h"
+#include "damageSmoke.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define XSMALL_MUZZLEFLASH 1024+8
+#define XSMALL_MUZZLEDUST 1024+9
+
+static-var					CurrentSpeed, bMoving, rocket, isDeployed, normalSpeed, mainHead, canMove;
+
+RestoreRockets(time)
+{
+	sleep time;
+	show r_rocket1;
+	show r_rocket2;
+	show r_rocket3;
+	show r_rocket4;
+	show r_rocket5;
+	show r_rocket6;
+	show r_rocket7;
+	show r_rocket8;
+	rocket = 1;
+}
+
+Deploy() 
+{
+	set-signal-mask SIG_DEPLOY;
+	SET MAX_SPEED to 1;
+	isDeployed = TRUE;
+}
+
+UnDeploy() 
+{
+	// don't undeploy while firing
+	if(!canMove)
+	{
+		return;
+	}
+	set-signal-mask SIG_DEPLOY;
+	isDeployed = FALSE;
+	signal SIG_NOMOVE;
+	set MAX_SPEED to normalSpeed;
+}
+
+// This keeps the unit from turning while firing
+KeepHeading()
+{
+	var curHeading;
+	signal SIG_NOMOVE;
+	set-signal-mask SIG_NOMOVE;
+	curHeading = get HEADING;
+	while(!canMove)
+	{
+		sleep 30;
+		set HEADING to curHeading;
+		set MAX_SPEED to 1;
+	}
+}
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+{
+	rocket = 1;
+	isDeployed = FALSE;
+	normalSpeed = get MAX_SPEED;
+	canMove = TRUE;
+}
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag1 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+		turn flag1 to y-axis (FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_MOVE|SIG_DEPLOY;
+	spin prop1 around z-axis speed 0;
+	spin prop2 around z-axis speed 0;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	//start-script Deploy();
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+HideFlares()
+{
+	hide mg_flare;
+}
+
+Create()
+{
+	start-script HideFlares();
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	start-script StopCatcher();
+	start-script FlagFlap();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	signal SIG_DEPLOY;
+	set-signal-mask SIG_DEPLOY;
+	start-script UnDeploy();
+	start-script EmitWakes();
+	start-script StopCatcher();
+	spin prop1 around z-axis speed PROP_SPIN_SPEED;
+	spin prop2 around z-axis speed (0-PROP_SPIN_SPEED);
+	bMoving = TRUE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn mg_turret to y-axis <0> speed MG_TURRET_TURN;
+	turn mg_gun to x-axis <0> speed MG_TURRET_PITCH;
+
+	turn r_turret to y-axis <0> speed ROCKET_TURRET_TURN;
+	turn r_rails to x-axis <0> speed ROCKET_TURRET_PITCH;
+}
+
+QueryWeapon1(piecenum)
+{
+	if (rocket == 1) {
+		piecenum = r_rocket1;
+	}
+	else if (rocket == 2) {
+		piecenum = r_rocket2;
+	}
+	else if (rocket == 3) {
+		piecenum = r_rocket3;
+	}
+	else if (rocket == 4) {
+		piecenum = r_rocket4;
+	}
+	else if (rocket == 5) {
+		piecenum = r_rocket5;
+	}
+	else if (rocket == 6) {
+		piecenum = r_rocket6;
+	}
+	else if (rocket == 7) {
+		piecenum = r_rocket7;
+	}
+	else if (rocket == 8) {
+		piecenum = r_rocket8;
+	}
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = r_turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	start-script Deploy();
+	if(isDeployed)
+	{
+		mainHead = get HEADING;
+		turn r_turret to y-axis heading speed ROCKET_TURRET_TURN;
+		turn r_rails to x-axis (0-pitch) speed ROCKET_TURRET_PITCH;
+		wait-for-turn r_turret around y-axis;
+		wait-for-turn r_rails around x-axis;
+		start-script RestoreTurret();
+		return TRUE;
+	}
+	return FALSE;
+}
+
+FireWeapon1()
+{
+	If(canMove)
+	{
+		start-script KeepHeading();
+		canMove = FALSE;
+	}
+}
+
+Shot1(foo)
+{
+	if (rocket == 1) {
+		hide r_rocket1;
+	}
+	else if (rocket == 2) {
+		hide r_rocket2;
+	}
+	else if (rocket == 3) {
+		hide r_rocket3;
+	}
+	else if (rocket == 4) {
+		hide r_rocket4;
+	}
+	else if (rocket == 5) {
+		hide r_rocket5;
+	}
+	else if (rocket == 6) {
+		hide r_rocket6;
+	}
+	else if (rocket == 7) {
+		hide r_rocket7;
+	}
+	else if (rocket == 8) {
+		hide r_rocket8;
+	}
+	rocket = rocket + 1;
+	if (rocket > 8)
+	{
+		rocket = 1;
+	}
+	emit-sfx 1032 from backblast;
+}
+
+EndBurst1()
+{
+	canMove = TRUE;
+	start-script RestoreRockets(10000);
+	signal SIG_NOMOVE;
+	start-script Undeploy();
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = mg_flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn mg_turret to y-axis heading speed MG_TURRET_TURN;
+	turn mg_gun to x-axis (0-pitch) speed MG_TURRET_PITCH;
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn mg_gun around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+}
+
+Shot2(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn base to z-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	explode r_turret type	SHATTER;
+	return (TRUE);
+}

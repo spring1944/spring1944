@@ -508,6 +508,7 @@ local armorDefs = {
   "RUSTypeM_surfaced",
   "RUSLCT",
   "RUSKomsMTB",
+  "RUSG5",
     --Britain--
   "GBRLCT",
   "GBRFairmileD",

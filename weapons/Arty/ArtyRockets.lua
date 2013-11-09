@@ -64,8 +64,24 @@ local M13132mm = ArtyRocketClass:New{
   },
 }
 
+-- M-8 82mm (RUS)
+local m8rocket82mm = ArtyRocketClass:New{
+  areaOfEffect       = 60,
+  burst              = 8,
+  burstrate          = 0.3,
+  explosionGenerator = [[custom:HE_Large]],
+  name               = [[M-8 82mm unguided artillery rocket]],
+  range              = 2965,
+  soundStart         = [[RUS_Katyusha]],
+  wobble             = 1618,
+  damage = {
+    default            = 680,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Nebelwerfer41 = Nebelwerfer41,
   M13132mm = M13132mm,
+  m8rocket82mm = m8rocket82mm,
 })
