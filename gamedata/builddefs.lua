@@ -876,6 +876,7 @@ buildoptions =
     "rusbmo",
     "rusbka-1125",
     "ruspr161",
+    "rusg5",
 --    "ruspr7",
   },
 }

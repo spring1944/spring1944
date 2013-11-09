@@ -1,8 +1,8 @@
 #define TAK
 
-piece base, h2, mg_turret, mg_gun, mg_flare, backblast,
+piece base, mg_turret, mg_gun, mg_flare, backblast,
 	  r_turret, r_rails, r_rocket1, r_rocket2, r_rocket3, r_rocket4, r_rocket5, r_rocket6, r_rocket7, r_rocket8,
-	  flag0, flag1, flag2, flag3, prop1, prop2,
+	  flag1, flag2, flag3, prop1, prop2,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
