@@ -364,6 +364,7 @@ local armorDefs = {
     --All--
     "RubberDingy",
     "PontoonRaft",
+    "RUSPG117",
   },
 
   planes  =  {
@@ -502,11 +503,13 @@ local armorDefs = {
   "RUSMonitor",
   "RUSBMO",
   "RUSBKA-1125",
+  "RUSPr161",
   "RUSPSK",
   "RUSPr7",
   "RUSTypeM",
   "RUSTypeM_surfaced",
   "RUSLCT",
+  "RUSTender15t",
   "RUSKomsMTB",
   "RUSG5",
     --Britain--
