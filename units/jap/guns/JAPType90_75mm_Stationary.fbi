@@ -55,7 +55,6 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardmap=ooo ooo ooo;
 
   weapon1=jap75mmtype90_he;
   badTargetCategory1=OPENVEH HARDVEH;

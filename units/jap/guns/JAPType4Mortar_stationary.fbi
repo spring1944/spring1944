@@ -51,7 +51,6 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardmap=oo oo;
 
   weapon1=japtype4rocketmortar_he;
   maxAngleDif1=35;

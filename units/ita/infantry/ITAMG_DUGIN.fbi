@@ -44,7 +44,6 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=OPENVEH FLAG SOFTVEH;
-  yardMap=oo oo;
 
   weapon1=BredaM37;
   maxAngleDif1=120;

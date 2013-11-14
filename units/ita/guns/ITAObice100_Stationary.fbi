@@ -57,7 +57,6 @@
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
-  yardmap=ooo ooo ooo;
 
   weapon1=Obice100mml22he;
   maxAngleDif1=25;
