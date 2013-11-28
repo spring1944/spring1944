@@ -16,9 +16,9 @@
   //collisionVolumeTest=1;
   corpse=ITASemovente105_Abandoned;
   [customParams] {
-    armor_front=70;
+    armor_front=75;
     armor_rear=25;
-    armor_side=25;
+    armor_side=42;
     armor_top=15;
     blockfear=1;
     lowammolevel=4;

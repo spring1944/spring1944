@@ -25,8 +25,8 @@
   }
   energyStorage=0.01;
   explodeAs=Med_Explosion;
-  footprintX=5;
-  footprintZ=6;
+  footprintX=6;
+  footprintZ=8;
   iconType=barracks;
   idleAutoHeal=3;
   maxDamage=10000;
