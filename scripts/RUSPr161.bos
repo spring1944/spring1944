@@ -1,10 +1,12 @@
 #define TAK
 
-piece base, hull, railings,
+piece base,
 	  turret_85_1, mantlet_85_1, barrel_85_1, flare_85_1, turret_85_2, mantlet_85_2, barrel_85_2, flare_85_2,
 	  turret_45_1, sleeve_45_1, barrel_45_1, flare_45_1, turret_45_2, sleeve_45_2, barrel_45_2, flare_45_2,
 	  turret_37, sleeve_37, barrel_37, flare_37,
+	  mg_gunner_1, mg_gunner_2, gunner_45_1_1,  gunner_45_1_2, gunner_45_2_1, gunner_45_2_2, gunner_37_1, gunner_37_2,
 	  mg_1, mg_turret_1, mg_gun_1, mg_flare_1, mg_2, mg_turret_2, mg_gun_2, mg_flare_2,
+	  flag1, flag2, flag3,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -36,6 +38,11 @@ piece base, hull, railings,
 #define GUN45_GUN_RECOIL_SPEED	[10]
 #define GUN45_GUN_BACK_SPEED	[0.2]
 
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
 //*********************Death anim
 #define HULL_LIST_SPEED		<5>
 #define HULL_LIST_ANGLE		<15>
@@ -52,10 +59,9 @@ piece base, hull, railings,
 #define SIG_AIM7			256
 #define SIG_DEATH			512
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 static-var					CurrentSpeed, bMoving;
 
@@ -99,6 +105,19 @@ WaitForConstructionToFinish()
 	}
 }
 
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag1 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+		turn flag1 to y-axis (FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
+
 HideFlares()
 {
 	hide flare_85_1;
@@ -118,11 +137,12 @@ Create()
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
 	start-script WorkingLoop();
+	start-script FlagFlap();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -289,6 +309,10 @@ FireWeapon3()
 	move barrel_45_1 to z-axis (0-GUN45_GUN_RECOIL) speed GUN45_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_45_1 to z-axis [0] speed GUN45_GUN_BACK_SPEED;
+	// reload anim
+	turn gunner_45_1_2 to y-axis <45> speed <45>;
+	wait-for-turn gunner_45_1_2 around y-axis;
+	turn gunner_45_1_2 to y-axis 0 speed <45>;
 }
 
 QueryWeapon4(piecenum)
@@ -320,6 +344,10 @@ FireWeapon4()
 	move barrel_45_2 to z-axis (0-GUN45_GUN_RECOIL) speed GUN45_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel_45_2 to z-axis [0] speed GUN45_GUN_BACK_SPEED;
+	// reload anim
+	turn gunner_45_2_2 to y-axis <45> speed <45>;
+	wait-for-turn gunner_45_2_2 around y-axis;
+	turn gunner_45_2_2 to y-axis 0 speed <45>;
 }
 
 // 37mm gun
@@ -423,13 +451,13 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
-		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn base around x-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	explode turret_85_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_85_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_45_1 type	FALL|EXPLODE_ON_HIT|FIRE;
