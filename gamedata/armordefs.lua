@@ -29,30 +29,6 @@ for _, SideFile in pairs(SideFiles) do
 	end
 end
 
--- convert to named maps  (trepan is a noob)
-local categoryCount = 0
-for categoryName, categoryTable in pairs(armorDefs) do
-  local t = {}
-  for _, unitName in pairs(categoryTable) do
-    t[unitName] = 1
-  end
-  armorDefs[categoryName] = t
-  categoryCount = categoryCount + 1
-end
-
-Spring.Echo("Loaded "..categoryCount.." armordef categories.")
-
 local system = VFS.Include('gamedata/system.lua')  
 
 return system.lowerkeys(armorDefs)
-
---  Infantry=;
---  Guns=;
---  LightBuildings=;
---  Bunkers=;
---  Sandbags=;
---  Mines=;
---  Flags=;
---  Tanks=;
---  ArmouredVehicles=;
---  UnarmouredVehicles=; 
