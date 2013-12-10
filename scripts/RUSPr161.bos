@@ -7,6 +7,7 @@ piece base,
 	  mg_gunner_1, mg_gunner_2, gunner_45_1_1,  gunner_45_1_2, gunner_45_2_1, gunner_45_2_2, gunner_37_1, gunner_37_2,
 	  mg_1, mg_turret_1, mg_gun_1, mg_flare_1, mg_2, mg_turret_2, mg_gun_2, mg_flare_2,
 	  flag1, flag2, flag3,
+	  prop1, prop2,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -43,6 +44,9 @@ piece base,
 #define FLAG_FLAP_SPEED		<30>
 #define FLAG_FLAP_ANGLE		<15>
 
+//********************Propeller
+#define PROPELLER_SPIN_SPEED	<500>
+
 //*********************Death anim
 #define HULL_LIST_SPEED		<5>
 #define HULL_LIST_ANGLE		<15>
@@ -57,13 +61,14 @@ piece base,
 #define SIG_AIM5			64
 #define SIG_AIM6			128
 #define SIG_AIM7			256
-#define SIG_DEATH			512
+#define SIG_AIM8			512
+#define SIG_DEATH			1024
 
 #define SMOKEPIECE	base
 
 #include "constants.h"
 #include "damageSmoke.h"
-static-var					CurrentSpeed, bMoving;
+static-var					CurrentSpeed, bMoving, bAimingAA;
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -133,6 +138,7 @@ Create()
 {
 	start-script HideFlares();
 	bMoving = FALSE;
+	bAimingAA = FALSE;
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
@@ -163,6 +169,8 @@ StopMoving()
 	set-signal-mask SIG_MOVE;
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
+	stop-spin prop1 around z-axis;
+	stop-spin prop2 around z-axis;
 	bMoving = FALSE;
 }
 
@@ -189,6 +197,8 @@ StartMoving()
 	signal SIG_MOVE;
 	start-script EmitWakes();
 	start-script StopCatcher();
+	spin prop1 around z-axis speed PROPELLER_SPIN_SPEED;
+	spin prop2 around z-axis speed PROPELLER_SPIN_SPEED;
 	bMoving = TRUE;
 }
 
@@ -365,6 +375,43 @@ AimWeapon5(heading, pitch)
 {
 	signal SIG_AIM5;
 	set-signal-mask SIG_AIM5|SIG_DEATH;
+	bAimingAA = TRUE;
+	turn turret_37 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37 around y-axis;
+	wait-for-turn sleeve_37 around x-axis;
+	start-script RestoreTurret();
+	bAimingAA = FALSE;
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare_37;
+	emit-sfx XSMALL_MUZZLEDUST from flare_37;
+	move barrel_37 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37 to z-axis [0] speed AA37_GUN_BACK_SPEED;
+}
+
+QueryWeapon8(piecenum)
+{
+	piecenum = flare_37;
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = turret_37;
+}
+
+AimWeapon8(heading, pitch)
+{
+	if(bAimingAA)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM8;
+	set-signal-mask SIG_AIM8|SIG_DEATH;
 	turn turret_37 to y-axis heading speed AA37_TURRET_TURN;
 	turn sleeve_37 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
 	wait-for-turn turret_37 around y-axis;
@@ -373,7 +420,7 @@ AimWeapon5(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon5()
+FireWeapon8()
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare_37;
 	emit-sfx XSMALL_MUZZLEDUST from flare_37;

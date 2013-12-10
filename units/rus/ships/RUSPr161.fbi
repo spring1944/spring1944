@@ -91,5 +91,11 @@
   maxAngleDif7=270;
   onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir7=-1 0 0;
+
+  weapon8=M1939_61k37mmhe;
+  badTargetCategory8=AIR;
+  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  maxAngleDif8=300;
+  weaponMainDir8=0 0 -1;
 }
 
