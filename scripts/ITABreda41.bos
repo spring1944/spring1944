@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  base, hull, crane, front_wheels, rear_wheels, spare;
+piece  base, crane, front_wheels, rear_wheels, spare;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging;
 
@@ -103,7 +103,7 @@ Killed(severity, corpsetype)
 	{
 		// burning
 		corpsetype=2;
-		explode hull type BITMAPONLY;
+		explode base type BITMAPONLY;
 		explode front_wheels type FIRE | EXPLODE_ON_HIT;
 		return 0;
 	}
@@ -111,7 +111,7 @@ Killed(severity, corpsetype)
 	{
 		// burning
 		corpsetype=3;
-		explode hull type BITMAPONLY;
+		explode base type BITMAPONLY;
 		explode front_wheels type FIRE | EXPLODE_ON_HIT;
 		explode rear_wheels type FIRE | EXPLODE_ON_HIT;
 		explode crane type FIRE | EXPLODE_ON_HIT;
@@ -120,5 +120,5 @@ Killed(severity, corpsetype)
 	corpsetype = 4;
 	explode front_wheels type SHATTER | EXPLODE_ON_HIT;
 	explode rear_wheels type SHATTER | EXPLODE_ON_HIT;
-	explode hull type SHATTER | EXPLODE_ON_HIT;
+	explode base type SHATTER | EXPLODE_ON_HIT;
 }

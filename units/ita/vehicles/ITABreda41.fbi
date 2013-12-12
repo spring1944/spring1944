@@ -25,7 +25,7 @@
   maxVelocity=3.4;
   maxWaterDepth=20;
   movementClass=TANK_Truck;
-  objectName=ITABreda41;
+  objectName=ITABreda41.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
