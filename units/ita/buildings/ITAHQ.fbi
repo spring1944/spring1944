@@ -37,7 +37,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   metalMake=0;
-  objectName=ITAHQ;
+  objectName=ITAHQ.s3o;
   script=ushq.cob;
   onoffable=1;
   selfDestructAs=Huge_Explosion;
