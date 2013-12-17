@@ -4,7 +4,7 @@
 
 #define SIG_ACTIVATE	2
 
-piece  base, building, pad, beam;
+piece  base, pad, beam;
 
 static-var  Static_Var_3, Static_Var_4;
 

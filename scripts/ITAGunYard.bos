@@ -115,11 +115,11 @@ Deactivate()
 	set ACTIVATION to 0;
 }
 
-Startbase()
+StartBuilding()
 {
 }
 
-Stopbase()
+StopBuilding()
 {
 }
 
