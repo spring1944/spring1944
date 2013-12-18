@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=8530;
-  buildPic=JAPBackground.png;
+  buildPic=JAPTankYard.png;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
@@ -28,7 +28,7 @@
   maxDamage=10000;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=ITATankYard.s3o;
+  objectName=JAPTankYard.s3o;
   script=Yard.cob;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
