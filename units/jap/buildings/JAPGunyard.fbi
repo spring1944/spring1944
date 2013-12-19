@@ -10,7 +10,7 @@
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1800;
-  buildPic=JAPBackground.png;
+  buildPic=JAPGunYard.png;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
@@ -28,7 +28,7 @@
   maxDamage=6250;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=ITAGunyard.s3o;
+  objectName=JAPGunYard.s3o;
   script=Yard.cob;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
