@@ -29,7 +29,6 @@
     troopdropper=1;
 	deposit=0;
   }
-  drag=0.1;
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;
   footprintZ=4;
