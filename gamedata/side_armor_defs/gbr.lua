@@ -44,7 +44,6 @@ local GBRDefs = {
     "GBRSupplyDepot",
     "GBRTruckSupplies",
     "GBRSPYard",
-    "GERSPYard1",
     "GBRTankYard",
     "GBRTankYard1",
     "GBRTankYard2",

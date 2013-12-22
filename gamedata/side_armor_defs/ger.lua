@@ -56,7 +56,6 @@ local GERDefs = {
   },
 
   sandbags  =  {
-      "Sandbags",
 	  --**Germany**--
 	  "germg42_sandbag",
   },
