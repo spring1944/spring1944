@@ -41,7 +41,6 @@ local ITADefs = {
 	"ITASPyard",
 	"ITATankyard1",
 	"ITATankyard2",
-	"ITAVehicleyard",
 	"ITARadar",
   },
 
