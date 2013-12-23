@@ -42,6 +42,7 @@ local EditUnitCmdDesc = Spring.EditUnitCmdDesc
 local InsertUnitCmdDesc = Spring.InsertUnitCmdDesc
 local UseUnitResource = Spring.UseUnitResource
 local GetUnitFuel = Spring.GetUnitFuel
+local SetUnitFuel = Spring.SetUnitFuel
 local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
@@ -462,6 +463,8 @@ function gadget:GameFrame(n)
     if state == PLANE_STATE_ACTIVE then
       if GetUnitFuel(unitID) < 1 and unitDef.maxFuel > 0 then
         SetUnitNoSelect(unitID, true)
+		-- give fuel back so that it can fly to map border
+		SetUnitFuel(unitID, unitDef.maxFuel)
         local ex, ey, ez = GetSpawnPoint(teamID)
         GiveOrderToUnit(unitID, CMD_MOVE, {ex, ey, ez}, {})
         planeStates[unitID] = PLANE_STATE_RETREAT
