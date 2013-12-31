@@ -35,9 +35,7 @@ local spAreTeamsAllied = Spring.AreTeamsAllied
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, 
-                            weaponID, attackerID, attackerDefID, attackerTeam)
-
+function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
 	if (attackerID == nil or  unitDefID == nil or damage == nil) or (not attackerTeam) or (attackerTeam == unitTeam) or (damage < 0)  or spAreTeamsAllied(attackerTeam, unitTeam) then 
 		if (paralyzer) then 
 			local hp, maxHp, paraDam = spGetUnitHealth(unitID)	
