@@ -1,5 +1,5 @@
-[GERAFP_dead] {
-  description=Sunk Artilleriefahrprahm;
+[GERMAL_dead] {
+  description=Sunk Marineartillerieleichter;
   blocking=0;
   damage=20000;
   energy=5000;
@@ -7,7 +7,7 @@
   footprintZ=8;
   height=10;
   hitdensity=50;
-  object=GERAFP_dead;
+  object=GERMAL;
   reclaimable=1;
 }
 

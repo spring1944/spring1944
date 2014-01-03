@@ -234,11 +234,9 @@ local gerunits =
     "gersturmboot",
     "pontoonraft",
     "gerrboot",
-    --"gersboot",
 	"gersiebelfahre",
     "germfp",
-    "gerafp",
---	"gertype1934",
+	"germal",
   },
 }
 

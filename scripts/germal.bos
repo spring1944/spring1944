@@ -1,0 +1,634 @@
+#define TAK
+
+piece base, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_2, barrel_2, flare_2,
+	  quad_turret, quad_sleeve, quad_barrel_1, quad_flare_1, quad_barrel_2, quad_flare_2,quad_barrel_3, quad_flare_3, quad_barrel_4, quad_flare_4,
+	  turret_37_1, sleeve_37_1, barrel_37_1, flare_37_1, turret_37_2, sleeve_37_2, barrel_37_2, flare_37_2,
+	  flag1, flag2, flag3, prop1, prop2,
+	  wake1, wake2, wake3, wake4;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define MAIN_TURRET_TURN	<12>
+#define MAIN_TURRET_PITCH	<15>
+
+#define QUAD_TURRET_TURN	<45>
+#define QUAD_TURRET_PITCH	<45>
+
+#define AA37_TURRET_TURN		<30>
+#define AA37_TURRET_PITCH		<30>
+
+//*********************Recoil
+#define MAIN_GUN_RECOIL			[0.8]
+#define MAIN_GUN_RECOIL_SPEED	[10]
+#define MAIN_GUN_BACK_SPEED		[0.2]
+
+#define AA37_GUN_RECOIL			[0.4]
+#define AA37_GUN_RECOIL_SPEED	[10]
+#define AA37_GUN_BACK_SPEED		[0.2]
+
+#define AA20_GUN_RECOIL			[0.4]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[0.5]
+
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
+//*********************Death anim
+#define base_LIST_SPEED		<5>
+#define base_LIST_ANGLE		<10>
+
+// Propellers
+#define PROP_SPIN_SPEED		<600>
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+#define SIG_AIM4			32
+#define SIG_AIM5			64
+#define SIG_AIM6			128
+#define SIG_AIM7			256
+#define SIG_AIM8			512
+#define SIG_DEATH			1024
+
+#define SMOKEPIECE	base
+
+#include "constants.h"
+#include "damageSmoke.h"
+
+// effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+3
+#define SMALL_MUZZLEDUST 1024+4
+#define MEDIUMLARGE_MUZZLEFLASH 1024+8
+#define MEDIUMLARGE_MUZZLEDUST 1024+9
+
+#define VISIBLE_PERIOD	5000
+
+static-var					CurrentSpeed, bMoving, QuadA, flak20mmBurstRate, bAAMode_37_1, bAAMode_37_2, bAAMode_Quad;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	QuadA=1;
+	bAAMode_37_1 = FALSE;
+	bAAMode_37_2 = FALSE;
+	bAAMode_Quad = FALSE;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+HideFlares()
+{
+	hide flare_1;
+	hide flare_2;
+	hide quad_flare_1;
+	hide quad_flare_2;
+	hide quad_flare_3;
+	hide quad_flare_4;
+	hide flare_37_1;
+	hide flare_37_2;
+}
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag1 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+		turn flag1 to y-axis (FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
+
+Create()
+{
+	flak20mmBurstRate=100;
+	start-script HideFlares();
+	bMoving = FALSE;
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	start-script FlagFlap();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		emit-sfx 2 from wake4;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	spin prop1 around z-axis speed 0;
+	spin prop2 around z-axis speed 0;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	spin prop1 around z-axis speed PROP_SPIN_SPEED;
+	spin prop2 around z-axis speed (0-PROP_SPIN_SPEED);
+	bMoving = TRUE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_AIM4|SIG_AIM5|SIG_AIM6|SIG_AIM7|SIG_AIM8|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+	bAAMode_37_1 = FALSE;
+	bAAMode_37_2 = FALSE;
+	bAAMode_Quad = FALSE;
+	turn turret_1 to y-axis <0> speed MAIN_TURRET_TURN;
+	turn sleeve_1 to x-axis <0> speed MAIN_TURRET_PITCH;
+	turn turret_2 to y-axis <0> speed MAIN_TURRET_TURN;
+	turn sleeve_2 to x-axis <0> speed MAIN_TURRET_PITCH;
+
+	turn quad_turret to y-axis <0> speed QUAD_TURRET_TURN;
+	turn quad_sleeve to x-axis <0> speed QUAD_TURRET_PITCH;
+
+	turn turret_37_1 to y-axis <0> speed AA37_TURRET_TURN;
+	turn sleeve_37_1 to x-axis <0> speed AA37_TURRET_PITCH;
+	turn turret_37_2 to y-axis <0> speed AA37_TURRET_TURN;
+	turn sleeve_37_2 to x-axis <0> speed AA37_TURRET_PITCH;
+}
+
+/*
+-------------
+Start weapons
+
+Pair of 88mm SK C30 HE guns
+-------------
+*/
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare_1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret_1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret_1 to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve_1 to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret_1 around y-axis;
+	wait-for-turn sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from flare_1;
+	emit-sfx MEDIUMLARGE_MUZZLEDUST from flare_1;
+	move barrel_1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+	set STEALTH to 0;
+	sleep VISIBLE_PERIOD;
+	set STEALTH to 1;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare_2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret_2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn turret_2 to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve_2 to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret_2 around y-axis;
+	wait-for-turn sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	emit-sfx MEDIUMLARGE_MUZZLEFLASH from flare_2;
+	emit-sfx MEDIUMLARGE_MUZZLEDUST from flare_2;
+	move barrel_2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+}
+
+/*
+-----Start AA guns
+
+---------37mm flak (AA)
+*/
+
+QueryWeapon3(piecenum)
+{
+	piecenum = flare_37_1;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = turret_37_1;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	bAAMode_37_1 = TRUE;
+	turn turret_37_1 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37_1 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37_1 around y-axis;
+	wait-for-turn sleeve_37_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare_37_1;
+	emit-sfx SMALL_MUZZLEDUST from flare_37_1;
+	move barrel_37_1 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37_1 to z-axis 0 speed AA37_GUN_BACK_SPEED;
+	bAAMode_37_1 = FALSE;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = flare_37_2;
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = turret_37_2;
+}
+
+AimWeapon4(heading, pitch)
+{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	bAAMode_37_2 = TRUE;
+	turn turret_37_2 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37_2 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37_2 around y-axis;
+	wait-for-turn sleeve_37_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare_37_2;
+	emit-sfx SMALL_MUZZLEDUST from flare_37_2;
+	move barrel_37_2 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37_2 to z-axis 0 speed AA37_GUN_BACK_SPEED;
+	bAAMode_37_2 = FALSE;
+}
+//---------37mm flak (HE)
+
+QueryWeapon5(piecenum)
+{
+	piecenum = flare_37_1;
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = turret_37_1;
+}
+
+AimWeapon5(heading, pitch)
+{
+	if(bAAMode_37_1)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn turret_37_1 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37_1 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37_1 around y-axis;
+	wait-for-turn sleeve_37_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare_37_1;
+	emit-sfx SMALL_MUZZLEDUST from flare_37_1;
+	move barrel_37_1 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37_1 to z-axis 0 speed AA37_GUN_BACK_SPEED;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = flare_37_2;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = turret_37_2;
+}
+
+AimWeapon6(heading, pitch)
+{
+	if (bAAMode_37_2)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn turret_37_2 to y-axis heading speed AA37_TURRET_TURN;
+	turn sleeve_37_2 to x-axis (0-pitch) speed AA37_TURRET_PITCH;
+	wait-for-turn turret_37_2 around y-axis;
+	wait-for-turn sleeve_37_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare_37_2;
+	emit-sfx SMALL_MUZZLEDUST from flare_37_2;
+	move barrel_37_2 to z-axis (0-AA37_GUN_RECOIL) speed AA37_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_37_2 to z-axis 0 speed AA37_GUN_BACK_SPEED;
+}
+
+/* 
+Start Flakvierling 20mm AA
+
+-----------------Flakvierling 20mm #1 (AA)
+*/
+
+QueryWeapon7(piecenum)
+{
+	if(QuadA == 1)
+	{
+		piecenum = quad_flare_1;
+	}
+	if(QuadA == 2)
+	{
+		piecenum = quad_flare_2;
+	}
+	if(QuadA == 3)
+	{
+		piecenum = quad_flare_3;
+	}
+	if(QuadA == 4)
+	{
+		piecenum = quad_flare_4;
+	}
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum = quad_turret;
+}
+
+AimWeapon7(heading, pitch)
+{
+	signal SIG_AIM7;
+	set-signal-mask SIG_AIM7|SIG_DEATH;
+	bAAMode_Quad = TRUE;
+	turn quad_turret to y-axis heading speed QUAD_TURRET_TURN;
+	turn quad_sleeve to x-axis (0-pitch) speed QUAD_TURRET_PITCH;
+	wait-for-turn quad_turret around y-axis;
+	wait-for-turn quad_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+// Not FireWeaponX(), but ShotX(). It's a burst fire weapon...
+Shot7()
+{
+	if(QuadA == 1)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_1;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_1;
+		move quad_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_1 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 2)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_2;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_2;
+		move quad_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_2 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 3)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_3;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_3;
+		move quad_barrel_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_3 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 4)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_4;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_4;
+		move quad_barrel_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_4 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	++QuadA;
+	if(QuadA > 4)
+	{
+		QuadA = 1;
+	}
+	bAAMode_Quad = FALSE;
+}
+
+//----------Flakvierling 20mm #1 (HE)
+
+QueryWeapon8(piecenum)
+{
+	if(QuadA == 1)
+	{
+		piecenum = quad_flare_1;
+	}
+	if(QuadA == 2)
+	{
+		piecenum = quad_flare_2;
+	}
+	if(QuadA == 3)
+	{
+		piecenum = quad_flare_3;
+	}
+	if(QuadA == 4)
+	{
+		piecenum = quad_flare_4;
+	}
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = quad_turret;
+}
+
+AimWeapon8(heading, pitch)
+{
+	if (bAAMode_Quad == TRUE)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM8;
+	set-signal-mask SIG_AIM8|SIG_DEATH;
+	turn quad_turret to y-axis heading speed QUAD_TURRET_TURN;
+	turn quad_sleeve to x-axis (0-pitch) speed QUAD_TURRET_PITCH;
+	wait-for-turn quad_turret around y-axis;
+	wait-for-turn quad_sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+// Not FireWeaponX(), but ShotX(). It's a burst fire weapon...
+Shot8()
+{
+	if(QuadA == 1)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_1;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_1;
+		move quad_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_1 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 2)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_2;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_2;
+		move quad_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_2 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 3)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_3;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_3;
+		move quad_barrel_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_3 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	if(QuadA == 4)
+	{
+		emit-sfx XSMALL_MUZZLEFLASH from quad_flare_4;
+		emit-sfx XSMALL_MUZZLEDUST from quad_flare_4;
+		move quad_barrel_4 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+		sleep flak20mmBurstRate;
+		move quad_barrel_4 to z-axis 0 speed AA20_GUN_BACK_SPEED;
+	}
+	++QuadA;
+	if(QuadA > 4)
+	{
+		QuadA = 1;
+	}
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn base to x-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around x-axis;
+		explode base type		BITMAPONLY;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	explode turret_1 type	FALL|EXPLODE_ON_HIT|FIRE;
+	explode turret_2 type	FALL|EXPLODE_ON_HIT|FIRE;
+	explode quad_turret type	FALL|EXPLODE_ON_HIT|FIRE;
+	return (TRUE);
+}

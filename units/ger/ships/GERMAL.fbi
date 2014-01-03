@@ -1,13 +1,13 @@
 [unitinfo] {
-  unitname=GERAFP;
-  name=Artilleriefahrprahm;
+  unitname=GERMAL;
+  name=Marineartillerieleichter;
   description=Landing Fire Support Ship;
   acceleration=0.15;
   airSightDistance=1500;
   brakeRate=0.14;
   buildCostEnergy=0;
   buildCostMetal=8000;
-  buildPic=gerafp.png;
+  buildPic=GERMAL.png;
   buildTime=8000;
   canAttack=1;
   canMove=1;
@@ -15,7 +15,7 @@
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=80.0 60.0 280.0;
   collisionVolumeType=box;
-  corpse=GERAFP_dead;
+  corpse=GERMAL_dead;
   [customParams] {
     lowammolevel=5;
     maxammo=26;
@@ -37,7 +37,7 @@
   minWaterDepth=6;
   movementClass=BOAT_River;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GERAFP;
+  objectName=GERMAL.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -68,56 +68,32 @@
   weapon2=sk88mmc30;
   maxAngleDif2=270;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir2=0 0 -1;
+  weaponMainDir2=0 0 1;
 
   weapon3=flak4337mmaa;
   maxAngleDif3=270;
   onlyTargetCategory3=AIR;
-  weaponMainDir3=0 0 1;
-  
-  weapon8=flak4337mmhe;
-  maxAngleDif8=270;
-  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir8=0 0 1;
-  
-  weapon4=flakvierling20mmaa; //20mmflakvierling
+  weaponMainDir3=1 0 0;
+
+  weapon4=flak4337mmaa;
   maxAngleDif4=270;
   onlyTargetCategory4=AIR;
-  weaponMainDir4=0 0 1;
+  weaponMainDir4=-1 0 0;
   
-  weapon9=flakvierling20mmhe; //20mmflakvierling
-  maxAngleDif9=270;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir9=0 0 1;
-
-  weapon5=flakvierling20mmaa; //20mmflakvierling
+  weapon5=flak4337mmhe;
   maxAngleDif5=270;
-  onlyTargetCategory5=AIR;
-  weaponMainDir5=0 0 -1;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=1 0 0;
   
-  weapon10=flakvierling20mmhe; //20mmflakvierling
-  maxAngleDif10=270;
-  onlyTargetCategory10=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir10=0 0 -1;
-
-  weapon6=flak3820mmaa;
+  weapon6=flak4337mmhe;
   maxAngleDif6=270;
-  onlyTargetCategory6=AIR;
-  weaponMainDir6=1 0 0;
+  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=-1 0 0;
   
-  weapon11=flak3820mmhe;
-  maxAngleDif11=270;
-  onlyTargetCategory11=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir11=1 0 0;
-
-  weapon7=flak3820mmaa;
-  maxAngleDif7=270;
+  weapon7=flakvierling20mmaa; //20mmflakvierling
   onlyTargetCategory7=AIR;
-  weaponMainDir7=-1 0 0;
   
-  weapon12=flak3820mmhe;
-  maxAngleDif12=270;
-  onlyTargetCategory12=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir12=-1 0 0;
+  weapon8=flakvierling20mmhe; //20mmflakvierling
+  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 

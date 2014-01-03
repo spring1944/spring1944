@@ -140,7 +140,7 @@ local GERDefs = {
   },
   ships  =  {
     --Germany--
-  "GERAFP",
+  "GERMAL",
   "GERRBoot",
   "GERMFP",
   "GERFlottenTorpBoat",
