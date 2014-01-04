@@ -1,8 +1,9 @@
 #define TAK
 
-piece base, hull, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleeve20_2, barrel20_2, flare20_2,
+piece base, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleeve20_2, barrel20_2, flare20_2,
 	  mount37, gun37, flare37,
-	  flag1, flag2, flag3, wake1, wake2, wake3;
+	  prop1, prop2,
+	  flag1, flag2, flag3, wake1, wake2, wake3, wake4;
 
 #define BASE_SMOKE_PERIOD	40
 #define MIN_SMOKE_PERIOD	240
@@ -24,8 +25,8 @@ piece base, hull, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleev
 #define AA20_GUN_BACK_SPEED		[0.5]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<15>
-#define HULL_LIST_ANGLE		<-90>
+#define base_LIST_SPEED		<15>
+#define base_LIST_ANGLE		<-90>
 
 //********************Flag
 #define FLAG_FLAP_PERIOD	500
@@ -40,10 +41,12 @@ piece base, hull, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleev
 #define SIG_AIM3			16
 #define SIG_DEATH			32
 
-#define SMOKEPIECE	hull
+// Propellers
+#define PROP_SPIN_SPEED		<600>
 
-#include "exptype.h"
-#include "sfxtype.h"
+#define SMOKEPIECE	base
+
+#include "constants.h"
 #include "damageSmoke.h"
 
 //effects
@@ -125,7 +128,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -136,6 +139,7 @@ EmitWakes()
 		emit-sfx 2 from wake1;
 		emit-sfx 2 from wake2;
 		emit-sfx 2 from wake3;
+		emit-sfx 2 from wake4;
 		sleep 300;
 	}
 }
@@ -144,6 +148,8 @@ StopMoving()
 {
 	signal SIG_MOVE;
 	set-signal-mask SIG_MOVE;
+	spin prop1 around z-axis speed 0;
+	spin prop2 around z-axis speed 0;
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
 	bMoving = FALSE;
@@ -172,6 +178,8 @@ StartMoving()
 	signal SIG_MOVE;
 	start-script EmitWakes();
 	start-script StopCatcher();
+	spin prop1 around z-axis speed PROP_SPIN_SPEED;
+	spin prop2 around z-axis speed (0 - PROP_SPIN_SPEED);
 	bMoving = TRUE;
 }
 
@@ -215,11 +223,6 @@ FireWeapon1()
 {
 	emit-sfx SMALL_MUZZLEFLASH from flare37;
 	emit-sfx SMALL_MUZZLEDUST from flare37;
-	// Oops, I forgot to set the model for recoil on that gun
-	//move barrel_ma to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
-	//sleep 200;
-	//move barrel_ma to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	//hide flare37;
 }
 
 QueryWeapon2(piecenum)
@@ -384,13 +387,13 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
-		wait-for-turn hull around z-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to z-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	explode mount37 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount20_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount20_2 type	FALL|EXPLODE_ON_HIT|FIRE;
