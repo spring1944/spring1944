@@ -14,26 +14,28 @@ if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
 -- Localisations
-local DelayCall = GG.Delay.DelayCall
-local SetUnitRulesParam	= Spring.SetUnitRulesParam
 -- Synced Read
 local GetGameFrame 		= Spring.GetGameFrame
 local GetTeamInfo		= Spring.GetTeamInfo
+local GetAllyTeamList   = Spring.GetAllyTeamList
+local IsPosInAirLos     = Spring.IsPosInAirLos
+local GetUnitPosition   = Spring.GetUnitPosition
+
 -- Synced Ctrl
 local SetUnitLosMask 	= Spring.SetUnitLosMask
 local SetUnitLosState 	= Spring.SetUnitLosState
 
 -- Unsynced Ctrl
 -- Constants
---local NARC_ID = WeaponDefNames["narc"].id
---local NARC_DURATION = 32 * 60 -- 30 seconds
 
 -- Variables
 local modOptions = Spring.GetModOptions()
 local inRadarUnits = {}
 local outRadarUnits = {}
+-- ships get detected in air los ranges.
+local ships = {}
 
-local allyTeams = Spring.GetAllyTeamList()
+local allyTeams = GetAllyTeamList()
 local numAllyTeams = #allyTeams
 
 for i = 1, numAllyTeams do
@@ -42,64 +44,86 @@ for i = 1, numAllyTeams do
 	outRadarUnits[allyTeam] = {}
 end
 
---[[local narcUnits = {}
-
-local function NARC(unitID, allyTeam)
-	local narcFrame = GetGameFrame() + NARC_DURATION
-	narcUnits[unitID] = narcFrame
-	SetUnitLosState(unitID, allyTeam, {los=true, prevLos=true, radar=true, contRadar=true} ) 
-	SetUnitLosMask(unitID, allyTeam, {los=true, prevLos=false, radar=false, contRadar=false} )	
-	-- Set rules param here so that widgets know the unit is NARCed, value points to the frame NARC runs out
-	SetUnitRulesParam(unitID, "NARC", GetGameFrame() + NARC_DURATION, {inlos = true})
+local function showUnitToAllyTeam(unitID, allyTeamID)
+    SetUnitLosState(unitID, allyTeamID, {los=true, prevLos=true, radar=true, contRadar=true} ) 
+    SetUnitLosMask(unitID, allyTeamID, {los=true, prevLos=false, radar=false, contRadar=false} )	
 end
 
-local function DeNARC(unitID, allyTeam)
-	if narcUnits[unitID] <= GetGameFrame() + 1 then
-		narcUnits[unitID] = nil
-		SetUnitLosMask(unitID, allyTeam, {los=false, prevLos=false, radar=false, contRadar=false} )
-		-- unset rules param
-		SetUnitRulesParam(unitID, "NARC", -1, {inlos = true})
-	end
-end]]
+local function hideUnitFromAllyTeam(unitID, allyTeamID)
+    SetUnitLosMask(unitID, allyTeamID, {los=false, prevLos=false, radar=false, contRadar=false} )
+end
+
+--[[
+-- Update a ship's LoS mask depending on whether or not they're in Air LoS for 
+-- an allyTeam
+--
+-- @param shipUnitID
+-- @param shipAllyTeamID
+-- @return void
+--]]
+local function updateShipVisibility(shipUnitID, shipAllyTeamID)
+    local shipX, shipY, shipZ = GetUnitPosition(shipUnitID)
+    for _, viewingAllyTeamID in ipairs(GetAllyTeamList()) do
+        if viewingAllyTeamID ~= shipAllyTeamID then
+            if IsPosInAirLos(shipX, shipY, shipZ, viewingAllyTeamID) then
+                showUnitToAllyTeam(shipUnitID, viewingAllyTeamID)
+            else
+                hideUnitFromAllyTeam(shipUnitID, viewingAllyTeamID)
+            end
+        end
+    end
+end
+
+function gadget:UnitCreated(unitID, unitDefID, teamID)
+    local ud = UnitDefs[unitDefID]
+    if ud.floatOnWater then
+        local _, _, _, _, _, shipAllyTeamID = GetTeamInfo(teamID)
+        ships[unitID] = shipAllyTeamID
+        updateShipVisibility(unitID, shipAllyTeamID)
+    end
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID)
+    local ud = UnitDefs[unitDefID]
+    if ud.floatOnWater then
+        ships[unitID] = nil
+    end
+end
 
 function gadget:UnitEnteredRadar(unitID, unitTeam, allyTeam, unitDefID)
 	--Spring.Echo(UnitDefs[unitDefID].name .. " entered radar " .. allyTeam)
-	inRadarUnits[allyTeam][unitID] = true
-	outRadarUnits[allyTeam][unitID] = nil
+    if not ships[unitID] then
+        inRadarUnits[allyTeam][unitID] = true
+        outRadarUnits[allyTeam][unitID] = nil
+    end
 end
 
 function gadget:UnitLeftRadar(unitID, unitTeam, allyTeam, unitDefID)
 	--Spring.Echo(UnitDefs[unitDefID].name .. " left radar" .. allyTeam)
-	outRadarUnits[allyTeam][unitID] = true
-	inRadarUnits[allyTeam][unitID] = nil
+    if not ships[unitID] then
+        outRadarUnits[allyTeam][unitID] = true
+        inRadarUnits[allyTeam][unitID] = nil
+    end
 end
 
---[[function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponID, attackerID, attackerDefID, attackerTeam)
-	-- ignore non-NARC weapons
-	if weaponID ~= NARC_ID or not attackerID then return damage end
-	local allyTeam = select(6, GetTeamInfo(attackerTeam))
-	-- do the NARC, delay the deNARC
-	NARC(unitID, allyTeam)
-	DelayCall(DeNARC, {unitID, allyTeam}, NARC_DURATION)
-	-- NARC does 0 damage
-	return 0
-end]]
-
 function gadget:GameFrame(n)
+    -- update ship visiblity every second. theoretically there should rarely be 
+    -- more than ~30 ships in game at once, so this shouldn't be too crunchy.
+	if n % (1*30) < 0.1 then
+        for shipUnitID, shipAllyTeamID in pairs(ships) do
+            updateShipVisibility(shipUnitID, shipAllyTeamID)
+        end
+    end
+
 	for i = 1, numAllyTeams do
 		local allyTeam = allyTeams[i]
 		for unitID in pairs(inRadarUnits[allyTeam]) do
-			--if not narcUnits[unitID] then
-				SetUnitLosState(unitID, allyTeam, {los=true, prevLos=true, radar=true, contRadar=true} ) 
-				SetUnitLosMask(unitID, allyTeam, {los=true, prevLos=false, radar=false, contRadar=false} )	
-				inRadarUnits[allyTeam][unitID] = nil
-			--end
+            showUnitToAllyTeam(unitID, allyTeam)
+            inRadarUnits[allyTeam][unitID] = nil
 		end
 		for unitID in pairs(outRadarUnits[allyTeam]) do
-			--if not narcUnits[unitID] then
-				SetUnitLosMask(unitID, allyTeam, {los=false, prevLos=false, radar=false, contRadar=false} )
-				outRadarUnits[allyTeam][unitID] = nil
-			--end
+            hideUnitFromAllyTeam(unitID, allyTeam)
+            outRadarUnits[allyTeam][unitID] = nil
 		end
 	end
 end

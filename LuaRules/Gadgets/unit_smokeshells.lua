@@ -132,16 +132,30 @@ end
 function ApplySmoke(unitID)
 	local oldSight = GetUnitSensorRadius(unitID, "los")
 	local oldRadar = GetUnitSensorRadius(unitID, "radar")
+	local oldAirLos = GetUnitSensorRadius(unitID, "airLos")
+	local oldSeismic = GetUnitSensorRadius(unitID, "seismic")
+
 	if oldSight > 0 then
 		SmokedUnits[unitID].oldLos = oldSight
 	end
 	if oldRadar > 0 then
 		SmokedUnits[unitID].oldRadar = oldRadar
 	end
+	if oldAirLos and oldAirLos > 0 then
+		SmokedUnits[unitID].oldAirLos = oldAirLos
+	end
+	if oldSeismic and oldSeismic > 0 then
+		SmokedUnits[unitID].oldSeismic = oldSeismic
+	end
+
+
 	SetUnitRulesParam(unitID, "smoked", 1)
 	-- make the unit blind
 	SetUnitSensorRadius(unitID, "los", 0)
 	SetUnitSensorRadius(unitID, "radar", 0)
+	SetUnitSensorRadius(unitID, "airLos", 0)
+	SetUnitSensorRadius(unitID, "seismic", 0)
+
 	-- hide the unit
 	SetUnitCloak(unitID, 2)
 	--SetUnitCloak(unitID, true) this is redundant, I'm pretty sure.
@@ -164,10 +178,16 @@ function RemoveSmoke(unitID)
 	-- find out the 'default' los value for that unittype
 	local defaultLos = SmokedUnits[unitID].oldLos
 	local defaultRadar = SmokedUnits[unitID].oldRadar
+	local defaultAirLos = SmokedUnits[unitID].oldAirLos
+	local defaultSeismic = SmokedUnits[unitID].oldSeismic
+
 	SetUnitRulesParam(unitID, "smoked", 0)
 	-- set the unit's los to that value
 	SetUnitSensorRadius(unitID, "los", defaultLos)
 	SetUnitSensorRadius(unitID, "radar", defaultRadar)
+	SetUnitSensorRadius(unitID, "airLos", defaultAirLos)
+	SetUnitSensorRadius(unitID, "seismic", defaultSeismic)
+
 	-- unhide the unit
 	SetUnitCloak(unitID, 1)
 	-- and make it cloak/stealth by its own if it can
@@ -238,7 +258,8 @@ function gadget:GameFrame(n)
 							if (SmokedUnits[unitID]) then
 								SmokedUnits[unitID].isSmoked = true
 							else
-								SmokedUnits[unitID] = {isSmoked = true, oldLos = 0, oldRadar = 0,}
+								SmokedUnits[unitID] = {isSmoked = true, oldLos = 0, oldRadar = 0,
+                                    oldAirLos = 0, oldSeismic = 0}
 							end
 						end
 					end
