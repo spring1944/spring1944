@@ -58,41 +58,54 @@
   turninplace=0;
   turnRate=35;
 
-  weapon1=sk88mmc30;
+  weapon1=flak4337mmhe;
   maxAngleDif1=270;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=flak4337mmaa;
+  weapon2=flak4337mmhe;
   maxAngleDif2=270;
-  onlyTargetCategory2=AIR;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
-  
-  weapon9=flak4337mmhe;
-  maxAngleDif9=270;
-  onlyTargetCategory9=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir9=0 0 -1;
 
-  weapon3=flak3820mmaa;
+  weapon3=flak4337mmaa;
+  maxAngleDif3=270;
   onlyTargetCategory3=AIR;
+  weaponMainDir3=0 0 1;
 
-  weapon4=flak3820mmaa;
+  weapon4=flak4337mmaa;
+  maxAngleDif4=270;
   onlyTargetCategory4=AIR;
+  weaponMainDir4=0 0 -1;
 
-  weapon5=flak3820mmaa;
+  weapon5=flak3820mmhe;
   maxAngleDif5=270;
-  onlyTargetCategory5=AIR;
-  weaponMainDir5=0 0 -1;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=1 0 0;
 
   weapon6=flak3820mmhe;
+  maxAngleDif6=270;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=-1 0 0;
 
   weapon7=flak3820mmhe;
+  maxAngleDif7=270;
   onlyTargetCategory7=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir7=0 0 -1;
 
   weapon8=flak3820mmhe;
   maxAngleDif8=270;
-  onlyTargetCategory8=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir8=0 0 -1;
+  onlyTargetCategory8=AIR;
+  weaponMainDir8=1 0 0;
+
+  weapon9=flak3820mmhe;
+  maxAngleDif9=270;
+  onlyTargetCategory9=AIR;
+  weaponMainDir9=-1 0 0;
+
+  weapon10=flak3820mmhe;
+  maxAngleDif10=270;
+  onlyTargetCategory10=AIR;
+  weaponMainDir10=0 0 -1;
 }
 
