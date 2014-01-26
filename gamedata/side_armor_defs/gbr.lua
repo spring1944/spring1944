@@ -127,6 +127,7 @@ local GBRDefs = {
     --Britain--
   "GBRLCT",
   "GBRFairmileD",
+  "GBRLCSL",
   "GBRHuntII",
   "GBRFlower",
   "GBROClass",
