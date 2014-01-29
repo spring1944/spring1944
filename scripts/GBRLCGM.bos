@@ -1,8 +1,8 @@
 #define TAK
 
-piece base, hull, turret1, sleeve1, barrel1, flare1, turret2, sleeve2, barrel2, flare2,
+piece base, turret1, sleeve1, barrel1, flare1, turret2, sleeve2, barrel2, flare2,
 	  aa20_turret_1, aa20_sleeve_1, aa20_barrel_1, aa20_flare_1, aa20_turret_2, aa20_sleeve_2, aa20_barrel_2, aa20_flare_2,
-	  railings,
+		flag1, flag2, flag3,
 	  wake1, wake2, wake3, wake4;
 
 #define BASE_SMOKE_PERIOD	40
@@ -25,8 +25,8 @@ piece base, hull, turret1, sleeve1, barrel1, flare1, turret2, sleeve2, barrel2, 
 #define AA20_GUN_BACK_SPEED		[1]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<2.5>
-#define HULL_LIST_ANGLE		<-5>
+#define base_LIST_SPEED		<2.5>
+#define base_LIST_ANGLE		<-5>
 
 #define RESTORE_PERIOD		2500
 
@@ -37,10 +37,15 @@ piece base, hull, turret1, sleeve1, barrel1, flare1, turret2, sleeve2, barrel2, 
 #define SIG_AIM3			16
 #define SIG_AIM4			32
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
+
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
 
 //tracers
-#define LARGE_TRACER		2048+4
+#define LARGE_TRACER		2048+6
 //effects
 #define placeholder_EFFECT01 1024+1
 #define placeholder_EFFECT02 1024+2
@@ -53,10 +58,23 @@ piece base, hull, turret1, sleeve1, barrel1, flare1, turret2, sleeve2, barrel2, 
 
 #define VISIBLE_PERIOD	8000
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
-static-var	MaxSpeed, bMoving;
+static-var	MaxSpeed, bMoving, bAimAA1, bAimAA2;
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
 
 WorkingLoop()
 {
@@ -119,15 +137,18 @@ Create()
 	start-script HideFlares();
 	bMoving = FALSE;
 	MaxSpeed = get MAX_SPEED;
+	bAimAA1 = FALSE;
+	bAimAA2 = FALSE;
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
 	start-script WorkingLoop();
 	start-script StopCatcher();
+	start-script FlagFlap();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -249,6 +270,10 @@ AimFromWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {
+	if (bAimAA1)
+	{
+		return FALSE;
+	}
 	signal SIG_AIM3;
 	set-signal-mask SIG_AIM3|SIG_DEATH;
 	turn aa20_turret_1 to y-axis heading speed AA20_TURRET_TURN;
@@ -285,6 +310,10 @@ AimFromWeapon4(piecenum)
 
 AimWeapon4(heading, pitch)
 {
+	if (bAimAA2)
+	{
+		return FALSE;
+	}
 	signal SIG_AIM4;
 	set-signal-mask SIG_AIM4|SIG_DEATH;
 	turn aa20_turret_2 to y-axis heading speed AA20_TURRET_TURN;
@@ -309,19 +338,95 @@ Shot4(foo)
 	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
+QueryWeapon5(piecenum)
+{
+	piecenum = aa20_flare_1;
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = aa20_turret_1;
+}
+
+AimWeapon5(heading, pitch)
+{
+	bAimAA1 = TRUE;
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn aa20_turret_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_1 around y-axis;
+	wait-for-turn aa20_sleeve_1 around x-axis;
+	start-script RestoreTurret();
+	bAimAA1 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+	emit-sfx LARGE_TRACER from aa20_flare_1;
+}
+
+Shot5(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_1;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_1;
+	move aa20_barrel_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = aa20_flare_2;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = aa20_turret_2;
+}
+
+AimWeapon6(heading, pitch)
+{
+	bAimAA2 = TRUE;
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn aa20_turret_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn aa20_sleeve_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn aa20_turret_2 around y-axis;
+	wait-for-turn aa20_sleeve_2 around x-axis;
+	start-script RestoreTurret();
+	bAimAA2 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+	emit-sfx LARGE_TRACER from aa20_flare_2;
+}
+
+Shot6(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from aa20_flare_2;
+	emit-sfx XSMALL_MUZZLEDUST from aa20_flare_2;
+	move aa20_barrel_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move aa20_barrel_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
 Killed(severity, corpsetype)
 {
 	signal SIG_DEATH;
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
-		wait-for-turn hull around z-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to z-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	explode aa20_turret_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode aa20_turret_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	return (TRUE);

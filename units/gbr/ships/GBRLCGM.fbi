@@ -37,7 +37,7 @@
   minWaterDepth=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GBRLCGM-25pdr;
+  objectName=GBRLCGM25.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -60,25 +60,35 @@
   turnRate=32;
 
   weapon1=qf25pdrhe;
-  maxAngleDif1=270;
+  maxAngleDif1=240;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir1=1 0 1;
+  weaponMainDir1=-1 0 1;
 
   weapon2=qf25pdrhe;
-  maxAngleDif2=270;
+  maxAngleDif2=240;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir2=-1 0 1;
+  weaponMainDir2=1 0 1;
 
-  weapon3=Oerlikon20mmaa; //oerlikon20mm;
-  maxAngleDif3=240;
-  onlyTargetCategory3=AIR;
+  weapon3=Oerlikon20mmhe;
+  maxAngleDif3=200;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=1 0 0;
 
-  weapon4=Oerlikon20mmaa; //oerlikon20mm;
-  maxAngleDif4=240;
-  onlyTargetCategory4=AIR;
+  weapon4=Oerlikon20mmhe;
+  maxAngleDif4=200;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=-1 0 0;
 
-  weapon5=Large_Tracer;
+  weapon5=Oerlikon20mmaa; //oerlikon20mm;
+  maxAngleDif5=200;
+  onlyTargetCategory5=AIR;
+  weaponMainDir5=1 0 0;
+
+  weapon6=Oerlikon20mmaa; //oerlikon20mm;
+  maxAngleDif6=200;
+  onlyTargetCategory6=AIR;
+  weaponMainDir6=-1 0 0;
+
+  weapon7=Large_Tracer;
 }
 
