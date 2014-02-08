@@ -1,11 +1,12 @@
 #define TAK
 
-piece base, hull, railings, boats,
+piece base, boats,
 	  main_turret, main_sleeve, main_barrel, main_flare,
 	  aa40_turret_1, aa40_sleeve_1, aa40_barrel_11, aa40_flare_11, aa40_barrel_21, aa40_flare_21,
 	  aa40_turret_2, aa40_sleeve_2, aa40_barrel_12, aa40_flare_12, aa40_barrel_22, aa40_flare_22,
 	  aa20_turret_1, aa20_sleeve_1, aa20_barrel_1, aa20_flare_1, aa20_turret_2, aa20_sleeve_2, aa20_barrel_2, aa20_flare_2,
 	  aa20_turret_3, aa20_sleeve_3, aa20_barrel_3, aa20_flare_3, aa20_turret_4, aa20_sleeve_4, aa20_barrel_4, aa20_flare_4,
+	  flag1, flag2, flag3,
 	  wake1, wake2, wake3, wake4;
 
 #define BASE_SMOKE_PERIOD	40
@@ -35,11 +36,15 @@ piece base, hull, railings, boats,
 #define AA20_GUN_BACK_SPEED		[5]
 
 //*********************Death anim
-#define HULL_LIST_SPEED			<3>
-#define HULL_LIST_ANGLE_Z			<15>
+#define base_LIST_SPEED			<3>
+#define base_LIST_ANGLE_Z			<15>
 
 #define RESTORE_PERIOD		2500
 
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
 
 #define SIG_MOVE			2
 // main gun
@@ -70,21 +75,24 @@ piece base, hull, railings, boats,
 #define MEDIUMLARGE_MUZZLEFLASH 1024+8
 #define MEDIUMLARGE_MUZZLEDUST 1024+9
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "damageSmoke.h"
+#include "constants.h"
+#include "damagesmoke.h"
+
 static-var	CurrentSpeed, bMoving, aa40_1_flare, aa40_2_flare, oldXZ, oldHeading;
 
-WorkingLoop()
+FlagFlap()
 {
 	while(TRUE)
 	{
-		if(bMoving)
-		{
-			// Nothing to do on this particular ship
-		}
-		sleep 500;
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
 	}
 }
 
@@ -126,12 +134,12 @@ Create()
 	call-script InitTurrets();
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
-	start-script WorkingLoop();
+	start-script FlagFlap();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -792,11 +800,11 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to z-axis (0-HULL_LIST_ANGLE_Z) speed HULL_LIST_SPEED;
-		wait-for-turn hull around z-axis;
+		turn base to z-axis base_LIST_ANGLE_Z speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER;
+	explode base type		SHATTER;
 	return (TRUE);
 }
