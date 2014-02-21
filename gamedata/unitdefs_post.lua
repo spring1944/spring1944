@@ -160,7 +160,6 @@ for name, ud in pairs(UnitDefs) do
                     ud.sightdistance = ud.sightdistance * 0.5
                     ud.radardistance = 0
                 end
-            print("set sight values for", ud.name, ud.sightdistance, ud.radardistance, ud.seismicdistance)
             end
         end
     end
