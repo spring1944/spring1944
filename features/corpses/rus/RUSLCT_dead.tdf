@@ -7,7 +7,7 @@
   footprintZ=8;
   height=5;
   hitdensity=70;
-  object=RUSLCT_dead;
+  object=RUSLCT_dead.s3o;
   reclaimable=1;
 }
 

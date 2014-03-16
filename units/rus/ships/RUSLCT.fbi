@@ -34,7 +34,7 @@
   maxVelocity=2;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
-  objectName=RUSLCT;
+  objectName=RUSLCT.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
