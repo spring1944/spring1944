@@ -106,7 +106,7 @@ Deploy()
 	set-signal-mask SIG_DEPLOY;
 	//TODO: deploy anim
 	//set CLOAKED to TRUE;
-	SET MAX_SPEED to 1;
+	SET MAX_SPEED to normalSpeed / 50;
 //	sleep 5000;
 	isDeployed = TRUE;
 }
@@ -136,7 +136,7 @@ KeepHeading()
 	{
 		sleep 30;
 		set HEADING to curHeading;
-		set MAX_SPEED to 1;
+		set MAX_SPEED to normalSpeed / 50;
 	}
 }
 
