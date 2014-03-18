@@ -239,7 +239,7 @@ set-signal-mask 0;
 				CREW_SUPRESSED
 
 	}
-		SET MAX_SPEED to [0.00001];
+		SET MAX_SPEED to 1;
 		SET ARMORED to TRUE;
 
 		sleep 100;
@@ -256,7 +256,7 @@ RestoreAfterCover() //get up out of the dirt. also controls going into pinned mo
 			CREW_DEPLOY
 				IsProne=0;
 				SET ARMORED to FALSE;
-				set MAX_SPEED to [0.5];
+				set MAX_SPEED to normalSpeed;
 		
 		}
 		return (1);
@@ -317,7 +317,6 @@ luaFunction(arg1)
 // thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
 Deploy() 
 {
-	set-signal-mask SIG_DEPLOY;
 	//TODO: deploy anim
 	
 	CREW_DEPLOY;
@@ -325,13 +324,12 @@ Deploy()
 	move crewman1 to y-axis [-1] now;
 	move crewman2 to y-axis [-1] now;
 	sleep 50;
-	set MAX_SPEED to 1;
+	set MAX_SPEED to normalSpeed / 10;
 	isDeployed = TRUE;
 }
 
 UnDeploy() 
 {
-	set-signal-mask SIG_DEPLOY;
 	isDeployed = FALSE;
 	// TODO: undeploy anim
 	
@@ -341,7 +339,6 @@ UnDeploy()
 	move crewman2 to y-axis [0] now;
 
 	sleep 50;
-	
 	set MAX_SPEED to normalSpeed;
 }
 
@@ -609,8 +606,7 @@ setSFXoccupy(terrain)
 StartMoving()
 {
 	signal SIG_MOVE;
-	signal SIG_DEPLOY;
-	set-signal-mask SIG_DEPLOY;
+	set-signal-mask SIG_MOVE;
 	bMoving=TRUE;
 	sleep 200;
 	call-script UnDeploy();
@@ -620,10 +616,10 @@ StartMoving()
 
 StopMoving()
 {
-	signal SIG_DEPLOY;
 	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
 	bMoving=FALSE;
-	set-signal-mask SIG_DEPLOY;
+
  	stop-spin wheels around x-axis;
 	CREW_STOP;
 	sleep 200;
