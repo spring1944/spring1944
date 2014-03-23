@@ -20,7 +20,7 @@ local MGClass = Weapon:New{
   sprayAngle         = 350,
   tolerance          = 600,
   turret             = true,
-  weaponType         = [[Cannon]], -- intended? :o
+  weaponType         = [[LaserCannon]],
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
@@ -113,7 +113,7 @@ local MG42AA = MG42:New{
   sprayAngle         = 460,
   customparams = { -- don't cause fear, should cause Aircraft fear?
     fearaoe            = nil,
-    fearid             = nil, 
+    fearid             = nil,
   }
 }
 
@@ -222,7 +222,7 @@ local M2BrowningAA = M2Browning:New{
   customParams = {
     fearaoe            = 1,
     fearid             = 701,
-  }  
+  }
 }
 -- M2 Browning Aircraft
 local M2BrowningAMG = M2Browning:New{
