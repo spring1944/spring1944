@@ -1,0 +1,13 @@
+[ITANavigatori_dead]
+{
+	object=ITANavigatori_dead;
+	description=Sunk Navigatori class;
+	energy=5000;
+	damage=45000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

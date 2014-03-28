@@ -1,0 +1,18 @@
+[JAPBarracks_Dead]
+{
+  description=Destroyed Building;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=JAPBarracks_dead;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
