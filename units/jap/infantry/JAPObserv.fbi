@@ -35,8 +35,7 @@
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED HARDVEH MINE;
-  //objectName=ITAObserv.S3O;
-  objectName=gerobserv.s3o;
+  objectName=japobserv.s3o;
   script=gerobserv.cob;
   repairable=0;
   seismicDistance=690;

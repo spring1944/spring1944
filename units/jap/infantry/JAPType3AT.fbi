@@ -35,7 +35,7 @@
   minCloakDistance=260;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
-  objectName=RUSRPG43.S3O;
+  objectName=JAPATGrenadier.S3O;
   repairable=0;
   script=rusrpg43.cob;
   seismicDistance=840;

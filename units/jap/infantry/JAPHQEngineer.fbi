@@ -32,7 +32,7 @@
   seismicSignature=0;
   [sfxtypes] {
   }
-  objectName=gerengineer.s3o;
+  objectName=japengineer.s3o;
   script=GBRHQEngineer.cob;
   showNanoFrame=0;
   showNanoSpray=0;

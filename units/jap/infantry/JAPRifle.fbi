@@ -30,8 +30,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITARifle.S3O;
-  //objectName=gerrifle.s3o;
+  objectName=JAPRifle.S3O;
   script=gerrifle.cob;
   repairable=0;
   seismicDistance=840;

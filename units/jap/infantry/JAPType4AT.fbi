@@ -35,7 +35,7 @@
   minCloakDistance=310; //230
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
-  objectName=USHAT.S3O;
+  objectName=JAPAT.S3O;
   script=usgibazooka.cob;
   seismicDistance=840;
   seismicSignature=0;

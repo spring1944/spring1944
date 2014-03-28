@@ -37,8 +37,8 @@
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH;
   //objectName=ITASniper.S3O;
-  objectName=gersniper.s3o;
-  script=gersniper.cob;
+  objectName=itasniper.s3o;
+  script=usgisniper.cob;
   repairable=0;
   seismicDistance=950;
   seismicSignature=0;

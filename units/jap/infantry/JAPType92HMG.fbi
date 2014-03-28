@@ -29,8 +29,7 @@
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG HARDVEH OPENVEH AIR;
-  //objectName=ITAMG.S3O;
-  objectName=rusdp.s3o;
+  objectName=JAPMG.s3o;
   script=infantrymg.cob;
   seismicSignature=0;
   [sfxtypes] {

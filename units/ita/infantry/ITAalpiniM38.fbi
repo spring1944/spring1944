@@ -30,8 +30,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
-  //objectName=ITASMG.S3O;
-  objectName=GBRSMG.S3O;
+  objectName=ITAM38.S3O;
   script=itaelitem38.cob;
   repairable=0;
   seismicDistance=840;

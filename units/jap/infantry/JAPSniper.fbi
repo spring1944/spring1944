@@ -36,8 +36,7 @@
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH;
-  //objectName=ITASniper.S3O;
-  objectName=gersniper.s3o;
+  objectName=JAPSniper.S3O;
   script=gersniper.cob;
   repairable=0;
   seismicDistance=950;
