@@ -7,7 +7,7 @@
   footprintZ=8;
   height=5;
   hitdensity=70;
-  object=GERRBoot_dead;
+  object=GERRBoot_dead.s3o;
   reclaimable=1;
 }
 

@@ -38,7 +38,7 @@ piece base, turret_37, sleeve_37, barrel_37, flare_37, turret_45, sleeve_45, bar
 
 //*********************Death anim
 #define base_LIST_SPEED		<10>
-#define base_LIST_ANGLE		<30>
+#define base_LIST_ANGLE		<-30>
 
 #define RESTORE_PERIOD		2500
 

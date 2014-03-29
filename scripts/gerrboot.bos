@@ -26,7 +26,7 @@ piece base, mount20_1, sleeve20_1, barrel20_1, flare20_1, mount20_2, sleeve20_2,
 
 //*********************Death anim
 #define base_LIST_SPEED		<15>
-#define base_LIST_ANGLE		<-90>
+#define base_LIST_ANGLE		<45>
 
 //********************Flag
 #define FLAG_FLAP_PERIOD	500

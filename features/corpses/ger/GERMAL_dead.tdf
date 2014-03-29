@@ -7,7 +7,7 @@
   footprintZ=8;
   height=10;
   hitdensity=50;
-  object=GERMAL;
+  object=GERMAL_dead.s3o;
   reclaimable=1;
 }
 
