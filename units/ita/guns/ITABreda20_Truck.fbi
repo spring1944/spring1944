@@ -31,7 +31,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=ITABreda20_Truck;
+  objectName=ITABreda20_Truck.s3o;
   script=gerflak38_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

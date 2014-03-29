@@ -27,7 +27,7 @@
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
   objectName=ITABreda20_Stationary.S3O;
-  script=GERFlaK38_Stationary.cob;
+  script=ITABreda20_Stationary.cob;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
