@@ -32,7 +32,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=ITACannone47_Truck;
+  objectName=ITACannone47_Truck.s3o;
   script=ruszis2_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
