@@ -9,7 +9,7 @@ local modinfo =
 	url							=	"http://www.spring1944.net/",
 	modtype					=	"1",
 	
-	depend					=	{"Spring: 1944 SVN S44Main.sdd"},
+	depend					=	{"Spring: 1944 dev-$VERSION"},
 }
 
 return modinfo
