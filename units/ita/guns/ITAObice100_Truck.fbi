@@ -31,8 +31,8 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=ITAObice100_Truck;
-  script=GERleFH18_Truck.cob;
+  objectName=ITAObice100_Truck.s3o;
+  script=ruszis3_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
