@@ -36,7 +36,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITAAutocannone100;
+  objectName=ITAAutocannone100.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {

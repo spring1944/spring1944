@@ -2,7 +2,7 @@
 
 #include "constants.h"
 
-piece  base, body, spare, front_wheels, rear_wheels, turret, sleeve, barrel, flare;
+piece  base, spare, front_wheels, rear_wheels, turret, sleeve, barrel, flare;
  
 static-var RestoreDelay, reloading, aim2, bMoving;
 
@@ -65,13 +65,17 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
-	bMoving = TRUE;
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
 	spin front_wheels around x-axis speed <350.082418>;
 	spin rear_wheels around x-axis speed <350.082418>;
+	sleep (100);
+	bMoving = TRUE;
 }
 
 StopMoving()
 {
+	signal SIG_MOVE;
 	bMoving = FALSE;
 	stop-spin front_wheels around x-axis decelerate <100.000000>;
 	stop-spin rear_wheels around x-axis decelerate <100.000000>;
@@ -82,11 +86,12 @@ Create()
 	hide flare;
 	start-script SmokeUnit();
 	aim2=FALSE;
+	bMoving = FALSE;
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = body;
+	piecenum = base;
 }
 
 SetMaxReloadTime(longestReloadTime)
@@ -210,7 +215,7 @@ Killed(severity, corpsetype)
 		corpsetype = 2;
 		explode front_wheels type SHATTER | EXPLODE_ON_HIT;
 		explode spare type FALL | FIRE | EXPLODE_ON_HIT;
-		explode body type BITMAPONLY;
+		explode base type BITMAPONLY;
 		return(0);
 	}
 	// outright destroyed vehicle

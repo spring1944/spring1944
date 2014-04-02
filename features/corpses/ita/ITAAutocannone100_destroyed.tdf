@@ -6,7 +6,7 @@
   featureDead=ITAAutocannone100_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITAAutocannone100;
+  object=ITAAutocannone100.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
