@@ -71,14 +71,12 @@ StartMoving()
 	spin rear_wheels around x-axis speed <350.082418>;
 	sleep (100);
 	bMoving = TRUE;
-	get PRINT(1, bMoving);
 }
 
 StopMoving()
 {
 	signal SIG_MOVE;
 	bMoving = FALSE;
-	get PRINT(2, bMoving);
 	stop-spin front_wheels around x-axis decelerate <100.000000>;
 	stop-spin rear_wheels around x-axis decelerate <100.000000>;
 }
@@ -129,7 +127,6 @@ QueryWeapon1(piecenum)
 
 AimWeapon1(heading, pitch)
 {
-	get PRINT(10, bMoving, isSmoking);
 
 	if (isSmoking) return FALSE; // don't aim weap1 if aiming smoke
 	if (bMoving) return FALSE; // don't aim weap1 if moving
@@ -172,7 +169,6 @@ QueryWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
-	get PRINT(11, bMoving, isSmoking);
 	if (!isSmoking) return FALSE; // don't aim weap1 if aiming smoke
 
 	signal SIG_AIM;
