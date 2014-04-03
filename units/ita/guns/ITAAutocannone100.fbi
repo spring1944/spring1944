@@ -69,14 +69,14 @@
   badTargetCategory=FLAG;
 
   weapon1=Obice100mml17he;
-  maxAngleDif1=170;
+//  maxAngleDif1=240;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir1=0 0 -1;
+//  weaponMainDir1=0 0 -1;
 
   weapon2=Obice100mml17smoke;
   badTargetCategory2=OPENVEH HARDVEH;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  maxAngleDif2=170;
-  weaponMainDir2=0 0 -1;
+//  maxAngleDif2=240;
+//  weaponMainDir2=0 0 -1;
 }
 

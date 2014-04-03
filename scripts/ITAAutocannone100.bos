@@ -71,12 +71,14 @@ StartMoving()
 	spin rear_wheels around x-axis speed <350.082418>;
 	sleep (100);
 	bMoving = TRUE;
+	get PRINT(1, bMoving);
 }
 
 StopMoving()
 {
 	signal SIG_MOVE;
 	bMoving = FALSE;
+	get PRINT(2, bMoving);
 	stop-spin front_wheels around x-axis decelerate <100.000000>;
 	stop-spin rear_wheels around x-axis decelerate <100.000000>;
 }
@@ -127,8 +129,10 @@ QueryWeapon1(piecenum)
 
 AimWeapon1(heading, pitch)
 {
-	if (isSmoking) return 0; // don't aim weap1 if aiming smoke
-	if (bMoving) return 0; // don't aim weap1 if moving
+	get PRINT(10, bMoving, isSmoking);
+
+	if (isSmoking) return FALSE; // don't aim weap1 if aiming smoke
+	if (bMoving) return FALSE; // don't aim weap1 if moving
 
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
@@ -154,7 +158,6 @@ FireWeapon1()
 	wait-for-move barrel along z-axis;
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	start-script Reload(); // start reload timer after firing
-	return (0);
 }
 
 AimFromWeapon2(piecenum)
@@ -169,7 +172,8 @@ QueryWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
-	if (!isSmoking) return 0; // don't aim weap1 if aiming smoke
+	get PRINT(11, bMoving, isSmoking);
+	if (!isSmoking) return FALSE; // don't aim weap1 if aiming smoke
 
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
@@ -197,7 +201,6 @@ FireWeapon2()
 	wait-for-move barrel along z-axis;
 	move barrel to z-axis 0 speed RETURN_SPEED;
 	start-script Reload(); // start reload timer after firing
-	return (0);
 }
 
 Killed(severity, corpsetype)
