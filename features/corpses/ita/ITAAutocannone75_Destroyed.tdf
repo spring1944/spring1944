@@ -6,7 +6,7 @@
   featureDead=ITAAutocannone75_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITAAutocannone75;
+  object=ITAAutocannone75_dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -26,7 +26,7 @@
   featureDead=ITAAutocannone75_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=ITAAutocannone75_Dead;
+  object=ITAAutocannone75_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
