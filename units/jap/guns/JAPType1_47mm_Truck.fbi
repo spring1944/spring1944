@@ -7,7 +7,7 @@
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=1050;
-  buildPic=JAPType1_47mm.png;
+  buildPic=JAPType1_47mm_Truck.png;
   buildTime=1050;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
@@ -31,7 +31,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=JAPType1_47mm_Truck;
+  objectName=JAPType1_47mm_Truck.s3o;
   script=gerflak38_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
