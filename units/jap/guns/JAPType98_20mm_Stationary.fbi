@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType98_20mm.png;
+  buildPic=JAPType98_20mm_Stationary.png;
   buildTime=2500;
   category=DEPLOYED;
   corpse=JAPType98_20mm_Destroyed;
@@ -28,7 +28,7 @@
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
   objectName=JAPType98_20mm_Stationary.S3O;
-  script=GERFlaK38_Stationary.cob;
+  script=ITABreda20_Stationary.cob;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
