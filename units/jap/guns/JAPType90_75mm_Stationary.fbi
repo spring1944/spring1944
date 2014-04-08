@@ -9,9 +9,8 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType90_75mm.png;
+  buildPic=JAPType90_75mm_Stationary.png;
   buildTime=900;
-  buildPic=JAPType90_75mm.png;
   category=DEPLOYED;
   corpse=JAPType90_75mm_Destroyed;
   [customParams] {

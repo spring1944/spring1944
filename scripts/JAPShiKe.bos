@@ -2,7 +2,7 @@
 
 piece	base, front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, mid_wheels5, support_wheels1, support_wheels2,
 		carriage, wheel3,
-		tracks, tent,
+		tracks, tracks2, tent,
 		exhaust;
  
 static-var  bMoving, treadnum;
@@ -74,26 +74,26 @@ StopMoving()
 	stop-spin support_wheels2 around x-axis;
 }
 
-treads() 
-{ 
-/*   while( TRUE ) 
-   { 
-        if(bMoving) 
-           { 
-              if(treadnum == 0) 
-              {             
-              hide tracks2; 
-              show tracks1; 
-              } 
-            if(treadnum == 1) 
+treads()
+{
+   while( TRUE )
+   {
+        if(bMoving)
+           {
+              if(treadnum == 0)
+              {
+				hide tracks2;
+				show tracks;
+              }
+            if(treadnum == 1)
             { 
-            hide tracks1; 
-            show tracks2; 
+				hide tracks;
+				show tracks2;
 			}
-            treadnum = !treadnum; 
-         } 
-      sleep 90; 
-   } */
+            treadnum = !treadnum;
+         }
+      sleep 90;
+   }
 }
 
 Create()
