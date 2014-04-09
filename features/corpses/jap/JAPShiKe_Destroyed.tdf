@@ -6,7 +6,7 @@
   featureDead=JAPShiKe_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPShiKe;
+  object=JAPShiKe.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

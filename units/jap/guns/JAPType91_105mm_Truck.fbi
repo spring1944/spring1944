@@ -31,7 +31,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=JAPType91_105mm_Truck;
+  objectName=JAPType91_105mm_Truck.s3o;
   script=japshike.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
