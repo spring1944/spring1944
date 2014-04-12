@@ -1,7 +1,7 @@
 #include "constants.h" // Thank you Argh
 
 piece	base, front_wheel, rear_wheel, mid_wheel1, mid_wheel2, mid_wheel3, mid_wheel4, mid_wheel5, mid_wheel6, mid_wheel7, mid_wheel8, support_wheel1, support_wheel2, support_wheel3, support_wheel4,
-		tracks,
+		tracks, tracks2,
 		turret1, gun1, flare1, turret2, gun2, flare2,
 		prop1, prop2,
 		load_shoulder, load_arm, tow_point,
@@ -79,25 +79,25 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, s
 #include "amphib.h"
 
 treads() 
-{ 
-/*   while( TRUE ) 
-   { 
-        if(bMoving) 
-           { 
-              if(treadnum == 0) 
-              {             
-              hide tracks2; 
-              show tracks1; 
-              } 
-            if(treadnum == 1) 
-            { 
-            hide tracks1; 
-            show tracks2; 
+{
+   while( TRUE )
+   {
+        if(bMoving)
+           {
+              if(treadnum == 0)
+              {
+              hide tracks2;
+              show tracks;
+              }
+            if(treadnum == 1)
+            {
+            hide tracks;
+            show tracks2;
 			}
-            treadnum = !treadnum; 
-         } 
-      sleep 90; 
-   } */
+            treadnum = !treadnum;
+         }
+      sleep 90;
+   }
 }
 
 Create()
@@ -114,6 +114,8 @@ Create()
 	shotCount1 = 0;
 	shotCount2 = 0;
 	bFloating = FALSE;
+
+	hide tracks2;
 	
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
