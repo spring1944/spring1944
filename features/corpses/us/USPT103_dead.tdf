@@ -7,7 +7,7 @@
   footprintZ=8;
   height=5;
   hitdensity=70;
-  object=USPT103_dead;
+  object=USPT103_dead.s3o;
   reclaimable=1;
 }
 

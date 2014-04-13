@@ -7,7 +7,7 @@
   brakeRate=0.15;
   buildCostEnergy=0;
   buildCostMetal=2000;
-  buildPic=USPT103.png;
+  buildPic=USPT103-bofors.png;
   buildTime=2000;
   canAttack=1;
   canMove=1;
@@ -37,7 +37,7 @@
   minWaterDepth=10;
   movementClass=BOAT_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=USPT103-bofors;
+  objectName=USPT103-bofors.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -107,6 +107,6 @@
 
   weapon12=bofors40mmhe;
   onlyTargetCategory12=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir12=0 0 -1;
+  // weaponMainDir12=0 0 -1;
 }
 
