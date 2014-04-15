@@ -1,8 +1,8 @@
 #include "constants.h"
 
-piece	base, hull, turret, sleeve, sleeve2, gun, flare, mg_ring, mg, mg_flare, exhaust,
+piece	base, turret, sleeve, gun, flare, mg_ring, mg, mg_flare, exhaust,
 		front_wheels, rear_wheels, roller1, roller2, roller3, roller4, roller5, roller6, roller7, roller8, roller9, roller10, roller11,
-		tracks, wake;
+		tracks, tracks2, wake;
 
 
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, treadnum, gunaiming, MGAiming,
@@ -21,7 +21,7 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, 
 #define SIG_AIM_3	8 // AA MG
 
 // definitions for SmokeUnit_GPL
-#define SMOKEPIECE1	hull
+#define SMOKEPIECE1	base
 #define SMOKEPIECE2 turret
 #define SMOKEPIECE3 sleeve
 #define SMOKEPIECE4 exhaust
@@ -79,24 +79,24 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, 
 // when it'll have some texture to show on tracks, then this will be needed
 treads() 
 { 
-/*   while( TRUE ) 
+   while( TRUE ) 
    { 
         if(bMoving) 
            { 
               if(treadnum == 0) 
               {             
               hide tracks2; 
-              show tracks1; 
+              show tracks; 
               } 
             if(treadnum == 1) 
             { 
-            hide tracks1; 
+            hide tracks; 
             show tracks2; 
 			}
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } */
+   }
 }
 
 Create()

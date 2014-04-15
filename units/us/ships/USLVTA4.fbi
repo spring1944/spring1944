@@ -41,7 +41,7 @@
   maxVelocity=3.5;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG MINE;
-  objectName=USLVTA4;
+  objectName=USLVTA4.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
