@@ -1,7 +1,8 @@
 #define TAK
 
-piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_2, barrel_2, flare_2,
+piece base, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_2, barrel_2, flare_2,
 	  load1, load2, load3, load4, load5, turret, grabber, link,
+	  flag1, flag2, flag3,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -24,8 +25,8 @@ piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_
 #define LOAD_DIST				[125]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<2.5>
-#define HULL_LIST_ANGLE		<-5>
+#define base_LIST_SPEED		<2.5>
+#define base_LIST_ANGLE		<5>
 
 #define RESTORE_PERIOD		2500
 
@@ -35,7 +36,7 @@ piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_
 #define SIG_AIM2			8
 #define SIG_LOAD			16
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
 #include "constants.h"
 #include "damageSmoke.h"
@@ -52,7 +53,26 @@ piece base, hull, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_
 #define XSMALL_MUZZLEFLASH	1024+7
 #define XSMALL_MUZZLEDUST	1024+8
 
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
 static-var	MaxSpeed, bMoving, unit1, unit2, unit3, unit4, unit5, bTooFar, bRampOpen, LastUnloadPoint, boom_len, boom_heading, boom_pitch, bAim1, bAim2;
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
 
 WorkingLoop()
 {
@@ -97,11 +117,12 @@ Create()
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
 	start-script WorkingLoop();
+	start-script FlagFlap();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -554,13 +575,13 @@ Killed(severity, corpsetype)
 	{
 		corpsetype = 1;
 		start-script OpenRamp();
-		turn hull to x-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
-		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY;
+		turn base to x-axis base_LIST_ANGLE speed base_LIST_SPEED;
+		wait-for-turn base around x-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER;
+	explode base type		SHATTER;
 	explode turret_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode turret_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	return (TRUE);
