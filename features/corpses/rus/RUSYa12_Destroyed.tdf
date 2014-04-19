@@ -16,7 +16,7 @@
   featureDead=Debris_Small;
   footprintX=2;
   footprintZ=2;
-  object=RUSYa12_dead;
+  object=RUSYa12_dead.s3o;
   reclaimable=1;
 }
 
