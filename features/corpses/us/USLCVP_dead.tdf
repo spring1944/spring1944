@@ -7,7 +7,7 @@
   footprintZ=4;
   height=10;
   hitdensity=50;
-  object=USLCVP_dead;
+  object=USLCVP_dead.s3o;
   reclaimable=1;
 }
 
