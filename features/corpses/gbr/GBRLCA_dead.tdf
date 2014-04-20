@@ -7,7 +7,7 @@
   footprintZ=4;
   height=10;
   hitdensity=50;
-  object=GBRLCA_dead;
+  object=GBRLCA_dead.s3o;
   reclaimable=1;
 }
 

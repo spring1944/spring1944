@@ -1,6 +1,6 @@
 #define TAK
 
-piece base, hull, ramp, turret, grabber, link, bren_mount, bren_gun, bren_flare,
+piece base, ramp, turret, grabber, link, bren_mount, bren_gun, bren_flare,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -22,7 +22,7 @@ piece base, hull, ramp, turret, grabber, link, bren_mount, bren_gun, bren_flare,
 #define SIG_AIM1			8
 #define SIG_AIM2			16
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
 #define MG_MUZZLEFLASH 1024+0
 #define SMALL_TRACER 	2048+2
@@ -166,7 +166,7 @@ TransportDrop(unitid, position)
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -309,6 +309,6 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER;
+	explode base type		SHATTER;
 	return (TRUE);
 }
