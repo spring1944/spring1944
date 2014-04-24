@@ -30,7 +30,7 @@
   maxVelocity=1.52;
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
-  objectName=GERSchSturmboot;
+  objectName=GERSchSturmboot.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   showNanoFrame=0;

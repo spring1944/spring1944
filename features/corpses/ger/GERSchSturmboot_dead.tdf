@@ -7,7 +7,7 @@
   footprintZ=4;
   height=10;
   hitdensity=50;
-  object=GERSchSturmboot;
+  object=GERSchSturmboot_dead.s3o;
   reclaimable=1;
 }
 

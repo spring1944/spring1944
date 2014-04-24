@@ -1,6 +1,7 @@
 #define TAK
 
-piece base, hull, hull2, turret, grabber, link,
+piece base, turret, grabber, link,
+	prop1, prop2,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -12,10 +13,9 @@ piece base, hull, hull2, turret, grabber, link,
 #define SIG_MOVE			2
 #define SIG_LOAD			4
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 static-var					MaxSpeed, bMoving, bTooFar, boom_len, boom_heading, boom_pitch;
 
@@ -80,43 +80,33 @@ ReturnLink()
 
 TransportPickup(unitid)
 {
-	signal SIG_LOAD;
-	set-signal-mask SIG_LOAD;
-    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
-	if( bTooFar )
-	{
-		return (FALSE);
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+		set BUSY to 1;
+		attach-unit unitid to 0 - 1; // hide infantry models
+		set BUSY to 0;
 	}
-	set BUSY to 1;
-	attach-unit unitid to (0-1);
-	//sleep 500;
-	//sleep 50;
-	set BUSY to 0;
 }
 
 TransportDrop(unitid, position)
 {
-	signal SIG_LOAD;
-	set-signal-mask SIG_LOAD;
-    call-script BoomCalc(position,get GROUND_HEIGHT(position));
-	if( bTooFar )
-	{
-		return (1);
-	}
 	set BUSY to 1;
+	// turn shoulder to face the drop off point
+	turn turret to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
 	attach-unit unitid to link;
-	call-script PositionLink();
-	sleep 30;
+	// move arm toward drop off point
+	move link to z-axis get XZ_HYPOT(get PIECE_XZ(base) - position) now; // new line
+	// sleep for at least a frame (so unit is not dropped by attach-unit)
+	sleep 50;
+	//get PRINT (unitid, position / 65536, position & 65535);
 	drop-unit unitid;
-	call-script ReturnLink();
-	//sleep 1000;
-	sleep 30;
+	move link to z-axis 0 now;
 	set BUSY to 0;
 }
 
+
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -135,6 +125,8 @@ StopMoving()
 {
 	signal SIG_MOVE;
 	set-signal-mask SIG_MOVE;
+	stop-spin prop1 around z-axis;
+	stop-spin prop2 around z-axis;
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
 	bMoving = FALSE;
@@ -163,6 +155,8 @@ StartMoving()
 	signal SIG_MOVE;
 	start-script EmitWakes();
 	start-script StopCatcher();
+	spin prop1 around z-axis speed <200>;
+	spin prop2 around z-axis speed <200>;
 	bMoving = TRUE;
 }
 
@@ -175,6 +169,6 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	return (TRUE);
 }
