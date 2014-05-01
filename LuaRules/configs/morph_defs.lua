@@ -1067,6 +1067,17 @@ local morphDefs = {
     metal = 0,
     energy = 0,
   },
+
+  itapontoontruck =
+  {
+    into = 'itaboatyard',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+	facing = true,
+  },
+
 		itaboatyard = {
 		{
 			into = 'itaboatyardlarge',
