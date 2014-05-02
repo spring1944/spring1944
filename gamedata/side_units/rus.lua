@@ -107,7 +107,8 @@ local rusunits =
     "rusgazaaa",
     "rust60",
     "russu76",
-    "rust70",
+	"rusvalentine",
+--    "rust70",
   },
 
   rusgunyard =
