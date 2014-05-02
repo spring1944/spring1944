@@ -77,6 +77,19 @@ local QF6Pdr57mmAP = QF6Pdr57mm:New(LightMediumGunAPClass, true):New{
   },
 }
 
+-- Naval QF 6-Pounder Mk IIA - uses only HE
+local QF6Pdr57MkIIAHE = LightMediumGunClass:New{
+	name		= [[QF 6-Pounder Mk IIA]],
+	range		= 1200,
+	-- autoloader, 40 shots per minute
+	reloadTime	= 1.5,
+	areaOfEffect       = 55,
+	weaponVelocity     = 1100,
+	damage = {
+		default		= 760,
+	},
+}
+
 -- KwK39 L60 50mm (GER)
 local KwK50mmL60 = LightMediumGunClass:New{
   name               = [[5cm KwK39 L/60]],
@@ -131,4 +144,5 @@ return lowerkeys({
   KwK50mmL60AP = KwK50mmL60AP,
   -- ZiS-2
   ZiS257mmAP = ZiS257mmAP,
+  QF6Pdr57MkIIAHE = QF6Pdr57MkIIAHE,
 })

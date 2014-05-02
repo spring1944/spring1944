@@ -91,12 +91,12 @@
   //.50 cal
   weapon7=Twin05CalVickers;
   maxAngleDif7=270;
-  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH  DEPLOYED;
+  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
   weaponMainDir7=0 0 -1;
 
   weapon8=Twin05CalVickers;
   weaponSlaveTo8=7;
-  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH  DEPLOYED;
+  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
 
   // smoke mortar will go there when it's done
   weapon9=Twin05CalVickers;

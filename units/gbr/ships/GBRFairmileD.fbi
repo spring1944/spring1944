@@ -36,7 +36,7 @@
   minWaterDepth=10;
   movementClass=BOAT_LightPatrol;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GBRFairmileD;
+  objectName=GBRFairmileD.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -61,24 +61,24 @@
 
   weapon10=twin05calVickers;
   maxAngleDif10=270;
-  onlyTargetCategory10=INFANTRY SOFTVEH AIR OPENVEH  DEPLOYED;
+  onlyTargetCategory10=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
   weaponMainDir10=-1 0 0;
 
   weapon11=vickers;
-  maxAngleDif11=200;
+  maxAngleDif11=90;
   onlyTargetCategory11=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   weaponMainDir11=1 0 0;
 
   weapon12=vickers;
-  maxAngleDif12=200;
+  maxAngleDif12=90;
   onlyTargetCategory12=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
   weaponMainDir12=-1 0 0;
 
-  weapon13=Small_Tracer;
+  weapon15=Small_Tracer;
 
-  weapon14=Medium_Tracer;
+  weapon16=Medium_Tracer;
 
-  weapon15=Large_Tracer;
+  weapon17=Large_Tracer;
 
   weapon1=mkxv18inchtorpedo;
   maxAngleDif1=40;
@@ -100,12 +100,12 @@
   onlyTargetCategory4=LARGESHIP SUB;
   weaponMainDir4=0 0 1;
 
-  weapon5=qf6pdr57mmhe;
+  weapon5=QF6Pdr57MkIIAHE;
   maxAngleDif5=270;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
 
-  weapon6=qf6pdr57mmhe;
+  weapon6=QF6Pdr57MkIIAHE;
   maxAngleDif6=270;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 -1;
@@ -121,16 +121,16 @@
 
   weapon9=twin05calVickers;
   maxAngleDif9=270;
-  onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED;
+  onlyTargetCategory9=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
   weaponMainDir9=1 0 0;
 
-  weapon16=Oerlikon20mmhe;
-  maxAngleDif16=300;
-  onlyTargetCategory16=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir16=0 0 -1;
+  weapon13=Oerlikon20mmhe;
+  maxAngleDif13=300;
+  onlyTargetCategory13=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir13=0 0 -1;
 
-  weapon17=Oerlikon20mmhe;
-  onlyTargetCategory17=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
-  weaponSlaveTo17=16;
+  weapon14=Oerlikon20mmhe;
+  onlyTargetCategory14=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponSlaveTo14=13;
 }
 

@@ -1,8 +1,9 @@
 #define TAK
 
-piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, sleeve6_2, barrel6_2, flare6_2,
+piece base, turret6_1, sleeve6_1, barrel6_1, flare6_1, shells6_1, turret6_2, sleeve6_2, barrel6_2, flare6_2, shells6_2,
 	  turret20, sleeve20, barrel20_1, flare20_1, barrel20_2, flare20_2, turret05_1, guns05_1, flare05_1_1, flare05_1_2,
 	  turret05_2, guns05_2, flare05_2_1, flare05_2_2, turret303_1, gun303_1, flare303_1, turret303_2, gun303_2, flare303_2,
+	  flag1, flag2, flag3,
 	  torp1, torp2, torp3, torp4, wake1, wake2, wake3, wake4;
 
 #define BASE_SMOKE_PERIOD	40
@@ -31,9 +32,9 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #define AA20_GUN_BACK_SPEED		[2]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<30>
-#define HULL_LIST_ANGLE_Z	<-15>
-#define HULL_LIST_ANGLE_X	<20>
+#define base_LIST_SPEED		<30>
+#define base_LIST_ANGLE_Z	<-15>
+#define base_LIST_ANGLE_X	<20>
 
 //*********************Cruise mode
 #define CRUISE_MODE_ANGLE	<-4>
@@ -41,6 +42,15 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #define CRUISE_MODE_START_DIVIDER	4
 #define CRUISE_MODE_START_MULTIPLIER	3
 #define CRUISE_MODE_PERIOD	250
+
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
+// Autoloader
+#define AUTOLOADER_MOVE		[0.2]
+#define AUTOLOADER_SPEED	[0.2]
 
 #define RESTORE_PERIOD		2500
 
@@ -59,7 +69,7 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #define SIG_AIM11			4096
 #define SIG_AIM12			8192
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -75,14 +85,27 @@ piece base, hull, h2, turret6_1, sleeve6_1, barrel6_1, flare6_1, turret6_2, slee
 #define MEDIUM_MuzzleDust	1024+9
 
 // tracers
-#define SMALL_TRACER 	2048+12
-#define MEDIUM_TRACER 	2048+13
-#define LARGE_TRACER 	2048+14
+#define SMALL_TRACER 	2048+14
+#define MEDIUM_TRACER 	2048+15
+#define LARGE_TRACER 	2048+16
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 static-var					MaxSpeed, CruiseTriggerSpeed, bMoving, flare05_1, flare05_2, is20mmAimed, bAimAA;
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
 
 WorkingLoop()
 {
@@ -102,6 +125,8 @@ InitTurrets()
 {
 	turn turret6_2 to y-axis <180> now;
 	turn turret20 to y-axis <180> now;
+	turn turret303_1 to y-axis <-90> now;
+	turn turret303_2 to y-axis <90> now;
 }
 
 WaitForConstructionToFinish()
@@ -121,10 +146,10 @@ CruiseControl()
 		CurrentSpeed = get CURRENT_SPEED;
 		if(CurrentSpeed > CruiseTriggerSpeed)
 		{
-			turn hull to x-axis CRUISE_MODE_ANGLE speed CRUISE_MODE_RAISE_SPEED;		
+			turn base to x-axis CRUISE_MODE_ANGLE speed CRUISE_MODE_RAISE_SPEED;		
 		} else
 		{
-			turn hull to x-axis <0> speed CRUISE_MODE_RAISE_SPEED;
+			turn base to x-axis <0> speed CRUISE_MODE_RAISE_SPEED;
 		}
 		sleep CRUISE_MODE_PERIOD;
 	}
@@ -187,11 +212,12 @@ Create()
 	start-script WorkingLoop();
 	start-script CruiseControl();
 	start-script StopCatcher();
+	start-script FlagFlap();
 }
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -233,9 +259,9 @@ RestoreTurret()
 	turn turret05_2 to y-axis <0> speed MG05_TURRET_TURN;
 	turn guns05_2 to x-axis <0> speed MG05_TURRET_PITCH;
 
-	turn turret303_1 to y-axis <0> speed MG303_TURRET_TURN;
+	turn turret303_1 to y-axis <-90> speed MG303_TURRET_TURN;
 	turn gun303_1 to x-axis <0> speed MG303_TURRET_PITCH;
-	turn turret303_2 to y-axis <0> speed MG303_TURRET_TURN;
+	turn turret303_2 to y-axis <90> speed MG303_TURRET_TURN;
 	turn gun303_2 to x-axis <0> speed MG303_TURRET_PITCH;
 }
 
@@ -355,13 +381,14 @@ AimWeapon5(heading, pitch)
 
 FireWeapon5()
 {
-	//show flare6_1;
 	emit-sfx XSMALL_MUZZLEFLASH from flare6_1;
 	emit-sfx XSMALL_MUZZLEDUST from flare6_1;
 	move barrel6_1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel6_1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	//hide flare6_1;
+	move shells6_1 to x-axis AUTOLOADER_MOVE speed AUTOLOADER_SPEED;
+	wait-for-move shells6_1 along x-axis;
+	move shells6_1 to x-axis 0 now;
 }
 
 QueryWeapon6(piecenum)
@@ -388,13 +415,14 @@ AimWeapon6(heading, pitch)
 
 FireWeapon6()
 {
-	//show flare6_2;
 	emit-sfx XSMALL_MUZZLEFLASH from flare6_2;
 	emit-sfx XSMALL_MUZZLEDUST from flare6_2;
 	move barrel6_2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel6_2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
-	//hide flare6_2;
+	move shells6_2 to x-axis AUTOLOADER_MOVE speed AUTOLOADER_SPEED;
+	wait-for-move shells6_2 along x-axis;
+	move shells6_2 to x-axis 0 now;
 }
 
 QueryWeapon7(piecenum)
@@ -449,7 +477,6 @@ AimFromWeapon8(piecenum)
 
 AimWeapon8(heading, pitch)
 {
-	signal SIG_AIM7;
 	set-signal-mask SIG_AIM7|SIG_DEATH;
 	bAimAA = TRUE;
 	while(!is20mmAimed)
@@ -628,17 +655,17 @@ Shot12(foo)
 	emit-sfx SMALL_TRACER from flare303_2;
 }
 
-QueryWeapon16(piecenum)
+QueryWeapon13(piecenum)
 {
 	piecenum = flare20_1;
 }
 
-AimFromWeapon16(piecenum)
+AimFromWeapon13(piecenum)
 {
 	piecenum = turret20;
 }
 
-AimWeapon16(heading, pitch)
+AimWeapon13(heading, pitch)
 {
 	if(bAimAA)
 	{
@@ -656,11 +683,11 @@ AimWeapon16(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon16()
+FireWeapon13()
 {
 }
 
-Shot16(foo)
+Shot13(foo)
 {
 	emit-sfx LARGE_TRACER from flare20_1;
 	emit-sfx XSMALL_MUZZLEFLASH from flare20_1;
@@ -670,23 +697,22 @@ Shot16(foo)
 	move barrel20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
 }
 
-QueryWeapon17(piecenum)
+QueryWeapon14(piecenum)
 {
 	piecenum = flare20_2;
 }
 
-AimFromWeapon17(piecenum)
+AimFromWeapon14(piecenum)
 {
 	piecenum = turret20;
 }
 
-AimWeapon17(heading, pitch)
+AimWeapon14(heading, pitch)
 {
 	if(bAimAA)
 	{
 		return FALSE;
 	}
-	signal SIG_AIM7;
 	set-signal-mask SIG_AIM7|SIG_DEATH;
 	while(!is20mmAimed)
 	{
@@ -695,11 +721,11 @@ AimWeapon17(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon17()
+FireWeapon14()
 {
 }
 
-Shot17(foo)
+Shot14(foo)
 {
 	emit-sfx LARGE_TRACER from flare20_2;
 	emit-sfx XSMALL_MUZZLEFLASH from flare20_2;
@@ -715,14 +741,14 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to z-axis HULL_LIST_ANGLE_Z speed HULL_LIST_SPEED;
-		turn hull to x-axis HULL_LIST_ANGLE_X speed HULL_LIST_SPEED;
-		wait-for-turn hull around z-axis;
-		wait-for-turn hull around x-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to z-axis base_LIST_ANGLE_Z speed base_LIST_SPEED;
+		turn base to x-axis base_LIST_ANGLE_X speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		wait-for-turn base around x-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	return (TRUE);
 }
