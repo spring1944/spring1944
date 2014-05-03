@@ -429,6 +429,12 @@ local function StopMorph(unitID, morphData)
 
   SendToUnsynced("unit_morph_stop", unitID)
   Spring.MoveCtrl.Disable(unitID)
+  -- try to prevent unit flying away by giving a move order to the current position
+  -- can the thing move?
+  if (UnitDefs[unitDefID].speed or 0) > 0 then
+    local unitid_x_coord, unitid_y_coord, unitid_z_coord = Spring.GetUnitPosition(unitID)
+    Spring.GiveOrderToUnit(unitID, CMD.MOVE, { unitid_x_coord, unitid_y_coord, unitid_z_coord,  }, { "alt" })
+  end
 
   local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphData.def.stopCmd)
   local newType
