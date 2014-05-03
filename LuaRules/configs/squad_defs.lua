@@ -658,7 +658,7 @@ local squadDefs = {
 		"itam38",
 		"itarifle",
 		"itarifle",
-		"itasoloat",
+		"itarifle",
 		"itarifle",
 	},
 	
@@ -782,6 +782,7 @@ local squadDefs = {
 	},
 	["jap_platoon_hq"] =
 	{
+		"japrifle",
 		"japrifle",
 		"japrifle",
 		"japrifle",

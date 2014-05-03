@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=jap_platoon_hq;
   name=Rifle Squad;
-  description=4 x Arisaka Type 99, 1 x Type 100 SMG: Small Combat Squad;
+  description=5 x Arisaka Type 99, 1 x Type 100 SMG: Small Combat Squad;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;

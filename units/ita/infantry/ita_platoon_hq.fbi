@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=ita_platoon_hq;
   name=Rifle Squad;
-  description=4 x Carcano M91 Rifle, 1 x M38 SMG, 1 x Solothurn Anti-Tank: Small Combat Squad;
+  description=5 x Carcano M91 Rifle, 1 x M38 SMG: Small Combat Squad;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
