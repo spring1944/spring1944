@@ -10,6 +10,15 @@ function gadget:GetInfo()
   }
 end
 
+
+-- function localisations
+-- Synced Read
+local GetTeamInfo = Spring.GetTeamInfo
+
+-- Synced Ctrl
+local AddTeamResource = Spring.AddTeamResource
+local SetTeamShareLevel = Spring.SetTeamShareLevel
+
 if (gadgetHandler:IsSyncedCode()) then
 
 local team = {}
@@ -23,7 +32,11 @@ end
 function gadget:GameFrame(n)
 	if (n % (1*32) < 0.1) then
 		for teamID, someThing in pairs(team) do
-			Spring.AddTeamResource(teamID, "m", 20)
+			AddTeamResource(teamID, "m", 20)
+			_, _, dead = GetTeamInfo(team)
+			if dead then
+				SetTeamShareLevel(team, "metal", 0)
+			end
 		end
 	end
 end
