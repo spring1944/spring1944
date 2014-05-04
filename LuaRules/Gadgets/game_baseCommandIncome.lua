@@ -33,9 +33,9 @@ function gadget:GameFrame(n)
 	if (n % (1*32) < 0.1) then
 		for teamID, someThing in pairs(team) do
 			AddTeamResource(teamID, "m", 20)
-			_, _, dead = GetTeamInfo(team)
+			_, _, dead = GetTeamInfo(teamID)
 			if dead then
-				SetTeamShareLevel(team, "metal", 0)
+				SetTeamShareLevel(teamID, "metal", 0)
 			end
 		end
 	end
