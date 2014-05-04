@@ -4,7 +4,7 @@
 	objectname=ITAMZ;
 	corpse=ITAMZ_dead;
 	icontype=transportship;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=SHIP MINETRIGGER;
 	tedclass=SHIP;
 
 	name=Motozattera;

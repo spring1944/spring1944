@@ -4,7 +4,7 @@
 	objectname=ITAMS;
 	corpse=ITAMS_dead;
 	icontype=torpboat;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON;
+	category=SHIP MINETRIGGER;
 	tedclass=SHIP;
 
 	name=MS type CRDA 60 t.;

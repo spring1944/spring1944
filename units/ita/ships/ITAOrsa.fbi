@@ -4,7 +4,7 @@
 	objectname=ITAOrsa;
 	corpse=ITAOrsa_dead;
 	icontype=destroyer;
-	category=NFLAGNAIR TPORT INFTARG NFLAG NWEAPON LARGESHIP;
+	category=LARGESHIP;
 	tedclass=SHIP;
 
 	name=Orsa class Escort Destroyer;
