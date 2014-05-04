@@ -24,6 +24,7 @@ local GetTeamInfo               = Spring.GetTeamInfo
 -- Synced Ctrl
 local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
 local SetUnitResourcing			= Spring.SetUnitResourcing
+local SetTeamShareLevel         = Spring.SetTeamShareLevel
 local AddTeamResource           = Spring.AddTeamResource
 
 -- constants
@@ -140,6 +141,10 @@ function gadget:GameFrame(n)
 				for i = 1, numTeam do
 					local team = teamList[i]
 					AddTeamResource(team, "metal", income)
+					_, _, dead = GetTeamInfo(team)
+					if dead then
+						SetTeamShareLevel(team, "metal", 0)
+					end
 				end
 			end
 		end
