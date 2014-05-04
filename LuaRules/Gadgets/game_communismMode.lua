@@ -24,7 +24,6 @@ local GetTeamInfo               = Spring.GetTeamInfo
 -- Synced Ctrl
 local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
 local SetUnitResourcing			= Spring.SetUnitResourcing
-local SetTeamShareLevel         = Spring.SetTeamShareLevel
 local AddTeamResource           = Spring.AddTeamResource
 
 -- constants
