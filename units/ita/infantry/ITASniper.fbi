@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.9;
   buildCostEnergy=0;
-  buildCostMetal=240;
-  buildTime=840;
+  buildCostMetal=300;
+  buildTime=300;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
@@ -18,29 +18,29 @@
     feartarget=1;
   }
   damageModifier=0.265;
+  decloakOnFire=1;
   flankingBonusMax=1.5;
   flankingBonusMin=0.675;
   flankingBonusMobilityAdd=0.01;
   flankingBonusMode=1;
-  decloakOnFire=0;
   footprintX=1;
   footprintZ=1;
-  hideDamage=0;
   iconType=sniper;
   init_cloaked=1;
   mass=50;
   maxDamage=80;
   maxSlope=25;
-  maxVelocity=1;
+  maxVelocity=1.15;
   maxWaterDepth=15;
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
-  noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH;
+  noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
   //objectName=ITASniper.S3O;
   objectName=itasniper.s3o;
   script=usgisniper.cob;
   repairable=0;
-  seismicDistance=950;
+  seismicDistance=0;
+
   seismicSignature=0;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -53,6 +53,7 @@
     explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
   }
   showNanoFrame=0;
+  side=ITA;
   sightDistance=570;
   smoothAnim=0;
   soundcategory=ITAInf;
@@ -63,9 +64,7 @@
   badTargetCategory=BUILDING OPENVEH FLAG SOFTVEH;
 
   weapon1=Mod91Sniper;
-  badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY DEPLOYED;
   weaponMainDir1=0 0 1;
 }
-
