@@ -58,7 +58,7 @@ local japunits =
 		"japisuzutx40",
 		"japhoha",
 		"japisuzutype94_aa",
-		"japteke",
+		--"japteke",
 		"japhago",
 		"japhonii",
 	},
@@ -160,6 +160,7 @@ local japunits =
 	{
 		"japisuzutx40",
 		"japhoha",
+		"japteke",
 	},
 }
 
