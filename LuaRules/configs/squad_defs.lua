@@ -664,7 +664,7 @@ local squadDefs = {
 	
 	["ita_platoon_rifle"] = 
 	{
-		"itam38",
+		"itasoloat",
 		"itarifle",
 		"itarifle",
 		"itarifle",
@@ -687,7 +687,6 @@ local squadDefs = {
 		"itam38",
 		"itam38",
 		"itam38",
-		"itasoloat",
 		"itasoloat",
 	},
 	

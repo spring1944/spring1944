@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=ita_platoon_rifle;
   name=Carcano Rifle Platoon;
-  description=8 x Carcano M91 Rifle, 1 x M38 SMG, 1 x Breda 30 Light Machinegun: Long-Range Combat Platoon;
+  description=8 x Carcano M91 Rifle, 1 x Solothurn Anti-Tank, 1 x Breda 30 Light Machinegun: Long-Range Combat Platoon;
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
