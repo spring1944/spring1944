@@ -24,7 +24,6 @@
   maxWaterDepth=0;
   noChaseCategory=OPENVEH AIR FLAG SOFTVEH;
   objectName=JAPSandbagMG.S3O;
-  script=usgimg_sandbag.cob;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
