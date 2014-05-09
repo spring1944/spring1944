@@ -348,7 +348,8 @@ function gadget:GameFrame(n)
 		if n % (3*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				--skip units which are being transported
-				local _, stunned = GetUnitIsStunned(unitID)
+				-- also skip incomplete units (use the first return value)
+				local stunned = GetUnitIsStunned(unitID)
 				if (not stunned) then
 					ProcessWeapons(unitID)
 					local ud = UnitDefs[GetUnitDefID(unitID)]
