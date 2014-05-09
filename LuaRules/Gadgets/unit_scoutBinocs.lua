@@ -30,7 +30,7 @@ local activeBinocs = {} -- activeBinocs[ownerID] = {origin={x,y,z},target,telepo
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local weapDef = WeaponDefs[weaponID]
-	if not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" or ownerID == nil then
+	if weapDef and (not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" or ownerID == nil) then
 		--Spring.Echo("not binocs :(")
 		return false
 	else
