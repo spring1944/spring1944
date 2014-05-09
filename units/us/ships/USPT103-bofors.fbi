@@ -6,9 +6,9 @@
   airSightDistance=3000;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=1900;
+  buildCostMetal=1400;
   buildPic=USPT103-bofors.png;
-  buildTime=1900;
+  buildTime=1400;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
