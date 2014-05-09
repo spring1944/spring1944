@@ -60,7 +60,8 @@ local function ProcessUnit(unitID)
 	if includeUnit then
 		-- can this thing move at all?
 		local ud = UnitDefs[spGetUnitDefID(unitID)]
-		if not (ud.canMove and ud.speed > 0) then
+		-- also exclude non-ground units
+		if not (ud.canMove and ud.speed > 0) or not ud.IsGroundUnit then
 			includeUnit = false
 		end
 	end
