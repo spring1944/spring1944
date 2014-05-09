@@ -51,7 +51,7 @@ end
 
 function gadget:ProjectileCreated(projID, ownerID, weaponID)
 	local weapDef = WeaponDefs[weaponID]
-	if not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" or ownerID == nil then
+	if weapDef and (not weapDef.customParams.binocs or weapDef.customParams.binocs ~= "1" or ownerID == nil) then
 		--Spring.Echo("not binocs :(")
 		return
 	else
