@@ -56,7 +56,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=BarettaM38;
+  weapon1=BerettaM38;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
   onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
