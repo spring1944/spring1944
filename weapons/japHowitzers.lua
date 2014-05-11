@@ -67,15 +67,15 @@ local jap105mmtype99 = HowitzerClass:New{
   },
 }
 
--- Type 38 150m howitzer L/11
+-- Type 38 150mm howitzer L/11
 local jap150mmtype38 = HowitzerClass:New{
   accuracy           = 1050,
-  areaOfEffect       = 145,
+  areaOfEffect       = 165,
   name               = [[Type 38 150mm/11]],
-  range              = 1650,
+  range              = 1850,
   reloadtime         = 15,
   damage = {
-    default            = 5500,
+    default            = 8500,
   },
 }
 
@@ -89,4 +89,5 @@ return lowerkeys({
   jap105mmtype99_he = jap105mmtype99_he,
   jap105mmtype99_smoke = jap105mmtype99_smoke,
   jap150mmtype38_he = jap150mmtype38_he,
+  jap150mmtype38_smoke = jap150mmtype38_smoke,
 })

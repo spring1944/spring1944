@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=JAPHoRo;
   name=Type 4 Ho-Ro;
-  description=Assault Gun;
+  description=Assault Gun (short 150mm howitzer);
   acceleration=0.041;
   airSightDistance=1500;
   brakeRate=0.15;
