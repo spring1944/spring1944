@@ -25,7 +25,7 @@
   flankingBonusMode=1;
   footprintX=3;
   footprintZ=3;
-  iconType=atartillery;
+  iconType=artillery;
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
