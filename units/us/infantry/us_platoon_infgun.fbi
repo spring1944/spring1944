@@ -1,0 +1,33 @@
+[unitinfo] {
+  unitname=us_platoon_infgun;
+  name=Pack Howitzer Team;
+  description=1 x 75mm M8, 1 x Scout: Long-Range Fire Support;
+  acceleration=0.1;
+  brakeRate=1;
+  buildCostEnergy=0;
+  buildCostMetal=1290;
+  buildPic=USM8Gun.png;
+  buildTime=1290;
+  canMove=1;
+  category=FLAG;
+  [customParams] {
+    helptext=A Pack howitzer team, containing one M8 Pack Howitzer and one recon infantryman. ||| Pack howitzers provide infantry with light artillery support.;
+  }
+  explodeAs=noweapon;
+  footprintX=1;
+  footprintZ=1;
+  idleAutoHeal=0;
+  maxDamage=100;
+  maxSlope=30;
+  maxVelocity=0.01;
+  movementClass=KBOT_Infantry;
+  objectName=MortarShell.S3O;
+  script=null.cob;
+  selfDestructAs=noweapon;
+  [sfxtypes] {
+  }
+  side=US;
+  stealth=1;
+  turnRate=1;
+}
+

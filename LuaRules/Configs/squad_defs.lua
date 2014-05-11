@@ -230,7 +230,11 @@ local squadDefs = {
 		"gerobserv",
 		"gerobserv",
 	},  
-
+	["ger_platoon_infgun"] =
+	{
+		"gerobserv",
+		"gerleig18",
+	},
 	 -----------------------------
 	 -- RUS Platoons and Squads --
 	 -----------------------------
@@ -424,7 +428,12 @@ local squadDefs = {
 		"usgiflamethrower",
 		"usgiflamethrower",
 		"usgiflamethrower",
-	},		
+	},
+	["us_platoon_infgun"] = 
+	{
+		"usobserv",
+		"usm8gun",
+	},
 }
 
 -------------------------------------------------
