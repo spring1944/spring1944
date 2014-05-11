@@ -44,62 +44,6 @@ local squadDefs = {
 		"gbrsten",
 	},
 	
-	["gbr_platoon_hq_rifle"] =
-	{
-		"gbrbren",
-		"gbrbren",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-	},
-	
-	["gbr_platoon_hq_assault"] =
-	{
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-	},
-	
 	 ["gbr_platoon_rifle"] =
 	{
 		"gbrrifle",
@@ -221,62 +165,6 @@ local squadDefs = {
 		"gerrifle",
 	},
 	
-	["ger_platoon_hq_rifle"] =
-	{
-		"germg42",
-		"germg42",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-	},
-	
-	["ger_platoon_hq_assault"] =
-	{
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-	},
-	
 	["ger_platoon_rifle"] = 
 	{
 		"germp40",
@@ -342,7 +230,11 @@ local squadDefs = {
 		"gerobserv",
 		"gerobserv",
 	},  
-
+	["ger_platoon_infgun"] =
+	{
+		"gerobserv",
+		"gerleig18",
+	},
 	 -----------------------------
 	 -- RUS Platoons and Squads --
 	 -----------------------------
@@ -369,61 +261,6 @@ local squadDefs = {
 		"rusppsh",
 	},
 	
-	["rus_platoon_big_rifle"] =
-	{
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-	  	"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-  		"rusrifle",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-	},
-	
-	["rus_platoon_big_assault"] =
-	{
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-		"rusppsh",
-	},
 
 	["rus_platoon_assault"] =
 	{
@@ -516,62 +353,6 @@ local squadDefs = {
 		"usgithompson",
 		"usgirifle",
 	},
-	
-    ["us_platoon_hq_rifle"] =
-	{
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgirifle",
-		"usgibar",
-		"usgibar",
-		"usgibar",
-		"usgibar",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-	},
-	
-    ["us_platoon_hq_assault"] =
-	{
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-		"usgithompson",
-	},
 
 	["us_platoon_rifle"] = 
 	{
@@ -647,6 +428,11 @@ local squadDefs = {
 		"usgiflamethrower",
 		"usgiflamethrower",
 		"usgiflamethrower",
+	},
+	["us_platoon_infgun"] = 
+	{
+		"usobserv",
+		"usm8gun",
 	},		
 	 -----------------------------
 	 -- ITA Platoons and Squads --
@@ -719,7 +505,11 @@ local squadDefs = {
 		"itasoloat",
 		"itaelitesoloat",
 	},
-	
+	["ita_platoon_infgun"] =
+	{
+		"itacannone65",
+		"itaobserv",
+	},
 	["ita_platoon_bersaglieri"] =
 	{
 		"itabersaglieririfle",

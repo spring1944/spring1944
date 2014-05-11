@@ -65,7 +65,8 @@ local itaunits =
     "ita_platoon_sniper",
     "ita_platoon_mortar",
 	"itafiat626",
-    "itacannone65",
+    --"itacannone65",
+	"ita_platoon_infgun",
 	"itapontoontruck",
   },
 
@@ -83,7 +84,8 @@ local itaunits =
 	"ita_platoon_bersaglieri",
 	--"ita_platoon_carabinieri",
    	"itafiat626",
- 	"itacannone65",
+-- 	"itacannone65",
+	"ita_platoon_infgun",
 	"itapontoontruck",
 
   },
