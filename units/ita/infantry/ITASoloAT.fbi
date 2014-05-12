@@ -30,8 +30,7 @@
   maxWaterDepth=15;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR;
-  //objectName=ITAPTRD.S3O;
-  objectName=rusptrd.s3o;
+  objectName=ITASoloAT.S3O;
   script=rusptrd.cob;
   repairable=0;
   seismicDistance=840;
