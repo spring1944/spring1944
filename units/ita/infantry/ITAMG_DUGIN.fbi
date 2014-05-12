@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=ITASandbagMG.png;
+  buildPic=ITAMG.png;
   buildTime=1000;
   category=DEPLOYED;
   corpse=SandbagMG_Destroyed;
