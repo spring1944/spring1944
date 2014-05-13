@@ -30,7 +30,7 @@
   reloadTime=1.4;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
-  soundStart=ITA_Fnab45;
+  soundStart=ITA_Fnab43;
   soundTrigger=1;
   sprayAngle=300;
   thickness=0.4;
