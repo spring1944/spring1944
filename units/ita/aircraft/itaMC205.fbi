@@ -23,6 +23,9 @@
     enginesoundnr=12;
     feartarget=1;
     proptexture=prop3.tga;
+    maxammo=2;
+    weaponcost=0;
+    weaponswithammo=2;
   }
   explodeAs=Vehicle_Explosion_Med;
   fireState=0;
@@ -69,35 +72,35 @@
   wingAngle=0.1;
   wingDrag=0.1;
 
-  weapon1=bredasafatcal05;
-  maxAngleDif1=10;
-  onlyTargetCategory1=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
-  weaponMainDir1=0 -0.18 1;
-
-  weapon2=bredasafatcal05;
-  maxAngleDif2=10;
-  onlyTargetCategory2=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
-  weaponMainDir2=0 -0.18 1;
-  
-  weapon3=bredasafatcal03;
+  weapon3=bredasafatcal05;
   maxAngleDif3=10;
-  onlyTargetCategory3=INFANTRY SOFTVEH AIR  DEPLOYED;
+  onlyTargetCategory3=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir3=0 0 1;
-  
-  weapon4=bredasafatcal03;
+
+  weapon4=bredasafatcal05;
   maxAngleDif4=10;
-  onlyTargetCategory4=INFANTRY SOFTVEH AIR  DEPLOYED;
+  onlyTargetCategory4=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir4=0 0 1;
+  
+  weapon5=bredasafatcal03;
+  maxAngleDif5=10;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR  DEPLOYED;
+  weaponMainDir5=0 0 1;
+  
+  weapon6=bredasafatcal03;
+  maxAngleDif6=10;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR  DEPLOYED;
+  weaponMainDir6=0 0 1;
 
-  weapon5=bomb160kg;
-  maxAngleDif5=15;
-  onlyTargetCategory5=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir5=0 -0.18 1;
+  weapon1=bomb160kg;
+  maxAngleDif1=15;
+  onlyTargetCategory1=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
 
-  weapon6=bomb160kg;
-  maxAngleDif6=15;
-  onlyTargetCategory6=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir6=0 -0.18 1;
+  weapon2=bomb160kg;
+  maxAngleDif2=15;
+  onlyTargetCategory2=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 0 1;
 
   weapon7=Medium_Tracer;
 
