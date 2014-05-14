@@ -6,7 +6,7 @@
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=3000;
-  buildPic=itafiatcr_42.png;
+  buildPic=itafiatcr42.png;
   buildTime=3000;
   canMove=1;
   category=FLAG;

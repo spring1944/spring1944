@@ -8,6 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=2175;
   buildTime=2175;
+  buildPic=itafiatcr42.png;
   canAttack=1;
   moveState=1;
   fireState=2;
@@ -46,7 +47,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=itafiatcr_42;
+  objectName=itafiatcr42.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
