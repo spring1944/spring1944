@@ -3,7 +3,7 @@ local ITADefs = {
 	--------- Italy ----------
 	"ITAAlpiniFlamethrower",
 	"ITABreda30",
-	"ITAalpinifnab45",
+	"ITAalpinifnab43",
 	"ITAalpiniRifle",
 	"ITAbersaglieriM38",
 	"ITAbersaglieriRifle",
