@@ -123,8 +123,11 @@ local function FindSupplier(unitID, teamID)
 	for i = 1, aLengths[teamID] do
 		local supplierID = ammoSuppliers[teamID][i]
 		local separation = GetUnitSeparation(unitID, supplierID, true)
-		if separation <= ammoRanges[supplierID] then
-			return supplierID
+		-- added nil-check, but it would be better to find how anything below can be nil
+		if separation and ammoRanges[supplierID] then
+			if separation <= ammoRanges[supplierID] then
+				return supplierID
+			end
 		end
 	end
 	-- no supplier found
