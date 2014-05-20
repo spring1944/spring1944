@@ -1,6 +1,6 @@
 local modinfo =
 {
-	name						=	"Spring: 1944 v1.62 italy + japan SDD",
+	name						=	"Spring: 1944 v1.7 italy + japan SDD",
 	shortName				= "S44",
 	game						= "Spring 1944",
 	shortGame				= "S44",
