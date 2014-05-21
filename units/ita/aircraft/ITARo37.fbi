@@ -9,7 +9,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=1000;
-  buildPic=itaro37.png;
+  buildPic=itaro37bis.png;
   buildTime=1000;
   canAttack=1;
   canDropFlare=1;
@@ -46,7 +46,7 @@
   maxWaterDepth=0;
   moverate1=4;
   myGravity=0.6;
-  objectName=ITARo37bis;
+  objectName=ITARo37bis.s3o;
   script=RUSPo2.cob;
   refuelTime=10;
   repairable=0;

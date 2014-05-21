@@ -6,7 +6,7 @@
   brakeRate=1;
   buildCostEnergy=0;
   buildCostMetal=1000;
-  buildPic=itaro37.png;
+  buildPic=itaro37bis.png;
   buildTime=1000;
   canMove=1;
   category=FLAG;
