@@ -48,7 +48,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=ITAMC205;
+  objectName=ITAMC205.s3o;
   radarDistance=1000;
   repairable=0;
   seismicSignature=0;
