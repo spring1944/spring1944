@@ -8,7 +8,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3125;
-  buildPic=itareggiane2005.png;
+  buildPic=itare2005.png;
   buildTime=3125;
   canAttack=1;
   canDropFlare=1;
@@ -47,7 +47,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
-  objectName=itareggiane2005;
+  objectName=itare2005.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

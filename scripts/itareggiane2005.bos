@@ -1,6 +1,6 @@
 #include "constants.h"
 
-piece  base, fuselage, fuselage2, wing1, wing2, propeller, mg1, mg2, cannon1, cannon2, cannon3, blades;
+piece  base, fuselage, wing1, wing2, propeller, mg1, mg2, cannon1, cannon2, cannon3, blades;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 
@@ -330,8 +330,6 @@ Killed(severity, corpsetype)
 	explode base type BITMAPONLY;
 	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
-	explode fuselage2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 	explode wing2 type SHATTER;
-	explode fuselage2 type SHATTER;
 	explode propeller type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 }
