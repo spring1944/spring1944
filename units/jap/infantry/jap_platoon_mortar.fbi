@@ -24,7 +24,7 @@
   script=null.cob;
   [sfxtypes] {
   }
-  side=ITA;
+  side=JAP;
   stealth=1;
   turnRate=1;
 }

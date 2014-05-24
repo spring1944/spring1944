@@ -12,7 +12,7 @@
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
-  corpse=USsoldier_dead;
+  corpse=JAPsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;

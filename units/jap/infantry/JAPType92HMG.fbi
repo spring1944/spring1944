@@ -10,7 +10,7 @@
   buildTime=1000;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=ITAsoldier_dead;
+  corpse=JAPsoldier_dead;
   [customParams] {
     feartarget=1;
   }

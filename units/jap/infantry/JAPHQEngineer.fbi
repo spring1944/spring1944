@@ -12,7 +12,7 @@
   buildPic=JAPEngineer.png;
   canMove=1;
   category=INFANTRY;
-  corpse=ITAsoldier_dead;
+  corpse=JAPsoldier_dead;
   [customParams] {
     feartarget=1;
 	canclearmines=1;

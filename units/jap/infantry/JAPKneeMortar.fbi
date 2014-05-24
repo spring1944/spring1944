@@ -10,7 +10,7 @@
   buildTime=1800;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=ITASoldier_dead;
+  corpse=JAPSoldier_dead;
   [customParams] {
     canareaattack=1;
     canfiresmoke=1;
