@@ -10,7 +10,7 @@
   buildTime=1000;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=JAPIsuzuType94_AA_Abandoned;
+  corpse=JAPIsuzuType94_AA_Burning;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;
@@ -24,7 +24,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=INFANTRY MINE BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  objectName=JAPIsuzuType94_AA;
+  objectName=JAPIsuzuType94AA.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
