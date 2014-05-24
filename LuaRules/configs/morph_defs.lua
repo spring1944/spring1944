@@ -332,7 +332,7 @@ local morphDefs = {
 		},
 		{
 			into = 'japvehyard_landing',
-			metal = 6500,
+			metal = 2000,
 			energy = 0,
 			time = 185,
 			name = '  Landing  \n  Craft  ',
