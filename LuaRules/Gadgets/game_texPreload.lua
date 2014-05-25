@@ -16,7 +16,6 @@ if(gadgetHandler:IsSyncedCode()) then
 else
 --	UNSYNCED
 local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
-local sides = {"gbr", "ger", "us", "rus"} -- this is unpleasant
 
 local function PreloadUnitTexture(unitName)
 	gl.PushMatrix()
@@ -29,14 +28,21 @@ end
 
 function gadget:DrawWorld()
 	PreloadUnitTexture("flag")
-	for _, side in pairs(sides) do
-		local startUnit = Spring.GetSideData(side)
-		local spawnList = hqDefs[startUnit]
-		for i = 1, #spawnList.units do
-			local unitName = spawnList.units[i]
-			PreloadUnitTexture(unitName)
+	-- let's find out all the units which are spawned at start
+	local unitsToPreload = {}
+	for startUnit, spawnData in pairs(hqDefs) do
+		unitsToPreload[startUnit] = 1
+		local tmpUnits = spawnData.units
+		if tmpUnits then
+			for i=1, #tmpUnits do
+				unitsToPreload[tmpUnits[i]] = 1
+			end
 		end
 	end
+	for unitName, _ in pairs(unitsToPreload) do
+		PreloadUnitTexture(unitName)
+	end
+	unitsToPreload = nil
 	gadgetHandler:RemoveGadget()
 end
 

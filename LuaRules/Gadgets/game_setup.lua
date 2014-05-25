@@ -62,6 +62,8 @@ local STARTING_LOGISTICS = 1040 + 1 -- Add 1 storage so losing all storage build
 local hqDefs = VFS.Include("LuaRules/Configs/hq_spawn.lua")
 local modOptions = Spring.GetModOptions()
 
+local AIUnitReplacementTable = {}
+
 local function IsPositionValid(unitDefID, x, z)
 	-- Don't place units underwater. (this is also checked by TestBuildOrder
 	-- but that needs proper maxWaterDepth/floater/etc. in the UnitDef.)
@@ -117,10 +119,9 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 				local z = pz + dz
 				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
 					-- hack to make soviet AIs spawn with static storage instead of deployable truck
-					if unitName == "russupplytruck" and Spring.GetAIInfo(teamID) then
-						local unitID = CreateUnit("russtorage", x, 0, z, 0, teamID)
-						ClearUnitPosition(unitID)
-						break
+					-- and possibly other AI-specific units
+					if AIUnitReplacementTable[unitName] and Spring.GetAIInfo(teamID) then
+						unitName = AIUnitReplacementTable[unitName]
 					end
 					local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
 					ClearUnitPosition(unitID)
@@ -189,11 +190,32 @@ local function SetStartResources(teamID)
 	SetTeamResource(teamID, "m", 1000)
 end
 
+local function InitAIUnitReplacementTable()
+	Spring.Echo("Loading AI unit replacement tables...")
+	local SideFiles = VFS.DirList("luarules/configs/side_ai_unit_replacement", "*.lua")
+	Spring.Echo("Found "..#SideFiles.." tables")
+	-- then add their contents to the main table
+	for _, SideFile in pairs(SideFiles) do
+		Spring.Echo(" - Processing "..SideFile)
+		local tmpTable = VFS.Include(SideFile)
+		if tmpTable then
+			local tmpCount = 0
+			for unitName, replacementName in pairs(tmpTable) do
+				AIUnitReplacementTable[unitName] = replacementName
+				tmpCount = tmpCount + 1
+			end
+			Spring.Echo(" -- Added "..tmpCount.." entries")
+			tmpTable = nil
+		end
+	end
+end
 
 function gadget:GameStart()
 	local gaiaTeamID = Spring.GetGaiaTeamID()
 	local teams = Spring.GetTeamList()
-	
+
+	InitAIUnitReplacementTable()
+
 	--Make a global list of the side for each team, because with random faction
 	--it is not trivial to find out the side of a team using Spring's API.
 	-- data set in GetStartUnit function. NB. The only use for this currently is flags
