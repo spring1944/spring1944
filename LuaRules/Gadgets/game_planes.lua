@@ -99,15 +99,17 @@ local function GetDefaultTooltip(sortie, sortieUnitDef)
   local duration = 0
   for i=1,#sortie do
     local unitDef = UnitDefNames[sortie[i]]
-    local planeName = unitDef.humanName
-    local fuel = unitDef.maxFuel
-    if fuel > 0 and duration then
-      if fuel > duration then
-        duration = fuel
-      end
-    else
-      duration = nil
-    end
+	if unitDef then
+		local planeName = unitDef.humanName
+		local fuel = unitDef.maxFuel
+		if fuel > 0 and duration then
+		  if fuel > duration then
+			duration = fuel
+		  end
+		else
+		  duration = nil
+		end
+	end
   end
 
   local result = "Call " .. sortieUnitDef.humanName .. " - " .. sortieUnitDef.tooltip .. "\n"
