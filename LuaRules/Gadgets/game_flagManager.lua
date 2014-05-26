@@ -229,11 +229,6 @@ function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 		SetUnitRulesParam(flagID, "lifespan", 0)
 		env = Spring.UnitScript.GetScriptEnv(flagID)
 		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
-		--[[if flagTeamID == GAIA_TEAM_ID then
-			--CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] --or 0)
-		---else
-			--CallCOBScript(flagID, "ShowFlag", 0, 0)
-		--end]]
 	end
 end
 
