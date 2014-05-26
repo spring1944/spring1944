@@ -49,9 +49,6 @@ local ITADefs = {
 	"itamg_dugin",
   },
 
-  flag  =  {
-    "ITAFLag",
-  },
   
   lighttanks  =  {
 	--Italy--
