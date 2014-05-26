@@ -60,9 +60,6 @@ local GERDefs = {
 	  "germg42_sandbag",
   },
 
-  flag  =  {
-    "GERflag",
-  },
   
   mediumtanks  =  {
       --**Germany**--

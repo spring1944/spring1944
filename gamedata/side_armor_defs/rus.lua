@@ -59,9 +59,6 @@ local RUSDefs = {
 	  "rusmaxim_sandbag",
   },
 
-  flag  =  {
-    "RUSFlag",
-  },
   
   lighttanks  =  {
 	--USSR--

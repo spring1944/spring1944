@@ -54,10 +54,6 @@ local GBRDefs = {
 	  "gbrvickers_sandbag",
   },
 
-  flag  =  {
-    "GBRFlag",
-  },
-  
 
   mediumtanks  =  {
 	--**Britain**--

@@ -56,9 +56,6 @@ local USDefs = {
 	  "usgimg_sandbag",
   },
 
-  flag  =  {
-    "USFlag",
-  },
   
   lighttanks  =  {
 	--**US**--
