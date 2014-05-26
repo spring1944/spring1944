@@ -13,6 +13,7 @@ local MGClass = Weapon:New{
   explosionGenerator = [[custom:Bullet]],
   fireStarter        = 1,
   impactonly         = 1,
+  intensity          = 1e-10,
   interceptedByShieldType = 8,
   noSelfDamage       = true,
   size               = 1e-10,
