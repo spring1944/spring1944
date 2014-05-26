@@ -1,5 +1,66 @@
 local japDefs = {
   -- japan
+	japgunyard = {
+		{
+			into = 'japspyard',
+			metal = 3000,
+			energy = 0,
+			time = 85,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		{
+			into = 'japatyard',
+			metal = 3000,
+			energy = 0,
+			time = 185,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
+			facing = true,
+		},
+	},	
+	japvehicleyard = {
+		{
+			into = 'japvehyard_tank',
+			metal = 2000,
+			energy = 0,
+			time = 85,
+			name = '  Light  \n  Tanks  ',
+			text = 'Makes Light Tanks available in this yard',
+			facing = true,
+		},
+		{
+			into = 'japvehyard_landing',
+			metal = 2000,
+			energy = 0,
+			time = 185,
+			name = '  Landing  \n  Craft  ',
+			text = 'Makes Landing Craft available in this yard',
+			facing = true,
+		},
+	},	
+	japtankyard = {
+		{
+			into = 'japtankyard_medium',
+			metal = 3000,
+			energy = 0,
+			time = 85,
+			name = '  Medium  \n  Tanks  ',
+			text = 'Makes Improved Medium Tanks available in this yard',
+			facing = true,
+		},
+		{
+			into = 'japtankyard_support',
+			metal = 6500,
+			energy = 0,
+			time = 185,
+			name = '  Heavy  \n  Support  ',
+			text = 'Makes Heavy Support Tanks available in this yard',
+			facing = true,
+		},
+	},	
+
   jappontoontruck =
   {
     into = 'japboatyard',
