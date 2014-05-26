@@ -44,7 +44,6 @@ local DEBUG	= false -- enable to print out flag locations in profile format
 
 local CAP_MULT = 0.25 --multiplies against the FBI defined CapRate
 local DEF_MULT = 0.25 --multiplies against the FBI defined DefRate
-local SIDES	= {gbr = 1, ger = 2, rus = 3, us = 4, [""] = 2}
 
 -- easymetal constants
 local EXTRACT_RADIUS = Game.extractorRadius > 125 and Game.extractorRadius or 125
@@ -228,11 +227,13 @@ end
 function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 	if flagType == "flag" then
 		SetUnitRulesParam(flagID, "lifespan", 0)
-		if flagTeamID == GAIA_TEAM_ID then
-			CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] or 0)
-		else
-			CallCOBScript(flagID, "ShowFlag", 0, 0)
-		end
+		env = Spring.UnitScript.GetScriptEnv(flagID)
+		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
+		--[[if flagTeamID == GAIA_TEAM_ID then
+			--CallCOBScript(flagID, "ShowFlag", 0, SIDES[GG.teamSide[teamID]] --or 0)
+		---else
+			--CallCOBScript(flagID, "ShowFlag", 0, 0)
+		--end]]
 	end
 end
 

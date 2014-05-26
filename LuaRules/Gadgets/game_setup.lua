@@ -141,7 +141,9 @@ local function GetStartUnit(teamID)
 		-- startscript didn't specify a side for this team
 		local sidedata = GetSideData()
 		if (sidedata and #sidedata > 0) then
-			startUnit = sidedata[1 + teamID % #sidedata].startUnit
+			local sideNum = 1 + teamID % #sidedata
+			startUnit = sidedata[sideNum].startUnit
+			side = sidedata[sideNum].sideName
 		end
 	else
 		startUnit = GetSideData(side)

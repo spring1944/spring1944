@@ -26,6 +26,7 @@
   onoffable=1;
   [sfxtypes] {
   }
+  script=Flag.lua;
   showNanoFrame=0;
   side=GBR;
   sightDistance=0;
