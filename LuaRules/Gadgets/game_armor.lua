@@ -159,7 +159,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
   -- check if damage was done by a weapon (not falling or debris)
   if not weaponDefID or weaponDefID < 0 or not ValidUnitID(unitID) then return damage end
   -- prevent flag damage
-  if unitDefID == UnitDefsNames["flag"].id then return 0 end
+  if unitDefID == UnitDefNames["flag"].id then return 0 end
   -- prevent self damage
   if unitID == attackerID then return 0 end
   --  binocs and tracers do 0 damage to all units
