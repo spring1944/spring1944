@@ -30,16 +30,13 @@ local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local STALL_PENALTY				=	1.35 --1.35
 local SUPPLY_BONUS				=	0.65 --65
 -- Variables
-local reloadTimes       = {}
-local ammoRanges		= {}
+local ammoRanges		= {} -- supplierID = ammoRange
+local ammoRangeCache		= {} -- unitDefID = range
+local infReloadCache	= {} -- unitDefID = reload
 
-local ammoSuppliers		= {}
-local aIndices			= {}
-local aLengths			= {}
+local ammoSuppliers		= {} -- teamID = {[supplierID] = range, [supplierID] = range, ...}
 
-local infantry 			= {}
-local iIndices			= {}
-local iLengths			= {}
+local infantry 			= {} -- teamID = {[infID] = reload, [infID] = reload, ...}
 
 local teams 			= Spring.GetTeamList()
 local numTeams			= #teams - 1 -- ignore GAIA at this point
@@ -48,12 +45,8 @@ for i = 1, numTeams do
 	local teamID = teams[i]
 	-- setup per-team infantry arrays
 	infantry[teamID] = {}
-	iIndices[teamID] = {}
-	iLengths[teamID] = 0
 	-- setup per-team ammo supplier arrays
 	ammoSuppliers[teamID] = {}
-	aIndices[teamID] = {}
-	aLengths[teamID] = 0
 end
 
 local modOptions
@@ -65,10 +58,9 @@ if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
 local function FindSupplier(unitID, teamID)
-	for i = 1, aLengths[teamID] do
-		local supplierID = ammoSuppliers[teamID][i]
+	for supplierID, ammoRange in pairs(ammoSuppliers[teamID]) do
 		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
-		if separation <= ammoRanges[supplierID] then
+		if separation <= ammoRange then
 			return supplierID
 		end
 	end
@@ -77,7 +69,7 @@ local function FindSupplier(unitID, teamID)
 end
 
 function gadget:Initialize()
-	-- This is all actually redundant as base units are spawned after this gadget starts!
+	-- for luarules reload
 	for _, unitID in ipairs(Spring.GetAllUnits()) do
 		local unitTeam = GetUnitTeam(unitID)
 		local unitDefID = GetUnitDefID(unitID)
@@ -94,52 +86,42 @@ function gadget:Initialize()
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
-	local ud = UnitDefs[unitDefID]
-	local cp = ud.customParams
-	if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then
-		iLengths[teamID] = iLengths[teamID] + 1
-		infantry[teamID][iLengths[teamID]] = unitID
-		iIndices[teamID][unitID] = iLengths[teamID]
-		if not reloadTimes[unitDefID] then
-			reloadTimes[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
+	if infReloadCache[unitDefID] then
+		infantry[teamID][unitID] = infReloadCache[unitDefID]
+	else
+		local ud = UnitDefs[unitDefID]
+		local cp = ud.customParams
+		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then -- unit is armed inf
+			infReloadCache[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
+			infantry[teamID][unitID] = infReloadCache[unitDefID]
 		end
 	end
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
-	local ud = UnitDefs[unitDefID]
-	local cp = ud.customParams
-	-- Build table of suppliers
-	if cp and cp.supplyrange then
-		ammoRanges[unitID] = tonumber(cp.supplyrange)	
-		aLengths[teamID] = aLengths[teamID] + 1
-		ammoSuppliers[teamID][aLengths[teamID]] = unitID
-		aIndices[teamID][unitID] = aLengths[teamID]
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	else
+		local ud = UnitDefs[unitDefID]
+		local cp = ud.customParams
+		-- Build table of suppliers
+		if cp and cp.supplyrange then -- is a supplier
+			ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
+			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		end
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
-	-- return if team has already 'died'
-	if teamID ~= GAIA_TEAM_ID and #iIndices[teamID] == 0 then return end
+	-- return if team has already died
+	if teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID)) then return end
 	
-	local ud = UnitDefs[unitDefID]
-	local cp = ud.customParams
-	-- Check if the unit was a supplier and was fully built
-	if cp and cp.supplyrange and aIndices[teamID][unitID] then
-		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
-		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
-		ammoSuppliers[teamID][aLengths[teamID]] = nil
-		aIndices[teamID][unitID] = nil
-		aLengths[teamID] = aLengths[teamID] - 1
-		ammoRanges[unitID] = nil
-	-- Check if the unit was infantry
-	elseif cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] and teamID then
-		iIndices[teamID][infantry[teamID][iLengths[teamID]]] = iIndices[teamID][unitID]
-		infantry[teamID][iIndices[teamID][unitID]] = infantry[teamID][iLengths[teamID]]
-		infantry[teamID][iLengths[teamID]] = nil
-		iIndices[teamID][unitID] = nil
-		iLengths[teamID] = iLengths[teamID] - 1
+	-- Check if the unit was a supplier and was fully built	
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = nil
+	elseif infReloadCache[unitDefID] then
+		infantry[teamID][unitID] = nil
 	end
 end
 
@@ -151,17 +133,11 @@ end
 
 function gadget:TeamDied(teamID)
 	infantry[teamID] = {}
-	iIndices[teamID] = {}
-	iLengths[teamID] = 0
 	ammoSuppliers[teamID] = {}
-	aIndices[teamID] = {}
-	aLengths[teamID] = 0
 end
 
-local function ProcessUnit(unitID, unitDefID, teamID, stalling)
+local function ProcessUnit(unitID, teamID, reload, stalling)
 	if ValidUnitID(unitID) then
-		local reload = reloadTimes[unitDefID]
-		
 		-- Stalling. (stall penalty!)
 		if (stalling) then
 			SetUnitWeaponState(unitID, 1, {reloadTime = STALL_PENALTY*reload})
@@ -208,11 +184,9 @@ function gadget:GameFrame(n)
 		if not teamIsDead then
 			local logisticsLevel = GetTeamResources(teamID, "energy")
 			local stalling = logisticsLevel < 50
-			for j = 1, iLengths[teamID] do
-				local unitID = infantry[teamID][j]
+			for unitID, reload in pairs(infantry[teamID]) do
 				if ValidUnitID(unitID) then
-					local unitDefID = GetUnitDefID(unitID)
-					ProcessUnit(unitID, unitDefID, teamID, stalling)
+					ProcessUnit(unitID, teamID, reload, stalling)
 				end
 			end
 		end
