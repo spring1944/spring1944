@@ -4,7 +4,7 @@ function gadget:GetInfo()
 		desc      = "Removes infantry corpses over time",
 		author    = "Rewritten by FLOZi (C.Lawrence)",
 		date      = "27/05/2014",
-		license   = "CC by-nc, version 3.0",
+		license   = "GNU GPL v2",
 		layer     = 0,
 		enabled   = true
 	}

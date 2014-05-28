@@ -151,7 +151,7 @@ local function GetStartUnit(teamID)
 	-- Check for GM / Random team
 	if (modOptions.gm_team_enable == "0") then
 		if startUnit == "gmtoolbox" then
-			local randSide = math.random(1,4)	
+			local randSide = math.random(2,#GetSideData())	-- start at 2 to avoid picking random side again
 			side, startUnit = GetSideData(randSide)
 		end
 	end

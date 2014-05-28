@@ -201,12 +201,12 @@ function gadget:GameFrame(n)
 			local teamID = teams[i]
 			local teamIsDead = select(3, GetTeamInfo(teamID))
 			if not teamIsDead and teamID ~= GAIA_TEAM_ID then
+				local logisticsLevel = GetTeamResources(teamID, "energy")
+				local stalling = logisticsLevel < 50
 				for j = 1, iLengths[teamID] do
 					local unitID = infantry[teamID][j]
 					if ValidUnitID(unitID) then
 						local unitDefID = GetUnitDefID(unitID)
-						local logisticsLevel = GetTeamResources(teamID, "energy")
-						local stalling = logisticsLevel < 50
 						ProcessUnit(unitID, unitDefID, teamID, stalling)
 					end
 				end

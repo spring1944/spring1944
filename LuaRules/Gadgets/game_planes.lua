@@ -512,8 +512,8 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 end
 
 function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, part)
+  if not radios[builderTeam][builderID] then return true end -- early out non-{radar,HQ,rusbarracks}
   local sortie = sortieDefs[unitDefID]
-
   if not sortie or sortie.weight <= 0 then return true end
 
   local rulesParamName = "game_planes.weight"
