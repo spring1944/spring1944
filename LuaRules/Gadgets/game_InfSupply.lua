@@ -30,6 +30,7 @@ local GAIA_TEAM_ID				= Spring.GetGaiaTeamID()
 local STALL_PENALTY				=	1.35 --1.35
 local SUPPLY_BONUS				=	0.65 --65
 -- Variables
+local reloadTimes       = {}
 local ammoRanges		= {}
 
 local ammoSuppliers		= {}
@@ -41,7 +42,7 @@ local iIndices			= {}
 local iLengths			= {}
 
 local teams 			= Spring.GetTeamList()
-local numTeams			= #teams
+local numTeams			= #teams - 1 -- ignore GAIA at this point
 
 for i = 1, numTeams do
 	local teamID = teams[i]
@@ -99,6 +100,9 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		iLengths[teamID] = iLengths[teamID] + 1
 		infantry[teamID][iLengths[teamID]] = unitID
 		iIndices[teamID][unitID] = iLengths[teamID]
+		if not reloadTimes[unitDefID] then
+			reloadTimes[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
+		end
 	end
 end
 
@@ -117,7 +121,7 @@ end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- return if team has already 'died'
-	if #iIndices[teamID] == 0 then return end
+	if teamID ~= GAIA_TEAM_ID and #iIndices[teamID] == 0 then return end
 	
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
@@ -156,10 +160,7 @@ end
 
 local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 	if ValidUnitID(unitID) then
-		-- Check if the unit is armed
-		local hasWeapons = UnitDefs[unitDefID].weapons[1]
-		if not hasWeapons then return end
-		local reload = WeaponDefs[hasWeapons.weaponDef].reload
+		local reload = reloadTimes[unitDefID]
 		
 		-- Stalling. (stall penalty!)
 		if (stalling) then
@@ -195,23 +196,28 @@ local function ProcessUnit(unitID, unitDefID, teamID, stalling)
 	end
 end
 
+local UPDATE_PERIOD = 30 * 3 -- updates are spread over 3 seconds
+local UPDATE_PER_TEAM = math.floor(UPDATE_PERIOD / numTeams)
+-- e.g. 3 teams, 0 @ 0, 1 @ 1 * UPDATE_PERIOD/3, 2@ 2 * UPDATE_PERIOD/3, 0@ 3 * UPDATE_PERIOD/3
+local currTeam = 0
+
 function gadget:GameFrame(n)
-	for i = 1, numTeams do
-		if (n + (math.floor(30 / numTeams) * i)) % (30 * 3) < 0.1 then -- every 3 seconds with each team offset by 30 / numTeams * teamNum frames
-			local teamID = teams[i]
-			local teamIsDead = select(3, GetTeamInfo(teamID))
-			if not teamIsDead and teamID ~= GAIA_TEAM_ID then
-				local logisticsLevel = GetTeamResources(teamID, "energy")
-				local stalling = logisticsLevel < 50
-				for j = 1, iLengths[teamID] do
-					local unitID = infantry[teamID][j]
-					if ValidUnitID(unitID) then
-						local unitDefID = GetUnitDefID(unitID)
-						ProcessUnit(unitID, unitDefID, teamID, stalling)
-					end
+	if n % UPDATE_PER_TEAM == 0 then
+		local teamID = currTeam
+		local teamIsDead = select(3, GetTeamInfo(teamID))
+		if not teamIsDead then
+			local logisticsLevel = GetTeamResources(teamID, "energy")
+			local stalling = logisticsLevel < 50
+			for j = 1, iLengths[teamID] do
+				local unitID = infantry[teamID][j]
+				if ValidUnitID(unitID) then
+					local unitDefID = GetUnitDefID(unitID)
+					ProcessUnit(unitID, unitDefID, teamID, stalling)
 				end
 			end
 		end
+		currTeam = currTeam + 1
+		if currTeam == numTeams then currTeam = 0 end
 	end
 end
 
