@@ -34,20 +34,18 @@ local UseUnitResource	 = Spring.UseUnitResource
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
 -- Variables
-local ammoRanges		= {}
+local ammoRanges		= {} -- supplierID = ammoRange
+local ammoRangeCache		= {} -- unitDefID = range
 
 local ammoSuppliers		= {}
-local aIndices			= {}
-local aLengths			= {}
 
 local teams 			= Spring.GetTeamList()
 local numTeams			= #teams
 
 for i = 1, numTeams do
+	local teamID = teams[i]
 	-- setup per-team ammo supplier arrays
-	ammoSuppliers[teams[i]] = {}
-	aIndices[teams[i]] = {}
-	aLengths[teams[i]] = 0
+	ammoSuppliers[teamID] = {}
 end
 
 local vehicles = {}
@@ -118,16 +116,11 @@ local function ProcessWeapons(unitID)
 	end
 end
 
-
 local function FindSupplier(unitID, teamID)
-	for i = 1, aLengths[teamID] do
-		local supplierID = ammoSuppliers[teamID][i]
-		local separation = GetUnitSeparation(unitID, supplierID, true)
-		-- added nil-check, but it would be better to find how anything below can be nil
-		if separation and ammoRanges[supplierID] then
-			if separation <= ammoRanges[supplierID] then
-				return supplierID
-			end
+	for supplierID, ammoRange in pairs(ammoSuppliers[teamID]) do
+		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
+		if separation <= ammoRange then
+			return supplierID
 		end
 	end
 	-- no supplier found
@@ -227,35 +220,22 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
-	local ud = UnitDefs[unitDefID]
-	local cp = ud.customParams
-	-- Build table of suppliers
-	if cp and cp.supplyrange then
-		ammoRanges[unitID] = tonumber(cp.supplyrange)
-		
-		aLengths[teamID] = aLengths[teamID] + 1
-		ammoSuppliers[teamID][aLengths[teamID]] = unitID
-		aIndices[teamID][unitID] = aLengths[teamID]
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	else
+		local ud = UnitDefs[unitDefID]
+		local cp = ud.customParams
+		-- Build table of suppliers
+		if cp and cp.supplyrange then -- is a supplier
+			ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
+			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		end
 	end
 end
 
 local function CleanUp(unitID, unitDefID, teamID)
-	local ud = UnitDefs[unitDefID]
-	local cp = ud.customParams
-	-- Check if the unit was a supplier and was fully built
-	if cp and cp.supplyrange and aIndices[teamID][unitID] then
-		-- set index of current end unit as index of unit to be deleted
-		aIndices[teamID][ammoSuppliers[teamID][aLengths[teamID]]] = aIndices[teamID][unitID]
-		-- copy unit info from old index (end of table) to new index (of unit to be deleted)
-		ammoSuppliers[teamID][aIndices[teamID][unitID]] = ammoSuppliers[teamID][aLengths[teamID]]
-		-- delete unit info of destroyed unit
-		ammoSuppliers[teamID][aLengths[teamID]] = nil
-		-- delete index of destroyed unit
-		aIndices[teamID][unitID] = nil
-		-- subtract from length
-		aLengths[teamID] = aLengths[teamID] - 1
-		-- clean up range cache
-		ammoRanges[unitID] = nil
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = nil
 	end
 end
 
@@ -300,8 +280,6 @@ end
 
 function gadget:TeamDied(teamID)
 	ammoSuppliers[teamID] = {}
-	aIndices[teamID] = {}
-	aLengths[teamID] = 0
 end
 
 

@@ -182,8 +182,10 @@ local planeStates = {}
 
 --teamID = { unitID = true, unitID = true, unitID = true... }
 local radios = {}
--- allyTeamID = numberOfRadars
+-- unitID = teamID
 local radars = {}
+-- allyTeamID = numberOfRadars
+local allyRadarCounts = {}
 ----------------------------------------------------------------
 --spawning
 ----------------------------------------------------------------
@@ -400,9 +402,12 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
-  if UnitDefs[unitDefID].name:find("radar") then -- nasty, customParam?
-    local allyTeam = select(6, Spring.GetTeamInfo(teamID))
-	radars[allyTeam] = (radars[allyTeam] or 0) + 1
+  if radioDefs[unitDefID] then -- unit is a radio
+    if UnitDefs[unitDefID].name:find("radar") then -- is it a radar specifically? only allies with radars get warnings
+      local allyTeam = select(6, Spring.GetTeamInfo(teamID))
+	  allyRadarCounts[allyTeam] = (allyRadarCounts[allyTeam] or 0) + 1
+	end
+    return
   end
   
   local sortie = sortieDefs[unitDefID]
@@ -444,7 +449,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
       SendMessageToTeam(teamID, sortie.name .. " ordered. ETE " .. (sortie.delay or 0) .. "s.")
       local allyTeam = select(6, Spring.GetTeamInfo(teamID))
       for _, alliance in ipairs(Spring.GetAllyTeamList()) do
-        if alliance ~= allyTeam and sortie.weight > 0 and not sortie.silent and (radars[alliance] or 0) > 0 then
+        if alliance ~= allyTeam and sortie.weight > 0 and not sortie.silent and (allyRadarCounts[alliance] or 0) > 0 then
           Spring.SendMessageToAllyTeam(alliance, "\255\255\001\001Incoming enemy aircraft on radar, arriving in " .. sortie.delay .. " seconds")
         end
       end
@@ -504,15 +509,16 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
   end
   planeStates[unitID] = nil
   radios[teamID][unitID] = nil
+  radars[unitID] = nil
   
   if UnitDefs[unitDefID].name:find("radar") then
     local allyTeam = select(6, Spring.GetTeamInfo(teamID))
-    radars[allyTeam] = (radars[allyTeam] or 1) - 1 -- should never actually be nil
+    allyRadarCounts[allyTeam] = (allyRadarCounts[allyTeam] or 1) - 1 -- should never actually be nil
   end
 end
 
 function gadget:AllowUnitBuildStep(builderID, builderTeam, unitID, unitDefID, part)
-  if not radios[builderTeam][builderID] then return true end -- early out non-{radar,HQ,rusbarracks}
+  if not radars[builderID] then return true end -- early out non-radars, inc HQ
   local sortie = sortieDefs[unitDefID]
   if not sortie or sortie.weight <= 0 then return true end
 
