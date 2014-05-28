@@ -5,8 +5,8 @@
 #define EXHAUST_SMOKE 1024+1
 
 // definitions for wheels
-#define WHEEL_SPIN		<-600>
-#define WHEEL_ACCEL		<-150>
+#define WHEEL_SPIN		<600>
+#define WHEEL_ACCEL		<150>
 
 StartMoving()
 {

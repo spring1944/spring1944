@@ -37,8 +37,8 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 #include "RockUnit_Set.h"
 
 // definitions for wheels
-#define WHEEL_SPIN		<-600>
-#define WHEEL_ACCEL		<-150>
+#define WHEEL_SPIN		<600>
+#define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
 #define TURR_TRAVERSE	<15> // hand operated
