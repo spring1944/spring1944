@@ -37,18 +37,16 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 		local damagePerSecond = wd.damages[1]
 		local weaponCeg = wd.customParams.ceg
 		local units = GetUnitsInSphere(px, py, pz, damageZone)
-		for i = 1, #units do
-				burningUnits[units[i]] = {
+		for _, unitID in pairs(units) do
+			if unitID ~= ownerID then --prevent units from setting themselves on fire
+				burningUnits[unitID] = {
 					exTime = gameFrame,
-					CEGSpawnY = (GetUnitHeight(units[i])/3),
+					CEGSpawnY = (GetUnitHeight(unitID)/3),
 					dmgPerSecond = damagePerSecond,
 					damageDuration = damageTime,
 					expCeg = weaponCeg,
 				}
-		end
-		--prevent units from setting themselves on fire
-		if ownerID ~= nil then
-			burningUnits[ownerID] = nil
+			end
 		end
 
 		if damageZones[damageSiteIndex] == nil then
