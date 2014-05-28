@@ -1,5 +1,9 @@
 local sidedata = {
 	{
+	name = "Random Team (GM)",
+	startUnit = "GMToolbox",
+	},
+	{
 	name = "GER",
 	startUnit = "GERHQBunker",
 	},
@@ -22,10 +26,6 @@ local sidedata = {
 	{
 	name = "JAP",
 	startUnit = "JAPHQ",
-	},
-	{
-	name = "Random Team (GM)",
-	startUnit = "GMToolbox",
 	},
 }
 return sidedata
