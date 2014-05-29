@@ -9,6 +9,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
+  buildpic=ITATankYard.png;
   buildTime=10530;
   canBeAssisted=0;
   canMove=1;
