@@ -7,6 +7,7 @@
   brakeRate=0.9;
   buildCostEnergy=0;
   buildCostMetal=50;
+  buildpic=ITASoloAT.png;
   buildTime=110;
   canMove=1;
   category=INFANTRY MINETRIGGER;

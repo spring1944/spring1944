@@ -7,7 +7,7 @@
   buildCostEnergy=0;
   buildCostMetal=1300;
   buildPic=JAPType100SMG.png;
-  buildTime=1400;
+  buildTime=1300;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;

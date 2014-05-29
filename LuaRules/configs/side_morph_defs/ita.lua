@@ -138,10 +138,10 @@ local itaDefs = {
 			ecost = 0,
 			time = 65,
 			buttonname = 'Upg: Elite',
-			name = 'Upgrade: Elite',
+			name = '  Elite  \n  Troops  ',
 			desc = 'Makes Eliteinfantry available in this barracks',
 			notext = true,
-			buildpic = 'itaalpini.png',
+			--buildpic = 'itaalpini.png',
 		},
 	},
 	itagunyard = {

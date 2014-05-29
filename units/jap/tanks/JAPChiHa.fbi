@@ -45,7 +45,7 @@
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
-    explosionGenerator1=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator1=custom:DIESEL_EXHAUST;
     explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
     explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
     explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
