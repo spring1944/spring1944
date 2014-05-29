@@ -5,9 +5,9 @@
   acceleration=0.1;
   brakeRate=1;
   buildCostEnergy=0;
-  buildCostMetal=1300;
+  buildCostMetal=1400;
   buildPic=JAPType100SMG.png;
-  buildTime=1300;
+  buildTime=1400;
   canMove=1;
   category=FLAG;
   explodeAs=noweapon;
