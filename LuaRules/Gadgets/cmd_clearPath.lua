@@ -254,10 +254,8 @@ local GetActiveCommand = Spring.GetActiveCommand
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local TraceScreenRay = Spring.TraceScreenRay
 local GetMouseState = Spring.GetMouseState
-local GetUnitCommands = Spring.GetUnitCommands
-local GetUnitPosition = Spring.GetUnitPosition
-local GetModKeyState = Spring.GetModKeyState
-local GetInvertQueueKey = Spring.GetInvertQueueKey
+local GetUnitPositionAtEndOfQueue = GG.CmdQueue.GetUnitPositionAtEndOfQueue
+local GetUnitActiveCommandPosition = GG.CmdQueue.GetUnitActiveCommandPosition
 
 -- OpenGL
 glColor = gl.Color
@@ -281,30 +279,6 @@ function gadget:Initialize()
     end
 end
 
-local function GetUnitPositionAtEndOfQueue(unitID)
-	local queue = GetUnitCommands(unitID)
-	if queue then
-		for i=#queue,1,-1 do
-			local cmd = queue[i]
-			if ((cmd.id == CMD.MOVE) or (cmd.id == CMD.FIGHT)) and (#cmd.params >= 3) then
-				return unpack(cmd.params)
-			end
-		end
-	end
-	return GetUnitPosition(unitID)
-end
-
--- Returns the position the unit will (probably) have when it would start
--- executing the command which is being given now. (Spring.GetActiveCommand)
-local function GetUnitActiveCommandPosition(unitID)
-	local _, _, _, shift = GetModKeyState()
-	local invertQueueKey = GetInvertQueueKey()
-	if (not invertQueueKey and shift) or (invertQueueKey and not shift) then
-		return GetUnitPositionAtEndOfQueue(unitID)
-	else
-		return GetUnitPosition(unitID)
-	end
-end
 
 function gadget:DrawWorld()
 	local cmdID, cmdDescID, cmdDescType, cmdDescName = GetActiveCommand()

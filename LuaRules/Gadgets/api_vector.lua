@@ -1,4 +1,11 @@
-function gadget:GetInfo()
+local luaType = gadget
+if not gadget then
+	luaType = widget
+end
+
+local versionNumber = "v1.0"
+
+function luaType:GetInfo()
 	return {
 		name      = "Vector API",
 		desc      = "Basic vector functions.",
