@@ -9,6 +9,7 @@
   corpse=TankObstacle;
   [customParams] {
 	hiddenbuilding=1;
+    isobstacle=1;
     dontCount=1;
   }
   footprintX=2;
