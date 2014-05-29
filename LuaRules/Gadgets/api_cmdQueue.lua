@@ -1,7 +1,4 @@
-local luaType = gadget
-if not gadget then
-	luaType = widget
-end
+local luaType = gadget or widget
 
 local versionNumber = "v1.0"
 
