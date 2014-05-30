@@ -12,6 +12,7 @@ end
 
 -- function localisations
 -- Synced Read
+local GetUnitHealth = Spring.GetUnitHealth
 -- Synced Ctrl
 local EditUnitCmdDesc   = Spring.EditUnitCmdDesc
 local FindUnitCmdDesc   = Spring.FindUnitCmdDesc
@@ -54,12 +55,17 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		if cp and cp.candetonate then
-			if detonate_in_progress then
-				-- change button back to Detonate
-				change_detonate_button(unitID, "Detonate", get_detonate_tooltip(unitDefID))
-			else
-				-- change button to cancel
-				change_detonate_button(unitID, "Cancel", "Cancel detonation")
+			local _, _, _, _, buildProgress = GetUnitHealth(unitID)
+			if buildProgress == 1.0 then
+				if detonate_in_progress then
+					-- change button back to Detonate
+					change_detonate_button(unitID, "Detonate", get_detonate_tooltip(unitDefID))
+				else
+					-- change button to cancel
+					change_detonate_button(unitID, "Cancel", "Cancel detonation")
+				end
+            else
+                return false
 			end
 			detonate_in_progress = not detonate_in_progress
 		else -- units without candetonate tag		
