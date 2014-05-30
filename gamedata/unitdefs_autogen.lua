@@ -10,7 +10,16 @@ local defFields = {
 
 local sortieInclude = VFS.Include("LuaRules/Configs/sortie_defs.lua")
 
-local function getTemplate()
+local squadInclude = VFS.Include("LuaRules/Configs/squad_defs.lua")
+
+local SORTIE_DAMAGE = 1e+06
+local SORTIE_SLOPE = 82
+
+local SQUAD_DAMAGE = 100
+local SQUAD_SLOPE = 30
+
+
+local function getTemplate(maxDamage, maxSlope)
     return  {
                 acceleration = 0.1,
                 brakeRate = 1,
@@ -21,8 +30,8 @@ local function getTemplate()
                 footprintX = 1,
                 footprintZ = 1,
                 idleAutoHeal = 0,
-                maxDamage = 1e+06,
-                maxSlope = 82,
+                maxDamage = maxDamage,
+                maxSlope = maxSlope,
                 maxVelocity = 0.01,
                 movementClass = "KBOT_Infantry",
                 objectName = "MortarShell.S3O",
@@ -35,11 +44,17 @@ local function getTemplate()
             }
 end
 
-
-for sortieUnitName, sortie in pairs(sortieInclude) do
-    local autoUnit = getTemplate()
-    for i = 1, #defFields do
-        autoUnit[defFields[i]] = sortie[defFields[i]]
+local function generateFrom(defFile, damage, slope)
+    for unitName, unitData in pairs(defFile) do
+        local autoUnit = getTemplate(damage, slope)
+        for i = 1, #defFields do
+            autoUnit[defFields[i]] = unitData[defFields[i]]
+        end
+        UnitDefs[unitName] = autoUnit
     end
-    UnitDefs[sortieUnitName] = autoUnit
 end
+
+generateFrom(sortieInclude, SORTIE_DAMAGE, SORTIE_SLOPE)
+
+generateFrom(squadInclude, SQUAD_DAMAGE, SQUAD_SLOPE)
+

@@ -66,19 +66,21 @@ end
 -- Dont touch below here
 -------------------------------------------------
 
-local squadDefIDs = { }
+if UnitDefNames then
+    local squadDefIDs = { }
 
-for i, squad in pairs(squadDefs) do
-	unitDef = UnitDefNames[i]
-	if unitDef ~= nil then
-		squadDefIDs[unitDef.id] = squad
-	else
-		Spring.Echo("  Bad unitName! " .. i)
-	end
-end
+    for i, squad in pairs(squadDefs) do
+        unitDef = UnitDefNames[i]
+        if unitDef ~= nil then
+            squadDefIDs[unitDef.id] = squad
+        else
+            Spring.Echo("  Bad unitName! " .. i)
+        end
+    end
 
-for i, squad in pairs(squadDefIDs) do
-	squadDefs[i] = squad
+    for i, squad in pairs(squadDefIDs) do
+        squadDefs[i] = squad
+    end
 end
 
 return squadDefs
