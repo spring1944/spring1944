@@ -10,9 +10,9 @@
 	name=Gabbiano class Corvette;
 	description=Corvette;
 	maxdamage=25000;
-	buildcostmetal=15000;
+	buildcostmetal=5000;
 	buildcostenergy=0;
-	buildtime=15000;
+	buildtime=5000;
 	footprintx=8;
 	footprintz=8;
 	mass=25000;
