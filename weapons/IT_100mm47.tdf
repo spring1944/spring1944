@@ -11,7 +11,7 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=4000;
+	range=1600;
 	reloadtime=6; // 8-10 rpm, aim for 10
 	accuracy=400;	// relatively bad accuracy
 	targetmoveerror=0.1;
