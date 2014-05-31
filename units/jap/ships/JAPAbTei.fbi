@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.025;
   buildCostEnergy=0;
-  buildCostMetal=2125;
-  buildTime=2125;
+  buildCostMetal=1425;
+  buildTime=1425;
   canAttack=1;
   canMove=1;
   category=SHIP MINETRIGGER;
@@ -24,7 +24,7 @@
     armor_top=6;
     hasturnbutton=1;
     lowammolevel=10;
-    maxammo=50;
+    maxammo=70;
     weaponcost=8;
     weaponswithammo=2;
   }

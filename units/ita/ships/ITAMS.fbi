@@ -15,7 +15,7 @@
 	buildtime=1500;
 	footprintx=4;
 	footprintz=4;
-	mass=50000;
+	mass=5000;
 	floater=1;
 	minwaterdepth=10;
 	shownanoframe=0;
