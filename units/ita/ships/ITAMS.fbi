@@ -43,8 +43,8 @@
 
 	Weapon1=it533mmtorpedo;
 	Weapon2=it533mmtorpedo;
-	Weapon3=breda3520mmhe;
-	Weapon4=breda3520mmhe;
+	Weapon3=it20mm65bredaHE;
+	Weapon4=it20mm65bredaHE;
 
 	OnlyTargetCategory1=LARGESHIP;
 	OnlyTargetCategory2=LARGESHIP;
