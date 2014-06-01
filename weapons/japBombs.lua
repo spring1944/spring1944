@@ -33,7 +33,7 @@ local bomb50kg = BombClass:New{
   areaOfEffect       = 76,
   -- turret             = false,
   manualBombSettings = false,
-  weaponVelocity     = 200,
+  weaponVelocity     = 300,
 
     damage = {
     default            = 7000,
