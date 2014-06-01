@@ -26,6 +26,9 @@
     enginesoundnr=11;
     feartarget=1;
     proptexture=prop3.tga;
+    maxammo=4;
+    weaponcost=0;
+    weaponswithammo=4;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

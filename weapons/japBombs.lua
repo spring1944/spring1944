@@ -10,6 +10,7 @@ local BombClass = Weapon:New{
   manualBombSettings = true,
   reloadtime         = 600,
   tolerance          = 4000,
+  leadLimit	     = 200,
   turret             = true,
   weaponType         = [[Cannon]],
   weaponVelocity     = 400,
@@ -31,7 +32,8 @@ local bomb50kg = BombClass:New{
   accuracy           = 500,
   areaOfEffect       = 76,
   -- turret             = false,
-  weaponVelocity     = 300,
+  manualBombSettings = false,
+  weaponVelocity     = 200,
 
     damage = {
     default            = 7000,
@@ -39,9 +41,9 @@ local bomb50kg = BombClass:New{
   edgeEffectiveness	= 0.5,
   range              = 800,
   soundHit           = [[GEN_Explo_9]],
-  tolerance          = 30,
+  tolerance          = 10,
   targetMoveError = 0.1,
-  mygravity	= 0.3,
+  mygravity	= 0.6,
 }
 
 -- Return only the full weapons
