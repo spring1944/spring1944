@@ -37,6 +37,7 @@
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
+  pushResistant=1;
   objectName=GERMAL.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -58,6 +59,7 @@
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
+  turnInPlaceAngleLimit=10;
   turnRate=120;
 
   weapon1=sk88mmc30;
