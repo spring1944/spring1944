@@ -68,6 +68,7 @@
 	}
 	[customParams]
 	{
-		dontCount=1;
+		    dontCount=1;
+    		hasturnbutton=1;
 	}
 }
