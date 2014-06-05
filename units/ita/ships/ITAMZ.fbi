@@ -9,13 +9,13 @@
 
 	name=Motozattera;
 	description= Landing Ship (up to 3 tanks);
-	maxdamage=15000;
+	maxdamage=5000;
 	buildcostmetal=5000;
 	buildcostenergy=0;
 	buildtime=5000;
 	footprintx=8;
 	footprintz=8;
-	mass=100000;
+	mass=5000;
 	floater=1;
 	minwaterdepth=6;
 	shownanoframe=0;
@@ -60,6 +60,16 @@
 	}
 	[customParams]
 	{
-		dontCount=1;
+	dontCount=1;
+    	armor_front=6;
+    	armor_rear=16;
+    	armor_side=16;
+    	armor_top=6;
+	  supplyRange=350;
+    	hasturnbutton=1;
+    	lowammolevel=2;
+    	maxammo=7;
+    	weaponcost=18;
+    	weaponswithammo=1;
 	}
 }

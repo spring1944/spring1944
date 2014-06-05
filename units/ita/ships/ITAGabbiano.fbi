@@ -10,9 +10,9 @@
 	name=Gabbiano class Corvette;
 	description=Corvette;
 	maxdamage=25000;
-	buildcostmetal=5000;
+	buildcostmetal=10000;
 	buildcostenergy=0;
-	buildtime=5000;
+	buildtime=10000;
 	footprintx=8;
 	footprintz=8;
 	mass=25000;
@@ -94,8 +94,19 @@
 	[sfxtypes]
 	{
 	}
+	// armor values 90mm body(only for front for balance),30mm rest
 	[customParams]
 	{
 		dontCount=1;
+    		hasturnbutton=1;
+    		armor_front=90;
+    		armor_rear=30;
+    		armor_side=30;
+    		armor_top=30;
+    		lowammolevel=20;
+    		maxammo=30;
+    		weaponcost=18;
+    		weaponswithammo=1;
+
 	}
 }
