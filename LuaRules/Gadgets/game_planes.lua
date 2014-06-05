@@ -97,8 +97,9 @@ local sortieCmdIDs = {}
 local function GetDefaultTooltip(sortie, sortieUnitDef)
   local planeList = {}
   local duration = 0
-  for i=1,#sortie.members do
-    local unitDef = UnitDefNames[sortie.members[i]]
+  local sortieMembers = sortie.members
+  for i=1,#sortieMembers do
+    local unitDef = UnitDefNames[sortieMembers[i]]
 	if unitDef then
 		local planeName = unitDef.humanName
 		local fuel = unitDef.maxFuel
@@ -279,25 +280,26 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
 
   local dx, dy, dz, dist = vNormalized(tx - sx, 0, tz - sz)
   local rotation = atan2(dx, dz)
-
-  local offsets = GetFormationOffsets(#sortie.members, rotation)
+  
+  local sortieMembers = sortie.members
+  local offsets = GetFormationOffsets(#sortieMembers, rotation)
   if dist >= PATROL_DISTANCE then
     local wbx, wbz = sx + (dist - PATROL_DISTANCE) * dx, sz + (dist - PATROL_DISTANCE) * dz
-    for i=1, #sortie.members do
+    for i=1, #sortieMembers do
       local offset = offsets[i]
       local waypoint = {}
       waypoint[1], waypoint[2], waypoint[3] = offset[1] + wbx, 0, offset[3] + wbz
       local ux, uz = offset[1] + sx, offset[3] + sz
       local uy = GetGroundHeight(ux, uz)
-      local unitname = sortie.members[i]
+      local unitname = sortieMembers[i]
       SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i, sortie.alwaysAttack)
     end
   else
-    for i=1, #sortie.members do
+    for i=1, #sortieMembers do
       local offset = offsets[i]
       local ux, uz = offset[1] + sx, offset[3] + sz
       local uy = GetGroundHeight(ux, uz)
-      local unitname = sortie.members[i]
+      local unitname = sortieMembers[i]
       SpawnPlane(teamID, unitname, ux, uy, uz, cmdParams, dx, dy, dz, rotation, waypoint, i, sortie.alwaysAttack)
     end
   end
@@ -307,8 +309,8 @@ local function SpawnFlight(teamID, sortie, sx, sy, sz, cmdParams)
     local allyTeam = select(6, Spring.GetTeamInfo(teamID))
     for _, alliance in ipairs(Spring.GetAllyTeamList()) do
       if alliance ~= allyTeam then
-	    -- assumes all aircraft in a sortie are the same
-        Spring.SendMessageToAllyTeam(alliance, "\255\255\001\001Enemy " .. UnitDefNames[sortie.members[1]].humanName .. " aircraft spotted overhead!")
+        -- assumes all aircraft in a sortie are the same
+        Spring.SendMessageToAllyTeam(alliance, "\255\255\001\001Enemy " .. UnitDefNames[sortieMembers[1]].humanName .. " aircraft spotted overhead!")
       end
     end
   end
@@ -441,7 +443,6 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
     -- can't order
   else
     local stockpile = GetStockpile(teamID, sortie)
-
     if stockpile > 0 then
       ModifyStockpile(teamID, sortie, -1)
       local sx, sy, sz = GetSpawnPoint(teamID, #sortie.members)
