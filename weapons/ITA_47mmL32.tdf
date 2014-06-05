@@ -39,7 +39,7 @@
   // targetMoveError=0.075;
   tolerance=300;
   turret=1;
-  weaponVelocity=1518;
+  weaponVelocity=1000;
 }
 [ita47mml32heat] {
   name=47 mm L/32 Gun - Effetto Pronto S;
