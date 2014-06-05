@@ -1,6 +1,8 @@
 local rusSorties = {
 	rus_sortie_recon = {
-		"ruspo2",
+		members = {
+			"ruspo2",
+		},
 		delay = 15,
 		name = "Recon Sortie",
 		description = "1 x Po-2 Kukuruznik",
@@ -10,10 +12,12 @@ local rusSorties = {
 	},
   
 	rus_sortie_interceptor = {
-		"rusyak3",
-		"rusyak3",
-		"rusyak3",
-		"rusyak3",
+		members = {
+			"rusyak3",
+			"rusyak3",
+			"rusyak3",
+			"rusyak3",
+		},
 		delay = 15,
 		weight = 1,
 		name = "Interceptor Sortie",
@@ -24,10 +28,12 @@ local rusSorties = {
 	},
   
 	rus_sortie_fighter = {
-		"rusla5fn",
-		"rusla5fn",
-		"rusla5fn",
-		"rusla5fn",
+		members = {
+			"rusla5fn",
+			"rusla5fn",
+			"rusla5fn",
+			"rusla5fn",
+		},
 		delay = 30,
 		weight = 1,
 		name = "Air Superiority Fighter Sortie",
@@ -38,8 +44,10 @@ local rusSorties = {
 	},
   
 	rus_sortie_attack = {
-		"rusil2",
-		"rusil2",
+		members = {
+			"rusil2",
+			"rusil2",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Attack Sortie",
@@ -50,8 +58,10 @@ local rusSorties = {
 	},
   
 	rus_sortie_tankbuster = {
-		"rusil2ptab",
-		"rusil2ptab",
+		members = {
+			"rusil2ptab",
+			"rusil2ptab",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Attack Sortie",
@@ -62,7 +72,9 @@ local rusSorties = {
 	},
 
 	rus_sortie_partisan = {
-		"ruspo2partisan",
+		members = {
+			"ruspo2partisan",
+		},
 		silent = 1,
 		delay = 45,
 		weight = 1,

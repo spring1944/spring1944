@@ -1,6 +1,8 @@
 local usSorties = {
 	us_sortie_recon = {
-		"usl4",
+		members = {
+			"usl4",
+		},
 		delay = 15,
 		name = "Recon Sortie",
 		description = "1 x L-4 Grasshopper",
@@ -10,10 +12,12 @@ local usSorties = {
 	},
   
 	us_sortie_interceptor = {
-		"usp51dmustang",
-		"usp51dmustang",
-		"usp51dmustang",
-		"usp51dmustang",
+		members = {
+			"usp51dmustang",
+			"usp51dmustang",
+			"usp51dmustang",
+			"usp51dmustang",
+		},
 		delay = 15,
 		weight = 1,
 		name = "Interceptor Sortie",
@@ -24,8 +28,10 @@ local usSorties = {
 	},
   
 	us_sortie_fighter_bomber = {
-		"usp47thunderbolt",
-		"usp47thunderbolt",
+		members = {
+			"usp47thunderbolt",
+			"usp47thunderbolt",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Fighter-Bomber Sortie",
@@ -36,8 +42,10 @@ local usSorties = {
 	},
   
 	us_sortie_attack = {
-		"usp51dmustangga",
-		"usp51dmustangga",
+		members = {
+			"usp51dmustangga",
+			"usp51dmustangga",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Attack Sortie",
@@ -48,7 +56,9 @@ local usSorties = {
 	},
   
 	us_sortie_paratrooper = {
-		"usc47",
+		members = {
+			"usc47",
+		},
 		delay = 45,
 		weight = 1,
 		alwaysAttack = 1,

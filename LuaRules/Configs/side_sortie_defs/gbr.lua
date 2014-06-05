@@ -1,6 +1,8 @@
 local gbrSorties = {
 	gbr_sortie_recon = {
-		"gbrauster",
+		members = {
+			"gbrauster",
+		},
 		delay = 15,
 		name = "Recon Sortie",
 		description = "1 x TC Auster AOP Mk V",
@@ -10,10 +12,12 @@ local gbrSorties = {
 	},
   
 	gbr_sortie_interceptor = {
-		"gbrspitfiremkxiv",
-		"gbrspitfiremkxiv",
-		"gbrspitfiremkxiv",
-		"gbrspitfiremkxiv",
+		members = {
+			"gbrspitfiremkxiv",
+			"gbrspitfiremkxiv",
+			"gbrspitfiremkxiv",
+			"gbrspitfiremkxiv",
+		},
 		delay = 15,
 		weight = 1,
 		name = "Interceptor Sortie",
@@ -24,8 +28,10 @@ local gbrSorties = {
 	},
   
 	gbr_sortie_fighter_bomber = {
-		"gbrspitfiremkix",
-		"gbrspitfiremkix",
+		members = {
+			"gbrspitfiremkix",
+			"gbrspitfiremkix",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Fighter-Bomber Sortie",
@@ -36,8 +42,10 @@ local gbrSorties = {
 	},
   
 	gbr_sortie_attack = {
-		"gbrtyphoon",
-		"gbrtyphoon",
+		members = {
+			"gbrtyphoon",
+			"gbrtyphoon",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Attack Sortie",
@@ -48,7 +56,9 @@ local gbrSorties = {
 	},
   
 	gbr_sortie_glider_horsa = {
-		"gbrhorsa",
+		members = {
+			"gbrhorsa",
+		},
 		groundOnly = 1,
 		alwaysAttack = 1,
 		delay = 45,

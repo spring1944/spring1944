@@ -1,6 +1,8 @@
 local gerSorties = {
 	ger_sortie_recon = {
-		"gerfi156",
+		members = {
+			"gerfi156",
+		},
 		delay = 15,
 		name = "Recon Sortie",
 		description = "1 x Fi 156 Storch",
@@ -10,10 +12,12 @@ local gerSorties = {
 	},
   
 	ger_sortie_interceptor = {
-		"gerbf109",
-		"gerbf109",
-		"gerbf109",
-		"gerbf109",
+		members = {
+			"gerbf109",
+			"gerbf109",
+			"gerbf109",
+			"gerbf109",
+		},
 		delay = 15,
 		weight = 1,
 		name = "Interceptor Sortie",
@@ -24,10 +28,12 @@ local gerSorties = {
 	},
   
 	ger_sortie_fighter = {
-		"gerfw190",
-		"gerfw190",
-		"gerfw190",
-		"gerfw190",
+		members = {
+			"gerfw190",
+			"gerfw190",
+			"gerfw190",
+			"gerfw190",
+		},
 		delay = 30,
 		weight = 1,
 		name = "Air Superiority Fighter Sortie",
@@ -38,8 +44,10 @@ local gerSorties = {
 	},
   
 	ger_sortie_fighter_bomber = {
-		"gerfw190g",
-		"gerfw190g",
+		members = {
+			"gerfw190g",
+			"gerfw190g",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Fighter-Bomber Sortie",
@@ -50,9 +58,11 @@ local gerSorties = {
 	},
   
 	ger_sortie_attack = {
-		"gerju87g",
-		"gerju87g",
-		"gerju87g",
+		members = {
+			"gerju87g",
+			"gerju87g",
+			"gerju87g",
+		},
 		delay = 45,
 		weight = 1,
 		name = "Tankbuster Sortie",
@@ -63,7 +73,9 @@ local gerSorties = {
 	},
   
 	ger_sortie_flying_bomb = {
-		"gerv1",
+		members = {
+			"gerv1",
+		},
 		groundOnly = 1,
 		alwaysAttack = 1,
 		delay = 45,
