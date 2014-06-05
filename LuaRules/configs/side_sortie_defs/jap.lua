@@ -1,6 +1,8 @@
 local japSorties = {
 	jap_sortie_recon = {
-		"japki76",
+		members = {
+            "japki76",
+        },
 		delay=15,
 		name = "Recon Sortie",
 		description = "1 x Ki-76 Stella",
@@ -10,10 +12,12 @@ local japSorties = {
 		side = "JAP",
 	},
 	jap_sortie_interceptor = {
-		"japki43",
-		"japki43",
-		"japki43",
-		"japki43",
+		memebrs = {
+            "japki43",
+            "japki43",
+            "japki43",
+            "japki43",
+        },
 		delay=15,
 		weight=1,
 		name = "Intecreptor Sortie",
@@ -24,10 +28,12 @@ local japSorties = {
 		side = "JAP",
 	},
 	jap_sortie_fighter = {
-		"japki84",
-		"japki84",
-		"japki84",
-		"japki84",
+		members = {
+            "japki84",
+            "japki84",
+            "japki84",
+            "japki84",
+        },
 		delay=30,
 		weight=1,
 		name = "Air Superioroty Fighter Sortie",
@@ -38,8 +44,10 @@ local japSorties = {
 		side = "JAP",
 	},
 	jap_sortie_divebomber = {
-		"japki51",
-		"japki51",
+		members = {
+            "japki51",
+            "japki51",
+        },
 		delay=45,
 		weight=1,
 		name = "Dive Bomber Sortie",
@@ -50,8 +58,10 @@ local japSorties = {
 		side = "JAP",
 	},
 	jap_sortie_at = {
-		"japki102",
-		"japki102",
+		members = {
+            "japki102",
+            "japki102",
+        },
 		delay=45,
 		weight=1,
 		name = "Anti-Tank Sortie",

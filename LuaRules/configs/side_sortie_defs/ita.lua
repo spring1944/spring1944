@@ -1,6 +1,8 @@
 local itaSorties = {
 	ita_sortie_recon = {
-		"itaro37",
+		members = {
+            "itaro37",
+        },
 		delay = 15,
 		name = "Recon Sortie",
 		description = "1 x Ro.37",
@@ -10,9 +12,11 @@ local itaSorties = {
 		side = "ita",
 	},
 	ita_sortie_attack = {
-		"itafiatcr_42",
-		"itafiatcr_42",
-		"itafiatcr_42",
+		members = {
+            "itafiatcr_42",
+            "itafiatcr_42",
+            "itafiatcr_42",
+        },
 		weight = 1,
 		delay = 30,
 		name = "Ground attack sortie",
@@ -23,10 +27,12 @@ local itaSorties = {
 		side = "ita",
 	},
 	ita_sortie_fighter = {
-		"itareggiane2005",
-		"itareggiane2005",
-		"itareggiane2005",
-		"itareggiane2005",
+        members = {
+            "itareggiane2005",
+            "itareggiane2005",
+            "itareggiane2005",
+            "itareggiane2005",
+        },
 		weight = 1,
 		delay = 30,
 		name = "Air Superiority Fighter Sortie",
@@ -37,10 +43,12 @@ local itaSorties = {
 		side = "ita",
 	},
 	ita_sortie_interceptor = {
-		"itamc202",
-		"itamc202",
-		"itamc202",
-		"itamc202",
+		members = {
+            "itamc202",
+            "itamc202",
+            "itamc202",
+            "itamc202",
+        },
 		weight = 1,
 		delay = 15,
 		name = "Interceptor Sortie",
@@ -51,8 +59,10 @@ local itaSorties = {
 		side = "ita",
 	},
 	ita_sortie_fighter_bomber = {
-		"itamc205",
-		"itamc205",
+		members = {
+            "itamc205",
+            "itamc205",
+        },
 		delay = 45,
 		weight = 1,
 		name = "Fighter-Bomber Sortie",
