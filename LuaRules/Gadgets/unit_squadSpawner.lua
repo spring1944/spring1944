@@ -78,7 +78,7 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 	local xSpace, zSpace = -5, -5
 
 	-- Spawn the units
-	for i, unitName in ipairs(squadDef) do
+	for i, unitName in ipairs(squadDef.members) do
 		local newUnitID = CreateUnit(unitName, px + xSpace,py, pz + zSpace, unitHeading, teamID)
 		if newUnitID then
 			squad_units[#squad_units+1] = newUnitID

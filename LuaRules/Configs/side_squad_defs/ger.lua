@@ -5,12 +5,14 @@ local gerDefs = {
 
 	["ger_platoon_hq"] =
 	{
-		"gerrifle",
-		"germp40",
-		"gerrifle",
-		"gerrifle",
-		"germp40",
-		"gerrifle",
+		members = {
+			"gerrifle",
+			"germp40",
+			"gerrifle",
+			"gerrifle",
+			"germp40",
+			"gerrifle",
+		},
 		name = "Rifle Squad",
 		description = "4 x Kar 98K Rifle, 2 x MP40 SMG: Small Combat Squad",
 		buildCostMetal = 610,
@@ -21,16 +23,18 @@ local gerDefs = {
 	
 	["ger_platoon_rifle"] = 
 	{
-		"germp40",
-		"germp40",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"gerrifle",
-		"germg42",
+		members = {
+			"germp40",
+			"germp40",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"germg42",
+		},
 		name = "Kar 98K Rifle Platoon",
 		description = "7 x Kar 98K Rifle, 2 x MP40 SMG, 1 x MG42 Machinegun: Long-Range Combat Platoon",
 		buildCostMetal = 1830,
@@ -41,18 +45,20 @@ local gerDefs = {
 	
 	["ger_platoon_assault"] = 
 	{
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"germp40",
-		"gerpanzerfaust",
-		"gerpanzerfaust",
+		members = {
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"germp40",
+			"gerpanzerfaust",
+			"gerpanzerfaust",
+		},
 		name = "Assault Platoon",
 		description = "10 x MP40 SMG, 2 x Panzerfaust Anti-Tank: Close-Quarters Assault Infantry",
 		buildCostMetal = 1800,
@@ -63,10 +69,12 @@ local gerDefs = {
 	
 	["ger_platoon_mg"] = 
 	{
-		"germg42",
-		"germg42",
-		"germg42",
-		"gerobserv",
+		members = {
+			"germg42",
+			"germg42",
+			"germg42",
+			"gerobserv",
+		},
 		name = "Machinegun Squad",
 		description = "3 x MG42 Machinegun, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1350,
@@ -77,8 +85,10 @@ local gerDefs = {
 	
 	["ger_platoon_sniper"] = 
 	{
-		"gersniper",
-		"gerobserv",
+		members = {
+			"gersniper",
+			"gerobserv",
+		},
 		name = "Sniper Team",
 		description = "1 x Kar 98K Sniper, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1250,
@@ -89,10 +99,12 @@ local gerDefs = {
 	
 	["ger_platoon_mortar"] = 
 	{
-		"gergrw34",
-		"gerobserv",
-		"gergrw34",
-		"gergrw34",
+		members = {
+			"gergrw34",
+			"gerobserv",
+			"gergrw34",
+			"gergrw34",
+		},
 		name = "GrW 34 Mortar Team",
 		description = "3 x GrW 34 Mortar, 1 x Scout: Heavy Infantry Fire Support",
 		buildCostMetal = 2260,
@@ -103,9 +115,11 @@ local gerDefs = {
 	
 	["ger_platoon_at"] = 
 	{
-		"gerpanzerfaust",
-		"gerpanzerfaust",
-		"gerpanzerschrek",
+		members = {
+			"gerpanzerfaust",
+			"gerpanzerfaust",
+			"gerpanzerschrek",
+		},
 		name = "Anti-Tank Squad",
 		description = "2 x Panzerfaust, 1 x Panzerschrek: Anti-Tank Infantry",
 		buildCostMetal = 900,
@@ -116,9 +130,11 @@ local gerDefs = {
 	
 	["ger_platoon_scout"] = 
 	{
-		"gerobserv",
-		"gerobserv",
-		"gerobserv",
+		members = {
+			"gerobserv",
+			"gerobserv",
+			"gerobserv",
+		},
 		name = "Scout Team",
 		description = "3 x Scout: Reconaissance",
 		buildCostMetal = 470,
@@ -128,8 +144,10 @@ local gerDefs = {
 	},  
 	["ger_platoon_infgun"] =
 	{
-		"gerobserv",
-		"gerleig18",
+		members = {
+			"gerobserv",
+			"gerleig18",
+		},
 		name = "Infantry Gun Team",
 		description = "1 x 7.5cm leIG 18, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1320,

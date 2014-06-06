@@ -5,12 +5,14 @@ local gbrDefs = {
 
     ["gbr_platoon_hq"] =
 	{
-		"gbrbren",
-		"gbrsten",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrsten",
-		"gbrsten",
+		members = {
+			"gbrbren",
+			"gbrsten",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrsten",
+			"gbrsten",
+		},
 		name = "HQ Combat Squad",
 		description = "2 x Enfield Rifle, 3 x Sten SMG, 1 x Bren LMG: Small Combat Squad",
 		buildCostMetal = 800,
@@ -21,18 +23,20 @@ local gbrDefs = {
 	
 	 ["gbr_platoon_rifle"] =
 	{
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrrifle",
-		"gbrsten",
-		"gbrsten",
+		members = {
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrsten",
+			"gbrsten",
+		},
 		name = "Enfield Rifle Platoon",
 		description = "10 x Enfield Rifle, 2 x Sten SMG: Long-Range Combat Platoon",
 		buildCostMetal = 2140,
@@ -43,17 +47,19 @@ local gbrDefs = {
 
 	["gbr_platoon_assault"] =
 	{
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrsten",
-		"gbrcommando",
+		members = {
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",
+			"gbrcommando",
+		},
 		name = "Assault Platoon",
 		description = "10 x STEN SMG, 1 x Commando: Close-Quarters Assault Infantry",
 		buildCostMetal = 1960,
@@ -64,10 +70,12 @@ local gbrDefs = {
 
 	["gbr_platoon_mg"] =
 	{
-		"gbrbren",
-		"gbrvickers",
-		"gbrbren",
-		"gbrobserv",
+		members = {
+			"gbrbren",
+			"gbrvickers",
+			"gbrbren",
+			"gbrobserv",
+		},
 		name = "Machinegun Squad",
 		description = "1 x Vickers, 2 x Bren Machineguns, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1050,
@@ -78,8 +86,10 @@ local gbrDefs = {
 
 	["gbr_platoon_sniper"] =
 	{
-		"gbrsniper",
-		"gbrobserv",
+		members = {
+			"gbrsniper",
+			"gbrobserv",
+		},
 		name = "Sniper Team",
 		description = "1 x Enfield Sniper, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1300,
@@ -90,10 +100,12 @@ local gbrDefs = {
 
 	["gbr_platoon_mortar"] =
 	{
-		"gbr3inmortar",
-		"gbr3inmortar",
-		"gbr3inmortar",
-		"gbrobserv",
+		members = {
+			"gbr3inmortar",
+			"gbr3inmortar",
+			"gbr3inmortar",
+			"gbrobserv",
+		},
 		name = "3-inch Mortar Team",
 		description = "3 x Mortar, 1 x Scout: Heavy Infantry Fire Support",
 		buildCostMetal = 2400,
@@ -104,9 +116,11 @@ local gbrDefs = {
 
 	["gbr_platoon_at"] =
 	{
-		"gbrpiat",
-		"gbrpiat",
-		"gbrpiat",
+		members = {
+			"gbrpiat",
+			"gbrpiat",
+			"gbrpiat",
+		},
 		name = "PIAT Anti-Tank Squad",
 		description = "3 x PIAT: Anti-Tank Infantry",
 		buildCostMetal = 860,
@@ -117,9 +131,11 @@ local gbrDefs = {
 
 	["gbr_platoon_scout"] =
 	{
-		"gbrobserv",
-		"gbrobserv",
-		"gbrobserv",
+		members = {
+			"gbrobserv",
+			"gbrobserv",
+			"gbrobserv",
+		},
 		name = "Scout Team",
 		description = "3 x Scout: Reconaissance",
 		buildCostMetal = 580,
@@ -130,7 +146,9 @@ local gbrDefs = {
 	
 	["gbr_platoon_commando"] =
 	{
-		"gbrcommandoc",
+		members = {
+			"gbrcommandoc",
+		},
 		name = "Commando Pathfinder Squad",
 		description = "1 x Commando Pathfinder: Special-Ops, Can Call Airdrop",
 		buildCostMetal = 970,
@@ -141,12 +159,14 @@ local gbrDefs = {
 	
 	["gbr_platoon_commando_lz"] =
 	{
-		"gbrcommando",
-		"gbrcommando",
-		"gbrcommando",
-		"gbrcommando",
-		"gbrcommando",
-		"gbrcommando",
+		members = {
+			"gbrcommando",
+			"gbrcommando",
+			"gbrcommando",
+			"gbrcommando",
+			"gbrcommando",
+			"gbrcommando",
+		},
 		name = "Commando Squad",
 		description = "6 x Commando: Special-Ops Infantry",
 		buildCostMetal = 1800,
@@ -157,27 +177,29 @@ local gbrDefs = {
 	
 	["gbr_platoon_glider_horsa"] =
 	{
-		"gbrcommando",
-		"gbrcommando",
-		"gbrcommando",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrpararifle",
-		"gbrparasten",
-		"gbrparasten",
-		"gbrpara3inmortar",
-		"gbrparaobserv",
-		"gbrparabren",
-		"gbrparabren",
-		"gbrparabren",
-		"gbrparapiat",
-		"gbrparapiat",
-		"gbrparam8gun",
+		members = {
+			"gbrcommando",
+			"gbrcommando",
+			"gbrcommando",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrpararifle",
+			"gbrparasten",
+			"gbrparasten",
+			"gbrpara3inmortar",
+			"gbrparaobserv",
+			"gbrparabren",
+			"gbrparabren",
+			"gbrparabren",
+			"gbrparapiat",
+			"gbrparapiat",
+			"gbrparam8gun",
+		},
 		name = "Glider Platoon",
 		description = "10 x STEN SMG, 1 x Commando: Close-Quarters Assault Infantry",
 		buildCostMetal = 4000,
