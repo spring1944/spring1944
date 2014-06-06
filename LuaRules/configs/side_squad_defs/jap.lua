@@ -1,16 +1,18 @@
 local japDefs = {
 	["jap_platoon_rifle"] =
 	{
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japtype100smg",
-		"japkneemortar",
+		members = {
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japtype100smg",
+			"japkneemortar",
+		},
 		name = "Arisaka Rifle Platoon",
 		description = "8 x Arisaka Type 99 Rifle, 1 x Type 100 SMG, 1 x Knee Mortar: Long-Range Combat Platoon",
 		buildCostMetal = 1500,
@@ -20,12 +22,14 @@ local japDefs = {
 	},
 	["jap_platoon_hq"] =
 	{
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japrifle",
-		"japtype100smg",
+		members = {
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japrifle",
+			"japtype100smg",
+		},
 		name = "Rifle Squad",
 		description = "5 x Arisaka Type 99, 1 x Type 100 SMG: Small Combat Squad",
 		buildCostMetal = 600,
@@ -35,16 +39,18 @@ local japDefs = {
 	},
 	["jap_platoon_assault"] =
 	{
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype100smg",
-		"japtype99lmg",
+		members = {
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype100smg",
+			"japtype99lmg",
+		},
 		name = "Assault Platoon",
 		description = "9 x Type 99 SMG, 1 x Type 99 LMG: Close-Quarters Assault Infantry",
 		buildCostMetal = 1400,
@@ -54,10 +60,12 @@ local japDefs = {
 	},
 	["jap_platoon_mg"] =
 	{
-		"japtype99lmg",
-		"japtype99lmg",
-		"japtype92hmg",
-		"japobserv",
+		members = {
+			"japtype99lmg",
+			"japtype99lmg",
+			"japtype92hmg",
+			"japobserv",
+		},
 		name = "Machinegun Squad",
 		description = "2 x Type 99 Machinegun, 1 x Type 98 Heavy Machinegun, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1200,
@@ -67,8 +75,10 @@ local japDefs = {
 	},
 	["jap_platoon_sniper"] =
 	{
-		"japsniper",
-		"japobserv",
+		members = {
+			"japsniper",
+			"japobserv",
+		},
 		name = "Sniper Team",
 		description = "1 x Arisaka Type 99 Sniper, 1 x Spotter: Long-Range Fire Support",
 		buildCostMetal = 1140,
@@ -78,10 +88,12 @@ local japDefs = {
 	},
 	["jap_platoon_mortar"] =
 	{
-		"japmortar",
-		"japmortar",
-		"japmortar",
-		"japobserv",
+		members = {
+			"japmortar",
+			"japmortar",
+			"japmortar",
+			"japobserv",
+		},
 		name = "Mortar Team",
 		description = "3 x Type 97 81mm Mortar, 1 x Spotter: Heavy Infantry Fire Support",
 		buildCostMetal = 1580,
@@ -91,9 +103,11 @@ local japDefs = {
 	},
 	["jap_platoon_at"] =
 	{
-		"japtype4at",
-		"japtype3at",
-		"japtype3at",
+		members = {
+			"japtype4at",
+			"japtype3at",
+			"japtype3at",
+		},
 		name = "Anti-Tank Squad",
 		description = "2 x Type 3 AT Grenade, 1 x Type 4 Rocket Launcher: Anti-Tank Infantry",
 		buildCostMetal = 800,

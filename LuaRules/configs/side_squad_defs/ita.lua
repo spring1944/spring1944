@@ -5,12 +5,14 @@ local itaDefs = {
 	
 	["ita_platoon_hq"] =
 	{
-		"itarifle",
-		"itam38",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
+		members = {
+			"itarifle",
+			"itam38",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+		},
 		name = "Rifle Squad",
 		description = "5 x Carcano M91 Rifle, 1 x M38 SMG: Small Combat Squad",
 		buildCostMetal = 580,
@@ -21,16 +23,18 @@ local itaDefs = {
 	
 	["ita_platoon_rifle"] = 
 	{
-		"itasoloat",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itarifle",
-		"itabreda30",
+		members = {
+			"itasoloat",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itarifle",
+			"itabreda30",
+		},
 		name = "Carcano Rifle Platoon",
 		description = "8 x Carcano M91 Rifle, 1 x Solothurn Anti-Tank, 1 x Breda 30 Light Machinegun: Long-Range Combat Platoon",
 		buildCostMetal = 1410,
@@ -41,16 +45,18 @@ local itaDefs = {
 	
 	["ita_platoon_assault"] = 
 	{
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itam38",
-		"itasoloat",
+		members = {
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itam38",
+			"itasoloat",
+		},
 		name = "Assault Platoon",
 		description = "9 x M38 SMG, 1 x Solothurn Anti-Tank: Close-Quarters Assault Infantry",
 		buildCostMetal = 1400,
@@ -61,10 +67,12 @@ local itaDefs = {
 	
 	["ita_platoon_mg"] = 
 	{
-		"itamg",
-		"itamg",
-		"itabreda30",
-		"itaobserv",
+		members = {
+			"itamg",
+			"itamg",
+			"itabreda30",
+			"itaobserv",
+		},
 		name = "Machinegun Squad",
 		description = "2 x M37 Machinegun, 1 x Breda 30 Light Machinegun, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1200,
@@ -75,8 +83,10 @@ local itaDefs = {
 	
 	["ita_platoon_sniper"] = 
 	{
-		"itasniper",
-		"itaobserv",
+		members = {
+			"itasniper",
+			"itaobserv",
+		},
 		name = "Sniper Team",
 		description = "1 x Carcano M91 Sniper, 1 x Spotter: Long-Range Fire Support",
 		buildCostMetal = 1140,
@@ -87,10 +97,12 @@ local itaDefs = {
 	
 	["ita_platoon_mortar"] = 
 	{
-		"itamortar",
-		"itaobserv",
-		"itamortar",
-		"itamortar",
+		members = {
+			"itamortar",
+			"itaobserv",
+			"itamortar",
+			"itamortar",
+		},
 		name = "Mortar Team",
 		description = "3 x 81/14 Mortar, 1 x Spotter: Heavy Infantry Fire Support",
 		buildCostMetal = 1580,
@@ -101,10 +113,12 @@ local itaDefs = {
 	
 	["ita_platoon_at"] = 
 	{
-		"itasoloat",
-		"itasoloat",
-		"itasoloat",
-		"itaelitesoloat",
+		members = {
+			"itasoloat",
+			"itasoloat",
+			"itasoloat",
+			"itaelitesoloat",
+		},
 		name = "Anti-Tank Squad",
 		description = "3 x Solothurn + 1 x Elitesolothurn  : Anti-Tank Infantry",
 		buildCostMetal = 800,
@@ -114,8 +128,10 @@ local itaDefs = {
 	},
 	["ita_platoon_infgun"] =
 	{
-		"itacannone65",
-		"itaobserv",
+		members = {
+			"itacannone65",
+			"itaobserv",
+		},
 		name = "Infantry Gun Team",
 		description = "1 x Cannone da 65/17, 1 x Spotter: Long-Range Fire Support",
 		buildCostMetal = 1150,
@@ -125,19 +141,21 @@ local itaDefs = {
 	},
 	["ita_platoon_bersaglieri"] =
 	{
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglieririfle",
-		"itabersaglierim38",
-		"itabersaglierim38",
-		"itaelitesoloat",
-		"itabreda30",
-		"itaobserv",
+		members = {
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglieririfle",
+			"itabersaglierim38",
+			"itabersaglierim38",
+			"itaelitesoloat",
+			"itabreda30",
+			"itaobserv",
+		},
 		name = "Bersaglieri Combat Platoon",
 		description = "8 x Bersaglieri Rifles, 2 x Bersaglieri SMG Troopers, 1 x Elitesolothurn, 1 x Bersaglieri Machinegunner, 1 x Bersaglieri Scout: Bersaglieri Assault Marksmen",
 		buildCostMetal = 2000,
@@ -147,16 +165,18 @@ local itaDefs = {
 	},
   	["ita_platoon_carabinieri"] =
 	{
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
-		"itacarabinieri",
+		members = {
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+			"itacarabinieri",
+		},
 		name = "Black Brigade Anti-Partisan Platoon",
 		description = "10 x Carabinieri: Anti-Partisan Platoon",
 		buildCostMetal = 1500,
@@ -166,20 +186,22 @@ local itaDefs = {
 	},
 	["ita_platoon_alpini"] =
 	{
-		"itaalpinirifle",
-		"itaalpinirifle",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itaalpinifnab43",
-		"itamortar",
-		"itaalpinirifle",
-		"itaalpinirifle",
-		"itaobserv",
+		members = {
+			"itaalpinirifle",
+			"itaalpinirifle",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itaalpinifnab43",
+			"itamortar",
+			"itaalpinirifle",
+			"itaalpinirifle",
+			"itaobserv",
+		},
 		name = "Alpini Mountain Division",
 		description = "4 x Alpini Rifles, 8 x Alpini SMG Troopers, 1 x Alpini Mortar , 1 x Alpini Scout: Alpini Mountain Squad",
 		buildCostMetal = 2300,

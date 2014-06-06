@@ -12,7 +12,7 @@ local japSorties = {
 		side = "JAP",
 	},
 	jap_sortie_interceptor = {
-		memebrs = {
+		members = {
 			"japki43",
 			"japki43",
 			"japki43",
