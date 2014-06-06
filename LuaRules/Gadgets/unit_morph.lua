@@ -487,10 +487,12 @@ function TransferBuildQueue(srcUnitID, dstUnitID, dstUnitDef)
   queue = Spring.GetCommandQueue(srcUnitID)
   if queue ~= nil then
     for _, cmd in ipairs(queue) do
-      local opts = cmd.options 
-      local alt, ctrl, shift, right = opts.alt, opts.ctrl, opts.shift, opts.right
-      opts = {(alt and "alt"), (shift and "shift"), (ctrl and "ctrl"), (right and "right")}
-      Spring.GiveOrderToUnit(dstUnitID, cmd.id, cmd.params, opts)
+      if not isAMorphCmdID[cmd.id] then
+        local opts = cmd.options 
+        local alt, ctrl, shift, right = opts.alt, opts.ctrl, opts.shift, opts.right
+        opts = {(alt and "alt"), (shift and "shift"), (ctrl and "ctrl"), (right and "right")}
+        Spring.GiveOrderToUnit(dstUnitID, cmd.id, cmd.params, opts)
+      end
     end
   end
   
