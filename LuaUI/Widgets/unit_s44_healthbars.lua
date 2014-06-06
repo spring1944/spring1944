@@ -747,7 +747,10 @@ do
       unitDefID = GetUnitDefID(unitID)
       unitDef   = UnitDefs[unitDefID or -1]
       if (unitDef) then
-        DrawUnitInfos(unitID, unitDefID, unitDef)
+        local cp = unitDef.customParams
+        if not cp or not cp.isupgrade then
+          DrawUnitInfos(unitID, unitDefID, unitDef)
+        end
       end
     end
 
