@@ -16,7 +16,7 @@ function gadget:GetInfo()
   return {
     name      = "UnitMorph",
     desc      = "Adds unit morphing",
-    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi, Nemo)",
+    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi, Nemo, ashdnazg)",
     date      = "Jan, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
@@ -111,8 +111,8 @@ local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
 
-local upgradeDefs = {}
-local upgradeUnits = {}
+local upgradeDefs = {} -- mapping between the auto generated units and the morph defs.
+local upgradeUnits = {} -- similar to morphUnits, all factories being upgraded at the moment. made global in Initialize()
 
 --// per team techlevel and owned MorphReq. units table
 local teamTechLevel = {}
@@ -465,7 +465,7 @@ local function StopMorph(unitID, morphData)
   end
 end
 
-function TransferBuildQueue(srcUnitID, dstUnitID, dstUnitDef)
+function TransferFactoryQueues(srcUnitID, dstUnitID, dstUnitDef)
   local queue = Spring.GetFullBuildQueue(srcUnitID)
   local dstCanBuild = {}
   for _, unitDefID in ipairs(dstUnitDef.buildOptions) do
@@ -620,7 +620,7 @@ local function FinishMorph(unitID, morphData)
 
   Spring.SetUnitBlocking(newUnit, true)
   if udDst.isFactory and ud.isFactory then
-    TransferBuildQueue(unitID, newUnit, udDst)
+    TransferFactoryQueues(unitID, newUnit, udDst)
   end
   Spring.DestroyUnit(unitID, false, true) -- selfd = false, reclaim = true
 end
@@ -770,6 +770,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
   if upgradeDef then
     local builderDefID = Spring.GetUnitDefID(builderID)
     FactoryStartUpgrade(builderID, builderDefID, teamID, upgradeDef, unitID)
+    Spring.SetUnitNoSelect(unitID, true)
   end
 end
 
