@@ -16,7 +16,7 @@ function gadget:GetInfo()
   return {
     name      = "UnitMorph",
     desc      = "Adds unit morphing",
-    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi, Nemo)",
+    author    = "trepan (improved by jK, Licho, aegis, CarRepairer, adapted to S44 by yuritch, Tobi, FLOZi, Nemo, ashdnazg)",
     date      = "Jan, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
@@ -111,6 +111,9 @@ local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
 
+local upgradeDefs = {} -- mapping between the auto generated units and the morph defs.
+local upgradeUnits = {} -- similar to morphUnits, all factories being upgraded at the moment. made global in Initialize()
+
 --// per team techlevel and owned MorphReq. units table
 local teamTechLevel = {}
 local teamReqUnits  = {}
@@ -160,6 +163,12 @@ local function DefCost(paramName, udSrc, udDst)
   return math.floor(cost)
 end
 
+
+local function HideFakeUnits(unitID, morphDef)
+    local UnitCmdDesc = Spring.FindUnitCmdDesc(unitID,-morphDef.upgradeUnit)
+    Spring.EditUnitCmdDesc(unitID,UnitCmdDesc,{hidden=true})
+end
+
 local function BuildMorphDef(udSrc, morphData)
   local udDst = UnitDefNames[defNamesL[string.lower(morphData.into)] or -1]
   if (not udDst) then
@@ -197,6 +206,10 @@ local function BuildMorphDef(udSrc, morphData)
 
     --newData.cmd     = CMD_MORPH      + MAX_MORPH
 	newData.cmd = GG.CustomCommands.GetCmdID("CMD_MORPH_" .. newData.into)
+    if udSrc.isFactory then
+        newData.upgradeUnit = UnitDefNames["morph_" .. udSrc.name .. "_" .. morphData.into].id
+        upgradeDefs[newData.upgradeUnit] = newData
+    end
 	isAMorphCmdID[newData.cmd] = true
     --newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
 	newData.stopCmd = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP_" .. newData.into)
@@ -222,11 +235,17 @@ local function ValidateMorphDefs(mds)
       newDefs[udSrc.id] = {}
       if (morphData.into) then
         local morphDef = BuildMorphDef(udSrc, morphData)
-        if (morphDef) then newDefs[udSrc.id][morphDef.cmd] = morphDef end
+        if (morphDef) then 
+          newDefs[udSrc.id][morphDef.cmd] = morphDef 
+          newDefs[udSrc.id][morphDef.stopCmd] = morphDef 
+        end
       else
         for _,morphData in pairs(morphData) do
           local morphDef = BuildMorphDef(udSrc, morphData)
-          if (morphDef) then newDefs[udSrc.id][morphDef.cmd] = morphDef end
+          if (morphDef) then 
+            newDefs[udSrc.id][morphDef.cmd] = morphDef 
+            newDefs[udSrc.id][morphDef.stopCmd] = morphDef 
+          end
         end
       end
     end
@@ -446,23 +465,55 @@ local function StopMorph(unitID, morphData)
   end
 end
 
+function TransferFactoryQueues(srcUnitID, dstUnitID, dstUnitDef)
+  local queue = Spring.GetFullBuildQueue(srcUnitID)
+  local dstCanBuild = {}
+  for _, unitDefID in ipairs(dstUnitDef.buildOptions) do
+    dstCanBuild[unitDefID] = true
+  end
+  
+  
+  if queue and dstCanBuild then
+    for _,buildPair in ipairs(queue) do
+      local unitDefID, count = next(buildPair, nil)
+      if dstCanBuild[unitDefID] then
+        for i = 1, count do
+          Spring.GiveOrderToUnit(dstUnitID,CMD.INSERT,{-1,-unitDefID, 0},{"ctrl", "alt"})
+        end
+      end
+    end
+  end
+
+  queue = Spring.GetCommandQueue(srcUnitID)
+  if queue ~= nil then
+    for _, cmd in ipairs(queue) do
+      if not isAMorphCmdID[cmd.id] then
+        local opts = cmd.options 
+        local alt, ctrl, shift, right = opts.alt, opts.ctrl, opts.shift, opts.right
+        opts = {(alt and "alt"), (shift and "shift"), (ctrl and "ctrl"), (right and "right")}
+        Spring.GiveOrderToUnit(dstUnitID, cmd.id, cmd.params, opts)
+      end
+    end
+  end
+  
+end
 
 local function FinishMorph(unitID, morphData)
   local udDst = UnitDefs[morphData.def.into]
-  local ud = UnitDefs[unitID]
+  local ud = UnitDefs[Spring.GetUnitDefID(unitID)]
   local defName = udDst.name
   local unitTeam = morphData.teamID
   local px, py, pz = Spring.GetUnitBasePosition(unitID)
   local h = Spring.GetUnitHeading(unitID)
   Spring.SetUnitBlocking(unitID, false)
   morphUnits[unitID] = nil
+  upgradeUnits[unitID] = nil
 
   local oldHealth,oldMaxHealth,paralyzeDamage,captureProgress,buildProgress = Spring.GetUnitHealth(unitID)
   local isBeingBuilt = false
   if buildProgress < 1 then
     isBeingBuilt = true
   end
-
   local newUnit
   if udDst.speed == 0 and udDst.isBuilder or defName == "russtorage" then
   --if udDst.isBuilding then
@@ -568,6 +619,9 @@ local function FinishMorph(unitID, morphData)
   SendToUnsynced("unit_morph_finished", unitID, newUnit)
 
   Spring.SetUnitBlocking(newUnit, true)
+  if udDst.isFactory and ud.isFactory then
+    TransferFactoryQueues(unitID, newUnit, udDst)
+  end
   Spring.DestroyUnit(unitID, false, true) -- selfd = false, reclaim = true
 end
 
@@ -612,6 +666,7 @@ function gadget:Initialize()
 
   --// make it global for unsynced access via SYNCED
   _G.morphUnits = morphUnits
+  _G.upgradeUnits = upgradeUnits
   _G.morphDefs  = morphDefs
   _G.extraUnitMorphDefs  = extraUnitMorphDefs
 
@@ -651,7 +706,9 @@ function gadget:Initialize()
           if (not cmdDescID) then
             AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTechLevel[teamID])
           end
-
+          if isFactory(unitDefID) then
+            HideFakeUnits(unitID, morphDef)
+          end
           useXPMorph = (morphDef.xp>0) or useXPMorph
         end
       end
@@ -693,7 +750,7 @@ end
 --------------------------------------------------------------------------------
 
 
-function gadget:UnitCreated(unitID, unitDefID, teamID)
+function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
   local morphDefSet = morphDefs[unitDefID]
   if (morphDefSet) then
     local useXPMorph = false
@@ -701,9 +758,19 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
       if (morphDef) then
     	AddMorphCmdDesc(unitID, unitDefID, teamID, morphDef, teamTechLevel[teamID])
         useXPMorph = (morphDef.xp>0) or useXPMorph
+        if isFactory(unitDefID) then
+            HideFakeUnits(unitID, morphDef)
+        end
       end
     end
     if (useXPMorph) then XpMorphUnits[#XpMorphUnits+1] = {id=unitID,defID=unitDefID,team=teamID} end
+  end
+  
+  local upgradeDef = upgradeDefs[unitDefID]
+  if upgradeDef then
+    local builderDefID = Spring.GetUnitDefID(builderID)
+    FactoryStartUpgrade(builderID, builderDefID, teamID, upgradeDef, unitID)
+    Spring.SetUnitNoSelect(unitID, true)
   end
 end
 
@@ -725,12 +792,23 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
   end
 end
 
+function gadget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
+  if upgradeDefs[unitDefID] then
+    FinishMorph(factID, upgradeUnits[factID])
+    Spring.DestroyUnit(unitID, false, true)
+  end
+end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
   if (morphUnits[unitID]) then
     StopMorph(unitID,morphUnits[unitID])
     morphUnits[unitID] = nil
   end
+  if (upgradeUnits[unitID]) then
+    FactoryStopUpgrade(unitID,upgradeUnits[unitID])
+    upgradeUnits[unitID] = nil
+  end
+  
   local bfrTechLevel = teamTechLevel[teamID] or 0
 
   RemoveFactory(unitID, unitDefID, teamID)
@@ -926,6 +1004,44 @@ function gadget:GameFrame(n)
       morphUnits[unitID] = nil
     end
   end
+  for _, morphData in pairs(upgradeUnits) do
+    _,_,_,_,morphData.progress = Spring.GetUnitHealth(morphData.fakeUnit)
+  end
+end
+
+
+function FactoryQueueUpgrade(unitID, morphDef)
+    Spring.GiveOrderToUnit(unitID,CMD.INSERT,{-1,-morphDef.upgradeUnit,0},{"ctrl", "alt"})
+    local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
+    if (cmdDescID) then
+        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
+    end
+end
+
+function FactoryStartUpgrade(unitID, unitDefID, teamID, morphDef, fakeUnitID)
+    local upgradeData = {def = morphDef,
+                         progress = 0.0,
+                         teamID = teamID,
+                         fakeUnit = fakeUnitID}
+    local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
+    if (cmdDescID) then
+        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
+    end
+    SendToUnsynced("unit_morph_start", unitID, unitDefID, morphDef.cmd)
+    upgradeUnits[unitID] = upgradeData
+end
+
+function FactoryStopUpgrade(unitID, morphDef)
+    local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.stopCmd)
+    if (cmdDescID) then
+      Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.cmd, name=morphDef.name, type = CMDTYPE.ICON})
+    end
+    
+    Spring.GiveOrderToUnit(unitID, CMD.REMOVE,{-morphDef.upgradeUnit},{"ctrl", "alt"})
+    
+    upgradeUnits[unitID] = nil
+    
+    SendToUnsynced("unit_morph_stop", unitID)
 end
 
 
@@ -956,9 +1072,11 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 		(CheckMorphPlace(unitID, unitDefID, teamID, morphDef)) )
     then
       if (isFactory(unitDefID)) then
-        --// the factory cai is broken and doesn't call CommandFallback(),
-        --// so we have to start the morph here
-        StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
+        if cmdID == morphDef.stopCmd then
+          FactoryStopUpgrade(unitID, morphDef)
+        else
+          FactoryQueueUpgrade(unitID, morphDef)
+        end
         return false
       else
         return true
@@ -1055,6 +1173,7 @@ local oldFrame = 0        --//used to save bandwidth between unsynced->LuaUI
 local drawProgress = true --//a widget can do this job too (see healthbars)
 
 local morphUnits
+local upgradeUnits
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -1149,7 +1268,7 @@ function gadget:Update()
   local frame = spGetGameFrame()
   if (frame>oldFrame) then
     oldFrame = frame
-    if snext(SYNCED.morphUnits) then
+    if snext(SYNCED.morphUnits) or snext(SYNCED.upgradeUnits) then
       local useLuaUI_ = Script.LuaUI('MorphUpdate')
       if (useLuaUI_~=useLuaUI) then --//Update Callins on change
         drawProgress = not Script.LuaUI('MorphDrawProgress')
@@ -1161,17 +1280,28 @@ function gadget:Update()
         local readTeam, spec, specFullView = nil,GetSpectatingState()
         if (specFullView)
           then readTeam = Script.ALL_ACCESS_TEAM
-          else readTeam = GetLocalTeamID() end
-        CallAsTeam({ ['read'] = readTeam }, function()
-          for unitID, morphData in spairs(SYNCED.morphUnits) do
-            if (unitID and morphData)and(IsUnitVisible(unitID)) then
-              morphTable[unitID] = {progress=morphData.progress, into=morphData.def.into}
+          else readTeam = GetLocalTeamID() 
+        end
+        if SYNCED.morphUnits then
+          CallAsTeam({ ['read'] = readTeam }, function()
+            for unitID, morphData in spairs(SYNCED.morphUnits) do
+              if (unitID and morphData)and(IsUnitVisible(unitID)) then
+                morphTable[unitID] = {progress=morphData.progress, into=morphData.def.into}
+              end
             end
-          end
-        end)
+          end)
+        end
+        if SYNCED.upgradeUnits then
+          CallAsTeam({ ['read'] = readTeam }, function()
+            for unitID, morphData in spairs(SYNCED.upgradeUnits) do
+              if (unitID and morphData)and(IsUnitVisible(unitID)) then
+                morphTable[unitID] = {progress=morphData.progress, into=morphData.def.into}
+              end
+            end
+          end)
+        end
         Script.LuaUI.MorphUpdate(morphTable)
       end
-
     end
   end
 end
@@ -1259,10 +1389,13 @@ end
 function gadget:DrawWorld()
   if (not morphUnits) then
     morphUnits = SYNCED.morphUnits
-    if (not morphUnits) then return end
   end
-
-  if (not snext(morphUnits)) then
+  
+  if (not upgradeUnits) then
+    upgradeUnits = SYNCED.upgradeUnits
+  end
+  
+  if ((morphUnits and not snext(morphUnits)) and (upgradeUnits and not snext(upgradeUnits))) then
     return --//no morphs to draw
   end
 
@@ -1278,14 +1411,24 @@ function gadget:DrawWorld()
   else
     readTeam = GetLocalTeamID()
   end
-
-  CallAsTeam({ ['read'] = readTeam }, function()
-    for unitID, morphData in spairs(morphUnits) do
-      if (unitID and morphData)and(IsUnitVisible(unitID)) then
-        DrawMorphUnit(unitID, morphData,readTeam)
+  if morphUnits then
+    CallAsTeam({ ['read'] = readTeam }, function()
+      for unitID, morphData in spairs(morphUnits) do
+        if (unitID and morphData)and(IsUnitVisible(unitID)) then
+          DrawMorphUnit(unitID, morphData,readTeam)
+        end
       end
-    end
-  end)
+    end)
+  end
+  if upgradeUnits then
+    CallAsTeam({ ['read'] = readTeam }, function()
+      for unitID, morphData in spairs(upgradeUnits) do
+        if (unitID and morphData)and(IsUnitVisible(unitID)) then
+          DrawMorphUnit(unitID, morphData,readTeam)
+        end
+      end
+    end)
+  end
   glDepthTest(false)
   glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 end

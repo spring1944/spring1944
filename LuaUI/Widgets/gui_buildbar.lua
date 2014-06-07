@@ -371,6 +371,7 @@ end
 -- DRAWSCREEN
 -------------------------------------------------------------------------------
 
+
 function widget:DrawScreen()
   SetupDimensions(#facs)
   SetupSubDimensions()
@@ -427,16 +428,15 @@ function widget:DrawScreen()
       local buildList   = facInfo.buildList
       local buildQueue  = GetBuildQueue(facInfo.unitID)
 
-      for j,unitDefID in ipairs(buildList) do
-        local unitDefID = unitDefID
+      for j,childDefID in ipairs(buildList) do
         local options   = {}
         -- determine options -------------------------------------------------------------------
          -- building?
-          if unitDefID==unitBuildDefID then
+          if childDefID==unitBuildDefID then
             _, _, _, _, options.progress = GetUnitHealth(unitBuildID)
           end
          -- amount
-          options.amount = buildQueue[unitDefID]
+          options.amount = buildQueue[childDefID]
          -- hover or pressed?
           if (j==hoveredBOpt+1) then
             options.pressed = (lb or mb or rb)
@@ -444,11 +444,11 @@ function widget:DrawScreen()
           end
           options.alpha = 0.75
         -----------------------------------------------------------------------------------------
-        DrawButton(bopt_rec,unitDefID,options)
-
+        DrawButton(bopt_rec,childDefID,options)
+        
         -- setup next icon pos
         OffsetRect(bopt_rec, bopt_inext[1],bopt_inext[2])
-
+        
         --if j % 3==0 then
         --  xmin_,xmax_ = xmin   + bopt_inext[1],xmin_ + iconSizeX 
         --  ymax_,ymin_ = ymax_  - iconSizeY, ymin_ - iconSizeY
@@ -612,6 +612,20 @@ end
 -------------------------------------------------------------------------------
 -- UNIT FUNCTIONS
 -------------------------------------------------------------------------------
+
+function GetBuildList(unitDefID)
+  local buildOptions = UnitDefs[unitDefID].buildOptions
+  local buildList = {}
+  for i,childDefID in ipairs(buildOptions) do
+    local cp = UnitDefs[childDefID].customParams
+    if not cp or not cp.isupgrade then
+      push(buildList, childDefID)
+    end
+  end
+  return buildList
+end
+
+
 function GetBuildQueue(unitID)
   local result = {}
   local queue = GetFullBuildQueue(unitID)
@@ -642,7 +656,7 @@ function UpdateFactoryList()
     local unitID = teamUnits[num]
     local unitDefID = GetUnitDefID(unitID)
     if UnitDefs[unitDefID].isFactory then
-      push(facs,{ unitID=unitID, unitDefID=unitDefID, buildList=UnitDefs[unitDefID].buildOptions })
+      push(facs,{ unitID=unitID, unitDefID=unitDefID, buildList=GetBuildList(unitDefID) })
       local _, _, _, _, buildProgress = GetUnitHealth(unitID)
       if (buildProgress)and(buildProgress<1) then
         unfinished_facs[unitID] = true
