@@ -43,6 +43,8 @@ end
 local GMBuildOptions = {}
 local GM_UD
 
+VFS.Include("gamedata/unitdefs_autogen.lua")
+
 for name, ud in pairs(UnitDefs) do
 	--MODOPTION CONTROLS
 	if (modOptions) then	
