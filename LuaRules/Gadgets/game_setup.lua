@@ -120,10 +120,14 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
 					-- hack to make soviet AIs spawn with static storage instead of deployable truck
 					-- and possibly other AI-specific units
+					-- facing toward map center
+		local facing=math.abs(HALF_MAP_X - x) > math.abs(HALF_MAP_Z - z)
+			and ((x > HALF_MAP_X) and "west" or "east")
+			or ((z > HALF_MAP_Z) and "north" or "south")
 					if AIUnitReplacementTable[unitName] and Spring.GetAIInfo(teamID) then
 						unitName = AIUnitReplacementTable[unitName]
 					end
-					local unitID = CreateUnit(unitName, x, 0, z, 0, teamID)
+					local unitID = CreateUnit(unitName, x, 0, z, facing, teamID)
 					ClearUnitPosition(unitID)
 					break
 				end
