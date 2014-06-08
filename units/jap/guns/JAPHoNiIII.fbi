@@ -72,7 +72,7 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=jap75mmtype90_ap;
+  weapon1=jap75mmtype3_ap;
   onlyTargetCategory1=OPENVEH HARDVEH LARGESHIP ;
   maxAngleDif1=20;
   weaponMainDir1=0 0 1;
