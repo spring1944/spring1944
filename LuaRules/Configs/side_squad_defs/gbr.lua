@@ -207,6 +207,49 @@ local gbrDefs = {
 		buildTime = 4000,
 		side = "GBR",
 	},
+	
+	["gbr_platoon_lca"] =
+	{
+		members = {
+			"gbrcommando",
+			"gbrcommando",
+			"gbrbren",
+			"gbrsten",
+			"gbrsten",
+			"gbrsten",			
+			"gbrsten",
+			"gbrsten",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+			"gbrrifle",
+		},
+		-- other fields not needed for transport squads
+	},
+	
+	["gbr_platoon_lct"] =
+	{
+		members = {
+			"gbrcromwell",
+			"gbrcromwell",
+			"gbrcromwell",
+			"gbrcromwell",
+			"gbrm5halftrack",-- 5
+			"gbrcromwellmkvi", --6
+			"gbrm5halftrack", -- 7
+			"gbrcromwellmkvi", -- 8
+			"gbrcromwell",
+		},
+		-- other fields not needed for transport squads
+	},
 }
 
 return gbrDefs

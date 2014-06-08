@@ -69,7 +69,7 @@ if gadgetHandler:IsSyncedCode() then
 local function CheckReload(unitID, reloadFrame, weaponNum)
 	--Spring.Echo("Reload Frame for unit " .. unitID .. " weapon# " .. weaponNum .. " is " .. reloadFrame)
 	local oldReloadFrame
-	if vehicles[unitID].reloadFrame then
+	if vehicles[unitID] and vehicles[unitID].reloadFrame then
 		oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
 	end
 	if oldReloadFrame == reloadFrame or reloadFrame == 0 then

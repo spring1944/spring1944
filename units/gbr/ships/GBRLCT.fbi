@@ -19,6 +19,7 @@
     ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
+    transportsquad=gbr_platoon_lct;
   }
   energyMake=0;
   energyUse=0;
@@ -28,6 +29,7 @@
   footprintZ=4; //8;
   holdSteady=1;
   iconType=transportship;
+  loadingradius=300;
   mass=35000;
   maxDamage=35000;
   maxReverseVelocity=0.55;
@@ -60,7 +62,6 @@
   transportSize=54;
   turninplace=0;
   turnRate=35;
-
 
 
   weapon1=Oerlikon20mmhe; //oerlikon20mm;
