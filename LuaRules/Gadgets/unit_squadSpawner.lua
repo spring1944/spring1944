@@ -132,11 +132,11 @@ local function SpawnTransportSquad(unitID, teamID, transportSquad)
 	local x,y,z = Spring.GetUnitPosition(unitID)
 	for foo, passengerDefName in ipairs(squadDef) do -- ipairs to ensure LCT tanks are in correct positions
 		local passID = CreateUnit(passengerDefName, x, y, z, 0, teamID)
-		Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
 		local passDefCP = UnitDefNames[passengerDefName].customParams
 		if passDefCP and passDefCP.maxammo then
-			Spring.SetUnitRulesParam(unitID, "ammo", passDefCP.maxammo)
+			Spring.SetUnitRulesParam(passID, "ammo", passDefCP.maxammo)
 		end
+		Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
 	end
 end
 
