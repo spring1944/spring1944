@@ -43,8 +43,7 @@ piece base, hull, main_turret, main_sleeve, main_barrel, main_flare,
 
 #define SMOKEPIECE	hull
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
 static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch;
 
@@ -114,20 +113,24 @@ ReturnLink()
 	move grabber to z-axis [0] now;
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	signal SIG_LOAD;
 	set-signal-mask SIG_LOAD;
-    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
-	if( bTooFar )
-	{
-		return (FALSE);
+	if ( fromLua != 1) {
+    	call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+		if( bTooFar )
+		{
+			return (FALSE);
+		}
+		set BUSY to 1;
 	}
-	set BUSY to 1;
 	attach-unit unitid to (0-1);
-	sleep 500;
-	set BUSY to 0;
-	sleep 2500;
+	if ( fromLua != 1) {
+		sleep 500;
+		set BUSY to 0;
+		sleep 2500;
+	}
 }
 
 TransportDrop(unitid, position)
@@ -268,7 +271,7 @@ Killed(severity, corpsetype)
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode hull type		SHATTER;
 	explode main_turret type	FALL|EXPLODE_ON_HIT|FIRE;
 	return (TRUE);
 }

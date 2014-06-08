@@ -71,5 +71,6 @@
     	maxammo=7;
     	weaponcost=18;
     	weaponswithammo=1;
+	transportsquad=ita_platoon_mz;
 	}
 }
