@@ -53,7 +53,7 @@
   stealth=1;
   TEDClass=SHIP;
   transportCapacity=25;
-  transportMass=1000;
+  transportMass=1500;
   transportSize=1;
   turninplace=0;
   turnRate=180;
