@@ -32,7 +32,7 @@
   minWaterDepth=6;
   movementClass=BOAT_LandingCraft;
   noChaseCategory=FLAG AIR MINE;
-  objectName=GERSiebelFahre;
+  objectName=GERSiebelFahre.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -61,12 +61,12 @@
   weapon1=flak3820mmhe;
   maxAngleDif1=320;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir1=-1 0 0;
+  weaponMainDir1=1 0 0;
 
   weapon2=flak3820mmhe;
   maxAngleDif2=320;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir2=1 0 0;
+  weaponMainDir2=-1 0 0;
 
   weapon3=flak3820mmhe;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
@@ -76,12 +76,12 @@
   weapon4=flak3820mmaa;
   maxAngleDif4=320;
   onlyTargetCategory4=AIR;
-  weaponMainDir4=-1 0 0;
+  weaponMainDir4=1 0 0;
 
   weapon5=flak3820mmaa;
   maxAngleDif5=320;
   onlyTargetCategory5=AIR;
-  weaponMainDir5=1 0 0;
+  weaponMainDir5=-1 0 0;
 
   weapon6=flak3820mmaa;
   onlyTargetCategory6=AIR;

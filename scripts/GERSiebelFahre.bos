@@ -1,6 +1,6 @@
 #define TAK
 
-piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
+piece base, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
 	  mount_20_3, sleeve_20_3, barrel_20_3, flare_20_3,
 	  load1, load2, load3, turret, grabber, link,
 	  wake1, wake2, wake3, wake4, wake5, wake6;
@@ -21,9 +21,9 @@ piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, 
 #define LOAD_DIST				[125]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<2.5>
-#define HULL_LIST_ANGLE_Z		<5>
-#define HULL_LIST_ANGLE_X		<15>
+#define base_LIST_SPEED		<2.5>
+#define base_LIST_ANGLE_Z		<-5>
+#define base_LIST_ANGLE_X		<-15>
 
 #define RESTORE_PERIOD		2500
 
@@ -34,7 +34,7 @@ piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, 
 #define SIG_AIM3			16
 #define SIG_LOAD			32
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
 #include "constants.h"
 #include "damageSmoke.h"
@@ -105,7 +105,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -622,15 +622,15 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to x-axis HULL_LIST_ANGLE_X speed HULL_LIST_SPEED;
-		turn hull to z-axis HULL_LIST_ANGLE_Z speed HULL_LIST_SPEED;
-		wait-for-turn hull around x-axis;
-		wait-for-turn hull around z-axis;
-		explode hull type		BITMAPONLY;
+		turn base to x-axis base_LIST_ANGLE_X speed base_LIST_SPEED;
+		turn base to z-axis base_LIST_ANGLE_Z speed base_LIST_SPEED;
+		wait-for-turn base around x-axis;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER;
+	explode base type		SHATTER;
 	explode mount_20_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount_20_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount_20_3 type	FALL|EXPLODE_ON_HIT|FIRE;
