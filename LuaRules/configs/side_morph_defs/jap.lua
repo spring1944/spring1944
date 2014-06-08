@@ -39,6 +39,17 @@ local japDefs = {
 			text = 'Makes Landing Craft available in this yard',
 			facing = true,
 		},
+	},
+		japboatyard = {
+		{
+			into = 'japboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
 	},	
 	japtankyard = {
 		{

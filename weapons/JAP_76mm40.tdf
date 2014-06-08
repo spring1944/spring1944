@@ -1,4 +1,4 @@
-[it76mm40]
+[jap76mm40]
 {
 	id=99;
 	name=76mm/40 Naval Gun;
@@ -11,15 +11,15 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=1900;
+	range=1300;
 	reloadtime=4; // 15 rpm
 	accuracy=170;
 	targetmoveerror=0.1;
 	weaponvelocity=1300;
 	areaofeffect=80;
 	edgeeffectiveness=0.25;
-	soundstart=GEN_105mm;
-	soundhit=GEN_Explo_4;
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_3;
 
 	noselfdamage=1;
 

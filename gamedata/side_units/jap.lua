@@ -156,6 +156,14 @@ local japunits =
 		"japdaihatsu",
 		"japabtei",
 	},
+	japboatyardlarge =
+	{
+		"rubberdingy",
+		"pontoonraft",
+		"japdaihatsu",
+		"japabtei",
+		"japseta",
+	},
 	japsupplydepot =
 	{
 		"japisuzutx40",

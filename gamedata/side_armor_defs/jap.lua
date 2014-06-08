@@ -30,6 +30,7 @@ local JAPDefs = {
 	"JAPATYard",
 	"JAPBarracks",
 	"JAPBoatyard",
+	"JAPBoatyardlarge",
 	"JAPGunyard",
 	"JAPRadar",
 	"JAPSPYard",
@@ -118,6 +119,7 @@ local JAPDefs = {
 	--Japan--
 	"JAPAbTei",
 	"JAPDaihatsu",
+	"JAPSeta",
   },
 }
 
