@@ -183,6 +183,45 @@ local rusDefs = {
 		buildTime = 340,
 		side = "RUS",
 	},
+	
+	["rus_platoon_tender"] =
+	{
+		members = {
+			"rusobserv",
+			"rusobserv",
+			"rusdp",
+			"rusppsh",
+			"rusppsh",
+			"rusppsh",			
+			"rusppsh",
+			"rusppsh",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+			"rusrifle",
+		},
+		-- other fields not needed for transport squads
+	},
+	
+	["rus_platoon_lct"] =
+	{
+		members = {
+			"rust3476",
+			"rust3476",
+			"rust3476",
+			"rust3476",
+			"rusm5halftrack",
+		},
+		-- other fields not needed for transport squads
+	},
 }
 
 return rusDefs

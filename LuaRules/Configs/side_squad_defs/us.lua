@@ -160,6 +160,7 @@ local usDefs = {
 		buildTime = 800,
 		side = "US",
 	},
+	
 	["us_platoon_infgun"] = 
 	{
 		members = {
@@ -172,6 +173,44 @@ local usDefs = {
 		buildPic = "USM8Gun.png",
 		buildTime = 1290,
 		side = "US",
+	},
+	
+	["us_platoon_lcvp"] =
+	{
+		members = {
+			"usobserv",
+			"usobserv",
+			"usgimg",
+			"usgibar",
+			"usgibar",
+			"usgithompson",
+			"usgithompson",
+			"usgithompson",	
+			"usgithompson",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+			"usgirifle",
+		},
+		-- other fields not needed for transport squads
+	},
+	
+	["us_platoon_lct"] =
+	{
+		members = {
+			"usm4a4sherman",
+			"usm4a4sherman",
+			"usm4a4sherman",
+			"usm4a4sherman",
+			"usm3halftrack",
+		},
+		-- other fields not needed for transport squads
 	},
 }
 

@@ -142,6 +142,7 @@ local gerDefs = {
 		buildTime = 470,
 		side = "GER",
 	},  
+	
 	["ger_platoon_infgun"] =
 	{
 		members = {
@@ -154,6 +155,43 @@ local gerDefs = {
 		buildPic = "GERLeIG18.png",
 		buildTime = 1320,
 		side = "GER",
+	},
+	
+	["ger_platoon_ssb"] =
+	{
+		members = {
+			"gerobserv",
+			"gerobserv",
+			"germg42",
+			"germp40",
+			"germp40",
+			"germp40",			
+			"germp40",
+			"germp40",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+			"gerrifle",
+		},
+		-- other fields not needed for transport squads
+	},
+	
+	["ger_platoon_mfp"] =
+	{
+		members = {
+			"gerpanzeriv",
+			"gerpanzeriv",
+			"gerpanzeriv",
+		},
+		-- other fields not needed for transport squads
 	},
 }
 

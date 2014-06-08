@@ -131,27 +131,31 @@ ReturnLink()
 	move grabber to z-axis [0] now;
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	signal SIG_LOAD;
 	set-signal-mask SIG_LOAD;
-    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
-	if( bTooFar )
-	{
-		return (FALSE);
+	if ( fromLua != 1 ) {
+    	call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+		if( bTooFar )
+		{
+			return (FALSE);
+		}
+		call-script OpenRamp();
+		while (!bRampOpen)
+		{
+			sleep 250;
+		}
+		set BUSY to 1;
 	}
-	call-script OpenRamp();
-	while (!bRampOpen)
-	{
-		sleep 250;
-	}
-	set BUSY to 1;
 	attach-unit unitid to (0-1);
-	//sleep 500;
-	sleep 50;
-	set BUSY to 0;
-	sleep 2500;
-	start-script CloseRamp();
+	if ( fromLua != 1 ) {
+		//sleep 500;
+		sleep 50;
+		set BUSY to 0;
+		sleep 2500;
+		start-script CloseRamp();
+	}
 }
 
 TransportDrop(unitid, position)

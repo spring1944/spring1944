@@ -171,7 +171,7 @@ ReturnLink()
 	move grabber to z-axis [0] now;
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	signal SIG_LOAD;
 	set-signal-mask SIG_LOAD;

@@ -462,23 +462,25 @@ CargoCheck()
 	}
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	var bAlreadyPlaced;
 	signal SIG_LOAD;
 	set-signal-mask SIG_LOAD;
 	bAlreadyPlaced = FALSE;
-    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
-	if( bTooFar )
-	{
-		return (1);
+	if ( fromLua != 1) {
+    	call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+		if( bTooFar )
+		{
+			return (1);
+		}
+		call-script OpenRamp();
+		while (!bRampOpen)
+		{
+			sleep 250;
+		}
+		set BUSY to 1;
 	}
-	call-script OpenRamp();
-	while (!bRampOpen)
-	{
-		sleep 250;
-	}
-	set BUSY to 1;
 	//Determine next free unit slot
 	if (unit1 == -1)
 	{
@@ -514,10 +516,12 @@ TransportPickup(unitid)
 		attach-unit unitid to 0 - 1;
 	}
 	start-script CargoCheck();
-	sleep 500;
-	set BUSY to 0;
-	sleep 2500;
-	start-script CloseRamp();
+	if ( fromLua != 1) {
+		sleep 500;
+		set BUSY to 0;
+		sleep 2500;
+		start-script CloseRamp();
+	}
 }
 
 TransportDrop(unitid, position)
