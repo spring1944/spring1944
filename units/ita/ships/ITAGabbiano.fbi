@@ -9,13 +9,13 @@
 
 	name=Gabbiano class Corvette;
 	description=Corvette;
-	maxdamage=25000;
+	maxdamage=67000;
 	buildcostmetal=10000;
 	buildcostenergy=0;
 	buildtime=10000;
 	footprintx=8;
 	footprintz=8;
-	mass=25000;
+	mass=67000;
 	floater=1;
 	minwaterdepth=20;
 	shownanoframe=0;
@@ -99,10 +99,6 @@
 	{
 		dontCount=1;
     		hasturnbutton=1;
-    		armor_front=90;
-    		armor_rear=30;
-    		armor_side=30;
-    		armor_top=30;
     		lowammolevel=20;
     		maxammo=30;
     		weaponcost=18;
