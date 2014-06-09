@@ -805,8 +805,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
     morphUnits[unitID] = nil
   end
   if (upgradeUnits[unitID]) then
-    FactoryStopUpgrade(unitID,upgradeUnits[unitID])
-    upgradeUnits[unitID] = nil
+    FactoryStopUpgrade(unitID, upgradeUnits[unitID].def)
   end
   
   local bfrTechLevel = teamTechLevel[teamID] or 0
