@@ -46,7 +46,7 @@
   name=Type 1 47 mm Gun - High Explosive;
   accuracy=300;
   avoidFeature=0;
-  areaOfEffect=8;
+  areaOfEffect=38;
   ballistic=1;
   collisionSize=3;
   craterBoost=0.3;
