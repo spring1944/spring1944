@@ -78,8 +78,10 @@ CloseRamp()
 }
 
 // Transport script courtesy of Gnome's script for Spring SW reb ground trans
-TransportPickup(unitid) {
-	call-script OpenRamp();
+TransportPickup(unitid, fromLua) {
+	if ( fromLua != 1 ) {
+		call-script OpenRamp();
+	}
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
 			attach-unit unitid to base;
 	}

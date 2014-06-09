@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.5;
   buildCostEnergy=0;
-  buildCostMetal=700;
-  buildTime=700;
+  buildCostMetal=4000;
+  buildTime=4000;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=JAPDaihatsu_dead;
@@ -19,6 +19,7 @@
     armor_top=6;
     supplyRange=350;
     hasturnbutton=1;
+    transportsquad=jap_platoon_daihatsu;
   }
   energyMake=0;
   energyUse=0;
@@ -46,8 +47,8 @@
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
-  transportCapacity=20;
-  transportMass=1000;
+  transportCapacity=40;
+  transportMass=2100;
   transportSize=1;
   turninplace=0;
   turnRate=100;

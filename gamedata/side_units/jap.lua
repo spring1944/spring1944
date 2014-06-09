@@ -84,7 +84,7 @@ local japunits =
 		--"japteke",
 		"japhago",
 		"japhonii",
-		"japchiha",
+		"japshinhotochiha",
 	},
 	japgunyard =
 	{
@@ -119,7 +119,7 @@ local japunits =
 	{
 		"japriki",
 		"japhago",
-		"japshinhotochiha",
+		"japchiha",
 		"japchihe",
 		"japhoro",
 	},
@@ -127,7 +127,7 @@ local japunits =
 	{
 		"japriki",
 		"japhago",
-		"japshinhotochiha",
+		"japchiha",
 		"japchihe",
 		"japhoro",
 		"japchinu",
@@ -136,7 +136,7 @@ local japunits =
 	{
 		"japriki",
 		"japhago",
-		"japshinhotochiha",
+		"japchiha",
 		"japchihe",
 		"japhoro",
 		"japchiha120mm",

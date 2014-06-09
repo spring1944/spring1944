@@ -209,6 +209,16 @@ local itaDefs = {
 		buildTime = 2300,
 		side = "ITA",
 	},
+	
+	["ita_platoon_mz"] =
+	{
+		members = {
+			"itam1542",
+			"itam1542",
+			"itam1542",
+		},
+		-- other fields not needed for transport squads
+	},
 }
 
 return itaDefs
