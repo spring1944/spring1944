@@ -77,7 +77,6 @@
   weapon1=jap150mmtype38_he;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  badTargetCategory1=INFANTRY;
   weaponMainDir1=0 0 1;
 
   weapon2=jap150mmtype38_smoke;
