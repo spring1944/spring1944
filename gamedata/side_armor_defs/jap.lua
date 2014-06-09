@@ -119,6 +119,7 @@ local JAPDefs = {
 	--Japan--
 	"JAPAbTei",
 	"JAPDaihatsu",
+	"JAPTypeNo1AuxSC",
 	"JAPSeta",
   },
 }

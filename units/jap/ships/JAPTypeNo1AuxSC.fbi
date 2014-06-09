@@ -1,0 +1,83 @@
+[unitinfo]
+{
+	unitname=JAPTypeNo1AuxSC;
+	objectname=JAPTypeNo1AuxSC.s3o;
+	corpse=JAPTypeNo1AuxSC_dead;
+	icontype=gunboat;
+	category=SHIP MINETRIGGER;
+	tedclass=SHIP;
+
+	name=Type No.1 Class Auxiliary Subchaser;
+	description= Patrol boat;
+	maxdamage=13000;
+	buildcostmetal=1500;
+	buildcostenergy=0;
+	buildtime=1500;
+	footprintx=4;
+	footprintz=4;
+	mass=13000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LightPatrol;
+	maxvelocity=1.1; // 11 knots
+	acceleration=0.3;
+	brakerate=0.3;
+	turnrate=55;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+  weapon1=japtype96_25mm60_aa;
+  onlyTargetCategory1=AIR;
+  weaponMainDir1 = 0 0 1;
+  maxAngleDif1 = 270;
+
+  weapon2=japtype96_25mm60_he;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2 = 0 0 1;
+  maxAngleDif2 = 270;
+
+  weapon3=japtype96_25mm60_aa;
+  onlyTargetCategory3=AIR;
+  weaponMainDir3 = 0 0 -1;
+  maxAngleDif3 = 270;
+
+  weapon4=japtype96_25mm60_he;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4 = 0 0 -1;
+  maxAngleDif4 = 270;
+	
+[sfxtypes]
+{
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+
+}
+	[customParams]
+	{
+		dontCount=1;
+		hasturnbutton=1;
+	}
+}

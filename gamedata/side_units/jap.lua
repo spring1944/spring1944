@@ -154,6 +154,7 @@ local japunits =
 		"rubberdingy",
 		"pontoonraft",
 		"japdaihatsu",
+		"japtypeno1auxsc",
 		"japabtei",
 	},
 	japboatyardlarge =
@@ -161,6 +162,7 @@ local japunits =
 		"rubberdingy",
 		"pontoonraft",
 		"japdaihatsu",
+		"japtypeno1auxsc",
 		"japabtei",
 		"japseta",
 	},
