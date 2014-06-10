@@ -8,7 +8,7 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=RUSTruckSupplies.png;
+  buildPic=JAPTruckSupplies.png;
   buildTime=720;
   category=BUILDING;
   corpse=Debris_Large;
@@ -26,7 +26,7 @@
   maxDamage=400;
   maxSlope=15;
   maxWaterDepth=0;
-  objectName=RUSTruckSupplies.S3O;
+  objectName=JAPTruckSupplies.S3O;
   script=truckSupplies.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
