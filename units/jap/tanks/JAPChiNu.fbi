@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=JAPChiNu;
-  name=Type 97 Chi-Nu;
-  description=Medium Support Tank;
+  name=Type 3 Chi-Nu;
+  description=Advanced Medium Tank;
   acceleration=0.034;
   airSightDistance=1500;
   brakeRate=0.15;
