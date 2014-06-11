@@ -198,7 +198,6 @@ local rusunits =
 	"ruspg117",
 	"pontoonraft",
     "rustender15t",
-    "ruslct",
     --"ruskomsmtb",
     "rusbmo",
 	"rusbka-1125",

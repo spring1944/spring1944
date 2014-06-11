@@ -193,7 +193,6 @@ local usunits = {
     "uslcvp",
     "uspt103-bofors",
 	"uslvta4",
-	"uslct",
   },
   usboatyardlarge =
   {

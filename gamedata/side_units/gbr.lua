@@ -193,7 +193,6 @@ local gbrunits = {
     "gbrlca",
     "gbrfairmiled",
 	"gbrlcsl",
-	"gbrlct",
   },
   gbrboatyardlarge =
   {

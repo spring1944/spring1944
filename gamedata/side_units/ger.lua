@@ -228,8 +228,6 @@ local gerunits =
     "gerrboot",
     --"gersboot",
 	"gersiebelfahre",
-	"germfp",
-
   },
   gerboatyardlarge =
   {
