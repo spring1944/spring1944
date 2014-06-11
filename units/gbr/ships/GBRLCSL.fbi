@@ -99,7 +99,7 @@
   onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
 
   // smoke mortar will go there when it's done
-  weapon9=Twin05CalVickers;
+  weapon9=BL4inMortarSmoke;
   onlyTargetCategory9=NULL;
 
   weapon10=Small_Tracer;

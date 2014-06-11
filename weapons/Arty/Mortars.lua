@@ -62,6 +62,14 @@ local ML3InMortar = MortarClass:New{
 local ML3InMortarHE = ML3InMortar:New(MortarHEClass, true)
 local ML3InMortarSmoke = ML3InMortar:New(MortarSmokeClass, true)
 
+-- 4in Smoke Mortar (GBR)
+local BL4InMortar = MortarClass:New{
+	name			 = [[BL 4 Inch Mortar]],
+	range			 = 1450,
+	commandFire		 = true,
+}
+local BL4InMortarSmoke = BL4InMortar:New(MortarSmokeClass, true)
+
 -- Granatwerfer 34 (GER)
 local GrW34_8cmMortar = MortarClass:New{
   areaOfEffect       = 81,
@@ -102,6 +110,7 @@ local m1937_MortarSmoke = m1937_Mortar:New(MortarSmokeClass, true)
 return lowerkeys({
   ML3InMortar = ML3InMortarHE,
   ML3InMortarSmoke = ML3InMortarSmoke,
+  BL4InMortarSmoke = BL4InMortarSmoke,
   GrW34_8cmMortar = GrW34_8cmMortarHE,
   GrW34_8cmMortarSmoke = GrW34_8cmMortarSmoke,
   M1_81mmMortar = M1_81mmMortarHE,
