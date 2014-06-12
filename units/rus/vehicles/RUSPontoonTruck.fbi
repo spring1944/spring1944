@@ -47,9 +47,6 @@
   trackStretch=1;
   trackType=Stdtank;
   trackWidth=12;
-  transportCapacity=15;
-  transportMass=750;
-  transportSize=1;
   turninplace=0;
   turnRate=440;
 }
