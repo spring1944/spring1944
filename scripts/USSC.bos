@@ -4,6 +4,7 @@ piece base, boats,
 	  turret, sleeve, barrel, flare,
 	  turret_20_1, sleeve_20_1, barrel_20_1, flare_20_1, turret_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
 	  turret_20_3, sleeve_20_3, barrel_20_3, flare_20_3,
+	  prop1, prop2,
 	  flag1, flag2, flag3,
 	  wake1, wake2, wake3;
 
@@ -31,6 +32,9 @@ piece base, boats,
 #define base_LIST_ANGLE_Z			<30>
 
 #define RESTORE_PERIOD		2500
+
+// ********************Propeller
+#define PROP_SPIN_SPEED			<600>
 
 //********************Flag
 #define FLAG_FLAP_PERIOD	500
@@ -141,7 +145,10 @@ StopMoving()
 	set-signal-mask SIG_MOVE;
 	// We don't want this to trigger on VERY short stops
 	sleep 300;
+	stop-spin prop1 around z-axis;
+	stop-spin prop2 around z-axis;
 	bMoving = FALSE;
+	return;
 }
 
 StopCatcher()
@@ -160,6 +167,7 @@ StopCatcher()
 		oldXZ = newXZ;
 		oldHeading = newHeading;
 	}
+	return;
 }
 
 StartMoving()
@@ -167,7 +175,10 @@ StartMoving()
 	signal SIG_MOVE;
 	start-script EmitWakes();
 	start-script StopCatcher();
+	spin prop1 around z-axis speed PROP_SPIN_SPEED;
+	spin prop2 around z-axis speed PROP_SPIN_SPEED;
 	bMoving = TRUE;
+	return;
 }
 
 RestoreTurret()
@@ -184,6 +195,7 @@ RestoreTurret()
 	turn sleeve_20_2 to x-axis <0> speed turret_20_PITCH;
 	turn turret_20_3 to y-axis <0> speed turret_20_TURN;
 	turn sleeve_20_3 to x-axis <0> speed turret_20_PITCH;
+	return;
 }
 /*
 --------------------
@@ -197,11 +209,13 @@ Start Weapons
 QueryWeapon1(piecenum)
 {
 	piecenum = flare;
+	return;
 }
 
 AimFromWeapon1(piecenum)
 {
 	piecenum = turret;
+	return;
 }
 
 AimWeapon1(heading, pitch)
@@ -223,6 +237,7 @@ FireWeapon1()
 	move barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
 	sleep 200;
 	move barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+	return;
 }
 
 /*
