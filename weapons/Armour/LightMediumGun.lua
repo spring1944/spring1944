@@ -78,9 +78,8 @@ local QF6Pdr57mmAP = QF6Pdr57mm:New(LightMediumGunAPClass, true):New{
 }
 
 -- Naval QF 6-Pounder Mk IIA - uses only HE
-local QF6Pdr57MkIIAHE = LightMediumGunClass:New{
+local QF6Pdr57MkIIAHE = QF6Pdr57mm:New(LightMediumGunHEClass, true):New{
 	name		= [[QF 6-Pounder Mk IIA]],
-	range		= 1200,
 	-- autoloader, 40 shots per minute
 	reloadTime	= 1.5,
 	areaOfEffect       = 55,
