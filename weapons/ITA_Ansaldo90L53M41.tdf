@@ -21,6 +21,7 @@
   explosionGenerator=custom:AP_Large;
   explosionSpeed=100;
   fireStarter=0;
+  impactonly=1;
   impulseBoost=0;
   impulseFactor=0;
   intensity=0.25;
