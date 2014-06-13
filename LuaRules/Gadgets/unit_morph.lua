@@ -401,7 +401,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 	if (UnitDefs[unitDefID].transportCapacity == nil) or (UnitDefs[unitDefID].transportCapacity <= 0) then]]--
 
   if morphDef.directional and cmdParams then
-    local tx, _, tz = cmdParams[1], cmdParams[2], cmdParams[3]
+    local tx, _, tz = cmdParams[1] or 0, cmdParams[2], cmdParams[3] or 0
     local ux, _, uz = Spring.GetUnitPosition(unitID)
     local dx, dz = tx - ux, tz - uz
     local rotation = math.atan2(dx, dz)
