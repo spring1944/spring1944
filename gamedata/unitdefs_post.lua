@@ -60,13 +60,16 @@ local sides = VFS.DirList("luarules/configs/side_squad_defs", "*.lua")
 
 local ATMineSign = UnitDefs["atminesign"]
 local APMineSign = UnitDefs["apminesign"]
+local TankObstacle = UnitDefs["tankobstacle"]
 
 for _, sideFile in pairs(sides) do
 	local side = sideFile:sub(string.len("luarules/configs/side_squad_defs/")+1, -5)
 	UnitDefs[side .. "atminesign"] = {}
-	UnitDefs[side .. "apminesign"] = {}
 	copytable(ATMineSign, UnitDefs[side .. "atminesign"])
+	UnitDefs[side .. "apminesign"] = {}
 	copytable(APMineSign, UnitDefs[side .. "apminesign"])
+	UnitDefs[side .. "tankobstacle"] = {}
+	copytable(TankObstacle, UnitDefs[side .. "tankobstacle"])
 end
 
 for name, ud in pairs(UnitDefs) do

@@ -54,7 +54,7 @@ local rusunits =
     --"ruszis5",
     "rusapminesign",
     "rusatminesign",
-    "tankobstacle",
+    "rustankobstacle",
     "russtorage",
     "ruspg117",
     "pontoonraft",
@@ -67,7 +67,7 @@ local rusunits =
     --"ruszis5",
     "rusapminesign",
     "rusatminesign",
-    "tankobstacle",
+    "rustankobstacle",
     "russtorage",
     "ruspg117",
     "pontoonraft",
@@ -84,7 +84,7 @@ local rusunits =
     --"rusairfield",
     "russtorage",
     "russupplydepot",
-    "tankobstacle",    
+    "rustankobstacle",    
   },
 
   rusvehicleyard =

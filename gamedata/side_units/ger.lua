@@ -24,7 +24,7 @@ local gerunits =
     "geratminesign",
     "gerapminesign",
     --"sandbags",
-    "tankobstacle",
+    "gertankobstacle",
     --"geropelblitz",
     "gersturmboot",
     "pontoonraft",
@@ -74,7 +74,7 @@ local gerunits =
     "geratminesign",
     "gerapminesign",
     --"sandbags",
-    "tankobstacle",
+    "gertankobstacle",
     --"geropelblitz",
     "gersturmboot",
     "pontoonraft",
@@ -151,7 +151,7 @@ local gerunits =
     "gersupplydepot",
 	"gerbarracksbunker",
 	"gerstoragebunker",
-    "tankobstacle",
+    "gertankobstacle",
   },
 
   gerbarracksbunker = 

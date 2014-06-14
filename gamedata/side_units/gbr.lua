@@ -21,7 +21,7 @@ local gbrunits = {
     "gbrstorage",
     "gbratminesign",
     "gbrapminesign",
-    "tankobstacle",
+    "gbrtankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
@@ -97,7 +97,7 @@ local gbrunits = {
     "gbrstorage",
     "gbratminesign",
     "gbrapminesign",
-    "tankobstacle",
+    "gbrtankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
@@ -139,7 +139,7 @@ local gbrunits = {
     --"gbrairfield",
     "gbrstorage",
     "gbrsupplydepot",
-    "tankobstacle",    
+    "gbrtankobstacle",    
   },
 
   gbrtankyard =

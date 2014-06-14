@@ -31,7 +31,7 @@ local usunits = {
     --"usgmctruck",
     "usatminesign",
     "usapminesign",
-    "tankobstacle",
+    "ustankobstacle",
     --"sandbags",
     "rubberdingy",
     "pontoonraft",
@@ -65,7 +65,7 @@ local usunits = {
     --"usgmctruck",
     "usatminesign",
     "usapminesign",
-    "tankobstacle",
+    "ustankobstacle",
     --"sandbags",
     "rubberdingy",
     "pontoonraft",
@@ -130,7 +130,7 @@ local usunits = {
     "ustankyard",
     "usstorage",
     "ussupplydepot",
-    "tankobstacle",
+    "ustankobstacle",
   },
 
   ustankyard =
