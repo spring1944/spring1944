@@ -11,7 +11,7 @@ local japunits =
     "japradar",
     "japatminesign",
     "japapminesign",
-    "tankobstacle",
+    "japtankobstacle",
     "gersturmboot",
     "pontoonraft",
   },
@@ -25,7 +25,7 @@ local japunits =
 		"japtankyard",
 		"japstorage",
 		"japsupplydepot",
-		"tankobstacle",    
+		"japtankobstacle",    
 	},
 	japhq =
 	{

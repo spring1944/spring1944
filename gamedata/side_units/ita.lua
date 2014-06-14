@@ -20,7 +20,7 @@ local itaunits =
     "itastorage",
     "itaatminesign",
     "itaapminesign",
-    "tankobstacle",
+    "itatankobstacle",
     "gersturmboot",
     "pontoonraft",
     "itatankyard1",
@@ -37,7 +37,7 @@ local itaunits =
     "itaradar",
     "itaatminesign",
     "itaapminesign",
-    "tankobstacle",
+    "itatankobstacle",
     "gersturmboot",
     "pontoonraft",
   },
@@ -51,7 +51,7 @@ local itaunits =
     "itaradar",
     "itasupplydepot",
     "itastorage",
-    "tankobstacle",
+    "itatankobstacle",
   },
 
   itabarracks =
