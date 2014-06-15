@@ -69,12 +69,12 @@ local jap105mmtype99 = HowitzerClass:New{
 
 -- Type 38 150mm howitzer L/11
 local jap150mmtype38 = HowitzerClass:New{
-  accuracy           = 1050,
+  accuracy           = 1500,
   areaOfEffect       = 165,
   name               = [[Type 38 150mm/11]],
   soundStart         = [[150mmtype38]],
   soundHitDry        = [[GEN_Explo_6]],
-  range              = 1700,
+  range              = 2200,
   proximityPriority  = -1,
   reloadtime         = 15,
   damage = {
