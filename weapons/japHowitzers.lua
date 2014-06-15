@@ -68,29 +68,13 @@ local jap105mmtype99 = HowitzerClass:New{
 }
 
 -- Type 38 150mm howitzer L/11
-local jap150mmtype38 = HowitzerClass:New{
-  accuracy           = 1500,
-  areaOfEffect       = 165,
-  name               = [[Type 38 150mm/11]],
-  soundStart         = [[150mmtype38]],
-  soundHitDry        = [[GEN_Explo_6]],
-  range              = 2200,
-  proximityPriority  = -1,
-  reloadtime         = 15,
-  damage = {
-    default            = 8500,
-  },
-}
+
 
 local jap105mmtype99_he = jap105mmtype99:New(HowitzerHEClass, true)
 local jap105mmtype99_smoke = jap105mmtype99:New(HowitzerSmokeClass, true)
-local jap150mmtype38_he = jap150mmtype38:New(HowitzerHEClass, true)
-local jap150mmtype38_smoke = jap150mmtype38:New(HowitzerSmokeClass, true)
 
 -- Return only the full weapons
 return lowerkeys({
   jap105mmtype99_he = jap105mmtype99_he,
   jap105mmtype99_smoke = jap105mmtype99_smoke,
-  jap150mmtype38_he = jap150mmtype38_he,
-  jap150mmtype38_smoke = jap150mmtype38_smoke,
 })
