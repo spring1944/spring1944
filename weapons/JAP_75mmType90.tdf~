@@ -1,5 +1,5 @@
-[jap75mmtype3_ap] {
-  name=Type 3 75mm/38, Armour-Piercing;
+[jap75mmtype90_ap] {
+  name=Type 90 75mm Field Gun, Armour-Piercing;
   accuracy=100; // 290
   avoidFeature=0;
   areaOfEffect=10;
@@ -26,7 +26,7 @@
   intensity=0.25;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=1480;
+  range=1270;
   reloadTime=5.25;
   rendertype=1;
   rgbColor=1.0 0.0 0.0;
@@ -34,7 +34,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_1;
-  soundStart=GER_75mm;
+  soundStart=RUS_76mm;
   stages=50;
   // targetMoveError=0.075;
   tolerance=300;
@@ -42,11 +42,11 @@
   weaponVelocity=1358;
 }
 
-[jap75mmtype3_he] {
-  name=Type 3 75mm/38, High Explosives;
+[jap75mmtype90_he] {
+  name=Type 90 75mm Field Gun, High Explosives;
   accuracy=300;
   avoidFeature=0;
-  areaOfEffect=84;
+  areaOfEffect=104;
   ballistic=1;
   collisionSize=3;
   craterBoost=0.5;
@@ -69,7 +69,7 @@
   intensity=0.1;
   movingAccuracy=600;
   noSelfDamage=1;
-  range=1480;
+  range=1270;
   reloadTime=5.25;
   rendertype=1;
   rgbColor=0.5 0.5 0.0;
@@ -77,7 +77,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_3;
-  soundStart=GER_75mm;
+  soundStart=RUS_76mm;
   stages=50;
   targetMoveError=0.075;
   tolerance=3000;

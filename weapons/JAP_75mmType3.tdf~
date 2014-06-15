@@ -34,7 +34,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_1;
-  soundStart=GER_75mm;
+  soundStart=RUS_76mm;
   stages=50;
   // targetMoveError=0.075;
   tolerance=300;
@@ -46,7 +46,7 @@
   name=Type 3 75mm/38, High Explosives;
   accuracy=300;
   avoidFeature=0;
-  areaOfEffect=84;
+  areaOfEffect=104;
   ballistic=1;
   collisionSize=3;
   craterBoost=0.5;
@@ -77,7 +77,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_3;
-  soundStart=GER_75mm;
+  soundStart=RUS_76mm;
   stages=50;
   targetMoveError=0.075;
   tolerance=3000;
