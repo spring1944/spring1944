@@ -162,6 +162,12 @@ local japDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
+	["jap_platoon_tokudaihatsu"] =
+	{
+		members = {
+			"japshinhotochiha",
+		},
+	},
 }
 
 return japDefs
