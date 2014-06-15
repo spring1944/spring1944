@@ -18,6 +18,10 @@ local DelayCall = GG.Delay.DelayCall
 function gadget:FeatureCreated(featureID, featureAllyID)
 	local featureDefID = Spring.GetFeatureDefID(featureID)
 	local fName = FeatureDefs[featureDefID].name
+    -- "blocking" corpses still mess with aiming, so fix that.
+    if not FeatureDefs[featureDefID].blocking then
+        Spring.SetFeatureBlocking(featureID, false, false, false, false, false, false, false)
+    end
 	if fName:find("soldier") then
 		DelayCall(Spring.DestroyFeature, {featureID}, CLEAR_TIME)
 	end
