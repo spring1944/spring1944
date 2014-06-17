@@ -35,7 +35,7 @@
   maxWaterDepth=0;
   minCloakDistance=300;
   maxWaterDepth=0;
-  objectName=JAPTent;
+  objectName=JAPTent.s3o;
   script=barracks.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
