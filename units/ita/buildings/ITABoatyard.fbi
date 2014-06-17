@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=GERBoatyard.png;
+  buildPic=ITABoatyard.png;
   buildTime=5445;
   canBeAssisted=0;
   canMove=1;
