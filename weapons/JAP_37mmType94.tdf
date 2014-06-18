@@ -5,6 +5,7 @@
   areaOfEffect=5;
   ballistic=1;
   canAttackGround=0;
+  impactOnly=1;
   collisionSize=4;
   colormap=ap_colormap.png;
   craterBoost=0;

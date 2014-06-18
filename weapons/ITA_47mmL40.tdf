@@ -4,6 +4,7 @@
   accuracy=100; //290
   avoidFeature=0;
   areaOfEffect=5;
+  impactOnly=1;
   ballistic=1;
   canAttackGround=0;
   collisionSize=4;

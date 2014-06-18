@@ -26,8 +26,8 @@
   laserFlareSize=0.0001;
   lineofsight=1;
   movingAccuracy=1000;
-  range=335;
-  reloadTime=1.4;
+  range=340;
+  reloadTime=1.2;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   soundStart=ITA_Fnab43;
