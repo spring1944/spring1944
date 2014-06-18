@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=APMineSign;
+  unitname=ATMineSign;
   name=Warning! AT Mines!;
   buildCostEnergy=0;
   buildCostMetal=360;
