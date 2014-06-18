@@ -3,7 +3,6 @@
   name=Warning! AT Mines!;
   buildCostEnergy=0;
   buildCostMetal=360;
-  buildPic=ATMine.png;
   buildTime=360;
   category=FLAG;
   cloakCost=0;
@@ -11,6 +10,7 @@
 	hiddenbuilding=1;
     dontCount=1;
     ismine=1;
+    minetype=apminesign;
   }
   footprintX=1;
   footprintZ=1;

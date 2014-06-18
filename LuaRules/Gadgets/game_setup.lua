@@ -145,7 +145,7 @@ local function GetStartUnit(teamID)
 		-- startscript didn't specify a side for this team
 		local sidedata = GetSideData()
 		if (sidedata and #sidedata > 0) then
-			local sideNum = 1 + teamID % #sidedata
+			local sideNum = math.random(2,#GetSideData()) --2 + teamID % #sidedata
 			startUnit = sidedata[sideNum].startUnit
 			side = sidedata[sideNum].sideName
 		end

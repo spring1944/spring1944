@@ -21,10 +21,10 @@ local gerunits =
     "gergunyard",
     "gerradar",
     "gerstorage",
-    "atminesign",
-    "apminesign",
+    "geratminesign",
+    "gerapminesign",
     --"sandbags",
-    "tankobstacle",
+    "gertankobstacle",
     --"geropelblitz",
     "gersturmboot",
     "pontoonraft",
@@ -71,10 +71,10 @@ local gerunits =
     "gergunyard",
     "gerradar",
     "gerstorage",
-    "atminesign",
-    "apminesign",
+    "geratminesign",
+    "gerapminesign",
     --"sandbags",
-    "tankobstacle",
+    "gertankobstacle",
     --"geropelblitz",
     "gersturmboot",
     "pontoonraft",
@@ -151,7 +151,7 @@ local gerunits =
     "gersupplydepot",
 	"gerbarracksbunker",
 	"gerstoragebunker",
-    "tankobstacle",
+    "gertankobstacle",
   },
 
   gerbarracksbunker = 
@@ -228,8 +228,6 @@ local gerunits =
     "gerrboot",
     --"gersboot",
 	"gersiebelfahre",
-	"germfp",
-
   },
   gerboatyardlarge =
   {

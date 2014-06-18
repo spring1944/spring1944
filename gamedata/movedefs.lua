@@ -108,9 +108,11 @@ local moveDefs 	=	 {
 	{
 		name					=	"BOAT_LandingCraft",
 		footprintX		=	4, --16,
+		footprintZ		=	14,
 		minWaterDepth	=	2,
 		crushStrength	=	10,
 		heatmapping		=	false,
+		allowTerrainCollisions	= false,
 	},
 	{
 		name					=	"BOAT_LandingCraftSmall",

@@ -8,7 +8,6 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=LogisticsLarge.png;
   buildTime=4500;
   category=BUILDING;
   collisionVolumeScales=39 40 64;

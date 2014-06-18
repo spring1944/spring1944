@@ -1,6 +1,6 @@
 #define TAK
 
-piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
+piece base, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
 	  mount_20_3, sleeve_20_3, barrel_20_3, flare_20_3,
 	  load1, load2, load3, turret, grabber, link,
 	  wake1, wake2, wake3, wake4, wake5, wake6;
@@ -21,9 +21,9 @@ piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, 
 #define LOAD_DIST				[125]
 
 //*********************Death anim
-#define HULL_LIST_SPEED		<2.5>
-#define HULL_LIST_ANGLE_Z		<5>
-#define HULL_LIST_ANGLE_X		<15>
+#define base_LIST_SPEED		<2.5>
+#define base_LIST_ANGLE_Z		<-5>
+#define base_LIST_ANGLE_X		<-15>
 
 #define RESTORE_PERIOD		2500
 
@@ -34,12 +34,11 @@ piece base, hull, mount_20_1, sleeve_20_1, barrel_20_1, flare_20_1, mount_20_2, 
 #define SIG_AIM3			16
 #define SIG_LOAD			32
 
-#define SMOKEPIECE	hull
+#define SMOKEPIECE	base
 
-#include "exptype.h"
-#include "sfxtype.h"
+#include "constants.h"
 #include "damageSmoke.h"
-static-var	MaxSpeed, bMoving, CargoCount, unit1, unit2, unit3, bTooFar, LastUnloadPoint, boom_len, boom_heading, boom_pitch;
+static-var	MaxSpeed, bMoving, CargoCount, unit1, unit2, unit3, bTooFar, LastUnloadPoint, boom_len, boom_heading, boom_pitch, bAimAA1, bAimAA2, bAimAA3;
 
 //effects
 #define placeholder_EFFECT01 1024+1
@@ -94,6 +93,9 @@ Create()
 	unit1 = -1;
 	unit2 = -1;
 	unit3 = -1;
+	bAimAA1 = FALSE;
+	bAimAA2 = FALSE;
+	bAimAA3 = FALSE;
 	CargoCount = 0;
 	start-script InitTurrets();
 	call-script WaitForConstructionToFinish();
@@ -103,7 +105,7 @@ Create()
 
 SweetSpot(piecenum)
 {
-	piecenum = hull;
+	piecenum = base;
 }
 
 EmitWakes()
@@ -183,6 +185,10 @@ AimFromWeapon1(piecenum)
 
 AimWeapon1(heading, pitch)
 {
+	if (bAimAA1)
+	{
+		return FALSE;
+	}
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1|SIG_DEATH;
 	turn mount_20_1 to y-axis heading speed AA20_TURRET_TURN;
@@ -218,6 +224,10 @@ AimFromWeapon2(piecenum)
 
 AimWeapon2(heading, pitch)
 {
+	if (bAimAA2)
+	{
+		return FALSE;
+	}
 	signal SIG_AIM2;
 	set-signal-mask SIG_AIM2|SIG_DEATH;
 	turn mount_20_2 to y-axis heading speed AA20_TURRET_TURN;
@@ -253,6 +263,10 @@ AimFromWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {
+	if (bAimAA3)
+	{
+		return FALSE;
+	}
 	signal SIG_AIM3;
 	set-signal-mask SIG_AIM3|SIG_DEATH;
 	turn mount_20_3 to y-axis heading speed AA20_TURRET_TURN;
@@ -268,6 +282,118 @@ FireWeapon3()
 }
 
 Shot3(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_3;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_3;
+	move barrel_20_3 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_3 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+// AA weapons
+QueryWeapon4(piecenum)
+{
+	piecenum = flare_20_1;
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = mount_20_1;
+}
+
+AimWeapon4(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	bAimAA1 = TRUE;
+	turn mount_20_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn mount_20_1 around y-axis;
+	wait-for-turn sleeve_20_1 around x-axis;
+	start-script RestoreTurret();
+	bAimAA1 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+}
+
+Shot4(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_1;
+	move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum = flare_20_2;
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = mount_20_2;
+}
+
+AimWeapon5(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	bAimAA2 = TRUE;
+	turn mount_20_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn mount_20_2 around y-axis;
+	wait-for-turn sleeve_20_2 around x-axis;
+	start-script RestoreTurret();
+	bAimAA2 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+}
+
+Shot5(foo)
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_2;
+	move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = flare_20_3;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = mount_20_3;
+}
+
+AimWeapon6(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	bAimAA3 = TRUE;
+	turn mount_20_3 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_3 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn mount_20_3 around y-axis;
+	wait-for-turn sleeve_20_3 around x-axis;
+	start-script RestoreTurret();
+	bAimAA3 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+}
+
+Shot6(foo)
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare_20_3;
 	emit-sfx XSMALL_MUZZLEDUST from flare_20_3;
@@ -496,15 +622,15 @@ Killed(severity, corpsetype)
 	if (severity<99)
 	{
 		corpsetype = 1;
-		turn hull to x-axis HULL_LIST_ANGLE_X speed HULL_LIST_SPEED;
-		turn hull to z-axis HULL_LIST_ANGLE_Z speed HULL_LIST_SPEED;
-		wait-for-turn hull around x-axis;
-		wait-for-turn hull around z-axis;
-		explode hull type		BITMAPONLY|BITMAP1;
+		turn base to x-axis base_LIST_ANGLE_X speed base_LIST_SPEED;
+		turn base to z-axis base_LIST_ANGLE_Z speed base_LIST_SPEED;
+		wait-for-turn base around x-axis;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
 		return (TRUE);
 	}
 	corpsetype = 2;
-	explode hull type		SHATTER|BITMAP1;
+	explode base type		SHATTER;
 	explode mount_20_1 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount_20_2 type	FALL|EXPLODE_ON_HIT|FIRE;
 	explode mount_20_3 type	FALL|EXPLODE_ON_HIT|FIRE;

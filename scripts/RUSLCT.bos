@@ -2,7 +2,7 @@
 
 piece base, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_2, barrel_2, flare_2,
 	flag1, flag2, flag3,
-	  load1, load2, load3, load4, turret, grabber, link,
+	  load1, load2, load3, load4, load5, turret, grabber, link,
 	  wake1, wake2, wake3;
 
 #define BASE_SMOKE_PERIOD	40
@@ -57,7 +57,7 @@ piece base, ramp, turret_1, sleeve_1, barrel_1, flare_1, turret_2, sleeve_2, bar
 
 #include "constants.h"
 #include "damageSmoke.h"
-static-var	MaxSpeed, bMoving, unit1, unit2, unit3, unit4, bTooFar, bRampOpen, LastUnloadPoint, boom_len, boom_heading, boom_pitch, bAim1, bAim2;
+static-var	MaxSpeed, bMoving, unit1, unit2, unit3, unit4, unit5, bTooFar, bRampOpen, LastUnloadPoint, boom_len, boom_heading, boom_pitch, bAim1, bAim2;
 
 
 FlagFlap()
@@ -127,6 +127,7 @@ Create()
 	unit2 = -1;
 	unit3 = -1;
 	unit4 = -1;
+	unit5 = -1;
 	call-script WaitForConstructionToFinish();
 	start-script DamageSmoke();
 	start-script StopCatcher();
@@ -438,27 +439,39 @@ CargoCheck()
 				unit4 = -1;
 			}
 		}
+		if(unit5>(0-1))
+		{
+			loadxz = get PIECE_XZ(load5);
+			unitxz = get UNIT_XZ(unit5);
+			dist = get XZ_HYPOT(loadxz - unitxz);
+			if((dist > [1])||(dist<[-1]))
+			{
+				unit5 = -1;
+			}
+		}
 		sleep 1000;
 	}
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	var bAlreadyPlaced;
 	signal SIG_LOAD;
 	set-signal-mask SIG_LOAD;
 	bAlreadyPlaced = FALSE;
-    call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
-	if( bTooFar )
-	{
-		return (1);
+	if ( fromLua != 1) {
+    	call-script BoomCalc(get UNIT_XZ(unitid),get UNIT_Y(unitid));
+		if( bTooFar )
+		{
+			return (1);
+		}
+		call-script OpenRamp();
+		while (!bRampOpen)
+		{
+			sleep 250;
+		}
+		set BUSY to 1;
 	}
-	call-script OpenRamp();
-	while (!bRampOpen)
-	{
-		sleep 250;
-	}
-	set BUSY to 1;
 	//Determine next free unit slot
 	if (unit1 == -1)
 	{
@@ -484,14 +497,22 @@ TransportPickup(unitid)
 		unit4 = unitid;
 		bAlreadyPlaced = TRUE;
 	} else
+	if (unit5 == -1)
+	{
+		attach-unit unitid to load5;
+		unit5 = unitid;
+		bAlreadyPlaced = TRUE;
+	} else
 	{
 		attach-unit unitid to 0 - 1;
 	}
 	start-script CargoCheck();
-	sleep 500;
-	set BUSY to 0;
-	sleep 2500;
-	start-script CloseRamp();
+	if ( fromLua != 1) {
+		sleep 500;
+		set BUSY to 0;
+		sleep 2500;
+		start-script CloseRamp();
+	}
 }
 
 TransportDrop(unitid, position)
@@ -530,7 +551,11 @@ TransportDrop(unitid, position)
 	if (unit4 == unitid)
 	{
 		unit4 = -1;
-	}
+	} else
+	if (unit5 == unitid)
+	{
+		unit5 = -1;
+	} 
 	call-script ReturnLink();
 	sleep 1000;
 	set BUSY to 0;

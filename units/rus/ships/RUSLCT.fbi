@@ -19,6 +19,7 @@
     ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
+
   }
   energyMake=0;
   energyUse=0;

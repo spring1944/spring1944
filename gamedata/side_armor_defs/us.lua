@@ -139,6 +139,7 @@ local USDefs = {
   "USFletcher",
   "USTacoma",
   "USLCVP",
+  "USSC",
   },
 }
 

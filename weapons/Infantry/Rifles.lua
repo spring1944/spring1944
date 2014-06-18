@@ -57,8 +57,8 @@ local K98k = RifleClass:New{
 -- M1 Garand (USA)
 local M1Garand = RifleClass:New{
   name               = [[M1 Garand]],
-  range              = 510,
-  reloadtime         = 1.8,
+  range              = 535,
+  reloadtime         = 1.7,
   soundStart         = [[US_M1garand]],
 }
 

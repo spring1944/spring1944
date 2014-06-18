@@ -51,24 +51,27 @@ end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 	local ud = UnitDefs[unitDefID]
-	local mineData = mineTypes[ud.name]
-	if mineData then		
-		local x, y, z = GetUnitPosition(unitID)
-		local mineCount = 0
-		while mineCount < mineData.number do
-			local xpos = RandPos(mineData) + x
-			local zpos = RandPos(mineData) + z
-			while #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) > 0 do -- This could well be slow >_>
-				xpos = RandPos(mineData) + x
-				zpos = RandPos(mineData) + z
+	local cp = ud.customParams
+	if cp and cp.minetype then
+		local mineData = mineTypes[cp.minetype]
+		if mineData then		
+			local x, y, z = GetUnitPosition(unitID)
+			local mineCount = 0
+			while mineCount < mineData.number do
+				local xpos = RandPos(mineData) + x
+				local zpos = RandPos(mineData) + z
+				while #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) > 0 do -- This could well be slow >_>
+					xpos = RandPos(mineData) + x
+					zpos = RandPos(mineData) + z
+				end
+				local ypos = GetGroundHeight(xpos, zpos)
+				local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
+				SetUnitBlocking(mineID, false, false, false)
+				mineCount = mineCount + 1
 			end
-			local ypos = GetGroundHeight(xpos, zpos)
-			local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
-			SetUnitBlocking(mineID, false, false, false)
-			mineCount = mineCount + 1
+			-- DelayCall needed to fix the notify widget as unsynced can't find gaia units!
+			DelayCall(TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
 		end
-		 -- DelayCall needed to fix the notify widget as unsynced can't find gaia units!
-		DelayCall(TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
 	end
 end
 

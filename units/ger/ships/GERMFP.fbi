@@ -16,6 +16,7 @@
     ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
+    transportsquad=ger_platoon_mfp;
   }
   energyMake=0;
   energyUse=0;

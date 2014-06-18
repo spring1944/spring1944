@@ -233,6 +233,10 @@ function widget:DrawScreen()
 					return
 				end
 
+				if (tx == nil) or (ty == nil) or (tz == nil) then
+					return
+				end
+				
 				local ux, uy, uz = GetUnitPosition(selectedUnit)
 				local penetration, dropoff, radiusrange, penetrationheat = infos[unitDefID][1], infos[unitDefID][2], infos[unitDefID][3], infos[unitDefID][4]
 				local dist = vMagnitude(ux - tx, uy - ty, uz - tz)

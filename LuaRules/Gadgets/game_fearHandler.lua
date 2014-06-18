@@ -31,6 +31,8 @@ local MORALE_RADIUS = 150
 -- variables
 local scriptIDs = {}
 local fearLevels = {}
+local engineerIDs = {}
+local engineerDefIDs = {}
 
 local targets = {}
 local tLength = 0
@@ -44,20 +46,38 @@ local function UpdateSuppression(unitID)
 	local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
 	fearLevels[unitID] = currFear
 	SetUnitRulesParam(unitID, "suppress", currFear)
+	if engineerIDs[unitID] then -- unit is an engineer, toggle his buildpower
+		if currFear > 0 and currFear <= 2 then
+			Spring.SetUnitBuildSpeed(unitID, engineerIDs[unitID])
+		elseif currFear > 2 then
+			Spring.SetUnitBuildSpeed(unitID, 0.000001) -- must be non-0 or building will decay
+		end
+	end
 end
 
 
-function gadget:UnitCreated(unitID)
+function gadget:UnitCreated(unitID, unitDefID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
 	if (scriptID) then
 		SetUnitRulesParam(unitID, "suppress", 0)
 		scriptIDs[unitID] = scriptID
+		if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
+			if UnitDefs[unitDefID].isBuilder then
+				engineerDefIDs[unitDefID] = true
+				engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
+			else
+				engineerDefIDs[unitDefID] = false
+			end
+		elseif engineerDefIDs[unitDefID] then -- is a builder
+			engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
+		end
 	end
 end
 
 
 function gadget:UnitDestroyed(unitID)
 	scriptIDs[unitID] = nil
+	engineerIDs[unitID] = nil
 end
 
 

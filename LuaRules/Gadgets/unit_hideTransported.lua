@@ -75,6 +75,7 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 		-- transportee is Footprint of 1 (doubled by engine) and transporter is not a boat and transportee is not an infantry gun
 		SetUnitNoDraw(unitID, true)
 	end
+	Spring.SetUnitNoMinimap(unitID, true)
 end
 
 function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
@@ -86,6 +87,7 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 		SetUnitNoDraw(unitID, false)
 	end
 	DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
+	Spring.SetUnitNoMinimap(unitID, false)
 end
 
 else

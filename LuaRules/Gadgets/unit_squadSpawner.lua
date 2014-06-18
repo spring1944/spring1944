@@ -38,6 +38,7 @@ local initFrame
 local squadDefs = { }
 local builderOf = { }  -- maps unitID -> builderID
 local builders  = { }  -- keep track of builders
+local transporters = {} -- unitDefID = squadDefID
 
 
 function gadget:Initialize()
@@ -78,7 +79,7 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 	local xSpace, zSpace = -5, -5
 
 	-- Spawn the units
-	for i, unitName in ipairs(squadDef) do
+	for i, unitName in ipairs(squadDef.members) do
 		local newUnitID = CreateUnit(unitName, px + xSpace,py, pz + zSpace, unitHeading, teamID)
 		if newUnitID then
 			squad_units[#squad_units+1] = newUnitID
@@ -126,10 +127,32 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	end
 end
 
+local function SpawnTransportSquad(unitID, teamID, transportSquad)
+	local squadDef = squadDefs[transportSquad].members
+	local x,y,z = Spring.GetUnitPosition(unitID)
+	for foo, passengerDefName in ipairs(squadDef) do -- ipairs to ensure LCT tanks are in correct positions
+		local passID = CreateUnit(passengerDefName, x, y, z, 0, teamID)
+		local passDefCP = UnitDefNames[passengerDefName].customParams
+		if passDefCP and passDefCP.maxammo then
+			Spring.SetUnitRulesParam(passID, "ammo", passDefCP.maxammo)
+		end
+		Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
+	end
+end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
 	if squadDefs[unitDefID] then
 		DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
+	elseif transporters[unitDefID] then 
+		-- spawn transportees
+		SpawnTransportSquad(unitID, teamID, transporters[unitDefID])
+	else
+		local ud = UnitDefs[unitDefID]
+		local cp = ud.customParams
+		if cp and cp.transportsquad then
+			transporters[unitDefID] = cp.transportsquad
+			SpawnTransportSquad(unitID, teamID, cp.transportsquad)
+		end
 	end
 end
 

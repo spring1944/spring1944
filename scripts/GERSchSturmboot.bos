@@ -78,7 +78,7 @@ ReturnLink()
 	move grabber to z-axis [0] now;
 }
 
-TransportPickup(unitid)
+TransportPickup(unitid, fromLua)
 {
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
 		set BUSY to 1;

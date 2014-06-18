@@ -38,10 +38,39 @@ local function tobool(val)
   return false
 end
 
+local function copytable(input, output)
+	for k,v in pairs(input) do
+		if type(v) == "table" then
+			output[k] = {}
+			copytable(v, output[k])
+		else
+			output[k] = v
+		end
+	end
+end
+
 --process ALL the units!
 
 local GMBuildOptions = {}
 local GM_UD
+
+VFS.Include("gamedata/unitdefs_autogen.lua")
+
+local sides = VFS.DirList("luarules/configs/side_squad_defs", "*.lua")
+
+local ATMineSign = UnitDefs["atminesign"]
+local APMineSign = UnitDefs["apminesign"]
+local TankObstacle = UnitDefs["tankobstacle"]
+
+for _, sideFile in pairs(sides) do
+	local side = sideFile:sub(string.len("luarules/configs/side_squad_defs/")+1, -5)
+	UnitDefs[side .. "atminesign"] = {}
+	copytable(ATMineSign, UnitDefs[side .. "atminesign"])
+	UnitDefs[side .. "apminesign"] = {}
+	copytable(APMineSign, UnitDefs[side .. "apminesign"])
+	UnitDefs[side .. "tankobstacle"] = {}
+	copytable(TankObstacle, UnitDefs[side .. "tankobstacle"])
+end
 
 for name, ud in pairs(UnitDefs) do
 	--MODOPTION CONTROLS
@@ -140,7 +169,7 @@ for name, ud in pairs(UnitDefs) do
         SOFTVEH     = {300, 2000, 950, 0},
         OPENVEH     = {300, 2000, 1250, 0},
         HARDVEH     = {150, 1000, 650, 0},
-        SHIP        = {400, 1500, 950, 0},
+        SHIP        = {400, 2500, 950, 0},
         DEPLOYED    = {650, 2000, 650, 1400},
     }
 
