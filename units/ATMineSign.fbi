@@ -10,7 +10,7 @@
 	hiddenbuilding=1;
     dontCount=1;
     ismine=1;
-    minetype=apminesign;
+    minetype=atminesign;
   }
   footprintX=1;
   footprintZ=1;
