@@ -7,7 +7,7 @@
   footprintZ=8;
   height=4;
   hitdensity=70;
-  object=JAPDaihatsu_dead;
+  object=JAPDaihatsu_dead.s3o;
   reclaimable=1;
 }
 

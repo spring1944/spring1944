@@ -36,7 +36,7 @@
   minWaterDepth=6;
   movementClass=BOAT_LandingCraftSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPDaihatsu;
+  objectName=JAPDaihatsu.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

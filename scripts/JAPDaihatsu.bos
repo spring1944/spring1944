@@ -7,7 +7,7 @@ piece base, ramp, load_arm, load_shoulder,
 #define MIN_SMOKE_PERIOD	240
 
 //********************Ramp
-#define RAMP_OPEN_ANGLE		<90>
+#define RAMP_OPEN_ANGLE		<60>
 #define RAMP_OPEN_SPEED		<30>
 
 #define LOAD_DIST			[125]
