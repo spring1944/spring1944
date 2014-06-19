@@ -481,6 +481,10 @@ function gadget:GameFrame(n)
                 end
             end
         elseif state == PLANE_STATE_RETREAT then
+			-- check that it has enough fuel for return at all times
+			if GetUnitFuel(unitID) < 2 and unitDef.maxFuel > 0 then
+				SetUnitFuel(unitID, unitDef.maxFuel)
+			end
             local ux, uy, uz = GetUnitPosition(unitID)
             if vDistanceToMapEdge(ux, uy, uz) <= RETREAT_TOLERANCE then
                 local hpLeft, totalHp = GetUnitHealth(unitID)
