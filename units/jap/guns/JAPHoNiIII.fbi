@@ -73,7 +73,7 @@
   badTargetCategory=FLAG;
 
   weapon1=jap75mmtype3_ap;
-  onlyTargetCategory1=OPENVEH HARDVEH LARGESHIP ;
+  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP ;
   maxAngleDif1=20;
   weaponMainDir1=0 0 1;
 
