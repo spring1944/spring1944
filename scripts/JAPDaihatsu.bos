@@ -18,6 +18,8 @@ piece base, ramp, load_arm, load_shoulder,
 #define SIG_AIM1			8
 #define SIG_AIM2			16
 
+#define INFANTRY			412876 //458752 //983040 // this is 65536 * s3o model radius
+
 #define SMOKEPIECE	base
 
 #include "constants.h"
@@ -83,7 +85,24 @@ TransportPickup(unitid, fromLua) {
 		call-script OpenRamp();
 	}
 	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
-			attach-unit unitid to -1;
+			set BUSY to 1;
+			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
+			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			attach-unit unitid to load_arm;
+			move load_arm to z-axis [10.000000] speed [2400.000000];
+			wait-for-move load_arm along z-axis;
+			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+			{ 
+			//<= INFANTRY + FUDGE ) { // when using FUDGE
+			  attach-unit unitid to 0 - 1; // hide infantry models
+			}
+			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+			{ 
+			//> INFANTRY + FUDGE ) {  // when using FUDGE
+			  attach-unit unitid to base; // don't hide other units
+			}
+			set BUSY to 0;
 	}
 }
 
