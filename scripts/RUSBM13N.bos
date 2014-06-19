@@ -105,10 +105,12 @@ Deploy()
 {
 	set-signal-mask SIG_DEPLOY;
 	//TODO: deploy anim
-	//set CLOAKED to TRUE;
-	SET MAX_SPEED to normalSpeed / 50;
-//	sleep 5000;
+	SET MAX_SPEED to normalSpeed / 500;
+	// Emulate delay by turning an empty piece. This way, even if interrupted by signals, next call will start from the place where this ended
+	turn backblast to x-axis <30> speed <3>;
+	wait-for-turn backblast around x-axis;
 	isDeployed = TRUE;
+	turn backblast to x-axis 0 now;
 }
 
 UnDeploy() 
@@ -120,8 +122,12 @@ UnDeploy()
 	}
 	set-signal-mask SIG_DEPLOY;
 	isDeployed = FALSE;
-	// TODO: undeploy anim
-//	sleep 5000;
+	// Same as above
+	turn rails to x-axis 0 speed TURR_ELEVATE;
+	turn backblast to x-axis <30> speed <3>;
+	wait-for-turn backblast around x-axis;
+	wait-for-turn rails around x-axis;
+	turn backblast to x-axis 0 now;
 	set MAX_SPEED to normalSpeed;
 }
 
@@ -136,7 +142,7 @@ KeepHeading()
 	{
 		sleep 30;
 		set HEADING to curHeading;
-		set MAX_SPEED to normalSpeed / 50;
+		set MAX_SPEED to normalSpeed / 500;
 	}
 }
 
@@ -161,7 +167,7 @@ StopMoving()
  	stop-spin wheel1 around x-axis;
  	stop-spin wheel2 around x-axis;
   	stop-spin wheel3 around x-axis;
-	start-script Deploy();
+	//start-script Deploy();
 }
 
 // thanks to KDR_11k for the deploy/undeploy stuff from KP KDR edit 'pointer'
@@ -250,16 +256,17 @@ AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM;
 	set-signal-mask SIG_AIM;
-	if (isDeployed)
+	start-script Deploy();
+	while (!isDeployed)
 	{
+		sleep 30;
+	}
 	mainHead = heading;
 	turn rails to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn rails around x-axis;
 	
 	//start-script RestoreAfterDelay();
-	return (1);
-	}
-	return (0);
+	return (TRUE);
 }
 
 FireWeapon1()
