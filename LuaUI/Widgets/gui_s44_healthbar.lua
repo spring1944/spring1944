@@ -75,12 +75,14 @@ local auraUnits = {}
 local ICON_TYPE = {}
 local SHOW_ICON = {}
 
+
+local iconTypes = VFS.Include("gamedata/icontypes.lua")
 for defID, defs in ipairs(UnitDefs) do
-  if defs.iconType then
-    ICON_TYPE[defID] = ("icons/" .. defs.iconType .. ".tga")
+  if defs.iconType ~= "default" then
+    ICON_TYPE[defID] = iconTypes[defs.iconType].bitmap
   end
   
-  if (defs.modCategories["infantry"] ~= nil) then
+  if (defs.modCategories["flag"] == nil) then
     SHOW_ICON[defID] = true
   end    
 end
@@ -280,7 +282,7 @@ function widget:Update(deltaTime)
 						if(ICON_TYPE[udid]) and (alpha > 0.3) then
 							glColor(r,g,b,alpha)
 							glTex(ICON_TYPE[udid])
-							glTexRect(radius*-0.65-(20 * heightscale), -10*heightscale, radius*-0.65, 10*heightscale)
+							glTexRect(radius*-0.65-(12 * heightscale), -6*heightscale, radius*-0.65, 6*heightscale)
 							glTex(false)
 						end
 					end
