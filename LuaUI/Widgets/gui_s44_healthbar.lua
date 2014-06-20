@@ -115,10 +115,10 @@ function widget:GameFrame(n)
   currentFrame = n
 end
 
-local function DrawAuraIndicator(num, type, height, scale)
+local function DrawAuraIndicator(num, type, data, height, scale)
 	iconwidth = (5 * scale)
 	glColor(1,1,1,1)
-	glTex("bitmaps/aura/" .. type .. ".tga")
+	glTex("LuaUI/Images/Suppress/" .. type .. data .. ".png")
 	glTexRect(
 		height * -0.55 - scale + (iconwidth * num),			--left edge
 		-1.5 * scale - iconwidth,
@@ -151,23 +151,25 @@ function widget:Update(deltaTime)
 				local unitbuildid = GetUnitIsBuilding(uid)
 				local transportingUnits = GetUnitIsTransporting(uid)
 				if(getAuras) then
-				  local aurabuildspeed = GetUnitRulesParam(uid, "aurabuildspeed") or 0
+				  --[[local aurabuildspeed = GetUnitRulesParam(uid, "aurabuildspeed") or 0
 				  local aurahp = GetUnitRulesParam(uid, "aurahp") or 0
 				  local auraheal = GetUnitRulesParam(uid, "auraheal") or 0
 				  local auraenergy = GetUnitRulesParam(uid, "auraenergy") or 0
 				  local aurametal = GetUnitRulesParam(uid, "aurametal") or 0
 				  local aurarange = GetUnitRulesParam(uid, "aurarange") or 0
-				  local aurareload = GetUnitRulesParam(uid, "aurareload") or 0
-				  if ((aurareload + aurahp + aurabuildspeed + aurahp + auraheal + auraenergy + aurametal + aurarange) > 0) then
+				  local aurareload = GetUnitRulesParam(uid, "aurareload") or 0]]
+				  local aurasuppress = GetUnitRulesParam(uid, "suppress") or 0
+				  if (aurasuppress > 0) then
 					  auraUnits[uid] = 
 					  {
-						  ['buildspeed'] = aurabuildspeed,
-						  ['hp'] = aurahp,
-						  ['heal'] = auraheal,
-						  ['power'] = auraenergy,
-						  ['req'] = aurametal,
-						  ['range'] = aurarange,
-						  ['reload'] = aurareload,
+					      ["suppress"] = (aurasuppress > 20 and 2) or (aurasuppress > 0) and 1 or 0
+						  --['buildspeed'] = aurabuildspeed,
+						  --['hp'] = aurahp,
+						  --['heal'] = auraheal,
+						  --['power'] = auraenergy,
+						  --['req'] = aurametal,
+						  --['range'] = aurarange,
+						  --['reload'] = aurareload,
 					  }
 					  aura = auraUnits[uid]
 				  else
@@ -288,7 +290,7 @@ function widget:Update(deltaTime)
 						if(aura) then
 							for type, data in pairs(aura) do
 								if(data > 0) then
-									DrawAuraIndicator(counter, type, radius, heightscale * 1.5)
+									DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
 									counter = counter + 1
 								end
 							end
