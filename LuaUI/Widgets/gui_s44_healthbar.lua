@@ -118,15 +118,17 @@ function widget:GameFrame(n)
 end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
-	iconwidth = (5 * scale)
-	glColor(1,1,1,1)
-	glTex("LuaUI/Images/Suppress/" .. type .. data .. ".png")
-	glTexRect(
-		height * -0.55 - scale + (iconwidth * num),			--left edge
-		-1.5 * scale - iconwidth,
-		height * -0.55 - scale + iconwidth + (iconwidth * num),				--right
-		-1.5 * scale)
-	glTex(false)
+	if data then
+		iconwidth = (5 * scale)
+		glColor(1,1,1,1)
+		glTex("LuaUI/Images/" .. type .. "/" .. type .. data .. ".png")
+		glTexRect(
+			height * -0.55 - scale + (iconwidth * num),			--left edge
+			-1.5 * scale - iconwidth,
+			height * -0.55 - scale + iconwidth + (iconwidth * num),				--right
+			-1.5 * scale)
+		glTex(false)
+	end
 end
 
 function widget:Update(deltaTime)
@@ -147,7 +149,7 @@ function widget:Update(deltaTime)
 				local udid = GetUnitDefID(uid)
 				local ud = UnitDefs[udid]
 				local display = false
-				local health, build, upgrade, transport, shield, aura
+				local health, build, upgrade, transport, ammo, aura
 				local upgradeProgress = GetUnitRulesParam(uid, "upgradeProgress")
 				local curHP,maxHP,paradmg = GetUnitHealth(uid)
 				local unitbuildid = GetUnitIsBuilding(uid)
@@ -161,10 +163,14 @@ function widget:Update(deltaTime)
 				  local aurarange = GetUnitRulesParam(uid, "aurarange") or 0
 				  local aurareload = GetUnitRulesParam(uid, "aurareload") or 0]]
 				  local aurasuppress = GetUnitRulesParam(uid, "suppress") or 0
-				  if (aurasuppress > 0) then
+				  local auraoutofammo = (GetUnitRulesParam(uid, "ammo") or 100) <= 0
+				  local aurainsupply = GetUnitRulesParam(uid, "insupply") or 0
+				  if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
 					  auraUnits[uid] = 
 					  {
-					      ["suppress"] = (aurasuppress > 20 and 2) or (aurasuppress > 0) and 1 or 0
+					      ["suppress"] = (aurasuppress > 20 and 2) or (aurasuppress > 0) and 1 or 0,
+						  ["ammo"] = auraoutofammo and 4 or nil,
+						  ["insupply"] = aurainsupply,
 						  --['buildspeed'] = aurabuildspeed,
 						  --['hp'] = aurahp,
 						  --['heal'] = auraheal,
@@ -196,20 +202,19 @@ function widget:Update(deltaTime)
 						display = false
 					end
 				end
-
-				if(GetUnitShieldState(uid)) then
-					local shieldwdid = ud.shieldWeaponDef
-					local wd = WeaponDefs[shieldwdid]
-					local sMaxPow = wd.shieldPower
-					local _,sCurPow = GetUnitShieldState(uid)
-					if(sCurPow) then
-						shield = {
-							max = sMaxPow,
-							cur = sCurPow,
-							pct = sCurPow / sMaxPow,
-							color = {2 * (1 - (sCurPow / sMaxPow)), (1 - (sCurPow / sMaxPow)), 2 * (sCurPow / sMaxPow), 0.8},
+				
+				if(ud.customParams and ud.customParams.maxammo) then
+					local maxAmmo = ud.customParams.maxammo
+					local curAmmo = GetUnitRulesParam(uid, "ammo")
+					if(curAmmo) then
+						ammo = {
+							max = maxAmmo,
+							cur = curAmmo,
+							pct = curAmmo / maxAmmo,
+							--color = {2 * (1 - (curAmmo / maxAmmo)), (1 - (curAmmo / maxAmmo)), 2 * (curAmmo / maxAmmo), 0.8},
+							color = {1.0, 1.0, 0, 0.8},
 						}
-						if(mathFloor(sMaxPow) ~= mathFloor(sCurPow)) then
+						if(mathFloor(maxAmmo) ~= mathFloor(curAmmo)) then
 							display = true
 						end
 					end
@@ -282,7 +287,7 @@ function widget:Update(deltaTime)
 						if(ICON_TYPE[udid]) and (alpha > 0.3) then
 							glColor(r,g,b,alpha)
 							glTex(ICON_TYPE[udid])
-							glTexRect(radius*-0.65-(12 * heightscale), -6*heightscale, radius*-0.65, 6*heightscale)
+							glTexRect(radius*-0.65-(16 * heightscale), -8*heightscale, radius*-0.65, 8*heightscale)
 							glTex(false)
 						end
 					end
@@ -300,7 +305,7 @@ function widget:Update(deltaTime)
 						end
 						
 						--glTex('LuaUI/zui/bars/hp.png')
-						for bar, bardata in pairs({	health,shield,build,upgrade,transport}) do
+						for bar, bardata in pairs({	health,ammo,build,upgrade,transport}) do
 							if(bardata.pct) then
 								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
