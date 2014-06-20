@@ -76,6 +76,7 @@ RestoreAfterDelay()
 {
 	sleep restore_delay;
 	turn rails to x-axis <0.000000> speed <100>;
+	canMove = TRUE;
 }
 
 RestoreRockets(time)
@@ -151,8 +152,8 @@ StartMoving()
 	signal SIG_MOVE;
 	signal SIG_DEPLOY;
 	set-signal-mask SIG_DEPLOY;
-	bMoving = TRUE;
 	call-script UnDeploy();
+	bMoving = TRUE;
  	spin wheel1 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel2 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
  	spin wheel3 around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
@@ -261,6 +262,7 @@ AimWeapon1(heading, pitch)
 	{
 		sleep 30;
 	}
+	canMove = FALSE;
 	mainHead = heading;
 	turn rails to x-axis 0 - pitch speed TURR_ELEVATE;
 	wait-for-turn rails around x-axis;
