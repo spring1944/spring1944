@@ -149,9 +149,10 @@ function widget:Update(deltaTime)
 				local udid = GetUnitDefID(uid)
 				local ud = UnitDefs[udid]
 				local display = false
-				local health, build, upgrade, transport, ammo, aura
+				local health, build, upgrade, transport, ammo, fuel, aura
 				local upgradeProgress = GetUnitRulesParam(uid, "upgradeProgress")
 				local curHP,maxHP,paradmg = GetUnitHealth(uid)
+				local curFuel = Spring.GetUnitFuel(uid)
 				local unitbuildid = GetUnitIsBuilding(uid)
 				local transportingUnits = GetUnitIsTransporting(uid)
 				local isBeingTransported = Spring.GetUnitTransporter(uid) or false
@@ -221,7 +222,17 @@ function widget:Update(deltaTime)
 						end
 					end
 				end
-
+				
+				if(curFuel and curFuel > 0) then
+					fuel = {
+						cur = curFuel,
+						max = ud.maxFuel,
+						pct = curFuel / ud.maxFuel,
+						color = {0.2, 0.5, 0.9, 0.8},
+					}
+					display = true
+				end
+				
 				if(unitbuildid) then
 					local curbHP,maxbHP,_,_,unitbuildprog = GetUnitHealth(unitbuildid)
 					build = {
@@ -308,7 +319,7 @@ function widget:Update(deltaTime)
 						end
 						
 						--glTex('LuaUI/zui/bars/hp.png')
-						for bar, bardata in pairs({health,ammo,build,upgrade,transport}) do
+						for bar, bardata in pairs({health,ammo,fuel,build,upgrade,transport}) do
 							if(bardata.pct) then
 								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
