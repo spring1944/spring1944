@@ -91,7 +91,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
-		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then -- unit is armed inf
+		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] and not ud.canFly then -- unit is armed inf
 			infReloadCache[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
 			infantry[teamID][unitID] = infReloadCache[unitDefID]
 		end
