@@ -39,6 +39,9 @@ local GAIA_ALLY_ID = select(6, GetTeamInfo(GAIA_TEAM_ID))
 -- Variables
 local aliveCount = {}
 
+-- to be initialized on first frame
+local isAbandonedTeamCheckActive = nil
+
 local allyTeams = Spring.GetAllyTeamList()
 local allyTeamMemberCount = {}
 for i = 1, #allyTeams do
@@ -135,9 +138,21 @@ function gadget:TeamDied(teamID)
 end
 
 function gadget:GameFrame(n)
+	-- should the check be active at all?
+	if isAbandonedTeamCheckActive == nil then
+		if Spring.GetGameRulesParam("runningWithoutScript") or 0 == 1 then
+			isAbandonedTeamCheckActive = false
+			Spring.Echo('Game launched without script, disabling abandoned team check')
+		else
+			isAbandonedTeamCheckActive = true
+			Spring.Echo('Abandoned team check active')
+		end
+	end
 	-- check for abandoned units, about once per 2 seconds
-	if (n > 0) and (n % 60 < 0.1) then
-		CheckAbandonedAllyTeams()
+	if isAbandonedTeamCheckActive then
+		if (n > 0) and (n % 60 < 0.1) then
+			CheckAbandonedAllyTeams()
+		end
 	end
 end
 
