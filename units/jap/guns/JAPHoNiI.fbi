@@ -2,7 +2,7 @@
   unitname=JAPHoNiI;
   name=Type 1 Ho-Ni I;
   description=Assault Gun;
-  acceleration=0.041;
+  acceleration=0.030;
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
@@ -36,7 +36,7 @@
   maxDamage=1542;
   maxReverseVelocity=1.5;
   maxSlope=2;
-  maxVelocity=3;
+  maxVelocity=2.7;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
