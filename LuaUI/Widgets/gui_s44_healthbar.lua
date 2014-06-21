@@ -154,6 +154,7 @@ function widget:Update(deltaTime)
 				local curHP,maxHP,paradmg = GetUnitHealth(uid)
 				local unitbuildid = GetUnitIsBuilding(uid)
 				local transportingUnits = GetUnitIsTransporting(uid)
+				local isBeingTransported = Spring.GetUnitTransporter(uid) or false
 				if(getAuras) then
 				  --[[local aurabuildspeed = GetUnitRulesParam(uid, "aurabuildspeed") or 0
 				  local aurahp = GetUnitRulesParam(uid, "aurahp") or 0
@@ -262,10 +263,11 @@ function widget:Update(deltaTime)
 				end
 
 				if (display == false) and (IsUnitSelected(uid) or aura) then display = true end
+				if isBeingTransported then display = false end
 				
 				local radius,r,g,b,x,y,z,heightscale
 
-				if display or (SHOW_ICON[udid]) then
+				if display or (SHOW_ICON[udid] and not isBeingTransported) then
 				
 					radius = GetUnitRadius(uid)
 					if(radius <= 4) then radius = radius * 7 end
@@ -315,7 +317,7 @@ function widget:Update(deltaTime)
 						--glTex(false)
 					
 					end
-				if display or (SHOW_ICON[udid]) then 
+				if display or (SHOW_ICON[udid] and not isBeingTransported) then 
 					glPopMatrix() 
 				end
 			end
