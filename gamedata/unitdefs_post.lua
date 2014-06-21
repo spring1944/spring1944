@@ -290,7 +290,13 @@ for name, ud in pairs(UnitDefs) do
 		--set health
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
-		local logMass = math.log10(ud.mass) or 999 --a crazy default value so we see it when it happens
+
+        --a crazy default value so we see it when it happens
+        if (not ud.mass) then
+            ud.mass = 99999999
+        end
+		local logMass = math.log10(ud.mass)
+
 		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
 		--Spring.Echo(name, "changed health to", ud.maxdamage)
 	end
