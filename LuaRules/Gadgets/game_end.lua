@@ -27,6 +27,10 @@ local SetUnitNeutral	= Spring.SetUnitNeutral
 local GetTeamInfo	= Spring.GetTeamInfo
 local GetUnitDefID	= Spring.GetUnitDefID
 local GetUnitTeam	= Spring.GetUnitTeam
+local GetAllyTeamList = Spring.GetAllyTeamList
+local GetPlayerList = Spring.GetPlayerList
+local GetPlayerInfo = Spring.GetPlayerInfo
+local GetTeamList = Spring.GetTeamList
 
 -- Constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -42,7 +46,7 @@ for i = 1, #allyTeams do
 	if allyTeam == GAIA_ALLY_ID then 
 		allyTeams[i] = nil
 	else
-		allyTeamMemberCount[allyTeam] = #Spring.GetTeamList(allyTeam)
+		allyTeamMemberCount[allyTeam] = #GetTeamList(allyTeam)
 	end
 end
 
@@ -87,7 +91,40 @@ local function CheckTeams(teamID)
 			end
 			-- Game Over if only one allyTeam remains alive
 			if allyTeamsAlive == 1 then 
-				Spring.GameOver({livingAllyTeam}) 
+				Spring.GameOver({livingAllyTeam})
+				-- no need to do anything beyond this point
+				gadgetHandler:RemoveGadget()
+			end
+		end
+	end
+end
+
+local function CheckAbandonedAllyTeams()
+	local currentATList = GetAllyTeamList()
+	for i = 1, #currentATList do
+		local allyTeamID = currentATList[i]
+		if allyTeamID ~= GAIA_TEAM_ID then
+			local allyTeamIsDead = true
+			local playerList = GetPlayerList()
+
+			for _, playerID in ipairs(playerList) do
+				local _, isPlayerActive, _, _, playerAllyTeamID = GetPlayerInfo(playerID)
+				if isPlayerActive and (playerAllyTeamID == allyTeamID) then
+					allyTeamIsDead = false
+					break
+				end
+			end
+
+			if allyTeamIsDead then
+				-- kill off the teams which compose this AllyTeam
+				local teamList = GetTeamList(allyTeamID)
+				for i = 1, #teamList do
+					local teamID = teamList[i]
+					local _, _, isDead, isAI = GetTeamInfo(teamID)
+					if (not isDead) and (not isAI) then
+						KillTeam(teamID)
+					end
+				end
 			end
 		end
 	end
@@ -95,6 +132,13 @@ end
 
 function gadget:TeamDied(teamID)
 	DelayCall(CheckTeams, {teamID}, 1)
+end
+
+function gadget:GameFrame(n)
+	-- check for abandoned units, about once per 2 seconds
+	if (n > 0) and (n % 60 < 0.1) then
+		CheckAbandonedAllyTeams()
+	end
 end
 
 function gadget:Initialize()
