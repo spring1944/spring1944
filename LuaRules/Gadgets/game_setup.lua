@@ -149,6 +149,8 @@ local function GetStartUnit(teamID)
 			startUnit = sidedata[sideNum].startUnit
 			side = sidedata[sideNum].sideName
 		end
+		-- set the gamerules param to notify other gadgets it was a direct launch
+		Spring.SetGameRulesParam("runningWithoutScript", 1)
 	else
 		startUnit = GetSideData(side)
 	end
