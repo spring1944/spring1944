@@ -6,7 +6,7 @@
   featureDead=ITAL6_40lf_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITAL6_40;
+  object=ITAL6_40.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -26,7 +26,7 @@
   featureDead=ITAL6_40lf_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=ITAL6_40_Dead;
+  object=ITAL6_40_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -46,7 +46,7 @@
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=ITAL6_40_Wreck;
+  object=ITAL6_40_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
