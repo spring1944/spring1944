@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=RUS61K.png;
+  buildPic=RUS61K_Stationary.png;
   buildTime=1400;
   category=DEPLOYED;
   corpse=RUS61K_Destroyed;
