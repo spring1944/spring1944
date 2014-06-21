@@ -72,6 +72,9 @@ for _, sideFile in pairs(sides) do
 	copytable(TankObstacle, UnitDefs[side .. "tankobstacle"])
 end
 
+-- have to implement squad file preloading here, because it's needed for transport stuff
+local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
+
 for name, ud in pairs(UnitDefs) do
 	--MODOPTION CONTROLS
 	if (modOptions) then	
@@ -311,6 +314,35 @@ for name, ud in pairs(UnitDefs) do
 	
 	ud.transportbyenemy = false
 	ud.collisionvolumetest = 1
+
+	-- transport squad stuff
+	-- units which bring other units into game with them should have their cost and buildtime increased accordingly
+	if ud.customparams and ud.customparams.transportsquad then
+		--Spring.Echo("Unit with built-in cargo squad: "..ud.name)
+		local squadName = ud.customparams.transportsquad
+		if squadName then
+			local squadDef = squadDefs[squadName]
+			if squadDef then
+				local addedCost = 0
+				for i, unitName in ipairs(squadDef.members) do
+					local newUD = UnitDefs[unitName]
+					if newUD then
+						addedCost = addedCost + newUD.buildcostmetal
+					end
+				end
+				--Spring.Echo("Total squad cost: "..addedCost)
+				if addedCost > 0 then
+					ud.buildcostmetal = ud.buildcostmetal + addedCost
+					ud.buildtime = ud.buildcostmetal
+					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+				end
+			else
+				Spring.Echo("Squad def name not found in loaded table: "..squadName)
+			end
+		else
+			Spring.Echo("Squad unit not found in squad def files: "..squadName)
+		end
+	end
 	
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
