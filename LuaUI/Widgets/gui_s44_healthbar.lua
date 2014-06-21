@@ -188,12 +188,13 @@ function widget:Update(deltaTime)
 				end
 
 				if(maxHP) then
+					curHP = math.max(0, curHP)
 					local pct = (curHP / maxHP)
 					health = {
 						cur = curHP,
 						max = maxHP,
 						pct = pct,
-						paralyze = paradmg,
+						--paralyze = paradmg,
 						color = {2 * (1 - pct), 2.0 * pct, 0, 0.8},
 					}
 					if (mathFloor(maxHP) ~= mathFloor(curHP)) and (curHP > 0) then
@@ -305,7 +306,7 @@ function widget:Update(deltaTime)
 						end
 						
 						--glTex('LuaUI/zui/bars/hp.png')
-						for bar, bardata in pairs({	health,ammo,build,upgrade,transport}) do
+						for bar, bardata in pairs({health,ammo,build,upgrade,transport}) do
 							if(bardata.pct) then
 								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
