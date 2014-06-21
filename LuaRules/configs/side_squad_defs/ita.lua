@@ -215,7 +215,7 @@ local itaDefs = {
 		members = {
 			"itam1542",
 			"itam1542",
-			"itam1542",
+			"itasemovente75_18",
 		},
 		-- other fields not needed for transport squads
 	},

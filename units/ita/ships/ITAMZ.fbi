@@ -10,9 +10,9 @@
 	name=Motozattera;
 	description= Landing Ship (up to 3 tanks);
 	maxdamage=5000;
-	buildcostmetal=8000;
+	buildcostmetal=3000;
 	buildcostenergy=0;
-	buildtime=8000;
+	buildtime=3000;
 	footprintx=8;
 	footprintz=8;
 	mass=5000;

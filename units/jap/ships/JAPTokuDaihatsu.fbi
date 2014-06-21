@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.5;
   buildCostEnergy=0;
-  buildCostMetal=3000;
-  buildTime=3000;
+  buildCostMetal=1000;
+  buildTime=1000;
   canMove=1;
   category=SHIP MINETRIGGER;
   corpse=JAPTokuDaihatsu_dead;
