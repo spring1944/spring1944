@@ -19,7 +19,7 @@
     dontCount=1;
     hasturnbutton=1;
     lowammolevel=10;
-    maxammo=256;
+    maxammo=32;
     weaponcost=16;
     weaponswithammo=2;
   }
