@@ -9,7 +9,7 @@
   buildCostMetal=200;
   buildTime=200;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=SHIP MINETRIGGER SOFTVEH;
   [customParams] {
     dontCount=1;
   }

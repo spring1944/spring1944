@@ -10,7 +10,7 @@
   buildPic=RUSPG117.png;
   buildTime=300;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=SHIP MINETRIGGER SOFTVEH;
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
@@ -23,8 +23,8 @@
   footprintZ=4;
   iconType=lttrans;
   isFirePlatform=0;
-  mass=500;
-  maxDamage=500;
+  mass=145;
+  maxDamage=145;
   maxReverseVelocity=3.7;
   maxVelocity=7.4;
   minWaterDepth=5;
