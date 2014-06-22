@@ -8,6 +8,7 @@ local BombClass = Weapon:New{
   gravityaffected    = true,
   impulseFactor      = 0.01,
   manualBombSettings = true,
+  noSelfDamage		 = true,
   reloadtime         = 600,
   startVelocity      = 400,
   tolerance          = 4000,
