@@ -56,11 +56,11 @@
   weapon1=ita13mmm1931aa;
   onlyTargetCategory1=AIR;
   weaponMainDir1 = 0 0 1;
-  maxAngleDif1 = 180;
+  maxAngleDif1 = 150;
 
   weapon2=ita13mmm1931;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2 = 0 0 1;
-  maxAngleDif2 = 180;
+  maxAngleDif2 = 150;
 }
 
