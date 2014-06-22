@@ -10,9 +10,9 @@
 	name=Motozattera;
 	description= Landing Ship (up to 3 tanks);
 	maxdamage=5000;
-	buildcostmetal=3000;
+	buildcostmetal=2000;
 	buildcostenergy=0;
-	buildtime=3000;
+	buildtime=2000;
 	footprintx=8;
 	footprintz=8;
 	mass=5000;
@@ -46,7 +46,7 @@
 	explodeas=Vehicle_Explosion_Sm;
 	selfdestructas=Vehicle_Explosion_Sm;
 
-	Weapon1=it76mm40;
+	Weapon1=ita76mm40;
 	Weapon2=it20mm65breda;
 
 	WeaponMainDir1=0 0 1;

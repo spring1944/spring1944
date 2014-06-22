@@ -1,4 +1,4 @@
-[it76mm40]
+[ita76mm40]
 {
 	id=99;
 	name=76mm/40 Naval Gun;
@@ -11,15 +11,15 @@
 	ballistic=1;
 	firestarter=0.0;
 
-	range=1900;
-	reloadtime=4; // 15 rpm
+	range=1320;
+	reloadtime=3.8; // 15 rpm
 	accuracy=170;
 	targetmoveerror=0.1;
 	weaponvelocity=1300;
-	areaofeffect=80;
+	areaofeffect=76;
 	edgeeffectiveness=0.25;
-	soundstart=GEN_105mm;
-	soundhit=GEN_Explo_4;
+	soundstart=GER_75mm;
+	soundhit=GEN_Explo_3;
 
 	noselfdamage=1;
 
@@ -43,7 +43,7 @@
 
 	[damage]
 	{
-		default=2250;
+		default=2150;
 
 	}
 	[customparams]
