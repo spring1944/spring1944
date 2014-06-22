@@ -32,7 +32,7 @@
 	transportsize=18;
 	transportcapacity=12;
 	//transportcapacity=5;
-	transportmass=4200;
+	transportmass=4400;
 	holdsteady=1;
 
 	canmove=1;
