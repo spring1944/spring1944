@@ -155,10 +155,12 @@ local function GetStartUnit(teamID)
 		startUnit = GetSideData(side)
 	end
 	-- Check for GM / Random team
-	if (modOptions.gm_team_enable == "0") then
-		if startUnit == "gmtoolbox" then
-			local randSide = math.random(2,#GetSideData())	-- start at 2 to avoid picking random side again
+	if startUnit == "gmtoolbox" then
+		local randSide = math.random(2,#GetSideData())	-- start at 2 to avoid picking random side again
+		if (modOptions.gm_team_enable == "0") then
 			side, startUnit = GetSideData(randSide)
+		else
+			side = GetSideData(randSide)
 		end
 	end
 	GG.teamSide[teamID] = side
