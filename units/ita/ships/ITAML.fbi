@@ -47,8 +47,8 @@
   smoothAnim=0;
   stealth=1;
   TEDClass=SHIP;
-  transportCapacity=40;
-  transportMass=2100;
+  transportCapacity=22;
+  transportMass=1300;
   transportSize=1;
   turninplace=0;
   turnRate=100;
