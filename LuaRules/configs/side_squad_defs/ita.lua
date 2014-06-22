@@ -240,8 +240,9 @@ local itaDefs = {
 			"itaelitesoloat",
 			"itabreda30",
 			"itaobserv",
-			"itasniper",
-			"itacannone65",
+			"itaelitesoloat",
+			"itabreda30",
+			"itaobserv",
 		},
 		-- other fields not needed for transport squads
 	},
