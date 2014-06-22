@@ -24,7 +24,7 @@
     armor_top=6;
     hasturnbutton=1;
     lowammolevel=10;
-    maxammo=70;
+    maxammo=22;
     weaponcost=8;
     weaponswithammo=2;
   }
