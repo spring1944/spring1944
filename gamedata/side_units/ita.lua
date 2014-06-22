@@ -198,6 +198,7 @@ local itaunits =
 	"gerpontoonraft",
 	"itamas",
 	"itams",
+	"itaml",
 	--"itagabbiano",
   },
   itaboatyardlarge =
@@ -206,6 +207,7 @@ local itaunits =
 	"gerpontoonraft",
 	"itamas",
 	"itams",
+	"itaml",
 	"itamz",
 	"itagabbiano",
   },

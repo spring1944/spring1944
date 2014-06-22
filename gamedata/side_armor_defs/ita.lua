@@ -127,6 +127,7 @@ local ITADefs = {
 	"ITAMAS",
 	"ITAMS",
 	"ITAMZ",
+	"ITAML",
 	"ITANavigatori",
 	"ITAOrsa",
   },
