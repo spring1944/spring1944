@@ -80,7 +80,7 @@
 
   weapon2=ita75mml46ap;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP;
-  maxAngleDif2=15;
+  maxAngleDif2=10;
   weaponMainDir2=0 0 1;
 
   weapon3=.50calproof;
