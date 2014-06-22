@@ -46,7 +46,7 @@ end
 
 local function showUnitToAllyTeam(unitID, allyTeamID)
     SetUnitLosState(unitID, allyTeamID, {los=true, prevLos=true, radar=true, contRadar=true} ) 
-    SetUnitLosMask(unitID, allyTeamID, {los=true, prevLos=false, radar=false, contRadar=false} )	
+    SetUnitLosMask(unitID, allyTeamID, {los=true, prevLos=true, radar=true, contRadar=true} )	
 end
 
 local function hideUnitFromAllyTeam(unitID, allyTeamID)
