@@ -30,9 +30,9 @@
 
 	// enough for 3 medium tanks
 	transportsize=18;
-	transportcapacity=12;
+	transportcapacity=14;
 	//transportcapacity=5;
-	transportmass=4400;
+	transportmass=4600;
 	holdsteady=1;
 
 	canmove=1;
