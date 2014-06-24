@@ -18,6 +18,10 @@
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
+    lowammolevel=6;
+    maxammo=22;
+    weaponcost=17;
+    weaponswithammo=2;
   }
   energyMake=0;
   energyUse=0;
