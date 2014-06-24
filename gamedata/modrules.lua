@@ -20,6 +20,9 @@ local modRules = {
 	system = {
 		pathFinderSystem = (Spring.GetModOptions() and (Spring.GetModOptions().qtpfs == "1") and 1) or 0,
 	},
+	transportability = {
+		targetableTransportedUnits = true,
+	},
 }
 
 return modRules
