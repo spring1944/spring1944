@@ -17,6 +17,10 @@
   corpse=GBRLCSL_dead;
   [customParams] {
     hasturnbutton=1;
+    lowammolevel=2;
+    maxammo=10; // 40 rounds
+    weaponcost=10;
+    weaponswithammo=2;
   }
   energyMake=0;
   energyUse=0;
