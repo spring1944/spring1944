@@ -265,17 +265,17 @@ RestoreTurret()
 	turn gun303_2 to x-axis <0> speed MG303_TURRET_PITCH;
 }
 
-QueryWeapon1(piecenum)
+QueryWeapon5(piecenum)
 {
 	piecenum = torp1;
 }
 
-AimFromWeapon1(piecenum)
+AimFromWeapon5(piecenum)
 {
 	piecenum = torp1;
 }
 
-AimWeapon1(heading, pitch)
+AimWeapon5(heading, pitch)
 {
 	signal SIG_AIM1;
 	set-signal-mask SIG_AIM1|SIG_DEATH;
@@ -283,22 +283,22 @@ AimWeapon1(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon1()
+FireWeapon5()
 {
 	sleep 200;
 }
 
-QueryWeapon2(piecenum)
+QueryWeapon6(piecenum)
 {
 	piecenum = torp2;
 }
 
-AimFromWeapon2(piecenum)
+AimFromWeapon6(piecenum)
 {
 	piecenum = torp2;
 }
 
-AimWeapon2(heading, pitch)
+AimWeapon6(heading, pitch)
 {
 	signal SIG_AIM2;
 	set-signal-mask SIG_AIM2|SIG_DEATH;
@@ -306,7 +306,7 @@ AimWeapon2(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon2()
+FireWeapon6()
 {
 	sleep 200;
 }
@@ -357,17 +357,17 @@ FireWeapon4()
 	sleep 200;
 }
 
-QueryWeapon5(piecenum)
+QueryWeapon1(piecenum)
 {
 	piecenum = flare6_1;
 }
 
-AimFromWeapon5(piecenum)
+AimFromWeapon1(piecenum)
 {
 	piecenum = turret6_1;
 }
 
-AimWeapon5(heading, pitch)
+AimWeapon1(heading, pitch)
 {
 	signal SIG_AIM5;
 	set-signal-mask SIG_AIM5|SIG_DEATH;
@@ -379,7 +379,7 @@ AimWeapon5(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon5()
+FireWeapon1()
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare6_1;
 	emit-sfx XSMALL_MUZZLEDUST from flare6_1;
@@ -391,17 +391,17 @@ FireWeapon5()
 	move shells6_1 to x-axis 0 now;
 }
 
-QueryWeapon6(piecenum)
+QueryWeapon2(piecenum)
 {
 	piecenum = flare6_2;
 }
 
-AimFromWeapon6(piecenum)
+AimFromWeapon2(piecenum)
 {
 	piecenum = turret6_2;
 }
 
-AimWeapon6(heading, pitch)
+AimWeapon2(heading, pitch)
 {
 	signal SIG_AIM6;
 	set-signal-mask SIG_AIM6|SIG_DEATH;
@@ -413,7 +413,7 @@ AimWeapon6(heading, pitch)
 	return (TRUE);
 }
 
-FireWeapon6()
+FireWeapon2()
 {
 	emit-sfx XSMALL_MUZZLEFLASH from flare6_2;
 	emit-sfx XSMALL_MUZZLEDUST from flare6_2;
