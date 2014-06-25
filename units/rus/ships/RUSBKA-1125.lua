@@ -5,8 +5,8 @@ local RUS_BKA_1125 = BoatMother:New{
 	brakeRate				= 0.025,
 	buildCostMetal			= 2125,
 	buildTime				= 2125,
-	collisionVolumeOffsets	= [[0.0 0.0 0.0]],
-	collisionVolumeScales	= [[24.0 24.0 160.0]],
+	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
+	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	corpse					= "RUSBKA-1125_dead",
 	mass					= 2660,
 	maxDamage				= 3060, --+15% because it has armor
@@ -24,8 +24,6 @@ local RUS_BKA_1125 = BoatMother:New{
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
-	customparams = {
-    },
 }
 
 local RUS_BKA_1125_Turret_76mm = BoatChild:New{
@@ -40,6 +38,12 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 			weaponMainDir		= [[0 0 1]],
 		},
 	},
+	customparams = {
+		maxammo					= 19,
+		weaponcost				= 12,
+		weaponswithammo			= 1,
+		child					= true,
+    },
 }
 
 return lowerkeys({

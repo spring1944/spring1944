@@ -32,11 +32,11 @@ function SetFlag(teamID)
 	end
 end
 
-function Script.Create()
-	StartFlagThread(teamID)
+function script.Create()
+--	StartFlagThread(teamID)
 end
 
-function Script.WindChanged (heading, strength)
+function script.WindChanged (heading, strength)
 	if currentSide then
 		Turn(flags[currentSide], y_axis, heading, math.rad(20))
 	end

@@ -164,7 +164,7 @@ function widget:Update(deltaTime)
 				local curFuel = Spring.GetUnitFuel(uid)
 				local unitbuildid = GetUnitIsBuilding(uid)
 				local transportingUnits = GetUnitIsTransporting(uid)
-				local isBeingTransported = Spring.GetUnitTransporter(uid) or false
+				local isBeingTransported = (Spring.GetUnitTransporter(uid) and not ud.customParams.child) or false
 				if(getAuras) then
 				  --[[local aurabuildspeed = GetUnitRulesParam(uid, "aurabuildspeed") or 0
 				  local aurahp = GetUnitRulesParam(uid, "aurahp") or 0

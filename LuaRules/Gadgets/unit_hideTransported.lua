@@ -67,13 +67,16 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
 	-- Check if transport is full (former crash risk!)
-	massLeft[transportID] = massLeft[transportID] - unitDef.mass
-	if massLeft[transportID] == 0 then
-		TransportIsFull(transportID)
-	end
-	if unitDef.xsize == 2 and not (transportDef.minWaterDepth > 0) and not unitDef.customParams.hasturnbutton then 
-		-- transportee is Footprint of 1 (doubled by engine) and transporter is not a boat and transportee is not an infantry gun
-		SetUnitNoDraw(unitID, true)
+	if massLeft[transportID] then
+		massLeft[transportID] = massLeft[transportID] - unitDef.mass
+	
+		if massLeft[transportID] == 0 then
+			TransportIsFull(transportID)
+		end
+		if unitDef.xsize == 2 and not (transportDef.minWaterDepth > 0) and not unitDef.customParams.hasturnbutton then 
+			-- transportee is Footprint of 1 (doubled by engine) and transporter is not a boat and transportee is not an infantry gun
+			SetUnitNoDraw(unitID, true)
+		end
 	end
 	Spring.SetUnitNoMinimap(unitID, true)
 end
