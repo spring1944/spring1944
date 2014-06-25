@@ -3,7 +3,6 @@
   name=Towed Q.F. 25 Pounder;
   description=Light Howitzer;
   acceleration=0.3;
-  airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=1800;

@@ -17,7 +17,6 @@
     weaponcost=14;
     weaponswithammo=0;
   }
-  energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;

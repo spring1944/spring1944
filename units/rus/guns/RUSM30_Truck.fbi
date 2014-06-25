@@ -21,8 +21,6 @@
   footprintX=3;
   footprintZ=3;
   iconType=htruck;
-  idleAutoHeal=2;
-  idleTime=1000;
   leaveTracks=1;
   mass=300;
   maxDamage=400;
@@ -38,8 +36,8 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=RUS;
   sightDistance=800;
+  smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;
   TEDClass=TANK;
