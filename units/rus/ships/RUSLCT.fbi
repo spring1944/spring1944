@@ -12,7 +12,7 @@
   canMove=1;
   category=SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 -30.0 0.0;
-  collisionVolumeScales=60.0 100.0 220.0;
+  collisionVolumeScales=60.0 50.0 220.0;
   collisionVolumeType=box;
   corpse=RUSLCT_dead;
   [customParams] {
@@ -29,6 +29,7 @@
   footprintZ=4; //14;
   holdSteady=1;
   iconType=transportship;
+  isfireplatform=1;
   mass=29100;
   maxDamage=29100;
   maxReverseVelocity=0.35;
