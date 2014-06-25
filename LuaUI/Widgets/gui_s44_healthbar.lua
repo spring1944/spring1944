@@ -87,6 +87,15 @@ for defID, defs in ipairs(UnitDefs) do
   end    
 end
 
+-- see LuaRules/Gadgets/game_planes for details
+local REFERENCE_FUEL_AMOUNT = 24
+local function MAP_FUEL_SCALE(fuel)
+    local mapX, mapY = Game.mapX, Game.mapY
+    local mapDiagonalLength = math.sqrt(mapX ^ 2 + mapY ^ 2)
+    local fuelBoost = mapDiagonalLength / REFERENCE_FUEL_AMOUNT
+    return fuelBoost * fuel
+end
+
 local function hpdisp()
 	if(not active) then
 		widgetHandler:UpdateCallIn('DrawWorld')
@@ -227,7 +236,7 @@ function widget:Update(deltaTime)
 					fuel = {
 						cur = curFuel,
 						max = ud.maxFuel,
-						pct = curFuel / ud.maxFuel,
+						pct = curFuel / MAP_FUEL_SCALE(ud.maxFuel),
 						color = {0.2, 0.5, 0.9, 0.8},
 					}
 					display = true
