@@ -112,6 +112,7 @@ local MG42AA = MG42:New{
   range              = 1170,
   sprayAngle         = 460,
   customparams = { -- don't cause fear, should cause Aircraft fear?
+    no_range_adjust    = true,
     fearaoe            = nil,
     fearid             = nil,
   }
@@ -152,7 +153,8 @@ local MaximAA = Maxim:New{
   movingAccuracy     = 400,
   predictBoost       = 0.75,
   range              = 1050,
-  customParams = {
+  customparams = {
+    no_range_adjust    = true,
     fearaoe            = 1,
     fearid             = 701,
   }
@@ -219,7 +221,8 @@ local M2BrowningAA = M2Browning:New{
   reloadTime         = 0.375,
   soundStart         = [[US_50CAL]],
   sprayAngle         = 150,
-  customParams = {
+  customparams = {
+    no_range_adjust    = true,
     fearaoe            = 1,
     fearid             = 701,
   }
@@ -234,6 +237,10 @@ local M2BrowningAMG = M2Browning:New{
   soundStart        = [[US_50CALAir]],
   sprayAngle        = 250,
   tolerance         = 600, --?
+  customparams = {
+    no_range_adjust    = true,
+  }
+
 }
 
 -- Return only the full weapons
