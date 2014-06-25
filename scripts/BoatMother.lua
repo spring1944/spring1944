@@ -2,7 +2,12 @@ local unitDefID = Spring.GetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
 local ud = UnitDefs[unitDefID]
 
-local children = {"rusbka-1125_turret_76mm"}-- ud.customParams.children
+local children = {
+		"rusbka-1125_turret_76mm", 
+		"RUS_BKA_1125_Turret_DshK_Front", 
+		"RUS_BKA_1125_Turret_DshK_Top", 
+		"RUS_BKA_1125_Turret_DshK_Rear"
+	}-- ud.customParams.children
 -- Pieces
 local base = piece("base")
 

@@ -42,11 +42,55 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 		maxammo					= 19,
 		weaponcost				= 12,
 		weaponswithammo			= 1,
-		child					= true,
     },
+}
+
+local RUS_BKA_1125_Turret_DshK = BoatChild:New{
+	name					= "Pr.1125 DshK Turret",
+	description				= "Heavy Machinegun Turret",
+	objectName				= "RUSBKA1125_DshK.s3o",
+	weapons = {	
+		[1] = {
+			name				= "dshk",
+			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED",
+		},
+	},
+}
+
+local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
+	weapons = {
+		[1] = {
+			maxAngleDif			= 270,
+			mainDir		= [[0 0 1]],
+		},
+	}
+}
+
+local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
+	weapons = {
+		[1] = {
+			maxAngleDif			= 358,
+			mainDir		= [[0 0 1]],
+		},
+	}
+}
+
+local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
+	weapons = {
+		[1] = {
+			maxAngleDif			= 270,
+			mainDir		= [[0 0 -1]],
+		},
+	},
+	customparams = {
+		rearfacing = true,
+	},
 }
 
 return lowerkeys({
 	["RUSBKA-1125"] = RUS_BKA_1125,
 	["RUSBKA-1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
+	["RUS_BKA_1125_Turret_DshK_Front"] = RUS_BKA_1125_Turret_DshK_Front,
+	["RUS_BKA_1125_Turret_DshK_Top"] = RUS_BKA_1125_Turret_DshK_Top,
+	["RUS_BKA_1125_Turret_DshK_Rear"] = RUS_BKA_1125_Turret_DshK_Rear,
 })

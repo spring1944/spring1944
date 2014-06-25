@@ -1,13 +1,18 @@
---local teamID = Spring.GetUnitTeam(unitID)
+local unitDefID = Spring.GetUnitDefID(unitID)
+local teamID = Spring.GetUnitTeam(unitID)
+local ud = UnitDefs[unitDefID]
+
+local rearFacing = ud.customParams.rearfacing
 
 -- Pieces
 local base = piece("base")
 local turret, sleeve, barrel, flare = piece("turret", "sleeve", "barrel", "flare")
 
-Spring.Echo("WTF")
-
 function script.Create()
-	Spring.Echo("OH HAI")
+	--Spring.Echo("OH HAI", rearFacing)
+	if rearFacing then 
+		Turn(turret, y_axis, math.rad(180))
+	end
 end
 
 function script.AimWeapon(weaponID, heading, pitch)

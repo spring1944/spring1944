@@ -69,8 +69,8 @@ local BoatMother = Unit:New{
 	isFirePlatform 		= true,
 
 	customparams = {
-		dontCount		= 1,
-		hasturnbutton	= 1,
+		dontCount			= 1,
+		hasturnbutton		= 1,
 	}
 }
 
@@ -86,6 +86,10 @@ local BoatChild = Unit:New{
 	noChaseCategory		= "FLAG AIR MINE",
 	script				= "BoatChild.lua",
 	sightDistance		= 840,
+	
+	customparams = {
+		child				= true,
+	}
 }
 
 ---------------------------------------------------------------------------------------------
