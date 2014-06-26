@@ -23,52 +23,12 @@
 --------------------------------------------------------------------------------
 local options = {
 
-	--[[{
-    key    = "maxammo_mult",
-    name   = "Vehicle maxammmo multiplier",
-    desc   = "Applies a multiplier to all the vehicle maxammo values",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.1,
-  },]]--
-  
   {
 	key    = '2gamemode',
 	name   = 'Game Mode Settings',
 	desc   = 'Point vs Traditional Victory and Naval settings',
 	type   = 'section',
   },
-	
-  --[[{
-    key = "sensors",
-	name = "New Sensors",
-	desc = "Experimental changes to intelligence",
-	type = "bool",
-	def = true,
-  },]]--
-
-
- --[[ {
-		key = "navies",
-		name = "Naval Units",
-		desc = "Enable the production of naval units",
-		type = "list",
-		def = 0,
-		items	= {
-			{
-				key	= "0",
-				name	= "Standard",
-				desc	= "Standard Naval Unit Buildtree",
-			},
-			{
-				key	= "1",
-				name	= "Heavy Ships",
-				desc	= "Includes Destroyers and other Heavy Ships",
-			},
-		}
-	},]]--
 	
  {
       key="scoremode",
@@ -196,7 +156,6 @@ local options = {
 	 },
     },
   
-
    {
     key    = "command_storage",
     name   = "Fixed Command Storage",
@@ -226,55 +185,10 @@ local options = {
     name   = "Communism Mode",
     desc   = "Distributes income from flags evenly between allied players. (key = 'communism_mode')",
     type   = "bool",
-    def    = false,
+    def    = true,
 	section= '3resources',
   },
   	
-
-	
-	--[[  {
-	key    = '1balance',
-	name   = 'Balance Settings. REMOVE BEFORE RELEASE',
-	desc   = "Sets experimental balance options.",
-	type   = 'section',
-  },
-  
-     {
-    key    = "weapon_apdamage_mult",
-    name   = "AP damage multiplier",
-    desc   = "Applies a multiplier to all the AP damage values",
-    type   = "number",
-    def    = 1,
-    min	   = 0.01,
-    max    = 2,
-	section= '1balance',
-    step   = 0.05,
-  },
-  
-  	{
-		key = "prisoner_income",
-		name = "Command Income per tick per prisoner",
-		desc = "Changes the amount you recieve for holding prisoners (key = 'prisoner_income')",
-	    type   = "number",
-		def    = 0,
-		min    = 0,
-		max    = 5,
-		section= '1balance',
-		step   = 0.25,
-	},
-
-  	{
-		key = "air_fear_mult",
-		name = "Aircraft fear tolerance multiplier",
-		desc = "Changes the amount of AA fire required to scare off a plane (key = 'air_fear_mult')",
-	    type   = "number",
-		def    = 1,
-		min    = 0,
-		max    = 100,
-		section= '1balance',
-		step   = 1,
-	},]]--
-
 	{
 	key    = '4other',
 	name   = 'Other Settings',
@@ -347,94 +261,6 @@ local options = {
     step   = 0.1,
   },
   
---[[	{
-		key = "smoke_mult",
-		name = "Smoke Duration Multiplier",
-		desc = "Multiplies the duration of smoke shells",
-		type = "number",
-		def = 1.0,
-		min	   = 0.1,
-		max    = 10,
-		section = '4other',
-		step   = 0.1,
-	},]]--
-	
-	--[[{
-		key = "always_visible_flags",
-		name = "Always Visible Flags",
-		desc = "Flags and their capping status can be seen without LOS",
-		type = "bool",
-		def = true,
-		section = '4other',
-	},]]--
-
-
-
-  --[[ 
-
-  {
-    key    = "weapon_reload_mult",
-    name   = "Weapon reload multiplier",
-    desc   = "Applies a multiplier to all the weapon reloadtimes ingame",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.1,
-  },
-
-  {
-    key    = "unit_speed_mult",
-    name   = "Unit speed multiplier",
-    desc   = "Applies a multiplier to all the unit speeds and acceleration values ingame",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.1,
-  },
-    {
-    key    = "weapon_aoe_mult",
-    name   = "AoE multiplier",
-    desc   = "Applies a multiplier to all the weapon AoE values",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.05,
-  },
-
-   {
-    key    = "weapon_hedamage_mult",
-    name   = "HE damage multiplier",
-    desc   = "Applies a multiplier to all the HE damage values",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.1,
-    max    = 10,
-    step   = 0.05,
-  },
-  {
-    key    = "weapon_edgeeffectiveness_mult",
-    name   = "Weapon edgeeffectiveness multiplier",
-    desc   = "Applies a multiplier to all the weapon edgeeffectiveness ingame",
-    type   = "number",
-    def    = 1.0,
-    min	   = 0.01,
-    max    = 10,
-    step   = 0.1,
-  }
-  {
-    key    = "unit_hq_platoon",
-    name   = "HQ-centric infantry game",
-    desc   = "Removes rifle/assault squads from barracks, puts them in HQ",
-    type   = "number",
-    def    = 0,
-    min	   = 0,
-    max    = 1,
-    step   = 1,
-  }]]--
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
