@@ -71,6 +71,7 @@ local BoatMother = Unit:New{
 	customparams = {
 		dontCount			= 1,
 		hasturnbutton		= 1,
+		mother				= true,
 	}
 }
 
@@ -78,10 +79,12 @@ local BoatChild = Unit:New{
 	airSightDistance	= 1500,
 	canMove				= true,
 	cantBeTransported	= false,
-	category 			= "SHIP MINETRIGGER",
+	category 			= "SHIP MINETRIGGER TURRET",
 	footprintX			= 1,
 	footprintZ 			= 1,
+	idleAutoHeal		= 1,
 	mass				= 10,
+	maxDamage			= 1000,
 	--movementClass		= "KBOT_Infantry", -- needed?
 	noChaseCategory		= "FLAG AIR MINE",
 	script				= "BoatChild.lua",

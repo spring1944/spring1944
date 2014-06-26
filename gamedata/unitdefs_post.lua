@@ -297,9 +297,11 @@ for name, ud in pairs(UnitDefs) do
             ud.mass = 99999999
         end
 		local logMass = math.log10(ud.mass)
-
-		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
-		--Spring.Echo(name, "changed health to", ud.maxdamage)
+		local cp = ud.customparams
+		if not (cp and (cp.mother or cp.child)) then -- exclude composites
+			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
+			--Spring.Echo(name, "changed health to", ud.maxdamage)
+		end
 	end
 
 	if (modOptions.unit_los_mult) then

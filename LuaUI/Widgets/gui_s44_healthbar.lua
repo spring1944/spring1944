@@ -263,7 +263,7 @@ function widget:Update(deltaTime)
 					display = true
 				end
 
-				if(transportingUnits) then
+				if(transportingUnits and not ud.customParams.mother) then
 					maxtransmass = ud.transportMass
 					currentmass = 0
 					for i=1,#transportingUnits do
