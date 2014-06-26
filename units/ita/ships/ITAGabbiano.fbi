@@ -103,6 +103,11 @@
     		maxammo=30;
     		weaponcost=18;
     		weaponswithammo=1;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
 
 	}
 }
