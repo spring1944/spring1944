@@ -1,6 +1,6 @@
 function gadget:GetInfo()
   return {
-    name      = "Smoke shells",
+    name      = "Smoke shells and generators",
     desc      = "Implements smoke screens from artillery strikes",
     author    = "yuritch",
     date      = "14 September 2009",
@@ -15,6 +15,9 @@ local UPDATE_PERIOD = 32
 local UPDATE_OFFSET = 5
 local VFX_SMOKE_PERIOD = 16
 local VFX_SMOKE_OFFSET = 1
+
+-- how long a smoke generator takes to recharge
+local DEFAULT_SMOKEGEN_COOLDOWN = 15
 
 --windspeed is divided by this number before affecting smoke
 local WIND_SPEED_DIVISOR = 64
@@ -32,13 +35,15 @@ local GetUnitsInSphere = Spring.GetUnitsInSphere
 local GetWind = Spring.GetWind
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 local SetUnitRulesParam = Spring.SetUnitRulesParam
+local GetUnitPosition = Spring.GetUnitPosition
 
 if (not gadgetHandler:IsSyncedCode()) then
   return false
 end
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
-local CMD_SMOKE = GG.CustomCommands.GetCmdID("CMD_SMOKE") 
+local CMD_SMOKE = GG.CustomCommands.GetCmdID("CMD_SMOKE")
+local CMD_SMOKEGEN = GG.CustomCommands.GetCmdID("CMD_SMOKEGEN")
 
 local smokeCmdDesc = {
 	id 		 = CMD_SMOKE,
@@ -48,10 +53,20 @@ local smokeCmdDesc = {
 	params = {0, 'Fire HE', 'Fire Smoke'},
 }
 
+local smokeGenCmdDesc = {
+	id 		 = CMD_SMOKEGEN,
+	type   = CMDTYPE.ICON,
+	name = "Smoke Generator",
+	action = "smokegen",
+	tooltip = 'Activate Smoke generator',
+	hidden = false,
+}
 
 
 local SmokeSources={}
 local SmokedUnits={}
+
+local SmokeGenCooldowns = {}
 
 local DURATION_MULT = 1
 
@@ -77,11 +92,19 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 			Spring.InsertUnitCmdDesc(unitID, smokeCmdDesc)
 		end
 	end
+	-- smoke generator
+	local params = UnitDefs[unitDefID].customParams
+	if params then
+		if params.smokegenerator then
+			Spring.InsertUnitCmdDesc(unitID, smokeGenCmdDesc)
+		end
+	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- remove units from tracking if they die
 	SmokedUnits[unitID] = nil
+	SmokeGenCooldowns[unitID] = nil
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
@@ -102,6 +125,25 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         }
 		Spring.EditUnitCmdDesc(unitID, cmdDescID, { params = updatedCmdParams}) 
 		return false
+	end
+	if cmdID == CMD_SMOKEGEN then
+		-- has our generator recharged?
+		if (SmokeGenCooldowns[unitID] or 0) == 0 then
+			-- start smoke generator!
+			local params = UnitDefs[unitDefID].customParams
+			local px, py, pz = GetUnitPosition(unitID)
+			local tmpSmoke =
+			{
+				radius = tonumber(params.smokeradius) or 0,
+				remainingTimer = tonumber(params.smokeduration) or 0 * DURATION_MULT * 32,
+				ceg = params.smokeceg,
+				x = px,
+				y = py,
+				z = pz,
+			}
+			table.insert(SmokeSources, tmpSmoke)
+			SmokeGenCooldowns[unitID] = tonumber(params.smokegencooldown or DEFAULT_SMOKEGEN_COOLDOWN)
+		end
 	end
 	return true
 end
@@ -276,6 +318,12 @@ function gadget:GameFrame(n)
 			else
 				-- apply effect to unit
 				ApplySmoke(UnitID)
+			end
+		end
+		-- process smoke generator cooldown
+		for id, duration in pairs(SmokeGenCooldowns) do
+			if (SmokeGenCooldowns[id] or 0) > 0 then
+				SmokeGenCooldowns[id] = SmokeGenCooldowns[id] - 1
 			end
 		end
 	end
