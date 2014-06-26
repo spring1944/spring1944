@@ -21,6 +21,11 @@
     maxammo=10; // 40 rounds
     weaponcost=10;
     weaponswithammo=2;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
   }
   energyMake=0;
   energyUse=0;

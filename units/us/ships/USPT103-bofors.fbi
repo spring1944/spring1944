@@ -22,6 +22,11 @@
     weaponcost=0;
     weaponswithammo=4;
     hasturnbutton=1;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
   }
   energyMake=0;
   energyUse=0;
