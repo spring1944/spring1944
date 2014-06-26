@@ -303,6 +303,15 @@ function FindClosestSupply(v)
 	end
     --get separation between unit and supply
     local currentUnitSeparation = GetUnitSeparation(v.uID, v.closestSupply.uID, true)
+
+    -- hack: there's a bug where units drive all the way to the supplier and
+    -- freeze there. I couldn't determine the cause of that, but this ought to
+    -- prevent that from happening as often
+    local offset = math.random(-3, 3) * 50
+    if offset == 0 then
+        offset = 100
+    end
+
     if ((currentUnitSeparation ~= nil) and (x ~= nil)  and (z ~= nil)) then
         --are we already in a supply area so don't need to move?
         if (currentUnitSeparation < v.closestSupply.supplyArea) then
@@ -311,7 +320,7 @@ function FindClosestSupply(v)
         else
             v.inSupplyArea = false
             --move to the supply      
-            GiveOrderToUnit(v.uID, CMD_MOVE, {x,_,z}, {""})          
+            GiveOrderToUnit(v.uID, CMD_MOVE, {x + offset,_,z + offset}, {""})          
             v.unitSupplyState = v.UNIT_RETURNING_TO_SUPPLY 
         end 
     end         
