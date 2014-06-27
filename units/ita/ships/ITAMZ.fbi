@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ITAMZ;
-	objectname=ITAMZ;
+	objectname=ITAMZ.s3o;
 	corpse=ITAMZ_dead;
 	icontype=transportship;
 	category=SHIP MINETRIGGER;
@@ -47,16 +47,39 @@
 	selfdestructas=Vehicle_Explosion_Sm;
 
 	Weapon1=ita76mm40;
-	Weapon2=it20mm65breda;
+	onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-	WeaponMainDir1=0 0 1;
+  weapon2=breda3520mmaa;
+  badTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory2=AIR;
+
+  weapon3=breda3520mmhe;
+  badTargetCategory3=AIR;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+  weapon4=breda3520mmaa;
+  badTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  onlyTargetCategory4=AIR;
+
+  weapon5=breda3520mmhe;
+  badTargetCategory5=AIR;
+  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+	WeaponMainDir1=0 0 -1;
 	MaxAngleDif1=270;
-
-	WeaponMainDir2=0 0 -1;
-	MaxAngleDif2=270;
 
 	[sfxtypes]
 	{
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
 	}
 	[customParams]
 	{
