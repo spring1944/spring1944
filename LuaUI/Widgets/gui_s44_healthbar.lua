@@ -33,6 +33,7 @@ local GetLocalAllyTeamID = Spring.GetLocalAllyTeamID
 local GetGameFrame = Spring.GetGameFrame
 local GetUnitRadius = Spring.GetUnitRadius
 local GetCameraPosition = Spring.GetCameraPosition
+local GetUnitWeaponState = Spring.GetUnitWeaponState
 
 local lastFrame = 0
 local currentFrame = 0
@@ -51,10 +52,24 @@ local glCallList = gl.CallList
 local glCreateList = gl.CreateList
 local glDeleteList = gl.DeleteList
 local glDrawFuncAtUnit = gl.DrawFuncAtUnit
+local glShape = gl.Shape
+
+local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
+local GL_LINE_LOOP = GL.LINE_LOOP
+local GL_LINE_STRIP = GL.LINE_STRIP
 
 local mathFloor = math.floor
 local mathMax = math.max
 local mathMin = math.min
+local mathRad = math.rad
+local mathSin = math.sin
+local mathCos = math.cos
+
+local CIRCLE_DIVS = 32
+local MIN_RELOAD_TIME = 4
+local circleVertsList = {}
+
+local reloadDataList = {} -- {[unitDefID] = {primaryWeapon, reloadTime}}
 
 local displayList
 
@@ -112,6 +127,20 @@ function widget:Initialize()
 	widgetHandler:AddAction("hpdisp", hpdisp)
 	Spring.SendCommands({"unbind f9 showhealthbars"})
 	Spring.SendCommands({"bind f9 luaui hpdisp"})
+    
+    local count = 0
+    for udid, ud in pairs(UnitDefs) do
+        for i=1, #ud.weapons do
+            local weaponDefID = ud.weapons[i].weaponDef
+            local weaponDef = WeaponDefs[weaponDefID]
+            
+            if not reloadDataList[udid] or weaponDef.reload > reloadDataList[udid][2] then
+                reloadDataList[udid] = {i, weaponDef.reload}
+                count = count + 1
+            end
+        end
+    end
+    Spring.Echo(count)
 end
 
 function widget:Shutdown()
@@ -124,6 +153,48 @@ end
 
 function widget:GameFrame(n)
   currentFrame = n
+end
+
+local function OutlineTriangleLoopVertices(vertices)
+	local result = {}
+	local ri = 1
+	local vi = 2
+	while vertices[vi] do
+		result[ri] = {v = vertices[vi].v}
+		ri = ri + 1
+		vi = vi + 1
+	end
+	
+	return result
+end
+
+local function DrawCircle(divs, height, scale, percentage, position)
+	local radius = 3 * scale
+    local spacing = 5 * scale
+    local centerX = height * -0.55 - scale + spacing * position + 2 * radius
+    local centerZ = -2.5 * scale - radius
+    
+	local triangleVertices = {
+		{v = {centerX, centerZ, 0}, c = {0.00,0.60,0.60}},
+		{v = {centerX, centerZ + radius, 0}, c = {0.00,0.40,0.40}},
+	}
+	local angleIncrement = mathRad(360 / divs)
+	local angle = 0
+	local drawnDivs = mathFloor(divs * percentage)
+    
+	for i=1, drawnDivs do
+		angle = angle + angleIncrement
+		triangleVertices[i+2] = {
+			v = {centerX + mathSin(angle) * radius, centerZ + mathCos(angle) * radius, 0},
+			c = color
+		}
+	end
+	
+	local lineVertices = OutlineTriangleLoopVertices(triangleVertices)
+	
+	glShape(GL_TRIANGLE_FAN, triangleVertices)
+	glColor(0, 0.45, 0.45, 1)
+	glShape(GL_LINE_STRIP, lineVertices)
 end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
@@ -159,6 +230,9 @@ function widget:Update(deltaTime)
 				local ud = UnitDefs[udid]
 				local display = false
 				local health, build, upgrade, transport, ammo, fuel, aura
+                local reload = -1
+                local reloadData = reloadDataList[udid]
+                local reloadTime, primaryWeapon
 				local upgradeProgress = GetUnitRulesParam(uid, "upgradeProgress")
 				local curHP,maxHP,paradmg = GetUnitHealth(uid)
 				local curFuel = Spring.GetUnitFuel(uid)
@@ -281,8 +355,22 @@ function widget:Update(deltaTime)
 						display = true
 					end
 				end
-
-				if (display == false) and (IsUnitSelected(uid) or aura) then display = true end
+                
+                if reloadData then 
+                    primaryWeapon, reloadTime = reloadData[1], reloadData[2]
+                    if reloadTime >= MIN_RELOAD_TIME then
+                        local _, reloaded, reloadFrame = GetUnitWeaponState(uid, primaryWeapon)
+                        if not reloaded then
+                            --Spring.Echo("being reloaded")
+                            reload = 1 - ((reloadFrame - currentFrame ) / 30) / reloadTime
+                            if reload >= 0 then
+                                display = true
+                            end
+                        end
+                    end
+                end
+                
+				if (not display) and (IsUnitSelected(uid) or aura) then display = true end
 				if isBeingTransported then display = false end
 				
 				local radius,r,g,b,x,y,z,heightscale
@@ -324,9 +412,15 @@ function widget:Update(deltaTime)
 									counter = counter + 1
 								end
 							end
-							counter = 0
+							--counter = 0
 						end
-						
+                        
+                        if reload >= 0 then
+                            DrawCircle(CIRCLE_DIVS, radius, heightscale, reload, counter)
+                            --Spring.Echo("drawing reload")
+                        end
+						counter = 0
+                        
 						--glTex('LuaUI/zui/bars/hp.png')
 						for bar, bardata in pairs({health,ammo,fuel,build,upgrade,transport}) do
 							if(bardata.pct) then
