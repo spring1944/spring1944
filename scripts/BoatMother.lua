@@ -1,15 +1,12 @@
 local unitDefID = Spring.GetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
-local ud = UnitDefs[unitDefID]
+unitDefID = Spring.GetUnitDefID(unitID)
+unitDef = UnitDefs[unitDefID]
+info = GG.lusHelper[unitDefID]
 
 local SIG_MOVE = 1
 
-local children = {
-		"rusbka-1125_turret_76mm", 
-		"RUS_BKA_1125_Turret_DshK_Front", 
-		"RUS_BKA_1125_Turret_DshK_Top", 
-		"RUS_BKA_1125_Turret_DshK_Rear"
-	}-- ud.customParams.children
+local children = info.children
 
 -- Pieces
 local function findPieces(input, name)

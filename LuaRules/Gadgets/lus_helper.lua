@@ -139,7 +139,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local barrelIDs = {}
 		local numWheels = 0
 		for pieceName, pieceNum in pairs(pieceMap) do
-			local weapNumPos = pieceName:find("_") or 0
+			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
 			local weaponNum = tonumber(pieceName:sub(weapNumPos+1,weapNumEndPos-1))
 			-- Find launcher pieces
@@ -154,7 +154,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			-- Find the number of wheels
 			elseif pieceName:find("wheel") then
 				numWheels = numWheels + 1
-			end
+			end]]
 		end
 		
 		info.launcherIDs = launcherIDs
@@ -167,6 +167,12 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	if UnitDefs[unitDefID].canFly then
 		Spring.GiveOrderToUnit(unitID, CMD.IDLEMODE, {0}, {})
 		local toRemove = {CMD.IDLEMODE, CMD.AUTOREPAIRLEVEL}
+		for _, cmdID in pairs(toRemove) do
+			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
+			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
+		end
+	elseif UnitDefs[unitDefID].customParams.mother then
+		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
@@ -215,6 +221,8 @@ function gadget:GamePreload()
 		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General
 		info.numWeapons = #weapons
+		-- Children
+		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access
 		GG.lusHelper[unitDefID] = info
 	end

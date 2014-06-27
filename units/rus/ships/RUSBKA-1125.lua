@@ -24,6 +24,14 @@ local RUS_BKA_1125 = BoatMother:New{
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
+	customparams = {
+		children = {
+			"RUS_BKA_1125_turret_76mm", 
+			"RUS_BKA_1125_Turret_DshK_Front", 
+			"RUS_BKA_1125_Turret_DshK_Top", 
+			"RUS_BKA_1125_Turret_DshK_Rear"
+		},
+	},
 }
 
 local RUS_BKA_1125_Turret_76mm = BoatChild:New{
@@ -64,7 +72,7 @@ local RUS_BKA_1125_Turret_DshK = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
-	}
+	},
 }
 
 local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
@@ -73,7 +81,7 @@ local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 1]],
 		},
-	}
+	},
 }
 
 local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
@@ -82,7 +90,7 @@ local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
 			maxAngleDif			= 358,
 			mainDir		= [[0 0 1]],
 		},
-	}
+	},
 }
 
 local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
@@ -99,7 +107,7 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 
 return lowerkeys({
 	["RUSBKA-1125"] = RUS_BKA_1125,
-	["RUSBKA-1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
+	["RUS_BKA_1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
 	["RUS_BKA_1125_Turret_DshK_Front"] = RUS_BKA_1125_Turret_DshK_Front,
 	["RUS_BKA_1125_Turret_DshK_Top"] = RUS_BKA_1125_Turret_DshK_Top,
 	["RUS_BKA_1125_Turret_DshK_Rear"] = RUS_BKA_1125_Turret_DshK_Rear,
