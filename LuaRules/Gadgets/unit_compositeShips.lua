@@ -19,6 +19,8 @@ local GetUnitTransporter 	= Spring.GetUnitTransporter
 local GetUnitsInCylinder 	= Spring.GetUnitsInCylinder
 -- Synced Ctrl
 local GiveOrderToUnit		= Spring.GiveOrderToUnit
+local AddUnitDamage         = Spring.AddUnitDamage
+
 
 
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
@@ -47,13 +49,14 @@ end
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	motherCache[unitID] = nil
 	childCache[unitID] = nil
+    deadChildren[unitID] = nil
 end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
-	if childCache[unitID] then 
-		--Spring.Echo("CHILD LOADED", unitID, transportID, UnitDefs[unitDefID].customParams.foo)
-		childCache[unitID] = transportID -- set value to unitID of mother
-	end 
+	if childCache[unitID] then
+		Spring.Echo("CHILD LOADED", unitID, transportID)
+		childCache[unitID] = transportID
+	end -- set value to unitID of mother
 end
 
 local function DisableChild(childID, disable)
@@ -70,6 +73,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if health - damage < MIN_HEALTH then
 		local newDamage = health - MIN_HEALTH
 		DisableChild(unitID, true)
+        -- if the component is toast, apply damage to the base unit (so they
+        -- don't become shields)
+        local passThroughDamage = damage - newDamage
+        AddUnitDamage(childCache[unitID], passThroughDamage, 0, attackerID)
 		return newDamage
 	end
 	return damage
@@ -85,6 +92,7 @@ function gadget:GameFrame(n)
 		end
 	end
 end
+
 --[[function gadget:AllowWeaponTarget(attackerID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	if deadChildren[targetID] then
 		Spring.SetUnitTarget(attackerID, childCache[targetID])
