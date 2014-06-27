@@ -313,12 +313,12 @@ function widget:Update(deltaTime)
 							local _, reloaded, reloadFrame = GetUnitWeaponState(uid, primaryWeapon)
 							if not reloaded then
 								--Spring.Echo("being reloaded")
-								precentage = 1 - ((reloadFrame - currentFrame ) / 30) / reloadTime
-								if precentage >= 0 then
+								percentage = 1 - ((reloadFrame - currentFrame ) / 30) / reloadTime
+								if percentage >= 0 then
 									reload =  {
 										max = 1,
 										cur = 0,
-										pct = precentage,
+										pct = percentage,
 										color = {0, 0.5, 0.9, 0.8},
 									}
 									display = true
