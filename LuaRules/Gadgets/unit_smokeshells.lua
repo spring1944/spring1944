@@ -36,6 +36,9 @@ local GetWind = Spring.GetWind
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local GetUnitPosition = Spring.GetUnitPosition
+local InsertUnitCmdDesc = Spring.InsertUnitCmdDesc
+local FindUnitCmdDesc = Spring.FindUnitCmdDesc
+local EditUnitCmdDesc = Spring.EditUnitCmdDesc
 
 if (not gadgetHandler:IsSyncedCode()) then
   return false
@@ -56,10 +59,11 @@ local smokeCmdDesc = {
 local smokeGenCmdDesc = {
 	id 		 = CMD_SMOKEGEN,
 	type   = CMDTYPE.ICON,
-	name = "Smoke Generator",
+	name = "Smoke Screen",
 	action = "smokegen",
 	tooltip = 'Activate Smoke generator',
 	hidden = false,
+	disabled = false,
 }
 
 
@@ -89,14 +93,14 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local hasSmoke = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.smokeradius
 		local noButton = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.nosmoketoggle
 		if hasSmoke and not noButton then
-			Spring.InsertUnitCmdDesc(unitID, smokeCmdDesc)
+			InsertUnitCmdDesc(unitID, smokeCmdDesc)
 		end
 	end
 	-- smoke generator
 	local params = UnitDefs[unitDefID].customParams
 	if params then
 		if params.smokegenerator then
-			Spring.InsertUnitCmdDesc(unitID, smokeGenCmdDesc)
+			InsertUnitCmdDesc(unitID, smokeGenCmdDesc)
 		end
 	end
 end
@@ -105,6 +109,12 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- remove units from tracking if they die
 	SmokedUnits[unitID] = nil
 	SmokeGenCooldowns[unitID] = nil
+end
+
+function ChangeSmokeGenStatus(unitID, smokeGenEnabled)
+	local cmdDescID = FindUnitCmdDesc(unitID, CMD_SMOKEGEN)
+	smokeGenCmdDesc.disabled = not smokeGenEnabled
+	EditUnitCmdDesc(unitID, cmdDescID, smokeGenCmdDesc)
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
@@ -143,6 +153,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 			}
 			table.insert(SmokeSources, tmpSmoke)
 			SmokeGenCooldowns[unitID] = tonumber(params.smokegencooldown or DEFAULT_SMOKEGEN_COOLDOWN)
+			ChangeSmokeGenStatus(unitID, false)
 		end
 	end
 	return true
@@ -324,6 +335,12 @@ function gadget:GameFrame(n)
 		for id, duration in pairs(SmokeGenCooldowns) do
 			if (SmokeGenCooldowns[id] or 0) > 0 then
 				SmokeGenCooldowns[id] = SmokeGenCooldowns[id] - 1
+				-- enable/disable command
+				local smokegenReady = true
+				if SmokeGenCooldowns[id] > 0 then
+					smokegenReady = false
+				end
+				ChangeSmokeGenStatus(id, smokegenReady)
 			end
 		end
 	end
