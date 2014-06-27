@@ -26,6 +26,8 @@ local MGClass = Weapon:New{
     damagetype         = [[smallarm]],
     fearaoe            = 45,
     fearid             = 301,
+    cegflare           = "MG_MUZZLEFLASH",
+    flareonshot        = true,
   },
   damage = {
     default            = 33,

@@ -1,3 +1,4 @@
+VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -181,14 +182,27 @@ if (Spring.GetModOptions) then
 end
 
 
---------------------------------------------------------------------------------
--- Damage Types
---------------------------------------------------------------------------------
 
 
+local UnitDefs = DEFS.unitDefs
+local cegCache = {}
 local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 
-for _, weaponDef in pairs(WeaponDefs) do
+for weapName, weaponDef in pairs(WeaponDefs) do
+	local cp = weaponDef.customparams
+	if cp then
+		if cp.cegflare then
+			cegCache[weapName] = cp.cegflare
+		end
+		for k, v in pairs (cp) do
+			if type(v) == "table" or type(v) == "boolean" then
+				weaponDef.customparams[k] = table.serialize(v)
+			end
+		end
+	end
+	--------------------------------------------------------------------------------
+	-- Damage Types
+	--------------------------------------------------------------------------------
     if weaponDef.damage then
     local damage = weaponDef.damage
     local defaultDamage = damage["default"]
@@ -215,6 +229,23 @@ for _, weaponDef in pairs(WeaponDefs) do
   end
 end
 
+for unitName, ud in pairs(UnitDefs) do
+	local weapons = ud.weapons
+	if weapons then
+		if not ud.sfxtypes then -- for now, don't override unitdefs
+			ud.sfxtypes = { explosiongenerators = {} }
+			-- TODO: think of something good to add as SFX.CEG (probably exhaust for most?)
+			table.insert(ud.sfxtypes.explosiongenerators, 1, "custom:nothing")
+			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
+				local cegFlare = cegCache[string.lower(weapons[weaponID].name)]
+				if cegFlare then
+					--Spring.Echo("cegFlare: " .. cegFlare)
+					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
+				end
+			end
+		end
+	end
+end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Range Multiplier

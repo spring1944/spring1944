@@ -1,8 +1,14 @@
 local unitDefID = Spring.GetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
-local ud = UnitDefs[unitDefID]
-
-local rearFacing = ud.customParams.rearfacing
+unitDefID = Spring.GetUnitDefID(unitID)
+unitDef = UnitDefs[unitDefID]
+info = GG.lusHelper[unitDefID]
+ 
+ -- TODO: in MCL lusHelper caches all this per unitdef into a single info table
+local barrelRecoilDist = info.barrelRecoilDist
+local barrelRecoilSpeed = info.barrelRecoilSpeed
+local rearFacing = info.rearFacing
+local flareOnShots = info.flareOnShots
 
 local MIN_HEALTH = 1
 
@@ -36,9 +42,21 @@ function script.AimWeapon(weaponID, heading, pitch)
 end
 
 function script.FireWeapon(weaponID)
-	Move(barrel, z_axis, -5, 100)
-	WaitForMove(barrel, z_axis)
-	Move(barrel, z_axis, 0, 10)
+	if not flareOnShots[weaponID] then
+		EmitSfx(flare, SFX.CEG + weaponID)
+		Move(barrel, z_axis, -barrelRecoilDist)
+		WaitForMove(barrel, z_axis)
+		Move(barrel, z_axis, 0, barrelRecoilSpeed)
+	end
+end
+
+function script.Shot(weaponID)
+	if flareOnShots[weaponID] then
+		EmitSfx(flare, SFX.CEG + weaponID)
+		Move(barrel, z_axis, -barrelRecoilDist)
+		WaitForMove(barrel, z_axis)
+		Move(barrel, z_axis, 0, barrelRecoilSpeed)
+	end
 end
 
 function script.AimFromWeapon(weaponID) 
