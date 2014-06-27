@@ -511,7 +511,7 @@ function widget:MouseRelease(x, y, button)
 
   local units = spGetSelectedUnitsSorted()
   if (units.n ~= unitTypes) then
-    return -1  -- discard this click
+    --return -1  -- discard this click
   end
   units.n = nil
 
@@ -523,6 +523,16 @@ function widget:MouseRelease(x, y, button)
       unitDefID = udid
       unitTable = uTable
       break
+	elseif UnitDefs[udid].customParams.mother then
+	  local transported = spGetUnitIsTransporting(uTable[1])
+	  for _, unitID in pairs(transported) do
+	    index = index + 1
+	    if (index == icon) then
+          unitDefID = Spring.GetUnitDefID(unitID)
+          unitTable = {unitID, uTable[1]}
+          break
+		end
+	  end
     end
     index = index + 1
   end
