@@ -52,11 +52,6 @@ local glCallList = gl.CallList
 local glCreateList = gl.CreateList
 local glDeleteList = gl.DeleteList
 local glDrawFuncAtUnit = gl.DrawFuncAtUnit
-local glShape = gl.Shape
-
-local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
-local GL_LINE_LOOP = GL.LINE_LOOP
-local GL_LINE_STRIP = GL.LINE_STRIP
 
 local mathFloor = math.floor
 local mathMax = math.max
@@ -65,24 +60,23 @@ local mathRad = math.rad
 local mathSin = math.sin
 local mathCos = math.cos
 
-local CIRCLE_DIVS = 32
-local MIN_RELOAD_TIME = 4
-local circleVertsList = {}
 
+local MIN_RELOAD_TIME = 4
 local reloadDataList = {} -- {[unitDefID] = {primaryWeapon, reloadTime}}
 
 local displayList
 
 local teamColors = {}
 local function GetTeamColor(teamID)
-  local color = teamColors[teamID]
-  if (color) then
-	return color[1],color[2],color[3]
-  end
-  local r,g,b = Spring.GetTeamColor(teamID)
-  color = { r, g, b }
-  teamColors[teamID] = color
-  return r, g, b
+	local color = teamColors[teamID]
+	if (color) then
+		return color[1],color[2],color[3]
+	end
+	
+	local r,g,b = Spring.GetTeamColor(teamID)
+	color = { r, g, b }
+	teamColors[teamID] = color
+	return r, g, b
 end
 
 local auraUnits = {}
@@ -151,50 +145,9 @@ function widget:Shutdown()
 end
 
 function widget:GameFrame(n)
-  currentFrame = n
+	currentFrame = n
 end
 
-local function OutlineTriangleLoopVertices(vertices)
-	local result = {}
-	local ri = 1
-	local vi = 2
-	while vertices[vi] do
-		result[ri] = {v = vertices[vi].v}
-		ri = ri + 1
-		vi = vi + 1
-	end
-	
-	return result
-end
-
-local function DrawCircle(divs, height, scale, percentage, position)
-	local radius = 3 * scale
-	local spacing = 5 * scale
-	local centerX = height * -0.55 - scale + spacing * position + 2 * radius
-	local centerZ = -2.5 * scale - radius
-	
-	local triangleVertices = {
-		{v = {centerX, centerZ, 0}, c = {0.00,0.60,0.60}},
-		{v = {centerX, centerZ + radius, 0}, c = {0.00,0.40,0.40}},
-	}
-	local angleIncrement = mathRad(360 / divs)
-	local angle = 0
-	local drawnDivs = mathFloor(divs * percentage)
-	
-	for i=1, drawnDivs do
-		angle = angle + angleIncrement
-		triangleVertices[i+2] = {
-			v = {centerX + mathSin(angle) * radius, centerZ + mathCos(angle) * radius, 0},
-			c = color
-		}
-	end
-	
-	local lineVertices = OutlineTriangleLoopVertices(triangleVertices)
-	
-	glShape(GL_TRIANGLE_FAN, triangleVertices)
-	glColor(0, 0.45, 0.45, 1)
-	glShape(GL_LINE_STRIP, lineVertices)
-end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
 	if data then
@@ -228,8 +181,7 @@ function widget:Update(deltaTime)
 					local udid = GetUnitDefID(uid)
 					local ud = UnitDefs[udid]
 					local display = false
-					local health, build, upgrade, transport, ammo, fuel, aura
-					local reload = -1
+					local health, build, upgrade, transport, ammo, fuel, aura, reload
 					local reloadData = reloadDataList[udid]
 					local reloadTime, primaryWeapon
 					local upgradeProgress = GetUnitRulesParam(uid, "upgradeProgress")
@@ -266,7 +218,7 @@ function widget:Update(deltaTime)
 							aura = auraUnits[uid]
 						else
 							auraUnits[uid] = nil
-						end		  
+						end
 					else
 						aura = auraUnits[uid] or nil
 					end
@@ -361,8 +313,14 @@ function widget:Update(deltaTime)
 							local _, reloaded, reloadFrame = GetUnitWeaponState(uid, primaryWeapon)
 							if not reloaded then
 								--Spring.Echo("being reloaded")
-								reload = 1 - ((reloadFrame - currentFrame ) / 30) / reloadTime
-								if reload >= 0 then
+								precentage = 1 - ((reloadFrame - currentFrame ) / 30) / reloadTime
+								if precentage >= 0 then
+									reload =  {
+										max = 1,
+										cur = 0,
+										pct = precentage,
+										color = {0, 0.5, 0.9, 0.8},
+									}
 									display = true
 								end
 							end
@@ -411,17 +369,12 @@ function widget:Update(deltaTime)
 										counter = counter + 1
 									end
 								end
-								--counter = 0
+								counter = 0
 							end
 							
-							if reload >= 0 then
-								DrawCircle(CIRCLE_DIVS, radius, heightscale, reload, counter)
-								--Spring.Echo("drawing reload")
-							end
-							counter = 0
 							
 							--glTex('LuaUI/zui/bars/hp.png')
-							for bar, bardata in pairs({health,ammo,fuel,build,upgrade,transport}) do
+							for bar, bardata in pairs({health,ammo,fuel,build,upgrade,transport, reload}) do
 								if(bardata.pct) then
 									DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
 									counter = counter + 1
@@ -443,7 +396,7 @@ function widget:Update(deltaTime)
 end
 
 function widget:GameStart()
-  iconDist = Spring.GetConfigInt('UnitIconDist')
+	iconDist = Spring.GetConfigInt('UnitIconDist')
 end
 
 function DrawBar(barNum, heightscale, width, height, max, cur, pct, color, paralyze)
