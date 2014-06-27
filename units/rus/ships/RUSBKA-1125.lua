@@ -44,6 +44,8 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 		weaponswithammo			= 1,
 		barrelrecoildist		= 5,
 		barrelrecoilspeed		= 10,
+		turretturnspeed			= 15,
+		elevationspeed			= 20,
     },
 }
 
@@ -60,6 +62,8 @@ local RUS_BKA_1125_Turret_DshK = BoatChild:New{
 	customparams = {
 		barrelrecoildist		= 1,
 		barrelrecoilspeed		= 10,
+		turretturnspeed			= 30,
+		elevationspeed			= 45,
 	}
 }
 

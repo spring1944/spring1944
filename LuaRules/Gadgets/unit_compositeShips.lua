@@ -54,7 +54,7 @@ end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
 	if childCache[unitID] then
-		Spring.Echo("CHILD LOADED", unitID, transportID)
+		--Spring.Echo("CHILD LOADED", unitID, transportID)
 		childCache[unitID] = transportID
 	end -- set value to unitID of mother
 end
@@ -77,6 +77,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
         -- don't become shields)
         local passThroughDamage = damage - newDamage
         AddUnitDamage(childCache[unitID], passThroughDamage, 0, attackerID)
+		Spring.SetUnitTarget(attackerID, childCache[unitID], false, true)
 		return newDamage
 	end
 	return damage
