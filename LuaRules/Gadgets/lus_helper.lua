@@ -217,6 +217,7 @@ function gadget:GamePreload()
 		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 60)
 		info.barrelRecoilSpeed = (tonumber(cp.barrelrecoilspeed) or 10)
 		info.barrelRecoilDist = (tonumber(cp.barrelrecoildist) or 5)
+		info.aaWeapon = (tonumber(cp.aaweapon) or nil)
 		info.wheelSpeed = math.rad(tonumber(cp.wheelspeed) or 100)
 		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General

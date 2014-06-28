@@ -9,6 +9,8 @@ local SIG_MOVE = 1
 local children = info.children
 
 -- Pieces
+local base = piece("base")
+
 local function findPieces(input, name)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
 	--{ "piecename1" = pieceNum1, ... , "piecenameN" = pieceNumN }
@@ -20,8 +22,6 @@ local function findPieces(input, name)
 		end
 	end
 end
-
-local base = piece("base")
 
 local childrenPieces = {} -- {[1] = unitname, etc}
 findPieces(childrenPieces, "child")

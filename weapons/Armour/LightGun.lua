@@ -16,6 +16,9 @@ local LightGunClass = Weapon:New{
   tolerance          = 300,
   turret             = true,
   weaponType         = [[Cannon]],
+  customparams = {
+    cegflare           = "XSMALL_MUZZLEFLASH",
+  }
 }
 
 -- HE Round Class

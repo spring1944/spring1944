@@ -5,7 +5,7 @@ local modRules = {
 	experience = {
 		powerScale					=	1.5,
 		healthScale					=	1.5,
-		reloadScale					=	1.5,
+		reloadScale					=	0,
 		experienceMult			=	1.25,
 	},
 	sensors = {
