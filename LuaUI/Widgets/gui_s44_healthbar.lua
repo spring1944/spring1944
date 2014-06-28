@@ -356,15 +356,13 @@ end
 function DrawBar(barNum, heightscale, width, height, max, cur, pct, color, paralyze)
 	heightscale = 0.75 * heightscale
 	glColor(0, 0, 0, 1)
-	glRect(width * -0.6 - heightscale, (-1 + (2 * barNum)) * height - heightscale, width * -0.6 + (width * 1.6) + heightscale, (1 + (2 * barNum)) * height + heightscale)
+	local x1 = width * -0.6
+	local y1 = (-1 + (2 * barNum)) * height -- bar1 = 1h, bar2 = 3h, bar3 = 5h
+	local x2 = width * -0.6 + (width * 1.6)
+	local y2 = (1 + (2 * barNum)) * height -- bar1 = 3h, bar2 = 5h, bar3 = 7h
+	glRect(x1 - heightscale, y1 - ((barNum == 0 and heightscale) or 0), x2 + heightscale, y2)
 	glColor(color)
-	glTexRect(width * -0.6, (-1 + (2 * barNum)) * height, width * -0.6 + (width * (pct * 1.6)), (1 + (2 * barNum)) * height)
-	if(paralyze ~= nil) then
-		local parapct = paralyze / max
-		if(parapct > pct) then parapct = pct end --amount of hp is more important than stun time
-		glColor(0,0.75,1,1)
-		glTexRect(width * -0.6, (-1 + (2 * barNum)) * height, width * -0.6 + (width * (parapct * 1.6)), (1 + (2 * barNum)) * height)
-	end
+	glTexRect(x1, y1, width * -0.6 + (width * (pct * 1.6)), y2 - heightscale)
 end
 
 function widget:DrawWorld()
