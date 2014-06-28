@@ -6,8 +6,8 @@
   airSightDistance=1500;
   brakeRate=0.15;
   buildCostEnergy=0;
-  buildCostMetal=2650;
-  buildTime=2650;
+  buildCostMetal=3650;
+  buildTime=3650;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   //collisionVolumeType=box;
@@ -22,7 +22,7 @@
     armor_top=11;
     hasturnbutton=1;
     lowammolevel=5;
-    maxammo=5;
+    maxammo=6;
     weaponcost=16;
     weaponswithammo=1;
 	blockfear=1;
