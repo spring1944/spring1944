@@ -47,6 +47,7 @@ function script.Create()
 end
 
 function script.AimWeapon(weaponID, heading, pitch)
+	if isDisabled then return false end -- don't even animate if we are disabled
 	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
 	SetSignalMask(2 ^ weaponID)
 	if aaWeapon and aaWeapon == weaponID then
@@ -60,7 +61,7 @@ function script.AimWeapon(weaponID, heading, pitch)
 	WaitForTurn(sleeve, x_axis)
 	--StartThread(RestoreAfterDelay)
 	aaAiming = false
-	return not isDisabled
+	return true
 end
 
 function script.FireWeapon(weaponID)
