@@ -375,8 +375,14 @@ function widget:Update(deltaTime)
 							
 							--glTex('LuaUI/zui/bars/hp.png')
 							for bar, bardata in pairs({health,ammo,fuel,build,upgrade,transport, reload}) do
-								if(bardata.pct) then
-									DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, bardata.pct, bardata.color, bardata.paralyze)
+								local pct = bardata.pct
+								if(pct) then
+									if pct > 1 then
+										pct = 1
+									elseif pct < 0 then
+										pct = 0
+									end
+									DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, pct, bardata.color, bardata.paralyze)
 									counter = counter + 1
 								end
 							end
