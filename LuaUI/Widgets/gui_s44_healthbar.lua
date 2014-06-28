@@ -262,7 +262,7 @@ function widget:Update(deltaTime)
 							cur = curFuel,
 							max = ud.maxFuel,
 							pct = curFuel / MAP_FUEL_SCALE(ud.maxFuel),
-							color = {0.2, 0.5, 0.9, 0.8},
+							color = {0.9, 0.5766, 0.207, 0.8},
 						}
 						display = true
 					end
