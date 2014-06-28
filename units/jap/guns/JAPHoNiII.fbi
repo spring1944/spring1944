@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=JAPHoNiII;
   name=Type 1 Ho-Ni II;
-  description=Assault Gun;
+  description=Self-Propelled Howitzer;
   acceleration=0.041;
   airSightDistance=1500;
   brakeRate=0.15;
