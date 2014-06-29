@@ -284,6 +284,7 @@ function widget:Update(deltaTime)
 
 				if (display == false) and (IsUnitSelected(uid) or aura) then display = true end
 				if isBeingTransported then display = false end
+				if ud.customParams.child then display = true end
 				
 				local radius,r,g,b,x,y,z,heightscale
 

@@ -76,8 +76,11 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
         -- if the component is toast, apply damage to the base unit (so they
         -- don't become shields)
         local passThroughDamage = damage - newDamage
-        AddUnitDamage(childCache[unitID], passThroughDamage, 0, attackerID)
-		Spring.SetUnitTarget(attackerID, childCache[unitID], false, true)
+		local mother = childCache[unitID]
+		if mother and not Spring.GetUnitIsDead(mother) then
+			AddUnitDamage(mother, passThroughDamage, 0, attackerID)
+			Spring.SetUnitTarget(attackerID, mother, false, true)
+		end
 		return newDamage
 	end
 	return damage
