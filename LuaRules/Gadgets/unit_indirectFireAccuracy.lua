@@ -84,6 +84,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 				if targetX ~= nil and targetY ~= nil and targetZ ~= nil then
 					if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true or IsPosInRadar(targetX, targetY, targetZ, allyTeam) == true then
 						visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
+                        SetUnitRulesParam(unitID, "zeroed", 0)
 					end
 				end
 			end
