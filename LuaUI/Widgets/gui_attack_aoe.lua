@@ -52,6 +52,7 @@ local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetUnitPosition        = Spring.GetUnitPosition
 local GetUnitRadius          = Spring.GetUnitRadius
 local GetUnitStates          = Spring.GetUnitStates
+local GetUnitCommands        = Spring.GetUnitCommands
 local TraceScreenRay         = Spring.TraceScreenRay
 local CMD_ATTACK             = CMD.ATTACK
 local CMD_DGUN               = CMD.DGUN
@@ -198,7 +199,7 @@ local function SetupUnitDef(unitDefID, unitDef)
   if (maxWeaponDef.cylinderTargetting >= 100) then
     aoeDefInfo[unitDefID] = {type = "orbital", scatter = scatter}
   elseif (weaponType == "Cannon") then
-    aoeDefInfo[unitDefID] = {type = "ballistic", scatter = scatter, v = maxWeaponDef.projectilespeed, range = maxWeaponDef.range}
+    aoeDefInfo[unitDefID] = {type = "ballistic", scatter = scatter, v = maxWeaponDef.projectilespeed, range = maxWeaponDef.range, grav = maxWeaponDef.myGravity or g}
   elseif (weaponType == "MissileLauncher") then
     local turnRate = 0
     if (maxWeaponDef.tracks) then
@@ -213,7 +214,7 @@ local function SetupUnitDef(unitDefID, unitDef)
       aoeDefInfo[unitDefID] = {type = "direct", scatter = scatter, range = maxWeaponDef.range}
     end
   elseif (weaponType == "AircraftBomb") then
-    aoeDefInfo[unitDefID] = {type = "dropped", scatter = scatter, v = unitDef.speed, h = unitDef.wantedHeight, salvoSize = maxWeaponDef.salvoSize, salvoDelay = maxWeaponDef.salvoDelay}
+    aoeDefInfo[unitDefID] = {type = "dropped", scatter = scatter, v = unitDef.speed, h = unitDef.wantedHeight, salvoSize = maxWeaponDef.salvoSize, salvoDelay = maxWeaponDef.salvoDelay, grav = maxWeaponDef.myGravity or g}
   elseif (weaponType == "StarburstLauncher") then
     if (maxWeaponDef.tracks) then
       aoeDefInfo[unitDefID] = {type = "tracking"}
@@ -336,22 +337,20 @@ end
 --ballistics
 --------------------------------------------------------------------------------
 
-local function GetBallisticVector(v, dx, dy, dz, trajectory, range)
+local function GetBallisticVector(v, grav, dx, dy, dz, trajectory, range)
   local dr_sq = dx*dx + dz*dz
   local dr = sqrt(dr_sq)
   
   if (dr > range) then return nil end
-  
   local d_sq = dr_sq + dy*dy
   
   if (d_sq == 0) then
     return 0, v * trajectory, 0
   end
-  
-  local root1 = v*v*v*v - 2*v*v*g*dy - g*g*dr_sq
+  local root1 = v*v*v*v + 2*v*v*grav*dy - grav*grav*dr_sq
   if (root1 < 0) then return nil end
   
-  local root2 = 2*dr_sq*d_sq*(v*v - g*dy - trajectory*sqrt(root1))
+  local root2 = 2*dr_sq*d_sq*(v*v - grav*dy - trajectory*sqrt(root1))
   
   if (root2 < 0) then return nil end
   
@@ -360,7 +359,7 @@ local function GetBallisticVector(v, dx, dy, dz, trajectory, range)
   
   if (r == 0 or vr == 0) 
     then vy = v
-    else vy = vr*dy/dr + dr*g/(2*vr)
+    else vy = vr*dy/dr + dr*grav/(2*vr)
   end
   
   local bx = dx*vr/dr
@@ -401,18 +400,17 @@ end
 
 --v: weaponvelocity
 --trajectory: +1 for high, -1 for low
-local function DrawBallisticScatter(scatter, v, fx, fy, fz, tx, ty, tz, trajectory, range)
+local function DrawBallisticScatter(scatter, v, grav, fx, fy, fz, tx, ty, tz, trajectory, range)
   if (scatter == 0) then return end
   local dx = tx - fx
   local dy = ty - fy
   local dz = tz - fz
   if (dx == 0 and dz == 0) then return end
   
-  local bx, by, bz = GetBallisticVector(v, dx, dy, dz, trajectory, range)
+  local bx, by, bz = GetBallisticVector(v, grav, dx, dy, dz, trajectory, range)
   
   --don't draw anything if out of range
   if (not bx) then return end
-  
   local br = sqrt(bx*bx + bz*bz)
   
   --bars
@@ -507,7 +505,7 @@ end
 --------------------------------------------------------------------------------
 --dropped
 --------------------------------------------------------------------------------
-local function DrawDroppedScatter(aoe, ee, scatter, v, fx, fy, fz, tx, ty, tz, salvoSize, salvoDelay)
+local function DrawDroppedScatter(aoe, ee, scatter, v, grav, fx, fy, fz, tx, ty, tz, salvoSize, salvoDelay)
   local dx = tx - fx
   local dz = tz - fz
   
@@ -516,7 +514,7 @@ local function DrawDroppedScatter(aoe, ee, scatter, v, fx, fy, fz, tx, ty, tz, s
   if (not bx) then return end
   
   local vertices = {}
-  local currScatter = scatter * v * sqrt(2*fy/g)
+  local currScatter = scatter * v * sqrt(2*fy/ grav)
   local alphaMult = min(v * salvoDelay / aoe, 1)
   
   for i=1,salvoSize do
@@ -587,7 +585,6 @@ function widget:DrawWorld()
   if (cmd ~= CMD_ATTACK or not aoeUnitDefID) then return end
   
   local info = aoeDefInfo[aoeUnitDefID]
-  
   local fx, fy, fz = GetUnitPosition(aoeUnitID)
   if (not fx) then return end
   if (not info.mobile) then fy = fy + GetUnitRadius(aoeUnitID) end
@@ -605,7 +602,7 @@ function widget:DrawWorld()
       trajectory = -1
     end
     DrawAoE(tx, ty, tz, info.aoe, info.ee)
-    DrawBallisticScatter(info.scatter, info.v, fx, fy, fz, tx, ty, tz, trajectory, info.range)
+    DrawBallisticScatter(info.scatter, info.v, info.grav, fx, fy, fz, tx, ty, tz, trajectory, info.range)
   elseif (weaponType == "noexplode") then
     DrawNoExplode(info.aoe, fx, fy, fz, tx, ty, tz, info.range)
   elseif (weaponType == "tracking") then
@@ -614,7 +611,7 @@ function widget:DrawWorld()
     DrawAoE(tx, ty, tz, info.aoe, info.ee)
     DrawDirectScatter(info.scatter, fx, fy, fz, tx, ty, tz, info.range, GetUnitRadius(aoeUnitID))
   elseif (weaponType == "dropped") then
-    DrawDroppedScatter(info.aoe, info.ee, info.scatter, info.v, fx, info.h, fz, tx, ty, tz, info.salvoSize, info.salvoDelay)
+    DrawDroppedScatter(info.aoe, info.ee, info.scatter, info.v, info.grav, fx, info.h, fz, tx, ty, tz, info.salvoSize, info.salvoDelay)
   elseif (weaponType == "wobble") then
     DrawAoE(tx, ty, tz, info.aoe, info.ee)
     DrawWobbleScatter(info.scatter, tx, ty, tz)

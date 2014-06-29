@@ -10,9 +10,11 @@ function gadget:GetInfo()
     }
 end
 
-if (not gadgetHandler:IsSyncedCode()) then
-  return false
-end
+if (gadgetHandler:IsSyncedCode()) then
+
+-------------------------------------------------
+-------------------- SYNCED ---------------------
+-------------------------------------------------
 
 --CMDS
 local CMD_ATTACK			= CMD.ATTACK
@@ -142,4 +144,15 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
+end
+
+
+else
+
+-------------------------------------------------
+------------------- UNSYNCED --------------------
+-------------------------------------------------
+
+
+
 end
