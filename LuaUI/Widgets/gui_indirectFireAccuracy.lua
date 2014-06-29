@@ -34,7 +34,8 @@ local GetUnitAllyTeam        = Spring.GetUnitAllyTeam
 local IsPosInLos			 = Spring.IsPosInLos
 local IsPosInRadar			 = Spring.IsPosInRadar
 local WorldToScreenCoords    = Spring.WorldToScreenCoords
-
+local ValidUnitID          = Spring.ValidUnitID
+local GetUnitPosition        = Spring.GetUnitPosition
 local CMD_ATTACK             = CMD.ATTACK
 
 
@@ -64,7 +65,11 @@ function widget:DrawScreen()
                     queue = GetUnitCommands(unitID)
                     if queue and queue[1] and queue[1].id == CMD_ATTACK then
                         target = queue[1].params
-                        x, y, z = target[1], target[2], target[3]
+                        if ValidUnitID(target[1]) == true then --shooting at a unit
+                            x, y, z = GetUnitPosition(target[1])
+                        else --shooting at the ground
+                            x, y, z = target[1], target[2], target[3]
+                        end
                         sx, sy, sz = WorldToScreenCoords(x,y,z)
                         if IsPosInLos(x, y, z, allyTeam) or IsPosInRadar(x, y, z, allyTeam) then
                             local zeroed = GetUnitRulesParam(unitID, "zeroed")
