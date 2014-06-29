@@ -20,7 +20,7 @@ local CMD_AREA_ATTACK		= CMD.AREA_ATTACK
 --synced read
 local IsPosInLos			= Spring.IsPosInLos
 local IsPosInRadar			= Spring.IsPosInRadar
-local IsValidUnitID			= Spring.ValidUnitID
+local ValidUnitID			= Spring.ValidUnitID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitAllyTeam		= Spring.GetUnitAllyTeam
 local GetGameSeconds		= Spring.GetGameSeconds
@@ -69,7 +69,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 				local targetX, targetY, targetZ
                 local targetUnitID
 
-				if IsValidUnitID(cmdParams[1]) == true then --shooting at a unit
+				if ValidUnitID(cmdParams[1]) == true then --shooting at a unit
 					targetX, targetY, targetZ = GetUnitPosition(cmdParams[1])
                     targetUnitID = cmdParams[1]
 				else --shooting at the ground
@@ -103,7 +103,7 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam)
-	local ud = UnitDefs[unitDefID] 
+	local ud = UnitDefs[unitDefID]
 	if ud.customParams.canareaattack == "1" then
 		guns[unitID] = true
 	end
@@ -132,12 +132,12 @@ function gadget:GameFrame(n)
 	if (n % (2*30)) < 0.1 then --update every two seconds
 		for allyID, units in pairs(visibleAreas) do
 			for unitID, targetArea in pairs(units) do
-				if IsValidUnitID(unitID) and targetArea then
+				if ValidUnitID(unitID) and targetArea then
                     if targetArea.x ~= nil and targetArea.y ~= nil and targetArea.z ~= nil then
                         local targetUnitID = targetArea.targetUnitID
 
                         -- targeting a unit, need to make sure it didn't move
-                        if targetUnitID and IsValidUnitID(targetUnitID) then
+                        if targetUnitID and ValidUnitID(targetUnitID) then
                             local x, y, z = GetUnitPosition(targetUnitID)
                             local tx, ty, tz = targetArea.x, targetArea.y, targetArea.z
 

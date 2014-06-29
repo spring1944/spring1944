@@ -33,7 +33,7 @@ local GetUnitCommands        = Spring.GetUnitCommands
 local GetUnitAllyTeam        = Spring.GetUnitAllyTeam
 local IsPosInLos			 = Spring.IsPosInLos
 local IsPosInRadar			 = Spring.IsPosInRadar
-local IsValidUnitID          = Spring.IsValidUnitID
+local ValidUnitID            = Spring.ValidUnitID
 local WorldToScreenCoords    = Spring.WorldToScreenCoords
 local GetUnitPosition        = Spring.GetUnitPosition
 
@@ -53,7 +53,7 @@ end
 
 function widget:DrawScreen()
     local selectedUnitsSorted = GetSelectedUnitsSorted()
-    
+
     for unitDefID, unitIDs in pairs(selectedUnitsSorted) do
         local unitDef = UnitDefs[unitDefID]
         if unitDef then
@@ -68,28 +68,31 @@ function widget:DrawScreen()
                         target = queue[1].params
                         -- attack order on the ground, target is filled with
                         -- world coordinates
+                        local x, y, z
                         if target[2] then
                             x, y, z = target[1], target[2], target[3]
                         -- on a unit, target is a unitID
-                        else
+                        elseif ValidUnitID(target[1]) then
                             x, y, z = GetUnitPosition(target[1])
                         end
 
-                        sx, sy, sz = WorldToScreenCoords(x, y, z)
-                        if IsPosInLos(x, y, z, allyTeam) or IsPosInRadar(x, y, z, allyTeam) then
-                            local zeroed = GetUnitRulesParam(unitID, "zeroed")
-                            if zeroed and zeroed == 1 then
-                                glColor(targettedColor)
-                                targetStr = "Targetted"
+                        if x and y and z then
+                            sx, sy, sz = WorldToScreenCoords(x, y, z)
+                            if IsPosInLos(x, y, z, allyTeam) or IsPosInRadar(x, y, z, allyTeam) then
+                                local zeroed = GetUnitRulesParam(unitID, "zeroed")
+                                if zeroed and zeroed == 1 then
+                                    glColor(targettedColor)
+                                    targetStr = "Targetted"
+                                else
+                                    glColor(targettingColor)
+                                    targetStr = "Targetting..."
+                                end
                             else
-                                glColor(targettingColor)
-                                targetStr = "Targetting..."
+                                glColor(noLOSColor)
+                                targetStr = "No Sight"
                             end
-                        else
-                            glColor(noLOSColor)
-                            targetStr = "No Sight"
+                            font:Print(targetStr, sx + 10, sy - 20, fontSizeScreen, "n")
                         end
-                        font:Print(targetStr, sx + 10, sy - 20, fontSizeScreen, "n")
                     end
                 end
             end
