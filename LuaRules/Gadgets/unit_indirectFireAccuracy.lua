@@ -1,13 +1,13 @@
 function gadget:GetInfo()
-    return {
-        name      = "Indirect Fire Accuracy Manager",
-        desc      = "Changes the accuracy of weapons fire based on the LoS status of the target",
-        author    = "Ben Tyler (Nemo), Craig Lawrence (FLOZi)",
-        date      = "Feb 10th, 2009",
-        license   = "LGPL v2.1 or later",
-        layer     = 0,
-        enabled   = true  --  loaded by default?
-    }
+	return {
+		name	  = "Indirect Fire Accuracy Manager",
+		desc	  = "Changes the accuracy of weapons fire based on the LoS status of the target",
+		author	  = "Ben Tyler (Nemo), Craig Lawrence (FLOZi)",
+		date	  = "Feb 10th, 2009",
+		license	  = "LGPL v2.1 or later",
+		layer	  = 0,
+		enabled	  = true  --  loaded by default?
+	}
 end
 
 if (not gadgetHandler:IsSyncedCode()) then
@@ -18,7 +18,7 @@ end
 local CMD_ATTACK			= CMD.ATTACK
 local CMD_AREA_ATTACK		= CMD.AREA_ATTACK
 --synced read
-local IsPosInLos 			= Spring.IsPosInLos
+local IsPosInLos			= Spring.IsPosInLos
 local IsPosInRadar			= Spring.IsPosInRadar
 local IsValidUnitID			= Spring.ValidUnitID
 local GetUnitPosition		= Spring.GetUnitPosition
@@ -26,10 +26,11 @@ local GetUnitAllyTeam		= Spring.GetUnitAllyTeam
 local GetGameSeconds		= Spring.GetGameSeconds
 --synced control
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
-local SetUnitExperience  	= Spring.SetUnitExperience
+local SetUnitExperience		= Spring.SetUnitExperience
+local SetUnitRulesParam		= Spring.SetUnitRulesParam
 
 --constants
-local losMult 				= 0.25 --how much more accurate the weapon gets (lower accuracy number = more accurate, this is multiplied by the regular accuracy)
+local losMult				= 0.25 --how much more accurate the weapon gets (lower accuracy number = more accurate, this is multiplied by the regular accuracy)
 local accuracyDelay			= 20 --# of seconds after LoS is established on attack location before the accuracy improvement kicks in
 --vars
 local visibleAreas			= {}
@@ -131,10 +132,12 @@ function gadget:GameFrame(n)
 							end
 							if ((n/30) - unitArea.targetTime) > accuracyDelay then
 								unitArea.zeroed = true
+								SetUnitRulesParam(unitID, "zeroed", 1)
 							end
 						else
 							unitArea.targetTime = GetGameSeconds()
 							unitArea.zeroed = false
+							SetUnitRulesParam(unitID, "zeroed", 0)
 						end
 						updateUnit(allyID, unitID)
 					end
