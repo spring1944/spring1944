@@ -52,6 +52,7 @@ local BoatMother = Unit:New{
 	airSightDistance	= 1500,
 	canMove				= true,
 	category 			= "SHIP MINETRIGGER",
+	collisionVolumeType	= "box",
 	explodeAs			= "Vehicle_Explosion_Sm",
 	floater				= true,
 	footprintX			= 4,
