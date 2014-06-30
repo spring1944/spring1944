@@ -203,6 +203,7 @@ local usunits = {
     "uslcvp",
     "uspt103-bofors",
 	"ussc",
+	"uslcss",
 	"uslvta4",
     "uslct",
     "uslcsl",
