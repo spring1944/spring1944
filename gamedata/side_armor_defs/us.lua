@@ -140,6 +140,7 @@ local USDefs = {
   "USTacoma",
   "USLCVP",
   "USSC",
+  "USLCSS",
   },
 }
 
