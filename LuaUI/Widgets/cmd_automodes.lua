@@ -1,14 +1,28 @@
 function widget:GetInfo()
 	return {
-		name      = "Hold position v2",
-		desc      = "Sets all units without firearcs (and don't fly) to Hold Position by default.\nUnits are returned to Maneuver when disabled.",
-		author    = "Gnome",
-		date      = "July 2008", --edited sept 15, 2008
+		name      = "Automatic Modes", -- Based on Hold position v2 by Gnome
+		desc      = "Sets relevant units to hold position and/or hold fire",
+		author    = "Gnome, ashdnazg",
+		date      = "June 2014",
 		license   = "Public domain",
 		layer     = 0,
 		enabled   = true
 	}
 end
+
+
+--[[
+
+ IMPLEMENTED SOMETHING NEW? GREAT! ADD IT HERE:
+ 
+ 1) Sets all units without firearcs (and don't fly) to Hold Position by default.
+    Units are returned to Maneuver when disabled. 
+ 2) Sets Howitzers to hold fire.
+ 
+]]--
+
+
+local howitzerDefIDs = {}
 
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
@@ -28,12 +42,25 @@ local function ResetToManeuver(uid)
 end
 
 function widget:Initialize()
+
+    for unitDefID, unitDef in pairs(UnitDefs) do
+        local weapon = unitDef.weapons[1]
+        if weapon then
+            local cp = WeaponDefs[weapon.weaponDef].customParams
+            if cp and cp.howitzer then -- and weapon.customparams.howitzer then
+                howitzerDefIDs[unitDefID] = true
+            end
+        end
+    end
+
 	for _, uid in ipairs(Spring.GetTeamUnits(Spring.GetLocalTeamID())) do
 		local udid = Spring.GetUnitDefID(uid)
 		local tid = Spring.GetUnitTeam(uid)
 		widget:UnitCreated(uid, udid, tid)
 	end
+    
 	Spring.SendMessageToPlayer(Spring.GetLocalPlayerID(),"All units set to Hold Position")
+    
 end
 
 function widget:Shutdown()
@@ -51,4 +78,9 @@ function widget:UnitCreated(uid, udid, tid)
 			GiveOrderToUnit(uid, CMD.MOVE_STATE, { 0 }, 0)
 		end
 	end
+    
+    if howitzerDefIDs[udid] then
+        GiveOrderToUnit(uid, CMD.FIRE_STATE, { 0 }, 0)
+    end
+    
 end
