@@ -2,7 +2,7 @@ function widget:GetInfo()
 	return {
 		name      = "Automatic Modes", -- Based on Hold position v2 by Gnome
 		desc      = "Sets relevant units to hold position and/or hold fire",
-		author    = "ashdnazg",
+		author    = "Gnome, ashdnazg",
 		date      = "June 2014",
 		license   = "Public domain",
 		layer     = 0,
