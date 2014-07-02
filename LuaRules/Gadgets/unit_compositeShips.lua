@@ -32,7 +32,7 @@ local MIN_HEALTH = 1
 local HEALTH_RESTORE_LEVEL = 0.5
 
 -- Variables
-local motherCache = {} -- unitID = true
+local motherCache = {} -- unitID = {child1ID, child2ID ...}
 local childCache = {} -- unitID = motherID
 local deadChildren = {} -- unitID = true
 
@@ -41,7 +41,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	if cp then
-		motherCache[unitID] = cp.mother
+		motherCache[unitID] = cp.mother and {} or nil
 		childCache[unitID] = cp.child
 	end
 end
@@ -55,8 +55,10 @@ end
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
 	if childCache[unitID] then
 		--Spring.Echo("CHILD LOADED", unitID, transportID)
-		childCache[unitID] = transportID
-	end -- set value to unitID of mother
+		childCache[unitID] = transportID -- set value to unitID of mother
+		table.insert(motherCache[transportID], unitID) -- insert into mothers list
+		Spring.Echo(motherCache[transportID])
+	end 
 end
 
 local function DisableChild(childID, disable)
@@ -95,6 +97,15 @@ function gadget:GameFrame(n)
 			end
 		end
 	end
+end
+
+function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions, cmdTag, synced)
+	local motherChildren = motherCache[unitID]
+	if motherChildren and cmdID == CMD.ATTACK then
+		Spring.Echo("YO MAMMA!", cmdParams)
+		GG.Delay.DelayCall(Spring.GiveOrderToUnitArray, {motherChildren, CMD.ATTACK, cmdParams, cmdOptions}, 1)
+	end
+	return true
 end
 
 --[[function gadget:AllowWeaponTarget(attackerID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
