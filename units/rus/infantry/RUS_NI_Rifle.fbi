@@ -8,7 +8,6 @@
   buildCostEnergy=0;
   buildCostMetal=50;
   buildTime=50;
-  buildPic=rusrifle.png;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=RUSSoldier_dead;
