@@ -36,6 +36,7 @@ local motherCache = {} -- unitID = {child1ID, child2ID ...}
 local childCache = {} -- unitID = motherID
 local deadChildren = {} -- unitID = true
 
+local passedCmds = {[CMD.ATTACK] = true, [CMD.FIRE_STATE] = true, [CMD.STOP] = true}
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
@@ -101,9 +102,8 @@ end
 
 function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions, cmdTag, synced)
 	local motherChildren = motherCache[unitID]
-	if motherChildren and cmdID == CMD.ATTACK then
-		Spring.Echo("YO MAMMA!", cmdParams)
-		GG.Delay.DelayCall(Spring.GiveOrderToUnitArray, {motherChildren, CMD.ATTACK, cmdParams, cmdOptions}, 1)
+	if motherChildren and passedCmds[cmdID] then
+		GG.Delay.DelayCall(Spring.GiveOrderToUnitArray, {motherChildren, cmdID, cmdParams, cmdOptions}, 1)
 	end
 	return true
 end
