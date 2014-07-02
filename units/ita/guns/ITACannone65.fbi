@@ -67,7 +67,7 @@
   weaponMainDir1=0 0 1;
 
   weapon2=ITACannone65heat;
-  maxAngleDif2=10;
+  maxAngleDif2=5;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP;
   weaponMainDir2=0 0 1;
 }
