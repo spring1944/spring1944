@@ -84,6 +84,7 @@ local BoatChild = Unit:New{
 	category 			= "SHIP MINETRIGGER TURRET",
 	footprintX			= 1,
 	footprintZ 			= 1,
+	iconType			= "turret",
 	idleAutoHeal		= 1,
 	mass				= 10,
 	maxDamage			= 1000,

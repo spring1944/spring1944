@@ -153,7 +153,7 @@ function widget:Update(deltaTime)
 		displayList = glCreateList( function()
 			glDepthMask(true)
 			glDepthTest(false)
-			for _,uid in pairs(GetVisibleUnits(ALL_UNITS,iconDist,false)) do
+			for _,uid in pairs(GetVisibleUnits(ALL_UNITS,50,false)) do
 				local camX,camY,camZ = GetCameraPosition()
 				local udid = GetUnitDefID(uid)
 				local ud = UnitDefs[udid]

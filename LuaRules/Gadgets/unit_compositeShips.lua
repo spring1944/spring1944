@@ -2,7 +2,7 @@ function gadget:GetInfo()
   return {
     name      = "Composite Ships Helper",
     desc      = "Does stuffs for composite ships",
-    author    = "FLOZi",
+    author    = "FLOZi (C. Lawrence)",
     date      = "26 June 2014",
     license   = "GNU GPL v2",
     layer     = 0,
@@ -28,22 +28,23 @@ if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 local DelayCall = GG.Delay.DelayCall
 
 -- Constants
-local MIN_HEALTH = 1
-local HEALTH_RESTORE_LEVEL = 0.5
+local MIN_HEALTH = 1 -- No fewer HP than this
+local HEALTH_RESTORE_LEVEL = 0.5 -- What % of maxHP to restore turret function
 
 -- Variables
 local motherCache = {} -- unitID = {child1ID, child2ID ...}
 local childCache = {} -- unitID = motherID
 local deadChildren = {} -- unitID = true
 
+-- Commands which should be passed from mother to all children
 local passedCmds = {[CMD.ATTACK] = true, [CMD.FIRE_STATE] = true, [CMD.STOP] = true}
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	if cp then
-		motherCache[unitID] = cp.mother and {} or nil
-		childCache[unitID] = cp.child
+		motherCache[unitID] = cp.mother and {} or nil -- to be populated in UnitLoaded
+		childCache[unitID] = cp.child -- ditto
 	end
 end
 
@@ -58,7 +59,6 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 		--Spring.Echo("CHILD LOADED", unitID, transportID)
 		childCache[unitID] = transportID -- set value to unitID of mother
 		table.insert(motherCache[transportID], unitID) -- insert into mothers list
-		Spring.Echo(motherCache[transportID])
 	end 
 end
 
