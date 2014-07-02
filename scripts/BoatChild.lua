@@ -30,7 +30,7 @@ local function findPieces(input, name)
 end
 
 local base = piece("base")
-local turret, sleeve, barrel, flare = piece("turret", "sleeve", "barrel", "flare")
+local turret, sleeve, flare, barrel = piece("turret", "sleeve",  "flare", "barrel")
 local flares = {}
 if not flare then findPieces(flares, "flare") end
 

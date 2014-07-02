@@ -25,16 +25,16 @@ local RUS_BMO = BoatMother:New{
 	},
 	customparams = {
 		children = {
-			"RUS_BMO_Turret_37mm", 
-			"RUS_BMO_Turret_45mm", 
+			"RUS_Turret_37mm_Front", 
+			"RUS_Turret_45mm_Rear", 
 			"RUS_BMO_Turret_DshKAA", 
 			"RUS_BMO_Turret_Vickers", 
 		},
 	},
 }
 
-local RUS_BMO_Turret_37mm = BoatChild:New{
-	name					= "BMO 37mm Turret",
+local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
+	name					= "37mm Turret",
 	description				= "Primary Turret",
 	objectName				= "RUSBMO_Turret_37mm.s3o",
   	weapons = {	
@@ -59,6 +59,19 @@ local RUS_BMO_Turret_37mm = BoatChild:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
+    },
+}
+local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
+  	weapons = {	
+		[1] = {
+			weaponMainDir		= [[0 0 -1]],
+		},
+		[2] = {
+			weaponMainDir		= [[0 0 -1]],
+		},
+	},
+	customparams = {
+		rearfacing				= true,
     },
 }
 
@@ -117,8 +130,8 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 	},
 }
 
-local RUS_BMO_Turret_45mm = BoatChild:New{
-	name					= "BMO 45mm Turret",
+local RUS_Turret_45mm_Front = BoatChild:New{ -- Used on multiple vessels
+	name					= "45mm Turret",
 	description				= "Primary Turret",
 	objectName				= "RUSBMO_Turret_45mm.s3o",
   	weapons = {	
@@ -126,7 +139,6 @@ local RUS_BMO_Turret_45mm = BoatChild:New{
 			name				= "M1937_40k45mmhe",
 			maxAngleDif			= 300,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-			weaponMainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {
@@ -137,14 +149,25 @@ local RUS_BMO_Turret_45mm = BoatChild:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 25,
 		elevationspeed			= 30,
+    },
+}
+local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
+  	weapons = {	
+		[1] = {
+			weaponMainDir		= [[0 0 -1]],
+		},
+	},
+	customparams = {
 		rearfacing				= true,
     },
 }
 
 return lowerkeys({
 	["RUSBMO"] = RUS_BMO,
-	["RUS_BMO_Turret_37mm"] = RUS_BMO_Turret_37mm,
+	["RUS_Turret_37mm_Front"] = RUS_Turret_37mm_Front,
+	["RUS_Turret_37mm_Rear"] = RUS_Turret_37mm_Rear,
+	["RUS_Turret_45mm_Front"] = RUS_Turret_45mm_Front,
+	["RUS_Turret_45mm_Rear"] = RUS_Turret_45mm_Rear,
 	["RUS_BMO_Turret_DshKAA"] = RUS_BMO_Turret_DshKAA,
 	["RUS_BMO_Turret_Vickers"] = RUS_BMO_Turret_Vickers,
-	["RUS_BMO_Turret_45mm"] = RUS_BMO_Turret_45mm,
 })

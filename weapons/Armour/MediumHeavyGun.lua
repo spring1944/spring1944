@@ -16,6 +16,9 @@ local MediumHeavyGunClass = Weapon:New{
   tolerance          = 300,
   turret             = true,
   weaponType         = [[Cannon]],
+  customparams = {
+    cegflare           = "MEDIUM_MUZZLEFLASH",
+  }
 }
 
 -- HE Round Class
