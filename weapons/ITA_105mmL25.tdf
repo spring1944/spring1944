@@ -85,6 +85,7 @@
   name=Italian 105mm/L25 Effeto Pronto;
   accuracy=300;
   avoidFeature=0;
+  canAttackGround=0;
   areaOfEffect=28;
   ballistic=1;
   collisionSize=4;
