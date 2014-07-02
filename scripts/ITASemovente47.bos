@@ -278,7 +278,7 @@ Killed(severity, corpsetype)
 	{
 		// burning tank
 		corpsetype = 2;
-		explode tracks type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode tracks type SHATTER;
 		return (0);
 	}
 	if(severity <= 1000)
