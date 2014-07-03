@@ -14,6 +14,10 @@ local ACClass = Weapon:New{
   tolerance          = 700,
   turret             = true,
   weaponType         = [[Cannon]],
+  customparams = {
+	cegflare           = "XSMALL_MUZZLEFLASH",
+	flareonshot        = true,
+  },
 }
 
 -- AA Round Class

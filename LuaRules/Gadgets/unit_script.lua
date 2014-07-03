@@ -72,7 +72,7 @@ local thread_wrap = {
 	--"AimFromWeapon",
 	"FireWeapon",
 	--"EndBurst",
-	--"Shot",
+	"Shot",
 	--"BlockShot",
 	--"TargetWeight",
 }
