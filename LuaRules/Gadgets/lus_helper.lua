@@ -137,29 +137,28 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local turretIDs = {}
 		local mantletIDs = {}
 		local barrelIDs = {}
+		local numRockets = 0
 		local numWheels = 0
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
-			local weaponNum = tonumber(pieceName:sub(weapNumPos+1,weapNumEndPos-1))
+			local weaponNum = tonumber(pieceName:sub(weapNumPos+1,weapNumEndPos-1))]]
 			-- Find launcher pieces
-			if pieceName:find("launcher_") then
-				launcherIDs[weaponNum] = true
+			if pieceName:find("r_rocket") then
+				numRockets = numRockets + 1
 			-- Find mantlet pieces
-			elseif pieceName:find("mantlet_") then
+			--[[elseif pieceName:find("mantlet_") then
 				mantletIDs[weaponNum] = true
 			-- Find barrel pieces
 			elseif pieceName:find("barrel_") then
 				barrelIDs[weaponNum] = true
 			-- Find the number of wheels
 			elseif pieceName:find("wheel") then
-				numWheels = numWheels + 1
-			end]]
+				numWheels = numWheels + 1]]
+			end
 		end
 		
-		info.launcherIDs = launcherIDs
-		info.mantletIDs = mantletIDs
-		info.barrelIDs = barrelIDs
+		info.numRockets = numRockets
 		info.numWheels = numWheels
 	end
 	
@@ -177,6 +176,12 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
+	elseif UnitDefs[unitDefID].customParams.child then
+		local toRemove = {CMD.MOVE_STATE}
+		for _, cmdID in pairs(toRemove) do
+			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
+			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
+		end
 	end
 end
 
@@ -190,6 +195,7 @@ function gadget:GamePreload()
 		-- Parse UnitDef Weapon Data
 		local missileWeaponIDs = {}
 		local burstLengths = {}
+		local burstRates = {}
 		local reloadTimes = {}
 		local minRanges = {}
 		local flareOnShots = {}
@@ -198,6 +204,7 @@ function gadget:GamePreload()
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
 			reloadTimes[i] = weaponDef.reload
 			burstLengths[i] = weaponDef.salvoSize
+			burstRates[i] = weaponDef.salvoDelay
 			minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
 			if weaponDef.type == "MissileLauncher" then
 				missileWeaponIDs[i] = true
@@ -209,6 +216,7 @@ function gadget:GamePreload()
 		info.flareOnShots = flareOnShots
 		info.reloadTimes = reloadTimes
 		info.burstLengths = burstLengths
+		info.burstRates = burstRates
 		info.minRanges = minRanges
 
 		-- UnitDef Level Info

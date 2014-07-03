@@ -29,6 +29,8 @@ local ArtyRocketClass = Weapon:New{
     fearaoe            = 200,
     fearid             = 501,
     howitzer           = 1,
+	cegflare           = "dirt_backblast",
+	flareonshot        = true,
   },
 }
 

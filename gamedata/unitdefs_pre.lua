@@ -59,12 +59,12 @@ local BoatMother = Unit:New{
 	footprintZ 			= 4,
 	iconType			= "gunboat",
 	noChaseCategory		= "FLAG AIR MINE",
-	usePieceCollisionVolumes	= true,
 	script				= "BoatMother.lua",
 	selfDestructAs		= "Vehicle_Explosion_Sm",
 	sightDistance		= 840,
 	turninplace			= false,
-	
+	usePieceCollisionVolumes	= true,
+		
 	-- Transport tags
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,

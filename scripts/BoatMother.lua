@@ -63,7 +63,7 @@ function script.Killed(recentDamage, maxHealth)
 	--signal SIG_DEATH;
 	if severity < 99 then
 		corpseType = 1;
-		Turn(base, z_axis, -math.rad(30), math.rad(10)) -- base list speed & angle form rusbmo.bos
+		Turn(base, z_axis, math.rad(30), math.rad(10)) -- base list speed & angle form rusbmo.bos
 		WaitForTurn(base, z_axis)
 		Explode(base, SFX.SHATTER)
 	else
