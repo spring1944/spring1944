@@ -16,7 +16,7 @@ local GetUnitPieceList					= Spring.GetUnitPieceList
 local SetUnitPieceCollisionVolumeData	= Spring.SetUnitPieceCollisionVolumeData
 
 local armourPieces = {["base"] = true, ["turret"] = true}
-local boatPieces = {["base"] = true, ["tower"] = true}
+local boatPieces = {["base"] = true, ["tower"] = true, ["tower2"] = true}
 
 local function SetColVols(unitID, ud, colPieces)
 	if ud.model.type ~= "3do" then

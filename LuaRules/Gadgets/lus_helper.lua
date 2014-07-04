@@ -138,6 +138,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local mantletIDs = {}
 		local barrelIDs = {}
 		local numRockets = 0
+		local numBarrels = 0
 		local numWheels = 0
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
@@ -148,16 +149,17 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 				numRockets = numRockets + 1
 			-- Find mantlet pieces
 			--[[elseif pieceName:find("mantlet_") then
-				mantletIDs[weaponNum] = true
+				mantletIDs[weaponNum] = true]]
 			-- Find barrel pieces
-			elseif pieceName:find("barrel_") then
-				barrelIDs[weaponNum] = true
+			elseif pieceName:find("barrel") then
+				--barrelIDs[weaponNum] = true
+				numBarrels = numBarrels + 1
 			-- Find the number of wheels
 			elseif pieceName:find("wheel") then
-				numWheels = numWheels + 1]]
+				numWheels = numWheels + 1
 			end
 		end
-		
+		info.numBarrels = numBarrels
 		info.numRockets = numRockets
 		info.numWheels = numWheels
 	end

@@ -10,12 +10,14 @@ local barrelRecoilSpeed = info.barrelRecoilSpeed
 local aaWeapon = info.aaWeapon
 local rearFacing = info.rearFacing
 local flareOnShots = info.flareOnShots
+local numBarrels = info.numBarrels
 local numRockets = info.numRockets
 
 local MIN_HEALTH = 1
 
 local isDisabled = false
 local aaAiming = false
+local curBarrel = 1
 local curRocket = 1
 
 -- Pieces
@@ -35,6 +37,8 @@ local base = piece("base")
 local turret, sleeve, flare, barrel = piece("turret", "sleeve",  "flare", "barrel")
 local flares = {}
 if not flare then findPieces(flares, "flare") end
+local barrels = {}
+if not barrel and numBarrels > 0 then findPieces(barrels, "barrel") end
 local backBlast = piece("backblast")
 local rockets = {}
 if numRockets > 0 then findPieces(rockets, "r_rocket") end
@@ -92,12 +96,20 @@ end
 
 function script.Shot(weaponID)
 	if flareOnShots[weaponID] then
-		EmitSfx(flare or flares[weaponID] or backBlast, SFX.CEG + weaponID)
-		if barrel then
-			Move(barrel, z_axis, -barrelRecoilDist)
-			WaitForMove(barrel, z_axis)
-			Move(barrel, z_axis, 0, barrelRecoilSpeed)
+		local barrelToMove = barrel or barrels[curBarrel]
+		if barrelToMove then
+			Move(barrelToMove, z_axis, -barrelRecoilDist)
+			WaitForMove(barrelToMove, z_axis)
+			Move(barrelToMove, z_axis, 0, barrelRecoilSpeed)
+			if numBarrels > 1 then
+				EmitSfx(flares[curBarrel], SFX.CEG + weaponID)
+				curBarrel = curBarrel + 1
+				if curBarrel > numBarrels then curBarrel = 1 end
+			else
+				EmitSfx(flare or flares[weaponID], SFX.CEG + weaponID)
+			end
 		elseif numRockets > 0 then
+			EmitSfx(backBlast, SFX.CEG + weaponID)
 			Hide(rockets[curRocket])
 			curRocket = curRocket + 1
 			if curRocket > numRockets then curRocket = 1 end
