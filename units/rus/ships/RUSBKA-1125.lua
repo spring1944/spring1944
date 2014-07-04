@@ -101,7 +101,7 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 		},
 	},
 	customparams = {
-		rearfacing = true,
+		facing = 2,
 	},
 }
 

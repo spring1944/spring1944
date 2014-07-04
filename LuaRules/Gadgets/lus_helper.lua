@@ -222,7 +222,7 @@ function gadget:GamePreload()
 		info.minRanges = minRanges
 
 		-- UnitDef Level Info
-		info.rearFacing = cp.rearfacing or false
+		info.facing = cp.facing or 0 -- default to front
 		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)
 		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 60)
 		info.barrelRecoilSpeed = (tonumber(cp.barrelrecoilspeed) or 10)

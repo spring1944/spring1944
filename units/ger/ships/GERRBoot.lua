@@ -81,7 +81,7 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
-		rearfacing				= true,
+		facing					= 2,
     },
 }
 

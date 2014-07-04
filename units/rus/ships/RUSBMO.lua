@@ -71,7 +71,7 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
 		},
 	},
 	customparams = {
-		rearfacing				= true,
+		facing					= 2,
     },
 }
 
@@ -99,7 +99,7 @@ local RUS_BMO_Turret_DshKAA = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 80,
 		elevationspeed			= 45,
-		rearfacing				= true,
+		facing					= 2,
 	},
 }
 
@@ -126,7 +126,7 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
-		rearfacing				= true,
+		facing					= 2,
 	},
 }
 
@@ -158,7 +158,7 @@ local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
 		},
 	},
 	customparams = {
-		rearfacing				= true,
+		facing					= 2,
     },
 }
 

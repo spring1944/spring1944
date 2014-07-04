@@ -84,7 +84,7 @@ local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
 		},
 	},
 	customparams = {
-		rearfacing				= true,
+		facing					= 2,
     },
 }
 

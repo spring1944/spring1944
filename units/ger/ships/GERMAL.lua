@@ -62,18 +62,56 @@ local GER_MAL_Turret_Quad20mm = BoatChild:New{
 	objectName				= "GERMAL_Turret_Quad20mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "flakvierling20mmaa",
+			name				= "flak3820mmaa",
+			maxAngleDif			= 270,
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
-			name				= "flakvierling20mmhe",
+			name				= "flak3820mmaa",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "AIR",
+			slaveTo				= 1,
+		},
+		[3] = {
+			name				= "flak3820mmaa",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "AIR",
+			slaveTo				= 1,
+		},
+		[4] = {
+			name				= "flak3820mmaa",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "AIR",
+			slaveTo				= 1,
+		},
+		[5] = {
+			name				= "flak3820mmhe",
+			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		},
+		[6] = {
+			name				= "flak3820mmhe",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			slaveTo				= 5,
+		},
+		[7] = {
+			name				= "flak3820mmhe",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			slaveTo				= 5,
+		},
+		[8] = {
+			name				= "flak3820mmhe",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			slaveTo				= 5,
 		},
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from BMO 37mm
 		weaponcost				= 2,
-		weaponswithammo			= 2,
+		weaponswithammo			= 8,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
