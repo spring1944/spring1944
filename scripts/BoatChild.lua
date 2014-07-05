@@ -90,6 +90,7 @@ end
 
 function script.FireWeapon(weaponID)
 	if not flareOnShots[weaponID] then
+		-- TODO: Autoloader feed anim for Fairmile D
 		EmitSfx(flare or flares[weaponID], SFX.CEG + weaponID)
 		if barrel then
 			Move(barrel, z_axis, -barrelRecoilDist)
