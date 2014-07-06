@@ -14,7 +14,7 @@
   collisionVolumeScales=16 18 44;
   collisionVolumeOffsets=0 -1 0;
   collisionVolumeTest=1;
-  corpse=ITAAutocannone100_Abandoned;
+  corpse=ITAAutocannone90_Abandoned;
   [customParams] {
     lowammolevel=2;
     maxammo=5;
@@ -35,7 +35,8 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=FLAG AIR MINE;
-  objectName=ITAAutocannone90;
+  objectName=ITAAutocannone90.s3o;
+  script=itaautocannone90.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
