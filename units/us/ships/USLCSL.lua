@@ -33,6 +33,9 @@ local US_LCSL = BoatMother:New{
 			"US_SC_Turret_20mm_Right",
 			"US_LCSL_Turret_TwinBofors_Rear",
 		},
+		deathanim = {
+			["z"] = {angle = 15, speed = 3},
+		},
 	},
 }
 

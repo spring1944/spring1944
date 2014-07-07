@@ -33,6 +33,10 @@ local GBR_FairmileD = BoatMother:New{
 			"GBR_FairmileD_Turret_20mm",
 			"GBR_FairmileD_Turret_6pdr_Rear",
 		},
+		deathanim = {
+			["x"] = {angle = -20, speed = 5},
+			["z"] = {angle = -15, speed = 5}, 
+		},
 	},
 }
 

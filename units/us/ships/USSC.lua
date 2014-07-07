@@ -30,6 +30,9 @@ local US_SC = BoatMother:New{
 			"US_SC_Turret_20mm_Left",
 			"US_SC_Turret_20mm_Rear",
 		},
+		deathanim = {
+			["z"] = {angle = 30, speed = 20},
+		},
 	},
 }
 

@@ -62,10 +62,15 @@ function script.Killed(recentDamage, maxHealth)
 	local corpseType
 	--signal SIG_DEATH;
 	if severity < 99 then
+		local dA = info.deathAnim
 		corpseType = 1;
-		Turn(base, z_axis, math.rad(30), math.rad(10)) -- base list speed & angle form rusbmo.bos
-		WaitForTurn(base, z_axis)
-		Explode(base, SFX.SHATTER)
+		for axis, data in pairs(dA) do
+			Turn(base, info.axes[axis] or z_axis, -math.rad(data.angle or 30), math.rad(data.speed or 10))
+		end
+		for axis, data in pairs(dA) do
+			WaitForTurn(base, info.axes[axis] or z_axis)
+		end
+		--Explode(base, SFX.SHATTER)
 	else
 		corpseType = 2
 		Explode(base, SFX.SHATTER)

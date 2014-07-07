@@ -30,6 +30,9 @@ local GBR_LCGM = BoatMother:New{
 			"GBR_LCSL_Turret_20mm_Left",
 			"GBR_LCSL_Turret_20mm_Right",
 		},
+		deathanim = {
+			["z"] = {angle = 15, speed = 2.5},
+		},
 	},
 }
 

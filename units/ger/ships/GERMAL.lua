@@ -32,6 +32,9 @@ local GER_MAL = BoatMother:New{
 			"GER_MAL_Turret_37mm",
 		},
 	},
+	deathanim = {
+		["x"] = {angle = 10, speed = 5},
+	},
 }
 
 local GER_MAL_Turret_105mm = BoatChild:New{ --

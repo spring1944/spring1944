@@ -30,6 +30,9 @@ local RUS_BMO = BoatMother:New{
 			"RUS_BMO_Turret_DshKAA", 
 			"RUS_BMO_Turret_Vickers", 
 		},
+		deathanim = {
+			["z"] = {angle = -30, speed = 10},
+		},
 	},
 }
 

@@ -28,6 +28,9 @@ local RUS_G5 = BoatMother:New{
 			"RUS_G5_Turret_DshK", 
 			"RUS_G5_Turret_M-8", 
 		},
+		deathanim = {
+			["z"] = {angle = -15, speed = 10},
+		},
 	},
 }
 

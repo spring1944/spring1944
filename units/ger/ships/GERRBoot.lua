@@ -29,6 +29,9 @@ local GER_RBoot = BoatMother:New{
 			"GER_RBoot_Turret_20mm",
 			"GER_RBoot_Turret_20mm",
 		},
+		deathanim = {
+			["z"] = {angle = 45, speed = 15},
+		},
 	},
 }
 

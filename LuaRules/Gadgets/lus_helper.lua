@@ -232,6 +232,8 @@ function gadget:GamePreload()
 		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General
 		info.numWeapons = #weapons
+		info.deathAnim = table.unserialize(cp.deathanim) or {}
+		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		-- Children
 		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access

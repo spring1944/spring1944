@@ -31,6 +31,9 @@ local RUS_BKA_1125 = BoatMother:New{
 			"RUS_BKA_1125_Turret_DshK_Top", 
 			"RUS_BKA_1125_Turret_DshK_Rear"
 		},
+		deathanim = {
+			["x"] = {angle = -5, speed = 5},
+		},
 	},
 }
 

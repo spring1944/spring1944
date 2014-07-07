@@ -30,6 +30,10 @@ local US_PT103 = BoatMother:New{
 			"US_PT103_Turret_Twin50",
 			"US_PT103_Turret_Bofors",
 		},
+		deathanim = {
+			["x"] = {angle = 15, speed = 30},
+			["z"] = {angle = 45, speed = 30},
+		},
 	},
 }
 
