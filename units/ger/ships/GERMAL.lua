@@ -7,7 +7,7 @@ local GER_MAL = BoatMother:New{
 	buildTime				= 8000,
 	collisionVolumeOffsets	= [[0.0 -24.0 80.0]],
 	collisionVolumeScales	= [[60.0 20.0 230.0]],
-	corpse					= "GERRMAL_dead",
+	corpse					= "GERMAL_dead",
 	mass					= 27200,
 	maxDamage				= 27200,
 	maxReverseVelocity		= 0.55,
@@ -31,9 +31,9 @@ local GER_MAL = BoatMother:New{
 			"GER_MAL_Turret_37mm",
 			"GER_MAL_Turret_37mm",
 		},
-	},
-	deathanim = {
-		["x"] = {angle = 10, speed = 5},
+		deathanim = {
+			["x"] = {angle = -10, speed = 5},
+		},
 	},
 }
 

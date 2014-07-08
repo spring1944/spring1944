@@ -61,7 +61,7 @@ function script.Killed(recentDamage, maxHealth)
 	local severity = recentDamage / maxHealth * 100
 	local corpseType
 	--signal SIG_DEATH;
-	if severity < 99 then
+	--if severity < 99 then
 		local dA = info.deathAnim
 		corpseType = 1;
 		for axis, data in pairs(dA) do
@@ -71,9 +71,9 @@ function script.Killed(recentDamage, maxHealth)
 			WaitForTurn(base, info.axes[axis] or z_axis)
 		end
 		--Explode(base, SFX.SHATTER)
-	else
+	--[[else
 		corpseType = 2
 		Explode(base, SFX.SHATTER)
-	end
+	end]]
 	return corpseType
 end

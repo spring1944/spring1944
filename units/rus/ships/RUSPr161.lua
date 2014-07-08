@@ -34,7 +34,7 @@ local RUS_Pr161 = BoatMother:New{
 			"RUS_Turret_37mm_Rear", 
 		},
 		deathanim = {
-			["x"] = {angle = 15, speed = 5},
+			["x"] = {angle = -15, speed = 5},
 		},
 	},
 }
