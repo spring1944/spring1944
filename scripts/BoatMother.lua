@@ -31,9 +31,9 @@ findPieces(wakes, "wake")
 function script.Create()
 	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
 	for i, childDefName in ipairs(children) do
-		Spring.Echo("CREATING", i, childDefName)
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
 		Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
+		Hide(childrenPieces[i])
 	end
 	
 end
@@ -60,6 +60,10 @@ end
 function script.Killed(recentDamage, maxHealth)
 	local severity = recentDamage / maxHealth * 100
 	local corpseType
+	
+	for _, child in pairs(childrenPieces) do
+		Show(child)
+	end
 	--signal SIG_DEATH;
 	--if severity < 99 then
 		local dA = info.deathAnim
