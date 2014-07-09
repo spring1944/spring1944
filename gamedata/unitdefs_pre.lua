@@ -80,6 +80,7 @@ local BoatChild = Unit:New{
 	airSightDistance	= 1500,
 	canMove				= false,
 	cantBeTransported	= false,
+	canSelfDestruct 	= false,
 	floater				= true, -- make them behave ala ships wrt sensors
 	category 			= "SHIP MINETRIGGER TURRET",
 	footprintX			= 1,

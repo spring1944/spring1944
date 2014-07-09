@@ -74,6 +74,9 @@ function script.Killed(recentDamage, maxHealth)
 		for axis, data in pairs(dA) do
 			WaitForTurn(base, info.axes[axis] or z_axis)
 		end
+		for _, child in pairs(childrenPieces) do
+			GG.EmitSfxName(unitID, child, "klara") -- FIXME: Explosion is rather OTT
+		end
 		--Explode(base, SFX.SHATTER)
 	--[[else
 		corpseType = 2
