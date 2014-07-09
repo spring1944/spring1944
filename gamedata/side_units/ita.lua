@@ -117,6 +117,7 @@ local itaunits =
 	"itaautocannone75",
 	"itaautocannone90",
 	"itaautocannone100",
+	"itaspadovunque",
 	--"itasemovente75_18",
 	--"itasemovente90",
 	--"itasemovente105",
@@ -135,7 +136,7 @@ local itaunits =
 	"itaab41",
 	"itaas37",
 	"itasemovente47",
-	"itasahariana",
+	"itaspadovunque",
   },
 
    itavehicleyard1 =
@@ -145,7 +146,7 @@ local itaunits =
 	"itaab41",
 	"itaas37",
 	"itasemovente47",
-	"itasahariana",
+	"itaspadovunque",
 	"ital6_40lf",
   }, 
   itatankyard =

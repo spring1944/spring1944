@@ -74,7 +74,6 @@ local ITADefs = {
 	"ITASemovente90",
 	"ITAAB41",
 	"ITAAS37",
-	"ITASahariana",
 	"ITASemovente47",
 	"ITAL6_40lf",
   },
@@ -91,6 +90,7 @@ local ITADefs = {
 	"itacannone47_truck",
 	"itacannone75_truck",
 	"itaobice100_truck",
+	"itaspadovunque",
   },
 
   planes  =  {

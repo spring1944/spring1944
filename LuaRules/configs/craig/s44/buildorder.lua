@@ -176,7 +176,7 @@ gadget.unitBuildOrder = UnitBag{
 		"itasemovente47",
 		"itaab41",
 		"itaas37",
-		"itasahariana",
+		"itaspadovunque",
 	},
 	itasupplydepot = UnitArray{
 		"itaas37",
