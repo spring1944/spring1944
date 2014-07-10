@@ -78,7 +78,7 @@
   soundStart=RUS_45mm;
   stages=50;
   // targetMoveError=0.075;
-  tolerance=300;
+  tolerance=1000;
   turret=1;
   weaponVelocity=320;
 }
