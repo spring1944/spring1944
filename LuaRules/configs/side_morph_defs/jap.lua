@@ -120,7 +120,7 @@ local japDefs = {
   {
     into = 'japtype1_47mm_stationary',
     tech = 0,
-    time = 25,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,

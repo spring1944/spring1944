@@ -57,6 +57,7 @@ local bomb50kg = BombClass:New{
 
     damage = {
     default            = 7500,
+	planes		= 5,
     },
   edgeEffectiveness	= 0.5,
   range              = 800,

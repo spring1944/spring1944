@@ -134,9 +134,9 @@ local itaDefs = {
 		},
 		name = "Infantry Gun Team",
 		description = "1 x Cannone da 65/17, 1 x Spotter: Long-Range Fire Support",
-		buildCostMetal = 1150,
+		buildCostMetal = 950,
 		buildPic = "ITACannone65.png",
-		buildTime = 1150,
+		buildTime = 950,
 		side = "ITA",
 	},
 	["ita_platoon_bersaglieri"] =

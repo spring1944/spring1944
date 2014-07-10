@@ -6,9 +6,9 @@
   airSightDistance=2500;
   brakeRate=0.6;
   buildCostEnergy=0;
-  buildCostMetal=1100;
+  buildCostMetal=950;
   buildPic=ITACannone65.png;
-  buildTime=1100;
+  buildTime=950;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=ITACannone65_Destroyed;
@@ -22,6 +22,7 @@
     infgun=1;
   }
   explodeAs=Tiny_Explosion;
+  firestate=2;
   footprintX=1;
   footprintZ=1;
   iconType=artillery;
@@ -67,7 +68,7 @@
   weaponMainDir1=0 0 1;
 
   weapon2=ITACannone65heat;
-  maxAngleDif2=10;
+  maxAngleDif2=20;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP;
   weaponMainDir2=0 0 1;
 }
