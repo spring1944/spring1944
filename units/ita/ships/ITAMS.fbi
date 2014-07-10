@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ITAMS;
-	objectname=ITAMS;
+	objectname=ITAMS.s3o;
 	corpse=ITAMS_dead;
 	icontype=torpboat;
 	category=SHIP MINETRIGGER;
@@ -43,13 +43,17 @@
 
 	Weapon1=it533mmtorpedo;
 	Weapon2=it533mmtorpedo;
-	Weapon3=it20mm65bredaHE;
-	Weapon4=it20mm65bredaHE;
+	Weapon3=it20mm65bredaaa;
+	Weapon4=it20mm65bredaaa;
+	weapon5=breda3520mmhe;
+	weapon6=breda3520mmhe;
 
 	OnlyTargetCategory1=LARGESHIP;
 	OnlyTargetCategory2=LARGESHIP;
-	onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-	onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	onlyTargetCategory3=AIR;
+	onlyTargetCategory4=AIR;
+	onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
 	WeaponMainDir1=0 0 1;
 	MaxAngleDif1=40;
@@ -63,8 +67,25 @@
 	WeaponMainDir4=0 0 -1;
 	MaxAngleDif4=270;
 
+	WeaponMainDir5=0 0 1;
+	MaxAngleDif5=270;
+
+	WeaponMainDir6=0 0 -1;
+	MaxAngleDif6=270;
+
 	[sfxtypes]
 	{
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+
 	}
 	[customParams]
 	{
