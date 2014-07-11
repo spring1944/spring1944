@@ -1,7 +1,7 @@
 [itacannone65he] {
   name=Italian Cannone da 65/17 High-Explosive Ammunition;
   accuracy=200; // 500
-  areaOfEffect=78;
+  areaOfEffect=68;
   avoidFeature=0;
   ballistic=1;
   collisionSize=4;
@@ -70,9 +70,10 @@
   range=715;
   reloadTime=6.25;
   rendertype=1;
-  rgbColor=0.5 0.5 0.0;
+  colormap=ap_colormap.png;
   separation=2;
-  size=1;
+  rgbColor=1.0 0.0 0.0;
+  size=0.5;
   sizeDecay=0;
   soundHit=GEN_Explo_2;
   soundStart=RUS_45mm;

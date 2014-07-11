@@ -22,7 +22,7 @@
     infgun=1;
   }
   explodeAs=Tiny_Explosion;
-  firestate=2;
+  movestate=1;
   footprintX=1;
   footprintZ=1;
   iconType=artillery;

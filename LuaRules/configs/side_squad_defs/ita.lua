@@ -158,9 +158,9 @@ local itaDefs = {
 		},
 		name = "Bersaglieri Combat Platoon",
 		description = "8 x Bersaglieri Rifles, 2 x Bersaglieri SMG Troopers, 1 x Elitesolothurn, 1 x Bersaglieri Machinegunner, 1 x Bersaglieri Scout: Bersaglieri Assault Marksmen",
-		buildCostMetal = 2000,
+		buildCostMetal = 1800,
 		buildPic = "ITAbersaglieri.png",
-		buildTime = 2000,
+		buildTime = 1800,
 		side = "ITA",
 	},
   	["ita_platoon_carabinieri"] =
@@ -204,9 +204,9 @@ local itaDefs = {
 		},
 		name = "Alpini Mountain Division",
 		description = "4 x Alpini Rifles, 8 x Alpini SMG Troopers, 1 x Alpini Mortar , 1 x Alpini Scout: Alpini Mountain Squad",
-		buildCostMetal = 2300,
+		buildCostMetal = 2100,
 		buildPic = "itaalpini.png",
-		buildTime = 2300,
+		buildTime = 2100,
 		side = "ITA",
 	},
 	
