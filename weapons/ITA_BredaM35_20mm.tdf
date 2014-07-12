@@ -1,9 +1,9 @@
 [breda3520mmaa] {
-  name=Breda Model 35 High-Explosive Shells;
+  name=Breda Model 35 AA Shells;
   areaOfEffect=40;
   burnblow=1;
-  burst=5;
-  burstRate=0.16;
+  burst=4;
+  burstRate=0.261;
   canAttackGround=0;
   collisionSize=4;
   craterBoost=0;
@@ -27,7 +27,49 @@
   lineofsight=1;
   predictBoost=0.99;
   range=1950;
-  reloadTime=1.5;
+  reloadTime=1.6;
+  rendertype=1;
+  rgbColor=1.0 1.0 0.0;
+  size=0.0001;
+  soundHit=GEN_Explo_Flak1;
+  soundStart=GER_20mm;
+  sprayAngle=475;
+  tolerance=700;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=5000;
+}
+
+[twinbreda3520mmaa] {
+  name=2x Breda Model 35 AA Shells;
+  areaOfEffect=40;
+  burnblow=1;
+  burst=8;
+  burstRate=0.13;
+  canAttackGround=0;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=400;
+    fearid=701;
+  }
+  [damage] {
+    default=41;
+  }
+  edgeEffectiveness=0.95;
+  explosionGenerator=custom:HE_Small;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=50;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.9;
+  lineofsight=1;
+  predictBoost=0.99;
+  range=1950;
+  reloadTime=1.6;
   rendertype=1;
   rgbColor=1.0 1.0 0.0;
   size=0.0001;
@@ -46,8 +88,8 @@
   avoidFeature=0;
   areaOfEffect=2;
   ballistic=1;
-  burst=3;
-  burstRate=0.16;
+  burst=4;
+  burstRate=0.261;
   canAttackGround=0;
   collisionSize=2;
   colormap=ap_colormap.png;
@@ -70,7 +112,7 @@
   intensity=0.1;
   movingAccuracy=500;
   range=730;
-  reloadTime=3;
+  reloadTime=1.6;
   rendertype=1;
   rgbColor=1.0 0.5 0.0;
   separation=2;
@@ -93,8 +135,8 @@
   areaOfEffect=24;
   ballistic=1;
   burnblow=0;
-  burst=3;
-  burstRate=0.16;
+  burst=4;
+  burstRate=0.261;
   collisionSize=2;
   craterBoost=0;
   craterMult=0;
@@ -116,7 +158,7 @@
   intensity=0.9;
   movingAccuracy=500;
   range=730;
-  reloadTime=3;
+  reloadTime=1.6;
   rendertype=1;
   rgbColor=1.0 0.5 0.0;
   separation=2;

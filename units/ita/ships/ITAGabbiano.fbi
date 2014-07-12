@@ -44,12 +44,12 @@
 
 	Weapon1=it100mm47_1928;
 
-	Weapon2=it20mm65breda;
-	Weapon3=it20mm65bredaHE;
-	Weapon4=it20mm65bredaHE;
+	Weapon2=breda3520mmaa;
+	Weapon3=breda3520mmHE;
+	Weapon4=breda3520mmHE;
 
-	Weapon5=it20mm65breda2x;
-	Weapon6=it20mm65breda2x;
+	Weapon5=twinbreda3520mmaa;
+	Weapon6=twinbreda3520mmaa;
 
 	Weapon7=it450mmtorpedo;
 	Weapon8=it450mmtorpedo;

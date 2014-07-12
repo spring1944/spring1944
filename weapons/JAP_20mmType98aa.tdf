@@ -11,9 +11,9 @@
 	firestarter=0.0;
 	targetmoveerror=0.1;
 	range=1950;
-	reloadtime=8;
-	burst=12;	// aiming for 120 rpm with reload
-	burstrate=0.25;
+	reloadtime=2;		// 120rpm practical
+	burst=4;			// 20 round box, 5x 4 round burst
+	burstrate=0.2;		// 300rpm cyclic
 	sprayangle=400;
 	weaponvelocity=2000;
 	areaofeffect=15;

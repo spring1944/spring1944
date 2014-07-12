@@ -10,9 +10,9 @@
 	firestarter=0.0;
 	targetmoveerror=0.1;
 	range=1950;
-	reloadtime=2;
-	burst=12;
-	burstrate=0.25;
+	reloadtime=2.7;
+	burst=5;
+	burstrate=0.231;
 	sprayangle=400;
 	weaponvelocity=2000;
 	areaofeffect=15;
@@ -64,9 +64,9 @@
 	firestarter=0.0;
 	targetmoveerror=0.1;
 	range=780;
-	reloadtime=2;
-	burst=12;
-	burstrate=0.25;
+	reloadtime=2.7;
+	burst=5;
+	burstrate=0.231;
 	sprayangle=400;
 	weaponvelocity=2000;
 	areaofeffect=15;
