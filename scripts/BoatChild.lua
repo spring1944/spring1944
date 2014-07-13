@@ -159,7 +159,6 @@ end
 function AddFear(amount)
 	curFear = curFear + amount
 	if curFear > FEAR_LIMIT then curFear = FEAR_LIMIT end
-	Spring.Echo(amount, curFear)
 	Spring.SetUnitRulesParam(unitID, "suppress", curFear)
 	StartThread(FearRecovery)
 end
