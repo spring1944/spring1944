@@ -16,7 +16,10 @@ local numBarrels = info.numBarrels
 local numRockets = info.numRockets
 
 local MIN_HEALTH = 1
+local FEAR_LIMIT = 25
+local PINNED_LEVEL = 20
 
+local curFear = 0
 local isDisabled = false
 local aaAiming = false
 local curRocket = 1
@@ -133,4 +136,29 @@ function script.QueryWeapon(weaponID)
 		weaponID = weaponID - numBarrels
 	end
 	return flare or flares[weaponID] or rockets[curRocket]
+end
+
+
+local function FearRecovery()
+	Signal(1) -- we _really_ only want one copy of this running at any time
+	SetSignalMask(1)
+	while curFear > 0 do
+		Sleep(1000)
+		curFear = curFear - 1
+		Spring.SetUnitRulesParam(unitID, "suppress", curFear)
+		if curFear > PINNED_LEVEL then
+			-- TODO: crew hiding anim
+			Disabled(true)
+		else
+			-- TODO: reduce fire rate when suppressed but not pinned?
+			Disabled(false)
+		end
+	end
+end
+
+function AddFear(amount)
+	curFear = curFear + amount
+	if curFear > FEAR_LIMIT then curFear = FEAR_LIMIT end
+	Spring.SetUnitRulesParam(unitID, "suppress", curFear)
+	StartThread(FearRecovery)
 end

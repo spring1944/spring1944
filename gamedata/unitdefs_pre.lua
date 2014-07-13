@@ -82,7 +82,7 @@ local BoatChild = Unit:New{
 	cantBeTransported	= false,
 	canSelfDestruct 	= false,
 	floater				= true, -- make them behave ala ships wrt sensors
-	category 			= "SHIP MINETRIGGER TURRET",
+	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
 	footprintX			= 1,
 	footprintZ 			= 1,
 	iconType			= "turret",
@@ -97,6 +97,7 @@ local BoatChild = Unit:New{
 	
 	customparams = {
 		child				= true,
+		feartarget			= true,
 	}
 }
 

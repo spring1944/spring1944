@@ -57,6 +57,7 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		feartarget				= false, -- fully enclosed
     },
 }
 

@@ -56,6 +56,7 @@ local GBR_LCGM_Turret_25pdr_Left = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 17,
 		elevationspeed			= 17,
+		feartarget				= false, -- fully enclosed
     },
 }
 local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{

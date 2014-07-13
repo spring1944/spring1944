@@ -5,7 +5,7 @@ function gadget:GetInfo()
 		author    = "FLOZi",
 		date      = "13 October 2008", -- Happy Birthday Charlie!
 		license   = "GNU GPL v2",
-		layer     = 0,
+		layer     = 2, -- must run after LUS
 		enabled   = true
 	}
 end
@@ -28,8 +28,15 @@ local SetUnitExperience			= Spring.SetUnitExperience
 local SetUnitRulesParam 		= Spring.SetUnitRulesParam
 -- constants
 local MORALE_RADIUS = 150
+local FEAR_IDS = 	{["301"] = 2, --small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
+					 ["401"] = 4, --small/med explosions: mortars, 88mm guns and under
+					 ["501"] = 8, --large explosions: small bombs, 155mm - 105mm guns
+					 ["601"] = 16 --omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty}
+					}
 -- variables
-local scriptIDs = {}
+local cobScriptIDs = {}
+local lusScriptIDs = {}
+
 local fearLevels = {}
 local engineerIDs = {}
 local engineerDefIDs = {}
@@ -43,7 +50,7 @@ if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
 local function UpdateSuppression(unitID)
-	local _, currFear = CallCOBScript(unitID, scriptIDs[unitID], 1, 1)
+	local _, currFear = CallCOBScript(unitID, cobScriptIDs[unitID], 1, 1)
 	fearLevels[unitID] = currFear
 	SetUnitRulesParam(unitID, "suppress", currFear)
 	if engineerIDs[unitID] then -- unit is an engineer, toggle his buildpower
@@ -58,9 +65,11 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
-	if (scriptID) then
+	env = Spring.UnitScript.GetScriptEnv(unitID)
+	if (scriptID or (env and env.AddFear)) then
 		SetUnitRulesParam(unitID, "suppress", 0)
-		scriptIDs[unitID] = scriptID
+		cobScriptIDs[unitID] = scriptID 
+		lusScriptIDs[unitID] = env and env.AddFear
 		if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
 			if UnitDefs[unitDefID].isBuilder then
 				engineerDefIDs[unitDefID] = true
@@ -76,26 +85,31 @@ end
 
 
 function gadget:UnitDestroyed(unitID)
-	scriptIDs[unitID] = nil
+	cobScriptIDs[unitID] = nil
+	lusScriptIDs[unitID] = nil
 	engineerIDs[unitID] = nil
 end
 
 
 function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
-	if scriptIDs[unitID] and weaponID and weaponID > 0 then
+	if cobScriptIDs[unitID] and weaponID and weaponID > 0 then
 		local wd = WeaponDefs[weaponID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
-		-- ... but be sure not to update suppression for a dead unit (UnitDamaged is called before UnitDestroyed, so scriptIDs[unitID] is still valid!)
+		-- ... but be sure not to update suppression for a dead unit (UnitDamaged is called before UnitDestroyed, so cobScriptIDs[unitID] is still valid!)
 		if cp and cp.damagetype == "smallarms" and not cp.fearid and not GetUnitIsDead(unitID) then
-			UpdateSuppression(unitID)
+			if cobScriptIDs[unitID] then
+				UpdateSuppression(unitID)
+			else -- danger Will Robinson! assumes the unit must have a lusScriptID
+				Spring.UnitScript.CallAsUnit(unitID, lusScriptIDs[unitID], 1)
+			end
 		end
 	end
 end
 
 function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 	local ud = UnitDefs[unitDefID]
-		if scriptIDs[unitID] then
+		if cobScriptIDs[unitID] then
 			local fearLevel = GetUnitRulesParam(unitID, "suppress")
 			if fearLevel > 0 and fearLevel <= 2 then
 				--Spring.Echo("dude should get up and run")
@@ -153,10 +167,14 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	
 	for i = 1, tLength do
 		local unitID = targets[i]
-		-- GetUnitInSphere can catch tombstoned units, so check that scriptIDs[unitID] is valid (unit is not dead)
-		if unitID ~= ownerID and scriptIDs[unitID] then --not blockAllyTeams[GetUnitAllyTeam(unitID)] and
-			CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
-			UpdateSuppression(unitID)
+		-- GetUnitInSphere can catch tombstoned units, so check that cobScriptIDs[unitID] is valid (unit is not dead)
+		if unitID ~= ownerID then
+			if lusScriptIDs[unitID] then
+				Spring.UnitScript.CallAsUnit(unitID, lusScriptIDs[unitID], FEAR_IDS[fearID])
+			elseif cobScriptIDs[unitID] then
+				CallCOBScript(unitID, "HitByWeaponId", 0, 0, 0, fearID, 0)
+				UpdateSuppression(unitID)
+			end
 		end
 	end
 	-- reset tables
@@ -180,7 +198,7 @@ end
 -- Until we move to LUS or someone bothers to update the COBs; keep polling in order to reset fear levels due to recovery
 function gadget:GameFrame(n)
 	if (n % (1.5*30) < 0.1) then
-		for unitID, funcID in pairs(scriptIDs) do
+		for unitID, funcID in pairs(cobScriptIDs) do
 			UpdateSuppression(unitID)
 		end
 	end

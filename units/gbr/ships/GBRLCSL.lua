@@ -110,6 +110,7 @@ local GBR_LCSL_Turret_6pdr = BoatChild:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
 		aaweapon				= 2, -- TODO: rename to something more generic e.g. masterweapon
+		feartarget				= false, -- fully enclosed
     },
 }
 
