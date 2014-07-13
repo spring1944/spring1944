@@ -98,6 +98,7 @@ local BoatChild = Unit:New{
 	customparams = {
 		child				= true,
 		feartarget			= true,
+		fearlimit			= 50, -- default to double inf, open mounts should be 25
 	}
 }
 

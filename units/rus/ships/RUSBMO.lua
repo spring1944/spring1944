@@ -62,6 +62,7 @@ local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
+		fearlimit				= 75, -- 3/4 enclosed
     },
 }
 local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
@@ -130,6 +131,7 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
 		facing					= 2,
+		fearlimit				= 25,
 	},
 }
 

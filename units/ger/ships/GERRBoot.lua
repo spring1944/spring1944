@@ -54,6 +54,7 @@ local GER_RBoot_Turret_37mm = BoatChild:New{ --
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,
 		elevationspeed			= 30,
+		fearlimit				= 25,
     },
 }
 
@@ -85,6 +86,7 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 		elevationspeed			= 80,
 		aaweapon				= 1,
 		facing					= 2,
+		fearlimit				= 25,
     },
 }
 

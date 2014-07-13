@@ -52,10 +52,11 @@ local GER_MAL_Turret_105mm = BoatChild:New{ --
 	    maxammo					= 26,
 		weaponcost				= 20,
 		weaponswithammo			= 1,
-		barrelrecoildist		= 8,
+		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
+		fearlimit				= 75, -- 3/4 enclosed
     },
 }
 
@@ -148,6 +149,7 @@ local GER_MAL_Turret_37mm = BoatChild:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
+		fearlimit				= 25,
     },
 }
 

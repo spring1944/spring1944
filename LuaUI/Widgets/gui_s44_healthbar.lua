@@ -179,7 +179,7 @@ function widget:Update(deltaTime)
 				  if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
 					  auraUnits[uid] = 
 					  {
-					      ["suppress"] = (aurasuppress > 20 and 2) or (aurasuppress > 0) and 1 or 0,
+					      ["suppress"] = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
 						  ["ammo"] = auraoutofammo and 4 or nil,
 						  ["insupply"] = aurainsupply,
 						  --['buildspeed'] = aurabuildspeed,
