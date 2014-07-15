@@ -279,7 +279,7 @@ function FindClosestSupply(v)
         local vx, _, vz = GetUnitVelocity(s.uID)
         if ((vx ~= nil) and (vz ~= nil)) then
             --we don't really want any supply units that are moving
-            if ((vx == 0) or (vz == 0)) then            
+            if ((vx == 0) and (vz == 0)) then            
                 --get the distance to supply unit
                 local temp = GetUnitSeparation(v.uID, s.uID, true) 
                 if (temp ~= nil) then                       
@@ -299,6 +299,11 @@ function FindClosestSupply(v)
     v.closestSupply = targetSupplyUnit
 	-- what if we didn't find any supply sources?
 	if v.closestSupply == nil then
+		return
+	end
+
+	-- what if we're already in supply radius?
+	if dist < 0 then
 		return
 	end
     --get separation between unit and supply
@@ -383,9 +388,10 @@ end
 -------------------------------------------------------------------------------
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
     if (ammoUsingUnit[unitID]) then
-        ammoUsingUnit[unitID] = nil       
-    elseif (supplyUnit[unitID]) then  
-        supplyUnit[unitID] = nil 
+        ammoUsingUnit[unitID] = nil
+	end
+    if (supplyUnit[unitID]) then
+        supplyUnit[unitID] = nil
     end
 end
 
