@@ -58,9 +58,9 @@ local japunits =
 		"japisuzutx40",
 		"japhoha",
 		"japisuzutype94_aa",
-		--"japteke",
+		"japteke",
 		"japhago",
-		"japhonii",
+		--"japhonii",
 	},
 	japvehyard_landing =
 	{
@@ -68,9 +68,9 @@ local japunits =
 		"japisuzutx40",
 		"japhoha",
 		"japisuzutype94_aa",
-		--"japteke",
+		"japteke",
 		"japhago",
-		"japhonii",
+		--"japhonii",
 		"japkatsu",
 		"japkami",
 		"jappontoontruck",
@@ -81,9 +81,9 @@ local japunits =
 		"japisuzutx40",
 		"japhoha",
 		"japisuzutype94_aa",
-		--"japteke",
+		"japteke",
 		"japhago",
-		"japhonii",
+		--"japhonii",
 		"japshinhotochiha",
 	},
 	japgunyard =
@@ -119,27 +119,28 @@ local japunits =
 	{
 		"japriki",
 		"japhago",
+		"japhonii",
 		"japchiha",
 		"japchihe",
-		"japhoro",
 	},
 	japtankyard_medium =
 	{
 		"japriki",
 		"japhago",
+		"japhonii",
 		"japchiha",
 		"japchihe",
-		"japhoro",
 		"japchinu",
+		"japchiha120mm",
 	},
 	japtankyard_support =
 	{
 		"japriki",
 		"japhago",
+		"japhonii",
 		"japchiha",
 		"japchihe",
 		"japhoro",
-		"japchiha120mm",
 	},
 	japradar =
 	{
@@ -172,7 +173,7 @@ local japunits =
 	{
 		"japisuzutx40",
 		"japhoha",
-		"japteke",
+		--"japteke",
 	},
 }
 
