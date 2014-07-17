@@ -106,7 +106,7 @@ function checkAmmo()
             --Echo("in UNIT_BRAND_NEW", v.uID)
             v.cmds = GetUnitCommands(v.uID)
             if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then
-			    local _,_,_,_,buildProgress = GetUnitHealth(unitID)
+			    local _,_,_,_,buildProgress = GetUnitHealth(v.uID)
 				-- nothing to do until we're finished building
 				if buildProgress < 1 then
 					v.unitSupplyState   = v.UNIT_BRAND_NEW
