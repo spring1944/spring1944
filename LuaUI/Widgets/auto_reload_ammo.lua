@@ -57,6 +57,7 @@ local GetUnitRulesParam         = Spring.GetUnitRulesParam
 local GiveOrderToUnit           = Spring.GiveOrderToUnit
 local GetUnitCommands           = Spring.GetUnitCommands
 local GetUnitLastAttacker       = Spring.GetUnitLastAttacker 
+local GetUnitHealth				= Spring.GetUnitHealth
 
 local Echo                      = Spring.Echo
 
@@ -104,25 +105,36 @@ function checkAmmo()
         if (v.unitSupplyState == v.UNIT_BRAND_NEW) then
             --Echo("in UNIT_BRAND_NEW", v.uID)
             v.cmds = GetUnitCommands(v.uID)
-            if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then 
-                if (#v.cmds < 1) then
-                    v.unitSupplyState   = v.UNIT_READY 
-                    --there's a chance we could leave the factory empty 
-                elseif (ammoLevel < 1) then 
-                    v.unitSupplyState = v.UNIT_EMPTY        
-                end      
+            if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then
+			    local _,_,_,_,buildProgress = GetUnitHealth(unitID)
+				-- nothing to do until we're finished building
+				if buildProgress < 1 then
+					v.unitSupplyState   = v.UNIT_BRAND_NEW
+				else
+					if (#v.cmds < 1) then
+						v.unitSupplyState   = v.UNIT_READY 
+						--there's a chance we could leave the factory empty 
+					elseif (ammoLevel < 1) then 
+						v.unitSupplyState = v.UNIT_EMPTY        
+					end
+				end
             end
         --ammo !!!
         elseif (v.unitSupplyState == v.UNIT_EMPTY) then
             --Echo("in UNIT_EMPTY", v.uID)
-            --save our location, we might need it later
-            v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
-            --save unit command queue, if it has one, so we can return to the queue after reload
-            v.cmds = GetUnitCommands(v.uID) 
-            if ((v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then  
-                --we need more ammo so change state to UNIT_RESUPPLY_NEEDED
-                v.unitSupplyState = v.UNIT_RESUPPLY_NEEDED      
-            end
+			-- check if we're really empty, because we might have gotten some supply since last check
+			if ammoLevel < 1 then
+				--save our location, we might need it later
+				v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
+				--save unit command queue, if it has one, so we can return to the queue after reload
+				v.cmds = GetUnitCommands(v.uID) 
+				if ((v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then  
+					--we need more ammo so change state to UNIT_RESUPPLY_NEEDED
+					v.unitSupplyState = v.UNIT_RESUPPLY_NEEDED      
+				end
+			else
+				v.unitSupplyState = v.UNIT_READY
+			end
         --lets get back for resupply    
         elseif (v.unitSupplyState == v.UNIT_RESUPPLY_NEEDED) then
             --Echo("in UNIT_RESUPPLY_NEEDED", v.uID)
@@ -331,6 +343,15 @@ function FindClosestSupply(v)
     end         
 end
 
+function RemoveUnitFromLists(unitID)
+	if (ammoUsingUnit[unitID]) then
+		ammoUsingUnit[unitID] = nil
+	end
+	if (supplyUnit[unitID]) then
+		supplyUnit[unitID] = nil
+	end
+end
+
 -------------------------------------------------------------------------------
 function widget:UnitCreated(unitID, unitDefID, unitTeam) 
     if (AreTeamsAllied(teamID, unitTeam)) then
@@ -372,11 +393,8 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
                 supplyArea                  = tonumber(ud.customParams.supplyrange)
 	        }
         end  
-          
-    elseif (ammoUsingUnit[unitID]) then
-        ammoUsingUnit[unitID] = nil 
-    elseif (supplyUnit[unitID]) then  
-        supplyUnit[unitID] = nil 
+    else
+		RemoveUnitFromLists(unitID)
     end
 end
 
@@ -387,12 +405,7 @@ end
 
 -------------------------------------------------------------------------------
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
-    if (ammoUsingUnit[unitID]) then
-        ammoUsingUnit[unitID] = nil
-	end
-    if (supplyUnit[unitID]) then
-        supplyUnit[unitID] = nil
-    end
+	RemoveUnitFromLists(unitID)
 end
 
 -------------------------------------------------------------------------------
