@@ -26,7 +26,7 @@
   featureDead=JAPHoNiI_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoNiI_Dead;
+  object=JAPHoNiI_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -46,7 +46,7 @@
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoNiI_Wreck;
+  object=JAPHoNiI_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
