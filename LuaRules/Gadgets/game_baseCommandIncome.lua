@@ -2,7 +2,7 @@ function gadget:GetInfo()
   return {
     name      = "Base Command Income",
     desc      = "Provides a base level of income for all teams",
-    author    = "Nemo (B. Tyler",
+    author    = "Nemo (B. Tyler)",
     date      = "April 26th, 2009",
     license   = "PD",
     layer     = 0,
@@ -23,6 +23,8 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local team = {}
 
+local BASE_INCOME = 30
+
 function gadget:Initialize()
 	for _, teamID in ipairs(Spring.GetTeamList()) do
 		team[teamID] = true
@@ -32,7 +34,7 @@ end
 function gadget:GameFrame(n)
 	if (n % (1*32) < 0.1) then
 		for teamID, someThing in pairs(team) do
-			AddTeamResource(teamID, "m", 20)
+			AddTeamResource(teamID, "m", BASE_INCOME)
 			_, _, dead = GetTeamInfo(teamID)
 			if dead then
 				SetTeamShareLevel(teamID, "metal", 0)
