@@ -1,12 +1,12 @@
-[ITASemovente105_Abandoned]
+[ITASemovente75_46_Abandoned]
 {
   description=Abandoned Assault Gun;
   damage=2501;
   energy=50;
-  featureDead=ITASemovente105_Burning;
+  featureDead=ITASemovente75_46_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITASemovente105.s3o;
+  object=ITASemovente75_46.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[ITASemovente105_Burning]
+[ITASemovente75_46_Burning]
 {
   description=Destroyed Assault Gun;
   damage=2501;
   energy=50;
-  featureDead=ITASemovente105_Wreck;
+  featureDead=ITASemovente75_46_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=ITASemovente105_Dead.s3o;
+  object=ITASemovente75_46_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[ITASemovente105_Wreck]
+[ITASemovente75_46_Wreck]
 {
   description=Destroyed Assault Gun;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=ITASemovente105_Wreck.s3o;
+  object=ITASemovente75_46_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

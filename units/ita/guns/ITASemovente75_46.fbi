@@ -14,7 +14,7 @@
   //collisionVolumeScales=22 16 45;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=ITASemovente105_Abandoned;
+  corpse=ITASemovente75_46_Abandoned;
   // +25mm armorplates front and side developed from semovente 105 , mass is calculated with the heavier gun 75/46
   [customParams] {
     armor_front=100;
