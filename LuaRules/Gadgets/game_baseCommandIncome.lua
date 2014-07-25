@@ -23,7 +23,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local team = {}
 
-local BASE_INCOME = 30
+local BASE_INCOME = 25
 
 function gadget:Initialize()
 	for _, teamID in ipairs(Spring.GetTeamList()) do
