@@ -1,7 +1,7 @@
 #include "constants.h" // Thank you Argh
 
 piece	base, front_wheel, rear_wheel, mid_wheel1, mid_wheel2, mid_wheel3, mid_wheel4,
-		tracks,
+		tracks, tracks2,
 		turret, sleeve, barrel, flare,
 		turret_mg, turret_mg_flare,
 		bow_mg, bow_mg_flare,
@@ -76,24 +76,24 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 
 treads() 
 { 
-/*   while( TRUE ) 
+	while( TRUE ) 
    { 
         if(bMoving) 
            { 
               if(treadnum == 0) 
               {             
               hide tracks2; 
-              show tracks1; 
+              show tracks; 
               } 
             if(treadnum == 1) 
             { 
-            hide tracks1; 
+            hide tracks; 
             show tracks2; 
 			}
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } */
+   }
 }
 
 Create()
@@ -105,6 +105,7 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	hide tracks2;
 	frontMGAimDone = FALSE;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
