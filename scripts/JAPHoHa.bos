@@ -4,7 +4,7 @@
 
 piece	base, load_shoulder, load_arm, tow_point,
 		front_wheel, rear_wheel, drive_wheel, mid_wheel1,  mid_wheel2, mid_wheel3, mid_wheel4,
-		tracks, tent, exhaust;
+		tracks, tracks2, tent, exhaust;
  
 static-var restore_delay, bMoving, treadnum, aim1, shotCount;
 
@@ -75,6 +75,28 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 	}
 }
 
+TrackAnim()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			if(treadnum==0)
+			{
+				hide tracks2;
+				show tracks;
+				treadnum=1;
+			} else
+			{
+				show tracks2;
+				hide tracks;
+				treadnum=0;
+			}
+		}
+		sleep 90;
+	}
+}
+
 StartMoving()
 {
 	signal SIG_MOVE;
@@ -109,8 +131,10 @@ Create()
 //	spin tow_point around y-axis speed <100>;
 	aim1 = FALSE;
 	treadnum=0;
+	hide tracks2;
 	shotCount=0;
 	start-script SmokeUnit();
+	start-script TrackAnim();
 }
 
 SweetSpot(piecenum)
