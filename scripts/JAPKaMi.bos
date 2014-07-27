@@ -3,7 +3,7 @@
 piece	base, turret, sleeve, barrel, flare, turret_mg, turret_mg_flare, exhaust,
 		bow_mg, bow_mg_flare,
 		front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, support_wheel1, support_wheel2,
-		tracks, prop1, prop2, floats, wake;
+		tracks, tracks2, prop1, prop2, floats, wake;
 
 
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, treadnum, barrelaiming, MGAiming,
@@ -84,24 +84,24 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, bFloating, 
 // when it'll have some texture to show on tracks, then this will be needed
 treads() 
 { 
-/*   while( TRUE ) 
+	while( TRUE ) 
    { 
         if(bMoving) 
            { 
               if(treadnum == 0) 
               {             
               hide tracks2; 
-              show tracks1; 
+              show tracks; 
               } 
             if(treadnum == 1) 
             { 
-            hide tracks1; 
+            hide tracks; 
             show tracks2; 
 			}
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } */
+   }
 }
 
 Create()
@@ -114,6 +114,7 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	hide tracks2;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
