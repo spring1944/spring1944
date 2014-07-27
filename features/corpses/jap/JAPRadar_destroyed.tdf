@@ -26,7 +26,7 @@
   featureDead=JAPRadar_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPRadar_Dead;
+  object=JAPRadar_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -46,7 +46,7 @@
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPRadar_Wreck;
+  object=JAPRadar_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
