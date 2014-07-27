@@ -26,7 +26,7 @@
   featureDead=JAPChiHa120mm_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPChiHa120mm_Dead;
+  object=JAPChiHa120mm_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -46,7 +46,7 @@
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPChiHa120mm_Wreck;
+  object=JAPChiHa120mm_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
