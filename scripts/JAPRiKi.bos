@@ -1,7 +1,7 @@
 #include "constants.h" // Thank you Argh
 
 piece	base, front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, mid_wheels5, mid_wheels6, mid_wheels7, mid_wheels8, support_wheels1, support_wheels2,
-		tracks,
+		tracks, tracks2,
 		turret,
 		exhaust;
  
@@ -88,24 +88,24 @@ StopMoving()
 
 treads() 
 { 
-/*   while( TRUE ) 
+	while( TRUE ) 
    { 
         if(bMoving) 
            { 
               if(treadnum == 0) 
               {             
               hide tracks2; 
-              show tracks1; 
+              show tracks; 
               } 
             if(treadnum == 1) 
             { 
-            hide tracks1; 
+            hide tracks; 
             show tracks2; 
 			}
             treadnum = !treadnum; 
          } 
       sleep 90; 
-   } */
+   }
 }
 
 Create()
@@ -113,6 +113,7 @@ Create()
 	FX_HIDE
 	// init vars
 	treadnum=0;
+	hide tracks2;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
 	start-script treads();
