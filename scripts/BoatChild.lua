@@ -10,6 +10,8 @@ local barrelRecoilDist = info.barrelRecoilDist
 local barrelRecoilSpeed = info.barrelRecoilSpeed
 local aaWeapon = info.aaWeapon
 local facing = info.facing -- 0 = front, 1 = left, 2 = rear, 3 = right
+
+local reloadTimes = info.reloadTimes
 local flareOnShots = info.flareOnShots
 local numWeapons = info.numWeapons
 local numBarrels = info.numBarrels
@@ -138,22 +140,42 @@ function script.QueryWeapon(weaponID)
 	return flare or flares[weaponID] or rockets[curRocket]
 end
 
+local function SetWeaponReload(multiplier)
+	for weaponID = 1, numWeapons do
+		Spring.SetUnitWeaponState(unitID, weaponID, {reloadTime = reloadTimes[weaponID] * multiplier})
+	end
+end
+
+local currFearState = 0
+local fearChanged = false
 
 local function FearRecovery()
 	Signal(1) -- we _really_ only want one copy of this running at any time
 	SetSignalMask(1)
+	currFearState = 1
 	while curFear > 0 do
 		Sleep(1000)
 		curFear = curFear - 1
 		Spring.SetUnitRulesParam(unitID, "suppress", curFear)
 		if curFear > PINNED_LEVEL then
-			-- TODO: crew hiding anim
-			Disabled(true)
+			fearChanged = currFearState == 2
+			currFearState = 2
+			if fearChanged then
+				-- TODO: crew hiding anim
+				Disabled(true)
+			end
 		else
-			-- TODO: reduce fire rate when suppressed but not pinned?
-			Disabled(false)
+			fearChanged = currFearState == 1
+			currFearState = 1
+			if fearChanged then
+				-- reduce fire rate when suppressed but not pinned
+				SetWeaponReload(1.2)
+				Disabled(false)
+			end
 		end
 	end
+	currFearState = 0
+	SetWeaponReload(1.0)
 end
 
 function AddFear(amount)
