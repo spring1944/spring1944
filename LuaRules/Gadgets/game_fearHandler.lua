@@ -31,7 +31,8 @@ local MORALE_RADIUS = 150
 local FEAR_IDS = 	{["301"] = 2, --small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
 					 ["401"] = 4, --small/med explosions: mortars, 88mm guns and under
 					 ["501"] = 8, --large explosions: small bombs, 155mm - 105mm guns
-					 ["601"] = 16 --omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty}
+					 ["601"] = 16, --omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty}
+					 ["701"] = 2  --a hack for aircraft fear, should be merged with 301 at some point.
 					}
 -- variables
 local cobScriptIDs = {}
