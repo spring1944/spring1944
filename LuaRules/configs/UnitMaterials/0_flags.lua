@@ -11,7 +11,7 @@ local pieceDLs = {}
 
 local function UnitCreated(unitID, material, materialID)
   local pieceMap = Spring.GetUnitPieceMap(unitID)
-  local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag", "japflag", "itaflag", "flag", "teamflag"}
+  local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag", "jpnflag", "itaflag", "flag", "teamflag"}
   for i=1,#flagPieces do
     local pieceID = pieceMap[ flagPieces[i] ]
     if (pieceID) then

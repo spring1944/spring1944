@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPBarracks;
+  unitname=JPNBarracks;
   name=Barracks;
   description=Infantry Training & Housing Facility;
   buildCostEnergy=0;
@@ -17,7 +17,7 @@
   collisionVolumeOffsets=0 15 0;
   collisionVolumeTest=1;
   collisionVolumeType=box;
-  corpse=japbarracks_dead;
+  corpse=jpnbarracks_dead;
   [customParams] {
     ammoSupplier=1;
     blockfear=1;
@@ -33,16 +33,16 @@
   maxDamage=10000;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=JAPBarracks.s3o;
+  objectName=JPNBarracks.s3o;
   script=Barracks.cob;
   selfDestructAs=Med_Explosion;
   [sfxtypes] {
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=JAP;
+  side=JPN;
   sightDistance=146;
-  soundcategory=JAPYard;
+  soundcategory=JPNYard;
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;

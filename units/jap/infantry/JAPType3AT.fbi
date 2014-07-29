@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType3AT;
+  unitname=JPNType3AT;
   name=Type 3 AT Grenade Infantry;
   description=Short Range Heavy Anti-Tank;
   acceleration=0.375;
@@ -12,7 +12,7 @@
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
-  corpse=JAPSoldier_dead;
+  corpse=JPNSoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
@@ -35,7 +35,7 @@
   minCloakDistance=260;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
-  objectName=JAPATGrenadier.S3O;
+  objectName=JPNATGrenadier.S3O;
   repairable=0;
   script=rusrpg43.cob;
   seismicDistance=840;
@@ -51,9 +51,9 @@
     explosionGenerator7=custom:SMG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=570;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

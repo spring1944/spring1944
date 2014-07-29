@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPHoHa;
+  unitname=JPNHoHa;
   name=Type 1 HoHa;
   description=Armored Halftrack Transport;
   acceleration=0.051;
@@ -14,7 +14,7 @@
   //collisionVolumeScales=16 16 34;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPHoHa_Abandoned;
+  corpse=JPNHoHa_Abandoned;
   [customParams] {
     armor_front=12;
     armor_rear=8;
@@ -37,7 +37,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
-  objectName=JAPHoHa.s3o;
+  objectName=JPNHoHa.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -52,10 +52,10 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPVeh;
+  soundcategory=JPNVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;

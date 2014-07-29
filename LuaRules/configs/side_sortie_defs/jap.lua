@@ -1,76 +1,76 @@
-local japSorties = {
-	jap_sortie_recon = {
+local jpnSorties = {
+	jpn_sortie_recon = {
 		members = {
-			"japki76",
+			"jpnki76",
 		},
 		delay=15,
 		name = "Recon Sortie",
 		description = "1 x Ki-76 Stella",
 		buildCostMetal = 1000,
-		buildPic = "JAPKi76.png",
+		buildPic = "JPNKi76.png",
 		buildTime = 1000,
-		side = "JAP",
+		side = "JPN",
 	},
-	jap_sortie_interceptor = {
+	jpn_sortie_interceptor = {
 		members = {
-			"japki43",
-			"japki43",
-			"japki43",
-			"japki43",
+			"jpnki43",
+			"jpnki43",
+			"jpnki43",
+			"jpnki43",
 		},
 		delay=15,
 		weight=1,
 		name = "Intecreptor Sortie",
 		description = "4 x Ki-43",
 		buildCostMetal = 3200,
-		buildPic = "JAPKi43.png",
+		buildPic = "JPNKi43.png",
 		buildTime = 3200,
-		side = "JAP",
+		side = "JPN",
 	},
-	jap_sortie_fighter = {
+	jpn_sortie_fighter = {
 		members = {
-			"japki84",
-			"japki84",
-			"japki84",
-			"japki84",
+			"jpnki84",
+			"jpnki84",
+			"jpnki84",
+			"jpnki84",
 		},
 		delay=30,
 		weight=1,
 		name = "Air Superioroty Fighter Sortie",
 		description = "4 x Ki-84",
 		buildCostMetal = 4500,
-		buildPic = "JAPKi84.png",
+		buildPic = "JPNKi84.png",
 		buildTime = 4500,
-		side = "JAP",
+		side = "JPN",
 	},
-	jap_sortie_divebomber = {
+	jpn_sortie_divebomber = {
 		members = {
-			"japki51",
-			"japki51",
+			"jpnki51",
+			"jpnki51",
 		},
 		delay=45,
 		weight=1,
 		name = "Dive Bomber Sortie",
 		description = "2 x Ki-51",
 		buildCostMetal = 3500,
-		buildPic = "JAPKi51.png",
+		buildPic = "JPNKi51.png",
 		buildTime = 3500,
-		side = "JAP",
+		side = "JPN",
 	},
-	jap_sortie_at = {
+	jpn_sortie_at = {
 		members = {
-			"japki102",
-			"japki102",
+			"jpnki102",
+			"jpnki102",
 		},
 		delay=45,
 		weight=1,
 		name = "Anti-Tank Sortie",
 		description = "2 x Ki-102b",
 		buildCostMetal = 4500,
-		buildPic = "JAPKi102.png",
+		buildPic = "JPNKi102.png",
 		buildTime = 4500,
-		side = "JAP",
+		side = "JPN",
 	},
 }
 
-return japSorties
+return jpnSorties

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPHoNiI;
+  unitname=JPNHoNiI;
   name=Type 1 Ho-Ni I;
   description=Assault Gun;
   acceleration=0.030;
@@ -14,7 +14,7 @@
   //collisionVolumeScales=21 14 42;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPHoNiI_Abandoned;
+  corpse=JPNHoNiI_Abandoned;
   [customParams] {
     armor_front=50;
     armor_rear=25;
@@ -40,7 +40,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPHoNiI.s3o;
+  objectName=JPNHoNiI.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
@@ -57,10 +57,10 @@
     explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;
@@ -72,13 +72,13 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=jap75mmtype90_he;
+  weapon1=jpn75mmtype90_he;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap75mmtype90_ap;
+  weapon2=jpn75mmtype90_ap;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP ;
   maxAngleDif2=20;
   weaponMainDir2=0 0 1;

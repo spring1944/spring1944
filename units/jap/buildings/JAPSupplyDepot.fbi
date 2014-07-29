@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=japSupplyDepot;
+  unitname=jpnSupplyDepot;
   name=Large Supply Depot;
   description=Supplies An Extended Area;
   activateWhenBuilt=1;

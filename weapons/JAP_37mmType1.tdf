@@ -1,4 +1,4 @@
-[jap37mmtype1_ap] {
+[jpn37mmtype1_ap] {
   name=Type 1 37 mm Gun - Armour Piercing;//caped
   accuracy=100; //290
   avoidFeature=0;
@@ -43,7 +43,7 @@
   weaponVelocity=1118;
 }
 
-[jap37mmtype1_he] {
+[jpn37mmtype1_he] {
   name=Type 1 37 mm Gun - High Explosive;
   accuracy=300;
   areaOfEffect=26;

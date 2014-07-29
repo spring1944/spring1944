@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType91_105mm_Stationary;
+  unitname=JPNType91_105mm_Stationary;
   name=Dug-In Type 91 105mm;
   description=Stationary Howitzer;
   activateWhenBuilt=1;
@@ -10,9 +10,9 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=1800;
-  buildPic=JAPType91_105mm_Stationary.png;
+  buildPic=JPNType91_105mm_Stationary.png;
   category=DEPLOYED;
-  corpse=JAPType91_105mm_Destroyed;
+  corpse=JPNType91_105mm_Destroyed;
   [customParams] {
     canareaattack=1;
     canfiresmoke=1;
@@ -33,8 +33,8 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPType91_105mm_Stationary.s3o;
-  script=JAPType91_105mm_Stationary.cob;
+  objectName=JPNType91_105mm_Stationary.s3o;
+  script=JPNType91_105mm_Stationary.cob;
   onoffable=1;
   radarDistanceJam=0;
   [sfxtypes] {
@@ -50,21 +50,21 @@
     explosionGenerator9=custom:LARGE_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jap105mmtype99_he;
+  weapon1=jpn105mmtype99_he;
   maxAngleDif1=25;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap105mmtype99_smoke;
+  weapon2=jpn105mmtype99_smoke;
   maxAngleDif2=25;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;

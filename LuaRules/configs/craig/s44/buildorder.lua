@@ -218,41 +218,41 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	--]]
 	-- Japan
-	japhq = UnitArray{
-		"japhqengineer", "japhqengineer",
-		"jap_platoon_hq", "jap_platoon_hq",
-		"jap_platoon_hq", "jap_platoon_hq",
-		"jap_platoon_hq", "jap_platoon_hq",
-		"jap_platoon_hq", "jap_platoon_hq",
+	jpnhq = UnitArray{
+		"jpnhqengineer", "jpnhqengineer",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
 	},
-	japbarracks = UnitArray{
-		"japhqengineer", "japhqengineer",
-		"jap_platoon_rifle", "jap_platoon_assault",
-		"jap_platoon_rifle", "jap_platoon_mortar",
-		"jap_platoon_rifle", "jap_platoon_at",
-		"jap_platoon_rifle",
-		"jap_platoon_rifle", "jap_platoon_sniper",
-		"jap_platoon_rifle", "jap_platoon_rifle",
+	jpnbarracks = UnitArray{
+		"jpnhqengineer", "jpnhqengineer",
+		"jpn_platoon_rifle", "jpn_platoon_assault",
+		"jpn_platoon_rifle", "jpn_platoon_mortar",
+		"jpn_platoon_rifle", "jpn_platoon_at",
+		"jpn_platoon_rifle",
+		"jpn_platoon_rifle", "jpn_platoon_sniper",
+		"jpn_platoon_rifle", "jpn_platoon_rifle",
 	},
-	japvehicleyard = UnitArray{
-		"japriki",
-		--"japisuzutx40",
-		"japhoha",
-		--"japisuzutype94_aa",
-		"japteke",
-		"japhago",
-		"japhonii",
+	jpnvehicleyard = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhoha",
+		--"jpnisuzutype94_aa",
+		"jpnteke",
+		"jpnhago",
+		"jpnhonii",
 	},
-	japsupplydepot = UnitArray{
-		"japhoha",
+	jpnsupplydepot = UnitArray{
+		"jpnhoha",
 	},
-	japtankyard = UnitArray{
+	jpntankyard = UnitArray{
 	
-		"japriki",
-		"japhago",
-		"japshinhotochiha",
-		"japchihe",
-		"japhoro",
+		"jpnriki",
+		"jpnhago",
+		"jpnshinhotochiha",
+		"jpnchihe",
+		"jpnhoro",
 	},
 	
 }
@@ -307,13 +307,13 @@ gadget.baseBuildOrder = {
 		"itatankyard1",
 	},
 		-- "itaradar",
-		jap = UnitArray{
-		"japbarracks", "japbarracks",
-		"japstorage",
-		"japvehicleyard",
-		"japstorage", "japstorage",
-		"japtankyard",
-		"japsupplydepot",
+		jpn = UnitArray{
+		"jpnbarracks", "jpnbarracks",
+		"jpnstorage",
+		"jpnvehicleyard",
+		"jpnstorage", "jpnstorage",
+		"jpntankyard",
+		"jpnsupplydepot",
 	},
 }
 
@@ -331,8 +331,8 @@ gadget.baseBuilders = UnitSet{
 	"itahqengineer",
 	"itaengineer", 
 	"itabreda41",
-	"japriki",
-	"japhqengineer",
+	"jpnriki",
+	"jpnhqengineer",
 }
 
 -- This lists all the units that should be considered flags.
@@ -346,7 +346,7 @@ gadget.flagCappers = UnitSet{
 	"gerrifle", "germp40",
 	"itarifle", "itam38",
 	"usgirifle", "usgithompson",
-	"japrifle", "japtype100smg",
+	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
 }
 
@@ -356,6 +356,6 @@ gadget.reservedFlagCappers = {
 	ger = 24,
 	us  = 24,
 	ita  = 24,
-	jap = 24,
+	jpn = 24,
 	rus = 2,
 }

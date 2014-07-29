@@ -1,12 +1,12 @@
-[JAPRiKi_Abandoned]
+[JPNRiKi_Abandoned]
 {
   description=Abandoned Engineering Vehicle;
   damage=2501;
   energy=50;
-  featureDead=JAPRiKi_Burning;
+  featureDead=JPNRiKi_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPRiKi.s3o;
+  object=JPNRiKi.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPRiKi_Burning]
+[JPNRiKi_Burning]
 {
   description=Destroyed Engineering Vehicle;
   damage=2501;
   energy=50;
-  featureDead=JAPRiKi_Wreck;
+  featureDead=JPNRiKi_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPRiKi_Dead.s3o;
+  object=JPNRiKi_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPRiKi_Wreck]
+[JPNRiKi_Wreck]
 {
   description=Destroyed Engineering Vehicle;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPRiKi_Wreck.s3o;
+  object=JPNRiKi_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

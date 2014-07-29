@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType92HMG_DUGIN;
+  unitname=JPNType92HMG_DUGIN;
   name=Light Defensive Position;
   description= Dug-in Heavy Infantry Fire Support;
   activateWhenBuilt=1;
@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=4;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType92HMG.png;
+  buildPic=JPNType92HMG.png;
   buildTime=1000;
   category=DEPLOYED;
   corpse=SandbagMG_Destroyed;
@@ -23,7 +23,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=OPENVEH AIR FLAG SOFTVEH;
-  objectName=JAPSandbagMG.S3O;
+  objectName=JPNSandbagMG.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
@@ -35,16 +35,16 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=OPENVEH FLAG SOFTVEH;
 
-  weapon1=JAPType92HMG;
+  weapon1=JPNType92HMG;
   maxAngleDif1=120;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;

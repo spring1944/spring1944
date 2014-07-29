@@ -1,12 +1,12 @@
-[JAPChiHe_Abandoned]
+[JPNChiHe_Abandoned]
 {
   description=Abandoned Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPChiHe_Burning;
+  featureDead=JPNChiHe_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPChiHe.s3o;
+  object=JPNChiHe.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPChiHe_Burning]
+[JPNChiHe_Burning]
 {
   description=Destroyed Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPChiHe_Wreck;
+  featureDead=JPNChiHe_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPChiHe_Dead.s3o;
+  object=JPNChiHe_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPChiHe_Wreck]
+[JPNChiHe_Wreck]
 {
   description=Destroyed Tank;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPChiHe_Wreck.s3o;
+  object=JPNChiHe_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

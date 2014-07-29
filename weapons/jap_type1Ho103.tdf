@@ -61,7 +61,7 @@
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=1e-14; //2
-  soundStart=jap_TE4_MG;
+  soundStart=jpn_TE4_MG;
   soundTrigger=1;
   sprayAngle=300;
   tolerance=300;

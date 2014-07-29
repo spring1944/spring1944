@@ -1,11 +1,11 @@
-[JAPHQ_Dead]
+[JPNHQ_Dead]
 {
   description=Destroyed Building;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHQ_dead;
+  object=JPNHQ_dead;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

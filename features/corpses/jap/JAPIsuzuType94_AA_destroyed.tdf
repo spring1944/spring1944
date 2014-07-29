@@ -1,12 +1,12 @@
-[JAPIsuzuType94_AA_Burning]
+[JPNIsuzuType94_AA_Burning]
 {
   description=Destroyed Truck;
   damage=2501;
   energy=50;
-  featureDead=JAPIsuzuType94_AA_Wreck;
+  featureDead=JPNIsuzuType94_AA_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPIsuzuType94AA_Dead.s3o;
+  object=JPNIsuzuType94AA_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -19,14 +19,14 @@
 		}
 }
 
-[JAPIsuzuType94_AA_Wreck]
+[JPNIsuzuType94_AA_Wreck]
 {
   description=Destroyed Truck;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPIsuzuType94_AA_Wreck;
+  object=JPNIsuzuType94_AA_Wreck;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

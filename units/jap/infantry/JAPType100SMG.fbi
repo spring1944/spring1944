@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType100SMG;
+  unitname=JPNType100SMG;
   name=Type 100 SMG;
   description=Close-Quarters Assault Infantry;
   acceleration=0.375;
@@ -10,7 +10,7 @@
   buildTime=340;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     feartarget=1;
     flagCapRate=1;
@@ -30,7 +30,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPSMG.S3O;
+  objectName=JPNSMG.S3O;
   script=gbrsten.cob;
   repairable=0;
   seismicDistance=840;
@@ -46,10 +46,10 @@
     explosionGenerator7=custom:SMG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

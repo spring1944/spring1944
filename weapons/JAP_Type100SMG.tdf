@@ -30,7 +30,7 @@
   reloadTime=1.7;
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
-  soundStart=JAP_Type100_SMG;
+  soundStart=JPN_Type100_SMG;
   soundTrigger=1;
   sprayAngle=380;
   thickness=0.4;

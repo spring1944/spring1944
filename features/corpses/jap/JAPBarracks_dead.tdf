@@ -1,11 +1,11 @@
-[JAPBarracks_Dead]
+[JPNBarracks_Dead]
 {
   description=Destroyed Building;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPBarracks_dead;
+  object=JPNBarracks_dead;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

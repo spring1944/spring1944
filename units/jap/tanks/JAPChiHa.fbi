@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPChiHa;
+  unitname=JPNChiHa;
   name=Type 97 Chi-Ha;
   description=Medium Support Tank;
   acceleration=0.034;
@@ -14,7 +14,7 @@
   //collisionVolumeScales=15 16 30;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPChiHa_Abandoned;
+  corpse=JPNChiHa_Abandoned;
   [customParams] {
     armor_front=30;
     armor_rear=25;
@@ -40,7 +40,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPChiHa.s3o;
+  objectName=JPNChiHa.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -56,10 +56,10 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;
@@ -71,18 +71,18 @@
   turnRate=280;
   badTargetCategory=FLAG;
 
-  weapon1=jap57mmtype97_he;
+  weapon1=jpn57mmtype97_he;
   onlyTargetCategory1=BUILDING OPENVEH HARDVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=jap57mmtype97_ap;
+  weapon2=jpn57mmtype97_ap;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=japtype97_mg;
+  weapon3=jpntype97_mg;
   onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir3 = 0 0 1;
 	maxAngleDif3 = 50;
 
-  weapon4=japtype97_mg;
+  weapon4=jpntype97_mg;
   onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir4 = 0 16 1;
 	maxAngleDif4 = 210;

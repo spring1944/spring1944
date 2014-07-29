@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPHoNiIII;
+  unitname=JPNHoNiIII;
   name=Type 3 Ho-Ni III;
   description=Tank Destroyer;
   acceleration=0.041;
@@ -14,7 +14,7 @@
   //collisionVolumeScales=21 14 42;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPHoNiIII_Abandoned;
+  corpse=JPNHoNiIII_Abandoned;
   [customParams] {
     armor_front=30;
     armor_rear=25;
@@ -40,7 +40,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPHoNiIII.s3o;
+  objectName=JPNHoNiIII.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
@@ -57,10 +57,10 @@
     explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;
@@ -72,7 +72,7 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=jap75mmtype3_ap;
+  weapon1=jpn75mmtype3_ap;
   onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP ;
   maxAngleDif1=20;
   weaponMainDir1=0 0 1;

@@ -1,4 +1,4 @@
-[japtype96_25mm60_aa]
+[jpntype96_25mm60_aa]
 {
 	name=Single Type 96 25mm High-Explosive Shells;
 	rendertype=1;
@@ -52,7 +52,7 @@
 	}
 }
 
-[japtype96_25mm60_he]
+[jpntype96_25mm60_he]
 {
 	name=Single Type 96 25mm High-Explosive Shells;
 	rendertype=1;
@@ -106,7 +106,7 @@
 	}
 }
 
-[japtype96_twin25mm60_aa]
+[jpntype96_twin25mm60_aa]
 {
 	name=Twin Type 96 25mm High-Explosive Shells;
 	rendertype=1;
@@ -160,7 +160,7 @@
 	}
 }
 
-[japtype96_twin25mm60_he]
+[jpntype96_twin25mm60_he]
 {
 	name=Twin Type 96 25mm High-Explosive Shells;
 	rendertype=1;

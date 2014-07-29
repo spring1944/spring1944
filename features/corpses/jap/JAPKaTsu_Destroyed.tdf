@@ -1,12 +1,12 @@
-[JAPKaTsu_Abandoned]
+[JPNKaTsu_Abandoned]
 {
   description=Abandoned Amphibious Transport;
   damage=2501;
   energy=50;
-  featureDead=JAPKaTsu_Burning;
+  featureDead=JPNKaTsu_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaTsu_Abandoned.s3o;
+  object=JPNKaTsu_Abandoned.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPKaTsu_Burning]
+[JPNKaTsu_Burning]
 {
   description=Destroyed Amphibious Transport;
   damage=2501;
   energy=50;
-  featureDead=JAPKaTsu_Wreck;
+  featureDead=JPNKaTsu_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaTsu_Dead.s3o;
+  object=JPNKaTsu_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPKaTsu_Wreck]
+[JPNKaTsu_Wreck]
 {
   description=Destroyed Amphibious Transport;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaTsu_Wreck;
+  object=JPNKaTsu_Wreck;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

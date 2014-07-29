@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPIsuzuTX40;
+  unitname=JPNIsuzuTX40;
   name=Type 97 Isuzu TX 40;
   description=Transport Truck;
   acceleration=0.3;
@@ -9,7 +9,7 @@
   buildTime=510;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=JAPIsuzuTX40_Abandoned;
+  corpse=JPNIsuzuTX40_Abandoned;
   [customParams] {
     buildOutside=1;
     dontCount=1;
@@ -29,16 +29,16 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=JAPIsuzuTX40.s3o;
+  objectName=JPNIsuzuTX40.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=800;
-  soundcategory=JAPVeh;
+  soundcategory=JPNVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;

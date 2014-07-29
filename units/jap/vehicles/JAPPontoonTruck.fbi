@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPPontoonTruck;
+  unitname=JPNPontoonTruck;
   name=Pontoon Transport;
   description=Deployable Boatyard Vehicle;
   acceleration=0.3;
@@ -37,9 +37,9 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=800;
-  soundcategory=JAPVeh;
+  soundcategory=JPNVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;

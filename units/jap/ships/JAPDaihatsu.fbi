@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPDaihatsu;
+  unitname=JPNDaihatsu;
   name=Daihatsu Landing Craft;
   description=Infantry Landing Craft;
   acceleration=0.9;
@@ -10,7 +10,7 @@
   buildTime=1000;
   canMove=1;
   category=SHIP MINETRIGGER;
-  corpse=JAPDaihatsu_dead;
+  corpse=JPNDaihatsu_dead;
   [customParams] {
     ammoSupplier=1;
     armor_front=6;
@@ -19,7 +19,7 @@
     armor_top=6;
     supplyRange=350;
     hasturnbutton=1;
-    transportsquad=jap_platoon_daihatsu;
+    transportsquad=jpn_platoon_daihatsu;
   }
   energyMake=0;
   energyUse=0;
@@ -36,7 +36,7 @@
   minWaterDepth=6;
   movementClass=BOAT_LandingCraftSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPDaihatsu.s3o;
+  objectName=JPNDaihatsu.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

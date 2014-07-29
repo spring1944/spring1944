@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPAbTei;
+  unitname=JPNAbTei;
   name=Armored Boat Ab-Tei;
   description=armored river gunboat;
   acceleration=0.05;
@@ -14,7 +14,7 @@
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=24.0 24.0 160.0;
   collisionVolumeType=box;
-  corpse=JAPAbTei_dead;
+  corpse=JPNAbTei_dead;
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
@@ -48,7 +48,7 @@
   minWaterDepth=6;
   movementClass=BOAT_RiverSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPAbTei.s3o;
+  objectName=JPNAbTei.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -66,25 +66,25 @@
   showNanoFrame=0;
   sightDistance=840;
   smoothAnim=0;
-  SoundCategory=JAPBoat;
+  SoundCategory=JPNBoat;
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
   turnRate=250;
 
-  weapon1=jap57mmtype97_he;
+  weapon1=jpn57mmtype97_he;
   maxAngleDif1=300;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap57mmtype97_he;
+  weapon2=jpn57mmtype97_he;
   maxAngleDif2=300;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
-  weapon3=japtype97_mg;
+  weapon3=jpntype97_mg;
   onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
-  weapon4=japtype97_mg;
+  weapon4=jpntype97_mg;
   onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED;
   weaponSlaveTo4=3;
 

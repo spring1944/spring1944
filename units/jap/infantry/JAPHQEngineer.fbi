@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPHQEngineer;
+  unitname=JPNHQEngineer;
   name=Field Engineer;
   description=Basic Engineer;
   acceleration=0.375;
@@ -9,10 +9,10 @@
   buildDistance=128;
   builder=1;
   buildTime=225;
-  buildPic=JAPEngineer.png;
+  buildPic=JPNEngineer.png;
   canMove=1;
   category=INFANTRY;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     feartarget=1;
 	canclearmines=1;
@@ -32,13 +32,13 @@
   seismicSignature=0;
   [sfxtypes] {
   }
-  objectName=japengineer.s3o;
+  objectName=jpnengineer.s3o;
   script=GBRHQEngineer.cob;
   showNanoFrame=0;
   showNanoSpray=0;
   sightDistance=600;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=CONSTR;
   terraformSpeed=300;

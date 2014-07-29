@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPKaTsu;
+  unitname=JPNKaTsu;
   name=Type 4 Ka-Tsu;
   description=Armored Amphibious Transport;
   acceleration=0.051;
@@ -15,7 +15,7 @@
   //collisionVolumeScales=16 16 34;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPKaTsu_Abandoned;
+  corpse=JPNKaTsu_Abandoned;
   [customParams] {
     armor_front=12;
     armor_rear=10;
@@ -38,7 +38,7 @@
   maxWaterDepth=5;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
-  objectName=JAPKaTsu.s3o;
+  objectName=JPNKaTsu.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -53,10 +53,10 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPVeh;
+  soundcategory=JPNVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;
@@ -73,12 +73,12 @@
   turnRate=400;
   badTargetCategory=FLAG;
 
-  weapon1=jap13mmtype93;
+  weapon1=jpn13mmtype93;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir1 = 1 0 0;
 	maxAngleDif1 = 200;
 
-  weapon2=jap13mmtype93;
+  weapon2=jpn13mmtype93;
   onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir2 = -1 0 0;
 	maxAngleDif2 = 200;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPSniper;
+  unitname=JPNSniper;
   name=Japanese Sniper;
   description=Precise Fire Support;
   acceleration=0.375;
@@ -12,7 +12,7 @@
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
@@ -35,7 +35,7 @@
   minCloakDistance=220;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH MINE;
-  objectName=JAPSniper.S3O;
+  objectName=JPNSniper.S3O;
   script=gersniper.cob;
   repairable=0;
   seismicDistance=0;
@@ -51,10 +51,10 @@
     explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

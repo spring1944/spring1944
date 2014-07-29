@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType1_47mm_Stationary;
+  unitname=JPNType1_47mm_Stationary;
   name=Dug-In Type 1 47mm Gun;
   description=Stationary Anti-Tank Gun;
   activateWhenBuilt=1;
@@ -10,9 +10,9 @@
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
   buildTime=900;
-  buildPic=JAPType1_47mm_Stationary.png;
+  buildPic=JPNType1_47mm_Stationary.png;
   category=DEPLOYED;
-  corpse=JAPType1_47mm_Destroyed;
+  corpse=JPNType1_47mm_Destroyed;
   [customParams] {
 	hiddenbuilding=1;
     feartarget=1;
@@ -36,7 +36,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPType1_47mm_Stationary.s3o;
+  objectName=JPNType1_47mm_Stationary.s3o;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
@@ -51,16 +51,16 @@
   }
   script=itacannone47_Stationary.cob;
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JAPGun;
+  soundcategory=JPNGun;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jap47mmtype1_ap;
+  weapon1=jpn47mmtype1_ap;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;

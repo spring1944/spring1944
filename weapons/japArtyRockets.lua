@@ -35,7 +35,7 @@ local ArtyRocketClass = Weapon:New{
 -- Implementations
 
 -- Type 4 200mm rocket mortar
-local japtype4rocketmortar = ArtyRocketClass:New{
+local jpntype4rocketmortar = ArtyRocketClass:New{
   areaOfEffect       = 203,
   reloadtime         = 15,
   explosionGenerator = [[custom:HE_XLarge]],
@@ -48,7 +48,7 @@ local japtype4rocketmortar = ArtyRocketClass:New{
   },
 }
 
-local japtype4rocketmortar_smoke = ArtyRocketClass:New{
+local jpntype4rocketmortar_smoke = ArtyRocketClass:New{
   areaOfEffect       = 30,
   reloadtime         = 15,
   customparams = {
@@ -67,6 +67,6 @@ local japtype4rocketmortar_smoke = ArtyRocketClass:New{
 
 -- Return only the full weapons
 return lowerkeys({
-  japtype4rocketmortar_he = japtype4rocketmortar,
-  japtype4rocketmortar_smoke = japtype4rocketmortar_smoke,
+  jpntype4rocketmortar_he = jpntype4rocketmortar,
+  jpntype4rocketmortar_smoke = jpntype4rocketmortar_smoke,
 })

@@ -1,4 +1,4 @@
-[japtype92hmg] {
+[jpntype92hmg] {
   name=Type 92 7.7mm Machinegun;
   areaOfEffect=1;
   avoidFeature=0;
@@ -28,7 +28,7 @@
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=1e-14;
-  soundStart=JAP_Type98_HMG;
+  soundStart=JPN_Type98_HMG;
   soundTrigger=1;
   sprayAngle=320;
   tolerance=3000;

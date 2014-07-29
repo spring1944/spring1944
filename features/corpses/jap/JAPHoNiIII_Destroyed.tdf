@@ -1,12 +1,12 @@
-[JAPHoNiIII_Abandoned]
+[JPNHoNiIII_Abandoned]
 {
   description=Abandoned Tank Destroyer;
   damage=2501;
   energy=50;
-  featureDead=JAPHoNiIII_Burning;
+  featureDead=JPNHoNiIII_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoNiIII.s3o;
+  object=JPNHoNiIII.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPHoNiIII_Burning]
+[JPNHoNiIII_Burning]
 {
   description=Destroyed Tank Destroyer;
   damage=2501;
   energy=50;
-  featureDead=JAPHoNiIII_Wreck;
+  featureDead=JPNHoNiIII_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoNiIII_Dead.s3o;
+  object=JPNHoNiIII_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPHoNiIII_Wreck]
+[JPNHoNiIII_Wreck]
 {
   description=Destroyed Tank Destroyer;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoNiIII_Wreck.s3o;
+  object=JPNHoNiIII_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

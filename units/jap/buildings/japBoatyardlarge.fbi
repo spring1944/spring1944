@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPBoatyardlarge;
+  unitname=JPNBoatyardlarge;
   name=Large Boat Yard;
   description=Naval Production Facility;
   buildCostEnergy=0;
@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPBoatyard.png;
+  buildPic=JPNBoatyard.png;
   buildTime=5445;
   canBeAssisted=0;
   canMove=1;
@@ -35,7 +35,7 @@
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=JAP;
+  side=JPN;
   sightDistance=146;
   soundcategory=GERYard;
   stealth=1;

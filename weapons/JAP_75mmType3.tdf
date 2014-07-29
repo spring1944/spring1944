@@ -1,4 +1,4 @@
-[jap75mmtype3_ap] {
+[jpn75mmtype3_ap] {
   name=Type 3 75mm/38, Armour-Piercing;
   accuracy=100; // 290
   avoidFeature=0;
@@ -42,7 +42,7 @@
   weaponVelocity=1358;
 }
 
-[jap75mmtype3_he] {
+[jpn75mmtype3_he] {
   name=Type 3 75mm/38, High Explosives;
   accuracy=300;
   avoidFeature=0;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType92HMG;
+  unitname=JPNType92HMG;
   name=Type 92 Heavy Machinegun;
   description=Heavy Machinegun;
   acceleration=0.375;
@@ -10,7 +10,7 @@
   buildTime=1000;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     feartarget=1;
   }
@@ -29,7 +29,7 @@
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG HARDVEH OPENVEH AIR;
-  objectName=JAPMG.s3o;
+  objectName=JPNMG.s3o;
   script=infantrymg.cob;
   seismicSignature=0;
   [sfxtypes] {
@@ -43,10 +43,10 @@
     explosionGenerator7=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPHoRo;
+  unitname=JPNHoRo;
   name=Type 4 Ho-Ro;
   description=Assault Gun (short 150mm howitzer);
   acceleration=0.041;
@@ -14,7 +14,7 @@
   //collisionVolumeScales=21 14 42;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPHoRo_Abandoned;
+  corpse=JPNHoRo_Abandoned;
   [customParams] {
     armor_front=30;
     armor_rear=25;
@@ -42,7 +42,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPHoRo.s3o;
+  objectName=JPNHoRo.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
   [sfxtypes] {
@@ -59,10 +59,10 @@
     explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=5;
@@ -74,12 +74,12 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=jap150mmtype38_he;
+  weapon1=jpn150mmtype38_he;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap150mmtype38_smoke;
+  weapon2=jpn150mmtype38_smoke;
   maxAngleDif2=20;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;

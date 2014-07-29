@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType98_20mm_Stationary;
+  unitname=JPNType98_20mm_Stationary;
   name=Dug-In Type 98 20mm;
   description=Stationary Anti-Aircraft Gun;
   activateWhenBuilt=1;
@@ -9,10 +9,10 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType98_20mm_Stationary.png;
+  buildPic=JPNType98_20mm_Stationary.png;
   buildTime=2500;
   category=DEPLOYED;
-  corpse=JAPType98_20mm_Destroyed;
+  corpse=JPNType98_20mm_Destroyed;
   [customParams] {
     feartarget=1;
     lowammolevel=8;
@@ -27,7 +27,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPType98_20mm_Stationary.S3O;
+  objectName=JPNType98_20mm_Stationary.S3O;
   script=ITABreda20_Stationary.cob;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
@@ -42,10 +42,10 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;

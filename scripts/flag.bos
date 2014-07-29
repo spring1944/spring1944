@@ -5,7 +5,7 @@ piece  gerflag;
 piece  gbrflag;
 piece  rusflag;
 piece  usflag;
-piece  japflag;
+piece  jpnflag;
 piece  itaflag;
 
 #define ALARM			 4096+0
@@ -28,9 +28,9 @@ wait-for-move rusflag along y-axis;
 \move usflag to y-axis 0 speed [20]; \
 wait-for-move usflag along y-axis;
 
-#define HIDE_JAP \
-\move japflag to y-axis 0 speed [20]; \
-wait-for-move japflag along y-axis;
+#define HIDE_JPN \
+\move jpnflag to y-axis 0 speed [20]; \
+wait-for-move jpnflag along y-axis;
 
 #define HIDE_ITA \
 \move itaflag to y-axis 0 speed [20]; \
@@ -52,9 +52,9 @@ wait-for-move rusflag along y-axis;
 \move usflag to y-axis [25] speed [10]; \
 wait-for-move usflag along y-axis;
 
-#define SHOW_JAP \
-\move japflag to y-axis [25] speed [10]; \
-wait-for-move japflag along y-axis;
+#define SHOW_JPN \
+\move jpnflag to y-axis [25] speed [10]; \
+wait-for-move jpnflag along y-axis;
 
 #define SHOW_ITA \
 \move itaflag to y-axis [25] speed [10]; \
@@ -68,14 +68,14 @@ ShowFlag(team)
 		HIDE_GBR
 		HIDE_RUS
 		HIDE_US
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 	}
 	if(team == 1) { // GBR
 		HIDE_GER
 		HIDE_RUS
 		HIDE_US
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 		SHOW_GBR
 	}
@@ -83,7 +83,7 @@ ShowFlag(team)
 		HIDE_GBR
 		HIDE_RUS
 		HIDE_US	
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 		SHOW_GER
 	}
@@ -91,7 +91,7 @@ ShowFlag(team)
 		HIDE_GBR
 		HIDE_GER
 		HIDE_US	
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 		SHOW_RUS
 	}
@@ -99,7 +99,7 @@ ShowFlag(team)
 		HIDE_GBR
 		HIDE_GER
 		HIDE_RUS
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 		SHOW_US	
 	}
@@ -107,17 +107,17 @@ ShowFlag(team)
 		HIDE_GBR
 		HIDE_GER
 		HIDE_RUS
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_US
 		SHOW_ITA	
 	}
-	if(team == 6) { // JAP
+	if(team == 6) { // JPN
 		HIDE_GBR
 		HIDE_GER
 		HIDE_RUS
 		HIDE_ITA
 		HIDE_US
-		SHOW_JAP	
+		SHOW_JPN	
 	}
 }
 
@@ -127,7 +127,7 @@ SetFlag()
 		HIDE_GBR
 		HIDE_RUS
 		HIDE_US
-		HIDE_JAP
+		HIDE_JPN
 		HIDE_ITA
 }
 
@@ -143,7 +143,7 @@ SetDirection(windDir)
 	turn usflag to y-axis windDir speed <20.000000>;
 	turn rusflag to y-axis windDir speed <20.000000>;
 	turn gbrflag to y-axis windDir speed <20.000000>;
-	turn japflag to y-axis windDir speed <20>;
+	turn jpnflag to y-axis windDir speed <20>;
 	turn itaflag to y-axis windDir speed <20>;
 }
 

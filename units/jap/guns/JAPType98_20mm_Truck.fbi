@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType98_20mm_Truck;
+  unitname=JPNType98_20mm_Truck;
   name=Towed Type 98 20mm Gun;
   description=Anti-Aircraft Gun;
   acceleration=0.3;
@@ -7,11 +7,11 @@
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=1800;
-  buildPic=JAPType98_20mm.png;
+  buildPic=JPNType98_20mm.png;
   buildTime=1800;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=JAPIsuzuTX40_Abandoned;
+  corpse=JPNIsuzuTX40_Abandoned;
   [customParams] {
     lowammolevel=1;
     maxammo=16;
@@ -31,7 +31,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=JAPType98_20mm_Truck.s3o;
+  objectName=JPNType98_20mm_Truck.s3o;
   script=gerflak38_truck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
@@ -40,7 +40,7 @@
   showNanoFrame=0;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;

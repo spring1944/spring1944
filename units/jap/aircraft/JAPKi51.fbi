@@ -1,5 +1,5 @@
 [UNITINFO] {
-  UnitName=JAPKi51;
+  UnitName=JPNKi51;
   name=Ki.51 Assault Plane;
   description=Ground-attack aircraft;
   acceleration=0.4;
@@ -50,7 +50,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
-  objectName=JAPKi51.s3o;
+  objectName=JPNKi51.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;
@@ -60,7 +60,7 @@
     explosionGenerator2=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  Side=JAP;
+  Side=JPN;
   sightDistance=0;
   smoothAnim=1;
   stealth=1;
@@ -72,23 +72,23 @@
   wingAngle=0.1;
   wingDrag=0.1;
 
-  weapon1=jap_bomb50kg;
+  weapon1=jpn_bomb50kg;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap_bomb50kg;
+  weapon2=jpn_bomb50kg;
   maxAngleDif2=20;
   onlyTargetCategory2=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 
-  weapon3=jap_bomb50kg;
+  weapon3=jpn_bomb50kg;
   maxAngleDif3=20;
   onlyTargetCategory3=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=2;
 
-  weapon4=jap_bomb50kg;
+  weapon4=jpn_bomb50kg;
   maxAngleDif4=20;
   onlyTargetCategory4=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir4=0 0 1;

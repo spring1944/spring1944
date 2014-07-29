@@ -1,4 +1,4 @@
-[jap13mmtype93] {
+[jpn13mmtype93] {
   name=Type 93 13mm Heavy Machine Gun;
   areaOfEffect=1;
   avoidFeature=0;
@@ -44,7 +44,7 @@
   weaponVelocity=3000;
 }
 
-[jap13mmtype93aa] {
+[jpn13mmtype93aa] {
   name=Type 93 13mm Heavy Machine Gun;
   areaOfEffect=1;
   burst=6;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType4Mortar_mobile;
+  unitname=JPNType4Mortar_mobile;
   name=Type 4 200mm Mortar;
   description=Heavy Rocket Mortar;
   acceleration=0.2;
@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=1500;
   buildTime=1500;
-  buildPic=JAPType4Mortar_stationary.png;
+  buildPic=JPNType4Mortar_stationary.png;
   canMove=1;
   category=INFANTRY MINETRIGGER;
   corpse=ITASoldier_dead;
@@ -36,7 +36,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR;
-  objectName=JAPMortar.S3O;
+  objectName=JPNMortar.S3O;
   script=gergrw34.cob;
   seismicDistance=840;
   seismicSignature=0;
@@ -51,10 +51,10 @@
     explosionGenerator7=custom:MORTAR_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

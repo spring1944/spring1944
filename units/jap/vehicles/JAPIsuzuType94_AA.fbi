@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPIsuzuType94_AA;
+  unitname=JPNIsuzuType94_AA;
   name=Type 94 Isuzu;
   description=Anti-Aircraft Truck;
   acceleration=0.065;
@@ -10,7 +10,7 @@
   buildTime=2000;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=JAPIsuzuType94_AA_Burning;
+  corpse=JPNIsuzuType94_AA_Burning;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;
@@ -24,7 +24,7 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=INFANTRY MINE BUILDING FLAG SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  objectName=JAPIsuzuType94AA.s3o;
+  objectName=JPNIsuzuType94AA.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -40,10 +40,10 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=JAPVeh;
+  soundcategory=JPNVeh;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;
@@ -55,7 +55,7 @@
   turnRate=400;
   badTargetCategory=FLAG;
 
-  weapon1=jap_20mmtype98aa;
+  weapon1=jpn_20mmtype98aa;
   onlyTargetCategory1=AIR;
 
   weapon2=Large_Tracer;

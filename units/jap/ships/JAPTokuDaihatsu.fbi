@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPTokuDaihatsu;
+  unitname=JPNTokuDaihatsu;
   name=Toku Daihatsu Landing Craft;
   description=Tank Landing Craft;
   acceleration=0.9;
@@ -10,7 +10,7 @@
   buildTime=1000;
   canMove=1;
   category=SHIP MINETRIGGER;
-  corpse=JAPTokuDaihatsu_dead;
+  corpse=JPNTokuDaihatsu_dead;
   [customParams] {
     ammoSupplier=1;
     armor_front=6;
@@ -19,7 +19,7 @@
     armor_top=6;
     supplyRange=350;
     hasturnbutton=1;
-	transportsquad=jap_platoon_tokudaihatsu;
+	transportsquad=jpn_platoon_tokudaihatsu;
   }
   energyMake=0;
   energyUse=0;
@@ -36,7 +36,7 @@
   minWaterDepth=6;
   movementClass=BOAT_LandingCraftSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPTokuDaihatsu.s3o;
+  objectName=JPNTokuDaihatsu.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -64,12 +64,12 @@
 
 	canAttack=1;
 
-  weapon1=japtype96_25mm60_aa;
+  weapon1=jpntype96_25mm60_aa;
   onlyTargetCategory1=AIR;
   weaponMainDir1 = 0 0 -1;
   maxAngleDif1 = 300;
 
-  weapon2=japtype96_25mm60_he;
+  weapon2=jpntype96_25mm60_he;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2 = 0 0 -1;
   maxAngleDif2 = 300;

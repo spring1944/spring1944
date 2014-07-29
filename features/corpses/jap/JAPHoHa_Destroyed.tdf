@@ -1,12 +1,12 @@
-[JAPHoHa_Abandoned]
+[JPNHoHa_Abandoned]
 {
   description=Abandoned Halftrack;
   damage=2501;
   energy=50;
-  featureDead=JAPHoHa_Burning;
+  featureDead=JPNHoHa_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoHa.s3o;
+  object=JPNHoHa.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPHoHa_Burning]
+[JPNHoHa_Burning]
 {
   description=Destroyed Halftrack;
   damage=2501;
   energy=50;
-  featureDead=JAPHoHa_Wreck;
+  featureDead=JPNHoHa_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoHa_Dead.s3o;
+  object=JPNHoHa_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPHoHa_Wreck]
+[JPNHoHa_Wreck]
 {
   description=Destroyed Halftrack;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoHa_Wreck.s3o;
+  object=JPNHoHa_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

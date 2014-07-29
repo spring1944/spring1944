@@ -1,5 +1,5 @@
 [UNITINFO] {
-  UnitName=JAPKi84;
+  UnitName=JPNKi84;
   name=Ki.84 Hayate;
   description=Air Supremacy Fighter;
   acceleration=1.4;
@@ -8,7 +8,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3125;
-  buildPic=JAPKi84.png;
+  buildPic=JPNKi84.png;
   buildTime=3125;
   canAttack=1;
   canDropFlare=1;
@@ -47,7 +47,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
-  objectName=JAPKi84.s3o;
+  objectName=JPNKi84.s3o;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

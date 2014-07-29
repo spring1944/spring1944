@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPKaMi;
+  unitname=JPNKaMi;
   name=Type 2 Ka-Mi;
   description=Light Amphibious Tank;
   acceleration=0.034;
@@ -15,7 +15,7 @@
   //collisionVolumeScales=15 16 30;
   //collisionVolumeOffsets=0 0 0;
   //collisionVolumeTest=1;
-  corpse=JAPKaMi_Abandoned;
+  corpse=JPNKaMi_Abandoned;
   [customParams] {
     armor_front=15;
     armor_rear=8;
@@ -41,7 +41,7 @@
   maxWaterDepth=5;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPKaMi.s3o;
+  objectName=JPNKaMi.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -57,10 +57,10 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=7;
@@ -72,16 +72,16 @@
   turnRate=280;
   badTargetCategory=FLAG;
 
-  weapon1=jap37mmtype1_he;
+  weapon1=jpn37mmtype1_he;
   onlyTargetCategory1=BUILDING OPENVEH HARDVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=jap37mmtype1_ap;
+  weapon2=jpn37mmtype1_ap;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=japtype97_mg;
+  weapon3=jpntype97_mg;
   onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 
-  weapon4=japtype97_mg;
+  weapon4=jpntype97_mg;
   onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir4 = 0 0 1;
 	maxAngleDif4 = 20;

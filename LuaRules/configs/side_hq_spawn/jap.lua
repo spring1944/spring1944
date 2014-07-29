@@ -1,17 +1,17 @@
-local japData = {
-	japhq = {
+local jpnData = {
+	jpnhq = {
 			spread = 200,
 			units = {
-				"jap_platoon_rifle",
-				"japstorage",
-				"japtype98_20mm_stationary",
-				"japtype98_20mm_stationary",
-				"japobserv",
-				"japhqengineer",
-				"japtype1_47mm_truck",
-				"japtype1_47mm_truck",
+				"jpn_platoon_rifle",
+				"jpnstorage",
+				"jpntype98_20mm_stationary",
+				"jpntype98_20mm_stationary",
+				"jpnobserv",
+				"jpnhqengineer",
+				"jpntype1_47mm_truck",
+				"jpntype1_47mm_truck",
 			},
 	},
 }
 
-return japData
+return jpnData

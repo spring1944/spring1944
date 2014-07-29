@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPRiKi;
+  unitname=JPNRiKi;
   name=Type 95 Crane Vehicle Ri-Ki;
   description=Construction Vehicle;
   acceleration=0.25;
@@ -12,7 +12,7 @@
   canAttack=0;
   canMove=1;
   category=SOFTVEH;
-  corpse=JAPRiKi_Abandoned;
+  corpse=JPNRiKi_Abandoned;
   explodeAs=Vehicle;
   footprintX=3;
   footprintZ=3;
@@ -25,7 +25,7 @@
   maxVelocity=2.5;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
-  objectName=JAPRiKi.s3o;
+  objectName=JPNRiKi.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle;
   [sfxtypes] {
@@ -34,10 +34,10 @@
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=JAP;
+  side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=CONSTR;
   terraformSpeed=300;

@@ -1,12 +1,12 @@
-[JAPIsuzuTX40_Abandoned]
+[JPNIsuzuTX40_Abandoned]
 {
   description=Abandoned Truck;
   damage=2501;
   energy=50;
-  featureDead=JAPIsuzuTX40_Burning;
+  featureDead=JPNIsuzuTX40_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPIsuzuTX40.s3o;
+  object=JPNIsuzuTX40.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPIsuzuTX40_Burning]
+[JPNIsuzuTX40_Burning]
 {
   description=Destroyed Truck;
   damage=2501;
   energy=50;
-  featureDead=JAPIsuzuTX40_Wreck;
+  featureDead=JPNIsuzuTX40_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPIsuzuTX40_Dead.s3o;
+  object=JPNIsuzuTX40_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPIsuzuTX40_Wreck]
+[JPNIsuzuTX40_Wreck]
 {
   description=Destroyed Truck;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPIsuzuTX40_Wreck.s3o;
+  object=JPNIsuzuTX40_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

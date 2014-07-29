@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType99LMG;
+  unitname=JPNType99LMG;
   name=Type 99 Light Machine Gun;
   description=Long Range Assault/Light Fire Support Unit;
   acceleration=0.375;
@@ -10,7 +10,7 @@
   buildTime=600;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     feartarget=1;
   }
@@ -29,7 +29,7 @@
   maxWaterDepth=5;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPLMG.S3O;
+  objectName=JPNLMG.S3O;
   script=InfantryMG.cob;
   repairable=0;
   seismicDistance=840;
@@ -47,14 +47,14 @@
   showNanoFrame=0;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=japtype97_mg;
+  weapon1=jpntype97_mg;
   badTargetCategory1=SOFTVEH;
   onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
 

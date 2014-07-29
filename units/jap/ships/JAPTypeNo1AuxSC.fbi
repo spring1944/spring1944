@@ -1,8 +1,8 @@
 [unitinfo]
 {
-	unitname=JAPTypeNo1AuxSC;
-	objectname=JAPTypeNo1AuxSC.s3o;
-	corpse=JAPTypeNo1AuxSC_dead;
+	unitname=JPNTypeNo1AuxSC;
+	objectname=JPNTypeNo1AuxSC.s3o;
+	corpse=JPNTypeNo1AuxSC_dead;
 	icontype=gunboat;
 	category=SHIP MINETRIGGER;
 	tedclass=SHIP;
@@ -41,22 +41,22 @@
 
 	canAttack=1;
 
-  weapon1=japtype96_25mm60_aa;
+  weapon1=jpntype96_25mm60_aa;
   onlyTargetCategory1=AIR;
   weaponMainDir1 = 0 0 1;
   maxAngleDif1 = 270;
 
-  weapon2=japtype96_25mm60_he;
+  weapon2=jpntype96_25mm60_he;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2 = 0 0 1;
   maxAngleDif2 = 270;
 
-  weapon3=japtype96_25mm60_aa;
+  weapon3=jpntype96_25mm60_aa;
   onlyTargetCategory3=AIR;
   weaponMainDir3 = 0 0 -1;
   maxAngleDif3 = 270;
 
-  weapon4=japtype96_25mm60_he;
+  weapon4=jpntype96_25mm60_he;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4 = 0 0 -1;
   maxAngleDif4 = 270;

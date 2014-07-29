@@ -1,4 +1,4 @@
-[JAPTokuDaihatsu_dead] {
+[JPNTokuDaihatsu_dead] {
   description=Sunk Landing Craft;
   blocking=0;
   damage=10000;
@@ -7,7 +7,7 @@
   footprintZ=8;
   height=4;
   hitdensity=70;
-  object=JAPTokuDaihatsu_dead.s3o;
+  object=JPNTokuDaihatsu_dead.s3o;
   reclaimable=1;
 }
 

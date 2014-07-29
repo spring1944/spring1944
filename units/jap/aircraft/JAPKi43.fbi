@@ -1,5 +1,5 @@
 [UNITINFO] {
-  UnitName=JAPKi43;
+  UnitName=JPNKi43;
   name=Ki-43 Hayabusa;
   description=Interceptor;
   acceleration=1.2;
@@ -7,7 +7,7 @@
   bmcode=1;
   brakeRate=5;
   buildCostMetal=985;
-  buildPic=JAPKi43.png;
+  buildPic=JPNKi43.png;
   buildTime=985;
   canAttack=1;
   canDropFlare=1;
@@ -45,7 +45,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
-  objectName=JAPKi43.s3o;
+  objectName=JPNKi43.s3o;
   radarDistance=1000;
   repairable=0;
   seismicSignature=0;
@@ -57,10 +57,10 @@
     explosionGenerator3=custom:MG_SHELLCASINGS;
   }
   showNanoFrame=0;
-  Side=JAP;
+  Side=JPN;
   sightDistance=0;
   smoothAnim=1;
-  SoundCategory=JAPFighter;
+  SoundCategory=JPNFighter;
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;

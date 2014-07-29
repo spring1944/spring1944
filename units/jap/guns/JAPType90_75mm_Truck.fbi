@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType90_75mm_Truck;
+  unitname=JPNType90_75mm_Truck;
   name=Towed Type 90 75mm Gun;
   description=Field Gun;
   acceleration=0.3;
@@ -7,11 +7,11 @@
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=1550;
-  buildPic=JAPType90_75mm.png;
+  buildPic=JPNType90_75mm.png;
   buildTime=1550;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=JAPShiKe_Abandoned;
+  corpse=JPNShiKe_Abandoned;
   [customParams] {
     lowammolevel=1;
     maxammo=4;
@@ -31,8 +31,8 @@
   maxWaterDepth=5;
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
-  objectName=JAPType90_75mm_Truck.s3o;
-  script=japshike.cob;
+  objectName=JPNType90_75mm_Truck.s3o;
+  script=jpnshike.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -42,7 +42,7 @@
   showNanoFrame=0;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=JAPTank;
+  soundcategory=JPNTank;
   stealth=1;
   TEDClass=TANK;
   trackOffset=10;

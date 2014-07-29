@@ -26,7 +26,7 @@
   rendertype=0;
   rgbColor=1.0 0.75 0.0;
   size=2.5;
-  soundStart=JAP_NambuType14;
+  soundStart=JPN_NambuType14;
   soundTrigger=0;
   sprayAngle=50;
   thickness=0.2;

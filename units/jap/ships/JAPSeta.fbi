@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPSeta;
+  unitname=JPNSeta;
   name=Seta-class Gunboat;
   description=Large River Gunboat;
   acceleration=0.05;
@@ -14,7 +14,7 @@
   collisionVolumeOffsets=0.0 0.0 0.0;
   collisionVolumeScales=24.0 24.0 160.0;
   collisionVolumeType=box;
-  corpse=JAPSeta_dead;
+  corpse=JPNSeta_dead;
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
@@ -37,7 +37,7 @@
   minWaterDepth=6;
   movementClass=BOAT_RiverSmall;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPSeta.s3o;
+  objectName=JPNSeta.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
@@ -55,32 +55,32 @@
   showNanoFrame=0;
   sightDistance=840;
   smoothAnim=0;
-  SoundCategory=JAPBoat;
+  SoundCategory=JPNBoat;
   stealth=1;
   TEDClass=SHIP;
   turninplace=0;
   turnRate=250;
 
-  weapon1=jap76mm40;
+  weapon1=jpn76mm40;
   maxAngleDif1=270;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap76mm40;
+  weapon2=jpn76mm40;
   maxAngleDif2=270;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 -1;
 
-  weapon3=japtype96_twin25mm60_aa;
+  weapon3=jpntype96_twin25mm60_aa;
   onlyTargetCategory3=AIR;
 
-  weapon4=japtype96_twin25mm60_he;
+  weapon4=jpntype96_twin25mm60_he;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon5=japtype96_twin25mm60_aa;
+  weapon5=jpntype96_twin25mm60_aa;
   onlyTargetCategory5=AIR;
 
-  weapon6=japtype96_twin25mm60_he;
+  weapon6=jpntype96_twin25mm60_he;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 

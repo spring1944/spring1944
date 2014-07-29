@@ -1,12 +1,12 @@
-[JAPKaMi_Abandoned]
+[JPNKaMi_Abandoned]
 {
   description=Abandoned Amphibious Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPKaMi_Burning;
+  featureDead=JPNKaMi_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaMi.s3o;
+  object=JPNKaMi.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPKaMi_Burning]
+[JPNKaMi_Burning]
 {
   description=Destroyed Amphibious Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPKaMi_Wreck;
+  featureDead=JPNKaMi_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaMi_Dead.s3o;
+  object=JPNKaMi_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPKaMi_Wreck]
+[JPNKaMi_Wreck]
 {
   description=Destroyed Amphibious Tank;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPKaMi_Wreck.s3o;
+  object=JPNKaMi_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

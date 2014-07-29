@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPObserv;
+  unitname=JPNObserv;
   name=Scout;
   description=Reconnaisance Infantry;
   acceleration=0.375;
@@ -12,7 +12,7 @@
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
@@ -35,7 +35,7 @@
   minCloakDistance=160;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY SOFTVEH AIR OPENVEH DEPLOYED HARDVEH MINE;
-  objectName=japobserv.s3o;
+  objectName=jpnobserv.s3o;
   script=gerobserv.cob;
   repairable=0;
   seismicDistance=690;
@@ -51,10 +51,10 @@
     explosionGenerator7=custom:PISTOL_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=690;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

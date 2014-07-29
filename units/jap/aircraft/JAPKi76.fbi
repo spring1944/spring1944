@@ -1,5 +1,5 @@
 [UNITINFO] {
-  UnitName=JAPKi76;
+  UnitName=JPNKi76;
   name=Ki-76 Stella;
   description=Recon Plane;
   acceleration=0.48;
@@ -9,7 +9,7 @@
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=1000;
-  buildPic=JAPKi76.png;
+  buildPic=JPNKi76.png;
   buildTime=1000;
   canAttack=0;
   canDropFlare=1;
@@ -48,7 +48,7 @@
   moverate1=4;
   myGravity=0.6;
   noChaseCategory=AIR MINE;
-  objectName=JAPKi76.s3o;
+  objectName=JPNKi76.s3o;
   radarDistance=1500;
   refuelTime=10;
   repairable=0;
@@ -59,7 +59,7 @@
     explosionGenerator2=custom:MG_SHELLCASINGS;
   }
   showNanoFrame=0;
-  Side=JAP;
+  Side=JPN;
   sightDistance=600;
   smoothAnim=1;
   stealth=1;

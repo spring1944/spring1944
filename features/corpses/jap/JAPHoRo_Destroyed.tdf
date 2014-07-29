@@ -1,12 +1,12 @@
-[JAPHoRo_Abandoned]
+[JPNHoRo_Abandoned]
 {
   description=Abandoned Assault Gun;
   damage=2501;
   energy=50;
-  featureDead=JAPHoRo_Burning;
+  featureDead=JPNHoRo_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoRo.s3o;
+  object=JPNHoRo.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPHoRo_Burning]
+[JPNHoRo_Burning]
 {
   description=Destroyed Assault Gun;
   damage=2501;
   energy=50;
-  featureDead=JAPHoRo_Wreck;
+  featureDead=JPNHoRo_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoRo_Dead.s3o;
+  object=JPNHoRo_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPHoRo_Wreck]
+[JPNHoRo_Wreck]
 {
   description=Destroyed Assault Gun;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHoRo_Wreck.s3o;
+  object=JPNHoRo_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

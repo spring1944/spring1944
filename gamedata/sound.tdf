@@ -658,13 +658,13 @@
 	count0=GEN_alarm;
 	canceldestruct=;
       	} 
-[JAPinf]
+[JPNinf]
 	{
-	select1=japmarch;
+	select1=jpnmarch;
 //	select2=GER_INF_Select2;
 //	select3=GER_INF_Select3;
-	ok1=japmarch;
-	ok2=japbanzai;
+	ok1=jpnmarch;
+	ok2=jpnbanzai;
 	//cant1=;
 //	underattack=GER_UNDERATTACK_NEW;
 	count5=GEN_alarm;

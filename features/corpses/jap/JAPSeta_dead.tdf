@@ -1,4 +1,4 @@
-[JAPSeta_dead] {
+[JPNSeta_dead] {
   description=Sunk Gunboat;
   blocking=0;
   damage=30000;
@@ -7,7 +7,7 @@
   footprintZ=8;
   height=4;
   hitdensity=70;
-  object=JAPSeta_dead.s3o;
+  object=JPNSeta_dead.s3o;
   reclaimable=1;
 }
 

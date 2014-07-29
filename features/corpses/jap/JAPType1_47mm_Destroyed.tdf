@@ -1,11 +1,11 @@
-[JAPType1_47mm_destroyed] {
+[JPNType1_47mm_destroyed] {
   description=Destroyed Gun;
   damage=1251;
   energy=500;
   featureDead=Debris_Small;
   footprintX=2;
   footprintZ=2;
-  object=JAPType1_47mm_Destroyed;
+  object=JPNType1_47mm_Destroyed;
   reclaimable=1;
 }
 

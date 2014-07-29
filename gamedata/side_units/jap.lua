@@ -1,180 +1,180 @@
-local japunits =
+local jpnunits =
 {
-  --- JAPAN
-    japhqengineer =
+  --- JPNAN
+    jpnhqengineer =
   {
-    "japvehicleyard",
-    "japbarracks",
-	"japtent",
-    "japgunyard",
-    "japstorage",
-    "japradar",
-    "japatminesign",
-    "japapminesign",
-    "japtankobstacle",
+    "jpnvehicleyard",
+    "jpnbarracks",
+	"jpntent",
+    "jpngunyard",
+    "jpnstorage",
+    "jpnradar",
+    "jpnatminesign",
+    "jpnapminesign",
+    "jpntankobstacle",
     "gersturmboot",
     "pontoonraft",
   },
 
-	japriki =
+	jpnriki =
 	{
-		"japbarracks",
-		"japgunyard",
-		"japvehicleyard",
-		"japradar",
-		"japtankyard",
-		"japstorage",
-		"japsupplydepot",
-		"japtankobstacle",    
+		"jpnbarracks",
+		"jpngunyard",
+		"jpnvehicleyard",
+		"jpnradar",
+		"jpntankyard",
+		"jpnstorage",
+		"jpnsupplydepot",
+		"jpntankobstacle",    
 	},
-	japhq =
+	jpnhq =
 	{
-		"jap_sortie_recon",
-		"japhqengineer",
-		"jap_platoon_hq"
+		"jpn_sortie_recon",
+		"jpnhqengineer",
+		"jpn_platoon_hq"
 	},
-	japbarracks =
+	jpnbarracks =
 	{
-		"japhqengineer",
-		"jap_platoon_rifle",
-		"jap_platoon_assault",
-		"jap_platoon_mg",
-		"jap_platoon_at",
-		"jap_platoon_sniper",
-		"jap_platoon_mortar",
-		"japisuzutx40",
-		"jappontoontruck",
-		"japtype4mortar_mobile",
+		"jpnhqengineer",
+		"jpn_platoon_rifle",
+		"jpn_platoon_assault",
+		"jpn_platoon_mg",
+		"jpn_platoon_at",
+		"jpn_platoon_sniper",
+		"jpn_platoon_mortar",
+		"jpnisuzutx40",
+		"jpnpontoontruck",
+		"jpntype4mortar_mobile",
 	},
-	japtent =
+	jpntent =
 	{
-		"japhqengineer",
-		"jap_platoon_rifle",
-		"jap_platoon_mg",
+		"jpnhqengineer",
+		"jpn_platoon_rifle",
+		"jpn_platoon_mg",
 	},
-	japvehicleyard =
+	jpnvehicleyard =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japhoha",
-		"japisuzutype94_aa",
-		"japteke",
-		"japhago",
-		--"japhonii",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpnhoha",
+		"jpnisuzutype94_aa",
+		"jpnteke",
+		"jpnhago",
+		--"jpnhonii",
 	},
-	japvehyard_landing =
+	jpnvehyard_landing =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japhoha",
-		"japisuzutype94_aa",
-		"japteke",
-		"japhago",
-		--"japhonii",
-		"japkatsu",
-		"japkami",
-		"jappontoontruck",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpnhoha",
+		"jpnisuzutype94_aa",
+		"jpnteke",
+		"jpnhago",
+		--"jpnhonii",
+		"jpnkatsu",
+		"jpnkami",
+		"jpnpontoontruck",
 	},
-	japvehyard_tank =
+	jpnvehyard_tank =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japhoha",
-		"japisuzutype94_aa",
-		"japteke",
-		"japhago",
-		--"japhonii",
-		"japshinhotochiha",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpnhoha",
+		"jpnisuzutype94_aa",
+		"jpnteke",
+		"jpnhago",
+		--"jpnhonii",
+		"jpnshinhotochiha",
 	},
-	japgunyard =
+	jpngunyard =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japtype98_20mm_truck",
-		"japtype1_47mm_truck",
-		"japtype90_75mm_truck",
-		"japtype91_105mm_truck",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpntype98_20mm_truck",
+		"jpntype1_47mm_truck",
+		"jpntype90_75mm_truck",
+		"jpntype91_105mm_truck",
 	},
-	japatyard =
+	jpnatyard =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japtype98_20mm_truck",
-		"japtype1_47mm_truck",
-		"japtype90_75mm_truck",
-		"japtype91_105mm_truck",
-		"japhoniiii",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpntype98_20mm_truck",
+		"jpntype1_47mm_truck",
+		"jpntype90_75mm_truck",
+		"jpntype91_105mm_truck",
+		"jpnhoniiii",
 	},
-	japspyard =
+	jpnspyard =
 	{
-		"japriki",
-		"japisuzutx40",
-		"japtype98_20mm_truck",
-		"japtype1_47mm_truck",
-		"japtype90_75mm_truck",
-		"japtype91_105mm_truck",
-		"japhoniii",
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpntype98_20mm_truck",
+		"jpntype1_47mm_truck",
+		"jpntype90_75mm_truck",
+		"jpntype91_105mm_truck",
+		"jpnhoniii",
 	},
-	japtankyard =
+	jpntankyard =
 	{
-		"japriki",
-		"japhago",
-		"japhonii",
-		"japchiha",
-		"japchihe",
+		"jpnriki",
+		"jpnhago",
+		"jpnhonii",
+		"jpnchiha",
+		"jpnchihe",
 	},
-	japtankyard_medium =
+	jpntankyard_medium =
 	{
-		"japriki",
-		"japhago",
-		"japhonii",
-		"japchiha",
-		"japchihe",
-		"japchinu",
-		"japchiha120mm",
+		"jpnriki",
+		"jpnhago",
+		"jpnhonii",
+		"jpnchiha",
+		"jpnchihe",
+		"jpnchinu",
+		"jpnchiha120mm",
 	},
-	japtankyard_support =
+	jpntankyard_support =
 	{
-		"japriki",
-		"japhago",
-		"japhonii",
-		"japchiha",
-		"japchihe",
-		"japhoro",
+		"jpnriki",
+		"jpnhago",
+		"jpnhonii",
+		"jpnchiha",
+		"jpnchihe",
+		"jpnhoro",
 	},
-	japradar =
+	jpnradar =
 	{
-		"jap_sortie_recon",
-		"jap_sortie_interceptor",
-		"jap_sortie_fighter",
-		"jap_sortie_divebomber",
-		"jap_sortie_at",
+		"jpn_sortie_recon",
+		"jpn_sortie_interceptor",
+		"jpn_sortie_fighter",
+		"jpn_sortie_divebomber",
+		"jpn_sortie_at",
 	},
-	japboatyard =
+	jpnboatyard =
 	{
 		"rubberdingy",
 		"pontoonraft",
-		"japdaihatsu",
-		"japtokudaihatsu",
-		"japtypeno1auxsc",
-		"japabtei",
+		"jpndaihatsu",
+		"jpntokudaihatsu",
+		"jpntypeno1auxsc",
+		"jpnabtei",
 	},
-	japboatyardlarge =
+	jpnboatyardlarge =
 	{
 		"rubberdingy",
 		"pontoonraft",
-		"japdaihatsu",
-		"japtokudaihatsu",
-		"japtypeno1auxsc",
-		"japabtei",
-		"japseta",
+		"jpndaihatsu",
+		"jpntokudaihatsu",
+		"jpntypeno1auxsc",
+		"jpnabtei",
+		"jpnseta",
 	},
-	japsupplydepot =
+	jpnsupplydepot =
 	{
-		"japisuzutx40",
-		"japhoha",
-		--"japteke",
+		"jpnisuzutx40",
+		"jpnhoha",
+		--"jpnteke",
 	},
 }
 
-return japunits
+return jpnunits

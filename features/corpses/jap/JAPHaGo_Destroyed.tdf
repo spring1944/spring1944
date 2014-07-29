@@ -1,12 +1,12 @@
-[JAPHaGo_Abandoned]
+[JPNHaGo_Abandoned]
 {
   description=Abandoned Light Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPHaGo_Burning;
+  featureDead=JPNHaGo_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPHaGo.s3o;
+  object=JPNHaGo.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPHaGo_Burning]
+[JPNHaGo_Burning]
 {
   description=Destroyed Light Tank;
   damage=2501;
   energy=50;
-  featureDead=JAPHaGo_Wreck;
+  featureDead=JPNHaGo_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPHaGo_Dead.s3o;
+  object=JPNHaGo_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPHaGo_Wreck]
+[JPNHaGo_Wreck]
 {
   description=Destroyed Light Tank;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPHaGo_Wreck.s3o;
+  object=JPNHaGo_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

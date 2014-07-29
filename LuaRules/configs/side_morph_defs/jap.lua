@@ -1,8 +1,8 @@
-local japDefs = {
+local jpnDefs = {
   -- japan
-	japgunyard = {
+	jpngunyard = {
 		{
-			into = 'japspyard',
+			into = 'jpnspyard',
 			metal = 3000,
 			energy = 0,
 			time = 85,
@@ -11,7 +11,7 @@ local japDefs = {
 			facing = true,
 		},
 		{
-			into = 'japatyard',
+			into = 'jpnatyard',
 			metal = 3000,
 			energy = 0,
 			time = 185,
@@ -20,9 +20,9 @@ local japDefs = {
 			facing = true,
 		},
 	},	
-	japvehicleyard = {
+	jpnvehicleyard = {
 		{
-			into = 'japvehyard_tank',
+			into = 'jpnvehyard_tank',
 			metal = 2000,
 			energy = 0,
 			time = 85,
@@ -31,7 +31,7 @@ local japDefs = {
 			facing = true,
 		},
 		{
-			into = 'japvehyard_landing',
+			into = 'jpnvehyard_landing',
 			metal = 2000,
 			energy = 0,
 			time = 85,
@@ -40,9 +40,9 @@ local japDefs = {
 			facing = true,
 		},
 	},
-		japboatyard = {
+		jpnboatyard = {
 		{
-			into = 'japboatyardlarge',
+			into = 'jpnboatyardlarge',
 			metal = 6000,
 			energy = 0,
 			time = 80,
@@ -51,9 +51,9 @@ local japDefs = {
 			facing = true,
 		},
 	},	
-	japtankyard = {
+	jpntankyard = {
 		{
-			into = 'japtankyard_medium',
+			into = 'jpntankyard_medium',
 			metal = 3000,
 			energy = 0,
 			time = 85,
@@ -62,7 +62,7 @@ local japDefs = {
 			facing = true,
 		},
 		{
-			into = 'japtankyard_support',
+			into = 'jpntankyard_support',
 			metal = 6500,
 			energy = 0,
 			time = 185,
@@ -72,9 +72,9 @@ local japDefs = {
 		},
 	},	
 
-  jappontoontruck =
+  jpnpontoontruck =
   {
-    into = 'japboatyard',
+    into = 'jpnboatyard',
     tech = 0,
     time = 20,
     metal = 0,
@@ -82,43 +82,43 @@ local japDefs = {
 	facing = true,
   },
 
-  japisuzutx40 =
+  jpnisuzutx40 =
   {
-    into = 'japtrucksupplies',
+    into = 'jpntrucksupplies',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
   
-  japtrucksupplies=
+  jpntrucksupplies=
   {
-    into = 'japisuzutx40',
+    into = 'jpnisuzutx40',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  japtype98_20mm_truck =
+  jpntype98_20mm_truck =
   {
-    into = 'japtype98_20mm_stationary',
+    into = 'jpntype98_20mm_stationary',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
   },
   
-  japtype98_20mm_stationary =
+  jpntype98_20mm_stationary =
   {
-    into = 'japtype98_20mm_truck',
+    into = 'jpntype98_20mm_truck',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  japtype1_47mm_truck =
+  jpntype1_47mm_truck =
   {
-    into = 'japtype1_47mm_stationary',
+    into = 'jpntype1_47mm_stationary',
     tech = 0,
     time = 15,
     metal = 0,
@@ -126,17 +126,17 @@ local japDefs = {
     directional = true,
   },
   
-  japtype1_47mm_stationary =
+  jpntype1_47mm_stationary =
   {
-    into = 'japtype1_47mm_truck',
+    into = 'jpntype1_47mm_truck',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  japtype90_75mm_truck =
+  jpntype90_75mm_truck =
   {
-    into = 'japtype90_75mm_stationary',
+    into = 'jpntype90_75mm_stationary',
     tech = 0,
     time = 25,
     metal = 0,
@@ -144,17 +144,17 @@ local japDefs = {
     directional = true,
   },
   
-  japtype90_75mm_stationary =
+  jpntype90_75mm_stationary =
   {
-    into = 'japtype90_75mm_truck',
+    into = 'jpntype90_75mm_truck',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  japtype91_105mm_truck =
+  jpntype91_105mm_truck =
   {
-    into = 'japtype91_105mm_stationary',
+    into = 'jpntype91_105mm_stationary',
     tech = 0,
     time = 25,
     metal = 0,
@@ -162,17 +162,17 @@ local japDefs = {
     directional = true,
   },
   
-  japtype91_105mm_stationary =
+  jpntype91_105mm_stationary =
   {
-    into = 'japtype91_105mm_truck',
+    into = 'jpntype91_105mm_truck',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-    japtype92hmg =
+    jpntype92hmg =
   {
-    into = 'japtype92hmg_dugin',
+    into = 'jpntype92hmg_dugin',
     tech = 0,
     time = 25,
     metal = 0,
@@ -180,17 +180,17 @@ local japDefs = {
     directional = true,
   },
 
-  japtype92hmg_dugin =
+  jpntype92hmg_dugin =
   {
-    into = 'japtype92hmg',
+    into = 'jpntype92hmg',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-    japtype4mortar_mobile =
+    jpntype4mortar_mobile =
   {
-    into = 'japtype4mortar_stationary',
+    into = 'jpntype4mortar_stationary',
     tech = 0,
     time = 25,
     metal = 0,
@@ -198,9 +198,9 @@ local japDefs = {
     directional = true,
   },
 
-  japtype4mortar_stationary =
+  jpntype4mortar_stationary =
   {
-    into = 'japtype4mortar_mobile',
+    into = 'jpntype4mortar_mobile',
     tech = 0,
     time = 20,
     metal = 0,
@@ -209,4 +209,4 @@ local japDefs = {
 
 }
 
-return japDefs
+return jpnDefs

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPRifle;
+  unitname=JPNRifle;
   name=Arisaka Type 99;
   description=General Infantry;
   acceleration=0.375;
@@ -10,7 +10,7 @@
   buildTime=300;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=JAPSoldier_dead;
+  corpse=JPNSoldier_dead;
   [customParams] {
     feartarget=1;
     flagCapRate=1;
@@ -30,7 +30,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPRifle.S3O;
+  objectName=JPNRifle.S3O;
   script=gerrifle.cob;
   repairable=0;
   seismicDistance=840;
@@ -46,10 +46,10 @@
     explosionGenerator7=custom:RIFLE_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

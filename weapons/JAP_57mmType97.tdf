@@ -1,4 +1,4 @@
-[jap57mmtype97_ap] {
+[jpn57mmtype97_ap] {
   name=Type 97 57 mm Gun - Armour Piercing;//caped
   accuracy=100; //290
   avoidFeature=0;
@@ -42,7 +42,7 @@
   weaponVelocity=1518;
 }
 
-[jap57mmtype97_he] {
+[jpn57mmtype97_he] {
   name=Type 97 57 mm Gun - High Explosive;
   accuracy=300;
   avoidFeature=0;

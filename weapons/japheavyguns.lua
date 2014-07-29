@@ -55,7 +55,7 @@ local heavygunSmokeClass = Weapon:New{
 
 
 -- short120mm
-local japshort120mm = heavygunClass:New{
+local jpnshort120mm = heavygunClass:New{
   accuracy           = 350,
   areaOfEffect       = 129,
   name               = [[Short naval 120mm]],
@@ -67,7 +67,7 @@ local japshort120mm = heavygunClass:New{
 }
 
 -- Type 38 150mm howitzer L/11
-local jap150mmtype38 = heavygunClass:New{
+local jpn150mmtype38 = heavygunClass:New{
   accuracy           = 500,
   areaOfEffect       = 165,
   name               = [[Type 38 150mm/11]],
@@ -80,14 +80,14 @@ local jap150mmtype38 = heavygunClass:New{
   },
 }
 
-local japshort120mm_he = japshort120mm:New(heavygunHEClass, true)
+local jpnshort120mm_he = jpnshort120mm:New(heavygunHEClass, true)
 
-local jap150mmtype38_he = jap150mmtype38:New(heavygunHEClass, true)
-local jap150mmtype38_smoke = jap150mmtype38:New(heavygunSmokeClass, true)
+local jpn150mmtype38_he = jpn150mmtype38:New(heavygunHEClass, true)
+local jpn150mmtype38_smoke = jpn150mmtype38:New(heavygunSmokeClass, true)
 
 -- Return only the full weapons
 return lowerkeys({
-  japshort120mm_he = japshort120mm_he,
-  jap150mmtype38_he = jap150mmtype38_he,
-  jap150mmtype38_smoke = jap150mmtype38_smoke,
+  jpnshort120mm_he = jpnshort120mm_he,
+  jpn150mmtype38_he = jpn150mmtype38_he,
+  jpn150mmtype38_smoke = jpn150mmtype38_smoke,
 })

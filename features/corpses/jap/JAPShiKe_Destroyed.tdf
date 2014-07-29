@@ -1,12 +1,12 @@
-[JAPShiKe_Abandoned]
+[JPNShiKe_Abandoned]
 {
   description=Abandoned Tractor;
   damage=2501;
   energy=50;
-  featureDead=JAPShiKe_Burning;
+  featureDead=JPNShiKe_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPShiKe.s3o;
+  object=JPNShiKe.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPShiKe_Burning]
+[JPNShiKe_Burning]
 {
   description=Destroyed Tractor;
   damage=2501;
   energy=50;
-  featureDead=JAPShiKe_Wreck;
+  featureDead=JPNShiKe_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPShiKe_Dead.s3o;
+  object=JPNShiKe_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPShiKe_Wreck]
+[JPNShiKe_Wreck]
 {
   description=Destroyed Tractor;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPShiKe_Wreck.s3o;
+  object=JPNShiKe_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

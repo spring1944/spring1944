@@ -1,4 +1,4 @@
-[JAPTypeNo1AuxSC_dead] {
+[JPNTypeNo1AuxSC_dead] {
   description=Sunk Subchaser;
   blocking=0;
   damage=13000;
@@ -7,7 +7,7 @@
   footprintZ=8;
   height=4;
   hitdensity=70;
-  object=JAPTypeNo1AuxSC_dead.s3o;
+  object=JPNTypeNo1AuxSC_dead.s3o;
   reclaimable=1;
 }
 

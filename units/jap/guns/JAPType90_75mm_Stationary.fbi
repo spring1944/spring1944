@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType90_75mm_Stationary;
+  unitname=JPNType90_75mm_Stationary;
   name=Dug-In Type 90 75mm Gun;
   description=Stationary Field Gun;
   activateWhenBuilt=1;
@@ -9,10 +9,10 @@
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType90_75mm_Stationary.png;
+  buildPic=JPNType90_75mm_Stationary.png;
   buildTime=900;
   category=DEPLOYED;
-  corpse=JAPType90_75mm_Destroyed;
+  corpse=JPNType90_75mm_Destroyed;
   [customParams] {
     feartarget=1;
     lowammolevel=1;
@@ -31,7 +31,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPType90_75mm_Stationary.s3o;
+  objectName=JPNType90_75mm_Stationary.s3o;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
@@ -46,22 +46,22 @@
   }
   script=ruszis3_stationary.cob;
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JAPGun;
+  soundcategory=JPNGun;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jap75mmtype90_he;
+  weapon1=jpn75mmtype90_he;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jap75mmtype90_ap;
+  weapon2=jpn75mmtype90_ap;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP SHIP SOFTVEH;
   maxAngleDif2=70;
   weaponMainDir2=0 0 1;

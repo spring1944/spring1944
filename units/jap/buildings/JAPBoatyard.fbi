@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPBoatyard;
+  unitname=JPNBoatyard;
   name=Boat Yard;
   description=Light Naval Prep. Facility;
   buildCostEnergy=0;
@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPBoatyard.png;
+  buildPic=JPNBoatyard.png;
   buildTime=5445;
   canBeAssisted=0;
   canMove=1;
@@ -29,16 +29,16 @@
   maxDamage=6250;
   maxSlope=10;
   minWaterDepth=10;
-  objectName=JAPBoatyard.3do;
+  objectName=JPNBoatyard.3do;
   script=gerboatyard.cob;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=JAP;
+  side=JPN;
   sightDistance=146;
-  soundcategory=JAPYard;
+  soundcategory=JPNYard;
   stealth=1;
   TEDClass=PLANT;
   useBuildingGroundDecal=1;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPKneeMortar;
+  unitname=JPNKneeMortar;
   name=Knee Mortar;
   description=Light Mortar;
   acceleration=0.2;
@@ -10,7 +10,7 @@
   buildTime=1800;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=JAPSoldier_dead;
+  corpse=JPNSoldier_dead;
   [customParams] {
     canareaattack=1;
     canfiresmoke=1;
@@ -37,7 +37,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR;
-  objectName=JAPKneeMortar.S3O;
+  objectName=JPNKneeMortar.S3O;
   script=gergrw34.cob;
   seismicDistance=840;
   seismicSignature=0;
@@ -52,10 +52,10 @@
     explosionGenerator7=custom:MORTAR_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

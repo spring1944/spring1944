@@ -1,5 +1,5 @@
 [UNITINFO] {
-  UnitName=JAPKi102;
+  UnitName=JPNKi102;
   name=Ki-102b Assault Plane;
   description=Anti-tank Plane;
   acceleration=1.2;
@@ -7,7 +7,7 @@
   bmcode=1;
   brakeRate=5;
   buildCostMetal=985;
-  buildPic=JAPKi102.png;
+  buildPic=JPNKi102.png;
   buildTime=985;
   canAttack=1;
   canDropFlare=1;
@@ -50,7 +50,7 @@
   moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
-  objectName=JAPKi102.s3o;
+  objectName=JPNKi102.s3o;
   radarDistance=1000;
   repairable=0;
   seismicSignature=0;
@@ -68,10 +68,10 @@
     explosionGenerator9=custom:SMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  Side=JAP;
+  Side=JPN;
   sightDistance=0;
   smoothAnim=1;
-  SoundCategory=JAPBomber;
+  SoundCategory=JPNBomber;
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
@@ -82,7 +82,7 @@
 
   badTargetCategory=FLAG AIR;
 
-  weapon1=japho401;
+  weapon1=jpnho401;
   maxAngleDif1=15;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 -1 9;

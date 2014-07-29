@@ -360,8 +360,8 @@ local iconTypes = {
 		size			=	2.25,
 		distance	=	0.15,
 	},
-		japhq = {
-		bitmap		=	"icons/japhq.tga",
+		jpnhq = {
+		bitmap		=	"icons/jpnhq.tga",
 		size		=	4,
 		distance	=	0.8,
 	},

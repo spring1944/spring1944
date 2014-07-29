@@ -1,12 +1,12 @@
-[JAPTeKe_Abandoned]
+[JPNTeKe_Abandoned]
 {
   description=Abandoned Tankette;
   damage=2501;
   energy=50;
-  featureDead=JAPTeKe_Burning;
+  featureDead=JPNTeKe_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPTeKe.s3o;
+  object=JPNTeKe.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPTeKe_Burning]
+[JPNTeKe_Burning]
 {
   description=Destroyed Tankette;
   damage=2501;
   energy=50;
-  featureDead=JAPTeKe_Wreck;
+  featureDead=JPNTeKe_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPTeKe_Dead.s3o;
+  object=JPNTeKe_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPTeKe_Wreck]
+[JPNTeKe_Wreck]
 {
   description=Destroyed Tankette;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPTeKe_Wreck.s3o;
+  object=JPNTeKe_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPRadar;
+  unitname=JPNRadar;
   name=Type 1 Model 2 Mobile Matress radar;
   description=Flight Detection & Control Station;
   buildCostEnergy=0;
@@ -8,12 +8,12 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPRadar.png;
+  buildPic=JPNRadar.png;
   buildTime=5138;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  corpse=japradar_abandoned;
+  corpse=jpnradar_abandoned;
   [customParams] {
   }
   explodeAs=Large_Explosion;
@@ -24,7 +24,7 @@
   maxDamage=6250;
   maxSlope=10;
   maxWaterDepth=0;
-  objectName=JAPRadar.s3o;
+  objectName=JPNRadar.s3o;
   script=Radar.cob;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {

@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType4AT;
+  unitname=JPNType4AT;
   name=Type 4 AT Rocket Launcher;
   description=Heavy Anti-Tank Infantry;
   acceleration=0.375;
@@ -12,7 +12,7 @@
   category=INFANTRY MINETRIGGER;
   cloakCost=0;
   cloakCostMoving=0;
-  corpse=JAPsoldier_dead;
+  corpse=JPNsoldier_dead;
   [customParams] {
     dontCount=1;
     feartarget=1;
@@ -35,7 +35,7 @@
   minCloakDistance=310; //230
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
-  objectName=JAPAT.S3O;
+  objectName=JPNAT.S3O;
   script=usgibazooka.cob;
   seismicDistance=840;
   seismicSignature=0;
@@ -51,10 +51,10 @@
     explosionGenerator8=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=KBOT;
   turnRate=1010;

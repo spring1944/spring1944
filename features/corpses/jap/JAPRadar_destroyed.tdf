@@ -1,12 +1,12 @@
-[JAPRadar_Abandoned]
+[JPNRadar_Abandoned]
 {
   description=Abandoned Mobile Radar;
   damage=2501;
   energy=50;
-  featureDead=JAPRadar_Burning;
+  featureDead=JPNRadar_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JAPRadar.s3o;
+  object=JPNRadar.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[JAPRadar_Burning]
+[JPNRadar_Burning]
 {
   description=Destroyed Mobile Radar;
   damage=2501;
   energy=50;
-  featureDead=JAPRadar_Wreck;
+  featureDead=JPNRadar_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=JAPRadar_Dead.s3o;
+  object=JPNRadar_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[JAPRadar_Wreck]
+[JPNRadar_Wreck]
 {
   description=Destroyed Mobile Radar;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=JAPRadar_Wreck.s3o;
+  object=JPNRadar_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

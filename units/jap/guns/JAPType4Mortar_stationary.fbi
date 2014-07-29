@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPType4Mortar_Stationary;
+  unitname=JPNType4Mortar_Stationary;
   name=Dug-In Type 4 200mm Mortar;
   description=Stationary Heavy Rocket Mortar;
   activateWhenBuilt=1;
@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=JAPType4Mortar_stationary.png;
+  buildPic=JPNType4Mortar_stationary.png;
   buildTime=2500;
   category=DEPLOYED;
   corpse=GERNebelwerfer_Destroyed;
@@ -29,7 +29,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   noChaseCategory=FLAG AIR MINE;
-  objectName=JAPType4Mortar_Stationary.S3O;
+  objectName=JPNType4Mortar_Stationary.S3O;
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
@@ -43,21 +43,21 @@
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=japtype4rocketmortar_he;
+  weapon1=jpntype4rocketmortar_he;
   maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=japtype4rocketmortar_smoke;
+  weapon2=jpntype4rocketmortar_smoke;
   maxAngleDif2=35;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;

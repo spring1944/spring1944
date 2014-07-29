@@ -56,7 +56,7 @@ local HowitzerSmokeClass = Weapon:New{
 
 
 -- Type 91 105m howitzer L/24
-local jap105mmtype99 = HowitzerClass:New{
+local jpn105mmtype99 = HowitzerClass:New{
   accuracy           = 1050,
   areaOfEffect       = 115,
   name               = [[Type 91 105mm/22]],
@@ -70,11 +70,11 @@ local jap105mmtype99 = HowitzerClass:New{
 -- Type 38 150mm howitzer L/11
 
 
-local jap105mmtype99_he = jap105mmtype99:New(HowitzerHEClass, true)
-local jap105mmtype99_smoke = jap105mmtype99:New(HowitzerSmokeClass, true)
+local jpn105mmtype99_he = jpn105mmtype99:New(HowitzerHEClass, true)
+local jpn105mmtype99_smoke = jpn105mmtype99:New(HowitzerSmokeClass, true)
 
 -- Return only the full weapons
 return lowerkeys({
-  jap105mmtype99_he = jap105mmtype99_he,
-  jap105mmtype99_smoke = jap105mmtype99_smoke,
+  jpn105mmtype99_he = jpn105mmtype99_he,
+  jpn105mmtype99_smoke = jpn105mmtype99_smoke,
 })

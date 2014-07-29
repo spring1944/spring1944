@@ -48,6 +48,6 @@ local bomb50kg = BombClass:New{
 
 -- Return only the full weapons
 return lowerkeys({
-  jap_bomb50kg = bomb50kg,
+  jpn_bomb50kg = bomb50kg,
 
 })

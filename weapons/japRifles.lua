@@ -41,7 +41,7 @@ local Arisaka99 = rifleClass:New{
   name               = [[Arisaka Type 99]],
   range              = 630,
   reloadtime         = 2.5,
-  soundStart         = [[JAP_Arisaka_Type99]],
+  soundStart         = [[JPN_Arisaka_Type99]],
 }
 
 -- Sniper
@@ -50,7 +50,7 @@ local ArisakaSniper = rifleClass:New{
   id                 = 9,
   reloadtime         = 10,
   range              = 1040,
-  soundStart         = [[JAP_Arisaka_Type99]],
+  soundStart         = [[JPN_Arisaka_Type99]],
     customparams = {
     fearaoe            = 90,
     fearid             = 401,

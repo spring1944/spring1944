@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=JAPStorage;
+  unitname=JPNStorage;
   name=Supply Storage;
   description=General Logistics & Ammunition Stockpile;
   activateWhenBuilt=1;
@@ -33,10 +33,10 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=JAP;
+  side=JPN;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=JAPInf;
+  soundcategory=JPNInf;
   stealth=1;
   TEDClass=ENERGY;
   useBuildingGroundDecal=1;
