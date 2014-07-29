@@ -92,6 +92,7 @@ local BoatChild = Unit:New{
 	maxVelocity			= 1,
 	movementClass		= "KBOT_Infantry", -- needed!
 	noChaseCategory		= "FLAG AIR MINE",
+	power		        = 20,
 	script				= "BoatChild.lua",
 	sightDistance		= 840,
 	
