@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-additional-sides
-================
-
-A few extra factions for Spring:1944
-Currently includes Italy and Japan. When all the units are given proper models and properly textured, this is likely to be merged with main S44.
-=======
 Spring: 1944
 ==========
 
@@ -14,4 +7,3 @@ If you just want to play, we suggest using the stable release, available on our 
 
 
 Developing: first install Spring. Then, in your Spring data directory (`~/.spring/` or `Documents & Settings/Games/Spring`), clone this repo into `games/S44Main.sdd`. Hack away!
->>>>>>> master
