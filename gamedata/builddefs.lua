@@ -30,6 +30,7 @@ for _, SideFile in pairs(SideFiles) do
 	end
 end
 
+<<<<<<< HEAD
 if (modOptions) then
 	if (modOptions.navies) then
 		local tmpNavies = tonumber(modOptions.navies)
@@ -50,4 +51,6 @@ if (modOptions) then
 	end
 end
 
+=======
+>>>>>>> master
 return buildoptions

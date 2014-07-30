@@ -1,0 +1,13 @@
+[GBRLCSL_dead] {
+  description=Sunk LCS(L) mk.2;
+  blocking=0;
+  damage=7500;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=GBRLCSL_dead.s3o;
+  reclaimable=1;
+}
+

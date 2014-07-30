@@ -1,0 +1,568 @@
+#define TAK
+
+piece base, turret, sleeve, barrel, flare,
+	  turret_20_1, sleeve_20_1, barrel_20_1, flare_20_1, turret_20_2, sleeve_20_2, barrel_20_2, flare_20_2,
+	  mg_turret, mg_guns, mg_flare_1, mg_flare_2,
+	  mortar_turret, mortar_barrel, mortar_flare,
+	  prop1, prop2,
+	  flag1, flag2, flag3,
+	  wake1, wake2, wake3, wake4;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define MAIN_TURRET_TURN		<30>
+#define MAIN_TURRET_PITCH		<20>
+
+#define AA20_TURRET_TURN		<45>
+#define AA20_TURRET_PITCH		<45>
+
+#define MG05_TURRET_TURN		<45>
+#define MG05_TURRET_PITCH		<45>
+
+//*********************Recoil
+#define MAIN_GUN_RECOIL			[1]
+#define MAIN_GUN_RECOIL_SPEED	[10]
+#define MAIN_GUN_BACK_SPEED		[4]
+
+#define AA20_GUN_RECOIL			[0.4]
+#define AA20_GUN_RECOIL_SPEED	[10]
+#define AA20_GUN_BACK_SPEED		[2]
+
+//*********************Death anim
+#define base_LIST_SPEED		<30>
+#define base_LIST_ANGLE_Z	<15>
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+#define SIG_AIM4			32
+#define SIG_AIM5			64
+#define SIG_AIM6			128
+#define SIG_AIM7			256
+#define SIG_AIM8			512
+#define SIG_AIM9			1024
+#define SIG_AIM10			2048
+#define SIG_AIM11			4096
+#define SIG_AIM12			8192
+
+#define SMOKEPIECE	base
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEFLASH 1024+6
+#define XSMALL_MUZZLEDUST 1024+7
+#define MEDIUM_Muzzleflash	1024+8
+#define MEDIUM_MuzzleDust	1024+9
+
+// tracers
+#define SMALL_TRACER 	2048+9
+#define MEDIUM_TRACER 	2048+10
+#define LARGE_TRACER 	2048+11
+
+#define TRACER_PER_X_SHOTS	3
+
+//********************Flag
+#define FLAG_FLAP_PERIOD	500
+#define FLAG_FLAP_SPEED		<30>
+#define FLAG_FLAP_ANGLE		<15>
+
+// Propellers
+#define PROP_SPIN_SPEED		<600>
+
+#include "constants.h"
+#include "damageSmoke.h"
+
+static-var					MaxSpeed, bMoving, bAimAA1, bAimAA2, bAimAP, shotCount1, shotCount2;
+
+FlagFlap()
+{
+	while(TRUE)
+	{
+		turn flag2 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+
+		turn flag2 to y-axis FLAG_FLAP_ANGLE speed FLAG_FLAP_SPEED;
+		turn flag3 to y-axis (0-FLAG_FLAP_ANGLE) speed FLAG_FLAP_SPEED;
+		sleep FLAG_FLAP_PERIOD;
+	}
+}
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	turn mg_turret to y-axis <180> now;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	stop-spin prop1 around z-axis;
+	stop-spin prop2 around z-axis;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var oldXZ, newXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+
+	bAimAP = FALSE;
+	bAimAA1 = FALSE;
+	bAimAA2 = FALSE;
+	shotCount1 = 0;
+	shotCount2 = 0;
+	MaxSpeed = get MAX_SPEED;
+
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	start-script StopCatcher();
+	start-script FlagFlap();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		emit-sfx 2 from wake4;
+		sleep 300;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	spin prop1 around z-axis speed PROP_SPIN_SPEED;
+	spin prop2 around z-axis speed (0 - PROP_SPIN_SPEED);
+	bMoving = TRUE;
+}
+
+// 6pdr, HE then AA
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_AIM4|SIG_AIM5|SIG_AIM6|SIG_AIM7|SIG_AIM8|SIG_AIM9|SIG_AIM10|SIG_AIM11|SIG_AIM12|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn turret to y-axis <0> speed MAIN_TURRET_TURN;
+	turn sleeve to x-axis <0> speed MAIN_TURRET_PITCH;
+	
+	turn turret_20_1 to y-axis <0> speed AA20_TURRET_TURN;
+	turn sleeve_20_1 to x-axis <0> speed AA20_TURRET_PITCH;
+	turn turret_20_2 to y-axis <0> speed AA20_TURRET_TURN;
+	turn sleeve_20_2 to x-axis <0> speed AA20_TURRET_PITCH;
+
+	turn mg_turret to y-axis <0> speed MG05_TURRET_TURN;
+	turn mg_guns to x-axis <0> speed MG05_TURRET_PITCH;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	if (bAimAP)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	move barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	bAimAP = TRUE;
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	start-script RestoreTurret();
+	bAimAP = FALSE;
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from flare;
+	emit-sfx XSMALL_MUZZLEDUST from flare;
+	move barrel to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+}
+
+// Oerlicon 20mm, both HE then both AA
+QueryWeapon3(piecenum)
+{
+	piecenum = flare_20_1;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = turret_20_1;
+}
+
+AimWeapon3(heading, pitch)
+{
+	if (bAimAA1)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn turret_20_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_1 around y-axis;
+	wait-for-turn sleeve_20_1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+}
+
+Shot3(foo)
+{
+	emit-sfx LARGE_TRACER from flare_20_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_1;
+	move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = flare_20_2;
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = turret_20_2;
+}
+
+AimWeapon4(heading, pitch)
+{
+	if (bAimAA2)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn turret_20_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_2 around y-axis;
+	wait-for-turn sleeve_20_2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+}
+
+Shot4(foo)
+{
+	emit-sfx LARGE_TRACER from flare_20_2;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_2;
+	move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum = flare_20_1;
+}
+
+AimFromWeapon5(piecenum)
+{
+	piecenum = turret_20_1;
+}
+
+AimWeapon5(heading, pitch)
+{
+	bAimAA1 = TRUE;
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn turret_20_1 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_1 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_1 around y-axis;
+	wait-for-turn sleeve_20_1 around x-axis;
+	start-script RestoreTurret();
+	bAimAA1 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon5()
+{
+}
+
+Shot5(foo)
+{
+	emit-sfx LARGE_TRACER from flare_20_1;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_1;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_1;
+	move barrel_20_1 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_1 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = flare_20_2;
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = turret_20_2;
+}
+
+AimWeapon6(heading, pitch)
+{
+	bAimAA2 = TRUE;
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	turn turret_20_2 to y-axis heading speed AA20_TURRET_TURN;
+	turn sleeve_20_2 to x-axis (0-pitch) speed AA20_TURRET_PITCH;
+	wait-for-turn turret_20_2 around y-axis;
+	wait-for-turn sleeve_20_2 around x-axis;
+	start-script RestoreTurret();
+	bAimAA2 = FALSE;
+	return (TRUE);
+}
+
+FireWeapon6()
+{
+}
+
+Shot6(foo)
+{
+	emit-sfx LARGE_TRACER from flare_20_2;
+	emit-sfx XSMALL_MUZZLEFLASH from flare_20_2;
+	emit-sfx XSMALL_MUZZLEDUST from flare_20_2;
+	move barrel_20_2 to z-axis (0-AA20_GUN_RECOIL) speed AA20_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel_20_2 to z-axis [0] speed AA20_GUN_BACK_SPEED;
+}
+
+// .50cal machineguns - 2 weapons
+QueryWeapon7(piecenum)
+{
+	piecenum = mg_flare_1;
+}
+
+AimFromWeapon7(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon7(heading, pitch)
+{
+	signal SIG_AIM4;
+	set-signal-mask SIG_AIM4|SIG_DEATH;
+	turn mg_turret to y-axis heading speed MG05_TURRET_TURN;
+	turn mg_guns to x-axis (0-pitch) speed MG05_TURRET_PITCH;
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn mg_guns around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon7()
+{
+}
+
+Shot7(foo)
+{
+	++shotCount1;
+	if(shotCount1>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from mg_flare_1;
+		shotCount1=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from mg_flare_1;
+}
+
+QueryWeapon8(piecenum)
+{
+	piecenum = mg_flare_2;
+}
+
+AimFromWeapon8(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon8(heading, pitch)
+{
+	signal SIG_AIM5;
+	set-signal-mask SIG_AIM5|SIG_DEATH;
+	turn mg_turret to y-axis heading speed MG05_TURRET_TURN;
+	turn mg_guns to x-axis (0-pitch) speed MG05_TURRET_PITCH;
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn mg_guns around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon8()
+{
+}
+
+Shot8(foo)
+{
+	++shotCount2;
+	if(shotCount2>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from mg_flare_2;
+		shotCount2=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from mg_flare_2;
+}
+
+// Smoke mortar
+QueryWeapon9(piecenum)
+{
+	piecenum = mortar_flare;
+}
+
+AimFromWeapon9(piecenum)
+{
+	piecenum = mortar_turret;
+}
+
+AimWeapon9(heading, pitch)
+{
+	signal SIG_AIM6;
+	set-signal-mask SIG_AIM6|SIG_DEATH;
+	turn mortar_turret to y-axis heading speed MAIN_TURRET_TURN;
+	turn mortar_barrel to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn mortar_turret around y-axis;
+	wait-for-turn mortar_barrel around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon9()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from mortar_flare;
+	emit-sfx XSMALL_MUZZLEDUST from mortar_flare;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn base to z-axis base_LIST_ANGLE_Z speed base_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	return (TRUE);
+}

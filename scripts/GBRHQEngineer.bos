@@ -1,0 +1,208 @@
+#include "constants.h"
+
+piece  torso, pelvis, rthigh, lthigh, lleg, rleg, rfoot, 
+		lfoot, luparm, lloarm, ground, ruparm, rloarm, head, gun, detector;
+		
+
+//signals to handle control of..everything
+#define SIG_RUN					8
+#define SIG_AIMRUN				16
+#define SIG_CRAWL				32
+#define SIG_AIM1				64
+#define SIG_AIM2				128 //no inf has more than 2 weapons except commando, something of a special exception
+#define SIG_PINNEDCTRL			256
+#define SIG_FEARRECOVERY		512
+#define SIG_RESTOREFROMCRAWL	1024
+#define SIG_IDLE				2048
+#define SIG_BUILD				4096
+
+/*
+Defs that are shared among inf
+the numbers that control pinned levels, how scary various weapons are, ect.
+*/
+#include "inf_sharedDefs.h"
+
+//individual unit definitions
+#define ENGINEER
+#define NoAimRun
+#define IdleDelay				10000
+#define RestoreDelay			5000
+#define StanceNumber			1 //number of WeaponReady stances
+
+/* --Var defs:
+-----Boolean
+---
+bAiming - is the unit currently aiming at anything? or was it recently aiming at anything (time controlled by restoreafterdelay)
+	Controls: timing of idle animations, the usage of AimRunControl over RunControl
+	Set by: Aimweapon, unset over time by AimRunControl and StartMoving/StopMoving
+---
+bNading - is the unit currently in the process of throwing a grenade?
+	Controls: locks out weaponready, and X
+	Set by: fireweapon of the nade script, unset by same at the end
+---
+bMoving - is the unit currently moving? 
+	Controls: various animations.
+	Set by: StartMoving, unset by StopMoving
+---
+-----Integer
+---
+iState - what the unit is currently doing //todo: add states for being in a transport, update killed and aimweapon accordingly
+	Controls: which aiming anim to use, among others.
+	 Set by: everything that changes the state of the unit. *Control, HitbyWeapon, RestoreFromCrawl, ect
+	  Values:
+		standing idle - 0
+		standing at attention - 1
+		standing aiming rifle/SMG - 2
+		kneeling aiming rifle/SMG - 3
+		-		
+		running - 4
+		running aiming - 5
+		-
+		prone 'idle' - 6
+		prone aiming - 7
+		crawling - 8
+		-
+		pinned - 9 
+---
+iFear - how 'afraid' unit currently is. 
+	Controls: if unit is crawling/prone or standing.
+	Controls: pinned status.
+	 Set by: increased by HitbyWeapon on impact of suitable weapon, decreased by FearRecovery
+	  Values: 0-20
+	  iFear = 0-14 = prone/crawling
+	  iFear >= 15 = pinned, unable to fire or crawl.
+---
+	
+*/
+static-var bAiming, bMoving, iState, iFear, iSpeed;
+
+
+
+//FX definitions
+	//frivolous
+#define BLOOD_SM 1024+1
+#define BLOOD_LG 1024+2
+#define CLIP 1024+3
+#define SHELL 1024+4
+#define PISS 1024+5
+#define CIG 1024+6
+//end FX
+
+//aiming poses
+#include "inf_poses.h"
+
+//weapon ready - split out so I can easily update the number of poses
+#include "inf_weaponReady.h"
+
+//Idle animations.
+#include "inf_idleAnims.h"
+
+//All of the animations concerning movement - running, aimrunning, crawling, standing, going prone.
+#include "inf_movementAnims.h"
+		
+
+//All the loops that handle the animations and state changes concerning movement.
+#include "inf_movementControls.h"
+
+//Fead handling (HitByWeapon, FearRecovery, TakeCover, PinnedControl, Pinned, RestoreAfterCover)
+#include "inf_fearHandling.h"
+
+//transport state handling
+#include "inf_transportHandling.h"
+
+//mine clear stuff
+#include "engineerMineClear.h"
+
+StartMoving()
+{
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 1;
+}
+
+StopMoving()
+{
+	signal SIG_IDLE;
+	bAiming = 0;
+	bMoving = 0;
+}
+
+Create()
+{
+	hide detector;
+	bMoving = 0;
+	bAiming = 0;
+	iState = 1;
+	iFear = 0;
+	iSpeed = GET MAX_SPEED;
+	start-script WeaponReady();
+	start-script RunControl();
+}
+
+RestoreAfterDelay()
+{
+	sleep RestoreDelay;
+//	bAiming=0;	
+	if (iFear > 0) start-script CrawlControl();
+	if (iFear <= 0)
+		{
+		start-script RunControl();
+		}
+}
+
+//start weapons
+/*
+Primary weapon. 
+States: crawling/prone, running.
+Killed by:
+Grenade aiming
+PinnedControl
+*/
+StartBuilding(buildheading, pitch)
+{
+signal SIG_BUILD;
+set-signal-mask SIG_BUILD;
+turn ground to y-axis buildheading now;
+set INBUILDSTANCE to 1;
+}
+
+StopBuilding()
+{
+SIGNAL SIG_BUILD;
+turn ground to y-axis <0> now;
+set INBUILDSTANCE to 0;
+}
+
+QueryNanoPiece(piecenum)
+{
+piecenum = head;
+}
+
+#ifdef RIFLE
+#include "inf_weaponRifle.h"
+#endif
+#ifdef SMG
+#include "inf_weaponSMG.h"
+#endif
+#ifdef MG
+#include "inf_weaponMG.h"
+#endif
+#ifdef ATROCKET
+#include "inf_weaponATRocket.h"
+#endif
+#ifdef SNIPER
+#include "inf_weaponSniper.h"
+#endif
+#ifdef SCOUT
+#include "inf_weaponScout.h"
+#endif
+#ifdef ATRIFLE
+#include "inf_weaponATRifle.h"
+#endif
+
+//Grenade is always weapon 2
+#ifdef WEAPON_GRENADE
+#include "inf_weaponGrenade.h"
+#endif
+
+#include "inf_Death.h"

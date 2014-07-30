@@ -1,0 +1,32 @@
+[unitinfo] {
+  unitname=TankObstacle;
+  name=Tank Obstacle;
+  description=Blocks Tracked & Wheeled Vehicles;
+  buildCostEnergy=0;
+  buildCostMetal=15;
+  buildTime=15;
+  category=BUILDING;
+  corpse=TankObstacle;
+  [customParams] {
+	hiddenbuilding=1;
+    isobstacle=1;
+    dontCount=1;
+  }
+  footprintX=2;
+  footprintZ=2;
+  isFeature=1;
+  maxDamage=8000;
+  maxSlope=20;
+  maxWaterDepth=50;
+  objectName=TankObstacle.S3O;
+  [sfxtypes] {
+  }
+  script=null.cob;
+  showNanoFrame=0;
+  sightDistance=50;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=FORT;
+  yardmap=yy yy;
+}
+

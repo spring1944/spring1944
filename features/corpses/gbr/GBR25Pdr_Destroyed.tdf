@@ -1,0 +1,11 @@
+[gbr25pdr_destroyed] {
+  description=Destroyed Gun;
+  damage=1251;
+  energy=500;
+  featureDead=BuildingDebris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GBR25Pdr_Destroyed.S3O;
+  reclaimable=1;
+}
+

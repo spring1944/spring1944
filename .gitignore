@@ -1,0 +1,7 @@
+*.un~
+*.swp~
+*.bat
+.DS_Store
+*.swp
+Thumbs.db
+thumbs.db

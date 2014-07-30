@@ -1,0 +1,52 @@
+[unitinfo] {
+  unitname=GERSupplyTruck;
+  name=Supply Truck;
+  description=Deploys Into Supply Point;
+  acceleration=0.3;
+  brakeRate=0.45;
+  buildCostEnergy=0;
+  buildCostMetal=660;
+  buildPic=GEROpelBlitz.png;
+  buildTime=660;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=GEROpelBlitz_Destroyed;
+  [customParams] {
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=300;
+  maxDamage=300;
+  maxReverseVelocity=3.1;
+  maxSlope=10;
+  maxVelocity=6.2;
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=GERSupplyTruck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=800;
+  smoothAnim=0;
+  soundcategory=GERTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=13;
+  turnRate=440;
+
+  weapon1=smallsupply;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

@@ -1,0 +1,127 @@
+BF109K-4
+
+Wingspan: 29ft/8.85m
+Engine: DB 605A @ 1450HP
+Max Speed: 435mph @ 22000ft
+Climb: 3,350ft per min
+Fuel capacity: 88imp gal (106 US gal)
+Armament: 1 x MK 108 30mm, 2 x MG151 15mm
+Turning Radius: (109E) 410ft @ ground; 750ft @ 10K ft (109G) 780 ft; 16s for 360 turn at ground, 22s for 15kft
+
+FW 190A-8
+
+Wingspan: 29.5ft
+Engine: BMW 801D @ 1700HP
+Max Speed: 408mph @ 20000
+Climb: 3440ft per min
+Fuel Capacity: 115 imp gal (138 US gal)
+Armament: 2 x MG131/151 15mm 4 x MG151 20mm
+
+FW 190G-2
+
+Wingspan: 29.5ft
+Engine: BMW 801D @ 1700HP
+Max Speed: 394mph @ 18K
+Climb: 2100fpm
+Fuel Capacity: 115 im gal (140 US gal)
+Armament: 2 x 15mm MG151 2 x 20mm MG151 250kg bomb
+
+Me 262A-1
+
+Wingspan: 35ft
+Engine: Jets
+Max Speed: 540mph @ 20k
+Climb: 3900fpm
+Fuel Capacity: 565 imp gal (679 us gal)
+Armament: 4 x 30mm Mk 108
+
+Spitfire F.Mk XIVe
+
+Length: 32ft 8in/9.96m
+Wingspan: 32ft/11.23m
+Engine: Rolls Royce Griffon 65 V @ 2050HP
+Max Speed: 448mph @ 26000
+Climb: 2857fpm
+Fuel Capacity:  110 imp gal (132 US gal)
+Armament: 2 x Browning .50 cal 2 x 20mm Hispano
+
+Spitfire FB.Mk IXe
+
+Wingspan: 31ft
+Engine: Merlin 61 V @ 1500HP
+Max Speed: 408mph @ 25000ft
+Climb: 3950fpm
+Fuel Capacity: 84 imp gal (101 us gal)
+Armament: 4 x Browning .30 cal 2 x 20mm Hispano 100kg bomb
+
+Hawker Tempest F.Mk V
+
+Wingspan: 41ft
+Engine: Napier Sabre IIC H @ 2260HP
+Max Speed: 435mph @ 17000FT
+Climb: 4700 fpm
+Fuel Capacity: ?
+Armament: 4 x 20mm Hispano
+
+Hawker Typhoon Mk IB
+
+Wingspan: 41.5ft
+Engine: Napier Sabre II @ 2200HP
+Max Speed: 412mph @ 19000ft
+Climb: 2700fpm
+Fuel Capacity: 150 imp gal (180 us gal)
+Armament: 4 x 20mm Hispano, 8 x 60lb rockets
+
+P-51D Mustang 
+
+Wingspan: 32ft
+Engine: Merlin V @ 1600HP
+Max Speed: 437mph @ 25000
+Climb: 3500fpm
+Fuel Capacity: 224 imp gal (269 us gal)
+Armament: 6 x 50 cal 10 x 5inch rocket
+
+P-47D Thunderbolt
+
+Wingspan: 36ft
+Engine: 2000HP
+Max Speed: 435mph @ 3K
+Climb: 3100fpm
+Fuel Capacity: 254 imp gal (305 us gal)
+Armament: 8 x .50 cal 250kg bomb
+
+P-38L Lightning
+
+Wingspan: 38ft
+Engine: 1600HP
+Max Speed: 414mph @ 2500
+Climb: 2800fpm
+Fuel Capacity: 285 imp gal (342 us gal)
+Armament: 4 x .50 cal 1 x 20mm Hipano 
+
+Yak-3
+
+Wingspan: 30ft/9.2m
+Engine: Klimov VK-105 @ 1300
+Max Speed: 401 mph
+Climb: 3645ft/m
+Fuel Capacity: 650km/405mile range
+Armament: 1 x ShVAK 20mm cannon, 2 x Beresin 12.7mm MG
+
+La-5FN
+
+Wingspan: 28.5ft
+Engine: 1800HP
+Max Speed: 403mph @ 21K
+Climb: 3280fpm
+Fuel Capacity: 102 imp gal (122 us gal)
+Armament: 2 x 20mm Shvak
+
+Il-2m
+
+Wingspan: 39.5ft
+Engine: 1800HP
+Max Speed: 258mph
+Climb: 
+Fuel Capacity: 144 imp gal (173 us gal)
+Armament: 2 x 13mm ShKAS 2 x 23mm Vya-23 8 x 3inch RS-82 rocket

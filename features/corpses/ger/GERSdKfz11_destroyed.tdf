@@ -1,0 +1,11 @@
+[gersdkfz11_destroyed] {
+  description=Destroyed Gun Tractor;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GERSdKfz11_Dead.S3O;
+  reclaimable=1;
+}
+

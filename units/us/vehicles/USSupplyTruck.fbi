@@ -1,0 +1,52 @@
+[unitinfo] {
+  unitname=USSupplyTruck;
+  name=Supply Truck;
+  description=Deploys Into Supply Point;
+  acceleration=0.35;
+  brakeRate=0.45;
+  buildCostEnergy=0;
+  buildCostMetal=660;
+  buildPic=USGMCTruck.png;
+  buildTime=660;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=USGMCTruck_Destroyed;
+  [customParams] {
+    dontCount=1;
+  }
+  energyMake=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  leaveTracks=1;
+  mass=300;
+  maxDamage=300;
+  maxReverseVelocity=2.4;
+  maxSlope=10;
+  maxVelocity=4.8;
+  maxWaterDepth=5;
+  movementClass=TANK_Truck;
+  noChaseCategory=AIR MINE;
+  objectName=USSupplyTruck.S3O;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  sightDistance=600;
+  smoothAnim=0;
+  soundcategory=USTank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=10;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=15;
+  turninplace=0;
+  turnRate=440;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+}
+

@@ -1,0 +1,64 @@
+[unitinfo] {
+  unitname=GBRLCA;
+  name=Landing Craft, Assault;
+  description=Infantry Landing Craft;
+  acceleration=0.9;
+  airSightDistance=1500;
+  brakeRate=0.5;
+  buildCostEnergy=0;
+  buildCostMetal=700;
+  buildTime=700;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  corpse=GBRLCA_dead;
+  [customParams] {
+    ammoSupplier=1;
+    armor_front=28.5; // 3/8in for doors, + 3/4in? ramp
+    armor_rear=19;
+    armor_side=19; // wiki says 3/4in sides
+    armor_top=6; // 1/4in deck
+    supplyRange=350;
+    hasturnbutton=1;
+    transportsquad=gbr_platoon_lca;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4;
+  footprintZ=4;
+  holdSteady=1;
+  iconType=landingship;
+  mass=914.4;
+  maxDamage=914.4;
+  maxReverseVelocity=0.685;
+  maxVelocity=2;
+  minWaterDepth=6;
+  movementClass=BOAT_LandingCraftSmall;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRLCA.s3o;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:MG_MUZZLEFLASH;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  transportCapacity=20;
+  transportMass=1000;
+  transportSize=1;
+  turninplace=0;
+  turnRate=100;
+
+  weapon1=bren;
+  maxAngleDif1=270;
+  onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+
+  weapon3=Small_Tracer;
+}
+

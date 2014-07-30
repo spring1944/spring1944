@@ -1,0 +1,11 @@
+[RUSGAZAAA_Destroyed] {
+  description=Destroyed Truck;
+  damage=1251;
+  energy=100;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSGAZAAA_Destroyed.S3O;
+  reclaimable=1;
+}
+

@@ -1,0 +1,25 @@
+[ger_shoulderhit] {
+  description=Dead German after shoulder hit;
+  blocking=0;
+  damage=1000;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=GER_shoulderhit.S3O;
+  reclaimable=0;
+  smoketime=0;
+}
+
+[gersoldier_dead] {
+  description=Dead German;
+  blocking=0;
+  damage=1000;
+  featureDead=GER_shoulderhit;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=GERTrooper_dead.S3O;
+  reclaimable=0;
+  smoketime=0;
+}
+

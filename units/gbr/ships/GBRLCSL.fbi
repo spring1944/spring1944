@@ -1,0 +1,121 @@
+[unitinfo] {
+  unitname=GBRLCSL;
+  name=LCS(L) mk.2;
+  description=Landing Support Craft;
+  acceleration=0.025;
+  airSightDistance=1500;
+  brakeRate=0.01;
+  buildCostEnergy=0;
+  buildCostMetal=1900;
+  buildTime=1900;
+  canAttack=1;
+  canMove=1;
+  category=SHIP MINETRIGGER;
+  collisionVolumeOffsets=0.0 0.0 0.0;
+  collisionVolumeScales=60.0 55.0 280.0;
+  collisionVolumeType=box;
+  corpse=GBRLCSL_dead;
+  [customParams] {
+    hasturnbutton=1;
+    lowammolevel=2;
+    maxammo=10; // 40 rounds
+    weaponcost=10;
+    weaponswithammo=2;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
+  }
+  energyMake=0;
+  energyUse=0;
+  explodeAs=Vehicle_Explosion_Sm;
+  floater=1;
+  footprintX=4; // 14
+  footprintZ=4; // 14
+  iconType=torpboat;
+  mass=9253;
+  maxDamage=9253;
+  maxReverseVelocity=0.6;
+  maxVelocity=1.4;
+  minWaterDepth=10;
+  movementClass=BOAT_LightPatrol;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=GBRLCSL.s3o;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:MG_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator7=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  sightDistance=840;
+  smoothAnim=0;
+  stealth=1;
+  TEDClass=SHIP;
+  turninplace=0;
+  turnRate=240;
+
+  // 6pdr
+  weapon1=qf6pdr57mmhe;
+  weaponMainDir1=0 0 1;
+  maxAngleDif1=270;
+  badTargetCategory1=OPENVEH HARDVEH;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+  weapon2=qf6pdr57mmap;
+  weaponMainDir2=0 0 1;
+  maxAngleDif2=270;
+  onlyTargetCategory2=OPENVEH HARDVEH;
+
+  // Oerlikon
+  weapon3=Oerlikon20mmhe;
+  maxAngleDif3=300;
+  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=1 0 0;
+
+  weapon4=Oerlikon20mmhe;
+  maxAngleDif4=300;
+  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir4=-1 0 0;
+
+  weapon5=Oerlikon20mmaa;
+  maxAngleDif5=300;
+  onlyTargetCategory5=AIR;
+  weaponMainDir5=1 0 0;
+
+  weapon6=Oerlikon20mmaa;
+  maxAngleDif6=300;
+  onlyTargetCategory6=AIR;
+  weaponMainDir6=-1 0 0;
+
+  //.50 cal
+  weapon7=Twin05CalVickers;
+  maxAngleDif7=270;
+  onlyTargetCategory7=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
+  weaponMainDir7=0 0 -1;
+
+  weapon8=Twin05CalVickers;
+  weaponSlaveTo8=7;
+  onlyTargetCategory8=INFANTRY SOFTVEH AIR OPENVEH DEPLOYED SHIP;
+
+  // smoke mortar will go there when it's done
+  weapon9=BL4inMortarSmoke;
+  onlyTargetCategory9=NULL;
+
+  weapon10=Small_Tracer;
+
+  weapon11=Medium_Tracer;
+
+  weapon12=Large_Tracer;
+
+}
+

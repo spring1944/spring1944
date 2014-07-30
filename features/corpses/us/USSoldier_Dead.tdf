@@ -1,0 +1,12 @@
+[ussoldier_dead] {
+  description=Dead American;
+  blocking=0;
+  damage=1000;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=USTrooper_dead.S3O;
+  reclaimable=0;
+  smoketime=0;
+}
+

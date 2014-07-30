@@ -1,0 +1,55 @@
+Killed(severity, corpsetype)
+{
+signal SIG_RUN;
+signal SIG_AIMRUN;
+signal SIG_CRAWL;
+signal SIG_AIM1;
+signal SIG_AIM2; //however many AIMs there are
+signal SIG_PINNEDCTRL;
+signal SIG_FEARRECOVERY;
+signal SIG_RESTOREFROMCRAWL;
+
+//Bullet/fragment kills
+	if (severity <=50)
+	{
+		if (iState>=6)
+			{
+			//death anims suitable for a soldier who is prone on the ground
+			//	wait-for-turn blah blah;
+			//corpsetype = blah blah;
+			return (1);
+			}
+		
+		if (iState<6)
+			{
+			//death anims suitable for a standing/soldier - these can be broken up still further based on
+			// more added states or however many death anims we make. I suppose the running ones should be separate from standing death anims.
+			
+			//	wait-for-turn blah blah;
+			//corpsetype = blah blah;
+			return (1);
+			}
+	}
+	
+	if (severity > 50)
+	{
+		//At first I thought this was overkill, but now I realize that having the per-state death anim for big hits means
+		// we can more accurately (the right pieces, in the right direction) emit effects/move pieces, should we choose to make things gory.
+		if (iState>=6)
+			{
+			//death anims suitable for a soldier who is prone on the ground
+			//	wait-for-turn blah blah;
+			//corpsetype = blah blah;
+			return (1);
+			}
+		
+		if (iState<6)
+			{
+			//death anims suitable for a standing/soldier - these can be broken up still further based on
+			// more added states or however many death anims we make. I suppose the running ones should be separate from standing death anims.
+			//	wait-for-turn blah blah;
+			//corpsetype = blah blah;
+			return (1);
+			}
+	}
+}

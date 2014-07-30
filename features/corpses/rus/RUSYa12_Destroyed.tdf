@@ -1,0 +1,22 @@
+[rusya12_abandoned] {
+  description=Abandoned Artillery Tractor;
+  damage=1251;
+  energy=50;
+  featureDead=rusya12_destroyed;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSYa12.S3O;
+  reclaimable=1;
+}
+
+[rusya12_destroyed] {
+  description=Destroyed Artillery Tractor;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUSYa12_dead.s3o;
+  reclaimable=1;
+}
+

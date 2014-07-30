@@ -1,0 +1,19 @@
+[USM7Priest_destroyed] {
+  description=Destroyed Support Tank;
+  damage=2501;
+  energy=500;
+  featureDead=Debris_Large;
+  footprintX=2;
+  footprintZ=2;
+  object=USM7Priest_Destroyed.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=45;
+		}
+}
+

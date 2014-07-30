@@ -1,0 +1,414 @@
+
+#include "constants.h"
+
+
+#include "air_sharedDefs.h"
+
+piece  base, fuselage, wing1, gear1, wheel1, wing2, gear2, wheel2, propeller, blades, door1a, door1b, door2a, door2b;
+piece mg1, mg2, cannon1, cannon2, turret, machinegun, mgflare, bomb1, bomb2, bombemit1, bombemit2;
+piece rocket1, rocket2, rocket3, rocket4, rocketexhaust1, rocketexhaust2, rocketexhaust3, rocketexhaust4;
+
+static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+
+#define SMOKEPUFF_GPL_FX 1024+0
+#define MG_SHELLCASINGS 1024+1
+#define MG_MUZZLEFLASH	1024+2
+#define XSMALL_MUZZLEFLASH 1024+3
+#define XLARGE_MUZZLEFLASH	1024+4
+
+#define SIG_BANK			2
+#define SIG_AIM				4
+#define SIG_FEARRECOVERY	8
+
+#define BugOutLevel			90 //% of health when the pilot drops bombs for more speed
+//tracers
+#define SMALL_TRACER 	2048+6
+#define MEDIUM_TRACER 	2048+7
+#define LARGE_TRACER 	2048+8
+
+SoundPreparer()
+{
+	// arrived sound
+	play-sound("rus_air_il2_select", 4);
+	// under-fire sound
+	play-sound("rus_air_underaafire", 4);
+	// returning home sound
+	play-sound("rus_air_return", 4);
+}
+
+PlaneVoice(phraseNum)
+{
+	get PLAY_SOUND((phraseNum - 1), 655360, 5, 0);
+}
+
+startengine()
+{
+	spin propeller around z-axis speed <800> accelerate <200>;
+	sleep 400;
+	spin propeller around z-axis speed <5000> accelerate <-5000>;
+	sleep 200;
+	spin propeller around z-axis speed <5000> accelerate <5000>;
+	hide blades;
+	set 1024 to 1;
+}
+
+stopengine()
+{
+	show blades;
+	spin propeller around z-axis speed <800> accelerate <-400>;
+	sleep 400;
+	spin propeller around z-axis speed <50>;
+	set 1024 to 0;
+}
+
+bankright()
+{
+	signal SIG_BANK;
+	set-signal-mask SIG_BANK;
+	turn fuselage to z-axis <-30> speed <30>;
+	sleep 100;
+	turn fuselage to z-axis <0> speed <30>;	
+}
+bankleft()
+{
+	signal SIG_BANK;
+	set-signal-mask SIG_BANK;
+	turn fuselage to z-axis <30> speed <30>;
+	sleep 100;
+	turn fuselage to z-axis <0> speed <30>;	
+}
+
+gearsup()
+{
+		turn door1a to z-axis <0> speed <50>;
+		turn door1b to z-axis <0> speed <50>;
+		turn door2a to z-axis <0> speed <50>;
+		turn door2b to z-axis <0> speed <50>;
+		turn gear1 to x-axis <0> speed <30>;
+		turn gear2 to x-axis <0> speed <30>;
+}
+
+gearsdown()
+{
+		turn door1a to z-axis <90> speed <50>;
+		turn door1b to z-axis <-90> speed <50>;
+		turn door2a to z-axis <90> speed <50>;
+		turn door2b to z-axis <-90> speed <50>;
+		turn gear1 to x-axis <-100> speed <30>;
+		turn gear2 to x-axis <-100> speed <30>;
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+MoveRate2()
+{
+	if( Rand( 1, 10 ) == 1 AND ( !Static_Var_1 ) )
+	{
+		Static_Var_1 = 1;
+		turn base to z-axis <240.054945> speed <120.027473>;
+		wait-for-turn base around z-axis;
+		turn base to z-axis <120.027473> speed <180.043956>;
+		wait-for-turn base around z-axis;
+		turn base to z-axis <0.000000> speed <120.027473>;
+		Static_Var_1 = 0;
+	}
+}
+
+Create()
+{
+	SET STANDINGFIREORDERS to 1;
+	Static_Var_1 = 0;
+	start-script SmokeUnit();
+	set 1024 to 0;
+}
+
+FearRecovery() 
+{ 
+signal SIG_FEARRECOVERY;
+set-signal-mask SIG_FEARRECOVERY;
+	
+     while(iFear > 0) 
+        { 
+	        sleep RecoverRate; 
+			iFear = iFear - RecoverConstant; 
+        } 
+	//start-script RestoreAfterCover();   
+	return (1); 
+}
+
+HitByWeaponId(z,x,id,damage)
+{	
+	
+	if (Id==701)
+	{
+	iFear = iFear + AAFear;
+	if (iFear > FearLimit) iFear = FearLimit; // put this line AFTER increasing iFear var		
+	start-script FearRecovery();
+	return (100);
+	}
+	
+	if ((get HEALTH) <= BugOutLevel && ((get WEAPON_RELOADSTATE (7)) < (get (GAME_FRAME)) + 1))
+	{
+	get WEAPON_PROJECTILE_SPEED (-7, 100);
+	emit-sfx 2048+7 from bombemit1;
+	hide bomb1;
+	hide bomb2;
+	var gameFrame;
+	gameFrame = get GAME_FRAME;
+	get WEAPON_RELOADSTATE (-7, (gameFrame+108000));
+	}
+	return (100); 
+}
+
+luaFunction(arg1)
+{
+ arg1 = iFear;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = cannon1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon1()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	sleep 67;
+	emit-sfx LARGE_TRACER from cannon1;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	sleep 67;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon1;
+	sleep 67;
+	return (0);
+}
+
+AimFromWeapon2(piecenum) //Coax fear 
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = cannon2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon2()
+{
+	emit-sfx XSMALL_MUZZLEFLASH from cannon2;
+	sleep 67;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon2;
+	sleep 67;
+	emit-sfx XSMALL_MUZZLEFLASH from cannon2;
+	sleep 67;
+	emit-sfx LARGE_TRACER from cannon2;
+	return (0);
+}
+
+AimFromWeapon3(piecenum) //Coax fear 
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon3(piecenum)
+{
+	piecenum = mg1;
+}
+
+AimWeapon3(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon3()
+{
+	emit-sfx MEDIUM_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mg1;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg1;
+	emit-sfx MG_SHELLCASINGS from mg1;
+	return (0);
+}
+
+AimFromWeapon4(piecenum) //Coax fear 
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = mg2;
+}
+
+AimWeapon4(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon4()
+{
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mg2;
+	emit-sfx MG_MUZZLEFLASH from mg2;
+	emit-sfx MG_SHELLCASINGS from mg2;
+	return (0);
+}
+
+AimFromWeapon5(piecenum) //Coax fear 
+{
+	piecenum = fuselage;
+}
+
+QueryWeapon5(piecenum)
+{
+	piecenum = bomb1;
+}
+
+AimWeapon5(heading, pitch)
+{
+	return (1);
+}
+
+FireWeapon5()
+{
+	sleep 67;
+	return (0);
+}
+
+AimFromWeapon6(piecenum)
+{
+	piecenum = turret;
+}
+
+QueryWeapon6(piecenum)
+{
+	piecenum = mgflare;
+}
+
+AimWeapon6(heading, pitch)
+{
+	signal SIG_AIM;
+	set-signal-mask SIG_AIM;
+	turn turret to y-axis heading - <180> speed <200>;
+	turn machinegun to x-axis 0 + pitch speed <200>;
+	wait-for-turn turret around y-axis;
+	wait-for-turn machinegun around x-axis;
+	return (1);
+}
+
+FireWeapon6()
+{
+	emit-sfx MEDIUM_TRACER from mgflare;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mgflare;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	emit-sfx MEDIUM_TRACER from mgflare;
+	emit-sfx MG_MUZZLEFLASH from mgflare;
+	emit-sfx MG_SHELLCASINGS from turret;
+	sleep 67;
+	
+	return (0);
+}
+
+Killed(severity, corpsetype)
+{
+	corpsetype = 1;
+	explode base type BITMAPONLY;
+	explode fuselage type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wing1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode gear2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode wing2 type SHATTER;
+	explode gear2 type SHATTER;
+	explode wheel2 type SHATTER;
+	explode propeller type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+}

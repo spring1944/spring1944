@@ -1,0 +1,11 @@
+[kubelwagen_destroyed] {
+  description=Destroyed Car;
+  damage=20000;
+  energy=75;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=Debris_Small.S3O;
+  reclaimable=1;
+}
+

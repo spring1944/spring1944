@@ -1,0 +1,63 @@
+[unitinfo] {
+  unitname=RUSCommissar;
+  name=Commissar;
+  description=Political Engineer;
+  acceleration=0.375;
+  brakeRate=0.9;
+  buildCostEnergy=0;
+  buildCostMetal=370;
+  buildDistance=128;
+  builder=1;
+  buildTime=325;
+  canAttack=0;
+  canMove=1;
+  category=INFANTRY;
+  cloakCost=0;
+  cloakCostMoving=0;
+  commander=0;
+  corpse=RUSSoldier_dead;
+  [customParams] {
+    canclearmines=1;
+    feartarget=1;
+	blockfear=1;
+    flagCapRate=3.125;
+  }
+  damageModifier=0.265;
+  energyStorage=0.01;
+  flankingBonusMax=1.5;
+  flankingBonusMin=0.675;
+  flankingBonusMobilityAdd=0.01;
+  flankingBonusMode=1;
+  footprintX=1;
+  footprintZ=1;
+  iconType=commissar;
+  idleAutoHeal=2;
+  init_cloaked=1;
+  mass=50;
+  maxDamage=65;
+  maxSlope=15;
+  maxVelocity=1.6;
+  maxWaterDepth=10;
+  minCloakDistance=250;
+  movementClass=KBOT_Infantry;
+  objectName=RUSCommissar.S3O;
+  repairable=0;
+  script=GBRHQEngineer.cob;
+  seismicDistance=840;
+
+  seismicSignature=0;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  showNanoSpray=0;
+  side=RUS;
+  sightDistance=570;
+  soundcategory=RUSInf;
+  stealth=1;
+  TEDClass=CONSTR;
+  terraformSpeed=300;
+  turnRate=1010;
+  upright=1;
+  workerTime=15;
+}
+

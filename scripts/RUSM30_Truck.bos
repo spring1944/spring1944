@@ -1,0 +1,126 @@
+#include "constants.h"
+
+piece  base, tracks, tracks2, tent, support_wheels1, support_wheels2, support_wheels3, front_wheels, rear_wheels, mid_wheels1, mid_wheels2, mid_wheels3, mid_wheels4, mid_wheels5, carriage;
+ 
+static-var gunTowHeading, isTowed, normalSpeed, bMoving, trackNum;
+
+// Signal definitions
+#define SIG_TOW		64
+
+// definitions for wheels
+#define WHEEL_SPIN		<100>
+#define WHEEL_ACCEL		<30>
+
+#define WHEEL_SPIN1		<350>
+#define WHEEL_SPIN2		<400>
+#define WHEEL_SPIN3		<700>
+
+TrackAnim()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			if(trackNum==0)
+			{
+				show tracks;
+				hide tracks2;
+				trackNum=1;
+			} else
+			{
+				hide tracks;
+				show tracks2;
+				trackNum=0;
+			}
+		}
+		sleep 90;
+	}
+}
+
+SmokeUnit(healthpercent, sleeptime, smoketype)
+{
+	while( get BUILD_PERCENT_LEFT )
+	{
+		sleep 400;
+	}
+	while( TRUE )
+	{
+		healthpercent = get HEALTH;
+		if( healthpercent < 66 )
+		{
+			smoketype = 256 | 2;
+			if( Rand( 1, 66 ) < healthpercent )
+			{
+				smoketype = 256 | 1;
+			}
+			emit-sfx smoketype from base;
+		}
+		sleeptime = healthpercent * 50;
+		if( sleeptime < 200 )
+		{
+			sleeptime = 200;
+		}
+		sleep sleeptime;
+	}
+}
+
+StartMoving()
+{
+	bMoving = TRUE;
+	spin front_wheels around x-axis speed WHEEL_SPIN1;
+	spin rear_wheels around x-axis speed WHEEL_SPIN1;
+	spin mid_wheels1 around x-axis speed WHEEL_SPIN2;
+	spin mid_wheels2 around x-axis speed WHEEL_SPIN2;
+	spin mid_wheels3 around x-axis speed WHEEL_SPIN2;
+	spin mid_wheels4 around x-axis speed WHEEL_SPIN2;
+	spin mid_wheels5 around x-axis speed WHEEL_SPIN2;
+	spin support_wheels1 around x-axis speed WHEEL_SPIN3;
+	spin support_wheels2 around x-axis speed WHEEL_SPIN3;
+	spin support_wheels3 around x-axis speed WHEEL_SPIN3;
+}
+
+StopMoving()
+{
+	bMoving = FALSE;
+	stop-spin front_wheels around x-axis;
+	stop-spin rear_wheels around x-axis;
+	stop-spin mid_wheels1 around x-axis;
+	stop-spin mid_wheels2 around x-axis;
+	stop-spin mid_wheels3 around x-axis;
+	stop-spin mid_wheels4 around x-axis;
+	stop-spin mid_wheels5 around x-axis;
+	stop-spin support_wheels1 around x-axis;
+	stop-spin support_wheels2 around x-axis;
+	stop-spin support_wheels3 around x-axis;
+}
+
+Create()
+{
+	bMoving = FALSE;
+	trackNum = 0;
+	hide tracks2;
+	start-script SmokeUnit();
+	start-script TrackAnim();
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+Killed(severity, corpsetype)
+{
+	if( severity <= 99 )
+	{
+		corpsetype = 1;
+		explode front_wheels type SHATTER | EXPLODE_ON_HIT;
+		explode rear_wheels type SHATTER | EXPLODE_ON_HIT;
+		
+		return (0);
+	}
+	corpsetype = 2;
+	explode front_wheels type SHATTER | EXPLODE_ON_HIT;
+	explode rear_wheels type SHATTER | EXPLODE_ON_HIT;
+	explode carriage type SHATTER | EXPLODE_ON_HIT;
+	explode base type SHATTER;
+}

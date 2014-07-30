@@ -1,0 +1,46 @@
+#include "constants.h"
+
+piece  base;
+piece  flag;
+piece  teamflag;
+
+
+#define ROCK_SPEED <2>
+#define RESTORE_SPEED <1>
+#define ROCK_ANGLE <10>
+
+RockUnit()
+{
+	var anglex,anglez;
+	
+	while (TRUE) {
+		anglex = rand(0 - ROCK_ANGLE, ROCK_ANGLE);
+		anglez = rand(0 - ROCK_ANGLE, ROCK_ANGLE);
+		
+    	turn base to x-axis anglex speed ROCK_SPEED;
+    	turn base to z-axis anglez speed ROCK_SPEED;
+
+    	wait-for-turn base around z-axis;
+    	wait-for-turn base around x-axis;
+
+    	turn base to z-axis <0> speed RESTORE_SPEED;
+    	turn base to x-axis <0> speed RESTORE_SPEED;
+    	//sleep 500;
+    }
+}
+
+Create()
+{
+	start-script RockUnit();
+}
+
+SetDirection(windDir)
+{
+	turn flag to y-axis windDir speed <20.000000>;
+	turn teamflag to y-axis windDir speed <20.000000>;
+}
+
+Killed(severity, corpsetype)
+{
+
+}
