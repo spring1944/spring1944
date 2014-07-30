@@ -1,0 +1,11 @@
+[itaobice100_destroyed] {
+  description=Destroyed Howitzer;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAObice100_Destroyed;
+  reclaimable=1;
+}
+
