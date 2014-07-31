@@ -76,10 +76,10 @@
   weaponSlaveTo4=1;
 
   weapon5=M2Browning;
-  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP;
   
   weapon6=M2Browning;
-  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory5=OPENVEH INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP;
   weaponSlaveTo6=5;
   
   weapon7=Medium_Tracer;

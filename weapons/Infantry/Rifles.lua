@@ -94,6 +94,15 @@ local PartisanMosinNagant = MosinNagant:New{
   movingAccuracy     = 1800,
 }
 
+-- SVT (USSR)
+local SVT = RifleClass:New{
+  name               = [[SVT-40]],
+  range              = 535,
+  reloadtime         = 2,
+  rgbColor           = [[0.0 0.7 0.0]], -- overwrites default
+  soundStart         = [[RUS_SVT]],
+}
+
 -- Sniper Rifle Base Class
 local SniperRifleClass = RifleClass:New{
   accuracy           = 0,
@@ -158,4 +167,5 @@ return lowerkeys({
   K98kScope = K98kScope,
   M1903Springfield = M1903Springfield,
   MosinNagantPU = MosinNagantPU,
+  SVT = SVT,
 })

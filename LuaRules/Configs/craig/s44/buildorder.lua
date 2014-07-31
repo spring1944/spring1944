@@ -151,6 +151,110 @@ gadget.unitBuildOrder = UnitBag{
 		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
 		"usm10wolverine",
 	},
+		-- ITALY
+	itahq = UnitArray{
+		-- Works J
+		"itahqengineer", "itahqengineer",
+		"ita_platoon_hq", "ita_platoon_hq", "ita_platoon_hq",
+		"ita_platoon_hq", "ita_platoon_hq", "ita_platoon_hq",
+		"ita_platoon_hq", "ita_platoon_hq", "ita_platoon_hq",
+	},
+	itabarracks = UnitArray{
+		-- Works J
+		"itahqengineer", "itahqengineer",
+		"ita_platoon_rifle", "ita_platoon_rifle", "ita_platoon_rifle",
+		"ita_platoon_rifle", "ita_platoon_rifle", "ita_platoon_rifle",
+		"ita_platoon_assault", --"ita_platoon_at",
+		"ita_platoon_mortar", "ita_platoon_sniper",
+		"itacannone65",
+	},
+	itavehicleyard = UnitArray{
+		-- Works J
+		"itabreda41",
+		"itaas37",
+		"itaab41",
+		"itasemovente47",
+		"itaab41",
+		"itaas37",
+		"itaspadovunque",
+	},
+	itasupplydepot = UnitArray{
+		"itaas37",
+	},
+	itatankyard = UnitArray{
+		-- Works J
+		"ital6_40lf",
+		"itam1542", "itam1542", "itam1542",
+		"itasemovente75_18",
+	},
+		itaelitebarracks = UnitArray{
+		-- Works J
+		"itahqengineer", "itahqengineer",
+		"ita_platoon_alpini", 
+		"ita_platoon_bersaglieri","ita_platoon_bersaglieri",
+		"ita_platoon_rifle",
+	},
+		itaspyard = UnitArray{
+		-- Works J
+		"itabreda41",
+		"itaautocannone75", "itaautocannone75", "itaautocannone75",
+		"itasemovente47",
+		"itaautocannone100",
+		"itaautocannone90",
+	},
+		itatankyard1 = UnitArray{
+		-- Works J
+		"itasemovente90",
+		"itap40", "itap40", "itap40",
+		"itasemovente105",
+	},
+	--[[
+		itaradar = UnitArray{
+	
+	"ita_sortie_recon",
+	"ita_sortie_interceptor",
+	"ita_sortie_fighter",
+	"ita_sortie_attack",
+	},
+	--]]
+	-- Japan
+	jpnhq = UnitArray{
+		"jpnhqengineer", "jpnhqengineer",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+		"jpn_platoon_hq", "jpn_platoon_hq",
+	},
+	jpnbarracks = UnitArray{
+		"jpnhqengineer", "jpnhqengineer",
+		"jpn_platoon_rifle", "jpn_platoon_assault",
+		"jpn_platoon_rifle", "jpn_platoon_mortar",
+		"jpn_platoon_rifle", "jpn_platoon_at",
+		"jpn_platoon_rifle",
+		"jpn_platoon_rifle", "jpn_platoon_sniper",
+		"jpn_platoon_rifle", "jpn_platoon_rifle",
+	},
+	jpnvehicleyard = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhoha",
+		--"jpnisuzutype94_aa",
+		"jpnteke",
+		"jpnhago",
+		"jpnhonii",
+	},
+	jpnsupplydepot = UnitArray{
+		"jpnhoha",
+	},
+	jpntankyard = UnitArray{
+	
+		"jpnriki",
+		"jpnhago",
+		"jpnshinhotochiha",
+		"jpnchihe",
+		"jpnhoro",
+	},
+	
 }
 
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
@@ -191,6 +295,26 @@ gadget.baseBuildOrder = {
 		"ustankyard",
 		"ussupplydepot",
 	},
+		ita = UnitArray{
+		-- Works J
+		"itabarracks", "itabarracks",
+		"itavehicleyard",
+		"itastorage", "itastorage",
+		"itatankyard",
+		"itasupplydepot",
+		"itaelitebarracks",
+		"itaspyard",
+		"itatankyard1",
+	},
+		-- "itaradar",
+		jpn = UnitArray{
+		"jpnbarracks", "jpnbarracks",
+		"jpnstorage",
+		"jpnvehicleyard",
+		"jpnstorage", "jpnstorage",
+		"jpntankyard",
+		"jpnsupplydepot",
+	},
 }
 
 -- This lists all the units (of all sides) that are considered "base builders"
@@ -204,6 +328,11 @@ gadget.baseBuilders = UnitSet{
 	"rusk31",
 	"ushqengineer",
 	"usgmcengvehicle",
+	"itahqengineer",
+	"itaengineer", 
+	"itabreda41",
+	"jpnriki",
+	"jpnhqengineer",
 }
 
 -- This lists all the units that should be considered flags.
@@ -215,7 +344,9 @@ gadget.flags = UnitSet{
 gadget.flagCappers = UnitSet{
 	"gbrrifle", "gbrsten",
 	"gerrifle", "germp40",
+	"itarifle", "itam38",
 	"usgirifle", "usgithompson",
+	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
 }
 
@@ -224,5 +355,7 @@ gadget.reservedFlagCappers = {
 	gbr = 24,
 	ger = 24,
 	us  = 24,
+	ita  = 24,
+	jpn = 24,
 	rus = 2,
 }

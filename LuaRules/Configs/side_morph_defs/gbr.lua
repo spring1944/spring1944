@@ -3,7 +3,7 @@ local gbrDefs = {
    	gbrstorage = {
 		{
 			into = 'gbrstoragecamo',
-			metal = 2000,
+			metal = 1000,
 			energy = 0,
 			time = 25,
 			name = '  Camo  ',

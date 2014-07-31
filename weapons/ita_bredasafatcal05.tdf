@@ -1,0 +1,73 @@
+[bredasafatcal05] {
+  name=.50 Caliber Breda SAFAT;
+  areaOfEffect=1;
+  burnblow=1;
+  burst=6;
+  burstRate=0.125;
+  collisionSize=2;
+  collisionVolumeTest=1;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=45;
+    fearid=301;
+  }
+  [damage] {
+    default=38;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=10;
+  impactOnly=1;
+  interceptedByShieldType=16;
+  lineofsight=1;
+  predictBoost=0.75;
+  range=900;
+  reloadTime=1.2;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-14; //2
+  soundStart=ITA_breda12_7mm;
+  soundTrigger=1;
+  sprayAngle=275;
+  tolerance=300;
+  turret=1;
+  seperation=2;
+  weaponTimer=1;
+  weaponVelocity=2500;
+}
+[bredasafatcal03] {
+  name=7.7mm Breda SAFAT;
+  areaOfEffect=1;
+  burnblow=1;
+  burst=6;
+  burstRate=0.05;
+  collisionSize=2;
+  collisionVolumeTest=1;
+  [customParams] {
+    damagetype=smallarm;
+    fearaoe=35;
+    fearid=301;
+  }
+  [damage] {
+    default=33;
+  }
+  explosionGenerator=custom:Bullet;
+  fireStarter=10;
+  impactOnly=1;
+  interceptedByShieldType=8;
+  lineofsight=1;
+  predictBoost=0.75;
+  range=825;
+  reloadTime=0.55;
+  rendertype=0;
+  rgbColor=1.0 0.75 0.0;
+  size=1e-14; //2
+  soundStart=ITA_Breda30;
+  soundTrigger=1;
+  sprayAngle=200;
+  tolerance=300;
+  seperation=2;
+  turret=1;
+  weaponTimer=1;
+  weaponVelocity=2500;
+}
+

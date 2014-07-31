@@ -17,16 +17,49 @@ if (gadgetHandler:IsSyncedCode()) then
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetProjectilePosition		= Spring.GetProjectilePosition
 local GetProjectileTarget		= Spring.GetProjectileTarget
+local GetUnitCOBValue			= Spring.GetUnitCOBValue
 
 -- Synced Ctrl
 local CreateUnit				= Spring.CreateUnit
 local SetUnitNoSelect			= Spring.SetUnitNoSelect
 local SetProjectilePosition		= Spring.SetProjectilePosition
 local SetProjectileCollision	= Spring.SetProjectileCollision
-
+local InsertUnitCmdDesc			= Spring.InsertUnitCmdDesc
+local SetUnitTarget				= Spring.SetUnitTarget
 -- variables
 local activeBinocs = {} -- activeBinocs[ownerID] = {origin={x,y,z},target,teleportTo={x,y,z}}
 
+local CMD_LOOK = GG.CustomCommands.GetCmdID("CMD_LOOK")
+local COBSCALE = 65536
+
+local lookCmdDesc = {
+	id = CMD_LOOK,
+	type = CMDTYPE.ICON_MAP,
+	name = "Look",
+	action = "look",
+	tooltip = "Use Binoculars to look at a point",
+	cursor = "Patrol",
+}
+
+function CheckForBinocsWeapon(weapon)
+	local retVal = false
+	if (WeaponDefs[weapon.weaponDef].customParams.binocs) and (WeaponDefs[weapon.weaponDef].customParams.binocs == "1") then
+		retVal = true
+	end
+	return retVal
+end
+
+function Look(unitID, weaponNumber, x, y, z)
+	--[[
+	local SET_WEAPON_GROUND_TARGET = COB.SET_WEAPON_GROUND_TARGET
+	-- command parameters: unit's weapon number (0-based), packed XZ, y
+	local XZ = x * COBSCALE + z
+	Spring.Echo("Looking with weapon "..weaponNumber.." at: "..XZ.." "..y)
+	local tmp = GetUnitCOBValue(unitID, SET_WEAPON_GROUND_TARGET, weaponNumber, XZ, y * COBSCALE)
+	Spring.Echo("Result: "..tmp)
+	]]--
+	Spring.SetUnitTarget(unitID, x, y, z)
+end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local weapDef = WeaponDefs[weaponID]
@@ -83,6 +116,32 @@ function gadget:UnitCreated(unitID, unitDefID)
 	if ud.name == "binocspot" then
 		SetUnitNoSelect(unitID, true)
 	end
+	-- should we add the Look command?
+	local weapons = UnitDefs[unitDefID].weapons
+	if weapons and #weapons > 0 then
+		for i = 1, #weapons do
+			if CheckForBinocsWeapon(weapons[i]) then
+				InsertUnitCmdDesc(unitID, lookCmdDesc)
+				break
+			end
+		end
+	end
+end
+
+function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
+	if cmdID == CMD_LOOK then
+		-- let's find the weapon number again
+		local weapons = UnitDefs[unitDefID].weapons
+		if weapons and #weapons > 0 then
+			for i = 1, #weapons do
+				if CheckForBinocsWeapon(weapons[i]) then
+					Look(unitID, i, cmdParams[1], cmdParams[2], cmdParams[3])
+					break
+				end
+			end
+		end
+	end
+	return true
 end
 
 function gadget:Initialize()

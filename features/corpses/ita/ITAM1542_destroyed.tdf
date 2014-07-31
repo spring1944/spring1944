@@ -1,0 +1,60 @@
+[ITAM1542_Abandoned]
+{
+  description=Abandoned M15/42;
+  damage=2501;
+  energy=50;
+  featureDead=ITAM1542_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAM1542.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[ITAM1542_Burning]
+{
+  description=Destroyed M15/42;
+  damage=2501;
+  energy=50;
+  featureDead=ITAM1542_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAM1542_Dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[ITAM1542_Wreck]
+{
+  description=Destroyed M15/42;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=ITAM1542_Wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}

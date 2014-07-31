@@ -1,0 +1,41 @@
+[jpnho401] {
+  name=Ho-401 57mm Aircraft Gun;//HEAT now
+  accuracy=100;
+  areaOfEffect=12;
+  ballistic=1;
+  canAttackGround=0;
+  collisionSize=4;
+  colormap=ap_colormap.png;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    armor_penetration=55;
+    damagetype=shapedcharge;
+  }
+  [damage] {
+    default=1341;  // AP formuala is used
+  }
+  edgeEffectiveness=0.1;
+  explosionGenerator=custom:EP_medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.25;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=760;
+  reloadTime=0.95;
+  rendertype=1;
+  rgbColor=1.0 0.0 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_1;
+  soundStart=RUS_45mm;
+  stages=50;
+  // targetMoveError=0.075;
+  tolerance=600;
+  turret=1;
+  weaponVelocity=918;
+}

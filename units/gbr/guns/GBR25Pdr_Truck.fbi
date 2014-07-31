@@ -10,7 +10,7 @@
   buildTime=1800;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=GBRBedfordTruck_Destroyed;
+  corpse=gbrmorrisquad_destroyed;
   [customParams] {
     lowammolevel=1;
     maxammo=4;

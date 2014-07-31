@@ -1,0 +1,53 @@
+[unitinfo] {
+  unitname=JPNPontoonTruck;
+  name=Pontoon Transport;
+  description=Deployable Boatyard Vehicle;
+  acceleration=0.3;
+  brakeRate=0.96;
+  buildCostEnergy=0;
+  buildCostMetal=1400;
+  buildTime=1400;
+  canMove=1;
+  category=MINETRIGGER SOFTVEH;
+  corpse=RUSPontoonTruck_Dead;
+  [customParams] {
+    buildOutside=1;
+    dontCount=1;
+  }
+  explodeAs=Vehicle_Explosion_Sm;
+  footprintX=3;
+  footprintZ=3;
+  iconType=truck;
+  idleAutoHeal=2;
+  idleTime=1000;
+  leaveTracks=0;
+  mass=300;
+  maxDamage=300;
+  maxReverseVelocity=1;
+  maxSlope=10;
+  maxVelocity=1.15;
+  maxWaterDepth=70;
+  movementClass=HOVER_AmphibTruck;
+  noChaseCategory=AIR MINE;
+  objectName=RUSPontoonTruck.s3o;
+  releaseHeld=1;
+  script=ruspontoontruck.cob;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Sm;
+  [sfxtypes] {
+  }
+  showNanoFrame=0;
+  side=JPN;
+  sightDistance=800;
+  soundcategory=JPNVeh;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=6.5;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=12;
+  turninplace=0;
+  turnRate=440;
+}
+

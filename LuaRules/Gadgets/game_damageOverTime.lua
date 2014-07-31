@@ -91,6 +91,8 @@ end
 
 function gadget:GameFrame(n)
 	if (n % (0.5*30) < 0.1) then
+		-- items to delete from looped tables, but only AFTER the loop finishes
+		local itemsToDelete = {}
 		for unitID, info in pairs(burningUnits) do
 			if info ~= nil then
 				local explodeTime = info.exTime
@@ -105,10 +107,14 @@ function gadget:GameFrame(n)
 						AddUnitDamage(unitID, damagePerSecond)
 					end
 				else
-					burningUnits[unitID] = nil
+					itemsToDelete[unitID] = true
 				end	
 			end
 		end
+		for unitID, _ in pairs(itemsToDelete) do
+			burningUnits[unitID] = nil
+		end
+		itemsToDelete = {}
 		for damageSiteIndex, siteInfo in pairs(damageZones) do
 			if siteInfo ~= nil then
 				local explodeTime = siteInfo.exTime
@@ -148,8 +154,11 @@ function gadget:GameFrame(n)
 				end
 			else
 				--damage area expired
-				damageZones[damageSiteIndex] = nil
+				itemsToDelete[damageSiteIndex] = true
 			end
+		end
+		for damageSiteIndex, _ in pairs(itemsToDelete) do
+			damageZones[damageSiteIndex] = nil
 		end
 	end
 end
