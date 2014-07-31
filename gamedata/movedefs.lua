@@ -8,6 +8,15 @@ local moveDefs 	=	 {
 		heatmapping		=	false,
 	},
 	{
+		name
+=	"KBOT_alpini",
+		footprintX		=	1,
+		maxWaterDepth	=	10,
+		maxSlope			=	50,
+		crushStrength	=	0,
+		heatmapping		=	false,
+	},
+	{
 		name					=	"TANK_Truck",
 		footprintX		=	3,
 		maxWaterDepth	=	5,
