@@ -1,6 +1,6 @@
 [unitinfo] {
   unitname=ITAalpiniRifle;
-  name=Italian SMG;
+  name=Italian Alpini Rifle;
   description=Elite rifle infantry armed with heavy stickgrenade;
   acceleration=0.375;
   airSightDistance=2500;
