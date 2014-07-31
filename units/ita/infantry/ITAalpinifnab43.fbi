@@ -28,7 +28,7 @@
   maxSlope=15;
   maxVelocity=1.6;
   maxWaterDepth=10;
-  movementClass=KBOT_Infantry;
+  movementClass=KBOT_alpini;
   noChaseCategory=FLAG AIR MINE;
   objectName=ITAM38.S3O;
   script=itaelitem38.cob;
