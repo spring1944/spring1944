@@ -1,0 +1,289 @@
+#define TAK
+
+piece base, ladder, load_arm, load_shoulder,
+	turret, gun, flare,
+	cargo,
+	wake;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Ladder
+#define LADDER_MOVE_DIST	[6.8]
+#define LADDER_MOVE_SPEED	[6]
+#define LADDER_LOWER_ANGLE		<30>
+#define LADDER_LOWER_SPEED		<60>
+
+//********************Turret turn speeds
+#define MG_TURRET_TURN			<60>
+#define MG_TURRET_PITCH			<60>
+
+#define LOAD_DIST			[125]
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_LOAD			4
+#define SIG_AIM1			8
+
+#define RESTORE_PERIOD		2500
+
+// effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+3
+#define SMALL_MUZZLEDUST 1024+4
+#define MEDIUMLARGE_MUZZLEFLASH 1024+8
+#define MEDIUMLARGE_MUZZLEDUST 1024+9
+
+
+#define SMOKEPIECE	base
+
+#include "constants.h"
+#include "damageSmoke.h"
+
+#define INFANTRY			412876 //458752 //983040 // this is 65536 * s3o model radius
+
+static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, FearOk, bAimAA1;
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	FearOk=0;
+	MaxSpeed = get MAX_SPEED;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+}
+
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn turret to y-axis <0> speed MG_TURRET_TURN;
+	turn gun to x-axis <0> speed MG_TURRET_PITCH;
+}
+
+OpenRamp()
+{
+	var newSpeed;
+	// we are opening the ramp, let's slow down (else we'll have the hold full of water)
+	newSpeed = MaxSpeed/10;
+	//set MAX_SPEED to newSpeed;
+	move ladder to z-axis LADDER_MOVE_DIST speed LADDER_MOVE_SPEED;
+	wait-for-move ladder along z-axis;
+	turn ladder to x-axis LADDER_LOWER_ANGLE speed LADDER_LOWER_SPEED;
+	wait-for-turn ladder around x-axis;
+	bRampOpen = TRUE;
+	return;
+}
+
+CloseRamp()
+{
+	bRampOpen = FALSE;
+	turn ladder to x-axis 0 speed LADDER_LOWER_SPEED;
+	wait-for-turn ladder around x-axis;
+	move ladder to z-axis 0 speed LADDER_MOVE_SPEED;
+	// now the ramp is closed, we can go full speed again
+	//set MAX_SPEED to MaxSpeed;
+	return;
+}
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid, fromLua) {
+	if ( fromLua != 1 ) {
+		call-script OpenRamp();
+	}
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			set BUSY to 1;
+			turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - get UNIT_XZ(unitid)) now;
+			move load_arm to z-axis get XZ_HYPOT(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			turn load_arm to y-axis get XZ_ATAN(get UNIT_XZ(unitid) - get PIECE_XZ(base)) now;
+			attach-unit unitid to load_arm;
+			move load_arm to z-axis [10.000000] speed [2400.000000];
+			wait-for-move load_arm along z-axis;
+			if( get UNIT_HEIGHT (unitid) == INFANTRY) 
+			{ 
+			//<= INFANTRY + FUDGE ) { // when using FUDGE
+			  attach-unit unitid to 0 - 1; // hide infantry models
+			}
+			if( get UNIT_HEIGHT (unitid) != INFANTRY) 
+			{ 
+			//> INFANTRY + FUDGE ) {  // when using FUDGE
+			  attach-unit unitid to base; // don't hide other units
+			}
+			set BUSY to 0;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(position);
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	call-script OpenRamp();
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx SFXTYPE_WAKE1 from wake;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	start-script CloseRamp();
+	bMoving = TRUE;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	bAimAA1 = TRUE;
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed MG_TURRET_TURN;
+	turn gun to x-axis (0-pitch) speed MG_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn gun around x-axis;
+	start-script RestoreTurret();
+	bAimAA1 = FALSE;
+	return (TRUE);
+}
+
+Shot1(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+}
+
+FireWeapon1()
+{
+	return;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (bAimAA1)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed MG_TURRET_TURN;
+	turn gun to x-axis (0-pitch) speed MG_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn gun around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+Shot2(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+}
+
+FireWeapon2()
+{
+	return;
+}
+
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<50)
+	{
+		corpsetype = 1;
+		return (TRUE);
+	} else {
+		explode ladder type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	return (TRUE);
+}

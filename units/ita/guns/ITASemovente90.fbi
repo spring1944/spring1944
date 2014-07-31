@@ -1,0 +1,86 @@
+[unitinfo] {
+  unitname=ITASemovente90;
+  name=Semovente da 90/53;
+  description=Heavily Armed Tank Destroyer;
+  acceleration=0.032;
+  airSightDistance=1500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=3350;
+  buildTime=3350;
+  canMove=1;
+  // unprotected back, like Marder/Su-76
+  category=MINETRIGGER OPENVEH;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=20 14 40;
+  //collisionVolumeOffsets=0 0 0;
+  //collisionVolumeTest=1;
+  corpse=ITASemovente90_Abandoned;
+  [customParams] {
+    armor_front=40;
+    armor_rear=0;
+    armor_side=25;
+    armor_top=10;
+    blockfear=1;
+    lowammolevel=4;
+    // yes, it was so low irl. This veh often had an armored ammo carrier attached to it to compensate
+    maxammo=6;
+    weaponcost=20;
+    weaponswithammo=1;
+	hasturnbutton=1;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=3;
+  footprintZ=3;
+  iconType=selfprop;
+  leaveTracks=1;
+  mass=1700;
+  maxDamage=1700;
+  maxReverseVelocity=1.48;
+  maxSlope=2;
+  maxVelocity=2.56;
+  maxWaterDepth=5;
+  movementClass=TANK_Medium;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=ITASemovente90.s3o;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=ITA;
+  sightDistance=720;
+  smoothAnim=0;
+  soundcategory=ITATank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=14;
+  turninplace=0;
+  turnRate=175;
+  badTargetCategory=FLAG;
+
+  weapon1=ansaldo90mml53ap;
+  maxAngleDif1=80;
+  // it REALLY had 80 degrees traverse. 40 both ways.
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
+  weaponMainDir1=0 0 1;
+
+
+  weapon3=.50calproof;
+}
+

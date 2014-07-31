@@ -74,7 +74,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M2Browning;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP;
 
   weapon2=m2browningaa;
   onlyTargetCategory2=AIR;

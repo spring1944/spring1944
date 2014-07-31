@@ -1,0 +1,343 @@
+#include "constants.h" // Thank you Argh
+
+piece	base, front_wheel, rear_wheel, mid_wheel1, mid_wheel2, mid_wheel3, mid_wheel4, mid_wheel5, mid_wheel6, mid_wheel7, mid_wheel8, support_wheel1, support_wheel2, support_wheel3, support_wheel4,
+		tracks, tracks2,
+		turret1, gun1, flare1, turret2, gun2, flare2,
+		prop1, prop2,
+		load_shoulder, load_arm, tow_point,
+		exhaust, wake;
+ 
+static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, treadnum, shotCount1, shotCount2, bFloating, WaterSpeed, LandSpeed;
+
+// Signal definitions
+#define SIG_MOVE	1
+#define SIG_AIM1	2
+#define SIG_AIM2	4
+
+// definitions for SmokeUnit_GPL
+#define SMOKEPIECE1	base
+#define SMOKEPIECE2 turret1
+#define SMOKEPIECE3 exhaust
+#define SMOKEPIECE4 turret2
+
+#include "SmokeUnit_GPL.h" // Thanks again to Argh
+
+//hiding FX emit points
+#define FX_HIDE\
+	hide flare1;\
+	hide flare2;\
+
+// definitions for RockUnit_Set
+#define ROCK_SPEED	<60> // heavier units should rock less
+#define RESTORE_SPEED	<20>
+#define ROCKVAR		rock
+
+#include "RockUnit_Set.h"
+
+// definitions for wheels
+#define WHEEL_SPIN		<600>
+#define WHEEL_ACCEL		<150>
+
+// definitions for turret movement
+#define TURR_TRAVERSE	<25> // hand operated
+#define TURR_ELEVATE	<15>
+
+// definitions for weapons behaviour
+#define RELOAD		6000 // time in milliseconds between shots
+#define RECOIL		[-0.5] // distance to recoil the gun
+#define RETURN_SPEED	[5] // speed at which the barrel returns
+
+// definitions for HitWeapId_S44
+#define ARMOUR		4372
+#include "HitWeapId_S44.h"
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05 1024+5
+#define placeholder_EFFECT06 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+8
+#define SMALL_MUZZLEDUST 1024+9
+#define MuzzleBrakeSmoke 1024+10
+
+#define MEDIUM_TRACER	2048+2
+
+#define TRACER_PER_X_SHOTS	3
+
+// water mobility def
+#define WATER_SPEED_MULTIPLIER		2
+#define WATER_SPEED_DIVIDER			5
+
+#define FLOAT_DEPTH					[-4]
+
+// exhaust smoke
+#define EXHAUST_SMOKE 1024+1
+
+#include "amphib.h"
+
+treads() 
+{
+   while( TRUE )
+   {
+        if(bMoving)
+           {
+              if(treadnum == 0)
+              {
+              hide tracks2;
+              show tracks;
+              }
+            if(treadnum == 1)
+            {
+            hide tracks;
+            show tracks2;
+			}
+            treadnum = !treadnum;
+         }
+      sleep 90;
+   }
+}
+
+Create()
+{
+	LandSpeed = get MAX_SPEED;
+	WaterSpeed = LandSpeed * WATER_SPEED_MULTIPLIER / WATER_SPEED_DIVIDER;
+	FX_HIDE
+	// init vars
+	rock = FALSE;
+	aim2 = FALSE;
+	reloading = FALSE;
+	treadnum=0;
+
+	shotCount1 = 0;
+	shotCount2 = 0;
+	bFloating = FALSE;
+
+	hide tracks2;
+	
+	// start continuous scripts
+	start-script SmokeUnit_GPL();
+	start-script treads();
+	start-script WaterCheck();
+}
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid) {
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			attach-unit unitid to base;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(get PIECE_XZ(base));
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	bMoving = TRUE;
+	spin front_wheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+	spin rear_wheel around x-axis speed WHEEL_SPIN accelerate WHEEL_ACCEL;
+	spin mid_wheel1 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel2 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel3 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel4 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel5 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel6 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel7 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin mid_wheel8 around x-axis speed WHEEL_SPIN*2 accelerate WHEEL_ACCEL*2;
+	spin support_wheel1 around x-axis speed WHEEL_SPIN*3 accelerate WHEEL_ACCEL*3;
+	spin support_wheel2 around x-axis speed WHEEL_SPIN*3 accelerate WHEEL_ACCEL*3;
+	spin support_wheel3 around x-axis speed WHEEL_SPIN*3 accelerate WHEEL_ACCEL*3;
+	spin support_wheel4 around x-axis speed WHEEL_SPIN*3 accelerate WHEEL_ACCEL*3;
+	emit-sfx EXHAUST_SMOKE from exhaust;
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	bMoving = FALSE;
+	stop-spin front_wheel around x-axis;
+ 	stop-spin rear_wheel around x-axis;
+	stop-spin mid_wheel1 around x-axis;
+	stop-spin mid_wheel2 around x-axis;
+	stop-spin mid_wheel3 around x-axis;
+	stop-spin mid_wheel4 around x-axis;
+	stop-spin mid_wheel5 around x-axis;
+	stop-spin mid_wheel6 around x-axis;
+	stop-spin mid_wheel7 around x-axis;
+	stop-spin mid_wheel8 around x-axis;
+	stop-spin support_wheel1 around x-axis;
+	stop-spin support_wheel2 around x-axis;
+	stop-spin support_wheel3 around x-axis;
+	stop-spin support_wheel4 around x-axis;
+}
+
+SetMaxReloadTime(longestReloadTime)
+{
+	restore_delay = longestReloadTime * 2;
+}
+
+RestoreAfterDelay()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2;
+	sleep restore_delay;
+	turn turret1 to y-axis 0 speed TURR_TRAVERSE;
+	turn gun1 to x-axis 0 speed TURR_ELEVATE;
+	turn turret2 to y-axis 0 speed TURR_TRAVERSE;
+	turn gun2 to x-axis 0 speed TURR_ELEVATE;
+}
+
+Reload()
+{
+	reloading = TRUE;
+	sleep RELOAD;
+	reloading = FALSE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1;
+
+	turn turret1 to y-axis heading speed TURR_TRAVERSE;
+	turn gun1 to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret1 around y-axis;
+	wait-for-turn gun1 around x-axis;
+	
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon1()
+{
+	return 0;
+}
+
+Shot1(foo)
+{
+	++shotCount1;
+	if(shotCount1>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare1;
+		shotCount1=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare1;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2;
+
+	turn turret2 to y-axis heading speed TURR_TRAVERSE;
+	turn gun2 to x-axis 0 - pitch speed TURR_ELEVATE;
+	wait-for-turn turret2 around y-axis;
+	wait-for-turn gun2 around x-axis;
+	
+	start-script RestoreAfterDelay();
+	return 1;
+}
+
+FireWeapon2()
+{
+	return 0;
+}
+
+Shot2(foo)
+{
+	++shotCount2;
+	if(shotCount2>=TRACER_PER_X_SHOTS)
+	{
+		emit-sfx MEDIUM_TRACER from flare2;
+		shotCount2=0;
+	}
+	emit-sfx MG_MUZZLEFLASH from flare2;
+}
+
+// TODO: make this pretty
+Killed(severity, corpsetype)
+{
+	if( severity <= 50 )
+	{
+		// abandoned tank - no visual damage
+		corpsetype = 1;
+		return (0);
+	}
+	if( severity <= 250 )
+	{
+		// burning tank
+		corpsetype = 2;
+		explode base type BITMAPONLY;
+		explode turret1 type BITMAPONLY;
+		explode turret2 type BITMAPONLY;
+		return (0);
+	}
+	if(severity <= 1000)
+	{
+		// internal explosion!
+		corpsetype = 3;
+		explode turret1 type EXPLODE_ON_HIT | FIRE | FALL;
+		explode turret2 type EXPLODE_ON_HIT | FIRE | FALL;
+		explode mid_wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheel2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheel3 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		explode mid_wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+		return (0);
+	}
+	// OMGWTF direct asteroid hit!
+	corpsetype = 4;
+	explode turret1 type EXPLODE_ON_HIT | FIRE | FALL;
+	explode turret2 type EXPLODE_ON_HIT | FIRE | FALL;
+	explode base type SHATTER;
+	explode front_wheel type SHATTER;
+	explode rear_wheel type SHATTER;
+	explode mid_wheel1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheel2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheel3 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	explode mid_wheel4 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
+	return (0);
+}
+
