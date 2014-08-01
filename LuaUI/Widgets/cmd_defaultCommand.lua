@@ -19,10 +19,10 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if (not defCom[unitDefID]) then
 		local ud = UnitDefs[unitDefID]
 		-- mobile combat units except SPGs, AT guns, etc
-		if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
-			defCom[unitDefID] = CMD_FIGHT
+		--if (ud.speed > 0 and ud.canAttack and not ud.customParams.defaultmove) then
+		--	defCom[unitDefID] = CMD_FIGHT
 		-- Deployed howitzers with area attack
-		elseif (ud.speed == 0 and ud.customParams.canareaattack) then
+		--[[else]]if (ud.speed == 0 and ud.customParams.canareaattack) then
 				defCom[unitDefID] = CMD_AREA_ATTACK
 		-- Deployed AT and AA guns
 		elseif (ud.speed == 0 and ud.canAttack and not ud.customParams.canareaattack and not ud.isBuilder) then
