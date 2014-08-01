@@ -39,6 +39,15 @@ local dgunUnitID
 local circleList
 local secondPart = 0
 local mouseDistance = 1000
+local lastScatterBars = {}
+local lastScatterVertices = {}
+local lastScatterInfo = {0,0,0,0,0,0}
+
+
+-- Used for recalculating path to compensate for floating point errors
+local impactPass = 0
+local NUM_IMPACT_PASSES = 3
+
 
 --------------------------------------------------------------------------------
 --speedups
@@ -368,93 +377,129 @@ local function GetBallisticVector(v, grav, dx, dy, dz, trajectory, range)
   return Normalize(bx, by, bz)
 end
 
-local function GetBallisticImpactPoint(v, fx, fy, fz, bx, by, bz)
-  local v_f = v / GAME_SPEED
+local function GetBallisticImpactPoint(v_f, fx, fy, fz, bx, by, bz, grav_f, ttl, last_x)
   local vx_f = bx * v_f
   local vy_f = by * v_f
   local vz_f = bz * v_f
-  local px = fx
-  local py = fy
-  local pz = fz
+  local px, py, pz
+  local px_t, py_t, pz_t, t
+  px = fx
+  py = fy
+  pz = fz
   
-  local ttl = 4 * v_f / g_f
+  -- Optimisations, very useful if projectile speed and gravity are low.
+  -- approximates the projectile location above the previous point and
+  -- continues from there. Inaccurate due to floating point errors.
   
-  for i=1,ttl do
+  if last_x and (impactPass % NUM_IMPACT_PASSES) ~= 0 then
+    t = floor((last_x - fx) / vx_f)
+    px = fx + vx_f * t
+    py = fy + t * vy_f - t * (t - 1) * grav_f / 2
+    vy_f = vy_f - t * grav_f
+    pz = fz + vz_f * t
+    impactPass = impactPass + 1
+  else
+    impactPass = 1
+  end
+  
+  for i = 1, ttl do
     px = px + vx_f
     py = py + vy_f
     pz = pz + vz_f
-    vy_f = vy_f - g_f
-    
+    vy_f = vy_f - grav_f
     local gwh = max(GetGroundHeight(px, pz), 0)
-    
     if (py < gwh) then
       local interpolate = min((py - gwh) / vy_f, 1)
       local x = px - interpolate * vx_f
       local z = pz - interpolate * vz_f
-      return {x, max(GetGroundHeight(x, z), 0), z}
+      return x, max(GetGroundHeight(x, z), 0), z
     end
   end
   
-  return {px, py, pz}
+  return px, py, pz
 end
 
 --v: weaponvelocity
 --trajectory: +1 for high, -1 for low
 local function DrawBallisticScatter(scatter, v, grav, fx, fy, fz, tx, ty, tz, trajectory, range)
   if (scatter == 0) then return end
+  if (grav == 0) then return end
+  
   local dx = tx - fx
   local dy = ty - fy
   local dz = tz - fz
   if (dx == 0 and dz == 0) then return end
-  
+
   local bx, by, bz = GetBallisticVector(v, grav, dx, dy, dz, trajectory, range)
   
   --don't draw anything if out of range
   if (not bx) then return end
-  local br = sqrt(bx*bx + bz*bz)
   
-  --bars
-  local rx = dx / br
-  local rz = dz / br
-  local wx = -scatter * rz
-  local wz = scatter * rx
-  local barLength = sqrt(wx*wx + wz*wz) --length of bars
-  local barX = 0.5 * barLength * bx / br
-  local barZ = 0.5 * barLength * bz / br
-  local sx = tx - barX
-  local sz = tz - barZ
-  local lx = tx + barX
-  local lz = tz + barZ
-  local wsx = -scatter * (rz - barZ)
-  local wsz = scatter * (rx - barX)
-  local wlx = -scatter * (rz + barZ)
-  local wlz = scatter * (rx + barX)
-  
-  local bars = {{tx + wx, ty, tz + wz}, {tx - wx, ty, tz - wz},
-                {sx + wsx, ty, sz + wsz}, {lx + wlx, ty, lz + wlz},
-                {sx - wsx, ty, sz - wsz}, {lx - wlx, ty, lz - wlz}}
-  
-  local scatterDiv = scatter / numScatterPoints
-  local vertices = {}
-  
-  --trace impact points
-  for i = -numScatterPoints, numScatterPoints do
-    local currScatter = i * scatterDiv
-    local currScatterCos = sqrt(1 - currScatter * currScatter)
-    local rMult = currScatterCos - by * currScatter / br
-    local bx_c = bx * rMult
-    local by_c = by * currScatterCos + br * currScatter
-    local bz_c = bz * rMult
+  if lastScatterInfo[1] ~= fx or
+     lastScatterInfo[2] ~= fy or
+     lastScatterInfo[3] ~= fz or
+     lastScatterInfo[4] ~= tx or
+     lastScatterInfo[5] ~= ty or
+     lastScatterInfo[6] ~= tz then
+     
     
-    vertices[i+numScatterPoints+1] = GetBallisticImpactPoint(v, fx, fy, fz, bx_c, by_c, bz_c)
+    lastScatterInfo[1] = fx
+    lastScatterInfo[2] = fy
+    lastScatterInfo[3] = fz
+    lastScatterInfo[4] = tx
+    lastScatterInfo[5] = ty
+    lastScatterInfo[6] = tz
+    
+    local br = sqrt(bx*bx + bz*bz)
+    
+    --bars
+    local rx = dx / br
+    local rz = dz / br
+    local wx = -scatter * rz
+    local wz = scatter * rx
+    local barLength = sqrt(wx*wx + wz*wz) --length of bars
+    local barX = 0.5 * barLength * bx / br
+    local barZ = 0.5 * barLength * bz / br
+    local sx = tx - barX
+    local sz = tz - barZ
+    local lx = tx + barX
+    local lz = tz + barZ
+    local wsx = -scatter * (rz - barZ)
+    local wsz = scatter * (rx - barX)
+    local wlx = -scatter * (rz + barZ)
+    local wlz = scatter * (rx + barX)
+    
+    lastScatterBars = {{tx + wx, ty, tz + wz}, {tx - wx, ty, tz - wz},
+                  {sx + wsx, ty, sz + wsz}, {lx + wlx, ty, lz + wlz},
+                  {sx - wsx, ty, sz - wsz}, {lx - wlx, ty, lz - wlz}}
+    
+    local scatterDiv = scatter / numScatterPoints
+    local grav_f = grav / GAME_SPEED / GAME_SPEED
+
+    local v_f = v / GAME_SPEED
+    local ttl = 4 * v_f / grav_f
+    local last_x, last_y, last_z
+    --trace impact points
+    impactPass = 0
+    for i = -numScatterPoints, numScatterPoints do
+      local currScatter = i * scatterDiv
+      local currScatterCos = sqrt(1 - currScatter * currScatter)
+      local rMult = currScatterCos - by * currScatter / br
+      local bx_c = bx * rMult
+      local by_c = by * currScatterCos + br * currScatter
+      local bz_c = bz * rMult
+      last_x, last_y, last_z = GetBallisticImpactPoint(v_f, fx, fy, fz, bx_c, by_c, bz_c, grav_f, ttl, last_x)
+      lastScatterVertices[i+numScatterPoints+1] = {last_x, last_y, last_z}
+    end
+  
   end
   
   glLineWidth(scatterLineWidthMult / mouseDistance)
   glPointSize(pointSizeMult / mouseDistance)
   glColor(scatterColor)
   glDepthTest(false)
-  glBeginEnd(GL_LINES, VertexList, bars)
-  glBeginEnd(GL_POINTS, VertexList, vertices)
+  glBeginEnd(GL_LINES, VertexList, lastScatterBars)
+  glBeginEnd(GL_POINTS, VertexList, lastScatterVertices)
   glDepthTest(true)
   glColor(1,1,1,1)
   glPointSize(1)
