@@ -43,6 +43,12 @@ local lastScatterBars = {}
 local lastScatterVertices = {}
 local lastScatterInfo = {0,0,0,0,0,0}
 
+
+-- Used for recalculating path to compensate for floating point errors
+local impactPass = 0
+local NUM_IMPACT_PASSES = 3
+
+
 --------------------------------------------------------------------------------
 --speedups
 --------------------------------------------------------------------------------
@@ -376,17 +382,24 @@ local function GetBallisticImpactPoint(v_f, fx, fy, fz, bx, by, bz, grav_f, ttl,
   local vy_f = by * v_f
   local vz_f = bz * v_f
   local px, py, pz
+  local px_t, py_t, pz_t, t
+  px = fx
+  py = fy
+  pz = fz
   
-  if last_x then
-    local t = floor((last_x - fx) / vx_f)
+  -- Optimisations, very useful if projectile speed and gravity are low.
+  -- approximates the projectile location above the previous point and
+  -- continues from there. Inaccurate due to floating point errors.
+  
+  if last_x and (impactPass % NUM_IMPACT_PASSES) ~= 0 then
+    t = floor((last_x - fx) / vx_f)
     px = fx + vx_f * t
     py = fy + t * vy_f - t * (t - 1) * grav_f / 2
     vy_f = vy_f - t * grav_f
     pz = fz + vz_f * t
-  else 
-    px = fx
-    py = fy
-    pz = fz
+    impactPass = impactPass + 1
+  else
+    impactPass = 1
   end
   
   for i = 1, ttl do
@@ -395,7 +408,6 @@ local function GetBallisticImpactPoint(v_f, fx, fy, fz, bx, by, bz, grav_f, ttl,
     pz = pz + vz_f
     vy_f = vy_f - grav_f
     local gwh = max(GetGroundHeight(px, pz), 0)
-    
     if (py < gwh) then
       local interpolate = min((py - gwh) / vy_f, 1)
       local x = px - interpolate * vx_f
@@ -468,6 +480,7 @@ local function DrawBallisticScatter(scatter, v, grav, fx, fy, fz, tx, ty, tz, tr
     local ttl = 4 * v_f / grav_f
     local last_x, last_y, last_z
     --trace impact points
+    impactPass = 0
     for i = -numScatterPoints, numScatterPoints do
       local currScatter = i * scatterDiv
       local currScatterCos = sqrt(1 - currScatter * currScatter)
