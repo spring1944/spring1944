@@ -10,8 +10,8 @@
 
 function widget:GetInfo()
   return {
-    name      = "Double-Click Fight",
-    desc      = "Binds right double-click to the fight command.",
+    name      = "Double-Click Move",
+    desc      = "Binds right double-click to the move command.",
     author    = "quantum",
     date      = "July 5, 2008",
     license   = "GNU GPL, v2 or later",
@@ -83,7 +83,7 @@ local function RemoveMove(unitID)
     return false
   end
 
-  if (queue[qLast].id == CMD_MOVE) then
+  if (queue[qLast].id == CMD_FIGHT) then
     spGiveOrderToUnit(unitID, CMD_REMOVE, { queue[qLast].tag }, 0)
     return true
   elseif (queue[qLast].id == CMD_SET_WANTED_MAX_SPEED) then
@@ -91,7 +91,7 @@ local function RemoveMove(unitID)
       return false
     end
     local qMove = (qLast - 1)
-    if (queue[qMove].id == CMD_MOVE) then
+    if (queue[qMove].id == CMD_FIGHT) then
       spGiveOrderToUnit(
         unitID, CMD_REMOVE, { queue[qLast].tag, queue[qMove].tag }, 0
       )
@@ -172,7 +172,7 @@ function widget:MouseRelease(x, y, button)
   if (newSel) then
     spSelectUnitArray(units)
   end
-  spGiveOrder(CMD_FIGHT, coords, GetOpts())
+  spGiveOrder(CMD_MOVE, coords, GetOpts())
   if (newSel) then
     spSelectUnitArray(selUnits)
   end
