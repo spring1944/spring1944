@@ -49,7 +49,7 @@ local JPN_AbTei_Turret_57mm_Front = BoatChild:New{
 			name				= "jpn57mmtype97_he",
 			maxAngleDif			= 300,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-			weaponMainDir		= [[0 0 1]],
+			mainDir		= [[0 0 1]],
 		},
 	},
 	customparams = {

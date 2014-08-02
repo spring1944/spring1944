@@ -66,13 +66,13 @@ local ITA_Vedetta_Turret_MG = BoatChild:New{
 			name				= "ita13mmm1931aa",
 			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 200,
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "ita13mmm1931",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH LARGESHIP DEPLOYED",
 			maxAngleDif			= 200,
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {

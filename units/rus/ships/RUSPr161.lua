@@ -84,7 +84,7 @@ local RUS_Pr161_Turret_85mm_Front = BoatChild:New{
 local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
   	weapons = {	
 		[1] = {
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {

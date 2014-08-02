@@ -67,13 +67,13 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "AIR",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {

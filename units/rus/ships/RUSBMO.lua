@@ -68,10 +68,10 @@ local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
 local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
   	weapons = {	
 		[1] = {
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {
@@ -87,13 +87,13 @@ local RUS_BMO_Turret_DshKAA = BoatChild:New{
 		[1] = { -- original BMO used twin_dshk but we can use 2 actual weapons here
 			name				= "dshk",
 			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 358,
 		},
 		[2] = {
 			name				= "dshk",
 			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 358,
 			slaveTo				= 1,
 		},
@@ -115,13 +115,13 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 		[1] = {
 			name				= "dshk", --"twin05calVickers",
 			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "dshk", --"twin05calVickers",
 			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 		},
 	},
@@ -159,7 +159,7 @@ local RUS_Turret_45mm_Front = BoatChild:New{ -- Used on multiple vessels
 local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
   	weapons = {	
 		[1] = {
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {

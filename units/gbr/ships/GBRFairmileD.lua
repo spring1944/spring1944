@@ -90,7 +90,7 @@ local GBR_FairmileD_Turret_6pdr_Front = BoatChild:New{
 local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
   	weapons = {	
 		[1] = {
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {

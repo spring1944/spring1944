@@ -46,7 +46,7 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 			name				= "F3476mmHE",
 			maxAngleDif			= 300,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-			weaponMainDir		= [[0 0 1]],
+			mainDir		= [[0 0 1]],
 		},
 	},
 	customparams = {

@@ -93,13 +93,13 @@ local US_PT103_Turret_Bofors = BoatChild:New{
 		[1] = {
 			name				= "bofors40mmaa",
 			maxAngleDif			= 270,
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			badTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "bofors40mmhe",
-			weaponMainDir		= [[0 0 -1]],
+			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
