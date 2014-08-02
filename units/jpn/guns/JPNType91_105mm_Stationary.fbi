@@ -60,12 +60,12 @@
   badTargetCategory=FLAG;
 
   weapon1=jpn105mmtype99_he;
-  maxAngleDif1=25;
+  maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=jpn105mmtype99_smoke;
-  maxAngleDif2=25;
+  maxAngleDif2=35;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;
 }
