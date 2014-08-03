@@ -86,6 +86,7 @@ function gadget:Initialize()
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	if not teamID then return end -- team already died
 	if infReloadCache[unitDefID] then
 		infantry[teamID][unitID] = infReloadCache[unitDefID]
 	else
@@ -115,7 +116,7 @@ end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- return if team has already died
-	if teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID)) then return end
+	if not teamID or (teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID))) then return end
 	
 	-- Check if the unit was a supplier and was fully built	
 	if ammoRangeCache[unitDefID] then
