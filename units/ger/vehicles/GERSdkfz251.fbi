@@ -15,7 +15,6 @@
   //collisionVolumeOffsets=0 0 2;
   //collisionVolumeTest=1;
   [customParams] {
-    ammoSupplier=1;
     armor_front=9;
     armor_rear=9;
     armor_side=10;

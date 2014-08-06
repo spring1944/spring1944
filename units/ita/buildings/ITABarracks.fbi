@@ -18,7 +18,6 @@
   collisionVolumeTest=1;
   collisionVolumeType=box;
   [customParams] {
-    ammoSupplier=1;
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;

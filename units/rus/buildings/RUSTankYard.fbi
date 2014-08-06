@@ -17,7 +17,6 @@
   collisionVolumeScales=100 20 100;
   collisionVolumeOffsets=-5 0 0;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0.01;

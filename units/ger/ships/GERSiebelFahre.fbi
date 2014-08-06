@@ -13,7 +13,6 @@
   category=SHIP MINETRIGGER;
   corpse=GERSiebelFahre_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=400;
     hasturnbutton=1;
   }

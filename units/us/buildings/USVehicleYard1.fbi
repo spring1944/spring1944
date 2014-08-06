@@ -18,7 +18,6 @@
   collisionVolumeOffsets=0 0 0;
   corpse=USVehicleYard_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0.01;

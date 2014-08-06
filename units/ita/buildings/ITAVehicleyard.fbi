@@ -15,7 +15,6 @@
   category=BUILDING;
   collisionVolumeType=ellipsoid;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0.01;
