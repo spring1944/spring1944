@@ -1,5 +1,17 @@
 local itaDefs = {
   -- italy
+   	itastorage = {
+		{
+			into = 'itasupplycenter',
+			metal = 3000,
+			energy = 0,
+			time = 80,
+			name = '  Upgrade  ',
+			text = 'Upgrades into a Supply Center.',
+			facing = true,
+		},
+	},	
+
      itafiat626 =
   {
     into = 'itatrucksupplies',

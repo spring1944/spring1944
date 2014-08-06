@@ -33,6 +33,7 @@ local ITADefs = {
 	"ITAHQ",
 	"ITABarracks",
 	"ITAStorage",
+	"ITASupplyCenter",
 	"ITAGunyard",
 	"ITATankyard",
 	"ITAVehicleyard",
