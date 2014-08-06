@@ -76,7 +76,7 @@ local CMD_TURN          = 35521
 local ammoUsingUnit     = {}
 local supplyUnit        = {}
 
-
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --functions
