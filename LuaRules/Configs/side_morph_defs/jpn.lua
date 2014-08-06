@@ -3,7 +3,7 @@ local jpnDefs = {
    	jpnstorage = {
 		{
 			into = 'jpnstoragetunnel',
-			metal = 6000,
+			metal = 3000,
 			energy = 0,
 			time = 80,
 			name = '  Upgrade  ',

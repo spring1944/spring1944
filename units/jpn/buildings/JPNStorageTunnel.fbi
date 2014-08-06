@@ -4,11 +4,11 @@
   description=General Logistics & Ammunition Stockpile, also provides logistics income;
   activateWhenBuilt=1;
   buildCostEnergy=0;
-  buildCostMetal=9000;
+  buildCostMetal=6000;
   buildingGroundDecalSizeX=4;
   buildingGroundDecalSizeY=6;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=9000;
+  buildTime=6000;
   category=BUILDING;
   corpse=Debris_Large;
   [customParams] {
@@ -18,7 +18,7 @@
     armor_top=30;
     dontCount=1;
   }
-  energyMake=0.05;
+  energyMake=5;
   energyStorage=1040;
   explodeAs=Massive_Explosion;
   footprintX=5;
