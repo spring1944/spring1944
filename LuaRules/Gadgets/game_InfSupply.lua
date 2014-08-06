@@ -19,7 +19,7 @@ local GetUnitDefID			 	= Spring.GetUnitDefID
 local GetUnitSeparation			= Spring.GetUnitSeparation
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetUnitIsStunned			= Spring.GetUnitIsStunned
---local GetUnitWeaponState		= Spring.GetUnitWeaponState
+local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local ValidUnitID				= Spring.ValidUnitID
 -- Synced Ctrl
 local SetUnitWeaponState		= Spring.SetUnitWeaponState
@@ -35,6 +35,7 @@ local ammoRangeCache		= {} -- unitDefID = range
 local infReloadCache	= {} -- unitDefID = reload
 
 local ammoSuppliers		= {} -- teamID = {[supplierID] = range, [supplierID] = range, ...}
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
 
 local infantry 			= {} -- teamID = {[infID] = reload, [infID] = reload, ...}
 
@@ -57,10 +58,22 @@ end
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
+local function GetSupplyRangeModifier(teamID)
+	return 1 + (GetTeamRulesParam(teamID, teamSupplyRangeModifierParamName) or 0)
+end
+
+local function CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
+	if cp.supplyrange then
+		ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
+		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	end
+end
+
 local function FindSupplier(unitID, teamID)
+	local rangeModifier = GetSupplyRangeModifier(teamID)
 	for supplierID, ammoRange in pairs(ammoSuppliers[teamID]) do
 		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
-		if separation <= ammoRange then
+		if separation <= ammoRange * rangeModifier then
 			return supplierID
 		end
 	end
@@ -106,24 +119,23 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		-- Build table of suppliers
-		if cp and cp.supplyrange then -- is a supplier
-			ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
-			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		if cp then -- can be a supplier
+			CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
 		end
 	end
 end
 
+local function CleanUp(unitID, unitDefID, teamID)
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = nil
+	end
+end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- return if team has already died
 	if not teamID or (teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID))) then return end
-	
-	-- Check if the unit was a supplier and was fully built	
-	if ammoRangeCache[unitDefID] then
-		ammoSuppliers[teamID][unitID] = nil
-	elseif infReloadCache[unitDefID] then
-		infantry[teamID][unitID] = nil
-	end
+
+	CleanUp(unitID, unitDefID, teamID)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
