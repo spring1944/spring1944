@@ -386,7 +386,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
 	            unitSupplyState             = 0 
 	        }  
 	        
-        elseif ((ud ~= nil) and (tonumber(ud.customParams.ammosupplier))) then 
+        elseif ((ud ~= nil) and (tonumber(ud.customParams.supplyrange))) then 
          
             supplyUnit[unitID] = {
                 uID                         = unitID,

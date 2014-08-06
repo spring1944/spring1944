@@ -20,7 +20,6 @@
   commander=1;
   corpse=USHQ_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     arrivalgap=450;
     blockfear=1;
     flagCapRate=10;

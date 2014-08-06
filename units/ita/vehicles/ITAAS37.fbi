@@ -20,7 +20,6 @@
     armor_rear=7;
     armor_side=6;
     armor_top=0;
-    ammoSupplier=1;
     supplyRange=200;
 	hasturnbutton=1;
   }

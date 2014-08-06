@@ -626,8 +626,8 @@ function widget:Initialize()
 
 	for unitDefID=1,#UnitDefs do
 		local unitDef = UnitDefs[unitDefID]
-		if (unitDef.customParams.ammosupplier == "1" and unitDef.speed == 0) then
-			local radius = (unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE) * GetSupplyRangeModifier(myTeamID)
+		if (unitDef.customParams.supplyrange and unitDef.speed == 0) then
+			local radius = unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE
 			local numSegments = ceil(radius / segmentLength)
 			local segmentAngle = 2 * PI / numSegments
 			local oddX, oddZ
@@ -643,7 +643,7 @@ function widget:Initialize()
 		if unitDef.tooltip and strFind(unitDef.tooltip, "Supply Truck") and unitDef.name ~= "usdukw" then
 			generalTruckDefIDs[unitDefID] = true
 		end
-		if unitDef.customParams.ammosupplier == "1" and unitDef.speed > 0 then
+		if unitDef.customParams.supplyrange and unitDef.speed > 0 then
 			--Spring.Echo(unitDef.humanName)
 			halftrackDefIDs[unitDefID] = true
 		end

@@ -16,7 +16,6 @@
   //collisionVolumeTest=1;
   corpse=RUSM5Halftrack_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     armor_front=9;
     armor_rear=8;
     armor_side=8;
