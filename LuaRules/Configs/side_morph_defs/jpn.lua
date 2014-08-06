@@ -1,5 +1,16 @@
 local jpnDefs = {
   -- japan
+   	jpnstorage = {
+		{
+			into = 'jpnstoragetunnel',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Upgrade  ',
+			text = 'Upgrades into a tunnel exit.',
+			facing = true,
+		},
+	},	
 	jpngunyard = {
 		{
 			into = 'jpnspyard',
