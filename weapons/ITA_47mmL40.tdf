@@ -46,7 +46,7 @@
 
 [ita47mml40he] {
   name=47 mm L/40 Gun - High Explosive;
-  accuracy=150; //354
+  accuracy=300; //354
   avoidFeature=0;
   areaOfEffect=52;
   ballistic=1;
@@ -79,7 +79,7 @@
   size=1;
   sizeDecay=0;
   soundHit=GEN_Explo_2;
-  soundStart=RUS_45mm;
+  soundStart=ITA_M39_47mm;
   stages=50;
   targetMoveError=0.075;
   tolerance=3000;

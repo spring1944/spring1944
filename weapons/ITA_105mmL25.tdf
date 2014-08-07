@@ -1,6 +1,6 @@
 [ita105mml25he] {
   name=Italian 105mm/L25 direct-fire gun;
-  accuracy=370;
+  accuracy=300;
   avoidFeature=0;
   areaOfEffect=129;
   ballistic=1;

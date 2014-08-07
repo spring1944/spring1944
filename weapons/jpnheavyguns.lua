@@ -56,7 +56,7 @@ local heavygunSmokeClass = Weapon:New{
 
 -- short120mm
 local jpnshort120mm = heavygunClass:New{
-  accuracy           = 350,
+  accuracy           = 300,
   areaOfEffect       = 129,
   name               = [[Short naval 120mm]],
   range              = 1720,
@@ -68,7 +68,7 @@ local jpnshort120mm = heavygunClass:New{
 
 -- Type 38 150mm howitzer L/11
 local jpn150mmtype38 = heavygunClass:New{
-  accuracy           = 500,
+  accuracy           = 300,
   areaOfEffect       = 165,
   name               = [[Type 38 150mm/11]],
   soundStart         = [[150mmtype38]],

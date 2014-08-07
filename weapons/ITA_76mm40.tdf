@@ -13,7 +13,7 @@
 
 	range=1320;
 	reloadtime=3.8; // 15 rpm
-	accuracy=170;
+	accuracy=300;
 	targetmoveerror=0.1;
 	weaponvelocity=1300;
 	areaofeffect=76;

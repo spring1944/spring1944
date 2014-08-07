@@ -13,7 +13,7 @@
 
 	range=1700;
 	reloadtime=6; // 8-10 rpm, aim for 10
-	accuracy=400;	// relatively bad accuracy
+	accuracy=300;	// relatively bad accuracy
 	targetmoveerror=0.1;
 	weaponvelocity=1400;
 	areaofeffect=110;

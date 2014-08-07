@@ -1,6 +1,6 @@
 [ansaldo75mml18he] {
   name=Ansaldo L/18 75mm Howitzer - HE;
-  accuracy=450;
+  accuracy=300;
   avoidFeature=0;
   areaOfEffect=94;
   ballistic=1;

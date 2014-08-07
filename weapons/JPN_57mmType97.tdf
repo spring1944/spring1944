@@ -44,7 +44,7 @@
 
 [jpn57mmtype97_he] {
   name=Type 97 57 mm Gun - High Explosive;
-  accuracy=300;
+  accuracy=100;
   avoidFeature=0;
   areaOfEffect=57;
   ballistic=1;
