@@ -108,6 +108,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] and not ud.canFly then -- unit is armed inf
 			infReloadCache[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
 			infantry[teamID][unitID] = infReloadCache[unitDefID]
+			Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
 		end
 	end
 end

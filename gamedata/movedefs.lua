@@ -35,6 +35,7 @@ local moveDefs 	=	 {
 		footprintX		=	2,
 		maxWaterDepth	=	8,
 		maxSlope			=	22,
+		crushStrength	=	15,
 		heatmapping		=	false,
 	},
 	{
@@ -42,6 +43,7 @@ local moveDefs 	=	 {
 		footprintX		=	3,
 		maxWaterDepth	=	10,
 		maxSlope			=	21,
+		crushStrength	=	20,
 		heatmapping		=	false,
 	},
 	{
@@ -49,6 +51,7 @@ local moveDefs 	=	 {
 		footprintX		=	3,
 		maxWaterDepth	=	15,
 		maxSlope			=	20,
+		crushStrength	=	30,
 		heatmapping		=	false,
 	},
 	{
@@ -56,6 +59,7 @@ local moveDefs 	=	 {
 		footprintX		=	3,
 		maxWaterDepth	=	15,
 		maxSlope		=	30,
+		crushStrength	=	30,
 		heatmapping		= false,
 	},
 	{
@@ -63,6 +67,7 @@ local moveDefs 	=	 {
 		footprintX		=	4,
 		maxWaterDepth	=	15,
 		maxSlope			=	18,
+		crushStrength	=	50,
 		heatmapping		=	false,
 	},
 	{
@@ -70,6 +75,7 @@ local moveDefs 	=	 {
 		footprintX		=	5,
 		maxWaterDepth	=	15,
 		maxSlope			=	10,
+		crushStrength	=	50,
 		heatmapping		=	false,
 	},
 	{
