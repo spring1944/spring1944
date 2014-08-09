@@ -37,7 +37,7 @@
   maxSlope=6;
   maxVelocity=7.11;
   maxWaterDepth=15;
-  movementClass=TANK_Light;
+  movementClass=TANK_Car;
   noChaseCategory=FLAG AIR MINE;
   objectName=USM8Greyhound.S3O;
   seismicSignature=0;
