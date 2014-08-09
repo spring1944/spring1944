@@ -202,6 +202,7 @@ for name, ud in pairs(UnitDefs) do
 		if ud.customparams.feartarget then
 			if (ud.maxvelocity) then
 				ud.maxvelocity = ud.maxvelocity * infSpeedMult
+				ud.crushresistance = 10
 			end
 		end
 	end

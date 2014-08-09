@@ -102,6 +102,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	if not teamID then return end -- team already died
 	if infReloadCache[unitDefID] then
 		infantry[teamID][unitID] = infReloadCache[unitDefID]
+		Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
