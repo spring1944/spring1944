@@ -21,6 +21,7 @@ local moveDefs 	=	 {
 		footprintX		=	3,
 		maxWaterDepth	=	5,
 		maxSlope			=	17,
+		slopeMod		= 150,
 		heatmapping		=	false,
 	},
 	{
@@ -28,6 +29,7 @@ local moveDefs 	=	 {
 		footprintX		=	2,
 		maxWaterDepth	=	8,
 		maxSlope			=	18,
+		slopeMod		= 80,
 		heatmapping		=	false,
 	},
 	{
