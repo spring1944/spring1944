@@ -23,6 +23,7 @@ local LightGunHEClass = Weapon:New{
   edgeEffectiveness  = 0.2,
   explosionGenerator = [[custom:HE_Small]],
   explosionSpeed     = 30, -- needed?
+  accuracy           = 300,
   name               = [[HE Shell]],
   rgbColor           = [[0.5 0.5 0.0]],
   soundHitDry        = [[GEN_Explo_2]],
