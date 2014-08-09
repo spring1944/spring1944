@@ -33,7 +33,7 @@
   maxSlope=6;
   maxVelocity=4;
   maxWaterDepth=5;
-  movementClass=TANK_Light;
+  movementClass=TANK_car;
   noChaseCategory=FLAG AIR MINE;
   objectName=ITASPADovunque.s3o;
   seismicSignature=0;
