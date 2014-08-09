@@ -35,7 +35,7 @@
   maxDamage=640;
   maxReverseVelocity=1.665;
   maxSlope=2;
-  maxVelocity=3.2;
+  maxVelocity=2.6;
   maxWaterDepth=5;
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
