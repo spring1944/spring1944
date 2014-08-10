@@ -18,7 +18,7 @@
     armor_top=30;
     dontCount=1;
   }
-  energyMake=5;
+  energyMake=2;
   energyStorage=1040;
   explodeAs=Massive_Explosion;
   footprintX=5;
