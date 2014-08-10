@@ -18,12 +18,31 @@ local GBR_FairmileD = BoatMother:New{
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 240,	
 	weapons = {	
-		[1] = { -- give primary weapon for ranging
-			name				= "QF6Pdr57MkIIAHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		[1] = {
+			name				= "GBR18inTorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif         = 40,
+		},
+		[2] = {
+			name				= "GBR18inTorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif         = 40,
+		},
+		[3] = {
+			name				= "GBR18inTorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif         = 40,
+		},
+		[4] = {
+			name				= "GBR18inTorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif         = 40,
 		},
 	},
 	customparams = {
+		maxammo				= 4,
+		weaponcost			= 40,
+		weaponswithammo		= 4,
 		children = {
 			"GBR_FairmileD_Turret_6pdr_Front",
 			"GBR_FairmileD_Turret_Vickers50",
