@@ -81,7 +81,7 @@ local D25122mmAP = D25122mm:New(HeavyGunAPClass, true):New{
 local ML20S152mm = HeavyGunClass:New{
   name               = [[ML-20S 152mm Howitzer]],
   range              = 1750,
-  reloadTime         = 11.5,
+  reloadTime         = 17.5,
   soundStart         = [[RUS_152mm]],
 }
 
