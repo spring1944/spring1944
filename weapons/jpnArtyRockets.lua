@@ -37,7 +37,7 @@ local ArtyRocketClass = Weapon:New{
 -- Type 4 200mm rocket mortar
 local jpntype4rocketmortar = ArtyRocketClass:New{
   areaOfEffect       = 203,
-  reloadtime         = 15,
+  reloadtime         = 20,
   explosionGenerator = [[custom:HE_XLarge]],
   name               = [[Type 4 200mm unguided artillery rocket]],
   range              = 3200,
@@ -50,7 +50,7 @@ local jpntype4rocketmortar = ArtyRocketClass:New{
 
 local jpntype4rocketmortar_smoke = ArtyRocketClass:New{
   areaOfEffect       = 30,
-  reloadtime         = 15,
+  reloadtime         = 20,
   customparams = {
     smokeradius        = 350,
     smokeduration      = 50,

@@ -1,7 +1,7 @@
 [unitinfo]
 {
 	unitname=ITAMAS;
-	objectname=ITAMAS;
+	objectname=ITAMAS.s3o;
 	corpse=ITAMAS_dead;
 	icontype=torpboat;
 	category=SHIP MINETRIGGER;
@@ -59,6 +59,17 @@
 
 	[sfxtypes]
 	{
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+
 	}
 	[customParams]
 	{
