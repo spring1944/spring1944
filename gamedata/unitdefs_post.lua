@@ -283,7 +283,7 @@ for name, ud in pairs(UnitDefs) do
 		if (not ud.builder) then
 			ud.pushresistant = true
 		end
-		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 1
+		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
 		--new sensor stuff
 		ud.stealth = false
 		ud.activatewhenbuilt = true
