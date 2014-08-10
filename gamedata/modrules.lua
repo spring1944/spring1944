@@ -15,7 +15,7 @@ local modRules = {
 		},
 	},
 	movement = {
-		allowUnitCollisionDamage  = true,
+		allowUnitCollisionDamage  = false,
 		allowUnitCollisionOverlap  = false,
 	},
 	nanospray = {
