@@ -83,6 +83,24 @@ function script.QueryWeapon(weaponID)
 	return torps[weaponID] or base
 end
 
+function script.BlockShot(weaponID, targetID, userTarget)
+	local minRange = minRanges[weaponID]
+	if minRange then
+		local distance
+		if targetID then
+			distance = GetUnitSeparation(unitID, targetID, true)
+		elseif userTarget then -- shouldn't be the case with S44 torpedos
+			local cmd = GetUnitCommands(unitID, 1)[1]
+			if cmd.id == CMD.ATTACK then
+				local tx,ty,tz = unpack(cmd.params)
+				distance = GetUnitDistanceToPoint(unitID, tx, ty, tz, false)
+			end
+		end
+		if distance < minRange then return true end
+	end
+	return false
+end
+
 function script.Killed(recentDamage, maxHealth)
 	local severity = recentDamage / maxHealth * 100
 	local corpseType
