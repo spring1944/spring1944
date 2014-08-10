@@ -5,6 +5,7 @@ local ITA_Gabbiano = BoatMother:New{
 	brakeRate				= 0.14,
 	buildCostMetal			= 10000,
 	buildTime				= 10000,
+	category 				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
 	corpse					= "ITAGabbiano_dead",
