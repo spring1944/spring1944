@@ -18,13 +18,13 @@ local RUS_KomsMTB = BoatMother:New{
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 350,	
 	weapons = {	
-		[1] = { -- TODO: Need to implement torpedos in BoatMother script
-			name				= "torpedo533mm",
+		[1] = {
+			name				= "RUS533mmTorpedo",
 			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
 			maxAngleDif			= 40,
 		},
 		[2] = {
-			name				= "torpedo533mm",
+			name				= "RUS533mmTorpedo",
 			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},

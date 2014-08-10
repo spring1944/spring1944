@@ -18,7 +18,7 @@ local ITA_Gabbiano = BoatMother:New{
 	transportCapacity		= 6, -- 6 x 1fpu turrets
 	turnRate				= 25,	
 	weapons = {	
-		[1] = { -- give primary weapon for ranging
+		[1] = { -- give primary weapon for ranging -- ITA450mmTorpedo
 			name				= "it100mm47_1928",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
