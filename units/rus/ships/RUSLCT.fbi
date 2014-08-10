@@ -16,7 +16,6 @@
   collisionVolumeType=box;
   corpse=RUSLCT_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
     transportsquad=rus_platoon_lct;

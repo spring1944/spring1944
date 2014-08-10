@@ -15,7 +15,6 @@
   collisionVolumeType=ellipsoid;
   corpse=GERBarracksBunker_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     blockfear=1;
     separatebuildspot=1;
     supplyRange=600;

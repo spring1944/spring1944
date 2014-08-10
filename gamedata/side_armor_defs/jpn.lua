@@ -35,6 +35,7 @@ local JPNDefs = {
 	"JPNRadar",
 	"JPNSPYard",
 	"JPNStorage",
+	"JPNStorageTunnel",
 	"JPNSupplyDepot",
 	"JPNTankyard",
 	"JPNTankyard_medium",

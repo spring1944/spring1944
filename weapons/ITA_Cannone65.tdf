@@ -1,6 +1,6 @@
 [itacannone65he] {
   name=Italian Cannone da 65/17 High-Explosive Ammunition;
-  accuracy=200; // 500
+  accuracy=300; // 500
   areaOfEffect=68;
   avoidFeature=0;
   ballistic=1;

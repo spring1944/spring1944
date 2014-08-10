@@ -18,7 +18,6 @@
   collisionVolumeType=CylZ;
   corpse=GBRBarracks_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;

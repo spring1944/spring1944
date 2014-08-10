@@ -20,7 +20,6 @@
     armor_rear=7;
     armor_side=6;
     armor_top=0;
-    ammoSupplier=1;
     supplyRange=200;
 	hasturnbutton=1;
   }
@@ -35,7 +34,7 @@
   maxSlope=6;
   maxVelocity=5.04;
   maxWaterDepth=5;
-  movementClass=TANK_Light;
+  movementClass=TANK_car;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=ITAAS37.s3o;
   releaseHeld=1;

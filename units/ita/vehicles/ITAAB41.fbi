@@ -35,9 +35,9 @@
   maxDamage=570;
   maxReverseVelocity=2.405;
   maxSlope=6;
-  maxVelocity=4.81;
+  maxVelocity=5.81;
   maxWaterDepth=5;
-  movementClass=TANK_Light;
+  movementClass=TANK_car;
   noChaseCategory=FLAG AIR MINE;
   objectName=ITAAB41.s3o;
   seismicSignature=0;

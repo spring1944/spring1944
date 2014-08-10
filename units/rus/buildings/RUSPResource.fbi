@@ -17,7 +17,6 @@
   corpse=Debris_Small;
   [customParams] {
     hiddenbuilding=1;
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=275;
   }

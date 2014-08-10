@@ -13,7 +13,6 @@
   category=BUILDING;
   corpse=Debris_Small;
   [customParams] {
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=625;
   }

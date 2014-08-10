@@ -1,5 +1,16 @@
 local jpnDefs = {
   -- japan
+   	jpnstorage = {
+		{
+			into = 'jpnstoragetunnel',
+			metal = 3000,
+			energy = 0,
+			time = 80,
+			name = '  Upgrade  ',
+			text = 'Upgrades into a tunnel exit.',
+			facing = true,
+		},
+	},	
 	jpngunyard = {
 		{
 			into = 'jpnspyard',
@@ -14,7 +25,7 @@ local jpnDefs = {
 			into = 'jpnatyard',
 			metal = 3000,
 			energy = 0,
-			time = 185,
+			time = 85,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,

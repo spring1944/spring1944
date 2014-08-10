@@ -18,7 +18,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=600;
+  cruiseAlt=1000;
   [customParams] {
     enginesound=stukab-;
     enginesoundnr=12;
@@ -39,9 +39,9 @@
   maxAileron=0.00375;
   maxBank=0.9;
   maxDamage=360;
-  maxElevator=0.00275;
+  maxElevator=0.00375;
   maxFuel=160;
-  maxPitch=0.2;
+  maxPitch=0.52;
   maxRudder=0.0015;
   maxSlope=10;
   maxVelocity=20;

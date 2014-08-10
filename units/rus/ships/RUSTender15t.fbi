@@ -12,7 +12,6 @@
   category=SHIP MINETRIGGER;
   corpse=RUSTender15t_dead;
   [customParams] {
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=350;
     hasturnbutton=1;

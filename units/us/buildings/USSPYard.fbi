@@ -18,7 +18,6 @@
   collisionVolumeScales=100 17 100;
   collisionVolumeOffsets=0 0 0;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   desecription=Constructs Self-Propelled Guns;
