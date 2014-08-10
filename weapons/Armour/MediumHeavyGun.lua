@@ -20,10 +20,10 @@ local MediumHeavyGunClass = Weapon:New{
 
 -- HE Round Class
 local MediumHeavyGunHEClass = Weapon:New{
+  accuracy           = 300,
   edgeEffectiveness  = 0.15,
   explosionGenerator = [[custom:HE_Medium]],
   explosionSpeed     = 30, -- needed?
-  accuracy           = 300,
   name               = [[HE Shell]],
   rgbColor           = [[0.5 0.5 0.0]],
   soundHitDry        = [[GEN_Explo_3]],

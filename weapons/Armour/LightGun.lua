@@ -20,10 +20,10 @@ local LightGunClass = Weapon:New{
 
 -- HE Round Class
 local LightGunHEClass = Weapon:New{
+  accuracy           = 300,
   edgeEffectiveness  = 0.2,
   explosionGenerator = [[custom:HE_Small]],
   explosionSpeed     = 30, -- needed?
-  accuracy           = 300,
   name               = [[HE Shell]],
   rgbColor           = [[0.5 0.5 0.0]],
   soundHitDry        = [[GEN_Explo_2]],

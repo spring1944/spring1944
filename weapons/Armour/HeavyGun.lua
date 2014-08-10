@@ -20,6 +20,7 @@ local HeavyGunClass = Weapon:New{
 
 -- HE Round Class
 local HeavyGunHEClass = Weapon:New{
+  accuracy           = 300,
   edgeEffectiveness  = 0.1,
   explosionGenerator = [[custom:HE_XLarge]],
   explosionSpeed     = 30, -- needed?
