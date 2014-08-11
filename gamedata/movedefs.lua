@@ -9,10 +9,10 @@ local moveDefs 	=	 {
 	},
 	{
 		name
-=	"KBOT_alpini",
+		=	"KBOT_alpini",
 		footprintX		=	1,
 		maxWaterDepth	=	10,
-		maxSlope			=	50,
+		maxSlope			=	45,
 		crushStrength	=	0,
 		heatmapping		=	false,
 	},
