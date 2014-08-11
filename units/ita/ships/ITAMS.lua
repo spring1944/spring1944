@@ -17,12 +17,21 @@ local ITA_MS = BoatMother:New{
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
-		[1] = { -- give primary weapon for ranging
-			name				= "breda3520mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		[1] = {
+			name				= "ita450mmtorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif			= 40,
+		},
+		[2] = {
+			name				= "ita450mmtorpedo",
+			onlyTargetCategory	= "LARGESHIP",
+			maxAngleDif			= 40,
 		},
 	},
 	customparams = {
+		maxammo				= 2,
+		weaponcost			= 40,
+		weaponswithammo		= 2,
 		children = {
 			"ITA_MS_Turret_20mm_Front", 
 			"ITA_MS_Turret_20mm_Rear", 

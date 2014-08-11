@@ -4,6 +4,7 @@ unitDefID = Spring.GetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
 
+local minRanges = info.minRanges
 local SIG_MOVE = 1
 
 local children = info.children
@@ -29,6 +30,8 @@ local wakes = {}
 findPieces(wakes, "wake")
 local torps = {}
 findPieces(torps, "torp")
+local tpTurrets = {}
+findPieces(tpTurrets, "tpturret")
 
 function script.Create()
 	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
@@ -63,10 +66,12 @@ function script.AimWeapon(weaponID, heading, pitch)
 	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
 	SetSignalMask(2 ^ weaponID)
 	-- TODO: support torpedo turrets e.g. Gabi
-	--[[Turn(turret, y_axis, heading, turretTurnSpeed)
-	--Turn(sleeve, x_axis, -pitch, elevationSpeed)
-	WaitForTurn(turret, y_axis)
-	WaitForTurn(sleeve, x_axis)
+	if tpTurrets[weaponID] then
+		Turn(tpTurrets[weaponID], y_axis, heading, math.rad(5))
+		--Turn(sleeve, x_axis, -pitch, elevationSpeed)	
+		WaitForTurn(tpTurrets[weaponID], y_axis)
+		--WaitForTurn(sleeve, x_axis)
+	end
 	--StartThread(RestoreAfterDelay)]]
 	return true
 end
