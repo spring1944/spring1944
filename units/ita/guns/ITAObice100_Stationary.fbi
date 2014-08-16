@@ -1,0 +1,71 @@
+[unitinfo] {
+  unitname=ITAObice100_Stationary;
+  name=Dug-In Obice da 100/22;
+  description=Stationary Howitzer;
+  activateWhenBuilt=1;
+  airSightDistance=2500;
+  buildCostEnergy=0;
+  buildCostMetal=1800;
+  buildingGroundDecalSizeX=5;
+  buildingGroundDecalSizeY=5;
+  buildingGroundDecalType=Dirt2.dds;
+  buildTime=1800;
+  category=DEPLOYED;
+  corpse=ITAObice100_Destroyed;
+  [customParams] {
+    canareaattack=1;
+    canfiresmoke=1;
+    feartarget=1;
+    lowammolevel=1;
+    maxammo=4;
+    weaponcost=25;
+    weaponswithammo=2;
+  }
+  flankingBonusDir=0.0 0.0 1.0;
+  flankingBonusMax=1.25;
+  flankingBonusMin=0.75;
+  flankingBonusMode=1;
+  footprintX=3;
+  footprintZ=3;
+  iconType=artillery;
+  maxDamage=2500;
+  maxSlope=15;
+  maxWaterDepth=0;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=ITAObice100_Stationary.s3o;
+  script=itaobice100_Stationary.cob;
+  onoffable=1;
+  radarDistanceJam=0;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:LARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:LARGE_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=ITA;
+  sightDistance=701;
+  smoothAnim=0;
+  soundcategory=ITAInf;
+  stealth=1;
+  TEDClass=TURRET;
+  useBuildingGroundDecal=1;
+  badTargetCategory=FLAG;
+
+  weapon1=Obice100mml22he;
+  maxAngleDif1=35;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=Obice100mml22smoke;
+  maxAngleDif2=35;
+  onlyTargetCategory2=NOTHING;
+  weaponMainDir2=0 0 1;
+}
+

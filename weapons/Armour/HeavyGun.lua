@@ -20,6 +20,7 @@ local HeavyGunClass = Weapon:New{
 
 -- HE Round Class
 local HeavyGunHEClass = Weapon:New{
+  accuracy           = 300,
   edgeEffectiveness  = 0.1,
   explosionGenerator = [[custom:HE_XLarge]],
   explosionSpeed     = 30, -- needed?
@@ -80,7 +81,7 @@ local D25122mmAP = D25122mm:New(HeavyGunAPClass, true):New{
 local ML20S152mm = HeavyGunClass:New{
   name               = [[ML-20S 152mm Howitzer]],
   range              = 1750,
-  reloadTime         = 11.5,
+  reloadTime         = 17.5,
   soundStart         = [[RUS_152mm]],
 }
 

@@ -14,6 +14,10 @@ local modRules = {
 			airMipLevel				=	5,
 		},
 	},
+	movement = {
+		allowUnitCollisionDamage  = false,
+		allowUnitCollisionOverlap  = false,
+	},
 	nanospray = {
 		allow_team_colours	=	false,
 	},

@@ -202,6 +202,7 @@ for name, ud in pairs(UnitDefs) do
 		if ud.customparams.feartarget then
 			if (ud.maxvelocity) then
 				ud.maxvelocity = ud.maxvelocity * infSpeedMult
+				ud.crushresistance = 12
 			end
 		end
 	end
@@ -276,9 +277,13 @@ for name, ud in pairs(UnitDefs) do
 			ud.usepiececollisionvolumes = true
 		end
 	end
-	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
-	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
-		ud.pushresistant = true
+	
+	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
+		-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
+		if (not ud.builder) then
+			ud.pushresistant = true
+		end
+		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
 		--new sensor stuff
 		ud.stealth = false
 		ud.activatewhenbuilt = true

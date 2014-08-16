@@ -1,0 +1,88 @@
+[unitinfo] {
+  unitname=ITASemovente75_46;
+  name=Semovente da 75/46;
+  description=Heavy Tank Destroyer;
+  acceleration=0.041;
+  airSightDistance=1500;
+  brakeRate=0.15;
+  buildCostEnergy=0;
+  buildCostMetal=4050;
+  buildTime=4050;
+  canMove=1;
+  category=MINETRIGGER HARDVEH;
+  //collisionVolumeType=box;
+  //collisionVolumeScales=22 16 45;
+  //collisionVolumeOffsets=0 0 0;
+  //collisionVolumeTest=1;
+  corpse=ITASemovente75_46_Abandoned;
+  // +25mm armorplates front and side developed from semovente 105 , mass is calculated with the heavier gun 75/46
+  [customParams] {
+    armor_front=100;
+    armor_rear=35;
+    armor_side=60;
+    armor_top=15;
+    blockfear=1;
+    lowammolevel=4;
+    maxammo=11;
+    weaponcost=18;
+    weaponswithammo=2;
+	hasturnbutton=1;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=3;
+  footprintZ=3;
+  iconType=selfprop;
+  leaveTracks=1;
+  mass=1770;
+  maxDamage=1770;
+  maxReverseVelocity=1.48;
+  maxSlope=2;
+  maxVelocity=2.76;
+  maxWaterDepth=5;
+  movementClass=TANK_Medium;
+  noChaseCategory=FLAG AIR MINE;
+  objectName=ITASemovente75_46.s3o;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator10=custom:MuzzleBrakeSmoke;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:PLACEHOLDER_EFFECT03;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUM_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUM_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  side=ITA;
+  sightDistance=720;
+  smoothAnim=0;
+  soundcategory=ITATank;
+  stealth=1;
+  TEDClass=TANK;
+  trackOffset=5;
+  trackStrength=10;
+  trackStretch=1;
+  trackType=Stdtank;
+  trackWidth=19;
+  turninplace=0;
+  turnRate=175;
+  badTargetCategory=FLAG;
+
+  weapon1=ita75mml46he;
+  maxAngleDif1=15;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir1=0 0 1;
+
+  weapon2=ita75mml46ap;
+  onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP;
+  maxAngleDif2=10;
+  weaponMainDir2=0 0 1;
+
+  weapon3=.50calproof;
+}
+

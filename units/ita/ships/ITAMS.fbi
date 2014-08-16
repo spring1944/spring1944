@@ -1,0 +1,101 @@
+[unitinfo]
+{
+	unitname=ITAMS;
+	objectname=ITAMS.s3o;
+	corpse=ITAMS_dead;
+	icontype=torpboat;
+	category=SHIP MINETRIGGER;
+	tedclass=SHIP;
+
+	name=MS type CRDA 60 t.;
+	description= Large Torpedo boat;
+	maxdamage=5000;
+	buildcostmetal=1500;
+	buildcostenergy=0;
+	buildtime=1500;
+	footprintx=4;
+	footprintz=4;
+	mass=5000;
+	floater=1;
+	minwaterdepth=10;
+	shownanoframe=0;
+	smoothanim=0;
+
+	energymake=0;
+	energyuse=0;
+	SeismicSignature=0;
+	sightdistance=900;
+	airsightdistance=1500;
+	stealth=0;
+
+	canmove=1;
+	movementclass=BOAT_LightPatrol;
+	maxvelocity=3.2; // 32 knots
+	acceleration=0.3;
+	brakerate=0.3;
+	turnrate=55;
+	turninplace=0;
+
+	explodeas=Vehicle_Explosion_Sm;
+	selfdestructas=Vehicle_Explosion_Sm;
+
+	canAttack=1;
+
+	Weapon1=it533mmtorpedo;
+	Weapon2=it533mmtorpedo;
+	Weapon3=breda3520mmaa;
+	Weapon4=breda3520mmaa;
+	weapon5=breda3520mmhe;
+	weapon6=breda3520mmhe;
+
+	OnlyTargetCategory1=LARGESHIP;
+	OnlyTargetCategory2=LARGESHIP;
+	onlyTargetCategory3=AIR;
+	onlyTargetCategory4=AIR;
+	onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+	onlyTargetCategory6=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+
+	WeaponMainDir1=0 0 1;
+	MaxAngleDif1=40;
+
+	WeaponMainDir2=0 0 1;
+	MaxAngleDif2=40;
+
+	WeaponMainDir3=0 0 1;
+	MaxAngleDif3=270;
+
+	WeaponMainDir4=0 0 -1;
+	MaxAngleDif4=270;
+
+	WeaponMainDir5=0 0 1;
+	MaxAngleDif5=270;
+
+	WeaponMainDir6=0 0 -1;
+	MaxAngleDif6=270;
+
+	[sfxtypes]
+	{
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
+    explosionGenerator2=custom:PLACEHOLDER_EFFECT02;
+    explosionGenerator3=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator4=custom:SMALL_MUZZLEDUST;
+    explosionGenerator5=custom:XSMALL_MUZZLEFLASH;
+    explosionGenerator6=custom:XSMALL_MUZZLEDUST;
+    explosionGenerator7=custom:MG_MUZZLEFLASH;
+    explosionGenerator8=custom:MEDIUMLARGE_MUZZLEFLASH;
+    explosionGenerator9=custom:MEDIUMLARGE_MUZZLEDUST;
+
+	}
+	[customParams]
+	{
+		    dontCount=1;
+    		hasturnbutton=1;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
+
+	}
+}

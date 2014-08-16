@@ -57,6 +57,8 @@ local GetUnitRulesParam         = Spring.GetUnitRulesParam
 local GiveOrderToUnit           = Spring.GiveOrderToUnit
 local GetUnitCommands           = Spring.GetUnitCommands
 local GetUnitLastAttacker       = Spring.GetUnitLastAttacker 
+local GetUnitHealth				= Spring.GetUnitHealth
+local GetTeamRulesParam			= Spring.GetTeamRulesParam
 
 local Echo                      = Spring.Echo
 
@@ -74,10 +76,13 @@ local CMD_TURN          = 35521
 local ammoUsingUnit     = {}
 local supplyUnit        = {}
 
-
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --functions
+local function GetSupplyRangeModifier(teamID)
+	return 1 + (GetTeamRulesParam(teamID, teamSupplyRangeModifierParamName) or 0)
+end
 
 function widget:Initialize()
     --if this widget is loaded mid game we need to initialize pre-existing units
@@ -95,6 +100,7 @@ end
 
 -------------------------------------------------------------------------------
 function checkAmmo() 
+	local rangeModifier = GetSupplyRangeModifier(teamID)
     for unit, v in pairs(ammoUsingUnit) do                      
         --keep checking our ammo levels
         local ammoLevel = GetUnitRulesParam(v.uID, "ammo")
@@ -104,25 +110,36 @@ function checkAmmo()
         if (v.unitSupplyState == v.UNIT_BRAND_NEW) then
             --Echo("in UNIT_BRAND_NEW", v.uID)
             v.cmds = GetUnitCommands(v.uID)
-            if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then 
-                if (#v.cmds < 1) then
-                    v.unitSupplyState   = v.UNIT_READY 
-                    --there's a chance we could leave the factory empty 
-                elseif (ammoLevel < 1) then 
-                    v.unitSupplyState = v.UNIT_EMPTY        
-                end      
+            if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then
+			    local _,_,_,_,buildProgress = GetUnitHealth(v.uID)
+				-- nothing to do until we're finished building
+				if buildProgress < 1 then
+					v.unitSupplyState   = v.UNIT_BRAND_NEW
+				else
+					if (#v.cmds < 1) then
+						v.unitSupplyState   = v.UNIT_READY 
+						--there's a chance we could leave the factory empty 
+					elseif (ammoLevel < 1) then 
+						v.unitSupplyState = v.UNIT_EMPTY        
+					end
+				end
             end
         --ammo !!!
         elseif (v.unitSupplyState == v.UNIT_EMPTY) then
             --Echo("in UNIT_EMPTY", v.uID)
-            --save our location, we might need it later
-            v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
-            --save unit command queue, if it has one, so we can return to the queue after reload
-            v.cmds = GetUnitCommands(v.uID) 
-            if ((v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then  
-                --we need more ammo so change state to UNIT_RESUPPLY_NEEDED
-                v.unitSupplyState = v.UNIT_RESUPPLY_NEEDED      
-            end
+			-- check if we're really empty, because we might have gotten some supply since last check
+			if ammoLevel < 1 then
+				--save our location, we might need it later
+				v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
+				--save unit command queue, if it has one, so we can return to the queue after reload
+				v.cmds = GetUnitCommands(v.uID) 
+				if ((v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then  
+					--we need more ammo so change state to UNIT_RESUPPLY_NEEDED
+					v.unitSupplyState = v.UNIT_RESUPPLY_NEEDED      
+				end
+			else
+				v.unitSupplyState = v.UNIT_READY
+			end
         --lets get back for resupply    
         elseif (v.unitSupplyState == v.UNIT_RESUPPLY_NEEDED) then
             --Echo("in UNIT_RESUPPLY_NEEDED", v.uID)
@@ -142,9 +159,9 @@ function checkAmmo()
                     if ((currentUnitSeparation ~= nil) and (ammoLevel ~= nil)) then
                         --its possible the supply unit may have been destroyed or moved off so keep checking
                         FindClosestSupply(v)
-                        if (currentUnitSeparation < v.closestSupply.supplyArea) then
+                        if (currentUnitSeparation < v.closestSupply.supplyArea * rangeModifier) then
                             GiveOrderToUnit(v.uID, CMD_STOP, {_,_,_}, {""})                    
-                            if ((ammoLevel > 0) and (currentUnitSeparation < v.closestSupply.supplyArea)) then
+                            if ((ammoLevel > 0) and (currentUnitSeparation < v.closestSupply.supplyArea * rangeModifier)) then
                                 v.inSupplyArea = true
                                 v.gate = v.open
                                 v.unitSupplyState = v.UNIT_RELOADING
@@ -192,7 +209,7 @@ function checkAmmo()
             --again its possible that either we or the supply unit could be ordered to move during reload
             currentUnitSeparation = GetUnitSeparation(v.uID, v.closestSupply.uID, true)
             if (currentUnitSeparation ~= nil) then
-                if (currentUnitSeparation > v.closestSupply.supplyArea) then
+                if (currentUnitSeparation > v.closestSupply.supplyArea * rangeModifier) then
                     v.inSupplyArea = false
                     local ux, _, uz = GetUnitPosition(v.uID)
                     if ((ux ~= nil) and (uz ~= nil) and (v.unit_inSupply_cx ~= nil) and (v.unit_inSupply_cz ~= nil)) then
@@ -274,17 +291,18 @@ function FindClosestSupply(v)
     local dist = 9999999999
     local targetSupplyUnit
     local x, z
+	local rangeModifier = GetSupplyRangeModifier(teamID)
     --loop through each supply unit, checking each one to find the closest        
     for sup, s in pairs(supplyUnit) do 
         local vx, _, vz = GetUnitVelocity(s.uID)
         if ((vx ~= nil) and (vz ~= nil)) then
             --we don't really want any supply units that are moving
-            if ((vx == 0) or (vz == 0)) then            
+            if ((vx == 0) and (vz == 0)) then            
                 --get the distance to supply unit
                 local temp = GetUnitSeparation(v.uID, s.uID, true) 
                 if (temp ~= nil) then                       
                     --work out the distance to the edge of the supply area
-                    temp = temp - s.supplyArea 
+                    temp = temp - s.supplyArea * rangeModifier
                 end
                 --find the closest
                 if (temp < dist) then
@@ -301,20 +319,43 @@ function FindClosestSupply(v)
 	if v.closestSupply == nil then
 		return
 	end
+
+	-- what if we're already in supply radius?
+	if dist < 0 then
+		return
+	end
     --get separation between unit and supply
     local currentUnitSeparation = GetUnitSeparation(v.uID, v.closestSupply.uID, true)
+
+    -- hack: there's a bug where units drive all the way to the supplier and
+    -- freeze there. I couldn't determine the cause of that, but this ought to
+    -- prevent that from happening as often
+    local offset = math.random(-3, 3) * 50
+    if offset == 0 then
+        offset = 100
+    end
+
     if ((currentUnitSeparation ~= nil) and (x ~= nil)  and (z ~= nil)) then
         --are we already in a supply area so don't need to move?
-        if (currentUnitSeparation < v.closestSupply.supplyArea) then
+        if (currentUnitSeparation < v.closestSupply.supplyArea * rangeModifier) then
             v.inSupplyArea = true
             v.unitSupplyState = v.UNIT_RELOADING
         else
             v.inSupplyArea = false
             --move to the supply      
-            GiveOrderToUnit(v.uID, CMD_MOVE, {x,_,z}, {""})          
+            GiveOrderToUnit(v.uID, CMD_MOVE, {x + offset,_,z + offset}, {""})          
             v.unitSupplyState = v.UNIT_RETURNING_TO_SUPPLY 
         end 
     end         
+end
+
+function RemoveUnitFromLists(unitID)
+	if (ammoUsingUnit[unitID]) then
+		ammoUsingUnit[unitID] = nil
+	end
+	if (supplyUnit[unitID]) then
+		supplyUnit[unitID] = nil
+	end
 end
 
 -------------------------------------------------------------------------------
@@ -351,18 +392,15 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
 	            unitSupplyState             = 0 
 	        }  
 	        
-        elseif ((ud ~= nil) and (tonumber(ud.customParams.ammosupplier))) then 
+        elseif ((ud ~= nil) and (tonumber(ud.customParams.supplyrange))) then 
          
             supplyUnit[unitID] = {
                 uID                         = unitID,
                 supplyArea                  = tonumber(ud.customParams.supplyrange)
 	        }
         end  
-          
-    elseif (ammoUsingUnit[unitID]) then
-        ammoUsingUnit[unitID] = nil 
-    elseif (supplyUnit[unitID]) then  
-        supplyUnit[unitID] = nil 
+    else
+		RemoveUnitFromLists(unitID)
     end
 end
 
@@ -373,11 +411,7 @@ end
 
 -------------------------------------------------------------------------------
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
-    if (ammoUsingUnit[unitID]) then
-        ammoUsingUnit[unitID] = nil       
-    elseif (supplyUnit[unitID]) then  
-        supplyUnit[unitID] = nil 
-    end
+	RemoveUnitFromLists(unitID)
 end
 
 -------------------------------------------------------------------------------

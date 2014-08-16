@@ -156,6 +156,10 @@ function gadget:Initialize()
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
+ -- Limit impulse from crush damage; reduce crush damage
+  if weaponDefID == -7 then 
+      return damage * 0.1, 0.01 
+  end
   -- check if damage was done by a weapon (not falling or debris)
   if not weaponDefID or weaponDefID < 0 or not ValidUnitID(unitID) then return damage end
   -- prevent flag damage

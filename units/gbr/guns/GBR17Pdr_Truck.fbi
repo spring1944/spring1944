@@ -7,10 +7,10 @@
   buildCostEnergy=0;
   buildCostMetal=1350;
   buildPic=GBR17Pdr.png;
-  buildTime=1500;
+  buildTime=1350;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=GBRBedfordTruck_Destroyed;
+  corpse=gbrmorrisquad_destroyed;
   [customParams] {
     lowammolevel=1;
     maxammo=4;

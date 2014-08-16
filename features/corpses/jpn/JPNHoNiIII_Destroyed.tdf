@@ -1,0 +1,60 @@
+[JPNHoNiIII_Abandoned]
+{
+  description=Abandoned Tank Destroyer;
+  damage=2501;
+  energy=50;
+  featureDead=JPNHoNiIII_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=JPNHoNiIII.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[JPNHoNiIII_Burning]
+{
+  description=Destroyed Tank Destroyer;
+  damage=2501;
+  energy=50;
+  featureDead=JPNHoNiIII_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=JPNHoNiIII_Dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[JPNHoNiIII_Wreck]
+{
+  description=Destroyed Tank Destroyer;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=JPNHoNiIII_Wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}

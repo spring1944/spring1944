@@ -1,0 +1,86 @@
+[itacannone65he] {
+  name=Italian Cannone da 65/17 High-Explosive Ammunition;
+  accuracy=300; // 500
+  areaOfEffect=68;
+  avoidFeature=0;
+  ballistic=1;
+  collisionSize=4;
+  craterBoost=0;
+  craterMult=0;
+  [customParams] {
+    damagetype=explosive;
+    fearaoe=75;
+    fearid=401;
+  }
+  [damage] {
+    default=900;
+  }
+  edgeEffectiveness=0.25;
+  explosionGenerator=custom:HE_Medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=109;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=5;
+  noSelfDamage=1;
+  range=1010;
+  reloadTime=6.25;
+  rendertype=1;
+  rgbColor=0.5 0.5 0.0;
+  separation=2;
+  size=1;
+  sizeDecay=0;
+  soundHit=GEN_Explo_3;
+  soundStart=RUS_45mm;
+  stages=50;
+  targetMoveError=0.1;
+  tolerance=5000;
+  turret=1;
+  weaponVelocity=420;
+}
+[itacannone65heat] {
+  name=47 mm L/32 Gun - Effetto Pronto S;
+  accuracy=300;
+  targetBorder=1;
+  canAttackGround=0;
+  areaOfEffect=8;
+  ballistic=1;
+  avoidFeature=0;
+  collisionSize=3;
+  craterBoost=0.3;
+  craterMult=0.3;
+  [customParams] {
+    damagetype=shapedcharge;
+	armor_penetration=85;
+  }
+  [damage] {
+    default=2056;
+  }
+  edgeEffectiveness=0.2;
+  explosionGenerator=custom:EP_medium;
+  explosionSpeed=30;
+  fireStarter=0;
+  id=1001;
+  impulseBoost=0;
+  impulseFactor=0;
+  intensity=0.1;
+  movingAccuracy=600;
+  noSelfDamage=1;
+  range=715;
+  reloadTime=6.25;
+  rendertype=1;
+  colormap=ap_colormap.png;
+  separation=2;
+  rgbColor=1.0 0.0 0.0;
+  size=0.5;
+  sizeDecay=0;
+  soundHit=GEN_Explo_2;
+  soundStart=RUS_45mm;
+  stages=50;
+  // targetMoveError=0.075;
+  tolerance=1000;
+  turret=1;
+  weaponVelocity=320;
+}
+

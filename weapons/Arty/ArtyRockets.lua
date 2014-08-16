@@ -79,9 +79,25 @@ local m8rocket82mm = ArtyRocketClass:New{
   },
 }
 
+-- Beach Barrage Rocket
+local BBR_Rack = ArtyRocketClass:New{
+	areaOfEffect	= 100,
+	burst		= 12,
+	burstrate	= 0.5,
+	explosionGenerator = [[custom:HE_Large]],
+	name               = [[4.5" Beach Barrage Rocket]],
+	range              = 800,
+	soundStart         = [[RUS_Katyusha]],
+	wobble             = 2500,
+	damage = {
+		default            = 3500,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Nebelwerfer41 = Nebelwerfer41,
   M13132mm = M13132mm,
   m8rocket82mm = m8rocket82mm,
+  BBR_Rack = BBR_Rack,
 })

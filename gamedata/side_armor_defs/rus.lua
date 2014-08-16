@@ -20,6 +20,7 @@ local RUSDefs = {
 	"RUSGuardsRifle",
 	"RUSGuardsPPsh",
 	"RUSGuardsDP",
+	"RUS_NI_Rifle",
   },
   
   guns  =  {

@@ -16,7 +16,6 @@
   category=BUILDING;
   corpse=USBoatyardLarge_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0;

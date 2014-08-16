@@ -21,7 +21,6 @@
   commander=1;
   corpse=GERHQBunker_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     arrivalgap=450;
     blockfear=1;
     flagCapRate=10;

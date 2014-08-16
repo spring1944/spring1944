@@ -164,6 +164,7 @@ local function GetStartUnit(teamID)
 		end
 	end
 	GG.teamSide[teamID] = side
+	Spring.SetTeamRulesParam(teamID, "side", side)
 	return startUnit
 end
 

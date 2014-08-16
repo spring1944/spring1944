@@ -1,8 +1,8 @@
 #include "constants.h"
 
-piece  base, tracks, tent, front_wheels, roller_1, roller_2, roller_3, roller_4, roller_5, roller_6, roller_7, roller_8, carriage, wheel3;
+piece  base, tracks, tracks2, tent, front_wheels, roller_1, roller_2, roller_3, roller_4, roller_5, roller_6, roller_7, roller_8, carriage, wheel3;
  
-static-var gunTowHeading, isTowed, normalSpeed;
+static-var gunTowHeading, isTowed, normalSpeed, bMoving, trackNum;
 
 // Signal definitions
 #define SIG_TOW		64
@@ -10,6 +10,27 @@ static-var gunTowHeading, isTowed, normalSpeed;
 // definitions for wheels
 #define WHEEL_SPIN		<350>
 
+TrackAnim()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			if(trackNum==0)
+			{
+				show tracks;
+				hide tracks2;
+				trackNum=1;
+			} else
+			{
+				hide tracks;
+				show tracks2;
+				trackNum=0;
+			}
+		}
+		sleep 90;
+	}
+}
 
 SmokeUnit(healthpercent, sleeptime, smoketype)
 {
@@ -40,6 +61,7 @@ SmokeUnit(healthpercent, sleeptime, smoketype)
 
 StartMoving()
 {
+	bMoving = TRUE;
 	spin front_wheels around x-axis speed WHEEL_SPIN;
 	spin roller_1 around x-axis speed WHEEL_SPIN * 1.5;
 	spin roller_2 around x-axis speed WHEEL_SPIN * 1.5;
@@ -54,6 +76,7 @@ StartMoving()
 
 StopMoving()
 {
+	bMoving = FALSE;
 	stop-spin front_wheels around x-axis decelerate <100.000000>;
 	stop-spin roller_1 around x-axis decelerate <100.000000>;
 	stop-spin roller_2 around x-axis decelerate <100.000000>;
@@ -69,7 +92,11 @@ StopMoving()
 Create()
 {
 //	spin tow_point around y-axis speed <100>;
+	bMoving = FALSE;
+	trackNum = 0;
+	hide tracks2;
 	start-script SmokeUnit();
+	start-script TrackAnim();
 }
 
 SweetSpot(piecenum)

@@ -16,7 +16,6 @@
   //collisionVolumeTest=1;
   corpse=USM3Halftrack_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     armor_front=9;
     armor_rear=6;
     armor_side=6;
@@ -75,7 +74,7 @@
   badTargetCategory=FLAG;
 
   weapon1=M2Browning;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP;
 
   weapon2=m2browningaa;
   onlyTargetCategory2=AIR;
