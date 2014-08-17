@@ -57,7 +57,6 @@
   smoothAnim=0;
   soundcategory=RUSSniper;
   stealth=1;
-  TEDClass=KBOT;
   turnRate=1010;
   upright=1;
   badTargetCategory=BUILDING OPENVEH FLAG SOFTVEH;

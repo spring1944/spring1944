@@ -50,7 +50,6 @@
   smoothAnim=0;
   soundcategory=RUSGun;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   

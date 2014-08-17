@@ -26,7 +26,6 @@
   selfDestructCountdown=10;
   sightDistance=1;
   soundcategory=Nothing;
-  TEDClass=SPECIAL;
   yardmap=o;
 }
 

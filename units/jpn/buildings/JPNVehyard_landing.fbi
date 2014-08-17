@@ -38,7 +38,6 @@
   sightDistance=146;
   soundcategory=JPNYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=30;
   yardMap=ooooooo ooooooo oocccoo oocccoo occccco occccco occccco;

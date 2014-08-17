@@ -54,7 +54,6 @@
   smoothAnim=0;
   soundcategory=GERInf;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   

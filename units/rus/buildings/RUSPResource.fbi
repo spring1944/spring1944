@@ -41,7 +41,6 @@
   smoothAnim=0;
   soundcategory=RUSInf;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20;
   yardmap=yy yy;

@@ -61,7 +61,6 @@
   SoundCategory=JPNFighter;
   stealth=1;
   steeringmode=1;
-  TEDClass=VTOL;
   turnRate=50;
 
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;

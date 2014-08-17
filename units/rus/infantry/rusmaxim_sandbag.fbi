@@ -40,7 +40,6 @@
   smoothAnim=0;
   soundcategory=RUSInf;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=OPENVEH FLAG SOFTVEH;
   

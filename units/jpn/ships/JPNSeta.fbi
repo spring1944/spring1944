@@ -57,7 +57,6 @@
   smoothAnim=0;
   SoundCategory=JPNBoat;
   stealth=1;
-  TEDClass=SHIP;
   turninplace=0;
   turnRate=250;
 

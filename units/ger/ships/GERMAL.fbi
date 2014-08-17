@@ -57,7 +57,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   turninplace=0;
   turnInPlaceAngleLimit=10;
   turnRate=120;

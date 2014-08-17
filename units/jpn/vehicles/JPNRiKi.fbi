@@ -39,7 +39,6 @@
   smoothAnim=0;
   soundcategory=JPNTank;
   stealth=1;
-  TEDClass=CONSTR;
   terraformSpeed=300;
   trackOffset=3;
   trackStrength=6;

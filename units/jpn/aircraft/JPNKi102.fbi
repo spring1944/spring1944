@@ -72,7 +72,6 @@
   SoundCategory=JPNBomber;
   stealth=1;
   steeringmode=1;
-  TEDClass=VTOL;
   turnRate=50;
 
   badTargetCategory=FLAG AIR;

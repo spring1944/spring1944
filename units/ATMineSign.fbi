@@ -30,7 +30,6 @@
   smoothAnim=0;
   soundcategory=Nothing;
   stealth=1;
-  TEDClass=SPECIAL;
   yardmap=o;
 }
 

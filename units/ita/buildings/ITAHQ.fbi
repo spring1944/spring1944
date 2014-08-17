@@ -49,7 +49,6 @@
   smoothAnim=0;
   soundcategory=ITAYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20; //60
   yardMap=ooooooo oocccoo oocccoo ooyyyoo ooyyyoo ooyyyoo ooyyyoo;

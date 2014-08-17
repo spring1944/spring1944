@@ -62,7 +62,6 @@
   smoothAnim=1;
   stealth=1;
   steeringmode=1;
-  TEDClass=VTOL;
   turnRate=50;
   badTargetCategory=AIR;
 }

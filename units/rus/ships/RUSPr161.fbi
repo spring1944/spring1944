@@ -62,7 +62,6 @@
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
-  TEDClass=SHIP;
   turninplace=0;
   turnRate=150;
 

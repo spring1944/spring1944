@@ -50,7 +50,6 @@
   sightDistance=840;
   soundcategory=GbrInf;
   stealth=1;
-  TEDClass=CONSTR;
   terraformSpeed=300;
   turnRate=1010;
   upright=1;

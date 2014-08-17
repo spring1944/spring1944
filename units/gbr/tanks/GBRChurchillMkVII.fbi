@@ -63,7 +63,6 @@
   smoothAnim=0;
   soundcategory=GBRChurchill;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=5;
   trackStrength=10;
   trackStretch=1;

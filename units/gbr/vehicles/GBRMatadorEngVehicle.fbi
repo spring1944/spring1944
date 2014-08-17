@@ -37,7 +37,6 @@
   smoothAnim=0;
   soundcategory=GBRVeh;
   stealth=1;
-  TEDClass=CONSTR;
   terraformSpeed=300;
   trackOffset=10;
   trackStrength=6.5;

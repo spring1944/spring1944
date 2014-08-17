@@ -35,7 +35,6 @@
   smoothAnim=0;
   soundcategory=GBRInf;
   stealth=1;
-  TEDClass=ENERGY;
   useBuildingGroundDecal=1;
   
 

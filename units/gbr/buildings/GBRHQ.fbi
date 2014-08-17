@@ -52,7 +52,6 @@
   smoothAnim=0;
   soundcategory=GBRYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20; //60
   yardmap=ooooooo ooyyyoo ooyyyoo ooyyyoo oyyyyyo yyyyyyy yyyyyyy;

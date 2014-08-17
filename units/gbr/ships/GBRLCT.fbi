@@ -55,7 +55,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=30;
   transportMass=27000;
   transportSize=54;;
