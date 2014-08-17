@@ -18,7 +18,7 @@
   canPatrol=0;
   CanStop=0;
   category=AIR;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     cruise_missile_accuracy=400;
     enginesound=v1-;

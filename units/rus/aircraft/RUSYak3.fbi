@@ -17,7 +17,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     enginesound=yakb-;
     enginesoundnr=20;

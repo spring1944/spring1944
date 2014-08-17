@@ -17,7 +17,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=900;
+  cruiseAlt=1350;
   [customParams] {
     armor_front=6;
     armor_rear=6;

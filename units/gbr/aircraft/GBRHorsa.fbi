@@ -19,7 +19,7 @@
   CanStop=0;
   category=AIR;
   corpse=GBRHorsa_Damaged;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     cruise_missile_accuracy=1;
     spawn_on_death=gbr_platoon_glider_horsa;

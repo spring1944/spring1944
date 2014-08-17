@@ -24,7 +24,7 @@
   cloakCost=0;
   cloakCostMoving=0;
   commander=1;
-  cruiseAlt=200;
+  cruiseAlt=300;
   [customParams] {
     gm=1;
   }
