@@ -2,7 +2,6 @@
   UnitName=ITAMC202;
   name=Macchi MC.202;
   description=Light Fighter;
-  acceleration=1.4;
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -33,6 +32,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.677;
   maxAileron=0.00465;
   maxBank=1;
   maxDamage=224.7;

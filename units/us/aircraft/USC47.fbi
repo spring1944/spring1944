@@ -2,7 +2,6 @@
   UnitName=USC47;
   name=C-47 Skytrain;
   description=Paratroop Transport Plane;
-  acceleration=0.48;
   airSightDistance=4000;
   bankscale=1;
   brakeRate=5;
@@ -34,6 +33,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.309;
   maxAileron=0.003;
   maxBank=0.25;
   maxDamage=1705.7;

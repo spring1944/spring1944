@@ -2,7 +2,6 @@
   UnitName=JPNKi43;
   name=Ki-43 Hayabusa;
   description=Interceptor;
-  acceleration=1.2;
   airSightDistance=4000;
   brakeRate=5;
   buildCostMetal=985;
@@ -31,6 +30,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.757;
   maxAileron=0.0044;
   maxBank=1;
   maxDamage=235;

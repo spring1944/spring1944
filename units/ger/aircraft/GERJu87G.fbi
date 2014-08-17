@@ -2,7 +2,6 @@
   UnitName=GERJu87G;
   name=Ju 87G-1 Stuka;
   description=Ground Attack (Anti-Tank) Aircraft;
-  acceleration=0.5;
   airSightDistance=3000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -35,6 +34,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.416;
   maxAileron=0.00375;
   maxBank=0.9;
   maxDamage=360;

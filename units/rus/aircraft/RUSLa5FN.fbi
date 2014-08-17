@@ -2,7 +2,6 @@
   UnitName=RUSLa5FN;
   name=La-5FN;
   description=Air Superiority Fighter;
-  acceleration=1.4;
   airSightDistance=4000;
   brakeRate=5;
   buildCostMetal=1125;
@@ -31,6 +30,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.990;
   maxAileron=0.0055;
   maxBank=1;
   maxDamage=260.5;

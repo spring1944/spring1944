@@ -2,7 +2,6 @@
   UnitName=GBRAuster;
   name=TC Auster AOP Mk V;
   description=Recon Plane;
-  acceleration=0.48;
   airSightDistance=4000;
   bankscale=1;
   brakeRate=5;
@@ -32,6 +31,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.343;
   maxAileron=0.005;
   maxBank=0.1;
   maxDamage=49.9;

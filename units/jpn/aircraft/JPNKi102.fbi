@@ -2,7 +2,6 @@
   UnitName=JPNKi102;
   name=Ki-102b Assault Plane;
   description=Anti-tank Plane;
-  acceleration=1.2;
   airSightDistance=4000;
   brakeRate=5;
   buildCostMetal=985;
@@ -36,6 +35,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.702;
   maxAileron=0.00375;
   maxBank=0.9;
   maxDamage=360;

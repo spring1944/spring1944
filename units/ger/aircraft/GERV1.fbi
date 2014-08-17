@@ -2,7 +2,6 @@
   UnitName=GERV1;
   name=V-1 (Fi-103);
   description=Flying Bomb;
-  acceleration=0.5;
   airSightDistance=0;
   brakeRate=5;
   buildCostEnergy=0;
@@ -33,6 +32,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0;
   maxAileron=0.00465;
   maxBank=1;
   maxDamage=400;

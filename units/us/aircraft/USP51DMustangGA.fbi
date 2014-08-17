@@ -2,7 +2,6 @@
   UnitName=USP51DMustangGA;
   name=P-51D-25 Mustang;
   description=Attack Fighter;
-  acceleration=0.5;
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -35,6 +34,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.622;
   maxAileron=0.0052;
   maxBank=0.9;
   maxDamage=346.5;

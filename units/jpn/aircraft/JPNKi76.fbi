@@ -2,7 +2,6 @@
   UnitName=JPNKi76;
   name=Ki-76 Stella;
   description=Recon Plane;
-  acceleration=0.48;
   airSightDistance=5000;
   bankscale=1;
   brakeRate=5;
@@ -34,6 +33,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.353;
   maxAileron=0.005;
   maxBank=0.1;
   maxDamage=86;

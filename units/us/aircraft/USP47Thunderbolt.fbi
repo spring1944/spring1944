@@ -2,7 +2,6 @@
   UnitName=USP47Thunderbolt;
   name=P-47D Thunderbolt;
   description=Fighter-Bomber;
-  acceleration=0.48;
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -32,6 +31,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.723;
   maxAileron=0.0044;
   maxBank=0.9;
   maxDamage=453.6;

@@ -2,7 +2,6 @@
   UnitName=USP51DMustang;
   name=P-51D Mustang;
   description=Air Supremacy Fighter;
-  acceleration=1;
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -31,6 +30,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.622;
   maxAileron=0.0055;
   maxBank=1;
   maxDamage=346.5;

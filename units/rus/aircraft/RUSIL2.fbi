@@ -2,7 +2,6 @@
   UnitName=RUSIL2;
   name=IL-2M Shturmovik;
   description=Attack Aircraft;
-  acceleration=0.5;
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
@@ -37,6 +36,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.474;
   maxAileron=0.004;
   maxBank=0.75;
   maxDamage=436;

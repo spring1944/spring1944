@@ -2,7 +2,6 @@
   UnitName=JPNKi51;
   name=Ki.51 Assault Plane;
   description=Ground-attack aircraft;
-  acceleration=0.4;
   airSightDistance=4000;
   radarDistance=1000;
   brakeRate=5;
@@ -37,6 +36,7 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.581;
   maxAileron=0.0055;
   maxBank=1.1;
   maxDamage=240;
