@@ -43,7 +43,7 @@
   maxPitch=0.2;
   maxRudder=0.005;
   maxSlope=10;
-  maxVelocity=16;
+  maxVelocity=11.2;
   maxWaterDepth=0;
   moverate1=4;
   myGravity=0.6;

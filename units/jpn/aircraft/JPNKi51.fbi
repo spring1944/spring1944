@@ -45,7 +45,7 @@
   maxPitch=0.77;
   maxRudder=0.005;
   maxSlope=10;
-  maxVelocity=19;
+  maxVelocity=13.3;
   maxWaterDepth=0;
   moverate1=4; //does this tag even work?
   myGravity=0.6;

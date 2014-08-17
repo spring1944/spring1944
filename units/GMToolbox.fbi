@@ -39,7 +39,7 @@
   init_cloaked=1;
   maxDamage=3.465e+06;
   maxSlope=10;
-  maxVelocity=15;
+  maxVelocity=10.5;
   maxWaterDepth=0;
   metalMake=1e+07;
   metalStorage=1e+11;
