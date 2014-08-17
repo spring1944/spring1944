@@ -67,7 +67,6 @@
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
-  turnRadius=1650;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 

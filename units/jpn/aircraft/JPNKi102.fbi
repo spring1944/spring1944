@@ -75,7 +75,6 @@
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
-  turnRadius=1500;
   turnRate=50;
 
   badTargetCategory=FLAG AIR;
