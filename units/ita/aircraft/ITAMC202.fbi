@@ -2,9 +2,7 @@
   UnitName=ITAMC202;
   name=Macchi MC.202;
   description=Light Fighter;
-  acceleration=1.4;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3125;
@@ -20,7 +18,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     enginesound=fw190b-;
     enginesoundnr=12;
@@ -34,16 +32,16 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.677;
   maxAileron=0.00465;
   maxBank=1;
   maxDamage=224.7;
   maxElevator=0.0036;
   maxFuel=120;
-  maxPitch=0.2857;
+  maxPitch=1;
   maxRudder=0.002775;
   maxSlope=10;
-  maxVelocity=27;
-  moverate1=4; //does this tag even work?
+  maxVelocity=18.9;
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=ITAMC202.s3o;
@@ -63,10 +61,7 @@
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
-  turnRadius=1500;
   turnRate=50;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
 

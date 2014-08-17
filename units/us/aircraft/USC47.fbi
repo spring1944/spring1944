@@ -2,7 +2,6 @@
   UnitName=USC47;
   name=C-47 Skytrain;
   description=Paratroop Transport Plane;
-  acceleration=0.48;
   airSightDistance=4000;
   bankscale=1;
   brakeRate=5;
@@ -18,7 +17,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1200;
+  cruiseAlt=1800;
   [customParams] {
     enginesound=spitfireb-;
     enginesoundnr=18;
@@ -34,17 +33,17 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.309;
   maxAileron=0.003;
   maxBank=0.25;
   maxDamage=1705.7;
   maxElevator=0.0025;
   maxFuel=180;
-  maxPitch=0.1;
+  maxPitch=1;
   maxRudder=0.002;
   maxSlope=10;
-  maxVelocity=16;
+  maxVelocity=11.2;
   maxWaterDepth=0;
-  moverate1=4;
   myGravity=0.6;
   objectName=USC47.S3O;
   radarDistance=1000;
@@ -65,8 +64,6 @@
   TEDClass=VTOL;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   weapon1=us_paratrooper;
 }

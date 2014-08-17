@@ -30,6 +30,7 @@ local AAGunAAClass = Weapon:New{
   name               = [[AA Shell]],
   tolerance          = 1400,
   customparams = {
+    no_range_adjust    = true,
     fearaoe            = 450,
     fearid             = 701,
   }

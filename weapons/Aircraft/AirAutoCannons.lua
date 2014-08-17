@@ -20,6 +20,7 @@ local AirACClass = Weapon:New{
     armor_hit_side     = [[top]],
     damagetype         = [[explosive]],
     fearaoe            = 45,
+    no_range_adjust    = true,
     fearid             = 301,
   },
 }

@@ -2,9 +2,7 @@
   UnitName=JPNKi102;
   name=Ki-102b Assault Plane;
   description=Anti-tank Plane;
-  acceleration=1.2;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostMetal=985;
   buildPic=JPNKi102.png;
@@ -17,7 +15,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=900;
+  cruiseAlt=1350;
   [customParams] {
     armor_front=6;
     armor_rear=6;
@@ -37,17 +35,17 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.702;
   maxAileron=0.00375;
   maxBank=0.9;
   maxDamage=360;
   maxElevator=0.00375;
   maxFuel=160;
-  maxPitch=0.34;
+  maxPitch=1;
   maxRudder=0.0025;
   maxSlope=10;
-  maxVelocity=16;
+  maxVelocity=11.2;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=JPNKi102.s3o;
@@ -75,10 +73,7 @@
   stealth=1;
   steeringmode=1;
   TEDClass=VTOL;
-  turnRadius=1500;
   turnRate=50;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   badTargetCategory=FLAG AIR;
 
