@@ -60,7 +60,6 @@
   sightDistance=0;
   smoothAnim=0;
   stealth=1;
-  steeringmode=1;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 

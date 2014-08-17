@@ -61,7 +61,6 @@
   sightDistance=600;
   smoothAnim=1;
   stealth=1;
-  steeringmode=1;
   turnRate=50;
   badTargetCategory=AIR;
 }

@@ -58,7 +58,6 @@
   smoothAnim=1;
   SoundCategory=RUSFighter;
   stealth=1;
-  steeringmode=1;
   turnRate=50;
   
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;

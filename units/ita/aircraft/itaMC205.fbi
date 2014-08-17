@@ -63,7 +63,6 @@
   sightDistance=0;
   smoothAnim=1;
   stealth=1;
-  steeringmode=1;
   turnRate=50;
   badTargetCategory=BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 

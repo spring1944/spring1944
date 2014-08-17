@@ -63,7 +63,6 @@
   sightDistance=200;
   smoothAnim=1;
   stealth=1;
-  steeringmode=1;
   turnRate=50;
 
   weapon1=HVARRocket;
