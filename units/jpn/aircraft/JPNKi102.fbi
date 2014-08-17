@@ -4,7 +4,6 @@
   description=Anti-tank Plane;
   acceleration=1.2;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostMetal=985;
   buildPic=JPNKi102.png;

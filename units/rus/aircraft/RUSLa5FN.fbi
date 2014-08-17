@@ -4,7 +4,6 @@
   description=Air Superiority Fighter;
   acceleration=1.4;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostMetal=1125;
   buildPic=RUSLa5FN.png;

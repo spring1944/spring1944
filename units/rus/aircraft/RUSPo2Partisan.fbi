@@ -5,7 +5,6 @@
   acceleration=0.48;
   airSightDistance=5000;
   bankscale=1;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=2400;

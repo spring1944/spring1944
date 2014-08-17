@@ -4,7 +4,6 @@
   description=Troop-Carrying Glider;
   acceleration=0.5;
   airSightDistance=0;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=6000;

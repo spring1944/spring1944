@@ -4,7 +4,6 @@
   description=Air Supremacy Fighter;
   acceleration=1;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=1080;
