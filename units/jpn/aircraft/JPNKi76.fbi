@@ -44,7 +44,6 @@
   maxSlope=10;
   maxVelocity=11.2;
   maxWaterDepth=0;
-  moverate1=4;
   myGravity=0.6;
   noChaseCategory=AIR MINE;
   objectName=JPNKi76.s3o;

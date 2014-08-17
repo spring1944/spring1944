@@ -47,7 +47,6 @@
   maxSlope=10;
   maxVelocity=13.3;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
   objectName=JPNKi51.s3o;

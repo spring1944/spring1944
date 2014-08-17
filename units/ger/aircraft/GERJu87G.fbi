@@ -45,7 +45,6 @@
   maxSlope=10;
   maxVelocity=14;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG BUILDING INFANTRY SOFTVEH SHIP DEPLOYED AIR MINE;
   objectName=GERJu87G.S3O;

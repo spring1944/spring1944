@@ -43,7 +43,6 @@
   maxSlope=10;
   maxVelocity=19.6;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=itare2005.s3o;
