@@ -65,8 +65,6 @@
   TEDClass=VTOL;
   turnRadius=1500;
   turnRate=24;
-  wingAngle=0.1;
-  wingDrag=0.1;
   
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
   weapon1=m2browningamg;

@@ -75,8 +75,6 @@
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   maxAngleDif=20;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   weapon10=Medium_Tracer;
 

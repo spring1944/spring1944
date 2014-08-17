@@ -67,6 +67,4 @@
   TEDClass=VTOL;
   turnRate=50;
   badTargetCategory=AIR;
-  wingAngle=0.1;
-  wingDrag=0.1;
 }

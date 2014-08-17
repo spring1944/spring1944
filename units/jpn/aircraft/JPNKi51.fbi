@@ -69,8 +69,6 @@
   turnRadius=1250;
   turnRate=50;
   badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   weapon1=jpn_bomb50kg;
   maxAngleDif1=20;
