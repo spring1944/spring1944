@@ -236,7 +236,7 @@ local M2BrowningAMG = M2Browning:New{
   reloadTime        = 0.3,
   soundStart        = [[US_50CALAir]],
   sprayAngle        = 250,
-  tolerance         = 600, --?
+  tolerance         = 1100, --?
   customparams = {
     no_range_adjust    = true,
   }
