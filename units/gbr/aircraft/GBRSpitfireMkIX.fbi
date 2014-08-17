@@ -37,7 +37,7 @@
   maxDamage=254.5;
   maxElevator=0.005;
   maxFuel=60;
-  maxPitch=0.3714;
+  maxPitch=1;
   maxRudder=0.004;
   maxSlope=10;
   maxVelocity=12.6;
