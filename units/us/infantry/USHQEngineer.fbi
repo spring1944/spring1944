@@ -45,7 +45,6 @@
   smoothAnim=0;
   soundcategory=USInf;
   stealth=1;
-  TEDClass=CONSTR;
   terraformSpeed=300;
   turnRate=1010;
   upright=1;

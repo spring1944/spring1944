@@ -55,7 +55,6 @@
   smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=4;
   trackStrength=5;
   trackStretch=1;

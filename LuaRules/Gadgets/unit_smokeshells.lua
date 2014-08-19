@@ -255,7 +255,7 @@ function RemoveSmoke(unitID)
 		else
 			SetUnitCloak(unitID, false)
 		end
-		if UnitDefs[tmpUDID].steath then
+		if UnitDefs[tmpUDID].stealth then
 			Spring.SetUnitStealth(unitID, true)
 		else
 			Spring.SetUnitStealth(unitID, false)

@@ -2,7 +2,6 @@
   UnitName=JPNKi51;
   name=Ki.51 Assault Plane;
   description=Ground-attack aircraft;
-  acceleration=0.4;
   airSightDistance=4000;
   radarDistance=1000;
   brakeRate=5;
@@ -20,7 +19,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     enginesound=po2-;
     enginesoundnr=11;
@@ -37,17 +36,17 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.581;
   maxAileron=0.0055;
   maxBank=1.1;
   maxDamage=240;
   maxElevator=0.0044;
   maxFuel=105;
-  maxPitch=0.77;
+  maxPitch=1;
   maxRudder=0.005;
   maxSlope=10;
-  maxVelocity=19;
+  maxVelocity=13.3;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
   objectName=JPNKi51.s3o;
@@ -64,13 +63,8 @@
   sightDistance=0;
   smoothAnim=1;
   stealth=1;
-  steeringmode=1;
-  TEDClass=VTOL;
-  turnRadius=1250;
   turnRate=50;
   badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   weapon1=jpn_bomb50kg;
   maxAngleDif1=20;

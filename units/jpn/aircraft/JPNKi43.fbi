@@ -2,9 +2,7 @@
   UnitName=JPNKi43;
   name=Ki-43 Hayabusa;
   description=Interceptor;
-  acceleration=1.2;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostMetal=985;
   buildPic=JPNKi43.png;
@@ -17,7 +15,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1000;
+  cruiseAlt=1500;
   [customParams] {
     enginesound=yakb-;
     enginesoundnr=20;
@@ -32,17 +30,17 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.757;
   maxAileron=0.0044;
   maxBank=1;
   maxDamage=235;
   maxElevator=0.0031;
   maxFuel=120;
-  maxPitch=0.57;
+  maxPitch=1;
   maxRudder=0.0023;
   maxSlope=10;
-  maxVelocity=29;
+  maxVelocity=20.3;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=JPNKi43.s3o;
@@ -62,12 +60,7 @@
   smoothAnim=1;
   SoundCategory=JPNFighter;
   stealth=1;
-  steeringmode=1;
-  TEDClass=VTOL;
-  turnRadius=1500;
   turnRate=50;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
   weapon1=Type1Ho103;

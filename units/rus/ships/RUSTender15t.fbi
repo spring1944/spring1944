@@ -52,7 +52,6 @@
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=20;
   transportMass=1000;
   transportSize=1;

@@ -26,6 +26,7 @@ local AirATGunClass = Weapon:New{
   dynDamageInverted  = true,
   weaponType         = [[Cannon]],
   customparams = {
+    no_range_adjust    = true,
     armor_hit_side     = [[top]],
     damagetype         = [[kinetic]],
   },

@@ -6,8 +6,8 @@
   airSightDistance=3000;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=2000;
-  buildTime=2000;
+  buildCostMetal=1200;
+  buildTime=1200;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=JPNIsuzuType94_AA_Burning;
@@ -45,7 +45,6 @@
   smoothAnim=0;
   soundcategory=JPNVeh;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=10;
   trackStrength=6.5;
   trackStretch=1;

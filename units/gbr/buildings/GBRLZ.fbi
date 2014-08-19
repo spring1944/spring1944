@@ -26,7 +26,6 @@
   side=GBR;
   sightDistance=5;
   stealth=1;
-  TEDClass=PLANT;
   yardmap=c;
 }
 

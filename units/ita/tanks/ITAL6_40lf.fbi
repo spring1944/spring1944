@@ -60,7 +60,6 @@
   smoothAnim=0;
   soundcategory=ITATank;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=5;
   trackStrength=7;
   trackStretch=1;

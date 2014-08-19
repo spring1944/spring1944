@@ -62,7 +62,6 @@
   smoothAnim=0;
   soundcategory=JPNTank;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=7;
   trackStrength=7;
   trackStretch=1;

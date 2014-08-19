@@ -39,7 +39,6 @@
   smoothAnim=0;
   soundcategory=itaInf;
   stealth=1;
-  TEDClass=ENERGY;
   useBuildingGroundDecal=1;
   yardmap=oooooo oooooo oooooo oooooo oooooo oooooo;
 

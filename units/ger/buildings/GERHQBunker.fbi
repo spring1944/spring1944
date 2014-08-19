@@ -52,7 +52,6 @@
   smoothAnim=0;
   soundcategory=GERYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   workerTime=20;

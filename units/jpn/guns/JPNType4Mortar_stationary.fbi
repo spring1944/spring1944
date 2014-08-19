@@ -49,7 +49,6 @@
   smoothAnim=0;
   soundcategory=JPNInf;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 

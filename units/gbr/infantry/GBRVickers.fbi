@@ -49,7 +49,6 @@
   smoothAnim=0;
   soundcategory=GBRInf;
   stealth=1;
-  TEDClass=KBOT;
   turnRate=420;
   upright=1;
   badTargetCategory=FLAG;

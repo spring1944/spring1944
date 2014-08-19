@@ -24,7 +24,7 @@
   cloakCost=0;
   cloakCostMoving=0;
   commander=1;
-  cruiseAlt=200;
+  cruiseAlt=300;
   [customParams] {
     gm=1;
   }
@@ -39,7 +39,7 @@
   init_cloaked=1;
   maxDamage=3.465e+06;
   maxSlope=10;
-  maxVelocity=15;
+  maxVelocity=10.5;
   maxWaterDepth=0;
   metalMake=1e+07;
   metalStorage=1e+11;
@@ -60,7 +60,6 @@
   sightDistance=2000;
   smoothAnim=1;
   stealth=1;
-  TEDClass=VTOL;
   turnRate=500;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   workerTime=1000;

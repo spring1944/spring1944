@@ -21,6 +21,7 @@ local AirRocketClass = Weapon:New{
   weaponVelocity     = 850,
   wobble             = 500,
   customparams = {
+    no_range_adjust    = true,
     armor_hit_side     = [[top]],
     damagetype         = [[shapedcharge]],
   },

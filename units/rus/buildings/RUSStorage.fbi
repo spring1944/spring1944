@@ -42,7 +42,6 @@
   smoothAnim=0;
   soundcategory=RUSInf;
   stealth=1;
-  TEDClass=ENERGY;
   useBuildingGroundDecal=1;
   yardmap=oooo oooo oooo oooo oooo oooo;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;

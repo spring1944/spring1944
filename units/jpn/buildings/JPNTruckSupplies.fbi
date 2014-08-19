@@ -36,7 +36,6 @@
   smoothAnim=0;
   soundcategory=JPNInf;
   stealth=1;
-  TEDClass=ENERGY;
   useBuildingGroundDecal=1;
 
   weapon1=noweapon;
