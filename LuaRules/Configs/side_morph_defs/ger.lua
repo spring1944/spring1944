@@ -25,18 +25,18 @@ local gerDefs = {
 	gergunyard = {
 		{
 			into = 'gerspyard',
-			metal = 3000,
+			metal = 3500,
 			energy = 0,
-			time = 85,
+			time = 100,
 			name = '  Self  \n  Propelled  ',
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
 		},
 		{
 			into = 'gerspyard1',
-			metal = 6500,
+			metal = 5250,
 			energy = 0,
-			time = 185,
+			time = 150,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,

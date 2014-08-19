@@ -34,9 +34,9 @@ local gbrDefs = {
 		},
 		{
 			into = 'gbrspyard1',
-			metal = 6500,
+			metal = 5250,
 			energy = 0,
-			time = 185,
+			time = 150,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
