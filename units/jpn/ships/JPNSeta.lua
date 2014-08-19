@@ -56,7 +56,7 @@ local JPN_Seta_Turret_76mm_Front = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-		fearlimit				= 75, -- 3/4 enclosed
+		fearlimit				= 15, -- 3/4 enclosed
     },
 }
 

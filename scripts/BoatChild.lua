@@ -18,7 +18,7 @@ local numBarrels = info.numBarrels
 local numRockets = info.numRockets
 
 local MIN_HEALTH = 1
-local FEAR_LIMIT = info.fearLimit
+local FEAR_LIMIT = info.fearLimit or 20
 local PINNED_LEVEL = 0.8 * FEAR_LIMIT
 
 local curFear = 0

@@ -56,7 +56,7 @@ local GER_MAL_Turret_105mm = BoatChild:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
-		fearlimit				= 75, -- 3/4 enclosed
+		fearlimit				= 15, -- 3/4 enclosed
     },
 }
 
