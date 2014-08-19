@@ -91,6 +91,7 @@ local GetUnitIsStunned = Spring.GetUnitIsStunned
 local GetVisibleUnits = Spring.GetVisibleUnits
 local GetAllUnits = Spring.GetAllUnits
 local GetMyTeamID = Spring.GetMyTeamID
+local GetTeamRulesParam = Spring.GetTeamRulesParam
 
 local GetMouseState = Spring.GetMouseState
 local TraceScreenRay = Spring.TraceScreenRay
@@ -129,6 +130,7 @@ local MAP_SIZE_Z = Game.mapSizeZ
 
 local DEFAULT_SUPPLY_RANGE = 300
 
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
 ------------------------------------------------
 --util
 ------------------------------------------------
@@ -173,6 +175,9 @@ local function GetMouseBuildPosition(oddX, oddZ)
 	return bx, bz
 end
 
+local function GetSupplyRangeModifier(teamID)
+	return 1 + (GetTeamRulesParam(teamID, teamSupplyRangeModifierParamName) or 0)
+end
 ------------------------------------------------
 --updates
 ------------------------------------------------
@@ -334,11 +339,12 @@ local function DrawTrucks()
 	local visibleUnits = GetVisibleUnits()
 
 	if not visibleUnits then return end
+
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local cp = UnitDefs[unitDefID].customParams or {}
-		local radius = cp.supplyrange
+		local radius = (cp.supplyrange or 0) * GetSupplyRangeModifier(myTeamID)
 		--Spring.Echo('truck', radius)
 		local unitTeam = GetUnitTeam(unitID)
 		local x, _, z = GetUnitPosition(unitID)
@@ -615,9 +621,12 @@ end
 
 function widget:Initialize()
 	local inUse = false
+
+	myTeamID = GetMyTeamID()
+
 	for unitDefID=1,#UnitDefs do
 		local unitDef = UnitDefs[unitDefID]
-		if (unitDef.customParams.ammosupplier == "1" and unitDef.speed == 0) then
+		if (unitDef.customParams.supplyrange and unitDef.speed == 0) then
 			local radius = unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE
 			local numSegments = ceil(radius / segmentLength)
 			local segmentAngle = 2 * PI / numSegments
@@ -634,7 +643,7 @@ function widget:Initialize()
 		if unitDef.tooltip and strFind(unitDef.tooltip, "Supply Truck") and unitDef.name ~= "usdukw" then
 			generalTruckDefIDs[unitDefID] = true
 		end
-		if unitDef.customParams.ammosupplier == "1" and unitDef.speed > 0 then
+		if unitDef.customParams.supplyrange and unitDef.speed > 0 then
 			--Spring.Echo(unitDef.humanName)
 			halftrackDefIDs[unitDefID] = true
 		end
@@ -644,8 +653,6 @@ function widget:Initialize()
 	if (not inUse) then
 		widgetHandler:RemoveWidget()
 	end
-
-	myTeamID = GetMyTeamID()
 
 	Reset()
 

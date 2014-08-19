@@ -12,7 +12,6 @@
   category=SHIP MINETRIGGER;
   corpse=USLCVP_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=350;
     hasturnbutton=1;
     transportsquad=us_platoon_lcvp;
@@ -51,7 +50,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=25;
   transportMass=1500;
   transportSize=1;

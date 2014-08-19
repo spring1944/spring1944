@@ -13,7 +13,6 @@
   category=SHIP MINETRIGGER;
   corpse=GERMFP_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
     transportsquad=ger_platoon_mfp;
@@ -52,7 +51,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=18;
   transportMass=8000;
   transportSize=18;

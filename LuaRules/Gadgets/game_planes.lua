@@ -28,6 +28,13 @@ local PLANE_STATE_RETREAT = 1
 local DEPOSIT_AMOUNT = 0.65
 local PENALTY_AMOUNT = 0.1
 
+-- a scout plane can cover 32 map squares on a 'normal' tank of gas (60 seconds).
+-- this becomes a reference point for how much to scale fuel amounts based on
+-- map size. We add a 25% bump so the planes have some time to do their work
+-- once they arrive. The formula is: 
+-- (mapDiagonalLength / REFERENCE_FUEL_AMOUNT) * definedPlaneFuel
+local REFERENCE_FUEL_AMOUNT = 34;
+
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local SetUnitPosition = Spring.SetUnitPosition
@@ -68,6 +75,7 @@ local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
 local mapSizeX, mapSizeZ = Game.mapSizeX, Game.mapSizeZ
+local mapX, mapY = Game.mapX, Game.mapY
 
 local CMDTYPE_ICON_MAP = CMDTYPE.ICON_MAP
 local CMDTYPE_ICON_UNIT_OR_MAP = CMDTYPE.ICON_UNIT_OR_MAP
@@ -201,6 +209,12 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
     local altitude = unitDef.wantedHeight
     sy = sy + altitude
     local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
+
+    -- scale plane fuel to map size (roughly)
+    local mapDiagonalLength = math.sqrt(mapX ^ 2 + mapY ^ 2)
+    local fuelBoost = mapDiagonalLength / REFERENCE_FUEL_AMOUNT
+    local currentFuel = unitDef.maxFuel
+    SetUnitFuel(unitID, fuelBoost * currentFuel)
     
     if unitID ~= nil then
         SetUnitPosition(unitID, sx, sy, sz)
@@ -481,6 +495,10 @@ function gadget:GameFrame(n)
                 end
             end
         elseif state == PLANE_STATE_RETREAT then
+			-- check that it has enough fuel for return at all times
+			if GetUnitFuel(unitID) < 2 and unitDef.maxFuel > 0 then
+				SetUnitFuel(unitID, unitDef.maxFuel)
+			end
             local ux, uy, uz = GetUnitPosition(unitID)
             if vDistanceToMapEdge(ux, uy, uz) <= RETREAT_TOLERANCE then
                 local hpLeft, totalHp = GetUnitHealth(unitID)

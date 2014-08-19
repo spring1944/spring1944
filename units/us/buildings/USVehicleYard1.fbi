@@ -18,7 +18,6 @@
   collisionVolumeOffsets=0 0 0;
   corpse=USVehicleYard_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0.01;
@@ -41,7 +40,6 @@
   smoothAnim=0;
   soundcategory=USYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=50;
   yardmap=ooooooo ooooooo occccco oocccco oocccco occccco occccco;

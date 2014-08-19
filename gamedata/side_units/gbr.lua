@@ -72,7 +72,6 @@ local gbrunits = {
     "gbr17pdr_truck",
     "gbr25pdr_truck",
     "gbrbofors_truck",
-	"gbrstaghound",
     "gbraecmkii",
     "gbrm10achilles",
   },
@@ -200,6 +199,7 @@ local gbrunits = {
     "pontoonraft",
     "gbrlca",
     "gbrfairmiled",
+	"gbrlcsl",
     "gbrlct",
     "gbrlcgm",
   }

@@ -21,14 +21,14 @@
   iconType=truck;
   idleAutoHeal=2;
   idleTime=1000;
-  leaveTracks=1;
+  leaveTracks=0;
   mass=300;
   maxDamage=300;
-  maxReverseVelocity=2.25;
+  maxReverseVelocity=1;
   maxSlope=10;
-  maxVelocity=4.5; //4.8
+  maxVelocity=1.15;
   maxWaterDepth=70;
-  movementClass=TANK_Truck_deep;
+  movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
   objectName=GERPontoonRaft_Truck.s3o;
   releaseHeld=1;
@@ -41,7 +41,6 @@
   sightDistance=800;
   soundcategory=GERTank;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=5;
   trackStrength=6.5;
   trackStretch=1;

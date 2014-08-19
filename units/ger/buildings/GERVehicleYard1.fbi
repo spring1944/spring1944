@@ -17,7 +17,6 @@
   collisionVolumeScales=100 17 100;
   collisionVolumeOffsets=0 0 0;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=500;
   }
   energyStorage=0.01;
@@ -40,7 +39,6 @@
   sightDistance=146;
   soundcategory=GERYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=50;
   yardmap=ooooooo ooooooo occccco oocccco oocccco occccco occccco;

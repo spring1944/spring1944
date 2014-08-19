@@ -1,0 +1,102 @@
+[UNITINFO] {
+  UnitName=JPNKi102;
+  name=Ki-102b Assault Plane;
+  description=Anti-tank Plane;
+  airSightDistance=4000;
+  brakeRate=5;
+  buildCostMetal=985;
+  buildPic=JPNKi102.png;
+  buildTime=985;
+  canAttack=1;
+  canDropFlare=1;
+  canFly=1;
+  canGuard=1;
+  canMove=1;
+  canPatrol=1;
+  CanStop=1;
+  category=AIR;
+  cruiseAlt=1350;
+  [customParams] {
+    armor_front=6;
+    armor_rear=6;
+    armor_side=6;
+    armor_top=0;
+    enginesound=yakb-;
+    enginesoundnr=20;
+    feartarget=1;
+    proptexture=prop3.tga;
+    maxammo=18;
+    weaponswithammo=1;
+  }
+  explodeAs=Vehicle_Explosion_Med;
+  footprintX=4;
+  footprintZ=4;
+  iconType=bomber;
+  idleAutoHeal=2;
+  idleTime=1800;
+  maneuverleashlength=1280;
+  maxAcc=0.702;
+  maxAileron=0.00375;
+  maxBank=0.9;
+  maxDamage=360;
+  maxElevator=0.00375;
+  maxFuel=160;
+  maxPitch=1;
+  maxRudder=0.0025;
+  maxSlope=10;
+  maxVelocity=11.2;
+  maxWaterDepth=0;
+  myGravity=0.6;
+  noChaseCategory=FLAG MINE HARDVEH BUILDING;
+  objectName=JPNKi102.s3o;
+  radarDistance=1000;
+  repairable=0;
+  seismicSignature=0;
+  selfDestructAs=Vehicle_Explosion_Med;
+  [sfxtypes] {
+    explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
+    explosionGenerator1=custom:MG_Muzzleflash;
+    explosionGenerator2=custom:XSMALL_Muzzleflash;
+    explosionGenerator3=custom:MG_SHELLCASINGS;
+    explosionGenerator4=custom:PLACEHOLDER_EFFECT04;
+    explosionGenerator5=custom:PLACEHOLDER_EFFECT05;
+    explosionGenerator6=custom:PLACEHOLDER_EFFECT06;
+    explosionGenerator7=custom:PLACEHOLDER_EFFECT07;
+    explosionGenerator8=custom:SMALL_MUZZLEFLASH;
+    explosionGenerator9=custom:SMALL_MUZZLEDUST;
+  }
+  showNanoFrame=0;
+  Side=JPN;
+  sightDistance=0;
+  smoothAnim=1;
+  SoundCategory=JPNBomber;
+  stealth=1;
+  turnRate=50;
+
+  badTargetCategory=FLAG AIR;
+
+  weapon1=jpnho401;
+  maxAngleDif1=15;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
+  weaponMainDir1=0 -1 9;
+
+  weapon2=MG15120mm;
+  maxAngleDif2=10;
+  onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir2=0 -1 9;
+  weaponSlaveTo2=1;
+
+  weapon3=MG15120mm;
+  maxAngleDif3=10;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir3=0 -1 9;
+  weaponSlaveTo3=1;
+
+  weapon4=TE4;
+  maxAngleDif4=50;
+  onlyTargetCategory4=AIR;
+  weaponMainDir4=0 1 -1;
+
+  weapon5=Medium_Tracer;
+}
+

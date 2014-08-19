@@ -22,7 +22,6 @@
   commander=1;
   corpse=GBRHQ_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     arrivalgap=450;
     blockfear=1;
     flagCapRate=10;
@@ -53,7 +52,6 @@
   smoothAnim=0;
   soundcategory=GBRYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20; //60
   yardmap=ooooooo ooyyyoo ooyyyoo ooyyyoo oyyyyyo yyyyyyy yyyyyyy;

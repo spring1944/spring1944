@@ -15,7 +15,6 @@
   collisionVolumeType=ellipsoid;
   corpse=GERBarracksBunker_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     blockfear=1;
     separatebuildspot=1;
     supplyRange=600;
@@ -38,7 +37,6 @@
   smoothAnim=0;
   soundcategory=GERYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20;
   yardmap=ooyyy yyyyy yyyyy yycyy ooyyy ooyyy ooyyy;

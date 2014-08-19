@@ -17,7 +17,6 @@
     weaponcost=14;
     weaponswithammo=0;
   }
-  energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;
@@ -41,7 +40,6 @@
   smoothAnim=0;
   soundcategory=USGun;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=10;
   trackStrength=6.5;
   trackStretch=1;

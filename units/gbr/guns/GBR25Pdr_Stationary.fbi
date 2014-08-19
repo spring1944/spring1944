@@ -53,18 +53,17 @@
   smoothAnim=0;
   soundcategory=GbrInf;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   
 
   weapon1=qf25pdrhe;
-  maxAngleDif1=35;
+  maxAngleDif1=50;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=qf25pdrsmoke;
-  maxAngleDif2=35;
+  maxAngleDif2=50;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;
 }

@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.09;
   buildCostEnergy=0;
-  buildCostMetal=420;
-  buildTime=420;
+  buildCostMetal=525;
+  buildTime=525;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   //collisionVolumeScales=13 12 30;
@@ -53,7 +53,6 @@
   smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=4;
   trackStrength=5;
   trackStretch=1;

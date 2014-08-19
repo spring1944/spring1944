@@ -1,6 +1,6 @@
 #include "constants.h"
 
-piece  base, turret, sleeve, barrel, flare, mg_flare, exhaust, front_wheels, rear_wheels, roller1, roller2, roller3, roller4, roller5, roller6, support1, support2, support3, tracks;
+piece  base, turret, sleeve, barrel, flare, mg_flare, exhaust, front_wheels, rear_wheels, roller1, roller2, roller3, roller4, roller5, roller6, support1, support2, support3, tracks, tracks2;
  
 static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, MGAiming, treadnum;
 
@@ -61,6 +61,28 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 // tracers
 #define SMALL_TRACER 	2048+4
 
+treads() 
+{ 
+   while( TRUE ) 
+   { 
+        if(bMoving) 
+           { 
+              if(treadnum == 0) 
+              {             
+              hide tracks2; 
+              show tracks; 
+              } 
+            if(treadnum == 1) 
+            { 
+            hide tracks; 
+            show tracks2; 
+			}
+            treadnum = !treadnum; 
+         } 
+      sleep 90; 
+   } 
+}
+
 Create()
 {
 	FX_HIDE
@@ -69,8 +91,10 @@ Create()
 	aim2 = FALSE;
 	reloading = FALSE;
 	treadnum=0;
+	hide tracks2;
 	// start continuous scripts
 	start-script SmokeUnit_GPL();
+	start-script treads();
 }
 
 StartMoving()
@@ -313,24 +337,26 @@ Killed(severity, corpsetype)
 	}
 	if( severity <= 250 )
 	{
-		corpsetype = 1;
+		corpsetype = 2;
 		explode roller1 type SHATTER | EXPLODE_ON_HIT;
 		explode roller2 type SHATTER | EXPLODE_ON_HIT;
 		explode roller3 type SHATTER | EXPLODE_ON_HIT;
 		explode roller4 type SHATTER | EXPLODE_ON_HIT;
 		explode roller5 type SHATTER | EXPLODE_ON_HIT;
+		return (0);
 	}
 	if(severity <= 1000)
 	{
-		corpsetype = 2;
+		corpsetype = 3;
 		explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 		explode roller1 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		explode roller2 type FALL | SMOKE | FIRE | EXPLODE_ON_HIT;
 		explode roller3 type SHATTER | EXPLODE_ON_HIT;
 		explode roller4 type SHATTER | EXPLODE_ON_HIT;
 		explode roller5 type SHATTER | EXPLODE_ON_HIT;
+		return (0);
 	}
-	corpsetype = 2;
+	corpsetype = 4;
 	explode turret type EXPLODE_ON_HIT | FIRE | FALL;
 	explode barrel type SHATTER;
 	explode front_wheels type SHATTER;

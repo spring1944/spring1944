@@ -21,7 +21,6 @@
   commander=1;
   corpse=GERHQBunker_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     arrivalgap=450;
     blockfear=1;
     flagCapRate=10;
@@ -53,7 +52,6 @@
   smoothAnim=0;
   soundcategory=GERYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   workerTime=20;

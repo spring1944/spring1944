@@ -18,7 +18,6 @@
   collisionVolumeType=box;
   corpse=BuildingDebris_Large;
   [customParams] {
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=2000;
   }
@@ -43,7 +42,6 @@
   smoothAnim=0;
   soundcategory=RUSInf;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=30;
   yardmap=occcco occcco occcco occcco occcco occcco;

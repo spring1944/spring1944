@@ -28,22 +28,6 @@ else
 	difficulty = "hard"
 end
 
-
--- Seed unsynced random number generator.
-if (math.randomseed ~= nil) then
-	--[[
-		initialize random generator:
-			could be more random, but should be ok,
-			sadly os.time() doesn't work here
-	]]--
-	local x, y = Spring.GetMouseState()
-	local r = Spring.GetFPS() + x + y
-	--Spring.Echo("C.R.A.I.G.: Seeding random number generator: " .. r)
-	math.random()      -- first random() call calls randomseed(1) internally
-	math.randomseed(r) -- hack until spring seeds it itself
-end
-
-
 -- include configuration
 include("LuaRules/Configs/craig/config.lua")
 

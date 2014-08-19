@@ -14,18 +14,18 @@ local rusDefs = {
 	rusgunyard = {
 		{
 			into = 'russpyard',
-			metal = 3500,
+			metal = 4025,
 			energy = 0,
-			time = 100,
+			time = 115,
 			name = '  Self  \n  Propelled  ',
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
 		},
 		{
 			into = 'russpyard1',
-			metal = 6500,
+			metal = 5200,
 			energy = 0,
-			time = 185,
+			time = 150,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,

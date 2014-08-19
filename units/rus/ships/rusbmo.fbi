@@ -18,6 +18,11 @@
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
   }
   energyMake=0;
   energyUse=0;
@@ -53,7 +58,6 @@
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
-  TEDClass=SHIP;
   turninplace=0;
   turnRate=300;
 

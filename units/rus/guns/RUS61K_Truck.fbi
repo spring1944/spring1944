@@ -21,8 +21,6 @@
   footprintX=3;
   footprintZ=3;
   iconType=aatruck;
-  idleAutoHeal=2;
-  idleTime=1000;
   leaveTracks=1;
   mass=300;
   maxDamage=300;
@@ -38,11 +36,10 @@
   [sfxtypes] {
   }
   showNanoFrame=0;
-  side=RUS;
   sightDistance=800;
+  smoothAnim=0;
   soundcategory=RUSVeh;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=5;
   trackStrength=6.5;
   trackStretch=1;

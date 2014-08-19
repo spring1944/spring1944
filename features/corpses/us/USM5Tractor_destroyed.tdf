@@ -1,0 +1,11 @@
+[usm5tractor_destroyed] {
+  description=Destroyed Artillery Tractor;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=3;
+  object=USM5Tractor_Dead.S3O;
+  reclaimable=1;
+}
+

@@ -1,0 +1,290 @@
+#define TAK
+
+piece base, ramp, load_arm, load_shoulder,
+	turret, sleeve, barrel, flare,
+	cargo,
+	wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Ramp
+#define RAMP_OPEN_ANGLE		<45>
+#define RAMP_OPEN_SPEED		<30>
+
+//********************Turret turn speeds
+#define AA25_TURRET_TURN			<60>
+#define AA25_TURRET_PITCH			<60>
+
+//*********************Recoil
+#define AA25_GUN_RECOIL			[0.3]
+#define AA25_GUN_RECOIL_SPEED	[10]
+#define AA25_GUN_BACK_SPEED		[5]
+
+
+#define LOAD_DIST			[125]
+
+#define SIG_DEATH			1
+#define SIG_MOVE			2
+#define SIG_LOAD			4
+#define SIG_AIM1			8
+
+#define RESTORE_PERIOD		2500
+
+// effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define XSMALL_MUZZLEFLASH 1024+5
+#define XSMALL_MUZZLEDUST 1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define SMALL_MUZZLEFLASH 1024+3
+#define SMALL_MUZZLEDUST 1024+4
+#define MEDIUMLARGE_MUZZLEFLASH 1024+8
+#define MEDIUMLARGE_MUZZLEDUST 1024+9
+
+
+#define SMOKEPIECE	base
+
+#include "constants.h"
+#include "damageSmoke.h"
+static-var					MaxSpeed, bRampOpen, bMoving, bTooFar, boom_len, boom_heading, boom_pitch, FearOk, bAimAA1;
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+Create()
+{
+	bMoving = FALSE;
+	FearOk=0;
+	MaxSpeed = get MAX_SPEED;
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+}
+
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn turret to y-axis <180> speed AA25_TURRET_TURN;
+	turn sleeve to x-axis <0> speed AA25_TURRET_PITCH;
+}
+
+OpenRamp()
+{
+	var newSpeed;
+	// we are opening the ramp, let's slow down (else we'll have the hold full of water)
+	newSpeed = MaxSpeed/10;
+	//set MAX_SPEED to newSpeed;
+	turn ramp to x-axis RAMP_OPEN_ANGLE speed RAMP_OPEN_SPEED;
+	wait-for-turn ramp around x-axis;
+	bRampOpen = TRUE;
+	return;
+}
+
+CloseRamp()
+{
+	bRampOpen = FALSE;
+	turn ramp to x-axis 0 speed RAMP_OPEN_SPEED;
+	wait-for-turn ramp around x-axis;
+	// now the ramp is closed, we can go full speed again
+	//set MAX_SPEED to MaxSpeed;
+	return;
+}
+
+// Transport script courtesy of Gnome's script for Spring SW reb ground trans
+TransportPickup(unitid, fromLua) {
+	if ( fromLua != 1 ) {
+		call-script OpenRamp();
+	}
+	if( get UNIT_ALLIED(unitid) == 1) { // only pick up allied units
+			attach-unit unitid to cargo;
+	}
+}
+
+TransportDrop(unitid, position) {
+	var depth, pos;
+	depth = get GROUND_HEIGHT(position);
+	if(depth < 3) {
+		return 0;
+	}
+	pos = get XZ_HYPOT(get PIECE_XZ(base) - position) + [5];
+	set BUSY to 1;
+	call-script OpenRamp();
+	turn load_shoulder to y-axis get XZ_ATAN(get PIECE_XZ(base) - position) now;
+	attach-unit unitid to load_arm;
+	move load_arm to z-axis pos speed [10000];
+	wait-for-move load_arm along z-axis;
+	drop-unit unitid;
+	move load_arm to z-axis [0] now;
+	wait-for-move load_arm along z-axis;
+	sleep 1;
+	set BUSY to 0;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx SFXTYPE_WAKE1 from wake1;
+		emit-sfx SFXTYPE_WAKE2 from wake2;
+		emit-sfx SFXTYPE_WAKE2 from wake3;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	start-script CloseRamp();
+	bMoving = TRUE;
+}
+
+QueryWeapon1(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon1(heading, pitch)
+{
+	bAimAA1 = TRUE;
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed AA25_TURRET_TURN;
+	turn sleeve to x-axis (0-pitch) speed AA25_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	start-script RestoreTurret();
+	bAimAA1 = FALSE;
+	return (TRUE);
+}
+
+Shot1(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+	move barrel to z-axis (0-AA25_GUN_RECOIL) speed AA25_GUN_RECOIL_SPEED;
+	sleep 100;
+	move barrel to z-axis [0] speed AA25_GUN_BACK_SPEED;
+}
+
+FireWeapon1()
+{
+	return;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret;
+}
+
+AimWeapon2(heading, pitch)
+{
+	if (bAimAA1)
+	{
+		return FALSE;
+	}
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret to y-axis heading speed AA25_TURRET_TURN;
+	turn sleeve to x-axis (0-pitch) speed AA25_TURRET_PITCH;
+	wait-for-turn turret around y-axis;
+	wait-for-turn sleeve around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+Shot2(foo)
+{
+	emit-sfx SMALL_MUZZLEFLASH from flare;
+	emit-sfx SMALL_MUZZLEDUST from flare;
+	move barrel to z-axis (0-AA25_GUN_RECOIL) speed AA25_GUN_RECOIL_SPEED;
+	sleep 100;
+	move barrel to z-axis [0] speed AA25_GUN_BACK_SPEED;
+}
+
+FireWeapon2()
+{
+	return;
+}
+
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<50)
+	{
+		corpsetype = 1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER;
+	return (TRUE);
+}

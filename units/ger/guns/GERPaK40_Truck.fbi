@@ -3,7 +3,6 @@
   name=Towed 7.5cm PaK 40;
   description=Anti-Tank Gun;
   acceleration=0.3;
-  airSightDistance=1500;
   brakeRate=0.96;
   buildCostEnergy=0;
   buildCostMetal=1260;
@@ -11,7 +10,7 @@
   buildTime=1260;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
-  corpse=GEROpelBlitz_Destroyed;
+  corpse=GERSdKfz11_Destroyed;
   [customParams] {
     lowammolevel=1;
     maxammo=4;
@@ -41,7 +40,6 @@
   smoothAnim=0;
   soundcategory=GERTank;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=10;
   trackStrength=6.5;
   trackStretch=1;

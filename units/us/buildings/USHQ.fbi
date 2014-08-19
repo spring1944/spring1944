@@ -20,7 +20,6 @@
   commander=1;
   corpse=USHQ_Destroyed;
   [customParams] {
-    ammoSupplier=1;
     arrivalgap=450;
     blockfear=1;
     flagCapRate=10;
@@ -50,7 +49,6 @@
   smoothAnim=0;
   soundcategory=USYard;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=20;
   yardmap=oooo oyyo oyyo oyyo yyyy yyyy;

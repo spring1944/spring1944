@@ -1,0 +1,319 @@
+#define TAK
+
+piece base,
+	  turret1, sleeve1, barrel1, flare1,
+	  turret2, sleeve2, barrel2, flare2,
+	  mg_turret, mg, mg_flare1, mg_flare2,
+	  wake1, wake2, wake3;
+
+#define BASE_SMOKE_PERIOD	40
+#define MIN_SMOKE_PERIOD	240
+
+//********************Turret turn speeds
+#define MAIN_TURRET_TURN		<15>
+#define MAIN_TURRET_PITCH		<20>
+
+#define MG_TURRET_TURN			<20>
+#define MG_TURRET_PITCH			<30>
+
+//*********************Recoil
+#define MAIN_GUN_RECOIL			[0.5]
+#define MAIN_GUN_RECOIL_SPEED	[10]
+#define MAIN_GUN_BACK_SPEED		[0.5]
+
+//*********************Death anim
+#define HULL_LIST_SPEED		<10>
+#define HULL_LIST_ANGLE		<-45>
+
+#define RESTORE_PERIOD		2500
+
+#define SIG_MOVE			2
+#define SIG_AIM1			4
+#define SIG_AIM2			8
+#define SIG_AIM3			16
+#define SIG_DEATH			512
+
+#define SMOKEPIECE	base
+
+#include "exptype.h"
+#include "sfxtype.h"
+#include "damageSmoke.h"
+
+static-var					CurrentSpeed, bMoving, mgAimDone;
+
+//effects
+#define placeholder_EFFECT01 1024+1
+#define placeholder_EFFECT02 1024+2
+#define placeholder_EFFECT03 1024+3
+#define placeholder_EFFECT04 1024+4
+#define placeholder_EFFECT05	1024+5
+#define placeholder_EFFECT06	1024+6
+#define MG_MUZZLEFLASH 1024+7
+#define MEDIUM_Muzzleflash 1024+8
+#define MEDIUM_MuzzleDust 1024+9
+
+// tracers
+#define SMALL_TRACER 	2048+4
+
+WorkingLoop()
+{
+	while(TRUE)
+	{
+		if(bMoving)
+		{
+			// engine smoke comes here. And engine sound.
+			sleep 500;
+		}
+		sleep 500;
+	}
+}
+
+InitTurrets()
+//Pre-position turrets
+{
+	turn turret2 to y-axis <180> now;
+}
+
+WaitForConstructionToFinish()
+{
+	while(get BUILD_PERCENT_LEFT)
+	{
+		sleep 150;
+	}
+}
+
+HideFlares()
+{
+	hide flare1;
+	hide flare2;
+	hide wake1;
+	hide wake2;
+	hide wake3;
+	hide mg_flare1;
+	hide mg_flare2;
+}
+
+Create()
+{
+	start-script HideFlares();
+	bMoving = FALSE;
+	call-script InitTurrets();
+	call-script WaitForConstructionToFinish();
+	start-script DamageSmoke();
+	start-script WorkingLoop();
+	mgAimDone = FALSE;
+}
+
+SweetSpot(piecenum)
+{
+	piecenum = base;
+}
+
+EmitWakes()
+{
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while( TRUE )
+	{
+		emit-sfx 2 from wake1;
+		emit-sfx 2 from wake2;
+		emit-sfx 2 from wake3;
+		sleep 300;
+	}
+}
+
+StopMoving()
+{
+	signal SIG_MOVE;
+	set-signal-mask SIG_MOVE;
+	// We don't want this to trigger on VERY short stops
+	sleep 300;
+	bMoving = FALSE;
+}
+
+StopCatcher()
+{
+	var newXZ, oldXZ, newHeading, oldHeading;
+	set-signal-mask SIG_MOVE|SIG_DEATH;
+	while(TRUE)
+	{
+		sleep 300;
+		newXZ = get PIECE_XZ(base);
+		newHeading = get HEADING;
+		if((oldXZ == newXZ) && (oldHeading == newHeading))
+		{
+			call-script StopMoving();
+		}
+		oldXZ = newXZ;
+		oldHeading = newHeading;
+	}
+}
+
+StartMoving()
+{
+	signal SIG_MOVE;
+	start-script EmitWakes();
+	start-script StopCatcher();
+	bMoving = TRUE;
+}
+
+RestoreTurret()
+{
+	set-signal-mask SIG_AIM1|SIG_AIM2|SIG_AIM3|SIG_DEATH;
+	sleep RESTORE_PERIOD;
+
+	turn turret1 to y-axis <0> speed MAIN_TURRET_TURN;
+	turn sleeve1 to x-axis <0> speed MAIN_TURRET_PITCH;
+	turn turret2 to y-axis <180> speed MAIN_TURRET_TURN;
+	turn sleeve2 to x-axis <0> speed MAIN_TURRET_PITCH;
+
+	turn mg_turret to y-axis <0> speed MG_TURRET_TURN;
+	turn mg to x-axis <0> speed MG_TURRET_PITCH;
+}
+
+// 85mm turrets
+QueryWeapon1(piecenum)
+{
+	piecenum = flare1;
+}
+
+AimFromWeapon1(piecenum)
+{
+	piecenum = turret1;
+}
+
+AimWeapon1(heading, pitch)
+{
+	signal SIG_AIM1;
+	set-signal-mask SIG_AIM1|SIG_DEATH;
+	turn turret1 to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve1 to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret1 around y-axis;
+	wait-for-turn sleeve1 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon1()
+{
+	emit-sfx MEDIUM_Muzzleflash from flare1;
+	emit-sfx MEDIUM_MuzzleDust from flare1;
+	move barrel1 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel1 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = flare2;
+}
+
+AimFromWeapon2(piecenum)
+{
+	piecenum = turret2;
+}
+
+AimWeapon2(heading, pitch)
+{
+	signal SIG_AIM2;
+	set-signal-mask SIG_AIM2|SIG_DEATH;
+	turn turret2 to y-axis heading speed MAIN_TURRET_TURN;
+	turn sleeve2 to x-axis (0-pitch) speed MAIN_TURRET_PITCH;
+	wait-for-turn turret2 around y-axis;
+	wait-for-turn sleeve2 around x-axis;
+	start-script RestoreTurret();
+	return (TRUE);
+}
+
+FireWeapon2()
+{
+	emit-sfx MEDIUM_Muzzleflash from flare2;
+	emit-sfx MEDIUM_MuzzleDust from flare2;
+	move barrel2 to z-axis (0-MAIN_GUN_RECOIL) speed MAIN_GUN_RECOIL_SPEED;
+	sleep 200;
+	move barrel2 to z-axis [0] speed MAIN_GUN_BACK_SPEED;
+}
+
+// Twin mg
+QueryWeapon3(piecenum)
+{
+	piecenum = mg_flare1;
+}
+
+AimFromWeapon3(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon3(heading, pitch)
+{
+	signal SIG_AIM3;
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	mgAimDone = FALSE;
+	turn mg_turret to y-axis heading speed MG_TURRET_TURN;
+	turn mg to x-axis (0-pitch) speed MG_TURRET_PITCH;
+	wait-for-turn mg_turret around y-axis;
+	wait-for-turn mg around x-axis;
+	start-script RestoreTurret();
+	mgAimDone = TRUE;
+	return (TRUE);
+}
+
+FireWeapon3()
+{
+}
+
+Shot3(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare1;
+	emit-sfx SMALL_TRACER from mg_flare1;
+}
+
+QueryWeapon4(piecenum)
+{
+	piecenum = mg_flare2;
+}
+
+AimFromWeapon4(piecenum)
+{
+	piecenum = mg_turret;
+}
+
+AimWeapon4(heading, pitch)
+{
+	set-signal-mask SIG_AIM3|SIG_DEATH;
+	// Wait for main weapon to finish aiming
+	while(!mgAimDone)
+	{
+		sleep 30;
+	}
+	return (TRUE);
+}
+
+FireWeapon4()
+{
+}
+
+Shot4(foo)
+{
+	emit-sfx MG_MUZZLEFLASH from mg_flare2;
+	emit-sfx SMALL_TRACER from mg_flare2;
+}
+
+Killed(severity, corpsetype)
+{
+	signal SIG_DEATH;
+	if (severity<99)
+	{
+		corpsetype = 1;
+		turn base to z-axis HULL_LIST_ANGLE speed HULL_LIST_SPEED;
+		wait-for-turn base around z-axis;
+		explode base type		BITMAPONLY|BITMAP1;
+		return (TRUE);
+	}
+	corpsetype = 2;
+	explode base type		SHATTER|BITMAP1;
+	explode turret1 type	FALL|EXPLODE_ON_HIT|FIRE;
+	explode turret2 type	FALL|EXPLODE_ON_HIT|FIRE;
+	explode mg_turret type	FALL|EXPLODE_ON_HIT|FIRE;
+	return (TRUE);
+}

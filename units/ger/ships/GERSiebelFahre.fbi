@@ -13,7 +13,6 @@
   category=SHIP MINETRIGGER;
   corpse=GERSiebelFahre_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=400;
     hasturnbutton=1;
   }
@@ -51,7 +50,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=48;
   transportMass=4000;
   transportSize=2;

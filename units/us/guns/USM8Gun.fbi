@@ -54,7 +54,6 @@
   sightDistance=701;
   soundcategory=USGun;
   stealth=1;
-  TEDClass=KBOT;
   turnRate=120;
   upright=1;
   badTargetCategory=FLAG;

@@ -29,6 +29,8 @@ local SetUnitExperience  = Spring.SetUnitExperience
 local SetUnitRulesParam  = Spring.SetUnitRulesParam
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 local UseUnitResource	 = Spring.UseUnitResource
+local GetTeamRulesParam	= Spring.GetTeamRulesParam
+local SetTeamRulesParam	= Spring.SetTeamRulesParam
 
 -- Constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -39,13 +41,19 @@ local ammoRangeCache		= {} -- unitDefID = range
 
 local ammoSuppliers		= {}
 
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
+local supplyModifiersCache = {}
+
 local teams 			= Spring.GetTeamList()
 local numTeams			= #teams
 
+if gadgetHandler:IsSyncedCode() then
+--	SYNCED
 for i = 1, numTeams do
 	local teamID = teams[i]
 	-- setup per-team ammo supplier arrays
 	ammoSuppliers[teamID] = {}
+	Spring.SetTeamRulesParam(teamID, teamSupplyRangeModifierParamName, 0)
 end
 
 local vehicles = {}
@@ -62,9 +70,21 @@ NB: the customParams used by this script:
 	weaponswithammo			Number of weapons that use ammo. Must be the first ones. Default is 2
 ]]
 
-if gadgetHandler:IsSyncedCode() then
---	SYNCED
+local function GetSupplyRangeModifier(teamID)
+	return 1 + (GetTeamRulesParam(teamID, teamSupplyRangeModifierParamName) or 0)
+end
 
+local function CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
+	if cp.supplyrange then
+		ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
+		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	end
+	if cp.supplyrangemodifier then
+		local modifier = tonumber(cp.supplyrangemodifier)
+		supplyModifiersCache[unitDefID] = modifier
+		SetTeamRulesParam(teamID, teamSupplyRangeModifierParamName, GetSupplyRangeModifier(teamID) - 1 + supplyModifiersCache[unitDefID])
+	end
+end
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
 	--Spring.Echo("Reload Frame for unit " .. unitID .. " weapon# " .. weaponNum .. " is " .. reloadFrame)
@@ -117,9 +137,10 @@ local function ProcessWeapons(unitID)
 end
 
 local function FindSupplier(unitID, teamID)
+	local rangeModifier = GetSupplyRangeModifier(teamID)
 	for supplierID, ammoRange in pairs(ammoSuppliers[teamID]) do
 		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
-		if separation <= ammoRange then
+		if separation <= ammoRange * rangeModifier then
 			return supplierID
 		end
 	end
@@ -150,9 +171,10 @@ local function Resupply(unitID)
 		local maxAmmo = tonumber(UnitDefs[unitDefID].customParams.maxammo)		
 		
 		if logisticsLevel < weaponCost then
+			SetUnitRulesParam(unitID, "insupply", 2)
 			return
 		else
-		
+			SetUnitRulesParam(unitID, "insupply", 1)
 			if oldAmmo < maxAmmo and weaponCost >= 0 then
 				local newAmmo = oldAmmo + 1
 				UseUnitResource(unitID, "e", weaponCost)
@@ -192,6 +214,7 @@ local function Resupply(unitID)
 			end
 		end
 	else
+		SetUnitRulesParam(unitID, "insupply", 0)
 		return
 	end
 
@@ -220,15 +243,19 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
-	if ammoRangeCache[unitDefID] then
-		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	if ammoRangeCache[unitDefID] or supplyModifiersCache[unitDefID] then
+		if ammoRangeCache[unitDefID] then
+			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		end
+		if supplyModifiersCache[unitDefID] then
+			SetTeamRulesParam(teamID, teamSupplyRangeModifierParamName, GetSupplyRangeModifier(teamID) - 1 + supplyModifiersCache[unitDefID])
+		end
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		-- Build table of suppliers
-		if cp and cp.supplyrange then -- is a supplier
-			ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
-			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		if cp then -- can be a supplier
+			CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
 		end
 	end
 end
@@ -236,6 +263,9 @@ end
 local function CleanUp(unitID, unitDefID, teamID)
 	if ammoRangeCache[unitDefID] then
 		ammoSuppliers[teamID][unitID] = nil
+	end
+	if supplyModifiersCache[unitDefID] then
+		SetTeamRulesParam(teamID, teamSupplyRangeModifierParamName, GetSupplyRangeModifier(teamID) - 1 - supplyModifiersCache[unitDefID])
 	end
 end
 
@@ -280,6 +310,7 @@ end
 
 function gadget:TeamDied(teamID)
 	ammoSuppliers[teamID] = {}
+	SetTeamRulesParam(teamID, teamSupplyRangeModifierParamName, 0)
 end
 
 
@@ -289,8 +320,8 @@ function gadget:GameFrame(n)
 			local unitTeam = GetUnitTeam(unitID)
 			local unitDefID = GetUnitDefID(unitID)
 			local ud = UnitDefs[unitDefID]
-			if ud.customParams.ammosupplier == '1' then
-				ammoSuppliers[unitID] = true
+			if ud.customParams then
+				CheckAmmoSupplier(unitID, unitDefID, unitTeam, ud.customParams)
 			end
 			if ud.customParams.maxammo then
 				SetUnitRulesParam(unitID, "ammo", ud.customParams.maxammo)

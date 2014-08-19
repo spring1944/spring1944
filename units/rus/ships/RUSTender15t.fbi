@@ -12,7 +12,6 @@
   category=SHIP MINETRIGGER;
   corpse=RUSTender15t_dead;
   [customParams] {
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=350;
     hasturnbutton=1;
@@ -53,7 +52,6 @@
   smoothAnim=0;
   SoundCategory=RUSBoat;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=20;
   transportMass=1000;
   transportSize=1;

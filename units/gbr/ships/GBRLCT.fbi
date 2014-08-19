@@ -16,7 +16,6 @@
   collisionVolumeType=box;
   corpse=GBRLCT_dead;
   [customParams] {
-    ammoSupplier=1;
     supplyRange=600;
     hasturnbutton=1;
     transportsquad=gbr_platoon_lct;
@@ -56,10 +55,9 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=30;
   transportMass=27000;
-  transportSize=54;
+  transportSize=54;;
   turninplace=0;
   turnRate=35;
 

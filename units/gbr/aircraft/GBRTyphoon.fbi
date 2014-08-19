@@ -2,9 +2,7 @@
   UnitName=GBRTyphoon;
   name=Hawker Typhoon Mk.IB;
   description=Attack Fighter;
-  acceleration=0.25;
   airSightDistance=4000;
-  bmcode=1;
   brakeRate=5;
   buildCostEnergy=0;
   buildCostMetal=3000;
@@ -18,7 +16,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=600;
+  cruiseAlt=900;
   [customParams] {
     enginesound=spitfireb-;
     enginesoundnr=18;
@@ -36,17 +34,17 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
+  maxAcc=0.648;
   maxAileron=0.0044;
   maxBank=0.9;
   maxDamage=444.5;
   maxElevator=0.0031;
   maxFuel=120;
-  maxPitch=0.257;
+  maxPitch=1;
   maxRudder=0.0023;
   maxSlope=10;
-  maxVelocity=20;
+  maxVelocity=14;
   maxWaterDepth=0;
-  moverate1=4; //does this tag even work?
   myGravity=0.6;
   noChaseCategory=FLAG MINE BUILDING;
   objectName=GBRTyphoon.S3O;
@@ -65,13 +63,8 @@
   sightDistance=200;
   smoothAnim=1;
   stealth=1;
-  steeringmode=1;
-  TEDClass=VTOL;
-  turnRadius=1650;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
-  wingAngle=0.1;
-  wingDrag=0.1;
 
   weapon1=HVARRocket;
   maxAngleDif1=30;

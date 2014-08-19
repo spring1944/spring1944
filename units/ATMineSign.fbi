@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=APMineSign;
+  unitname=ATMineSign;
   name=Warning! AT Mines!;
   buildCostEnergy=0;
   buildCostMetal=360;
@@ -10,7 +10,7 @@
 	hiddenbuilding=1;
     dontCount=1;
     ismine=1;
-    minetype=apminesign;
+    minetype=atminesign;
   }
   footprintX=1;
   footprintZ=1;
@@ -30,7 +30,6 @@
   smoothAnim=0;
   soundcategory=Nothing;
   stealth=1;
-  TEDClass=SPECIAL;
   yardmap=o;
 }
 

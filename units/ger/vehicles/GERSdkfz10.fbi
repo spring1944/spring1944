@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=2125;
-  buildTime=2125;
+  buildCostMetal=1275;
+  buildTime=1275;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GERSdKfz10_Destroyed;
@@ -56,7 +56,6 @@
   smoothAnim=0;
   soundcategory=GERTank;
   stealth=1;
-  TEDClass=TANK;
   trackOffset=10;
   trackStrength=7;
   trackStretch=1;

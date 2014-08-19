@@ -55,7 +55,6 @@
   sightDistance=701;
   soundcategory=GERInf;
   stealth=1;
-  TEDClass=KBOT;
   turnRate=120;
   upright=1;
   badTargetCategory=FLAG;

@@ -12,7 +12,6 @@
   category=SHIP MINETRIGGER;
   corpse=GBRLCA_dead;
   [customParams] {
-    ammoSupplier=1;
     armor_front=28.5; // 3/8in for doors, + 3/4in? ramp
     armor_rear=19;
     armor_side=19; // wiki says 3/4in sides
@@ -46,7 +45,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=20;
   transportMass=1000;
   transportSize=1;

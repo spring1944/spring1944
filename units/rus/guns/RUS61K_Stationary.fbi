@@ -9,7 +9,6 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=RUS61K.png;
   buildTime=1400;
   category=DEPLOYED;
   corpse=RUS61K_Destroyed;
@@ -46,7 +45,6 @@
   smoothAnim=0;
   soundcategory=RUSGun;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   

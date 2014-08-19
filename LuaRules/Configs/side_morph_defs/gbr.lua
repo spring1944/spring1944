@@ -3,7 +3,7 @@ local gbrDefs = {
    	gbrstorage = {
 		{
 			into = 'gbrstoragecamo',
-			metal = 2000,
+			metal = 1000,
 			energy = 0,
 			time = 25,
 			name = '  Camo  ',
@@ -34,9 +34,9 @@ local gbrDefs = {
 		},
 		{
 			into = 'gbrspyard1',
-			metal = 6500,
+			metal = 5250,
 			energy = 0,
-			time = 185,
+			time = 150,
 			name = '  Tank  \n  Destroyers  ',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,

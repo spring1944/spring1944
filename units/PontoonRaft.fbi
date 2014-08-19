@@ -9,7 +9,7 @@
   buildCostMetal=200;
   buildTime=200;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=SHIP MINETRIGGER SOFTVEH;
   [customParams] {
     dontCount=1;
   }
@@ -34,7 +34,6 @@
   sightDistance=800;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   transportCapacity=1;
   transportSize=9;
   turninplace=0;

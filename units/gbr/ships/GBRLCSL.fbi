@@ -17,6 +17,15 @@
   corpse=GBRLCSL_dead;
   [customParams] {
     hasturnbutton=1;
+    lowammolevel=2;
+    maxammo=10; // 40 rounds
+    weaponcost=10;
+    weaponswithammo=2;
+	smokegenerator=1;
+	smokeradius=300;
+	smokeduration=40;
+	smokeceg=SMOKESHELL_Medium;
+	smokegencooldown=30;
   }
   energyMake=0;
   energyUse=0;
@@ -51,7 +60,6 @@
   sightDistance=840;
   smoothAnim=0;
   stealth=1;
-  TEDClass=SHIP;
   turninplace=0;
   turnRate=240;
 

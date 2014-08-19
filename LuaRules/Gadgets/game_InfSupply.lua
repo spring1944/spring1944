@@ -19,7 +19,7 @@ local GetUnitDefID			 	= Spring.GetUnitDefID
 local GetUnitSeparation			= Spring.GetUnitSeparation
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetUnitIsStunned			= Spring.GetUnitIsStunned
---local GetUnitWeaponState		= Spring.GetUnitWeaponState
+local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local ValidUnitID				= Spring.ValidUnitID
 -- Synced Ctrl
 local SetUnitWeaponState		= Spring.SetUnitWeaponState
@@ -35,6 +35,7 @@ local ammoRangeCache		= {} -- unitDefID = range
 local infReloadCache	= {} -- unitDefID = reload
 
 local ammoSuppliers		= {} -- teamID = {[supplierID] = range, [supplierID] = range, ...}
+local teamSupplyRangeModifierParamName = 'supply_range_modifier'
 
 local infantry 			= {} -- teamID = {[infID] = reload, [infID] = reload, ...}
 
@@ -57,10 +58,22 @@ end
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
+local function GetSupplyRangeModifier(teamID)
+	return 1 + (GetTeamRulesParam(teamID, teamSupplyRangeModifierParamName) or 0)
+end
+
+local function CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
+	if cp.supplyrange then
+		ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
+		ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+	end
+end
+
 local function FindSupplier(unitID, teamID)
+	local rangeModifier = GetSupplyRangeModifier(teamID)
 	for supplierID, ammoRange in pairs(ammoSuppliers[teamID]) do
 		local separation = GetUnitSeparation(unitID, supplierID, true) or math.huge
-		if separation <= ammoRange then
+		if separation <= ammoRange * rangeModifier then
 			return supplierID
 		end
 	end
@@ -86,14 +99,17 @@ function gadget:Initialize()
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	if not teamID then return end -- team already died
 	if infReloadCache[unitDefID] then
 		infantry[teamID][unitID] = infReloadCache[unitDefID]
+		Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
-		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] then -- unit is armed inf
+		if cp and cp.feartarget and not(cp.maxammo) and ud.weapons[1] and not ud.canFly then -- unit is armed inf
 			infReloadCache[unitDefID] = WeaponDefs[ud.weapons[1].weaponDef].reload
 			infantry[teamID][unitID] = infReloadCache[unitDefID]
+			Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
 		end
 	end
 end
@@ -105,24 +121,23 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		-- Build table of suppliers
-		if cp and cp.supplyrange then -- is a supplier
-			ammoRangeCache[unitDefID] = tonumber(cp.supplyrange)	
-			ammoSuppliers[teamID][unitID] = ammoRangeCache[unitDefID]
+		if cp then -- can be a supplier
+			CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
 		end
 	end
 end
 
+local function CleanUp(unitID, unitDefID, teamID)
+	if ammoRangeCache[unitDefID] then
+		ammoSuppliers[teamID][unitID] = nil
+	end
+end
 
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	-- return if team has already died
-	if teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID)) then return end
-	
-	-- Check if the unit was a supplier and was fully built	
-	if ammoRangeCache[unitDefID] then
-		ammoSuppliers[teamID][unitID] = nil
-	elseif infReloadCache[unitDefID] then
-		infantry[teamID][unitID] = nil
-	end
+	if not teamID or (teamID ~= GAIA_TEAM_ID and select(3, Spring.GetTeamInfo(teamID))) then return end
+
+	CleanUp(unitID, unitDefID, teamID)
 end
 
 function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
@@ -141,9 +156,7 @@ local function ProcessUnit(unitID, teamID, reload, stalling)
 		-- Stalling. (stall penalty!)
 		if (stalling) then
 			SetUnitWeaponState(unitID, 1, {reloadTime = STALL_PENALTY*reload})
-			return
 		end
-
 		-- In supply radius. (supply bonus!)
 		-- First check own team
 		local supplierID = FindSupplier(unitID, teamID)
@@ -157,13 +170,19 @@ local function ProcessUnit(unitID, teamID, reload, stalling)
 			i = i + 1
 		end
 		if supplierID then
+			-- Stalling. (stall penalty!)
+			if (stalling) then
+				Spring.SetUnitRulesParam(unitID, "insupply", 2)
+				return
+			end
+			Spring.SetUnitRulesParam(unitID, "insupply", 1)
 			SetUnitWeaponState(unitID, 1, {reloadTime = SUPPLY_BONUS*reload})
 			return
+		elseif not stalling then
+			Spring.SetUnitRulesParam(unitID, "insupply", 0)
+			-- reset reload time otherwise
+			SetUnitWeaponState(unitID, 1, {reloadTime = reload})
 		end
-
-		-- reset reload time otherwise
-		SetUnitWeaponState(unitID, 1, {reloadTime = reload})
-		
 		-- Use resources if outside of supply
 		--[[if (reloadFrame > savedFrame[unitID]) then
 			savedFrame[unitID] = reloadFrame

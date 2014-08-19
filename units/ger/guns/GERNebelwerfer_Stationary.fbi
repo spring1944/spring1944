@@ -30,6 +30,7 @@
   maxDamage=2500;
   maxSlope=15;
   maxWaterDepth=0;
+  noAutoFire=1;
   noChaseCategory=FLAG AIR MINE;
   objectName=GERNebelwerfer_Stationary.S3O;
   onoffable=1;
@@ -51,7 +52,6 @@
   smoothAnim=0;
   soundcategory=GERInf;
   stealth=1;
-  TEDClass=TURRET;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
   

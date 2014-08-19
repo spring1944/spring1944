@@ -17,7 +17,7 @@
   explodeAs=ATMine;
   footprintX=1;
   footprintZ=1;
-  iconType=mines;
+  //iconType=mines;
   init_cloaked=1;
   kamikaze=1;
   levelGround=0;
@@ -36,7 +36,6 @@
   smoothAnim=0;
   soundcategory=Nothing;
   stealth=1;
-  TEDClass=SPECIAL;
   useBuildingGroundDecal=1;
   yardmap=y;
 

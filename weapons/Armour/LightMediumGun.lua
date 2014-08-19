@@ -21,6 +21,7 @@ local LightMediumGunClass = Weapon:New{
 
 -- HE Round Class
 local LightMediumGunHEClass = Weapon:New{
+  accuracy           = 300,
   edgeEffectiveness  = 0.25,
   explosionGenerator = [[custom:HE_Medium]],
   explosionSpeed     = 30, -- needed?

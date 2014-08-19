@@ -72,6 +72,9 @@ for _, sideFile in pairs(sides) do
 	copytable(TankObstacle, UnitDefs[side .. "tankobstacle"])
 end
 
+-- have to implement squad file preloading here, because it's needed for transport stuff
+local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
+
 for name, ud in pairs(UnitDefs) do
 	--MODOPTION CONTROLS
 	if (modOptions) then	
@@ -165,6 +168,7 @@ for name, ud in pairs(UnitDefs) do
     --sets base values for detection radii
     --index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
     local detection = {
+        BUILDING    = {300, 2000, 650, 0},
         INFANTRY    = {650, 2000, 650, 1400},
         SOFTVEH     = {300, 2000, 950, 0},
         OPENVEH     = {300, 2000, 1250, 0},
@@ -198,6 +202,7 @@ for name, ud in pairs(UnitDefs) do
 		if ud.customparams.feartarget then
 			if (ud.maxvelocity) then
 				ud.maxvelocity = ud.maxvelocity * infSpeedMult
+				ud.crushresistance = 12
 			end
 		end
 	end
@@ -272,9 +277,13 @@ for name, ud in pairs(UnitDefs) do
 			ud.usepiececollisionvolumes = true
 		end
 	end
-	-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
-	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 and (not ud.builder) then
-		ud.pushresistant = true
+	
+	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
+		-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
+		if (not ud.builder) then
+			ud.pushresistant = true
+		end
+		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
 		--new sensor stuff
 		ud.stealth = false
 		ud.activatewhenbuilt = true
@@ -287,7 +296,13 @@ for name, ud in pairs(UnitDefs) do
 		--set health
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
-		local logMass = math.log10(ud.mass) or 999 --a crazy default value so we see it when it happens
+
+        --a crazy default value so we see it when it happens
+        if (not ud.mass) then
+            ud.mass = 99999999
+        end
+		local logMass = math.log10(ud.mass)
+
 		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
 		--Spring.Echo(name, "changed health to", ud.maxdamage)
 	end
@@ -311,6 +326,35 @@ for name, ud in pairs(UnitDefs) do
 	
 	ud.transportbyenemy = false
 	ud.collisionvolumetest = 1
+
+	-- transport squad stuff
+	-- units which bring other units into game with them should have their cost and buildtime increased accordingly
+	if ud.customparams and ud.customparams.transportsquad then
+		--Spring.Echo("Unit with built-in cargo squad: "..ud.name)
+		local squadName = ud.customparams.transportsquad
+		if squadName then
+			local squadDef = squadDefs[squadName]
+			if squadDef then
+				local addedCost = 0
+				for i, unitName in ipairs(squadDef.members) do
+					local newUD = UnitDefs[unitName]
+					if newUD then
+						addedCost = addedCost + newUD.buildcostmetal
+					end
+				end
+				--Spring.Echo("Total squad cost: "..addedCost)
+				if addedCost > 0 then
+					ud.buildcostmetal = ud.buildcostmetal + addedCost
+					ud.buildtime = ud.buildcostmetal
+					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+				end
+			else
+				Spring.Echo("Squad def name not found in loaded table: "..squadName)
+			end
+		else
+			Spring.Echo("Squad unit not found in squad def files: "..squadName)
+		end
+	end
 	
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name

@@ -20,7 +20,6 @@
   corpse=Debris_Small;
   [customParams] {
 	hiddenbuilding=1;
-    ammoSupplier=1;
     dontCount=1;
     supplyRange=275;
   }
@@ -44,7 +43,6 @@
   smoothAnim=0;
   soundcategory=GBRInf;
   stealth=1;
-  TEDClass=PLANT;
   useBuildingGroundDecal=1;
   workerTime=0.01;
   yardmap=yyy yyy yyy;
