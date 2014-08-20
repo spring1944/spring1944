@@ -35,6 +35,7 @@ local ACAAClass = Weapon:New{
   tolerance          = 1400,
   customparams = {
     damagetype         = [[explosive]],
+    no_range_adjust    = true,
     fearaoe            = 450,
     fearid             = 701,
   },
