@@ -28,12 +28,12 @@ local PLANE_STATE_RETREAT = 1
 local DEPOSIT_AMOUNT = 0.65
 local PENALTY_AMOUNT = 0.1
 
--- a scout plane can cover 32 map squares on a 'normal' tank of gas (60 seconds).
+-- a scout plane can cover 24 map squares on a 'normal' tank of gas (60 seconds).
 -- this becomes a reference point for how much to scale fuel amounts based on
 -- map size. We add a 25% bump so the planes have some time to do their work
 -- once they arrive. The formula is: 
 -- (mapDiagonalLength / REFERENCE_FUEL_AMOUNT) * definedPlaneFuel
-local REFERENCE_FUEL_AMOUNT = 34;
+local REFERENCE_FUEL_AMOUNT = 17;
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
