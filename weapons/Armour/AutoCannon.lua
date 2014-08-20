@@ -14,6 +14,10 @@ local ACClass = Weapon:New{
   tolerance          = 700,
   turret             = true,
   weaponType         = [[Cannon]],
+  customparams = {
+	cegflare           = "XSMALL_MUZZLEFLASH",
+	flareonshot        = true,
+  },
 }
 
 -- AA Round Class
@@ -102,13 +106,15 @@ local FlaK3820mmAP = FlaK3820mm:New(ACAPClass, true):New{
 -- Flakvierling
 -- derives from the above, only with 1/4 the burstrate and 4x burst
 local FlakVierling20mmAA = FlaK3820mmAA:New({
-  burst              = 20,
-  burstrate          = 0.0325,
+  burst              = 16,
+  --burstrate          = 0.035, -- force to at least 1 frame
+  --reloadTime         = 1.2,
   name               = [[(Quad)]],
 }, true)
 local FlakVierling20mmHE = FlaK3820mmHE:New({
-  burst              = 12,
-  burstrate          = 0.04,
+  burst              = 16,
+  --burstrate          = 0.033,
+  --reloadTime         = 1.2,
   name               = [[(Quad)]],
 }, true)
 

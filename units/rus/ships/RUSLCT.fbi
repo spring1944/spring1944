@@ -10,9 +10,9 @@
   buildPic=ruslct.png;
   buildTime=1600;
   canMove=1;
-  category=SHIP MINETRIGGER;
+  category=LARGESHIP SHIP MINETRIGGER;
   collisionVolumeOffsets=0.0 -30.0 0.0;
-  collisionVolumeScales=60.0 100.0 220.0;
+  collisionVolumeScales=60.0 50.0 220.0;
   collisionVolumeType=box;
   corpse=RUSLCT_dead;
   [customParams] {

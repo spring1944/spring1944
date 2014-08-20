@@ -37,7 +37,7 @@ local damagedefs = {
   explosive = {
 	bunkers = 1/2,
     infantry = 9,
-	ships = 2,
+	ships = 2/3,
     unarmouredvehicles = 1,
     armouredvehicles = 2/3,
     lightbuildings = 2/3,
@@ -60,7 +60,7 @@ local damagedefs = {
     mines = 0,
   },
   shapedcharge = {
-	ships = 2,
+	ships = 1,
     lightbuildings = 1/10,
     flag = 0,
   },

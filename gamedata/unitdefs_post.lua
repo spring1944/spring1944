@@ -1,14 +1,11 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+-- Include table utilities
+VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 
+-- Setup modoptions
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
-
-
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
 
 local function disableunits(unitlist)
 	for name, ud in pairs(UnitDefs) do
@@ -24,38 +21,8 @@ local function disableunits(unitlist)
 	end
 end
 
-local function tobool(val)
-  local t = type(val)
-  if (t == 'nil') then
-    return false
-  elseif (t == 'boolean') then
-    return val
-  elseif (t == 'number') then
-    return (val ~= 0)
-  elseif (t == 'string') then
-    return ((val ~= '0') and (val ~= 'false'))
-  end
-  return false
-end
-
-local function copytable(input, output)
-	for k,v in pairs(input) do
-		if type(v) == "table" then
-			output[k] = {}
-			copytable(v, output[k])
-		else
-			output[k] = v
-		end
-	end
-end
-
---process ALL the units!
-
-local GMBuildOptions = {}
-local GM_UD
-
+-- Auto-generate per-nation {AP, AT}minesign units
 VFS.Include("gamedata/unitdefs_autogen.lua")
-
 local sides = VFS.DirList("luarules/configs/side_squad_defs", "*.lua")
 
 local ATMineSign = UnitDefs["atminesign"]
@@ -65,17 +32,30 @@ local TankObstacle = UnitDefs["tankobstacle"]
 for _, sideFile in pairs(sides) do
 	local side = sideFile:sub(string.len("luarules/configs/side_squad_defs/")+1, -5)
 	UnitDefs[side .. "atminesign"] = {}
-	copytable(ATMineSign, UnitDefs[side .. "atminesign"])
+	table.copy(ATMineSign, UnitDefs[side .. "atminesign"])
 	UnitDefs[side .. "apminesign"] = {}
-	copytable(APMineSign, UnitDefs[side .. "apminesign"])
+	table.copy(APMineSign, UnitDefs[side .. "apminesign"])
 	UnitDefs[side .. "tankobstacle"] = {}
-	copytable(TankObstacle, UnitDefs[side .. "tankobstacle"])
+	table.copy(TankObstacle, UnitDefs[side .. "tankobstacle"])
 end
 
 -- have to implement squad file preloading here, because it's needed for transport stuff
 local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
 
+
+local GMBuildOptions = {}
+local GM_UD
+
+-- Process ALL the units!
 for name, ud in pairs(UnitDefs) do
+	-- Convert all customparams subtables back into strings for Spring
+	if ud.customparams then
+		for k, v in pairs (ud.customparams) do
+			if type(v) == "table" or type(v) == "boolean" then
+				ud.customparams[k] = table.serialize(v)
+			end
+		end
+	end
 	--MODOPTION CONTROLS
 	if (modOptions) then	
 		if (modOptions.scoremode) then
@@ -116,47 +96,6 @@ for name, ud in pairs(UnitDefs) do
 			end
 		end
 	end
-
-		--none of these have mod options that link to them atm
-		--[[
-		if (modOptions.maxammo_mult) then
-			if (ud.customparams) then
-				if (ud.customparams.maxammo) and (ud.weapons) then
-					ud.customparams.maxammo = (modOptions.maxammo_mult * ud.customparams.maxammo)
-				end
-			end
-		end
-
-		if (modOptions.flankingmax_mult) then
-			if (ud.flankingbonusmax) then
-				ud.flankingbonusmax = (modOptions.flankingmax_mult * ud.flankingbonusmax)
-			end
-		end
-		
-		if (modOptions.flankingmin_mult) then
-			if (ud.flankingbonusmin) then
-				ud.flankingbonusmin = (modOptions.flankingmin_mult * ud.flankingbonusmin)
-			end
-		end
-		
-		if (modOptions.flankingmobility_mult) then
-			if (ud.flankingbonusmobilityadd) then
-				ud.flankingbonusmobilityadd = (modOptions.flankingmobility_mult * ud.flankingbonusmobilityadd)
-			end
-		end
-
-		if (modOptions.unit_speed_mult) then
-			if (ud.maxvelocity) then
-				ud.maxvelocity = (modOptions.unit_speed_mult * ud.maxvelocity)
-				ud.acceleration = (modOptions.unit_speed_mult * ud.acceleration)
-			end
-		end
-		if (modOptions.unit_metal_mult) then
-			if (ud.extractsmetal) then
-				ud.extractsmetal = (modOptions.unit_metal_mult * ud.extractsmetal)
-			end
-		end
-		]]--
 
  --END MODOPTION CONTROLS
  
@@ -302,9 +241,11 @@ for name, ud in pairs(UnitDefs) do
             ud.mass = 99999999
         end
 		local logMass = math.log10(ud.mass)
-
-		ud.maxdamage = (powerBase ^ logMass)*scaleFactor
-		--Spring.Echo(name, "changed health to", ud.maxdamage)
+		local cp = ud.customparams
+		if not (cp and (cp.mother or cp.child)) then -- exclude composites
+			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
+			--Spring.Echo(name, "changed health to", ud.maxdamage)
+		end
 	end
 
 	if (modOptions.unit_los_mult) then

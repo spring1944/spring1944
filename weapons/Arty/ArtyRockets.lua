@@ -29,6 +29,8 @@ local ArtyRocketClass = Weapon:New{
     fearaoe            = 200,
     fearid             = 501,
     howitzer           = 1,
+	cegflare           = "dirt_backblast",
+	flareonshot        = true,
   },
 }
 
@@ -85,7 +87,7 @@ local BBR_Rack = ArtyRocketClass:New{
 	burst		= 12,
 	burstrate	= 0.5,
 	explosionGenerator = [[custom:HE_Large]],
-	name               = [[4.5" Beach Barrage Rocket]],
+	name               = [[4.5" Beach Barrage Rocket Mk 7 Launcher]],
 	range              = 800,
 	soundStart         = [[RUS_Katyusha]],
 	wobble             = 2500,

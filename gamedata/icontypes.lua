@@ -325,6 +325,11 @@ local iconTypes = {
 		size			=	4,
 		distance	=	0.3,
 	},
+	turret = {
+		--bitmap		=	"icons/alert.tga",
+		size			=	0, -- should be invisible!
+		distance	=	0.3,
+	},
 	landingship = {
 		bitmap		=	"icons/l-boat.png",
 		size			=	4,

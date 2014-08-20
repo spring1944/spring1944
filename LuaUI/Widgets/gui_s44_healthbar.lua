@@ -204,7 +204,7 @@ function widget:Update(deltaTime)
 						if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
 							auraUnits[uid] = 
 							{
-								["suppress"] = (aurasuppress > 20 and 2) or (aurasuppress > 0) and 1 or 0,
+								["suppress"] = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
 								["ammo"] = auraoutofammo and 4 or nil,
 								["insupply"] = aurainsupply,
 								--['buildspeed'] = aurabuildspeed,
@@ -329,7 +329,8 @@ function widget:Update(deltaTime)
 					
 					if (not display) and (IsUnitSelected(uid) or aura) then display = true end
 					if isBeingTransported then display = false end
-					
+					if ud.customParams.child then display = true end
+                    
 					local radius,r,g,b,x,y,z,heightscale
 
 					if display or (SHOW_ICON[udid] and not isBeingTransported) then

@@ -16,7 +16,10 @@ local AAGunClass = Weapon:New{
   weaponType         = [[Cannon]],
   customparams = {
     damagetype         = [[explosive]],
+	cegflare           = "XSMALL_MUZZLEFLASH",
+	flareonshot        = true,
   },
+  
 }
 
 -- AA Round Class
@@ -112,10 +115,10 @@ local M1939_61K37mm = AAGunClass:New{
   },
 }
 local M1939_61K37mmAA = M1939_61K37mm:New(AAGunAAClass, true):New{
-  burst              = 2, -- seems strange difference to bofors?
-  burstrate          = 0.3,
+  burst              = 5, -- fed from 5 round clip
+  burstrate          = 0.35, -- 170rpm cyclic
   range              = 2025,
-  reloadtime         = 0.85,
+  reloadtime         = 3.75, -- 80rpm practical
 }
 local M1939_61K37mmHE = M1939_61K37mm:New(AAGunHEClass, true):New{
   burst              = 2,
