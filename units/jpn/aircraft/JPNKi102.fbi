@@ -1,7 +1,7 @@
 [UNITINFO] {
   UnitName=JPNKi102;
   name=Ki-102b Assault Plane;
-  description=Anti-tank Plane;
+  description=Anti-Tank Plane;
   airSightDistance=4000;
   brakeRate=5;
   buildCostMetal=985;

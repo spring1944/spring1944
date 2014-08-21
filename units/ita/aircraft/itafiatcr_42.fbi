@@ -1,6 +1,6 @@
 [UNITINFO] {
   UnitName=itafiatcr_42;
-  name=Fiat cr.42 Falco;
+  name=Fiat CR.42 Falco;
   description=Old Fighter 4x MG and 2x 50kg bombs(vs tanks/buildings);
   airSightDistance=4000;
   brakeRate=5;
