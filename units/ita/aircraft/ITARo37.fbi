@@ -1,6 +1,6 @@
 [UNITINFO] {
   UnitName=ITARo37;
-  name=Ro.37bis Lince;
+  name=Ro.37Bis Lince;
   description=Recon Plane;
   airSightDistance=5000;
   bankscale=1;

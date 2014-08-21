@@ -1,7 +1,7 @@
 [UNITINFO] {
   UnitName=JPNKi51;
   name=Ki.51 Assault Plane;
-  description=Ground-attack aircraft;
+  description=Ground-Attack Aircraft;
   airSightDistance=4000;
   radarDistance=1000;
   brakeRate=5;
