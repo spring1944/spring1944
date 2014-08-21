@@ -1,12 +1,12 @@
 function gadget:GetInfo()
   return {
-    name      = "Composite Ships Helper",
-    desc      = "Does stuffs for composite ships",
-    author    = "FLOZi (C. Lawrence)",
-    date      = "26 June 2014",
-    license   = "GNU GPL v2",
-    layer     = 0,
-    enabled   = true  --  loaded by default?
+	name      = "Composite Ships Helper",
+	desc      = "Does stuffs for composite ships",
+	author    = "FLOZi (C. Lawrence)",
+	date      = "26 June 2014",
+	license   = "GNU GPL v2",
+	layer     = 0,
+	enabled   = true  --  loaded by default?
   }
 end
 
@@ -14,13 +14,13 @@ end
 local SetUnitNoDraw			= Spring.SetUnitNoDraw
 -- Synced Read
 local GetUnitDefID			= Spring.GetUnitDefID
-local GetUnitPosition 		= Spring.GetUnitPosition
-local GetUnitTransporter 	= Spring.GetUnitTransporter
-local GetUnitsInCylinder 	= Spring.GetUnitsInCylinder
+local GetUnitPosition		= Spring.GetUnitPosition
+local GetUnitTransporter	= Spring.GetUnitTransporter
+local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
 -- Synced Ctrl
 local GiveOrderToUnit		= Spring.GiveOrderToUnit
-local AddUnitDamage         = Spring.AddUnitDamage
-
+local AddUnitDamage			= Spring.AddUnitDamage
+local TransferUnit			= Spring.TransferUnit
 
 
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
@@ -51,7 +51,16 @@ end
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 	motherCache[unitID] = nil
 	childCache[unitID] = nil
-    deadChildren[unitID] = nil
+	deadChildren[unitID] = nil
+end
+
+function gadget:UnitGiven(unitID, unitDefID, newTeam, oldTeam)
+	local children = motherCache[unitID]
+	if children then
+		for _, childID in pairs(children) do
+			TransferUnit(childID, newTeam, true)
+		end
+	end
 end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
@@ -76,9 +85,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if health - damage < MIN_HEALTH then
 		local newDamage = health - MIN_HEALTH
 		DisableChild(unitID, true)
-        -- if the component is toast, apply damage to the base unit (so they
-        -- don't become shields)
-        local passThroughDamage = damage - newDamage
+		-- if the component is toast, apply damage to the base unit (so they
+		-- don't become shields)
+		local passThroughDamage = damage - newDamage
 		local mother = childCache[unitID]
 		if mother and not Spring.GetUnitIsDead(mother) then
 			AddUnitDamage(mother, passThroughDamage, 0, attackerID)
