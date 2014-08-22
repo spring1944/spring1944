@@ -135,14 +135,13 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 	    maxammo					= 16, -- TODO: from BMO 37mm
 		aaweapon				= 1,
 		weaponcost				= 3,
-		weaponswithammo			= 2,
+		weaponswithammo			= 4,
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
 		fearlimit				= 25,
 		facing					= 2,
-		aaweapon				= 1,
     },
 }
 

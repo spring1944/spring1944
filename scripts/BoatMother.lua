@@ -93,12 +93,12 @@ function script.BlockShot(weaponID, targetID, userTarget)
 	if minRange then
 		local distance
 		if targetID then
-			distance = GetUnitSeparation(unitID, targetID, true)
+			distance = Spring.GetUnitSeparation(unitID, targetID, true)
 		elseif userTarget then -- shouldn't be the case with S44 torpedos
 			local cmd = GetUnitCommands(unitID, 1)[1]
 			if cmd.id == CMD.ATTACK then
 				local tx,ty,tz = unpack(cmd.params)
-				distance = GetUnitDistanceToPoint(unitID, tx, ty, tz, false)
+				distance = GG.GetUnitDistanceToPoint(unitID, tx, ty, tz, false)
 			end
 		end
 		if distance < minRange then return true end

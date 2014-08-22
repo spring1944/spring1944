@@ -12,6 +12,8 @@
     damagetype=explosive;
     fearaoe=400;
     fearid=701;
+	cegflare=XSMALL_MUZZLEFLASH;
+	flareonshot=1;
   }
   [damage] {
     default=41;
@@ -54,6 +56,8 @@
     damagetype=explosive;
     fearaoe=400;
     fearid=701;
+	cegflare=XSMALL_MUZZLEFLASH;
+	flareonshot=1;
   }
   [damage] {
     default=41;
@@ -99,6 +103,8 @@
     armor_penetration_1000m=6;
     armor_penetration_100m=29;
     damagetype=kinetic;
+	cegflare=XSMALL_MUZZLEFLASH;
+	flareonshot=1;
   }
   [damage] {
     default=345; // 119g bullet
@@ -144,6 +150,8 @@
     damagetype=explosive;
     fearaoe=30;
     fearid=301;
+	cegflare=XSMALL_MUZZLEFLASH;
+	flareonshot=1;
   }
   [damage] {
     default=41;
