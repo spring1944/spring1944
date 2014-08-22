@@ -19,7 +19,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1500;
+  cruiseAlt=1200;
   [customParams] {
     enginesound=po2-;
     enginesoundnr=11;
@@ -37,7 +37,7 @@
   maxAileron=0.0055;
   maxBank=1.1;
   maxDamage=240;
-  maxElevator=0.0044;
+  maxElevator=0.0064;
   maxFuel=95;
   maxPitch=1;
   maxRudder=0.005;
@@ -84,13 +84,13 @@
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=3;
 
-  weapon5=bredasafatcal05;
+  weapon5=bredasafatcal03;
   maxAngleDif5=10;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=3;
 
-  weapon6=bredasafatcal05;
+  weapon6=bredasafatcal03;
   maxAngleDif6=10;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 1;
