@@ -158,9 +158,9 @@ local itaDefs = {
 		},
 		name = "Bersaglieri Combat Platoon",
 		description = "8 x Bersaglieri Rifles, 2 x Bersaglieri SMG Troopers, 1 x Elitesolothurn, 1 x Bersaglieri Machinegunner, 1 x Bersaglieri Scout: Bersaglieri Assault Marksmen",
-		buildCostMetal = 1800,
+		buildCostMetal = 1900,
 		buildPic = "ITAbersaglieri.png",
-		buildTime = 1800,
+		buildTime = 1900,
 		side = "ITA",
 	},
   	["ita_platoon_carabinieri"] =

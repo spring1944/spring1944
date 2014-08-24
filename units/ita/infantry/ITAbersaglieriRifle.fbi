@@ -1,7 +1,7 @@
 [unitinfo] {
   unitname=ITAbersaglieriRifle;
   name=Italian Carcano Mod.91/41;
-  description=Elite Infantry armed with new rifle;
+  description=Elite Infantry armed with new rifle and heavy grenades;
   acceleration=0.375;
   airSightDistance=2500;
   brakeRate=0.9;
@@ -31,7 +31,7 @@
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR MINE;
   objectName=ITARifle.S3O;
-  script=gerrifle.cob;
+  script=itaeliterifle.cob;
   repairable=0;
   seismicDistance=840;
   seismicSignature=0;
@@ -63,8 +63,13 @@
   weapon2=OTO_model35;
   maxAngleDif2=170;
   badTargetCategory2=HARDVEH;
-  onlyTargetCategory2=BUILDING INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH;
+  onlyTargetCategory2=BUILDING INFANTRY DEPLOYED;
   weaponMainDir2=0 0 1;
+
+  weapon3=bredamod42;
+  maxAngleDif3=170;
+  onlyTargetCategory3=BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  weaponMainDir3=0 0 1;
 
 }
 

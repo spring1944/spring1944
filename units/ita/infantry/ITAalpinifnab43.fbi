@@ -55,7 +55,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=fnab45;
+  weapon1=fnab43;
   badTargetCategory1=OPENVEH SOFTVEH;
   maxAngleDif1=170;
   onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
