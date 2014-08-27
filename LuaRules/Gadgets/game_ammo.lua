@@ -35,6 +35,11 @@ local SetTeamRulesParam	= Spring.SetTeamRulesParam
 -- Constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
+-- seconds between each reload when in supply range
+local RELOAD_FREQUENCY = 3
+-- average ammo is around 11.
+local RELOAD_AVERAGE_DURATION = RELOAD_FREQUENCY * 11
+
 -- Variables
 local ammoRanges		= {} -- supplierID = ammoRange
 local ammoRangeCache		= {} -- unitDefID = range
@@ -176,8 +181,15 @@ local function Resupply(unitID)
 		else
 			SetUnitRulesParam(unitID, "insupply", 1)
 			if oldAmmo < maxAmmo and weaponCost >= 0 then
-				local newAmmo = oldAmmo + 1
-				UseUnitResource(unitID, "e", weaponCost)
+                -- scale the number of loaded rounds per tick so that total reload time 
+                -- never takes much more than RELOAD_AVERAGE_DURATION
+                -- (math.floor + 0.5 trick is because Lua lacks math.round, and we need integers)
+                local roundsPerTick = math.floor(maxAmmo * RELOAD_FREQUENCY / RELOAD_AVERAGE_DURATION + 0.5)
+                if roundsPerTick == 0 then
+                    roundsPerTick = 1
+                end
+				local newAmmo = oldAmmo + roundsPerTick
+				UseUnitResource(unitID, "e", weaponCost * roundsPerTick)
 				vehicles[unitID].ammoLevel = newAmmo
 				SetUnitRulesParam(unitID, "ammo",	newAmmo)
 			end
@@ -357,7 +369,7 @@ function gadget:GameFrame(n)
 			end
 			newVehicles = {}
 		end
-		if n % (3*30) < 0.1 then
+		if n % (RELOAD_FREQUENCY*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				--skip units which are being transported
 				-- also skip incomplete units (use the first return value)

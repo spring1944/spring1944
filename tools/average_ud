@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+use 5.14.4;
+use strict;
+use warnings;
+use File::Find qw(find);
+
+die "can't find units dir: need to run from S44Main.sdd root" if not -e 'units/';
+
+my $tag = $ARGV[0];
+die "usage: average_ud <name of unitdef parameter>" if !$tag;
+
+my $sum = 0;
+my $count = 0;
+
+find(sub {
+    my $filename = $_;
+    if (!-d $filename) {
+        open my $file, '<', $filename or die "could not open $filename";
+        while (my $line = <$file>) {
+            $line =~ /$tag*=\s*(?<value>\d+)/i;
+            if (exists $+{value}) {
+                #say "$filename and $+{value} with $count";
+                $count++;
+                $sum += $+{value};
+            }
+        }
+        close $file;
+    }
+}, 'units/');
+
+say "average $tag is: " . sprintf("%.3f", $sum / $count) if $count > 0;
