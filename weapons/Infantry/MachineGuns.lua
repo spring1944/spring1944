@@ -157,7 +157,6 @@ local MaximAA = Maxim:New{
   range              = 1050,
   customparams = {
     no_range_adjust    = true,
-    fearaoe            = 1,
     fearid             = 701,
   }
 }
@@ -222,10 +221,8 @@ local M2BrowningAA = M2Browning:New{
   range              = 1170,
   reloadTime         = 0.375,
   soundStart         = [[US_50CAL]],
-  sprayAngle         = 150,
   customparams = {
     no_range_adjust    = true,
-    fearaoe            = 1,
     fearid             = 701,
   }
 }
@@ -233,12 +230,12 @@ local M2BrowningAA = M2Browning:New{
 local M2BrowningAMG = M2Browning:New{
   burst             = 3,
   burstRate         = 0.085,
-  predictBoost      = 0.75,
   range             = 900,
   reloadTime        = 0.3,
   soundStart        = [[US_50CALAir]],
   sprayAngle        = 250,
   tolerance         = 1100, --?
+  weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,
   }

@@ -41,8 +41,8 @@ local SetUnitNoSelect		= Spring.SetUnitNoSelect
 -- constants
 local CMD_MOVE				= CMD.MOVE
 
-local FUEL_LOSS_RATE = 2 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
-local BUGOUT_LEVEL = 2 --amount of fear where the plane bugs out back to HQ
+local FUEL_LOSS_RATE = 8 -- the amount of 'fuel' (sortie time) lost per second while the unit is scared.
+local BUGOUT_LEVEL = 10 --amount of fear where the plane bugs out back to HQ
 
 -- variables
 local planeScriptIDs = {}
