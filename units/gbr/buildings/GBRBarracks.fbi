@@ -3,12 +3,12 @@
   name=British Army Barracks;
   description=Infantry Training & Housing Facility;
   buildCostEnergy=0;
-  buildCostMetal=2750;
+  buildCostMetal=2340;
   builder=1;
   buildingGroundDecalSizeX=7;
   buildingGroundDecalSizeY=7;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=2750;
+  buildTime=2340;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;

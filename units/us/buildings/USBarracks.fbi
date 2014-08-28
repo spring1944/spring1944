@@ -3,12 +3,12 @@
   name=US Army Barracks;
   description=Infantry Training & Housing Facility;
   buildCostEnergy=0;
-  buildCostMetal=2746;
+  buildCostMetal=2300;
   builder=1;
   buildingGroundDecalSizeX=7;
   buildingGroundDecalSizeY=7;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=2700;
+  buildTime=2300;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
