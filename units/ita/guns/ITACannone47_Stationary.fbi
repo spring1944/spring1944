@@ -5,11 +5,11 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=700;
+  buildCostMetal=400;
   buildingGroundDecalSizeX=5;
   buildingGroundDecalSizeY=5;
   buildingGroundDecalType=Dirt2.dds;
-  buildTime=900;
+  buildTime=400;
   category=DEPLOYED;
   corpse=ITACannone47_Destroyed;
   [customParams] {

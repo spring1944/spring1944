@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1350;
+  buildCostMetal=840;
   buildPic=GBR17Pdr.png;
-  buildTime=1350;
+  buildTime=840;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=gbrmorrisquad_destroyed;

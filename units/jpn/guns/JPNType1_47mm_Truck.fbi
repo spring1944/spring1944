@@ -6,9 +6,9 @@
   airSightDistance=1250;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1050;
+  buildCostMetal=640;
   buildPic=JPNType1_47mm_Truck.png;
-  buildTime=1050;
+  buildTime=640;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=JPNIsuzuTX40_Abandoned;

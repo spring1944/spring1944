@@ -5,9 +5,9 @@
   acceleration=0.3;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=1260;
+  buildCostMetal=840;
   buildPic=GERPaK40.png;
-  buildTime=1260;
+  buildTime=840;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=GERSdKfz11_Destroyed;
