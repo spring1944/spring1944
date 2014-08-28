@@ -163,9 +163,9 @@ local rusDefs = {
 		},
 		name = "Anti-Tank Assault Squad",
 		description = "3 x RPG-43 Anti-Tank Grenade, 2 x PTRD Anti-Tank Rifle: Heavy Anti-Tank Infantry",
-		buildCostMetal = 750,
+		buildCostMetal = 375,
 		buildPic = "RUSRPG43.png",
-		buildTime = 750,
+		buildTime = 375,
 		side = "RUS",
 	},
 	

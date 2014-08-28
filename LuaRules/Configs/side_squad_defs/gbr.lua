@@ -123,9 +123,9 @@ local gbrDefs = {
 		},
 		name = "PIAT Anti-Tank Squad",
 		description = "3 x PIAT: Anti-Tank Infantry",
-		buildCostMetal = 860,
+		buildCostMetal = 430,
 		buildPic = "GBRPIAT.png",
-		buildTime = 860,
+		buildTime = 430,
 		side = "GBR",
 	},
 

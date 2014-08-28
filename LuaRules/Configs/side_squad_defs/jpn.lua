@@ -110,9 +110,9 @@ local jpnDefs = {
 		},
 		name = "Anti-Tank Squad",
 		description = "2 x Type 3 AT Grenade, 1 x Type 4 Rocket Launcher: Anti-Tank Infantry",
-		buildCostMetal = 800,
+		buildCostMetal = 400,
 		buildPic = "JPNType3AT.png",
-		buildTime = 900,
+		buildTime = 400,
 		side = "JPN",
 	},
 	

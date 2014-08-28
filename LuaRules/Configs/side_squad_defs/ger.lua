@@ -122,9 +122,9 @@ local gerDefs = {
 		},
 		name = "Anti-Tank Squad",
 		description = "2 x Panzerfaust, 1 x Panzerschrek: Anti-Tank Infantry",
-		buildCostMetal = 900,
+		buildCostMetal = 450,
 		buildPic = "GERPanzerfaust.png",
-		buildTime = 900,
+		buildTime = 450,
 		side = "GER",
 	},
 	

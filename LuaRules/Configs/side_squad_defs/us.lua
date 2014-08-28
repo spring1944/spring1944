@@ -124,9 +124,9 @@ local usDefs = {
 		},
 		name = "Anti-Tank Squad",
 		description = "3 x Bazooka: Anti-Tank Infantry",
-		buildCostMetal = 700,
+		buildCostMetal = 350,
 		buildPic = "usgibazooka.png",
-		buildTime = 700,
+		buildTime = 350,
 		side = "US",
 	},
 	
