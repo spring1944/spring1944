@@ -187,7 +187,6 @@ local M1937_40K45mmHE = M1938_20K45mmHE:New{
 }
 
 -- Cannone da 47/32 M35 (ITA)
-
 local CannoneDa47mml32 = LightGunClass:New{
   movingAccuracy       = 600,
   name                 = [[47 mm L/32 Gun]],
@@ -222,7 +221,6 @@ local CannoneDa47mml32HEAT = CannoneDa47mml32:New(LightGunHEATClass, true):New{
 -- it had some links:
 -- https://web.archive.org/web/20081021061843/http://ww2armor.jexiste.fr/Files/Axis/Axis/1-Vehicles/Italy/2-MediumTanks/M13-40/2-Design.htm
 -- http://www.quarry.nildram.co.uk/ammotable6.htm
-
 local CannoneDa47mml40 = LightGunClass:New{
   movingAccuracy       = 600,
   name                 = [[47 mm L/40 Gun]],
@@ -239,7 +237,6 @@ local CannoneDa47mml40HE = CannoneDa47mml40:New(LightGunHEClass, true):New{
   },  
 }
 
-
 local CannoneDa47mml40AP = M637mm:New(LightGunAPClass, true):New{
   weaponVelocity     = 1818,
   customparams = {
@@ -248,6 +245,92 @@ local CannoneDa47mml40AP = M637mm:New(LightGunAPClass, true):New{
   },
   damage = {
     default            = 1225,
+  },
+}
+
+
+-- Type 1 37mm (JPN)
+local Type137mm = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[Type 1 37 mm Gun]],
+  range                = 950,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+}
+
+local Type137mmHE = Type137mm:New(LightGunHEClass, true):New{
+  areaOfEffect       = 26,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 220,
+  },
+}
+
+local Type137mmAP = Type137mm:New(LightGunAPClass, true):New{
+  weaponVelocity     = 1118,
+  customparams = {
+    armor_penetration_1000m = 25,
+    armor_penetration_100m  = 50,
+  },
+  damage = {
+    default            = 818,
+  },
+}
+
+
+-- Type 98 37mm (JPN)
+local Type9837mm = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[Type 97 37 mm Gun]],
+  range                = 930,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+}
+
+local Type9837mmHE = Type9837mm:New(LightGunHEClass, true):New{
+  areaOfEffect       = 28,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 220,
+  },
+}
+
+local Type9837mmAP = Type9837mm:New(LightGunAPClass, true):New{
+  weaponVelocity     = 1518,
+  customparams = {
+    armor_penetration_1000m = 20,
+    armor_penetration_100m  = 40,
+  },
+  damage = {
+    default            = 818,
+  },
+}
+
+-- Type 98 37mm (JPN)
+local Type9437mm = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[Type 94 37 mm Gun]],
+  range                = 900,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+}
+
+local Type9437mmHE = Type9437mm:New(LightGunHEClass, true):New{
+  areaOfEffect       = 28,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 220,
+  },
+}
+
+local Type9437mmAP = Type9437mm:New(LightGunAPClass, true):New{
+  weaponVelocity     = 1518,
+  customparams = {
+    armor_penetration_1000m = 25,
+    armor_penetration_100m  = 40,
+  },
+  damage = {
+    default            = 900,
   },
 }
 
@@ -271,4 +354,12 @@ return lowerkeys({
   -- Cannone da 47/40
   CannoneDa47mml40HE = CannoneDa47mml40HE,
   CannoneDa47mml40AP = CannoneDa47mml40AP,
+  -- Japanese 37mms
+  Type137mmHE = Type137mmHE,
+  Type137mmAP = Type137mmAP,
+  Type9837mmHE = Type9837mmHE,
+  Type9837mmAP = Type9837mmHE,
+  Type9437mmHE = Type9437mmHE,
+  Type9437mmAP = Type9437mmHE,
+  
 })
