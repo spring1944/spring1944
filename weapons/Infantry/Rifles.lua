@@ -190,7 +190,7 @@ local Mod91Sniper = SniperRifleClass:New{
   soundStart         = [[ITA_CarcanoM91]],
 }
 
--- Sniper
+-- Arisaka type 99 Sniper (JPN)
 local Arisaka99Sniper = SniperRifleClass:New{
   name               = [[Arisaka Type 99 Sniper Model]],
   soundStart         = [[JPN_Arisaka_Type99]],

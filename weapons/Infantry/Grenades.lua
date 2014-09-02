@@ -119,7 +119,12 @@ local OTO_model35 = APGrenadeClass:New{
   },
 }
 
-
+-- Type 99 AP Grenade (JPN)
+local Type99Grenade = APGrenadeClass:New{
+  accuracy           = 1421,
+  areaOfEffect       = 32,
+  name               = [[Type 99 Grenade]],
+}
 
 
 
@@ -157,6 +162,18 @@ local L_type_grenade = ATGrenadeClass:New{
   },
 }
 
+-- Type 3 AT Grenade (JPN)
+local Type3AT = ATGrenadeClass:New{
+  accuracy           = 400,
+  areaOfEffect       = 24,
+  name               = [[Type 3 Anti-Tank Grenade]],
+  customparams = {
+    armor_penetration  = 75,
+  },
+  damage = {
+    default            = 4896,
+  },  
+}
 
 -- Smoke nades
 -- No. 77 WP (GBR)
@@ -200,10 +217,12 @@ return lowerkeys({
   Mk2 = Mk2,
   F1 = F1,
   OTO_model35 = OTO_model35,
+  Type99Grenade = Type99Grenade,
   -- AT nades
   RPG43 = RPG43,
   BredaMod42 = BredaMod42,
   L_type_grenade = L_type_grenade,
+  Type3AT = Type3AT,
   -- Smoke nades
   No77 = No77,
   -- Other
