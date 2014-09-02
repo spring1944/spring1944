@@ -76,7 +76,7 @@
   weapon2=jpn75mmtype3_ap;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=jpntype97_mg;
+  weapon3=Type97MG;
   onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir3 = 0 0 1;
 	maxAngleDif3 = 50;

@@ -53,7 +53,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=jpntype97_mg;
+  weapon1=Type97MG;
   badTargetCategory1=SOFTVEH;
   onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
 

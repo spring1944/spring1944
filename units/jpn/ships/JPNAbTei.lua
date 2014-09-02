@@ -81,11 +81,11 @@ local JPN_AbTei_Turret_MG = BoatChild:New{
 	objectName				= "JPNAbTei_turret_MG.s3o",
 	weapons = {	
 		[1] = {
-			name				= "jpntype97_mg",
+			name				= "Type97MG",
 			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH TURRET",
 		},
 		[2] = {
-			name				= "jpntype97_mg",
+			name				= "Type97MG",
 			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH TURRET",
 		},
 	},

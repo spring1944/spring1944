@@ -219,6 +219,17 @@ local BredaM38 = MGClass:New{
   sprayAngle         = 320,
 }
 
+-- Type 97, also used for Type 99 (JPN)
+local Type97MG = MGClass:New{
+  burst              = 5,
+  burstRate          = 0.1,
+  movingAccuracy     = 6222,
+  name               = [[Type 97 7.7mm Machinegun]],
+  range              = 870,
+  reloadTime         = 2.8,
+  soundStart         = [[JPN_Type99_LMG]],
+  sprayAngle         = 320,
+}
 
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
@@ -298,6 +309,7 @@ return lowerkeys({
   Breda30 = Breda30,
   BredaM37 = BredaM37,
   BredaM38 = BredaM38,
+  Type97MG = Type97MG,
   -- 13mm
   Twin05CalVickers = Twin05CalVickers,
   DShK = DShK,

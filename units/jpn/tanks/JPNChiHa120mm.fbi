@@ -73,7 +73,7 @@
   weapon1=jpnshort120mm_he;
   onlyTargetCategory1=BUILDING OPENVEH HARDVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=jpntype97_mg;
+  weapon2=Type97MG;
   onlyTargetCategory2=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir2 = 0 0 1;
 	maxAngleDif2 = 50;

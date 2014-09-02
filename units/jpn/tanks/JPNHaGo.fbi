@@ -80,12 +80,12 @@
   weaponMainDir2=0 16 1;
   maxAngleDif2=210;
 
-  weapon3=jpntype97_mg;
+  weapon3=Type97MG;
   onlyTargetCategory3=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir3 = 0 0 1;
 	maxAngleDif3 = 50;
 
-  weapon4=jpntype97_mg;
+  weapon4=Type97MG;
   onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED;
 	weaponMainDir4 = 0 16 1;
 	maxAngleDif4 = 210;
