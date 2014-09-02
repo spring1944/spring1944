@@ -127,6 +127,17 @@ local FNAB43 = SMGClass:New{
   },
 }
 
+local Type100SMG = SMGClass:New{
+  burst              = 5,
+  burstRate          = 0.066,
+  movingAccuracy     = 1300,
+  name               = [[Type 100 Submachinegun]],
+  range              = 325,
+  reloadtime         = 1.7,
+  soundStart         = [[JPN_Type100_SMG]],
+  sprayAngle         = 380,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   STEN = STEN,
@@ -136,4 +147,5 @@ return lowerkeys({
   PPSh = PPSh,
   BerettaM38 = BerettaM38,
   FNAB43 = FNAB43,
+  Type100SMG = Type100SMG,
 })
