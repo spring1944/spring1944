@@ -277,8 +277,8 @@ local M2Browning = HeavyMGClass:New{
 local M2BrowningAA = M2Browning:New{
   burst              = 3,
   canAttackGround    = false,
-  predictBoost       = 1,
   movingAccuracy     = 200,
+  predictBoost       = 1,
   range              = 1170,
   reloadTime         = 0.375,
   soundStart         = [[US_50CAL]],
@@ -302,6 +302,33 @@ local M2BrowningAMG = M2Browning:New{
   }
 
 }
+
+-- Type 93 (JPN)
+local Type93HMG = HeavyMGClass:New{
+  name               = [[Type 93 13mm Heavy Machine Gun]],
+  range              = 880,
+  reloadTime         = 4,
+  soundStart         = [[US_50CAL]],
+  sprayAngle         = 300
+}
+
+--Type 93 AA
+local Type93AA = Type93HMG:New{
+  burst              = 6,
+  canAttackGround    = false,
+  movingAccuracy     = 200,
+  predictBoost       = 1,
+  range              = 1300,
+  reloadTime         = 1.5,
+  soundStart         = [[US_50CAL]],
+  sprayAngle         = 300,
+  customparams = {
+    no_range_adjust    = true,
+    fearid             = 701,
+  }
+}
+
+
 
 -- Return only the full weapons
 return lowerkeys({
@@ -331,4 +358,6 @@ return lowerkeys({
   M2Browning = M2Browning,
   M2BrowningAA = M2BrowningAA,
   M2BrowningAMG = M2BrowningAMG,
+  Type93HMG = Type93HMG,
+  Type93AA = Type93AA,
 })

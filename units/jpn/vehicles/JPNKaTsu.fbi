@@ -71,12 +71,12 @@
   turnRate=400;
   badTargetCategory=FLAG;
 
-  weapon1=jpn13mmtype93;
+  weapon1=Type93HMG;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir1 = 1 0 0;
 	maxAngleDif1 = 200;
 
-  weapon2=jpn13mmtype93;
+  weapon2=Type93HMG;
   onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir2 = -1 0 0;
 	maxAngleDif2 = 200;
