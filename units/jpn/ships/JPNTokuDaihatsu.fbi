@@ -62,12 +62,12 @@
 
 	canAttack=1;
 
-  weapon1=jpntype96_25mm60_aa;
+  weapon1=Type9625mmAA;
   onlyTargetCategory1=AIR;
   weaponMainDir1 = 0 0 -1;
   maxAngleDif1 = 300;
 
-  weapon2=jpntype96_25mm60_he;
+  weapon2=Type9625mmHE;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2 = 0 0 -1;
   maxAngleDif2 = 300;

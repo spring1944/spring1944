@@ -222,8 +222,8 @@ local BredaM3520mmAP = BredaM3520mm:New(ACAPClass, true):New{
 
 -- Type 98 20mm (JPN)
 local Type9820mm = ACClass:New{
-  accuracy           = 255, --Why not 255 like the rest?
-  areaOfEffect       = 15, --if this is changed, change AA and HE aoe and fearaoe accordingly
+  accuracy           = 255,
+  areaOfEffect       = 15,
   burst              = 4,
   burstRate          = 0.2,
   name               = [[Type 98 20mm]],
@@ -238,18 +238,47 @@ local Type9820mm = ACClass:New{
 }
 
 local Type9820mmAA = Type9820mm:New(ACAAClass, true):New{
-  burst              = 4,
   range              = 1950,
-  customparams = {
-    fearaoe            = 225, --Made this proportional to the areaOfEffect
+}
+
+local Type9820mmHE = Type9820mm:New(ACHEClass, true)
+
+-- Type 96 25mm (JPN)
+local Type9625mm = ACClass:New{
+  accuracy           = 255,
+  areaOfEffect       = 15, --if this is changed, change AA and HE aoe and fearaoe accordingly
+  burst              = 5,
+  burstRate          = 0.231,
+  name               = [[Type 98 20mm]],
+  range              = 780,
+  reloadTime         = 2.7,
+  soundStart         = [[GER_20mm]],
+  sprayAngle         = 400,
+  weaponVelocity     = 2000,
+  damage = {
+    default            = 45,
   },
 }
 
-local Type9820mmHE = Type9820mm:New(ACHEClass, true):New{
-  areaOfEffect       = 12,
-  customparams = {
-    fearaoe            = 32,
+local Type9625mmAA = Type9625mm:New(ACAAClass, true):New{
+  range              = 1950,
+  damage = {
+    default            = 55,
   },
+}
+
+local TwinType9625mmAA = Type9625mmAA:New{
+	burst            = 36,
+	burstrate        = 0.12,
+    reloadtime       = 6.5,
+}
+
+local Type9625mmHE = Type9625mm:New(ACHEClass, true)
+
+local TwinType9625mmHE = Type9625mmHE:New{
+	burst            = 36,
+	burstrate        = 0.12,
+    reloadtime       = 6.5,
 }
 
 
@@ -269,11 +298,16 @@ return lowerkeys({
   TNSh20mmHE = TNSh20mmHE,
   TNSh20mmAP = TNSh20mmAP,
   -- Breda M30
-  TwinBredaM3520mm = TwinBredaM3520mm,
   BredaM3520mmAA = BredaM3520mmAA,
+  TwinBredaM3520mmAA = TwinBredaM3520mmAA,
   BredaM3520mmHE = BredaM3520mmHE,
   BredaM3520mmAP = BredaM3520mmAP,
   -- Type 98
   Type9820mmAA = Type9820mmAA,
   Type9820mmHE = Type9820mmHE,
+  -- Type 96
+  Type9625mmAA = Type9625mmAA,
+  TwinType9625mmAA = TwinType9625mmAA,
+  Type9625mmHE = Type9625mmHE,
+  TwinType9625mmHE = TwinType9625mmHE,
 })
