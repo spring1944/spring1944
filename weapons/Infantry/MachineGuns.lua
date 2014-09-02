@@ -183,6 +183,18 @@ local M1919A4Browning_Deployed = M1919A4Browning:New{
   sprayAngle         = 400,
 }
 
+-- Breda 30 (ITA)
+local Breda30 = MGClass:New{
+  burst              = 3,
+  burstrate          = 0.1,
+  movingAccuracy     = 2667,
+  name               = [[Breda 30 Light Machine Gun]],
+  range              = 675,
+  reloadtime         = 2.6,
+  soundStart         = [[ITA_Breda30]],
+  sprayAngle         = 260,
+}
+
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
 local Twin05CalVickers = HeavyMGClass:New{
@@ -258,6 +270,7 @@ return lowerkeys({
   MaximAA = MaximAA,
   M1919A4Browning = M1919A4Browning,
   M1919A4Browning_Deployed = M1919A4Browning_Deployed,
+  Breda30 = Breda30,
   -- 13mm
   Twin05CalVickers = Twin05CalVickers,
   DShK = DShK,

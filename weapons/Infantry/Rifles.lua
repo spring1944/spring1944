@@ -103,6 +103,24 @@ local SVT = RifleClass:New{
   soundStart         = [[RUS_SVT]],
 }
 
+
+-- Carcano 91/38 (ITA)
+local Mod91 = RifleClass:New{
+  accuracy           = 95, -- overwrites default
+  name               = [[Carcano Mod.91/38]],
+  range              = 610,
+  reloadtime         = 2.5,
+  soundStart         = [[ITA_CarcanoM91]],
+}
+
+-- Carcano 91/41 (ITA)
+local Mod91_41 = Mod91:New{
+  accuracy           = 65,
+  name               = [[Carcano Mod.91/41]],
+  range              = 640,
+}
+
+
 -- Sniper Rifle Base Class
 local SniperRifleClass = RifleClass:New{
   accuracy           = 0,
@@ -131,7 +149,7 @@ local SniperRifleClass = RifleClass:New{
 -- SMLE No. 4 Mk. I (T) (GBR)
 local Enfield_T = SniperRifleClass:New{
   name               = [[Lee-Enfield No. 4 Mk. I Scoped]],
-  reloadtime         = 8.5,
+  reloadtime         = 8.5, -- overwrites default
   soundStart         = [[GBR_Enfield]],
 }
 
@@ -154,6 +172,13 @@ local MosinNagantPU = SniperRifleClass:New{
   soundStart         = [[RUS_MosinNagant]],
 }
 
+
+-- Carcano 91 Sniper (ITA)
+local Mod91Sniper = SniperRifleClass:New{
+  name               = [[Carcano Mod.91 Sniper Model]],
+  soundStart         = [[ITA_CarcanoM91]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Enfield = Enfield,
@@ -162,10 +187,13 @@ return lowerkeys({
   BAR = BAR,
   MosinNagant = MosinNagant,
   PartisanMosinNagant = PartisanMosinNagant,
+  Mod91 = Mod91,
+  Mod91_41 = Mod91_41,
   -- sniper weapons
   Enfield_T = Enfield_T,
   K98kScope = K98kScope,
   M1903Springfield = M1903Springfield,
   MosinNagantPU = MosinNagantPU,
   SVT = SVT,
+  Mod91Sniper,
 })
