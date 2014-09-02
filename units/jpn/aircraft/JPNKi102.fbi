@@ -75,7 +75,7 @@
 
   badTargetCategory=FLAG AIR;
 
-  weapon1=jpnho401;
+  weapon1=Ho40157mm;
   maxAngleDif1=15;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 -1 9;

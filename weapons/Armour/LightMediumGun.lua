@@ -137,15 +137,45 @@ local ZiS257mmAP = ZiS257mm:New(LightMediumGunAPClass, true):New{
   },
 }
 
+-- Type 97 57mm (JPN)
+local Type9757mm = LightMediumGunClass:New{
+  name               = [[Type 97 57mm]],
+  range              = 980,
+  reloadTime         = 4.0,
+}
+
+local Type9757mmHE = Type9757mm:New(LightMediumGunHEClass, true):New{
+  areaOfEffect       = 57,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 1400,
+  },  
+}
+local Type9757mmAP = Type9757mm:New(LightMediumGunAPClass, true):New{
+  weaponVelocity     = 1518,
+  customparams = {
+    armor_penetration_1000m = 25,
+    armor_penetration_100m  = 45,
+  },
+  damage = {
+    default            = 1606,
+  },
+}
+
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 6Pdr
   QF6Pdr57mmHE = QF6Pdr57mmHE,
   QF6Pdr57mmAP = QF6Pdr57mmAP,
+  QF6Pdr57MkIIAHE = QF6Pdr57MkIIAHE,
   -- KwK39 L60
   KwK50mmL60HE = KwK50mmL60HE,
   KwK50mmL60AP = KwK50mmL60AP,
   -- ZiS-2
   ZiS257mmAP = ZiS257mmAP,
-  QF6Pdr57MkIIAHE = QF6Pdr57MkIIAHE,
+  -- Type 97 57mm
+  Type9757mmHE = Type9757mmHE,
+  Type9757mmAP = Type9757mmAP,
+  
 })
