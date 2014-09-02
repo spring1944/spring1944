@@ -120,6 +120,17 @@ local Mod91_41 = Mod91:New{
   range              = 640,
 }
 
+-- Arisaka type 99 (JPN)
+local Arisaka99 = RifleClass:New{
+  accuracy           = 95, -- overwrites default
+  name               = [[Arisaka Type 99]],
+  range              = 630,
+  reloadtime         = 2.5,
+  soundStart         = [[JPN_Arisaka_Type99]],
+}
+
+
+
 
 -- Sniper Rifle Base Class
 local SniperRifleClass = RifleClass:New{
@@ -179,6 +190,12 @@ local Mod91Sniper = SniperRifleClass:New{
   soundStart         = [[ITA_CarcanoM91]],
 }
 
+-- Sniper
+local Arisaka99Sniper = SniperRifleClass:New{
+  name               = [[Arisaka Type 99 Sniper Model]],
+  soundStart         = [[JPN_Arisaka_Type99]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Enfield = Enfield,
@@ -189,11 +206,13 @@ return lowerkeys({
   PartisanMosinNagant = PartisanMosinNagant,
   Mod91 = Mod91,
   Mod91_41 = Mod91_41,
+  Arisaka99 = Arisaka99,
   -- sniper weapons
   Enfield_T = Enfield_T,
   K98kScope = K98kScope,
   M1903Springfield = M1903Springfield,
   MosinNagantPU = MosinNagantPU,
   SVT = SVT,
-  Mod91Sniper,
+  Mod91Sniper = Mod91Sniper,
+  Arisaka99Sniper = Arisaka99Sniper,
 })
