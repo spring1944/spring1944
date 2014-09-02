@@ -53,6 +53,20 @@ local LightGunAPClass = Weapon:New{
   },  
 }
 
+-- HEAT Round Class
+local LightGunHEATClass = Weapon:New{
+  collisionSize      = 3,
+  edgeEffectiveness  = 0.2,
+  explosionGenerator = [[custom:EP_medium]],
+  explosionSpeed     = 30, -- needed?
+  name               = [[AP Shell]],
+  rgbColor           = [[0.5 0.5 0.0]],
+  soundHitDry        = [[GEN_Explo_2]],
+  customparams = {
+    damagetype         = [[shapedcharge]],
+  },
+}
+
 -- Implementations
 
 -- QF 2Pdr 40mm (GBR)
@@ -172,6 +186,71 @@ local M1937_40K45mmHE = M1938_20K45mmHE:New{
   },  
 }
 
+-- Cannone da 47/32 M35 (ITA)
+
+local CannoneDa47mml32 = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[47 mm L/32 Gun]],
+  range                = 980,
+  reloadTime           = 4.8,
+  soundStart           = [[ITA_M35_47mm]],
+}
+
+local CannoneDa47mml32AP = CannoneDa47mml32:New(LightGunAPClass, true):New{
+  weaponVelocity       = 1000,
+  customparams = {
+    armor_penetration_1000m = 32,
+    armor_penetration_100m  = 57,
+  },
+  damage = {
+    default            = 1200,
+  },
+}
+
+local CannoneDa47mml32HEAT = CannoneDa47mml32:New(LightGunHEATClass, true):New{
+  range                = 637,
+  weaponVelocity       = 800,
+  customparams = {
+    armor_penetration       = 75,
+  },
+  damage = {
+    default            = 1048,
+  },
+}
+
+-- Cannone da 47/40 (ITA)
+-- it had some links:
+-- https://web.archive.org/web/20081021061843/http://ww2armor.jexiste.fr/Files/Axis/Axis/1-Vehicles/Italy/2-MediumTanks/M13-40/2-Design.htm
+-- http://www.quarry.nildram.co.uk/ammotable6.htm
+
+local CannoneDa47mml40 = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[47 mm L/40 Gun]],
+  range                = 1090,
+  reloadTime           = 4.4,
+  soundStart           = [[ITA_M39_47mm]],
+}
+
+local CannoneDa47mml40HE = CannoneDa47mml40:New(LightGunHEClass, true):New{
+  areaOfEffect       = 52,
+  weaponVelocity     = 1084,
+  damage = {
+    default            = 270,
+  },  
+}
+
+
+local CannoneDa47mml40AP = M637mm:New(LightGunAPClass, true):New{
+  weaponVelocity     = 1818,
+  customparams = {
+    armor_penetration_1000m = 43,
+    armor_penetration_100m  = 71,
+  },
+  damage = {
+    default            = 1225,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 2Pdr
@@ -186,4 +265,10 @@ return lowerkeys({
   M1938_20K45mmAP = M1938_20K45mmAP,
   -- M1936 40K 45mm
   M1937_40K45mmHE = M1937_40K45mmHE,
+  -- Cannone da 47/32 M35
+  CannoneDa47mml32AP = CannoneDa47mml32AP,
+  CannoneDa47mml32HEAT = CannoneDa47mml32HEAT,
+  -- Cannone da 47/40
+  CannoneDa47mml40HE = CannoneDa47mml40HE,
+  CannoneDa47mml40AP = CannoneDa47mml40AP,
 })
