@@ -231,6 +231,19 @@ local Type97MG = MGClass:New{
   sprayAngle         = 320,
 }
 
+-- Type 92 (JPN)
+local Type92MG = MGClass:New{
+  burst              = 8,
+  burstRate          = 0.073,
+  movingAccuracy     = 6222,
+  name               = [[Type 97 7.7mm Machinegun]],
+  range              = 870,
+  reloadTime         = 2.8,
+  soundStart         = [[JPN_Type98_HMG]],
+  sprayAngle         = 320,
+} 
+
+
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
 local Twin05CalVickers = HeavyMGClass:New{
@@ -310,6 +323,7 @@ return lowerkeys({
   BredaM37 = BredaM37,
   BredaM38 = BredaM38,
   Type97MG = Type97MG,
+  Type92MG = Type92MG,
   -- 13mm
   Twin05CalVickers = Twin05CalVickers,
   DShK = DShK,

@@ -43,7 +43,7 @@
   useBuildingGroundDecal=1;
   badTargetCategory=OPENVEH FLAG SOFTVEH;
 
-  weapon1=JPNType92HMG;
+  weapon1=Type92MG;
   maxAngleDif1=120;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
