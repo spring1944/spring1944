@@ -334,6 +334,35 @@ local Type9437mmAP = Type9437mm:New(LightGunAPClass, true):New{
   },
 }
 
+-- Type 1 47mm (JPN)
+local Type147mm = LightGunClass:New{
+  movingAccuracy       = 600,
+  name                 = [[Type 1 37 mm Gun]],
+  range                = 1000,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+}
+
+local Type147mmHE = Type147mm:New(LightGunHEClass, true):New{
+  areaOfEffect       = 38,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 350,
+  },
+}
+
+local Type147mmAP = Type147mm:New(LightGunAPClass, true):New{
+  weaponVelocity     = 1118,
+  customparams = {
+    armor_penetration_1000m = 53,
+    armor_penetration_100m  = 76,
+  },
+  damage = {
+    default            = 1183,
+  },
+}
+
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 2Pdr
@@ -361,5 +390,7 @@ return lowerkeys({
   Type9837mmAP = Type9837mmHE,
   Type9437mmHE = Type9437mmHE,
   Type9437mmAP = Type9437mmHE,
-  
+  -- Type 1 47mm
+  Type147mmHE = Type147mmHE,
+  Type147mmAP = Type147mmAP,
 })
