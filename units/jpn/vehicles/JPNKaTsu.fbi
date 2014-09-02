@@ -29,6 +29,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
+  loadingRadius=50;
   mass=1600;
   maxDamage=1600;
   maxReverseVelocity=0.95;
@@ -64,11 +65,11 @@
   trackWidth=20;
   transportCapacity=30;
   transportMass=750;
-  transportRadius=50;
   transportSize=1;
   transportUnloadMethod=2;
   turninplace=0;
   turnRate=400;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
   weapon1=Type93HMG;
