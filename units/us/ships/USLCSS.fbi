@@ -66,12 +66,12 @@
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
 
-  weapon3=M2Browning;
+  weapon3=M2BrowningAA;
   onlyTargetCategory3=AIR;
   maxAngleDif3=300;
   weaponMainDir3=0 0 -1;
 
-  weapon4=m2browningaa;
+  weapon4=M2Browning;
   onlyTargetCategory4=INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP;
   maxAngleDif4=300;
   weaponMainDir4=0 0 -1;

@@ -281,7 +281,6 @@ local M2BrowningAA = M2Browning:New{
   predictBoost       = 1,
   range              = 1170,
   reloadTime         = 0.375,
-  soundStart         = [[US_50CAL]],
   customparams = {
     no_range_adjust    = true,
     fearid             = 701,
@@ -303,24 +302,50 @@ local M2BrowningAMG = M2Browning:New{
 
 }
 
+-- Breda M1931 (ITA)
+local BredaM1931 = HeavyMGClass:New{
+  name               = [[Breda M1931 13mm Heavy Machine Gun]],
+  range              = 880,
+  reloadTime         = 4,
+  soundStart         = [[US_50CAL]],
+  sprayAngle         = 300;
+}
+
+--Breda M1931 AA
+local BredaM1931AA = BredaM1931:New{
+  burst              = 6,
+  burstRate          = 0.109,
+  canAttackGround    = false,
+  movingAccuracy     = 200,
+  predictBoost       = 1,
+  range              = 1300,
+  reloadTime         = 1.5,
+  sprayAngle         = 300,
+  customparams = {
+    no_range_adjust    = true,
+    fearid             = 701,
+  }
+}
+
+
 -- Type 93 (JPN)
 local Type93HMG = HeavyMGClass:New{
   name               = [[Type 93 13mm Heavy Machine Gun]],
   range              = 880,
   reloadTime         = 4,
   soundStart         = [[US_50CAL]],
-  sprayAngle         = 300
+  sprayAngle         = 300,
 }
 
 --Type 93 AA
 local Type93AA = Type93HMG:New{
   burst              = 6,
+  burstRate          = 0.109,
   canAttackGround    = false,
   movingAccuracy     = 200,
   predictBoost       = 1,
   range              = 1300,
   reloadTime         = 1.5,
-  soundStart         = [[US_50CAL]],
   sprayAngle         = 300,
   customparams = {
     no_range_adjust    = true,
@@ -360,4 +385,6 @@ return lowerkeys({
   M2BrowningAMG = M2BrowningAMG,
   Type93HMG = Type93HMG,
   Type93AA = Type93AA,
+  BredaM1931 = BredaM1931,
+  BredaM1931AA = BredaM1931AA,
 })

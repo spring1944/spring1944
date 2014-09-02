@@ -63,14 +63,14 @@ local ITA_Vedetta_Turret_MG = BoatChild:New{
 	objectName				= "ITAVedetta_Turret_MG.s3o",
 	weapons = {	
 		[1] = {
-			name				= "ita13mmm1931aa",
+			name				= "BredaM1931AA",
 			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			name				= "ita13mmm1931",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH LARGESHIP DEPLOYED",
+			name				= "BredaM1931",
+			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},
