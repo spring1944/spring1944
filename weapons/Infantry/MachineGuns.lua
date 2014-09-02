@@ -195,6 +195,31 @@ local Breda30 = MGClass:New{
   sprayAngle         = 260,
 }
 
+-- Breda M37 (ITA)
+local BredaM37 = MGClass:New{
+  burst              = 8,
+  burstRate          = 0.16,
+  movingAccuracy     = 6222,
+  name               = [[Breda M37 Heavy Machinegun]],
+  range              = 1090,
+  reloadTime         = 3.1,
+  soundStart         = [[ITA_M37]],
+  sprayAngle         = 260,
+}
+
+-- Breda M38 (ITA)
+local BredaM38 = MGClass:New{
+  burst              = 7,
+  burstRate          = 0.16,
+  movingAccuracy     = 6222,
+  name               = [[Breda M38 mounted Machinegun]],
+  range              = 870,
+  reloadTime         = 3.2,
+  soundStart         = [[ITA_M37]],
+  sprayAngle         = 320,
+}
+
+
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
 local Twin05CalVickers = HeavyMGClass:New{
@@ -271,6 +296,8 @@ return lowerkeys({
   M1919A4Browning = M1919A4Browning,
   M1919A4Browning_Deployed = M1919A4Browning_Deployed,
   Breda30 = Breda30,
+  BredaM37 = BredaM37,
+  BredaM38 = BredaM38,
   -- 13mm
   Twin05CalVickers = Twin05CalVickers,
   DShK = DShK,
