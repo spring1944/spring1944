@@ -48,12 +48,12 @@ local ITA_MS_Turret_20mm_Front = BoatChild:New{
 	objectName				= "ITAMS_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "breda3520mmaa",
+			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
-			name				= "breda3520mmhe",
+			name				= "BredaM3520mmHE",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},

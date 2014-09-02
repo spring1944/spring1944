@@ -49,19 +49,19 @@
 	Weapon1=ita76mm40;
 	onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=breda3520mmaa;
+  weapon2=BredaM3520mmAA;
   badTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory2=AIR;
 
-  weapon3=breda3520mmhe;
+  weapon3=BredaM3520mmHE;
   badTargetCategory3=AIR;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon4=breda3520mmaa;
+  weapon4=BredaM3520mmAA;
   badTargetCategory4=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory4=AIR;
 
-  weapon5=breda3520mmhe;
+  weapon5=BredaM3520mmHE;
   badTargetCategory5=AIR;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 

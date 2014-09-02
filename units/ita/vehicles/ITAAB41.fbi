@@ -69,12 +69,12 @@
   turnRate=405;
   badTargetCategory=FLAG;
 
-  weapon1=breda3520mmhe;
+  weapon1=BredaM3520mmHE;
 	weaponMainDir1=0 0 1;
 	maxAngleDif1=350;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=breda3520mmap;
+  weapon2=BredaM3520mmAP;
 	weaponMainDir2=0 0 1;
 	maxAngleDif2=350;
   onlyTargetCategory2=OPENVEH HARDVEH;

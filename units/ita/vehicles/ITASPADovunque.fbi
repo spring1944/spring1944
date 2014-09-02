@@ -65,7 +65,7 @@
   turnRate=405;
   badTargetCategory=FLAG;
 
-  weapon1=breda3520mmaa;
+  weapon1=BredaM3520mmAA;
   	onlyTargetCategory1=AIR;
 
 //  weapon2=breda3520mmhe;
