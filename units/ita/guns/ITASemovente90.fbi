@@ -73,7 +73,7 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=ansaldo90mml53ap;
+  weapon1=Ansaldo90mmL53AP;
   maxAngleDif1=80;
   // it REALLY had 80 degrees traverse. 40 both ways.
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;

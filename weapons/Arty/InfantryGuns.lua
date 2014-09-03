@@ -54,8 +54,43 @@ local M875mmHE = InfGunClass:New{
   },
 }
 
+-- Cannone da 65/17 (ITA)
+local Cannone65L17HE = InfGunClass:New{
+  areaOfEffect       = 68,
+  name               = [[Cannone da 65/17 HE Shell]],
+  range              = 1010,
+  reloadtime         = 6.25,
+  soundStart         = [[RUS_45mm]],
+  weaponVelocity     = 420,
+  damage = {
+    default            = 900,
+  },
+}
+
+local Cannone65L17HEAT = InfGunClass:New{
+  areaOfEffect       = 8,
+  explosionGenerator = [[custom:EP_medium]],
+  name               = [[Cannone da 65/17 HEAT Shell]],
+  range              = 715,
+  reloadtime         = 6.25,
+  soundHitDry        = [[GEN_Explo_2]],
+  soundStart         = [[RUS_45mm]],
+  weaponVelocity     = 320,
+  customparams = {
+    armor_penetration  = 85,
+    damagetype         = [[shapedcharge]],
+    fearaoe            = nil,
+    fearid             = nil,
+  },
+  damage = {
+    default            = 2056,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   LeIG18HE = LeIG18HE,
   M875mmHE = M875mmHE,
+  Cannone65L17HE = Cannone65L17HE,
+  Cannone65L17HEAT = Cannone65L17HEAT,
 })

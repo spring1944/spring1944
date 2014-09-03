@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=ITAP40;
+  unitname=ITAP43bis;
   name=Carro Pesante P43bis;
   description=Heavy Tank;
   acceleration=0.044;
@@ -75,12 +75,12 @@
   weaponMainDir1=0 16 1;
   weaponMainDir2=0 16 1;
 
-  weapon1=ansaldo90mml53he;
+  weapon1=Ansaldo90mmL53HE;
   weaponMainDir1=0 16 1;
   badTargetCategory1=OPENVEH HARDVEH;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=ansaldo90mml53ap;
+  weapon2=Ansaldo90mmL53AP;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=BredaM38;

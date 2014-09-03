@@ -55,7 +55,7 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 	objectName				= "ITAGabbiano_Turret_100mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "it100mm47_1928",
+			name				= "OTO100mmL47HE",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
