@@ -389,7 +389,7 @@ local Ansaldo76mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
   areaOfEffect       = 76,
   name               = [[Ansaldo 76mm/40 Naval Gun]],
   range              = 1320,
-  reloadTime         = 6.75,
+  reloadTime         = 3.8,
   soundStart         = [[GER_75mm]],
   weaponVelocity     = 1300,
   damage = {
@@ -397,6 +397,71 @@ local Ansaldo76mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
   },  
 }
 
+-- Type 3 75mm/38 (JPN)
+local Type375mmL38 = MediumGunClass:New{
+  name               = [[Type 3 75mm/38]],
+  range              = 1480,
+  reloadTime         = 5.25,
+  soundStart         = [[GER_75mm]],
+}
+
+local Type375mmL38HE = Type375mmL38:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 84,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+local Type375mmL38AP = Type375mmL38:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 70,
+    armor_penetration_100m  = 91,
+  },
+  damage = {
+    default            = 2490,
+  },
+}
+
+-- Type 90 75mm (JPN)
+local Type9075mm = MediumGunClass:New{
+  name               = [[Type 90 75mm]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[GER_75mm]],
+}
+
+local Type9075mmHE = Type9075mm:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 84,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+
+local Type9075mmAP = Type9075mm:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 70,
+    armor_penetration_100m  = 91,
+  },
+  damage = {
+    default            = 2490,
+  },
+}
+
+-- Type 3 76mm/40 Naval gun (JPN)
+local Type376mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 80,
+  name               = [[Type 3 76mm/40 Naval gun]],
+  range              = 1300,
+  reloadTime         = 4,
+  soundStart         = [[GER_75mm]],
+  weaponVelocity     = 1300,
+  damage = {
+    default            = 2250,
+  },  
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -437,5 +502,14 @@ return lowerkeys({
   -- Ansaldo L/46 75mm
   Ansaldo75mmL46HE = Ansaldo75mmL46HE,
   Ansaldo75mmL46AP = Ansaldo75mmL46AP,
+  -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun
   Ansaldo76mmL40HE = Ansaldo76mmL40HE,
+  -- Type 3 75mm/38
+  Type375mmL38HE = Type375mmL38HE,
+  Type375mmL38AP = Type375mmL38AP,
+  -- Type 90 75mm
+  Type9075mmHE = Type9075mmHE,
+  Type9075mmAP = Type9075mmAP,
+  -- Type 3 76mm/40 Naval gun (JPN)
+  Type376mmL40HE = Type376mmL40HE,
 })
