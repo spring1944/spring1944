@@ -11,7 +11,7 @@
   buildPic=JPNType4Mortar_stationary.png;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  corpse=ITASoldier_dead;
+  corpse=JPNSoldier_dead;
   [customParams] {
     feartarget=1;
     lowammolevel=0;

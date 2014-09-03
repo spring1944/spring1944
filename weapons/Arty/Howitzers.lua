@@ -116,6 +116,48 @@ local M30122mmHE = M30122mm:New(HowitzerHEClass, true):New{
 }
 local M30122mmSmoke = M30122mm:New(HowitzerSmokeClass, true)
 
+-- 100m howitzer L22 (ITA)
+local Obice100mmL22 = HowitzerClass:New{
+  accuracy           = 1050,
+  areaOfEffect       = 115,
+  name               = [[Obice 100mm/22 M14]],
+  range              = 7200,
+  reloadtime         = 11.25,
+  damage = {
+    default            = 3800,
+  },
+}
+local Obice100mmL22he = Obice100mmL22:New(HowitzerHEClass, true)
+local Obice100mmL22smoke = Obice100mmL22:New(HowitzerSmokeClass, true)
+
+--  100mm Howitzer L17 (ITA)
+local Obice100mmL17 = HowitzerClass:New{
+  accuracy           = 1150,
+  areaOfEffect       = 115,
+  name               = [[Obice 100mm/17 M14]],
+  range              = 6000,
+  reloadtime         = 9.25,
+  damage = {
+    default            = 3800,
+  },
+}
+local Obice100mmL17HE = Obice100mmL17:New(HowitzerHEClass, true)
+local Obice100mmL17Smoke = Obice100mmL17:New(HowitzerSmokeClass, true)
+
+-- Type 91 105m howitzer L/24 (JPN)
+local Type91105mmL24 = HowitzerClass:New{
+  accuracy           = 1050,
+  areaOfEffect       = 115,
+  name               = [[Type 91 105mm/24]],
+  range              = 7200,
+  reloadtime         = 11.25,
+  damage = {
+    default            = 3800,
+  },
+}
+local Type91105mmL24HE = Type91105mmL24:New(HowitzerHEClass, true)
+local Type91105mmL24Smoke = Type91105mmL24:New(HowitzerSmokeClass, true)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -126,4 +168,10 @@ return lowerkeys({
   M2Smoke = M2Smoke,
   M30122mmHE = M30122mmHE,
   M30122mmSmoke = M30122mmSmoke,
+  Obice100mmL22he = Obice100mmL22he,
+  Obice100mmL22smoke = Obice100mmL22smoke,
+  Obice100mmL17HE = Obice100mmL17HE,
+  Obice100mmL17Smoke = Obice100mmL17Smoke,
+  Type91105mmL24HE = Type91105mmL24HE,
+  Type91105mmL24Smoke = Type91105mmL24Smoke,
 })

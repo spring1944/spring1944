@@ -52,12 +52,12 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jpntype4rocketmortar_he;
+  weapon1=Type4RocketMortarHE;
   maxAngleDif1=35;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jpntype4rocketmortar_smoke;
+  weapon2=Type4RocketMortarSmoke;
   maxAngleDif2=35;
   onlyTargetCategory2=NOTHING;
   weaponMainDir2=0 0 1;

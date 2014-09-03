@@ -106,6 +106,33 @@ local m1937_Mortar = MortarClass:New{
 local m1937_MortarHE = m1937_Mortar:New(MortarHEClass, true)
 local m1937_MortarSmoke = m1937_Mortar:New(MortarSmokeClass, true) 
 
+-- Knee Mortar
+local cKneeMortar = MortarClass:New{
+  areaOfEffect       = 50,
+  name               = [[Type 89 Grenade Discharger]],
+  range              = 650,
+  weaponVelocity     = 350,
+  damage = {
+    default            = 300,
+  },
+}
+local KneeMortar = cKneeMortar:New(MortarHEClass, true)
+local KneeMortar_smoke = cKneeMortar:New(MortarSmokeClass, true) 
+
+-- Type 97 81mm mortar
+local Type97_81mmMortar = MortarClass:New{
+  areaOfEffect       = 104,
+  name               = [[Type 97 81mm Mortar]],
+  range              = 1320,
+  damage = {
+    default            = 1100,
+  },
+}
+local Type97_81mmMortarHE = Type97_81mmMortar:New(MortarHEClass, true)
+local Type97_81mmMortarSmoke = Type97_81mmMortar:New(MortarSmokeClass, true) 
+
+
+
 -- Return only the full weapons
 return lowerkeys({
   ML3InMortar = ML3InMortarHE,
@@ -117,4 +144,8 @@ return lowerkeys({
   M1_81mmMortarSmoke = M1_81mmMortarSmoke,
   m1937_Mortar = m1937_MortarHE,
   m1937_MortarSmoke = m1937_MortarSmoke,
+  KneeMortar = KneeMortar,
+  KneeMortar_smoke = KneeMortar_smoke,
+  Type97_81mmMortarHE = Type97_81mmMortarHE,
+  Type97_81mmMortarSmoke = Type97_81mmMortarSmoke,
 })

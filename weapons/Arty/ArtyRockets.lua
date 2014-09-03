@@ -96,10 +96,43 @@ local BBR_Rack = ArtyRocketClass:New{
 	},
 }
 
+-- Type 4 200mm rocket mortar (JPN)
+local Type4RocketMortarHE = ArtyRocketClass:New{
+  areaOfEffect       = 203,
+  reloadtime         = 20,
+  explosionGenerator = [[custom:HE_XLarge]],
+  name               = [[Type 4 200mm unguided artillery rocket]],
+  range              = 3200,
+  soundStart         = [[GER_Nebelwerfer]],
+  wobble             = 1300,
+  damage = {
+    default            = 6000,
+  },
+}
+
+local Type4RocketMortarSmoke = ArtyRocketClass:New{
+  areaOfEffect       = 30,
+  reloadtime         = 20,
+  customparams = {
+    smokeradius        = 350,
+    smokeduration      = 50,
+    smokeceg           = [[SMOKESHELL_Medium]],
+  },
+  name               = [[Type 4 200mm unguided artillery smoke rocket]],
+  range              = 3200,
+  soundStart         = [[GER_Nebelwerfer]],
+  wobble             = 1300,
+  damage = {
+    default            = 100,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Nebelwerfer41 = Nebelwerfer41,
   M13132mm = M13132mm,
   m8rocket82mm = m8rocket82mm,
   BBR_Rack = BBR_Rack,
+  Type4RocketMortarHE = Type4RocketMortarHE,
+  Type4RocketMortarSmoke = Type4RocketMortarSmoke,
 })

@@ -49,6 +49,21 @@ local HeavyGunAPClass = Weapon:New{
   },  
 }
 
+-- Smoke Round Class
+local HeavyGunSmokeClass = HeavyGunHEClass:New{
+  areaOfEffect       = 30,
+  explosionGenerator = [[custom:HE_Large]],
+  name               = [[Smoke Shell]],
+  customparams = {
+    smokeradius        = 350,
+    smokeduration      = 50,
+    smokeceg           = [[SMOKESHELL_Medium]],
+  },
+  damage = {
+    default = 100,
+  } ,
+}
+
 -- Implementations
 
 -- D-25T 122mm (RUS)
@@ -108,6 +123,39 @@ local ML20S152mmAP = ML20S152mm:New(HeavyGunAPClass, true):New{
   },
 }
 
+-- 120mm Short Gun (JPN)
+local Short120mmHE = HeavyGunClass:New(HeavyGunHEClass, true):New{
+  areaOfEffect       = 129,
+  name               = [[Short Naval 120mm]],
+  range              = 1720,
+  reloadtime         = 11.25,
+  soundStart         = [[GEN_105mm]],
+  weaponVelocity     = 700,
+  damage = {
+    default            = 5800,
+  },
+}
+
+-- Type 38 150mm Howitzer L/11 (JPN)
+local Type38150mmL11 = HeavyGunClass:New{
+  name               = [[Type 38 150mm/11]],
+  soundStart         = [[150mmtype38]],
+  
+  range              = 1700,
+  reloadtime         = 15,
+  weaponVelocity     = 700,
+}
+
+local Type38150mmL11HE = Type38150mmL11:New(HeavyGunHEClass, true):New{
+  areaOfEffect       = 165,
+  soundHitDry        = [[GEN_Explo_6]],
+  damage = {
+    default            = 8500,
+  },
+}
+local Type38150mmL11Smoke = Type38150mmL11:New(HeavyGunSmokeClass, true)
+
+
 -- Return only the full weapons
 return lowerkeys({
   -- D-25T 122mm
@@ -116,4 +164,9 @@ return lowerkeys({
   -- ML-20S 152mm
   ML20S152mmHE = ML20S152mmHE,
   ML20S152mmAP = ML20S152mmAP,
+  -- 120mm Short Gun (JPN)
+  Short120mmHE = Short120mmHE,
+  -- Type 38 150mm Howitzer L/11
+  Type38150mmL11HE = Type38150mmL11HE,
+  Type38150mmL11Smoke = Type38150mmL11Smoke,
 })

@@ -100,6 +100,20 @@ local M9A1Bazooka = Rocket_ATLClass:New{
   },
 }
 
+-- Type 4 Rocket Launcher (JPN)
+local Type4AT = Rocket_ATLClass:New{
+  name               = [[Type 4 Rocket Launcher]],
+  range              = 270,
+  soundStart         = [[US_Bazooka]],
+  targetMoveError    = 0.075,
+  customparams = {
+    armor_penetration  = 108,
+  },
+  damage = {
+    default            = 5280,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- RCL / Spigot Mortar
@@ -108,4 +122,5 @@ return lowerkeys({
   -- Rockets
   Panzerschrek = Panzerschrek,
   M9A1Bazooka = M9A1Bazooka,
+  Type4AT = Type4AT,
 })
