@@ -44,7 +44,7 @@ local LeIG18HE = InfGunClass:New{
   },
 }
 
--- M8 Pack Howitzer (GER)
+-- M8 Pack Howitzer (USA)
 local M875mmHE = InfGunClass:New{
   areaOfEffect       = 94,
   name               = [[M8 75mm Pack Howitzer HE Shell]],

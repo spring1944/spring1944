@@ -53,13 +53,13 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=ita75mml34he;
+  weapon1=Ansaldo75mmL34HE;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=ita75mml34ap;
+  weapon2=Ansaldo75mmL34AP;
   badTargetCategory2=SOFTVEH;
   maxAngleDif2=70;
   onlyTargetCategory2=OPENVEH HARDVEH;
