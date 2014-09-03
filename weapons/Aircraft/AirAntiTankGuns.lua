@@ -57,7 +57,7 @@ local BK37mmAP = AirATGunClass:New{
 -- Ho-401 57mm HEAT (JPN)
 local Ho40157mm = AirATGunClass:New{
   areaOfEffect       = 12,
-  name               = [[Type 97 57 mm HEAT]],
+  name               = [[Ho-401 57 mm HEAT]],
   range              = 760,
   reloadTime         = 0.95,
   soundStart         = [[RUS_45mm]],
