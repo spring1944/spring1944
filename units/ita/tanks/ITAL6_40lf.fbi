@@ -69,7 +69,7 @@
   turnRate=280;
   badTargetCategory=FLAG;
 
-  weapon1=l6_lanciaflame;
+  weapon1=L6Lanciafiamme;
   weaponMainDir1=0 16 1;
   maxAngleDif1=210;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;

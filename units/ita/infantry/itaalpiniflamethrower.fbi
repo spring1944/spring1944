@@ -66,7 +66,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=lfmod41;
+  weapon1=Mod41Lanciafiamme;
   maxAngleDif1=170;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
