@@ -219,6 +219,21 @@ local BredaM38 = MGClass:New{
   sprayAngle         = 320,
 }
 
+-- 7.7mm Breda SAFAT Air MG (ITA)
+local BredaSafat03 = MGClass:New{
+  burst				 = 6,
+  burstRate          = 0.05,
+  canAttackGround    = false,
+  name               = [[7.7mm Breda SAFAT]],
+  range              = 825,
+  reloadTime         = 0.55,
+  soundStart         = [[ITA_Breda30]],
+  weaponType         = [[Cannon]],
+  customparams = {
+    no_range_adjust    = true,
+  }
+}
+
 -- Type 97, also used for Type 99 (JPN)
 local Type97MG = MGClass:New{
   burst              = 5,
@@ -242,6 +257,21 @@ local Type92MG = MGClass:New{
   soundStart         = [[JPN_Type98_HMG]],
   sprayAngle         = 320,
 } 
+
+-- 7.7mm TE-4 Air MG (JPN)
+local TE4 = MGClass:New{
+  burst				 = 6,
+  burstRate          = 0.15,
+  canAttackGround    = false,
+  name               = [[7.7mm TE-4 Machinegun]],
+  range              = 925,
+  reloadTime         = 1.5,
+  soundStart         = [[ITA_Breda30]],
+  weaponType         = [[Cannon]],
+  customparams = {
+    no_range_adjust    = true,
+  }
+}
 
 
 -- Large calibre (12.7mm) MG's
@@ -327,6 +357,21 @@ local BredaM1931AA = BredaM1931:New{
   }
 }
 
+-- .50 Caliber Breda SAFAT Air MG (ITA)
+local BredaSafat05 = HeavyMGClass:New{
+  burst				 = 6,
+  burstRate          = 0.125,
+  canAttackGround    = false,
+  name               = [[.50 Caliber Breda SAFAT]],
+  range              = 900,
+  reloadTime         = 1.2,
+  soundStart         = [[ITA_breda12_7mm]],
+  weaponType         = [[Cannon]],
+  customparams = {
+    no_range_adjust    = true,
+  }
+}
+
 
 -- Type 93 (JPN)
 local Type93HMG = HeavyMGClass:New{
@@ -337,11 +382,10 @@ local Type93HMG = HeavyMGClass:New{
   sprayAngle         = 300,
 }
 
---Type 93 AA
+-- Type 93 AA
 local Type93AA = Type93HMG:New{
   burst              = 6,
   burstRate          = 0.109,
-  canAttackGround    = false,
   movingAccuracy     = 200,
   predictBoost       = 1,
   range              = 1300,
@@ -352,6 +396,23 @@ local Type93AA = Type93HMG:New{
     fearid             = 701,
   }
 }
+
+-- Type 1 Ho-103 12.7mm Air MG (JPN)
+local Type1Ho103 = HeavyMGClass:New{
+  burst				 = 8,
+  burstRate          = 0.085,
+  canAttackGround    = false,
+  name               = [[Type1 Ho-103 12.7mm]],
+  range              = 800,
+  reloadTime         = 0.8,
+  soundStart         = [[US_50CALAir]],
+  sprayAngle         = 300,
+  weaponType         = [[Cannon]],
+  customparams = {
+    no_range_adjust    = true,
+  }
+}
+
 
 
 
@@ -374,8 +435,10 @@ return lowerkeys({
   Breda30 = Breda30,
   BredaM37 = BredaM37,
   BredaM38 = BredaM38,
+  BredaSafat03 = BredaSafat03,
   Type97MG = Type97MG,
   Type92MG = Type92MG,
+  TE4 = TE4,
   -- 13mm
   Twin05CalVickers = Twin05CalVickers,
   DShK = DShK,
@@ -383,8 +446,10 @@ return lowerkeys({
   M2Browning = M2Browning,
   M2BrowningAA = M2BrowningAA,
   M2BrowningAMG = M2BrowningAMG,
-  Type93HMG = Type93HMG,
-  Type93AA = Type93AA,
   BredaM1931 = BredaM1931,
   BredaM1931AA = BredaM1931AA,
+  BredaSafat05 = BredaSafat05,
+  Type93HMG = Type93HMG,
+  Type93AA = Type93AA,
+  Type1Ho103 = Type1Ho103,
 })
