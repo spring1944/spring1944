@@ -57,7 +57,7 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=ita47mml32ap;
+  weapon1=CannoneDa47mml32AP;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;

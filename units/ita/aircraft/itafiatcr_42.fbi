@@ -73,24 +73,24 @@
   onlyTargetCategory2=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 -0.14 1;
 
-  weapon3=bredasafatcal05;
+  weapon3=BredaSafat05;
   maxAngleDif3=10;
   onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
-  weapon4=bredasafatcal05;
+  weapon4=BredaSafat05;
   maxAngleDif4=10;
   onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=3;
 
-  weapon5=bredasafatcal03;
+  weapon5=BredaSafat03;
   maxAngleDif5=10;
   onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=3;
 
-  weapon6=bredasafatcal03;
+  weapon6=BredaSafat03;
   maxAngleDif6=10;
   onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 1;

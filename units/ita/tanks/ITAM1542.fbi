@@ -75,10 +75,10 @@
   weaponMainDir1=0 16 1;
   weaponMainDir2=0 16 1;
 
-  weapon1=ita47mml40he;
+  weapon1=CannoneDa47mml40HE;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
-  weapon2=ita47mml40ap;
+  weapon2=CannoneDa47mml40AP;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=BredaM38;

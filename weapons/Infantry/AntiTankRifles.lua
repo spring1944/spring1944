@@ -49,6 +49,35 @@ local PTRD = ATRifleClass:New{
   },
 }
 
+-- Solothurn (ITA)
+local Solothurn = ATRifleClass:New{
+  accuracy           = 300,
+  name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
+  range              = 640,
+  reloadtime         = 12,
+  rgbColor           = [[0.0 0.7 0.0]],
+  soundStart         = [[ITA_Solothurn]],
+  weaponVelocity     = 1240,
+  customparams = {
+    armor_penetration_1000m = 16,
+    armor_penetration_100m = 35,
+  },
+  damage = {
+    default            = 402,
+    infantry		= 100,
+  },
+}
+
+-- Scoped Solothurn (ITA)
+local ScopedSolothurn = Solothurn:New{
+  accuracy           = 150,
+  name               = [[Solothurn S-18/1000 Anti-Tank Rifle]],
+  range              = 1010,
+}
+
+
 return lowerkeys({
   PTRD = PTRD,
+  Solothurn = Solothurn,
+  ScopedSolothurn = ScopedSolothurn,
 })

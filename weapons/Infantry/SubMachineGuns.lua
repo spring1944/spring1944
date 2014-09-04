@@ -100,6 +100,44 @@ local PPSh = SMGClass:New{
   sprayAngle         = 500,
 }
 
+-- Beretta M38 (ITA)
+local BerettaM38 = SMGClass:New{
+  burst              = 8,
+  burstRate          = 0.086,
+  movingAccuracy     = 1300,
+  name               = [[Beretta Model 38]],
+  range              = 325,
+  reloadtime         = 1.7,
+  soundStart         = [[ITA_BerettaM38]],
+  sprayAngle         = 380,
+}
+
+-- FNAB-43 (ITA)
+local FNAB43 = SMGClass:New{
+  burst              = 5,
+  burstRate          = 0.112,
+  movingAccuracy     = 1000,
+  name               = [[FNAB-43]],
+  range              = 340,
+  reloadtime         = 1.2,
+  soundStart         = [[ITA_Fnab43]],
+  sprayAngle         = 300,
+  damage = {
+    default            = 19, -- intended?
+  },
+}
+
+local Type100SMG = SMGClass:New{
+  burst              = 5,
+  burstRate          = 0.066,
+  movingAccuracy     = 1300,
+  name               = [[Type 100 Submachinegun]],
+  range              = 325,
+  reloadtime         = 1.7,
+  soundStart         = [[JPN_Type100_SMG]],
+  sprayAngle         = 380,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   STEN = STEN,
@@ -107,4 +145,7 @@ return lowerkeys({
   MP40 = MP40,
   Thompson = Thompson,
   PPSh = PPSh,
+  BerettaM38 = BerettaM38,
+  FNAB43 = FNAB43,
+  Type100SMG = Type100SMG,
 })

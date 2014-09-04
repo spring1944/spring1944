@@ -40,6 +40,34 @@ local Bomb = BombClass:New{
   soundHitDry        = [[GEN_Explo_9]],
 }
 
+-- 160Kg Bomb (Generic)
+local Bomb160kg = Bomb:New{
+  accuracy           = 1000,
+  areaOfEffect       = 160,
+  explosionGenerator = [[custom:HE_XLarge]],
+  name               = [[160kg Bomb]],
+  range              = 450,
+  soundHitDry        = [[GEN_Explo_6]],
+  damage = {
+    default            = 15000,
+	planes		       = 5,
+  },
+}
+
+-- 50Kg Bomb (Generic)
+local Bomb50kg = Bomb:New{
+  accuracy           = 1400,
+  areaOfEffect       = 76,
+  explosionGenerator = [[custom:HE_XLarge]],
+  name               = [[50kg Bomb]],
+  range              = 800,
+  soundHitDry        = [[GEN_Explo_9]],
+  damage = {
+    default            = 7500,
+	planes		       = 5,
+  },
+}
+
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{
   areaOfEffect       = 200,
@@ -80,6 +108,8 @@ local PTAB = BombClass:New{
 -- Return only the full weapons
 return lowerkeys({
   Bomb = Bomb,
+  Bomb160kg = Bomb160kg,
+  Bomb50kg = Bomb50kg,
   PTAB = PTAB,
   V1 = V1,
 })

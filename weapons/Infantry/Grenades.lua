@@ -106,12 +106,67 @@ local F1 = APGrenadeClass:New{
   name               = [[F-1 Hand Grenade]],
 }
 
+-- OTO Model 35 (ITA)
+local OTO_model35 = APGrenadeClass:New{
+  areaOfEffect       = 30,
+  name               = [[italian Grenade]],
+  range              = 200,
+  customparams = {
+    armor_penetration  = 25, 
+  },
+  damage = {
+    default            = 880,
+  },
+}
+
+-- Type 99 AP Grenade (JPN)
+local Type99Grenade = APGrenadeClass:New{
+  accuracy           = 1421,
+  areaOfEffect       = 32,
+  name               = [[Type 99 Grenade]],
+}
+
+
+
 -- AT nades
 -- RPG-43 AT Nade (RUS)
 local RPG43 = ATGrenadeClass:New{
   accuracy           = 400,
   areaOfEffect       = 24,
   name               = [[RPG-43 Anti-Tank Grenade]],
+  customparams = {
+    armor_penetration  = 75,
+  },
+  damage = {
+    default            = 4896,
+  },  
+}
+
+-- Model 42 AT Grenade (ITA)
+local BredaMod42 = ATGrenadeClass:New{
+  areaOfEffect       = 31,
+  name               = [[Breda Anti-Tank Grenade]],
+  reloadtime         = 9,
+  damage = {
+    default            = 3080,
+  },
+}
+
+-- L-type heavy AT grenade (ITA)
+local L_type_grenade = ATGrenadeClass:New{
+  areaOfEffect       = 33,
+  name               = [[Italian Anti-Tank Stickgrenade]],
+  reloadtime         = 12, 
+  damage = {
+    default            = 4580,
+  },
+}
+
+-- Type 3 AT Grenade (JPN)
+local Type3AT = ATGrenadeClass:New{
+  accuracy           = 400,
+  areaOfEffect       = 24,
+  name               = [[Type 3 Anti-Tank Grenade]],
   customparams = {
     armor_penetration  = 75,
   },
@@ -161,8 +216,13 @@ return lowerkeys({
   Model24 = Model24,
   Mk2 = Mk2,
   F1 = F1,
+  OTO_model35 = OTO_model35,
+  Type99Grenade = Type99Grenade,
   -- AT nades
   RPG43 = RPG43,
+  BredaMod42 = BredaMod42,
+  L_type_grenade = L_type_grenade,
+  Type3AT = Type3AT,
   -- Smoke nades
   No77 = No77,
   -- Other

@@ -53,6 +53,20 @@ local MediumHeavyGunAPClass = Weapon:New{
   },  
 }
 
+-- HEAT Round Class
+local MediumHeavyGunHEATClass = Weapon:New{
+  edgeEffectiveness  = 0.2,
+  explosionGenerator = [[custom:EP_Large]],
+  explosionSpeed     = 30, -- needed?
+  name               = [[HEAT Shell]],
+  rgbColor           = [[0.5 0.5 0.0]],
+  soundHitDry        = [[GEN_Explo_3]],
+  customparams = {
+    damagetype         = [[shapedcharge]],
+  },
+}
+
+
 -- Implementations
 
 -- KwK36 8.8cm L/56 (GER)
@@ -194,6 +208,73 @@ local M390mmAP = M390mm:New(MediumHeavyGunAPClass, true):New{
   },
 }
 
+-- 90mm Ansaldo 90/53 M41 L/53 (ITA)
+local Ansaldo90mmL53 = MediumHeavyGunClass:New{
+  name               = [[90mm Ansaldo 90/53 M41 L/53]],
+  range              = 2110,
+  reloadTime         = 9.25,
+  soundStart         = [[GER_88mm]],
+}
+
+local Ansaldo90mmL53HE = Ansaldo90mmL53:New(MediumHeavyGunHEClass, true):New{
+  areaOfEffect       = 104,
+  weaponVelocity     = 1044,
+  damage = {
+    default            = 3060,
+  },  
+}
+local Ansaldo90mmL53AP = Ansaldo90mmL53:New(MediumHeavyGunAPClass, true):New{
+  weaponVelocity     = 1490,
+  customparams = {
+    armor_penetration_1000m = 90,
+    armor_penetration_100m  = 126,
+  },
+  damage = {
+    default            = 3354,
+  },
+}
+
+-- OTO 100mm/47 1928 Naval gun (ITA)
+local OTO100mmL47HE = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
+  areaOfEffect       = 110,
+  name               = [[100mm/47 mod.1928 Naval Gun]],
+  range              = 1700,
+  reloadTime         = 6,
+  soundStart         = [[GEN_105mm]],
+  weaponVelocity     = 1400,
+  damage = {
+    default            = 3000,
+  },  
+}
+
+-- Ansaldo 105mm/25 (ITA)
+local Ansaldo105mmL25 = MediumHeavyGunClass:New{
+  name               = [[Ansaldo L/18 75mm Howitzer]],
+  range              = 1775,
+  reloadTime         = 11.25,
+  soundStart         = [[GEN_105mm]],
+}
+
+local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHeavyGunHEClass, true):New{
+  areaOfEffect       = 129,
+  weaponVelocity     = 1200,
+  damage = {
+    default            = 2509,
+  },  
+}
+
+local Ansaldo105mmL25HEAT = Ansaldo105mmL25:New(MediumHeavyGunHEATClass, true):New{
+  range              = 1153,
+  weaponVelocity     = 700,
+  customparams = {
+    armor_penetration       = 140,
+  },
+  damage = {
+    default            = 2419,
+  },
+}
+
+
 
 -- Return only the full weapons
 return lowerkeys({
@@ -213,4 +294,12 @@ return lowerkeys({
   -- M3 90mm
   M390mmHE = M390mmHE,
   M390mmAP = M390mmAP,
+  -- 90mm Ansaldo 90/53 M41 L/53
+  Ansaldo90mmL53HE = Ansaldo90mmL53HE,
+  Ansaldo90mmL53AP = Ansaldo90mmL53AP,
+  -- OTO 100mm/47 1928 Naval gun
+  OTO100mmL47HE = OTO100mmL47HE,
+  -- Ansaldo 105mm/25
+  Ansaldo105mmL25HE = Ansaldo105mmL25HE,
+  Ansaldo105mmL25HEAT = Ansaldo105mmL25HEAT,
 })

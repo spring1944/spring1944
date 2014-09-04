@@ -66,23 +66,23 @@
   turnRate=50;
   badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
 
-  weapon1=jpn_bomb50kg;
+  weapon1=Bomb50kg;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jpn_bomb50kg;
+  weapon2=Bomb50kg;
   maxAngleDif2=20;
   onlyTargetCategory2=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 
-  weapon3=jpn_bomb50kg;
+  weapon3=Bomb50kg;
   maxAngleDif3=20;
   onlyTargetCategory3=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=2;
 
-  weapon4=jpn_bomb50kg;
+  weapon4=Bomb50kg;
   maxAngleDif4=20;
   onlyTargetCategory4=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir4=0 0 1;

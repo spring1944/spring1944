@@ -20,7 +20,7 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "jpntype96_25mm60_he",
+			name				= "Type9625mmHE",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
@@ -41,12 +41,12 @@ local JPN_SC_Turret_25mm_Front = BoatChild:New{
 	objectName				= "JPNTypeNo1AuxSC_turret_25mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "jpntype96_25mm60_aa",
+			name				= "Type9625mmAA",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
-			name				= "jpntype96_25mm60_he",
+			name				= "Type9625mmHE",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},

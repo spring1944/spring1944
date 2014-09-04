@@ -71,13 +71,13 @@
   turnRate=175;
   badTargetCategory=FLAG;
 
-  weapon1=ita47mml32ap;
+  weapon1=CannoneDa47mml32AP;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=15;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   weaponMainDir1=0 0 1;
 
-  weapon2=ita47mml32heat;
+  weapon2=CannoneDa47mml32HEAT;
   maxAngleDif2=15;
   onlyTargetCategory2=HARDVEH LARGESHIP;
   weaponMainDir2=0 0 1;

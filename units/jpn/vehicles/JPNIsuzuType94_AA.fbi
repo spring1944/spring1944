@@ -54,7 +54,7 @@
   turnRate=400;
   badTargetCategory=FLAG;
 
-  weapon1=jpn_20mmtype98aa;
+  weapon1=Type9820mmAA;
   onlyTargetCategory1=AIR;
 
   weapon2=Large_Tracer;

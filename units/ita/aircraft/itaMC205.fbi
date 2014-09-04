@@ -66,22 +66,22 @@
   turnRate=50;
   badTargetCategory=BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
-  weapon3=bredasafatcal05;
+  weapon3=BredaSafat05;
   maxAngleDif3=10;
   onlyTargetCategory3=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir3=0 0 1;
 
-  weapon4=bredasafatcal05;
+  weapon4=BredaSafat05;
   maxAngleDif4=10;
   onlyTargetCategory4=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir4=0 0 1;
   
-  weapon5=bredasafatcal03;
+  weapon5=BredaSafat03;
   maxAngleDif5=10;
   onlyTargetCategory5=INFANTRY SOFTVEH AIR  DEPLOYED;
   weaponMainDir5=0 0 1;
   
-  weapon6=bredasafatcal03;
+  weapon6=BredaSafat03;
   maxAngleDif6=10;
   onlyTargetCategory6=INFANTRY SOFTVEH AIR  DEPLOYED;
   weaponMainDir6=0 0 1;

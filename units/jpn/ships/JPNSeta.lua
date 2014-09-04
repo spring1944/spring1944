@@ -20,7 +20,7 @@ local JPN_Seta = BoatMother:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "jpn76mm40",
+			name				= "Type376mmL40HE",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
@@ -43,7 +43,7 @@ local JPN_Seta_Turret_76mm_Front = BoatChild:New{
 	objectName				= "JPNSeta_turret_76mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "jpn76mm40",
+			name				= "Type376mmL40HE",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
@@ -77,14 +77,14 @@ local JPN_Seta_Turret_25mm = BoatChild:New{
 	objectName				= "JPNSeta_turret_25mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "jpntype96_25mm60_aa",
+			name				= "Type9625mmAA",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 			badTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
-			name				= "jpntype96_25mm60_aa",
+			name				= "Type9625mmAA",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 			badTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
@@ -92,13 +92,13 @@ local JPN_Seta_Turret_25mm = BoatChild:New{
 			slaveTo				= 1,
 		},
 		[3] = {
-			name				= "jpntype96_25mm60_he",
+			name				= "Type9625mmHE",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
-			name				= "jpntype96_25mm60_he",
+			name				= "Type9625mmHE",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",

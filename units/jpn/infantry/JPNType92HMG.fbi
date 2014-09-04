@@ -52,7 +52,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  //weapon1=BredaM37;
+  //weapon1=Type92MG;
   //onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon2=Small_Tracer;

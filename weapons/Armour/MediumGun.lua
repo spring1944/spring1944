@@ -53,6 +53,20 @@ local MediumGunAPClass = Weapon:New{
   },  
 }
 
+-- HEAT Round Class
+local MediumGunHEATClass = Weapon:New{
+  edgeEffectiveness  = 0.2,
+  explosionGenerator = [[custom:EP_medium]],
+  explosionSpeed     = 30, -- needed?
+  name               = [[HEAT Shell]],
+  rgbColor           = [[0.5 0.5 0.0]],
+  soundHitDry        = [[GEN_Explo_2]],
+  customparams = {
+    damagetype         = [[shapedcharge]],
+  },
+}
+
+
 -- Implementations
 
 -- QF 75mm (GBR)
@@ -276,6 +290,179 @@ local Mk223in50 = MediumGunClass:New{
   },  
 }:New(MediumGunHEClass, true)
 
+
+-- Ansaldo L/18 75mm (ITA)
+local Ansaldo75mmL18 = MediumGunClass:New{
+  name               = [[Ansaldo L/18 75mm Howitzer]],
+  range              = 1310,
+  reloadTime         = 6.75,
+  soundStart         = [[US_75mm]],
+}
+
+local Ansaldo75mmL18HE = Ansaldo75mmL18:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 94,
+  weaponVelocity     = 800,
+  damage = {
+    default            = 2509,
+  },  
+}
+
+local Ansaldo75mmL18HEAT = Ansaldo75mmL18:New(MediumGunHEATClass, true):New{
+  range              = 851,
+  weaponVelocity     = 600,
+  customparams = {
+    armor_penetration       = 90,
+  },
+  damage = {
+    default            = 2419,
+  },
+}
+
+-- Ansaldo L/27 75mm (ITA)
+local Ansaldo75mmL27HE = MediumGunClass:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 94,
+  name               = [[Ansaldo L/27 75mm Howitzer]],
+  range              = 1390,
+  reloadTime         = 6.75,
+  soundStart         = [[US_75mm]],
+  weaponVelocity     = 820,
+  damage = {
+    default            = 2509,
+  },  
+}
+
+-- Ansaldo L/34 75mm (ITA)
+local Ansaldo75mmL34 = MediumGunClass:New{
+  name               = [[Ansaldo L/34 75mm]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[US_75mm]],
+}
+
+local Ansaldo75mmL34HE = Ansaldo75mmL34:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 104,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+local Ansaldo75mmL34AP = Ansaldo75mmL34:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 51,
+    armor_penetration_100m  = 89,
+  },
+  damage = {
+    default            = 2280,
+  },
+}
+
+-- Ansaldo L/46 75mm (ITA)
+local Ansaldo75mmL46 = MediumGunClass:New{
+  name               = [[Ansaldo L/46 75mm]],
+  range              = 1530,
+  reloadTime         = 5.25,
+  soundStart         = [[RUS_76mm]],
+}
+
+local Ansaldo75mmL46HE = Ansaldo75mmL46:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 104,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 1280,
+  },  
+}
+
+local Ansaldo75mmL46AP = Ansaldo75mmL46:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 86,
+    armor_penetration_100m  = 98,
+  },
+  damage = {
+    default            = 2613,
+  },
+}
+
+-- Ansaldo 76/40 Mod. 1916 R.M. Naval gun (ITA)
+local Ansaldo76mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 76,
+  name               = [[Ansaldo 76mm/40 Naval Gun]],
+  range              = 1320,
+  reloadTime         = 3.8,
+  soundStart         = [[GER_75mm]],
+  weaponVelocity     = 1300,
+  damage = {
+    default            = 2150,
+  },  
+}
+
+-- Type 3 75mm/38 (JPN)
+local Type375mmL38 = MediumGunClass:New{
+  name               = [[Type 3 75mm/38]],
+  range              = 1480,
+  reloadTime         = 5.25,
+  soundStart         = [[GER_75mm]],
+}
+
+local Type375mmL38HE = Type375mmL38:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 84,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+local Type375mmL38AP = Type375mmL38:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 70,
+    armor_penetration_100m  = 91,
+  },
+  damage = {
+    default            = 2490,
+  },
+}
+
+-- Type 90 75mm (JPN)
+local Type9075mm = MediumGunClass:New{
+  name               = [[Type 90 75mm]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[GER_75mm]],
+}
+
+local Type9075mmHE = Type9075mm:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 84,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+
+local Type9075mmAP = Type9075mm:New(MediumGunAPClass, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 70,
+    armor_penetration_100m  = 91,
+  },
+  damage = {
+    default            = 2490,
+  },
+}
+
+-- Type 3 76mm/40 Naval gun (JPN)
+local Type376mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
+  areaOfEffect       = 80,
+  name               = [[Type 3 76mm/40 Naval gun]],
+  range              = 1300,
+  reloadTime         = 4,
+  soundStart         = [[GER_75mm]],
+  weaponVelocity     = 1300,
+  damage = {
+    default            = 2250,
+  },  
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 75mm
@@ -304,4 +491,25 @@ return lowerkeys({
   M7AP = M7AP,
   -- Mk22 3inch
   Mk223in50 = Mk223in50,
+  -- Ansaldo L/18 75mm
+  Ansaldo75mmL18HE = Ansaldo75mmL18HE,
+  Ansaldo75mmL18HEAT = Ansaldo75mmL18HEAT,
+  -- Ansaldo L/27 75mm
+  Ansaldo75mmL27HE = Ansaldo75mmL27HE,
+  -- Ansaldo L/34 75mm
+  Ansaldo75mmL34HE = Ansaldo75mmL34HE,
+  Ansaldo75mmL34AP = Ansaldo75mmL34AP,
+  -- Ansaldo L/46 75mm
+  Ansaldo75mmL46HE = Ansaldo75mmL46HE,
+  Ansaldo75mmL46AP = Ansaldo75mmL46AP,
+  -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun
+  Ansaldo76mmL40HE = Ansaldo76mmL40HE,
+  -- Type 3 75mm/38
+  Type375mmL38HE = Type375mmL38HE,
+  Type375mmL38AP = Type375mmL38AP,
+  -- Type 90 75mm
+  Type9075mmHE = Type9075mmHE,
+  Type9075mmAP = Type9075mmAP,
+  -- Type 3 76mm/40 Naval gun (JPN)
+  Type376mmL40HE = Type376mmL40HE,
 })

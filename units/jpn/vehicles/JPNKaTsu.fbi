@@ -29,6 +29,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
+  loadingRadius=50;
   mass=1600;
   maxDamage=1600;
   maxReverseVelocity=0.95;
@@ -64,19 +65,19 @@
   trackWidth=20;
   transportCapacity=30;
   transportMass=750;
-  transportRadius=50;
   transportSize=1;
   transportUnloadMethod=2;
   turninplace=0;
   turnRate=400;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
-  weapon1=jpn13mmtype93;
+  weapon1=Type93HMG;
   onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir1 = 1 0 0;
 	maxAngleDif1 = 200;
 
-  weapon2=jpn13mmtype93;
+  weapon2=Type93HMG;
   onlyTargetCategory2=OPENVEH INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 	weaponMainDir2 = -1 0 0;
 	maxAngleDif2 = 200;

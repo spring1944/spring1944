@@ -173,6 +173,115 @@ local TNSh20mmAP = TNSh20mm:New(ACAPClass, true):New{
   },
 }
 
+-- Breda M35 20mm (ITA)
+local BredaM3520mm = ACClass:New{
+  accuracy           = 100, --Why not 255 like the rest?
+  burst              = 4,
+  burstRate          = 0.261,
+  name               = [[Breda Model 35]],
+  range              = 730,
+  reloadTime         = 1.6,
+  soundStart         = [[GER_20mm]],
+  sprayAngle         = 300,
+  weaponVelocity     = 2000,
+  damage = {
+    default            = 41,
+  },
+}
+
+local BredaM3520mmAA = BredaM3520mm:New(ACAAClass, true):New{
+  range              = 1950,
+  sprayAngle         = 475,
+  customparams = {
+    fearaoe            = 400,
+  },
+}
+
+local TwinBredaM3520mmAA = BredaM3520mmAA:New{
+  burst              = 8,
+  burstRate          = 0.13,
+}
+
+local BredaM3520mmHE = BredaM3520mm:New(ACHEClass, true):New{
+  customparams = {
+    fearaoe            = 30,
+  },
+}
+
+local BredaM3520mmAP = BredaM3520mm:New(ACAPClass, true):New{
+  sprayAngle         = 400,
+  weaponVelocity     = 1560,
+  customparams = {
+    armor_penetration_1000m = 6,
+    armor_penetration_100m  = 29,
+  },
+  damage = {
+    default            = 345,
+  },
+}
+
+-- Type 98 20mm (JPN)
+local Type9820mm = ACClass:New{
+  accuracy           = 255,
+  areaOfEffect       = 15,
+  burst              = 4,
+  burstRate          = 0.2,
+  name               = [[Type 98 20mm]],
+  range              = 730,
+  reloadTime         = 2,
+  soundStart         = [[GER_20mm]],
+  sprayAngle         = 400,
+  weaponVelocity     = 2000,
+  damage = {
+    default            = 52,
+  },
+}
+
+local Type9820mmAA = Type9820mm:New(ACAAClass, true):New{
+  range              = 1950,
+}
+
+local Type9820mmHE = Type9820mm:New(ACHEClass, true)
+
+-- Type 96 25mm (JPN)
+local Type9625mm = ACClass:New{
+  accuracy           = 255,
+  areaOfEffect       = 15, --if this is changed, change AA and HE aoe and fearaoe accordingly
+  burst              = 5,
+  burstRate          = 0.231,
+  name               = [[Type 98 20mm]],
+  range              = 780,
+  reloadTime         = 2.7,
+  soundStart         = [[GER_20mm]],
+  sprayAngle         = 400,
+  weaponVelocity     = 2000,
+  damage = {
+    default            = 45,
+  },
+}
+
+local Type9625mmAA = Type9625mm:New(ACAAClass, true):New{
+  range              = 1950,
+  damage = {
+    default            = 55,
+  },
+}
+
+local TwinType9625mmAA = Type9625mmAA:New{
+	burst            = 36,
+	burstrate        = 0.12,
+    reloadtime       = 6.5,
+}
+
+local Type9625mmHE = Type9625mm:New(ACHEClass, true)
+
+local TwinType9625mmHE = Type9625mmHE:New{
+	burst            = 36,
+	burstrate        = 0.12,
+    reloadtime       = 6.5,
+}
+
+
 -- Return only the full weapons
 return lowerkeys({
   -- FlaK 38
@@ -188,4 +297,17 @@ return lowerkeys({
   -- TNSh
   TNSh20mmHE = TNSh20mmHE,
   TNSh20mmAP = TNSh20mmAP,
+  -- Breda M30
+  BredaM3520mmAA = BredaM3520mmAA,
+  TwinBredaM3520mmAA = TwinBredaM3520mmAA,
+  BredaM3520mmHE = BredaM3520mmHE,
+  BredaM3520mmAP = BredaM3520mmAP,
+  -- Type 98
+  Type9820mmAA = Type9820mmAA,
+  Type9820mmHE = Type9820mmHE,
+  -- Type 96
+  Type9625mmAA = Type9625mmAA,
+  TwinType9625mmAA = TwinType9625mmAA,
+  Type9625mmHE = Type9625mmHE,
+  TwinType9625mmHE = TwinType9625mmHE,
 })

@@ -19,7 +19,7 @@ local ITA_Vedetta = BoatMother:New{
 	turnRate				= 140,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "ita76mm40",
+			name				= "Ansaldo76mmL40HE",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
@@ -40,9 +40,9 @@ local ITA_Vedetta_Turret_76mm = BoatChild:New{
 	name					= "76mm Turret",
 	description				= "Primary Turret",
 	objectName				= "ITAVedetta_Turret_76mm.s3o",
-  	weapons = {	
+	weapons = {	
 		[1] = {
-			name				= "ita76mm40",
+			name				= "Ansaldo76mmL40HE",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
@@ -54,7 +54,7 @@ local ITA_Vedetta_Turret_76mm = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-    },
+	},
 }
 
 local ITA_Vedetta_Turret_MG = BoatChild:New{
@@ -63,14 +63,14 @@ local ITA_Vedetta_Turret_MG = BoatChild:New{
 	objectName				= "ITAVedetta_Turret_MG.s3o",
 	weapons = {	
 		[1] = {
-			name				= "ita13mmm1931aa",
+			name				= "BredaM1931AA",
 			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			name				= "ita13mmm1931",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH LARGESHIP DEPLOYED",
+			name				= "BredaM1931",
+			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},

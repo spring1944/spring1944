@@ -54,13 +54,13 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jpn75mmtype90_he;
+  weapon1=Type9075mmHE;
   badTargetCategory1=OPENVEH HARDVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=jpn75mmtype90_ap;
+  weapon2=Type9075mmAP;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP SHIP SOFTVEH;
   maxAngleDif2=70;
   weaponMainDir2=0 0 1;

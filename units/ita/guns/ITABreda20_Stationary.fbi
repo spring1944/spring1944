@@ -49,11 +49,11 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=breda3520mmaa;
+  weapon1=BredaM3520mmAA;
   badTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
   onlyTargetCategory1=AIR;
 
-  weapon2=breda3520mmhe;
+  weapon2=BredaM3520mmHE;
   badTargetCategory2=AIR;
   onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 

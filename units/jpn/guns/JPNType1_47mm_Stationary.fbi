@@ -59,7 +59,7 @@
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;
 
-  weapon1=jpn47mmtype1_ap;
+  weapon1=Type147mmAP;
   badTargetCategory1=SOFTVEH;
   maxAngleDif1=70;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
