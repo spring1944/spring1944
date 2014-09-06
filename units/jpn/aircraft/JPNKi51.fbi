@@ -67,23 +67,23 @@
   badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon1=Bomb50kg;
-  maxAngleDif1=20;
+  maxAngleDif1=10;
   onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Bomb50kg;
-  maxAngleDif2=20;
+  maxAngleDif2=10;
   onlyTargetCategory2=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 
   weapon3=Bomb50kg;
-  maxAngleDif3=20;
+  maxAngleDif3=10;
   onlyTargetCategory3=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir3=0 0 1;
   weaponSlaveTo3=2;
 
   weapon4=Bomb50kg;
-  maxAngleDif4=20;
+  maxAngleDif4=10;
   onlyTargetCategory4=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir4=0 0 1;
 

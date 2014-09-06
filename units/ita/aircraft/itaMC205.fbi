@@ -16,7 +16,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=300;
+  cruiseAlt=350;
   [customParams] {
     enginesound=fw190b-;
     enginesoundnr=12;
@@ -86,12 +86,12 @@
   onlyTargetCategory6=INFANTRY SOFTVEH AIR  DEPLOYED;
   weaponMainDir6=0 0 1;
 
-  weapon1=bomb160kg;
+  weapon1=Bomb160kg;
   maxAngleDif1=15;
   onlyTargetCategory1=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=bomb160kg;
+  weapon2=Bomb160kg;
   maxAngleDif2=15;
   onlyTargetCategory2=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;

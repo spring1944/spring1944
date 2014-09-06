@@ -10,7 +10,6 @@ local BombClass = Weapon:New{
   manualBombSettings = true,
   noSelfDamage		 = true,
   reloadtime         = 600,
-  startVelocity      = 280,
   tolerance          = 4000,
   trajectoryHeight   = 0.15,
   turret             = true,
@@ -41,31 +40,44 @@ local Bomb = BombClass:New{
 }
 
 -- 160Kg Bomb (Generic)
-local Bomb160kg = Bomb:New{
-  accuracy           = 1000,
+local Bomb160kg = BombClass:New{
+  accuracy           = 500,
   areaOfEffect       = 160,
-  explosionGenerator = [[custom:HE_XLarge]],
+  weaponVelocity     = 400,
+  trajectoryHeight   = 0.0,
   name               = [[160kg Bomb]],
+  weaponType         = [[AircraftBomb]],
+  burst		= 1,
+  reloadtime	= 600,
+  mygravity	= 0.5,
+  texture1 = projectile,
   range              = 450,
-  soundHitDry        = [[GEN_Explo_6]],
-  damage = {
+    damage = {
     default            = 15000,
-	planes		       = 5,
-  },
+	planes		= 5,
+    },
+  soundHit           = [[GEN_Explo_6]],
 }
 
 -- 50Kg Bomb (Generic)
-local Bomb50kg = Bomb:New{
-  accuracy           = 1400,
-  areaOfEffect       = 76,
-  explosionGenerator = [[custom:HE_XLarge]],
+local Bomb50kg = BombClass:New{
   name               = [[50kg Bomb]],
-  range              = 800,
-  soundHitDry        = [[GEN_Explo_9]],
-  damage = {
+  accuracy           = 40,	
+  areaOfEffect       = 76,
+  texture1 = projectile,
+  trajectoryHeight   = 0.0,
+  weaponVelocity     = 400,
+  gravityaffected    = false,
+  mygravity	= 0.5,
+
+    damage = {
     default            = 7500,
-	planes		       = 5,
-  },
+	planes		= 5,
+    },
+  range              = 800,
+  soundHit           = [[GEN_Explo_9]],
+  tolerance          = 1000,
+  targetMoveError = 0.1,
 }
 
 -- V1 Missile Explosions (GER)

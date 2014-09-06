@@ -148,7 +148,11 @@ local BredaMod42 = ATGrenadeClass:New{
   name               = [[Breda Anti-Tank Grenade]],
   reloadtime         = 9,
   damage = {
-    default            = 3080,
+    default            = 2780,
+  },
+    customparams = {
+    damagetype         = [[explosive]],
+    howitzer	= true,
   },
 }
 
@@ -158,7 +162,11 @@ local L_type_grenade = ATGrenadeClass:New{
   name               = [[Italian Anti-Tank Stickgrenade]],
   reloadtime         = 12, 
   damage = {
-    default            = 4580,
+    default            = 4080,
+  },
+    customparams = {
+    damagetype         = [[explosive]],
+    howitzer	= true,
   },
 }
 

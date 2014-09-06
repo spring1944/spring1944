@@ -63,15 +63,15 @@
   turnRate=50;
   badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
 
-  weapon1=bomb50kg;
-  maxAngleDif1=15;
+  weapon1=Bomb50kg;
+  maxAngleDif1=10;
   onlyTargetCategory1=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
-  weaponMainDir1=0 -0.15 1;
+  weaponMainDir1=0 0 1;
 
-  weapon2=bomb50kg;
-  maxAngleDif2=15;
+  weapon2=Bomb50kg;
+  maxAngleDif2=10;
   onlyTargetCategory2=BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
-  weaponMainDir2=0 -0.14 1;
+  weaponMainDir2=0 0 1;
 
   weapon3=BredaSafat05;
   maxAngleDif3=10;
