@@ -5,6 +5,8 @@ local ITADefs = {
 	"ITABreda30",
 	"ITAalpinifnab43",
 	"ITAalpiniRifle",
+	"ITAalpiniscout",
+	"ITAalpinimortar",
 	"ITAbersaglieriM38",
 	"ITAbersaglieriRifle",
 	"ITAEngineer",
