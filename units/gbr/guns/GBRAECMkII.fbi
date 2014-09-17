@@ -68,7 +68,7 @@
   trackStrength=6.5;
   trackStretch=1;
   trackType=Stdtank;
-  trackWidth=13;
+  trackWidth=19;
   turninplace=0;
   turnRate=405;
   badTargetCategory=FLAG;
