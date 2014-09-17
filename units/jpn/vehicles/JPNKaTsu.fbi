@@ -23,6 +23,7 @@
     armor_top=10;
     supplyRange=200;
 	hasturnbutton=1;
+	transportsquad=jpn_platoon_amph;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;

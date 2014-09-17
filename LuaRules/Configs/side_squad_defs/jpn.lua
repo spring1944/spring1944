@@ -162,6 +162,22 @@ local jpnDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
+	["jpn_platoon_amph"] =
+	{
+		members = {
+			"jpnobserv",
+			"jpntype99lmg",
+			"jpntype100smg",
+			"jpntype3at",
+			"jpnobserv",
+			"jpnrifle",
+			"jpnrifle",
+			"jpnrifle",
+			"jpnrifle",
+			"jpnrifle",
+		},
+		-- other fields not needed for transport squads
+	},
 	["jpn_platoon_tokudaihatsu"] =
 	{
 		members = {
