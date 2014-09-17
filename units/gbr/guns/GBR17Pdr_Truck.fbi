@@ -44,7 +44,7 @@
   trackStrength=6.5;
   trackStretch=1;
   trackType=Stdtank;
-  trackWidth=13;
+  trackWidth=18;
   turninplace=0;
   turnRate=440;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
