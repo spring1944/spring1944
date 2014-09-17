@@ -168,15 +168,31 @@ local jpnDefs = {
 			"jpnobserv",
 			"jpntype99lmg",
 			"jpntype100smg",
+			"jpntype100smg",
 			"jpntype3at",
-			"jpnobserv",
+			"jpnrifle",
+			"jpnrifle",
+            		"jpnhqengineer",
+			"jpnrifle",
+			"jpnrifle",
+			"jpnrifle",
+			"jpnrifle",
+		},
+	},
+	["jpn_platoon_hoha"] =
+	{
+		members = {
+
+			"jpntype99lmg",
+			"jpntype100smg",
+			"jpntype100smg",
+			"jpntype3at",
 			"jpnrifle",
 			"jpnrifle",
 			"jpnrifle",
 			"jpnrifle",
 			"jpnrifle",
 		},
-		-- other fields not needed for transport squads
 	},
 	["jpn_platoon_tokudaihatsu"] =
 	{
