@@ -357,12 +357,12 @@ local Ansaldo75mmL34AP = Ansaldo75mmL34:New(MediumGunAPClass, true):New{
   },
 }
 
--- Ansaldo L/46 75mm (ITA)
+-- Ansaldo L/46 75mm (ITA) 15 RPM
 local Ansaldo75mmL46 = MediumGunClass:New{
   name               = [[Ansaldo L/46 75mm]],
   range              = 1530,
-  reloadTime         = 5.25,
-  soundStart         = [[RUS_76mm]],
+  reloadTime         = 5.0,
+  soundStart         = [[GER_75mmLong]],
 }
 
 local Ansaldo75mmL46HE = Ansaldo75mmL46:New(MediumGunHEClass, true):New{
@@ -397,11 +397,11 @@ local Ansaldo76mmL40HE = MediumGunClass:New(MediumGunHEClass, true):New{
   },  
 }
 
--- Type 3 75mm/38 (JPN)
+-- Type 3 75mm/38 (JPN) 12RPM
 local Type375mmL38 = MediumGunClass:New{
   name               = [[Type 3 75mm/38]],
   range              = 1480,
-  reloadTime         = 5.25,
+  reloadTime         = 4.85,
   soundStart         = [[GER_75mm]],
 }
 
@@ -423,11 +423,11 @@ local Type375mmL38AP = Type375mmL38:New(MediumGunAPClass, true):New{
   },
 }
 
--- Type 90 75mm (JPN)
+-- Type 90 75mm (JPN) 7 RPM
 local Type9075mm = MediumGunClass:New{
   name               = [[Type 90 75mm]],
   range              = 1270,
-  reloadTime         = 5.25,
+  reloadTime         = 6.5,
   soundStart         = [[GER_75mm]],
 }
 
