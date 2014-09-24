@@ -33,7 +33,7 @@ local AirRocketClass = Weapon:New{
 
 -- HVAR Rocket (USA)
 local HVARRocket = AirRocketClass:New{
-  areaOfEffect       = 64,
+  areaOfEffect       = 18,
   name               = [[5-Inch HVAR Rockets]],
   range              = 1500,
   reloadtime         = 2.5,
