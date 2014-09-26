@@ -8,7 +8,7 @@
   buildCostEnergy=0;
   buildCostMetal=640;
   buildPic=JPNType1_47mm_Truck.png;
-  buildTime=640;
+  buildTime=400;
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=JPNIsuzuTX40_Abandoned;

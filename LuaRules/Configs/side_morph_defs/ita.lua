@@ -51,7 +51,7 @@ local itaDefs = {
   {
     into = 'itacannone47_stationary',
     tech = 0,
-    time = 20,
+    time = 5,
     metal = 0,
     energy = 0,
 	directional = true,
@@ -61,7 +61,7 @@ local itaDefs = {
   {
     into = 'itacannone47_truck',
     tech = 0,
-    time = 15,
+    time = 5,
     metal = 0,
     energy = 0,
   },
