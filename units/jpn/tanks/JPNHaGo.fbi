@@ -22,8 +22,8 @@
     armor_top=6;
     hasturnbutton=1;
     lowammolevel=8;
-    maxammo=30;
-    weaponcost=8;
+    maxammo=20;
+    weaponcost=7;
     weaponswithammo=2;
 	blockfear=1;
   }
