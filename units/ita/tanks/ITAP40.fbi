@@ -16,7 +16,7 @@
   //collisionVolumeTest=1;
   corpse=ITAP40_Abandoned;
   [customParams] {
-    armor_front=70;
+    armor_front=66;
     armor_rear=42;
     armor_side=46;
     armor_top=20;

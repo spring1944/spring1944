@@ -109,7 +109,10 @@ local Mod91 = RifleClass:New{
   accuracy           = 95, -- overwrites default
   name               = [[Carcano Mod.91/38]],
   range              = 610,
-  reloadtime         = 2.5,
+  reloadtime         = 2.6,
+  damage = {
+    default            = 30,
+  },
   soundStart         = [[ITA_CarcanoM91]],
 }
 
