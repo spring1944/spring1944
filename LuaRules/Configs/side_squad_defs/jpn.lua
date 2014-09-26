@@ -119,8 +119,6 @@ local jpnDefs = {
 	["jpn_platoon_daihatsu"] =
 	{
 		members = {
-			"jpnobserv",
-			"jpnobserv",
 			"jpntype99lmg",
 			"jpntype99lmg",
 			"jpnkneemortar",
@@ -140,7 +138,6 @@ local jpnDefs = {
 			"jpnrifle",
 			"jpnrifle",
 			"jpnobserv",
-			"jpnobserv",
 			"jpntype99lmg",
 			"jpntype99lmg",
 			"jpnkneemortar",
@@ -159,6 +156,9 @@ local jpnDefs = {
 			"jpnrifle",
 			"jpnrifle",
 			"jpnrifle",
+			"jpntype3at",
+			"jpntype3at",
+			"jpnobserv",
 		},
 		-- other fields not needed for transport squads
 	},
