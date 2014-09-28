@@ -6,7 +6,7 @@
   airSightDistance=1250;
   brakeRate=0.96;
   buildCostEnergy=0;
-  buildCostMetal=640;
+  buildCostMetal=400;
   buildPic=JPNType1_47mm_Truck.png;
   buildTime=400;
   canMove=1;
