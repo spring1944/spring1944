@@ -42,6 +42,7 @@
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=GBRCommando.S3O;
   repairable=0;
+  script=GBRCommando.cob;
   seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {

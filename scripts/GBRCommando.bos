@@ -16,6 +16,7 @@ piece  torso, flare, pelvis, rthigh, lthigh, lleg, rleg, rfoot,
 #define SIG_FEARRECOVERY		512
 #define SIG_RESTOREFROMCRAWL	1024
 #define SIG_IDLE				2048
+#define SIG_BUILD				4096
 
 /*
 Defs that are shared among inf
@@ -163,27 +164,19 @@ Create()
 }
 
 
-StartBuilding(Func_Var_1, pitch)
+StartBuilding(buildheading, pitch)
 {
-	signal SIG_AIM1;
-	bNading = 1;
-	if (lock > 1)
- 	{
- 		set INBUILDSTANCE to 0;
- 		return (0);
- 	}
-	if (lock<=1)
-	{
-		set INBUILDSTANCE to 1;
-		lock=lock+1;
-	return (0);
-	}
+	signal SIG_BUILD;
+	set-signal-mask SIG_BUILD;
+	turn ground to y-axis buildheading now;
+	set INBUILDSTANCE to 1;
 }
 
 StopBuilding()
 {
+	SIGNAL SIG_BUILD;
+	turn ground to y-axis <0> now;
 	set INBUILDSTANCE to 0;
-	bNading = 0;
 }
 
 QueryNanoPiece(piecenum)

@@ -55,9 +55,9 @@ local function UpdateSuppression(unitID)
 	fearLevels[unitID] = currFear
 	SetUnitRulesParam(unitID, "suppress", currFear)
 	if engineerIDs[unitID] then -- unit is an engineer, toggle his buildpower
-		if currFear > 0 and currFear <= 2 then
+		if currFear <= 2 then
 			Spring.SetUnitBuildSpeed(unitID, engineerIDs[unitID])
-		elseif currFear > 2 then
+		else
 			Spring.SetUnitBuildSpeed(unitID, 0.000001) -- must be non-0 or building will decay
 		end
 	end
