@@ -16,7 +16,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=750;
+  cruiseAlt=500;
   [customParams] {
     enginesound=p51b-;
     enginesoundnr=16;
