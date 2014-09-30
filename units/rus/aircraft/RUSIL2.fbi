@@ -75,14 +75,14 @@
 
   weapon11=Large_Tracer;
 
-  weapon1=HVARRocket;
+  weapon1=RS82Rocket;
   maxAngleDif1=30;
-  onlyTargetCategory1=HARDVEH SHIP OPENVEH LARGESHIP;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=HVARRocket;
+  weapon2=RS82Rocket;
   maxAngleDif2=30;
-  onlyTargetCategory2=HARDVEH SHIP OPENVEH LARGESHIP;
+  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir2=0 0 1;
   weaponSlaveTo2=1;
 
@@ -110,7 +110,7 @@
   weaponSlaveTo6=3;
 
   weapon7=bomb;
-  onlyTargetCategory7=BUILDING HARDVEH SHIP OPENVEH INFANTRY LARGESHIP DEPLOYED;
+  onlyTargetCategory7=BUILDING HARDVEH SHIP OPENVEH LARGESHIP DEPLOYED;
   weaponMainDir7=0 -0.18 1;
 
   weapon8=m2browningaa;
