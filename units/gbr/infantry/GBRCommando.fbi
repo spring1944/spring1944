@@ -21,6 +21,9 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    maxammo=2;
+    weaponcost=50;
+    weaponswithammo=0;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;

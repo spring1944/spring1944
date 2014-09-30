@@ -22,6 +22,9 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    maxammo=2;
+    weaponcost=50;
+    weaponswithammo=0;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -42,6 +45,7 @@
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=GBRCommando.S3O;
   repairable=0;
+  script=GBRCommando.cob;
   seismicDistance=840;
   seismicSignature=0;
   [sfxtypes] {
