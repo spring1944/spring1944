@@ -26,6 +26,6 @@
   selfDestructCountdown=10;
   sightDistance=1;
   soundcategory=Nothing;
-  yardmap=o;
+  yardmap=y;
 }
 
