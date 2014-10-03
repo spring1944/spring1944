@@ -2,7 +2,7 @@
 
 -- Bomb Base Class
 local BombClass = Weapon:New{
-  collideFriendly    = false,
+  collideFriendly    = true,
   explosionSpeed     = 30,
   explosionGenerator = [[custom:HE_XXLarge]],
   gravityaffected    = true,
@@ -46,9 +46,11 @@ local Bomb160kg = BombClass:New{
   areaOfEffect       = 160,
   weaponVelocity     = 400,
   trajectoryHeight   = 0.0,
+  selfExplode	     = true,
   name               = [[160kg Bomb]],
   weaponType         = [[AircraftBomb]],
   model              = [[Bomb_Medium.S3O]],
+  InterceptedByShieldType=32,   -- needed because of weapontype
   size		     = 2,
   burst		= 1,
   reloadtime	= 600,
@@ -94,21 +96,20 @@ local V1 = BombClass:New{
 -- PTAB "Antitank Aviation Bomb" (RUS)
 local PTAB = BombClass:New{
   areaOfEffect       = 24,
-  burst              = 13,
+  burst              = 4,
+  selfExplode	     = true,
+  cylinderTargeting  = 0.5,
+  InterceptedByShieldType=32,
   burstrate          = 0.1,
-  cylinderTargeting  = true, -- required?
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
-  -- flightTime         = 0.5,
   weaponType         = [[AircraftBomb]],
   model              = [[MortarShell.S3O]],
   name               = [[PTAB Anti-Tank Bomblets]],
-  projectiles        = 25,
-  range              = 525,
+  projectiles        = 47,
+  range              = 500,
   soundHitDry        = [[GEN_Explo_3]],
-  sprayangle         = 20035,
-  startVelocity      = 110, -- overrides default
-  weaponVelocity     = 110, -- overrides default
+  sprayangle         = 1600,
   customparams = {
     armor_hit_side     = [[top]],
     armor_penetration  = 65,
@@ -116,8 +117,8 @@ local PTAB = BombClass:New{
   },
   damage = {
     default            = 4896, -- Same damage as RPG43, but in fact it had nearly 3 time more weight of explosive than rpg43. Nerfed for balance.
-    infantry           = 250, -- I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
-    lightBuildings     = 275, -- Nerfed to avoid usages different of historical usage. Still very effective vs storages.
+    infantry           = 50, -- I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
+    lightBuildings     = 75, -- Nerfed to avoid usages different of historical usage. Still very effective vs storages.
     bunkers            = 500,
   }
 }
