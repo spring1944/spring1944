@@ -19,6 +19,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
+  radarDistance=1200;
   cruiseAlt=1200;
   [customParams] {
     enginesound=po2-;
@@ -56,7 +57,7 @@
     explosionGenerator2=custom:MG_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  Side=GER;
+  Side=ITA;
   sightDistance=0;
   smoothAnim=1;
   stealth=1;
