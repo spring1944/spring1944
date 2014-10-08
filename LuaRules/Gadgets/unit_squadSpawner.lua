@@ -145,13 +145,13 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 		DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
 	elseif transporters[unitDefID] then 
 		-- spawn transportees
-		SpawnTransportSquad(unitID, teamID, transporters[unitDefID])
+		DelayCall(SpawnTransportSquad, {unitID, teamID, transporters[unitDefID]})
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		if cp and cp.transportsquad then
 			transporters[unitDefID] = cp.transportsquad
-			SpawnTransportSquad(unitID, teamID, cp.transportsquad)
+			DelayCall(SpawnTransportSquad, {unitID, teamID, cp.transportsquad})
 		end
 	end
 end
