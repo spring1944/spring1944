@@ -14,7 +14,30 @@ local RUS_KomsMTB = BoatMother:New{
 	maxVelocity				= 4.8,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "RUSKomsMTB.s3o",
-	soundCategory			= "RUSBoat",
+	sounds					=
+	{
+		select = {
+			"RUS_BOAT_Select1",
+			"RUS_BOAT_Select2",
+			"RUS_BOAT_Select3",
+		},
+		ok = {
+			"RUS_BOAT_OK1",
+			"RUS_BOAT_OK2",
+			"RUS_BOAT_OK3",
+		},
+		arrived = {
+			"RUS_BOAT_Arrived1",
+			"RUS_BOAT_Arrived2",
+			"RUS_BOAT_Arrived3",
+		},
+		cant = {
+			"RUS_BOAT_Cant",
+		},
+		underattack = {
+			"RUS_BOAT_UnderAttack",
+		},
+	},
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 350,	
 	weapons = {	
