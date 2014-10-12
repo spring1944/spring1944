@@ -122,7 +122,7 @@ local Obice100mmL22 = HowitzerClass:New{
   areaOfEffect       = 115,
   name               = [[Obice 100mm/22 M14]],
   range              = 7200,
-  reloadtime         = 11.25,
+  reloadtime         = 10.25,
   damage = {
     default            = 3800,
   },
@@ -146,13 +146,13 @@ local Obice100mmL17Smoke = Obice100mmL17:New(HowitzerSmokeClass, true)
 
 -- Type 91 105m howitzer L/24 (JPN)
 local Type91105mmL24 = HowitzerClass:New{
-  accuracy           = 1050,
-  areaOfEffect       = 115,
+  accuracy           = 1000,
+  areaOfEffect       = 125,
   name               = [[Type 91 105mm/24]],
   range              = 7200,
   reloadtime         = 11.25,
   damage = {
-    default            = 3800,
+    default            = 4050,
   },
 }
 local Type91105mmL24HE = Type91105mmL24:New(HowitzerHEClass, true)
