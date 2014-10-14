@@ -15,7 +15,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1350;
+  cruiseAlt=1250;
   [customParams] {
     armor_front=6;
     armor_rear=6;
@@ -49,7 +49,7 @@
   myGravity=0.6;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=JPNKi102.s3o;
-  radarDistance=1000;
+  radarDistance=1200;
   repairable=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Med;

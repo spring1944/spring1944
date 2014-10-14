@@ -44,6 +44,7 @@
   maxVelocity=19.6;
   maxWaterDepth=0;
   myGravity=0.6;
+  radarDistance=1000;
   noChaseCategory=FLAG MINE HARDVEH BUILDING;
   objectName=JPNKi84.s3o;
   repairable=0;
