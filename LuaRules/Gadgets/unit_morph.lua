@@ -585,7 +585,7 @@ local function FinishMorph(unitID, morphData)
   })
 
   --//copy command queue
-  local cmds = Spring.GetUnitCommands(unitID)
+  local cmds = Spring.GetUnitCommands(unitID, -1)
   for i = 2, #cmds do  -- skip the first command (CMD_MORPH)
     local cmd = cmds[i]
     Spring.GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)

@@ -38,7 +38,6 @@ local GetInvertQueueKey = Spring.GetInvertQueueKey
 local GetModKeyState = Spring.GetModKeyState
 local GetMouseState = Spring.GetMouseState
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
-local GetUnitCommands = Spring.GetUnitCommands
 local GetUnitHeading = Spring.GetUnitHeading
 local GetUnitPosition = Spring.GetUnitPosition
 local TraceScreenRay = Spring.TraceScreenRay

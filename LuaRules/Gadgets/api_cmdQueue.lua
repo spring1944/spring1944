@@ -22,7 +22,7 @@ local GetInvertQueueKey = Spring.GetInvertQueueKey
 
 
 local function GetUnitPositionAtEndOfQueue(unitID)
-	local queue = GetUnitCommands(unitID)
+	local queue = GetUnitCommands(unitID, -1)
 	if queue then
 		for i=#queue,1,-1 do
 			local cmd = queue[i]

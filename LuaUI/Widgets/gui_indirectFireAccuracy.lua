@@ -63,7 +63,7 @@ function widget:DrawScreen()
                     local unitID = unitIDs[i]
                     local allyTeam = GetUnitAllyTeam(unitID)
                     local targetStr
-                    queue = GetUnitCommands(unitID)
+                    queue = GetUnitCommands(unitID, 1)
                     if queue and queue[1] and queue[1].id == CMD_ATTACK then
                         target = queue[1].params
                         -- attack order on the ground, target is filled with

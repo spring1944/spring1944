@@ -109,7 +109,7 @@ function checkAmmo()
         -----STATE MACHINE-----------------------------------------------------
         if (v.unitSupplyState == v.UNIT_BRAND_NEW) then
             --Echo("in UNIT_BRAND_NEW", v.uID)
-            v.cmds = GetUnitCommands(v.uID)
+            v.cmds = GetUnitCommands(v.uID, -1)
             if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then
 			    local _,_,_,_,buildProgress = GetUnitHealth(v.uID)
 				-- nothing to do until we're finished building
@@ -132,7 +132,7 @@ function checkAmmo()
 				--save our location, we might need it later
 				v.unit_cx, _, v.unit_cz = GetUnitPosition(v.uID)
 				--save unit command queue, if it has one, so we can return to the queue after reload
-				v.cmds = GetUnitCommands(v.uID) 
+				v.cmds = GetUnitCommands(v.uID, -1) 
 				if ((v.cmds ~= nil) and (v.unit_cx ~= nil) and (v.unit_cz ~= nil)) then  
 					--we need more ammo so change state to UNIT_RESUPPLY_NEEDED
 					v.unitSupplyState = v.UNIT_RESUPPLY_NEEDED      
@@ -149,9 +149,9 @@ function checkAmmo()
             --Echo("in UNIT_RETURNING_TO_SUPPLY", v.uID) 
             --while in the process of returning for resupply we could be ordered to do something else so keep checking
             --the order queue then get back for resupply   
-            commands = GetUnitCommands(v.uID)
+            commands = GetUnitCommands(v.uID, 0)
             if (commands ~= nil) then  
-                if (#commands >=2) then            
+                if (commands >=2) then            
                     v.unitSupplyState = v.UNIT_SOPS            
                 else                
                     --keep checking our position relative to the supply unit that we're moving to
@@ -174,7 +174,7 @@ function checkAmmo()
         elseif (v.unitSupplyState == v.UNIT_SOPS) then
             --Echo("in UNIT_SOPS", v.uID)
             --we've been ordered to do something else so over write and save the command queue     
-            v.cmds = GetUnitCommands(v.uID)
+            v.cmds = GetUnitCommands(v.uID, -1)
             if ((v.cmds ~= nil) and (ammoLevel ~= nil)) then 
                 --when we've finished our order queue we can return for resupply
                 if ((#v.cmds <= 1) and (ammoLevel < 3)) then
@@ -190,7 +190,7 @@ function checkAmmo()
         elseif (v.unitSupplyState == v.UNIT_RELOADING) then
             --Echo("in UNIT_RELOADING", v.uID)
             --are we under attack?
-            commands = GetUnitCommands(v.uID)
+            commands = GetUnitCommands(v.uID, 1)
             local attacker = GetUnitLastAttacker(v.uID)
             if ((attacker ~= nil) and (commands[1] ~= nil)) then
                 local cmds = commands[1]
@@ -248,7 +248,7 @@ function checkAmmo()
         elseif (v.unitSupplyState == v.UNIT_READY) then
             --Echo("in UNIT_READY", v.uID) 
             --are we under attack? 
-            commands = GetUnitCommands(v.uID)
+            commands = GetUnitCommands(v.uID, 1)
             local attacker = GetUnitLastAttacker(v.uID)
             if ((attacker ~= nil) and (commands[1] ~= nil)) then
                 local cmds = commands[1]

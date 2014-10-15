@@ -61,7 +61,6 @@ local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetUnitPosition        = Spring.GetUnitPosition
 local GetUnitRadius          = Spring.GetUnitRadius
 local GetUnitStates          = Spring.GetUnitStates
-local GetUnitCommands        = Spring.GetUnitCommands
 local TraceScreenRay         = Spring.TraceScreenRay
 local CMD_ATTACK             = CMD.ATTACK
 local CMD_DGUN               = CMD.DGUN

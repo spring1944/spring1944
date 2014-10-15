@@ -66,7 +66,7 @@ if (gadgetHandler:IsSyncedCode()) then
 						if newUnit then -- unit was successfully created
 							spawners[spawnerID] = numSpawned + 1
 							couples[newUnit] = spawnerID
-							local cmds = GetUnitCommands(spawnerID)
+							local cmds = GetUnitCommands(spawnerID, -1)
 							for i = 1, #cmds do
 								local cmd = cmds[i]
 								GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
