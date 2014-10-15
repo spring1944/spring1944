@@ -67,7 +67,7 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 	-- Get the orders for the squad spawner
 	local unitHeading = 0
 	local states = nil
-	local queue = GetCommandQueue(unitID)
+	local queue = GetCommandQueue(unitID, -1)
 
 	if builderID then
 		unitHeading = GetUnitBuildFacing(builderID)

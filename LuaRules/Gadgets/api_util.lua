@@ -53,7 +53,7 @@ local function ReplaceUnit(unitID, newUnitDef, teamID)
   GiveOrderToUnit(newUnitID, CMD_FIRE_STATE, { states.firestate }, 0)
   GiveOrderToUnit(newUnitID, CMD_MOVE_STATE, { states.movestate }, 0)
   
-  local commandQueue = GetCommandQueue(unitID)
+  local commandQueue = GetCommandQueue(unitID, -1)
   for i = 1, #commandQueue do
     local command = commandQueue[i]
     local commandOptions = command.options
