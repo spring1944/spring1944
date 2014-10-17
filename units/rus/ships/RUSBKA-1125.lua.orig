@@ -14,6 +14,34 @@ local RUS_BKA_1125 = BoatMother:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
 	objectName				= "RUSBKA1125.s3o",
+<<<<<<< Updated upstream
+	sounds					=
+	{
+		select = {
+			"RUS_BOAT_Select1",
+			"RUS_BOAT_Select2",
+			"RUS_BOAT_Select3",
+		},
+		ok = {
+			"RUS_BOAT_OK1",
+			"RUS_BOAT_OK2",
+			"RUS_BOAT_OK3",
+		},
+		arrived = {
+			"RUS_BOAT_Arrived1",
+			"RUS_BOAT_Arrived2",
+			"RUS_BOAT_Arrived3",
+		},
+		cant = {
+			"RUS_BOAT_Cant",
+		},
+		underattack = {
+			"RUS_BOAT_UnderAttack",
+		},
+	},
+=======
+	soundCategory			= "RUS_Boat",
+>>>>>>> Stashed changes
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -24,7 +52,6 @@ local RUS_BKA_1125 = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
 		children = {
 			"RUS_BKA_1125_turret_76mm", 
 			"RUS_BKA_1125_Turret_DshK_Front", 

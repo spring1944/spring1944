@@ -14,30 +14,6 @@ local RUS_BMO = BoatMother:New{
 	maxVelocity				= 2.2,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "RUSBMO.s3o",
-	sounds					=
-	{
-		select = {
-			"RUS_BOAT_Select1",
-			"RUS_BOAT_Select2",
-			"RUS_BOAT_Select3",
-		},
-		ok = {
-			"RUS_BOAT_OK1",
-			"RUS_BOAT_OK2",
-			"RUS_BOAT_OK3",
-		},
-		arrived = {
-			"RUS_BOAT_Arrived1",
-			"RUS_BOAT_Arrived2",
-			"RUS_BOAT_Arrived3",
-		},
-		cant = {
-			"RUS_BOAT_Cant",
-		},
-		underattack = {
-			"RUS_BOAT_UnderAttack",
-		},
-	},
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -47,6 +23,7 @@ local RUS_BMO = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundCategory			= "RUS/Boat",
 		children = {
 			"RUS_Turret_37mm_Front", 
 			"RUS_Turret_45mm_Rear", 

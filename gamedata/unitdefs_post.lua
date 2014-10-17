@@ -55,6 +55,8 @@ for name, ud in pairs(UnitDefs) do
 				ud.customparams[k] = table.serialize(v)
 			end
 		end
+	else
+		ud.customparams = {}
 	end
 	--MODOPTION CONTROLS
 	if (modOptions) then	
@@ -295,6 +297,23 @@ for name, ud in pairs(UnitDefs) do
 		else
 			Spring.Echo("Squad unit not found in squad def files: "..squadName)
 		end
+	end
+	-- sounds
+	local soundCat = ud.customparams.soundcategory
+	if soundCat then
+		soundCat = "sounds/" .. soundCat:lower() -- e.g. "rus_boat"
+		local keys = {"select", "ok", "arrived", "cant", "underattack"}
+		local sounds = {}
+		for _, key in pairs(keys) do
+			sounds[key] = {}
+			local available = VFS.DirList(soundCat, "*_" .. key .. "*")
+			for index, item in pairs(available) do
+				--Spring.Echo("Available", index, item, key)
+				sounds[key][index] = item:sub(8, -5) -- cut off "sounds/" and file extension
+				--Spring.Echo(sounds[key][index])
+			end
+		end
+		ud.sounds = sounds
 	end
 	
 	-- add the unit to gamemaster buildoptions

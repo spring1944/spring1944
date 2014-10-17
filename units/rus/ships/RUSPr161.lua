@@ -14,30 +14,6 @@ local RUS_Pr161 = BoatMother:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
 	objectName				= "RUSPr161.s3o",
-	sounds					=
-	{
-		select = {
-			"RUS_BOAT_Select1",
-			"RUS_BOAT_Select2",
-			"RUS_BOAT_Select3",
-		},
-		ok = {
-			"RUS_BOAT_OK1",
-			"RUS_BOAT_OK2",
-			"RUS_BOAT_OK3",
-		},
-		arrived = {
-			"RUS_BOAT_Arrived1",
-			"RUS_BOAT_Arrived2",
-			"RUS_BOAT_Arrived3",
-		},
-		cant = {
-			"RUS_BOAT_Cant",
-		},
-		underattack = {
-			"RUS_BOAT_UnderAttack",
-		},
-	},
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 150,	
 	weapons = {	
@@ -47,6 +23,7 @@ local RUS_Pr161 = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundCategory			= "RUS/Boat",
 		children = {
 			"RUS_Turret_45mm_Front",
 			"RUS_Pr161_Turret_85mm_Front",
