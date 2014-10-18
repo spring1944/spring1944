@@ -47,8 +47,8 @@ end
 -- Base Classes
 ---------------------------------------------------------------------------------------------
 
--- Boat Mother ----
-local BoatMother = Unit:New{
+-- Boats ----
+local Boat = Unit:New{ -- used for transports as is
 	airSightDistance	= 1500,
 	canMove				= true,
 	category 			= "SHIP MINETRIGGER",
@@ -57,12 +57,20 @@ local BoatMother = Unit:New{
 	floater				= true,
 	footprintX			= 4,
 	footprintZ 			= 4,
-	iconType			= "gunboat",
 	noChaseCategory		= "FLAG AIR MINE",
-	script				= "BoatMother.lua",
 	selfDestructAs		= "Vehicle_Explosion_Sm",
 	sightDistance		= 840,
 	turninplace			= false,
+	
+	customparams = {
+		dontCount			= 1,
+		hasturnbutton		= 1,
+	}
+}
+
+local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
+	iconType			= "gunboat",
+	script				= "BoatMother.lua",
 	usePieceCollisionVolumes	= true,
 		
 	-- Transport tags
@@ -70,19 +78,16 @@ local BoatMother = Unit:New{
 	isFirePlatform 		= true,
 
 	customparams = {
-		dontCount			= 1,
-		hasturnbutton		= 1,
 		mother				= true,
 	}
 }
 
-local BoatChild = Unit:New{
-	airSightDistance	= 1500,
+local BoatChild = Boat:New{ -- a boat turret
 	canMove				= false,
 	cantBeTransported	= false,
 	canSelfDestruct 	= false,
-	floater				= true, -- make them behave ala ships wrt sensors
 	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
+	collisionVolumeType	= "", -- default to ellipsoid
 	footprintX			= 1,
 	footprintZ 			= 1,
 	iconType			= "turret",
@@ -91,10 +96,8 @@ local BoatChild = Unit:New{
 	maxDamage			= 1000,
 	maxVelocity			= 1,
 	movementClass		= "KBOT_Infantry", -- needed!
-	noChaseCategory		= "FLAG AIR MINE",
 	power		        = 20,
 	script				= "BoatChild.lua",
-	sightDistance		= 840,
 	
 	customparams = {
 		child				= true,
@@ -108,6 +111,7 @@ local BoatChild = Unit:New{
 local sharedEnv = {
 	Weapon = Weapon,
 	Unit = Unit,
+	Boat = Boat,
 	BoatMother = BoatMother,
 	BoatChild = BoatChild,
 	printTable = printTable,
