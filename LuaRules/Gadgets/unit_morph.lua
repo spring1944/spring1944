@@ -369,6 +369,10 @@ end
 
 
 local function ReAssignAssists(newUnit,oldUnit)
+  -- this function is nuts, it iterates every command in the command queue...
+  -- ...of every allied unit, looking for guard commands
+  -- Make it a no-op for now
+  --[[
   local ally = Spring.GetUnitAllyTeam(newUnit)
   local alliedTeams = Spring.GetTeamList(ally)
   for n=1,#alliedTeams do
@@ -385,7 +389,7 @@ local function ReAssignAssists(newUnit,oldUnit)
         end
       end
     end
-  end
+  end]]
 end
 
 
