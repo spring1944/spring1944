@@ -138,7 +138,7 @@ end
 function script.StopMoving()
 	Signal(SIG_MOVE)
 	for _, prop in pairs(propellers) do
-		Spin(prop, z_axis, 0);
+		StopSpin(prop, z_axis);
 	end
 end
 

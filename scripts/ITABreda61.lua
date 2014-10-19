@@ -61,7 +61,11 @@ end
 function WheelControl(speed)
 	Spin(wheels, x_axis, wheelSpinSpeed * speed)
 	for _, roller in pairs(rollers) do
-		Spin(roller, x_axis, rollerSpinSpeed * speed)
+		if speed ~= 0 then
+			Spin(roller, x_axis, rollerSpinSpeed * speed)
+		else
+			StopSpin(roller, x_axis)
+		end
 	end
 end
 
