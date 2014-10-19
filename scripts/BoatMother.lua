@@ -32,6 +32,8 @@ local wakes = {}
 findPieces(wakes, "wake")
 local exhausts = {}
 findPieces(exhausts, "exhaust")
+local propellers = {}
+findPieces(propellers, "prop")
 local torps = {}
 findPieces(torps, "torp")
 local tpTurrets = {}
@@ -127,10 +129,17 @@ end
 function script.StartMoving()
 	Signal(SIG_MOVE)
 	StartThread(EmitWakes)
+	local propSpeed = math.rad(180)
+	for _, prop in pairs(propellers) do
+		Spin(prop, z_axis, propSpeed);
+	end
 end
 
 function script.StopMoving()
 	Signal(SIG_MOVE)
+	for _, prop in pairs(propellers) do
+		Spin(prop, z_axis, 0);
+	end
 end
 
 function script.AimWeapon(weaponID, heading, pitch)
