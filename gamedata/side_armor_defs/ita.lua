@@ -86,6 +86,7 @@ local ITADefs = {
 	--Italy--
 	"itafiat626",
 	"itabreda41",
+	"itabreda61",
 	"itaautocannone100",
 	"itaautocannone75",
 	"itaautocannone90",

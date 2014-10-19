@@ -54,6 +54,13 @@ local itaunits =
     "itatankobstacle",
   },
 
+  itabreda61 =
+  {
+    "itaatminesign",
+    "itaapminesign",
+    "itatankobstacle",
+  },
+  
   itabarracks =
   {
     "itahqengineer",
