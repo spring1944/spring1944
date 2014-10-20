@@ -59,7 +59,11 @@ function DamageSmoke()
 end
 
 function WheelControl(speed)
-	Spin(wheels, x_axis, wheelSpinSpeed * speed)
+	if speed ~= o then
+		Spin(wheels, x_axis, wheelSpinSpeed * speed)
+	else
+		StopSpin(wheels, x_axis)
+	end
 	for _, roller in pairs(rollers) do
 		if speed ~= 0 then
 			Spin(roller, x_axis, rollerSpinSpeed * speed)
