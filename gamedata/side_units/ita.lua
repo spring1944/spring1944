@@ -139,6 +139,7 @@ local itaunits =
   itavehicleyard =
   {
 	"itabreda41",
+	"itabreda61",
 	"itafiat626",
 	"itaab41",
 	"itaas37",
@@ -150,6 +151,7 @@ local itaunits =
    itavehicleyard1 =
   {
 	"itabreda41",
+	"itabreda61",
 	"itafiat626",
 	"itaab41",
 	"itaas37",

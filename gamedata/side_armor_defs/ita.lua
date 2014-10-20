@@ -79,6 +79,7 @@ local ITADefs = {
 	"ITAAS37",
 	"ITASemovente47",
 	"ITAL6_40lf",
+	"itabreda61",
   },
 
     --**Germany**--
