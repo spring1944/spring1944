@@ -8,6 +8,9 @@
 	buildCostMetal=1700;
 	buildDistance=196;
 	builder=1;
+	canReclaim=0;
+	canAssist=0;
+	canRepair=0;
 	buildTime=1700;
 	canAttack=0;
 	canMove=1;
