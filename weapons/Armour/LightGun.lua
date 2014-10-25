@@ -381,9 +381,9 @@ return lowerkeys({
   Type137mmHE = Type137mmHE,
   Type137mmAP = Type137mmAP,
   Type9837mmHE = Type9837mmHE,
-  Type9837mmAP = Type9837mmHE,
+  Type9837mmAP = Type9837mmAP,
   Type9437mmHE = Type9437mmHE,
-  Type9437mmAP = Type9437mmHE,
+  Type9437mmAP = Type9437mmAP,
   -- Type 1 47mm
   Type147mmHE = Type147mmHE,
   Type147mmAP = Type147mmAP,
