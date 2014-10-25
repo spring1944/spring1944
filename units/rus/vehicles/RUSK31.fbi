@@ -29,12 +29,14 @@
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
+  [customparams] {
+    soundcategory=RUS/Vehicle;
+  }
   showNanoFrame=0;
   showNanoSpray=0;
   side=RUS;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=RUSTank;
   stealth=1;
   terraformSpeed=300;
   trackOffset=10;

@@ -24,6 +24,7 @@
     feartarget=1;
     planevoice=1;
     proptexture=prop3.tga;
+    SoundCategory=RUS/Air/Po2;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;
@@ -58,7 +59,6 @@
   Side=RUS;
   sightDistance=600;
   smoothAnim=1;
-  SoundCategory=RUSPo2;
   stealth=1;
   turnRate=50;
   badTargetCategory=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;

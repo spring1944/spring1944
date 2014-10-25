@@ -14,6 +14,7 @@
   [customParams] {
     buildOutside=1;
     dontCount=1;
+    soundcategory=RUS/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -39,7 +40,6 @@
   showNanoFrame=0;
   side=RUS;
   sightDistance=800;
-  soundcategory=RUSVeh;
   stealth=1;
   trackOffset=5;
   trackStrength=6.5;

@@ -16,6 +16,7 @@
   [customParams] {
     canclearmines=1;
     feartarget=1;
+    soundcategory=RUS/Infantry;
   }
   damageModifier=0.265;
   energyStorage=0.01;
@@ -45,7 +46,6 @@
   showNanoSpray=0;
   side=RUS;
   sightDistance=840;
-  soundcategory=RUSInf;
   stealth=1;
   terraformSpeed=300;
   turnRate=1010;

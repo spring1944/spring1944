@@ -19,6 +19,7 @@
     maxammo=4;
     weaponcost=12;
     weaponswithammo=2;
+    soundcategory=RUS/Gun;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -48,7 +49,6 @@
   side=RUS;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=RUSGun;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

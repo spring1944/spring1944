@@ -13,6 +13,7 @@
   corpse=RUSZiS5_Destroyed;
   [customParams] {
     dontCount=1;
+    soundcategory=RUS/Vehicle;
   }
   energyStorage=1040;
   explodeAs=Vehicle_Explosion_Sm;
@@ -38,7 +39,6 @@
   showNanoFrame=0;
   side=RUS;
   sightDistance=800;
-  soundcategory=RUSVeh;
   stealth=1;
   trackOffset=5;
   trackStrength=6.5;

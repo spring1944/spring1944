@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=RUS/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -52,7 +53,6 @@
   showNanoFrame=0;
   side=RUS;
   sightDistance=570;
-  soundcategory=RUSInf;
   stealth=1;
   turnRate=1010;
   upright=1;

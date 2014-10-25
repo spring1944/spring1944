@@ -14,6 +14,7 @@
   [customParams] {
     feartarget=1;
     flagCapRate=0.085;
+    soundcategory=RUS/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -49,7 +50,6 @@
   side=RUS;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=RUSInf;
   stealth=1;
   turnRate=1010;
   upright=1;

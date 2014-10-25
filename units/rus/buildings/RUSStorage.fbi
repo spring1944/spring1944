@@ -21,6 +21,7 @@
     armor_side=15;
     armor_top=30;
     dontCount=1;
+    soundcategory=RUS/Infantry;
   }
   energyMake=0;
   energyStorage=1040;
@@ -40,7 +41,6 @@
   side=RUS;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=RUSInf;
   stealth=1;
   useBuildingGroundDecal=1;
   yardmap=oooo oooo oooo oooo oooo oooo;

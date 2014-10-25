@@ -16,6 +16,7 @@
     dontCount=1;
 	feartarget=1;
     flagCapRate=0.05;
+    soundcategory=RUS/Infantry;
   }
   damageModifier=0.265;
   energyUse=0;
@@ -54,7 +55,6 @@
   side=RUS;
   sightDistance=480;
   smoothAnim=0;
-  soundcategory=RUSInf;
   stealth=1;
   turnRate=1010;
   upright=1;

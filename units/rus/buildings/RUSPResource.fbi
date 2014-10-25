@@ -19,6 +19,7 @@
     hiddenbuilding=1;
     dontCount=1;
     supplyRange=275;
+    soundcategory=RUS/Infantry;
   }
   energyMake=0;
   energyStorage=100;
@@ -39,7 +40,6 @@
   side=RUS;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=RUSInf;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20;

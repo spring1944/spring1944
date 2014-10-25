@@ -302,15 +302,26 @@ for name, ud in pairs(UnitDefs) do
 	local soundCat = ud.customparams.soundcategory
 	if soundCat then
 		soundCat = "sounds/" .. soundCat:lower() -- e.g. "rus_boat"
+		local fullPath = {}
+		for word in soundCat:gmatch("%a+") do
+			table.insert(fullPath, word)
+		end
 		local keys = {"select", "ok", "arrived", "cant", "underattack"}
 		local sounds = {}
 		for _, key in pairs(keys) do
 			sounds[key] = {}
-			local available = VFS.DirList(soundCat, "*_" .. key .. "*")
-			for index, item in pairs(available) do
-				--Spring.Echo("Available", index, item, key)
-				sounds[key][index] = item:sub(8, -5) -- cut off "sounds/" and file extension
-				--Spring.Echo(sounds[key][index])
+			for i = #fullPath, 1, -1 do
+				local path = table.concat(fullPath, "/", 1, i)
+				local available = VFS.DirList(path, "*_" .. key .. "*")
+				if #available > 0 then
+					for index, item in pairs(available) do
+						--Spring.Echo("Available", index, item, key)
+						sounds[key][index] = item:sub(8, -5) -- cut off "sounds/" and file extension
+						--Spring.Echo("Adding sound: " .. sounds[key][index] .. " to unit: " .. ud.name)
+					end
+					break
+				end
+				--Spring.Echo("No available " .. key .. " sound for " .. ud.name .. ", trying next level")
 			end
 		end
 		ud.sounds = sounds

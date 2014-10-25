@@ -15,6 +15,7 @@
   [customParams] {
     dontCount=1;
     supplyRange=625;
+    soundcategory=RUS/Inf;
   }
   energyMake=0;
   energyStorage=0;
@@ -33,7 +34,6 @@
   side=RUS;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=RUSInf;
   stealth=1;
   useBuildingGroundDecal=1;
   

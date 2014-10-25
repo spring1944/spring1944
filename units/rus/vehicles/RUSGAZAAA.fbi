@@ -27,6 +27,9 @@
   objectName=RUSGAZAAA.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
+  [customparams] {
+    soundcategory=RUS/Vehicle;
+  }
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:PLACEHOLDER_EFFECT01;
@@ -41,7 +44,6 @@
   side=RUS;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=RUSVeh;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

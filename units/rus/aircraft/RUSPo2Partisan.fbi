@@ -26,6 +26,7 @@
     proptexture=prop3.tga;
     troopdropper=1;
 	deposit=0;
+    SoundCategory=RUS/Air/Po2;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;
@@ -59,7 +60,6 @@
   Side=RUS;
   sightDistance=400;
   smoothAnim=0;
-  SoundCategory=RUSPo2;
   stealth=1;
   turnRate=50;
   badTargetCategory=FLAG BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
