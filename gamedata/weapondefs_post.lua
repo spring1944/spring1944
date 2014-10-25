@@ -200,6 +200,12 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			end
 		end
 	end
+	local soundTags = {"soundstart", "soundhit", "soundhitdry", "soundhitwet"}
+	for _, tag in pairs(soundTags) do
+		if weaponDef[tag] then
+			weaponDef[tag] = "weapons/" .. weaponDef[tag]
+		end
+	end
 	--------------------------------------------------------------------------------
 	-- Damage Types
 	--------------------------------------------------------------------------------
