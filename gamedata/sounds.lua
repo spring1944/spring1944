@@ -4,18 +4,18 @@ local Sounds = {
 	SoundItems = {
 		IncomingChat = {
 			--- always play on the front speaker(s)
-			file = "sounds/beep4.wav",
+			file = "sounds/IncomingChat.wav",
 			in3d = "false",
 		},
 		MultiSelect = {
 			--- always play on the front speaker(s)
-			file = "sounds/button9.wav",
+			file = "sounds/MultiSelect.wav",
 			in3d = "false",
 		},
 		MapPoint = {
 			--- respect where the point was set, but don't attuenuate in distace
 			--- also, when moving the camera, don't pitch it
-			file = "sounds/beep6.wav",
+			file = "sounds/MapPoint.wav",
 			rolloff = 0,
 			dopplerscale = 0,
 		},
