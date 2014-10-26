@@ -26,7 +26,7 @@ local function inherit (c, p, concatNames)
 	end
 end
 
-local Unit = {
+Unit = {
 	showNanoFrame		= false,
 }
 function Unit:New(newAttribs, concatName)
@@ -43,79 +43,25 @@ function Weapon:New(newAttribs, concatName)
 	inherit(newClass, self, concatName)
 	return newClass
 end
----------------------------------------------------------------------------------------------
--- Base Classes
----------------------------------------------------------------------------------------------
-
--- Boats ----
-local Boat = Unit:New{ -- used for transports as is
-	airSightDistance	= 1500,
-	canMove				= true,
-	category 			= "SHIP MINETRIGGER",
-	collisionVolumeType	= "box",
-	explodeAs			= "Vehicle_Explosion_Sm",
-	floater				= true,
-	footprintX			= 4,
-	footprintZ 			= 4,
-	noChaseCategory		= "FLAG AIR MINE",
-	selfDestructAs		= "Vehicle_Explosion_Sm",
-	sightDistance		= 840,
-	turninplace			= false,
-	
-	customparams = {
-		dontCount			= 1,
-		hasturnbutton		= 1,
-	}
-}
-
-local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
-	iconType			= "gunboat",
-	script				= "BoatMother.lua",
-	usePieceCollisionVolumes	= true,
-		
-	-- Transport tags
-	transportSize		= 1, -- assumes footprint of BoatChild == 1
-	isFirePlatform 		= true,
-
-	customparams = {
-		mother				= true,
-	}
-}
-
-local BoatChild = Boat:New{ -- a boat turret
-	canMove				= false,
-	cantBeTransported	= false,
-	canSelfDestruct 	= false,
-	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
-	collisionVolumeType	= "", -- default to ellipsoid
-	footprintX			= 1,
-	footprintZ 			= 1,
-	iconType			= "turret",
-	idleAutoHeal		= 1,
-	mass				= 10,
-	maxDamage			= 1000,
-	maxVelocity			= 1,
-	movementClass		= "KBOT_Infantry", -- needed!
-	power		        = 20,
-	script				= "BoatChild.lua",
-	
-	customparams = {
-		child				= true,
-		feartarget			= true,
-		fearlimit			= 50, -- default to double inf, open mounts should be 25
-	}
-}
 
 ---------------------------------------------------------------------------------------------
 -- This is where the magic happens
 local sharedEnv = {
 	Weapon = Weapon,
 	Unit = Unit,
-	Boat = Boat,
-	BoatMother = BoatMother,
-	BoatChild = BoatChild,
 	printTable = printTable,
 }
+
+-- Include Base Classes from Units/BaseClasses/
+local baseClasses = VFS.DirList("units/baseclasses")
+
+for _, file in pairs(baseClasses) do
+	newClasses = VFS.Include(file, VFS.ZIP)
+	for className, class in pairs(newClasses) do
+		sharedEnv[className] = class
+	end
+end
+
 local sharedEnvMT = nil
 
 
