@@ -14,7 +14,6 @@ local ITA_Gabbiano = BoatMother:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "ITAGabbiano.s3o",
-	soundCategory			= "ITABoat",
 	transportCapacity		= 6, -- 6 x 1fpu turrets
 	turnRate				= 25,	
 	weapons = {	
@@ -32,6 +31,7 @@ local ITA_Gabbiano = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory		= "ITA/Boat",
 		maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

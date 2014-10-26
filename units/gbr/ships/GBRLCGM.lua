@@ -14,7 +14,6 @@ local GBR_LCGM = BoatMother:New{
 	maxVelocity				= 1.1,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "GBRLCGM.s3o",
-	soundCategory			= "GBRBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 32,	
 	weapons = {	
@@ -24,6 +23,7 @@ local GBR_LCGM = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory		= "GBR/Boat",
 		children = {
 			"GBR_LCGM_Turret_25pdr_Left",
 			"GBR_LCGM_Turret_25pdr_Right",

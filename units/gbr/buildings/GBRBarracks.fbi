@@ -21,6 +21,7 @@
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;
+    soundcategory=GBR/Yard;
   }
   energyStorage=0.01;
   explodeAs=Med_Explosion;
@@ -39,7 +40,6 @@
   showNanoSpray=0;
   sightDistance=146;
   smoothAnim=0;
-  soundcategory=GBRYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20;

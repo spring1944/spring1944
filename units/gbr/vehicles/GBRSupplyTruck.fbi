@@ -13,6 +13,7 @@
   corpse=GBRBedfordTruck_Destroyed;
   [customParams] {
     dontCount=1;
+    soundcategory=GBR/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;

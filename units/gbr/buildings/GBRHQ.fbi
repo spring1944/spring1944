@@ -29,6 +29,7 @@
     refillamount=1e+06;
     separatebuildspot=1;
     supplyRange=500;
+    soundcategory=GBR/Yard/HQ;
   }
   energyStorage=0.01;
   explodeAs=Huge_Explosion;
@@ -50,7 +51,6 @@
   showPlayerName=1;
   sightDistance=146;
   smoothAnim=0;
-  soundcategory=GBRYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20; //60

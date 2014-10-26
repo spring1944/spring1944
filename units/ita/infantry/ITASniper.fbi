@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=ITA/Infantry;
   }
   damageModifier=0.265;
   decloakOnFire=1;
@@ -56,7 +57,6 @@
   side=ITA;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=ITAInf;
   stealth=1;
   turnRate=1010;
   upright=1;

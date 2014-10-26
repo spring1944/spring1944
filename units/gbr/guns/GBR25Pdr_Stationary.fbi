@@ -20,6 +20,7 @@
     maxammo=4;
     weaponcost=18;
     weaponswithammo=2;
+    soundcategory=GBR/Gun;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -51,7 +52,6 @@
   side=GBR;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=GbrInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

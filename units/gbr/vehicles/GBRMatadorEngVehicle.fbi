@@ -30,12 +30,14 @@
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
   }
+  [customparams] {
+    soundcategory=GBR/Vehicle;
+  }
   showNanoFrame=0;
   showNanoSpray=0;
   side=GBR;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=GBRVeh;
   stealth=1;
   terraformSpeed=300;
   trackOffset=10;

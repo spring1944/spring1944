@@ -22,6 +22,7 @@
     armor_top=15;
     hasturnbutton=1;
 	blockfear=1;
+    soundcategory=GBR/Tank;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
@@ -55,7 +56,6 @@
   side=GBR;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=GBRTank;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

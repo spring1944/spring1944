@@ -16,6 +16,7 @@
   [customParams] {
     canclearmines=1;
     feartarget=1;
+    soundcategory=GBR/Infantry;
   }
   damageModifier=0.265;
   energyStorage=0.01;
@@ -48,7 +49,6 @@
   showNanoFrame=0;
   showNanoSpray=0;
   sightDistance=840;
-  soundcategory=GbrInf;
   stealth=1;
   terraformSpeed=300;
   turnRate=1010;

@@ -26,6 +26,7 @@
     weaponcost=10;
     weaponswithammo=2;
 	hasturnbutton=1;
+    soundcategory=ITA/Tank;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -59,7 +60,6 @@
   side=RUS;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=ITATank;
   stealth=1;
   trackOffset=5;
   trackStrength=7;

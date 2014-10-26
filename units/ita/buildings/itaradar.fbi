@@ -14,6 +14,7 @@
   canMove=1;
   category=BUILDING;
   [customParams] {
+    soundcategory=ITA/Yard;
   }
   explodeAs=Large_Explosion;
   footprintX=5;
@@ -33,7 +34,6 @@
   side=ita;
   sightDistance=146;
   smoothAnim=0;
-  soundcategory=Nothing;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=100;

@@ -15,6 +15,7 @@
   [customParams] {
     feartarget=1;
 	canclearmines=1;
+    soundcategory=ITA/Infantry;
   }
   energyStorage=0.01;
   footprintX=1;
@@ -37,7 +38,6 @@
   showNanoSpray=0;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=ITAInf;
   stealth=1;
   terraformSpeed=300;
   turnRate=1010;

@@ -14,7 +14,6 @@ local ITA_Vedetta = BoatMother:New{
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "ITAVedetta.s3o",
-	soundCategory			= "ITABoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -24,6 +23,7 @@ local ITA_Vedetta = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory		= "ITA/Boat",
 		children = {
 			"ITA_Vedetta_Turret_76mm", 
 			"ITA_Vedetta_Turret_MG", 

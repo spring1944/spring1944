@@ -310,7 +310,7 @@ for name, ud in pairs(UnitDefs) do
 		local sounds = {}
 		for _, key in pairs(keys) do
 			sounds[key] = {}
-			for i = #fullPath, 1, -1 do
+			for i = #fullPath, 2, -1 do
 				local path = table.concat(fullPath, "/", 1, i)
 				local available = VFS.DirList(path, "*_" .. key .. "*")
 				if #available > 0 then

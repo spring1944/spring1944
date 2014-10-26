@@ -20,6 +20,7 @@
     weaponcost=12;
     weaponswithammo=1;
     infgun=1;
+    soundcategory=GBR/Gun;
   }
   explodeAs=Tiny_Explosion;
   footprintX=1;
@@ -52,7 +53,6 @@
   showNanoFrame=0;
   side=US;
   sightDistance=701;
-  soundcategory=GBRGun;
   stealth=1;
   turnRate=120;
   upright=1;

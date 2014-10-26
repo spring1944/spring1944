@@ -22,6 +22,7 @@
     enginesoundnr=18;
     feartarget=1;
     proptexture=prop5.tga;
+    soundcategory=GBR/Air;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

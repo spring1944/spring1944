@@ -13,6 +13,7 @@
   [customParams] {
     buildOutside=1;
     dontCount=1;
+    soundcategory=ITA/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -39,7 +40,6 @@
   showNanoFrame=0;
   side=ITA;
   sightDistance=800;
-  soundcategory=ItaVeh;
   stealth=1;
   trackOffset=5;
   trackStrength=6.5;

@@ -22,6 +22,7 @@
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;
+    soundcategory=ITA/Yard;
   }
   energyStorage=0.01;
   explodeAs=Med_Explosion;
@@ -41,7 +42,6 @@
   showNanoSpray=0;
   side=ITA;
   sightDistance=146;
-  soundcategory=ITAYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=25;

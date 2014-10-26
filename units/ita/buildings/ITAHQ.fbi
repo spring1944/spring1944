@@ -26,6 +26,7 @@
     refillamount=1e+06;
     separatebuildspot=1;
     supplyRange=500;
+    soundcategory=ITA/Yard;
   }
   energyStorage=0.01;
   explodeAs=Huge_Explosion;
@@ -47,7 +48,6 @@
   showPlayerName=1;
   sightDistance=146;
   smoothAnim=0;
-  soundcategory=ITAYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20; //60

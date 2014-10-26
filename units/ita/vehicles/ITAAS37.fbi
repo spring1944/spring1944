@@ -22,6 +22,7 @@
     armor_top=0;
     supplyRange=200;
 	hasturnbutton=1;
+    soundcategory=ITA/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -55,7 +56,6 @@
   side=ITA;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=ITAVeh;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

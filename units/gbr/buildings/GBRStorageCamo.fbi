@@ -23,6 +23,7 @@
     armor_side=15;
     armor_top=30;
     dontCount=1;
+    soundcategory=GBR/Yard;
   }
   energyMake=0;
   energyStorage=1040;
@@ -44,7 +45,6 @@
   side=GBR;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=GbrInf;
   stealth=1;
   useBuildingGroundDecal=1;
   yardmap=oooo oooo oooo oooo;

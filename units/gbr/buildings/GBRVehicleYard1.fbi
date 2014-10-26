@@ -18,6 +18,7 @@
   collisionVolumeOffsets=0 0 0;
   [customParams] {
     supplyRange=500;
+    soundcategory=GBR/Yard;
   }
   energyStorage=0.01;
   explodeAs=LARGE_EXPLOSION;
@@ -37,7 +38,6 @@
   showNanoSpray=0;
   side=GER;
   sightDistance=146;
-  soundcategory=GBRYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=50;

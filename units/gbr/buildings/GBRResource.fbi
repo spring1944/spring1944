@@ -15,6 +15,7 @@
   [customParams] {
     dontCount=1;
     supplyRange=625;
+    soundcategory=GBR/Yard;
   }
   energyMake=0;
   energyStorage=0;
@@ -33,7 +34,6 @@
   side=GBR;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=GBRInf;
   stealth=1;
   useBuildingGroundDecal=1;
   

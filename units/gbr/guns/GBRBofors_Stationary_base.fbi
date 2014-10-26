@@ -19,6 +19,7 @@
     maxammo=16;
     weaponcost=3;
     weaponswithammo=2;
+    soundcategory=GBR/Gun;
   }
   footprintX=2;
   footprintZ=2;
@@ -45,7 +46,6 @@
   side=GBR;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=GBRInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

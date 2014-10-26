@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=GBR/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -53,7 +54,6 @@
   side=GBR;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=GbrInf;
   stealth=1;
   turnRate=1010;
   upright=1;

@@ -25,6 +25,7 @@
     maxammo=2;
     weaponcost=0;
     weaponswithammo=2;
+    soundcategory=ITA/Air;
   }
   explodeAs=Vehicle_Explosion_Med;
   fireState=0;

@@ -13,7 +13,6 @@ local ITA_MAS = BoatMother:New{
 	maxVelocity				= 4.3, -- 43 knots
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "ITAMAS.s3o",
-	soundCategory			= "ITABoat",
 	transportCapacity		= 1, -- 1 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
@@ -29,6 +28,7 @@ local ITA_MAS = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory		= "ITA/Boat",
 		maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

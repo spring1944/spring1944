@@ -16,6 +16,7 @@
     maxammo=4;
     weaponcost=10;
     weaponswithammo=0;
+    soundcategory=ITA/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -41,7 +42,6 @@
   showNanoFrame=0;
   side=ITA;
   sightDistance=800;
-  soundcategory=ITAVeh;
   stealth=1;
   trackOffset=5;
   trackStrength=6.5;

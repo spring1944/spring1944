@@ -18,6 +18,7 @@
     maxammo=16;
     weaponcost=2;
     weaponswithammo=2;
+    soundcategory=ITA/Gun;
   }
   footprintX=2;
   footprintZ=2;
@@ -44,7 +45,6 @@
   side=ITA;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=ITAInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

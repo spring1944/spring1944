@@ -20,6 +20,7 @@
     weaponcost=12;
     weaponswithammo=2;
     infgun=1;
+    soundcategory=ITA/Gun;
   }
   explodeAs=Tiny_Explosion;
   movestate=1;
@@ -55,7 +56,6 @@
   showNanoFrame=0;
   side=ITA;
   sightDistance=701;
-  soundcategory=ITAInf;
   stealth=1;
   turnRate=140;
   upright=1;

@@ -26,6 +26,7 @@
     maxammo=10; // 40 rounds
     weaponcost=10;
     weaponswithammo=2;
+    soundcategory=GBR/Tank/SP;
   }
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;
@@ -62,7 +63,6 @@
   side=GBR;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=GBRSP;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

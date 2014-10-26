@@ -23,6 +23,7 @@
     enginesoundnr=11;
     feartarget=1;
     proptexture=prop3.tga;
+    soundcategory=ITA/Air;
   }
   drag=0.1;
   explodeAs=Vehicle_Explosion_Med;

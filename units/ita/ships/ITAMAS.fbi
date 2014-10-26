@@ -80,6 +80,7 @@
 	smokeduration=40;
 	smokeceg=SMOKESHELL_Medium;
 	smokegencooldown=30;
+	soundcategory=ITA/Boat;
 
 	}
 }

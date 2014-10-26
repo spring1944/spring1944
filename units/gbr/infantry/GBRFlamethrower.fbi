@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=GBR/Infantry;
   }
   damageModifier=0.265;
   explodeAs=Small_Explosion;
@@ -51,7 +52,6 @@
   showNanoFrame=0;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=GBRInf;
   stealth=1;
   turnRate=1010;
   upright=1;

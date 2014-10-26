@@ -22,6 +22,7 @@
     cruise_missile_accuracy=1;
     spawn_on_death=gbr_platoon_glider_horsa;
 	deposit=0;
+    soundcategory=GBR/Air;
   }
   explodeAs=noweapon;
   footprintX=4;

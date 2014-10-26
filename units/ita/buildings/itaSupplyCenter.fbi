@@ -18,6 +18,7 @@
     armor_top=30;
     dontCount=1;
     supplyrangemodifier=0.1;
+    soundcategory=ITA/Yard;
   }
   energyMake=0;
   energyStorage=1040;
@@ -37,7 +38,6 @@
   side=ITA;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=itaInf;
   stealth=1;
   useBuildingGroundDecal=1;
   yardmap=oooooo oooooo oooooo oooooo oooooo oooooo;
