@@ -14,6 +14,7 @@
   corpse=USsoldier_dead;
   [customParams] {
     feartarget=1;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -49,7 +50,6 @@
   side=US;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

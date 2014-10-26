@@ -28,6 +28,9 @@
   objectName=GERSdKfz9.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle;
+  [customparams] {
+    soundcategory=GER/Vehicle;
+  }
   [sfxtypes] {
   }
   showNanoFrame=0;
@@ -35,7 +38,6 @@
   side=GER;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=GERTank;
   stealth=1;
   terraformSpeed=300;
   trackOffset=3;

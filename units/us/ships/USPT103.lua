@@ -24,6 +24,7 @@ local US_PT103 = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "US/Boat",
 		children = {
 			"US_PT103_Turret_20mm",
 			"US_PT103_Turret_Twin50",

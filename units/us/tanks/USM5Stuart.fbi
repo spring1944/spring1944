@@ -26,6 +26,7 @@
     maxammo=27;
     weaponcost=8;
     weaponswithammo=3;
+    soundcategory=US/Tank;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -59,7 +60,6 @@
   side=US;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=USTank;
   stealth=1;
   trackOffset=5;
   trackStrength=10;

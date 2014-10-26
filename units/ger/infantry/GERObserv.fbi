@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=GER/Infantry;
   }
   damageModifier=0.265;
   fireState=1;
@@ -54,7 +55,6 @@
   side=GER;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=GERInf;
   stealth=1;
   turnRate=1010;
   upright=1;

@@ -24,6 +24,7 @@
     enginesoundnr=18;
     feartarget=1;
     proptexture=prop3.tga;
+    SoundCategory=JPN/Air;
   }
   drag=0.1;
   explodeAs=Vehicle_Explosion_Med;

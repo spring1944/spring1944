@@ -19,6 +19,7 @@
   collisionVolumeOffsets=0 0 0;
   [customParams] {
     supplyRange=500;
+    soundcategory=US/Yard;
   }
   desecription=Constructs Self-Propelled Guns;
   energyStorage=0;
@@ -39,7 +40,6 @@
   showNanoSpray=0;
   side=US;
   sightDistance=146;
-  soundcategory=USYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=50;

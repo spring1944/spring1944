@@ -18,6 +18,7 @@
     maxammo=1;
     weaponcost=70;
     weaponswithammo=0;
+    soundcategory=JPN/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -54,7 +55,6 @@
   side=JPN;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=JPNInf;
   stealth=1;
   turnRate=1010;
   upright=1;

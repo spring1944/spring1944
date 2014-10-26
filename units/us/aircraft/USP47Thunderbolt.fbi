@@ -22,6 +22,7 @@
     enginesoundnr=16;
     feartarget=1;
     proptexture=prop5.tga;
+    soundcategory=US/Air/Fighter;
   }
   explodeAs=Vehicle_Explosion_Med;
   fireState=0;

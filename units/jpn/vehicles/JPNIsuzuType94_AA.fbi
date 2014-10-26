@@ -39,11 +39,13 @@
     explosionGenerator8=custom:XSMALL_MUZZLEFLASH;
     explosionGenerator9=custom:XSMALL_MUZZLEDUST;
   }
+  [customparams] {
+    soundcategory=JPN/Vehicle;
+  }
   showNanoFrame=0;
   side=JPN;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=JPNVeh;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

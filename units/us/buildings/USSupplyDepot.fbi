@@ -20,6 +20,7 @@
   [customParams] {
     dontCount=1;
     supplyRange=2000;
+    soundcategory=US/Yard;
   }
   energyMake=0;
   energyStorage=500;
@@ -40,7 +41,6 @@
   side=US;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=30;

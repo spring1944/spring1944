@@ -14,7 +14,6 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	maxVelocity				= 1.1,
 	movementClass			= "BOAT_LightPatrol",
 	objectName				= "JPNTypeNo1AuxSC.s3o",
-	soundCategory			= "JPNBoat",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	
@@ -25,6 +24,7 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "JPN/Boat",
 		children = {
 			"JPN_SC_turret_25mm_front",
 			"JPN_SC_turret_25mm_rear",

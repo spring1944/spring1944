@@ -26,7 +26,7 @@
     maxammo=10; // 40 rounds
     weaponcost=10;
     weaponswithammo=2;
-    soundcategory=GBR/Tank/SP;
+    soundcategory=GBR/Vehicle;
   }
   energyUse=0;
   explodeAs=Vehicle_Explosion_Sm;

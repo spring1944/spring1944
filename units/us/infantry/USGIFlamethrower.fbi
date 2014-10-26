@@ -19,6 +19,7 @@
     maxammo=5;
     weaponcost=4;
     weaponswithammo=1;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   explodeAs=Small_Explosion;
@@ -53,7 +54,6 @@
   showNanoFrame=0;
   sightDistance=540;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

@@ -27,6 +27,7 @@
     proptexture=prop3.tga;
     maxammo=18;
     weaponswithammo=1;
+    SoundCategory=JPN/Air;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;
@@ -69,7 +70,6 @@
   Side=JPN;
   sightDistance=0;
   smoothAnim=1;
-  SoundCategory=JPNBomber;
   stealth=1;
   turnRate=50;
 

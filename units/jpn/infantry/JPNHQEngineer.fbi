@@ -16,6 +16,7 @@
   [customParams] {
     feartarget=1;
 	canclearmines=1;
+    soundcategory=JPN/Infantry;
   }
   damageModifier=0.375;
   energyStorage=0.01;
@@ -38,7 +39,6 @@
   showNanoSpray=0;
   sightDistance=600;
   smoothAnim=0;
-  soundcategory=JPNInf;
   stealth=1;
   terraformSpeed=300;
   turnRate=1010;

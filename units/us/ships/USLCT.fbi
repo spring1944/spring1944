@@ -19,6 +19,7 @@
     supplyRange=600;
     hasturnbutton=1;
     transportsquad=us_platoon_lct;
+    soundcategory=US/Boat;
   }
   energyMake=0;
   energyUse=0;

@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
+    soundcategory=GER/Infantry/Sniper;
   }
   damageModifier=0.265;
   decloakOnFire=1;
@@ -54,7 +55,6 @@
   side=GER;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=GERSniper;
   stealth=1;
   turnRate=1010;
   upright=1;

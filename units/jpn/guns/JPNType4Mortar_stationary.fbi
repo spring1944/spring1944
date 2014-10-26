@@ -21,6 +21,7 @@
     maxammo=1;
     weaponcost=70;
     weaponswithammo=2;
+    soundcategory=JPN/Gun;
   }
   footprintX=2;
   footprintZ=2;
@@ -47,7 +48,6 @@
   side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JPNInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

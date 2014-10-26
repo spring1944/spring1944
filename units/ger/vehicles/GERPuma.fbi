@@ -25,6 +25,7 @@
     maxammo=10;
     weaponcost=10;
     weaponswithammo=2;
+    soundcategory=GER/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
@@ -59,7 +60,6 @@
   side=GER;
   sightDistance=780;
   smoothAnim=0;
-  soundcategory=GERVeh;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

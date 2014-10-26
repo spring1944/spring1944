@@ -19,6 +19,7 @@
     supplyRange=350;
     hasturnbutton=1;
     transportsquad=jpn_platoon_daihatsu;
+    soundcategory=JPN/Boat;
   }
   energyMake=0;
   energyUse=0;

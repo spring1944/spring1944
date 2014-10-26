@@ -17,6 +17,7 @@
     maxammo=4;
     weaponcost=10;
     weaponswithammo=0;
+    soundcategory=JPN/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -40,7 +41,6 @@
   showNanoFrame=0;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=JPNTank;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

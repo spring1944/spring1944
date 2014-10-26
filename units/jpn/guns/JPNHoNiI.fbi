@@ -26,6 +26,7 @@
     weaponcost=12;
     weaponswithammo=2;
 	hasturnbutton=1;
+    soundcategory=JPN/Tank/SP;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -60,7 +61,6 @@
   side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JPNTank;
   stealth=1;
   trackOffset=5;
   trackStrength=10;

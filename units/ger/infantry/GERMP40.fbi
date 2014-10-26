@@ -14,6 +14,7 @@
   [customParams] {
     feartarget=1;
     flagCapRate=1;
+    soundcategory=GER/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -48,7 +49,6 @@
   side=GER;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=GERInf;
   stealth=1;
   turnRate=1010;
   upright=1;

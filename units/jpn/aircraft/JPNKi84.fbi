@@ -24,6 +24,7 @@
     enginesoundnr=12;
     feartarget=1;
     proptexture=prop3.tga;
+    SoundCategory=JPN/Air/Fighter;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

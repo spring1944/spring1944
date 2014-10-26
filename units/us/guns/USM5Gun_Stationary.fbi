@@ -18,6 +18,7 @@
     maxammo=4;
     weaponcost=14;
     weaponswithammo=1;
+    soundcategory=US/Gun;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -46,7 +47,6 @@
   side=US;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=USGun;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

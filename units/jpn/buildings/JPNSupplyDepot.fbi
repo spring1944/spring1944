@@ -16,6 +16,7 @@
   [customParams] {
     dontCount=1;
     supplyRange=2000;
+    soundcategory=JPN/Yard;
   }
   energyMake=0;
   energyStorage=500;
@@ -36,7 +37,6 @@
   side=ita;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=GERInf;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=30;

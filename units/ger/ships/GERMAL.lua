@@ -14,7 +14,6 @@ local GER_MAL = BoatMother:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_LandingCraft",
 	objectName				= "GERMAL.s3o",
-	soundCategory			= "GERBoat",
 	transportCapacity		= 5, -- 5 x 1fpu turrets
 	turnRate				= 120,	
 	weapons = {	
@@ -24,6 +23,7 @@ local GER_MAL = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "GER/Boat",
 		children = {
 			"GER_MAL_Turret_105mm", 
 			"GER_MAL_Turret_105mm", 

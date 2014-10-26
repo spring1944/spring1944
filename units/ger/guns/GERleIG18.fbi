@@ -20,6 +20,7 @@
     weaponcost=12;
     weaponswithammo=1;
     infgun=1;
+    soundcategory=GER/Infantry;
   }
   explodeAs=Tiny_Explosion;
   footprintX=1;
@@ -53,7 +54,6 @@
   showNanoFrame=0;
   side=GER;
   sightDistance=701;
-  soundcategory=GERInf;
   stealth=1;
   turnRate=120;
   upright=1;

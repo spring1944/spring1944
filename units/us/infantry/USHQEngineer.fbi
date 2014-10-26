@@ -15,6 +15,7 @@
   [customParams] {
     canclearmines=1;
     feartarget=1;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   energyStorage=0.01;
@@ -43,7 +44,6 @@
   showNanoSpray=0;
   sightDistance=600;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   terraformSpeed=300;
   turnRate=1010;

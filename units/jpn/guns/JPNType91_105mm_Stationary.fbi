@@ -21,6 +21,7 @@
     maxammo=4;
     weaponcost=25;
     weaponswithammo=2;
+    soundcategory=JPN/Gun;
   }
   flankingBonusDir=0.0 0.0 1.0;
   flankingBonusMax=1.25;
@@ -53,7 +54,6 @@
   side=JPN;
   sightDistance=701;
   smoothAnim=0;
-  soundcategory=JPNInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

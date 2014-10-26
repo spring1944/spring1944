@@ -13,7 +13,7 @@
   corpse=USLCSS_dead;
   [customParams] {
     hasturnbutton=1;
-
+    soundcategory=US/Boat;
     lowammolevel=1;
     maxammo=2;
     weaponcost=940;

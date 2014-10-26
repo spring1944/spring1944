@@ -21,6 +21,7 @@
     armor_side=15;
     armor_top=30;
     dontCount=1;
+    soundcategory=US/Yard;
   }
   energyMake=0;
   energyStorage=3120;
@@ -39,7 +40,6 @@
   showNanoFrame=0;
   sightDistance=1;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   useBuildingGroundDecal=1;
   yardmap=oooo oooo oooo oooo oooo oooo;

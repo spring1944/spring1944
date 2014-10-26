@@ -13,6 +13,7 @@
   corpse=USGMCTruck_Destroyed;
   [customParams] {
     dontCount=1;
+    soundcategory=US/Vehicle;
   }
   energyMake=0;
   explodeAs=Vehicle_Explosion_Sm;
@@ -36,7 +37,6 @@
   showNanoFrame=0;
   sightDistance=600;
   smoothAnim=0;
-  soundcategory=USTank;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

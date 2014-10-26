@@ -14,7 +14,6 @@ local JPN_AbTei = BoatMother:New{
 	maxVelocity				= 1.3,
 	movementClass			= "BOAT_RiverSmall",
 	objectName				= "JPNAbTei.s3o",
-	soundCategory			= "JPNBoat",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -25,6 +24,7 @@ local JPN_AbTei = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "JPN/Boat",
 	    armor_front	= 6,
 		armor_rear	= 6,
 		armor_side	= 6,

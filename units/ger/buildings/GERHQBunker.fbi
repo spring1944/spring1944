@@ -27,6 +27,7 @@
     hq=1;
     refillamount=1e+06;
     supplyRange=500;
+    soundcategory=GER/Yard/HQ;
   }
   energyStorage=0.01;
   explodeAs=Huge_Explosion;
@@ -50,7 +51,6 @@
   showPlayerName=1;
   sightDistance=700;
   smoothAnim=0;
-  soundcategory=GERYard;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=FLAG;

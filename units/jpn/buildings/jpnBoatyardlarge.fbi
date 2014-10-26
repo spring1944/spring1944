@@ -17,6 +17,7 @@
   corpse=GERBoatyardLarge_dead;
   [customParams] {
     supplyRange=500;
+    soundcategory=JPN/Yard;
   }
   energyStorage=0;
   explodeAs=LARGE_EXPLOSION;
@@ -36,7 +37,6 @@
   showNanoSpray=0;
   side=JPN;
   sightDistance=146;
-  soundcategory=GERYard;
   stealth=1;
   useBuildingGroundDecal=1;
   waterline=0;

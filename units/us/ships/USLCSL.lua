@@ -14,7 +14,6 @@ local US_LCSL = BoatMother:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_LandingCraft",
 	objectName				= "USLCSL.s3o",
-	soundCategory			= "USBoat",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -24,6 +23,7 @@ local US_LCSL = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "US/Boat",
 		children = {
 			"US_SC_Turret_76mm",
 			"US_LCSL_Turret_TwinBofors_Front",

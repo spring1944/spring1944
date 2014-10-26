@@ -27,6 +27,7 @@
     weaponcost=8;
     weaponswithammo=2;
 	blockfear=1;
+    soundcategory=JPN/Tank;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
@@ -60,7 +61,6 @@
   side=JPN;
   sightDistance=750;
   smoothAnim=0;
-  soundcategory=JPNTank;
   stealth=1;
   trackOffset=7;
   trackStrength=7;

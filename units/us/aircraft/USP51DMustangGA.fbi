@@ -26,6 +26,7 @@
     proptexture=prop3.tga;
     weaponcost=-1;
     weaponswithammo=2;
+    soundcategory=US/Air/Fighter;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

@@ -14,7 +14,6 @@ local JPN_Seta = BoatMother:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
 	objectName				= "JPNSeta.s3o",
-	soundCategory			= "JPNBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -25,6 +24,7 @@ local JPN_Seta = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "JPN/Boat",
 		children = {
 			"JPN_Seta_turret_76mm_front",
 			"JPN_Seta_turret_25mm",

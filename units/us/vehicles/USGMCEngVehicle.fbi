@@ -29,6 +29,9 @@
   objectName=USGMCEngVehicle.S3O;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
+  [customparams] {
+    soundcategory=US/Vehicle;
+  }
   [sfxtypes] {
   }
   showNanoFrame=0;
@@ -36,7 +39,6 @@
   side=US;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=USVeh;
   stealth=1;
   terraformSpeed=300;
   trackOffset=10;

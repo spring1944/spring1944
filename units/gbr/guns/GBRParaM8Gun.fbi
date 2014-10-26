@@ -20,7 +20,7 @@
     weaponcost=12;
     weaponswithammo=1;
     infgun=1;
-    soundcategory=GBR/Gun;
+    soundcategory=GBR/Infantry;
   }
   explodeAs=Tiny_Explosion;
   footprintX=1;

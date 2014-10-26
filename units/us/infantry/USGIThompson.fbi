@@ -15,6 +15,7 @@
     feartarget=1;
     flagCapRate=1;
     helptext=Medium range and accuracy, low damage, high rate of fire. Armed with secondary grenades.;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -49,7 +50,6 @@
   side=US;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

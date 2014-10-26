@@ -28,6 +28,7 @@
     maxammo=4;
     weaponcost=0;
     weaponswithammo=4;
+    SoundCategory=JPN/Air;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=4;

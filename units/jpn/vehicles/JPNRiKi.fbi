@@ -28,6 +28,9 @@
   objectName=JPNRiKi.s3o;
   seismicSignature=0;
   selfDestructAs=Vehicle;
+  [customparams] {
+    soundcategory=JPN/Tank;
+  }
   [sfxtypes] {
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:SMALL_MUZZLEFLASH;
@@ -37,7 +40,6 @@
   side=JPN;
   sightDistance=720;
   smoothAnim=0;
-  soundcategory=JPNTank;
   stealth=1;
   terraformSpeed=300;
   trackOffset=3;

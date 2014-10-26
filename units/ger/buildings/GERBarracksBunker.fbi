@@ -18,6 +18,7 @@
     blockfear=1;
     separatebuildspot=1;
     supplyRange=600;
+    soundcategory=GER/Yard;
   }
   energyStorage=400;
   explodeAs=Large_Explosion;
@@ -35,7 +36,6 @@
   showNanoSpray=0;
   sightDistance=146;
   smoothAnim=0;
-  soundcategory=GERYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20;

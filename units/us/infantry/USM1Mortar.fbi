@@ -19,6 +19,7 @@
     maxammo=10;
     weaponcost=15;
     weaponswithammo=2;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   energyUse=0;
@@ -54,7 +55,6 @@
   side=US;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

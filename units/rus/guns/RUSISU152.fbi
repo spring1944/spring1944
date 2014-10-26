@@ -26,7 +26,7 @@
     maxammo=4;
     weaponcost=63;
     weaponswithammo=1;
-    soundcategory=RUS/Zveroboy;
+    soundcategory=RUS/Tank/Zveroboy;
   }
   explodeAs=Vehicle_Explosion_Large;
   footprintX=3;

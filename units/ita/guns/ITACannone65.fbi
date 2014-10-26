@@ -20,7 +20,7 @@
     weaponcost=12;
     weaponswithammo=2;
     infgun=1;
-    soundcategory=ITA/Gun;
+    soundcategory=ITA/Infantry;
   }
   explodeAs=Tiny_Explosion;
   movestate=1;

@@ -15,6 +15,7 @@
   [customParams] {
     buildOutside=1;
     dontCount=1;
+    soundcategory=GER/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
@@ -41,7 +42,6 @@
   showNanoFrame=0;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=GERTank;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

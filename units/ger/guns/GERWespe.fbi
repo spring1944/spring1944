@@ -25,6 +25,7 @@
     maxammo=6;
     weaponcost=30;
     weaponswithammo=1;
+    soundcategory=GER/Tank/SP;
   }
   explodeAs=Vehicle_Explosion_Med;
   footprintX=3;
@@ -60,7 +61,6 @@
   side=US;
   sightDistance=830;
   smoothAnim=0;
-  soundcategory=GERTank;
   stealth=1;
   trackOffset=5;
   trackStrength=10;

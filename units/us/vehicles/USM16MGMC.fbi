@@ -17,6 +17,7 @@
   corpse=USM3Halftrack_Destroyed;
   [customParams] {
     hasturnbutton=1;
+    soundcategory=US/Vehicle;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
@@ -48,7 +49,6 @@
   side=RUS;
   sightDistance=800;
   smoothAnim=0;
-  soundcategory=USVeh;
   stealth=1;
   trackOffset=10;
   trackStrength=6.5;

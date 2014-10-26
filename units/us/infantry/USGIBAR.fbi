@@ -14,6 +14,7 @@
   [customParams] {
     feartarget=1;
     helptext=Long range, medium accuracy, medium rate of fire. Good at pinning troops. Fires in short bursts. Armed with secondary grenades.;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   flankingBonusMax=1.5;
@@ -47,7 +48,6 @@
   showNanoFrame=0;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

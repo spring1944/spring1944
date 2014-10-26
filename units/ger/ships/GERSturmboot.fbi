@@ -13,6 +13,7 @@
   [customParams] {
     dontCount=1;
     hasturnbutton=1;
+    soundcategory=GER/Boat;
   }
   explodeAs=Vehicle_Explosion_Sm;
   floater=1;

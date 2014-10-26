@@ -24,6 +24,7 @@ local US_SC = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "US/Boat",
 		children = {
 			"US_SC_Turret_76mm",
 			"US_SC_Turret_20mm_Right",

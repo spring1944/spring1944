@@ -17,6 +17,7 @@
     dontCount=1;
     feartarget=1;
     helptext=Long range, excellent accuracy, excellent damage, low rate of fire. Very effective at pinning troops at long range. Can usually kill with one hit. Can remain undetected when firing.;
+    soundcategory=US/Infantry;
   }
   damageModifier=0.265;
   decloakOnFire=1;
@@ -54,7 +55,6 @@
   showNanoFrame=0;
   sightDistance=570;
   smoothAnim=0;
-  soundcategory=USInf;
   stealth=1;
   turnRate=1010;
   upright=1;

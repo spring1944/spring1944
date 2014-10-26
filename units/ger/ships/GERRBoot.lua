@@ -24,6 +24,7 @@ local GER_RBoot = BoatMother:New{
 		},
 	},
 	customparams = {
+		soundcategory = "GER/Boat",
 		children = {
 			"GER_RBoot_Turret_37mm", 
 			"GER_RBoot_Turret_20mm",

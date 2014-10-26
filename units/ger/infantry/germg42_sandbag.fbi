@@ -15,6 +15,7 @@
   corpse=SandbagMG_Destroyed;
   [customParams] {
     feartarget=1;
+    soundcategory=GER/Infantry;
   }
   footprintX=2;
   footprintZ=2;
@@ -38,7 +39,6 @@
   side=GER;
   sightDistance=840;
   smoothAnim=0;
-  soundcategory=GerInf;
   stealth=1;
   useBuildingGroundDecal=1;
   badTargetCategory=OPENVEH FLAG SOFTVEH;

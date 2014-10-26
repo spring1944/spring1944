@@ -22,6 +22,7 @@
     blockfear=1;
     separatebuildspot=1;
     supplyRange=500;
+    soundcategory=JPN/Yard;
   }
   energyStorage=0.01;
   explodeAs=Med_Explosion;
@@ -41,7 +42,6 @@
   showNanoSpray=0;
   side=JPN;
   sightDistance=146;
-  soundcategory=JPNYard;
   stealth=1;
   useBuildingGroundDecal=1;
   workerTime=20;
