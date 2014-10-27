@@ -1,24 +1,4 @@
-
-local defFields = {
-    "name",
-    "description",
-    "buildCostMetal",
-    "buildPic",
-    "buildTime",
-    "side",
-}
-
-local sortieInclude = VFS.Include("LuaRules/Configs/sortie_defs.lua")
-
-local squadInclude = VFS.Include("LuaRules/Configs/squad_defs.lua")
-
 local morphInclude = VFS.Include("LuaRules/Configs/morph_defs.lua")
-
-local SORTIE_DAMAGE = 1e+06
-local SORTIE_SLOPE = 82
-
-local SQUAD_DAMAGE = 100
-local SQUAD_SLOPE = 30
 
 local MORPH_DAMAGE = 1e+06
 local MORPH_SLOPE = 82
@@ -56,19 +36,6 @@ local function isFactory(unitDef)
     return buildOptions and (not velocity or velocity == 0)
 end
 
-local function generateFrom(defFile, damage, slope)
-    for unitName, unitData in pairs(defFile) do
-        local autoUnit = getTemplate(damage, slope)
-        for i = 1, #defFields do
-            autoUnit[defFields[i]] = unitData[defFields[i]]
-        end
-        UnitDefs[unitName] = autoUnit
-    end
-end
-
-generateFrom(sortieInclude, SORTIE_DAMAGE, SORTIE_SLOPE)
-
-generateFrom(squadInclude, SQUAD_DAMAGE, SQUAD_SLOPE)
 
 for unitName, unitMorphs in pairs(morphInclude) do
     local unitDef = UnitDefs[unitName]

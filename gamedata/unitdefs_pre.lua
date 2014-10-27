@@ -26,6 +26,17 @@ local function inherit (c, p, concatNames)
 	end
 end
 
+-- Make sides available to all def files
+local sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
+local Sides = {}
+for sideNum, data in pairs(sideData) do
+	if sideNum > 1 then -- ignore Random/GM
+		Sides[sideNum] = data.name:lower()
+	end
+end
+
+-- Root Classes
+
 Unit = {
 	showNanoFrame		= false,
 }
@@ -47,18 +58,25 @@ end
 ---------------------------------------------------------------------------------------------
 -- This is where the magic happens
 local sharedEnv = {
+	Sides = Sides,
 	Weapon = Weapon,
 	Unit = Unit,
 	printTable = printTable,
 }
 
--- Include Base Classes from Units/BaseClasses/
-local baseClasses = VFS.DirList("units/baseclasses")
+-- Include Base Classes from BaseClasses/*
+local unitBaseClasses = VFS.DirList("baseclasses/units")
+local weaponBaseClasses = VFS.DirList("baseclasses/weapons")
+local featureBaseClasses = VFS.DirList("baseclasses/features")
 
-for _, file in pairs(baseClasses) do
-	newClasses = VFS.Include(file, VFS.ZIP)
-	for className, class in pairs(newClasses) do
-		sharedEnv[className] = class
+local allBaseClasses = {unitBaseClasses, weaponBaseClasses, featureBaseClasses}
+
+for _, baseClasses in pairs(allBaseClasses) do
+	for _, file in pairs(baseClasses) do
+		newClasses = VFS.Include(file, VFS.ZIP)
+		for className, class in pairs(newClasses) do
+			sharedEnv[className] = class
+		end
 	end
 end
 

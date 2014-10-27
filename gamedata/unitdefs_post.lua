@@ -7,37 +7,8 @@ if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
 
-local function disableunits(unitlist)
-	for name, ud in pairs(UnitDefs) do
-	    if (ud.buildoptions) then
-	      for _, toremovename in ipairs(unitlist) do
-	        for index, unitname in pairs(ud.buildoptions) do
-	          if (unitname == toremovename) then
-	            table.remove(ud.buildoptions, index)
-	          end
-	        end
-	      end
-	    end
-	end
-end
-
--- Auto-generate per-nation {AP, AT}minesign units
+-- Auto-generate sortie, squad & queuable-morph units
 VFS.Include("gamedata/unitdefs_autogen.lua")
-local sides = VFS.DirList("luarules/configs/side_squad_defs", "*.lua")
-
-local ATMineSign = UnitDefs["atminesign"]
-local APMineSign = UnitDefs["apminesign"]
-local TankObstacle = UnitDefs["tankobstacle"]
-
-for _, sideFile in pairs(sides) do
-	local side = sideFile:sub(string.len("luarules/configs/side_squad_defs/")+1, -5)
-	UnitDefs[side .. "atminesign"] = {}
-	table.copy(ATMineSign, UnitDefs[side .. "atminesign"])
-	UnitDefs[side .. "apminesign"] = {}
-	table.copy(APMineSign, UnitDefs[side .. "apminesign"])
-	UnitDefs[side .. "tankobstacle"] = {}
-	table.copy(TankObstacle, UnitDefs[side .. "tankobstacle"])
-end
 
 -- have to implement squad file preloading here, because it's needed for transport stuff
 local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
