@@ -1,24 +1,24 @@
-local RUS_LCT = Boat:New{
-	name					= "LCT Mk. 6",
+local GBR_LCT = Boat:New{
+	name					= "LCT Mk. 4",
 	description				= "Tank Landing Craft",
-	acceleration			= 0.075,
-	brakeRate				= 0.05,
-	buildCostMetal			= 1600,
-	buildTime				= 1600,
-	collisionVolumeOffsets	= [[0.0 -30.0 0.0]],
-	collisionVolumeScales	= [[60.0 50.0 220.0]],
-	corpse					= "RUSLCT_dead",
+	acceleration			= 0.001,
+	brakeRate				= 0.001,
+	buildCostMetal			= 2100,
+	buildTime				= 2100,
+	collisionVolumeOffsets	= [[0.0 0.0 0.0]],
+	collisionVolumeScales	= [[60.0 100.0 220.0]],
+	corpse					= "GBRLCT_dead",
 	iconType				= "transportship",
-	mass					= 29100,
-	maxDamage				= 29100,
-	maxReverseVelocity		= 0.35,
+	mass					= 35000,
+	maxDamage				= 35000,
+	maxReverseVelocity		= 0.55,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "RUSLCT.s3o",
+	objectName				= "GBRLCT.s3o",
 	transportCapacity		= 30,
-	transportMass			= 15000,
-	transportSize			= 30,
-	turnRate				= 170,	
+	transportMass			= 27000,
+	transportSize			= 54,
+	turnRate				= 35,	
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -49,9 +49,9 @@ local RUS_LCT = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
-		transportsquad			= "rus_platoon_lct",
+		soundCategory			= "GBR/Boat",
 		supplyRange				= 600,
+		transportsquad			= "gbr_platoon_lct",
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
@@ -61,5 +61,5 @@ local RUS_LCT = Boat:New{
 
 
 return lowerkeys({
-	["RUSLCT"] = RUS_LCT,
+	["GBRLCT"] = GBR_LCT,
 })

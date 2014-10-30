@@ -1,3 +1,18 @@
+local GBRSatchelCharge = Mine:New{
+	name						= "Satchel Charge",
+	description					= "Anti-Building Demolitions Pack",
+	buildTime					= 750,
+	explodeAs					= "SatchelCharge",
+	maxSlope					= 80,
+	minCloakDistance			= 20,
+	selfDestructAs				= "SatchelCharge",
+	selfDestructCountdown		= 10,
+	sightDistance				= 1,
+	customParams = {
+		candetonate 				= true,
+	},
+}
+
 -- Mines --
 local APMine = Mine:New{
 	name						= "Anti-Personnel Mine",
@@ -50,6 +65,7 @@ local ATMineSign = MineSign:New{
 local units = {
 	APMine = APMine,
 	ATMine = ATMine,
+	GBRSatchelCharge = GBRSatchelCharge,
 }
 
 for _, side in pairs(Sides) do
