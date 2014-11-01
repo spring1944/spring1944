@@ -26,4 +26,4 @@ end
 generateFrom(sortieInclude)
 generateFrom(squadInclude)
 
-return units
+return lowerkeys(units)

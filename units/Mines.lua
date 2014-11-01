@@ -77,4 +77,4 @@ for _, side in pairs(Sides) do
 	units[side .. "tankobstacle"] = TankObstacle:New{} 
 end
 
-return units
+return lowerkeys(units)
