@@ -88,6 +88,18 @@ local GER_MFP = Boat:New{
 			["z"] = {angle = -30, speed = 10},
 		},]]
 	},
+	sfxtypes = { -- remove once using LUS
+		explosionGenerators = {
+			[1] = "custom:SMOKEPUFF_GPL_FX",
+			[4] = "custom:SMALL_MUZZLEFLASH;",
+			[5] = "custom:SMALL_MUZZLEDUST",
+			[6] = "custom:XSMALL_MUZZLEFLASH",
+			[7] = "custom:XSMALL_MUZZLEDUST",
+			[8] = "custom:MG_MUZZLEFLASH",
+			[9] = "custom:MEDIUMLARGE_MUZZLEFLASH",
+			[10] = "custom:MEDIUMLARGE_MUZZLEDUST",
+		},
+	},
 }
 
 

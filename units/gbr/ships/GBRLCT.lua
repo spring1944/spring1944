@@ -45,7 +45,7 @@ local GBR_LCT = Boat:New{
 			mainDir				= [[-1 0 0]],
 		},
 		[5] = {
-			name				= "LargeTracer",
+			name				= "Large_Tracer",
 		},
 	},
 	customparams = {
@@ -56,6 +56,13 @@ local GBR_LCT = Boat:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+	},
+	sfxtypes = { -- remove once using LUS
+		explosionGenerators = {
+			[1] = "custom:SMOKEPUFF_GPL_FX",
+			[8] = "custom:XSMALL_MUZZLEFLASH",
+			[9] = "custom:XSMALL_MUZZLEDUST",
+		},
 	},
 }
 

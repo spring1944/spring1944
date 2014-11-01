@@ -29,10 +29,16 @@ local RUS_Tender15t = Boat:New{
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		transportsquad			= "rus_platoon_tender",
+		supplyRange				= 350,
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+	},
+	sfxtypes = { -- remove once using LUS
+		explosionGenerators = {
+			"custom:MG_MUZZLEFLASH",
+		},
 	},
 }
 
