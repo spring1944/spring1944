@@ -128,7 +128,7 @@ function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	if ud.name == "flag" then
 		if unitTeam == Spring.GetMyPlayerID() then
 			local x,y,z = Spring.GetUnitPosition(unitID)
-			Spring.PlaySoundFile("sounds/GEN_Explo_Flag.wav", 1, x, y, z)
+			Spring.PlaySoundFile("sounds/Weapons/GEN_Explo_Flag.wav", 1, x, y, z)
 		end
 	end
 end
