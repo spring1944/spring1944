@@ -21,6 +21,8 @@
     armor_top=4;
     hasturnbutton=1;
     soundcategory=RUS/Vehicle;
+    fortifyInto=smalltankshelter;
+    fortifydelay=10;
   }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=2;
