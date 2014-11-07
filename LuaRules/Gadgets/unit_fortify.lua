@@ -107,7 +107,7 @@ end
 
 function ForcedLoading(transportID, passengerID)
 	env = Spring.UnitScript.GetScriptEnv(transportID)
-	Spring.UnitScript.CallAsUnit(transportID, env.TransportPickup, passengerID)
+	Spring.UnitScript.CallAsUnit(transportID, env.script.TransportPickup, passengerID)
 end
 
 local function FortificationComplete(unitID)
