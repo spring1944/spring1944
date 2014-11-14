@@ -48,7 +48,7 @@
   maxVelocity=11.2;
   maxWaterDepth=0;
   myGravity=0.6;
-  noChaseCategory=FLAG MINE HARDVEH BUILDING;
+  noChaseCategory=FLAG MINE AIR BUILDING;
   objectName=JPNKi102.s3o;
   radarDistance=1200;
   repairable=0;
@@ -78,24 +78,24 @@
   weapon1=Ho40157mm;
   maxAngleDif1=15;
   onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
-  weaponMainDir1=0 -1 9;
+  weaponMainDir1=0 -1 16;
 
   weapon2=Ho520mmAP;
   maxAngleDif2=10;
   onlyTargetCategory2=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir2=0 -1 9;
+  weaponMainDir2=0 -1 16;
   weaponSlaveTo2=1;
 
   weapon3=Ho520mmAP;
   maxAngleDif3=10;
   onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir3=0 -1 9;
+  weaponMainDir3=0 -1 16;
   weaponSlaveTo3=1;
 
   weapon4=TE4;
   maxAngleDif4=50;
   onlyTargetCategory4=AIR;
-  weaponMainDir4=0 1 -1;
+  weaponMainDir4=0 8 -1;
 
   weapon5=Medium_Tracer;
 }
