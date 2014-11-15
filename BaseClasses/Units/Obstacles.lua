@@ -23,6 +23,7 @@ local Mine = Unit:New{
 
 local MineSign = Mine:New{
 	buildCostMetal			= 360,
+	buildingGroundDecalType	= "",
 	buildTime				= 360,
 	category				= "FLAG",
 	minCloakDistance		= 160,

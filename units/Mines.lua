@@ -49,7 +49,7 @@ local APMineSign = MineSign:New{
 	name						= "AP Minefield",
 	description					= "Warning! AP Mines!",
 	maxSlope				= 3,
-	customParams = {
+	customparams = {
 		minetype				= "apminesign",
 	},
 }
@@ -58,7 +58,7 @@ local ATMineSign = MineSign:New{
 	name						= "AT Minefield",
 	description					= "Warning! AT Mines!",
 	maxSlope				= 15,
-	customParams = {
+	customparams = {
 		minetype				= "atminesign",
 	},
 }
