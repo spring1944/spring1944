@@ -48,7 +48,7 @@
   maxVelocity=11.2;
   maxWaterDepth=0;
   myGravity=0.6;
-  noChaseCategory=FLAG MINE AIR BUILDING;
+  noChaseCategory=FLAG MINE AIR INFANTRY BUILDING;
   objectName=JPNKi102.s3o;
   radarDistance=1200;
   repairable=0;
@@ -93,9 +93,9 @@
   weaponSlaveTo3=1;
 
   weapon4=TE4;
-  maxAngleDif4=50;
+  maxAngleDif4=70;
   onlyTargetCategory4=AIR;
-  weaponMainDir4=0 8 -1;
+  weaponMainDir4=0 8 -0.7;
 
   weapon5=Medium_Tracer;
 }
