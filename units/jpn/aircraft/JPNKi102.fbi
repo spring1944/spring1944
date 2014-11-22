@@ -17,10 +17,10 @@
   category=AIR;
   cruiseAlt=1250;
   [customParams] {
-    armor_front=6;
-    armor_rear=6;
-    armor_side=6;
-    armor_top=0;
+    //armor_front=6;
+    //armor_rear=6;
+    //armor_side=6;
+    //armor_top=0;
     enginesound=yakb-;
     enginesoundnr=20;
     feartarget=1;
@@ -39,7 +39,7 @@
   maxAcc=0.702;
   maxAileron=0.00375;
   maxBank=0.9;
-  maxDamage=730;
+  maxDamage=495;
   maxElevator=0.00375;
   maxFuel=160;
   maxPitch=1;
