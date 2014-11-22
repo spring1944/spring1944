@@ -9,7 +9,7 @@ local GBRSatchelCharge = Mine:New{
 	selfDestructCountdown		= 10,
 	sightDistance				= 1,
 	useBuildingGroundDecal		= false,
-	customParams = {
+	customparams = {
 		candetonate 				= true,
 	},
 }
