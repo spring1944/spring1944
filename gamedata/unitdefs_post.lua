@@ -17,8 +17,48 @@ local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
 local GMBuildOptions = {}
 local GM_UD
 
+local sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
+local SIDES = {}
+
+
+for sideNum, data in pairs(sideData) do
+	if sideNum > 1 then -- ignore Random/GM
+		SIDES[sideNum] = data.name:lower()
+	end
+end
+
+local function RecursiveReplaceStrings(t, name, side, replacedMap)
+	if (replacedMap[t]) then
+		return  -- avoid recursion / repetition
+    end
+	replacedMap[t] = true
+	local changes = {}
+	for k, v in pairs(t) do
+		if (type(v) == 'string') then
+			t[k] = v:gsub("<SIDE>", side):gsub("<NAME>", name)
+		end
+		if (type(v) == 'table') then
+			RecursiveReplaceStrings(v, name, side, replacedMap)
+		end
+	end 
+end
+
+local function ReplaceStrings(t, name)
+	local side = ""
+	local replacedMap = {}
+	for _, sideName in pairs(SIDES) do
+		if name:find(sideName) == 1 then
+			side = sideName
+			break
+		end
+	end
+	RecursiveReplaceStrings(t, name, side, replacedMap)
+end
+
 -- Process ALL the units!
 for name, ud in pairs(UnitDefs) do
+	-- Replace all occurences of <SIDE> and <NAME> with the respective values
+	ReplaceStrings(ud, name)
 	-- Convert all customparams subtables back into strings for Spring
 	if ud.customparams then
 		for k, v in pairs (ud.customparams) do

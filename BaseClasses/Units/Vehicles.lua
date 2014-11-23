@@ -12,6 +12,10 @@ local Vehicle = Unit:New{
 	sightDistance		= 800,
 	stealth				= true,
 	turnInPlace			= false,
+	
+	customParams = {
+		soundcategory = "<SIDE>/Vehicle",
+	},
 }
 
 -- Trucks --

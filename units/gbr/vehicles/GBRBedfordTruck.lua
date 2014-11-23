@@ -1,4 +1,4 @@
-local GBR_BedfordTruck = TransportTruck:New(SFX_GBR_Vehicle):New{
+local GBR_BedfordTruck = TransportTruck:New{
 	name					= "Bedford QL",
 	trackOffset				= 10,
 	trackWidth				= 13,
