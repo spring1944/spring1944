@@ -99,6 +99,11 @@ local iconTypes = {
 		size			=	2,
 		distance	=	0.2,
 	},
+	fgtruck = {
+		bitmap		=	"icons/FGtruck.tga",
+		size			=	2,
+		distance	=	0.2,
+	},
 	armoredcar = {
 		bitmap		=	"icons/armoredcar.tga",
 		size			=	2,

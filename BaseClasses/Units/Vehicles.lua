@@ -49,14 +49,43 @@ local TransportTruck = Truck:New{ -- Transport Trucks
 	unloadSpread		= 3,
 }
 
+local AAGunTractor = Truck:New{
+	description			= "Towed Anti-Aircraft Gun",
+	buildCostMetal		= 1400,
+	iconType			= "aatruck",
+}
+
 local ATGunTractor = Truck:New{
 	description			= "Towed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "attruck",
 }
 
+local FGGunTractor = Truck:New{
+	description			= "Towed Field Gun",
+	buildCostMetal		= 1300,
+	iconType			= "fgtruck",
+}
+
+local HGunTractor = Truck:New{
+	description			= "Towed Howitzer",
+	buildCostMetal		= 1800,
+	iconType			= "htruck",
+}
+
+local RGunTractor = Truck:New{
+	description			= "Towed Rocket Launcher",
+	buildCostMetal		= 3600,
+	iconType			= "rtruck",
+}
+
 return {
 	Vehicle = Vehicle,
+	-- Trucks
 	TransportTruck = TransportTruck,
+	AAGunTractor = AAGunTractor,
 	ATGunTractor = ATGunTractor,
+	FGGunTractor = FGGunTractor,
+	HGunTractor = HGunTractor,
+	RGunTractor = RGunTractor,
 }

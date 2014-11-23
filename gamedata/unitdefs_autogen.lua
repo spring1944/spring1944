@@ -39,6 +39,7 @@ end
 
 for unitName, unitMorphs in pairs(morphInclude) do
     local unitDef = UnitDefs[unitName]
+	--Spring.Echo(unitName, unitDef) -- useful to debug bad/missing unitdefs causing this code to crash(!)
     if isFactory(unitDef) then
         for i = 1, #unitMorphs do
             local unitMorphData = unitMorphs[i]

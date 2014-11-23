@@ -1,5 +1,6 @@
 local RUS_ZiS2_Truck = ATGunTractor:New{
 	name					= "Towed Type 1 47mm Gun",
+	buildCostMetal			= 450,
 	corpse					= "RUSZiS5_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
