@@ -48,8 +48,15 @@ local TransportTruck = Truck:New{ -- Transport Trucks
 	transportSize		= 1,
 	unloadSpread		= 3,
 }
-	
+
+local ATGunTractor = Truck:New{
+	description			= "Towed Anti-Tank Gun",
+	buildCostMetal		= 840,
+	iconType			= "attruck",
+}
+
 return {
 	Vehicle = Vehicle,
 	TransportTruck = TransportTruck,
+	ATGunTractor = ATGunTractor,
 }
