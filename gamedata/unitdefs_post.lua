@@ -297,7 +297,12 @@ for name, ud in pairs(UnitDefs) do
 		end
 		ud.sounds = sounds
 	end
-	
+	-- new stuff that will be staying in _post with OO defs
+	--ud.corpse = name .. "_Destroyed" -- currently inf are different
+	ud.buildtime = ud.buildcostmetal
+	ud.selfdestructas = ud.explodeas
+	if not ud.objectname then ud.objectname = name .. ".s3o" end
+	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
 	if name == "gmtoolbox" then GM_UD = ud end

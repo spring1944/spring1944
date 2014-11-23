@@ -6,27 +6,27 @@ local MORPH_SLOPE = 82
 local TIME_RATIO = 30.0 / 32.0
 
 local function getTemplate(maxDamage, maxSlope)
-    return  {
+    return  { -- can't use lowerkeys() here and needs to be lower case keys!
                 acceleration = 0.1,
-                brakeRate = 1,
-                buildCostEnergy = 0,
-                canMove = 1,
+                brakerate = 1,
+                buildcostenergy = 0,
+                canmove = 1,
                 category = "FLAG",
-                explodeAs = "noweapon",
-                footprintX = 1,
-                footprintZ = 1,
-                idleAutoHeal = 0,
-                maxDamage = maxDamage,
-                maxSlope = maxSlope,
-                maxVelocity = 0.01,
-                movementClass = "KBOT_Infantry",
-                objectName = "MortarShell.S3O",
+                explodeas = "noweapon",
+                footprintx = 1,
+                footprintz = 1,
+                idleautoheal = 0,
+                maxdamage = maxDamage,
+                maxslope = maxSlope,
+                maxvelocity = 0.01,
+                movementclass = "KBOT_Infantry",
+                objectname = "MortarShell.S3O",
                 script = "null.cob",
-                selfDestructAs = "noweapon",
+                selfdestructas = "noweapon",
                 sfxtypes = {
                 },
                 stealth = 1,
-                turnRate = 1,
+                turnrate = 1,
             }
 end
 
