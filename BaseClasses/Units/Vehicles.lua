@@ -11,6 +11,7 @@ local Vehicle = Unit:New{
 	seismicSignature	= 0, -- required, not default
 	sightDistance		= 800,
 	stealth				= true,
+	trackType			= "Stdtank",
 	turnInPlace			= false,
 	
 	customParams = {
@@ -28,7 +29,6 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxReverseVelocity	= 2.25,
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
-	trackType			= "Stdtank",
 	turnRate			= 440,
 	
 	customParams = {

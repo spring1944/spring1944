@@ -7,6 +7,20 @@ local JPN_Type1_47mm_Truck = ATGunTractor:New{
 	trackWidth				= 12,
 }
 
+local JPN_Type1_47mm_Stationary = LightATGun:New{
+	name					= "Deployed Type 1 47mm Gun",
+	corpse					= "JPNType1_47mm_destroyed",
+	customParams = {
+		weaponcost	= 10,
+	},
+	weapons = {
+		[1] = { -- AP
+			name				= "Type147mmAP",
+		},
+	},
+}
+
 return lowerkeys({
 	["JPNType1_47mm_Truck"] = JPN_Type1_47mm_Truck,
+	["JPNType1_47mm_Stationary"] = JPN_Type1_47mm_Stationary,
 })

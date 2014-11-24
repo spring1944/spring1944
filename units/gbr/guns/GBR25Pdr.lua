@@ -5,6 +5,25 @@ local GBR_25Pdr_Truck = HGunTractor:New{
 	trackWidth				= 18,
 }
 
+local GBR_25Pdr_Stationary = HGun:New{
+	name					= "Deployed Q.F. 25 Pounder",
+	corpse					= "gbr25pdr_destroyed",
+	customParams = {
+		weaponcost	= 18,
+	},
+	weapons = {
+		[1] = { -- HE
+			name				= "qf25pdrhe",
+			maxAngleDif			= 50,
+		},
+		[2] = { -- Smoke
+			name				= "qf25pdrsmoke",
+			maxAngleDif			= 50,
+		},
+	},
+}
+
 return lowerkeys({
 	["GBR25Pdr_Truck"] = GBR_25Pdr_Truck,
+	["GBR25Pdr_Stationary"] = GBR_25Pdr_Stationary,
 })

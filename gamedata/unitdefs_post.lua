@@ -190,7 +190,7 @@ for name, ud in pairs(UnitDefs) do
 	if not ud.maxvelocity then
 		ud.stealth = false
 		if (ud.customparams) then
-			if (ud.customparams.hiddenbuilding == '1') then
+			if (ud.customparams.hiddenbuilding) then
 			    ud.stealth = true
 			end
 		end

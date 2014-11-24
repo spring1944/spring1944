@@ -5,6 +5,25 @@ local US_M2Gun_Truck = HGunTractor:New{
 	trackWidth				= 15,
 }
 
+local US_M2Gun_Stationary = HGun:New{
+	name					= "Deployed 105mm M2",
+	corpse					= "USM2Gun_Destroyed",
+	customParams = {
+		weaponcost	= 30,
+	},
+	weapons = {
+		[1] = { -- HE
+			name				= "M2HE",
+			maxAngleDif			= 45,
+		},
+		[2] = { -- Smoke
+			name				= "M2smoke",
+			maxAngleDif			= 45,
+		},
+	},
+}
+
 return lowerkeys({
 	["USM2Gun_Truck"] = US_M2Gun_Truck,
+	["USM2Gun_Stationary"] = US_M2Gun_Stationary,
 })

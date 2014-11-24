@@ -6,6 +6,23 @@ local RUS_M30_Truck = HGunTractor:New{
 	trackWidth				= 13,
 }
 
+local RUS_M30_Stationary = HGun:New{
+	name					= "Deployed 122mm M-30",
+	corpse					= "RUSM30_Destroyed",
+	customParams = {
+		weaponcost	= 32,
+	},
+	weapons = {
+		[1] = { -- HE
+			name				= "m30122mmHE",
+		},
+		[2] = { -- Smoke
+			name				= "m30122mmSmoke",
+		},
+	},
+}
+
 return lowerkeys({
 	["RUSM30_Truck"] = RUS_M30_Truck,
+	["RUS_M30_Stationary"] = RUS_M30_Stationary,
 })

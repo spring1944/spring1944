@@ -6,6 +6,24 @@ local ITA_Cannone75_Truck = FGGunTractor:New{
 	trackWidth				= 13,
 }
 
+local ITA_Cannone75_Stationary = FGGun:New{
+	name					= "Towed Cannone da 75/32",
+	corpse					= "ITACannone75_Destroyed",
+	script					= "ruszis3_stationary.cob",
+	customParams = {
+		weaponscost			= 16,
+	},
+	weapons = {
+		[1] = { -- HE
+			name	= "Ansaldo75mmL34HE",
+		},
+		[2] = { -- AP
+			name	= "Ansaldo75mmL34AP",
+		},
+	},	
+}
+
 return lowerkeys({
 	["ITACannone75_Truck"] = ITA_Cannone75_Truck,
+	["ITACannone75_Stationary"] = ITA_Cannone75_Stationary,
 })

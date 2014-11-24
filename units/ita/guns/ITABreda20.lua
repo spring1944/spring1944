@@ -7,6 +7,26 @@ local ITA_Breda20_Truck = AAGunTractor:New{
 	trackWidth				= 13,
 }
 
+local ITA_Breda20_Stationary = AAGun:New{
+	name					= "Deployed Breda 20/65",
+	corpse					= "ITABreda20_Destroyed",
+	customParams = {
+		weaponcost	= 2,
+	},
+	weapons = {
+		[1] = { -- AA
+			name				= "BredaM3520mmAA",
+		},
+		[2] = { -- HE
+			name				= "BredaM3520mmHE",
+		},
+		[3] = { -- Tracer
+			name				= "LargeTracer",
+		},
+	},
+}
+
 return lowerkeys({
 	["ITABreda20_Truck"] = ITA_Breda20_Truck,
+	["ITABreda20_Stationary"] = ITA_Breda20_Stationary,
 })
