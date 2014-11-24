@@ -64,7 +64,6 @@ local Solothurn = ATRifleClass:New{
   },
   damage = {
     default            = 402,
-    infantry		= 100,
   },
 }
 

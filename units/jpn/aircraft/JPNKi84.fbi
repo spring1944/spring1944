@@ -40,9 +40,9 @@
   maxElevator=0.0039;
   maxFuel=150;
   maxPitch=1;
-  maxRudder=0.0025;
+  maxRudder=0.0035;
   maxSlope=10;
-  maxVelocity=19.6;
+  maxVelocity=20.6;
   maxWaterDepth=0;
   myGravity=0.6;
   radarDistance=1000;

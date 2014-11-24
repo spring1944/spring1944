@@ -17,10 +17,10 @@
   category=AIR;
   cruiseAlt=1250;
   [customParams] {
-    armor_front=6;
-    armor_rear=6;
-    armor_side=6;
-    armor_top=0;
+    //armor_front=6;
+    //armor_rear=6;
+    //armor_side=6;
+    //armor_top=0;
     enginesound=yakb-;
     enginesoundnr=20;
     feartarget=1;
@@ -39,7 +39,7 @@
   maxAcc=0.702;
   maxAileron=0.00375;
   maxBank=0.9;
-  maxDamage=730;
+  maxDamage=495;
   maxElevator=0.00375;
   maxFuel=160;
   maxPitch=1;
@@ -48,7 +48,7 @@
   maxVelocity=11.2;
   maxWaterDepth=0;
   myGravity=0.6;
-  noChaseCategory=FLAG MINE AIR BUILDING;
+  noChaseCategory=FLAG MINE AIR INFANTRY BUILDING;
   objectName=JPNKi102.s3o;
   radarDistance=1200;
   repairable=0;
@@ -93,9 +93,9 @@
   weaponSlaveTo3=1;
 
   weapon4=TE4;
-  maxAngleDif4=50;
+  maxAngleDif4=70;
   onlyTargetCategory4=AIR;
-  weaponMainDir4=0 8 -1;
+  weaponMainDir4=0 8 -0.7;
 
   weapon5=Medium_Tracer;
 }
