@@ -16,6 +16,7 @@ local GER_PaK40_Stationary = ATGun:New{
 			name				= "KwK75mmL48AP",
 		},
 	},
+}
 	
 return lowerkeys({
 	["GERPaK40_Truck"] = GER_PaK40_Truck,

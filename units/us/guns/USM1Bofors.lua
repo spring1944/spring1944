@@ -31,6 +31,6 @@ local US_M1Bofors_Stationary_base = US_M1Bofors_Stationary:New{
 
 return lowerkeys({
 	["USM1Bofors_Truck"] = US_M1Bofors_Truck,
-	["US_M1Bofors_Stationary"] = US_M1Bofors_Stationary,
-	["US_M1Bofors_Stationary_base"] = US_M1Bofors_Stationary_base,
+	["USM1Bofors_Stationary"] = US_M1Bofors_Stationary,
+	["USM1Bofors_Stationary_base"] = US_M1Bofors_Stationary_base,
 })

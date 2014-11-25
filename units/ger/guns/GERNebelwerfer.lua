@@ -21,5 +21,5 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 
 return lowerkeys({
 	["GERNebelwerfer_Truck"] = GER_Nebelwerfer_Truck,
-	["GER_Nebelwerfer_Stationary"] = GER_Nebelwerfer_Stationary,
+	["GERNebelwerfer_Stationary"] = GER_Nebelwerfer_Stationary,
 })

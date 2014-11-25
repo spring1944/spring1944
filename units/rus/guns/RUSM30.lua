@@ -24,5 +24,5 @@ local RUS_M30_Stationary = HGun:New{
 
 return lowerkeys({
 	["RUSM30_Truck"] = RUS_M30_Truck,
-	["RUS_M30_Stationary"] = RUS_M30_Stationary,
+	["RUSM30_Stationary"] = RUS_M30_Stationary,
 })

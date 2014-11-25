@@ -26,5 +26,5 @@ local JPN_Type90_75mm_Stationary = FGGun:New{
 
 return lowerkeys({
 	["JPNType90_75mm_Truck"] = JPN_Type90_75mm_Truck,
-	["JPN_Type90_75mm_Stationary"] = JPN_Type90_75mm_Stationary,
+	["JPNType90_75mm_Stationary"] = JPN_Type90_75mm_Stationary,
 })
