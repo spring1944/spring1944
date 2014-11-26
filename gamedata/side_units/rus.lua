@@ -199,7 +199,7 @@ local rusunits =
     "rustender15t",
     "ruskomsmtb",
     "rusbmo",
-	"rusbka-1125",
+	"rusbka1125",
 	
   },
   rusboatyardlarge =
@@ -210,7 +210,7 @@ local rusunits =
     "ruslct",
     "ruskomsmtb",
     "rusbmo",
-    "rusbka-1125",
+    "rusbka1125",
     "ruspr161",
     "rusg5",
 --    "ruspr7",

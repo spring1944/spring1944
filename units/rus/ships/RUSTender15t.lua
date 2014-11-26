@@ -14,7 +14,6 @@ local RUS_Tender15t = Boat:New{
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 2.2,
 	movementClass			= "BOAT_LandingCraftSmall",
-	objectName				= "RUSTender15t.s3o",
 	transportCapacity		= 20,
 	transportMass			= 1000,
 	transportSize			= 1,

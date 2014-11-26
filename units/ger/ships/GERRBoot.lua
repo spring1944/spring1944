@@ -13,7 +13,6 @@ local GER_RBoot = BoatMother:New{
 	maxReverseVelocity		= 1.37,
 	maxVelocity				= 2.74,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "GERRboot.s3o",
 	soundCategory			= "GERBoat",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
 	turnRate				= 205,	
@@ -26,9 +25,9 @@ local GER_RBoot = BoatMother:New{
 	customparams = {
 		soundcategory = "GER/Boat",
 		children = {
-			"GER_RBoot_Turret_37mm", 
-			"GER_RBoot_Turret_20mm",
-			"GER_RBoot_Turret_20mm",
+			"GERRBoot_Turret_37mm", 
+			"GERRBoot_Turret_20mm",
+			"GERRBoot_Turret_20mm",
 		},
 		deathanim = {
 			["z"] = {angle = 45, speed = 15},
@@ -39,7 +38,6 @@ local GER_RBoot = BoatMother:New{
 local GER_RBoot_Turret_37mm = BoatChild:New{ --
 	name					= "37mm Turret",
 	description				= "Primary Turret",
-	objectName				= "GERRboot_Turret_37mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "flak4337mmhe",
@@ -62,7 +60,6 @@ local GER_RBoot_Turret_37mm = BoatChild:New{ --
 local GER_RBoot_Turret_20mm = BoatChild:New{
 	name					= "20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "GERRBoot_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "flak3820mmaa",
@@ -93,6 +90,6 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 
 return lowerkeys({
 	["GERRBoot"] = GER_RBoot,
-	["GER_RBoot_Turret_37mm"] = GER_RBoot_Turret_37mm,
-	["GER_RBoot_Turret_20mm"] = GER_RBoot_Turret_20mm,
+	["GERRBoot_Turret_37mm"] = GER_RBoot_Turret_37mm,
+	["GERRBoot_Turret_20mm"] = GER_RBoot_Turret_20mm,
 })

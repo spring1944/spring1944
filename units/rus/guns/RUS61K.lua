@@ -25,7 +25,7 @@ local RUS_61K_Stationary = AAGun:New{
 }
 
 local RUS_61K_Stationary_base = RUS_61K_Stationary:New{
-	objectName				= "RUS61K_Stationary.S3O",
+	objectName				= "<SIDE>/RUS61K_Stationary.S3O",
 	script					= "RUS61K_Stationary.cob",
 }
 

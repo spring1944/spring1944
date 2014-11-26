@@ -13,7 +13,6 @@ local US_LCSL = BoatMother:New{
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "USLCSL.s3o",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -25,13 +24,13 @@ local US_LCSL = BoatMother:New{
 	customparams = {
 		soundcategory = "US/Boat",
 		children = {
-			"US_SC_Turret_76mm",
-			"US_LCSL_Turret_TwinBofors_Front",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Right",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Right",
-			"US_LCSL_Turret_TwinBofors_Rear",
+			"USSC_Turret_76mm",
+			"USLCSL_Turret_TwinBofors_Front",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Right",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Right",
+			"USLCSL_Turret_TwinBofors_Rear",
 		},
 		deathanim = {
 			["z"] = {angle = 15, speed = 3},
@@ -43,7 +42,7 @@ local US_LCSL = BoatMother:New{
 local US_LCSL_Turret_TwinBofors_Front = BoatChild:New{
 	name					= "40mm Twin Bofors Turret",
 	description				= "Primary Turret",
-	objectName				= "USLCSL_Turret_TwinBofors.s3o",
+	objectName				= "<SIDE>/USLCSL_Turret_TwinBofors.s3o",
   	weapons = {	
 		[1] = {
 			name				= "bofors40mmaa",
@@ -109,7 +108,6 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 local US_SC_Turret_76mm = BoatChild:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
-	objectName				= "USSC_Turret_76mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "mk223in50",
@@ -130,6 +128,6 @@ local US_SC_Turret_76mm = BoatChild:New{
 
 return lowerkeys({
 	["USLCSL"] = US_LCSL,
-	["US_LCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
-	["US_LCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
+	["USLCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
+	["USLCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
 })

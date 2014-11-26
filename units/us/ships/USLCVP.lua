@@ -12,7 +12,6 @@ local US_LCVP = Boat:New{
 	maxReverseVelocity		= 0.5,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraftSmall",
-	objectName				= "USLCVP.s3o",
 	transportCapacity		= 25,
 	transportMass			= 1500,
 	transportSize			= 1,

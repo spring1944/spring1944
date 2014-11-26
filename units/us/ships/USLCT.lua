@@ -14,7 +14,6 @@ local US_LCT = Boat:New{
 	maxReverseVelocity		= 0.35,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "USLCT.s3o",
 	transportCapacity		= 30,
 	transportMass			= 15000,
 	transportSize			= 30,

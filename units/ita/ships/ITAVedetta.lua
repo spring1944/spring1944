@@ -13,7 +13,6 @@ local ITA_Vedetta = BoatMother:New{
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "ITAVedetta.s3o",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -25,10 +24,10 @@ local ITA_Vedetta = BoatMother:New{
 	customparams = {
 		soundcategory		= "ITA/Boat",
 		children = {
-			"ITA_Vedetta_Turret_76mm", 
-			"ITA_Vedetta_Turret_MG", 
-			"ITA_Vedetta_Turret_MG", 
-			"ITA_Vedetta_Turret_MG", 
+			"ITAVedetta_Turret_76mm", 
+			"ITAVedetta_Turret_MG", 
+			"ITAVedetta_Turret_MG", 
+			"ITAVedetta_Turret_MG", 
 		},
 		--[[deathanim = {
 			["z"] = {angle = -30, speed = 10},
@@ -39,7 +38,6 @@ local ITA_Vedetta = BoatMother:New{
 local ITA_Vedetta_Turret_76mm = BoatChild:New{
 	name					= "76mm Turret",
 	description				= "Primary Turret",
-	objectName				= "ITAVedetta_Turret_76mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Ansaldo76mmL40HE",
@@ -60,7 +58,6 @@ local ITA_Vedetta_Turret_76mm = BoatChild:New{
 local ITA_Vedetta_Turret_MG = BoatChild:New{
 	name					= "MG Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "ITAVedetta_Turret_MG.s3o",
 	weapons = {	
 		[1] = {
 			name				= "BredaM1931AA",
@@ -88,6 +85,6 @@ local ITA_Vedetta_Turret_MG = BoatChild:New{
 
 return lowerkeys({
 	["ITAVedetta"] = ITA_Vedetta,
-	["ITA_Vedetta_Turret_76mm"] = ITA_Vedetta_Turret_76mm,
-	["ITA_Vedetta_Turret_MG"] = ITA_Vedetta_Turret_MG,
+	["ITAVedetta_Turret_76mm"] = ITA_Vedetta_Turret_76mm,
+	["ITAVedetta_Turret_MG"] = ITA_Vedetta_Turret_MG,
 })

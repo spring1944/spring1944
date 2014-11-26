@@ -13,7 +13,6 @@ local JPN_Seta = BoatMother:New{
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
-	objectName				= "JPNSeta.s3o",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -40,7 +39,7 @@ local JPN_Seta = BoatMother:New{
 local JPN_Seta_Turret_76mm_Front = BoatChild:New{
 	name					= "Seta 76mm Turret",
 	description				= "Primary Turret",
-	objectName				= "JPNSeta_turret_76mm.s3o",
+	objectName				= "<SIDE>/JPNSeta_turret_76mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "Type376mmL40HE",
@@ -74,7 +73,6 @@ local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
 local JPN_Seta_Turret_25mm = BoatChild:New{
 	name					= "Seta 25mm Turret",
 	description				= "AA Turret",
-	objectName				= "JPNSeta_turret_25mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "Type9625mmAA",
@@ -121,7 +119,7 @@ local JPN_Seta_Turret_25mm = BoatChild:New{
 
 return lowerkeys({
 	["JPNSeta"] = JPN_Seta,
-	["JPN_Seta_Turret_76mm_Front"] = JPN_Seta_Turret_76mm_Front,
-	["JPN_Seta_Turret_76mm_Rear"] = JPN_Seta_Turret_76mm_Rear,
-	["JPN_Seta_Turret_25mm"] = JPN_Seta_Turret_25mm,
+	["JPNSeta_Turret_76mm_Front"] = JPN_Seta_Turret_76mm_Front,
+	["JPNSeta_Turret_76mm_Rear"] = JPN_Seta_Turret_76mm_Rear,
+	["JPNSeta_Turret_25mm"] = JPN_Seta_Turret_25mm,
 })

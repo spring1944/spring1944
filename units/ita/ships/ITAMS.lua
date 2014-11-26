@@ -12,7 +12,6 @@ local ITA_MS = BoatMother:New{
 	maxDamage				= 6600,
 	maxVelocity				= 3.2,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "ITAMS.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
@@ -33,8 +32,8 @@ local ITA_MS = BoatMother:New{
 		weaponcost			= 40,
 		weaponswithammo		= 2,
 		children = {
-			"ITA_MS_Turret_20mm_Front", 
-			"ITA_MS_Turret_20mm_Rear", 
+			"ITAMS_Turret_20mm_Front", 
+			"ITAMS_Turret_20mm_Rear", 
 		},
 		deathanim = {
 			["z"] = {angle = 20, speed = 20},
@@ -45,7 +44,7 @@ local ITA_MS = BoatMother:New{
 local ITA_MS_Turret_20mm_Front = BoatChild:New{
 	name					= "20mm Turret",
 	description				= "AA Turret",
-	objectName				= "ITAMS_Turret_20mm.s3o",
+	objectName				= "<SIDE>/ITAMS_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmAA",
@@ -87,6 +86,6 @@ local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
 
 return lowerkeys({
 	["ITAMS"] = ITA_MS,
-	["ITA_MS_Turret_20mm_Front"] = ITA_MS_Turret_20mm_Front,
-	["ITA_MS_Turret_20mm_Rear"] = ITA_MS_Turret_20mm_Rear,
+	["ITAMS_Turret_20mm_Front"] = ITA_MS_Turret_20mm_Front,
+	["ITAMS_Turret_20mm_Rear"] = ITA_MS_Turret_20mm_Rear,
 })

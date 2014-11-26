@@ -25,7 +25,7 @@ local US_M1Bofors_Stationary = AAGun:New{
 }
 
 local US_M1Bofors_Stationary_base = US_M1Bofors_Stationary:New{
-	objectName				= "USM1Bofors_Stationary.S3O",
+	objectName				= "<SIDE>/USM1Bofors_Stationary.S3O",
 	script					= "USM1Bofors_Stationary.cob",
 }
 

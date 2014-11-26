@@ -13,7 +13,6 @@ local RUS_KomsMTB = BoatMother:New{
 	maxReverseVelocity		= 2.4,
 	maxVelocity				= 4.8,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "RUSKomsMTB.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 350,	
 	weapons = {	
@@ -34,8 +33,8 @@ local RUS_KomsMTB = BoatMother:New{
 		weaponcost			= 40,
 		weaponswithammo		= 2,
 		children = {
-			"RUS_KomsMTB_Turret_DShK", 
-			"RUS_KomsMTB_Turret_DShK", 
+			"RUSKomsMTB_Turret_DShK", 
+			"RUSKomsMTB_Turret_DShK", 
 		},
 		deathanim = {
 			["z"] = {angle = 15, speed = 10},
@@ -47,7 +46,6 @@ local RUS_KomsMTB = BoatMother:New{
 local RUS_KomsMTB_Turret_DShK = BoatChild:New{
 	name					= "Twin DShK Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSKomsMTB_Turret_DShK.s3o",
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -72,5 +70,5 @@ local RUS_KomsMTB_Turret_DShK = BoatChild:New{
 
 return lowerkeys({
 	["RUSKomsMTB"] = RUS_KomsMTB,
-	["RUS_KomsMTB_Turret_DShK"] = RUS_KomsMTB_Turret_DShK,
+	["RUSKomsMTB_Turret_DShK"] = RUS_KomsMTB_Turret_DShK,
 })

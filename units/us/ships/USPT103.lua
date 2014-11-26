@@ -13,7 +13,6 @@ local US_PT103 = BoatMother:New{
 	maxReverseVelocity		= 2.15,
 	maxVelocity				= 4.3,
 	movementClass			= "BOAT_Medium",
-	objectName				= "USPT103.s3o",
 	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
@@ -26,10 +25,10 @@ local US_PT103 = BoatMother:New{
 	customparams = {
 		soundcategory = "US/Boat",
 		children = {
-			"US_PT103_Turret_20mm",
-			"US_PT103_Turret_Twin50",
-			"US_PT103_Turret_Twin50",
-			"US_PT103_Turret_Bofors",
+			"USPT103_Turret_20mm",
+			"USPT103_Turret_Twin50",
+			"USPT103_Turret_Twin50",
+			"USPT103_Turret_Bofors",
 		},
 		deathanim = {
 			["x"] = {angle = 15, speed = 30},
@@ -42,7 +41,6 @@ local US_PT103 = BoatMother:New{
 local US_PT103_Turret_Twin50 = BoatChild:New{
 	name					= "Browning 50cal Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "USPT103_Turret_Twin50.s3o",
 	weapons = {	
 		[1] = {
 			name				= "m2browning", -- TODO: should be m2browningaa too :/
@@ -64,7 +62,6 @@ local US_PT103_Turret_Twin50 = BoatChild:New{
 local US_PT103_Turret_20mm = BoatChild:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "USPT103_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -89,7 +86,6 @@ local US_PT103_Turret_20mm = BoatChild:New{
 local US_PT103_Turret_Bofors = BoatChild:New{
 	name					= "40mm Bofors Turret",
 	description				= "Primary Turret",
-	objectName				= "USPT103_Turret_Bofors.s3o",
   	weapons = {	
 		[1] = {
 			name				= "bofors40mmaa",
@@ -121,7 +117,7 @@ local US_PT103_Turret_Bofors = BoatChild:New{
 
 return lowerkeys({
 	["USPT103"] = US_PT103,
-	["US_PT103_Turret_20mm"] = US_PT103_Turret_20mm,
-	["US_PT103_Turret_Twin50"] = US_PT103_Turret_Twin50,
-	["US_PT103_Turret_Bofors"] = US_PT103_Turret_Bofors,
+	["USPT103_Turret_20mm"] = US_PT103_Turret_20mm,
+	["USPT103_Turret_Twin50"] = US_PT103_Turret_Twin50,
+	["USPT103_Turret_Bofors"] = US_PT103_Turret_Bofors,
 })

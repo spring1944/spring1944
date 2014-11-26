@@ -13,7 +13,6 @@ local RUS_BMO = BoatMother:New{
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 2.2,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "RUSBMO.s3o",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -25,10 +24,10 @@ local RUS_BMO = BoatMother:New{
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		children = {
-			"RUS_Turret_37mm_Front", 
-			"RUS_Turret_45mm_Rear", 
-			"RUS_BMO_Turret_DshKAA", 
-			"RUS_BMO_Turret_Vickers", 
+			"RUSTurret_37mm_Front", 
+			"RUSTurret_45mm_Rear", 
+			"RUSBMO_Turret_DshKAA", 
+			"RUSBMO_Turret_Vickers", 
 		},
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
@@ -39,7 +38,7 @@ local RUS_BMO = BoatMother:New{
 local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
 	name					= "37mm Turret",
 	description				= "Primary Turret",
-	objectName				= "RUSBMO_Turret_37mm.s3o",
+	objectName				= "<SIDE>/RUSBMO_Turret_37mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "M1939_61k37mmaa",
@@ -82,7 +81,6 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
 local RUS_BMO_Turret_DshKAA = BoatChild:New{
 	name					= "BMO DshK Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSBMO_Turret_DshKAA.s3o",
 	weapons = {	
 		[1] = { -- original BMO used twin_dshk but we can use 2 actual weapons here
 			name				= "dshk",
@@ -110,7 +108,6 @@ local RUS_BMO_Turret_DshKAA = BoatChild:New{
 local RUS_BMO_Turret_Vickers = BoatChild:New{
 	name					= "BMO Vickers .50cal Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSBMO_Turret_Vickers.s3o",
 	weapons = {	
 		[1] = {
 			name				= "dshk", --"twin05calVickers",
@@ -138,7 +135,7 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 local RUS_Turret_45mm_Front = BoatChild:New{ -- Used on multiple vessels
 	name					= "45mm Turret",
 	description				= "Primary Turret",
-	objectName				= "RUSBMO_Turret_45mm.s3o",
+	objectName				= "<SIDE>/RUSBMO_Turret_45mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "M1937_40k45mmhe",
@@ -169,10 +166,10 @@ local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
 
 return lowerkeys({
 	["RUSBMO"] = RUS_BMO,
-	["RUS_Turret_37mm_Front"] = RUS_Turret_37mm_Front,
-	["RUS_Turret_37mm_Rear"] = RUS_Turret_37mm_Rear,
-	["RUS_Turret_45mm_Front"] = RUS_Turret_45mm_Front,
-	["RUS_Turret_45mm_Rear"] = RUS_Turret_45mm_Rear,
-	["RUS_BMO_Turret_DshKAA"] = RUS_BMO_Turret_DshKAA,
-	["RUS_BMO_Turret_Vickers"] = RUS_BMO_Turret_Vickers,
+	["RUSTurret_37mm_Front"] = RUS_Turret_37mm_Front,
+	["RUSTurret_37mm_Rear"] = RUS_Turret_37mm_Rear,
+	["RUSTurret_45mm_Front"] = RUS_Turret_45mm_Front,
+	["RUSTurret_45mm_Rear"] = RUS_Turret_45mm_Rear,
+	["RUSBMO_Turret_DshKAA"] = RUS_BMO_Turret_DshKAA,
+	["RUSBMO_Turret_Vickers"] = RUS_BMO_Turret_Vickers,
 })

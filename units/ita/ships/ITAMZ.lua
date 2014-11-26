@@ -12,7 +12,6 @@ local ITA_MZ = Boat:New{
 	maxReverseVelocity		= 0.72,
 	maxVelocity				= 2, -- 1.3 in fbi, all other LCT are 2
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "ITAMZ.s3o",
 	transportCapacity		= 14,
 	transportMass			= 4600,
 	transportSize			= 18,

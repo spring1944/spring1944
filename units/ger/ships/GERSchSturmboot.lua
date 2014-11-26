@@ -12,7 +12,6 @@ local GER_SchSturmboot = Boat:New{
 	maxReverseVelocity		= 0.76,
 	maxVelocity				= 1.52,
 	movementClass			= "BOAT_LandingCraftSmall",
-	objectName				= "GERSchSturmboot.s3o",
 	transportCapacity		= 20,
 	transportMass			= 1000,
 	transportSize			= 1,

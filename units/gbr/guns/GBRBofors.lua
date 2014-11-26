@@ -25,7 +25,7 @@ local GBR_Bofors_Stationary = AAGun:New{
 }
 
 local GBR_Bofors_Stationary_base = GBR_Bofors_Stationary:New{
-	objectName				= "GBRBofors_Stationary.S3O",
+	objectName				= "<SIDE>/GBRBofors_Stationary.S3O",
 	script					= "GBRBofors_Stationary.cob",
 }
 

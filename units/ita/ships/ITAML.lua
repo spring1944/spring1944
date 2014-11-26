@@ -12,7 +12,6 @@ local ITA_ML = Boat:New{
 	maxReverseVelocity		= 0.685,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraftSmall",
-	objectName				= "ITAML.s3o",
 	transportCapacity		= 22,
 	transportMass			= 1300,
 	transportSize			= 1,

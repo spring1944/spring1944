@@ -12,7 +12,6 @@ local ITA_MAS = BoatMother:New{
 	maxDamage				= 2400,
 	maxVelocity				= 4.3, -- 43 knots
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "ITAMAS.s3o",
 	transportCapacity		= 1, -- 1 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
@@ -33,7 +32,7 @@ local ITA_MAS = BoatMother:New{
 		weaponcost			= 40,
 		weaponswithammo		= 2,
 		children = {
-			"ITA_MS_Turret_20mm_Rear", 
+			"ITAMS_Turret_20mm_Rear", 
 		},
 		deathanim = {
 			["z"] = {angle = 45, speed = -30},

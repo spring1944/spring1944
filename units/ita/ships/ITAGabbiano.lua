@@ -13,7 +13,6 @@ local ITA_Gabbiano = BoatMother:New{
 	maxDamage				= 67000,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "ITAGabbiano.s3o",
 	transportCapacity		= 6, -- 6 x 1fpu turrets
 	turnRate				= 25,	
 	weapons = {	
@@ -36,12 +35,12 @@ local ITA_Gabbiano = BoatMother:New{
 		weaponcost			= 40,
 		weaponswithammo		= 2,
 		children = {
-			"ITA_Gabbiano_Turret_100mm", 
-			"ITA_Gabbiano_Turret_20mm", 
-			"ITA_Gabbiano_Turret_20mm", 
-			"ITA_Gabbiano_Turret_20mm", 
-			"ITA_Gabbiano_Turret_Twin20mm",
-			"ITA_Gabbiano_Turret_Twin20mm",
+			"ITAGabbiano_Turret_100mm", 
+			"ITAGabbiano_Turret_20mm", 
+			"ITAGabbiano_Turret_20mm", 
+			"ITAGabbiano_Turret_20mm", 
+			"ITAGabbiano_Turret_Twin20mm",
+			"ITAGabbiano_Turret_Twin20mm",
 		},
 		deathanim = {
 			["z"] = {angle = -45, speed = 10},
@@ -52,7 +51,6 @@ local ITA_Gabbiano = BoatMother:New{
 local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 	name					= "100mm Turret",
 	description				= "Primary Turret",
-	objectName				= "ITAGabbiano_Turret_100mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
@@ -73,7 +71,6 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 	name					= "20mm Turret",
 	description				= "AA Turret",
-	objectName				= "ITAGabbiano_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmAA",
@@ -102,7 +99,6 @@ local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 	name					= "Twin 20mm Turret",
 	description				= "AA Turret",
-	objectName				= "ITAGabbiano_Turret_Twin20mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmAA",
@@ -147,7 +143,7 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 
 return lowerkeys({
 	["ITAGabbiano"] = ITA_Gabbiano,
-	["ITA_Gabbiano_Turret_100mm"] = ITA_Gabbiano_Turret_100mm,
-	["ITA_Gabbiano_Turret_20mm"] = ITA_Gabbiano_Turret_20mm,
-	["ITA_Gabbiano_Turret_Twin20mm"] = ITA_Gabbiano_Turret_Twin20mm,
+	["ITAGabbiano_Turret_100mm"] = ITA_Gabbiano_Turret_100mm,
+	["ITAGabbiano_Turret_20mm"] = ITA_Gabbiano_Turret_20mm,
+	["ITAGabbiano_Turret_Twin20mm"] = ITA_Gabbiano_Turret_Twin20mm,
 })

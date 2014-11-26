@@ -13,7 +13,6 @@ local JPN_AbTei = BoatMother:New{
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.3,
 	movementClass			= "BOAT_RiverSmall",
-	objectName				= "JPNAbTei.s3o",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -30,9 +29,9 @@ local JPN_AbTei = BoatMother:New{
 		armor_side	= 6,
 		armor_top	= 6,
 		children = {
-			"JPN_AbTei_turret_57mm_front",
-			"JPN_AbTei_turret_MG",
-			"JPN_AbTei_turret_57mm_rear",
+			"JPNAbTei_turret_57mm_front",
+			"JPNAbTei_turret_MG",
+			"JPNAbTei_turret_57mm_rear",
 		},
 		deathanim = {
 			["z"] = {angle = -10, speed = 45},
@@ -43,7 +42,7 @@ local JPN_AbTei = BoatMother:New{
 local JPN_AbTei_Turret_57mm_Front = BoatChild:New{
 	name					= "Ab-Tei 57mm Turret",
 	description				= "Primary Turret",
-	objectName				= "JPNAbTei_turret_57mm.s3o",
+	objectName				= "<SIDE>/JPNAbTei_turret_57mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "Type9757mmHE",
@@ -78,7 +77,6 @@ local JPN_AbTei_Turret_57mm_Rear = JPN_AbTei_Turret_57mm_Front:New{
 local JPN_AbTei_Turret_MG = BoatChild:New{
 	name					= "Ab-Tei MG Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "JPNAbTei_turret_MG.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Type97MG",
@@ -101,7 +99,7 @@ local JPN_AbTei_Turret_MG = BoatChild:New{
 
 return lowerkeys({
 	["JPNAbTei"] = JPN_AbTei,
-	["JPN_AbTei_Turret_57mm_Front"] = JPN_AbTei_Turret_57mm_Front,
-	["JPN_AbTei_Turret_57mm_Rear"] = JPN_AbTei_Turret_57mm_Rear,
-	["JPN_AbTei_Turret_MG"] = JPN_AbTei_Turret_MG,
+	["JPNAbTei_Turret_57mm_Front"] = JPN_AbTei_Turret_57mm_Front,
+	["JPNAbTei_Turret_57mm_Rear"] = JPN_AbTei_Turret_57mm_Rear,
+	["JPNAbTei_Turret_MG"] = JPN_AbTei_Turret_MG,
 })

@@ -14,7 +14,6 @@ local GBR_LCT = Boat:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "GBRLCT.s3o",
 	transportCapacity		= 30,
 	transportMass			= 27000,
 	transportSize			= 54,

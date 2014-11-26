@@ -26,7 +26,7 @@ local GER_FlaK38_Stationary = AAGun:New{
 }
 
 local GER_FlaK38_Stationary_base = GER_FlaK38_Stationary:New{
-	objectName				= "GERFlaK38_Stationary.S3O",
+	objectName				= "<SIDE>/GERFlaK38_Stationary.S3O",
 	script					= "GERFlaK38_Stationary.cob",
 }
 

@@ -13,7 +13,6 @@ local US_SC = BoatMother:New{
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_Medium",
-	objectName				= "USSC.s3o",
 	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
@@ -26,10 +25,10 @@ local US_SC = BoatMother:New{
 	customparams = {
 		soundcategory = "US/Boat",
 		children = {
-			"US_SC_Turret_76mm",
-			"US_SC_Turret_20mm_Right",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Rear",
+			"USSC_Turret_76mm",
+			"USSC_Turret_20mm_Right",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Rear",
 		},
 		deathanim = {
 			["z"] = {angle = 30, speed = 20},
@@ -41,7 +40,7 @@ local US_SC = BoatMother:New{
 local US_SC_Turret_20mm_Left = BoatChild:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "USSC_Turret_20mm.s3o",
+	objectName				= "<SIDE>/USSC_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -97,7 +96,6 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 local US_SC_Turret_76mm = BoatChild:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
-	objectName				= "USSC_Turret_76mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "mk223in50",
@@ -118,8 +116,8 @@ local US_SC_Turret_76mm = BoatChild:New{
 
 return lowerkeys({
 	["USSC"] = US_SC,
-	["US_SC_Turret_76mm"] = US_SC_Turret_76mm,
-	["US_SC_Turret_20mm_Left"] = US_SC_Turret_20mm_Left,
-	["US_SC_Turret_20mm_Right"] = US_SC_Turret_20mm_Right,
-	["US_SC_Turret_20mm_Rear"] = US_SC_Turret_20mm_Rear,
+	["USSC_Turret_76mm"] = US_SC_Turret_76mm,
+	["USSC_Turret_20mm_Left"] = US_SC_Turret_20mm_Left,
+	["USSC_Turret_20mm_Right"] = US_SC_Turret_20mm_Right,
+	["USSC_Turret_20mm_Rear"] = US_SC_Turret_20mm_Rear,
 })

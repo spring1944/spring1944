@@ -14,7 +14,6 @@ local RUS_PG117 = Boat:New{
 	maxReverseVelocity		= 3.7,
 	maxVelocity				= 7.4,
 	movementClass			= "BOAT_Small",
-	objectName				= "RUSPG117.s3o",
 	transportCapacity		= 9,
 	transportMass			= 750,
 	transportSize			= 1,

@@ -39,6 +39,7 @@ end
 
 Unit = {
 	showNanoFrame		= false,
+	objectName				= "<SIDE>/<NAME>.s3o",
 }
 function Unit:New(newAttribs, concatName)
 	local newClass = {}

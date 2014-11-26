@@ -13,7 +13,6 @@ local GBR_LCGM = BoatMother:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "GBRLCGM.s3o",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 32,	
 	weapons = {	
@@ -25,10 +24,10 @@ local GBR_LCGM = BoatMother:New{
 	customparams = {
 		soundcategory		= "GBR/Boat",
 		children = {
-			"GBR_LCGM_Turret_25pdr_Left",
-			"GBR_LCGM_Turret_25pdr_Right",
-			"GBR_LCSL_Turret_20mm_Left",
-			"GBR_LCSL_Turret_20mm_Right",
+			"GBRLCGM_Turret_25pdr_Left",
+			"GBRLCGM_Turret_25pdr_Right",
+			"GBRLCSL_Turret_20mm_Left",
+			"GBRLCSL_Turret_20mm_Right",
 		},
 		deathanim = {
 			["z"] = {angle = 15, speed = 2.5},
@@ -39,7 +38,7 @@ local GBR_LCGM = BoatMother:New{
 local GBR_LCGM_Turret_25pdr_Left = BoatChild:New{
 	name					= "25Pdr Turret",
 	description				= "Primary Turret",
-	objectName				= "GBRLCGM_Turret_25pdr.s3o",
+	objectName				= "<SIDE>/GBRLCGM_Turret_25pdr.s3o",
   	weapons = {	
 		[1] = {
 			name				= "qf25pdrhe",
@@ -70,6 +69,6 @@ local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{
 
 return lowerkeys({
 	["GBRLCGM"] = GBR_LCGM,
-	["GBR_LCGM_Turret_25pdr_Left"] = GBR_LCGM_Turret_25pdr_Left,
-	["GBR_LCGM_Turret_25pdr_Right"] = GBR_LCGM_Turret_25pdr_Right,
+	["GBRLCGM_Turret_25pdr_Left"] = GBR_LCGM_Turret_25pdr_Left,
+	["GBRLCGM_Turret_25pdr_Right"] = GBR_LCGM_Turret_25pdr_Right,
 })

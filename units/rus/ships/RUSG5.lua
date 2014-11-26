@@ -13,7 +13,6 @@ local RUS_G5 = BoatMother:New{
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 5.3,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "RUSG5.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -25,8 +24,8 @@ local RUS_G5 = BoatMother:New{
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		children = {
-			"RUS_G5_Turret_DshK", 
-			"RUS_G5_Turret_M-8", 
+			"RUSG5_Turret_DshK", 
+			"RUSG5_Turret_M-8", 
 		},
 		deathanim = {
 			["z"] = {angle = -15, speed = 10},
@@ -37,7 +36,6 @@ local RUS_G5 = BoatMother:New{
 local RUS_G5_Turret_M_8 = BoatChild:New{
 	name					= "M-8 Turret",
 	description				= "Rocket Launcher",
-	objectName				= "RUSG5_Turret_M-8.s3o",
   	weapons = {	
 		[1] = {
 			name				= "m8rocket82mm",
@@ -58,7 +56,6 @@ local RUS_G5_Turret_M_8 = BoatChild:New{
 local RUS_G5_Turret_DshK = BoatChild:New{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSG5_Turret_DshK.s3o",
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -76,6 +73,6 @@ local RUS_G5_Turret_DshK = BoatChild:New{
 
 return lowerkeys({
 	["RUSG5"] = RUS_G5,
-	["RUS_G5_Turret_M-8"] = RUS_G5_Turret_M_8,
-	["RUS_G5_Turret_DshK"] = RUS_G5_Turret_DshK,
+	["RUSG5_Turret_M-8"] = RUS_G5_Turret_M_8,
+	["RUSG5_Turret_DshK"] = RUS_G5_Turret_DshK,
 })

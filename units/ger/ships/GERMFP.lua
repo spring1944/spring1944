@@ -12,7 +12,6 @@ local GER_MFP = Boat:New{
 	maxReverseVelocity		= 0.72,
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "GERMFP.s3o",
 	transportCapacity		= 18,
 	transportMass			= 8000,
 	transportSize			= 18,

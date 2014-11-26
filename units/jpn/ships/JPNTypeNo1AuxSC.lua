@@ -13,7 +13,6 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.1,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "JPNTypeNo1AuxSC.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	
@@ -26,8 +25,8 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	customparams = {
 		soundcategory = "JPN/Boat",
 		children = {
-			"JPN_SC_turret_25mm_front",
-			"JPN_SC_turret_25mm_rear",
+			"JPNSC_turret_25mm_front",
+			"JPNSC_turret_25mm_rear",
 		},
 		deathanim = {
 			["z"] = {angle = 45, speed = 60},
@@ -38,7 +37,7 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 local JPN_SC_Turret_25mm_Front = BoatChild:New{
 	name					= "SC 25mm Turret",
 	description				= "AA Turret",
-	objectName				= "JPNTypeNo1AuxSC_turret_25mm.s3o",
+	objectName				= "<SIDE>/JPNTypeNo1AuxSC_turret_25mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "Type9625mmAA",
@@ -81,6 +80,6 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 
 return lowerkeys({
 	["JPNTypeNo1AuxSC"] = JPN_TypeNo1AuxSC,
-	["JPN_SC_Turret_25mm_Front"] = JPN_SC_Turret_25mm_Front,
-	["JPN_SC_Turret_25mm_Rear"] = JPN_SC_Turret_25mm_Rear,
+	["JPNSC_Turret_25mm_Front"] = JPN_SC_Turret_25mm_Front,
+	["JPNSC_Turret_25mm_Rear"] = JPN_SC_Turret_25mm_Rear,
 })

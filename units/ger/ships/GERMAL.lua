@@ -13,7 +13,6 @@ local GER_MAL = BoatMother:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "GERMAL.s3o",
 	transportCapacity		= 5, -- 5 x 1fpu turrets
 	turnRate				= 120,	
 	weapons = {	
@@ -25,11 +24,11 @@ local GER_MAL = BoatMother:New{
 	customparams = {
 		soundcategory = "GER/Boat",
 		children = {
-			"GER_MAL_Turret_105mm", 
-			"GER_MAL_Turret_105mm", 
-			"GER_MAL_Turret_Quad20mm",
-			"GER_MAL_Turret_37mm",
-			"GER_MAL_Turret_37mm",
+			"GERMAL_Turret_105mm", 
+			"GERMAL_Turret_105mm", 
+			"GERMAL_Turret_Quad20mm",
+			"GERMAL_Turret_37mm",
+			"GERMAL_Turret_37mm",
 		},
 		deathanim = {
 			["x"] = {angle = -10, speed = 5},
@@ -40,7 +39,6 @@ local GER_MAL = BoatMother:New{
 local GER_MAL_Turret_105mm = BoatChild:New{ --
 	name					= "105mm Turret", -- TODO: should be for MAL 2?
 	description				= "Primary Turret",
-	objectName				= "GERMAL_Turret_105mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "sk88mmc30",
@@ -63,7 +61,6 @@ local GER_MAL_Turret_105mm = BoatChild:New{ --
 local GER_MAL_Turret_Quad20mm = BoatChild:New{
 	name					= "Flakvierling 20mm Turret",
 	description				= "Quad 20mm AA Turret",
-	objectName				= "GERMAL_Turret_Quad20mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "flak3820mmaa",
@@ -127,7 +124,6 @@ local GER_MAL_Turret_Quad20mm = BoatChild:New{
 local GER_MAL_Turret_37mm = BoatChild:New{
 	name					= "37mm Turret",
 	description				= "37mm AA Turret",
-	objectName				= "GERMAL_Turret_37mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "flak4337mmaa",
@@ -155,7 +151,7 @@ local GER_MAL_Turret_37mm = BoatChild:New{
 
 return lowerkeys({
 	["GERMAL"] = GER_MAL,
-	["GER_MAL_Turret_105mm"] = GER_MAL_Turret_105mm,
-	["GER_MAL_Turret_Quad20mm"] = GER_MAL_Turret_Quad20mm,
-	["GER_MAL_Turret_37mm"] = GER_MAL_Turret_37mm,
+	["GERMAL_Turret_105mm"] = GER_MAL_Turret_105mm,
+	["GERMAL_Turret_Quad20mm"] = GER_MAL_Turret_Quad20mm,
+	["GERMAL_Turret_37mm"] = GER_MAL_Turret_37mm,
 })

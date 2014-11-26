@@ -13,7 +13,6 @@ local GBR_LCSL = BoatMother:New{
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.4,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "GBRLCSL.s3o",
 	transportCapacity		= 5, -- 5 x 1fpu turrets
 	turnRate				= 240,	
 	weapons = {	
@@ -25,11 +24,11 @@ local GBR_LCSL = BoatMother:New{
 	customparams = {
 		soundcategory		= "GBR/Boat",
 		children = {
-			"GBR_LCSL_Turret_4inMortar",
-			"GBR_LCSL_Turret_6pdr",
-			"GBR_LCSL_Turret_20mm_Left",
-			"GBR_LCSL_Turret_20mm_Right",
-			"GBR_LCSL_Turret_Vickers50",
+			"GBRLCSL_Turret_4inMortar",
+			"GBRLCSL_Turret_6pdr",
+			"GBRLCSL_Turret_20mm_Left",
+			"GBRLCSL_Turret_20mm_Right",
+			"GBRLCSL_Turret_Vickers50",
 		},
 		deathanim = {
 			["z"] = {angle = 30, speed = 15},
@@ -40,7 +39,6 @@ local GBR_LCSL = BoatMother:New{
 local GBR_LCSL_Turret_4inMortar = BoatChild:New{
 	name					= "4in Smoke Mortar",
 	description				= "Smoke Launcher",
-	objectName				= "GBRLCSL_Turret_4inMortar.s3o",
   	weapons = {	
 		[1] = {
 			name				= "BL4inMortarSmoke",
@@ -61,7 +59,6 @@ local GBR_LCSL_Turret_4inMortar = BoatChild:New{
 local GBR_LCSL_Turret_Vickers50 = BoatChild:New{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "GBRLCSL_Turret_Vickers50.s3o",
 	weapons = {	
 		[1] = {
 			name				= "twin05calVickers", -- needs a single version
@@ -88,7 +85,6 @@ local GBR_LCSL_Turret_Vickers50 = BoatChild:New{
 local GBR_LCSL_Turret_6pdr = BoatChild:New{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
-	objectName				= "GBRLCSL_Turret_6pdr.s3o",
   	weapons = {	
 		[1] = {
 			name				= "qf6pdr57mmhe",
@@ -118,7 +114,7 @@ local GBR_LCSL_Turret_6pdr = BoatChild:New{
 local GBR_LCSL_Turret_20mm_Left = BoatChild:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "GBRLCSL_Turret_20mm.s3o",
+	objectName				= "<SIDE>/GBRLCSL_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -159,9 +155,9 @@ local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
 
 return lowerkeys({
 	["GBRLCSL"] = GBR_LCSL,
-	["GBR_LCSL_Turret_4inMortar"] = GBR_LCSL_Turret_4inMortar,
-	["GBR_LCSL_Turret_Vickers50"] = GBR_LCSL_Turret_Vickers50,
-	["GBR_LCSL_Turret_6pdr"] = GBR_LCSL_Turret_6pdr,
-	["GBR_LCSL_Turret_20mm_Left"] = GBR_LCSL_Turret_20mm_Left,
-	["GBR_LCSL_Turret_20mm_Right"] = GBR_LCSL_Turret_20mm_Right,
+	["GBRLCSL_Turret_4inMortar"] = GBR_LCSL_Turret_4inMortar,
+	["GBRLCSL_Turret_Vickers50"] = GBR_LCSL_Turret_Vickers50,
+	["GBRLCSL_Turret_6pdr"] = GBR_LCSL_Turret_6pdr,
+	["GBRLCSL_Turret_20mm_Left"] = GBR_LCSL_Turret_20mm_Left,
+	["GBRLCSL_Turret_20mm_Right"] = GBR_LCSL_Turret_20mm_Right,
 })

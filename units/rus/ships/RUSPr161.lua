@@ -13,7 +13,6 @@ local RUS_Pr161 = BoatMother:New{
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
-	objectName				= "RUSPr161.s3o",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 150,	
 	weapons = {	
@@ -25,13 +24,13 @@ local RUS_Pr161 = BoatMother:New{
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		children = {
-			"RUS_Turret_45mm_Front",
-			"RUS_Pr161_Turret_85mm_Front",
-			"RUS_Pr161_Turret_DshK",
-			"RUS_Pr161_Turret_DshK",
-			"RUS_Pr161_Turret_85mm_Rear",
-			"RUS_Turret_45mm_Rear",
-			"RUS_Turret_37mm_Rear", 
+			"RUSTurret_45mm_Front",
+			"RUSPr161_Turret_85mm_Front",
+			"RUSPr161_Turret_DshK",
+			"RUSPr161_Turret_DshK",
+			"RUSPr161_Turret_85mm_Rear",
+			"RUSTurret_45mm_Rear",
+			"RUSTurret_37mm_Rear", 
 		},
 		deathanim = {
 			["x"] = {angle = -15, speed = 5},
@@ -43,7 +42,6 @@ local RUS_Pr161 = BoatMother:New{
 local RUS_Pr161_Turret_DshK = BoatChild:New{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSPr161_Turret_DshK.s3o",
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -62,7 +60,7 @@ local RUS_Pr161_Turret_DshK = BoatChild:New{
 local RUS_Pr161_Turret_85mm_Front = BoatChild:New{
 	name					= "85mm Turret",
 	description				= "Primary Turret",
-	objectName				= "RUSPr161_Turret_85mm.s3o",
+	objectName				= "<SIDE>/RUSPr161_Turret_85mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "S5385mmHE",
@@ -94,7 +92,7 @@ local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
 
 return lowerkeys({
 	["RUSPr161"] = RUS_Pr161,
-	["RUS_Pr161_Turret_DshK"] = RUS_Pr161_Turret_DshK,
-	["RUS_Pr161_Turret_85mm_Front"] = RUS_Pr161_Turret_85mm_Front,
-	["RUS_Pr161_Turret_85mm_Rear"] = RUS_Pr161_Turret_85mm_Rear,
+	["RUSPr161_Turret_DshK"] = RUS_Pr161_Turret_DshK,
+	["RUSPr161_Turret_85mm_Front"] = RUS_Pr161_Turret_85mm_Front,
+	["RUSPr161_Turret_85mm_Rear"] = RUS_Pr161_Turret_85mm_Rear,
 })

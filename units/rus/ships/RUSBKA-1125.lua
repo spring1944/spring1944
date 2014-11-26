@@ -13,7 +13,6 @@ local RUS_BKA_1125 = BoatMother:New{
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
-	objectName				= "RUSBKA1125.s3o",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 250,	
 	
@@ -26,10 +25,10 @@ local RUS_BKA_1125 = BoatMother:New{
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		children = {
-			"RUS_BKA_1125_turret_76mm", 
-			"RUS_BKA_1125_Turret_DshK_Front", 
-			"RUS_BKA_1125_Turret_DshK_Top", 
-			"RUS_BKA_1125_Turret_DshK_Rear"
+			"RUSBKA1125_turret_76mm", 
+			"RUSBKA1125_Turret_DshK_Front", 
+			"RUSBKA1125_Turret_DshK_Top", 
+			"RUSBKA1125_Turret_DshK_Rear"
 		},
 		deathanim = {
 			["x"] = {angle = -5, speed = 5},
@@ -40,7 +39,6 @@ local RUS_BKA_1125 = BoatMother:New{
 local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 	name					= "Pr.1125 76mm Turret",
 	description				= "Primary Turret",
-	objectName				= "RUSBKA1125_76mm.s3o",
   	weapons = {	
 		[1] = {
 			name				= "F3476mmHE",
@@ -64,7 +62,7 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 local RUS_BKA_1125_Turret_DshK = BoatChild:New{
 	name					= "Pr.1125 DshK Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "RUSBKA1125_DshK.s3o",
+	objectName				= "<SIDE>/RUSBKA1125_Turret_DshK.s3o",
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -111,9 +109,9 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 }
 
 return lowerkeys({
-	["RUSBKA-1125"] = RUS_BKA_1125,
-	["RUS_BKA_1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
-	["RUS_BKA_1125_Turret_DshK_Front"] = RUS_BKA_1125_Turret_DshK_Front,
-	["RUS_BKA_1125_Turret_DshK_Top"] = RUS_BKA_1125_Turret_DshK_Top,
-	["RUS_BKA_1125_Turret_DshK_Rear"] = RUS_BKA_1125_Turret_DshK_Rear,
+	["RUSBKA1125"] = RUS_BKA_1125,
+	["RUSBKA1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
+	["RUSBKA1125_Turret_DshK_Front"] = RUS_BKA_1125_Turret_DshK_Front,
+	["RUSBKA1125_Turret_DshK_Top"] = RUS_BKA_1125_Turret_DshK_Top,
+	["RUSBKA1125_Turret_DshK_Rear"] = RUS_BKA_1125_Turret_DshK_Rear,
 })

@@ -13,7 +13,6 @@ local GBR_FairmileD = BoatMother:New{
 	maxReverseVelocity		= 1.99,
 	maxVelocity				= 3.98,
 	movementClass			= "BOAT_LightPatrol",
-	objectName				= "GBRFairmileD.s3o",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 240,	
 	weapons = {	
@@ -44,13 +43,13 @@ local GBR_FairmileD = BoatMother:New{
 		weaponcost			= 40,
 		weaponswithammo		= 4,
 		children = {
-			"GBR_FairmileD_Turret_6pdr_Front",
-			"GBR_FairmileD_Turret_Vickers50",
-			"GBR_FairmileD_Turret_Vickers50",
-			"GBR_FairmileD_Turret_Vickers30_Left",
-			"GBR_FairmileD_Turret_Vickers30_Right",
-			"GBR_FairmileD_Turret_20mm",
-			"GBR_FairmileD_Turret_6pdr_Rear",
+			"GBRFairmileD_Turret_6pdr_Front",
+			"GBRFairmileD_Turret_Vickers50",
+			"GBRFairmileD_Turret_Vickers50",
+			"GBRFairmileD_Turret_Vickers30_Left",
+			"GBRFairmileD_Turret_Vickers30_Right",
+			"GBRFairmileD_Turret_20mm",
+			"GBRFairmileD_Turret_6pdr_Rear",
 		},
 		deathanim = {
 			["x"] = {angle = -20, speed = 5},
@@ -63,7 +62,6 @@ local GBR_FairmileD = BoatMother:New{
 local GBR_FairmileD_Turret_Vickers50 = BoatChild:New{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "GBRFairmileD_Turret_Vickers50.s3o",
 	weapons = {	
 		[1] = {
 			name				= "twin05calVickers", -- needs a single version
@@ -88,7 +86,7 @@ local GBR_FairmileD_Turret_Vickers50 = BoatChild:New{
 local GBR_FairmileD_Turret_6pdr_Front = BoatChild:New{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
-	objectName				= "GBRFairmileD_Turret_6pdr.s3o",
+	objectName				= "<SIDE>/GBRFairmileD_Turret_6pdr.s3o",
   	weapons = {	
 		[1] = {
 			name				= "QF6Pdr57MkIIAHE",
@@ -120,7 +118,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
 local GBR_FairmileD_Turret_Vickers30_Left = BoatChild:New{
 	name					= "Vickers 30cal Turret",
 	description				= "Machinegun Turret",
-	objectName				= "GBRFairmileD_Turret_Vickers30.s3o",
+	objectName				= "<SIDE>/GBRFairmileD_Turret_Vickers30.s3o",
 	weapons = {	
 		[1] = {
 			name				= "vickers",
@@ -151,7 +149,6 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 local GBR_FairmileD_Turret_20mm = BoatChild:New{
 	name					= "Twin Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "GBRFairmileD_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -187,10 +184,10 @@ local GBR_FairmileD_Turret_20mm = BoatChild:New{
 
 return lowerkeys({
 	["GBRFairmileD"] = GBR_FairmileD,
-	["GBR_FairmileD_Turret_Vickers50"] = GBR_FairmileD_Turret_Vickers50,
-	["GBR_FairmileD_Turret_Vickers30_Left"] = GBR_FairmileD_Turret_Vickers30_Left,
-	["GBR_FairmileD_Turret_Vickers30_Right"] = GBR_FairmileD_Turret_Vickers30_Right,
-	["GBR_FairmileD_Turret_6pdr_Front"] = GBR_FairmileD_Turret_6pdr_Front,
-	["GBR_FairmileD_Turret_6pdr_Rear"] = GBR_FairmileD_Turret_6pdr_Rear,
-	["GBR_FairmileD_Turret_20mm"] = GBR_FairmileD_Turret_20mm,
+	["GBRFairmileD_Turret_Vickers50"] = GBR_FairmileD_Turret_Vickers50,
+	["GBRFairmileD_Turret_Vickers30_Left"] = GBR_FairmileD_Turret_Vickers30_Left,
+	["GBRFairmileD_Turret_Vickers30_Right"] = GBR_FairmileD_Turret_Vickers30_Right,
+	["GBRFairmileD_Turret_6pdr_Front"] = GBR_FairmileD_Turret_6pdr_Front,
+	["GBRFairmileD_Turret_6pdr_Rear"] = GBR_FairmileD_Turret_6pdr_Rear,
+	["GBRFairmileD_Turret_20mm"] = GBR_FairmileD_Turret_20mm,
 })
