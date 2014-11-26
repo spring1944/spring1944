@@ -545,7 +545,7 @@ local function FinishMorph(unitID, morphData)
   end  
   
   if (udDst.customParams.maxammo) then
-	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo")
+	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
 	Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
 	local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
 	if (weapon1) then
