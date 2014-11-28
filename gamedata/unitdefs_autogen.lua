@@ -44,7 +44,7 @@ for unitName, unitMorphs in pairs(morphInclude) do
     elseif isFactory(unitDef) then
         for i = 1, #unitMorphs do
             local unitMorphData = unitMorphs[i]
-            local intoDef = UnitDefs[unitMorphData.into]
+            local intoDef = UnitDefs[unitMorphData.into] or {}
             local autoUnit = getTemplate(MORPH_DAMAGE, MORPH_SLOPE)
             local autoUnitName = "morph_" .. unitName .. "_" .. unitMorphData.into
             local buildOptions = unitDef.buildoptions or unitDef.buildOptions
