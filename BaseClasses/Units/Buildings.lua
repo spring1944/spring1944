@@ -3,7 +3,7 @@ local Building = Unit:New{
 	airSightDistance			= 2000,
 	buildingGroundDecalType		= "Dirt2.dds",
 	category					= "BUILDING",
-	maxSlope					= 10,
+	maxSlope					= 15,
 	maxWaterDepth				= 0,
 	radardistance				= 650,
 	sightDistance				= 300,
@@ -30,6 +30,7 @@ local Yard = Building:New{
 	iconType					= "factory",
 	idleAutoHeal				= 3,
 	maxDamage					= 6250,
+	maxSlope					= 10,
 	showNanoSpray				= false,
 	script						= "Yard.cob",
 	workerTime					= 30,
@@ -181,6 +182,97 @@ local Radar = Yard:New{
 							ooooo]],
 }
 
+-- Supply Depots
+local SupplyDepot = Yard:New{
+	name					= "Large Supply Depot",
+	description				= "Supplies An Extended Area",
+	buildCostMetal			= 3600,
+	collisionVolumeScales	= [[96 15 76]],
+	collisionVolumeOffsets	= [[14 0 5]],
+	corpse					= "BuildingDebris_Large",
+	explodeAs				= "massive_explosion",
+	footprintX				= 6,
+	footprintZ				= 6,
+	iconType				= "ammo2",
+	maxDamage				= 3000,
+	objectName				= "GEN/SupplyDepot.S3O",
+	yardmap					= [[occcco 
+							    occcco 
+								occcco 
+								occcco 
+								occcco 
+								occcco]],
+	customparams = {
+		supplyrange				= 2000,
+	},
+}
+
+-- Logistics
+
+-- Storages
+local Storage = Building:New{
+	name					= "Storage Shed",
+	description				= "General Logistics & Ammunition Stockpile",
+	buildCostMetal			= 4500,
+	buildingGroundDecalSizeX= 4,
+	buildingGroundDecalSizeY= 6,
+	collisionVolumeScales	= [[39 40 64]],
+	collisionVolumeOffsets	= [[-1 -7 1]],
+	collisionVolumeType		= "CylZ",
+	corpse					= "Debris_Large",
+	energyStorage			= 1040,
+	explodeAs				= "Massive_Explosion",
+	footprintX				= 4,
+	footprintZ				= 6,
+	iconType				= "stockpile",
+	maxDamage				= 1200,
+	objectName				= "GEN/Storage.S3O",
+	script					= "Storage.cob",
+	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
+	customparams = {
+		armor_front				= 0,
+		armor_rear				= 0,
+		armor_side				= 15,
+		armor_top				= 30,
+		dontcount				= true,
+	},
+}
+-- Truck Supplies
+local Supplies = Building:New{
+	name						= "Unloaded Truck Supplies",
+	description					= "Supplies A Small Area",
+	activateWhenBuilt			= true,
+	buildCostMetal				= 720,
+	buildingGroundDecalSizeX	= 4,
+	buildingGroundDecalSizeY	= 4,
+	corpse						= "Debris_Large",
+	customparams = {
+		dontCount					= true,
+		supplyRange					= 560,
+	},
+	explodeAs					= "ResourceBoom",
+	footprintX					= 4,
+	footprintZ					= 4,
+	iconType					= "ammo",
+	maxDamage					= 400,
+	script						= "truckSupplies.cob",
+}
+
+local SuppliesSmall = Supplies:New{
+	name						= "Small Supply Dump",
+	description					= "Supplies A Small Area",
+	corpse						= "Debris_Small",
+	customparams = {
+		hiddenbuilding				= true, -- TODO: remove this
+		supplyRange					= 275,
+	},
+	footprintX					= 3,
+	footprintZ					= 3,
+	objectName					= "GEN/SuppliesSmall.S3O",
+	script						= "ruspresource.cob",
+	yardmap						= [[yyy yyy yyy]],
+}
+
 return {
 	Building = Building,
 	-- Yards
@@ -198,4 +290,9 @@ return {
 	BoatYard = BoatYard,
 	BoatYardLarge = BoatYardLarge,
 	Radar = Radar,
+	SupplyDepot = SupplyDepot,
+	-- Logistics
+	Storage = Storage,
+	Supplies = Supplies,
+	SuppliesSmall = SuppliesSmall,
 }

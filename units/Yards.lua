@@ -1,6 +1,7 @@
 local units = {}
 
 for _, side in pairs(Sides) do
+	-- Yards
 	units[side .. "boatyard"] = BoatYard:New{}
 	units[side .. "boatyardlarge"] = BoatYardLarge:New{}
 	units[side .. "gunyard"] = GunYard:New{}
@@ -12,6 +13,10 @@ for _, side in pairs(Sides) do
 	units[side .. "tankyard1"] = TankYardAdv:New{}
 	units[side .. "tankyard2"] = TankYardHeavy:New{}
 	units[side .. "radar"] = Radar:New{}
+	units[side .. "supplydepot"] = SupplyDepot:New{}
+	-- Logistics
+	units[side .. "storage"] = Storage:New{}
+	units[side .. "trucksupplies"] = Supplies:New{}
 end
 
 -- JPN Upgrades are a bit different
@@ -23,6 +28,11 @@ units["jpnvehicleyard2"].description = "Light Vehicle & Amphibian Prep. Facility
 
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
+
+-- Extra units
+units["usdukwsupplies"] = Supplies:New{}
+units["gbrglidersupplies"] = SuppliesSmall:New{}
+units["ruspartisansupplies"] = SuppliesSmall:New{}
 
 -- Radars have slightly more specific names
 units["gbrradar"].name = "AA No4 Mk3(P) Light Warning Set"

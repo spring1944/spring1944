@@ -1,7 +1,7 @@
 function gadget:GetInfo()
 	return {
 		name      = "Partisan Spawner",
-		desc      = "Spawns partisans around RUSPResource",
+		desc      = "Spawns partisans around ruspartisansupplies",
 		author    = "FLOZi",
 		date      = "28/01/2010",
 		license   = "GPL v2",
@@ -32,14 +32,14 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		if ud.name:lower() == "ruspresource" then
+		if ud.name:lower() == "ruspartisansupplies" then
 			spawners[unitID] = 0
 		end
 	end
 
 	function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		if ud.name:lower() == "ruspresource" then
+		if ud.name:lower() == "ruspartisansupplies" then
 			spawners[unitID] = nil
 		end
 		if ud.name:lower() == "ruspartisanrifle" then

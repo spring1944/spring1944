@@ -82,6 +82,7 @@ local RGunTractor = Truck:New{
 return {
 	Vehicle = Vehicle,
 	-- Trucks
+	Truck = Truck,
 	TransportTruck = TransportTruck,
 	AAGunTractor = AAGunTractor,
 	ATGunTractor = ATGunTractor,

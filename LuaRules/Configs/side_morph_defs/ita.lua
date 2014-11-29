@@ -2,7 +2,7 @@ local itaDefs = {
   -- italy
    	itastorage = {
 		{
-			into = 'itasupplycenter',
+			into = 'itastoragesupply',
 			metal = 3000,
 			energy = 0,
 			time = 80,

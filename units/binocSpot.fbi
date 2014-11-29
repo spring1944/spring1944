@@ -16,7 +16,7 @@
   maxDamage=8000;
   maxSlope=20000;
   maxWaterDepth=50000;
-  objectName=APMine.S3O;
+  objectName=GEN/Null.S3O;
   [sfxtypes] {
   }
   levelground=0;
