@@ -25,6 +25,7 @@ units["jpntankyard2"].description = "Support Armour Prep. Facility"
 units["jpnvehicleyard2"] = VehicleYardArmour:New{}
 units["jpnvehicleyard2"].name = "Light Vehicle & Amphibian Yard"
 units["jpnvehicleyard2"].description = "Light Vehicle & Amphibian Prep. Facility"
+units["jpnstorage"].objectName = "jpn/jpnstorage.s3o"
 
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
