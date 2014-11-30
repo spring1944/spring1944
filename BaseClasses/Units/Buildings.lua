@@ -53,6 +53,7 @@ local HQ = Yard:New{
 	explodeAs			= "HUGE_Explosion", -- override Yard
 	hideDamage			= true,
 	iconType			= "<SIDE>hq",
+	script				= "<NAME>.cob",
 	showPlayerName		= true,
 	workerTime			= 20,
 	customParams = {
@@ -144,6 +145,7 @@ local BoatYard = Yard:New{
 	objectName			= "<SIDE>/<SIDE>BoatYardLarge.3do", -- inherited by upgrades TODO: 3do, ick!
 	maxWaterDepth		= 1e+06, -- engine default, override Yard
 	minWaterDepth		= 10,
+	script				= "GBRBoatYardLarge.cob",
 	workerTime			= 75, -- override Yard
 	yardmap				= [[ooccccccccccoo 
 						    ooccccccccccoo 

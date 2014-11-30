@@ -1,5 +1,31 @@
 local sweDefs = {
 -- Upgrade Defs
+  swevolvotvc = {
+    {
+      into = 'swegunyard',
+      tech = 0,
+      time = 20,
+      metal = 0,
+      energy = 0,
+	  facing = true,
+    },
+	{
+      into = 'swevehicleyard',
+      tech = 0,
+      time = 20,
+      metal = 0,
+      energy = 0,
+	  facing = true,
+    },
+    {
+      into = 'swetankyard',
+      tech = 0,
+      time = 40,
+      metal = 0,
+      energy = 0,
+	  facing = true,
+    },
+  },
    	--[[gbrstorage = {
 		{
 			into = 'gbrstoragecamo',
@@ -10,10 +36,10 @@ local sweDefs = {
 			text = 'Hides the storage shed from observation.',
 			facing = true,
 		},
-	},	
-	gbrvehicleyard = {
+	},	]]
+	swevehicleyard = {
 		{
-			into = 'gbrvehicleyard1',
+			into = 'swevehicleyard1',
 			metal = 2000,
 			energy = 0,
 			time = 65,
@@ -21,10 +47,28 @@ local sweDefs = {
 			text = 'Makes Light Armor available in this yard',
 			facing = true,
 		},
-	},
-	gbrgunyard = {
 		{
-			into = 'gbrspyard',
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+	swevehicleyard1 = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+	swegunyard = {
+		{
+			into = 'swespyard',
 			metal = 3000,
 			energy = 0,
 			time = 85,
@@ -33,7 +77,7 @@ local sweDefs = {
 			facing = true,
 		},
 		{
-			into = 'gbrspyard1',
+			into = 'swespyard1',
 			metal = 5250,
 			energy = 0,
 			time = 150,
@@ -41,10 +85,38 @@ local sweDefs = {
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
 		},
-	},	
-	gbrtankyard = {
 		{
-			into = 'gbrtankyard1',
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},	
+	swespyard = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+	swespyard1 = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+	swetankyard = {
+		{
+			into = 'swetankyard1',
 			metal = 4500,
 			energy = 0,
 			time = 60,
@@ -52,19 +124,28 @@ local sweDefs = {
 			text = 'Makes Advanced Medium Armor available in this yard',
 			facing = true,
 		},
-	
 		{
-			into = 'gbrtankyard2',
-			metal = 4500,
+			into = 'swevolvotvc',
+			metal = 0,
 			energy = 0,
-			time = 60,
-			name = '  Heavy  \n  Armor  ',
-			text = 'Makes Heavy Armor available in this yard',
+			time = 20,
+			name = '  Pack  \n  Up  ',
 			facing = true,
 		},
 	},
+	swetankyard1 = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+
 	
-	gbrboatyard = {
+	--[[gbrboatyard = {
 		{
 			into = 'gbrboatyardlarge',
 			metal = 6000,

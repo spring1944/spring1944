@@ -22,16 +22,19 @@ end
 -- JPN Upgrades are a bit different
 units["jpntankyard2"].name = "Support Tank Depot"
 units["jpntankyard2"].description = "Support Armour Prep. Facility"
-units["jpnvehicleyard2"] = VehicleYardArmour:New{}
-units["jpnvehicleyard2"].name = "Light Vehicle & Amphibian Yard"
-units["jpnvehicleyard2"].description = "Light Vehicle & Amphibian Prep. Facility"
+units["jpnvehicleyard2"] = VehicleYardArmour:New{
+	name = "Light Vehicle & Amphibian Yard",
+	description = "Light Vehicle & Amphibian Prep. Facility",
+}
 units["jpnstorage"].objectName = "jpn/jpnstorage.s3o"
 
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
 
 -- Extra units
-units["usdukwsupplies"] = Supplies:New{}
+units["usdukwsupplies"] = Supplies:New{
+	objectName ="us/ustrucksupplies.s3o" -- TODO: dukw supplies model
+}
 units["gbrglidersupplies"] = SuppliesSmall:New{}
 units["ruspartisansupplies"] = SuppliesSmall:New{}
 
