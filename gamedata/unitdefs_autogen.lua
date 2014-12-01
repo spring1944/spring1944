@@ -40,14 +40,15 @@ end
 for unitName, unitMorphs in pairs(morphInclude) do
     local unitDef = UnitDefs[unitName]
 	if not unitDef then
-		Spring.Echo(unitName, unitDef) -- useful to debug bad/missing unitdefs causing this code to crash(!)
-    elseif isFactory(unitDef) then
+		Spring.Echo("unitdefs_autogen.lua ERROR", unitName, unitDef) -- useful to debug bad/missing unitdefs causing this code to crash(!)
+    elseif isFactory(unitDef) or unitName:lower():find("yard") then
         for i = 1, #unitMorphs do
             local unitMorphData = unitMorphs[i]
             local intoDef = UnitDefs[unitMorphData.into] or {}
             local autoUnit = getTemplate(MORPH_DAMAGE, MORPH_SLOPE)
             local autoUnitName = "morph_" .. unitName .. "_" .. unitMorphData.into
-            local buildOptions = unitDef.buildoptions or unitDef.buildOptions
+            local buildOptions = unitDef.buildoptions or unitDef.buildOptions or {}
+			unitDef.buildOptions = buildOptions
             autoUnit.name = text
             --autoUnit.description = unitMorphData.text
             autoUnit.buildcostmetal = unitMorphData.metal
@@ -55,7 +56,7 @@ for unitName, unitMorphs in pairs(morphInclude) do
             autoUnit.buildtime = (unitDef.workerTime or unitDef.workertime) * unitMorphData.time * TIME_RATIO
             autoUnit.side = intoDef.side
             autoUnit.customParams = { isupgrade = true }
-            table.insert(buildOptions, autoUnitName)
+            table.insert(unitDef.buildOptions, autoUnitName)
             UnitDefs[autoUnitName] = autoUnit
         end
     end

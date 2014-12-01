@@ -206,8 +206,7 @@ local function BuildMorphDef(udSrc, morphData)
 
     --newData.cmd     = CMD_MORPH      + MAX_MORPH
 	newData.cmd = GG.CustomCommands.GetCmdID("CMD_MORPH_" .. newData.into)
-    if udSrc.isFactory and not (udDst.speed > 0) then
-		Spring.Echo("hokomoko", udSrc.name, morphData.into)
+    if udSrc.isFactory then
         newData.upgradeUnit = UnitDefNames["morph_" .. udSrc.name .. "_" .. morphData.into].id
         upgradeDefs[newData.upgradeUnit] = newData
     end
