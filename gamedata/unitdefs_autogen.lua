@@ -31,9 +31,10 @@ local function getTemplate(maxDamage, maxSlope)
 end
 
 local function isFactory(unitDef)
-    local buildOptions = unitDef.buildoptions or unitDef.buildOptions
+    local yardmap = unitDef.yardmap
     local velocity = unitDef.maxVelocity or unitDef.maxvelocity
-    return buildOptions and (not velocity or velocity == 0)
+	local workerTime = unitDef.workerTime or unitDef.workertime
+    return yardmap and (not velocity or velocity <= 0) and workerTime and workerTime > 0
 end
 
 
