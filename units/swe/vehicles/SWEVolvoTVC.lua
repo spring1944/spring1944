@@ -17,4 +17,11 @@ local SWE_VolvoTVC = Truck:New{
 
 return lowerkeys({
 	["SWEVolvoTVC"] = SWE_VolvoTVC,
+	["SWEVolvoTVC_swevehicleyard"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swevehicleyard1"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swegunyard"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swespyard"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swespyard1"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swetankyard"] = SWE_VolvoTVC:Clone("swevolvotvc"),
+	["SWEVolvoTVC_swetankyard1"] = SWE_VolvoTVC:Clone("swevolvotvc"),
 })

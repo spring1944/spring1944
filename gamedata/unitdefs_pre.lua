@@ -40,11 +40,20 @@ end
 Unit = {
 	showNanoFrame		= false,
 	objectName				= "<SIDE>/<NAME>.s3o",
+	buildPic				= "<NAME>.png",
+	script					= "<NAME>.cob",
 }
 function Unit:New(newAttribs, concatName)
 	local newClass = {}
 	inherit(newClass, newAttribs)
 	inherit(newClass, self, concatName)
+	return newClass
+end
+
+function Unit:Clone(name)
+	local newClass = {}
+	inherit(newClass, self)
+	newClass.unitname = name:lower()
 	return newClass
 end
 

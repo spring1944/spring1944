@@ -24,13 +24,8 @@ local US_M1Bofors_Stationary = AAGun:New{
 	},
 }
 
-local US_M1Bofors_Stationary_base = US_M1Bofors_Stationary:New{
-	objectName				= "<SIDE>/USM1Bofors_Stationary.S3O",
-	script					= "USM1Bofors_Stationary.cob",
-}
-
 return lowerkeys({
 	["USM1Bofors_Truck"] = US_M1Bofors_Truck,
 	["USM1Bofors_Stationary"] = US_M1Bofors_Stationary,
-	["USM1Bofors_Stationary_base"] = US_M1Bofors_Stationary_base,
+	["USM1Bofors_Stationary_base"] = US_M1Bofors_Stationary:Clone("USM1Bofors_Stationary"),
 })

@@ -24,13 +24,8 @@ local RUS_61K_Stationary = AAGun:New{
 	},
 }
 
-local RUS_61K_Stationary_base = RUS_61K_Stationary:New{
-	objectName				= "<SIDE>/RUS61K_Stationary.S3O",
-	script					= "RUS61K_Stationary.cob",
-}
-
 return lowerkeys({
 	["RUS61K_Truck"] = RUS_61K_Truck,
 	["RUS61K_Stationary"] = RUS_61K_Stationary,
-	["RUS61K_Stationary_base"] = RUS_61K_Stationary_base,
+	["RUS61K_Stationary_base"] = RUS_61K_Stationary:Clone("RUS61K_Stationary"),
 })

@@ -46,7 +46,7 @@ for unitName, unitMorphs in pairs(morphInclude) do
 	local unitDef = UnitDefs[unitName]
 	if not unitDef then
 		Spring.Echo("unitdefs_autogen.lua ERROR", unitName, unitDef) -- useful to debug bad/missing unitdefs causing this code to crash(!)
-	elseif isFactory(unitDef) or unitName:lower():find("yard") then
+	elseif isFactory(unitDef) then
 		for i = 1, #unitMorphs do
 			local unitMorphData = unitMorphs[i]
 			local intoDef = UnitDefs[unitMorphData.into] or {}

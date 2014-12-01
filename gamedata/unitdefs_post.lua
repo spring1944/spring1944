@@ -58,7 +58,7 @@ end
 -- Process ALL the units!
 for name, ud in pairs(UnitDefs) do
 	-- Replace all occurences of <SIDE> and <NAME> with the respective values
-	ReplaceStrings(ud, name)
+	ReplaceStrings(ud, ud.unitname or name)
 	-- Convert all customparams subtables back into strings for Spring
 	if ud.customparams then
 		for k, v in pairs (ud.customparams) do

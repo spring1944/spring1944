@@ -24,13 +24,8 @@ local GBR_Bofors_Stationary = AAGun:New{
 	},
 }
 
-local GBR_Bofors_Stationary_base = GBR_Bofors_Stationary:New{
-	objectName				= "<SIDE>/GBRBofors_Stationary.S3O",
-	script					= "GBRBofors_Stationary.cob",
-}
-
 return lowerkeys({
 	["GBRBofors_Truck"] = GBR_Bofors_Truck,
 	["GBRBofors_Stationary"] = GBR_Bofors_Stationary,
-	["GBRBofors_Stationary_base"] = GBR_Bofors_Stationary_base,
+	["GBRBofors_Stationary_base"] = GBR_Bofors_Stationary:Clone("GBRBofors_Stationary"),
 })

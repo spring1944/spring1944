@@ -25,13 +25,8 @@ local GER_FlaK38_Stationary = AAGun:New{
 	},
 }
 
-local GER_FlaK38_Stationary_base = GER_FlaK38_Stationary:New{
-	objectName				= "<SIDE>/GERFlaK38_Stationary.S3O",
-	script					= "GERFlaK38_Stationary.cob",
-}
-
 return lowerkeys({
 	["GERFlaK38_Truck"] = GER_FlaK38_Truck,
 	["GERFlaK38_Stationary"] = GER_FlaK38_Stationary,
-	["GERFlaK38_Stationary_base"] = GER_FlaK38_Stationary_base,
+	["GERFlaK38_Stationary_base"] = GER_FlaK38_Stationary:Clone("GERFlaK38_Stationary"),
 })
