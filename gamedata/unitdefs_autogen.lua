@@ -25,6 +25,9 @@ local function getTemplate(maxDamage, maxSlope)
                 selfdestructas = "noweapon",
                 sfxtypes = {
                 },
+				customparams = {
+					morphunit = true,
+				},
                 stealth = 1,
                 turnrate = 1,
             }
