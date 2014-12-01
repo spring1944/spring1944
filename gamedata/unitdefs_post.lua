@@ -4,7 +4,7 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 -- Setup modoptions
 local modOptions
 if (Spring.GetModOptions) then
-  modOptions = Spring.GetModOptions()
+	modOptions = Spring.GetModOptions()
 end
 
 -- Auto-generate sortie, squad & queuable-morph units
@@ -30,7 +30,7 @@ end
 local function RecursiveReplaceStrings(t, name, side, replacedMap)
 	if (replacedMap[t]) then
 		return  -- avoid recursion / repetition
-    end
+	end
 	replacedMap[t] = true
 	local changes = {}
 	for k, v in pairs(t) do
@@ -115,41 +115,41 @@ for name, ud in pairs(UnitDefs) do
  
  --BEGIN UNIT PROCESSING	
 	local LoSMult = 0.6
-    local decloakDistMult = 0.6
-    local infSpeedMult = 0.5
+	local decloakDistMult = 0.6
+	local infSpeedMult = 0.5
 
-    --sets base values for detection radii
-    --index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
-    local detection = {
-        BUILDING    = {300, 2000, 650, 0},
-        INFANTRY    = {650, 2000, 650, 1400},
-        SOFTVEH     = {300, 2000, 950, 0},
-        OPENVEH     = {300, 2000, 1250, 0},
-        HARDVEH     = {150, 1000, 650, 0},
-        SHIP        = {400, 2500, 950, 0},
-        DEPLOYED    = {650, 2000, 650, 1400},
-    }
+	--sets base values for detection radii
+	--index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
+	local detection = {
+		BUILDING    = {300, 2000, 650, 0},
+		INFANTRY    = {650, 2000, 650, 1400},
+		SOFTVEH     = {300, 2000, 950, 0},
+		OPENVEH     = {300, 2000, 1250, 0},
+		HARDVEH     = {150, 1000, 650, 0},
+		SHIP        = {400, 2500, 950, 0},
+		DEPLOYED    = {650, 2000, 650, 1400},
+	}
 
-    --set detection values per unit category (with some special casing for
-    --cloaked inf)
-    ud.activatewhenbuilt = true
-    for category, detectValues in pairs(detection) do
-        local catStart, catEnd = string.find(ud.category, category);
-        if catStart ~= nil then
-            local cat = string.sub(ud.category, catStart, catEnd)
-            if detection[cat] then
-                ud.sightdistance = detection[cat][1] * LoSMult
-                ud.airsightdistance = detection[cat][2] * LoSMult
-                ud.radardistance = detection[cat][3] * LoSMult
-                ud.seismicdistance = detection[cat][4] * LoSMult
-                if ud.cloakcost then
-                    ud.sightdistance = ud.sightdistance * 0.5
-                    ud.radardistance = 0
-                end
-            end
-        end
-    end
-    
+	--set detection values per unit category (with some special casing for
+	--cloaked inf)
+	ud.activatewhenbuilt = true
+	for category, detectValues in pairs(detection) do
+		local catStart, catEnd = string.find(ud.category, category);
+		if catStart ~= nil then
+			local cat = string.sub(ud.category, catStart, catEnd)
+			if detection[cat] then
+				ud.sightdistance = detection[cat][1] * LoSMult
+				ud.airsightdistance = detection[cat][2] * LoSMult
+				ud.radardistance = detection[cat][3] * LoSMult
+				ud.seismicdistance = detection[cat][4] * LoSMult
+				if ud.cloakcost then
+					ud.sightdistance = ud.sightdistance * 0.5
+					ud.radardistance = 0
+				end
+			end
+		end
+	end
+	
 
 	if ud.customparams then
 		if ud.customparams.feartarget then
@@ -165,8 +165,8 @@ for name, ud in pairs(UnitDefs) do
 
 
 	--new sensor stuff!
-    --set radar/LoS for infantry (the only units with seismic distances)
-    --[[
+	--set radar/LoS for infantry (the only units with seismic distances)
+	--[[
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
 			ud.sightdistance = 650 * LoSMult
@@ -183,22 +183,22 @@ for name, ud in pairs(UnitDefs) do
 
 	end
 
-    ]]--
+	]]--
 	--end first chunk of new sensor stuff!
 	
 	--more new sensor stuff
-    --decide if stationary units should be stealth or not
+	--decide if stationary units should be stealth or not
 	if not ud.maxvelocity then
 		ud.stealth = false
 		if (ud.customparams) then
 			if (ud.customparams.hiddenbuilding) then
-			    ud.stealth = true
+				ud.stealth = true
 			end
 		end
 	end
 	--end more new sensor stuff
 	
-    --ship things
+	--ship things
 	if ud.floater then
 		ud.turninplace = false
 		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
@@ -250,10 +250,10 @@ for name, ud in pairs(UnitDefs) do
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
 
-        --a crazy default value so we see it when it happens
-        if (not ud.mass) then
-            ud.mass = 99999999
-        end
+		--a crazy default value so we see it when it happens
+		if (not ud.mass) then
+			ud.mass = 99999999
+		end
 		local logMass = math.log10(ud.mass)
 		local cp = ud.customparams
 		if not (cp and (cp.mother or cp.child)) then -- exclude composites
@@ -340,7 +340,7 @@ for name, ud in pairs(UnitDefs) do
 	end
 	-- new stuff that will be staying in _post with OO defs
 	ud.selfdestructas = ud.explodeas
-	if not cp.morphunit then ud.buildtime = ud.buildcostmetal end
+	if not cp or not cp.isupgrade then ud.buildtime = ud.buildcostmetal end
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
