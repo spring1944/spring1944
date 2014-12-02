@@ -37,6 +37,20 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	},
 }
 
+local PontoonTruck = Truck:New{
+	name				= "Pontoon Carrier", -- appended
+	description			= "Deployable Boatyard Vehicle",
+	buildCostMetal		= 1400,
+	corpse				= "<NAME>_Dead", -- TODO: grumble
+	maxWaterDepth		= 70,
+	movementClass		= "HOVER_AmphibTruck",
+	script				= nil, -- TODO: atm they have individual copies
+	
+	customParams = {
+		dontCount		= false,
+	},
+}
+
 local TransportTruck = Truck:New{ -- Transport Trucks
 	description			= "Transport/Supply Truck",
 	buildCostMetal		= 510,
@@ -83,6 +97,7 @@ return {
 	Vehicle = Vehicle,
 	-- Trucks
 	Truck = Truck,
+	PontoonTruck = PontoonTruck,
 	TransportTruck = TransportTruck,
 	AAGunTractor = AAGunTractor,
 	ATGunTractor = ATGunTractor,
