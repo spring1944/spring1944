@@ -145,9 +145,9 @@ local sweDefs = {
 	},
 
 	
-	--[[gbrboatyard = {
+	sweboatyard = {
 		{
-			into = 'gbrboatyardlarge',
+			into = 'sweboatyardlarge',
 			metal = 6000,
 			energy = 0,
 			time = 80,
@@ -157,7 +157,7 @@ local sweDefs = {
 		},
 	},
 	-- Machineguns
-	
+	--[[
 	gbrvickers =
 	{
 		into = 'gbrvickers_sandbag',
@@ -234,38 +234,38 @@ local sweDefs = {
 		},
 	},
 	-- Trucks / Trucksupplies
-	--[[gbrbedfordtruck =
+	swescaniavabisf11 =
 	{
-		into = 'gbrtrucksupplies',
+		into = 'swetrucksupplies',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
 	},
 		
-	gbrtrucksupplies =
+	swetrucksupplies =
 	{
-		into = 'gbrbedfordtruck',
+		into = 'swescaniavabisf11',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
 	},
 	-- Pontoon trucks  
-		gbrpontoontruck =
+		swepontoontruck =
 	{
-		into = 'gbrboatyard',
+		into = 'sweboatyard',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
 		facing = true,
-	},]]
+	},
 }
 local newDefs = {}
 for unitName, morphList in pairs(sweDefs) do
 	for _, target in pairs(morphList) do
-		if target.into == "swevolvotvc" then
+		if type(target) == "table" and target.into == "swevolvotvc" then
 			local variantName = "swevolvotvc_" .. unitName
 			target.into = variantName
 			local variantMorphDef = {}
