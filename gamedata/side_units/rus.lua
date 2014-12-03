@@ -57,7 +57,7 @@ local rusunits =
     "rustankobstacle",
     "russtorage",
     "ruspg117",
-    "pontoonraft",
+    "ruspontoonraft",
   },
 
   ruscommissar =
@@ -70,7 +70,7 @@ local rusunits =
     "rustankobstacle",
     "russtorage",
     "ruspg117",
-    "pontoonraft",
+    "ruspontoonraft",
   },
 
   rusk31 =
@@ -195,7 +195,7 @@ local rusunits =
   rusboatyard =
   {
 	"ruspg117",
-	"pontoonraft",
+	"ruspontoonraft",
     "rustender15t",
     "ruskomsmtb",
     "rusbmo",
@@ -205,7 +205,7 @@ local rusunits =
   rusboatyardlarge =
   {
 	"ruspg117",
-	"pontoonraft",
+	"ruspontoonraft",
     "rustender15t",
     "ruslct",
     "ruskomsmtb",

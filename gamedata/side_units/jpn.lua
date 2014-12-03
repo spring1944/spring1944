@@ -13,7 +13,7 @@ local jpnunits =
     "jpnapminesign",
     "jpntankobstacle",
     "gersturmboot",
-    "pontoonraft",
+    "jpnpontoonraft",
   },
 
 	jpnriki =
@@ -153,7 +153,7 @@ local jpnunits =
 	jpnboatyard =
 	{
 		"rubberdingy",
-		"pontoonraft",
+		"jpnpontoonraft",
 		"jpndaihatsu",
 		"jpntokudaihatsu",
 		"jpntypeno1auxsc",
@@ -162,7 +162,7 @@ local jpnunits =
 	jpnboatyardlarge =
 	{
 		"rubberdingy",
-		"pontoonraft",
+		"jpnpontoonraft",
 		"jpndaihatsu",
 		"jpntokudaihatsu",
 		"jpntypeno1auxsc",

@@ -25,7 +25,7 @@ local gbrunits = {
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
-    "pontoonraft",
+    "gbrpontoonraft",
 	--"pontoonbridge",
   },
 
@@ -100,7 +100,7 @@ local gbrunits = {
     --"gbrstorage",
     --"gbrbedfordtruck",
     "rubberdingy",
-    "pontoonraft",
+    "gbrpontoonraft",
 
   },
 
@@ -188,7 +188,7 @@ local gbrunits = {
   gbrboatyard =
   {
     "rubberdingy",
-    "pontoonraft",
+    "gbrpontoonraft",
     "gbrlca",
     "gbrfairmiled",
 	"gbrlcsl",
@@ -196,7 +196,7 @@ local gbrunits = {
   gbrboatyardlarge =
   {
     "rubberdingy",
-    "pontoonraft",
+    "gbrpontoonraft",
     "gbrlca",
     "gbrfairmiled",
 	"gbrlcsl",

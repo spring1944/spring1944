@@ -34,7 +34,7 @@ local usunits = {
     "ustankobstacle",
     --"sandbags",
     "rubberdingy",
-    "pontoonraft",
+    "uspontoonraft",
   },
 
   usbarracks =
@@ -68,7 +68,7 @@ local usunits = {
     "ustankobstacle",
     --"sandbags",
     "rubberdingy",
-    "pontoonraft",
+    "uspontoonraft",
 
   },
 
@@ -188,7 +188,7 @@ local usunits = {
   usboatyard =
   {
     "rubberdingy",
-    "pontoonraft",
+    "uspontoonraft",
     "usdukw",
     "uslcvp",
     "uspt103",
@@ -198,7 +198,7 @@ local usunits = {
   usboatyardlarge =
   {
     "rubberdingy",
-    "pontoonraft",
+    "uspontoonraft",
     "usdukw",
     "uslcvp",
     "uspt103",

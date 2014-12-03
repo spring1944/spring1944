@@ -19,6 +19,31 @@ local Boat = Unit:New{ -- used for transports as is
 	}
 }
 
+-- Pontoon Raft
+local PontoonRaft = Boat:New{
+	name				= "Pontoon Raft",
+	description			= "Heavy Equipment Transport",
+	acceleration		= 0.15,
+	brakeRate			= 0.1,
+	buildCostMetal		= 200,
+	category			= "SHIP MINETRIGGER SOFTVEH",
+	iconType			= "raft",
+	mass				= 1000,
+	maxDamage			= 1000,
+	maxVelocity			= 1.28,
+	minTransportSize	= 1,
+	movementClass		= "BOAT_Medium",
+	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
+	script				= "PontoonRaft.cob",
+	stealth				= true,
+	transportCapacity	= 1,
+	transportSize		= 9,
+	turnRate			= 200,
+	waterline			= 2.5,
+}
+
+
+-- Composites
 local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	iconType			= "gunboat",
 	script				= "BoatMother.lua",
@@ -57,8 +82,10 @@ local BoatChild = Boat:New{ -- a boat turret
 	}
 }
 
+
 return {
 	Boat = Boat,
+	PontoonRaft = PontoonRaft,
 	BoatMother = BoatMother,
 	BoatChild = BoatChild,
 }
