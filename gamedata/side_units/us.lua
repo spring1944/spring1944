@@ -33,7 +33,7 @@ local usunits = {
     "usapminesign",
     "ustankobstacle",
     --"sandbags",
-    "rubberdingy",
+    "usassaultboat",
     "uspontoonraft",
   },
 
@@ -67,7 +67,7 @@ local usunits = {
     "usapminesign",
     "ustankobstacle",
     --"sandbags",
-    "rubberdingy",
+    "usassaultboat",
     "uspontoonraft",
 
   },
@@ -187,7 +187,7 @@ local usunits = {
   
   usboatyard =
   {
-    "rubberdingy",
+    "usassaultboat",
     "uspontoonraft",
     "usdukw",
     "uslcvp",
@@ -197,7 +197,7 @@ local usunits = {
   },
   usboatyardlarge =
   {
-    "rubberdingy",
+    "usassaultboat",
     "uspontoonraft",
     "usdukw",
     "uslcvp",

@@ -42,6 +42,30 @@ local PontoonRaft = Boat:New{
 	waterline			= 2.5,
 }
 
+local AssaultBoat = Boat:New{
+	name				= "Rubber Dingy", -- will be overwritten by e.g. sturmboot
+	description			= "Infantry Water Transport",
+	acceleration		= 0.3,
+	brakeRate			= 0.2,
+	buildCostMetal		= 200,
+	category			= "SHIP MINETRIGGER SOFTVEH",
+	footprintX			= 3,
+	footprintZ			= 3,
+	iconType			= "lttrans",--rubber",
+	mass				= 145,
+	maxDamage			= 145,
+	maxVelocity			= 3.55,
+	movementClass		= "BOAT_Small",
+	objectName			= "GEN/RubberDingy.S3O",
+	script				= "RubberDingy.cob",
+	stealth				= true,
+	transportCapacity	= 9,
+	transportMass		= 750,
+	transportSize		= 1,
+	turninplace			= 0,
+	turnRate			= 350,
+	waterline			= 0.2,
+}
 
 -- Composites
 local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
@@ -86,6 +110,7 @@ local BoatChild = Boat:New{ -- a boat turret
 return {
 	Boat = Boat,
 	PontoonRaft = PontoonRaft,
+	AssaultBoat = AssaultBoat,
 	BoatMother = BoatMother,
 	BoatChild = BoatChild,
 }

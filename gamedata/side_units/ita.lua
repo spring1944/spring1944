@@ -21,7 +21,7 @@ local itaunits =
     "itaatminesign",
     "itaapminesign",
     "itatankobstacle",
-    "gersturmboot",
+    "itaassaultboat",
     "itapontoonraft",
     "itatankyard1",
     "itaspyard",
@@ -38,7 +38,7 @@ local itaunits =
     "itaatminesign",
     "itaapminesign",
     "itatankobstacle",
-    "gersturmboot",
+    "itaassaultboat",
     "itapontoonraft",
   },
 
@@ -207,7 +207,7 @@ local itaunits =
   },
   itaboatyard =
   {
-    "gersturmboot",
+    "itaassaultboat",
 	"geritapontoonraft",
 	"itamas",
 	"itams",
@@ -217,7 +217,7 @@ local itaunits =
   },
   itaboatyardlarge =
   {
-    "gersturmboot",
+    "itaassaultboat",
 	"geritapontoonraft",
 	"itamas",
 	"itams",

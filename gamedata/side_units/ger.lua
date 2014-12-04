@@ -26,7 +26,7 @@ local gerunits =
     --"sandbags",
     "gertankobstacle",
     --"geropelblitz",
-    "gersturmboot",
+    "gerassaultboat",
     "gerpontoonraft",
   },
 
@@ -76,7 +76,7 @@ local gerunits =
     --"sandbags",
     "gertankobstacle",
     --"geropelblitz",
-    "gersturmboot",
+    "gerassaultboat",
     "gerpontoonraft",
   },
 
@@ -220,7 +220,7 @@ local gerunits =
   
   gerboatyard =
   {
-    "gersturmboot",
+    "gerassaultboat",
 	"gergerpontoonraft",
     --"gerschsturmboot",
     "gerrboot",
@@ -229,7 +229,7 @@ local gerunits =
   },
   gerboatyardlarge =
   {
-    "gersturmboot",
+    "gerassaultboat",
     "gerpontoonraft",
     "gerrboot",
 	"gersiebelfahre",
