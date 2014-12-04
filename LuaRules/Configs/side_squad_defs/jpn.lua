@@ -194,6 +194,20 @@ local jpnDefs = {
 			"jpnrifle",
 		},
 	},
+	["jpn_tankette_platoon_teke"] =
+	{
+		members = {
+			"jpnteke",
+			"jpnteke_hmg",
+		},
+		name = "tankette_platoon_teke",
+		description = "1 x tnakette teke 37mm, 1 x tankette teke 7.7mm",
+		buildCostMetal = 1300,
+		buildPic = "JPNteke.png",
+		model = "JPNteke.s3o",
+		buildTime = 1300,
+		side = "JPN",
+	},
 	["jpn_platoon_tokudaihatsu"] =
 	{
 		members = {
