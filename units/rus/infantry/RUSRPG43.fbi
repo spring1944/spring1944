@@ -27,13 +27,14 @@
   footprintZ=1;
   iconType=antitank;
   idleAutoHeal=1;
-  init_cloaked=1;
+  // init_cloaked=1;
   mass=50;
   maxDamage=65;
   maxSlope=15;
-  maxVelocity=1.3;
+  // maxVelocity=1.3;
+  maxVelocity=1.6;
   maxWaterDepth=5;
-  minCloakDistance=260;
+  // minCloakDistance=260;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=RUSRPG43.S3O;
