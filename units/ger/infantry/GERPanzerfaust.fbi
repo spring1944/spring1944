@@ -26,13 +26,14 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  init_cloaked=1;
+  // init_cloaked=1;
   mass=50;
   maxDamage=110;
   maxSlope=15;
-  maxVelocity=1.3;
+  // maxVelocity=1.3;
+  maxVelocity=1;
   maxWaterDepth=5;
-  minCloakDistance=270;
+  // minCloakDistance=270;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=GERPanzerfaust.S3O;

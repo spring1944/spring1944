@@ -26,13 +26,14 @@
   footprintX=1;
   footprintZ=1;
   iconType=antitank;
-  init_cloaked=1;
+  // init_cloaked=1;
   mass=50;
   maxDamage=140;
   maxSlope=15;
-  maxVelocity=1;
+  // maxVelocity=1;
+  maxVelocity=1.6;
   maxWaterDepth=5;
-  minCloakDistance=270;
+  // minCloakDistance=270;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=GBRPIAT.S3O;
