@@ -208,7 +208,7 @@ local itaunits =
   itaboatyard =
   {
     "itaassaultboat",
-	"geritapontoonraft",
+	"itapontoonraft",
 	"itamas",
 	"itams",
 	"itavedetta",
@@ -218,7 +218,7 @@ local itaunits =
   itaboatyardlarge =
   {
     "itaassaultboat",
-	"geritapontoonraft",
+	"itapontoonraft",
 	"itamas",
 	"itams",
 	"itavedetta",
