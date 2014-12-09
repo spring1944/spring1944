@@ -157,7 +157,7 @@ local gerDefs = {
 		side = "GER",
 	},
 	
-	["ger_platoon_ssb"] =
+	["ger_platoon_landing"] =
 	{
 		members = {
 			"gerobserv",

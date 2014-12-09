@@ -184,7 +184,7 @@ local rusDefs = {
 		side = "RUS",
 	},
 	
-	["rus_platoon_tender"] =
+	["rus_platoon_landing"] =
 	{
 		members = {
 			"rusobserv",

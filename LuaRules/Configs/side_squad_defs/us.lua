@@ -175,7 +175,7 @@ local usDefs = {
 		side = "US",
 	},
 	
-	["us_platoon_lcvp"] =
+	["us_platoon_landing"] =
 	{
 		members = {
 			"usobserv",

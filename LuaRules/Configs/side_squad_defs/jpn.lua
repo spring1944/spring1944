@@ -116,7 +116,7 @@ local jpnDefs = {
 		side = "JPN",
 	},
 	
-	["jpn_platoon_daihatsu"] =
+	["jpn_platoon_landing"] =
 	{
 		members = {
 			"jpntype99lmg",

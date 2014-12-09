@@ -4,6 +4,7 @@ local Boat = Unit:New{ -- used for transports as is
 	canMove				= true,
 	category 			= "SHIP MINETRIGGER",
 	collisionVolumeType	= "box",
+	corpse				= "<NAME>_dead", -- TODO: grumble
 	explodeAs			= "Vehicle_Explosion_Sm",
 	floater				= true,
 	footprintX			= 4,
@@ -14,6 +15,7 @@ local Boat = Unit:New{ -- used for transports as is
 	turninplace			= false,
 	
 	customparams = {
+		soundCategory		= "<SIDE>/Boat",
 		dontCount			= 1,
 		hasturnbutton		= 1,
 	}
@@ -40,6 +42,19 @@ local PontoonRaft = Boat:New{
 	transportSize		= 9,
 	turnRate			= 200,
 	waterline			= 2.5,
+}
+
+local InfantryLandingCraft = Boat:New{
+	description				= "Infantry Landing Craft",
+	iconType				= "landingship",
+	movementClass			= "BOAT_LandingCraftSmall",
+	transportCapacity		= 20,
+	transportMass			= 1000,
+	transportSize			= 1,
+	customparams = {
+		transportsquad			= "<SIDE>_platoon_landing",
+		supplyRange				= 350, --
+	},
 }
 
 local AssaultBoat = Boat:New{
@@ -88,6 +103,7 @@ local BoatChild = Boat:New{ -- a boat turret
 	canSelfDestruct 	= false,
 	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
 	collisionVolumeType	= "", -- default to ellipsoid
+	corpse				= nil, -- turrets can't die except with parent, so no corpse
 	footprintX			= 1,
 	footprintZ 			= 1,
 	iconType			= "turret",
@@ -108,9 +124,14 @@ local BoatChild = Boat:New{ -- a boat turret
 
 
 return {
+	-- Basic class
 	Boat = Boat,
+	-- Engineer built raft & boat
 	PontoonRaft = PontoonRaft,
 	AssaultBoat = AssaultBoat,
+	-- Landing Craft
+	InfantryLandingCraft = InfantryLandingCraft,
+	-- Composites
 	BoatMother = BoatMother,
 	BoatChild = BoatChild,
 }

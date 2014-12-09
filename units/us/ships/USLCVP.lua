@@ -1,20 +1,13 @@
-local US_LCVP = Boat:New{
+local US_LCVP = InfantryLandingCraft:New{
 	name					= "Landing Craft, Vehicle, Personnel",
-	description				= "Infantry Landing Craft",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 800,
-	buildTime				= 800,
-	corpse					= "USLCVP_dead",
-	iconType				= "landingship",
-	mass					= 820,
 	maxDamage				= 820,
 	maxReverseVelocity		= 0.5,
 	maxVelocity				= 2,
-	movementClass			= "BOAT_LandingCraftSmall",
 	transportCapacity		= 25,
 	transportMass			= 1500,
-	transportSize			= 1,
 	turnRate				= 180,	
 	weapons = {	
 		[1] = {
@@ -34,9 +27,6 @@ local US_LCVP = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "US/Boat",
-		transportsquad			= "us_platoon_lcvp",
-		supplyRange				= 350,
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

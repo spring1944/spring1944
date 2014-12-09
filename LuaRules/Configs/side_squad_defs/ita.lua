@@ -218,7 +218,7 @@ local itaDefs = {
 			"itasemovente75_18",
 		},
 	},
-	["ita_platoon_ml"] =
+	["ita_platoon_landing"] =
 	{
 		members = {
 			"itabersaglierim38",
