@@ -4,11 +4,8 @@ local GER_MAL = BoatMother:New{
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 8000,
-	buildTime				= 8000,
 	collisionVolumeOffsets	= [[0.0 -24.0 80.0]],
 	collisionVolumeScales	= [[60.0 20.0 230.0]],
-	corpse					= "GERMAL_dead",
-	mass					= 27200,
 	maxDamage				= 27200,
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.6,
@@ -22,7 +19,6 @@ local GER_MAL = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "GER/Boat",
 		children = {
 			"GERMAL_Turret_105mm", 
 			"GERMAL_Turret_105mm", 

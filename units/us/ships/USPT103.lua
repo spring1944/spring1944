@@ -4,16 +4,12 @@ local US_PT103 = BoatMother:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 1400,
-	buildTime				= 1400,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USPT103_dead",
-	mass					= 4000,
 	maxDamage				= 4000,
 	maxReverseVelocity		= 2.15,
 	maxVelocity				= 4.3,
 	movementClass			= "BOAT_Medium",
-	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -23,7 +19,6 @@ local US_PT103 = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
 			"USPT103_Turret_20mm",
 			"USPT103_Turret_Twin50",

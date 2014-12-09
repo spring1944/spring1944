@@ -4,15 +4,11 @@ local ITA_Gabbiano = BoatMother:New{
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 10000,
-	buildTime				= 10000,
 	category 				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
-	corpse					= "ITAGabbiano_dead",
-	mass					= 67000,
 	maxDamage				= 67000,
 	maxVelocity				= 1.8,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 6, -- 6 x 1fpu turrets
 	turnRate				= 25,	
 	weapons = {	
@@ -30,7 +26,6 @@ local ITA_Gabbiano = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "ITA/Boat",
 		maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

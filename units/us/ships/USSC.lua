@@ -4,16 +4,12 @@ local US_SC = BoatMother:New{
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 2500,
-	buildTime				= 2500,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USSC_dead",
-	mass					= 9800,
 	maxDamage				= 9800,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_Medium",
-	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -23,7 +19,6 @@ local US_SC = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
 			"USSC_Turret_76mm",
 			"USSC_Turret_20mm_Right",

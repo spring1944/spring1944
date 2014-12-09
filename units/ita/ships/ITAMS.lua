@@ -4,14 +4,10 @@ local ITA_MS = BoatMother:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1500,
-	buildTime				= 1500,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
-	corpse					= "ITAMS_dead",
-	mass					= 6600,
 	maxDamage				= 6600,
 	maxVelocity				= 3.2,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
@@ -27,7 +23,6 @@ local ITA_MS = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "ITA/Boat",
 		maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

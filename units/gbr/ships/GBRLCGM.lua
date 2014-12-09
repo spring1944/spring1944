@@ -4,15 +4,11 @@ local GBR_LCGM = BoatMother:New{
 	acceleration			= 0.001,
 	brakeRate				= 0.001,
 	buildCostMetal			= 10500,
-	buildTime				= 10500,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "GBRLCGM_dead",
-	mass					= 30800,
 	maxDamage				= 30800,
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 32,	
 	weapons = {	
@@ -22,7 +18,6 @@ local GBR_LCGM = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "GBR/Boat",
 		children = {
 			"GBRLCGM_Turret_25pdr_Left",
 			"GBRLCGM_Turret_25pdr_Right",

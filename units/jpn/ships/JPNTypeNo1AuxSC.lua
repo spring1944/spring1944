@@ -4,15 +4,11 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1500,
-	buildTime				= 1500,
 	collisionVolumeOffsets	= [[0.0 -8.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
-	corpse					= "JPNTypeNo1AuxSC_dead",
-	mass					= 13000,
 	maxDamage				= 13000,
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.1,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	
@@ -23,7 +19,6 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "JPN/Boat",
 		children = {
 			"JPNSC_turret_25mm_front",
 			"JPNSC_turret_25mm_rear",

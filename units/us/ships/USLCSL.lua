@@ -4,11 +4,8 @@ local US_LCSL = BoatMother:New{
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 9000,
-	buildTime				= 9000,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USLCSL_dead",
-	mass					= 25400,
 	maxDamage				= 25400,
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.8,
@@ -22,7 +19,6 @@ local US_LCSL = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
 			"USSC_Turret_76mm",
 			"USLCSL_Turret_TwinBofors_Front",

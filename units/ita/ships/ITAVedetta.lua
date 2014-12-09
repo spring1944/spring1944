@@ -4,15 +4,11 @@ local ITA_Vedetta = BoatMother:New{
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 2200,
-	buildTime				= 2200,
 	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
-	corpse					= "ITAVedetta_dead",
-	mass					= 7000,
 	maxDamage				= 7000,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -22,7 +18,6 @@ local ITA_Vedetta = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "ITA/Boat",
 		children = {
 			"ITAVedetta_Turret_76mm", 
 			"ITAVedetta_Turret_MG", 

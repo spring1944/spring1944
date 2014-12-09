@@ -4,15 +4,11 @@ local GBR_LCSL = BoatMother:New{
 	acceleration			= 0.025,
 	brakeRate				= 0.01,
 	buildCostMetal			= 1900,
-	buildTime				= 1900,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "GBRLCSL_dead",
-	mass					= 8400,
 	maxDamage				= 8400,
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.4,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 5, -- 5 x 1fpu turrets
 	turnRate				= 240,	
 	weapons = {	
@@ -22,7 +18,6 @@ local GBR_LCSL = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "GBR/Boat",
 		children = {
 			"GBRLCSL_Turret_4inMortar",
 			"GBRLCSL_Turret_6pdr",

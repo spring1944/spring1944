@@ -4,11 +4,8 @@ local JPN_Seta = BoatMother:New{
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 9000,
-	buildTime				= 9000,
 	collisionVolumeOffsets	= [[0.0 -8.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
-	corpse					= "JPNSeta_dead",
-	mass					= 30800,
 	maxDamage				= 30800,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.6,
@@ -23,7 +20,6 @@ local JPN_Seta = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "JPN/Boat",
 		children = {
 			"JPN_Seta_turret_76mm_front",
 			"JPN_Seta_turret_25mm",

@@ -4,15 +4,12 @@ local RUS_BMO = BoatMother:New{
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1700,
-	buildTime				= 1700,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
-	corpse					= "RUSBMO_dead",
 	mass					= 5620,
 	maxDamage				= 5880, --+10% because it has armor
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 2.2,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -22,7 +19,6 @@ local RUS_BMO = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
 		children = {
 			"RUSTurret_37mm_Front", 
 			"RUSTurret_45mm_Rear", 

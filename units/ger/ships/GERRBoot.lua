@@ -4,16 +4,11 @@ local GER_RBoot = BoatMother:New{
 	acceleration			= 0.2,
 	brakeRate				= 0.15,
 	buildCostMetal			= 2170,
-	buildTime				= 2170,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
-	corpse					= "GERRBoot_dead",
-	mass					= 16000,
 	maxDamage				= 16000,
 	maxReverseVelocity		= 1.37,
 	maxVelocity				= 2.74,
-	movementClass			= "BOAT_LightPatrol",
-	soundCategory			= "GERBoat",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
 	turnRate				= 205,	
 	weapons = {	
@@ -23,7 +18,6 @@ local GER_RBoot = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory = "GER/Boat",
 		children = {
 			"GERRBoot_Turret_37mm", 
 			"GERRBoot_Turret_20mm",

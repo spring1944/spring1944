@@ -4,7 +4,6 @@ local RUS_Pr161 = BoatMother:New{
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 6500,
-	buildTime				= 6500,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	corpse					= "RUSPr161_dead",
@@ -22,7 +21,6 @@ local RUS_Pr161 = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
 		children = {
 			"RUSTurret_45mm_Front",
 			"RUSPr161_Turret_85mm_Front",

@@ -85,9 +85,9 @@ local AssaultBoat = Boat:New{
 -- Composites
 local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	iconType			= "gunboat",
+	movementClass		= "BOAT_LightPatrol",
 	script				= "BoatMother.lua",
 	usePieceCollisionVolumes	= true,
-		
 	-- Transport tags
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,

@@ -4,15 +4,11 @@ local RUS_KomsMTB = BoatMother:New{
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1350,
-	buildTime				= 1350,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
-	corpse					= "RUSKomsMTB_dead",
-	mass					= 2090,
 	maxDamage				= 2090,
 	maxReverseVelocity		= 2.4,
 	maxVelocity				= 4.8,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 350,	
 	weapons = {	
@@ -28,7 +24,6 @@ local RUS_KomsMTB = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
 	    maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

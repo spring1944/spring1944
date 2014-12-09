@@ -4,15 +4,11 @@ local GBR_FairmileD = BoatMother:New{
 	acceleration			= 0.025,
 	brakeRate				= 0.01,
 	buildCostMetal			= 4000,
-	buildTime				= 4000,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "GBRFairmileD_dead",
-	mass					= 10400,
 	maxDamage				= 10400,
 	maxReverseVelocity		= 1.99,
 	maxVelocity				= 3.98,
-	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 240,	
 	weapons = {	
@@ -38,7 +34,6 @@ local GBR_FairmileD = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundcategory		= "GBR/Boat",
 		maxammo				= 4,
 		weaponcost			= 40,
 		weaponswithammo		= 4,

@@ -4,10 +4,8 @@ local RUS_BKA_1125 = BoatMother:New{
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 2125,
-	buildTime				= 2125,
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
-	corpse					= "RUSBKA-1125_dead",
 	mass					= 2660,
 	maxDamage				= 3060, --+15% because it has armor
 	maxReverseVelocity		= 0.9,
@@ -23,7 +21,6 @@ local RUS_BKA_1125 = BoatMother:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
 		children = {
 			"RUSBKA1125_turret_76mm", 
 			"RUSBKA1125_Turret_DshK_Front", 
