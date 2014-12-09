@@ -31,6 +31,7 @@ local MineSign = Mine:New{
 	script					= "null.cob",
 	sightDistance			= 1,
 	yardmap					= "o",
+	useBuildingGroundDecal	= false,
 }
 
 local TankObstacle = Unit:New{
