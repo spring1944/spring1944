@@ -1,22 +1,14 @@
-local RUS_LCT = Boat:New{
+local RUS_LCT = TankLandingCraft:New{
 	name					= "LCT Mk. 6",
-	description				= "Tank Landing Craft",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1600,
-	buildTime				= 1600,
 	collisionVolumeOffsets	= [[0.0 -30.0 0.0]],
 	collisionVolumeScales	= [[60.0 50.0 220.0]],
-	corpse					= "RUSLCT_dead",
-	iconType				= "transportship",
-	mass					= 29100,
 	maxDamage				= 29100,
 	maxReverseVelocity		= 0.35,
 	maxVelocity				= 2,
-	movementClass			= "BOAT_LandingCraft",
-	transportCapacity		= 30,
 	transportMass			= 15000,
-	transportSize			= 30,
 	turnRate				= 170,	
 	weapons = {	
 		[1] = {
@@ -48,9 +40,6 @@ local RUS_LCT = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "RUS/Boat",
-		transportsquad			= "rus_platoon_lct",
-		supplyRange				= 600,
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

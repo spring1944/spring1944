@@ -1,22 +1,14 @@
-local GBR_LCT = Boat:New{
+local GBR_LCT = TankLandingCraft:New{
 	name					= "LCT Mk. 4",
-	description				= "Tank Landing Craft",
 	acceleration			= 0.001,
 	brakeRate				= 0.001,
 	buildCostMetal			= 2100,
-	buildTime				= 2100,
 	collisionVolumeOffsets	= [[0.0 0.0 0.0]],
 	collisionVolumeScales	= [[60.0 100.0 220.0]],
-	corpse					= "GBRLCT_dead",
-	iconType				= "transportship",
-	mass					= 35000,
 	maxDamage				= 35000,
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 2,
-	movementClass			= "BOAT_LandingCraft",
-	transportCapacity		= 30,
 	transportMass			= 27000,
-	transportSize			= 54,
 	turnRate				= 35,	
 	weapons = {	
 		[1] = {
@@ -48,9 +40,6 @@ local GBR_LCT = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "GBR/Boat",
-		supplyRange				= 600,
-		transportsquad			= "gbr_platoon_lct",
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

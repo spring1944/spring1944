@@ -208,7 +208,7 @@ local jpnDefs = {
 		buildTime = 1300,
 		side = "JPN",
 	},
-	["jpn_platoon_tokudaihatsu"] =
+	["jpn_platoon_lct"] =
 	{
 		members = {
 			"jpnshinhotochiha",

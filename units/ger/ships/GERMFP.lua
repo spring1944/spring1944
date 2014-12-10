@@ -1,20 +1,12 @@
-local GER_MFP = Boat:New{
+local GER_MFP = TankLandingCraft:New{
 	name					= "Marinefahrprahm",
-	description				= "Tank Landing Craft",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 5500,
-	buildTime				= 5500,
-	corpse					= "GERMFP_dead",
-	iconType				= "transportship",
-	mass					= 29300,
 	maxDamage				= 23900,
 	maxReverseVelocity		= 0.72,
 	maxVelocity				= 2,
-	movementClass			= "BOAT_LandingCraft",
-	transportCapacity		= 18,
-	transportMass			= 8000,
-	transportSize			= 18,
+	transportMass			= 9000,
 	turnRate				= 35,	
 	weapons = {	
 		[1] = {
@@ -79,9 +71,6 @@ local GER_MFP = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "GER/Boat",
-		transportsquad			= "ger_platoon_mfp",
-		supplyRange				= 600,
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

@@ -1,20 +1,12 @@
-local ITA_MZ = Boat:New{
+local ITA_MZ = TankLandingCraft:New{
 	name					= "Motozattera",
-	description				= "Tank Landing Craft",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 2000, --5500, why so much cheaper than MFP?
-	buildTime				= 2000, --5500, why so much cheaper than MFP?
-	corpse					= "ITAMZ_dead",
-	iconType				= "transportship",
-	mass					= 29300,
 	maxDamage				= 23900,
 	maxReverseVelocity		= 0.72,
 	maxVelocity				= 2, -- 1.3 in fbi, all other LCT are 2
-	movementClass			= "BOAT_LandingCraft",
-	transportCapacity		= 14,
 	transportMass			= 4600,
-	transportSize			= 18,
 	turnRate				= 35,	
 	weapons = {	
 		[1] = {
@@ -41,9 +33,7 @@ local ITA_MZ = Boat:New{
 		},
 	},
 	customparams = {
-		soundCategory			= "ITA/Boat",
-		transportsquad			= "ita_platoon_mz",
-		supplyRange				= 350,
+		supplyRange				= 350, -- override, smaller radius as armed
     	maxammo					= 7,
     	weaponcost				= 18,
     	weaponswithammo			= 1,

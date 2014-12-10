@@ -21,42 +21,7 @@ local Boat = Unit:New{ -- used for transports as is
 	}
 }
 
--- Pontoon Raft
-local PontoonRaft = Boat:New{
-	name				= "Pontoon Raft",
-	description			= "Heavy Equipment Transport",
-	acceleration		= 0.15,
-	brakeRate			= 0.1,
-	buildCostMetal		= 200,
-	category			= "SHIP MINETRIGGER SOFTVEH",
-	iconType			= "raft",
-	mass				= 1000,
-	maxDamage			= 1000,
-	maxVelocity			= 1.28,
-	minTransportSize	= 1,
-	movementClass		= "BOAT_Medium",
-	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
-	script				= "PontoonRaft.cob",
-	stealth				= true,
-	transportCapacity	= 1,
-	transportSize		= 9,
-	turnRate			= 200,
-	waterline			= 2.5,
-}
-
-local InfantryLandingCraft = Boat:New{
-	description				= "Infantry Landing Craft",
-	iconType				= "landingship",
-	movementClass			= "BOAT_LandingCraftSmall",
-	transportCapacity		= 20,
-	transportMass			= 1000,
-	transportSize			= 1,
-	customparams = {
-		transportsquad			= "<SIDE>_platoon_landing",
-		supplyRange				= 350, --
-	},
-}
-
+-- Engineer Built
 local AssaultBoat = Boat:New{
 	name				= "Rubber Dingy", -- will be overwritten by e.g. sturmboot
 	description			= "Infantry Water Transport",
@@ -80,6 +45,54 @@ local AssaultBoat = Boat:New{
 	turninplace			= 0,
 	turnRate			= 350,
 	waterline			= 0.2,
+}
+
+local PontoonRaft = Boat:New{
+	name				= "Pontoon Raft",
+	description			= "Heavy Equipment Transport",
+	acceleration		= 0.15,
+	brakeRate			= 0.1,
+	buildCostMetal		= 200,
+	category			= "SHIP MINETRIGGER SOFTVEH",
+	iconType			= "raft",
+	mass				= 1000,
+	maxDamage			= 1000,
+	maxVelocity			= 1.28,
+	minTransportSize	= 1,
+	movementClass		= "BOAT_Medium",
+	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
+	script				= "PontoonRaft.cob",
+	stealth				= true,
+	transportCapacity	= 1,
+	transportSize		= 9,
+	turnRate			= 200,
+	waterline			= 2.5,
+}
+
+-- Landing Craft
+local InfantryLandingCraft = Boat:New{
+	description				= "Infantry Landing Craft",
+	iconType				= "landingship",
+	movementClass			= "BOAT_LandingCraftSmall",
+	transportCapacity		= 20,
+	transportMass			= 1000,
+	transportSize			= 1,
+	customparams = {
+		transportsquad			= "<SIDE>_platoon_landing",
+		supplyRange				= 350,
+	},
+}
+
+local TankLandingCraft = Boat:New{
+	description				= "Tank Landing Craft",
+	iconType				= "transportship",
+	movementClass			= "BOAT_LandingCraft",
+	transportCapacity		= 30,
+	transportSize			= 5,
+	customparams = {
+		supplyRange				= 600,
+		transportsquad			= "<SIDE>_platoon_lct",
+	}
 }
 
 -- Composites
@@ -131,6 +144,7 @@ return {
 	AssaultBoat = AssaultBoat,
 	-- Landing Craft
 	InfantryLandingCraft = InfantryLandingCraft,
+	TankLandingCraft = TankLandingCraft,
 	-- Composites
 	BoatMother = BoatMother,
 	BoatChild = BoatChild,

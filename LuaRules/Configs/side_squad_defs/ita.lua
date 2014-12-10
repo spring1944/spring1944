@@ -210,7 +210,7 @@ local itaDefs = {
 		side = "ITA",
 	},
 	
-	["ita_platoon_mz"] =
+	["ita_platoon_lct"] =
 	{
 		members = {
 			"itam1542",

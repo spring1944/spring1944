@@ -250,6 +250,8 @@ for name, ud in pairs(UnitDefs) do
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
 
+		-- TODO: this doesn't really belong here but needs to be before maxdamage is modified
+		if not cp.feartarget then ud.mass = ud.maxdamage end -- inf mass is different - TODO: better detection than feartarget?
 		--a crazy default value so we see it when it happens
 		if (not ud.mass) then
 			ud.mass = 99999999
@@ -340,7 +342,6 @@ for name, ud in pairs(UnitDefs) do
 	end
 	-- new stuff that will be staying in _post with OO defs
 	ud.selfdestructas = ud.explodeas
-	if not cp.feartarget then ud.mass = ud.maxdamage end -- inf mass is different - TODO: better detection than feartarget?
 	if not cp.isupgrade then ud.buildtime = ud.buildcostmetal end
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
