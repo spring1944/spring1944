@@ -32,9 +32,7 @@ units["jpnstorage"].objectName = "jpn/jpnstorage.s3o"
 units["usspyard1"] = nil
 
 -- Extra units
-units["usdukwsupplies"] = Supplies:New{
-	objectName ="us/ustrucksupplies.s3o" -- TODO: dukw supplies model
-}
+units["usdukwsupplies"] = Supplies:New{}
 units["gbrglidersupplies"] = SuppliesSmall:New{}
 units["ruspartisansupplies"] = SuppliesSmall:New{}
 
