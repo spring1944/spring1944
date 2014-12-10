@@ -40,7 +40,6 @@ units["ruspartisansupplies"] = SuppliesSmall:New{}
 units["gbrradar"].name = "AA No4 Mk3(P) Light Warning Set"
 units["gerradar"].name = "Freya Air Control Station"
 units["itaradar"].name = "Freya Air Control Station"
-units["itaradar"].objectName = "GER/GERRadar.s3o" -- TODO: copy model with retex for ITA imo
 units["jpnradar"].name = "Type 1 Model 2 'Mobile Matress' Radar"
 units["rusradar"].name = "RUS-2 Air Control Station"
 units["usradar"].name = "AN/TPS-3 (SCR-602-T8) Light Aircraft Detector"
