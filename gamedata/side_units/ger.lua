@@ -221,7 +221,7 @@ local gerunits =
   gerboatyard =
   {
     "gerassaultboat",
-	"gergerpontoonraft",
+	"gerpontoonraft",
     --"gerschsturmboot",
     "gerrboot",
     --"gersboot",

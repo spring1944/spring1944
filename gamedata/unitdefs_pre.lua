@@ -38,7 +38,8 @@ end
 -- Root Classes
 
 Unit = {
-	showNanoFrame		= false,
+	showNanoFrame			= false,
+	showNanoSpray			= false,
 	objectName				= "<SIDE>/<NAME>.s3o",
 	buildPic				= "<NAME>.png",
 	script					= "<NAME>.cob",
@@ -50,7 +51,7 @@ function Unit:New(newAttribs, concatName)
 	return newClass
 end
 
-function Unit:Clone(name)
+function Unit:Clone(name) -- name is passed to <NAME> in _post, it is the unitname of the unit to copy from
 	local newClass = {}
 	inherit(newClass, self)
 	newClass.unitname = name:lower()
