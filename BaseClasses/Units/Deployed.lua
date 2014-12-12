@@ -31,6 +31,22 @@ local DeployedGun = Deployed:New{
 	},
 }
 
+local TankShelter = Deployed:New{
+	description					= "Tank fortification",
+	buildCostMetal				= 450,
+	cloakCost					= 0,
+	cloakCostMoving				= 0,
+	isFirePlatform				= true,
+	maxDamage					= 2500,
+	minCloakDistance			= 500,
+	objectName					= "GEN/<NAME>.s3o",
+	cloakTimeout				= 160,
+	releaseHeld					= true,
+	script						= "tankshelter.lua",
+	transportCapacity			= 1,
+	transportSize				= 9, -- mass is used to control size of loadable unit
+}
+
 -- Sandbag MG --
 local SandbagMG = Deployed:New{
 	description					= "Dug-in Heavy Infantry Fire Support",
@@ -167,6 +183,7 @@ local RGun = DeployedGun:New{
 return {
 	Deployed = Deployed,
 	DeployedGun = DeployedGun,
+	TankShelter = TankShelter,
 	SandbagMG = SandbagMG,
 	-- Trucks
 	AAGun = AAGun,

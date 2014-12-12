@@ -31,8 +31,14 @@ local Buoy = Flag:New{ -- One day...
 	canMove = false, -- for some reason cannot be true or it won't float?
 }
 
+local SmallTankShelter = TankShelter:New{
+	name				= "Tank Shelter (Small)",
+	transportMass		= 2100,
+}
+
 return lowerkeys({
 	["BinocSpot"] = BinocSpot,
 	["Flag"] = Flag,
 	["Buoy"] = Buoy,
+	["SmallTankShelter"] = SmallTankShelter,
 })
