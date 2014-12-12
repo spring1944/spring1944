@@ -200,7 +200,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			end
 		end
 	end
-	local soundTags = {"soundstart", "soundhit", "soundhitdry", "soundhitwet"}
+	local soundTags = {"soundstart", "soundhit", "soundhitdry", "soundhitwet", "model"} -- TODO: model is a bit hacky here
 	for _, tag in pairs(soundTags) do
 		if weaponDef[tag] then
 			weaponDef[tag] = "weapons/" .. weaponDef[tag]
