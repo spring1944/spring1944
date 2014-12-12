@@ -47,6 +47,7 @@
   myGravity=0.6;
   objectName=ITARo37bis.s3o;
   script=RUSPo2.cob;
+  radarDistance=1500;
   refuelTime=10;
   repairable=0;
   seismicSignature=0;
@@ -57,7 +58,7 @@
   }
   showNanoFrame=0;
   Side=ITA;
-  sightDistance=2000;
+  sightDistance=600;
   smoothAnim=1;
   SoundCategory=ITAAir;
   stealth=1;
