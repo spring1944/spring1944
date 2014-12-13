@@ -63,7 +63,7 @@
   smoothAnim=1;
   stealth=1;
   turnRate=50;
-  badTargetCategory=BUILDING OPENVEH HARDVEH SHIP DEPLOYED;
+  badTargetCategory=BUILDING SHIP DEPLOYED;
 
   weapon1=Bomb50kg;
   maxAngleDif1=10;
@@ -77,24 +77,24 @@
 
   weapon3=BredaSafat05;
   maxAngleDif3=10;
-  onlyTargetCategory3=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir3=0 0 1;
 
   weapon4=BredaSafat05;
   maxAngleDif4=10;
-  onlyTargetCategory4=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
   weaponMainDir4=0 0 1;
   weaponSlaveTo4=3;
 
   weapon5=BredaSafat03;
   maxAngleDif5=10;
-  onlyTargetCategory5=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory5=INFANTRY SOFTVEH AIR SHIP LARGESHIP DEPLOYED;
   weaponMainDir5=0 0 1;
   weaponSlaveTo5=3;
 
   weapon6=BredaSafat03;
   maxAngleDif6=10;
-  onlyTargetCategory6=BUILDING INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory6=INFANTRY SOFTVEH AIR SHIP LARGESHIP DEPLOYED;
   weaponMainDir6=0 0 1;
   weaponSlaveTo6=3;
 
