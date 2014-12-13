@@ -5,7 +5,7 @@
   activateWhenBuilt=1;
   airSightDistance=2500;
   buildCostEnergy=0;
-  buildCostMetal=40500;
+  buildCostMetal=2050;
   builder=1;
   buildingGroundDecalSizeX=12;
   buildingGroundDecalSizeY=12;
