@@ -89,7 +89,7 @@ local function ShowRockets()
 	Sleep((info.reloadTimes[1] - 1) * 1000) -- show 1 second before ready to fire
 	for _, rocket in pairs(rockets) do
 		Show(rocket)
-		Sleep(info.burstRates * 1000)
+		Sleep(info.burstRates[1] * 1000)
 	end
 end
 
