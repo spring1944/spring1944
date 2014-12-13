@@ -342,7 +342,13 @@ for name, ud in pairs(UnitDefs) do
 	end
 	-- new stuff that will be staying in _post with OO defs
 	ud.selfdestructas = ud.explodeas
-	if not cp.isupgrade then ud.buildtime = ud.buildcostmetal end
+	if ud.buildcostmetal and not cp.isupgrade then
+		if not ud.buildtime then
+			ud.buildtime = ud.buildcostmetal
+		elseif ud.buildtime ~= ud.buildcostmetal then
+			Spring.Echo("Warning: Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
+		end
+	end
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
