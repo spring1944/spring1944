@@ -60,7 +60,7 @@ end
 
 local function BuildBase()
 	if currentBuildDefID then
-		if Spring.GetUnitCommands(currentBuilder, 0) or 0 == 0 then
+		if #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
 			Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
 			BuildBaseInterrupted()
 		end
