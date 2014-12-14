@@ -75,6 +75,7 @@ local JPNDefs = {
 	"JPNHoNiII",
 	"JPNHoRo",
 	"JPNTeKe",
+	"JPNTeKe_HMG",
 	"JPNHaGo",
 	"JPNKaMi",
   },
