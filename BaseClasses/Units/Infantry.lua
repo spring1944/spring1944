@@ -293,7 +293,7 @@ local InfantryGun = Infantry:New{
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
 	script				= "GERLeiG18.cob",
 	turnRate			= 120,
-  
+	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -302,7 +302,7 @@ local InfantryGun = Infantry:New{
 			[11] = "custom:MuzzleBrakeSmoke",
 		}
 	},
-    customParams = {
+	customParams = {
 		hasturnbutton		= true,
 		maxammo				= 4,
 		weaponcost			= 12,

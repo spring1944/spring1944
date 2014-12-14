@@ -1,16 +1,12 @@
-local health = 140
-local HealthMod = {
-	maxDamage			= health,
-}
-local DoubleHealthMod = {
-	maxDamage			= health * 2,
+local GBRInf = {
+	maxDamageMul		= 1.4,
 }
 
-local GBR_HQEngineer = EngineerInf:New(HealthMod):New{
+local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
 	name				= "Sapper",
 }
 
-local GBR_Rifle = RifleInf:New(HealthMod):New{
+local GBR_Rifle = RifleInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -22,7 +18,7 @@ local GBR_Rifle = RifleInf:New(HealthMod):New{
 	},
 }
 
-local GBR_STEN = SMGInf:New(HealthMod):New{
+local GBR_STEN = SMGInf:New(GBRInf):New{
 	name				= "STEN Mk II Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -34,7 +30,7 @@ local GBR_STEN = SMGInf:New(HealthMod):New{
 	},
 }
 
-local GBR_BREN = LMGInf:New(HealthMod):New{
+local GBR_BREN = LMGInf:New(GBRInf):New{
 	name				= "BREN Mk II Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -43,7 +39,7 @@ local GBR_BREN = LMGInf:New(HealthMod):New{
 	},
 }
 
-local GBR_Vickers = HMGInf:New(HealthMod):New{
+local GBR_Vickers = HMGInf:New(GBRInf):New{
 	name				= "Vickers Mk I Heavy Machinegun",
 }
 
@@ -56,7 +52,7 @@ local GBR_Vickers_Sandbag = SandbagMG:New{
 	},
 }
 
-local GBR_Sniper = SniperInf:New(HealthMod):New{
+local GBR_Sniper = SniperInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I (T) Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -65,7 +61,7 @@ local GBR_Sniper = SniperInf:New(HealthMod):New{
 	},
 }
 
-local GBR_PIAT = ATLauncherInf:New(HealthMod):New{
+local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 	name				= "PIAT",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -74,7 +70,7 @@ local GBR_PIAT = ATLauncherInf:New(HealthMod):New{
 	},
 }
 
-local GBR_3InMortar = MedMortarInf:New(DoubleHealthMod):New{
+local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 	name				= [[ML 3" Mortar Mk II]],
 	weapons = {
 		[1] = { -- HE
@@ -86,7 +82,7 @@ local GBR_3InMortar = MedMortarInf:New(DoubleHealthMod):New{
 	},
 }
 
-local GBR_Observ = ObservInf:New(HealthMod):New{
+local GBR_Observ = ObservInf:New(GBRInf):New{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "Webley",
@@ -94,7 +90,9 @@ local GBR_Observ = ObservInf:New(HealthMod):New{
 	},
 }
 
-local GBR_Commando = SMGInf:New(DoubleHealthMod):New{
+-- Still inheriting GBRInf even though I'm overriding the maxDamageMul,
+-- so if anyone adds something there it'll change commandos as well.
+local GBR_Commando = SMGInf:New(GBRInf):New{
 	name				= "Commando",
 	description			= "Demolitions and Infiltration Infantry",
 	canManualFire		= true,
@@ -109,6 +107,7 @@ local GBR_Commando = SMGInf:New(DoubleHealthMod):New{
 	canRepair			= false,
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
+	maxDamageMul        = 2.8,
 	minCloakDistance	= 100,
   	weapons = {
 		[1] = { -- SMG

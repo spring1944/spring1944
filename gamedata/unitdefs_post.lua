@@ -250,9 +250,8 @@ for name, ud in pairs(UnitDefs) do
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
 
-		-- TODO: this doesn't really belong here but needs to be before maxdamage is modified
-		if not cp.feartarget then ud.mass = ud.maxdamage end -- inf mass is different - TODO: better detection than feartarget?
 		--a crazy default value so we see it when it happens
+		--at the moment all boats seem to lack mass, so that's what they have
 		if (not ud.mass) then
 			ud.mass = 99999999
 		end
@@ -262,6 +261,8 @@ for name, ud in pairs(UnitDefs) do
 			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
 			--Spring.Echo(name, "changed health to", ud.maxdamage)
 		end
+	else --apply health multiplier if not based on mass
+		ud.maxdamage = ud.maxdamage * (ud.maxdamagemul or 1)
 	end
 
 	if (modOptions.unit_los_mult) then
