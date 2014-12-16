@@ -8,6 +8,7 @@ local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
 
 local GBR_Rifle = RifleInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I Rifle",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- Rifle
 			name				= "Enfield",
