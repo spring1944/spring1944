@@ -51,7 +51,7 @@ local REAIM_THRESHOLD = 0.02
 
 local CRAWL_SLOWDOWN_FACTOR = 5
 
-local IS_PRONE_FIRE = false
+local IS_PRONE_FIRE = true
 
 
 local state
@@ -63,6 +63,7 @@ local lastPitch
 local lastHeading
 
 local origSpeed
+local currentSpeed
 local aimed
 
 local inTransition
@@ -248,6 +249,16 @@ local function UpdatePose()
 	end
 end
 
+local function ChangeSpeed(newSpeed)
+	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
+	if currentSpeed < newSpeed then
+		local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
+		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
+		Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
+	end
+	currentSpeed = newSpeed
+end
+
 local function ChangeState(newState)
 	if state == newState then
 		return true
@@ -260,12 +271,10 @@ local function ChangeState(newState)
 	end
 	if state == STATE_PRONE then
 		SetUnitValue(COB.UPRIGHT, 0)
-		--SetUnitValue(COB.MAX_SPEED, origSpeed / CRAWL_SLOWDOWN_FACTOR)
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR})
-	elseif oldState == STATE_PRONE then
+		ChangeSpeed(origSpeed / CRAWL_SLOWDOWN_FACTOR)
+	elseif state == STATE_STAND then
 		SetUnitValue(COB.UPRIGHT, 1)
-		--SetUnitValue(COB.MAX_SPEED, origSpeed)
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = origSpeed})
+		ChangeSpeed(origSpeed)
 	end
 	return true
 end
@@ -297,7 +306,6 @@ local function Walk()
 			PlayAnim("run", pelvisWait)
 		else
 			Sleep(200)
-			Spring.Echo(state, moving)
 		end
 	end
 end
@@ -343,6 +351,7 @@ function script.Create()
 	lastPitch = nil
 	lastHeading = nil
 	origSpeed = UnitDefs[unitDefID].speed
+	currentSpeed = origSpeed
 	UpdatePose()
 end
 
