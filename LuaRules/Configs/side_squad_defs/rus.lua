@@ -15,6 +15,7 @@ local rusDefs = {
 		buildPic = "ruscommissar.png",
 		buildTime = 1150,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 	
 	 ["rus_platoon_rifle"] =
@@ -39,6 +40,7 @@ local rusDefs = {
 		buildPic = "RUSRifle.png",
 		buildTime = 1100,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 	
 
@@ -65,6 +67,7 @@ local rusDefs = {
 		buildPic = "RUSPPsh.png",
 		buildTime = 1150,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
     	
     ["rus_platoon_partisan"] =
@@ -89,6 +92,7 @@ local rusDefs = {
 		buildPic = "RUSRifle.png",
 		buildTime = 1050,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["rus_platoon_mg"] =
@@ -105,6 +109,7 @@ local rusDefs = {
 		buildPic = "RUSDP.png",
 		buildTime = 900,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_sniper"] =
@@ -119,6 +124,7 @@ local rusDefs = {
 		buildPic = "russniper.png",
 		buildTime = 1120,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_mortar"] =
@@ -135,6 +141,7 @@ local rusDefs = {
 		buildPic = "RUSMortar.png",
 		buildTime = 1540,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_atlight"] =
@@ -150,6 +157,7 @@ local rusDefs = {
 		buildPic = "RUSPTRD.png",
 		buildTime = 820,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 
     ["rus_platoon_atheavy"] =
@@ -167,6 +175,7 @@ local rusDefs = {
 		buildPic = "RUSRPG43.png",
 		buildTime = 375,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["rus_platoon_scout"] =
@@ -182,6 +191,7 @@ local rusDefs = {
 		buildPic = "RUSObserv.png",
 		buildTime = 340,
 		side = "RUS",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["rus_platoon_tender"] =

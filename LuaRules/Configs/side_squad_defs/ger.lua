@@ -19,6 +19,7 @@ local gerDefs = {
 		buildPic = "GERRifle.png",
 		buildTime = 610,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_rifle"] = 
@@ -41,6 +42,7 @@ local gerDefs = {
 		buildPic = "GERRifle.png",
 		buildTime = 1830,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_assault"] = 
@@ -65,6 +67,7 @@ local gerDefs = {
 		buildPic = "GERMP40.png",
 		buildTime = 1800,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_mg"] = 
@@ -81,6 +84,7 @@ local gerDefs = {
 		buildPic = "GERMG42.png",
 		buildTime = 1350,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_sniper"] = 
@@ -95,6 +99,7 @@ local gerDefs = {
 		buildPic = "GERSniper.png",
 		buildTime = 1250,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_mortar"] = 
@@ -111,6 +116,7 @@ local gerDefs = {
 		buildPic = "GERGrW34.png",
 		buildTime = 2260,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_at"] = 
@@ -126,6 +132,7 @@ local gerDefs = {
 		buildPic = "GERPanzerfaust.png",
 		buildTime = 450,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_scout"] = 
@@ -141,6 +148,7 @@ local gerDefs = {
 		buildPic = "GERObserv.png",
 		buildTime = 470,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},  
 	
 	["ger_platoon_infgun"] =
@@ -155,6 +163,7 @@ local gerDefs = {
 		buildPic = "GERLeIG18.png",
 		buildTime = 1320,
 		side = "GER",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["ger_platoon_ssb"] =

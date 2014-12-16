@@ -9,6 +9,7 @@ local rusSorties = {
 		buildCostMetal = 1000,
 		buildPic = "RUSPo2.png",
 		buildTime = 1000,
+		objectName = "MortarShell.s3o",
 	},
   
 	rus_sortie_interceptor = {
@@ -25,6 +26,7 @@ local rusSorties = {
 		buildCostMetal = 3940,
 		buildPic = "RUSYak3.png",
 		buildTime = 3940,
+		objectName = "MortarShell.s3o",
 	},
   
 	rus_sortie_fighter = {
@@ -41,6 +43,7 @@ local rusSorties = {
 		buildCostMetal = 4500,
 		buildPic = "RUSLa5FN.png",
 		buildTime = 4500,
+		objectName = "MortarShell.s3o",
 	},
   
 	rus_sortie_attack = {
@@ -55,6 +58,7 @@ local rusSorties = {
 		buildCostMetal = 6750,
 		buildPic = "RUSIL2.png",
 		buildTime = 6750,
+		objectName = "MortarShell.s3o",
 	},
   
 	rus_sortie_tankbuster = {
@@ -69,6 +73,7 @@ local rusSorties = {
 		buildCostMetal = 6750,
 		buildPic = "RUSIL2PTAB.png",
 		buildTime = 6750,
+		objectName = "MortarShell.s3o",
 	},
 
 	rus_sortie_partisan = {
@@ -84,6 +89,7 @@ local rusSorties = {
 		buildCostMetal = 2000,
 		buildPic = "RUSPo2Partisan.png",
 		buildTime = 2000,
+		objectName = "MortarShell.s3o",
 	},
 }
 
