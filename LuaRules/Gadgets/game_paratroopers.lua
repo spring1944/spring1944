@@ -54,6 +54,7 @@ local CallCOBScript = Spring.CallCOBScript
 
 local GetUnitVelocity = Spring.GetUnitVelocity
 local GetUnitPosition = Spring.GetUnitPosition
+local GetUnitCOBValue = Spring.GetUnitCOBValue
 
 do
   local paratrooperInclude = VFS.Include("LuaRules/Configs/paratrooper_defs.lua")
@@ -76,7 +77,8 @@ function gadget:Initialize()
 end
 
 function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
-  if paratrooperWeaponDefIDs[weaponDefID] and ValidUnitID(ownerID) then
+  local crashing = (GetUnitCOBValue(ownerID, COB.CRASHING) == 1)
+  if paratrooperWeaponDefIDs[weaponDefID] and ValidUnitID(ownerID) and not crashing then
     local transportDefID = GetUnitDefID(ownerID)
     local transportInfo = transportInfos[transportDefID] or {}
     
