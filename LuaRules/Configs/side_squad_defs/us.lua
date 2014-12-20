@@ -19,6 +19,7 @@ local usDefs = {
 		buildPic = "USGIRifle.png",
 		buildTime = 570,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 
 	["us_platoon_rifle"] = 
@@ -43,6 +44,7 @@ local usDefs = {
 		buildPic = "usgirifle.png",
 		buildTime = 1675,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_assault"] = 
@@ -67,6 +69,7 @@ local usDefs = {
 		buildPic = "usgithompson.png",
 		buildTime = 1540,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_mg"] = 
@@ -83,6 +86,7 @@ local usDefs = {
 		buildPic = "usgimg.png",
 		buildTime = 1050,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_sniper"] = 
@@ -97,6 +101,7 @@ local usDefs = {
 		buildPic = "usgisniper.png",
 		buildTime = 1240,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_mortar"] = 
@@ -113,6 +118,7 @@ local usDefs = {
 		buildPic = "usm1mortar.png",
 		buildTime = 1850,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_at"] = 
@@ -128,6 +134,7 @@ local usDefs = {
 		buildPic = "usgibazooka.png",
 		buildTime = 350,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_scout"] = 
@@ -143,6 +150,7 @@ local usDefs = {
 		buildPic = "usobserv.png",
 		buildTime = 440,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_flame"] = 
@@ -159,6 +167,7 @@ local usDefs = {
 		buildPic = "usgiflamethrower.png",
 		buildTime = 800,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_infgun"] = 
@@ -173,6 +182,7 @@ local usDefs = {
 		buildPic = "USM8Gun.png",
 		buildTime = 1290,
 		side = "US",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["us_platoon_landing"] =

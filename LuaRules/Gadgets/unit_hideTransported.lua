@@ -96,6 +96,10 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	--Spring.Echo("UnitLoaded")
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
+	
+	-- should fix engineers still thinking they're building.
+	GiveOrderToUnit(unitID, CMD_STOP, {}, {})
+	
 	-- Check if transport is full (former crash risk!)
 	if massLeft[transportID] then
 		massLeft[transportID] = massLeft[transportID] - unitDef.mass
@@ -111,6 +115,7 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 		end
 	end
 	Spring.SetUnitNoMinimap(unitID, true)
+	
 end
 
 function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)

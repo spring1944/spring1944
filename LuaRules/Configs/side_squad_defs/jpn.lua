@@ -19,6 +19,7 @@ local jpnDefs = {
 		buildPic = "JPNRifle.png",
 		buildTime = 1500,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_hq"] =
 	{
@@ -36,6 +37,7 @@ local jpnDefs = {
 		buildPic = "JPNRifle.png",
 		buildTime = 600,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_assault"] =
 	{
@@ -57,6 +59,7 @@ local jpnDefs = {
 		buildPic = "JPNType100SMG.png",
 		buildTime = 1400,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_mg"] =
 	{
@@ -72,6 +75,7 @@ local jpnDefs = {
 		buildPic = "JPNType99LMG.png",
 		buildTime = 1200,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_sniper"] =
 	{
@@ -85,6 +89,7 @@ local jpnDefs = {
 		buildPic = "JPNSniper.png",
 		buildTime = 1140,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_mortar"] =
 	{
@@ -100,6 +105,7 @@ local jpnDefs = {
 		buildPic = "JPNMortar.png",
 		buildTime = 1580,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	["jpn_platoon_at"] =
 	{
@@ -114,6 +120,7 @@ local jpnDefs = {
 		buildPic = "JPNType3AT.png",
 		buildTime = 400,
 		side = "JPN",
+		objectName = "MortarShell.s3o",
 	},
 	
 	["jpn_platoon_landing"] =
@@ -204,7 +211,7 @@ local jpnDefs = {
 		description = "1 x tnakette teke 37mm, 1 x tankette teke 7.7mm",
 		buildCostMetal = 1300,
 		buildPic = "JPNteke.png",
-		model = "JPNteke.s3o",
+		objectName = "Debris_Large.s3o",
 		buildTime = 1300,
 		side = "JPN",
 	},
