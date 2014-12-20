@@ -92,6 +92,7 @@ end
 function gadget:GameFrame(n)
 	if (n % (0.5*30) < 0.1) then
 		-- items to delete from looped tables, but only AFTER the loop finishes
+		local unitsToDamage = {}
 		local itemsToDelete = {}
 		for unitID, info in pairs(burningUnits) do
 			if info ~= nil then
@@ -104,17 +105,22 @@ function gadget:GameFrame(n)
 						local weaponCeg = info.expCeg
 						local damagePerSecond = (info.dmgPerSecond)
 						SpawnCEG(weaponCeg, px, height, pz)
-						AddUnitDamage(unitID, damagePerSecond)
+						--AddUnitDamage(unitID, damagePerSecond)
+						unitsToDamage[unitID] = damagePerSecond
 					end
 				else
 					itemsToDelete[unitID] = true
 				end	
 			end
 		end
+		for unitID, damagePerSecond in pairs(unitsToDamage) do
+			AddUnitDamage(unitID, damagePerSecond)
+		end
 		for unitID, _ in pairs(itemsToDelete) do
 			burningUnits[unitID] = nil
 		end
 		itemsToDelete = {}
+		unitsToDamage = {}
 		for damageSiteIndex, siteInfo in pairs(damageZones) do
 			if siteInfo ~= nil then
 				local explodeTime = siteInfo.exTime
@@ -146,7 +152,8 @@ function gadget:GameFrame(n)
 									end
 								end
 							else
-								AddUnitDamage(unitToDamage, (damagePerSecond))
+								--AddUnitDamage(unitToDamage, damagePerSecond)
+								unitsToDamage[unitToDamage] = damagePerSecond
 							end
 						
 						end
@@ -156,6 +163,9 @@ function gadget:GameFrame(n)
 				--damage area expired
 				itemsToDelete[damageSiteIndex] = true
 			end
+		end
+		for unitID, damagePerSecond in pairs(unitsToDamage) do
+			AddUnitDamage(unitID, damagePerSecond)
 		end
 		for damageSiteIndex, _ in pairs(itemsToDelete) do
 			damageZones[damageSiteIndex] = nil
