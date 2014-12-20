@@ -44,6 +44,7 @@ local SWE_KPistM37 = SMGInf:New(SWEInf):New{
 
 local SWE_KgM37 = LMGInf:New(SWEInf):New{
 	name				= "Kulsprutegevär m/37 Light Machinegun",
+	script				= "usgibar.cob",
 	weapons = {
 		[1] = { -- LMG
 			name				= "BAR",
@@ -83,8 +84,9 @@ local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 	},
 }
 
-local SWE_CarlGustavM42 = ATLauncherInf:New(SWEInf):New{
+local SWE_PvGM42 = ATLauncherInf:New(SWEInf):New{
 	name				= "Pansarvärnsgevär m/42",
+	script				= "gerpanzerschrek.cob",
 	weapons = {
 		[1] = { -- AT Rifle
 			name				= "PTRD",
@@ -123,7 +125,7 @@ return lowerkeys({
 	["SWEKgM36HMG_Sandbag"] = SWEKgM36HMG_Sandbag,
 	["SWEKgM36HMG"] = SWE_KgM36HMG,
 	["SWESniper"] = SWE_Sniper,
-	["SWECarlGustavM42"] = SWE_CarlGustavM42,
+	["SWEPvGM42"] = SWE_PvGM42,
 	["SWEPSkottM45"] = SWE_PSkottM45,
 	["SWEMortar"] = SWE_Mortar,
 	["SWEObserv"] = SWE_Observ,
