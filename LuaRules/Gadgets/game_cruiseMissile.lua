@@ -59,6 +59,8 @@ local SetUnitNoSelect = Spring.SetUnitNoSelect
 local SetUnitAlwaysVisible = Spring.SetUnitAlwaysVisible
 local SetUnitVelocity = Spring.SetUnitVelocity
 
+local GetUnitCOBValue = Spring.GetUnitCOBValue
+
 local DelayCall = GG.Delay.DelayCall
 
 function gadget:Initialize()
@@ -197,7 +199,8 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 		local ud = UnitDefs[unitDefID]
 		local gliderSquad = ud.customParams.spawn_on_death or nil
 		local spawnDelay = ud.customParams.deathspawn_delay or 70
-		if gliderSquad then
+		local crashing = (GetUnitCOBValue(unitID, COB.CRASHING) == 1)
+		if gliderSquad and not crashing then
 			if y > INF_WATER_LEVEL then
 				local delay = spawnDelay
 				DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.02, y, z + vz * delay * 0.02, 0, unitTeam}, delay)
