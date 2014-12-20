@@ -259,7 +259,7 @@ local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHeavyGunHEClass, true):New{
   areaOfEffect       = 129,
   weaponVelocity     = 1200,
   damage = {
-    default            = 2509,
+    default            = 4009,
   },  
 }
 
@@ -270,7 +270,7 @@ local Ansaldo105mmL25HEAT = Ansaldo105mmL25:New(MediumHeavyGunHEATClass, true):N
     armor_penetration       = 140,
   },
   damage = {
-    default            = 2419,
+    default            = 3790,
   },
 }
 

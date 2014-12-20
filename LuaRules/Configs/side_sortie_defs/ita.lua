@@ -10,6 +10,7 @@ local itaSorties = {
 		buildPic = "itaro37bis.png",
 		buildTime = 1000,
 		side = "ita",
+		objectName = "MortarShell.s3o",
 	},
 	ita_sortie_attack = {
 		members = {
@@ -25,6 +26,7 @@ local itaSorties = {
 		buildPic = "itafiatcr42.png",
 		buildTime = 3000,
 		side = "ita",
+		objectName = "MortarShell.s3o",
 	},
 	ita_sortie_fighter = {
 		members = {
@@ -41,6 +43,7 @@ local itaSorties = {
 		buildPic = "itare2005.png",
 		buildTime = 4400,
 		side = "ita",
+		objectName = "MortarShell.s3o",
 	},
 	ita_sortie_interceptor = {
 		members = {
@@ -57,6 +60,7 @@ local itaSorties = {
 		buildPic = "ITAMC202.png",
 		buildTime = 3800,
 		side = "ita",
+		objectName = "MortarShell.s3o",
 	},
 	ita_sortie_fighter_bomber = {
 		members = {
@@ -71,6 +75,7 @@ local itaSorties = {
 		buildPic = "itamc205.png",
 		buildTime = 6750,
 		side = "ita",
+		objectName = "MortarShell.s3o",
 	},
 }
 

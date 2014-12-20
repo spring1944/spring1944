@@ -6,6 +6,7 @@ local defFields = {
     "buildPic",
     "buildTime",
     "side",
+    "objectName",
 }
 
 local units = {}
