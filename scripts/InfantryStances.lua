@@ -43,9 +43,244 @@ local function Merge(t1, t2)
 	return merged
 end
 
+anims = {
+	run = {
+				{ --frame 1
+					turns = { -- Turns
+						{rleg, x_axis, math.rad(85), math.rad(540)},
+						{lleg, x_axis, math.rad(10), math.rad(630)},
+						{lthigh, x_axis, math.rad(30), math.rad(270)},
+						{rthigh, x_axis, math.rad(-60), math.rad(270)},
+						{torso, y_axis, math.rad(10), math.rad(90)},
+					},
+					moves = {
+						{pelvis, y_axis, 0, 5},
+					},
+				},
+				{ --frame 2
+					moves = {
+						{pelvis, y_axis, 1, 5},
+					},
+				},
+				{ --frame 3
+					turns = {
+						{rleg, x_axis, math.rad(10), math.rad(630)},
+						{lleg, x_axis, math.rad(85), math.rad(540)},
+						{lthigh, x_axis, math.rad(-60), math.rad(270)},
+						{rthigh, x_axis, math.rad(30), math.rad(270)},
+						{torso, y_axis, math.rad(-10), math.rad(90)},
+					},
+					moves = {
+						{pelvis, y_axis, 0, 5},
+					},
+				},
+				{ --frame 4
+					moves = {
+						{pelvis, y_axis, 1, 5},
+					},
+				},
+				wait = {5,6},
+			},
+	run_aim = {
+				{ --frame 1
+					turns = {
+						{rleg, x_axis, math.rad(85), math.rad(540)},
+						{lleg, x_axis, math.rad(10), math.rad(630)},
+						{lthigh, x_axis, math.rad(30), math.rad(270)},
+						{rthigh, x_axis, math.rad(-60), math.rad(270)},
+					},
+					moves = {
+						{pelvis, y_axis, 0, 5},
+					}, -- Moves
+				},
+				{ --frame 2
+					moves = { -- Moves
+						{pelvis, y_axis, 1, 5},
+					},
+				},
+				{ --frame 3
+					turns = { -- Turns
+						{rleg, x_axis, math.rad(10), math.rad(630)},
+						{lleg, x_axis, math.rad(85), math.rad(540)},
+						{lthigh, x_axis, math.rad(-60), math.rad(270)},
+						{rthigh, x_axis, math.rad(30), math.rad(270)},
+					},
+					moves = { -- Moves
+						{pelvis, y_axis, 0, 5},
+					},
+				},
+				{ --frame 4
+					moves = { -- Moves
+						{pelvis, y_axis, 1, 5},
+					},
+				},
+				wait = {5,6},
+			},
+	crawl = {
+		{ --frame 1
+			turns = { --Turns
+				{head , y_axis, math.rad(30), math.rad(150)},
+				{head , z_axis, math.rad(-(40)), math.rad(150)},
+				
+				{ruparm , x_axis, math.rad(-80), math.rad(150)},
+				{ruparm , y_axis, math.rad(-60), math.rad(150)},
+				
+				{luparm , x_axis, math.rad(-100), math.rad(150)},
+				{luparm , y_axis, math.rad(50), math.rad(150)},
+				
+				{rloarm , x_axis, math.rad(-120), math.rad(150)},
+				{rloarm , y_axis, math.rad(30), math.rad(150)},				
+				
+				{lloarm , x_axis, math.rad(-60), math.rad(150)},
+				{lloarm , y_axis, math.rad(-10), math.rad(150)},
+				
+				{gun , x_axis, math.rad(-40), math.rad(150)},
+				{gun , y_axis, math.rad(45), math.rad(150)},
+				
+				{torso , y_axis, math.rad(-20), math.rad(75)},
+				{torso , z_axis, math.rad(-(20)), math.rad(75)},
+				
+				{pelvis , y_axis, math.rad(15), math.rad(75)},
+				{pelvis , z_axis, math.rad(-(-15)), math.rad(75)},
+				
+				{rthigh , x_axis, math.rad(-90), math.rad(210)},
+				{rthigh , y_axis, math.rad(-85), math.rad(210)},
+				{rthigh , z_axis, math.rad(-(-15)), math.rad(210)},
+				
+				{lthigh , x_axis, 0, math.rad(210)},
+				{lthigh , y_axis, math.rad(100), math.rad(210)},
+				{lthigh , z_axis, math.rad(-(0)), math.rad(210)},
+				
+				{rleg , x_axis, math.rad(120), math.rad(210)},
+				
+				{lleg , x_axis, math.rad(10), math.rad(210)},
+			},
+		},
+		{ -- frame 2
+			turns = { -- Turns
+				{head , y_axis, math.rad(-30), math.rad(150)},
+				{head , z_axis, math.rad(40), math.rad(150)},
+				
+				{ruparm , x_axis, math.rad(-100), math.rad(150)},
+				{ruparm , y_axis, math.rad(-50), math.rad(150)},
+								
+				{luparm , x_axis, math.rad(-80), math.rad(150)},
+				{luparm , y_axis, math.rad(60), math.rad(150)},
+				
+				{rloarm , x_axis, math.rad(-60), math.rad(150)},
+				{rloarm , y_axis, math.rad(10), math.rad(150)},
+				
+				{lloarm , x_axis, math.rad(-120), math.rad(150)},
+				{lloarm , y_axis, math.rad(-30), math.rad(150)},
+				
+				{gun , x_axis, math.rad(-105), math.rad(150)},
+				{gun , y_axis, math.rad(35), math.rad(150)},
+				
+				{torso , y_axis, math.rad(20), math.rad(75)},	
+				{torso , z_axis, math.rad(-(-20)), math.rad(75)},
+				
+				{pelvis , y_axis, math.rad(-15), math.rad(75)},
+				{pelvis , z_axis, math.rad(-(15)), math.rad(75)},
+				
+				{rthigh , x_axis, 0, math.rad(210)},
+				{rthigh , y_axis, math.rad(-100), math.rad(210)},
+				{rthigh , z_axis, math.rad(-(0)), math.rad(210)},
+				
+				{lthigh , x_axis, math.rad(-90), math.rad(210)},
+				{lthigh , y_axis, math.rad(85), math.rad(210)},
+				{lthigh , z_axis, math.rad(-(15)), math.rad(210)},
+				
+				{rleg , x_axis, math.rad(10), math.rad(210)},
+				
+				{lleg , x_axis, math.rad(120), math.rad(210)},
+			},
+		},
+		wait = {12, 14},
+	},
+	pinned_1 = {
+		{ --frame 1
+			turns = { --Turns
+				{head , x_axis, 0, math.rad(120)},
+				
+				{torso , x_axis, math.rad(10), math.rad(120)},
+				
+				{ruparm , z_axis, math.rad(-(100)), math.rad(120)},
+				
+				{luparm , x_axis, math.rad(180), math.rad(120)},
+	
+				{rloarm , y_axis, math.rad(10), math.rad(120)},
+				
+				{rthigh , x_axis, math.rad(-10), math.rad(120)},
+				{rthigh , y_axis, 0, math.rad(120)},
+								
+				{lthigh , x_axis, math.rad(-10), math.rad(120)},
+				{lthigh , z_axis, math.rad(-(0)), math.rad(120)},
+				
+				{rleg , x_axis, math.rad(30), math.rad(120)},
+
+				{lleg , x_axis, math.rad(30), math.rad(120)},
+			},
+			moves = { -- Moves
+				{pelvis, y_axis, -6.5 , 3001},
+			},
+		},
+		{ --frame 2 (delay)
+		},
+		{ --frame 3
+			turns = { --Turns
+				{head , x_axis, math.rad(-60), math.rad(90)},
+				
+				{torso , x_axis, 0, math.rad(90)},
+				
+				{ruparm , z_axis, math.rad(-(80)), math.rad(90)},
+				
+				{luparm , x_axis, math.rad(220), math.rad(90)},
+				
+				{rloarm , y_axis, math.rad(30), math.rad(90)},
+				
+				{rthigh , x_axis, math.rad(-40), math.rad(90)},
+				{rthigh , y_axis, math.rad(-100), math.rad(90)},
+				
+				{lthigh , x_axis, 0, math.rad(90)},
+				{lthigh , z_axis, math.rad(-(-10)), math.rad(90)},
+				
+				{rleg , x_axis, math.rad(50), math.rad(90)},
+				
+				{lleg , x_axis, math.rad(20), math.rad(90)},
+			},
+			moves = { -- Moves
+				{pelvis , y_axis, -6.3 , 3001},
+			},
+		},
+		wait = {57,63},
+	},
+	pinned_3 = {
+		{ --frame 1
+			turns = { --Turns
+				{torso , x_axis, math.rad(30), math.rad(40)},
+
+				{rthigh , x_axis, math.rad(-70), math.rad(40)},
+
+				{lthigh , x_axis, math.rad(-70), math.rad(40)},
+			},
+		},
+		{ --frame 2
+			turns = { --Turns
+				{torso , x_axis, math.rad(50), math.rad(40)},
+				
+				{rthigh , x_axis, math.rad(-60), math.rad(40)},
+				
+				{lthigh , x_axis, math.rad(-60), math.rad(40)},
+			},
+		},
+		wait = {7, 10},
+	},
+}
+
 stances = {
+	null = {},
 	stand_ready_1 =	{
-					{ -- Turns
+					turns = {
 						{head,   x_axis, math.rad(0)},
 						{head,   y_axis, math.rad(0)},
 						{head,   z_axis, math.rad(0)},
@@ -70,7 +305,7 @@ stances = {
 					},
 				},
 	stand_ready_2 = {
-					{ -- Turns
+					turns = { -- Turns
 						{head, x_axis, math.rad(0)},
 						{head, y_axis, math.rad(0)},
 						{head, z_axis, math.rad(0)},
@@ -95,7 +330,7 @@ stances = {
 					},
 				},
 	stand_ready_3 = {
-					{ -- Turns
+					turns = { -- Turns
 						{head, y_axis, math.rad(0)},
 						{head, x_axis, math.rad(0)},
 						{head, z_axis, math.rad(0)},
@@ -120,7 +355,7 @@ stances = {
 					},
 				},
 	stand_base = {
-					{ -- Turns
+					turns ={ -- Turns
 						{pelvis, y_axis, math.rad(0)},
 						{pelvis, x_axis, math.rad(0)},
 						{pelvis, z_axis, math.rad(0)},
@@ -143,14 +378,14 @@ stances = {
 						{lfoot, y_axis, math.rad(0)},
 						{lfoot, z_axis, math.rad(0)},
 					},
-					{ -- Moves
+					moves = { -- Moves
 						{pelvis, x_axis, 0},
 						{pelvis, y_axis, 0},
 						{pelvis, z_axis, 0},
 					},
 				},
 	prone_ready = {
-					{ -- Turns
+					turns = { -- Turns
 						{head, x_axis, math.rad(-60)},
 						{head, y_axis, math.rad(0)},
 						{head, z_axis, math.rad(0)},
@@ -181,7 +416,7 @@ stances = {
 					},
 				},
 	prone_base_1 = {
-					{ -- Turns
+					turns = { -- Turns
 					    {pelvis, x_axis, math.rad(90)},
 						{pelvis, y_axis, math.rad(0)},
 						{pelvis, z_axis, math.rad(0)},
@@ -201,13 +436,16 @@ stances = {
 						{lleg, x_axis, math.rad(10)},
 						{lleg, y_axis, math.rad(0)},
 						{lleg, z_axis, math.rad(0)},
+						
+						{ground , x_axis, math.rad(0)},
 					},
-					{ --Moves
+					moves = { --Moves
 						{pelvis, y_axis, -7},
+						{ground, y_axis, 0},
 					},
 				},
 	prone_base_2 = {
-					{ -- Turns
+					turns = { -- Turns
 					    {pelvis, x_axis, math.rad(90)},
 						{pelvis, y_axis, math.rad(0)},
 						{pelvis, z_axis, math.rad(0)},
@@ -227,13 +465,40 @@ stances = {
 						{lleg, x_axis, math.rad(120)},
 						{lleg, y_axis, math.rad(0)},
 						{lleg, z_axis, math.rad(0)},
+						
+						{ground , x_axis, math.rad(0)},
 					},
-					{ --Moves
+					moves = { --Moves
 						{pelvis, y_axis, -7} ,
+						{ground, y_axis, 0},
 					},
 				},
+	crawl = {
+					turns = {
+						{head , x_axis, math.rad(-60)},
+						
+						{ruparm , z_axis, math.rad(-(0))},
+						
+						{luparm , z_axis, math.rad(-(0))},
+						
+						{rloarm , z_axis, math.rad(-(0))},
+						
+						{lloarm , z_axis, math.rad(-(0))},
+						
+						{gun , z_axis, math.rad(-(0))},
+						
+						{torso , x_axis, math.rad(-10)},
+						
+						{rleg , y_axis, 0},
+						{rleg , z_axis, 0},
+						
+						{lleg , y_axis, 0},
+						{lleg , z_axis, 0},
+					},
+					anim = anims.crawl,
+	},
 	run_base  = {
-					{ -- Turns
+					turns = { -- Turns
 						{torso,  x_axis, math.rad(0)},
 						{torso,  z_axis, math.rad(0)},
 						
@@ -261,13 +526,14 @@ stances = {
 						{lfoot, y_axis, math.rad(0)},
 						{lfoot, z_axis, math.rad(0)},
 					},
-					{ -- Moves
+					moves = { -- Moves
 						{pelvis, x_axis, 0},
 						{pelvis, z_axis, 0},
 					},
+					anim = anims.run,
 				},
 	stand_aim = {
-					{ -- Turns
+					turns = {
 						{head, x_axis, math.rad(15)},
 						{head, y_axis, math.rad(70)},
 						{head, z_axis, math.rad(20)},
@@ -316,16 +582,14 @@ stances = {
 						{lleg, z_axis, math.rad(0)},
 
 					},
-					{ -- Moves
+					moves = {
 						{pelvis, y_axis, 0, 100},
 					},
-					-- headingTurn
-					{pelvis, y_axis, math.rad(-90), 1},
-					-- pitchTurn
-					{torso, x_axis, math.rad(-5), -1},
+					headingTurn = {pelvis, y_axis, math.rad(-90), 1},
+					pitchTurn = {torso, x_axis, math.rad(-5), -1},
 				},
 	run_aim   = {
-					{ -- Turns
+					turns = { -- Turns
 						{head, x_axis, math.rad(0)},
 						{head, y_axis, math.rad(0)},
 						{head, z_axis, math.rad(0)},
@@ -351,26 +615,19 @@ stances = {
 						{gun, z_axis, math.rad(-30)},
 						
 					},
-					{ -- Moves
+					moves = { -- Moves
 						{pelvis, y_axis, 0, 100},
 					},
-					-- headingTurn
-					{torso, y_axis, math.rad(0), 1},
-					-- pitchTurn
-					{torso, x_axis, math.rad(0), -1},
+					headingTurn = {torso, y_axis, math.rad(0), 1},
+					pitchTurn = {torso, x_axis, math.rad(0), -1},
+					anim = anims.run_aim,
 				},
 	prone_aim = {
-					{ -- Turns
-					},
-					{ -- Moves
-					},
-					-- headingTurn
-					{pelvis, y_axis, math.rad(0), 1},
-					-- pitchTurn
-					{torso, x_axis, math.rad(-10), -0.5},
+					headingTurn = {pelvis, y_axis, math.rad(0), 1},
+					pitchTurn = {torso, x_axis, math.rad(-10), -0.5},
 				},
 	kf_stand_to_prone_1 = {
-					{ -- Turns
+					turns = { -- Turns
 						{head,   x_axis, math.rad(0)},
 						{head,   y_axis, math.rad(0)},
 						{head,   z_axis, math.rad(0)},
@@ -415,12 +672,12 @@ stances = {
 						{lloarm, y_axis, math.rad(0)},
 						{lloarm, z_axis, math.rad(0)},
 					},
-					{ -- Moves
+					moves = { -- Moves
 						{pelvis, y_axis, -4.8},
 					}, 
 				},
 	kf_stand_to_prone_2 = {
-					{ -- Turns
+					turns = { -- Turns
 						{pelvis, x_axis, math.rad(80)},
 						{pelvis, y_axis, math.rad(0)},
 						{pelvis, z_axis, math.rad(0)},
@@ -466,197 +723,163 @@ stances = {
 						{gun, y_axis, math.rad(-35)},
 						{gun, z_axis, math.rad(-20)},
 					},
-					{ -- Moves
+					moves = { -- Moves
 						{pelvis, y_axis, -3},
 						{pelvis, z_axis, -1.6},
 					}, 
 				},
+	pinned_1 = {
+					turns = { --Turns
+						{head , y_axis, (0)},
+						{head , z_axis, math.rad(0)},
+						
+						{torso , y_axis, 0},
+						{torso , z_axis, math.rad(-(10))},
+						
+						{ruparm , x_axis, math.rad(-90)},
+						{ruparm , y_axis, 0},
+						
+						{luparm , y_axis, 0},
+						{luparm , z_axis, math.rad(10)},
+						
+						{rloarm , x_axis, 0},
+						{rloarm , z_axis, math.rad(20)},
+						
+						{lloarm , x_axis, 0},
+						{lloarm , y_axis, 0},
+						{lloarm , z_axis, math.rad(-(60))},
+						
+						{gun , x_axis, math.rad(60)},
+						{gun , y_axis, 0},
+						{gun , z_axis, math.rad(-(0))},
+						
+						{pelvis , x_axis, math.rad(80)},
+						
+						{rthigh , z_axis, math.rad(-(0))},
+						
+						{lthigh , y_axis, 0},
+						
+						{rleg , y_axis, 0},
+						{rleg , z_axis, math.rad(-(0))},
+						
+						{lleg , y_axis, 0},
+						{lleg , z_axis, math.rad(-(0))},
+					},
+					anim = anims.pinned_1,
+				},
+	pinned_2 = {
+					turns = {
+						{head , x_axis, math.rad(70)},
+						{head , y_axis, 0},
+						{head , z_axis, math.rad(-(0))},
+						
+						{ruparm , x_axis, math.rad(-190)},
+						{ruparm , y_axis, 0},
+						{ruparm , z_axis, math.rad(-(0))},
+							
+						{luparm , x_axis, math.rad(-90)},
+						{luparm , y_axis, math.rad(20)},
+						{luparm , z_axis, math.rad(-(0))},
+							
+						{rloarm , x_axis, 0},
+						{rloarm , y_axis, 0},
+						{rloarm , z_axis, math.rad(-(-90))},
+						
+						{lloarm , x_axis, 0},
+						{lloarm , y_axis, 0},
+						{lloarm , z_axis, math.rad(-(90))},
+						
+						{gun , x_axis, 0},
+						{gun , y_axis, 0},
+						{gun , z_axis, math.rad(-(0))},
+						
+						{torso , x_axis, 0},
+						{torso , y_axis, 0},
+						{torso , z_axis, math.rad(-(0))},
+							
+						{pelvis , y_axis, math.rad(40)},
+						{pelvis , x_axis, 0},
+						{pelvis , y_axis, math.rad(40)},
+									
+						{rthigh , x_axis, math.rad(-60)},
+						{rthigh , y_axis, math.rad(50)},
+						{rthigh , z_axis, math.rad(-(0))},
+							
+						{lthigh , x_axis, 0},
+						{lthigh , y_axis, math.rad(30)},
+						{lthigh , z_axis, math.rad(-(0))},
+						
+						{rleg , x_axis, math.rad(150)},
+						{rleg , y_axis, 0},
+						{rleg , z_axis, math.rad(-(0))},
+							
+						{lleg , x_axis, 0},
+						{lleg , y_axis, math.rad(30)},
+						{lleg , z_axis, math.rad(-(0))},
+														
+						{ground , x_axis, math.rad(80)},
+					},
+					moves = {
+						{ground , y_axis, 1},
+					},
+				},
+	pinned_3 = {
+					turns = { --Turns
+						{head , x_axis, math.rad(70)},
+						{head , y_axis, 0},
+						{head , z_axis, math.rad(-(0))},
+						
+						{torso , y_axis, 0},
+						{torso , z_axis, math.rad(-(0))},
+						
+						{ruparm , x_axis, math.rad(-190)},
+						{ruparm , y_axis, 0},
+						{ruparm , z_axis, math.rad(-(0))},
+						
+						{luparm , x_axis, math.rad(-90)},
+						{luparm , y_axis, math.rad(-20)},
+						{luparm , z_axis, math.rad(-(0))},
+						
+						{rloarm , x_axis, 0},
+						{rloarm , y_axis, math.rad(10)},
+						{rloarm , z_axis, math.rad(-(-90))},
+						
+						{lloarm , x_axis, 0},
+						{lloarm , y_axis, 0},
+						{lloarm , z_axis, math.rad(-(80))},
+						
+						{gun , x_axis, 0},
+						{gun , y_axis, 0},
+						{gun , z_axis, math.rad(-(0))},
+						
+						{pelvis , x_axis, 0},
+						{pelvis , y_axis, math.rad(90)},
+						
+						{rthigh , y_axis, 0},
+						{rthigh , z_axis, math.rad(-(0))},
+						
+						{lthigh , y_axis, 0},
+						{lthigh , z_axis, math.rad(-(0))},
+						
+						{rleg , x_axis, math.rad(80)},
+						{rleg , y_axis, 0},
+						{rleg , z_axis, math.rad(-(0))},
+						
+						{lleg , x_axis, math.rad(130)},
+						{lleg , y_axis, math.rad(30)},
+						{lleg , z_axis, math.rad(-(0))},
+												
+						{ground , x_axis, math.rad(80)},						
+					},
+					moves = { -- Moves
+						{pelvis, y_axis, -5},
+					},
+					anim = anims.pinned_3,
+				},
 }
 
 
-anims = {
-	run = {
-				{ --frame 1
-					{ -- Turns
-						{rleg, x_axis, math.rad(85), math.rad(540)},
-						{lleg, x_axis, math.rad(10), math.rad(630)},
-						{lthigh, x_axis, math.rad(30), math.rad(270)},
-						{rthigh, x_axis, math.rad(-60), math.rad(270)},
-						{torso, y_axis, math.rad(10), math.rad(90)},
-					},
-					{
-						{pelvis, y_axis, 0, 5},
-					}, -- Moves
-				},
-				{ --frame 2
-					{}, -- Turns
-					{ -- Moves
-						{pelvis, y_axis, 1, 5},
-					},
-				},
-				{ --frame 3
-					{ -- Turns
-						{rleg, x_axis, math.rad(10), math.rad(630)},
-						{lleg, x_axis, math.rad(85), math.rad(540)},
-						{lthigh, x_axis, math.rad(-60), math.rad(270)},
-						{rthigh, x_axis, math.rad(30), math.rad(270)},
-						{torso, y_axis, math.rad(-10), math.rad(90)},
-					},
-					{ -- Moves
-						{pelvis, y_axis, 0, 5},
-					},
-				},
-				{ --frame 4
-					{}, -- Turns
-					{ -- Moves
-						{pelvis, y_axis, 1, 5},
-					},
-				},
-			},
-	run_aim = {
-				{ --frame 1
-					{ -- Turns
-						{rleg, x_axis, math.rad(85), math.rad(540)},
-						{lleg, x_axis, math.rad(10), math.rad(630)},
-						{lthigh, x_axis, math.rad(30), math.rad(270)},
-						{rthigh, x_axis, math.rad(-60), math.rad(270)},
-					},
-					{
-						{pelvis, y_axis, 0, 5},
-					}, -- Moves
-				},
-				{ --frame 2
-					{}, -- Turns
-					{ -- Moves
-						{pelvis, y_axis, 1, 5},
-					},
-				},
-				{ --frame 3
-					{ -- Turns
-						{rleg, x_axis, math.rad(10), math.rad(630)},
-						{lleg, x_axis, math.rad(85), math.rad(540)},
-						{lthigh, x_axis, math.rad(-60), math.rad(270)},
-						{rthigh, x_axis, math.rad(30), math.rad(270)},
-					},
-					{ -- Moves
-						{pelvis, y_axis, 0, 5},
-					},
-				},
-				{ --frame 4
-					{}, -- Turns
-					{ -- Moves
-						{pelvis, y_axis, 1, 5},
-					},
-				},
-			},
-	stand_to_prone_1 = {
-				{ --frame 1
-					{ -- Turns
-						{head,   x_axis, math.rad(0), math.rad(400)},
-						{head,   y_axis, math.rad(0), math.rad(400)},
-						{head,   z_axis, math.rad(0), math.rad(400)},
-						
-					    {pelvis, x_axis, math.rad(0), math.rad(400)},
-						{pelvis, y_axis, math.rad(0), math.rad(400)},
-						{pelvis, z_axis, math.rad(0), math.rad(400)},
-						
-						{rleg, x_axis, math.rad(150), math.rad(750)},
-						{rleg, y_axis, math.rad(10), math.rad(45)},
 
-						{lleg, x_axis, math.rad(150), math.rad(750)},
-						{lleg, y_axis, math.rad(-10), math.rad(45)},
-
-						{lthigh, x_axis, math.rad(-100), math.rad(450)},
-						{lthigh, y_axis, math.rad(30), math.rad(135)},
-
-						{rthigh, x_axis, math.rad(-100), math.rad(450)},
-						{rthigh, y_axis, math.rad(-30), math.rad(135)},
-
-						{ruparm, x_axis, math.rad(-40), math.rad(240)},
-						{ruparm, y_axis, math.rad(0), math.rad(240)},
-						{ruparm, z_axis, math.rad(-40), math.rad(240)},
-
-						{rloarm, x_axis, math.rad(-90), math.rad(500)},
-						{rloarm, y_axis, math.rad(0), math.rad(500)},
-						{rloarm, z_axis, math.rad(10), math.rad(500)},
-
-						{gun, x_axis, math.rad(10), math.rad(1000)},
-						{gun, y_axis, math.rad(-40), math.rad(1000)},
-						{gun, z_axis, math.rad(-10), math.rad(1000)},
-						
-						{torso, x_axis, math.rad(20), math.rad(180)},
-						{torso, y_axis, math.rad(-10), math.rad(90)},
-						{torso, z_axis, math.rad(0), math.rad(180)},
-						
-						{luparm, x_axis, math.rad(-30), math.rad(500)},
-						{luparm, y_axis, math.rad(0), math.rad(500)},
-						{luparm, z_axis, math.rad(-20), math.rad(500)},
-
-						{lloarm, x_axis, math.rad(0), math.rad(1000)},
-						{lloarm, y_axis, math.rad(0), math.rad(1000)},
-						{lloarm, z_axis, math.rad(0), math.rad(1000)},
-					},
-					{
-						{pelvis, y_axis, -4.8, 20},
-					}, -- Moves
-				},
-			},
-	stand_to_prone_2 = 
-			{
-				{ --frame 2
-					{ -- Turns
-					    {pelvis, x_axis, math.rad(80), math.rad(400)},
-						{pelvis, y_axis, math.rad(0), math.rad(400)},
-						{pelvis, z_axis, math.rad(0), math.rad(400)},
-
-						{luparm, x_axis, math.rad(-90), math.rad(280)},
-						{luparm, y_axis, math.rad(0), math.rad(280)},
-						{luparm, z_axis, math.rad(-20), math.rad(280)},
-						
-						
-						{lthigh, x_axis, math.rad(-20), math.rad(400)},
-						{lthigh, y_axis, math.rad(85), math.rad(300)},
-						{lthigh, z_axis, math.rad(0), math.rad(300)},
-
-						{lleg, x_axis, math.rad(0), math.rad(800)},
-						{lleg, y_axis, math.rad(0), math.rad(800)},
-						{lleg, z_axis, math.rad(0), math.rad(800)},
-
-						{rthigh, x_axis, math.rad(-20), math.rad(400)},
-						{rthigh, y_axis, math.rad(-85), math.rad(300)},
-						{rthigh, z_axis, math.rad(0), math.rad(300)},
-
-						{rleg, x_axis, math.rad(0), math.rad(800)},
-						{rleg, y_axis, math.rad(0), math.rad(800)},
-						{rleg, z_axis, math.rad(0), math.rad(800)},
-						
-						{torso, x_axis, math.rad(0), math.rad(300)},
-						{torso, y_axis, math.rad(0), math.rad(300)},
-						{torso, z_axis, math.rad(0), math.rad(300)},
-
-						{head, x_axis, math.rad(-60), math.rad(300)},
-						{head, y_axis, math.rad(0), math.rad(300)},
-						{head, z_axis, math.rad(0), math.rad(300)},
-
-						{ruparm, x_axis, math.rad(-80), math.rad(300)},
-						{ruparm, y_axis, math.rad(10), math.rad(300)},
-						{ruparm, z_axis, math.rad(-50), math.rad(300)},
-
-						{rloarm, x_axis, math.rad(-100), math.rad(300)},
-						{rloarm, y_axis, math.rad(10), math.rad(300)},
-						{rloarm, z_axis, math.rad(0), math.rad(300)},
-						
-						{gun, x_axis, math.rad(10), math.rad(600)},
-						{gun, y_axis, math.rad(-35), math.rad(600)},
-						{gun, z_axis, math.rad(-20), math.rad(600)},
-					},
-					{ -- Moves
-						{pelvis, y_axis, -3, 10},
-						{pelvis, z_axis, -1.6, 7},
-					}, 
-				},
-			}
-}
 -- local stancesArray = {}
 -- local stancesMap = {}
 -- local stancesNames = {}
@@ -668,10 +891,12 @@ anims = {
 -- end
 
 local variants = {
+	null = {stances.null},
 	stand_base = { stances.stand_base },
 	prone_base = { stances.prone_base_1,
 				   stances.prone_base_2 },
 	run_base = { stances.run_base },
+	crawl = { stances.crawl },
 	stand_ready = { stances.stand_ready_1,
 					stances.stand_ready_2,
 					stances.stand_ready_3},
@@ -682,6 +907,7 @@ local variants = {
 	stand_aim = { stances.stand_aim},
 	prone_aim = { stances.prone_aim},
 	run_aim = {stances.run_aim},
+	pinned = {stances.pinned_1, stances.pinned_2, stances.pinned_3},
 }
 
 local function GetManipulationData(manipulationArray)
@@ -710,9 +936,8 @@ local function GetManipulationArray(manipulationData)
 end 
 
 local function GetStanceManipulationData(manipulationArrays, deb)
-	local turns, moves = unpack(manipulationArrays)
-	local tData = GetManipulationData(turns, deb)
-	local mData = GetManipulationData(moves, deb)
+	local tData = GetManipulationData(manipulationArrays.turns, deb)
+	local mData = GetManipulationData(manipulationArrays.moves, deb)
 	GetManipulationArray(tData)
 	return tData, mData
 end
@@ -757,7 +982,11 @@ local function CreatePose(baseName, actionName, poseName)
 			RebaseManipulationData(baseMoveData, actionMoveData)
 			local turns = GetManipulationArray(actionTurnData)
 			local moves = GetManipulationArray(actionMoveData)
-			poses[#poses + 1] = {turns, moves, actionStance[3], actionStance[4]}
+			 poses[#poses + 1] = {   turns = turns,
+									 moves = moves,
+									 headingTurn = actionStance.headingTurn, 
+									 pitchTurn = actionStance.pitchTurn,
+									 anim = actionStance.anim or baseStance.anim}
 			pVariants[#pVariants + 1] = #poses
 			poseNames[#poses] = poseName .. i
 			i = i + 1
@@ -772,6 +1001,8 @@ CreatePose("prone_base", "prone_ready", "prone_ready")
 CreatePose("prone_base", "prone_aim", "prone_aim")
 CreatePose("run_base", "stand_ready", "run_ready")
 CreatePose("run_base", "run_aim", "run_aim")
+CreatePose("null", "crawl", "crawl")
+CreatePose("null", "pinned", "pinned")
 
 local keyframes = {
 	stand_to_prone = {stances.kf_stand_to_prone_1,
@@ -804,7 +1035,7 @@ local function GetTurnDiff(f, t)
 	end
 end
 
-local function Interpolate(fromTurnData, fromMoveData, toTurnData, toMoveData, duration)
+local function CreateTransitionFrame(fromTurnData, fromMoveData, toTurnData, toMoveData, duration)
 
 	local transitionTurns = {}
 	
@@ -842,6 +1073,13 @@ local function Interpolate(fromTurnData, fromMoveData, toTurnData, toMoveData, d
 		end
 	end
 	
+	if #transitionTurns == 0 then
+		transitionTurns = nil
+	end
+	if #transitionMoves == 0 then
+		transitionMoves = nil
+	end
+	
 	return transitionTurns, transitionMoves
 end
 
@@ -852,8 +1090,10 @@ local function FlattenArray(startTurnData, startMoveData, stancesArray, transiti
 	for _, stance in pairs(stancesArray) do
 		local tData, mData = GetStanceManipulationData(stance)
 		local i = #transition + 1
-		local turns, moves = Interpolate(currentTurnData, currentMoveData, tData, mData, delays[i])
-		transition[i] = {delays[i] * 1000, turns, moves}
+		local turns, moves = CreateTransitionFrame(currentTurnData, currentMoveData, tData, mData, delays[i])
+		transition[i] = {duration = delays[i] * 1000, 
+						 turns = turns,
+						 moves = moves}
 		ApplyManipulationData(currentTurnData, tData)
 		ApplyManipulationData(currentMoveData, tData)
 	end
@@ -869,27 +1109,33 @@ local function CreateTransition(startPoseID, intermediateStances, endPoseID, del
 	local transition = {}
 	currentTurnData, currentMoveData = FlattenArray(currentTurnData, currentMoveData, intermediateStances, transition, delays)
 	local endTurnData, endMoveData = GetStanceManipulationData(poses[endPoseID])
-	local headingTurn = poses[endPoseID][3]
+	local endPose = poses[endPoseID]
+	local headingTurn = endPose.headingTurn
 	
 	if headingTurn then
-		Spring.Echo("heading in", poseNames[endPoseID])
+		--Spring.Echo("heading in", poseNames[endPoseID])
 		headingTurn = {unpack(headingTurn)}
 		headingTurn[#headingTurn + 1] = DEFAULT_TURN_SPEED
-		Spring.Echo(unpack(headingTurn))
+		--Spring.Echo(unpack(headingTurn))
 	end
-	local pitchTurn = poses[endPoseID][4]
+	local pitchTurn = endPose.pitchTurn
 	if pitchTurn then
-		Spring.Echo("pitch in", poseNames[endPoseID])
+		--Spring.Echo("pitch in", poseNames[endPoseID])
 		pitchTurn = {unpack(pitchTurn)}
 		pitchTurn[#pitchTurn + 1] = DEFAULT_TURN_SPEED
-		Spring.Echo(unpack(pitchTurn))
+		--Spring.Echo(unpack(pitchTurn))
 	end
 	
 	local lastDelay = delays[#delays]
-	local turns, moves = Interpolate(currentTurnData, currentMoveData, endTurnData, endMoveData, lastDelay)
+	local turns, moves = CreateTransitionFrame(currentTurnData, currentMoveData, endTurnData, endMoveData, lastDelay)
 	
 	
-	transition[#transition + 1] = {lastDelay * 1000, turns, moves, headingTurn, pitchTurn}
+	 transition[#transition + 1] = {duration = lastDelay * 1000,
+									turns = turns,
+									moves = moves,
+									headingTurn = headingTurn, 
+									pitchTurn = pitchTurn,
+									anim = endPose.anim}
 	
 	return transition
 end
@@ -928,6 +1174,7 @@ CreateVariantTransitions(poseVariants.stand_aim, poseVariants.run_aim)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.stand_ready, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_ready)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_aim)
+CreateVariantTransitions(poseVariants.prone_ready, poseVariants.pinned)
 
 CreateVariantTransitions(poseVariants.prone_aim, poseVariants.prone_ready)
 CreateVariantTransitions(poseVariants.prone_aim, poseVariants.stand_aim, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
@@ -941,5 +1188,6 @@ CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_ready)
 CreateVariantTransitions(poseVariants.run_aim, poseVariants.stand_aim)
 CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_aim)
 
+CreateVariantTransitions(poseVariants.pinned, poseVariants.prone_ready)
 
 return poses, poseVariants, anims, transitions

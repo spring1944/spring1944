@@ -93,7 +93,7 @@ end
 
 
 function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
-	if cobScriptIDs[unitID] and weaponID and weaponID > 0 then
+	if (cobScriptIDs[unitID] or lusScriptIDs[unitID]) and weaponID and weaponID > 0 then
 		local wd = WeaponDefs[weaponID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
@@ -193,6 +193,12 @@ function gadget:Initialize()
 			--Spring.Echo(weaponDef.name) -- useful for debugging
 			Script.SetWatchWeapon(weaponId, true)
 		end
+	end
+	-- Fake UnitCreated events for existing units. (for '/luarules reload')
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
 	end
 end
 
