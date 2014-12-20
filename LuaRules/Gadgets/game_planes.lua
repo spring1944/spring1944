@@ -214,9 +214,9 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	local mapDiagonalLength = math.sqrt(mapX ^ 2 + mapY ^ 2)
 	local fuelBoost = mapDiagonalLength / REFERENCE_FUEL_AMOUNT
 	local currentFuel = unitDef.maxFuel
-	SetUnitFuel(unitID, fuelBoost * currentFuel)
 	
 	if unitID ~= nil then
+		SetUnitFuel(unitID, fuelBoost * currentFuel)
 		SetUnitPosition(unitID, sx, sy, sz)
 		SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
 		SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention
