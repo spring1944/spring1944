@@ -67,7 +67,7 @@ local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
 
 local IS_PRONE_FIRE = false
-local CAN_RUN_FIRE = true
+local CAN_RUN_FIRE = false
 
 --UNIT STATE
 local state
@@ -249,10 +249,10 @@ local function PickPose(name)
 			Spring.Echo("in transition")
 			return false
 		end
-		if nextPoseID == currentPoseID then
-			Spring.Echo("no change req")
-			return true
-		end
+		-- if nextPoseID == currentPoseID then
+			-- Spring.Echo("no change req")
+			-- return true
+		-- end
 		local transition = transitions[currentPoseID][nextPoseID]
 		if not transition then
 			Spring.Echo("no change possible")
@@ -285,18 +285,24 @@ local function ReAim(newHeading, newPitch)
 end
 
 
-local function GetPoseName(newState, newAiming, newMoving, newPinned)
+local function GetPoseName(newState, newAiming, newMoving, newPinned, newGrenading)
 	if newPinned then
 		return "pinned"
 	end
 	if newState == STATE_STAND then
 		if newMoving then
+			if grenading then
+				return "run_grenading"
+			end
 			if newAiming then
 				return "run_aim"
 			else
 				return "run_ready"
 			end
 		else
+			if grenading then
+				return "stand_grenading"
+			end
 			if newAiming then
 				return "stand_aim"
 			else
@@ -316,8 +322,8 @@ local function GetPoseName(newState, newAiming, newMoving, newPinned)
 	end
 end
 
-local function UpdatePose(newState, newAiming, newMoving, newPinned)
-	return PickPose(GetPoseName(newState, newAiming, newMoving, newPinned))
+local function UpdatePose(newState, newAiming, newMoving, newPinned, newGrenading)
+	return PickPose(GetPoseName(newState, newAiming, newMoving, newPinned, newGrenading))
 end
 
 local function ChangeSpeed(newSpeed)
@@ -350,13 +356,13 @@ local function ChangeState(newState)
 	return true
 end
 
-local function RequestChange(newState, newAiming, newMoving, newPinned)
-	Spring.Echo(newState, newAiming, newMoving, newPinned)
+local function RequestChange(newState, newAiming, newMoving, newPinned, newGrenading)
+	Spring.Echo(newState, newAiming, newMoving, newPinned, newGrenading)
 	if inTransition then
 		return false
 	end
 	if newState ~= state then
-		if not UpdatePose(newState, aiming, moving, pinned) then
+		if not UpdatePose(newState, aiming, moving, pinned, grenading) then
 			return false
 		else
 			state = newState
@@ -366,7 +372,7 @@ local function RequestChange(newState, newAiming, newMoving, newPinned)
 		Sleep(33)
 	end
 	if newAiming ~= aiming then
-		if not UpdatePose(state, newAiming, moving, pinned) then
+		if not UpdatePose(state, newAiming, moving, pinned, grenading) then
 			return false
 		else
 			aiming = newAiming
@@ -376,7 +382,7 @@ local function RequestChange(newState, newAiming, newMoving, newPinned)
 		Sleep(33)
 	end
 	if newMoving ~= moving then
-		if not UpdatePose(state, aiming, newMoving, pinned) then
+		if not UpdatePose(state, aiming, newMoving, pinned, grenading) then
 			return false
 		else
 			moving = newMoving
@@ -386,7 +392,14 @@ local function RequestChange(newState, newAiming, newMoving, newPinned)
 		Sleep(33)
 	end
 	if newPinned ~= pinned then
-		if not UpdatePose(state, aiming, moving, newPinned) then
+		if not UpdatePose(state, aiming, moving, newPinned, grenading) then
+			return false
+		else
+			pinned = newPinned
+		end
+	end
+	if newGrenading ~= grenading then
+		if not UpdatePose(state, aiming, moving, pinned, newGrenading) then
 			return false
 		else
 			pinned = newPinned
@@ -396,7 +409,7 @@ local function RequestChange(newState, newAiming, newMoving, newPinned)
 end
 
 local function StopAiming()
-	if not RequestChange(state, false, moving, pinned) then
+	if not RequestChange(state, false, moving, pinned, grenading) then
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 		Spring.Echo("can't stop aiming")
 	else
@@ -412,7 +425,7 @@ local function StopWalk()
 	Spring.Echo("stoppppp")
 	MySignal(SIG_MOVE)
 	SetSignalMask(SIG_MOVE)	
-	while (not RequestChange(state, aiming, false, pinned)) do
+	while (not RequestChange(state, aiming, false, pinned, grenading)) do
 		Sleep(33)
 	end
 	Spring.Echo("stopped")
@@ -432,7 +445,7 @@ local function Stand()
 	if IS_PRONE_FIRE and aiming then
 		StopAiming()
 	end
-	if not RequestChange(STATE_STAND, aiming, moving, pinned) then
+	if not RequestChange(STATE_STAND, aiming, moving, pinned, grenading) then
 		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 		Spring.Echo("can't stand")
 	else
@@ -450,14 +463,14 @@ Walk = function()
 	Spring.Echo("runnnnn")
 	MySignal(SIG_MOVE)
 	SetSignalMask(SIG_MOVE)
-	if fear == 0 then
+	if state ~= STATE_STAND and fear == 0 then
 		Stand()
 	end
 	SetSignalMask(SIG_MOVE)
 	if state == STATE_PRONE or not CAN_RUN_FIRE then
 		StopAiming()
 	end
-	while (not RequestChange(state, aiming, true, pinned)) do
+	while (not RequestChange(state, aiming, true, pinned, grenading)) do
 		Sleep(33)
 	end
 	-- while (true) do
@@ -481,7 +494,7 @@ local function Drop()
 	if moving then
 		StopWalk()
 	end
-	while (not RequestChange(STATE_PRONE, aiming, moving, pinned)) do
+	while (not RequestChange(STATE_PRONE, aiming, moving, pinned, grenading)) do
 		Sleep(33)
 	end
 	SetUnitValue(COB.UPRIGHT, 0)
@@ -501,7 +514,7 @@ local function StartAiming()
 		Drop()
 	end
 
-	if not RequestChange(state, true, moving, pinned) then
+	if not RequestChange(state, true, moving, pinned, grenading) then
 		Spring.Echo("can't start aiming")
 	else
 		Spring.Echo("started aiming")
@@ -509,6 +522,21 @@ local function StartAiming()
 	end
 end
 
+local function ThrowGrenade()
+	SetSignalMask(0)
+	if aiming then
+		StopAiming()
+	end
+	Hide(gun)
+	if not RequestChange(state, aiming, moving, pinned, true) then
+		Spring.Echo("can't throw")
+	else
+		Spring.Echo("threw")
+		Sleep(900)
+		grenading = false
+	end
+	Show(gun)
+end
 
 function script.Create()
 	Hide(flare)
@@ -516,6 +544,7 @@ function script.Create()
 	aiming = false
 	moving = false
 	pinned = false
+	grenading = false
 	fear = 0
 	lastPitch = nil
 	lastHeading = nil
@@ -542,7 +571,7 @@ function script.AimFromWeapon(num)
 end
 
 local function CanAim()
-	if pinned or inTransition then
+	if pinned or inTransition or grenading then
 		return false
 	end
 	if moving then
@@ -554,62 +583,66 @@ end
 
 function script.AimWeapon(num, heading, pitch)
 	MySignal(SIG_AIM)
-	SetSignalMask(SIG_AIM)
-	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	if num == 2 then return false end
-	if not CanAim() then
-		return false
-	end
-	if not aiming then
-		lastHeading = heading
-		lastPitch = pitch
-		StartThread(StartAiming)
-		return false
-	end
-	
-	-- local aimed
-	
-	if lastHeading then
-		local hDiff = lastHeading - heading
-		if hDiff > PI then
-			hDiff = TAU - hDiff
-		elseif hDiff < -PI then
-			hDiff = hDiff + TAU
+	if num == 1 then
+		SetSignalMask(SIG_AIM)
+		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
+		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+		if num == 2 then return false end
+		if not CanAim() then
+			return false
 		end
-		local pDiff = abs(lastPitch - pitch)
-		local hDiff = abs(hDiff)
-		if hDiff > REAIM_THRESHOLD or pDiff > REAIM_THRESHOLD then
-			aimed = false
+		if not aiming then
+			lastHeading = heading
+			lastPitch = pitch
+			StartThread(StartAiming)
+			return false
 		end
+		
+		-- local aimed
+		
+		if lastHeading then
+			local hDiff = lastHeading - heading
+			if hDiff > PI then
+				hDiff = TAU - hDiff
+			elseif hDiff < -PI then
+				hDiff = hDiff + TAU
+			end
+			local pDiff = abs(lastPitch - pitch)
+			local hDiff = abs(hDiff)
+			if hDiff > REAIM_THRESHOLD or pDiff > REAIM_THRESHOLD then
+				aimed = false
+			end
+		end
+		
+		if not aimed then
+			ReAim(heading, pitch)
+		end
+		return true
+	elseif num == 2 then
+		return not pinned and not inTransition
 	end
-	
-	if not aimed then
-		ReAim(heading, pitch)
-	end
-	return true
 end
 
 function script.FireWeapon(num)
-	MySignal(SIG_FIRE)
-	EmitSfx(flare, MUZZLEFLASH)
-	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+	if num == 1 then
+		MySignal(SIG_FIRE)
+		EmitSfx(flare, MUZZLEFLASH)
+		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
+		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+	elseif num == 2 then
+		Spring.Echo("fire grenade")
+		StartThread(ThrowGrenade)
+	end
 end
 
 function script.Killed(recentDamage, maxHealth)
 
 end
 
-local function RestoreAfterCover()
-	MySignal(SIG_FEAR)
-	Stand()
-end
-
 local function StopPinned()
 	MySignal(SIG_PINNED)
 	SetSignalMask(SIG_PINNED)
-	while not RequestChange(state, aiming, moving, false) do
+	while not RequestChange(state, aiming, moving, false, grenading) do
 		Sleep(33)
 	end
 	ChangeSpeed(origSpeed / CRAWL_SLOWDOWN_FACTOR)
@@ -629,9 +662,17 @@ local function StartPinned()
 		StopAiming()
 	end
 	ChangeSpeed(0)
-	while not RequestChange(state, aiming, moving, true) do
+	while not RequestChange(state, aiming, moving, true, grenading) do
 		Sleep(33)
 	end
+end
+
+local function RestoreAfterCover()
+	Spring.Echo("restoring")
+	MySignal(SIG_FEAR)
+	fear = 0
+	StopPinned()
+	Stand()
 end
 
 local function RecoverFear()

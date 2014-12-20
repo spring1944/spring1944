@@ -38,6 +38,9 @@ local FEAR_IDS = 	{["301"] = 2, --small arms or very small calibre cannon: MGs, 
 local cobScriptIDs = {}
 local lusScriptIDs = {}
 
+local restoreCOBScriptIDs = {}
+local restorelusScriptIDs = {}
+
 local fearLevels = {}
 local engineerIDs = {}
 local engineerDefIDs = {}
@@ -71,6 +74,9 @@ function gadget:UnitCreated(unitID, unitDefID)
 		SetUnitRulesParam(unitID, "suppress", 0)
 		cobScriptIDs[unitID] = scriptID 
 		lusScriptIDs[unitID] = env and env.AddFear
+		if lusScriptIDs[unitID] then
+			Spring.Echo("bli")
+		end
 		if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
 			if UnitDefs[unitDefID].isBuilder then
 				engineerDefIDs[unitDefID] = true
@@ -80,6 +86,15 @@ function gadget:UnitCreated(unitID, unitDefID)
 			end
 		elseif engineerDefIDs[unitDefID] then -- is a builder
 			engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
+		end
+	end
+	
+	scriptID = GetCOBScriptID(unitID, "RestoreAfterCover")
+	if (scriptID or (env and env.RestoreAfterCover)) then
+		restoreCOBScriptIDs[unitID] = scriptID 
+		restorelusScriptIDs[unitID] = env and env.RestoreAfterCover
+		if restorelusScriptIDs[unitID] then
+			Spring.Echo("bla")
 		end
 	end
 end
@@ -114,12 +129,20 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 			local fearLevel = GetUnitRulesParam(unitID, "suppress")
 			if fearLevel > 0 and fearLevel <= 2 then
 				--Spring.Echo("dude should get up and run")
-				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+				if restoreCOBScriptIDs[unitID] then
+					CallCOBScript(unitID, restoreCOBScriptIDs[unitID], 0)
+				elseif restorelusScriptIDs[unitID] then
+					Spring.UnitScript.CallAsUnit(unitID, restorelusScriptIDs[unitID])
+				end
 			elseif fearLevel > 2 then
 				--if they're in smoke, they don't have to fear...
 				local unitInSmoke = GetUnitRulesParam(unitID, "smoked") == 1 
 				if unitInSmoke then
-					CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+					if restoreCOBScriptIDs[unitID] then
+						CallCOBScript(unitID, restoreCOBScriptIDs[unitID], 0)
+					elseif restorelusScriptIDs[unitID] then
+						Spring.UnitScript.CallAsUnit(unitID, restorelusScriptIDs[unitID])
+					end
 				else
 					local unitAllyTeam = GetUnitAllyTeam(unitID)
 					local ux, uy, uz = GetUnitPosition(unitID)
@@ -129,7 +152,11 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 							local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
 							local nearbyUD = UnitDefs[GetUnitDefID(nearbyUnits[i])]
 							if nearbyUD.customParams.blockfear == "1" and (unitAllyTeam == nearbyUnitAllyTeam) then
-								CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
+								if restoreCOBScriptIDs[unitID] then
+									CallCOBScript(unitID, restoreCOBScriptIDs[unitID], 0)
+								elseif restorelusScriptIDs[unitID] then
+									Spring.UnitScript.CallAsUnit(unitID, restorelusScriptIDs[unitID])
+								end
 								break
 							end
 						end

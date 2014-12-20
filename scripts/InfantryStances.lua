@@ -120,7 +120,7 @@ anims = {
 		{ --frame 1
 			turns = { --Turns
 				{head , y_axis, math.rad(30), math.rad(150)},
-				{head , z_axis, math.rad(-(40)), math.rad(150)},
+				{head , z_axis, math.rad(-40), math.rad(150)},
 				
 				{ruparm , x_axis, math.rad(-80), math.rad(150)},
 				{ruparm , y_axis, math.rad(-60), math.rad(150)},
@@ -138,18 +138,18 @@ anims = {
 				{gun , y_axis, math.rad(45), math.rad(150)},
 				
 				{torso , y_axis, math.rad(-20), math.rad(75)},
-				{torso , z_axis, math.rad(-(20)), math.rad(75)},
+				{torso , z_axis, math.rad(-20), math.rad(75)},
 				
 				{pelvis , y_axis, math.rad(15), math.rad(75)},
-				{pelvis , z_axis, math.rad(-(-15)), math.rad(75)},
+				{pelvis , z_axis, math.rad(15), math.rad(75)},
 				
 				{rthigh , x_axis, math.rad(-90), math.rad(210)},
 				{rthigh , y_axis, math.rad(-85), math.rad(210)},
-				{rthigh , z_axis, math.rad(-(-15)), math.rad(210)},
+				{rthigh , z_axis, math.rad(15), math.rad(210)},
 				
 				{lthigh , x_axis, 0, math.rad(210)},
 				{lthigh , y_axis, math.rad(100), math.rad(210)},
-				{lthigh , z_axis, math.rad(-(0)), math.rad(210)},
+				{lthigh , z_axis, 0, math.rad(210)},
 				
 				{rleg , x_axis, math.rad(120), math.rad(210)},
 				
@@ -177,18 +177,18 @@ anims = {
 				{gun , y_axis, math.rad(35), math.rad(150)},
 				
 				{torso , y_axis, math.rad(20), math.rad(75)},	
-				{torso , z_axis, math.rad(-(-20)), math.rad(75)},
+				{torso , z_axis, math.rad(20), math.rad(75)},
 				
 				{pelvis , y_axis, math.rad(-15), math.rad(75)},
-				{pelvis , z_axis, math.rad(-(15)), math.rad(75)},
+				{pelvis , z_axis, math.rad(-15), math.rad(75)},
 				
 				{rthigh , x_axis, 0, math.rad(210)},
 				{rthigh , y_axis, math.rad(-100), math.rad(210)},
-				{rthigh , z_axis, math.rad(-(0)), math.rad(210)},
+				{rthigh , z_axis, 0, math.rad(210)},
 				
 				{lthigh , x_axis, math.rad(-90), math.rad(210)},
 				{lthigh , y_axis, math.rad(85), math.rad(210)},
-				{lthigh , z_axis, math.rad(-(15)), math.rad(210)},
+				{lthigh , z_axis, math.rad(-15), math.rad(210)},
 				
 				{rleg , x_axis, math.rad(10), math.rad(210)},
 				
@@ -204,7 +204,7 @@ anims = {
 				
 				{torso , x_axis, math.rad(10), math.rad(120)},
 				
-				{ruparm , z_axis, math.rad(-(100)), math.rad(120)},
+				{ruparm , z_axis, math.rad(-100), math.rad(120)},
 				
 				{luparm , x_axis, math.rad(180), math.rad(120)},
 	
@@ -214,7 +214,7 @@ anims = {
 				{rthigh , y_axis, 0, math.rad(120)},
 								
 				{lthigh , x_axis, math.rad(-10), math.rad(120)},
-				{lthigh , z_axis, math.rad(-(0)), math.rad(120)},
+				{lthigh , z_axis, 0, math.rad(120)},
 				
 				{rleg , x_axis, math.rad(30), math.rad(120)},
 
@@ -232,7 +232,7 @@ anims = {
 				
 				{torso , x_axis, 0, math.rad(90)},
 				
-				{ruparm , z_axis, math.rad(-(80)), math.rad(90)},
+				{ruparm , z_axis, math.rad(-80), math.rad(90)},
 				
 				{luparm , x_axis, math.rad(220), math.rad(90)},
 				
@@ -242,7 +242,7 @@ anims = {
 				{rthigh , y_axis, math.rad(-100), math.rad(90)},
 				
 				{lthigh , x_axis, 0, math.rad(90)},
-				{lthigh , z_axis, math.rad(-(-10)), math.rad(90)},
+				{lthigh , z_axis, math.rad(10), math.rad(90)},
 				
 				{rleg , x_axis, math.rad(50), math.rad(90)},
 				
@@ -281,102 +281,102 @@ stances = {
 	null = {},
 	stand_ready_1 =	{
 					turns = {
-						{head,   x_axis, math.rad(0)},
-						{head,   y_axis, math.rad(0)},
-						{head,   z_axis, math.rad(0)},
+						{head,   x_axis, 0},
+						{head,   y_axis, 0},
+						{head,   z_axis, 0},
 						{ruparm, x_axis, math.rad(-60)},
-						{ruparm, y_axis, math.rad(0)},
-						{ruparm, z_axis, math.rad(0)},
-						{luparm, x_axis, math.rad(0)},
-						{luparm, y_axis, math.rad(0)},
-						{luparm, z_axis, math.rad(0)},
+						{ruparm, y_axis, 0},
+						{ruparm, z_axis, 0},
+						{luparm, x_axis, 0},
+						{luparm, y_axis, 0},
+						{luparm, z_axis, 0},
 						{rloarm, x_axis, math.rad(-30)},
 						{rloarm, y_axis, math.rad(20)},
 						{rloarm, z_axis, math.rad(50)},
 						{lloarm, x_axis, math.rad(-95)},
-						{lloarm, y_axis, math.rad(0)},
-						{lloarm, z_axis, math.rad(0)},
-						{gun,    x_axis, math.rad(0)},
-						{gun,    y_axis, math.rad(0)},
-						{gun,    z_axis, math.rad(0)},
-						{torso,  x_axis, math.rad(0)},
-						{torso,  y_axis, math.rad(0)},
-						{torso,  z_axis, math.rad(0)},
+						{lloarm, y_axis, 0},
+						{lloarm, z_axis, 0},
+						{gun,    x_axis, 0},
+						{gun,    y_axis, 0},
+						{gun,    z_axis, 0},
+						{torso,  x_axis, 0},
+						{torso,  y_axis, 0},
+						{torso,  z_axis, 0},
 					},
 				},
 	stand_ready_2 = {
 					turns = { -- Turns
-						{head, x_axis, math.rad(0)},
-						{head, y_axis, math.rad(0)},
-						{head, z_axis, math.rad(0)},
+						{head, x_axis, 0},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
 						{ruparm, x_axis, math.rad(-60)},
 						{ruparm, y_axis, math.rad(-40)},
-						{ruparm, z_axis, math.rad(0)},
+						{ruparm, z_axis, 0},
 						{luparm, x_axis, math.rad(10)},
-						{luparm, y_axis, math.rad(0)},
-						{luparm, z_axis, math.rad(0)},
+						{luparm, y_axis, 0},
+						{luparm, z_axis, 0},
 						{rloarm, x_axis, math.rad(-50)},
-						{rloarm, y_axis, math.rad(0)},
+						{rloarm, y_axis, 0},
 						{rloarm, z_axis, math.rad(110)},
 						{lloarm, x_axis, math.rad(-15)},
 						{lloarm, y_axis, math.rad(100)},
 						{lloarm, z_axis, math.rad(-150)},
 						{gun, x_axis, math.rad(-50)},
-						{gun, y_axis, math.rad(0)},
-						{gun, z_axis, math.rad(0)},
-						{torso, x_axis, math.rad(0)},
-						{torso, y_axis, math.rad(0)},
-						{torso, z_axis, math.rad(0)},
+						{gun, y_axis, 0},
+						{gun, z_axis, 0},
+						{torso, x_axis, 0},
+						{torso, y_axis, 0},
+						{torso, z_axis, 0},
 					},
 				},
 	stand_ready_3 = {
 					turns = { -- Turns
-						{head, y_axis, math.rad(0)},
-						{head, x_axis, math.rad(0)},
-						{head, z_axis, math.rad(0)},
+						{head, y_axis, 0},
+						{head, x_axis, 0},
+						{head, z_axis, 0},
 						{ruparm, x_axis, math.rad(-70)},
 						{ruparm, y_axis, math.rad(-40)},
-						{ruparm, z_axis, math.rad(0)},
+						{ruparm, z_axis, 0},
 						{luparm, x_axis, math.rad(15)},
 						{luparm, y_axis, math.rad(15)},
-						{luparm, z_axis, math.rad(0)},
+						{luparm, z_axis, 0},
 						{rloarm, x_axis, math.rad(-40)},
-						{rloarm, y_axis, math.rad(0)},
+						{rloarm, y_axis, 0},
 						{rloarm, z_axis, math.rad(110)},
 						{lloarm, x_axis, math.rad(30)},
 						{lloarm, y_axis, math.rad(90)},
 						{lloarm, z_axis, math.rad(-100)},
 						{gun, x_axis, math.rad(30)},
-						{gun, y_axis, math.rad(0)},
+						{gun, y_axis, 0},
 						{gun, z_axis, math.rad(20)},
-						{torso, y_axis, math.rad(0)},
-						{torso, x_axis, math.rad(0)},
-						{torso, z_axis, math.rad(0)},
+						{torso, y_axis, 0},
+						{torso, x_axis, 0},
+						{torso, z_axis, 0},
 					},
 				},
 	stand_base = {
 					turns ={ -- Turns
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, x_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
-						{rthigh, x_axis, math.rad(0)},
-						{rthigh, y_axis, math.rad(0)},
-						{rthigh, z_axis, math.rad(0)},
-						{lthigh, x_axis, math.rad(0)},
-						{lthigh, y_axis, math.rad(0)},
-						{lthigh, z_axis, math.rad(0)},
-						{rleg, x_axis, math.rad(0)},
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
-						{lleg, x_axis, math.rad(0)},
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
-						{rfoot, x_axis, math.rad(0)},
-						{rfoot, y_axis, math.rad(0)},
-						{rfoot, z_axis, math.rad(0)},
-						{lfoot, x_axis, math.rad(0)},
-						{lfoot, y_axis, math.rad(0)},
-						{lfoot, z_axis, math.rad(0)},
+						{pelvis, y_axis, 0},
+						{pelvis, x_axis, 0},
+						{pelvis, z_axis, 0},
+						{rthigh, x_axis, 0},
+						{rthigh, y_axis, 0},
+						{rthigh, z_axis, 0},
+						{lthigh, x_axis, 0},
+						{lthigh, y_axis, 0},
+						{lthigh, z_axis, 0},
+						{rleg, x_axis, 0},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
+						{lleg, x_axis, 0},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
+						{rfoot, x_axis, 0},
+						{rfoot, y_axis, 0},
+						{rfoot, z_axis, 0},
+						{lfoot, x_axis, 0},
+						{lfoot, y_axis, 0},
+						{lfoot, z_axis, 0},
 					},
 					moves = { -- Moves
 						{pelvis, x_axis, 0},
@@ -387,8 +387,8 @@ stances = {
 	prone_ready = {
 					turns = { -- Turns
 						{head, x_axis, math.rad(-60)},
-						{head, y_axis, math.rad(0)},
-						{head, z_axis, math.rad(0)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
 
 						{ruparm, x_axis, math.rad(-80)},
 						{ruparm, y_axis, math.rad(20)},
@@ -396,11 +396,11 @@ stances = {
 
 						{luparm, x_axis, math.rad(-140)},
 						{luparm, y_axis, math.rad(-30)},
-						{luparm, z_axis, math.rad(0)},
+						{luparm, z_axis, 0},
 						
 						{rloarm, x_axis, math.rad(-120)},
 						{rloarm, y_axis, math.rad(30)},
-						{rloarm, z_axis, math.rad(0)},
+						{rloarm, z_axis, 0},
 
 						{lloarm, x_axis, math.rad(20)},
 						{lloarm, y_axis, math.rad(65)},
@@ -412,32 +412,32 @@ stances = {
 
 						{torso, x_axis, math.rad(-10)},
 						{torso, y_axis, math.rad(20)},
-						{torso, z_axis, math.rad(0)},
+						{torso, z_axis, 0},
 					},
 				},
 	prone_base_1 = {
 					turns = { -- Turns
 					    {pelvis, x_axis, math.rad(90)},
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
+						{pelvis, y_axis, 0},
+						{pelvis, z_axis, 0},
 
 						{rthigh, x_axis, math.rad(-90)},
 						{rthigh, y_axis, math.rad(-85)},
 						{rthigh, z_axis, math.rad(15)},
 						
-						{lthigh, x_axis, math.rad(0)},
+						{lthigh, x_axis, 0},
 						{lthigh, y_axis, math.rad(85)},
-						{lthigh, z_axis, math.rad(0)},
+						{lthigh, z_axis, 0},
 
 						{rleg, x_axis, math.rad(120)},
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
 
 						{lleg, x_axis, math.rad(10)},
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
 						
-						{ground , x_axis, math.rad(0)},
+						{ground , x_axis, 0},
 					},
 					moves = { --Moves
 						{pelvis, y_axis, -7},
@@ -447,26 +447,26 @@ stances = {
 	prone_base_2 = {
 					turns = { -- Turns
 					    {pelvis, x_axis, math.rad(90)},
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
+						{pelvis, y_axis, 0},
+						{pelvis, z_axis, 0},
 
-						{rthigh, x_axis, math.rad(0)},
+						{rthigh, x_axis, 0},
 						{rthigh, y_axis, math.rad(-100)},
-						{rthigh, z_axis, math.rad(0)},
+						{rthigh, z_axis, 0},
 						
 						{lthigh, x_axis, math.rad(-90)},
 						{lthigh, y_axis, math.rad(85)},
 						{lthigh, z_axis, math.rad(-15)},
 
 						{rleg, x_axis, math.rad(10)},
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
 
 						{lleg, x_axis, math.rad(120)},
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
 						
-						{ground , x_axis, math.rad(0)},
+						{ground , x_axis, 0},
 					},
 					moves = { --Moves
 						{pelvis, y_axis, -7} ,
@@ -477,15 +477,15 @@ stances = {
 					turns = {
 						{head , x_axis, math.rad(-60)},
 						
-						{ruparm , z_axis, math.rad(-(0))},
+						{ruparm , z_axis, 0},
 						
-						{luparm , z_axis, math.rad(-(0))},
+						{luparm , z_axis, 0},
 						
-						{rloarm , z_axis, math.rad(-(0))},
+						{rloarm , z_axis, 0},
 						
-						{lloarm , z_axis, math.rad(-(0))},
+						{lloarm , z_axis, 0},
 						
-						{gun , z_axis, math.rad(-(0))},
+						{gun , z_axis, 0},
 						
 						{torso , x_axis, math.rad(-10)},
 						
@@ -499,32 +499,32 @@ stances = {
 	},
 	run_base  = {
 					turns = { -- Turns
-						{torso,  x_axis, math.rad(0)},
-						{torso,  z_axis, math.rad(0)},
+						{torso,  x_axis, 0},
+						{torso,  z_axis, 0},
 						
-						{pelvis, x_axis, math.rad(0)},
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
+						{pelvis, x_axis, 0},
+						{pelvis, y_axis, 0},
+						{pelvis, z_axis, 0},
 						
-						{rthigh, y_axis, math.rad(0)},
-						{rthigh, z_axis, math.rad(0)},
+						{rthigh, y_axis, 0},
+						{rthigh, z_axis, 0},
 						
-						{lthigh, y_axis, math.rad(0)},
-						{lthigh, z_axis, math.rad(0)},
+						{lthigh, y_axis, 0},
+						{lthigh, z_axis, 0},
 						
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
 						
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
 						
-						{rfoot, x_axis, math.rad(0)},
-						{rfoot, y_axis, math.rad(0)},
-						{rfoot, z_axis, math.rad(0)},
+						{rfoot, x_axis, 0},
+						{rfoot, y_axis, 0},
+						{rfoot, z_axis, 0},
 						
-						{lfoot, x_axis, math.rad(0)},
-						{lfoot, y_axis, math.rad(0)},
-						{lfoot, z_axis, math.rad(0)},
+						{lfoot, x_axis, 0},
+						{lfoot, y_axis, 0},
+						{lfoot, z_axis, 0},
 					},
 					moves = { -- Moves
 						{pelvis, x_axis, 0},
@@ -544,42 +544,42 @@ stances = {
 
 						{luparm, x_axis, math.rad(-65)},
 						{luparm, y_axis, math.rad(60)},
-						{luparm, z_axis, math.rad(0)},
+						{luparm, z_axis, 0},
 						
 						{rloarm, x_axis, math.rad(-80)},
 						{rloarm, y_axis, math.rad(-10)},
 						{rloarm, z_axis, math.rad(25)},
 
 						{lloarm, x_axis, math.rad(-50)},
-						{lloarm, y_axis, math.rad(0)},
+						{lloarm, y_axis, 0},
 						{lloarm, z_axis, math.rad(-30)},
 						
 						{gun, x_axis, math.rad(15)},
 						{gun, y_axis, math.rad(-60)},
 						{gun, z_axis, math.rad(-30)},
 
-						{torso, x_axis, math.rad(0)},
+						{torso, x_axis, 0},
 						{torso, y_axis, math.rad(20)},
 						{torso, z_axis, math.rad(10)},
 
-						{pelvis, x_axis, math.rad(0)},
+						{pelvis, x_axis, 0},
 						{pelvis, z_axis, math.rad(-10)},
 
 						{rthigh, x_axis, math.rad(5)},
-						{rthigh, y_axis, math.rad(0)},
-						{rthigh, z_axis, math.rad(0)},
+						{rthigh, y_axis, 0},
+						{rthigh, z_axis, 0},
 
 						{lthigh, x_axis, math.rad(-15)},
-						{lthigh, y_axis, math.rad(0)},
+						{lthigh, y_axis, 0},
 						{lthigh, z_axis, math.rad(25)},
 						
 						{rleg, x_axis, math.rad(5)},
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
 
 						{lleg, x_axis, math.rad(20)},
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
 
 					},
 					moves = {
@@ -590,51 +590,51 @@ stances = {
 				},
 	run_aim   = {
 					turns = { -- Turns
-						{head, x_axis, math.rad(0)},
-						{head, y_axis, math.rad(0)},
-						{head, z_axis, math.rad(0)},
+						{head, x_axis, 0},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
 						
 						{ruparm, x_axis, math.rad(80)},
 						{ruparm, y_axis, math.rad(30)},
-						{ruparm, z_axis, math.rad(0)},
+						{ruparm, z_axis, 0},
 
 						{luparm, x_axis, math.rad(-60)},
 						{luparm, y_axis, math.rad(-40)},
-						{luparm, z_axis, math.rad(0)},
+						{luparm, z_axis, 0},
 
 						{rloarm, x_axis, math.rad(-120)},
-						{rloarm, y_axis, math.rad(0)},
-						{rloarm, z_axis, math.rad(0)},
+						{rloarm, y_axis, 0},
+						{rloarm, z_axis, 0},
 
-						{lloarm, x_axis, math.rad(0)},
+						{lloarm, x_axis, 0},
 						{lloarm, y_axis, math.rad(70)},
 						{lloarm, z_axis, math.rad(-10)},
 
 						{gun, x_axis, math.rad(-50)},
-						{gun, y_axis, math.rad(0)},
+						{gun, y_axis, 0},
 						{gun, z_axis, math.rad(-30)},
 						
 					},
 					moves = { -- Moves
 						{pelvis, y_axis, 0, 100},
 					},
-					headingTurn = {torso, y_axis, math.rad(0), 1},
-					pitchTurn = {torso, x_axis, math.rad(0), -1},
+					headingTurn = {torso, y_axis, 0, 1},
+					pitchTurn = {torso, x_axis, 0, -1},
 					anim = anims.run_aim,
 				},
 	prone_aim = {
-					headingTurn = {pelvis, y_axis, math.rad(0), 1},
+					headingTurn = {pelvis, y_axis, 0, 1},
 					pitchTurn = {torso, x_axis, math.rad(-10), -0.5},
 				},
 	kf_stand_to_prone_1 = {
 					turns = { -- Turns
-						{head,   x_axis, math.rad(0)},
-						{head,   y_axis, math.rad(0)},
-						{head,   z_axis, math.rad(0)},
+						{head,   x_axis, 0},
+						{head,   y_axis, 0},
+						{head,   z_axis, 0},
 						
-					    {pelvis, x_axis, math.rad(0)},
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
+					    {pelvis, x_axis, 0},
+						{pelvis, y_axis, 0},
+						{pelvis, z_axis, 0},
 						
 						{rleg, x_axis, math.rad(150)},
 						{rleg, y_axis, math.rad(10)},
@@ -649,11 +649,11 @@ stances = {
 						{rthigh, y_axis, math.rad(-30)},
 
 						{ruparm, x_axis, math.rad(-40)},
-						{ruparm, y_axis, math.rad(0)},
+						{ruparm, y_axis, 0},
 						{ruparm, z_axis, math.rad(-40)},
 
 						{rloarm, x_axis, math.rad(-90)},
-						{rloarm, y_axis, math.rad(0)},
+						{rloarm, y_axis, 0},
 						{rloarm, z_axis, math.rad(10)},
 
 						{gun, x_axis, math.rad(10)},
@@ -662,15 +662,15 @@ stances = {
 						
 						{torso, x_axis, math.rad(20)},
 						{torso, y_axis, math.rad(-10)},
-						{torso, z_axis, math.rad(0)},
+						{torso, z_axis, 0},
 						
 						{luparm, x_axis, math.rad(-30)},
-						{luparm, y_axis, math.rad(0)},
+						{luparm, y_axis, 0},
 						{luparm, z_axis, math.rad(-20)},
 
-						{lloarm, x_axis, math.rad(0)},
-						{lloarm, y_axis, math.rad(0)},
-						{lloarm, z_axis, math.rad(0)},
+						{lloarm, x_axis, 0},
+						{lloarm, y_axis, 0},
+						{lloarm, z_axis, 0},
 					},
 					moves = { -- Moves
 						{pelvis, y_axis, -4.8},
@@ -679,37 +679,37 @@ stances = {
 	kf_stand_to_prone_2 = {
 					turns = { -- Turns
 						{pelvis, x_axis, math.rad(80)},
-						{pelvis, y_axis, math.rad(0)},
-						{pelvis, z_axis, math.rad(0)},
+						{pelvis, y_axis, 0},
+						{pelvis, z_axis, 0},
 
 						{luparm, x_axis, math.rad(-90)},
-						{luparm, y_axis, math.rad(0)},
+						{luparm, y_axis, 0},
 						{luparm, z_axis, math.rad(-20)},
 						
 						
 						{lthigh, x_axis, math.rad(-20)},
 						{lthigh, y_axis, math.rad(85)},
-						{lthigh, z_axis, math.rad(0)},
+						{lthigh, z_axis, 0},
 
-						{lleg, x_axis, math.rad(0)},
-						{lleg, y_axis, math.rad(0)},
-						{lleg, z_axis, math.rad(0)},
+						{lleg, x_axis, 0},
+						{lleg, y_axis, 0},
+						{lleg, z_axis, 0},
 
 						{rthigh, x_axis, math.rad(-20)},
 						{rthigh, y_axis, math.rad(-85)},
-						{rthigh, z_axis, math.rad(0)},
+						{rthigh, z_axis, 0},
 
-						{rleg, x_axis, math.rad(0)},
-						{rleg, y_axis, math.rad(0)},
-						{rleg, z_axis, math.rad(0)},
+						{rleg, x_axis, 0},
+						{rleg, y_axis, 0},
+						{rleg, z_axis, 0},
 						
-						{torso, x_axis, math.rad(0)},
-						{torso, y_axis, math.rad(0)},
-						{torso, z_axis, math.rad(0)},
+						{torso, x_axis, 0},
+						{torso, y_axis, 0},
+						{torso, z_axis, 0},
 
 						{head, x_axis, math.rad(-60)},
-						{head, y_axis, math.rad(0)},
-						{head, z_axis, math.rad(0)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
 
 						{ruparm, x_axis, math.rad(-80)},
 						{ruparm, y_axis, math.rad(10)},
@@ -717,7 +717,7 @@ stances = {
 
 						{rloarm, x_axis, math.rad(-100)},
 						{rloarm, y_axis, math.rad(10)},
-						{rloarm, z_axis, math.rad(0)},
+						{rloarm, z_axis, 0},
 						
 						{gun, x_axis, math.rad(10)},
 						{gun, y_axis, math.rad(-35)},
@@ -731,10 +731,10 @@ stances = {
 	pinned_1 = {
 					turns = { --Turns
 						{head , y_axis, (0)},
-						{head , z_axis, math.rad(0)},
+						{head , z_axis, 0},
 						
 						{torso , y_axis, 0},
-						{torso , z_axis, math.rad(-(10))},
+						{torso , z_axis, math.rad(-10)},
 						
 						{ruparm , x_axis, math.rad(-90)},
 						{ruparm , y_axis, 0},
@@ -747,23 +747,23 @@ stances = {
 						
 						{lloarm , x_axis, 0},
 						{lloarm , y_axis, 0},
-						{lloarm , z_axis, math.rad(-(60))},
+						{lloarm , z_axis, math.rad(-60)},
 						
 						{gun , x_axis, math.rad(60)},
 						{gun , y_axis, 0},
-						{gun , z_axis, math.rad(-(0))},
+						{gun , z_axis, 0},
 						
 						{pelvis , x_axis, math.rad(80)},
 						
-						{rthigh , z_axis, math.rad(-(0))},
+						{rthigh , z_axis, 0},
 						
 						{lthigh , y_axis, 0},
 						
 						{rleg , y_axis, 0},
-						{rleg , z_axis, math.rad(-(0))},
+						{rleg , z_axis, 0},
 						
 						{lleg , y_axis, 0},
-						{lleg , z_axis, math.rad(-(0))},
+						{lleg , z_axis, 0},
 					},
 					anim = anims.pinned_1,
 				},
@@ -771,31 +771,31 @@ stances = {
 					turns = {
 						{head , x_axis, math.rad(70)},
 						{head , y_axis, 0},
-						{head , z_axis, math.rad(-(0))},
+						{head , z_axis, 0},
 						
 						{ruparm , x_axis, math.rad(-190)},
 						{ruparm , y_axis, 0},
-						{ruparm , z_axis, math.rad(-(0))},
+						{ruparm , z_axis, 0},
 							
 						{luparm , x_axis, math.rad(-90)},
 						{luparm , y_axis, math.rad(20)},
-						{luparm , z_axis, math.rad(-(0))},
+						{luparm , z_axis, 0},
 							
 						{rloarm , x_axis, 0},
 						{rloarm , y_axis, 0},
-						{rloarm , z_axis, math.rad(-(-90))},
+						{rloarm , z_axis, math.rad(90)},
 						
 						{lloarm , x_axis, 0},
 						{lloarm , y_axis, 0},
-						{lloarm , z_axis, math.rad(-(90))},
+						{lloarm , z_axis, math.rad(-90)},
 						
 						{gun , x_axis, 0},
 						{gun , y_axis, 0},
-						{gun , z_axis, math.rad(-(0))},
+						{gun , z_axis, 0},
 						
 						{torso , x_axis, 0},
 						{torso , y_axis, 0},
-						{torso , z_axis, math.rad(-(0))},
+						{torso , z_axis, 0},
 							
 						{pelvis , y_axis, math.rad(40)},
 						{pelvis , x_axis, 0},
@@ -803,19 +803,19 @@ stances = {
 									
 						{rthigh , x_axis, math.rad(-60)},
 						{rthigh , y_axis, math.rad(50)},
-						{rthigh , z_axis, math.rad(-(0))},
+						{rthigh , z_axis, 0},
 							
 						{lthigh , x_axis, 0},
 						{lthigh , y_axis, math.rad(30)},
-						{lthigh , z_axis, math.rad(-(0))},
+						{lthigh , z_axis, 0},
 						
 						{rleg , x_axis, math.rad(150)},
 						{rleg , y_axis, 0},
-						{rleg , z_axis, math.rad(-(0))},
+						{rleg , z_axis, 0},
 							
 						{lleg , x_axis, 0},
 						{lleg , y_axis, math.rad(30)},
-						{lleg , z_axis, math.rad(-(0))},
+						{lleg , z_axis, 0},
 														
 						{ground , x_axis, math.rad(80)},
 					},
@@ -827,47 +827,47 @@ stances = {
 					turns = { --Turns
 						{head , x_axis, math.rad(70)},
 						{head , y_axis, 0},
-						{head , z_axis, math.rad(-(0))},
+						{head , z_axis, 0},
 						
 						{torso , y_axis, 0},
-						{torso , z_axis, math.rad(-(0))},
+						{torso , z_axis, 0},
 						
 						{ruparm , x_axis, math.rad(-190)},
 						{ruparm , y_axis, 0},
-						{ruparm , z_axis, math.rad(-(0))},
+						{ruparm , z_axis, 0},
 						
 						{luparm , x_axis, math.rad(-90)},
 						{luparm , y_axis, math.rad(-20)},
-						{luparm , z_axis, math.rad(-(0))},
+						{luparm , z_axis, 0},
 						
 						{rloarm , x_axis, 0},
 						{rloarm , y_axis, math.rad(10)},
-						{rloarm , z_axis, math.rad(-(-90))},
+						{rloarm , z_axis, math.rad(90)},
 						
 						{lloarm , x_axis, 0},
 						{lloarm , y_axis, 0},
-						{lloarm , z_axis, math.rad(-(80))},
+						{lloarm , z_axis, math.rad(-80)},
 						
 						{gun , x_axis, 0},
 						{gun , y_axis, 0},
-						{gun , z_axis, math.rad(-(0))},
+						{gun , z_axis, 0},
 						
 						{pelvis , x_axis, 0},
 						{pelvis , y_axis, math.rad(90)},
 						
 						{rthigh , y_axis, 0},
-						{rthigh , z_axis, math.rad(-(0))},
+						{rthigh , z_axis, 0},
 						
 						{lthigh , y_axis, 0},
-						{lthigh , z_axis, math.rad(-(0))},
+						{lthigh , z_axis, 0},
 						
 						{rleg , x_axis, math.rad(80)},
 						{rleg , y_axis, 0},
-						{rleg , z_axis, math.rad(-(0))},
+						{rleg , z_axis, 0},
 						
 						{lleg , x_axis, math.rad(130)},
 						{lleg , y_axis, math.rad(30)},
-						{lleg , z_axis, math.rad(-(0))},
+						{lleg , z_axis, 0},
 												
 						{ground , x_axis, math.rad(80)},						
 					},
@@ -876,6 +876,95 @@ stances = {
 					},
 					anim = anims.pinned_3,
 				},
+	kf_stand_grenading_1 = {
+					turns = { --Turns
+						{ruparm , x_axis, math.rad(20)},
+						{ruparm , y_axis, 0},
+						{ruparm , z_axis, math.rad(-55)},
+						
+						{luparm , x_axis, 0},						
+						{luparm , y_axis, math.rad(-20)},
+						{luparm , z_axis, math.rad(80)},
+					
+						{rloarm , x_axis, math.rad(-35)},
+						{rloarm , y_axis, 0},
+						{rloarm , z_axis, math.rad(-85)},
+					
+						{lloarm , x_axis, math.rad(-20)},
+						{lloarm , y_axis, 0},
+						{lloarm , z_axis, 0},
+										
+						{torso , x_axis, math.rad(-10)},
+						{torso , y_axis, math.rad(-20)},
+					},
+	},
+	kf_stand_grenading_2 = {
+					turns = { --Turns
+						{ruparm , x_axis, math.rad(60)},
+						{ruparm , y_axis, math.rad(35)},
+						{ruparm , z_axis, math.rad(-70)},
+						
+						{luparm , y_axis, math.rad(50)},
+						{luparm , z_axis, math.rad(55)},
+						
+						{rloarm , y_axis, math.rad(15)},
+						
+						{lloarm , x_axis, math.rad(-40)},
+						
+						{torso , x_axis, 0, math.rad(150)},
+					},
+	},
+	kf_run_grenading_1 = {
+					turns = { --Turns
+						{ruparm , x_axis, math.rad(20)},
+						{ruparm , y_axis, 0},
+						{ruparm , z_axis, math.rad(-55)},
+						
+						{luparm , x_axis, 0},						
+						{luparm , y_axis, math.rad(-20)},
+						{luparm , z_axis, math.rad(80)},
+					
+						{rloarm , x_axis, math.rad(-35)},
+						{rloarm , y_axis, 0},
+						{rloarm , z_axis, math.rad(-85)},
+					
+						{lloarm , x_axis, math.rad(-20)},
+						{lloarm , y_axis, 0},
+						{lloarm , z_axis, 0},
+										
+						{torso , x_axis, math.rad(-10)},
+					},
+					anim = anims.run
+	},
+	kf_run_grenading_2 = {
+					turns = { --Turns
+						{ruparm , x_axis, math.rad(60)},
+						{ruparm , y_axis, math.rad(35)},
+						{ruparm , z_axis, math.rad(-70)},
+						
+						{luparm , y_axis, math.rad(50)},
+						{luparm , z_axis, math.rad(55)},
+						
+						{rloarm , y_axis, math.rad(15)},
+						
+						{lloarm , x_axis, math.rad(-40)},
+						
+						{torso , x_axis, 0, math.rad(150)},
+					},
+					anim = anims.run
+	},
+	kf_prone_grenading_1 = {
+					turns = { --Turns
+						{luparm , x_axis, 0},
+						{luparm , y_axis, math.rad(80)},
+						{luparm , z_axis, 0},
+					},
+	},
+	kf_prone_grenading_2 = {
+					turns = {
+						{luparm , x_axis, math.rad(-160)},
+					},
+	},
 }
 
 
@@ -1003,17 +1092,29 @@ CreatePose("run_base", "stand_ready", "run_ready")
 CreatePose("run_base", "run_aim", "run_aim")
 CreatePose("null", "crawl", "crawl")
 CreatePose("null", "pinned", "pinned")
+poseVariants.stand_grenading = poseVariants.stand_ready
+poseVariants.run_grenading = poseVariants.run_ready
+poseVariants.prone_grenading = poseVariants.prone_ready
 
 local keyframes = {
 	stand_to_prone = {stances.kf_stand_to_prone_1,
 					  stances.kf_stand_to_prone_2},
 	prone_to_stand = {stances.kf_stand_to_prone_2,
 					  stances.kf_stand_to_prone_1},
+	stand_grenading = {stances.kf_stand_grenading_1,
+					   stances.kf_stand_grenading_2},
+	run_grenading = {stances.kf_run_grenading_1,
+				     stances.kf_run_grenading_2},
+	prone_grenading = {stances.kf_prone_grenading_1,
+				       stances.kf_prone_grenading_2},
 	default = {},
 }
 local keyframeDelays = {
 	stand_to_prone = {0.2, 0.1, 0.1},
 	prone_to_stand = {0.1, 0.2, 0.2},
+	stand_grenading = {0.3, 0.3, 0.3},
+	run_grenading = {0.3, 0.3, 0.3},
+	prone_grenading = {0.3, 0.3, 0.3},
 	default = {0.1},
 }
 
@@ -1165,6 +1266,7 @@ CreateVariantTransitions(poseVariants.stand_ready, poseVariants.stand_ready)
 CreateVariantTransitions(poseVariants.stand_ready, poseVariants.prone_ready, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
 CreateVariantTransitions(poseVariants.stand_ready, poseVariants.run_ready)
 CreateVariantTransitions(poseVariants.stand_ready, poseVariants.stand_aim)
+CreateVariantTransitions(poseVariants.stand_ready, poseVariants.stand_grenading, keyframes.stand_grenading, keyframeDelays.stand_grenading)
 
 CreateVariantTransitions(poseVariants.stand_aim, poseVariants.stand_ready)
 CreateVariantTransitions(poseVariants.stand_aim, poseVariants.stand_aim)
@@ -1174,7 +1276,9 @@ CreateVariantTransitions(poseVariants.stand_aim, poseVariants.run_aim)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.stand_ready, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_ready)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_aim)
+CreateVariantTransitions(poseVariants.prone_ready, poseVariants.crawl)
 CreateVariantTransitions(poseVariants.prone_ready, poseVariants.pinned)
+CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_grenading, keyframes.prone_grenading, keyframeDelays.prone_grenading)
 
 CreateVariantTransitions(poseVariants.prone_aim, poseVariants.prone_ready)
 CreateVariantTransitions(poseVariants.prone_aim, poseVariants.stand_aim, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
@@ -1183,10 +1287,14 @@ CreateVariantTransitions(poseVariants.prone_aim, poseVariants.prone_aim)
 CreateVariantTransitions(poseVariants.run_ready, poseVariants.stand_ready)
 CreateVariantTransitions(poseVariants.run_ready, poseVariants.run_ready)
 CreateVariantTransitions(poseVariants.run_ready, poseVariants.run_aim)
+CreateVariantTransitions(poseVariants.run_ready, poseVariants.run_grenading, keyframes.run_grenading, keyframeDelays.run_grenading)
+
 
 CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_ready)
 CreateVariantTransitions(poseVariants.run_aim, poseVariants.stand_aim)
 CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_aim)
+
+CreateVariantTransitions(poseVariants.crawl, poseVariants.prone_ready)
 
 CreateVariantTransitions(poseVariants.pinned, poseVariants.prone_ready)
 
