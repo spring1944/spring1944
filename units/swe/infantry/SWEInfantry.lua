@@ -13,7 +13,7 @@ local SWE_Rifle = RifleInf:New(SWEInf):New{
 			name				= "Enfield",
 		},
 		[2] = { -- Grenade
-			name				= "No69",
+			name				= "Model24",
 		},
 	},
 }
@@ -25,7 +25,7 @@ local SWE_AgM42 = RifleInf:New(SWEInf):New{
 			name				= "M1Garand",
 		},
 		[2] = { -- Grenade
-			name				= "No69",
+			name				= "Model24",
 		},
 	},
 }
@@ -37,7 +37,7 @@ local SWE_KPistM37 = SMGInf:New(SWEInf):New{
 			name				= "STEN",
 		},
 		[2] = { -- Grenade
-			name				= "No69",
+			name				= "Model24",
 		},
 	},
 }
@@ -84,12 +84,12 @@ local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 	},
 }
 
-local SWE_PvGM42 = ATLauncherInf:New(SWEInf):New{
+local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
 	name				= "Pansarvärnsgevär m/42",
 	script				= "gerpanzerschrek.cob",
 	weapons = {
 		[1] = { -- AT Rifle
-			name				= "PTRD",
+			name				= "Solothurn",
 		},
 	},
 }
