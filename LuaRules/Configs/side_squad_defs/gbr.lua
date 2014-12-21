@@ -3,7 +3,7 @@ local gbrDefs = {
 	 -- GBR Platoons and Squads --
 	 -----------------------------
 
-    ["gbr_platoon_hq"] =
+	["gbr_platoon_hq"] =
 	{
 		members = {
 			"gbrbren",
@@ -19,9 +19,8 @@ local gbrDefs = {
 		buildPic = "GBRRifle.png",
 		buildTime = 800,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	 ["gbr_platoon_rifle"] =
 	{
 		members = {
@@ -44,7 +43,6 @@ local gbrDefs = {
 		buildPic = "GBRRifle.png",
 		buildTime = 2140,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_assault"] =
@@ -68,7 +66,6 @@ local gbrDefs = {
 		buildPic = "GBRSTEN.png",
 		buildTime = 1960,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_mg"] =
@@ -85,7 +82,6 @@ local gbrDefs = {
 		buildPic = "GBRBREN.png",
 		buildTime = 1050,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_sniper"] =
@@ -100,7 +96,6 @@ local gbrDefs = {
 		buildPic = "GBRSniper.png",
 		buildTime = 1300,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_mortar"] =
@@ -117,7 +112,6 @@ local gbrDefs = {
 		buildPic = "GBR3InMortar.png",
 		buildTime = 2400,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_at"] =
@@ -133,7 +127,6 @@ local gbrDefs = {
 		buildPic = "GBRPIAT.png",
 		buildTime = 430,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
 
 	["gbr_platoon_scout"] =
@@ -149,9 +142,8 @@ local gbrDefs = {
 		buildPic = "GBRObserv.png",
 		buildTime = 580,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["gbr_platoon_commando"] =
 	{
 		members = {
@@ -163,9 +155,8 @@ local gbrDefs = {
 		buildPic = "GBRCommando.png",
 		buildTime = 970,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["gbr_platoon_commando_lz"] =
 	{
 		members = {
@@ -182,9 +173,8 @@ local gbrDefs = {
 		buildPic = "GBRCommando.png",
 		buildTime = 1800,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["gbr_platoon_glider_horsa"] =
 	{
 		members = {
@@ -216,9 +206,8 @@ local gbrDefs = {
 		buildPic = "GBRSTEN.png",
 		buildTime = 4000,
 		side = "GBR",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["gbr_platoon_lca"] =
 	{
 		members = {
@@ -227,7 +216,7 @@ local gbrDefs = {
 			"gbrbren",
 			"gbrsten",
 			"gbrsten",
-			"gbrsten",			
+			"gbrsten",
 			"gbrsten",
 			"gbrsten",
 			"gbrrifle",
@@ -245,7 +234,7 @@ local gbrDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
-	
+
 	["gbr_platoon_lct"] =
 	{
 		members = {

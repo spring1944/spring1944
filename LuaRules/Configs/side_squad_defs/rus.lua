@@ -15,9 +15,8 @@ local rusDefs = {
 		buildPic = "ruscommissar.png",
 		buildTime = 1150,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	 ["rus_platoon_rifle"] =
 	{
 		members = {
@@ -40,9 +39,8 @@ local rusDefs = {
 		buildPic = "RUSRifle.png",
 		buildTime = 1100,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 
 	["rus_platoon_assault"] =
 	{
@@ -67,10 +65,9 @@ local rusDefs = {
 		buildPic = "RUSPPsh.png",
 		buildTime = 1150,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-    	
-    ["rus_platoon_partisan"] =
+
+	["rus_platoon_partisan"] =
 	{
 		members = {
 			"ruspartisanrifle",
@@ -92,9 +89,8 @@ local rusDefs = {
 		buildPic = "RUSRifle.png",
 		buildTime = 1050,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["rus_platoon_mg"] =
 	{
 		members = {
@@ -109,7 +105,6 @@ local rusDefs = {
 		buildPic = "RUSDP.png",
 		buildTime = 900,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_sniper"] =
@@ -124,7 +119,6 @@ local rusDefs = {
 		buildPic = "russniper.png",
 		buildTime = 1120,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_mortar"] =
@@ -141,7 +135,6 @@ local rusDefs = {
 		buildPic = "RUSMortar.png",
 		buildTime = 1540,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
 
 	["rus_platoon_atlight"] =
@@ -157,10 +150,9 @@ local rusDefs = {
 		buildPic = "RUSPTRD.png",
 		buildTime = 820,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
 
-    ["rus_platoon_atheavy"] =
+	["rus_platoon_atheavy"] =
 	{
 		members = {
 			"rusrpg43",
@@ -175,9 +167,8 @@ local rusDefs = {
 		buildPic = "RUSRPG43.png",
 		buildTime = 375,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["rus_platoon_scout"] =
 	{
 		members = {
@@ -191,9 +182,8 @@ local rusDefs = {
 		buildPic = "RUSObserv.png",
 		buildTime = 340,
 		side = "RUS",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["rus_platoon_tender"] =
 	{
 		members = {
@@ -202,7 +192,7 @@ local rusDefs = {
 			"rusdp",
 			"rusppsh",
 			"rusppsh",
-			"rusppsh",			
+			"rusppsh",
 			"rusppsh",
 			"rusppsh",
 			"rus_ni_rifle",
@@ -220,7 +210,7 @@ local rusDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
-	
+
 	["rus_platoon_lct"] =
 	{
 		members = {
