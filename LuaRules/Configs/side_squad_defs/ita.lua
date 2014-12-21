@@ -2,7 +2,7 @@ local itaDefs = {
 	 -----------------------------
 	 -- ITA Platoons and Squads --
 	 -----------------------------
-	
+
 	["ita_platoon_hq"] =
 	{
 		members = {
@@ -19,10 +19,9 @@ local itaDefs = {
 		buildPic = "ITARifle.png",
 		buildTime = 580,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_rifle"] = 
+
+	["ita_platoon_rifle"] =
 	{
 		members = {
 			"itasoloat",
@@ -42,10 +41,9 @@ local itaDefs = {
 		buildPic = "ITARifle.png",
 		buildTime = 1410,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_assault"] = 
+
+	["ita_platoon_assault"] =
 	{
 		members = {
 			"itam38",
@@ -65,10 +63,9 @@ local itaDefs = {
 		buildPic = "ITAM38.png",
 		buildTime = 1400,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_mg"] = 
+
+	["ita_platoon_mg"] =
 	{
 		members = {
 			"itamg",
@@ -82,10 +79,9 @@ local itaDefs = {
 		buildPic = "ITAM37.png",
 		buildTime = 1200,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_sniper"] = 
+
+	["ita_platoon_sniper"] =
 	{
 		members = {
 			"itasniper",
@@ -97,10 +93,9 @@ local itaDefs = {
 		buildPic = "ITASniper.png",
 		buildTime = 1140,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_mortar"] = 
+
+	["ita_platoon_mortar"] =
 	{
 		members = {
 			"itamortar",
@@ -114,10 +109,9 @@ local itaDefs = {
 		buildPic = "ITAMortar.png",
 		buildTime = 1580,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ita_platoon_at"] = 
+
+	["ita_platoon_at"] =
 	{
 		members = {
 			"itasoloat",
@@ -131,7 +125,6 @@ local itaDefs = {
 		buildPic = "ITASolothurn.png",
 		buildTime = 900,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
 	["ita_platoon_infgun"] =
 	{
@@ -145,7 +138,6 @@ local itaDefs = {
 		buildPic = "ITACannone65.png",
 		buildTime = 950,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
 	["ita_platoon_bersaglieri"] =
 	{
@@ -170,9 +162,8 @@ local itaDefs = {
 		buildPic = "ITAbersaglieri.png",
 		buildTime = 1900,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-  	["ita_platoon_carabinieri"] =
+	["ita_platoon_carabinieri"] =
 	{
 		members = {
 			"itacarabinieri",
@@ -192,7 +183,6 @@ local itaDefs = {
 		buildPic = "ITARifle.png",
 		buildTime = 800,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
 	["ita_platoon_alpini"] =
 	{
@@ -218,9 +208,8 @@ local itaDefs = {
 		buildPic = "itaalpini.png",
 		buildTime = 4000,
 		side = "ITA",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["ita_platoon_lct"] =
 	{
 		members = {

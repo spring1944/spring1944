@@ -10,7 +10,6 @@ local jpnSorties = {
 		buildPic = "JPNKi76.png",
 		buildTime = 1000,
 		side = "JPN",
-		objectName = "MortarShell.s3o",
 	},
 	jpn_sortie_interceptor = {
 		members = {
@@ -27,7 +26,6 @@ local jpnSorties = {
 		buildPic = "JPNKi43.png",
 		buildTime = 3200,
 		side = "JPN",
-		objectName = "MortarShell.s3o",
 	},
 	jpn_sortie_fighter = {
 		members = {
@@ -44,7 +42,6 @@ local jpnSorties = {
 		buildPic = "JPNKi84.png",
 		buildTime = 4500,
 		side = "JPN",
-		objectName = "MortarShell.s3o",
 	},
 	jpn_sortie_divebomber = {
 		members = {
@@ -59,7 +56,6 @@ local jpnSorties = {
 		buildPic = "JPNKi51.png",
 		buildTime = 3500,
 		side = "JPN",
-		objectName = "MortarShell.s3o",
 	},
 	jpn_sortie_at = {
 		members = {
@@ -74,7 +70,6 @@ local jpnSorties = {
 		buildPic = "JPNKi102.png",
 		buildTime = 4500,
 		side = "JPN",
-		objectName = "MortarShell.s3o",
 	},
 }
 

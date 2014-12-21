@@ -9,9 +9,8 @@ local gerSorties = {
 		buildCostMetal = 1000,
 		buildPic = "GERFi156.png",
 		buildTime = 1000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	ger_sortie_interceptor = {
 		members = {
 			"gerbf109",
@@ -26,9 +25,8 @@ local gerSorties = {
 		buildCostMetal = 3940,
 		buildPic = "GERBf109.png",
 		buildTime = 3940,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	ger_sortie_fighter = {
 		members = {
 			"gerfw190",
@@ -43,9 +41,8 @@ local gerSorties = {
 		buildCostMetal = 4500,
 		buildPic = "GERFw190.png",
 		buildTime = 4500,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	ger_sortie_fighter_bomber = {
 		members = {
 			"gerfw190g",
@@ -58,9 +55,8 @@ local gerSorties = {
 		buildCostMetal = 6750,
 		buildPic = "GERFw190G.png",
 		buildTime = 6750,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	ger_sortie_attack = {
 		members = {
 			"gerju87g",
@@ -74,9 +70,8 @@ local gerSorties = {
 		buildCostMetal = 5400,
 		buildPic = "GERJu87G.png",
 		buildTime = 5400,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	ger_sortie_flying_bomb = {
 		members = {
 			"gerv1",
@@ -91,7 +86,6 @@ local gerSorties = {
 		buildCostMetal = 1825,
 		buildPic = "GERV1.png",
 		buildTime = 1825,
-		objectName = "MortarShell.s3o",
 	},
 }
 

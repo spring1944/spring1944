@@ -11,12 +11,12 @@ function gadget:GetInfo()
 end
 -- function localisations
 local floor						= math.floor
-local min, max                  = math.min, math.max
+local min, max					= math.min, math.max
 
 -- Synced Read
 local GetUnitRulesParam			= Spring.GetUnitRulesParam
 local GetUnitTeam				= Spring.GetUnitTeam
-local GetUnitPosition           = Spring.GetUnitPosition
+local GetUnitPosition			= Spring.GetUnitPosition
 local GetGroundInfo				= Spring.GetGroundInfo
 
 -- Synced Ctrl
@@ -112,10 +112,11 @@ end
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
+function gadget:Initialize()
+	gadget:GameStart() -- Will only do something if game has already started
+end
+
 function gadget:GameStart()
-	if metalMake >= 0 then
-		metalMake = metalMake * (#teams - 1) / #GG.flags
-	end
 	--Spring.Echo(tostring(metalMake or "N/A"))
 	for i = 1, #GG.flags do
 		local flagID = GG.flags[i]
@@ -124,9 +125,8 @@ function gadget:GameStart()
 	-- Remove the gadget if using map command per player
 	if metalMake >= 0 then
 		gadgetHandler:RemoveGadget() -- possibly unsafe
-	end
+	end	
 end
-
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	local ud = UnitDefs[unitDefID]

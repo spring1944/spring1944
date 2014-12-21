@@ -27,6 +27,7 @@ local GetFeaturesInRectangle	= Spring.GetFeaturesInRectangle
 local GetGroundHeight			= Spring.GetGroundHeight
 local GetSideData				= Spring.GetSideData
 local GetTeamInfo				= Spring.GetTeamInfo
+local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local GetTeamStartPosition		= Spring.GetTeamStartPosition
 local GetTeamUnits				= Spring.GetTeamUnits -- backwards compat
 local GetUnitDefID				= Spring.GetUnitDefID
@@ -221,6 +222,23 @@ local function InitAIUnitReplacementTable()
 	end
 end
 
+function gadget:Initialize()
+	GG.teamSide = {}
+	local teams = Spring.GetTeamList()
+	for i = 1,#teams do
+		local teamID = teams[i]
+		-- don't spawn a start unit for the Gaia team
+		if (teamID ~= gaiaTeamID) then
+			local side = GetTeamRulesParam(teamID, "side")
+			if side then
+				GG.teamSide[teamID] = side
+			else
+				GG.teamSide[teamID] = ""
+			end
+		end
+	end
+end
+
 function gadget:GameStart()
 	local gaiaTeamID = Spring.GetGaiaTeamID()
 	local teams = Spring.GetTeamList()
@@ -230,7 +248,6 @@ function gadget:GameStart()
 	--Make a global list of the side for each team, because with random faction
 	--it is not trivial to find out the side of a team using Spring's API.
 	-- data set in GetStartUnit function. NB. The only use for this currently is flags
-	GG.teamSide = {}
 
 	-- spawn start units
 	for i = 1,#teams do
