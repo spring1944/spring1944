@@ -181,6 +181,7 @@ local ObservInf = Infantry:New{
 	},
 }
 
+
 local MedMortarInf = Infantry:New{
 	description			= "Heavy Infantry Fire Support",
 	highTrajectory		= 1,
@@ -213,6 +214,15 @@ local MedMortarInf = Infantry:New{
 	},
 }
 
+local LightMortarInf = MedMortarInf:New{
+	description			= "Light Infantry Mortar",
+	hightrajectory		= false,
+	maxVelocity			= 1.45,
+	customParams = {
+		weaponcost			= 7, -- TODO: make this a weapon tag
+	},
+}
+	
 local FlameInf = Infantry:New{
 	description			= "Close Range Heavy Assault Infantry",
 	iconType			= "flame",
@@ -335,6 +345,7 @@ return {
 	LMGInf = LMGInf,
 	HMGInf = HMGInf,
 	SniperInf = SniperInf,
+	LightMortarInf = LightMortarInf,
 	MedMortarInf = MedMortarInf,
 	FlameInf = FlameInf,
 	ObservInf = ObservInf,
