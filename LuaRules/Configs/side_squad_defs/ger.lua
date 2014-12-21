@@ -19,10 +19,9 @@ local gerDefs = {
 		buildPic = "GERRifle.png",
 		buildTime = 610,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_rifle"] = 
+
+	["ger_platoon_rifle"] =
 	{
 		members = {
 			"germp40",
@@ -42,10 +41,9 @@ local gerDefs = {
 		buildPic = "GERRifle.png",
 		buildTime = 1830,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_assault"] = 
+
+	["ger_platoon_assault"] =
 	{
 		members = {
 			"germp40",
@@ -67,10 +65,9 @@ local gerDefs = {
 		buildPic = "GERMP40.png",
 		buildTime = 1800,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_mg"] = 
+
+	["ger_platoon_mg"] =
 	{
 		members = {
 			"germg42",
@@ -84,10 +81,9 @@ local gerDefs = {
 		buildPic = "GERMG42.png",
 		buildTime = 1350,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_sniper"] = 
+
+	["ger_platoon_sniper"] =
 	{
 		members = {
 			"gersniper",
@@ -99,10 +95,9 @@ local gerDefs = {
 		buildPic = "GERSniper.png",
 		buildTime = 1250,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_mortar"] = 
+
+	["ger_platoon_mortar"] =
 	{
 		members = {
 			"gergrw34",
@@ -116,10 +111,9 @@ local gerDefs = {
 		buildPic = "GERGrW34.png",
 		buildTime = 2260,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_at"] = 
+
+	["ger_platoon_at"] =
 	{
 		members = {
 			"gerpanzerfaust",
@@ -132,10 +126,9 @@ local gerDefs = {
 		buildPic = "GERPanzerfaust.png",
 		buildTime = 450,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["ger_platoon_scout"] = 
+
+	["ger_platoon_scout"] =
 	{
 		members = {
 			"gerobserv",
@@ -148,9 +141,8 @@ local gerDefs = {
 		buildPic = "GERObserv.png",
 		buildTime = 470,
 		side = "GER",
-		objectName = "MortarShell.s3o",
-	},  
-	
+	},
+
 	["ger_platoon_infgun"] =
 	{
 		members = {
@@ -163,9 +155,8 @@ local gerDefs = {
 		buildPic = "GERLeIG18.png",
 		buildTime = 1320,
 		side = "GER",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["ger_platoon_landing"] =
 	{
 		members = {
@@ -174,7 +165,7 @@ local gerDefs = {
 			"germg42",
 			"germp40",
 			"germp40",
-			"germp40",			
+			"germp40",
 			"germp40",
 			"germp40",
 			"gerrifle",
@@ -192,7 +183,7 @@ local gerDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
-	
+
 	["ger_platoon_lct"] =
 	{
 		members = {

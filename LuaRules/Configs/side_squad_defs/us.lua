@@ -3,7 +3,7 @@ local usDefs = {
 	 -- US Platoons and Squads --
 	 ----------------------------
 
-    ["us_platoon_hq"] =
+	["us_platoon_hq"] =
 	{
 		members = {
 			"usgirifle",
@@ -19,10 +19,9 @@ local usDefs = {
 		buildPic = "USGIRifle.png",
 		buildTime = 570,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
 
-	["us_platoon_rifle"] = 
+	["us_platoon_rifle"] =
 	{
 		members = {
 			"usgithompson",
@@ -44,10 +43,9 @@ local usDefs = {
 		buildPic = "usgirifle.png",
 		buildTime = 1675,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_assault"] = 
+
+	["us_platoon_assault"] =
 	{
 		members = {
 			"usgithompson",
@@ -69,10 +67,9 @@ local usDefs = {
 		buildPic = "usgithompson.png",
 		buildTime = 1540,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_mg"] = 
+
+	["us_platoon_mg"] =
 	{
 		members = {
 			"usgimg",
@@ -86,10 +83,9 @@ local usDefs = {
 		buildPic = "usgimg.png",
 		buildTime = 1050,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_sniper"] = 
+
+	["us_platoon_sniper"] =
 	{
 		members = {
 			"usgisniper",
@@ -101,10 +97,9 @@ local usDefs = {
 		buildPic = "usgisniper.png",
 		buildTime = 1240,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_mortar"] = 
+
+	["us_platoon_mortar"] =
 	{
 		members = {
 			"usm1mortar",
@@ -118,10 +113,9 @@ local usDefs = {
 		buildPic = "usm1mortar.png",
 		buildTime = 1850,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_at"] = 
+
+	["us_platoon_at"] =
 	{
 		members = {
 			"usgibazooka",
@@ -134,10 +128,9 @@ local usDefs = {
 		buildPic = "usgibazooka.png",
 		buildTime = 350,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_scout"] = 
+
+	["us_platoon_scout"] =
 	{
 		members = {
 			"usobserv",
@@ -150,10 +143,9 @@ local usDefs = {
 		buildPic = "usobserv.png",
 		buildTime = 440,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_flame"] = 
+
+	["us_platoon_flame"] =
 	{
 		members = {
 			"usgiflamethrower",
@@ -167,10 +159,9 @@ local usDefs = {
 		buildPic = "usgiflamethrower.png",
 		buildTime = 800,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
-	["us_platoon_infgun"] = 
+
+	["us_platoon_infgun"] =
 	{
 		members = {
 			"usobserv",
@@ -182,9 +173,8 @@ local usDefs = {
 		buildPic = "USM8Gun.png",
 		buildTime = 1290,
 		side = "US",
-		objectName = "MortarShell.s3o",
 	},
-	
+
 	["us_platoon_landing"] =
 	{
 		members = {
@@ -197,7 +187,7 @@ local usDefs = {
 			"usgibar",
 			"usgithompson",
 			"usgithompson",
-			"usgithompson",	
+			"usgithompson",
 			"usgithompson",
 			"usgithompson",
 			"usgithompson",
@@ -216,7 +206,7 @@ local usDefs = {
 		},
 		-- other fields not needed for transport squads
 	},
-	
+
 	["us_platoon_lct"] =
 	{
 		members = {
