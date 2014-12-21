@@ -29,6 +29,8 @@ local mcDisable				= Spring.MoveCtrl.Disable
 local GetUnitFuel 			= Spring.GetUnitFuel
 local GetUnitHealth			= Spring.GetUnitHealth
 local GetUnitTeam			= Spring.GetUnitTeam
+local GetCOBScriptID		= Spring.GetCOBScriptID
+local GetUnitWeaponState	= Spring.GetUnitWeaponState
 -- Synced Ctrl
 local CallCOBScript			= Spring.CallCOBScript
 local SetUnitCOBValue		= Spring.SetUnitCOBValue
@@ -56,14 +58,21 @@ function gadget:Initialize()
 	if (fear_mult ~= 1) then
 		BUGOUT_LEVEL = BUGOUT_LEVEL * fear_mult
 	end
+	
+	for _, teamID in pairs(Spring.GetTeamList()) do
+		local px, py, pz = Spring.GetTeamStartPosition(teamID)
+		if px then
+			teamStartPos[teamID] = {px, py, pz}
+		end
+	end
 end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly and not ud.customParams.cruise_missile_accuracy then --gliders and V1s shouldn't get scared, just dead.
-		local planeScriptID = Spring.GetCOBScriptID(unitID, "luaFunction")
+		local planeScriptID = GetCOBScriptID(unitID, "luaFunction")
   		if (planeScriptID) then
-			local properAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
+			local properAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 			SetUnitRulesParam(unitID, "suppress", 0)
 			planeScriptIDs[unitID] = planeScriptID
 			accuracyTable[unitID] = properAccuracy
@@ -111,7 +120,7 @@ function gadget:GameFrame(n)
 				--Spring.Echo("Plane TeamID", teamID, "Fuel", fuel, "Suppress", suppression)
 				if suppression > 0 then
 					local newFuel = fuel - FUEL_LOSS_RATE
-					local oldAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
+					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
 						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*suppression})
 						--Spring.Echo("unit's fear level: ", suppression)

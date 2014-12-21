@@ -86,6 +86,7 @@ function gadget:Initialize()
 	if modOptions and modOptions.communism_mode and modOptions.communism_mode ~= "1" then
 		gadgetHandler:RemoveGadget()
 	end
+	gadget:GameStart() -- Will only do something if game has already started
 end
 
 function gadget:GameStart()

@@ -1,4 +1,3 @@
-local teamID = Spring.GetUnitTeam(unitID)
 local currentSide -- intentionally nil
 -- Pieces
 local base = piece("base")
@@ -24,8 +23,11 @@ function SetFlag(teamID)
 		Move(flags[currentSide], y_axis, 0, 20)
 		WaitForMove(flags[currentSide], y_axis)
 	end
+	while not GG.teamSide do -- for /luarules reload
+		Sleep(33)
+	end
 	local side = GG.teamSide[teamID]
-	if side ~= "" then
+	if side and side ~= "" then
 		Move(flags[side], y_axis, 65, 10)
 		WaitForMove(flags[side], y_axis)
 		currentSide = side
@@ -34,6 +36,8 @@ end
 
 function script.Create()
 --	StartFlagThread(teamID)
+	local teamID = Spring.GetUnitTeam(unitID)
+	StartFlagThread(teamID)
 end
 
 function script.WindChanged (heading, strength)
