@@ -9,9 +9,8 @@ local usSorties = {
 		buildCostMetal = 1000,
 		buildPic = "USL4.png",
 		buildTime = 1000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	us_sortie_interceptor = {
 		members = {
 			"usp51dmustang",
@@ -26,9 +25,8 @@ local usSorties = {
 		buildCostMetal = 4325,
 		buildPic = "USP51DMustang.png",
 		buildTime = 4325,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	us_sortie_fighter_bomber = {
 		members = {
 			"usp47thunderbolt",
@@ -41,9 +39,8 @@ local usSorties = {
 		buildCostMetal = 6750,
 		buildPic = "USP47Thunderbolt.png",
 		buildTime = 6750,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	us_sortie_attack = {
 		members = {
 			"usp51dmustangga",
@@ -56,9 +53,8 @@ local usSorties = {
 		buildCostMetal = 6000,
 		buildPic = "USP51DMustangGA.png",
 		buildTime = 6000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	us_sortie_paratrooper = {
 		members = {
 			"usc47",
@@ -71,7 +67,6 @@ local usSorties = {
 		buildCostMetal = 4275,
 		buildPic = "USC47.png",
 		buildTime = 4275,
-		objectName = "MortarShell.s3o",
 	},
 }
 
