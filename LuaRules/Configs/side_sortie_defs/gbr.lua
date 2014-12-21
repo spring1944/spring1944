@@ -9,9 +9,8 @@ local gbrSorties = {
 		buildCostMetal = 1000,
 		buildPic = "GBRAuster.png",
 		buildTime = 1000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	gbr_sortie_interceptor = {
 		members = {
 			"gbrspitfiremkxiv",
@@ -26,9 +25,8 @@ local gbrSorties = {
 		buildCostMetal = 5000,
 		buildPic = "GBRSPitfireMkXIV.png",
 		buildTime = 5000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	gbr_sortie_fighter_bomber = {
 		members = {
 			"gbrspitfiremkix",
@@ -41,9 +39,8 @@ local gbrSorties = {
 		buildCostMetal = 6750,
 		buildPic = "GBRSpitfireMkIX.png",
 		buildTime = 6750,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	gbr_sortie_attack = {
 		members = {
 			"gbrtyphoon",
@@ -56,9 +53,8 @@ local gbrSorties = {
 		buildCostMetal = 6000,
 		buildPic = "GBRTyphoon.png",
 		buildTime = 6000,
-		objectName = "MortarShell.s3o",
 	},
-  
+
 	gbr_sortie_glider_horsa = {
 		members = {
 			"gbrhorsa",
@@ -73,7 +69,6 @@ local gbrSorties = {
 		buildCostMetal = 5625,
 		buildPic = "GBRHorsa.png",
 		buildTime = 5625,
-		objectName = "MortarShell.s3o",
 	},
 }
 
