@@ -42,13 +42,17 @@ local SWE_KPistM37 = SMGInf:New(SWEInf):New{
 	},
 }
 
-local SWE_KgM37 = LMGInf:New(SWEInf):New{
+local SWE_KgM37 = RifleInf:New(SWEInf):New{
 	name				= "Kulsprutegevär m/37 Light Machinegun",
+	description			= "Long Range Assault/Light Fire Support Unit",
 	script				= "usgibar.cob",
 	weapons = {
 		[1] = { -- LMG
 			name				= "BAR",
 		},
+		[2] = { -- Grenade
+			name				= "Model24",
+		},		
 	},
 }
 
