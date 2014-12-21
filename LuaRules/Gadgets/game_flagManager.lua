@@ -19,11 +19,13 @@ local GetFeaturePosition		= Spring.GetFeaturePosition
 local GetGroundHeight			= Spring.GetGroundHeight
 local GetGroundInfo				= Spring.GetGroundInfo
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
+local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetUnitTransporter		= Spring.GetUnitTransporter
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local GetTeamUnitDefCount 		= Spring.GetTeamUnitDefCount
-
+local GetTeamUnitsSorted		= Spring.GetTeamUnitsSorted
+local GetUnitDefID				= Spring.GetUnitDefID
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local CreateUnit				= Spring.CreateUnit
@@ -227,12 +229,12 @@ end
 function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 	if flagType == "flag" then
 		SetUnitRulesParam(flagID, "lifespan", 0)
-		env = Spring.UnitScript.GetScriptEnv(flagID)
+		local env = Spring.UnitScript.GetScriptEnv(flagID)
 		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
 	end
 end
 
-function PlaceFlag(spot, flagType)
+function PlaceFlag(spot, flagType, unitID)
 	if DEBUG then
 		Spring.Echo("{")
 		Spring.Echo("	x = " .. spot.x .. ",")
@@ -240,7 +242,8 @@ function PlaceFlag(spot, flagType)
 		Spring.Echo("},")
 	end
 	
-	local newFlag = CreateUnit(flagType, spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	local newFlag = unitID or CreateUnit(flagType, spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
+	
 	numFlags[flagType] = numFlags[flagType] + 1
 	flags[flagType][numFlags[flagType]] = newFlag
 	flagCapStatuses[newFlag] = {}
@@ -258,7 +261,7 @@ function PlaceFlag(spot, flagType)
 end
 
 
-function gadget:GamePreload()
+function gadget:Initialize()
 	if DEBUG then Spring.Echo(PROFILE_PATH) end
 	-- CHECK FOR PROFILES
 	if VFS.FileExists(PROFILE_PATH) then
@@ -285,6 +288,30 @@ function gadget:GamePreload()
 		local flagType, spotTable = FindBuoyFeatures() 
 		flagTypeSpots[flagType] = spotTable
 	end
+	
+	for _, flagType in pairs(flagTypes) do
+		GG[flagType .. "s"] = flags[flagType] -- nicer to have GG.flags rather than GG.flag
+	end
+	
+	for _, flagType in pairs(flagTypes) do
+		for i = 1, #flagTypeSpots[flagType] do
+			local sx, sz = flagTypeSpots[flagType][i].x, flagTypeSpots[flagType][i].z
+			local units = GetUnitsInCylinder(sx, sz, 1)
+			for _, unitID in pairs(units) do
+				local name = UnitDefs[GetUnitDefID(unitID)].name
+				if name == flagType then
+					PlaceFlag(flagTypeSpots[flagType][i], flagType, unitID)
+					break
+				end
+			end
+		end
+	end
+	
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, GetUnitDefID(unitID))
+	end
 end
 
 
@@ -295,7 +322,6 @@ function gadget:GameStart()
 		for i = 1, #flagTypeSpots[flagType] do
 			PlaceFlag(flagTypeSpots[flagType][i], flagType)
 		end
-		GG[flagType .. "s"] = flags[flagType] -- nicer to have GG.flags rather than GG.flag
 	end
 end
 
