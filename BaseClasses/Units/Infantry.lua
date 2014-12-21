@@ -138,6 +138,10 @@ local SniperInf = Infantry:New{
 	
 	script				= "GBRSniper.cob",
 	
+	customParams = {
+		soundcategory 		= "<SIDE>/Infantry/Sniper",
+	},
+	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
