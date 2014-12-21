@@ -157,10 +157,10 @@ local sweDefs = {
 		},
 	},
 	-- Machineguns
-	--[[
-	gbrvickers =
+	
+	swemg =
 	{
-		into = 'gbrvickers_sandbag',
+		into = 'swemg_sandbag',
 		tech = 0,
 		time = 25,
 		metal = 0,
@@ -168,14 +168,14 @@ local sweDefs = {
 		directional = true,
 	},
 	
-	gbrvickers_sandbag =
+	swemg_sandbag =
 	{
-		into = 'gbrvickers',
+		into = 'swemg',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
-	},]]
+	},
 		-- Towed Guns
 	swepvkanm43_truck = {
 		{

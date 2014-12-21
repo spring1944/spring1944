@@ -72,6 +72,7 @@ local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 
 local JPN_Type4AT = ATLauncherInf:New(JPNInf):New{
 	name				= "Type 4 AT Rocket Launcher",
+	script				= "gbrpiat.cob",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "Type4AT",

@@ -275,6 +275,7 @@ local ATLauncherInf = Infantry:New{
 
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
+	script				= "RUSRPG43.cob",
 }
 
 local ATRifleInf = ATLauncherInf:New{
