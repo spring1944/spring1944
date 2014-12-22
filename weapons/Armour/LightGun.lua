@@ -235,7 +235,7 @@ local CannoneDa47mml40HE = CannoneDa47mml40:New(LightGunHEClass, true):New{
   },  
 }
 
-local CannoneDa47mml40AP = M637mm:New(LightGunAPClass, true):New{
+local CannoneDa47mml40AP = CannoneDa47mml40:New(LightGunAPClass, true):New{
   weaponVelocity     = 1818,
   customparams = {
     armor_penetration_1000m = 43,

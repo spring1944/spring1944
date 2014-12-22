@@ -77,7 +77,7 @@ function gadget:Initialize()
 end
 
 function gadget:Explosion(weaponDefID, px, py, pz, ownerID)
-  if paratrooperWeaponDefIDs[weaponDefID] and ValidUnitID(ownerID) and not (GetUnitCOBValue(ownerID, COB.CRASHING) == 1) then
+  if ownerID and paratrooperWeaponDefIDs[weaponDefID] and ValidUnitID(ownerID) and not (GetUnitCOBValue(ownerID, COB.CRASHING) == 1) then
     local transportDefID = GetUnitDefID(ownerID)
     local transportInfo = transportInfos[transportDefID] or {}
     
