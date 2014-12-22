@@ -37,7 +37,7 @@
   maxWaterDepth=10;
   movementClass=KBOT_Infantry;
   noChaseCategory=FLAG AIR;
-  objectName=JPNMortar.S3O;
+  objectName=JPN/JPNMortar.S3O;
   script=gergrw34.cob;
   seismicDistance=840;
   seismicSignature=0;

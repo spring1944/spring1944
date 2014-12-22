@@ -45,6 +45,7 @@ local GER_MG42_Sandbag = SandbagMG:New{
 	weapons = {
 		[1] = { -- HMG
 			name				= "MG42_deployed",
+			maxAngleDif			= 90,
 		},
 	},
 }

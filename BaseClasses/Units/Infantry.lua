@@ -138,6 +138,10 @@ local SniperInf = Infantry:New{
 	
 	script				= "GBRSniper.cob",
 	
+	customParams = {
+		soundcategory 		= "<SIDE>/Infantry/Sniper",
+	},
+	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -181,6 +185,7 @@ local ObservInf = Infantry:New{
 	},
 }
 
+
 local MedMortarInf = Infantry:New{
 	description			= "Heavy Infantry Fire Support",
 	highTrajectory		= 1,
@@ -213,6 +218,15 @@ local MedMortarInf = Infantry:New{
 	},
 }
 
+local LightMortarInf = MedMortarInf:New{
+	description			= "Light Infantry Mortar",
+	hightrajectory		= false,
+	maxVelocity			= 1.45,
+	customParams = {
+		weaponcost			= 7, -- TODO: make this a weapon tag
+	},
+}
+	
 local FlameInf = Infantry:New{
 	description			= "Close Range Heavy Assault Infantry",
 	iconType			= "flame",
@@ -261,6 +275,7 @@ local ATLauncherInf = Infantry:New{
 
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
+	script				= "RUSRPG43.cob",
 }
 
 local ATRifleInf = ATLauncherInf:New{
@@ -335,6 +350,7 @@ return {
 	LMGInf = LMGInf,
 	HMGInf = HMGInf,
 	SniperInf = SniperInf,
+	LightMortarInf = LightMortarInf,
 	MedMortarInf = MedMortarInf,
 	FlameInf = FlameInf,
 	ObservInf = ObservInf,

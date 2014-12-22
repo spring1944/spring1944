@@ -61,6 +61,7 @@ local SandbagMG = Deployed:New{
 	maxDamage					= 1600,
 	noChaseCategory				= "OPENVEH AIR FLAG SOFTVEH MINE",
 	objectName					= "<SIDE>/<SIDE>SandbagMG.S3O",
+	script						= "gbrvickers_sandbag.cob",
 
 	sfxtypes = {
 		explosionGenerators = {
