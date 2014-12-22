@@ -68,7 +68,7 @@
   badTargetCategory=FLAG;
 
   weapon1=Type97MG;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH SHIP DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH SHIP DEPLOYED;
 
   weapon3=.50calproof;
 }
