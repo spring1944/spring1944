@@ -331,9 +331,9 @@ local Type9437mmAP = Type9437mm:New(LightGunAPClass, true):New{
 
 -- Type 1 47mm (JPN)
 local Type147mm = LightGunClass:New{
-  name                 = [[Type 1 37 mm Gun]],
-  range                = 1000,
-  reloadTime           = 4.0,
+  name                 = [[Type 1 47 mm Gun]],
+  range                = 1100,
+  reloadTime           = 4.5,
   soundStart           = [[RUS_45mm]],
 }
 
