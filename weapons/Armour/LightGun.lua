@@ -251,8 +251,8 @@ local CannoneDa47mml40AP = CannoneDa47mml40:New(LightGunAPClass, true):New{
 local Type137mm = LightGunClass:New{
   name                 = [[Type 1 37 mm Gun]],
   range                = 950,
-  reloadTime           = 4.0,
-  soundStart           = [[RUS_45mm]],
+  reloadTime           = 4.4,
+  soundStart           = [[US_37mm]],
 }
 
 local Type137mmHE = Type137mm:New(LightGunHEClass, true):New{
@@ -277,7 +277,7 @@ local Type137mmAP = Type137mm:New(LightGunAPClass, true):New{
 
 -- Type 98 37mm (JPN)
 local Type9837mm = LightGunClass:New{
-  name                 = [[Type 97 37 mm Gun]],
+  name                 = [[Type 98 37 mm Gun]],
   range                = 930,
   reloadTime           = 4.0,
   soundStart           = [[RUS_45mm]],
@@ -302,16 +302,16 @@ local Type9837mmAP = Type9837mm:New(LightGunAPClass, true):New{
   },
 }
 
--- Type 98 37mm (JPN)
+-- Type 94 37mm (JPN)
 local Type9437mm = LightGunClass:New{
   name                 = [[Type 94 37 mm Gun]],
   range                = 900,
-  reloadTime           = 4.0,
+  reloadTime           = 4.8,
   soundStart           = [[RUS_45mm]],
 }
 
 local Type9437mmHE = Type9437mm:New(LightGunHEClass, true):New{
-  areaOfEffect       = 28,
+  areaOfEffect       = 32,
   weaponVelocity     = 800,
   damage = {
     default            = 220,
