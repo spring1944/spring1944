@@ -65,7 +65,7 @@ local RUSDefs = {
 	--USSR--
 	"RUST60",
     	"RUST70",
-    	"rust28"
+    	"rust28",
 	"RUSValentine",
 	},
 	
