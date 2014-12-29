@@ -96,9 +96,9 @@ function ClearWaypoint(unitID, x, z)
 		tmpUnitDef=UnitDefs[tmpUD]
 		if tmpUnitDef then
 			if tmpUnitDef.customParams then
-				if tonumber(UnitDefs[tmpUD].customParams.ismine) == 1 then
+				if UnitDefs[tmpUD].customParams.ismine then
 					table.insert(mines, tmpUnitID)
-				elseif tonumber(UnitDefs[tmpUD].customParams.isobstacle) == 1 then
+				elseif UnitDefs[tmpUD].customParams.isobstacle then
                     table.insert(obstacles, tmpUnitID)
                 end
 			end

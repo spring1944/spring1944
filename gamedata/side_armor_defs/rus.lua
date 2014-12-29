@@ -64,8 +64,9 @@ local RUSDefs = {
   lighttanks  =  {
 	--USSR--
 	"RUST60",
-    "RUST70",
-    "rust28",
+    	"RUST70",
+    	"rust28",
+	"RUSValentine",
 	},
 	
   mediumtanks  =  {
