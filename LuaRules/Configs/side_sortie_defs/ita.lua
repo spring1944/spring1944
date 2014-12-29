@@ -13,9 +13,9 @@ local itaSorties = {
 	},
 	ita_sortie_attack = {
 		members = {
-			"itafiatcr_42",
-			"itafiatcr_42",
-			"itafiatcr_42",
+			"itafiatcr42",
+			"itafiatcr42",
+			"itafiatcr42",
 		},
 		weight = 1,
 		delay = 30,
