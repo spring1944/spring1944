@@ -69,6 +69,8 @@ local Cannone65L17HE = InfGunClass:New{
 
 local Cannone65L17HEAT = InfGunClass:New{
   areaOfEffect       = 8,
+  accuracy           = 250,
+  predictBoost	     = 0.2,
   explosionGenerator = [[custom:EP_medium]],
   name               = [[Cannone da 65/17 HEAT Shell]],
   range              = 715,
