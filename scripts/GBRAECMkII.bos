@@ -117,7 +117,7 @@ SweetSpot(piecenum)
 }
 
 // Weapon 1 - Main cannon, AP
-QueryWeapon2(piecenum)
+QueryWeapon1(piecenum)
 {
 	piecenum = flare;
 }
@@ -169,7 +169,7 @@ FireWeapon1()
 }
 
 // Weapon 2 - Coax MG
-QueryWeapon2 (piecenum)
+QueryWeapon2(piecenum)
 	{
 	piecenum = coaxflare;
 	}
