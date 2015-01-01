@@ -3,7 +3,7 @@ local jpnData = {
         spread = 200,
         units = {
             "jpn_platoon_rifle",
-	    "jpnhoha",
+	    "jpn_tankette_platoon_teke",
             "jpnstorage",
             "jpntype98_20mm_stationary",
             "jpntype98_20mm_stationary",
