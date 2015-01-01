@@ -116,8 +116,8 @@ SweetSpot(piecenum)
 	piecenum = base;
 }
 
-// Weapon 1 - Main cannon, HE
-QueryWeapon1(piecenum)
+// Weapon 1 - Main cannon, AP
+QueryWeapon2(piecenum)
 {
 	piecenum = flare;
 }
@@ -128,57 +128,6 @@ AimFromWeapon1(piecenum)
 }
 
 AimWeapon1(heading, pitch)
-{
-	if (aim2) return 0; // don't aim weap1 if aiming AP
-	
-	signal SIG_AIM;
-	set-signal-mask SIG_AIM;
-
-	mainHead = heading;
-		
-	turn turret to y-axis heading speed TURR_TRAVERSE;
-	turn mantlet to x-axis 0 - pitch speed TURR_ELEVATE;
-	wait-for-turn turret around y-axis;
-	wait-for-turn mantlet around x-axis;
-	
-	start-script RestoreAfterDelay();
-	if (reloading) return 0; // aim first, then pause if the shot cannot fire
-	return 1;
-}
-
-FireWeapon1()
-{
-	rock = TRUE; // firing a heavy weapon
-	
-	// TODO: Add to SFX
-	// Do SFX
-	//emit-sfx 1  from flare;
-	emit-sfx MEDIUM_MUZZLEFLASH from flare;
-	emit-sfx MEDIUM_MUZZLEDUST from flare;
-	//emit-sfx MuzzleBrakeSmoke from brakeright;
-	//emit-sfx MuzzleBrakeSmoke from brakeleft;
-	// barrel recoil
-	move barrel to z-axis RECOIL now;
-	sleep 200;
-	move barrel to z-axis 0 speed RETURN_SPEED;
-	
-	rock = FALSE;
-	start-script Reload(); // start reload timer after firing
-	return 0;
-}
-
-// Weapon 2 - Main cannon, AP
-QueryWeapon2(piecenum)
-{
-	piecenum = flare;
-}
-
-AimFromWeapon2(piecenum)
-{
-	piecenum = turret;
-}
-
-AimWeapon2(heading, pitch)
 {
 	aim2 = TRUE;
 	signal SIG_AIM;
@@ -197,7 +146,7 @@ AimWeapon2(heading, pitch)
 	return 1;
 }
 
-FireWeapon2()
+FireWeapon1()
 {
 	rock = TRUE; // firing a heavy weapon
 	
@@ -219,18 +168,18 @@ FireWeapon2()
 	return 0;
 }
 
-// Weapon 3 - Coax MG
-QueryWeapon3 (piecenum)
+// Weapon 2 - Coax MG
+QueryWeapon2 (piecenum)
 	{
 	piecenum = coaxflare;
 	}
 
-AimFromWeapon3 (piecenum)
+AimFromWeapon2 (piecenum)
 	{
 	piecenum = turret;
 	}
 
-AimWeapon3(heading, pitch)
+AimWeapon2(heading, pitch)
 	{
 	signal SIG_AIM_2;
 	set-signal-mask SIG_AIM_2;
@@ -249,7 +198,7 @@ AimWeapon3(heading, pitch)
 	return (1);
 	}
 
-FireWeapon3()
+FireWeapon2()
 	{
 	rock = FALSE;
 	
@@ -278,22 +227,22 @@ FireWeapon3()
 	return(0);
 	}
 
-AimFromWeapon4(piecenum) //bulletproof effect 
+AimFromWeapon3(piecenum) //bulletproof effect 
 {
 	piecenum = base;
 }
 
-QueryWeapon4(piecenum)
+QueryWeapon3(piecenum)
 {
 	piecenum = base;
 }
 
-AimWeapon4(heading, pitch)
+AimWeapon3(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon4()
+FireWeapon3()
 {
 return (0);
 }
