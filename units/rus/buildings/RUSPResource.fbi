@@ -20,6 +20,7 @@
     dontCount=1;
     supplyRange=275;
     soundcategory=RUS/Infantry;
+    spawnsUnit=ruspartisanrifle;
   }
   energyMake=0;
   energyStorage=100;

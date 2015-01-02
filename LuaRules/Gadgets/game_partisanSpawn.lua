@@ -28,6 +28,7 @@ local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support a
 local spawners = {}
 local couples = {}
 local spawnQueue = {}
+local unitNamesToSpawn = {}
 
 if (gadgetHandler:IsSyncedCode()) then
 
@@ -37,7 +38,9 @@ if (gadgetHandler:IsSyncedCode()) then
 
 	function gadget:UnitCreated(unitID, unitDefID, teamID)
 		local ud = UnitDefs[unitDefID]
-		if ud.name:lower() == "ruspresource" then
+		local cp = ud.customParams
+		if cp and cp.spawnsunit then
+			unitNamesToSpawn[unitID] = cp.spawnsunit
 			spawners[unitID] = 0
 		end
 	end
@@ -48,10 +51,11 @@ if (gadgetHandler:IsSyncedCode()) then
 			spawnQueue[unitID] = nil
 		end
 		local ud = UnitDefs[unitDefID]
-		if ud.name:lower() == "ruspresource" then
+		if spawners[unitID] then
 			spawners[unitID] = nil
+			unitNamesToSpawn[unitID] = nil
 		end
-		if ud.name:lower() == "ruspartisanrifle" then
+		if couples[unitID] then
 			local spawnerID = couples[unitID]
 			if ValidUnitID(spawnerID) then -- spawner is still alive, probably (unitID reuse >_>)
 				local numSpawned = spawners[spawnerID]
@@ -60,6 +64,12 @@ if (gadgetHandler:IsSyncedCode()) then
 				end
 			end
 			couples[unitID] = nil
+		end
+		-- is this unit a spawner? We should remove all references to it from spawned units so that ID reuse does not cause any odd stuff
+		for spawnedID, spawnerID in pairs(couples) do
+			if spawnerID == unitID then
+				couples[spawnedID] = nil
+			end
 		end
 	end
 
@@ -98,27 +108,11 @@ if (gadgetHandler:IsSyncedCode()) then
 				if (not spawnQueue[spawnerID]) and (numSpawned < SPAWN_LIMIT) then
 					local chance = math.random()
 					if chance >= PROBABILITY then
-						AddToSpawnQueue(spawnerID, "ruspartisanrifle")
-						--[[
-						local x,y,z = GetUnitPosition(spawnerID)
-						local teamID = GetUnitTeam(spawnerID)
-						local newUnit = CreateUnit("ruspartisanrifle", x + math.random(50),y,z + math.random(50), 1, teamID, false)
-						if newUnit then -- unit was successfully created
-							spawners[spawnerID] = numSpawned + 1
-							couples[newUnit] = spawnerID
-							local cmds = GetUnitCommands(spawnerID, -1)
-							for i = 1, #cmds do
-								local cmd = cmds[i]
-								GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
-							end
-							Spring.SendMessageToTeam(teamID, "Partisan spawned!")
-						end
-						]]--
+						AddToSpawnQueue(spawnerID, unitNamesToSpawn[spawnerID])
 					end
 				end
 			end
 		end
-
 	end
 
 
