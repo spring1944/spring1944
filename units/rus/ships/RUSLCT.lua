@@ -5,6 +5,7 @@ local RUS_LCT = Boat:New{
 	brakeRate				= 0.05,
 	buildCostMetal			= 1600,
 	buildTime				= 1600,
+	category 				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -30.0 0.0]],
 	collisionVolumeScales	= [[60.0 50.0 220.0]],
 	corpse					= "RUSLCT_dead",

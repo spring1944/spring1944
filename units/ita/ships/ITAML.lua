@@ -4,6 +4,7 @@ local ITA_ML = Boat:New{
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
 	buildCostMetal			= 1000,
+	category 				= "LARGESHIP SHIP MINETRIGGER",
 	buildTime				= 1000,
 	corpse					= "ITAML_dead",
 	iconType				= "landingship",

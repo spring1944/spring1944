@@ -44,7 +44,8 @@ local GERDefs = {
     "GERVehicleYard1",
     "GERTankYard1",
     "GERTankYard2",
-	"GERBarracksVolksSturm",
+    "GERboatyardlarge",
+    "GERboatyard",
   },
 
   bunkers  =  {

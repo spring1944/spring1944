@@ -4,6 +4,7 @@ local GBR_LCT = Boat:New{
 	acceleration			= 0.001,
 	brakeRate				= 0.001,
 	buildCostMetal			= 2100,
+	category 				= "LARGESHIP SHIP MINETRIGGER",
 	buildTime				= 2100,
 	collisionVolumeOffsets	= [[0.0 0.0 0.0]],
 	collisionVolumeScales	= [[60.0 100.0 220.0]],

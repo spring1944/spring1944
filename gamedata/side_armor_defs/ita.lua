@@ -45,6 +45,8 @@ local ITADefs = {
 	"ITATankyard1",
 	"ITATankyard2",
 	"ITARadar",
+	"ITAboatyard",
+	"ITAboatyardlarge",
   },
 
   sandbags  =  {
