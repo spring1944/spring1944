@@ -121,6 +121,7 @@ return lowerkeys({
 	["USSniper"] = US_Sniper,
 	["USBazooka"] = US_Bazooka,
 	["USMortar"] = US_Mortar,
+	["USFlamethrower"] = US_Flamethrower,
 	["USObserv"] = US_Observ,
 	-- Paratroopers
 	["USParaRifle"] = US_Rifle:New{},
