@@ -1,5 +1,3 @@
-
-
 -- pieces
 local head = piece "head"
 local torso = piece "torso"
@@ -21,15 +19,11 @@ local lfoot = piece "lfoot"
 local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
-local pieces = Spring.GetUnitPieceMap(unitID)
-local rPieces = {}
-for k,v in pairs(pieces) do
-	rPieces[v] = k
-end
+
 if not GG.lusHelper[unitDefID].animation then
 	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
 end
-local poses, poseVariants, anims, transitions, weaponsTags = unpack(GG.lusHelper[unitDefID].animation)
+local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags = unpack(GG.lusHelper[unitDefID].animation)
 
 
 --Constants
@@ -43,14 +37,9 @@ local SIG_FEAR = 32
 local SIG_PINNED = 64
 local SIG_ANIM = 128
 
-
-local MUZZLEFLASH = 1024 + 7
 local STOP_AIM_DELAY = 2000
 local STAND_DELAY    = 5000
 local DEFAULT_TURN_SPEED = math.rad(300)
-local DEFAULT_MOVE_SPEED = 100
-local PRONE_TURN_SPEED = math.rad(900)
-local PRONE_MOVE_SPEED = 80
 local REAIM_THRESHOLD = 0.02
 
 local CRAWL_SLOWDOWN_FACTOR = 5
@@ -86,12 +75,14 @@ local targetPinned
 --POSE VARS
 local inTransition
 local currentPoseID
+local currentPoseName
 local currentAnim
 
 -- AIMING VARS
 local lastPitch
 local lastHeading
 local aimed
+local fired
 
 --STORED VARS
 local origSpeed
@@ -121,6 +112,9 @@ end
 
 local function GetNewPoseID(poseName)
 	--Spring.Echo("looking for " .. poseName)
+	if poseName == currentPoseName then
+		return currentPoseID
+	end
 	local variants = poseVariants[poseName]
 	return variants[random(#variants)]
 end
@@ -184,7 +178,7 @@ local function PlayAnim()
 	end
 end
 
-local function ChangePose(transition, nextPoseID)
+local function ChangePose(transition, nextPoseID, nextPoseName)
 	SetSignalMask(0)
 	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
@@ -223,6 +217,7 @@ local function ChangePose(transition, nextPoseID)
 	end
 	--Spring.Echo("done transition")
 	currentPoseID = nextPoseID
+	currentPoseName = nextPoseName
 end
 
 local function PickPose(name)
@@ -231,6 +226,7 @@ local function PickPose(name)
 	if not currentPoseID then
 		--Spring.Echo("warp")
 		currentPoseID = nextPoseID
+		currentPoseName = name
 		local pose = poses[currentPoseID]
 		local turns, moves, headingTurn, pitchTurn, anim = 
 			  pose.turns, pose.moves, pose.headingTurn, pose.pitchTurn, pose.anim
@@ -268,16 +264,22 @@ local function PickPose(name)
 			-- Spring.Echo("no change req")
 			-- return true
 		-- end
-		local transition = transitions[currentPoseID][nextPoseID]
+		local transition
+		if fired then
+			transition = fireTransitions[currentPoseID][nextPoseID]
+			fired = false
+		end
 		if not transition then
-			Spring.Echo("no change possible")
+			transition = transitions[currentPoseID][nextPoseID]
+		end
+		if not transition then
+			Spring.Echo("no change possible", currentPoseName, name)
 			return false
 		end
 		-- inTransition = true
-		ChangePose(transition, nextPoseID)
-		return true
+		ChangePose(transition, nextPoseID, name)
 	end
-	
+	return true
 end
 
 local function ReAim(newHeading, newPitch)
@@ -356,6 +358,27 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned)
 	local success = PickPose(GetPoseName(newStanding, newAiming, newMoving, newPinned))
 	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, success)
 	if success then
+		if not newAiming then
+			for _, tags in pairs(weaponsTags) do
+				if tags.weaponPiece then
+					if tags.showOnReady then
+						Show(tags.weaponPiece)
+					else
+						Hide(tags.weaponPiece)
+					end
+				end
+			end
+		else
+			for i, tags in pairs(weaponsTags) do
+				if tags.weaponPiece then
+					if i == newAiming then
+						Show(tags.weaponPiece)
+					else
+						Hide(tags.weaponPiece)
+					end
+				end
+			end
+		end
 		standing = newStanding
 		aiming = newAiming
 		moving = newMoving
@@ -396,7 +419,8 @@ local function IsWantedPose()
 	return standing == targetStanding and
 		 aiming == targetAiming and
 		 moving == targetMoving and
-		 pinned == targetPinned
+		 pinned == targetPinned and 
+		 not fired
 end
 
 local function NextPose()
@@ -441,7 +465,9 @@ local function NextPose()
 		end
 		return UpdatePose(standing, targetAiming, moving, pinned)
 	end
-	
+	if fired then
+		return UpdatePose(standing, aiming, moving, pinned)
+	end
 	Spring.Echo("shouldn't reach here")
 	Sleep(33)
 end
@@ -457,7 +483,10 @@ local function NewUpdatePose()
 			--Spring.Echo("reached wanted")
 			break
 		end
-		NextPose()
+		if not NextPose() then
+			Sleep(33)
+			Spring.Echo("animation error")
+		end
 	end
 	--Spring.Echo("ending transition")
 	inTransition = false
@@ -525,6 +554,7 @@ function script.Create()
 	fear = 0
 	lastPitch = nil
 	lastHeading = nil
+	fired = false
 	origSpeed = UnitDefs[unitDefID].speed
 	currentSpeed = origSpeed
 	UpdatePose(true, false, false, false)
@@ -540,11 +570,11 @@ end
 
 
 function script.QueryWeapon(num)
-	return flare 
+	return flare
 end
 
 function script.AimFromWeapon(num)
-	return torso 
+	return torso
 end
 
 local function CanFire(num)
@@ -552,8 +582,7 @@ local function CanFire(num)
 end
 
 function script.AimWeapon(num, heading, pitch)
-	MySignal(SIG_AIM)
-	if aiming and aiming > num then
+	if wantedAiming and wantedAiming > num then
 		return false
 	end
 	local tags = weaponsTags[num]
@@ -562,10 +591,10 @@ function script.AimWeapon(num, heading, pitch)
 		if not loaded then
 			return false
 		end
-	else
-		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 	end
+	MySignal(SIG_AIM)
+	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
+	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 	if CanFire(num) then return true end
 	lastHeading = heading
 	lastPitch = pitch
@@ -574,16 +603,23 @@ function script.AimWeapon(num, heading, pitch)
 	return false
 end
 
+function script.BlockShot(num, targetUnitID, userTarget)
+	return not CanFire(num)
+end
+
 function script.FireWeapon(num)
-	if num == 1 then
-		MySignal(SIG_FIRE)
-		EmitSfx(flare, MUZZLEFLASH)
-		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	elseif num == 2 then
-		-- Spring.Echo("fire grenade")
-		-- StartThread(ThrowGrenade)
+	MySignal(SIG_FIRE)
+	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
+	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+	fired = true
+	local tags = weaponsTags[num]
+	if tags.sfx then
+		EmitSfx(flare, tags.sfx)
+	end
+	if tags.aimOnLoaded then
 		StopAiming()
+	else
+		StartThread(NewUpdatePose)
 	end
 end
 

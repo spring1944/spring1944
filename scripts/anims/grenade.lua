@@ -48,7 +48,7 @@ local stances = {
 						{torso , y_axis, math.rad(-20)},
 					},
 	},
-	kf_stand_grenading = {
+	kf_stand_fire = {
 					turns = { --Turns
 						{ruparm , x_axis, math.rad(60)},
 						{ruparm , y_axis, math.rad(35)},
@@ -85,7 +85,7 @@ local stances = {
 						{torso , x_axis, math.rad(-10)},
 					},
 	},
-	kf_run_grenading = {
+	kf_run_fire = {
 					turns = { --Turns
 						{ruparm , x_axis, math.rad(60)},
 						{ruparm , y_axis, math.rad(35)},
@@ -108,7 +108,7 @@ local stances = {
 						{luparm , z_axis, 0},
 					},
 	},
-	kf_prone_grenading = {
+	kf_prone_fire = {
 					turns = {
 						{luparm , x_axis, math.rad(-160)},
 					},
@@ -122,16 +122,16 @@ local variants = {
 }
 
 local keyframes = {
-	stand_fire = {stances.kf_stand_grenading},
-	run_fire = {stances.kf_run_grenading},
-	prone_fire = {stances.kf_prone_grenading},
+	stand_fire = {stances.kf_stand_fire},
+	run_fire = {stances.kf_run_fire},
+	prone_fire = {stances.kf_prone_fire},
 }
 
 local keyframeDelays = {
-	stand_aim = {0.05},
-	stand_grenading = {0.3, 0.2},
-	run_grenading = {0.3, 0.2},
-	prone_grenading = {0.3, 0.2},
+	ready_to_aim = {0.3},
+	stand_fire = {0.3, 0.2},
+	run_fire = {0.3, 0.2},
+	prone_fire = {0.3, 0.2},
 }
 
 return tags, variants, keyframes, keyframeDelays

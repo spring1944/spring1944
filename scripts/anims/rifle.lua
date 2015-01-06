@@ -19,12 +19,15 @@ local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 
+local MUZZLEFLASH = 1024 + 7
+
 local tags = {
 	canProneFire = true,
 	canStandFire = true,
 	canRunFire = true,
 	weaponPiece = piece "gun",
-	--showOnReady = true,
+	showOnReady = true,
+	sfx = MUZZLEFLASH,
 }
 
 local stances = {
@@ -224,9 +227,68 @@ local stances = {
 					pitchTurn = {torso, x_axis, 0, -1},
 				},
 	prone_aim = {
+					turns = { -- Turns
+						{head, x_axis, math.rad(-60)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
+
+						{ruparm, x_axis, math.rad(-80)},
+						{ruparm, y_axis, math.rad(20)},
+						{ruparm, z_axis, math.rad(-70)},
+
+						{luparm, x_axis, math.rad(-140)},
+						{luparm, y_axis, math.rad(-30)},
+						{luparm, z_axis, 0},
+						
+						{rloarm, x_axis, math.rad(-120)},
+						{rloarm, y_axis, math.rad(30)},
+						{rloarm, z_axis, 0},
+
+						{lloarm, x_axis, math.rad(20)},
+						{lloarm, y_axis, math.rad(65)},
+						{lloarm, z_axis, math.rad(-40)},
+						
+						{gun, x_axis, math.rad(10)},
+						{gun, y_axis, math.rad(-35)},
+						{gun, z_axis, math.rad(-45)},
+
+						{torso, x_axis, math.rad(-10)},
+						{torso, y_axis, math.rad(20)},
+						{torso, z_axis, 0},
+					},
 					headingTurn = {pelvis, y_axis, 0, 1},
 					pitchTurn = {torso, x_axis, math.rad(-10), -0.5},
 				},
+	kf_stand_fire = {
+					turns = {
+						{ruparm , x_axis, math.rad(-40)},
+						{luparm , x_axis, math.rad(-70)},
+					},
+	},
+	kf_run_fire = {
+					turns = {
+						{ruparm , x_axis, math.rad(75)},
+						{luparm , x_axis, math.rad(-65)},
+					},
+	},
+	kf_prone_fire = {
+					turns = {
+						{ruparm , x_axis, math.rad(-85)},
+						{luparm , x_axis, math.rad(-145)},
+					},
+	},
+}
+
+local keyframes = {
+	stand_fire = {stances.kf_stand_fire},
+	run_fire = {stances.kf_run_fire},
+	prone_fire = {stances.kf_prone_fire},
+}
+
+local keyframeDelays = {
+	stand_fire = {0.033, 0.033},
+	run_fire = {0.033, 0.033},
+	prone_fire = {0.033, 0.033},
 }
 
 local variants = {
@@ -242,4 +304,4 @@ local variants = {
 	run_aim = {stances.run_aim},
 }
 
-return tags, variants
+return tags, variants, keyframes, keyframeDelays
