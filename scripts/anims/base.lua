@@ -19,33 +19,7 @@ local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 
-local DEFAULT_TURN_SPEED = math.rad(300)
-local DEFAULT_MOVE_SPEED = 100
-
-
-local function Concat(t1, t2)
-	local c = {}
-	if t1 then
-		for _, v in pairs(t1) do c[#c + 1] = v end
-	end
-	if t2 then
-		for _, v in pairs(t2) do c[#c + 1] = v end
-	end
-	return c
-end
-
-local function Merge(t1, t2)
-	local merged = {}
-	local l = math.max(#t1, #t2)
-	for i = 1,l do
-		merged[i] = Concat(t1[i], t2[i])
-	end
-	return merged
-end
-
-local anims, variants, keyframes, keyframeDelays = include "anims/base.lua"
---[[
-anims = {
+local anims = {
 	run = {
 				{ --frame 1
 					turns = { -- Turns
@@ -82,7 +56,6 @@ anims = {
 					},
 				},
 				wait = {5,6},
-				name = "run",
 			},
 	run_aim = {
 				{ --frame 1
@@ -118,7 +91,6 @@ anims = {
 					},
 				},
 				wait = {5,6},
-				name = "run_aim",
 			},
 	crawl = {
 		{ --frame 1
@@ -281,7 +253,7 @@ anims = {
 	},
 }
 
-stances = {
+local stances = {
 	null = {},
 	stand_base = {
 					turns ={ -- Turns
@@ -682,18 +654,6 @@ stances = {
 				},
 }
 
-
-
--- local stancesArray = {}
--- local stancesMap = {}
--- local stancesNames = {}
-
--- for name, stance in pairs(stances) do
-	-- stancesArray[#stancesArray + 1] = stance
-	-- stancesMap[name] = #stancesArray
-	-- stancesNames[#stancesArray] = name
--- end
-
 local variants = {
 	null = {stances.null},
 	stand_base = { stances.stand_base },
@@ -701,18 +661,9 @@ local variants = {
 				   stances.prone_base_2 },
 	run_base = { stances.run_base },
 	crawl = { stances.crawl },
-	stand_ready = { stances.stand_ready_1,
-					stances.stand_ready_2,
-					stances.stand_ready_3},
-	prone_ready = { stances.prone_ready},
-	run_ready = { stances.stand_ready_1,
-				  stances.stand_ready_2,
-				  stances.stand_ready_3},
-	stand_aim = { stances.stand_aim},
-	prone_aim = { stances.prone_aim},
-	run_aim = {stances.run_aim},
 	pinned = {stances.pinned_1, stances.pinned_2, stances.pinned_3},
 }
+
 local keyframes = {
 	stand_to_prone = {stances.kf_stand_to_prone_1,
 					  stances.kf_stand_to_prone_2},
@@ -720,318 +671,11 @@ local keyframes = {
 					  stances.kf_stand_to_prone_1},
 	default = {},
 }
+
 local keyframeDelays = {
 	stand_to_prone = {0.2, 0.1, 0.1},
 	prone_to_stand = {0.1, 0.2, 0.2},
 	default = {0.1},
 }
-]]
-local function GetManipulationData(manipulationArray)
-	local data = {}
-	if not manipulationArray then
-		return data
-	end
-	for _, params in pairs(manipulationArray) do
-		local p, axis, target = unpack(params)
-		if not data[p] then
-			data[p] = {}
-		end
-		data[p][axis] = target
-	end
-	return data
-end 
 
-local function GetManipulationArray(manipulationData)
-	local manipulationArray = {}
-	for p, axes in pairs(manipulationData) do
-		for axis, value in pairs(axes) do
-			manipulationArray[#manipulationArray + 1] = {p, axis, value}
-		end
-	end
-	return manipulationArray
-end 
-
-local function GetStanceManipulationData(manipulationArrays, deb)
-	local tData = GetManipulationData(manipulationArrays.turns, deb)
-	local mData = GetManipulationData(manipulationArrays.moves, deb)
-	GetManipulationArray(tData)
-	return tData, mData
-end
-
-
-
-local function ApplyManipulationData(base, data)
-	for p, axes in pairs(data) do
-		for axis, dataValue in pairs(axes) do
-			if base[p] and base[p][axis] then
-				base[p][axis] = dataValue
-			end
-		end
-	end
-end
-
-local function RebaseManipulationData(base, data)
-	for p, axes in pairs(base) do
-		for axis, baseValue in pairs(axes) do
-			if not data[p] then
-				data[p] = {[axis] = baseValue}
-			elseif not data[p][axis] then
-				data[p][axis] = baseValue
-			end
-		end
-	end
-end
-
-local poses = {}
-local poseVariants = {}
-local poseNames = {}
-local function CreatePose(base, action, poseName)
-	local pVariants = {}
-	local i = 1
-	Spring.Echo(poseName)
-	for _, baseStance in pairs(base) do
-		for _, actionStance in pairs(action) do
-			local baseTurnData, baseMoveData = GetStanceManipulationData(baseStance)
-			local actionTurnData, actionMoveData = GetStanceManipulationData(actionStance)
-			RebaseManipulationData(baseTurnData, actionTurnData)
-			RebaseManipulationData(baseMoveData, actionMoveData)
-			local turns = GetManipulationArray(actionTurnData)
-			local moves = GetManipulationArray(actionMoveData)
-			 poses[#poses + 1] = {   turns = turns,
-									 moves = moves,
-									 headingTurn = actionStance.headingTurn, 
-									 pitchTurn = actionStance.pitchTurn,
-									 anim = actionStance.anim or baseStance.anim}
-			pVariants[#pVariants + 1] = #poses
-			poseNames[#poses] = poseName .. i
-			i = i + 1
-		end
-	end
-	poseVariants[poseName] = pVariants
-end
-
-local numWeapons = 0
-local weaponsTags = {}
-
-for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
-	local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/" .. weaponAnim .. ".lua")
-	numWeapons = numWeapons + 1
-	if weaponVariants.stand_ready then
-		CreatePose(variants.stand_base, weaponVariants.stand_ready, "stand_ready")
-	end
-	if weaponVariants.prone_ready then
-		CreatePose(variants.prone_base, weaponVariants.prone_ready, "prone_ready")
-	end
-	if weaponVariants.run_ready then
-		CreatePose(variants.run_base, weaponVariants.stand_ready, "run_ready")
-	end
-	if weaponVariants.stand_aim then
-		CreatePose(variants.stand_base, weaponVariants.stand_aim, "stand_aim" .. weaponNum)
-	end
-	if weaponVariants.prone_aim then
-		CreatePose(variants.prone_base, weaponVariants.prone_aim, "prone_aim" .. weaponNum)
-	end
-	if weaponVariants.run_aim then
-		for _, stance in pairs(weaponVariants.run_aim) do
-			stance.anim = anims.run_aim
-		end
-		CreatePose(variants.run_base, weaponVariants.run_aim, "run_aim" .. weaponNum)
-	end
-	weaponsTags[weaponNum] = weaponTags
-end
-
-
-
-CreatePose(variants.null, variants.crawl, "crawl")
-CreatePose(variants.null, variants.pinned, "pinned")
---poseVariants.stand_grenading = poseVariants.stand_ready
---poseVariants.run_grenading = poseVariants.run_ready
---poseVariants.prone_grenading = poseVariants.prone_ready
-
-local PI = math.pi
-local TAU = 2 * PI
-
-
-
-local function GetTurnDiff(f, t)
-	if f and t then
-		local diff = t - f
-		if diff > PI then
-			diff = TAU - diff
-		end
-		if diff < -PI then
-			diff = diff + TAU
-		end
-		return math.abs(diff)
-	end
-end
-
-local function CreateTransitionFrame(fromTurnData, fromMoveData, toTurnData, toMoveData, duration)
-
-	local transitionTurns = {}
-	
-	for p, axes in pairs(toTurnData) do
-		for axis, toValue in pairs(axes) do
-			if fromTurnData[p] and fromTurnData[p][axis] then
-				local fromValue = fromTurnData[p][axis]
-				local diff = GetTurnDiff(fromValue, toValue)
-				if diff > 0 then
-					transitionTurns[#transitionTurns + 1] = {p, axis, toValue, diff / duration}
-				else
-					transitionTurns[#transitionTurns + 1] = {p, axis, toValue, DEFAULT_TURN_SPEED}
-				end
-			else
-				transitionTurns[#transitionTurns + 1] = {p, axis, toValue, DEFAULT_TURN_SPEED}
-			end
-		end
-	end
-	
-	local transitionMoves = {}
-	
-	for p, axes in pairs(toMoveData) do
-		for axis, toValue in pairs(axes) do
-			if fromMoveData[p] and fromMoveData[p][axis] then
-				local fromValue = fromMoveData[p][axis]
-				local diff = math.abs(toValue - fromValue)
-				if diff > 0 then
-					transitionMoves[#transitionMoves + 1] = {p, axis, toValue, diff / duration}
-				else
-					transitionMoves[#transitionMoves + 1] = {p, axis, toValue, DEFAULT_MOVE_SPEED}
-				end
-			else
-				transitionMoves[#transitionMoves + 1] = {p, axis, toValue, DEFAULT_MOVE_SPEED}
-			end
-		end
-	end
-	
-	if #transitionTurns == 0 then
-		transitionTurns = nil
-	end
-	if #transitionMoves == 0 then
-		transitionMoves = nil
-	end
-	
-	return transitionTurns, transitionMoves
-end
-
-local function FlattenArray(startTurnData, startMoveData, stancesArray, transition, delays)
-	local currentTurnData = startTurnData
-	local currentMoveData = startMoveData
-	
-	for _, stance in pairs(stancesArray) do
-		local tData, mData = GetStanceManipulationData(stance)
-		local i = #transition + 1
-		local turns, moves = CreateTransitionFrame(currentTurnData, currentMoveData, tData, mData, delays[i])
-		transition[i] = {duration = delays[i] * 1000, 
-						 turns = turns,
-						 moves = moves}
-		ApplyManipulationData(currentTurnData, tData)
-		ApplyManipulationData(currentMoveData, tData)
-	end
-	return currentTurnData, currentMoveData
-end
-
-local function CreateTransition(startPoseID, intermediateStances, endPoseID, delays)
-	if #intermediateStances + 1 ~= #delays then
-		Spring.Echo("Error: bad parameters for transition", startPoseID, endPoseID, #intermediateStances, #delays)
-	end
-	local affectedPieces = {}
-	local currentTurnData, currentMoveData = GetStanceManipulationData(poses[startPoseID])
-	local transition = {}
-	currentTurnData, currentMoveData = FlattenArray(currentTurnData, currentMoveData, intermediateStances, transition, delays)
-	local endTurnData, endMoveData = GetStanceManipulationData(poses[endPoseID])
-	local endPose = poses[endPoseID]
-	local headingTurn = endPose.headingTurn
-	
-	if headingTurn then
-		--Spring.Echo("heading in", poseNames[endPoseID])
-		headingTurn = {unpack(headingTurn)}
-		headingTurn[#headingTurn + 1] = DEFAULT_TURN_SPEED
-		--Spring.Echo(unpack(headingTurn))
-	end
-	local pitchTurn = endPose.pitchTurn
-	if pitchTurn then
-		--Spring.Echo("pitch in", poseNames[endPoseID])
-		pitchTurn = {unpack(pitchTurn)}
-		pitchTurn[#pitchTurn + 1] = DEFAULT_TURN_SPEED
-		--Spring.Echo(unpack(pitchTurn))
-	end
-	
-	local lastDelay = delays[#delays]
-	local turns, moves = CreateTransitionFrame(currentTurnData, currentMoveData, endTurnData, endMoveData, lastDelay)
-	
-	
-	 transition[#transition + 1] = {duration = lastDelay * 1000,
-									turns = turns,
-									moves = moves,
-									headingTurn = headingTurn, 
-									pitchTurn = pitchTurn,
-									anim = endPose.anim}
-	
-	return transition
-end
-
-local transitions = {}
-
-local function CreateVariantTransitions(startVariant, endVariant, intermediateStances, delays)
-	if not intermediateStances then
-		intermediateStances = keyframes.default
-	end
-	if not delays then
-		delays = keyframeDelays.default
-	end
-	for _, startPoseID in pairs(startVariant) do
-		for _, endPoseID in pairs(endVariant) do
-			local transition = CreateTransition(startPoseID, intermediateStances, endPoseID, delays)
-			if not transitions[startPoseID] then
-				transitions[startPoseID] = {[endPoseID] = transition}
-			else
-				transitions[startPoseID][endPoseID] = transition
-			end
-		end
-	end
-end
-
-CreateVariantTransitions(poseVariants.stand_ready, poseVariants.stand_ready)
-CreateVariantTransitions(poseVariants.stand_ready, poseVariants.prone_ready, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
-CreateVariantTransitions(poseVariants.stand_ready, poseVariants.run_ready)
-
-
---CreateVariantTransitions(poseVariants.stand_aim, poseVariants.stand_ready)
---CreateVariantTransitions(poseVariants.stand_aim, poseVariants.stand_aim)
---CreateVariantTransitions(poseVariants.stand_aim, poseVariants.prone_aim, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
---CreateVariantTransitions(poseVariants.stand_aim, poseVariants.run_aim)
-
-CreateVariantTransitions(poseVariants.prone_ready, poseVariants.stand_ready, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
-CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_ready)
---CreateVariantTransitions(poseVariants.prone_ready, poseVariants.prone_aim)
-CreateVariantTransitions(poseVariants.prone_ready, poseVariants.crawl)
-CreateVariantTransitions(poseVariants.prone_ready, poseVariants.pinned)
-
---CreateVariantTransitions(poseVariants.prone_aim, poseVariants.prone_ready)
---CreateVariantTransitions(poseVariants.prone_aim, poseVariants.stand_aim, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
---CreateVariantTransitions(poseVariants.prone_aim, poseVariants.prone_aim)
-
-CreateVariantTransitions(poseVariants.run_ready, poseVariants.stand_ready)
-CreateVariantTransitions(poseVariants.run_ready, poseVariants.run_ready)
---CreateVariantTransitions(poseVariants.run_ready, poseVariants.run_aim)
-
-
---CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_ready)
---CreateVariantTransitions(poseVariants.run_aim, poseVariants.stand_aim)
---CreateVariantTransitions(poseVariants.run_aim, poseVariants.run_aim)
-
-for i = 1, numWeapons do
-	CreateVariantTransitions(poseVariants.stand_ready, poseVariants["stand_aim" .. i])
-	CreateVariantTransitions(poseVariants["stand_aim" .. i], poseVariants.stand_ready)
-	CreateVariantTransitions(poseVariants.prone_ready, poseVariants["prone_aim" .. i])
-	CreateVariantTransitions(poseVariants["prone_aim" .. i], poseVariants.prone_ready)
-	CreateVariantTransitions(poseVariants.run_ready, poseVariants["run_aim" .. i])
-	CreateVariantTransitions(poseVariants["run_aim" .. i], poseVariants.run_ready)
-end
-
-CreateVariantTransitions(poseVariants.crawl, poseVariants.prone_ready)
-
-CreateVariantTransitions(poseVariants.pinned, poseVariants.prone_ready)
-
-return poses, poseVariants, anims, transitions, weaponsTags
+return anims, variants, keyframes, keyframeDelays

@@ -202,6 +202,7 @@ function gadget:GamePreload()
 		local reloadTimes = {}
 		local minRanges = {}
 		local flareOnShots = {}
+		local weaponAnimations = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
@@ -212,6 +213,7 @@ function gadget:GamePreload()
 			if weaponDef.type == "MissileLauncher" then
 				missileWeaponIDs[i] = true
 			end
+			weaponAnimations[i] = weaponDef.customParams.scriptanimation
 			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 		end
 		-- WeaponDef Level Info
@@ -221,7 +223,7 @@ function gadget:GamePreload()
 		info.burstLengths = burstLengths
 		info.burstRates = burstRates
 		info.minRanges = minRanges
-
+		info.weaponAnimations = weaponAnimations
 		-- UnitDef Level Info
 		info.facing = cp.facing or 0 -- default to front
 		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)

@@ -74,9 +74,6 @@ function gadget:UnitCreated(unitID, unitDefID)
 		SetUnitRulesParam(unitID, "suppress", 0)
 		cobScriptIDs[unitID] = scriptID 
 		lusScriptIDs[unitID] = env and env.AddFear
-		if lusScriptIDs[unitID] then
-			Spring.Echo("bli")
-		end
 		if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
 			if UnitDefs[unitDefID].isBuilder then
 				engineerDefIDs[unitDefID] = true
@@ -93,9 +90,6 @@ function gadget:UnitCreated(unitID, unitDefID)
 	if (scriptID or (env and env.RestoreAfterCover)) then
 		restoreCOBScriptIDs[unitID] = scriptID 
 		restorelusScriptIDs[unitID] = env and env.RestoreAfterCover
-		if restorelusScriptIDs[unitID] then
-			Spring.Echo("bla")
-		end
 	end
 end
 

@@ -26,7 +26,10 @@ local rPieces = {}
 for k,v in pairs(pieces) do
 	rPieces[v] = k
 end
-local poses, poseVariants, anims, transitions = include "InfantryStances.lua"
+if not GG.lusHelper[unitDefID].animation then
+	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
+end
+local poses, poseVariants, anims, transitions, weaponsTags = unpack(GG.lusHelper[unitDefID].animation)
 
 
 --Constants
@@ -39,10 +42,6 @@ local SIG_MOVE = 16
 local SIG_FEAR = 32
 local SIG_PINNED = 64
 local SIG_ANIM = 128
-
-local STATE_STAND = 1
-local STATE_KNEEL = 2
-local STATE_PRONE = 3
 
 
 local MUZZLEFLASH = 1024 + 7
@@ -66,14 +65,23 @@ local FEAR_PINNED = 20
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
 
-local IS_PRONE_FIRE = false
-local CAN_RUN_FIRE = false
-
---UNIT STATE
-local state
+--CURRENT UNIT STATE
+local standing
 local aiming
 local moving
 local pinned
+
+--UNIT WANTED STATE
+local wantedStanding
+local wantedAiming
+local wantedMoving
+local wantedPinned
+
+--UNIT TARGET STATE
+local targetStanding
+local targetAiming
+local targetMoving
+local targetPinned
 
 --POSE VARS
 local inTransition
@@ -100,18 +108,25 @@ local TAU = 2 * PI
 local nonWaitedStances = {}
 
 local function MySignal(sig)
-	Spring.Echo("signal", sig)
+	--Spring.Echo("signal", sig)
 	Signal(sig)
 end
 
+
+-- local function CanAim()
+	-- return (standing and ((moving and CAN_RUN_FIRE) or
+	                      -- (not moving and CAN_STAND_FIRE))) or 
+	       -- (not moving and CAN_PRONE_FIRE)
+-- end
+
 local function GetNewPoseID(poseName)
-	Spring.Echo("looking for " .. poseName)
+	--Spring.Echo("looking for " .. poseName)
 	local variants = poseVariants[poseName]
 	return variants[random(#variants)]
 end
 
 local function Delay(func, duration, mask, params)
-	Spring.Echo("wait", duration)
+	--Spring.Echo("wait", duration)
 	SetSignalMask(mask)
 	Sleep(duration)
 	if params then
@@ -122,10 +137,9 @@ local function Delay(func, duration, mask, params)
 end
 
 local function WaitForStances()
-	Spring.Echo("waiting")
+	--Spring.Echo("waiting")
 	for _, stance in pairs(nonWaitedStances) do
 		local turns, moves, headingTurn, pitchTurn = unpack(stance)
-		Spring.Echo(#turns, #moves)
 		for _, params in pairs(turns) do
 			WaitForTurn(params[1], params[2])
 		end
@@ -143,7 +157,7 @@ local function WaitForStances()
 	end
 	Sleep(33)
 	nonWaitedStances = {}
-	Spring.Echo("done")
+	--Spring.Echo("done")
 end
 
 local function PlayAnim()
@@ -172,7 +186,7 @@ end
 
 local function ChangePose(transition, nextPoseID)
 	SetSignalMask(0)
-	Spring.Echo("start transition")
+	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
 		local duration, turns, moves, headingTurn, pitchTurn, anim = 
 			  frame.duration, frame.turns, frame.moves, frame.headingTurn, frame.pitchTurn, frame.anim
@@ -202,19 +216,20 @@ local function ChangePose(transition, nextPoseID)
 		elseif not anim then
 			currentAnim = nil
 			MySignal(SIG_ANIM)
+		else
+			currentAnim = anim
 		end
 		Sleep(duration)
 	end
-	Spring.Echo("done transition")
+	--Spring.Echo("done transition")
 	currentPoseID = nextPoseID
-	inTransition = false
 end
 
 local function PickPose(name)
 	Spring.Echo(name)
 	local nextPoseID = GetNewPoseID(name)
 	if not currentPoseID then
-		Spring.Echo("warp")
+		--Spring.Echo("warp")
 		currentPoseID = nextPoseID
 		local pose = poses[currentPoseID]
 		local turns, moves, headingTurn, pitchTurn, anim = 
@@ -245,10 +260,10 @@ local function PickPose(name)
 			MySignal(SIG_ANIM)
 		end
 	else
-		if inTransition then
-			Spring.Echo("in transition")
-			return false
-		end
+		-- if inTransition then
+			-- Spring.Echo("in transition")
+			-- return false
+		-- end
 		-- if nextPoseID == currentPoseID then
 			-- Spring.Echo("no change req")
 			-- return true
@@ -258,15 +273,15 @@ local function PickPose(name)
 			Spring.Echo("no change possible")
 			return false
 		end
-		inTransition = true
-		StartThread(ChangePose, transition, nextPoseID)
+		-- inTransition = true
+		ChangePose(transition, nextPoseID)
 		return true
 	end
 	
 end
 
 local function ReAim(newHeading, newPitch)
-	Spring.Echo("reaiming")
+	--Spring.Echo("reaiming")
 	local pose = poses[currentPoseID]
 	local headingTurn, pitchTurn = pose.headingTurn, pose.pitchTurn
 	if headingTurn then
@@ -285,48 +300,49 @@ local function ReAim(newHeading, newPitch)
 end
 
 
-local function GetPoseName(newState, newAiming, newMoving, newPinned, newGrenading)
+local function GetPoseName(newStanding, newAiming, newMoving, newPinned)
 	if newPinned then
 		return "pinned"
 	end
-	if newState == STATE_STAND then
+	if newStanding then
 		if newMoving then
-			if grenading then
-				return "run_grenading"
-			end
 			if newAiming then
-				return "run_aim"
+				return "run_aim" .. newAiming
 			else
 				return "run_ready"
 			end
 		else
-			if grenading then
-				return "stand_grenading"
-			end
 			if newAiming then
-				return "stand_aim"
+				return "stand_aim" .. newAiming
 			else
 				return "stand_ready"
 			end
 		end
-	elseif newState == STATE_PRONE then
+	else
 		if newMoving then
 			return "crawl"
 		else
-			if not newAiming then
-				return "prone_ready"
+			if newAiming then
+				return "prone_aim" .. newAiming
 			else
-				return "prone_aim"
+				return "prone_ready"
 			end
 		end
 	end
 end
 
-local function UpdatePose(newState, newAiming, newMoving, newPinned, newGrenading)
-	return PickPose(GetPoseName(newState, newAiming, newMoving, newPinned, newGrenading))
-end
 
-local function ChangeSpeed(newSpeed)
+local function UpdateSpeed()
+	local newSpeed = origSpeed
+	if pinned then
+		newSpeed = 0
+	elseif not standing then
+		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
+	end
+	if newSpeed == currentSpeed then
+		return
+	end
+	
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
@@ -336,229 +352,190 @@ local function ChangeSpeed(newSpeed)
 	currentSpeed = newSpeed
 end
 
-local function ChangeState(newState)
-	if state == newState then
-		return true
+local function UpdatePose(newStanding, newAiming, newMoving, newPinned)
+	local success = PickPose(GetPoseName(newStanding, newAiming, newMoving, newPinned))
+	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, success)
+	if success then
+		standing = newStanding
+		aiming = newAiming
+		moving = newMoving
+		pinned = newPinned
+		UpdateSpeed()
 	end
-	local oldState = state
-	state = newState
-	if not UpdatePose() then
-		state = oldState
-		return false
-	end
-	if state == STATE_PRONE then
-		SetUnitValue(COB.UPRIGHT, 0)
-		ChangeSpeed(origSpeed / CRAWL_SLOWDOWN_FACTOR)
-	elseif state == STATE_STAND then
-		SetUnitValue(COB.UPRIGHT, 1)
-		ChangeSpeed(origSpeed)
-	end
-	return true
+	return success
 end
 
-local function RequestChange(newState, newAiming, newMoving, newPinned, newGrenading)
-	Spring.Echo(newState, newAiming, newMoving, newPinned, newGrenading)
-	if inTransition then
-		return false
+
+local function UpdateTargetState()
+	if wantedPinned then
+		targetStanding = false
+		targetAiming = false
+		targetMoving = false
+		targetPinned = true
+		return
 	end
-	if newState ~= state then
-		if not UpdatePose(newState, aiming, moving, pinned, grenading) then
-			return false
+	targetStanding = wantedStanding and fear == 0
+	targetAiming = wantedAiming
+	targetMoving = wantedMoving
+	targetPinned = wantedPinned
+	
+	if wantedAiming then
+		local tags = weaponsTags[wantedAiming]
+		if wantedMoving then
+			-- solves both crawling and aiming while running
+			targetAiming = targetStanding and tags.canRunFire and targetAiming
 		else
-			state = newState
+			-- stand/drop if needed to fire
+			targetStanding = (targetStanding and tags.canStandFire) or (not tags.canProneFire and fear == 0)
 		end
 	end
-	while inTransition do
-		Sleep(33)
-	end
-	if newAiming ~= aiming then
-		if not UpdatePose(state, newAiming, moving, pinned, grenading) then
-			return false
-		else
-			aiming = newAiming
+end
+
+
+local function IsWantedPose()
+	return standing == targetStanding and
+		 aiming == targetAiming and
+		 moving == targetMoving and
+		 pinned == targetPinned
+end
+
+local function NextPose()
+	-- Spring.Echo("current", standing, aiming, moving, pinned)
+	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned)
+	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned)
+	if targetPinned and not pinned then
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned)
 		end
-	end
-	while inTransition do
-		Sleep(33)
-	end
-	if newMoving ~= moving then
-		if not UpdatePose(state, aiming, newMoving, pinned, grenading) then
-			return false
-		else
-			moving = newMoving
+		if moving then
+			return UpdatePose(standing, aiming, false, pinned)
 		end
-	end
-	while inTransition do
-		Sleep(33)
-	end
-	if newPinned ~= pinned then
-		if not UpdatePose(state, aiming, moving, newPinned, grenading) then
-			return false
-		else
-			pinned = newPinned
+		if standing then
+			return UpdatePose(false, aiming, moving, pinned)
 		end
+		return UpdatePose(false, false, false, true)
+	elseif pinned and not targetPinned then
+		return UpdatePose(false, false, false, false)
 	end
-	if newGrenading ~= grenading then
-		if not UpdatePose(state, aiming, moving, pinned, newGrenading) then
-			return false
-		else
-			pinned = newPinned
+	
+	if standing ~= targetStanding  then
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned)
 		end
+		if moving then
+			return UpdatePose(standing, aiming, false, pinned)
+		end
+		return UpdatePose(targetStanding and fear == 0, aiming, moving, pinned)
 	end
-	return true
+	
+	if moving ~= targetMoving then
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned)
+		end
+		return UpdatePose(standing, aiming, targetMoving, pinned)
+	end
+	
+	if aiming ~= targetAiming then
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned)
+		end
+		return UpdatePose(standing, targetAiming, moving, pinned)
+	end
+	
+	Spring.Echo("shouldn't reach here")
+	Sleep(33)
+end
+
+local function NewUpdatePose()
+	SetSignalMask(0)
+	--Spring.Echo("trying to change")
+	if inTransition then return false end
+	inTransition = true
+	while true do
+		UpdateTargetState()
+		if IsWantedPose() then
+			--Spring.Echo("reached wanted")
+			break
+		end
+		NextPose()
+	end
+	--Spring.Echo("ending transition")
+	inTransition = false
 end
 
 local function StopAiming()
-	if not RequestChange(state, false, moving, pinned, grenading) then
-		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-		Spring.Echo("can't stop aiming")
-	else
-		aimed = false
-		lastPitch = nil
-		lastHeading = nil
-		
-		Spring.Echo("stopped aiming")
-	end
+	--Spring.Echo("stopaiming")
+	wantedAiming = false
+	StartThread(NewUpdatePose)
 end
 
 local function StopWalk()
-	Spring.Echo("stoppppp")
-	MySignal(SIG_MOVE)
-	SetSignalMask(SIG_MOVE)	
-	while (not RequestChange(state, aiming, false, pinned, grenading)) do
-		Sleep(33)
-	end
-	Spring.Echo("stopped")
+	--Spring.Echo("stopwalk")
+	wantedMoving = false
+	StartThread(NewUpdatePose)
 end
-
-local Walk
 
 local function Stand()
-	SetSignalMask(0)
-	if fear > 0 then
-		return
-	end
-	local wasMoving = moving
-	if moving then
-		StopWalk()
-	end
-	if IS_PRONE_FIRE and aiming then
-		StopAiming()
-	end
-	if not RequestChange(STATE_STAND, aiming, moving, pinned, grenading) then
-		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-		Spring.Echo("can't stand")
-	else
-		SetUnitValue(COB.UPRIGHT, 1)
-		SetUnitValue(COB.ARMORED, 0)
-		ChangeSpeed(origSpeed)
-		Spring.Echo("stood up")
-	end
-	if wasMoving then
-		Walk()
-	end
+	--Spring.Echo("stand")
+	wantedStanding = true
+	StartThread(NewUpdatePose)
 end
 
-Walk = function()
-	Spring.Echo("runnnnn")
-	MySignal(SIG_MOVE)
-	SetSignalMask(SIG_MOVE)
-	if state ~= STATE_STAND and fear == 0 then
-		Stand()
-	end
-	SetSignalMask(SIG_MOVE)
-	if state == STATE_PRONE or not CAN_RUN_FIRE then
-		StopAiming()
-	end
-	while (not RequestChange(state, aiming, true, pinned, grenading)) do
-		Sleep(33)
-	end
-	-- while (true) do
-		-- if state == STATE_STAND then
-			-- local wait = random(5, 6) * 33
-			-- PlayAnim("run", wait)
-		-- elseif state == STATE_PRONE then
-			-- local wait = random(395, 465)
-			-- PlayAnim("crawl", wait)
-		-- else
-			-- Sleep(200)
-		-- end
-	-- end
+local function Walk()
+	--Spring.Echo("walk")
+	wantedMoving = true
+	wantedStanding = true
+	StartThread(NewUpdatePose)
 end
-
-
 
 local function Drop()
-	SetSignalMask(0)
-	local wasMoving = moving
-	if moving then
-		StopWalk()
-	end
-	while (not RequestChange(STATE_PRONE, aiming, moving, pinned, grenading)) do
-		Sleep(33)
-	end
-	SetUnitValue(COB.UPRIGHT, 0)
-	SetUnitValue(COB.ARMORED, 1)
-	ChangeSpeed(origSpeed / CRAWL_SLOWDOWN_FACTOR)
-	Spring.Echo("changed speed")
-	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	if wasMoving then
-		Walk()
-	end
+	--Spring.Echo("drop")
+	wantedStanding = false
+	StartThread(NewUpdatePose)
 end
 
-local function StartAiming()
-	SetSignalMask(0)
-	local newState, newMoving
-	if IS_PRONE_FIRE and state ~= STATE_PRONE and not moving then
-		Drop()
-	end
-
-	if not RequestChange(state, true, moving, pinned, grenading) then
-		Spring.Echo("can't start aiming")
-	else
-		Spring.Echo("started aiming")
-		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-	end
+local function StartAiming(weaponNum)
+	--Spring.Echo("startaiming")
+	wantedAiming = weaponNum
+	StartThread(NewUpdatePose)
 end
 
-local function ThrowGrenade()
-	SetSignalMask(0)
-	if aiming then
-		StopAiming()
-	end
-	Hide(gun)
-	if not RequestChange(state, aiming, moving, pinned, true) then
-		Spring.Echo("can't throw")
-	else
-		Spring.Echo("threw")
-		Sleep(900)
-		grenading = false
-	end
-	Show(gun)
+local function StopPinned()
+	--Spring.Echo("stoppinned")
+	wantedPinned = false
+	StartThread(NewUpdatePose)
+end
+
+local function StartPinned()
+	--Spring.Echo("startpinned")
+	wantedPinned = true
+	StartThread(NewUpdatePose)
 end
 
 function script.Create()
 	Hide(flare)
-	state = STATE_STAND
+	standing = true
+	wantedStanding = standing
 	aiming = false
+	wantedAiming = aiming
 	moving = false
+	wantedMoving = moving
 	pinned = false
-	grenading = false
+	wantedPinned = pinned
 	fear = 0
 	lastPitch = nil
 	lastHeading = nil
 	origSpeed = UnitDefs[unitDefID].speed
 	currentSpeed = origSpeed
-	UpdatePose(STATE_STAND, false, false, false)
+	UpdatePose(true, false, false, false)
 end
 
 function script.StartMoving()
-	StartThread(Walk)
+	Walk()
 end
 
 function script.StopMoving()
-	StartThread(StopWalk)
+	StopWalk()
 end
 
 
@@ -570,57 +547,31 @@ function script.AimFromWeapon(num)
 	return torso 
 end
 
-local function CanAim()
-	if pinned or inTransition or grenading then
-		return false
-	end
-	if moving then
-		return state == STATE_STAND and CAN_RUN_FIRE and not IS_PRONE_FIRE
-	end
-	
-	return true
+local function CanFire(num)
+	return aiming == num and not inTransition
 end
 
 function script.AimWeapon(num, heading, pitch)
 	MySignal(SIG_AIM)
-	if num == 1 then
-		SetSignalMask(SIG_AIM)
+	if aiming and aiming > num then
+		return false
+	end
+	local tags = weaponsTags[num]
+	if tags.aimOnLoaded then
+		local _, loaded = Spring.GetUnitWeaponState(unitID, num)
+		if not loaded then
+			return false
+		end
+	else
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-		if num == 2 then return false end
-		if not CanAim() then
-			return false
-		end
-		if not aiming then
-			lastHeading = heading
-			lastPitch = pitch
-			StartThread(StartAiming)
-			return false
-		end
-		
-		-- local aimed
-		
-		if lastHeading then
-			local hDiff = lastHeading - heading
-			if hDiff > PI then
-				hDiff = TAU - hDiff
-			elseif hDiff < -PI then
-				hDiff = hDiff + TAU
-			end
-			local pDiff = abs(lastPitch - pitch)
-			local hDiff = abs(hDiff)
-			if hDiff > REAIM_THRESHOLD or pDiff > REAIM_THRESHOLD then
-				aimed = false
-			end
-		end
-		
-		if not aimed then
-			ReAim(heading, pitch)
-		end
-		return true
-	elseif num == 2 then
-		return not pinned and not inTransition
 	end
+	if CanFire(num) then return true end
+	lastHeading = heading
+	lastPitch = pitch
+	StartAiming(num)
+	--ReAim(heading, pitch)
+	return false
 end
 
 function script.FireWeapon(num)
@@ -630,8 +581,9 @@ function script.FireWeapon(num)
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 		StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 	elseif num == 2 then
-		Spring.Echo("fire grenade")
-		StartThread(ThrowGrenade)
+		-- Spring.Echo("fire grenade")
+		-- StartThread(ThrowGrenade)
+		StopAiming()
 	end
 end
 
@@ -639,35 +591,7 @@ function script.Killed(recentDamage, maxHealth)
 
 end
 
-local function StopPinned()
-	MySignal(SIG_PINNED)
-	SetSignalMask(SIG_PINNED)
-	while not RequestChange(state, aiming, moving, false, grenading) do
-		Sleep(33)
-	end
-	ChangeSpeed(origSpeed / CRAWL_SLOWDOWN_FACTOR)
-end
-
-local function StartPinned()
-	MySignal(SIG_PINNED)
-	SetSignalMask(SIG_PINNED)
-	
-	if moving then
-		StopWalk()
-	end
-	if state ~= STATE_PRONE then
-		Drop()
-	end
-	if aiming then
-		StopAiming()
-	end
-	ChangeSpeed(0)
-	while not RequestChange(state, aiming, moving, true, grenading) do
-		Sleep(33)
-	end
-end
-
-local function RestoreAfterCover()
+function RestoreAfterCover()
 	Spring.Echo("restoring")
 	MySignal(SIG_FEAR)
 	fear = 0
@@ -683,7 +607,7 @@ local function RecoverFear()
 		fear = fear - 1
 		Spring.SetUnitRulesParam(unitID, "suppress", fear)
 		if pinned and fear < FEAR_PINNED then
-			StartThread(StopPinned)
+			StopPinned()
 		end
 		Sleep(FEAR_SLEEP)
 	end
@@ -700,8 +624,6 @@ function AddFear(amount)
 	if fear > FEAR_PINNED and not pinned then
 		StartThread(StartPinned)
 	end
-	if state ~= STATE_PRONE then
-		StartThread(Drop)
-	end
+	Drop()
 	Spring.SetUnitRulesParam(unitID, "suppress", fear)
 end
