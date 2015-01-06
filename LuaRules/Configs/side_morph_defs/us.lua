@@ -65,9 +65,9 @@ local usDefs = {
 		},
 	},
 	  -- Machineguns
-  usgimg =
+  usmg =
   {
-    into = 'usgimg_sandbag',
+    into = 'usmg_sandbag',
     tech = 0,
     time = 12,
     metal = 0,
@@ -76,18 +76,18 @@ local usDefs = {
   },
   
 
-  usgimg_sandbag =
+  usmg_sandbag =
   {
-    into = 'usgimg',
+    into = 'usmg',
     tech = 0,
     time = 12,
     metal = 0,
     energy = 0,
   },
 
-  us101stmg =
+  usparamg =
   {
-    into = 'us101stmg_sandbag',
+    into = 'usparamg_sandbag',
     tech = 0,
     time = 12,
     metal = 0,
@@ -95,9 +95,9 @@ local usDefs = {
     directional = true,
   },
   
-    us101stmg_sandbag =
+    usparamg_sandbag =
   {
-    into = 'us101stmg',
+    into = 'usparamg',
     tech = 0,
     time = 12,
     metal = 0,

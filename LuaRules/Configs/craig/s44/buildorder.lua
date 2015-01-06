@@ -345,7 +345,7 @@ gadget.flagCappers = UnitSet{
 	"gbrrifle", "gbrsten",
 	"gerrifle", "germp40",
 	"itarifle", "itam38",
-	"usgirifle", "usgithompson",
+	"usrifle", "usthompson",
 	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
 }

@@ -1,20 +1,20 @@
-local GBR_Typhoon = AttackFighter:New{
+local US_P51DMustangGA = AttackFighter:New{
 	name				= "Hawker Typhoon Mk.IB",
 	buildCostMetal		= 3000,
-	maxDamage			= 444.5,
+	maxDamage			= 346.5,
 		
-	maxAcc				= 0.648,
-	maxAileron			= 0.0044,
+	maxAcc				= 0.622,
+	maxAileron			= 0.0052,
 	maxBank				= 0.9,
-	maxElevator			= 0.0031,
+	maxElevator			= 0.004,
 	maxPitch			= 1,
-	maxRudder			= 0.0023,
-	maxVelocity			= 14,
+	maxRudder			= 0.003,
+	maxVelocity			= 17.5,
 
 	customParams = {
-		enginesound			= "spitfireb-",
-		enginesoundnr		= 18,
-		maxammo				= 8,
+		enginesound			= "p51b-",
+		enginesoundnr		= 16,
+		maxammo				= 10,
 		weaponcost			= -1,
 		weaponswithammo		= 2,
 	},
@@ -32,32 +32,42 @@ local GBR_Typhoon = AttackFighter:New{
 			slaveTo				= 1,
 		},
 		[3] = {
-			name				= "HS40420mm",
+			name				= "m2browningamg",
 			maxAngleDif			= 10,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
-			name				= "HS40420mm",
+			name				= "m2browningamg",
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},	
 		[5] = {
-			name				= "HS40420mm",
+			name				= "m2browningamg",
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
 		[6] = {
-			name				= "HS40420mm",
+			name				= "m2browningamg",
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
 		[7] = {
-			name 				= "Large_Tracer",
+			name				= "m2browningamg",
+			maxAngleDif			= 10,
+			slaveTo				= 3,
+		},	
+		[8] = {
+			name				= "m2browningamg",
+			maxAngleDif			= 10,
+			slaveTo				= 3,
+		},
+		[9] = {
+			name 				= "Medium_Tracer",
 		},
 	},
 }
 
 
 return lowerkeys({
-	["GBRTyphoon"] = GBR_Typhoon,
+	["USP51DMustangGA"] = US_P51DMustangGA,
 })

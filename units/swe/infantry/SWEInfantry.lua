@@ -30,7 +30,7 @@ local SWE_AgM42 = RifleInf:New(SWEInf):New{
 	},
 }
 
-local SWE_KPistM37 = SMGInf:New(SWEInf):New{
+local SWE_KPistM3739 = SMGInf:New(SWEInf):New{
 	name				= "9mm Kulsprutepistol m/37-39",
 	weapons = {
 		[1] = { -- SMG
@@ -45,7 +45,7 @@ local SWE_KPistM37 = SMGInf:New(SWEInf):New{
 local SWE_KgM37 = RifleInf:New(SWEInf):New{
 	name				= "Kulsprutegevär m/37 Light Machinegun",
 	description			= "Long Range Assault/Light Fire Support Unit",
-	script				= "usgibar.cob",
+	script				= "usbar.cob",
 	weapons = {
 		[1] = { -- LMG
 			name				= "BAR",
@@ -124,7 +124,7 @@ return lowerkeys({
 	["SWEEngineer"] = SWE_Engineer,
 	["SWERifle"] = SWE_Rifle,
 	["SWEAgM42"] = SWE_AgM42,
-	["SWEKPistM37"] = SWE_KPistM37,
+	["SWEKPistM3739"] = SWE_KPistM3739,
 	["SWEKgM37"] = SWE_KgM37,
 	["SWEMG_Sandbag"] = SWE_MG_Sandbag,
 	["SWEMG"] = SWE_MG,

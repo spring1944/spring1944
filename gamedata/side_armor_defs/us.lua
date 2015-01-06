@@ -3,23 +3,23 @@ local USDefs = {
     --US--
     "USAirEngineer",
     "USEngineer",
-    "USGIBAR",
-    "USGIBazooka",
-    "USGIFlamethrower",
-    "USGIMG",
-    "USGIRifle",
-    "USGISniper",
-    "USGIThompson",
+    "USBAR",
+    "USBazooka",
+    "USFlamethrower",
+    "USMG",
+    "USRifle",
+    "USSniper",
+    "USThompson",
     "USHQEngineer",
-    "USM1Mortar",
+    "USMortar",
     "USObserv",
     
     "usparatrooper",
-    "us101strifle",
-    "us101stthompson",
-    "us101stbar",
-    "us101stbazooka",
-    "us101stmg",
+    "uspararifle",
+    "usparathompson",
+    "usparabar",
+    "usparabazooka",
+    "usparamg",
   },
   
   guns  =  {
@@ -53,7 +53,7 @@ local USDefs = {
 
   sandbags  =  {
 	  --**US**--
-	  "usgimg_sandbag",
+	  "usmg_sandbag",
   },
 
   

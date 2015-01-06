@@ -16,6 +16,7 @@ local Aircraft = Unit:New{
 	repairable			= false,
 	sightdistance		= 0,
 	stealth				= true,
+	turnRate			= 50,
 	
 	customParams = {
 	    feartarget			= true,
@@ -40,11 +41,14 @@ local Recon = Aircraft:New{
 	maxVelocity			= 11.2,
 	radardistance		= 1500,
 	sightDistance		= 600,
-	turnRate			= 50,
 }
 
 local Fighter = Aircraft:New{
+	description			= "Air-Superiority Fighter",
+	cruiseAlt			= 1500,
 	iconType			= "fighter",
+	maxFuel				= 180,
+	
 	customParams = {
 		soundcategory 		= "<SIDE>/Air/Fighter",
 	},
@@ -66,6 +70,11 @@ local Interceptor = Fighter:New{
 	noChaseCategory		= "FLAG MINE HARDVEH BUILDING",
 }
 
+local AttackFighter = Fighter:New{
+	description			= "Attack Fighter",
+	cruiseAlt			= 900,
+}
+
 local FighterBomber = Fighter:New{
 	description			= "Fighter-Bomber",
 	iconType			= "bomber",
@@ -80,6 +89,28 @@ local FighterBomber = Fighter:New{
 			onlyTargetCategory	= "BUILDING HARDVEH OPENVEH INFANTRY SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 -0.18 1]],
 		},
+	},
+}
+
+local CruiseMissile = Aircraft:New{
+	buildCostMetal				= 6000,
+	cruiseAlt					= 1500,
+	iconType					= "fighter",
+	maxAcc						= 0,
+	maxAileron					= 0.00465,
+	maxBank						= 1,
+	maxElevator					= 0.0036,
+	maxFuel						= 120,
+	maxPitch					= 1,
+	maxRudder					= 0.002765,
+	maxVelocity					= 18.2,
+	
+    customParams = {
+		cruise_missile_accuracy		= 400,
+		enginesound					= "v1-",
+		enginesoundnr				= 19,
+		enginevolume				= 8,
+		deposit						= 0,
 	},
 }
 
@@ -104,8 +135,36 @@ local Glider = Aircraft:New{
 	maxPitch			= 1,
 	maxRudder			= 0.002765,
 	maxVelocity			= 9.8,
-	sightDistance		= 0,
-	turnRate			= 50,
+}
+
+local ParaTransport = Aircraft:New{
+	description			= "Paratroop Transport Plane",
+	buildCostMetal		= 3000,
+	cruiseAlt			= 1800,
+	
+	footprintX			= 6,
+	footprintZ			= 6,
+	iconType			= "transportplane",
+
+	maxAcc				= 0.309,
+	maxAileron			= 0.003,
+	maxBank				= 0.25,
+	maxElevator			= 0.0025,
+	maxFuel				= 180,
+	maxPitch			= 1,
+	maxRudder			= 0.002,
+	maxVelocity			= 11.2,
+	refuelTime			= 10,
+
+	customParams = {
+		troopdropper	= 1,
+		deposit			= 0,
+	},
+	weapons = {
+		[1] = {
+			name			= "<SIDE>_paratrooper",
+		},
+	}
 }
 
 return {
@@ -113,6 +172,9 @@ return {
 	Recon = Recon,
 	Fighter = Fighter,
 	Interceptor = Interceptor,
+	AttackFighter = AttackFighter,
 	FighterBomber = FighterBomber,
+	CruiseMissile = CruiseMissile,
 	Glider = Glider,
+	ParaTransport = ParaTransport,
 }

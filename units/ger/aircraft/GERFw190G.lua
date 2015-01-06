@@ -1,41 +1,39 @@
-local GBR_SpitfireMkIX = FighterBomber:New{
-	name				= "Spitfire Mk IXe LF",
+local GER_Fw190G = FighterBomber:New{
+	name				= "Fw 190F-8",
 	buildCostMetal		= 3375,
-	maxDamage			= 254.5,
+	maxDamage			= 320,
 		
-	maxAcc				= 0.622,
-	maxAileron			= 0.006,
+	maxAcc				= 0.685,
+	maxAileron			= 0.0054,
 	maxBank				= 0.9,
-	maxElevator			= 0.005,
+	maxElevator			= 0.0042,
 	maxPitch			= 1,
-	maxRudder			= 0.004,
-	maxVelocity			= 12.6,
-
-	turnRate			= 24,
+	maxRudder			= 0.003,
+	maxVelocity			= 17.5,
 
 	customParams = {
-		enginesound			= "spitfireb-",
-		enginesoundnr		= 18,
+		enginesound			= "fw190b-",
+		enginesoundnr		= 12,
 	},
 
 	weapons = {
 		[2] = {
-			name				= "m2browningamg",
+			name				= "mg15115mm",
 			maxAngleDif			= 10,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[3] = {
-			name				= "m2browningamg",
+			name				= "mg15115mm",
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},	
 		[4] = {
-			name				= "HS40420mm",
+			name				= "MG15120mm",
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
 		[5] = {
-			name				= "HS40420mm",
+			name				= "MG15120mm",
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
@@ -50,5 +48,5 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 
 
 return lowerkeys({
-	["GBRSpitfireMkIX"] = GBR_SpitfireMkIX,
+	["GERFw190G"] = GER_Fw190G,
 })
