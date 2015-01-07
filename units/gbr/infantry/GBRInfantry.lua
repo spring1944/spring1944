@@ -21,6 +21,7 @@ local GBR_Rifle = RifleInf:New(GBRInf):New{
 
 local GBR_STEN = SMGInf:New(GBRInf):New{
 	name				= "STEN Mk II Submachinegun",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- SMG
 			name				= "STEN",
@@ -33,6 +34,7 @@ local GBR_STEN = SMGInf:New(GBRInf):New{
 
 local GBR_BREN = LMGInf:New(GBRInf):New{
 	name				= "BREN Mk II Light Machinegun",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- LMG
 			name				= "Bren",

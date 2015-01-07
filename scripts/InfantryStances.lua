@@ -344,20 +344,39 @@ CreateVariantTransitions(transitions, poseVariants.crawl, poseVariants.prone_rea
 CreateVariantTransitions(transitions, poseVariants.pinned, poseVariants.prone_ready)
 
 for i = 1, numWeapons do
-	CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants["stand_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
-	CreateVariantTransitions(transitions, poseVariants["stand_aim" .. i], poseVariants.stand_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
-	CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants["prone_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
-	CreateVariantTransitions(transitions, poseVariants["prone_aim" .. i], poseVariants.prone_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
-	CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants["run_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
-	CreateVariantTransitions(transitions, poseVariants["run_aim" .. i], poseVariants.run_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
+	local tags = weaponsTags[i]
+	if tags.canStandFire then
+		CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants["stand_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["stand_aim" .. i], poseVariants.stand_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
+	end
+	if tags.canProneFire then
+		CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants["prone_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["prone_aim" .. i], poseVariants.prone_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
+	end
+	if tags.canRunFire then
+		CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants["run_aim" .. i], weaponsKeyFrames[i].ready_to_aim, weaponsKeyFrames[i].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["run_aim" .. i], poseVariants.run_ready, weaponsKeyFrames[i].aim_to_ready, weaponsKeyFrames[i].aim_to_ready)
+	end
 	if weaponsTags[i].aimOnLoaded then
-		CreateVariantTransitions(fireTransitions, poseVariants["stand_aim" .. i], poseVariants.stand_ready, weaponsKeyFrames[i].stand_fire, weaponsKeyFrameDelays[i].stand_fire)
-		CreateVariantTransitions(fireTransitions, poseVariants["prone_aim" .. i], poseVariants.prone_ready, weaponsKeyFrames[i].prone_fire, weaponsKeyFrameDelays[i].prone_fire)
-		CreateVariantTransitions(fireTransitions, poseVariants["run_aim" .. i], poseVariants.run_ready, weaponsKeyFrames[i].run_fire, weaponsKeyFrameDelays[i].run_fire)
+		if tags.canStandFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim" .. i], poseVariants.stand_ready, weaponsKeyFrames[i].stand_fire, weaponsKeyFrameDelays[i].stand_fire)
+		end
+		if tags.canProneFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim" .. i], poseVariants.prone_ready, weaponsKeyFrames[i].prone_fire, weaponsKeyFrameDelays[i].prone_fire)
+		end
+		if tags.canRunFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["run_aim" .. i], poseVariants.run_ready, weaponsKeyFrames[i].run_fire, weaponsKeyFrameDelays[i].run_fire)
+		end
 	else
-		CreateVariantTransitions(fireTransitions, poseVariants["stand_aim" .. i], poseVariants["stand_aim" .. i], weaponsKeyFrames[i].stand_fire, weaponsKeyFrameDelays[i].stand_fire)
-		CreateVariantTransitions(fireTransitions, poseVariants["prone_aim" .. i], poseVariants["prone_aim" .. i], weaponsKeyFrames[i].prone_fire, weaponsKeyFrameDelays[i].prone_fire)
-		CreateVariantTransitions(fireTransitions, poseVariants["run_aim" .. i], poseVariants["run_aim" .. i], weaponsKeyFrames[i].run_fire, weaponsKeyFrameDelays[i].run_fire)
+		if tags.canStandFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim" .. i], poseVariants["stand_aim" .. i], weaponsKeyFrames[i].stand_fire, weaponsKeyFrameDelays[i].stand_fire)
+		end
+		if tags.canProneFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim" .. i], poseVariants["prone_aim" .. i], weaponsKeyFrames[i].prone_fire, weaponsKeyFrameDelays[i].prone_fire)
+		end
+		if tags.canRunFire then
+			CreateVariantTransitions(fireTransitions, poseVariants["run_aim" .. i], poseVariants["run_aim" .. i], weaponsKeyFrames[i].run_fire, weaponsKeyFrameDelays[i].run_fire)
+		end
 	end
 end
 

@@ -82,7 +82,7 @@ local currentAnim
 local lastPitch
 local lastHeading
 local aimed
-local fired
+local firing
 
 --STORED VARS
 local origSpeed
@@ -265,9 +265,8 @@ local function PickPose(name)
 			-- return true
 		-- end
 		local transition
-		if fired then
+		if firing then
 			transition = fireTransitions[currentPoseID][nextPoseID]
-			fired = false
 		end
 		if not transition then
 			transition = transitions[currentPoseID][nextPoseID]
@@ -336,7 +335,7 @@ end
 
 local function UpdateSpeed()
 	local newSpeed = origSpeed
-	if pinned then
+	if pinned or firing then
 		newSpeed = 0
 	elseif not standing then
 		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
@@ -397,6 +396,12 @@ local function UpdateTargetState()
 		targetPinned = true
 		return
 	end
+	if firing then
+		targetStanding = standing
+		targetAiming = (not weaponsTags[aiming].aimOnLoaded) and aiming
+		targetMoving = moving
+		targetPinned = pinned
+	end
 	targetStanding = wantedStanding and fear == 0
 	targetAiming = wantedAiming
 	targetMoving = wantedMoving
@@ -420,13 +425,18 @@ local function IsWantedPose()
 		 aiming == targetAiming and
 		 moving == targetMoving and
 		 pinned == targetPinned and 
-		 not fired
+		 not firing
 end
 
-local function NextPose()
+local function NextPose(isFire)
 	-- Spring.Echo("current", standing, aiming, moving, pinned)
 	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned)
 	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned)
+		
+	if firing then
+		return UpdatePose(standing, aiming == wantedAiming and aiming, moving, pinned)
+	end
+	
 	if targetPinned and not pinned then
 		if aiming then
 			return UpdatePose(standing, false, moving, pinned)
@@ -465,17 +475,22 @@ local function NextPose()
 		end
 		return UpdatePose(standing, targetAiming, moving, pinned)
 	end
-	if fired then
-		return UpdatePose(standing, aiming, moving, pinned)
-	end
+	
 	Spring.Echo("shouldn't reach here")
 	Sleep(33)
 end
 
-local function NewUpdatePose()
+local function NewUpdatePose(isFire)
 	SetSignalMask(0)
 	--Spring.Echo("trying to change")
 	if inTransition then return false end
+	if isFire then
+		UpdateTargetState()
+		NextPose()
+		return
+	elseif firing then
+		return false
+	end
 	inTransition = true
 	while true do
 		UpdateTargetState()
@@ -554,7 +569,7 @@ function script.Create()
 	fear = 0
 	lastPitch = nil
 	lastHeading = nil
-	fired = false
+	firing = false
 	origSpeed = UnitDefs[unitDefID].speed
 	currentSpeed = origSpeed
 	UpdatePose(true, false, false, false)
@@ -608,23 +623,34 @@ function script.BlockShot(num, targetUnitID, userTarget)
 end
 
 function script.FireWeapon(num)
-	MySignal(SIG_FIRE)
-	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
-	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	fired = true
+	firing = true
+	UpdateSpeed()
+end
+
+function script.Shot(num)
 	local tags = weaponsTags[num]
 	if tags.sfx then
 		EmitSfx(flare, tags.sfx)
 	end
-	if tags.aimOnLoaded then
-		StopAiming()
-	else
-		StartThread(NewUpdatePose)
-	end
+	StartThread(NewUpdatePose, true)
 end
 
-function script.Killed(recentDamage, maxHealth)
+function script.EndBurst(num)
+	firing = false
+	MySignal(SIG_FIRE)
+	if weaponsTags[num].aimOnLoaded and wantedAiming == aiming then
+		StopAiming()
+	else
+		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
+	end
+	UpdateSpeed()
+	StartThread(NewUpdatePose)
+	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+end
 
+
+function script.Killed(recentDamage, maxHealth)
+	return 1
 end
 
 function RestoreAfterCover()
