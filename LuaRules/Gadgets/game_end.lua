@@ -76,6 +76,12 @@ local allyTeams = spGetAllyTeamList()
 --------------------------------------------------------------------------------
 -- local funcs
 --------------------------------------------------------------------------------
+
+local function isFinished(UnitID)
+  local _,_,_,_,buildProgress = spGetUnitHealth(UnitID)
+  return (buildProgress==nil)or(buildProgress>=1)
+end
+
 local function CountAllianceUnits(allianceID)
     local teamlist = spGetTeamList(allianceID) or {}
     local count = 0
@@ -83,6 +89,7 @@ local function CountAllianceUnits(allianceID)
         local teamID = teamlist[i]
         count = count + (aliveCount[teamID] or 0)
     end
+	Spring.Echo("count",allianceID,count)
     return count
 end
 
@@ -93,6 +100,7 @@ local function CountAllianceValue(allianceID)
         local teamID = teamlist[i]
         value = value + (aliveValue[teamID] or 0)
     end
+	Spring.Echo("value",allianceID,value)
     return value
 end
 
@@ -180,7 +188,7 @@ local function AddAllianceUnit(u, ud, teamID)
 	if cp and cp.dontcount == "1" then
         return
 	end
-
+	Spring.Echo("added ",UnitDefs[ud].name, teamID)
     local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
     aliveCount[teamID] = aliveCount[teamID] + 1
 
@@ -189,7 +197,12 @@ local function AddAllianceUnit(u, ud, teamID)
 end
 
 local function RemoveAllianceUnit(u, ud, teamID)
-    local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
+    local cp = UnitDefs[ud].customParams
+	if cp and cp.dontcount == "1" then
+        return
+	end
+	Spring.Echo("removed ",UnitDefs[ud].name, teamID)
+	local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
     aliveCount[teamID] = aliveCount[teamID] - 1
 
     aliveValue[teamID] = aliveValue[teamID] - UnitDefs[ud].metalCost
@@ -316,6 +329,9 @@ end
 function gadget:UnitCreated(u, ud, team)
     if revealed then
         local allyTeam = select(6, spGetTeamInfo(team))
+		if isFinished(u) then
+			gadget:UnitFinished(u, ud, team)
+		end
         if allyTeam == allianceToReveal then
             Spring.SetUnitAlwaysVisible(u, true)
         end
