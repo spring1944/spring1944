@@ -29,7 +29,7 @@ local RifleClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
-    scriptanimation      = [[rifle]],
+    scriptanimation    = [[rifle]],
   },
   damage = {
     default            = 33,
@@ -151,6 +151,7 @@ local SniperRifleClass = RifleClass:New{
     damagetype         = [[smallarm]],
     fearaoe            = 90,
     fearid             = 401,
+    scriptanimation    = [[sniper]],
   },
   damage = {
     default              = 625,

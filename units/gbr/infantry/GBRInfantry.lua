@@ -48,6 +48,7 @@ local GBR_Vickers = HMGInf:New(GBRInf):New{
 
 local GBR_Vickers_Sandbag = SandbagMG:New{
 	name				= "Deployed Vickers Mk I Heavy Machinegun",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- HMG
 			name				= "Vickers",
@@ -57,6 +58,7 @@ local GBR_Vickers_Sandbag = SandbagMG:New{
 
 local GBR_Sniper = SniperInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I (T) Sniper",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- Sniper Rifle
 			name				= "Enfield_T",
@@ -66,6 +68,7 @@ local GBR_Sniper = SniperInf:New(GBRInf):New{
 
 local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 	name				= "PIAT",
+	script = "infantry.lua",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "PIAT",
@@ -75,6 +78,7 @@ local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 
 local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 	name				= [[ML 3" Mortar Mk II]],
+	script				= "infantry.lua",
 	weapons = {
 		[1] = { -- HE
 			name				= "ML3inMortar",
@@ -86,6 +90,7 @@ local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 }
 
 local GBR_Observ = ObservInf:New(GBRInf):New{
+	script				= "infantry.lua",
 	weapons = {
 		[2] = { -- Pistol
 			name				= "Webley",
@@ -101,6 +106,7 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	canManualFire		= true,
 	iconType			= "commando",
 	maxVelocity			= 1.8,
+	script				= "infantry.lua",
 	
 	buildDistance		= 50,
 	builder				= true,
@@ -110,9 +116,9 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	canRepair			= false,
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
-	maxDamageMul        = 2.8,
+	maxDamageMul		= 2.8,
 	minCloakDistance	= 100,
-  	weapons = {
+	weapons = {
 		[1] = { -- SMG
 			name				= "SilencedSTEN",
 		},

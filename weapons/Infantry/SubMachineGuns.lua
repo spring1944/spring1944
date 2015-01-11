@@ -31,7 +31,7 @@ local SMGClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
-    scriptanimation      = [[smg]],
+    scriptanimation    = [[smg]],
   },
   damage = {
     default            = 17,

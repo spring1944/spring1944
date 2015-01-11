@@ -107,7 +107,6 @@ local poseNames = {}
 local function CreatePose(base, action, poseName)
 	local pVariants = {}
 	local i = 1
-	Spring.Echo(poseName)
 	for _, baseStance in pairs(base) do
 		for _, actionStance in pairs(action) do
 			local baseTurnData, baseMoveData = GetStanceManipulationData(baseStance)
@@ -135,6 +134,9 @@ local weaponsKeyFrames = {}
 local weaponsKeyFrameDelays = {}
 
 for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
+	if not VFS.FileExists("scripts/anims/" .. weaponAnim .. ".lua") then
+		weaponAnim = "rifle"
+	end
 	local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/" .. weaponAnim .. ".lua")
 	numWeapons = numWeapons + 1
 	if weaponVariants.stand_ready then
@@ -167,9 +169,7 @@ end
 
 CreatePose(variants.null, variants.crawl, "crawl")
 CreatePose(variants.null, variants.pinned, "pinned")
---poseVariants.stand_grenading = poseVariants.stand_ready
---poseVariants.run_grenading = poseVariants.run_ready
---poseVariants.prone_grenading = poseVariants.prone_ready
+
 
 local PI = math.pi
 local TAU = 2 * PI
@@ -342,7 +342,7 @@ CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants.run_r
 CreateVariantTransitions(transitions, poseVariants.crawl, poseVariants.prone_ready)
 
 CreateVariantTransitions(transitions, poseVariants.pinned, poseVariants.prone_ready)
-
+Spring.Echo(numWeapons)
 for i = 1, numWeapons do
 	local tags = weaponsTags[i]
 	if tags.canStandFire then

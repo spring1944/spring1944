@@ -40,7 +40,7 @@ local SIG_ANIM = 128
 local STOP_AIM_DELAY = 2000
 local STAND_DELAY    = 5000
 local DEFAULT_TURN_SPEED = math.rad(300)
-local REAIM_THRESHOLD = 0.02
+local REAIM_THRESHOLD = 0.15
 
 local CRAWL_SLOWDOWN_FACTOR = 5
 
@@ -283,6 +283,19 @@ end
 
 local function ReAim(newHeading, newPitch)
 	--Spring.Echo("reaiming")
+	local hDiff = lastHeading - newHeading
+	if hDiff > PI then
+		hDiff = TAU - hDiff
+	elseif hDiff < -PI then
+		hDiff = hDiff + TAU
+	end
+	local pDiff = abs(lastPitch - newPitch)
+	local hDiff = abs(hDiff)
+	if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
+		return true
+	end
+	
+	SetSignalMask(SIG_AIM)
 	local pose = poses[currentPoseID]
 	local headingTurn, pitchTurn = pose.headingTurn, pose.pitchTurn
 	if headingTurn then
@@ -294,10 +307,10 @@ local function ReAim(newHeading, newPitch)
 		Turn(p, axis, target + mul * newPitch, DEFAULT_TURN_SPEED)
 	end
 	nonWaitedStances[#nonWaitedStances + 1] = {{}, {}, headingTurn, pitchTurn}
-	WaitForStances() 
+	WaitForStances()
 	lastHeading = newHeading
 	lastPitch = newPitch
-	aimed = true
+	return false
 end
 
 
@@ -414,7 +427,8 @@ local function UpdateTargetState()
 			targetAiming = targetStanding and tags.canRunFire and targetAiming
 		else
 			-- stand/drop if needed to fire
-			targetStanding = (targetStanding and tags.canStandFire) or (not tags.canProneFire and fear == 0)
+			targetStanding = targetStanding and tags.canStandFire
+			targetAiming = (targetStanding or tags.canProneFire) and targetAiming
 		end
 	end
 end
@@ -601,6 +615,8 @@ function script.AimWeapon(num, heading, pitch)
 		return false
 	end
 	local tags = weaponsTags[num]
+	if not tags then return false end
+	
 	if tags.aimOnLoaded then
 		local _, loaded = Spring.GetUnitWeaponState(unitID, num)
 		if not loaded then
@@ -610,11 +626,10 @@ function script.AimWeapon(num, heading, pitch)
 	MySignal(SIG_AIM)
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	if CanFire(num) then return true end
+	if CanFire(num) then return ReAim(heading, pitch) end
 	lastHeading = heading
 	lastPitch = pitch
 	StartAiming(num)
-	--ReAim(heading, pitch)
 	return false
 end
 

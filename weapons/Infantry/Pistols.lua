@@ -29,6 +29,7 @@ local PistolClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
+    scriptanimation    = [[pistol]],
   },
   damage = {
     default            = 31,

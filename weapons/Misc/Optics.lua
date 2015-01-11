@@ -23,6 +23,7 @@ local OpticClass = Weapon:New{
   customparams = {
     binocs             = 1,
     damagetype         = [[none]],
+    scriptanimation    = [[binocs]],
   },
   damage = {
     default            = 0,
