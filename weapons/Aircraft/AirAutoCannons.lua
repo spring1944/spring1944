@@ -14,6 +14,7 @@ local AirACClass = Weapon:New{
   soundHitDry        = [[GEN_Explo_1]],
   soundTrigger       = true,
   tolerance          = 600,
+  heightBoostFactor  = 0,
   turret             = true,
   weaponType         = [[Cannon]],
   customparams = {
