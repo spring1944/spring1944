@@ -1,3 +1,6 @@
+VFS.Include('gamedata/VFSUtils.lua') -- for RecursiveFileSearch()
+lowerkeys = VFS.Include('gamedata/system.lua').lowerkeys -- for lowerkeys()
+
 -- Our shared funcs
 local function printTable (input)
 	for k,v in pairs(input) do
@@ -9,9 +12,10 @@ local function printTable (input)
 end
 
 local function inherit (c, p, concatNames)
+	lowerkeys(c)
 	for k,v in pairs(p) do 
 		if type(k) == "string" then
-			k:lower() -- really we need to run lowerkeys() on both c and p
+			k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
 		end
 		if type(v) == "table" then
 			if c[k] == nil then c[k] = {} end
@@ -58,7 +62,7 @@ function Unit:Clone(name) -- name is passed to <NAME> in _post, it is the unitna
 	return newClass
 end
 
-local Weapon = {}
+Weapon = {}
 function Weapon:New(newAttribs, concatName)
 	local newClass = {}
 	inherit(newClass, newAttribs)
@@ -67,22 +71,22 @@ function Weapon:New(newAttribs, concatName)
 end
 
 ---------------------------------------------------------------------------------------------
+
 -- This is where the magic happens
 local sharedEnv = {
 	Sides = Sides,
 	Weapon = Weapon,
 	Unit = Unit,
 	printTable = printTable,
+	lowerkeys = lowerkeys,
 }
 
 -- Include Base Classes from BaseClasses/*
-local unitBaseClasses = VFS.DirList("baseclasses/units")
-local weaponBaseClasses = VFS.DirList("baseclasses/weapons")
-local featureBaseClasses = VFS.DirList("baseclasses/features")
 
-local allBaseClasses = {unitBaseClasses, weaponBaseClasses, featureBaseClasses}
+local baseClassTypes = {"units", "weapons", "features"}
 
-for _, baseClasses in pairs(allBaseClasses) do
+for _, baseClassType in pairs(baseClassTypes) do
+	local baseClasses = RecursiveFileSearch("baseclasses/" .. baseClassType, "*.lua", VFS.ZIP)
 	for _, file in pairs(baseClasses) do
 		newClasses = VFS.Include(file, VFS.ZIP)
 		for className, class in pairs(newClasses) do
