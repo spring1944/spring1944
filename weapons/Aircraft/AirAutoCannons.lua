@@ -2,7 +2,9 @@
 
 -- AirAutoCannon Base Class
 local AirACClass = Weapon:New{
+  avoidFriendly      = false,
   burnblow           = true,
+  collideFriendly    = false,
   collisionSize      = 2,
   collisionvolumetest = 1,
   fireStarter        = 10,

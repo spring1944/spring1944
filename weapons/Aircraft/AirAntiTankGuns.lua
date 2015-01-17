@@ -4,8 +4,10 @@
 -- Currently assumes that we would not want to give such weapons HE
 local AirATGunClass = Weapon:New{
   accuracy           = 100,
+  avoidFriendly      = false,
   canattackground    = false,
   collisionSize      = 4,
+  collideFriendly    = false,
   colormap           = [[ap_colormap.png]],
   edgeEffectiveness  = 0.1,
   explosionGenerator = [[custom:AP_Small]],
