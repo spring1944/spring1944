@@ -89,7 +89,6 @@ local function CountAllianceUnits(allianceID)
         local teamID = teamlist[i]
         count = count + (aliveCount[teamID] or 0)
     end
-	Spring.Echo("count",allianceID,count)
     return count
 end
 
@@ -100,7 +99,6 @@ local function CountAllianceValue(allianceID)
         local teamID = teamlist[i]
         value = value + (aliveValue[teamID] or 0)
     end
-	Spring.Echo("value",allianceID,value)
     return value
 end
 
@@ -188,7 +186,6 @@ local function AddAllianceUnit(u, ud, teamID)
 	if cp and cp.dontcount == "1" then
         return
 	end
-	Spring.Echo("added ",UnitDefs[ud].name, teamID)
     local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
     aliveCount[teamID] = aliveCount[teamID] + 1
 
@@ -201,7 +198,6 @@ local function RemoveAllianceUnit(u, ud, teamID)
 	if cp and cp.dontcount == "1" then
         return
 	end
-	Spring.Echo("removed ",UnitDefs[ud].name, teamID)
 	local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
     aliveCount[teamID] = aliveCount[teamID] - 1
 
