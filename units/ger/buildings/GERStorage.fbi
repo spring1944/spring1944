@@ -19,7 +19,7 @@
     armor_front=0;
     armor_rear=0;
     armor_side=15;
-    armor_top=30;
+    armor_top=45;
     dontCount=1;
     soundcategory=GER/Yard;
   }
