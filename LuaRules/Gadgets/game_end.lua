@@ -61,7 +61,7 @@ local finishedUnits = {}    -- this stores a list of all units that have ever be
 local toDestroy = {}
 
 local modOptions = Spring.GetModOptions() or {}
-local destroy_type = modOptions.defeatmode or 'destroy'
+local destroy_type = modOptions.defeatmode or 'losecontrol'
 
 local revealed = false
 local gameover = false
