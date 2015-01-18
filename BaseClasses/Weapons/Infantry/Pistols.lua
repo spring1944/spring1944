@@ -29,6 +29,7 @@ local PistolClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
+	cegflare           = "PISTOL_MUZZLEFLASH",
   },
   damage = {
     default            = 31,

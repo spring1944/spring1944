@@ -21,6 +21,7 @@ local MortarClass = Weapon:New{
   customparams = {
     armor_hit_side     = [[top]],
     damagetype         = [[explosive]],
+	cegflare           = "MEDIUM_MUZZLEFLASH",
   },
 }
 

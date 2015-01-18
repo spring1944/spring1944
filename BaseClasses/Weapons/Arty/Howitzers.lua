@@ -26,7 +26,7 @@ local HowitzerClass = Weapon:New{
   customparams = {
     damagetype         = [[explosive]],
     howitzer           = 1,
-    cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = "LARGE_MUZZLEFLASH",
   },
 }
 

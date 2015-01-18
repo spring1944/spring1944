@@ -34,6 +34,9 @@ local ML20S152mm = HeavyGunClass:New{
   range              = 1750,
   reloadTime         = 17.5,
   soundStart         = [[RUS_152mm]],
+  customparams = {
+    cegflare           = "XLARGE_MUZZLEFLASH",
+  },
 }
 
 local ML20S152mmHE = ML20S152mm:New(HeavyGunHEClass, true):New{

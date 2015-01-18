@@ -16,7 +16,7 @@ local AAGunClass = Weapon:New{
   weaponType         = [[Cannon]],
   customparams = {
     damagetype         = [[explosive]],
-	cegflare           = "XSMALL_MUZZLEFLASH",
+	cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 	flareonshot        = true,
   },
   

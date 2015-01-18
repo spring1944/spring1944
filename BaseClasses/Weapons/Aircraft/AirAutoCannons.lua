@@ -19,6 +19,7 @@ local AirACClass = Weapon:New{
   customparams = {
     armor_hit_side     = [[top]],
     no_range_adjust    = true,
+	cegflare           = "XSMALL_MUZZLEFLASH",
   },
 }
 

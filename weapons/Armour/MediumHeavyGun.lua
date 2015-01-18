@@ -101,6 +101,9 @@ local D10S100mm = MediumHeavyGunClass:New{
   range              = 2260,
   reloadTime         = 10,
   soundStart         = [[RUS_85mm]],
+  customparams = {
+    cegflare           = "LARGE_MUZZLEFLASH",
+  }
 }
 
 local D10S100mmAP = D10S100mm:New(MediumHeavyGunAPClass, true):New{
@@ -186,6 +189,9 @@ local Ansaldo105mmL25 = MediumHeavyGunClass:New{
   range              = 1775,
   reloadTime         = 11.25,
   soundStart         = [[GEN_105mm]],
+  customparams = {
+    cegflare           = "LARGE_MUZZLEFLASH",
+  }
 }
 
 local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHeavyGunHEClass, true):New{

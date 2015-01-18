@@ -31,6 +31,7 @@ local SMGClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = [[smallarm]],
+	cegflare           = "SMG_MUZZLEFLASH",
   },
   damage = {
     default            = 17,

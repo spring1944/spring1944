@@ -103,7 +103,7 @@ return {
     },
   },
 
-  ["ptrd_muzzleflash"] = {
+  ["ptrd_muzzleflash"] = { -- TODO: rename to atr_muzzleflash
     bitmapmuzzleflame = {
       air                = true,
       class              = [[CBitmapMuzzleFlame]],

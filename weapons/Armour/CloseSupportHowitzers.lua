@@ -8,6 +8,9 @@ local CS95mm = CSHowitzerClass:New{
   name               = [[CS 95mm]],
   range              = 1690, -- fwiw I object to this too
   reloadTime         = 9,
+  customParams = {
+    cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
+  },
 }
 
 local CS95mmHE = CS95mm:New(CSHowitzerHEClass, true):New{

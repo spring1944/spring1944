@@ -12,6 +12,7 @@ local ATLClass = Weapon:New{
   turret             = true,
   customparams = {
     damagetype         = [[shapedcharge]],
+	cegflare           = "dirt_backblast",
   },
 }
 

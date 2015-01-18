@@ -29,6 +29,7 @@ local AirATGunClass = Weapon:New{
     no_range_adjust    = true,
     armor_hit_side     = [[top]],
     damagetype         = [[kinetic]],
+    cegflare           = "SMALL_MUZZLEFLASH",
   },
 }
 

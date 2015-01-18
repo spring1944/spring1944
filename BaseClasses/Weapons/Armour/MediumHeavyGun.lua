@@ -17,7 +17,7 @@ local MediumHeavyGunClass = Weapon:New{
   turret             = true,
   weaponType         = [[Cannon]],
   customparams = {
-    cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
   }
 }
 

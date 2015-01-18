@@ -20,6 +20,10 @@ local CSHowitzerClass = Weapon:New{
   turret             = true,
   weaponType         = [[Cannon]],
   weaponVelocity     = 1000,
+  
+  customParams = {
+    cegflare           = "LARGE_MUZZLEFLASH",
+  },
 }
 
 -- HE Round Class

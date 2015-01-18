@@ -29,6 +29,7 @@ local InfGunClass = Weapon:New{
     damagetype         = [[explosive]],
     fearaoe            = 75,
     fearid             = 401,
+	cegflare           = "MEDIUM_MUZZLEFLASH",
   },
 }
 

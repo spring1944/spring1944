@@ -18,7 +18,7 @@ local LightMediumGunClass = Weapon:New{
   turret             = true,
   weaponType         = [[Cannon]],
   customparams = {
-    cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = "MEDIUMSMALL_MUZZLEFLASH",
   }
 }
 
