@@ -80,7 +80,7 @@ local Bomb50kg = BombClass:New{
 	planes		= 5,
     },
   range              = 180,
-  leadlimit	     = 300,
+  leadlimit	     = 900,
   explosionGenerator = [[custom:HE_Large]],
   soundHit           = [[GEN_Explo_5]],
   tolerance          = 1000,
