@@ -14,7 +14,8 @@
   category=DEPLOYED;
   corpse=JPNType1_47mm_Destroyed;
   [customParams] {
-	hiddenbuilding=1;
+    dontCount=1;
+    hiddenbuilding=1;
     feartarget=1;
     lowammolevel=1;
     maxammo=4;
