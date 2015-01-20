@@ -69,7 +69,7 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
-	env = Spring.UnitScript.GetScriptEnv(unitID)
+	local env = Spring.UnitScript.GetScriptEnv(unitID)
 	if (scriptID or (env and env.AddFear)) then
 		SetUnitRulesParam(unitID, "suppress", 0)
 		cobScriptIDs[unitID] = scriptID 

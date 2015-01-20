@@ -278,6 +278,9 @@ local stances = {
 						{lfoot, x_axis, 0},
 						{lfoot, y_axis, 0},
 						{lfoot, z_axis, 0},
+						{ground, x_axis, 0},
+						{ground, y_axis, 0},
+						{ground, z_axis, 0},
 					},
 					moves = { -- Moves
 						{pelvis, x_axis, 0},
@@ -307,7 +310,7 @@ local stances = {
 						{lleg, y_axis, 0},
 						{lleg, z_axis, 0},
 						
-						{ground , x_axis, 0},
+						{ground, x_axis, 0},
 					},
 					moves = { --Moves
 						{pelvis, y_axis, -7},

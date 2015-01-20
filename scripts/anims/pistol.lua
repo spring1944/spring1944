@@ -27,7 +27,6 @@ local tags = {
 	canRunFire = false,
 	weaponPiece = piece "gun",
 	showOnReady = true,
-	sfx = MUZZLEFLASH,
 }
 
 local stances = {
@@ -230,12 +229,14 @@ local stances = {
 						{ruparm , y_axis, math.rad(30)},
 						{rloarm , x_axis, math.rad(-75)},
 					},
+					emit = MUZZLEFLASH,
 	},
 	kf_prone_fire = {
 					turns = {
 						{ruparm , x_axis, math.rad(-95)},
 						{luparm , x_axis, math.rad(-150)},
 					},
+					emit = MUZZLEFLASH,
 	},
 }
 

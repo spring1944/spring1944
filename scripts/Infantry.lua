@@ -23,7 +23,7 @@ local rfoot = piece "rfoot"
 if not GG.lusHelper[unitDefID].animation then
 	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
 end
-local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags = unpack(GG.lusHelper[unitDefID].animation)
+local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(GG.lusHelper[unitDefID].animation)
 
 
 --Constants
@@ -87,6 +87,8 @@ local firing
 --STORED VARS
 local origSpeed
 local currentSpeed
+
+local weaponEnabled = {}
 
 --localisations
 local random = math.random
@@ -182,8 +184,8 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 	SetSignalMask(0)
 	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
-		local duration, turns, moves, headingTurn, pitchTurn, anim = 
-			  frame.duration, frame.turns, frame.moves, frame.headingTurn, frame.pitchTurn, frame.anim
+		local duration, turns, moves, headingTurn, pitchTurn, anim, emit = 
+			  frame.duration, frame.turns, frame.moves, frame.headingTurn, frame.pitchTurn, frame.anim, frame.emit
 		
 		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)			
 		if turns then
@@ -214,6 +216,9 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 			currentAnim = anim
 		end
 		Sleep(duration)
+		if emit then
+			EmitSfx(flare, emit)
+		end
 	end
 	--Spring.Echo("done transition")
 	currentPoseID = nextPoseID
@@ -221,7 +226,11 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 end
 
 local function PickPose(name)
-	Spring.Echo(name)
+	
+	-- if not firing then
+		-- Spring.Echo(name)
+	-- end
+	
 	local nextPoseID = GetNewPoseID(name)
 	if not currentPoseID then
 		--Spring.Echo("warp")
@@ -321,13 +330,13 @@ local function GetPoseName(newStanding, newAiming, newMoving, newPinned)
 	if newStanding then
 		if newMoving then
 			if newAiming then
-				return "run_aim" .. newAiming
+				return "run_aim_" .. newAiming
 			else
 				return "run_ready"
 			end
 		else
 			if newAiming then
-				return "stand_aim" .. newAiming
+				return "stand_aim_" .. newAiming
 			else
 				return "stand_ready"
 			end
@@ -337,7 +346,7 @@ local function GetPoseName(newStanding, newAiming, newMoving, newPinned)
 			return "crawl"
 		else
 			if newAiming then
-				return "prone_aim" .. newAiming
+				return "prone_aim_" .. newAiming
 			else
 				return "prone_ready"
 			end
@@ -348,7 +357,7 @@ end
 
 local function UpdateSpeed()
 	local newSpeed = origSpeed
-	if pinned or firing then
+	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
 		newSpeed = 0
 	elseif not standing then
 		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
@@ -381,9 +390,9 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned)
 				end
 			end
 		else
-			for i, tags in pairs(weaponsTags) do
+			for weap, tags in pairs(weaponsTags) do
 				if tags.weaponPiece then
-					if i == newAiming then
+					if weap == newAiming then
 						Show(tags.weaponPiece)
 					else
 						Hide(tags.weaponPiece)
@@ -411,7 +420,7 @@ local function UpdateTargetState()
 	end
 	if firing then
 		targetStanding = standing
-		targetAiming = (not weaponsTags[aiming].aimOnLoaded) and aiming
+		targetAiming = aiming and (not weaponsTags[aiming].aimOnLoaded) and aiming --on purpose
 		targetMoving = moving
 		targetPinned = pinned
 	end
@@ -587,6 +596,9 @@ function script.Create()
 	origSpeed = UnitDefs[unitDefID].speed
 	currentSpeed = origSpeed
 	UpdatePose(true, false, false, false)
+	for i=1,#weaponsMap do
+		weaponEnabled[i] = true
+	end
 end
 
 function script.StartMoving()
@@ -606,35 +618,49 @@ function script.AimFromWeapon(num)
 	return torso
 end
 
-local function CanFire(num)
-	return aiming == num and not inTransition
-end
-
-function script.AimWeapon(num, heading, pitch)
-	if wantedAiming and wantedAiming > num then
-		return false
-	end
-	local tags = weaponsTags[num]
-	if not tags then return false end
-	
-	if tags.aimOnLoaded then
-		local _, loaded = Spring.GetUnitWeaponState(unitID, num)
-		if not loaded then
+local function IsLoaded(weaponClass)
+	for i, wc in pairs(weaponsMap) do
+		local _, loaded = Spring.GetUnitWeaponState(unitID, i)
+		if weaponClass == wc and not loaded then
 			return false
 		end
 	end
+	return true
+end
+
+local function CanFire(weaponClass)
+	return aiming == weaponClass and not inTransition
+end
+
+function script.AimWeapon(num, heading, pitch)
+	if wantedAiming and weaponsPriorities[wantedAiming] > num then
+		return false
+	end
+	if not weaponEnabled[num] then
+		return false
+	end
+	
+	local weaponClass = weaponsMap[num]
+	local tags = weaponsTags[weaponClass]
+	if not tags then return false end
+	
+	if tags.aimOnLoaded and not IsLoaded(weaponClass) then
+		return false
+	end
+	
 	MySignal(SIG_AIM)
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
-	if CanFire(num) then return ReAim(heading, pitch) end
+	if CanFire(weaponClass) then return ReAim(heading, pitch) end
 	lastHeading = heading
 	lastPitch = pitch
-	StartAiming(num)
+	StartAiming(weaponClass)
 	return false
 end
 
 function script.BlockShot(num, targetUnitID, userTarget)
-	return not CanFire(num)
+	local weaponClass = weaponsMap[num]
+	return not (CanFire(weaponClass) and IsLoaded(weaponClass) and weaponEnabled[num])
 end
 
 function script.FireWeapon(num)
@@ -643,17 +669,15 @@ function script.FireWeapon(num)
 end
 
 function script.Shot(num)
-	local tags = weaponsTags[num]
-	if tags.sfx then
-		EmitSfx(flare, tags.sfx)
-	end
 	StartThread(NewUpdatePose, true)
 end
 
 function script.EndBurst(num)
 	firing = false
 	MySignal(SIG_FIRE)
-	if weaponsTags[num].aimOnLoaded and wantedAiming == aiming then
+	local weaponClass = weaponsMap[num]
+	local tags = weaponsTags[weaponClass]
+	if tags.aimOnLoaded and wantedAiming == aiming then
 		StopAiming()
 	else
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
@@ -703,4 +727,8 @@ function AddFear(amount)
 	end
 	Drop()
 	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+end
+
+function toggleWeapon(num, isEnabled)
+	weaponEnabled[num] = isEnabled
 end
