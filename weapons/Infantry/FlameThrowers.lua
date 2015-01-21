@@ -26,6 +26,7 @@ local FlamerClass = Weapon:New{
       damagetime         = 15,
       damagetype         = [[fire]],
       fearid             = 501,
+      scriptanimation    = [[flame]],
     },
     damage = {
       default            = 15,

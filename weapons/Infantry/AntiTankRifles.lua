@@ -27,6 +27,7 @@ local ATRifleClass = Weapon:New{
   weaponType         = [[LaserCannon]],
   customparams = {
     damagetype         = [[kinetic]],
+    scriptanimation    = [[atrifle]],
   },
 }
  

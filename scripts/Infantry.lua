@@ -217,7 +217,12 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 		end
 		Sleep(duration)
 		if emit then
-			EmitSfx(flare, emit)
+			for _, params in pairs(emit) do
+				local emitPiece, effect = params[1], params[2]
+				if emitPiece then
+					EmitSfx(emitPiece, effect)
+				end
+			end
 		end
 	end
 	--Spring.Echo("done transition")

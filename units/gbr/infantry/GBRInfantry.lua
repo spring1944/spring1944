@@ -8,7 +8,6 @@ local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
 
 local GBR_Rifle = RifleInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I Rifle",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- Rifle
 			name				= "Enfield",
@@ -21,7 +20,6 @@ local GBR_Rifle = RifleInf:New(GBRInf):New{
 
 local GBR_STEN = SMGInf:New(GBRInf):New{
 	name				= "STEN Mk II Submachinegun",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- SMG
 			name				= "STEN",
@@ -34,7 +32,6 @@ local GBR_STEN = SMGInf:New(GBRInf):New{
 
 local GBR_BREN = LMGInf:New(GBRInf):New{
 	name				= "BREN Mk II Light Machinegun",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- LMG
 			name				= "Bren",
@@ -48,7 +45,6 @@ local GBR_Vickers = HMGInf:New(GBRInf):New{
 
 local GBR_Vickers_Sandbag = SandbagMG:New{
 	name				= "Deployed Vickers Mk I Heavy Machinegun",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- HMG
 			name				= "Vickers",
@@ -58,7 +54,6 @@ local GBR_Vickers_Sandbag = SandbagMG:New{
 
 local GBR_Sniper = SniperInf:New(GBRInf):New{
 	name				= "SMLE No.4 Mk I (T) Sniper",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- Sniper Rifle
 			name				= "Enfield_T",
@@ -68,7 +63,6 @@ local GBR_Sniper = SniperInf:New(GBRInf):New{
 
 local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 	name				= "PIAT",
-	script = "infantry.lua",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "PIAT",
@@ -78,7 +72,6 @@ local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 
 local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 	name				= [[ML 3" Mortar Mk II]],
-	script				= "infantry.lua",
 	weapons = {
 		[1] = { -- HE
 			name				= "ML3inMortar",
@@ -90,7 +83,6 @@ local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 }
 
 local GBR_Observ = ObservInf:New(GBRInf):New{
-	script				= "infantry.lua",
 	weapons = {
 		[2] = { -- Pistol
 			name				= "Webley",

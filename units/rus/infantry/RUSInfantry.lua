@@ -144,6 +144,7 @@ local RUS_PartisanRifle = RifleInf:New(Partisan):New{
 	
 	customParams = {
 		flagCapRate			= 0.005,
+		weapontoggle		= "ambush",
 	},
 	
 	weapons = {

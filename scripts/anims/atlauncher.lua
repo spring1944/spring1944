@@ -18,11 +18,20 @@ local lfoot = piece "lfoot"
 local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
+local backblast = piece "backblast"
 
-local tags, variants, keyframes, keyframeDelays = include "anims/rifle.lua"
-tags.canStandFire = true
-tags.canRunFire = false
-tags.canProneFire = true
+local MUZZLEFLASH = 1024 + 6
+local MUZZLEDUST = 1024 + 7
+
+local tags = {
+	canProneFire = true,
+	canStandFire = true,
+	canRunFire = false,
+	weaponPiece = piece "gun",
+	showOnReady = true,
+}
+
+
 local stances = {
 	stand_aim = {
 					turns = {
@@ -129,14 +138,102 @@ local stances = {
 						{torso, z_axis, 0},
 					},
 				},
+	prone_ready = {
+					turns = { -- Turns
+						{head, x_axis, math.rad(-60)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
+
+						{ruparm, x_axis, math.rad(-80)},
+						{ruparm, y_axis, math.rad(20)},
+						{ruparm, z_axis, math.rad(-70)},
+
+						{luparm, x_axis, math.rad(-140)},
+						{luparm, y_axis, math.rad(-30)},
+						{luparm, z_axis, 0},
+						
+						{rloarm, x_axis, math.rad(-120)},
+						{rloarm, y_axis, math.rad(30)},
+						{rloarm, z_axis, 0},
+
+						{lloarm, x_axis, math.rad(20)},
+						{lloarm, y_axis, math.rad(65)},
+						{lloarm, z_axis, math.rad(-40)},
+						
+						{gun, x_axis, math.rad(10)},
+						{gun, y_axis, math.rad(-35)},
+						{gun, z_axis, math.rad(-45)},
+
+						{torso, x_axis, math.rad(-10)},
+						{torso, y_axis, math.rad(20)},
+						{torso, z_axis, 0},
+					},
+				},
+	prone_aim = {
+					turns = { -- Turns
+						{head, x_axis, math.rad(-60)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
+
+						{ruparm, x_axis, math.rad(-80)},
+						{ruparm, y_axis, math.rad(20)},
+						{ruparm, z_axis, math.rad(-70)},
+
+						{luparm, x_axis, math.rad(-140)},
+						{luparm, y_axis, math.rad(-30)},
+						{luparm, z_axis, 0},
+						
+						{rloarm, x_axis, math.rad(-120)},
+						{rloarm, y_axis, math.rad(30)},
+						{rloarm, z_axis, 0},
+
+						{lloarm, x_axis, math.rad(20)},
+						{lloarm, y_axis, math.rad(65)},
+						{lloarm, z_axis, math.rad(-40)},
+						
+						{gun, x_axis, math.rad(10)},
+						{gun, y_axis, math.rad(-35)},
+						{gun, z_axis, math.rad(-45)},
+
+						{torso, x_axis, math.rad(-10)},
+						{torso, y_axis, math.rad(20)},
+						{torso, z_axis, 0},
+					},
+					headingTurn = {pelvis, y_axis, 0, 1},
+					pitchTurn = {torso, x_axis, math.rad(-10), -0.5},
+				},
+	kf_stand_fire = {
+				emit = {
+					{backblast, MUZZLEFLASH},
+					{backblast, MUZZLEDUST},
+				},
+	},
+	kf_prone_fire = {
+				emit = {
+					{backblast, MUZZLEFLASH},
+					{backblast, MUZZLEDUST},
+				},
+	},
 }
 
+local variants = {
+	stand_ready = {stances.stand_ready_1, 
+					stances.stand_ready_2},
+	prone_ready = { stances.prone_ready},
+	run_ready = {stances.stand_ready_1, 
+				stances.stand_ready_2},
+	stand_aim = { stances.stand_aim},
+	prone_aim = { stances.prone_aim},
+}
 
+local keyframes = {
+	stand_fire = {stances.kf_stand_fire},
+	prone_fire = {stances.kf_prone_fire},
+}
 
-variants.stand_aim = {stances.stand_aim}
-variants.stand_ready = {stances.stand_ready_1, 
-						stances.stand_ready_2}
-variants.run_ready = {stances.stand_ready_1, 
-						stances.stand_ready_2}
+local keyframeDelays = {
+	stand_fire = {0.033, 0.033},
+	prone_fire = {0.033, 0.033},
+}
 
 return tags, variants, keyframes, keyframeDelays

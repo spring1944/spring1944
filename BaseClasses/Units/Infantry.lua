@@ -21,6 +21,7 @@ local Infantry = Unit:New{
 	noChaseCategory		= "FLAG AIR MINE",
 	radardistance		= 650,
 	repairable			= false,
+	script				= "Infantry.lua",
 	seismicDistance		= 1400,
 	seismicSignature	= 0, -- required, not default
 	sightDistance		= 650,
@@ -38,7 +39,6 @@ local Infantry = Unit:New{
 local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
-	script				= "GBRRifle.cob",
 	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -65,7 +65,6 @@ local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 local SMGInf = Infantry:New{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
-	script				= "GBRSTEN.cob",
 	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -94,7 +93,6 @@ local LMGInf = Infantry:New{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
 	buildCostMetal		= 200, -- TODO: needed?
-	script				= "InfantryMG.cob",
 	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -123,6 +121,7 @@ local HMGInf = Infantry:New{
 	mass				= 75,
 	maxVelocity			= 0.8,
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
+	script				= "<NAME>.cob",
 	turnRate			= 420,
 }
 
@@ -136,7 +135,6 @@ local SniperInf = Infantry:New{
 	decloakOnFire		= true,
 	minCloakDistance	= 220,
 	
-	script				= "GBRSniper.cob",
 	
 	customParams = {
 		soundcategory 		= "<SIDE>/Infantry/Sniper",
@@ -166,7 +164,6 @@ local ObservInf = Infantry:New{
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 160,
-	script				= "GBRObserv.cob",
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -194,7 +191,6 @@ local MedMortarInf = Infantry:New{
 	buildCostMetal		= 300, -- TODO: needed?
 	maxDamage			= 200, -- default to be overwritten
 	maxVelocity			= 1.25,
-	script				= "GBR3InMortar.cob",
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -203,10 +199,11 @@ local MedMortarInf = Infantry:New{
 	},
 	customParams = {
 		canareaattack		= true,
-		canfiresmoke		= true,
+		--canfiresmoke		= true,
 		maxammo				= 10,
 		weaponcost			= 15, -- TODO: make this a weapon tag
 		weaponswithammo		= 2, -- TODO: then this can be auto-detected
+		weapontoggle 		= "smoke",
 	},
 	weapons = {
 		[1] = { -- Mortar HE
@@ -234,7 +231,6 @@ local FlameInf = Infantry:New{
 	buildCostMetal		= 300, -- TODO: needed?
 	explodeAs			= "Small_Explosion",
 	maxVelocity			= 1,
-	
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -262,6 +258,8 @@ local ATLauncherInf = Infantry:New{
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
+			[7] = "custom:XSMALL_MUZZLEFLASH",
+			[8] = "custom:XSMALL_MUZZLEDUST",
 		},
 	},
 	weapons = {
@@ -275,13 +273,12 @@ local ATLauncherInf = Infantry:New{
 
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
-	script				= "RUSRPG43.cob",
 }
 
 local ATRifleInf = ATLauncherInf:New{
 	description			= "Long Range Light Anti-Tank",
 	icontype			= "rusptrd", -- TODO: atm italian solothurn has its own icon, consolidate
-	script				= "RUSPTRD.cob",
+	--script				= "RUSPTRD.cob",
 }
 
 -- Engineers --
