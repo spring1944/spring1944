@@ -30,7 +30,7 @@
   maxWaterDepth=70;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
-  objectName=RUSPontoonTruck.s3o;
+  objectName=JPNPontoonTruck.s3o;
   releaseHeld=1;
   script=ruspontoontruck.cob;
   seismicSignature=0;
