@@ -1,17 +1,5 @@
 -- Misc - Deaths
 
--- Death Base Class
-local DeathClass = Weapon:New{
-  craterMult         = 0,
-  explosionSpeed     = 30,
-  customparams = {
-    damagetype         = [[explosive]],
-  },
-  damage = {
-    default            = 33,
-  },
-}
-
 -- Implementations
 
 -- Tiny Explosion (Used for Infantry Guns currently)

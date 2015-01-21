@@ -1,19 +1,5 @@
 -- Misc - Bulletproofs
 
--- Bulletproofs Base Class
-local BulletProofClass = Weapon:New{
-  exteriorShield     = true,
-  shieldEnergyUse    = 0,
-  shieldForce        = 500,
-  shieldMaxSpeed     = 900,
-  shieldRepulser     = true,
-  smartShield		 = true,
-  weaponType         = [[Shield]],
-  
-  --visibleShield = true,
-  --VisibleShieldHitFrames = 10,
-}
-
 -- Implementations
 
 -- .30cal proof

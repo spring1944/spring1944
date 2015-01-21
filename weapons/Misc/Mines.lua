@@ -1,22 +1,5 @@
 -- Misc - Mines
 
--- Mine Base Class
-local MineClass = Weapon:New{
-  explosionGenerator = [[custom:HE_Large]],
-  explosionSpeed     = 30,
-  fireSubmersed      = true,
-  soundHitDry        = [[GEN_Explo_4]],
-  turret             = true,
-  weaponVelocity     = 90,
-  customparams = {
-	no_range_adjust	   = true,
-    damagetype         = [[explosive]], 
-  },
-  damage = {
-    mines              = 0,
-  },
-}
-
 -- Implementations
 
 -- Anti-Personnel Mine
