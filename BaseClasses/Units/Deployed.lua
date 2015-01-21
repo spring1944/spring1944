@@ -150,9 +150,9 @@ local HGun = DeployedGun:New{
 	buildCostMetal		= 1800,
 	iconType			= "artillery",
 	customParams = {
-	    canAreaAttack		= true,
-		canfiresmoke		= true,
+		canAreaAttack		= true,
 		weaponswithammo		= 2,
+		weapontoggle		= "smoke",
 	},
 	weapons = {
 		[1] = { -- HE

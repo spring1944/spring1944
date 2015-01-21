@@ -135,6 +135,28 @@ local weaponsKeyFrameDelays = {}
 local weaponsMap = {}
 local weaponsPriorities = {}
 
+local mainAnim = GG.lusHelper[unitDefID].mainAnimation
+
+if mainAnim then
+	Spring.Echo("has main")
+	local _, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/" .. mainAnim .. ".lua")
+	if mainVariants.stand_ready then
+		CreatePose(variants.stand_base, mainVariants.stand_ready, "stand_ready")
+	end
+	if mainVariants.prone_ready then
+		CreatePose(variants.prone_base, mainVariants.prone_ready, "prone_ready")
+	end
+	if mainVariants.run_ready then
+		CreatePose(variants.run_base, mainVariants.run_ready, "run_ready")
+	end
+	if mainVariants.pinned then
+		CreatePose(variants.null, mainVariants.pinned, "pinned")
+	end
+	if mainVariants.crawl then
+		CreatePose(variants.null, mainVariants.crawl, "crawl")
+	end
+end
+
 for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 	if not VFS.FileExists("scripts/anims/" .. weaponAnim .. ".lua") then
 		weaponAnim = "rifle"
@@ -143,26 +165,28 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 	if not weaponsTags[weaponAnim] then
 		local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/" .. weaponAnim .. ".lua")
 		weaponsPriorities[weaponAnim] = weaponNum
-		if weaponVariants.stand_ready then
-			CreatePose(variants.stand_base, weaponVariants.stand_ready, "stand_ready")
-		end
-		if weaponVariants.prone_ready then
-			CreatePose(variants.prone_base, weaponVariants.prone_ready, "prone_ready")
-		end
-		if weaponVariants.run_ready then
-			CreatePose(variants.run_base, weaponVariants.run_ready, "run_ready")
+		if not mainAnim then
+			if weaponVariants.stand_ready then
+				CreatePose(variants.stand_base, weaponVariants.stand_ready, "stand_ready")
+			end
+			if weaponVariants.prone_ready then
+				CreatePose(variants.prone_base, weaponVariants.prone_ready, "prone_ready")
+			end
+			if weaponVariants.run_ready then
+				CreatePose(variants.run_base, weaponVariants.run_ready, "run_ready")
+			end
+			if weaponVariants.pinned then
+				CreatePose(variants.null, weaponVariants.pinned, "pinned")
+			end
+			if weaponVariants.crawl then
+				CreatePose(variants.null, weaponVariants.crawl, "crawl")
+			end
 		end
 		if weaponVariants.stand_aim then
 			CreatePose(variants.stand_base, weaponVariants.stand_aim, "stand_aim_" .. weaponAnim)
 		end
 		if weaponVariants.prone_aim then
 			CreatePose(variants.prone_base, weaponVariants.prone_aim, "prone_aim_" .. weaponAnim)
-		end
-		if weaponVariants.pinned then
-			CreatePose(variants.null, weaponVariants.pinned, "pinned")
-		end
-		if weaponVariants.crawl then
-			CreatePose(variants.null, weaponVariants.crawl, "crawl")
 		end
 		if weaponVariants.run_aim then
 			for _, stance in pairs(weaponVariants.run_aim) do

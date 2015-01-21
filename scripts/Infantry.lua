@@ -512,7 +512,7 @@ local function NextPose(isFire)
 	Sleep(33)
 end
 
-local function NewUpdatePose(isFire)
+local function ResolvePose(isFire)
 	SetSignalMask(0)
 	--Spring.Echo("trying to change")
 	if inTransition then return false end
@@ -542,50 +542,50 @@ end
 local function StopAiming()
 	--Spring.Echo("stopaiming")
 	wantedAiming = false
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function StopWalk()
 	--Spring.Echo("stopwalk")
 	wantedMoving = false
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function Stand()
 	--Spring.Echo("stand")
 	wantedStanding = true
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function Walk()
 	--Spring.Echo("walk")
 	wantedMoving = true
 	wantedStanding = true
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function Drop()
 	--Spring.Echo("drop")
 	wantedStanding = false
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function StartAiming(weaponNum)
 	--Spring.Echo("startaiming")
 	wantedAiming = weaponNum
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function StopPinned()
 	--Spring.Echo("stoppinned")
 	wantedPinned = false
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 local function StartPinned()
 	--Spring.Echo("startpinned")
 	wantedPinned = true
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 end
 
 function script.Create()
@@ -681,7 +681,7 @@ function script.Shot(num)
 	local weaponClass = weaponsMap[num]
 	local tags = weaponsTags[weaponClass]
 	if not tags.aimOnLoaded then
-		StartThread(NewUpdatePose, true)
+		StartThread(ResolvePose, true)
 	end
 end
 
@@ -696,7 +696,7 @@ function script.EndBurst(num)
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	end
 	UpdateSpeed()
-	StartThread(NewUpdatePose)
+	StartThread(ResolvePose)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 end
 

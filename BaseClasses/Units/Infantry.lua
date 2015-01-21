@@ -199,7 +199,6 @@ local MedMortarInf = Infantry:New{
 	},
 	customParams = {
 		canareaattack		= true,
-		--canfiresmoke		= true,
 		maxammo				= 10,
 		weaponcost			= 15, -- TODO: make this a weapon tag
 		weaponswithammo		= 2, -- TODO: then this can be auto-detected

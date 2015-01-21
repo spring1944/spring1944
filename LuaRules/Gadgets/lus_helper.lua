@@ -235,6 +235,10 @@ function gadget:GamePreload()
 		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General
 		info.numWeapons = #weapons
+		info.mainAnimation = cp.scriptanimation
+		if (cp.scriptanimation) then
+			Spring.Echo(unitDef.name)
+		end
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)

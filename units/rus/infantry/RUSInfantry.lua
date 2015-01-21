@@ -96,7 +96,9 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 
 local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	name				= "RPG43",
-	script				= "<NAME>.cob",
+	customparams = {
+		scriptanimation		= "smg",
+	},
 	weapons = {
 		[1] = { -- AT Grenade
 			name				= "RPG43",
