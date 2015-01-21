@@ -278,7 +278,6 @@ local ATGrenadeInf = ATLauncherInf:New{
 local ATRifleInf = ATLauncherInf:New{
 	description			= "Long Range Light Anti-Tank",
 	icontype			= "rusptrd", -- TODO: atm italian solothurn has its own icon, consolidate
-	--script				= "RUSPTRD.cob",
 }
 
 -- Engineers --
