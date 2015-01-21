@@ -678,7 +678,11 @@ function script.FireWeapon(num)
 end
 
 function script.Shot(num)
-	StartThread(NewUpdatePose, true)
+	local weaponClass = weaponsMap[num]
+	local tags = weaponsTags[weaponClass]
+	if not tags.aimOnLoaded then
+		StartThread(NewUpdatePose, true)
+	end
 end
 
 function script.EndBurst(num)
