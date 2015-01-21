@@ -27,7 +27,8 @@ local ATRifleClass = Weapon:New{
   weaponType         = [[LaserCannon]],
   customparams = {
     damagetype         = [[kinetic]],
-	cegflare           = "ptrd_muzzleflash",
+    cegflare           = [[ptrd_muzzleflash]],
+    scriptanimation    = [[atrifle]],
   },
 }
 

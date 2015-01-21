@@ -7,7 +7,7 @@ local BulletProofClass = Weapon:New{
   shieldForce        = 500,
   shieldMaxSpeed     = 900,
   shieldRepulser     = true,
-  smartShield		 = true,
+  smartShield        = true,
   weaponType         = [[Shield]],
   
   --visibleShield = true,
@@ -33,7 +33,7 @@ local MineClass = Weapon:New{
   turret             = true,
   weaponVelocity     = 90,
   customparams = {
-	no_range_adjust	   = true,
+    no_range_adjust    = true,
     damagetype         = [[explosive]], 
   },
   damage = {
@@ -63,6 +63,7 @@ local OpticClass = Weapon:New{
   customparams = {
     binocs             = 1,
     damagetype         = [[none]],
+    scriptanimation    = [[binocs]],
   },
   damage = {
     default            = 0,

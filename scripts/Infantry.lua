@@ -706,7 +706,7 @@ function script.Killed(recentDamage, maxHealth)
 end
 
 function RestoreAfterCover()
-	Spring.Echo("restoring")
+	--Spring.Echo("restoring")
 	MySignal(SIG_FEAR)
 	fear = 0
 	StopPinned()
@@ -717,7 +717,7 @@ local function RecoverFear()
 	MySignal(SIG_FEAR)
 	SetSignalMask(SIG_FEAR)
 	while fear > 0 do
-		Spring.Echo("Lowered fear", fear)
+		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
 		Spring.SetUnitRulesParam(unitID, "suppress", fear)
 		if pinned and fear < FEAR_PINNED then

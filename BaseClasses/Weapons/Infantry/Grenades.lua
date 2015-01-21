@@ -16,6 +16,9 @@ local GrenadeClass = Weapon:New{
   --weaponTimer        = 5,
   weaponType         = [[Cannon]],
   weaponVelocity     = 200,
+  customparams = {
+    scriptanimation    = [[grenade]],
+  },
 }
 
 -- Anti-Personel Grenade Class

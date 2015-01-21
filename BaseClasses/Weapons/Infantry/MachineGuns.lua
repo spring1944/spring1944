@@ -28,6 +28,7 @@ local MGClass = Weapon:New{
     fearid             = 301,
     cegflare           = "MG_MUZZLEFLASH",
     flareonshot        = true,
+    scriptanimation    = [[mg]],
   },
   damage = {
     default            = 33,

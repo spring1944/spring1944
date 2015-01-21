@@ -3,7 +3,7 @@
 -- Mortar Base Class
 local MortarClass = Weapon:New{
   accuracy           = 485,
-  avoidFeature		 = false,
+  avoidFeature       = false,
   collideFriendly    = false,
   edgeEffectiveness  = 0.2,
   explosionGenerator = [[custom:HE_Medium]],
@@ -21,7 +21,8 @@ local MortarClass = Weapon:New{
   customparams = {
     armor_hit_side     = [[top]],
     damagetype         = [[explosive]],
-	cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = [[MEDIUM_MUZZLEFLASH]],
+    scriptanimation    = [[mortar]],
   },
 }
 
@@ -39,9 +40,9 @@ local MortarSmokeClass = Weapon:New{
   areaOfEffect       = 20,
   name               = [[Smoke Shell]],
   customparams = {
-	smokeradius        = 160,
-	smokeduration      = 25,
-	smokeceg           = [[SMOKESHELL_Small]],
+    smokeradius        = 160,
+    smokeduration      = 25,
+    smokeceg           = [[SMOKESHELL_Small]],
   },
   damage = {
     default = 100,
