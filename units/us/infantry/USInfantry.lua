@@ -109,6 +109,9 @@ local US_Observ = ObservInf:New(USInf):New{
 	},
 }
 
+local US_Paratrooper = Infantry:New{
+	script = "<NAME>.cob"
+}
 
 return lowerkeys({
 	-- Regular Inf
@@ -130,5 +133,5 @@ return lowerkeys({
 	["USParaMG"] = US_MG:New{},
 	["USParaMG_Sandbag"] = US_MG_Sandbag:New{},
 	["USParaBazooka"] = US_Bazooka:New{},
-	["USParatrooper"] = Infantry:New{},
+	["USParatrooper"] = US_Paratrooper,
 })
