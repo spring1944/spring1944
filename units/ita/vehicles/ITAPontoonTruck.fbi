@@ -31,7 +31,7 @@
   maxWaterDepth=70;
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
-  objectName=GERPontoonRaft_Truck.s3o;
+  objectName=ITAPontoonTruck.s3o;
   releaseHeld=1;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
