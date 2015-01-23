@@ -20,7 +20,7 @@
   CanStop=1;
   category=AIR;
   radarDistance=1200;
-  cruiseAlt=1200;
+  cruiseAlt=1000;
   [customParams] {
     enginesound=po2-;
     enginesoundnr=11;
