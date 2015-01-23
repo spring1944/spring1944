@@ -50,8 +50,9 @@
   transportMass=750;
   transportSize=1;
   transportUnloadMethod=0;
+  loadingRadius=30;
   turninplace=0;
   turnRate=440;
-  unloadSpread=3;
+  unloadSpread=10;
 }
 
