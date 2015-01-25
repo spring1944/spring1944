@@ -14,7 +14,7 @@ local Bofors40mmAA = Bofors40mm:New(AntiAirGunAA, true):New{
   range              = 2025,
   reloadtime         = 1.5,
 }
-local Bofors40mmHE = Bofors40mm:New(LightHE, true):New{
+local Bofors40mmHE = Bofors40mm:New(AutoCannonHE, true):New{
   burst              = 2,
   burstrate          = 0.5,
   range              = 725,
@@ -44,7 +44,7 @@ local FlaK4337mmAA = FlaK4337mm:New(AntiAirGunAA, true):New{
   range              = 2025,
   reloadtime         = 1.6,
 }
-local FlaK4337mmHE = FlaK4337mm:New(LightHE, true):New{
+local FlaK4337mmHE = FlaK4337mm:New(AutoCannonHE, true):New{
   burst              = 2,
   burstrate          = 0.625,
   range              = 725,
@@ -65,7 +65,7 @@ local M1939_61K37mmAA = M1939_61K37mm:New(AntiAirGunAA, true):New{
   range              = 2025,
   reloadtime         = 3.75, -- 80rpm practical
 }
-local M1939_61K37mmHE = M1939_61K37mm:New(LightHE, true):New{
+local M1939_61K37mmHE = M1939_61K37mm:New(AutoCannonHE, true):New{
   burst              = 2,
   burstrate          = 0.625,
   range              = 725,

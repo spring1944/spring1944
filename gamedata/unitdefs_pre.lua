@@ -14,8 +14,8 @@ end
 local function inherit (c, p, concatNames)
 	lowerkeys(c)
 	for k,v in pairs(p) do 
-		if type(k) == "string" then
-			k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
+		if type(k) == "string" and type(v) ~= "function" then
+			k = k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
 		end
 		if type(v) == "table" then
 			if c[k] == nil then c[k] = {} end
@@ -25,6 +25,7 @@ local function inherit (c, p, concatNames)
 				c[k] = v .. " " .. (c[k] or "")
 			else
 				if c[k] == nil then c[k] = v end
+				--Spring.Echo(c.name, k, v, c[k])
 			end
 		end
 	end
