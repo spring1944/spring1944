@@ -91,6 +91,7 @@ for _, baseClassType in pairs(baseClassTypes) do
 		newClasses = VFS.Include(file, VFS.ZIP)
 		for className, class in pairs(newClasses) do
 			sharedEnv[className] = class
+			_G[className] = class
 		end
 	end
 end

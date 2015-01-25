@@ -2,7 +2,7 @@
 -- Implementations
 
 -- FlaK 38 20mm (GER)
-local FlaK3820mm = ACClass:New{
+local FlaK3820mm = AutoCannon:New{
   accuracy           = 255,
   burst              = 3,
   burstRate          = 0.16,
@@ -17,13 +17,13 @@ local FlaK3820mm = ACClass:New{
   },
 }
 
-local FlaK3820mmAA = FlaK3820mm:New(ACAAClass, true):New{
+local FlaK3820mmAA = FlaK3820mm:New(AutoCannonAA, true):New{
   burst              = 5,
   burstRate          = 0.13,
   range              = 1910,
 }
-local FlaK3820mmHE = FlaK3820mm:New(ACHEClass, true)
-local FlaK3820mmAP = FlaK3820mm:New(ACAPClass, true):New{
+local FlaK3820mmHE = FlaK3820mm:New(AutoCannonHE, true)
+local FlaK3820mmAP = FlaK3820mm:New(AutoCannonAP, true):New{
   weaponVelocity     = 1560,
   customparams = {
     armor_penetration_1000m = 9,
@@ -50,7 +50,7 @@ local FlakVierling20mmHE = FlaK3820mmHE:New({
 }, true)
 
 -- Oerlikon/Polsten 20mm (GBR)
-local Oerlikon20mm = ACClass:New{
+local Oerlikon20mm = AutoCannon:New{
   accuracy           = 255,
   burst              = 3,
   burstRate          = 0.16,
@@ -65,18 +65,18 @@ local Oerlikon20mm = ACClass:New{
   },
 }
 
-local Oerlikon20mmAA = Oerlikon20mm:New(ACAAClass, true):New{
+local Oerlikon20mmAA = Oerlikon20mm:New(AutoCannonAA, true):New{
   burst              = 5,
   range              = 1950,
 }
-local Oerlikon20mmHE = Oerlikon20mm:New(ACHEClass, true)
+local Oerlikon20mmHE = Oerlikon20mm:New(AutoCannonHE, true)
 local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
   name               = [[(Twin)]],
   reloadTime         = 0.75,
 }, true)
 
 -- TNSh 20mm (RUS)
-local TNSh20mm = ACClass:New{
+local TNSh20mm = AutoCannon:New{
   accuracy           = 300,
   burst              = 3,
   burstRate          = 0.1,
@@ -91,8 +91,8 @@ local TNSh20mm = ACClass:New{
   },
 }
 
-local TNSh20mmHE = TNSh20mm:New(ACHEClass, true)
-local TNSh20mmAP = TNSh20mm:New(ACAPClass, true):New{
+local TNSh20mmHE = TNSh20mm:New(AutoCannonHE, true)
+local TNSh20mmAP = TNSh20mm:New(AutoCannonAP, true):New{
   weaponVelocity     = 1500,
   customparams = {
     armor_penetration_1000m = 16,
@@ -104,7 +104,7 @@ local TNSh20mmAP = TNSh20mm:New(ACAPClass, true):New{
 }
 
 -- Breda M35 20mm (ITA)
-local BredaM3520mm = ACClass:New{
+local BredaM3520mm = AutoCannon:New{
   accuracy           = 100, --Why not 255 like the rest?
   burst              = 4,
   burstRate          = 0.261,
@@ -119,7 +119,7 @@ local BredaM3520mm = ACClass:New{
   },
 }
 
-local BredaM3520mmAA = BredaM3520mm:New(ACAAClass, true):New{
+local BredaM3520mmAA = BredaM3520mm:New(AutoCannonAA, true):New{
   range              = 1950,
   sprayAngle         = 475,
   customparams = {
@@ -132,13 +132,13 @@ local TwinBredaM3520mmAA = BredaM3520mmAA:New{
   burstRate          = 0.13,
 }
 
-local BredaM3520mmHE = BredaM3520mm:New(ACHEClass, true):New{
+local BredaM3520mmHE = BredaM3520mm:New(AutoCannonHE, true):New{
   customparams = {
     fearaoe            = 30,
   },
 }
 
-local BredaM3520mmAP = BredaM3520mm:New(ACAPClass, true):New{
+local BredaM3520mmAP = BredaM3520mm:New(AutoCannonAP, true):New{
   sprayAngle         = 400,
   weaponVelocity     = 1560,
   customparams = {
@@ -151,7 +151,7 @@ local BredaM3520mmAP = BredaM3520mm:New(ACAPClass, true):New{
 }
 
 -- Type 98 20mm (JPN)
-local Type9820mm = ACClass:New{
+local Type9820mm = AutoCannon:New{
   accuracy           = 255,
   areaOfEffect       = 15,
   burst              = 4,
@@ -167,14 +167,14 @@ local Type9820mm = ACClass:New{
   },
 }
 
-local Type9820mmAA = Type9820mm:New(ACAAClass, true):New{
+local Type9820mmAA = Type9820mm:New(AutoCannonAA, true):New{
   range              = 1950,
 }
 
-local Type9820mmHE = Type9820mm:New(ACHEClass, true)
+local Type9820mmHE = Type9820mm:New(AutoCannonHE, true)
 
 -- Type 96 25mm (JPN)
-local Type9625mm = ACClass:New{
+local Type9625mm = AutoCannon:New{
   accuracy           = 255,
   areaOfEffect       = 15, --if this is changed, change AA and HE aoe and fearaoe accordingly
   burst              = 5,
@@ -190,7 +190,7 @@ local Type9625mm = ACClass:New{
   },
 }
 
-local Type9625mmAA = Type9625mm:New(ACAAClass, true):New{
+local Type9625mmAA = Type9625mm:New(AutoCannonAA, true):New{
   range              = 1950,
   damage = {
     default            = 55,
@@ -203,7 +203,7 @@ local TwinType9625mmAA = Type9625mmAA:New{
     reloadtime       = 6.5,
 }
 
-local Type9625mmHE = Type9625mm:New(ACHEClass, true)
+local Type9625mmHE = Type9625mm:New(AutoCannonHE, true)
 
 local TwinType9625mmHE = Type9625mmHE:New{
 	burst            = 36,

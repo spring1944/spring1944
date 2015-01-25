@@ -3,7 +3,7 @@
 -- Implementations
 
 -- LeIG 18 (GER)
-local LeIG18HE = InfGunClass:New{
+local LeIG18HE = InfGun:New{
   areaOfEffect       = 88,
   name               = [[75mm LeIG 18 HE Shell]],
   soundStart         = [[GER_75mm]],
@@ -13,7 +13,7 @@ local LeIG18HE = InfGunClass:New{
 }
 
 -- M8 Pack Howitzer (USA)
-local M875mmHE = InfGunClass:New{
+local M875mmHE = InfGun:New{
   areaOfEffect       = 94,
   name               = [[M8 75mm Pack Howitzer HE Shell]],
   soundStart         = [[US_75mm]],
@@ -23,7 +23,7 @@ local M875mmHE = InfGunClass:New{
 }
 
 -- Cannone da 65/17 (ITA)
-local Cannone65L17HE = InfGunClass:New{
+local Cannone65L17HE = InfGun:New{
   areaOfEffect       = 68,
   name               = [[Cannone da 65/17 HE Shell]],
   range              = 1010,
@@ -36,7 +36,7 @@ local Cannone65L17HE = InfGunClass:New{
   },
 }
 
-local Cannone65L17HEAT = InfGunClass:New{ -- TODO: make a HEAT base class and inherit from Cannone65
+local Cannone65L17HEAT = InfGun:New{ -- TODO: make a HEAT base class and inherit from Cannone65
   areaOfEffect       = 8,
   explosionGenerator = [[custom:EP_medium]],
   name               = [[Cannone da 65/17 HEAT Shell]],

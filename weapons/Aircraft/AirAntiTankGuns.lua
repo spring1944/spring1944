@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Bordkanone BK 37 (GER)
-local BK37mmAP = AirATGunClass:New{
+local BK37mmAP = AirATGun:New{
   areaOfEffect       = 12,
   --burst              = 1,
   --burstrate          = 0.375,
@@ -23,7 +23,7 @@ local BK37mmAP = AirATGunClass:New{
 }
 
 -- Ho-401 57mm HEAT (JPN)
-local Ho40157mm = AirATGunClass:New{
+local Ho40157mm = AirATGun:New{
   areaOfEffect       = 12,
   name               = [[Ho-401 57 mm HEAT]],
   range              = 760,

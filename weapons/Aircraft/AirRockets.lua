@@ -5,7 +5,7 @@
 -- British rocket, typhoon currently uses HVAR
 
 -- HVAR Rocket (USA)
-local HVARRocket = AirRocketClass:New{
+local HVARRocket = AirRocket:New{
   areaOfEffect       = 18,
   name               = [[5-Inch HVAR Rocket]],
   range              = 1500,
@@ -20,7 +20,7 @@ local HVARRocket = AirRocketClass:New{
   },
 }
 -- RS 82 Rocket (RUS)
-local RS82Rocket = AirRocketClass:New{
+local RS82Rocket = AirRocket:New{
   areaOfEffect       = 78,
   name               = [[high-explosive RS82 Rocket]],
   range              = 1400,

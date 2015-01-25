@@ -2,20 +2,20 @@
 -- Implementations
 
 -- QF 6Pdr 57mm (GBR)
-local QF6Pdr57mm = LightMediumGunClass:New{
+local QF6Pdr57mm = LightMediumGun:New{
   name               = [[QF 6 Pdr Mk.?]],
   range              = 1200,
   reloadTime         = 4.95,
 }
 
-local QF6Pdr57mmHE = QF6Pdr57mm:New(LightMediumGunHEClass, true):New{
+local QF6Pdr57mmHE = QF6Pdr57mm:New(LightMediumHE, true):New{
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 760,
   },  
 }
-local QF6Pdr57mmAP = QF6Pdr57mm:New(LightMediumGunAPClass, true):New{
+local QF6Pdr57mmAP = QF6Pdr57mm:New(MediumAP, true):New{
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 66,
@@ -27,7 +27,7 @@ local QF6Pdr57mmAP = QF6Pdr57mm:New(LightMediumGunAPClass, true):New{
 }
 
 -- Naval QF 6-Pounder Mk IIA - uses only HE
-local QF6Pdr57MkIIAHE = QF6Pdr57mm:New(LightMediumGunHEClass, false):New{
+local QF6Pdr57MkIIAHE = QF6Pdr57mm:New(LightMediumHE, false):New{
 	name		= [[QF 6-Pounder Mk IIA]],
 	-- autoloader, 40 shots per minute
 	reloadTime	= 1.5,
@@ -39,20 +39,20 @@ local QF6Pdr57MkIIAHE = QF6Pdr57mm:New(LightMediumGunHEClass, false):New{
 }
 
 -- KwK39 L60 50mm (GER)
-local KwK50mmL60 = LightMediumGunClass:New{
+local KwK50mmL60 = LightMediumGun:New{
   name               = [[5cm KwK39 L/60]],
   range              = 1125,
   reloadTime         = 4.95,
 }
 
-local KwK50mmL60HE = KwK50mmL60:New(LightMediumGunHEClass, true):New{
+local KwK50mmL60HE = KwK50mmL60:New(LightMediumHE, true):New{
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 330, -- much lower than 6pdr?
   },  
 }
-local KwK50mmL60AP = KwK50mmL60:New(LightMediumGunAPClass, true):New{
+local KwK50mmL60AP = KwK50mmL60:New(MediumAP, true):New{
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 44,
@@ -64,14 +64,14 @@ local KwK50mmL60AP = KwK50mmL60:New(LightMediumGunAPClass, true):New{
 }
 
 -- ZiS-2 57mm (RUS)
-local ZiS257mm = LightMediumGunClass:New{
+local ZiS257mm = LightMediumGun:New{
   name               = [[ZiS-2 57mm]],
   range              = 1180,
   reloadTime         = 4.95,
 }
 
 -- Currently only AP used
-local ZiS257mmAP = ZiS257mm:New(LightMediumGunAPClass, true):New{
+local ZiS257mmAP = ZiS257mm:New(MediumAP, true):New{
   weaponVelocity     = 1980,
   customparams = {
     armor_penetration_1000m = 64,
@@ -83,20 +83,20 @@ local ZiS257mmAP = ZiS257mm:New(LightMediumGunAPClass, true):New{
 }
 
 -- Type 97 57mm (JPN)
-local Type9757mm = LightMediumGunClass:New{
+local Type9757mm = LightMediumGun:New{
   name               = [[Type 97 57mm]],
   range              = 980,
   reloadTime         = 4.0,
 }
 
-local Type9757mmHE = Type9757mm:New(LightMediumGunHEClass, true):New{
+local Type9757mmHE = Type9757mm:New(LightMediumHE, true):New{
   areaOfEffect       = 57,
   weaponVelocity     = 800,
   damage = {
     default            = 1400,
   },  
 }
-local Type9757mmAP = Type9757mm:New(LightMediumGunAPClass, true):New{
+local Type9757mmAP = Type9757mm:New(MediumAP, true):New{
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 25,
