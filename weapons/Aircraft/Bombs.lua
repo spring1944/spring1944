@@ -122,6 +122,36 @@ local PTAB = BombClass:New{
     infantry           = 50, -- I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
     lightBuildings     = 75, -- Nerfed to avoid usages different of historical usage. Still very effective vs storages.
     bunkers            = 500,
+	},
+  }
+--  3.5kg Hollow Charge Bomblet (ITA)
+local A_tkbomb = BombClass:New{
+  areaOfEffect       = 26,
+  burst              = 3,
+  selfExplode	     = true,
+  cylinderTargeting  = 0.5,
+  burstrate          = 0.1,
+  edgeEffectiveness  = 0.5,
+  explosionGenerator = [[custom:HE_medium]], -- overrides default
+  weaponType         = [[AircraftBomb]],
+  InterceptedByShieldType=32,   -- needed because of weapontype
+  model              = [[MortarShell.S3O]],
+  weaponVelocity     = 150,
+  name               = [[3.5kg Hollow Charge A-tk Anti-Tank Bomblets]],
+  projectiles        = 7,
+  range              = 500,
+  soundHitDry        = [[GEN_Explo_3]],
+  sprayangle         = 2000,
+  customparams = {
+    armor_hit_side     = [[top]],
+    armor_penetration  = 70,
+    damagetype         = [[shapedcharge]], -- overrides default
+  },
+  damage = {
+    default            = 4106, 
+    infantry           = 50, -- I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
+    lightBuildings     = 75, -- Nerfed to avoid usages different of historical usage. Still very effective vs storages.
+    bunkers            = 500,
   }
 }
 
@@ -131,5 +161,6 @@ return lowerkeys({
   Bomb160kg = Bomb160kg,
   Bomb50kg = Bomb50kg,
   PTAB = PTAB,
+  A_tkbomb = A_tkbomb,
   V1 = V1,
 })
