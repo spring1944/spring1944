@@ -21,7 +21,7 @@ local itaSorties = {
 		name = "Ground-Attack Sortie",
 		description = "2 x Macchi C 200 armed with anti-tank Bomblets",
 		buildCostMetal = 4500,
-		buildPic = "itafiatcr42.png",
+		buildPic = "itamc200.png",
 		buildTime = 4500,
 		side = "ita",
 	},

@@ -5,9 +5,9 @@
   airSightDistance=4000;
   brakeRate=5;
   buildCostEnergy=0;
-  buildCostMetal=3375;
-  buildPic=ITAMC205.png;
-  buildTime=3375;
+  buildCostMetal=2375;
+  buildPic=ITAMC200.png;
+  buildTime=2375;
   canAttack=1;
   canDropFlare=1;
   canFly=1;
@@ -35,10 +35,10 @@
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
-  maxAcc=0.742;
+  maxAcc=0.782;
   maxAileron=0.0054;
   maxBank=0.9;
-  maxDamage=340;
+  maxDamage=210;
   maxElevator=0.0042;
   maxFuel=60;
   maxPitch=1;
