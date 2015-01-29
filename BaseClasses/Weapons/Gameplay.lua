@@ -61,7 +61,8 @@ local OpticClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     binocs             = 1,
-    damagetype         = [[none]],
+    damagetype         = "none",
+    targetcategory     = "NONE",
   },
   damage = {
     default            = 0,

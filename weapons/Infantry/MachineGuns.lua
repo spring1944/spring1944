@@ -58,16 +58,9 @@ local MG42_Deployed = MG42:New{
   sprayAngle         = 360,
 }
 -- Anti Air MG42
-local MG42AA = MG42:New{
-  canAttackGround    = false,
-  predictBoost       = 0.75,
+local MG42AA = MG42:New(AAMG):New{
   range              = 1170,
   sprayAngle         = 460,
-  customparams = { -- don't cause fear, should cause Aircraft fear?
-    no_range_adjust    = true,
-    fearaoe            = nil,
-    fearid             = nil,
-  }
 }
 
 -- DP (RUS)
@@ -98,17 +91,11 @@ local Maxim = MGClass:New{
   soundStart         = [[RUS_Maxim]],
 }
 -- Maxim AA
-local MaximAA = Maxim:New{
+local MaximAA = Maxim:New(AAMG):New{
   burst              = 7,
   burstRate          = 0.103,
-  canAttackGround    = false,
   movingAccuracy     = 400,
-  predictBoost       = 0.75,
   range              = 1050,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 -- Vickers (GBR)
 local Vickers = Maxim:New{
@@ -254,17 +241,11 @@ local M2Browning = HeavyMGClass:New{
   soundStart         = [[US_50CAL]],
 }
 -- M2 Browning AA
-local M2BrowningAA = M2Browning:New{
+local M2BrowningAA = M2Browning:New(AAMG):New{
   burst              = 3,
-  canAttackGround    = false,
   movingAccuracy     = 200,
-  predictBoost       = 1,
   range              = 1170,
   reloadTime         = 0.375,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 -- M2 Browning Aircraft
 local M2BrowningAMG = M2Browning:New{

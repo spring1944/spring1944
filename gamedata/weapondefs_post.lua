@@ -186,6 +186,7 @@ end
 
 local UnitDefs = DEFS.unitDefs
 local cegCache = {}
+local categoryCache = {}
 local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 
 for weapName, weaponDef in pairs(WeaponDefs) do
@@ -193,6 +194,9 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 	if cp then
 		if cp.cegflare then
 			cegCache[weapName] = cp.cegflare
+		end
+		if cp.targetcategory then
+			categoryCache[weapName] = cp.targetcategory
 		end
 		for k, v in pairs (cp) do
 			if type(v) == "table" or type(v) == "boolean" then
@@ -248,6 +252,13 @@ for unitName, ud in pairs(UnitDefs) do
 					--Spring.Echo("cegFlare: " .. cegFlare)
 					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 				end
+			end
+		end
+		for weaponID, weapon in pairs(weapons) do --weaponID = 1, #weapons do -- TODO: move this loop into a function
+			local targetCat = categoryCache[string.lower(weapon.name)]
+			if targetCat then
+				--Spring.Echo("Replacing " .. unitName .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with: " .. targetCat)
+				ud.weapons[weaponID].onlytargetcategory = targetCat
 			end
 		end
 	end

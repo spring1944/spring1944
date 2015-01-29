@@ -62,7 +62,6 @@ local HE = Weapon:New{
   customparams = {
     damagetype         = "explosive",
     fearid             = 301,
-	targetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
   },
 }
 
@@ -128,7 +127,6 @@ local Smoke = Weapon:New{
   name               = "Smoke Shell",
   damage = {
     default = 100,
-	targetcategory = HE.customparams.targetcategory,
   } ,
 }
 

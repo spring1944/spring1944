@@ -63,7 +63,11 @@ function Unit:Clone(name) -- name is passed to <NAME> in _post, it is the unitna
 	return newClass
 end
 
-Weapon = {}
+Weapon = {
+	customParams = {
+		targetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	},
+}
 function Weapon:New(newAttribs, concatName)
 	local newClass = {}
 	inherit(newClass, newAttribs)

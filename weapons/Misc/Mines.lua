@@ -10,6 +10,9 @@ local APMine = MineClass:New{
   name               = [[Anti-Personnel Mine]],
   range              = 25,
   soundHitDry        = [[GEN_Explo_1]],
+  customparams = {
+    targetcategory     = "MINETRIGGER",
+  },
   damage = {
     default            = 400,
   },
@@ -24,6 +27,7 @@ local ATMine = MineClass:New{
     armor_hit_side     = [[top]],
     armor_penetration  = 100,
     damagetype         = [[shapedcharge]], -- overrides default
+	targetcategory     = AP.customparams.targetcategory,
   },
   damage = {
     default            = 10000,
