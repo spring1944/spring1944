@@ -14,13 +14,11 @@ local ITA_Gabbiano = BoatMother:New{
 	weapons = {	
 		[1] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			mainDir				= [[1 0 1]],
 			maxAngleDif			= 90,
 		},
 		[2] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			mainDir				= [[-1 0 1]],
 			maxAngleDif			= 90,
 		},
@@ -49,7 +47,6 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
   	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -75,7 +72,6 @@ local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 		[2] = {
 			name				= "BredaM3520mmHE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -98,26 +94,22 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 		[1] = {
 			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			mainDir		= [[0 0 -1]],
 			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "BredaM3520mmHE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir		= [[0 0 -1]],
 		},
 		[4] = {
 			name				= "BredaM3520mmHE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir		= [[0 0 -1]],
 			slaveTo				= 3,
 		},

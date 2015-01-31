@@ -195,8 +195,13 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 		if cp.cegflare then
 			cegCache[weapName] = cp.cegflare
 		end
-		if cp.targetcategory then
-			categoryCache[weapName] = cp.targetcategory
+		if cp.onlytargetcategory then
+			if not categoryCache[weapName] then categoryCache[weapName] = {} end
+			categoryCache[weapName].only = cp.onlytargetcategory
+		end
+		if cp.badtargetcategory then
+			if not categoryCache[weapName] then categoryCache[weapName] = {} end
+			categoryCache[weapName].bad = cp.badtargetcategory
 		end
 		for k, v in pairs (cp) do
 			if type(v) == "table" or type(v) == "boolean" then
@@ -257,8 +262,13 @@ for unitName, ud in pairs(UnitDefs) do
 		for weaponID, weapon in pairs(weapons) do --weaponID = 1, #weapons do -- TODO: move this loop into a function
 			local targetCat = categoryCache[string.lower(weapon.name)]
 			if targetCat then
-				--Spring.Echo("Replacing " .. unitName .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with: " .. targetCat)
-				ud.weapons[weaponID].onlytargetcategory = targetCat
+				--Spring.Echo("Replacing " .. unitName .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with:", targetCat.only, "BadTargetCategory with:", targetCat.bad)
+				ud.weapons[weaponID].onlytargetcategory = targetCat.only
+				if targetCat.bad and not ud.weapons[weaponID].badtargetcategory then -- don't overwrite
+					ud.weapons[weaponID].badtargetcategory = targetCat.bad
+				elseif targetCat.bad then
+					ud.weapons[weaponID].badtargetcategory = ud.weapons[weaponID].badtargetcategory .. targetCat.bad
+				end
 			end
 		end
 	end

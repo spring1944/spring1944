@@ -12,13 +12,11 @@ local ITA_ML = InfantryLandingCraft:New{
 	weapons = {	
 		[1] = {
 			name				= "bBredaM1931AA",
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 0 1]],
 			maxAngleDif			= 150,
 		},
 		[2] = {
 			name				= "BredaM1931",
-			onlyTargetCategory	= "INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP LARGESHIP",
 			mainDir				= [[0 0 1]],
 			maxAngleDif			= 150,
 		}

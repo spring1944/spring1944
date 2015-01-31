@@ -14,25 +14,21 @@ local GBR_LCT = TankLandingCraft:New{
 		[1] = {
 			name				= "Oerlikon20mmaa",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[1 0 0]],
 		},
 		[2] = {
 			name				= "Oerlikon20mmaa",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[-1 0 0]],
 		},
 		[3] = {
 			name				= "Oerlikon20mmhe",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[1 0 0]],
 		},
 		[4] = {
 			name				= "Oerlikon20mmhe",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[-1 0 0]],
 		},
 		[5] = {

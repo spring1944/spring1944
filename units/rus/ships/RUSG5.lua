@@ -14,7 +14,6 @@ local RUS_G5 = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "m8rocket82mm",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -35,7 +34,6 @@ local RUS_G5_Turret_M_8 = BoatChild:New{
 		[1] = {
 			name				= "m8rocket82mm",
 			maxAngleDif			= 45,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -54,7 +52,6 @@ local RUS_G5_Turret_DshK = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 		},
 	},

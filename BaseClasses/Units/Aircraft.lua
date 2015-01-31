@@ -86,7 +86,6 @@ local FighterBomber = Fighter:New{
 		[1] = {
 			name				= "bomb",
 			maxAngleDif			= 20,
-			onlyTargetCategory	= "BUILDING HARDVEH OPENVEH INFANTRY SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 -0.18 1]],
 		},
 	},

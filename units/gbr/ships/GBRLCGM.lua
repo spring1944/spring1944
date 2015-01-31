@@ -14,7 +14,6 @@ local GBR_LCGM = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "qf25pdrhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -38,7 +37,6 @@ local GBR_LCGM_Turret_25pdr_Left = BoatChild:New{
 		[1] = {
 			name				= "qf25pdrhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[1 0 1]],
 		},
 	},

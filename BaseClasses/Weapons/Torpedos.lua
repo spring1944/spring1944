@@ -23,7 +23,7 @@ local TorpedoClass = Weapon:New{
   customparams = {
     damagetype         = "shapedcharge",
 	minrange           = 400, -- *
-	targetcategory     = "LARGESHIP",
+	onlytargetcategory = "LARGESHIP",
   },
 }
 

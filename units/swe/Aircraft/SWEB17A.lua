@@ -27,34 +27,28 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 		[1] = {
 			name				= "bomb", -- 250kg
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[2] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[3] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 			slaveTo				= 2,
 		},	
 		[4] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[5] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 			slaveTo				= 4,
 		},	
 		[6] = {
 			name				= "mg42aa",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[7] = {
 			name				= "mg42aa",

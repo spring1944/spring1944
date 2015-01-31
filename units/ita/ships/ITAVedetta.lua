@@ -14,7 +14,6 @@ local ITA_Vedetta = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "Ansaldo76mmL40HE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -36,7 +35,6 @@ local ITA_Vedetta_Turret_76mm = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "Ansaldo76mmL40HE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -56,13 +54,11 @@ local ITA_Vedetta_Turret_MG = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "BredaM1931AA",
-			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "BredaM1931",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 200,
 			mainDir		= [[0 0 -1]],
 		},

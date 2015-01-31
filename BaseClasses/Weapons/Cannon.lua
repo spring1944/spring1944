@@ -7,7 +7,8 @@ local AP = Weapon:New{
   soundHitDry        = "GEN_Explo_1",
   customparams = {
     damagetype         = "kinetic",
-	targetcategory     = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+	onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+	badtargetcategory  = "SOFTVEH",
   },  
 }
 
@@ -41,7 +42,8 @@ local HEAT = Weapon:New{ -- Medium
   soundHitDry        = "GEN_Explo_2",
   customparams = {
     damagetype         = "shapedcharge",
-	targetcategory     = AP.customparams.targetcategory,
+	onlytargetcategory = AP.customparams.onlytargetcategory,
+	badtargetcategory  = AP.customparams.badtargetcategory,
   },
 }
 
@@ -170,7 +172,7 @@ local AA = Weapon:New{
     no_range_adjust    = true,
     fearaoe            = 450,
     fearid             = 701,
-	targetcategory     = "AIR",
+	onlytargetcategory = "AIR",
   },
 }
 

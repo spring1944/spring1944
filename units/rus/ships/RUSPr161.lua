@@ -17,7 +17,6 @@ local RUS_Pr161 = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "S5385mmHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -43,7 +42,6 @@ local RUS_Pr161_Turret_DshK = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 		},
 	},
@@ -63,7 +61,6 @@ local RUS_Pr161_Turret_85mm_Front = BoatChild:New{
 		[1] = {
 			name				= "S5385mmHE",
 			maxAngleDif			= 300,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

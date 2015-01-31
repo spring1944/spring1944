@@ -22,7 +22,6 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 		[2] = {
 			name				= "m2browningamg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[3] = {
 			name				= "m2browningamg",

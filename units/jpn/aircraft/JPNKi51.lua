@@ -27,27 +27,22 @@ local JPN_Ki51 = Fighter:New{
 		[1] = { -- first 2 are same as CR.42
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[2] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},	
 		[3] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[4] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},	
 		[5] = {
 			name				= "Type1Ho103",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[6] = {
 			name				= "Type1Ho103",
@@ -57,7 +52,6 @@ local JPN_Ki51 = Fighter:New{
 		[7] = {
 			name				= "Te4",
 			maxAngleDif			= 50,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 1 -1]],
 		},
 		[8] = {

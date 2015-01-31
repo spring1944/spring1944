@@ -196,10 +196,9 @@ local Type92MG = MGClass:New{
 } 
 
 -- 7.7mm TE-4 Air MG (JPN)
-local TE4 = MGClass:New{
+local TE4 = MGClass:New(AAMG):New{
   burst				 = 6,
   burstRate          = 0.15,
-  canAttackGround    = false,
   name               = [[7.7mm TE-4 Machinegun]],
   range              = 925,
   reloadTime         = 1.5,
@@ -218,6 +217,9 @@ local Twin05CalVickers = HeavyMGClass:New{
   range              = 875,
   reloadTime         = 2.2,
   soundStart         = [[US_50CAL]],
+  customParams = {
+    onlyTargetCategory = SmallArm.customparams.onlytargetcategory .. " AIR", -- TODO: fudge as these can target air too
+  },
 }
 
 -- DShK (RUS)

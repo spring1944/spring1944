@@ -27,14 +27,11 @@ local JPN_Ki102 = Fighter:New{
 		[1] = {
 			name				= "Ho40157mm",
 			maxAngleDif			= 15,
-			onlyTargetCategory	= "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
-			badTargetCategory	= "SOFTVEH",
 			mainDir				= [[0 -1 16]],
 		},
 		[2] = {
 			name				= "Ho520mmAP",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 -1 16]],
 			slaveTo				= 1, -- TODO: why?
 		},	
@@ -47,7 +44,6 @@ local JPN_Ki102 = Fighter:New{
 		[4] = {
 			name				= "Te4",
 			maxAngleDif			= 50,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 1 -1]],
 		},
 		[5] = {

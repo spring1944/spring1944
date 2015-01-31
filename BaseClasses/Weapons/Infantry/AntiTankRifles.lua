@@ -28,6 +28,7 @@ local ATRifleClass = Weapon:New{
   customparams = {
     damagetype         = [[kinetic]],
 	cegflare           = "ptrd_muzzleflash",
+	badtargetcategory  = "INFANTRY",
   },
 }
 

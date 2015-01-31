@@ -53,11 +53,9 @@ local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 		},
 		[2] = { -- Grenade
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 }
@@ -80,11 +78,9 @@ local SMGInf = Infantry:New{
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 		},
 		[2] = { -- Grenade
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 }
@@ -107,7 +103,6 @@ local LMGInf = Infantry:New{
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 		},
 		[2] = { -- Tracer
 			name				= "Small_Tracer",
@@ -152,7 +147,6 @@ local SniperInf = Infantry:New{
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "INFANTRY DEPLOYED",
 		},
 	},
 }
@@ -177,10 +171,6 @@ local ObservInf = Infantry:New{
 	weapons = {
 		[1] = { -- Binocs
 			name				= "Binocs",
-			onlyTargetCategory	= "NONE",
-		},
-		[2] = { -- Pistol
-			onlyTargetCategory	= "OPENVEH INFANTRY SOFTVEH DEPLOYED",
 		},
 	},
 }
@@ -207,14 +197,6 @@ local MedMortarInf = Infantry:New{
 		maxammo				= 10,
 		weaponcost			= 15, -- TODO: make this a weapon tag
 		weaponswithammo		= 2, -- TODO: then this can be auto-detected
-	},
-	weapons = {
-		[1] = { -- Mortar HE
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-		},
-		[2] = { -- Mortar Smoke
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-		},
 	},
 }
 
@@ -249,7 +231,6 @@ local FlameInf = Infantry:New{
 	weapons = {
 		[1] = { -- Flamethrower
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},	
 }
@@ -267,8 +248,6 @@ local ATLauncherInf = Infantry:New{
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,
-			badTargetCategory	= "BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},	
 }
@@ -336,7 +315,6 @@ local InfantryGun = Infantry:New{
 	weapons = {
 		[1] = { -- Cannon
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 }

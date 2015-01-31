@@ -21,7 +21,6 @@ local JPN_Ki43 = Interceptor:New{
 		[1] = {
 			name				= "Type1Ho103",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "Type1Ho103",

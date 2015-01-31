@@ -20,7 +20,6 @@ local GER_Fw190 = Fighter:New{
 		[1] = {
 			name				= "mg15115mm",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "mg15115mm",

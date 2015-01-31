@@ -13,12 +13,10 @@ local ITA_MAS = BoatMother:New{
 	weapons = {	
 		[1] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 		[2] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 	},

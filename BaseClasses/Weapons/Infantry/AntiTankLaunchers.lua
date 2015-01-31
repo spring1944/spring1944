@@ -13,6 +13,7 @@ local ATLClass = Weapon:New{
   customparams = {
     damagetype         = [[shapedcharge]],
 	cegflare           = "dirt_backblast",
+    badTargetCategory  = "BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED",
   },
 }
 

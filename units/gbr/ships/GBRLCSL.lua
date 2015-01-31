@@ -14,7 +14,6 @@ local GBR_LCSL = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "qf6pdr57mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -57,13 +56,11 @@ local GBR_LCSL_Turret_Vickers50 = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "twin05calVickers", -- needs a single version
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 			mainDir				= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "twin05calVickers", -- needs a single version
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 			slaveTo				= 1,
 		},
@@ -84,12 +81,10 @@ local GBR_LCSL_Turret_6pdr = BoatChild:New{
 		[1] = {
 			name				= "qf6pdr57mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "qf6pdr57mmap",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "OPENVEH HARDVEH",
 		},
 	},
 	customparams = {
@@ -113,13 +108,11 @@ local GBR_LCSL_Turret_20mm_Left = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
-			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 180,
 			mainDir				= [[1 0 0]],
 		},
 		[2] = {
 			name				= "Oerlikon20mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 150,
 			mainDir				= [[1 0 0]],
 		},

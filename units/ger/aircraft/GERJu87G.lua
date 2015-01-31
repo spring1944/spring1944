@@ -25,22 +25,17 @@ local GER_Ju87G = Fighter:New{
 		[1] = {
 			name				= "bk37mmap",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
-			badTargetCategory	= "SOFTVEH",
 			mainDir				= [[0 -1 9]],
 		},
 		[2] = {
 			name				= "bk37mmap",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
-			badTargetCategory	= "SOFTVEH",
 			mainDir				= [[0 -1 9]],
 			slaveTo				= 1,
 		},	
 		[3] = {
 			name				= "mg42aa",
 			maxAngleDif			= 90,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 .5 -1]],
 		},
 		[4] = {
@@ -52,7 +47,6 @@ local GER_Ju87G = Fighter:New{
 		[5] = {
 			name				= "mg15115mm",
 			maxAngleDif			= 25,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[6] = {
 			name				= "mg15115mm",

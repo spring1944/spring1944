@@ -11,7 +11,6 @@ local GBR_LCA = InfantryLandingCraft:New{
 		[1] = {
 			name				= "bren",
 			maxAngleDif			= 90,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 		},
 		--[2] is missing?
 		[3] = {

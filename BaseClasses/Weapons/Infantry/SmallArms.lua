@@ -14,7 +14,8 @@ local SmallArm = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     damagetype         = "smallarm",
-	targetCategory	= "INFANTRY SOFTVEH DEPLOYED",
+    onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED",
+	badtargetcategory  = "SOFTVEH DEPLOYED",
   },
 }
 

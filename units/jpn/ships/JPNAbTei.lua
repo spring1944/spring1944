@@ -16,7 +16,6 @@ local JPN_AbTei = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "Type9757mmHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -43,7 +42,6 @@ local JPN_AbTei_Turret_57mm_Front = BoatChild:New{
 		[1] = {
 			name				= "Type9757mmHE",
 			maxAngleDif			= 300,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir		= [[0 0 1]],
 		},
 	},
@@ -76,11 +74,9 @@ local JPN_AbTei_Turret_MG = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "Type97MG",
-			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH TURRET",
 		},
 		[2] = {
 			name				= "Type97MG",
-			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH TURRET",
 		},
 	},
 	customparams = {
