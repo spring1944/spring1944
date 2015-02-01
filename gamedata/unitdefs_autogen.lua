@@ -6,60 +6,62 @@ local MORPH_SLOPE = 82
 local TIME_RATIO = 30.0 / 32.0
 
 local function getTemplate(maxDamage, maxSlope)
-	return	{
+	return  { -- can't use lowerkeys() here and needs to be lower case keys!
 				acceleration = 0.1,
-				brakeRate = 1,
-				buildCostEnergy = 0,
-				canMove = 1,
+				brakerate = 1,
+				buildcostenergy = 0,
+				canmove = 1,
 				category = "FLAG",
-				explodeAs = "noweapon",
-				footprintX = 1,
-				footprintZ = 1,
-				idleAutoHeal = 0,
-				maxDamage = maxDamage,
-				maxSlope = maxSlope,
-				maxVelocity = 0.01,
-				movementClass = "KBOT_Infantry",
-				objectName = "MortarShell.S3O",
+				explodeas = "noweapon",
+				footprintx = 1,
+				footprintz = 1,
+				idleautoheal = 0,
+				maxdamage = maxDamage,
+				maxslope = maxSlope,
+				maxvelocity = 0.01,
+				movementclass = "KBOT_Infantry",
+				objectname = "GEN/Null.S3O",
 				script = "null.cob",
-				selfDestructAs = "noweapon",
+				selfdestructas = "noweapon",
 				sfxtypes = {
 				},
-				stealth = 1,
-				turnRate = 1,
-				
 				customparams = {
-					dontCount			= 1,
+					isupgrade = true,
+					dontcount = true,
 				},
+				stealth = 1,
+				turnrate = 1,
 			}
 end
 
 local function isFactory(unitDef)
-	local buildOptions = unitDef.buildoptions or unitDef.buildOptions
+	local yardmap = unitDef.yardmap
 	local velocity = unitDef.maxVelocity or unitDef.maxvelocity
-	return buildOptions and (not velocity or velocity == 0)
+	local workerTime = unitDef.workerTime or unitDef.workertime
+	return yardmap and (not velocity or velocity <= 0) and workerTime and workerTime > 0
 end
 
 
 for unitName, unitMorphs in pairs(morphInclude) do
 	local unitDef = UnitDefs[unitName]
-	if isFactory(unitDef) then
+	if not unitDef then
+		Spring.Echo("unitdefs_autogen.lua ERROR", unitName, unitDef) -- useful to debug bad/missing unitdefs causing this code to crash(!)
+	elseif isFactory(unitDef) then
 		for i = 1, #unitMorphs do
 			local unitMorphData = unitMorphs[i]
-			local intoDef = UnitDefs[unitMorphData.into]
+			local intoDef = UnitDefs[unitMorphData.into] or {}
 			local autoUnit = getTemplate(MORPH_DAMAGE, MORPH_SLOPE)
 			local autoUnitName = "morph_" .. unitName .. "_" .. unitMorphData.into
-			local buildOptions = unitDef.buildoptions or unitDef.buildOptions
+			local buildOptions = unitDef.buildoptions or unitDef.buildOptions or {}
+			unitDef.buildoptions = buildOptions
 			autoUnit.name = text
 			--autoUnit.description = unitMorphData.text
 			autoUnit.buildcostmetal = unitMorphData.metal
 			autoUnit.buildpic = intoDef.buildpic
 			autoUnit.buildtime = (unitDef.workerTime or unitDef.workertime) * unitMorphData.time * TIME_RATIO
 			autoUnit.side = intoDef.side
-			autoUnit.customParams = { isupgrade = true }
 			table.insert(buildOptions, autoUnitName)
 			UnitDefs[autoUnitName] = autoUnit
 		end
 	end
 end
-
