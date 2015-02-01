@@ -21,7 +21,6 @@ local ITA_Reggiane2005 = Fighter:New{
 		[1] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "BredaSafat05",

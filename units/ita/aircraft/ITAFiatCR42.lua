@@ -23,17 +23,14 @@ local ITA_FiatCR42 = Fighter:New{
 		[1] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},
 		[2] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED",
 		},	
 		[3] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "BredaSafat05",

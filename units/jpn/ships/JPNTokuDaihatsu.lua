@@ -13,13 +13,11 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 		[1] = {
 			name				= "Type9625mmAA",
 			maxAngleDif			= 300,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 0 -1]],
 		},
 		[2] = {
 			name				= "Type9625mmHE",
 			maxAngleDif			= 300,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 0 -1]],
 		},
 	},

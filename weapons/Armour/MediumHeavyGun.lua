@@ -3,21 +3,21 @@
 -- Implementations
 
 -- KwK36 8.8cm L/56 (GER)
-local KwK88mmL56 = MediumHeavyGunClass:New{
+local KwK88mmL56 = MediumHeavyGun:New{
   name               = [[KwK36 8.8cm L/56]],
   range              = 2110,
   reloadTime         = 9.15,
   soundStart         = [[GER_88mm]],
 }
 
-local KwK88mmL56HE = KwK88mmL56:New(MediumHeavyGunHEClass, true):New{
+local KwK88mmL56HE = KwK88mmL56:New(MediumHE, true):New{
   areaOfEffect       = 100,
   weaponVelocity     = 1250,
   damage = {
     default            = 1940,
   },  
 }
-local KwK88mmL56AP = KwK88mmL56:New(MediumHeavyGunAPClass, true):New{
+local KwK88mmL56AP = KwK88mmL56:New(HeavyAP, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 100,
@@ -29,21 +29,21 @@ local KwK88mmL56AP = KwK88mmL56:New(MediumHeavyGunAPClass, true):New{
 }
 
 -- KwK43 8.8cm L/71 (GER)
-local KwK88mmL71 = MediumHeavyGunClass:New{
+local KwK88mmL71 = MediumHeavyGun:New{
   name               = [[KwK43 8.8cm L/71]],
   range              = 2510,
   reloadTime         = 9.75,
   soundStart         = [[GER_88mmL71]],
 }
 
-local KwK88mmL71HE = KwK88mmL71:New(MediumHeavyGunHEClass, true):New{
+local KwK88mmL71HE = KwK88mmL71:New(MediumHE, true):New{
   areaOfEffect       = 96,
   weaponVelocity     = 1250,
   damage = {
     default            = 1740, -- ?
   },  
 }
-local KwK88mmL71AP = KwK88mmL71:New(MediumHeavyGunAPClass, true):New{
+local KwK88mmL71AP = KwK88mmL71:New(HeavyAP, true):New{
   weaponVelocity     = 2000,
   customparams = {
     armor_penetration_1000m = 165,
@@ -55,7 +55,7 @@ local KwK88mmL71AP = KwK88mmL71:New(MediumHeavyGunAPClass, true):New{
 }
 
 -- SK 8.8cm C/30 (GER)
-local SK88mmC30 = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
+local SK88mmC30 = MediumHeavyGun:New(MediumHE, true):New{
   areaOfEffect       = 85,
   name               = [[8.8cm SK C/30 Naval Gun]],
   range              = 2110,
@@ -69,21 +69,21 @@ local SK88mmC30 = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
 
 
 -- S-53 85mm (RUS)
-local S5385mm = MediumHeavyGunClass:New{
+local S5385mm = MediumHeavyGun:New{
   name               = [[S-53 85mm]],
   range              = 1605,
   reloadTime         = 6.75,
   soundStart         = [[RUS_85mm]],
 }
 
-local S5385mmHE = S5385mm:New(MediumHeavyGunHEClass, true):New{
+local S5385mmHE = S5385mm:New(MediumHE, true):New{
   areaOfEffect       = 87,
   weaponVelocity     = 1400,
   damage = {
     default            = 1280,
   },  
 }
-local S5385mmAP = S5385mm:New(MediumHeavyGunAPClass, true):New{
+local S5385mmAP = S5385mm:New(HeavyAP, true):New{
   weaponVelocity     = 1584,
   customparams = {
     armor_penetration_1000m = 86,
@@ -96,7 +96,7 @@ local S5385mmAP = S5385mm:New(MediumHeavyGunAPClass, true):New{
 
 
 -- D-10 100mm (RUS)
-local D10S100mm = MediumHeavyGunClass:New{
+local D10S100mm = MediumHeavyGun:New{
   name               = [[D-10 100mm]],
   range              = 2260,
   reloadTime         = 10,
@@ -106,7 +106,7 @@ local D10S100mm = MediumHeavyGunClass:New{
   }
 }
 
-local D10S100mmAP = D10S100mm:New(MediumHeavyGunAPClass, true):New{
+local D10S100mmAP = D10S100mm:New(HeavyAP, true):New{
   weaponVelocity     = 1760,
   customparams = {
     armor_penetration_1000m = 146,
@@ -119,21 +119,21 @@ local D10S100mmAP = D10S100mm:New(MediumHeavyGunAPClass, true):New{
 
 
 -- M3 90mm (USA)
-local M390mm = MediumHeavyGunClass:New{
+local M390mm = MediumHeavyGun:New{
   name               = [[M3 90mm]],
   range              = 2110,
   reloadTime         = 9.15,
   soundStart         = [[GER_88mm]],
 }
 
-local M390mmHE = M390mm:New(MediumHeavyGunHEClass, true):New{
+local M390mmHE = M390mm:New(MediumHE, true):New{
   areaOfEffect       = 100,
   weaponVelocity     = 1250,
   damage = {
     default            = 1940,
   },  
 }
-local M390mmAP = M390mm:New(MediumHeavyGunAPClass, true):New{
+local M390mmAP = M390mm:New(HeavyAP, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 107,
@@ -145,21 +145,21 @@ local M390mmAP = M390mm:New(MediumHeavyGunAPClass, true):New{
 }
 
 -- 90mm Ansaldo 90/53 M41 L/53 (ITA)
-local Ansaldo90mmL53 = MediumHeavyGunClass:New{
+local Ansaldo90mmL53 = MediumHeavyGun:New{
   name               = [[90mm Ansaldo 90/53 M41 L/53]],
   range              = 2110,
   reloadTime         = 9.25,
   soundStart         = [[GER_88mm]],
 }
 
-local Ansaldo90mmL53HE = Ansaldo90mmL53:New(MediumHeavyGunHEClass, true):New{
+local Ansaldo90mmL53HE = Ansaldo90mmL53:New(MediumHE, true):New{
   areaOfEffect       = 104,
   weaponVelocity     = 1044,
   damage = {
     default            = 3060,
   },  
 }
-local Ansaldo90mmL53AP = Ansaldo90mmL53:New(MediumHeavyGunAPClass, true):New{
+local Ansaldo90mmL53AP = Ansaldo90mmL53:New(HeavyAP, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 90,
@@ -171,7 +171,7 @@ local Ansaldo90mmL53AP = Ansaldo90mmL53:New(MediumHeavyGunAPClass, true):New{
 }
 
 -- OTO 100mm/47 1928 Naval gun (ITA)
-local OTO100mmL47HE = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
+local OTO100mmL47HE = MediumHeavyGun:New(MediumHE, true):New{
   areaOfEffect       = 110,
   name               = [[100mm/47 mod.1928 Naval Gun]],
   range              = 1700,
@@ -184,7 +184,7 @@ local OTO100mmL47HE = MediumHeavyGunClass:New(MediumHeavyGunHEClass, true):New{
 }
 
 -- Ansaldo 105mm/25 (ITA)
-local Ansaldo105mmL25 = MediumHeavyGunClass:New{
+local Ansaldo105mmL25 = MediumHeavyGun:New{
   name               = [[Ansaldo L/18 75mm Howitzer]],
   range              = 1775,
   reloadTime         = 11.25,
@@ -194,17 +194,18 @@ local Ansaldo105mmL25 = MediumHeavyGunClass:New{
   }
 }
 
-local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHeavyGunHEClass, true):New{
+local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHE, true):New{
   areaOfEffect       = 129,
-  weaponVelocity     = 1200,
+  weaponVelocity     = 900,
+   soundHitDry        = [[GEN_Explo_4]],
   damage = {
     default            = 4009,
   },  
 }
 
-local Ansaldo105mmL25HEAT = Ansaldo105mmL25:New(MediumHeavyGunHEATClass, true):New{
+local Ansaldo105mmL25HEAT = Ansaldo105mmL25:New(HeavyHEAT, true):New{
   range              = 1153,
-  weaponVelocity     = 700,
+  weaponVelocity     = 600,
   customparams = {
     armor_penetration       = 140,
   },

@@ -65,10 +65,11 @@
   transportCapacity=15;
   transportMass=750;
   transportSize=1;
-  transportUnloadMethod=0;
+  transportUnloadMethod=2;
   turninplace=0;
   turnRate=400;
-  unloadSpread=2;
+  unloadSpread=10;
+  loadingRadius=30;
   badTargetCategory=FLAG;
 
   weapon1=BredaM38;

@@ -3,6 +3,8 @@ local GBR_LCT = TankLandingCraft:New{
 	acceleration			= 0.001,
 	brakeRate				= 0.001,
 	buildCostMetal			= 2100,
+	category 				= "LARGESHIP SHIP MINETRIGGER",
+	buildTime				= 2100,
 	collisionVolumeOffsets	= [[0.0 0.0 0.0]],
 	collisionVolumeScales	= [[60.0 100.0 220.0]],
 	maxDamage				= 35000,
@@ -14,25 +16,21 @@ local GBR_LCT = TankLandingCraft:New{
 		[1] = {
 			name				= "Oerlikon20mmaa",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[1 0 0]],
 		},
 		[2] = {
 			name				= "Oerlikon20mmaa",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[-1 0 0]],
 		},
 		[3] = {
 			name				= "Oerlikon20mmhe",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[1 0 0]],
 		},
 		[4] = {
 			name				= "Oerlikon20mmhe",
 			maxAngleDif			= 240,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[-1 0 0]],
 		},
 		[5] = {

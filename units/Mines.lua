@@ -24,7 +24,6 @@ local APMine = Mine:New{
 	weapons = {
 		[1] = {
 			name					= "APMine",
-			onlyTargetCategory		= "MINETRIGGER",
 		}
 	},
 }
@@ -38,8 +37,6 @@ local ATMine = Mine:New{
 	weapons = {
 		[1] = {
 			name					= "ATMine",
-			badTargetCategory		= "SOFTVEH",
-			onlyTargetCategory		= "SOFTVEH OPENVEH HARDVEH",
 		}
 	},
 }

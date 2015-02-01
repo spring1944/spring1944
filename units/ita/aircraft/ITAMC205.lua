@@ -20,17 +20,14 @@ local ITA_MC205 = FighterBomber:New{
 		[1] = {
 			name				= "Bomb160kg",
 			maxAngleDif			= 15,
-			onlyTargetCategory	= "Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "Bomb160kg",
 			maxAngleDif			= 15,
-			onlyTargetCategory	= "Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[3] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "BredaSafat05",

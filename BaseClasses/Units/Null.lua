@@ -14,6 +14,10 @@ local Null = Unit:New{
 	script = "null.cob",
 	selfDestructAs = "noweapon",
 	stealth = true,
+	
+	customparams = {
+		dontCount			= 1,
+	},
 }
 
 

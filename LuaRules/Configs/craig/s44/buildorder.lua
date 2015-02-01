@@ -249,7 +249,7 @@ gadget.unitBuildOrder = UnitBag{
 	jpntankyard = UnitArray{
 	
 		"jpnriki",
-		"jpnhago",
+		"jpnhago","jpnhonii",
 		"jpnchiha",
 		"jpnchihe","jpnchihe",
 		"jpnchiha",

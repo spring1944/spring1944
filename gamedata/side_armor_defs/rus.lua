@@ -53,6 +53,8 @@ local RUSDefs = {
     "RUSTankYard1",
     "RUSTankYard2",
 	"RUSGuardsBarracks",
+	"RUSboatyard",
+	"RUSboatyardlarge",
   },
 
   sandbags  =  {

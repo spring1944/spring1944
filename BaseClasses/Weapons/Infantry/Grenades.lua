@@ -9,12 +9,12 @@ local GrenadeClass = Weapon:New{
   groundBounce       = true,
   id                 = 31, -- used?
   impulseFactor      = 1e-05,
-  model              = [[MortarShell.S3O]],
+  model              = "MortarShell.S3O",
   targetBorder       = 1,
   tolerance          = 10000,
   turret             = true,
   --weaponTimer        = 5,
-  weaponType         = [[Cannon]],
+  weaponType         = "Cannon",
   weaponVelocity     = 200,
   customparams = {
     scriptanimation    = [[grenade]],
@@ -25,14 +25,14 @@ local GrenadeClass = Weapon:New{
 local APGrenadeClass = GrenadeClass:New{
   collisionSize      = 1e-100,
   edgeEffectiveness  = 0.8,
-  explosionGenerator = [[custom:HE_Small]],
+  explosionGenerator = "custom:HE_Small",
   movingAccuracy     = 3500,
   range              = 180,
   reloadtime         = 8,
-  soundHitDry        = [[GEN_Explo_Grenade]],
+  soundHitDry        = "GEN_Explo_Grenade",
   customparams = {
     armor_penetration  = 80, -- more than AT nades??
-    damagetype         = [[grenade]],
+    damagetype         = "grenade",
   },
   damage = {
     default            = 1450,
@@ -42,13 +42,14 @@ local APGrenadeClass = GrenadeClass:New{
 -- Anti-Tank Grenade Class
 local ATGrenadeClass = GrenadeClass:New{
   edgeEffectiveness  = 0.5,
-  explosionGenerator = [[custom:HE_Medium]],
+  explosionGenerator = "custom:HE_Medium",
   movingAccuracy     = 7111,
   range              = 230,
   reloadTime         = 5,
-  soundHitDry        = [[GEN_Explo_3]],
+  soundHitDry        = "GEN_Explo_3",
   customparams = {
-    damagetype         = [[shapedcharge]],
+    damagetype         = "shapedcharge",
+	badtargetcategory  = "INFANTRY",
   },
 }
 
@@ -63,7 +64,7 @@ local SmokeGrenadeClass = GrenadeClass:New{
     nosmoketoggle      = true,
 	smokeradius        = 160,
 	smokeduration      = 25,
-	smokeceg           = [[SMOKESHELL_Small]],
+	smokeceg           = "SMOKESHELL_Small",
   },
   damage = {
     default = 100,

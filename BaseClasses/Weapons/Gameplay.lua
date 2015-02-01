@@ -1,13 +1,12 @@
--- Misc
+-- Misc 'Gameplay' related weapons
 
--- Bulletproofs Base Class
 local BulletProofClass = Weapon:New{
   exteriorShield     = true,
   shieldEnergyUse    = 0,
   shieldForce        = 500,
   shieldMaxSpeed     = 900,
   shieldRepulser     = true,
-  smartShield        = true,
+  smartShield		 = true,
   weaponType         = [[Shield]],
   
   --visibleShield = true,
@@ -33,7 +32,7 @@ local MineClass = Weapon:New{
   turret             = true,
   weaponVelocity     = 90,
   customparams = {
-    no_range_adjust    = true,
+	no_range_adjust	   = true,
     damagetype         = [[explosive]], 
   },
   damage = {
@@ -62,8 +61,31 @@ local OpticClass = Weapon:New{
   weaponVelocity     = 1500,
   customparams = {
     binocs             = 1,
+    damagetype         = "none",
+    targetcategory     = "NONE",
+  },
+  damage = {
+    default            = 0,
+  },
+}
+
+local ParaDropClass = Weapon:New{
+  areaOfEffect       = 1, -- needed?
+  collideFriendly    = false,
+  explosionGenerator = [[custom:nothing]],
+  impulseFactor      = 0,
+  manualBombSettings = true,
+  model              = [[Bomb_Tiny.S3O]], -- better way?
+  myGravity          = 1,
+  range              = 1000,
+  reloadtime         = 600,
+  tolerance          = 4000,
+  turret             = true,
+  weaponType         = [[AircraftBomb]],
+  customparams = {
+	no_range_adjust    = true,
     damagetype         = [[none]],
-    scriptanimation    = [[binocs]],
+    paratrooper        = 1,
   },
   damage = {
     default            = 0,
@@ -74,5 +96,6 @@ return {
   BulletProofClass = BulletProofClass,
   DeathClass = DeathClass,
   MineClass = MineClass,  
+  ParaDropClass = ParaDropClass,
   OpticClass = OpticClass,
 }

@@ -15,7 +15,6 @@ local RUS_BMO = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "M1939_61k37mmaa",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -39,13 +38,10 @@ local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
 		[1] = {
 			name				= "M1939_61k37mmaa",
 			maxAngleDif			= 270,
-			badTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
-			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "M1939_61k37mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -80,13 +76,11 @@ local RUS_BMO_Turret_DshKAA = BoatChild:New{
 	weapons = {	
 		[1] = { -- original BMO used twin_dshk but we can use 2 actual weapons here
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 358,
 		},
 		[2] = {
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 358,
 			slaveTo				= 1,
@@ -107,13 +101,11 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "dshk", --"twin05calVickers",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "dshk", --"twin05calVickers",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 		},
@@ -136,7 +128,6 @@ local RUS_Turret_45mm_Front = BoatChild:New{ -- Used on multiple vessels
 		[1] = {
 			name				= "M1937_40k45mmhe",
 			maxAngleDif			= 300,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

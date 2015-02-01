@@ -21,7 +21,6 @@ local RUS_La5FN = Fighter:New{
 		[1] = {
 			name				= "ShVAK20mm",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "ShVAK20mm",

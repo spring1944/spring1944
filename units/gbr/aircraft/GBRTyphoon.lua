@@ -23,18 +23,15 @@ local GBR_Typhoon = AttackFighter:New{
 		[1] = {
 			name				= "HVARRocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "HARDVEH OPENVEH SHIP LARGESHIP",
 		},
 		[2] = {
 			name				= "HVARRocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "HARDVEH OPENVEH SHIP LARGESHIP",
 			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "HS40420mm",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "HS40420mm",

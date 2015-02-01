@@ -45,6 +45,8 @@ local ITADefs = {
 	"ITATankyard1",
 	"ITATankyard2",
 	"ITARadar",
+	"ITAboatyard",
+	"ITAboatyardlarge",
   },
 
   sandbags  =  {
@@ -103,6 +105,7 @@ local ITADefs = {
 	"itareggiane2005",
 	"itafiatcr_42",
 	"itamc202",
+	"itamc200",
 	"itamc205",
   },
   
@@ -118,7 +121,7 @@ local ITADefs = {
   "ita_platoon_rifle",
   "ita_platoon_sniper",
 
-  "ita_sortie_recon",
+  	"ita_sortie_recon",
 	"ita_sortie_interceptor",
 	"ita_sortie_fighter",
 	"ita_sortie_attack",

@@ -14,22 +14,18 @@ local GBR_FairmileD = BoatMother:New{
 	weapons = {	
 		[1] = {
 			name				= "GBR18inTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif         = 40,
 		},
 		[2] = {
 			name				= "GBR18inTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif         = 40,
 		},
 		[3] = {
 			name				= "GBR18inTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif         = 40,
 		},
 		[4] = {
 			name				= "GBR18inTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif         = 40,
 		},
 	},
@@ -60,12 +56,10 @@ local GBR_FairmileD_Turret_Vickers50 = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "twin05calVickers", -- needs a single version
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "twin05calVickers", -- needs a single version
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 270,
 			slaveTo				= 1,
 		},
@@ -86,7 +80,6 @@ local GBR_FairmileD_Turret_6pdr_Front = BoatChild:New{
 		[1] = {
 			name				= "QF6Pdr57MkIIAHE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -117,7 +110,6 @@ local GBR_FairmileD_Turret_Vickers30_Left = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "vickers",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			maxAngleDif			= 90,
 			mainDir				= [[1 0 0]],
 		},
@@ -158,12 +150,10 @@ local GBR_FairmileD_Turret_20mm = BoatChild:New{
 		},
 		[3] = {
 			name				= "Oerlikon20mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 300,
 		},
 		[4] = {
 			name				= "Oerlikon20mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 300,
 			slaveTo				= 3,
 		},

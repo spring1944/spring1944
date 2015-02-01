@@ -23,7 +23,6 @@ local GBR_SpitfireMkXIV = Interceptor:New{
 		[1] = {
 			name				= "m2browningamg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "m2browningamg",

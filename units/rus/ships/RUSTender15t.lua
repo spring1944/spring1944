@@ -13,7 +13,6 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 		[1] = {
 			name				= "dshk",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

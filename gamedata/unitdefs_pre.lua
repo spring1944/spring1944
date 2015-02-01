@@ -14,8 +14,8 @@ end
 local function inherit (c, p, concatNames)
 	lowerkeys(c)
 	for k,v in pairs(p) do 
-		if type(k) == "string" then
-			k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
+		if type(k) == "string" and type(v) ~= "function" then
+			k = k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
 		end
 		if type(v) == "table" then
 			if c[k] == nil then c[k] = {} end
@@ -25,6 +25,7 @@ local function inherit (c, p, concatNames)
 				c[k] = v .. " " .. (c[k] or "")
 			else
 				if c[k] == nil then c[k] = v end
+				--Spring.Echo(c.name, k, v, c[k])
 			end
 		end
 	end
@@ -62,7 +63,11 @@ function Unit:Clone(name) -- name is passed to <NAME> in _post, it is the unitna
 	return newClass
 end
 
-Weapon = {}
+Weapon = {
+	customParams = {
+		targetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	},
+}
 function Weapon:New(newAttribs, concatName)
 	local newClass = {}
 	inherit(newClass, newAttribs)
@@ -91,6 +96,7 @@ for _, baseClassType in pairs(baseClassTypes) do
 		newClasses = VFS.Include(file, VFS.ZIP)
 		for className, class in pairs(newClasses) do
 			sharedEnv[className] = class
+			_G[className] = class
 		end
 	end
 end

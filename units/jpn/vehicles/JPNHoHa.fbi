@@ -6,8 +6,8 @@
   airSightDistance=2500;
   brakeRate=0.195;
   buildCostEnergy=0;
-  buildCostMetal=1000;
-  buildTime=1000;
+  buildCostMetal=1100;
+  buildTime=1100;
   canMove=1;
   category=MINETRIGGER OPENVEH;
   //collisionVolumeType=box;
@@ -66,10 +66,11 @@
   transportCapacity=15;
   transportMass=750;
   transportSize=1;
-  transportUnloadMethod=0;
+  transportUnloadMethod=2;
+  loadingRadius=30;
   turninplace=0;
   turnRate=400;
-  unloadSpread=2;
+  unloadSpread=10;
   badTargetCategory=FLAG;
 
 }

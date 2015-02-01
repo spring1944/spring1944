@@ -21,7 +21,6 @@ local SWE_J22 = Fighter:New{
 		[1] = {
 			name				= "m2browningamg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "m2browningamg",

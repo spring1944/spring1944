@@ -14,12 +14,10 @@ local RUS_KomsMTB = BoatMother:New{
 	weapons = {	
 		[1] = {
 			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
 			maxAngleDif			= 40,
 		},
 		[2] = {
 			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 	},
@@ -44,13 +42,11 @@ local RUS_KomsMTB_Turret_DShK = BoatChild:New{
 	weapons = {	
 		[1] = {
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "dshk",
-			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
 			slaveTo				= 1,

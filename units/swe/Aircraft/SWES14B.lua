@@ -14,7 +14,6 @@ local SWE_S14B = Recon:New{
 		[1] = {
 			name				= "mg42aa",
 			maxAngleDif			= 90,
-			onlyTargetCategory	= "AIR",
 			weaponMainDir		= [[0 .75 -1]],
 		},
 		[2] = {

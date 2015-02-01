@@ -74,7 +74,6 @@ local SandbagMG = Deployed:New{
     weapons = {
 		[1] = { -- MG
 			maxAngleDif					= 120, -- overwritten by MG42 & M1919A4
-			onlyTargetCategory			= "INFANTRY SOFTVEH DEPLOYED",
 		},
 		[2] = { -- Tracer, same for all except those using green
 			name = "Small_Tracer",
@@ -92,14 +91,6 @@ local AAGun = DeployedGun:New{
 		weaponswithammo		= 2,
 		maxammo				= 16,
 	},
-	weapons = {
-		[1] = { -- AA
-			onlyTargetCategory	= "AIR",
-		},
-		[2] = { -- HE
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-		},
-	},	
 }
 
 local ATGun = DeployedGun:New{
@@ -111,8 +102,6 @@ local ATGun = DeployedGun:New{
 	},
 	weapons = {
 		[1] = { -- AP
-			badTargetCategory	= "SOFTVEH",
-			onlyTargetCategory	= "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
 			maxAngleDif			= 70,
 		},
 	},
@@ -135,11 +124,9 @@ local FGGun = DeployedGun:New{
 	},
 	weapons = {
 		[1] = { -- HE
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 60,
 		},
 		[2] = { -- AP
-			onlyTargetCategory	= "OPENVEH HARDVEH",
 			maxAngleDif			= 60,
 		},
 	},	
@@ -156,11 +143,9 @@ local HGun = DeployedGun:New{
 	},
 	weapons = {
 		[1] = { -- HE
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 35,
 		},
 		[2] = { -- Smoke
-			onlyTargetCategory	= "NOTHING",
 			maxAngleDif			= 35,
 		},
 	},
@@ -175,7 +160,6 @@ local RGun = DeployedGun:New{
 	},
 	weapons = {
 		[1] = {
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 35,
 		},
 	},

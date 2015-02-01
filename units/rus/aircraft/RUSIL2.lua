@@ -25,18 +25,15 @@ local RUS_IL2 = FighterBomber:New{
 		[1] = {
 			name				= "RS82Rocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "RS82Rocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "VYa23mm",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "VYa23mm",
@@ -55,13 +52,11 @@ local RUS_IL2 = FighterBomber:New{
 		},
 		[7] = {
 			name				= "bomb",
-			onlyTargetCategory	= "BUILDING HARDVEH SHIP OPENVEH LARGESHIP DEPLOYED",
 			mainDir				= [[0 -0.18 1]],
 		},
 		[8] = {
 			name				= "m2browningaa",
 			maxAngleDif			= 90,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 .25 -1]],
 		},
 		[9] = {
@@ -76,12 +71,10 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 		[1] = {
 			name				= "PTAB",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[2] = {
 			name				= "VYa23mm",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[3] = {
 			name				= "VYa23mm",
@@ -101,7 +94,6 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 		[6] = {
 			name				= "m2browningaa",
 			maxAngleDif			= 90,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 .25 -1]],
 		},
 		[7] = {

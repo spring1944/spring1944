@@ -72,7 +72,8 @@
   badTargetCategory=FLAG;
 
   weapon1=Type375mmL38AP;
-  onlyTargetCategory1=OPENVEH HARDVEH SHIP LARGESHIP ;
+  badTargetCategory1=SOFTVEH;
+  onlyTargetCategory1=SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP;
   maxAngleDif1=20;
   weaponMainDir1=0 0 1;
 

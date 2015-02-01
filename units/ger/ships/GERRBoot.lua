@@ -14,7 +14,6 @@ local GER_RBoot = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "flak4337mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -36,7 +35,6 @@ local GER_RBoot_Turret_37mm = BoatChild:New{ --
 		[1] = {
 			name				= "flak4337mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -64,7 +62,6 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 		[2] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir		= [[0 0 -1]],
 		},
 	},

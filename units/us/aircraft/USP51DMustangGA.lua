@@ -23,18 +23,15 @@ local US_P51DMustangGA = AttackFighter:New{
 		[1] = {
 			name				= "HVARRocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "HARDVEH OPENVEH SHIP LARGESHIP",
 		},
 		[2] = {
 			name				= "HVARRocket",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "HARDVEH OPENVEH SHIP LARGESHIP",
 			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "m2browningamg",
 			maxAngleDif			= 10,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "m2browningamg",

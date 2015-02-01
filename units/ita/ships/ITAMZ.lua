@@ -11,25 +11,20 @@ local ITA_MZ = TankLandingCraft:New{
 	weapons = {	
 		[1] = {
 			name				= "Ansaldo76mmL40HE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 0 -1]],
 			MaxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "BredaM3520mmAA",
-			onlyTargetCategory	= "AIR",
 		},
 		[3] = {
 			name				= "BredaM3520mmHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[4] = {
 			name				= "BredaM3520mmAA",
-			onlyTargetCategory	= "AIR",
 		},
 		[5] = {
 			name				= "BredaM3520mmHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

@@ -17,37 +17,31 @@ local GER_SiebelFahre = Boat:New{
 		[1] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 320,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[1 0 0]],
 		},
 		[2] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 320,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[-1 0 0]],
 		},
 		[3] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[0 0 -1]],
 		},
 		[4] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 320,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[1 0 0]],
 		},
 		[5] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 320,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[-1 0 0]],
 		},
 		[6] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 0 -1]],
 		},
 	},

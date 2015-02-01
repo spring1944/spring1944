@@ -13,12 +13,10 @@ local ITA_MS = BoatMother:New{
 	weapons = {	
 		[1] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 		[2] = {
 			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 	},
@@ -44,12 +42,10 @@ local ITA_MS_Turret_20mm_Front = BoatChild:New{
 		[1] = {
 			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "BredaM3520mmHE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

@@ -15,7 +15,6 @@ local GER_MAL = BoatMother:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "sk88mmc30",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -39,7 +38,6 @@ local GER_MAL_Turret_105mm = BoatChild:New{ --
 		[1] = {
 			name				= "sk88mmc30",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
@@ -61,47 +59,39 @@ local GER_MAL_Turret_Quad20mm = BoatChild:New{
 		[1] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			slaveTo				= 1,
 		},
 		[4] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "AIR",
 			slaveTo				= 1,
 		},
 		[5] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 		[6] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			slaveTo				= 5,
 		},
 		[7] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			slaveTo				= 5,
 		},
 		[8] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			slaveTo				= 5,
 		},
 	},
@@ -123,12 +113,10 @@ local GER_MAL_Turret_37mm = BoatChild:New{
   	weapons = {	
 		[1] = {
 			name				= "flak4337mmaa",
-			onlyTargetCategory	= "AIR",
 			maxAngleDif			= 270,
 		},
 		[2] = {
 			name				= "flak4337mmhe",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			maxAngleDif			= 270,
 		},
 	},
