@@ -72,7 +72,7 @@ end
 
 function widget:UnitCreated(uid, udid, tid)
 	if (UnitDefs[udid].weapons[1] ~= nil) then
-		if(UnitDefs[udid].canFly == true) then			--aircraft don't attack ground properly in hold pos, they need to be ignored
+		if(UnitDefs[udid].canFly == true or UnitDefs[udid].iconType == "antitank") then			--aircraft don't attack ground properly in hold pos, they need to be ignored
 			GiveOrderToUnit(uid, CMD.MOVE_STATE, { 1 }, 0)	--{0} = holdpos, {1} = maneuver, {2} = roam
 		else
 			GiveOrderToUnit(uid, CMD.MOVE_STATE, { 0 }, 0)
