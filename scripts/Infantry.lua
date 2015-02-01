@@ -638,6 +638,8 @@ local function StopBuilding()
 end
 
 
+
+
 function script.Create()
 	if flare then 
 		Hide(flare)
