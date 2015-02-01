@@ -47,6 +47,8 @@ local GBRDefs = {
     "GBRTankYard",
     "GBRTankYard1",
     "GBRTankYard2",
+    "GBRboatyardlarge",
+    "GBRboatyard",
   },
 
   sandbags  =  {

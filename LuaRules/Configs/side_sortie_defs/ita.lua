@@ -13,17 +13,16 @@ local itaSorties = {
 	},
 	ita_sortie_attack = {
 		members = {
-			"itafiatcr42",
-			"itafiatcr42",
-			"itafiatcr42",
+			"itamc200",
+			"itamc200",
 		},
 		weight = 1,
 		delay = 30,
 		name = "Ground-Attack Sortie",
-		description = "3 x Fiat CR.42 armed with 4x Breda Safat and 2x 50kg bombs",
-		buildCostMetal = 3000,
-		buildPic = "itafiatcr42.png",
-		buildTime = 3000,
+		description = "2 x Macchi C 200 armed with anti-tank Bomblets",
+		buildCostMetal = 4500,
+		buildPic = "itamc200.png",
+		buildTime = 4500,
 		side = "ita",
 	},
 	ita_sortie_fighter = {

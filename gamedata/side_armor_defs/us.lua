@@ -49,6 +49,8 @@ local USDefs = {
     "USTankYard",
     "USTankYard1",
     "USTankYard2",
+	"USboatyard",
+	"USboatyardlarge",
   },
 
   sandbags  =  {

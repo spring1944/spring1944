@@ -131,11 +131,16 @@ end
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	local ud = UnitDefs[unitDefID]
 	if ud.name == "flag" then
-		SetUnitRulesParam(unitID, "lifespan", 0) -- also reset in flagManager
-		SetUnitMetalExtraction (unitID, DEFAULT_OUTPUT)
-		-- set production rules param
-		local init_production = GetUnitRulesParam(unitID, "init_production")
-		SetUnitRulesParam(unitID, "production", init_production)
+		-- check if it was passed within an ally team (/take)
+		local oldAllyTeamID = select(6, Spring.GetTeamInfo(oldTeam))
+		local newAllyTeamID = select(6, Spring.GetTeamInfo(unitTeam))
+		if oldAllyTeamID ~= newAllyTeamID then
+			SetUnitRulesParam(unitID, "lifespan", 0) -- also reset in flagManager
+			SetUnitMetalExtraction (unitID, DEFAULT_OUTPUT)
+			-- set production rules param
+			local init_production = GetUnitRulesParam(unitID, "init_production")
+			SetUnitRulesParam(unitID, "production", init_production)
+		end
 	end
 end
 

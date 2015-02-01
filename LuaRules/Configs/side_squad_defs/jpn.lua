@@ -183,7 +183,7 @@ local jpnDefs = {
 	{
 		members = {
 
-			"jpntype99lmg",
+			"jpntype100smg",
 			"jpntype100smg",
 			"jpntype100smg",
 			"jpntype3at",
@@ -192,6 +192,7 @@ local jpnDefs = {
 			"jpnrifle",
 			"jpnrifle",
 			"jpnrifle",
+			"jpntype99lmg",
 		},
 	},
 	["jpn_tankette_platoon_teke"] =

@@ -32,7 +32,7 @@
   mass=100; // 600
   maxDamage=300;
   maxSlope=10;
-  maxVelocity=0.75;
+  maxVelocity=0.85;
   maxWaterDepth=5;
   movementClass=KBOT_Gun;
   noChaseCategory=FLAG AIR MINE;
