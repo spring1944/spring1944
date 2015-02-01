@@ -1,5 +1,5 @@
 local Rocket = Weapon:New{
-  avoidFeature		 = false,
+  avoidFeature       = false,
   explosionSpeed     = 30,
   impulseFactor      = 0,
   soundTrigger       = false,
@@ -30,8 +30,8 @@ local ArtyRocket = Rocket:New{
     fearaoe            = 200,
     fearid             = 501,
     howitzer           = 1,
-	cegflare           = "dirt_backblast",
-	flareonshot        = true,
+    cegflare           = "dirt_backblast",
+    flareonshot        = true,
   },
 }
 
@@ -41,7 +41,7 @@ local AirRocket = Rocket:New{
   collideFriendly    = false,
   explosionGenerator = "custom:HE_Medium",
   flightTime         = 2,
-  leadLimit	         = 0,
+  leadLimit          = 0,
   model              = "Rocket_HVAR.S3O",
   soundHitDry        = "GEN_Explo_2",
   soundStart         = "GER_Panzerschrek",

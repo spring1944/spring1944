@@ -6,7 +6,7 @@ local BulletProofClass = Weapon:New{
   shieldForce        = 500,
   shieldMaxSpeed     = 900,
   shieldRepulser     = true,
-  smartShield		 = true,
+  smartShield        = true,
   weaponType         = [[Shield]],
   
   --visibleShield = true,
@@ -32,7 +32,7 @@ local MineClass = Weapon:New{
   turret             = true,
   weaponVelocity     = 90,
   customparams = {
-	no_range_adjust	   = true,
+    no_range_adjust    = true,
     damagetype         = [[explosive]], 
   },
   damage = {
@@ -83,7 +83,7 @@ local ParaDropClass = Weapon:New{
   turret             = true,
   weaponType         = [[AircraftBomb]],
   customparams = {
-	no_range_adjust    = true,
+    no_range_adjust    = true,
     damagetype         = [[none]],
     paratrooper        = 1,
   },

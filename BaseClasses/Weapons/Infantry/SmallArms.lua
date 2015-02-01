@@ -15,7 +15,7 @@ local SmallArm = Weapon:New{
   customparams = {
     damagetype         = "smallarm",
     onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED",
-	badtargetcategory  = "SOFTVEH DEPLOYED",
+    badtargetcategory  = "SOFTVEH DEPLOYED",
   },
 }
 
@@ -33,7 +33,8 @@ local PistolClass = SmallArm:New{
   soundTrigger       = false,
   thickness          = 0.2,
   customparams = {
-	cegflare           = "PISTOL_MUZZLEFLASH",
+    cegflare           = "PISTOL_MUZZLEFLASH",
+    scriptanimation    = [[pistol]],
   },
   damage = {
     default            = 31,
@@ -54,7 +55,8 @@ local RifleClass = SmallArm:New{
   sprayAngle         = 100,
   thickness          = 0.4,
   customparams = {
-	cegflare           = "RIFLE_MUZZLEFLASH",
+    cegflare           = "RIFLE_MUZZLEFLASH",
+    scriptanimation    = [[rifle]],
   },
   damage = {
     default            = 33,
@@ -69,9 +71,10 @@ local SniperRifleClass = RifleClass:New{
   reloadtime         = 10,
   tolerance          = 2000,
   customparams = {
-    onlyTargetCategory	= "INFANTRY DEPLOYED", -- don't waste sniper shots on light vehs
+    onlyTargetCategory  = "INFANTRY DEPLOYED", -- don't waste sniper shots on light vehs
     fearaoe            = 90,
     fearid             = 401,
+    scriptanimation    = [[sniper]],
   },
   damage = {
     default              = 625,
@@ -95,7 +98,8 @@ local SMGClass = SmallArm:New{
   sprayAngle         = 350,
   thickness          = 0.4,
   customparams = {
-	cegflare           = "SMG_MUZZLEFLASH",
+    cegflare           = "SMG_MUZZLEFLASH",
+    scriptanimation    = [[smg]],
   },
   damage = {
     default            = 17,
@@ -115,6 +119,7 @@ local MGClass = SmallArm:New{
     fearid             = 301,
     cegflare           = "MG_MUZZLEFLASH",
     flareonshot        = true,
+    scriptanimation    = [[mg]],
   },
   damage = {
     default            = 33,
@@ -143,7 +148,7 @@ local AAMG = Weapon:New{ -- should be used like ammo bases
   customparams = {
     no_range_adjust    = true,
     fearid             = 701,
-	targetCategory	= "AIR",
+    targetCategory  = "AIR",
   }
 }
 
