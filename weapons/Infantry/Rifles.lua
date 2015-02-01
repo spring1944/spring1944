@@ -114,6 +114,7 @@ local SniperRifleClass = RifleClass:New{
     damagetype         = [[smallarm]],
     fearaoe            = 90,
     fearid             = 401,
+	scriptanimation    = [[sniper]],
   },
   damage = {
     default              = 625,

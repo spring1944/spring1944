@@ -88,7 +88,7 @@ local stances = {
 					headingTurn = {pelvis, y_axis, 0, 1},
 					pitchTurn = {torso, x_axis, math.rad(10), -1},
 				},
-	stand_ready_1 =	{
+	stand_1 =	{
 					turns = {
 						{head,   x_axis, 0},
 						{head,   y_axis, 0},
@@ -113,7 +113,7 @@ local stances = {
 						{torso,  z_axis, 0},
 					},
 				},
-	stand_ready_2 = {
+	stand_2 = {
 					turns = { -- Turns
 						{head, x_axis, 0},
 						{head, y_axis, 0},
@@ -138,7 +138,7 @@ local stances = {
 						{torso, z_axis, 0},
 					},
 				},
-	prone_ready = {
+	prone = {
 					turns = { -- Turns
 						{head, x_axis, math.rad(-60)},
 						{head, y_axis, 0},
@@ -217,11 +217,11 @@ local stances = {
 }
 
 local variants = {
-	stand_ready = {stances.stand_ready_1, 
-					stances.stand_ready_2},
-	prone_ready = { stances.prone_ready},
-	run_ready = {stances.stand_ready_1, 
-				stances.stand_ready_2},
+	stand = {stances.stand_1, 
+					stances.stand_2},
+	prone = { stances.prone},
+	run = {stances.stand_1, 
+				stances.stand_2},
 	stand_aim = { stances.stand_aim},
 	prone_aim = { stances.prone_aim},
 }

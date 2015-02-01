@@ -47,6 +47,8 @@ local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
 local gMaxUnits = Game.maxUnits
 -- Variables
 local clearers = {} -- clearers[ownerID] = {target={x,y,z},waypoint={wx,wy,wz},delta={dx,dz}, new, active, on_waypoint, done}
+local startClearCache = {}
+local stopClearCache = {}
 
 local DelayCall = GG.Delay.DelayCall
 
@@ -75,11 +77,14 @@ end
 
 function BlowMine(mineID, engineerID)
     clearers[engineerID].active = false
-	if ValidUnitID(engineerID) and ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
-		local px, py, pz = GetUnitPosition(mineID)
-		DestroyUnit(mineID, false, true)
-		SpawnCEG("HE_Small", px, py, pz)
-		RemoveBuildingDecal(mineID)
+	if ValidUnitID(engineerID) then
+		Spring.UnitScript.CallAsUnit(unitID, stopClearCache[unitID])
+		if ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
+			local px, py, pz = GetUnitPosition(mineID)
+			DestroyUnit(mineID, false, true)
+			SpawnCEG("HE_Small", px, py, pz)
+			RemoveBuildingDecal(mineID)
+		end
 	end
 end
 
@@ -111,7 +116,8 @@ function ClearWaypoint(unitID, x, z)
         
         -- Shortened on purpose from 1000 to 700 due to the unit getting stuck
         -- occasionally
-        CallCOBScript(unitID, "LookForMines", 0, MINE_CLEAR_TIME * 700)
+        --CallCOBScript(unitID, "LookForMines", 0, MINE_CLEAR_TIME * 700)
+		Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID])
         clearers[unitID].active = true
         return false
     end
@@ -230,7 +236,21 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	if cp and cp.canclearmines then
 		Spring.InsertUnitCmdDesc(unitID, clearPathDesc)
+		
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		if env then
+			startClearCache[unitID] = env.StartClearMines
+			stopClearCache[unitID] = env.StopClearMines
+		else
+			return
+		end
 	end
+end
+
+function gadget:UnitDestroyed(unitID)
+	startClearCache[unitID] = nil
+	stopClearCache[unitID] = nil
+	clearers[unitID] = nil
 end
 
 function gadget:Initialize()

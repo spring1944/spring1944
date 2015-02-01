@@ -655,6 +655,9 @@ local stances = {
 					},
 					anim = anims.pinned_3,
 				},
+	build = {
+					headingTurn = {pelvis, y_axis, 0, 1},
+				},
 }
 
 local variants = {
@@ -663,8 +666,9 @@ local variants = {
 	prone_base = { stances.prone_base_1,
 				   stances.prone_base_2 },
 	run_base = { stances.run_base },
-	crawl = { stances.crawl },
+	crawl = { stances.crawl},
 	pinned = {stances.pinned_1, stances.pinned_2, stances.pinned_3},
+	build = {stances.build},
 }
 
 local keyframes = {

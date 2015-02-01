@@ -136,25 +136,25 @@ local weaponsMap = {}
 local weaponsPriorities = {}
 
 local mainAnim = GG.lusHelper[unitDefID].mainAnimation
+local customFunctions = {}
+
+local function CreateMainPoses(mainVariants)
+	for name, mainVariant in pairs(mainVariants) do
+		CreatePose(variants[name .. "_base"] or variants.null, mainVariant, name)
+	end
+end
 
 if mainAnim then
-	Spring.Echo("has main")
-	local _, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/" .. mainAnim .. ".lua")
-	if mainVariants.stand_ready then
-		CreatePose(variants.stand_base, mainVariants.stand_ready, "stand_ready")
+	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays, mainCustomFunctions = include("anims/" .. mainAnim .. ".lua")
+	CreateMainPoses(mainVariants)
+	if mainCustomFunctions then
+		for name, func in pairs(mainCustomFunctions) do
+			customFunctions[name] = func
+		end
 	end
-	if mainVariants.prone_ready then
-		CreatePose(variants.prone_base, mainVariants.prone_ready, "prone_ready")
-	end
-	if mainVariants.run_ready then
-		CreatePose(variants.run_base, mainVariants.run_ready, "run_ready")
-	end
-	if mainVariants.pinned then
-		CreatePose(variants.null, mainVariants.pinned, "pinned")
-	end
-	if mainVariants.crawl then
-		CreatePose(variants.null, mainVariants.crawl, "crawl")
-	end
+	weaponsTags[mainAnim] = mainTags
+	weaponsKeyFrames[mainAnim] = mainKeyFrames or {}
+	weaponsKeyFrameDelays[mainAnim] = mainKeyFrameDelays or {}
 end
 
 for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
@@ -166,21 +166,7 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 		local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/" .. weaponAnim .. ".lua")
 		weaponsPriorities[weaponAnim] = weaponNum
 		if not mainAnim then
-			if weaponVariants.stand_ready then
-				CreatePose(variants.stand_base, weaponVariants.stand_ready, "stand_ready")
-			end
-			if weaponVariants.prone_ready then
-				CreatePose(variants.prone_base, weaponVariants.prone_ready, "prone_ready")
-			end
-			if weaponVariants.run_ready then
-				CreatePose(variants.run_base, weaponVariants.run_ready, "run_ready")
-			end
-			if weaponVariants.pinned then
-				CreatePose(variants.null, weaponVariants.pinned, "pinned")
-			end
-			if weaponVariants.crawl then
-				CreatePose(variants.null, weaponVariants.crawl, "crawl")
-			end
+			CreateMainPoses(weaponVariants)
 		end
 		if weaponVariants.stand_aim then
 			CreatePose(variants.stand_base, weaponVariants.stand_aim, "stand_aim_" .. weaponAnim)
@@ -194,13 +180,7 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 			end
 			CreatePose(variants.run_base, weaponVariants.run_aim, "run_aim_" .. weaponAnim)
 		end
-		-- if weaponKeyFrames and weaponKeyFrames.run_fire then
-			-- Spring.Echo("updating " .. weaponAnim)
-			-- for _, stance in pairs(weaponKeyFrames.run_fire) do
-				-- stance.anim = anims.run_aim
-				-- Spring.Echo("updating stance in " .. weaponAnim)
-			-- end
-		-- end
+
 		weaponsTags[weaponAnim] = weaponTags
 		weaponsKeyFrames[weaponAnim] = weaponKeyFrames or {}
 		weaponsKeyFrameDelays[weaponAnim] = weaponKeyFrameDelays or {}
@@ -213,6 +193,9 @@ if not poseVariants.crawl then
 end
 if not poseVariants.pinned then
 	CreatePose(variants.null, variants.pinned, "pinned")
+end
+if UnitDefs[unitDefID].isBuilder and not poseVariants.build then
+	CreatePose(variants.stand_base, variants.build, "build")
 end
 
 
@@ -379,44 +362,50 @@ local function CreateVariantTransitions(transitionsMap, startVariant, endVariant
 	end
 end
 
-CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants.stand_ready)
-CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants.prone_ready, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
-CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants.run_ready)
+--CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.stand)
+CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.prone, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
+CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.run)
 
-CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants.stand_ready, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
-CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants.prone_ready)
-CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants.crawl)
-CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants.pinned)
+if UnitDefs[unitDefID].isBuilder then
+	CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.build)
+	CreateVariantTransitions(transitions, poseVariants.build, poseVariants.stand)
+end
 
-CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants.stand_ready)
-CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants.run_ready)
 
-CreateVariantTransitions(transitions, poseVariants.crawl, poseVariants.prone_ready)
+CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.stand, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
+--CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.prone)
+CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.crawl)
+CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.pinned)
 
-CreateVariantTransitions(transitions, poseVariants.pinned, poseVariants.prone_ready)
+CreateVariantTransitions(transitions, poseVariants.run, poseVariants.stand)
+--CreateVariantTransitions(transitions, poseVariants.run, poseVariants.run)
+
+CreateVariantTransitions(transitions, poseVariants.crawl, poseVariants.prone)
+
+CreateVariantTransitions(transitions, poseVariants.pinned, poseVariants.prone)
 
 for weaponAnim, tags in pairs(weaponsTags) do
 	if tags.canStandFire then
-		CreateVariantTransitions(transitions, poseVariants.stand_ready, poseVariants["stand_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
-		CreateVariantTransitions(transitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand_ready, weaponsKeyFrames[weaponAnim].aim_to_ready, weaponsKeyFrames[weaponAnim].aim_to_ready)
+		CreateVariantTransitions(transitions, poseVariants.stand, poseVariants["stand_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
 	end
 	if tags.canProneFire then
-		CreateVariantTransitions(transitions, poseVariants.prone_ready, poseVariants["prone_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
-		CreateVariantTransitions(transitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone_ready, weaponsKeyFrames[weaponAnim].aim_to_ready, weaponsKeyFrames[weaponAnim].aim_to_ready)
+		CreateVariantTransitions(transitions, poseVariants.prone, poseVariants["prone_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
 	end
 	if tags.canRunFire then
-		CreateVariantTransitions(transitions, poseVariants.run_ready, poseVariants["run_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
-		CreateVariantTransitions(transitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run_ready, weaponsKeyFrames[weaponAnim].aim_to_ready, weaponsKeyFrames[weaponAnim].aim_to_ready)
+		CreateVariantTransitions(transitions, poseVariants.run, poseVariants["run_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
+		CreateVariantTransitions(transitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
 	end
 	if weaponsTags[weaponAnim].aimOnLoaded then
 		if tags.canStandFire then
-			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand_ready, weaponsKeyFrames[weaponAnim].stand_fire, weaponsKeyFrameDelays[weaponAnim].stand_fire)
+			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand, weaponsKeyFrames[weaponAnim].stand_fire, weaponsKeyFrameDelays[weaponAnim].stand_fire)
 		end
 		if tags.canProneFire then
-			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone_ready, weaponsKeyFrames[weaponAnim].prone_fire, weaponsKeyFrameDelays[weaponAnim].prone_fire)
+			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone, weaponsKeyFrames[weaponAnim].prone_fire, weaponsKeyFrameDelays[weaponAnim].prone_fire)
 		end
 		if tags.canRunFire then
-			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run_ready, weaponsKeyFrames[weaponAnim].run_fire, weaponsKeyFrameDelays[weaponAnim].run_fire)
+			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run, weaponsKeyFrames[weaponAnim].run_fire, weaponsKeyFrameDelays[weaponAnim].run_fire)
 		end
 	else
 		if tags.canStandFire then
@@ -431,4 +420,4 @@ for weaponAnim, tags in pairs(weaponsTags) do
 	end
 end
 
-return poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities
+return poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities, customFunctions

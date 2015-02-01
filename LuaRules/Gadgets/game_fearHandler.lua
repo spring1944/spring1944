@@ -42,8 +42,8 @@ local restoreCOBScriptIDs = {}
 local restorelusScriptIDs = {}
 
 local fearLevels = {}
-local engineerIDs = {}
-local engineerDefIDs = {}
+-- local engineerIDs = {}
+-- local engineerDefIDs = {}
 
 local targets = {}
 local tLength = 0
@@ -57,13 +57,13 @@ local function UpdateSuppression(unitID)
 	local _, currFear = CallCOBScript(unitID, cobScriptIDs[unitID], 1, 1)
 	fearLevels[unitID] = currFear
 	SetUnitRulesParam(unitID, "suppress", currFear)
-	if engineerIDs[unitID] then -- unit is an engineer, toggle his buildpower
-		if currFear <= 2 then
-			Spring.SetUnitBuildSpeed(unitID, engineerIDs[unitID])
-		else
-			Spring.SetUnitBuildSpeed(unitID, 0.000001) -- must be non-0 or building will decay
-		end
-	end
+	-- if engineerIDs[unitID] then -- unit is an engineer, toggle his buildpower
+		-- if currFear <= 2 then
+			-- Spring.SetUnitBuildSpeed(unitID, engineerIDs[unitID])
+		-- else
+			-- Spring.SetUnitBuildSpeed(unitID, 0.000001) -- must be non-0 or building will decay
+		-- end
+	-- end
 end
 
 
@@ -74,16 +74,16 @@ function gadget:UnitCreated(unitID, unitDefID)
 		SetUnitRulesParam(unitID, "suppress", 0)
 		cobScriptIDs[unitID] = scriptID 
 		lusScriptIDs[unitID] = env and env.AddFear
-		if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
-			if UnitDefs[unitDefID].isBuilder then
-				engineerDefIDs[unitDefID] = true
-				engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
-			else
-				engineerDefIDs[unitDefID] = false
-			end
-		elseif engineerDefIDs[unitDefID] then -- is a builder
-			engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
-		end
+		-- if engineerDefIDs[unitDefID] == nil then -- first of this unitdef, check if it is a builder
+			-- if UnitDefs[unitDefID].isBuilder then
+				-- engineerDefIDs[unitDefID] = true
+				-- engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
+			-- else
+				-- engineerDefIDs[unitDefID] = false
+			-- end
+		-- elseif engineerDefIDs[unitDefID] then -- is a builder
+			-- engineerIDs[unitID] = UnitDefs[unitDefID].buildSpeed
+		-- end
 	end
 	
 	scriptID = GetCOBScriptID(unitID, "RestoreAfterCover")
@@ -97,7 +97,7 @@ end
 function gadget:UnitDestroyed(unitID)
 	cobScriptIDs[unitID] = nil
 	lusScriptIDs[unitID] = nil
-	engineerIDs[unitID] = nil
+	-- engineerIDs[unitID] = nil
 end
 
 

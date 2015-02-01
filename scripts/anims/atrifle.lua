@@ -30,7 +30,7 @@ local tags = {
 }
 
 local stances = {
-	stand_ready =	{
+	stand =	{
 					turns = {
 						{head,   x_axis, 0},
 						{head,   y_axis, 0},
@@ -55,7 +55,7 @@ local stances = {
 						{torso,  z_axis, 0},
 					},
 				},
-	prone_ready = {
+	prone = {
 					turns = { -- Turns
 						{head, x_axis, math.rad(-60)},
 						{head, y_axis, 0},
@@ -139,9 +139,9 @@ local keyframeDelays = {
 }
 
 local variants = {
-	stand_ready = {stances.stand_ready},
-	prone_ready = {stances.prone_ready},
-	run_ready = {stances.stand_ready},
+	stand = {stances.stand},
+	prone = {stances.prone},
+	run = {stances.stand},
 	stand_aim = {stances.stand_aim},
 	prone_aim = {stances.prone_aim},
 	run_aim = {stances.run_aim},

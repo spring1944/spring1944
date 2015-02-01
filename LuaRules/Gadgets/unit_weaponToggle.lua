@@ -60,7 +60,7 @@ local function ApplyToggle(unitID, cmdID, newState)
 	local toggleFunc = toggleCache[unitID]
 	local weaponStateTable = cmdIDToStates[cmdID][newState + 1].toggle
 	for weaponNum, isEnabled in pairs(weaponStateTable) do
-		toggleFunc(weaponNum, isEnabled)
+		Spring.UnitScript.CallAsUnit(unitID, toggleFunc, weaponNum, isEnabled)
 	end
 	local params = cmdIDToCMDDesc[cmdID].params
 	local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
@@ -83,8 +83,8 @@ function gadget:UnitCreated(unitID, unitDefID)
 	end
 	
 	local env = Spring.UnitScript.GetScriptEnv(unitID)
-	if env and env.toggleWeapon then
-		toggleCache[unitID] = env.toggleWeapon
+	if env and env.ToggleWeapon then
+		toggleCache[unitID] = env.ToggleWeapon
 	else
 		return
 	end

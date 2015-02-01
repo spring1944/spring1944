@@ -78,7 +78,7 @@ local anims = {
 }
 
 local stances = {
-	stand_ready =	{
+	stand =	{
 					turns = {
 						{head, x_axis, 0},
 						{head, y_axis, 0},
@@ -116,7 +116,7 @@ local stances = {
 						{mortarbase, z_axis, 0},
 					},
 				},
-	run_ready =	{
+	run =	{
 					turns = {
 						{head, x_axis, 0},
 						{head, y_axis, 0},
@@ -153,7 +153,7 @@ local stances = {
 					},
 					anim = anims.run,
 				},
-	prone_ready = {
+	prone = {
 					turns = { -- Turns
 						{head, x_axis, math.rad(-60)},
 						{head, y_axis, 0},
@@ -291,11 +291,11 @@ local keyframeDelays = {
 }
 
 local variants = {
-	stand_ready = {stances.stand_ready},
-	prone_ready = {stances.prone_ready},
-	run_ready = {stances.run_ready},
+	stand = {stances.stand},
+	prone = {stances.prone},
+	run = {stances.run},
 	stand_aim = {stances.stand_aim},
-	pinned = {stances.prone_ready},
+	pinned = {stances.prone},
 }
 
 return tags, variants, keyframes, keyframeDelays

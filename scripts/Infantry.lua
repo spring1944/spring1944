@@ -1,29 +1,29 @@
 -- pieces
-local head = piece "head"
+-- local head = piece "head"
 local torso = piece "torso"
-local pelvis = piece "pelvis"
-local gun = piece "gun"
+-- local pelvis = piece "pelvis"
+-- local gun = piece "gun"
 local ground = piece "ground"
 local flare = piece "flare"
 
-local luparm = piece "luparm"
-local lloarm = piece "lloarm"
+-- local luparm = piece "luparm"
+-- local lloarm = piece "lloarm"
 
-local ruparm = piece "ruparm"
-local rloarm = piece "rloarm"
+-- local ruparm = piece "ruparm"
+-- local rloarm = piece "rloarm"
 
-local lthigh = piece "lthigh"
-local lleg = piece "lleg"
-local lfoot = piece "lfoot"
+-- local lthigh = piece "lthigh"
+-- local lleg = piece "lleg"
+-- local lfoot = piece "lfoot"
 
-local rthigh = piece "rthigh"
-local rleg = piece "rleg"
-local rfoot = piece "rfoot"
+-- local rthigh = piece "rthigh"
+-- local rleg = piece "rleg"
+-- local rfoot = piece "rfoot"
 
 if not GG.lusHelper[unitDefID].animation then
 	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
 end
-local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(GG.lusHelper[unitDefID].animation)
+local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities, customFunctions = unpack(GG.lusHelper[unitDefID].animation)
 
 
 --Constants
@@ -54,23 +54,28 @@ local FEAR_PINNED = 20
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
 
+local isBuilder = UnitDefs[unitDefID].isBuilder
+
 --CURRENT UNIT STATE
 local standing
 local aiming
 local moving
 local pinned
+local building
 
 --UNIT WANTED STATE
 local wantedStanding
 local wantedAiming
 local wantedMoving
 local wantedPinned
+local wantedBuilding
 
 --UNIT TARGET STATE
 local targetStanding
 local targetAiming
 local targetMoving
 local targetPinned
+local targetBuilding
 
 --POSE VARS
 local inTransition
@@ -79,13 +84,13 @@ local currentPoseName
 local currentAnim
 
 -- AIMING VARS
-local lastPitch
-local lastHeading
-local aimed
+local currentPitch
+local currentHeading
+local wantedHeading
+local wantedPitch
 local firing
 
 --STORED VARS
-local origSpeed
 local currentSpeed
 
 local weaponEnabled = {}
@@ -100,17 +105,6 @@ local TAU = 2 * PI
 
 local nonWaitedStances = {}
 
-local function MySignal(sig)
-	--Spring.Echo("signal", sig)
-	Signal(sig)
-end
-
-
--- local function CanAim()
-	-- return (standing and ((moving and CAN_RUN_FIRE) or
-	                      -- (not moving and CAN_STAND_FIRE))) or 
-	       -- (not moving and CAN_PRONE_FIRE)
--- end
 
 local function GetNewPoseID(poseName)
 	--Spring.Echo("looking for " .. poseName)
@@ -157,7 +151,7 @@ local function WaitForStances()
 end
 
 local function PlayAnim()
-	MySignal(SIG_ANIM)
+	Signal(SIG_ANIM)
 	SetSignalMask(SIG_ANIM)
 	while true do
 		local anim = currentAnim
@@ -198,20 +192,20 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 				Move(unpack(params))
 			end
 		end
-		if headingTurn and lastHeading then
+		if headingTurn and wantedHeading then
 			local p, axis, target, mul = unpack(headingTurn)
-			Turn(p, axis, target + mul * lastHeading, DEFAULT_TURN_SPEED)
+			Turn(p, axis, target + mul * wantedHeading, DEFAULT_TURN_SPEED)
 		end
-		if pitchTurn and lastPitch then
+		if pitchTurn and wantedPitch then
 			local p, axis, target, mul = unpack(pitchTurn)
-			Turn(p, axis, target + mul * lastPitch, DEFAULT_TURN_SPEED)
+			Turn(p, axis, target + mul * wantedPitch, DEFAULT_TURN_SPEED)
 		end
 		if anim and not currentAnim then
 			currentAnim = anim
 			StartThread(PlayAnim)
 		elseif not anim then
 			currentAnim = nil
-			MySignal(SIG_ANIM)
+			Signal(SIG_ANIM)
 		else
 			currentAnim = anim
 		end
@@ -256,18 +250,18 @@ local function PickPose(name)
 		end
 		if headingTurn then
 			local p, axis, target, mul = unpack(headingTurn)
-			Turn(p, axis, target + mul * lastHeading)
+			Turn(p, axis, target + mul * wantedHeading)
 		end
 		if pitchTurn then
 			local p, axis, target, mul = unpack(pitchTurn)
-			Turn(p, axis, target + mul * lastPitch)
+			Turn(p, axis, target + mul * wantedPitch)
 		end
 		if anim and not currentAnim then
 			currentAnim = anim
 			StartThread(PlayAnim)
 		elseif not anim then
 			currentAnim = nil
-			MySignal(SIG_ANIM)
+			Signal(SIG_ANIM)
 		end
 	else
 		-- if inTransition then
@@ -297,16 +291,18 @@ end
 
 local function ReAim(newHeading, newPitch)
 	--Spring.Echo("reaiming")
-	local hDiff = lastHeading - newHeading
-	if hDiff > PI then
-		hDiff = TAU - hDiff
-	elseif hDiff < -PI then
-		hDiff = hDiff + TAU
-	end
-	local pDiff = abs(lastPitch - newPitch)
-	local hDiff = abs(hDiff)
-	if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
-		return true
+	if currentHeading and currentPitch then
+		local hDiff = currentHeading - newHeading
+		if hDiff > PI then
+			hDiff = TAU - hDiff
+		elseif hDiff < -PI then
+			hDiff = hDiff + TAU
+		end
+		local pDiff = abs(currentPitch - newPitch)
+		local hDiff = abs(hDiff)
+		if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
+			return true
+		end
 	end
 	
 	SetSignalMask(SIG_AIM)
@@ -322,28 +318,31 @@ local function ReAim(newHeading, newPitch)
 	end
 	nonWaitedStances[#nonWaitedStances + 1] = {{}, {}, headingTurn, pitchTurn}
 	WaitForStances()
-	lastHeading = newHeading
-	lastPitch = newPitch
+	currentHeading = newHeading
+	currentPitch = newPitch
 	return false
 end
 
 
-local function GetPoseName(newStanding, newAiming, newMoving, newPinned)
+local function GetPoseName(newStanding, newAiming, newMoving, newPinned, newBuilding)
 	if newPinned then
 		return "pinned"
+	end
+	if newBuilding then
+		return "build"
 	end
 	if newStanding then
 		if newMoving then
 			if newAiming then
 				return "run_aim_" .. newAiming
 			else
-				return "run_ready"
+				return "run"
 			end
 		else
 			if newAiming then
 				return "stand_aim_" .. newAiming
 			else
-				return "stand_ready"
+				return "stand"
 			end
 		end
 	else
@@ -353,7 +352,7 @@ local function GetPoseName(newStanding, newAiming, newMoving, newPinned)
 			if newAiming then
 				return "prone_aim_" .. newAiming
 			else
-				return "prone_ready"
+				return "prone"
 			end
 		end
 	end
@@ -361,6 +360,7 @@ end
 
 
 local function UpdateSpeed()
+	local origSpeed = UnitDefs[unitDefID].speed
 	local newSpeed = origSpeed
 	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
 		newSpeed = 0
@@ -382,11 +382,21 @@ local function UpdateSpeed()
 		Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 	end
 	currentSpeed = newSpeed
+	
+	if UnitDefs[unitDefID].isBuilder then
+		local origBuildSpeed = UnitDefs[unitDefID].buildSpeed
+		if fear > 0 then
+			newBuildSpeed = 0.000001
+		else
+			newBuildSpeed = origBuildSpeed
+		end
+		Spring.SetUnitBuildSpeed(unitID, newBuildSpeed)
+	end
 end
 
-local function UpdatePose(newStanding, newAiming, newMoving, newPinned)
-	local success = PickPose(GetPoseName(newStanding, newAiming, newMoving, newPinned))
-	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, success)
+local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuilding)
+	local success = PickPose(GetPoseName(newStanding, newAiming, newMoving, newPinned, newBuilding))
+	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, newBuilding, success)
 	if success then
 		if not newAiming then
 			for _, tags in pairs(weaponsTags) do
@@ -409,10 +419,14 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned)
 				end
 			end
 		end
+		if building ~= newBuilding then
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, newBuilding and 1 or 0);
+		end
 		standing = newStanding
 		aiming = newAiming
 		moving = newMoving
 		pinned = newPinned
+		building = newBuilding
 		UpdateSpeed()
 	end
 	return success
@@ -425,6 +439,7 @@ local function UpdateTargetState()
 		targetAiming = false
 		targetMoving = false
 		targetPinned = true
+		targetBuilding = false
 		return
 	end
 	if firing then
@@ -432,11 +447,13 @@ local function UpdateTargetState()
 		targetAiming = aiming and (not weaponsTags[aiming].aimOnLoaded) and aiming --on purpose
 		targetMoving = moving
 		targetPinned = pinned
+		targetBuilding = building
 	end
 	targetStanding = wantedStanding and fear == 0
 	targetAiming = wantedAiming
 	targetMoving = wantedMoving
 	targetPinned = wantedPinned
+	targetBuilding = wantedBuilding and (not wantedPinned and not wantedMoving and not wantedAiming and fear == 0)
 	
 	if wantedAiming then
 		local tags = weaponsTags[wantedAiming]
@@ -449,63 +466,85 @@ local function UpdateTargetState()
 			targetAiming = (targetStanding or tags.canProneFire) and targetAiming
 		end
 	end
+	
+	if targetBuilding then
+		targetStanding = true
+	end
+	
 end
 
 
 local function IsWantedPose()
-	return standing == targetStanding and
+	local wanted = standing == targetStanding and
 		 aiming == targetAiming and
 		 moving == targetMoving and
-		 pinned == targetPinned and 
+		 pinned == targetPinned and
+		 building == targetBuilding and
 		 not firing
+		 
+	-- Spring.Echo("wanted", wanted)
+	return wanted
 end
 
 local function NextPose(isFire)
-	-- Spring.Echo("current", standing, aiming, moving, pinned)
-	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned)
-	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned)
+	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
+	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned, wantedBuilding)
+	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned, targetBuilding)
 		
 	if firing then
-		return UpdatePose(standing, aiming == wantedAiming and aiming, moving, pinned)
+		return UpdatePose(standing, aiming == wantedAiming and aiming, moving, pinned, building)
 	end
 	
 	if targetPinned and not pinned then
 		if aiming then
-			return UpdatePose(standing, false, moving, pinned)
+			return UpdatePose(standing, false, moving, pinned, building)
 		end
 		if moving then
-			return UpdatePose(standing, aiming, false, pinned)
+			return UpdatePose(standing, aiming, false, pinned, building)
 		end
 		if standing then
-			return UpdatePose(false, aiming, moving, pinned)
+			return UpdatePose(false, aiming, moving, pinned, building)
 		end
-		return UpdatePose(false, false, false, true)
+		return UpdatePose(false, false, false, true, false)
 	elseif pinned and not targetPinned then
-		return UpdatePose(false, false, false, false)
+		return UpdatePose(false, false, false, false, false)
 	end
 	
 	if standing ~= targetStanding  then
+		if building then
+			return UpdatePose(standing, aiming, moving, pinned, false)
+		end
 		if aiming then
-			return UpdatePose(standing, false, moving, pinned)
+			return UpdatePose(standing, false, moving, pinned, building)
 		end
 		if moving then
-			return UpdatePose(standing, aiming, false, pinned)
+			return UpdatePose(standing, aiming, false, pinned, building)
 		end
-		return UpdatePose(targetStanding and fear == 0, aiming, moving, pinned)
+		return UpdatePose(targetStanding and fear == 0, aiming, moving, pinned, building)
 	end
 	
 	if moving ~= targetMoving then
-		if aiming then
-			return UpdatePose(standing, false, moving, pinned)
+		if building then
+			return UpdatePose(standing, aiming, moving, pinned, false)
 		end
-		return UpdatePose(standing, aiming, targetMoving, pinned)
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned, building)
+		end
+		return UpdatePose(standing, aiming, targetMoving, pinned, building)
 	end
 	
 	if aiming ~= targetAiming then
-		if aiming then
-			return UpdatePose(standing, false, moving, pinned)
+		if building then
+			return UpdatePose(standing, aiming, moving, pinned, false)
 		end
-		return UpdatePose(standing, targetAiming, moving, pinned)
+		if aiming then
+			return UpdatePose(standing, false, moving, pinned, building)
+		end
+		return UpdatePose(standing, targetAiming, moving, pinned, building)
+	end
+	
+	if building ~= targetBuilding then
+		return UpdatePose(standing, aiming, moving, pinned, targetBuilding)
 	end
 	
 	Spring.Echo("shouldn't reach here")
@@ -539,7 +578,7 @@ local function ResolvePose(isFire)
 	inTransition = false
 end
 
-local function StopAiming()
+function StopAiming()
 	--Spring.Echo("stopaiming")
 	wantedAiming = false
 	StartThread(ResolvePose)
@@ -570,7 +609,7 @@ local function Drop()
 	StartThread(ResolvePose)
 end
 
-local function StartAiming(weaponNum)
+function StartAiming(weaponNum)
 	--Spring.Echo("startaiming")
 	wantedAiming = weaponNum
 	StartThread(ResolvePose)
@@ -588,8 +627,21 @@ local function StartPinned()
 	StartThread(ResolvePose)
 end
 
+local function StartBuilding()
+	wantedBuilding = true
+	StartThread(ResolvePose)
+end
+
+local function StopBuilding()
+	wantedBuilding = false
+	StartThread(ResolvePose)
+end
+
+
 function script.Create()
-	Hide(flare)
+	if flare then 
+		Hide(flare)
+	end
 	standing = true
 	wantedStanding = standing
 	aiming = false
@@ -598,16 +650,20 @@ function script.Create()
 	wantedMoving = moving
 	pinned = false
 	wantedPinned = pinned
+	building = false
+	wantedBuilding = building
 	fear = 0
-	lastPitch = nil
-	lastHeading = nil
+	wantedPitch = nil
+	wantedHeading = nil
+	currentPitch = nil
+	currentHeading = nil
 	firing = false
-	origSpeed = UnitDefs[unitDefID].speed
-	currentSpeed = origSpeed
-	UpdatePose(true, false, false, false)
+	currentSpeed = UnitDefs[unitDefID].speed
+	UpdatePose(standing, aiming, moving, pinned, building)
 	for i=1,#weaponsMap do
 		weaponEnabled[i] = true
 	end
+	UpdateSpeed()
 end
 
 function script.StartMoving()
@@ -616,6 +672,10 @@ end
 
 function script.StopMoving()
 	StopWalk()
+end
+
+local function CanBuild()
+	return standing and not aiming and not moving and fear == 0 and not inTransition
 end
 
 
@@ -657,12 +717,12 @@ function script.AimWeapon(num, heading, pitch)
 		return false
 	end
 	
-	MySignal(SIG_AIM)
+	Signal(SIG_AIM)
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
+	wantedHeading = heading
+	wantedPitch = pitch
 	if CanFire(weaponClass) then return ReAim(heading, pitch) end
-	lastHeading = heading
-	lastPitch = pitch
 	StartAiming(weaponClass)
 	return false
 end
@@ -687,7 +747,7 @@ end
 
 function script.EndBurst(num)
 	firing = false
-	MySignal(SIG_FIRE)
+	Signal(SIG_FIRE)
 	local weaponClass = weaponsMap[num]
 	local tags = weaponsTags[weaponClass]
 	if tags.aimOnLoaded and wantedAiming == aiming then
@@ -707,14 +767,14 @@ end
 
 function RestoreAfterCover()
 	--Spring.Echo("restoring")
-	MySignal(SIG_FEAR)
+	Signal(SIG_FEAR)
 	fear = 0
 	StopPinned()
 	Stand()
 end
 
 local function RecoverFear()
-	MySignal(SIG_FEAR)
+	Signal(SIG_FEAR)
 	SetSignalMask(SIG_FEAR)
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
@@ -729,7 +789,7 @@ local function RecoverFear()
 end
 
 function AddFear(amount)
-	MySignal(SIG_FEAR)
+	Signal(SIG_FEAR)
 	StartThread(Delay, RecoverFear, FEAR_INITIAL_SLEEP, SIG_FEAR)
 	fear = fear + amount
 	if fear > FEAR_LIMIT then
@@ -742,6 +802,23 @@ function AddFear(amount)
 	Spring.SetUnitRulesParam(unitID, "suppress", fear)
 end
 
-function toggleWeapon(num, isEnabled)
+function ToggleWeapon(num, isEnabled)
 	weaponEnabled[num] = isEnabled
+end
+
+function script.StartBuilding(buildheading, pitch)
+	if CanBuild() then
+		wantedHeading = buildheading
+		wantedPitch = pitch
+		StartBuilding()
+	end
+end
+
+function script.StopBuilding()
+	StopBuilding()
+end
+
+
+for name, func in pairs(customFunctions) do
+	_G[name] = func
 end

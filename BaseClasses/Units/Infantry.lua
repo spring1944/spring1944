@@ -289,10 +289,11 @@ local EngineerInf = Infantry:New{
 	buildDistance		= 128,
 	terraformSpeed		= 300,
 	workerTime			= 15,
-	script				= "GBRHQEngineer.cob",
+	--script				= "GBRHQEngineer.cob",
 	
 	customParams = {
 		canclearmines			= true,
+		scriptAnimation			= "engineer",
 	},
 }
 
