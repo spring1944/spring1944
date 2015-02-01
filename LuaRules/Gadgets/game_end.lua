@@ -285,7 +285,6 @@ local function ProcessLastAlly()
         end
         until true
     end -- for
-
     if #activeAllies == 2 then
         if revealed then return end
         -- run value comparison
@@ -369,7 +368,22 @@ end
 function gadget:GameFrame(n)
     -- check for last ally:
     -- end condition: only 1 ally with human players, no AIs in other ones
-    if (n % 45 == 0) then
+	if n == 1 then
+		local playerlist = spGetPlayerList(t, true)
+		local activePlayers = 0
+		if playerlist then
+			for j=1,#playerlist do
+				local _,active,spec = spGetPlayerInfo(playerlist[j])
+				if active and not spec then
+					activePlayers = activePlayers + 1
+				end
+			end
+		end
+		if activePlayers < 2 then
+			gadgetHandler:RemoveGadget()
+			return
+		end
+    elseif (n % 45 == 0) then
         if toDestroy then
             for u in pairs(toDestroy) do
                 local ud = spGetUnitDefID(u)
