@@ -10,7 +10,8 @@ local currentTrack
 
 local SIG_MOVE = 1
 
-local WHEEL_CHECK_DELAY = 1000
+local WHEEL_CHECK_DELAY = 990
+local TRACK_SWAP_DELAY = 99
 
 local WHEEL_ACCELERATION_FACTOR = 3
 
@@ -46,7 +47,7 @@ local function SwapTracks()
 		Hide(tracks[currentTrack])
 		currentTrack = (currentTrack % #tracks) + 1
 		Show(tracks[currentTrack])
-		Sleep(99)
+		Sleep(TRACK_SWAP_DELAY)
 	end
 end
 
