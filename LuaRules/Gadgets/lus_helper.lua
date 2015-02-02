@@ -142,6 +142,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local numBarrels = 0
 		local numWheels = 0
 		local wheelSpeeds = {}
+		local tracks = {}
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -162,12 +163,15 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 				local wheelInfo = Spring.GetUnitPieceInfo(unitID, pieceNum)
 				local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
 				wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
+			elseif pieceName:find("tracks") then
+				tracks[#tracks + 1] = pieceNum
 			end
 		end
 		info.numBarrels = numBarrels
 		info.numRockets = numRockets
 		info.numWheels = numWheels
 		info.wheelSpeeds = wheelSpeeds
+		info.tracks = tracks
 	end
 	
 	-- Remove aircraft land and repairlevel buttons

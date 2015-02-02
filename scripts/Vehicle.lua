@@ -5,10 +5,8 @@ local wheel3 = piece "wheel3"
 local spare = piece "spare"
 local carriage = piece "carriage"
 
-local SHATTER = 1
-local EXPLODE_ON_HIT = 2
-
 local wheelSpeed
+local currentTrack
 
 local SIG_MOVE = 1
 
@@ -17,7 +15,13 @@ local WHEEL_CHECK_DELAY = 1000
 local WHEEL_ACCELERATION_FACTOR = 3
 
 function script.Create()
-
+	if #GG.lusHelper[unitDefID].tracks > 1 then
+		currentTrack = 1
+		Show(GG.lusHelper[unitDefID].tracks[1])
+		for i = 2,#GG.lusHelper[unitDefID].tracks do
+			Hide(GG.lusHelper[unitDefID].tracks[i])
+		end
+	end
 end
 
 local function SpinWheels()
@@ -35,6 +39,17 @@ local function SpinWheels()
 	end
 end
 
+local function SwapTracks()
+	SetSignalMask(SIG_MOVE)
+	local tracks = GG.lusHelper[unitDefID].tracks
+	while true do
+		Hide(tracks[currentTrack])
+		currentTrack = (currentTrack % #tracks) + 1
+		Show(tracks[currentTrack])
+		Sleep(99)
+	end
+end
+
 local function StopWheels()
 	for wheelPiece, speed in pairs(GG.lusHelper[unitDefID].wheelSpeeds) do
 		StopSpin(wheelPiece, x_axis, speed / WHEEL_ACCELERATION_FACTOR)
@@ -46,6 +61,9 @@ function script.StartMoving()
 	if GG.lusHelper[unitDefID].numWheels > 0 then
 		StartThread(SpinWheels)
 	end
+	if #(GG.lusHelper[unitDefID].tracks) > 1 then
+		StartThread(SwapTracks)
+	end
 end
 
 function script.StopMoving()
@@ -55,15 +73,11 @@ end
 
 function script.Killed(recentDamage, maxHealth)
 
-	if recentDamage <= 999 then
-		Explode(wheel1, SHATTER + EXPLODE_ON_HIT)
-		Explode(wheel2, SHATTER + EXPLODE_ON_HIT)
-		Explode(wheel3, SHATTER + EXPLODE_ON_HIT)
+	if recentDamage <= maxHealth then
+		--normal kill
 	else
-		Explode(wheel1, SHATTER + EXPLODE_ON_HIT)
-		Explode(wheel2, SHATTER + EXPLODE_ON_HIT)
-		Explode(carriage, SHATTER + EXPLODE_ON_HIT)
-		Explode(base, SHATTER)
+		--overkill
 	end
+	
 	return 1
 end
