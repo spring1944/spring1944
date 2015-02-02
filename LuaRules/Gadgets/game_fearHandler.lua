@@ -81,7 +81,7 @@ local function UpdateSuppressionCOB(unitID)
 end
 
 local function UpdateSuppressionLUS(unitID)
-	if restorelusScriptIDs[unitID] then
+	if Spring.ValidUnitID(unitID) and restorelusScriptIDs[unitID] then
 		local unitInSmoke = GetUnitRulesParam(unitID, "smoked") == 1 
 		if unitInSmoke then
 			Spring.UnitScript.CallAsUnit(unitID, restorelusScriptIDs[unitID])
