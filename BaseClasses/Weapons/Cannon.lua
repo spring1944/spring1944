@@ -7,8 +7,8 @@ local AP = Weapon:New{
   soundHitDry        = "GEN_Explo_1",
   customparams = {
     damagetype         = "kinetic",
-	onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
-	badtargetcategory  = "SOFTVEH",
+    onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+    badtargetcategory  = "SOFTVEH",
   },  
 }
 
@@ -42,8 +42,8 @@ local HEAT = Weapon:New{ -- Medium
   soundHitDry        = "GEN_Explo_2",
   customparams = {
     damagetype         = "shapedcharge",
-	onlytargetcategory = AP.customparams.onlytargetcategory,
-	badtargetcategory  = AP.customparams.badtargetcategory,
+    onlytargetcategory = AP.customparams.onlytargetcategory,
+    badtargetcategory  = AP.customparams.badtargetcategory,
   },
 }
 
@@ -134,9 +134,9 @@ local Smoke = Weapon:New{
 
 local MortarSmoke = Smoke:New{
   customparams = {
-	smokeradius        = 160,
-	smokeduration      = 25,
-	smokeceg           = "SMOKESHELL_Small",
+    smokeradius        = 160,
+    smokeduration      = 25,
+    smokeceg           = "SMOKESHELL_Small",
   },
 }
 
@@ -172,7 +172,7 @@ local AA = Weapon:New{
     no_range_adjust    = true,
     fearaoe            = 450,
     fearid             = 701,
-	onlytargetcategory = "AIR",
+    onlytargetcategory = "AIR",
   },
 }
 
@@ -191,7 +191,7 @@ local AntiAirGunAA = AA:New{
 -- Cannon Base
 
 local Cannon = Weapon:New{
-  avoidFeature		 = false,
+  avoidFeature       = false,
   collisionSize      = 4,
   impulseFactor      = 0,
   rgbColor           = [[0.5 0.5 0.0]], -- TODO: check that this is overriden by ap colormap
@@ -281,8 +281,8 @@ local AutoCannon = Cannon:New{
   targetMoveError    = 0.1,
   tolerance          = 650,
   customparams = {
-	cegflare           = "XSMALL_MUZZLEFLASH",
-	flareonshot        = true,
+    cegflare           = "XSMALL_MUZZLEFLASH",
+    flareonshot        = true,
   },
 }
 
@@ -305,8 +305,8 @@ local AntiAirGun = Cannon:New{
   soundTrigger       = true,
   sprayAngle         = 400,
   customparams = {
-	cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
-	flareonshot        = true,
+    cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
+    flareonshot        = true,
   },
 }
 
@@ -321,7 +321,7 @@ local InfGun = Cannon:New(MediumHE):New{
   tolerance          = 5000, -- seems high!
   weaponVelocity     = 825,
   customparams = {
-	cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = "MEDIUM_MUZZLEFLASH",
   },
 }
 
@@ -343,7 +343,7 @@ local Howitzer = Cannon:New{
 -- Artillery - Mortars
 
 local Cannon = Weapon:New{
-  avoidFeature		 = false,
+  avoidFeature       = false,
   collisionSize      = 4,
   impulseFactor      = 0,
   rgbColor           = [[0.5 0.5 0.0]], -- TODO: check that this is overriden by ap colormap
@@ -364,7 +364,8 @@ local Mortar = Cannon:New{
   weaponVelocity     = 550,
   customparams = {
     armor_hit_side     = "top",
-	cegflare           = "MEDIUM_MUZZLEFLASH",
+    cegflare           = "MEDIUM_MUZZLEFLASH",
+    scriptanimation    = [[mortar]],
   },
 }
 

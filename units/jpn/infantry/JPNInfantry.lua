@@ -41,6 +41,10 @@ local JPN_Type99LMG = LMGInf:New(JPNInf):New{
 
 local JPN_Type92HMG = HMGInf:New(JPNInf):New{
 	name				= "Type 92 Heavy Machinegun",
+	script				= "Infantry.lua",
+	customparams = {
+		scriptanimation		= "mg",
+	},
 }
 
 local JPN_Type92HMG_Sandbag = SandbagMG:New{
@@ -72,7 +76,6 @@ local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 
 local JPN_Type4AT = ATLauncherInf:New(JPNInf):New{
 	name				= "Type 4 AT Rocket Launcher",
-	script				= "gbrpiat.cob",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "Type4AT",

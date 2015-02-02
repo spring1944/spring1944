@@ -141,6 +141,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local numRockets = 0
 		local numBarrels = 0
 		local numWheels = 0
+		local wheelSpeeds = {}
+		local tracks = {}
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -158,11 +160,18 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			-- Find the number of wheels
 			elseif pieceName:find("wheel") then
 				numWheels = numWheels + 1
+				local wheelInfo = Spring.GetUnitPieceInfo(unitID, pieceNum)
+				local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
+				wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
+			elseif pieceName:find("tracks") then
+				tracks[#tracks + 1] = pieceNum
 			end
 		end
 		info.numBarrels = numBarrels
 		info.numRockets = numRockets
 		info.numWheels = numWheels
+		info.wheelSpeeds = wheelSpeeds
+		info.tracks = tracks
 	end
 	
 	-- Remove aircraft land and repairlevel buttons
@@ -202,6 +211,7 @@ function gadget:GamePreload()
 		local reloadTimes = {}
 		local minRanges = {}
 		local flareOnShots = {}
+		local weaponAnimations = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
@@ -212,6 +222,7 @@ function gadget:GamePreload()
 			if weaponDef.type == "MissileLauncher" then
 				missileWeaponIDs[i] = true
 			end
+			weaponAnimations[i] = weaponDef.customParams.scriptanimation
 			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 		end
 		-- WeaponDef Level Info
@@ -221,7 +232,7 @@ function gadget:GamePreload()
 		info.burstLengths = burstLengths
 		info.burstRates = burstRates
 		info.minRanges = minRanges
-
+		info.weaponAnimations = weaponAnimations
 		-- UnitDef Level Info
 		info.facing = cp.facing or 0 -- default to front
 		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)
@@ -229,10 +240,11 @@ function gadget:GamePreload()
 		info.barrelRecoilSpeed = (tonumber(cp.barrelrecoilspeed) or 10)
 		info.barrelRecoilDist = (tonumber(cp.barrelrecoildist) or 5)
 		info.aaWeapon = (tonumber(cp.aaweapon) or nil)
-		info.wheelSpeed = math.rad(tonumber(cp.wheelspeed) or 100)
-		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
+		-- info.wheelSpeed = math.rad(tonumber(cp.wheelspeed) or 100)
+		-- info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General
 		info.numWeapons = #weapons
+		info.mainAnimation = cp.scriptanimation
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)

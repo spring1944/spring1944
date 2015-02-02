@@ -22,7 +22,6 @@ local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
 local ValidUnitID			= Spring.ValidUnitID
 -- Synced Ctrl
-local CallCOBScript			= Spring.CallCOBScript
 local DestroyUnit			= Spring.DestroyUnit
 local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
@@ -34,8 +33,8 @@ local MIN_DIST = 25
 local MINE_CLEAR_RADIUS = 200
 local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
 -- Variables
-local sweepers = {}
-
+local sweepers
+local clearCache
 
 local DelayCall = GG.Delay.DelayCall
 
@@ -79,7 +78,8 @@ function ClearMines(unitID, x, z)
 		local mineID = mines[i]
 		DelayCall(BlowMine, {mineID, unitID}, MINE_CLEAR_TIME * i * 30)
 	end
-	CallCOBScript(unitID, "LookForMines", 0, #mines * MINE_CLEAR_TIME * 1000)
+	--CallCOBScript(unitID, "LookForMines", 0, #mines * MINE_CLEAR_TIME * 1000)
+	Spring.UnitScript.CallAsUnit(unitID, clearCache[unitID])
 end
 
 --	CallIns
@@ -142,11 +142,20 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	if cp and cp.canclearmines then
 		Spring.InsertUnitCmdDesc(unitID, clearDesc)
+		
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		if env and env.StartClearMines then
+			clearCache[unitID] = env.StartClearMines
+		else
+			return
+		end
 	end
 end
 
 
 function gadget:Initialize()
+	sweepers = {}
+	clearCache = {}
 	-- Fake UnitCreated events for existing units. (for '/luarules reload')
 	local allUnits = Spring.GetAllUnits()
 	for i=1,#allUnits do

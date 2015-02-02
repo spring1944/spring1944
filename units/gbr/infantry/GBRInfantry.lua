@@ -98,6 +98,7 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	canManualFire		= true,
 	iconType			= "commando",
 	maxVelocity			= 1.8,
+	script				= "infantry.lua",
 	
 	buildDistance		= 50,
 	builder				= true,
@@ -107,9 +108,9 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	canRepair			= false,
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
-	maxDamageMul        = 2.8,
+	maxDamageMul		= 2.8,
 	minCloakDistance	= 100,
-  	weapons = {
+	weapons = {
 		[1] = { -- SMG
 			name				= "SilencedSTEN",
 		},

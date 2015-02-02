@@ -96,7 +96,34 @@ local Arisaka99 = RifleClass:New{
   soundStart         = [[JPN_Arisaka_Type99]],
 }
 
--- Sniper Implementations
+
+
+
+-- Sniper Rifle Base Class
+local SniperRifleClass = RifleClass:New{
+  accuracy           = 0,
+  explosionGenerator = [[custom:Bullet]],
+  movingAccuracy     = 1777,
+  range              = 1040,
+  reloadtime         = 10,
+  soundTrigger       = false,
+  tolerance          = 2000,
+  turret             = true,
+  weaponType         = [[LaserCannon]],
+  customparams = {
+    damagetype         = [[smallarm]],
+    fearaoe            = 90,
+    fearid             = 401,
+	scriptanimation    = [[sniper]],
+  },
+  damage = {
+    default              = 625,
+    infantry             = 1700,
+    sandbags             = 325,
+  },
+}
+
+-- Implementations
 
 -- SMLE No. 4 Mk. I (T) (GBR)
 local Enfield_T = SniperRifleClass:New{
@@ -145,7 +172,6 @@ return lowerkeys({
   BAR = BAR,
   MosinNagant = MosinNagant,
   PartisanMosinNagant = PartisanMosinNagant,
-  SVT = SVT,
   Mod91 = Mod91,
   Mod91_41 = Mod91_41,
   Arisaka99 = Arisaka99,
@@ -154,6 +180,7 @@ return lowerkeys({
   K98kScope = K98kScope,
   M1903Springfield = M1903Springfield,
   MosinNagantPU = MosinNagantPU,
+  SVT = SVT,
   Mod91Sniper = Mod91Sniper,
   Arisaka99Sniper = Arisaka99Sniper,
 })

@@ -96,6 +96,9 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 
 local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	name				= "RPG43",
+	customparams = {
+		scriptanimation		= "smg",
+	},
 	weapons = {
 		[1] = { -- AT Grenade
 			name				= "RPG43",
@@ -144,6 +147,7 @@ local RUS_PartisanRifle = RifleInf:New(Partisan):New{
 	
 	customParams = {
 		flagCapRate			= 0.005,
+		weapontoggle		= "ambush",
 	},
 	
 	weapons = {

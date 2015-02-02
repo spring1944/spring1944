@@ -30,7 +30,6 @@ local GetGroundHeight	    = Spring.GetGroundHeight
 
 
 -- Synced Ctrl
-local CallCOBScript			= Spring.CallCOBScript
 local DestroyUnit			= Spring.DestroyUnit
 local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
@@ -43,13 +42,16 @@ local CMD_CLEARPATH = GG.CustomCommands.GetCmdID("CMD_CLEARPATH")
 local STOP_DIST = 5
 local MIN_DIST = 20
 local WAYPOINT_DIST = 100
-local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
+local MINE_CLEAR_TIME = 3000 -- time in ms to clear single mine
 local gMaxUnits = Game.maxUnits
 -- Variables
 local clearers = {} -- clearers[ownerID] = {target={x,y,z},waypoint={wx,wy,wz},delta={dx,dz}, new, active, on_waypoint, done}
+local startClearCache = {}
+local stopClearCache = {}
+local isClearingCache = {}
 
 local DelayCall = GG.Delay.DelayCall
-
+local currentFrame
 
 local clearPathDesc = {
 	name	= "Clear Path",
@@ -61,31 +63,25 @@ local clearPathDesc = {
 }
 
 
-function gadget:GameFrame(f)
-	for unitID, clearer in pairs(clearers) do
-        if clearer.onWaypoint and not clearer.active and not clearer.done then
-            local wx, wz = clearer.waypoint[1], clearer.waypoint[3]
-            clearer.done = ClearWaypoint(unitID, wx, wz)
-        end
-	end
-end
-
-
 -- Callins
 
-function BlowMine(mineID, engineerID)
-    clearers[engineerID].active = false
-	if ValidUnitID(engineerID) and ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
-		local px, py, pz = GetUnitPosition(mineID)
-		DestroyUnit(mineID, false, true)
-		SpawnCEG("HE_Small", px, py, pz)
-		RemoveBuildingDecal(mineID)
+local function BlowMine(engineerID)
+	local mineID = clearers[engineerID].mineID
+	clearers[engineerID].active = false
+	if ValidUnitID(engineerID) and not clearers[engineerID].done then
+		Spring.UnitScript.CallAsUnit(unitID, stopClearCache[unitID])
+		if ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
+			local px, py, pz = GetUnitPosition(mineID)
+			DestroyUnit(mineID, false, true)
+			SpawnCEG("HE_Small", px, py, pz)
+			RemoveBuildingDecal(mineID)
+		end
 	end
 end
 
 -- Returns true if finished clearing
 
-function ClearWaypoint(unitID, x, z)
+local function ClearWaypoint(unitID, x, z)
 	local tmpNearbyUnits = GetUnitsInCylinder(x, z, MINE_CLEAR_RADIUS)
 	local mines = {}
     local obstacles = {}
@@ -107,12 +103,10 @@ function ClearWaypoint(unitID, x, z)
 
     
 	if #mines > 0 then
-        DelayCall(BlowMine, {mines[math.random(#mines)], unitID}, MINE_CLEAR_TIME * 30)
+		clearers[unitID].blowFrame = currentFrame + MINE_CLEAR_TIME
+		clearers[unitID].mineID = mines[math.random(#mines)]
         
-        -- Shortened on purpose from 1000 to 700 due to the unit getting stuck
-        -- occasionally
-        CallCOBScript(unitID, "LookForMines", 0, MINE_CLEAR_TIME * 700)
-        clearers[unitID].active = true
+        clearers[unitID].active = Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID], BlowMine, MINE_CLEAR_TIME)
         return false
     end
     
@@ -161,10 +155,13 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
             local px, py, pz = GetUnitPosition(unitID)
             
             if not clearers[unitID] then
-                clearers[unitID] = {target = {x, y, z}, waypoint={px, py, pz}, delta = {0.0, 0.0}, new = true, active = false, onWaypoint = false, done = true}
+                clearers[unitID] = {target = {x, y, z}, waypoint={px, py, pz}, delta = {0.0, 0.0}, new = true, active = false, done = true}
                 clearer = clearers[unitID]
             else
                 clearer = clearers[unitID]
+				if not Spring.UnitScript.CallAsUnit(unitID, isClearingCache[unitID]) then
+					clearer.active = false
+				end
                 if clearer.active then
                     return true, false
                 end
@@ -173,7 +170,6 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
                     currentTarget[1], currentTarget[2], currentTarget[3] = x, y, z
                     clearer.new = true
                     clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = px, py, pz
-                    clearer.onWaypoint = false
                     clearer.done = true
                 end
             end
@@ -182,7 +178,7 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
                 wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
                 distance = math.sqrt((wx - px)^2 + (wy - py)^2 + (wz - pz)^2)
                 if distance < MIN_DIST then
-                    clearer.onWaypoint = true
+					clearer.done = ClearWaypoint(unitID, wx, wz)
                 end
                 return true, false
             else
@@ -205,13 +201,13 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
                     wx = x
                     wz = z
                 else
+					clearers[unitID] = nil
                     return true, true
                 end
                 wy = GetGroundHeight(wx, wz)
                 SetUnitMoveGoal(unitID, wx, wy, wz, STOP_DIST)
                 clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = wx, wy, wz
                 clearer.done = false
-                clearer.onWaypoint = false
                 return true, false
             end
 		else
@@ -230,7 +226,23 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	if cp and cp.canclearmines then
 		Spring.InsertUnitCmdDesc(unitID, clearPathDesc)
+		
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		if env then
+			startClearCache[unitID] = env.StartClearMines
+			stopClearCache[unitID] = env.StopClearMines
+			isClearingCache[unitID] = env.IsClearing
+		else
+			return
+		end
 	end
+end
+
+function gadget:UnitDestroyed(unitID)
+	startClearCache[unitID] = nil
+	stopClearCache[unitID] = nil
+	isClearingCache[unitID] = nil
+	clearers[unitID] = nil
 end
 
 function gadget:Initialize()
@@ -243,6 +255,13 @@ function gadget:Initialize()
     Spring.AssignMouseCursor("Clear Path", "cursordemine", true, false)
 	Spring.SetCustomCommandDrawData(CMD_CLEARPATH, "Clear Path", {1,0.5,0,.8}, false)
 end
+
+function gadget:GameFrame(n)
+	currentFrame = n
+end
+
+
+
 
 else
 
