@@ -31,7 +31,7 @@ local SIG_STATE = 1
 local SIG_AIM = 2
 local SIG_PINNED = 4
 local SIG_FIRE = 8
-local SIG_RESTORE = 15
+local SIG_RESTORE = 14
 local SIG_MOVE = 16
 local SIG_FEAR = 32
 local SIG_ANIM = 128
@@ -369,12 +369,16 @@ local function UpdateSpeed()
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
-		if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-			Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
+		if #cmds >= 2 then
+			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
+				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
+					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
+				end
+				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
+				Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
+				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
+			end
 		end
-		local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-		Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 	end
 	currentSpeed = newSpeed
 	
@@ -415,8 +419,10 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 				end
 			end
 		end
-		if building ~= newBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, newBuilding and 1 or 0);
+		if newBuilding then
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1);
+		elseif not wantedBuilding then
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0);
 		end
 		standing = newStanding
 		aiming = newAiming
@@ -624,11 +630,13 @@ local function StartPinned()
 end
 
 local function StartBuilding()
+	-- Spring.Echo("started building")
 	wantedBuilding = true
 	StartThread(ResolvePose)
 end
 
 local function StopBuilding()
+	-- Spring.Echo("stopped building")
 	wantedBuilding = false
 	StartThread(ResolvePose)
 end
