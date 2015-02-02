@@ -3,7 +3,7 @@
 local torso = piece "torso"
 -- local pelvis = piece "pelvis"
 -- local gun = piece "gun"
-local ground = piece "ground"
+--local ground = piece "ground"
 local flare = piece "flare"
 
 -- local luparm = piece "luparm"
