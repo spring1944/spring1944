@@ -775,6 +775,7 @@ function RestoreAfterCover()
 	--Spring.Echo("restoring")
 	Signal(SIG_FEAR)
 	fear = 0
+	Spring.SetUnitRulesParam(unitID, "suppress", 0)
 	StopPinned()
 	Stand()
 end
