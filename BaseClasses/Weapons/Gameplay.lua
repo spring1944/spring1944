@@ -62,7 +62,7 @@ local OpticClass = Weapon:New{
   customparams = {
     binocs             = 1,
     damagetype         = "none",
-    targetcategory     = "NONE",
+    onlytargetcategory = "NONE",
   },
   damage = {
     default            = 0,

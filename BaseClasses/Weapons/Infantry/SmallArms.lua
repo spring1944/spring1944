@@ -148,7 +148,7 @@ local AAMG = Weapon:New{ -- should be used like ammo bases
   customparams = {
     no_range_adjust    = true,
     fearid             = 701,
-    targetCategory  = "AIR",
+	onlytargetCategory = "AIR",
   }
 }
 

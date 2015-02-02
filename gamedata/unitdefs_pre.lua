@@ -65,7 +65,7 @@ end
 
 Weapon = {
 	customParams = {
-		targetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 }
 function Weapon:New(newAttribs, concatName)

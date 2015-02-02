@@ -2,17 +2,17 @@
 local defFields = {
 	"name",
 	"description",
-	"buildCostMetal",
-	"buildPic",
-	"buildTime",
+	"buildcostmetal",
+	"buildpic",
+	"buildtime",
 	"side",
-	"objectName",
+	"objectname",
 }
 
 local units = {}
 
-local sortieInclude = VFS.Include("LuaRules/Configs/sortie_defs.lua")
-local squadInclude = VFS.Include("LuaRules/Configs/squad_defs.lua")
+local sortieInclude = lowerkeys(VFS.Include("LuaRules/Configs/sortie_defs.lua"))
+local squadInclude = lowerkeys(VFS.Include("LuaRules/Configs/squad_defs.lua"))
 
 local function generateFrom(defFile)
 	for unitName, unitData in pairs(defFile) do
