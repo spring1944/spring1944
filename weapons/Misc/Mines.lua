@@ -11,7 +11,7 @@ local APMine = MineClass:New{
   range              = 25,
   soundHitDry        = [[GEN_Explo_1]],
   customparams = {
-    targetcategory     = "MINETRIGGER",
+    onlytargetcategory     = "MINETRIGGER",
   },
   damage = {
     default            = 400,
@@ -27,7 +27,7 @@ local ATMine = MineClass:New{
     armor_hit_side     = [[top]],
     armor_penetration  = 100,
     damagetype         = [[shapedcharge]], -- overrides default
-	targetcategory     = AP.customparams.targetcategory,
+	onlytargetcategory     = AP.customparams.onlytargetcategory,
   },
   damage = {
     default            = 10000,
