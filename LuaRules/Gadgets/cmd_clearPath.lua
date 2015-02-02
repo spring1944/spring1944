@@ -30,7 +30,6 @@ local GetGroundHeight	    = Spring.GetGroundHeight
 
 
 -- Synced Ctrl
-local CallCOBScript			= Spring.CallCOBScript
 local DestroyUnit			= Spring.DestroyUnit
 local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
@@ -43,12 +42,13 @@ local CMD_CLEARPATH = GG.CustomCommands.GetCmdID("CMD_CLEARPATH")
 local STOP_DIST = 5
 local MIN_DIST = 20
 local WAYPOINT_DIST = 100
-local MINE_CLEAR_TIME = 3 * 30 -- time in frames to clear single mine
+local MINE_CLEAR_TIME = 3000 -- time in ms to clear single mine
 local gMaxUnits = Game.maxUnits
 -- Variables
 local clearers = {} -- clearers[ownerID] = {target={x,y,z},waypoint={wx,wy,wz},delta={dx,dz}, new, active, on_waypoint, done}
 local startClearCache = {}
 local stopClearCache = {}
+local isClearingCache = {}
 
 local DelayCall = GG.Delay.DelayCall
 local currentFrame
@@ -65,7 +65,8 @@ local clearPathDesc = {
 
 -- Callins
 
-local function BlowMine(engineerID, mineID)
+local function BlowMine(engineerID)
+	local mineID = clearers[engineerID].mineID
 	clearers[engineerID].active = false
 	if ValidUnitID(engineerID) and not clearers[engineerID].done then
 		Spring.UnitScript.CallAsUnit(unitID, stopClearCache[unitID])
@@ -81,7 +82,6 @@ end
 -- Returns true if finished clearing
 
 local function ClearWaypoint(unitID, x, z)
-	Spring.Echo("clearing")
 	local tmpNearbyUnits = GetUnitsInCylinder(x, z, MINE_CLEAR_RADIUS)
 	local mines = {}
     local obstacles = {}
@@ -106,11 +106,7 @@ local function ClearWaypoint(unitID, x, z)
 		clearers[unitID].blowFrame = currentFrame + MINE_CLEAR_TIME
 		clearers[unitID].mineID = mines[math.random(#mines)]
         
-        -- Shortened on purpose from 1000 to 700 due to the unit getting stuck
-        -- occasionally
-        --CallCOBScript(unitID, "LookForMines", 0, MINE_CLEAR_TIME * 700)
-		Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID])
-        clearers[unitID].active = true
+        clearers[unitID].active = Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID], BlowMine, MINE_CLEAR_TIME)
         return false
     end
     
@@ -163,10 +159,10 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
                 clearer = clearers[unitID]
             else
                 clearer = clearers[unitID]
+				if not Spring.UnitScript.CallAsUnit(unitID, isClearingCache[unitID]) then
+					clearer.active = false
+				end
                 if clearer.active then
-					if clearer.blowFrame < currentFrame then
-						BlowMine(unitID, clearer.mineID)
-					end
                     return true, false
                 end
                 local currentTarget = clearer.target
@@ -235,6 +231,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 		if env then
 			startClearCache[unitID] = env.StartClearMines
 			stopClearCache[unitID] = env.StopClearMines
+			isClearingCache[unitID] = env.IsClearing
 		else
 			return
 		end
@@ -244,6 +241,7 @@ end
 function gadget:UnitDestroyed(unitID)
 	startClearCache[unitID] = nil
 	stopClearCache[unitID] = nil
+	isClearingCache[unitID] = nil
 	clearers[unitID] = nil
 end
 

@@ -23,7 +23,7 @@ local flare = piece "flare"
 if not GG.lusHelper[unitDefID].animation then
 	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
 end
-local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities, customFunctions = unpack(GG.lusHelper[unitDefID].animation)
+local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(GG.lusHelper[unitDefID].animation)
 
 
 --Constants
@@ -34,7 +34,6 @@ local SIG_FIRE = 8
 local SIG_RESTORE = 15
 local SIG_MOVE = 16
 local SIG_FEAR = 32
-local SIG_PINNED = 64
 local SIG_ANIM = 128
 
 local STOP_AIM_DELAY = 2000
@@ -115,15 +114,11 @@ local function GetNewPoseID(poseName)
 	return variants[random(#variants)]
 end
 
-local function Delay(func, duration, mask, params)
+local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
 	SetSignalMask(mask)
 	Sleep(duration)
-	if params then
-		func(unpack(params))
-	else
-		func()
-	end
+	func(...)
 end
 
 local function WaitForStances()
@@ -383,7 +378,7 @@ local function UpdateSpeed()
 	end
 	currentSpeed = newSpeed
 	
-	if UnitDefs[unitDefID].isBuilder then
+	if isBuilder then
 		local origBuildSpeed = UnitDefs[unitDefID].buildSpeed
 		if fear > 0 then
 			newBuildSpeed = 0.000001
@@ -398,6 +393,7 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 	local success = PickPose(GetPoseName(newStanding, newAiming, newMoving, newPinned, newBuilding))
 	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, newBuilding, success)
 	if success then
+		Signal(SIG_STATE)
 		if not newAiming then
 			for _, tags in pairs(weaponsTags) do
 				if tags.weaponPiece then
@@ -578,7 +574,7 @@ local function ResolvePose(isFire)
 	inTransition = false
 end
 
-function StopAiming()
+local function StopAiming()
 	--Spring.Echo("stopaiming")
 	wantedAiming = false
 	StartThread(ResolvePose)
@@ -609,7 +605,7 @@ local function Drop()
 	StartThread(ResolvePose)
 end
 
-function StartAiming(weaponNum)
+local function StartAiming(weaponNum)
 	--Spring.Echo("startaiming")
 	wantedAiming = weaponNum
 	StartThread(ResolvePose)
@@ -808,19 +804,40 @@ function ToggleWeapon(num, isEnabled)
 	weaponEnabled[num] = isEnabled
 end
 
-function script.StartBuilding(buildheading, pitch)
-	if CanBuild() then
-		wantedHeading = buildheading
-		wantedPitch = pitch
-		StartBuilding()
+if isBuilder then
+	function script.StartBuilding(buildheading, pitch)
+		if CanBuild() then
+			wantedHeading = buildheading
+			wantedPitch = pitch
+			StartBuilding()
+		end
+	end
+	
+	function script.StopBuilding()
+		StopBuilding()
 	end
 end
 
-function script.StopBuilding()
-	StopBuilding()
+if UnitDefs[unitDefID].customParams.canclearmines then
+	
+	function StartClearMines(blowFunc, blowDelay)
+		if CanFire("engineer") then
+			StartThread(Delay, blowFunc, blowDelay, SIG_STATE, unitID)
+			StartThread(Delay, StopAiming, blowDelay, 0)
+			return true
+		end
+		StartAiming("engineer")
+		return false
+	end
+	
+	function IsClearing()
+		return CanFire("engineer")
+	end
+	
+	function StopClearMines()
+		if CanFire("engineer") then
+			StopAiming()
+		end
+	end
 end
 
-
-for name, func in pairs(customFunctions) do
-	_G[name] = func
-end

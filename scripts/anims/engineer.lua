@@ -19,7 +19,6 @@ local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 
 local detector = piece "detector"
-Spring.Echo("bla", detector)
 
 local MUZZLEFLASH = 1024 + 7
 
@@ -75,9 +74,19 @@ local anims = {
 				wait = {5,6},
 			},
 			
-	-- clear_mines = {
-		
-	-- }
+	clear_mines = {
+				{ --frame 1
+					turns = { -- Turns
+						{torso, y_axis, math.rad(-50), math.rad(200)},
+					},
+				},
+				{ --frame 2
+					turns = {
+						{torso, y_axis, math.rad(50), math.rad(200)},
+					},
+				},
+				wait = {16,18},
+			},
 } 
 
 local stances = {
@@ -158,10 +167,30 @@ local stances = {
 				},
 	clear_mines = {
 					turns = {
+						{head, x_axis, math.rad(20)},
+						{head, y_axis, 0},
+						{head, z_axis, 0},
 
+						{ruparm, x_axis, math.rad(-30)},
+						{ruparm, y_axis, math.rad(20)},
+						{ruparm, z_axis, 0},
+
+						{luparm, x_axis, math.rad(-35)},
+						{luparm, y_axis, math.rad(-35)},
+						{luparm, z_axis, 0},
+						
+						{rloarm, x_axis, math.rad(-30)},
+						{rloarm, y_axis, math.rad(-20)},
+						{rloarm, z_axis, 0},
+
+						{lloarm, x_axis, math.rad(-35)},
+						{lloarm, y_axis, 0},
+						{lloarm, z_axis, 0},
+						
+						{torso, x_axis, math.rad(10)},
+						{torso, z_axis, 0},	
 					},
-					moves = {
-					},
+					anim = anims.clear_mines,
 				},
 }
 
@@ -178,13 +207,4 @@ local variants = {
 	stand_aim_engineer = { stances.clear_mines},
 }
 
-local customFunctions = {
-	StartClearMines = (function ()
-		StartAiming("engineer")
-	end),
-	StopClearMines = (function ()
-		StopAiming()
-	end),
-}
-
-return tags, variants, keyframes, keyframeDelays, customFunctions
+return tags, variants, keyframes, keyframeDelays

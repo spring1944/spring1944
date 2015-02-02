@@ -136,7 +136,6 @@ local weaponsMap = {}
 local weaponsPriorities = {}
 
 local mainAnim = GG.lusHelper[unitDefID].mainAnimation
-local customFunctions = {}
 
 local function CreateMainPoses(mainVariants)
 	for name, mainVariant in pairs(mainVariants) do
@@ -145,13 +144,9 @@ local function CreateMainPoses(mainVariants)
 end
 
 if mainAnim then
-	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays, mainCustomFunctions = include("anims/" .. mainAnim .. ".lua")
+	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/" .. mainAnim .. ".lua")
 	CreateMainPoses(mainVariants)
-	if mainCustomFunctions then
-		for name, func in pairs(mainCustomFunctions) do
-			customFunctions[name] = func
-		end
-	end
+
 	weaponsTags[mainAnim] = mainTags
 	weaponsKeyFrames[mainAnim] = mainKeyFrames or {}
 	weaponsKeyFrameDelays[mainAnim] = mainKeyFrameDelays or {}
@@ -420,4 +415,4 @@ for weaponAnim, tags in pairs(weaponsTags) do
 	end
 end
 
-return poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities, customFunctions
+return poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities
