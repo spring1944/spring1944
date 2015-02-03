@@ -29,6 +29,7 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxReverseVelocity	= 2.25,
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
+	script				= "Vehicle.lua",
 	turnRate			= 440,
 	
 	customParams = {

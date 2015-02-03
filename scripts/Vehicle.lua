@@ -54,10 +54,38 @@ local function Delay(func, duration, mask, ...)
 	func(...)
 end
 
+local function DamageSmoke(smokePieces)
+	-- emit some smoke if the unit is damaged
+	-- check if the unit has finished building
+	local n = #smokePieces
+	_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	while (buildProgress < 1) do
+		Sleep(150)
+		_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	end
+	-- random delay between smoke start
+	timeDelay = math.random(1, 5)*33
+	Sleep(timeDelay)
+	while true do
+		curHealth, maxHealth = Spring.GetUnitHealth(unitID)
+		healthState = curHealth / maxHealth
+		if healthState < 0.66 then
+			EmitSfx(smokePieces[math.random(1,n)], SFX.BLACK_SMOKE)
+			-- the less HP we have left, the more often the smoke
+			timeDelay = 2000 * healthState
+			-- no sence to make a delay shorter than a game frame
+			if timeDelay < 33 then
+				timeDelay = 33
+			end
+		else
+			timeDelay = 2000
+		end
+		Sleep(timeDelay)
+	end
+end
 
 function script.Create()
 	local info = GG.lusHelper[unitDefID]
-	
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
@@ -79,7 +107,9 @@ function script.Create()
 	if turret then
 		Turn(turret, y_axis, 0)
 	end
-	
+	if info.smokePieces then
+		StartThread(DamageSmoke, info.smokePieces)
+	end
 end
 
 local function SpinWheels()

@@ -143,6 +143,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local numWheels = 0
 		local wheelSpeeds = {}
 		local tracks = {}
+		local smokePieces = {}
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -165,6 +166,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 				wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
 			elseif pieceName:find("tracks") then
 				tracks[#tracks + 1] = pieceNum
+			elseif pieceName:find("base") or pieceName:find("mantlet") or pieceName:find("turret") then
+				smokePieces[#smokePieces + 1] = pieceNum
 			end
 		end
 		info.numBarrels = numBarrels
@@ -172,6 +175,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		info.numWheels = numWheels
 		info.wheelSpeeds = wheelSpeeds
 		info.tracks = tracks
+		info.smokePieces = smokePieces
 	end
 	
 	-- Remove aircraft land and repairlevel buttons

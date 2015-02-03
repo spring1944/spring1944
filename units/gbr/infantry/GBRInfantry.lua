@@ -110,6 +110,11 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	cloakCostMoving		= 0,
 	maxDamageMul		= 2.8,
 	minCloakDistance	= 100,
+	customParams		= {
+		maxammo				= 2,
+		weaponcost			= 50,
+		weaponswithammo		= 0,
+	},
 	weapons = {
 		[1] = { -- SMG
 			name				= "SilencedSTEN",

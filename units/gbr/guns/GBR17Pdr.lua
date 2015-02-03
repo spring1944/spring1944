@@ -1,7 +1,6 @@
 local GBR_17Pdr_Truck = ATGunTractor:New{
 	name					= "Towed Q.F. 17 Pounder",
 	corpse					= "gbrmorrisquad_destroyed",
-	script					= "Vehicle.lua",
 	trackOffset				= 10,
 	trackWidth				= 18,
 }
