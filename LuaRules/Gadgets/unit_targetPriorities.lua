@@ -33,8 +33,12 @@ function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerW
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-	if lusManualTargetCache[unitID] and cmdID == CMD.ATTACK then
-		Spring.UnitScript.CallAsUnit(unitID, lusManualTargetCache[unitID], cmdParams)
+	if lusManualTargetCache[unitID] then
+		if cmdID == CMD.ATTACK then
+			Spring.UnitScript.CallAsUnit(unitID, lusManualTargetCache[unitID], cmdParams)
+		elseif cmdID == CMD.STOP then
+			Spring.UnitScript.CallAsUnit(unitID, lusManualTargetCache[unitID])
+		end
 	end
 	return true
 end
