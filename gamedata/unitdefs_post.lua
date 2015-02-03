@@ -12,7 +12,7 @@ VFS.Include("gamedata/unitdefs_autogen.lua")
 
 -- have to implement squad file preloading here, because it's needed for transport stuff
 local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
-
+local morphDefs = VFS.Include("luarules/configs/morph_defs.lua")
 
 local GMBuildOptions = {}
 local GM_UD
@@ -313,6 +313,20 @@ for name, ud in pairs(UnitDefs) do
 			Spring.Echo("Squad unit not found in squad def files: "..squadName)
 		end
 	end
+	
+	-- Adding ammo to trucks
+	if morphDefs[name] and not cp.weaponswithammo then
+		local intoName = (morphDefs[name][1] or morphDefs[name]).into
+		local intoCustomParams = UnitDefs[intoName].customparams
+		if intoCustomParams and intoCustomParams.weaponswithammo then
+			cp.weaponswithammo = 0
+			cp.maxammo = intoCustomParams.maxammo
+			cp.lowammolevel = intoCustomParams.lowammolevel
+			cp.weaponcost = intoCustomParams.weaponcost
+		end
+	end
+	
+	
 	-- sounds
 	local soundCat = ud.customparams.soundcategory
 	if soundCat then
