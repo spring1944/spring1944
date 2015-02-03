@@ -12,7 +12,7 @@ local ATLClass = Weapon:New{
 	turret             = true,
 	customparams = {
 		damagetype         = [[shapedcharge]],
-		cegflare           = "dirt_backblast",
+		cegflare           = "XSMALL_MUZZLEFLASH",
 		scriptanimation    = "atlauncher",
 		badTargetCategory  = "BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED",
 	},

@@ -30,6 +30,9 @@ local Infantry = Unit:New{
 	upright				= true,
 	
 	customParams = {
+		cegpiece = {
+			[1] = "flare",
+		},
 		feartarget			= true,
 		soundcategory 		= "<SIDE>/Infantry",
 	},
@@ -40,12 +43,6 @@ local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
 	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:RIFLE_MUZZLEFLASH",
-		},
-	},
 	customParams = {
 		flagcaprate			= 1,
 	},
@@ -64,12 +61,6 @@ local SMGInf = Infantry:New{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
 	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:SMG_MUZZLEFLASH",
-		},
-	},
 	customParams = {
 		flagcaprate			= 1,
 	},
@@ -89,14 +80,6 @@ local LMGInf = Infantry:New{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
 	buildCostMetal		= 200, -- TODO: needed?
-	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[7] = "custom:MG_SHELLCASINGS",
-			[8] = "custom:SMG_MUZZLEFLASH",
-		},
-	},
 	
 	weapons = {
 		[1] = { -- Rifle
@@ -130,16 +113,8 @@ local SniperInf = Infantry:New{
 	decloakOnFire		= true,
 	minCloakDistance	= 220,
 	
-	
 	customParams = {
 		soundcategory 		= "<SIDE>/Infantry/Sniper",
-	},
-	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:RIFLE_MUZZLEFLASH",
-		},
 	},
 	
 	weapons = {
@@ -158,10 +133,11 @@ local ObservInf = Infantry:New{
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 160,
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:PISTOL_MUZZLEFLASH",
+	
+	customParams = {
+		cegpiece = {
+			[1] = false,   -- override flare in base for binocs
+			[2] = "flare", -- pistol
 		},
 	},
 	
@@ -181,14 +157,15 @@ local MedMortarInf = Infantry:New{
 	buildCostMetal		= 300, -- TODO: needed?
 	maxDamage			= 200, -- default to be overwritten
 	maxVelocity			= 1.25,
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:MORTAR_MUZZLEFLASH",
-		},
-	},
+
 	customParams = {
 		canareaattack		= true,
+		
+		cegpiece = {
+			[1] = "flare",
+			[2] = "flare",
+		},
+		
 		maxammo				= 10,
 		weaponcost			= 15, -- TODO: make this a weapon tag
 		weaponswithammo		= 2, -- TODO: then this can be auto-detected
@@ -212,17 +189,13 @@ local FlameInf = Infantry:New{
 	buildCostMetal		= 300, -- TODO: needed?
 	explodeAs			= "Small_Explosion",
 	maxVelocity			= 1,
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:SMG_MUZZLEFLASH",
-		},
-	},
+
 	customParams = {
 		maxammo				= 5,
 		weaponcost			= 4, -- TODO: make this a weapon tag
 		weaponswithammo		= 1, -- TODO: then this can be auto-detected
 	},
+
 	weapons = {
 		[1] = { -- Flamethrower
 			maxAngleDif			= 170,
@@ -235,13 +208,12 @@ local ATLauncherInf = Infantry:New{
 	description			= "Anti-Tank Infantry",
 	iconType			= "antitank",
 	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[7] = "custom:XSMALL_MUZZLEFLASH",
-			[8] = "custom:XSMALL_MUZZLEDUST",
+	customParams = {
+		cegpiece = {
+			[1] = "backblast",
 		},
 	},
+	
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,

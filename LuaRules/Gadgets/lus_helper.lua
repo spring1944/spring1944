@@ -144,6 +144,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local wheelSpeeds = {}
 		local tracks = {}
 		local smokePieces = {}
+		local cegPieces = {}
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -166,16 +167,24 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 				wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
 			elseif pieceName:find("tracks") then
 				tracks[#tracks + 1] = pieceNum
-			elseif pieceName:find("base") or pieceName:find("mantlet") or pieceName:find("turret") then
+			elseif pieceName:find("base") or pieceName:find("mantlet") or pieceName:find("turret") or pieceName:find("exhaust") then
 				smokePieces[#smokePieces + 1] = pieceNum
 			end
 		end
+		
+		if cp.cegpiece then
+			for weaponNum, pieceName in pairs(table.unserialize(cp.cegpiece)) do
+				cegPieces[weaponNum] = pieceMap[pieceName]
+			end
+		end
+		
 		info.numBarrels = numBarrels
 		info.numRockets = numRockets
 		info.numWheels = numWheels
 		info.wheelSpeeds = wheelSpeeds
 		info.tracks = tracks
 		info.smokePieces = smokePieces
+		info.cegPieces = cegPieces
 	end
 	
 	-- Remove aircraft land and repairlevel buttons
@@ -186,13 +195,13 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
-	elseif UnitDefs[unitDefID].customParams.mother then
+	elseif cp.mother then
 		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
-	elseif UnitDefs[unitDefID].customParams.child then
+	elseif cp.child then
 		local toRemove = {CMD.MOVE_STATE}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
@@ -216,6 +225,7 @@ function gadget:GamePreload()
 		local minRanges = {}
 		local flareOnShots = {}
 		local weaponAnimations = {}
+		local weaponCEGs = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
@@ -228,6 +238,7 @@ function gadget:GamePreload()
 			end
 			weaponAnimations[i] = weaponDef.customParams.scriptanimation
 			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
+			weaponCEGs[i] = weaponDef.customParams.cegflare
 		end
 		-- WeaponDef Level Info
 		info.missileWeaponIDs = missileWeaponIDs
@@ -237,6 +248,7 @@ function gadget:GamePreload()
 		info.burstRates = burstRates
 		info.minRanges = minRanges
 		info.weaponAnimations = weaponAnimations
+		info.weaponCEGs = weaponCEGs
 		-- UnitDef Level Info
 		info.facing = cp.facing or 0 -- default to front
 		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)

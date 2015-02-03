@@ -149,9 +149,7 @@ local stances = {
 						{ruparm , x_axis, math.rad(-85)},
 						{luparm , x_axis, math.rad(-145)},
 					},
-					emit = {
-						{flare, MUZZLEFLASH}
-					},
+					emit = true,
 	},
 }
 

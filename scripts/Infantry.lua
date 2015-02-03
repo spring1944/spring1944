@@ -88,7 +88,7 @@ local currentHeading
 local wantedHeading
 local wantedPitch
 local firing
-
+local lastShot
 --STORED VARS
 local currentSpeed
 
@@ -206,10 +206,11 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 		end
 		Sleep(duration)
 		if emit then
-			for _, params in pairs(emit) do
-				local emitPiece, effect = params[1], params[2]
-				if emitPiece then
-					EmitSfx(emitPiece, effect)
+			local ceg = GG.lusHelper[unitDefID].weaponCEGs[lastShot]
+			if ceg then
+				local cegPiece = GG.lusHelper[unitDefID].cegPieces[lastShot]
+				if cegPiece then
+					Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
 				end
 			end
 		end
@@ -488,7 +489,7 @@ local function IsWantedPose()
 	return wanted
 end
 
-local function NextPose(isFire)
+local function NextPose()
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
 	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned, wantedBuilding)
 	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned, targetBuilding)
@@ -746,6 +747,7 @@ end
 function script.Shot(num)
 	local weaponClass = weaponsMap[num]
 	local tags = weaponsTags[weaponClass]
+	lastShot = num
 	if not tags.aimOnLoaded then
 		StartThread(ResolvePose, true)
 	end

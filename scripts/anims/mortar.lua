@@ -272,9 +272,7 @@ local stances = {
 						
 						{torso, y_axis, math.rad(-40)},
 					},
-					emit = {
-						{flare, MUZZLEFLASH}
-					},
+					emit = true,
 	},
 	kf_stand_fire_2 = {
 		--delay

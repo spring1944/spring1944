@@ -350,6 +350,7 @@ function script.Shot(weaponNum)
 	if IsMainGun(weaponNum) and barrel and recoilDistance then
 		StartThread(Recoil)
 	end
+	Spring.SpawnCEG("SMALL_MUZZLEFLASH", Spring.GetUnitPiecePosDir(unitID, flare))
 end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)

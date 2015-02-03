@@ -203,16 +203,10 @@ local stances = {
 					pitchTurn = {torso, x_axis, math.rad(-10), -0.5},
 				},
 	kf_stand_fire = {
-				emit = {
-					{backblast, MUZZLEFLASH},
-					{backblast, MUZZLEDUST},
-				},
+				emit = true,
 	},
 	kf_prone_fire = {
-				emit = {
-					{backblast, MUZZLEFLASH},
-					{backblast, MUZZLEDUST},
-				},
+				emit = true,
 	},
 }
 

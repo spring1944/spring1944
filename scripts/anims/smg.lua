@@ -237,27 +237,21 @@ local stances = {
 						{ruparm , x_axis, math.rad(-40)},
 						{luparm , x_axis, math.rad(-70)},
 					},
-					emit = {
-						{flare, MUZZLEFLASH}
-					},
+					emit = true,
 	},
 	kf_run_fire = {
 					turns = {
 						{ruparm , x_axis, math.rad(75)},
 						{luparm , x_axis, math.rad(-65)},
 					},
-					emit = {
-						{flare, MUZZLEFLASH}
-					},
+					emit = true,
 	},
 	kf_prone_fire = {
 					turns = {
 						{ruparm , x_axis, math.rad(-85)},
 						{luparm , x_axis, math.rad(-145)},
 					},
-					emit = {
-						{flare, MUZZLEFLASH}
-					},
+					emit = true,
 	},
 }
 
