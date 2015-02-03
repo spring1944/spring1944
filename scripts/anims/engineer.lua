@@ -20,8 +20,6 @@ local rfoot = piece "rfoot"
 
 local detector = piece "detector"
 
-local MUZZLEFLASH = 1024 + 7
-
 local tags = {
 	canProneFire = false,
 	canStandFire = true,

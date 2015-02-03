@@ -225,9 +225,15 @@ local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
 }
 
-local ATRifleInf = ATLauncherInf:New{
+local ATRifleInf = Infantry:New{
 	description			= "Long Range Light Anti-Tank",
 	icontype			= "rusptrd", -- TODO: atm italian solothurn has its own icon, consolidate
+	
+	weapons = {
+		[1] = { -- AT Launcher
+			maxAngleDif			= 170,
+		},
+	},	
 }
 
 -- Engineers --

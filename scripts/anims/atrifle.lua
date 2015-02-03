@@ -19,8 +19,6 @@ local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 
-local MUZZLEFLASH = 1024 + 8
-
 local tags = {
 	canProneFire = true,
 	canStandFire = false,

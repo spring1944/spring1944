@@ -20,9 +20,6 @@ local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 local backblast = piece "backblast"
 
-local MUZZLEFLASH = 1024 + 6
-local MUZZLEDUST = 1024 + 7
-
 local tags = {
 	canProneFire = true,
 	canStandFire = true,
