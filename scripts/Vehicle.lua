@@ -70,7 +70,7 @@ local function DamageSmoke(smokePieces)
 		curHealth, maxHealth = Spring.GetUnitHealth(unitID)
 		healthState = curHealth / maxHealth
 		if healthState < 0.66 then
-			EmitSfx(smokePieces[math.random(1,n)], SFX.BLACK_SMOKE)
+			EmitSfx(smokePieces[math.random(1,n)], SFX.WHITE_SMOKE)
 			-- the less HP we have left, the more often the smoke
 			timeDelay = 2000 * healthState
 			-- no sence to make a delay shorter than a game frame
@@ -350,7 +350,11 @@ function script.Shot(weaponNum)
 	if IsMainGun(weaponNum) and barrel and recoilDistance then
 		StartThread(Recoil)
 	end
-	Spring.SpawnCEG("SMALL_MUZZLEFLASH", Spring.GetUnitPiecePosDir(unitID, flare))
+	local ceg = GG.lusHelper[unitDefID].weaponCEGs[weaponNum]
+	if ceg then
+		local cegPiece = IsMainGun(weaponNum) and flare or coaxflare
+		Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
+	end
 end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)

@@ -72,8 +72,7 @@ end
 GG.SpawnDecal = SpawnDecal
 
 function EmitSfxName(unitID, pieceNum, effectName) -- currently unused
-	local x,y,z,dx,dy,dz = GetUnitPiecePosDir(unitID, pieceNum)
-	SpawnCEG(effectName, x,y,z, dx, dy, dz)
+	SpawnCEG(effectName, GetUnitPiecePosDir(unitID, pieceNum))
 end
 GG.EmitSfxName = EmitSfxName
 

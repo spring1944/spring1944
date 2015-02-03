@@ -53,7 +53,7 @@ local FEAR_PINNED = 20
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
 
-local isBuilder = UnitDefs[unitDefID].isBuilder
+local isBuilder = UnitDef.isBuilder
 
 --CURRENT UNIT STATE
 local standing
@@ -210,7 +210,7 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 			if ceg then
 				local cegPiece = GG.lusHelper[unitDefID].cegPieces[lastShot]
 				if cegPiece then
-					Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
+					GG.EmitSfxName(unitID, cegPiece, ceg)
 				end
 			end
 		end
@@ -356,7 +356,7 @@ end
 
 
 local function UpdateSpeed()
-	local origSpeed = UnitDefs[unitDefID].speed
+	local origSpeed = UnitDef.speed
 	local newSpeed = origSpeed
 	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
 		newSpeed = 0
@@ -384,7 +384,7 @@ local function UpdateSpeed()
 	currentSpeed = newSpeed
 	
 	if isBuilder then
-		local origBuildSpeed = UnitDefs[unitDefID].buildSpeed
+		local origBuildSpeed = UnitDef.buildSpeed
 		if fear > 0 then
 			newBuildSpeed = 0.000001
 		else
@@ -665,7 +665,7 @@ function script.Create()
 	currentPitch = nil
 	currentHeading = nil
 	firing = false
-	currentSpeed = UnitDefs[unitDefID].speed
+	currentSpeed = UnitDef.speed
 	UpdatePose(standing, aiming, moving, pinned, building)
 	for i=1,#weaponsMap do
 		weaponEnabled[i] = true
@@ -829,7 +829,7 @@ if isBuilder then
 	end
 end
 
-if UnitDefs[unitDefID].customParams.canclearmines then
+if UnitDef.customParams.canclearmines then
 	
 	function StartClearMines(blowFunc, blowDelay)
 		if CanFire("engineer") then
