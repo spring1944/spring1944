@@ -314,14 +314,28 @@ end
 
 
 function script.Killed(recentDamage, maxHealth)
-
-	if recentDamage <= maxHealth then
-		--normal kill
-	else
-		--overkill
+	local corpse = 1
+	for wheelPiece, _ in pairs(GG.lusHelper[unitDefID].wheelSpeeds) do
+		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
+	end
+	if recentDamage > maxHealth then -- Overkill
+		Explode(base, SFX.SHATTER)
+		if turret then
+			Explode(turret, SFX.FIRE + SFX.FALL + SFX.EXPLODE_ON_HIT + SFX.SMOKE)
+		end
+		corpse = 2
+	end
+	if recentDamage > 10 * maxHealth then -- Hyperkill
+		if barrel then
+			Explode(barrel, SFX.SHATTER)
+		end
+		if mantlet then
+			Explode(mantlet, SFX.SHATTER)
+		end
+		corpse = 3
 	end
 	
-	return 1
+	return math.min(GG.lusHelper[unitDefID].numCorpses - 1, corpse)
 end
 
 local function Recoil()

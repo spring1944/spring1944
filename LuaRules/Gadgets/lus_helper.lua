@@ -211,6 +211,9 @@ end
 
 function gadget:GamePreload()
 	-- Parse UnitDef Data
+	-- for featureName, _ in pairs(FeatureDefNames) do
+		-- Spring.Echo(featureName)
+	-- end
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local info = {}
 		local cp = unitDef.customParams
@@ -249,6 +252,17 @@ function gadget:GamePreload()
 		info.weaponAnimations = weaponAnimations
 		info.weaponCEGs = weaponCEGs
 		-- UnitDef Level Info
+		local corpse = FeatureDefNames[unitDef.wreckName:lower()]
+		info.numCorpses = 0
+		if corpse then
+			corpse = corpse.id
+			while FeatureDefs[corpse] do
+				info.numCorpses = info.numCorpses + 1
+				local corpseDef = FeatureDefs[corpse]
+				corpse = corpseDef.deathFeatureID
+			end
+		end
+		
 		info.facing = cp.facing or 0 -- default to front
 		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)
 		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 60)
