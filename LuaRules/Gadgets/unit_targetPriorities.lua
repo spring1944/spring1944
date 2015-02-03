@@ -19,6 +19,9 @@ local lusPriorityCache = {}
 local lusManualTargetCache = {}
 local unitDefIDsPassed = {}
 
+function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
+	return true
+end
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	if lusPriorityCache[unitID] then

@@ -166,6 +166,9 @@ local function StopAiming(weaponNum)
 	end
 end
 
+local function IsMainGun(weaponNum)
+	return weaponNum <= GG.lusHelper[unitDefID].weaponsWithAmmo
+end
 
 local function GetHeadingToTarget(target)
 	local tx, ty, tz
@@ -219,7 +222,8 @@ local function ResolveDirection()
 				break
 			end
 		end
-		if dir[1] and weaponPriorities[weaponNum] < topPriority then
+		if (not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] and
+				weaponPriorities[weaponNum] < topPriority then
 			topDirection = dir
 			topPriority = weaponPriorities[weaponNum]
 			prioritisedWeapon = weaponNum
@@ -254,9 +258,7 @@ local function IsAimed(weaponNum)
 	return false
 end
 
-local function IsMainGun(weaponNum)
-	return weaponNum <= GG.lusHelper[unitDefID].weaponsWithAmmo
-end
+
 
 local function CanFire(weaponNum)
 	if not IsAimed(weaponNum) then
@@ -297,6 +299,13 @@ end
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	Signal(SIG_AIM[weaponNum])
+	if weaponNum > 3 then
+		return false
+	end
+	-- if IsMainGun(weaponNum) and Spring.GetUnitRulesParam(unitID, "ammo") == 0 then
+		-- return false
+	-- end
+	
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = heading, pitch
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
 	StartThread(ResolveDirection)
