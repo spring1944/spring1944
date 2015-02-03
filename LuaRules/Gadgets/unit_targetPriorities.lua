@@ -19,10 +19,6 @@ local lusPriorityCache = {}
 local lusManualTargetCache = {}
 local unitDefIDsPassed = {}
 
--- function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
-	-- Spring.Echo("check", attackerWeaponNum, WeaponDefs[attackerWeaponDefID].name)
-	-- return true
--- end
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	if lusPriorityCache[unitID] then
@@ -54,6 +50,7 @@ function gadget:UnitCreated(unitID, unitDefID)
 						Script.SetWatchWeapon(weapon.weaponDef, true)
 					end
 				end
+				unitDefIDsPassed[unitDefID] = true
 			end
 		end
 		if env.ManualTarget then

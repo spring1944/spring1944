@@ -1,34 +1,51 @@
 local flare = piece "flare"
+local coaxflare = piece "coaxflare"
 local turret = piece "turret"
 local mantlet = piece "mantlet"
+local barrel = piece "barrel"
+local base = piece "base"
 
 local headingPiece = turret or mantlet
 
-local SIG_MOVE = 1
-local SIG_AIM = {}
+--Localisations
+local PI = math.pi
+local TAU = 2 * PI
+local abs = math.abs
+local rad = math.rad
+local atan2 = math.atan2
+
+-- Should be fetched from OO defs when time comes
+local turretTraverseSpeed = rad(25)
+local turretElevateSpeed = rad(17)
+local recoilDistance = 2.4
+local recoilReturnSpeed = 10
+local rockSpeedFactor = rad(50)
+local rockRestoreSpeed = rad(20)
 
 -- Aesthetics
 local wheelSpeed
 local currentTrack
+local lastShot
 
 -- Logic
+local SIG_MOVE = 1
+local SIG_AIM = {}
+
 local wantedDirection
 local weaponPriorities
 local manualTarget
 local prioritisedWeapon
+
 -- Constants
 local WHEEL_CHECK_DELAY = 990
 local TRACK_SWAP_DELAY = 99
 local STOP_AIM_DELAY = 2000
 
+local RECOIL_DELAY = 198
+
 local WHEEL_ACCELERATION_FACTOR = 3
 
 local REAIM_THRESHOLD = 0.15
-
-local PI = math.pi
-local TAU = 2 * PI
-local abs = math.abs
-local atan2 = math.atan2
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -179,8 +196,8 @@ local function ResolveDirection()
 		end
 	end
 	if topDirection then
-		Turn(headingPiece, y_axis, topDirection[1], math.rad(25))
-		Turn(mantlet, x_axis, -topDirection[2], math.rad(14))
+		Turn(headingPiece, y_axis, topDirection[1], turretTraverseSpeed)
+		Turn(mantlet, x_axis, -topDirection[2], turretElevateSpeed)
 	end
 end
 
@@ -207,11 +224,15 @@ local function IsAimed(weaponNum)
 	return false
 end
 
+local function IsMainGun(weaponNum)
+	return weaponNum <= GG.lusHelper[unitDefID].weaponsWithAmmo
+end
+
 local function CanFire(weaponNum)
 	if not IsAimed(weaponNum) then
 		return false
 	end
-	if weaponNum <= GG.lusHelper[unitDefID].weaponsWithAmmo then
+	if IsMainGun(weaponNum) then
 		for i = 1,GG.lusHelper[unitDefID].weaponsWithAmmo do
 			if i ~= weaponNum then
 				local _, loaded = Spring.GetUnitWeaponState(unitID, i)
@@ -228,7 +249,11 @@ local function CanFire(weaponNum)
 end
 
 function script.QueryWeapon(weaponNum)
-	return flare
+	if IsMainGun(weaponNum) then
+		return flare
+	else
+		return coaxflare or flare
+	end
 end
 
 function script.AimFromWeapon(weaponNum)
@@ -260,14 +285,45 @@ function script.Killed(recentDamage, maxHealth)
 	return 1
 end
 
--- function script.Shot(weaponNum)
--- end
+local function Recoil()
+	Move(barrel, z_axis, -recoilDistance)
+	Sleep(RECOIL_DELAY)
+	Move(barrel, z_axis, 0, recoilReturnSpeed)
+end
+
+local function Rock(anglex, anglez)
+	-- For some reaosn they are switched
+	anglex, anglez = anglez, anglex
+	
+	if IsMainGun(lastShot) then
+		local rockx = rad(anglex) * 2
+		local rockz = -rad(anglez) * 2
+		local speedx = abs(rockx) * 20
+		local speedz = abs(rockz) * 20
+		Turn(base, z_axis, rockz, speedz)
+		Turn(base, x_axis, rockx, speedx)
+
+		WaitForTurn(base, x_axis)
+		WaitForTurn(base, z_axis)
+		
+		Turn(base, z_axis, 0, speedz / 2)
+		Turn(base, x_axis, 0, speedx / 2)
+	end
+end
+
+function script.RockUnit(anglex, anglez)
+	StartThread(Rock, anglex, anglez)
+end
+
+function script.Shot(weaponNum)
+	lastShot = weaponNum
+	if IsMainGun(weaponNum) and barrel and recoilDistance then
+		StartThread(Recoil)
+	end
+end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	local newPriority = defPriority
-	-- if attackerWeaponNum == 3 then
-		-- Spring.Echo("mg retarget")
-	-- end
 	if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
 		local heading = GetHeadingToTarget({targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
