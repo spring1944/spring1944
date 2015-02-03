@@ -17,10 +17,16 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local lusPriorityCache = {}
 local lusManualTargetCache = {}
+local unitDefIDsPassed = {}
+
+-- function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
+	-- Spring.Echo("check", attackerWeaponNum, WeaponDefs[attackerWeaponDefID].name)
+	-- return true
+-- end
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	if lusPriorityCache[unitID] then
-		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
+		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum + 1, attackerWeaponDefID, defPriority)
 		return true, newPriority
 	else
 		return true, defPriority
@@ -39,6 +45,16 @@ function gadget:UnitCreated(unitID, unitDefID)
 	if env then
 		if env.WeaponPriority then
 			lusPriorityCache[unitID] = env.WeaponPriority
+			if not unitDefIDsPassed[unitDefID] then
+				local weapons = UnitDefs[unitDefID].weapons
+				local weaponsWithAmmo = UnitDefs[unitDefID].customParams.weaponswithammo or 0
+				for i = 1, weaponsWithAmmo + 1 do
+					local weapon = weapons[i]
+					if weapon then
+						Script.SetWatchWeapon(weapon.weaponDef, true)
+					end
+				end
+			end
 		end
 		if env.ManualTarget then
 			lusManualTargetCache[unitID] = env.ManualTarget

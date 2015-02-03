@@ -2,8 +2,10 @@ local flare = piece "flare"
 local turret = piece "turret"
 local mantlet = piece "mantlet"
 
+local headingPiece = turret or mantlet
+
 local SIG_MOVE = 1
-local SIG_AIM = 2
+local SIG_AIM = {}
 
 -- Aesthetics
 local wheelSpeed
@@ -13,7 +15,7 @@ local currentTrack
 local wantedDirection
 local weaponPriorities
 local manualTarget
-
+local prioritisedWeapon
 -- Constants
 local WHEEL_CHECK_DELAY = 990
 local TRACK_SWAP_DELAY = 99
@@ -48,16 +50,17 @@ function script.Create()
 	end
 	
 	weaponPriorities = {}
+	wantedDirection = {}
+	local sig = SIG_MOVE
+	
 	for i = 1,info.numWeapons do
+		sig = sig * 2
 		weaponPriorities[i] = i
+		wantedDirection[i] = {}
+		SIG_AIM[i] = sig
 	end
 	if turret then
 		Turn(turret, y_axis, 0)
-	end
-	
-	wantedDirection = {}
-	for i = 1,info.numWeapons do
-		wantedDirection[i] = {}
 	end
 	
 end
@@ -111,6 +114,46 @@ end
 
 local function StopAiming(weaponNum)
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
+	if prioritisedWeapon == weaponNum then
+		prioritisedWeapon = nil
+	end
+end
+
+
+local function GetHeadingToTarget(target)
+	local tx, ty, tz
+	local heading
+	if #target == 1 then
+		if Spring.ValidUnitID(target[1]) then
+			tx, ty, tz = Spring.GetUnitPosition(target[1])
+		elseif Spring.ValidFeatureID(target[1]) then
+			tx, ty, tz = Spring.GetFeaturePosition(target[1])
+		else
+			target = nil
+		end
+	else
+		tx, ty, tz = target[1], target[2], target[3]
+	end
+	if tx then
+		local ux, uy, uz = Spring.GetUnitPiecePosDir(unitID, headingPiece)
+		local frontDir = Spring.GetUnitVectors(unitID)
+		heading = atan2(tx - ux, tz - uz) - atan2(frontDir[1], frontDir[3])
+		if heading < 0 then
+			heading = heading + TAU
+		end
+		return heading
+	end
+	return nil
+end
+
+local function GetHeadingDiff(a, b)
+	local hDiff = a - b
+	if hDiff > PI then
+		hDiff = TAU - hDiff
+	elseif hDiff < -PI then
+		hDiff = hDiff + TAU
+	end
+	return math.abs(hDiff)
 end
 
 local function ResolveDirection()
@@ -118,70 +161,37 @@ local function ResolveDirection()
 	local topPriority = #wantedDirection + 1
 	local manualHeading
 	if manualTarget then
-		local tx, ty, tz
-		if #manualTarget == 1 then
-			if Spring.ValidUnitID(manualTarget[1]) then
-				tx, ty, tz = Spring.GetUnitPosition(manualTarget[1])
-			elseif Spring.ValidFeatureID(manualTarget[1]) then
-				tx, ty, tz = Spring.GetFeaturePosition(manualTarget[1])
-			else
-				manualTarget = nil
-			end
-		else
-			tx, ty, tz = manualTarget[1], manualTarget[2], manualTarget[3]
-		end
-		if tx then
-			local ux, uy, uz = Spring.GetUnitPiecePosDir(unitID, turret or mantlet)
-			local frontDir = Spring.GetUnitVectors(unitID)
-			manualHeading = atan2(tx - ux, tz - uz) - atan2(frontDir[1], frontDir[3])
-			if manualHeading < 0 then
-				manualHeading = manualHeading + TAU
-			end
-		end
+		manualHeading = GetHeadingToTarget(manualTarget)
 	end
 	
 	for weaponNum, dir in pairs(wantedDirection) do
 		if manualHeading and dir[1] then
-			local hDiff = manualHeading - dir[1]
-			if hDiff > PI then
-				hDiff = TAU - hDiff
-			elseif hDiff < -PI then
-				hDiff = hDiff + TAU
-			end
-			if abs(hDiff) < REAIM_THRESHOLD then
+			if GetHeadingDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
 				topDirection = dir
+				prioritisedWeapon = weaponNum
 				break
 			end
 		end
 		if dir[1] and weaponPriorities[weaponNum] < topPriority then
 			topDirection = dir
 			topPriority = weaponPriorities[weaponNum]
+			prioritisedWeapon = weaponNum
 		end
 	end
 	if topDirection then
-		-- Signal(SIG_AIM)
-		-- SetSignalMask(SIG_AIM)
-		local headingPiece = turret or mantlet
 		Turn(headingPiece, y_axis, topDirection[1], math.rad(25))
 		Turn(mantlet, x_axis, -topDirection[2], math.rad(14))
 	end
 end
 
-function IsAimedAt(heading, pitch)
-	local headingPiece = turret or mantlet
-	
+function IsAimedAt(heading, pitch)	
 	local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
 	local _, currentPitch, _ = Spring.UnitScript.GetPieceRotation(mantlet)
 
 	if currentHeading and currentPitch then
-		local hDiff = currentHeading - heading
-		if hDiff > PI then
-			hDiff = TAU - hDiff
-		elseif hDiff < -PI then
-			hDiff = hDiff + TAU
-		end
 		local pDiff = abs(currentPitch - pitch)
-		local hDiff = abs(hDiff)
+		local hDiff = GetHeadingDiff(currentHeading, heading)
+		
 		if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
 			return true
 		end
@@ -222,7 +232,7 @@ function script.QueryWeapon(weaponNum)
 end
 
 function script.AimFromWeapon(weaponNum)
-	return turret or mantlet
+	return headingPiece
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
@@ -231,9 +241,9 @@ end
 
 
 function script.AimWeapon(weaponNum, heading, pitch)
-	Signal(SIG_AIM)
+	Signal(SIG_AIM[weaponNum])
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = heading, pitch
-	StartThread(Delay, StopAiming, STOP_AIM_DELAY, 0, weaponNum)
+	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
 	StartThread(ResolveDirection)
 	return IsAimedAt(heading, pitch)
 end
@@ -250,8 +260,20 @@ function script.Killed(recentDamage, maxHealth)
 	return 1
 end
 
+-- function script.Shot(weaponNum)
+-- end
+
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
-	return defPriority
+	local newPriority = defPriority
+	-- if attackerWeaponNum == 3 then
+		-- Spring.Echo("mg retarget")
+	-- end
+	if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
+		local heading = GetHeadingToTarget({targetID})
+		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
+		newPriority = GetHeadingDiff(heading, currentHeading)
+	end
+	return newPriority
 end
 
 function ManualTarget(targetParams)

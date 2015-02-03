@@ -90,7 +90,8 @@ local function UpdateSuppressionLUS(unitID)
 			local ux, uy, uz = GetUnitPosition(unitID)
 			local nearbyUnits = GetUnitsInSphere(ux, uy, uz, MORALE_RADIUS)
 			for i = 1, #nearbyUnits do
-				if nearbyUnits[i] ~= unitID and fearShields[nearbyUnits[i]] then
+				local nearbyUnitAllyTeam = GetUnitAllyTeam(nearbyUnits[i])
+				if nearbyUnits[i] ~= unitID and unitAllyTeam == nearbyUnitAllyTeam and fearShields[nearbyUnits[i]] then
 					Spring.UnitScript.CallAsUnit(unitID, restorelusScriptIDs[unitID])
 				end
 			end
