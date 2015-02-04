@@ -382,12 +382,13 @@ end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	local newPriority = defPriority
-	if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
+	--if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
 		local heading = GetHeadingToTarget({targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
 		newPriority = GetHeadingDiff(heading, currentHeading)
-	end
-	return newPriority
+	--end
+	--Spring.Echo("priority", targetID, newPriority)
+	return newPriority * 100
 end
 
 function ManualTarget(targetParams)
