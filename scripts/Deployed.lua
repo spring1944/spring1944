@@ -36,6 +36,8 @@ local FEAR_SLEEP = 1000
 
 local RECOIL_DELAY = 198
 
+local VISIBLE_PERIOD = 5000
+
 local turretTraverseSpeed = math.rad(25)
 local turretElevateSpeed = math.rad(17)
 local recoilDistance = 2.4
@@ -238,6 +240,9 @@ function script.Create()
 	if GG.lusHelper[unitDefID].numRockets > 0 then
 		nextRocket = 1
 	end
+	if UnitDef.stealth then
+		Spring.SetUnitStealth(unitID, true)
+	end
 end
 
 local function StopPinned()
@@ -302,6 +307,9 @@ end
 
 function script.FireWeapon(num)
 	firing = true
+	if UnitDef.stealth then
+		Spring.SetUnitStealth(unitID, false)
+	end
 end
 
 function script.Shot(num)
@@ -334,12 +342,15 @@ function script.Shot(num)
 end
 
 function script.EndBurst(num)
+	Signal(SIG_FIRE)
 	StartThread(ResolvePose, true)
 	firing = false
 	if nextRocket then
 		nextRocket = 1
 	end
-	Signal(SIG_FIRE)
+	if UnitDef.stealth then
+		StartThread(Delay, VISIBLE_PERIOD, 0, Spring.SetUnitStealth, unitID, true)
+	end
 end
 
 
