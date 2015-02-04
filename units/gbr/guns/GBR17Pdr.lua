@@ -8,6 +8,7 @@ local GBR_17Pdr_Truck = ATGunTractor:New{
 local GBR_17Pdr_Stationary = ATGun:New{
 	name					= "Deployed Q.F. 17 Pounder",
 	corpse					= "gbr17pdr_destroyed",
+	script					= "Deployed.lua",
 	customParams = {
 		weaponcost	= 19,
 	},

@@ -27,10 +27,6 @@ local REAIM_THRESHOLD = 0.15
 
 local CRAWL_SLOWDOWN_FACTOR = 5
 
-local FEAR_LITTLE = 2  -- small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
-local FEAR_MEDIUM = 4 -- small/med explosions: mortars, 88mm guns and under
-local FEAR_BIG = 8 -- large explosions: small bombs, 155mm - 105mm guns
-local FEAR_MORTAL = 16 -- omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty
 local FEAR_LIMIT = 25
 local FEAR_PINNED = 20
 
@@ -73,9 +69,10 @@ local wantedHeading
 local wantedPitch
 local firing
 local lastShot
---STORED VARS
-local currentSpeed
 
+-- OTHER
+local currentSpeed
+local fear
 local weaponEnabled = {}
 
 --localisations
@@ -186,8 +183,7 @@ local function PickPose(name)
 		currentPoseID = nextPoseID
 		currentPoseName = name
 		local pose = poses[currentPoseID]
-		local turns, moves, headingTurn, pitchTurn, anim = 
-			  pose.turns, pose.moves, pose.headingTurn, pose.pitchTurn, pose.anim
+		local turns, moves = pose.turns, pose.moves
 		if turns then
 			for _, params in pairs(turns) do
 				Turn(unpack(params))
@@ -197,21 +193,6 @@ local function PickPose(name)
 			for _, params in pairs(moves) do
 				Move(unpack(params))
 			end
-		end
-		if headingTurn then
-			local p, axis, target, mul = unpack(headingTurn)
-			Turn(p, axis, target + mul * wantedHeading)
-		end
-		if pitchTurn then
-			local p, axis, target, mul = unpack(pitchTurn)
-			Turn(p, axis, target + mul * wantedPitch)
-		end
-		if anim and not currentAnim then
-			currentAnim = anim
-			StartThread(PlayAnim)
-		elseif not anim then
-			currentAnim = nil
-			Signal(SIG_ANIM)
 		end
 	else
 

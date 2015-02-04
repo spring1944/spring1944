@@ -28,6 +28,7 @@ local Deployed = Unit:New{
 local DeployedGun = Deployed:New{
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
 		maxammo			= 4,
+		scriptAnimation	= "gun",
 	},
 }
 
@@ -63,6 +64,10 @@ local SandbagMG = Deployed:New{
 	objectName					= "<SIDE>/<SIDE>SandbagMG.S3O",
 	script						= "gbrvickers_sandbag.cob",
 
+	customParams = {
+		scriptAnimation		= "hmg",
+	},
+	
 	sfxtypes = {
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -90,6 +95,7 @@ local AAGun = DeployedGun:New{
 	customParams = {
 		weaponswithammo		= 2,
 		maxammo				= 16,
+		scriptAnimation		= "aa",
 	},
 }
 
@@ -157,6 +163,7 @@ local RGun = DeployedGun:New{
 	iconType			= "artillery",
 	customParams = {
 		weaponswithammo		= 1,
+		scriptAnimation		= "rocket",
 	},
 	weapons = {
 		[1] = {

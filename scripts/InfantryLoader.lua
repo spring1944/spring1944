@@ -153,7 +153,7 @@ if mainAnim then
 end
 
 for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
-	if not VFS.FileExists("scripts/anims/" .. weaponAnim .. ".lua") then
+	if not VFS.FileExists("scripts/anims/infantry/" .. weaponAnim .. ".lua") then
 		weaponAnim = "rifle"
 	end
 	weaponsMap[weaponNum] = weaponAnim
