@@ -129,16 +129,17 @@ end
 
 
 function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
-	if (cobScriptIDs[unitID] or lusScriptIDs[unitID]) and weaponID and weaponID > 0 then
-		local wd = WeaponDefs[weaponID]
+	if (cobScriptIDs[unitID] or lusScriptIDs[unitID]) and weaponDefID and weaponDefID > 0 then
+		local wd = WeaponDefs[weaponDefID]
 		local cp = wd.customParams
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
 		-- ... but be sure not to update suppression for a dead unit (UnitDamaged is called before UnitDestroyed, so cobScriptIDs[unitID] is still valid!)
-		if cp and cp.damagetype == "smallarms" and not cp.fearid and not GetUnitIsDead(unitID) then
+		if cp and cp.damagetype == "smallarm" and not cp.fearid and not GetUnitIsDead(unitID) then
 			if cobScriptIDs[unitID] then
 				UpdateSuppressionCOB(unitID)
 			else -- danger Will Robinson! assumes the unit must have a lusScriptID
 				Spring.UnitScript.CallAsUnit(unitID, lusScriptIDs[unitID], 1)
+				Spring.Echo("fear")
 			end
 		end
 	end
