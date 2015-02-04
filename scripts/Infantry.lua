@@ -355,6 +355,7 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 				end
 			end
 		end
+		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newStanding and 0 or 1);
 		if newBuilding then
 			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1);
 		elseif not wantedBuilding then

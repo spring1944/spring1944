@@ -158,6 +158,7 @@ local function UpdatePose(newPinned)
 	local success = PickPose(GetPoseName(newPinned))
 	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, newBuilding, success)
 	if success then
+		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newPinned and 1 or 0);
 		pinned = newPinned
 	end
 	return success
@@ -342,7 +343,6 @@ function RestoreAfterCover()
 	fear = 0
 	Spring.SetUnitRulesParam(unitID, "suppress", 0)
 	StopPinned()
-	Stand()
 end
 
 local function RecoverFear()
