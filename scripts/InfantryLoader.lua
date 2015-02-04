@@ -43,7 +43,7 @@ local function Merge(t1, t2)
 	return merged
 end
 
-local anims, variants, keyframes, keyframeDelays = include "anims/base.lua"
+local anims, variants, keyframes, keyframeDelays = include "anims/infantry/base.lua"
 
 local function GetManipulationData(manipulationArray)
 	local data = {}
@@ -144,7 +144,7 @@ local function CreateMainPoses(mainVariants)
 end
 
 if mainAnim then
-	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/" .. mainAnim .. ".lua")
+	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/infantry/" .. mainAnim .. ".lua")
 	CreateMainPoses(mainVariants)
 
 	weaponsTags[mainAnim] = mainTags
@@ -158,7 +158,7 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 	end
 	weaponsMap[weaponNum] = weaponAnim
 	if not weaponsTags[weaponAnim] then
-		local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/" .. weaponAnim .. ".lua")
+		local weaponTags, weaponVariants, weaponKeyFrames, weaponKeyFrameDelays = include("anims/infantry/" .. weaponAnim .. ".lua")
 		weaponsPriorities[weaponAnim] = weaponNum
 		if not mainAnim then
 			CreateMainPoses(weaponVariants)

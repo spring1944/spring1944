@@ -1,27 +1,11 @@
 -- pieces
--- local head = piece "head"
 local torso = piece "torso"
--- local pelvis = piece "pelvis"
--- local gun = piece "gun"
---local ground = piece "ground"
+
 local flare = piece "flare"
 
--- local luparm = piece "luparm"
--- local lloarm = piece "lloarm"
-
--- local ruparm = piece "ruparm"
--- local rloarm = piece "rloarm"
-
--- local lthigh = piece "lthigh"
--- local lleg = piece "lleg"
--- local lfoot = piece "lfoot"
-
--- local rthigh = piece "rthigh"
--- local rleg = piece "rleg"
--- local rfoot = piece "rfoot"
 
 if not GG.lusHelper[unitDefID].animation then
-	GG.lusHelper[unitDefID].animation = {include "InfantryStances.lua"}
+	GG.lusHelper[unitDefID].animation = {include "InfantryLoader.lua"}
 end
 local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(GG.lusHelper[unitDefID].animation)
 
@@ -102,8 +86,6 @@ local min = math.min
 local PI = math.pi
 local TAU = 2 * PI
 
-local nonWaitedStances = {}
-
 
 local function GetNewPoseID(poseName)
 	--Spring.Echo("looking for " .. poseName)
@@ -119,30 +101,6 @@ local function Delay(func, duration, mask, ...)
 	SetSignalMask(mask)
 	Sleep(duration)
 	func(...)
-end
-
-local function WaitForStances()
-	--Spring.Echo("waiting")
-	for _, stance in pairs(nonWaitedStances) do
-		local turns, moves, headingTurn, pitchTurn = unpack(stance)
-		for _, params in pairs(turns) do
-			WaitForTurn(params[1], params[2])
-		end
-		if moves then
-			for _, params in pairs(moves) do
-				WaitForMove(params[1], params[2])
-			end	
-		end
-		if headingTurn then
-			WaitForTurn(headingTurn[1], headingTurn[2])
-		end
-		if pitchTurn then
-			WaitForTurn(pitchTurn[1], pitchTurn[2])
-		end
-	end
-	Sleep(33)
-	nonWaitedStances = {}
-	--Spring.Echo("done")
 end
 
 local function PlayAnim()
@@ -222,10 +180,6 @@ end
 
 local function PickPose(name)
 	
-	-- if not firing then
-		-- Spring.Echo(name)
-	-- end
-	
 	local nextPoseID = GetNewPoseID(name)
 	if not currentPoseID then
 		--Spring.Echo("warp")
@@ -260,14 +214,7 @@ local function PickPose(name)
 			Signal(SIG_ANIM)
 		end
 	else
-		-- if inTransition then
-			-- Spring.Echo("in transition")
-			-- return false
-		-- end
-		-- if nextPoseID == currentPoseID then
-			-- Spring.Echo("no change req")
-			-- return true
-		-- end
+
 		local transition
 		if firing then
 			transition = fireTransitions[currentPoseID][nextPoseID]
@@ -279,7 +226,7 @@ local function PickPose(name)
 			Spring.Echo("no change possible", currentPoseName, name)
 			return false
 		end
-		-- inTransition = true
+
 		ChangePose(transition, nextPoseID, name)
 	end
 	return true
@@ -304,16 +251,23 @@ local function ReAim(newHeading, newPitch)
 	SetSignalMask(SIG_AIM)
 	local pose = poses[currentPoseID]
 	local headingTurn, pitchTurn = pose.headingTurn, pose.pitchTurn
+	local headingPiece, headingAxis, pitchPiece, pitchAxis
 	if headingTurn then
 		local p, axis, target, mul = unpack(headingTurn)
 		Turn(p, axis, target + mul * newHeading, DEFAULT_TURN_SPEED)
+		headingPiece, headingAxis = p, axis
 	end
 	if pitchTurn then
 		local p, axis, target, mul = unpack(pitchTurn)
 		Turn(p, axis, target + mul * newPitch, DEFAULT_TURN_SPEED)
+		pitchPiece, pitchAxis = p, axis
 	end
-	nonWaitedStances[#nonWaitedStances + 1] = {{}, {}, headingTurn, pitchTurn}
-	WaitForStances()
+	if headingTurn then
+		WaitForTurn(headingPiece, headingAxis)
+	end
+	if pitchTurn then 
+		WaitForTurn(pitchPiece, pitchAxis)
+	end
 	currentHeading = newHeading
 	currentPitch = newPitch
 	return false
