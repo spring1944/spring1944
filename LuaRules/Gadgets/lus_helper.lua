@@ -149,7 +149,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
 			local weaponNum = tonumber(pieceName:sub(weapNumPos+1,weapNumEndPos-1))]]
 			-- Find launcher pieces
-			if pieceName:find("r_rocket") then
+			if pieceName:find("rocket") then
 				numRockets = numRockets + 1
 			-- Find mantlet pieces
 			--[[elseif pieceName:find("mantlet_") then

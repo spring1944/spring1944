@@ -58,7 +58,10 @@ local currentHeading
 
 -- OTHER
 local fear
+local nextRocket
 local weaponEnabled = {}
+
+
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -232,6 +235,9 @@ function script.Create()
 	for i=2,GG.lusHelper[unitDefID].numWeapons do
 		weaponEnabled[i] = false
 	end
+	if GG.lusHelper[unitDefID].numRockets > 0 then
+		nextRocket = 1
+	end
 end
 
 local function StopPinned()
@@ -248,6 +254,9 @@ end
 
 
 function script.QueryWeapon(num)
+	if nextRocket then
+		return piece("rocket" .. nextRocket) or tubes
+	end
 	return barrel or tubes or carriage
 end
 
@@ -299,7 +308,10 @@ function script.Shot(num)
 	if barrel then
 		StartThread(Recoil)
 	end
-	
+	if nextRocket then
+		Hide(piece("rocket" .. nextRocket))
+		nextRocket = nextRocket + 1
+	end
 	local ceg = GG.lusHelper[unitDefID].weaponCEGs[num]
 	if ceg then
 		local cegPiece = GG.lusHelper[unitDefID].cegPieces[num]
@@ -319,6 +331,9 @@ end
 function script.EndBurst(num)
 	StartThread(ResolvePose, true)
 	firing = false
+	if nextRocket then
+		nextRocket = 1
+	end
 	Signal(SIG_FIRE)
 end
 
@@ -382,4 +397,16 @@ end
 
 function ToggleWeapon(num, isEnabled)
 	weaponEnabled[num] = isEnabled
+end
+
+if GG.lusHelper[unitDefID].numRockets > 0 then
+	local function ShowRockets(delay)
+		Sleep(delay)
+		for i = 1,GG.lusHelper[unitDefID].numRockets do
+			Show(piece("rocket" .. i))
+		end
+	end
+	function RestoreRockets(delay)
+		StartThread(ShowRockets, delay)
+	end
 end

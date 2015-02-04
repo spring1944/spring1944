@@ -217,7 +217,13 @@ local function Resupply(unitID)
 						difference = 0
 						reloadState = currFrame + 90 -- add three seconds
 					end
-					Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					if env then
+						Spring.UnitScript.CallAsUnit(unitID, env.RestoreRockets, (difference * 30) - 3000)
+					else
+						Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
+					end
+					
 				end
 				for weapNum = 1, weaponsWithAmmo do
 					SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
