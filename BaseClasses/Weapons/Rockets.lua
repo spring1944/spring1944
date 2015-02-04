@@ -32,6 +32,7 @@ local ArtyRocket = Rocket:New{
 		howitzer           = 1,
 		cegflare           = "dirt_backblast",
 		flareonshot        = true,
+		seismicping        = 15,
 	},
 }
 

@@ -228,6 +228,7 @@ function gadget:GamePreload()
 		local flareOnShots = {}
 		local weaponAnimations = {}
 		local weaponCEGs = {}
+		local seismicPings = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
@@ -241,6 +242,7 @@ function gadget:GamePreload()
 			weaponAnimations[i] = weaponDef.customParams.scriptanimation
 			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 			weaponCEGs[i] = weaponDef.customParams.cegflare
+			seismicPings[i] = weaponDef.customParams.seismicping
 		end
 		-- WeaponDef Level Info
 		info.missileWeaponIDs = missileWeaponIDs
@@ -251,6 +253,7 @@ function gadget:GamePreload()
 		info.minRanges = minRanges
 		info.weaponAnimations = weaponAnimations
 		info.weaponCEGs = weaponCEGs
+		info.seismicPings = seismicPings
 		-- UnitDef Level Info
 		local corpse = FeatureDefNames[unitDef.wreckName:lower()]
 		info.numCorpses = 0

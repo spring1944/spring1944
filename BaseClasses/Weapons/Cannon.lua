@@ -337,6 +337,7 @@ local Howitzer = Cannon:New{
 	customparams = {
 		howitzer           = 1,
 		cegflare           = "LARGE_MUZZLEFLASH",
+		seismicping        = 15,
 	},
 }
 

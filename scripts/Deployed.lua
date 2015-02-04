@@ -312,12 +312,17 @@ function script.Shot(num)
 		Hide(piece("rocket" .. nextRocket))
 		nextRocket = nextRocket + 1
 	end
-	local ceg = GG.lusHelper[unitDefID].weaponCEGs[num]
+	local info = GG.lusHelper[unitDefID]
+	local ceg = info.weaponCEGs[num]
 	if ceg then
-		local cegPiece = GG.lusHelper[unitDefID].cegPieces[num]
+		local cegPiece = info.cegPieces[num]
 		if cegPiece then
 			GG.EmitSfxName(unitID, cegPiece, ceg)
 		end
+	end
+	local ping = info.seismicPings[num]
+	if ping then
+		Spring.AddUnitSeismicPing(unitID, ping)
 	end
 	if brakeleft then
 		GG.EmitSfxName(unitID, brakeleft, "MUZZLEBRAKESMOKE")
