@@ -54,19 +54,22 @@ local poses = {
 				},
 	pinned = {
 					turns = { -- Turns
-						{head1, x_axis, math.rad(-20)},
+						{head1, x_axis, math.rad(20)},
 						
 						{ruparm1, x_axis, math.rad(-90)},
-						{ruparm1, z_axis, math.rad(20)},
+						{ruparm1, z_axis, math.rad(-30)},
 						
 						{luparm1, x_axis, math.rad(-90)},
-						{luparm1, z_axis, math.rad(-20)},
+						{luparm1, z_axis, math.rad(30)},
 
 						{rloarm1, x_axis, math.rad(-115)},
+						{rloarm1, z_axis, math.rad(25)},
 						
 						{lloarm1, x_axis, math.rad(-115)},
+						{lloarm1, z_axis, math.rad(-25)},
 						
-						{torso1, y_axis, math.rad(40)},						
+						{torso1, x_axis, math.rad(40)},
+						{torso1, y_axis, math.rad(-20)},						
 					},
 				},
 	kf_fire_1 = {

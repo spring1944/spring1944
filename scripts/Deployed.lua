@@ -29,7 +29,7 @@ local DEFAULT_TURN_SPEED = math.rad(300)
 local REAIM_THRESHOLD = 0.15
 
 local FEAR_LIMIT = 25
-local FEAR_PINNED = 20
+local FEAR_PINNED = 2
 
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
@@ -59,6 +59,13 @@ local currentHeading
 -- OTHER
 local fear
 local weaponEnabled = {}
+
+local function Delay(func, duration, mask, ...)
+	--Spring.Echo("wait", duration)
+	SetSignalMask(mask)
+	Sleep(duration)
+	func(...)
+end
 
 local function ChangePose(transition, nextPoseName)
 	SetSignalMask(0)
@@ -259,7 +266,7 @@ local function IsLoaded()
 end
 
 local function CanFire()
-	return not inTransition
+	return not (inTransition or pinned)
 end
 
 local function Recoil()
