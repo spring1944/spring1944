@@ -9,9 +9,8 @@ local JPN_Type90_75mm_Truck = FGGunTractor:New{
 local JPN_Type90_75mm_Stationary = FGGun:New{
 	name					= "Towed Type 90 75mm Gun",
 	corpse					= "JPNType90_75mm_Destroyed",
-	script					= "ruszis3_stationary.cob",
 	customParams = {
-		weaponscost			= 16,
+		weaponcost			= 16,
 	},
 	weapons = {
 		[1] = { -- HE

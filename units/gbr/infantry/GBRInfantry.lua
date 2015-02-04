@@ -98,7 +98,6 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	canManualFire		= true,
 	iconType			= "commando",
 	maxVelocity			= 1.8,
-	script				= "infantry.lua",
 	
 	buildDistance		= 50,
 	builder				= true,

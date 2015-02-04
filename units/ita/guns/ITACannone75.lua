@@ -9,9 +9,8 @@ local ITA_Cannone75_Truck = FGGunTractor:New{
 local ITA_Cannone75_Stationary = FGGun:New{
 	name					= "Towed Cannone da 75/32",
 	corpse					= "ITACannone75_Destroyed",
-	script					= "ruszis3_stationary.cob",
 	customParams = {
-		weaponscost			= 16,
+		weaponcost			= 16,
 	},
 	weapons = {
 		[1] = { -- HE

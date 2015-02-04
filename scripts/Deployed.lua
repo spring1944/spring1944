@@ -205,6 +205,12 @@ function script.Create()
 	if flare then 
 		Hide(flare)
 	end
+	if brakeleft then
+		Hide(brakeleft)
+	end
+	if brakeright then
+		Hide(brakeright)
+	end
 	pinned = false
 	wantedPinned = pinned
 	fear = 0

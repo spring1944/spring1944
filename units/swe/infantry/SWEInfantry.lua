@@ -45,7 +45,6 @@ local SWE_KPistM3739 = SMGInf:New(SWEInf):New{
 local SWE_KgM37 = RifleInf:New(SWEInf):New{
 	name				= "Kulsprutegevär m/37 Light Machinegun",
 	description			= "Long Range Assault/Light Fire Support Unit",
-	script				= "usbar.cob",
 	weapons = {
 		[1] = { -- LMG
 			name				= "BAR",
@@ -80,7 +79,6 @@ local SWE_Sniper = SniperInf:New(SWEInf):New{
 
 local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 	name				= "Pansarskott m/45",
-	script				= "GERPanzerFaust.cob",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "PanzerFaust",
@@ -90,7 +88,6 @@ local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 
 local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
 	name				= "Pansarvärnsgevär m/42",
-	script				= "gerpanzerschrek.cob",
 	weapons = {
 		[1] = { -- AT Rifle
 			name				= "Solothurn",
