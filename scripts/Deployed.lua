@@ -85,7 +85,6 @@ local function ChangePose(transition, nextPoseName)
 end
 
 local function PickPose(name)
-	Spring.Echo("name", name, poses[name])
 	if not currentPoseName then
 		--Spring.Echo("warp")
 		currentPoseName = name
@@ -366,4 +365,8 @@ function AddFear(amount)
 		StartThread(StartPinned)
 	end
 	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+end
+
+function ToggleWeapon(num, isEnabled)
+	weaponEnabled[num] = isEnabled
 end

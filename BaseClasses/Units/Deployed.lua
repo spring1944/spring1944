@@ -103,6 +103,7 @@ local ATGun = DeployedGun:New{
 	description			= "Deployed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
+	script				= "Deployed.lua",
 	customParams = {
 		weaponswithammo		= 1,
 	},
@@ -125,6 +126,7 @@ local FGGun = DeployedGun:New{
 	description			= "Deployed Field Gun",
 	buildCostMetal		= 1300,
 	iconType			= "artillery",
+	script				= "Deployed.lua",
 	customParams = {
 		weaponswithammo		= 2,
 	},
@@ -142,6 +144,7 @@ local HGun = DeployedGun:New{
 	description			= "Deployed Howitzer",
 	buildCostMetal		= 1800,
 	iconType			= "artillery",
+	script				= "Deployed.lua",
 	customParams = {
 		canAreaAttack		= true,
 		weaponswithammo		= 2,
