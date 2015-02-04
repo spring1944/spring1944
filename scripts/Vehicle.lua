@@ -347,25 +347,25 @@ end
 local function Rock(anglex, anglez)
 	-- For some reaosn they are switched
 	anglex, anglez = anglez, anglex
-	
-	if IsMainGun(lastShot) then
-		local rockx = rad(anglex) * 2
-		local rockz = -rad(anglez) * 2
-		local speedx = abs(rockx) * 20
-		local speedz = abs(rockz) * 20
-		Turn(base, z_axis, rockz, speedz)
-		Turn(base, x_axis, rockx, speedx)
 
-		WaitForTurn(base, x_axis)
-		WaitForTurn(base, z_axis)
-		
-		Turn(base, z_axis, 0, speedz / 2)
-		Turn(base, x_axis, 0, speedx / 2)
-	end
+	local rockx = rad(anglex) * 2
+	local rockz = -rad(anglez) * 2
+	local speedx = abs(rockx) * 20
+	local speedz = abs(rockz) * 20
+	Turn(base, z_axis, rockz, speedz)
+	Turn(base, x_axis, rockx, speedx)
+
+	WaitForTurn(base, x_axis)
+	WaitForTurn(base, z_axis)
+	
+	Turn(base, z_axis, 0, speedz / 2)
+	Turn(base, x_axis, 0, speedx / 2)
 end
 
 function script.RockUnit(anglex, anglez)
-	StartThread(Rock, anglex, anglez)
+	if IsMainGun(lastShot) then
+		StartThread(Rock, anglex, anglez)
+	end
 end
 
 function script.Shot(weaponNum)
