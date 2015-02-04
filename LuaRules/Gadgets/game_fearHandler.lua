@@ -139,7 +139,6 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 				UpdateSuppressionCOB(unitID)
 			else -- danger Will Robinson! assumes the unit must have a lusScriptID
 				Spring.UnitScript.CallAsUnit(unitID, lusScriptIDs[unitID], 1)
-				Spring.Echo("fear")
 			end
 		end
 	end
