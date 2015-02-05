@@ -283,6 +283,7 @@ local AutoCannon = Cannon:New{
 	customparams = {
 		cegflare           = "XSMALL_MUZZLEFLASH",
 		flareonshot        = true,
+		projectilelups     = {"cannon20tracer"},
 	},
 }
 

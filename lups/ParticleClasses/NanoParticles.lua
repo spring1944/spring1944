@@ -15,7 +15,7 @@ local lastTexture = ""
 function NanoParticles.GetInfo()
   return {
     name      = "NanoParticles",
-    backup    = "", --// backup class, if this class doesn't work (old cards,ati's,etc.)
+    backup    = "NanoLasers", --// backup class, if this class doesn't work (old cards,ati's,etc.)
     desc      = "",
 
     layer     = 0, --// extreme simply z-ordering :x
@@ -25,7 +25,6 @@ function NanoParticles.GetInfo()
     shader    = true,
     rtt       = false,
     ctt       = false,
-    atiseries = 1,
   }
 end
 
@@ -62,7 +61,7 @@ NanoParticles.Default = {
   sizeGrowth  = 0.05,
   rotSpeed    = 0.15,
   particles   = 1,
-  texture     = 'bitmaps/PD/nano.tga',
+  texture     = 'bitmaps/PD/nano.png',
 
   --// internal used
   dlist       = 0,
@@ -191,6 +190,12 @@ function NanoParticles:Draw()
   local startPos  = self.pos
   local endPosNew = self.targetpos
   local endPosOld = self.targetposStart
+  
+  if (not self.pos) or (not self.targetpos) or (not self.targetposStart) then
+    self._dead = true
+    return
+  end
+  
   glMultiTexCoord(0,  startPos[1],  startPos[2],  startPos[3], 1)
   glMultiTexCoord(1, endPosNew[1], endPosNew[2], endPosNew[3], 1)
   glMultiTexCoord(2, endPosOld[1], endPosOld[2], endPosOld[3], 1)

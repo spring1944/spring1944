@@ -24,7 +24,6 @@ function JitterParticles.GetInfo()
     distortion= true,
     rtt       = false,
     ctt       = false,
-    atiseries = 2,
   }
 end
 
@@ -73,6 +72,7 @@ local spGetPositionLosState = Spring.GetPositionLosState
 local spGetUnitLosState     = Spring.GetUnitLosState
 local spIsSphereInView      = Spring.IsSphereInView
 local spGetUnitRadius       = Spring.GetUnitRadius
+local spGetProjectilePosition = Spring.GetProjectilePosition
 
 local glTexture     = gl.Texture 
 local glBlending    = gl.Blending
@@ -328,19 +328,29 @@ function JitterParticles:Visible()
   local radius = self.radius +
                  self.uMovCoeff*self.maxSpeed +
                  self.frame*(self.sphereGrowth) --FIXME: frame is only updated on Update()
-  local pos = self.pos
+  local posX,posY,posZ = self.pos[1],self.pos[2],self.pos[3]
   local losState
   if (self.unit and not self.worldspace) then
     local ux,uy,uz = spGetUnitViewPosition(self.unit)
-    pos[1],pos[2],pos[3] = pos[1]+ux,pos[2]+uy,pos[3]+uz
+    posX,posY,posZ = posX+ux,posY+uy,posZ+uz
     radius = radius + spGetUnitRadius(self.unit)
     losState = spGetUnitLosState(self.unit, LocalAllyTeamID)
+  elseif (self.projectile and not self.worldspace) then
+    local px,py,pz = spGetProjectilePosition(self.projectile)
+    posX,posY,posZ = posX+px,posY+py,posZ+pz
   end
   if (losState==nil) then
-    local visible,los,radar = spGetPositionLosState(pos[1],pos[2],pos[3], LocalAllyTeamID)
-    losState = {los=los}
+    if (self.radar) then
+      losState = IsPosInRadar(posX,posY,posZ, LocalAllyTeamID)
+    end
+    if ((not losState) and self.airLos) then
+      losState = IsPosInAirLos(posX,posY,posZ, LocalAllyTeamID)
+    end
+    if ((not losState) and self.los) then
+      losState = IsPosInLos(posX,posY,posZ, LocalAllyTeamID)
+    end
   end
-  return (losState.los)and(spIsSphereInView(pos[1],pos[2],pos[3],radius))
+  return (losState)and(spIsSphereInView(posX,posY,posZ,radius))
 end
 
 -----------------------------------------------------------------------------------------------------------------

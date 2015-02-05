@@ -123,6 +123,7 @@ local MGClass = SmallArm:New{
 		cegflare           = "MG_MUZZLEFLASH",
 		flareonshot        = true,
 		scriptanimation    = "mg",
+		projectilelups     = {"mgtracer"},
 	},
 	damage = {
 		default            = 33,

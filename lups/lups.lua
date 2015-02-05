@@ -19,7 +19,7 @@ local function GetInfo()
     name      = "Lups",
     desc      = "Lua Particle System",
     author    = "jK",
-    date      = "Jan. 2008",
+    date      = "2008-2014",
     license   = "GNU GPL, v2 or later",
     layer     = 1000,
     api       = true,
@@ -29,7 +29,7 @@ end
 
 
 --// FIXME
--- 1. at los handling (inRadar,alwaysVisible, etc.)
+-- 1. add los handling (inRadar,alwaysVisible, etc.)
 
 
 --------------------------------------------------------------------------------
@@ -84,6 +84,7 @@ local spGetLocalAllyTeamID   = Spring.GetLocalAllyTeamID
 local scGetReadAllyTeam      = Script.GetReadAllyTeam
 local spGetUnitPieceMap      = Spring.GetUnitPieceMap
 local spValidUnitID          = Spring.ValidUnitID
+local spGetProjectilePosition = Spring.GetProjectilePosition
 
 local glUnitPieceMatrix = gl.UnitPieceMatrix
 local glPushMatrix      = gl.PushMatrix
@@ -114,52 +115,15 @@ local GL_VERSION  = 0x1F02
 local glVendor   = gl.GetString(GL_VENDOR)
 local glRenderer = (gl.GetString(GL_RENDERER)):lower()
 
-local function DetectCard(vendor,renderer)
-  isNvidia  = (vendor:find("NVIDIA"))
-  isATI     = (vendor:find("ATI "))
-  isMS      = (vendor:find("Microsoft"))
-  isIntel   = (vendor:find("Intel"))
-
-  NVseries  = ((isNvidia)and(
-                 (renderer:find(" gf[xs]* 4%d%d") and 11) or  --// Fermi
-                 (renderer:find(" g[txs]* %d%d%d") and 10) or
-                 (renderer:find(" 9") and 9) or
-                 (renderer:find(" 8") and 8) or
-                 (renderer:find(" 7") and 7) or
-                 (renderer:find(" 6") and 6) or
-                 (renderer:find(" 5") and 5) or
-                 (renderer:find(" 4") and 4) or
-                 (renderer:find(" 3") and 3) or 
-                 (renderer:find(" 2") and 2) or math.huge
-               )) or 0
-
-  renderer  = renderer:lower()
-  ATIseries = ((isATI)and(
-                (renderer:find("radeon hd") and 3)or
-                (renderer:find("radeon x") and 2) or
-                (renderer:find("radeon 9") and 1) or 0
-              )) or 0
-
-  canCTT = (gl.CopyToTexture ~= nil)
-
-  --// old cards are capable to use CTT, but their performance is too bad
-  canCTT = (canCTT) and ((not isNvidia)or(NVseries>=6))
-  canCTT = (canCTT) and ((not isATI)   or(ATIseries>=2))
-end
-
-isNvidia  = false
-isATI     = false
-isMS      = false
-isIntel   = false
-NVseries  = false
-ATIseries = false
-canCTT    = false
+isNvidia  = (glVendor:find("NVIDIA"))
+isATI     = (glVendor:find("ATI "))
+isMS      = (glVendor:find("Microsoft"))
+isIntel   = (glVendor:find("Intel"))
+canCTT    = (gl.CopyToTexture    ~= nil)
 canFBO    = (gl.DeleteTextureFBO ~= nil)
 canRTT    = (gl.RenderToTexture  ~= nil)
 canShader = (gl.CreateShader     ~= nil)
 canDistortions = false --// check Initialize()
-
-DetectCard(glVendor,glRenderer)
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -211,8 +175,7 @@ end
 --------------------------------------------------------------------------------
 
 --// some global vars (so the effects can use them)
-vsx, vsy        = 0,0
-vpx, vpy        = 0,0  --// view pos (only unequal zero, if dualscreen+minimapOnTheLeft)
+vsx, vsy, vpx, vpy = Spring.GetViewGeometry() --// screen pos & view pos (view pos only unequal zero if dualscreen+minimapOnTheLeft) 
 LocalAllyTeamID = 0
 thisGameFrame   = 0
 frameOffset     = 0
@@ -294,7 +257,7 @@ end
 
 --// saves all particles
 particles = {}
-local particles = particles 
+local particles = particles
 local particlesCount = 0
 
 local RenderSequence = {}  --// mult-dim table with: [layer][partClass][unitID][fx]
@@ -319,7 +282,7 @@ function AddParticles(Class,Options   ,__id)
     print(PRIO_LESS,'LUPS->AddFX: no options given');
     return -1;
   end
-  
+
   if Options.quality and Options.quality > GetLupsSetting("quality", 3) then
     return -1;
   end
@@ -346,7 +309,8 @@ function AddParticles(Class,Options   ,__id)
 
   --// piecename to piecenum conversion (spring >=76b1 only!)
   if (Options.unit and Options.piece) then
-    Options.piecenum = spGetUnitPieceMap(Options.unit)[Options.piece]
+    local pieceMap = spGetUnitPieceMap(Options.unit)
+    Options.piecenum = pieceMap and pieceMap[Options.piece] --added check. switching spectator view can cause "attempt to index a nil value"
     if (not Options.piecenum) then
       local udid = Spring.GetUnitDefID(Options.unit)
       if (not udid) then
@@ -403,6 +367,9 @@ function AddParticlesArray(array)
   end
 end
 
+function GetParticles(particlesID)
+  return particles[particlesID]
+end
 
 function RemoveParticles(particlesID)
   local fx = particles[particlesID]
@@ -487,7 +454,6 @@ function GetErrorLog(minPriority)
     if (log~="") then
       local sysinfo = "Vendor:" .. glVendor ..
                       "\nRenderer:" .. glRenderer ..
-                      "\nNVseries:" .. NVseries ..
                       (((isATI)and("\nisATI: true"))or("")) ..
                       (((isMS)and("\nisMS: true"))or("")) ..
                       (((isIntel)and("\nisIntel: true"))or("")) ..
@@ -502,7 +468,6 @@ function GetErrorLog(minPriority)
     if (errorlog~="") then
       local sysinfo = "Vendor:" .. glVendor ..
                       "\nRenderer:" .. glRenderer ..
-                      "\nNVseries:" .. NVseries ..
                       "\nisATI:" .. tostring(isATI) ..
                       "\nisMS:" .. tostring(isMS) ..
                       "\nisIntel:" .. tostring(isIntel) ..
@@ -541,7 +506,7 @@ local function Draw(extension,layer)
       if (not next(Units)) then
         FxLayer[partClass]=nil
       else
-        for unitID,UnitEffects in pairs(Units) do 
+        for unitID,UnitEffects in pairs(Units) do
           if (not UnitEffects[1]) then 
             Units[unitID]=nil
           else
@@ -583,11 +548,16 @@ local function Draw(extension,layer)
               for i=1,#UnitEffects do
                 local fx = UnitEffects[i]
                 if (fx.alwaysVisible or fx.visible) then
+                  glPushMatrix()
+                  if fx.projectile and not fx.worldspace then
+                    local x,y,z = spGetProjectilePosition(fx.projectile)
+                    glTranslate(x,y,z)
+                  end
                   drawfunc(fx)
+                  glPopMatrix()
                 end
-              end
-
-            end
+              end -- for
+            end -- if
           end  --if
         end  --for
       end
@@ -614,7 +584,7 @@ local function DrawParticlesOpaque()
   vsx, vsy, vpx, vpy = Spring.GetViewGeometry()
   if (vsx~=oldVsx)or(vsy~=oldVsy) then
     for _,partClass in pairs(fxClasses) do
-      if partClass.ViewResize then partClass.ViewResize(viewSizeX, viewSizeY) end
+      if partClass.ViewResize then partClass.ViewResize(vsx, vsy) end
     end
     oldVsx, oldVsy = vsx, vsy
   end
@@ -690,105 +660,108 @@ local DrawWorldShadowVisibleFx
 local DrawScreenEffectsVisibleFx
 local DrawInMiniMapVisibleFx
 
-local function IsPosInLos(x,y,z)
-  local inLos  = Spring.IsPosInLos(x,y,z, LocalAllyTeamID)
-  --local _,inLos  = Spring.GetPositionLosState(x,y,z, LocalAllyTeamID)
-  return (inLos)
+function IsPosInLos(x,y,z)
+	return Spring.IsPosInLos(x,y,z, LocalAllyTeamID)
 end
 
+function IsPosInRadar(x,y,z)
+	return Spring.IsPosInRadar(x,y,z, LocalAllyTeamID)
+end
+
+function IsPosInAirLos(x,y,z)
+	return Spring.IsPosInAirLos(x,y,z, LocalAllyTeamID)
+end
+
+local function IsUnitFXVisible(fx)
+	local unitActive = true
+        local unitID = fx.unit
+	if fx.onActive then
+		unitActive = spGetUnitIsActive(unitID)
+		if (unitActive == nil) then
+			unitActive = true
+		end
+	end
+
+	if (not fx.onActive)or(unitActive) then
+		if fx.alwaysVisible then
+			return true
+		elseif (fx.Visible) then
+			return fx:Visible()
+		else
+			local unitRadius = (spGetUnitRadius(unitID) + 40)
+			local r = fx.radius or 0
+			return Spring.IsUnitVisible(unitID, unitRadius + r)
+		end
+	else
+		return fx.alwaysVisible
+	end
+end
+
+local function IsProjectileFXVisible(fx)
+	if fx.alwaysVisible then
+		return true
+	elseif fx.Visible then
+		return fx:Visible()
+	else
+		local proID = fx.projectile
+		local x,y,z = Spring.GetProjectilePosition(proID)
+		if (IsPosInLos(x,y,z)and (spIsSphereInView(x,y,z,(fx.radius or 200)+100)) ) then
+			return true
+		end
+	end
+end
+
+local function IsWorldFXVisible(fx)
+	if fx.alwaysVisible then
+		return true
+	elseif (fx.Visible) then
+		return fx:Visible()
+	elseif (fx.pos) then
+		local pos = fx.pos
+		if (IsPosInLos(pos[1],pos[2],pos[3]))and
+			(spIsSphereInView(pos[1],pos[2],pos[3],(fx.radius or 200)+100))
+		then
+			return true
+		end
+	end
+end
+
+
 local function CreateVisibleFxList()
-  local removeFX = {}
-  local removeCnt = 1
+	local removeFX = {}
+	local removeCnt = 1
 
-  for layerID,layer in pairs(RenderSequence) do
-    for partClass,Units in pairs(layer) do
-      for unitID,UnitEffects in pairs(Units) do
-        if (unitID>-1) then
-          local x,y,z      = spGetUnitViewPosition(unitID)
-
-          local unitActive = -1
-
-          local unitRadius = 0
-          local maxVisibleRadius = -1
-          local minNotVisibleRadius = 1e9
-
-          --// check effects
-          for i=1,#UnitEffects do
-            local fx = UnitEffects[i]
-
-            if (fx.onActive and (unitActive == -1)) then
-              unitActive = spGetUnitIsActive(unitID)
-              if (unitActive == nil) then
-                unitActive = true
-              end
-            end
-
-            if (not fx.onActive)or(unitActive) then
-			  if fx.alwaysVisible then
-				fx.visible = true
-              elseif (fx.Visible) then
-                fx.visible = fx:Visible()
-              else
-                unitRadius = unitRadius or (spGetUnitRadius(unitID) + 40)
-
-                local r = fx.radius or 0
-                if (r > maxVisibleRadius)and(r < minNotVisibleRadius) then
-                  if spIsSphereInView(x,y,z,unitRadius + r) then
-                    maxVisibleRadius = r
-                  else
-                    minNotVisibleRadius = r
-                  end
-                end
-
-                fx.visible = (r <= maxVisibleRadius)
-              end
-
-              if (fx.visible) then
-                if (not anyFXVisible) then anyFXVisible = true end
-                anyDistortionsVisible = anyDistortionsVisible or partClass.pi.distortion
-              end
-            else
-              fx.visible = fx.alwaysVisible
-			  if (not anyFXVisible) then anyFXVisible = fx.alwaysVisible end
-            end
-          end
-
-        else
-
-          for i=1,#UnitEffects do
-            local fx = UnitEffects[i]
-            fx.visible = fx.alwaysVisible
-
-			if fx.alwaysVisible then
+	local foo = 0
+	for _,fx in pairs(particles) do
+		foo = foo + 1
+		if ((fx.unit or -1) > -1) then
+			fx.visible = IsUnitFXVisible(fx)
+			if (fx.visible) then
 				if (not anyFXVisible) then anyFXVisible = true end
-                anyDistortionsVisible = anyDistortionsVisible or partClass.pi.distortion
-            elseif (fx.Visible) then
-              if (fx:Visible()) then
-                fx.visible = true
-                if (not anyFXVisible) then anyFXVisible = true end
-                anyDistortionsVisible = anyDistortionsVisible or partClass.pi.distortion
-              end
-            elseif (fx.pos) then
-              local pos = fx.pos
-              if (IsPosInLos(pos[1],pos[2],pos[3]))and
-                 (spIsSphereInView(pos[1],pos[2],pos[3],(fx.radius or 200)+100))
-              then
-                fx.visible = true
-                if (not anyFXVisible) then anyFXVisible = true end
-                anyDistortionsVisible = anyDistortionsVisible or partClass.pi.distortion
-              end
-            end
+				if (not anyDistortionsVisible) then anyDistortionsVisible = fx.pi.distortion end
+			end
+		elseif ((fx.projectile or -1) > -1) then
+			fx.visible = IsProjectileFXVisible(fx)
+			if (fx.visible) then
+			if (not anyFXVisible) then anyFXVisible = true end
+			if (not anyDistortionsVisible) then anyDistortionsVisible = fx.pi.distortion end
+			end
+		else
+			fx.visible = IsWorldFXVisible(fx)
+			if (fx.visible) then
+				if (not anyFXVisible) then anyFXVisible = true end
+				if (not anyDistortionsVisible) then anyDistortionsVisible = fx.pi.distortion end
+			elseif (fx.Valid and (not fx:Valid())) then
+				removeFX[removeCnt] = fx.id
+				removeCnt = removeCnt + 1
+			end
+		end
+	end
+	--Spring.Echo("Lups fx cnt", foo)
 
-            if (not fx.visible)and(fx.Valid and (not fx:Valid())) then
-              removeFX[removeCnt] = fx.id
-              removeCnt = removeCnt + 1
-            end
-          end
-
-        end --if
-      end --for
-    end --for
-  end --for
+	for i=1,removeCnt-1 do
+		RemoveParticles(removeFX[i])
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -932,20 +905,20 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local function CheckParticleClassReq(pi)
+	return
+		(canShader or (not pi.shader))and
+		(canFBO or (not pi.fbo))and
+		(canRTT or (not pi.rtt))and
+		(canCTT or (not pi.ctt))and
+		(canDistortions or (not pi.distortion))and
+		((not isIntel) or (pi.intel~=0))and
+		((not isMS)  or (pi.ms~=0))
+end
+
+
 local function Initialize()
   LupsConfig = LoadConfig("./lups.cfg")
-
-  --// overwrite detected hardware with lups.cfg
-  local forcevendor   = GetLupsSetting("vendor",nil)
-  local forcerenderer = GetLupsSetting("renderer",nil)
-  if (forcevendor or forcerenderer) then
-    glVendor,glRenderer = forcevendor or glVendor,forcerenderer or glRenderer
-    DetectCard(glVendor,glRenderer:lower())
-  end
-  --canFBO    = GetLupsSetting("fbo",canFBO)
-  --canRTT    = GetLupsSetting("rtt",canRTT)
-  --canCTT    = GetLupsSetting("ctt",canCTT)
-  --canShader = GetLupsSetting("shader",canShader)
 
   --// set verbose level
   local showWarnings = LupsConfig.showwarnings
@@ -964,19 +937,7 @@ local function Initialize()
   if DistortionClass then
     fxClasses["postdistortion"]=nil --// remove it from default classes
     local di = DistortionClass.pi
-    if (di)and
-
-       (canShader or (not di.shader))and
-       (canFBO or (not di.fbo))and
-       (canRTT or (not di.rtt))and
-       (canCTT or (not di.ctt))and
-
-       ( (isNvidia and (NVseries >= (di.nvseries or 0)))  or true)and
-       ( (isATI and   (ATIseries >= (di.atiseries or 0))) or true)and
-
-       ((not isIntel) or (di.intel~=0))and
-       ((not isMS)  or (di.ms~=0))
-    then
+    if (di) and CheckParticleClassReq(di) then
       local fine = true
       if (DistortionClass.Initialize) then fine = DistortionClass.Initialize() end
       if (fine~=nil)and(fine==false) then
@@ -1002,20 +963,7 @@ local function Initialize()
   --// initialize particle classes
   for fxName,fxClass in pairs(fxClasses) do
     local fi = fxClass.pi --// .fi = fxClass.GetInfo()
-    if (fi)and
-       (not disableFX[fxName])and
-
-       (canShader or (not fi.shader))and
-       (canFBO or (not fi.fbo))and
-       (canRTT or (not fi.rtt))and
-       (canCTT or (not fi.ctt))and
-       (canDistortions or (not fi.distortion))and
-
-       ( (isNvidia and (NVseries >= (fi.nvseries or 0)))  or true)and
-       ( (isATI and   (ATIseries >= (fi.atiseries or 0))) or true)and
-       ((not isIntel) or (fi.intel~=0))and
-       ((not isMS)  or (fi.ms~=0))
-    then
+    if (not disableFX[fxName]) and (fi) and CheckParticleClassReq(fi) then
       local fine = true
       if (fxClass.Initialize) then fine = fxClass.Initialize() end
       if (fine~=nil)and(fine==false) then
@@ -1051,6 +999,7 @@ local function Initialize()
   GG.Lups.GetStats          = GetStats
   GG.Lups.GetErrorLog       = GetErrorLog
   GG.Lups.AddParticles      = AddParticles
+  GG.Lups.GetParticles      = GetParticles
   GG.Lups.RemoveParticles   = RemoveParticles
   GG.Lups.AddParticlesArray = AddParticlesArray
   GG.Lups.HasParticleClass  = HasParticleClass
