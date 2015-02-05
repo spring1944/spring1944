@@ -17,19 +17,32 @@ local tags = {
 	defaultElevateSpeed = math.rad(615),
 }
 
-local poses = {
-	ready =	{
-					turns = {
-						{crewman1, x_axis, 0},
-						{crewman2, x_axis, 0},
+local poses
+if crewman1 and crewman2 then
+	poses = {
+		ready =	{
+						turns = {
+							{crewman1, x_axis, 0},
+							{crewman2, x_axis, 0},
+						},
 					},
-				},
-	pinned = {
-						{crewman1, x_axis, math.rad(70)},
-						{crewman2, x_axis, math.rad(70)},
-				},
-	
-}
+		pinned = {
+							{crewman1, x_axis, math.rad(70)},
+							{crewman2, x_axis, math.rad(70)},
+					},
+		
+	}
+else
+	poses = {
+		ready =	{
+						turns = {
+						},
+					},
+		pinned = {
+					},
+		
+	}
+end
 
 local keyframes = {
 	fire = {}

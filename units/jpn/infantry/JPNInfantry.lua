@@ -51,7 +51,7 @@ local JPN_Type92HMG_Sandbag = SandbagMG:New{
 	name				= "Deployed Type 92 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
-			name				= "Type92",
+			name				= "Type92MG",
 		},
 	},
 }

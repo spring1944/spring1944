@@ -15,23 +15,23 @@ local Deployed = Unit:New{
 	maxSlope					= 15,
 	maxWaterDepth				= 0,
 	radardistance				= 650,
+	script						= "Deployed.lua",
 	sightDistance				= 650,
 	stealth						= true,
 	useBuildingGroundDecal		= true,
 	
 	customParams = {
+		cegPiece = {
+			[1]				= "flare",
+			[2]				= "flare",
+		},
 		feartarget		= 1,
 		soundcategory	= "<SIDE>/Gun",
 	},
 }
 
 local DeployedGun = Deployed:New{
-	script				= "Deployed.lua",
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
-		cegPiece = {
-			[1]				= "flare",
-			[2]				= "flare",
-		},
 		maxammo			= 4,
 		scriptAnimation	= "gun",
 	},
@@ -67,7 +67,6 @@ local SandbagMG = Deployed:New{
 	maxDamage					= 1600,
 	noChaseCategory				= "OPENVEH AIR FLAG SOFTVEH MINE",
 	objectName					= "<SIDE>/<SIDE>SandbagMG.S3O",
-	script						= "gbrvickers_sandbag.cob",
 
 	customParams = {
 		scriptAnimation		= "hmg",

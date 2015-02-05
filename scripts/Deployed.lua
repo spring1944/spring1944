@@ -33,6 +33,7 @@ local REAIM_THRESHOLD = 0.15
 
 local FEAR_LIMIT = 25
 local FEAR_PINNED = 2
+local FEAR_MAX = 15
 
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
@@ -269,11 +270,11 @@ function script.QueryWeapon(num)
 	if nextRocket then
 		return piece("rocket" .. nextRocket) or tubes
 	end
-	return barrel or tubes or carriage
+	return weaponTags.pitchPiece
 end
 
 function script.AimFromWeapon(num)
-	return barrel or tubes or carriage
+	return weaponTags.pitchPiece
 end
 
 local function IsLoaded()
@@ -394,7 +395,6 @@ function script.Killed(recentDamage, maxHealth)
 end
 
 function RestoreAfterCover()
-	--Spring.Echo("restoring")
 	Signal(SIG_FEAR)
 	fear = 0
 	Spring.SetUnitRulesParam(unitID, "suppress", 0)
@@ -430,7 +430,6 @@ function AddFear(amount)
 end
 
 function ToggleWeapon(num, isEnabled)
-	Spring.Echo("bla")
 	weaponEnabled[num] = isEnabled
 end
 

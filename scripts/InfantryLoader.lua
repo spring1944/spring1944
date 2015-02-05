@@ -144,6 +144,7 @@ local function CreateMainPoses(mainVariants)
 end
 
 if mainAnim then
+	Spring.Echo("main", UnitDef.name)
 	local mainTags, mainVariants, mainKeyFrames, mainKeyFrameDelays = include("anims/infantry/" .. mainAnim .. ".lua")
 	CreateMainPoses(mainVariants)
 
@@ -328,6 +329,9 @@ local transitions = {}
 local fireTransitions = {}
 
 local function CreateVariantTransitions(transitionsMap, startVariant, endVariant, intermediateStances, delays)
+	if not (startVariant and endVariant) then
+		return
+	end
 	if not intermediateStances then
 		intermediateStances = keyframes.default
 	end
@@ -335,6 +339,7 @@ local function CreateVariantTransitions(transitionsMap, startVariant, endVariant
 		delays = keyframeDelays.default
 	end
 	if startVariant ~= endVariant then
+		Spring.Echo(startVariant, endVariant)
 		for _, startPoseID in pairs(startVariant) do
 			for _, endPoseID in pairs(endVariant) do
 				local transition = CreateTransition(startPoseID, intermediateStances, endPoseID, delays)

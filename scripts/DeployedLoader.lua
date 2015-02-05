@@ -2,8 +2,6 @@
 local DEFAULT_TURN_SPEED = math.rad(300)
 local DEFAULT_MOVE_SPEED = 100
 
-
-
 local function GetManipulationData(manipulationArray)
 	local data = {}
 	if not manipulationArray then

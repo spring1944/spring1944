@@ -2,6 +2,7 @@
 
 -- Grenade Base Class
 local GrenadeClass = Weapon:New{
+	avoidFeature       = false,
 	bounceRebound      = 0.2,
 	bounceSlip         = 0.1,
 	canAttackGround    = false,
