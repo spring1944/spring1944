@@ -15,25 +15,29 @@ if (gadgetHandler:IsSyncedCode()) then
 
 -- Localisations
 GG.lusHelper = {}
-sqrt = math.sqrt
+local sqrt = math.sqrt
+local random = math.random
 -- Synced Read
 local GetUnitPieceInfo 		= Spring.GetUnitPieceInfo
 local GetUnitPieceMap		= Spring.GetUnitPieceMap
 local GetUnitPiecePosDir	= Spring.GetUnitPiecePosDir
 local GetUnitPosition		= Spring.GetUnitPosition
+local GetUnitWeaponTarget	= Spring.GetUnitWeaponTarget
 -- Synced Ctrl
 local PlaySoundFile			= Spring.PlaySoundFile
 local SpawnCEG				= Spring.SpawnCEG
+local SetUnitWeaponState	= Spring.SetUnitWeaponState
 -- LUS
 local CallAsUnit 			= Spring.UnitScript.CallAsUnit	
 
 -- Unsynced Ctrl
 -- Constants
+local RANGE_INACCURACY_PERCENT = 5
 -- Variables
 
 -- Useful functions for GG
 
-function RemoveGrassSquare(x, z, r)
+function GG.RemoveGrassSquare(x, z, r)
 	local startX = math.floor(x - r/2)
 	local startZ = math.floor(z - r/2)
 	for i = 0, r, Game.squareSize * 4 do
@@ -43,20 +47,18 @@ function RemoveGrassSquare(x, z, r)
 		end
 	end
 end
-GG.RemoveGrassSquare = RemoveGrassSquare
 
-function RemoveGrassCircle(cx, cz, r)
+function GG.RemoveGrassCircle(cx, cz, r)
 	local r2 = r * r
 	for z = 0, 2 * r, Game.squareSize * 4 do -- top to bottom diameter
-		local lineLength = math.sqrt(r2 - (r - z) ^ 2)
+		local lineLength = sqrt(r2 - (r - z) ^ 2)
 		for x = -lineLength, lineLength, Game.squareSize * 4 do
 			Spring.RemoveGrass((cx + x)/Game.squareSize, (cz + z - r)/Game.squareSize)
 		end
 	end
 end
-GG.RemoveGrassCircle = RemoveGrassCircle
 
-function SpawnDecal(decalType, x, y, z, teamID, delay, duration)
+function GG.SpawnDecal(decalType, x, y, z, teamID, delay, duration)
 	if delay then
 		GG.Delay.DelayCall(SpawnDecal, {decalType, x, y, z, teamID, nil, duration}, delay)
 	else
@@ -69,14 +71,28 @@ function SpawnDecal(decalType, x, y, z, teamID, delay, duration)
 		end
 	end
 end
-GG.SpawnDecal = SpawnDecal
 
-function EmitSfxName(unitID, pieceNum, effectName) -- currently unused
+function GG.EmitSfxName(unitID, pieceNum, effectName) -- currently unused
 	SpawnCEG(effectName, GetUnitPiecePosDir(unitID, pieceNum))
 end
-GG.EmitSfxName = EmitSfxName
 
-local function RecursiveHide(unitID, pieceNum, hide)
+
+
+function GG.LimitRange(unitID, weaponNum, defaultRange)
+	local targetType, _, targetID = GetUnitWeaponTarget(unitID, weaponNum)
+	if targetType == 1 then -- it's a unit
+		Spring.Echo(targetID)
+		local tx, ty, tz = GetUnitPosition(targetID)
+		local ux, uy, uz = GetUnitPosition(unitID)
+		local distance = sqrt((tx - ux)^2 + (ty - uy)^2 + (tz - uz)^2)
+		local distanceMult = 1 + (random(-RANGE_INACCURACY_PERCENT, RANGE_INACCURACY_PERCENT) / 100)
+		SetUnitWeaponState(unitID, weaponNum, "range", distanceMult * distance)
+	end
+	SetUnitWeaponState(unitID, weaponNum, "range", defaultRange)
+end
+
+
+function GG.RecursiveHide(unitID, pieceNum, hide)
 	-- Hide this piece
 	local func = (hide and Spring.UnitScript.Hide) or Spring.UnitScript.Show
 	CallAsUnit(unitID, func, pieceNum)
@@ -86,25 +102,22 @@ local function RecursiveHide(unitID, pieceNum, hide)
 	if children then
 		for _, pieceName in pairs(children) do
 			--Spring.Echo("pieceName:", pieceName, pieceMap[pieceName])
-			RecursiveHide(unitID, pieceMap[pieceName], hide)
+			GG.RecursiveHide(unitID, pieceMap[pieceName], hide)
 		end
 	end
 end
-GG.RecursiveHide = RecursiveHide
 
-local function PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
+function GG.PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
 	local x,y,z = GetUnitPosition(unitID)
 	volume = volume or 5
 	channel = channel or "sfx"
 	PlaySoundFile(sound, volume, x, y, z, sx, sy, sz, channel)
 end
-GG.PlaySoundAtUnit = PlaySoundAtUnit
 
 local unsyncedBuffer = {}
-local function PlaySoundForTeam(teamID, sound, volume)
+function GG.PlaySoundForTeam(teamID, sound, volume)
 	table.insert(unsyncedBuffer, {teamID, sound, volume})
 end
-GG.PlaySoundForTeam = PlaySoundForTeam
 
 function gadget:GameFrame(n)
 	for _, callInfo in pairs(unsyncedBuffer) do
@@ -113,13 +126,12 @@ function gadget:GameFrame(n)
 	unsyncedBuffer = {}
 end
 
-local function GetUnitDistanceToPoint(unitID, tx, ty, tz, bool3D)
+function GG.GetUnitDistanceToPoint(unitID, tx, ty, tz, bool3D)
 	local x,y,z = GetUnitPosition(unitID)
 	local dy = (bool3D and ty and (ty - y)^2) or 0
 	local distanceSquared = (tx - x)^2 + (tz - z)^2 + dy
 	return sqrt(distanceSquared)
 end
-GG.GetUnitDistanceToPoint = GetUnitDistanceToPoint
 
 -- Include table utilities
 VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
@@ -225,6 +237,7 @@ function gadget:GamePreload()
 		local burstRates = {}
 		local reloadTimes = {}
 		local minRanges = {}
+		local explodeRanges = {}
 		local flareOnShots = {}
 		local weaponAnimations = {}
 		local weaponCEGs = {}
@@ -236,6 +249,9 @@ function gadget:GamePreload()
 			burstLengths[i] = weaponDef.salvoSize
 			burstRates[i] = weaponDef.salvoDelay
 			minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
+			if weaponDef.selfExplode then
+				explodeRanges[i] = weaponDef.range
+			end
 			if weaponDef.type == "MissileLauncher" then
 				missileWeaponIDs[i] = true
 			end
@@ -251,6 +267,7 @@ function gadget:GamePreload()
 		info.burstLengths = burstLengths
 		info.burstRates = burstRates
 		info.minRanges = minRanges
+		info.explodeRanges = explodeRanges
 		info.weaponAnimations = weaponAnimations
 		info.weaponCEGs = weaponCEGs
 		info.seismicPings = seismicPings

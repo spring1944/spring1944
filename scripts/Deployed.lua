@@ -10,6 +10,9 @@ local brakeright = piece "brakeright"
 
 local carriage = piece "carriage"
 
+local turret = piece "turret"
+local sleeve = piece "sleeve"
+
 if not GG.lusHelper[unitDefID].animation then
 	GG.lusHelper[unitDefID].animation = {include "DeployedLoader.lua"}
 end
@@ -38,11 +41,6 @@ local RECOIL_DELAY = 198
 
 local VISIBLE_PERIOD = 5000
 
-local turretTraverseSpeed = math.rad(25)
-local turretElevateSpeed = math.rad(17)
-local recoilDistance = 2.4
-local recoilReturnSpeed = 10
-
 
 --CURRENT UNIT STATE
 local pinned
@@ -55,10 +53,18 @@ local inTransition
 local currentPoseName
 
 -- AIMING VARS
+local headingPiece
 local currentPitch
 local currentHeading
 
+
 -- OTHER
+
+local turretTraverseSpeed
+local turretElevateSpeed
+local recoilDistance = 2.4
+local recoilReturnSpeed = 10
+
 local fear
 local nextRocket
 local weaponEnabled = {}
@@ -149,13 +155,11 @@ local function ReAim(newHeading, newPitch)
 	end
 	
 	SetSignalMask(SIG_AIM)
-	local headingPiece = carriage
-	local pitchPiece = barrel or tubes
-	Turn(headingPiece, y_axis, newHeading, turretTraverseSpeed)
-	Turn(pitchPiece, x_axis, -newPitch, turretElevateSpeed)
+	Turn(weaponTags.headingPiece, y_axis, newHeading, turretTraverseSpeed)
+	Turn(weaponTags.pitchPiece, x_axis, -newPitch, turretElevateSpeed)
 	
-	WaitForTurn(headingPiece, y_axis)
-	WaitForTurn(pitchPiece, x_axis)
+	WaitForTurn(weaponTags.headingPiece, y_axis)
+	WaitForTurn(weaponTags.pitchPiece, x_axis)
 	
 	currentHeading = newHeading
 	currentPitch = newPitch
@@ -233,9 +237,9 @@ function script.Create()
 	currentHeading = nil
 	firing = false
 	UpdatePose(pinned)
-	weaponEnabled[1] = true
-	for i=2,GG.lusHelper[unitDefID].numWeapons do
-		weaponEnabled[i] = false
+	--weaponEnabled[1] = true
+	for i=1,GG.lusHelper[unitDefID].numWeapons do
+		weaponEnabled[i] = true
 	end
 	if GG.lusHelper[unitDefID].numRockets > 0 then
 		nextRocket = 1
@@ -243,6 +247,9 @@ function script.Create()
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
 	end
+	
+	turretTraverseSpeed = UnitDef.customParams.turretTraverseSpeed or weaponTags.defaultTraverseSpeed
+	turretElevateSpeed = UnitDef.customParams.turretElevateSpeed or weaponTags.defaultElevateSpeed
 end
 
 local function StopPinned()
@@ -290,6 +297,7 @@ local function Recoil()
 end
 
 function script.AimWeapon(num, heading, pitch)
+	--Spring.Echo("aiming", num, weaponEnabled[num])
 	if not weaponEnabled[num] then
 		return false
 	end
@@ -297,7 +305,13 @@ function script.AimWeapon(num, heading, pitch)
 	Signal(SIG_AIM)
 	wantedHeading = heading
 	wantedPitch = pitch
-	if CanFire() then return ReAim(heading, pitch) end
+	if CanFire() and ReAim(heading, pitch) then
+		local explodeRange = GG.lusHelper[unitDefID].explodeRanges[num]
+		if explodeRange then
+			GG.LimitRange(unitID, num, explodeRange)
+		end
+		return true
+	end
 	return false
 end
 
@@ -309,6 +323,10 @@ function script.FireWeapon(num)
 	firing = true
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, false)
+	end
+	local explodeRange = GG.lusHelper[unitDefID].explodeRanges[num]
+	if explodeRange then
+		Spring.SetUnitWeaponState(unitID, num, "range", explodeRange)
 	end
 end
 
@@ -412,6 +430,7 @@ function AddFear(amount)
 end
 
 function ToggleWeapon(num, isEnabled)
+	Spring.Echo("bla")
 	weaponEnabled[num] = isEnabled
 end
 

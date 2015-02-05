@@ -26,6 +26,7 @@ local Deployed = Unit:New{
 }
 
 local DeployedGun = Deployed:New{
+	script				= "Deployed.lua",
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
 		cegPiece = {
 			[1]				= "flare",
@@ -107,7 +108,6 @@ local ATGun = DeployedGun:New{
 	description			= "Deployed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
-	script				= "Deployed.lua",
 	customParams = {
 		weaponswithammo		= 1,
 	},
@@ -130,7 +130,6 @@ local FGGun = DeployedGun:New{
 	description			= "Deployed Field Gun",
 	buildCostMetal		= 1300,
 	iconType			= "artillery",
-	script				= "Deployed.lua",
 	customParams = {
 		weaponswithammo		= 2,
 	},
@@ -148,7 +147,6 @@ local HGun = DeployedGun:New{
 	description			= "Deployed Howitzer",
 	buildCostMetal		= 1800,
 	iconType			= "artillery",
-	script				= "Deployed.lua",
 	customParams = {
 		canAreaAttack		= true,
 		weaponswithammo		= 2,
@@ -168,13 +166,12 @@ local RGun = DeployedGun:New{
 	description			= "Deployed Rocket Launcher",
 	buildCostMetal		= 3600,
 	iconType			= "artillery",
-	script				= "Deployed.lua",
 	customParams = {
 		cegPiece = {
 			[1]				= "backblast",
 		},
 		weaponswithammo		= 1,
-		--scriptAnimation		= "rocket",
+		scriptAnimation		= "rocket",
 	},
 	weapons = {
 		[1] = {

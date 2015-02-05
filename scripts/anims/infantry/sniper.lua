@@ -19,7 +19,7 @@ local rthigh = piece "rthigh"
 local rleg = piece "rleg"
 local rfoot = piece "rfoot"
 
-local tags, variants, keyframes, keyframeDelays = include "anims/rifle.lua"
+local tags, variants, keyframes, keyframeDelays = include "anims/infantry/rifle.lua"
 tags.canStandFire = true
 tags.canRunFire = false
 tags.canProneFire = true
