@@ -1,0 +1,31 @@
+local fxs = {
+	flameHeat = {
+		class = "JitterParticles2",
+		options = {
+			colormap		= { {1,1,1,1},{1,1,1,1} },
+			count			= 6,
+			life			= 50,
+			delaySpread		= 25,
+			force			= {0,1.5,0},
+			emitRotSpread	= 10,
+			speed			= 7,
+			speedSpread		= 0,
+			speedExp		= 1.5,
+			size			= 15,
+			sizeGrowth		= 5.0,
+			scale			= 1.5,
+			strength		= 1.0,
+			heat			= 2,
+		},
+	},
+	mgtracer = {
+		class = "ribbon",
+		options = {size = 3, width = 1, color = {0.95, 0.05, 0,0.9}, texture = "bitmaps/ProjectileTextures/GPL/plasma.tga"},
+	},
+	cannon20tracer = {
+		class = "ribbon",
+		options = {size = 3, width = 2, color = {0.65, 0.65, 0,0.9}, texture = "bitmaps/ProjectileTextures/GPL/plasma.tga"},
+	},
+}
+
+return fxs
