@@ -83,6 +83,7 @@
 
   weapon3=BredaM38;
   onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
+  weaponMainDir3=0 0 1;
   maxAngleDif3=10;
 
 	weapon4=BredaM38;
@@ -92,7 +93,10 @@
 
 	weapon5=BredaM38;
 	onlyTargetCategory5=INFANTRY SOFTVEH DEPLOYED;
+	weaponMainDir5=0 0 1;
 	weaponSlaveTo5=4;
+	
+	maxAngleDif5=30;
 
   weapon6=.50calproof;
 
