@@ -69,8 +69,8 @@ function gadget:ProjectileCreated(proID, proOwnerID, weaponDefID)
     if not unitWeaponRounds[proOwnerID] then
       unitWeaponRounds[proOwnerID] = {}
     end
-	unitWeaponRounds[proOwnerID][weaponDefID] = (unitWeaponRounds[proOwnerID][weaponDefID] or 4) + 1
-    if unitWeaponRounds[proOwnerID][weaponDefID] == 5 then --customparam this later too
+	unitWeaponRounds[proOwnerID][weaponDefID] = (unitWeaponRounds[proOwnerID][weaponDefID] or 0) + 1
+    if unitWeaponRounds[proOwnerID][weaponDefID] == (tonumber(WeaponDefs[weaponDefID].customParams.tracerfreq or 5)) then --customparam this later too
 	  unitWeaponRounds[proOwnerID][weaponDefID] = 0
 	  --TODO: batch sending if required
       SendToUnsynced("lupsProjectiles_AddProjectile", proID, proOwnerID, weaponDefID)

@@ -200,6 +200,10 @@ local Cannon = Weapon:New{
 	stages             = 50,
 	turret             = true,
 	weaponType         = "Cannon",
+	customparams = {
+		projectilelups     = {"cannontracer"},
+		tracerfreq         = 1,
+	},
 }
 
 -- Armour - Tank Guns
@@ -344,18 +348,6 @@ local Howitzer = Cannon:New{
 
 -- Artillery - Mortars
 
-local Cannon = Weapon:New{
-	avoidFeature       = false,
-	collisionSize      = 4,
-	impulseFactor      = 0,
-	rgbColor           = [[0.5 0.5 0.0]], -- TODO: check that this is overriden by ap colormap
-	separation         = 2,
-	size               = 1,
-	stages             = 50,
-	turret             = true,
-	weaponType         = "Cannon",
-}
-
 local Mortar = Cannon:New{
 	accuracy           = 485,
 	collideFriendly    = false,
@@ -401,6 +393,7 @@ return {
 	AutoCannonAA = AutoCannonAA,
 	AntiAirGunAA = AntiAirGunAA,
 	-- WEAPON TYPES
+	Cannon = Cannon,
 	-- (Anti) Tank Guns
 	TankGun = TankGun,
 	AirATGun = AirATGun,

@@ -193,7 +193,7 @@ end
 
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do
-		if weaponDef.customParams.fearid then
+		if weaponDef.customParams.fearid or weaponDef.customParams.projectilelups then
 			--Spring.Echo(weaponDef.name) -- useful for debugging
 			Script.SetWatchWeapon(weaponId, true)
 		end
