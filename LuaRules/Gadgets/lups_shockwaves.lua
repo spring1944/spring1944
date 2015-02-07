@@ -41,7 +41,7 @@ if (gadgetHandler:IsSyncedCode()) then
       --local growth = wd.explosionSpeed
       --local life = wd.damageAreaOfEffect / wd.explosionSpeed
       local growth = (wd.damageAreaOfEffect*1.1)/20
-      local life = 23
+      local life = 16--23
       SendToUnsynced("lups_shockwave", px, py, pz, growth, life)
     end
 

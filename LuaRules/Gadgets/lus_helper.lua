@@ -81,7 +81,7 @@ end
 function GG.LimitRange(unitID, weaponNum, defaultRange)
 	local targetType, _, targetID = GetUnitWeaponTarget(unitID, weaponNum)
 	if targetType == 1 then -- it's a unit
-		Spring.Echo(targetID)
+		--Spring.Echo(targetID)
 		local tx, ty, tz = GetUnitPosition(targetID)
 		local ux, uy, uz = GetUnitPosition(unitID)
 		local distance = sqrt((tx - ux)^2 + (ty - uy)^2 + (tz - uz)^2)
