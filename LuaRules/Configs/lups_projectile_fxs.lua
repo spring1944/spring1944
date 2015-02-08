@@ -20,7 +20,7 @@ local fxs = {
 	},
 	mgtracer = {
 		class = "ribbon",
-		options = {size = 3, width = 1.5, color = {0.95, 0.05, 0,0.95}, texture = "bitmaps/ProjectileTextures/tracer3.jpg"},
+		options = {size = 3, width = 1.5, color = {0.95, 0.05, 0,0.95}, texture = "bitmaps/ProjectileTextures/tracer1.png"},
 	},
 	cannon20tracer = {
 		class = "ribbon",
