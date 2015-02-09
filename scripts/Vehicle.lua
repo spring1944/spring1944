@@ -47,6 +47,7 @@ local WHEEL_ACCELERATION_FACTOR = 3
 
 local REAIM_THRESHOLD = 0.15
 
+
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
 	SetSignalMask(mask)
@@ -110,6 +111,8 @@ function script.Create()
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
+	Turn(headingPiece, y_axis, 0)
+	Turn(mantlet, x_axis, 0)	
 end
 
 local function SpinWheels()
@@ -159,11 +162,24 @@ function script.StopMoving()
 	StopWheels()
 end
 
+local function RestoreTurret()
+	Turn(headingPiece, y_axis, 0, turretTraverseSpeed)
+	Turn(mantlet, x_axis, 0, turretElevateSpeed)	
+end
+
 local function StopAiming(weaponNum)
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
 	if prioritisedWeapon == weaponNum then
 		prioritisedWeapon = nil
 	end
+	
+	for i = 1,GG.lusHelper[unitDefID].numWeapons do
+		-- If we're still aiming at anything, we don't want to restore the turret
+		if wantedDirection[i][1] then
+			return
+		end
+	end
+	RestoreTurret()
 end
 
 local function IsMainGun(weaponNum)
