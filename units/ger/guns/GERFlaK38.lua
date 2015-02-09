@@ -19,9 +19,6 @@ local GER_FlaK38_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "flak3820mmhe",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 

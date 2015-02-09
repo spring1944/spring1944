@@ -53,12 +53,6 @@ local GER_Ju87G = Fighter:New{
 			maxAngleDif			= 25,
 			slaveTo				= 5,
 		},
-		[7] = {
-			name 				= "Small_Tracer",
-		},
-		[8] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

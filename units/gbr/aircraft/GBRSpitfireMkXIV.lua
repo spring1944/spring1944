@@ -39,12 +39,6 @@ local GBR_SpitfireMkXIV = Interceptor:New{
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
-		[5] = {
-			name 				= "Medium_Tracer",
-		},
-		[6] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

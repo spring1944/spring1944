@@ -42,12 +42,6 @@ local ITA_Reggiane2005 = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
-		[6] = {
-			name 				= "Medium_Tracer",
-		},
-		[7] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

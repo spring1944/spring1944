@@ -16,9 +16,6 @@ local SWE_S14B = Recon:New{
 			maxAngleDif			= 90,
 			weaponMainDir		= [[0 .75 -1]],
 		},
-		[2] = {
-			name				= "Small_Tracer",
-		},
 	},
 }
 

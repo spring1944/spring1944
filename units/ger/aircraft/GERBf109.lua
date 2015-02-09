@@ -31,12 +31,6 @@ local GER_Bf109 = Interceptor:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
-		[4] = {
-			name 				= "Medium_Tracer",
-		},
-		[5] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

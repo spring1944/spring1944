@@ -19,9 +19,6 @@ local ITA_Breda20_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "BredaM3520mmHE",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 

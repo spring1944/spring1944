@@ -31,9 +31,6 @@ local RUS_LCT = TankLandingCraft:New{
 			maxAngleDif			= 240,
 			mainDir				= [[-1 0 0]],
 		},
-		[5] = {
-			name				= "Large_Tracer",
-		},
 	},
 	customparams = {
 		--[[ enable me later when using LUS

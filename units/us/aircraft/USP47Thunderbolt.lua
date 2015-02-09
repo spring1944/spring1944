@@ -58,9 +58,6 @@ local US_P47Thunderbolt = FighterBomber:New{
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
-		[10] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

@@ -47,9 +47,6 @@ local ITA_FiatCR42 = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
-		[7] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

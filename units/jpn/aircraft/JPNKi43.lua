@@ -27,9 +27,6 @@ local JPN_Ki43 = Interceptor:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},	
-		[3] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

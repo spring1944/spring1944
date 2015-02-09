@@ -35,9 +35,6 @@ local US_LCT = TankLandingCraft:New{
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[-1 0 0]],
 		},
-		[5] = {
-			name				= "Large_Tracer",
-		},
 	},
 	customparams = {
 		--[[ enable me later when using LUS

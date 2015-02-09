@@ -1,4 +1,4 @@
--- Misc - Tracers
+-- Misc - Torpedos
 
 -- Implementations
 local GBR18inTorpedo = TorpedoClass:New{

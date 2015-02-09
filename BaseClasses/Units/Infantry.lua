@@ -85,9 +85,6 @@ local LMGInf = Infantry:New{
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
 		},
-		[2] = { -- Tracer
-			name				= "Small_Tracer",
-		},
 	},
 }
 

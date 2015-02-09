@@ -20,9 +20,6 @@ local JPN_Type98_20mm_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "Type9820mmHE",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 

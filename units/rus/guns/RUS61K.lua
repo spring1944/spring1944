@@ -18,9 +18,6 @@ local RUS_61K_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "M1939_61k37mmhe",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 
