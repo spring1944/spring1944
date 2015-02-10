@@ -5,6 +5,9 @@ local mantlet = piece "mantlet"
 local barrel = piece "barrel"
 local base = piece "base"
 
+
+local info = GG.lusHelper[unitDefID]
+
 local headingPiece = turret or mantlet
 
 --Localisations
@@ -15,10 +18,6 @@ local rad = math.rad
 local atan2 = math.atan2
 
 -- Should be fetched from OO defs when time comes
-local turretTraverseSpeed = rad(25)
-local turretElevateSpeed = rad(17)
-local recoilDistance = 2.4
-local recoilReturnSpeed = 10
 local rockSpeedFactor = rad(50)
 local rockRestoreSpeed = rad(20)
 
@@ -86,7 +85,6 @@ local function DamageSmoke(smokePieces)
 end
 
 function script.Create()
-	local info = GG.lusHelper[unitDefID]
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
@@ -111,13 +109,17 @@ function script.Create()
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
-	Turn(headingPiece, y_axis, 0)
-	Turn(mantlet, x_axis, 0)	
+	if headingPiece then
+		Turn(headingPiece, y_axis, 0)
+	end
+	if mantlet then
+		Turn(mantlet, x_axis, 0)
+	end
 end
 
 local function SpinWheels()
 	SetSignalMask(SIG_MOVE)
-	local wheelSpeeds = GG.lusHelper[unitDefID].wheelSpeeds
+	local wheelSpeeds = info.wheelSpeeds
 	while true do
 		local frontDir = Spring.GetUnitVectors(unitID)
 		local vx, vy, vz = Spring.GetUnitVelocity(unitID)
@@ -132,7 +134,7 @@ end
 
 local function SwapTracks()
 	SetSignalMask(SIG_MOVE)
-	local tracks = GG.lusHelper[unitDefID].tracks
+	local tracks = info.tracks
 	while true do
 		Hide(tracks[currentTrack])
 		currentTrack = (currentTrack % #tracks) + 1
@@ -142,17 +144,17 @@ local function SwapTracks()
 end
 
 local function StopWheels()
-	for wheelPiece, speed in pairs(GG.lusHelper[unitDefID].wheelSpeeds) do
+	for wheelPiece, speed in pairs(info.wheelSpeeds) do
 		StopSpin(wheelPiece, x_axis, speed / WHEEL_ACCELERATION_FACTOR)
 	end
 end
 
 function script.StartMoving()
 	Signal(SIG_MOVE)
-	if GG.lusHelper[unitDefID].numWheels > 0 then
+	if info.numWheels > 0 then
 		StartThread(SpinWheels)
 	end
-	if #(GG.lusHelper[unitDefID].tracks) > 1 then
+	if #info.tracks > 1 then
 		StartThread(SwapTracks)
 	end
 end
@@ -163,8 +165,8 @@ function script.StopMoving()
 end
 
 local function RestoreTurret()
-	Turn(headingPiece, y_axis, 0, turretTraverseSpeed)
-	Turn(mantlet, x_axis, 0, turretElevateSpeed)	
+	Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
+	Turn(mantlet, x_axis, 0, info.elevationSpeed)	
 end
 
 local function StopAiming(weaponNum)
@@ -173,7 +175,7 @@ local function StopAiming(weaponNum)
 		prioritisedWeapon = nil
 	end
 	
-	for i = 1,GG.lusHelper[unitDefID].numWeapons do
+	for i = 1,info.numWeapons do
 		-- If we're still aiming at anything, we don't want to restore the turret
 		if wantedDirection[i][1] then
 			return
@@ -183,7 +185,7 @@ local function StopAiming(weaponNum)
 end
 
 local function IsMainGun(weaponNum)
-	return weaponNum <= GG.lusHelper[unitDefID].weaponsWithAmmo
+	return weaponNum <= info.weaponsWithAmmo
 end
 
 local function GetHeadingToTarget(target)
@@ -246,8 +248,8 @@ local function ResolveDirection()
 		end
 	end
 	if topDirection then
-		Turn(headingPiece, y_axis, topDirection[1], turretTraverseSpeed)
-		Turn(mantlet, x_axis, -topDirection[2], turretElevateSpeed)
+		Turn(headingPiece, y_axis, topDirection[1], info.turretTurnSpeed)
+		Turn(mantlet, x_axis, -topDirection[2], info.elevationSpeed)
 	end
 end
 
@@ -281,7 +283,7 @@ local function CanFire(weaponNum)
 		return false
 	end
 	if IsMainGun(weaponNum) then
-		for i = 1,GG.lusHelper[unitDefID].weaponsWithAmmo do
+		for i = 1,info.weaponsWithAmmo do
 			if i ~= weaponNum then
 				local _, loaded = Spring.GetUnitWeaponState(unitID, i)
 				if not loaded then 
@@ -331,7 +333,7 @@ end
 
 function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
-	for wheelPiece, _ in pairs(GG.lusHelper[unitDefID].wheelSpeeds) do
+	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end
 	if recentDamage > maxHealth then -- Overkill
@@ -351,13 +353,13 @@ function script.Killed(recentDamage, maxHealth)
 		corpse = 3
 	end
 	
-	return math.min(GG.lusHelper[unitDefID].numCorpses - 1, corpse)
+	return math.min(info.numCorpses - 1, corpse)
 end
 
 local function Recoil()
-	Move(barrel, z_axis, -recoilDistance)
+	Move(barrel, z_axis, -info.barrelRecoilDist)
 	Sleep(RECOIL_DELAY)
-	Move(barrel, z_axis, 0, recoilReturnSpeed)
+	Move(barrel, z_axis, 0, info.barrelRecoilSpeed)
 end
 
 local function Rock(anglex, anglez)
@@ -386,10 +388,10 @@ end
 
 function script.Shot(weaponNum)
 	lastShot = weaponNum
-	if IsMainGun(weaponNum) and barrel and recoilDistance then
+	if IsMainGun(weaponNum) and barrel then
 		StartThread(Recoil)
 	end
-	local ceg = GG.lusHelper[unitDefID].weaponCEGs[weaponNum]
+	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
 		local cegPiece = IsMainGun(weaponNum) and flare or coaxflare
 		Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
