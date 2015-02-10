@@ -12,10 +12,6 @@ local GBR_LCA = InfantryLandingCraft:New{
 			name				= "bren",
 			maxAngleDif			= 90,
 		},
-		--[2] is missing?
-		[3] = {
-			name				= "Small_Tracer",
-		},
 	},
 	customparams = {
 		armor_front				= 28.5, -- 3/8in for doors, + 3/4in? ramp

@@ -46,9 +46,6 @@ local US_P51DMustang = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
-		[7] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

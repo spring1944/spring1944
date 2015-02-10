@@ -34,9 +34,6 @@ local US_LCSS = Boat:New{
 			onlyTargetCategory	= "INFANTRY OPENVEH SOFTVEH DEPLOYED SHIP",
 			mainDir				= [[ 0 0 -1]],
 		},
-		[5] = {
-			name				= "Medium_Tracer",
-		},
 	},
 	customparams = {
 		supplyRange				= 400,

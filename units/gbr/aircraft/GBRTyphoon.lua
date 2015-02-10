@@ -48,9 +48,6 @@ local GBR_Typhoon = AttackFighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
-		[7] = {
-			name 				= "Large_Tracer",
-		},
 	},
 }
 

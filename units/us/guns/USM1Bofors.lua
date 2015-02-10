@@ -18,9 +18,6 @@ local US_M1Bofors_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 

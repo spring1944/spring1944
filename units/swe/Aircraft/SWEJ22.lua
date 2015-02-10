@@ -37,9 +37,6 @@ local SWE_J22 = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
-		[3] = {
-			name				= "Medium_Tracer",
-		},
 	},
 }
 

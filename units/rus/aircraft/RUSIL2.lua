@@ -59,9 +59,6 @@ local RUS_IL2 = FighterBomber:New{
 			maxAngleDif			= 90,
 			mainDir				= [[0 .25 -1]],
 		},
-		[9] = {
-			name 				= "Small_Tracer",
-		},
 	},
 }
 

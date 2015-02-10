@@ -1,4 +1,4 @@
--- Misc - Tracers
+-- Misc - Torpedos
 
 -- Torpedo Base Class
 local TorpedoClass   = Weapon:New{

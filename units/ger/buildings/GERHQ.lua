@@ -19,10 +19,6 @@ local GER_HQ = HQ:New{
 	weapons = {
 		[1] = {
 			name				= "MG34",
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
-		},
-		[2] = {
-			name				= "Small_Tracer",
 		},
 	},
 }

@@ -44,9 +44,6 @@ local ITA_MC205 = FighterBomber:New{
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
-		[7] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

@@ -58,9 +58,6 @@ local US_P51DMustangGA = AttackFighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
-		[9] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

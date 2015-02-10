@@ -36,12 +36,6 @@ local GER_Fw190G = FighterBomber:New{
 			maxAngleDif			= 10,
 			slaveTo				= 2,
 		},
-		[6] = {
-			name 				= "Medium_Tracer",
-		},
-		[7] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

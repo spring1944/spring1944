@@ -27,9 +27,6 @@ local RUS_La5FN = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},	
-		[3] = {
-			name				= "Large_Tracer_Green",
-		},
 	},
 }
 

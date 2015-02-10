@@ -46,9 +46,6 @@ local JPN_Ki102 = Fighter:New{
 			maxAngleDif			= 50,
 			mainDir				= [[0 1 -1]],
 		},
-		[5] = {
-			name 				= "Medium_Tracer",
-		},
 	},
 }
 

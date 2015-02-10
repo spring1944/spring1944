@@ -38,12 +38,6 @@ local ITA_MC202 = Fighter:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
-		[5] = {
-			name 				= "Medium_Tracer",
-		},
-		[6] = {
-			name				= "Large_Tracer",
-		},
 	},
 }
 

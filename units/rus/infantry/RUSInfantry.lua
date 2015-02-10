@@ -54,9 +54,6 @@ local RUS_DP = LMGInf:New(RUSInf):New{
 		[1] = { -- LMG
 			name				= "DP",
 		},
-		[2] = {
-			name				= "Small_Tracer_Green",
-		},
 	},
 }
 
@@ -69,9 +66,6 @@ local RUS_Maxim_Sandbag = SandbagMG:New{
 	weapons = {
 		[1] = { -- HMG
 			name				= "Maxim",
-		},
-		[2] = {
-			name				= "Small_Tracer_Green",
 		},
 	},
 }

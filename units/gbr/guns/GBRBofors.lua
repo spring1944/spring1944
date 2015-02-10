@@ -18,9 +18,6 @@ local GBR_Bofors_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
-		[3] = { -- Tracer
-			name				= "LargeTracer",
-		},
 	},
 }
 

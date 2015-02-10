@@ -58,11 +58,7 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 		[8] = {
 			name				= "mg42aa",
 			maxAngleDif			= 50,
-			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 1 -1]],
-		},
-		[9] = {
-			name 				= "Medium_Tracer",
 		},
 	},
 }

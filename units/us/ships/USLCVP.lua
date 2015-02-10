@@ -13,17 +13,12 @@ local US_LCVP = InfantryLandingCraft:New{
 		[1] = {
 			name				= "m1919a4browning",
 			maxAngleDif			= 200,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 			mainDir				= [[1 0 0]],
 		},
 		[2] = {
 			name				= "m1919a4browning",
 			maxAngleDif			= 200,
-			onlyTargetCategory	= "INFANTRY SOFTVEH DEPLOYED",
 			mainDir				= [[-1 0 0]],
-		},
-		[3] = {
-			name				= "Small_Tracer",
 		},
 	},
 	customparams = {

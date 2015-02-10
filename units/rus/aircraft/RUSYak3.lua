@@ -32,12 +32,6 @@ local RUS_Yak3 = Interceptor:New{
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
-		[4] = {
-			name 				= "Medium_Tracer_Green",
-		},
-		[6] = {
-			name				= "Large_Tracer_Green",
-		},
 	},
 }
 
