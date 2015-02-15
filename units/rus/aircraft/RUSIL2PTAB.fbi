@@ -73,7 +73,7 @@
   weapon1=ptab;
   maxAngleDif1=90;
   onlyTargetCategory1=OPENVEH SHIP LARGESHIP HARDVEH;
-  weaponMainDir1=0 -0.18 1;
+  weaponMainDir1=0 0 1;
 
   weapon2=VYa23mm;
   maxAngleDif2=30;
