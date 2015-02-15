@@ -130,6 +130,7 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	end
 	DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
 	Spring.SetUnitNoMinimap(unitID, false)
+	Spring.SetUnitBlocking(unitID, true, true, true, true, true, true, true) -- Engine doesn't properly reset blockign on lua-loaded units
 end
 
 function gadget:Initialize()
