@@ -66,7 +66,7 @@
   transportCapacity=15;
   transportMass=750;
   transportSize=1;
-  transportUnloadMethod=2;
+  transportUnloadMethod=0;
   loadingRadius=30;
   turninplace=0;
   turnRate=400;

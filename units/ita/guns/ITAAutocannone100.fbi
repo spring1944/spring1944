@@ -16,6 +16,7 @@
   collisionVolumeTest=1;
   corpse=ITAAutocannone100_Abandoned;
   [customParams] {
+	canareaattack=1;
     lowammolevel=4;
     maxammo=8;
     weaponcost=25;

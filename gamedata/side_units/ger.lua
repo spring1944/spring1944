@@ -224,7 +224,7 @@ local gerunits =
 	"gerpontoonraft",
     --"gerschsturmboot",
     "gerrboot",
-    --"gersboot",
+    "gersboot",
 	"gersiebelfahre",
   },
   gerboatyardlarge =
@@ -233,6 +233,7 @@ local gerunits =
     "gerpontoonraft",
     "gerrboot",
 	"gersiebelfahre",
+	"gersboot",
     "germfp",
 	"germal",
   },

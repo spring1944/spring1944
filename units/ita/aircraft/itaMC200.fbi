@@ -16,7 +16,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=400;
+  cruiseAlt=350;
   [customParams] {
     enginesound=fw190b-;
     enginesoundnr=12;
@@ -44,7 +44,7 @@
   maxPitch=1;
   maxRudder=0.003;
   maxSlope=10;
-  maxVelocity=17.5;
+  maxVelocity=16.5;
   maxWaterDepth=0;
   myGravity=0.6;
   noChaseCategory=FLAG MINE;
