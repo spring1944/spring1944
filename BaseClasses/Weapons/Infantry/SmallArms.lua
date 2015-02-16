@@ -107,10 +107,10 @@ local SMGClass = SmallArm:New{
 -- MachineGun Base Class
 local MGClass = SmallArm:New{
 	collisionSize      = 2.5,
-	coreThickness      = 0.3,
+	coreThickness      = 0.15,
 	duration           = 0.01,
 	fireStarter        = 1,
-	intensity          = 10,
+	intensity          = 0.9,
 	rgbColor           = [[1.0 0.75 0.0]],
 	soundTrigger       = true,
 	sprayAngle         = 350,
