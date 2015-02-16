@@ -38,7 +38,7 @@
   movementClass=TANK_Medium;
   noChaseCategory=FLAG AIR MINE;
   objectName=JPNTeKe_hmg.s3o;
-  script=JPNTeKe.cob;
+  script=JPNTeKe_HMG.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

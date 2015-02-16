@@ -35,12 +35,12 @@ static-var  restore_delay, rock, aim2, reloading, mainHead, bMoving, GunAiming, 
 #define WHEEL_ACCEL		<150>
 
 // definitions for turret movement
-#define TURR_TRAVERSE	<15> // hand operated
-#define TURR_ELEVATE	<7>
+#define TURR_TRAVERSE	<18> // hand operated
+#define TURR_ELEVATE	<9>
 
 // definitions for weapons behaviour
-#define RELOAD		6000 // time in milliseconds between shots
-#define RECOIL		[-0.5] // distance to recoil the gun
+#define RELOAD		3000 // time in milliseconds between shots
+#define RECOIL		[-0.2] // distance to recoil the gun
 #define RETURN_SPEED	[5] // speed at which the barrel returns
 
 // definitions for HitWeapId_S44
@@ -183,7 +183,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	rock = TRUE; // firing a heavy weapon
+	rock = FALSE; // firing a heavy weapon
 	
 	// TODO: Add to SFX
 	// Do SFX
@@ -231,7 +231,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	rock = TRUE; // firing a heavy weapon
+	rock = FALSE; // firing a heavy weapon
 	
 	// TODO: Add to SFX
 	// Do SFX
