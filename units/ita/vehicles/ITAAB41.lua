@@ -44,6 +44,10 @@ local ITAAB41 = ArmouredCar:New{
 		maxammo				= 19,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		
+		cegpiece = {
+			[4] = "coaxflare",
+		},
 	}
 }
 

@@ -42,6 +42,10 @@ local USM8Greyhound = ArmouredCar:New{
 		maxammo				= 15,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		
+		cegpiece = {
+			[4] = "aaflare",
+		},
 	}
 }
 

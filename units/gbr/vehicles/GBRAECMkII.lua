@@ -37,6 +37,10 @@ local GBRAECMkII = ArmouredCar:New{
 		maxammo				= 10,
 		weaponcost			= 10,
 		weaponswithammo		= 1,
+		
+		cegpiece = {
+			[2] = "coaxflare",
+		},
 	}
 }
 

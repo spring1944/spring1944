@@ -30,6 +30,10 @@ local GBRWasp = ArmouredCar:New{
 		weaponcost			= 4,
 		weaponswithammo		= 1,
 		hasturnbutton		= true,
+		
+		cegpiece = {
+			[1] = "gun",
+		},
 	}
 }
 

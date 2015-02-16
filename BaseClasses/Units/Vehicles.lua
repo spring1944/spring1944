@@ -25,6 +25,14 @@ local ArmouredCar = Vehicle:New{
 	iconType			= "armoredcar", -- sic
 	movementClass		= "TANK_Car",
 	script				= "Vehicle.lua", -- TODO: Move to root class once ready
+	
+	customParams = {
+		cegpiece = {
+			[1] = "flare",
+			[2] = "flare",
+			[3] = "coaxflare",
+		},
+	},
 }
 
 -- Engineer Vehicles

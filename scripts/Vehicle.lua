@@ -214,14 +214,14 @@ local function GetHeadingToTarget(target)
 	return nil
 end
 
-local function GetHeadingDiff(a, b)
-	local hDiff = a - b
-	if hDiff > PI then
-		hDiff = TAU - hDiff
-	elseif hDiff < -PI then
-		hDiff = hDiff + TAU
+local function GetAngleDiff(a, b)
+	local diff = a - b
+	if diff > PI then
+		diff = TAU - diff
+	elseif diff < -PI then
+		diff = diff + TAU
 	end
-	return math.abs(hDiff)
+	return math.abs(diff)
 end
 
 local function ResolveDirection()
@@ -234,7 +234,7 @@ local function ResolveDirection()
 	
 	for weaponNum, dir in pairs(wantedDirection) do
 		if manualHeading and dir[1] then
-			if GetHeadingDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
+			if GetAngleDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
 				topDirection = dir
 				prioritisedWeapon = weaponNum
 				break
@@ -255,11 +255,11 @@ end
 
 function IsAimedAt(heading, pitch)	
 	local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
-	local _, currentPitch, _ = Spring.UnitScript.GetPieceRotation(mantlet)
-
+	local currentPitch = -Spring.UnitScript.GetPieceRotation(mantlet)
+	--currentPitch = -currentPitch
 	if currentHeading and currentPitch then
-		local pDiff = abs(currentPitch - pitch)
-		local hDiff = GetHeadingDiff(currentHeading, heading)
+		local pDiff = GetAngleDiff(currentPitch, pitch)
+		local hDiff = GetAngleDiff(currentHeading, heading)
 		
 		if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
 			return true
@@ -299,11 +299,12 @@ local function CanFire(weaponNum)
 end
 
 function script.QueryWeapon(weaponNum)
-	if IsMainGun(weaponNum) then
-		return flare
-	else
-		return coaxflare or flare
+	local cegPiece = info.cegPieces[weaponNum]
+	if cegPiece then 
+		return cegPiece
 	end
+	-- Shields etc.
+	return base
 end
 
 function script.AimFromWeapon(weaponNum)
@@ -393,8 +394,10 @@ function script.Shot(weaponNum)
 	end
 	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
-		local cegPiece = IsMainGun(weaponNum) and flare or coaxflare or flare
-		Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
+		local cegPiece = info.cegPieces[weaponNum]
+		if cegPiece then
+			Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
+		end
 	end
 end
 
@@ -403,7 +406,7 @@ function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPri
 	--if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
 		local heading = GetHeadingToTarget({targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
-		newPriority = GetHeadingDiff(heading, currentHeading)
+		newPriority = GetAngleDiff(heading, currentHeading)
 	--end
 	--Spring.Echo("priority", targetID, newPriority)
 	return newPriority * 100
