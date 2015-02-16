@@ -16,7 +16,8 @@
   category=BUILDING;
   collisionVolumeType=ellipsoid;
   [customParams] {
-    soundcategory=ITA/Yard;
+	supplyRange=500;
+    soundcategory=ITA/Yard;	
   }
   energyStorage=0.01;
   explodeAs=LARGE_EXPLOSION;
