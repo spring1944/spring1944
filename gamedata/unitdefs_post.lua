@@ -253,7 +253,7 @@ for name, ud in pairs(UnitDefs) do
 		--a crazy default value so we see it when it happens
 		--at the moment all boats seem to lack mass, so that's what they have
 		if (not ud.mass) then
-			ud.mass = 99999999
+			ud.mass = ud.maxdamage or 99999999
 		end
 		local logMass = math.log10(ud.mass)
 		local cp = ud.customparams
