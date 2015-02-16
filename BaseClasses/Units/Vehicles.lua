@@ -19,6 +19,27 @@ local Vehicle = Unit:New{
 	},
 }
 
+-- Engineer Vehicles
+local EngineerVehicle = Vehicle:New{
+	description			= "Engineer Vehicle",
+	acceleration		= 0.25,
+	brakeRate			= 0.96,
+	buildCostMetal		= 2700,
+	category			= "SOFTVEH", -- don't trigger mines
+	iconType			= "engineervehicle",
+	maxDamage			= 1800,
+	maxReverseVelocity	= 1.7,
+	maxVelocity			= 3.4,
+	movementClass		= "TANK_Truck",
+	turnRate			= 180,
+	-- builder tags
+	buildDistance		= 196,
+	builder				= true,
+	showNanoSpray		= false,
+	terraformSpeed		= 300,
+	workerTime			= 30,
+}
+
 -- Trucks --
 local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	acceleration		= 0.3,
@@ -96,6 +117,7 @@ local RGunTractor = Truck:New{
 
 return {
 	Vehicle = Vehicle,
+	EngineerVehicle = EngineerVehicle,
 	-- Trucks
 	Truck = Truck,
 	PontoonTruck = PontoonTruck,
