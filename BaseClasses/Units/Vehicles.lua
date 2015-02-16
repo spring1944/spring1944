@@ -6,7 +6,7 @@ local Vehicle = Unit:New{
 	footprintX			= 3,
 	footprintZ			= 3,
 	leaveTracks			= true,
-	noChaseCategory		= "AIR MINE",
+	noChaseCategory		= "FLAG AIR MINE",
 	radardistance		= 950,
 	seismicSignature	= 0, -- required, not default
 	sightDistance		= 800,
@@ -17,6 +17,14 @@ local Vehicle = Unit:New{
 	customParams = {
 		soundcategory = "<SIDE>/Vehicle",
 	},
+}
+
+-- Armoured Car
+local ArmouredCar = Vehicle:New{
+	category			= "MINETRIGGER OPENVEH",
+	iconType			= "armoredcar", -- sic
+	movementClass		= "TANK_Car",
+	script				= "Vehicle.lua", -- TODO: Move to root class once ready
 }
 
 -- Engineer Vehicles
@@ -117,6 +125,7 @@ local RGunTractor = Truck:New{
 
 return {
 	Vehicle = Vehicle,
+	ArmouredCar = ArmouredCar,
 	EngineerVehicle = EngineerVehicle,
 	-- Trucks
 	Truck = Truck,
