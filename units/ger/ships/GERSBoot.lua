@@ -4,27 +4,20 @@ local GER_SBoot = BoatMother:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 2200,
-	buildTime				= 2200,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
-	corpse					= "GERSBoot_dead",
-	mass					= 9070,
 	maxDamage				= 9070,
 	maxReverseVelocity		= 3.005,
 	maxVelocity				= 6.01,
-	movementClass			= "BOAT_LightPatrol",
-	objectName				= "GERSboot.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 205,	
 	weapons = {	
 		[1] = {
-			name				= "RUS533mmTorpedo", -- TODO: Bring back G7a Torpedo
-			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
+			name				= "RUS533mmTorpedo",
 			maxAngleDif			= 40,
 		},
 		[2] = {
 			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
 			maxAngleDif			= 40,
 		},
 	},
@@ -51,12 +44,10 @@ local GER_SBoot_Turret_20mm_Front = BoatChild:New{
 		[1] = {
 			name				= "flak3820mmaa",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "flak3820mmhe",
 			maxAngleDif			= 30,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
