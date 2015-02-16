@@ -1,24 +1,24 @@
-local SWEPBilM40 = ArmouredCar:New{
-	name				= "PBil m/40 Lynx",
+local USM8Greyhound = ArmouredCar:New{
+	name				= "M8 Greyhound",
 	description			= "Light Armoured Car",
-	acceleration		= 0.058,
-	brakeRate			= 0.195,
-	buildCostMetal		= 1085, -- from ITA AB41
+	acceleration		= 0.047,
+	brakeRate			= 0.09,
+	buildCostMetal		= 1400,
 	maxDamage			= 780,
-	maxReverseVelocity	= 2.905,
-	maxVelocity			= 5.81,
+	maxReverseVelocity	= 3.555,
+	maxVelocity			= 7.11,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
 
 	weapons = {
 		[1] = {
-			name				= "BredaM3520mmap",
+			name				= "M637mmap",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "BredaM3520mmhe",
+			name				= "M637mmhe",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
@@ -26,22 +26,25 @@ local SWEPBilM40 = ArmouredCar:New{
 			name				= "M1919A4Browning",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
-		},-- TODO: Hull MGs?
+		},
 		[4] = {
+			name				= "M2BrowningAA",
+		},
+		[5] = {
 			name				= ".30calproof",
 		},
 	},
 	customParams = {
-		armor_front			= 20,
-		armor_rear			= 8,
-		armor_side			= 10,
-		armor_top			= 6,
-		maxammo				= 19,
+		armor_front			= 18,
+		armor_rear			= 11,
+		armor_side			= 11,
+		armor_top			= 3,
+		maxammo				= 15,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
 	}
 }
 
 return lowerkeys({
-	["SWEPBilM40"] = SWEPBilM40,
+	["USM8Greyhound"] = USM8Greyhound,
 })
