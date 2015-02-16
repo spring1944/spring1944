@@ -393,7 +393,7 @@ function script.Shot(weaponNum)
 	end
 	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
-		local cegPiece = IsMainGun(weaponNum) and flare or coaxflare
+		local cegPiece = IsMainGun(weaponNum) and flare or coaxflare or flare
 		Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
 	end
 end
