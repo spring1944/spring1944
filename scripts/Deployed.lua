@@ -13,10 +13,12 @@ local carriage = piece "carriage"
 local turret = piece "turret"
 local sleeve = piece "sleeve"
 
-if not GG.lusHelper[unitDefID].animation then
-	GG.lusHelper[unitDefID].animation = {include "DeployedLoader.lua"}
+local info = GG.lusHelper[unitDefID]
+
+if not info.animation then
+	info.animation = {include "DeployedLoader.lua"}
 end
-local poses, transitions, fireTransitions, weaponTags = unpack(GG.lusHelper[unitDefID].animation)
+local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
 
 --Localisations
 local PI = math.pi
@@ -239,10 +241,10 @@ function script.Create()
 	firing = false
 	UpdatePose(pinned)
 	--weaponEnabled[1] = true
-	for i=1,GG.lusHelper[unitDefID].numWeapons do
+	for i=1,info.numWeapons do
 		weaponEnabled[i] = true
 	end
-	if GG.lusHelper[unitDefID].numRockets > 0 then
+	if info.numRockets > 0 then
 		nextRocket = 1
 	end
 	if UnitDef.stealth then
@@ -270,6 +272,12 @@ function script.QueryWeapon(num)
 	if nextRocket then
 		return piece("rocket" .. nextRocket) or tubes
 	end
+	
+	local cegPiece = info.cegPieces[num]
+	if cegPiece then
+		return cegPiece
+	end
+	
 	return weaponTags.pitchPiece
 end
 
@@ -278,7 +286,7 @@ function script.AimFromWeapon(num)
 end
 
 local function IsLoaded()
-	for i=1,GG.lusHelper[unitDefID].numWeapons do
+	for i=1,info.numWeapons do
 		local _, loaded = Spring.GetUnitWeaponState(unitID, i)
 		if not loaded then
 			return false
@@ -307,7 +315,7 @@ function script.AimWeapon(num, heading, pitch)
 	wantedHeading = heading
 	wantedPitch = pitch
 	if CanFire() and ReAim(heading, pitch) then
-		local explodeRange = GG.lusHelper[unitDefID].explodeRanges[num]
+		local explodeRange = info.explodeRanges[num]
 		if explodeRange then
 			GG.LimitRange(unitID, num, explodeRange)
 		end
@@ -325,7 +333,7 @@ function script.FireWeapon(num)
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, false)
 	end
-	local explodeRange = GG.lusHelper[unitDefID].explodeRanges[num]
+	local explodeRange = info.explodeRanges[num]
 	if explodeRange then
 		Spring.SetUnitWeaponState(unitID, num, "range", explodeRange)
 	end
@@ -339,7 +347,6 @@ function script.Shot(num)
 		Hide(piece("rocket" .. nextRocket))
 		nextRocket = nextRocket + 1
 	end
-	local info = GG.lusHelper[unitDefID]
 	local ceg = info.weaponCEGs[num]
 	if ceg then
 		local cegPiece = info.cegPieces[num]

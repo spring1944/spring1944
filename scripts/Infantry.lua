@@ -3,11 +3,12 @@ local torso = piece "torso"
 
 local flare = piece "flare"
 
+local info = GG.lusHelper[unitDefID]
 
-if not GG.lusHelper[unitDefID].animation then
-	GG.lusHelper[unitDefID].animation = {include "InfantryLoader.lua"}
+if not info.animation then
+	info.animation = {include "InfantryLoader.lua"}
 end
-local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(GG.lusHelper[unitDefID].animation)
+local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(info.animation)
 
 
 --Constants
@@ -161,9 +162,9 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 		end
 		Sleep(duration)
 		if emit then
-			local ceg = GG.lusHelper[unitDefID].weaponCEGs[lastShot]
+			local ceg = info.weaponCEGs[lastShot]
 			if ceg then
-				local cegPiece = GG.lusHelper[unitDefID].cegPieces[lastShot]
+				local cegPiece = info.cegPieces[lastShot]
 				if cegPiece then
 					GG.EmitSfxName(unitID, cegPiece, ceg)
 				end
