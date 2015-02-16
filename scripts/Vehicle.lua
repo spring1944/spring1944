@@ -396,7 +396,7 @@ function script.Shot(weaponNum)
 	if ceg then
 		local cegPiece = info.cegPieces[weaponNum]
 		if cegPiece then
-			Spring.SpawnCEG(ceg, Spring.GetUnitPiecePosDir(unitID, cegPiece))
+			GG.EmitSfxName(unitID, cegPiece, ceg)
 		end
 	end
 end

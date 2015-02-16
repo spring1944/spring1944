@@ -73,7 +73,9 @@ function GG.SpawnDecal(decalType, x, y, z, teamID, delay, duration)
 end
 
 function GG.EmitSfxName(unitID, pieceNum, effectName) -- currently unused
-	SpawnCEG(effectName, GetUnitPiecePosDir(unitID, pieceNum))
+	local px, py, pz, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceNum)
+	dx, dy, dz = GG.Vector.Normalized(dx, dy, dz)
+	SpawnCEG(effectName, px, py, pz, dx, dy, dz)
 end
 
 
