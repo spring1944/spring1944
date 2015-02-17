@@ -134,7 +134,7 @@ for name, ud in pairs(UnitDefs) do
 	--cloaked inf)
 	ud.activatewhenbuilt = true
 	for category, detectValues in pairs(detection) do
-		local catStart, catEnd = string.find(ud.category, category);
+		local catStart, catEnd = string.find(ud.category, category)
 		if catStart ~= nil then
 			local cat = string.sub(ud.category, catStart, catEnd)
 			if detection[cat] then

@@ -46,7 +46,7 @@ local function FlagFlap()
 		return
 	end
 	if flags[1] then
-		Turn(flags[1], y_axis, math.rad(180));
+		Turn(flags[1], y_axis, math.rad(180))
 	end
 	local _,_,_,_,buildProgress = GetUnitHealth(unitID)
 	while (buildProgress > 0) do
@@ -131,14 +131,14 @@ function script.StartMoving()
 	StartThread(EmitWakes)
 	local propSpeed = math.rad(180)
 	for _, prop in pairs(propellers) do
-		Spin(prop, z_axis, propSpeed);
+		Spin(prop, z_axis, propSpeed)
 	end
 end
 
 function script.StopMoving()
 	Signal(SIG_MOVE)
 	for _, prop in pairs(propellers) do
-		StopSpin(prop, z_axis);
+		StopSpin(prop, z_axis)
 	end
 end
 
@@ -193,10 +193,10 @@ function script.Killed(recentDamage, maxHealth)
 	for _, child in pairs(childrenPieces) do
 		Show(child)
 	end
-	--signal SIG_DEATH;
+	--signal SIG_DEATH
 	--if severity < 99 then
 		local dA = info.deathAnim
-		corpseType = 1;
+		corpseType = 1
 		for axis, data in pairs(dA) do
 			Turn(base, info.axes[axis] or z_axis, -math.rad(data.angle or 30), math.rad(data.speed or 10))
 		end

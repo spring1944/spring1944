@@ -62,10 +62,10 @@ local clock = os.clock
 --------------------------------------------------------------------------------
 
 local function CubicInterpolate2(x0,x1,mix)
-  local mix2 = mix*mix;
-  local mix3 = mix2*mix;
+  local mix2 = mix*mix
+  local mix3 = mix2*mix
 
-  return x0*(2*mix3-3*mix2+1) + x1*(3*mix2-2*mix3);
+  return x0*(2*mix3-3*mix2+1) + x1*(3*mix2-2*mix3)
 end
 
 --------------------------------------------------------------------------------

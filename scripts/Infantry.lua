@@ -34,8 +34,6 @@ local FEAR_PINNED = 20
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
 
-local isBuilder = UnitDef.isBuilder
-
 --CURRENT UNIT STATE
 local standing
 local aiming
@@ -319,7 +317,7 @@ local function UpdateSpeed()
 	end
 	currentSpeed = newSpeed
 	
-	if isBuilder then
+	if UnitDef.isBuilder then
 		local origBuildSpeed = UnitDef.buildSpeed
 		if fear > 0 then
 			newBuildSpeed = 0.000001
@@ -356,11 +354,11 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 				end
 			end
 		end
-		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newStanding and 0 or 1);
+		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newStanding and 0 or 1)
 		if newBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1);
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 		elseif not wantedBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0);
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
 		end
 		standing = newStanding
 		aiming = newAiming
@@ -752,7 +750,7 @@ function ToggleWeapon(num, isEnabled)
 	weaponEnabled[num] = isEnabled
 end
 
-if isBuilder then
+if UnitDef.isBuilder then
 	function script.StartBuilding(buildheading, pitch)
 		if CanBuild() then
 			wantedHeading = buildheading

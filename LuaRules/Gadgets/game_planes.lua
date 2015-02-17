@@ -33,7 +33,7 @@ local PENALTY_AMOUNT = 0.1
 -- map size. We add a 25% bump so the planes have some time to do their work
 -- once they arrive. The formula is: 
 -- (mapDiagonalLength / REFERENCE_FUEL_AMOUNT) * definedPlaneFuel
-local REFERENCE_FUEL_AMOUNT = 17;
+local REFERENCE_FUEL_AMOUNT = 17
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit

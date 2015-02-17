@@ -177,7 +177,7 @@ local function UpdatePose(newPinned)
 	local success = PickPose(GetPoseName(newPinned))
 	--Spring.Echo(newStanding, newAiming, newMoving, newPinned, newBuilding, success)
 	if success then
-		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newPinned and 1 or 0);
+		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newPinned and 1 or 0)
 		pinned = newPinned
 	end
 	return success

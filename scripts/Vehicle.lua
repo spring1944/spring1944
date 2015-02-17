@@ -29,6 +29,15 @@ local lastShot
 -- Logic
 local SIG_MOVE = 1
 local SIG_AIM = {}
+do
+	local sig = SIG_MOVE
+	for i = 1,info.numWeapons do
+		sig = sig * 2
+		SIG_AIM[i] = sig
+	end
+end
+
+
 
 local wantedDirection
 local weaponPriorities
@@ -95,13 +104,10 @@ function script.Create()
 	
 	weaponPriorities = {}
 	wantedDirection = {}
-	local sig = SIG_MOVE
 	
 	for i = 1,info.numWeapons do
-		sig = sig * 2
 		weaponPriorities[i] = i
 		wantedDirection[i] = {}
-		SIG_AIM[i] = sig
 	end
 	if turret then
 		Turn(turret, y_axis, 0)
@@ -414,4 +420,35 @@ end
 
 function ManualTarget(targetParams)
 	manualTarget = targetParams
+end
+
+
+
+
+if UnitDef.isBuilder then
+	local SIG_BUILD
+	if #SIG_AIM > 0 then
+		SIG_BUILD = SIG_AIM[#SIG_AIM] * 2
+	else
+		SIG_BUILD = SIG_MOVE * 2
+	end
+	
+	local DEFAULT_CRANE_TURN_SPEED = math.rad(50)
+	function script.StartBuilding(buildHeading, pitch)
+		if headingPiece then
+			Signal(SIG_BUILD)
+			SetSignalMask(SIG_BUILD)
+			Turn(headingPiece, y_axis, buildHeading, DEFAULT_CRANE_TURN_SPEED)
+			WaitForTurn(headingPiece, y_axis)
+		end
+		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
+	end
+	
+	function script.StopBuilding()
+		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+		if headingPiece then
+			Signal(SIG_BUILD)
+			Turn(headingPiece, y_axis, 0, DEFAULT_CRANE_TURN_SPEED)
+		end		
+	end
 end

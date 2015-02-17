@@ -47,6 +47,7 @@ local EngineerVehicle = Vehicle:New{
 	maxReverseVelocity	= 1.7,
 	maxVelocity			= 3.4,
 	movementClass		= "TANK_Truck",
+	script				= "Vehicle.lua", -- TODO: Move to root class once ready
 	turnRate			= 180,
 	-- builder tags
 	buildDistance		= 196,

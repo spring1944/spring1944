@@ -273,7 +273,7 @@ local BredaM1931 = HeavyMGClass:New{
   range              = 880,
   reloadTime         = 4,
   soundStart         = [[US_50CAL]],
-  sprayAngle         = 300;
+  sprayAngle         = 300,
 }
 
 --Breda M1931 AA

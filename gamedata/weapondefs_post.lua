@@ -49,38 +49,38 @@ local function BackwardCompability(wdName,wd)
   if (wd.weapontype==nil) then
     local rendertype = tonumber(wd.rendertype) or 0
     if (tobool(wd.dropped)) then
-      wd.weapontype = "AircraftBomb";
+      wd.weapontype = "AircraftBomb"
     elseif (tobool(wd.vlaunch)) then
-      wd.weapontype = "StarburstLauncher";
+      wd.weapontype = "StarburstLauncher"
     elseif (tobool(wd.beamlaser)) then
-      wd.weapontype = "BeamLaser";
+      wd.weapontype = "BeamLaser"
     elseif (tobool(wd.waterweapon)) then
-      wd.weapontype = "TorpedoLauncher";
+      wd.weapontype = "TorpedoLauncher"
     elseif (wdName:lower():find("disintegrator",1,true)) then
       wd.weaponType = "DGun"
     elseif (tobool(wd.lineofsight)) then
       if (rendertype==7) then
-        wd.weapontype = "LightingCannon";
+        wd.weapontype = "LightingCannon"
 
       -- swta fix (outdated?)
       elseif (wd.model and wd.model:lower():find("laser",1,true)) then
-        wd.weapontype = "LaserCannon";
+        wd.weapontype = "LaserCannon"
 
       elseif (tobool(wd.beamweapon)) then
-        wd.weapontype = "LaserCannon";
+        wd.weapontype = "LaserCannon"
       elseif (tobool(wd.smoketrail)) then
-        wd.weapontype = "MissileLauncher";
+        wd.weapontype = "MissileLauncher"
       elseif (rendertype==4 and tonumber(wd.color)==2) then
-        wd.weapontype = "EmgCannon";
+        wd.weapontype = "EmgCannon"
       elseif (rendertype==5) then
-        wd.weapontype = "Flame";
+        wd.weapontype = "Flame"
       --elseif(rendertype==1) then
       --  wd.weapontype = "MissileLauncher";
       else
-        wd.weapontype = "Cannon";
+        wd.weapontype = "Cannon"
       end
     else
-      wd.weapontype = "Cannon";
+      wd.weapontype = "Cannon"
     end
   end
 
