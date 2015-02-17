@@ -13,10 +13,16 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	trackType			= "Stdtank",
 	
 	customParams = {
+		blockfear			= true,
 		soundcategory		= "<SIDE>/Tank",
 		hasturnbutton		= true,
 		weaponswithammo		= 2,
-		blockfear			= true,
+		
+		cegpiece = {
+			[1] = "flare",
+			[2] = "flare",
+			[3] = "coaxflare",
+		},
 	},
 }
 

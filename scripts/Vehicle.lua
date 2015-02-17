@@ -5,6 +5,8 @@ local mantlet = piece "mantlet"
 local barrel = piece "barrel"
 local base = piece "base"
 
+local brakeleft = piece "brakeleft"
+local brakeright = piece "brakeright"
 
 local info = GG.lusHelper[unitDefID]
 
@@ -94,6 +96,16 @@ local function DamageSmoke(smokePieces)
 end
 
 function script.Create()
+	if flare then 
+		Hide(flare)
+	end
+	if brakeleft then
+		Hide(brakeleft)
+	end
+	if brakeright then
+		Hide(brakeright)
+	end
+
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
@@ -395,14 +407,22 @@ end
 
 function script.Shot(weaponNum)
 	lastShot = weaponNum
-	if IsMainGun(weaponNum) and barrel then
-		StartThread(Recoil)
-	end
+	
 	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
 		local cegPiece = info.cegPieces[weaponNum]
 		if cegPiece then
 			GG.EmitSfxName(unitID, cegPiece, ceg)
+		end
+	end
+	
+	if IsMainGun(weaponNum) and barrel then
+		StartThread(Recoil)
+		if brakeleft then
+			GG.EmitSfxName(unitID, brakeleft, "MUZZLEBRAKESMOKE")
+		end
+		if brakeright then
+			GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 		end
 	end
 end
