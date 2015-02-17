@@ -1,6 +1,5 @@
 local USM8Greyhound = ArmouredCar:New{
 	name				= "M8 Greyhound",
-	description			= "Light Armoured Car",
 	acceleration		= 0.047,
 	brakeRate			= 0.09,
 	buildCostMetal		= 1400,

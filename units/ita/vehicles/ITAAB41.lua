@@ -1,6 +1,5 @@
 local ITAAB41 = ArmouredCar:New{
 	name				= "Autoblinda AB-41",
-	description			= "Light Armoured Car",
 	acceleration		= 0.058,
 	brakeRate			= 0.195,
 	buildCostMetal		= 1085,

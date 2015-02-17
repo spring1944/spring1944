@@ -58,6 +58,7 @@ local M637mmCanister = M637mm:New({
     damagetype         = [[smallarm]],
     fearaoe            = 20,
     fearid             = 301,
+	onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED",
   },
   damage = {
     default            = 150,

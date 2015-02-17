@@ -138,6 +138,7 @@ local HeavyMGClass = MGClass:New{
 	weaponVelocity     = 3000,
 	customparams = {
 		fearid             = 401,
+		onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED OPENVEH",
 	},
 	damage = {
 		default            = 50,
@@ -151,7 +152,7 @@ local AAMG = Weapon:New{ -- should be used like ammo bases
 	customparams = {
 		no_range_adjust    = true,
 		fearid             = 701,
-	onlytargetCategory = "AIR",
+		onlytargetCategory = "AIR",
 	}
 }
 

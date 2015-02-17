@@ -281,7 +281,6 @@ local AutoCannon = Cannon:New{
 	movingAccuracy     = 500,
 	predictBoost       = 0,
 	size               = 1e-13, -- visuals done with tracers, except AP rounds
-	soundTrigger       = true,
 	targetMoveError    = 0.1,
 	tolerance          = 650,
 	customparams = {

@@ -1,16 +1,12 @@
 -- Vehicles ----
 local Vehicle = Unit:New{
-	airSightDistance	= 1500,
 	canMove				= true,
 	explodeAs			= "Vehicle_Explosion_Sm",
 	footprintX			= 3,
 	footprintZ			= 3,
 	leaveTracks			= true,
 	noChaseCategory		= "FLAG AIR MINE",
-	radardistance		= 950,
-	seismicSignature	= 0, -- required, not default
-	sightDistance		= 800,
-	stealth				= true,
+	seismicSignature	= 1, -- required, not default
 	trackType			= "Stdtank",
 	turnInPlace			= false,
 	
@@ -21,6 +17,7 @@ local Vehicle = Unit:New{
 
 -- Armoured Car
 local ArmouredCar = Vehicle:New{
+	description			= "Light Armoured Car",
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
 	movementClass		= "TANK_Car",
@@ -33,6 +30,11 @@ local ArmouredCar = Vehicle:New{
 			[3] = "coaxflare",
 		},
 	},
+}
+
+local HeavyArmouredCar = ArmouredCar:New{
+	description			= "Heavy Armoured Car",
+	category			= "MINETRIGGER HARDVEH",
 }
 
 -- Engineer Vehicles
@@ -135,6 +137,7 @@ local RGunTractor = Truck:New{
 return {
 	Vehicle = Vehicle,
 	ArmouredCar = ArmouredCar,
+	HeavyArmouredCar = HeavyArmouredCar,
 	EngineerVehicle = EngineerVehicle,
 	-- Trucks
 	Truck = Truck,

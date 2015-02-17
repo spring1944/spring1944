@@ -1,6 +1,5 @@
-local GBRAECMkII = ArmouredCar:New{
+local GBRAECMkII = HeavyArmouredCar:New{
 	name				= "AEC Armoured Car Mk.II",
-	description			= "Heavy Armoured Car",
 	acceleration		= 0.03,
 	brakeRate			= 0.09,
 	buildCostMetal		= 1350,

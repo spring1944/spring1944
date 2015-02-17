@@ -1,6 +1,5 @@
-local GERPuma = ArmouredCar:New{
+local GERPuma = HeavyArmouredCar:New{
 	name				= "Sd.Kfz. 234/2 Puma",
-	description			= "Heavy Armoured Car",
 	acceleration		= 0.043,
 	brakeRate			= 0.11,
 	buildCostMetal		= 1700,

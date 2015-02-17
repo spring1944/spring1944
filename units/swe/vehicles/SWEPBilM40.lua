@@ -1,6 +1,5 @@
 local SWEPBilM40 = ArmouredCar:New{
 	name				= "PBil m/40 Lynx",
-	description			= "Light Armoured Car",
 	acceleration		= 0.058,
 	brakeRate			= 0.195,
 	buildCostMetal		= 1085, -- from ITA AB41
