@@ -132,6 +132,7 @@ local MGClass = SmallArm:New{
 local HeavyMGClass = MGClass:New{
 	burst              = 8,
 	burstRate          = 0.1,
+	interceptedByShieldType = 16,
 	movingAccuracy     = 500,
 	targetMoveError    = 0.25,
 	tolerance          = 3000, -- needed?
