@@ -11,6 +11,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	script				= "Vehicle.lua",
 	seismicSignature	= 1,
 	trackType			= "Stdtank",
+	turnRate			= 250,
 	
 	customParams = {
 		blockfear			= true,
@@ -46,7 +47,6 @@ local LightTank = Tank:New{
 local MediumTank = Tank:New{
 	description 		= "Medium Tank",
 	iconType			= "medtank",
-	turnRate			= 250,
 }
 
 -- Heavy Tank
@@ -54,6 +54,8 @@ local HeavyTank = Tank:New{
 	description 		= "Heavy Tank",
 	explodeAs			= "Vehicle_Explosion_Large",
 	iconType			= "heavytank",
+	turnRate			= 150,
+	
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/Heavy",
 	}
