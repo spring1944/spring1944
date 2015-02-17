@@ -39,6 +39,7 @@ local Tankette = Tank:New{
 local LightTank = Tank:New{
 	description 		= "Light Tank",
 	iconType			= "lighttank",
+	trackType			= "T60-70-SU76",
 }
 
 -- Medium Tank
