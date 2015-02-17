@@ -1,4 +1,4 @@
-local GBRChurchillMkVII = MediumTank:New{
+local GBRChurchillMkVII = HeavyTank:New{
 	name				= "A22F Churchill Mk. VII",
 	description			= "Heavily Armoured Support Tank",
 	acceleration		= 0.029,
