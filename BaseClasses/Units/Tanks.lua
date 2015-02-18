@@ -27,20 +27,20 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	},
 }
 
--- Tankette
-local Tankette = Tank:New{
-	description 		= "Tankette",
-	explodeAs			= "Vehicle_Explosion_Sm",
-	iconType			= "lighttank",
-	footprintX			= 2,
-	footprintZ			= 2,
-}
 
 -- Light Tank
 local LightTank = Tank:New{
 	description 		= "Light Tank",
 	iconType			= "lighttank",
 	trackType			= "T60-70-SU76",
+}
+
+-- Tankette
+local Tankette = LightTank:New{
+	description 		= "Tankette",
+	explodeAs			= "Vehicle_Explosion_Sm",
+	footprintX			= 2,
+	footprintZ			= 2,
 }
 
 -- Medium Tank
