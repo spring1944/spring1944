@@ -201,7 +201,8 @@ local function StopAiming(weaponNum)
 	
 	for i = 1,info.numWeapons do
 		-- If we're still aiming at anything, we don't want to restore the turret
-		if wantedDirection[i][1] then
+		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
+			wantedDirection[i][1] then
 			return
 		end
 	end

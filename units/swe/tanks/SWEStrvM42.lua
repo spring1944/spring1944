@@ -43,6 +43,11 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	customParams = {
 		maxammo				= 15,
 		weaponcost			= 12,
+		
+		cegpiece = {
+			[3] = "turret_mg_flare_1",
+			[4] = "turret_mg_flare_2",
+		},
 	},
 }
 

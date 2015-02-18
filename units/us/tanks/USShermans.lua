@@ -30,6 +30,10 @@ local ShermanBase = MediumTank:New{
 		armor_rear			= 41,
 		armor_side			= 41,
 		armor_top			= 21,
+		
+		cegpiece = {
+			[4] = "aaflare",
+		},
 	},
 }	
 

@@ -24,12 +24,11 @@ local JPNKaMi = LightTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 20,
 		},
-		[3] = { -- Rear Turret MG
+		[4] = { -- Rear Turret MG
 			name				= "Type97MG",
 		},
-		[4] = {
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
@@ -40,6 +39,11 @@ local JPNKaMi = LightTank:New{
 		armor_top			= 6,
 		maxammo				= 15,
 		weaponcost			= 8,
+		
+		cegpiece = {
+			[3] = "bow_mg_flare",
+			[4] = "turret_mg_flare",
+		},
 	},
 }
 

@@ -22,12 +22,11 @@ local JPNHaGo = LightTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 50,
 		},
-		[3] = { -- Rear Turret MG
+		[4] = { -- Rear Turret MG
 			name				= "Type97MG",
 		},
-		[4] = {
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
@@ -38,6 +37,11 @@ local JPNHaGo = LightTank:New{
 		armor_top			= 6,
 		maxammo				= 20,
 		weaponcost			= 7,
+		
+		cegpiece = {
+			[3] = "bow_mg_flare",
+			[4] = "turret_mg_flare",
+		},
 	},
 }
 

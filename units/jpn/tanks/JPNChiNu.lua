@@ -23,7 +23,6 @@ local JPNChiNu = MediumTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 50,
 		},
 		[4] = {
 			name				= ".50calproof",
@@ -36,6 +35,10 @@ local JPNChiNu = MediumTank:New{
 		armor_top			= 11,
 		maxammo				= 12,
 		weaponcost			= 10,
+		
+		cegpiece = {
+			[3] = "bow_mg_flare",
+		},
 	},
 }
 

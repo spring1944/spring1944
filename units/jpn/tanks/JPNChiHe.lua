@@ -22,7 +22,6 @@ local JPNChiHe = MediumTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 50,
 		},
 		[4] = { -- Rear turret MG
 			name				= "Type97MG",
@@ -38,6 +37,11 @@ local JPNChiHe = MediumTank:New{
 		armor_top			= 11,
 		maxammo				= 20,
 		weaponcost			= 8,
+		
+		cegpiece = {
+			[3] = "bow_mg_flare",
+			[4] = "turret_mg_flare",
+		},
 	},
 }
 

@@ -34,7 +34,6 @@ local JPNChiHa = ChiHaBase:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 50,
 		},
 		[4] = { -- rear turret MG
 			name				= "Type97MG",
@@ -47,6 +46,11 @@ local JPNChiHa = ChiHaBase:New{
 	customParams = {
 		maxammo				= 20,
 		weaponcost			= 9,
+		
+		cegpiece = {
+			[3] = "bow_mg_flare",
+			[4] = "turret_mg_flare",
+		},
 	},
 }	
 
@@ -63,7 +67,6 @@ local JPNChiHa120mm = ChiHaBase:New{
 		},
 		[2] = { -- bow MG
 			name				= "Type97MG",
-			maxAngleDif			= 50,
 		},
 		[3] = {
 			name				= ".50calproof",
@@ -73,6 +76,11 @@ local JPNChiHa120mm = ChiHaBase:New{
 	customParams = {
 		maxammo				= 5,
 		weaponcost			= 16,
+		weaponswithammo		= 1,
+		
+		cegpiece = {
+			[2] = "bow_mg_flare",
+		},
 	},
 }
 
