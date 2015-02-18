@@ -500,3 +500,27 @@ if UnitDef.isBuilder then
 		end		
 	end
 end
+
+if UnitDef.transportCapacity > 0 then
+	local tow_point = piece "tow_point"
+	local canTow = not not tow_point
+	
+	function script.TransportPickup(passengerID)
+		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
+		if mass < 100 then --ugly check for inf gun vs. infantry.
+			Spring.UnitScript.AttachUnit(-1, passengerID)
+		elseif canTow then
+			Spring.UnitScript.AttachUnit(tow_point, passengerID)
+			canTow = false
+		end
+	end
+	
+	-- note x, y z is in worldspace
+	function script.TransportDrop(passengerID, x, y, z)
+		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
+		if mass >= 100 then
+			canTow = true
+		end
+		Spring.UnitScript.DropUnit(passengerID)
+	end
+end

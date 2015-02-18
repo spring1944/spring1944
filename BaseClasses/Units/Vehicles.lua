@@ -97,7 +97,6 @@ local TransportTruck = Truck:New{ -- Transport Trucks
 	buildCostMetal		= 510,
 	iconType			= "truck",
 	loadingRadius		= 120,
-	script				= "TransportTruck.cob",
 	transportCapacity	= 15,
 	transportMass		= 750,
 	transportSize		= 1,
