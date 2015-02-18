@@ -1,6 +1,6 @@
 local GBRShermanFirefly = MediumTank:New{
 	name				= "Sherman Mk. Vc Firefly",
-	description			= "Advanced Medium Sniper Tank",
+	description			= "Upgunned Medium Tank",
 	acceleration		= 0.043,
 	brakeRate			= 0.15,
 	buildCostMetal		= 4000,
