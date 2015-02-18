@@ -216,12 +216,15 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		
 		if cp.cegpiece then
 			for weaponNum, pieceName in pairs(table.unserialize(cp.cegpiece)) do
-				if weaponNum <= info.numWeapons and pieceName then -- don't use garbage from inherited cegPiece
+				if pieceMap[pieceName] and info.reloadTimes[weaponNum] then -- don't use garbage from inherited cegPiece
 					cegPieces[weaponNum] = pieceMap[pieceName]
 					local headingPiece, pitchPiece = GetAimingPieces(unitID, pieceName, pieceMap)
-					dx, dy, dz = Spring.GetUnitPieceDirection(unitID, pieceMap[pieceName])
 					aimPieces[weaponNum] = {headingPiece, pitchPiece}
-					if dz > 0 then
+					
+					local _, _, _, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceMap[pieceName])
+					local frontDir = Spring.GetUnitVectors(unitID)
+					local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+					if dotFront < 0 then
 						reversedWeapons[weaponNum] = true
 					end
 				end
@@ -286,20 +289,22 @@ function gadget:GamePreload()
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
-			reloadTimes[i] = weaponDef.reload
-			burstLengths[i] = weaponDef.salvoSize
-			burstRates[i] = weaponDef.salvoDelay
-			minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
-			if weaponDef.selfExplode then
-				explodeRanges[i] = weaponDef.range
+			if not weaponDef.type:find("Shield") then
+				reloadTimes[i] = weaponDef.reload
+				burstLengths[i] = weaponDef.salvoSize
+				burstRates[i] = weaponDef.salvoDelay
+				minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
+				if weaponDef.selfExplode then
+					explodeRanges[i] = weaponDef.range
+				end
+				if weaponDef.type == "MissileLauncher" then
+					missileWeaponIDs[i] = true
+				end
+				weaponAnimations[i] = weaponDef.customParams.scriptanimation
+				flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
+				weaponCEGs[i] = weaponDef.customParams.cegflare
+				seismicPings[i] = weaponDef.customParams.seismicping
 			end
-			if weaponDef.type == "MissileLauncher" then
-				missileWeaponIDs[i] = true
-			end
-			weaponAnimations[i] = weaponDef.customParams.scriptanimation
-			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
-			weaponCEGs[i] = weaponDef.customParams.cegflare
-			seismicPings[i] = weaponDef.customParams.seismicping
 		end
 		-- WeaponDef Level Info
 		info.missileWeaponIDs = missileWeaponIDs
