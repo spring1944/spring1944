@@ -140,6 +140,33 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 
 local udCache = {}
 
+local function GetAimingPieces(unitID, pieceName, pieceMap)
+	local headingPiece
+	local pitchPiece
+	local currentPiece = pieceName
+	local i = 0
+	while pieceMap[currentPiece] do
+		if i > 20 then
+			break
+		end
+		i = i + 1
+		
+		if currentPiece:find("turret") then --Finds both turret and aaturret
+			headingPiece = pieceMap[currentPiece]
+			break --shouldn't pick something below turret
+		end
+		if currentPiece:find("mantlet") or currentPiece:find("gun") then --Finds gun and aagun
+			headingPiece = pieceMap[currentPiece]
+			pitchPiece = pieceMap[currentPiece]
+		end
+		
+		
+		local pieceInfo = GetUnitPieceInfo(unitID, pieceMap[currentPiece])
+		currentPiece = pieceInfo.parent
+	end
+	return headingPiece, pitchPiece
+end
+
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local info = GG.lusHelper[unitDefID]
 	local cp = UnitDefs[unitDefID].customParams
@@ -158,6 +185,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local tracks = {}
 		local smokePieces = {}
 		local cegPieces = {}
+		local aimPieces = {}
+		local reversedWeapons = {}
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -187,7 +216,15 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		
 		if cp.cegpiece then
 			for weaponNum, pieceName in pairs(table.unserialize(cp.cegpiece)) do
-				cegPieces[weaponNum] = pieceMap[pieceName]
+				if weaponNum <= info.numWeapons and pieceName then -- don't use garbage from inherited cegPiece
+					cegPieces[weaponNum] = pieceMap[pieceName]
+					local headingPiece, pitchPiece = GetAimingPieces(unitID, pieceName, pieceMap)
+					dx, dy, dz = Spring.GetUnitPieceDirection(unitID, pieceMap[pieceName])
+					aimPieces[weaponNum] = {headingPiece, pitchPiece}
+					if dz > 0 then
+						reversedWeapons[weaponNum] = true
+					end
+				end
 			end
 		end
 		
@@ -198,6 +235,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		info.tracks = tracks
 		info.smokePieces = smokePieces
 		info.cegPieces = cegPieces
+		info.aimPieces = aimPieces
+		info.reversedWeapons = reversedWeapons
 	end
 	
 	-- Remove aircraft land and repairlevel buttons

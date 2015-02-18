@@ -1,7 +1,3 @@
-local flare = piece "flare"
-local coaxflare = piece "coaxflare"
-local turret = piece "turret"
-local mantlet = piece "mantlet"
 local barrel = piece "barrel"
 local base = piece "base"
 
@@ -9,8 +5,6 @@ local brakeleft = piece "brakeleft"
 local brakeright = piece "brakeright"
 
 local info = GG.lusHelper[unitDefID]
-
-local headingPiece = turret or mantlet
 
 --Localisations
 local PI = math.pi
@@ -96,8 +90,13 @@ local function DamageSmoke(smokePieces)
 end
 
 function script.Create()
+	local flare = piece "flare"
+	local coaxflare = piece "coaxflare"
 	if flare then 
 		Hide(flare)
+	end
+	if coaxflare then
+		Hide(coaxflare)
 	end
 	if brakeleft then
 		Hide(brakeleft)
@@ -120,18 +119,18 @@ function script.Create()
 	for i = 1,info.numWeapons do
 		weaponPriorities[i] = i
 		wantedDirection[i] = {}
-	end
-	if turret then
-		Turn(turret, y_axis, 0)
+		if info.aimPieces[weaponNum] then
+			local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+			if headingPiece then
+				Turn(headingPiece, y_axis, 0)
+			end
+			if pitchPiece then
+				Turn(pitchPiece, x_axis, 0)
+			end
+		end
 	end
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
-	end
-	if headingPiece then
-		Turn(headingPiece, y_axis, 0)
-	end
-	if mantlet then
-		Turn(mantlet, x_axis, 0)
 	end
 end
 
@@ -182,9 +181,16 @@ function script.StopMoving()
 	StopWheels()
 end
 
-local function RestoreTurret()
-	Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
-	Turn(mantlet, x_axis, 0, info.elevationSpeed)	
+local function RestoreTurret(weaponNum)
+	if info.aimPieces[weaponNum] then
+		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+		if headingPiece then
+			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
+		end
+		if pitchPiece then
+			Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+		end
+	end
 end
 
 local function StopAiming(weaponNum)
@@ -199,14 +205,14 @@ local function StopAiming(weaponNum)
 			return
 		end
 	end
-	RestoreTurret()
+	RestoreTurret(weaponNum)
 end
 
 local function IsMainGun(weaponNum)
 	return weaponNum <= info.weaponsWithAmmo
 end
 
-local function GetHeadingToTarget(target)
+local function GetHeadingToTarget(headingPiece, target)
 	local tx, ty, tz
 	local heading
 	if #target == 1 then
@@ -242,54 +248,62 @@ local function GetAngleDiff(a, b)
 	return math.abs(diff)
 end
 
-local function ResolveDirection()
+local function ResolveDirection(headingPiece, pitchPiece)
 	local topDirection
 	local topPriority = #wantedDirection + 1
 	local manualHeading
 	if manualTarget then
-		manualHeading = GetHeadingToTarget(manualTarget)
+		manualHeading = GetHeadingToTarget(headingPiece, manualTarget)
 	end
 	
 	for weaponNum, dir in pairs(wantedDirection) do
-		if manualHeading and dir[1] then
-			if GetAngleDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
-				topDirection = dir
-				prioritisedWeapon = weaponNum
-				break
+		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece then -- Make sure the weapon is using same headingPiece
+			if manualHeading and dir[1] then
+				if GetAngleDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
+					topDirection = dir
+					prioritisedWeapon = weaponNum
+					break
+				end
 			end
-		end
-		if (not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] and
-				weaponPriorities[weaponNum] < topPriority then
-			topDirection = dir
-			topPriority = weaponPriorities[weaponNum]
-			prioritisedWeapon = weaponNum
+			if (not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] and
+					weaponPriorities[weaponNum] < topPriority then
+				topDirection = dir
+				topPriority = weaponPriorities[weaponNum]
+				prioritisedWeapon = weaponNum
+			end
 		end
 	end
 	if topDirection then
 		Turn(headingPiece, y_axis, topDirection[1], info.turretTurnSpeed)
-		Turn(mantlet, x_axis, -topDirection[2], info.elevationSpeed)
+		if pitchPiece then
+			Turn(pitchPiece, x_axis, -topDirection[2], info.elevationSpeed)
+		end
 	end
 end
 
-function IsAimedAt(heading, pitch)	
-	local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
-	local currentPitch = -Spring.UnitScript.GetPieceRotation(mantlet)
-	--currentPitch = -currentPitch
-	if currentHeading and currentPitch then
-		local pDiff = GetAngleDiff(currentPitch, pitch)
-		local hDiff = GetAngleDiff(currentHeading, heading)
-		
-		if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
-			return true
-		end
+function IsAimedAt(headingPiece, pitchPiece, heading, pitch)	
+
+	local _, currentHeading = Spring.UnitScript.GetPieceRotation(headingPiece)
+	-- If you can't change pitch, assume you're aimed for now.
+	local currentPitch = pitchPiece and -Spring.UnitScript.GetPieceRotation(pitchPiece) or pitch
+	
+	local pDiff = GetAngleDiff(currentPitch, pitch)
+	local hDiff = GetAngleDiff(currentHeading, heading)
+	
+	if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
+		return true
 	end
 	
 	return false
 end
 
 local function IsAimed(weaponNum)
+	if not info.aimPieces[weaponNum] then -- it's a shield or w/e
+		return true
+	end
 	if wantedDirection[weaponNum][1] then
-		return IsAimedAt(wantedDirection[weaponNum][1], wantedDirection[weaponNum][2])
+		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1] or base, info.aimPieces[weaponNum][2]
+		return IsAimedAt(headingPiece, pitchPiece, wantedDirection[weaponNum][1], wantedDirection[weaponNum][2])
 	end
 	return false
 end
@@ -326,6 +340,7 @@ function script.QueryWeapon(weaponNum)
 end
 
 function script.AimFromWeapon(weaponNum)
+	local headingPiece = info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] or base
 	return headingPiece
 end
 
@@ -336,22 +351,31 @@ end
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	Signal(SIG_AIM[weaponNum])
-	if weaponNum > 3 then
-		return false
+	if not info.aimPieces[weaponNum] then -- it's a shield or w/e
+		return true
 	end
-	-- if IsMainGun(weaponNum) and Spring.GetUnitRulesParam(unitID, "ammo") == 0 then
-		-- return false
-	-- end
-	
+	if info.reversedWeapons[weaponNum] then
+		heading = heading + PI
+		pitch = -pitch
+	end
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = heading, pitch
-	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
-	StartThread(ResolveDirection)
-	return IsAimedAt(heading, pitch)
+	
+	local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+	
+	if headingPiece then
+		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
+		StartThread(ResolveDirection, headingPiece, pitchPiece)
+	end
+	
+	return IsAimed(weaponNum)
 end
 
 
 function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
+	local turret = piece "turret"
+	local mantlet = piece "mantlet"
+	
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end
@@ -430,7 +454,8 @@ end
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	local newPriority = defPriority
 	--if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
-		local heading = GetHeadingToTarget({targetID})
+		local headingPiece = info.aimPieces[attackerWeaponNum] and info.aimPieces[attackerWeaponNum][1] or base
+		local heading = GetHeadingToTarget(headingPiece, {targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
 		newPriority = GetAngleDiff(heading, currentHeading)
 	--end
@@ -453,22 +478,24 @@ if UnitDef.isBuilder then
 		SIG_BUILD = SIG_MOVE * 2
 	end
 	
+	local turret = piece "turret"
 	local DEFAULT_CRANE_TURN_SPEED = math.rad(50)
+	
 	function script.StartBuilding(buildHeading, pitch)
-		if headingPiece then
+		if turret then
 			Signal(SIG_BUILD)
 			SetSignalMask(SIG_BUILD)
-			Turn(headingPiece, y_axis, buildHeading, DEFAULT_CRANE_TURN_SPEED)
-			WaitForTurn(headingPiece, y_axis)
+			Turn(turret, y_axis, buildHeading, DEFAULT_CRANE_TURN_SPEED)
+			WaitForTurn(turret, y_axis)
 		end
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 	end
 	
 	function script.StopBuilding()
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
-		if headingPiece then
+		if turret then
 			Signal(SIG_BUILD)
-			Turn(headingPiece, y_axis, 0, DEFAULT_CRANE_TURN_SPEED)
+			Turn(turret, y_axis, 0, DEFAULT_CRANE_TURN_SPEED)
 		end		
 	end
 end

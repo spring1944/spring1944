@@ -56,7 +56,6 @@ local inTransition
 local currentPoseName
 
 -- AIMING VARS
-local headingPiece
 local currentPitch
 local currentHeading
 

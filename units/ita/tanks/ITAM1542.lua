@@ -20,14 +20,14 @@ local ITAM1542 = LightTank:New{
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
-		[3] = { -- front hull MG
+		[3] = { -- coax MG
 			name				= "BredaM38",
-			maxAngleDif			= 10,
+			maxAngleDif			= 210,
 		},
-		[4] = { -- coax MG 1
+		[4] = { -- hull MG 1
 			name				= "BredaM38",
 		},
-		[5] = { -- coax MG 2
+		[5] = { -- hull MG 2
 			name				= "BredaM38",
 			slaveTo				= 4,
 		},
@@ -42,6 +42,11 @@ local ITAM1542 = LightTank:New{
 		armor_top			= 14,
 		maxammo				= 25,
 		weaponcost			= 8,
+		
+		cegpiece = {
+			[4] = "mg_flare1",
+			[5] = "mg_flare2",
+		},
 	},
 }
 
