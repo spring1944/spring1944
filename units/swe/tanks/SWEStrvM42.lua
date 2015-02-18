@@ -1,14 +1,24 @@
-local SWEStrvM42 = MediumTank:New{
-	name				= "Stridsvagn m/42",
+local StrvM42Base = {
 	acceleration		= 0.054,
 	brakeRate			= 0.15,
-	buildCostMetal		= 2400,
 	maxDamage			= 2250,
 	maxReverseVelocity	= 1.555,
 	maxVelocity			= 3.11,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
+
+	customParams = {
+		armor_front			= 64,
+		armor_rear			= 23,
+		armor_side			= 30,
+		armor_top			= 9,
+	},
+}
+
+local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
+	name				= "Stridsvagn m/42",
+	buildCostMetal		= 2400,
 	weapons = {
 		[1] = {
 			name				= "M375mmAP",
@@ -31,15 +41,20 @@ local SWEStrvM42 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 64,
-		armor_rear			= 23,
-		armor_side			= 30,
-		armor_top			= 9,
 		maxammo				= 15,
 		weaponcost			= 12,
 	},
 }
 
+local SWEBBVM42 = EngineerVehicle:New(Tank):New(StrvM42Base):New{
+	name				= "Bärgningsbandvagn m/42",
+	category			= "HARDVEH", -- don't trigger mines
+	customParams = {
+		weaponswithammo			= 0,
+	},
+}
+
 return lowerkeys({
 	["SWEStrvM42"] = SWEStrvM42,
+	["SWEBBVM42"] = SWEBBVM42,
 })
