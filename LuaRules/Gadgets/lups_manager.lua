@@ -46,12 +46,12 @@ if (gadgetHandler:IsSyncedCode()) then
   end
 
 
-  function gadget:UnitCloaked(unitID,unitDefID,teamID)
+  --[[function gadget:UnitCloaked(unitID,unitDefID,teamID)
     SendToUnsynced("lups_unit_cloaked", unitID,unitDefID,teamID)
   end
   function gadget:UnitDecloaked(unitID,unitDefID,teamID)
     SendToUnsynced("lups_unit_decloaked", unitID,unitDefID,teamID)
-  end
+  end]]
 
   function gadget:PlayerChanged(playerID)
     SendToUnsynced("lups_player_changed", playerID)
@@ -296,8 +296,8 @@ function gadget:Update()
 
   if (Lups) then
     --gadgetHandler:AddSyncAction("lups_unit_cloakeddamaged", UnitDamaged)
-    gadgetHandler:AddSyncAction("lups_unit_cloaked",        UnitCloaked)
-    gadgetHandler:AddSyncAction("lups_unit_decloaked",      UnitDecloaked)
+    --gadgetHandler:AddSyncAction("lups_unit_cloaked",        UnitCloaked)
+    --gadgetHandler:AddSyncAction("lups_unit_decloaked",      UnitDecloaked)
     gadgetHandler:AddSyncAction("lups_unit_destroyed",      UnitDestroyed)
 
     gadgetHandler:AddSyncAction("lups_luaui",               LupsLuaUI)
@@ -317,9 +317,9 @@ end
 --------------------------------------------------------------------------------
 
 function gadget:Shutdown()
-  gadgetHandler:RemoveSyncAction("lups_unit_cloakeddamaged")
-  gadgetHandler:RemoveSyncAction("lups_unit_cloaked")
-  gadgetHandler:RemoveSyncAction("lups_unit_decloaked")
+  --gadgetHandler:RemoveSyncAction("lups_unit_cloakeddamaged")
+  --gadgetHandler:RemoveSyncAction("lups_unit_cloaked")
+  --gadgetHandler:RemoveSyncAction("lups_unit_decloaked")
   gadgetHandler:RemoveSyncAction("lups_unit_destroyed")
 
   gadgetHandler:RemoveSyncAction("lups_luaui")

@@ -7,7 +7,7 @@ local GER_LeFH18_Truck = HGunTractor:New{
 
 local GER_LeFH18_Stationary = HGun:New{
 	name					= "Deployed 10.5cm LeFH 18M",
-	corpse					= "gerpak40_destroyed",
+	corpse					= "gerlefh18_destroyed",
 	customParams = {
 		weaponcost	= 30,
 	},

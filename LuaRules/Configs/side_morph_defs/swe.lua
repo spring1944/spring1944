@@ -196,24 +196,42 @@ local sweDefs = {
 			energy = 0,
 		},
 	},
-	--[[gbr25pdr_truck = 
+	
+	swekanonm02_33_truck =
 	{
-		into = 'gbr25pdr_stationary',
+		into = 'swekanonm02_33_stationary',
+		tech = 0,
+		time = 25,
+		metal = 0,
+		energy = 0,
+		directional = true,
+	},
+	swekanonm02_33_stationary =
+	{
+		into = 'swekanonm02_33_truck',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+	},
+  
+	swehaubitsm39_truck = 
+	{
+		into = 'swehaubitsm39_stationary',
 		tech = 0,
 		time = 35,
 		metal = 0,
 		energy = 0,
 		directional = true,
 	},
-	
-	gbr25pdr_stationary = 
+	swehaubitsm39_stationary = 
 	{
-		into = 'gbr25pdr_truck',
+		into = 'swehaubitsm39_truck',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
-	},]]
+	},
 	
 	sweboforsm36_truck = {
 		{

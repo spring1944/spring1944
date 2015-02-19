@@ -36,6 +36,10 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 		[4] = { -- coax 2
 			name				= "M1919A4Browning",
 		},
+		[4] = { -- hull
+			name				= "M1919A4Browning",
+			maxAngleDif			= 50,
+		},
 		[5] = {
 			name				= ".50calproof",
 		},
