@@ -60,7 +60,7 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 		[1] = {
 			mainDir		= [[0 0 -1]],
 		},
-		[1] = {
+		[2] = {
 			mainDir		= [[0 0 -1]],
 		},
 	},
