@@ -85,7 +85,7 @@
   onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 
   weapon4=BredaM38;
-  onlyTargetCategory3=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory4=OPENVEH INFANTRY SOFTVEH DEPLOYED;
 	weaponMainDir4=0 0 -1;
 	maxAngleDif4=45;
 
