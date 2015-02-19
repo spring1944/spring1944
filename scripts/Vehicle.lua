@@ -36,6 +36,7 @@ end
 
 
 local wantedDirection
+local weaponEnabled
 local weaponPriorities
 local manualTarget
 local prioritisedWeapon
@@ -113,11 +114,13 @@ function script.Create()
 		end
 	end
 	
+	weaponEnabled = {}
 	weaponPriorities = {}
 	wantedDirection = {}
 	
 	for i = 1,info.numWeapons do
 		weaponPriorities[i] = i
+		weaponEnabled[i] = true
 		wantedDirection[i] = {}
 		if info.aimPieces[weaponNum] then
 			local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
@@ -346,15 +349,21 @@ function script.AimFromWeapon(weaponNum)
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	return not CanFire(weaponNum)
+	return not (CanFire(weaponNum) and weaponEnabled[weaponNum])
 end
 
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	Signal(SIG_AIM[weaponNum])
+	
+	if not weaponEnabled[weaponNum] then
+		return false
+	end
+	
 	if not info.aimPieces[weaponNum] then -- it's a shield or w/e
 		return true
 	end
+	
 	if info.reversedWeapons[weaponNum] then
 		heading = heading + PI
 		pitch = -pitch
@@ -468,8 +477,13 @@ function ManualTarget(targetParams)
 	manualTarget = targetParams
 end
 
+function TogglePriority(weaponNum, newPriority)
+	weaponPriorities[weaponNum] = newPriority
+end
 
-
+function ToggleWeapon(weaponNum, isEnabled)
+	weaponEnabled[weaponNum] = isEnabled
+end
 
 if UnitDef.isBuilder then
 	local SIG_BUILD

@@ -18,6 +18,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		soundcategory		= "<SIDE>/Tank",
 		hasturnbutton		= true,
 		weaponswithammo		= 2,
+		weapontoggle		= "priorityAPHE",
 		
 		cegpiece = {
 			[1] = "flare",

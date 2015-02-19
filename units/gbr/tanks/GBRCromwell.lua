@@ -57,6 +57,7 @@ local GBRCromwellMkVI = GBRCromwell:New{
 	customParams = {
 		maxammo				= 10,
 		weaponcost			= 20,
+		weapontoggle		= "smoke",
 		canfiresmoke		= true,
 	},
 }

@@ -29,6 +29,7 @@ local toggleUnits
 local unitDefIDToCMDID
 local cmdIDToCMDDesc
 local cmdIDToStates
+local cmdIDToFuncName
 
 
 local function ProcessToggleData(unitDefID, toggleData)
@@ -51,13 +52,13 @@ local function ProcessToggleData(unitDefID, toggleData)
 		}
 		cmdIDToCMDDesc[cmdID] = cmdDesc
 		cmdIDToStates[cmdID] = toggleData.states
-	
+		cmdIDToFuncName[cmdID] = toggleData.funcName
 	end
 	unitDefIDToCMDID[unitDefID] = cmdID
 end
 
 local function ApplyToggle(unitID, cmdID, newState)
-	local toggleFunc = toggleCache[unitID]
+	local toggleFunc = toggleCache[unitID][cmdIDToFuncName[cmdID]]
 	local weaponStateTable = cmdIDToStates[cmdID][newState + 1].toggle
 	for weaponNum, isEnabled in pairs(weaponStateTable) do
 		Spring.UnitScript.CallAsUnit(unitID, toggleFunc, weaponNum, isEnabled)
@@ -73,7 +74,9 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 	if not cmdIDToStates[cmdID] then
 		return
 	end
-	ApplyToggle(unitID, cmdID, cmdParams[1])
+	if unitDefIDToCMDID[unitDefID] == cmdID then
+		ApplyToggle(unitID, cmdID, cmdParams[1])
+	end
 	return true, true
 end
 
@@ -83,8 +86,8 @@ function gadget:UnitCreated(unitID, unitDefID)
 	end
 	
 	local env = Spring.UnitScript.GetScriptEnv(unitID)
-	if env and env.ToggleWeapon then
-		toggleCache[unitID] = env.ToggleWeapon
+	if env then
+		toggleCache[unitID] = env
 	else
 		return
 	end
@@ -99,9 +102,11 @@ function gadget:Initialize()
 	cmdIDToCMDDesc = {}
 	cmdIDToStates = {}
 	toggleUnits = {}
+	cmdIDToFuncName = {}
 	for unitDefID, unitDef in pairs (UnitDefs) do
 		local toggleName = unitDef.customParams.weapontoggle
-		if toggleName then
+		if toggleName and toggleName ~= "false" then
+			Spring.Echo(unitDef.name, toggleName)
 			local toggleData = toggleDefs[toggleName]
 			toggleUnits[unitDefID] = true
 			ProcessToggleData(unitDefID, toggleData)

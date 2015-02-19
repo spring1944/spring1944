@@ -49,6 +49,7 @@ local USM5Stuart = StuartBase:New{
 	},
 	customParams = {
 		maxammo				= 27,
+		weapontoggle		= false,
 		weaponcost			= 8,
 		weaponswithammo		= 3,
 		
@@ -80,7 +81,8 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 	customParams = {
 		maxammo				= 9,
 		weaponcost			= 12,
-		
+		weapontoggle		= false,
+		weaponswithammo		= 1,
 		cegpiece = {
 			[2] = "aaflare",
 		},

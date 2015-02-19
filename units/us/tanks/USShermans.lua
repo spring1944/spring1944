@@ -120,6 +120,7 @@ local USM4A3105Sherman = ShermanBase:New{
 		armor_side			= 50,
 		maxammo				= 12,
 		weaponcost			= 22,
+		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
 	},
 }
