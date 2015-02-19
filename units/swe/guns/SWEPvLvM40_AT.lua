@@ -4,6 +4,7 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	corpse					= "ruszis2_destroyed", -- TODO: change
 	customParams = {
 		weaponcost	= 10,
+		scriptAnimation	= "pvlvm40",
 	},
 	weapons = {
 		[1] = { -- AP
