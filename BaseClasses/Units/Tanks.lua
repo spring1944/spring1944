@@ -66,9 +66,14 @@ local HeavyTank = Tank:New{
 local AssaultGun = Tank:New{
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
+	turnRate			= 175,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
 	}
+}
+
+local OpenAssaultGun = AssaultGun:New{
+	category			= "MINETRIGGER OPENVEH", -- open topped
 }
 
 -- Tank Destroyer
@@ -86,11 +91,14 @@ local OpenTankDestroyer = TankDestroyer:New{
 
 -- SP Arty Tank
 local SPArty = Tank:New{
-	description 		= "Self-Propelled Artillery",
+	description 		= "Self-Propelled Howitzer",
 	category			= "MINETRIGGER OPENVEH", -- SPH tend to be open topped
 	iconType			= "sparty",
+	turnRate			= 175,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
+		weaponswithammo		= 1, -- No smoke!
+		canareaattack		= true,
 	}
 }
 
@@ -100,6 +108,7 @@ return {
 	LightTank = LightTank,
 	MediumTank = MediumTank,
 	HeavyTank = HeavyTank,
+	OpenAssaultGun = OpenAssaultGun,
 	AssaultGun = AssaultGun,
 	TankDestroyer = TankDestroyer,
 	OpenTankDestroyer = OpenTankDestroyer,

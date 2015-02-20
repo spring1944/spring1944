@@ -45,8 +45,6 @@ local JPNDefs = {
 	"JPNVehicleYard",
 	"JPNVehYard_Landing",
 	"JPNVehyard_tank",
-	"JPNboatyardlarge",
-	"JPNboatyard",
   },
 
   sandbags  =  {

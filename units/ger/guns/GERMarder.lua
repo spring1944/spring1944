@@ -1,0 +1,35 @@
+local GERMarder = OpenTankDestroyer:New{
+	name				= "SdKfz 138 Panzerjäger Marder III Ausf. M",
+	description			= "Cheap Turretless Tank Destroyer",
+	acceleration		= 0.048,
+	brakeRate			= 0.15,
+	buildCostMetal		= 1400,
+	maxDamage			= 1050,
+	maxReverseVelocity	= 1.555,
+	maxVelocity			= 3.11,
+	trackOffset			= 3,
+	trackWidth			= 12,
+
+	weapons = {
+		[1] = {
+			name				= "kwk75mml48AP",
+			maxAngleDif			= 15,
+		},
+		[2] = {
+			name				= ".30calproof",
+		},
+	},
+	customParams = {
+		armor_front			= 10,
+		armor_rear			= 10,
+		armor_side			= 13,
+		armor_top			= 10,
+		maxammo				= 6,
+		weaponcost			= 16,
+		soundcategory		= "GER/Tank/JgPz",
+	},
+}
+
+return lowerkeys({
+	["GERMarder"] = GERMarder,
+})
