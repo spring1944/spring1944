@@ -3,9 +3,9 @@ local itaDefs = {
    	itastorage = {
 		{
 			into = 'itasupplycenter',
-			metal = 3000,
+			metal = 1500,
 			energy = 0,
-			time = 80,
+			time = 40,
 			name = '  Upgrade  ',
 			text = 'Upgrades into a Supply Center.',
 			facing = true,

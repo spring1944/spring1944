@@ -17,7 +17,7 @@
     armor_side=15;
     armor_top=45;
     dontCount=1;
-    supplyrangemodifier=0.1;
+    supplyrangemodifier=0.5;
     soundcategory=ITA/Yard;
   }
   energyMake=0;
