@@ -10,6 +10,7 @@ local GBR_LCT = Boat:New{
 	collisionVolumeScales	= [[60.0 100.0 220.0]],
 	corpse					= "GBRLCT_dead",
 	iconType				= "transportship",
+	loadingRadius			= 350,
 	mass					= 35000,
 	maxDamage				= 35000,
 	maxReverseVelocity		= 0.55,
