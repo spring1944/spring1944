@@ -30,6 +30,8 @@ local SetUnitSensorRadius   = Spring.SetUnitSensorRadius
 -- Constants
 local CMD_LOAD_ONTO = CMD.LOAD_ONTO
 local CMD_STOP = CMD.STOP
+local CMD_MOVE = CMD.MOVE
+
 local LOS_TYPES = {"los", "airLos", "radar", "sonar", "seismic", "radarJammer", "sonarJammer"}
 -- Variables
 local massLeft = {}
@@ -118,6 +120,52 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	
 end
 
+local function IsPositionValid(unitDefID, x, z)
+	-- Don't place units underwater. (this is also checked by TestBuildOrder
+	-- but that needs proper maxWaterDepth/floater/etc. in the UnitDef.)
+	local y = Spring.GetGroundHeight(x, z)
+	if (y <= 0) then
+		return false
+	end
+	-- Don't place units where it isn't be possible to build them normally.
+	local test = Spring.TestBuildOrder(unitDefID, x, y, z, 0)
+	if (test ~= 2) then
+		return false
+	end
+	-- Don't place units too close together.
+	local ud = UnitDefs[unitDefID]
+	local units = Spring.GetUnitsInCylinder(x, z, 16)
+	if (units[1] ~= nil) then
+		return false
+	end
+	return true
+end
+
+
+local function FindUnloadPlace(unitID, unitDefID, transportID)
+	local ux, uy, uz = Spring.GetUnitPosition(unitID)
+	local tx, ty, tz = Spring.GetUnitPosition(transportID)
+	
+	local vx, vz  = -(uz - tz), ux - tx -- rotate 90 degrees
+	local magnitude = math.sqrt(vx*vx + vz*vz)
+	local vx, vz = vx / magnitude, vz / magnitude
+	local step = math.max(UnitDefs[unitDefID].xsize, UnitDefs[unitDefID].zsize) * 4
+	
+	--limit iterations
+	for i = 3,12 do
+		local x, z =  ux + vx * i * step, uz + vz * i * step
+		if IsPositionValid(unitDefID, x, z) then
+			Spring.SetUnitPosition(unitID, x, z)
+			return
+		end
+		x, z =  ux - vx * i * step, uz - vz * i * step
+		if IsPositionValid(unitDefID, x, z) then
+			Spring.SetUnitPosition(unitID, x, z)
+			return
+		end
+	end
+end
+
 function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	--Spring.Echo("UnitUnloaded")
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
@@ -130,7 +178,8 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	end
 	DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
 	Spring.SetUnitNoMinimap(unitID, false)
-	--DelayCall(Spring.SetUnitBlocking, {unitID, true, true, true, true, true, true, true}, 16) -- Engine doesn't properly reset blockign on lua-loaded units
+	DelayCall(Spring.SetUnitBlocking, {unitID, true, true, true, true, true, true, true}, 16) -- Engine doesn't properly reset blockign on lua-loaded units
+	FindUnloadPlace(unitID, unitDefID, transportID)
 end
 
 function gadget:Initialize()
