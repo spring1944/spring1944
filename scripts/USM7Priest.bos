@@ -93,7 +93,6 @@ treads()
 
 Create()
 {
-	set STEALTH to 1;
 	FX_HIDE
 	// init vars
 	rock = FALSE;
