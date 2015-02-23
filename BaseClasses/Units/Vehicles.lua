@@ -6,6 +6,7 @@ local Vehicle = Unit:New{
 	footprintZ			= 3,
 	leaveTracks			= true,
 	noChaseCategory		= "FLAG AIR MINE",
+	script				= "Vehicle.lua",
 	seismicSignature	= 1, -- required, not default
 	trackType			= "Stdtank",
 	turnInPlace			= false,
@@ -21,7 +22,6 @@ local ArmouredCar = Vehicle:New{
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
 	movementClass		= "TANK_Car",
-	script				= "Vehicle.lua", -- TODO: Move to root class once ready
 	
 	customParams = {
 		cegpiece = {
@@ -49,7 +49,6 @@ local EngineerVehicle = Vehicle:New{
 	maxReverseVelocity	= 1.7,
 	maxVelocity			= 3.4,
 	movementClass		= "TANK_Truck",
-	script				= "Vehicle.lua", -- TODO: Move to root class once ready
 	turnRate			= 180,
 	-- builder tags
 	buildDistance		= 196,
@@ -69,7 +68,6 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxReverseVelocity	= 2.25,
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
-	script				= "Vehicle.lua",
 	turnRate			= 440,
 	
 	customParams = {
@@ -91,6 +89,14 @@ local PontoonTruck = Truck:New{
 		dontCount		= false,
 	},
 }
+
+local MobileAA = { -- not a full class
+	description			= "Self-Propelled Light Anti-Aircraft",
+	iconType			= "aacar",
+}
+
+local TruckAA = Truck:New(MobileAA)
+local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
 local TransportTruck = Truck:New{ -- Transport Trucks
 	description			= "Transport/Supply Truck",
@@ -136,10 +142,12 @@ local RGunTractor = Truck:New{
 return {
 	Vehicle = Vehicle,
 	ArmouredCar = ArmouredCar,
+	ArmouredCarAA = ArmouredCarAA,
 	HeavyArmouredCar = HeavyArmouredCar,
 	EngineerVehicle = EngineerVehicle,
 	-- Trucks
 	Truck = Truck,
+	TruckAA  = TruckAA ,
 	PontoonTruck = PontoonTruck,
 	TransportTruck = TransportTruck,
 	AAGunTractor = AAGunTractor,
