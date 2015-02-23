@@ -52,7 +52,6 @@
   transportUnloadMethod=0;
   turninplace=0;
   turnRate=440;
-  loadingRadius=30;
-  unloadSpread=10;
+  unloadSpread=2;
 }
 

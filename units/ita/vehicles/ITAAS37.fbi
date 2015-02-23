@@ -29,7 +29,7 @@
   footprintZ=3;
   iconType=halftrack;
   leaveTracks=1;
-  loadingRadius=50;
+  loadingRadius=120;
   mass=930;
   maxDamage=930;
   maxReverseVelocity=2.52;
@@ -68,8 +68,7 @@
   transportUnloadMethod=0;
   turninplace=0;
   turnRate=400;
-  unloadSpread=10;
-  loadingRadius=30;
+  unloadSpread=2;
   badTargetCategory=FLAG;
 
   weapon1=BredaM38;
