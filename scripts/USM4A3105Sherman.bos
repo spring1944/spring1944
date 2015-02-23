@@ -98,7 +98,6 @@ Create()
 	isSmoking = FALSE;
 	FX_HIDE
 	// init vars
-	set STEALTH to 1;
 	rock = FALSE;
 	aim2 = FALSE;
 	reloading = FALSE;
