@@ -18,6 +18,9 @@ local SWEPBilM31 = ArmouredCarAA:New{
 			name				= "vickers", -- TODO: ksp m/36
 			maxAngleDif			= 20,
 		},
+		[3] = {
+			name				= ".30calproof",
+		},
 	},
 	customParams = {
 		armor_front			= 6,
