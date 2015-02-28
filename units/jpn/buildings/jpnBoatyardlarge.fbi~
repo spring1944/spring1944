@@ -1,7 +1,7 @@
 [unitinfo] {
-  unitname=ITABoatyard;
-  name=Boat Yard;
-  description=Light Naval Prep. Facility;
+  unitname=JPNBoatyardlarge;
+  name=Large Boat Yard;
+  description=Naval Production Facility;
   buildCostEnergy=0;
   buildCostMetal=5445;
   builder=1;
@@ -9,7 +9,7 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=ITABoatyard.png;
+  buildPic=JPNBoatyard.png;
   buildTime=5445;
   canBeAssisted=0;
   canMove=1;
@@ -17,16 +17,16 @@
   corpse=GERBoatyardLarge_dead;
   [customParams] {
     supplyRange=500;
-    soundcategory=ITA/Yard;
+    soundcategory=JPN/Yard;
   }
   energyStorage=0;
   explodeAs=LARGE_EXPLOSION;
   floater=1;
   footprintX=14;
   footprintZ=14;
-  iconType=shipyard;
+  iconType=hshipyard;
   idleAutoHeal=3;
-  maxDamage=16250;
+  maxDamage=6250;
   maxSlope=10;
   minWaterDepth=10;
   objectName=GERBoatyardLarge;
@@ -35,7 +35,7 @@
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=GER;
+  side=JPN;
   sightDistance=146;
   stealth=1;
   useBuildingGroundDecal=1;

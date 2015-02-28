@@ -1,5 +1,5 @@
 [unitinfo] {
-  unitname=ITABoatyard;
+  unitname=USBoatyard;
   name=Boat Yard;
   description=Light Naval Prep. Facility;
   buildCostEnergy=0;
@@ -9,15 +9,15 @@
   buildingGroundDecalSizeX=8;
   buildingGroundDecalSizeY=8;
   buildingGroundDecalType=Dirt2.dds;
-  buildPic=ITABoatyard.png;
+  buildPic=USBoatyard.png;
   buildTime=5445;
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  corpse=GERBoatyardLarge_dead;
+  corpse=USBoatyardLarge_dead;
   [customParams] {
     supplyRange=500;
-    soundcategory=ITA/Yard;
+    soundcategory=US/Yard;
   }
   energyStorage=0;
   explodeAs=LARGE_EXPLOSION;
@@ -26,16 +26,16 @@
   footprintZ=14;
   iconType=shipyard;
   idleAutoHeal=3;
-  maxDamage=16250;
+  maxDamage=6250;
   maxSlope=10;
   minWaterDepth=10;
-  objectName=GERBoatyardLarge;
+  objectName=USBoatyardLarge;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  side=GER;
+  side=US;
   sightDistance=146;
   stealth=1;
   useBuildingGroundDecal=1;

@@ -26,7 +26,7 @@
   footprintZ=14;
   iconType=shipyard;
   idleAutoHeal=3;
-  maxDamage=6250;
+  maxDamage=16250;
   maxSlope=10;
   minWaterDepth=10;
   objectName=GBRBoatyardLarge;
