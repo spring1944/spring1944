@@ -1,4 +1,4 @@
-local JPNKaMi = LightTank:New{
+local JPNKaMi = LightTank:New(Amphibian):New{
 	name				= "Type 2 Ka-Mi",
 	description			= "Amphibious Light Tank",
 	acceleration		= 0.034,
@@ -7,7 +7,6 @@ local JPNKaMi = LightTank:New{
 	maxDamage			= 1250,
 	maxReverseVelocity	= 1.4,
 	maxVelocity			= 2.8,
-	movementClass		= "HOVER_AmphibTruck",
 	trackOffset			= 7,
 	trackWidth			= 16,
 

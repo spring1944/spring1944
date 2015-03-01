@@ -18,6 +18,12 @@ local RUS_Po2Partisan = RUS_Po2:Clone("RUSPo2"):New{
 		troopdropper	= 1,
 		deposit			= 0,
 	},
+	
+	weapons = {
+		[1] = {
+			name			= "rus_partisandrop",
+		},
+	},
 }
 
 return lowerkeys({

@@ -6,6 +6,12 @@ local US_C47 = ParaTransport:New{
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
 	},
+	
+	weapons = {
+		[1] = {
+			name			= "us_paratrooper",
+		},
+	},
 }
 
 

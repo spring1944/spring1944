@@ -1,0 +1,32 @@
+local GERSdKfz251 = HalfTrack:New{
+	name					= "SdKfz 251/1 Halftrack",
+	buildCostMetal			= 1100,
+	acceleration			= 0.039,
+	brakeRate				= 0.195,
+	maxDamage				= 850,
+	maxReverseVelocity		= 1.925,
+	maxVelocity				= 3.85,
+	trackOffset				= 10,
+	trackWidth				= 15,
+	turnRate				= 405,
+	
+	customParams = {
+		armor_front				= 9,
+		armor_rear				= 9,
+		armor_side				= 10,
+		armor_top				= 0,
+	},
+	
+	weapons = {
+		[1] = {
+			name					= "MG34",
+		},
+		[2] = {
+			name					= "MG42AA",
+		},
+	},
+}
+
+return lowerkeys({
+	["GERSdKfz251"] = GERSdKfz251,
+})

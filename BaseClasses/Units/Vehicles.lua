@@ -90,7 +90,20 @@ local PontoonTruck = Truck:New{
 	},
 }
 
-local MobileAA = { -- not a full class
+local Transport = { -- not a full class (interface)
+	loadingRadius		= 120,
+	transportCapacity	= 15,
+	transportMass		= 750,
+	transportSize		= 1,
+	unloadSpread		= 3,
+}
+
+local Amphibian = { -- not a full class (interface)
+	movementClass		= "HOVER_AmphibTruck",
+	waterline = 50,
+}
+
+local MobileAA = { -- not a full class (interface)
 	description			= "Self-Propelled Light Anti-Aircraft",
 	iconType			= "aacar",
 }
@@ -98,15 +111,24 @@ local MobileAA = { -- not a full class
 local TruckAA = Truck:New(MobileAA)
 local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
-local TransportTruck = Truck:New{ -- Transport Trucks
+
+local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	description			= "Transport/Supply Truck",
 	buildCostMetal		= 510,
 	iconType			= "truck",
-	loadingRadius		= 120,
-	transportCapacity	= 15,
-	transportMass		= 750,
-	transportSize		= 1,
-	unloadSpread		= 3,
+}
+
+local HalfTrack = Vehicle:New(Transport):New{
+	description			= "Transport/Supply Halftrack",
+	category			= "MINETRIGGER OPENVEH",
+	buildCostMetal		= 1200, --
+	iconType			= "halftrack",
+	movementClass		= "TANK_Light",
+	turnRate			= 400,
+	
+	customParams = {
+	    supplyRange			= 200,
+	},
 }
 
 local AAGunTractor = Truck:New{
@@ -141,10 +163,16 @@ local RGunTractor = Truck:New{
 
 return {
 	Vehicle = Vehicle,
+	-- Interfaces
+	Amphibian = Amphibian,
+	MobileAA = MobileAA,
+	Transport = Transport,
+	-- Base Classes
 	ArmouredCar = ArmouredCar,
 	ArmouredCarAA = ArmouredCarAA,
 	HeavyArmouredCar = HeavyArmouredCar,
 	EngineerVehicle = EngineerVehicle,
+	HalfTrack = HalfTrack,
 	-- Trucks
 	Truck = Truck,
 	TruckAA  = TruckAA ,
