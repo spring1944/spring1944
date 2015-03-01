@@ -100,7 +100,7 @@ local Transport = { -- not a full class (interface)
 
 local Amphibian = { -- not a full class (interface)
 	movementClass		= "HOVER_AmphibTruck",
-	waterline = 50,
+	waterline = 7.5,
 }
 
 local MobileAA = { -- not a full class (interface)
