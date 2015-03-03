@@ -238,7 +238,7 @@ local BredaSafat03 = MGClass:New{
 
 -- Type 97, also used for Type 99 (JPN)
 local Type97MG = MGClass:New{
-  burst              = 6
+  burst              = 6,
   burstRate          = 0.1,
   movingAccuracy     = 6222,
   name               = [[Type 97 7.7mm Machinegun]],
