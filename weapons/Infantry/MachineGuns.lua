@@ -111,9 +111,10 @@ local MG42_Deployed = MG42:New{
 local MG42AA = MG42:New{
   canAttackGround    = false,
   predictBoost       = 0.25,
+  movingAccuracy     = 500,
   range              = 1170,
   sprayAngle         = 460,
-  customparams = { -- don't cause fear, should cause Aircraft fear?
+  customparams = { 
     no_range_adjust    = true,
     fearid             = 701,
   }
@@ -148,6 +149,7 @@ local Maxim = MGClass:New{
 }
 -- Maxim AA
 local MaximAA = Maxim:New{
+  accuracy	     = 200,
   burst              = 7,
   burstRate          = 0.103,
   canAttackGround    = false,
@@ -236,7 +238,7 @@ local BredaSafat03 = MGClass:New{
 
 -- Type 97, also used for Type 99 (JPN)
 local Type97MG = MGClass:New{
-  burst              = 5,
+  burst              = 6
   burstRate          = 0.1,
   movingAccuracy     = 6222,
   name               = [[Type 97 7.7mm Machinegun]],
@@ -260,7 +262,7 @@ local Type92MG = MGClass:New{
 
 -- 7.7mm TE-4 Air MG (JPN)
 local TE4 = MGClass:New{
-  burst				 = 6,
+  burst			= 6,
   burstRate          = 0.15,
   canAttackGround    = false,
   name               = [[7.7mm TE-4 Machinegun]],
@@ -307,9 +309,10 @@ local M2Browning = HeavyMGClass:New{
 }
 -- M2 Browning AA
 local M2BrowningAA = M2Browning:New{
+  accuracy	     = 200,
   burst              = 3,
   canAttackGround    = false,
-  movingAccuracy     = 200,
+  movingAccuracy     = 400,
   predictBoost       = 0.25,
   range              = 1170,
   sprayAngle        = 250,
@@ -347,10 +350,11 @@ local BredaM1931 = HeavyMGClass:New{
 
 --Breda M1931 AA
 local BredaM1931AA = BredaM1931:New{
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
   canAttackGround    = false,
-  movingAccuracy     = 200,
+  movingAccuracy     = 400,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
@@ -389,9 +393,10 @@ local Type93HMG = HeavyMGClass:New{
 
 -- Type 93 AA
 local Type93AA = Type93HMG:New{
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
-  movingAccuracy     = 200,
+  movingAccuracy     = 400,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
@@ -404,7 +409,7 @@ local Type93AA = Type93HMG:New{
 
 -- Type 1 Ho-103 12.7mm Air MG (JPN)
 local Type1Ho103 = HeavyMGClass:New{
-  burst				 = 8,
+  burst			= 8,
   burstRate          = 0.085,
   canAttackGround    = false,
   name               = [[Type1 Ho-103 12.7mm]],
