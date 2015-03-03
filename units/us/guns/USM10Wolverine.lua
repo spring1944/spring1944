@@ -1,4 +1,4 @@
-local USM10Wolverine = OpenTankDestroyer:New{
+local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "M10 GMC Wolverine",
 	description			= "Turreted Tank Destroyer",
 	acceleration		= 0.052,

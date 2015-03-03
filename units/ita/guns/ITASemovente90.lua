@@ -1,4 +1,4 @@
-local ITASemovente90 = OpenTankDestroyer:New{
+local ITASemovente90 = Tank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "Semovente da 90/53",
 	description			= "Heavily Armed Tank Destroyer",
 	acceleration		= 0.032,

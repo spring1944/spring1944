@@ -1,4 +1,4 @@
-local ITASemovente75_46 = AssaultGun:New{
+local ITASemovente75_46 = Tank:New(AssaultGun):New{
 	name				= "Semovente da 75/46",
 	acceleration		= 0.041,
 	brakeRate			= 0.15,

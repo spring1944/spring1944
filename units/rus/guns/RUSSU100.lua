@@ -1,4 +1,4 @@
-local RUSSU100 = TankDestroyer:New{
+local RUSSU100 = Tank:New(TankDestroyer):New{
 	name				= "SU-100",
 	description			= "Heavy Tank Destroyer",
 	acceleration		= 0.053,

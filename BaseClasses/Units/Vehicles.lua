@@ -69,11 +69,6 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
 	turnRate			= 440,
-	
-	customParams = {
-		buildOutside	= 1,
-		dontCount		= 1,
-	},
 }
 
 local PontoonTruck = Truck:New{
@@ -84,10 +79,6 @@ local PontoonTruck = Truck:New{
 	maxWaterDepth		= 70,
 	movementClass		= "HOVER_AmphibTruck",
 	script				= nil, -- TODO: atm they have individual copies
-	
-	customParams = {
-		dontCount		= false,
-	},
 }
 
 local Transport = { -- not a full class (interface)
@@ -116,6 +107,11 @@ local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	description			= "Transport/Supply Truck",
 	buildCostMetal		= 510,
 	iconType			= "truck",
+
+	customParams = {
+		buildOutside	= 1,
+		dontCount		= 1,
+	},
 }
 
 local HalfTrack = Vehicle:New(Transport):New{

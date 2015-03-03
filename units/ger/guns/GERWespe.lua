@@ -1,4 +1,4 @@
-local GERWespe = SPArty:New{
+local GERWespe = Tank:New(SPArty):New(OpenTopped):New{
 	name				= "SdKfz 124 Wespe",
 	acceleration		= 0.042,
 	brakeRate			= 0.15,

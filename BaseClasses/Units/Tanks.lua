@@ -63,17 +63,13 @@ local HeavyTank = Tank:New{
 }
 
 -- Assault Gun
-local AssaultGun = Tank:New{
+local AssaultGun = Unit:New{ -- not a full class (interface)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
 	turnRate			= 175,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
 	}
-}
-
-local OpenAssaultGun = AssaultGun:New{
-	category			= "MINETRIGGER OPENVEH", -- open topped
 }
 
 -- Tank Destroyer
@@ -85,14 +81,9 @@ local TankDestroyer = AssaultGun:New{
 	}
 }
 
-local OpenTankDestroyer = TankDestroyer:New{
-	category			= "MINETRIGGER OPENVEH", -- open topped
-}
-
 -- SP Arty Tank
-local SPArty = Tank:New{
+local SPArty = Unit:New{ -- not a full class (interface)
 	description 		= "Self-Propelled Howitzer",
-	category			= "MINETRIGGER OPENVEH", -- SPH tend to be open topped
 	iconType			= "sparty",
 	turnRate			= 175,
 	customParams = {
@@ -102,15 +93,18 @@ local SPArty = Tank:New{
 	}
 }
 
+local OpenTopped = { --not a full class (interface, more like 'attribute')
+	category			= "MINETRIGGER OPENVEH",
+}
+
 return {
 	Tank = Tank,
 	Tankette = Tankette,
 	LightTank = LightTank,
 	MediumTank = MediumTank,
 	HeavyTank = HeavyTank,
-	OpenAssaultGun = OpenAssaultGun,
 	AssaultGun = AssaultGun,
 	TankDestroyer = TankDestroyer,
-	OpenTankDestroyer = OpenTankDestroyer,
 	SPArty = SPArty,
+	OpenTopped = OpenTopped,
 }

@@ -134,6 +134,7 @@ for name, ud in pairs(UnitDefs) do
 	--cloaked inf)
 	ud.activatewhenbuilt = true
 	for category, detectValues in pairs(detection) do
+		if not ud.category then Spring.Echo(ud.name .. " has no category!") end
 		local catStart, catEnd = string.find(ud.category, category)
 		if catStart ~= nil then
 			local cat = string.sub(ud.category, catStart, catEnd)

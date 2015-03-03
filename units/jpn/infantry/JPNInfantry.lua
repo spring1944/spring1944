@@ -115,6 +115,48 @@ local JPN_Observ = ObservInf:New(JPNInf):New{
 	},
 }
 
+local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
+	name				= "Type 4 200mm Mortar",
+	buildCostMetal		= 1500,
+	buildPic			= "JPNType4Mortar_Stationary.png", -- TODO: make a new one for deployed?
+	iconType			= "artillery",
+	
+	customParams = {
+		maxammo				= 1,
+		weaponcost			= 70,
+		weaponswithammo		= 0,
+	},
+}
+
+local JPN_Type4Mortar_Stationary = Deployed:New{
+	name				= "Type 4 200mm Mortar",
+	description			= "Deployed Heavy Rocket Mortar",
+	corpse				= "GERNebelwerfer_Destroyed", -- TODO: corpse
+	buildCostMetal		= 1500,
+	iconType			= "artillery",
+	noAutoFire			= true,
+	script				= "<NAME>.cob", -- TODO: use deployed.lua
+	customParams = {
+		canareaattack		= true,
+		canfiresmoke		= true,
+		maxammo				= 1,
+		weaponcost			= 70,
+		weaponswithammo		= 2,
+		--scriptAnimation		= "gun",
+	},
+	
+	weapons = {
+		[1] = {
+			name				= "Type4RocketMortarHE",
+			maxAngleDif			= 35,
+		},
+		[2] = {
+			name				= "Type4RocketMortarSmoke",
+			maxAngleDif			= 35,
+		},
+	},
+}
+
 return lowerkeys({
 	-- Regular Inf
 	["JPNHQEngineer"] = JPN_HQEngineer,
@@ -129,4 +171,6 @@ return lowerkeys({
 	["JPNKneeMortar"] = JPN_KneeMortar,
 	["JPNMortar"] = JPN_Mortar,
 	["JPNObserv"] = JPN_Observ,
+	["JPNType4Mortar_Mobile"] = JPN_Type4Mortar_Mobile,
+	["JPNType4Mortar_Stationary"] = JPN_Type4Mortar_Stationary,
 })

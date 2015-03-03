@@ -1,4 +1,4 @@
-local GERStuGIII = AssaultGun:New{
+local GERStuGIII = Tank:New(AssaultGun):New{
 	name				= "SdKfz 142/1 StuG III Ausf. G",
 	acceleration		= 0.042,
 	brakeRate			= 0.15,

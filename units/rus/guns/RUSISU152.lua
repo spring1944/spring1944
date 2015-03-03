@@ -1,4 +1,4 @@
-local RUSISU152 = OpenAssaultGun:New{
+local RUSISU152 = Tank:New(AssaultGun):New{
 	name				= "ISU-152",
 	description			= "Heavy Assault Gun",
 	acceleration		= 0.048,

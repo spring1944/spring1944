@@ -1,4 +1,4 @@
-local GERJagdPanzerIV = TankDestroyer:New{
+local GERJagdPanzerIV = Tank:New(TankDestroyer):New{
 	name				= "SdKfz 162 JagdPanzer IV/70(V)",
 	description			= "Turretless Tank Destroyer",
 	acceleration		= 0.039,

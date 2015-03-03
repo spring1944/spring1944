@@ -1,4 +1,4 @@
-local JPNHoNiII = SPArty:New{
+local JPNHoNiII = Tank:New(SPArty):New(OpenTopped):New{
 	name				= "Type 2 Ho-Ni II",
 	acceleration		= 0.041,
 	brakeRate			= 0.15,

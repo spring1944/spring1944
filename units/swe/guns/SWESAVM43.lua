@@ -1,4 +1,4 @@
-local SWESAVM43 = AssaultGun:New{
+local SWESAVM43 = Tank:New(AssaultGun):New{
 	name				= "SAV m/43",
 	acceleration		= 0.051,
 	brakeRate			= 0.15,

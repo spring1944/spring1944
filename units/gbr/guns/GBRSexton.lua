@@ -1,4 +1,4 @@
-local GBRSexton = SPArty:New{
+local GBRSexton = Tank:New(SPArty):New(OpenTopped):New{
 	name				= "25pdr SP. Sexton Mk. II",
 	acceleration		= 0.052,
 	brakeRate			= 0.15,

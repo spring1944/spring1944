@@ -1,4 +1,4 @@
-local GBRM10Achilles = OpenTankDestroyer:New{
+local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "17pdr SP. Achilles Ic",
 	description			= "Upgunned Tank Destroyer",
 	acceleration		= 0.046,

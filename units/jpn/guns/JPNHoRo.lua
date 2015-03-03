@@ -1,4 +1,4 @@
-local JPNHoRo = OpenAssaultGun:New{
+local JPNHoRo = Tank:New(AssaultGun):New(OpenTopped):New{
 	name				= "Type 4 Ho-Ro",
 	description			= "Heavy Howitzer Assault Gun",
 	acceleration		= 0.041,

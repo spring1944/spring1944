@@ -1,4 +1,4 @@
-local JPNHoNiIII = TankDestroyer:New{
+local JPNHoNiIII = Tank:New(TankDestroyer):New{
 	name				= "Type 3 Ho-Ni III",
 	acceleration		= 0.041,
 	brakeRate			= 0.15,

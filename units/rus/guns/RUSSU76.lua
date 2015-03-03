@@ -1,4 +1,4 @@
-local RUSSU76 = OpenAssaultGun:New{
+local RUSSU76 = Tank:New(AssaultGun):New(OpenTopped):New{
 	name				= "SU-76",
 	acceleration		= 0.051,
 	brakeRate			= 0.15,

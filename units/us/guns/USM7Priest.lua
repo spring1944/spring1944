@@ -1,4 +1,4 @@
-local USM7Priest = SPArty:New{
+local USM7Priest = Tank:New(SPArty):New(OpenTopped):New{
 	name				= "M7 HMC Priest",
 	acceleration		= 0.065,
 	brakeRate			= 0.15,
