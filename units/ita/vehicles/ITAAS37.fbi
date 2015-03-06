@@ -39,7 +39,7 @@
   movementClass=TANK_car;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=ITAAS37.s3o;
-  releaseHeld=1;
+  releaseHeld=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

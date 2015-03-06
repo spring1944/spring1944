@@ -32,7 +32,7 @@
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
   objectName=USPontoonTruck.s3o;
-  releaseHeld=1;
+  releaseHeld=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

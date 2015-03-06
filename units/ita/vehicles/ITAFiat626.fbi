@@ -32,7 +32,7 @@
   movementClass=TANK_Truck;
   noChaseCategory=AIR MINE;
   objectName=ITAFiat626.s3o;
-  releaseHeld=1;
+  releaseHeld=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {

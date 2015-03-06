@@ -39,7 +39,7 @@
   movementClass=TANK_Light;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=GBRM5Halftrack.S3O;
-  releaseHeld=1;
+  releaseHeld=0;
   script=M5Halftrack.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

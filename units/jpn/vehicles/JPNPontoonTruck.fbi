@@ -31,7 +31,7 @@
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=AIR MINE;
   objectName=JPNPontoonTruck.s3o;
-  releaseHeld=1;
+  releaseHeld=0;
   script=ruspontoontruck.cob;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;

@@ -41,7 +41,7 @@
   movementClass=HOVER_AmphibTruck;
   noChaseCategory=FLAG AIR MINE HARDVEH BUILDING;
   objectName=JPNKaTsu.s3o;
-  releaseHeld=1;
+  releaseHeld=0;
   seismicSignature=0;
   selfDestructAs=Vehicle_Explosion_Sm;
   [sfxtypes] {
