@@ -55,6 +55,8 @@ local APMineSign = MineSign:New{
 }
 
 local ATMineSign = MineSign:New{
+    buildCostMetal              = 180,
+    buildTime				    = 180,
 	name						= "AT Minefield",
 	description					= "Warning! AT Mines!",
 	maxSlope				= 15,
