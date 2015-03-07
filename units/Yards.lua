@@ -15,7 +15,9 @@ for _, side in pairs(Sides) do
 	units[side .. "radar"] = Radar:New{}
 	units[side .. "supplydepot"] = SupplyDepot:New{}
 	-- Logistics
-	units[side .. "storage"] = Storage:New{}
+	units[side .. "storage"] = Storage:New{	
+		objectName				= "GEN/Storage.S3O",
+	}
 	units[side .. "trucksupplies"] = Supplies:New{}
 end
 

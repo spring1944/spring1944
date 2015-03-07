@@ -228,7 +228,6 @@ local Storage = Building:New{
 	footprintZ				= 6,
 	iconType				= "stockpile",
 	maxDamage				= 1200,
-	objectName				= "GEN/Storage.S3O",
 	script					= "Storage.cob",
 	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
 	customparams = {
