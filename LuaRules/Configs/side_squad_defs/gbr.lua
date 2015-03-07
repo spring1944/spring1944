@@ -232,6 +232,7 @@ local gbrDefs = {
 			"gbrrifle",
 			"gbrrifle",
 		},
+        buildCostMetal = 4000,
 		-- other fields not needed for transport squads
 	},
 

@@ -250,12 +250,16 @@ for name, ud in pairs(UnitDefs) do
 			local squadDef = squadDefs[squadName]
 			if squadDef then
 				local addedCost = 0
-				for i, unitName in ipairs(squadDef.members) do
-					local newUD = UnitDefs[unitName]
-					if newUD then
-						addedCost = addedCost + newUD.buildcostmetal
-					end
-				end
+                if squadDef.buildCostMetal then
+                    addedCost = squadDef.buildCostMetal
+                else
+                    for i, unitName in ipairs(squadDef.members) do
+                        local newUD = UnitDefs[unitName]
+                        if newUD then
+                            addedCost = addedCost + newUD.buildcostmetal
+                        end
+                    end
+                end
 				--Spring.Echo("Total squad cost: "..addedCost)
 				if addedCost > 0 then
 					ud.buildcostmetal = ud.buildcostmetal + addedCost

@@ -160,6 +160,7 @@ local jpnDefs = {
 			"jpntype3at",
 			"jpnobserv",
 		},
+        buildCostMetal = 6000,
 		-- other fields not needed for transport squads
 	},
 	["jpn_platoon_amph"] =

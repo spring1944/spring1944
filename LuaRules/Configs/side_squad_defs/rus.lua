@@ -190,7 +190,7 @@ local rusDefs = {
 			"rusobserv",
 			"rusobserv",
 			"rusdp",
-			"rusppsh",
+			"ruscommissar",
 			"rusppsh",
 			"rusppsh",
 			"rusppsh",
@@ -208,6 +208,7 @@ local rusDefs = {
 			"rusrifle",
 			"rusrifle",
 		},
+        buildCostMetal = 2100,
 		-- other fields not needed for transport squads
 	},
 

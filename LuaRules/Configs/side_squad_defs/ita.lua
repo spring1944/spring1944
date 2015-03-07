@@ -244,6 +244,7 @@ local itaDefs = {
 			"itabreda30",
 			"itaobserv",
 		},
+        buildCostMetal = 3200,
 		-- other fields not needed for transport squads
 	},
 }
