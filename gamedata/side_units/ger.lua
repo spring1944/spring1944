@@ -222,17 +222,16 @@ local gerunits =
   {
     "gersturmboot",
 	"gerpontoonraft",
-    --"gerschsturmboot",
     "gerrboot",
+    "gerschsturmboot",
     "gersboot",
-	"gersiebelfahre",
   },
   gerboatyardlarge =
   {
     "gersturmboot",
     "pontoonraft",
     "gerrboot",
-	"gersiebelfahre",
+    "gerschsturmboot",
 	"gersboot",
     "germfp",
 	"germal",
