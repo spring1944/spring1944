@@ -16,7 +16,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		},
 		[2] = {
 			name				= "vickers", -- TODO: ksp m/36
-			maxAngleDif			= 20,
+			maxAngleDif			= 15,
 		},
 		[3] = {
 			name				= ".30calproof",
@@ -30,6 +30,11 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		weaponswithammo		= 1,
 		weaponcost			= 2,
 		maxammo				= 19,
+		
+		cegpiece = {
+			[1] = "flare",
+			[2] = "bow_mg_flare",
+		},
 	}
 }
 

@@ -31,6 +31,9 @@ local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 19,
 		maxammo				= 13,
 		weaponcost			= 14,
+		cegpiece = {
+			[2] = "aaflare",
+		},
 	},
 }
 

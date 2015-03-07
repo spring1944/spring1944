@@ -12,11 +12,11 @@ local ITASemovente47 = Tank:New(TankDestroyer):New(OpenTopped):New{
 
 	weapons = {
 		[1] = {
-			name				= "CannoneDa47mml32AP",
+			name				= "CannoneDa47mml32HEAT",
 			maxAngleDif			= 15,
 		},
 		[2] = {
-			name				= "CannoneDa47mml32HEAT",
+			name				= "CannoneDa47mml32AP",
 			maxAngleDif			= 15,
 		},
 		[3] = {
@@ -30,6 +30,7 @@ local ITASemovente47 = Tank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 0,
 		maxammo				= 18,
 		weaponcost			= 10,
+		weapontoggle		= false,
 	},
 }
 

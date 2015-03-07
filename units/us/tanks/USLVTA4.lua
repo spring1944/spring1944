@@ -29,6 +29,10 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		maxammo				= 9,
 		weaponcost			= 8,
 		weaponswithammo		= 1,
+		
+		cegpiece = {
+			[2] = "mg_flare",
+		},
 	},
 }
 

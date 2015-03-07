@@ -142,6 +142,7 @@ local JPN_Type4Mortar_Stationary = Deployed:New{
 		maxammo				= 1,
 		weaponcost			= 70,
 		weaponswithammo		= 2,
+		weapontoggle		= "smoke",
 		--scriptAnimation		= "gun",
 	},
 	

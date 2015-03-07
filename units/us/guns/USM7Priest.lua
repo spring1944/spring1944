@@ -28,6 +28,10 @@ local USM7Priest = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 25,
 		maxammo				= 13,
 		weaponcost			= 30,
+		
+		cegpiece = {
+			[2] = "aaflare",
+		},
 	},
 }
 

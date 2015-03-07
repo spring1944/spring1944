@@ -57,6 +57,17 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 			name					= "M2Browning",
 		},
 	},
+	
+	customParams = {
+		cegpiece = {
+			[1] = "flare1",
+			[2] = "flare2",
+			[3] = "flare3",
+			[4] = "flare4",
+			[5] = "flare1",
+			[6] = "flare2",
+		},
+	},
 }
 
 

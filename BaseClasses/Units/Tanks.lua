@@ -66,6 +66,7 @@ local HeavyTank = Tank:New{
 local AssaultGun = Unit:New{ -- not a full class (interface)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
+	script				= "Vehicle.lua",
 	turnRate			= 175,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
@@ -76,8 +77,9 @@ local AssaultGun = Unit:New{ -- not a full class (interface)
 local TankDestroyer = AssaultGun:New{
 	description 		= "Tank Destroyer",
 	customParams = {
-		weaponswithammo		= 1, -- AP only
 		soundcategory		= "<SIDE>/Tank/SP/TD",
+		weaponswithammo		= 1, -- AP only
+		weapontoggle		= false,
 	}
 }
 
@@ -87,9 +89,10 @@ local SPArty = Unit:New{ -- not a full class (interface)
 	iconType			= "sparty",
 	turnRate			= 175,
 	customParams = {
+		canareaattack		= true,
 		soundcategory		= "<SIDE>/Tank/SP",
 		weaponswithammo		= 1, -- No smoke!
-		canareaattack		= true,
+		weapontoggle		= false,
 	}
 }
 

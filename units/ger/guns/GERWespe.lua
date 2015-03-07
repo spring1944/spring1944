@@ -28,6 +28,10 @@ local GERWespe = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 4,
 		maxammo				= 6,
 		weaponcost			= 30,
+		
+		cegpiece = {
+			[2] = "aaflare",
+		},
 	},
 }
 

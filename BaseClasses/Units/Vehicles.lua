@@ -99,7 +99,13 @@ local MobileAA = { -- not a full class (interface)
 	iconType			= "aacar",
 }
 
-local TruckAA = Truck:New(MobileAA)
+local TruckAA = Truck:New(MobileAA):New{
+	customParams = {
+		cegpiece = {
+			[1] = "flare",
+		},
+	},
+}
 local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
 
@@ -123,7 +129,12 @@ local HalfTrack = Vehicle:New(Transport):New{
 	turnRate			= 400,
 	
 	customParams = {
-	    supplyRange			= 200,
+		supplyRange			= 200,
+		
+		cegpiece = {
+			[1] = "flare",
+			[2] = "flare",
+		},
 	},
 }
 

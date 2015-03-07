@@ -30,6 +30,7 @@ local JPNHoRo = Tank:New(AssaultGun):New(OpenTopped):New{
 		armor_top			= 0,
 		maxammo				= 4,
 		weaponcost			= 25,
+		weapontoggle		= "smoke",
 		canfiresmoke		= true,
 	},
 }

@@ -31,6 +31,10 @@ local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 19,
 		maxammo				= 10,
 		weaponcost			= 19,
+		
+		cegpiece = {
+			[2] = "aaflare",
+		},
 	},
 }
 

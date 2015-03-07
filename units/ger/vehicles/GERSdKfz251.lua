@@ -10,13 +10,6 @@ local GERSdKfz251 = HalfTrack:New{
 	trackWidth				= 15,
 	turnRate				= 405,
 	
-	customParams = {
-		armor_front				= 9,
-		armor_rear				= 9,
-		armor_side				= 10,
-		armor_top				= 0,
-	},
-	
 	weapons = {
 		[1] = {
 			name					= "MG34",
@@ -25,6 +18,14 @@ local GERSdKfz251 = HalfTrack:New{
 			name					= "MG42AA",
 		},
 	},
+	
+	customParams = {
+		armor_front				= 9,
+		armor_rear				= 9,
+		armor_side				= 10,
+		armor_top				= 0,
+	},
+	
 }
 
 return lowerkeys({

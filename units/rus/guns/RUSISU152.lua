@@ -21,7 +21,7 @@ local RUSISU152 = Tank:New(AssaultGun):New{
 			--name				= "ML20S152mmAP",
 			--maxAngleDif			= 25,
 		--},
-		[9] = {
+		[2] = {
 			name				= ".50calproof",
 		},
 	},
@@ -34,6 +34,7 @@ local RUSISU152 = Tank:New(AssaultGun):New{
 		weaponcost			= 63,
 		soundcategory		= "RUS/Tank/Zveroboy",
 		weaponswithammo		= 1,
+		weapontoggle		= false,
 	},
 }
 

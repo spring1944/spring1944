@@ -29,6 +29,12 @@ local GBRStaghound = ArmouredCarAA:New{
 		armor_rear			= 16,
 		armor_side			= 19,
 		armor_top			= 13,
+		
+		cegpiece = {
+			[1] = "flare1",
+			[2] = "flare2",
+			[3] = "flare1",
+		},
 	}
 }
 
