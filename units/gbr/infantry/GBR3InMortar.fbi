@@ -30,7 +30,7 @@
   footprintZ=1;
   highTrajectory=1;
   iconType=mortar;
-  mass=100;
+  mass=50;
   maxDamage=280;
   maxSlope=15;
   maxVelocity=1.25;

@@ -16,7 +16,7 @@ local RUS_PG117 = Boat:New{
 	movementClass			= "BOAT_Small",
 	objectName				= "RUSPG117.s3o",
 	transportCapacity		= 9,
-	transportMass			= 750,
+	transportMass			= 450,
 	transportSize			= 1,
 	turnRate				= 350,	
 

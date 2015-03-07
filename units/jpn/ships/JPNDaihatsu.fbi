@@ -47,7 +47,7 @@
   smoothAnim=0;
   stealth=1;
   transportCapacity=40;
-  transportMass=2100;
+  transportMass=2000;
   transportSize=1;
   turninplace=0;
   turnRate=100;
