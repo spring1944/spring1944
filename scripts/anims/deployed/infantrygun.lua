@@ -191,8 +191,10 @@ local poses = {
 						{luparm1, z_axis, 0},
 						
 						{rloarm1, x_axis, math.rad(-50)},
+						{rloarm1, z_axis, 0},
 						
 						{lloarm1, x_axis, math.rad(-45)},
+						{lloarm1, z_axis, 0},
 						
 						{torso1, x_axis, math.rad(10)},
 						{torso1, y_axis, math.rad(40)},
@@ -215,9 +217,10 @@ local poses = {
 						{luparm2, z_axis, 0},
 						
 						{rloarm2, x_axis, math.rad(-40)},
+						{rloarm2, z_axis, 0},
 						
 						{lloarm2, x_axis, math.rad(-45)},
-						
+						{lloarm2, z_axis, 0},
 						
 						{torso2, x_axis, math.rad(10)},
 						{torso2, y_axis, math.rad(-45)},
@@ -237,7 +240,7 @@ local poses = {
 				},
 	pinned = {
 					turns = { -- Turns
-						{head1, x_axis, math.rad(-20)},
+						{head1, x_axis, math.rad(20)},
 						
 						{ruparm1, x_axis, math.rad(-90)},
 						{ruparm1, z_axis, math.rad(-20)},
@@ -246,22 +249,24 @@ local poses = {
 						{luparm1, z_axis, math.rad(20)},
 
 						{rloarm1, x_axis, math.rad(-115)},
+						{rloarm1, z_axis, math.rad(20)},
 						
 						{lloarm1, x_axis, math.rad(-115)},
+						{lloarm1, z_axis, math.rad(-20)},
 						
+						{torso1, x_axis, math.rad(40)},
 						{torso1, y_axis, math.rad(40)},
-
-						{rthigh1, x_axis, math.rad(-50)},
 						
-						{lthigh1, x_axis, math.rad(-50)},						
+						{rthigh1, x_axis, math.rad(-90)},
 						
-						{rleg1, x_axis, math.rad(130)},
+						{lthigh1, x_axis, 0},
 						
-						{lleg1, x_axis, math.rad(130)},
-						
+						{rleg1, x_axis, math.rad(90)},
+						{lleg1, x_axis, math.rad(90)},
 						
 						
-						{head2, x_axis, math.rad(-20)},
+						
+						{head2, x_axis, math.rad(20)},
 						
 						{ruparm2, x_axis, math.rad(-90)},
 						{ruparm2, z_axis, math.rad(-20)},
@@ -270,17 +275,20 @@ local poses = {
 						{luparm2, z_axis, math.rad(20)},
 
 						{rloarm2, x_axis, math.rad(-115)},
+						{rloarm2, z_axis, math.rad(20)},
 						
 						{lloarm2, x_axis, math.rad(-115)},
+						{lloarm2, z_axis, math.rad(-20)},
 						
-						{torso2, x_axis, math.rad(10)},
+						{torso2, x_axis, math.rad(40)},
 						{torso2, y_axis, math.rad(-45)},
-
+						
 						{rthigh2, x_axis, math.rad(-90)},
 						
-						{rleg2, x_axis, math.rad(90)},
+						{lthigh2, x_axis, 0},
 						
-						{lleg2, x_axis, math.rad(90)},						
+						{rleg2, x_axis, math.rad(90)},
+						{lleg2, x_axis, math.rad(90)},					
 					},
 				},
 
@@ -394,7 +402,7 @@ local keyframes = {
 }
 
 local keyframeDelays = {
-	fire = {0.05, 0.1, 0.1, 0.5, 0.5, 0.5, 0.1},
+	fire = {0.05, 0.1, 0.1, 0.5, 0.5, 0.5, 0.3},
 }
 
 
