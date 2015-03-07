@@ -68,7 +68,7 @@ local gbrSorties = {
 		description = "3 x Commando, 8 x Rifle, 2 x Sten SMG, 3 x Bren LMG, 2 x PIAT, 1 x Scout, 1 x 3\" Mortar, 1 x 75mm Pack Howitzer",
 		buildCostMetal = 5625,
 		buildPic = "GBRHorsa.png",
-		buildTime = 5625,
+		buildTime = 6750,
 	},
 }
 
