@@ -157,8 +157,8 @@ local function ReAim(newHeading, newPitch)
 	end
 	
 	SetSignalMask(SIG_AIM)
-	Turn(weaponTags.headingPiece, y_axis, newHeading, turretTraverseSpeed)
-	Turn(weaponTags.pitchPiece, x_axis, -newPitch, turretElevateSpeed)
+	Turn(weaponTags.headingPiece, y_axis, newHeading, info.turretTurnSpeed)
+	Turn(weaponTags.pitchPiece, x_axis, -newPitch, info.elevationSpeed)
 	
 	WaitForTurn(weaponTags.headingPiece, y_axis)
 	WaitForTurn(weaponTags.pitchPiece, x_axis)
@@ -267,12 +267,12 @@ local function StartPinned()
 end
 
 
-function script.QueryWeapon(num)
+function script.QueryWeapon(weaponNum)
 	if nextRocket then
 		return piece("rocket" .. nextRocket) or tubes
 	end
 	
-	local cegPiece = info.cegPieces[num]
+	local cegPiece = info.cegPieces[weaponNum]
 	if cegPiece then
 		return cegPiece
 	end
@@ -280,7 +280,7 @@ function script.QueryWeapon(num)
 	return weaponTags.pitchPiece
 end
 
-function script.AimFromWeapon(num)
+function script.AimFromWeapon(weaponNum)
 	return weaponTags.pitchPiece
 end
 
@@ -304,9 +304,9 @@ local function Recoil()
 	Move(barrel, z_axis, 0, recoilReturnSpeed)
 end
 
-function script.AimWeapon(num, heading, pitch)
-	--Spring.Echo("aiming", num, weaponEnabled[num])
-	if not weaponEnabled[num] then
+function script.AimWeapon(weaponNum, heading, pitch)
+	--Spring.Echo("aiming", weaponNum, weaponEnabled[weaponNum])
+	if not weaponEnabled[weaponNum] then
 		return false
 	end
 	
@@ -314,31 +314,31 @@ function script.AimWeapon(num, heading, pitch)
 	wantedHeading = heading
 	wantedPitch = pitch
 	if CanFire() and ReAim(heading, pitch) then
-		local explodeRange = info.explodeRanges[num]
+		local explodeRange = info.explodeRanges[weaponNum]
 		if explodeRange then
-			GG.LimitRange(unitID, num, explodeRange)
+			GG.LimitRange(unitID, weaponNum, explodeRange)
 		end
 		return true
 	end
 	return false
 end
 
-function script.BlockShot(num, targetUnitID, userTarget)
-	return not (CanFire() and IsLoaded() and weaponEnabled[num])
+function script.BlockShot(weaponNum, targetUnitID, userTarget)
+	return not (CanFire() and IsLoaded() and weaponEnabled[weaponNum])
 end
 
-function script.FireWeapon(num)
+function script.FireWeapon(weaponNum)
 	firing = true
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, false)
 	end
-	local explodeRange = info.explodeRanges[num]
+	local explodeRange = info.explodeRanges[weaponNum]
 	if explodeRange then
-		Spring.SetUnitWeaponState(unitID, num, "range", explodeRange)
+		Spring.SetUnitWeaponState(unitID, weaponNum, "range", explodeRange)
 	end
 end
 
-function script.Shot(num)
+function script.Shot(weaponNum)
 	if barrel then
 		StartThread(Recoil)
 	end
@@ -346,14 +346,14 @@ function script.Shot(num)
 		Hide(piece("rocket" .. nextRocket))
 		nextRocket = nextRocket + 1
 	end
-	local ceg = info.weaponCEGs[num]
+	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
-		local cegPiece = info.cegPieces[num]
+		local cegPiece = info.cegPieces[weaponNum]
 		if cegPiece then
 			GG.EmitSfxName(unitID, cegPiece, ceg)
 		end
 	end
-	local ping = info.seismicPings[num]
+	local ping = info.seismicPings[weaponNum]
 	if ping then
 		Spring.AddUnitSeismicPing(unitID, ping)
 	end
@@ -366,7 +366,7 @@ function script.Shot(num)
 	
 end
 
-function script.EndBurst(num)
+function script.EndBurst(weaponNum)
 	Signal(SIG_FIRE)
 	StartThread(ResolvePose, true)
 	firing = false

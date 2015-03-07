@@ -265,7 +265,7 @@ local InfantryGun = Infantry:New{
 	maxDamage			= 300,
 	maxVelocity			= 0.75,
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
-	script				= "GERLeiG18.cob",
+	script				= "InfantryGun.lua",
 	turnRate			= 120,
 	
 	sfxtypes = { -- remove once using LUS
@@ -282,6 +282,7 @@ local InfantryGun = Infantry:New{
 		weaponcost			= 12,
 		weaponswithammo		= 1,
 		infgun				= true,
+		scriptAnimation = "infantrygun",
 	},
 	weapons = {
 		[1] = { -- Cannon

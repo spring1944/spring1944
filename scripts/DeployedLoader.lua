@@ -144,17 +144,27 @@ local function CreateTransition(startPoseID, intermediateStances, endPoseID, del
 	local endTurnData, endMoveData = GetStanceManipulationData(poses[endPoseID])
 	local endPose = poses[endPoseID]
 	
+	local anim = endPose.anim
+	if anim then
+		for i = 1, #transition do
+			transition[i].anim = endPose.anim
+		end
+	end
+	
 	local lastDelay = delays[#delays]
 	local turns, moves = CreateTransitionFrame(currentTurnData, currentMoveData, endTurnData, endMoveData, lastDelay)
-
+	local anim = endPose.anim
+	
 	transition[#transition + 1] = {duration = lastDelay * 1000,
 									turns = turns,
-									moves = moves}
+									moves = moves,
+									anim = endPose.anim}
 	
 	return transition
 end
 
 local function AddTransition(transitionsMap, startPoseID, endPoseID, intermediateStances, delays)
+	Spring.Echo("c")
 	if not intermediateStances then
 		intermediateStances = {}
 	end
@@ -175,6 +185,12 @@ local fireTransitions = {}
 AddTransition(transitions, "ready", "pinned", keyframes.ready_to_pinned, keyframeDelays.ready_to_pinned)
 AddTransition(transitions, "pinned", "ready", keyframes.pinned_to_ready, keyframeDelays.pinned_to_ready)
 
-AddTransition(fireTransitions, "ready", "ready", keyframes.fire, keyframeDelays.fire)
+if poses.run then
+	AddTransition(transitions, "ready", "run", keyframeDelays.ready_to_run)
+	AddTransition(transitions, "run", "ready", keyframeDelays.run_to_ready)
+end
 
+Spring.Echo("a")
+AddTransition(fireTransitions, "ready", "ready", keyframes.fire, keyframeDelays.fire)
+Spring.Echo("b")
 return poses, transitions, fireTransitions, tags

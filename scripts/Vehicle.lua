@@ -452,6 +452,10 @@ function script.Shot(weaponNum)
 	
 	if IsMainGun(weaponNum) and barrel then
 		StartThread(Recoil)
+		local ping = info.seismicPings[weaponNum]
+		if ping then
+			Spring.AddUnitSeismicPing(unitID, ping)
+		end
 		if brakeleft then
 			GG.EmitSfxName(unitID, brakeleft, "MUZZLEBRAKESMOKE")
 		end

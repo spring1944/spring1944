@@ -84,7 +84,7 @@ end
 local function ClearWaypoint(unitID, x, z)
 	local tmpNearbyUnits = GetUnitsInCylinder(x, z, MINE_CLEAR_RADIUS)
 	local mines = {}
-    local obstacles = {}
+	local obstacles = {}
 	for _, tmpUnitID in pairs(tmpNearbyUnits) do
 		-- check if that is a mine or an obstacle
 		local tmpUD
@@ -95,35 +95,35 @@ local function ClearWaypoint(unitID, x, z)
 				if UnitDefs[tmpUD].customParams.ismine then
 					table.insert(mines, tmpUnitID)
 				elseif UnitDefs[tmpUD].customParams.isobstacle then
-                    table.insert(obstacles, tmpUnitID)
-                end
+					table.insert(obstacles, tmpUnitID)
+				end
 			end
 		end
 	end
 
-    
+	
 	if #mines > 0 then
 		clearers[unitID].blowFrame = currentFrame + MINE_CLEAR_TIME
 		clearers[unitID].mineID = mines[math.random(#mines)]
-        
-        clearers[unitID].active = Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID], BlowMine, MINE_CLEAR_TIME)
-        return false
-    end
-    
-    local tmpNearbyFeatures = GetFeaturesInCylinder(x,z, OBSTACLE_CLEAR_RADIUS)
-    for _, featureID in pairs(tmpNearbyFeatures) do
+		
+		clearers[unitID].active = Spring.UnitScript.CallAsUnit(unitID, startClearCache[unitID], BlowMine, MINE_CLEAR_TIME)
+		return false
+	end
+	
+	local tmpNearbyFeatures = GetFeaturesInCylinder(x,z, OBSTACLE_CLEAR_RADIUS)
+	for _, featureID in pairs(tmpNearbyFeatures) do
 		-- check if the feature is blocking
 		if GetFeatureBlocking(featureID) then
-            GiveOrderToUnit(unitID, CMD.INSERT,{0, CMD.RECLAIM, 0, gMaxUnits + featureID},{"alt"})
-        end
+			GiveOrderToUnit(unitID, CMD.INSERT,{0, CMD.RECLAIM, 0, gMaxUnits + featureID},{"alt"})
+		end
 	end
-    
-    for _, obstacleID in pairs(obstacles) do
-        GiveOrderToUnit(unitID, CMD.INSERT,{0, CMD.RECLAIM, 0, obstacleID},{"alt"})
+	
+	for _, obstacleID in pairs(obstacles) do
+		GiveOrderToUnit(unitID, CMD.INSERT,{0, CMD.RECLAIM, 0, obstacleID},{"alt"})
 	end
-    
-    
-    return true
+	
+	
+	return true
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
@@ -148,68 +148,68 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		if cp and cp.canclearmines then
-            local clearer
-            local x = cmdParams[1]
+			local clearer
+			local x = cmdParams[1]
 			local y = cmdParams[2]
 			local z = cmdParams[3]
-            local px, py, pz = GetUnitPosition(unitID)
-            
-            if not clearers[unitID] then
-                clearers[unitID] = {target = {x, y, z}, waypoint={px, py, pz}, delta = {0.0, 0.0}, new = true, active = false, done = true}
-                clearer = clearers[unitID]
-            else
-                clearer = clearers[unitID]
+			local px, py, pz = GetUnitPosition(unitID)
+			
+			if not clearers[unitID] then
+				clearers[unitID] = {target = {x, y, z}, waypoint={px, py, pz}, delta = {0.0, 0.0}, new = true, active = false, done = true}
+				clearer = clearers[unitID]
+			else
+				clearer = clearers[unitID]
 				if not Spring.UnitScript.CallAsUnit(unitID, isClearingCache[unitID]) then
 					clearer.active = false
 				end
-                if clearer.active then
-                    return true, false
-                end
-                local currentTarget = clearer.target
-                if currentTarget[1] ~= x or currentTarget[2] ~= y or currentTarget[3] ~= z then
-                    currentTarget[1], currentTarget[2], currentTarget[3] = x, y, z
-                    clearer.new = true
-                    clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = px, py, pz
-                    clearer.done = true
-                end
-            end
-            local wx, wy, wz, distance
-            if not clearer.done then
-                wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
-                distance = math.sqrt((wx - px)^2 + (wy - py)^2 + (wz - pz)^2)
-                if distance < MIN_DIST then
+				if clearer.active then
+					return true, false
+				end
+				local currentTarget = clearer.target
+				if currentTarget[1] ~= x or currentTarget[2] ~= y or currentTarget[3] ~= z then
+					currentTarget[1], currentTarget[2], currentTarget[3] = x, y, z
+					clearer.new = true
+					clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = px, py, pz
+					clearer.done = true
+				end
+			end
+			local wx, wy, wz, distance
+			if not clearer.done then
+				wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
+				distance = math.sqrt((wx - px)^2 + (wy - py)^2 + (wz - pz)^2)
+				if distance < MIN_DIST then
 					clearer.done = ClearWaypoint(unitID, wx, wz)
-                end
-                return true, false
-            else
-                distance = math.sqrt((x - px)^2 + (y - py)^2 + (z - pz)^2)
-                local dx, dz
-                if distance > WAYPOINT_DIST then
-                    if clearer.new then
-                        local angle = math.atan2(x - px, z - pz)
-                        dx = math.sin(angle) * WAYPOINT_DIST
-                        dz = math.cos(angle) * WAYPOINT_DIST
-                        clearer.delta[1], clearer.delta[2] = dx, dz
-                        clearer.new = false
-                    else
-                        dx, dz = clearer.delta[1], clearer.delta[2]
-                    end
-                    wx, wz = clearer.waypoint[1], clearer.waypoint[3]
-                    wx = wx + dx
-                    wz = wz + dz
-                elseif distance > MIN_DIST then
-                    wx = x
-                    wz = z
-                else
+				end
+				return true, false
+			else
+				distance = math.sqrt((x - px)^2 + (y - py)^2 + (z - pz)^2)
+				local dx, dz
+				if distance > WAYPOINT_DIST then
+					if clearer.new then
+						local angle = math.atan2(x - px, z - pz)
+						dx = math.sin(angle) * WAYPOINT_DIST
+						dz = math.cos(angle) * WAYPOINT_DIST
+						clearer.delta[1], clearer.delta[2] = dx, dz
+						clearer.new = false
+					else
+						dx, dz = clearer.delta[1], clearer.delta[2]
+					end
+					wx, wz = clearer.waypoint[1], clearer.waypoint[3]
+					wx = wx + dx
+					wz = wz + dz
+				elseif distance > MIN_DIST then
+					wx = x
+					wz = z
+				else
 					clearers[unitID] = nil
-                    return true, true
-                end
-                wy = GetGroundHeight(wx, wz)
-                SetUnitMoveGoal(unitID, wx, wy, wz, STOP_DIST)
-                clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = wx, wy, wz
-                clearer.done = false
-                return true, false
-            end
+					return true, true
+				end
+				wy = GetGroundHeight(wx, wz)
+				SetUnitMoveGoal(unitID, wx, wy, wz, STOP_DIST)
+				clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = wx, wy, wz
+				clearer.done = false
+				return true, false
+			end
 		else
 			-- Don't take any action, the unit shouldn't be able to clear mines 
 			--(we consider that they didn't get a mineclear command)
@@ -252,7 +252,7 @@ function gadget:Initialize()
 		local unitID = allUnits[i]
 		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
 	end
-    Spring.AssignMouseCursor("Clear Path", "cursordemine", true, false)
+	Spring.AssignMouseCursor("Clear Path", "cursordemine", true, false)
 	Spring.SetCustomCommandDrawData(CMD_CLEARPATH, "Clear Path", {1,0.5,0,.8}, false)
 end
 
@@ -290,74 +290,74 @@ local clearInfos = {}
 
 
 function gadget:Initialize()
-    for unitDefID, unitDef in ipairs(UnitDefs) do
-        local cp = unitDef.customParams
-        if cp and cp.canclearmines then
-            clearInfos[unitDefID] = true
-        end
-    end
+	for unitDefID, unitDef in ipairs(UnitDefs) do
+		local cp = unitDef.customParams
+		if cp and cp.canclearmines then
+			clearInfos[unitDefID] = true
+		end
+	end
 end
 
 
 function gadget:DrawWorld()
 	local cmdID, cmdDescID, cmdDescType, cmdDescName = GetActiveCommand()
-    
-    if cmdDescName == "Clear Path" then
-        local selectedUnitsSorted = GetSelectedUnitsSorted()
+	
+	if cmdDescName == "Clear Path" then
+		local selectedUnitsSorted = GetSelectedUnitsSorted()
 		local mx, my = GetMouseState()
 		local what, coors = TraceScreenRay(mx, my, true)
-        
+		
 		if (what == "ground") then
 			local tx, tz = coors[1], coors[3]
-            for unitDefID, _ in pairs(clearInfos) do
-                local units = selectedUnitsSorted[unitDefID]
-                if units then
-                    local numUnits = #units
-                    local rotation = 0
-                    local distance = 0
-                    local unitID
-                    local ux, uy, uz
-                    
-                    -- Should find a way to use the average rotation for the actual command and not only the drawing
-                    
-                    -- for i=1, numUnits do
-                        -- unitID = units[i]
-                        -- ux, uy, uz = GetUnitActiveCommandPosition(unitID)
-                        -- local dx, dz = tx - ux, tz - uz
-                        -- rotation = rotation + math.atan2(dx, dz) / numUnits
-                        -- distance = distance + math.sqrt(dx^2 + dz^2) / numUnits
-                    -- end
-                    
-                    for i=1, numUnits do
-                        unitID = units[i]
-                        ux, uy, uz = GetUnitActiveCommandPosition(unitID)
-                        local dx, dz = tx - ux, tz - uz
-                        local rotation = math.atan2(dx, dz)
-                        
-                        local distance = math.sqrt(dx^2 + dz^2)
-                        glColor(0, 255, 0, 0.1)
-                        glPushMatrix()
-                            glTranslate(ux, uy, uz)
-                            glRotate(rotation  * (180 / 3.1415), 0, 1, 0)
-                            local quadVertices = {
-                                {v = {-MINE_CLEAR_RADIUS, 0, distance}},
-                                {v = {-MINE_CLEAR_RADIUS, 0, 0}},
-                                {v = {MINE_CLEAR_RADIUS, 0, 0}},
-                                {v = {MINE_CLEAR_RADIUS, 0, distance}},
-                            }
-                            glShape(GL.QUADS, quadVertices)
-                            quadVertices = {
-                                {v = {-OBSTACLE_CLEAR_RADIUS, 0, distance}},
-                                {v = {-OBSTACLE_CLEAR_RADIUS, 0, 0}},
-                                {v = {OBSTACLE_CLEAR_RADIUS, 0, 0}},
-                                {v = {OBSTACLE_CLEAR_RADIUS, 0, distance}},
-                            }
-                            glShape(GL.QUADS, quadVertices)
+			for unitDefID, _ in pairs(clearInfos) do
+				local units = selectedUnitsSorted[unitDefID]
+				if units then
+					local numUnits = #units
+					local rotation = 0
+					local distance = 0
+					local unitID
+					local ux, uy, uz
+					
+					-- Should find a way to use the average rotation for the actual command and not only the drawing
+					
+					-- for i=1, numUnits do
+						-- unitID = units[i]
+						-- ux, uy, uz = GetUnitActiveCommandPosition(unitID)
+						-- local dx, dz = tx - ux, tz - uz
+						-- rotation = rotation + math.atan2(dx, dz) / numUnits
+						-- distance = distance + math.sqrt(dx^2 + dz^2) / numUnits
+					-- end
+					
+					for i=1, numUnits do
+						unitID = units[i]
+						ux, uy, uz = GetUnitActiveCommandPosition(unitID)
+						local dx, dz = tx - ux, tz - uz
+						local rotation = math.atan2(dx, dz)
+						
+						local distance = math.sqrt(dx^2 + dz^2)
+						glColor(0, 255, 0, 0.1)
+						glPushMatrix()
+							glTranslate(ux, uy, uz)
+							glRotate(rotation  * (180 / 3.1415), 0, 1, 0)
+							local quadVertices = {
+								{v = {-MINE_CLEAR_RADIUS, 0, distance}},
+								{v = {-MINE_CLEAR_RADIUS, 0, 0}},
+								{v = {MINE_CLEAR_RADIUS, 0, 0}},
+								{v = {MINE_CLEAR_RADIUS, 0, distance}},
+							}
+							glShape(GL.QUADS, quadVertices)
+							quadVertices = {
+								{v = {-OBSTACLE_CLEAR_RADIUS, 0, distance}},
+								{v = {-OBSTACLE_CLEAR_RADIUS, 0, 0}},
+								{v = {OBSTACLE_CLEAR_RADIUS, 0, 0}},
+								{v = {OBSTACLE_CLEAR_RADIUS, 0, distance}},
+							}
+							glShape(GL.QUADS, quadVertices)
 
-                        glPopMatrix()
-                    end
-                end
-            end
+						glPopMatrix()
+					end
+				end
+			end
 		else
 			return
 		end
