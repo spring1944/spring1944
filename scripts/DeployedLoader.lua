@@ -164,7 +164,6 @@ local function CreateTransition(startPoseID, intermediateStances, endPoseID, del
 end
 
 local function AddTransition(transitionsMap, startPoseID, endPoseID, intermediateStances, delays)
-	Spring.Echo("c")
 	if not intermediateStances then
 		intermediateStances = {}
 	end
@@ -190,7 +189,7 @@ if poses.run then
 	AddTransition(transitions, "run", "ready", keyframeDelays.run_to_ready)
 end
 
-Spring.Echo("a")
+
 AddTransition(fireTransitions, "ready", "ready", keyframes.fire, keyframeDelays.fire)
-Spring.Echo("b")
+
 return poses, transitions, fireTransitions, tags
