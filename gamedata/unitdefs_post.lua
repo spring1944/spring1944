@@ -156,6 +156,12 @@ for name, ud in pairs(UnitDefs) do
 		end
 	end
 	--end more new sensor stuff
+    
+    -- reclaimability
+    local reclaimable = not ud.maxvelocity
+    reclaimable = reclaimable and not (ud.customparams and ud.customparams.feartarget)
+    reclaimable = reclaimable and not (ud.customparams and ud.customparams.weaponswithammo)
+    ud.reclaimable = reclaimable
 	
     --ship things
 	if ud.floater then
