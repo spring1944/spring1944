@@ -76,12 +76,13 @@ end
 function BlowMine(mineID, engineerID)
 	if clearers[engineerID] then
 		clearers[engineerID].active = false
-	end
-	if ValidUnitID(engineerID) and ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
-		local px, py, pz = GetUnitPosition(mineID)
-		DestroyUnit(mineID, false, true)
-		SpawnCEG("HE_Small", px, py, pz)
-		RemoveBuildingDecal(mineID)
+	
+		if ValidUnitID(engineerID) and ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
+			local px, py, pz = GetUnitPosition(mineID)
+			DestroyUnit(mineID, false, true)
+			SpawnCEG("HE_Small", px, py, pz)
+			RemoveBuildingDecal(mineID)
+		end
 	end
 end
 
