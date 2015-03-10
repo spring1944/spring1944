@@ -74,7 +74,9 @@ end
 -- Callins
 
 function BlowMine(mineID, engineerID)
-	clearers[engineerID].active = false
+	if engineerID then
+		clearers[engineerID].active = false
+	end
 	if ValidUnitID(engineerID) and ValidUnitID(mineID) then -- only destroy mines if clearer is still alive
 		local px, py, pz = GetUnitPosition(mineID)
 		DestroyUnit(mineID, false, true)
