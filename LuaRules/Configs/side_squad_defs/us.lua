@@ -204,6 +204,7 @@ local usDefs = {
 			"usrifle",
 			"usrifle",
 		},
+        buildCostMetal = 3500,
 		-- other fields not needed for transport squads
 	},
 

@@ -2,12 +2,12 @@ local JPN_Daihatsu = InfantryLandingCraft:New{
 	name					= "Daihatsu Landing Craft",
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
-	buildCostMetal			= 1000,
+	buildCostMetal			= 500,
 	maxDamage				= 950,
 	maxReverseVelocity		= 0.685,
 	maxVelocity				= 2,
 	transportCapacity		= 40,
-	transportMass			= 2100,
+	transportMass			= 2000,
 	turnRate				= 100,
 
 	customparams = {

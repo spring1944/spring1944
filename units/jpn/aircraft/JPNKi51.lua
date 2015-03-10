@@ -31,14 +31,17 @@ local JPN_Ki51 = Fighter:New{
 		[2] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
+            slaveTo             = 1,
 		},	
 		[3] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
+            slaveTo             = 1,
 		},
 		[4] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
+            slaveTo             = 1,
 		},	
 		[5] = {
 			name				= "Type1Ho103",
@@ -51,8 +54,8 @@ local JPN_Ki51 = Fighter:New{
 		},
 		[7] = {
 			name				= "Te4",
-			maxAngleDif			= 50,
-			mainDir				= [[0 1 -1]],
+			maxAngleDif			= 70,
+			mainDir				= [[0 1 -9]],
 		},
 	},
 }

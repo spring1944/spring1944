@@ -29,8 +29,6 @@ local JPNDefs = {
 	"JPNHQ",
 	"JPNATYard",
 	"JPNBarracks",
-	"JPNBoatyard",
-	"JPNBoatyardlarge",
 	"JPNGunyard",
 	"JPNRadar",
 	"JPNSPYard",

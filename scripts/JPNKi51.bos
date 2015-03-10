@@ -5,7 +5,7 @@
 piece  base, wing1, wing2, propeller, mg1, mg2, bomb1, bomb2, bomb3, bomb4, rear_turret, rear_mg_flare;
 
 static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging; 
-static-var iFear, bombed1, bombed2;
+static-var iFear;
 
 #include "air_sharedDefs.h"
 
@@ -16,7 +16,6 @@ static-var iFear, bombed1, bombed2;
 
 #define SIG_BANK			10
 #define SIG_FEARRECOVERY	8
-
 //tracers
 #define MEDIUM_TRACER 	2048+7
 
@@ -142,8 +141,6 @@ MoveRate2()
 Create()
 {
 	Static_Var_1 = 0;
-	bombed1 = 0;
-	bombed2 = 0;
 	SET STANDINGFIREORDERS to 1;
 	call-script InitState();
 	start-script SmokeUnit();
@@ -193,21 +190,6 @@ luaFunction(arg1)
  arg1 = iFear;
 }
 
-bom()
-{
-	bombed1 = 0;
-	spin propeller around z-axis speed <800> accelerate <-400>;
-	sleep 400;
-	spin propeller around z-axis speed <50>;
-	set 1024 to 0;
-	spin propeller around z-axis speed <800> accelerate <200>;
-	sleep 400;
-	spin propeller around z-axis speed <5000> accelerate <-5000>;
-	sleep 200;
-	spin propeller around z-axis speed <5000> accelerate <5000>;
-	set 1024 to 1;
-	bombed2 = 1;
-}
 
 SweetSpot(piecenum)
 {
@@ -231,7 +213,6 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	bombed1 = 1;
 	hide bomb1;
 	return (0);
 }
@@ -269,15 +250,13 @@ QueryWeapon3(piecenum)
 
 AimWeapon3(heading, pitch)
 {
-	if (bombed1) start-script bom();
-	if (bombed2) return (1);
 	return (0);
 }
 
 FireWeapon3()
 {
 	hide bomb3;
-	return (0);
+	return (1);
 }
 
 AimFromWeapon4(piecenum) 
@@ -292,8 +271,7 @@ QueryWeapon4(piecenum)
 
 AimWeapon4(heading, pitch)
 {
-	if (bombed2) return (1);
-	return (0);
+	return (1);
 }
 
 FireWeapon4()

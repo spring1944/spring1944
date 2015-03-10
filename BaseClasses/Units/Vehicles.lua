@@ -83,6 +83,7 @@ local PontoonTruck = Truck:New{
 
 local Transport = { -- not a full class (interface)
 	loadingRadius		= 120,
+    releaseHeld         = false,
 	transportCapacity	= 15,
 	transportMass		= 750,
 	transportSize		= 1,

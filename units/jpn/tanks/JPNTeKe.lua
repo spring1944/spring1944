@@ -2,7 +2,7 @@ local TeKeBase = Tankette:New{
 	name				= "Type 97 Te-Ke",
 	acceleration		= 0.034,
 	brakeRate			= 0.15,
-	buildCostMetal		= 700,
+	buildCostMetal		= 600,
 	maxDamage			= 475,
 	maxReverseVelocity	= 1.45,
 	maxVelocity			= 2.9,
@@ -40,6 +40,7 @@ local JPNTeKe = TeKeBase:New{
 }
 
 local JPNTeKe_HMG = TeKeBase:New{
+	buildCostMetal		= 400,
 	description			= "Tankettte with 7.7mm MG",
 	weapons = {
 		[1] = {

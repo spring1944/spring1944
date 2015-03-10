@@ -25,12 +25,12 @@ local GER_Ju87G = Fighter:New{
 		[1] = {
 			name				= "bk37mmap",
 			maxAngleDif			= 10,
-			mainDir				= [[0 -1 9]],
+			mainDir				= [[0 0 9]],
 		},
 		[2] = {
 			name				= "bk37mmap",
 			maxAngleDif			= 10,
-			mainDir				= [[0 -1 9]],
+			mainDir				= [[0 0 9]],
 			slaveTo				= 1,
 		},	
 		[3] = {

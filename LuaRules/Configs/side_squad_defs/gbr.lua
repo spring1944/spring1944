@@ -160,6 +160,7 @@ local gbrDefs = {
 	["gbr_platoon_commando_lz"] =
 	{
 		members = {
+            "gbrgliderresource",
 			"gbrcommando",
 			"gbrcommando",
 			"gbrcommando",
@@ -232,6 +233,7 @@ local gbrDefs = {
 			"gbrrifle",
 			"gbrrifle",
 		},
+        buildCostMetal = 4000,
 		-- other fields not needed for transport squads
 	},
 

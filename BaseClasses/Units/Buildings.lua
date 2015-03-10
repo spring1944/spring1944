@@ -143,6 +143,7 @@ local BoatYard = Yard:New{
 	footprintX			= 14,
 	footprintZ			= 14,
 	objectName			= "<SIDE>/<SIDE>BoatYardLarge.3do", -- inherited by upgrades TODO: 3do, ick!
+    maxDamage           = 16250,
 	maxWaterDepth		= 1e+06, -- engine default, override Yard
 	minWaterDepth		= 10,
 	script				= "GBRBoatYardLarge.cob",
@@ -165,6 +166,7 @@ local BoatYard = Yard:New{
 
 local BoatYardLarge = BoatYard:New{
 	iconType			= "hshipyard", -- TODO: worth it? only upgraded fac with its own icon
+    workerTime          = 100,
 }
 
 local Radar = Yard:New{

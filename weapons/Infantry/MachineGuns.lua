@@ -174,7 +174,7 @@ local BredaSafat03 = MGClass:New{
 
 -- Type 97, also used for Type 99 (JPN)
 local Type97MG = MGClass:New{
-  burst              = 5,
+  burst              = 6,
   burstRate          = 0.1,
   movingAccuracy     = 6222,
   name               = [[Type 97 7.7mm Machinegun]],
@@ -202,11 +202,13 @@ local TE4 = MGClass:New(AAMG):New{
   burstRate          = 0.15,
   name               = [[7.7mm TE-4 Machinegun]],
   range              = 925,
+  predictBoost       = 0.2,
   reloadTime         = 1.5,
   soundStart         = [[JPN_TE4_MG]],
   weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,
+    fearid             = 701,
   }
 }
 
@@ -248,6 +250,7 @@ local M2BrowningAA = M2Browning:New(AAMG):New{
   burst              = 3,
   movingAccuracy     = 200,
   range              = 1170,
+  sprayAngle        = 250,
   reloadTime         = 0.375,
 }
 -- M2 Browning Aircraft
@@ -278,11 +281,12 @@ local BredaM1931 = HeavyMGClass:New{
 
 --Breda M1931 AA
 local BredaM1931AA = BredaM1931:New{
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
   canAttackGround    = false,
-  movingAccuracy     = 200,
-  predictBoost       = 1,
+  movingAccuracy     = 400,
+  predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
   sprayAngle         = 300,
@@ -320,10 +324,11 @@ local Type93HMG = HeavyMGClass:New{
 
 -- Type 93 AA
 local Type93AA = Type93HMG:New{
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
-  movingAccuracy     = 200,
-  predictBoost       = 1,
+  movingAccuracy     = 400,
+  predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
   sprayAngle         = 300,
@@ -335,7 +340,7 @@ local Type93AA = Type93HMG:New{
 
 -- Type 1 Ho-103 12.7mm Air MG (JPN)
 local Type1Ho103 = HeavyMGClass:New{
-  burst				 = 8,
+  burst			= 8,
   burstRate          = 0.085,
   canAttackGround    = false,
   name               = [[Type1 Ho-103 12.7mm]],

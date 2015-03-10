@@ -18,16 +18,7 @@ if gadgetHandler:IsSyncedCode() then
 
 	function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions)
 		--Only even consider blocking the command if it's a reclaim command on a (single) unit.
-		if (cmdID == CMD_RECLAIM and #cmdParams == 1 and cmdParams[1] < Game.maxUnits) then
-			local udid = GetUnitDefID(cmdParams[1])
-			if (udid ~= nil) then
-				--Allow reclaiming big buildings, block reclaim for mobile units and deployed guns etc.
-				--Now using heuristic based on footprintx >= 4 or footprintz >= 4 for this.
-				--Note that xsize/zsize value in unitDef is twice the footprint value!
-				local ud = UnitDefs[udid]
-				return ud.xsize >= 8 or ud.zsize >= 8
-			end
-		elseif (cmdID == CMD_ATTACK and #cmdParams == 1) then
+		if (cmdID == CMD_ATTACK and #cmdParams == 1) then
 			local unitID = cmdParams[1]
 			local ud = UnitDefs[GetUnitDefID(unitID)] or {} -- weird crash here
 			if ud.name == "flag" then

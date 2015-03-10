@@ -23,10 +23,10 @@ if (gadgetHandler:IsSyncedCode()) then
 local GetUnitDefID			= Spring.GetUnitDefID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
-local GetFeaturesInCylinder = Spring.GetFeaturesInCylinder
-local GetFeatureBlocking    = Spring.GetFeatureBlocking
+local GetFeaturesInCylinder	= Spring.GetFeaturesInCylinder
+local GetFeatureBlocking	= Spring.GetFeatureBlocking
 local ValidUnitID			= Spring.ValidUnitID
-local GetGroundHeight	    = Spring.GetGroundHeight
+local GetGroundHeight		= Spring.GetGroundHeight
 
 
 -- Synced Ctrl
@@ -34,7 +34,7 @@ local DestroyUnit			= Spring.DestroyUnit
 local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
 local SpawnCEG				= Spring.SpawnCEG
-local GiveOrderToUnit       = Spring.GiveOrderToUnit
+local GiveOrderToUnit		= Spring.GiveOrderToUnit
 
 
 -- Constants
@@ -219,6 +219,10 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 		-- It was a different command, do nothing
 		return false
 	end
+end
+
+function gadget:UnitDestroyed(unitID)
+	clearers[unitID] = nil
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
