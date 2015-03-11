@@ -31,6 +31,7 @@ local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 19,
 		maxammo				= 10,
 		weaponcost			= 19,
+		turretturnspeed		= 8, -- Manual traverse 45s
 		
 		cegpiece = {
 			[2] = "aaflare",

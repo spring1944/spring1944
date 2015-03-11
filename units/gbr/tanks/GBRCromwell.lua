@@ -34,6 +34,7 @@ local GBRCromwell = MediumTank:New{
 		armor_top			= 20,
 		maxammo				= 12,
 		weaponcost			= 12,
+		turretturnspeed		= 25, -- 14-15s for 360
 	},
 }
 

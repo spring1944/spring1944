@@ -1,5 +1,5 @@
 local GERPanther = HeavyTank:New{
-	name				= "PzKpfw V Panther",
+	name				= "PzKpfw V Panther Ausf G",
 	acceleration		= 0.051,
 	brakeRate			= 0.105,
 	buildCostMetal		= 5895,
@@ -34,6 +34,7 @@ local GERPanther = HeavyTank:New{
 		armor_top			= 16,
 		maxammo				= 15,
 		weaponcost			= 19,
+		turretturnspeed		= 20, -- 18s for 360
 	},
 }
 

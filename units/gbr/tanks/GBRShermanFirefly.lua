@@ -35,6 +35,7 @@ local GBRShermanFirefly = MediumTank:New{
 		armor_top			= 21,
 		maxammo				= 14,
 		weaponcost			= 19,
+		turretturnspeed		= 24, -- 15s for 360
 	},
 }
 

@@ -34,6 +34,7 @@ local GERTiger = HeavyTank:New{
 		armor_top			= 25,
 		maxammo				= 17,
 		weaponcost			= 20,
+		turretturnspeed		= 10, -- 60s for 360
 	},
 }
 

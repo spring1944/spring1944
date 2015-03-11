@@ -52,6 +52,7 @@ local USM5Stuart = StuartBase:New{
 		weapontoggle		= false,
 		weaponcost			= 8,
 		weaponswithammo		= 3,
+		turretturnspeed		= 25.7, -- 14s for 360
 		
 		cegpiece = {
 			[3] = "flare",

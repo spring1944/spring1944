@@ -31,6 +31,7 @@ local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 19,
 		maxammo				= 13,
 		weaponcost			= 14,
+		turretturnspeed		= 8, -- Manual traverse 45s
 		cegpiece = {
 			[2] = "aaflare",
 		},

@@ -30,6 +30,7 @@ local ShermanBase = MediumTank:New{
 		armor_rear			= 41,
 		armor_side			= 41,
 		armor_top			= 21,
+		turretturnspeed		= 26.5, -- 13.6s for 360
 		
 		cegpiece = {
 			[4] = "aaflare",
@@ -122,6 +123,7 @@ local USM4A3105Sherman = ShermanBase:New{
 		weaponcost			= 22,
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
+		turretturnspeed		= 8, -- manual traverse
 	},
 }
 

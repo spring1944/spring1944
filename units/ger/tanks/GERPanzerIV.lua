@@ -34,6 +34,7 @@ local GERPanzerIV = MediumTank:New{
 		armor_top			= 15,
 		maxammo				= 17,
 		weaponcost			= 16,
+		turretturnspeed		= 16, -- 22.5s for 360
 	},
 }
 

@@ -34,6 +34,7 @@ local RUSValentine = LightTank:New{
 		armor_top			= 20,
 		maxammo				= 18,
 		weaponcost			= 8,
+		turretturnspeed		= 36, -- 10s for 360
 	},
 }
 
