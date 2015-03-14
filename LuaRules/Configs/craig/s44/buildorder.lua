@@ -186,6 +186,7 @@ gadget.unitBuildOrder = UnitBag{
 		"ital6_40lf",
 		"itam1542", "itam1542", "itam1542",
 		"itasemovente75_18",
+		"itasemovente90",
 	},
 		itaelitebarracks = UnitArray{
 		-- Works J
