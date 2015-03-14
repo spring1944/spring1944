@@ -67,8 +67,8 @@
   weaponMainDir1=0 0 1;
 
   weapon2=Cannone65L17HEAT;
-  maxAngleDif2=20;
+  maxAngleDif2=30;
   onlyTargetCategory2=OPENVEH HARDVEH LARGESHIP;
-  weaponMainDir2=0 0 1;
+  weaponMainDir2=0 0 8;
 }
 
