@@ -16,7 +16,7 @@
     soundcategory=RUS/Vehicle;
   }
   energyStorage=1040;
-  explodeAs=Vehicle_Explosion_Sm;
+  explodeAs=Massive_Explosion;
   footprintX=3;
   footprintZ=3;
   iconType=truck_ammo;
