@@ -5,6 +5,7 @@ local ITACannone65 = InfantryGun:New{
 	weapons = {
 		[1] = { -- HE
 			name				= "Cannone65L17HE",
+			maxAngleDif			= 30,
 		},
 		[2] = { -- HEAT
 			name				= "Cannone65L17HEAT",

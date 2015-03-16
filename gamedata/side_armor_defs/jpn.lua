@@ -10,9 +10,9 @@ local JPNDefs = {
 	"JPNType100SMG",
 	"JPNType3AT",
 	"JPNType4AT",
-	"JPNType98HMG",
 	"JPNType99LMG",
 	"JPNType4Mortar_mobile",
+	"JPNType92HMG",
   },
   
   guns  =  {
@@ -47,7 +47,7 @@ local JPNDefs = {
 
   sandbags  =  {
 	--Japan--
-	"jpntype98hmg_dugin",
+	"jpntype92hmg_dugin",
   },
 
 

@@ -60,7 +60,11 @@ local beachDesc= {
 }
 
 local function EndBeach(unitID, disable)
-	CallCOBScript(unitID, "StopMoving", 0)
+	env = Spring.UnitScript.GetScriptEnv(unitID)
+	if env.script.StopMoving then
+		Spring.UnitScript.CallAsUnit(unitID, env.script.StopMoving)
+	end
+	--CallCOBScript(unitID, "StopMoving", 0)
 	mcSetVelocity(unitID, 0, 0, 0)
 	activeUnits[unitID] = nil
 	if disable then -- unit has surfaced
@@ -76,7 +80,11 @@ local function EndBeach(unitID, disable)
 end
 
 local function Beach(unitID, groundHeight)
-	CallCOBScript(unitID, "EmitWakes", 0)
+	env = Spring.UnitScript.GetScriptEnv(unitID)
+	if env.script.StartMoving then
+		Spring.UnitScript.CallAsUnit(unitID, env.script.StartMoving)
+	end
+	--CallCOBScript(unitID, "EmitWakes", 0)
 	mcEnable(unitID)
 	mcSetVelocity(unitID, 0, SINK_RATE, 0)
 	if groundHeight >= ACTUAL_MIN_DEPTH then
@@ -88,7 +96,11 @@ local function Beach(unitID, groundHeight)
 end
 
 local function UnBeach(unitID)
-	CallCOBScript(unitID, "EmitWakes", 0)
+	env = Spring.UnitScript.GetScriptEnv(unitID)
+	if env.script.StartMoving then
+		Spring.UnitScript.CallAsUnit(unitID, env.script.StartMoving)
+	end
+	--CallCOBScript(unitID, "EmitWakes", 0)
 	mcSetVelocity(unitID, 0, -SINK_RATE, 0)
 	DelayCall(EndBeach, {unitID, true}, SINK_TIME)
 end

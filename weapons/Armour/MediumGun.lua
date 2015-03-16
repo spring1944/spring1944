@@ -335,7 +335,7 @@ local Type375mmL38 = MediumGun:New{
   name               = [[Type 3 75mm/38]],
   range              = 1480,
   reloadTime         = 4.85,
-  soundStart         = [[GER_75mm]],
+  soundStart         = [[JPN_75mm]],
 }
 
 local Type375mmL38HE = Type375mmL38:New(MediumHE, true):New{
@@ -361,7 +361,7 @@ local Type9075mm = MediumGun:New{
   name               = [[Type 90 75mm]],
   range              = 1270,
   reloadTime         = 6.5,
-  soundStart         = [[GER_75mm]],
+  soundStart         = [[JPN_75mm]],
 }
 
 local Type9075mmHE = Type9075mm:New(MediumHE, true):New{

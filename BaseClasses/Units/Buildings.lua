@@ -167,6 +167,7 @@ local BoatYard = Yard:New{
 local BoatYardLarge = BoatYard:New{
 	iconType			= "hshipyard", -- TODO: worth it? only upgraded fac with its own icon
     workerTime          = 100,
+	maxDamage           = 32500,
 }
 
 local Radar = Yard:New{
