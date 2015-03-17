@@ -771,7 +771,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
   end
   
   local upgradeDef = upgradeDefs[unitDefID]
-  if upgradeDef then
+  if builderID and upgradeDef then
     local builderDefID = Spring.GetUnitDefID(builderID)
     FactoryStartUpgrade(builderID, builderDefID, teamID, upgradeDef, unitID)
     Spring.SetUnitNoSelect(unitID, true)
