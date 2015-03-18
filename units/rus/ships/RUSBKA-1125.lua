@@ -25,7 +25,9 @@ local RUS_BKA_1125 = BoatMother:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
-		children = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
+        	children = {
 			"RUS_BKA_1125_turret_76mm", 
 			"RUS_BKA_1125_Turret_DshK_Front", 
 			"RUS_BKA_1125_Turret_DshK_Top", 

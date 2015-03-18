@@ -24,6 +24,8 @@ local RUS_Pr161 = BoatMother:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUS_Turret_45mm_Front",
 			"RUS_Pr161_Turret_85mm_Front",

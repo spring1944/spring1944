@@ -24,6 +24,8 @@ local RUS_BMO = BoatMother:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUS_Turret_37mm_Front", 
 			"RUS_Turret_45mm_Rear", 

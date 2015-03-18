@@ -30,6 +30,8 @@ local RUS_KomsMTB = BoatMother:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 	    maxammo				= 2,
 		weaponcost			= 40,
 		weaponswithammo		= 2,

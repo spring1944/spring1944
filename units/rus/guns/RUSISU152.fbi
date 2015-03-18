@@ -27,6 +27,8 @@
     weaponcost=63;
     weaponswithammo=1;
     soundcategory=RUS/Tank/Zveroboy;
+	killvoicecategory=RUS/Tank/Zveroboy/RUS_ISU_KILL;
+	killvoicephasecount=3;
   }
   explodeAs=Vehicle_Explosion_Large;
   footprintX=3;

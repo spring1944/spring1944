@@ -28,6 +28,8 @@ local RUS_Tender15t = Boat:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		transportsquad			= "rus_platoon_tender",
 		supplyRange				= 350,
 		--[[ enable me later when using LUS

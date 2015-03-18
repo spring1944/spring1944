@@ -24,6 +24,8 @@ local RUS_G5 = BoatMother:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUS_G5_Turret_DshK", 
 			"RUS_G5_Turret_M-8", 

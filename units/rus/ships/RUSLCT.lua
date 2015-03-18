@@ -51,6 +51,8 @@ local RUS_LCT = Boat:New{
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		transportsquad			= "rus_platoon_lct",
 		supplyRange				= 600,
 		--[[ enable me later when using LUS
