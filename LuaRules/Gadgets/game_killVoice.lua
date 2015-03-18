@@ -27,6 +27,7 @@ local KillVoiceDelay = 2
 
 local GetUnitPosition = Spring.GetUnitPosition
 local PlaySoundFile = Spring.PlaySoundFile
+local lower = string.lower
 
 local AreTeamsAllied = Spring.AreTeamsAllied
 
@@ -40,22 +41,44 @@ local KillVoiceData = {}
 local KillVoiceUnitPhraseNumber = {}
 local KillVoiceUnitVoiceDelay = {}
 
-function KillVoice(killerID, killedDefID, victimDefID, x, y, z)
+-- list of categories which can be used in kill voices
+local KillVoiceCategoryList = {'infantry', 'hardveh', 'air', 'ship', 'building'}
+
+function KillVoice(killerID, killerDefID, victimDefID, x, y, z)
 	local phraseNum = KillVoiceUnitPhraseNumber[killerID] or 1
-	local killVoiceCategory = KillVoiceData[killedDefID].VoiceCategory
-	local killVoicePhraseCount = KillVoiceData[killedDefID].PhraseCount
+	local killVoicePhraseCount = KillVoiceData[killerDefID].PhraseCount
 
-	-- pick a phrase to say
-	local soundFileName = SOUND_DIR..killVoiceCategory..phraseNum..SOUND_EXT
+	local victimCategory = ''
+	-- find out what category the victim is
+	if victimDefID then
+		local ud = UnitDefs[victimDefID]
+		local uc = ud.modCategories
 
-	-- say it
-	PlaySoundFile(soundFileName, DEFAULT_VOLUME, x, y, z)
-	
-	phraseNum = phraseNum + 1
-	if phraseNum > killVoicePhraseCount then
-		phraseNum = 1
+		for _, categoryName in pairs(KillVoiceCategoryList) do
+			if uc[categoryName] then
+			--if find(uc, categoryName) ~= nil then
+				victimCategory = categoryName
+				break
+			end
+		end
 	end
-	KillVoiceUnitPhraseNumber[killerID] = phraseNum
+
+	local categoryName = 'VoiceCategory'..victimCategory
+	local killVoiceCategory = KillVoiceData[killerDefID][categoryName] or KillVoiceData[killerDefID].VoiceCategory
+
+	if killVoiceCategory then
+		-- pick a phrase to say
+		local soundFileName = SOUND_DIR..killVoiceCategory..phraseNum..SOUND_EXT
+
+		-- say it
+		PlaySoundFile(soundFileName, DEFAULT_VOLUME, x, y, z)
+		
+		phraseNum = phraseNum + 1
+		if phraseNum > killVoicePhraseCount then
+			phraseNum = 1
+		end
+		KillVoiceUnitPhraseNumber[killerID] = phraseNum
+	end
 end
 
 function gadget:Initialize()
@@ -69,11 +92,21 @@ function gadget:Initialize()
 		local unitDef = UnitDefs[unitDefID]
 		local cp = unitDef.customParams
 		if cp then
+			local newData = {}
+			local categoryCount = 0
+			for _, categoryName in pairs(KillVoiceCategoryList) do
+				local tmpName = 'killvoicecategory_'..lower(categoryName)
+				if cp[tmpName] then
+					newData['VoiceCategory'..categoryName] = cp[tmpName]
+					categoryCount = categoryCount + 1
+				end
+			end
 			if cp.killvoicecategory then
-				local newData = {
-					VoiceCategory = cp.killvoicecategory,
-					PhraseCount = tonumber(cp.killvoicephasecount or 1),
-				}
+				newData['VoiceCategory'] = cp.killvoicecategory
+				categoryCount = categoryCount + 1
+			end
+			if categoryCount > 0 then
+				newData['PhraseCount'] = tonumber(cp.killvoicephasecount or 1)
 				KillVoiceData[unitDefID] = newData
 			end
 		end
@@ -108,7 +141,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerD
 	KillVoiceUnitPhraseNumber[unitID] = nil
 
 	if attackerID and attackerDefID then
-		if AreTeamsAllied(attackerTeam, myTeam) then
+		if AreTeamsAllied(attackerTeam, myTeam) and KillVoiceData[attackerDefID] then
 			if not KillVoiceUnitVoiceDelay[attackerID] then
 				local x, y, z = GetUnitPosition(attackerID)
 				KillVoiceUnitVoiceDelay[attackerID] = KillVoiceDelay

@@ -27,7 +27,7 @@
     weaponcost=27;
     weaponswithammo=2;
     soundcategory=RUS/Tank;
-	killvoicecategory=RUS/Tank/RUS_TANK_TANKKILL;
+	killvoicecategory_hardveh=RUS/Tank/RUS_TANK_TANKKILL;
 	killvoicephasecount=3;
   }
   explodeAs=Vehicle_Explosion_Med;
