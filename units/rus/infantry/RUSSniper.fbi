@@ -16,7 +16,8 @@
   [customParams] {
     dontCount=1;
     feartarget=1;
-    killvoice=1;
+	killvoicecategory=RUS/Infantry/Sniper/RUS_SNIPER_KILL;
+	killvoicephasecount=3;
     soundcategory=RUS/Infantry/Sniper;
   }
   damageModifier=0.265;

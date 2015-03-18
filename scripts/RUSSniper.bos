@@ -117,13 +117,14 @@ static-var lastKillNumber;
 //transport state handling
 #include "inf_transportHandling.h"
 
+/*
 foo()
 {
 	play-sound("rus_sniper_oneless", 4);
 	play-sound("rus_sniper_twoless", 4);
 	play-sound("rus_sniper_threeless", 4);
 }
-
+*/
 StartMoving()
 {
 	signal SIG_IDLE;
@@ -165,6 +166,7 @@ RestoreAfterDelay()
 		}
 }
 
+/*
 KillVoice()
 {
 	lastKillNumber = lastKillNumber+1;
@@ -174,7 +176,7 @@ KillVoice()
 	}
 	get PLAY_SOUND((lastKillNumber - 1), 655360, 5, 0);
 }
-
+*/
 //start weapons
 /*
 Primary weapon. 
