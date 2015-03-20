@@ -370,7 +370,7 @@ for name, ud in pairs(UnitDefs) do
 	if cp and cp.maxvelocitykmh then
 		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
 	end
-	if not ud.maxreversevelocity then
+	if ud.maxvelocity and not ud.maxreversevelocity then
 		ud.maxreversevelocity = ud.maxvelocity * (cp and cp.reversemult or 0.5)
 	end
 	ud.selfdestructas = ud.explodeas
