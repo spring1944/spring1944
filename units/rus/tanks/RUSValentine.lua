@@ -4,8 +4,6 @@ local RUSValentine = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2000,
 	maxDamage			= 1650,
-	maxReverseVelocity	= 0.8,
-	maxVelocity			= 1.8,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -35,6 +33,7 @@ local RUSValentine = LightTank:New{
 		maxammo				= 18,
 		weaponcost			= 8,
 		turretturnspeed		= 36, -- 10s for 360
+		maxvelocitykmh		= 24,
 	},
 }
 

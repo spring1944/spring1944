@@ -1,12 +1,10 @@
 local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
-	name				= "17pdr SP. Achilles Ic",
+	name				= "17pdr SP Achilles Ic",
 	description			= "Upgunned Tank Destroyer",
 	acceleration		= 0.046,
 	brakeRate			= 0.15,
 	buildCostMetal		= 2400,
 	maxDamage			= 2960,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 18,
 	turnRate			= 280,
@@ -32,6 +30,7 @@ local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 10,
 		weaponcost			= 19,
 		turretturnspeed		= 8, -- Manual traverse 45s
+		maxvelocitykmh		= 51,
 		
 		cegpiece = {
 			[2] = "aaflare",

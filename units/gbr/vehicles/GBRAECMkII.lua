@@ -4,8 +4,6 @@ local GBRAECMkII = HeavyArmouredCar:New{
 	brakeRate			= 0.09,
 	buildCostMetal		= 1350,
 	maxDamage			= 1270,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 3,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -37,6 +35,7 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		weaponcost			= 10,
 		weaponswithammo		= 1,
 		turretturnspeed		= 32, -- 11s for 360
+		maxvelocitykmh		= 66,
 		
 		cegpiece = {
 			[2] = "coaxflare",

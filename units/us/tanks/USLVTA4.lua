@@ -5,8 +5,6 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2250,
 	maxDamage			= 1814,
-	maxReverseVelocity	= 1.75,
-	maxVelocity			= 3.5,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -29,6 +27,7 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		maxammo				= 9,
 		weaponcost			= 8,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 40,
 		
 		cegpiece = {
 			[2] = "mg_flare",

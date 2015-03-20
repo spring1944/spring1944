@@ -4,8 +4,6 @@ local ITAM1542 = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1850,
 	maxDamage			= 1550,
-	maxReverseVelocity	= 1.55,
-	maxVelocity			= 3.1,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -42,6 +40,7 @@ local ITAM1542 = LightTank:New{
 		armor_top			= 14,
 		maxammo				= 25,
 		weaponcost			= 8,
+		maxvelocitykmh		= 40,
 		
 		cegpiece = {
 			[4] = "mg_flare1",

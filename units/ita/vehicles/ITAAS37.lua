@@ -5,8 +5,6 @@ local ITAAS37 = HalfTrack:New{
 	acceleration			= 0.039,
 	brakeRate				= 0.195,
 	maxDamage				= 560,
-	maxReverseVelocity		= 2.52,
-	maxVelocity				= 5.04,
 	trackOffset				= 10,
 	trackWidth				= 15,
 	turnRate				= 400,
@@ -16,6 +14,7 @@ local ITAAS37 = HalfTrack:New{
 		armor_rear				= 7,
 		armor_side				= 6,
 		armor_top				= 0,
+		maxvelocitykmh			= 52,
 	},
 	
 	weapons = {

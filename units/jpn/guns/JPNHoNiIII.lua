@@ -4,8 +4,6 @@ local JPNHoNiIII = Tank:New(TankDestroyer):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2050,
 	maxDamage			= 1700,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 3,
 	trackOffset			= 5,
 	trackWidth			= 14,
 
@@ -25,6 +23,7 @@ local JPNHoNiIII = Tank:New(TankDestroyer):New{
 		armor_top			= 12,
 		maxammo				= 14,
 		weaponcost			= 12,
+		maxvelocitykmh		= 38,
 	},
 }
 

@@ -6,8 +6,6 @@ local RUSISU152 = Tank:New(AssaultGun):New{
 	buildCostMetal		= 5800,
 	explodeAs			= "Vehicle_Explosion_Large",
 	maxDamage			= 4180,
-	maxReverseVelocity	= 1.37,
-	maxVelocity			= 2.74,
 	turnRate			= 160,
 	trackOffset			= 5,
 	trackWidth			= 22,
@@ -35,6 +33,7 @@ local RUSISU152 = Tank:New(AssaultGun):New{
 		soundcategory		= "RUS/Tank/Zveroboy",
 		weaponswithammo		= 1,
 		weapontoggle		= false,
+		maxvelocitykmh		= 40,
 	},
 }
 

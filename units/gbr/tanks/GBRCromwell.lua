@@ -4,8 +4,6 @@ local GBRCromwell = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2680,
 	maxDamage			= 2800,
-	maxReverseVelocity	= 1.925,
-	maxVelocity			= 3.85,
 	trackOffset			= 10,
 	trackWidth			= 18,
 
@@ -35,6 +33,7 @@ local GBRCromwell = MediumTank:New{
 		maxammo				= 12,
 		weaponcost			= 12,
 		turretturnspeed		= 25, -- 14-15s for 360
+		maxvelocitykmh		= 64,
 	},
 }
 

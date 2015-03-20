@@ -1,10 +1,8 @@
 local ITAAutocannone75 = Truck:New(AssaultGun):New{
-	name				= "Autocannone da 90/56",
+	name				= "Autocannone da 75/27",
 	description			= "Gun Truck",
 	buildCostMetal		= 1650,
 	maxDamage			= 270,
-	maxReverseVelocity	= 1.4,
-	maxVelocity			= 2.8,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -18,6 +16,7 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 		maxammo				= 5,
 		weaponcost			= 12,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 38,
 		
 		cegpiece = {
 			[1] = "flare",

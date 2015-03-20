@@ -4,8 +4,6 @@ local SWEPBilM31 = ArmouredCarAA:New{
 	brakeRate			= 0.09,
 	buildCostMetal		= 990,
 	maxDamage			= 420,
-	maxReverseVelocity	= 2.22,
-	maxVelocity			= 4.44,
 	trackOffset			= 10,
 	trackWidth			= 16,
 	turnRate			= 405,
@@ -30,6 +28,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		weaponswithammo		= 1,
 		weaponcost			= 2,
 		maxammo				= 19,
+		maxvelocitykmh		= 60,
 		
 		cegpiece = {
 			[1] = "flare",

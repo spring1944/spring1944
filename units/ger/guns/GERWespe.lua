@@ -4,8 +4,6 @@ local GERWespe = Tank:New(SPArty):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 4200,
 	maxDamage			= 1100,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -28,6 +26,7 @@ local GERWespe = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 4,
 		maxammo				= 6,
 		weaponcost			= 30,
+		maxvelocitykmh		= 40,
 		
 		cegpiece = {
 			[2] = "aaflare",

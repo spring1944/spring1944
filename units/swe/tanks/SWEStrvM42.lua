@@ -2,8 +2,6 @@ local StrvM42Base = {
 	acceleration		= 0.054,
 	brakeRate			= 0.15,
 	maxDamage			= 2250,
-	maxReverseVelocity	= 1.555,
-	maxVelocity			= 3.11,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -47,6 +45,7 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	customParams = {
 		maxammo				= 15,
 		weaponcost			= 12,
+		maxvelocitykmh		= 42,
 		
 		cegpiece = {
 			[3] = "turret_mg_flare_1",

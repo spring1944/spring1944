@@ -4,8 +4,6 @@ local SWESAVM43 = Tank:New(AssaultGun):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1740,
 	maxDamage			= 1200,
-	maxReverseVelocity	= 1.665,
-	maxVelocity			= 3.33,
 	turnRate			= 160,
 	trackOffset			= 3,
 	trackWidth			= 19,
@@ -30,6 +28,7 @@ local SWESAVM43 = Tank:New(AssaultGun):New{
 		armor_top			= 13,
 		maxammo				= 11,
 		weaponcost			= 12,
+		maxvelocitykmh		= 43,
 	},
 }
 

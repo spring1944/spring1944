@@ -5,8 +5,6 @@ local JPNHoRo = Tank:New(AssaultGun):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 3450,
 	maxDamage			= 1630,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 3,
 	trackOffset			= 5,
 	trackWidth			= 14,
 
@@ -32,6 +30,7 @@ local JPNHoRo = Tank:New(AssaultGun):New(OpenTopped):New{
 		weaponcost			= 25,
 		weapontoggle		= "smoke",
 		canfiresmoke		= true,
+		maxvelocitykmh		= 38,
 	},
 }
 

@@ -4,8 +4,6 @@ local GBRDaimler = ArmouredCar:New{
 	brakeRate			= 0.09,
 	buildCostMetal		= 1350,
 	maxDamage			= 680,
-	maxReverseVelocity	= 2.965,
-	maxVelocity			= 5.93,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -38,6 +36,8 @@ local GBRDaimler = ArmouredCar:New{
 		maxammo				= 13,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		reversemult			= 0.75,
+		maxvelocitykmh		= 80,
 	}
 }
 

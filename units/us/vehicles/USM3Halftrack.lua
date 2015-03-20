@@ -2,8 +2,6 @@ local USM3Base = Vehicle:New{
 	acceleration			= 0.053,
 	brakeRate				= 0.195,
 	maxDamage				= 930,
-	maxReverseVelocity		= 2.665,
-	maxVelocity				= 5.33,
 	trackOffset				= 10,
 	trackWidth				= 15,
 	turnRate				= 400,
@@ -14,6 +12,7 @@ local USM3Base = Vehicle:New{
 		armor_side				= 8,
 		armor_top				= 8,
 		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
+		maxvelocitykmh			= 72,
 	},
 }
 

@@ -4,8 +4,6 @@ local USM8Greyhound = ArmouredCar:New{
 	brakeRate			= 0.09,
 	buildCostMetal		= 1400,
 	maxDamage			= 780,
-	maxReverseVelocity	= 3.555,
-	maxVelocity			= 7.11,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -41,6 +39,7 @@ local USM8Greyhound = ArmouredCar:New{
 		maxammo				= 15,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		maxvelocitykmh		= 89,
 		
 		cegpiece = {
 			[4] = "aaflare",

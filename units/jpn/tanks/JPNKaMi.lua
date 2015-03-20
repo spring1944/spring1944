@@ -5,8 +5,6 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1150,
 	maxDamage			= 1250,
-	maxReverseVelocity	= 1.4,
-	maxVelocity			= 2.8,
 	trackOffset			= 7,
 	trackWidth			= 16,
 
@@ -38,6 +36,7 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		armor_top			= 6,
 		maxammo				= 15,
 		weaponcost			= 8,
+		maxvelocitykmh		= 37,
 		
 		cegpiece = {
 			[3] = "bow_mg_flare",

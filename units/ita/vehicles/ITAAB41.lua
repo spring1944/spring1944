@@ -4,8 +4,6 @@ local ITAAB41 = ArmouredCar:New{
 	brakeRate			= 0.195,
 	buildCostMetal		= 1085,
 	maxDamage			= 752,
-	maxReverseVelocity	= 2.905,
-	maxVelocity			= 5.81,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -43,6 +41,8 @@ local ITAAB41 = ArmouredCar:New{
 		maxammo				= 19,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		reversemult			= 0.75,
+		maxvelocitykmh		= 78,
 		
 		cegpiece = {
 			[4] = "coaxflare",

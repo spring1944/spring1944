@@ -5,8 +5,6 @@ local RUSSU100 = Tank:New(TankDestroyer):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 6000,
 	maxDamage			= 3160,
-	maxReverseVelocity	= 1.85,
-	maxVelocity			= 3.7,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -26,6 +24,7 @@ local RUSSU100 = Tank:New(TankDestroyer):New{
 		armor_top			= 20,
 		maxammo				= 7,
 		weaponcost			= 22,
+		maxvelocitykmh		= 48,
 	},
 }
 

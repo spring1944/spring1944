@@ -4,8 +4,6 @@ local SWEStrvM37 = Tankette:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 700,
 	maxDamage			= 450,
-	maxReverseVelocity	= 2.22,
-	maxVelocity			= 4.44,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -31,6 +29,7 @@ local SWEStrvM37 = Tankette:New{
 		armor_side			= 10,
 		armor_top			= 4,
 		weaponswithammo		= 0,
+		maxvelocitykmh		= 60,
 		
 		cegpiece = {
 			[1] = "flare1",

@@ -5,8 +5,6 @@ local GERJagdPanzerIV = Tank:New(TankDestroyer):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 4500,
 	maxDamage			= 2580,
-	maxReverseVelocity	= 1.295,
-	maxVelocity			= 2.59,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -27,6 +25,7 @@ local GERJagdPanzerIV = Tank:New(TankDestroyer):New{
 		maxammo				= 15,
 		weaponcost			= 19,
 		soundcategory		= "GER/Tank/JgPz",
+		maxvelocitykmh		= 35,
 	},
 }
 

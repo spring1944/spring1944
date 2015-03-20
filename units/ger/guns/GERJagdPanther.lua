@@ -5,8 +5,6 @@ local GERJagdPanther = Tank:New(TankDestroyer):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 9100,
 	maxDamage			= 4550,
-	maxReverseVelocity	= 2.035,
-	maxVelocity			= 4.07,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -27,6 +25,7 @@ local GERJagdPanther = Tank:New(TankDestroyer):New{
 		maxammo				= 15,
 		weaponcost			= 26,
 		soundcategory		= "GER/Tank/JgPz",
+		maxvelocitykmh		= 46,
 	},
 }
 

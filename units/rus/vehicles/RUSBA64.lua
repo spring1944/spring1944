@@ -5,8 +5,6 @@ local RUSBA64 = ArmouredCar:New{
 	brakeRate			= 0.09,
 	buildCostMetal		= 525,
 	maxDamage			= 245,
-	maxReverseVelocity	= 2.6,
-	maxVelocity			= 5.2,
 	trackOffset			= 4,
 	trackWidth			= 11,
 	turnRate			= 425,
@@ -23,6 +21,7 @@ local RUSBA64 = ArmouredCar:New{
 		armor_rear			= 4,
 		armor_side			= 6,
 		armor_top			= 4,
+		maxvelocitykmh		= 80,
 	}
 }
 

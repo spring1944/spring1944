@@ -4,8 +4,6 @@ local GERPanzerIII = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2150,
 	maxDamage			= 2130,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -34,6 +32,7 @@ local GERPanzerIII = MediumTank:New{
 		armor_top			= 14,
 		maxammo				= 12,
 		weaponcost			= 10,
+		maxvelocitykmh		= 40,
 	},
 }
 

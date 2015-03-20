@@ -4,8 +4,6 @@ local GERSdKfz251 = HalfTrack:New{
 	acceleration			= 0.039,
 	brakeRate				= 0.195,
 	maxDamage				= 850,
-	maxReverseVelocity		= 1.925,
-	maxVelocity				= 3.85,
 	trackOffset				= 10,
 	trackWidth				= 15,
 	turnRate				= 405,
@@ -20,10 +18,11 @@ local GERSdKfz251 = HalfTrack:New{
 	},
 	
 	customParams = {
-		armor_front				= 9,
-		armor_rear				= 9,
-		armor_side				= 10,
-		armor_top				= 0,
+		armor_front			= 9,
+		armor_rear			= 9,
+		armor_side			= 10,
+		armor_top			= 0,
+		maxvelocitykmh		= 52.5,
 	},
 	
 }

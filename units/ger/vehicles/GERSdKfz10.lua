@@ -4,8 +4,6 @@ local GERSdKfz10 = TruckAA:New{
 	brakeRate			= 0.195,
 	buildCostMetal		= 1275,
 	maxDamage			= 499,
-	maxReverseVelocity	= 2.405,
-	maxVelocity			= 4.81,
 	trackOffset			= 10,
 	trackWidth			= 19,
 	turnRate			= 405,
@@ -23,6 +21,7 @@ local GERSdKfz10 = TruckAA:New{
 		maxammo				= 25,
 		weaponcost			= 2,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 75,
 	}
 }
 

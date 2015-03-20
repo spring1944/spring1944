@@ -4,8 +4,6 @@ local SWEStrvM41 = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2000,
 	maxDamage			= 1100,
-	maxReverseVelocity	= 1.775,
-	maxVelocity			= 3.55,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -37,6 +35,7 @@ local SWEStrvM41 = LightTank:New{
 		armor_top			= 8,
 		maxammo				= 15,
 		weaponcost			= 8,
+		maxvelocitykmh		= 42,
 		
 		cegpiece = {
 			[3] = "turret_mg_flare",

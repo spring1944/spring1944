@@ -4,8 +4,6 @@ local JPNKaTsu = HalfTrack:New(Amphibian):New{
 	acceleration			= 0.051,
 	brakeRate				= 0.195,
 	maxDamage				= 1600,
-	maxReverseVelocity		= 0.95,
-	maxVelocity				= 2,
 	trackOffset				= 10,
 	trackWidth				= 20,
 	turnRate				= 400,
@@ -16,6 +14,7 @@ local JPNKaTsu = HalfTrack:New(Amphibian):New{
 		armor_side				= 10,
 		armor_top				= 10,
 		transportsquad			= "jpn_platoon_amph",
+		maxvelocitykmh			= 20,
 	},
 	
 	weapons = {

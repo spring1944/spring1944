@@ -4,8 +4,6 @@ local USM7Priest = Tank:New(SPArty):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 4500,
 	maxDamage			= 2300,
-	maxReverseVelocity	= 1.445,
-	maxVelocity			= 2.89,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -28,6 +26,7 @@ local USM7Priest = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 25,
 		maxammo				= 13,
 		weaponcost			= 30,
+		maxvelocitykmh		= 39,
 		
 		cegpiece = {
 			[2] = "aaflare",

@@ -1,11 +1,9 @@
 local GERPanzerIV = MediumTank:New{
-	name				= "PzKpfw IV Ausf J",
+	name				= "PzKpfw IV Ausf H",
 	acceleration		= 0.038,
 	brakeRate			= 0.15,
 	buildCostMetal		= 2875,
 	maxDamage			= 2600,
-	maxReverseVelocity	= 1.405,
-	maxVelocity			= 2.81,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -35,6 +33,7 @@ local GERPanzerIV = MediumTank:New{
 		maxammo				= 17,
 		weaponcost			= 16,
 		turretturnspeed		= 16, -- 22.5s for 360
+		maxvelocitykmh		= 25,
 	},
 }
 

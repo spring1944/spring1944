@@ -4,8 +4,6 @@ local GERTiger = HeavyTank:New{
 	brakeRate			= 0.105,
 	buildCostMetal		= 9770,
 	maxDamage			= 5700,
-	maxReverseVelocity	= 1.405,
-	maxVelocity			= 2.81,
 	trackOffset			= 5,
 	trackWidth			= 23,
 
@@ -35,6 +33,7 @@ local GERTiger = HeavyTank:New{
 		maxammo				= 17,
 		weaponcost			= 20,
 		turretturnspeed		= 10, -- 60s for 360
+		maxvelocitykmh		= 45.4,
 	},
 }
 

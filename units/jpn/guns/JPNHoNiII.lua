@@ -4,8 +4,6 @@ local JPNHoNiII = Tank:New(SPArty):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 3150,
 	maxDamage			= 1630,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 3,
 	trackOffset			= 5,
 	trackWidth			= 14,
 
@@ -25,6 +23,7 @@ local JPNHoNiII = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 0,
 		maxammo				= 4,
 		weaponcost			= 25,
+		maxvelocitykmh		= 38,
 	},
 }
 

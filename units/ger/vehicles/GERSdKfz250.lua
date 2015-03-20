@@ -5,8 +5,6 @@ local GERSdKfz250 = ArmouredCar:New{
 	brakeRate			= 0.195,
 	buildCostMetal		= 925,
 	maxDamage			= 570,
-	maxReverseVelocity	= 2.405,
-	maxVelocity			= 4.81,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -39,6 +37,7 @@ local GERSdKfz250 = ArmouredCar:New{
 		maxammo				= 19,
 		weaponcost			= 8,
 		weaponswithammo		= 2,
+		maxvelocitykmh		= 76,
 	}
 }
 

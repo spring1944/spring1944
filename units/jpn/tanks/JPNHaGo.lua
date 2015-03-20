@@ -4,8 +4,6 @@ local JPNHaGo = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1150,
 	maxDamage			= 740,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 3,
 	trackOffset			= 5,
 	trackWidth			= 14,
 
@@ -37,6 +35,7 @@ local JPNHaGo = LightTank:New{
 		armor_top			= 6,
 		maxammo				= 20,
 		weaponcost			= 7,
+		maxvelocitykmh		= 45,
 		
 		cegpiece = {
 			[3] = "bow_mg_flare",

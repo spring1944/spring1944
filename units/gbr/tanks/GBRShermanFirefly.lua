@@ -5,8 +5,6 @@ local GBRShermanFirefly = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 4000,
 	maxDamage			= 3270,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -36,6 +34,7 @@ local GBRShermanFirefly = MediumTank:New{
 		maxammo				= 14,
 		weaponcost			= 19,
 		turretturnspeed		= 24, -- 15s for 360
+		maxvelocitykmh		= 40,
 	},
 }
 

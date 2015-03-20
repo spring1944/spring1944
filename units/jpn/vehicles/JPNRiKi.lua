@@ -5,6 +5,10 @@ local JPN_RiKi = EngineerVehicle:New{
 	movementClass			= "TANK_Medium",
 	trackOffset				= 3,
 	trackWidth				= 12,
+	
+	customParams = {
+		maxvelocitykmh		= 32,
+	},
 }
 
 return lowerkeys({

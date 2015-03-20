@@ -5,8 +5,6 @@ local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1900,
 	maxDamage			= 2903,
-	maxReverseVelocity	= 1.555,
-	maxVelocity			= 3.11,
 	trackOffset			= 5,
 	trackWidth			= 18,
 	turnRate			= 280,
@@ -32,6 +30,8 @@ local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 13,
 		weaponcost			= 14,
 		turretturnspeed		= 8, -- Manual traverse 45s
+		maxvelocitykmh		= 48,
+		
 		cegpiece = {
 			[2] = "aaflare",
 		},

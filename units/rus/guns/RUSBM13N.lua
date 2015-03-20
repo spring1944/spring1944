@@ -4,8 +4,6 @@ local RUSBM13N = Truck:New{
 	buildCostMetal		= 6800,
 	iconType			= "RocketTruck",
 	maxDamage			= 573,
-	maxReverseVelocity	= 2.45,
-	maxVelocity			= 4.9,
 	trackOffset			= 4,
 	trackWidth			= 11,
 	script				= "<NAME>.cob", -- TODO: vehicle.lua
@@ -20,6 +18,7 @@ local RUSBM13N = Truck:New{
 		maxammo				= 1,
 		weaponcost			= 940,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 69,
 	},
 }
 

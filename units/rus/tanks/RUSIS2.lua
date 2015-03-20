@@ -4,8 +4,6 @@ local RUSIS2 = HeavyTank:New{
 	brakeRate			= 0.105,
 	buildCostMetal		= 11400,
 	maxDamage			= 4600,
-	maxReverseVelocity	= 1.37,
-	maxVelocity			= 2.74,
 	trackOffset			= 5,
 	trackWidth			= 22,
 
@@ -35,6 +33,7 @@ local RUSIS2 = HeavyTank:New{
 		maxammo				= 5,
 		weaponcost			= 27,
 		turretturnspeed		= 12, -- 30s for 360
+		maxvelocitykmh		= 37,
 	},
 }
 

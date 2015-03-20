@@ -2,8 +2,6 @@ local ChiHaBase = MediumTank:New{
 	acceleration		= 0.034,
 	brakeRate			= 0.15,
 	maxDamage			= 1580,
-	maxReverseVelocity	= 1.3,
-	maxVelocity			= 2.6,
 	trackOffset			= 5,
 	trackWidth			= 14,
 	trackType			= "T60-70-SU76",
@@ -14,6 +12,7 @@ local ChiHaBase = MediumTank:New{
 		armor_rear			= 25,
 		armor_side			= 25,
 		armor_top			= 11,
+		maxvelocitykmh		= 38,
 	},
 }
 	

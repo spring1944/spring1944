@@ -4,8 +4,6 @@ local RUSSU76 = Tank:New(AssaultGun):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1740,
 	maxDamage			= 1120,
-	maxReverseVelocity	= 1.665,
-	maxVelocity			= 3.33,
 	turnRate			= 160,
 	trackOffset			= 3,
 	trackType			= "T60-70-SU76",
@@ -31,6 +29,7 @@ local RUSSU76 = Tank:New(AssaultGun):New(OpenTopped):New{
 		armor_top			= 7,
 		maxammo				= 11,
 		weaponcost			= 12,
+		maxvelocitykmh		= 45,
 	},
 }
 

@@ -1,11 +1,9 @@
 local GBRSexton = Tank:New(SPArty):New(OpenTopped):New{
-	name				= "25pdr SP. Sexton Mk. II",
+	name				= "25pdr SP Sexton Mk. II",
 	acceleration		= 0.052,
 	brakeRate			= 0.15,
 	buildCostMetal		= 4725,
 	maxDamage			= 2586,
-	maxReverseVelocity	= 1.52,
-	maxVelocity			= 3.04,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -25,6 +23,7 @@ local GBRSexton = Tank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 6,
 		maxammo				= 21,
 		weaponcost			= 18,
+		maxvelocitykmh		= 40,
 	},
 }
 

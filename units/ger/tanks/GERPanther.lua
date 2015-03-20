@@ -4,8 +4,6 @@ local GERPanther = HeavyTank:New{
 	brakeRate			= 0.105,
 	buildCostMetal		= 5895,
 	maxDamage			= 4547,
-	maxReverseVelocity	= 1.705,
-	maxVelocity			= 3.41,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -35,6 +33,7 @@ local GERPanther = HeavyTank:New{
 		maxammo				= 15,
 		weaponcost			= 19,
 		turretturnspeed		= 20, -- 18s for 360
+		maxvelocitykmh		= 46,
 	},
 }
 

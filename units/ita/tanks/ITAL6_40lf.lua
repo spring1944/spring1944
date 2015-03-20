@@ -5,8 +5,6 @@ local ITAL6_40lf = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1350,
 	maxDamage			= 640,
-	maxReverseVelocity	= 1.665,
-	maxVelocity			= 2.6,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -28,6 +26,7 @@ local ITAL6_40lf = LightTank:New{
 		maxammo				= 8,
 		weaponcost			= 8,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 42,
 	},
 }
 

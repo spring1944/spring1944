@@ -31,6 +31,7 @@ local ShermanBase = MediumTank:New{
 		armor_side			= 41,
 		armor_top			= 21,
 		turretturnspeed		= 26.5, -- 13.6s for 360
+		maxvelocitykmh		= 42,
 		
 		cegpiece = {
 			[4] = "aaflare",
@@ -41,8 +42,6 @@ local ShermanBase = MediumTank:New{
 local USM4A4Sherman = ShermanBase:New{
 	name				= "M4A3 Sherman",
 	acceleration		= 0.043,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	buildCostMetal		= 2550,
 	maxDamage			= 3180,
 
@@ -66,18 +65,18 @@ local USM4Jumbo = USM4A4Sherman:New{
 	name				= "M4A3E2 Sherman Jumbo",
 	description			= "Uparmoured Medium Tank",
 	acceleration		= 0.035,
-	maxReverseVelocity	= 1.295,
-	maxVelocity			= 2.59,
 	buildCostMetal		= 6200,
 	maxDamage			= 4267,
+	
+	customParams = {
+		maxvelocitykmh		= 35,
+	},
 }
 
 local USM4A376Sherman = ShermanBase:New{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
 	acceleration		= 0.05,
-	maxReverseVelocity	= 1.555,
-	maxVelocity			= 3.11,
 	buildCostMetal		= 2850,
 	maxDamage			= 3365,
 
@@ -102,8 +101,6 @@ local USM4A3105Sherman = ShermanBase:New{
 	name				= "M4A3(105) Sherman",
 	description			= "Close Support Tank",
 	acceleration		= 0.049,
-	maxReverseVelocity	= 1.26,
-	maxVelocity			= 2.52,
 	buildCostMetal		= 3450,
 	maxDamage			= 3150,
 
@@ -124,6 +121,7 @@ local USM4A3105Sherman = ShermanBase:New{
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
 		turretturnspeed		= 8, -- manual traverse
+		maxvelocitykmh		= 39,
 	},
 }
 

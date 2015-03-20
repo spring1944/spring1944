@@ -5,8 +5,6 @@ local GBRChurchillMkVII = HeavyTank:New{
 	brakeRate			= 0.105,
 	buildCostMetal		= 5800,
 	maxDamage			= 4060,
-	maxReverseVelocity	= 0.74,
-	maxVelocity			= 1.48,
 	movementClass		= "TANK_Goat",
 	trackOffset			= 5,
 	trackWidth			= 18,
@@ -37,6 +35,7 @@ local GBRChurchillMkVII = HeavyTank:New{
 		maxammo				= 14,
 		weaponcost			= 12,
 		turretturnspeed		= 24, -- 15s for 360
+		maxvelocitykmh		= 24,
 	},
 }
 

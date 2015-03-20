@@ -4,8 +4,6 @@ local RUST70 = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1500,
 	maxDamage			= 920,
-	maxReverseVelocity	= 1.665,
-	maxVelocity			= 3.33,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -34,6 +32,7 @@ local RUST70 = LightTank:New{
 		armor_top			= 10,
 		maxammo				= 18,
 		weaponcost			= 8,
+		maxvelocitykmh		= 45,
 	},
 }
 

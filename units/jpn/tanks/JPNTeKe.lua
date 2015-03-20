@@ -4,8 +4,6 @@ local TeKeBase = Tankette:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 600,
 	maxDamage			= 475,
-	maxReverseVelocity	= 1.45,
-	maxVelocity			= 2.9,
 	trackOffset			= 5,
 	trackWidth			= 12,
 	
@@ -14,6 +12,7 @@ local TeKeBase = Tankette:New{
 		armor_rear			= 12,
 		armor_side			= 16,
 		armor_top			= 6,
+		maxvelocitykmh		= 42,
 	},
 }
 

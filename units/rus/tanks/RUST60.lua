@@ -4,8 +4,6 @@ local RUST60 = Tankette:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1250,
 	maxDamage			= 640,
-	maxReverseVelocity	= 1.665,
-	maxVelocity			= 3.33,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -34,6 +32,7 @@ local RUST60 = Tankette:New{
 		armor_top			= 10,
 		maxammo				= 36,
 		weaponcost			= 8,
+		maxvelocitykmh		= 44,
 	},
 }
 

@@ -4,8 +4,6 @@ local SWEStrvM40SII = LightTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1500,
 	maxDamage			= 750,
-	maxReverseVelocity	= 1.775,
-	maxVelocity			= 3.55,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -37,6 +35,7 @@ local SWEStrvM40SII = LightTank:New{
 		armor_top			= 5,
 		maxammo				= 18,
 		weaponcost			= 8,
+		maxvelocitykmh		= 48,
 	},
 }
 

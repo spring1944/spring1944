@@ -1,11 +1,9 @@
 local ITASPADovunque = TruckAA:New{
-	name				= "SPA Dovunque 35",
+	name				= "Autocannone Breda da 20 mm A/A su Fiat-SPA Dovunque 35",
 	acceleration		= 0.058,
 	brakeRate			= 0.195,
 	buildCostMetal		= 1200,
 	maxDamage			= 453,
-	maxReverseVelocity	= 1.5,
-	maxVelocity			= 4,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -19,6 +17,7 @@ local ITASPADovunque = TruckAA:New{
 		maxammo				= 19,
 		weaponcost			= 2,
 		weaponswithammo		= 1,
+		maxvelocitykmh		= 60,
 	}
 }
 

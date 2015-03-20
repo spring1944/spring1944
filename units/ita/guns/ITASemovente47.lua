@@ -5,8 +5,6 @@ local ITASemovente47 = Tank:New(TankDestroyer):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 900,
 	maxDamage			= 640,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 11,
 
@@ -31,6 +29,7 @@ local ITASemovente47 = Tank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 18,
 		weaponcost			= 10,
 		weapontoggle		= false,
+		maxvelocitykmh		= 42.3,
 	},
 }
 

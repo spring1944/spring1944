@@ -4,8 +4,6 @@ local RUST3476 = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2400,
 	maxDamage			= 3090,
-	maxReverseVelocity	= 2.035,
-	maxVelocity			= 4.07,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -35,6 +33,7 @@ local RUST3476 = MediumTank:New{
 		maxammo				= 19,
 		weaponcost			= 12,
 		turretturnspeed		= 26.5, -- 13.6s for 360
+		maxvelocitykmh		= 53,
 	},
 }
 

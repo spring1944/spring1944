@@ -4,8 +4,6 @@ local ITAP40 = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2500,
 	maxDamage			= 2600,
-	maxReverseVelocity	= 2.035,
-	maxVelocity			= 3.07,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
@@ -35,6 +33,7 @@ local ITAP40 = MediumTank:New{
 		armor_top			= 20,
 		maxammo				= 19,
 		weaponcost			= 10,
+		maxvelocitykmh		= 40,
 	},
 }
 

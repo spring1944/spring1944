@@ -4,8 +4,6 @@ local GERStuGIII = Tank:New(AssaultGun):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2750,
 	maxDamage			= 2390,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 3,
 	trackWidth			= 19,
 
@@ -30,6 +28,7 @@ local GERStuGIII = Tank:New(AssaultGun):New{
 		maxammo				= 11,
 		weaponcost			= 16,
 		soundcategory		= "GER/Tank/StuG",
+		maxvelocitykmh		= 40,
 	},
 }
 

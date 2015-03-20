@@ -1,10 +1,8 @@
 local ITAAutocannone90 = Truck:New(TankDestroyer):New{
-	name				= "Autocannone da 90/56",
+	name				= "Autocannone 90/53 su Lancia 3Ro",
 	description			= "Self-Propelled AT Gun",
 	buildCostMetal		= 2950,
 	maxDamage			= 800,
-	maxReverseVelocity	= 1.05,
-	maxVelocity			= 2.1,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -17,6 +15,7 @@ local ITAAutocannone90 = Truck:New(TankDestroyer):New{
 	customParams = {
 		maxammo				= 5,
 		weaponcost			= 20,
+		maxvelocitykmh		= 45,
 	},
 }
 

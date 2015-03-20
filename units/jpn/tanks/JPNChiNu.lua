@@ -5,8 +5,6 @@ local JPNChiNu = MediumTank:New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 2650,
 	maxDamage			= 1880,
-	maxReverseVelocity	= 1.3,
-	maxVelocity			= 2.7,
 	trackOffset			= 5,
 	trackWidth			= 14,
 
@@ -35,6 +33,7 @@ local JPNChiNu = MediumTank:New{
 		armor_top			= 11,
 		maxammo				= 12,
 		weaponcost			= 10,
+		maxvelocitykmh		= 39,
 		
 		cegpiece = {
 			[3] = "bow_mg_flare",

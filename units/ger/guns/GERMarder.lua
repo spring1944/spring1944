@@ -5,8 +5,6 @@ local GERMarder = Tank:New(TankDestroyer):New(OpenTopped):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 1400,
 	maxDamage			= 1050,
-	maxReverseVelocity	= 1.555,
-	maxVelocity			= 3.11,
 	trackOffset			= 3,
 	trackWidth			= 12,
 
@@ -27,6 +25,7 @@ local GERMarder = Tank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 6,
 		weaponcost			= 16,
 		soundcategory		= "GER/Tank/JgPz",
+		maxvelocitykmh		= 42,
 	},
 }
 

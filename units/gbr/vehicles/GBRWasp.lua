@@ -6,8 +6,6 @@ local GBRWasp = ArmouredCar:New{
 	buildCostMetal		= 1100,
 	iconType			= "flametank",
 	maxDamage			= 431,
-	maxReverseVelocity	= 1.78,
-	maxVelocity			= 3.56,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -30,6 +28,7 @@ local GBRWasp = ArmouredCar:New{
 		weaponcost			= 4,
 		weaponswithammo		= 1,
 		hasturnbutton		= true,
+		maxvelocitykmh		= 48,
 		
 		cegpiece = {
 			[1] = "gun",

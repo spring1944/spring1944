@@ -4,8 +4,6 @@ local GERPuma = HeavyArmouredCar:New{
 	brakeRate			= 0.11,
 	buildCostMetal		= 1700,
 	maxDamage			= 1174,
-	maxReverseVelocity	= 2.7,
-	maxVelocity			= 5.4,
 	trackOffset			= 10,
 	trackWidth			= 13,
 	turnRate			= 405,
@@ -38,6 +36,8 @@ local GERPuma = HeavyArmouredCar:New{
 		maxammo				= 10,
 		weaponcost			= 10,
 		weaponswithammo		= 2,
+		reversemult			= 0.75,
+		maxvelocitykmh		= 80,
 	}
 }
 

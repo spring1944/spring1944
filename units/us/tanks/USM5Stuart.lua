@@ -2,8 +2,6 @@ local StuartBase = LightTank:New{
 	acceleration		= 0.065,
 	brakeRate			= 0.15,
 	maxDamage			= 1520,
-	maxReverseVelocity	= 2.15,
-	maxVelocity			= 4.3,
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USStuart",
@@ -14,6 +12,7 @@ local StuartBase = LightTank:New{
 		armor_rear			= 28,
 		armor_side			= 28,
 		armor_top			= 13,
+		maxvelocitykmh		= 58,
 	},
 }	
 

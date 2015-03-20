@@ -367,6 +367,12 @@ for name, ud in pairs(UnitDefs) do
 		ud.sounds = sounds
 	end
 	-- new stuff that will be staying in _post with OO defs
+	if cp and cp.maxvelocitykmh then
+		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
+	end
+	if not ud.maxreversevelocity then
+		ud.maxreversevelocity = ud.maxvelocity * (cp and cp.reversemult or 0.5)
+	end
 	ud.selfdestructas = ud.explodeas
 	if ud.buildcostmetal and not cp.isupgrade then
 		if not ud.buildtime then

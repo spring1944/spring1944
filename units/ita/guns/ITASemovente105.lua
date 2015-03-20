@@ -5,8 +5,6 @@ local ITASemovente105 = Tank:New(AssaultGun):New{
 	brakeRate			= 0.15,
 	buildCostMetal		= 3450,
 	maxDamage			= 1600,
-	maxReverseVelocity	= 1.48,
-	maxVelocity			= 2.96,
 	trackOffset			= 5,
 	trackWidth			= 19,
 
@@ -30,6 +28,7 @@ local ITASemovente105 = Tank:New(AssaultGun):New{
 		armor_top			= 15,
 		maxammo				= 11,
 		weaponcost			= 25,
+		maxvelocitykmh		= 35,
 	},
 }
 
