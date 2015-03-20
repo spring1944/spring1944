@@ -117,6 +117,14 @@ for name, ud in pairs(UnitDefs) do
 	local LoSMult = 0.6
 	local decloakDistMult = 0.6
 	local infSpeedMult = 0.5
+	
+	-- TODO: This stuff really belongs in the 'will keep in the long term' section, but too much shit depends on ud.maxvelocity
+	if cp and cp.maxvelocitykmh then
+		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
+	end
+	if ud.maxvelocity and not ud.maxreversevelocity then
+		ud.maxreversevelocity = ud.maxvelocity * (cp and cp.reversemult or 0.5)
+	end
 
 	--sets base values for detection radii
 	--index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
@@ -367,12 +375,6 @@ for name, ud in pairs(UnitDefs) do
 		ud.sounds = sounds
 	end
 	-- new stuff that will be staying in _post with OO defs
-	if cp and cp.maxvelocitykmh then
-		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
-	end
-	if ud.maxvelocity and not ud.maxreversevelocity then
-		ud.maxreversevelocity = ud.maxvelocity * (cp and cp.reversemult or 0.5)
-	end
 	ud.selfdestructas = ud.explodeas
 	if ud.buildcostmetal and not cp.isupgrade then
 		if not ud.buildtime then
@@ -383,6 +385,7 @@ for name, ud in pairs(UnitDefs) do
 	end
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
+	if not ud.mass then Spring.Echo(ud.name, ud.maxdamage) end
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name

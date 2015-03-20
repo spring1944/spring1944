@@ -31,6 +31,17 @@ local function inherit (c, p, concatNames)
 	end
 end
 
+local function append (c, p)
+	lowerkeys(c)
+	for k,v in pairs(p) do
+		if type(v) == "string" then
+			c[k] = v .. " " .. (c[k] or "")
+		else
+			Spring.Log("ERROR: Attempt to concatenate non-string value")
+		end
+	end
+end
+
 -- Make sides available to all def files
 local sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
 local Sides = {}
@@ -41,47 +52,52 @@ for sideNum, data in pairs(sideData) do
 end
 
 -- Root Classes
-
-Unit = {
-	showNanoFrame			= false,
-	showNanoSpray			= false,
-	objectName				= "<SIDE>/<NAME>.s3o",
-	buildPic				= "<NAME>.png",
-	script					= "<NAME>.cob",
+Def = {
 }
-function Unit:New(newAttribs, concatName)
+
+function Def:New(newAttribs, concatName)
 	local newClass = {}
 	inherit(newClass, newAttribs)
 	inherit(newClass, self, concatName)
 	return newClass
 end
 
-function Unit:Clone(name) -- name is passed to <NAME> in _post, it is the unitname of the unit to copy from
+function Def:Clone(name) -- name is passed to <NAME> in _post, it is the unitname of the unit to copy from
 	local newClass = {}
 	inherit(newClass, self)
 	newClass.unitname = name:lower()
 	return newClass
 end
 
-Weapon = {
+function Def:Append(newAttribs)
+	local newClass = {}
+	inherit(newClass, self)
+	append(newClass, newAttribs)
+	return newClass
+end
+
+Unit = Def:New{
+	showNanoFrame			= false,
+	showNanoSpray			= false,
+	objectName				= "<SIDE>/<NAME>.s3o",
+	buildPic				= "<NAME>.png",
+	script					= "<NAME>.cob",
+}
+	
+Weapon = Def:New{
 	customParams = {
 		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 }
-function Weapon:New(newAttribs, concatName)
-	local newClass = {}
-	inherit(newClass, newAttribs)
-	inherit(newClass, self, concatName)
-	return newClass
-end
 
 ---------------------------------------------------------------------------------------------
 
 -- This is where the magic happens
 local sharedEnv = {
 	Sides = Sides,
-	Weapon = Weapon,
+	Def = Def,
 	Unit = Unit,
+	Weapon = Weapon,
 	printTable = printTable,
 	lowerkeys = lowerkeys,
 }
