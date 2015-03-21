@@ -109,9 +109,10 @@ local MG42_Deployed = MG42:New{
 }
 -- Anti Air MG42
 local MG42AA = MG42:New{
+  accuracy	     = 400,
   canAttackGround    = false,
   predictBoost       = 0.25,
-  movingAccuracy     = 500,
+  movingAccuracy     = 800,
   range              = 1170,
   sprayAngle         = 460,
   customparams = { 
@@ -149,11 +150,11 @@ local Maxim = MGClass:New{
 }
 -- Maxim AA
 local MaximAA = Maxim:New{
-  accuracy	     = 200,
+  accuracy	     = 400,
   burst              = 7,
   burstRate          = 0.103,
   canAttackGround    = false,
-  movingAccuracy     = 400,
+  movingAccuracy     = 800,
   predictBoost       = 0.25,
   range              = 1050,
   customparams = {
@@ -198,7 +199,7 @@ local Breda30 = MGClass:New{
 
 -- Breda M37 (ITA)
 local BredaM37 = MGClass:New{
-  burst              = 8,
+  burst              = 9,
   burstRate          = 0.16,
   movingAccuracy     = 6222,
   name               = [[Breda M37 Heavy Machinegun]],
@@ -262,7 +263,8 @@ local Type92MG = MGClass:New{
 
 -- 7.7mm TE-4 Air MG (JPN)
 local TE4 = MGClass:New{
-  burst			= 6,
+  accuracy	     = 400,
+  burst		     = 6,
   burstRate          = 0.15,
   canAttackGround    = false,
   name               = [[7.7mm TE-4 Machinegun]],
@@ -309,10 +311,10 @@ local M2Browning = HeavyMGClass:New{
 }
 -- M2 Browning AA
 local M2BrowningAA = M2Browning:New{
-  accuracy	     = 200,
+  accuracy	     = 600,
   burst              = 3,
   canAttackGround    = false,
-  movingAccuracy     = 400,
+  movingAccuracy     = 1200,
   predictBoost       = 0.25,
   range              = 1170,
   sprayAngle        = 250,
@@ -350,11 +352,11 @@ local BredaM1931 = HeavyMGClass:New{
 
 --Breda M1931 AA
 local BredaM1931AA = BredaM1931:New{
-  accuracy	     = 200,
+  accuracy	     = 400,
   burst              = 6,
   burstRate          = 0.109,
   canAttackGround    = false,
-  movingAccuracy     = 400,
+  movingAccuracy     = 800,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
@@ -393,10 +395,10 @@ local Type93HMG = HeavyMGClass:New{
 
 -- Type 93 AA
 local Type93AA = Type93HMG:New{
-  accuracy	     = 200,
+  accuracy	     = 400,
   burst              = 6,
   burstRate          = 0.109,
-  movingAccuracy     = 400,
+  movingAccuracy     = 800,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,

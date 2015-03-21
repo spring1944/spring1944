@@ -11,6 +11,13 @@
   canMove=1;
   category=MINETRIGGER SOFTVEH;
   corpse=JPNIsuzuType94_AA_Burning;
+  [customParams] {
+    lowammolevel=6;
+    maxammo=18;
+    weaponcost=2;
+    weaponswithammo=1;
+    soundcategory=JPN/Vehicle;
+  }
   explodeAs=Vehicle_Explosion_Sm;
   footprintX=3;
   footprintZ=3;

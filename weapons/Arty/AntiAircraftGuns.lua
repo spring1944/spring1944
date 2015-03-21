@@ -2,6 +2,7 @@
 
 -- AA Gun Base Class
 local AAGunClass = Weapon:New{
+  accuracy           = 200,
   burnblow           = true,
   collisionSize      = 2,
   explosionSpeed     = 30,

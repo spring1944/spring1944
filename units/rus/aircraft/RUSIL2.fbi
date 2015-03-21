@@ -111,7 +111,7 @@
 
   weapon7=bomb;
   onlyTargetCategory7=BUILDING HARDVEH SHIP OPENVEH LARGESHIP DEPLOYED;
-  weaponMainDir7=0 -0.18 1;
+  weaponMainDir7=0 0 1;
 
   weapon8=m2browningaa;
   maxAngleDif8=90;

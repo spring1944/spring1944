@@ -22,7 +22,7 @@ local ACClass = Weapon:New{
 
 -- AA Round Class
 local ACAAClass = Weapon:New{
-  accuracy           = 0,
+  accuracy           = 200,
   burnblow           = true,
   areaOfEffect       = 15,
   canattackground    = false,
