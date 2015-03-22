@@ -17,7 +17,7 @@ if gadgetHandler:IsSyncedCode() then
 	return
 end
 
-local DEFAULT_VOLUME = 4
+local DEFAULT_VOLUME = 5
 
 local SOUND_DIR = "sounds/"
 local SOUND_EXT = ".wav"
@@ -71,7 +71,7 @@ function KillVoice(killerID, killerDefID, victimDefID, x, y, z)
 		local soundFileName = SOUND_DIR..killVoiceCategory..phraseNum..SOUND_EXT
 
 		-- say it
-		PlaySoundFile(soundFileName, DEFAULT_VOLUME, x, y, z)
+		PlaySoundFile(soundFileName, DEFAULT_VOLUME, x, y, z, "voice")
 		
 		phraseNum = phraseNum + 1
 		if phraseNum > killVoicePhraseCount then
