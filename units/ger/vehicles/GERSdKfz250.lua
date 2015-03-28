@@ -1,13 +1,10 @@
 local GERSdKfz250 = ArmouredCar:New{
 	name				= "Sd.Kfz. 250/9",
 	description			= "Light Support Halftrack",
-	acceleration		= 0.058,
-	brakeRate			= 0.195,
 	buildCostMetal		= 925,
 	maxDamage			= 570,
 	trackOffset			= 10,
 	trackWidth			= 13,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

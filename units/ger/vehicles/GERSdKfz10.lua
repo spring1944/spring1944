@@ -1,12 +1,9 @@
 local GERSdKfz10 = TruckAA:New{
 	name				= "SdKfz 10/5",
-	acceleration		= 0.067,
-	brakeRate			= 0.195,
 	buildCostMetal		= 1275,
 	maxDamage			= 499,
 	trackOffset			= 10,
 	trackWidth			= 19,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

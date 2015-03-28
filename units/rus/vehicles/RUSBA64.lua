@@ -1,8 +1,6 @@
 local RUSBA64 = ArmouredCar:New{
 	name				= "BA-64",
 	description			= "Light Scout Car",
-	acceleration		= 0.03,
-	brakeRate			= 0.09,
 	buildCostMetal		= 525,
 	maxDamage			= 245,
 	trackOffset			= 4,

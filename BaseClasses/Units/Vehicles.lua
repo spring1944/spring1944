@@ -10,6 +10,7 @@ local Vehicle = Unit:New{
 	seismicSignature	= 1, -- required, not default
 	trackType			= "Stdtank",
 	turnInPlace			= false,
+	turnRate			= 400,
 	
 	customParams = {
 		soundcategory = "<SIDE>/Vehicle",
@@ -18,6 +19,8 @@ local Vehicle = Unit:New{
 
 -- Armoured Car
 local ArmouredCar = Vehicle:New{
+	acceleration		= 0.047,
+	brakeRate			= 0.09,
 	description			= "Light Armoured Car",
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
@@ -33,6 +36,7 @@ local ArmouredCar = Vehicle:New{
 }
 
 local HeavyArmouredCar = ArmouredCar:New{
+	acceleration		= 0.03,
 	description			= "Heavy Armoured Car",
 	category			= "MINETRIGGER HARDVEH",
 }
@@ -101,6 +105,9 @@ local MobileAA = { -- not a full class (interface)
 }
 
 local TruckAA = Truck:New(MobileAA):New{
+	acceleration		= 0.067,
+	brakeRate			= 0.195,
+
 	customParams = {
 		cegpiece = {
 			[1] = "flare",
@@ -124,10 +131,11 @@ local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 local HalfTrack = Vehicle:New(Transport):New{
 	description			= "Transport/Supply Halftrack",
 	category			= "MINETRIGGER OPENVEH",
-	buildCostMetal		= 1200, --
+	acceleration		= 0.039,
+	brakeRate			= 0.195,
+	buildCostMetal		= 1200,
 	iconType			= "halftrack",
 	movementClass		= "TANK_Light",
-	turnRate			= 400,
 	
 	customParams = {
 		supplyRange			= 200,

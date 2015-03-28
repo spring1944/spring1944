@@ -1,10 +1,7 @@
 local USM3Base = Vehicle:New{
-	acceleration			= 0.053,
-	brakeRate				= 0.195,
 	maxDamage				= 930,
 	trackOffset				= 10,
 	trackWidth				= 15,
-	turnRate				= 400,
 	
 	customParams = {
 		armor_front				= 9,

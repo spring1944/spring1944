@@ -1,12 +1,9 @@
 local JPNKaTsu = HalfTrack:New(Amphibian):New{
 	name					= "Type 4 Ka-Tsu",
 	buildCostMetal			= 1100,
-	acceleration			= 0.051,
-	brakeRate				= 0.195,
 	maxDamage				= 1600,
 	trackOffset				= 10,
 	trackWidth				= 20,
-	turnRate				= 400,
 	
 	customParams = {
 		armor_front				= 12,

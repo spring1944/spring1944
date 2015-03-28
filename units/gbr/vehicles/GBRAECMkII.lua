@@ -1,7 +1,5 @@
 local GBRAECMkII = HeavyArmouredCar:New{
 	name				= "AEC Armoured Car Mk.II",
-	acceleration		= 0.03,
-	brakeRate			= 0.09,
 	buildCostMetal		= 1350,
 	maxDamage			= 1270,
 	trackOffset			= 10,

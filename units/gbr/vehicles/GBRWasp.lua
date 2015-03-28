@@ -1,14 +1,11 @@
 local GBRWasp = ArmouredCar:New{
 	name				= "Wasp Mk.II",
 	description			= "Universal Carrier Flamethrower",
-	acceleration		= 0.066,
-	brakeRate			= 0.09,
 	buildCostMetal		= 1100,
 	iconType			= "flametank",
 	maxDamage			= 431,
 	trackOffset			= 10,
 	trackWidth			= 13,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

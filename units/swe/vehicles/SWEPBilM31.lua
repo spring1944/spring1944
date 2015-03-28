@@ -1,12 +1,9 @@
 local SWEPBilM31 = ArmouredCarAA:New{
 	name				= "PBil m/31 w/ 20mm Bofors m/40",
-	acceleration		= 0.047,
-	brakeRate			= 0.09,
 	buildCostMetal		= 990,
 	maxDamage			= 420,
 	trackOffset			= 10,
 	trackWidth			= 16,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

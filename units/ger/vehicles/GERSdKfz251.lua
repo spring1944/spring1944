@@ -1,12 +1,9 @@
 local GERSdKfz251 = HalfTrack:New{
 	name					= "SdKfz 251/1 Halftrack",
 	buildCostMetal			= 1100,
-	acceleration			= 0.039,
-	brakeRate				= 0.195,
 	maxDamage				= 850,
 	trackOffset				= 10,
 	trackWidth				= 15,
-	turnRate				= 405,
 	
 	weapons = {
 		[1] = {

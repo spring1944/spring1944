@@ -1,12 +1,9 @@
 local USM8Greyhound = ArmouredCar:New{
 	name				= "M8 Greyhound",
-	acceleration		= 0.047,
-	brakeRate			= 0.09,
 	buildCostMetal		= 1400,
 	maxDamage			= 780,
 	trackOffset			= 10,
 	trackWidth			= 13,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

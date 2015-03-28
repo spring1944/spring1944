@@ -1,12 +1,9 @@
 local GERPuma = HeavyArmouredCar:New{
 	name				= "Sd.Kfz. 234/2 Puma",
-	acceleration		= 0.043,
-	brakeRate			= 0.11,
 	buildCostMetal		= 1700,
 	maxDamage			= 1174,
 	trackOffset			= 10,
 	trackWidth			= 13,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

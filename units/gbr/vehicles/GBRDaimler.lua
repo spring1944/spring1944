@@ -1,12 +1,9 @@
 local GBRDaimler = ArmouredCar:New{
 	name				= "Daimler Armoured Car Mk.II",
-	acceleration		= 0.047,
-	brakeRate			= 0.09,
 	buildCostMetal		= 1350,
 	maxDamage			= 680,
 	trackOffset			= 10,
 	trackWidth			= 13,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

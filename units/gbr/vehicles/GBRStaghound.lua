@@ -1,12 +1,9 @@
 local GBRStaghound = ArmouredCarAA:New{
 	name				= "T17E2 Staghound AA",
-	acceleration		= 0.047,
-	brakeRate			= 0.09,
 	buildCostMetal		= 990,
 	maxDamage			= 1270,
 	trackOffset			= 10,
 	trackWidth			= 16,
-	turnRate			= 405,
 
 	weapons = {
 		[1] = {

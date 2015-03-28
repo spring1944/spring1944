@@ -1,8 +1,6 @@
 local GBRKangaroo = MediumTank:New(Transport):New{
 	name				= "Ram Kangaroo",
 	description			= "Heavily Armoured Transport",
-	acceleration		= 0.045,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1200,
 	maxDamage			= 2948,
 	trackOffset			= 10,
