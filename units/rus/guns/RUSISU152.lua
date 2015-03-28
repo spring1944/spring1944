@@ -1,12 +1,8 @@
-local RUSISU152 = Tank:New(AssaultGun):New{
+local RUSISU152 = HeavyTank:New(AssaultGun):New{
 	name				= "ISU-152",
 	description			= "Heavy Assault Gun",
-	acceleration		= 0.048,
-	brakeRate			= 0.105,
 	buildCostMetal		= 5800,
-	explodeAs			= "Vehicle_Explosion_Large",
 	maxDamage			= 4180,
-	turnRate			= 160,
 	trackOffset			= 5,
 	trackWidth			= 22,
 

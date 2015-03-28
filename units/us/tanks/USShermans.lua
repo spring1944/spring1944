@@ -1,5 +1,4 @@
 local ShermanBase = MediumTank:New{
-	brakeRate			= 0.15,
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USShermanA",
@@ -41,7 +40,6 @@ local ShermanBase = MediumTank:New{
 
 local USM4A4Sherman = ShermanBase:New{
 	name				= "M4A3 Sherman",
-	acceleration		= 0.043,
 	buildCostMetal		= 2550,
 	maxDamage			= 3180,
 
@@ -61,10 +59,9 @@ local USM4A4Sherman = ShermanBase:New{
 }
 
 
-local USM4Jumbo = USM4A4Sherman:New{
+local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	name				= "M4A3E2 Sherman Jumbo",
 	description			= "Uparmoured Medium Tank",
-	acceleration		= 0.035,
 	buildCostMetal		= 6200,
 	maxDamage			= 4267,
 	
@@ -76,7 +73,6 @@ local USM4Jumbo = USM4A4Sherman:New{
 local USM4A376Sherman = ShermanBase:New{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
-	acceleration		= 0.05,
 	buildCostMetal		= 2850,
 	maxDamage			= 3365,
 
@@ -100,7 +96,6 @@ local USM4A376Sherman = ShermanBase:New{
 local USM4A3105Sherman = ShermanBase:New{
 	name				= "M4A3(105) Sherman",
 	description			= "Close Support Tank",
-	acceleration		= 0.049,
 	buildCostMetal		= 3450,
 	maxDamage			= 3150,
 

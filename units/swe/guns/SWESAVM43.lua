@@ -1,7 +1,5 @@
-local SWESAVM43 = Tank:New(AssaultGun):New{
+local SWESAVM43 = LightTank:New(AssaultGun):New{
 	name				= "SAV m/43",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1740,
 	maxDamage			= 1200,
 	turnRate			= 160,

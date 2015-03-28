@@ -1,11 +1,7 @@
-local ChiHaBase = MediumTank:New{
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
+local ChiHaBase = LightTank:New{
 	maxDamage			= 1580,
 	trackOffset			= 5,
 	trackWidth			= 14,
-	trackType			= "T60-70-SU76",
-	turnRate			= 280, -- FIXME: worth it?
 	
 	customParams = {
 		armor_front			= 30,

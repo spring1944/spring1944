@@ -1,7 +1,5 @@
 local SWEStrvM37 = Tankette:New{
 	name				= "Stridsvagn m/37",
-	acceleration		= 0.044,
-	brakeRate			= 0.15,
 	buildCostMetal		= 700,
 	maxDamage			= 450,
 	trackOffset			= 5,

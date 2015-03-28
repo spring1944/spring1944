@@ -1,7 +1,5 @@
 local SWEStrvM40SII = LightTank:New{
 	name				= "Stridsvagn m/40",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1500,
 	maxDamage			= 750,
 	trackOffset			= 5,

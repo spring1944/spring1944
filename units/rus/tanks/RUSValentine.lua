@@ -1,7 +1,5 @@
 local RUSValentine = LightTank:New{
 	name				= "Mk.III Valentine Infantry Tank",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2000,
 	maxDamage			= 1650,
 	trackOffset			= 5,

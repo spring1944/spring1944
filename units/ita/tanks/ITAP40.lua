@@ -1,7 +1,5 @@
 local ITAP40 = MediumTank:New{
 	name				= "Carro Pesante P26/40",
-	acceleration		= 0.054,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2500,
 	maxDamage			= 2600,
 	trackOffset			= 5,

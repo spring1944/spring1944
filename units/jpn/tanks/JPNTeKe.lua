@@ -1,7 +1,5 @@
 local TeKeBase = Tankette:New{
 	name				= "Type 97 Te-Ke",
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
 	buildCostMetal		= 600,
 	maxDamage			= 475,
 	trackOffset			= 5,

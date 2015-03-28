@@ -1,7 +1,5 @@
 local ITAM1542 = LightTank:New{
 	name				= "Carro Mediuo M15/42",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1850,
 	maxDamage			= 1550,
 	trackOffset			= 5,

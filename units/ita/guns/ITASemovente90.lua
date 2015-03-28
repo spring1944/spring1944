@@ -1,8 +1,6 @@
-local ITASemovente90 = Tank:New(TankDestroyer):New(OpenTopped):New{
+local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "Semovente da 90/53",
 	description			= "Heavily Armed Tank Destroyer",
-	acceleration		= 0.032,
-	brakeRate			= 0.15,
 	buildCostMetal		= 3550,
 	maxDamage			= 1700,
 	trackOffset			= 5,

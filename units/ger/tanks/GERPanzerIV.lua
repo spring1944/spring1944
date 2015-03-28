@@ -1,7 +1,5 @@
 local GERPanzerIV = MediumTank:New{
 	name				= "PzKpfw IV Ausf H",
-	acceleration		= 0.038,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2875,
 	maxDamage			= 2600,
 	trackOffset			= 5,

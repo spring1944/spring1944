@@ -1,7 +1,5 @@
-local JPNHoNiI = Tank:New(AssaultGun):New(OpenTopped):New{
+local JPNHoNiI = LightTank:New(AssaultGun):New(OpenTopped):New{
 	name				= "Type 1 Ho-Ni I",
-	acceleration		= 0.030,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2050,
 	maxDamage			= 1542,
 	trackOffset			= 5,

@@ -1,8 +1,6 @@
 local JPNChiNu = MediumTank:New{
 	name				= "Type 3 Chi-Nu",
 	description			= "75mm Medium Tank",
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2650,
 	maxDamage			= 1880,
 	trackOffset			= 5,

@@ -1,7 +1,5 @@
 local GBRCromwell = MediumTank:New{
 	name				= "A27M Cromwell Mk. IV",
-	acceleration		= 0.071,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2680,
 	maxDamage			= 2800,
 	trackOffset			= 10,

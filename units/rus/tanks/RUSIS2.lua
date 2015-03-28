@@ -1,7 +1,5 @@
 local RUSIS2 = HeavyTank:New{
 	name				= "IS-2 M1944",
-	acceleration		= 0.043,
-	brakeRate			= 0.105,
 	buildCostMetal		= 11400,
 	maxDamage			= 4600,
 	trackOffset			= 5,

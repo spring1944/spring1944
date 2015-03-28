@@ -1,8 +1,6 @@
-local GERMarder = Tank:New(TankDestroyer):New(OpenTopped):New{
+local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "SdKfz 138 Panzerjäger Marder III Ausf. M",
 	description			= "Cheap Turretless Tank Destroyer",
-	acceleration		= 0.048,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1400,
 	maxDamage			= 1050,
 	trackOffset			= 3,

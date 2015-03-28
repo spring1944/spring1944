@@ -1,7 +1,5 @@
 local JPNChiHe = MediumTank:New{
 	name				= "Type 1 Chi-He",
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2300,
 	maxVelocity			= 2.9,
 	trackOffset			= 5,

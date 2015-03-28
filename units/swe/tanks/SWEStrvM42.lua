@@ -1,6 +1,4 @@
 local StrvM42Base = {
-	acceleration		= 0.054,
-	brakeRate			= 0.15,
 	maxDamage			= 2250,
 	trackOffset			= 5,
 	trackWidth			= 20,
@@ -54,7 +52,7 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	},
 }
 
-local SWEBBVM42 = EngineerVehicle:New(Tank):New(StrvM42Base):New{
+local SWEBBVM42 = EngineerVehicle:New(MediumTank):New(StrvM42Base):New{
 	name				= "Bärgningsbandvagn m/42",
 	category			= "HARDVEH", -- don't trigger mines
 	customParams = {

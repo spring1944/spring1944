@@ -1,7 +1,5 @@
-local USM7Priest = Tank:New(SPArty):New(OpenTopped):New{
+local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 	name				= "M7 HMC Priest",
-	acceleration		= 0.065,
-	brakeRate			= 0.15,
 	buildCostMetal		= 4500,
 	maxDamage			= 2300,
 	trackOffset			= 5,

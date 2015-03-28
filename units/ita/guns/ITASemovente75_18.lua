@@ -1,7 +1,5 @@
-local ITASemovente75_18 = Tank:New(AssaultGun):New{
+local ITASemovente75_18 = MediumTank:New(AssaultGun):New{
 	name				= "Semovente da 75/18",
-	acceleration		= 0.041,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2050,
 	maxDamage			= 1470,
 	trackOffset			= 5,

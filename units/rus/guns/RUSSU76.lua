@@ -1,12 +1,8 @@
-local RUSSU76 = Tank:New(AssaultGun):New(OpenTopped):New{
+local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 	name				= "SU-76",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1740,
 	maxDamage			= 1120,
-	turnRate			= 160,
 	trackOffset			= 3,
-	trackType			= "T60-70-SU76",
 	trackWidth			= 19,
 
 	weapons = {

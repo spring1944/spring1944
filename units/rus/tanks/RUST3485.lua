@@ -1,7 +1,5 @@
 local RUST3485 = MediumTank:New{
 	name				= "T-34-85",
-	acceleration		= 0.052,
-	brakeRate			= 0.15,
 	buildCostMetal		= 4110,
 	maxDamage			= 3200,
 	trackOffset			= 5,

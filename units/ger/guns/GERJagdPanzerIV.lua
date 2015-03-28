@@ -1,8 +1,6 @@
-local GERJagdPanzerIV = Tank:New(TankDestroyer):New{
+local GERJagdPanzerIV = MediumTank:New(TankDestroyer):New{
 	name				= "SdKfz 162 JagdPanzer IV/70(V)",
 	description			= "Turretless Tank Destroyer",
-	acceleration		= 0.039,
-	brakeRate			= 0.15,
 	buildCostMetal		= 4500,
 	maxDamage			= 2580,
 	trackOffset			= 5,

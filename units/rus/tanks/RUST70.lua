@@ -1,7 +1,5 @@
 local RUST70 = LightTank:New{
-	name				= "T-70/M42",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
+	name				= "T-70/M42",	
 	buildCostMetal		= 1500,
 	maxDamage			= 920,
 	trackOffset			= 5,

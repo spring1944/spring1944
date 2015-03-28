@@ -1,7 +1,5 @@
-local JPNHoNiII = Tank:New(SPArty):New(OpenTopped):New{
+local JPNHoNiII = LightTank:New(SPArty):New(OpenTopped):New{
 	name				= "Type 2 Ho-Ni II",
-	acceleration		= 0.041,
-	brakeRate			= 0.15,
 	buildCostMetal		= 3150,
 	maxDamage			= 1630,
 	trackOffset			= 5,

@@ -1,7 +1,5 @@
-local JPNHoNiIII = Tank:New(TankDestroyer):New{
+local JPNHoNiIII = LightTank:New(TankDestroyer):New{
 	name				= "Type 3 Ho-Ni III",
-	acceleration		= 0.041,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2050,
 	maxDamage			= 1700,
 	trackOffset			= 5,

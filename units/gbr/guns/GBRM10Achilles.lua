@@ -1,8 +1,6 @@
-local GBRM10Achilles = Tank:New(TankDestroyer):New(OpenTopped):New{
+local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "17pdr SP Achilles Ic",
 	description			= "Upgunned Tank Destroyer",
-	acceleration		= 0.046,
-	brakeRate			= 0.15,
 	buildCostMetal		= 2400,
 	maxDamage			= 2960,
 	trackOffset			= 5,

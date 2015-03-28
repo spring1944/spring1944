@@ -1,7 +1,5 @@
 local GERTigerII = HeavyTank:New{
 	name				= "PzKpfw VII Koenigstiger Ausf B",
-	acceleration		= 0.033,
-	brakeRate			= 0.105,
 	buildCostMetal		= 15750,
 	maxDamage			= 7000,
 	trackOffset			= 5,

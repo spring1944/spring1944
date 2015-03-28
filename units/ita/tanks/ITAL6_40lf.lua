@@ -1,8 +1,6 @@
 local ITAL6_40lf = LightTank:New{
 	name				= "L6/40 Lancia Flamme",
 	description			= "Light Flamethrower Tank",
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1350,
 	maxDamage			= 640,
 	trackOffset			= 5,

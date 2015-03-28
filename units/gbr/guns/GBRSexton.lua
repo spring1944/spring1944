@@ -1,7 +1,5 @@
-local GBRSexton = Tank:New(SPArty):New(OpenTopped):New{
+local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 	name				= "25pdr SP Sexton Mk. II",
-	acceleration		= 0.052,
-	brakeRate			= 0.15,
 	buildCostMetal		= 4725,
 	maxDamage			= 2586,
 	trackOffset			= 5,

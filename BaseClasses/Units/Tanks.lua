@@ -1,5 +1,7 @@
 -- Tanks ----
 local Tank = Unit:New{ -- some overlap with Vehicle
+	acceleration		= 0.051,
+	brakeRate			= 0.15,
 	canMove				= true,
 	category			= "MINETRIGGER HARDVEH",
 	explodeAs			= "Vehicle_Explosion_Med",
@@ -52,6 +54,8 @@ local MediumTank = Tank:New{
 
 -- Heavy Tank
 local HeavyTank = Tank:New{
+	acceleration		= 0.043,
+	brakeRate			= 0.105,
 	description 		= "Heavy Tank",
 	explodeAs			= "Vehicle_Explosion_Large",
 	iconType			= "heavytank",
@@ -67,7 +71,7 @@ local AssaultGun = Unit:New{ -- not a full class (interface)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
 	script				= "Vehicle.lua",
-	turnRate			= 175,
+	turnRate			= 160,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
 	}

@@ -1,7 +1,5 @@
-local RUSSU85 = Tank:New(TankDestroyer):New{
+local RUSSU85 = MediumTank:New(TankDestroyer):New{
 	name				= "SU-85",
-	acceleration		= 0.056,
-	brakeRate			= 0.15,
 	buildCostMetal		= 3200,
 	maxDamage			= 2960,
 	trackOffset			= 5,

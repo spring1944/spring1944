@@ -1,6 +1,4 @@
 local StuartBase = LightTank:New{
-	acceleration		= 0.065,
-	brakeRate			= 0.15,
 	maxDamage			= 1520,
 	trackOffset			= 5,
 	trackWidth			= 18,

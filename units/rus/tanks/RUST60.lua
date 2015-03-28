@@ -1,7 +1,5 @@
 local RUST60 = Tankette:New{
 	name				= "T-60/M41",
-	acceleration		= 0.044,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1250,
 	maxDamage			= 640,
 	trackOffset			= 5,

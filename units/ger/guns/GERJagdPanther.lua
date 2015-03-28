@@ -1,8 +1,6 @@
-local GERJagdPanther = Tank:New(TankDestroyer):New{
+local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 	name				= "SdKfz 173 JagdPanther",
 	description			= "Heavy Turretless Tank Destroyer",
-	acceleration		= 0.051,
-	brakeRate			= 0.15,
 	buildCostMetal		= 9100,
 	maxDamage			= 4550,
 	trackOffset			= 5,

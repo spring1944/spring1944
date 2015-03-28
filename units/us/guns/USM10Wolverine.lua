@@ -1,8 +1,6 @@
-local USM10Wolverine = Tank:New(TankDestroyer):New(OpenTopped):New{
+local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "M10 GMC Wolverine",
 	description			= "Turreted Tank Destroyer",
-	acceleration		= 0.052,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1900,
 	maxDamage			= 2903,
 	trackOffset			= 5,

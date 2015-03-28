@@ -1,8 +1,6 @@
 local JPNKaMi = LightTank:New(Amphibian):New{
 	name				= "Type 2 Ka-Mi",
 	description			= "Amphibious Light Tank",
-	acceleration		= 0.034,
-	brakeRate			= 0.15,
 	buildCostMetal		= 1150,
 	maxDamage			= 1250,
 	trackOffset			= 7,

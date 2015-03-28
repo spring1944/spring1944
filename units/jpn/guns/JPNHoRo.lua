@@ -1,8 +1,6 @@
-local JPNHoRo = Tank:New(AssaultGun):New(OpenTopped):New{
+local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 	name				= "Type 4 Ho-Ro",
 	description			= "Heavy Howitzer Assault Gun",
-	acceleration		= 0.041,
-	brakeRate			= 0.15,
 	buildCostMetal		= 3450,
 	maxDamage			= 1630,
 	trackOffset			= 5,
