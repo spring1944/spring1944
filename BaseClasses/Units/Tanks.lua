@@ -35,6 +35,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 local LightTank = Tank:New{
 	description 		= "Light Tank",
 	iconType			= "lighttank",
+	movementClass		= "TANK_Light",
 	trackType			= "T60-70-SU76",
 }
 
@@ -59,6 +60,7 @@ local HeavyTank = Tank:New{
 	description 		= "Heavy Tank",
 	explodeAs			= "Vehicle_Explosion_Large",
 	iconType			= "heavytank",
+	movementClass		= "TANK_Heavy",
 	turnRate			= 150,
 	
 	customParams = {
