@@ -33,6 +33,7 @@ local ArtyRocket = Rocket:New{
 		cegflare           = "dirt_backblast",
 		flareonshot        = true,
 		seismicping        = 15,
+		weaponcost         = 60, -- multiplied by burst
 	},
 }
 

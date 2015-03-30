@@ -187,6 +187,7 @@ end
 local UnitDefs = DEFS.unitDefs
 local cegCache = {}
 local categoryCache = {}
+local weapCostCache = {}
 local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 
 --------------------------------------------------------------------------------
@@ -254,6 +255,10 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			if not categoryCache[weapName] then categoryCache[weapName] = {} end
 			categoryCache[weapName].bad = cp.badtargetcategory
 		end
+		if cp.weaponcost then
+			if not weapCostCache[weapName] then weapCostCache[weapName = {} end
+			weapCostCache[weapName] = cp.weaponcost
+		end
 		for k, v in pairs (cp) do
 			if type(v) == "table" or type(v) == "boolean" then
 				weaponDef.customparams[k] = table.serialize(v)
@@ -303,10 +308,19 @@ for unitName, ud in pairs(UnitDefs) do
 			-- TODO: think of something good to add as SFX.CEG (probably exhaust for most?)
 			table.insert(ud.sfxtypes.explosiongenerators, 1, "custom:nothing")
 			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
-				local cegFlare = cegCache[string.lower(weapons[weaponID].name)]
+				local weapName = string.lower(weapons[weaponID].name)
+				local cegFlare = cegCache[weapName]
+				local weaponCost = weapCostCache[weapName] * (WeaponDefs[weapons[weaponID].def].burst or 1)
 				if cegFlare then
 					--Spring.Echo("cegFlare: " .. cegFlare)
 					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
+				end
+				if weaponCost then
+					local curCost = ud.customparams.weaponcost or weaponCost
+					if curCost ~= weaponCost then
+						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. ud.name .. ", " .. weapName .. ")")
+					end
+					ud.customparams.weaponcost = math.max(curCost, weaponCost)
 				end
 			end
 		end

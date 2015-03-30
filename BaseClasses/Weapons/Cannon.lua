@@ -233,6 +233,7 @@ local LightGun = TankGun:New{
 	soundStart         = "US_37mm", -- move later?
 	customparams = {
 		cegflare           = "SMALL_MUZZLEFLASH",
+		weaponcost         = 8,
 	}
 }
 
@@ -241,6 +242,7 @@ local LightMediumGun = TankGun:New{
 	soundStart         = "GER_50mm", -- move later?
 	customparams = {
 		cegflare           = "MEDIUMSMALL_MUZZLEFLASH",
+		weaponcost         = 10,
 	}
 }
 
@@ -248,6 +250,7 @@ local LightMediumGun = TankGun:New{
 local MediumGun = TankGun:New{
 	customparams = {
 		cegflare           = "MEDIUM_MUZZLEFLASH",
+		weaponcost         = 12,
 	}
 }
 
@@ -255,6 +258,7 @@ local MediumGun = TankGun:New{
 local MediumHeavyGun = TankGun:New{
 	customparams = {
 		cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
+		weaponcost         = 18,
 	}
 }
 
@@ -262,6 +266,7 @@ local MediumHeavyGun = TankGun:New{
 local HeavyGun = TankGun:New{
 	customParams = {
 		cegflare           = "LARGE_MUZZLEFLASH",
+		weaponcost         = 28,
 	},
 }
 
@@ -272,6 +277,9 @@ local CSHowitzer = HeavyGun:New{ -- for cegflare only atm (+TankGun base)
 	soundStart         = "GEN_105mm", -- move later?
 	targetMoveError    = 0.75,
 	weaponVelocity     = 1000,
+	customParams = {
+		weaponcost         = 22,
+	},
 }
 
 -- Artillery - Light Anti-Air (20 - 25mm)
@@ -287,6 +295,7 @@ local AutoCannon = Cannon:New{
 		cegflare           = "XSMALL_MUZZLEFLASH",
 		flareonshot        = true,
 		projectilelups     = {"cannon20tracer"},
+		weaponcost         = 4,
 	},
 }
 
@@ -311,6 +320,7 @@ local AntiAirGun = Cannon:New{
 	customparams = {
 		cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 		flareonshot        = true,
+		weaponcost         = 8,
 	},
 }
 
@@ -326,6 +336,7 @@ local InfGun = Cannon:New(MediumHE):New{
 	weaponVelocity     = 825,
 	customparams = {
 		cegflare           = "MEDIUM_MUZZLEFLASH",
+		weaponcost         = 12,
 	},
 }
 
@@ -342,6 +353,7 @@ local Howitzer = Cannon:New{
 		howitzer           = 1,
 		cegflare           = "LARGE_MUZZLEFLASH",
 		seismicping        = 15,
+		weaponcost         = 30,
 	},
 }
 
@@ -359,6 +371,7 @@ local Mortar = Cannon:New{
 		armor_hit_side     = "top",
 		cegflare           = "MEDIUM_MUZZLEFLASH",
 		scriptanimation    = "mortar",
+		weaponcost         = 15,
 	},
 }
 
