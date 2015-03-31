@@ -245,7 +245,13 @@ for name, ud in pairs(UnitDefs) do
 			ud.usepiececollisionvolumes = true
 		end
 	end
-	
+
+	--a crazy default value so we see it when it happens
+	--at the moment all boats seem to lack mass, so that's what they have
+	if (not ud.mass) then
+		ud.mass = ud.maxdamage or 99999999
+	end
+		
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
 		-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 		if (not ud.builder) then
@@ -265,11 +271,6 @@ for name, ud in pairs(UnitDefs) do
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
 
-		--a crazy default value so we see it when it happens
-		--at the moment all boats seem to lack mass, so that's what they have
-		if (not ud.mass) then
-			ud.mass = ud.maxdamage or 99999999
-		end
 		local logMass = math.log10(ud.mass)
 		local cp = ud.customparams
 		if not (cp and (cp.mother or cp.child)) then -- exclude composites

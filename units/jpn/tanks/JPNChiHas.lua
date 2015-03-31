@@ -86,10 +86,10 @@ local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
 	
 	weapons = {
 		[1] = {
-			name				= "Type14mmAP",
+			name				= "Type147mmAP",
 		},
 		[2] = {
-			name				= "Type14mmHE",
+			name				= "Type147mmHE",
 		},
 	},
 	

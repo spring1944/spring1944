@@ -241,7 +241,9 @@ end
 
 --------------------------------------------------------------------------------
 
+local WeaponDefNames = {}
 for weapName, weaponDef in pairs(WeaponDefs) do
+	WeaponDefNames[weapName] = weaponDef
 	local cp = weaponDef.customparams
 	if cp then
 		if cp.cegflare then
@@ -256,7 +258,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			categoryCache[weapName].bad = cp.badtargetcategory
 		end
 		if cp.weaponcost then
-			if not weapCostCache[weapName] then weapCostCache[weapName = {} end
+			if not weapCostCache[weapName] then weapCostCache[weapName] = {} end
 			weapCostCache[weapName] = cp.weaponcost
 		end
 		for k, v in pairs (cp) do
@@ -307,22 +309,29 @@ for unitName, ud in pairs(UnitDefs) do
 			ud.sfxtypes = { explosiongenerators = {} }
 			-- TODO: think of something good to add as SFX.CEG (probably exhaust for most?)
 			table.insert(ud.sfxtypes.explosiongenerators, 1, "custom:nothing")
+			local weaponsWithAmmo = 0
 			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
 				local weapName = string.lower(weapons[weaponID].name)
+				if not WeaponDefNames[weapName] then Spring.Echo("ERROR: weapondefs_post.lua non-existant weapon name (" .. ud.name .. ", " .. weapName .. ")") end
 				local cegFlare = cegCache[weapName]
-				local weaponCost = weapCostCache[weapName] * (WeaponDefs[weapons[weaponID].def].burst or 1)
+				local weaponCost = (weapCostCache[weapName] or 0) * (WeaponDefNames[weapName].burst or 1)
+				if weaponCost > 0 then 
+					weaponsWithAmmo = weaponsWithAmmo + 1 
+					--Spring.Echo(unitName, weapName, weaponCost)
+				end
 				if cegFlare then
 					--Spring.Echo("cegFlare: " .. cegFlare)
 					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 				end
-				if weaponCost then
+				if weaponCost > 0 then
 					local curCost = ud.customparams.weaponcost or weaponCost
 					if curCost ~= weaponCost then
-						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. ud.name .. ", " .. weapName .. ")")
+						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. ud.name .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
 					end
 					ud.customparams.weaponcost = math.max(curCost, weaponCost)
 				end
 			end
+			ud.customparams.weaponswithammo = weaponsWithAmmo
 		end
 		CopyCategories(ud)
 	end
