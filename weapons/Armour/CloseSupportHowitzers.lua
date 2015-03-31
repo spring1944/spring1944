@@ -9,6 +9,7 @@ local CS95mm = CSHowitzer:New{
   range              = 1690, -- fwiw I object to this too
   reloadTime         = 9,
   customParams = {
+    weaponcost         = 20,
     cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
   },
 }

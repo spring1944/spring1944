@@ -34,6 +34,9 @@ local QF17Pdr = MediumGun:New{
   range              = 1690,
   reloadTime         = 6.75,
   soundStart         = [[US_76mm]],
+  customparams = {
+    weaponcost    = 19,
+  },
 }
 
 local QF17PdrHE = QF17Pdr:New(MediumHE, true):New{
@@ -60,6 +63,9 @@ local KwK75mmL48 = MediumGun:New{
   range              = 1520,
   reloadTime         = 6.45,
   soundStart         = [[GER_75mm]],
+  customparams = {
+    weaponcost    = 16,
+  },  
 }
 
 local KwK75mmL48HE = KwK75mmL48:New(MediumHE, true):New{
@@ -86,6 +92,9 @@ local KwK75mmL71 = MediumGun:New{
   range              = 1860,
   reloadTime         = 7.65,
   soundStart         = [[GER_75mmLong]],
+  customparams = {
+    weaponcost    = 19,
+  },
 }
 
 local KwK75mmL71HE = KwK75mmL71:New(MediumHE, true):New{
@@ -190,6 +199,9 @@ local M7 = MediumGun:New{
   range              = 1545,
   reloadTime         = 6.75,
   soundStart         = [[US_76mm]],
+  customparams = {
+    weaponcost    = 14,
+  },
 }
 
 local M7HE = M7:New(MediumHE, true):New{

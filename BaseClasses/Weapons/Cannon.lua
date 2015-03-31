@@ -258,7 +258,7 @@ local MediumGun = TankGun:New{
 local MediumHeavyGun = TankGun:New{
 	customparams = {
 		cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
-		weaponcost         = 18,
+		weaponcost         = 20,
 	}
 }
 

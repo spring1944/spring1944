@@ -34,6 +34,9 @@ local KwK88mmL71 = MediumHeavyGun:New{
   range              = 2510,
   reloadTime         = 9.75,
   soundStart         = [[GER_88mmL71]],
+  customparams = {
+    weaponcost    = 26,
+  },
 }
 
 local KwK88mmL71HE = KwK88mmL71:New(MediumHE, true):New{
@@ -74,6 +77,9 @@ local S5385mm = MediumHeavyGun:New{
   range              = 1605,
   reloadTime         = 6.75,
   soundStart         = [[RUS_85mm]],
+  customparams = {
+    weaponcost         = 17,
+  },
 }
 
 local S5385mmHE = S5385mm:New(MediumHE, true):New{
@@ -102,6 +108,7 @@ local D10S100mm = MediumHeavyGun:New{
   reloadTime         = 10,
   soundStart         = [[RUS_85mm]],
   customparams = {
+    weaponcost         = 22,
     cegflare           = "LARGE_MUZZLEFLASH",
   }
 }

@@ -63,31 +63,34 @@ local BBR_Rack = ArtyRocket:New{
 }
 
 -- Type 4 200mm rocket mortar (JPN)
-local Type4RocketMortarHE = ArtyRocket:New{
-  areaOfEffect       = 203,
+local Type4RocketMortar = ArtyRocket:New{
+  name               = "Type 4 200mm unguided artillery rocket",
   reloadtime         = 20,
-  explosionGenerator = [[custom:HE_XLarge]],
-  name               = [[Type 4 200mm unguided artillery rocket]],
   range              = 3200,
   soundStart         = [[GER_Nebelwerfer]],
   wobble             = 1300,
+  customparams = {
+    weaponcost    = 70,
+  },  
+}
+
+local Type4RocketMortarHE = Type4RocketMortar:New{
+  areaOfEffect       = 203,
+  explosionGenerator = [[custom:HE_XLarge]],
+  
   damage = {
     default            = 6000,
   },
 }
 
-local Type4RocketMortarSmoke = ArtyRocket:New{ -- TODO: do this properly
+local Type4RocketMortarSmoke = Type4RocketMortar:New{
   areaOfEffect       = 30,
-  reloadtime         = 20,
+
   customparams = {
     smokeradius        = 350,
     smokeduration      = 50,
     smokeceg           = [[SMOKESHELL_Medium]],
   },
-  name               = [[Type 4 200mm unguided artillery smoke rocket]],
-  range              = 3200,
-  soundStart         = [[GER_Nebelwerfer]],
-  wobble             = 1300,
   damage = {
     default            = 100,
   },

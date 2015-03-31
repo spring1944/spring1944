@@ -10,6 +10,9 @@ local QF25Pdr = Howitzer:New{
   name               = [[Ordnance QF 25pdr Gun Mk. II]],
   range              = 7780,
   reloadtime         = 7.2,
+  customParams = {
+  	weaponcost         = 18,
+  },
   damage = {
     default            = 1088,
 	cegflare           = "MEDIUMLARGE_MUZZLEFLASH", -- 87mm

@@ -36,6 +36,7 @@ local ML20S152mm = HeavyGun:New{
   soundStart         = [[RUS_152mm]],
   customparams = {
     cegflare           = "XLARGE_MUZZLEFLASH",
+	weaponcost         = 63,
   },
 }
 

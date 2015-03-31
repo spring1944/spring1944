@@ -326,7 +326,7 @@ for unitName, ud in pairs(UnitDefs) do
 				if weaponCost > 0 then
 					local curCost = ud.customparams.weaponcost or weaponCost
 					if curCost ~= weaponCost then
-						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. ud.name .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
+						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
 					end
 					ud.customparams.weaponcost = math.max(curCost, weaponCost)
 				end
