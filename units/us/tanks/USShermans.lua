@@ -54,7 +54,6 @@ local USM4A4Sherman = ShermanBase:New{
 	
 	customParams = {
 		maxammo				= 20,
-		weaponcost			= 12,
 	},
 }
 
@@ -89,7 +88,6 @@ local USM4A376Sherman = ShermanBase:New{
 		armor_rear			= 43,
 		armor_side			= 43,
 		maxammo				= 14,
-		weaponcost			= 14,
 	},
 }
 
@@ -112,7 +110,6 @@ local USM4A3105Sherman = ShermanBase:New{
 		armor_rear			= 32,
 		armor_side			= 50,
 		maxammo				= 12,
-		weaponcost			= 22,
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
 		turretturnspeed		= 8, -- manual traverse

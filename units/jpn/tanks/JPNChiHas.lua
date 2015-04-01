@@ -69,7 +69,6 @@ local JPNChiHa120mm = ChiHaBase:New{
 	
 	customParams = {
 		maxammo				= 5,
-		weaponcost			= 16,
 		weaponswithammo		= 1,
 		
 		cegpiece = {
