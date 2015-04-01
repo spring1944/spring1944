@@ -14,7 +14,6 @@ local GetTeamResources          = Spring.GetTeamResources
 local UseTeamResource           = Spring.UseTeamResource
 local InsertUnitCmdDesc			= Spring.InsertUnitCmdDesc
 local EditUnitCmdDesc			= Spring.EditUnitCmdDesc
-local Echo                      = Spring.Echo
 local SpawnProjectile           = Spring.SpawnProjectile
 local GetTeamList               = Spring.GetTeamList
 local GetUnitTeam               = Spring.GetUnitTeam
@@ -109,7 +108,6 @@ function gadget:UnitCreated(uid, udid)
     local ud = UnitDefs[udid]
     local teamID = GetUnitTeam(uid)
     local isFactory = ud.buildSpeed and ud.modCategories["building"]
-    Spring.Echo("am I a factory???", isFactory)
     if isFactory then
         InsertUnitCmdDesc(uid, boomCmdDesc)
         if not unitsWithTheBoom[teamID] then
