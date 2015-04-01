@@ -9,9 +9,6 @@ local US_M5Gun_Truck = ATGunTractor:New{
 local US_M5Gun_Stationary = ATGun:New{
 	name					= "Deployed 3-Inch M5",
 	corpse					= "usm5gun_destroyed",
-	customParams = {
-		weaponcost	= 14,
-	},
 	weapons = {
 		[1] = { -- AP
 			name				= "M7ap",

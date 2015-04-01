@@ -12,7 +12,6 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 	},
 	customParams = {
 		maxammo				= 8,
-		weaponcost			= 25,
 		maxvelocitykmh		= 45,
 	},
 }

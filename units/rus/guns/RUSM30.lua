@@ -9,9 +9,6 @@ local RUS_M30_Truck = HGunTractor:New{
 local RUS_M30_Stationary = HGun:New{
 	name					= "Deployed 122mm M-30",
 	corpse					= "RUSM30_Destroyed",
-	customParams = {
-		weaponcost	= 32,
-	},
 	weapons = {
 		[1] = { -- HE
 			name				= "m30122mmHE",

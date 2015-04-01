@@ -30,7 +30,6 @@ local ITAP40 = MediumTank:New{
 		armor_side			= 46,
 		armor_top			= 20,
 		maxammo				= 19,
-		weaponcost			= 10,
 		maxvelocitykmh		= 40,
 	},
 }

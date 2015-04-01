@@ -42,8 +42,6 @@ local GBR_LCSL_Turret_4inMortar = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 10,
-		weaponswithammo			= 1,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
     },

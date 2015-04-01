@@ -9,9 +9,6 @@ local JPN_Type91_105mm_Truck = HGunTractor:New{
 local JPN_Type91_105mm_Stationary = HGun:New{
 	name					= "Deployed Type 91 105mm Howitzer",
 	corpse					= "JPNType91_105mm_Destroyed",
-	customParams = {
-		weaponcost	= 25,
-	},
 	weapons = {
 		[1] = { -- HE
 			name				= "Type91105mmL24HE",

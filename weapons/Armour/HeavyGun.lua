@@ -84,6 +84,9 @@ local Type38150mmL11 = HeavyGun:New{
   range              = 1700,
   reloadtime         = 15,
   weaponVelocity     = 700,
+  customparams = {
+  	weaponcost         = 63,
+  },
 }
 
 local Type38150mmL11HE = Type38150mmL11:New(HeavyHE, true):New{

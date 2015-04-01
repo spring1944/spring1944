@@ -43,8 +43,6 @@ local JPN_Seta_Turret_76mm_Front = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 12,
-		weaponcost				= 16,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

@@ -39,8 +39,6 @@ local RUS_G5_Turret_M_8 = BoatChild:New{
 	customparams = {
 		defaultmove				= 1,
 	    maxammo					= 1,
-		weaponcost				= 175,
-		weaponswithammo			= 1,
 		turretturnspeed			= 15,
 		elevationspeed			= 5,
     },

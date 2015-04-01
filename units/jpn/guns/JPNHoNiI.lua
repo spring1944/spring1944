@@ -24,7 +24,6 @@ local JPNHoNiI = LightTank:New(AssaultGun):New(OpenTopped):New{
 		armor_side			= 40,
 		armor_top			= 0,
 		maxammo				= 14,
-		weaponcost			= 12,
 		maxvelocitykmh		= 38,
 	},
 }

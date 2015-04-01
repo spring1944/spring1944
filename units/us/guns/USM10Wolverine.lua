@@ -26,7 +26,6 @@ local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 19,
 		maxammo				= 13,
-		weaponcost			= 14,
 		turretturnspeed		= 8, -- Manual traverse 45s
 		maxvelocitykmh		= 48,
 		

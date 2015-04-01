@@ -23,8 +23,6 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		armor_side			= 8,
 		armor_top			= 6,
 		maxammo				= 9,
-		weaponcost			= 8,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 40,
 		
 		cegpiece = {

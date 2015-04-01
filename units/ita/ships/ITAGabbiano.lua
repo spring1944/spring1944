@@ -51,8 +51,6 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 30,
-		weaponcost				= 18,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 25,

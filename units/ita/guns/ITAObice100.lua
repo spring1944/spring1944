@@ -8,9 +8,6 @@ local ITA_Obice100_Truck = HGunTractor:New{
 local ITA_Obice100_Stationary = HGun:New{
 	name					= "Deployed Obice da 100/22",
 	corpse					= "ITAObice100_Destroyed",
-	customParams = {
-		weaponcost	= 25,
-	},
 	weapons = {
 		[1] = { -- HE
 			name				= "Obice100mml22he",

@@ -16,8 +16,6 @@ local RUSBM13N = Truck:New{
 	},
 	customParams = {
 		maxammo				= 1,
-		weaponcost			= 940,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 69,
 	},
 }

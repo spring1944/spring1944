@@ -30,7 +30,6 @@ local JPNChiNu = MediumTank:New{
 		armor_side			= 25,
 		armor_top			= 11,
 		maxammo				= 12,
-		weaponcost			= 10,
 		maxvelocitykmh		= 39,
 		
 		cegpiece = {

@@ -56,6 +56,9 @@ local M30122mm = Howitzer:New{
   name               = [[M-30 122mm Howitzer]],
   range              = 6965,
   reloadtime         = 15,
+  customparams = {
+    weaponcost         = 34,
+  },
   damage = {
     default            = 7200,
   },

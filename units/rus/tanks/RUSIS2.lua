@@ -29,7 +29,6 @@ local RUSIS2 = HeavyTank:New{
 		armor_side			= 93,
 		armor_top			= 30,
 		maxammo				= 5,
-		weaponcost			= 27,
 		turretturnspeed		= 12, -- 30s for 360
 		maxvelocitykmh		= 37,
 	},

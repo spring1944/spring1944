@@ -40,7 +40,6 @@ local JPNChiHa = ChiHaBase:New{
 	
 	customParams = {
 		maxammo				= 20,
-		weaponcost			= 9,
 		
 		cegpiece = {
 			[3] = "bow_mg_flare",
@@ -95,7 +94,6 @@ local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
 	
 	customParams = {
 		maxammo				= 15,
-		weaponcost			= 8,
 	},
 }	
 

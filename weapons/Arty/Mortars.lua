@@ -65,6 +65,9 @@ local cKneeMortar = Mortar:New{
   name               = [[Type 89 Grenade Discharger]],
   range              = 650,
   weaponVelocity     = 350,
+  customparams = {
+    weaponcost         = 7,
+  },
   damage = {
     default            = 300,
   },

@@ -336,6 +336,26 @@ for unitName, ud in pairs(UnitDefs) do
 		CopyCategories(ud)
 	end
 end
+
+-- FIXME: This is a bit icky; weapondefs_post sets unitdef customparam for weaponcost, 
+-- but arty tractors need to have this set by _post too - AFTER they have been set by the above loop
+local morphDefs = VFS.Include("luarules/configs/morph_defs.lua")
+
+for name, ud in pairs(UnitDefs) do
+	local cp = ud.customparams
+	-- Adding ammo to trucks
+	if morphDefs[name] and not cp.weaponswithammo then
+		local intoName = (morphDefs[name][1] or morphDefs[name]).into
+		local intoCustomParams = UnitDefs[intoName].customparams
+		if intoCustomParams and intoCustomParams.weaponswithammo then
+			cp.weaponswithammo = 0
+			cp.maxammo = intoCustomParams.maxammo
+			cp.lowammolevel = intoCustomParams.lowammolevel
+			cp.weaponcost = intoCustomParams.weaponcost
+		end
+	end
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Range Multiplier

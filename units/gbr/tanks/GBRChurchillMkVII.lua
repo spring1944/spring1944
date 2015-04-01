@@ -31,7 +31,6 @@ local GBRChurchillMkVII = HeavyTank:New{
 		armor_side			= 75,
 		armor_top			= 19,
 		maxammo				= 14,
-		weaponcost			= 12,
 		turretturnspeed		= 24, -- 15s for 360
 		maxvelocitykmh		= 24,
 	},

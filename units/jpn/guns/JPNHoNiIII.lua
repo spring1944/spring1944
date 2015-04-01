@@ -20,7 +20,6 @@ local JPNHoNiIII = LightTank:New(TankDestroyer):New{
 		armor_side			= 25,
 		armor_top			= 12,
 		maxammo				= 14,
-		weaponcost			= 12,
 		maxvelocitykmh		= 38,
 	},
 }

@@ -25,7 +25,6 @@ local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 0,
 		maxammo				= 4,
-		weaponcost			= 25,
 		weapontoggle		= "smoke",
 		canfiresmoke		= true,
 		maxvelocitykmh		= 38,

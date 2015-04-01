@@ -200,7 +200,7 @@ local M7 = MediumGun:New{
   reloadTime         = 6.75,
   soundStart         = [[US_76mm]],
   customparams = {
-    weaponcost    = 14,
+    weaponcost    = 16,
   },
 }
 
@@ -308,6 +308,9 @@ local Ansaldo75mmL46 = MediumGun:New{
   range              = 1530,
   reloadTime         = 5.0,
   soundStart         = [[GER_75mmLong]],
+  customparams = {
+    weaponcost    = 16,
+  },  
 }
 
 local Ansaldo75mmL46HE = Ansaldo75mmL46:New(MediumHE, true):New{
@@ -348,6 +351,9 @@ local Type375mmL38 = MediumGun:New{
   range              = 1480,
   reloadTime         = 4.85,
   soundStart         = [[JPN_75mm]],
+  customparams = {
+    weaponcost    = 16,
+  },  
 }
 
 local Type375mmL38HE = Type375mmL38:New(MediumHE, true):New{
@@ -374,6 +380,9 @@ local Type9075mm = MediumGun:New{
   range              = 1270,
   reloadTime         = 6.5,
   soundStart         = [[JPN_75mm]],
+  customparams = {
+    weaponcost    = 16,
+  },  
 }
 
 local Type9075mmHE = Type9075mm:New(MediumHE, true):New{

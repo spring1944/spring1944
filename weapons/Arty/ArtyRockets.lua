@@ -44,6 +44,7 @@ local m8rocket82mm = ArtyRocket:New{
   wobble             = 1618,
   damage = {
     default            = 680,
+	weaponcost         = 22,
   },
 }
 
