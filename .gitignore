@@ -1,6 +1,7 @@
 *.un~
 *.swp~
 *.bat
+*.pyc
 .DS_Store
 *.swp
 Thumbs.db
