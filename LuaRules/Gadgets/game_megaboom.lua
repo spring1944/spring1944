@@ -23,7 +23,7 @@ local MAP_GRAVITY = -1 * Game.gravity
 
 local MEGABOOM_COST = 25000
 local BOOM_RADIUS = 500
-local NUMBER_OF_SHELLS = 250
+local NUMBER_OF_SHELLS = 300
 
 -- indexed by teamID
 local unitsWithTheBoom = {}
@@ -42,6 +42,9 @@ local boomCmdDesc = {
     disabled = true,
 }
 
+
+local weapChoices = {"ml20s152mmhe", "M30122mmHE", "qf25pdrhe", "QF75mmHE", "QF2Pdr40mmHE", "Bofors40mmHE"}
+
 local function FireSalvo(x, y, z)
     for i=0,NUMBER_OF_SHELLS do
         local xShift = math.random() * BOOM_RADIUS
@@ -53,7 +56,7 @@ local function FireSalvo(x, y, z)
         if math.random() > 0.5 then
             zShift = -1 * zShift
         end
-        local wd = WeaponDefNames["ml20s152mmhe"]
+        local wd = WeaponDefNames[weapChoices[math.random(#weapChoices)]:lower()]
         local wdid = wd.id
         local spreadMult = 1.3
         local r = math.random
