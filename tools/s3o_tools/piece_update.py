@@ -63,11 +63,15 @@ def dump_s3o(path):
 
 def update_s3o(path, commit, optimize):
     print path
+    txt_exists = os.path.exists(path[:-3] + 'txt')
+    if (commit or not optimize) and not txt_exists:
+        print "No txt file, skipping."
+        return
     with open(path, 'rb+') as input_s3o:
         data = input_s3o.read()
         model = S3O(data)
         
-        if os.path.exists(path[:-3] + 'txt'):
+        if txt_exists:
             with open(path[:-3] + 'txt', 'rb') as input_txt:
                 load_txt(input_txt, model.root_piece, commit)
             
