@@ -46,32 +46,35 @@ local boomCmdDesc = {
 local weapChoices = {"ml20s152mmhe", "M30122mmHE", "qf25pdrhe", "QF75mmHE", "QF2Pdr40mmHE", "Bofors40mmHE"}
 
 local function FireSalvo(x, y, z)
+    local random = math.random
+    local floor = math.floor
+    DelayCall = GG.Delay.DelayCall
+    
     for i=0,NUMBER_OF_SHELLS do
-        local xShift = math.random() * BOOM_RADIUS
-        if math.random() > 0.5 then
+        local xShift = random() * BOOM_RADIUS
+        if random() > 0.5 then
             xShift = -1 * xShift
         end
 
-        local zShift = math.random() * BOOM_RADIUS
-        if math.random() > 0.5 then
+        local zShift = random() * BOOM_RADIUS
+        if random() > 0.5 then
             zShift = -1 * zShift
         end
-        local wd = WeaponDefNames[weapChoices[math.random(#weapChoices)]:lower()]
+        local wd = WeaponDefNames[weapChoices[random(#weapChoices)]:lower()]
         local wdid = wd.id
         local spreadMult = 1.3
-        local r = math.random
         local spawnProjectileArgs = {
             gravity = 0.001*MAP_GRAVITY,
             speed = {
-                r() * spreadMult - r() * spreadMult,
-                r() * spreadMult - r() * spreadMult,
-                r() * spreadMult - r() * spreadMult
+                random() * spreadMult - random() * spreadMult,
+                random() * spreadMult - random() * spreadMult,
+                random() * spreadMult - random() * spreadMult
             },
             pos = { x + xShift, y + 15000, z + zShift }
         }
         spawnProjectileArgs['end'] = { x + xShift, y, z + zShift }
 
-        GG.Delay.DelayCall(SpawnProjectile, {wdid, spawnProjectileArgs}, math.floor(i * math.random()))
+        DelayCall(SpawnProjectile, {wdid, spawnProjectileArgs}, floor(i * random()))
     end
 end
 
