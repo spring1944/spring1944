@@ -1,21 +1,21 @@
 base
     exhaust2
     exhaust1
-    gun_base
-        barrel
-            flare
+    turret
+        sleeve
+            flare_1
     tracks
-    roller8
-    roller7
-    roller6
-    roller5
-    roller4
-    roller3
-    roller2
-    roller1
-    support3
-    support2
-    support1
+    roller_wheel8
+    roller_wheel7
+    roller_wheel6
+    roller_wheel5
+    roller_wheel4
+    roller_wheel3
+    roller_wheel2
+    roller_wheel1
+    support_wheel3
+    support_wheel2
+    support_wheel1
     rear_wheels
     front_wheels
     tracks2

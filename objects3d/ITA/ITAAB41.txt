@@ -1,11 +1,11 @@
 base
     turret
-        coaxflare
-        mantlet
+        flare_3
+        sleeve
             barrel
-                flare
+                flare_1
     spares
     wheels2
     wheels1
     rear_gun
-        rear_flare
+        flare_4

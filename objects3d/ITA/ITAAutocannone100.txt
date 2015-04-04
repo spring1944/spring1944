@@ -2,7 +2,7 @@ base
     turret
         sleeve
             barrel
-                flare
+                flare_1
         gunner1
         gunner2
     rear_wheels

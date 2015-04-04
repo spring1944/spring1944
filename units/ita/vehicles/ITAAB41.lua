@@ -40,10 +40,6 @@ local ITAAB41 = ArmouredCar:New{
 		weaponswithammo		= 2,
 		reversemult			= 0.75,
 		maxvelocitykmh		= 78,
-		
-		cegpiece = {
-			[4] = "coaxflare",
-		},
 	}
 }
 

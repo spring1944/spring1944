@@ -17,10 +17,6 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 		weaponcost			= 12,
 		weaponswithammo		= 1,
 		maxvelocitykmh		= 38,
-		
-		cegpiece = {
-			[1] = "flare",
-		},
 	},
 }
 

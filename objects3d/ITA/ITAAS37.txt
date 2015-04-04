@@ -2,8 +2,8 @@ base
     tow_point
     load_shoulder
         load_arm
-    mg_mount
-        mg_gun
-            mg_flare
+    turret
+        sleeve
+            flare_1
     wheels2
     wheels1

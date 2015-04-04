@@ -39,11 +39,6 @@ local ITAM1542 = LightTank:New{
 		maxammo				= 25,
 		weaponcost			= 8,
 		maxvelocitykmh		= 40,
-		
-		cegpiece = {
-			[4] = "mg_flare1",
-			[5] = "mg_flare2",
-		},
 	},
 }
 
