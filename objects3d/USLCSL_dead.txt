@@ -1,0 +1,24 @@
+base
+    aa20_turret_4
+        aa20_sleeve_4
+            aa20_barrel_4
+    aa20_turret_3
+        aa20_sleeve_3
+            aa20_barrel_3
+    aa20_turret_2
+        aa20_sleeve_2
+            aa20_barrel_2
+    aa20_turret_1
+        aa20_sleeve_1
+            aa20_barrel_1
+    aa40_turret_2
+        aa40_sleeve_2
+            aa40_barrel_21
+            aa40_barrel_22
+    aa40_turret_1
+        aa40_sleeve_1
+            aa40_barrel_11
+            aa40_barrel_12
+    main_turret
+        main_sleeve
+            main_barrel

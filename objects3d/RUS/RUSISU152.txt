@@ -1,0 +1,17 @@
+base
+    tracks1
+    frontwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    rearwheel
+    tracks2
+    mantlet
+        barrel
+            flare
+            brakeright
+            brakeleft
+    exhaust

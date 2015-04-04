@@ -1,0 +1,13 @@
+base
+    rear_turret
+        rear_mg_flare
+    mg2
+    mg1
+    propeller
+    prop
+    bomb4
+    bomb3
+    bomb2
+    bomb1
+    wing1
+    wing2

@@ -1,0 +1,19 @@
+hull
+    turret
+        mg_ring
+            mg
+        sleeve
+            gun
+    roller11
+    roller10
+    roller9
+    roller8
+    roller7
+    roller6
+    roller5
+    roller4
+    roller3
+    roller2
+    roller1
+    rear_wheels
+    front_wheels

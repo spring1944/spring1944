@@ -1,0 +1,16 @@
+base
+    wake3
+    wake2
+    wake1
+    turret
+        grabber
+            link
+    mg_turret
+        gun
+            flare
+        gunner
+    commander
+    flag1
+        flag2
+            flag3
+                flag4

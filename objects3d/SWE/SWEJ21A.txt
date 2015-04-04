@@ -1,0 +1,8 @@
+base
+    mg2
+    mg1
+    gun
+    mg4
+    mg3
+    prop
+        blades

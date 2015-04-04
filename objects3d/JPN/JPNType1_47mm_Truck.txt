@@ -1,0 +1,6 @@
+base
+    wheel1
+    wheel2
+    carriage
+        wheel3
+    body

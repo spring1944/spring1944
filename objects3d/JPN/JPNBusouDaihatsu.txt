@@ -1,0 +1,18 @@
+base
+    wake
+    ramp
+    pilot
+    crane
+        cable1
+            crane2
+                cable3
+                    rocket
+    rocket1
+    rocket2
+    rocket3
+    turret
+        barrel
+            backblast
+            barrel_lid
+            rocket
+        gunner

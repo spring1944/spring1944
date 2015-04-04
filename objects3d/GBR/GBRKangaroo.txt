@@ -1,0 +1,20 @@
+base
+    tracks2
+    tracks1
+    hullmg
+        flare
+    wheel6
+    wheel5
+    wheel4
+    wheel3
+    wheel2
+    wheel1
+    rearwheel
+    frontwheel
+    exhaust
+    aaturret
+        aagun
+            aaflare
+    load_shoulder
+        load_arm
+    tow_point

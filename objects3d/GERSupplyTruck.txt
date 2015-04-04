@@ -1,0 +1,4 @@
+base
+    truck
+        wheel2
+        wheel1

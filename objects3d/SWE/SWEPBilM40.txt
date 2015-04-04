@@ -1,0 +1,18 @@
+base
+    exhaust
+    hull_mg_mount_2
+        mg_sleeve_2
+            mg_gun_2
+                mg_flare_2
+    hull_mg_mount_1
+        mg_sleeve_1
+            mg_gun_1
+                mg_flare_1
+    wheels1
+    wheels2
+    turret
+        turret_mg
+            coaxflare
+        mantlet
+            barrel
+                flare

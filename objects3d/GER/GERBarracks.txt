@@ -1,0 +1,7 @@
+base
+    laundry
+        laundry
+    building
+        door
+        pad
+            beam

@@ -1,0 +1,11 @@
+base
+    tracks1
+    tracks2
+    wheel1
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    wall1
+    wall3
+    turret

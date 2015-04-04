@@ -1,0 +1,14 @@
+base
+    tent
+    tracks
+    tracks2
+    front_wheels
+    roller1
+    roller_out_3
+    roller_out_2
+    roller_out_1
+    roller_in_4
+    roller_in_3
+    roller_in_2
+    roller_in_1
+    driver

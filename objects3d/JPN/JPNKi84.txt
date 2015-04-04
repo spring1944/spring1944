@@ -1,0 +1,8 @@
+base
+    propeller
+    gun2
+    gun1
+    mg2
+    mg1
+    wing1
+    wing2

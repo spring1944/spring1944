@@ -1,0 +1,13 @@
+base
+    tracks
+    support_wheel2
+    support_wheel1
+    rear_wheel
+    front_wheel
+    roller4
+    roller3
+    roller2
+    roller1
+    carriage
+        wheel4
+    tracks2

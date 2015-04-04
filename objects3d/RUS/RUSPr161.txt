@@ -1,0 +1,16 @@
+base
+    wake1
+    flag1
+        flag2
+            flag3
+    prop1
+    prop2
+    extras
+    tower
+    child1
+    child2
+    child3
+    child4
+    child5
+    child6
+    child7

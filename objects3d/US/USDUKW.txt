@@ -1,0 +1,13 @@
+base
+    body
+        load_shoulder
+            load_arm
+        tow_point
+        wheel1
+        wheel2
+        wheel3
+        wheel4
+        wheel5
+        wheel6
+        prop
+        wake

@@ -1,0 +1,20 @@
+base
+    tracks
+    front_wheels
+    rear_wheels
+    support_wheels1
+    support_wheels2
+    support_wheels3
+    roller1
+    roller2
+    roller3
+    roller4
+    roller5
+    roller6
+    tracks2
+    crane_turret
+        actuator1
+        crane
+            actuator2
+            hook
+    crane_supports

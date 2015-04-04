@@ -1,0 +1,6 @@
+base
+    body
+        turret
+            crane
+        wheel1
+        wheel2

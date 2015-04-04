@@ -1,0 +1,16 @@
+base
+    frontwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    load_shoulder
+        load_arm
+    tow_point
+    turret
+        gun
+            flare
+    tracks1
+    tracks2

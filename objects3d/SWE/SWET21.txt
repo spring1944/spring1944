@@ -1,0 +1,16 @@
+base
+    wake4
+    wake3
+    wake2
+    wake1
+    superstructure
+        flag1
+            flag2
+                flag3
+    torpedo1
+    torpedo2
+    turret
+        sleeve
+            barrel
+                flare
+        gunner

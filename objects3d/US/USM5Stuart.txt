@@ -1,0 +1,19 @@
+base
+    turret
+        mantlet
+            barrel
+                flare
+            coaxflare
+        aaturret
+            aagun
+                aaflare
+        aaref
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    exhaust
+    tracks1
+    tracks2

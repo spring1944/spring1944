@@ -1,0 +1,6 @@
+base
+    mg_turret
+        mg
+    gun2
+    gun1
+    prop

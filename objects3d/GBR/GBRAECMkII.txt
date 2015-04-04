@@ -1,0 +1,11 @@
+base
+    wheel1
+    wheel2
+    turret
+        mantlet
+            barrel
+                brakeleft
+                brakeright
+                flare
+            coaxflare
+    exhaust

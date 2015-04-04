@@ -1,0 +1,15 @@
+ground
+    pelvis
+        torso
+            head
+            ruparm
+                rloarm
+            luparm
+                lloarm
+        rthigh
+            rleg
+                rfoot
+        lthigh
+            lleg
+                lfoot
+    parachute

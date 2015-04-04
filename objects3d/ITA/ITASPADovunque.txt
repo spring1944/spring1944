@@ -1,0 +1,13 @@
+base
+    rear_wheels2
+    rear_wheels1
+    front_wheels
+    spares
+    gun_wheels
+    stand
+        turret
+            sleeve
+                barrel
+                    flare
+            gunner
+    driver

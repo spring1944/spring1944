@@ -1,0 +1,9 @@
+base
+    wheel1
+    wheel2
+    body
+    carriage
+        turret
+            sleeve
+                barrel
+        wheel3

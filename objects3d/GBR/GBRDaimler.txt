@@ -1,0 +1,9 @@
+base
+    turret
+        mantlet
+            barrel
+                flare
+            coaxflare
+    wheel1
+    wheel2
+    exhaust

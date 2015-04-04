@@ -1,0 +1,20 @@
+base
+    fuselage
+        propeller
+            blades
+        wing1
+            mg1
+            mg2
+            mg3
+            mg4
+            gear1
+                wheel1
+        wing2
+            mg5
+            mg6
+            mg7
+            mg8
+            gear2
+                wheel2
+        bomb
+        bombemit

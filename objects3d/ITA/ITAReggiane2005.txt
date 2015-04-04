@@ -1,0 +1,11 @@
+base
+    fuselage
+        cannon3
+        mg1
+        mg2
+        wing2
+            cannon2
+        wing1
+            cannon1
+        propeller
+            blades

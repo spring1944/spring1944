@@ -1,0 +1,19 @@
+base
+    exhaust
+    engine_fx
+    front_fx
+    back_fx
+    right_fx
+    left_fx
+    turret
+        mantlet
+            barrel
+                flare
+                brakeright
+                brakeleft
+        coaxflare
+        hatch_fx
+    wheel1
+    wheel2
+    wheel3
+    wheel4

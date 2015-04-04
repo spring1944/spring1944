@@ -1,0 +1,16 @@
+ground
+    pelvis
+        rthigh
+            rleg
+                rfoot
+        lthigh
+            lleg
+                lfoot
+        torso
+            luparm
+                lloarm
+            ruparm
+                rloarm
+                    gun
+                        flare
+            head

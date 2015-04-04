@@ -1,0 +1,4 @@
+base
+    truck
+    pad
+        beam

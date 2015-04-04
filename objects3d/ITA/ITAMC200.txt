@@ -1,0 +1,9 @@
+base
+    gun2
+    gun1
+    w1
+        bomb1
+    w2
+        bomb2
+    propeller
+        blades

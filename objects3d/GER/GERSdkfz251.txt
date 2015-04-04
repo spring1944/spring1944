@@ -1,0 +1,24 @@
+base
+    frontwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    wheel7
+    wheel8
+    tracks1
+    tracks2
+    turret
+        gun
+            flare
+    load_shoulder
+        load_arm
+    tow_point
+    engine_fx
+    hatch_fx
+    front_fx
+    back_fx
+    right_fx
+    left_fx

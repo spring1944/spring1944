@@ -1,0 +1,20 @@
+ground
+    crewman
+        pelvis
+            rthigh
+                rleg
+                    rfoot
+            lthigh
+                lleg
+                    lfoot
+            torso
+                luparm
+                    lloarm
+                ruparm
+                    rloarm
+                head
+    carriage
+        wheels
+        turret
+            gun
+                flare

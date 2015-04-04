@@ -1,0 +1,11 @@
+base
+    wake
+    turret
+        gun
+            flare
+        gunner
+    ladder
+    load_shoulder
+        load_arm
+    steerman
+    cargo

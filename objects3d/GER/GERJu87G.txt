@@ -1,0 +1,22 @@
+base
+    fuselage
+        propeller
+            blades
+        wing1
+            gear1
+                wheel1
+            gun1
+                barrel1
+                    flare1
+            mg1
+        wing2
+            gear2
+                wheel2
+            gun2
+                barrel2
+                    flare2
+            mg2
+        turret
+            machineguns
+                mgflare1
+                mgflare2

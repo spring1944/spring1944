@@ -1,0 +1,4 @@
+base
+    turret
+        mantlet
+            barrel

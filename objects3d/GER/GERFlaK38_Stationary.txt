@@ -1,0 +1,19 @@
+base
+    stand
+        turret
+            sleeve
+                barrel
+                    flare
+            pelvis
+                torso
+                    luparm
+                        lloarm
+                    ruparm
+                        rloarm
+                    head
+                lthigh
+                    lleg
+                        lfoot
+                rthigh
+                    rleg
+                        rfoot

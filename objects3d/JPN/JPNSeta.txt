@@ -1,0 +1,18 @@
+base
+    exhaust2
+    exhaust1
+    wake2
+    wake1
+    observer_2
+    observer_1
+    flag1
+        flag2
+            flag3
+    cables_boats
+    tower
+    tower2
+    extras
+    child1
+    child2
+    child3
+    child4

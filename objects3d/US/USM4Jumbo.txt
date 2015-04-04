@@ -1,0 +1,18 @@
+base
+    turret
+        mantlet
+            barrel
+                flare
+            coaxflare
+    hullmg
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    tracks1
+    tracks2
+    exhaust

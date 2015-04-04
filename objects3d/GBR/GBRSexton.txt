@@ -1,0 +1,17 @@
+base
+    turret
+        sleeve
+            barrel
+                flare
+                brakeright
+                brakeleft
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    tracks1
+    tracks2

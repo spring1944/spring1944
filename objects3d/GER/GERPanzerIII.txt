@@ -1,0 +1,26 @@
+base
+    turret
+        mantlet
+            barrel
+                flare
+            coaxflare
+        hatch_fx
+        hatch_right_fx
+        hatch_left_fx
+    tracks1
+    tracks2
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    exhaust
+    HullMG
+    engine_fx
+    front_fx
+    back_fx
+    right_fx
+    left_fx

@@ -1,0 +1,9 @@
+base
+    wheel1
+    wheel2
+    turret
+        mantlet
+            gun
+                flare
+    spare
+    exhaust

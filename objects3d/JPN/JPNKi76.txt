@@ -1,0 +1,4 @@
+base
+    propeller
+    wing2
+    wing1

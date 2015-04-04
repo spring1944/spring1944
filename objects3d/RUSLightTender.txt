@@ -1,0 +1,16 @@
+base
+    bow
+    port1
+    port2
+    port3
+    port4
+    starboard1
+    starboard2
+    starboard3
+    starboard4
+    load_shoulder
+        load_arm
+    propeller
+    turret
+        gun
+            flare

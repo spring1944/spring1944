@@ -1,0 +1,10 @@
+base
+    turret
+        sleeve
+            barrel
+                flare
+        gunner1
+        gunner2
+    rear_wheels
+    front_wheels
+    spare

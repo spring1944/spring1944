@@ -1,0 +1,12 @@
+base
+    stand
+        turret
+            guns
+                flare1
+                flare2
+                flare3
+                flare4
+            crewman
+    wheel1
+    wheel2
+    wheel3

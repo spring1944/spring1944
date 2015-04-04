@@ -1,0 +1,7 @@
+base
+    gun4
+    gun3
+    gun2
+    gun1
+    prop
+        blades

@@ -1,0 +1,16 @@
+base
+    spares
+    sleeve
+        barrel
+            flare
+    tracks
+    support_wheel3
+    support_wheel2
+    support_wheel1
+    roller4
+    roller3
+    roller2
+    roller1
+    rear_wheels
+    front_wheels
+    tracks2

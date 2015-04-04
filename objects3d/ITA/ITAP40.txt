@@ -1,0 +1,23 @@
+base
+    exhaust2
+    exhaust1
+    support4
+    support3
+    support2
+    support1
+    turret
+        coaxflare
+        gun
+            flare
+    roller8
+    roller7
+    roller6
+    roller5
+    roller3
+    roller4
+    roller2
+    roller1
+    rear_wheels
+    front_wheels
+    tracks
+    tracks2

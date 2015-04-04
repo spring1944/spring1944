@@ -1,0 +1,6 @@
+base
+    truck
+        wheel1
+        wheel2
+        spare
+        pontoon

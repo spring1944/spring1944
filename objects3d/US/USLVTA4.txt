@@ -1,0 +1,25 @@
+base
+    wake
+    exhaust
+    turret
+        mg_ring
+            mg
+                mg_flare
+        sleeve
+            gun
+                flare
+    roller11
+    roller10
+    roller9
+    roller8
+    roller7
+    roller6
+    roller5
+    roller4
+    roller3
+    roller2
+    roller1
+    rear_wheels
+    front_wheels
+    tracks
+    tracks2

@@ -1,0 +1,16 @@
+base
+    frontwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    tracks1
+    tracks2
+    turret
+        guns
+            flare1
+            flare2
+            flare3
+            flare4

@@ -1,0 +1,15 @@
+gp
+    base
+        turret
+            mantlet
+                barrel
+                    flare
+            aaturret
+                aagun
+                    aaflare
+            aaref
+            coaxflare
+        exhaust
+        wheel1
+        wheel2
+        wheel3

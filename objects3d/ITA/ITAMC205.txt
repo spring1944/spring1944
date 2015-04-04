@@ -1,0 +1,10 @@
+base
+    propeller
+    hmg2_flare
+    hmg1_flare
+    w1
+        bomb1
+        lmg1_flare
+    w2
+        bomb2
+        lmg2_flare

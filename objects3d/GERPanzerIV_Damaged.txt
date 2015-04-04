@@ -1,0 +1,15 @@
+base
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    wheel7
+    wheel8
+    tracks1
+    turret
+        mantlet
+            barrel

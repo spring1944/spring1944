@@ -1,0 +1,9 @@
+base
+    outriggers
+    wheels
+    turret
+        balancer
+        operator1
+    operator2
+    operator3
+    operator4

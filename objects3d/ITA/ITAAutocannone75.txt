@@ -1,0 +1,12 @@
+base
+    body
+        spares
+        wheels2
+        wheels1
+        driver
+        turret
+            sleeve
+                barrel
+                    flare
+        gunner1
+        gunner2

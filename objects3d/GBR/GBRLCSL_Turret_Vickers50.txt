@@ -1,0 +1,6 @@
+base
+    turret
+        sleeve
+            flare2
+            flare1
+        gunner_mg

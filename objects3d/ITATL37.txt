@@ -1,0 +1,6 @@
+base
+    tow_point
+    spare
+    tent
+    wheels2
+    wheels1

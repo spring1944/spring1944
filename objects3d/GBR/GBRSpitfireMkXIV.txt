@@ -1,0 +1,14 @@
+base
+    fuselage
+        wing1
+            gear1
+                wheel1
+            cannon1
+            mg1
+        wing2
+            gear2
+                wheel2
+            cannon2
+            mg2
+        propeller
+            blades

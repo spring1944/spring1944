@@ -1,0 +1,5 @@
+base
+    door
+    pad
+        beam
+    building

@@ -1,0 +1,15 @@
+base
+    tow_point
+    load_shoulder
+        load_arm
+    exhaust
+    tent
+    rear_wheel
+    front_wheel
+    drive_wheel
+    mid_wheel4
+    mid_wheel3
+    mid_wheel2
+    mid_wheel1
+    tracks
+    tracks2

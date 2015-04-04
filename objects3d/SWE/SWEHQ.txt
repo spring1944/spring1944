@@ -1,0 +1,13 @@
+base
+    spares
+    front_wheels
+    rear_wheels1
+    rear_wheels2
+    bow_mg_sleeve
+        bow_mg
+            bow_mg_flare
+    turret
+    tent
+    door
+    pad
+        beam

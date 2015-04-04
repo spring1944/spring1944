@@ -1,0 +1,16 @@
+base
+    turret_20_2
+        sleeve_20_2
+            barrel_20_2
+    turret_20_1
+        sleeve_20_1
+            barrel_20_1
+    mg_turret
+        mg_guns
+    mortar_turret
+        mortar_barrel
+    turret
+        sleeve
+            barrel
+    prop2
+    prop1

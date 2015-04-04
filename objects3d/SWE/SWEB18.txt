@@ -1,0 +1,9 @@
+base
+    turret_mg
+        mg
+    flare_20_2
+    flare_20_1
+    gun
+        flare
+    prop1
+    prop2

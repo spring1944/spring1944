@@ -1,0 +1,4 @@
+base
+    building
+        pad
+            beam
