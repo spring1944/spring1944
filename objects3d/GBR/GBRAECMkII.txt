@@ -2,10 +2,10 @@ base
     wheel1
     wheel2
     turret
-        mantlet
+        sleeve
             barrel
                 brakeleft
                 brakeright
-                flare
-            coaxflare
+                flare_1
+            flare_2
     exhaust

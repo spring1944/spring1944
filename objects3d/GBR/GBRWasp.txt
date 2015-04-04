@@ -7,7 +7,7 @@ base
     wheel3
     rearwheel
     turret
-        mantlet
-            gun
+        sleeve
+            flare_1
     ground
     ground

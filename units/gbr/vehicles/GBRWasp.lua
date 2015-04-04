@@ -26,10 +26,6 @@ local GBRWasp = ArmouredCar:New{
 		weaponswithammo		= 1,
 		hasturnbutton		= true,
 		maxvelocitykmh		= 48,
-		
-		cegpiece = {
-			[1] = "gun",
-		},
 	}
 }
 

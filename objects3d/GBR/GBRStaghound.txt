@@ -2,8 +2,8 @@ base
     turret
         sleeve
             guns
-                flare1
-                flare2
+                flare_1
+                flare_2
         crewman
         turret_floor
     wheel1

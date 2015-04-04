@@ -6,10 +6,10 @@ truebase
         turret
             mantlet
                 barrel
-                    flare
+                    flare_1
                     brakeright
                     brakeleft
-                coaxflare
+                flare_3
         frontwheel
         rearwheel
     wheel1

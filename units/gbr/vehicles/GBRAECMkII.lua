@@ -34,10 +34,6 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		weaponswithammo		= 1,
 		turretturnspeed		= 32, -- 11s for 360
 		maxvelocitykmh		= 66,
-		
-		cegpiece = {
-			[2] = "coaxflare",
-		},
 	}
 }
 

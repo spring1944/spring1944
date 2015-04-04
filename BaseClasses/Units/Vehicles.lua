@@ -24,15 +24,7 @@ local ArmouredCar = Vehicle:New{
 	description			= "Light Armoured Car",
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
-	movementClass		= "TANK_Car",
-	
-	customParams = {
-		cegpiece = {
-			[1] = "flare",
-			[2] = "flare",
-			[3] = "coaxflare",
-		},
-	},
+	movementClass		= "TANK_Car",	
 }
 
 local HeavyArmouredCar = ArmouredCar:New{
@@ -107,12 +99,6 @@ local MobileAA = { -- not a full class (interface)
 local TruckAA = Truck:New(MobileAA):New{
 	acceleration		= 0.067,
 	brakeRate			= 0.195,
-
-	customParams = {
-		cegpiece = {
-			[1] = "flare",
-		},
-	},
 }
 local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
@@ -139,11 +125,6 @@ local HalfTrack = Vehicle:New(Transport):New{
 	
 	customParams = {
 		supplyRange			= 200,
-		
-		cegpiece = {
-			[1] = "flare",
-			[2] = "flare",
-		},
 	},
 }
 

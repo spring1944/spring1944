@@ -26,11 +26,6 @@ local GBRStaghound = ArmouredCarAA:New{
 		armor_top			= 13,
 		turretturnspeed		= 43, -- may find this too slow in game
 		maxvelocitykmh		= 89,
-		cegpiece = {
-			[1] = "flare1",
-			[2] = "flare2",
-			[3] = "flare1",
-		},
 	}
 }
 
