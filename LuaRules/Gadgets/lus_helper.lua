@@ -151,15 +151,15 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 		end
 		i = i + 1
 		
-		if currentPiece:find("turret") then --Finds both turret and aaturret
+		if currentPiece:find("turret") then
 			headingPiece = pieceMap[currentPiece]
-			break --shouldn't pick something below turret
 		end
-		if currentPiece:find("mantlet") or currentPiece:find("gun") then --Finds gun and aagun
-			headingPiece = pieceMap[currentPiece]
+		if currentPiece:find("sleeve") then
 			pitchPiece = pieceMap[currentPiece]
 		end
-		
+		if headingPiece and pitchPiece then
+            break
+        end
 		
 		local pieceInfo = GetUnitPieceInfo(unitID, pieceMap[currentPiece])
 		currentPiece = pieceInfo.parent
@@ -229,6 +229,22 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 					end
 				end
 			end
+        else
+            local lastflare = pieceMap["flare"] and "flare"
+            for weaponNum, _ in pairs(info.reloadTimes) do
+                lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+                Spring.Echo(UnitDefs[unitDefID].name, weaponNum, lastflare)
+                cegPieces[weaponNum] = pieceMap[lastflare]
+                local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
+                aimPieces[weaponNum] = {headingPiece, pitchPiece}
+                
+                local _, _, _, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceMap[lastflare])
+                local frontDir = Spring.GetUnitVectors(unitID)
+                local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+                if dotFront < 0 then
+                    reversedWeapons[weaponNum] = true
+                end
+            end
 		end
 		
 		info.numBarrels = numBarrels

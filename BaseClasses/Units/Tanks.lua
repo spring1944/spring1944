@@ -22,11 +22,6 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		weaponswithammo		= 2,
 		weapontoggle		= "priorityAPHE",
 		
-		cegpiece = {
-			[1] = "flare",
-			[2] = "flare",
-			[3] = "coaxflare",
-		},
 	},
 }
 
