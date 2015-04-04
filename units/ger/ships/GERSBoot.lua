@@ -52,8 +52,6 @@ local GER_SBoot_Turret_20mm_Front = BoatChild:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from BMO 37mm
-		weaponcost				= 3,
-		weaponswithammo			= 2,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,

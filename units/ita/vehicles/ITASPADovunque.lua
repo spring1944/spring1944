@@ -12,8 +12,6 @@ local ITASPADovunque = TruckAA:New{
 	},
 	customParams = {
 		maxammo				= 19,
-		weaponcost			= 2,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 60,
 	}
 }

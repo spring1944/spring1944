@@ -36,8 +36,6 @@ local ITAAB41 = ArmouredCar:New{
 		armor_side			= 10,
 		armor_top			= 6,
 		maxammo				= 19,
-		weaponcost			= 8,
-		weaponswithammo		= 2,
 		reversemult			= 0.75,
 		maxvelocitykmh		= 78,
 	}

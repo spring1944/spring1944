@@ -6,11 +6,11 @@ local SWE_VolvoTVC = Truck:New{
 	trackOffset				= 25,
 	trackWidth				= 17,
 	-- make it less mobile than transport trucks
-	maxVelocity				= 2.25,
 	turnRate				= 330,
 	
 	customParams = {
 		dontCount				= false, -- override truck as TVC can be a factory!
+		maxvelocitykmh			= 52,
 	}
 }
 

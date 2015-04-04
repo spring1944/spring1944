@@ -13,8 +13,6 @@ local JPNIsuzuType94_AA = TruckAA:New{
 	},
 	customParams = {
 		maxammo				= 19,
-		weaponcost			= 2,
-		weaponswithammo		= 1,
 	}
 }
 

@@ -87,8 +87,6 @@ local GBR_LCSL_Turret_6pdr = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 10,
-		weaponswithammo			= 2,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 21, -- 16.9s for 360

@@ -3,73 +3,64 @@
 -- Bofors 40mm AA Gun (GBR & USA)
 local Bofors40mm = AntiAirGun:New{
   name               = [[40mm Bofors Anti-Aircraft Gun]],
+  burst              = 4, -- 4 round clips
+  burstrate          = 0.429, -- cyclic 140rpm
+  reloadtime         = 2.7, -- practical 90rpm
   weaponVelocity     = 1646,
   damage = {
     default            = 275,
   },
 }
 local Bofors40mmAA = Bofors40mm:New(AntiAirGunAA, true):New{
-  burst              = 4,
-  burstrate          = 0.33,
   range              = 2025,
-  reloadtime         = 1.5,
 }
 local Bofors40mmHE = Bofors40mm:New(AutoCannonHE, true):New{
-  burst              = 2,
-  burstrate          = 0.5,
   range              = 725,
-  reloadtime         = 1.625,
 }
 
 -- Twin Bofors 40mm AA Gun (For ships)
 -- derives from the above, only with half the reloadtime
 local Twin_Bofors40mmAA = Bofors40mmAA:New{
-  reloadtime         = 0.75,
+  reloadtime         = 1.35,
 }
 local Twin_Bofors40mmHE = Bofors40mmHE:New{
-  reloadtime         = 0.8125,
+  reloadtime         = 1.35,
 }
 
 -- FlaK 43 37mm AA Gun (GER)
 local FlaK4337mm = AntiAirGun:New{
   name               = [[37mm FlaK 43 Anti-Aircraft Gun]],
+  burst              = 4, -- 8 round clips
+  burstrate          = 0.240, -- cyclic 250rpm
+  reloadtime         = 1.6, -- practical 150rpm 
   weaponVelocity     = 1640,
   damage = {
     default            = 162, -- guesstimate, can't get zergs formulas to match up
   },
 }
 local FlaK4337mmAA = FlaK4337mm:New(AntiAirGunAA, true):New{
-  burst              = 4,
-  burstrate          = 0.250,
   range              = 2025,
-  reloadtime         = 1.6,
 }
 local FlaK4337mmHE = FlaK4337mm:New(AutoCannonHE, true):New{
-  burst              = 2,
-  burstrate          = 0.625,
   range              = 725,
-  reloadtime         = 1.625,
 }
 
 -- M-1939 61-K 37mm AA Gun (RUS)
 local M1939_61K37mm = AntiAirGun:New{
   name               = [[37mm M-1939 61-K Anti-Aircraft Gun]],
+  burst              = 5, -- 5 round clip
+  burstrate          = 0.353, -- cyclic 170rpm
+  reloadtime         = 3.8, -- 80rpm practical
   weaponVelocity     = 1760,
   damage = {
     default            = 182,
   },
 }
 local M1939_61K37mmAA = M1939_61K37mm:New(AntiAirGunAA, true):New{
-  burst              = 5, -- fed from 5 round clip
-  burstrate          = 0.35, -- 170rpm cyclic
   range              = 2025,
-  reloadtime         = 3.75, -- 80rpm practical
 }
 local M1939_61K37mmHE = M1939_61K37mm:New(AutoCannonHE, true):New{
-  burst              = 2,
-  burstrate          = 0.625,
   range              = 725,
-  reloadtime         = 1.625,
 }
 
 -- Return only the full weapons

@@ -71,8 +71,6 @@ local US_LCSL_Turret_TwinBofors_Front = BoatChild:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from RUSBMO 37mm
-		weaponcost				= 3,
-		weaponswithammo			= 4,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 30,
@@ -112,8 +110,6 @@ local US_SC_Turret_76mm = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 26,
-		weaponcost				= 8,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

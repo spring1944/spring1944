@@ -9,9 +9,7 @@ local SWE_BoforsM36_Stationary = AAGun:New{
 	name					= "Deployed 4cm LvAkan m/36",
 	corpse					= "SWEBoforsM36_Destroyed",
 	script					= "USM1Bofors_stationary.cob",
-	customParams = {
-		weaponcost	= 3,
-	},
+
 	weapons = {
 		[1] = { -- AA
 			name				= "bofors40mmaa",

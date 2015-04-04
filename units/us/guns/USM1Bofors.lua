@@ -8,9 +8,7 @@ local US_M1Bofors_Truck = AAGunTractor:New{
 local US_M1Bofors_Stationary = AAGun:New{
 	name					= "Deployed 40mm M1 Bofors",
 	corpse					= "USM1Bofors_Destroyed",
-	customParams = {
-		weaponcost	= 3,
-	},
+
 	weapons = {
 		[1] = { -- AA
 			name				= "bofors40mmaa",

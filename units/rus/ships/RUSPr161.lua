@@ -65,8 +65,6 @@ local RUS_Pr161_Turret_85mm_Front = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 22,
-		weaponcost				= 17,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 7.5,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

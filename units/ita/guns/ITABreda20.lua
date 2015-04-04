@@ -9,9 +9,7 @@ local ITA_Breda20_Truck = AAGunTractor:New{
 local ITA_Breda20_Stationary = AAGun:New{
 	name					= "Deployed Breda 20/65",
 	corpse					= "ITABreda20_Destroyed",
-	customParams = {
-		weaponcost	= 2,
-	},
+
 	weapons = {
 		[1] = { -- AA
 			name				= "BredaM3520mmAA",

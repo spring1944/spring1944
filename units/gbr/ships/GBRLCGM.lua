@@ -42,8 +42,6 @@ local GBR_LCGM_Turret_25pdr_Left = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 26,
-		weaponcost				= 18,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 17,

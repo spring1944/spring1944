@@ -4,11 +4,11 @@
 -- FlaK 38 20mm (GER)
 local FlaK3820mm = AutoCannon:New{
   accuracy           = 255,
-  burst              = 3,
-  burstRate          = 0.16,
+  burst              = 4, -- 20 round box mag, 5 bursts
+  burstRate          = 0.133, -- cyclic 450rpm
+  reloadTime         = 1.3, -- 180rpm practical
   name               = [[2cm FlaK 38]],
   range              = 730,
-  reloadTime         = 3,
   soundStart         = [[GER_20mm]],
   sprayAngle         = 400,
   weaponVelocity     = 1800,
@@ -18,8 +18,6 @@ local FlaK3820mm = AutoCannon:New{
 }
 
 local FlaK3820mmAA = FlaK3820mm:New(AutoCannonAA, true):New{
-  burst              = 5,
-  burstRate          = 0.13,
   range              = 1910,
 }
 local FlaK3820mmHE = FlaK3820mm:New(AutoCannonHE, true)
@@ -35,28 +33,24 @@ local FlaK3820mmAP = FlaK3820mm:New(AutoCannonAP, true):New{
 }
 
 -- Flakvierling
--- derives from the above, only with 1/4 the burstrate and 4x burst
+-- derives from the above, only with 4x burst (can't have 1/4 the burstrate)
 local FlakVierling20mmAA = FlaK3820mmAA:New({
   burst              = 16,
-  --burstrate          = 0.035, -- force to at least 1 frame
-  --reloadTime         = 1.2,
   name               = [[(Quad)]],
 }, true)
 local FlakVierling20mmHE = FlaK3820mmHE:New({
   burst              = 16,
-  --burstrate          = 0.033,
-  --reloadTime         = 1.2,
   name               = [[(Quad)]],
 }, true)
 
 -- Oerlikon/Polsten 20mm (GBR)
 local Oerlikon20mm = AutoCannon:New{
   accuracy           = 255,
-  burst              = 3,
-  burstRate          = 0.16,
+  burst              = 5, -- 15 or 30 round drum
+  burstRate          = 0.133, -- cyclic 450rpm
+  reloadTime         = 1.2, -- practical 250 rpm
   name               = [[20mm Oerlikon]],
   range              = 750,
-  reloadTime         = 1.5,
   soundStart         = [[GER_20mm]],
   sprayAngle         = 475,
   weaponVelocity     = 1640,
@@ -66,13 +60,12 @@ local Oerlikon20mm = AutoCannon:New{
 }
 
 local Oerlikon20mmAA = Oerlikon20mm:New(AutoCannonAA, true):New{
-  burst              = 5,
   range              = 1950,
 }
 local Oerlikon20mmHE = Oerlikon20mm:New(AutoCannonHE, true)
 local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
   name               = [[(Twin)]],
-  reloadTime         = 0.75,
+  reloadTime         = 0.6,
 }, true)
 
 -- TNSh 20mm (RUS)

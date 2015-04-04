@@ -91,8 +91,6 @@ local JPN_Seta_Turret_25mm = BoatChild:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from BMO 37mm
-		weaponcost				= 3,
-		weaponswithammo			= 2,
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,

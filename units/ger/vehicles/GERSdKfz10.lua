@@ -16,8 +16,6 @@ local GERSdKfz10 = TruckAA:New{
 		armor_side			= 0,
 		armor_top			= 0,
 		maxammo				= 25,
-		weaponcost			= 2,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 75,
 	}
 }

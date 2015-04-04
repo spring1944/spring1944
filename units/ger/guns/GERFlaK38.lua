@@ -9,9 +9,7 @@ local GER_FlaK38_Truck = AAGunTractor:New{
 local GER_FlaK38_Stationary = AAGun:New{
 	name					= "Deployed 2cm FlaK 38",
 	corpse					= "GERFlaK38_Destroyed",
-	customParams = {
-		weaponcost	= 2,
-	},
+
 	weapons = {
 		[1] = { -- AA
 			name				= "flak3820mmaa",

@@ -84,8 +84,6 @@ local GBR_FairmileD_Turret_6pdr_Front = BoatChild:New{
 	},
 	customparams = {
 		maxammo					= 20,
-		weaponcost				= 10,
-		weaponswithammo			= 1,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,

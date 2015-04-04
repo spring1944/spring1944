@@ -98,8 +98,6 @@ local US_PT103_Turret_Bofors = BoatChild:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from RUSBMO 37mm
-		weaponcost				= 3,
-		weaponswithammo			= 2,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,
