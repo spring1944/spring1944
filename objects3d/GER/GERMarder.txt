@@ -8,9 +8,9 @@ base
     tracks1
     tracks2
     exhaust
-    mantlet
+    turret_sleeve
         barrel
-            flare
+            flare_1
             brakeright
             brakeleft
     engine_fx

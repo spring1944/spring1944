@@ -15,7 +15,7 @@ base
     turret
         sleeve
             barrel
-                flare
+                flare_1
         pelvis
             torso
                 luparm

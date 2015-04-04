@@ -6,12 +6,12 @@ base
     right_fx
     left_fx
     turret
-        mantlet
+        sleeve
             barrel
-                flare
+                flare_1
                 brakeright
                 brakeleft
-        coaxflare
+        flare_3
         hatch_fx
     wheel1
     wheel2

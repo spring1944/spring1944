@@ -1,7 +1,7 @@
 base
-    mantlet
+    turret_sleeve
         barrel
-            flare
+            flare_1
             brakeright
             brakeleft
     frontwheel

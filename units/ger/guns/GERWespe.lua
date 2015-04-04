@@ -13,7 +13,7 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		[2] = {
 			name				= "mg42aa",
 		},
-		[2] = {
+		[3] = {
 			name				= ".30calproof",
 		},
 	},
@@ -25,10 +25,6 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		maxammo				= 6,
 		weaponcost			= 30,
 		maxvelocitykmh		= 40,
-		
-		cegpiece = {
-			[2] = "aaflare",
-		},
 	},
 }
 

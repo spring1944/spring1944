@@ -11,8 +11,8 @@ base
     tracks1
     tracks2
     turret
-        gun
-            flare
+        sleeve
+            flare_1
     load_shoulder
         load_arm
     tow_point

@@ -7,10 +7,10 @@ base
     wheel5
     wheel6
     turret
-        mantlet
+        sleeve
             barrel
-                flare
-        coaxflare
+                flare_1
+        flare_3
     tracks1
     tracks2
     exhaust

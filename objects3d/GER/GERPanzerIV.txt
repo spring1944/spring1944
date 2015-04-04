@@ -15,12 +15,12 @@ base
     tracks2
     skirts
     turret
-        mantlet
+        sleeve
             barrel
-                flare
+                flare_1
                 brakeright
                 brakeleft
-            coaxflare
+            flare_3
         turretskirts
         hatch_fx
     engine_fx

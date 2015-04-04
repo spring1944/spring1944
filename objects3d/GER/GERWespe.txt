@@ -1,7 +1,7 @@
 base
     sleeve
         barrel
-            flare
+            flare_1
             brakeright
             brakeleft
     tracks1
@@ -14,8 +14,8 @@ base
     wheel4
     wheel5
     aaturret
-        aagun
-            aaflare
+        aasleeve
+            flare_2
     engine_fx
     hatch_fx
     front_fx

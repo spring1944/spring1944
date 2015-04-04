@@ -88,6 +88,7 @@ local TankDestroyer = AssaultGun:New{
 local SPArty = Unit:New{ -- not a full class (interface)
 	description 		= "Self-Propelled Howitzer",
 	iconType			= "sparty",
+    script				= "Vehicle.lua",
 	turnRate			= 175,
 	customParams = {
 		canareaattack		= true,

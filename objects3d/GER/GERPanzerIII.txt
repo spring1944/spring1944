@@ -1,9 +1,9 @@
 base
     turret
-        mantlet
+        sleeve
             barrel
-                flare
-            coaxflare
+                flare_1
+            flare_3
         hatch_fx
         hatch_right_fx
         hatch_left_fx
