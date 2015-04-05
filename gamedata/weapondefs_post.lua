@@ -314,16 +314,14 @@ for unitName, ud in pairs(UnitDefs) do
 				local weapName = string.lower(weapons[weaponID].name)
 				if not WeaponDefNames[weapName] then Spring.Echo("ERROR: weapondefs_post.lua non-existant weapon name (" .. ud.name .. ", " .. weapName .. ")") end
 				local cegFlare = cegCache[weapName]
-				local weaponCost = (weapCostCache[weapName] or 0) * (WeaponDefNames[weapName].burst or 1)
-				if weaponCost > 0 then 
-					weaponsWithAmmo = weaponsWithAmmo + 1 
-					--Spring.Echo(unitName, weapName, weaponCost)
-				end
+				local weaponCost = (weapCostCache[weapName] or -2) * (WeaponDefNames[weapName].burst or 1)
 				if cegFlare then
 					--Spring.Echo("cegFlare: " .. cegFlare)
 					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 				end
-				if weaponCost > 0 then
+				if weaponCost > -2 then -- some have a special case of -1
+					weaponsWithAmmo = weaponsWithAmmo + 1 
+					--Spring.Echo(unitName, weapName, weaponCost)
 					local curCost = ud.customparams.weaponcost or weaponCost
 					if curCost ~= weaponCost then
 						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")

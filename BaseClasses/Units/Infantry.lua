@@ -261,14 +261,6 @@ local InfantryGun = Infantry:New{
 	script				= "InfantryGun.lua",
 	turnRate			= 120,
 	
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[9] = "custom:MEDIUM_MUZZLEFLASH",
-			[10] = "custom:MEDIUM_MUZZLEDUST",
-			[11] = "custom:MuzzleBrakeSmoke",
-		}
-	},
 	customParams = {
 		hasturnbutton		= true,
 		maxammo				= 4,
