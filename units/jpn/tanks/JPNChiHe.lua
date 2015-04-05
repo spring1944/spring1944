@@ -33,11 +33,6 @@ local JPNChiHe = MediumTank:New{
 		armor_top			= 11,
 		maxammo				= 20,
 		maxvelocitykmh		= 44,
-		
-		cegpiece = {
-			[3] = "bow_mg_flare",
-			[4] = "turret_mg_flare",
-		},
 	},
 }
 

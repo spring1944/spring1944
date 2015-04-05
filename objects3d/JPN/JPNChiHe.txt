@@ -2,13 +2,13 @@ base
     exhaust2
     exhaust1
     turret
-        turret_mg
-            turret_mg_flare
+        mg_sleeve
+            flare_4
         sleeve
             barrel
-                flare
-    bow_mg
-        bow_mg_flare
+                flare_1
+    bow_mg_turret
+        flare_3
     tracks
     support_wheels3
     support_wheels2

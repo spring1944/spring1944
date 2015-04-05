@@ -33,11 +33,6 @@ local JPNHaGo = LightTank:New{
 		armor_top			= 6,
 		maxammo				= 20,
 		maxvelocitykmh		= 45,
-		
-		cegpiece = {
-			[3] = "bow_mg_flare",
-			[4] = "turret_mg_flare",
-		},
 	},
 }
 

@@ -1,15 +1,15 @@
 base
     wake
     exhaust
-    bow_mg
-        bow_mg_flare
+    bow_mg_turret
+        flare_3
     floats
     turret
-        turret_mg
-            turret_mg_flare
+        mg_sleeve
+            flare_4
         sleeve
             barrel
-                flare
+                flare_1
     prop2
     prop1
     support_wheel2

@@ -3,7 +3,7 @@ base
     turret
         sleeve
             barrel
-                flare
+                flare_1
     front_wheels
     rear_wheels
     support_wheels1
