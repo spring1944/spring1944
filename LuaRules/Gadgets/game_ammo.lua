@@ -347,7 +347,7 @@ function gadget:GameFrame(n)
 					ammoLevel = tonumber(ud.customParams.maxammo),
 					reloadFrame = {},
 				}
-				if not ud.customParams.weaponswithammo then Spring.Log("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
+				if not ud.customParams.weaponswithammo then Spring.Echo("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
 				for weaponNum = 0, ud.customParams.weaponswithammo do
 					vehicles[unitID].reloadFrame[weaponNum] = 0
 				end
@@ -366,7 +366,7 @@ function gadget:GameFrame(n)
 						ammoLevel = ammo,
 						reloadFrame = {},
 					}
-					if not ud.customParams.weaponswithammo then Spring.Log("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
+					if not ud.customParams.weaponswithammo then Spring.Echo("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
 					for weaponNum = 1, ud.customParams.weaponswithammo do
 						vehicles[unitID].reloadFrame[weaponNum] = 0
 						if ammo == 0 then

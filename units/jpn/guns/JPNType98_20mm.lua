@@ -9,7 +9,6 @@ local JPN_Type98_20mm_Truck = AAGunTractor:New{
 local JPN_Type98_20mm_Stationary = AAGun:New{
 	name					= "Deployed Type 98 20mm Gun",
 	corpse					= "JPNType98_20mm_Destroyed",
-	script					= "ITABreda20_Stationary.cob",
 
 	weapons = {
 		[1] = { -- AA
