@@ -8,9 +8,7 @@ local GBR_25Pdr_Truck = HGunTractor:New{
 local GBR_25Pdr_Stationary = HGun:New{
 	name					= "Deployed Q.F. 25 Pounder",
 	corpse					= "gbr25pdr_destroyed",
-	customParams = {
-		weaponcost	= 18,
-	},
+
 	weapons = {
 		[1] = { -- HE
 			name				= "qf25pdrhe",

@@ -97,7 +97,6 @@ local AAGun = DeployedGun:New{
 	iconType			= "aaartillery",
 	maxDamage			= 1250,
 	customParams = {
-		weaponswithammo		= 2,
 		maxammo				= 16,
 		scriptAnimation		= "aa",
 	},
@@ -107,9 +106,7 @@ local ATGun = DeployedGun:New{
 	description			= "Deployed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
-	customParams = {
-		weaponswithammo		= 1,
-	},
+
 	weapons = {
 		[1] = { -- AP
 			maxAngleDif			= 70,
@@ -129,9 +126,7 @@ local FGGun = DeployedGun:New{
 	description			= "Deployed Field Gun",
 	buildCostMetal		= 1300,
 	iconType			= "artillery",
-	customParams = {
-		weaponswithammo		= 2,
-	},
+
 	weapons = {
 		[1] = { -- HE
 			maxAngleDif			= 60,
@@ -148,7 +143,6 @@ local HGun = DeployedGun:New{
 	iconType			= "artillery",
 	customParams = {
 		canAreaAttack		= true,
-		weaponswithammo		= 2,
 		weapontoggle		= "smoke",
 	},
 	weapons = {
@@ -169,7 +163,6 @@ local RGun = DeployedGun:New{
 		cegPiece = {
 			[1]				= "backblast",
 		},
-		weaponswithammo		= 1,
 		scriptAnimation		= "rocket",
 	},
 	weapons = {

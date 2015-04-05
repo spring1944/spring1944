@@ -10,7 +10,6 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 	corpse					= "gernebelwerfer_destroyed",
 	customParams = {
 		maxammo		= 1,
-		weaponcost	= 360,
 	},
 	weapons = {
 		[1] = {

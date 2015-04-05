@@ -30,8 +30,6 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		armor_side			= 30,
 		armor_top			= 8,
 		maxammo				= 10,
-		weaponcost			= 10,
-		weaponswithammo		= 1,
 		turretturnspeed		= 32, -- 11s for 360
 		maxvelocitykmh		= 66,
 	}

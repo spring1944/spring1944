@@ -224,6 +224,7 @@ local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
 		no_range_adjust    = true,
 		armor_hit_side     = "top",
 		cegflare           = "SMALL_MUZZLEFLASH",
+		weaponcost         = -1, -- to automagic weaponswithammo
 	},
 }
 

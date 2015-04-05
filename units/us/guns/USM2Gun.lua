@@ -8,9 +8,7 @@ local US_M2Gun_Truck = HGunTractor:New{
 local US_M2Gun_Stationary = HGun:New{
 	name					= "Deployed 105mm M2",
 	corpse					= "USM2Gun_Destroyed",
-	customParams = {
-		weaponcost	= 30,
-	},
+
 	weapons = {
 		[1] = { -- HE
 			name				= "M2HE",

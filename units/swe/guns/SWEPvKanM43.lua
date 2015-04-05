@@ -9,9 +9,7 @@ local SWE_PvKanM43_Truck = ATGunTractor:New{
 local SWE_PvKanM43_Stationary = LightATGun:New{
 	name					= "Deployed 5.7cm PvKan m/43",
 	corpse					= "ruszis2_destroyed", -- TODO: change
-	customParams = {
-		weaponcost	= 10,
-	},
+
 	weapons = {
 		[1] = { -- AP
 			name				= "zis257mmap", -- TODO: change

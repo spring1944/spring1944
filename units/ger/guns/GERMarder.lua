@@ -19,9 +19,8 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_front			= 10,
 		armor_rear			= 10,
 		armor_side			= 13,
-		armor_top			= 10,
+		armor_top			= 10,4
 		maxammo				= 6,
-		weaponcost			= 16,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 42,
 	},

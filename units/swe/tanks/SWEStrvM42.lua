@@ -42,7 +42,6 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	},
 	customParams = {
 		maxammo				= 15,
-		weaponcost			= 12,
 		maxvelocitykmh		= 42,
 		
 		cegpiece = {
@@ -55,9 +54,6 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 local SWEBBVM42 = EngineerVehicle:New(MediumTank):New(StrvM42Base):New{
 	name				= "Bärgningsbandvagn m/42",
 	category			= "HARDVEH", -- don't trigger mines
-	customParams = {
-		weaponswithammo			= 0,
-	},
 }
 
 return lowerkeys({

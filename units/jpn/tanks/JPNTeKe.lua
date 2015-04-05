@@ -32,7 +32,6 @@ local JPNTeKe = TeKeBase:New{
 	},
 	customParams = {
 		maxammo				= 15,
-		weaponcost			= 8,
 	},
 }
 
@@ -46,9 +45,6 @@ local JPNTeKe_HMG = TeKeBase:New{
 		[2] = {
 			name				= ".50calproof",
 		},
-	},
-	customParams = {
-		weaponswithammo		= 0,
 	},
 }
 

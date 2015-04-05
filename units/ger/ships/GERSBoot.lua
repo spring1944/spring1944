@@ -24,8 +24,6 @@ local GER_SBoot = BoatMother:New{
 	customparams = {
 		soundcategory = "GER/Boat",
 	    maxammo				= 4,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"GER_SBoot_Turret_20mm_Front",
 			"GER_SBoot_Turret_20mm_Rear",

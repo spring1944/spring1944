@@ -21,9 +21,10 @@ local TorpedoClass   = Weapon:New{
 	waterWeapon        = true,
 	weaponType         = "TorpedoLauncher",
 	customparams = {
-		damagetype       = "shapedcharge",
-	minrange           = 400, -- *
-	onlytargetcategory = "LARGESHIP",
+		damagetype         = "shapedcharge",
+		weaponcost         = 40,
+		minrange           = 400, -- *
+		onlytargetcategory = "LARGESHIP",
 	},
 }
 

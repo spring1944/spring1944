@@ -21,7 +21,6 @@ local RUSSU100 = MediumTank:New(TankDestroyer):New{
 		armor_side			= 46,
 		armor_top			= 20,
 		maxammo				= 7,
-		weaponcost			= 22,
 		maxvelocitykmh		= 48,
 	},
 }

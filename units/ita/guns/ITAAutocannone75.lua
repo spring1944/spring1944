@@ -14,8 +14,6 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 	},
 	customParams = {
 		maxammo				= 5,
-		weaponcost			= 12,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 38,
 	},
 }

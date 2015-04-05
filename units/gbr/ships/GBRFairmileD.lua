@@ -31,8 +31,6 @@ local GBR_FairmileD = BoatMother:New{
 	},
 	customparams = {
 		maxammo				= 4,
-		weaponcost			= 40,
-		weaponswithammo		= 4,
 		children = {
 			"GBRFairmileD_Turret_6pdr_Front",
 			"GBRFairmileD_Turret_Vickers50",

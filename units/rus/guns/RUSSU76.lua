@@ -24,7 +24,6 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 		armor_side			= 12,
 		armor_top			= 7,
 		maxammo				= 11,
-		weaponcost			= 12,
 		maxvelocitykmh		= 45,
 	},
 }

@@ -29,7 +29,6 @@ local RUST3476 = MediumTank:New{
 		armor_side			= 52,
 		armor_top			= 20,
 		maxammo				= 19,
-		weaponcost			= 12,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 53,
 	},

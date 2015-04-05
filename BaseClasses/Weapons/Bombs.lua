@@ -18,6 +18,7 @@ local BombClass = Weapon:New{
 	customparams = {
 		no_range_adjust    = true,
 		damagetype         = [[explosive]],
+		weaponcost         = -1, -- for automagic weaponswithammo
 	},
 	damage = {
 		default            = 30000,

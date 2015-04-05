@@ -164,8 +164,6 @@ local MedMortarInf = Infantry:New{
 		},
 		
 		maxammo				= 10,
-		weaponcost			= 15, -- TODO: make this a weapon tag
-		weaponswithammo		= 2, -- TODO: then this can be auto-detected
 		weapontoggle 		= "smoke",
 	},
 }
@@ -174,9 +172,6 @@ local LightMortarInf = MedMortarInf:New{
 	description			= "Light Infantry Mortar",
 	hightrajectory		= false,
 	maxVelocity			= 1.45,
-	customParams = {
-		weaponcost			= 7, -- TODO: make this a weapon tag
-	},
 }
 	
 local FlameInf = Infantry:New{
@@ -189,8 +184,6 @@ local FlameInf = Infantry:New{
 
 	customParams = {
 		maxammo				= 5,
-		weaponcost			= 4, -- TODO: make this a weapon tag
-		weaponswithammo		= 1, -- TODO: then this can be auto-detected
 	},
 
 	weapons = {
@@ -279,8 +272,6 @@ local InfantryGun = Infantry:New{
 	customParams = {
 		hasturnbutton		= true,
 		maxammo				= 4,
-		weaponcost			= 12,
-		weaponswithammo		= 1,
 		infgun				= true,
 		scriptAnimation = "infantrygun",
 	},

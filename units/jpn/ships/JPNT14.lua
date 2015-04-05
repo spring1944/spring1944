@@ -25,8 +25,6 @@ local JPNT14 = BoatMother:New{
 	},
 	customparams = {
 	    maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"JPNT14_Turret_25mm",
 		},

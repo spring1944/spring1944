@@ -22,8 +22,6 @@ local ITAL6_40lf = LightTank:New{
 		armor_side			= 17,
 		armor_top			= 10,
 		maxammo				= 8,
-		weaponcost			= 8,
-		weaponswithammo		= 1,
 		maxvelocitykmh		= 42,
 	},
 }

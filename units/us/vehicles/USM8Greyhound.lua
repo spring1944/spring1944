@@ -34,8 +34,6 @@ local USM8Greyhound = ArmouredCar:New{
 		armor_side			= 11,
 		armor_top			= 3,
 		maxammo				= 15,
-		weaponcost			= 8,
-		weaponswithammo		= 2,
 		maxvelocitykmh		= 89,
 		
 		cegpiece = {

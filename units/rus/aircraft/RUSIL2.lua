@@ -17,8 +17,6 @@ local RUS_IL2 = FighterBomber:New{
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
 		maxammo				= 8,
-		weaponcost			= -1,
-		weaponswithammo		= 2,
 	},
 
 	weapons = {

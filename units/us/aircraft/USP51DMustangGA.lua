@@ -15,8 +15,6 @@ local US_P51DMustangGA = AttackFighter:New{
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
 		maxammo				= 10,
-		weaponcost			= -1,
-		weaponswithammo		= 2,
 	},
 
 	weapons = {

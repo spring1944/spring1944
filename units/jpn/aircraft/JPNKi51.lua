@@ -19,8 +19,6 @@ local JPN_Ki51 = Fighter:New{
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
 		maxammo				= 4,
-		weaponcost			= 0,
-		weaponswithammo		= 4,
 	},
 
 	weapons = {

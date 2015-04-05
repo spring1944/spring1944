@@ -17,8 +17,6 @@ local GER_Ju87G = Fighter:New{
 		enginesound			= "stukab-",
 		enginesoundnr		= 12,
 		maxammo				= 36,
-		weaponcost			= -1,
-		weaponswithammo		= 2,
 	},
 
 	weapons = {

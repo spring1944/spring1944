@@ -26,7 +26,6 @@ local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 19,
 		maxammo				= 10,
-		weaponcost			= 19,
 		turretturnspeed		= 8, -- Manual traverse 45s
 		maxvelocitykmh		= 51,
 		

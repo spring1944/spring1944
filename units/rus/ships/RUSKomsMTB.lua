@@ -23,8 +23,6 @@ local RUS_KomsMTB = BoatMother:New{
 	},
 	customparams = {
 	    maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"RUSKomsMTB_Turret_DShK", 
 			"RUSKomsMTB_Turret_DShK", 

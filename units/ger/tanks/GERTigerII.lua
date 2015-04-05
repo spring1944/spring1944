@@ -29,7 +29,6 @@ local GERTigerII = HeavyTank:New{
 		armor_side			= 84,
 		armor_top			= 40,
 		maxammo				= 16,
-		weaponcost			= 26,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 38,
 	},

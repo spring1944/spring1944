@@ -8,9 +8,7 @@ local RUS_ZiS3_Truck = FGGunTractor:New{
 local RUS_ZiS3_Stationary = FGGun:New{
 	name					= "Deployed 76mm ZiS-3",
 	corpse					= "RUSZiS-3_Destroyed",
-	customParams = {
-		weaponcost			= 12,
-	},
+	
 	weapons = {
 		[1] = { -- HE
 			name	= "ZiS376mmHE",

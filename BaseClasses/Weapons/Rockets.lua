@@ -54,6 +54,7 @@ local AirRocket = Rocket:New{
 	customparams = {
 		no_range_adjust    = true,
 		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP",
+		weaponcost         = -1, -- needed to automagic weaponswithammo for game_ammo to recognise that ammo is depleted
 	},
 }
 

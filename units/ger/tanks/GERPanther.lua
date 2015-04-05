@@ -29,7 +29,6 @@ local GERPanther = HeavyTank:New{
 		armor_side			= 49,
 		armor_top			= 16,
 		maxammo				= 15,
-		weaponcost			= 19,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 46,
 	},

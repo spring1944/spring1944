@@ -14,7 +14,6 @@ local ITAAutocannone90 = Truck:New(TankDestroyer):New{
 	},
 	customParams = {
 		maxammo				= 5,
-		weaponcost			= 20,
 		maxvelocitykmh		= 45,
 	},
 }

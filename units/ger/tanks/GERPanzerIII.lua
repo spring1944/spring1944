@@ -29,7 +29,6 @@ local GERPanzerIII = MediumTank:New{
 		armor_side			= 31,
 		armor_top			= 14,
 		maxammo				= 12,
-		weaponcost			= 10,
 		maxvelocitykmh		= 40,
 	},
 }

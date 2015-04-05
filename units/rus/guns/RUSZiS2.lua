@@ -9,9 +9,7 @@ local RUS_ZiS2_Truck = ATGunTractor:New{
 local RUS_ZiS2_Stationary = LightATGun:New{
 	name					= "Deployed 57mm ZiS-2",
 	corpse					= "ruszis2_destroyed",
-	customParams = {
-		weaponcost	= 10,
-	},
+
 	weapons = {
 		[1] = { -- AP
 			name				= "zis257mmap",

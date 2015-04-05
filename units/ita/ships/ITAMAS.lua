@@ -22,8 +22,6 @@ local ITA_MAS = BoatMother:New{
 	},
 	customparams = {
 		maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"ITAMS_Turret_20mm_Rear", 
 		},

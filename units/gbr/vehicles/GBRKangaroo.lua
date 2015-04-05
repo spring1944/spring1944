@@ -18,7 +18,6 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 		armor_rear			= 43,
 		armor_side			= 44,
 		armor_top			= 15,
-		weaponswithammo		= 0,
 		maxvelocitykmh		= 40,
 	},
 }

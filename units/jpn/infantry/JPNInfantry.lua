@@ -123,8 +123,6 @@ local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	
 	customParams = {
 		maxammo				= 1,
-		weaponcost			= 70,
-		weaponswithammo		= 0,
 	},
 }
 
@@ -140,8 +138,6 @@ local JPN_Type4Mortar_Stationary = Deployed:New{
 		canareaattack		= true,
 		canfiresmoke		= true,
 		maxammo				= 1,
-		weaponcost			= 70,
-		weaponswithammo		= 2,
 		weapontoggle		= "smoke",
 		--scriptAnimation		= "gun",
 	},

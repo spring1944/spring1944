@@ -8,9 +8,7 @@ local GER_PaK40_Truck = ATGunTractor:New{
 local GER_PaK40_Stationary = ATGun:New{
 	name					= "Deployed 7.5cm PaK 40",
 	corpse					= "gerpak40_destroyed",
-	customParams = {
-		weaponcost	= 16,
-	},
+
 	weapons = {
 		[1] = { -- AP
 			name				= "KwK75mmL48AP",

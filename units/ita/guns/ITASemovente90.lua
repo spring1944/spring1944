@@ -21,7 +21,6 @@ local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 10,
 		maxammo				= 6,
-		weaponcost			= 20,
 		maxvelocitykmh		= 25,
 	},
 }

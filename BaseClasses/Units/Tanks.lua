@@ -19,7 +19,6 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		blockfear			= true,
 		soundcategory		= "<SIDE>/Tank",
 		hasturnbutton		= true,
-		weaponswithammo		= 2,
 		weapontoggle		= "priorityAPHE",
 		
 	},
@@ -79,7 +78,6 @@ local TankDestroyer = AssaultGun:New{
 	description 		= "Tank Destroyer",
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP/TD",
-		weaponswithammo		= 1, -- AP only
 		weapontoggle		= false,
 	}
 }
@@ -93,7 +91,6 @@ local SPArty = Unit:New{ -- not a full class (interface)
 	customParams = {
 		canareaattack		= true,
 		soundcategory		= "<SIDE>/Tank/SP",
-		weaponswithammo		= 1, -- No smoke!
 		weapontoggle		= false,
 	}
 }

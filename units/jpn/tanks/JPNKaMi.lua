@@ -33,7 +33,6 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		armor_side			= 14,
 		armor_top			= 6,
 		maxammo				= 15,
-		weaponcost			= 8,
 		maxvelocitykmh		= 37,
 		
 		cegpiece = {

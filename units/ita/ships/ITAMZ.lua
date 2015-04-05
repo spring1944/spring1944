@@ -30,8 +30,6 @@ local ITA_MZ = TankLandingCraft:New{
 	customparams = {
 		supplyRange				= 350, -- override, smaller radius as armed
     	maxammo					= 7,
-    	weaponcost				= 18,
-    	weaponswithammo			= 1,
 		-- other LCT don't have armour values currently - not sure what impact this will have on their resilience?
 		armor_front				= 6,
     	armor_rear				= 16,

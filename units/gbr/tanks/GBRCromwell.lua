@@ -29,7 +29,6 @@ local GBRCromwell = MediumTank:New{
 		armor_side			= 37,
 		armor_top			= 20,
 		maxammo				= 12,
-		weaponcost			= 12,
 		turretturnspeed		= 25, -- 14-15s for 360
 		maxvelocitykmh		= 64,
 	},
@@ -54,7 +53,6 @@ local GBRCromwellMkVI = GBRCromwell:New{
 	},
 	customParams = {
 		maxammo				= 10,
-		weaponcost			= 20,
 		weapontoggle		= "smoke",
 		canfiresmoke		= true,
 	},

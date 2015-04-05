@@ -32,7 +32,6 @@ local SWEStrvM41 = LightTank:New{
 		armor_side			= 24,
 		armor_top			= 8,
 		maxammo				= 15,
-		weaponcost			= 8,
 		maxvelocitykmh		= 42,
 		
 		cegpiece = {

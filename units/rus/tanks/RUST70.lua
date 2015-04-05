@@ -29,7 +29,6 @@ local RUST70 = LightTank:New{
 		armor_side			= 18,
 		armor_top			= 10,
 		maxammo				= 18,
-		weaponcost			= 8,
 		maxvelocitykmh		= 45,
 	},
 }

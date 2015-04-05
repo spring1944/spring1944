@@ -23,7 +23,6 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		armor_side			= 13,
 		armor_top			= 4,
 		maxammo				= 6,
-		weaponcost			= 30,
 		maxvelocitykmh		= 40,
 	},
 }

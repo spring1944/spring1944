@@ -69,7 +69,6 @@ local JPNChiHa120mm = ChiHaBase:New{
 	
 	customParams = {
 		maxammo				= 5,
-		weaponswithammo		= 1,
 		
 		cegpiece = {
 			[2] = "bow_mg_flare",

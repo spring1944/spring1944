@@ -21,7 +21,6 @@ local GERJagdPanzerIV = MediumTank:New(TankDestroyer):New{
 		armor_side			= 36,
 		armor_top			= 20,
 		maxammo				= 15,
-		weaponcost			= 19,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 35,
 	},

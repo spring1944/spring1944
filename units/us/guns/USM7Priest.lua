@@ -23,7 +23,6 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 		armor_side			= 19,
 		armor_top			= 25,
 		maxammo				= 13,
-		weaponcost			= 30,
 		maxvelocitykmh		= 39,
 		
 		cegpiece = {

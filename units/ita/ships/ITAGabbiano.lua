@@ -25,8 +25,6 @@ local ITA_Gabbiano = BoatMother:New{
 	},
 	customparams = {
 		maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"ITAGabbiano_Turret_100mm", 
 			"ITAGabbiano_Turret_20mm", 

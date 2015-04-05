@@ -25,7 +25,6 @@ local SWESAVM43 = LightTank:New(AssaultGun):New{
 		armor_side			= 13,
 		armor_top			= 13,
 		maxammo				= 11,
-		weaponcost			= 12,
 		maxvelocitykmh		= 43,
 	},
 }

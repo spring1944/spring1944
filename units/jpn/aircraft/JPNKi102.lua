@@ -20,7 +20,6 @@ local JPN_Ki102 = Fighter:New{
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
 		maxammo				= 18,
-		weaponswithammo		= 1,
 	},
 
 	weapons = {

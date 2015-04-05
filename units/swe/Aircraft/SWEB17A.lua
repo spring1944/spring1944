@@ -19,8 +19,6 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
 		maxammo				= 5,
-		weaponcost			= 0,
-		weaponswithammo		= 5,
 	},
 
 	weapons = {

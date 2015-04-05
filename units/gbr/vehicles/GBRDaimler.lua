@@ -31,8 +31,6 @@ local GBRDaimler = ArmouredCar:New{
 		armor_side			= 11,
 		armor_top			= 8,
 		maxammo				= 13,
-		weaponcost			= 8,
-		weaponswithammo		= 2,
 		reversemult			= 0.75,
 		maxvelocitykmh		= 80,
 	}

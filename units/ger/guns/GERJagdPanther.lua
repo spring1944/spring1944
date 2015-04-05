@@ -21,7 +21,6 @@ local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 		armor_side			= 46,
 		armor_top			= 25,
 		maxammo				= 15,
-		weaponcost			= 26,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 46,
 	},

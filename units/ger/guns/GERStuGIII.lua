@@ -24,7 +24,6 @@ local GERStuGIII = MediumTank:New(AssaultGun):New{
 		armor_side			= 30,
 		armor_top			= 17,
 		maxammo				= 11,
-		weaponcost			= 16,
 		soundcategory		= "GER/Tank/StuG",
 		maxvelocitykmh		= 40,
 	},

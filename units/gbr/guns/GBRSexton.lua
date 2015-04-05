@@ -20,7 +20,6 @@ local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 		armor_side			= 38,
 		armor_top			= 6,
 		maxammo				= 21,
-		weaponcost			= 18,
 		maxvelocitykmh		= 40,
 	},
 }

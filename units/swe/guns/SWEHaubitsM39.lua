@@ -8,9 +8,7 @@ local SWEHaubitsM39_Truck = HGunTractor:New{
 local SWEHaubitsM39_Stationary = HGun:New{
 	name					= "Deployed 10.5cm Haubits m/39",
 	corpse					= "gerlefh18_destroyed",
-	customParams = {
-		weaponcost	= 30,
-	},
+
 	weapons = {
 		[1] = { -- HE
 			name				= "leFH18HE",
