@@ -462,6 +462,7 @@ function script.Shot(weaponNum)
 		if brakeright then
 			GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 		end
+		GG.EmitSfxName(unitID, base, "fire_dust")
 	end
 end
 
