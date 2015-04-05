@@ -11,6 +11,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildTime=3600;
   canBeAssisted=0;
+  canMove=1;
   category=BUILDING;
   corpse=BuildingDebris_Large;
   [customParams] {

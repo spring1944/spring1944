@@ -11,6 +11,7 @@
   buildingGroundDecalType=Dirt2.dds;
   buildTime=3600;
   canBeAssisted=0;
+  canMove=1;
   category=BUILDING;
   collisionVolumeScales=96 15 76;
   collisionVolumeOffsets=14 0 5;
