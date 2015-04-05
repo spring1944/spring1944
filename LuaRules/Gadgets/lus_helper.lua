@@ -348,8 +348,8 @@ function gadget:GamePreload()
 		end
 		
 		info.facing = cp.facing or 0 -- default to front
-		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)
-		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 60)
+		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 24)
+		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 30)
 		info.barrelRecoilSpeed = (tonumber(cp.barrelrecoilspeed) or 10)
 		info.barrelRecoilDist = (tonumber(cp.barrelrecoildist) or 5)
 		info.aaWeapon = (tonumber(cp.aaweapon) or nil)
