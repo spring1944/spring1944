@@ -11,7 +11,7 @@ local Null = Unit:New{
 	maxVelocity = 0.01,
 	movementClass = "KBOT_Infantry", -- as is this
 	objectName = "GEN/Null.S3O",
-	script = "null.cob",
+	script = "null.lua",
 	selfDestructAs = "noweapon",
 	stealth = true,
 	

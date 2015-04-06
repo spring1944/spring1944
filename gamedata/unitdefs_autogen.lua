@@ -21,7 +21,7 @@ local function getTemplate(maxDamage, maxSlope)
 				maxvelocity = 0.01,
 				movementclass = "KBOT_Infantry",
 				objectname = "GEN/Null.S3O",
-				script = "null.cob",
+				script = "null.lua",
 				selfdestructas = "noweapon",
 				sfxtypes = {
 				},

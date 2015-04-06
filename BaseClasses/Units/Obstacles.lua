@@ -28,7 +28,7 @@ local MineSign = Mine:New{
 	category				= "FLAG",
 	minCloakDistance		= 160,
 	objectName				= "GEN/MineSign.S3O",
-	script					= "null.cob",
+	script					= "null.lua",
 	sightDistance			= 1,
 	yardmap					= "o",
 	useBuildingGroundDecal	= false,
@@ -48,7 +48,7 @@ local TankObstacle = Unit:New{
 	maxSlope				= 20,
 	maxWaterDepth			= 50,
 	objectName				= "GEN/TankObstacle.S3O",
-	script					= "null.cob",
+	script					= "null.lua",
 	yardmap					= "yy yy",
 
   	customparams = {
