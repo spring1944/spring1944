@@ -27,7 +27,7 @@ local ATMine = MineClass:New{
     armor_hit_side     = [[top]],
     armor_penetration  = 100,
     damagetype         = [[shapedcharge]], -- overrides default
-	onlytargetcategory     = AP.customparams.onlytargetcategory,
+	onlytargetcategory     = "SOFTVEH OPENVEH HARDVEH",
   },
   damage = {
     default            = 10000,
