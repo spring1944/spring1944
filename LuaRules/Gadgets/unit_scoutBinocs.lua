@@ -31,6 +31,7 @@ local activeBinocs = {} -- activeBinocs[ownerID] = {origin={x,y,z},target,telepo
 
 local CMD_LOOK = GG.CustomCommands.GetCmdID("CMD_LOOK")
 local COBSCALE = 65536
+local TTL = 2.5 * 30
 
 local lookCmdDesc = {
 	id = CMD_LOOK,
@@ -115,6 +116,7 @@ function gadget:UnitCreated(unitID, unitDefID)
 	local ud = UnitDefs[unitDefID]
 	if ud.name == "binocspot" then
 		SetUnitNoSelect(unitID, true)
+		GG.Delay.DelayCall(Spring.DestroyUnit, {unitID}, TTL)
 	end
 	-- should we add the Look command?
 	local weapons = UnitDefs[unitDefID].weapons
