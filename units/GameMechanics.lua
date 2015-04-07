@@ -27,8 +27,7 @@ local Buoy = Flag:New{ -- One day...
 	description			= "Naval Spawn Point",
 	floater				= true,
 	objectName			= "Gen/buoy.S3O",
-	script				= "buoy.cob", --overwrite flag
-	canMove = false, -- for some reason cannot be true or it won't float?
+	canMove 			= false, -- for some reason cannot be true or it won't float?
 }
 
 local SmallTankShelter = TankShelter:New{

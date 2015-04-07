@@ -5,7 +5,7 @@ local door = piece("door")
 local radar = piece("radar")
 
 function build(buildID, buildDefID)
-	if UnitDefs[unitDefID].customParams.separatebuildspot then
+	if UnitDef.customParams.separatebuildspot then
 		local buildDef = UnitDefs[buildDefID]
 		if buildDef and buildDef.customParams.buildoutside then
 			Move(pad, x_axis, 50)

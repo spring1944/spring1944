@@ -230,7 +230,7 @@ function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 	if flagType == "flag" then
 		SetUnitRulesParam(flagID, "lifespan", 0)
 		local env = Spring.UnitScript.GetScriptEnv(flagID)
-		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
+		Spring.UnitScript.CallAsUnit(flagID, env.script.Create, teamID)
 	end
 end
 

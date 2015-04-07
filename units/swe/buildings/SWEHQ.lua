@@ -3,7 +3,6 @@ local SWE_HQ = HQ:New{
 	footprintX				= 7,
 	footprintZ				= 7,
 	maxDamage				= 10625, -- TODO: Same as GER Bunker! Change me!
-	script					= "ushq.cob",
 	yardmap					= [[ooooooo 
 							    oocccoo 
 								oocccoo 
