@@ -168,6 +168,11 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	-- Pass unitID to constructor
+	env = Spring.UnitScript.GetScriptEnv(builderID)
+	if env and env.build then
+		Spring.UnitScript.CallAsUnit(builderID, env.build, unitID, unitDefID)
+	end
 	local info = GG.lusHelper[unitDefID]
 	local cp = UnitDefs[unitDefID].customParams
 	if not udCache[unitDefID] then

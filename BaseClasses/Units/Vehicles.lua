@@ -65,6 +65,10 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
 	turnRate			= 440,
+	
+	customParams = {
+		buildOutside	= 1,
+	},
 }
 
 local PontoonTruck = Truck:New{
@@ -109,7 +113,6 @@ local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	iconType			= "truck",
 
 	customParams = {
-		buildOutside	= 1,
 		dontCount		= 1,
 	},
 }
