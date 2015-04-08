@@ -118,7 +118,6 @@ local JPN_Observ = ObservInf:New(JPNInf):New{
 local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	name				= "Type 4 200mm Mortar",
 	buildCostMetal		= 1500,
-	buildPic			= "JPNType4Mortar_Stationary.png", -- TODO: make a new one for deployed?
 	iconType			= "artillery",
 	
 	customParams = {
