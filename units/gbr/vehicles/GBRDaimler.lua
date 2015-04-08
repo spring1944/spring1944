@@ -32,6 +32,7 @@ local GBRDaimler = ArmouredCar:New{
 		armor_top			= 8,
 		maxammo				= 13,
 		reversemult			= 0.75,
+		turretturnspeed		= 20, -- manual, light turret
 		maxvelocitykmh		= 80,
 	}
 }

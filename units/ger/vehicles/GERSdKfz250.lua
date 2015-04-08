@@ -32,6 +32,7 @@ local GERSdKfz250 = ArmouredCar:New{
 		armor_side			= 9,
 		armor_top			= 0,
 		maxammo				= 19,
+		turretturnspeed		= 20, -- manual, light turret
 		maxvelocitykmh		= 76,
 	}
 }

@@ -34,6 +34,7 @@ local USM8Greyhound = ArmouredCar:New{
 		armor_side			= 11,
 		armor_top			= 3,
 		maxammo				= 15,
+		turretturnspeed		= 12, -- manual
 		maxvelocitykmh		= 89,
 		
 		cegpiece = {

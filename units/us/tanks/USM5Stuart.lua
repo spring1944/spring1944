@@ -77,6 +77,7 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 	customParams = {
 		maxammo				= 9,
 		weapontoggle		= false,
+		turretturnspeed		= 12, -- manual
 		cegpiece = {
 			[2] = "aaflare",
 		},

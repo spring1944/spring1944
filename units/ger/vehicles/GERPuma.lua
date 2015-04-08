@@ -31,6 +31,7 @@ local GERPuma = HeavyArmouredCar:New{
 		armor_side			= 10,
 		armor_top			= 8,
 		maxammo				= 10,
+		turretturnspeed		= 12, -- manual
 		reversemult			= 0.75,
 		maxvelocitykmh		= 80,
 	}
