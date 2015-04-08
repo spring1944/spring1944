@@ -159,6 +159,7 @@ local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
 -- AA Round Class
 
 local AA = Weapon:New{
+	accuracy           = 200,
 	burnblow           = true,
 	canattackground    = false,
 	collisionSize      = 5,

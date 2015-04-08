@@ -147,6 +147,9 @@ local HeavyMGClass = MGClass:New{
 }
 
 local AAMG = Weapon:New{ -- should be used like ammo bases
+	sprayAngle         = 1050,
+	accuracy           = 400,
+	movingAccuracy     = 800,
 	canAttackGround    = false,
 	predictBoost       = 0.75,
 	range              = 1050,
