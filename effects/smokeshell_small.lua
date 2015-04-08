@@ -5,11 +5,11 @@ return {
     smoke = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
-      count              = 10,
+      count              = 2,
       ground             = true,
       water              = true,
       properties = {
-        airdrag            = 0.18,
+        airdrag            = 0.08,
         alwaysvisible      = true,
         colormap           = [[0 0 0 0.01  0.5 0.5 0.5 0.5     0 0 0 0.01]],
         dir                = [[dir]],
@@ -17,7 +17,7 @@ return {
         emitrot            = 0,
         emitrotspread      = 360,
         emitvector         = [[0, 1, 0]],
-        gravity            = [[0, 1, 0]],
+        gravity            = [[0, -5, 0]],
         numparticles       = 5,
         particlelife       = 100,
         particlelifespread = 50,

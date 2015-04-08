@@ -5,7 +5,7 @@ return {
     smoke = {
       air                = true,
       class              = [[CSimpleParticleSystem]],
-      count              = 10,
+      count              = 2,
       ground             = true,
       water              = true,
       properties = {
@@ -17,7 +17,7 @@ return {
         emitrot            = 0,
         emitrotspread      = 360,
         emitvector         = [[0, 1, 0]],
-        gravity            = [[0, 1, 0]],
+        gravity            = [[0, -0.6, 0]],
         numparticles       = 7,
         particlelife       = 120,
         particlelifespread = 50,

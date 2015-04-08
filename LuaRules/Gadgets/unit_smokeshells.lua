@@ -283,7 +283,6 @@ function gadget:GameFrame(n)
 				-- wind blowing the smoke away
 				local dx, dy, dz = GetWind()
 				tmpSource.x = tmpSource.x + dx/WIND_SPEED_DIVISOR
-				tmpSource.y = tmpSource.y + dy/WIND_SPEED_DIVISOR
 				tmpSource.z = tmpSource.z + dz/WIND_SPEED_DIVISOR
 			end
 		end
@@ -292,7 +291,7 @@ function gadget:GameFrame(n)
 	if n % VFX_SMOKE_PERIOD == VFX_SMOKE_OFFSET then
 		for _, tmpSource in pairs(SmokeSources) do
 			if tmpSource then
-				SpawnCEG(tmpSource.ceg, tmpSource.x, tmpSource.y, tmpSource.z)
+				SpawnCEG(tmpSource.ceg, tmpSource.x, tmpSource.y+10, tmpSource.z)
 			end
 		end
 	end
