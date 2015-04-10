@@ -1,11 +1,11 @@
 base
     stand
         turret
-            guns
-                flare1
-                flare2
-                flare3
-                flare4
+            sleeve
+                flare_1
+                flare_2
+                flare_3
+                flare_4
             crewman
     wheel1
     wheel2

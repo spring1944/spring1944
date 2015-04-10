@@ -2,8 +2,8 @@ base
     wheel1
     wheel2
     turret
-        mantlet
+        sleeve
             gun
-                flare
+                flare_1
     spare
     exhaust

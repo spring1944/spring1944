@@ -9,9 +9,9 @@ base
     wheel6
     rearwheel
     tracks2
-    mantlet
+    turret_sleeve
         barrel
-            flare
+            flare_1
             brakeright
             brakeleft
     exhaust

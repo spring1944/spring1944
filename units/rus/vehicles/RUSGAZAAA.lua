@@ -23,14 +23,6 @@ local RUSGAZAAA = TruckAA:New{
 			slaveTo				= 1,
 		},
 	},
-	customParams = {
-		cegpiece = {
-			[1] = "flare1",
-			[2] = "flare2",
-			[3] = "flare3",
-			[4] = "flare4",
-		},
-	}
 }
 
 return lowerkeys({
