@@ -15,5 +15,8 @@ base
                     rloarm1
     carriage
         barrel
+            rocket
+            lid
             mortarstand
+                mortarstand2
             flare
