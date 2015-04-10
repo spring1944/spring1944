@@ -29,9 +29,12 @@ local JPNChiHa = ChiHaBase:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
+            maxAngleDif			= 50,
 		},
 		[4] = { -- rear turret MG
 			name				= "Type97MG",
+            mainDir				= [[0 16 -1]],
+            maxAngleDif			= 210,
 		},
 		[5] = {
 			name				= ".50calproof",

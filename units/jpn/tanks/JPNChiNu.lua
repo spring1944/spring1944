@@ -19,6 +19,7 @@ local JPNChiNu = MediumTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
+            maxAngleDif			= 50,
 		},
 		[4] = {
 			name				= ".50calproof",

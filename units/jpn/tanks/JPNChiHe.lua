@@ -18,6 +18,7 @@ local JPNChiHe = MediumTank:New{
 		},
 		[3] = { -- bow MG
 			name				= "Type97MG",
+            maxAngleDif			= 50,
 		},
 		[4] = { -- Rear turret MG
 			name				= "Type97MG",
