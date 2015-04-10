@@ -3,24 +3,24 @@ base
     turret
         sleeve
             barrel
-                flare
-        turret_mg_1
-            turret_mg_flare_1
-        turret_mg_2
-            turret_mg_flare_2
-        turret_mg_3
-            turret_mg_flare_3
-    bow_mg
-        bow_mg_flare
+                flare_1
+        mg_sleeve_1
+            flare_3
+        mg_sleeve_2
+            flare_4
+        mg_sleeve_3
+            flare_5
+    bow_mg_turret
+        flare_6
     front_wheels
     rear_wheels
     support_wheels1
     support_wheels2
     support_wheels3
-    roller1
-    roller2
-    roller3
-    roller4
-    roller5
-    roller6
+    roller_wheel1
+    roller_wheel2
+    roller_wheel3
+    roller_wheel4
+    roller_wheel5
+    roller_wheel6
     tracks2

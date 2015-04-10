@@ -32,22 +32,20 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 		[4] = { -- coax 2
 			name				= "M1919A4Browning",
 		},
-		[4] = { -- hull
+		[5] = { -- back turret
+			name				= "M1919A4Browning",
+		},
+		[6] = { -- hull
 			name				= "M1919A4Browning",
 			maxAngleDif			= 50,
 		},
-		[5] = {
+		[7] = {
 			name				= ".50calproof",
 		},
 	},
 	customParams = {
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
-		
-		cegpiece = {
-			[3] = "turret_mg_flare_1",
-			[4] = "turret_mg_flare_2",
-		},
 	},
 }
 

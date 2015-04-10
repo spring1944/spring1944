@@ -4,12 +4,12 @@ base
     turret
         sleeve
             guns
-                flare2
-                flare1
+                flare_2
+                flare_1
     front_wheels
     rear_wheels
     support_wheels
-    roller1
-    roller2
-    roller3
-    roller4
+    roller_wheel1
+    roller_wheel2
+    roller_wheel3
+    roller_wheel4

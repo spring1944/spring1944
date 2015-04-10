@@ -21,6 +21,7 @@ local SWEStrvM41 = LightTank:New{
 		},
 		[4] = { -- hull
 			name				= "M1919A4Browning",
+			maxAngleDif			= 50,
 		},
 		[5] = {
 			name				= ".50calproof",
@@ -33,11 +34,6 @@ local SWEStrvM41 = LightTank:New{
 		armor_top			= 8,
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
-		
-		cegpiece = {
-			[3] = "turret_mg_flare",
-			[4] = "bow_mg_flare",
-		},
 	},
 }
 

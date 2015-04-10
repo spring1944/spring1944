@@ -27,11 +27,6 @@ local SWEStrvM37 = Tankette:New{
 		armor_side			= 10,
 		armor_top			= 4,
 		maxvelocitykmh		= 60,
-		
-		cegpiece = {
-			[1] = "flare1",
-			[2] = "flare2",
-		},
 	},
 }
 
