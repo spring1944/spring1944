@@ -1,9 +1,9 @@
 base
     turret
-        mantlet
+        sleeve
             barrel
-                flare
-            coaxflare
+                flare_1
+            flare_3
     frontwheel
     rearwheel
     wheel1

@@ -9,7 +9,7 @@ base
     tracks2
     tracks1
     turret
-        mantlet
-            coaxflare
+        sleeve
+            flare_3
             barrel
-                flare
+                flare_1

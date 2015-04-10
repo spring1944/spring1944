@@ -220,7 +220,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		end
 		
 		if cp.cegpiece then
-			Spring.Echo("a")
 			for weaponNum, pieceName in pairs(table.unserialize(cp.cegpiece)) do
 				if pieceMap[pieceName] and info.reloadTimes[weaponNum] then -- don't use garbage from inherited cegPiece
 					cegPieces[weaponNum] = pieceMap[pieceName]
@@ -236,7 +235,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 				end
 			end
 		else
-			Spring.Echo("b")
 			local lastflare = pieceMap["flare"] and "flare"
 			for weaponNum = 1,info.numWeapons do
 				if info.reloadTimes[weaponNum] then -- don't want any shields etc.

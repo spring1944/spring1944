@@ -3,9 +3,9 @@ base
     turret
         sleeve
             mg_barrel
-                mg_flare
+                flare_3
             barrel
-                flare
+                flare_1
     tracks
     support3
     support2
