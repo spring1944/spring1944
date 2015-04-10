@@ -96,8 +96,10 @@ local HMGInf = Infantry:New{
 	mass				= 75,
 	maxVelocity			= 0.8,
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
-	script				= "<NAME>.cob",
 	turnRate			= 420,
+	customparams = {
+		scriptanimation		= "mg",
+	},
 }
 
 local SniperInf = Infantry:New{
@@ -236,7 +238,6 @@ local EngineerInf = Infantry:New{
 	buildDistance		= 128,
 	terraformSpeed		= 300,
 	workerTime			= 15,
-	--script				= "GBRHQEngineer.cob",
 	
 	customParams = {
 		canclearmines			= true,

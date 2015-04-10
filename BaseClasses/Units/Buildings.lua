@@ -7,6 +7,7 @@ local Building = Unit:New{
 	maxWaterDepth				= 0,
 	radardistance				= 650,
 	sightDistance				= 300,
+	script						= "Yard.lua",
 	stealth						= true,
 	useBuildingGroundDecal		= true,
 	
@@ -33,7 +34,6 @@ local Yard = Building:New{
 	maxSlope					= 10,
 	reclaimable					= true,
 	showNanoSpray				= false,
-	script						= "Yard.lua",
 	workerTime					= 30,
 	yardmap						= [[ooooooo 
 								    ooooooo 
@@ -230,7 +230,6 @@ local Storage = Building:New{
 	iconType				= "stockpile",
 	maxDamage				= 1200,
 	reclaimable				= true,
-	script					= "Storage.cob",
 	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
 	customparams = {
 		armor_front				= 0,
@@ -258,7 +257,6 @@ local Supplies = Building:New{
 	footprintZ					= 4,
 	iconType					= "ammo",
 	maxDamage					= 400,
-	script						= "truckSupplies.cob",
 }
 
 local SuppliesSmall = Supplies:New{
@@ -272,7 +270,6 @@ local SuppliesSmall = Supplies:New{
 	footprintX					= 3,
 	footprintZ					= 3,
 	objectName					= "GEN/SuppliesSmall.S3O",
-	script						= "ruspresource.cob",
 	yardmap						= [[yyy yyy yyy]],
 }
 

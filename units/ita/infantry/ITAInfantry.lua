@@ -49,9 +49,6 @@ local ITA_Breda30 = LMGInf:New(ITAInf):New{
 local ITA_MG = HMGInf:New(ITAInf):New{
 	name				= "Breda M37 Heavy Machinegun",
 	script				= "Infantry.lua",
-	customparams = {
-		scriptanimation		= "mg",
-	},
 }
 
 local ITA_MG_Sandbag = SandbagMG:New{
