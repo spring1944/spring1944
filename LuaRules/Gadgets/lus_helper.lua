@@ -158,8 +158,8 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 			pitchPiece = pieceMap[currentPiece]
 		end
 		if headingPiece and pitchPiece then
-            break
-        end
+			break
+		end
 		
 		local pieceInfo = GetUnitPieceInfo(unitID, pieceMap[currentPiece])
 		currentPiece = pieceInfo.parent
@@ -220,6 +220,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		end
 		
 		if cp.cegpiece then
+			Spring.Echo("a")
 			for weaponNum, pieceName in pairs(table.unserialize(cp.cegpiece)) do
 				if pieceMap[pieceName] and info.reloadTimes[weaponNum] then -- don't use garbage from inherited cegPiece
 					cegPieces[weaponNum] = pieceMap[pieceName]
@@ -234,24 +235,25 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 					end
 				end
 			end
-        else
-            local lastflare = pieceMap["flare"] and "flare"
-            for weaponNum = 1,info.numWeapons do
-                if info.reloadTimes[weaponNum] then -- don't want any shields etc.
-                    lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
-                    Spring.Echo(UnitDefs[unitDefID].name, weaponNum, lastflare)
-                    cegPieces[weaponNum] = pieceMap[lastflare]
-                    local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
-                    aimPieces[weaponNum] = {headingPiece, pitchPiece}
-                    
-                    local _, _, _, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceMap[lastflare])
-                    local frontDir = Spring.GetUnitVectors(unitID)
-                    local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
-                    if dotFront < 0 then
-                        reversedWeapons[weaponNum] = true
-                    end
-                end
-            end
+		else
+			Spring.Echo("b")
+			local lastflare = pieceMap["flare"] and "flare"
+			for weaponNum = 1,info.numWeapons do
+				if info.reloadTimes[weaponNum] then -- don't want any shields etc.
+					lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+					Spring.Echo(UnitDefs[unitDefID].name, weaponNum, lastflare)
+					cegPieces[weaponNum] = pieceMap[lastflare]
+					local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
+					aimPieces[weaponNum] = {headingPiece, pitchPiece}
+					
+					local _, _, _, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceMap[lastflare])
+					local frontDir = Spring.GetUnitVectors(unitID)
+					local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+					if dotFront < 0 then
+						reversedWeapons[weaponNum] = true
+					end
+				end
+			end
 		end
 		
 		info.numBarrels = numBarrels

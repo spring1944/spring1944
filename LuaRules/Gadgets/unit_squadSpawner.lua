@@ -136,7 +136,12 @@ local function SpawnTransportSquad(unitID, teamID, transportSquad)
 		if passDefCP and passDefCP.maxammo then
 			Spring.SetUnitRulesParam(passID, "ammo", passDefCP.maxammo)
 		end
-		Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		if env then
+			Spring.UnitScript.CallAsUnit(unitID, env.script.TransportPickup, passID)
+		else
+			Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
+		end
 	end
 end
 

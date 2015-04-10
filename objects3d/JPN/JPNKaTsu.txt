@@ -5,12 +5,12 @@ base
     wake
     exhaust
     turret2
-        gun2
-            flare2
+        sleeve2
+            flare_2
         gunner2
     turret1
-        gun1
-            flare1
+        sleeve1
+            flare_1
         gunner1
     mid_wheel8
     mid_wheel7
