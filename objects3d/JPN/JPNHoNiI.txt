@@ -14,9 +14,9 @@ base
     front_wheels
     rear_wheels
     superstructure
-        gun_base
+        turret
             sleeve
                 barrel
-                    flare
+                    flare_1
         tent
     tracks2
