@@ -2,6 +2,7 @@ local ITAAB41 = ArmouredCar:New{
 	name				= "Autoblinda AB-41",
 	buildCostMetal		= 1085,
 	maxDamage			= 752,
+	reversemult			= 0.75,
 	trackOffset			= 10,
 	trackWidth			= 13,
 
@@ -36,7 +37,6 @@ local ITAAB41 = ArmouredCar:New{
 		armor_side			= 10,
 		armor_top			= 6,
 		maxammo				= 19,
-		reversemult			= 0.75,
 		maxvelocitykmh		= 78,
 	}
 }
