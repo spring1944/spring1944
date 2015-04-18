@@ -247,8 +247,7 @@ end
 
 function widget:Initialize()
 	local armorTypes = Game.armorTypes
-	for unitDefID=1, #UnitDefs do
-		local unitDef = UnitDefs[unitDefID]
+	for unitDefID, unitDef in pairs(UnitDefs) do
 		local cp = unitDef.customParams
 		if cp.armor_front then
 			local armor_front = cp.armor_front
@@ -267,9 +266,7 @@ function widget:Initialize()
 			}
 		end
 	end
-	for i=1,#WeaponDefs do
-		-- local weapon = unitDef.weapons[i]
-		local weaponDef = WeaponDefs[i]
+	for i, weaponDef in pairs(WeaponDefs) do
 		local customParams = weaponDef.customParams
 		local penetration
 		local dropoff

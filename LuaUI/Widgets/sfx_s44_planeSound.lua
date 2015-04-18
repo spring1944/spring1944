@@ -43,8 +43,7 @@ function widget:Initialize()
 		return
 	end
 	
-	for unitDefID=1,#UnitDefs do
-		local unitDef = UnitDefs[unitDefID]
+	for unitDefID, unitDef in pairs(UnitDefs) do
 		local engineSound = unitDef.customParams.enginesound
 		if engineSound then
 			local engineSoundNr = tonumber(unitDef.customParams.enginesoundnr)

@@ -539,8 +539,7 @@ function gadget:Initialize()
 	--  * basename match
 	--  * exact match where .cob->.lua
 	--  * basename match where .cob->.lua
-	for i=1,#UnitDefs do
-		local unitDef = UnitDefs[i]
+	for i, unitDef in pairs(UnitDefs) do
 		if (unitDef and not scripts[unitDef.scriptName]) then
 			local fn  = UNITSCRIPT_DIR .. unitDef.scriptName:lower()
 			local bn  = Basename(fn)

@@ -67,9 +67,7 @@ end
 
 
 
-for i=1,#UnitDefs do
-  local udef = UnitDefs[i]
-
+for i, udef in pairs(UnitDefs) do
   if (udef.customParams.normaltex and VFS.FileExists(udef.customParams.normaltex)) then
     unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = udef.customParams.normaltex}
 

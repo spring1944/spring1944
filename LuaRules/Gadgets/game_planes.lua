@@ -166,8 +166,7 @@ end
 --radioUnitID = { sortieCmdDesc, sortieCmdDesc, sortieCmdDesc ...}
 local radioDefs = {}
 
-for unitDefID=1, #UnitDefs do
-	local unitDef = UnitDefs[unitDefID]
+for unitDefID, unitDef in pairs(UnitDefs) do
 	local buildOptions = unitDef.buildOptions
 	
 	local sortieCmdDescs = {}

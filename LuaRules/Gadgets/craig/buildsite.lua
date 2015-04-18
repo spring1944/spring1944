@@ -264,8 +264,7 @@ function widget.UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 local function Initialize()
-	for unitDefID=1,#UnitDefs do
-		local unitDef = UnitDefs[unitDefID]
+	for unitDefID, unitDef in pairs(UnitDefs) do
 		if (not gadget.flags[unitDefID] and unitDef.speed == 0) then
 			local radius = unitDef.customParams.buildrange or DEFAULT_BUILD_RANGE
 			local numSegments = ceil(radius / segmentLength)
