@@ -121,8 +121,8 @@ for name, ud in pairs(UnitDefs) do
 	if cp and cp.maxvelocitykmh then
 		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
 	end
-	if ud.maxvelocity and not ud.maxreversevelocity and ud.reversemult then
-		ud.maxreversevelocity = ud.maxvelocity * ud.reversemult
+	if ud.maxvelocity and not ud.maxreversevelocity and cp.reversemult then
+		ud.maxreversevelocity = ud.maxvelocity * cp.reversemult
 	end
 
 	--sets base values for detection radii

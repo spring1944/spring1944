@@ -10,7 +10,6 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	leaveTracks			= true,
 	movementClass		= "TANK_Medium",
 	noChaseCategory		= "FLAG AIR MINE",
-	reversemult			= 0.5,
 	script				= "Vehicle.lua",
 	seismicSignature	= 1,
 	trackType			= "Stdtank",
@@ -20,8 +19,8 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		blockfear			= true,
 		soundcategory		= "<SIDE>/Tank",
 		hasturnbutton		= true,
+		reversemult			= 0.5,
 		weapontoggle		= "priorityAPHE",
-		
 	},
 }
 

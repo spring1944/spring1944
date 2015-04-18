@@ -15,6 +15,7 @@ local Vehicle = Unit:New{
 	
 	customParams = {
 		soundcategory = "<SIDE>/Vehicle",
+		reversemult			= 0.5,
 	},
 }
 

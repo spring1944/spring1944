@@ -10,7 +10,6 @@ local Boat = Unit:New{ -- used for transports as is
 	footprintX			= 4,
 	footprintZ 			= 4,
 	noChaseCategory		= "FLAG AIR MINE",
-	reversemult			= 0.5,
 	selfDestructAs		= "Vehicle_Explosion_Sm",
 	sightDistance		= 840,
 	turninplace			= false,
@@ -19,6 +18,7 @@ local Boat = Unit:New{ -- used for transports as is
 		soundCategory		= "<SIDE>/Boat",
 		dontCount			= 1,
 		hasturnbutton		= 1,
+		reversemult			= 0.5,
 	}
 }
 

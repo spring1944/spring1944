@@ -2,7 +2,6 @@ local SWEPBilM40 = ArmouredCar:New{
 	name				= "PBil m/40 Lynx",
 	buildCostMetal		= 1085, -- from ITA AB41
 	maxDamage			= 780,
-	reversemult			= 0.75,
 	trackOffset			= 10,
 	trackWidth			= 13,
 
