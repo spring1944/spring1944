@@ -3,8 +3,8 @@ local ITA_Gabbiano = BoatMother:New{
 	description				= "Corvette",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
-	buildCostMetal			= 10000,
-	category 				= "LARGESHIP SHIP MINETRIGGER",
+	buildCostMetal			= 15000,
+	category				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
 	maxDamage				= 67000,
@@ -42,7 +42,7 @@ local ITA_Gabbiano = BoatMother:New{
 local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 	name					= "100mm Turret",
 	description				= "Primary Turret",
-  	weapons = {	
+	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
 		},
@@ -53,13 +53,13 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 25,
 		elevationspeed			= 25,
-    },
+	},
 }
 
 local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 	name					= "20mm Turret",
 	description				= "AA Turret",
-  	weapons = {	
+	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
@@ -71,20 +71,20 @@ local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 16, -- TODO: from BMO 37mm
 		aaweapon				= 1,
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		fearlimit				= 25,
-    },
+	},
 }
 
 local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 	name					= "Twin 20mm Turret",
 	description				= "AA Turret",
-  	weapons = {	
+	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmAA",
 			maxAngleDif			= 270,
@@ -109,7 +109,7 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 16, -- TODO: from BMO 37mm
 		aaweapon				= 1,
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
@@ -117,7 +117,7 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 		elevationspeed			= 45,
 		fearlimit				= 25,
 		facing					= 2,
-    },
+	},
 }
 
 return lowerkeys({

@@ -624,8 +624,7 @@ function widget:Initialize()
 
 	myTeamID = GetMyTeamID()
 
-	for unitDefID=1,#UnitDefs do
-		local unitDef = UnitDefs[unitDefID]
+	for unitDefID, unitDef in pairs(UnitDefs) do
 		if (unitDef.customParams.supplyrange and unitDef.speed == 0) then
 			local radius = unitDef.customParams.supplyrange or DEFAULT_SUPPLY_RANGE
 			local numSegments = ceil(radius / segmentLength)

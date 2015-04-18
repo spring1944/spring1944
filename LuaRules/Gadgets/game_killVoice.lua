@@ -88,8 +88,7 @@ function gadget:Initialize()
 	end
 
 	-- preload kill voice data
-	for unitDefID=1, #UnitDefs do
-		local unitDef = UnitDefs[unitDefID]
+	for unitDefID, unitDef in pairs(UnitDefs) do
 		local cp = unitDef.customParams
 		if cp then
 			local newData = {}

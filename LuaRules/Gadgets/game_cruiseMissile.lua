@@ -64,8 +64,7 @@ local GetUnitCOBValue = Spring.GetUnitCOBValue
 local DelayCall = GG.Delay.DelayCall
 
 function gadget:Initialize()
-  for unitDefID = 1, #UnitDefs do
-    local unitDef = UnitDefs[unitDefID]
+  for unitDefID, unitDef in pairs(UnitDefs) do
     local customParams = unitDef.customParams
     local accuracy = customParams.cruise_missile_accuracy
 

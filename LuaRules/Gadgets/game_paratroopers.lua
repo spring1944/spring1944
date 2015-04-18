@@ -67,8 +67,7 @@ end
 function gadget:Initialize()
   local SetWatchWeapon = Script.SetWatchWeapon
 
-  for WeaponDefID = 1, #WeaponDefs do
-    local weaponDef = WeaponDefs[WeaponDefID]
+  for WeaponDefID, weaponDef in pairs(WeaponDefs) do
     if weaponDef.customParams.paratrooper then
       SetWatchWeapon(WeaponDefID, true)
       paratrooperWeaponDefIDs[WeaponDefID] = true
