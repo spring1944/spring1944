@@ -674,7 +674,11 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
   end
 
   if UnitDefs[unitDefID].isFactory then
-    push(facs,{ unitID=unitID, unitDefID=unitDefID, buildList=GetBuildList(unitDefID)})
+	local tmpBuildList = GetBuildList(unitDefID)
+	-- prevents things like partisan supply from being included
+	if #tmpBuildList > 0 then
+		push(facs,{ unitID=unitID, unitDefID=unitDefID, buildList=tmpBuildList})
+	end
   end
   unfinished_facs[unitID] = true
 end
