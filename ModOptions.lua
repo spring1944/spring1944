@@ -188,8 +188,20 @@ local options = {
     def    = true,
 	section= '3resources',
   },
+
+  {
+    key    = "base_command_income",
+    name   = "Base Command Income",
+    desc   = "Gives each player a permanent income of at least this amount (key = 'base_command_income')",
+    type   = "number",
+    def    = 25,
+    min    = 0,
+    max    = 500,
+	section= '3resources',
+    step   = 5,
+  },
   	
-	{
+  {
 	key    = '4other',
 	name   = 'Other Settings',
 	desc   = 'Various other settings',

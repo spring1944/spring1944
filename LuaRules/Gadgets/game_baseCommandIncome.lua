@@ -23,7 +23,8 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local team = {}
 
-local BASE_INCOME = 25
+local modOptions = Spring.GetModOptions()
+local BASE_INCOME = tonumber(modOptions.base_command_income) or 25
 
 function gadget:Initialize()
 	for _, teamID in ipairs(Spring.GetTeamList()) do
