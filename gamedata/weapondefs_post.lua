@@ -180,9 +180,7 @@ local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
-
-
-
+modOptions = modOptions or {}
 
 local UnitDefs = DEFS.unitDefs
 local cegCache = {}
