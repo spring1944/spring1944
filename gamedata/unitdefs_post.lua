@@ -41,8 +41,8 @@ for name, ud in pairs(UnitDefs) do
                 end
             end
         end
-    end		
-		
+    end
+
     if (modOptions.command_mult) then
         if (ud.extractsmetal) then
             if (modOptions.command_mult == '0') then --Very Low Command
@@ -69,8 +69,8 @@ for name, ud in pairs(UnitDefs) do
         end
     end
  --END MODOPTION CONTROLS
- 
- --BEGIN UNIT PROCESSING	
+
+ --BEGIN UNIT PROCESSING
 	local LoSMult = 0.6
     local decloakDistMult = 0.6
     local infSpeedMult = 0.5
@@ -106,7 +106,7 @@ for name, ud in pairs(UnitDefs) do
             end
         end
     end
-    
+
 
 	if ud.customparams then
 		if ud.customparams.feartarget then
@@ -142,7 +142,7 @@ for name, ud in pairs(UnitDefs) do
 
     ]]--
 	--end first chunk of new sensor stuff!
-	
+
 	--more new sensor stuff
     --decide if stationary units should be stealth or not
 	if not ud.maxvelocity then
@@ -154,13 +154,13 @@ for name, ud in pairs(UnitDefs) do
 		end
 	end
 	--end more new sensor stuff
-    
+
     -- reclaimability
     local reclaimable = not ud.maxvelocity
     reclaimable = reclaimable and not (ud.customparams and ud.customparams.feartarget)
     reclaimable = reclaimable and not (ud.customparams and ud.customparams.weaponswithammo)
     ud.reclaimable = reclaimable
-	
+
     --ship things
 	if ud.floater then
 		ud.turninplace = false
@@ -187,13 +187,13 @@ for name, ud in pairs(UnitDefs) do
 				ud.description = newDescrLine
 			end
 			ud.description = ud.description.." ("..newDescrLine..")"
-			
+
 		end
 		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
 			ud.usepiececollisionvolumes = true
 		end
 	end
-	
+
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
 		-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 		if (not ud.builder) then
@@ -204,11 +204,11 @@ for name, ud in pairs(UnitDefs) do
 		ud.stealth = false
 		ud.activatewhenbuilt = true
 		--end new sensor stuff
-		
+
 		--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
 		--if seisSig < 1 then seisSig = 1 end
 		ud.seismicsignature = 1 --seisSig
-		
+
 		--set health
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
@@ -234,14 +234,14 @@ for name, ud in pairs(UnitDefs) do
 --		end
 		if ud.seismicdistance then
 			ud.seismicdistance = (modOptions.unit_los_mult * ud.seismicdistance)
-		end			
+		end
 	end
 	if (modOptions.unit_radar_mult) then
 		if ud.radardistance then
 			ud.radardistance = (modOptions.unit_radar_mult * ud.radardistance)
 		end
 	end
-	
+
 	ud.transportbyenemy = false
 	ud.collisionvolumetest = 1
 
@@ -305,7 +305,7 @@ for name, ud in pairs(UnitDefs) do
 		end
 		ud.sounds = sounds
 	end
-	
+
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
 	if name == "gmtoolbox" then GM_UD = ud end

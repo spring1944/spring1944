@@ -84,7 +84,7 @@ local function BackwardCompability(wdName,wd)
     end
   end
 
-  -- 
+  --
   if (tobool(wd.ballistic) or tobool(wd.dropped)) then
     wd.gravityaffected = true
 		wd.myGravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
@@ -210,7 +210,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
     if weaponDef.damage then
     local damage = weaponDef.damage
     local defaultDamage = damage["default"]
-    
+
     if defaultDamage and tonumber(defaultDamage) > 0 then
       local damageType = "default"
       if weaponDef.customparams and weaponDef.customparams.damagetype then
@@ -263,7 +263,7 @@ end
     local flightTimeCoeff = rangeCoeff^(1/3)
     local accuracyMult = 1 / math.sqrt(rangeCoeff)
     local wobbleMult = 1 / flightTimeCoeff
-    
+
     local mults = {
       range = rangeCoeff,
       dyndamagerange = rangeCoeff,
@@ -275,8 +275,8 @@ end
       sprayangle = accuracyMult,
       targetmoveerror = accuracyMult,
     }
-    
-    
+
+
     Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
     for name, weaponDef in pairs(WeaponDefs) do
       local customParams = weaponDef.customparams
@@ -288,9 +288,9 @@ end
 			end
           end
         end
-      
 
-      
+
+
 
         local armor_penetration_100m = customParams.armor_penetration_100m
         local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
@@ -301,10 +301,10 @@ end
           customParams.armor_penetration_1000m = armor_penetration * math.exp(1000 * decay)
         end
       end
-      
+
     totalWeapons = totalWeapons + 1
     --Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
-    
+
   if (modOptions.weapon_reload_mult) then
     local totalWeapons
     totalWeapons = 0
@@ -338,7 +338,7 @@ end
       end
     end
   end
-    
+
   if (modOptions.weapon_aoe_mult) then
     local aoeCoeff
     aoeCoeff = modOptions.weapon_aoe_mult
@@ -351,7 +351,7 @@ end
       end
     end
   end
-    
+
   if (modOptions.weapon_bulletdamage_mult) then
     local bulletCoeff
     bulletCoeff = modOptions.weapon_bulletdamage_mult
@@ -368,7 +368,7 @@ end
 end
 
 -- set weapon velocities to arc at 45 degrees at max range
-for weapName, weapDef in pairs(WeaponDefs) do 
+for weapName, weapDef in pairs(WeaponDefs) do
 	if weapDef.gravityaffected then
 		weapDef.mygravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
 	end
