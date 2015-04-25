@@ -196,7 +196,7 @@ local options = {
     type   = "number",
     def    = 25,
     min    = 0,
-    max    = 500,
+    max    = 1000000,
 	section= '3resources',
     step   = 5,
   },
