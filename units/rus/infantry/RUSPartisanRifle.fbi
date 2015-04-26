@@ -15,7 +15,7 @@
   [customParams] {
     dontCount=1;
 	feartarget=1;
-    flagCapRate=0.05;
+    flagCapRate=0.085;
     soundcategory=RUS/Infantry;
   }
   damageModifier=0.265;
@@ -60,7 +60,7 @@
   upright=1;
   badTargetCategory=FLAG;
 
-  weapon1=PartisanMosinNagant;
+  weapon1=MosinNagant;
   maxAngleDif1=170;
   onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;

@@ -11,19 +11,22 @@ function gadget:GetInfo()
 end
 -- function localisations
 -- Synced Read
-local GetUnitPosition 	= Spring.GetUnitPosition
-local GetUnitTeam		= Spring.GetUnitTeam
-local ValidUnitID		= Spring.ValidUnitID
+local GetUnitPosition 	    = Spring.GetUnitPosition
+local GetUnitTeam		    = Spring.GetUnitTeam
+local GetUnitNearestEnemy   = Spring.GetUnitNearestEnemy
+local GetUnitDefID          = Spring.GetUnitDefID
+local ValidUnitID		    = Spring.ValidUnitID
 -- Synced Ctrl
-local CreateUnit 		= Spring.CreateUnit
+local CreateUnit 		    = Spring.CreateUnit
 -- Unsynced Read
-local GetUnitCommands	= Spring.GetUnitCommands
+local GetUnitCommands	    = Spring.GetUnitCommands
 -- Unsynced Ctrl
-local GiveOrderToUnit	= Spring.GiveOrderToUnit
+local GiveOrderToUnit	    = Spring.GiveOrderToUnit
 -- constants
-local INTERVAL = 20 -- 20 seconds
+local INTERVAL = 5 -- 5 seconds
 local PROBABILITY = 0 -- 100% chance of spawn
 local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
+local ENEMY_TOO_CLOSE_RADIUS = 275 -- same as the supply radius
 -- variables
 local spawners = {}
 local couples = {}
@@ -86,7 +89,6 @@ if (gadgetHandler:IsSyncedCode()) then
 				local cmd = cmds[i]
 				GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
 			end
-			Spring.SendMessageToTeam(teamID, "Partisan spawned!")
 		end
 	end
 	
@@ -105,7 +107,15 @@ if (gadgetHandler:IsSyncedCode()) then
 
 		if n % (INTERVAL * 30) < 0.1 then
 			for spawnerID, numSpawned in pairs(spawners) do
-				if (not spawnQueue[spawnerID]) and (numSpawned < SPAWN_LIMIT) then
+                local nearbyEnemy = GetUnitNearestEnemy(spawnerID, ENEMY_TOO_CLOSE_RADIUS, false)
+                if nearbyEnemy then
+                    local ud = UnitDefs[GetUnitDefID(nearbyEnemy)]
+                    if ud and ud.customParams and ud.customParams.flag then
+                        nearbyEnemy = nil
+                    end
+                end
+
+				if (not spawnQueue[spawnerID]) and (numSpawned < SPAWN_LIMIT) and (nearbyEnemy == nil) then
 					local chance = math.random()
 					if chance >= PROBABILITY then
 						AddToSpawnQueue(spawnerID, unitNamesToSpawn[spawnerID])
