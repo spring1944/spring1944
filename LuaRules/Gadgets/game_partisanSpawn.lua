@@ -16,17 +16,27 @@ local GetUnitTeam		    = Spring.GetUnitTeam
 local GetUnitNearestEnemy   = Spring.GetUnitNearestEnemy
 local GetUnitDefID          = Spring.GetUnitDefID
 local ValidUnitID		    = Spring.ValidUnitID
+local GetTeamResources      = Spring.GetTeamResources
+local GetUnitHealth         = Spring.GetUnitHealth
+
 -- Synced Ctrl
 local CreateUnit 		    = Spring.CreateUnit
+local AddUnitDamage         = Spring.AddUnitDamage
 -- Unsynced Read
 local GetUnitCommands	    = Spring.GetUnitCommands
 -- Unsynced Ctrl
 local GiveOrderToUnit	    = Spring.GiveOrderToUnit
 -- constants
+local SPAWNER_UD = UnitDefNames['ruspresource']
 local INTERVAL = 5 -- 5 seconds
-local PROBABILITY = 0 -- 100% chance of spawn
 local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
-local ENEMY_TOO_CLOSE_RADIUS = 275 -- same as the supply radius
+local ENEMY_TOO_CLOSE_RADIUS = SPAWNER_UD.customParams['supplyrange']
+local STALL_THRESHOLD = 50 -- command < this number, your spawn points start decaying
+
+-- how much health the point loses if you're stalling. 
+-- right now set to kill the unit after 10 INTERVALs (e.g. 50 seconds)
+local HEALTH_DECAY_AMOUNT = SPAWNER_UD.health / 10
+
 -- variables
 local spawners = {}
 local couples = {}
@@ -108,6 +118,11 @@ if (gadgetHandler:IsSyncedCode()) then
 		if n % (INTERVAL * 30) < 0.1 then
 			for spawnerID, numSpawned in pairs(spawners) do
                 local nearbyEnemy = GetUnitNearestEnemy(spawnerID, ENEMY_TOO_CLOSE_RADIUS, false)
+                local teamID = GetUnitTeam(spawnerID)
+                local availableCommand = GetTeamResources(teamID, "metal")
+                local stalling = availableCommand < STALL_THRESHOLD
+
+                -- flags don't count as nearby enemies
                 if nearbyEnemy then
                     local ud = UnitDefs[GetUnitDefID(nearbyEnemy)]
                     if ud and ud.customParams and ud.customParams.flag then
@@ -115,12 +130,18 @@ if (gadgetHandler:IsSyncedCode()) then
                     end
                 end
 
-				if (not spawnQueue[spawnerID]) and (numSpawned < SPAWN_LIMIT) and (nearbyEnemy == nil) then
-					local chance = math.random()
-					if chance >= PROBABILITY then
-						AddToSpawnQueue(spawnerID, unitNamesToSpawn[spawnerID])
-					end
+				if (not spawnQueue[spawnerID]) 
+                        and (numSpawned < SPAWN_LIMIT) 
+                        and (not nearbyEnemy) 
+                        and (not stalling) then
+                    AddToSpawnQueue(spawnerID, unitNamesToSpawn[spawnerID])
 				end
+
+                -- they expire without command support
+                -- TODO: some notification if they're about to pop
+                if stalling then
+                    AddUnitDamage(spawnerID, HEALTH_DECAY_AMOUNT)
+                end
 			end
 		end
 	end
