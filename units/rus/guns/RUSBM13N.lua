@@ -6,7 +6,7 @@ local RUSBM13N = Truck:New{
 	maxDamage			= 573,
 	trackOffset			= 4,
 	trackWidth			= 11,
-	script				= "<NAME>.cob", -- TODO: vehicle.lua
+	script				= "<NAME>.lua", -- TODO: vehicle.lua
 
 	weapons = {
 		[1] = {
