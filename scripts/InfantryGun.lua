@@ -1,7 +1,17 @@
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
-	info.animation = {include "DeployedLoader.lua"}
+	include "DeployedLoader.lua"
+	info.wheelSpeeds = {}
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	for pieceName, pieceNum in pairs(pieceMap) do
+		-- Find Wheel Speeds
+		if pieceName:find("wheel") then
+			local wheelInfo = Spring.GetUnitPieceInfo(unitID, pieceNum)
+			local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
+			info.wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
+		end
+	end
 end
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
 
