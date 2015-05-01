@@ -33,9 +33,8 @@ local SIG_FEAR = 32
 local DEFAULT_TURN_SPEED = math.rad(300)
 local REAIM_THRESHOLD = 0.15
 
-local FEAR_LIMIT = 25
-local FEAR_PINNED = 2
-local FEAR_MAX = 15
+local FEAR_LIMIT = weaponTags.fearLimit or 25
+local FEAR_PINNED = weaponTags.fearPinned or 2
 
 local FEAR_INITIAL_SLEEP = 5000
 local FEAR_SLEEP = 1000
@@ -68,7 +67,7 @@ local recoilDistance = 2.4
 local recoilReturnSpeed = 10
 
 local fear
-local nextRocket
+local lastRocket
 local weaponEnabled = {}
 
 
@@ -244,7 +243,7 @@ function script.Create()
 		weaponEnabled[i] = true
 	end
 	if info.numRockets > 0 then
-		nextRocket = 1
+		lastRocket = info.numRockets
 	end
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
@@ -268,8 +267,8 @@ end
 
 
 function script.QueryWeapon(weaponNum)
-	if nextRocket then
-		return piece("rocket" .. nextRocket) or tubes
+	if lastRocket then
+		return piece("rocket" .. lastRocket) or tubes
 	end
 	
 	local cegPiece = info.cegPieces[weaponNum]
@@ -342,9 +341,9 @@ function script.Shot(weaponNum)
 	if barrel then
 		StartThread(Recoil)
 	end
-	if nextRocket then
-		Hide(piece("rocket" .. nextRocket))
-		nextRocket = nextRocket + 1
+	if lastRocket then
+		lastRocket = lastRocket % info.numRockets + 1
+		Hide(piece("rocket" .. lastRocket))
 	end
 	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
@@ -370,9 +369,6 @@ function script.EndBurst(weaponNum)
 	Signal(SIG_FIRE)
 	StartThread(ResolvePose, true)
 	firing = false
-	if nextRocket then
-		nextRocket = 1
-	end
 	if UnitDef.stealth then
 		StartThread(Delay, VISIBLE_PERIOD, 0, Spring.SetUnitStealth, unitID, true)
 	end

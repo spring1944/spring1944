@@ -15,6 +15,8 @@ local tags = {
 	pitchPiece = sleeve,
 	defaultTraverseSpeed = math.rad(800),
 	defaultElevateSpeed = math.rad(615),
+	fearLimit = 16,
+	fearPinned = 0,
 }
 
 local poses

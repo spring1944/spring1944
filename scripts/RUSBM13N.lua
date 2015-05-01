@@ -46,7 +46,7 @@ local function Delay(func, duration, mask, ...)
 end
 
 local function UpdateSpeed()
-	Spring.Echo("speed up to date")
+	--Spring.Echo("speed up to date")
 	if deployed or deploying then
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = 0.001, maxReverseSpeed = 0.001, turnRate = 0, accRate = 0.005})
 	else
@@ -65,9 +65,8 @@ local function UpdateSpeed()
 end
 
 local function Deploy()
-	Spring.Echo("bli")
 	if deployed then return end
-	Spring.Echo("deploying")
+	--Spring.Echo("deploying")
 	Signal(SIG_AIM)
 	SetSignalMask(SIG_AIM)
 	deploying = true
@@ -75,21 +74,20 @@ local function Deploy()
 	Turn(backblast, x_axis, 1, 0.1) --10 seconds delay
 	WaitForTurn(backblast, x_axis)
 	deployed = true
-	Spring.Echo("deployed")
+	--Spring.Echo("deployed")
 end
 
 local function Undeploy()
-	Spring.Echo("bla")
 	if not deploying then return end
 	Signal(SIG_AIM)
 	SetSignalMask(SIG_AIM)
-	Spring.Echo("undeploying")
+	--Spring.Echo("undeploying")
 	deployed = false
 	Turn(backblast, x_axis, 0, 0.1) --10 seconds delay
 	WaitForTurn(backblast, x_axis)
 	deploying = false
 	UpdateSpeed()
-	Spring.Echo("undeployed")
+	--Spring.Echo("undeployed")
 end
 
 
@@ -184,8 +182,8 @@ function script.FireWeapon(weaponNum)
 end
 
 function script.Shot(weaponNum)
-	lastRocket = lastRocket % info.numRockets + 1
 	Hide(piece("rocket" .. lastRocket))
+	lastRocket = lastRocket % info.numRockets + 1
 	
 	local ceg = info.weaponCEGs[weaponNum]
 	GG.EmitSfxName(unitID, backblast, ceg)
@@ -197,7 +195,7 @@ function script.Shot(weaponNum)
 end
 
 function script.EndBurst(weaponNum)
-	RestoreTurret()
+	StartThread(RestoreTurret)
 	firing = false
 end
 
