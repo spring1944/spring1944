@@ -297,8 +297,8 @@ local function ResolvePose(isFire)
 	--Spring.Echo("trying to change")
 	if inTransition then return false end
 	if isFire then
+		inTransition = true
 		NextPose()
-		return
 	elseif firing then
 		return false
 	end

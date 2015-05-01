@@ -494,8 +494,8 @@ local function ResolvePose(isFire)
 	if inTransition then return false end
 	if isFire then
 		UpdateTargetState()
+		inTransition = true
 		NextPose()
-		return
 	elseif firing then
 		return false
 	end
