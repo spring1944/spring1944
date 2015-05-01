@@ -6,6 +6,10 @@ local brakeright = piece "brakeright"
 
 local info = GG.lusHelper[unitDefID]
 
+if not info.aimPieces then
+	include "VehicleLoader.lua"
+end
+
 --Localisations
 local PI = math.pi
 local TAU = 2 * PI
@@ -171,7 +175,7 @@ end
 
 function script.StartMoving()
 	Signal(SIG_MOVE)
-	if info.numWheels > 0 then
+	if #info.wheelSpeeds > 0 then
 		StartThread(SpinWheels)
 	end
 	if #info.tracks > 1 then
