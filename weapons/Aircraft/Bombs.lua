@@ -9,7 +9,6 @@ local BombClass = Weapon:New{
   heightBoostFactor  = 0,
   impulseFactor      = 0.01,
   manualBombSettings = true,
-  size		= 2,
   noSelfDamage		 = true,
   reloadtime         = 600,
   tolerance          = 5000,
