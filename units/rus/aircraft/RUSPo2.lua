@@ -12,7 +12,8 @@ local RUS_Po2 = Recon:New{
 }
 
 local RUS_Po2Partisan = RUS_Po2:Clone("RUSPo2"):New{
-	buildpic		= "RUSPo2Partisan.png", -- overwrite clone
+	buildpic		= "RUSPo2Partisan.png", -- override clone
+	script			= "RUSPo2Partisan.cob", -- more override clone
 	description		= "Partisan Supply Plane",
 	customParams = {
 		troopdropper	= 1,

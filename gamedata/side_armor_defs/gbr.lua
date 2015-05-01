@@ -32,7 +32,6 @@ local GBRDefs = {
 
   lightBuildings  =  {
     --Britain--
-    "GBRResource",
     "GBRStorage",
     "GBRGunYard",
     "GBRVehicleYard1",

@@ -33,7 +33,6 @@ local GERDefs = {
     --Germany--
     "GERBarracks",
     "GERVehicleYard",
-    "GERResource",
     "GERStorage",
     "GERGunYard",
     "GERTankYard",

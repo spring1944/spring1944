@@ -62,6 +62,7 @@ local RUS_IL2 = FighterBomber:New{
 
 local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 	buildpic			= "RUSIL2PTAB.png", -- override clone
+	script				= "RUSIL2PTAB.cob", -- more override clone
 	weapons = {
 		[1] = {
 			name				= "PTAB",

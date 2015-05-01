@@ -39,7 +39,6 @@ local USDefs = {
     "USCP",
     "USBarracks",
     "USVehicleYard",
-    "USResource",
     "USStorage",
     "USGunYard",
     "USSupplyDepot",

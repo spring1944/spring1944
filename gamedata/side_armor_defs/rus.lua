@@ -39,7 +39,6 @@ local RUSDefs = {
     --USSR--
     "RUSBarracks",
     "RUSVehicleYard",
-    "RUSResource",
     "RUSStorage",
     "RUSGunYard",
     "RUSShack",

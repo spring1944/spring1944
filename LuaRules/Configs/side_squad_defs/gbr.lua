@@ -160,7 +160,7 @@ local gbrDefs = {
 	["gbr_platoon_commando_lz"] =
 	{
 		members = {
-            "gbrgliderresource",
+            "gbrglidersupplies",
 			"gbrcommando",
 			"gbrcommando",
 			"gbrcommando",
