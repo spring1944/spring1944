@@ -182,8 +182,8 @@ function script.FireWeapon(weaponNum)
 end
 
 function script.Shot(weaponNum)
-	Hide(piece("rocket" .. lastRocket))
 	lastRocket = lastRocket % info.numRockets + 1
+	Hide(piece("rocket" .. lastRocket))
 	
 	local ceg = info.weaponCEGs[weaponNum]
 	GG.EmitSfxName(unitID, backblast, ceg)
