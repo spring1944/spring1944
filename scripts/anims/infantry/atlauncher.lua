@@ -24,6 +24,7 @@ local tags = {
 	canProneFire = true,
 	canStandFire = true,
 	canRunFire = false,
+	cegPiece = backblast,
 	weaponPiece = piece "gun",
 	showOnReady = true,
 }

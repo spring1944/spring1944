@@ -388,7 +388,7 @@ end
 function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
 	local turret = piece "turret"
-	local mantlet = piece "mantlet"
+	local sleeve = piece "sleeve"
 	
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
@@ -404,8 +404,8 @@ function script.Killed(recentDamage, maxHealth)
 		if barrel then
 			Explode(barrel, SFX.SHATTER)
 		end
-		if mantlet then
-			Explode(mantlet, SFX.SHATTER)
+		if sleeve then
+			Explode(sleeve, SFX.SHATTER)
 		end
 		corpse = 3
 	end

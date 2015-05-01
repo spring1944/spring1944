@@ -30,9 +30,6 @@ local Infantry = Unit:New{
 	upright				= true,
 	
 	customParams = {
-		cegpiece = {
-			[1] = "flare",
-		},
 		feartarget			= true,
 		soundcategory 		= "<SIDE>/Infantry",
 	},
@@ -132,14 +129,6 @@ local ObservInf = Infantry:New{
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 160,
-	
-	customParams = {
-		cegpiece = {
-			[1] = false,   -- override flare in base for binocs
-			[2] = "flare", -- pistol
-		},
-	},
-	
 	weapons = {
 		[1] = { -- Binocs
 			name				= "Binocs",
@@ -159,12 +148,6 @@ local MedMortarInf = Infantry:New{
 
 	customParams = {
 		canareaattack		= true,
-		
-		cegpiece = {
-			[1] = "flare",
-			[2] = "flare",
-		},
-		
 		maxammo				= 10,
 		weapontoggle 		= "smoke",
 	},
@@ -199,13 +182,6 @@ local FlameInf = Infantry:New{
 local ATLauncherInf = Infantry:New{
 	description			= "Anti-Tank Infantry",
 	iconType			= "antitank",
-	
-	customParams = {
-		cegpiece = {
-			[1] = "backblast",
-		},
-	},
-	
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,

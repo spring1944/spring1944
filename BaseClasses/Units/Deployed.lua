@@ -21,10 +21,6 @@ local Deployed = Unit:New{
 	useBuildingGroundDecal		= true,
 	
 	customParams = {
-		cegPiece = {
-			[1]				= "flare",
-			[2]				= "flare",
-		},
 		feartarget		= 1,
 		soundcategory	= "<SIDE>/Gun",
 	},
@@ -162,9 +158,6 @@ local RGun = DeployedGun:New{
 	buildCostMetal		= 3600,
 	iconType			= "artillery",
 	customParams = {
-		cegPiece = {
-			[1]				= "backblast",
-		},
 		scriptAnimation		= "rocket",
 	},
 	weapons = {

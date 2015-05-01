@@ -418,4 +418,22 @@ for weaponAnim, tags in pairs(weaponsTags) do
 	end
 end
 
-return poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities
+local info = GG.lusHelper[unitDefID]
+
+info.animation = {poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities}
+info.cegPieces = {}
+
+local pieceMap = Spring.GetUnitPieceMap(unitID)
+local lastflare = pieceMap["flare"] and "flare"
+for weaponNum = 1,info.numWeapons do
+	local weaponClass = weaponsMap[weaponNum]
+	local tags = weaponsTags[weaponClass]
+	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
+		if tags.cegPiece then
+			info.cegPieces[weaponNum] = tags.cegPiece
+		else
+			lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+			info.cegPieces[weaponNum] = pieceMap[lastflare]
+		end
+	end
+end

@@ -192,4 +192,20 @@ end
 
 AddTransition(fireTransitions, "ready", "ready", keyframes.fire, keyframeDelays.fire)
 
-return poses, transitions, fireTransitions, tags
+local info = GG.lusHelper[unitDefID]
+
+info.animation = {poses, transitions, fireTransitions, tags}
+info.cegPieces = {}
+
+local pieceMap = Spring.GetUnitPieceMap(unitID)
+local lastflare = pieceMap["flare"] and "flare"
+for weaponNum = 1,info.numWeapons do
+	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
+		if tags.cegPiece then
+			info.cegPieces[weaponNum] = tags.cegPiece
+		else
+			lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+			info.cegPieces[weaponNum] = pieceMap[lastflare]
+		end
+	end
+end

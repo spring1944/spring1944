@@ -6,7 +6,7 @@ local flare = piece "flare"
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
-	info.animation = {include "InfantryLoader.lua"}
+	include "InfantryLoader.lua"
 end
 local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(info.animation)
 
@@ -310,7 +310,6 @@ local function UpdateSpeed()
 					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
 				end
 				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
-				Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 			end
 		end

@@ -16,7 +16,7 @@ local sleeve = piece "sleeve"
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
-	info.animation = {include "DeployedLoader.lua"}
+	include "DeployedLoader.lua"
 end
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
 
