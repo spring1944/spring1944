@@ -12,8 +12,8 @@ base
     turret
         sleeve
             barrel
-                flare
+                flare_1
     exhaust
-    aaturret
-        aagun
-            aaflare
+    aa_turret
+        aa_sleeve
+            flare_2

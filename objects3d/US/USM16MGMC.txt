@@ -9,8 +9,8 @@ base
     tracks1
     tracks2
     turret
-        guns
-            flare1
-            flare2
-            flare3
-            flare4
+        sleeve
+            flare_1
+            flare_3
+            flare_5
+            flare_6

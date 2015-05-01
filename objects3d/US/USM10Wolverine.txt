@@ -1,11 +1,11 @@
 base
     turret
-        mantlet
+        sleeve
             barrel
-                flare
-        aaturret
-            aagun
-                aaflare
+                flare_1
+        aa_turret
+            aa_sleeve
+                flare_2
     tracks1
     tracks2
     frontwheel

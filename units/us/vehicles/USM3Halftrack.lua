@@ -37,31 +37,20 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 		[1] = {
 			name					= "M2BrowningAA",
 		},
-		[2] = {
-			name					= "M2BrowningAA",
+		[2] = { -- Need to be interlaced with AA to use same flares
+			name					= "M2Browning",
 		},
 		[3] = {
 			name					= "M2BrowningAA",
 		},
 		[4] = {
+			name					= "M2Browning",
+		},
+		[5] = {
 			name					= "M2BrowningAA",
 		},
-		[5] = { -- the cannon AA don't have anti-ground, should M16 and Staghound?
-			name					= "M2Browning",
-		},
 		[6] = {
-			name					= "M2Browning",
-		},
-	},
-	
-	customParams = {
-		cegpiece = {
-			[1] = "flare1",
-			[2] = "flare2",
-			[3] = "flare3",
-			[4] = "flare4",
-			[5] = "flare1",
-			[6] = "flare2",
+			name					= "M2BrowningAA",
 		},
 	},
 }
