@@ -11,8 +11,8 @@ base
     wheels1
     wheels2
     turret
-        turret_mg
-            coaxflare
-        mantlet
+        mg_sleeve
+            flare_3
+        sleeve
             barrel
-                flare
+                flare_1
