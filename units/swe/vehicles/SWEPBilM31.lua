@@ -24,11 +24,6 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		armor_top			= 0,
 		maxammo				= 19,
 		maxvelocitykmh		= 60,
-		
-		cegpiece = {
-			[1] = "flare",
-			[2] = "bow_mg_flare",
-		},
 	}
 }
 
