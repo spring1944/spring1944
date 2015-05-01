@@ -31,10 +31,6 @@ local ShermanBase = MediumTank:New{
 		armor_top			= 21,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
-		
-		cegpiece = {
-			[4] = "aaflare",
-		},
 	},
 }	
 
@@ -65,6 +61,10 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	maxDamage			= 4267,
 	
 	customParams = {
+		armor_front			= 146,
+		armor_rear			= 46,
+		armor_side			= 56,
+		armor_top			= 21,
 		maxvelocitykmh		= 35,
 	},
 }

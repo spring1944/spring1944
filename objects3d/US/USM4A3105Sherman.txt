@@ -10,11 +10,11 @@ base
     wheel5
     wheel6
     turret
-        aaturret
-            aagun
-                aaflare
-        mantlet
+        aa_turret
+            aa_sleeve
+                flare_4
+        sleeve
             barrel
-                flare
-            coaxflare
+                flare_1
+            flare_3
     exhaust

@@ -1,12 +1,12 @@
 base
     turret
-        mantlet
+        sleeve
             barrel
-                flare
-            coaxflare
-        aaturret
-            aagun
-                aaflare
+                flare_1
+            flare_4
+        aa_turret
+            aa_sleeve
+                flare_5
         aaref
     frontwheel
     rearwheel

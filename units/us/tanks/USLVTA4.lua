@@ -24,10 +24,6 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		armor_top			= 6,
 		maxammo				= 9,
 		maxvelocitykmh		= 40,
-		
-		cegpiece = {
-			[2] = "mg_flare",
-		},
 	},
 }
 

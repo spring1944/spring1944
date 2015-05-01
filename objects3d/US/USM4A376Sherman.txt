@@ -1,14 +1,14 @@
 base
     turret
-        mantlet
+        sleeve
             barrel
-                flare
+                flare_1
                 brakeright
                 brakeleft
-            coaxflare
-        aaturret
-            aagun
-                aaflare
+            flare_3
+        aa_turret
+            aa_sleeve
+                flare_4
     tracks1
     tracks2
     frontwheel

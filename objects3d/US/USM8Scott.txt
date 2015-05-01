@@ -9,10 +9,10 @@ base
     tracks1
     tracks2
     turret
-        mantlet
+        sleeve
             barrel
-                flare
+                flare_1
         aaref
-        aaturret
-            aagun
-                aaflare
+        aa_turret
+            aa_sleeve
+                flare_2

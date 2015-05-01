@@ -48,12 +48,6 @@ local USM5Stuart = StuartBase:New{
 		maxammo				= 27,
 		weapontoggle		= false,
 		turretturnspeed		= 25.7, -- 14s for 360
-		
-		cegpiece = {
-			[3] = "flare",
-			[4] = "coaxflare",
-			[5] = "aaflare",
-		},
 	},
 }
 
@@ -78,9 +72,6 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 		maxammo				= 9,
 		weapontoggle		= false,
 		turretturnspeed		= 12, -- manual
-		cegpiece = {
-			[2] = "aaflare",
-		},
 	},
 }
 
