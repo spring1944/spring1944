@@ -16,7 +16,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=750;
+  cruiseAlt=1500;
   [customParams] {
     enginesound=fw190b-;
     enginesoundnr=12;

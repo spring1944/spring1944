@@ -17,7 +17,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=720;
+  cruiseAlt=1000;
   [customParams] {
     dontCount=1;
     enginesound=spitfireb-;

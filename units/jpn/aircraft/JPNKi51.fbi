@@ -19,7 +19,7 @@
   canPatrol=1;
   CanStop=1;
   category=AIR;
-  cruiseAlt=1500;
+  cruiseAlt=1600;
   [customParams] {
     enginesound=po2-;
     enginesoundnr=11;
