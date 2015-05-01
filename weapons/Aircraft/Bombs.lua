@@ -84,8 +84,6 @@ local Bomb50kg = BombClass:New{
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{
   areaOfEffect       = 200,
-  weaponType         = [[MissileLauncher]],
-  weaponVelocity     = 100,
   name               = [[V1 Missile]],
   soundHitDry        = [[GEN_Explo_9]],
 }
