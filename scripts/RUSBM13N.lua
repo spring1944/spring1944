@@ -6,6 +6,7 @@ local rails = piece "rails"
 
 local SIG_AIM = 1 --I hope this is high enough that nothing bad will be caused by this
 local SIG_MOVE = 2
+local SIG_DEPLOY = 4
 
 local STOP_AIM_DELAY = 2000
 local ROCKET_RESTORE_DELAY = info.reloadTimes[1]
@@ -48,7 +49,7 @@ end
 local function UpdateSpeed()
 	--Spring.Echo("speed up to date")
 	if deployed or deploying then
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = 0.001, maxReverseSpeed = 0.001, turnRate = 0, accRate = 0.005})
+		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = 0.001, maxReverseSpeed = 0.001, turnRate = 0.001, accRate = 0})
 	else
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = UnitDef.speed, maxReverseSpeed = origReverseSpeed, turnRate = UnitDef.turnRate, accRate = UnitDef.maxAcc})
 		local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -67,8 +68,8 @@ end
 local function Deploy()
 	if deployed then return end
 	--Spring.Echo("deploying")
-	Signal(SIG_AIM)
-	SetSignalMask(SIG_AIM)
+	Signal(SIG_DEPLOY)
+	SetSignalMask(SIG_DEPLOY)
 	deploying = true
 	UpdateSpeed()
 	Turn(backblast, x_axis, 1, 0.1) --10 seconds delay
@@ -79,11 +80,11 @@ end
 
 local function Undeploy()
 	if not deploying then return end
-	Signal(SIG_AIM)
-	SetSignalMask(SIG_AIM)
+	Signal(SIG_DEPLOY)
+	SetSignalMask(SIG_DEPLOY)
 	--Spring.Echo("undeploying")
 	deployed = false
-	Turn(backblast, x_axis, 0, 0.1) --10 seconds delay
+	Turn(backblast, x_axis, 0, 0.15) --Slightly faster because we've lost some time finding out we need to undeploy
 	WaitForTurn(backblast, x_axis)
 	deploying = false
 	UpdateSpeed()
@@ -158,14 +159,20 @@ end
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	if firing or moving then return false end
-	Signal(SIG_AIM)
+	Signal(SIG_AIM + SIG_DEPLOY)
 	SetSignalMask(SIG_AIM)
-	Deploy()
 	StartThread(Delay, RestoreTurret, STOP_AIM_DELAY, SIG_AIM)
-	--Turn(rails, y_axis, heading, info.turretTurnSpeed)
-	Turn(rails, x_axis, -pitch, info.elevationSpeed)
-	WaitForTurn(rails, x_axis)
-	return true
+	
+	if deployed then
+		Turn(rails, x_axis, -pitch, info.elevationSpeed)
+		WaitForTurn(rails, x_axis)
+		if deployed then
+			return true
+		end
+		return false
+	end
+	Deploy()
+	return false
 end
 
 function script.QueryWeapon(weaponNum)
@@ -177,7 +184,7 @@ function script.AimFromWeapon(weaponNum)
 end
 
 function script.FireWeapon(weaponNum)
-	Signal(SIG_AIM)
+	Signal(SIG_AIM + SIG_DEPLOY)
 	firing = true
 end
 
