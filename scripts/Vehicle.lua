@@ -44,6 +44,8 @@ local weaponEnabled
 local weaponPriorities
 local manualTarget
 local prioritisedWeapon
+local moving
+
 
 -- Constants
 local WHEEL_CHECK_DELAY = 990
@@ -118,6 +120,7 @@ function script.Create()
 		end
 	end
 	
+	moving = false
 	weaponEnabled = {}
 	weaponPriorities = {}
 	wantedDirection = {}
@@ -175,6 +178,7 @@ end
 
 function script.StartMoving()
 	Signal(SIG_MOVE)
+	moving = true
 	if #info.wheelSpeeds > 0 then
 		StartThread(SpinWheels)
 	end
@@ -185,6 +189,7 @@ end
 
 function script.StopMoving()
 	Signal(SIG_MOVE)
+	moving = false
 	StopWheels()
 end
 
@@ -499,6 +504,7 @@ function ToggleWeapon(weaponNum, isEnabled)
 	weaponEnabled[weaponNum] = isEnabled
 end
 
+--Builders
 if UnitDef.isBuilder then
 	local SIG_BUILD
 	if #SIG_AIM > 0 then
@@ -529,6 +535,8 @@ if UnitDef.isBuilder then
 	end
 end
 
+
+--Transports
 if UnitDef.transportCapacity > 0 then
 	local tow_point = piece "tow_point"
 	local canTow = not not tow_point
@@ -552,3 +560,67 @@ if UnitDef.transportCapacity > 0 then
 		Spring.UnitScript.DropUnit(passengerID)
 	end
 end
+
+--Amphibs
+if UnitDef.waterline > 0 then
+	local SIG_WATER = 512 -- should be high enough
+	local WATER_SPEED_DIVISOR = 3
+	
+	local wake = piece "wake"
+	local inWater = false
+	local currentSpeed = UnitDef.speed
+	local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
+	
+	local function Wakes()
+		Signal(SIG_WATER)
+		SetSignalMask(SIG_WATER)
+		while true do
+			if moving then
+				EmitSfx(wake, SFX.WAKE)
+			end
+			Sleep(165)
+		end
+	end
+	
+	local function UpdateSpeed()
+		local origSpeed = UnitDef.speed
+		local newSpeed = origSpeed
+		local newReverseSpeed = origReverseSpeed
+		if inWater then
+			newSpeed = origSpeed / WATER_SPEED_DIVISOR
+			newReverseSpeed = origReverseSpeed / WATER_SPEED_DIVISOR
+		end
+		if newSpeed == currentSpeed then
+			return
+		end
+		
+		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
+		if currentSpeed < newSpeed then
+			local cmds = Spring.GetCommandQueue(unitID, 2)
+			if #cmds >= 2 then
+				if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
+					if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
+						Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
+					end
+					local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
+					Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
+				end
+			end
+		end
+		currentSpeed = newSpeed
+	end
+	
+	function script.setSFXoccupy(curTerrainType)
+		Signal(SIG_WATER)
+		inWater = curTerrainType ~= 4
+		if inWater then
+			Spring.SetUnitLeaveTracks(unitID, false)
+			StartThread(Wakes)
+			UpdateSpeed()
+		else
+			Spring.SetUnitLeaveTracks(unitID, true)
+			UpdateSpeed()
+		end
+	end
+end
+

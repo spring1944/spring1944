@@ -309,7 +309,7 @@ local function UpdateSpeed()
 				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
 					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
 				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
+				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
 				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 			end
 		end
