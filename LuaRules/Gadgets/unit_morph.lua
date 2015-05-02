@@ -86,6 +86,7 @@ if (gadgetHandler:IsSyncedCode()) then
 
 local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
 local CMD_MORPH_STOP = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP")
+local CMD_FAKE_FIRE_STATE = GG.CustomCommands.GetCmdID("CMD_FAKE_FIRE_STATE")
 
 include("LuaRules/colors.h.lua")
 
@@ -579,6 +580,12 @@ local function FinishMorph(unitID, morphData)
 
   --//copy some state
   local states = Spring.GetUnitStates(unitID)
+  
+  local fakeFireStateDescID = Spring.FindUnitCmdDesc(unitID, CMD_FAKE_FIRE_STATE)
+  if fakeFireStateDescID then
+    states.firestate = Spring.GetUnitCmdDescs(unitID, fakeFireStateDescID)[1].params[1]
+  end
+  
   Spring.GiveOrderArrayToUnitArray({ newUnit }, {
     { CMD.FIRE_STATE, { states.firestate },             { } },
     { CMD.MOVE_STATE, { states.movestate },             { } },

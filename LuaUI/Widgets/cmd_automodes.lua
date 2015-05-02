@@ -16,13 +16,11 @@ end
  IMPLEMENTED SOMETHING NEW? GREAT! ADD IT HERE:
  
  1) Sets all units without firearcs (and don't fly) to Hold Position by default.
-    Units are returned to Maneuver when disabled. 
+	Units are returned to Maneuver when disabled. 
  2) Sets Howitzers to hold fire.
  
 ]]--
 
-
-local howitzerDefIDs = {}
 
 local GiveOrderToUnit = Spring.GiveOrderToUnit
 
@@ -43,24 +41,14 @@ end
 
 function widget:Initialize()
 
-    for unitDefID, unitDef in pairs(UnitDefs) do
-        local weapon = unitDef.weapons[1]
-        if weapon then
-            local cp = WeaponDefs[weapon.weaponDef].customParams
-            if cp and cp.howitzer then -- and weapon.customparams.howitzer then
-                howitzerDefIDs[unitDefID] = true
-            end
-        end
-    end
-
 	for _, uid in ipairs(Spring.GetTeamUnits(Spring.GetLocalTeamID())) do
 		local udid = Spring.GetUnitDefID(uid)
 		local tid = Spring.GetUnitTeam(uid)
 		widget:UnitCreated(uid, udid, tid)
 	end
-    
+	
 	Spring.SendMessageToPlayer(Spring.GetLocalPlayerID(),"All units set to Hold Position")
-    
+	
 end
 
 function widget:Shutdown()
@@ -78,9 +66,4 @@ function widget:UnitCreated(uid, udid, tid)
 			GiveOrderToUnit(uid, CMD.MOVE_STATE, { 0 }, 0)
 		end
 	end
-    
-    if howitzerDefIDs[udid] then
-        GiveOrderToUnit(uid, CMD.FIRE_STATE, { 0 }, 0)
-    end
-    
 end
