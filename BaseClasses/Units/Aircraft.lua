@@ -14,6 +14,7 @@ local Aircraft = Unit:New{
 	noChaseCategory		= "FLAG MINE",
 	radardistance		= 1000,
 	repairable			= false,
+	script				= "Aircraft.lua",
 	sightdistance		= 0,
 	stealth				= true,
 	turnRate			= 50,
