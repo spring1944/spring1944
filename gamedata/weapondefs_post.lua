@@ -258,7 +258,6 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			categoryCache[weapName].bad = cp.badtargetcategory
 		end
 		if cp.weaponcost then
-			if not weapCostCache[weapName] then weapCostCache[weapName] = {} end
 			weapCostCache[weapName] = cp.weaponcost
 		end
 		for k, v in pairs (cp) do
