@@ -270,16 +270,16 @@ local function ResolveDirection(headingPiece, pitchPiece)
 	end
 	
 	for weaponNum, dir in pairs(wantedDirection) do
-		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece then -- Make sure the weapon is using same headingPiece
-			if manualHeading and dir[1] then
+		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece and
+				(not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] then
+			if manualHeading then
 				if GetAngleDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
 					topDirection = dir
 					prioritisedWeapon = weaponNum
 					break
 				end
 			end
-			if (not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] and
-					weaponPriorities[weaponNum] < topPriority then
+			if weaponPriorities[weaponNum] < topPriority then
 				topDirection = dir
 				topPriority = weaponPriorities[weaponNum]
 				prioritisedWeapon = weaponNum
