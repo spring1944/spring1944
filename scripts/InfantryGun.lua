@@ -353,8 +353,6 @@ function script.Create()
 	
 	turretTraverseSpeed = UnitDef.customParams.turretTraverseSpeed or weaponTags.defaultTraverseSpeed
 	turretElevateSpeed = UnitDef.customParams.turretElevateSpeed or weaponTags.defaultElevateSpeed
-	
-	Spring.Echo("gun", unitID)
 end
 
 local function StopPinned()
