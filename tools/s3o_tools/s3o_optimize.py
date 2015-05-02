@@ -7,7 +7,8 @@ import vertex_cache
 
 
 def recursively_optimize_pieces(piece):
-    optimize_piece(piece)
+    if len(piece.vertices) > 4:
+        optimize_piece(piece)
     for child in piece.children:
         recursively_optimize_pieces(child)
 

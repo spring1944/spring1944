@@ -36,13 +36,17 @@ def save_txt(output_txt, piece, indent=0):
     
 
 def load_txt(input_txt, piece, commit):
+    changed = 0
     new_name = input_txt.readline().strip()
     if new_name != piece.name:
-        print "%s => %s" % (piece.name, new_name)
+        print " %s => %s" % (piece.name, new_name)
+        changed += 1
         if commit:
             piece.name = new_name
     for child in piece.children:
-        load_txt(input_txt, child, commit)
+        changed += load_txt(input_txt, child, commit)
+    
+    return changed
         
 def sizeof_fmt(num):
     for x in ['bytes', 'KB', 'MB', 'GB']:
@@ -62,7 +66,6 @@ def dump_s3o(path):
         save_txt(output_txt, model.root_piece)
 
 def update_s3o(path, commit, optimize):
-    print path
     txt_exists = os.path.exists(path[:-3] + 'txt')
     if (commit or not optimize) and not txt_exists:
         print "No txt file, skipping."
@@ -70,22 +73,31 @@ def update_s3o(path, commit, optimize):
     with open(path, 'rb+') as input_s3o:
         data = input_s3o.read()
         model = S3O(data)
-        
+        pieces_changed = 0
         if txt_exists:
             with open(path[:-3] + 'txt', 'rb') as input_txt:
-                load_txt(input_txt, model.root_piece, commit)
-            
+                pieces_changed = load_txt(input_txt, model.root_piece, commit)
+        
         if optimize:
             recursively_optimize_pieces(model.root_piece)
             
-        if commit or optimize:
-            if commit:
-                print "Committing."
-            if optimize:
-                print "Optimizing."
+        new_data = model.serialize()
+        
+        write = False
+        changed = False
+        if pieces_changed > 0:
+            print " %s piece changes" % (pieces_changed,)
+            write |= commit
+            changed = True
+        if optimize and len(new_data) < len(data):
+            print " %s bytes optimised" % (len(data) - len(new_data),)
+            write = True
+            changed = True
+        if write:
             input_s3o.seek(0)
             input_s3o.truncate()
-            input_s3o.write(model.serialize())
+            input_s3o.write(new_data)
+        return changed
     
 if __name__ == '__main__':
     parser = OptionParser(usage="%prog [options] <DIR|FILE1 FILE2 ...>", version="%prog 0.2",
@@ -119,12 +131,18 @@ if __name__ == '__main__':
     delta_total = 0
 
     if dump:
-        operation = dump_s3o
+        for filename in filenames:
+            dump_s3o(filename)
     else:
-        operation = partial(update_s3o, commit = commit, optimize = optimize)    
-    
-    for filename in filenames:
-        operation(filename)
+        total_changed = 0
+        for filename in filenames:
+            changed = update_s3o(filename, commit = commit, optimize = optimize)
+            if changed:
+                print filename
+                total_changed += 1
+            
+        print "Total: %s files changed" % (total_changed,)
+
         
         
             #update_piece_names(model.root_piece)
