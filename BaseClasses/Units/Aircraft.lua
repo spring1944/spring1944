@@ -54,14 +54,14 @@ local Fighter = Aircraft:New{
 		soundcategory 		= "<SIDE>/Air/Fighter",
 	},
 	
-	sfxTypes = { -- TODO: remove once using LUS
-		explosionGenerators = {
-			"custom:SMOKEPUFF_GPL_FX",
-			"custom:MG_MUZZLEFLASH",
-			"custom:XSMALL_MUZZLEFLASH",
-			"custom:MG_SHELLCASINGS",
-		},
-	},
+	-- sfxTypes = { -- TODO: remove once using LUS
+		-- explosionGenerators = {
+			-- "custom:SMOKEPUFF_GPL_FX",
+			-- "custom:MG_MUZZLEFLASH",
+			-- "custom:XSMALL_MUZZLEFLASH",
+			-- "custom:MG_SHELLCASINGS",
+		-- },
+	-- },
 }
 
 local Interceptor = Fighter:New{

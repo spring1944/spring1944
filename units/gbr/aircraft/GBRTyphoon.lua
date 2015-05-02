@@ -14,7 +14,7 @@ local GBR_Typhoon = AttackFighter:New{
 	customParams = {
 		enginesound			= "spitfireb-",
 		enginesoundnr		= 18,
-		maxammo				= 8,
+		maxammo				= 4,
 	},
 
 	weapons = {

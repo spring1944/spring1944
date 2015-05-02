@@ -2,28 +2,28 @@ base
     fuselage
         wing1
             rocket1
-                rocketexhaust1
+                exhaust1
             rocket3
-                rocketexhaust3
+                exhaust3
             rocket5
-                rocketexhaust5
+                exhaust5
             rocket7
-                rocketexhaust7
-            cannon1
-            cannon3
+                exhaust7
+            flare_3
+            flare_4
             gear1
                 wheel1
         wing2
             rocket2
-                rocketexhaust2
+                exhaust2
             rocket4
-                rocketexhaust4
+                exhaust4
             rocket6
-                rocketexhaust6
+                exhaust6
             rocket8
-                rocketexhaust8
-            cannon2
-            cannon4
+                exhaust8
+            flare_5
+            flare_6
             gear2
                 wheel2
         propeller

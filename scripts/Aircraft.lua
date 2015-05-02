@@ -1,5 +1,9 @@
 local info = GG.lusHelper[unitDefID]
 
+if not info.cegPieces then
+	include "AircraftLoader.lua"
+end
+
 -- Pieces
 local base = piece("base")
 local bomb = piece("bomb")
@@ -14,12 +18,22 @@ do
 		SIG_AIM[i] = sig
 	end
 end
+local lastRocket = info.numRockets
+
 
 local function IsMainGun(weaponNum)
 	return weaponNum <= info.weaponsWithAmmo
 end
 
+local function IsRocket(weaponNum)
+	return info.numRockets > 0 and IsMainGun(weaponNum)
+end
+
 function script.QueryWeapon(weaponNum)
+	Spring.Echo(weaponNum, IsRocket(weaponNum))
+	if IsRocket(weaponNum) then
+		return piece("rocket" .. lastRocket)
+	end
 	local cegPiece = info.cegPieces[weaponNum]
 	if cegPiece then 
 		return cegPiece
@@ -44,11 +58,20 @@ end
 
 function script.Shot(weaponNum)
 	local ceg = info.weaponCEGs[weaponNum]
-	local cegPiece = info.cegPieces[weaponNum]
+	local cegPiece
+	if IsRocket(weaponNum) then
+		lastRocket = lastRocket % info.numRockets + 1
+		Hide(piece("rocket" .. lastRocket))
+		cegPiece = piece("exhaust" .. lastRocket)
+	else
+		cegPiece = info.cegPieces[weaponNum]
+	end
 	if ceg and cegPiece then
 		GG.EmitSfxName(unitID, cegPiece, ceg)
 	end
-	if info.bombWeaponIDs[weaponNum] and cegPiece then Hide(cegPiece) end
+	if info.bombPieces[weaponNum] then
+		Hide(info.bombPieces[weaponNum])
+	end
 end
 
 function script.Killed(recentDamage, maxHealth)

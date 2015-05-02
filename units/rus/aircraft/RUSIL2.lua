@@ -92,9 +92,6 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 			maxAngleDif			= 90,
 			mainDir				= [[0 .25 -1]],
 		},
-		[7] = {
-			name 				= "Small_Tracer",
-		},
 	},
 }
 

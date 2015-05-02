@@ -308,6 +308,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	customparams = {
 		armor_hit_side     = "top",
 		no_range_adjust    = true,
+		weaponcost         = -2, --Air auto cannons don't cost ammo
 	},
 }
 

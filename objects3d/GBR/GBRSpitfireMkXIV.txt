@@ -3,12 +3,12 @@ base
         wing1
             gear1
                 wheel1
-            cannon1
-            mg1
+            flare_3
+            flare_1
         wing2
             gear2
                 wheel2
-            cannon2
-            mg2
+            flare_4
+            flare_2
         propeller
             blades
