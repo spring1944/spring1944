@@ -688,15 +688,16 @@ function script.Shot(num)
 end
 
 function script.EndBurst(num)
-	firing = false
 	Signal(SIG_FIRE)
 	local weaponClass = weaponsMap[num]
 	local tags = weaponsTags[weaponClass]
 	if tags.aimOnLoaded and wantedAiming == aiming then
 		StopAiming()
+		StartThread(ResolvePose, true)
 	else
 		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	end
+	firing = false
 	UpdateSpeed()
 	StartThread(ResolvePose)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)

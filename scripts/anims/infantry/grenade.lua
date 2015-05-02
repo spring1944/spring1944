@@ -30,75 +30,76 @@ local stances = {
 					turns = { --Turns
 						{ruparm , x_axis, math.rad(20)},
 						{ruparm , y_axis, 0},
-						{ruparm , z_axis, math.rad(-55)},
+						{ruparm , z_axis, math.rad(-10)},
 						
-						{luparm , x_axis, 0},						
-						{luparm , y_axis, math.rad(-20)},
-						{luparm , z_axis, math.rad(80)},
+						{luparm , x_axis, math.rad(-70)},						
+						{luparm , y_axis, 0},
+						{luparm , z_axis, math.rad(20)},
 					
-						{rloarm , x_axis, math.rad(-35)},
-						{rloarm , y_axis, 0},
-						{rloarm , z_axis, math.rad(-85)},
+						{rloarm , x_axis, 0},
+						{rloarm , y_axis, math.rad(-90)},
+						{rloarm , z_axis, 0},
 					
-						{lloarm , x_axis, math.rad(-20)},
+						{lloarm , x_axis, math.rad(-5)},
 						{lloarm , y_axis, 0},
-						{lloarm , z_axis, 0},
+						{lloarm , z_axis, math.rad(-70)},
 										
 						{torso , x_axis, math.rad(-10)},
 						{torso , y_axis, math.rad(-20)},
 					},
 	},
-	kf_stand_fire = {
+	kf_stand_fire_1 = {
 					turns = { --Turns
-						{ruparm , x_axis, math.rad(60)},
-						{ruparm , y_axis, math.rad(35)},
-						{ruparm , z_axis, math.rad(-70)},
+						{ruparm , x_axis, 0},
+						{ruparm , z_axis, math.rad(-80)},
 						
-						{luparm , y_axis, math.rad(50)},
-						{luparm , z_axis, math.rad(55)},
+						{luparm , x_axis, math.rad(-25)},
+						{luparm , x_axis, math.rad(5)},
 						
-						{rloarm , y_axis, math.rad(15)},
+						{rloarm , x_axis, math.rad(-20)},
+						{rloarm , z_axis, math.rad(10)},
 						
-						{lloarm , x_axis, math.rad(-40)},
+						{lloarm , x_axis, math.rad(-80)},
+						{lloarm , z_axis, math.rad(-10)},
 						
-						{torso , x_axis, 0, math.rad(150)},
+						{torso , x_axis, 0},
+						{torso , y_axis, 0},
+					},
+	},
+	kf_stand_fire_2 = {
+					turns = { --Turns
+						{ruparm , y_axis, math.rad(60)},
+						{ruparm , z_axis, math.rad(-80)},
+						
+						{luparm , x_axis, 0},
+						{luparm , z_axis, math.rad(10)},
+						
+						{rloarm , x_axis, math.rad(-20)},
+						{rloarm , z_axis, math.rad(40)},
+						
+						{lloarm , x_axis, 0},
+						{lloarm , z_axis, math.rad(5)},
 					},
 	},
 	run_aim = {
 					turns = { --Turns
 						{ruparm , x_axis, math.rad(20)},
 						{ruparm , y_axis, 0},
-						{ruparm , z_axis, math.rad(-55)},
+						{ruparm , z_axis, math.rad(-10)},
 						
-						{luparm , x_axis, 0},						
-						{luparm , y_axis, math.rad(-20)},
-						{luparm , z_axis, math.rad(80)},
+						{luparm , x_axis, math.rad(-70)},						
+						{luparm , y_axis, 0},
+						{luparm , z_axis, math.rad(20)},
 					
-						{rloarm , x_axis, math.rad(-35)},
-						{rloarm , y_axis, 0},
-						{rloarm , z_axis, math.rad(-85)},
+						{rloarm , x_axis, 0},
+						{rloarm , y_axis, math.rad(-90)},
+						{rloarm , z_axis, 0},
 					
-						{lloarm , x_axis, math.rad(-20)},
+						{lloarm , x_axis, math.rad(-5)},
 						{lloarm , y_axis, 0},
-						{lloarm , z_axis, 0},
+						{lloarm , z_axis, math.rad(-70)},
 										
 						{torso , x_axis, math.rad(-10)},
-					},
-	},
-	kf_run_fire = {
-					turns = { --Turns
-						{ruparm , x_axis, math.rad(60)},
-						{ruparm , y_axis, math.rad(35)},
-						{ruparm , z_axis, math.rad(-70)},
-						
-						{luparm , y_axis, math.rad(50)},
-						{luparm , z_axis, math.rad(55)},
-						
-						{rloarm , y_axis, math.rad(15)},
-						
-						{lloarm , x_axis, math.rad(-40)},
-						
-						{torso , x_axis, 0, math.rad(150)},
 					},
 	},
 	prone_aim = {
@@ -122,15 +123,17 @@ local variants = {
 }
 
 local keyframes = {
-	stand_fire = {stances.kf_stand_fire},
-	run_fire = {stances.kf_run_fire},
+	stand_fire = {	stances.kf_stand_fire_1, 
+					stances.kf_stand_fire_2},
+	run_fire = {	stances.kf_stand_fire_1, 
+					stances.kf_stand_fire_2},
 	prone_fire = {stances.kf_prone_fire},
 }
 
 local keyframeDelays = {
 	ready_to_aim = {0.3},
-	stand_fire = {0.3, 0.2},
-	run_fire = {0.3, 0.2},
+	stand_fire = {0.2, 0.2, 0.1},
+	run_fire = {0.2, 0.2, 0.1},
 	prone_fire = {0.3, 0.2},
 }
 
