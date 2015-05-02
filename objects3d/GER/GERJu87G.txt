@@ -7,16 +7,16 @@ base
                 wheel1
             gun1
                 barrel1
-                    flare1
-            mg1
+                    flare_1
+            flare_5
         wing2
             gear2
                 wheel2
             gun2
                 barrel2
-                    flare2
-            mg2
+                    flare_2
+            flare_6
         turret
             machineguns
-                mgflare1
-                mgflare2
+                flare_3
+                flare_4

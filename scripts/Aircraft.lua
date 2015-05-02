@@ -30,7 +30,6 @@ local function IsRocket(weaponNum)
 end
 
 function script.QueryWeapon(weaponNum)
-	Spring.Echo(weaponNum, IsRocket(weaponNum))
 	if IsRocket(weaponNum) then
 		return piece("rocket" .. lastRocket)
 	end
