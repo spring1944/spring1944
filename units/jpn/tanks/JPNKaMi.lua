@@ -21,7 +21,7 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 			name				= "Type97MG",
             maxAngleDif			= 20,
 		},
-		[4] = { -- Rear Turret MG
+		[4] = {
 			name				= "Type97MG",
 		},
 		[5] = {

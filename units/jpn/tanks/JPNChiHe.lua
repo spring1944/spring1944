@@ -21,7 +21,10 @@ local JPNChiHe = MediumTank:New{
             maxAngleDif			= 50,
 		},
 		[4] = { -- Rear turret MG
-			name				= "Type97MG",
+                        name                            = "Type97MG",
+                        mainDir                         = [[0 16 -1]],
+                        maxAngleDif                     = 210,
+
 		},
 		[5] = {
 			name				= ".50calproof",
