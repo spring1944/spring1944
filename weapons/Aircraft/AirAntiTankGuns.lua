@@ -6,6 +6,7 @@ local AirATGunClass = Weapon:New{
   accuracy           = 100,
   avoidFriendly      = false,
   canattackground    = false,
+  heightBoostFactor  = 0,
   collisionSize      = 4,
   collideFriendly    = false,
   colormap           = [[ap_colormap.png]],

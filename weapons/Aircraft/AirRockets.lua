@@ -8,6 +8,7 @@ local AirRocketClass = Weapon:New{
   explosionSpeed     = 30,
   flightTime         = 2,
   gravityaffected    = true,
+  heightBoostFactor  = 0,
   impulseFactor      = 0,
   leadLimit		= 0,
   model              = [[Rocket_HVAR.S3O]],
