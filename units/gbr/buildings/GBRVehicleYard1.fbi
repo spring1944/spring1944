@@ -30,7 +30,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GBRVehicleYard.S3O;
-  script=Yard.cob;
+  script=Yard.lua;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }

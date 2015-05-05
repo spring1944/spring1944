@@ -34,7 +34,7 @@
   maxWaterDepth=0;
   objectName=USCP.S3O;
   selfDestructAs=massive_explosion;
-  script=yard.cob;
+  script=Yard.lua;
   [sfxtypes] {
   }
   showNanoFrame=0;

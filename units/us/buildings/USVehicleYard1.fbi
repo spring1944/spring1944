@@ -31,7 +31,7 @@
   maxWaterDepth=0;
   metalMake=0;
   objectName=USVehicleYard.S3O;
-  script=Yard.cob;
+  script=Yard.lua;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }

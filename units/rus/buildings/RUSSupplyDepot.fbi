@@ -33,7 +33,7 @@
   maxSlope=15;
   maxWaterDepth=0;
   objectName=USCP.S3O;
-  script=yard.cob;
+  script=Yard.lua;
   selfDestructAs=massive_explosion;
   [sfxtypes] {
   }

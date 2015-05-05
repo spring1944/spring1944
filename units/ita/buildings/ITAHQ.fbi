@@ -38,7 +38,7 @@
   maxWaterDepth=0;
   metalMake=0;
   objectName=ITAHQ.s3o;
-  script=ushq.cob;
+  script=Yard.lua;
   onoffable=1;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {

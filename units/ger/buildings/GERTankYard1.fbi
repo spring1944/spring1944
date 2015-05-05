@@ -32,7 +32,7 @@
   maxWaterDepth=0;
   metalStorage=0;
   objectName=GERTankYard.S3O;
-  script=Yard.cob;
+  script=Yard.lua;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }

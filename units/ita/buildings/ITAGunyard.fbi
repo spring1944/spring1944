@@ -28,7 +28,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=ITAGunYard.s3o;
-  script=Yard.cob;
+  script=Yard.lua;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
   }

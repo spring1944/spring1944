@@ -25,7 +25,7 @@
   maxSlope=10;
   maxWaterDepth=0;
   objectName=GERRadar.S3O;
-  script=Radar.cob;
+  script=Yard.lua;
   selfDestructAs=Large_Explosion;
   [sfxtypes] {
   }

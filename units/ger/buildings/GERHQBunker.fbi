@@ -42,6 +42,7 @@
   metalMake=0;
   noChaseCategory=FLAG AIR MINE;
   objectName=GERHQBunker.S3O;
+  script=Yard.lua;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {
     explosionGenerator0=custom:MG_MUZZLEFLASH;

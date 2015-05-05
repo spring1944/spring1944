@@ -43,6 +43,7 @@
   metalMake=0;
   objectName=GBRHQ.S3O;
   onoffable=1;
+  script=Yard.lua;
   selfDestructAs=Huge_Explosion;
   [sfxtypes] {
   }

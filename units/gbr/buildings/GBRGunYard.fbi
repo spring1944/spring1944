@@ -35,7 +35,7 @@
   }
   showNanoFrame=0;
   showNanoSpray=0;
-  script=Yard.cob;
+  script=Yard.lua;
   side=GBR;
   sightDistance=146;
   stealth=1;

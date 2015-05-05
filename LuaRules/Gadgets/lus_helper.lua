@@ -15,25 +15,29 @@ if (gadgetHandler:IsSyncedCode()) then
 
 -- Localisations
 GG.lusHelper = {}
-sqrt = math.sqrt
+local sqrt = math.sqrt
+local random = math.random
 -- Synced Read
 local GetUnitPieceInfo 		= Spring.GetUnitPieceInfo
 local GetUnitPieceMap		= Spring.GetUnitPieceMap
 local GetUnitPiecePosDir	= Spring.GetUnitPiecePosDir
 local GetUnitPosition		= Spring.GetUnitPosition
+local GetUnitWeaponTarget	= Spring.GetUnitWeaponTarget
 -- Synced Ctrl
 local PlaySoundFile			= Spring.PlaySoundFile
 local SpawnCEG				= Spring.SpawnCEG
+local SetUnitWeaponState	= Spring.SetUnitWeaponState
 -- LUS
 local CallAsUnit 			= Spring.UnitScript.CallAsUnit	
 
 -- Unsynced Ctrl
 -- Constants
+local RANGE_INACCURACY_PERCENT = 5
 -- Variables
 
 -- Useful functions for GG
 
-function RemoveGrassSquare(x, z, r)
+function GG.RemoveGrassSquare(x, z, r)
 	local startX = math.floor(x - r/2)
 	local startZ = math.floor(z - r/2)
 	for i = 0, r, Game.squareSize * 4 do
@@ -43,20 +47,18 @@ function RemoveGrassSquare(x, z, r)
 		end
 	end
 end
-GG.RemoveGrassSquare = RemoveGrassSquare
 
-function RemoveGrassCircle(cx, cz, r)
+function GG.RemoveGrassCircle(cx, cz, r)
 	local r2 = r * r
 	for z = 0, 2 * r, Game.squareSize * 4 do -- top to bottom diameter
-		local lineLength = math.sqrt(r2 - (r - z) ^ 2)
+		local lineLength = sqrt(r2 - (r - z) ^ 2)
 		for x = -lineLength, lineLength, Game.squareSize * 4 do
 			Spring.RemoveGrass((cx + x)/Game.squareSize, (cz + z - r)/Game.squareSize)
 		end
 	end
 end
-GG.RemoveGrassCircle = RemoveGrassCircle
 
-function SpawnDecal(decalType, x, y, z, teamID, delay, duration)
+function GG.SpawnDecal(decalType, x, y, z, teamID, delay, duration)
 	if delay then
 		GG.Delay.DelayCall(SpawnDecal, {decalType, x, y, z, teamID, nil, duration}, delay)
 	else
@@ -69,15 +71,30 @@ function SpawnDecal(decalType, x, y, z, teamID, delay, duration)
 		end
 	end
 end
-GG.SpawnDecal = SpawnDecal
 
-function EmitSfxName(unitID, pieceNum, effectName) -- currently unused
-	local x,y,z,dx,dy,dz = GetUnitPiecePosDir(unitID, pieceNum)
-	SpawnCEG(effectName, x,y,z, dx, dy, dz)
+function GG.EmitSfxName(unitID, pieceNum, effectName) -- currently unused
+	local px, py, pz, dx, dy, dz = GetUnitPiecePosDir(unitID, pieceNum)
+	dx, dy, dz = GG.Vector.Normalized(dx, dy, dz)
+	SpawnCEG(effectName, px, py, pz, dx, dy, dz)
 end
-GG.EmitSfxName = EmitSfxName
 
-local function RecursiveHide(unitID, pieceNum, hide)
+
+
+function GG.LimitRange(unitID, weaponNum, defaultRange)
+	local targetType, _, targetID = GetUnitWeaponTarget(unitID, weaponNum)
+	if targetType == 1 then -- it's a unit
+		--Spring.Echo(targetID)
+		local tx, ty, tz = GetUnitPosition(targetID)
+		local ux, uy, uz = GetUnitPosition(unitID)
+		local distance = sqrt((tx - ux)^2 + (ty - uy)^2 + (tz - uz)^2)
+		local distanceMult = 1 + (random(-RANGE_INACCURACY_PERCENT, RANGE_INACCURACY_PERCENT) / 100)
+		SetUnitWeaponState(unitID, weaponNum, "range", distanceMult * distance)
+	end
+	SetUnitWeaponState(unitID, weaponNum, "range", defaultRange)
+end
+
+
+function GG.RecursiveHide(unitID, pieceNum, hide)
 	-- Hide this piece
 	local func = (hide and Spring.UnitScript.Hide) or Spring.UnitScript.Show
 	CallAsUnit(unitID, func, pieceNum)
@@ -87,25 +104,22 @@ local function RecursiveHide(unitID, pieceNum, hide)
 	if children then
 		for _, pieceName in pairs(children) do
 			--Spring.Echo("pieceName:", pieceName, pieceMap[pieceName])
-			RecursiveHide(unitID, pieceMap[pieceName], hide)
+			GG.RecursiveHide(unitID, pieceMap[pieceName], hide)
 		end
 	end
 end
-GG.RecursiveHide = RecursiveHide
 
-local function PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
+function GG.PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
 	local x,y,z = GetUnitPosition(unitID)
 	volume = volume or 5
 	channel = channel or "sfx"
 	PlaySoundFile(sound, volume, x, y, z, sx, sy, sz, channel)
 end
-GG.PlaySoundAtUnit = PlaySoundAtUnit
 
 local unsyncedBuffer = {}
-local function PlaySoundForTeam(teamID, sound, volume)
+function GG.PlaySoundForTeam(teamID, sound, volume)
 	table.insert(unsyncedBuffer, {teamID, sound, volume})
 end
-GG.PlaySoundForTeam = PlaySoundForTeam
 
 function gadget:GameFrame(n)
 	for _, callInfo in pairs(unsyncedBuffer) do
@@ -114,13 +128,12 @@ function gadget:GameFrame(n)
 	unsyncedBuffer = {}
 end
 
-local function GetUnitDistanceToPoint(unitID, tx, ty, tz, bool3D)
+function GG.GetUnitDistanceToPoint(unitID, tx, ty, tz, bool3D)
 	local x,y,z = GetUnitPosition(unitID)
 	local dy = (bool3D and ty and (ty - y)^2) or 0
 	local distanceSquared = (tx - x)^2 + (tz - z)^2 + dy
 	return sqrt(distanceSquared)
 end
-GG.GetUnitDistanceToPoint = GetUnitDistanceToPoint
 
 -- Include table utilities
 VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
@@ -128,41 +141,33 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 local udCache = {}
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
+	-- Pass unitID to constructor
+	env = Spring.UnitScript.GetScriptEnv(builderID)
+	if env and env.build then
+		Spring.UnitScript.CallAsUnit(builderID, env.build, unitID, unitDefID)
+	end
 	local info = GG.lusHelper[unitDefID]
 	local cp = UnitDefs[unitDefID].customParams
 	if not udCache[unitDefID] then
 		udCache[unitDefID] = true
 		-- Parse Model Data
 		local pieceMap = GetUnitPieceMap(unitID)
-		local launcherIDs = {}
-		local turretIDs = {}
-		local mantletIDs = {}
-		local barrelIDs = {}
 		local numRockets = 0
 		local numBarrels = 0
-		local numWheels = 0
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
 			local weaponNum = tonumber(pieceName:sub(weapNumPos+1,weapNumEndPos-1))]]
-			-- Find launcher pieces
-			if pieceName:find("r_rocket") then
+			if pieceName:find("rocket") then
 				numRockets = numRockets + 1
-			-- Find mantlet pieces
-			--[[elseif pieceName:find("mantlet_") then
-				mantletIDs[weaponNum] = true]]
 			-- Find barrel pieces
 			elseif pieceName:find("barrel") then
 				--barrelIDs[weaponNum] = true
 				numBarrels = numBarrels + 1
-			-- Find the number of wheels
-			elseif pieceName:find("wheel") then
-				numWheels = numWheels + 1
 			end
 		end
 		info.numBarrels = numBarrels
 		info.numRockets = numRockets
-		info.numWheels = numWheels
 	end
 	
 	-- Remove aircraft land and repairlevel buttons
@@ -173,13 +178,13 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
-	elseif UnitDefs[unitDefID].customParams.mother then
+	elseif cp.mother then
 		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
-	elseif UnitDefs[unitDefID].customParams.child then
+	elseif cp.child then
 		local toRemove = {CMD.MOVE_STATE}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
@@ -190,6 +195,9 @@ end
 
 function gadget:GamePreload()
 	-- Parse UnitDef Data
+	-- for featureName, _ in pairs(FeatureDefNames) do
+		-- Spring.Echo(featureName)
+	-- end
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local info = {}
 		local cp = unitDef.customParams
@@ -201,18 +209,30 @@ function gadget:GamePreload()
 		local burstRates = {}
 		local reloadTimes = {}
 		local minRanges = {}
+		local explodeRanges = {}
 		local flareOnShots = {}
+		local weaponAnimations = {}
+		local weaponCEGs = {}
+		local seismicPings = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
 			local weaponDef = WeaponDefs[weaponInfo.weaponDef]
-			reloadTimes[i] = weaponDef.reload
-			burstLengths[i] = weaponDef.salvoSize
-			burstRates[i] = weaponDef.salvoDelay
-			minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
-			if weaponDef.type == "MissileLauncher" then
-				missileWeaponIDs[i] = true
+			if not weaponDef.type:find("Shield") then
+				reloadTimes[i] = weaponDef.reload
+				burstLengths[i] = weaponDef.salvoSize
+				burstRates[i] = weaponDef.salvoDelay
+				minRanges[i] = tonumber(weaponDef.customParams.minrange) -- intentionally nil otherwise
+				if weaponDef.selfExplode then
+					explodeRanges[i] = weaponDef.range
+				end
+				if weaponDef.type == "MissileLauncher" then
+					missileWeaponIDs[i] = true
+				end
+				weaponAnimations[i] = weaponDef.customParams.scriptanimation
+				flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
+				weaponCEGs[i] = weaponDef.customParams.cegflare
+				seismicPings[i] = weaponDef.customParams.seismicping
 			end
-			flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 		end
 		-- WeaponDef Level Info
 		info.missileWeaponIDs = missileWeaponIDs
@@ -221,18 +241,34 @@ function gadget:GamePreload()
 		info.burstLengths = burstLengths
 		info.burstRates = burstRates
 		info.minRanges = minRanges
-
+		info.explodeRanges = explodeRanges
+		info.weaponAnimations = weaponAnimations
+		info.weaponCEGs = weaponCEGs
+		info.seismicPings = seismicPings
 		-- UnitDef Level Info
+		local corpse = FeatureDefNames[unitDef.wreckName:lower()]
+		info.numCorpses = 0
+		if corpse then
+			corpse = corpse.id
+			while FeatureDefs[corpse] do
+				info.numCorpses = info.numCorpses + 1
+				local corpseDef = FeatureDefs[corpse]
+				corpse = corpseDef.deathFeatureID
+			end
+		end
+		
 		info.facing = cp.facing or 0 -- default to front
-		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 75)
-		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 60)
+		info.turretTurnSpeed = math.rad(tonumber(cp.turretturnspeed) or 24)
+		info.elevationSpeed = math.rad(tonumber(cp.elevationspeed) or 30)
 		info.barrelRecoilSpeed = (tonumber(cp.barrelrecoilspeed) or 10)
 		info.barrelRecoilDist = (tonumber(cp.barrelrecoildist) or 5)
 		info.aaWeapon = (tonumber(cp.aaweapon) or nil)
-		info.wheelSpeed = math.rad(tonumber(cp.wheelspeed) or 100)
-		info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
+		-- info.wheelSpeed = math.rad(tonumber(cp.wheelspeed) or 100)
+		-- info.wheelAccel = math.rad(tonumber(cp.wheelaccel) or info.wheelSpeed * 2)
 		-- General
 		info.numWeapons = #weapons
+		info.weaponsWithAmmo = tonumber(cp.weaponswithammo) or 0
+		info.mainAnimation = cp.scriptanimation
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
