@@ -46,10 +46,21 @@ end
 
 function gadget:Initialize()
 	local morphDefs = _G.morphDefs
+<<<<<<< HEAD
 	for from, morphs in pairs(morphDefs) do
 		for _, morph in pairs(morphs) do
 			if #UnitDefs[morph.into].weapons > 0 then
 				fireStateDefs[from] = true
+=======
+	local noWeaponID = WeaponDefNames.noweapon.id
+	Spring.Echo(noWeaponID)
+	for from, morphs in pairs(morphDefs) do
+		if #UnitDefs[from].weapons == 0 then
+			for _, morph in pairs(morphs) do
+				if #UnitDefs[morph.into].weapons > 0 and UnitDefs[morph.into].weapons[1].weaponDef ~= noWeaponID then
+					fireStateDefs[from] = true
+				end
+>>>>>>> origin
 			end
 		end
 	end

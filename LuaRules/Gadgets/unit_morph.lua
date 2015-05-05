@@ -588,6 +588,7 @@ local function FinishMorph(unitID, morphData)
   
   Spring.GiveOrderArrayToUnitArray({ newUnit }, {
     { CMD.FIRE_STATE, { states.firestate },             { } },
+	{ CMD_FAKE_FIRE_STATE, { states.firestate },        { } },
     { CMD.MOVE_STATE, { states.movestate },             { } },
     { CMD.REPEAT,     { states["repeat"] and 1 or 0 },  { } },
     { CMD.CLOAK,      { states.cloak     and 1 or udDst.initCloaked },  { } },
