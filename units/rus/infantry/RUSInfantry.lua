@@ -146,7 +146,7 @@ local RUS_PartisanRifle = RifleInf:New(Partisan):New{
 	
 	weapons = {
 		[1] = { -- Rifle
-			name				= "PartisanMosinNagant",
+			name				= "MosinNagant",
 		},
 		[2] = { -- Grenade
 			name				= "Molotov",
