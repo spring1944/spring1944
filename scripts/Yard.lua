@@ -1,4 +1,4 @@
-local base = piece("base")
+local base = piece("base") or piece("building")
 local radar = piece("radar")
 
 local function Raise()
@@ -21,87 +21,87 @@ function script.Killed()
 	Spring.UnitScript.Explode(base, SFX.SHATTER)
 end
 
-local builder = UnitDef.isBuilder
+if UnitDef.isBuilder then -- yard
 
-if builder then -- yard
+	Spring.SetUnitNanoPieces(unitID, {piece("beam")})
+	local pad = piece("pad")
+	local door = piece("door")
 
-Spring.SetUnitNanoPieces(unitID, {piece("beam")})
-local pad = piece("pad")
-local door = piece("door")
-
-function build(buildID, buildDefID)
-	if UnitDef.customParams.separatebuildspot then
-		local buildDef = UnitDefs[buildDefID]
-		if buildDef and buildDef.customParams.buildoutside then
-			Move(pad, x_axis, 50)
-		else
-			Move(pad, x_axis, 0)
+	function build(buildID, buildDefID)
+		if UnitDef.customParams.separatebuildspot then
+			local buildDef = UnitDefs[buildDefID]
+			if buildDef and buildDef.customParams.buildoutside then
+				Move(pad, x_axis, 50)
+			else
+				Move(pad, x_axis, 0)
+			end
 		end
 	end
-end
 
-function script.QueryBuildInfo()
-    return pad or base
-end
-
-local function OpenCloseAnim(open)
-    Signal(1) -- Kill any other copies of this thread
-    SetSignalMask(1) -- Allow this thread to be killed by fresh copies
-	if door then
-		if open then
-			Turn(door, y_axis, math.rad(130), math.rad(50))
-		else
-			Turn(door, y_axis, 0, math.rad(50))
-		end
+	function script.QueryBuildInfo()
+		return pad
 	end
-    SetUnitValue(COB.INBUILDSTANCE, open)
-    SetUnitValue(COB.BUGGER_OFF, open)
-end
 
--- Called when factory yard opens
-function script.Activate()
-    -- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
-    StartThread(OpenCloseAnim, true)
-end
+	local function OpenCloseAnim(open)
+		Signal(1) -- Kill any other copies of this thread
+		SetSignalMask(1) -- Allow this thread to be killed by fresh copies
+		if door then
+			if open then
+				Turn(door, y_axis, math.rad(130), math.rad(50))
+			else
+				Turn(door, y_axis, 0, math.rad(50))
+			end
+		end
+		SetUnitValue(COB.INBUILDSTANCE, open)
+		SetUnitValue(COB.BUGGER_OFF, open)
+	end
 
--- Called when factory yard closes
-function script.Deactivate()
-    -- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
-    StartThread(OpenCloseAnim, false)
-end
+	-- Called when factory yard opens
+	function script.Activate()
+		-- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
+		StartThread(OpenCloseAnim, true)
+	end
 
-function script.StartBuilding()
-    -- TODO: You can run any animation that continues throughout the build process here e.g. spin pad
-end
+	-- Called when factory yard closes
+	function script.Deactivate()
+		-- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
+		StartThread(OpenCloseAnim, false)
+	end
 
-function script.StopBuilding()
-    -- TODO: You can run any animation that signifies the end of the build process here
-end
+	function script.StartBuilding()
+		-- TODO: You can run any animation that continues throughout the build process here e.g. spin pad
+	end
 
--- GERHQBunker has an MG turret
-local flare, flare1 = piece("flare", "flare1")
-
-if flare then -- bunker
-
-function script.QueryWeapon(weaponID)
-	return flare
-end
-
-function script.AimFromWeapon(weaponID)
-	return flare1
-end
-
-function script.AimWeapon(weaponID, heading, pitch)
-	Signal(2)
-	SetSignalMask(2)
-	Turn(flare1, y_axis, heading)
-	return true
-end
-
-function script.Shot(weaponID)
-	GG.EmitSfxName(unitID, flare, "MG_MUZZLEFLASH")
-end
-
-end -- bunker
+	function script.StopBuilding()
+		-- TODO: You can run any animation that signifies the end of the build process here
+	end
 
 end -- yard
+
+-- GERHQBunker has an MG turret
+do
+	local flare, flare1 = piece("flare", "flare1")
+	
+	if flare then -- bunker
+	
+		function script.QueryWeapon(weaponID)
+			return flare
+		end
+		
+		function script.AimFromWeapon(weaponID)
+			return flare1
+		end
+		
+		function script.AimWeapon(weaponID, heading, pitch)
+			Signal(2)
+			SetSignalMask(2)
+			Turn(flare1, y_axis, heading)
+			return true
+		end
+		
+		function script.Shot(weaponID)
+			GG.EmitSfxName(unitID, flare, "MG_MUZZLEFLASH")
+		end
+	
+	end -- bunker
+end
