@@ -219,6 +219,7 @@ local TankGun = Cannon:New{
 }
 
 local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
+	heightBoostFactor  = 0,
 	targetMoveError    = 0.1,
 	tolerance          = 600,
 	customparams = {
@@ -302,6 +303,7 @@ local AutoCannon = Cannon:New{
 }
 
 local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
+	heightBoostFactor  = 0,
 	predictBoost       = 0.5,
 	soundTrigger       = false,
 	sprayAngle         = 250,

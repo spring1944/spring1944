@@ -7,11 +7,6 @@ local function TableConcat(t1,t2)
     return t1, tmpCount
 end
 
-local modOptions
-if (Spring.GetModOptions) then
-  modOptions = Spring.GetModOptions()
-end
-
 buildoptions = {}
 
 -- let's append all the side's units to the list

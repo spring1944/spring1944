@@ -43,6 +43,7 @@ local AirRocket = Rocket:New{
 	collideFriendly    = false,
 	explosionGenerator = "custom:HE_Medium",
 	flightTime         = 2,
+	heightBoostFactor  = 0,
 	leadLimit          = 0,
 	model              = "Rocket_HVAR.S3O",
 	soundHitDry        = "GEN_Explo_2",

@@ -51,13 +51,6 @@ local MosinNagant = RifleClass:New{
   soundStart         = [[RUS_MosinNagant]],
 }
 
--- Mosin Nagant for puny partisan
--- derives from the above MosinNagant
-local PartisanMosinNagant = MosinNagant:New{
-  accuracy           = 225,
-  movingAccuracy     = 1800,
-}
-
 -- SVT (USSR)
 local SVT = RifleClass:New{
   name               = [[SVT-40]],
@@ -171,7 +164,6 @@ return lowerkeys({
   M1Garand = M1Garand,
   BAR = BAR,
   MosinNagant = MosinNagant,
-  PartisanMosinNagant = PartisanMosinNagant,
   Mod91 = Mod91,
   Mod91_41 = Mod91_41,
   Arisaka99 = Arisaka99,

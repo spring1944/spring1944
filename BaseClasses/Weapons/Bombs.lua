@@ -6,6 +6,7 @@ local BombClass = Weapon:New{
 	explosionSpeed     = 30,
 	explosionGenerator = [[custom:HE_XXLarge]],
 	gravityaffected    = true,
+	heightBoostFactor  = 0,
 	impulseFactor      = 0.01,
 	manualBombSettings = true,
 	noSelfDamage       = true,

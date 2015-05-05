@@ -180,9 +180,7 @@ local modOptions
 if (Spring.GetModOptions) then
 	modOptions = Spring.GetModOptions()
 end
-
-
-
+modOptions = modOptions or {}
 
 local UnitDefs = DEFS.unitDefs
 local cegCache = {}
@@ -275,7 +273,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 	--------------------------------------------------------------------------------
 	-- Damage Types
 	--------------------------------------------------------------------------------
-		if weaponDef.damage then
+	if weaponDef.damage then
 		local damage = weaponDef.damage
 		local defaultDamage = damage["default"]
 		
@@ -385,15 +383,13 @@ end
 			local customParams = weaponDef.customparams
 			if customParams then --all weapons have the damageType customParam
 		if not customParams.no_range_adjust then
-		  for tag, mult in pairs(mults) do
-			if weaponDef[tag] then
-							weaponDef[tag] = weaponDef[tag] * mult
-			end
-					end
+			for tag, mult in pairs(mults) do
+				if weaponDef[tag] then
+					weaponDef[tag] = weaponDef[tag] * mult
 				end
-			
+			end
+		end
 
-			
 
 				local armor_penetration_100m = customParams.armor_penetration_100m
 				local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
@@ -459,19 +455,19 @@ end
 		local bulletCoeff
 		bulletCoeff = modOptions.weapon_bulletdamage_mult
 		for name in pairs(WeaponDefs) do
-	 if WeaponDefs[name].customparams then
-			 if (WeaponDefs[name].customparams.damagetype == 'smallarm') then
-				 for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
-					 WeaponDefs[name].damage[armorType] = armorDamage * bulletCoeff
-				 end
-			 end
-	 end
+	 		if WeaponDefs[name].customparams then
+				if (WeaponDefs[name].customparams.damagetype == 'smallarm') then
+					for armorType,armorDamage in pairs (WeaponDefs[name].damage) do
+						WeaponDefs[name].damage[armorType] = armorDamage * bulletCoeff
+					end
+				end
+			end
 		end
 	end
 end
 
 -- set weapon velocities to arc at 45 degrees at max range
-for weapName, weapDef in pairs(WeaponDefs) do 
+for weapName, weapDef in pairs(WeaponDefs) do
 	if weapDef.gravityaffected then
 		weapDef.mygravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
 	end

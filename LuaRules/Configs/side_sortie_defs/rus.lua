@@ -81,9 +81,9 @@ local rusSorties = {
 		alwaysAttack = 1,
 		name = "Partisan Supply Drop Sortie",
 		description = "1 x Po-2 Kukuruznik (Partisan)",
-		buildCostMetal = 2000,
+		buildCostMetal = 500,
 		buildPic = "RUSPo2Partisan.png",
-		buildTime = 2000,
+		buildTime = 500,
 	},
 }
 

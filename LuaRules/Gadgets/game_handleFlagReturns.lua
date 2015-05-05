@@ -1,34 +1,37 @@
 function gadget:GetInfo()
-	return {
-		name = "Flag Returns",
-		desc = "Set flags production in map_command_per_player mode, increases the output of flags according to how long they've been held, set init_production and production rules params",
-		author = "Nemo (B. Tyler), FLOZi (C. Lawrence), Prospector widget code form gui_prospector.lua by Evil4Zerggin, Szunti",
-		date = "2011-09-01",
-		license = "GNU GPL v2",
-		layer = 0,
-		enabled = true
-	}
+    return {
+        name = "Flag Returns",
+        desc = "Set flags production in map_command_per_player mode, increases the output of flags according to how long they've been held, set init_production and production rules params",
+        author = "Nemo (B. Tyler), FLOZi (C. Lawrence), Prospector widget code form gui_prospector.lua by Evil4Zerggin, Szunti",
+        date = "2011-09-01",
+        license = "GNU GPL v2",
+        layer = 0,
+        enabled = true
+    }
 end
 -- function localisations
-local floor						= math.floor
-local min, max					= math.min, math.max
+local floor                     = math.floor
+local min, max                  = math.min, math.max
 
 -- Synced Read
-local GetUnitRulesParam			= Spring.GetUnitRulesParam
-local GetUnitTeam				= Spring.GetUnitTeam
-local GetUnitPosition			= Spring.GetUnitPosition
-local GetGroundInfo				= Spring.GetGroundInfo
+local GetUnitRulesParam         = Spring.GetUnitRulesParam
+local GetUnitTeam               = Spring.GetUnitTeam
+local GetUnitPosition           = Spring.GetUnitPosition
+local GetGroundInfo             = Spring.GetGroundInfo
 
 -- Synced Ctrl
-local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
-local SetUnitResourcing			= Spring.SetUnitResourcing
-local SetUnitRulesParam			= Spring.SetUnitRulesParam
+local SetUnitMetalExtraction    = Spring.SetUnitMetalExtraction
+local SetUnitResourcing         = Spring.SetUnitResourcing
+local SetUnitRulesParam         = Spring.SetUnitRulesParam
 
 -- constants
-local GAIA_TEAM_ID		= Spring.GetGaiaTeamID()
-local DEFAULT_OUTPUT 	= UnitDefNames["flag"].extractsMetal
-local MULTIPLIER_CAP	= 10
-local OUTPUT_BASE		= 1.12
+local GAIA_TEAM_ID              = Spring.GetGaiaTeamID()
+local DEFAULT_EXTRACT           = UnitDefNames["flag"].extractsMetal
+-- how much can a flag grow?
+local GROWTH_CAP    = 10
+-- how fast does the flag grow?
+-- 1.12 means a flag hits max after 21 minutes of uninterrupted ownership.
+local GROWTH_RATE   = 1.12
 
 -- prospector constants
 local METAL_MAP_SQUARE_SIZE = 16
@@ -40,132 +43,155 @@ local EXTRACT_RADIUS = Game.extractorRadius
 local EXTRACT_RADIUS_SQR = EXTRACT_RADIUS * EXTRACT_RADIUS
 
 -- variables
-local teams	= Spring.GetTeamList()
+local teams = Spring.GetTeamList()
 
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()
 end
 
-local metalMake = tonumber(modOptions.map_command_per_player) or -1
-		
+local mapCommandPerPlayer = tonumber(modOptions.map_command_per_player) or -1
+local communismMode = modOptions.communism_mode or false
+
 -- Custom Functions
 -- prospector widget code start (some modifications)
 local function IntegrateMetal(posX, posZ)
-	local startX = floor((posX - EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
-	local startZ = floor((posZ - EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
-	local endX = floor((posX + EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
-	local endZ = floor((posZ + EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
-	startX, startZ = max(startX, 0), max(startZ, 0)
-	endX, endZ = min(endX, MAP_SIZE_X_SCALED - 1), min(endZ, MAP_SIZE_Z_SCALED - 1)
-	
-	local result = 0
-	for i = startX, endX do
-		for j = startZ, endZ do
-			local cx, cz = (i + 0.5) * METAL_MAP_SQUARE_SIZE, (j + 0.5) * METAL_MAP_SQUARE_SIZE
-			local dx, dz = cx - posX, cz - posZ
-			local dist = dx * dx + dz * dz
-			
-			if (dist < EXTRACT_RADIUS_SQR) then
-				local _, metal = GetGroundInfo(cx, cz)
-				result = result + metal
-			end
-		end
-	end
-	return result
+    local startX = floor((posX - EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
+    local startZ = floor((posZ - EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
+    local endX = floor((posX + EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
+    local endZ = floor((posZ + EXTRACT_RADIUS) / METAL_MAP_SQUARE_SIZE)
+    startX, startZ = max(startX, 0), max(startZ, 0)
+    endX, endZ = min(endX, MAP_SIZE_X_SCALED - 1), min(endZ, MAP_SIZE_Z_SCALED - 1)
+
+    local result = 0
+    for i = startX, endX do
+        for j = startZ, endZ do
+            local cx, cz = (i + 0.5) * METAL_MAP_SQUARE_SIZE, (j + 0.5) * METAL_MAP_SQUARE_SIZE
+            local dx, dz = cx - posX, cz - posZ
+            local dist = dx * dx + dz * dz
+
+            if (dist < EXTRACT_RADIUS_SQR) then
+                local _, metal = GetGroundInfo(cx, cz)
+                result = result + metal
+            end
+        end
+    end
+    return result
 end
 --prospector widget code ends
 
-local function getInitialFlagExtractRate(flagID)
-	-- metal in radius
-	local x, _, z = GetUnitPosition(flagID)
-	local metal = IntegrateMetal(x, z)
-	-- multiply with metal_extraction value
-	return metal * DEFAULT_OUTPUT
+local function setProduction(flagID, amount)
+
+    -- communism handles resource giving by reading flag production UnitRulesParam
+    -- so don't add any real resources if it is active (or flags will produce double)
+    if not communismMode then
+        SetUnitResourcing(flagID, "umm", amount)
+    end
+
+    local access = {}
+    if modOptions and modOptions.always_visible_flags == "0" then
+        -- just allied players can see current production
+        access = {allied = true}
+    else
+        -- flags always visible, you could calculate production in a widget, so don't hide
+        access = {public = true}
+    end
+
+    SetUnitRulesParam(flagID, "production", amount, access)
 end
 
-local function setInitialProductionAndRulesParams(flagID, mMake)
-	local init_production
-	if mMake >= 0 then
-		init_production = mMake
-		SetUnitMetalExtraction(flagID, 0, 0) -- remove extracted metal
-		SetUnitResourcing(flagID, "umm", mMake)
-	else
-		init_production = getInitialFlagExtractRate(flagID)
-	end
-	SetUnitRulesParam(flagID, "init_production", init_production, {public = true})
-	-- Set production rulesparam to current production, now it's init_production, 
-	-- but Increasing Flag Return gadget can change it
-	local access = {}
-	if modOptions and modOptions.always_visible_flags == "0" then
-		access = {allied = true} -- just allied players can see current production
-	else
-		access = {public = true} -- flags always visible, you could calculate production in a widget, so don't hide
-	end
-	SetUnitRulesParam(flagID, "production", init_production, access)
+-- when not using map_command_per_player, get the amount extracted by the flag
+-- from the metalmap
+local function getInitialProduction(flagID)
+    -- metal in radius
+    local x, _, z = GetUnitPosition(flagID)
+    local metal = IntegrateMetal(x, z)
+    -- multiply with metal_extraction value
+    return metal * DEFAULT_EXTRACT
 end
 
-local function OutputCalc(lifespan)
-	return DEFAULT_OUTPUT * OUTPUT_BASE ^ lifespan
+local function initializeFlag(flagID, initialProduction)
+    -- remove extracted metal, we're only using metal make
+    SetUnitMetalExtraction(flagID, 0, 0)
+    SetUnitRulesParam(flagID, "init_production", initialProduction, {public = true})
+    setProduction(flagID, initialProduction)
+end
+
+local function calculateProduction(initialProduction, lifespan)
+    return initialProduction * GROWTH_RATE ^ lifespan
 end
 
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
 function gadget:Initialize()
-	gadget:GameStart() -- Will only do something if game has already started
+    gadget:GameStart() -- Will only do something if game has already started
 end
 
 function gadget:GameStart()
-	--Spring.Echo(tostring(metalMake or "N/A"))
-	for i = 1, #GG.flags do
-		local flagID = GG.flags[i]
-		setInitialProductionAndRulesParams(flagID, metalMake)
-	end
-	-- Remove the gadget if using map command per player
-	if metalMake >= 0 then
-		gadgetHandler:RemoveGadget() -- possibly unsafe
-	end	
+    -- calculate map_command_per_player values
+    -- in the case of map_command_per_player, all flags start
+    -- out at the same value, and only vary according to lifespan, not
+    -- according to metal map.
+    local globalInitialProduction
+    if mapCommandPerPlayer > 0 then
+        -- -1 to ignore GAIA
+        local nonGaiaTeams = #teams - 1
+        local flagCount = #GG.flags
+        local maxMapIncome = mapCommandPerPlayer * nonGaiaTeams
+        local maxFlagIncome = maxMapIncome / flagCount
+        globalInitialProduction = maxFlagIncome / GROWTH_CAP
+    end
+
+    for i = 1, #GG.flags do
+        local flagID = GG.flags[i]
+        -- initial flag income is determined either by map_command_per_player,
+        -- or the flag's metal patch. it is the value that flags reset to when captured
+        local initialProd = globalInitialProduction or getInitialProduction(flagID)
+        initializeFlag(flagID, initialProd)
+    end
 end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-	local ud = UnitDefs[unitDefID]
-	if ud.name == "flag" then
-		-- check if it was passed within an ally team (/take)
-		local oldAllyTeamID = select(6, Spring.GetTeamInfo(oldTeam))
-		local newAllyTeamID = select(6, Spring.GetTeamInfo(unitTeam))
-		if oldAllyTeamID ~= newAllyTeamID then
-			SetUnitRulesParam(unitID, "lifespan", 0) -- also reset in flagManager
-			SetUnitMetalExtraction (unitID, DEFAULT_OUTPUT)
-			-- set production rules param
-			local init_production = GetUnitRulesParam(unitID, "init_production")
-			SetUnitRulesParam(unitID, "production", init_production)
-		end
-	end
+    local ud = UnitDefs[unitDefID]
+    if ud.name == "flag" then
+        local flagID = unitID
+        -- check if it was passed within an ally team (/take)
+        local oldAllyTeamID = select(6, Spring.GetTeamInfo(oldTeam))
+        local newAllyTeamID = select(6, Spring.GetTeamInfo(unitTeam))
+        if oldAllyTeamID ~= newAllyTeamID then
+            SetUnitRulesParam(flagID, "lifespan", 0) -- also reset in flagManager
+
+            local init_production = GetUnitRulesParam(unitID, "init_production")
+            setProduction(flagID, init_production)
+        end
+    end
 end
 
 function gadget:GameFrame(n) -- increase flag returns
-	if n % (60 * 30) == 0 and n > 1 then -- every minute, from first minute onwards
-		for i = 1, #GG.flags do
-			local flagID = GG.flags[i]
-			
-			if GetUnitTeam(flagID) ~= GAIA_TEAM_ID then -- Neutral flags do not gain lifespan
-				local lifespan = GetUnitRulesParam(flagID, "lifespan") or 0
-				lifespan = lifespan + 1
-				SetUnitRulesParam(flagID, "lifespan", lifespan)
-				
-				local output = OutputCalc(lifespan)
-				if output < MULTIPLIER_CAP * DEFAULT_OUTPUT then
-					SetUnitMetalExtraction (flagID, output)
-					-- set production rules param, use the same multiplier as for output
-					local init_production = GetUnitRulesParam(flagID, "init_production")
-					local multiplier = output / DEFAULT_OUTPUT
-					local production = init_production * multiplier
-					SetUnitRulesParam(flagID, "production", production)
-				end
-			end
-		end
-	end
+    if n % (60 * 30) == 0 and n > 1 then -- every minute, from first minute onwards
+        for i = 1, #GG.flags do
+            local flagID = GG.flags[i]
+
+            if GetUnitTeam(flagID) ~= GAIA_TEAM_ID then -- Neutral flags do not gain lifespan
+                local lifespan = GetUnitRulesParam(flagID, "lifespan") or 0
+                lifespan = lifespan + 1
+                SetUnitRulesParam(flagID, "lifespan", lifespan)
+
+                local init_production = GetUnitRulesParam(flagID, "init_production")
+                local production = GetUnitRulesParam(flagID, 'production')
+                local prodForReal = Spring.GetUnitResources(flagID)
+                local flagMaxProd = GROWTH_CAP * init_production
+                local newProd = calculateProduction(init_production, lifespan)
+
+                if newProd < flagMaxProd then
+                    setProduction(flagID, newProd)
+                elseif (production < flagMaxProd) or (production > flagMaxProd) then
+                    setProduction(flagID, flagMaxProd)
+                end
+            end
+        end
+    end
 end
 
 else

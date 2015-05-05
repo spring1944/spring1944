@@ -6,6 +6,7 @@ local modOptions
 if (Spring.GetModOptions) then
 	modOptions = Spring.GetModOptions()
 end
+modOptions = {}
 
 -- Auto-generate sortie, squad & queuable-morph units
 VFS.Include("gamedata/unitdefs_autogen.lua")
@@ -70,49 +71,46 @@ for name, ud in pairs(UnitDefs) do
 	end
 	local cp = ud.customparams
 	--MODOPTION CONTROLS
-	if (modOptions) then	
-		if (modOptions.scoremode) then
-			if (modOptions.scoremode ~= 'disabled') then
-				if (ud.customparams) then
-					if (not ud.customparams.flagcaprate) then
-						if (not ud.customparams.flag and ud.weapons ~= nil) then
-							ud.customparams.flagcaprate = 1
-						end
-					end
-				end
-			end
-		end		
-		
-		if (modOptions.command_mult) then
-			if (ud.extractsmetal) then
-				if (modOptions.command_mult == '0') then --Very Low Command
-					ud.extractsmetal = (0.25 * ud.extractsmetal)
-				end
-				if (modOptions.command_mult == '1') then --Low Command
-					ud.extractsmetal = (0.5 * ud.extractsmetal)
-				end
-				if (modOptions.command_mult == '2') then --Normal Command
-					ud.extractsmetal = (1 * ud.extractsmetal)
-				end
-				if (modOptions.command_mult == '3') then --High Command
-					ud.extractsmetal = (1.5 * ud.extractsmetal)
-				end
-				if (modOptions.command_mult == '4') then --Very High Command
-					ud.extractsmetal = (2.5 * ud.extractsmetal)
-				end
-			end
-		end
+    if (modOptions.scoremode) then
+        if (modOptions.scoremode ~= 'disabled') then
+            if (ud.customparams) then
+                if (not ud.customparams.flagcaprate) then
+                    if (not ud.customparams.flag and ud.weapons ~= nil) then
+                        ud.customparams.flagcaprate = 1
+                    end
+                end
+            end
+        end
+    end
 
-		if (modOptions.command_storage and (tonumber(modOptions.command_storage) > 0)) then
-			if (ud.metalstorage) then
-				ud.metalstorage = 0
-			end
-		end
-	end
+    if (modOptions.command_mult) then
+        if (ud.extractsmetal) then
+            if (modOptions.command_mult == '0') then --Very Low Command
+                ud.extractsmetal = (0.25 * ud.extractsmetal)
+            end
+            if (modOptions.command_mult == '1') then --Low Command
+                ud.extractsmetal = (0.5 * ud.extractsmetal)
+            end
+            if (modOptions.command_mult == '2') then --Normal Command
+                ud.extractsmetal = (1 * ud.extractsmetal)
+            end
+            if (modOptions.command_mult == '3') then --High Command
+                ud.extractsmetal = (1.5 * ud.extractsmetal)
+            end
+            if (modOptions.command_mult == '4') then --Very High Command
+                ud.extractsmetal = (2.5 * ud.extractsmetal)
+            end
+        end
+    end
 
+    if (modOptions.command_storage and (tonumber(modOptions.command_storage) > 0)) then
+        if (ud.metalstorage) then
+            ud.metalstorage = 0
+        end
+    end
  --END MODOPTION CONTROLS
- 
- --BEGIN UNIT PROCESSING	
+
+ --BEGIN UNIT PROCESSING
 	local LoSMult = 0.6
 	local decloakDistMult = 0.6
 	local infSpeedMult = 0.5
@@ -159,6 +157,7 @@ for name, ud in pairs(UnitDefs) do
 	end
 	
 
+
 	if ud.customparams then
 		if ud.customparams.feartarget then
 			if (ud.maxvelocity) then
@@ -193,7 +192,7 @@ for name, ud in pairs(UnitDefs) do
 
 	]]--
 	--end first chunk of new sensor stuff!
-	
+
 	--more new sensor stuff
 	--decide if stationary units should be stealth or not
 	if not ud.maxvelocity then
@@ -205,7 +204,13 @@ for name, ud in pairs(UnitDefs) do
 		end
 	end
 	--end more new sensor stuff
-	
+
+    -- reclaimability
+    local reclaimable = not ud.maxvelocity
+    reclaimable = reclaimable and not (ud.customparams and ud.customparams.feartarget)
+    reclaimable = reclaimable and not (ud.customparams and ud.customparams.weaponswithammo)
+    ud.reclaimable = reclaimable
+
 	--ship things
 	if ud.floater then
 		ud.turninplace = false
@@ -232,7 +237,7 @@ for name, ud in pairs(UnitDefs) do
 				ud.description = newDescrLine
 			end
 			ud.description = ud.description.." ("..newDescrLine..")"
-			
+
 		end
 		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
 			ud.usepiececollisionvolumes = true
@@ -255,11 +260,11 @@ for name, ud in pairs(UnitDefs) do
 		ud.stealth = false
 		ud.activatewhenbuilt = true
 		--end new sensor stuff
-		
+
 		--local seisSig = tonumber(ud.mass) / 1000 -- 10x smaller than default
 		--if seisSig < 1 then seisSig = 1 end
 		ud.seismicsignature = 1 --seisSig
-		
+
 		--set health
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
@@ -283,14 +288,14 @@ for name, ud in pairs(UnitDefs) do
 --		end
 		if ud.seismicdistance then
 			ud.seismicdistance = (modOptions.unit_los_mult * ud.seismicdistance)
-		end			
+		end
 	end
 	if (modOptions.unit_radar_mult) then
 		if ud.radardistance then
 			ud.radardistance = (modOptions.unit_radar_mult * ud.radardistance)
 		end
 	end
-	
+
 	ud.transportbyenemy = false
 	ud.collisionvolumetest = 1
 
