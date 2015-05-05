@@ -25,7 +25,7 @@
   iconType=aacar;
   leaveTracks=1;
   mass=600;
-  maxDamage=930;
+  maxDamage=600;
   maxReverseVelocity=2.665;
   maxSlope=6;
   maxVelocity=5;
