@@ -3,6 +3,10 @@ local RUSInf = {
 }
 local Partisan = {
 	maxDamageMul		= 0.40,
+
+	cloakCost			= 0,
+	cloakCostMoving		= 0,
+	minCloakDistance	= 225,
 }
 
 local RUS_Engineer = EngineerInf:New(RUSInf):New{

@@ -4,10 +4,6 @@ local RUSPDrop = Null:New{
 	category					= "AIR PARA",
 	iconType					= "paratrooper",
 	maxDamage					= 1500,
-	
-	customparams = {
-		spawnsunit = "ruspartisanrifle",
-	},
 }
 
 return lowerkeys({

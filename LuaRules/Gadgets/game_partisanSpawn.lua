@@ -27,7 +27,7 @@ local GetUnitCommands	    = Spring.GetUnitCommands
 -- Unsynced Ctrl
 local GiveOrderToUnit	    = Spring.GiveOrderToUnit
 -- constants
-local SPAWNER_UD = UnitDefNames['ruspdrop']
+local SPAWNER_UD = UnitDefNames['ruspartisansupplies']
 local INTERVAL = 5 -- 5 seconds
 local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
 local ENEMY_TOO_CLOSE_RADIUS = SPAWNER_UD.customParams['supplyrange']

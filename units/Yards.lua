@@ -36,7 +36,11 @@ units["usspyard1"] = nil
 -- Extra units
 units["usdukwsupplies"] = Supplies:New{}
 units["gbrglidersupplies"] = SuppliesSmall:New{}
-units["ruspartisansupplies"] = SuppliesSmall:New{}
+units["ruspartisansupplies"] = SuppliesSmall:New{
+    customParams = {
+		spawnsunit = "ruspartisanrifle",
+    },
+}
 
 -- Radars have slightly more specific names
 units["gbrradar"].name = "AA No4 Mk3(P) Light Warning Set"
