@@ -205,7 +205,15 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	local unitDef = UnitDefNames[unitname]
 	--local speed = unitDef.speed / 30
 	local speed = 20
-	local altitude = unitDef.wantedHeight
+    -- 1.5x looks a bit better (otherwise they come in too low and sharply rise
+    -- right after spawning)
+	local altitude = unitDef.wantedHeight * 1.5
+
+    -- don't count underwater valleys as low terrain for altitude purposes
+    if sy < 0 then
+        sy = 0
+    end
+
 	sy = sy + altitude
 	local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
 
