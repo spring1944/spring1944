@@ -17,6 +17,8 @@ local RUS_Commissar = EngineerInf:New(RUSInf):New{
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 250,
+
+    iconType            = "commissar",
 	
 	customParams = {
 		blockfear			= true,
