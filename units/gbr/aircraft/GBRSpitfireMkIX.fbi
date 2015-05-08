@@ -38,7 +38,7 @@
   maxDamage=254.5;
   maxElevator=0.005;
   maxFuel=60;
-  maxPitch=1;
+  maxPitch=0.1;
   maxRudder=0.004;
   maxSlope=10;
   maxVelocity=12.6;
@@ -67,7 +67,7 @@
   weapon1=bomb;
   maxAngleDif1=20;
   onlyTargetCategory1=BUILDING HARDVEH OPENVEH INFANTRY SHIP LARGESHIP DEPLOYED;
-  weaponMainDir1=0 -0.18 1;
+  weaponMainDir1=0 0 1;
 
   weapon2=m2browningamg;
   maxAngleDif2=10;

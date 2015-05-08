@@ -41,7 +41,7 @@
   maxDamage=340;
   maxElevator=0.0042;
   maxFuel=60;
-  maxPitch=1;
+  maxPitch=0.1;
   maxRudder=0.003;
   maxSlope=10;
   maxVelocity=17.5;
@@ -65,7 +65,7 @@
   smoothAnim=1;
   stealth=1;
   turnRate=50;
-  badTargetCategory=BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
+  badTargetCategory=AIR SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
   weapon3=BredaSafat05;
   maxAngleDif3=10;
