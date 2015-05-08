@@ -39,7 +39,7 @@ if UnitDef.isBuilder then -- yard
 	end
 
 	function script.QueryBuildInfo()
-		return pad
+		return pad or base
 	end
 
 	local function OpenCloseAnim(open)
