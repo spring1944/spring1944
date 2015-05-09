@@ -81,25 +81,27 @@
   weapon2=CannoneDa47mml40AP;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=BredaM38;
-  onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
-  weaponMainDir3=0 0 1;
-  maxAngleDif3=10;
+  weapon3=CannoneDa47mml40HEAT;
+  onlyTargetCategory2=OPENVEH HARDVEH;
 
-	weapon4=BredaM38;
-	onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
-	weaponMainDir4=0 0 1;
-	maxAngleDif4=30;
+  weapon4=BredaM38;
+  onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
+  weaponMainDir4=0 0 1;
+  maxAngleDif4=10;
 
 	weapon5=BredaM38;
 	onlyTargetCategory5=INFANTRY SOFTVEH DEPLOYED;
 	weaponMainDir5=0 0 1;
-	weaponSlaveTo5=4;
-	
 	maxAngleDif5=30;
 
-  weapon6=.50calproof;
+	weapon6=BredaM38;
+	onlyTargetCategory6=INFANTRY SOFTVEH DEPLOYED;
+	weaponMainDir6=0 0 1;
+	weaponSlaveTo6=4;
+	maxAngleDif6=30;
 
-  weapon7=Small_Tracer_Green;
+  weapon7=.50calproof;
+
+  weapon8=Small_Tracer_Green;
 }
 

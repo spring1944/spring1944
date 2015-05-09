@@ -76,18 +76,20 @@
   weaponMainDir2=0 16 1;
 
   weapon1=Ansaldo75mmL34HE;
-  badTargetCategory1=OPENVEH HARDVEH;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
 
   weapon2=Ansaldo75mmL34AP;
   onlyTargetCategory2=OPENVEH HARDVEH;
 
-  weapon3=BredaM38;
-  onlyTargetCategory3=INFANTRY SOFTVEH DEPLOYED;
-  maxAngleDif3=10;
+  weapon3=Ansaldo75mmL34HEAT;
+  onlyTargetCategory3=OPENVEH HARDVEH;
 
-  weapon4=.50calproof;
+  weapon4=BredaM38;
+  onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
+  maxAngleDif4=10;
 
-  weapon5=Small_Tracer_Green;
+  weapon5=.50calproof;
+
+  weapon6=Small_Tracer_Green;
 }
 
