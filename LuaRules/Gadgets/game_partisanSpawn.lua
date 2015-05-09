@@ -6,7 +6,7 @@ function gadget:GetInfo()
 		date      = "28/01/2010",
 		license   = "GPL v2",
 		layer     = -5,
-		enabled   = true --  loaded by default?
+		enabled   = false --  loaded by default?
 	}
 end
 -- function localisations
