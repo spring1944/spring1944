@@ -32,6 +32,7 @@
   footprintX=4;
   footprintZ=4;
   iconType=bomber;
+  wingDrag=0.1;
   idleAutoHeal=2;
   idleTime=1800;
   maneuverleashlength=1280;
@@ -39,10 +40,10 @@
   maxAileron=0.0054;
   maxBank=0.9;
   maxDamage=340;
-  maxElevator=0.0042;
+  maxElevator=0.0045;
   maxFuel=60;
   maxPitch=0.1;
-  maxRudder=0.003;
+  maxRudder=0.005;
   maxSlope=10;
   maxVelocity=17.5;
   maxWaterDepth=0;
@@ -60,42 +61,42 @@
     explosionGenerator3=custom:XSMALL_MUZZLEFLASH;
   }
   showNanoFrame=0;
-  Side=GER;
+  Side=ITA;
   sightDistance=0;
   smoothAnim=1;
   stealth=1;
   turnRate=50;
   badTargetCategory=AIR SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED;
 
-  weapon3=BredaSafat05;
-  maxAngleDif3=10;
-  onlyTargetCategory3=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
-  weaponMainDir3=0 0 1;
-
-  weapon4=BredaSafat05;
-  maxAngleDif4=10;
-  onlyTargetCategory4=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
-  weaponMainDir4=0 0 1;
-  
-  weapon5=BredaSafat03;
-  maxAngleDif5=10;
-  onlyTargetCategory5=INFANTRY SOFTVEH AIR  DEPLOYED;
-  weaponMainDir5=0 0 1;
-  
-  weapon6=BredaSafat03;
-  maxAngleDif6=10;
-  onlyTargetCategory6=INFANTRY SOFTVEH AIR  DEPLOYED;
-  weaponMainDir6=0 0 1;
-
-  weapon1=Bomb160kg;
-  maxAngleDif1=15;
-  onlyTargetCategory1=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon1=BredaSafat05;
+  maxAngleDif1=10;
+  onlyTargetCategory1=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir1=0 0 1;
 
-  weapon2=Bomb160kg;
-  maxAngleDif2=15;
-  onlyTargetCategory2=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weapon2=BredaSafat05;
+  maxAngleDif2=10;
+  onlyTargetCategory2=BUILDING HARDVEH OPENVEH INFANTRY SOFTVEH AIR DEPLOYED;
   weaponMainDir2=0 0 1;
+  
+  weapon3=BredaSafat03;
+  maxAngleDif3=10;
+  onlyTargetCategory3=INFANTRY SOFTVEH AIR  DEPLOYED;
+  weaponMainDir3=0 0 1;
+  
+  weapon4=BredaSafat03;
+  maxAngleDif4=10;
+  onlyTargetCategory4=INFANTRY SOFTVEH AIR  DEPLOYED;
+  weaponMainDir4=0 0 1;
+
+  weapon5=Bomb160kg;
+  maxAngleDif5=15;
+  onlyTargetCategory5=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir5=0 -0.3 1;
+
+  weapon6=Bomb160kg;
+  maxAngleDif6=15;
+  onlyTargetCategory6=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
+  weaponMainDir6=0 -0.3 1;
 
   weapon7=Medium_Tracer;
 
