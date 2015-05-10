@@ -82,7 +82,7 @@
   onlyTargetCategory2=OPENVEH HARDVEH;
 
   weapon3=CannoneDa47mml40HEAT;
-  onlyTargetCategory2=OPENVEH HARDVEH;
+  onlyTargetCategory3=OPENVEH HARDVEH;
 
   weapon4=BredaM38;
   onlyTargetCategory4=INFANTRY SOFTVEH DEPLOYED;
