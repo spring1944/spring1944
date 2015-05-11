@@ -40,7 +40,7 @@
   maxAileron=0.00375;
   maxBank=0.9;
   maxDamage=495;
-  maxElevator=0.00375;
+  maxElevator=0.0025;
   maxFuel=160;
   maxPitch=0.5;
   maxRudder=0.0025;

@@ -39,7 +39,7 @@
   maxAileron=0.0054;
   maxBank=0.9;
   maxDamage=210;
-  maxElevator=0.0042;
+  maxElevator=0.0022;
   maxFuel=60;
   maxPitch=0.5;
   maxRudder=0.003;
@@ -68,12 +68,12 @@
 
   badTargetCategory=BUILDING INFANTRY FLAG SOFTVEH HARDVEH OPENVEH SHIP DEPLOYED;
   weapon1=A_tkbomb;
-  maxAngleDif1=10;
+  maxAngleDif1=15;
   onlyTargetCategory1=HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=A_tkbomb;
-  maxAngleDif2=10;
+  maxAngleDif2=15;
   onlyTargetCategory2=HARDVEH SHIP LARGESHIP OPENVEH DEPLOYED;
   weaponMainDir2=0 0 1;
 
@@ -89,5 +89,6 @@
   weaponSlaveTo4=3;
 
   weapon5=Medium_Tracer;
+
 }
 

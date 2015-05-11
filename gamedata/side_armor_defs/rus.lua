@@ -116,8 +116,11 @@ local RUSDefs = {
     "RUSPo2",
     --USSR--
     "RUSYak3",
-    "RUSIL2",
     "RUSLa5FN",
+  },
+  hardplanes  =  {
+    "RUSIL2",
+    "RUSIL2PTAB",
   },
   
     squadSpawners  =  {
