@@ -40,9 +40,10 @@
   maxAileron=0.0054;
   maxBank=0.9;
   maxDamage=340;
-  maxElevator=0.0045;
+  maxElevator=0.001;
   maxFuel=60;
-  maxPitch=0.1;
+  maxPitch=0.5;
+  attackSafetyDistance=200;
   maxRudder=0.005;
   maxSlope=10;
   maxVelocity=17.5;
@@ -91,12 +92,12 @@
   weapon5=Bomb160kg;
   maxAngleDif5=15;
   onlyTargetCategory5=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir5=0 -0.3 1;
+  weaponMainDir5=0 0 1;
 
   weapon6=Bomb160kg;
   maxAngleDif6=15;
   onlyTargetCategory6=Building SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  weaponMainDir6=0 -0.3 1;
+  weaponMainDir6=0 0 1;
 
   weapon7=Medium_Tracer;
 

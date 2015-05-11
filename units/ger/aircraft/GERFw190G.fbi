@@ -36,9 +36,10 @@
   maxAileron=0.0054;
   maxBank=0.9;
   maxDamage=320;
-  maxElevator=0.0042;
+  maxElevator=0.001;
   maxFuel=60;
-  maxPitch=0.1;
+  maxPitch=0.5;
+  attackSafetyDistance=200;
   maxRudder=0.003;
   maxSlope=10;
   maxVelocity=17.5;
