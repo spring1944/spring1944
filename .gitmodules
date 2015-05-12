@@ -1,0 +1,3 @@
+[submodule "libs/chiliui"]
+	path = libs/chiliui
+	url = https://github.com/gajop/chiliui.git

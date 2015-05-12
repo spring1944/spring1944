@@ -55,7 +55,7 @@ function widget:DrawWorld()
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
-		if not infos[unitDefID] and UnitDefs[unitDefID].canFly then
+		if unitDefID and not infos[unitDefID] and UnitDefs[unitDefID].canFly then
 			local pieces = GetUnitPieceList(unitID)
 			local propellers = {}
 			local tex = path .. (UnitDefs[unitDefID]["customParams"]["proptexture"] or "prop.tga")
