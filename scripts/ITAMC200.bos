@@ -1,22 +1,22 @@
+
 #include "constants.h"
 
-piece  base, w1, w2, propeller, blades, gun1, gun2, bomb1, bomb2;
 
-static-var  Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
+piece w1, base, w2, propeller, blades, gun1, gun2, bomb1, bomb2;
+ 
+static-var Static_Var_1, statechg_DesiredState, statechg_StateChanging, iFear;
 
 #include "air_sharedDefs.h"
 
 #define SMOKEPUFF_GPL_FX 1024+0
 #define MG_SHELLCASINGS 1024+1
 #define MG_MUZZLEFLASH	1024+2
-#define XSMALL_MUZZLEFLASH	1024+3
 
 #define SIG_BANK			2
 #define SIG_FEARRECOVERY	4
 
 //tracers
-#define MEDIUM_TRACER 	2048+6
-#define LARGE_TRACER 	2048+7
+#define MEDIUM_TRACER 	2048+4
 
 #include "air_fearHandling.h"
 

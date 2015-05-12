@@ -18,8 +18,8 @@
   category=AIR;
   cruiseAlt=1500;
   [customParams] {
-    enginesound=fw190b-;
-    enginesoundnr=12;
+    enginesound=yakb-;
+    enginesoundnr=20;
     feartarget=1;
     proptexture=prop3.tga;
     maxammo=2;
@@ -57,7 +57,6 @@
     explosionGenerator0=custom:SMOKEPUFF_GPL_FX;
     explosionGenerator1=custom:MG_SHELLCASINGS;
     explosionGenerator2=custom:MG_MUZZLEFLASH;
-    explosionGenerator3=custom:XSMALL_MUZZLEFLASH;
   }
   showNanoFrame=0;
   Side=GER;
