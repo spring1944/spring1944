@@ -45,7 +45,7 @@
   maxPitch=0.5;
   maxRudder=0.0025;
   maxSlope=10;
-  maxVelocity=11.2;
+  maxVelocity=13.8;
   maxWaterDepth=0;
   myGravity=0.6;
   noChaseCategory=FLAG MINE AIR INFANTRY BUILDING;
