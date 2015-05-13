@@ -1,6 +1,6 @@
 local GBRChurchillMkVII = HeavyTank:New{
 	name				= "A22F Churchill Mk. VII",
-	description			= "Heavily Armoured Support Tank",
+	description			= "Heavily Armoured All-Terrain Support Tank",
 	buildCostMetal		= 5800,
 	maxDamage			= 4060,
 	movementClass		= "TANK_Goat",
