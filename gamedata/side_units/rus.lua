@@ -186,7 +186,6 @@ local rusunits =
   
   rusradar = {
     "rus_sortie_recon",
-	"rus_sortie_partisan",
     "rus_sortie_interceptor",
     "rus_sortie_fighter",
     "rus_sortie_attack",
