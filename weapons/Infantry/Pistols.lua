@@ -14,7 +14,6 @@ local PistolClass = Weapon:New{
   fireStarter        = 0,
   id                 = 1, -- used?
   impactonly         = 1,
-  intensity          = 0.0001,
   interceptedByShieldType = 8,
   laserFlareSize     = 0.0001,
   movingAccuracy     = 888,
