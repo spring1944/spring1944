@@ -70,7 +70,7 @@ local GL_ONE_MINUS_SRC_ALPHA   = GL.ONE_MINUS_SRC_ALPHA
 local GL_SRC_ALPHA             = GL.SRC_ALPHA
 
 -- Variables
-include("colors.h.lua")
+require("colors.lua")
 
 local vsx, vsy = widgetHandler:GetViewSizes()
 

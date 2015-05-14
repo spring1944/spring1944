@@ -15,7 +15,7 @@ function widget:GetInfo()
   }
 end
 
-include("keysym.h.lua")
+require("keysym.lua")
 
 ---- CHANGELOG -----
 --	CarRepairer, v2:

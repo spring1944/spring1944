@@ -3,8 +3,7 @@
 -- Implementations
 -- Enfield No. 2 Mk. I (GBR)
 local Webley = PistolClass:New{
-  name               = [[Enfield No. 2 Mk. I]],
-  soundStart         = [[GBR_Webley]],
+  name               = [[Enfield No. 2 Mk. I]], soundStart         = [[GBR_Webley]],
   damage = {
     default            = 35, -- intended?
   },

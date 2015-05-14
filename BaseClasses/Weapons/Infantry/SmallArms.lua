@@ -25,7 +25,6 @@ local PistolClass = SmallArm:New{
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
 	duration           = 0.025,
-	intensity          = 0.0001,
 	movingAccuracy     = 888,
 	range              = 180,
 	reloadtime         = 1.5,

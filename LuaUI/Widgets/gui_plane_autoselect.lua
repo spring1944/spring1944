@@ -90,7 +90,7 @@ local GL_ONE_MINUS_SRC_ALPHA    = GL.ONE_MINUS_SRC_ALPHA
 local GL_SRC_ALPHA              = GL.SRC_ALPHA
 local GL_DEPTH_BUFFER_BIT       = GL.DEPTH_BUFFER_BIT
 
-include("colors.h.lua")
+require("colors.lua")
 
 ---------------------------------------------------------------------------
 -- Variables
