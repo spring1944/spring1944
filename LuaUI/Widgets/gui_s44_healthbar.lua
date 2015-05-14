@@ -240,7 +240,7 @@ function widget:Update(deltaTime)
 						end
 					end
 					
-					if(ud.customParams and ud.customParams.maxammo) then
+					if(ud and ud.customParams and ud.customParams.maxammo) then
 						local maxAmmo = ud.customParams.maxammo
 						local curAmmo = GetUnitRulesParam(uid, "ammo")
 						if(curAmmo) then
@@ -329,7 +329,7 @@ function widget:Update(deltaTime)
 					
 					if (not display) and (IsUnitSelected(uid) or aura) then display = true end
 					if isBeingTransported then display = false end
-					if ud.customParams.child then display = true end
+					if ud and ud.customParams.child then display = true end
                     
 					local radius,r,g,b,x,y,z,heightscale
 
