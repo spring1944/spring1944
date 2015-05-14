@@ -14,7 +14,6 @@ local rusunits =
   rusbarracks =
   {
     "rus_sortie_recon",
-	"rus_sortie_partisan",
     "rus_platoon_commissar",
     "rusengineer",
     "rus_platoon_rifle",
@@ -27,6 +26,7 @@ local rusunits =
     "rus_platoon_atheavy",
     "rus_platoon_sniper",
     "rus_platoon_mortar",
+    "rus_platoon_partisan",
     "ruszis5",
 	"ruspontoontruck",
   },
@@ -64,6 +64,7 @@ local rusunits =
   {
     "rusbarracks",
     "rusgunyard",
+    "ruspshack",
     --"ruszis5",
     "rusapminesign",
     "rusatminesign",

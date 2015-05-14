@@ -14,8 +14,8 @@ local ITA_MC200 = Fighter:New{
 	maxVelocity			= 16.5,
 
 	customParams = {
-		enginesound			= "fw190b-",
-		enginesoundnr		= 12,
+		enginesound			= "yakb-",
+		enginesoundnr		= 20,
 		maxmmo				= 2,
 	},
 

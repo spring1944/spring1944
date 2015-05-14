@@ -6,28 +6,33 @@ local ITAM1542 = LightTank:New{
 	trackWidth			= 18,
 
 	weapons = {
-		[1] = {
+        [1] = {
+            name                = "CannoneDa47mml32HEAT",
+            mainDir             = [[0 16 1]],
+            maxAngleDif         = 210,
+        },
+		[2] = {
 			name				= "CannoneDa47mml40AP",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
-		[2] = {
+		[3] = {
 			name				= "CannoneDa47mml40HE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
-		[3] = { -- coax MG
+		[4] = { -- coax MG
 			name				= "BredaM38",
 			maxAngleDif			= 210,
 		},
-		[4] = { -- hull MG 1
+		[5] = { -- hull MG 1
 			name				= "BredaM38",
 		},
-		[5] = { -- hull MG 2
+		[6] = { -- hull MG 2
 			name				= "BredaM38",
 			slaveTo				= 4,
 		},
-		[6] = {
+		[7] = {
 			name				= ".50calproof",
 		},
 	},

@@ -11,10 +11,10 @@ local JPN_Ki102 = Fighter:New{
 	maxAcc				= 0.702,
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
-	maxElevator			= 0.00375,
+	maxElevator			= 0.0025,
 	maxPitch			= 1,
 	maxRudder			= 0.0025,
-	maxVelocity			= 11.2,
+	maxVelocity			= 13.8,
 
 	customParams = {
 		enginesound			= "yakb-",

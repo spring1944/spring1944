@@ -6,9 +6,9 @@ local ITA_MC205 = FighterBomber:New{
 	maxAcc				= 0.742,
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
-	maxElevator			= 0.0042,
+	maxElevator			= 0.0045,
 	maxPitch			= 1,
-	maxRudder			= 0.003,
+	maxRudder			= 0.005,
 	maxVelocity			= 17.5,
 
 	customParams = {

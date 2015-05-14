@@ -7,20 +7,25 @@ local ITAP40 = MediumTank:New{
 
 	weapons = {
 		[1] = {
-			name				= "Ansaldo75mmL34AP",
+			name				= "Ansaldo75mmL18HEAT",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "Ansaldo75mmL34HE",
+			name				= "Ansaldo75mmL34AP",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[3] = {
+			name				= "Ansaldo75mmL34HE",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
+		},
+		[4] = {
 			name				= "BredaM38",
 			maxAngleDif			= 10,
 		},
-		[4] = {
+		[5] = {
 			name				= ".50calproof",
 		},
 	},

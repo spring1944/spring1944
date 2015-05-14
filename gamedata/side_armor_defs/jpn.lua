@@ -92,11 +92,14 @@ local JPNDefs = {
 
   planes  =  {
 	--Japan--
-	"jpnki102",
 	"jpnki43",
 	"jpnki51",
 	"jpnki76",
 	"jpnki84",
+  },
+  hardplanes  =  {
+	--Japan--
+	"jpnki102",
   },
   
     squadSpawners  =  {

@@ -77,17 +77,20 @@ local AttackFighter = Fighter:New{
 }
 
 local FighterBomber = Fighter:New{
-	description			= "Fighter-Bomber",
-	iconType			= "bomber",
-	cruiseAlt			= 750,
-	fireState			= 0,
-	maxFuel				= 60,
+    attackSafetyDistance    = 200,
+	description			    = "Fighter-Bomber",
+	iconType			    = "bomber",
+	cruiseAlt			    = 750,
+	fireState			    = 0,
+    maxElevator             = 0.001,
+	maxFuel				    = 60,
+    maxPitch                = 0.5,
 	
 	weapons = {
 		[1] = {
 			name				= "bomb",
 			maxAngleDif			= 20,
-			mainDir				= [[0 -0.18 1]],
+			mainDir				= [[0 0 1]],
 		},
 	},
 }

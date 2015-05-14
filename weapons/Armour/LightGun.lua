@@ -179,6 +179,16 @@ local CannoneDa47mml40AP = CannoneDa47mml40:New(LightAP, true):New{
     default            = 1225,
   },
 }
+local CannoneDa47mml40HEAT = CannoneDa47mml40:New(LightGunHEATClass, true):New{
+  range                = 708,
+  weaponVelocity       = 900,
+  customparams = {
+    armor_penetration       = 115,
+  },
+  damage = {
+    default            = 1048,
+  },
+}
 
 
 -- Type 1 37mm (JPN)
@@ -311,6 +321,7 @@ return lowerkeys({
   -- Cannone da 47/40
   CannoneDa47mml40HE = CannoneDa47mml40HE,
   CannoneDa47mml40AP = CannoneDa47mml40AP,
+  CannoneDa47mml40HEAT = CannoneDa47mml40HEAT,
   -- Japanese 37mms
   Type137mmHE = Type137mmHE,
   Type137mmAP = Type137mmAP,
