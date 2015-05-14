@@ -189,11 +189,10 @@ local BredaM3520mm = ACClass:New{
 }
 
 local BredaM3520mmAA = BredaM3520mm:New(ACAAClass, true):New{
+  burst              = 5,
+  burstRate          = 0.2,
   range              = 1950,
   sprayAngle         = 475,
-  customparams = {
-    fearaoe            = 400,
-  },
 }
 
 local TwinBredaM3520mmAA = BredaM3520mmAA:New{
@@ -237,6 +236,8 @@ local Type9820mm = ACClass:New{
 }
 
 local Type9820mmAA = Type9820mm:New(ACAAClass, true):New{
+  burst              = 5,
+  burstRate          = 0.13,
   range              = 1950,
 }
 
