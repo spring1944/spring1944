@@ -19,7 +19,8 @@ local lusPriorityCache = {}
 local unitDefIDsPassed = {}
 
 function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
-	if lusPriorityCache[attackerID] and Spring.GetUnitStates(attackerID).firestate == 2 then -- verify we're on fire at will
+	if lusPriorityCache[attackerID] and Spring.GetUnitStates(attackerID).firestate == 2 and 
+			not WeaponDefs[attackerWeaponDefID].noAutoTarget then -- verify we're on fire at will
 		return true
 	end
 	return false
