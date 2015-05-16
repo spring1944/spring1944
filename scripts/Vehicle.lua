@@ -42,7 +42,6 @@ end
 local wantedDirection
 local weaponEnabled
 local weaponPriorities
-local manualTarget
 local prioritisedWeapon
 local moving
 
@@ -264,20 +263,15 @@ end
 local function ResolveDirection(headingPiece, pitchPiece)
 	local topDirection
 	local topPriority = #wantedDirection + 1
-	local manualHeading
-	if manualTarget then
-		manualHeading = GetHeadingToTarget(headingPiece, manualTarget)
-	end
 	
 	for weaponNum, dir in pairs(wantedDirection) do
 		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece and
 				(not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] then
-			if manualHeading then
-				if GetAngleDiff(manualHeading, dir[1]) < REAIM_THRESHOLD then
-					topDirection = dir
-					prioritisedWeapon = weaponNum
-					break
-				end
+			local _, isUserTarget = Spring.GetUnitWeaponTarget(unitID, weaponNum)
+			if isUserTarget then --is manual target
+				topDirection = dir
+				prioritisedWeapon = weaponNum
+				break
 			end
 			if weaponPriorities[weaponNum] < topPriority then
 				topDirection = dir
@@ -490,10 +484,6 @@ function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPri
 	--end
 	--Spring.Echo("priority", targetID, newPriority)
 	return newPriority * 100
-end
-
-function ManualTarget(targetParams)
-	manualTarget = targetParams
 end
 
 function TogglePriority(weaponNum, newPriority)

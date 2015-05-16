@@ -16,11 +16,13 @@ if (gadgetHandler:IsSyncedCode()) then
 --------------------------------------------------------------------------------
 
 local lusPriorityCache = {}
-local lusManualTargetCache = {}
 local unitDefIDsPassed = {}
 
 function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
-	return true
+	if lusPriorityCache[attackerID] and Spring.GetUnitStates(attackerID).firestate == 2 then -- verify we're on fire at will
+		return true
+	end
+	return false
 end
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
@@ -30,17 +32,6 @@ function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerW
 	else
 		return true, defPriority
 	end
-end
-
-function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-	if lusManualTargetCache[unitID] then
-		if cmdID == CMD.ATTACK then
-			Spring.UnitScript.CallAsUnit(unitID, lusManualTargetCache[unitID], cmdParams)
-		elseif cmdID == CMD.STOP then
-			Spring.UnitScript.CallAsUnit(unitID, lusManualTargetCache[unitID])
-		end
-	end
-	return true
 end
 
 function gadget:UnitCreated(unitID, unitDefID)
@@ -60,15 +51,11 @@ function gadget:UnitCreated(unitID, unitDefID)
 				unitDefIDsPassed[unitDefID] = true
 			end
 		end
-		if env.ManualTarget then
-			lusManualTargetCache[unitID] = env.ManualTarget
-		end
 	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID)
 	lusPriorityCache[unitID] = nil
-	lusManualTargetCache[unitID] = nil
 end
 
 function gadget:Initialize()
