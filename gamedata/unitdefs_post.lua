@@ -168,6 +168,11 @@ for name, ud in pairs(UnitDefs) do
 	end
 	if ud.mincloakdistance then
 		ud.mincloakdistance = ud.mincloakdistance * decloakDistMult
+        ud.cloakcost = 0
+        ud.cloakcostmoving = 0
+        ud.initcloaked = true
+        ud.decloakonfire = true
+        ud.activatewhenbuilt = true
 	end
 
 
