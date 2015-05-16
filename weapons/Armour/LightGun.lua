@@ -179,7 +179,7 @@ local CannoneDa47mml40AP = CannoneDa47mml40:New(LightAP, true):New{
     default            = 1225,
   },
 }
-local CannoneDa47mml40HEAT = CannoneDa47mml40:New(LightGunHEATClass, true):New{
+local CannoneDa47mml40HEAT = CannoneDa47mml40:New(HEAT, true):New{
   range                = 708,
   weaponVelocity       = 900,
   customparams = {

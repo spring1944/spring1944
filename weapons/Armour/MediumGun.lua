@@ -301,7 +301,7 @@ local Ansaldo75mmL34AP = Ansaldo75mmL34:New(MediumAP, true):New{
     default            = 2280,
   },
 }
-local Ansaldo75mmL34HEAT = Ansaldo75mmL34:New(MediumGunHEATClass, true):New{
+local Ansaldo75mmL34HEAT = Ansaldo75mmL34:New(HEAT, true):New{
   range              = 825,
   weaponVelocity     = 700,
   customparams = {

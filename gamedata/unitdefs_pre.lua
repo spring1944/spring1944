@@ -3,12 +3,16 @@ lowerkeys = VFS.Include('gamedata/system.lua').lowerkeys -- for lowerkeys()
 
 -- Our shared funcs
 local function printTable (input)
-	for k,v in pairs(input) do
-		Spring.Echo(k, v)
-		if type(v) == "table" then
-			printTable(v)
-		end
-	end
+    if input == nil then
+        Spring.Log('OO Defs', 'warning', 'nil table passed to printTable')
+    else
+        for k,v in pairs(input) do
+            Spring.Echo(k, v)
+            if type(v) == "table" then
+                printTable(v)
+            end
+        end
+    end
 end
 
 local function inherit (c, p, concatNames)
@@ -57,6 +61,12 @@ Def = {
 
 function Def:New(newAttribs, concatName)
 	local newClass = {}
+    if newAttribs == nil then
+        Spring.Log('OO Defs', 'error', 'Def:New called with nil child. check all children of ' .. self.name)
+        newAttribs = {
+            name = "ERROR: Invalid Child def. Check all instances that inherit from " .. self.name
+        }
+    end
 	inherit(newClass, newAttribs)
 	inherit(newClass, self, concatName)
 	return newClass
@@ -71,6 +81,12 @@ end
 
 function Def:Append(newAttribs)
 	local newClass = {}
+    if newAttribs == nil then
+        Spring.Log('OO Defs', 'error', 'Def:Append called with nil newAttributes. check all Append consumers of ' .. self.name)
+        newAttribs = {
+            name = "ERROR: Invalid Append def. Check all instances that append to " .. self.name
+        }
+    end
 	inherit(newClass, self)
 	append(newClass, newAttribs)
 	return newClass
