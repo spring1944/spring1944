@@ -343,20 +343,22 @@ local function DrawTrucks()
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
-		local cp = UnitDefs[unitDefID].customParams or {}
-		local radius = (cp.supplyrange or 0) * GetSupplyRangeModifier(myTeamID)
-		--Spring.Echo('truck', radius)
-		local unitTeam = GetUnitTeam(unitID)
-		local x, _, z = GetUnitPosition(unitID)
-		if AreTeamsAllied(unitTeam, myTeamID) then
-			if generalTruckDefIDs[unitDefID] then
-				glColor(previewColor)
-				DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
-			elseif halftrackDefIDs[unitDefID] then
-				--glColor(previewColor)
-				--DrawSupplyRingFull(halftrackDefInfo, x, z)
-				glColor(color)
-				DrawSupplyRingFull(halftrackDefInfo, x, z, radius)
+		if unitDefID then
+			local cp = UnitDefs[unitDefID].customParams or {}
+			local radius = (cp.supplyrange or 0) * GetSupplyRangeModifier(myTeamID)
+			--Spring.Echo('truck', radius)
+			local unitTeam = GetUnitTeam(unitID)
+			local x, _, z = GetUnitPosition(unitID)
+			if AreTeamsAllied(unitTeam, myTeamID) then
+				if generalTruckDefIDs[unitDefID] then
+					glColor(previewColor)
+					DrawSupplyRingFull(generalTruckDefInfo, x, z, radius)
+				elseif halftrackDefIDs[unitDefID] then
+					--glColor(previewColor)
+					--DrawSupplyRingFull(halftrackDefInfo, x, z)
+					glColor(color)
+					DrawSupplyRingFull(halftrackDefInfo, x, z, radius)
+				end
 			end
 		end
 	end
