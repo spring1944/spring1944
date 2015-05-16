@@ -1660,9 +1660,12 @@ function widget:DrawWorld()
 	glLineWidth(lineWidth)
 	local visibleUnits = GetVisibleUnits(-1, 0, false)
 	if not visibleUnits then return end
+	local ValidUnitID = Spring.ValidUnitID
 	for i=1,#visibleUnits do
 		local unitID = visibleUnits[i]
-		DrawRankIcon(unitID)
+		if ValidUnitID(unitID) then
+			DrawRankIcon(unitID)
+		end
 	end
 	glLineWidth(1)
 	glSmoothing(false, false, false)
