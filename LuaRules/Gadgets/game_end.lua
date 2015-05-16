@@ -25,24 +25,25 @@ end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-local spGetTeamInfo     = Spring.GetTeamInfo
-local spGetTeamList     = Spring.GetTeamList
-local spGetTeamUnits    = Spring.GetTeamUnits
-local spDestroyUnit     = Spring.DestroyUnit
-local spGetAllUnits     = Spring.GetAllUnits
-local spGetAllyTeamList = Spring.GetAllyTeamList
-local spGetPlayerInfo   = Spring.GetPlayerInfo
-local spGetPlayerList   = Spring.GetPlayerList
-local spAreTeamsAllied  = Spring.AreTeamsAllied
-local spGetUnitTeam     = Spring.GetUnitTeam
-local spGetUnitDefID    = Spring.GetUnitDefID
-local spGetUnitIsStunned= Spring.GetUnitIsStunned
-local spGetUnitHealth   = Spring.GetUnitHealth
-local spGetUnitAllyTeam = Spring.GetUnitAllyTeam
-local spTransferUnit    = Spring.TransferUnit
-local spKillTeam    = Spring.KillTeam
-local spGameOver    = Spring.GameOver
-local spEcho       = Spring.Echo
+local spGetTeamInfo         = Spring.GetTeamInfo
+local spGetTeamList         = Spring.GetTeamList
+local spGetTeamUnits        = Spring.GetTeamUnits
+local spDestroyUnit         = Spring.DestroyUnit
+local spGetAllUnits         = Spring.GetAllUnits
+local spGetAllyTeamList     = Spring.GetAllyTeamList
+local spGetPlayerInfo       = Spring.GetPlayerInfo
+local spGetPlayerList       = Spring.GetPlayerList
+local spAreTeamsAllied      = Spring.AreTeamsAllied
+local spGetUnitTeam         = Spring.GetUnitTeam
+local spGetUnitDefID        = Spring.GetUnitDefID
+local spGetUnitIsStunned    = Spring.GetUnitIsStunned
+local spGetUnitHealth       = Spring.GetUnitHealth
+local spGetUnitAllyTeam     = Spring.GetUnitAllyTeam
+local spTransferUnit        = Spring.TransferUnit
+local spKillTeam            = Spring.KillTeam
+local spGameOver            = Spring.GameOver
+local spEcho                = Spring.Echo
+local spSetTeamShareLevel   = Spring.SetTeamShareLevel
 
 local ECON_SUPREMACY_MULT = 25
 
@@ -200,6 +201,14 @@ local function RemoveAllianceUnit(u, ud, teamID)
 	end
 	local _, _, _, _, _, allianceID = spGetTeamInfo(teamID)
     aliveCount[teamID] = aliveCount[teamID] - 1
+
+    -- dead team, set share levels to 0 so allies can benefit from existing
+    -- resources.
+    if aliveCount[teamID] <= 0 then
+        aliveCount[teamID] = 0
+        spSetTeamShareLevel(teamID, 'metal', 0)
+        spSetTeamShareLevel(teamID, 'energy', 0)
+    end
 
     aliveValue[teamID] = aliveValue[teamID] - UnitDefs[ud].metalCost
     if aliveValue[teamID] < 0 then

@@ -115,9 +115,6 @@ local BredaM3520mm = AutoCannon:New{
 local BredaM3520mmAA = BredaM3520mm:New(AutoCannonAA, true):New{
   range              = 1950,
   sprayAngle         = 475,
-  customparams = {
-    fearaoe            = 400,
-  },
 }
 
 local TwinBredaM3520mmAA = BredaM3520mmAA:New{
