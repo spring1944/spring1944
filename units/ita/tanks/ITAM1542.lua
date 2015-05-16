@@ -7,7 +7,7 @@ local ITAM1542 = LightTank:New{
 
 	weapons = {
         [1] = {
-            name                = "CannoneDa47mml32HEAT",
+            name                = "CannoneDa47mml40HEAT",
             mainDir             = [[0 16 1]],
             maxAngleDif         = 210,
         },
