@@ -54,7 +54,6 @@ local lastflare = pieceMap["flare"] and "flare"
 for weaponNum = 1,info.numWeapons do
 	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
 		lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
-		Spring.Echo(UnitDefs[unitDefID].name, weaponNum, lastflare)
 		cegPieces[weaponNum] = pieceMap[lastflare]
 		local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
 		aimPieces[weaponNum] = {headingPiece, pitchPiece}
