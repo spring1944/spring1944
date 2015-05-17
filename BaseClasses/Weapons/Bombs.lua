@@ -15,6 +15,7 @@ local BombClass = Weapon:New{
 	trajectoryHeight   = 0.15,
 	turret             = true,
 	weaponType         = [[MissileLauncher]],
+	startVelocity      = 280,
 	weaponVelocity     = 280,
 	customparams = {
 		bomb               = true,
