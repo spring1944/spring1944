@@ -17,6 +17,6 @@ base
                     flare_2
             flare_6
         turret
-            machineguns
+            sleeve
                 flare_3
                 flare_4

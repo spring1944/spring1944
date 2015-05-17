@@ -20,6 +20,8 @@ do
 end
 local lastRocket = info.numRockets
 
+local PI = math.pi
+
 
 local function IsMainGun(weaponNum)
 	return weaponNum <= info.weaponsWithAmmo
@@ -42,6 +44,10 @@ function script.QueryWeapon(weaponNum)
 end
 
 function script.AimFromWeapon(weaponNum)
+	local aimPieces = info.aimPieces[weaponNum]
+	if aimPieces then
+		return aimPieces[1]
+	end
 	return base
 end
 
@@ -51,6 +57,23 @@ end
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	Signal(SIG_AIM[weaponNum])
+	local aimPieces = info.aimPieces[weaponNum]
+	if not aimPieces then
+		return true
+	end
+	SetSignalMask(SIG_AIM[weaponNum])
+	
+	if info.reversedWeapons[weaponNum] then
+		heading = heading + PI
+		pitch = -pitch
+	end
+	
+	local headingPiece, pitchPiece = aimPieces[1], aimPieces[2]
+	Turn(headingPiece, y_axis, heading, info.turretTurnSpeed)
+	Turn(pitchPiece, x_axis, -pitch, info.elevationSpeed)
+	
+	WaitForTurn(headingPiece, y_axis)
+	WaitForTurn(pitchPiece, x_axis)
 	
 	return true
 end
