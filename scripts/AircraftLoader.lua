@@ -36,7 +36,7 @@ local pieceMap = Spring.GetUnitPieceMap(unitID)
 local lastflare = pieceMap["flare"] and "flare"
 for weaponNum = 1,info.numWeapons do
 	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
-		if WeaponDefs[UnitDef.weapons[weaponNum].weaponDef].bomb then
+		if WeaponDefs[UnitDef.weapons[weaponNum].weaponDef].customParams.bomb then
 			info.bombPieces[weaponNum] = piece("bomb_" .. weaponNum)
 			info.cegPieces[weaponNum] = piece("flare_" .. weaponNum) or info.bombPieces[weaponNum]
 		else

@@ -12,8 +12,5 @@ ground
                 lloarm
             ruparm
                 rloarm
-    carriage
-        wheels
-        turret
-            gun
-                flare
+                    gun
+                        flare

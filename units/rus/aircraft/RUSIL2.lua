@@ -16,7 +16,7 @@ local RUS_IL2 = FighterBomber:New{
 	customParams = {
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
-		maxammo				= 8,
+		maxammo				= 2,
 	},
 
 	weapons = {
@@ -30,29 +30,34 @@ local RUS_IL2 = FighterBomber:New{
 			slaveTo				= 1,
 		},
 		[3] = {
-			name				= "VYa23mm",
-			maxAngleDif			= 10,
-		},
-		[4] = {
-			name				= "VYa23mm",
-			maxAngleDif			= 10,
-			slaveTo				= 3,
-		},	
-		[5] = {
-			name				= "m2browningamg",
-			maxAngleDif			= 10,
-			slaveTo				= 3,
-		},
-		[6] = {
-			name				= "m2browningamg",
-			maxAngleDif			= 10,
-			slaveTo				= 3,
-		},
-		[7] = {
 			name				= "bomb",
 			mainDir				= [[0 -0.18 1]],
 		},
+		[4] = {
+			name				= "bomb",
+			mainDir				= [[0 -0.18 1]],
+			slaveTo				= 3,
+		},
+		[5] = {
+			name				= "VYa23mm",
+			maxAngleDif			= 10,
+		},
+		[6] = {
+			name				= "VYa23mm",
+			maxAngleDif			= 10,
+			slaveTo				= 5,
+		},	
+		[7] = {
+			name				= "m2browningamg",
+			maxAngleDif			= 10,
+			slaveTo				= 5,
+		},
 		[8] = {
+			name				= "m2browningamg",
+			maxAngleDif			= 10,
+			slaveTo				= 5,
+		},
+		[9] = {
 			name				= "m2browningaa",
 			maxAngleDif			= 90,
 			mainDir				= [[0 .25 -1]],
@@ -62,35 +67,19 @@ local RUS_IL2 = FighterBomber:New{
 
 local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 	buildpic			= "RUSIL2PTAB.png", -- override clone
-	script				= "RUSIL2PTAB.cob", -- more override clone
 	weapons = {
 		[1] = {
-			name				= "PTAB",
-			maxAngleDif			= 30,
+			name				= "NOWEAPON",
 		},
 		[2] = {
-			name				= "VYa23mm",
-			maxAngleDif			= 10,
+			name				= "NOWEAPON",
 		},
 		[3] = {
-			name				= "VYa23mm",
-			maxAngleDif			= 10,
-			slaveTo				= 2,
-		},	
+			name				= "NOWEAPON",
+		},
 		[4] = {
-			name				= "m2browningamg",
-			maxAngleDif			= 10,
-			slaveTo				= 2,
-		},
-		[5] = {
-			name				= "m2browningamg",
-			maxAngleDif			= 10,
-			slaveTo				= 2,
-		},
-		[6] = {
-			name				= "m2browningaa",
-			maxAngleDif			= 90,
-			mainDir				= [[0 .25 -1]],
+			name				= "PTAB",
+			maxAngleDif			= 30,
 		},
 	},
 }

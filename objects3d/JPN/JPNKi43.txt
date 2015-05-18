@@ -1,6 +1,6 @@
 base
     propeller
-    mg2
-    mg1
+    flare_2
+    flare_1
     wing2
     wing1

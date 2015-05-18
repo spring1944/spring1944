@@ -1,9 +1,9 @@
 base
     rear_turret
-        rear_mg_flare
-    gun1
-    gun3
-    gun2
+        flare_4
+    flare_1
+    flare_2
+    flare_3
     propeller2
     propeller1
     wing2

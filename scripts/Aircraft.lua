@@ -18,7 +18,7 @@ do
 		SIG_AIM[i] = sig
 	end
 end
-local lastRocket = info.numRockets
+local lastRocket = 0
 
 local PI = math.pi
 
@@ -33,7 +33,7 @@ end
 
 function script.QueryWeapon(weaponNum)
 	if IsRocket(weaponNum) then
-		return piece("rocket" .. lastRocket)
+		return piece("rocket" .. math.max(lastRocket, 1))
 	end
 	local cegPiece = info.cegPieces[weaponNum]
 	if cegPiece then 
@@ -70,10 +70,13 @@ function script.AimWeapon(weaponNum, heading, pitch)
 	
 	local headingPiece, pitchPiece = aimPieces[1], aimPieces[2]
 	Turn(headingPiece, y_axis, heading, info.turretTurnSpeed)
-	Turn(pitchPiece, x_axis, -pitch, info.elevationSpeed)
+	
+	if pitchPiece then
+		Turn(pitchPiece, x_axis, -pitch, info.elevationSpeed)
+		WaitForTurn(pitchPiece, x_axis)
+	end
 	
 	WaitForTurn(headingPiece, y_axis)
-	WaitForTurn(pitchPiece, x_axis)
 	
 	return true
 end
@@ -82,7 +85,7 @@ function script.Shot(weaponNum)
 	local ceg = info.weaponCEGs[weaponNum]
 	local cegPiece
 	if IsRocket(weaponNum) then
-		lastRocket = lastRocket % info.numRockets + 1
+		lastRocket = lastRocket + 1
 		Hide(piece("rocket" .. lastRocket))
 		cegPiece = piece("exhaust" .. lastRocket)
 	else
@@ -97,4 +100,14 @@ function script.Shot(weaponNum)
 end
 
 function script.Killed(recentDamage, maxHealth)
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	for _,pieceID in pairs(pieceMap) do
+		if math.random(5) < 2 then
+			Explode(pieceID, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+		else
+			Explode(pieceID, SFX.SHATTER)
+		end
+	end
+	
+	return 1
 end

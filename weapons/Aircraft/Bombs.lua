@@ -6,7 +6,7 @@
 local Bomb = BombClass:New{
   accuracy           = 1500,
   areaOfEffect       = 200,
-  commandfire        = true,
+  --commandfire        = true,
   edgeEffectiveness  = 0.1,
   model              = [[Bomb_Medium.S3O]],
   name               = [[250kg Bomb]],

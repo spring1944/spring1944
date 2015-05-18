@@ -8,5 +8,5 @@ base
                 wheel2
         propeller
             blades
-        cannon1
-        cannon2
+        flare_1
+        flare_2

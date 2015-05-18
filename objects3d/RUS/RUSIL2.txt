@@ -7,27 +7,27 @@ base
             door1b
             gear1
                 wheel1
-            cannon1
-            mg1
+            flare_5
+            flare_7
             rocket1
-                rocketexhaust1
+                exhaust1
             rocket3
-                rocketexhaust3
+                exhaust3
         wing2
             door2a
             door2b
             gear2
                 wheel2
-            cannon2
-            mg2
+            flare_6
+            flare_8
             rocket2
-                rocketexhaust2
+                exhaust2
             rocket4
-                rocketexhaust4
-        bomb2
-        bomb1
+                exhaust4
+        bomb_4
+        bomb_3
         turret
-            machinegun
-                mgflare
-        bombemit1
-        bombemit2
+            sleeve
+                flare_9
+        flare_3
+        flare_4

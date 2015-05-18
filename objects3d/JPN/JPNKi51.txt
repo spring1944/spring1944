@@ -1,13 +1,13 @@
 base
     rear_turret
-        rear_mg_flare
-    mg2
-    mg1
+        flare_7
+    flare_6
+    flare_5
     propeller
     prop
-    bomb4
-    bomb3
-    bomb2
-    bomb1
+    bomb_4
+    bomb_3
+    bomb_2
+    bomb_1
     wing1
     wing2
