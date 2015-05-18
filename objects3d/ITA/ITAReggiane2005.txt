@@ -1,11 +1,11 @@
 base
     fuselage
-        cannon3
-        mg1
-        mg2
+        flare_5
+        flare_1
+        flare_2
         wing2
-            cannon2
+            flare_4
         wing1
-            cannon1
+            flare_3
         propeller
             blades

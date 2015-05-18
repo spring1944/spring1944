@@ -1,9 +1,9 @@
 base
-    gun2
-    gun1
+    flare_4
+    flare_3
     w1
-        bomb1
+        bomb_1
     w2
-        bomb2
+        bomb_2
     propeller
         blades

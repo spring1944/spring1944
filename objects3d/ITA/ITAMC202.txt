@@ -1,8 +1,8 @@
 base
     propeller
-    hmg2_flare
-    hmg1_flare
+    flare_2
+    flare_1
     w2
-        lmg2_flare
+        flare_3
     w1
-        lmg1_flare
+        flare_4

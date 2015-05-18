@@ -35,12 +35,12 @@ local ITA_MC205 = FighterBomber:New{
 			slaveTo				= 3,
 		},	
 		[5] = {
-			name				= "BredaSafat05",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
 		[6] = {
-			name				= "BredaSafat05",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 3,
 		},
