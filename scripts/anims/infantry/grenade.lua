@@ -24,6 +24,7 @@ local tags = {
 	canStandFire = true,
 	canRunFire = true,
 	aimOnLoaded = true,
+	flare = rloarm,
 }
 local stances = {	
 	stand_aim = {

@@ -621,7 +621,9 @@ end
 
 
 function script.QueryWeapon(num)
-	return flare
+	local weaponClass = weaponsMap[num]
+	local tags = weaponsTags[weaponClass]
+	return tags.flare or flare
 end
 
 function script.AimFromWeapon(num)
