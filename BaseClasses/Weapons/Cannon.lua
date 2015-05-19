@@ -38,6 +38,7 @@ local HEAT = Weapon:New{ -- Medium
 	edgeEffectiveness  = 0.2,
 	explosionGenerator = "custom:EP_medium",
 	explosionSpeed     = 30, -- needed?
+	impactonly         = true,
 	name               = "HEAT Shell",
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
