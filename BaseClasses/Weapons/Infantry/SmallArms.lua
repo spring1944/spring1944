@@ -15,7 +15,7 @@ local SmallArm = Weapon:New{
 	weaponVelocity     = 1500,
 	customparams = {
 		damagetype         = "smallarm",
-		onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED",
+		onlytargetcategory = "INFANTRY SOFTVEH DEPLOYED",
 		badtargetcategory  = "SOFTVEH DEPLOYED",
 	},
 }
@@ -69,7 +69,7 @@ local SniperRifleClass = RifleClass:New{
 	reloadtime         = 10,
 	tolerance          = 2000,
 	customparams = {
-		onlyTargetCategory  = "INFANTRY DEPLOYED", -- don't waste sniper shots on light vehs
+		onlytargetcategory  = "INFANTRY DEPLOYED", -- don't waste sniper shots on light vehs
 		fearaoe            = 90,
 		fearid             = 401,
 		scriptanimation    = "sniper",
@@ -138,11 +138,18 @@ local HeavyMGClass = MGClass:New{
 	weaponVelocity     = 3000,
 	customparams = {
 		fearid             = 401,
-		onlytargetCategory = "INFANTRY SOFTVEH DEPLOYED OPENVEH",
+		onlytargetcategory = "INFANTRY SOFTVEH DEPLOYED OPENVEH",
 	},
 	damage = {
 		default            = 50,
 	},
+}
+
+local AMG = Weapon:New{ -- should be used like ammo bases
+	customparams = {
+		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	}
 }
 
 local AAMG = Weapon:New{ -- should be used like ammo bases
@@ -155,7 +162,8 @@ local AAMG = Weapon:New{ -- should be used like ammo bases
 	customparams = {
 		no_range_adjust    = true,
 		fearid             = 701,
-		onlytargetCategory = "AIR",
+		onlytargetcategory = "AIR",
+		badtargetcategory  = "",
 	}
 }
 
@@ -167,5 +175,6 @@ return {
 	SMGClass = SMGClass,
 	MGClass = MGClass,
 	HeavyMGClass = HeavyMGClass,
+	AMG = AMG,
 	AAMG = AAMG,
 }

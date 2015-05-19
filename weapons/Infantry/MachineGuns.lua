@@ -157,7 +157,7 @@ local BredaM38 = MGClass:New{
 }
 
 -- 7.7mm Breda SAFAT Air MG (ITA)
-local BredaSafat03 = MGClass:New{
+local BredaSafat03 = MGClass:New(AMG):New{
   burst				 = 6,
   burstRate          = 0.05,
   canAttackGround    = false,
@@ -254,7 +254,7 @@ local M2BrowningAA = M2Browning:New(AAMG):New{
   reloadTime         = 0.375,
 }
 -- M2 Browning Aircraft
-local M2BrowningAMG = M2Browning:New{
+local M2BrowningAMG = M2Browning:New(AMG):New{
   burst             = 3,
   burstRate         = 0.085,
   range             = 900,
@@ -266,8 +266,8 @@ local M2BrowningAMG = M2Browning:New{
   weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,
+	--onlytargetCategory = "AIR",
   }
-
 }
 
 -- Breda M1931 (ITA)
@@ -297,7 +297,7 @@ local BredaM1931AA = BredaM1931:New{
 }
 
 -- .50 Caliber Breda SAFAT Air MG (ITA)
-local BredaSafat05 = HeavyMGClass:New{
+local BredaSafat05 = HeavyMGClass:New(AMG):New{
   burst				 = 6,
   burstRate          = 0.125,
   canAttackGround    = false,

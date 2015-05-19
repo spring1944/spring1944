@@ -165,7 +165,6 @@ local function RecoverFear()
 		Spring.SetUnitRulesParam(unitID, "suppress", fear)
 		Sleep(FEAR_SLEEP)
 	end
-	RestoreAfterCover()
 end
 
 function AddFear(amount)
