@@ -410,7 +410,7 @@ local function IsLoaded()
 end
 
 local function CanFire()
-	return not (inTransition or pinned)
+	return not (moving or inTransition or pinned)
 end
 
 local function Recoil()

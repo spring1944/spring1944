@@ -6,11 +6,11 @@ local ITAM1542 = LightTank:New{
 	trackWidth			= 18,
 
 	weapons = {
-        [1] = {
-            name                = "CannoneDa47mml40HEAT",
-            mainDir             = [[0 16 1]],
-            maxAngleDif         = 210,
-        },
+		[1] = {
+			name				= "CannoneDa47mml40HEAT",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
+		},
 		[2] = {
 			name				= "CannoneDa47mml40AP",
 			mainDir				= [[0 16 1]],
@@ -43,6 +43,7 @@ local ITAM1542 = LightTank:New{
 		armor_top			= 14,
 		maxammo				= 25,
 		maxvelocitykmh		= 40,
+		weapontoggle		= "priorityAPHEATHE",
 	},
 }
 

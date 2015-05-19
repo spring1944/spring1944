@@ -193,7 +193,14 @@ local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 local function CopyCategories(ud)
 	local weapons = ud.weapons
 	local weaponsWithAmmo = (ud.customparams and ud.customparams.weaponswithammo and tonumber(ud.customparams.weaponswithammo)) or 0
-	local removeCategories = ud.customparams and ud.customparams.weapontoggle == "priorityAPHE"
+	
+	local removeCategories
+	if ud.customparams and ud.customparams.weapontoggle == "priorityAPHE" then
+		removeCategories = 2
+	elseif ud.customparams and ud.customparams.weapontoggle == "priorityAPHEATHE" then
+		removeCategories = 3
+	end
+	
 	local categoriesToRemove
 	for weaponID, weapon in pairs(weapons) do --weaponID = 1, #weapons do -- TODO: move this loop into a function
 		local targetCat = categoryCache[string.lower(weapon.name)]
@@ -201,12 +208,10 @@ local function CopyCategories(ud)
 			local only = targetCat.only
 			local bad = targetCat.bad
 			-- remove categories from HE weapons if they already exist in AP
-			if removeCategories and weaponsWithAmmo > 1 and weaponID <= weaponsWithAmmo then
-				if categoriesToRemove then
-					--Spring.Echo("Removing from " .. ud.name .. " weapon #" .. weaponID .. " categories: " .. categoriesToRemove)
-					-- if only then
-						-- Spring.Echo("only before", only)
-					-- end
+			if removeCategories then
+				if weaponID == 1 then
+					categoriesToRemove = only
+				elseif weaponID >= removeCategories and weaponID <= weaponsWithAmmo then
 					for cat in categoriesToRemove:gmatch("%S+") do
 						if cat then
 							cat = "%f[%a]" .. cat .. "%f[%A]"
@@ -218,11 +223,6 @@ local function CopyCategories(ud)
 							end
 						end
 					end
-					-- if only then
-						-- Spring.Echo("only after", only)
-					-- end
-				else
-					categoriesToRemove = only
 				end
 			end
 			
