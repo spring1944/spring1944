@@ -10,16 +10,16 @@ local bomb = piece("bomb")
 
 -- Logic
 local SIG_MOVE = 1
+local SIG_FEAR = 2
 local SIG_AIM = {}
 do
-	local sig = SIG_MOVE
+	local sig = SIG_FEAR
 	for i = 1,info.numWeapons do
 		sig = sig * 2
 		SIG_AIM[i] = sig
 	end
 end
 
-local SIG_FEAR = SIG_AIM[#SIG_AIM] * 2
 local lastRocket = 0
 local fear = 0
 
