@@ -110,19 +110,16 @@ local function ProcessWeapons(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo) or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-	local weaponFired = false
+	local weaponsFired = 0
 	local reloadFrame = 0
-	local weapNum = 1
 
-	--for weapNum = 0, weaponsWithAmmo - 1 do
-	while not weaponFired and weapNum <= weaponsWithAmmo do
+	for weapNum = 1,weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
 		--Spring.Echo(reloadFrame)
-		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
-		weapNum = weapNum + 1
+		weaponsFired = weaponsFired + (CheckReload(unitID, reloadFrame, weapNum) and 1 or 0)
 	end
 	--Spring.Echo ("Ammo level is: " .. ammoLevel)
-	if weaponFired then
+	if weaponsFired > 0 then
 		--Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
@@ -135,8 +132,8 @@ local function ProcessWeapons(unitID)
 			end
 		end
 		if ammoLevel > 0 then
-			vehicles[unitID].ammoLevel = ammoLevel - 1
-			SetUnitRulesParam(unitID, "ammo",	ammoLevel - 1)
+			vehicles[unitID].ammoLevel = ammoLevel - weaponsFired
+			SetUnitRulesParam(unitID, "ammo",	ammoLevel - weaponsFired)
 		end
 	end
 end
@@ -377,6 +374,11 @@ function gadget:GameFrame(n)
 			end
 			newVehicles = {}
 		end
+		
+		for unitID in pairs(vehicles) do
+			ProcessWeapons(unitID)
+		end
+		
 		if n % (RELOAD_FREQUENCY*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				--skip units which are being transported

@@ -18,7 +18,6 @@ local JPN_Ki51 = Fighter:New{
 	customParams = {
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
-		maxammo				= 4,
 	},
 
 	weapons = {

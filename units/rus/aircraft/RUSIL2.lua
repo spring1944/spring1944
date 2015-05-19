@@ -16,7 +16,7 @@ local RUS_IL2 = FighterBomber:New{
 	customParams = {
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
-		maxammo				= 2,
+		maxammo				= 4,
 	},
 
 	weapons = {
@@ -72,14 +72,14 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 			name				= "NOWEAPON",
 		},
 		[2] = {
-			name				= "NOWEAPON",
+			name				= "PTAB",
+			maxAngleDif			= 30,
 		},
 		[3] = {
 			name				= "NOWEAPON",
 		},
 		[4] = {
-			name				= "PTAB",
-			maxAngleDif			= 30,
+			name				= "NOWEAPON",
 		},
 	},
 }
