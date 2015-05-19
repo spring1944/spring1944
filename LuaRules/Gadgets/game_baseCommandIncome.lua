@@ -33,7 +33,7 @@ function gadget:Initialize()
 end
 
 function gadget:GameFrame(n)
-	if (n % (1*32) < 0.1) then
+	if (n % (1*30) < 0.1) then
 		for teamID, someThing in pairs(team) do
 			AddTeamResource(teamID, "m", BASE_INCOME)
 			_, _, dead = GetTeamInfo(teamID)
