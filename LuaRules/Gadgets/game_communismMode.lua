@@ -120,7 +120,7 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 end
 
 function gadget:GameFrame(n)
-	if n % 32 == 10 then -- every 32 frame, to not fluctuate in income, with 10 frame offset
+	if n % 30 == 10 then -- every 32 frame, to not fluctuate in income, with 10 frame offset
 	-- give command to players
 		local allyTeamList = GetAllyTeamList()
 		for i = 1, #allyTeamList do
