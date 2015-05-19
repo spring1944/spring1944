@@ -46,7 +46,6 @@ local mcSetRotation = Spring.MoveCtrl.SetRotation
 
 local vNormalized = GG.Vector.Normalized
 
-local CallCOBScript = Spring.CallCOBScript
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local GetUnitDirection = Spring.GetUnitDirection
@@ -161,7 +160,10 @@ function gadget:GameFrame(n)
       terminalIDs[unitID] = info
       cruiseIDs[unitID] = nil
       
-      CallCOBScript(unitID, "Falling", 0, 0)
+      local env = Spring.UnitScript.GetScriptEnv(unitID)
+      if env then 
+        Spring.UnitScript.CallAsUnit(unitID, env.Falling) 
+      end
       mcSetTrackGround(unitID, true)
       mcSetCollideStop(unitID, true)
       mcSetGravity(unitID, defInfo.gravity)

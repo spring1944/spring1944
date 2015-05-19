@@ -18,7 +18,7 @@ end
 --  COMMON
 --------------------------------------------------------------------------------
 if (gadgetHandler:IsSyncedCode()) then
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ local mcDisable				= Spring.MoveCtrl.Disable
 local GetUnitFuel 			= Spring.GetUnitFuel
 local GetUnitHealth			= Spring.GetUnitHealth
 local GetUnitTeam			= Spring.GetUnitTeam
-local GetCOBScriptID		= Spring.GetCOBScriptID
+local GetUnitRulesParam 	= Spring.GetUnitRulesParam
 local GetUnitWeaponState	= Spring.GetUnitWeaponState
 -- Synced Ctrl
 local CallCOBScript			= Spring.CallCOBScript
@@ -70,8 +70,9 @@ end
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly and not ud.customParams.cruise_missile_accuracy then --gliders and V1s shouldn't get scared, just dead.
-		local planeScriptID = GetCOBScriptID(unitID, "luaFunction")
-  		if (planeScriptID) then
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		local planeScriptID = env and env.AddFear
+		if (planeScriptID) then
 			local properAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 			SetUnitRulesParam(unitID, "suppress", 0)
 			planeScriptIDs[unitID] = planeScriptID
@@ -82,7 +83,7 @@ end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	local ud = UnitDefs[unitDefID]
-	if ud.canFly and ud.name ~= "usparatrooper" then
+	if ud.canFly and ud.name ~= "usparatrooper" and not ud.customParams.cruise_missile_accuracy then
 		--Spring.Echo("AIRCRAFT DAMAGED")
 		local health = GetUnitHealth(unitID)
 		if damage > health then
@@ -114,7 +115,7 @@ function gadget:GameFrame(n)
 	if (n % 15 == 0) then -- every 15 frames
 		for unitID, funcID in pairs(planeScriptIDs) do
 			if not crashingPlanes[unitID] then
-				local _, suppression = CallCOBScript(unitID, funcID, 1, 1)
+				local suppression = GetUnitRulesParam(unitID, "suppress")
 				local fuel = GetUnitFuel(unitID)
 				local teamID = GetUnitTeam(unitID)
 				--Spring.Echo("Plane TeamID", teamID, "Fuel", fuel, "Suppress", suppression)
@@ -124,7 +125,6 @@ function gadget:GameFrame(n)
 					if oldAccuracy ~= nil then
 						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*suppression})
 						--Spring.Echo("unit's fear level: ", suppression)
-						SetUnitRulesParam(unitID, "suppress", suppression)
 						SetUnitFuel(unitID, newFuel)
 						--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
 						if suppression > BUGOUT_LEVEL then

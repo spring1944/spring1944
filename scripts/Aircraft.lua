@@ -18,9 +18,52 @@ do
 		SIG_AIM[i] = sig
 	end
 end
+
+local SIG_FEAR = SIG_AIM[#SIG_AIM] * 2
 local lastRocket = 0
+local fear = 0
 
 local PI = math.pi
+local FEAR_LIMIT = 10
+local FEAR_INITIAL_SLEEP = 1000
+local FEAR_SLEEP = 1000
+
+
+local function DamageSmoke(smokePieces)
+	-- emit some smoke if the unit is damaged
+	-- check if the unit has finished building
+	local n = #smokePieces
+	_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	while (buildProgress < 1) do
+		Sleep(150)
+		_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	end
+	-- random delay between smoke start
+	timeDelay = math.random(1, 5)*33
+	Sleep(timeDelay)
+	while true do
+		curHealth, maxHealth = Spring.GetUnitHealth(unitID)
+		healthState = curHealth / maxHealth
+		if healthState < 0.66 then
+			EmitSfx(smokePieces[math.random(1,n)], SFX.WHITE_SMOKE)
+			-- the less HP we have left, the more often the smoke
+			timeDelay = 2000 * healthState
+			-- no sence to make a delay shorter than a game frame
+			if timeDelay < 33 then
+				timeDelay = 33
+			end
+		else
+			timeDelay = 2000
+		end
+		Sleep(timeDelay)
+	end
+end
+
+function script.Create()
+	if info.smokePieces then
+		StartThread(DamageSmoke, info.smokePieces)
+	end
+end
 
 
 local function IsMainGun(weaponNum)
@@ -110,4 +153,27 @@ function script.Killed(recentDamage, maxHealth)
 	end
 	
 	return 1
+end
+
+local function RecoverFear()
+	Signal(SIG_FEAR)
+	SetSignalMask(SIG_FEAR)
+	Sleep(FEAR_SLEEP)
+	while fear > 0 do
+		--Spring.Echo("Lowered fear", fear)
+		fear = fear - 1
+		Spring.SetUnitRulesParam(unitID, "suppress", fear)
+		Sleep(FEAR_SLEEP)
+	end
+	RestoreAfterCover()
+end
+
+function AddFear(amount)
+	Signal(SIG_FEAR)
+	fear = fear + amount
+	if fear > FEAR_LIMIT then
+		fear = FEAR_LIMIT
+	end
+	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+	StartThread(RecoverFear)
 end

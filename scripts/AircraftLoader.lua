@@ -31,8 +31,18 @@ info.cegPieces = {}
 info.bombPieces = {}
 info.aimPieces = {}
 info.reversedWeapons = {}
+info.smokePieces = {}
 
 local pieceMap = Spring.GetUnitPieceMap(unitID)
+
+for pieceName, pieceNum in pairs(pieceMap) do
+	-- Find Wheel Speeds
+	if pieceName:find("base") or pieceName:find("wing") or pieceName:find("fuselage") then
+		info.smokePieces[#info.smokePieces + 1] = pieceNum
+	end
+end
+
+
 local lastflare = pieceMap["flare"] and "flare"
 for weaponNum = 1,info.numWeapons do
 	if info.reloadTimes[weaponNum] then -- don't want any shields etc.

@@ -20,9 +20,9 @@ local Aircraft = Unit:New{
 	turnRate			= 50,
 	
 	customParams = {
-	    feartarget			= true,
+		feartarget			= true,
 		proptexture			= "prop3.tga",
-		soundcategory 		= "<SIDE>/Air",
+		soundcategory		= "<SIDE>/Air",
 	},
 }
 
@@ -51,7 +51,7 @@ local Fighter = Aircraft:New{
 	maxFuel				= 180,
 	
 	customParams = {
-		soundcategory 		= "<SIDE>/Air/Fighter",
+		soundcategory		= "<SIDE>/Air/Fighter",
 	},
 	
 	-- sfxTypes = { -- TODO: remove once using LUS
@@ -77,14 +77,14 @@ local AttackFighter = Fighter:New{
 }
 
 local FighterBomber = Fighter:New{
-    attackSafetyDistance    = 200,
-	description			    = "Fighter-Bomber",
-	iconType			    = "bomber",
-	cruiseAlt			    = 750,
-	fireState			    = 0,
-    maxElevator             = 0.001,
-	maxFuel				    = 60,
-    maxPitch                = 0.5,
+	attackSafetyDistance	= 200,
+	description				= "Fighter-Bomber",
+	iconType				= "bomber",
+	cruiseAlt				= 750,
+	fireState				= 0,
+	maxElevator				= 0.001,
+	maxFuel					= 60,
+	maxPitch				= 0.5,
 	
 	weapons = {
 		[1] = {
@@ -108,7 +108,7 @@ local CruiseMissile = Aircraft:New{
 	maxRudder					= 0.002765,
 	maxVelocity					= 18.2,
 	
-    customParams = {
+	customParams = {
 		cruise_missile_accuracy		= 400,
 		enginesound					= "v1-",
 		enginesoundnr				= 19,
