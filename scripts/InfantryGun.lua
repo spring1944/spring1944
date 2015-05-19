@@ -46,6 +46,7 @@ local WHEEL_ACCELERATION_FACTOR = 3
 --CURRENT UNIT STATE
 local moving
 local pinned
+local firing
 
 --UNIT WANTED STATE
 local wantedMoving
@@ -59,7 +60,8 @@ local currentAnim
 -- AIMING VARS
 local currentPitch
 local currentHeading
-
+local wantedPitch
+local wantedHeading
 
 -- OTHER
 
@@ -337,10 +339,6 @@ function script.Create()
 	wantedPinned = pinned
 	wantedMoving = moving
 	fear = 0
-	wantedPitch = nil
-	wantedHeading = nil
-	currentPitch = nil
-	currentHeading = nil
 	firing = false
 	UpdatePose(pinned, moving)
 	

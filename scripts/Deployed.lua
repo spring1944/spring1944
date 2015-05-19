@@ -46,6 +46,7 @@ local VISIBLE_PERIOD = 5000
 
 --CURRENT UNIT STATE
 local pinned
+local firing
 
 --UNIT WANTED STATE
 local wantedPinned
@@ -57,7 +58,8 @@ local currentPoseName
 -- AIMING VARS
 local currentPitch
 local currentHeading
-
+local wantedPitch
+local wantedHeading
 
 -- OTHER
 
@@ -232,10 +234,6 @@ function script.Create()
 	pinned = false
 	wantedPinned = pinned
 	fear = 0
-	wantedPitch = nil
-	wantedHeading = nil
-	currentPitch = nil
-	currentHeading = nil
 	firing = false
 	UpdatePose(pinned)
 	--weaponEnabled[1] = true
