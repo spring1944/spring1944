@@ -5,24 +5,24 @@ base
         wing1
             gear1
                 wheel1
-            mg1
-            mg3
-            mg5
+            flare_3
+            flare_5
+            flare_7
             rocket1
-                rocketexhaust1
+                exhaust1
             rocket3
-                rocketexhaust3
+                exhaust3
             rocket5
-                rocketexhaust5
+                exhaust5
         wing2
             gear2
                 wheel2
-            mg2
-            mg4
-            mg6
+            flare_4
+            flare_6
+            flare_8
             rocket2
-                rocketexhaust2
+                exhaust2
             rocket4
-                rocketexhaust4
+                exhaust4
             rocket6
-                rocketexhaust6
+                exhaust6

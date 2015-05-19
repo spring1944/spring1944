@@ -1,5 +1,5 @@
 local US_P51DMustangGA = AttackFighter:New{
-	name				= "Hawker Typhoon Mk.IB",
+	name				= "P-51D-25 Mustang",
 	buildCostMetal		= 3000,
 	maxDamage			= 346.5,
 		
@@ -14,7 +14,7 @@ local US_P51DMustangGA = AttackFighter:New{
 	customParams = {
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
-		maxammo				= 10,
+		maxammo				= 3,
 	},
 
 	weapons = {

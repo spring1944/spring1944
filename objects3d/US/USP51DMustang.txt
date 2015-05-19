@@ -5,12 +5,12 @@ base
         wing1
             gear1
                 wheel1
-            mg1
-            mg3
-            mg5
+            flare_1
+            flare_3
+            flare_5
         wing2
             gear2
                 wheel2
-            mg2
-            mg4
-            mg6
+            flare_2
+            flare_4
+            flare_6
