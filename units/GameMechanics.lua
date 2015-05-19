@@ -48,13 +48,14 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 	
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
+	maxVelocity			= 20,
 	minCloakDistance	= 1,
 	
 	energyMake			= 1e+06,
 	energyStorage		= 1e+10,
 	metalMake			= 1e+07,
 	metalStorage		= 1e+11,
-	
+
 	builder				= true,
 	workertime			= 1000,
 	

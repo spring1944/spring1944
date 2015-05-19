@@ -177,3 +177,15 @@ function AddFear(amount)
 	Spring.SetUnitRulesParam(unitID, "suppress", fear)
 	StartThread(RecoverFear)
 end
+
+
+--for GMToolbox
+if UnitDef.isBuilder then
+	function script.StartBuilding(buildHeading, pitch)
+		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
+	end
+	
+	function script.StopBuilding()
+		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+	end
+end
