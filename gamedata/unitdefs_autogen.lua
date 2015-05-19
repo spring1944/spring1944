@@ -3,8 +3,6 @@ local morphInclude = VFS.Include("LuaRules/Configs/morph_defs.lua")
 local MORPH_DAMAGE = 1e+06
 local MORPH_SLOPE = 82
 
-local TIME_RATIO = 30.0 / 32.0
-
 local function getTemplate(maxDamage, maxSlope)
 	return	{
 				acceleration = 0.1,
@@ -54,7 +52,7 @@ for unitName, unitMorphs in pairs(morphInclude) do
 			--autoUnit.description = unitMorphData.text
 			autoUnit.buildcostmetal = unitMorphData.metal
 			autoUnit.buildpic = intoDef.buildpic
-			autoUnit.buildtime = (unitDef.workerTime or unitDef.workertime) * unitMorphData.time * TIME_RATIO
+			autoUnit.buildtime = (unitDef.workerTime or unitDef.workertime) * unitMorphData.time
 			autoUnit.side = intoDef.side
 			autoUnit.customParams = { isupgrade = true }
 			table.insert(buildOptions, autoUnitName)
