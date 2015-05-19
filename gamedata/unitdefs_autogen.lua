@@ -1,35 +1,28 @@
 local morphInclude = VFS.Include("LuaRules/Configs/morph_defs.lua")
 
-local MORPH_DAMAGE = 1e+06
-local MORPH_SLOPE = 82
-
-local function getTemplate(maxDamage, maxSlope)
-	return  { -- can't use lowerkeys() here and needs to be lower case keys!
-				acceleration = 0.1,
-				brakerate = 1,
-				buildcostenergy = 0,
-				canmove = 1,
-				category = "FLAG",
-				explodeas = "noweapon",
-				footprintx = 1,
-				footprintz = 1,
-				idleautoheal = 0,
-				maxdamage = maxDamage,
-				maxslope = maxSlope,
-				maxvelocity = 0.01,
-				movementclass = "KBOT_Infantry",
-				objectname = "GEN/Null.S3O",
-				script = "null.lua",
-				selfdestructas = "noweapon",
-				sfxtypes = {
-				},
-				customparams = {
-					isupgrade = true,
-					dontcount = true,
-				},
-				stealth = 1,
-				turnrate = 1,
-			}
+local function getTemplate()
+	return  	{
+					canmove = true, -- required to pass orders
+					category = "FLAG",
+					explodeas = "noweapon",
+					footprintx = 1,
+					footprintz = 1,
+					idleautoheal = 0,
+					maxdamage = 1e+06,
+					maxvelocity = 0.01,
+					movementclass = "KBOT_Infantry", -- as is this
+					objectname = "GEN/Null.S3O",
+					script = "null.lua",
+					selfdestructas = "noweapon",
+					shownanoframe			= false,
+					shownanospray			= false,
+					stealth = true,
+					
+					customparams = {
+						isupgrade			= true,
+						dontcount			= 1,
+					},
+				}
 end
 
 local function isFactory(unitDef)
@@ -48,7 +41,7 @@ for unitName, unitMorphs in pairs(morphInclude) do
 		for i = 1, #unitMorphs do
 			local unitMorphData = unitMorphs[i]
 			local intoDef = UnitDefs[unitMorphData.into] or {}
-			local autoUnit = getTemplate(MORPH_DAMAGE, MORPH_SLOPE)
+			local autoUnit = getTemplate()
 			local autoUnitName = "morph_" .. unitName .. "_" .. unitMorphData.into
 			local buildOptions = unitDef.buildoptions or unitDef.buildOptions or {}
 			unitDef.buildoptions = buildOptions
