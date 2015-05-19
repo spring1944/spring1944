@@ -375,8 +375,8 @@ function script.AimWeapon(weaponNum, heading, pitch)
 	
 	local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
 	
+	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
 	if headingPiece then
-		StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
 		StartThread(ResolveDirection, headingPiece, pitchPiece)
 	end
 	
