@@ -1,11 +1,11 @@
 function gadget:GetInfo()
 	return {
-		name      = "Flag Manager",
-		desc      = "Populates maps with flags and handles control",
-		author    = "FLOZi, AnalyseMetalMap algorithm from easymetal.lua by CarRepairer",
-		date      = "31st July 2008",
+		name	  = "Flag Manager",
+		desc	  = "Populates maps with flags and handles control",
+		author	  = "FLOZi, AnalyseMetalMap algorithm from easymetal.lua by CarRepairer",
+		date	  = "31st July 2008",
 		license   = "GNU GPL v2",
-		layer     = -5,
+		layer	  = -5,
 		enabled   = true  --  loaded by default?
 	}
 end
@@ -23,7 +23,7 @@ local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetUnitTransporter		= Spring.GetUnitTransporter
 local GetTeamRulesParam			= Spring.GetTeamRulesParam
-local GetTeamUnitDefCount 		= Spring.GetTeamUnitDefCount
+local GetTeamUnitDefCount		= Spring.GetTeamUnitDefCount
 local GetTeamUnitsSorted		= Spring.GetTeamUnitsSorted
 local GetUnitDefID				= Spring.GetUnitDefID
 -- Synced Ctrl
@@ -115,9 +115,9 @@ local function mergeToSpot(spotNum, px, pz, pWeight)
 	local sx = metalSpots[spotNum].x
 	local sz = metalSpots[spotNum].z
 	local sWeight = metalSpots[spotNum].weight
-	
+
 	local avgX, avgZ
-	
+
 	if sWeight > pWeight then
 		local sStrength = round(sWeight / pWeight)
 		avgX = (sx*sStrength + px) / (sStrength +1)
@@ -125,9 +125,9 @@ local function mergeToSpot(spotNum, px, pz, pWeight)
 	else
 		local pStrength = (pWeight / sWeight)
 		avgX = (px*pStrength + sx) / (pStrength +1)
-		avgZ = (pz*pStrength + sz) / (pStrength +1)		
+		avgZ = (pz*pStrength + sz) / (pStrength +1)
 	end
-	
+
 	metalSpots[spotNum].x = avgX
 	metalSpots[spotNum].z = avgZ
 	metalSpots[spotNum].weight = sWeight + pWeight
@@ -145,7 +145,7 @@ local function NearSpot(px, pz, dist)
 end
 
 
-local function AnalyzeMetalMap()	
+local function AnalyzeMetalMap()
 	for mx_i = 1, MAP_WIDTH do
 		metalMap[mx_i] = {}
 		for mz_i = 1, MAP_HEIGHT do
@@ -158,37 +158,37 @@ local function AnalyzeMetalMap()
 			metalMap[mx_i][mz_i] = curMetal
 			if (curMetal > maxMetal) then
 				maxMetal = curMetal
-			end	
+			end
 		end
 	end
-	
+
 	local lowMetalThresh = floor(maxMetal * THRESH_FRACTION)
-	
+
 	for mx_i = 1, MAP_WIDTH do
 		for mz_i = 1, MAP_HEIGHT do
 			local mCur = metalMap[mx_i][mz_i]
 			if mCur > lowMetalThresh then
 				metalDataCount = metalDataCount +1
-				
+
 				metalData[metalDataCount] = {
 					x = mx_i * GRID_SIZE,
 					z = mz_i * GRID_SIZE,
 					metal = mCur
 				}
-				
+
 			end
 		end
 	end
-	
+
 	table.sort(metalData, function(a,b) return a.metal > b.metal end)
-	
+
 	for index = 1, metalDataCount do
 		local mx = metalData[index].x
 		local mz = metalData[index].z
 		local mCur = metalData[index].metal
-		
+
 		local nearSpotNum = NearSpot(mx, mz, EXTRACT_RADIUS*EXTRACT_RADIUS)
-	
+
 		if nearSpotNum then
 			mergeToSpot(nearSpotNum, mx, mz, mCur)
 		else
@@ -239,21 +239,28 @@ function PlaceFlag(spot, flagType, unitID)
 		Spring.Echo("{")
 		Spring.Echo("	x = " .. spot.x .. ",")
 		Spring.Echo("	z = " .. spot.z .. ",")
+		Spring.Echo("	initialProduction = 5, --default value. change!")
 		Spring.Echo("},")
 	end
-	
+
 	local newFlag = unitID or CreateUnit(flagType, spot.x, 0, spot.z, 0, GAIA_TEAM_ID)
-	
+
+	-- this is picked up in game_handleFlagReturns to actually produce the
+	-- resources
+	if spot.initialProduction then
+		SetUnitRulesParam(newFlag, "map_config_init_production", spot.initialProduction, {public = true})
+	end
+
 	numFlags[flagType] = numFlags[flagType] + 1
 	flags[flagType][numFlags[flagType]] = newFlag
 	flagCapStatuses[newFlag] = {}
-	
+
 	SetUnitBlocking(newFlag, false, false, false)
 	SetUnitNeutral(newFlag, true)
 	SetUnitNoSelect(newFlag, true)
 	SetUnitAlwaysVisible(newFlag, true)
-	
-	
+
+
 	if modOptions and modOptions.always_visible_flags == "0" then
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
@@ -266,33 +273,33 @@ function gadget:Initialize()
 	-- CHECK FOR PROFILES
 	if VFS.FileExists(PROFILE_PATH) then
 		local flagSpots, buoySpots = VFS.Include(PROFILE_PATH)
-		if flagSpots and #flagSpots > 0 then 
+		if flagSpots and #flagSpots > 0 then
 			Spring.Echo("Map Flag Profile found. Loading Flag positions...")
-			flagTypeSpots["flag"] = flagSpots 
+			flagTypeSpots["flag"] = flagSpots
 		end
-		if buoySpots and #buoySpots > 0 then 
+		if buoySpots and #buoySpots > 0 then
 			Spring.Echo("Map Buoy Profile found. Loading Buoy positions...")
-			flagTypeSpots["buoy"] = buoySpots 
+			flagTypeSpots["buoy"] = buoySpots
 		end
 	end
 	-- TODO: for loop this somehow (table values can't be called, table keys can?)
 	-- IF NO FLAG PROFILE FOUND, ANALYSE METAL MAP
 	if #flagTypeSpots["flag"] == 0 then
 		Spring.Echo("Map Flag Profile not found. Autogenerating Flag positions...")
-		local flagType, spotTable = AnalyzeMetalMap() 
+		local flagType, spotTable = AnalyzeMetalMap()
 		flagTypeSpots[flagType] = spotTable
 	end
 	-- IF NO BUOY PROFILE FOUND, CHECK FOR FEATURES
 	if #flagTypeSpots["buoy"] == 0 then
 		Spring.Echo("Map Buoy Profile not found. Looking for Buoy features...")
-		local flagType, spotTable = FindBuoyFeatures() 
+		local flagType, spotTable = FindBuoyFeatures()
 		flagTypeSpots[flagType] = spotTable
 	end
-	
+
 	for _, flagType in pairs(flagTypes) do
 		GG[flagType .. "s"] = flags[flagType] -- nicer to have GG.flags rather than GG.flag
 	end
-	
+
 	for _, flagType in pairs(flagTypes) do
 		for i = 1, #flagTypeSpots[flagType] do
 			local sx, sz = flagTypeSpots[flagType][i].x, flagTypeSpots[flagType][i].z
@@ -306,7 +313,7 @@ function gadget:Initialize()
 			end
 		end
 	end
-	
+
 	local allUnits = Spring.GetAllUnits()
 	for i=1,#allUnits do
 		local unitID = allUnits[i]
