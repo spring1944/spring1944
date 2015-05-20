@@ -52,7 +52,7 @@ local function addFlag(allyTeamID, flagID)
 		num = num + 1
 		allyTeamFlags[allyTeamID][num] = flagID
 		numFlags[allyTeamID] = num
-	end	
+	end
 end
 
 local function removeFlag(allyTeamID, flagID)
@@ -76,16 +76,26 @@ local function removeFlag(allyTeamID, flagID)
 		end
 	end
 end
-		
+
 if (gadgetHandler:IsSyncedCode()) then
 --SYNCED
 
 -- CallIns
 function gadget:Initialize()
-	-- Remove the gadget if not using communism mode
+	-- Remove the gadget if not using communism mode or running the game via
+	-- spring executable directly (no modoptions present; likely singleplayer)
+	if not modOptions then
+		gadgetHandler:RemoveGadget()
+	end
+
+	if modOptions and not modOptions.communism_mode then
+		gadgetHandler:RemoveGadget()
+	end
+
 	if modOptions and modOptions.communism_mode and modOptions.communism_mode ~= "1" then
 		gadgetHandler:RemoveGadget()
 	end
+
 	gadget:GameStart() -- Will only do something if game has already started
 end
 
@@ -113,7 +123,7 @@ function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 		removeFlag(oldAllyTeamID, unitID)
 		else -- teams are allied
 		-- do nothing
-		end	
+		end
 	else -- other unit
 	-- do nothing
 	end
@@ -133,7 +143,7 @@ function gadget:GameFrame(n)
 				for i = 1, (numFlags[allyTeam] or 0) do
 					local flags = allyTeamFlags[allyTeam]
 					local flagID = flags[i]
-					local production = GetUnitRulesParam(flagID, "production") 
+					local production = GetUnitRulesParam(flagID, "production")
 					totalCommand = totalCommand + production
 				end
 				-- add income for the teams in the ally team
