@@ -85,11 +85,11 @@ function gadget:Initialize()
 	-- Remove the gadget if not using communism mode or running the game via
 	-- spring executable directly (no modoptions present; likely singleplayer)
 	if not modOptions then
-		gadgetHandler:RemoveGadget()
+		GG.RemoveGadget(self)
 	end
 
 	if modOptions and not modOptions.communism_mode then
-		gadgetHandler:RemoveGadget()
+		GG.RemoveGadget(self)
 	end
 
 	if modOptions and modOptions.communism_mode and modOptions.communism_mode ~= "1" then
