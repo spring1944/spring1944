@@ -145,7 +145,7 @@ local BoatYard = Yard:New{
     maxDamage           = 16250,
 	maxWaterDepth		= 1e+06, -- engine default, override Yard
 	minWaterDepth		= 10,
-	script				= "GBRBoatYardLarge.cob",
+	script				= "BoatYard.lua",
 	workerTime			= 75, -- override Yard
 	yardmap				= [[ooccccccccccoo 
 						    ooccccccccccoo 
