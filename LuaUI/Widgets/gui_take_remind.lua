@@ -272,7 +272,7 @@ end
 
 function widget:Initialize()
   if Spring.IsReplay() then
-    widgetHandler:RemoveWidget()
+    WG.RemoveWidget(self)
     return true
   end
   colorBool = false

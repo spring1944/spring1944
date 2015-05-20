@@ -26,7 +26,7 @@ local GetCameraPosition = Spring.GetCameraPosition
 local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitVelocity = Spring.GetUnitVelocity
 local PlaySoundFile = Spring.PlaySoundFile
-local vNormalized = WG.Vector.Normalized
+local vNormalized
 
 local floor = math.floor
 local PI = math.pi
@@ -39,9 +39,11 @@ local times = {}
 
 function widget:Initialize()
 	if (Game.modShortName ~= "S44") then
-		widgetHandler:RemoveWidget()
+		WG.RemoveWidget(self)
 		return
 	end
+	
+	vNormalized = WG.Vector.Normalized
 	
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local engineSound = unitDef.customParams.enginesound

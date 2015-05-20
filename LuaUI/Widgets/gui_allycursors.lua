@@ -166,7 +166,7 @@ function widget:Update(t)
   end
 
   if (GetSpectatingState()) then
-    widgetHandler:RemoveCallIn("Update")
+    WG.RemoveWidgetCallIn("Update", self)
     return
   end
 end

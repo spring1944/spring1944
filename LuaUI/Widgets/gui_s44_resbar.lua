@@ -245,7 +245,7 @@ end
 ------------------------------------------------
 function widget:Initialize()
   --[[if (Game.modShortName ~= "S44") then
-    widgetHandler:RemoveWidget()
+    WG.RemoveWidget(self)
     return
   end]]
   

@@ -38,9 +38,6 @@ local massLeft = {}
 local toBeLoaded = {}
 local savedRadius = {}
 
-
-local DelayCall = GG.Delay.DelayCall
-
 local function StoreLOSRadius(unitID, unitDefID)
 	if not savedRadius[unitDefID] then
 		radiusArray = {}
@@ -176,9 +173,9 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 		SetUnitNeutral(unitID, false)
 		RestoreLOSRadius(unitID, unitDefID)
 	end
-	DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
+	GG.Delay.DelayCall(Spring.SetUnitVelocity, {unitID, 0, 0, 0}, 16)
 	Spring.SetUnitNoMinimap(unitID, false)
-	DelayCall(Spring.SetUnitBlocking, {unitID, true, true, true, true, true, true, true}, 16) -- Engine doesn't properly reset blockign on lua-loaded units
+	GG.Delay.DelayCall(Spring.SetUnitBlocking, {unitID, true, true, true, true, true, true, true}, 16) -- Engine doesn't properly reset blockign on lua-loaded units
 	FindUnloadPlace(unitID, unitDefID, transportID)
 end
 

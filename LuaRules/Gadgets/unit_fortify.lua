@@ -22,7 +22,6 @@ local fortifyDefs = {}
 local CMD_FORTIFY = GG.CustomCommands.GetCmdID("CMD_FORTIFY")
 local CMD_FORTIFY_STOP = GG.CustomCommands.GetCmdID("CMD_FORTIFY_STOP")
 
-local DelayCall = GG.Delay.DelayCall
 local SetUnitBlocking = Spring.SetUnitBlocking
 local GetUnitBasePosition = Spring.GetUnitBasePosition
 local GetUnitHeading = Spring.GetUnitHeading
@@ -121,7 +120,7 @@ local function FortificationComplete(unitID)
 		SetUnitPosition(newUnit, px, py, pz)
 		-- make the new unit to load the original unit
 		--Spring.CallCOBScript(newUnit, "TransportPickup", 0, unitID, 1)
-		DelayCall(ForcedLoading, {newUnit, unitID}, 1)
+		GG.Delay.DelayCall(ForcedLoading, {newUnit, unitID}, 1)
 		SetUnitBlocking(unitID, true)
 	end
 	StopFortification(unitID)

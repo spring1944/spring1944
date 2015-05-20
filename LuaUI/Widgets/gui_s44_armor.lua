@@ -66,7 +66,7 @@ local floor = math.floor
 
 local strFormat = string.format
 
-local vMagnitude = WG.Vector.Magnitude
+local vMagnitude
 
 local glPushMatrix = gl.PushMatrix
 local glPopMatrix = gl.PopMatrix
@@ -254,6 +254,8 @@ end
 ------------------------------------------------
 
 function widget:Initialize()
+	vMagnitude = WG.Vector.Magnitude
+	
 	local armorTypes = Game.armorTypes
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local cp = unitDef.customParams

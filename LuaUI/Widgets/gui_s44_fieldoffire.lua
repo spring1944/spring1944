@@ -59,9 +59,9 @@ local glShape = gl.Shape
 
 local glDepthTest = gl.DepthTest
 
-local vHeadingToDegrees = WG.Vector.HeadingToDegrees
-local GetUnitActiveCommandPosition = WG.CmdQueue.GetUnitActiveCommandPosition
-local GetUnitPositionAtEndOfQueue = WG.CmdQueue.GetUnitPositionAtEndOfQueue
+local vHeadingToDegrees
+local GetUnitActiveCommandPosition
+local GetUnitPositionAtEndOfQueue
 
 local acos = math.acos
 local sin, cos = math.sin, math.cos
@@ -151,6 +151,10 @@ end
 --callins
 ------------------------------------------------
 function widget:Initialize()
+	vHeadingToDegrees = WG.Vector.HeadingToDegrees
+	GetUnitActiveCommandPosition = WG.CmdQueue.GetUnitActiveCommandPosition
+	GetUnitPositionAtEndOfQueue = WG.CmdQueue.GetUnitPositionAtEndOfQueue
+	
 	local inUse = false
 	--outer loop: stationaries
 	for stationaryUnitDefID, stationaryUnitDef in ipairs(UnitDefs) do
@@ -188,7 +192,7 @@ function widget:Initialize()
 
 	--remove self if unused
 	if (not inUse) then
-		widgetHandler:RemoveWidget()
+		WG.RemoveWidget(self)
 	end
 end
 

@@ -16,7 +16,6 @@ end
 
 
 -- Localisations
-local DelayCall            = GG.Delay.DelayCall
 -- Synced Read
 local GetCommandQueue      = Spring.GetCommandQueue
 local GetUnitBasePosition  = Spring.GetUnitBasePosition
@@ -147,16 +146,16 @@ end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
 	if squadDefs[unitDefID] then
-		DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
+		GG.Delay.DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
 	elseif transporters[unitDefID] then 
 		-- spawn transportees
-		DelayCall(SpawnTransportSquad, {unitID, teamID, transporters[unitDefID]})
+		GG.Delay.DelayCall(SpawnTransportSquad, {unitID, teamID, transporters[unitDefID]})
 	else
 		local ud = UnitDefs[unitDefID]
 		local cp = ud.customParams
 		if cp and cp.transportsquad then
 			transporters[unitDefID] = cp.transportsquad
-			DelayCall(SpawnTransportSquad, {unitID, teamID, cp.transportsquad})
+			GG.Delay.DelayCall(SpawnTransportSquad, {unitID, teamID, cp.transportsquad})
 		end
 	end
 end

@@ -109,7 +109,7 @@ local function hpdisp()
 		widgetHandler:UpdateCallIn('DrawWorld')
 		active = true
 	else
-		widgetHandler:RemoveCallIn('DrawWorld')
+		WG.RemoveWidgetCallIn('DrawWorld', widget)
 		active = false
 	end
 end

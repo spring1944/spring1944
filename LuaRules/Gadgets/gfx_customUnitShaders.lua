@@ -80,7 +80,7 @@ if (gadgetHandler:IsSyncedCode()) then
         gadget:UnitFinished(uid,Spring.GetUnitDefID(uid),Spring.GetUnitTeam(uid))
       end
     end
-    gadgetHandler:RemoveCallIn('GameFrame')
+    GG.RemoveGadgetCallIn('GameFrame', self)
   end
 
   return

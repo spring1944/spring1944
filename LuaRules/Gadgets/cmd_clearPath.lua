@@ -50,7 +50,6 @@ local startClearCache = {}
 local stopClearCache = {}
 local isClearingCache = {}
 
-local DelayCall = GG.Delay.DelayCall
 local currentFrame
 
 local clearPathDesc = {
@@ -103,6 +102,7 @@ local function ClearWaypoint(unitID, x, z)
 
 	
 	if #mines > 0 then
+		GG.Delay.DelayCall(BlowMine, {mines[math.random(#mines)], unitID}, MINE_CLEAR_TIME * 30)
 		clearers[unitID].blowFrame = currentFrame + MINE_CLEAR_TIME
 		clearers[unitID].mineID = mines[math.random(#mines)]
 		

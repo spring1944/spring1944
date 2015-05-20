@@ -87,7 +87,7 @@ local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitVectors = Spring.GetUnitVectors
 local ValidUnitID = Spring.ValidUnitID
 
-local vNormalized = GG.Vector.Normalized
+local vNormalized
 
 local sqrt = math.sqrt
 local exp = math.exp
@@ -100,6 +100,7 @@ local SQRT_HALF = sqrt(0.5)
 ----------------------------------------------------------------
 
 function gadget:Initialize()
+  vNormalized = GG.Vector.Normalized
   local armorTypes = Game.armorTypes
 
   for i,  unitDef in pairs(UnitDefs) do

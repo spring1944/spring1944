@@ -652,7 +652,7 @@ function widget:Initialize()
 
 	--remove self if unused
 	if (not inUse) then
-		widgetHandler:RemoveWidget()
+		WG.RemoveWidget(self)
 	end
 
 	Reset()

@@ -44,7 +44,7 @@ local mcSetVelocity = Spring.MoveCtrl.SetVelocity
 local mcSetRelativeVelocity = Spring.MoveCtrl.SetRelativeVelocity
 local mcSetRotation = Spring.MoveCtrl.SetRotation
 
-local vNormalized = GG.Vector.Normalized
+local vNormalized
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
@@ -60,9 +60,12 @@ local SetUnitVelocity = Spring.SetUnitVelocity
 
 local GetUnitCOBValue = Spring.GetUnitCOBValue
 
-local DelayCall = GG.Delay.DelayCall
+local DelayCall
 
 function gadget:Initialize()
+  vNormalized = GG.Vector.Normalized
+  DelayCall = GG.Delay.DelayCall
+  
   for unitDefID, unitDef in pairs(UnitDefs) do
     local customParams = unitDef.customParams
     local accuracy = customParams.cruise_missile_accuracy

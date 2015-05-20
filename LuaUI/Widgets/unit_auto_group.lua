@@ -63,7 +63,7 @@ local GetUnitPosition	= Spring.GetUnitPosition
 function widget:Initialize() 
 	local _, _, spec, team = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
 	if spec then
-		widgetHandler:RemoveWidget()
+		WG.RemoveWidget(self)
 		return false
 	end
   myTeam = team

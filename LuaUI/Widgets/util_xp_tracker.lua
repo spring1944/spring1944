@@ -110,7 +110,7 @@ function widget:Shutdown()
 end
 
 function widget:GameOver()
-	widgetHandler:RemoveWidget()
+	WG.RemoveWidget(self)
 end
 
 function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
