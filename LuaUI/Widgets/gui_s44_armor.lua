@@ -58,6 +58,7 @@ local CMD_ATTACK = CMD.ATTACK
 
 local abs = math.abs
 local min = math.min
+local max = math.max
 local log = math.log
 local exp = math.exp
 local sqrt = math.sqrt
@@ -92,11 +93,12 @@ local function GetArmorColor(t)
 end
 
 local function GetDamageColor(percentage)
-	if percentage < 33 then
-		return {percentage / 100, 0, 0}
-	end
-	local green = 3 * min(percentage / 100, 1) - 1
-	local red = 2 - abs(green)
+	local ratio = 3 * min(percentage, 100) / 100
+	-- if percentage < 33 then
+		-- return {3 * percentage / 100, 0, 0}
+	-- end
+	local green = max(ratio - 1, 0)
+	local red = ratio - max(2 * green - 1, 0)
 	return {red, green, 0}
 end
 
