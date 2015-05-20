@@ -1,6 +1,39 @@
 local base = piece("base") or piece("building")
 local radar = piece("radar")
 
+local function DamageSmoke(smokePieces)
+	-- emit some smoke if the unit is damaged
+	-- check if the unit has finished building
+	local n = #smokePieces
+	if n == 0 then
+		return
+	end
+	_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	while (buildProgress < 1) do
+		Sleep(150)
+		_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
+	end
+	-- random delay between smoke start
+	timeDelay = math.random(1, 5)*33
+	Sleep(timeDelay)
+	while true do
+		curHealth, maxHealth = Spring.GetUnitHealth(unitID)
+		healthState = curHealth / maxHealth
+		if healthState < 0.66 then
+			EmitSfx(smokePieces[math.random(1,n)], SFX.WHITE_SMOKE)
+			-- the less HP we have left, the more often the smoke
+			timeDelay = 2000 * healthState
+			-- no sence to make a delay shorter than a game frame
+			if timeDelay < 33 then
+				timeDelay = 33
+			end
+		else
+			timeDelay = 2000
+		end
+		Sleep(timeDelay)
+	end
+end
+
 local function Raise()
 	local height = Spring.GetUnitHeight(unitID)
 	while select(5, Spring.GetUnitHealth(unitID)) < 1 do
@@ -15,10 +48,22 @@ end
 
 function script.Create()
 	StartThread(Raise)
+	if base then
+		StartThread(DamageSmoke, {base})
+	end
 end
 
-function script.Killed()
-	Spring.UnitScript.Explode(base, SFX.SHATTER)
+function script.Killed(recentDamage, maxHealth)
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	for _,pieceID in pairs(pieceMap) do
+		if math.random(8) < 2 then
+			Explode(pieceID, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
+		else
+			Explode(pieceID, SFX.SHATTER)
+		end
+	end
+	
+	return 1
 end
 
 if UnitDef.isBuilder then -- yard
