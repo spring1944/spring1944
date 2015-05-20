@@ -16,7 +16,6 @@ if (not gadgetHandler:IsSyncedCode()) then
 end
 
 -- Localisations
-local DelayCall 			= GG.Delay.DelayCall
 -- MoveCtrl
 local mcDisable				= Spring.MoveCtrl.Disable
 local mcEnable				= Spring.MoveCtrl.Enable
@@ -91,7 +90,7 @@ local function Beach(unitID, groundHeight)
 		mcSetTrackGround(unitID, true)
 		mcSetCollideStop(unitID, true)
 	else
-		DelayCall(EndBeach, {unitID, false}, SINK_TIME)
+		GG.Delay.DelayCall(EndBeach, {unitID, false}, SINK_TIME)
 	end
 end
 
@@ -102,7 +101,7 @@ local function UnBeach(unitID)
 	end
 	--CallCOBScript(unitID, "EmitWakes", 0)
 	mcSetVelocity(unitID, 0, -SINK_RATE, 0)
-	DelayCall(EndBeach, {unitID, true}, SINK_TIME)
+	GG.Delay.DelayCall(EndBeach, {unitID, true}, SINK_TIME)
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)

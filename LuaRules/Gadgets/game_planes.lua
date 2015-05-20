@@ -63,13 +63,13 @@ local SendMessageToTeam = Spring.SendMessageToTeam
 local GetTeamRulesParam = Spring.GetTeamRulesParam
 local SetTeamRulesParam = Spring.SetTeamRulesParam
 
-local vNormalized = GG.Vector.Normalized
-local vRotateY = GG.Vector.RotateY
-local vClampToMapSize = GG.Vector.ClampToMapSize
-local vNearestMapEdge = GG.Vector.NearestMapEdge
-local vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
+local vNormalized
+local vRotateY
+local vClampToMapSize
+local vNearestMapEdge
+local vDistanceToMapEdge
 
-local DelayCall = GG.Delay.DelayCall
+local DelayCall
 
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 local GiveOrderToUnit = Spring.GiveOrderToUnit
@@ -396,6 +396,14 @@ local function ModifyStockpile(teamID, sortie, amount)
 end
 
 function gadget:Initialize()
+	vNormalized = GG.Vector.Normalized
+	vRotateY = GG.Vector.RotateY
+	vClampToMapSize = GG.Vector.ClampToMapSize
+	vNearestMapEdge = GG.Vector.NearestMapEdge
+	vDistanceToMapEdge = GG.Vector.DistanceToMapEdge
+	
+	DelayCall = GG.Delay.DelayCall
+	
 	local allTeams = Spring.GetTeamList()
 	for i=1, #allTeams do
 		radios[allTeams[i]] = {}

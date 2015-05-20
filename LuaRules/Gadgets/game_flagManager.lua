@@ -102,8 +102,6 @@ end
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
-local DelayCall = GG.Delay.DelayCall
-
 -- easymetal code starts
 local function round(num, idp)
   local mult = 10^(idp or 0)
@@ -263,7 +261,7 @@ function PlaceFlag(spot, flagType, unitID)
 
 	if modOptions and modOptions.always_visible_flags == "0" then
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
-		DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
+		GG.Delay.DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
 end
 

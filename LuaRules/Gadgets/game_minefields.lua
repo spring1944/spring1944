@@ -43,7 +43,6 @@ mineTypes["atminesign"] = {
 
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
-local DelayCall = GG.Delay.DelayCall
 
 local function RandPos(mineData)
 	return math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread
@@ -70,7 +69,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 				mineCount = mineCount + 1
 			end
 			-- DelayCall needed to fix the notify widget as unsynced can't find gaia units!
-			DelayCall(TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
+			GG.Delay.DelayCall(TransferUnit, {unitID, GAIA_TEAM_ID}, 1)
 		end
 	end
 end

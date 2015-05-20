@@ -13,7 +13,6 @@ end
 if (gadgetHandler:IsSyncedCode()) then
 
 local CLEAR_TIME = 90 * 30 -- 90sec
-local DelayCall = GG.Delay.DelayCall
 
 function gadget:FeatureCreated(featureID, featureAllyID)
 	local featureDefID = Spring.GetFeatureDefID(featureID)
@@ -23,7 +22,7 @@ function gadget:FeatureCreated(featureID, featureAllyID)
         Spring.SetFeatureBlocking(featureID, false, false, false, false, false, false, false)
     end
 	if fName:find("soldier") then
-		DelayCall(Spring.DestroyFeature, {featureID}, CLEAR_TIME)
+		GG.Delay.DelayCall(Spring.DestroyFeature, {featureID}, CLEAR_TIME)
 	end
 end
 

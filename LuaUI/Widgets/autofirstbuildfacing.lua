@@ -32,6 +32,6 @@ function widget:Update()
       end
     end
     Spring.SendCommands({"buildfacing "..facing})
-    widgetHandler:RemoveWidget()
+    WG.RemoveWidget(self)
   end
 end

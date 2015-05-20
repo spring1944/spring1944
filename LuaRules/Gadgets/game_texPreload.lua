@@ -43,7 +43,7 @@ function gadget:DrawWorld()
 		PreloadUnitTexture(unitName)
 	end
 	unitsToPreload = nil
-	gadgetHandler:RemoveGadget()
+	GG.RemoveGadget(self)
 end
 
 end

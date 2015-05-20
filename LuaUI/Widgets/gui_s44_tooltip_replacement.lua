@@ -86,7 +86,7 @@ end
 local function Replace(widgetName)
   for i, widget in ipairs(widgetHandler.widgets) do
     if (widget:GetInfo().name == widgetName) then
-      widgetHandler:RemoveWidget(widget)
+      WG.RemoveWidget(widget)
       return
     end
   end
@@ -142,7 +142,7 @@ function widget:DrawScreen()
     replaced = true
   end
   --if (Spring.GetGameSeconds() < 0.1 and not replaced) then
-  --  widgetHandler:RemoveWidget(widget)
+  --  WG.RemoveWidget(widget)
   --end
   if (fh) then
     fh = fontHandler.UseFont(fontName)

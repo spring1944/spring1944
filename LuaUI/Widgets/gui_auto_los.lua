@@ -14,5 +14,5 @@ function widget:GameFrame()
 	if Spring.GetMapDrawMode() ~= "los" then
 		Spring.SendCommands('togglelos')
 	end
-	widgetHandler:RemoveWidget()
+	WG.RemoveWidget(self)
 end

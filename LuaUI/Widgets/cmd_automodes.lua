@@ -31,7 +31,7 @@ function widget:GameFrame(n)
 			local tid = Spring.GetUnitTeam(uid)
 			widget:UnitCreated(uid, udid, tid)
 		end
-		widgetHandler:RemoveCallIn("GameFrame")
+		WG.RemoveWidgetCallIn("GameFrame", self)
 	end
 end
 

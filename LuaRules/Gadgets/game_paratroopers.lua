@@ -41,8 +41,6 @@ local mcSetCollideStop = Spring.MoveCtrl.SetCollideStop
 local mcSetVelocity = Spring.MoveCtrl.SetVelocity
 local mcSetRelativeVelocity = Spring.MoveCtrl.SetRelativeVelocity
 
-local uReplaceUnit = GG.Util.ReplaceUnit
-
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local ValidUnitID = Spring.ValidUnitID
@@ -125,7 +123,7 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
   local x,_, z = GetUnitPosition(unitID)
   local groundHeight = GetGroundHeight(x,z)
   if groundHeight > INF_WATER_LEVEL then
-	uReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
+	GG.Util.ReplaceUnit(unitID, paratrooperInfo[2], unitTeam)
   else
 	DestroyUnit(unitID)
   end

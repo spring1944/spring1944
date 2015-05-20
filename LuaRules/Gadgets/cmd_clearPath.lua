@@ -48,8 +48,6 @@ local gMaxUnits = Game.maxUnits
 -- Variables
 local clearers = {} -- clearers[ownerID] = {target={x,y,z},waypoint={wx,wy,wz},delta={dx,dz}, new, active, on_waypoint, done}
 
-local DelayCall = GG.Delay.DelayCall
-
 
 local clearPathDesc = {
 	name	= "Clear Path",
@@ -110,7 +108,7 @@ function ClearWaypoint(unitID, x, z)
 
 	
 	if #mines > 0 then
-		DelayCall(BlowMine, {mines[math.random(#mines)], unitID}, MINE_CLEAR_TIME * 30)
+		GG.Delay.DelayCall(BlowMine, {mines[math.random(#mines)], unitID}, MINE_CLEAR_TIME * 30)
 		
 		-- Shortened on purpose from 1000 to 700 due to the unit getting stuck
 		-- occasionally
@@ -261,8 +259,6 @@ local GetActiveCommand = Spring.GetActiveCommand
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local TraceScreenRay = Spring.TraceScreenRay
 local GetMouseState = Spring.GetMouseState
-local GetUnitPositionAtEndOfQueue = GG.CmdQueue.GetUnitPositionAtEndOfQueue
-local GetUnitActiveCommandPosition = GG.CmdQueue.GetUnitActiveCommandPosition
 
 -- OpenGL
 glColor = gl.Color
@@ -318,7 +314,7 @@ function gadget:DrawWorld()
 					
 					for i=1, numUnits do
 						unitID = units[i]
-						ux, uy, uz = GetUnitActiveCommandPosition(unitID)
+						ux, uy, uz = GG.CmdQueue.GetUnitActiveCommandPosition(unitID)
 						local dx, dz = tx - ux, tz - uz
 						local rotation = math.atan2(dx, dz)
 						

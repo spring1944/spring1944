@@ -673,7 +673,7 @@ function gadget:Initialize()
 
   --// get the morphDefs
   morphDefs = include("LuaRules/Configs/morph_defs.lua")
-  if (not morphDefs) then gadgetHandler:RemoveGadget(); return; end
+  if (not morphDefs) then GG.RemoveGadget(self); return; end
   morphDefs = ValidateMorphDefs(morphDefs)
 
   --// make it global for unsynced access via SYNCED

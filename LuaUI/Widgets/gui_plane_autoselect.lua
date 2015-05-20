@@ -337,7 +337,7 @@ function widget:Initialize()
 --[[
   local _, _, spec = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
   if spec then
-   -- widgetHandler:RemoveWidget()
+   -- WG.RemoveWidget(self)
    -- return false
   end
 ]]--

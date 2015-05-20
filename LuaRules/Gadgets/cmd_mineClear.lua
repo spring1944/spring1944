@@ -37,8 +37,6 @@ local MINE_CLEAR_TIME = 3 -- time in seconds to clear single mine
 local sweepers = {}
 
 
-local DelayCall = GG.Delay.DelayCall
-
 local clearDesc = {
 	name	= "Clear Mines",
 	action	= "clearmines",
@@ -77,7 +75,7 @@ function ClearMines(unitID, x, z)
 	for i = 1, #mines do
 		-- remove this unit (maybe needs a special anim?)
 		local mineID = mines[i]
-		DelayCall(BlowMine, {mineID, unitID}, MINE_CLEAR_TIME * i * 30)
+		GG.Delay.DelayCall(BlowMine, {mineID, unitID}, MINE_CLEAR_TIME * i * 30)
 	end
 	CallCOBScript(unitID, "LookForMines", 0, #mines * MINE_CLEAR_TIME * 1000)
 end

@@ -25,8 +25,6 @@ local TransferUnit			= Spring.TransferUnit
 
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 
-local DelayCall = GG.Delay.DelayCall
-
 -- Constants
 local MIN_HEALTH = 1 -- No fewer HP than this
 local HEALTH_RESTORE_LEVEL = 0.5 -- What % of maxHP to restore turret function
