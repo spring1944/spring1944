@@ -34,6 +34,8 @@ local weaponInfos = {}
 local unitInfos = {}
 local font
 
+local spec = Spring.GetSpectatingState()
+
 ------------------------------------------------
 --speedups and constants
 ------------------------------------------------
@@ -48,6 +50,10 @@ local GetSelectedUnits = Spring.GetSelectedUnits
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetActiveCommand = Spring.GetActiveCommand
 local IsUnitAllied = Spring.IsUnitAllied
+local AreTeamsAllied = Spring.AreTeamsAllied
+local GetLocalTeamID = Spring.GetLocalTeamID
+local GetUnitTeam = Spring.GetUnitTeam
+
 local CMD_ATTACK = CMD.ATTACK
 
 local abs = math.abs
@@ -314,7 +320,8 @@ function widget:DrawWorld()
 		local customParams = unitDef.customParams
 		local unitInfo = unitInfos[udid]
 		if customParams.armor_front then
-			if unitInfo and not IsUnitAllied(mouseTarget) then
+			if unitInfo and (not IsUnitAllied(mouseTarget) or 
+							 spec and not AreTeamsAllied(GetLocalTeamID(), GetUnitTeam(mouseTarget))) then
 				local sorted = GetSelectedUnitsSorted()
 				local maxDamagePerUnit = {}
 				local drawDamage = false
@@ -355,24 +362,6 @@ function widget:DrawWorld()
 							end
 						end
 					end
-					
-					
-					-- local weaponInfo = weaponInfos[selectedUnitDefID]
-					-- if weaponInfo then
-						-- for _, selectedUnitID in pairs(selectedUnits) do
-							-- local wx, wy, wz = GetUnitPosition(selectedUnitID)
-							-- local distance = vMagnitude(ux - wx, uy - wy, uz - wz)
-							-- local damage = CalculateDamage(weaponInfo, unitInfos[udid], distance)
-							-- if not totalDamage then
-								-- totalDamage = {false, false, false, false}
-							-- end
-							-- for i = 1,4 do
-								-- if damage[i] then
-									-- totalDamage[i] = (totalDamage[i] or 0) + damage[i]
-								-- end
-							-- end
-						-- end
-					-- end
 				end
 				if drawDamage then
 					local totalDamage = {false, false, false, false}
