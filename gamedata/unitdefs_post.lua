@@ -4,9 +4,9 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 -- Setup modoptions
 local modOptions
 if (Spring.GetModOptions) then
-  modOptions = Spring.GetModOptions()
+	modOptions = Spring.GetModOptions()
 end
-modOptions = {}
+modOptions = modOptions or {}
 
 -- Auto-generate sortie, squad & queuable-morph units
 VFS.Include("gamedata/unitdefs_autogen.lua")
@@ -228,6 +228,10 @@ for name, ud in pairs(UnitDefs) do
 	if (modOptions.unit_los_mult) then
 		if ud.sightdistance then
 			ud.sightdistance = (modOptions.unit_los_mult * ud.sightdistance)
+		end
+
+		if ud.airsightdistance then
+			ud.airsightdistance = (modOptions.unit_los_mult * ud.airsightdistance)
 		end
 --		if ud.radardistance then
 --			ud.radardistance = (modOptions.unit_los_mult * ud.radardistance)
