@@ -59,6 +59,10 @@ local JPNDefs = {
 	"JPNShinhotoChiHa",
 	"JPNChiHa120mm",
 	"JPNHoNiIII",
+	"JPNHaGo",
+	"JPNTeKe",
+	"JPNTeKe_HMG",
+	"JPNKaMi",
 	},
 	
   mediumtanks  =  {
@@ -74,10 +78,6 @@ local JPNDefs = {
 	"JPNHoNiI",
 	"JPNHoNiII",
 	"JPNHoRo",
-	"JPNTeKe",
-	"JPNTeKe_HMG",
-	"JPNHaGo",
-	"JPNKaMi",
   },
 
   unarmouredVehicles  =  {
