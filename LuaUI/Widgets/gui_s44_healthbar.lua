@@ -283,7 +283,7 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.build.cur = curbHP
 			bars.build.max = maxbHP
 			bars.build.pct = curbHP / maxbHP
-			bars.build.color[1], build.color[2] = 1 - unitbuildprog, 1 + unitbuildprog
+			bars.build.color[1], bars.build.color[2] = 1 - unitbuildprog, 1 + unitbuildprog
 			display = true
 		end
 	end
