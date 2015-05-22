@@ -169,7 +169,7 @@ local function Remove(dget)
 end
 
 local function RemoveCallIn(name, dget)
-	removeCallinList[#removeCallinList + 1] = {name, dget}
+	removeCallinList[#removeCallinList + 1] = {name, dget, dget[name]}
 	dget[name] = dummy[name]
 end
 
@@ -180,15 +180,16 @@ function widget:Update()
 	if #removeList > 0 then
 		for _, w in pairs(removeList) do
 			widgetHandler:RemoveWidget(w)
-			Spring.Echo("Widget Remover: removed " .. w.whInfo.name)
+			--Spring.Echo("Widget Remover: removed " .. w.whInfo.name)
 		end
 		removeList = {}
 	end
 	
 	if #removeCallinList > 0 then 
 		for _, data in pairs(removeCallinList) do
-			widgetHandler:RemoveWidgetCallIn(unpack(data))
-			Spring.Echo("Widget Remover: removed callin " ..  data[1] .. " from " .. data[2].whInfo.name)
+			data[2][data[1]] = data[3]
+			widgetHandler:RemoveWidgetCallIn(data[1], data[2])
+			--Spring.Echo("Widget Remover: removed callin " ..  data[1] .. " from " .. data[2].whInfo.name)
 		end
 		removeCallinList = {}
 	end

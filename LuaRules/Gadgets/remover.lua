@@ -169,7 +169,7 @@ local function Remove(dget)
 end
 
 local function RemoveCallIn(name, dget)
-	removeCallinList[#removeCallinList + 1] = {name, dget}
+	removeCallinList[#removeCallinList + 1] = {name, dget, dget[name]}
 	dget[name] = dummy[name]
 end
 
@@ -183,15 +183,16 @@ function gadget:GameFrame()
 	if #removeList > 0 then
 		for _, g in pairs(removeList) do
 			gadgetHandler:RemoveGadget(g)
-			Spring.Echo("Gadget Remover (synced): removed " .. g.ghInfo.name)
+			--Spring.Echo("Gadget Remover (synced): removed " .. g.ghInfo.name)
 		end
 		removeList = {}
 	end
 	
 	if #removeCallinList > 0 then 
 		for _, data in pairs(removeCallinList) do
-			gadgetHandler:RemoveGadgetCallIn(unpack(data))
-			Spring.Echo("Gadget Remover (synced): removed callin " ..  data[1] .. " from " .. data[2].ghInfo.name)
+			data[2][data[1]] = data[3]
+			gadgetHandler:RemoveGadgetCallIn(data[1], data[2])
+			--Spring.Echo("Gadget Remover (synced): removed callin " ..  data[1] .. " from " .. data[2].ghInfo.name)
 		end
 		removeCallinList = {}
 	end
@@ -203,15 +204,16 @@ function gadget:Update()
 	if #removeList > 0 then
 		for _, g in pairs(removeList) do
 			gadgetHandler:RemoveGadget(g)
-			Spring.Echo("Gadget Remover (unsynced): removed " .. g.ghInfo.name)
+			--Spring.Echo("Gadget Remover (unsynced): removed " .. g.ghInfo.name)
 		end
 		removeList = {}
 	end
 	
 	if #removeCallinList > 0 then 
 		for _, data in pairs(removeCallinList) do
-			gadgetHandler:RemoveGadgetCallIn(unpack(data))
-			Spring.Echo("Gadget Remover (unsynced): removed callin " ..  data[1] .. " from " .. data[2].ghInfo.name)
+			data[2][data[1]] = data[3]
+			gadgetHandler:RemoveGadgetCallIn(data[1], data[2])
+			--Spring.Echo("Gadget Remover (unsynced): removed callin " ..  data[1] .. " from " .. data[2].ghInfo.name)
 		end
 		removeCallinList = {}
 	end
