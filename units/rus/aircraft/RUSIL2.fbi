@@ -49,7 +49,7 @@
   maxVelocity=14;
   maxWaterDepth=0;
   myGravity=0.6;
-  noChaseCategory=FLAG MINE;
+  noChaseCategory=FLAG MINE AIR INFANTRY BUILDING;
   objectName=RUSIL2.S3O;
   radarDistance=1000;
   repairable=0;

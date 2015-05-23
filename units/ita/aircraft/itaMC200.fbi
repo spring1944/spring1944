@@ -47,7 +47,7 @@
   maxVelocity=16.5;
   maxWaterDepth=0;
   myGravity=0.6;
-  noChaseCategory=FLAG MINE;
+  noChaseCategory=FLAG MINE AIR INFANTRY BUILDING;
   objectName=ITAMC200.s3o;
   radarDistance=1000;
   repairable=0;
