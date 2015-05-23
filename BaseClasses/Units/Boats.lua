@@ -14,6 +14,7 @@ local Boat = Unit:New{ -- used for transports as is
 	turninplace			= false,
 	
 	customparams = {
+		damageGroup			= 'ships',
 		dontCount			= 1,
 		hasturnbutton		= 1,
 	}
@@ -52,6 +53,7 @@ local BoatChild = Boat:New{ -- a boat turret
 	
 	customparams = {
 		child				= true,
+		damageGroup			= 'guns',
 		feartarget			= true,
 		fearlimit			= 50, -- default to double inf, open mounts should be 25
 	}

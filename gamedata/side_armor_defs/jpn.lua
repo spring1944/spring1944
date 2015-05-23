@@ -119,14 +119,6 @@ local JPNDefs = {
 	"jpn_sortie_interceptor",
 	"jpn_sortie_fighter",
   },
-  ships  =  {
-	--Japan--
-	"JPNAbTei",
-	"JPNDaihatsu",
-	"jpntokudaihatsu",
-	"JPNTypeNo1AuxSC",
-	"JPNSeta",
-  },
 }
 
 return JPNDefs

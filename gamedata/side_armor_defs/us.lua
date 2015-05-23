@@ -133,17 +133,6 @@ local USDefs = {
   "us_sortie_attack",
   "us_sortie_paratrooper",
   },
-  ships  =  {
-    --US--
-  "USLCT",
-  "USPT103",
-  "USPT103-bofors",
-  "USFletcher",
-  "USTacoma",
-  "USLCVP",
-  "USSC",
-  "USLCSS",
-  },
 }
 
 return USDefs
