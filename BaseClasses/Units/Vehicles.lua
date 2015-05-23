@@ -87,7 +87,7 @@ local PontoonTruck = Truck:New{
 	script				= nil, -- TODO: atm they have individual copies
 }
 
-local Transport = { -- not a full class (interface)
+local Transport = Def:New{ -- not a full class (role/mixin)
 	loadingRadius		= 120,
     releaseHeld         = false,
 	transportCapacity	= 15,
@@ -96,12 +96,12 @@ local Transport = { -- not a full class (interface)
 	unloadSpread		= 3,
 }
 
-local Amphibian = { -- not a full class (interface)
+local Amphibian = Def:New{ -- not a full class (role/mixin)
 	movementClass		= "HOVER_AmphibTruck",
 	waterline = 7.5,
 }
 
-local MobileAA = { -- not a full class (interface)
+local MobileAA = Def:New{ -- not a full class (role/mixin)
 	description			= "Self-Propelled Light Anti-Aircraft",
 	iconType			= "aacar",
 }
@@ -169,7 +169,7 @@ local RGunTractor = Truck:New{
 
 return {
 	Vehicle = Vehicle,
-	-- Interfaces
+	-- Roles
 	Amphibian = Amphibian,
 	MobileAA = MobileAA,
 	Transport = Transport,

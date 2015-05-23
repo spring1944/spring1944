@@ -72,10 +72,9 @@ local HeavyTank = Tank:New{
 }
 
 -- Assault Gun
-local AssaultGun = Unit:New{ -- not a full class (interface)
+local AssaultGun = Def:New{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
-	script				= "Vehicle.lua",
 	turnRate			= 160,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
@@ -92,10 +91,9 @@ local TankDestroyer = AssaultGun:New{
 }
 
 -- SP Arty Tank
-local SPArty = Unit:New{ -- not a full class (interface)
+local SPArty = Def:New{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Howitzer",
 	iconType			= "sparty",
-    script				= "Vehicle.lua",
 	turnRate			= 175,
 	customParams = {
 		canareaattack		= true,
@@ -104,7 +102,7 @@ local SPArty = Unit:New{ -- not a full class (interface)
 	}
 }
 
-local OpenTopped = { --not a full class (interface, more like 'attribute')
+local OpenTopped = Def:New{ --not a full class (role/mixin)
 	category			= "MINETRIGGER OPENVEH",
 	customParams = {
 		damageGroup		= "armouredVehicles",

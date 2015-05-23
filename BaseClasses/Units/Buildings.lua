@@ -187,7 +187,7 @@ local Radar = Yard:New{
 }
 
 -- Bunkers
-local Bunker = Def:New{ -- not a full class (interface)
+local Bunker = Def:New{ -- not a full class (role/mixin)
 	customParams = {
 		damageGroup		= "bunkers",
 	},
