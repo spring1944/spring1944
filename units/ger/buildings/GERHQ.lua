@@ -1,4 +1,4 @@
-local GER_HQ = HQ:New{
+local GER_HQ = HQ:New(Bunker):New{
 	name					= "Wehrmacht HQ Bunker",
 	buildTime				= 40000,
 	collisionVolumeScales	= [[150 30 110]],

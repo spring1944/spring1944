@@ -16,6 +16,7 @@ local Null = Unit:New{
 	stealth = true,
 	
 	customparams = {
+		damageGroup			= "invincible",
 		dontCount			= 1,
 	},
 }

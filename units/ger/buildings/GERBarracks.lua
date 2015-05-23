@@ -16,7 +16,7 @@ local GER_Barracks = Barracks:New{
 									yyyyy]],
 }
 
-local GER_BarracksBunker = GER_Barracks:New{
+local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
 	buildCostMetal				= 5640,
 	maxDamage					= 18250,
 	yardmap						= [[ooyyy 

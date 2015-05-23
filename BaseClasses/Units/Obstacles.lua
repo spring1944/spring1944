@@ -15,6 +15,7 @@ local Mine = Unit:New{
 	yardmap					= "y",
 	
 	customparams = {
+		damageGroup			= "mines",
 		hiddenbuilding		= true,
 		dontcount			= true,
 		ismine				= true,
@@ -52,6 +53,7 @@ local TankObstacle = Unit:New{
 	yardmap					= "yy yy",
 
   	customparams = {
+		damageGroup			= "heavyTanks",
 		hiddenbuilding		= true,
 		dontcount			= true,
 		isobstacle			= true,

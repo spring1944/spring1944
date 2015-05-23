@@ -30,6 +30,7 @@ local Infantry = Unit:New{
 	upright				= true,
 	
 	customParams = {
+		damageGroup			= "infantry",
 		feartarget			= true,
 		soundcategory 		= "<SIDE>/Infantry",
 	},

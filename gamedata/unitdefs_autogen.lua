@@ -19,6 +19,7 @@ local function getTemplate()
 					stealth = true,
 					
 					customparams = {
+						damagegroup			= "invincible",
 						isupgrade			= true,
 						dontcount			= 1,
 					},

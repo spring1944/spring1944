@@ -21,6 +21,7 @@ local Deployed = Unit:New{
 	useBuildingGroundDecal		= true,
 	
 	customParams = {
+		damageGroup		= "guns",
 		feartarget		= 1,
 		soundcategory	= "<SIDE>/Gun",
 	},

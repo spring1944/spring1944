@@ -31,7 +31,7 @@ local damagedefs = {
     mediumtanks = 0,
     heavytanks = 0,
     hardplanes = 1/8,
-    flag = 0,
+    invincible = 0,
 	ships = 1,
     mines = 0,
   },
@@ -47,7 +47,7 @@ local damagedefs = {
     lighttanks = 1/3,
 	mediumtanks = 1/3,
 	heavytanks = 1/3,
-    flag = 0,
+    invincible = 0,
   },
   kinetic = {
 	default = 1,
@@ -58,13 +58,13 @@ local damagedefs = {
 	lighttanks = 7/10,
 	mediumtanks = 7/10,
 	heavytanks = 7/10,
-    flag = 0,
+    invincible = 0,
     mines = 0,
   },
   shapedcharge = {
 	ships = 1,
     lightbuildings = 1/10,
-    flag = 0,
+    invincible = 0,
   },
   fire = {
     bunkers = 4,
@@ -75,7 +75,7 @@ local damagedefs = {
 	lighttanks = 1,
     mediumtanks = 3/4,
 	heavytanks = 1/2,
-    flag = 0,
+    invincible = 0,
   },
   grenade = {
     infantry = 9,
@@ -87,7 +87,7 @@ local damagedefs = {
     lighttanks = 1/3,
 	mediumtanks = 1/3,
 	heavytanks = 1/3,
-    flag = 0,
+    invincible = 0,
   },
 }
 

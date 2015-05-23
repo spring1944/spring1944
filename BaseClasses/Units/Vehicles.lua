@@ -14,8 +14,9 @@ local Vehicle = Unit:New{
 	turnRate			= 400,
 	
 	customParams = {
-		soundcategory = "<SIDE>/Vehicle",
-		reversemult			= 0.5,
+		damageGroup		= "unarmouredVehicles",
+		soundcategory	= "<SIDE>/Vehicle",
+		reversemult		= 0.5,
 	},
 }
 
@@ -27,6 +28,10 @@ local ArmouredCar = Vehicle:New{
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
 	movementClass		= "TANK_Car",	
+
+	customParams = {
+		damageGroup		= "armouredVehicles",
+	},
 }
 
 local HeavyArmouredCar = ArmouredCar:New{
@@ -118,7 +123,7 @@ local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	},
 }
 
-local HalfTrack = Vehicle:New(Transport):New{
+local HalfTrack = ArmouredCar:New(Transport):New{
 	description			= "Transport/Supply Halftrack",
 	category			= "MINETRIGGER OPENVEH",
 	acceleration		= 0.039,

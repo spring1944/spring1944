@@ -31,6 +31,10 @@ local LightTank = Tank:New{
 	iconType			= "lighttank",
 	movementClass		= "TANK_Light",
 	trackType			= "T60-70-SU76",
+
+	customParams = {
+		damageGroup		= "lightTanks",
+	},
 }
 
 -- Tankette
@@ -45,6 +49,10 @@ local Tankette = LightTank:New{
 local MediumTank = Tank:New{
 	description 		= "Medium Tank",
 	iconType			= "medtank",
+
+	customParams = {
+		damageGroup		= "mediumTanks",
+	},
 }
 
 -- Heavy Tank
@@ -56,8 +64,9 @@ local HeavyTank = Tank:New{
 	iconType			= "heavytank",
 	movementClass		= "TANK_Heavy",
 	turnRate			= 150,
-	
+
 	customParams = {
+		damageGroup			= "heavyTanks",
 		soundcategory		= "<SIDE>/Tank/Heavy",
 	}
 }
@@ -97,6 +106,9 @@ local SPArty = Unit:New{ -- not a full class (interface)
 
 local OpenTopped = { --not a full class (interface, more like 'attribute')
 	category			= "MINETRIGGER OPENVEH",
+	customParams = {
+		damageGroup		= "armouredVehicles",
+	},
 }
 
 return {

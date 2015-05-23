@@ -20,6 +20,7 @@ local Aircraft = Unit:New{
 	turnRate			= 50,
 	
 	customParams = {
+		damageGroup			= "planes",
 		feartarget			= true,
 		proptexture			= "prop3.tga",
 		soundcategory		= "<SIDE>/Air",
@@ -160,6 +161,7 @@ local ParaTransport = Aircraft:New{
 	refuelTime			= 10,
 
 	customParams = {
+		damageGroup		= "heavyPlanes",
 		troopdropper	= 1,
 		deposit			= 0,
 	},

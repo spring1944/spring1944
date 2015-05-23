@@ -12,6 +12,7 @@ local Building = Unit:New{
 	useBuildingGroundDecal		= true,
 	
 	customParams = {
+		damageGroup		= "lightBuildings",
 		soundcategory	= "<SIDE>/Yard",
 	},
 }
@@ -185,6 +186,13 @@ local Radar = Yard:New{
 							ooooo]],
 }
 
+-- Bunkers
+local Bunker = Def:New{ -- not a full class (interface)
+	customParams = {
+		damageGroup		= "bunkers",
+	},
+}
+
 -- Supply Depots
 local SupplyDepot = Yard:New{
 	name					= "Large Supply Depot",
@@ -290,6 +298,7 @@ return {
 	BoatYard = BoatYard,
 	BoatYardLarge = BoatYardLarge,
 	Radar = Radar,
+	Bunker = Bunker,
 	SupplyDepot = SupplyDepot,
 	-- Logistics
 	Storage = Storage,
