@@ -120,19 +120,6 @@ local GBRDefs = {
   "gbr_sortie_fighter_bomber",
   "gbr_sortie_attack",
   },
-  ships  =  {
-    --Britain--
-  "GBRLCT",
-  "GBRFairmileD",
-  "GBRLCSL",
-  "GBRHuntII",
-  "GBRFlower",
-  "GBROClass",
-  "GBRMonitor",
-  "GBRLCA",
-  "GBRLCG",
-  "GBRLCGM",
-  },
 }
 
 return GBRDefs

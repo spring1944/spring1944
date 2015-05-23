@@ -135,20 +135,6 @@ local GERDefs = {
   "ger_sortie_attack",
   
   },
-  ships  =  {
-    --Germany--
-  "GERMAL",
-  "GERRBoot",
-  "GERMFP",
-  "GERFlottenTorpBoat",
-  "GERSBoot",
-  "GERSeehund",
-  "GERSeehunt_surfaced",
-  "GERVorpostenBoot",
-  "GERType1934",
-  "GERSiebelFahre",
-  "GERSchSturmboot",
-  },
 }
 
 return GERDefs

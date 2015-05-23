@@ -128,15 +128,6 @@ local ITADefs = {
 	"ita_sortie_fighter_bomber",
   
   },
-  ships  =  {
-	--Italy--
-	"ITAGabbiano",
-	"ITAMAS",
-	"ITAMS",
-	"ITAMZ",
-	"ITAML",
-	"ITAVedetta",
-  },
 }
 
 return ITADefs
