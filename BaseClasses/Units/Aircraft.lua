@@ -172,6 +172,12 @@ local ParaTransport = Aircraft:New{
 	}
 }
 
+local ArmouredPlane = Def:New{
+	customParams = {
+		damageGroup		= "armouredPlanes",
+	}
+}
+
 return {
 	Aircraft = Aircraft,
 	Recon = Recon,
@@ -181,5 +187,6 @@ return {
 	FighterBomber = FighterBomber,
 	CruiseMissile = CruiseMissile,
 	Glider = Glider,
+	ArmouredPlane = ArmouredPlane,
 	ParaTransport = ParaTransport,
 }

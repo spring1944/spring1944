@@ -1,4 +1,4 @@
-local RUS_IL2 = FighterBomber:New{
+local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	name				= "IL-2M Shturmovik",
 	description			= "Attack Aircraft",
 	buildCostMetal		= 3375,

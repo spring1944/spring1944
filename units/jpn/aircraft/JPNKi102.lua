@@ -1,4 +1,4 @@
-local JPN_Ki102 = Fighter:New{
+local JPN_Ki102 = Fighter:New(ArmouredPlane):New{
 	name				= "Ki-102b (Type 4) Assault Plane",
 	description			= "Anti-Tank Aircraft",
 	buildCostMetal		= 985,
