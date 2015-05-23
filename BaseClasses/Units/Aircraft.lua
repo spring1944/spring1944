@@ -75,6 +75,7 @@ local Interceptor = Fighter:New{
 local AttackFighter = Fighter:New{
 	description			= "Attack Fighter",
 	cruiseAlt			= 900,
+	noChaseCategory		= "FLAG INFANTRY AIR BUILDING MINE",
 }
 
 local FighterBomber = Fighter:New{
