@@ -140,23 +140,44 @@ function widget:Shutdown()
 	Spring.SendCommands({"showrezbars 1"})
 end
 
+local function RemoveUnit(unitID)
+    unitBars[unitID] = nil
+    unitAuras[unitID] = nil
+    unitData[unitID] = nil
+end
+
 function widget:GameFrame(n)
 	currentFrame = n
 	if (n % 300) < 1 then
 		local toDelete = {}
 		for uid, data in pairs(unitData) do
-			if not data.display then
+			if not Spring.ValidUnitID(uid) then
 				toDelete[#toDelete + 1] = uid
 			end
 		end
 		for _, uid in pairs(toDelete) do
-			unitBars[uid] = nil
-			unitAuras[uid] = nil
-			unitData[uid] = nil
+			RemoveUnit(uid)
 		end
 	end
 end
 
+function widget:GameStart()
+	iconDist = Spring.GetConfigInt('UnitIconDist')
+end
+
+function widget:UnitTaken(unitID, unitDefID, oldTeam, newTeam)
+    if not Spring.AreTeamsAllied(newTeam, oldTeam) then
+        RemoveUnit(unitID)
+    end
+end
+
+function widget:UnitDestroyed(unitID)
+    RemoveUnit(unitID)
+end
+
+function widget:UnitLeftLos(unitID)
+    RemoveUnit(unitID)
+end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
 	if data then
@@ -176,15 +197,19 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 	
 	--General
 	local ud = UnitDefs[udid]
-	
+	if not unitData[uid] then
+        unitData[uid] = {}
+    end
+    unitData[uid].display = false
+    unitData[uid].frame = currentFrame
+    
 	-- Don't show transported
-	if Spring.GetUnitTransporter(uid) and not ud.customParams.child then
-		return
+	if not Spring.ValidUnitID(uid) or (Spring.GetUnitTransporter(uid) and not ud.customParams.child) then
+        return
 	end
 	
 	local bars = unitBars[uid]
 	if not bars then
-		unitData[uid] = {}
 		unitBars[uid] = {}
 		getAuras = true
 		bars = unitBars[uid]
@@ -193,38 +218,37 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.health = {}
 			bars.health.color = {0,0,0,0.8}
 		end
-		
-		if ud.customParams.maxammo then
-			bars.ammo = {}
-			bars.ammo.max = ud.customParams.maxammo
-			bars.ammo.color = {1.0, 1.0, 0, 0.8}
-		end
-		
-		if ud.maxFuel > 0 then
-			bars.fuel = {}
-			bars.fuel.max = MAP_FUEL_SCALE(ud.maxFuel)
-			bars.fuel.color = {0.9, 0.5766, 0.207, 0.8}
-		end
-		
-		if ud.isBuilder then
-			bars.build = {}
-			bars.build.color = {0, 0, 0, 0.8}
-		end
-		
-		if ud.isTransport then
-			bars.transport = {}
-			bars.transport.max = ud.transportMass
-			bars.transport.color = {1, 1, 1, 0.8}
-		end
-		
-		if reloadDataList[udid] then
-			bars.reload = {}
-			bars.reload.max = 1
-			bars.reload.color = {0, 0.5, 0.9, 0.8}
-		end
+		if Spring.IsUnitAllied(uid) then
+            if ud.customParams.maxammo then
+                bars.ammo = {}
+                bars.ammo.max = ud.customParams.maxammo
+                bars.ammo.color = {1.0, 1.0, 0, 0.8}
+            end
+            
+            if ud.maxFuel > 0 then
+                bars.fuel = {}
+                bars.fuel.max = MAP_FUEL_SCALE(ud.maxFuel)
+                bars.fuel.color = {0.9, 0.5766, 0.207, 0.8}
+            end
+            
+            if ud.isBuilder then
+                bars.build = {}
+                bars.build.color = {0, 0, 0, 0.8}
+            end
+            
+            if ud.isTransport then
+                bars.transport = {}
+                bars.transport.max = ud.transportMass
+                bars.transport.color = {1, 1, 1, 0.8}
+            end
+            
+            if reloadDataList[udid] then
+                bars.reload = {}
+                bars.reload.max = 1
+                bars.reload.color = {0, 0.5, 0.9, 0.8}
+            end
+        end
 	end
-	
-	unitData[uid].frame = currentFrame
 	
 	local display = false
 	
@@ -233,9 +257,9 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 	-- HEALTH
 	if bars.health then
 		local curHP,maxHP,paradmg = GetUnitHealth(uid)
-		if not curHP then --not really accessible
-			return
-		end
+		-- if not curHP then --not really accessible
+			-- return
+		-- end
 		curHP = math.max(0, curHP)
 		local pct = (curHP / maxHP)
 		local health = bars.health
@@ -244,7 +268,6 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		health.pct = pct
 		health.color[1], health.color[2] = 2 * (1 - pct), 2.0 * pct
 		if (mathFloor(maxHP) ~= mathFloor(curHP)) and (curHP > 0) then
-			Spring.Echo("health", uid)
 			display = true
 		end
 	end
@@ -283,7 +306,7 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.build.cur = curbHP
 			bars.build.max = maxbHP
 			bars.build.pct = curbHP / maxbHP
-			bars.build.color[1], build.color[2] = 1 - unitbuildprog, 1 + unitbuildprog
+			bars.build.color[1], bars.build.color[2] = 1 - unitbuildprog, 1 + unitbuildprog
 			display = true
 		end
 	end
@@ -362,10 +385,6 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 	end
 	
 	unitData[uid].display = unitAuras[uid] or display
-end
-
-function widget:GameStart()
-	iconDist = Spring.GetConfigInt('UnitIconDist')
 end
 
 function DrawBar(barNum, heightscale, width, height, max, cur, pct, color, paralyze)
