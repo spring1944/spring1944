@@ -22,6 +22,7 @@ local BombClass = Weapon:New{
   },
   damage = {
     default            = 30000,
+	planes             = 5,
   },
 }
 
