@@ -72,10 +72,8 @@
 
   maxAngleDif1=210;
   maxAngleDif2=210;
-  maxAngleDif3=210;
   weaponMainDir1=0 16 1;
   weaponMainDir2=0 16 1;
-  weaponMainDir3=0 16 1;
 
   weapon1=Ansaldo75mmL34HE;
   onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
