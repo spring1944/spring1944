@@ -24,7 +24,7 @@
     lowammolevel=6;
     maxammo=19;
     weaponcost=10;
-    weaponswithammo=2;
+    weaponswithammo=3;
 	hasturnbutton=1;
     soundcategory=ITA/Tank;
   }
@@ -78,7 +78,7 @@
   weaponMainDir3=0 16 1;
 
   weapon1=Ansaldo75mmL34HE;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED;
+  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH SHIP OPENVEH HARDVEH LARGESHIP DEPLOYED;
 
   weapon2=Ansaldo75mmL34AP;
   onlyTargetCategory2=OPENVEH HARDVEH;
