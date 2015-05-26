@@ -6,6 +6,7 @@ local RifleClass = Weapon:New{
   areaOfEffect       = 1,
   avoidFeature       = true,
   avoidFriendly      = false,
+  burnblow           = false,
   collideFeature     = true,
   collideFriendly    = false,
   collisionSize      = 2.5,

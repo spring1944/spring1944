@@ -6,6 +6,7 @@ local SMGClass = Weapon:New{
   areaOfEffect       = 1,
   avoidFeature       = true,
   avoidFriendly      = false,
+  burnblow           = false,
   burst              = 5,
   collideFeature     = true,
   collideFriendly    = false,
