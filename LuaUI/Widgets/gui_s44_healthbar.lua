@@ -308,6 +308,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.build.pct = curbHP / maxbHP
 			bars.build.color[1], bars.build.color[2] = 1 - unitbuildprog, 1 + unitbuildprog
 			display = true
+		else
+			bars.build.pct = nil
 		end
 	end
 	
@@ -326,6 +328,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.transport.cur = currentmass
 			bars.transport.pct = currentmass / ud.transportMass
 			display = true
+		else
+			bars.transport.pct = nil
 		end
 	end
 	
@@ -343,7 +347,11 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 					bars.reload.cur = percentage
 					bars.reload.pct = percentage
 					display = true
+				else
+					bars.reload.pct = nil
 				end
+			else
+				bars.reload.pct = nil
 			end
 		end
 	end
