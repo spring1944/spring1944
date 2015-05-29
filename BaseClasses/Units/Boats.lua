@@ -35,11 +35,10 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 }
 
 local BoatChild = Boat:New{ -- a boat turret
-	canMove				= false,
+	canMove				= true,
 	cantBeTransported	= false,
 	canSelfDestruct 	= false,
 	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
-	collisionVolumeType	= "", -- default to ellipsoid
 	footprintX			= 1,
 	footprintZ 			= 1,
 	iconType			= "turret",
