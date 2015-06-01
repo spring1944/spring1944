@@ -79,7 +79,7 @@ end
 --------------------------------------------------------------------------------
 
 local treeNames = {"tree", "fir", "pine", "oak", "maple", "birch", "palm"}
-local bushNames = {"bush", "shrub"}
+local bushNames = {"bush", "shrub", "grass"}
 
 -- S44 code begins
 for name, fd in pairs(FeatureDefs) do
@@ -97,7 +97,9 @@ for name, fd in pairs(FeatureDefs) do
 	for _, bushName in pairs(bushNames) do
 		if name:find(bushName) or fd.description:lower():find(bushName) then
 			fd.blocking = false
-			fd.collisionvolumeoffsets= [[0 -100 0]]
+			fd.collisionvolumetype = "elli"
+			fd.collisionvolumescales = [[10 10 10]]
+			fd.collisionvolumeoffsets = [[0 -100 0]]
 		end
 	end
 end
