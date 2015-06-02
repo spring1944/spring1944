@@ -1,4 +1,4 @@
-local US_SC = BoatMother:New{
+local US_SC = ArmedBoat:New{
 	name					= "SC-497 Submarine Chaser",
 	description				= "Patrol Gunboat",
 	acceleration			= 0.075,
@@ -38,7 +38,7 @@ local US_SC = BoatMother:New{
 }
 
 
-local US_SC_Turret_20mm_Left = BoatChild:New{
+local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "USSC_Turret_20mm.s3o",
@@ -94,7 +94,7 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 	},
 }
 
-local US_SC_Turret_76mm = BoatChild:New{
+local US_SC_Turret_76mm = OpenBoatTurret:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
 	objectName				= "USSC_Turret_76mm.s3o",

@@ -34,7 +34,10 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	}
 }
 
+local ArmedBoat = BoatMother:New{ }
+
 local BoatChild = Boat:New{ -- a boat turret
+	buildCostMetal		= 1500, -- only used for exp
 	canMove				= true,
 	cantBeTransported	= false,
 	canSelfDestruct 	= false,
@@ -53,13 +56,31 @@ local BoatChild = Boat:New{ -- a boat turret
 	customparams = {
 		child				= true,
 		damageGroup			= 'guns',
-		feartarget			= true,
-		fearlimit			= 50, -- default to double inf, open mounts should be 25
 	}
+}
+
+local EnclosedBoatTurret = BoatChild:New{
+	maxDamage			= 2500,
+}
+
+local OpenBoatTurret = BoatChild:New{
+	maxDamage			= 1250,
+	customparams = {
+		feartarget		= true,
+		fearlimit		= 25, -- default to double inf, open mounts should be 25
+	}
+}
+
+-- as durable as a fully enclosed, but still suppressible
+local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
+	maxDamage			= 2500,
 }
 
 return {
 	Boat = Boat,
-	BoatMother = BoatMother,
-	BoatChild = BoatChild,
+	-- BoatMother and BoatChild deliberately not exported.
+	ArmedBoat = ArmedBoat,
+	OpenBoatTurret = OpenBoatTurret,
+	PartiallyEnclosedBoatTurret = PartiallyEnclosedBoatTurret,
+	EnclosedBoatTurret = EnclosedBoatTurret,
 }

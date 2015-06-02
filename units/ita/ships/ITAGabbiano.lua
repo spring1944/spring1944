@@ -1,4 +1,4 @@
-local ITA_Gabbiano = BoatMother:New{
+local ITA_Gabbiano = ArmedBoat:New{
 	name					= "Classe Gabbiano",
 	description				= "Corvette",
 	acceleration			= 0.15,
@@ -49,7 +49,7 @@ local ITA_Gabbiano = BoatMother:New{
 	},
 }
 
-local ITA_Gabbiano_Turret_100mm = BoatChild:New{
+local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
 	name					= "100mm Turret",
 	description				= "Primary Turret",
 	objectName				= "ITAGabbiano_Turret_100mm.s3o",
@@ -70,7 +70,7 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
     },
 }
 
-local ITA_Gabbiano_Turret_20mm = BoatChild:New{
+local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
 	name					= "20mm Turret",
 	description				= "AA Turret",
 	objectName				= "ITAGabbiano_Turret_20mm.s3o",
@@ -95,11 +95,10 @@ local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		fearlimit				= 25,
     },
 }
 
-local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
+local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 	name					= "Twin 20mm Turret",
 	description				= "AA Turret",
 	objectName				= "ITAGabbiano_Turret_Twin20mm.s3o",
@@ -140,7 +139,6 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
-		fearlimit				= 25,
 		facing					= 2,
     },
 }

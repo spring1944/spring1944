@@ -1,4 +1,4 @@
-local GBR_FairmileD = BoatMother:New{
+local GBR_FairmileD = ArmedBoat:New{
 	name					= "Fairmile D",
 	description				= "Motor Gun/Torpedo Boat",
 	acceleration			= 0.025,
@@ -60,7 +60,7 @@ local GBR_FairmileD = BoatMother:New{
 }
 
 
-local GBR_FairmileD_Turret_Vickers50 = BoatChild:New{
+local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	objectName				= "GBRFairmileD_Turret_Vickers50.s3o",
@@ -85,7 +85,7 @@ local GBR_FairmileD_Turret_Vickers50 = BoatChild:New{
 	},
 }
 
-local GBR_FairmileD_Turret_6pdr_Front = BoatChild:New{
+local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "GBRFairmileD_Turret_6pdr.s3o",
@@ -117,7 +117,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
     },
 }
 
-local GBR_FairmileD_Turret_Vickers30_Left = BoatChild:New{
+local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 	name					= "Vickers 30cal Turret",
 	description				= "Machinegun Turret",
 	objectName				= "GBRFairmileD_Turret_Vickers30.s3o",
@@ -148,7 +148,7 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 	},
 }
 
-local GBR_FairmileD_Turret_20mm = BoatChild:New{
+local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 	name					= "Twin Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "GBRFairmileD_Turret_20mm.s3o",

@@ -1,4 +1,4 @@
-local RUS_KomsMTB = BoatMother:New{
+local RUS_KomsMTB = ArmedBoat:New{
 	name					= "Komsomolets (Pr. 123) Class",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.1,
@@ -46,7 +46,7 @@ local RUS_KomsMTB = BoatMother:New{
 	},
 }
 
-local RUS_KomsMTB_Turret_DShK = BoatChild:New{
+local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
 	name					= "Twin DShK Turret",
 	description				= "Heavy Machinegun Turret",
 	objectName				= "RUSKomsMTB_Turret_DShK.s3o",

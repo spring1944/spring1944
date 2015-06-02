@@ -1,4 +1,4 @@
-local JPNT14 = BoatMother:New{
+local JPNT14 = ArmedBoat:New{
 	name					= "Type T-14 Motor Torpedo Boat",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.3,
@@ -42,7 +42,7 @@ local JPNT14 = BoatMother:New{
 	},
 }
 
-local JPNT14_Turret_25mm = BoatChild:New{
+local JPNT14_Turret_25mm = OpenBoatTurret:New{
 	name					= "25mm Turret",
 	description				= "25mm AA Turret",
 	objectName				= "JPNT14_Turret_25mm.s3o",
@@ -65,7 +65,6 @@ local JPNT14_Turret_25mm = BoatChild:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
-		fearlimit				= 25,
     },
 }
 

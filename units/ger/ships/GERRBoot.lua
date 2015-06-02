@@ -1,4 +1,4 @@
-local GER_RBoot = BoatMother:New{
+local GER_RBoot = ArmedBoat:New{
 	name					= "Raumboot",
 	description				= "Minesweeper (light patrol ship)",
 	acceleration			= 0.2,
@@ -36,7 +36,7 @@ local GER_RBoot = BoatMother:New{
 	},
 }
 
-local GER_RBoot_Turret_37mm = BoatChild:New{ --
+local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
 	name					= "37mm Turret",
 	description				= "Primary Turret",
 	objectName				= "GERRboot_Turret_37mm.s3o",
@@ -55,11 +55,10 @@ local GER_RBoot_Turret_37mm = BoatChild:New{ --
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,
 		elevationspeed			= 30,
-		fearlimit				= 25,
     },
 }
 
-local GER_RBoot_Turret_20mm = BoatChild:New{
+local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
 	name					= "20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "GERRBoot_Turret_20mm.s3o",
@@ -87,7 +86,6 @@ local GER_RBoot_Turret_20mm = BoatChild:New{
 		elevationspeed			= 80,
 		aaweapon				= 1,
 		facing					= 2,
-		fearlimit				= 25,
     },
 }
 

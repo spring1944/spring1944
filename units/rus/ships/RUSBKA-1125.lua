@@ -1,4 +1,4 @@
-local RUS_BKA_1125 = BoatMother:New{
+local RUS_BKA_1125 = ArmedBoat:New{
 	name					= "Pr.1125 Armored Boat",
 	description				= "Armoured river gunboat",
 	acceleration			= 0.05,
@@ -39,7 +39,7 @@ local RUS_BKA_1125 = BoatMother:New{
 	},
 }
 
-local RUS_BKA_1125_Turret_76mm = BoatChild:New{
+local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
 	name					= "Pr.1125 76mm Turret",
 	description				= "Primary Turret",
 	objectName				= "RUSBKA1125_76mm.s3o",
@@ -48,7 +48,7 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 			name				= "F3476mmHE",
 			maxAngleDif			= 300,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-			mainDir		= [[0 0 1]],
+			mainDir				= [[0 0 1]],
 		},
 	},
 	customparams = {
@@ -59,11 +59,10 @@ local RUS_BKA_1125_Turret_76mm = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-		feartarget				= false, -- fully enclosed
     },
 }
 
-local RUS_BKA_1125_Turret_DshK = BoatChild:New{
+local RUS_BKA_1125_Turret_DshK = EnclosedBoatTurret:New{
 	name					= "Pr.1125 DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	objectName				= "RUSBKA1125_DshK.s3o",
@@ -78,7 +77,6 @@ local RUS_BKA_1125_Turret_DshK = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
-		feartarget				= false, -- fully enclosed
 	},
 }
 
