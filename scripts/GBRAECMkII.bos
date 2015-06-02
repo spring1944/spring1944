@@ -168,81 +168,24 @@ FireWeapon1()
 	return 0;
 }
 
-// Weapon 2 - Coax MG
-QueryWeapon2(piecenum)
-	{
-	piecenum = coaxflare;
-	}
 
-AimFromWeapon2 (piecenum)
-	{
-	piecenum = turret;
-	}
+
+AimFromWeapon2(piecenum) //bulletproof effect 
+{
+	piecenum = base;
+}
+
+QueryWeapon2(piecenum)
+{
+	piecenum = base;
+}
 
 AimWeapon2(heading, pitch)
-	{
-	signal SIG_AIM_2;
-	set-signal-mask SIG_AIM_2;
-	
-	if (mainHead > 0) {
-	  if (heading < mainHead - COAX_ARC || heading > mainHead + COAX_ARC) return 0;
-	}
-	if (mainHead < 0) {
-	  if (heading > mainHead - COAX_ARC || heading < mainHead + COAX_ARC) return 0;		
-	}
-	
-	//turn turret to y-axis heading speed TURR_TRAVERSE;
-	wait-for-turn turret around y-axis;
-	
-	start-script RestoreAfterDelay();
-	return (1);
-	}
-
-FireWeapon2()
-	{
-	rock = FALSE;
-	
-	// TODO: nice SFX
-	emit-sfx SMALL_TRACER from coaxflare;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx SMALL_TRACER from coaxflare;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx SMALL_TRACER from coaxflare;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	emit-sfx MG_MUZZLEFLASH from coaxflare;
-	sleep 67;
-	return(0);
-	}
-
-AimFromWeapon3(piecenum) //bulletproof effect 
-{
-	piecenum = base;
-}
-
-QueryWeapon3(piecenum)
-{
-	piecenum = base;
-}
-
-AimWeapon3(heading, pitch)
 {
 return (1);
 }
 
-FireWeapon3()
+FireWeapon2()
 {
 return (0);
 }
