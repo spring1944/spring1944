@@ -178,18 +178,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
-	elseif cp.mother then
-		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
-		for _, cmdID in pairs(toRemove) do
-			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
-			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
-		end
-	elseif cp.child then
-		local toRemove = {CMD.MOVE_STATE}
-		for _, cmdID in pairs(toRemove) do
-			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
-			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
-		end
 	end
 end
 

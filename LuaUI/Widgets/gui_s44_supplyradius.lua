@@ -305,9 +305,7 @@ local function DrawSupplyRing(supplyInfo)
 		angle = angle + segmentAngle
 	end
 
-	glPushMatrix()
-		glShape(GL_POINTS, vertices)
-	glPopMatrix()
+	glShape(GL_POINTS, vertices)
 end
 
 local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
@@ -330,9 +328,7 @@ local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
 		angle = angle + segmentAngle
 	end
 
-	glPushMatrix()
-		glShape(GL_POINTS, vertices)
-	glPopMatrix()
+	glShape(GL_POINTS, vertices)
 end
 
 local function DrawTrucks()
@@ -501,9 +497,23 @@ local function Reset()
 	for i=1,#allUnits do
 		local unitID = allUnits[i]
 		widget:UnitCreated(unitID, GetUnitDefID(unitID), GetUnitTeam(unitID))
+		widget:UnitFinished(unitID, GetUnitDefID(unitID), GetUnitTeam(unitID))
 	end
 
 	UpdateLists()
+end
+
+local function CreateSupplyInfo(unitID, supplyDefInfo)
+	local supplyInfo = {}
+	supplyInfo.r = supplyDefInfo[1] * GetSupplyRangeModifier(myTeamID)
+	supplyInfo.numSegments = supplyDefInfo[2]
+	supplyInfo.segmentAngle = supplyDefInfo[3]
+
+	local x, y, z = GetUnitPosition(unitID)
+	supplyInfo.x, supplyInfo.y, supplyInfo.z = x, y, z
+
+	UpdateAdd(unitID, supplyInfo, supplyDefInfo)
+	supplyInfos[unitID] = supplyInfo
 end
 
 ------------------------------------------------
@@ -523,9 +533,11 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 
 	local supplyDefInfo = supplyDefInfos[unitDefID]
-
-	if (not supplyDefInfo) then return end
-
+	
+	if not supplyDefInfo then
+		return
+	end
+	
 	--enter info
 	local supplyInfo = {}
 	supplyInfo.supplyDefInfo = supplyDefInfo
@@ -534,7 +546,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	supplyInfo.x, supplyInfo.z = x, z
 
 	inBuildSupplyInfos[unitID] = supplyInfo
-
+	
 	UpdateLists()
 end
 
@@ -547,28 +559,28 @@ function widget:UnitFinished(unitID, unitDefID, unitTeam)
 
 	local supplyDefInfo = supplyDefInfos[unitDefID]
 
-	if (not supplyDefInfo) then return end
-
-	--enter info
-	local supplyInfo = {}
-	supplyInfo.r = supplyDefInfo[1]
-	supplyInfo.numSegments = supplyDefInfo[2]
-	supplyInfo.segmentAngle = supplyDefInfo[3]
-
-	local x, y, z = GetUnitPosition(unitID)
-	supplyInfo.x, supplyInfo.y, supplyInfo.z = x, y, z
-
-	UpdateAdd(unitID, supplyInfo, supplyDefInfo)
-	supplyInfos[unitID] = supplyInfo
+	if not supplyDefInfo and not UnitDefs[unitDefID].customParams.supplyrangemodifier then
+		return
+	end
+	
+	if UnitDefs[unitDefID].customParams.supplyrangemodifier then
+		for supplyUnitID, _ in pairs(supplyInfos) do
+			local supplyUnitDefID = GetUnitDefID(supplyUnitID)
+			CreateSupplyInfo(supplyUnitID, supplyDefInfos[supplyUnitDefID])
+		end
+	end
+	
+	if supplyDefInfo then
+		CreateSupplyInfo(unitID, supplyDefInfo)
+	end
 
 	UpdateLists()
 end
 
 function widget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	local _, _, inBuild = GetUnitIsStunned(unitID)
-	if inBuild then
-		widget:UnitCreated(unitID, unitDefID, unitTeam)
-	else
+	widget:UnitCreated(unitID, unitDefID, unitTeam)
+	if not inBuild then
 		widget:UnitFinished(unitID, unitDefID, unitTeam)
 	end
 end
@@ -594,6 +606,14 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		doUpdate = true
 	end
 
+	if UnitDefs[unitDefID].customParams.supplyrangemodifier then
+		for supplyUnitID, _ in pairs(supplyInfos) do
+			local supplyUnitDefID = GetUnitDefID(supplyUnitID)
+			CreateSupplyInfo(supplyUnitID, supplyDefInfos[supplyUnitDefID])
+		end
+		doUpdate = true
+	end
+	
 	if doUpdate then
 		UpdateLists()
 	end

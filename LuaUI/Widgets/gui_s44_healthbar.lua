@@ -2,7 +2,7 @@ function widget:GetInfo()
 	return {
 		name	  = "S44 Healthbars",
 		desc	  = "Custom healthbars",
-		author	  = "TheFatController/Gnome, adapted from IW Healthbars",
+		author	  = "TheFatController/Gnome, adapted from IW Healthbars", --Updated by FLOZi and ashdnazg 2014-2015
 		date	  = "November 2009",
 		license	  = "PD",
 		layer	  = 0,
@@ -236,7 +236,7 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
                 bars.build.color = {0, 0, 0, 0.8}
             end
             
-            if ud.isTransport then
+            if ud.isTransport and not ud.customParams.mother then
                 bars.transport = {}
                 bars.transport.max = ud.transportMass
                 bars.transport.color = {1, 1, 1, 0.8}
