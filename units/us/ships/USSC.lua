@@ -100,6 +100,7 @@ local US_SC_Turret_76mm = BoatChild:New{
 	objectName				= "USSC_Turret_76mm.s3o",
   	weapons = {	
 		[1] = {
+			maxAngleDif			= 270,
 			name				= "mk223in50",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
