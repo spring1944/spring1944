@@ -56,16 +56,15 @@ local BoatChild = Boat:New{ -- a boat turret
 
 	customparams = {
 		child				= true,
-		damageGroup			= 'unarmouredvehicles',
 	}
 }
 
 local EnclosedBoatTurret = BoatChild:New{
-	maxDamage			= 1250,
+	maxDamage			= 800,
 }
 
 local OpenBoatTurret = BoatChild:New{
-	maxDamage			= 625,
+	maxDamage			= 400,
 	customparams = {
 		feartarget		= true,
 		fearlimit		= 25,
@@ -74,7 +73,7 @@ local OpenBoatTurret = BoatChild:New{
 
 -- as durable as a fully enclosed, but still suppressible
 local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
-	maxDamage			= 1250,
+	maxDamage			= 800,
 }
 
 return {
