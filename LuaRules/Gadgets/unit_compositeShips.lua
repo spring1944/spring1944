@@ -104,7 +104,11 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		local mother = childCache[unitID]
 		if mother and not Spring.GetUnitIsDead(mother) then
 			AddUnitDamage(mother, passThroughDamage, 0, attackerID)
-			Spring.SetUnitTarget(attackerID, mother, false, true)
+			-- if one turret happens to damage another (disabled) one on the same ship,
+			-- don't try to target oneself
+			if attackerID ~= mother then
+				Spring.SetUnitTarget(attackerID, mother, false, true)
+			end
 		end
 		return newDamage
 	end
