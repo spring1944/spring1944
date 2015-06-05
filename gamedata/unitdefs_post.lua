@@ -309,7 +309,14 @@ for name, ud in pairs(UnitDefs) do
 		end
 		ud.sounds = sounds
 	end
-
+	if ud.weapons then
+		for _, weapon in pairs(ud.weapons) do
+			if weapon.name:lower():find("tracer") then
+				weapon.name = "TracerHack"
+			end
+		end
+	end
+	
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
 	if name == "gmtoolbox" then GM_UD = ud end

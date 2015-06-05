@@ -28,8 +28,14 @@ local Bounce50cal = BulletProofClass:New{
   shieldRadius       = 40,
 }
 
+local TracerHack = BulletProofClass:New{
+  shieldInterceptType = 0, -- 000000
+  shieldRadius       = 0.1,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   [".30calproof"] = Bounce30cal,
   [".50calproof"] = Bounce50cal,
+  ["TracerHack"] = TracerHack,
 })
