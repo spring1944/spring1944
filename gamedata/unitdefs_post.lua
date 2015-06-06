@@ -311,7 +311,7 @@ for name, ud in pairs(UnitDefs) do
 	end
 	if ud.weapons then
 		for _, weapon in pairs(ud.weapons) do
-			if weapon.name:lower():find("tracer") then
+			if weapon.name:lower():find("tracer") or weapon.name:lower():find("noweapon") then
 				weapon.name = "TracerHack"
 			end
 		end
