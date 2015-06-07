@@ -56,6 +56,7 @@ local BoatChild = Boat:New{ -- a boat turret
 
 	customparams = {
 		child				= true,
+		damageGroup			= 'shipturrets',
 	}
 }
 

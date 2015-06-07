@@ -103,7 +103,12 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		local passThroughDamage = damage - newDamage
 		local mother = childCache[unitID]
 		if mother and not Spring.GetUnitIsDead(mother) then
-			AddUnitDamage(mother, passThroughDamage, 0, attackerID)
+			local wd = WeaponDefs[weaponDefID]
+			local smallarmsDamage = wd.customParams and wd.customParams.damagetype == 'smallarm'
+			-- hulls (mothers) don't take smallarms damage
+			if not smallarmsDamage then
+				AddUnitDamage(mother, passThroughDamage, 0, attackerID)
+			end
 			-- if one turret happens to damage another (disabled) one on the same ship,
 			-- don't try to target oneself
 			if attackerID ~= mother then
