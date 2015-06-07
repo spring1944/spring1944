@@ -1,4 +1,4 @@
-local RUS_Pr161 = BoatMother:New{
+local RUS_Pr161 = ArmedBoat:New{
 	name					= "Pr.161 Armoured Boat",
 	description				= "Sea-going armored gunboat",
 	acceleration			= 0.05,
@@ -36,7 +36,7 @@ local RUS_Pr161 = BoatMother:New{
 }
 
 
-local RUS_Pr161_Turret_DshK = BoatChild:New{
+local RUS_Pr161_Turret_DshK = OpenBoatTurret:New{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -53,7 +53,7 @@ local RUS_Pr161_Turret_DshK = BoatChild:New{
 	},
 }
 
-local RUS_Pr161_Turret_85mm_Front = BoatChild:New{
+local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 	name					= "85mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSPr161_Turret_85mm.s3o",

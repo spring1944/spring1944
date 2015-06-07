@@ -1,4 +1,4 @@
-local GBR_LCSL = BoatMother:New{
+local GBR_LCSL = ArmedBoat:New{
 	name					= "LCS(L) Mk. 2",
 	description				= "Landing Craft Support",
 	acceleration			= 0.025,
@@ -30,7 +30,7 @@ local GBR_LCSL = BoatMother:New{
 	},
 }
 
-local GBR_LCSL_Turret_4inMortar = BoatChild:New{
+local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 	name					= "4in Smoke Mortar",
 	description				= "Smoke Launcher",
   	weapons = {	
@@ -48,7 +48,7 @@ local GBR_LCSL_Turret_4inMortar = BoatChild:New{
 }
 
 
-local GBR_LCSL_Turret_Vickers50 = BoatChild:New{
+local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -72,7 +72,7 @@ local GBR_LCSL_Turret_Vickers50 = BoatChild:New{
 	},
 }
 
-local GBR_LCSL_Turret_6pdr = BoatChild:New{
+local GBR_LCSL_Turret_6pdr = OpenBoatTurret:New{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -97,7 +97,7 @@ local GBR_LCSL_Turret_6pdr = BoatChild:New{
 }
 
 
-local GBR_LCSL_Turret_20mm_Left = BoatChild:New{
+local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "<SIDE>/GBRLCSL_Turret_20mm.s3o",

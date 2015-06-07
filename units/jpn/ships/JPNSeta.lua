@@ -1,4 +1,4 @@
-local JPN_Seta = BoatMother:New{
+local JPN_Seta = ArmedBoat:New{
 	name					= "Seta-class Gunboat",
 	description				= "Large river gunboat",
 	acceleration			= 0.05,
@@ -31,7 +31,7 @@ local JPN_Seta = BoatMother:New{
 	},
 }
 
-local JPN_Seta_Turret_76mm_Front = BoatChild:New{
+local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
 	name					= "Seta 76mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/JPNSeta_turret_76mm.s3o",
@@ -47,7 +47,6 @@ local JPN_Seta_Turret_76mm_Front = BoatChild:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-		fearlimit				= 15, -- 3/4 enclosed
     },
 }
 
@@ -62,7 +61,7 @@ local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
 	},
 }
 
-local JPN_Seta_Turret_25mm = BoatChild:New{
+local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
 	name					= "Seta 25mm Turret",
 	description				= "AA Turret",
   	weapons = {	
@@ -96,7 +95,6 @@ local JPN_Seta_Turret_25mm = BoatChild:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
-		fearlimit				= 25,
     },
 }
 

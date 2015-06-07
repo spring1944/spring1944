@@ -1,4 +1,4 @@
-local GER_SBoot = BoatMother:New{
+local GER_SBoot = ArmedBoat:New{
 	name					= "SchnellBoot",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.3,
@@ -34,7 +34,7 @@ local GER_SBoot = BoatMother:New{
 	},
 }
 
-local GER_SBoot_Turret_20mm_Front = BoatChild:New{
+local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
 	name					= "20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "GER/GERSBoot_Turret_20mm.s3o",
@@ -55,7 +55,6 @@ local GER_SBoot_Turret_20mm_Front = BoatChild:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
-		fearlimit				= 25,
     },
 }
 

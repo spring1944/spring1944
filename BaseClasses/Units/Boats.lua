@@ -13,7 +13,7 @@ local Boat = Unit:New{ -- used for transports as is
 	selfDestructAs		= "Vehicle_Explosion_Sm",
 	sightDistance		= 840,
 	turninplace			= false,
-	
+
 	customparams = {
 		soundCategory		= "<SIDE>/Boat",
 		damageGroup			= 'ships',
@@ -103,6 +103,7 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	movementClass		= "BOAT_LightPatrol",
 	script				= "BoatMother.lua",
 	usePieceCollisionVolumes	= true,
+
 	-- Transport tags
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,
@@ -112,42 +113,61 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	}
 }
 
+local ArmedBoat = BoatMother:New{ }
+
 local BoatChild = Boat:New{ -- a boat turret
-	canMove				= true,
-	cantBeTransported	= false,
-	canSelfDestruct 	= false,
-	category 			= "SHIP MINETRIGGER TURRET DEPLOYED",
-	corpse				= nil, -- turrets can't die except with parent, so no corpse
-	footprintX			= 1,
-	footprintZ 			= 1,
-	iconType			= "turret",
-	idleAutoHeal		= 1,
-	mass				= 10,
-	maxDamage			= 1000,
-	maxVelocity			= 1,
-	movementClass		= "KBOT_Infantry", -- needed!
-	power		        = 20,
-	script				= "BoatChild.lua",
-	
+	buildCostMetal				= 1500, -- only used for exp
+	canMove						= true,
+	cantBeTransported			= false,
+	canSelfDestruct				= false,
+	category					= "SHIP MINETRIGGER TURRET DEPLOYED",
+	footprintX					= 1,
+	footprintZ					= 1,
+	iconType					= "turret",
+	idleAutoHeal				= 1,
+	mass						= 10,
+	maxDamage					= 1000,
+	maxVelocity					= 1,
+	movementClass				= "KBOT_Infantry", -- needed!
+	power						= 20,
+	script						= "BoatChild.lua",
+	useFootPrintCollisionVolume	= true,
+
 	customparams = {
 		child				= true,
-		damageGroup			= 'guns',
-		feartarget			= true,
-		fearlimit			= 50, -- default to double inf, open mounts should be 25
+		damageGroup			= 'shipturrets',
 	}
 }
 
+local EnclosedBoatTurret = BoatChild:New{
+	maxDamage			= 800,
+}
+
+local OpenBoatTurret = BoatChild:New{
+	maxDamage			= 400,
+	customparams = {
+		feartarget		= true,
+		fearlimit		= 25,
+	}
+}
+
+-- as durable as a fully enclosed, but still suppressible
+local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
+	maxDamage			= 800,
+}
 
 return {
 	-- Basic class
 	Boat = Boat,
+	-- BoatMother and BoatChild deliberately not exported.
+	ArmedBoat = ArmedBoat,
+	OpenBoatTurret = OpenBoatTurret,
+	PartiallyEnclosedBoatTurret = PartiallyEnclosedBoatTurret,
+	EnclosedBoatTurret = EnclosedBoatTurret,
 	-- Engineer built raft & boat
 	PontoonRaft = PontoonRaft,
 	AssaultBoat = AssaultBoat,
 	-- Landing Craft
 	InfantryLandingCraft = InfantryLandingCraft,
 	TankLandingCraft = TankLandingCraft,
-	-- Composites
-	BoatMother = BoatMother,
-	BoatChild = BoatChild,
 }

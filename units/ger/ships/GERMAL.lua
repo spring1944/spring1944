@@ -1,4 +1,4 @@
-local GER_MAL = BoatMother:New{
+local GER_MAL = ArmedBoat:New{
 	name					= "Marineartillerieleichter",
 	description				= "Landing Fire Support Ship",
 	acceleration			= 0.15,
@@ -31,7 +31,7 @@ local GER_MAL = BoatMother:New{
 	},
 }
 
-local GER_MAL_Turret_105mm = BoatChild:New{ --
+local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
 	name					= "105mm Turret", -- TODO: should be for MAL 2?
 	description				= "Primary Turret",
   	weapons = {	
@@ -46,11 +46,10 @@ local GER_MAL_Turret_105mm = BoatChild:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
-		fearlimit				= 15, -- 3/4 enclosed
     },
 }
 
-local GER_MAL_Turret_Quad20mm = BoatChild:New{
+local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
 	name					= "Flakvierling 20mm Turret",
 	description				= "Quad 20mm AA Turret",
   	weapons = {	
@@ -103,7 +102,7 @@ local GER_MAL_Turret_Quad20mm = BoatChild:New{
     },
 }
 
-local GER_MAL_Turret_37mm = BoatChild:New{
+local GER_MAL_Turret_37mm = OpenBoatTurret:New{
 	name					= "37mm Turret",
 	description				= "37mm AA Turret",
   	weapons = {	
@@ -123,7 +122,6 @@ local GER_MAL_Turret_37mm = BoatChild:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
-		fearlimit				= 25,
     },
 }
 

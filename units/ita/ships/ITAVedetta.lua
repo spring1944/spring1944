@@ -1,4 +1,4 @@
-local ITA_Vedetta = BoatMother:New{
+local ITA_Vedetta = ArmedBoat:New{
 	name					= "Classe Vedetta",
 	description				= "Patrol Gunboat",
 	acceleration			= 0.075,
@@ -29,7 +29,7 @@ local ITA_Vedetta = BoatMother:New{
 	},
 }
 
-local ITA_Vedetta_Turret_76mm = BoatChild:New{
+local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 	name					= "76mm Turret",
 	description				= "Primary Turret",
 	weapons = {	
@@ -46,7 +46,7 @@ local ITA_Vedetta_Turret_76mm = BoatChild:New{
 	},
 }
 
-local ITA_Vedetta_Turret_MG = BoatChild:New{
+local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
 	name					= "MG Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
