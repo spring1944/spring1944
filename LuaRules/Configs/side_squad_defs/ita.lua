@@ -110,22 +110,39 @@ local itaDefs = {
 		buildTime = 1580,
 		side = "ITA",
 	},
-
+	
 	["ita_platoon_at"] =
 	{
 		members = {
+			"itapanzerfaust",
+			"itapanzerfaust",
 			"itasoloat",
 			"itasoloat",
-			"itasoloat",
-			"itaelitesoloat",
 		},
 		name = "Anti-Tank Squad",
-		description = "3 x Solothurn + 1 x Elitesolothurn  : Anti-Tank Infantry",
-		buildCostMetal = 800,
-		buildPic = "ITASolothurn.png",
-		buildTime = 900,
+		description = "2 x Panzerfaust, 2 x Solothurn: Anti-Tank Infantry",
+		buildCostMetal = 450,
+		buildPic = "GERPanzerfaust.png",
+		buildTime = 450,
 		side = "ITA",
 	},
+	
+	-- ["ita_platoon_at"] =
+	-- {
+		-- members = {
+			-- "itasoloat",
+			-- "itasoloat",
+			-- "itasoloat",
+			-- "itaelitesoloat",
+		-- },
+		-- name = "Anti-Tank Squad",
+		-- description = "3 x Solothurn + 1 x Elitesolothurn  : Anti-Tank Infantry",
+		-- buildCostMetal = 800,
+		-- buildPic = "ITASolothurn.png",
+		-- buildTime = 900,
+		-- side = "ITA",
+	-- },
+	
 	["ita_platoon_infgun"] =
 	{
 		members = {
