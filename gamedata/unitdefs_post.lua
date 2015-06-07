@@ -223,6 +223,10 @@ for name, ud in pairs(UnitDefs) do
 			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
 			--Spring.Echo(name, "changed health to", ud.maxdamage)
 		end
+
+		if cp.mother then
+			ud.maxdamage = ud.mass * 2
+		end
 	end
 
 	if (modOptions.unit_los_mult) then
