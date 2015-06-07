@@ -122,7 +122,7 @@ local itaDefs = {
 		name = "Anti-Tank Squad",
 		description = "2 x Panzerfaust, 2 x Solothurn: Anti-Tank Infantry",
 		buildCostMetal = 450,
-		buildPic = "GERPanzerfaust.png",
+		buildPic = "ITAPanzerfaust.png",
 		buildTime = 450,
 		side = "ITA",
 	},
