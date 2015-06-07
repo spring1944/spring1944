@@ -2,6 +2,10 @@ local USInf = {
 	maxDamageMul		= 1.0,
 }
 
+local USPara = {
+	maxDamageMul		= 1.4,
+}
+
 local US_HQEngineer = EngineerInf:New(USInf):New{
 	name				= "Field Engineer",
 }
@@ -127,11 +131,11 @@ return lowerkeys({
 	["USFlamethrower"] = US_Flamethrower,
 	["USObserv"] = US_Observ,
 	-- Paratroopers
-	["USParaRifle"] = US_Rifle:New{},
-	["USParaThompson"] = US_Thompson:New{},
-	["USParaBAR"] = US_BAR:New{},
-	["USParaMG"] = US_MG:New{},
-	["USParaMG_Sandbag"] = US_MG_Sandbag:New{},
-	["USParaBazooka"] = US_Bazooka:New{},
+	["USParaRifle"] = US_Rifle:New(USPara),
+	["USParaThompson"] = US_Thompson:New(USPara),
+	["USParaBAR"] = US_BAR:New(USPara),
+	["USParaMG"] = US_MG:New(USPara),
+	["USParaMG_Sandbag"] = US_MG_Sandbag:New(USPara),
+	["USParaBazooka"] = US_Bazooka:New(USPara),
 	["USParatrooper"] = US_Paratrooper,
 })
