@@ -191,8 +191,8 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 	glSmoothing(false, false, false)	
 end
 
-local function CalculateDamage(weaponInfo, unitInfo, distance)
-	local front, side, rear, top, armorType, armorTypeName, health = unpack(unitInfo)
+local function CalculateDamage(weaponInfo, unitInfo, distance, health)
+	local front, side, rear, top, armorType, armorTypeName = unpack(unitInfo)
 	local penetration, dropoff, range, damages, armorHitSide = unpack(weaponInfo)
 	local isHE = (penetration == 0)
 	distance = min(distance, range)
@@ -272,7 +272,6 @@ function widget:Initialize()
 				forwardArmorTranslation(armor_top),
 				unitDef.armorType,
 				armorTypes[unitDef.armorType],
-				unitDef.health,
 			}
 		end
 	end
@@ -347,8 +346,8 @@ function widget:DrawWorld()
 										unitDistances[selectedUnitID] = vMagnitude(ux - wx, uy - wy, uz - wz)
 									end
 									distance = unitDistances[selectedUnitID]
-									
-									local damage = CalculateDamage(weaponInfo, unitInfo, distance)
+									local _, health = Spring.GetUnitHealth(mouseTarget)
+									local damage = CalculateDamage(weaponInfo, unitInfo, distance, health)
 									if not maxDamagePerUnit[selectedUnitID] then
 										maxDamagePerUnit[selectedUnitID] = {false, false, false, false}
 									end
