@@ -52,7 +52,6 @@ local BoatChild = Boat:New{ -- a boat turret
 	movementClass				= "KBOT_Infantry", -- needed!
 	power						= 20,
 	script						= "BoatChild.lua",
-	useFootPrintCollisionVolume	= true,
 
 	customparams = {
 		child				= true,
