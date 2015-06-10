@@ -80,7 +80,6 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-		feartarget				= false, -- fully enclosed
     },
 }
 local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
