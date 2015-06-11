@@ -30,7 +30,7 @@ local MIN_HEALTH = 1 -- No fewer HP than this
 local HEALTH_RESTORE_LEVEL = 0.5 -- What % of maxHP to restore turret function
 
 -- Variables
-local motherCache = {} -- unitID = {child1ID, child2ID ...}
+GG.boatMothers = {} -- unitID = {child1ID, child2ID ...}
 local childCache = {} -- unitID = motherID
 local deadChildren = {} -- unitID = true
 
@@ -41,7 +41,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
 	if cp.mother then
-		motherCache[unitID] = {}
+		GG.boatMothers[unitID] = {}
 		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
@@ -58,13 +58,13 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	motherCache[unitID] = nil
+	GG.boatMothers[unitID] = nil
 	childCache[unitID] = nil
 	deadChildren[unitID] = nil
 end
 
 function gadget:UnitGiven(unitID, unitDefID, newTeam, oldTeam)
-	local children = motherCache[unitID]
+	local children = GG.boatMothers[unitID]
 	if children then
 		for _, childID in pairs(children) do
 			TransferUnit(childID, newTeam, true)
@@ -76,7 +76,7 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	if childCache[unitID] then
 		--Spring.Echo("CHILD LOADED", unitID, transportID)
 		childCache[unitID] = transportID -- set value to unitID of mother
-		table.insert(motherCache[transportID], unitID) -- insert into mothers list
+		table.insert(GG.boatMothers[transportID], unitID) -- insert into GG.boatMothers list
 	end 
 end
 
@@ -132,7 +132,7 @@ function gadget:GameFrame(n)
 end
 
 function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions, cmdTag, synced)
-	local motherChildren = motherCache[unitID]
+	local motherChildren = GG.boatMothers[unitID]
 	if motherChildren and passedCmds[cmdID] then
 		GG.Delay.DelayCall(Spring.GiveOrderToUnitArray, {motherChildren, cmdID, cmdParams, cmdOptions}, 1)
 	end

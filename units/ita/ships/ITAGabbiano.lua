@@ -45,7 +45,7 @@ local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
 	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
-		},
+			maxAngleDif			= 270,		},
 	},
 	customparams = {
 		maxammo					= 30,
@@ -94,17 +94,6 @@ local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 			slaveTo				= 1,
-		},
-		[3] = {
-			name				= "BredaM3520mmHE",
-			maxAngleDif			= 270,
-			mainDir		= [[0 0 -1]],
-		},
-		[4] = {
-			name				= "BredaM3520mmHE",
-			maxAngleDif			= 270,
-			mainDir		= [[0 0 -1]],
-			slaveTo				= 3,
 		},
 	},
 	customparams = {
