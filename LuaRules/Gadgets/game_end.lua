@@ -125,8 +125,13 @@ local function CheckForVictory()
         end
     end
     if count < 2 then
-        EchoUIMessage(( (lastAllyTeam and ("Alliance " .. lastAllyTeam)) or "Nobody") .. " wins!")
-        spGameOver({lastAllyTeam})
+		EchoUIMessage(( (lastAllyTeam and ("Alliance " .. lastAllyTeam)) or "Nobody") .. " wins!")
+		if Spring.GetGameFrame() > 1 then
+			spGameOver({lastAllyTeam})
+		else
+			Spring.Echo("But it's only the first frame, so I think you don't want me to stop this game yet")
+			GG.RemoveGadget(gadget)
+		end
     end
 end
 
