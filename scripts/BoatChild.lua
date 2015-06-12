@@ -4,9 +4,9 @@ local GetUnitHealth = Spring.GetUnitHealth
 unitDefID = Spring.GetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
- 
+
 local turretTurnSpeed = info.turretTurnSpeed
-local elevationSpeed = info.elevationSpeed 
+local elevationSpeed = info.elevationSpeed
 local barrelRecoilDist = info.barrelRecoilDist
 local barrelRecoilSpeed = info.barrelRecoilSpeed
 local aaWeapon = info.aaWeapon
@@ -21,7 +21,7 @@ local numRockets = info.numRockets
 local MIN_HEALTH = 1
 local FEAR_LIMIT = info.fearLimit or 20
 local PINNED_LEVEL = 0.8 * FEAR_LIMIT
-local SUPPRESSED_FIRE_RATE_PENALTY = 2 
+local SUPPRESSED_FIRE_RATE_PENALTY = 2
 
 local curFear = 0
 local isDisabled = false
@@ -52,32 +52,12 @@ local backBlast = piece("backblast")
 local rockets = {}
 if numRockets > 0 then findPieces(rockets, "r_rocket") end
 
-local function DamageSmoke()
-	-- emit some smoke if the unit is damaged
-	-- check if the unit has finished building
-	_,_,_,_,buildProgress = GetUnitHealth(unitID)
-	while (buildProgress > 0) do
-		Sleep(150)
-		_,_,_,_,buildProgress = GetUnitHealth(unitID)
-	end
-	-- random delay between smoke start
-	timeDelay = math.random(1, 5)*30
-	Sleep(timeDelay)
+local function DisabledSmoke()
 	while (1 == 1) do
-		curHealth, maxHealth = GetUnitHealth(unitID)
-		healthState = curHealth / maxHealth
-		if healthState < 0.66 then
+		if isDisabled then
 			EmitSfx(base, SFX.BLACK_SMOKE)
-			-- the less HP we have left, the more often the smoke
-			timeDelay = 1500 * healthState
-			-- no sence to make a delay shorter than a game frame
-			if timeDelay < 30 then
-				timeDelay = 30
-			end
-		else
-			timeDelay = 1500
 		end
-		Sleep(timeDelay)
+		Sleep(500)
 	end
 end
 
@@ -88,7 +68,7 @@ end
 
 function script.Create()
 	--Spring.Echo("OH HAI", rearFacing)
-	StartThread(DamageSmoke)
+	StartThread(DisabledSmoke)
 	Turn(turret, y_axis, math.rad(90 * facing))
 	if flare then
 		Hide(flare)
@@ -152,7 +132,7 @@ function script.Shot(weaponID)
 			if curRocket > numRockets then curRocket = 1 end
 		else
 			EmitSfx(flare or flares[weaponID], SFX.CEG + weaponID)
-			local barrelToMove = barrel or barrels[weaponID] 
+			local barrelToMove = barrel or barrels[weaponID]
 			if barrelToMove then
 				Move(barrelToMove, z_axis, -barrelRecoilDist)
 				WaitForMove(barrelToMove, z_axis)
@@ -162,11 +142,11 @@ function script.Shot(weaponID)
 	end
 end
 
-function script.AimFromWeapon(weaponID) 
+function script.AimFromWeapon(weaponID)
 	return sleeve
 end
 
-function script.QueryWeapon(weaponID) 
+function script.QueryWeapon(weaponID)
 	if aaWeapon and weaponID > numBarrels then
 		weaponID = weaponID - numBarrels
 	end
