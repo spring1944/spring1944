@@ -178,9 +178,13 @@ local function DestroyAlliance(allianceID)
             end
         elseif destroy_type == 'losecontrol' then   -- no orders can be issued to team
             EchoUIMessage("Game Over: Destroying alliance " .. allianceID)
-            for i=1,#teamList do
-                spKillTeam(teamList[i])
-            end
+			if Spring.GetGameFrame() > 1 then
+				for i=1,#teamList do
+					spKillTeam(teamList[i])
+				end
+			else
+				Spring.Echo("I don't feel like killing teams in the first frame of the game")
+			end
         end
     end
     CheckForVictory()
