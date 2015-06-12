@@ -45,7 +45,6 @@ local BoatChild = Boat:New{ -- a boat turret
 	footprintX					= 1,
 	footprintZ					= 1,
 	iconType					= "turret",
-	idleAutoHeal				= 1,
 	mass						= 10,
 	maxDamage					= 1000,
 	maxVelocity					= 1,
