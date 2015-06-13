@@ -204,7 +204,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	
 	local d
 	local dotFront, dotUp
-	if projectileID > 0 then
+	if ownerPos[attackerID] then
 		local ux, uy, uz = GetUnitPosition(unitID)
 		local ax, ay, az = unpack(ownerPos[attackerID])
 		local dx, dy, dz = Spring.GetProjectileVelocity(projectileID)
