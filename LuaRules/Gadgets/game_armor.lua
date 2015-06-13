@@ -266,7 +266,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 end
 
 function gadget:ProjectileCreated(projID, ownerID, weaponID)
-	if weaponInfos[weaponID] then
+	if weaponInfos[weaponID] and ownerID then
 		ownerPos[ownerID] = {GetUnitPosition(ownerID)}
 	end
 end
@@ -276,7 +276,7 @@ local function ForgetOwner(ownerID)
 end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
-	if weaponInfos[weaponID] then
+	if weaponInfos[weaponID] and ownerID then
 		GG.Delay.DelayCall(ForgetOwner, {ownerID}, 1)
 	end
 end
