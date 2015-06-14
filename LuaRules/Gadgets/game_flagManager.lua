@@ -264,7 +264,7 @@ function PlaceFlag(spot, flagType, unitID)
 		GG.Delay.DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
 
-	return newFlag
+	table.insert(GG.flags, newFlag)
 end
 
 
@@ -296,6 +296,7 @@ function gadget:Initialize()
 		flagTypeSpots[flagType] = spotTable
 	end
 
+	-- populated by placeFlag
 	GG.flags = {}
 	for _, flagType in pairs(flagTypes) do
 		for i = 1, #flagTypeSpots[flagType] do
@@ -304,8 +305,7 @@ function gadget:Initialize()
 			for _, unitID in pairs(units) do
 				local name = UnitDefs[GetUnitDefID(unitID)].name
 				if name == flagType then
-					local unitID = PlaceFlag(flagTypeSpots[flagType][i], flagType, unitID)
-					table.insert(GG.flags, unitID)
+					PlaceFlag(flagTypeSpots[flagType][i], flagType, unitID)
 					break
 				end
 			end
