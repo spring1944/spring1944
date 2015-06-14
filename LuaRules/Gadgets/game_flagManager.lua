@@ -226,7 +226,6 @@ end
 -- this function is used to add any additional flagType specific behaviour
 function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 	if flagType == "flag" then
-		SetUnitRulesParam(flagID, "lifespan", 0)
 		local env = Spring.UnitScript.GetScriptEnv(flagID)
 		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
 	end
@@ -388,13 +387,16 @@ function gadget:GameFrame(n)
 								-- Neutral flag being capped
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Captured!")
 								TransferUnit(flagID, teamID, false)
-								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) + 1, {public = true})
+								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1, {public = true})
 							else
 								-- Team flag being neutralised
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
 								TransferUnit(flagID, GAIA_TEAM_ID, false)
-								SetTeamRulesParam(teamID, flagType .. "s", (GetTeamRulesParam(teamID, flagType .. "s") or 0) - 1, {public = true})
+								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) - 1, {public = true})
 							end
+							-- reset production
+							SetUnitRulesParam(flagID, "lifespan", 0)
+
 							-- Perform any flagType specific behaviours
 							FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 							-- Turn flag back on
