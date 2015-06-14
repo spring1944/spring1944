@@ -30,6 +30,23 @@ local gerunits =
     "gerpontoonraft",
   },
 
+  gerhqaiengineer =
+  {
+    "gervehicleyard",
+    "gerbarracks",
+    "gergunyard",
+    "gerradar",
+    "gerstorage",
+    "geratminesign",
+    "gerapminesign",
+    "gertankobstacle",
+    "gerspyard",
+    "gerspyard1",
+    "gertankyard1",
+    "gertankyard2",
+    "gerpontoonraft",
+  },
+
   gerbarracks =
   {
     "gerhqengineer",

@@ -11,7 +11,7 @@ local itaunits =
     "ita_platoon_hq",
   },
   -- AI
-  itaengineer =
+  itahqaiengineer =
   {
     "itavehicleyard",
     "itabarracks",
