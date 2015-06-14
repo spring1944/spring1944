@@ -4,6 +4,9 @@ local GERInf = {
 
 local GER_HQEngineer = EngineerInf:New(GERInf):New{
 	name				= "Feldpionier",
+	canAssist			= true,
+	canReclaim			= true,
+	canRepair			= true,
 }
 
 local GER_Rifle = RifleInf:New(GERInf):New{
@@ -102,6 +105,7 @@ local GER_Observ = ObservInf:New(GERInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["GERHQEngineer"] = GER_HQEngineer,
+	["GERHQAIEngineer"] = GER_HQEngineer:Clone("GERHQEngineer"),
 	["GERRifle"] = GER_Rifle,
 	["GERMP40"] = GER_MP40,
 	["GERMG42"] = GER_MG42,
