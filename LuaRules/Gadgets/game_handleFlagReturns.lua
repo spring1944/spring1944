@@ -158,7 +158,7 @@ end
 
 function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
 	local ud = UnitDefs[unitDefID]
-	if ud.name == "flag" then
+	if ud.name == "flag" or ud.name == "buoy" then
 		local flagID = unitID
 		-- check if it was passed within an ally team (/take)
 		local oldAllyTeamID = select(6, Spring.GetTeamInfo(oldTeam))
