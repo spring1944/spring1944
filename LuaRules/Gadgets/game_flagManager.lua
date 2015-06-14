@@ -263,6 +263,8 @@ function PlaceFlag(spot, flagType, unitID)
 		-- Hide the flags after a 1 second (30 frame) delay so they are ghosted
 		GG.Delay.DelayCall(SetUnitAlwaysVisible, {newFlag, false}, 30)
 	end
+
+	return newFlag
 end
 
 
@@ -294,10 +296,7 @@ function gadget:Initialize()
 		flagTypeSpots[flagType] = spotTable
 	end
 
-	for _, flagType in pairs(flagTypes) do
-		GG[flagType .. "s"] = flags[flagType] -- nicer to have GG.flags rather than GG.flag
-	end
-
+	GG.flags = {}
 	for _, flagType in pairs(flagTypes) do
 		for i = 1, #flagTypeSpots[flagType] do
 			local sx, sz = flagTypeSpots[flagType][i].x, flagTypeSpots[flagType][i].z
@@ -305,7 +304,8 @@ function gadget:Initialize()
 			for _, unitID in pairs(units) do
 				local name = UnitDefs[GetUnitDefID(unitID)].name
 				if name == flagType then
-					PlaceFlag(flagTypeSpots[flagType][i], flagType, unitID)
+					local unitID = PlaceFlag(flagTypeSpots[flagType][i], flagType, unitID)
+					table.insert(GG.flags, unitID)
 					break
 				end
 			end

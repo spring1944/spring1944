@@ -36,7 +36,7 @@ local PI = math.pi
 local sin, cos = math.sin, math.cos
 
 -- constants
-local FLAG_DEF_ID          = UnitDefNames["flag"].id
+local CAPTURABLE_DEF_IDS = { UnitDefNames["flag"].id, UnitDefNames["buoy"].id }
 local FLAG_RADIUS          = 230 -- current flagkiller weapon radius, we may want to open this up to modoptions
 local FLAG_CAP_THRESHOLD  = 10 -- number of capping points needed for a flag to switch teams, again possibilities for modoptions
 
@@ -91,7 +91,15 @@ function widget:DrawWorldPreUnit()
 
   for i = 1, #teams do
     local teamID = teams[i]
-    local teamFlags = GetTeamUnitsByDefs(teamID, FLAG_DEF_ID)
+    local teamFlags = {}
+
+    for _, flagTypeDefID in pairs(CAPTURABLE_DEF_IDS) do
+      local flagTypeTeamUnits = GetTeamUnitsByDefs(teamID, flagTypeDefID)
+      for index, unitID in pairs(flagTypeTeamUnits) do
+        table.insert(teamFlags, unitID)
+      end
+    end
+
     if teamFlags then
       for j = 1, #teamFlags do
         unitID = teamFlags[j]

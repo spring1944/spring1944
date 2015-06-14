@@ -14,6 +14,8 @@ local Boat = Unit:New{ -- used for transports as is
 	turninplace			= false,
 
 	customparams = {
+		flagCapRate			= 2,
+		flagCapType			= 'buoy',
 		damageGroup			= 'ships',
 		dontCount			= 1,
 		hasturnbutton		= 1,
