@@ -1,4 +1,4 @@
-local ITA_Gabbiano = BoatMother:New{
+local ITA_Gabbiano = ArmedBoat:New{
 	name					= "Classe Gabbiano",
 	description				= "Corvette",
 	acceleration			= 0.15,
@@ -39,13 +39,13 @@ local ITA_Gabbiano = BoatMother:New{
 	},
 }
 
-local ITA_Gabbiano_Turret_100mm = BoatChild:New{
+local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
 	name					= "100mm Turret",
 	description				= "Primary Turret",
 	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
-		},
+			maxAngleDif			= 270,		},
 	},
 	customparams = {
 		maxammo					= 30,
@@ -56,7 +56,7 @@ local ITA_Gabbiano_Turret_100mm = BoatChild:New{
 	},
 }
 
-local ITA_Gabbiano_Turret_20mm = BoatChild:New{
+local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
 	name					= "20mm Turret",
 	description				= "AA Turret",
 	weapons = {	
@@ -77,11 +77,10 @@ local ITA_Gabbiano_Turret_20mm = BoatChild:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		fearlimit				= 25,
 	},
 }
 
-local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
+local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 	name					= "Twin 20mm Turret",
 	description				= "AA Turret",
 	weapons = {	
@@ -96,17 +95,6 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 			mainDir		= [[0 0 -1]],
 			slaveTo				= 1,
 		},
-		[3] = {
-			name				= "BredaM3520mmHE",
-			maxAngleDif			= 270,
-			mainDir		= [[0 0 -1]],
-		},
-		[4] = {
-			name				= "BredaM3520mmHE",
-			maxAngleDif			= 270,
-			mainDir		= [[0 0 -1]],
-			slaveTo				= 3,
-		},
 	},
 	customparams = {
 		maxammo					= 16, -- TODO: from BMO 37mm
@@ -115,7 +103,6 @@ local ITA_Gabbiano_Turret_Twin20mm = BoatChild:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
-		fearlimit				= 25,
 		facing					= 2,
 	},
 }

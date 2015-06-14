@@ -1,4 +1,4 @@
-local US_PT103 = BoatMother:New{
+local US_PT103 = ArmedBoat:New{
 	name					= "PT-103 Type",
 	description				= "Patrol Torpedo Boat",
 	acceleration			= 0.3,
@@ -33,7 +33,7 @@ local US_PT103 = BoatMother:New{
 }
 
 
-local US_PT103_Turret_Twin50 = BoatChild:New{
+local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 	name					= "Browning 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -54,7 +54,7 @@ local US_PT103_Turret_Twin50 = BoatChild:New{
 }
 
 
-local US_PT103_Turret_20mm = BoatChild:New{
+local US_PT103_Turret_20mm = OpenBoatTurret:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	weapons = {	
@@ -78,7 +78,7 @@ local US_PT103_Turret_20mm = BoatChild:New{
 	},
 }
 
-local US_PT103_Turret_Bofors = BoatChild:New{
+local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 	name					= "40mm Bofors Turret",
 	description				= "Primary Turret",
   	weapons = {	

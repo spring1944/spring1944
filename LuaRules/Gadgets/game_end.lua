@@ -125,8 +125,13 @@ local function CheckForVictory()
         end
     end
     if count < 2 then
-        EchoUIMessage(( (lastAllyTeam and ("Alliance " .. lastAllyTeam)) or "Nobody") .. " wins!")
-        spGameOver({lastAllyTeam})
+		EchoUIMessage(( (lastAllyTeam and ("Alliance " .. lastAllyTeam)) or "Nobody") .. " wins!")
+		if Spring.GetGameFrame() > 1 then
+			spGameOver({lastAllyTeam})
+		else
+			Spring.Echo("But it's only the first frame, so I think you don't want me to stop this game yet")
+			GG.RemoveGadget(gadget)
+		end
     end
 end
 
@@ -173,9 +178,13 @@ local function DestroyAlliance(allianceID)
             end
         elseif destroy_type == 'losecontrol' then   -- no orders can be issued to team
             EchoUIMessage("Game Over: Destroying alliance " .. allianceID)
-            for i=1,#teamList do
-                spKillTeam(teamList[i])
-            end
+			if Spring.GetGameFrame() > 1 then
+				for i=1,#teamList do
+					spKillTeam(teamList[i])
+				end
+			else
+				Spring.Echo("I don't feel like killing teams in the first frame of the game")
+			end
         end
     end
     CheckForVictory()
@@ -389,7 +398,7 @@ function gadget:GameFrame(n)
 			end
 		end
 		if activePlayers < 2 then
-			gadgetHandler:RemoveGadget()
+			GG.RemoveGadget(gadget)
 			return
 		end
     elseif (n % 45 == 0) then

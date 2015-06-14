@@ -1,4 +1,4 @@
-local RUS_BMO = BoatMother:New{
+local RUS_BMO = ArmedBoat:New{
 	name					= "BMO Class Subchaser",
 	description				= "Armoured light patrol ship",
 	acceleration			= 0.1,
@@ -30,7 +30,7 @@ local RUS_BMO = BoatMother:New{
 	},
 }
 
-local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
+local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multiple vessels
 	name					= "37mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSBMO_Turret_37mm.s3o",
@@ -51,7 +51,6 @@ local RUS_Turret_37mm_Front = BoatChild:New{ -- Used on multiple vessels
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
-		fearlimit				= 15, -- 3/4 enclosed
     },
 }
 local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
@@ -68,7 +67,7 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
     },
 }
 
-local RUS_BMO_Turret_DshKAA = BoatChild:New{
+local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
 	name					= "BMO DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -93,7 +92,7 @@ local RUS_BMO_Turret_DshKAA = BoatChild:New{
 	},
 }
 
-local RUS_BMO_Turret_Vickers = BoatChild:New{
+local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
 	name					= "BMO Vickers .50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -114,11 +113,10 @@ local RUS_BMO_Turret_Vickers = BoatChild:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
 		facing					= 2,
-		fearlimit				= 20,
 	},
 }
 
-local RUS_Turret_45mm_Front = BoatChild:New{ -- Used on multiple vessels
+local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
 	name					= "45mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSBMO_Turret_45mm.s3o",

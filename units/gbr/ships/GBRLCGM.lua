@@ -1,4 +1,4 @@
-local GBR_LCGM = BoatMother:New{
+local GBR_LCGM = ArmedBoat:New{
 	name					= "LCG(M)",
 	description				= "Landing Craft Gun (Medium)",
 	acceleration			= 0.001,
@@ -29,7 +29,7 @@ local GBR_LCGM = BoatMother:New{
 	},
 }
 
-local GBR_LCGM_Turret_25pdr_Left = BoatChild:New{
+local GBR_LCGM_Turret_25pdr_Left = OpenBoatTurret:New{
 	name					= "25Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/GBRLCGM_Turret_25pdr.s3o",

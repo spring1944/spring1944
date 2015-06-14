@@ -1,4 +1,4 @@
-local US_LCSL = BoatMother:New{
+local US_LCSL = ArmedBoat:New{
 	name					= "LCS(L) Mk. 3",
 	description				= "Landing Craft Support (Large)",
 	acceleration			= 0.075,
@@ -35,7 +35,7 @@ local US_LCSL = BoatMother:New{
 }
 
 
-local US_LCSL_Turret_TwinBofors_Front = BoatChild:New{
+local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
 	name					= "40mm Twin Bofors Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/USLCSL_Turret_TwinBofors.s3o",
@@ -99,11 +99,12 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 	},
 }
 
-local US_SC_Turret_76mm = BoatChild:New{
+local US_SC_Turret_76mm = OpenBoatTurret:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
   	weapons = {	
 		[1] = {
+			maxAngleDif			= 270,
 			name				= "mk223in50",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},

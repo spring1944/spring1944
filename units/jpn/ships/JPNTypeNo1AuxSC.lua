@@ -1,4 +1,4 @@
-local JPN_TypeNo1AuxSC = BoatMother:New{
+local JPN_TypeNo1AuxSC = ArmedBoat:New{
 	name					= "Type No.1 Class Auxiliary Subchaser",
 	description				= "Patrol boat",
 	acceleration			= 0.3,
@@ -28,7 +28,7 @@ local JPN_TypeNo1AuxSC = BoatMother:New{
 	},
 }
 
-local JPN_SC_Turret_25mm_Front = BoatChild:New{
+local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 	name					= "SC 25mm Turret",
 	description				= "AA Turret",
 	objectName				= "<SIDE>/JPNTypeNo1AuxSC_turret_25mm.s3o",
@@ -49,7 +49,6 @@ local JPN_SC_Turret_25mm_Front = BoatChild:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
-		fearlimit				= 25,
     },
 }
 

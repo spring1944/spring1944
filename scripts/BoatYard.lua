@@ -1,5 +1,4 @@
 include "Yard.lua"
-Spring.Echo("bla")
 local crane = piece "crane"
 local crane2 = piece "crane2"
 local turret = piece "turret"

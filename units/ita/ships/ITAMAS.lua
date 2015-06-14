@@ -1,4 +1,4 @@
-local ITA_MAS = BoatMother:New{
+local ITA_MAS = ArmedBoat:New{
 	name					= "MAS 500 type",
 	description				= "Motor Torpedo boat",
 	acceleration			= 0.3,

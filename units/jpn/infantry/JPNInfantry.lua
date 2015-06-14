@@ -66,7 +66,7 @@ local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 	name				= "Type 3 AT Grenade",
 	weapons = {
 		[1] = { -- AT Launcher
-			name				= "Type4AT",
+			name				= "Type3AT",
 		},
 	},
 }

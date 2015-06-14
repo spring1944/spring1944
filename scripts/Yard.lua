@@ -76,7 +76,7 @@ if UnitDef.isBuilder then -- yard
 		if UnitDef.customParams.separatebuildspot then
 			local buildDef = UnitDefs[buildDefID]
 			if buildDef and buildDef.customParams.buildoutside then
-				Move(pad, x_axis, 50)
+				Move(pad, x_axis, 60)
 			else
 				Move(pad, x_axis, 0)
 			end

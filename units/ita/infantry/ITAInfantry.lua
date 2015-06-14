@@ -78,6 +78,15 @@ local ITA_SoloAT = ATRifleInf:New(ITAInf):New{
 	},
 }
 
+local ITA_PanzerFaust = ATLauncherInf:New(ITAInf):New{
+	name				= "Panzerfaust 60",
+	weapons = {
+		[1] = { -- AT Launcher
+			name				= "Panzerfaust",
+		},
+	},
+}
+
 local ITA_Mortar = MedMortarInf:New(ITAInf):New{
 	name				= "81/14 Mortar",
 	weapons = {
@@ -209,6 +218,7 @@ return lowerkeys({
 	["ITAMG"] = ITA_MG,
 	["ITASniper"] = ITA_Sniper,
 	["ITASoloAT"] = ITA_SoloAT,
+	["ITAPanzerFaust"] = ITA_PanzerFaust,
 	["ITAMortar"] = ITA_Mortar,
 	["ITAObserv"] = ITA_Observ,
 	-- Bersaglieri

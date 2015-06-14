@@ -63,12 +63,24 @@ end
 --]]
 local function updateShipVisibility(shipUnitID, shipAllyTeamID)
     local shipX, shipY, shipZ = GetUnitPosition(shipUnitID)
+	local turrets = GG.boatMothers[shipUnitID]
+
     for _, viewingAllyTeamID in ipairs(GetAllyTeamList()) do
         if viewingAllyTeamID ~= shipAllyTeamID then
             if IsPosInAirLos(shipX, shipY, shipZ, viewingAllyTeamID) then
                 showUnitToAllyTeam(shipUnitID, viewingAllyTeamID)
+				if turrets then
+					for _, turretUnitID in ipairs(turrets) do
+						showUnitToAllyTeam(turretUnitID, viewingAllyTeamID)
+					end
+				end
             else
                 hideUnitFromAllyTeam(shipUnitID, viewingAllyTeamID)
+				if turrets then
+					for _, turretUnitID in ipairs(turrets) do
+						hideUnitFromAllyTeam(turretUnitID, viewingAllyTeamID)
+					end
+				end
             end
         end
     end
@@ -91,16 +103,18 @@ function gadget:UnitDestroyed(unitID, unitDefID)
 end
 
 function gadget:UnitEnteredRadar(unitID, unitTeam, allyTeam, unitDefID)
-	--Spring.Echo(UnitDefs[unitDefID].name .. " entered radar " .. allyTeam)
-    if not ships[unitID] then
-        inRadarUnits[allyTeam][unitID] = true
-        outRadarUnits[allyTeam][unitID] = nil
-    end
+	local ud = UnitDefs[unitDefID]
+	local boatTurret = ud.customParams and ud.customParams.child
+	if not ships[unitID] and not boatTurret then
+		inRadarUnits[allyTeam][unitID] = true
+		outRadarUnits[allyTeam][unitID] = nil
+	end
 end
 
 function gadget:UnitLeftRadar(unitID, unitTeam, allyTeam, unitDefID)
-	--Spring.Echo(UnitDefs[unitDefID].name .. " left radar" .. allyTeam)
-    if not ships[unitID] then
+    local ud = UnitDefs[unitDefID]
+	local boatTurret = ud.customParams and ud.customParams.child
+    if not ships[unitID] and not boatTurret then
         outRadarUnits[allyTeam][unitID] = true
         inRadarUnits[allyTeam][unitID] = nil
     end

@@ -1,4 +1,4 @@
-local RUS_G5 = BoatMother:New{
+local RUS_G5 = ArmedBoat:New{
 	name					= "G-5 torpedo boat with M-8 rocket launcher",
 	description				= "Rocket artillery boat",
 	acceleration			= 0.1,
@@ -27,7 +27,7 @@ local RUS_G5 = BoatMother:New{
 	},
 }
 
-local RUS_G5_Turret_M_8 = BoatChild:New{
+local RUS_G5_Turret_M_8 = OpenBoatTurret:New{
 	name					= "M-8 Turret",
 	description				= "Rocket Launcher",
   	weapons = {	
@@ -44,7 +44,7 @@ local RUS_G5_Turret_M_8 = BoatChild:New{
     },
 }
 
-local RUS_G5_Turret_DshK = BoatChild:New{
+local RUS_G5_Turret_DshK = OpenBoatTurret:New{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
