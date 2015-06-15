@@ -8,6 +8,9 @@ local USPara = {
 
 local US_HQEngineer = EngineerInf:New(USInf):New{
 	name				= "Field Engineer",
+	canAssist			= true,
+	canReclaim			= true,
+	canRepair			= true,
 }
 
 local US_Rifle = RifleInf:New(USInf):New{
@@ -120,6 +123,7 @@ local US_Paratrooper = Infantry:New{
 return lowerkeys({
 	-- Regular Inf
 	["USHQEngineer"] = US_HQEngineer,
+	["USHQAIEngineer"] = US_HQEngineer:Clone("USHQEngineer"),
 	["USRifle"] = US_Rifle,
 	["USThompson"] = US_Thompson,
 	["USBAR"] = US_BAR,
