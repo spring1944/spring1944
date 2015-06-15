@@ -4,9 +4,6 @@ local GERInf = {
 
 local GER_HQEngineer = EngineerInf:New(GERInf):New{
 	name				= "Feldpionier",
-	canAssist			= true,
-	canReclaim			= true,
-	canRepair			= true,
 }
 
 local GER_Rifle = RifleInf:New(GERInf):New{

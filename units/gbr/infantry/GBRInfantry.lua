@@ -4,9 +4,6 @@ local GBRInf = {
 
 local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
 	name				= "Sapper",
-	canAssist			= true,
-	canReclaim			= true,
-	canRepair			= true,
 }
 
 local GBR_Rifle = RifleInf:New(GBRInf):New{

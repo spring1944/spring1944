@@ -8,9 +8,6 @@ local USPara = {
 
 local US_HQEngineer = EngineerInf:New(USInf):New{
 	name				= "Field Engineer",
-	canAssist			= true,
-	canReclaim			= true,
-	canRepair			= true,
 }
 
 local US_Rifle = RifleInf:New(USInf):New{
