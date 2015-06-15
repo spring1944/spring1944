@@ -41,24 +41,6 @@ gadget.unitBuildOrder = UnitBag{
 		"gbrcromwell", "gbrcromwellmkvi",
 		"gbraecmkii",
 	},
-	gbrtankyard1 = UnitArray{
-		-- Works J
-		"gbrcromwell", 
-		"gbrshermanfirefly",
-	},
-	gbrtankyard2 = UnitArray{
-		-- Works J
-		"gbrcromwell", 
-		"gbrchurchillmkvii",
-	},
-	gbrspyard = UnitArray{
-		-- Works J
-		"gbrsexton",
-	},
-	gbrspyard1 = UnitArray{
-		-- Works J
-		"gbrma10achilles",
-	},
 	-- Russia
 	rusbarracks = UnitArray{
 		"rus_platoon_rifle",
@@ -133,29 +115,6 @@ gadget.unitBuildOrder = UnitBag{
 		"gerstugiii", "gerstugiii", "gerstugiii",
 		"gertiger",
 	},
-	gertankyard1 = UnitArray{
-		-- Works J
-		"gerpanzeriii", 
-		"gerpanzeriv",
-		"gerstugiii",
-		"gerpanther",
-	},
-	gertankyard2 = UnitArray{
-		-- Works J
-		"gerpanzeriii", 
-		"gerpanzeriv",
-		"gerstugiii",
-		"gertigerii",
-	},
-	gerspyard = UnitArray{
-		-- Works J
-		"gerwespe",
-	},
-	gerspyard1 = UnitArray{
-		-- Works J
-		"gerjagdpanzeriv",
-    	"gerjagdpanther",
-	},
 	-- United States
 	ushq = UnitArray{
 		-- Works J
@@ -190,20 +149,6 @@ gadget.unitBuildOrder = UnitBag{
 		-- Works J
 		"usm5stuart",
 		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
-		"usm10wolverine",
-	},
-	usspyard = UnitArray{
-		-- Works J
-		"usm7priest",
-	},
-	ustankyard1 = UnitArray{
-		-- Works J
-		"usm4a376sherman", "usm4a3105sherman",
-		"usm10wolverine",
-	},
-	ustankyard2 = UnitArray{
-		-- Works J
-		"usm4jumbo", "usm4a3105sherman",
 		"usm10wolverine",
 	},
 		-- ITALY
@@ -325,10 +270,6 @@ gadget.baseBuildOrder = {
 		--"gbrgunyard",
 		"gbrtankyard",
 		"gbrsupplydepot",
-		"gbrspyard",
-		"gbrtankyard1",
-		"gbrspyard1",
-		"gbrtankyard2",
 	},
 	rus = UnitArray{
 		-- TODO: add veh / tanks / towed guns (if rus has packed howitzers) Russia will be the "expert"
@@ -346,10 +287,6 @@ gadget.baseBuildOrder = {
 		"gerstorage", "gerstorage",
 		"gertankyard",
 		"gersupplydepot",
-		"gerspyard",
-		"gertankyard1",
-		"gerspyard1",
-		"gertankyard2",
 	},
 	us = UnitArray{
 		-- Works J
@@ -358,9 +295,6 @@ gadget.baseBuildOrder = {
 		"usstorage", "usstorage",
 		"ustankyard",
 		"ussupplydepot",
-		"usspyard",
-		"ustankyard1",
-		"ustankyard2",
 	},
 		ita = UnitArray{
 		-- Works J
@@ -387,16 +321,13 @@ gadget.baseBuildOrder = {
 -- This lists all the units (of all sides) that are considered "base builders"
 gadget.baseBuilders = UnitSet{
 	"gbrhqengineer",
-	"gbrhqaiengineer",
 	"gbrmatadorengvehicle",
 	"gerhqengineer",
-	"gerhqaiengineer",
 	"gersdkfz9",
-	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building... #This WAS true in previous versions
+	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building...
 	"rusengineer",
 	"rusk31",
 	"ushqengineer",
-	"ushqaiengineer",
 	"usgmcengvehicle",
 	"itahqengineer",
 	"itaengineer", 

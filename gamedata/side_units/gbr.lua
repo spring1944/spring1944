@@ -29,25 +29,6 @@ local gbrunits = {
 	--"pontoonbridge",
   },
 
-  gbrhqaiengineer =
-  {
-    "gbrbarracks",
-    "gbrvehicleyard",
-    "gbrgunyard",
-    "gbrradar",
-    "gbrstorage",
-    "gbratminesign",
-    "gbrapminesign",
-    "gbrtankobstacle",
-    "gbrspyard",
-    "gbrspyard1",
-    "gbrtankyard1",
-    "gbrtankyard2",
-    "gbrassaultboat",
-    "gbrpontoonraft",
-  --"pontoonbridge",
-  },
-
   gbrbarracks =
   {
     "gbrhqengineer",
@@ -80,7 +61,7 @@ local gbrunits = {
     "gbr17pdr_truck",
     "gbr25pdr_truck",
     "gbrbofors_truck",
-    "gbrstaghound",
+	"gbrstaghound",
     "gbrsexton",
   },
   
@@ -128,7 +109,7 @@ local gbrunits = {
     "gbrmatadorengvehicle",
     "gbrbedfordtruck",
     "gbrm5halftrack",
-    "gbrstaghound",
+	"gbrstaghound",
     "gbrdaimler",
     "gbrkangaroo",
     "gbrwasp",

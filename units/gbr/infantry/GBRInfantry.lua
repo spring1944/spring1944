@@ -4,9 +4,6 @@ local GBRInf = {
 
 local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
 	name				= "Sapper",
-	canAssist			= true,
-	canReclaim			= true,
-	canRepair			= true,
 }
 
 local GBR_Rifle = RifleInf:New(GBRInf):New{
@@ -130,7 +127,6 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["GBRHQEngineer"] = GBR_HQEngineer,
-	["GBRHQAIEngineer"] = GBR_HQEngineer:Clone("GBRHQEngineer"),
 	["GBRRifle"] = GBR_Rifle,
 	["GBRSTEN"] = GBR_STEN,
 	["GBRBREN"] = GBR_BREN,
