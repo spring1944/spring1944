@@ -12,6 +12,7 @@ end
 
 -- Unsynced Ctrl
 local SetUnitNoDraw			= Spring.SetUnitNoDraw
+local SetUnitNoSelect		= Spring.SetUnitNoSelect
 -- Synced Read
 local GetUnitDefID			= Spring.GetUnitDefID
 local GetUnitPosition		= Spring.GetUnitPosition
@@ -49,6 +50,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
 	elseif cp.child then
+		SetUnitNoSelect(unitID, true)
 		childCache[unitID] = true
 		local toRemove = {CMD.MOVE_STATE, CMD.MOVE}
 		for _, cmdID in pairs(toRemove) do
