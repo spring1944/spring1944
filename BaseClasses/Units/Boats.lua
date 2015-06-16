@@ -14,8 +14,6 @@ local Boat = Unit:New{ -- used for transports as is
 	turninplace			= false,
 
 	customparams = {
-		flagCapRate			= 2,
-		flagCapType			= 'buoy',
 		damageGroup			= 'ships',
 		dontCount			= 1,
 		hasturnbutton		= 1,
@@ -36,7 +34,12 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	}
 }
 
-local ArmedBoat = BoatMother:New{ }
+local ArmedBoat = BoatMother:New{
+	customparams = {
+		flagCapRate			= 2,
+		flagCapType			= 'buoy',
+	}
+}
 
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
