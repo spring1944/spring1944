@@ -1,6 +1,8 @@
 local unitDefID = Spring.GetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
 local GetUnitHealth = Spring.GetUnitHealth
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
 unitDefID = Spring.GetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
@@ -108,6 +110,7 @@ function script.Create()
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
 		Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
 		Hide(childrenPieces[i])
+		SetUnitNoSelect(childID, true)
 	end
 	StartThread(DamageSmoke)
 	StartThread(FlagFlap)

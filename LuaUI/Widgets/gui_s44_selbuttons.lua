@@ -107,12 +107,16 @@ local function SortedUnits()
 	local typeCount = 0
 	for _,uid in ipairs(units) do
 		local udid = spGetUnitDefID(uid)
+		local ud = UnitDefs[udid]
 		if (udid) then
-			if (typed[udid] == nil) then
-				typed[udid] = 1
-				typeCount = typeCount + 1
-			else
-				typed[udid] = typed[udid] + 1
+			local shipTurret = ud.customParams and ud.customParams.child
+			if not shipTurret then
+				if (typed[udid] == nil) then
+					typed[udid] = 1
+					typeCount = typeCount + 1
+				else
+					typed[udid] = typed[udid] + 1
+				end
 			end
 		end
 	end
