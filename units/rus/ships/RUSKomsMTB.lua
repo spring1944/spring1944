@@ -18,23 +18,16 @@ local RUS_KomsMTB = ArmedBoat:New{
 	turnRate				= 350,	
 	weapons = {	
 		[1] = {
-			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
-			maxAngleDif			= 40,
+			name				= "dshk",
+			onlyTargetCategory	= "INFANTRY SOFTVEH AIR OPENVEH TURRET",
+			mainDir				= [[0 0 -1]],
+			maxAngleDif			= 270,
 		},
 	},
 	customparams = {
 		soundCategory			= "RUS/Boat",
 		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
 		killvoicephasecount		= 3,
-	    maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"RUS_KomsMTB_Turret_DShK", 
 			"RUS_KomsMTB_Turret_DShK", 

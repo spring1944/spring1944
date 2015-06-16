@@ -16,23 +16,15 @@ local GER_SBoot = ArmedBoat:New{
 	objectName				= "GERSboot.s3o",
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 205,	
-	weapons = {	
+	weapons = {
 		[1] = {
-			name				= "RUS533mmTorpedo", -- TODO: Bring back G7a Torpedo
-			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
-			maxAngleDif			= 40,
+			name				= "flak3820mmhe",
+			maxAngleDif			= 30,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
 		soundcategory = "GER/Boat",
-	    maxammo				= 4,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"GER_SBoot_Turret_20mm_Front",
 			"GER_SBoot_Turret_20mm_Rear",

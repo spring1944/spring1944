@@ -18,23 +18,13 @@ local ITA_Gabbiano = ArmedBoat:New{
 	turnRate				= 25,	
 	weapons = {	
 		[1] = {
-			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
-			mainDir				= [[1 0 1]],
-			maxAngleDif			= 90,
-		},
-		[2] = {
-			name				= "ita450mmtorpedo",
-			onlyTargetCategory	= "LARGESHIP",
-			mainDir				= [[-1 0 1]],
-			maxAngleDif			= 90,
+			name				= "OTO100mmL47HE",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
 		soundcategory		= "ITA/Boat",
-		maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"ITA_Gabbiano_Turret_100mm", 
 			"ITA_Gabbiano_Turret_20mm", 

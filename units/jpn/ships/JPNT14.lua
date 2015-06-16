@@ -18,21 +18,12 @@ local JPNT14 = ArmedBoat:New{
 	turnRate				= 205,	
 	weapons = {	
 		[1] = {
-			name				= "RUS533mmTorpedo", -- TODO: a japanese torpedo
-			onlyTargetCategory	= "LARGESHIP", -- TODO: make sure (only) LCT and Gabi (LCGM? LCSL3? MAL?) are LARGESHIP
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "RUS533mmTorpedo",
-			onlyTargetCategory	= "LARGESHIP",
-			maxAngleDif			= 40,
+			name				= "Type9625mmHE",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
 		soundcategory = "JPN/Boat",
-	    maxammo				= 2,
-		weaponcost			= 40,
-		weaponswithammo		= 2,
 		children = {
 			"JPNT14_Turret_25mm",
 		},
