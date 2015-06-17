@@ -38,7 +38,10 @@ local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+		weaponcost				= 6,
+		weaponswithammo			= 1,
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,
@@ -63,7 +66,10 @@ local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,

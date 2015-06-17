@@ -56,7 +56,7 @@ local RUS_Pr161_Turret_DshK = OpenBoatTurret:New{
 local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 	name					= "85mm Turret",
 	description				= "Primary Turret",
-	objectName				= "<SIDE>/RUSPr161_Turret_85mm.s3o",
+	objectName				= "RUSBKA1125_76mm.s3o", -- temp hack to avoid clipping
   	weapons = {	
 		[1] = {
 			name				= "S5385mmHE",
@@ -64,7 +64,10 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 22,
+		maxammo					= 16,
+		weaponcost				= 17,
+		weaponswithammo			= 1,
+
 		barrelrecoildist		= 7.5,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

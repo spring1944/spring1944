@@ -11,19 +11,15 @@ local GER_SBoot = ArmedBoat:New{
 	maxVelocity				= 6.01,
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 205,	
-	weapons = {	
+	weapons = {
 		[1] = {
-			name				= "RUS533mmTorpedo",
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "RUS533mmTorpedo",
-			maxAngleDif			= 40,
+			name				= "flak3820mmhe",
+			maxAngleDif			= 30,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
 		soundcategory = "GER/Boat",
-	    maxammo				= 4,
 		children = {
 			"GER_SBoot_Turret_20mm_Front",
 			"GER_SBoot_Turret_20mm_Rear",
@@ -49,7 +45,10 @@ local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,

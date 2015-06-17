@@ -15,16 +15,12 @@ local JPNT14 = ArmedBoat:New{
 	turnRate				= 205,	
 	weapons = {	
 		[1] = {
-			name				= "RUS533mmTorpedo", -- TODO: a japanese torpedo
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "RUS533mmTorpedo",
-			maxAngleDif			= 40,
+			name				= "Type9625mmHE",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
-	    maxammo				= 2,
+		soundcategory = "JPN/Boat",
 		children = {
 			"JPNT14_Turret_25mm",
 		},
@@ -46,7 +42,10 @@ local JPNT14_Turret_25mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,

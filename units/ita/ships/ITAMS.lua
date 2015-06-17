@@ -12,16 +12,13 @@ local ITA_MS = ArmedBoat:New{
 	turnRate				= 55,	
 	weapons = {	
 		[1] = {
-			name				= "ita450mmtorpedo",
-			maxAngleDif			= 40,
-		},
-		[2] = {
-			name				= "ita450mmtorpedo",
-			maxAngleDif			= 40,
+			name				= "BredaM3520mmHE",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {
-		maxammo				= 2,
+		soundcategory		= "ITA/Boat",
 		children = {
 			"ITAMS_Turret_20mm_Front", 
 			"ITAMS_Turret_20mm_Rear", 
@@ -47,7 +44,10 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		aaweapon				= 1,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,

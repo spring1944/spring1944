@@ -11,7 +11,7 @@ function widget:GetInfo()
     date      = "Sep 2011",
     license   = "Public Domain",
     layer     = 9999,
-    enabled   = true                        --loaded by default?
+    enabled   = false                        --loaded by default?
   }
 end
 

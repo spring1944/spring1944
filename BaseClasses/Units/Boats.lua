@@ -113,7 +113,12 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	}
 }
 
-local ArmedBoat = BoatMother:New{ }
+local ArmedBoat = BoatMother:New{
+	customparams = {
+		flagCapRate			= 2,
+		flagCapType			= 'buoy',
+	}
+}
 
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
@@ -124,7 +129,6 @@ local BoatChild = Boat:New{ -- a boat turret
 	footprintX					= 1,
 	footprintZ					= 1,
 	iconType					= "turret",
-	idleAutoHeal				= 1,
 	mass						= 10,
 	maxDamage					= 1000,
 	maxVelocity					= 1,

@@ -189,7 +189,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		end
 		return 0
 	end
-	
+		
 	if not unitInfo or not weaponInfo or not weaponDef then return damage end
 	--- count how many turret and base hits we get
 	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
@@ -204,14 +204,20 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	
 	local d
 	local dotFront, dotUp
-	local dx, dy, dz = Spring.GetProjectileVelocity(projectileID)
-	
-	local ux, uy, uz = GetUnitPosition(unitID)
-	local ax, ay, az = unpack(ownerPos[attackerID])
-	dx, dy, dz = ax - ux, ay - uy, az - uz
-	dx, dy, dz, d = vNormalized(dx, dy, dz)
-	dotUp = dx * upDir[1] + dy * upDir[2] + dz * upDir[3]
-	dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+	if ownerPos[attackerID] then
+		local ux, uy, uz = GetUnitPosition(unitID)
+		local ax, ay, az = unpack(ownerPos[attackerID])
+		local dx, dy, dz = Spring.GetProjectileVelocity(projectileID)
+		dx, dy, dz = ax - ux, ay - uy, az - uz
+		dx, dy, dz, d = vNormalized(dx, dy, dz)
+		dotUp = dx * upDir[1] + dy * upDir[2] + dz * upDir[3]
+		dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+	else
+		--finagle something for explosions with no projectile
+		dotUp = 0
+		dotFront = 1
+		d = 500
+	end
 	
 	--discrete arcs
 	--splash hits don't use armor_hit_side
@@ -260,7 +266,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 end
 
 function gadget:ProjectileCreated(projID, ownerID, weaponID)
-	if weaponInfos[weaponID] then
+	if weaponInfos[weaponID] and ownerID then
 		ownerPos[ownerID] = {GetUnitPosition(ownerID)}
 	end
 end
@@ -270,7 +276,7 @@ local function ForgetOwner(ownerID)
 end
 
 function gadget:Explosion(weaponID, px, py, pz, ownerID)
-	if weaponInfos[weaponID] then
+	if weaponInfos[weaponID] and ownerID then
 		GG.Delay.DelayCall(ForgetOwner, {ownerID}, 1)
 	end
 end

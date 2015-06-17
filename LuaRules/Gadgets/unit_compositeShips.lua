@@ -17,6 +17,7 @@ local GetUnitDefID			= Spring.GetUnitDefID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitTransporter	= Spring.GetUnitTransporter
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
+local ValidUnitID			= Spring.ValidUnitID
 -- Synced Ctrl
 local GiveOrderToUnit		= Spring.GiveOrderToUnit
 local AddUnitDamage			= Spring.AddUnitDamage
@@ -112,7 +113,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 			-- if one turret happens to damage another (disabled) one on the same ship,
 			-- don't try to target oneself
 			if attackerID ~= mother then
-				Spring.SetUnitTarget(attackerID, mother, false, true)
+				if ValidUnitID(attackerID) and ValidUnitID(mother) then
+					Spring.SetUnitTarget(attackerID, mother, false, true)
+				end
 			end
 		end
 		return newDamage
