@@ -45,7 +45,6 @@ local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
 	customparams = {
 		maxammo					= 12,
 		weaponcost				= 12,
-		weaponswithammo			= 1,
 
 		barrelrecoildist		= 5,
 		barrelrecoilspeed		= 10,

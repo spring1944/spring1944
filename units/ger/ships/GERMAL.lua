@@ -43,7 +43,6 @@ local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
 	customparams = {
 		maxammo					= 18,
 		weaponcost				= 20,
-		weaponswithammo			= 1,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 5,
@@ -98,7 +97,6 @@ local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 14,
 		weaponcost				= 4,
-		weaponswithammo			= 8,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
@@ -124,7 +122,6 @@ local GER_MAL_Turret_37mm = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 14,
 		weaponcost				= 6,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,

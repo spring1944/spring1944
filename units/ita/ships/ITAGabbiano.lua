@@ -45,7 +45,6 @@ local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 18,
 		weaponcost				= 18,
-		weaponswithammo			= 1,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
@@ -71,7 +70,6 @@ local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 14,
 		weaponcost				= 4,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
@@ -100,7 +98,6 @@ local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 14,
 		weaponcost				= 4,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,

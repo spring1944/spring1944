@@ -88,7 +88,6 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 	customparams = {
 		maxammo					= 10,
 		weaponcost				= 10,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
@@ -118,7 +117,6 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 	customparams = {
 		maxammo					= 14,
 		weaponcost				= 4,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
