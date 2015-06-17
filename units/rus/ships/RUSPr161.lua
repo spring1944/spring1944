@@ -65,7 +65,6 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 16,
-		weaponcost				= 17,
 
 		barrelrecoildist		= 7.5,
 		barrelrecoilspeed		= 10,

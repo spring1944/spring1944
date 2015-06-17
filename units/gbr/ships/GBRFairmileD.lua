@@ -72,7 +72,6 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 10,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
@@ -148,7 +147,6 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 4,
 
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,

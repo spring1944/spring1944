@@ -45,7 +45,6 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 4,
 
 		aaweapon				= 1,
 		barrelrecoildist		= 4,

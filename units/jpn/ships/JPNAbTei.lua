@@ -47,7 +47,6 @@ local JPN_AbTei_Turret_57mm_Front = EnclosedBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 8,
 
 		barrelrecoildist		= 5,
 		barrelrecoilspeed		= 10,

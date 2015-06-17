@@ -46,7 +46,6 @@ local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 4,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,

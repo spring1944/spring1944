@@ -44,7 +44,6 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 4,
 
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,

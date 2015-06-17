@@ -52,7 +52,6 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 4,
 
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
@@ -103,7 +102,6 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 12,
-		weaponcost				= 12,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,

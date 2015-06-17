@@ -10,6 +10,9 @@ local Bofors40mm = AntiAirGun:New{
   damage = {
     default            = 275,
   },
+  customparams = {
+    weaponcost = 2,
+  },
 }
 local Bofors40mmAA = Bofors40mm:New(AntiAirGunAA, true):New{
   range              = 2025,
@@ -37,6 +40,9 @@ local FlaK4337mm = AntiAirGun:New{
   damage = {
     default            = 162, -- guesstimate, can't get zergs formulas to match up
   },
+  customparams = {
+    weaponcost = 2,
+  },
 }
 local FlaK4337mmAA = FlaK4337mm:New(AntiAirGunAA, true):New{
   range              = 2025,
@@ -54,6 +60,9 @@ local M1939_61K37mm = AntiAirGun:New{
   weaponVelocity     = 1760,
   damage = {
     default            = 182,
+  },
+  customparams = {
+    weaponcost = 1,
   },
 }
 local M1939_61K37mmAA = M1939_61K37mm:New(AntiAirGunAA, true):New{

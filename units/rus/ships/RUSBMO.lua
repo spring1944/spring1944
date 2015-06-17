@@ -46,7 +46,6 @@ local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multip
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 6,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
@@ -130,7 +129,6 @@ local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
 	},
 	customparams = {
 		maxammo					= 16,
-		weaponcost				= 8,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
