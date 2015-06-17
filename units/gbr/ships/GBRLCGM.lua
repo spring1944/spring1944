@@ -10,9 +10,10 @@ local GBR_LCGM = ArmedBoat:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 32,	
-	weapons = {	
-		[1] = { -- give primary weapon for ranging name				= "qf25pdrhe",
+	turnRate				= 32,
+	weapons = {
+		[1] = {
+			name				= "qf25pdrhe",
 		},
 	},
 	customparams = {

@@ -84,7 +84,7 @@ local function BackwardCompability(wdName,wd)
 		end
 	end
 
-	-- 
+	--
 	if (tobool(wd.ballistic) or tobool(wd.dropped)) then
 		wd.gravityaffected = true
 		wd.myGravity = GRAVITY / 900 -- in maps it's in elmos/square second, in weapon it's in elmos/square simframe
@@ -193,17 +193,17 @@ local damageTypes = VFS.Include("gamedata/damagedefs.lua")
 local function CopyCategories(ud)
 	local weapons = ud.weapons
 	local weaponsWithAmmo = (ud.customparams and ud.customparams.weaponswithammo and tonumber(ud.customparams.weaponswithammo)) or 0
-	
+
 	local removeCategories
 	if ud.customparams and ud.customparams.weapontoggle == "priorityAPHE" then
 		removeCategories = 2
 	elseif ud.customparams and ud.customparams.weapontoggle == "priorityAPHEATHE" then
 		removeCategories = 3
 	end
-	
+
 	local categoriesToRemove
 	for weaponID, weapon in pairs(weapons) do --weaponID = 1, #weapons do -- TODO: move this loop into a function
-		local targetCat = categoryCache[string.lower(weapon.name)]
+		local targetCat = categoryCache[string.lower(weapon.name or 'NIL WEAPON NAME')]
 		if targetCat then
 			local only = targetCat.only
 			local bad = targetCat.bad
@@ -225,7 +225,7 @@ local function CopyCategories(ud)
 					end
 				end
 			end
-			
+
 			--Spring.Echo("Replacing " .. unitName .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with:", targetCat.only, "BadTargetCategory with:", targetCat.bad)
 			ud.weapons[weaponID].onlytargetcategory = only
 			if bad and not ud.weapons[weaponID].badtargetcategory then -- don't overwrite
@@ -233,6 +233,8 @@ local function CopyCategories(ud)
 			elseif bad then
 				ud.weapons[weaponID].badtargetcategory = ud.weapons[weaponID].badtargetcategory .. " " .. bad
 			end
+		else
+			Spring.Echo('ERROR: ' .. ud.name .. ' weapon number ' .. weaponID .. ' does not exist in the category cache -- it is probably invalid')
 		end
 	end
 end
@@ -276,7 +278,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 	if weaponDef.damage then
 		local damage = weaponDef.damage
 		local defaultDamage = damage["default"]
-		
+
 		if defaultDamage and tonumber(defaultDamage) > 0 then
 			local damageType = "default"
 			if weaponDef.customparams and weaponDef.customparams.damagetype then
@@ -308,22 +310,25 @@ for unitName, ud in pairs(UnitDefs) do
 			table.insert(ud.sfxtypes.explosiongenerators, 1, "custom:nothing")
 			local weaponsWithAmmo = 0
 			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
-				local weapName = string.lower(weapons[weaponID].name)
-				if not WeaponDefNames[weapName] then Spring.Echo("ERROR: weapondefs_post.lua non-existant weapon name (" .. ud.name .. ", " .. weapName .. ")") end
-				local cegFlare = cegCache[weapName]
-				local weaponCost = (weapCostCache[weapName] or -2) * (WeaponDefNames[weapName].burst or 1)
-				if cegFlare then
-					--Spring.Echo("cegFlare: " .. cegFlare)
-					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
-				end
-				if weaponCost > -2 then -- some have a special case of -1
-					weaponsWithAmmo = weaponsWithAmmo + 1 
-					--Spring.Echo(unitName, weapName, weaponCost)
-					local curCost = ud.customparams.weaponcost or weaponCost
-					if curCost ~= weaponCost then
-						Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
+				local weapName = string.lower(weapons[weaponID].name or 'NIL WEAPON NAME')
+				if not WeaponDefNames[weapName] then
+					Spring.Echo("ERROR: weapondefs_post.lua non-existent weapon name (" .. ud.name .. ", " .. weapName .. ": weapon number: " .. weaponID ..")")
+				else
+					local cegFlare = cegCache[weapName]
+					local weaponCost = (weapCostCache[weapName] or -2) * (WeaponDefNames[weapName].burst or 1)
+					if cegFlare then
+						--Spring.Echo("cegFlare: " .. cegFlare)
+						table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 					end
-					ud.customparams.weaponcost = math.max(curCost, weaponCost)
+					if weaponCost > -2 then -- some have a special case of -1
+						weaponsWithAmmo = weaponsWithAmmo + 1
+						--Spring.Echo(unitName, weapName, weaponCost)
+						local curCost = ud.customparams.weaponcost or weaponCost
+						if curCost ~= weaponCost then
+							Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
+						end
+						ud.customparams.weaponcost = math.max(curCost, weaponCost)
+					end
 				end
 			end
 			ud.customparams.weaponswithammo = weaponsWithAmmo
@@ -332,7 +337,7 @@ for unitName, ud in pairs(UnitDefs) do
 	end
 end
 
--- FIXME: This is a bit icky; weapondefs_post sets unitdef customparam for weaponcost, 
+-- FIXME: This is a bit icky; weapondefs_post sets unitdef customparam for weaponcost,
 -- but arty tractors need to have this set by _post too - AFTER they have been set by the above loop
 local morphDefs = VFS.Include("luarules/configs/morph_defs.lua")
 
@@ -364,7 +369,7 @@ end
 		local flightTimeCoeff = rangeCoeff^(1/3)
 		local accuracyMult = 1 / math.sqrt(rangeCoeff)
 		local wobbleMult = 1 / flightTimeCoeff
-		
+
 		local mults = {
 			range = rangeCoeff,
 			dyndamagerange = rangeCoeff,
@@ -376,8 +381,8 @@ end
 			sprayangle = accuracyMult,
 			targetmoveerror = accuracyMult,
 		}
-		
-		
+
+
 		Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
 		for name, weaponDef in pairs(WeaponDefs) do
 			local customParams = weaponDef.customparams
@@ -400,10 +405,10 @@ end
 					customParams.armor_penetration_1000m = armor_penetration * math.exp(1000 * decay)
 				end
 			end
-			
+
 		totalWeapons = totalWeapons + 1
 		--Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
-		
+
 	if (modOptions.weapon_reload_mult) then
 		local totalWeapons
 		totalWeapons = 0
@@ -437,7 +442,7 @@ end
 			end
 		end
 	end
-		
+
 	if (modOptions.weapon_aoe_mult) then
 		local aoeCoeff
 		aoeCoeff = modOptions.weapon_aoe_mult
@@ -450,7 +455,7 @@ end
 			end
 		end
 	end
-		
+
 	if (modOptions.weapon_bulletdamage_mult) then
 		local bulletCoeff
 		bulletCoeff = modOptions.weapon_bulletdamage_mult
@@ -485,7 +490,8 @@ for weapName, weapDef in pairs(WeaponDefs) do
 					for i in pairs(ud.weapons) do
 						--Spring.Echo("weapon " .. i .. " is " .. ud.weapons[i].name)
 						--Spring.Echo(ud.weapons[i].name .. " vs " .. weapName)
-						if string.lower(ud.weapons[i].name) == weapName then
+						local unitWeapon = ud.weapons[i].name or "NIL WEAPON NAME"
+						if string.lower(unitWeapon) == weapName then
 							local targets = ud.weapons[i].onlytargetcategory
 							if targets then
 								ud.weapons[i].onlytargetcategory = targets .. " PARA"
