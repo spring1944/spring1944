@@ -78,6 +78,10 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,
@@ -106,9 +110,10 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from RUSBMO 37mm
-		weaponcost				= 3,
+		maxammo					= 10,
+		weaponcost				= 8,
 		weaponswithammo			= 2,
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 90,

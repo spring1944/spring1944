@@ -36,7 +36,7 @@ local GBR_LCGM = ArmedBoat:New{
 	},
 }
 
-local GBR_LCGM_Turret_25pdr_Left = OpenBoatTurret:New{
+local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 	name					= "25Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "GBRLCGM_Turret_25pdr.s3o",
@@ -56,7 +56,6 @@ local GBR_LCGM_Turret_25pdr_Left = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 17,
 		elevationspeed			= 17,
-		feartarget				= false, -- fully enclosed
     },
 }
 local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{

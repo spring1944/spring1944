@@ -47,8 +47,8 @@ local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 7,
-		weaponcost				= 18, -- !?
+		maxammo					= 16,
+		weaponcost				= 12,
 		weaponswithammo			= 1,
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,

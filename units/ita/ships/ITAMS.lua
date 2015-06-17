@@ -51,10 +51,11 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
-		aaweapon				= 1,
-		weaponcost				= 3,
+		maxammo					= 14,
+		weaponcost				= 4,
 		weaponswithammo			= 2,
+
+		aaweapon				= 1,
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,

@@ -52,9 +52,10 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
-		weaponcost				= 3,
+		maxammo					= 14,
+		weaponcost				= 4,
 		weaponswithammo			= 2,
+
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,

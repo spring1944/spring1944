@@ -85,7 +85,7 @@ local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
 	},
 }
 
-local GBR_LCSL_Turret_6pdr = OpenBoatTurret:New{
+local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "GBRLCSL_Turret_6pdr.s3o",
@@ -105,12 +105,12 @@ local GBR_LCSL_Turret_6pdr = OpenBoatTurret:New{
 		maxammo					= 10,
 		weaponcost				= 10,
 		weaponswithammo			= 2,
+
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
 		aaweapon				= 2, -- TODO: rename to something more generic e.g. masterweapon
-		feartarget				= false, -- fully enclosed
     },
 }
 
@@ -134,6 +134,10 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
+		maxammo					= 14,
+		weaponcost				= 4,
+		weaponswithammo			= 2,
+
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,

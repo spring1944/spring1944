@@ -153,15 +153,15 @@ local M637mmAP = M637mm:New(LightGunAPClass, true):New{
 local M1938_20K45mm = LightGunClass:New{
   name               = [[20K M1938 45mm]],
   range              = 980,
-  reloadTime         = 4.8, -- Naval is 2.4 HE, 3.2 AP?
+  reloadTime         = 4.8,
   soundStart         = [[RUS_45mm]],
 }
 
 local M1938_20K45mmHE = M1938_20K45mm:New(LightGunHEClass, true):New{
-  areaOfEffect       = 52, -- Naval is 47?
+  areaOfEffect       = 52,
   weaponVelocity     = 1584,
   damage = {
-    default            = 270, -- Naval is 200?
+    default            = 270,
   },  
 }
 local M1938_20K45mmAP = M1938_20K45mm:New(LightGunAPClass, true):New{
@@ -177,13 +177,7 @@ local M1938_20K45mmAP = M1938_20K45mm:New(LightGunAPClass, true):New{
 
 -- Naval copy, only HE used currently. Should these values be so different?
 local M1937_40K45mmHE = M1938_20K45mmHE:New{
-  areaOfEffect         = 47,
   name                 = [[40K 45mm Naval Gun HE Shell]],
-  range                = 1310,
-  reloadTime           = 2.4, -- this one probably makes the most sense if its an open mount as opposed to cramped turret
-  damage = {
-    default            = 200,
-  },  
 }
 
 -- Cannone da 47/32 M35 (ITA)
