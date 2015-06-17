@@ -126,6 +126,7 @@ local BoatChild = Boat:New{ -- a boat turret
 	cantBeTransported			= false,
 	canSelfDestruct				= false,
 	category					= "SHIP MINETRIGGER TURRET DEPLOYED",
+	corpse						= '',
 	footprintX					= 1,
 	footprintZ					= 1,
 	iconType					= "turret",
