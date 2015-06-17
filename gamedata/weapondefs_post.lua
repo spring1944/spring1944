@@ -234,7 +234,7 @@ local function CopyCategories(ud)
 				ud.weapons[weaponID].badtargetcategory = ud.weapons[weaponID].badtargetcategory .. " " .. bad
 			end
 		else
-			Spring.Echo('ERROR: ' .. ud.name .. ' weapon number ' .. weaponID .. ' does not exist in the category cache -- it is probably invalid')
+			Spring.Log('weapondefs_post', 'error', ud.name .. ' weapon number ' .. weaponID .. ' does not exist in the category cache -- it is probably invalid')
 		end
 	end
 end
@@ -295,7 +295,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 					end
 				end
 			else
-				Spring.Echo("weapondefs_post.lua: Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
+				Spring.Log('weapondefs_post', 'warning', "weapondefs_post.lua: Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
 			end
 		end
 	end
@@ -312,7 +312,7 @@ for unitName, ud in pairs(UnitDefs) do
 			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
 				local weapName = string.lower(weapons[weaponID].name or 'NIL WEAPON NAME')
 				if not WeaponDefNames[weapName] then
-					Spring.Echo("ERROR: weapondefs_post.lua non-existent weapon name (" .. ud.name .. ", " .. weapName .. ": weapon number: " .. weaponID ..")")
+					Spring.Log('weapondefs_post', 'error', "non-existent weapon name (" .. ud.name .. ", " .. weapName .. ": weapon number: " .. weaponID ..")")
 				else
 					local cegFlare = cegCache[weapName]
 					local weaponCost = (weapCostCache[weapName] or -2) * (WeaponDefNames[weapName].burst or 1)
@@ -325,7 +325,7 @@ for unitName, ud in pairs(UnitDefs) do
 						--Spring.Echo(unitName, weapName, weaponCost)
 						local curCost = ud.customparams.weaponcost or weaponCost
 						if curCost ~= weaponCost then
-							Spring.Echo("WARNING: weapondefs_post.lua mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
+							Spring.Log('weapondefs_post', 'warning', "mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
 						end
 						ud.customparams.weaponcost = math.max(curCost, weaponCost)
 					end
