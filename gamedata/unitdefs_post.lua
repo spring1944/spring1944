@@ -321,21 +321,36 @@ for name, ud in pairs(UnitDefs) do
 			local squadDef = squadDefs[squadName]
 			if squadDef then
 				local addedCost = 0
+				local totalMass = 0
+				local capacity = 0
                 if squadDef.buildCostMetal then
                     addedCost = squadDef.buildCostMetal
-                else
-                    for i, unitName in ipairs(squadDef.members) do
-                        local newUD = UnitDefs[unitName]
-                        if newUD then
-                            addedCost = addedCost + newUD.buildcostmetal
-                        end
-                    end
                 end
+				for i, unitName in ipairs(squadDef.members) do
+					local newUD = UnitDefs[unitName]
+					if newUD then
+						if not squadDef.buildCostMetal then
+							addedCost = addedCost + newUD.buildcostmetal
+						end
+						totalMass = totalMass + newUD.mass
+						capacity = capacity + 1
+					else
+						Spring.Echo("Error: Bad unitdef " .. unitName .. " in squad " .. squadName)
+					end
+				end
 				--Spring.Echo("Total squad cost: "..addedCost)
 				if addedCost > 0 then
 					ud.buildcostmetal = ud.buildcostmetal + addedCost
 					ud.buildtime = ud.buildcostmetal
 					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+				end
+				if tonumber(ud.transportcapacity) < capacity then
+					ud.transportcapacity = capacity
+					Spring.Echo("Warning: "..ud.name.." transportCapacity was increased to " .. capacity)
+				end
+				if tonumber(ud.transportmass) < totalMass then
+					ud.transportmass = totalMass
+					Spring.Echo("Warning: "..ud.name.." transportMass was increased to " .. totalMass)
 				end
 			else
 				Spring.Echo("Squad def name not found in loaded table: "..squadName)
