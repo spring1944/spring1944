@@ -30,6 +30,7 @@ local GiveOrderToUnit      = Spring.GiveOrderToUnit
 local GiveOrderToUnitArray = Spring.GiveOrderToUnitArray
 
 -- Constants
+local NONBLOCKING_TIME = 30 * 5 -- how long after spawn they don't block. 5 seconds.
 
 -- Variables
 local initFrame
@@ -93,10 +94,10 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 		end
 
 		if (i % 4 == 0) then
-			xSpace = -10
-			zSpace = zSpace + 10
+			xSpace = -2
+			zSpace = zSpace + 2
 		else
-			xSpace = xSpace + 10
+			xSpace = xSpace + 2
 		end
 	end
 
@@ -142,7 +143,7 @@ end
 function gadget:UnitFinished(unitID, unitDefID, teamID)
 	if squadDefs[unitDefID] then
 		GG.Delay.DelayCall(CreateSquad, {unitID, unitDefID, teamID, builderOf[unitID]})
-	elseif transporters[unitDefID] then 
+	elseif transporters[unitDefID] then
 		-- spawn transportees
 		GG.Delay.DelayCall(SpawnTransportSquad, {unitID, teamID, transporters[unitDefID]})
 	else
