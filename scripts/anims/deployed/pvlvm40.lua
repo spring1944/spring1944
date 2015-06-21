@@ -25,8 +25,6 @@ local sleeve = piece "sleeve"
 local tags = {
 	headingPiece = turret,
 	pitchPiece = sleeve,
-	defaultTraverseSpeed = math.rad(10),
-	defaultElevateSpeed = math.rad(15),
 }
 
 local poses = {

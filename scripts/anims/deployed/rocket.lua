@@ -25,8 +25,6 @@ local tubes = piece "tubes"
 
 local tags, poses, keyframes, keyframeDelays = include "anims/deployed/gun.lua"
 tags.pitchPiece = tubes
-tags.defaultTraverseSpeed = math.rad(3)
-tags.defaultElevateSpeed = math.rad(10)
 tags.cegPiece = backblast
 
 return tags, poses, keyframes, keyframeDelays

@@ -13,8 +13,6 @@ local flare = piece "flare"
 local tags = {
 	headingPiece = turret,
 	pitchPiece = sleeve,
-	defaultTraverseSpeed = math.rad(800),
-	defaultElevateSpeed = math.rad(615),
 	fearLimit = 16,
 	fearPinned = 0,
 }

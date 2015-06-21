@@ -332,7 +332,7 @@ for name, ud in pairs(UnitDefs) do
 						if not squadDef.buildCostMetal then
 							addedCost = addedCost + newUD.buildcostmetal
 						end
-						totalMass = totalMass + newUD.mass
+						totalMass = totalMass + (newUD.mass or newUD.maxdamage)
 						capacity = capacity + 1
 					else
 						Spring.Echo("Error: Bad unitdef " .. unitName .. " in squad " .. squadName)
@@ -398,6 +398,13 @@ for name, ud in pairs(UnitDefs) do
 			Spring.Echo("Warning: Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
 		end
 	end
+	
+	-- Warn for missing turret turn speeds
+	if (ud.script == 'Vehicle.lua' or ud.script == 'Deployed.lua' or ud.script == 'BoatChild.lua') and
+		ud.customparams and not ud.customparams.turretturnspeed then
+		Spring.Echo("Warning: No turret turn speed for " .. ud.name)
+	end
+	
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if not ud.mass then Spring.Echo(ud.name, ud.maxdamage) end

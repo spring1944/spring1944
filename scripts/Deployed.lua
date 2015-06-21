@@ -63,7 +63,7 @@ local wantedHeading
 
 -- OTHER
 
-local turretTraverseSpeed
+local turretTurnSpeed
 local turretElevateSpeed
 local recoilDistance = 2.4
 local recoilReturnSpeed = 10
@@ -246,9 +246,6 @@ function script.Create()
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
 	end
-	
-	turretTraverseSpeed = UnitDef.customParams.turretTraverseSpeed or weaponTags.defaultTraverseSpeed
-	turretElevateSpeed = UnitDef.customParams.turretElevateSpeed or weaponTags.defaultElevateSpeed
 end
 
 local function StopPinned()

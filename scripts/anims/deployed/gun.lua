@@ -28,8 +28,6 @@ local brakeright = piece "brakeright"
 local tags = {
 	headingPiece = carriage,
 	pitchPiece = sleeve,
-	defaultTraverseSpeed = math.rad(10),
-	defaultElevateSpeed = math.rad(15),
 	fearPinned = 10,
 }
 
