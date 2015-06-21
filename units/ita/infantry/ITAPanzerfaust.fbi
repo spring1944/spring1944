@@ -30,7 +30,6 @@
   // maxVelocity=1.3;
   maxVelocity=1;
   maxWaterDepth=5;
-  // minCloakDistance=270;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=ITAPanzerfaust.S3O;

@@ -10,8 +10,6 @@
   buildTime=65;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  cloakCost=0;
-  cloakCostMoving=0;
   corpse=gbrsoldier_dead;
   [customParams] {
     dontCount=1;
@@ -33,7 +31,6 @@
   // maxVelocity=1;
   maxVelocity=1.6;
   maxWaterDepth=5;
-  // minCloakDistance=270;
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=GBRPIAT.S3O;

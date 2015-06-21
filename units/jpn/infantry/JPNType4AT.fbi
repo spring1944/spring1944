@@ -10,8 +10,6 @@
   buildTime=50;
   canMove=1;
   category=INFANTRY MINETRIGGER;
-  cloakCost=0;
-  cloakCostMoving=0;
   corpse=JPNsoldier_dead;
   [customParams] {
     dontCount=1;
@@ -34,7 +32,6 @@
   // maxVelocity=1;
   maxVelocity=1.6;
   maxWaterDepth=5;
-  // minCloakDistance=310; //230
   movementClass=KBOT_Infantry;
   noChaseCategory=BUILDING FLAG INFANTRY AIR MINE;
   objectName=JPNAT.S3O;
