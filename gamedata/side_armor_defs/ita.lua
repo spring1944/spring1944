@@ -19,6 +19,7 @@ local ITADefs = {
 	"ITASniper",
 	"ITASoloAT",
 	"ITAEliteSoloAT",
+	"ITAPanzerfaust",
   },
   
   guns  =  {
