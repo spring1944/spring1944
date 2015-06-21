@@ -28,6 +28,8 @@ local IsUnitAllied         = Spring.IsUnitAllied
 local GetSpectatingState   = Spring.GetSpectatingState
 local GetUnitRulesParam    = Spring.GetUnitRulesParam
 
+
+local glColor          = gl.Color
 local glDepthTest      = gl.DepthTest
 local glDepthMask      = gl.DepthMask
 local glAlphaTest      = gl.AlphaTest
@@ -101,59 +103,59 @@ function SetUnitAmmoIcon(unitID)
   if (xp>0) then
     ranks[xp][unitID] = true
   end--]]
-	local ammoLevel = GetUnitRulesParam(unitID, "ammo",  ammoLevel)
-	--[[local newAmmo = GetUnitRulesParam(unitID, "ammo",  newAmmo)
-	if ((ammoLevel ~= nil) and (newAmmo ~= nil)) then
-		--if (newAmmo > ammoLevel) then
-			local ammoLevel = newAmmo
-		--end
-	end
-	--Spring.Echo(newAmmo)
-	--Spring.Echo(ammoLevel)
-	--Spring.Echo(maxAmmo)]]
-	
-	local maxAmmo = ud.customParams.maxammo
-	
-	if (not ammoLevel) then
-	  unitHeights[unitID] = nil
+    local ammoLevel = GetUnitRulesParam(unitID, "ammo",  ammoLevel)
+    --[[local newAmmo = GetUnitRulesParam(unitID, "ammo",  newAmmo)
+    if ((ammoLevel ~= nil) and (newAmmo ~= nil)) then
+        --if (newAmmo > ammoLevel) then
+            local ammoLevel = newAmmo
+        --end
+    end
+    --Spring.Echo(newAmmo)
+    --Spring.Echo(ammoLevel)
+    --Spring.Echo(maxAmmo)]]
+    
+    local maxAmmo = ud.customParams.maxammo
+    
+    if (not ammoLevel) then
+      unitHeights[unitID] = nil
     return
     end
-	local ammoIconType = 0
-	if (ammoLevel > (0.66*maxAmmo)) then -- Normal ammo
-		ammoIconType = 1
-		--[[ammoIcons[1] = { [0] = {}, [1] = {1}, [2] = {}, [3] = {}, [4] = {} }
-		ammoIcons[2] = nil
-		ammoIcons[3] = nil
-		ammoIcons[4] = nil]]
-	end
-	if ((ammoLevel <= (0.66*maxAmmo)) and (ammoLevel > (0.33*maxAmmo))) then -- reduced ammo
-		ammoIconType = 2
-		--[[ammoIcons[1] = nil
-		ammoIcons[2] = { [0] = {}, [1] = {}, [2] = {1}, [3] = {}, [4] = {} }
-		ammoIcons[3] = nil
-		ammoIcons[4] = nil]]
-	end
-	if ((ammoLevel <= (0.33*maxAmmo)) and (ammoLevel > 0)) then --still more reduced ammo
-		ammoIconType = 3
-		--[[ammoIcons[1] = nil
-		ammoIcons[2] = nil
-		ammoIcons[3] = { [0] = {}, [1] = {}, [2] = {}, [3] = {1}, [4] = {} }
-		ammoIcons[4] = nil]]
-	end	
-	if (ammoLevel <= 0) then -- no ammo
-		ammoIconType = 4
-		--[[ammoIcons[1] = nil
-		ammoIcons[2] = nil
-		ammoIcons[3] = nil
-		ammoIcons[4] = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {1} }]]
-	end
-	--Spring.Echo(ammoIconType)
-	unitHeights[unitID] = ud.height + iconoffset
-	
-	for i = 1, 4 do
-		ammoIcons[i][unitID] = nil
-	end
-	ammoIcons[ammoIconType][unitID] = true
+    local ammoIconType = 0
+    if (ammoLevel > (0.66*maxAmmo)) then -- Normal ammo
+        ammoIconType = 1
+        --[[ammoIcons[1] = { [0] = {}, [1] = {1}, [2] = {}, [3] = {}, [4] = {} }
+        ammoIcons[2] = nil
+        ammoIcons[3] = nil
+        ammoIcons[4] = nil]]
+    end
+    if ((ammoLevel <= (0.66*maxAmmo)) and (ammoLevel > (0.33*maxAmmo))) then -- reduced ammo
+        ammoIconType = 2
+        --[[ammoIcons[1] = nil
+        ammoIcons[2] = { [0] = {}, [1] = {}, [2] = {1}, [3] = {}, [4] = {} }
+        ammoIcons[3] = nil
+        ammoIcons[4] = nil]]
+    end
+    if ((ammoLevel <= (0.33*maxAmmo)) and (ammoLevel > 0)) then --still more reduced ammo
+        ammoIconType = 3
+        --[[ammoIcons[1] = nil
+        ammoIcons[2] = nil
+        ammoIcons[3] = { [0] = {}, [1] = {}, [2] = {}, [3] = {1}, [4] = {} }
+        ammoIcons[4] = nil]]
+    end 
+    if (ammoLevel <= 0) then -- no ammo
+        ammoIconType = 4
+        --[[ammoIcons[1] = nil
+        ammoIcons[2] = nil
+        ammoIcons[3] = nil
+        ammoIcons[4] = { [0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {1} }]]
+    end
+    --Spring.Echo(ammoIconType)
+    unitHeights[unitID] = ud.height + iconoffset
+    
+    for i = 1, 4 do
+        ammoIcons[i][unitID] = nil
+    end
+    ammoIcons[ammoIconType][unitID] = true
 end
 
 -------------------------------------------------------------------------------------
@@ -170,12 +172,12 @@ local timeCounter = math.huge -- force the first update
   timeCounter = 0--]]
 
 function widget:GameFrame(n)
-	if (n % (3*30) < 0.1) then
-		-- just update the units
-		for unitID in pairs(unitHeights) do
-			SetUnitAmmoIcon(unitID)
-		end
-	end
+    if (n % (3*30) < 0.1) then
+        -- just update the units
+        for unitID in pairs(unitHeights) do
+            SetUnitAmmoIcon(unitID)
+        end
+    end
 end
 
 
@@ -209,7 +211,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
   if (maxAmmo == nil) then
   maxAmmo = ammoLevel
   end
-	
+    
   if (IsUnitAllied(unitID)or(GetSpectatingState())) then
     SetUnitAmmoIcon(unitID)
   end
@@ -231,7 +233,7 @@ function widget:UnitGiven(unitID, unitDefID, oldTeam, newTeam)
     ammoIcons[1][unitID] = nil
     ammoIcons[2][unitID] = nil
     ammoIcons[3][unitID] = nil
-	ammoIcons[4][unitID] = nil
+    ammoIcons[4][unitID] = nil
   end
 end
 
@@ -245,7 +247,7 @@ local function DrawUnitFunc(yshift)
   end
   glBillboard()
   --glTexRect(-iconsize+10.5, -9, 10.5, iconsize-9)
-	glTexRect(-iconsize-10.5, -9, -10.5, iconsize-9)
+    glTexRect(-iconsize-10.5, -9, -10.5, iconsize-9)
 end
 
 
@@ -257,7 +259,8 @@ function widget:DrawWorld()
   glDepthMask(true)
   glDepthTest(true)
   glAlphaTest(GL_GREATER, 0.001)
-	
+  glColor(1,1,1,1)
+  
   if (ammoIcons[1] ~= nil) then
       glTexture( ammoTextures[1] )
       for unitID,_ in pairs(ammoIcons[1]) do
@@ -285,17 +288,17 @@ function widget:DrawWorld()
         glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
       end
   end
-	
-	--[[for i = 1, 4 do
-		--if (next(ammoIcons[i])) then
-		if (ammoIcons[i] ~= nil) then
-			glTexture( ammoTextures[i] )
-			for unitID,_ in pairs(ammoIcons[i]) do
-				glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
-			end
-		end	
-	end]]
-	
+    
+    --[[for i = 1, 4 do
+        --if (next(ammoIcons[i])) then
+        if (ammoIcons[i] ~= nil) then
+            glTexture( ammoTextures[i] )
+            for unitID,_ in pairs(ammoIcons[i]) do
+                glDrawFuncAtUnit(unitID, false, DrawUnitFunc, unitHeights[unitID])
+            end
+        end 
+    end]]
+    
   glTexture(false)
 
   glAlphaTest(false)
