@@ -401,6 +401,7 @@ for name, ud in pairs(UnitDefs) do
 	
 	-- Warn for missing turret turn speeds
 	if (ud.script == 'Vehicle.lua' or ud.script == 'Deployed.lua' or ud.script == 'BoatChild.lua') and
+		ud.weapons and #ud.weapons > 0 and
 		ud.customparams and not ud.customparams.turretturnspeed then
 		Spring.Echo("Warning: No turret turn speed for " .. ud.name)
 	end
