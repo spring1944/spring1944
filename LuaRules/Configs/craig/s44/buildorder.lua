@@ -99,6 +99,22 @@ gadget.unitBuildOrder = UnitBag{
 		"rust3476", "rust3476",
 		"rust3476", "rusisu152",
 	},
+	rustankyard1 = UnitArray{
+		-- Works J
+		"rust3485",
+	},
+	rustankyard2 = UnitArray{
+		-- Works J
+		"rusis2",
+	},
+	russpyard = UnitArray{
+		-- Works J
+		"rusbm13n",
+	},
+	russpyard1 = UnitArray{
+		-- Works J
+		"russu85", "russu100",
+	},
 	-- Germany
 	gerhqbunker = UnitArray{
 		-- Works J
@@ -299,8 +315,29 @@ gadget.unitBuildOrder = UnitBag{
 		"jpnhago",
 		"jpn_tankette_platoon_teke",
 	},
+	jpnvehicleyard2 = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhago",
+		--"jpnisuzutype94_aa",
+		"jpnkatsu",
+		"jpnkami",
+	},
+	jpnvehicleyard2 = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhago",
+		--"jpnisuzutype94_aa",
+		"jpnshinhotochiha",
+	},
 	jpnsupplydepot = UnitArray{
 		"jpnhoha",
+	},
+	jpnspyard = UnitArray{
+		"jpnhoniii",
+	},
+	jpnspyard1 = UnitArray{
+		"jpnhoniiii",
 	},
 	jpntankyard = UnitArray{
 	
@@ -309,6 +346,15 @@ gadget.unitBuildOrder = UnitBag{
 		"jpnchiha",
 		"jpnchihe","jpnchihe",
 		"jpnchiha",
+	},
+	jpntankyard1 =
+	{
+		"jpnchinu",
+		"jpnchiha120mm",
+	},
+	jpntankyard2 =
+	{
+		"jpnhoro",
 	},
 	
 }
@@ -337,6 +383,10 @@ gadget.baseBuildOrder = {
 		"russtorage", "russtorage",
 		"rustankyard",
 		"russupplydepot",
+		"russpyard",
+		"rustankyard1",
+		"russpyard1",
+		"rustankyard2",
 	},
 	ger = UnitArray{
 		-- works J
@@ -381,6 +431,12 @@ gadget.baseBuildOrder = {
 		"jpnstorage", "jpnstorage",
 		"jpntankyard",
 		"jpnsupplydepot",
+		"jpnspyard",
+		"jpnvehicleyard1",
+		"jpnspyard1",
+		"jpnvehicleyard2",
+		"jpntankyard1",
+		"jpntankyard2",
 	},
 }
 
@@ -393,16 +449,18 @@ gadget.baseBuilders = UnitSet{
 	"gerhqaiengineer",
 	"gersdkfz9",
 	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building... #This WAS true in previous versions
+	"rusaicommissar",
 	"rusengineer",
 	"rusk31",
 	"ushqengineer",
 	"ushqaiengineer",
 	"usgmcengvehicle",
 	"itahqengineer",
-	"itaengineer", 
+	"itahqaiengineer", 
 	"itabreda41",
 	"jpnriki",
 	"jpnhqengineer",
+	"jpnhqaiengineer",
 }
 
 -- This lists all the units that should be considered flags.
@@ -418,6 +476,7 @@ gadget.flagCappers = UnitSet{
 	"usrifle", "usthompson",
 	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
+	"rusaicommissar",
 }
 
 -- Number of units per side used to cap flags.
@@ -425,7 +484,7 @@ gadget.reservedFlagCappers = {
 	gbr = 24,
 	ger = 24,
 	us  = 24,
-	ita  = 24,
+	ita = 24,
 	jpn = 24,
 	rus = 2,
 }

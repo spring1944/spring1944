@@ -16,6 +16,27 @@ local jpnunits =
     "jpnpontoonraft",
   },
 
+  jpnhqaiengineer =
+  {
+    "jpnvehicleyard",
+    "jpnbarracks",
+	"jpntent",
+    "jpngunyard",
+    "jpnstorage",
+    "jpnradar",
+    "jpnatminesign",
+    "jpnapminesign",
+    "jpntankobstacle",
+    "jpnassaultboat",
+    "jpnpontoonraft",
+    "jpnvehicleyard1",
+    "jpnvehicleyard2",
+    "jpnspyard",
+    "jpnspyard1",
+    "jpntankyard1",
+    "jpntankyard2",
+  },
+
 	jpnriki =
 	{
 		"jpnbarracks",
@@ -95,16 +116,6 @@ local jpnunits =
 		"jpntype90_75mm_truck",
 		"jpntype91_105mm_truck",
 	},
-	jpnatyard =
-	{
-		"jpnriki",
-		"jpnisuzutx40",
-		"jpntype98_20mm_truck",
-		"jpntype1_47mm_truck",
-		"jpntype90_75mm_truck",
-		"jpntype91_105mm_truck",
-		"jpnhoniiii",
-	},
 	jpnspyard =
 	{
 		"jpnriki",
@@ -114,6 +125,16 @@ local jpnunits =
 		"jpntype90_75mm_truck",
 		"jpntype91_105mm_truck",
 		"jpnhoniii",
+	},
+	jpnatyard =
+	{
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpntype98_20mm_truck",
+		"jpntype1_47mm_truck",
+		"jpntype90_75mm_truck",
+		"jpntype91_105mm_truck",
+		"jpnhoniiii",
 	},
 	jpntankyard =
 	{

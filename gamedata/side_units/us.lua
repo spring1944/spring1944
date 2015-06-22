@@ -45,7 +45,7 @@ local usunits = {
     "usradar",
     "usstorage",
     "usspyard",
-    "ustankayrd1",
+    "ustankyard1",
     "ustankyard2",
     "usatminesign",
     "usapminesign",
