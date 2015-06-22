@@ -11,7 +11,8 @@ local ITA_ML = InfantryLandingCraft:New{
 	turnRate				= 100,	
 	weapons = {	
 		[1] = {
-			name				= "bBredaM1931AA",
+			name				= "BredaM1931AA",
+			onlyTargetCategory	= "AIR",
 			mainDir				= [[0 0 1]],
 			maxAngleDif			= 150,
 		},

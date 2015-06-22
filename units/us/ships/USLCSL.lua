@@ -71,6 +71,7 @@ local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from RUSBMO 37mm
+
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 30,
@@ -110,7 +111,8 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 26,
+		maxammo					= 18,
+
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

@@ -15,6 +15,9 @@ local FlaK3820mm = AutoCannon:New{
   damage = {
     default            = 110,
   },
+  customparams = {
+    weaponcost = 1,
+  },
 }
 
 local FlaK3820mmAA = FlaK3820mm:New(AutoCannonAA, true):New{
@@ -56,6 +59,9 @@ local Oerlikon20mm = AutoCannon:New{
   weaponVelocity     = 1640,
   damage = {
     default            = 110, -- copy from FlaK / TNSh
+  },
+  customparams = {
+    weaponcost = 1,
   },
 }
 
@@ -109,6 +115,9 @@ local BredaM3520mm = AutoCannon:New{
   weaponVelocity     = 2000,
   damage = {
     default            = 41,
+  },
+  customparams = {
+    weaponcost = 1,
   },
 }
 
@@ -177,6 +186,9 @@ local Type9625mm = AutoCannon:New{
   weaponVelocity     = 2000,
   damage = {
     default            = 45,
+  },
+  customparams = {
+    weaponcost = 1,
   },
 }
 

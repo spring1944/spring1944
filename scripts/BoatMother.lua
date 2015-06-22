@@ -1,6 +1,8 @@
 local unitDefID = Spring.GetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
 local GetUnitHealth = Spring.GetUnitHealth
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
 unitDefID = Spring.GetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
@@ -34,8 +36,6 @@ local exhausts = {}
 findPieces(exhausts, "exhaust")
 local propellers = {}
 findPieces(propellers, "prop")
-local torps = {}
-findPieces(torps, "torp")
 local tpTurrets = {}
 findPieces(tpTurrets, "tpturret")
 
@@ -108,6 +108,7 @@ function script.Create()
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
 		Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
 		Hide(childrenPieces[i])
+		SetUnitNoSelect(childID, true)
 	end
 	StartThread(DamageSmoke)
 	StartThread(FlagFlap)
@@ -142,48 +143,22 @@ function script.StopMoving()
 	end
 end
 
+-- boat mothers have no real weapons of their own; they carry copies of the
+-- main gun for unit AI purposes, but should never fire
 function script.AimWeapon(weaponID, heading, pitch)
-	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
-	SetSignalMask(2 ^ weaponID)
-	-- TODO: support torpedo turrets e.g. Gabi
-	if tpTurrets[weaponID] then
-		Turn(tpTurrets[weaponID], y_axis, heading, math.rad(5))
-		--Turn(sleeve, x_axis, -pitch, elevationSpeed)	
-		WaitForTurn(tpTurrets[weaponID], y_axis)
-		--WaitForTurn(sleeve, x_axis)
-	end
-	--StartThread(RestoreAfterDelay)]]
-	return true
+	return false
 end
 
 function script.FireWeapon(weaponID)
-	EmitSfx(torps[weaponID] or base, SFX.CEG + weaponID)
+	EmitSfx(base, SFX.CEG + weaponID)
 end
 
 function script.AimFromWeapon(weaponID) 
-	return torps[weaponID] or base
+	return base
 end
 
 function script.QueryWeapon(weaponID) 
-	return torps[weaponID] or base
-end
-
-function script.BlockShot(weaponID, targetID, userTarget)
-	local minRange = minRanges[weaponID]
-	if minRange then
-		local distance
-		if targetID then
-			distance = Spring.GetUnitSeparation(unitID, targetID, true)
-		elseif userTarget then -- shouldn't be the case with S44 torpedos
-			local cmd = GetUnitCommands(unitID, 1)[1]
-			if cmd.id == CMD.ATTACK then
-				local tx,ty,tz = unpack(cmd.params)
-				distance = GG.GetUnitDistanceToPoint(unitID, tx, ty, tz, false)
-			end
-		end
-		if distance < minRange then return true end
-	end
-	return false
+	return base
 end
 
 function script.Killed(recentDamage, maxHealth)

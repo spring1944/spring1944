@@ -42,8 +42,6 @@ local lfoot2 = piece "lfoot2"
 local tags = {
 	headingPiece = carriage,
 	pitchPiece = sleeve,
-	defaultTraverseSpeed = math.rad(10),
-	defaultElevateSpeed = math.rad(15),	
 }
 
 local anims = {

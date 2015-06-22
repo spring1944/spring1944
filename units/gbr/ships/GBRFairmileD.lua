@@ -13,24 +13,14 @@ local GBR_FairmileD = ArmedBoat:New{
 	turnRate				= 240,	
 	weapons = {	
 		[1] = {
-			name				= "GBR18inTorpedo",
-			maxAngleDif         = 40,
-		},
-		[2] = {
-			name				= "GBR18inTorpedo",
-			maxAngleDif         = 40,
-		},
-		[3] = {
-			name				= "GBR18inTorpedo",
-			maxAngleDif         = 40,
-		},
-		[4] = {
-			name				= "GBR18inTorpedo",
-			maxAngleDif         = 40,
+			name				= "QF6Pdr57MkIIAHE",
+			maxAngleDif			= 270,
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
+
 	customparams = {
-		maxammo				= 4,
+		soundcategory		= "GBR/Boat",
 		children = {
 			"GBRFairmileD_Turret_6pdr_Front",
 			"GBRFairmileD_Turret_Vickers50",
@@ -81,7 +71,8 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 20,
+		maxammo					= 14,
+
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
@@ -155,6 +146,8 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
+		maxammo					= 14,
+
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,

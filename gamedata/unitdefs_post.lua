@@ -321,21 +321,36 @@ for name, ud in pairs(UnitDefs) do
 			local squadDef = squadDefs[squadName]
 			if squadDef then
 				local addedCost = 0
+				local totalMass = 0
+				local capacity = 0
                 if squadDef.buildCostMetal then
                     addedCost = squadDef.buildCostMetal
-                else
-                    for i, unitName in ipairs(squadDef.members) do
-                        local newUD = UnitDefs[unitName]
-                        if newUD then
-                            addedCost = addedCost + newUD.buildcostmetal
-                        end
-                    end
                 end
+				for i, unitName in ipairs(squadDef.members) do
+					local newUD = UnitDefs[unitName]
+					if newUD then
+						if not squadDef.buildCostMetal then
+							addedCost = addedCost + newUD.buildcostmetal
+						end
+						totalMass = totalMass + (newUD.mass or newUD.maxdamage)
+						capacity = capacity + 1
+					else
+						Spring.Echo("Error: Bad unitdef " .. unitName .. " in squad " .. squadName)
+					end
+				end
 				--Spring.Echo("Total squad cost: "..addedCost)
 				if addedCost > 0 then
 					ud.buildcostmetal = ud.buildcostmetal + addedCost
 					ud.buildtime = ud.buildcostmetal
 					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+				end
+				if tonumber(ud.transportcapacity) < capacity then
+					ud.transportcapacity = capacity
+					Spring.Echo("Warning: "..ud.name.." transportCapacity was increased to " .. capacity)
+				end
+				if tonumber(ud.transportmass) < totalMass then
+					ud.transportmass = totalMass
+					Spring.Echo("Warning: "..ud.name.." transportMass was increased to " .. totalMass)
 				end
 			else
 				Spring.Echo("Squad def name not found in loaded table: "..squadName)
@@ -383,6 +398,14 @@ for name, ud in pairs(UnitDefs) do
 			Spring.Echo("Warning: Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
 		end
 	end
+	
+	-- Warn for missing turret turn speeds
+	if (ud.script == 'Vehicle.lua' or ud.script == 'Deployed.lua' or ud.script == 'BoatChild.lua') and
+		ud.weapons and #ud.weapons > 0 and
+		ud.customparams and not ud.customparams.turretturnspeed then
+		Spring.Echo("Warning: No turret turn speed for " .. ud.name)
+	end
+	
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if not ud.mass then Spring.Echo(ud.name, ud.maxdamage) end

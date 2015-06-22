@@ -42,7 +42,8 @@ local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 12,
+		maxammo					= 16,
+
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
@@ -89,7 +90,8 @@ local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-	    maxammo					= 16, -- TODO: from BMO 37mm
+		maxammo					= 14,
+
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,

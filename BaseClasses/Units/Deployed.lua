@@ -81,9 +81,6 @@ local SandbagMG = Deployed:New{
 		[1] = { -- MG
 			maxAngleDif					= 120, -- overwritten by MG42 & M1919A4
 		},
-		[2] = { -- Tracer, same for all except those using green
-			name = "Small_Tracer",
-		},
 	},
 }
 

@@ -26,8 +26,6 @@ local tripod = piece "tripod"
 local tags = {
 	headingPiece = turret or gun,
 	pitchPiece = turret or gun,
-	defaultTraverseSpeed = math.rad(35),
-	defaultElevateSpeed = math.rad(35),
 	fearLimit = 14,
 	fearPinned = 10,
 }

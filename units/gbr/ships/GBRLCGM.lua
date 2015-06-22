@@ -10,9 +10,9 @@ local GBR_LCGM = ArmedBoat:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 32,	
-	weapons = {	
-		[1] = { -- give primary weapon for ranging
+	turnRate				= 32,
+	weapons = {
+		[1] = {
 			name				= "qf25pdrhe",
 		},
 	},
@@ -29,7 +29,7 @@ local GBR_LCGM = ArmedBoat:New{
 	},
 }
 
-local GBR_LCGM_Turret_25pdr_Left = OpenBoatTurret:New{
+local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 	name					= "25Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/GBRLCGM_Turret_25pdr.s3o",
@@ -46,7 +46,6 @@ local GBR_LCGM_Turret_25pdr_Left = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 17,
 		elevationspeed			= 17,
-		feartarget				= false, -- fully enclosed
     },
 }
 local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{

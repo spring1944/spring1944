@@ -8,7 +8,7 @@
   featureDead=Debris_Small;
   footprintX=1;
   footprintZ=1;
-  object=TankObstacle.S3O;
+  object="GEN/TankObstacle.S3O";
   reclaimable=1;
 }
 

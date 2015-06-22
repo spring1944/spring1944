@@ -38,7 +38,8 @@ local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 7,
+		maxammo					= 16,
+
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
