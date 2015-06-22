@@ -116,14 +116,14 @@ local itaDefs = {
 		members = {
 			"itapanzerfaust",
 			"itapanzerfaust",
-			"itasoloat",
+			"itapanzerfaust",
 			"itasoloat",
 		},
 		name = "Anti-Tank Squad",
-		description = "2 x Panzerfaust, 2 x Solothurn: Anti-Tank Infantry",
-		buildCostMetal = 450,
+		description = "3 x Panzerfaust, 1 x Solothurn: Anti-Tank Infantry",
+		buildCostMetal = 520,
 		buildPic = "ITAPanzerfaust.png",
-		buildTime = 450,
+		buildTime = 520,
 		side = "ITA",
 	},
 	
