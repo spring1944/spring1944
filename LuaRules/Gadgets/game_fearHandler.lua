@@ -148,14 +148,13 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	local wd = WeaponDefs[weaponID]
 	local cp = wd.customParams
 	local fearID = cp.fearid
-	
 	if not fearID then return false end
   
 	local unitsAtSpot = GetUnitsInSphere(px, py, pz, cp.fearaoe)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
 	if ValidUnitID(ownerID) and (cp.howitzer or cp.infgun) then
-		SetUnitExperience(ownerID, 0)
+		GG.Delay.DelayCall(SetUnitExperience, {ownerID, 0}, 1)
 	end
 	
 	for i = 1, #unitsAtSpot do
