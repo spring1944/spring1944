@@ -31,6 +31,12 @@ local JPN_Seta = ArmedBoat:New{
 			"JPN_Seta_turret_25mm",
 			"JPN_Seta_turret_76mm_rear",
 		},
+		piecehitvols = {
+			tower = {
+				offset = { 0, 0, 10 },
+				scale = { 1, 1, 0.65 }
+			}
+		}
 		--[[deathanim = {
 			["z"] = {angle = -10, speed = 45},
 		},]]

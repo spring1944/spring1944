@@ -13,7 +13,8 @@ end
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 local GetUnitPieceList					= Spring.GetUnitPieceList
-local SetUnitPieceCollisionVolumeData	= Spring.SetUnitPieceCollisionVolumeData
+local SetPieceColVol					= Spring.SetUnitPieceCollisionVolumeData
+local GetPieceColVol					= Spring.GetUnitPieceCollisionVolumeData
 
 local armourPieces = {["base"] = true, ["turret"] = true}
 local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2"] = true}
@@ -21,12 +22,29 @@ local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2
 local function SetColVols(unitID, ud, colPieces)
 	if ud.model.type ~= "3do" then
 		local pieces = GetUnitPieceList(unitID)
+		local tweaks = table.unserialize(ud.customParams.piecehitvols) or {}
 		for i, pieceName in pairs(pieces) do
-			--Spring.Echo(i, pieceName)
-			if not colPieces[pieceName] and i ~= "n" then
-				--Spring.Echo("piece " .. i .. " called " .. pieceName .. " to be disabled")
-				SetUnitPieceCollisionVolumeData(unitID, i - 1, false, 1, 1, 1, 0, 0, 0)
+			if colPieces[pieceName] and i ~= "n" then
+
+				local pieceTweaks = tweaks[pieceName] or {
+					offset = { 0, 0, 0 },
+					scale = { 1, 1, 1 }
+				}
+
+				local sX, sY, sZ, oX, oY, oZ, volumeType, _, primaryAxis = GetPieceColVol(unitID, i-1)
+				sX = sX * pieceTweaks.scale[1]
+				sY = sY * pieceTweaks.scale[2]
+				sZ = sZ * pieceTweaks.scale[3]
+
+				oX = oX + pieceTweaks.offset[1]
+				oY = oY + pieceTweaks.offset[2]
+				oZ = oZ + pieceTweaks.offset[3]
+
+				SetPieceColVol(unitID, i - 1, true, sX, sY, sZ, oX, oY, oZ, volumeType, primaryAxis)
+			else
+				SetPieceColVol(unitID, i - 1, false, 1,1,1, 0,0,0, -1, 0)
 			end
+
 		end
 	end
 end
