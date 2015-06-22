@@ -45,7 +45,7 @@
 
   weapon1=Type92MG;
   maxAngleDif1=120;
-  onlyTargetCategory1=OPENVEH INFANTRY SOFTVEH DEPLOYED;
+  onlyTargetCategory1=INFANTRY SOFTVEH DEPLOYED;
   weaponMainDir1=0 0 1;
 
   weapon2=Small_Tracer;
