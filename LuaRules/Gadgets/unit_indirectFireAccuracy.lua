@@ -18,7 +18,7 @@ local indirectUnitDefIDs = {}
 local lastHit = {}
 
 local ZEROING_FACTOR = 0.5
-local MIN_ZEROING_FACTOR = 0.15
+local MIN_ZEROING = 0.15
 local ZEROED_THRESHOLD = 0.25
 
 local function Dist2D(x1, z1, x2, z2)
@@ -41,8 +41,9 @@ end
 
 local function GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
 	local newAccuracy = math.max(currentAccuracy, (hitDist / targetDist)) * ZEROING_FACTOR
-	local newAccuracy = math.min(newAccuracy, baseAccuracy)
-	local newAccuracy = math.max(newAccuracy, MIN_ZEROING * baseAccuracy)
+	newAccuracy = math.min(newAccuracy, baseAccuracy)
+	newAccuracy = math.max(newAccuracy, MIN_ZEROING * baseAccuracy)
+	
 	return newAccuracy
 end
 
@@ -54,21 +55,27 @@ local function updateUnit(unitID, coords)
 	if not targetPos then
 		return
 	end
-
-	local ux, _ , uz = Spring.GetUnitPosition(unitID)
-	local targetDist = Dist2D(targetPos[1], targetPos[3], ux, uz)
-	local hitDist = Dist2D(coords[1], coords[3], targetPos[1], targetPos[3])
-	
 	local unitDefID = Spring.GetUnitDefID(unitID)
 	local weapons = UnitDefs[unitDefID].weapons
 	local weaponDef = WeaponDefs[weapons[1].weaponDef]
-	
 	local baseAccuracy = weaponDef.accuracy
-	local currentAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
+	local newAccuracy
 	
-	local newAccuracy = GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
+	local allyTeam = Spring.GetUnitAllyTeam(unitID)
+	if Spring.IsPosInAirLos(targetPos[1], targetPos[2], targetPos[3], allyTeam) then
+		local ux, _ , uz = Spring.GetUnitPosition(unitID)
+		local targetDist = Dist2D(targetPos[1], targetPos[3], ux, uz)
+		local hitDist = Dist2D(coords[1], coords[3], targetPos[1], targetPos[3])
+		
+		local currentAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
+		
+		newAccuracy = GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
+		Spring.Echo("good", newAccuracy)
+	else
+		newAccuracy = baseAccuracy	
+	end
 	
-	if newAccuracy <= baseAccuracy * ZEROED then
+	if newAccuracy <= baseAccuracy * ZEROED_THRESHOLD then
 		Spring.SetUnitRulesParam(unitID, "zeroed", 1)
 	else
 		Spring.SetUnitRulesParam(unitID, "zeroed", 0)
