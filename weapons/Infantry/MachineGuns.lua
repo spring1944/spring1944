@@ -293,7 +293,7 @@ local Twin05CalVickers = HeavyMGClass:New{
 -- DShK (RUS)
 local DShK = HeavyMGClass:New{
   name               = [[DShK 12.7mm Heavy Machine Gun]],
-  range              = 1300,
+  range              = 875,
   reloadTime         = 3,
   soundStart         = [[RUS_DShK]],
 }
