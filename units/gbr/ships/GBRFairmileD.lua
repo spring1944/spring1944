@@ -30,6 +30,14 @@ local GBR_FairmileD = ArmedBoat:New{
 			"GBRFairmileD_Turret_20mm",
 			"GBRFairmileD_Turret_6pdr_Rear",
 		},
+
+		piecehitvols = {
+			tower = {
+				offset = { 0, 0, 0 },
+				scale = { 0.6, 1, 1 }
+			}
+		},
+
 		deathanim = {
 			["x"] = {angle = -20, speed = 5},
 			["z"] = {angle = -15, speed = 5}, 
