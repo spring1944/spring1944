@@ -18,7 +18,7 @@ local GBR_LCGM = ArmedBoat:New{
 	turnRate				= 32,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "qf25pdrhe",
+			name				= "navalqf25pdrhe",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
@@ -42,7 +42,7 @@ local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 	objectName				= "GBRLCGM_Turret_25pdr.s3o",
   	weapons = {	
 		[1] = {
-			name				= "qf25pdrhe",
+			name				= "navalqf25pdrhe",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH SHIP LARGESHIP DEPLOYED",
 			mainDir				= [[1 0 1]],

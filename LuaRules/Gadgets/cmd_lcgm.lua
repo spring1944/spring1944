@@ -41,8 +41,8 @@ local MIN_DEPTH = -150 -- lowest depth that we allow the command for
 local ACTUAL_MIN_DEPTH = -11 -- lowest depth that the model should be lowered to
 local SINK_RATE = -0.1
 local SINK_TIME = math.floor(ACTUAL_MIN_DEPTH / SINK_RATE)
-local ARMOUR_MULTIPLE = 0.50
-local ACCURACY_MULT = 0.50
+local ARMOUR_MULTIPLE = 1.0
+local ACCURACY_MULT = 0.5
 local BASE_ACCURACY = WeaponDefs[ UnitDefNames["gbrlcgm"].weapons[1].weaponDef ].accuracy -- ;_;
 
 -- Variables
@@ -66,15 +66,22 @@ local function EndBeach(unitID, disable)
 	--CallCOBScript(unitID, "StopMoving", 0)
 	mcSetVelocity(unitID, 0, 0, 0)
 	activeUnits[unitID] = nil
-	if disable then -- unit has surfaced
-		mcDisable(unitID) 
+	if disable then
 		SetUnitArmored(unitID, false)
-		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY})
-		SetUnitWeaponState(unitID, 2, {accuracy = BASE_ACCURACY})
-	else -- unit is grounded
-		SetUnitArmored(unitID, true, ARMOUR_MULTIPLE) 
-		SetUnitWeaponState(unitID, 1, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
-		SetUnitWeaponState(unitID, 2, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
+		mcDisable(unitID) 
+	else
+		SetUnitArmored(unitID, true, ARMOUR_MULTIPLE)
+	end
+
+	local children = GG.boatMothers[unitID] or {}
+	for i, childID in ipairs(children) do
+		if disable then -- unit has surfaced
+			SetUnitWeaponState(childID, 1, {accuracy = BASE_ACCURACY})
+			SetUnitWeaponState(childID, 2, {accuracy = BASE_ACCURACY})
+		else -- unit is grounded
+			SetUnitWeaponState(childID, 1, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
+			SetUnitWeaponState(childID, 2, {accuracy = BASE_ACCURACY * ACCURACY_MULT})
+		end
 	end
 end
 
