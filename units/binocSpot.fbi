@@ -2,6 +2,7 @@
   unitname=binocSpot;
   name=binocSpot;
   description=binocSpot;
+  airsightdistance=1000;
   buildCostEnergy=0;
   buildCostMetal=1;
   buildTime=1;
