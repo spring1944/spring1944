@@ -24,7 +24,7 @@ local totalCharsRecv = 0
 ------------------------------------------------
 
 --broadcast
-local broadcastPeriod = 1 --will send packet in this interval (s)
+local broadcastPeriod = 0.125 --will send packet in this interval (s)
 local broadcastSpecsAsSpec = false
 
 local broadcastSpecsAsPlayer = true
@@ -59,7 +59,7 @@ function widget:GetConfigData(data)
 end
 
 function widget:SetConfigData(data)
-	broadcastPeriod = data.broadcastPeriod or 1
+	broadcastPeriod = data.broadcastPeriod or 0.125
 	broadcastSpecsAsSpec = data.broadcastSpecsAsSpec
 	broadcastSpecsAsPlayer = not data.notBroadcastSpecsAsPlayer
 	broadcastAlliesAsPlayer = data.broadcastAlliesAsPlayer
@@ -110,6 +110,7 @@ local GetTeamColor = Spring.GetTeamColor
 local SendCommands = Spring.SendCommands
 
 local Echo = Spring.Echo
+local Log = Spring.Log
 local strGMatch = string.gmatch
 local strSub = string.sub
 local strLen = string.len
@@ -286,8 +287,9 @@ local CAMERA_STATE_FORMATS = {
 		"px", "py", "pz",
 		"dx", "dy", "dz",
 		"height",
-		"zscale",
+		"angle",
 		"flipped",
+		"fov",
 	},
 	ov = {
 		"px", "py", "pz",
@@ -309,6 +311,13 @@ local CAMERA_STATE_FORMATS = {
 		"px", "py", "pz",
 		"rx", "ry", "rz",
 	},
+	spring = {
+		"px", "py", "pz",
+		"rx", "ry", "rz",
+		"dx", "dy", "dz",
+		"dist",
+		"fov",
+	},
 }
 
 local CAMERA_NAMES = {
@@ -320,6 +329,7 @@ local CAMERA_NAMES = {
 	"rot",
 	"sm",
 	"tw",
+	"spring",
 }
 local CAMERA_IDS = {}
 
@@ -339,8 +349,12 @@ local function CameraStateToPacket(s)
 	local result = PACKET_HEADER .. CustomPackU8(cameraID) .. CustomPackU8(s.mode)
 	
 	for i=1, #stateFormat do
-		local num = s[stateFormat[i]]
-		if not num then return nil end
+		local cameraAttribute = stateFormat[i]
+		local num = s[cameraAttribute]
+		if not num then 
+			Log('lock-camera', 'warning', "camera " .. name .. " missing attribute " .. cameraAttribute .. " in getCameraState")
+			return nil 
+		end
 		result = result .. CustomPackF16(num)
 	end
 	
@@ -354,6 +368,7 @@ local function PacketToCameraState(p)
 	local name = CAMERA_NAMES[cameraID]
 	local stateFormat = CAMERA_STATE_FORMATS[name]
 	if not (cameraID and mode and name and stateFormat) then 
+		Log('lock-camera', 'warning', "packet did not contain cameraID and mode and name and stateFormat")
 		return nil 
 	end
 	
@@ -640,7 +655,8 @@ end
 local function SetBroadcastPeriod(_, _, words)
 	local newBroadcastPeriod = tonumber(words[1])
 	
-	if newBroadcastPeriod and newBroadcastPeriod >= 0.25 then
+	-- no more than 15fps
+	if newBroadcastPeriod and newBroadcastPeriod >= 0.067 then
 		broadcastPeriod = newBroadcastPeriod
 		Echo("<LockCamera>: Now broadcasting every " .. broadcastPeriod .. " s.")
 	else
@@ -673,7 +689,8 @@ function widget:RecvLuaMsg(msg, playerID)
 	local cameraState = PacketToCameraState(msg)
 	
 	if not cameraState then
-		Echo("<LockCamera>: Bad packet recieved.")
+		Log('lock-camera', 'error', "Bad packet recieved.")
+		WG.RemoveWidget(self)
 		return
 	end
 	
@@ -765,7 +782,8 @@ function widget:Update(dt)
 		--don't send duplicates
 		
 		if not msg then
-			Echo("<LockCamera>: Error creating packet!")
+			Log('lock-camera', 'error', "Error creating packet! Removing widget.")
+			WG.RemoveWidget(self)
 			return
 		end
 		
@@ -925,5 +943,5 @@ function widget:MouseRelease(x, y, button)
 end
 
 function widget:GameOver()
-  Echo("<LockCamera> " .. totalCharsSent .. " chars sent, " .. totalCharsRecv .. " chars received.")
+  Log('lock-camera', 'info', totalCharsSent .. " chars sent, " .. totalCharsRecv .. " chars received.")
 end
