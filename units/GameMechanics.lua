@@ -1,4 +1,5 @@
 local BinocSpot = Null:New{
+	airsightdistance			= 1000,
 	sightDistance				= 200,
 	yardmap						= "y",
 }

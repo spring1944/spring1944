@@ -2,7 +2,7 @@ function gadget:GetInfo()
 	return {
 		name	  = "Indirect Fire Accuracy Manager",
 		desc	  = "Changes the accuracy of weapons fire based on the LoS status of the target",
-		author	  = "Ben Tyler (Nemo), Craig Lawrence (FLOZi)",
+		author	  = "Ben Tyler (Nemo), Craig Lawrence (FLOZi), ashdnazg",
 		date	  = "Feb 10th, 2009",
 		license	  = "LGPL v2.1 or later",
 		layer	  = 0,
@@ -14,172 +14,119 @@ if (not gadgetHandler:IsSyncedCode()) then
   return false
 end
 
---CMDS
-local CMD_ATTACK			= CMD.ATTACK
-local CMD_AREA_ATTACK		= CMD.AREA_ATTACK
---synced read
-local IsPosInLos			= Spring.IsPosInLos
-local IsPosInRadar			= Spring.IsPosInRadar
-local ValidUnitID			= Spring.ValidUnitID
-local GetUnitPosition		= Spring.GetUnitPosition
-local GetUnitAllyTeam		= Spring.GetUnitAllyTeam
-local GetGameSeconds		= Spring.GetGameSeconds
-local GetUnitWeaponState    = Spring.GetUnitWeaponState
---synced control
-local SetUnitWeaponState	= Spring.SetUnitWeaponState
-local SetUnitExperience		= Spring.SetUnitExperience
-local SetUnitRulesParam		= Spring.SetUnitRulesParam
+local indirectUnitDefIDs = {}
+local lastHit = {}
 
---constants
-local LOS_ACCURACY_COEFF    = 0.25 --how much more accurate the weapon gets (lower accuracy number = more accurate, this is multiplied by the regular accuracy)
-local ZERO_IN_DELAY			= 10 --# of seconds after LoS is established on attack location before the accuracy improvement kicks in
+local ZEROING_FACTOR = 0.5
+local MIN_ZEROING_FACTOR = 0.15
+local ZEROED_THRESHOLD = 0.25
 
-local UPDATE_PERIOD         = 2 -- seconds
--- how much a targeted unit can move from the original positition without
--- resetting zero-in
-local FUDGE_FACTOR          = 50
-
-local ALLOWED_PAUSE_TIME    = 8
---vars
-local visibleAreas			= {}
-
-local function dist(x1, z1, x2, z2)
+local function Dist2D(x1, z1, x2, z2)
     return math.sqrt((x2 - x1) ^ 2 + (z2 - z1) ^ 2)
 end
 
-local function updateUnit(allyTeam, unitID)
-	local unitDefID = Spring.GetUnitDefID(unitID)
-	local weapons = UnitDefs[unitDefID].weapons
-	local newAccuracy
-	if visibleAreas[allyTeam][unitID] ~= nil then
-		if (visibleAreas[allyTeam][unitID].zeroed == true) then
-			newAccuracy = WeaponDefs[weapons[1].weaponDef].accuracy * LOS_ACCURACY_COEFF
-		else
-			newAccuracy = WeaponDefs[weapons[1].weaponDef].accuracy
-		end
+local function GetTargetPos(unitID, weaponNum)
+	local i, _, target = Spring.GetUnitWeaponTarget(unitID, weaponNum)
+	
+	if i == 1 then
+		return Spring.GetUnitPosition(target)
+	elseif i == 2 then
+		return target
+	elseif i == 3 then
+		return Spring.GetProjectilePosition(target)
 	end
-	if weapons ~= nil then
-		for i=1, #weapons do
-			SetUnitWeaponState(unitID, i, {accuracy = newAccuracy})
-		end
-	end
+	
+	return nil
 end
 
-function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
-	local ud = UnitDefs[unitDefID]
-		if ud.customParams.canareaattack == "1" then
-			if cmdID == CMD_ATTACK or cmdID == CMD_AREA_ATTACK then
-				local allyTeam = GetUnitAllyTeam(unitID)
-				local targetX, targetY, targetZ
-                local targetUnitID
+local function GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
+	local newAccuracy = math.max(currentAccuracy, (hitDist / targetDist)) * ZEROING_FACTOR
+	local newAccuracy = math.min(newAccuracy, baseAccuracy)
+	local newAccuracy = math.max(newAccuracy, MIN_ZEROING * baseAccuracy)
+	return newAccuracy
+end
 
-				if ValidUnitID(cmdParams[1]) == true then --shooting at a unit
-					targetX, targetY, targetZ = GetUnitPosition(cmdParams[1])
-                    targetUnitID = cmdParams[1]
-				else --shooting at the ground
-					targetX, targetY, targetZ = cmdParams[1], cmdParams[2], cmdParams[3]
-				end
+local function updateUnit(unitID, coords)
+	if #lastHit[unitID] ~= 3 then
+		return
+	end
+	local targetPos = GetTargetPos(unitID, 1)
+	if not targetPos then
+		return
+	end
 
-				if visibleAreas[allyTeam] == nil then
-					visibleAreas[allyTeam] = {}
-				end
-				if visibleAreas[allyTeam][unitID] == nil then
-					visibleAreas[allyTeam][unitID] = {}
-				end
+	local ux, _ , uz = Spring.GetUnitPosition(unitID)
+	local targetDist = Dist2D(targetPos[1], targetPos[3], ux, uz)
+	local hitDist = Dist2D(coords[1], coords[3], targetPos[1], targetPos[3])
+	
+	local unitDefID = Spring.GetUnitDefID(unitID)
+	local weapons = UnitDefs[unitDefID].weapons
+	local weaponDef = WeaponDefs[weapons[1].weaponDef]
+	
+	local baseAccuracy = weaponDef.accuracy
+	local currentAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
+	
+	local newAccuracy = GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
+	
+	if newAccuracy <= baseAccuracy * ZEROED then
+		Spring.SetUnitRulesParam(unitID, "zeroed", 1)
+	else
+		Spring.SetUnitRulesParam(unitID, "zeroed", 0)
+	end
+	
+	for i=1, #weapons do
+		Spring.SetUnitWeaponState(unitID, i, {accuracy = newAccuracy})
+	end	
+end
 
-				visibleAreas[allyTeam][unitID] = {
-							targetTime = nil, --just until the next update calls
-							zeroed = false,
-							x = targetX,
-							y = targetY,
-							z = targetZ,
-                            targetUnitID = targetUnitID,
-                            updatesWithoutFiring = 0,
-                            ownerFiring = function()
-                                -- all units with this mechanic have HE/smoke. 
-                                -- it'd probably be better to handle this more
-                                -- robustly.
-                                local _, primaryLoaded = GetUnitWeaponState(unitID, 1)
-                                local _, secondaryLoaded = GetUnitWeaponState(unitID, 2)
-                                return not primaryLoaded or not secondaryLoaded
-                            end
-
-						}
-				if targetX ~= nil and targetY ~= nil and targetZ ~= nil then
-					if IsPosInLos(targetX, targetY, targetZ, allyTeam) == true or IsPosInRadar(targetX, targetY, targetZ, allyTeam) == true then
-						visibleAreas[allyTeam][unitID].targetTime = GetGameSeconds()
-                        SetUnitRulesParam(unitID, "zeroed", 0)
-					end
-				end
-			end
+function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+	if indirectUnitDefIDs[unitDefID] then
+		lastHit[unitID] = {}
+		
+		local weapons = UnitDefs[unitDefID].weapons
+		local weaponDef = WeaponDefs[weapons[1].weaponDef]
+		local baseAccuracy = weaponDef.accuracy
+		for i=1, #weapons do
+			Spring.SetUnitWeaponState(unitID, i, {accuracy = baseAccuracy})
 		end
-	return true
+	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
-	local allyTeam = GetUnitAllyTeam(unitID)
-	if visibleAreas[allyTeam] then
-		visibleAreas[allyTeam][unitID] = nil
-	end
+	lastHit[unitID] = nil
 end
 
-function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
-	-- Reset visibleAreas if unit is given to an enemy player
-	local allyTeam = GetUnitAllyTeam(unitID)
-	if not Spring.AreTeamsAllied (unitTeam, oldTeam) and visibleAreas[allyTeam] then
-		visibleAreas[allyTeam][unitID] = nil
+function gadget:Explosion(weaponDefID, px, py, pz, attackerID)
+	if not attackerID or not lastHit[attackerID] then
+		return
+	end
+	
+	local allyTeam = Spring.GetUnitAllyTeam(attackerID)
+	if Spring.IsPosInAirLos(px, py, pz, allyTeam) then
+		lastHit[attackerID][1], lastHit[attackerID][2], lastHit[attackerID][3] = px, py, pz
 	end
 end
 
 function gadget:GameFrame(n)
-	if (n % (UPDATE_PERIOD*30)) < 0.1 then --update every two seconds
-		for allyID, units in pairs(visibleAreas) do
-			for unitID, targetArea in pairs(units) do
-				if ValidUnitID(unitID) and targetArea then
-                    if targetArea.x ~= nil and targetArea.y ~= nil and targetArea.z ~= nil then
-                        local targetUnitID = targetArea.targetUnitID
-                        if targetArea.ownerFiring() then
-                            targetArea.updatesWithoutFiring = 0
-                        else
-                            targetArea.updatesWithoutFiring = targetArea.updatesWithoutFiring + 1
-                        end
+	for unitID, coords in pairs(lastHit) do
+		updateUnit(unitID, coords)
+	end
+end
 
-                        local timeWithoutFiring = UPDATE_PERIOD * targetArea.updatesWithoutFiring
-
-                        -- targeting a unit, need to make sure it didn't move
-                        if targetUnitID and ValidUnitID(targetUnitID) then
-                            local x, y, z = GetUnitPosition(targetUnitID)
-                            local tx, ty, tz = targetArea.x, targetArea.y, targetArea.z
-
-                            -- unit moved too much, clear out any potential
-                            -- zero-ing
-                            if dist(x, z, tx, tz) > FUDGE_FACTOR then
-                                targetArea.targetTime = GetGameSeconds()
-                                targetArea.zeroed = false
-                                targetArea.x, targetArea.y, targetArea.z = x, y, z
-                                SetUnitRulesParam(unitID, "zeroed", 0)
-                            end
-                        end
-
-                        local inLoS  = IsPosInLos(targetArea.x, targetArea.y, targetArea.z, allyID)
-                        if inLoS and timeWithoutFiring < ALLOWED_PAUSE_TIME then
-                            if targetArea.targetTime == nil then
-                                targetArea.targetTime = GetGameSeconds()
-                            end
-                            if ((n/30) - targetArea.targetTime) > ZERO_IN_DELAY then
-                                targetArea.zeroed = true
-                                SetUnitRulesParam(unitID, "zeroed", 1)
-                            end
-                        else
-                            targetArea.targetTime = GetGameSeconds()
-                            targetArea.zeroed = false
-                            SetUnitRulesParam(unitID, "zeroed", 0)
-                        end
-
-                        updateUnit(allyID, unitID)
-                    end
-				end
+function gadget:Initialize()
+	for unitDefID, unitDef in pairs(UnitDefs) do
+		if unitDef.customParams.canareaattack then
+			indirectUnitDefIDs[unitDefID] = true
+			for _, weapon in pairs(unitDef.weapons) do
+				Script.SetWatchWeapon(weapon.weaponDef, true)
 			end
 		end
 	end
+	
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
+	end
+
 end
