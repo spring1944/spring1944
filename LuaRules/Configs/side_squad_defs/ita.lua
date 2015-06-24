@@ -180,27 +180,6 @@ local itaDefs = {
 		buildTime = 1900,
 		side = "ITA",
 	},
-	["ita_platoon_carabinieri"] =
-	{
-		members = {
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-			"itacarabinieri",
-		},
-		name = "Black Brigade Anti-Partisan Platoon",
-		description = "10 x Carabinieri: Anti-Partisan Platoon",
-		buildCostMetal = 1500,
-		buildPic = "ITARifle.png",
-		buildTime = 800,
-		side = "ITA",
-	},
 	["ita_platoon_alpini"] =
 	{
 		members = {

@@ -22,8 +22,11 @@ local satchelIDs = {}
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if satchelIDs[unitDefID] then
-		local ammoLevel = GetUnitRulesParam(builderID, "ammo")
-		SetUnitRulesParam(builderID, "ammo",	ammoLevel - 1)
+		-- satchel can be created without being built: /give all
+		if builderID then
+			local ammoLevel = GetUnitRulesParam(builderID, "ammo")
+			SetUnitRulesParam(builderID, "ammo",	ammoLevel - 1)
+		end
 	end
 end
 
