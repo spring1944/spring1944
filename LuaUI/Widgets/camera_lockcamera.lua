@@ -3,7 +3,7 @@ local versionNumber = "v2.9"
 function widget:GetInfo()
 	return {
 		name = "LockCamera",
-		desc = versionNumber .. " Allows you to lock your camera to another player's camera"
+		desc = versionNumber .. " Allows you to lock your camera to another player's camera",
 		author = "Evil4Zerggin, updated to Chili by ashdnazg", --Also see camera_broadcast unsynced gadget
 		date = "16 January 2009",
 		license = "GNU LGPL, v2.1 or later",
