@@ -210,7 +210,7 @@ local ITA_AlpiniMortar = ITA_Mortar:Clone("ITAMortar"):New(Alpini):New{
 return lowerkeys({
 	-- Regular Inf
 	["ITAHQEngineer"] = ITA_HQEngineer,
-	["ITAEngineer"] = ITA_HQEngineer:Clone("ITAHQEngineer"),
+	["ITAHQAIEngineer"] = ITA_HQEngineer:Clone("ITAHQEngineer"),
 	["ITARifle"] = ITA_Rifle,
 	["ITAM38"] = ITA_M38,
 	["ITABreda30"] = ITA_Breda30,
