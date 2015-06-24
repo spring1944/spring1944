@@ -26,7 +26,6 @@ local AirATGunClass = Weapon:New{
   targetMoveError    = 0.1,
   tolerance          = 600,
   turret             = true,
-  dynDamageInverted  = true,
   weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,
@@ -39,18 +38,16 @@ local AirATGunClass = Weapon:New{
 
 -- Bordkanone BK 37 (GER)
 local BK37mmAP = AirATGunClass:New{
-  areaOfEffect       = 12,
   --burst              = 1,
   --burstrate          = 0.375,
   name               = [[BK-37 37mm Semi-Automatic Cannon]],
   range              = 950,
-  reloadtime         = 0.4,
+  reloadtime         = 1,
   soundStart         = [[US_37mm]],
   weaponVelocity     = 1768,
   customparams = {
     --constant penetration since aircraft engagement range can't be realistically controlled
-    armor_penetration_1000m = 60,
-    armor_penetration_100m = 60,
+    armor_penetration = 45,
   },
   damage = {
     default            = 825,
@@ -59,7 +56,6 @@ local BK37mmAP = AirATGunClass:New{
 
 -- Ho-401 57mm HEAT (JPN)
 local Ho40157mm = AirATGunClass:New{
-  areaOfEffect       = 12,
   name               = [[Ho-401 57 mm HEAT]],
   range              = 760,
   reloadTime         = 0.95,

@@ -22,7 +22,7 @@
     enginesoundnr=12;
     feartarget=1;
     lowammolevel=1;
-    maxammo=36;
+    maxammo=15;
     proptexture=prop3.tga;
     weaponcost=-1;
     weaponswithammo=2;
