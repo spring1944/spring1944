@@ -16,7 +16,7 @@ local GER_Ju87G = Fighter:New{
 	customParams = {
 		enginesound			= "stukab-",
 		enginesoundnr		= 12,
-		maxammo				= 36,
+		maxammo				= 15,
 	},
 
 	weapons = {

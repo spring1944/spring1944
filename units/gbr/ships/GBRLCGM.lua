@@ -10,10 +10,10 @@ local GBR_LCGM = ArmedBoat:New{
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 32,
-	weapons = {
-		[1] = {
-			name				= "qf25pdrhe",
+	turnRate				= 32,	
+	weapons = {	
+		[1] = { -- give primary weapon for ranging
+			name				= "navalqf25pdrhe",
 		},
 	},
 	customparams = {
@@ -35,7 +35,7 @@ local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 	objectName				= "<SIDE>/GBRLCGM_Turret_25pdr.s3o",
   	weapons = {	
 		[1] = {
-			name				= "qf25pdrhe",
+			name				= "navalqf25pdrhe",
 			maxAngleDif			= 270,
 			mainDir				= [[1 0 1]],
 		},

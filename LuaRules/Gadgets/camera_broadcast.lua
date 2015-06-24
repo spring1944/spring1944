@@ -1,16 +1,21 @@
 local versionNumber = "v2.9"
 
-function widget:GetInfo()
+function gadget:GetInfo()
 	return {
 		name = "LockCamera",
-		desc = versionNumber .. " Allows you to lock your camera to another player's camera",
-		author = "Evil4Zerggin, updated to Chili by ashdnazg", --Also see camera_broadcast unsynced gadget
+		desc = versionNumber .. " Allows you to lock your camera to another player's camera.\n"
+				.. "/luaui lockcamera_interval to set broadcast interval (minimum 0.25 s).",
+		author = "Evil4Zerggin",
 		date = "16 January 2009",
 		license = "GNU LGPL, v2.1 or later",
 		layer = -5,
 		enabled = true
 	}
 end
+
+if gadgetHandler:IsSyncedCode() then
+	
+else
 
 ------------------------------------------------
 --debug
@@ -24,34 +29,36 @@ local totalCharsRecv = 0
 
 --broadcast
 local broadcastPeriod = 0.125 --will send packet in this interval (s)
+local broadcastSpecsAsSpec = false
 
---recieve
-local transitionTime = 1.5 --how long it takes the camera to move
-local listTime = 30 --how long back to look for recent broadcasters
+local broadcastSpecsAsPlayer = true
+local broadcastAlliesAsPlayer = false
 
-function widget:GetConfigData(data)
+
+function gadget:GetConfigData(data)
 	return {
+		broadcastPeriod = broadcastPeriod,
+		broadcastSpecsAsSpec = broadcastSpecsAsSpec,
+		notBroadcastSpecsAsPlayer = not broadcastSpecsAsPlayer,
+		broadcastAlliesAsPlayer = broadcastAlliesAsPlayer,
 	}
 end
 
-function widget:SetConfigData(data)
+function gadget:SetConfigData(data)
+	broadcastPeriod = data.broadcastPeriod or broadcastPeriod
+	broadcastSpecsAsSpec = data.broadcastSpecsAsSpec
+	broadcastSpecsAsPlayer = not data.notBroadcastSpecsAsPlayer
+	broadcastAlliesAsPlayer = data.broadcastAlliesAsPlayer
 end
 
 ------------------------------------------------
 --vars
 ------------------------------------------------
 local myPlayerID
-local lockPlayerID
 local totalTime
---playerID = {time, state}
-local lastBroadcasts = {}
+local timeSinceBroadcast
 
-local myTeamID
-
-local window0
-local exitButton
-local playerButtons = {}
-
+local lastPacketSent
 
 ------------------------------------------------
 --speedups
@@ -71,6 +78,7 @@ local GetPlayerInfo = Spring.GetPlayerInfo
 local GetTeamColor = Spring.GetTeamColor
 
 local SendCommands = Spring.SendCommands
+local GetLastUpdateSeconds = Spring.GetLastUpdateSeconds
 
 local Echo = Spring.Echo
 local Log = Spring.Log
@@ -82,26 +90,6 @@ local strChar = string.char
 
 local floor = math.floor
 
-local glColor = gl.Color
-local glLineWidth = gl.LineWidth
-local glPolygonMode = gl.PolygonMode
-local glRect = gl.Rect
-local glText = gl.Text
-local glShape = gl.Shape
-
-local glCreateList = gl.CreateList
-local glCallList = gl.CallList
-local glDeleteList = gl.DeleteList
-
-local glPopMatrix = gl.PopMatrix
-local glPushMatrix = gl.PushMatrix
-local glTranslate = gl.Translate
-local glScale = gl.Scale
-
-local GL_FILL = GL.FILL
-local GL_FRONT_AND_BACK = GL.FRONT_AND_BACK
-local GL_LINE_STRIP = GL.LINE_STRIP
-
 local vfsPackU8 = VFS.PackU8
 local vfsPackF32 = VFS.PackF32
 local vfsUnpackU8 = VFS.UnpackU8 
@@ -112,9 +100,6 @@ local vfsUnpackF32 = VFS.UnpackF32
 ------------------------------------------------
 local PACKET_HEADER = "="
 local PACKET_HEADER_LENGTH = strLen(PACKET_HEADER)
-
-local COLOR_REGULAR     = {1,1,1, 1}
-local COLOR_SELECTED = {0.8, 0, 0, 1}
 
 ------------------------------------------------
 --H4X
@@ -358,165 +343,83 @@ local function PacketToCameraState(p)
 end
 
 ------------------------------------------------
---helpers
-------------------------------------------------
-
-local function GetPlayerName(playerID)
-	if not playerID then return "" end
-	local name = GetPlayerInfo(playerID)
-	return name or ""
-end
-
-------------------------------------------------
---drawing
-------------------------------------------------
-
-local function GetPlayerColor(playerID)
-	local _, _, _, teamID = GetPlayerInfo(playerID)
-	if (not teamID) then return nil end
-	return GetTeamColor(teamID)
-end
-
-------------------------------------------------
---update
-------------------------------------------------
-
-local function UpdateButtonColors()
-	for _, button in pairs (playerButtons) do
-		button.backgroundColor = button.playerID and button.playerID == lockPlayerID and COLOR_SELECTED or COLOR_REGULAR
-		button:Invalidate()
-	end
-end
-
-local function LockCamera(playerID)
-	if playerID and playerID ~= myPlayerID and playerID ~= lockPlayerID then
-		lockPlayerID = playerID
-		local info = lastBroadcasts[lockPlayerID]
-		if info then
-			SetCameraState(info[2], transitionTime)
-		end
-	else
-		lockPlayerID = nil
-	end
-	UpdateButtonColors()
-end
-
-
-local function UpdatePlayerButtons()
-	local Chili = WG.Chili
-	for k,v in pairs (playerButtons) do
-		playerButtons[k]:Dispose()
-		playerButtons[k] = nil
-	end
-	local y = 20
-	for playerID, _ in pairs(lastBroadcasts) do
-		local playerName, _, spec, teamID = Spring.GetPlayerInfo(playerID)
-		playerButtons[#playerButtons + 1] = Chili.Button:New{
-			y = y, width = 80, caption = playerName, 
-			OnClick = {
-				function(self) LockCamera(self.playerID ~= lockPlayerID and self.playerID or nil) end
-			},
-			playerID = playerID
-		}
-		y = y + 20
-	end
-	playerButtons[#playerButtons + 1] = Chili.Button:New{
-		y = y, width = 80, caption = "Stop", 
-		OnClick = {
-			function(self) LockCamera(nil) end
-		}
-	}
-	
-	UpdateButtonColors()
-	
-	for k,v in pairs (playerButtons) do
-		window0:AddChild(playerButtons[k])
-	end
-end
-
-local function InitGUI()
-	local Chili = WG.Chili	
-	
-	window0 = Chili.Window:New{
-		caption = "Lock Camera",
-		y = "70%",
-		right = 10,
-		width  = 200,
-		height = 200,
-		parent = Chili.Screen0,
-		autosize = true,
-		savespace = true,
-	}
-	
-	UpdatePlayerButtons()
-end
-
-------------------------------------------------
 --callins
 ------------------------------------------------
 
-function widget:RecvLuaMsg(msg, playerID)
-	--check header
-	if strSub(msg, 1, PACKET_HEADER_LENGTH) ~= PACKET_HEADER then return end
-	
-	totalCharsRecv = totalCharsRecv + strLen(msg)
-	
-	--a packet consisting only of the header indicated that transmission has stopped
-	if msg == PACKET_HEADER then
-		if lastBroadcasts[playerID] then
-			lastBroadcasts[playerID] = nil
-		end
-		if lockPlayerID == playerID then
-			LockCamera(nil)
-		end
-		return
-	end
-	
-	local cameraState = PacketToCameraState(msg)
-	
-	if not cameraState then
-		Log('lock-camera', 'error', "Bad packet recieved.")
-		WG.RemoveWidget(self)
-		return
-	end
-	if not lastBroadcasts[playerID] then
-		lastBroadcasts[playerID] = {totalTime, cameraState}
-		UpdatePlayerButtons()
-	else
-		lastBroadcasts[playerID] = {totalTime, cameraState}
-	end
-	
-	
-	if (playerID == lockPlayerID) then 
-		 SetCameraState(cameraState, transitionTime)
-	end
-	
-end
-
-
-function widget:Initialize()
+function gadget:Initialize()
 	
 	myPlayerID = GetMyPlayerID()
+	timeSinceBroadcast = 0
 	totalTime = 0
 end
 
-function widget:Shutdown()	
-	if window0 then
-		window0:Dispose()
-	end
+function gadget:Shutdown()
+	SendLuaUIMsg(PACKET_HEADER, "a")
+	SendLuaUIMsg(PACKET_HEADER, "s")
 end
 
-function widget:Update(dt)
-	
-	local isSpectator = GetSpectatingState()
-	
-	if isSpectator and not window0 then
-		InitGUI()
+function gadget:Update()
+	local dt = GetLastUpdateSeconds()
+	local newIsSpectator = GetSpectatingState()
+	if newIsSpectator ~= isSpectator then
+		isSpectator = newIsSpectator
+		if isSpectator then
+			if not broadcastSpecsAsSpec then
+				SendLuaUIMsg(PACKET_HEADER, "s")
+				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
+			end
+		else
+			if not broadcastAlliesAsPlayer then
+				SendLuaUIMsg(PACKET_HEADER, "a")
+				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
+			end
+			if not broadcastSpecsAsPlayer then
+				SendLuaUIMsg(PACKET_HEADER, "s")
+				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
+			end
+		end
 	end
 	
+	if (isSpectator and not broadcastSpecsAsSpec)
+			or (not isSpectator and not broadcastAlliesAsPlayer and not broadcastSpecsAsPlayer) then 
+		return 
+	end
 	totalTime = totalTime + dt
+	timeSinceBroadcast = timeSinceBroadcast + dt
+	if timeSinceBroadcast > broadcastPeriod then
+		
+		local state = GetCameraState()
+		local msg = CameraStateToPacket(state)
+		
+		--don't send duplicates
+		
+		if not msg then
+			Log('lock-camera', 'error', "Error creating packet! Removing gadget.")
+			GG.RemoveGadget(self)
+			return
+		end
+		
+		if msg ~= lastPacketSent then
+			if (not isSpectator and broadcastAlliesAsPlayer) then
+				SendLuaUIMsg(msg, "a")
+			end
+			
+			if (isSpectator and broadcastSpecsAsSpec)
+					or (not isSpectator and broadcastSpecsAsPlayer) then
+				SendLuaUIMsg(msg, "s")
+			end
+			
+			totalCharsSent = totalCharsSent + strLen(msg)
+			
+			lastPacketSent = msg
+		end
+		
+		timeSinceBroadcast = timeSinceBroadcast - broadcastPeriod
+	end
 end
 
-function widget:GameOver()
+function gadget:GameOver()
   Log('lock-camera', 'info', totalCharsSent .. " chars sent, " .. totalCharsRecv .. " chars received.")
+end
+
 end

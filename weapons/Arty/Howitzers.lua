@@ -18,8 +18,18 @@ local QF25Pdr = Howitzer:New{
 	cegflare           = "MEDIUMLARGE_MUZZLEFLASH", -- 87mm
   },
 }
+
+-- QF 25pdr on a boat
+local NavalQF25Pdr = QF25Pdr:New{
+  accuracy           = 1400,
+}
+
 local QF25PdrHE = QF25Pdr:New(HowitzerHE, true)
 local QF25PdrSmoke = QF25Pdr:New(HowitzerSmoke, true)
+
+local NavalQF25PdrHE = NavalQF25Pdr:New(HowitzerHE, true)
+local NavalQF25PdrSmoke = NavalQF25Pdr:New(HowitzerSmoke, true)
+
 
 -- 10.5cm LeFH 18/40 (GER)
 local LeFH18 = Howitzer:New{
@@ -118,6 +128,8 @@ local Type91105mmL24Smoke = Type91105mmL24:New(HowitzerSmoke, true)
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
   QF25PdrSmoke = QF25PdrSmoke,
+  NavalQF25PdrHE = NavalQF25PdrHE,
+  NavalQF25PdrSmoke = NavalQF25PdrSmoke,
   LeFH18HE = LeFH18HE,
   LeFH18Smoke = LeFH18Smoke,
   M2HE = M2HE,

@@ -4,18 +4,16 @@
 
 -- Bordkanone BK 37 (GER)
 local BK37mmAP = AirATGun:New{
-  areaOfEffect       = 12,
   --burst              = 1,
   --burstrate          = 0.375,
   name               = [[BK-37 37mm Semi-Automatic Cannon]],
   range              = 950,
-  reloadtime         = 0.4,
+  reloadtime         = 1,
   soundStart         = [[US_37mm]],
   weaponVelocity     = 1768,
   customparams = {
     --constant penetration since aircraft engagement range can't be realistically controlled
-    armor_penetration_1000m = 60,
-    armor_penetration_100m = 60,
+    armor_penetration = 45,
   },
   damage = {
     default            = 825,

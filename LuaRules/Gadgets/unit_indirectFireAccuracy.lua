@@ -27,13 +27,22 @@ end
 
 local function GetTargetPos(unitID, weaponNum)
 	local i, _, target = Spring.GetUnitWeaponTarget(unitID, weaponNum)
-	
-	if i == 1 then
-		return Spring.GetUnitPosition(target)
-	elseif i == 2 then
+
+	-- targeting a spot on the ground
+	if i == 2 then
 		return target
-	elseif i == 3 then
-		return Spring.GetProjectilePosition(target)
+	end
+	
+	-- targeting a unit
+	if i == 1 then
+		local x, y, z = Spring.GetUnitPosition(target)
+		return { x, y, z }
+	end
+
+	-- targeting a projectile: seems unlikely in S44, but ... completeness!
+	if i == 3 then
+		local x, y, z = Spring.GetProjectilePosition(target)
+		return { x, y, z }
 	end
 	
 	return nil
@@ -70,7 +79,6 @@ local function updateUnit(unitID, coords)
 		local currentAccuracy = Spring.GetUnitWeaponState(unitID, 1, "accuracy")
 		
 		newAccuracy = GetNewAccuracy(baseAccuracy, currentAccuracy, hitDist, targetDist)
-		Spring.Echo("good", newAccuracy)
 	else
 		newAccuracy = baseAccuracy	
 	end
