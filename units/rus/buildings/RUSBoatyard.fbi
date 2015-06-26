@@ -14,7 +14,7 @@
   canBeAssisted=0;
   canMove=1;
   category=BUILDING;
-  corpse=RUSBoatyardLarge_dead;
+  corpse=Boatyard_Large_dead;
   [customParams] {
     supplyRange=500;
   }
@@ -28,7 +28,7 @@
   maxDamage=16250;
   maxSlope=10;
   minWaterDepth=10;
-  objectName=RUSBoatyardLarge;
+  objectName=Boatyard_large.s3o;
   script=BoatYard.lua;
   selfDestructAs=LARGE_EXPLOSION;
   [sfxtypes] {
