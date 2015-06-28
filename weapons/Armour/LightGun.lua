@@ -57,6 +57,7 @@ local LightGunAPClass = Weapon:New{
 local LightGunHEATClass = Weapon:New{
   collisionSize      = 3,
   edgeEffectiveness  = 0.2,
+  impactonly         = true,
   explosionGenerator = [[custom:EP_medium]],
   explosionSpeed     = 30, -- needed?
   name               = [[HEAT Shell]],

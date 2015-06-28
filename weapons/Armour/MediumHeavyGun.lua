@@ -56,6 +56,7 @@ local MediumHeavyGunAPClass = Weapon:New{
 -- HEAT Round Class
 local MediumHeavyGunHEATClass = Weapon:New{
   edgeEffectiveness  = 0.2,
+  impactonly         = true,
   explosionGenerator = [[custom:EP_Large]],
   explosionSpeed     = 30, -- needed?
   name               = [[HEAT Shell]],
