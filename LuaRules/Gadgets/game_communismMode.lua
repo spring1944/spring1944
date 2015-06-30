@@ -111,9 +111,13 @@ function gadget:GameStart()
 	end
 end
 
+local function isFlag(udid)
+	return udid == UnitDefNames.flag.id or udid == UnitDefNames.buoy.id
+end
+
 function gadget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)
 	-- make allyTeamFlags follow changes
-	if unitDefID == UnitDefNames.flag.id then -- flag change team
+	if isFlag(unitDefID) then
 		-- if old and new teams are allied do nothing
 		if not AreTeamsAllied(unitTeam, newTeam) then
 		local oldAllyTeamID = select(6, GetTeamInfo(unitTeam))
