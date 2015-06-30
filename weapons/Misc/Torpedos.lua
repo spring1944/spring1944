@@ -54,19 +54,6 @@ local RUS533mmTorpedo = TorpedoClass:New{
 local ITA450mmTorpedo = TorpedoClass:New{
   name               = "450mm torpedo",
   damage = {
-    default = 8000,
-  },
-  model              = "ita450mmtorpedo",
-  range              = 1300,
-  sprayangle         = 1300,
-  startVelocity      = 250,
-  weaponAcceleration = 230,
-  weaponVelocity     = 450,
-}
-
-local ITA450mmTorpedo = TorpedoClass:New{
-  name               = "450mm torpedo",
-  damage = {
     default = 8000, -- HUGE!
   },
   model              = "ita450mmtorpedo",
