@@ -71,7 +71,7 @@ local OpenBoatTurret = BoatChild:New{
 	maxDamage			= 800,
 	customparams = {
 		feartarget		= true,
-		fearlimit		= 25,
+		fearlimit		= 12,
 	}
 }
 
