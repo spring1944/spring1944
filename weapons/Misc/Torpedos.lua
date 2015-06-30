@@ -56,7 +56,7 @@ local ITA450mmTorpedo = TorpedoClass:New{
   damage = {
     default = 8000, -- HUGE!
   },
-  model              = "ita450mmtorpedo",
+  model              = "450mmtorpedo.s3o",
   range              = 1300,
   sprayangle         = 1300,
   startVelocity      = 250,
