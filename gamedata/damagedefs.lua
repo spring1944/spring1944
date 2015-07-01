@@ -34,15 +34,15 @@ local damagedefs = {
     invincible = 0,
 	-- smallarms are the only distinction between ships and ship turrets
 	ships = 0,
-	shipturrets = 1,
+	shipturrets = 3/4,
     mines = 0,
   },
   explosive = {
 	bunkers = 1/2,
 	armouredPlanes = 4/5,
     infantry = 9,
-	ships = 2/3,
-	shipturrets = 2/3,
+	ships = 4/5,
+	shipturrets = 4/5,
     unarmouredvehicles = 1,
     armouredvehicles = 2/3,
     lightbuildings = 2/3,
