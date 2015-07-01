@@ -323,8 +323,8 @@ end
 
 local function UpdateButtonColors()
 	for _, button in pairs (playerButtons) do
-		button.backgroundColor = button.playerID and button.playerID == lockPlayerID and COLOR_SELECTED or COLOR_REGULAR
-		button:Invalidate()
+		button.font.color = button.playerID and button.playerID == lockPlayerID and COLOR_SELECTED or COLOR_REGULAR
+		button.font:Invalidate()
 	end
 end
 
@@ -334,6 +334,8 @@ local function LockCamera(playerID)
 		local info = lastBroadcasts[lockPlayerID]
 		if info then
 			SetCameraState(info[2], transitionTime)
+			local _, _, _, teamID = Spring.GetPlayerInfo(playerID)
+			Spring.SendCommands("specteam ".. teamID)
 		end
 	else
 		lockPlayerID = nil
@@ -350,9 +352,10 @@ local function UpdatePlayerButtons()
 	end
 	local y = 20
 	for playerID, _ in pairs(lastBroadcasts) do
-		local playerName, _, spec, teamID = Spring.GetPlayerInfo(playerID)
+		local playerName, _, _, teamID = Spring.GetPlayerInfo(playerID)
 		playerButtons[#playerButtons + 1] = Chili.Button:New{
-			y = y, width = 80, caption = playerName, 
+			y = y, width = 80, caption = playerName,
+			backgroundColor = {Spring.GetTeamColor(teamID)},
 			OnClick = {
 				function(self) LockCamera(self.playerID ~= lockPlayerID and self.playerID or nil) end
 			},
