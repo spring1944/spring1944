@@ -220,99 +220,40 @@ end
 ------------------------------------------------
 
 local CAMERA_STATE_FORMATS = {
-	fps = {
-		"px", "py", "pz",
-		"dx", "dy", "dz",
-		"rx", "ry", "rz",
-		"oldHeight",
-	},
-	free = {
-		"px", "py", "pz",
-		"dx", "dy", "dz",
-		"rx", "ry", "rz",
-		"fov",
-		"gndOffset",
-		"gravity",
-		"slide",
-		"scrollSpeed",
-		"tiltSpeed",
-		"velTime",
-		"avelTime",
-		"autoTilt",
-		"goForward",
-		"invertAlt",
-		"gndLock",
-		"vx", "vy", "vz",
-		"avx", "avy", "avz",
-	},
-	OrbitController = {
-		"px", "py", "pz",
-		"tx", "ty", "tz",
-	},
-	ta = {
-		"px", "py", "pz",
-		"dx", "dy", "dz",
-		"height",
-		"angle",
-		"flipped",
-		"fov",
-	},
-	ov = {
-		"px", "py", "pz",
-	},
-	rot = {
-		"px", "py", "pz",
-		"dx", "dy", "dz",
-		"rx", "ry", "rz",
-		"oldHeight",
-	},
-	sm = {
-		"px", "py", "pz",
-		"dx", "dy", "dz",
-		"height",
-		"zscale",
-		"flipped",
-	},
-	tw = {
-		"px", "py", "pz",
-		"rx", "ry", "rz",
-	},
-	spring = {
-		"px", "py", "pz",
-		"rx", "ry", "rz",
-		"dx", "dy", "dz",
-		"dist",
-		"fov",
-	},
 }
 
-local CAMERA_NAMES = {
-	"fps",
-	"free",
-	"OrbitController",
-	"ta",
-	"ov",
-	"rot",
-	"sm",
-	"tw",
-	"spring",
-}
-local CAMERA_IDS = {}
+local CAMERA_IDS = Spring.GetCameraNames()
+local CAMERA_NAMES = {}
 
-for i=1, #CAMERA_NAMES do
-	CAMERA_IDS[CAMERA_NAMES[i]] = i
+do
+	for k,v in pairs(CAMERA_IDS) do
+		CAMERA_NAMES[v] = k
+	end
+	local origState = Spring.GetCameraState()
+	for name, mode in pairs(CAMERA_IDS) do
+		Spring.SetCameraState({name = name, mode = mode}, 0)
+		local state = Spring.GetCameraState()
+		state.name = nil
+		state.mode = nil
+		local argTable = {}
+		for k, _ in pairs(state) do
+			argTable[#argTable + 1] = k
+		end
+		CAMERA_STATE_FORMATS[mode] = argTable
+	end
+	Spring.SetCameraState(origState, 0)
 end
 
 --does not allow spaces in keys; values are numbers
 local function CameraStateToPacket(s)
 	
-	local name = s.name
-	local stateFormat = CAMERA_STATE_FORMATS[name]
-	local cameraID = CAMERA_IDS[name]
+	local cameraID = s.mode
+	local name = CAMERA_NAMES[cameraID]
+	local stateFormat = CAMERA_STATE_FORMATS[cameraID]
 	
 	if not stateFormat or not cameraID then return nil end
 	
-	local result = PACKET_HEADER .. CustomPackU8(cameraID) .. CustomPackU8(s.mode)
+	local result = PACKET_HEADER .. CustomPackU8(cameraID)
 	
 	for i=1, #stateFormat do
 		local cameraAttribute = stateFormat[i]
@@ -330,17 +271,16 @@ end
 local function PacketToCameraState(p)
 	local offset = PACKET_HEADER_LENGTH + 1
 	local cameraID = CustomUnpackU8(p, offset)
-	local mode = CustomUnpackU8(p, offset + 1)
 	local name = CAMERA_NAMES[cameraID]
-	local stateFormat = CAMERA_STATE_FORMATS[name]
-	if not (cameraID and mode and name and stateFormat) then 
+	local stateFormat = CAMERA_STATE_FORMATS[cameraID]
+	if not (cameraID and stateFormat) then 
 		Log('lock-camera', 'warning', "packet did not contain cameraID and mode and name and stateFormat")
 		return nil 
 	end
 	
 	local result = {
 		name = name,
-		mode = mode,
+		mode = cameraID,
 	}
 	
 	offset = offset + 2
