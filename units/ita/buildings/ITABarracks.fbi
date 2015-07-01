@@ -17,6 +17,7 @@
   collisionVolumeOffsets=0 15 0;
   collisionVolumeTest=1;
   collisionVolumeType=box;
+  corpse=ITABarracks_Destroyed;
   [customParams] {
     blockfear=1;
     separatebuildspot=1;
