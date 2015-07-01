@@ -5,7 +5,7 @@
   featureDead=BuildingDebris_Large;
   footprintX=4;
   footprintZ=6;
-  object=USHQ_Destroyed.S3O;
+  object=ITAHQ_Dead.S3O;
   reclaimable=1;
 }
 
