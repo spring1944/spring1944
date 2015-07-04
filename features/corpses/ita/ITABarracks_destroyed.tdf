@@ -1,11 +1,11 @@
-[ITAHQ_Destroyed] {
-  description=Destroyed HQ;
+[ITABarracks_Destroyed] {
+  description=Destroyed Barracks;
   damage=2501;
   energy=1000;
   featureDead=BuildingDebris_Large;
   footprintX=4;
   footprintZ=6;
-  object=ITAHQ_Dead.S3O;
+  object=ITABarracks_Dead.S3O;
   reclaimable=1;
 }
 
