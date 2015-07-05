@@ -130,7 +130,6 @@ end
 local currCmdID = CMD_PLANES
 
 for sortieUnitName, sortie in pairs(sortieInclude) do
-	--Spring.Echo(sortieUnitName)
 	local sortieUnitDef = UnitDefNames[sortieUnitName]
 	if sortieUnitDef then
 		local sortieUnitDefID = sortieUnitDef.id
@@ -159,7 +158,7 @@ for sortieUnitName, sortie in pairs(sortieInclude) do
 		sortieDefs[sortieUnitDefID] = sortie
 	
 	else
-		Spring.Echo("<game_planes>: Warning: no UnitDef found for " .. sortieUnitName)
+		Spring.Log('planes gadget', 'error', "no UnitDef found for " .. sortieUnitName)
 	end
 end
 
@@ -414,7 +413,6 @@ function gadget:Initialize()
 		local unitID = allUnits[i]
 		local unitDefID = GetUnitDefID(unitID)
 		local teamID = GetUnitTeam(unitID)
-		--Spring.Echo(unitID, unitDefID, unitTeam)
 		gadget:UnitCreated(unitID, unitDefID, teamID)
 	end
 end
@@ -530,7 +528,6 @@ function gadget:GameFrame(n)
 				AddTeamResource(teamID, "m", depositReturn)
 				planeStates[unitID] = nil --this looks redundant, but needs to happen so that you actually get your bonus.
 				DestroyUnit(unitID, false, true)
-				--Spring.Echo("Plane safe! " .. depositReturn .. " Command returned!")
 			end
 		end
 	end
@@ -547,7 +544,6 @@ function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 		local curCommand = GetTeamResources(teamID, "metal")
 		local penalty = math.min((unitDef.customParams.penalty or PENALTY_AMOUNT) * unitDef.metalCost, curCommand)
 		UseTeamResource(teamID, "m", penalty)
-		--Spring.Echo("Plane destroyed! " .. penalty .. " additional Command lost!")
 	end
 	planeStates[unitID] = nil
 	radios[teamID][unitID] = nil

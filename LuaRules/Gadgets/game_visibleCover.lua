@@ -73,8 +73,6 @@ function gadget:Initialize()
 				maxToHide = (math.sqrt(math.abs(zones[areaID].px1-zones[areaID].px2) * math.abs(zones[areaID].pz1 - zones[areaID].pz2))/hideDensityFactor),
 				decloakRadius = zones[areaID].decloakRadius,
 				}
-			--Spring.Echo(areaID, "can hold this many units:", cloakAreas[areaID].maxToHide)
-		--Spring.Echo("rectangular zone!", areaID)
 		else 
 			cloakAreas[areaID] = {
 				px = zones[areaID].px,
@@ -84,9 +82,7 @@ function gadget:Initialize()
 				decloakRadius = zones[areaID].decloakRadius,
 				maxToHide = ((math.sqrt(math.pi * zones[areaID].radius^2))/hideDensityFactor),
 				}
-			--Spring.Echo(areaID, "can hold this many units:", cloakAreas[areaID].maxToHide)
 		end
-		--Spring.Echo("circular zone!", areaID)
 	end
 end
 
@@ -122,7 +118,6 @@ function gadget:GameFrame(n)
 			end
 		end
 		cloakAreas[areaID].initFeatures = count
-		--Spring.Echo("Area: ",areaID,"has",cloakAreas[areaID].initFeatures,"features.")
 	end
 
 	end
@@ -132,8 +127,6 @@ function gadget:GameFrame(n)
 				local unitsInArea = 0
 				for unitID, someThing in pairs(savedAreaUnits[areaID]) do
 					unitsInArea = unitsInArea + 1
-					--Spring.Echo("there are ",unitsInArea, "in area", areaID)
-					--Spring.Echo("this should print true", unitID, savedAreaUnits[areaID][unitID])
 					if Spring.GetUnitIsDead(unitID) == true or (unitsInArea > cloakAreas[areaID].maxToHide) then
 						savedAreaUnits[areaID][unitID] = nil
 					end
@@ -182,5 +175,5 @@ function gadget:GameFrame(n)
 	end
 end
 else
-Spring.Echo("No hide zone config found for map:", PROFILE_PATH)
+Spring.Log('visible cover', 'info', "No hide zone config found for map:", PROFILE_PATH)
 end

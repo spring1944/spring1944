@@ -25,7 +25,6 @@ local spGetUnitCOBVar = Spring.GetCOBUnitVar
 local spTestMoveOrder = Spring.TestMoveOrder
 local spGetGroundHeight = Spring.GetGroundHeight
 local spSetUnitPosition = Spring.SetUnitPosition
-local spEcho = Spring.Echo
 
 local CMD_MOVE = CMD.MOVE
 local COB_MAX_SPEED = COB.MAX_SPEED
@@ -109,7 +108,6 @@ end
 local function AttemptUnstuck()
 	-- attempt to unstuck one unit from the stuck list
 	for unitID, _ in pairs(stuckUnits) do
-		--spEcho("Unstucking unit "..unitID)
 		-- the position should still be in positions list, no need to get it again
 		local position = unitPositions[unitID] or spGetUnitPosition(unitID)
 		local uDefID = spGetUnitDefID(unitID)
@@ -130,7 +128,6 @@ local function AttemptUnstuck()
 							-- move the unit to new position and unmark it
 							spSetUnitPosition(unitID, x, z)
 							RemoveUnit(unitID)
-							--spEcho("Success")
 							unstuck = true
 						end
 					end
@@ -148,7 +145,6 @@ local function AttemptUnstuck()
 		end
 		if not unstuck then
 			-- unit was not unstuck :(
-			--spEcho("Fail")
 		end
 		RemoveUnit(unitID)
 	end

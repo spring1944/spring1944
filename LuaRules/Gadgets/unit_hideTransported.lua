@@ -92,7 +92,6 @@ local function TransportIsFull(transportID)
 end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
-	--Spring.Echo("UnitLoaded")
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
 	
@@ -164,7 +163,6 @@ local function FindUnloadPlace(unitID, unitDefID, transportID)
 end
 
 function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
-	--Spring.Echo("UnitUnloaded")
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
 	massLeft[transportID] = massLeft[transportID] + unitDef.mass

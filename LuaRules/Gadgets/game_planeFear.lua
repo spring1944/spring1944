@@ -83,10 +83,8 @@ end
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly and ud.name ~= "usparatrooper" then
-		--Spring.Echo("AIRCRAFT DAMAGED")
 		local health = GetUnitHealth(unitID)
 		if damage > health then
-			--Spring.Echo("DAMAGE", damage, "HEALTH", health)
 			SetUnitCOBValue(unitID, COB.CRASHING, 1)
 			crashingPlanes[unitID] = true
 			mcDisable(unitID) -- disable movectrl for V1 / glider
@@ -117,23 +115,18 @@ function gadget:GameFrame(n)
 				local _, suppression = CallCOBScript(unitID, funcID, 1, 1)
 				local fuel = GetUnitFuel(unitID)
 				local teamID = GetUnitTeam(unitID)
-				--Spring.Echo("Plane TeamID", teamID, "Fuel", fuel, "Suppress", suppression)
 				if suppression > 0 then
 					local newFuel = fuel - FUEL_LOSS_RATE
 					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
 						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*suppression})
-						--Spring.Echo("unit's fear level: ", suppression)
 						SetUnitRulesParam(unitID, "suppress", suppression)
 						SetUnitFuel(unitID, newFuel)
-						--Spring.Echo("unitID: ", unitID, "oldFuel:", fuel, "newFuel:", newFuel)
 						if suppression > BUGOUT_LEVEL then
 							local px, py, pz = unpack(teamStartPos[teamID])
 							GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
-							--Spring.Echo("Move order issued,", "Fear level:", suppression)
 							SetUnitNoSelect(unitID, true)
 						else
-							--Spring.Echo("No Fear, selectable:", suppression)
 							SetUnitNoSelect(unitID, false)
 						end
 					end

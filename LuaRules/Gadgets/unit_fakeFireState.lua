@@ -47,7 +47,6 @@ end
 function gadget:Initialize()
 	local morphDefs = _G.morphDefs
 	local noWeaponID = WeaponDefNames.noweapon.id
-	Spring.Echo(noWeaponID)
 	for from, morphs in pairs(morphDefs) do
 		if #UnitDefs[from].weapons == 0 then
 			for _, morph in pairs(morphs) do

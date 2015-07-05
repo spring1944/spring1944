@@ -650,7 +650,6 @@ local include_cache = {}
 
 -- core of include() function for unit scripts
 local function ScriptInclude(filename)
-	--Spring.Echo("  Loading include: " .. UNITSCRIPT_DIR .. filename)
 	local chunk = LoadChunk(UNITSCRIPT_DIR .. filename)
 	if chunk then
 		include_cache[filename] = chunk

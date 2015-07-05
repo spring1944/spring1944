@@ -92,7 +92,6 @@ local function CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
 end
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
-	--Spring.Echo("Reload Frame for unit " .. unitID .. " weapon# " .. weaponNum .. " is " .. reloadFrame)
 	local oldReloadFrame
 	if vehicles[unitID] and vehicles[unitID].reloadFrame then
 		oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
@@ -117,13 +116,10 @@ local function ProcessWeapons(unitID)
 	--for weapNum = 0, weaponsWithAmmo - 1 do
 	while not weaponFired and weapNum <= weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
-		--Spring.Echo(reloadFrame)
 		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
 		weapNum = weapNum + 1
 	end
-	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponFired then
-		--Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
 			SetUnitExperience(unitID, 0)

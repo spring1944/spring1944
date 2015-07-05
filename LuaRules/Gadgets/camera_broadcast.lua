@@ -80,7 +80,6 @@ local GetTeamColor = Spring.GetTeamColor
 local SendCommands = Spring.SendCommands
 local GetLastUpdateSeconds = Spring.GetLastUpdateSeconds
 
-local Echo = Spring.Echo
 local Log = Spring.Log
 local strGMatch = string.gmatch
 local strSub = string.sub

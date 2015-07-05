@@ -42,7 +42,6 @@ function GG.RemoveGrassSquare(x, z, r)
 	local startZ = math.floor(z - r/2)
 	for i = 0, r, Game.squareSize * 4 do
 		for j = 0, r, Game.squareSize * 4 do
-			--Spring.Echo(startX + i, startZ + j)
 			Spring.RemoveGrass((startX + i)/Game.squareSize, (startZ + j)/Game.squareSize)
 		end
 	end
@@ -83,7 +82,6 @@ end
 function GG.LimitRange(unitID, weaponNum, defaultRange)
 	local targetType, _, targetID = GetUnitWeaponTarget(unitID, weaponNum)
 	if targetType == 1 then -- it's a unit
-		--Spring.Echo(targetID)
 		local tx, ty, tz = GetUnitPosition(targetID)
 		local ux, uy, uz = GetUnitPosition(unitID)
 		local distance = sqrt((tx - ux)^2 + (ty - uy)^2 + (tz - uz)^2)
@@ -103,7 +101,6 @@ function GG.RecursiveHide(unitID, pieceNum, hide)
 	local children = GetUnitPieceInfo(unitID, pieceNum).children
 	if children then
 		for _, pieceName in pairs(children) do
-			--Spring.Echo("pieceName:", pieceName, pieceMap[pieceName])
 			GG.RecursiveHide(unitID, pieceMap[pieceName], hide)
 		end
 	end
@@ -183,9 +180,6 @@ end
 
 function gadget:GamePreload()
 	-- Parse UnitDef Data
-	-- for featureName, _ in pairs(FeatureDefNames) do
-		-- Spring.Echo(featureName)
-	-- end
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local info = {}
 		local cp = unitDef.customParams

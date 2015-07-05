@@ -113,7 +113,6 @@ function gadget:AllowCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams)
 		if cobScriptIDs[unitID] then
 			local fearLevel = GetUnitRulesParam(unitID, "suppress")
 			if fearLevel > 0 and fearLevel <= 2 then
-				--Spring.Echo("dude should get up and run")
 				CallCOBScript(unitID, "RestoreAfterCover", 0, 0, 0)
 			elseif fearLevel > 2 then
 				--if they're in smoke, they don't have to fear...
@@ -208,7 +207,6 @@ end
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do
 		if weaponDef.customParams.fearid then
-			--Spring.Echo(weaponDef.name) -- useful for debugging
 			Script.SetWatchWeapon(weaponId, true)
 		end
 	end

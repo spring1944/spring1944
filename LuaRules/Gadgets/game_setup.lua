@@ -212,12 +212,12 @@ local function SetStartResources(teamID)
 end
 
 local function InitAIUnitReplacementTable()
-	Spring.Echo("Loading AI unit replacement tables...")
+	Spring.Log('game setup', 'info', "Loading AI unit replacement tables...")
 	local SideFiles = VFS.DirList("luarules/configs/side_ai_unit_replacement", "*.lua")
-	Spring.Echo("Found "..#SideFiles.." tables")
+	Spring.Log('game setup', 'info', "Found "..#SideFiles.." tables")
 	-- then add their contents to the main table
 	for _, SideFile in pairs(SideFiles) do
-		Spring.Echo(" - Processing "..SideFile)
+		Spring.Log('game setup', 'info', " - Processing "..SideFile)
 		local tmpTable = VFS.Include(SideFile)
 		if tmpTable then
 			local tmpCount = 0
@@ -225,7 +225,7 @@ local function InitAIUnitReplacementTable()
 				AIUnitReplacementTable[unitName] = replacementName
 				tmpCount = tmpCount + 1
 			end
-			Spring.Echo(" -- Added "..tmpCount.." entries")
+			Spring.Log('game setup', 'info', " -- Added "..tmpCount.." entries")
 			tmpTable = nil
 		end
 	end
