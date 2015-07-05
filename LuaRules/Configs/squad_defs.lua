@@ -42,7 +42,7 @@ if UnitDefNames then
         if unitDef ~= nil then
             squadDefIDs[unitDef.id] = squad
         else
-            Spring.Echo("  Bad unitName! " .. i)
+            Spring.Log('squad defs', 'error', "  Bad unitName! " .. i)
         end
     end
 

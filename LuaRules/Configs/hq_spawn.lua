@@ -2,12 +2,12 @@ local hqDefs = {}
 
 -- let's append all the side's starting units to the list
 -- first find all the subtables
-Spring.Echo("Loading side starting unit tables...")
+Spring.Log('hq spawn', 'info', "Loading side starting unit tables...")
 local SideFiles = VFS.DirList("luarules/configs/side_hq_spawn", "*.lua")
-Spring.Echo("Found "..#SideFiles.." tables")
+Spring.Log('hq spawn', 'info', "Found "..#SideFiles.." tables")
 -- then add their contents to the main table
 for _, SideFile in pairs(SideFiles) do
-	Spring.Echo(" - Processing "..SideFile)
+	Spring.Log('hq spawn', 'info', " - Processing "..SideFile)
 	local tmpTable = VFS.Include(SideFile)
 	if tmpTable then
 		local tmpCount = 0
@@ -26,7 +26,7 @@ for _, SideFile in pairs(SideFiles) do
 			end
 			tmpCount = tmpCount + 1
 		end
-		Spring.Echo(" -- Added "..tmpCount.." entries")
+		Spring.Log('hq spawn', 'info', " -- Added "..tmpCount.." entries")
 		tmpTable = nil
 	end
 end
