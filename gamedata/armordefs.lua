@@ -2,12 +2,12 @@ local armorDefs = {}
 
 -- let's append all the side's units to the list
 -- first find all the subtables
-Spring.Echo("Loading side armordef tables...")
+Spring.Log('armordefs', 'info', "Loading side armordef tables...")
 local SideFiles = VFS.DirList("gamedata/side_armor_defs", "*.lua")
-Spring.Echo("Found "..#SideFiles.." tables")
+Spring.Log('armordefs', 'info', "Found "..#SideFiles.." tables")
 -- then add their contents to the main table
 for _, SideFile in pairs(SideFiles) do
-	Spring.Echo(" - Processing "..SideFile)
+	Spring.Log('armordefs', 'info', " - Processing "..SideFile)
 	local tmpTable = VFS.Include(SideFile)
 	if tmpTable then
 		local tmpCount = 0
@@ -24,7 +24,7 @@ for _, SideFile in pairs(SideFiles) do
 				tmpCount = tmpCount + 1
 			end
 		end
-		Spring.Echo(" -- Added "..tmpCount.." entries")
+		Spring.Log('armordefs', 'info', " -- Added "..tmpCount.." entries")
 		tmpTable = nil
 	end
 end

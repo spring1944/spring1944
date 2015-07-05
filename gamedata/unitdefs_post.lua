@@ -215,13 +215,13 @@ for name, ud in pairs(UnitDefs) do
 
         --a crazy default value so we see it when it happens
         if (not ud.mass) then
+			Spring.Log('unitdefs post', 'error', ud.name .. ' has no mass value')
             ud.mass = 99999999
         end
 		local logMass = math.log10(ud.mass)
 		local cp = ud.customparams
 		if not (cp and (cp.mother or cp.child)) then -- exclude composites
 			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
-			--Spring.Echo(name, "changed health to", ud.maxdamage)
 		end
 
 		if cp.mother then
@@ -256,7 +256,6 @@ for name, ud in pairs(UnitDefs) do
 	-- transport squad stuff
 	-- units which bring other units into game with them should have their cost and buildtime increased accordingly
 	if ud.customparams and ud.customparams.transportsquad then
-		--Spring.Echo("Unit with built-in cargo squad: "..ud.name)
 		local squadName = ud.customparams.transportsquad
 		if squadName then
 			local squadDef = squadDefs[squadName]
@@ -276,28 +275,27 @@ for name, ud in pairs(UnitDefs) do
 						totalMass = totalMass + newUD.mass
 						capacity = capacity + 1
 					else
-						Spring.Echo("Error: Bad unitdef " .. unitName .. " in squad " .. squadName)
+						Spring.Log('unitdefs post', 'error', "Bad unitdef " .. unitName .. " in squad " .. squadName)
 					end
 				end
-				--Spring.Echo("Total squad cost: "..addedCost)
 				if addedCost > 0 then
 					ud.buildcostmetal = ud.buildcostmetal + addedCost
 					ud.buildtime = ud.buildcostmetal
-					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+					Spring.Log('unitdefs post', 'info', "Added cargo cost to transport: "..ud.name.." +"..addedCost)
 				end
 				if tonumber(ud.transportcapacity) < capacity then
 					ud.transportcapacity = capacity
-					Spring.Echo("Warning: "..ud.name.." transportCapacity was increased to " .. capacity)
+					Spring.Log('unitdefs post', 'warning', ud.name.." transportCapacity was increased to " .. capacity)
 				end
 				if tonumber(ud.transportmass) < totalMass then
 					ud.transportmass = totalMass
-					Spring.Echo("Warning: "..ud.name.." transportMass was increased to " .. totalMass)
+					Spring.Log('unitdefs post', 'warning', ud.name.." transportMass was increased to " .. totalMass)
 				end
 			else
-				Spring.Echo("Squad def name not found in loaded table: "..squadName)
+				Spring.Log('unitdefs post', 'error', "Squad def name not found in loaded table: "..squadName)
 			end
 		else
-			Spring.Echo("Squad unit not found in squad def files: "..squadName)
+			Spring.Log('unitdefs post', 'error', "Squad unit not found in squad def files: "..squadName)
 		end
 	end
 	-- sounds
@@ -317,13 +315,10 @@ for name, ud in pairs(UnitDefs) do
 				local available = VFS.DirList(path, "*_" .. key .. "*")
 				if #available > 0 then
 					for index, item in pairs(available) do
-						--Spring.Echo("Available", index, item, key)
 						sounds[key][index] = item:sub(8, -5) -- cut off "sounds/" and file extension
-						--Spring.Echo("Adding sound: " .. sounds[key][index] .. " to unit: " .. ud.name)
 					end
 					break
 				end
-				--Spring.Echo("No available " .. key .. " sound for " .. ud.name .. ", trying next level")
 			end
 		end
 		ud.sounds = sounds

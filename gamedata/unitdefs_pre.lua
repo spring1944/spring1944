@@ -94,10 +94,8 @@ function setmetatable(t, mt)
 					__newindex  = function() error('Attempt to write to system') end,
 					__metatable = function() error('Attempt to access system metatable') end
 				})
-				--Spring.Echo("foo", type(sharedEnv), type(sharedEnvMT))
 			end
 			local x = setmetatable_orig(t, { __index = sharedEnvMT })
-			--Spring.Echo("bar", x.SharedDefFunc)
 			return x
 		end
 	end

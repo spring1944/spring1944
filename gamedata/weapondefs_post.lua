@@ -227,7 +227,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
           end
         end
       else
-        Spring.Echo("weapondefs_post.lua: Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
+        Spring.Log('weapondefs post', 'error', "Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
       end
     end
   end
@@ -243,7 +243,6 @@ for unitName, ud in pairs(UnitDefs) do
 			for weaponID = 1, #weapons do -- SFX.CEG + weaponID
 				local cegFlare = cegCache[string.lower(weapons[weaponID].name)]
 				if cegFlare then
-					--Spring.Echo("cegFlare: " .. cegFlare)
 					table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 				end
 			end
@@ -277,7 +276,7 @@ end
     }
 
 
-    Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
+    Spring.Log('weapondefs post', 'info', "Starting weapon range multiplying, coefficient: "..rangeCoeff)
     for name, weaponDef in pairs(WeaponDefs) do
       local customParams = weaponDef.customparams
       if customParams then --all weapons have the damageType customParam
@@ -303,14 +302,13 @@ end
       end
 
     totalWeapons = totalWeapons + 1
-    --Spring.Echo("Done with the ranges, "..totalWeapons.." weapons processed.")
 
   if (modOptions.weapon_reload_mult) then
     local totalWeapons
     totalWeapons = 0
     local reloadCoeff
     reloadCoeff = modOptions.weapon_reload_mult
-    Spring.Echo("Starting weapon reload multiplying, coefficient: "..reloadCoeff)
+    Spring.Log('weapondefs post', 'info', "Starting weapon reload multiplying, coefficient: "..reloadCoeff)
     for name in pairs(WeaponDefs) do
       local curReload = WeaponDefs[name].reloadtime
       local rendertype = WeaponDefs[name].rendertype
@@ -378,19 +376,13 @@ for weapName, weapDef in pairs(WeaponDefs) do
 		end
 		-- add PARA onlytargetcategory to all weapons which use 'smallarm' damagetype customparam
 		if WeaponDefs[weapName].customparams.damagetype == "smallarm" then
-			--Spring.Echo("Weapon " .. weapName .. " is a smallarm")
 			for unitname, ud in pairs(UnitDefs) do
-				--Spring.Echo(unitname)
 				if ud.weapons then
-					--Spring.Echo(unitname .. " has " .. #ud.weapons .. " weapons")
 					for i in pairs(ud.weapons) do
-						--Spring.Echo("weapon " .. i .. " is " .. ud.weapons[i].name)
-						--Spring.Echo(ud.weapons[i].name .. " vs " .. weapName)
 						if string.lower(ud.weapons[i].name) == weapName then
 							local targets = ud.weapons[i].onlytargetcategory
 							if targets then
 								ud.weapons[i].onlytargetcategory = targets .. " PARA"
-								--Spring.Echo("PARA added to " .. unitname .. " weapon " .. weapName)
 							end
 						end
 					end
