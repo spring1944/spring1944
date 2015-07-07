@@ -80,13 +80,13 @@ local function IsPositionValid(teamID, unitDefID, x, z)
 	end
 	local ud = UnitDefs[unitDefID]
 	-- avoid plopping units in places they can't move out of
-	if ud.moveDef then
+	if ud.speed > 0 then
 		local sx, sy, sz = GetTeamStartPosition(teamID)
 		local validMoveToStart = TestMoveOrder(unitDefID, x, y, z, sx, sy, sz, true, true)
 		if not validMoveToStart then
 			return false
 		end
-  end
+	end
 	-- Don't place units too close together.
 	local units = GetUnitsInCylinder(x, z, CLEARANCE)
 	if (units[1] ~= nil) then
