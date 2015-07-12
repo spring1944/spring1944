@@ -96,9 +96,9 @@ local jpnDefs = {
 		},
 		name = "Mortar Team",
 		description = "3 x Type 97 81mm Mortar, 1 x Spotter: Heavy Infantry Fire Support",
-		buildCostMetal = 1580,
+		buildCostMetal = 2080,
 		buildPic = "JPNMortar.png",
-		buildTime = 1580,
+		buildTime = 2080,
 		side = "JPN",
 	},
 	["jpn_platoon_at"] =

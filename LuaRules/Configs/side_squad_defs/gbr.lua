@@ -108,9 +108,9 @@ local gbrDefs = {
 		},
 		name = "3-inch Mortar Team",
 		description = "3 x Mortar, 1 x Scout: Heavy Infantry Fire Support",
-		buildCostMetal = 2400,
+		buildCostMetal = 2140,
 		buildPic = "GBR3InMortar.png",
-		buildTime = 2400,
+		buildTime = 2140,
 		side = "GBR",
 	},
 
