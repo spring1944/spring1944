@@ -31,7 +31,8 @@ if (Game.startPosType ~= 2) then
 end
 
 if (Spring.GetGameFrame() > 1) then
-  WG.RemoveWidget(self)
+  WG.RemoveWidget(widget)
+  return false
 end
 
 --------------------------------------------------------------------------------
@@ -119,10 +120,6 @@ end
 
 function widget:Initialize()
   -- only show at the beginning
-  if (Spring.GetGameFrame() > 1) then
-    WG.RemoveWidget(self)
-    return
-  end
 
   -- get the gaia teamID and allyTeamID
   gaiaTeamID = Spring.GetGaiaTeamID()
@@ -353,9 +350,6 @@ end
 
 function widget:DrawInMiniMap(sx, sz)
   -- only show at the beginning
-  if (Spring.GetGameFrame() > 1) then
-    WG.RemoveWidget(self)
-  end
 
   gl.PushMatrix()
   gl.CallList(xformList)
