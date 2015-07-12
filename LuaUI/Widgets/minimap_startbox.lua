@@ -111,6 +111,12 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+function widget:GameFrame(n)
+  if n > 1 then
+    WG.RemoveWidget(self)
+  end
+end
+
 function widget:Initialize()
   -- only show at the beginning
   if (Spring.GetGameFrame() > 1) then
