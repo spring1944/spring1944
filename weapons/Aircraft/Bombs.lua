@@ -10,6 +10,7 @@ local BombClass = Weapon:New{
   manualBombSettings = true,
   noSelfDamage		 = true,
   reloadtime         = 600,
+  targetBorder       = 1,
   tolerance          = 5000,
   trajectoryHeight   = 0,
   turret             = true,
