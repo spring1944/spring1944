@@ -129,7 +129,6 @@ function widget:Initialize()
 			end
 		end
 	end
-	Spring.Echo(count)
 end
 
 function widget:Shutdown()
