@@ -105,9 +105,9 @@ local itaDefs = {
 		},
 		name = "Mortar Team",
 		description = "3 x 81/14 Mortar, 1 x Spotter: Heavy Infantry Fire Support",
-		buildCostMetal = 1580,
+		buildCostMetal = 2080,
 		buildPic = "ITAMortar.png",
-		buildTime = 1580,
+		buildTime = 2080,
 		side = "ITA",
 	},
 	

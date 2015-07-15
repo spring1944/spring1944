@@ -20,7 +20,6 @@ local startTime = tonumber(Spring.GetModOptions().starttime) or 5 --The time whe
 local dominationScoreTime = 30 --Time needed holding all points to score in multi domination
 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
---Spring.Echo("+++++++++++++++++++++++++++++++++++++++++++++++++++++++ "..(Spring.GetModOptions().scoremode or "nil!"))
 if Spring.GetModOptions().scoremode == "disabled" or Spring.GetModOptions().scoremode == nil then return false end
 
 local limitScore = tonumber(Spring.GetModOptions().limitscore) or 200
@@ -165,7 +164,6 @@ function gadget:GameFrame(f)
             end
          end
          for a,s in pairs(score) do
-            --Spring.Echo("Team "..a..": "..s)
             if s <= 0 then
                Loser(a)
             end
@@ -180,7 +178,6 @@ function gadget:GameFrame(f)
             end
          end
          for a,s in pairs(score) do
-            --Spring.Echo("Team "..a..": "..s)
             if s <= 0 then
                Loser(a)
             end
@@ -233,7 +230,6 @@ local function DrawPoints()
    for _,p in spairs(SYNCED.points) do
       local r,g,b = .5,.5,.5
       if p.owner then
-         --Spring.Echo(p.owner, me)
          if p.owner == me then
             r,g,b = 0,1,0
          else

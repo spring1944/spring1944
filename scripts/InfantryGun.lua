@@ -218,7 +218,7 @@ local function PickPose(name)
 			transition = transitions[currentPoseName][name]
 		end
 		if not transition then
-			Spring.Echo("no change possible", currentPoseName, name)
+			Spring.Log("infantrygun script", "error", "no change possible " .. currentPoseName .. " " .. name)
 			return false
 		end
 
@@ -312,7 +312,7 @@ local function ResolvePose(isFire)
 		end
 		if not NextPose() then
 			Sleep(33)
-			Spring.Echo("animation error")
+			Spring.Log("infantrygun script", "error", "animation error")
 		end
 	end
 	--Spring.Echo("ending transition")

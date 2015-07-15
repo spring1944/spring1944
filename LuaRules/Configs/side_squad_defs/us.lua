@@ -109,9 +109,9 @@ local usDefs = {
 		},
 		name = "Mortar Team",
 		description = "3 x M1 Mortar, 1 x Scout: Heavy Infantry Fire Support",
-		buildCostMetal = 1850,
+		buildCostMetal = 2100,
 		buildPic = "usmortar.png",
-		buildTime = 1850,
+		buildTime = 2100,
 		side = "US",
 	},
 

@@ -173,7 +173,7 @@ end
 local function BuildMorphDef(udSrc, morphData)
   local udDst = UnitDefNames[defNamesL[string.lower(morphData.into)] or -1]
   if (not udDst) then
-    Spring.Echo('Morph gadget: Bad morph dst type: ' .. morphData.into)
+    Spring.Log('morph gadget', 'error', 'Bad morph dst type: ' .. morphData.into)
     return
   else
     local unitDef = udDst
@@ -199,7 +199,7 @@ local function BuildMorphDef(udSrc, morphData)
       if (require) then
         reqDefIDs[require]=true
       else
-        Spring.Echo('Morph gadget: Bad morph requirement: ' .. morphData.require)
+        Spring.Log('morph gadget', 'error', 'Morph gadget: Bad morph requirement: ' .. morphData.require)
         require = -1
       end
     end
@@ -231,7 +231,7 @@ local function ValidateMorphDefs(mds)
   for src,morphData in pairs(mds) do
     local udSrc = UnitDefNames[defNamesL[string.lower(src)] or -1]
     if (not udSrc) then
-      Spring.Echo('Morph gadget: Bad morph src type: ' .. src)
+      Spring.Log('morph gadget', 'error', 'Bad morph src type: ' .. src)
     else
       newDefs[udSrc.id] = {}
       if (morphData.into) then
@@ -1464,14 +1464,12 @@ function gadget:AICallIn(data)
         if unitID and Spring.ValidUnitID(unitID) then
           if message[4] then
             local destDefId=tonumber(message[4])
-            --Spring.Echo("Morph AICallIn: Morphing Unit["..unitID.."] into "..UnitDefs[destDefId].name)
             Spring.GiveOrderToUnit(unitID,CMD_MORPH,{destDefId},{})
           else
-            --Spring.Echo("Morph AICallIn: Morphing Unit["..unitID.."] to auto")
             Spring.GiveOrderToUnit(unitID,CMD_MORPH,{},{})
           end
         else
-          Spring.Echo("Not a valid unitID in AICallIn morph request: \""..data.."\"")
+          Spring.Log('morph gadget', 'error', "Not a valid unitID in AICallIn morph request: \""..data.."\"")
         end
       end
     end

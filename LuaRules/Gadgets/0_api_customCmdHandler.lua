@@ -38,7 +38,6 @@ local function GetCmdID(name)
 		customCommands.IDs[name] = cmdID
 		_G.CustomCommandIDs[name] = cmdID
 		gadgetHandler:RegisterCMDID(cmdID)
-		--Spring.Echo(name, cmdID)
 	end
 	return cmdID
 end
@@ -48,7 +47,6 @@ GG.CustomCommands.GetCmdID = GetCmdID
 if (gadgetHandler:IsSyncedCode()) then
   function gadget:Initialize()
     for name, cmdID in pairs(customCommands.IDs) do
-	  --Spring.Echo("Adding cmd to game rules params!", name, cmdID)
       Spring.SetGameRulesParam(name, cmdID)
     end
   end

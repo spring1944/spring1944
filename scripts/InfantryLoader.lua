@@ -280,7 +280,7 @@ end
 
 local function CreateTransition(startPoseID, intermediateStances, endPoseID, delays)
 	if #intermediateStances + 1 ~= #delays then
-		Spring.Echo("Error: bad parameters for transition", startPoseID, endPoseID, #intermediateStances, #delays)
+		Spring.Log("infantry script loader", "error","bad parameters for transition " .. startPoseID .. " " .. endPoseID .. " " .. #intermediateStances .. " " .. #delays)
 	end
 	local affectedPieces = {}
 	local currentTurnData, currentMoveData = GetStanceManipulationData(poses[startPoseID])

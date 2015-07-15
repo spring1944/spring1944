@@ -139,7 +139,7 @@ for name, ud in pairs(UnitDefs) do
 	--cloaked inf)
 	ud.activatewhenbuilt = true
 	for category, detectValues in pairs(detection) do
-		if not ud.category then Spring.Echo(ud.name .. " has no category!") end
+		if not ud.category then Spring.Log('unitdefs post', 'warning', ud.name .. " has no category!") end
 		local catStart, catEnd = string.find(ud.category, category)
 		if catStart ~= nil then
 			local cat = string.sub(ud.category, catStart, catEnd)
@@ -278,7 +278,6 @@ for name, ud in pairs(UnitDefs) do
 		local cp = ud.customparams
 		if not (cp and (cp.mother or cp.child)) then -- exclude composites
 			ud.maxdamage = (powerBase ^ logMass)*scaleFactor
-			--Spring.Echo(name, "changed health to", ud.maxdamage)
 		end
 
 		if cp.mother then
@@ -315,7 +314,6 @@ for name, ud in pairs(UnitDefs) do
 	-- transport squad stuff
 	-- units which bring other units into game with them should have their cost and buildtime increased accordingly
 	if ud.customparams and ud.customparams.transportsquad then
-		--Spring.Echo("Unit with built-in cargo squad: "..ud.name)
 		local squadName = ud.customparams.transportsquad
 		if squadName then
 			local squadDef = squadDefs[squadName]
@@ -335,28 +333,27 @@ for name, ud in pairs(UnitDefs) do
 						totalMass = totalMass + (newUD.mass or newUD.maxdamage)
 						capacity = capacity + 1
 					else
-						Spring.Echo("Error: Bad unitdef " .. unitName .. " in squad " .. squadName)
+						Spring.Log('unitdefs post', 'error', "Bad unitdef " .. unitName .. " in squad " .. squadName)
 					end
 				end
-				--Spring.Echo("Total squad cost: "..addedCost)
 				if addedCost > 0 then
 					ud.buildcostmetal = ud.buildcostmetal + addedCost
 					ud.buildtime = ud.buildcostmetal
-					Spring.Echo("Added cargo cost to transport: "..ud.name.." +"..addedCost)
+					Spring.Log('unitdefs post', 'info', "Added cargo cost to transport: "..ud.name.." +"..addedCost)
 				end
 				if tonumber(ud.transportcapacity) < capacity then
 					ud.transportcapacity = capacity
-					Spring.Echo("Warning: "..ud.name.." transportCapacity was increased to " .. capacity)
+					Spring.Log('unitdefs post', 'warning', ud.name.." transportCapacity was increased to " .. capacity)
 				end
 				if tonumber(ud.transportmass) < totalMass then
 					ud.transportmass = totalMass
-					Spring.Echo("Warning: "..ud.name.." transportMass was increased to " .. totalMass)
+					Spring.Log('unitdefs post', 'warning', ud.name.." transportMass was increased to " .. totalMass)
 				end
 			else
-				Spring.Echo("Squad def name not found in loaded table: "..squadName)
+				Spring.Log('unitdefs post', 'error', "Squad def name not found in loaded table: "..squadName)
 			end
 		else
-			Spring.Echo("Squad unit not found in squad def files: "..squadName)
+			Spring.Log('unitdefs post', 'error', "Squad unit not found in squad def files: "..squadName)
 		end
 	end
 	
@@ -378,13 +375,10 @@ for name, ud in pairs(UnitDefs) do
 				local available = VFS.DirList(path, "*_" .. key .. "*")
 				if #available > 0 then
 					for index, item in pairs(available) do
-						--Spring.Echo("Available", index, item, key)
 						sounds[key][index] = item:sub(8, -5) -- cut off "sounds/" and file extension
-						--Spring.Echo("Adding sound: " .. sounds[key][index] .. " to unit: " .. ud.name)
 					end
 					break
 				end
-				--Spring.Echo("No available " .. key .. " sound for " .. ud.name .. ", trying next level")
 			end
 		end
 		ud.sounds = sounds
@@ -395,7 +389,7 @@ for name, ud in pairs(UnitDefs) do
 		if not ud.buildtime then
 			ud.buildtime = ud.buildcostmetal
 		elseif ud.buildtime ~= ud.buildcostmetal then
-			Spring.Echo("Warning: Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
+			Spring.Log("unitdefs post", "warning", "Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
 		end
 	end
 	
@@ -403,12 +397,11 @@ for name, ud in pairs(UnitDefs) do
 	if (ud.script == 'Vehicle.lua' or ud.script == 'Deployed.lua' or ud.script == 'BoatChild.lua') and
 		ud.weapons and #ud.weapons > 0 and
 		ud.customparams and not ud.customparams.turretturnspeed then
-		Spring.Echo("Warning: No turret turn speed for " .. ud.name)
+		Spring.Log("unitdefs post", "warning", "No turret turn speed for " .. ud.name)
 	end
 	
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
-	if not ud.mass then Spring.Echo(ud.name, ud.maxdamage) end
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name

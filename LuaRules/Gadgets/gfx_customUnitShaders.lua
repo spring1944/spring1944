@@ -161,7 +161,7 @@ local function CompileShader(shader, definitions, plugins)
   local GLSLshader = gl.CreateShader(shader)
   local errorLog = gl.GetShaderLog()
   if (errorLog and errorLog~= "") then
-    Spring.Echo("Custom Unit Shaders:", errorLog)
+    Spring.Log('customUnitShaders', 'error', "Custom Unit Shaders:", errorLog)
   end
 
   shader.vertex   = shader.vertexOrig
@@ -305,7 +305,7 @@ function ToggleNormalmapping(_,_,_, playerID)
 
   normalmapping = not normalmapping
   Spring.SetConfigInt("NormalMapping", (normalmapping and 1) or 0)
-  Spring.Echo("Set NormalMapping to " .. tostring((normalmapping and 1) or 0))
+  Spring.Log('customUnitShaders', 'info', "Set NormalMapping to " .. tostring((normalmapping and 1) or 0))
 
   if (not normalmapping) then
     --// unload normalmapped materials

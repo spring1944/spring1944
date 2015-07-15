@@ -242,6 +242,8 @@ do
 		CAMERA_STATE_FORMATS[mode] = argTable
 	end
 	Spring.SetCameraState(origState, 0)
+	
+	Spring.SendCommands("minimap min 0")
 end
 
 --does not allow spaces in keys; values are numbers

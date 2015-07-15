@@ -75,7 +75,6 @@ end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
 	if childCache[unitID] then
-		--Spring.Echo("CHILD LOADED", unitID, transportID)
 		childCache[unitID] = transportID -- set value to unitID of mother
 		table.insert(GG.boatMothers[transportID], unitID) -- insert into GG.boatMothers list
 	end 

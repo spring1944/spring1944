@@ -10,9 +10,9 @@ for unitName, unitDef in pairs(DEFS.unitDefs) do
 			armorDefs[damageGroup] = {}
 		end
 		table.insert(armorDefs[damageGroup], unitName)
-    else
-        Spring.Echo("WARNING: " .. unitName .. " has no damageGroup defined!")
-    end
+	else
+		Spring.Log("armordefs", "warning", unitName .. " has no damageGroup defined!")
+	end
 end
 
 local system = VFS.Include('gamedata/system.lua')

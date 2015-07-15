@@ -80,7 +80,6 @@ local GetTeamColor = Spring.GetTeamColor
 local SendCommands = Spring.SendCommands
 local GetLastUpdateSeconds = Spring.GetLastUpdateSeconds
 
-local Echo = Spring.Echo
 local Log = Spring.Log
 local strGMatch = string.gmatch
 local strSub = string.sub
@@ -227,6 +226,8 @@ do
 		CAMERA_STATE_FORMATS[mode] = argTable
 	end
 	Spring.SetCameraState(origState, 0)
+	
+	Spring.SendCommands("minimap min 0")
 end
 
 --does not allow spaces in keys; values are numbers

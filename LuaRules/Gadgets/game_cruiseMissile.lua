@@ -77,7 +77,6 @@ function gadget:Initialize()
     
       local dropTime = sqrt(2 * wantedHeight / (GRAVITY * gravity))
       local dropDist = speed * dropTime
-	  --Spring.Echo("dropTime: " .. dropTime, " dropDist: " .. dropDist)
       
       cruiseDefIDs[unitDefID] = {
         accuracy = accuracy,
@@ -134,7 +133,6 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   local dropDist = defInfo.dropDist
   -- the following bit on the end is an ugly hack to improve glider landing behaviour
   local dropDelay = (30 * (s - dropDist) / defInfo.speed) -- (0.0085 * s)
-  --Spring.Echo("dropDelay: " .. dropDelay, " wantedAlt: " .. wantedAlt, "uy: " .. uy, "s: " .. s)
   
   if dropDelay < 0 then
     ux, uz = tx - dropDist * sx, tz - dropDist * sz

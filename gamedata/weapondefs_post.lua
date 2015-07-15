@@ -317,12 +317,10 @@ for unitName, ud in pairs(UnitDefs) do
 					local cegFlare = cegCache[weapName]
 					local weaponCost = (weapCostCache[weapName] or -2) * (WeaponDefNames[weapName].burst or 1)
 					if cegFlare then
-						--Spring.Echo("cegFlare: " .. cegFlare)
 						table.insert(ud.sfxtypes.explosiongenerators, weaponID + 1, "custom:" .. cegFlare)
 					end
 					if weaponCost > -2 then -- some have a special case of -1
 						weaponsWithAmmo = weaponsWithAmmo + 1
-						--Spring.Echo(unitName, weapName, weaponCost)
 						local curCost = ud.customparams.weaponcost or weaponCost
 						if curCost ~= weaponCost then
 							Spring.Log('weapondefs_post', 'warning', "mismatch in weapon costs (" .. unitName .. ", " .. weapName .. " [" .. curCost .. " (current) vs. " .. weaponCost .. "(new)])")
@@ -383,7 +381,6 @@ end
 		}
 
 
-		Spring.Echo("Starting weapon range multiplying, coefficient: "..rangeCoeff)
 		for name, weaponDef in pairs(WeaponDefs) do
 			local customParams = weaponDef.customparams
 			if customParams then --all weapons have the damageType customParam
@@ -482,20 +479,14 @@ for weapName, weapDef in pairs(WeaponDefs) do
 		end
 		-- add PARA onlytargetcategory to all weapons which use 'smallarm' damagetype customparam
 		if WeaponDefs[weapName].customparams.damagetype == "smallarm" then
-			--Spring.Echo("Weapon " .. weapName .. " is a smallarm")
 			for unitname, ud in pairs(UnitDefs) do
-				--Spring.Echo(unitname)
 				if ud.weapons then
-					--Spring.Echo(unitname .. " has " .. #ud.weapons .. " weapons")
 					for i in pairs(ud.weapons) do
-						--Spring.Echo("weapon " .. i .. " is " .. ud.weapons[i].name)
-						--Spring.Echo(ud.weapons[i].name .. " vs " .. weapName)
 						local unitWeapon = ud.weapons[i].name or "NIL WEAPON NAME"
 						if string.lower(unitWeapon) == weapName then
 							local targets = ud.weapons[i].onlytargetcategory
 							if targets then
 								ud.weapons[i].onlytargetcategory = targets .. " PARA"
-								--Spring.Echo("PARA added to " .. unitname .. " weapon " .. weapName)
 							end
 						end
 					end

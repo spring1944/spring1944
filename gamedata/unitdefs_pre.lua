@@ -41,7 +41,7 @@ local function append (c, p)
 		if type(v) == "string" then
 			c[k] = v .. " " .. (c[k] or "")
 		else
-			Spring.Log("ERROR: Attempt to concatenate non-string value")
+			Spring.Log("OO Defs", "error", "Attempt to concatenate non-string value")
 		end
 	end
 end
@@ -147,10 +147,8 @@ function setmetatable(t, mt)
 					__newindex  = function() error('Attempt to write to system') end,
 					__metatable = function() error('Attempt to access system metatable') end
 				})
-				--Spring.Echo("foo", type(sharedEnv), type(sharedEnvMT))
 			end
 			local x = setmetatable_orig(t, { __index = sharedEnvMT })
-			--Spring.Echo("bar", x.SharedDefFunc)
 			return x
 		end
 	end

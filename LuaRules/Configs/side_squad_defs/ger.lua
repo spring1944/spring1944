@@ -107,9 +107,9 @@ local gerDefs = {
 		},
 		name = "GrW 34 Mortar Team",
 		description = "3 x GrW 34 Mortar, 1 x Scout: Heavy Infantry Fire Support",
-		buildCostMetal = 2260,
+		buildCostMetal = 2110,
 		buildPic = "GERGrW34.png",
-		buildTime = 2260,
+		buildTime = 2110,
 		side = "GER",
 	},
 

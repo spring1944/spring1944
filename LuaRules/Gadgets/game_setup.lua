@@ -34,6 +34,7 @@ local GetUnitDefID				= Spring.GetUnitDefID
 local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local TestBuildOrder			= Spring.TestBuildOrder
+local TestMoveOrder       = Spring.TestMoveOrder
 -- SyncedCtrl
 local CreateUnit				= Spring.CreateUnit
 local DestroyFeature			= Spring.DestroyFeature
@@ -65,7 +66,7 @@ local modOptions = Spring.GetModOptions()
 
 local AIUnitReplacementTable = {}
 
-local function IsPositionValid(unitDefID, x, z)
+local function IsPositionValid(teamID, unitDefID, x, z)
 	-- Don't place units underwater. (this is also checked by TestBuildOrder
 	-- but that needs proper maxWaterDepth/floater/etc. in the UnitDef.)
 	local y = GetGroundHeight(x, z)
@@ -77,8 +78,16 @@ local function IsPositionValid(unitDefID, x, z)
 	if (test ~= 2) then
 		return false
 	end
-	-- Don't place units too close together.
 	local ud = UnitDefs[unitDefID]
+	-- avoid plopping units in places they can't move out of
+	if ud.speed > 0 then
+		local sx, sy, sz = GetTeamStartPosition(teamID)
+		local validMoveToStart = TestMoveOrder(unitDefID, x, y, z, sx, sy, sz, true, true)
+		if not validMoveToStart then
+			return false
+		end
+	end
+	-- Don't place units too close together.
 	local units = GetUnitsInCylinder(x, z, CLEARANCE)
 	if (units[1] ~= nil) then
 		return false
@@ -118,7 +127,7 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 				local dz = math.random(-spread, spread)
 				local x = px + dx
 				local z = pz + dz
-				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(udid, x, z) then
+				if (dx*dx + dz*dz > HQ_CLEARANCE * HQ_CLEARANCE) and IsPositionValid(teamID, udid, x, z) then
 					-- hack to make soviet AIs spawn with static storage instead of deployable truck
 					-- and possibly other AI-specific units
 					-- facing toward map center
@@ -204,12 +213,12 @@ local function SetStartResources(teamID)
 end
 
 local function InitAIUnitReplacementTable()
-	Spring.Echo("Loading AI unit replacement tables...")
+	Spring.Log('game setup', 'info', "Loading AI unit replacement tables...")
 	local SideFiles = VFS.DirList("luarules/configs/side_ai_unit_replacement", "*.lua")
-	Spring.Echo("Found "..#SideFiles.." tables")
+	Spring.Log('game setup', 'info', "Found "..#SideFiles.." tables")
 	-- then add their contents to the main table
 	for _, SideFile in pairs(SideFiles) do
-		Spring.Echo(" - Processing "..SideFile)
+		Spring.Log('game setup', 'info', " - Processing "..SideFile)
 		local tmpTable = VFS.Include(SideFile)
 		if tmpTable then
 			local tmpCount = 0
@@ -217,7 +226,7 @@ local function InitAIUnitReplacementTable()
 				AIUnitReplacementTable[unitName] = replacementName
 				tmpCount = tmpCount + 1
 			end
-			Spring.Echo(" -- Added "..tmpCount.." entries")
+			Spring.Log('game setup', 'info', " -- Added "..tmpCount.." entries")
 			tmpTable = nil
 		end
 	end

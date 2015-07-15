@@ -256,12 +256,6 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		mult = mult + 1
 	end
 	
-	--debug
-	--[[
-	local unitDef = UnitDefs[unitDefID]
-	Spring.Echo(weaponDef.name, inverseArmorTranslation(penetration), unitDef.name, inverseArmorTranslation(armor), mult, damage * mult)
-	]]
-	
 	return damage * mult
 end
 
@@ -282,6 +276,6 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function gadget:GameOver()
-	Spring.Echo("[Armour Gadget] Base Hits: " .. baseHits)
-	Spring.Echo("[Armour Gadget] Turret Hits: " .. turretHits)
+	Spring.Log('armour gadget', 'info', "Base Hits: " .. baseHits)
+	Spring.Log('armour gadget', 'info', "Turret Hits: " .. turretHits)
 end

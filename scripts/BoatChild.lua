@@ -67,7 +67,6 @@ end
 
 
 function script.Create()
-	--Spring.Echo("OH HAI", rearFacing)
 	StartThread(DisabledSmoke)
 	Turn(turret, y_axis, math.rad(90 * facing))
 	if flare then

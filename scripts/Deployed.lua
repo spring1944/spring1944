@@ -212,7 +212,7 @@ local function ResolvePose(isFire)
 		end
 		if not NextPose() then
 			Sleep(33)
-			Spring.Echo("animation error")
+			Spring.Log("deployed script", "error", "animation error")
 		end
 	end
 	--Spring.Echo("ending transition")

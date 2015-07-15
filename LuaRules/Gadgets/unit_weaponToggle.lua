@@ -106,7 +106,6 @@ function gadget:Initialize()
 	for unitDefID, unitDef in pairs (UnitDefs) do
 		local toggleName = unitDef.customParams.weapontoggle
 		if toggleName and toggleName ~= "false" then
-			--Spring.Echo(unitDef.name, toggleName)
 			local toggleData = toggleDefs[toggleName]
 			toggleUnits[unitDefID] = true
 			ProcessToggleData(unitDefID, toggleData)

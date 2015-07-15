@@ -112,16 +112,12 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam)
   --enable/disable for the constructor
 	local ud = UnitDefs[unitDefID]
 	if ud.buildDistance and ud.speed > 0 then
-		--Spring.Echo("Builder! ", unitTeam)
 		for buildDefID, buildability in pairs(buildables) do
-			--Spring.Echo(unitTeam, " : ", (buildability[unitTeam] or "nil"))
 			local cmdDescID = FindUnitCmdDesc(unitID, -buildDefID)
 			if cmdDescID then
 				if not buildability[unitTeam] then
-					--Spring.Echo("Disabling unit!")
 					EditUnitCmdDesc(unitID, cmdDescID, {disabled = true})
 				else
-					--Spring.Echo("Enabling unit!")
 					EditUnitCmdDesc(unitID, cmdDescID, {disabled = false})
 				end
 			end
@@ -150,7 +146,7 @@ function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
 				  buildabilty[unitTeam] = buildabilty[unitTeam] - 1
 				end
       else
-        Spring.Echo("<prereqs>: Counting error", UnitDefs[enableID].name, buildabilty[unitTeam])
+        Spring.Log('prereq gadget', 'error', "Counting error", UnitDefs[enableID].name, buildabilty[unitTeam])
       end
     end
   end

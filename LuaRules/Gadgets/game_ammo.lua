@@ -92,7 +92,6 @@ local function CheckAmmoSupplier(unitID, unitDefID, teamID, cp)
 end
 
 local function CheckReload(unitID, reloadFrame, weaponNum)
-	--Spring.Echo("Reload Frame for unit " .. unitID .. " weapon# " .. weaponNum .. " is " .. reloadFrame)
 	local oldReloadFrame
 	if vehicles[unitID] and vehicles[unitID].reloadFrame then
 		oldReloadFrame = vehicles[unitID].reloadFrame[weaponNum]
@@ -115,12 +114,9 @@ local function ProcessWeapons(unitID)
 
 	for weapNum = 1,weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
-		--Spring.Echo(reloadFrame)
 		weaponsFired = weaponsFired + (CheckReload(unitID, reloadFrame, weapNum) and 1 or 0)
 	end
-	--Spring.Echo ("Ammo level is: " .. ammoLevel)
 	if weaponsFired > 0 then
-		--Spring.Echo ("Weapon fired, ammo level is: " .. ammoLevel)
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
 			SetUnitExperience(unitID, 0)
@@ -344,7 +340,7 @@ function gadget:GameFrame(n)
 					ammoLevel = tonumber(ud.customParams.maxammo),
 					reloadFrame = {},
 				}
-				if not ud.customParams.weaponswithammo then Spring.Echo("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
+				if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
 				for weaponNum = 0, ud.customParams.weaponswithammo do
 					vehicles[unitID].reloadFrame[weaponNum] = 0
 				end
@@ -363,7 +359,7 @@ function gadget:GameFrame(n)
 						ammoLevel = ammo,
 						reloadFrame = {},
 					}
-					if not ud.customParams.weaponswithammo then Spring.Echo("ERROR: game_ammo.lua No WEAPONSWITHAMMO", ud.name) end
+					if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
 					for weaponNum = 1, ud.customParams.weaponswithammo do
 						vehicles[unitID].reloadFrame[weaponNum] = 0
 						if ammo == 0 then

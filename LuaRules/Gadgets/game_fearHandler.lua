@@ -151,12 +151,22 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	if not fearID then return false end
   
 	local unitsAtSpot = GetUnitsInSphere(px, py, pz, cp.fearaoe)
+	local validOwnerID = ValidUnitID(ownerID)
 	
 	-- if the weapon is a howitzer shell reset the gun's experience to 0
-	if ValidUnitID(ownerID) and (cp.howitzer or cp.infgun) then
+	if validOwnerID and (cp.howitzer or cp.infgun) then
 		GG.Delay.DelayCall(SetUnitExperience, {ownerID, 0}, 1)
 	end
-	
+
+	-- protect against dead owners
+	local ownerAllyTeam = -1
+	if validOwnerID then
+		ownerAllyTeam = GetUnitAllyTeam(ownerID)
+	end
+
+	-- friendly smallarms fear doesn't apply
+	local smallarms = cp.damagetype and cp.damagetype == "smallarm"
+
 	for i = 1, #unitsAtSpot do
 		local unitID = unitsAtSpot[i]
 		local ud = UnitDefs[GetUnitDefID(unitID)]
@@ -164,8 +174,17 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 			blockAllyTeams[GetUnitAllyTeam(unitID)] = unitID
 		else]]--
 		if ud.customParams.feartarget then
-			tLength = tLength + 1
-			targets[tLength] = unitID
+			local validTargetID = ValidUnitID(unitID)
+			if validTargetID then
+				local targetAllyTeam = GetUnitAllyTeam(unitID)
+				-- to minimize issues with LMGs hitting ground in the middle of friendly
+				-- group while prone
+				local friendlySmallarms = (smallarms and targetAllyTeam == ownerAllyTeam)
+				if not friendlySmallarms then
+					tLength = tLength + 1
+					targets[tLength] = unitID
+				end
+			end
 		end
 	end
 	
@@ -193,7 +212,6 @@ end
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do
 		if weaponDef.customParams.fearid or weaponDef.customParams.projectilelups then
-			--Spring.Echo(weaponDef.name) -- useful for debugging
 			Script.SetWatchWeapon(weaponId, true)
 		end
 	end
