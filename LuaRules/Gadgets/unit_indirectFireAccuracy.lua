@@ -71,7 +71,8 @@ local function updateUnit(unitID, coords)
 	local newAccuracy
 	
 	local allyTeam = Spring.GetUnitAllyTeam(unitID)
-	if Spring.IsPosInAirLos(targetPos[1], targetPos[2], targetPos[3], allyTeam) then
+	local targetInLosOrRadar = Spring.GetPositionLosState(targetPos[1], targetPos[2], targetPos[3], allyTeam)
+	if targetInLosOrRadar then
 		local ux, _ , uz = Spring.GetUnitPosition(unitID)
 		local targetDist = Dist2D(targetPos[1], targetPos[3], ux, uz)
 		local hitDist = Dist2D(coords[1], coords[3], targetPos[1], targetPos[3])
@@ -117,7 +118,9 @@ function gadget:Explosion(weaponDefID, px, py, pz, attackerID)
 	end
 	
 	local allyTeam = Spring.GetUnitAllyTeam(attackerID)
-	if Spring.IsPosInAirLos(px, py, pz, allyTeam) then
+
+	local impactInLosOrRadar = Spring.GetPositionLosState(px, py, pz, allyTeam)
+	if impactInLosOrRadar then
 		lastHit[attackerID][1], lastHit[attackerID][2], lastHit[attackerID][3] = px, py, pz
 	end
 end
