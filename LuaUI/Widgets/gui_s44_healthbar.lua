@@ -179,9 +179,13 @@ end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
 	if data then
+		-- a special scale factor for this particular aura
+		local scaleFactor = data.scale or 1
+		scale = scaleFactor * scale
+		local value = data.value
 		iconwidth = (5 * scale)
 		glColor(1,1,1,1)
-		glTex("LuaUI/Images/" .. type .. "/" .. type .. data .. ".png")
+		glTex("LuaUI/Images/" .. type .. "/" .. type .. value .. ".png")
 		glTexRect(
 			height * -0.55 - scale + (iconwidth * num),			--left edge
 			-1.5 * scale - iconwidth,
@@ -368,9 +372,16 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
 			unitAuras[uid] =
 			{
-				["suppress"] = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
-				["ammo"] = auraoutofammo and 4 or nil,
-				["insupply"] = aurainsupply,
+				["suppress"] = {
+					value = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
+				},
+				["ammo"] = {
+					value = auraoutofammo and 4 or nil,
+					scale = 1.75,
+				},
+				["insupply"] = {
+					value = aurainsupply,
+				}
 				--['buildspeed'] = aurabuildspeed,
 				--['hp'] = aurahp,
 				--['heal'] = auraheal,
@@ -465,7 +476,7 @@ function widget:DrawWorld()
 						local counter = 0
 						if unitAuras[uid] then
 							for type, data in pairs(unitAuras[uid]) do
-								if(data > 0) then
+								if(data.value and data.value > 0) then
 									DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
 									counter = counter + 1
 								end
