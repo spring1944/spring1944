@@ -16,6 +16,11 @@ function widget:Update(dt)
 	local units = Spring.GetSelectedUnits()
 	if units and units[1] then
 		local unitTeam = Spring.GetUnitTeam(units[1])
+		if not unitTeam then
+			Spring.SendCommands("specfullview ".. 3)
+			unitTeam = Spring.GetUnitTeam(units[1])
+			Spring.SendCommands("specfullview ".. 2)
+		end
 		if unitTeam ~= currentTeam then
 			Spring.SendCommands("specteam ".. unitTeam)
 			currentTeam = unitTeam

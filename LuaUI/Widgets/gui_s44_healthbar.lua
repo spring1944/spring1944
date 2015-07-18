@@ -23,10 +23,7 @@ local GetUnitHealth = Spring.GetUnitHealth
 local GetUnitIsBuilding = Spring.GetUnitIsBuilding
 local GetUnitIsTransporting = Spring.GetUnitIsTransporting
 local GetUnitRulesParam = Spring.GetUnitRulesParam
-local GetUnitShieldState = Spring.GetUnitShieldState
-local GetCameraDirection = Spring.GetCameraDirection
 local GetLocalTeamID = Spring.GetLocalTeamID
-local GetLocalAllyTeamID = Spring.GetLocalAllyTeamID
 local GetUnitRadius = Spring.GetUnitRadius
 local GetCameraPosition = Spring.GetCameraPosition
 local GetUnitWeaponState = Spring.GetUnitWeaponState
@@ -79,6 +76,8 @@ local unitBars = {}
 
 local ICON_TYPE = {}
 local SHOW_ICON = {}
+
+local spectatedTeam
 
 
 local iconTypes = VFS.Include("gamedata/icontypes.lua")
@@ -257,13 +256,6 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 	if bars.health then
 		local curHP,maxHP,paradmg = GetUnitHealth(uid)
 
-		-- spec with /specfullview off changing teams can trigger this
-		-- the unit ID is valid, but you're not allowed to get info about units
-		-- you can't see.
-		if not curHP then
-			return
-		end
-
 		curHP = math.max(0, curHP)
 		local pct = (curHP / maxHP)
 		local health = bars.health
@@ -413,6 +405,12 @@ end
 
 function widget:DrawWorld()
 	if not IsGUIHidden() then
+		local newSpectatedTeam = GetLocalTeamID()
+		if spectatedTeam ~= newSpectatedTeam then
+			unitData = {}
+			unitBars = {}
+			unitAuras = {}
+		end
 		local getAuras = false
 		local scalefactor = 500
 		glDepthMask(true)
@@ -422,81 +420,79 @@ function widget:DrawWorld()
 		for _,uid in pairs(GetVisibleUnits(ALL_UNITS,iconDist,false)) do
 
 			local udid = GetUnitDefID(uid)
-			if not unitData[uid] or unitData[uid].frame < currentFrame then
-				GenerateUnitGraphics(uid, udid, getAuras)
-			end
-
-			local display = unitData[uid].display or IsUnitSelected(uid)
-			unitData[uid].display = display
-
-			local radius,r,g,b,x,y,z,heightscale
-
-			if display or SHOW_ICON[udid] then
-
-				radius = GetUnitRadius(uid)
-
-				-- this can happen if a spec with /specfullview changes teams:
-				-- the selected unit went out of LoS, and unit data calls start
-				-- returning nil
-				if radius == nil then
-					return
+			
+			--Verify we can really access information about this unit.
+			--This should solve issues when switching spectated team
+			if udid then
+				if not unitData[uid] or unitData[uid].frame < currentFrame then
+					GenerateUnitGraphics(uid, udid, getAuras)
 				end
-
-				if radius <= 4 then radius = radius * 7 end
-				local teamID = GetUnitTeam(uid)
-				r,g,b = GetTeamColor(teamID)
-				x,y,z = GetUnitBasePosition(uid)
-				heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
-
-
-				glPushMatrix()
-					glTranslate(x, y, z)
-					glBillboard()
-					glTranslate(0, -radius, 0)
-
-					local alpha = 1
-					if not display then
-						alpha = (heightscale/3.4)
-					end
-
-					if ICON_TYPE[udid] and alpha > 0.3 then
-						glColor(r,g,b,alpha)
-						glTex(ICON_TYPE[udid])
-						glTexRect(radius*-0.65-(16 * heightscale), -8*heightscale, radius*-0.65, 8*heightscale)
-						glTex(false)
-					end
-			end
-			if display then
-					local counter = 0
-					if unitAuras[uid] then
-						for type, data in pairs(unitAuras[uid]) do
-							if(data > 0) then
-								DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
+	
+				local display = unitData[uid].display or IsUnitSelected(uid)
+				unitData[uid].display = display
+	
+				local radius,r,g,b,x,y,z,heightscale
+	
+				if display or SHOW_ICON[udid] then
+	
+					radius = GetUnitRadius(uid)
+	
+					if radius <= 4 then radius = radius * 7 end
+					local teamID = GetUnitTeam(uid)
+					r,g,b = GetTeamColor(teamID)
+					x,y,z = GetUnitBasePosition(uid)
+					heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
+	
+	
+					glPushMatrix()
+						glTranslate(x, y, z)
+						glBillboard()
+						glTranslate(0, -radius, 0)
+	
+						local alpha = 1
+						if not display then
+							alpha = (heightscale/3.4)
+						end
+	
+						if ICON_TYPE[udid] and alpha > 0.3 then
+							glColor(r,g,b,alpha)
+							glTex(ICON_TYPE[udid])
+							glTexRect(radius*-0.65-(16 * heightscale), -8*heightscale, radius*-0.65, 8*heightscale)
+							glTex(false)
+						end
+				end
+				if display then
+						local counter = 0
+						if unitAuras[uid] then
+							for type, data in pairs(unitAuras[uid]) do
+								if(data > 0) then
+									DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
+									counter = counter + 1
+								end
+							end
+							counter = 0
+						end
+	
+	
+						--glTex('LuaUI/zui/bars/hp.png')
+						for bar, bardata in pairs(unitBars[uid]) do
+							local pct = bardata.pct
+							if(pct) then
+								if pct > 1 then
+									pct = 1
+								elseif pct < 0 then
+									pct = 0
+								end
+								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
 							end
 						end
-						counter = 0
-					end
-
-
-					--glTex('LuaUI/zui/bars/hp.png')
-					for bar, bardata in pairs(unitBars[uid]) do
-						local pct = bardata.pct
-						if(pct) then
-							if pct > 1 then
-								pct = 1
-							elseif pct < 0 then
-								pct = 0
-							end
-							DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, pct, bardata.color, bardata.paralyze)
-							counter = counter + 1
-						end
-					end
-					--glTex(false)
-
-			end
-			if display or SHOW_ICON[udid] then
-				glPopMatrix()
+						--glTex(false)
+	
+				end
+				if display or SHOW_ICON[udid] then
+					glPopMatrix()
+				end
 			end
 		end
 		glColor(1,1,1,1)

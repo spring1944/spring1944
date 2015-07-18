@@ -353,6 +353,18 @@ local function UpdatePlayerButtons()
 		playerButtons[k] = nil
 	end
 	local y = 20
+	local _, specFullview, _ = Spring.GetSpectatingState()
+	playerButtons[#playerButtons + 1] = Chili.Button:New{
+		y = y, width = 80, caption = specFullview and "Viewing All" or "Viewing Team", 
+		OnClick = {
+			function(self) 
+				Spring.SendCommands("specfullview ".. (specFullview and 2 or 3)) 
+				UpdatePlayerButtons()
+			end
+		}
+	}
+	y = y + 20
+	
 	for playerID, _ in pairs(lastBroadcasts) do
 		local playerName, _, _, teamID = Spring.GetPlayerInfo(playerID)
 		playerButtons[#playerButtons + 1] = Chili.Button:New{
