@@ -119,8 +119,8 @@ function gadget:Explosion(weaponDefID, px, py, pz, attackerID)
 	
 	local allyTeam = Spring.GetUnitAllyTeam(attackerID)
 
-	local impactInLosOrRadar = Spring.GetPositionLosState(px, py, pz, allyTeam)
-	if impactInLosOrRadar then
+	local visibleImpact = Spring.IsPosInAirLos(px, py, pz, allyTeam)
+	if visibleImpact then
 		lastHit[attackerID][1], lastHit[attackerID][2], lastHit[attackerID][3] = px, py, pz
 	end
 end
