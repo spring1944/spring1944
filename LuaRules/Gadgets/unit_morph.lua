@@ -626,6 +626,47 @@ local function FinishMorph(unitID, morphData)
     Spring.SetUnitShieldState(newUnit, enabled,oldShieldState)
   end
 
+  -- unload units so they don't die when the transport does
+  local transportedUnits = Spring.GetUnitIsTransporting(unitID)
+  if (transportedUnits and #transportedUnits > 0) then
+    -- this is a quick hack for spawning them in a loose rectangle.
+    -- we should really have some generalized API for 'spawn a bunch of units
+    -- in some shape' that handles all the stuff about pathing/collision/etc.
+    local spawnDistance = 15
+    local spawnStart = -1 * (#transportedUnits / 2 * spawnDistance)
+    for index, transportedUnitID in ipairs(transportedUnits) do
+      local transportedDefID = Spring.GetUnitDefID(transportedUnitID)
+      local transportedDef = UnitDefs[transportedDefID]
+      local offsetSwitch = 1
+      if index % 2 == 0 then
+        offsetSwitch = -1
+      end
+      local zOffset = spawnStart + index * spawnDistance
+      local xOffset = offsetSwitch * spawnDistance
+
+      local absZ = math.abs(zOffset)
+      if absZ >= 0 and absZ < (2 * spawnDistance) then
+        xOffset = xOffset + (offsetSwitch * 2 * spawnDistance)
+      end
+
+      local replacement = Spring.CreateUnit(transportedDef.name, px + xOffset, py, pz + zOffset, 0, unitTeam)
+
+      local exp = Spring.GetUnitExperience(transportedUnitID)
+      local health = Spring.GetUnitHealth(transportedUnitID)
+
+      Spring.SetUnitExperience(replacement, exp)
+      Spring.SetUnitHealth(replacement, health)
+
+      if (transportedDef.customParams.maxammo) then
+        local ammoLevel = Spring.GetUnitRulesParam(transportedUnitID, "ammo")
+        Spring.SetUnitRulesParam(replacement, "ammo", ammoLevel)
+      end
+
+      Spring.DestroyUnit(transportedUnitID, false, true)
+    end
+
+  end
+
   --// FIXME: - re-attach to current transport?
   --// update selection
   SendToUnsynced("unit_morph_finished", unitID, newUnit)
