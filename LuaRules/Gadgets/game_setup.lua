@@ -195,7 +195,6 @@ local function SpawnStartUnit(teamID)
 		
 		local unitID = CreateUnit(startUnit, x, y, z, facing, teamID)
 		ClearUnitPosition(unitID)
-		startUnit = GetStartUnit(teamID)
 		SpawnBaseUnits(teamID, startUnit, x, z)
 	end
 end
