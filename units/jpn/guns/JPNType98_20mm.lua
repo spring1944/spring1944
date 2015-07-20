@@ -23,4 +23,5 @@ local JPN_Type98_20mm_Stationary = AAGun:New{
 return lowerkeys({
 	["JPNType98_20mm_Truck"] = JPN_Type98_20mm_Truck,
 	["JPNType98_20mm_Stationary"] = JPN_Type98_20mm_Stationary,
+	["JPNType98_20mm_Stationary_base"] = JPN_Type98_20mm_Stationary:Clone("JPNType98_20mm_Stationary"),
 })

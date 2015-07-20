@@ -23,10 +23,7 @@ local GetUnitHealth = Spring.GetUnitHealth
 local GetUnitIsBuilding = Spring.GetUnitIsBuilding
 local GetUnitIsTransporting = Spring.GetUnitIsTransporting
 local GetUnitRulesParam = Spring.GetUnitRulesParam
-local GetUnitShieldState = Spring.GetUnitShieldState
-local GetCameraDirection = Spring.GetCameraDirection
 local GetLocalTeamID = Spring.GetLocalTeamID
-local GetLocalAllyTeamID = Spring.GetLocalAllyTeamID
 local GetUnitRadius = Spring.GetUnitRadius
 local GetCameraPosition = Spring.GetCameraPosition
 local GetUnitWeaponState = Spring.GetUnitWeaponState
@@ -66,7 +63,7 @@ local function GetTeamColor(teamID)
 	if (color) then
 		return color[1],color[2],color[3]
 	end
-	
+
 	local r,g,b = Spring.GetTeamColor(teamID)
 	color = { r, g, b }
 	teamColors[teamID] = color
@@ -79,6 +76,8 @@ local unitBars = {}
 
 local ICON_TYPE = {}
 local SHOW_ICON = {}
+
+local spectatedTeam
 
 
 local iconTypes = VFS.Include("gamedata/icontypes.lua")
@@ -116,20 +115,19 @@ function widget:Initialize()
 	widgetHandler:AddAction("hpdisp", hpdisp)
 	Spring.SendCommands({"unbind f9 showhealthbars"})
 	Spring.SendCommands({"bind f9 luaui hpdisp"})
-	
+
 	local count = 0
 	for udid, ud in pairs(UnitDefs) do
 		for i=1, #ud.weapons do
 			local weaponDefID = ud.weapons[i].weaponDef
 			local weaponDef = WeaponDefs[weaponDefID]
-			
+
 			if not reloadDataList[udid] or weaponDef.reload > reloadDataList[udid][2] then
 				reloadDataList[udid] = {i, weaponDef.reload}
 				count = count + 1
 			end
 		end
 	end
-	Spring.Echo(count)
 end
 
 function widget:Shutdown()
@@ -181,9 +179,13 @@ end
 
 local function DrawAuraIndicator(num, type, data, height, scale)
 	if data then
+		-- a special scale factor for this particular aura
+		local scaleFactor = data.scale or 1
+		scale = scaleFactor * scale
+		local value = data.value
 		iconwidth = (5 * scale)
 		glColor(1,1,1,1)
-		glTex("LuaUI/Images/" .. type .. "/" .. type .. data .. ".png")
+		glTex("LuaUI/Images/" .. type .. "/" .. type .. value .. ".png")
 		glTexRect(
 			height * -0.55 - scale + (iconwidth * num),			--left edge
 			-1.5 * scale - iconwidth,
@@ -194,7 +196,7 @@ local function DrawAuraIndicator(num, type, data, height, scale)
 end
 
 local function GenerateUnitGraphics(uid, udid, getAuras)
-	
+
 	--General
 	local ud = UnitDefs[udid]
 	if not unitData[uid] then
@@ -202,12 +204,12 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
     end
     unitData[uid].display = false
     unitData[uid].frame = currentFrame
-    
+
 	-- Don't show transported
 	if not Spring.ValidUnitID(uid) or (Spring.GetUnitTransporter(uid) and not ud.customParams.child) then
         return
 	end
-	
+
 	local bars = unitBars[uid]
 	if not bars then
 		unitBars[uid] = {}
@@ -224,24 +226,24 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
                 bars.ammo.max = ud.customParams.maxammo
                 bars.ammo.color = {1.0, 1.0, 0, 0.8}
             end
-            
+
             if ud.maxFuel > 0 then
                 bars.fuel = {}
                 bars.fuel.max = MAP_FUEL_SCALE(ud.maxFuel)
                 bars.fuel.color = {0.9, 0.5766, 0.207, 0.8}
             end
-            
+
             if ud.isBuilder then
                 bars.build = {}
                 bars.build.color = {0, 0, 0, 0.8}
             end
-            
+
             if ud.isTransport and not ud.customParams.mother then
                 bars.transport = {}
                 bars.transport.max = ud.transportMass
                 bars.transport.color = {1, 1, 1, 0.8}
             end
-            
+
             if reloadDataList[udid] then
                 bars.reload = {}
                 bars.reload.max = 1
@@ -249,17 +251,15 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
             end
         end
 	end
-	
+
 	local display = false
-	
-	
-	
+
+
+
 	-- HEALTH
 	if bars.health then
 		local curHP,maxHP,paradmg = GetUnitHealth(uid)
-		-- if not curHP then --not really accessible
-			-- return
-		-- end
+
 		curHP = math.max(0, curHP)
 		local pct = (curHP / maxHP)
 		local health = bars.health
@@ -271,8 +271,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			display = true
 		end
 	end
-	
-	
+
+
 	-- AMMO
 	if bars.ammo then
 		local maxAmmo = ud.customParams.maxammo
@@ -285,8 +285,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			end
 		end
 	end
-	
-	
+
+
 	-- FUEL
 	if bars.fuel then
 		local curFuel = Spring.GetUnitFuel(uid)
@@ -294,11 +294,11 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		bars.fuel.pct = curFuel / MAP_FUEL_SCALE(ud.maxFuel)
 		display = true
 	end
-	
-	
+
+
 	-- BUILD
 	local unitbuildid
-	
+
 	if bars.build then
 		unitbuildid = GetUnitIsBuilding(uid)
 		if unitbuildid then
@@ -312,8 +312,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.build.pct = nil
 		end
 	end
-	
-	
+
+
 	-- TRANSPORT
 	local transportingUnits
 	if bars.transport then
@@ -332,10 +332,10 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			bars.transport.pct = nil
 		end
 	end
-	
-	
+
+
 	-- RELOAD
-	if bars.reload then 
+	if bars.reload then
 		local reloadData = reloadDataList[udid]
 		local primaryWeapon, reloadTime = reloadData[1], reloadData[2]
 		if reloadTime >= MIN_RELOAD_TIME then
@@ -355,9 +355,9 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			end
 		end
 	end
-	
+
 	-- AURAS
-	
+
 	if getAuras then
 		--[[local aurabuildspeed = GetUnitRulesParam(uid, "aurabuildspeed") or 0
 		local aurahp = GetUnitRulesParam(uid, "aurahp") or 0
@@ -370,11 +370,18 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		local auraoutofammo = (GetUnitRulesParam(uid, "ammo") or 100) <= 0
 		local aurainsupply = GetUnitRulesParam(uid, "insupply") or 0
 		if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
-			unitAuras[uid] = 
+			unitAuras[uid] =
 			{
-				["suppress"] = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
-				["ammo"] = auraoutofammo and 4 or nil,
-				["insupply"] = aurainsupply,
+				["suppress"] = {
+					value = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
+				},
+				["ammo"] = {
+					value = auraoutofammo and 4 or nil,
+					scale = 1.75,
+				},
+				["insupply"] = {
+					value = aurainsupply,
+				}
 				--['buildspeed'] = aurabuildspeed,
 				--['hp'] = aurahp,
 				--['heal'] = auraheal,
@@ -387,11 +394,11 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 			unitAuras[uid] = nil
 		end
 	end
-	
-	if ud.customParams.child then 
+
+	if ud.customParams.child then
 		display = true
 	end
-	
+
 	unitData[uid].display = unitAuras[uid] or display
 end
 
@@ -409,6 +416,12 @@ end
 
 function widget:DrawWorld()
 	if not IsGUIHidden() then
+		local newSpectatedTeam = GetLocalTeamID()
+		if spectatedTeam ~= newSpectatedTeam then
+			unitData = {}
+			unitBars = {}
+			unitAuras = {}
+		end
 		local getAuras = false
 		local scalefactor = 500
 		glDepthMask(true)
@@ -416,75 +429,81 @@ function widget:DrawWorld()
 		local camX,camY,camZ = GetCameraPosition()
 		local getAuras = (currentFrame-1) % 30 < 1
 		for _,uid in pairs(GetVisibleUnits(ALL_UNITS,iconDist,false)) do
-			
+
 			local udid = GetUnitDefID(uid)
-			if not unitData[uid] or unitData[uid].frame < currentFrame then
-				GenerateUnitGraphics(uid, udid, getAuras)
-			end
 			
-			local display = unitData[uid].display or IsUnitSelected(uid)
-			unitData[uid].display = display
-			
-			local radius,r,g,b,x,y,z,heightscale
-			
-			if display or SHOW_ICON[udid] then
-			
-				radius = GetUnitRadius(uid)
-				if radius <= 4 then radius = radius * 7 end
-				local teamID = GetUnitTeam(uid)
-				r,g,b = GetTeamColor(teamID)
-				x,y,z = GetUnitBasePosition(uid)
-				heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
-				
-				
-				glPushMatrix()
-					glTranslate(x, y, z)
-					glBillboard()
-					glTranslate(0, -radius, 0)
-				
-					local alpha = 1
-					if not display then
-						alpha = (heightscale/3.4)
-					end
-					
-					if ICON_TYPE[udid] and alpha > 0.3 then
-						glColor(r,g,b,alpha)
-						glTex(ICON_TYPE[udid])
-						glTexRect(radius*-0.65-(16 * heightscale), -8*heightscale, radius*-0.65, 8*heightscale)
-						glTex(false)
-					end
-			end
-			if display then
-					local counter = 0
-					if unitAuras[uid] then
-						for type, data in pairs(unitAuras[uid]) do
-							if(data > 0) then
-								DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
+			--Verify we can really access information about this unit.
+			--This should solve issues when switching spectated team
+			if udid then
+				if not unitData[uid] or unitData[uid].frame < currentFrame then
+					GenerateUnitGraphics(uid, udid, getAuras)
+				end
+	
+				local display = unitData[uid].display or IsUnitSelected(uid)
+				unitData[uid].display = display
+	
+				local radius,r,g,b,x,y,z,heightscale
+	
+				if display or SHOW_ICON[udid] then
+	
+					radius = GetUnitRadius(uid)
+	
+					if radius <= 4 then radius = radius * 7 end
+					local teamID = GetUnitTeam(uid)
+					r,g,b = GetTeamColor(teamID)
+					x,y,z = GetUnitBasePosition(uid)
+					heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
+	
+	
+					glPushMatrix()
+						glTranslate(x, y, z)
+						glBillboard()
+						glTranslate(0, -radius, 0)
+	
+						local alpha = 1
+						if not display then
+							alpha = (heightscale/3.4)
+						end
+	
+						if ICON_TYPE[udid] and alpha > 0.3 then
+							glColor(r,g,b,alpha)
+							glTex(ICON_TYPE[udid])
+							glTexRect(radius*-0.65-(16 * heightscale), -8*heightscale, radius*-0.65, 8*heightscale)
+							glTex(false)
+						end
+				end
+				if display then
+						local counter = 0
+						if unitAuras[uid] then
+							for type, data in pairs(unitAuras[uid]) do
+								if(data.value and data.value > 0) then
+									DrawAuraIndicator(counter, type, data, radius, heightscale * 1.5)
+									counter = counter + 1
+								end
+							end
+							counter = 0
+						end
+	
+	
+						--glTex('LuaUI/zui/bars/hp.png')
+						for bar, bardata in pairs(unitBars[uid]) do
+							local pct = bardata.pct
+							if(pct) then
+								if pct > 1 then
+									pct = 1
+								elseif pct < 0 then
+									pct = 0
+								end
+								DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, pct, bardata.color, bardata.paralyze)
 								counter = counter + 1
 							end
 						end
-						counter = 0
-					end
-					
-					
-					--glTex('LuaUI/zui/bars/hp.png')
-					for bar, bardata in pairs(unitBars[uid]) do
-						local pct = bardata.pct
-						if(pct) then
-							if pct > 1 then
-								pct = 1
-							elseif pct < 0 then
-								pct = 0
-							end
-							DrawBar(counter, heightscale, radius, heightscale, bardata.max, bardata.cur, pct, bardata.color, bardata.paralyze)
-							counter = counter + 1
-						end
-					end
-					--glTex(false)
-				
-			end
-			if display or SHOW_ICON[udid] then 
-				glPopMatrix() 
+						--glTex(false)
+	
+				end
+				if display or SHOW_ICON[udid] then
+					glPopMatrix()
+				end
 			end
 		end
 		glColor(1,1,1,1)

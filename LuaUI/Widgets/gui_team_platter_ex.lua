@@ -275,40 +275,42 @@ function widget:DrawWorldPreUnit()
 
   for _,unitID in ipairs(spGetSelectedUnits()) do
     local udid        = spGetUnitDefID(unitID)
-    local radius    = GetUnitDefRealRadius(udid)
-    local teamID    = spGetUnitTeam(unitID)
-    local colorSet  = GetTeamColorSet(teamID)
-    if (radius) then
-      local xs,zs = 4*UnitDefs[udid].xsize or 4, 4*UnitDefs[udid].zsize or 4
-      if (Spring.GetUnitBuildFacing(unitID) or 0)%2==1 then
-        xs,zs=zs,xs
-      end
-      if (UnitDefs[udid].speed <10) then
-        glColor(colorSet[1])
-        glDrawListAtUnit(unitID, squarePolys,false,xs,1,zs)
-        glColor(colorSet[2])
-        glDrawListAtUnit(unitID, squareLines,false,xs,1,zs)
-      elseif (trackSlope and (not UnitDefs[udid].canFly)) then
-        local x, y, z = spGetUnitBasePosition(unitID)
-        local gx, gy, gz = spGetGroundNormal(x, z)
-        local degrot = math.acos(gy) * 180 / math.pi
-        
-        if (UnitDefs[udid].isBuilder == true) then
+    if udid then
+      local radius    = GetUnitDefRealRadius(udid)
+      local teamID    = spGetUnitTeam(unitID)
+      local colorSet  = GetTeamColorSet(teamID)
+      if (radius) then
+        local xs,zs = 4*UnitDefs[udid].xsize or 4, 4*UnitDefs[udid].zsize or 4
+        if (Spring.GetUnitBuildFacing(unitID) or 0)%2==1 then
+          xs,zs=zs,xs
+        end
+        if (UnitDefs[udid].speed <10) then
+          glColor(colorSet[1])
+          glDrawListAtUnit(unitID, squarePolys,false,xs,1,zs)
           glColor(colorSet[2])
-          glDrawListAtUnit(unitID, diamondPolys, false, radius, 1.0, radius, degrot, gz, 0, -gx)
-          glColor(colorSet[3])
-          glDrawListAtUnit(unitID, diamondLines, false, radius, 1.0, radius, degrot, gz, 0, -gx)
+          glDrawListAtUnit(unitID, squareLines,false,xs,1,zs)
+        elseif (trackSlope and (not UnitDefs[udid].canFly)) then
+          local x, y, z = spGetUnitBasePosition(unitID)
+          local gx, gy, gz = spGetGroundNormal(x, z)
+          local degrot = math.acos(gy) * 180 / math.pi
+          
+          if (UnitDefs[udid].isBuilder == true) then
+            glColor(colorSet[2])
+            glDrawListAtUnit(unitID, diamondPolys, false, radius, 1.0, radius, degrot, gz, 0, -gx)
+            glColor(colorSet[3])
+            glDrawListAtUnit(unitID, diamondLines, false, radius, 1.0, radius, degrot, gz, 0, -gx)
+          else
+            glColor(colorSet[2])
+            glDrawListAtUnit(unitID, circlePolys, false, radius, 1.0, radius)
+            glColor(colorSet[3])
+            glDrawListAtUnit(unitID, circleLines, false, radius, 1.0, radius, degrot, gz, 0, -gx)
+          end
         else
           glColor(colorSet[2])
           glDrawListAtUnit(unitID, circlePolys, false, radius, 1.0, radius)
           glColor(colorSet[3])
-          glDrawListAtUnit(unitID, circleLines, false, radius, 1.0, radius, degrot, gz, 0, -gx)
+          glDrawListAtUnit(unitID, circleLines, false, radius, 1.0, radius)
         end
-      else
-        glColor(colorSet[2])
-        glDrawListAtUnit(unitID, circlePolys, false, radius, 1.0, radius)
-        glColor(colorSet[3])
-        glDrawListAtUnit(unitID, circleLines, false, radius, 1.0, radius)
       end
     end
   end

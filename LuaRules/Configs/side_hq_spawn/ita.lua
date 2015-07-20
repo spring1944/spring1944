@@ -4,8 +4,8 @@ local itaData = {
         units = {
             "ita_platoon_bersaglieri",
             "itastorage",
-            "itabreda20_stationary",
-            "itabreda20_stationary",
+            "itabreda20_stationary_base",
+            "itabreda20_stationary_base",
             "itacannone65",
             "itahqengineer",
             "itacannone47_truck",

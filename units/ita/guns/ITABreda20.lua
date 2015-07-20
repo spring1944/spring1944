@@ -23,4 +23,5 @@ local ITA_Breda20_Stationary = AAGun:New{
 return lowerkeys({
 	["ITABreda20_Truck"] = ITA_Breda20_Truck,
 	["ITABreda20_Stationary"] = ITA_Breda20_Stationary,
+	["ITABreda20_Stationary_base"] = ITA_Breda20_Stationary:Clone("ITABreda20_Stationary"),
 })

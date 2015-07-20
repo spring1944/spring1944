@@ -28,7 +28,7 @@ local ruRanks = {}
 ----------------------------------------------------------------
 --config
 ----------------------------------------------------------------
-local iconSize = 0.5
+local iconSize = 0.4
 local maxScale = 7
 local lineWidth = 0.25
 local defaultRanks = usRanks

@@ -31,7 +31,7 @@ local GetUnitRulesParam      = Spring.GetUnitRulesParam
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetUnitCommands        = Spring.GetUnitCommands
 local GetUnitAllyTeam        = Spring.GetUnitAllyTeam
-local IsPosInAirLos             = Spring.IsPosInAirLos
+local GetPositionLosState    = Spring.GetPositionLosState
 local ValidUnitID            = Spring.ValidUnitID
 local WorldToScreenCoords    = Spring.WorldToScreenCoords
 local GetUnitPosition        = Spring.GetUnitPosition
@@ -77,7 +77,8 @@ function widget:DrawScreen()
 
                         if x and y and z then
                             sx, sy, sz = WorldToScreenCoords(x, y, z)
-                            if IsPosInAirLos(x, y, z, allyTeam) then
+                            local targetInRadarOrLos = GetPositionLosState(x, y, z, allyTeam)
+                            if targetInRadarOrLos then
                                 local zeroed = GetUnitRulesParam(unitID, "zeroed")
                                 if zeroed and zeroed == 1 then
                                     glColor(targettedColor)

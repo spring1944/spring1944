@@ -38,6 +38,7 @@ local GetInvertQueueKey = Spring.GetInvertQueueKey
 local GetModKeyState = Spring.GetModKeyState
 local GetMouseState = Spring.GetMouseState
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
+local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitHeading = Spring.GetUnitHeading
 local GetUnitPosition = Spring.GetUnitPosition
 local TraceScreenRay = Spring.TraceScreenRay
@@ -233,14 +234,16 @@ function widget:DrawWorld()
 		if units then
 			for i=1,#units do
 				local unitID = units[i]
-				if inDeployCmd and FindUnitCmdDesc(unitID, cmdDescID) then
-					local unitID = units[i]
-					local ux, uy, uz = GetUnitActiveCommandPosition(unitID)
-					local dx, dz = tx - ux, tz - uz
-					local rotation = math.atan2(dx, dz) * (180 / 3.1415)
-					DrawFieldOfFire2(ux, uy, uz, info[1], info[2], rotation)
-				else
-					DrawFieldOfFire(unitID, info[1], info[2])
+				if GetUnitDefID(unitID) then
+					if inDeployCmd and FindUnitCmdDesc(unitID, cmdDescID) then
+						local unitID = units[i]
+						local ux, uy, uz = GetUnitActiveCommandPosition(unitID)
+						local dx, dz = tx - ux, tz - uz
+						local rotation = math.atan2(dx, dz) * (180 / 3.1415)
+						DrawFieldOfFire2(ux, uy, uz, info[1], info[2], rotation)
+					else
+						DrawFieldOfFire(unitID, info[1], info[2])
+					end
 				end
 			end
 		end

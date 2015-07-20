@@ -82,11 +82,6 @@ function KillVoice(killerID, killerDefID, victimDefID, x, y, z)
 end
 
 function gadget:Initialize()
-	if (Game.modShortName ~= "S44") then
-		widgetHandler:RemoveWidget()
-		return
-	end
-
 	-- preload kill voice data
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local cp = unitDef.customParams
