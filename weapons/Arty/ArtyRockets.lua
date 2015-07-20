@@ -87,12 +87,15 @@ local BBR_Rack = ArtyRocketClass:New{
 	burst		= 12,
 	burstrate	= 0.5,
 	explosionGenerator = [[custom:HE_Large]],
+  	model              = [[Rocket_HVAR.S3O]],
 	name               = [[4.5" Beach Barrage Rocket Mk 7 Launcher]],
-	range              = 800,
-	soundStart         = [[RUS_Katyusha]],
-	wobble             = 2500,
+	range              = 950,
+  	startVelocity      = 600,
+	tolerance          = 300,
+	soundStart         = [[GER_Panzerschrek]],
+	wobble             = 500,
 	damage = {
-		default            = 3500,
+		default            = 2500,
 	},
 }
 
