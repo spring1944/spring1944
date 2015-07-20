@@ -16,6 +16,7 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 --
 
 local GRAVITY = 120
+local FUNCTIONS_TO_REMOVE = {"new"}
 
 local function isbool(x)   return (type(x) == 'boolean') end
 local function istable(x)  return (type(x) == 'table')   end
@@ -207,30 +208,34 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 	--------------------------------------------------------------------------------
 	-- Damage Types
 	--------------------------------------------------------------------------------
-    if weaponDef.damage then
-    local damage = weaponDef.damage
-    local defaultDamage = damage["default"]
+	if weaponDef.damage then
+		local damage = weaponDef.damage
+		local defaultDamage = damage["default"]
 
-    if defaultDamage and tonumber(defaultDamage) > 0 then
-      local damageType = "default"
-      if weaponDef.customparams and weaponDef.customparams.damagetype then
-        damageType = weaponDef.customparams.damagetype
-      end
-      local mults = damageTypes[damageType]
-      if mults then
-        for armorType, mult in pairs(mults) do
-          --you can change the default damage; all damage multipliers are based on original default however
-          --you will need to explicitly define damage multipliers of 1 in this case
-          --other explicit damages override calculated ones
-          if not damage[armorType] or armorType == "default" then
-            damage[armorType] = defaultDamage * mult
-          end
-        end
-      else
-        Spring.Log('weapondefs post', 'error', "Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
-      end
-    end
-  end
+		if defaultDamage and tonumber(defaultDamage) > 0 then
+			local damageType = "default"
+			if weaponDef.customparams and weaponDef.customparams.damagetype then
+				damageType = weaponDef.customparams.damagetype
+			end
+			local mults = damageTypes[damageType]
+			if mults then
+				for armorType, mult in pairs(mults) do
+					--you can change the default damage; all damage multipliers are based on original default however
+					--you will need to explicitly define damage multipliers of 1 in this case
+					--other explicit damages override calculated ones
+					if not damage[armorType] or armorType == "default" then
+						damage[armorType] = defaultDamage * mult
+					end
+				end
+			else
+				Spring.Log('weapondefs post', 'error', "Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
+			end
+		end
+	end
+	
+	for _, f in pairs(FUNCTIONS_TO_REMOVE) do
+		weaponDef[f] = nil
+	end
 end
 
 for unitName, ud in pairs(UnitDefs) do

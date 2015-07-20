@@ -6,7 +6,6 @@ local AirACClass = Weapon:New{
   burnblow           = true,
   collideFriendly    = false,
   collisionSize      = 2,
-  collisionvolumetest = 1,
   fireStarter        = 10,
   impactonly         = 1,
   interceptedByShieldType = 8,

@@ -6,7 +6,6 @@ local ParaDropClass = Weapon:New{
   collideFriendly    = false,
   explosionGenerator = [[custom:nothing]],
   impulseFactor      = 0,
-  manualBombSettings = true,
   model              = [[Bomb_Tiny.S3O]], -- better way?
   myGravity          = 1,
   range              = 1000,

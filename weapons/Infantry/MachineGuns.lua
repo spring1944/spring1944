@@ -9,7 +9,6 @@ local MGClass = Weapon:New{
   collideFeature     = true,
   collideFriendly    = false,
   collisionSize      = 2.5,
-  collisionVolumeTest= 1,
   explosionGenerator = [[custom:Bullet]],
   fireStarter        = 1,
   impactonly         = 1,
