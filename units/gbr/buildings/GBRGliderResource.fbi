@@ -46,9 +46,5 @@
   useBuildingGroundDecal=1;
   workerTime=0.01;
   yardmap=yyy yyy yyy;
-
-  weapon1=noweapon;
-  onlyTargetCategory1=BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
-  onlyTargetCategory2=BUILDING INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED;
 }
 

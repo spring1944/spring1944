@@ -36,8 +36,5 @@
   smoothAnim=0;
   stealth=1;
   useBuildingGroundDecal=1;
-  
-
-  weapon1=noweapon;
 }
 
