@@ -58,8 +58,8 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 
 
 -- Lend Lease
-local GBRM5Halftrack = USM3Halftrack:New{name = "M5 Halftrack"}
-local RUSM5Halftrack = USM3Halftrack:New{name = "M5 Halftrack"}
+local GBRM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
+local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 
 return lowerkeys({
 	["USM3Halftrack"] = USM3Halftrack,
