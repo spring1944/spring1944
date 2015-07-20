@@ -166,7 +166,7 @@ function gadget:Explosion(weaponDefID, px, py, pz, attackerID)
 		lastHit[attackerID][1], lastHit[attackerID][2], lastHit[attackerID][3] = px, py, pz
 	else
 		-- fired off into the wild blue yonder somewhere. wipe out any progress
-		reset(unitID)
+		reset(attackerID)
 	end
 end
 
