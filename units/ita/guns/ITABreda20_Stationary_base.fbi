@@ -9,6 +9,7 @@
   buildingGroundDecalSizeX=3;
   buildingGroundDecalSizeY=3;
   buildingGroundDecalType=Dirt2.dds;
+  buildPic=ITABreda20_Stationary.png;
   buildTime=2500;
   category=DEPLOYED;
   corpse=ITABreda20_Destroyed;
