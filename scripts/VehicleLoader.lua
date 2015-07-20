@@ -28,6 +28,7 @@ end
 
 local info = GG.lusHelper[unitDefID]
 
+local numWheels = 0
 local wheelSpeeds = {}
 local tracks = {}
 local smokePieces = {}
@@ -43,6 +44,7 @@ for pieceName, pieceNum in pairs(pieceMap) do
 		local wheelInfo = Spring.GetUnitPieceInfo(unitID, pieceNum)
 		local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
 		wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
+		numWheels = numWheels + 1
 	elseif pieceName:find("tracks") then
 		tracks[#tracks + 1] = pieceNum
 	elseif pieceName:find("base") or pieceName:find("sleeve") or pieceName:find("turret") or pieceName:find("exhaust") then
@@ -67,6 +69,7 @@ for weaponNum = 1,info.numWeapons do
 	end
 end
 
+info.numWheels = numWheels
 info.wheelSpeeds = wheelSpeeds
 info.tracks = tracks
 info.smokePieces = smokePieces
