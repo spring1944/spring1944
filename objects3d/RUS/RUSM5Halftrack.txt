@@ -15,3 +15,13 @@ base
             flare_1
     tracks1
     tracks2
+    seat1
+    seat2
+    seat3
+    seat4
+    seat5
+    seat6
+    seat7
+    seat8
+    seat9
+    seat10
