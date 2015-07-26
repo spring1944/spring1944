@@ -100,7 +100,6 @@ local GetSelectedUnitsCounts = Spring.GetSelectedUnitsCounts
 local glColor = gl.Color
 local glLineWidth = gl.LineWidth
 local glPointSize = gl.PointSize
-local glBlending = gl.Blending
 local glSmoothing = gl.Smoothing
 
 local glCreateList = gl.CreateList
@@ -622,7 +621,6 @@ end
 function widget:DrawWorldPreUnit()
 	glPointSize(GetCameraScale())
 	glSmoothing(true, false, false)
-	glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 	CallMain()
 	glSmoothing(false, false, false)
 	glPointSize(1)

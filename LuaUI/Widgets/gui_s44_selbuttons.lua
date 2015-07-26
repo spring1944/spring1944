@@ -17,6 +17,7 @@ end
 -- OpenGL
 local glBeginEnd               = gl.BeginEnd
 local glBlending               = gl.Blending
+local glBlendFunc              = gl.BlendFunc
 local glClear                  = gl.Clear
 local glColor                  = gl.Color
 local glDepthMask              = gl.DepthMask
@@ -322,9 +323,9 @@ function DrawIconQuad(iconPos, color)
 	local ymin = rectMinY
 	local ymax = rectMaxY
 	glColor(color)
-	glBlending(GL_SRC_ALPHA, GL_ONE)
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE)
 	glRect(xmin, ymin, xmax, ymax)
-	glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 end
 
 -- Mouse functions
