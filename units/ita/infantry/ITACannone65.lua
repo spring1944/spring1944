@@ -1,7 +1,7 @@
 local ITACannone65 = InfantryGun:New{
 	name					= "Cannone da 65/17",
 	corpse					= "itacannone65_destroyed",
-
+	buildCostMetal				= 950,
 	weapons = {
 		[1] = { -- HE
 			name				= "Cannone65L17HE",
