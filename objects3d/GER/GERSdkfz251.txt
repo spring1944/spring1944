@@ -1,5 +1,4 @@
 base
-    frontwheel
     wheel1
     wheel2
     wheel3
@@ -8,11 +7,15 @@ base
     wheel6
     wheel7
     wheel8
+    wheel9
     tracks1
     tracks2
-    turret
-        sleeve
+    turret_1
+        sleeve_1
             flare_1
+    turret_2
+        sleeve_2
+            flare_2
     load_shoulder
         load_arm
     tow_point
@@ -22,3 +25,13 @@ base
     back_fx
     right_fx
     left_fx
+    seat1
+    seat2
+    seat3
+    seat4
+    seat5
+    seat6
+    seat7
+    seat8
+    seat9
+    seat10
