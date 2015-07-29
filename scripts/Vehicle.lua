@@ -141,6 +141,13 @@ function script.Create()
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
+	-- Randomly pre-position wheels
+	if info.wheelSpeeds then
+		local wheelSpeeds = info.wheelSpeeds
+		for wheelPiece, _ in pairs(wheelSpeeds) do
+			Turn(wheelPiece, x_axis, math.rad(math.random(0, 359)))
+		end
+	end
 end
 
 local function SpinWheels()
