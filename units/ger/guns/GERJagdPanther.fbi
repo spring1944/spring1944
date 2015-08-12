@@ -23,6 +23,7 @@
     hasturnbutton=1;
     lowammolevel=5;
     maxammo=15;
+    blockfear=1;
     weaponcost=26;
     weaponswithammo=1;
     soundcategory=GER/Tank/JgPz;
