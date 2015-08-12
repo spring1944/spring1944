@@ -7,7 +7,7 @@
   brakeRate=0.105;
   buildCostEnergy=0;
   buildCostMetal=5895;
-  buildTime=5985;
+  buildTime=5895;
   canMove=1;
   category=MINETRIGGER HARDVEH;
   //collisionVolumeType=box;
