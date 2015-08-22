@@ -42,6 +42,7 @@
   maxElevator=0.00375;
   maxFuel=160;
   maxPitch=0.5;
+  attackSafetyDistance=460;
   maxRudder=0.0015;
   maxSlope=10;
   maxVelocity=14;

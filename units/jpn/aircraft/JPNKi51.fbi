@@ -13,6 +13,7 @@
   fireState=2;
   canLoopbackAttack=1;
   canDropFlare=1;
+  attackSafetyDistance=560;
   canFly=1;
   canGuard=1;
   canMove=1;

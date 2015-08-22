@@ -44,6 +44,7 @@
   maxFuel=160;
   maxPitch=0.5;
   maxRudder=0.0025;
+  attackSafetyDistance=460;
   maxSlope=10;
   maxVelocity=13.8;
   maxWaterDepth=0;
