@@ -38,6 +38,13 @@ local deadChildren = {} -- unitID = true
 -- Commands which should be passed from mother to all children
 local passedCmds = {[CMD.ATTACK] = true, [CMD.FIRE_STATE] = true, [CMD.STOP] = true}
 
+local function DisableChild(childID, disable)
+	deadChildren[childID] = disable
+	Spring.SetUnitNeutral(childID, disable)
+	env = Spring.UnitScript.GetScriptEnv(childID)
+	Spring.UnitScript.CallAsUnit(childID, env.Disabled, disable)
+end
+
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
@@ -58,7 +65,16 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	end
 end
 
-function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+function gadget:UnitFinished(unitID, unitDefID, teamID)
+	local motherChildren = GG.boatMothers[unitID]
+	if motherChildren then -- exists thanks to UnitCreated
+		for i, child in pairs(motherChildren) do
+			DisableChild(child, false) -- mother is finished, wake up the children
+		end
+	end
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	GG.boatMothers[unitID] = nil
 	childCache[unitID] = nil
 	deadChildren[unitID] = nil
@@ -77,14 +93,8 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	if childCache[unitID] then
 		childCache[unitID] = transportID -- set value to unitID of mother
 		table.insert(GG.boatMothers[transportID], unitID) -- insert into GG.boatMothers list
+		DisableChild(unitID, true) -- disable until mother is completed
 	end 
-end
-
-local function DisableChild(childID, disable)
-	deadChildren[childID] = disable
-	Spring.SetUnitNeutral(childID, disable)
-	env = Spring.UnitScript.GetScriptEnv(childID)
-	Spring.UnitScript.CallAsUnit(childID, env.Disabled, disable)
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
@@ -125,8 +135,9 @@ end
 function gadget:GameFrame(n)
 	if n % (30 * 3) == 0 then -- check every 3 seconds, TODO: too slow? SlowUpdate (16f)?
 		for childID in pairs(deadChildren) do
+			local motherBuilt = select(5, Spring.GetUnitHealth(childCache[childID])) == 1
 			local health, maxHealth = Spring.GetUnitHealth(childID)
-			if health/maxHealth > HEALTH_RESTORE_LEVEL then
+			if motherBuilt and health/maxHealth > HEALTH_RESTORE_LEVEL then
 				DisableChild(childID, false)
 			end
 		end
