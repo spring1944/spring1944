@@ -16,6 +16,7 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 --
 
 local GRAVITY = 120
+local FUNCTIONS_TO_REMOVE = {"new"}
 
 local function isbool(x)   return (type(x) == 'boolean') end
 local function istable(x)  return (type(x) == 'table')   end
@@ -295,9 +296,13 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 					end
 				end
 			else
-				Spring.Log('weapondefs_post', 'warning', "weapondefs_post.lua: Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
+				Spring.Log('weapondefs post', 'error', "Invalid damagetype " .. damageType .. " for weapon " .. weaponDef.name)
 			end
 		end
+	end
+	
+	for _, f in pairs(FUNCTIONS_TO_REMOVE) do
+		weaponDef[f] = nil
 	end
 end
 

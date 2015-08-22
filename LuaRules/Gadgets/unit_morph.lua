@@ -1208,7 +1208,7 @@ local glCulling		 = gl.Culling
 local glPushAttrib   = gl.PushAttrib
 local glPopAttrib    = gl.PopAttrib
 local glPolygonOffset= gl.PolygonOffset
-local glBlending     = gl.Blending
+local glBlendFunc     = gl.BlendFunc
 local glDepthTest    = gl.DepthTest
 local glUnit		 = gl.Unit
 
@@ -1429,7 +1429,7 @@ local function DrawCombatMorphUnit(unitID, morphData, localTeamID)
 	local c2=math.sin(phase+ math.pi)*.2 + .2
 	local mult = 2
 
-	glBlending(GL_ONE, GL_ONE)
+	glBlendFunc(GL_ONE, GL_ONE)
 	glDepthTest(GL_LEQUAL)
 	--glLighting(true)
 	glPolygonOffset(-10, -10)
@@ -1438,7 +1438,7 @@ local function DrawCombatMorphUnit(unitID, morphData, localTeamID)
 	glUnit(unitID, true)
 	
 	glColor(1,1,1,1)
-	--glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+	--glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 	--glPolygonOffset(false)
 	--glCulling(false)
 	--glDepthTest(false)
@@ -1453,7 +1453,7 @@ function gadget:DrawWorld()
 
   gameFrame = GetGameFrame()
 
-  glBlending(GL_SRC_ALPHA, GL_ONE)
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE)
   glDepthTest(GL_LEQUAL)
 
   local spec, specFullView = GetSpectatingState()
@@ -1476,7 +1476,7 @@ function gadget:DrawWorld()
     end
   end)
   glDepthTest(false)
-  glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
   phase = phase + .06
 end
 

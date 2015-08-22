@@ -34,6 +34,7 @@ local insert                   = table.insert
 -- OpenGL
 ----------------
 local glBlending               = gl.Blending
+local glBlendFunc              = gl.BlendFunc
 local glClear                  = gl.Clear
 local glColor                  = gl.Color
 local glCulling                = gl.Culling
@@ -309,7 +310,7 @@ function DrawIconQuad(iconPos, color)
   local X2 = X1 + ICON_SIZE_X
   
   glColor(color)
-  glBlending(GL_SRC_ALPHA, GL_ONE)
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE)
   glShape(GL_QUADS, {
     { v = { X1, Y_MIN } },
     { v = { X2, Y_MIN } },
@@ -317,7 +318,7 @@ function DrawIconQuad(iconPos, color)
     { v = { X1, Y_MAX } },
   })
   
-  glBlending(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 end
 
 

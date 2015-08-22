@@ -233,6 +233,7 @@ function script.Shot1()
 		rocket1 = 1
 	end
 	RocketDisplayControl(1)
+	StartThread(RestoreTurrets)
 end
 
 function script.AimFromWeapon2()
@@ -264,6 +265,7 @@ function script.Shot2()
 		rocket2 = 1
 	end
 	RocketDisplayControl(2)
+	StartThread(RestoreTurrets)
 end
 
 function script.QueryWeapon3()

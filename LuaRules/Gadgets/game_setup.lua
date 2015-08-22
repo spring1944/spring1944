@@ -96,6 +96,11 @@ local function IsPositionValid(teamID, unitDefID, x, z)
 end
 
 local function ClearUnitPosition(unitID)
+	if not unitID then
+		Spring.Log('game setup', 'error', "tried to clear unit position with a nil unitID")
+		return
+	end
+
 	local unitDefID = GetUnitDefID(unitID)
 	local ud = UnitDefs[unitDefID]
 	
