@@ -18,10 +18,10 @@ local indirectUnitDefIDs = {}
 local lastHit = {}
 local firingPositions = {}
 
-local ZEROING_FACTOR = 0.5
+local ZEROING_FACTOR = 0.75
 local MIN_ZEROING = 0.15
 local ZEROED_THRESHOLD = 0.25
--- if the unit moves more than this, wipe accuracy bonus
+-- if the firing unit moves more than this, wipe accuracy bonus
 local MOVEMENT_THRESHOLD = 50
 
 local function Dist2D(x1, z1, x2, z2)
