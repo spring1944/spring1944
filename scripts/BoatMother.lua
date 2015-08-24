@@ -106,9 +106,11 @@ function script.Create()
 	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
 	for i, childDefName in ipairs(children) do
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
-		Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
-		Hide(childrenPieces[i])
-		SetUnitNoSelect(childID, true)
+		if (childID ~= nil) then
+			Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
+			Hide(childrenPieces[i])
+			SetUnitNoSelect(childID, true)
+		end
 	end
 	StartThread(DamageSmoke)
 	StartThread(FlagFlap)
