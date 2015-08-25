@@ -538,12 +538,21 @@ local function FinishMorph(unitID, morphData)
 	  z = z+8
 	end	
 	newUnit = Spring.CreateUnit(defName, x, y, z, face, unitTeam, isBeingBuilt)
-	Spring.SetUnitPosition(newUnit, x, y, z)
+	if newUnit ~= nil then
+	  Spring.SetUnitPosition(newUnit, x, y, z)
+	end
   else
 	newUnit = Spring.CreateUnit(defName, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt)
-	Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-	Spring.SetUnitPosition(newUnit, px, py, pz)
+	if newUnit ~= nil then
+	  Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
+	  Spring.SetUnitPosition(newUnit, px, py, pz)
+	end
   end  
+
+  -- hit a unitLimit or something. bail out.
+  if newUnit == nil then
+    return
+  end
   
   if (udDst.customParams.maxammo) then
 	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
