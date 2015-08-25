@@ -1,0 +1,14 @@
+base
+    cargo
+    load_shoulder
+        load_arm
+    wake3
+    wake2
+    wake1
+    ramp
+    turret
+        sleeve
+            barrel
+                flare
+        gunner
+    pilot

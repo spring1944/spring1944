@@ -33,8 +33,26 @@ local usunits = {
     "usapminesign",
     "ustankobstacle",
     --"sandbags",
-    "rubberdingy",
-    "pontoonraft",
+    "usassaultboat",
+    "uspontoonraft",
+  },
+
+  ushqaiengineer =
+  {
+    "usbarracks",
+    "usvehicleyard",
+    "usgunyard",
+    "usradar",
+    "usstorage",
+    "usspyard",
+    "ustankyard1",
+    "ustankyard2",
+    "usatminesign",
+    "usapminesign",
+    "ustankobstacle",
+    --"sandbags",
+    "usassaultboat",
+    "uspontoonraft",
   },
 
   usbarracks =
@@ -67,8 +85,8 @@ local usunits = {
     "usapminesign",
     "ustankobstacle",
     --"sandbags",
-    "rubberdingy",
-    "pontoonraft",
+    "usassaultboat",
+    "uspontoonraft",
 
   },
 
@@ -187,8 +205,8 @@ local usunits = {
   
   usboatyard =
   {
-    "rubberdingy",
-    "pontoonraft",
+    "usassaultboat",
+    "uspontoonraft",
     "usdukw",
     "uslcvp",
     "uspt103",
@@ -197,8 +215,8 @@ local usunits = {
   },
   usboatyardlarge =
   {
-    "rubberdingy",
-    "pontoonraft",
+    "usassaultboat",
+    "uspontoonraft",
     "usdukw",
     "uslcvp",
     "uspt103",

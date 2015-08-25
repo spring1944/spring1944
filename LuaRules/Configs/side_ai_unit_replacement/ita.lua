@@ -1,6 +1,6 @@
 local unitDefs = {
-	itahqengineer = "itaengineer",
-	itacannone47_truck = "itacannone47_stationary",
+	itahqengineer = "itahqaiengineer",
+	itacannone47_truck = "ITACannone47_Stationary"
 }
 
 return unitDefs

@@ -22,7 +22,7 @@ local jpnDefs = {
 			facing = true,
 		},
 		{
-			into = 'jpnatyard',
+			into = 'jpnspyard1',
 			metal = 3000,
 			energy = 0,
 			time = 85,
@@ -33,7 +33,7 @@ local jpnDefs = {
 	},	
 	jpnvehicleyard = {
 		{
-			into = 'jpnvehyard_tank',
+			into = 'jpnvehicleyard1',
 			metal = 2000,
 			energy = 0,
 			time = 85,
@@ -42,7 +42,7 @@ local jpnDefs = {
 			facing = true,
 		},
 		{
-			into = 'jpnvehyard_landing',
+			into = 'jpnvehicleyard2',
 			metal = 2000,
 			energy = 0,
 			time = 85,
@@ -64,7 +64,7 @@ local jpnDefs = {
 	},	
 	jpntankyard = {
 		{
-			into = 'jpntankyard_medium',
+			into = 'jpntankyard1',
 			metal = 3000,
 			energy = 0,
 			time = 85,
@@ -73,7 +73,7 @@ local jpnDefs = {
 			facing = true,
 		},
 		{
-			into = 'jpntankyard_support',
+			into = 'jpntankyard2',
 			metal = 6500,
 			energy = 0,
 			time = 185,

@@ -1,0 +1,10 @@
+base
+    cargo_bed
+        tent
+    cab
+        fenders
+    wheel1
+    wheel2
+    tow_point
+    load_shoulder
+        load_arm

@@ -56,8 +56,8 @@ local rusunits =
     "rusatminesign",
     "rustankobstacle",
     "russtorage",
-    "ruspg117",
-    "pontoonraft",
+    "rusassaultboat",
+    "ruspontoonraft",
   },
 
   ruscommissar =
@@ -70,8 +70,26 @@ local rusunits =
     "rusatminesign",
     "rustankobstacle",
     "russtorage",
-    "ruspg117",
-    "pontoonraft",
+    "rusassaultboat",
+    "ruspontoonraft",
+  },
+
+  rusaicommissar =
+  {
+    "rusbarracks",
+    "rusgunyard",
+    "ruspshack",
+    --"ruszis5",
+    "rusapminesign",
+    "rusatminesign",
+    "rustankobstacle",
+    "russtorage",
+    "rusassaultboat",
+    "ruspontoonraft",
+    "russpyard",
+    "russpyard1",
+    "rustankyard1",
+    "rustankyard2",
   },
 
   rusk31 =
@@ -194,23 +212,23 @@ local rusunits =
   
   rusboatyard =
   {
-	"ruspg117",
-	"pontoonraft",
+	"rusassaultboat",
+	"ruspontoonraft",
     "rustender15t",
     "ruskomsmtb",
     "rusbmo",
-	"rusbka-1125",
+	"rusbka1125",
 	
   },
   rusboatyardlarge =
   {
-	"ruspg117",
-	"pontoonraft",
+	"rusassaultboat",
+	"ruspontoonraft",
     "rustender15t",
     "ruslct",
     "ruskomsmtb",
     "rusbmo",
-    "rusbka-1125",
+    "rusbka1125",
     "ruspr161",
     "rusg5",
 --    "ruspr7",

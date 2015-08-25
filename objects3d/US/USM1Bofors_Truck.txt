@@ -1,0 +1,8 @@
+base
+    body
+        wheel1
+        wheel2
+        wheel3
+        carriage
+            wheel4
+            wheel5

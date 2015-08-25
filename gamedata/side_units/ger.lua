@@ -26,8 +26,25 @@ local gerunits =
     --"sandbags",
     "gertankobstacle",
     --"geropelblitz",
-    "gersturmboot",
-    "pontoonraft",
+    "gerassaultboat",
+    "gerpontoonraft",
+  },
+
+  gerhqaiengineer =
+  {
+    "gervehicleyard",
+    "gerbarracks",
+    "gergunyard",
+    "gerradar",
+    "gerstorage",
+    "geratminesign",
+    "gerapminesign",
+    "gertankobstacle",
+    "gerspyard",
+    "gerspyard1",
+    "gertankyard1",
+    "gertankyard2",
+    "gerpontoonraft",
   },
 
   gerbarracks =
@@ -76,8 +93,8 @@ local gerunits =
     --"sandbags",
     "gertankobstacle",
     --"geropelblitz",
-    "gersturmboot",
-    "pontoonraft",
+    "gerassaultboat",
+    "gerpontoonraft",
   },
 
   gervehicleyard =
@@ -220,7 +237,7 @@ local gerunits =
   
   gerboatyard =
   {
-    "gersturmboot",
+    "gerassaultboat",
 	"gerpontoonraft",
     "gerrboot",
     "gerschsturmboot",
@@ -228,8 +245,8 @@ local gerunits =
   },
   gerboatyardlarge =
   {
-    "gersturmboot",
-    "pontoonraft",
+    "gerassaultboat",
+    "gerpontoonraft",
     "gerrboot",
     "gerschsturmboot",
 	"gersboot",

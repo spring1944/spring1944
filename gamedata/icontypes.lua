@@ -99,6 +99,11 @@ local iconTypes = {
 		size			=	2,
 		distance	=	0.2,
 	},
+	fgtruck = {
+		bitmap		=	"icons/FGtruck.tga",
+		size			=	2,
+		distance	=	0.2,
+	},
 	armoredcar = {
 		bitmap		=	"icons/armoredcar.tga",
 		size			=	2,
@@ -355,23 +360,28 @@ local iconTypes = {
 		size			=	2.25,
 		distance	=	0.2,
 	},
-		itahq = {
+	itahq = {
 		bitmap		=	"icons/itahq.tga",
 		size			=	2.25,
 		distance	=	0.3,
 	},
-		itasolo = {
+	itasolo = {
 		bitmap		=	"icons/itasolo.tga",
 		size			=	2.25,
 		distance	=	0.15,
 	},
-		itascopedsolo = {
+	itascopedsolo = {
 		bitmap		=	"icons/itascopedsolo.tga",
 		size			=	2.25,
 		distance	=	0.15,
 	},
-		jpnhq = {
+	jpnhq = {
 		bitmap		=	"icons/jpnhq.tga",
+		size		=	4,
+		distance	=	0.8,
+	},
+	swehq = {
+		bitmap		=	"icons/swehq.tga",
 		size		=	4,
 		distance	=	0.8,
 	},

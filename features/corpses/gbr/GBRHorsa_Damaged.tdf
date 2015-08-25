@@ -5,7 +5,7 @@
   featureDead=GBRHorsa_Destroyed;
   footprintX=2;
   footprintZ=2;
-  object=GBRAS51.s3o;//GBRCromwell_Damaged.S3O;
+  object=GBRHorsa.s3o;
   reclaimable=1;
   smoketime=0;
 	collisionVolumeType=cylX;
@@ -20,13 +20,13 @@
 }
 
 [gbrhorsa_destroyed] {
-  description=Destroyed Gliderk;
+  description=Destroyed Glider;
   damage=2501;
   energy=500;
   featureDead=Debris_Large;
   footprintX=2;
   footprintZ=2;
-  object=GBRAS51.s3o;//GBRCromwell_Destroyed.S3O;
+  object=GBRHorsa.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;

@@ -1,0 +1,11 @@
+base
+    fuselage
+        flare_5
+        flare_1
+        flare_2
+        wing2
+            flare_4
+        wing1
+            flare_3
+        propeller
+            blades

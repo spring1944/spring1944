@@ -1,0 +1,14 @@
+base
+    fuselage
+        wing2
+            bomb_1
+            flare_3
+        wing1
+            bomb_2
+            flare_4
+        propeller
+            blades
+        flare_5
+        flare_6
+    wheel1
+    wheel2

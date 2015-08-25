@@ -1,0 +1,18 @@
+base
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    exhaust
+    tracks1
+    tracks2
+    turret
+        sleeve
+            barrel
+                flare_1
+        aaref
+        aa_turret
+            aa_sleeve
+                flare_2

@@ -1,0 +1,5 @@
+base
+    spare
+    rear_wheels
+    front_wheels
+    crane

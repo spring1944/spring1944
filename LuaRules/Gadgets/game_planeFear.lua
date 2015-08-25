@@ -18,7 +18,7 @@ end
 --  COMMON
 --------------------------------------------------------------------------------
 if (gadgetHandler:IsSyncedCode()) then
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --  SYNCED
 --------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ local mcDisable				= Spring.MoveCtrl.Disable
 local GetUnitFuel 			= Spring.GetUnitFuel
 local GetUnitHealth			= Spring.GetUnitHealth
 local GetUnitTeam			= Spring.GetUnitTeam
-local GetCOBScriptID		= Spring.GetCOBScriptID
+local GetUnitRulesParam 	= Spring.GetUnitRulesParam
 local GetUnitWeaponState	= Spring.GetUnitWeaponState
 -- Synced Ctrl
 local CallCOBScript			= Spring.CallCOBScript
@@ -70,8 +70,9 @@ end
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	local ud = UnitDefs[unitDefID]
 	if ud.canFly and not ud.customParams.cruise_missile_accuracy then --gliders and V1s shouldn't get scared, just dead.
-		local planeScriptID = GetCOBScriptID(unitID, "luaFunction")
-  		if (planeScriptID) then
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		local planeScriptID = env and env.AddFear
+		if (planeScriptID) then
 			local properAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 			SetUnitRulesParam(unitID, "suppress", 0)
 			planeScriptIDs[unitID] = planeScriptID
@@ -82,7 +83,7 @@ end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	local ud = UnitDefs[unitDefID]
-	if ud.canFly and ud.name ~= "usparatrooper" then
+	if ud.canFly and ud.name ~= "usparatrooper" and not ud.customParams.cruise_missile_accuracy then
 		local health = GetUnitHealth(unitID)
 		if damage > health then
 			SetUnitCOBValue(unitID, COB.CRASHING, 1)
@@ -112,7 +113,7 @@ function gadget:GameFrame(n)
 	if (n % 15 == 0) then -- every 15 frames
 		for unitID, funcID in pairs(planeScriptIDs) do
 			if not crashingPlanes[unitID] then
-				local _, suppression = CallCOBScript(unitID, funcID, 1, 1)
+				local suppression = GetUnitRulesParam(unitID, "suppress")
 				local fuel = GetUnitFuel(unitID)
 				local teamID = GetUnitTeam(unitID)
 				if suppression > 0 then
@@ -120,7 +121,6 @@ function gadget:GameFrame(n)
 					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
 						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*suppression})
-						SetUnitRulesParam(unitID, "suppress", suppression)
 						SetUnitFuel(unitID, newFuel)
 						if suppression > BUGOUT_LEVEL then
 							local px, py, pz = unpack(teamStartPos[teamID])

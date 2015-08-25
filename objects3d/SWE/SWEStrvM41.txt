@@ -1,0 +1,21 @@
+base
+    exhaust
+    tracks
+    bow_mg_turret
+        flare_4
+    support_wheel_1
+    support_wheel_2
+    front_wheels
+    rear_wheels
+    roller_wheel1
+    roller_wheel2
+    roller_wheel3
+    roller_wheel4
+    turret
+        mg_sleeve
+            flare_3
+        sleeve
+            barrel
+                flare_1
+    tracks2
+    spare

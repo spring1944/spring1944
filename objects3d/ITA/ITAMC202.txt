@@ -1,0 +1,8 @@
+base
+    propeller
+    flare_2
+    flare_1
+    w2
+        flare_3
+    w1
+        flare_4

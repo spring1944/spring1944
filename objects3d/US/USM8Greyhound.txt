@@ -1,0 +1,15 @@
+gp
+    base
+        turret
+            sleeve
+                barrel
+                    flare_1
+            aa_turret
+                aa_sleeve
+                    flare_4
+            aaref
+            flare_3
+        exhaust
+        wheel1
+        wheel2
+        wheel3

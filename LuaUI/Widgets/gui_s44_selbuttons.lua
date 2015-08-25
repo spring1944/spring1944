@@ -402,7 +402,7 @@ end
 
 function widget:DrawScreen()
 	unitCounts, transID = SortedUnits()--spGetSelectedUnitsCounts()
-	unitTypes = unitCounts.n;
+	unitTypes = unitCounts.n
 	if transID then unitTypes = unitTypes + 1 end
 	if (unitTypes <= 0) then
 		countsTable = {}

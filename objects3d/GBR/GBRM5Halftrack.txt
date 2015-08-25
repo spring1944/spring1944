@@ -1,0 +1,27 @@
+base
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    wheel7
+    wheel8
+    load_shoulder
+        load_arm
+    tow_point
+    turret
+        sleeve
+            flare_1
+    tracks1
+    tracks2
+    seat1
+    seat2
+    seat3
+    seat4
+    seat5
+    seat6
+    seat7
+    seat8
+    seat9
+    seat10

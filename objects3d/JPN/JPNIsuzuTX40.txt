@@ -1,0 +1,8 @@
+base
+    tow_point
+    load_shoulder
+        load_arm
+    tent
+    rear_wheels
+    front_wheels
+    spare

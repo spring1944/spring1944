@@ -1,0 +1,13 @@
+base
+    fuselage
+        wing2
+            gear2
+                wheel2
+        wing1
+            gear1
+                wheel1
+        propeller
+            blades
+        flare_3
+        flare_1
+        flare_2

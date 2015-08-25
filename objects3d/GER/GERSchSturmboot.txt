@@ -1,0 +1,10 @@
+base
+    turret
+        grabber
+            link
+    wake3
+    prop2
+    prop1
+    pilot
+    wake2
+    wake1

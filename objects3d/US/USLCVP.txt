@@ -1,0 +1,18 @@
+base
+    hull
+        ramp
+        wake1
+        wake2
+        wake3
+        turret
+            grabber
+                link
+        driver
+        mount1
+            sleeve1
+                gun1
+                    flare1
+        mount2
+            sleeve2
+                gun2
+                    flare2

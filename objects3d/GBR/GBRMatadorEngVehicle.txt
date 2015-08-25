@@ -1,0 +1,8 @@
+base
+    body
+        turret
+            crane
+                nano
+        wheel1
+        wheel2
+        wheel3

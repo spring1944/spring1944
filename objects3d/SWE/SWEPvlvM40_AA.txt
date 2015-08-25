@@ -1,0 +1,23 @@
+base
+    support_front
+    support_rear_1
+    support_rear_2
+    turret
+        axle
+            wheels
+        sleeve
+            barrel
+                flare
+        pelvis
+            lthigh
+                lleg
+                    lfoot
+            rthigh
+                rleg
+                    rfoot
+            torso
+                luparm
+                    lloarm
+                ruparm
+                    rloarm
+                head

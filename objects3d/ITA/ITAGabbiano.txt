@@ -1,0 +1,26 @@
+base
+    wake4
+    wake3
+    wake2
+    wake1
+    exhaust
+    boats
+    prop2
+    prop1
+    tpturret1
+        torp1
+    tpturret2
+        torp2
+    flag1
+        flag2
+            flag3
+    hull
+    tower2
+    extras
+    child1
+    child2
+    child3
+    child4
+    child5
+    child6
+    tower

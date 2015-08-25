@@ -1,0 +1,7 @@
+base
+    hull
+        wing1
+        wing2
+        front_wheel
+        rear_wheels
+        tail

@@ -33,7 +33,7 @@ local PENALTY_AMOUNT = 0.1
 -- map size. We add a 25% bump so the planes have some time to do their work
 -- once they arrive. The formula is: 
 -- (mapDiagonalLength / REFERENCE_FUEL_AMOUNT) * definedPlaneFuel
-local REFERENCE_FUEL_AMOUNT = 17;
+local REFERENCE_FUEL_AMOUNT = 17
 
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
@@ -216,13 +216,13 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 	sy = sy + altitude
 	local unitID = CreateUnit(unitname, sx, sy, sz, 0, teamID)
 
-	-- scale plane fuel to map size (roughly)
-	local mapDiagonalLength = math.sqrt(mapX ^ 2 + mapY ^ 2)
-	local fuelBoost = mapDiagonalLength / REFERENCE_FUEL_AMOUNT
-	local currentFuel = unitDef.maxFuel
-	
 	if unitID ~= nil then
+		-- scale plane fuel to map size (roughly)
+		local mapDiagonalLength = math.sqrt(mapX ^ 2 + mapY ^ 2)
+		local fuelBoost = mapDiagonalLength / REFERENCE_FUEL_AMOUNT
+		local currentFuel = unitDef.maxFuel
 		SetUnitFuel(unitID, fuelBoost * currentFuel)
+	
 		SetUnitPosition(unitID, sx, sy, sz)
 		SetUnitVelocity(unitID, dx * speed, dy * speed, dz * speed)
 		SetUnitRotation(unitID, 0, -rotation, 0) --SetUnitRotation uses left-handed convention

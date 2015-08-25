@@ -1,60 +1,9 @@
 -- Aircraft - Aircraft Automatic Cannons
 
--- AirAutoCannon Base Class
-local AirACClass = Weapon:New{
-  avoidFriendly      = false,
-  burnblow           = true,
-  collideFriendly    = false,
-  collisionSize      = 2,
-  fireStarter        = 10,
-  impactonly         = 1,
-  interceptedByShieldType = 8,
-  predictBoost       = 0.5,
-  size               = 1e-13, -- visuals done with tracers
-  sprayAngle         = 1500,
-  soundHitDry        = [[GEN_Explo_1]],
-  soundTrigger       = true,
-  tolerance          = 600,
-  heightBoostFactor  = 0,
-  turret             = true,
-  weaponType         = [[Cannon]],
-  customparams = {
-    armor_hit_side     = [[top]],
-    no_range_adjust    = true,
-  },
-}
-
-local AirACHEClass = Weapon:New{
-  explosionGenerator = [[custom:HE_XSmall]],
-  name               = [[HE Shell]],
-  areaOfEffect       = 4,
-  customparams = {
-    damagetype         = [[explosive]],
-    fearaoe            = 45,
-    fearid             = 301,
-  },
-}
-
-local AirACAPClass = Weapon:New{
-  areaOfEffect       = 2,
-  canattackground    = false,
-  colormap           = [[ap_colormap.png]],
-  explosionGenerator = [[custom:AP_XSmall]],
-  intensity          = 0.1,
-  name               = [[AP Shell]],
-  separation         = 2,
-  size               = 1,  
-  stages             = 50,
-  customparams = {
-    damagetype         = [[kinetic]],
-  },  
-  
-}
-
 -- Implementations
 
 -- Hispano HS.404 20mm (GBR)
-local HS40420mm = AirACClass:New(AirACHEClass, true):New{
+local HS40420mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 10,
   burst              = 3,
   burstrate          = 0.1,
@@ -69,7 +18,7 @@ local HS40420mm = AirACClass:New(AirACHEClass, true):New{
 }
 
 -- Mk. 108 30mm (GER)
-local Mk10830mm = AirACClass:New(AirACHEClass, true):New{
+local Mk10830mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 25,
   burst              = 3,
   burstRate          = 0.25,
@@ -77,7 +26,7 @@ local Mk10830mm = AirACClass:New(AirACHEClass, true):New{
   range              = 700,
   reloadtime         = 3,
   soundStart         = [[GER_30mmAir]],
-  sprayAngle         = 700, -- overrides default
+  sprayAngle         = 100, -- overrides deafult
   weaponVelocity     = 1750,
   damage = {
     default            = 182,
@@ -85,7 +34,7 @@ local Mk10830mm = AirACClass:New(AirACHEClass, true):New{
 }
 
 -- MG151/20 20mm (GER)
-local MG15120mm = AirACClass:New(AirACHEClass, true):New{
+local MG15120mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 15,
   burst              = 6,
   burstRate          = 0.085,
@@ -102,7 +51,7 @@ local MG15120mm = AirACClass:New(AirACHEClass, true):New{
 -- MG151/15 15mm (GER)
 -- treated like a machinegun in game, but
 -- this derives from the above 20mm
-local MG15115mm = AirACClass:New(AirACHEClass, true):New{
+local MG15115mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 8,
   burstRate          = 0.08,
   explosionGenerator = [[custom:Bullet]],
@@ -116,7 +65,7 @@ local MG15115mm = AirACClass:New(AirACHEClass, true):New{
 } 
 
 -- ShVAK 20mm (RUS)
-local ShVAK20mm = AirACClass:New(AirACHEClass, true):New{
+local ShVAK20mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 10,
   burst              = 3,
   burstRate          = 0.085,
@@ -131,7 +80,7 @@ local ShVAK20mm = AirACClass:New(AirACHEClass, true):New{
 }
 
 -- VYa 23mm (RUS)
-local VYa23mm = AirACClass:New(AirACHEClass, true):New{
+local VYa23mm = AirAutoCannon:New(AutoCannonHE, true):New{
   areaOfEffect       = 14,
   burst              = 3,
   burstRate          = 0.085,
@@ -146,7 +95,7 @@ local VYa23mm = AirACClass:New(AirACHEClass, true):New{
 }
 
 -- Ho-5 20mm AP (JPN)
-local Ho520mmAP = AirACClass:New(AirACAPClass, true):New{
+local Ho520mmAP = AirAutoCannon:New(AutoCannonAP, true):New{
   burst              = 5,
   burstRate          = 0.091,
   name               = [[Ho-5 20mm Cannon AP]],
@@ -164,7 +113,7 @@ local Ho520mmAP = AirACClass:New(AirACAPClass, true):New{
 }
 
 -- Ho-5 20mm HE (JPN) 
-local Ho520mmHE = AirACClass:New(AirACHEClass, true):New{
+local Ho520mmHE = AirAutoCannon:New(AutoCannonHE, true):New{
   burst              = 5,
   areaOfEffect       = 6,
   burstRate          = 0.091,

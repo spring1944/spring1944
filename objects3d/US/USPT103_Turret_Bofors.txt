@@ -1,0 +1,7 @@
+base
+    turret
+        sleeve
+            barrel
+                flare
+        aa40_gunner_1
+        aa40_gunner_2

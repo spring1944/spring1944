@@ -1,0 +1,12 @@
+base
+    body
+        mudguards
+        wheel2
+        wheel1
+    carriage
+        wheel3
+        trail1
+        trail2
+        turret
+            sleeve
+                barrel

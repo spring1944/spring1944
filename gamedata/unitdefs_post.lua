@@ -14,12 +14,51 @@ VFS.Include("gamedata/unitdefs_autogen.lua")
 -- have to implement squad file preloading here, because it's needed for transport stuff
 local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
 
-
 local GMBuildOptions = {}
 local GM_UD
 
+local sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
+local SIDES = {}
+
+
+for sideNum, data in pairs(sideData) do
+	if sideNum > 1 then -- ignore Random/GM
+		SIDES[sideNum] = data.name:lower()
+	end
+end
+
+local function RecursiveReplaceStrings(t, name, side, replacedMap)
+	if (replacedMap[t]) then
+		return  -- avoid recursion / repetition
+	end
+	replacedMap[t] = true
+	local changes = {}
+	for k, v in pairs(t) do
+		if (type(v) == 'string') then
+			t[k] = v:gsub("<SIDE>", side):gsub("<NAME>", name)
+		end
+		if (type(v) == 'table') then
+			RecursiveReplaceStrings(v, name, side, replacedMap)
+		end
+	end 
+end
+
+local function ReplaceStrings(t, name)
+	local side = ""
+	local replacedMap = {}
+	for _, sideName in pairs(SIDES) do
+		if name:find(sideName) == 1 then
+			side = sideName
+			break
+		end
+	end
+	RecursiveReplaceStrings(t, name, side, replacedMap)
+end
+
 -- Process ALL the units!
 for name, ud in pairs(UnitDefs) do
+	-- Replace all occurences of <SIDE> and <NAME> with the respective values
+	ReplaceStrings(ud, ud.unitname or name)
 	-- Convert all customparams subtables back into strings for Spring
 	if ud.customparams then
 		for k, v in pairs (ud.customparams) do
@@ -30,6 +69,7 @@ for name, ud in pairs(UnitDefs) do
 	else
 		ud.customparams = {}
 	end
+	local cp = ud.customparams
 	--MODOPTION CONTROLS
     if (modOptions.scoremode) then
         if (modOptions.scoremode ~= 'disabled') then
@@ -72,40 +112,50 @@ for name, ud in pairs(UnitDefs) do
 
  --BEGIN UNIT PROCESSING
 	local LoSMult = 0.6
-    local decloakDistMult = 0.6
-    local infSpeedMult = 0.5
+	local decloakDistMult = 0.6
+	local infSpeedMult = 0.5
+	
+	-- TODO: This stuff really belongs in the 'will keep in the long term' section, but too much shit depends on ud.maxvelocity
+	if cp and cp.maxvelocitykmh then
+		ud.maxvelocity = tonumber(cp.maxvelocitykmh) / 13.5 -- convert kph to game speed
+	end
+	if ud.maxvelocity and not ud.maxreversevelocity and cp.reversemult then
+		ud.maxreversevelocity = ud.maxvelocity * cp.reversemult
+	end
 
-    --sets base values for detection radii
-    --index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
-    local detection = {
-        BUILDING    = {300, 2000, 650, 0},
-        INFANTRY    = {650, 2000, 650, 1400},
-        SOFTVEH     = {300, 2000, 950, 0},
-        OPENVEH     = {300, 2000, 1250, 0},
-        HARDVEH     = {150, 1000, 650, 0},
-        SHIP        = {400, 2500, 950, 0},
-        DEPLOYED    = {650, 2000, 650, 1400},
-    }
+	--sets base values for detection radii
+	--index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
+	local detection = {
+		BUILDING    = {300, 2000, 650, 0},
+		INFANTRY    = {650, 2000, 650, 1400},
+		SOFTVEH     = {300, 2000, 950, 0},
+		OPENVEH     = {300, 2000, 1250, 0},
+		HARDVEH     = {150, 1000, 650, 0},
+		SHIP        = {400, 2500, 950, 0},
+		DEPLOYED    = {650, 2000, 650, 1400},
+	}
 
-    --set detection values per unit category (with some special casing for
-    --cloaked inf)
-    ud.activatewhenbuilt = true
-    for category, detectValues in pairs(detection) do
-        local catStart, catEnd = string.find(ud.category, category);
-        if catStart ~= nil then
-            local cat = string.sub(ud.category, catStart, catEnd)
-            if detection[cat] then
-                ud.sightdistance = detection[cat][1] * LoSMult
-                ud.airsightdistance = detection[cat][2] * LoSMult
-                ud.radardistance = detection[cat][3] * LoSMult
-                ud.seismicdistance = detection[cat][4] * LoSMult
-                if ud.cloakcost then
-                    ud.sightdistance = ud.sightdistance * 0.5
-                    ud.radardistance = 0
-                end
-            end
-        end
-    end
+	--set detection values per unit category (with some special casing for
+	--cloaked inf)
+	ud.activatewhenbuilt = true
+	for category, detectValues in pairs(detection) do
+		if not ud.category then Spring.Log('unitdefs post', 'warning', ud.name .. " has no category!") end
+		local catStart, catEnd = string.find(ud.category, category)
+		if catStart ~= nil then
+			local cat = string.sub(ud.category, catStart, catEnd)
+			if detection[cat] then
+				ud.sightdistance = detection[cat][1] * LoSMult
+				ud.airsightdistance = detection[cat][2] * LoSMult
+				ud.radardistance = detection[cat][3] * LoSMult
+				ud.seismicdistance = detection[cat][4] * LoSMult
+				if ud.cloakcost then
+					ud.sightdistance = ud.sightdistance * 0.5
+					ud.radardistance = 0
+				end
+			end
+		end
+	end
+	
 
 
 	if ud.customparams then
@@ -118,12 +168,17 @@ for name, ud in pairs(UnitDefs) do
 	end
 	if ud.mincloakdistance then
 		ud.mincloakdistance = ud.mincloakdistance * decloakDistMult
+		ud.cloakcost = 0
+		ud.cloakcostmoving = 0
+		ud.initcloaked = true
+		ud.decloakonfire = true
+		ud.activatewhenbuilt = true
 	end
 
 
 	--new sensor stuff!
-    --set radar/LoS for infantry (the only units with seismic distances)
-    --[[
+	--set radar/LoS for infantry (the only units with seismic distances)
+	--[[
 	if (ud.seismicdistance) and (tonumber(ud.seismicdistance) > 0) then
 		if tonumber(ud.sightdistance ) > 600 then
 			ud.sightdistance = 650 * LoSMult
@@ -140,16 +195,16 @@ for name, ud in pairs(UnitDefs) do
 
 	end
 
-    ]]--
+	]]--
 	--end first chunk of new sensor stuff!
 
 	--more new sensor stuff
-    --decide if stationary units should be stealth or not
+	--decide if stationary units should be stealth or not
 	if not ud.maxvelocity then
 		ud.stealth = false
 		if (ud.customparams) then
-			if (ud.customparams.hiddenbuilding == '1') then
-			    ud.stealth = true
+			if (ud.customparams.hiddenbuilding) then
+				ud.stealth = true
 			end
 		end
 	end
@@ -161,7 +216,7 @@ for name, ud in pairs(UnitDefs) do
     reclaimable = reclaimable and not (ud.customparams and ud.customparams.weaponswithammo)
     ud.reclaimable = reclaimable
 
-    --ship things
+	--ship things
 	if ud.floater then
 		ud.turninplace = false
 		ud.turninplacespeedlimit = (tonumber(ud.maxvelocity) or 0) * 0.5
@@ -194,6 +249,12 @@ for name, ud in pairs(UnitDefs) do
 		end
 	end
 
+	--a crazy default value so we see it when it happens
+	--at the moment all boats seem to lack mass, so that's what they have
+	if (not ud.mass) then
+		ud.mass = ud.maxdamage or 99999999
+	end
+		
 	if tonumber(ud.maxvelocity or 0) > 0 and (not ud.canfly) and tonumber(ud.footprintx) > 1 then
 		-- Make all vehicles push resistant, except con vehicles, so they vacate build spots
 		if (not ud.builder) then
@@ -213,11 +274,6 @@ for name, ud in pairs(UnitDefs) do
 		local powerBase = modOptions.power_base or 3.25
 		local scaleFactor = modOptions.scale_factor or 50
 
-        --a crazy default value so we see it when it happens
-        if (not ud.mass) then
-			Spring.Log('unitdefs post', 'error', ud.name .. ' has no mass value')
-            ud.mass = 99999999
-        end
 		local logMass = math.log10(ud.mass)
 		local cp = ud.customparams
 		if not (cp and (cp.mother or cp.child)) then -- exclude composites
@@ -227,6 +283,8 @@ for name, ud in pairs(UnitDefs) do
 		if cp.mother then
 			ud.maxdamage = ud.mass * 2
 		end
+	else --apply health multiplier if not based on mass
+		ud.maxdamage = ud.maxdamage * (ud.maxdamagemul or 1)
 	end
 
 	if (modOptions.unit_los_mult) then
@@ -272,7 +330,7 @@ for name, ud in pairs(UnitDefs) do
 						if not squadDef.buildCostMetal then
 							addedCost = addedCost + newUD.buildcostmetal
 						end
-						totalMass = totalMass + newUD.mass
+						totalMass = totalMass + (newUD.mass or newUD.maxdamage)
 						capacity = capacity + 1
 					else
 						Spring.Log('unitdefs post', 'error', "Bad unitdef " .. unitName .. " in squad " .. squadName)
@@ -298,6 +356,8 @@ for name, ud in pairs(UnitDefs) do
 			Spring.Log('unitdefs post', 'error', "Squad unit not found in squad def files: "..squadName)
 		end
 	end
+	
+	
 	-- sounds
 	local soundCat = ud.customparams.soundcategory
 	if soundCat then
@@ -323,14 +383,26 @@ for name, ud in pairs(UnitDefs) do
 		end
 		ud.sounds = sounds
 	end
-	if ud.weapons then
-		for _, weapon in pairs(ud.weapons) do
-			if weapon.name:lower():find("tracer") or weapon.name:lower():find("noweapon") then
-				weapon.name = "TracerHack"
-			end
+	-- new stuff that will be staying in _post with OO defs
+	ud.selfdestructas = ud.explodeas
+	if ud.buildcostmetal and not cp.isupgrade then
+		if not ud.buildtime then
+			ud.buildtime = ud.buildcostmetal
+		elseif ud.buildtime ~= ud.buildcostmetal then
+			Spring.Log("unitdefs post", "warning", "Cost (" .. ud.buildcostmetal .. ") and time (" .. ud.buildtime .. ") mismatch on " .. ud.name)
 		end
 	end
 	
+	-- Warn for missing turret turn speeds
+	if (ud.script == 'Vehicle.lua' or ud.script == 'Deployed.lua' or ud.script == 'BoatChild.lua') and
+		ud.weapons and #ud.weapons > 0 and
+		ud.customparams and not ud.customparams.turretturnspeed then
+		Spring.Log("unitdefs post", "warning", "No turret turn speed for " .. ud.name)
+	end
+	
+	if not ud.objectname then ud.objectname = name .. ".s3o" end
+	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
+	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions
 	GMBuildOptions[#GMBuildOptions + 1] = name
 	if name == "gmtoolbox" then GM_UD = ud end

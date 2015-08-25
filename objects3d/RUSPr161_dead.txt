@@ -1,0 +1,24 @@
+base
+    mg_2
+        mg_turret_2
+            mg_gun_2
+    mg_1
+        mg_turret_1
+            mg_gun_1
+    turret_85_1
+        mantlet_85_1
+            barrel_85_1
+    turret_85_2
+        mantlet_85_2
+            barrel_85_2
+    turret_45_1
+        sleeve_45_1
+            barrel_45_1
+    turret_45_2
+        sleeve_45_2
+            barrel_45_2
+    turret_37
+        sleeve_37
+            barrel_37
+    prop1
+    prop2

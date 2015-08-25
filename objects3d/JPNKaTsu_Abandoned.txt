@@ -1,0 +1,23 @@
+base
+    turret2
+        gun2
+    turret1
+        gun1
+    mid_wheel8
+    mid_wheel7
+    mid_wheel6
+    mid_wheel5
+    mid_wheel4
+    mid_wheel3
+    mid_wheel2
+    mid_wheel1
+    rear_wheel
+    support_wheel4
+    support_wheel3
+    support_wheel2
+    support_wheel1
+    front_wheel
+    prop2
+    prop1
+    tracks
+    tracks2

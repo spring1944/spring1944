@@ -46,7 +46,6 @@ local mcSetRotation = Spring.MoveCtrl.SetRotation
 
 local vNormalized
 
-local CallCOBScript = Spring.CallCOBScript
 local CreateUnit = Spring.CreateUnit
 local DestroyUnit = Spring.DestroyUnit
 local GetUnitDirection = Spring.GetUnitDirection
@@ -162,7 +161,10 @@ function gadget:GameFrame(n)
       terminalIDs[unitID] = info
       cruiseIDs[unitID] = nil
       
-      CallCOBScript(unitID, "Falling", 0, 0)
+      local env = Spring.UnitScript.GetScriptEnv(unitID)
+      if env then 
+        Spring.UnitScript.CallAsUnit(unitID, env.Falling) 
+      end
       mcSetTrackGround(unitID, true)
       mcSetCollideStop(unitID, true)
       mcSetGravity(unitID, defInfo.gravity)
@@ -204,7 +206,7 @@ function gadget:MoveCtrlNotify(unitID, unitDefID, unitTeam, data)
 			if y > INF_WATER_LEVEL then
 				local delay = spawnDelay
 				DelayCall(CreateUnit, {gliderSquad, x + vx * delay * 0.02, y, z + vz * delay * 0.02, 0, unitTeam}, delay)
-				DelayCall(CreateUnit, {"gbrgliderresource", x + vx * delay * 0.015, y, z + vz * delay * 0.015, 0, unitTeam}, delay)
+				DelayCall(CreateUnit, {"gbrglidersupplies", x + vx * delay * 0.015, y, z + vz * delay * 0.015, 0, unitTeam}, delay)
 			end
 		end
     return true

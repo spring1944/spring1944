@@ -157,7 +157,7 @@ local gerDefs = {
 		side = "GER",
 	},
 
-	["ger_platoon_ssb"] =
+	["ger_platoon_landing"] =
 	{
 		members = {
 			"gerobserv",
@@ -185,7 +185,7 @@ local gerDefs = {
 		-- other fields not needed for transport squads
 	},
 
-	["ger_platoon_mfp"] =
+	["ger_platoon_lct"] =
 	{
 		members = {
 			"gerpanzeriv",

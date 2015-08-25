@@ -1,0 +1,12 @@
+base
+    turret
+        grabber
+            link
+    wake3
+    wake2
+    wake1
+    pilot
+    bren_mount
+        bren_gun
+            bren_flare
+    ramp

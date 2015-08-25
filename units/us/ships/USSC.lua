@@ -4,17 +4,12 @@ local US_SC = ArmedBoat:New{
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 3500,
-	buildTime				= 3500,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USSC_dead",
-	mass					= 9800,
 	maxDamage				= 9800,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_Medium",
-	objectName				= "USSC.s3o",
-	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -24,12 +19,11 @@ local US_SC = ArmedBoat:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
-			"US_SC_Turret_76mm",
-			"US_SC_Turret_20mm_Right",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Rear",
+			"USSC_Turret_76mm",
+			"USSC_Turret_20mm_Right",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Rear",
 		},
 		deathanim = {
 			["z"] = {angle = 30, speed = 20},
@@ -41,7 +35,7 @@ local US_SC = ArmedBoat:New{
 local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "USSC_Turret_20mm.s3o",
+	objectName				= "<SIDE>/USSC_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -58,8 +52,6 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 4,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
@@ -101,7 +93,6 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 local US_SC_Turret_76mm = OpenBoatTurret:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
-	objectName				= "USSC_Turret_76mm.s3o",
   	weapons = {	
 		[1] = {
 			maxAngleDif			= 270,
@@ -111,8 +102,6 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 12,
-		weaponcost				= 12,
-		weaponswithammo			= 1,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
@@ -124,8 +113,8 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 
 return lowerkeys({
 	["USSC"] = US_SC,
-	["US_SC_Turret_76mm"] = US_SC_Turret_76mm,
-	["US_SC_Turret_20mm_Left"] = US_SC_Turret_20mm_Left,
-	["US_SC_Turret_20mm_Right"] = US_SC_Turret_20mm_Right,
-	["US_SC_Turret_20mm_Rear"] = US_SC_Turret_20mm_Rear,
+	["USSC_Turret_76mm"] = US_SC_Turret_76mm,
+	["USSC_Turret_20mm_Left"] = US_SC_Turret_20mm_Left,
+	["USSC_Turret_20mm_Right"] = US_SC_Turret_20mm_Right,
+	["USSC_Turret_20mm_Rear"] = US_SC_Turret_20mm_Rear,
 })

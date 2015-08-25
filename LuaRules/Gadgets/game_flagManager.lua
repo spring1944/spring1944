@@ -218,7 +218,7 @@ end
 function FlagSpecialBehaviour(flagType, flagID, flagTeamID, teamID)
 	if flagType == "flag" then
 		local env = Spring.UnitScript.GetScriptEnv(flagID)
-		Spring.UnitScript.CallAsUnit(flagID, env.StartFlagThread, teamID)
+		Spring.UnitScript.CallAsUnit(flagID, env.script.Create, teamID)
 	end
 end
 

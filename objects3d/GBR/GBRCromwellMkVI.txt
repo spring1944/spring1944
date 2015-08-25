@@ -1,0 +1,17 @@
+base
+    turret
+        sleeve
+            barrel
+                flare_1
+            flare_3
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    tracks1
+    tracks2
+    hullmg
+    exhaust

@@ -1,0 +1,6 @@
+base
+    tracks1
+    frontwheel
+    wheel1
+    wheel3
+    rearwheel

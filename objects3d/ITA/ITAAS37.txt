@@ -1,0 +1,9 @@
+base
+    tow_point
+    load_shoulder
+        load_arm
+    turret
+        sleeve
+            flare_1
+    wheels2
+    wheels1

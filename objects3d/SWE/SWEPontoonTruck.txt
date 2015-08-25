@@ -1,0 +1,7 @@
+base
+    cargo_bed
+        pontoon
+    cab
+        fenders
+    wheel1
+    wheel2

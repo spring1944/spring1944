@@ -1,0 +1,15 @@
+base
+    tracks
+    tent
+    roller_8
+    roller_7
+    roller_6
+    roller_5
+    roller_1
+    front_wheels
+    roller_2
+    roller_3
+    roller_4
+    carriage
+        wheel3
+    tracks2

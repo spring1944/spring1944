@@ -1,0 +1,7 @@
+base
+    tow_point
+    load_shoulder
+        load_arm
+    rear_wheels
+    front_wheels
+    mudguards

@@ -1,41 +1,4 @@
 -- Smallarms - Infantry Rifles
-
--- Rifle Base Class
-local RifleClass = Weapon:New{
-  accuracy           = 100,
-  areaOfEffect       = 1,
-  avoidFeature       = true,
-  avoidFriendly      = false,
-  burnblow           = false,
-  collideFeature     = true,
-  collideFriendly    = false,
-  collisionSize      = 2.5,
-  coreThickness      = 0.15,
-  duration           = 0.01,
-  explosionGenerator = [[custom:Bullet]],
-  fireStarter        = 0,
-  id                 = 2, -- used for cob based fear from rifle/smg
-  impactonly         = 1,
-  impulsefactor      = 0.1,
-  intensity          = 0.9,
-  interceptedByShieldType = 8,
-  laserFlareSize     = 0.0001,
-  movingAccuracy     = 888,
-  rgbColor           = [[1.0 0.75 0.0]],
-  sprayAngle         = 100,
-  thickness          = 0.4,
-  tolerance          = 6000,
-  turret             = true,
-  weaponType         = [[LaserCannon]],
-  weaponVelocity     = 1500,
-  customparams = {
-    damagetype         = [[smallarm]],
-  },
-  damage = {
-    default            = 33,
-  },
-}
-
 -- Implementations
 
 -- SMLE No. 4 Mk. I (GBR)
@@ -144,6 +107,7 @@ local SniperRifleClass = RifleClass:New{
     damagetype         = [[smallarm]],
     fearaoe            = 90,
     fearid             = 401,
+	scriptanimation    = [[sniper]],
   },
   damage = {
     default              = 625,

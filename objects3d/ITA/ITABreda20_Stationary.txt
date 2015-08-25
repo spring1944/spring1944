@@ -1,0 +1,7 @@
+base
+    stand
+        turret
+            sleeve
+                barrel
+                    flare
+            crewman

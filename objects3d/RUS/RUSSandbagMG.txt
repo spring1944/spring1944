@@ -1,0 +1,19 @@
+base
+    carriage
+        wheels
+        turret
+            gun
+                flare
+                pelvis
+                    lthigh
+                        lleg
+                            lfoot
+                    rthigh
+                        rleg
+                            rfoot
+                    torso
+                        head
+                        luparm
+                            lloarm
+                        ruparm
+                            rloarm

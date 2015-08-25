@@ -4,6 +4,7 @@ local Boat = Unit:New{ -- used for transports as is
 	canMove				= true,
 	category 			= "SHIP MINETRIGGER",
 	collisionVolumeType	= "box",
+	corpse				= "<NAME>_dead", -- TODO: grumble
 	explodeAs			= "Vehicle_Explosion_Sm",
 	floater				= true,
 	footprintX			= 4,
@@ -14,14 +15,92 @@ local Boat = Unit:New{ -- used for transports as is
 	turninplace			= false,
 
 	customparams = {
+		soundCategory		= "<SIDE>/Boat",
 		damageGroup			= 'ships',
 		dontCount			= 1,
 		hasturnbutton		= 1,
+		reversemult			= 0.5,
 	}
 }
 
+-- Engineer Built
+local AssaultBoat = Boat:New{
+	name				= "Rubber Dingy", -- will be overwritten by e.g. sturmboot
+	description			= "Infantry Water Transport",
+	acceleration		= 0.3,
+	brakeRate			= 0.2,
+	buildCostMetal		= 200,
+	category			= "SHIP MINETRIGGER SOFTVEH",
+	footprintX			= 3,
+	footprintZ			= 3,
+	iconType			= "lttrans",--rubber",
+	mass				= 145,
+	maxDamage			= 145,
+	maxVelocity			= 3.55,
+	movementClass		= "BOAT_Small",
+	objectName			= "GEN/RubberDingy.S3O",
+	script				= "RubberDingy.cob",
+	stealth				= true,
+	transportCapacity	= 9,
+	transportMass		= 450,
+	transportSize		= 1,
+	turninplace			= 0,
+	turnRate			= 350,
+	waterline			= 0.2,
+}
+
+local PontoonRaft = Boat:New{
+	name				= "Pontoon Raft",
+	description			= "Heavy Equipment Transport",
+	acceleration		= 0.15,
+	brakeRate			= 0.1,
+	buildCostMetal		= 200,
+	category			= "SHIP MINETRIGGER SOFTVEH",
+	iconType			= "raft",
+	mass				= 1000,
+	maxDamage			= 1000,
+	maxVelocity			= 1.28,
+	minTransportSize	= 1,
+	movementClass		= "BOAT_Medium",
+	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
+	script				= "PontoonRaft.cob",
+	stealth				= true,
+	transportCapacity	= 1,
+	transportSize		= 9,
+	turnRate			= 200,
+	waterline			= 2.5,
+}
+
+-- Landing Craft
+local InfantryLandingCraft = Boat:New{
+	description				= "Infantry Landing Craft",
+	iconType				= "landingship",
+	movementClass			= "BOAT_LandingCraftSmall",
+	transportCapacity		= 20,
+	transportMass			= 1000,
+	transportSize			= 1,
+	customparams = {
+		transportsquad			= "<SIDE>_platoon_landing",
+		supplyRange				= 350,
+	},
+}
+
+local TankLandingCraft = Boat:New{
+	description				= "Tank Landing Craft",
+	iconType				= "transportship",
+	movementClass			= "BOAT_LandingCraft",
+	transportCapacity		= 30,
+	transportSize			= 5,
+	customparams = {
+		supplyRange				= 600,
+		transportsquad			= "<SIDE>_platoon_lct",
+	}
+}
+
+-- Composites
 local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	iconType			= "gunboat",
+	movementClass		= "BOAT_LightPatrol",
 	script				= "BoatMother.lua",
 	usePieceCollisionVolumes	= true,
 
@@ -47,6 +126,7 @@ local BoatChild = Boat:New{ -- a boat turret
 	cantBeTransported			= false,
 	canSelfDestruct				= false,
 	category					= "SHIP MINETRIGGER TURRET DEPLOYED",
+	corpse						= '',
 	footprintX					= 1,
 	footprintZ					= 1,
 	iconType					= "turret",
@@ -81,10 +161,17 @@ local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
 }
 
 return {
+	-- Basic class
 	Boat = Boat,
 	-- BoatMother and BoatChild deliberately not exported.
 	ArmedBoat = ArmedBoat,
 	OpenBoatTurret = OpenBoatTurret,
 	PartiallyEnclosedBoatTurret = PartiallyEnclosedBoatTurret,
 	EnclosedBoatTurret = EnclosedBoatTurret,
+	-- Engineer built raft & boat
+	PontoonRaft = PontoonRaft,
+	AssaultBoat = AssaultBoat,
+	-- Landing Craft
+	InfantryLandingCraft = InfantryLandingCraft,
+	TankLandingCraft = TankLandingCraft,
 }

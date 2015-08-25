@@ -1,0 +1,8 @@
+base
+    turret
+        sleeve
+            barrel2
+                flare2
+            barrel1
+                flare1
+        gunner_20_5

@@ -1,0 +1,4 @@
+base
+    body
+        wheel1
+        wheel2

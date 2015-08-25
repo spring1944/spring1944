@@ -1,0 +1,12 @@
+base
+    wake1
+    wake2
+    wake3
+    flag1
+        flag2
+    child2
+    child1
+    child3
+    child4
+    tower
+    extras

@@ -4,16 +4,12 @@ local US_LCSL = ArmedBoat:New{
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 9000,
-	buildTime				= 9000,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USLCSL_dead",
-	mass					= 25400,
 	maxDamage				= 25400,
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_LandingCraft",
-	objectName				= "USLCSL.s3o",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 140,	
 	weapons = {	
@@ -23,15 +19,14 @@ local US_LCSL = ArmedBoat:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
-			"US_SC_Turret_76mm",
-			"US_LCSL_Turret_TwinBofors_Front",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Right",
-			"US_SC_Turret_20mm_Left",
-			"US_SC_Turret_20mm_Right",
-			"US_LCSL_Turret_TwinBofors_Rear",
+			"USSC_Turret_76mm",
+			"USLCSL_Turret_TwinBofors_Front",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Right",
+			"USSC_Turret_20mm_Left",
+			"USSC_Turret_20mm_Right",
+			"USLCSL_Turret_TwinBofors_Rear",
 		},
 		deathanim = {
 			["z"] = {angle = 15, speed = 3},
@@ -43,7 +38,7 @@ local US_LCSL = ArmedBoat:New{
 local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
 	name					= "40mm Twin Bofors Turret",
 	description				= "Primary Turret",
-	objectName				= "USLCSL_Turret_TwinBofors.s3o",
+	objectName				= "<SIDE>/USLCSL_Turret_TwinBofors.s3o",
   	weapons = {	
 		[1] = {
 			name				= "bofors40mmaa",
@@ -76,8 +71,6 @@ local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
 	},
 	customparams = {
 	    maxammo					= 16, -- TODO: from RUSBMO 37mm
-		weaponcost				= 8,
-		weaponswithammo			= 4,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
@@ -110,7 +103,6 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 local US_SC_Turret_76mm = OpenBoatTurret:New{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
-	objectName				= "USSC_Turret_76mm.s3o",
   	weapons = {	
 		[1] = {
 			maxAngleDif			= 270,
@@ -120,8 +112,6 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 18,
-		weaponcost				= 12,
-		weaponswithammo			= 1,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
@@ -133,6 +123,6 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 
 return lowerkeys({
 	["USLCSL"] = US_LCSL,
-	["US_LCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
-	["US_LCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
+	["USLCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
+	["USLCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
 })

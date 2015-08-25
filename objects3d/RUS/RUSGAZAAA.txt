@@ -1,0 +1,12 @@
+base
+    stand
+        turret
+            sleeve
+                flare_1
+                flare_2
+                flare_3
+                flare_4
+            crewman
+    wheel1
+    wheel2
+    wheel3

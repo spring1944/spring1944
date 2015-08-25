@@ -24,9 +24,28 @@ local gbrunits = {
     "gbrtankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    "rubberdingy",
-    "pontoonraft",
+    "gbrassaultboat",
+    "gbrpontoonraft",
 	--"pontoonbridge",
+  },
+
+  gbrhqaiengineer =
+  {
+    "gbrbarracks",
+    "gbrvehicleyard",
+    "gbrgunyard",
+    "gbrradar",
+    "gbrstorage",
+    "gbratminesign",
+    "gbrapminesign",
+    "gbrtankobstacle",
+    "gbrspyard",
+    "gbrspyard1",
+    "gbrtankyard1",
+    "gbrtankyard2",
+    "gbrassaultboat",
+    "gbrpontoonraft",
+  --"pontoonbridge",
   },
 
   gbrbarracks =
@@ -61,7 +80,7 @@ local gbrunits = {
     "gbr17pdr_truck",
     "gbr25pdr_truck",
     "gbrbofors_truck",
-	"gbrstaghound",
+    "gbrstaghound",
     "gbrsexton",
   },
   
@@ -99,8 +118,8 @@ local gbrunits = {
     "gbrtankobstacle",
     --"gbrstorage",
     --"gbrbedfordtruck",
-    "rubberdingy",
-    "pontoonraft",
+    "gbrassaultboat",
+    "gbrpontoonraft",
 
   },
 
@@ -109,7 +128,7 @@ local gbrunits = {
     "gbrmatadorengvehicle",
     "gbrbedfordtruck",
     "gbrm5halftrack",
-	"gbrstaghound",
+    "gbrstaghound",
     "gbrdaimler",
     "gbrkangaroo",
     "gbrwasp",
@@ -187,16 +206,16 @@ local gbrunits = {
   
   gbrboatyard =
   {
-    "rubberdingy",
-    "pontoonraft",
+    "gbrassaultboat",
+    "gbrpontoonraft",
     "gbrlca",
     "gbrfairmiled",
 	"gbrlcsl",
   },
   gbrboatyardlarge =
   {
-    "rubberdingy",
-    "pontoonraft",
+    "gbrassaultboat",
+    "gbrpontoonraft",
     "gbrlca",
     "gbrfairmiled",
 	"gbrlcsl",

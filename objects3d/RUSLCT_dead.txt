@@ -1,0 +1,8 @@
+base
+    turret_2
+        sleeve_2
+            barrel_2
+    ramp
+    turret_1
+        sleeve_1
+            barrel_1

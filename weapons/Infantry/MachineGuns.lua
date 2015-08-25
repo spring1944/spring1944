@@ -1,54 +1,5 @@
 -- Smallarms - Machineguns
 
--- MachineGun Base Class
-local MGClass = Weapon:New{
-  areaOfEffect       = 1,
-  avoidFeature       = true,
-  avoidFriendly      = false,
-  burnblow           = false,
-  collideFeature     = true,
-  collideFriendly    = false,
-  collisionSize      = 2.5,
-  explosionGenerator = [[custom:Bullet]],
-  fireStarter        = 1,
-  impactonly         = 1,
-  interceptedByShieldType = 8,
-  noSelfDamage       = true,
-  size               = 1e-10,
-  soundTrigger       = true,
-  sprayAngle         = 350,
-  tolerance          = 600,
-  turret             = true,
-  weaponType         = [[LaserCannon]],
-  weaponVelocity     = 1500,
-  customparams = {
-    damagetype         = [[smallarm]],
-    fearaoe            = 45,
-    fearid             = 301,
-    cegflare           = "MG_MUZZLEFLASH",
-    flareonshot        = true,
-  },
-  damage = {
-    default            = 33,
-  },
-}
-
-local HeavyMGClass = MGClass:New{
-  burst              = 8,
-  burstRate          = 0.1,
-  interceptedByShieldType = 16,
-  movingAccuracy     = 500,
-  targetMoveError    = 0.25,
-  tolerance          = 3000, -- needed?
-  weaponVelocity     = 3000,
-  customparams = {
-    fearid             = 401,
-  },
-  damage = {
-    default            = 50,
-  },
-}
-
 -- Implementations
 -- Rifle Calibre (~8mm) MG's
 -- BESA
@@ -107,17 +58,9 @@ local MG42_Deployed = MG42:New{
   sprayAngle         = 360,
 }
 -- Anti Air MG42
-local MG42AA = MG42:New{
-  accuracy	     = 400,
-  canAttackGround    = false,
-  predictBoost       = 0.25,
-  movingAccuracy     = 800,
+local MG42AA = MG42:New(AAMG):New{
   range              = 1170,
   sprayAngle         = 460,
-  customparams = { 
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 
 -- DP (RUS)
@@ -148,18 +91,11 @@ local Maxim = MGClass:New{
   soundStart         = [[RUS_Maxim]],
 }
 -- Maxim AA
-local MaximAA = Maxim:New{
-  accuracy	     = 400,
+local MaximAA = Maxim:New(AAMG):New{
   burst              = 7,
   burstRate          = 0.103,
-  canAttackGround    = false,
-  movingAccuracy     = 800,
-  predictBoost       = 0.25,
+  movingAccuracy     = 400,
   range              = 1050,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 -- Vickers (GBR)
 local Vickers = Maxim:New{
@@ -198,7 +134,7 @@ local Breda30 = MGClass:New{
 
 -- Breda M37 (ITA)
 local BredaM37 = MGClass:New{
-  burst              = 9,
+  burst              = 8,
   burstRate          = 0.16,
   movingAccuracy     = 6222,
   name               = [[Breda M37 Heavy Machinegun]],
@@ -221,7 +157,7 @@ local BredaM38 = MGClass:New{
 }
 
 -- 7.7mm Breda SAFAT Air MG (ITA)
-local BredaSafat03 = MGClass:New{
+local BredaSafat03 = MGClass:New(AMG):New{
   burst				 = 6,
   burstRate          = 0.05,
   canAttackGround    = false,
@@ -229,7 +165,6 @@ local BredaSafat03 = MGClass:New{
   range              = 825,
   heightBoostFactor  = 0,
   reloadTime         = 0.55,
-  sprayAngle        = 900,
   soundStart         = [[ITA_Breda30]],
   weaponType         = [[Cannon]],
   customparams = {
@@ -262,11 +197,9 @@ local Type92MG = MGClass:New{
 } 
 
 -- 7.7mm TE-4 Air MG (JPN)
-local TE4 = MGClass:New{
-  accuracy	     = 400,
-  burst		     = 6,
+local TE4 = MGClass:New(AAMG):New{
+  burst				 = 6,
   burstRate          = 0.15,
-  canAttackGround    = false,
   name               = [[7.7mm TE-4 Machinegun]],
   range              = 925,
   predictBoost       = 0.2,
@@ -287,6 +220,9 @@ local Twin05CalVickers = HeavyMGClass:New{
   range              = 875,
   reloadTime         = 2.2,
   soundStart         = [[US_50CAL]],
+  customParams = {
+    onlyTargetCategory = SmallArm.customparams.onlytargetcategory .. " AIR", -- TODO: fudge as these can target air too
+  },
 }
 
 -- DShK (RUS)
@@ -310,22 +246,15 @@ local M2Browning = HeavyMGClass:New{
   soundStart         = [[US_50CAL]],
 }
 -- M2 Browning AA
-local M2BrowningAA = M2Browning:New{
-  accuracy	     = 600,
+local M2BrowningAA = M2Browning:New(AAMG):New{
   burst              = 3,
-  canAttackGround    = false,
-  movingAccuracy     = 1200,
-  predictBoost       = 0.25,
+  movingAccuracy     = 200,
   range              = 1170,
   sprayAngle        = 250,
   reloadTime         = 0.375,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 -- M2 Browning Aircraft
-local M2BrowningAMG = M2Browning:New{
+local M2BrowningAMG = M2Browning:New(AMG):New{
   burst             = 3,
   burstRate         = 0.085,
   range             = 900,
@@ -337,8 +266,8 @@ local M2BrowningAMG = M2Browning:New{
   weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,
+	--onlytargetCategory = "AIR",
   }
-
 }
 
 -- Breda M1931 (ITA)
@@ -347,16 +276,16 @@ local BredaM1931 = HeavyMGClass:New{
   range              = 880,
   reloadTime         = 4,
   soundStart         = [[US_50CAL]],
-  sprayAngle         = 300;
+  sprayAngle         = 300,
 }
 
 --Breda M1931 AA
 local BredaM1931AA = BredaM1931:New{
-  accuracy	     = 400,
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
   canAttackGround    = false,
-  movingAccuracy     = 800,
+  movingAccuracy     = 400,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
@@ -368,7 +297,7 @@ local BredaM1931AA = BredaM1931:New{
 }
 
 -- .50 Caliber Breda SAFAT Air MG (ITA)
-local BredaSafat05 = HeavyMGClass:New{
+local BredaSafat05 = HeavyMGClass:New(AMG):New{
   burst				 = 6,
   burstRate          = 0.125,
   canAttackGround    = false,
@@ -376,7 +305,6 @@ local BredaSafat05 = HeavyMGClass:New{
   range              = 900,
   heightBoostFactor  = 0,
   reloadTime         = 1.2,
-  sprayAngle        = 1050,
   soundStart         = [[ITA_breda12_7mm]],
   weaponType         = [[Cannon]],
   customparams = {
@@ -396,10 +324,10 @@ local Type93HMG = HeavyMGClass:New{
 
 -- Type 93 AA
 local Type93AA = Type93HMG:New{
-  accuracy	     = 400,
+  accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
-  movingAccuracy     = 800,
+  movingAccuracy     = 400,
   predictBoost       = 0.25,
   range              = 1300,
   reloadTime         = 1.5,
@@ -420,7 +348,7 @@ local Type1Ho103 = HeavyMGClass:New{
   heightBoostFactor  = 0,
   reloadTime         = 0.8,
   soundStart         = [[US_50CALAir]],
-  sprayAngle         = 1050,
+  sprayAngle         = 300,
   weaponType         = [[Cannon]],
   customparams = {
     no_range_adjust    = true,

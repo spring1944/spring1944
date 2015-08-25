@@ -41,6 +41,24 @@ gadget.unitBuildOrder = UnitBag{
 		"gbrcromwell", "gbrcromwellmkvi",
 		"gbraecmkii",
 	},
+	gbrtankyard1 = UnitArray{
+		-- Works J
+		"gbrcromwell", 
+		"gbrshermanfirefly",
+	},
+	gbrtankyard2 = UnitArray{
+		-- Works J
+		"gbrcromwell", 
+		"gbrchurchillmkvii",
+	},
+	gbrspyard = UnitArray{
+		-- Works J
+		"gbrsexton",
+	},
+	gbrspyard1 = UnitArray{
+		-- Works J
+		"gbrm10achilles",
+	},
 	-- Russia
 	rusbarracks = UnitArray{
 		"rus_platoon_rifle",
@@ -81,6 +99,22 @@ gadget.unitBuildOrder = UnitBag{
 		"rust3476", "rust3476",
 		"rust3476", "rusisu152",
 	},
+	rustankyard1 = UnitArray{
+		-- Works J
+		"rust3485",
+	},
+	rustankyard2 = UnitArray{
+		-- Works J
+		"rusis2",
+	},
+	russpyard = UnitArray{
+		-- Works J
+		"rusbm13n",
+	},
+	russpyard1 = UnitArray{
+		-- Works J
+		"russu85", "russu100",
+	},
 	-- Germany
 	gerhqbunker = UnitArray{
 		-- Works J
@@ -114,6 +148,29 @@ gadget.unitBuildOrder = UnitBag{
 		"gerpanzeriii", "gerpanzeriv", "gerpanzeriv",
 		"gerstugiii", "gerstugiii", "gerstugiii",
 		"gertiger",
+	},
+	gertankyard1 = UnitArray{
+		-- Works J
+		"gerpanzeriii", 
+		"gerpanzeriv",
+		"gerstugiii",
+		"gerpanther",
+	},
+	gertankyard2 = UnitArray{
+		-- Works J
+		"gerpanzeriii", 
+		"gerpanzeriv",
+		"gerstugiii",
+		"gertigerii",
+	},
+	gerspyard = UnitArray{
+		-- Works J
+		"gerwespe",
+	},
+	gerspyard1 = UnitArray{
+		-- Works J
+		"gerjagdpanzeriv",
+    	"gerjagdpanther",
 	},
 	-- United States
 	ushq = UnitArray{
@@ -149,6 +206,20 @@ gadget.unitBuildOrder = UnitBag{
 		-- Works J
 		"usm5stuart",
 		"usm4a4sherman", "usm4a4sherman", "usm4a4sherman",
+		"usm10wolverine",
+	},
+	usspyard = UnitArray{
+		-- Works J
+		"usm7priest",
+	},
+	ustankyard1 = UnitArray{
+		-- Works J
+		"usm4a376sherman", "usm4a3105sherman",
+		"usm10wolverine",
+	},
+	ustankyard2 = UnitArray{
+		-- Works J
+		"usm4jumbo", "usm4a3105sherman",
 		"usm10wolverine",
 	},
 		-- ITALY
@@ -244,8 +315,29 @@ gadget.unitBuildOrder = UnitBag{
 		"jpnhago",
 		"jpn_tankette_platoon_teke",
 	},
+	jpnvehicleyard2 = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhago",
+		--"jpnisuzutype94_aa",
+		"jpnkatsu",
+		"jpnkami",
+	},
+	jpnvehicleyard2 = UnitArray{
+		"jpnriki",
+		--"jpnisuzutx40",
+		"jpnhago",
+		--"jpnisuzutype94_aa",
+		"jpnshinhotochiha",
+	},
 	jpnsupplydepot = UnitArray{
 		"jpnhoha",
+	},
+	jpnspyard = UnitArray{
+		"jpnhoniii",
+	},
+	jpnspyard1 = UnitArray{
+		"jpnhoniiii",
 	},
 	jpntankyard = UnitArray{
 	
@@ -254,6 +346,15 @@ gadget.unitBuildOrder = UnitBag{
 		"jpnchiha",
 		"jpnchihe","jpnchihe",
 		"jpnchiha",
+	},
+	jpntankyard1 =
+	{
+		"jpnchinu",
+		"jpnchiha120mm",
+	},
+	jpntankyard2 =
+	{
+		"jpnhoro",
 	},
 	
 }
@@ -270,6 +371,10 @@ gadget.baseBuildOrder = {
 		--"gbrgunyard",
 		"gbrtankyard",
 		"gbrsupplydepot",
+		"gbrspyard",
+		"gbrtankyard1",
+		"gbrspyard1",
+		"gbrtankyard2",
 	},
 	rus = UnitArray{
 		-- TODO: add veh / tanks / towed guns (if rus has packed howitzers) Russia will be the "expert"
@@ -278,6 +383,10 @@ gadget.baseBuildOrder = {
 		"russtorage", "russtorage",
 		"rustankyard",
 		"russupplydepot",
+		"russpyard",
+		"rustankyard1",
+		"russpyard1",
+		"rustankyard2",
 	},
 	ger = UnitArray{
 		-- works J
@@ -287,6 +396,10 @@ gadget.baseBuildOrder = {
 		"gerstorage", "gerstorage",
 		"gertankyard",
 		"gersupplydepot",
+		"gerspyard",
+		"gertankyard1",
+		"gerspyard1",
+		"gertankyard2",
 	},
 	us = UnitArray{
 		-- Works J
@@ -295,6 +408,9 @@ gadget.baseBuildOrder = {
 		"usstorage", "usstorage",
 		"ustankyard",
 		"ussupplydepot",
+		"usspyard",
+		"ustankyard1",
+		"ustankyard2",
 	},
 		ita = UnitArray{
 		-- Works J
@@ -315,25 +431,36 @@ gadget.baseBuildOrder = {
 		"jpnstorage", "jpnstorage",
 		"jpntankyard",
 		"jpnsupplydepot",
+		"jpnspyard",
+		"jpnvehicleyard1",
+		"jpnspyard1",
+		"jpnvehicleyard2",
+		"jpntankyard1",
+		"jpntankyard2",
 	},
 }
 
 -- This lists all the units (of all sides) that are considered "base builders"
 gadget.baseBuilders = UnitSet{
 	"gbrhqengineer",
+	"gbrhqaiengineer",
 	"gbrmatadorengvehicle",
 	"gerhqengineer",
+	"gerhqaiengineer",
 	"gersdkfz9",
-	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building...
+	"ruscommissar", -- contrary to other sides Russia can start immediately after game start with base building... #This WAS true in previous versions
+	"rusaicommissar",
 	"rusengineer",
 	"rusk31",
 	"ushqengineer",
+	"ushqaiengineer",
 	"usgmcengvehicle",
 	"itahqengineer",
-	"itaengineer", 
+	"itahqaiengineer", 
 	"itabreda41",
 	"jpnriki",
 	"jpnhqengineer",
+	"jpnhqaiengineer",
 }
 
 -- This lists all the units that should be considered flags.
@@ -346,9 +473,10 @@ gadget.flagCappers = UnitSet{
 	"gbrrifle", "gbrsten",
 	"gerrifle", "germp40",
 	"itarifle", "itam38",
-	"usgirifle", "usgithompson",
+	"usrifle", "usthompson",
 	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
+	"rusaicommissar",
 }
 
 -- Number of units per side used to cap flags.
@@ -356,7 +484,7 @@ gadget.reservedFlagCappers = {
 	gbr = 24,
 	ger = 24,
 	us  = 24,
-	ita  = 24,
+	ita = 24,
 	jpn = 24,
 	rus = 2,
 }

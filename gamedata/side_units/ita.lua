@@ -11,7 +11,7 @@ local itaunits =
     "ita_platoon_hq",
   },
   -- AI
-  itaengineer =
+  itahqaiengineer =
   {
     "itavehicleyard",
     "itabarracks",
@@ -21,8 +21,8 @@ local itaunits =
     "itaatminesign",
     "itaapminesign",
     "itatankobstacle",
-    "gersturmboot",
-    "pontoonraft",
+    "itaassaultboat",
+    "itapontoonraft",
     "itatankyard1",
     "itaspyard",
     "itaelitebarracks",
@@ -38,8 +38,8 @@ local itaunits =
     "itaatminesign",
     "itaapminesign",
     "itatankobstacle",
-    "gersturmboot",
-    "pontoonraft",
+    "itaassaultboat",
+    "itapontoonraft",
   },
 
   itabreda41 =
@@ -207,8 +207,8 @@ local itaunits =
   },
   itaboatyard =
   {
-    "gersturmboot",
-	"gerpontoonraft",
+    "itaassaultboat",
+	"itapontoonraft",
 	"itamas",
 	"itams",
 	"itavedetta",
@@ -217,8 +217,8 @@ local itaunits =
   },
   itaboatyardlarge =
   {
-    "gersturmboot",
-	"gerpontoonraft",
+    "itaassaultboat",
+	"itapontoonraft",
 	"itamas",
 	"itams",
 	"itavedetta",

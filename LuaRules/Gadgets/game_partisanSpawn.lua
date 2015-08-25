@@ -1,7 +1,7 @@
 function gadget:GetInfo()
 	return {
 		name      = "Partisan Spawner",
-		desc      = "Spawns partisans around RUSPResource",
+		desc      = "Spawns partisans around ruspartisansupplies",
 		author    = "FLOZi",
 		date      = "28/01/2010",
 		license   = "GPL v2",
@@ -27,7 +27,7 @@ local GetUnitCommands	    = Spring.GetUnitCommands
 -- Unsynced Ctrl
 local GiveOrderToUnit	    = Spring.GiveOrderToUnit
 -- constants
-local SPAWNER_UD = UnitDefNames['ruspresource']
+local SPAWNER_UD = UnitDefNames['ruspartisansupplies']
 local INTERVAL = 5 -- 5 seconds
 local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
 local ENEMY_TOO_CLOSE_RADIUS = SPAWNER_UD.customParams['supplyrange']

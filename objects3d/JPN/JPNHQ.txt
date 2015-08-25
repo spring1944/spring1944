@@ -1,0 +1,7 @@
+base
+    door
+    beam
+    pad
+    flag1
+        flag2
+            flag3

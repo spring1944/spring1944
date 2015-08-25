@@ -1,0 +1,11 @@
+base
+    turret
+        flare_3
+        sleeve
+            barrel
+                flare_1
+    spares
+    wheels2
+    wheels1
+    rear_gun
+        flare_4

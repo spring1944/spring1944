@@ -1,0 +1,8 @@
+base
+    wheel4
+    wheel3
+    wheel2
+    wheel1
+    load_shoulder
+        load_arm
+    tow_point

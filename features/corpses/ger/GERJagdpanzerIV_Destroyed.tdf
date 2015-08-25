@@ -5,7 +5,7 @@
   featureDead=GERJagdpanzerIV_Destroyed;
   footprintX=2;
   footprintZ=2;
-  object=GERJagdpanzerIV.S3O;
+  object="GER/GERJagdpanzerIV.S3O";
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;
@@ -25,7 +25,7 @@
   featureDead=Debris_Large;
   footprintX=2;
   footprintZ=2;
-  object=GERJagdpanzerIV_Destroyed.S3O;
+  object="GERJagdpanzerIV_Destroyed.S3O";
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 40;

@@ -139,6 +139,12 @@ local function SpawnTransportSquad(unitID, teamID, transportSquad)
 			end
 			Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
 		end
+		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		if env then
+			Spring.UnitScript.CallAsUnit(unitID, env.script.TransportPickup, passID)
+		else
+			Spring.CallCOBScript(unitID, "TransportPickup", 0, passID, 1)
+		end
 	end
 end
 

@@ -1,0 +1,25 @@
+base
+    crewman1
+        pelvis1
+            lthigh1
+                lleg1
+                    lfoot1
+            rthigh1
+                rleg1
+                    rfoot1
+            torso1
+                head1
+                luparm1
+                    lloarm1
+                ruparm1
+                    rloarm1
+    carriage
+        turret
+            sleeve
+                barrel
+                    flare
+                        brakeright
+                        brakeleft
+        wheels
+        trail2
+        trail1

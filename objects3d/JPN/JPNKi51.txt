@@ -1,0 +1,13 @@
+base
+    rear_turret
+        flare_7
+    flare_6
+    flare_5
+    propeller
+    prop
+    bomb_4
+    bomb_3
+    bomb_2
+    bomb_1
+    wing1
+    wing2

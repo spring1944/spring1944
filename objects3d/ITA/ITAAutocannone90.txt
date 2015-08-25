@@ -1,0 +1,18 @@
+base
+    f22
+    f12
+    f21
+    f11
+    support_pads
+    support_rods
+    leg2
+    leg1
+    turret
+        sleeve
+            barrel
+                flare_1
+        gunner1
+        gunner2
+    rear_wheels
+    front_wheels
+    spare

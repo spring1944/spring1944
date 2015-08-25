@@ -1,0 +1,23 @@
+base
+    turret_sleeve
+        barrel
+            flare_1
+    tracks1
+    tracks2
+    frontwheel
+    rearwheel
+    wheel1
+    wheel2
+    wheel3
+    wheel4
+    wheel5
+    wheel6
+    wheel7
+    wheel8
+    exhaust
+    engine_fx
+    hatch_fx
+    front_fx
+    back_fx
+    right_fx
+    left_fx

@@ -1,0 +1,12 @@
+base
+    turret
+        sleeve
+            backblast
+            r_rocket8
+            r_rocket7
+            r_rocket6
+            r_rocket5
+            r_rocket4
+            r_rocket3
+            r_rocket2
+            r_rocket1

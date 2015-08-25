@@ -30,8 +30,8 @@ local damagedefs = {
     lighttanks = 0,
     mediumtanks = 0,
     heavytanks = 0,
-    hardplanes = 1/8,
-    flag = 0,
+    armouredPlanes = 1/8,
+    invincible = 0,
 	-- smallarms are the only distinction between ships and ship turrets
 	ships = 0,
 	shipturrets = 3/4,
@@ -39,7 +39,7 @@ local damagedefs = {
   },
   explosive = {
 	bunkers = 1/2,
-	hardplanes = 4/5,
+	armouredPlanes = 4/5,
     infantry = 9,
 	ships = 4/5,
 	shipturrets = 4/5,
@@ -50,7 +50,7 @@ local damagedefs = {
     lighttanks = 1/3,
 	mediumtanks = 1/3,
 	heavytanks = 1/3,
-    flag = 0,
+    invincible = 0,
   },
   kinetic = {
 	default = 1,
@@ -62,14 +62,14 @@ local damagedefs = {
 	lighttanks = 7/10,
 	mediumtanks = 7/10,
 	heavytanks = 7/10,
-    flag = 0,
+    invincible = 0,
     mines = 0,
   },
   shapedcharge = {
 	ships = 1,
 	shipturrets = 1,
     lightbuildings = 1/10,
-    flag = 0,
+    invincible = 0,
   },
   fire = {
     bunkers = 4,
@@ -81,7 +81,7 @@ local damagedefs = {
 	lighttanks = 1,
     mediumtanks = 3/4,
 	heavytanks = 1/2,
-    flag = 0,
+    invincible = 0,
   },
   grenade = {
     infantry = 9,
@@ -94,7 +94,7 @@ local damagedefs = {
     lighttanks = 1/3,
 	mediumtanks = 1/3,
 	heavytanks = 1/3,
-    flag = 0,
+    invincible = 0,
   },
 }
 

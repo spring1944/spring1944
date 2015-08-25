@@ -109,17 +109,14 @@ local function ProcessWeapons(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo) or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-	local weaponFired = false
+	local weaponsFired = 0
 	local reloadFrame = 0
-	local weapNum = 1
 
-	--for weapNum = 0, weaponsWithAmmo - 1 do
-	while not weaponFired and weapNum <= weaponsWithAmmo do
+	for weapNum = 1,weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
-		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
-		weapNum = weapNum + 1
+		weaponsFired = weaponsFired + (CheckReload(unitID, reloadFrame, weapNum) and 1 or 0)
 	end
-	if weaponFired then
+	if weaponsFired > 0 then
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
 			SetUnitExperience(unitID, 0)
@@ -131,8 +128,8 @@ local function ProcessWeapons(unitID)
 			end
 		end
 		if ammoLevel > 0 then
-			vehicles[unitID].ammoLevel = ammoLevel - 1
-			SetUnitRulesParam(unitID, "ammo",	ammoLevel - 1)
+			vehicles[unitID].ammoLevel = ammoLevel - weaponsFired
+			SetUnitRulesParam(unitID, "ammo",	ammoLevel - weaponsFired)
 		end
 	end
 end
@@ -213,7 +210,13 @@ local function Resupply(unitID)
 						difference = 0
 						reloadState = currFrame + 90 -- add three seconds
 					end
-					Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					if env then
+						Spring.UnitScript.CallAsUnit(unitID, env.RestoreRockets, (difference * 30) - 3000)
+					else
+						Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
+					end
+					
 				end
 				for weapNum = 1, weaponsWithAmmo do
 					SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
@@ -337,6 +340,7 @@ function gadget:GameFrame(n)
 					ammoLevel = tonumber(ud.customParams.maxammo),
 					reloadFrame = {},
 				}
+				if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
 				for weaponNum = 0, ud.customParams.weaponswithammo do
 					vehicles[unitID].reloadFrame[weaponNum] = 0
 				end
@@ -355,6 +359,7 @@ function gadget:GameFrame(n)
 						ammoLevel = ammo,
 						reloadFrame = {},
 					}
+					if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
 					for weaponNum = 1, ud.customParams.weaponswithammo do
 						vehicles[unitID].reloadFrame[weaponNum] = 0
 						if ammo == 0 then
@@ -365,6 +370,11 @@ function gadget:GameFrame(n)
 			end
 			newVehicles = {}
 		end
+		
+		for unitID in pairs(vehicles) do
+			ProcessWeapons(unitID)
+		end
+		
 		if n % (RELOAD_FREQUENCY*30) < 0.1 then
 			for unitID in pairs(vehicles) do
 				--skip units which are being transported

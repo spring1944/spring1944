@@ -1,0 +1,10 @@
+base
+    turret
+        sleeve
+            guns
+                flare_1
+                flare_2
+        crewman
+        turret_floor
+    wheel1
+    wheel2

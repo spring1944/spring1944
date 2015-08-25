@@ -1,0 +1,18 @@
+base
+    exhaust
+    bow_mg_turret
+        flare_3
+    turret
+        mg_sleeve
+            flare_4
+        sleeve
+            barrel
+                flare_1
+    tracks
+    rear_wheel
+    front_wheel
+    mid_wheel4
+    mid_wheel3
+    mid_wheel2
+    mid_wheel1
+    tracks2

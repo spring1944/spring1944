@@ -160,7 +160,7 @@ local gbrDefs = {
 	["gbr_platoon_commando_lz"] =
 	{
 		members = {
-            "gbrgliderresource",
+            "gbrglidersupplies",
 			"gbrcommando",
 			"gbrcommando",
 			"gbrcommando",
@@ -209,7 +209,7 @@ local gbrDefs = {
 		side = "GBR",
 	},
 
-	["gbr_platoon_lca"] =
+	["gbr_platoon_landing"] =
 	{
 		members = {
 			"gbrcommando",

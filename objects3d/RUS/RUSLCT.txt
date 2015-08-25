@@ -1,0 +1,26 @@
+base
+    turret
+        grabber
+            link
+    wake3
+    wake2
+    wake1
+    load4
+    load3
+    load2
+    load1
+    turret_2
+        sleeve_2
+            barrel_2
+                flare_2
+        gunner_2
+    ramp
+    turret_1
+        sleeve_1
+            barrel_1
+                flare_1
+        gunner_1
+    flag1
+        flag2
+            flag3
+    load5

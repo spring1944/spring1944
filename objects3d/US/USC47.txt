@@ -1,0 +1,13 @@
+base
+    fuselage
+        tail
+        wing1
+            propeller1
+                blades1
+            wheel1
+        wing2
+            propeller2
+                blades2
+            wheel2
+        flare_1
+        holdingPoint

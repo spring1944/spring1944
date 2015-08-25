@@ -110,7 +110,7 @@ local itaDefs = {
 		buildTime = 2080,
 		side = "ITA",
 	},
-
+	
 	["ita_platoon_at"] =
 	{
 		members = {
@@ -206,7 +206,7 @@ local itaDefs = {
 		side = "ITA",
 	},
 
-	["ita_platoon_mz"] =
+	["ita_platoon_lct"] =
 	{
 		members = {
 			"itam1542",
@@ -214,7 +214,7 @@ local itaDefs = {
 			"itasemovente75_18",
 		},
 	},
-	["ita_platoon_ml"] =
+	["ita_platoon_landing"] =
 	{
 		members = {
 			"itabersaglierim38",

@@ -1,0 +1,7 @@
+base
+    spares
+    wheels1
+    wheels2
+    wheels3
+    crates
+    exhaust

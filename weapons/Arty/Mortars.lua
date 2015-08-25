@@ -1,56 +1,9 @@
 -- Artillery - Mortars
 
--- Mortar Base Class
-local MortarClass = Weapon:New{
-  accuracy           = 485,
-  avoidFeature		 = false,
-  collideFriendly    = false,
-  edgeEffectiveness  = 0.2,
-  explosionGenerator = [[custom:HE_Medium]],
-  explosionSpeed     = 30,
-  impulseFactor      = 1e-07,
-  leadLimit          = 500,
-  model              = [[MortarShell.S3O]],
-  reloadtime         = 12,
-  size               = 1.5,
-  soundHitDry        = [[GEN_Explo_3]],
-  soundStart         = [[GEN_Mortar]],
-  turret             = true,
-  weaponType         = [[Cannon]],
-  weaponVelocity     = 550,
-  customparams = {
-    armor_hit_side     = [[top]],
-    damagetype         = [[explosive]],
-  },
-}
-
--- HE Round Class
-local MortarHEClass = Weapon:New{
-  name               = [[HE Shell]],
-  customparams = {
-    fearaoe            = 105,
-    fearid             = 301,
-  },
-}
-
--- Smoke Round Class
-local MortarSmokeClass = Weapon:New{
-  areaOfEffect       = 20,
-  name               = [[Smoke Shell]],
-  customparams = {
-	smokeradius        = 160,
-	smokeduration      = 25,
-	smokeceg           = [[SMOKESHELL_Small]],
-  },
-  damage = {
-    default = 100,
-  } ,
-}
-
 -- Implementations
 
 -- ML 3" Mortar (GBR)
-local ML3InMortar = MortarClass:New{
+local ML3InMortar = Mortar:New{
   areaOfEffect       = 112,
   edgeEffectiveness  = 0.25, -- overrides default
   name               = [[Ordnance ML 3 Inch Mortar]],
@@ -59,19 +12,19 @@ local ML3InMortar = MortarClass:New{
     default            = 1088,
   },
 }
-local ML3InMortarHE = ML3InMortar:New(MortarHEClass, true)
-local ML3InMortarSmoke = ML3InMortar:New(MortarSmokeClass, true)
+local ML3InMortarHE = ML3InMortar:New(MortarHE, true)
+local ML3InMortarSmoke = ML3InMortar:New(MortarSmoke, true)
 
 -- 4in Smoke Mortar (GBR)
-local BL4InMortar = MortarClass:New{
+local BL4InMortar = Mortar:New{
 	name			 = [[BL 4 Inch Mortar]],
 	range			 = 1450,
 	commandFire		 = true,
 }
-local BL4InMortarSmoke = BL4InMortar:New(MortarSmokeClass, true)
+local BL4InMortarSmoke = BL4InMortar:New(MortarSmoke, true)
 
 -- Granatwerfer 34 (GER)
-local GrW34_8cmMortar = MortarClass:New{
+local GrW34_8cmMortar = Mortar:New{
   areaOfEffect       = 81,
   name               = [[8 cm Granatwerfer 34]],
   range              = 1365,
@@ -79,11 +32,11 @@ local GrW34_8cmMortar = MortarClass:New{
     default            = 1100,
   },
 }
-local GrW34_8cmMortarHE = GrW34_8cmMortar:New(MortarHEClass, true)
-local GrW34_8cmMortarSmoke = GrW34_8cmMortar:New(MortarSmokeClass, true)
+local GrW34_8cmMortarHE = GrW34_8cmMortar:New(MortarHE, true)
+local GrW34_8cmMortarSmoke = GrW34_8cmMortar:New(MortarSmoke, true)
 
 -- M1 81mm Mortar (USA)
-local M1_81mmMortar = MortarClass:New{
+local M1_81mmMortar = Mortar:New{
   areaOfEffect       = 104,
   name               = [[M1 81mm Mortar]],
   range              = 1320,
@@ -91,11 +44,11 @@ local M1_81mmMortar = MortarClass:New{
     default            = 1100,
   },
 }
-local M1_81mmMortarHE = M1_81mmMortar:New(MortarHEClass, true)
-local M1_81mmMortarSmoke = M1_81mmMortar:New(MortarSmokeClass, true) 
+local M1_81mmMortarHE = M1_81mmMortar:New(MortarHE, true)
+local M1_81mmMortarSmoke = M1_81mmMortar:New(MortarSmoke, true) 
 
 -- 82-PM 37 (RUS)
-local m1937_Mortar = MortarClass:New{
+local m1937_Mortar = Mortar:New{
   areaOfEffect       = 88,
   name               = [[82-PM 37 Mortar]],
   range              = 1365,
@@ -103,24 +56,27 @@ local m1937_Mortar = MortarClass:New{
     default            = 800,
   },
 }
-local m1937_MortarHE = m1937_Mortar:New(MortarHEClass, true)
-local m1937_MortarSmoke = m1937_Mortar:New(MortarSmokeClass, true) 
+local m1937_MortarHE = m1937_Mortar:New(MortarHE, true)
+local m1937_MortarSmoke = m1937_Mortar:New(MortarSmoke, true) 
 
 -- Knee Mortar
-local cKneeMortar = MortarClass:New{
+local cKneeMortar = Mortar:New{
   areaOfEffect       = 50,
   name               = [[Type 89 Grenade Discharger]],
   range              = 650,
   weaponVelocity     = 350,
+  customparams = {
+    weaponcost         = 7,
+  },
   damage = {
     default            = 300,
   },
 }
-local KneeMortar = cKneeMortar:New(MortarHEClass, true)
-local KneeMortar_smoke = cKneeMortar:New(MortarSmokeClass, true) 
+local KneeMortar = cKneeMortar:New(MortarHE, true)
+local KneeMortar_smoke = cKneeMortar:New(MortarSmoke, true) 
 
 -- Type 97 81mm mortar
-local Type97_81mmMortar = MortarClass:New{
+local Type97_81mmMortar = Mortar:New{
   areaOfEffect       = 104,
   name               = [[Type 97 81mm Mortar]],
   range              = 1320,
@@ -128,8 +84,8 @@ local Type97_81mmMortar = MortarClass:New{
     default            = 1100,
   },
 }
-local Type97_81mmMortarHE = Type97_81mmMortar:New(MortarHEClass, true)
-local Type97_81mmMortarSmoke = Type97_81mmMortar:New(MortarSmokeClass, true) 
+local Type97_81mmMortarHE = Type97_81mmMortar:New(MortarHE, true)
+local Type97_81mmMortarSmoke = Type97_81mmMortar:New(MortarSmoke, true) 
 
 
 

@@ -1,0 +1,17 @@
+base
+    tripod
+        gun
+            pelvis
+                rthigh
+                    rleg
+                        rfoot
+                lthigh
+                    lleg
+                        lfoot
+                torso
+                    luparm
+                        lloarm
+                    ruparm
+                        rloarm
+                    head
+            flare

@@ -1,0 +1,26 @@
+base
+    exhaust
+    turret
+        sleeve
+            barrel
+                flare
+    front_wheels
+    rear_wheels
+    support_wheels1
+    support_wheels2
+    mid_wheels1
+    mid_wheels2
+    mid_wheels3
+    mid_wheels4
+    tracks
+    base
+        exhaust
+        front_wheels
+        rear_wheels
+        support_wheels1
+        support_wheels2
+        mid_wheels1
+        mid_wheels2
+        mid_wheels3
+        mid_wheels4
+        tracks

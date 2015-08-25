@@ -4,17 +4,12 @@ local US_PT103 = ArmedBoat:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 2100,
-	buildTime				= 2100,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
-	corpse					= "USPT103_dead",
-	mass					= 4000,
 	maxDamage				= 4000,
 	maxReverseVelocity		= 2.15,
 	maxVelocity				= 4.3,
 	movementClass			= "BOAT_Medium",
-	objectName				= "USPT103.s3o",
-	soundCategory			= "USBoat",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 300,	
 	weapons = {	
@@ -24,12 +19,11 @@ local US_PT103 = ArmedBoat:New{
 		},
 	},
 	customparams = {
-		soundcategory = "US/Boat",
 		children = {
-			"US_PT103_Turret_20mm",
-			"US_PT103_Turret_Twin50",
-			"US_PT103_Turret_Twin50",
-			"US_PT103_Turret_Bofors",
+			"USPT103_Turret_20mm",
+			"USPT103_Turret_Twin50",
+			"USPT103_Turret_Twin50",
+			"USPT103_Turret_Bofors",
 		},
 		deathanim = {
 			["x"] = {angle = 15, speed = 30},
@@ -42,7 +36,6 @@ local US_PT103 = ArmedBoat:New{
 local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 	name					= "Browning 50cal Turret",
 	description				= "Heavy Machinegun Turret",
-	objectName				= "USPT103_Turret_Twin50.s3o",
 	weapons = {	
 		[1] = {
 			name				= "m2browning", -- TODO: should be m2browningaa too :/
@@ -64,7 +57,6 @@ local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 local US_PT103_Turret_20mm = OpenBoatTurret:New{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
-	objectName				= "USPT103_Turret_20mm.s3o",
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -79,8 +71,6 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 14,
-		weaponcost				= 4,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
@@ -93,7 +83,6 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 	name					= "40mm Bofors Turret",
 	description				= "Primary Turret",
-	objectName				= "USPT103_Turret_Bofors.s3o",
   	weapons = {	
 		[1] = {
 			name				= "bofors40mmaa",
@@ -111,8 +100,6 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 	},
 	customparams = {
 		maxammo					= 10,
-		weaponcost				= 8,
-		weaponswithammo			= 2,
 
 		barrelrecoildist		= 4,
 		barrelrecoilspeed		= 20,
@@ -126,7 +113,7 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 
 return lowerkeys({
 	["USPT103"] = US_PT103,
-	["US_PT103_Turret_20mm"] = US_PT103_Turret_20mm,
-	["US_PT103_Turret_Twin50"] = US_PT103_Turret_Twin50,
-	["US_PT103_Turret_Bofors"] = US_PT103_Turret_Bofors,
+	["USPT103_Turret_20mm"] = US_PT103_Turret_20mm,
+	["USPT103_Turret_Twin50"] = US_PT103_Turret_Twin50,
+	["USPT103_Turret_Bofors"] = US_PT103_Turret_Bofors,
 })

@@ -116,7 +116,7 @@ local jpnDefs = {
 		side = "JPN",
 	},
 
-	["jpn_platoon_daihatsu"] =
+	["jpn_platoon_landing"] =
 	{
 		members = {
 			"jpntype99lmg",
@@ -210,7 +210,7 @@ local jpnDefs = {
 		buildTime = 1000,
 		side = "JPN",
 	},
-	["jpn_platoon_tokudaihatsu"] =
+	["jpn_platoon_lct"] =
 	{
 		members = {
 			"jpnshinhotochiha",

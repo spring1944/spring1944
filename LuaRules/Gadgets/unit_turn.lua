@@ -44,7 +44,7 @@ local function StartTurn(unitID, unitDefID, tx, tz)
 
 	local newHeading = math.deg(math.atan2(dx, dz)) * COB_ANGULAR	
 	local currHeading = GetUnitCOBValue(unitID, COB.HEADING)
-	local deltaHeading = newHeading - currHeading;
+	local deltaHeading = newHeading - currHeading
 	--  find the direction for shortest turn
 	if deltaHeading > (180 * COB_ANGULAR) then deltaHeading = deltaHeading - (360 * COB_ANGULAR) end
 	if deltaHeading < (-180 * COB_ANGULAR) then deltaHeading = deltaHeading + (360 * COB_ANGULAR) end

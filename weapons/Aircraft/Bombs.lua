@@ -1,38 +1,12 @@
 -- Aircraft - Bombs
 
--- Bomb Base Class
-local BombClass = Weapon:New{
-  collideFriendly    = true,
-  explosionSpeed     = 30,
-  explosionGenerator = [[custom:HE_XXLarge]],
-  heightBoostFactor  = 0,
-  impulseFactor      = 0.01,
-  noSelfDamage		 = true,
-  reloadtime         = 600,
-  targetBorder       = 1,
-  tolerance          = 5000,
-  trajectoryHeight   = 0,
-  turret             = true,
-  weaponType         = [[Cannon]],
-  weaponVelocity     = 200,
-  highTrajectory     = 0,
-  customparams = {
-    no_range_adjust	   = true,
-    damagetype         = [[explosive]],
-  },
-  damage = {
-    default            = 30000,
-	planes             = 5,
-  },
-}
-
 -- Implementations
 
 -- 250Kg Bomb (Generic)
 local Bomb = BombClass:New{
-  accuracy           = 500,
+  accuracy           = 1500,
   areaOfEffect       = 200,
-  commandfire        = true,
+  --commandfire        = true,
   edgeEffectiveness  = 0.1,
   model              = [[Bomb_Medium.S3O]],
   name               = [[250kg Bomb]],
@@ -45,8 +19,9 @@ local Bomb160kg = BombClass:New{
   accuracy           = 500,
   areaOfEffect       = 160,
   name               = [[160kg Bomb]],
+  weaponType         = [[AircraftBomb]],
   model              = [[Bomb_Medium.S3O]],
-  reloadtime	= 600,
+  reloadtime	     = 600,
   range              = 450,
     damage = {
     default            = 15000,
@@ -59,19 +34,24 @@ local Bomb160kg = BombClass:New{
 local Bomb50kg = BombClass:New{
   name               = [[50kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
+  weaponType         = [[Cannon]],
   size		     = 1,
   accuracy           = 240,	
   areaOfEffect       = 76,
+  trajectoryHeight   = 0.0,
   heightMod		= 0.2,
+  heightBoostFactor  = 0.5,
   mygravity	= 0.05,
     damage = {
     default            = 7500,
 	planes		= 5,
     },
-  range              = 100,
+  range              = 180,
+  leadlimit	     = 900,
   explosionGenerator = [[custom:HE_Large]],
   soundHit           = [[GEN_Explo_5]],
   tolerance          = 1000,
+  targetMoveError = 0.1,
 }
 
 -- V1 Missile Explosions (GER)
@@ -84,17 +64,20 @@ local V1 = BombClass:New{
 -- PTAB "Antitank Aviation Bomb" (RUS)
 local PTAB = BombClass:New{
   areaOfEffect       = 24,
-  burst              = 36,
+  burst              = 40,
+  selfExplode	     = true,
   burstrate          = 0.1,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
+  weaponType         = [[AircraftBomb]],
+  InterceptedByShieldType=32,   -- needed because of weapontype
   model              = [[MortarShell.S3O]],
   weaponVelocity     = 150,
   name               = [[PTAB Anti-Tank Bomblets]],
-  projectiles        = 8,
+  projectiles        = 10,
   range              = 500,
   soundHitDry        = [[GEN_Explo_3]],
-  sprayangle         = 8000,
+  sprayangle         = 2000,
   customparams = {
     armor_hit_side     = [[top]],
     armor_penetration  = 65,
@@ -111,9 +94,12 @@ local PTAB = BombClass:New{
 local A_tkbomb = BombClass:New{
   areaOfEffect       = 26,
   burst              = 7,
+  selfExplode	     = true,
   burstrate          = 0.15,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
+  weaponType         = [[AircraftBomb]],
+  InterceptedByShieldType=32,   -- needed because of weapontype
   model              = [[MortarShell.S3O]],
   weaponVelocity     = 250,
   name               = [[3.5kg Hollow Charge A-tk Anti-Tank Bomblets]],

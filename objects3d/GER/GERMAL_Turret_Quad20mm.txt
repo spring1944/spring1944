@@ -1,0 +1,13 @@
+base
+    turret
+        sleeve
+            barrel2
+                flare2
+            barrel3
+                flare3
+            barrel4
+                flare4
+            barrel1
+                flare1
+        gunner_q1
+        gunner_q2

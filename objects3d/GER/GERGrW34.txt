@@ -1,0 +1,19 @@
+ground
+    pelvis
+        torso
+            luparm
+                lloarm
+            ruparm
+                rloarm
+            head
+        lthigh
+            lleg
+                lfoot
+        rthigh
+            rleg
+                rfoot
+    mortarbase
+        mortartube
+            mortarstand
+            flare
+    gun

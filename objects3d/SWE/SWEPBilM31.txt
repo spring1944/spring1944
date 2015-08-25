@@ -1,0 +1,10 @@
+base
+    front_wheels
+    rear_wheels
+    bow_mg_turret_sleeve
+        flare_2
+    turret
+        sleeve
+            barrel
+                flare_1
+    spare

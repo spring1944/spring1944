@@ -45,16 +45,8 @@ if (not gadgetHandler:IsSyncedCode()) then
 end
 
 local SMOKE_WEAPON = 2 -- WARNING! Assume all smoke weapons will be in this slot
-local CMD_SMOKE = GG.CustomCommands.GetCmdID("CMD_SMOKE")
 local CMD_SMOKEGEN = GG.CustomCommands.GetCmdID("CMD_SMOKEGEN")
 
-local smokeCmdDesc = {
-	id 		 = CMD_SMOKE,
-  type   = CMDTYPE.ICON_MODE,
-	action = "togglesmoke",
-	tooltip = 'Toggle between High Explosive and Smoke rounds',
-	params = {0, 'Fire HE', 'Fire Smoke'},
-}
 
 local smokeGenCmdDesc = {
 	id 		 = CMD_SMOKEGEN,
@@ -85,17 +77,15 @@ function gadget:Initialize()
 			Script.SetWatchWeapon(weaponId, true)
 		end
 	end
+	
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
+	end
 end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID)
-	local weapons = UnitDefs[unitDefID].weapons
-	if weapons and #weapons > 1 then
-		local hasSmoke = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.smokeradius
-		local noButton = WeaponDefs[weapons[SMOKE_WEAPON].weaponDef].customParams.nosmoketoggle
-		if hasSmoke and not noButton then
-			InsertUnitCmdDesc(unitID, smokeCmdDesc)
-		end
-	end
 	-- smoke generator
 	local params = UnitDefs[unitDefID].customParams
 	if params then
@@ -122,24 +112,6 @@ function ChangeSmokeGenStatus(unitID, smokeGenEnabled)
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-	if cmdID == CMD_SMOKE then
-		local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_SMOKE)
-		if not cmdDescID then return false end
-		if cmdParams[1] == 1 then
-			Spring.CallCOBScript(unitID, "SwitchToSmoke", 0)
-		else
-			Spring.CallCOBScript(unitID, "SwitchToHE", 0)
-		end
-        --you can't edit a single value in the params table for
-        --editUnitCmdDesc, so we generate a new table
-        local updatedCmdParams = {
-            cmdParams[1],
-            smokeCmdDesc.params[2],
-            smokeCmdDesc.params[3]
-        }
-		Spring.EditUnitCmdDesc(unitID, cmdDescID, { params = updatedCmdParams}) 
-		return false
-	end
 	if cmdID == CMD_SMOKEGEN then
 		-- has our generator recharged?
 		if (SmokeGenCooldowns[unitID] or 0) == 0 then

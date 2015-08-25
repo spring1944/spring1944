@@ -1,0 +1,8 @@
+base
+    fuselage
+        wheel1
+        wheel2
+        propeller
+            blades
+        wing1
+        wing2

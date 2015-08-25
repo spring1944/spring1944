@@ -1,0 +1,22 @@
+base
+    exhaust2
+    exhaust1
+    turret
+        sleeve
+            barrel
+                flare_1
+    tracks
+    support_wheel3
+    support_wheel2
+    support_wheel1
+    roller_wheel8
+    roller_wheel7
+    roller_wheel6
+    roller_wheel5
+    roller_wheel4
+    roller_wheel3
+    roller_wheel2
+    roller_wheel1
+    rear_wheels
+    front_wheels
+    tracks2

@@ -1,22 +1,5 @@
 -- Misc - Mines
 
--- Mine Base Class
-local MineClass = Weapon:New{
-  explosionGenerator = [[custom:HE_Large]],
-  explosionSpeed     = 30,
-  fireSubmersed      = true,
-  soundHitDry        = [[GEN_Explo_4]],
-  turret             = true,
-  weaponVelocity     = 90,
-  customparams = {
-	no_range_adjust	   = true,
-    damagetype         = [[explosive]], 
-  },
-  damage = {
-    mines              = 0,
-  },
-}
-
 -- Implementations
 
 -- Anti-Personnel Mine
@@ -27,6 +10,9 @@ local APMine = MineClass:New{
   name               = [[Anti-Personnel Mine]],
   range              = 25,
   soundHitDry        = [[GEN_Explo_1]],
+  customparams = {
+    onlytargetcategory     = "MINETRIGGER",
+  },
   damage = {
     default            = 400,
   },
@@ -41,6 +27,7 @@ local ATMine = MineClass:New{
     armor_hit_side     = [[top]],
     armor_penetration  = 100,
     damagetype         = [[shapedcharge]], -- overrides default
+	onlytargetcategory     = "SOFTVEH OPENVEH HARDVEH",
   },
   damage = {
     default            = 10000,

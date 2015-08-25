@@ -10,12 +10,13 @@ local Null = Unit:New{
 	maxDamage = 1e+06,
 	maxVelocity = 0.01,
 	movementClass = "KBOT_Infantry", -- as is this
-	objectName = "MortarShell.S3O",
-	script = "null.cob",
+	objectName = "GEN/Null.S3O",
+	script = "null.lua",
 	selfDestructAs = "noweapon",
 	stealth = true,
 	
 	customparams = {
+		damageGroup			= "invincible",
 		dontCount			= 1,
 	},
 }

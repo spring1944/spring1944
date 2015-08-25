@@ -1,0 +1,9 @@
+base
+    flare_4
+    flare_3
+    w1
+        bomb_1
+    w2
+        bomb_2
+    propeller
+        blades

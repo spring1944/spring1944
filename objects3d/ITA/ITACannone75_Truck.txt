@@ -1,0 +1,13 @@
+base
+    body
+        spare
+        tent
+        wheel2
+        wheel1
+        driver
+        carriage
+            sleeve
+                barrel
+            trail2
+            trail1
+            wheel3
