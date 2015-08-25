@@ -60,18 +60,6 @@ local options =
   },]]--
   
   {
-    key    = "MaxUnits",
-    name   = "Max units",
-    desc   = "Determines the ceiling of how many units and buildings a player is allowed  to own at the same time (key = 'MaxUnits')",
-    type   = "number",
-    def    = 1000,
-    min    = 1,
-    max    = 10000,
-    step   = 1,  -- quantization is aligned to the def value
-                    -- (step <= 0) means that there is no quantization
-  },
-  
-  {
     key    = "GhostedBuildings",
     name   = "Ghosted buildings",
     desc   = "Once an enemy building will be spotted\n a ghost trail will be placed to memorize location even after the loss of the line of sight (key = 'GhostedBuildings')",
