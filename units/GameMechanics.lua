@@ -12,6 +12,7 @@ local Flag = Null:New{
 	hideDamage			= true,
 	iconType			= "flag",
 	levelGround			= false,
+	maxVelocity			= 0,
 	objectName			= "GEN/flag.S3O",
 	script				= "Flag.lua", -- atm defaults to .cob
 	sightDistance		= 0,
@@ -42,16 +43,16 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 	objectName			= "US/USP51DMustangGA.S3O",
 	maxDamage			= 3.465e+06,
 	category			= "FLAG",
-	
+
 	cruiseAlt			= 300,
 	airHoverFactor		= 0,
 	hoverAttack			= true,
-	
+
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	maxVelocity			= 20,
 	minCloakDistance	= 1,
-	
+
 	energyMake			= 1e+06,
 	energyStorage		= 1e+10,
 	metalMake			= 1e+07,
@@ -59,7 +60,7 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 
 	builder				= true,
 	workertime			= 1000,
-	
+
 	customParams = {
 		gm					= 1,
 	},
