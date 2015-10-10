@@ -12,7 +12,7 @@ function widget:GetInfo()
 	}
 end
 
-local DEFAULT_VOLUME = 4
+local DEFAULT_VOLUME = 1
 local updatePeriod = 0.1
 
 local SOUND_DIR = "sounds/engine/"
