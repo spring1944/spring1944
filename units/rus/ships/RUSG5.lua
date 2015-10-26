@@ -24,6 +24,11 @@ local RUS_G5 = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = -15, speed = 10},
 		},
+		smokegenerator		=	1,
+		smokeradius		=	300,
+		smokeduration		=	40,
+		smokecooldown		=	30,
+		smokeceg		=	"SMOKESHELL_Medium",
 	},
 }
 

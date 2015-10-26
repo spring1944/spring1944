@@ -32,6 +32,11 @@ local RUS_Pr161 = ArmedBoat:New{
 		deathanim = {
 			["x"] = {angle = -15, speed = 5},
 		},
+		smokegenerator		=	1,
+		smokeradius		=	300,
+		smokeduration		=	40,
+		smokecooldown		=	30,
+		smokeceg		=	"SMOKESHELL_Medium",
 	},
 }
 

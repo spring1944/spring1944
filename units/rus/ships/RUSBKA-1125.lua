@@ -29,6 +29,11 @@ local RUS_BKA_1125 = ArmedBoat:New{
 		deathanim = {
 			["x"] = {angle = -5, speed = 5},
 		},
+		smokegenerator		=	1,
+		smokeradius		=	300,
+		smokeduration		=	40,
+		smokecooldown		=	30,
+		smokeceg		=	"SMOKESHELL_Medium",
 	},
 }
 
