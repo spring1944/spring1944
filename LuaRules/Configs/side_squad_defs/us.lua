@@ -17,8 +17,6 @@ local usDefs = {
 		description = "4 x Garand Rifle, 2 x Thompson SMG: Small Combat Squad",
 		buildCostMetal = 570,
 		buildPic = "USRifle.png",
-		buildTime = 570,
-		side = "US",
 	},
 
 	["us_platoon_rifle"] =
@@ -41,8 +39,6 @@ local usDefs = {
 		description = "8 x Garand Rifle, 2 x Thompson SMG, 2 x BAR Light Machinegun: Long-Range Combat Platoon",
 		buildCostMetal = 1675,
 		buildPic = "usrifle.png",
-		buildTime = 1675,
-		side = "US",
 	},
 
 	["us_platoon_assault"] =
@@ -65,8 +61,6 @@ local usDefs = {
 		description = "8 x Thompson SMG, 2 x BAR, 1 x Flamethrower, 1 x Bazooka: Close Quarters Assault Infantry",
 		buildCostMetal = 1540,
 		buildPic = "usthompson.png",
-		buildTime = 1540,
-		side = "US",
 	},
 
 	["us_platoon_mg"] =
@@ -81,8 +75,6 @@ local usDefs = {
 		description = "3 x Browning .30 Cal Machinegun, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1050,
 		buildPic = "usmg.png",
-		buildTime = 1050,
-		side = "US",
 	},
 
 	["us_platoon_sniper"] =
@@ -95,8 +87,6 @@ local usDefs = {
 		description = "1 x Springfield Sniper, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1240,
 		buildPic = "ussniper.png",
-		buildTime = 1240,
-		side = "US",
 	},
 
 	["us_platoon_mortar"] =
@@ -111,8 +101,6 @@ local usDefs = {
 		description = "3 x M1 Mortar, 1 x Scout: Heavy Infantry Fire Support",
 		buildCostMetal = 2100,
 		buildPic = "usmortar.png",
-		buildTime = 2100,
-		side = "US",
 	},
 
 	["us_platoon_at"] =
@@ -126,8 +114,6 @@ local usDefs = {
 		description = "3 x Bazooka: Anti-Tank Infantry",
 		buildCostMetal = 350,
 		buildPic = "usbazooka.png",
-		buildTime = 350,
-		side = "US",
 	},
 
 	["us_platoon_scout"] =
@@ -141,8 +127,6 @@ local usDefs = {
 		description = "3 x Scout: Reconaissance",
 		buildCostMetal = 440,
 		buildPic = "usobserv.png",
-		buildTime = 440,
-		side = "US",
 	},
 
 	["us_platoon_flame"] =
@@ -157,8 +141,6 @@ local usDefs = {
 		description = "4 x Flamethrower: Specialized Assault Infantry",
 		buildCostMetal = 800,
 		buildPic = "usflamethrower.png",
-		buildTime = 800,
-		side = "US",
 	},
 
 	["us_platoon_infgun"] =
@@ -171,8 +153,6 @@ local usDefs = {
 		description = "1 x 75mm M8, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1290,
 		buildPic = "USM8Gun.png",
-		buildTime = 1290,
-		side = "US",
 	},
 
 	["us_platoon_landing"] =
@@ -204,7 +184,7 @@ local usDefs = {
 			"usrifle",
 			"usrifle",
 		},
-        buildCostMetal = 3500,
+		buildCostMetal = 3500,
 		-- other fields not needed for transport squads
 	},
 

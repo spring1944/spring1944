@@ -8,7 +8,6 @@ local gbrSorties = {
 		description = "1 x TC Auster AOP Mk V",
 		buildCostMetal = 1000,
 		buildPic = "GBRAuster.png",
-		buildTime = 1000,
 	},
 
 	gbr_sortie_interceptor = {
@@ -24,7 +23,6 @@ local gbrSorties = {
 		description = "4 x Spitfire Mk XIVe",
 		buildCostMetal = 5000,
 		buildPic = "GBRSPitfireMkXIV.png",
-		buildTime = 5000,
 	},
 
 	gbr_sortie_fighter_bomber = {
@@ -38,7 +36,6 @@ local gbrSorties = {
 		description = "2 x Spitfire Mk IXe LF",
 		buildCostMetal = 6750,
 		buildPic = "GBRSpitfireMkIX.png",
-		buildTime = 6750,
 	},
 
 	gbr_sortie_attack = {
@@ -52,7 +49,6 @@ local gbrSorties = {
 		description = "2 x Hawker Typhoon Mk.IB",
 		buildCostMetal = 6000,
 		buildPic = "GBRTyphoon.png",
-		buildTime = 6000,
 	},
 
 	gbr_sortie_glider_horsa = {
@@ -68,7 +64,6 @@ local gbrSorties = {
 		description = "3 x Commando, 8 x Rifle, 2 x Sten SMG, 3 x Bren LMG, 2 x PIAT, 1 x Scout, 1 x 3\" Mortar, 1 x 75mm Pack Howitzer",
 		buildCostMetal = 5625,
 		buildPic = "GBRHorsa.png",
-		buildTime = 6750,
 	},
 }
 

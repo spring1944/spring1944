@@ -8,7 +8,6 @@ local rusSorties = {
 		description = "1 x Po-2 Kukuruznik",
 		buildCostMetal = 1000,
 		buildPic = "RUSPo2.png",
-		buildTime = 1000,
 	},
 
 	rus_sortie_interceptor = {
@@ -24,7 +23,6 @@ local rusSorties = {
 		description = "4 x Yak-9U",
 		buildCostMetal = 3940,
 		buildPic = "RUSYak3.png",
-		buildTime = 3940,
 	},
 
 	rus_sortie_fighter = {
@@ -40,7 +38,6 @@ local rusSorties = {
 		description = "4 x La-5FN",
 		buildCostMetal = 4500,
 		buildPic = "RUSLa5FN.png",
-		buildTime = 4500,
 	},
 
 	rus_sortie_attack = {
@@ -54,7 +51,6 @@ local rusSorties = {
 		description = "2 x IL-2M Shturmovik",
 		buildCostMetal = 6750,
 		buildPic = "RUSIL2.png",
-		buildTime = 6750,
 	},
 
 	rus_sortie_tankbuster = {
@@ -68,7 +64,6 @@ local rusSorties = {
 		description = "2 x IL-2M Shturmovik PTAB",
 		buildCostMetal = 6750,
 		buildPic = "RUSIL2PTAB.png",
-		buildTime = 6750,
 	},
 
 	rus_sortie_partisan = {
@@ -83,7 +78,6 @@ local rusSorties = {
 		description = "1 x Po-2 Kukuruznik (Partisan)",
 		buildCostMetal = 500,
 		buildPic = "RUSPo2Partisan.png",
-		buildTime = 500,
 	},
 }
 

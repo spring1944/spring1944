@@ -8,7 +8,6 @@ local gerSorties = {
 		description = "1 x Fi 156 Storch",
 		buildCostMetal = 1000,
 		buildPic = "GERFi156.png",
-		buildTime = 1000,
 	},
 
 	ger_sortie_interceptor = {
@@ -24,7 +23,6 @@ local gerSorties = {
 		description = "4 x Bf 109K-4",
 		buildCostMetal = 3940,
 		buildPic = "GERBf109.png",
-		buildTime = 3940,
 	},
 
 	ger_sortie_fighter = {
@@ -40,7 +38,6 @@ local gerSorties = {
 		description = "4 x Fw 190A-8",
 		buildCostMetal = 4500,
 		buildPic = "GERFw190.png",
-		buildTime = 4500,
 	},
 
 	ger_sortie_fighter_bomber = {
@@ -54,7 +51,6 @@ local gerSorties = {
 		description = "2 x Fw 190F-8",
 		buildCostMetal = 6750,
 		buildPic = "GERFw190G.png",
-		buildTime = 6750,
 	},
 
 	ger_sortie_attack = {
@@ -69,7 +65,6 @@ local gerSorties = {
 		description = "3 x Ju 87G-1 Stuka",
 		buildCostMetal = 5400,
 		buildPic = "GERJu87G.png",
-		buildTime = 5400,
 	},
 
 	ger_sortie_flying_bomb = {
@@ -85,7 +80,6 @@ local gerSorties = {
 		description = "1 x V-1 (Fi-103)",
 		buildCostMetal = 1825,
 		buildPic = "GERV1.png",
-		buildTime = 1825,
 	},
 }
 

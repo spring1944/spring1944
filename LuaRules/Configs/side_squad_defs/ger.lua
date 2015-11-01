@@ -17,8 +17,6 @@ local gerDefs = {
 		description = "4 x Kar 98K Rifle, 2 x MP40 SMG: Small Combat Squad",
 		buildCostMetal = 610,
 		buildPic = "GERRifle.png",
-		buildTime = 610,
-		side = "GER",
 	},
 
 	["ger_platoon_rifle"] =
@@ -39,8 +37,6 @@ local gerDefs = {
 		description = "7 x Kar 98K Rifle, 2 x MP40 SMG, 1 x MG42 Machinegun: Long-Range Combat Platoon",
 		buildCostMetal = 1830,
 		buildPic = "GERRifle.png",
-		buildTime = 1830,
-		side = "GER",
 	},
 
 	["ger_platoon_assault"] =
@@ -63,8 +59,6 @@ local gerDefs = {
 		description = "10 x MP40 SMG, 2 x Panzerfaust Anti-Tank: Close-Quarters Assault Infantry",
 		buildCostMetal = 1800,
 		buildPic = "GERMP40.png",
-		buildTime = 1800,
-		side = "GER",
 	},
 
 	["ger_platoon_mg"] =
@@ -79,8 +73,6 @@ local gerDefs = {
 		description = "3 x MG42 Machinegun, 1 x Scout: Infantry Fire Support Squad",
 		buildCostMetal = 1350,
 		buildPic = "GERMG42.png",
-		buildTime = 1350,
-		side = "GER",
 	},
 
 	["ger_platoon_sniper"] =
@@ -93,8 +85,6 @@ local gerDefs = {
 		description = "1 x Kar 98K Sniper, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1250,
 		buildPic = "GERSniper.png",
-		buildTime = 1250,
-		side = "GER",
 	},
 
 	["ger_platoon_mortar"] =
@@ -109,8 +99,6 @@ local gerDefs = {
 		description = "3 x GrW 34 Mortar, 1 x Scout: Heavy Infantry Fire Support",
 		buildCostMetal = 2110,
 		buildPic = "GERGrW34.png",
-		buildTime = 2110,
-		side = "GER",
 	},
 
 	["ger_platoon_at"] =
@@ -124,8 +112,6 @@ local gerDefs = {
 		description = "2 x Panzerfaust, 1 x Panzerschrek: Anti-Tank Infantry",
 		buildCostMetal = 450,
 		buildPic = "GERPanzerfaust.png",
-		buildTime = 450,
-		side = "GER",
 	},
 
 	["ger_platoon_scout"] =
@@ -139,8 +125,6 @@ local gerDefs = {
 		description = "3 x Scout: Reconaissance",
 		buildCostMetal = 470,
 		buildPic = "GERObserv.png",
-		buildTime = 470,
-		side = "GER",
 	},
 
 	["ger_platoon_infgun"] =
@@ -153,8 +137,6 @@ local gerDefs = {
 		description = "1 x 7.5cm leIG 18, 1 x Scout: Long-Range Fire Support",
 		buildCostMetal = 1320,
 		buildPic = "GERLeIG18.png",
-		buildTime = 1320,
-		side = "GER",
 	},
 
 	["ger_platoon_landing"] =

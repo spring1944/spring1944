@@ -8,7 +8,6 @@ local usSorties = {
 		description = "1 x L-4 Grasshopper",
 		buildCostMetal = 1000,
 		buildPic = "USL4.png",
-		buildTime = 1000,
 	},
 
 	us_sortie_interceptor = {
@@ -24,7 +23,6 @@ local usSorties = {
 		description = "4 x P-51D Mustang",
 		buildCostMetal = 4325,
 		buildPic = "USP51DMustang.png",
-		buildTime = 4325,
 	},
 
 	us_sortie_fighter_bomber = {
@@ -38,7 +36,6 @@ local usSorties = {
 		description = "2 x P-47D Thunderbolt",
 		buildCostMetal = 6750,
 		buildPic = "USP47Thunderbolt.png",
-		buildTime = 6750,
 	},
 
 	us_sortie_attack = {
@@ -52,7 +49,6 @@ local usSorties = {
 		description = "2 x P-51D-25 Mustang",
 		buildCostMetal = 6000,
 		buildPic = "USP51DMustangGA.png",
-		buildTime = 6000,
 	},
 
 	us_sortie_paratrooper = {
@@ -63,10 +59,9 @@ local usSorties = {
 		weight = 1,
 		alwaysAttack = 1,
 		name = "Paratrooper Drop",
-		description = "16 x Garand Rifle, 4 x Thompson SMG, 4 x BAR, 2 x Browning .30 Cal Machinegun, 2 x Bazooka, Delivered By C-47",
+		description = "8 x Garand Rifle, 4 x Thompson SMG, 2 x BAR, 2 x Browning .30 Cal Machinegun, 2 x Bazooka, Delivered By C-47",
 		buildCostMetal = 4275,
 		buildPic = "USC47.png",
-		buildTime = 4275,
 	},
 }
 

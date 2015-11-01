@@ -8,8 +8,6 @@ local itaSorties = {
 		description = "1 x Ro.37",
 		buildCostMetal = 1000,
 		buildPic = "itaro37bis.png",
-		buildTime = 1000,
-		side = "ita",
 	},
 	ita_sortie_attack = {
 		members = {
@@ -22,8 +20,6 @@ local itaSorties = {
 		description = "2 x Macchi C 200 armed with anti-tank Bomblets",
 		buildCostMetal = 4500,
 		buildPic = "itamc200.png",
-		buildTime = 4500,
-		side = "ita",
 	},
 	ita_sortie_fighter = {
 		members = {
@@ -38,8 +34,6 @@ local itaSorties = {
 		description = "4 x Reggiane Re.2005",
 		buildCostMetal = 4400,
 		buildPic = "itare2005.png",
-		buildTime = 4400,
-		side = "ita",
 	},
 	ita_sortie_interceptor = {
 		members = {
@@ -54,8 +48,6 @@ local itaSorties = {
 		description = "4 x MC.202",
 		buildCostMetal = 3800,
 		buildPic = "ITAMC202.png",
-		buildTime = 3800,
-		side = "ita",
 	},
 	ita_sortie_fighter_bomber = {
 		members = {
@@ -68,8 +60,6 @@ local itaSorties = {
 		description = "2 x MC.205",
 		buildCostMetal = 6750,
 		buildPic = "itamc205.png",
-		buildTime = 6750,
-		side = "ita",
 	},
 }
 
