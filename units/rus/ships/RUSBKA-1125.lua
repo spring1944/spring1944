@@ -27,7 +27,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 			"RUSBKA1125_Turret_DshK_Rear"
 		},
 		deathanim = {
-			["x"] = {angle = -5, speed = 5},
+			["x"] = {angle = 5, speed = 5},
 		},
 		smokegenerator		=	1,
 		smokeradius		=	300,

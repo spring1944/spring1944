@@ -1,4 +1,4 @@
-[RUSBKA-1125_dead] {
+[RUSBKA1125_dead] {
   description=Sunk Armored Boat;
   blocking=0;
   damage=10000;
