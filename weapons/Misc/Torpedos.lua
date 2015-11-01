@@ -6,7 +6,7 @@ local GBR18inTorpedo = TorpedoClass:New{
   damage = {
     default = 8000,
   },
-  model              = "533mmtorpedo.s3o",
+  model              = "533mmTorpedo.s3o",
   range              = 1300,
   startVelocity      = 250,
   weaponAcceleration = 230,
@@ -18,7 +18,7 @@ local RUS533mmTorpedo = TorpedoClass:New{
   damage = {
     default = 50000, -- HUGE!
   },
-  model              = "533mmtorpedo.s3o",
+  model              = "533mmTorpedo.s3o",
   range              = 1100,
   startVelocity      = 300,
   weaponAcceleration = 250,
@@ -30,7 +30,7 @@ local ITA450mmTorpedo = TorpedoClass:New{
   damage = {
     default = 8000, -- HUGE!
   },
-  model              = "450mmtorpedo.s3o",
+  model              = "450mmTorpedo.s3o",
   range              = 1300,
   sprayangle         = 1300,
   startVelocity      = 250,
