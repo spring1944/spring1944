@@ -16,7 +16,7 @@ VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 --
 
 local GRAVITY = 120
-local FUNCTIONS_TO_REMOVE = {"new"}
+local FUNCTIONS_TO_REMOVE = {"new", "append", "clone"}
 
 local function isbool(x)   return (type(x) == 'boolean') end
 local function istable(x)  return (type(x) == 'table')   end
@@ -235,7 +235,7 @@ local function CopyCategories(ud)
 				ud.weapons[weaponID].badtargetcategory = ud.weapons[weaponID].badtargetcategory .. " " .. bad
 			end
 		else
-			Spring.Log('weapondefs_post', 'error', ud.name .. ' weapon number ' .. weaponID .. ' does not exist in the category cache -- it is probably invalid')
+			Spring.Log('weapondefs_post', 'error', ud.name .. ' weapon number ' .. weaponID .. ' name ' .. weapon.name .. ' does not exist in the category cache -- it is probably invalid')
 		end
 	end
 end
@@ -245,17 +245,16 @@ end
 local WeaponDefNames = {}
 for weapName, weaponDef in pairs(WeaponDefs) do
 	WeaponDefNames[weapName] = weaponDef
+	if not categoryCache[weapName] then categoryCache[weapName] = {} end
 	local cp = weaponDef.customparams
 	if cp then
 		if cp.cegflare then
 			cegCache[weapName] = cp.cegflare
 		end
 		if cp.onlytargetcategory then
-			if not categoryCache[weapName] then categoryCache[weapName] = {} end
 			categoryCache[weapName].only = cp.onlytargetcategory
 		end
 		if cp.badtargetcategory then
-			if not categoryCache[weapName] then categoryCache[weapName] = {} end
 			categoryCache[weapName].bad = cp.badtargetcategory
 		end
 		if cp.weaponcost then
@@ -300,7 +299,7 @@ for weapName, weaponDef in pairs(WeaponDefs) do
 			end
 		end
 	end
-	
+
 	for _, f in pairs(FUNCTIONS_TO_REMOVE) do
 		weaponDef[f] = nil
 	end
