@@ -66,6 +66,8 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 }
 
 local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
+	name				= "IL-2M Shturmovik with PTAB",
+	description			= "Anti-tank Aircraft",
 	buildpic			= "RUSIL2PTAB.png", -- override clone
 	weapons = {
 		[1] = {
