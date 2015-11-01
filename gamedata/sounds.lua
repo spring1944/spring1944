@@ -12,6 +12,11 @@ local Sounds = {
 			file = "sounds/MultiSelect.wav",
 			in3d = "false",
 		},
+		FailedCommand = {
+			--- use same null sound to prevent infolog errors
+			file = "sounds/MultiSelect.wav",
+			in3d = "false",
+		},
 		MapPoint = {
 			--- respect where the point was set, but don't attuenuate in distace
 			--- also, when moving the camera, don't pitch it
