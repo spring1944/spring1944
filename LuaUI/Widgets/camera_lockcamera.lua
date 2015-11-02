@@ -4,7 +4,7 @@ function widget:GetInfo()
 	return {
 		name = "LockCamera",
 		desc = versionNumber .. " Allows you to lock your camera to another player's camera",
-		author = "Evil4Zerggin, updated to Chili by ashdnazg", --Also see camera_broadcast unsynced gadget
+		author = "Evil4Zerggin, ashdnazg", --Also see camera_broadcast unsynced gadget
 		date = "16 January 2009",
 		license = "GNU LGPL, v2.1 or later",
 		layer = -5,
@@ -58,23 +58,15 @@ local playerButtons = {}
 ------------------------------------------------
 local GetCameraState = Spring.GetCameraState
 local SetCameraState = Spring.SetCameraState
-local IsGUIHidden = Spring.IsGUIHidden
-local GetMouseState = Spring.GetMouseState
 local GetSpectatingState = Spring.GetSpectatingState
 
-local SendLuaUIMsg = Spring.SendLuaUIMsg
-
 local GetMyPlayerID = Spring.GetMyPlayerID
-local GetMyTeamID = Spring.GetMyTeamID
-local GetPlayerList = Spring.GetPlayerList
 local GetPlayerInfo = Spring.GetPlayerInfo
 local GetTeamColor = Spring.GetTeamColor
 
 local SendCommands = Spring.SendCommands
 
-local Echo = Spring.Echo
 local Log = Spring.Log
-local strGMatch = string.gmatch
 local strSub = string.sub
 local strLen = string.len
 local strByte = string.byte
@@ -82,29 +74,9 @@ local strChar = string.char
 
 local floor = math.floor
 
-local glColor = gl.Color
-local glLineWidth = gl.LineWidth
-local glPolygonMode = gl.PolygonMode
-local glRect = gl.Rect
-local glText = gl.Text
-local glShape = gl.Shape
-
-local glCreateList = gl.CreateList
-local glCallList = gl.CallList
-local glDeleteList = gl.DeleteList
-
-local glPopMatrix = gl.PopMatrix
-local glPushMatrix = gl.PushMatrix
-local glTranslate = gl.Translate
-local glScale = gl.Scale
-
-local GL_FILL = GL.FILL
-local GL_FRONT_AND_BACK = GL.FRONT_AND_BACK
-local GL_LINE_STRIP = GL.LINE_STRIP
-
 local vfsPackU8 = VFS.PackU8
 local vfsPackF32 = VFS.PackF32
-local vfsUnpackU8 = VFS.UnpackU8 
+local vfsUnpackU8 = VFS.UnpackU8
 local vfsUnpackF32 = VFS.UnpackF32
 
 ------------------------------------------------
@@ -138,31 +110,31 @@ local function CustomPackF16(num)
 	--vfsPack is little-Endian
 	local floatChars = vfsPackF32(num)
 	if not floatChars then return nil end
-	
+
 	local sign = 0
 	local exponent = strByte(floatChars, 4) * 2
 	local mantissa = strByte(floatChars, 3) * 2
-	
+
 	local negative = exponent >= 256
 	local exponentLSB = mantissa >= 256
 	local mantissaLSB = strByte(floatChars, 2) >= 128
-	
+
 	if negative then
 		sign = 128
 		exponent = exponent - 256
 	end
-	
+
 	if exponentLSB then
 		exponent = exponent - 126
 		mantissa = mantissa - 256
 	else
 		exponent = exponent - 127
 	end
-	
+
 	if mantissaLSB then
 		mantissa = mantissa + 1
 	end
-	
+
 	if exponent > 63 then
 		exponent = 63
 		--largest representable number
@@ -176,42 +148,42 @@ local function CustomPackF16(num)
 		end
 		exponent = -63
 	end
-	
+
 	if mantissa ~= 255 then
 		mantissa = mantissa + 1
 	end
-	
+
 	local byte1 = sign + exponent + 64
 	local byte2 = mantissa
-	
+
 	return strChar(byte1, byte2)
 end
 
 local function CustomUnpackF16(s, offset)
 	offset = offset or 1
 	local byte1, byte2 = strByte(s, offset, offset + 1)
-	
+
 	if not (byte1 and byte2) then return nil end
-	
+
 	local sign = 1
 	local exponent = byte1
 	local mantissa = byte2 - 1
 	local norm = 1
-	
+
 	local negative = (byte1 >= 128)
-	
+
 	if negative then
 		exponent = exponent - 128
 		sign = -1
 	end
-	
+
 	if exponent == 1 then
 		exponent = 2
 		norm = 0
 	end
-	
+
 	local order = 2^(exponent - 64)
-	
+
 	return sign * order * (norm + mantissa / 256)
 end
 
@@ -242,31 +214,65 @@ do
 		CAMERA_STATE_FORMATS[mode] = argTable
 	end
 	Spring.SetCameraState(origState, 0)
-	
+
 	Spring.SendCommands("minimap min 0")
 end
 
+------------------------------------------------------------------
+-- Packet format:
+-- * PACKET_HEADER
+-- * Camera mode (unsigned char)
+-- * Multiple Sections, each containing:
+--   * Bit mask of which floats were sent (unsigned char)
+--   * Up to 7 float values according to the mask (16 bit float)
+--
+-- Example: A mask of 9 (00001001) will be followed by 2 encoded
+--          floats, the first and the fourth.
+--          The other 5 weren't sent since they haven't changed
+--          since the last frame.
+------------------------------------------------------------------
+
 --does not allow spaces in keys; values are numbers
 local function CameraStateToPacket(s)
-	
+	--Send keyframe every 10 seconds or when mode changes
+	local doKeyFrame = packetsToKeyFrame <= 0 or keyFrameState and s.mode ~= keyFrameState.mode
+	if doKeyFrame then
+		packetsToKeyFrame = 10 / broadcastPeriod
+		keyFrameState = s
+	else
+		packetsToKeyFrame = packetsToKeyFrame - 1
+	end
+
 	local cameraID = s.mode
 	local name = CAMERA_NAMES[cameraID]
 	local stateFormat = CAMERA_STATE_FORMATS[cameraID]
-	
+
 	if not stateFormat or not cameraID then return nil end
-	
+
 	local result = PACKET_HEADER .. CustomPackU8(cameraID)
-	
+	local currentBit = 1
+	local sectionBitMask = 0
+	local section = ''
 	for i=1, #stateFormat do
 		local cameraAttribute = stateFormat[i]
 		local num = s[cameraAttribute]
-		if not num then 
+		if not num then
 			Log('lock-camera', 'warning', "camera " .. name .. " missing attribute " .. cameraAttribute .. " in getCameraState")
-			return nil 
+			return nil
 		end
-		result = result .. CustomPackF16(num)
+		if doKeyFrame or keyFrameState and keyFrameState[cameraAttribute] ~= num then
+			section = section .. CustomPackF16(num)
+			sectionBitMask = sectionBitMask + currentBit
+		end
+		if i % 7 == 0 or i == #stateFormat then
+			result = result .. CustomPackU8(sectionBitMask) .. section
+			sectionBitMask = 0
+			currentBit = 1
+			section = ''
+		else
+			currentBit = currentBit * 2
+		end
 	end
-	
 	return result
 end
 
@@ -275,27 +281,33 @@ local function PacketToCameraState(p)
 	local cameraID = CustomUnpackU8(p, offset)
 	local name = CAMERA_NAMES[cameraID]
 	local stateFormat = CAMERA_STATE_FORMATS[cameraID]
-	if not (cameraID and stateFormat) then 
+	if not (cameraID and stateFormat) then
 		Log('lock-camera', 'warning', "packet did not contain cameraID and mode and name and stateFormat")
-		return nil 
+		return nil
 	end
-	
+
 	local result = {
 		name = name,
 		mode = cameraID,
 	}
-	
-	offset = offset + 2
-	
+
+	offset = offset + 1
+
+	local sectionBitMask = 0
 	for i=1, #stateFormat do
-		local num = CustomUnpackF16(p, offset)
-		
-		if not num then return nil end
-		
-		result[stateFormat[i]] = num
-		offset = offset + 2
+		if i % 7 == 1 then
+			sectionBitMask = CustomUnpackU8(p, offset)
+			offset = offset + 1
+		end
+		if sectionBitMask % 2 == 1 then -- MSB is on
+			local num = CustomUnpackF16(p, offset)
+			if not num then return nil end
+			result[stateFormat[i]] = num
+			offset = offset + 2
+		end
+		sectionBitMask = floor(sectionBitMask / 2) -- 8 bit shift right
 	end
-	
+
 	return result
 end
 
@@ -355,16 +367,16 @@ local function UpdatePlayerButtons()
 	local y = 20
 	local _, specFullview, _ = Spring.GetSpectatingState()
 	playerButtons[#playerButtons + 1] = Chili.Button:New{
-		y = y, width = 80, caption = specFullview and "Viewing All" or "Viewing Team", 
+		y = y, width = 80, caption = specFullview and "Viewing All" or "Viewing Team",
 		OnClick = {
-			function(self) 
-				Spring.SendCommands("specfullview ".. (specFullview and 2 or 3)) 
+			function(self)
+				Spring.SendCommands("specfullview ".. (specFullview and 2 or 3))
 				UpdatePlayerButtons()
 			end
 		}
 	}
 	y = y + 20
-	
+
 	for playerID, _ in pairs(lastBroadcasts) do
 		local playerName, _, _, teamID = Spring.GetPlayerInfo(playerID)
 		playerButtons[#playerButtons + 1] = Chili.Button:New{
@@ -378,22 +390,22 @@ local function UpdatePlayerButtons()
 		y = y + 20
 	end
 	playerButtons[#playerButtons + 1] = Chili.Button:New{
-		y = y, width = 80, caption = "Stop", 
+		y = y, width = 80, caption = "Stop",
 		OnClick = {
 			function(self) LockCamera(nil) end
 		}
 	}
-	
+
 	UpdateButtonColors()
-	
+
 	for k,v in pairs (playerButtons) do
 		window0:AddChild(playerButtons[k])
 	end
 end
 
 local function InitGUI()
-	local Chili = WG.Chili	
-	
+	local Chili = WG.Chili
+
 	window0 = Chili.Window:New{
 		caption = "Lock Camera",
 		y = "70%",
@@ -404,7 +416,7 @@ local function InitGUI()
 		autosize = true,
 		savespace = true,
 	}
-	
+
 	UpdatePlayerButtons()
 end
 
@@ -415,9 +427,9 @@ end
 function widget:RecvLuaMsg(msg, playerID)
 	--check header
 	if strSub(msg, 1, PACKET_HEADER_LENGTH) ~= PACKET_HEADER then return end
-	
+
 	totalCharsRecv = totalCharsRecv + strLen(msg)
-	
+
 	--a packet consisting only of the header indicated that transmission has stopped
 	if msg == PACKET_HEADER then
 		if lastBroadcasts[playerID] then
@@ -428,9 +440,9 @@ function widget:RecvLuaMsg(msg, playerID)
 		end
 		return
 	end
-	
+
 	local cameraState = PacketToCameraState(msg)
-	
+
 	if not cameraState then
 		Log('lock-camera', 'error', "Bad packet recieved.")
 		WG.RemoveWidget(self)
@@ -440,37 +452,37 @@ function widget:RecvLuaMsg(msg, playerID)
 		lastBroadcasts[playerID] = {totalTime, cameraState}
 		UpdatePlayerButtons()
 	else
-		lastBroadcasts[playerID] = {totalTime, cameraState}
+		lastBroadcasts[playerID][1], lastBroadcasts[playerID][2] = totalTime, cameraState
 	end
-	
-	
-	if (playerID == lockPlayerID) then 
+
+
+	if (playerID == lockPlayerID) then
 		 SetCameraState(cameraState, transitionTime)
 	end
-	
+
 end
 
 
 function widget:Initialize()
-	
+
 	myPlayerID = GetMyPlayerID()
 	totalTime = 0
 end
 
-function widget:Shutdown()	
+function widget:Shutdown()
 	if window0 then
 		window0:Dispose()
 	end
 end
 
 function widget:Update(dt)
-	
+
 	local isSpectator = GetSpectatingState()
-	
+
 	if isSpectator and not window0 then
 		InitGUI()
 	end
-	
+
 	totalTime = totalTime + dt
 end
 
