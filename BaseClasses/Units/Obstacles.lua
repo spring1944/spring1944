@@ -13,7 +13,7 @@ local Mine = Unit:New{
 	stealth					= true,
 	useBuildingGroundDecal	= true,
 	yardmap					= "y",
-	
+
 	customparams = {
 		damageGroup			= "mines",
 		hiddenbuilding		= true,
@@ -25,7 +25,6 @@ local Mine = Unit:New{
 local MineSign = Mine:New{
 	buildCostMetal			= 360,
 	buildingGroundDecalType	= "",
-	buildTime				= 360,
 	category				= "FLAG",
 	minCloakDistance		= 160,
 	objectName				= "GEN/MineSign.S3O",
@@ -39,7 +38,6 @@ local TankObstacle = Unit:New{
 	name					= "Tank Obstacle",
 	description				= "Blocks Tracked & Wheeled Vehicles",
 	buildCostMetal			= 10,
-	buildTime				= 10,
 	category				= "BUILDING",
 	corpse					= "TankObstacle",
 	footprintX				= 2,

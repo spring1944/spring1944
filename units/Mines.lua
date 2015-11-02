@@ -52,8 +52,8 @@ local APMineSign = MineSign:New{
 }
 
 local ATMineSign = MineSign:New{
-    buildCostMetal              = 180,
-    buildTime				    = 180,
+	buildCostMetal              = 180,
+	buildTime				    = 180,
 	name						= "AT Minefield",
 	description					= "Warning! AT Mines!",
 	maxSlope				= 15,
@@ -73,7 +73,7 @@ for _, side in pairs(Sides) do
 	units[side .. "atminesign"] = ATMineSign:New{}
 	-- tank trap just uses plain base class for now...
 	-- .. may do side specific models later
-	units[side .. "tankobstacle"] = TankObstacle:New{} 
+	units[side .. "tankobstacle"] = TankObstacle:New{}
 end
 
 return lowerkeys(units)
