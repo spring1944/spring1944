@@ -54,27 +54,18 @@ end
 ------------------------------------------------
 --vars
 ------------------------------------------------
-local myPlayerID
+local isSpectator
 local totalTime
 local timeSinceBroadcast
 
 local lastPacketSent
 local timeToKeyFrame
 
+local broadcastTo
+
 ------------------------------------------------
 --speedups
 ------------------------------------------------
-local GetCameraState = Spring.GetCameraState
-local SetCameraState = Spring.SetCameraState
-local GetSpectatingState = Spring.GetSpectatingState
-
-local SendLuaUIMsg = Spring.SendLuaUIMsg
-
-local GetMyPlayerID = Spring.GetMyPlayerID
-
-local SendCommands = Spring.SendCommands
-local GetLastUpdateSeconds = Spring.GetLastUpdateSeconds
-
 local Log = Spring.Log
 local strLen = string.len
 
@@ -88,48 +79,53 @@ local PACKET_HEADER = "="
 local PACKET_HEADER_LENGTH = strLen(PACKET_HEADER)
 
 
+local function updateSending()
+	broadcastTo = nil
+	if isSpectator then
+		if broadcastSpecsAsSpec then
+			broadcastTo = "s"
+		end
+	else
+		if broadcastAlliesAsPlayer then
+			broadcastTo = "a"
+		elseif broadcastSpecsAsPlayer then
+			broadcastTo = "s"
+		end
+	end
+
+	if broadcastTo then
+		Spring.SendLuaUIMsg(PACKET_HEADER, broadcastTo)
+		totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
+	end
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
 
 function gadget:Initialize()
-	myPlayerID = GetMyPlayerID()
 	timeSinceBroadcast = 0
 	totalTime = 0
 	timeToKeyFrame = 0
 end
 
 function gadget:Shutdown()
-	SendLuaUIMsg(PACKET_HEADER, "a")
-	SendLuaUIMsg(PACKET_HEADER, "s")
+	Spring.SendLuaUIMsg(PACKET_HEADER, "a")
+	Spring.SendLuaUIMsg(PACKET_HEADER, "s")
 end
 
 function gadget:Update()
-	local dt = GetLastUpdateSeconds()
-	local newIsSpectator = GetSpectatingState()
+	local dt = Spring.GetLastUpdateSeconds()
+	local newIsSpectator = Spring.GetSpectatingState()
 	if newIsSpectator ~= isSpectator then
 		isSpectator = newIsSpectator
-		if isSpectator then
-			if not broadcastSpecsAsSpec then
-				SendLuaUIMsg(PACKET_HEADER, "s")
-				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
-			end
-		else
-			if not broadcastAlliesAsPlayer then
-				SendLuaUIMsg(PACKET_HEADER, "a")
-				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
-			end
-			if not broadcastSpecsAsPlayer then
-				SendLuaUIMsg(PACKET_HEADER, "s")
-				totalCharsSent = totalCharsSent + PACKET_HEADER_LENGTH
-			end
-		end
+		updateSending()
 	end
 
-	if (isSpectator and not broadcastSpecsAsSpec)
-			or (not isSpectator and not broadcastAlliesAsPlayer and not broadcastSpecsAsPlayer) then
+	if not broadcastTo then
 		return
 	end
+
 	totalTime = totalTime + dt
 	timeSinceBroadcast = timeSinceBroadcast + dt
 	timeToKeyFrame = timeToKeyFrame - dt
@@ -138,7 +134,7 @@ function gadget:Update()
 	end
 	if timeSinceBroadcast > broadcastPeriod then
 
-		local state = GetCameraState()
+		local state = Spring.GetCameraState()
 		local msg = Camera.StateToPacket(state)
 
 		--don't send duplicates
@@ -151,17 +147,9 @@ function gadget:Update()
 
 		if msg ~= lastPacketSent then
 			compressed = PACKET_HEADER .. Net.DeltaCompress(msg, lastPacketSent or '', timeToKeyFrame == keyFramePeriod)
-			if (not isSpectator and broadcastAlliesAsPlayer) then
-				SendLuaUIMsg(compressed, "a")
-			end
 
-			if (isSpectator and broadcastSpecsAsSpec)
-					or (not isSpectator and broadcastSpecsAsPlayer) then
-				SendLuaUIMsg(compressed, "s")
-			end
-
+			Spring.SendLuaUIMsg(compressed, broadcastTo)
 			totalCharsSent = totalCharsSent + strLen(compressed)
-
 			lastPacketSent = msg
 		end
 
