@@ -65,10 +65,12 @@ local RUS_DP = LMGInf:New(RUSInf):New{
 
 local RUS_Maxim = HMGInf:New(RUSInf):New{
 	name				= "Maxim PM 1910 Heavy Machinegun",
+	buildpic			= "RUSSandbagMG.png",
 }
 
 local RUS_Maxim_Sandbag = SandbagMG:New{
 	name				= "Deployed Maxim PM 1910 Heavy Machinegun",
+	buildpic			= "RUSSandbagMG.png",
 	weapons = {
 		[1] = { -- HMG
 			name				= "Maxim",
