@@ -6,7 +6,7 @@
   featureDead=JPNHaGo_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JPNHaGo.s3o;
+  object=JPN/JPNHaGo.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

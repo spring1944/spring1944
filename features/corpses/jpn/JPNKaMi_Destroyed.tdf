@@ -6,7 +6,7 @@
   featureDead=JPNKaMi_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JPNKaMi.s3o;
+  object=JPN/JPNKaMi.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
