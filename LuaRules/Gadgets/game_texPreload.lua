@@ -39,7 +39,7 @@ function gadget:DrawWorld()
 			end
 		end
 	end
-	badUnits = {}
+
 	for unitName, _ in pairs(unitsToPreload) do
 		if UnitDefNames[unitName] then
 			PreloadUnitTexture(unitName)
