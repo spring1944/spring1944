@@ -39,8 +39,13 @@ function gadget:DrawWorld()
 			end
 		end
 	end
+	badUnits = {}
 	for unitName, _ in pairs(unitsToPreload) do
-		PreloadUnitTexture(unitName)
+		if UnitDefNames[unitName] then
+			PreloadUnitTexture(unitName)
+		else
+			Spring.Log('tex Preload', 'error', unitName .. ' is not present in UnitDefNames -- probably an invalid unitdef!')
+		end
 	end
 	unitsToPreload = nil
 	GG.RemoveGadget(self)
