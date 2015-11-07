@@ -31,6 +31,8 @@ local RUST3485 = MediumTank:New{
 		maxammo				= 11,
 		turretturnspeed		= 17, -- 21.1s for 360
 		maxvelocitykmh		= 48,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
 	},
 }
 

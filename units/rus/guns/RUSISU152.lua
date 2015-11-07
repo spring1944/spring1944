@@ -28,6 +28,8 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 		soundcategory		= "RUS/Tank/Zveroboy",
 		weapontoggle		= false,
 		maxvelocitykmh		= 40,
+		killvoicecategory	= "RUS/Tank/Zveroboy/RUS_ISU_KILL",
+		killvoicephasecount	= 3,
 	},
 }
 
