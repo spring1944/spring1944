@@ -17,6 +17,8 @@ local RUS_G5 = ArmedBoat:New{
 		},
 	},
 	customparams = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUSG5_Turret_DshK", 
 			"RUSG5_Turret_M-8", 

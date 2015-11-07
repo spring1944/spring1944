@@ -85,6 +85,10 @@ local RUS_Sniper = SniperInf:New(RUSInf):New{
 			name				= "MosinNagantPU",
 		},
 	},
+	customparams = {
+		killvoicecategory	= "RUS/Infantry/Sniper/RUS_SNIPER_KILL",
+		killvoicephasecount	= 3,
+	},
 }
 
 local RUS_PTRD = ATRifleInf:New(RUSInf):New{

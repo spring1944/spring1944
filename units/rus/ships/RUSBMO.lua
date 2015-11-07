@@ -18,6 +18,8 @@ local RUS_BMO = ArmedBoat:New{
 		},
 	},
 	customparams = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUSTurret_37mm_Front", 
 			"RUSTurret_45mm_Rear", 

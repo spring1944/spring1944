@@ -20,6 +20,8 @@ local RUS_Pr161 = ArmedBoat:New{
 		},
 	},
 	customparams = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUSTurret_45mm_Front",
 			"RUSPr161_Turret_85mm_Front",
