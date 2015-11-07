@@ -118,7 +118,7 @@ local SWE_Observ = ObservInf:New(SWEInf):New{
 
 return lowerkeys({
 	-- Regular Inf
-	["SWEEngineer"] = SWE_Engineer,
+	["SWEEngineer"] = SWE_HQEngineer,
 	["SWERifle"] = SWE_Rifle,
 	["SWEAgM42"] = SWE_AgM42,
 	["SWEKPistM3739"] = SWE_KPistM3739,
