@@ -59,6 +59,13 @@ local function DamageSmoke(smokePieces)
 	end
 end
 
+function PlaneVoice(phrase)
+	local soundFile = info.planeVoice[phrase]
+	if soundFile then
+		Spring.PlaySoundFile(soundFile)
+	end
+end
+
 function script.Create()
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)

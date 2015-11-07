@@ -7,7 +7,10 @@ local RUS_Po2 = Recon:New{
 	customParams = {
 		enginesound		= "po2-",
 		enginesoundnr	= 11,
-		planevoice		= 1,
+		planevoice			= {
+			enter_map		= 'sounds/rus/air/po2/rus_air_po2_select.wav',
+			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
+		},
 	},
 }
 

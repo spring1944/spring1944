@@ -254,6 +254,9 @@ function gadget:GamePreload()
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
+
+		info.planeVoice = table.unserialize(cp.planevoice) or {}
+
 		-- Children
 		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access

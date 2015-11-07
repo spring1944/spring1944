@@ -14,7 +14,10 @@ local RUS_La5FN = Fighter:New{
 	customParams = {
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
-		planevoice			= 1,
+		planevoice			= {
+			enter_map		= 'sounds/rus/air/fighter/rus_air_fighter_select.wav',
+			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
+		},
 	},
 
 	weapons = {
