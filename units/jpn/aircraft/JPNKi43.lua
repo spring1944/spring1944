@@ -14,7 +14,6 @@ local JPN_Ki43 = Interceptor:New{
 	customParams = {
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
-		planevoice			= 1, -- TODO: what is this for?
 	},
 
 	weapons = {
