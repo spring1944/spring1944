@@ -118,6 +118,7 @@ local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	iconType			= "artillery",
 	
 	customParams = {
+		canareaattack		= false,
 		scriptanimation		= "mg",
 		maxammo				= 1,
 	},
