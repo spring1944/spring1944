@@ -25,6 +25,8 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 		armor_top			= 7,
 		maxammo				= 11,
 		maxvelocitykmh		= 45,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount	= 3,
 	},
 }
 

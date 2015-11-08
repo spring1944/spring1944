@@ -6,7 +6,7 @@
   featureDead=JPNRadar_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JPNRadar.s3o;
+  object=JPN/JPNRadar.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

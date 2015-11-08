@@ -248,8 +248,9 @@ local function SpawnPlane(teamID, unitname, sx, sy, sz, cmdParams, dx, dy, dz, r
 		planeStates[unitID] = PLANE_STATE_ACTIVE
 		-- make the plane say something if it's the first in its group
 		if numInFlight==1 then
-			if unitDef.customParams.planevoice=="1" then
-			  Spring.CallCOBScript(unitID, "PlaneVoice", 1, 1)
+			if unitDef.customParams.planevoice then
+				local env = Spring.UnitScript.GetScriptEnv(unitID)
+				Spring.UnitScript.CallAsUnit(unitID, env.PlaneVoice, 'enter_map')
 			end
 		end
 		-- remove fly/land and land at x buttons
@@ -511,8 +512,9 @@ function gadget:GameFrame(n)
 				GiveOrderToUnit(unitID, CMD_MOVE, {ex, ey, ez}, {})
 				planeStates[unitID] = PLANE_STATE_RETREAT
 				-- make it say something
-				if unitDef.customParams.planevoice=="1" then
-					Spring.CallCOBScript(unitID, "PlaneVoice", 1, 3)
+				if unitDef.customParams.planevoice then
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					Spring.UnitScript.CallAsUnit(unitID, env.PlaneVoice, 'return_to_base')
 				end
 			end
 		elseif state == PLANE_STATE_RETREAT then

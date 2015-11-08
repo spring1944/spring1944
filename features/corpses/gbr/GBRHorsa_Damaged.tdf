@@ -5,7 +5,7 @@
   featureDead=GBRHorsa_Destroyed;
   footprintX=2;
   footprintZ=2;
-  object=GBRHorsa.s3o;
+  object=GBR/GBRHorsa.s3o;
   reclaimable=1;
   smoketime=0;
 	collisionVolumeType=cylX;

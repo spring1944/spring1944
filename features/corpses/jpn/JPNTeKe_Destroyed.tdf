@@ -6,7 +6,7 @@
   featureDead=JPNTeKe_Burning;
   footprintX=2;
   footprintZ=2;
-  object=JPNTeKe.s3o;
+  object=JPN/JPNTeKe.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

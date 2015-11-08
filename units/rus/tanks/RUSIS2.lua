@@ -31,6 +31,8 @@ local RUSIS2 = HeavyTank:New{
 		maxammo				= 5,
 		turretturnspeed		= 12, -- 30s for 360
 		maxvelocitykmh		= 37,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
 	},
 }
 

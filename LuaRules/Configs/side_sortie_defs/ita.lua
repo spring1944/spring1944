@@ -7,7 +7,7 @@ local itaSorties = {
 		name = "Recon Sortie",
 		description = "1 x Ro.37",
 		buildCostMetal = 1000,
-		buildPic = "itaro37bis.png",
+		buildPic = "itaro37.png",
 	},
 	ita_sortie_attack = {
 		members = {

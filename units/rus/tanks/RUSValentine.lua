@@ -31,6 +31,8 @@ local RUSValentine = LightTank:New{
 		maxammo				= 18,
 		turretturnspeed		= 36, -- 10s for 360
 		maxvelocitykmh		= 24,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
 	},
 }
 

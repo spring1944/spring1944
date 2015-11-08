@@ -30,6 +30,8 @@ local RUST70 = LightTank:New{
 		armor_top			= 10,
 		maxammo				= 18,
 		maxvelocitykmh		= 45,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
 	},
 }
 

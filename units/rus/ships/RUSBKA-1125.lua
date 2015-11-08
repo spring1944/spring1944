@@ -20,6 +20,8 @@ local RUS_BKA_1125 = ArmedBoat:New{
 		},
 	},
 	customparams = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		children = {
 			"RUSBKA1125_turret_76mm", 
 			"RUSBKA1125_Turret_DshK_Front", 

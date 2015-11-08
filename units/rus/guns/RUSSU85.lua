@@ -21,6 +21,9 @@ local RUSSU85 = MediumTank:New(TankDestroyer):New{
 		armor_top			= 20,
 		maxammo				= 9,
 		maxvelocitykmh		= 55,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
+
 	},
 }
 

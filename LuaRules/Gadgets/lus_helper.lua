@@ -106,6 +106,11 @@ function GG.RecursiveHide(unitID, pieceNum, hide)
 	end
 end
 
+function GG.UnitSay(unitID, sound)
+	local velx, vely, velz = Spring.GetUnitVelocity(unitID)
+	GG.PlaySoundAtUnit(unitID, sound, 1, velx, vely, velz, 'voice')
+end
+
 function GG.PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
 	local x,y,z = GetUnitPosition(unitID)
 	volume = volume or 5
@@ -254,6 +259,9 @@ function gadget:GamePreload()
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
+
+		info.planeVoice = table.unserialize(cp.planevoice) or {}
+
 		-- Children
 		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access

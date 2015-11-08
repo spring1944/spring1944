@@ -16,6 +16,8 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 		},
 	},
 	customparams = {
+		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
+		killvoicephasecount		= 3,
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

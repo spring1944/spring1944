@@ -30,6 +30,8 @@ local RUST60 = Tankette:New{
 		armor_top			= 10,
 		maxammo				= 36,
 		maxvelocitykmh		= 44,
+		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
+		killvoicephasecount		= 3,
 	},
 }
 

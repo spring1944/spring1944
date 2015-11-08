@@ -3,7 +3,6 @@ local ITA_Ro37 = Recon:New{
 	maxDamage		= 77,
 	
 	maxAcc			= 0.480,
-	script			= "ruspo2.cob",
 	
 	customParams = {
 		enginesound		= "po2-",

@@ -83,7 +83,7 @@ local jpnunits =
 		"jpnhago",
 		--"jpnhonii",
 	},
-	jpnvehyard_landing =
+	jpnvehicleyard2 =
 	{
 		"jpnriki",
 		"jpnisuzutx40",
@@ -96,7 +96,7 @@ local jpnunits =
 		"jpnkami",
 		"jpnpontoontruck",
 	},
-	jpnvehyard_tank =
+	jpnvehicleyard1 =
 	{
 		"jpnriki",
 		"jpnisuzutx40",
@@ -126,7 +126,7 @@ local jpnunits =
 		"jpntype91_105mm_truck",
 		"jpnhoniii",
 	},
-	jpnatyard =
+	jpnspyard1 =
 	{
 		"jpnriki",
 		"jpnisuzutx40",
@@ -144,7 +144,7 @@ local jpnunits =
 		"jpnchiha",
 		"jpnchihe",
 	},
-	jpntankyard_medium =
+	jpntankyard1 =
 	{
 		"jpnriki",
 		"jpnhago",
@@ -154,7 +154,7 @@ local jpnunits =
 		"jpnchinu",
 		"jpnchiha120mm",
 	},
-	jpntankyard_support =
+	jpntankyard2 =
 	{
 		"jpnriki",
 		"jpnhago",
