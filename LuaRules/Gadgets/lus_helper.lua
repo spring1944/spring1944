@@ -106,6 +106,11 @@ function GG.RecursiveHide(unitID, pieceNum, hide)
 	end
 end
 
+function GG.UnitSay(unitID, sound)
+	local velx, vely, velz = Spring.GetUnitVelocity(unitID)
+	GG.PlaySoundAtUnit(unitID, sound, 1, velx, vely, velz, 'voice')
+end
+
 function GG.PlaySoundAtUnit(unitID, sound, volume, sx, sy, sz, channel)
 	local x,y,z = GetUnitPosition(unitID)
 	volume = volume or 5

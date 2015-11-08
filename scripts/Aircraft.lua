@@ -62,7 +62,7 @@ end
 function PlaneVoice(phrase)
 	local soundFile = info.planeVoice[phrase]
 	if soundFile then
-		Spring.PlaySoundFile(soundFile)
+		GG.UnitSay(unitID, soundFile)
 	end
 end
 
