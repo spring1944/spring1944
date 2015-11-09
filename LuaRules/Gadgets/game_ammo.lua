@@ -109,14 +109,16 @@ local function ProcessWeapons(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo) or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-	local weaponsFired = 0
+	local weaponFired = false
+	local weapNum = 1
 	local reloadFrame = 0
 
-	for weapNum = 1,weaponsWithAmmo do
+	while not weaponFired and weapNum <= weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
-		weaponsFired = weaponsFired + (CheckReload(unitID, reloadFrame, weapNum) and 1 or 0)
+		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
+		weapNum = weapNum + 1
 	end
-	if weaponsFired > 0 then
+	if weaponFired then
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
 			SetUnitExperience(unitID, 0)
@@ -128,8 +130,8 @@ local function ProcessWeapons(unitID)
 			end
 		end
 		if ammoLevel > 0 then
-			vehicles[unitID].ammoLevel = ammoLevel - weaponsFired
-			SetUnitRulesParam(unitID, "ammo",	ammoLevel - weaponsFired)
+			vehicles[unitID].ammoLevel = ammoLevel - 1
+			SetUnitRulesParam(unitID, "ammo", ammoLevel - 1)
 		end
 	end
 end
@@ -369,10 +371,6 @@ function gadget:GameFrame(n)
 				end
 			end
 			newVehicles = {}
-		end
-		
-		for unitID in pairs(vehicles) do
-			ProcessWeapons(unitID)
 		end
 		
 		if n % (RELOAD_FREQUENCY*30) < 0.1 then
