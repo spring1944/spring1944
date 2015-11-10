@@ -73,6 +73,10 @@ local lastShot
 local currentSpeed
 local fear
 local weaponEnabled = {}
+local maxAmmo = info.maxAmmo
+local usesAmmo = maxAmmo ~= 0
+-- start at zero so you can't buy logistics in newly built units
+local ammo = 0
 
 --localisations
 local random = math.random
@@ -641,7 +645,30 @@ local function IsLoaded(weaponClass)
 end
 
 local function CanFire(weaponClass)
-	return aiming == weaponClass and not inTransition
+	if usesAmmo then
+		return ammo > 0 and aiming == weaponClass and not inTransition
+	else
+		return aiming == weaponClass and not inTransition
+	end
+end
+
+function ChangeAmmo(amount)
+	if not usesAmmo then return end
+
+	local newAmmoLevel = (ammo or 0) + amount -- amount is a -ve to deduct
+	if newAmmoLevel <= 0 then
+		newAmmoLevel = 0
+	elseif newAmmoLevel > maxAmmo then
+		newAmmoLevel = maxAmmo
+	end
+
+	if ammo ~= newAmmoLevel then
+		ammo = newAmmoLevel
+		Spring.SetUnitRulesParam(unitID, "ammo", newAmmoLevel)
+		return true -- Ammo was changed
+	else
+		return false -- Ammo was not changed
+	end
 end
 
 function script.AimWeapon(num, heading, pitch)
@@ -677,6 +704,9 @@ end
 
 function script.FireWeapon(num)
 	firing = true
+	if usesAmmo then
+		ChangeAmmo(-1)
+	end
 	UpdateSpeed()
 end
 

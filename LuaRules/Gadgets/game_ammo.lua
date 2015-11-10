@@ -183,10 +183,20 @@ local function Resupply(unitID)
                 if roundsPerTick == 0 then
                     roundsPerTick = 1
                 end
-				local newAmmo = oldAmmo + roundsPerTick
+
 				UseUnitResource(unitID, "e", weaponCost * roundsPerTick)
-				vehicles[unitID].ammoLevel = newAmmo
-				SetUnitRulesParam(unitID, "ammo",	newAmmo)
+
+				local env = Spring.UnitScript.GetScriptEnv(unitID)
+				-- if a unit has ChangeAmmo defined, it will set the
+				-- UnitRulesParam itself
+				if env and env.ChangeAmmo then
+					env.ChangeAmmo(roundsPerTick)
+					return true
+				else
+					local newAmmo = oldAmmo + roundsPerTick
+					vehicles[unitID].ammoLevel = newAmmo
+					SetUnitRulesParam(unitID, "ammo", newAmmo)
+				end
 			end
 	
 	
@@ -362,10 +372,16 @@ function gadget:GameFrame(n)
 						reloadFrame = {},
 					}
 					if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
-					for weaponNum = 1, ud.customParams.weaponswithammo do
-						vehicles[unitID].reloadFrame[weaponNum] = 0
-						if ammo == 0 then
-							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
+
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					-- if a unit has ChangeAmmo defined, don't muck with
+					-- reloads, just rely on the unit script
+					if not env or env.ChangeAmmo == nil then
+						for weaponNum = 1, ud.customParams.weaponswithammo do
+							vehicles[unitID].reloadFrame[weaponNum] = 0
+							if ammo == 0 then
+								SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
+							end
 						end
 					end
 				end
@@ -379,7 +395,12 @@ function gadget:GameFrame(n)
 				-- also skip incomplete units (use the first return value)
 				local stunned = GetUnitIsStunned(unitID)
 				if (not stunned) then
-					ProcessWeapons(unitID)
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					-- if a unit has ChangeAmmo defined, don't muck with
+					-- reloads, just rely on the unit script
+					if not env or env.ChangeAmmo == nil then
+						ProcessWeapons(unitID)
+					end
 					local ud = UnitDefs[GetUnitDefID(unitID)]
 					if not ud.canFly then
 						Resupply(unitID)

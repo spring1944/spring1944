@@ -64,6 +64,10 @@ local wantedPitch
 local wantedHeading
 
 -- OTHER
+local maxAmmo = info.maxAmmo
+local usesAmmo = maxAmmo ~= 0
+-- start at zero so you can't buy logistics in newly built units
+local ammo = 0
 
 local turretTraverseSpeed
 local turretElevateSpeed
@@ -419,11 +423,33 @@ local function Recoil()
 	Move(barrel, z_axis, 0, recoilReturnSpeed)
 end
 
+-- non-local function called by gadgets/game_ammo.lua
+function ChangeAmmo(amount)
+	if not usesAmmo then return end
+
+	local newAmmoLevel = (ammo or 0) + amount -- amount is a -ve to deduct
+	if newAmmoLevel <= 0 then
+		newAmmoLevel = 0
+	elseif newAmmoLevel > maxAmmo then
+		newAmmoLevel = maxAmmo
+	end
+
+	if ammo ~= newAmmoLevel then
+		ammo = newAmmoLevel
+		Spring.SetUnitRulesParam(unitID, "ammo", newAmmoLevel)
+		return true -- Ammo was changed
+	else
+		return false -- Ammo was not changed
+	end
+end
+
 function script.AimWeapon(weaponNum, heading, pitch)
 	--Spring.Echo("aiming", weaponNum, weaponEnabled[weaponNum])
 	if not weaponEnabled[weaponNum] then
 		return false
 	end
+
+	if usesAmmo and ammo <= 0 then return false end
 	
 	Signal(SIG_AIM)
 	wantedHeading = heading
@@ -450,6 +476,9 @@ function script.FireWeapon(weaponNum)
 	local explodeRange = info.explodeRanges[weaponNum]
 	if explodeRange then
 		Spring.SetUnitWeaponState(unitID, weaponNum, "range", explodeRange)
+	end
+	if usesAmmo then
+		ChangeAmmo(-1)
 	end
 end
 

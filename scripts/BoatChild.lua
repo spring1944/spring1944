@@ -29,6 +29,12 @@ local isPinned = false
 local aaAiming = false
 local curRocket = 1
 
+local maxAmmo = info.maxAmmo
+local usesAmmo = maxAmmo ~= 0
+-- start at zero so you can't buy logistics in newly built units
+local ammo = 0
+
+
 -- Pieces
 local function findPieces(input, name)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
@@ -78,8 +84,30 @@ function script.Create()
 	end
 end
 
+-- non-local function called by gadgets/game_ammo.lua
+function ChangeAmmo(amount)
+	if not usesAmmo then return end
+
+	local newAmmoLevel = (ammo or 0) + amount -- amount is a -ve to deduct
+	if newAmmoLevel <= 0 then
+		newAmmoLevel = 0
+	elseif newAmmoLevel > maxAmmo then
+		newAmmoLevel = maxAmmo
+	end
+
+	if ammo ~= newAmmoLevel then
+		ammo = newAmmoLevel
+		Spring.SetUnitRulesParam(unitID, "ammo", newAmmoLevel)
+		return true -- Ammo was changed
+	else
+		return false -- Ammo was not changed
+	end
+end
+
 function script.AimWeapon(weaponID, heading, pitch)
 	if isDisabled or isPinned then return false end -- don't even animate if we are pinned/disabled
+	if usesAmmo and ammo <= 0 then return false end
+
 	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
 	SetSignalMask(2 ^ weaponID)
 	if aaWeapon and aaWeapon == weaponID then
@@ -116,6 +144,9 @@ function script.FireWeapon(weaponID)
 		end
 	elseif numRockets > 0 then
 		StartThread(ShowRockets)
+	end
+	if usesAmmo then
+		ChangeAmmo(-1)
 	end
 end
 
