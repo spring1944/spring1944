@@ -64,10 +64,7 @@ local wantedPitch
 local wantedHeading
 
 -- OTHER
-local maxAmmo = info.maxAmmo
-local usesAmmo = maxAmmo ~= 0
--- start at zero so you can't buy logistics in newly built units
-local ammo = 0
+local usesAmmo = info.usesAmmo
 
 local turretTraverseSpeed
 local turretElevateSpeed
@@ -144,7 +141,7 @@ local function UpdateSpeed()
 	if newSpeed == currentSpeed then
 		return
 	end
-	
+
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -167,10 +164,10 @@ local function ChangePose(transition, nextPoseName)
 	SetSignalMask(0)
 	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
-		local duration, turns, moves, anim  = 
+		local duration, turns, moves, anim  =
 			  frame.duration, frame.turns, frame.moves, frame.anim
-		
-		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)			
+
+		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)
 		if turns then
 			for _, params in pairs(turns) do
 				Turn(unpack(params))
@@ -247,14 +244,14 @@ local function ReAim(newHeading, newPitch)
 			return true
 		end
 	end
-	
+
 	SetSignalMask(SIG_AIM)
 	Turn(weaponTags.headingPiece, y_axis, newHeading, info.turretTurnSpeed)
 	Turn(weaponTags.pitchPiece, x_axis, -newPitch, info.elevationSpeed)
-	
+
 	WaitForTurn(weaponTags.headingPiece, y_axis)
 	WaitForTurn(weaponTags.pitchPiece, x_axis)
-	
+
 	currentHeading = newHeading
 	currentPitch = newPitch
 	return false
@@ -326,7 +323,7 @@ end
 
 
 function script.Create()
-	if flare then 
+	if flare then
 		Hide(flare)
 	end
 	if brakeleft then
@@ -335,9 +332,9 @@ function script.Create()
 	if brakeright then
 		Hide(brakeright)
 	end
-	
+
 	currentSpeed = UnitDef.speed
-	
+
 	pinned = false
 	moving = false
 	wantedPinned = pinned
@@ -345,14 +342,14 @@ function script.Create()
 	fear = 0
 	firing = false
 	UpdatePose(pinned, moving)
-	
+
 	for i=1,info.numWeapons do
 		weaponEnabled[i] = true
 	end
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
 	end
-	
+
 	turretTraverseSpeed = UnitDef.customParams.turretTraverseSpeed or weaponTags.defaultTraverseSpeed
 	turretElevateSpeed = UnitDef.customParams.turretElevateSpeed or weaponTags.defaultElevateSpeed
 end
@@ -395,7 +392,7 @@ function script.QueryWeapon(weaponNum)
 	if cegPiece then
 		return cegPiece
 	end
-	
+
 	return weaponTags.pitchPiece
 end
 
@@ -414,6 +411,13 @@ local function IsLoaded()
 end
 
 local function CanFire()
+	if usesAmmo then
+		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		if ammo <= 0 then
+			return false
+		end
+	end
+
 	return not (moving or inTransition or pinned)
 end
 
@@ -423,34 +427,13 @@ local function Recoil()
 	Move(barrel, z_axis, 0, recoilReturnSpeed)
 end
 
--- non-local function called by gadgets/game_ammo.lua
-function ChangeAmmo(amount)
-	if not usesAmmo then return end
-
-	local newAmmoLevel = (ammo or 0) + amount -- amount is a -ve to deduct
-	if newAmmoLevel <= 0 then
-		newAmmoLevel = 0
-	elseif newAmmoLevel > maxAmmo then
-		newAmmoLevel = maxAmmo
-	end
-
-	if ammo ~= newAmmoLevel then
-		ammo = newAmmoLevel
-		Spring.SetUnitRulesParam(unitID, "ammo", newAmmoLevel)
-		return true -- Ammo was changed
-	else
-		return false -- Ammo was not changed
-	end
-end
-
 function script.AimWeapon(weaponNum, heading, pitch)
 	--Spring.Echo("aiming", weaponNum, weaponEnabled[weaponNum])
 	if not weaponEnabled[weaponNum] then
 		return false
 	end
 
-	if usesAmmo and ammo <= 0 then return false end
-	
+
 	Signal(SIG_AIM)
 	wantedHeading = heading
 	wantedPitch = pitch
@@ -478,7 +461,8 @@ function script.FireWeapon(weaponNum)
 		Spring.SetUnitWeaponState(unitID, weaponNum, "range", explodeRange)
 	end
 	if usesAmmo then
-		ChangeAmmo(-1)
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 
@@ -503,7 +487,7 @@ function script.Shot(weaponNum)
 	if brakeright then
 		GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 	end
-	
+
 end
 
 function script.EndBurst(weaponNum)
@@ -528,9 +512,9 @@ function script.Killed(recentDamage, maxHealth)
 		corpse = 2
 	end
 	-- if recentDamage > 10 * maxHealth then -- Hyperkill
-		
+
 	-- end
-	
+
 	return math.min(GG.lusHelper[unitDefID].numCorpses - 1, corpse)
 end
 

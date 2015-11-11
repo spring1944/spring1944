@@ -41,7 +41,7 @@ local passedCmds = {[CMD.ATTACK] = true, [CMD.FIRE_STATE] = true, [CMD.STOP] = t
 local function DisableChild(childID, disable)
 	deadChildren[childID] = disable
 	Spring.SetUnitNeutral(childID, disable)
-	env = Spring.UnitScript.GetScriptEnv(childID)
+	local env = Spring.UnitScript.GetScriptEnv(childID)
 	Spring.UnitScript.CallAsUnit(childID, env.Disabled, disable)
 end
 

@@ -255,7 +255,7 @@ function gadget:GamePreload()
 		-- General
 		info.numWeapons = #weapons
 		info.weaponsWithAmmo = tonumber(cp.weaponswithammo) or 0
-		info.maxAmmo = tonumber(cp.maxammo) or 0
+		info.usesAmmo = (tonumber(cp.maxammo) or 0) > 0
 		info.mainAnimation = cp.scriptanimation
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}

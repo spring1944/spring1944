@@ -186,17 +186,9 @@ local function Resupply(unitID)
 
 				UseUnitResource(unitID, "e", weaponCost * roundsPerTick)
 
-				local env = Spring.UnitScript.GetScriptEnv(unitID)
-				-- if a unit has ChangeAmmo defined, it will set the
-				-- UnitRulesParam itself
-				if env and env.ChangeAmmo then
-					env.ChangeAmmo(roundsPerTick)
-					return true
-				else
-					local newAmmo = oldAmmo + roundsPerTick
-					vehicles[unitID].ammoLevel = newAmmo
-					SetUnitRulesParam(unitID, "ammo", newAmmo)
-				end
+				local newAmmo = oldAmmo + roundsPerTick
+				vehicles[unitID].ammoLevel = newAmmo
+				SetUnitRulesParam(unitID, "ammo", newAmmo)
 			end
 	
 	
@@ -230,9 +222,14 @@ local function Resupply(unitID)
 					end
 					
 				end
-				for weapNum = 1, weaponsWithAmmo do
-					SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
-					vehicles[unitID].reloadFrame[weapNum] = reloadState
+				local env = Spring.UnitScript.GetScriptEnv(unitID)
+				-- if a unit is LUS-ified, don't muck with
+				-- reloads, just rely on the unit script
+				if not env then
+					for weapNum = 1, weaponsWithAmmo do
+						SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
+						vehicles[unitID].reloadFrame[weapNum] = reloadState
+					end
 				end
 			end
 		end
@@ -256,7 +253,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		else
 			SetUnitRulesParam(unitID, "ammo", 0)
 		end
-
 
 		--This is used to delay SetUnitWeaponState call depending on ammo,
 		--so other gadgets (notably the unit_morph gagdet) have a chance to
@@ -374,9 +370,9 @@ function gadget:GameFrame(n)
 					if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
 
 					local env = Spring.UnitScript.GetScriptEnv(unitID)
-					-- if a unit has ChangeAmmo defined, don't muck with
+					-- if a unit is LUS-ified, don't muck with
 					-- reloads, just rely on the unit script
-					if not env or env.ChangeAmmo == nil then
+					if not env then
 						for weaponNum = 1, ud.customParams.weaponswithammo do
 							vehicles[unitID].reloadFrame[weaponNum] = 0
 							if ammo == 0 then
@@ -396,9 +392,9 @@ function gadget:GameFrame(n)
 				local stunned = GetUnitIsStunned(unitID)
 				if (not stunned) then
 					local env = Spring.UnitScript.GetScriptEnv(unitID)
-					-- if a unit has ChangeAmmo defined, don't muck with
+					-- if a unit is LUS-ified, don't muck with
 					-- reloads, just rely on the unit script
-					if not env or env.ChangeAmmo == nil then
+					if not env then
 						ProcessWeapons(unitID)
 					end
 					local ud = UnitDefs[GetUnitDefID(unitID)]

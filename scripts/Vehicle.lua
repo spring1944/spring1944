@@ -27,10 +27,7 @@ local currentTrack
 local lastShot
 
 -- Logic
-local maxAmmo = info.maxAmmo
-local usesAmmo = maxAmmo ~= 0
--- start at zero so you can't buy logistics in newly built units
-local ammo = 0
+local usesAmmo = info.usesAmmo
 
 local SIG_MOVE = 1
 local SIG_AIM = {}
@@ -334,9 +331,11 @@ local function CanFire(weaponNum)
 		return false
 	end
 
-
 	if IsMainGun(weaponNum) then
-		if ammo <= 0 then return false end
+		if usesAmmo then
+			local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+			if ammo <= 0 then return false end
+		end
 
 		for i = 1,info.weaponsWithAmmo do
 			if i ~= weaponNum then
@@ -351,26 +350,6 @@ local function CanFire(weaponNum)
 		end
 	end
 	return true
-end
-
--- non-local function called by gadgets/game_ammo.lua
-function ChangeAmmo(amount)
-	if not usesAmmo then return end
-
-	local newAmmoLevel = (ammo or 0) + amount -- amount is a -ve to deduct
-	if newAmmoLevel <= 0 then
-		newAmmoLevel = 0
-	elseif newAmmoLevel > maxAmmo then
-		newAmmoLevel = maxAmmo
-	end
-
-	if ammo ~= newAmmoLevel then
-		ammo = newAmmoLevel
-		Spring.SetUnitRulesParam(unitID, "ammo", newAmmoLevel)
-		return true -- Ammo was changed
-	else
-		return false -- Ammo was not changed
-	end
 end
 
 function script.QueryWeapon(weaponNum)
@@ -421,7 +400,8 @@ end
 
 function script.FireWeapon(weaponNum)
 	if IsMainGun(weaponNum) and usesAmmo then
-		ChangeAmmo(-1)
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 
