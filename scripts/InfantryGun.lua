@@ -410,14 +410,7 @@ local function IsLoaded()
 	return true
 end
 
-local function CanFire()
-	if usesAmmo then
-		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		if ammo <= 0 then
-			return false
-		end
-	end
-
+local function CanAim()
 	return not (moving or inTransition or pinned)
 end
 
@@ -433,11 +426,10 @@ function script.AimWeapon(weaponNum, heading, pitch)
 		return false
 	end
 
-
 	Signal(SIG_AIM)
 	wantedHeading = heading
 	wantedPitch = pitch
-	if CanFire() and ReAim(heading, pitch) then
+	if CanAim() and ReAim(heading, pitch) then
 		local explodeRange = info.explodeRanges[weaponNum]
 		if explodeRange then
 			GG.LimitRange(unitID, weaponNum, explodeRange)
@@ -448,7 +440,14 @@ function script.AimWeapon(weaponNum, heading, pitch)
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	return not (CanFire() and IsLoaded() and weaponEnabled[weaponNum])
+	if usesAmmo then
+		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return not (CanAim() and IsLoaded() and weaponEnabled[weaponNum])
 end
 
 function script.FireWeapon(weaponNum)

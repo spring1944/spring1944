@@ -87,6 +87,7 @@ function script.BlockShot(weaponNum, targetUnitID, userTarget)
 			return true
 		end
 	end
+
 	return false
 end
 

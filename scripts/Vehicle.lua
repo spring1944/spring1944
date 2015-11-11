@@ -100,7 +100,7 @@ end
 function script.Create()
 	local flare = piece "flare"
 	local coaxflare = piece "coaxflare"
-	if flare then 
+	if flare then
 		Hide(flare)
 	end
 	if coaxflare then
@@ -120,12 +120,12 @@ function script.Create()
 			Hide(info.tracks[i])
 		end
 	end
-	
+
 	moving = false
 	weaponEnabled = {}
 	weaponPriorities = {}
 	wantedDirection = {}
-	
+
 	for i = 1,info.numWeapons do
 		weaponPriorities[i] = i
 		weaponEnabled[i] = true
@@ -218,7 +218,7 @@ local function StopAiming(weaponNum)
 	if prioritisedWeapon == weaponNum then
 		prioritisedWeapon = nil
 	end
-	
+
 	for i = 1,info.numWeapons do
 		-- If we're still aiming at anything, we don't want to restore the turret
 		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
@@ -272,7 +272,7 @@ end
 local function ResolveDirection(headingPiece, pitchPiece)
 	local topDirection
 	local topPriority = #wantedDirection + 1
-	
+
 	for weaponNum, dir in pairs(wantedDirection) do
 		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece and
 				(not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] then
@@ -297,19 +297,19 @@ local function ResolveDirection(headingPiece, pitchPiece)
 	end
 end
 
-function IsAimedAt(headingPiece, pitchPiece, heading, pitch)	
+function IsAimedAt(headingPiece, pitchPiece, heading, pitch)
 
 	local _, currentHeading = Spring.UnitScript.GetPieceRotation(headingPiece)
 	-- If you can't change pitch, assume you're aimed for now.
 	local currentPitch = pitchPiece and -Spring.UnitScript.GetPieceRotation(pitchPiece) or pitch
-	
+
 	local pDiff = GetAngleDiff(currentPitch, pitch)
 	local hDiff = GetAngleDiff(currentHeading, heading)
-	
+
 	if hDiff < REAIM_THRESHOLD and pDiff < REAIM_THRESHOLD then
 		return true
 	end
-	
+
 	return false
 end
 
@@ -326,21 +326,16 @@ end
 
 
 
-local function CanFire(weaponNum)
+local function CanAim(weaponNum)
 	if not IsAimed(weaponNum) then
 		return false
 	end
 
 	if IsMainGun(weaponNum) then
-		if usesAmmo then
-			local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
-			if ammo <= 0 then return false end
-		end
-
 		for i = 1,info.weaponsWithAmmo do
 			if i ~= weaponNum then
 				local _, loaded = Spring.GetUnitWeaponState(unitID, i)
-				if not loaded then 
+				if not loaded then
 					return false
 				end
 				if IsAimed(i) and weaponPriorities[i] < weaponPriorities[weaponNum] then
@@ -354,7 +349,7 @@ end
 
 function script.QueryWeapon(weaponNum)
 	local cegPiece = info.cegPieces[weaponNum]
-	if cegPiece then 
+	if cegPiece then
 		return cegPiece
 	end
 	-- Shields etc.
@@ -367,34 +362,43 @@ function script.AimFromWeapon(weaponNum)
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	return not (CanFire(weaponNum) and weaponEnabled[weaponNum])
+	if IsMainGun(weaponNum) then
+		if usesAmmo then
+			local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+			if ammo <= 0 then
+				return true
+			end
+		end
+	end
+
+	return not (CanAim(weaponNum) and weaponEnabled[weaponNum])
 end
 
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	Signal(SIG_AIM[weaponNum])
-	
+
 	if not weaponEnabled[weaponNum] then
 		return false
 	end
-	
+
 	if not info.aimPieces[weaponNum] then -- it's a shield or w/e
 		return true
 	end
-	
+
 	if info.reversedWeapons[weaponNum] then
 		heading = heading + PI
 		pitch = -pitch
 	end
 	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = heading, pitch
-	
+
 	local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
-	
+
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_AIM[weaponNum], weaponNum)
 	if headingPiece then
 		StartThread(ResolveDirection, headingPiece, pitchPiece)
 	end
-	
+
 	return IsAimed(weaponNum)
 end
 
@@ -409,7 +413,7 @@ function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
 	local turret = piece "turret"
 	local sleeve = piece "sleeve"
-	
+
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end
@@ -429,7 +433,7 @@ function script.Killed(recentDamage, maxHealth)
 		end
 		corpse = 3
 	end
-	
+
 	return math.min(info.numCorpses - 1, corpse)
 end
 
@@ -452,7 +456,7 @@ local function Rock(anglex, anglez)
 
 	WaitForTurn(base, x_axis)
 	WaitForTurn(base, z_axis)
-	
+
 	Turn(base, z_axis, 0, speedz / 2)
 	Turn(base, x_axis, 0, speedx / 2)
 end
@@ -465,7 +469,7 @@ end
 
 function script.Shot(weaponNum)
 	lastShot = weaponNum
-	
+
 	local ceg = info.weaponCEGs[weaponNum]
 	if ceg then
 		local cegPiece = info.cegPieces[weaponNum]
@@ -473,7 +477,7 @@ function script.Shot(weaponNum)
 			GG.EmitSfxName(unitID, cegPiece, ceg)
 		end
 	end
-	
+
 	if IsMainGun(weaponNum) and barrel then
 		StartThread(Recoil)
 		local ping = info.seismicPings[weaponNum]
@@ -523,10 +527,10 @@ if UnitDef.isBuilder then
 	else
 		SIG_BUILD = SIG_MOVE * 2
 	end
-	
+
 	local turret = piece "turret"
 	local DEFAULT_CRANE_TURN_SPEED = math.rad(50)
-	
+
 	function script.StartBuilding(buildHeading, pitch)
 		if turret then
 			Signal(SIG_BUILD)
@@ -536,13 +540,13 @@ if UnitDef.isBuilder then
 		end
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 	end
-	
+
 	function script.StopBuilding()
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
 		if turret then
 			Signal(SIG_BUILD)
 			Turn(turret, y_axis, 0, DEFAULT_CRANE_TURN_SPEED)
-		end		
+		end
 	end
 end
 
@@ -551,7 +555,7 @@ end
 if UnitDef.transportCapacity > 0 then
 	local tow_point = piece "tow_point"
 	local canTow = not not tow_point
-	
+
 	function script.TransportPickup(passengerID)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
 		if mass < 100 then --ugly check for inf gun vs. infantry.
@@ -561,7 +565,7 @@ if UnitDef.transportCapacity > 0 then
 			canTow = false
 		end
 	end
-	
+
 	-- note x, y z is in worldspace
 	function script.TransportDrop(passengerID, x, y, z)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
@@ -576,12 +580,12 @@ end
 if UnitDef.waterline > 0 then
 	local SIG_WATER = 512 -- should be high enough
 	local WATER_SPEED_DIVISOR = 3
-	
+
 	local wake = piece "wake"
 	local inWater = false
 	local currentSpeed = UnitDef.speed
 	local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
-	
+
 	local function Wakes()
 		Signal(SIG_WATER)
 		SetSignalMask(SIG_WATER)
@@ -592,7 +596,7 @@ if UnitDef.waterline > 0 then
 			Sleep(165)
 		end
 	end
-	
+
 	local function UpdateSpeed()
 		local origSpeed = UnitDef.speed
 		local newSpeed = origSpeed
@@ -604,7 +608,7 @@ if UnitDef.waterline > 0 then
 		if newSpeed == currentSpeed then
 			return
 		end
-		
+
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
 		if currentSpeed < newSpeed then
 			local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -620,7 +624,7 @@ if UnitDef.waterline > 0 then
 		end
 		currentSpeed = newSpeed
 	end
-	
+
 	function script.setSFXoccupy(curTerrainType)
 		Signal(SIG_WATER)
 		inWater = curTerrainType ~= 4
