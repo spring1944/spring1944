@@ -557,6 +557,7 @@ local function FinishMorph(unitID, morphData)
   if (udDst.customParams.maxammo) then
 	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
 	Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
+
 	local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
 	if (weapon1) then
 		Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
@@ -668,7 +669,7 @@ local function FinishMorph(unitID, morphData)
 
       if (transportedDef.customParams.maxammo) then
         local ammoLevel = Spring.GetUnitRulesParam(transportedUnitID, "ammo")
-        Spring.SetUnitRulesParam(replacement, "ammo", ammoLevel)
+		Spring.SetUnitRulesParam(replacement, "ammo", ammoLevel)
       end
 
       Spring.DestroyUnit(transportedUnitID, false, true)

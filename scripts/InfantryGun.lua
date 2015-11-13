@@ -64,6 +64,7 @@ local wantedPitch
 local wantedHeading
 
 -- OTHER
+local usesAmmo = info.usesAmmo
 
 local turretTraverseSpeed
 local turretElevateSpeed
@@ -140,7 +141,7 @@ local function UpdateSpeed()
 	if newSpeed == currentSpeed then
 		return
 	end
-	
+
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -163,10 +164,10 @@ local function ChangePose(transition, nextPoseName)
 	SetSignalMask(0)
 	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
-		local duration, turns, moves, anim  = 
+		local duration, turns, moves, anim  =
 			  frame.duration, frame.turns, frame.moves, frame.anim
-		
-		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)			
+
+		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)
 		if turns then
 			for _, params in pairs(turns) do
 				Turn(unpack(params))
@@ -243,14 +244,14 @@ local function ReAim(newHeading, newPitch)
 			return true
 		end
 	end
-	
+
 	SetSignalMask(SIG_AIM)
 	Turn(weaponTags.headingPiece, y_axis, newHeading, info.turretTurnSpeed)
 	Turn(weaponTags.pitchPiece, x_axis, -newPitch, info.elevationSpeed)
-	
+
 	WaitForTurn(weaponTags.headingPiece, y_axis)
 	WaitForTurn(weaponTags.pitchPiece, x_axis)
-	
+
 	currentHeading = newHeading
 	currentPitch = newPitch
 	return false
@@ -322,7 +323,7 @@ end
 
 
 function script.Create()
-	if flare then 
+	if flare then
 		Hide(flare)
 	end
 	if brakeleft then
@@ -331,9 +332,9 @@ function script.Create()
 	if brakeright then
 		Hide(brakeright)
 	end
-	
+
 	currentSpeed = UnitDef.speed
-	
+
 	pinned = false
 	moving = false
 	wantedPinned = pinned
@@ -341,14 +342,14 @@ function script.Create()
 	fear = 0
 	firing = false
 	UpdatePose(pinned, moving)
-	
+
 	for i=1,info.numWeapons do
 		weaponEnabled[i] = true
 	end
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
 	end
-	
+
 	turretTraverseSpeed = UnitDef.customParams.turretTraverseSpeed or weaponTags.defaultTraverseSpeed
 	turretElevateSpeed = UnitDef.customParams.turretElevateSpeed or weaponTags.defaultElevateSpeed
 end
@@ -391,7 +392,7 @@ function script.QueryWeapon(weaponNum)
 	if cegPiece then
 		return cegPiece
 	end
-	
+
 	return weaponTags.pitchPiece
 end
 
@@ -409,7 +410,7 @@ local function IsLoaded()
 	return true
 end
 
-local function CanFire()
+local function CanAim()
 	return not (moving or inTransition or pinned)
 end
 
@@ -424,11 +425,11 @@ function script.AimWeapon(weaponNum, heading, pitch)
 	if not weaponEnabled[weaponNum] then
 		return false
 	end
-	
+
 	Signal(SIG_AIM)
 	wantedHeading = heading
 	wantedPitch = pitch
-	if CanFire() and ReAim(heading, pitch) then
+	if CanAim() and ReAim(heading, pitch) then
 		local explodeRange = info.explodeRanges[weaponNum]
 		if explodeRange then
 			GG.LimitRange(unitID, weaponNum, explodeRange)
@@ -439,7 +440,14 @@ function script.AimWeapon(weaponNum, heading, pitch)
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	return not (CanFire() and IsLoaded() and weaponEnabled[weaponNum])
+	if usesAmmo then
+		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return not (CanAim() and IsLoaded() and weaponEnabled[weaponNum])
 end
 
 function script.FireWeapon(weaponNum)
@@ -450,6 +458,10 @@ function script.FireWeapon(weaponNum)
 	local explodeRange = info.explodeRanges[weaponNum]
 	if explodeRange then
 		Spring.SetUnitWeaponState(unitID, weaponNum, "range", explodeRange)
+	end
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 
@@ -474,7 +486,7 @@ function script.Shot(weaponNum)
 	if brakeright then
 		GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 	end
-	
+
 end
 
 function script.EndBurst(weaponNum)
@@ -499,9 +511,9 @@ function script.Killed(recentDamage, maxHealth)
 		corpse = 2
 	end
 	-- if recentDamage > 10 * maxHealth then -- Hyperkill
-		
+
 	-- end
-	
+
 	return math.min(GG.lusHelper[unitDefID].numCorpses - 1, corpse)
 end
 

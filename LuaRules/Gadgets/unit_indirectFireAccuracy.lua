@@ -131,14 +131,16 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	if indirectUnitDefIDs[unitDefID] then
-		lastHit[unitID] = {}
-		firingPositions[unitID] = {}
-
 		local weapons = UnitDefs[unitDefID].weapons
-		local weaponDef = WeaponDefs[weapons[1].weaponDef]
-		local baseAccuracy = weaponDef.accuracy
-		for i=1, #weapons do
-			Spring.SetUnitWeaponState(unitID, i, {accuracy = baseAccuracy})
+		if #weapons > 0 then
+			lastHit[unitID] = {}
+			firingPositions[unitID] = {}
+
+			local weaponDef = WeaponDefs[weapons[1].weaponDef]
+			local baseAccuracy = weaponDef.accuracy
+			for i=1, #weapons do
+				Spring.SetUnitWeaponState(unitID, i, {accuracy = baseAccuracy})
+			end
 		end
 	end
 end

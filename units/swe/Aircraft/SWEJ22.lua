@@ -14,7 +14,6 @@ local SWE_J22 = Fighter:New{
 	customParams = {
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
-		planevoice			= 1,
 	},
 
 	weapons = {

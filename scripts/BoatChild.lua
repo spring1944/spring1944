@@ -29,6 +29,8 @@ local isPinned = false
 local aaAiming = false
 local curRocket = 1
 
+local usesAmmo = info.usesAmmo
+
 -- Pieces
 local function findPieces(input, name)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
@@ -78,8 +80,20 @@ function script.Create()
 	end
 end
 
+function script.BlockShot(weaponNum, targetUnitID, userTarget)
+	if usesAmmo then
+		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function script.AimWeapon(weaponID, heading, pitch)
 	if isDisabled or isPinned then return false end -- don't even animate if we are pinned/disabled
+
 	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
 	SetSignalMask(2 ^ weaponID)
 	if aaWeapon and aaWeapon == weaponID then
@@ -116,6 +130,10 @@ function script.FireWeapon(weaponID)
 		end
 	elseif numRockets > 0 then
 		StartThread(ShowRockets)
+	end
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 

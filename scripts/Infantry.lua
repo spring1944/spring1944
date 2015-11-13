@@ -73,6 +73,7 @@ local lastShot
 local currentSpeed
 local fear
 local weaponEnabled = {}
+local usesAmmo = info.usesAmmo
 
 --localisations
 local random = math.random
@@ -640,7 +641,7 @@ local function IsLoaded(weaponClass)
 	return true
 end
 
-local function CanFire(weaponClass)
+local function CanAim(weaponClass)
 	return aiming == weaponClass and not inTransition
 end
 
@@ -665,18 +666,29 @@ function script.AimWeapon(num, heading, pitch)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 	wantedHeading = heading
 	wantedPitch = pitch
-	if CanFire(weaponClass) then return ReAim(heading, pitch) end
+	if CanAim(weaponClass) then return ReAim(heading, pitch) end
 	StartAiming(weaponClass)
 	return false
 end
 
 function script.BlockShot(num, targetUnitID, userTarget)
 	local weaponClass = weaponsMap[num]
-	return not (CanFire(weaponClass) and IsLoaded(weaponClass) and weaponEnabled[num])
+	if usesAmmo then
+		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return not (CanAim(weaponClass) and IsLoaded(weaponClass) and weaponEnabled[num])
 end
 
 function script.FireWeapon(num)
 	firing = true
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+	end
 	UpdateSpeed()
 end
 
@@ -769,7 +781,7 @@ end
 if UnitDef.customParams.canclearmines then
 	
 	function StartClearMines(blowFunc, blowDelay)
-		if CanFire("engineer") then
+		if CanAim("engineer") then
 			StartThread(Delay, blowFunc, blowDelay, SIG_STATE, unitID)
 			StartThread(Delay, StopAiming, blowDelay, 0)
 			return true
@@ -779,11 +791,11 @@ if UnitDef.customParams.canclearmines then
 	end
 	
 	function IsClearing()
-		return CanFire("engineer")
+		return CanAim("engineer")
 	end
 	
 	function StopClearMines()
-		if CanFire("engineer") then
+		if CanAim("engineer") then
 			StopAiming()
 		end
 	end

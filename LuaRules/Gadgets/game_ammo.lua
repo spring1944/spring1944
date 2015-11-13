@@ -109,14 +109,16 @@ local function ProcessWeapons(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local weaponsWithAmmo = tonumber(UnitDefs[unitDefID].customParams.weaponswithammo) or 2
 	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
-	local weaponsFired = 0
+	local weaponFired = false
+	local weapNum = 1
 	local reloadFrame = 0
 
-	for weapNum = 1,weaponsWithAmmo do
+	while not weaponFired and weapNum <= weaponsWithAmmo do
 		reloadFrame = GetUnitWeaponState(unitID, weapNum, "reloadState")
-		weaponsFired = weaponsFired + (CheckReload(unitID, reloadFrame, weapNum) and 1 or 0)
+		weaponFired = weaponFired or CheckReload(unitID, reloadFrame, weapNum)
+		weapNum = weapNum + 1
 	end
-	if weaponsFired > 0 then
+	if weaponFired then
 		--[[local howitzer = WeaponDefs[UnitDefs[unitDefID].weapons[1].weaponDef].customParams.howitzer
 		if howitzer then
 			SetUnitExperience(unitID, 0)
@@ -128,8 +130,8 @@ local function ProcessWeapons(unitID)
 			end
 		end
 		if ammoLevel > 0 then
-			vehicles[unitID].ammoLevel = ammoLevel - weaponsFired
-			SetUnitRulesParam(unitID, "ammo",	ammoLevel - weaponsFired)
+			vehicles[unitID].ammoLevel = ammoLevel - 1
+			SetUnitRulesParam(unitID, "ammo", ammoLevel - 1)
 		end
 	end
 end
@@ -181,10 +183,12 @@ local function Resupply(unitID)
                 if roundsPerTick == 0 then
                     roundsPerTick = 1
                 end
-				local newAmmo = oldAmmo + roundsPerTick
+
 				UseUnitResource(unitID, "e", weaponCost * roundsPerTick)
+
+				local newAmmo = oldAmmo + roundsPerTick
 				vehicles[unitID].ammoLevel = newAmmo
-				SetUnitRulesParam(unitID, "ammo",	newAmmo)
+				SetUnitRulesParam(unitID, "ammo", newAmmo)
 			end
 	
 	
@@ -218,9 +222,14 @@ local function Resupply(unitID)
 					end
 					
 				end
-				for weapNum = 1, weaponsWithAmmo do
-					SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
-					vehicles[unitID].reloadFrame[weapNum] = reloadState
+				local env = Spring.UnitScript.GetScriptEnv(unitID)
+				-- if a unit is LUS-ified, don't muck with
+				-- reloads, just rely on the unit script
+				if not env then
+					for weapNum = 1, weaponsWithAmmo do
+						SetUnitWeaponState(unitID, weapNum, {reloadTime = reload, reloadState = reloadState})
+						vehicles[unitID].reloadFrame[weapNum] = reloadState
+					end
 				end
 			end
 		end
@@ -244,7 +253,6 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		else
 			SetUnitRulesParam(unitID, "ammo", 0)
 		end
-
 
 		--This is used to delay SetUnitWeaponState call depending on ammo,
 		--so other gadgets (notably the unit_morph gagdet) have a chance to
@@ -360,19 +368,21 @@ function gadget:GameFrame(n)
 						reloadFrame = {},
 					}
 					if not ud.customParams.weaponswithammo then Spring.Log("game_ammo", "error",ud.name .. " has no WEAPONSWITHAMMO") end
-					for weaponNum = 1, ud.customParams.weaponswithammo do
-						vehicles[unitID].reloadFrame[weaponNum] = 0
-						if ammo == 0 then
-							SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
+
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					-- if a unit is LUS-ified, don't muck with
+					-- reloads, just rely on the unit script
+					if not env then
+						for weaponNum = 1, ud.customParams.weaponswithammo do
+							vehicles[unitID].reloadFrame[weaponNum] = 0
+							if ammo == 0 then
+								SetUnitWeaponState(unitID, weaponNum, {reloadTime = 99999, reloadState = n + 99999})
+							end
 						end
 					end
 				end
 			end
 			newVehicles = {}
-		end
-		
-		for unitID in pairs(vehicles) do
-			ProcessWeapons(unitID)
 		end
 		
 		if n % (RELOAD_FREQUENCY*30) < 0.1 then
@@ -381,7 +391,12 @@ function gadget:GameFrame(n)
 				-- also skip incomplete units (use the first return value)
 				local stunned = GetUnitIsStunned(unitID)
 				if (not stunned) then
-					ProcessWeapons(unitID)
+					local env = Spring.UnitScript.GetScriptEnv(unitID)
+					-- if a unit is LUS-ified, don't muck with
+					-- reloads, just rely on the unit script
+					if not env then
+						ProcessWeapons(unitID)
+					end
 					local ud = UnitDefs[GetUnitDefID(unitID)]
 					if not ud.canFly then
 						Resupply(unitID)
