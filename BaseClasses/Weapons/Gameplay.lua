@@ -8,7 +8,10 @@ local BulletProofClass = Weapon:New{
 	shieldRepulser     = true,
 	smartShield        = true,
 	weaponType         = [[Shield]],
-	
+	customparams = {
+		onlytargetcategory = "NONE",
+	},
+
 	--visibleShield = true,
 	--VisibleShieldHitFrames = 10,
 }
