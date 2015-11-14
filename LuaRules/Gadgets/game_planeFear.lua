@@ -74,7 +74,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		local planeScriptID = env and env.AddFear
 		if (planeScriptID) then
 			local properAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
-			SetUnitRulesParam(unitID, "suppress", 0)
+			SetUnitRulesParam(unitID, "fear", 0)
 			planeScriptIDs[unitID] = planeScriptID
 			accuracyTable[unitID] = properAccuracy
 		end
@@ -113,16 +113,16 @@ function gadget:GameFrame(n)
 	if (n % 15 == 0) then -- every 15 frames
 		for unitID, funcID in pairs(planeScriptIDs) do
 			if not crashingPlanes[unitID] then
-				local suppression = GetUnitRulesParam(unitID, "suppress")
+				local fear = GetUnitRulesParam(unitID, "fear")
 				local fuel = GetUnitFuel(unitID)
 				local teamID = GetUnitTeam(unitID)
-				if suppression > 0 then
+				if fear > 0 then
 					local newFuel = fuel - FUEL_LOSS_RATE
 					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
-						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*suppression})
+						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*fear})
 						SetUnitFuel(unitID, newFuel)
-						if suppression > BUGOUT_LEVEL then
+						if fear > BUGOUT_LEVEL then
 							local px, py, pz = unpack(teamStartPos[teamID])
 							GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})
 							SetUnitNoSelect(unitID, true)

@@ -186,7 +186,7 @@ local function FearRecovery()
 	while curFear > 0 do
 		Sleep(1000)
 		curFear = curFear - 1
-		Spring.SetUnitRulesParam(unitID, "suppress", curFear)
+		Spring.SetUnitRulesParam(unitID, "fear", curFear)
 		if curFear >= PINNED_LEVEL then
 			fearChanged = currFearState == "pinned"
 			currFearState = "pinned"
@@ -211,6 +211,6 @@ end
 function AddFear(amount)
 	curFear = curFear + amount
 	if curFear > FEAR_LIMIT then curFear = FEAR_LIMIT end
-	Spring.SetUnitRulesParam(unitID, "suppress", curFear)
+	Spring.SetUnitRulesParam(unitID, "fear", curFear)
 	StartThread(FearRecovery)
 end

@@ -169,7 +169,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "suppress", fear)
+		Spring.SetUnitRulesParam(unitID, "fear", fear)
 		Sleep(FEAR_SLEEP)
 	end
 end
@@ -180,7 +180,7 @@ function AddFear(amount)
 	if fear > FEAR_LIMIT then
 		fear = FEAR_LIMIT
 	end
-	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+	Spring.SetUnitRulesParam(unitID, "fear", fear)
 	StartThread(RecoverFear)
 end
 

@@ -77,7 +77,7 @@ local function UpdateSuppressionCOB(unitID)
 	end
 	
 	local _, currFear = CallCOBScript(unitID, cobScriptIDs[unitID], 1, 1)
-	SetUnitRulesParam(unitID, "suppress", currFear)
+	SetUnitRulesParam(unitID, "fear", currFear)
 end
 
 local function UpdateSuppressionLUS(unitID)
@@ -104,7 +104,7 @@ function gadget:UnitCreated(unitID, unitDefID)
 	local scriptID = GetCOBScriptID(unitID, "luaFunction")
 	local env = Spring.UnitScript.GetScriptEnv(unitID)
 	if (scriptID or (env and env.AddFear)) then
-		SetUnitRulesParam(unitID, "suppress", 0)
+		SetUnitRulesParam(unitID, "fear", 0)
 		cobScriptIDs[unitID] = scriptID 
 		lusScriptIDs[unitID] = env and env.AddFear
 	end
