@@ -17,7 +17,7 @@ end
 
 local function inherit (c, p, concatNames)
 	lowerkeys(c)
-	for k,v in pairs(p) do 
+	for k,v in pairs(p) do
 		if type(k) == "string" and type(v) ~= "function" then
 			k = k:lower() -- can't use lowerkeys() on parent, as breaks e.g. New() -> new
 		end
@@ -25,7 +25,7 @@ local function inherit (c, p, concatNames)
 			if c[k] == nil then c[k] = {} end
 			inherit(c[k], v)
 		else
-			if concatNames and k == "name" then 
+			if concatNames and k == "name" then
 				c[k] = v .. " " .. (c[k] or "")
 			else
 				if c[k] == nil then c[k] = v end
@@ -42,6 +42,20 @@ local function append (c, p)
 			c[k] = v .. " " .. (c[k] or "")
 		else
 			Spring.Log("OO Defs", "error", "Attempt to concatenate non-string value")
+		end
+	end
+end
+
+-- translate undef to nil so class consumers can explicitly drop parent
+-- values
+local function filterUndef (table)
+	for k,v in pairs(table) do
+		if type(v) == "table" then
+			filterUndef(table[k])
+		else
+			if v and v == 'explicitly-undefined-in-child' then
+				table[k] = nil
+			end
 		end
 	end
 end
@@ -69,6 +83,8 @@ function Def:New(newAttribs, concatName)
     end
 	inherit(newClass, newAttribs)
 	inherit(newClass, self, concatName)
+	filterUndef(newClass)
+
 	return newClass
 end
 
@@ -76,6 +92,8 @@ function Def:Clone(name) -- name is passed to <NAME> in _post, it is the unitnam
 	local newClass = {}
 	inherit(newClass, self)
 	newClass.unitname = name:lower()
+	filterUndef(newClass)
+
 	return newClass
 end
 
@@ -89,6 +107,8 @@ function Def:Append(newAttribs)
     end
 	inherit(newClass, self)
 	append(newClass, newAttribs)
+	filterUndef(newClass)
+
 	return newClass
 end
 
@@ -99,7 +119,7 @@ Unit = Def:New{
 	buildPic				= "<NAME>.png",
 	script					= "<NAME>.cob",
 }
-	
+
 Weapon = Def:New{
 	customParams = {
 		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
