@@ -2,17 +2,21 @@ VFS.Include('gamedata/VFSUtils.lua') -- for RecursiveFileSearch()
 lowerkeys = VFS.Include('gamedata/system.lua').lowerkeys -- for lowerkeys()
 
 -- Our shared funcs
-local function printTable (input)
-    if input == nil then
-        Spring.Log('OO Defs', 'warning', 'nil table passed to printTable')
-    else
-        for k,v in pairs(input) do
-            Spring.Echo(k, v)
-            if type(v) == "table" then
-                printTable(v)
-            end
-        end
-    end
+local function printTable (input, indentLevel)
+	indentLevel = indentLevel or 0
+	if input == nil then
+		Spring.Log('OO Defs', 'warning', 'nil table passed to printTable')
+	else
+		for k,v in pairs(input) do
+			local indent = string.rep("\t", indentLevel)
+			if type(v) == "table" then
+				Spring.Echo(indent .. k .. ": ")
+				printTable(v, indentLevel + 1)
+			else
+				Spring.Echo(indent .. k, v)
+			end
+		end
+	end
 end
 
 local function inherit (c, p, concatNames)
