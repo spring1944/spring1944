@@ -380,6 +380,9 @@ function script.EndBurst(weaponNum)
 	end
 end
 
+function script.TargetWeight(weaponNum, targetUnitID)
+	return GG.lusHelper.standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
+end
 
 function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
