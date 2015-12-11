@@ -291,7 +291,7 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 			local ux, uy, uz = GetUnitPosition(targetUnitID)
 			local wx, wy, wz = GetUnitPosition(unitID)
 			local distance = vMagnitude(ux - wx, uy - wy, uz - wz)
-			local _, health = Spring.GetUnitHealth(targetUnitID)
+			local targetHealth, maxTargetHealth = Spring.GetUnitHealth(targetUnitID)
 			local front, side, rear, top, armorTypeName, armorType = unpack(targetInfo)
 			local penetration, dropoff, range, damages, armorHitSide = unpack(weaponInfo)
 			local isHE = (penetration == 0)
@@ -341,7 +341,11 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 			if isHE and armorTypeName == "armouredvehicles" then
 				mult = mult + 1
 			end
-			resultWeight = mult
+			
+			-- how likely are we to kill the target with 1 shot? Give some 10% space for overkill
+			-- this way the unit will prefer things it can 1-shot, and then the things it can damage heavily
+			return min(damage * mult, targetHealth * 1.1) / targetHealth
+			--resultWeight = mult
 		else
 			-- target is not armored?
 		end
