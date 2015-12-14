@@ -342,10 +342,14 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 				mult = mult + 1
 			end
 			
-			-- how likely are we to kill the target with 1 shot? Give some 10% space for overkill
-			-- this way the unit will prefer things it can 1-shot, and then the things it can damage heavily
-			return min(damage * mult, targetHealth * 1.1) / targetHealth
-			--resultWeight = mult
+			-- if we can't 1-shot a target then go for max damage%
+			-- if we can 1-shot then go for the one with max HP remaining. Adding 1 to result so these are always higher weight than the ones above
+			local effectiveDamage = damage * mult
+			if targetHealth > effectiveDamage then
+				resultWeight = effectiveDamage / targetHealth
+			else
+				resultWeight = 1 + targetHealth / effectiveDamage
+			end
 		else
 			-- target is not armored?
 		end
