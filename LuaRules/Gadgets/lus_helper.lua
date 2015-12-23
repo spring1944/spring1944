@@ -354,6 +354,13 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 			-- target is not armored?
 		end
 	end
+	-- Looks like TargerWeight is less = better on the engine side.
+	if resultWeight <> 0 then
+		resultWeight = 1 / resultWeight
+	else
+		-- very low priority
+		resultWeight = 1000
+	end
 	return resultWeight
 end
 
