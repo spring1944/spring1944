@@ -6,6 +6,7 @@ local GER_MAL = ArmedBoat:New{
 	buildCostMetal			= 8000,
 	collisionVolumeOffsets	= [[0.0 -24.0 80.0]],
 	collisionVolumeScales	= [[60.0 20.0 230.0]],
+	iconType			= "artyboat",
 	maxDamage				= 27200,
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.6,
