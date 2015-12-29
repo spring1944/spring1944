@@ -355,7 +355,7 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 		end
 	end
 	-- Looks like TargerWeight is less = better on the engine side.
-	if resultWeight <> 0 then
+	if resultWeight ~= 0 then
 		resultWeight = 1 / resultWeight
 	else
 		-- very low priority
