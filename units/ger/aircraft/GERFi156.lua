@@ -13,7 +13,7 @@ local GER_Fi156 = Recon:New{
 		[1] = {
 			name				= "mg42aa",
 			maxAngleDif			= 90,
-			weaponMainDir		= [[0 .75 -1]],
+			mainDir				= [[0 .75 -1]],
 		},
 	},
 }
