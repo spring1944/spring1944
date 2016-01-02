@@ -10,14 +10,14 @@ local QF75mm = MediumGun:New{
   soundStart         = [[US_75mm]],
 }
 
-local QF75mmHE = QF75mm:New(MediumHE, true):New{
+local QF75mmHE = MediumHE:New(QF75mm, true):New{
   areaOfEffect       = 88,
   weaponVelocity     = 926,
   damage = {
     default            = 1334,
   },  
 }
-local QF75mmAP = QF75mm:New(MediumAP, true):New{
+local QF75mmAP = MediumAP:New(QF75mm, true):New{
   weaponVelocity     = 1236,
   customparams = {
     armor_penetration_1000m = 52,
@@ -39,14 +39,14 @@ local QF17Pdr = MediumGun:New{
   },
 }
 
-local QF17PdrHE = QF17Pdr:New(MediumHE, true):New{
+local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
   areaOfEffect       = 90,
   weaponVelocity     = 1768,
   damage = {
     default            = 1420,
   },  
 }
-local QF17PdrAP = QF17Pdr:New(MediumAP, true):New{
+local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
   weaponVelocity     = 1584,
   customparams = {
     armor_penetration_1000m = 119,
@@ -68,14 +68,14 @@ local KwK75mmL48 = MediumGun:New{
   },  
 }
 
-local KwK75mmL48HE = KwK75mmL48:New(MediumHE, true):New{
+local KwK75mmL48HE = MediumHE:New(KwK75mmL48, true):New{
   areaOfEffect       = 87,
   weaponVelocity     = 1096,
   damage = {
     default            = 1280,
   },  
 }
-local KwK75mmL48AP = KwK75mmL48:New(MediumAP, true):New{
+local KwK75mmL48AP = MediumAP:New(KwK75mmL48, true):New{
   weaponVelocity     = 1480,
   customparams = {
     armor_penetration_1000m = 81,
@@ -97,14 +97,14 @@ local KwK75mmL71 = MediumGun:New{
   },
 }
 
-local KwK75mmL71HE = KwK75mmL71:New(MediumHE, true):New{
+local KwK75mmL71HE = MediumHE:New(KwK75mmL71, true):New{
   areaOfEffect       = 85,
   weaponVelocity     = 1096,
   damage = {
     default            = 1220,
   },  
 }
-local KwK75mmL71AP = KwK75mmL71:New(MediumAP, true):New{
+local KwK75mmL71AP = MediumAP:New(KwK75mmL71, true):New{
   weaponVelocity     = 1870,
   customparams = {
     armor_penetration_1000m = 111,
@@ -123,14 +123,14 @@ local F3476mm = MediumGun:New{
   soundStart         = [[RUS_76mm]],
 }
 
-local F3476mmHE = F3476mm:New(MediumHE, true):New{
+local F3476mmHE = MediumHE:New(F3476mm, true):New{
   areaOfEffect       = 103, -- !
   weaponVelocity     = 926,
   damage = {
     default            = 2160,
   },  
 }
-local F3476mmAP = F3476mm:New(MediumAP, true):New{
+local F3476mmAP = MediumAP:New(F3476mm, true):New{
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 46,
@@ -149,14 +149,14 @@ local ZiS376mm = MediumGun:New{
   soundStart         = [[RUS_76mm]],
 }
 
-local ZiS376mmHE = ZiS376mm:New(MediumHE, true):New{
+local ZiS376mmHE = MediumHE:New(ZiS376mm, true):New{
   areaOfEffect       = 103, -- !
   weaponVelocity     = 926,
   damage = {
     default            = 2160,
   },  
 }
-local ZiS376mmAP = ZiS376mm:New(MediumAP, true):New{
+local ZiS376mmAP = MediumAP:New(ZiS376mm, true):New{
   weaponVelocity     = 1420,
   customparams = {
     armor_penetration_1000m = 47,
@@ -175,14 +175,14 @@ local M375mm = MediumGun:New{
   soundStart         = [[US_75mm]],
 }
 
-local M375mmHE = M375mm:New(MediumHE, true):New{
+local M375mmHE = MediumHE:New(M375mm, true):New{
   areaOfEffect       = 88,
   weaponVelocity     = 926,
   damage = {
     default            = 1334,
   },  
 }
-local M375mmAP = M375mm:New(MediumAP, true):New{
+local M375mmAP = MediumAP:New(M375mm, true):New{
   weaponVelocity     = 1176,
   customparams = {
     armor_penetration_1000m = 57,
@@ -204,14 +204,14 @@ local M7 = MediumGun:New{
   },
 }
 
-local M7HE = M7:New(MediumHE, true):New{
+local M7HE = MediumHE:New(M7, true):New{
   areaOfEffect       = 74,
   weaponVelocity     = 1646,
   damage = {
     default            = 780,
   },  
 }
-local M7AP = M7:New(MediumAP, true):New{
+local M7AP = MediumAP:New(M7, true):New{
   weaponVelocity     = 1584, -- lower than HE?
   customparams = {
     armor_penetration_1000m = 81,
@@ -244,7 +244,7 @@ local Ansaldo75mmL18 = MediumGun:New{
   soundStart         = [[US_75mm]],
 }
 
-local Ansaldo75mmL18HE = Ansaldo75mmL18:New(MediumHE, true):New{
+local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
   areaOfEffect       = 94,
   weaponVelocity     = 800,
   damage = {
@@ -252,7 +252,7 @@ local Ansaldo75mmL18HE = Ansaldo75mmL18:New(MediumHE, true):New{
   },  
 }
 
-local Ansaldo75mmL18HEAT = Ansaldo75mmL18:New(HEAT, true):New{
+local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
   range              = 851,
   weaponVelocity     = 600,
   customparams = {
@@ -284,14 +284,14 @@ local Ansaldo75mmL34 = MediumGun:New{
   soundStart         = [[US_75mm]],
 }
 
-local Ansaldo75mmL34HE = Ansaldo75mmL34:New(MediumHE, true):New{
+local Ansaldo75mmL34HE = MediumHE:New(Ansaldo75mmL34, true):New{
   areaOfEffect       = 104,
   weaponVelocity     = 926,
   damage = {
     default            = 2260,
   },  
 }
-local Ansaldo75mmL34AP = Ansaldo75mmL34:New(MediumAP, true):New{
+local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 51,
@@ -301,7 +301,7 @@ local Ansaldo75mmL34AP = Ansaldo75mmL34:New(MediumAP, true):New{
     default            = 2280,
   },
 }
-local Ansaldo75mmL34HEAT = Ansaldo75mmL34:New(HEAT, true):New{
+local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
   range              = 825,
   weaponVelocity     = 700,
   customparams = {
@@ -323,7 +323,7 @@ local Ansaldo75mmL46 = MediumGun:New{
   },  
 }
 
-local Ansaldo75mmL46HE = Ansaldo75mmL46:New(MediumHE, true):New{
+local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
   areaOfEffect       = 104,
   weaponVelocity     = 926,
   damage = {
@@ -331,7 +331,7 @@ local Ansaldo75mmL46HE = Ansaldo75mmL46:New(MediumHE, true):New{
   },  
 }
 
-local Ansaldo75mmL46AP = Ansaldo75mmL46:New(MediumAP, true):New{
+local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 86,
@@ -366,14 +366,14 @@ local Type375mmL38 = MediumGun:New{
   },  
 }
 
-local Type375mmL38HE = Type375mmL38:New(MediumHE, true):New{
+local Type375mmL38HE = MediumHE:New(Type375mmL38, true):New{
   areaOfEffect       = 84,
   weaponVelocity     = 926,
   damage = {
     default            = 2260,
   },  
 }
-local Type375mmL38AP = Type375mmL38:New(MediumAP, true):New{
+local Type375mmL38AP = MediumAP:New(Type375mmL38, true):New{
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 70,
@@ -395,7 +395,7 @@ local Type9075mm = MediumGun:New{
   },  
 }
 
-local Type9075mmHE = Type9075mm:New(MediumHE, true):New{
+local Type9075mmHE = MediumHE:New(Type9075mm, true):New{
   areaOfEffect       = 84,
   weaponVelocity     = 926,
   damage = {
@@ -403,7 +403,7 @@ local Type9075mmHE = Type9075mm:New(MediumHE, true):New{
   },  
 }
 
-local Type9075mmAP = Type9075mm:New(MediumAP, true):New{
+local Type9075mmAP = MediumAP:New(Type9075mm, true):New{
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 70,

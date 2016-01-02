@@ -20,11 +20,11 @@ local FlaK3820mm = AutoCannon:New{
   },
 }
 
-local FlaK3820mmAA = FlaK3820mm:New(AutoCannonAA, true):New{
+local FlaK3820mmAA = AutoCannonAA:New(FlaK3820mm, true):New{
   range              = 1910,
 }
-local FlaK3820mmHE = FlaK3820mm:New(AutoCannonHE, true)
-local FlaK3820mmAP = FlaK3820mm:New(AutoCannonAP, true):New{
+local FlaK3820mmHE = AutoCannonHE:New(FlaK3820mm, true)
+local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
   weaponVelocity     = 1560,
   customparams = {
     armor_penetration_1000m = 9,
@@ -65,10 +65,10 @@ local Oerlikon20mm = AutoCannon:New{
   },
 }
 
-local Oerlikon20mmAA = Oerlikon20mm:New(AutoCannonAA, true):New{
+local Oerlikon20mmAA = AutoCannonAA:New(Oerlikon20mm, true):New{
   range              = 1950,
 }
-local Oerlikon20mmHE = Oerlikon20mm:New(AutoCannonHE, true)
+local Oerlikon20mmHE = AutoCannonHE:New(Oerlikon20mm, true)
 local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
   name               = [[(Twin)]],
   reloadTime         = 0.6,
@@ -90,8 +90,8 @@ local TNSh20mm = AutoCannon:New{
   },
 }
 
-local TNSh20mmHE = TNSh20mm:New(AutoCannonHE, true)
-local TNSh20mmAP = TNSh20mm:New(AutoCannonAP, true):New{
+local TNSh20mmHE = AutoCannonHE:New(TNSh20mm, true)
+local TNSh20mmAP = AutoCannonAP:New(TNSh20mm, true):New{
   weaponVelocity     = 1500,
   customparams = {
     armor_penetration_1000m = 16,
@@ -121,7 +121,7 @@ local BredaM3520mm = AutoCannon:New{
   },
 }
 
-local BredaM3520mmAA = BredaM3520mm:New(AutoCannonAA, true):New{
+local BredaM3520mmAA = AutoCannonAA:New(BredaM3520mm, true):New{
   range              = 1950,
   sprayAngle         = 475,
 }
@@ -131,13 +131,13 @@ local TwinBredaM3520mmAA = BredaM3520mmAA:New{
   burstRate          = 0.13,
 }
 
-local BredaM3520mmHE = BredaM3520mm:New(AutoCannonHE, true):New{
+local BredaM3520mmHE = AutoCannonHE:New(BredaM3520mm, true):New{
   customparams = {
     fearaoe            = 30,
   },
 }
 
-local BredaM3520mmAP = BredaM3520mm:New(AutoCannonAP, true):New{
+local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
   sprayAngle         = 400,
   weaponVelocity     = 1560,
   customparams = {
@@ -166,11 +166,11 @@ local Type9820mm = AutoCannon:New{
   },
 }
 
-local Type9820mmAA = Type9820mm:New(AutoCannonAA, true):New{
+local Type9820mmAA = AutoCannonAA:New(Type9820mm, true):New{
   range              = 1950,
 }
 
-local Type9820mmHE = Type9820mm:New(AutoCannonHE, true)
+local Type9820mmHE = AutoCannonHE:New(Type9820mm, true)
 
 -- Type 96 25mm (JPN)
 local Type9625mm = AutoCannon:New{
@@ -192,7 +192,7 @@ local Type9625mm = AutoCannon:New{
   },
 }
 
-local Type9625mmAA = Type9625mm:New(AutoCannonAA, true):New{
+local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
   range              = 1950,
   damage = {
     default            = 55,
@@ -205,7 +205,7 @@ local TwinType9625mmAA = Type9625mmAA:New{
     reloadtime       = 6.5,
 }
 
-local Type9625mmHE = Type9625mm:New(AutoCannonHE, true)
+local Type9625mmHE = AutoCannonHE:New(Type9625mm, true)
 
 local TwinType9625mmHE = Type9625mmHE:New{
 	burst            = 36,

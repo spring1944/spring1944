@@ -10,14 +10,14 @@ local KwK88mmL56 = MediumHeavyGun:New{
   soundStart         = [[GER_88mm]],
 }
 
-local KwK88mmL56HE = KwK88mmL56:New(MediumHE, true):New{
+local KwK88mmL56HE = MediumHE:New(KwK88mmL56, true):New{
   areaOfEffect       = 100,
   weaponVelocity     = 1250,
   damage = {
     default            = 1940,
   },  
 }
-local KwK88mmL56AP = KwK88mmL56:New(HeavyAP, true):New{
+local KwK88mmL56AP = HeavyAP:New(KwK88mmL56, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 100,
@@ -39,14 +39,14 @@ local KwK88mmL71 = MediumHeavyGun:New{
   },
 }
 
-local KwK88mmL71HE = KwK88mmL71:New(MediumHE, true):New{
+local KwK88mmL71HE = MediumHE:New(KwK88mmL71, true):New{
   areaOfEffect       = 96,
   weaponVelocity     = 1250,
   damage = {
     default            = 1740, -- ?
   },  
 }
-local KwK88mmL71AP = KwK88mmL71:New(HeavyAP, true):New{
+local KwK88mmL71AP = HeavyAP:New(KwK88mmL71, true):New{
   weaponVelocity     = 2000,
   customparams = {
     armor_penetration_1000m = 165,
@@ -82,14 +82,14 @@ local S5385mm = MediumHeavyGun:New{
   },
 }
 
-local S5385mmHE = S5385mm:New(MediumHE, true):New{
+local S5385mmHE = MediumHE:New(S5385mm, true):New{
   areaOfEffect       = 87,
   weaponVelocity     = 1400,
   damage = {
     default            = 1280,
   },  
 }
-local S5385mmAP = S5385mm:New(HeavyAP, true):New{
+local S5385mmAP = HeavyAP:New(S5385mm, true):New{
   weaponVelocity     = 1584,
   customparams = {
     armor_penetration_1000m = 86,
@@ -113,7 +113,7 @@ local D10S100mm = MediumHeavyGun:New{
   }
 }
 
-local D10S100mmAP = D10S100mm:New(HeavyAP, true):New{
+local D10S100mmAP = HeavyAP:New(D10S100mm, true):New{
   weaponVelocity     = 1760,
   customparams = {
     armor_penetration_1000m = 146,
@@ -133,14 +133,14 @@ local M390mm = MediumHeavyGun:New{
   soundStart         = [[GER_88mm]],
 }
 
-local M390mmHE = M390mm:New(MediumHE, true):New{
+local M390mmHE = MediumHE:New(M390mm, true):New{
   areaOfEffect       = 100,
   weaponVelocity     = 1250,
   damage = {
     default            = 1940,
   },  
 }
-local M390mmAP = M390mm:New(HeavyAP, true):New{
+local M390mmAP = HeavyAP:New(M390mm, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 107,
@@ -159,14 +159,14 @@ local Ansaldo90mmL53 = MediumHeavyGun:New{
   soundStart         = [[GER_88mm]],
 }
 
-local Ansaldo90mmL53HE = Ansaldo90mmL53:New(MediumHE, true):New{
+local Ansaldo90mmL53HE = MediumHE:New(Ansaldo90mmL53, true):New{
   areaOfEffect       = 104,
   weaponVelocity     = 1044,
   damage = {
     default            = 3060,
   },  
 }
-local Ansaldo90mmL53AP = Ansaldo90mmL53:New(HeavyAP, true):New{
+local Ansaldo90mmL53AP = HeavyAP:New(Ansaldo90mmL53, true):New{
   weaponVelocity     = 1490,
   customparams = {
     armor_penetration_1000m = 90,
@@ -201,7 +201,7 @@ local Ansaldo105mmL25 = MediumHeavyGun:New{
   }
 }
 
-local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHE, true):New{
+local Ansaldo105mmL25HE = MediumHE:New(Ansaldo105mmL25, true):New{
   areaOfEffect       = 129,
   weaponVelocity     = 900,
    soundHitDry        = [[GEN_Explo_4]],
@@ -210,7 +210,7 @@ local Ansaldo105mmL25HE = Ansaldo105mmL25:New(MediumHE, true):New{
   },  
 }
 
-local Ansaldo105mmL25HEAT = Ansaldo105mmL25:New(HeavyHEAT, true):New{
+local Ansaldo105mmL25HEAT = HeavyHEAT:New(Ansaldo105mmL25, true):New{
   range              = 1153,
   weaponVelocity     = 600,
   customparams = {

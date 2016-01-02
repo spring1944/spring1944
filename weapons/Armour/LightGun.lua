@@ -9,14 +9,14 @@ local QF2Pdr40mm = LightGun:New{
   reloadTime         = 4.5,
 }
 
-local QF2Pdr40mmHE = QF2Pdr40mm:New(LightHE, true):New{
+local QF2Pdr40mmHE = LightHE:New(QF2Pdr40mm, true):New{
   areaOfEffect       = 42,
   weaponVelocity     = 1584,
   damage = {
     default            = 350,
   },  
 }
-local QF2Pdr40mmAP = QF2Pdr40mm:New(LightAP, true):New{
+local QF2Pdr40mmAP = LightAP:New(QF2Pdr40mm, true):New{
   weaponVelocity     = 1616,
   customparams = {
     armor_penetration_1000m = 45,
@@ -65,14 +65,14 @@ local M637mmCanister = M637mm:New({
   },  
 }, true)
 
-local M637mmHE = M637mm:New(LightHE, true):New{
+local M637mmHE = LightHE:New(M637mm, true):New{
   areaOfEffect       = 44,
   weaponVelocity     = 1584,
   damage = {
     default            = 228,
   },  
 }
-local M637mmAP = M637mm:New(LightAP, true):New{
+local M637mmAP = LightAP:New(M637mm, true):New{
   weaponVelocity     = 1768,
   customparams = {
     armor_penetration_1000m = 46,
@@ -91,14 +91,14 @@ local M1938_20K45mm = LightGun:New{
   soundStart         = [[RUS_45mm]],
 }
 
-local M1938_20K45mmHE = M1938_20K45mm:New(LightHE, true):New{
+local M1938_20K45mmHE = LightHE:New(M1938_20K45mm, true):New{
   areaOfEffect       = 52, -- Naval is 47?
   weaponVelocity     = 1584,
   damage = {
     default            = 270,
   },  
 }
-local M1938_20K45mmAP = M1938_20K45mm:New(LightAP, true):New{
+local M1938_20K45mmAP = LightAP:New(M1938_20K45mm, true):New{
   weaponVelocity     = 1518, -- Naval (unused) is 1768?
   customparams = {
     armor_penetration_1000m = 20,
@@ -122,7 +122,7 @@ local CannoneDa47mml32 = LightGun:New{
   soundStart           = [[ITA_M35_47mm]],
 }
 
-local CannoneDa47mml32AP = CannoneDa47mml32:New(LightAP, true):New{
+local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
   weaponVelocity       = 1000,
   customparams = {
     armor_penetration_1000m = 32,
@@ -133,7 +133,7 @@ local CannoneDa47mml32AP = CannoneDa47mml32:New(LightAP, true):New{
   },
 }
 
-local CannoneDa47mml32HEAT = CannoneDa47mml32:New(HEAT, true):New{
+local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
   range                = 637,
   weaponVelocity       = 800,
   customparams = {
@@ -155,7 +155,7 @@ local CannoneDa47mml40 = LightGun:New{
   soundStart           = [[ITA_M39_47mm]],
 }
 
-local CannoneDa47mml40HE = CannoneDa47mml40:New(LightHE, true):New{
+local CannoneDa47mml40HE = LightHE:New(CannoneDa47mml40, true):New{
   areaOfEffect       = 52,
   weaponVelocity     = 1084,
   damage = {
@@ -163,7 +163,7 @@ local CannoneDa47mml40HE = CannoneDa47mml40:New(LightHE, true):New{
   },  
 }
 
-local CannoneDa47mml40AP = CannoneDa47mml40:New(LightAP, true):New{
+local CannoneDa47mml40AP = LightAP:New(CannoneDa47mml40, true):New{
   weaponVelocity     = 1818,
   customparams = {
     armor_penetration_1000m = 43,
@@ -173,7 +173,7 @@ local CannoneDa47mml40AP = CannoneDa47mml40:New(LightAP, true):New{
     default            = 1225,
   },
 }
-local CannoneDa47mml40HEAT = CannoneDa47mml40:New(HEAT, true):New{
+local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
   range                = 708,
   weaponVelocity       = 900,
   customparams = {
@@ -193,7 +193,7 @@ local Type137mm = LightGun:New{
   soundStart           = [[US_37mm]],
 }
 
-local Type137mmHE = Type137mm:New(LightHE, true):New{
+local Type137mmHE = LightHE:New(Type137mm, true):New{
   areaOfEffect       = 26,
   weaponVelocity     = 800,
   damage = {
@@ -201,7 +201,7 @@ local Type137mmHE = Type137mm:New(LightHE, true):New{
   },
 }
 
-local Type137mmAP = Type137mm:New(LightAP, true):New{
+local Type137mmAP = LightAP:New(Type137mm, true):New{
   weaponVelocity     = 1118,
   customparams = {
     armor_penetration_1000m = 25,
@@ -221,7 +221,7 @@ local Type9837mm = LightGun:New{
   soundStart           = [[RUS_45mm]],
 }
 
-local Type9837mmHE = Type9837mm:New(LightHE, true):New{
+local Type9837mmHE = LightHE:New(Type9837mm, true):New{
   areaOfEffect       = 28,
   weaponVelocity     = 800,
   damage = {
@@ -229,7 +229,7 @@ local Type9837mmHE = Type9837mm:New(LightHE, true):New{
   },
 }
 
-local Type9837mmAP = Type9837mm:New(LightAP, true):New{
+local Type9837mmAP = LightAP:New(Type9837mm, true):New{
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 20,
@@ -248,7 +248,7 @@ local Type9437mm = LightGun:New{
   soundStart           = [[RUS_45mm]],
 }
 
-local Type9437mmHE = Type9437mm:New(LightHE, true):New{
+local Type9437mmHE = LightHE:New(Type9437mm, true):New{
   areaOfEffect       = 32,
   weaponVelocity     = 800,
   damage = {
@@ -256,7 +256,7 @@ local Type9437mmHE = Type9437mm:New(LightHE, true):New{
   },
 }
 
-local Type9437mmAP = Type9437mm:New(LightAP, true):New{
+local Type9437mmAP = LightAP:New(Type9437mm, true):New{
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 25,
@@ -275,7 +275,7 @@ local Type147mm = LightGun:New{
   soundStart           = [[RUS_45mm]],
 }
 
-local Type147mmHE = Type147mm:New(LightHE, true):New{
+local Type147mmHE = LightHE:New(Type147mm, true):New{
   areaOfEffect       = 38,
   weaponVelocity     = 800,
   damage = {
@@ -283,7 +283,7 @@ local Type147mmHE = Type147mm:New(LightHE, true):New{
   },
 }
 
-local Type147mmAP = Type147mm:New(LightAP, true):New{
+local Type147mmAP = LightAP:New(Type147mm, true):New{
   weaponVelocity     = 1118,
   customparams = {
     armor_penetration_1000m = 53,

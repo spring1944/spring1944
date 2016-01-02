@@ -14,10 +14,10 @@ local Bofors40mm = AntiAirGun:New{
     weaponcost = 2,
   },
 }
-local Bofors40mmAA = Bofors40mm:New(AntiAirGunAA, true):New{
+local Bofors40mmAA = AntiAirGunAA:New(Bofors40mm, true):New{
   range              = 2025,
 }
-local Bofors40mmHE = Bofors40mm:New(AutoCannonHE, true):New{
+local Bofors40mmHE = AutoCannonHE:New(Bofors40mm, true):New{
   range              = 725,
 }
 
@@ -44,10 +44,10 @@ local FlaK4337mm = AntiAirGun:New{
     weaponcost = 2,
   },
 }
-local FlaK4337mmAA = FlaK4337mm:New(AntiAirGunAA, true):New{
+local FlaK4337mmAA = AntiAirGunAA:New(FlaK4337mm, true):New{
   range              = 2025,
 }
-local FlaK4337mmHE = FlaK4337mm:New(AutoCannonHE, true):New{
+local FlaK4337mmHE = AutoCannonHE:New(FlaK4337mm, true):New{
   range              = 725,
 }
 
@@ -65,10 +65,10 @@ local M1939_61K37mm = AntiAirGun:New{
     weaponcost = 1,
   },
 }
-local M1939_61K37mmAA = M1939_61K37mm:New(AntiAirGunAA, true):New{
+local M1939_61K37mmAA = AntiAirGunAA:New(M1939_61K37mm, true):New{
   range              = 2025,
 }
-local M1939_61K37mmHE = M1939_61K37mm:New(AutoCannonHE, true):New{
+local M1939_61K37mmHE = AutoCannonHE:New(M1939_61K37mm, true):New{
   range              = 725,
 }
 
