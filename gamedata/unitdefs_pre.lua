@@ -3,11 +3,20 @@ lowerkeys = VFS.Include('gamedata/system.lua').lowerkeys -- for lowerkeys()
 
 -- Our shared funcs
 local function printTable (input, indentLevel)
-	indentLevel = indentLevel or 0
+	local indentLevel = indentLevel or 0
 	if input == nil then
 		Spring.Log('OO Defs', 'warning', 'nil table passed to printTable')
 	else
-		for k,v in pairs(input) do
+		-- shove into an array for sorting so prints are consistent
+		local ordered = {}
+		for k,v in pairs (input) do table.insert(ordered, { k, v }) end
+
+		table.sort(ordered, function (a, b)
+			return a[1] < b[1]
+		end)
+
+		for i, tuple in ipairs(ordered) do
+			local k, v = tuple[1], tuple[2]
 			local indent = string.rep("\t", indentLevel)
 			if type(v) == "table" then
 				Spring.Echo(indent .. k .. ": ")
