@@ -7,6 +7,9 @@ local function printTable (input, indentLevel)
 	if input == nil then
 		Spring.Log('OO Defs', 'warning', 'nil table passed to printTable')
 	else
+		if indentLevel == 0 then
+			Spring.Echo(string.rep("=", 60))
+		end
 		-- shove into an array for sorting so prints are consistent
 		local ordered = {}
 		for k,v in pairs (input) do table.insert(ordered, { k, v }) end
@@ -17,13 +20,18 @@ local function printTable (input, indentLevel)
 
 		for i, tuple in ipairs(ordered) do
 			local k, v = tuple[1], tuple[2]
-			local indent = string.rep("\t", indentLevel)
-			if type(v) == "table" then
+			local indent = string.rep("  ", indentLevel)
+			local what = type(v)
+			if what == "table" then
 				Spring.Echo(indent .. k .. ": ")
 				printTable(v, indentLevel + 1)
 			else
-				Spring.Echo(indent .. k, v)
+				Spring.Echo(indent .. k .. ' = ' .. tostring(v))
 			end
+		end
+
+		if indentLevel == 0 then
+			Spring.Echo(string.rep("=", 60))
 		end
 	end
 end
