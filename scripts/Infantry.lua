@@ -726,7 +726,7 @@ function RestoreAfterCover()
 	--Spring.Echo("restoring")
 	Signal(SIG_FEAR)
 	fear = 0
-	Spring.SetUnitRulesParam(unitID, "suppress", 0)
+	Spring.SetUnitRulesParam(unitID, "fear", 0)
 	StopPinned()
 	Stand()
 end
@@ -737,7 +737,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "suppress", fear)
+		Spring.SetUnitRulesParam(unitID, "fear", fear)
 		if pinned and fear < FEAR_PINNED then
 			StopPinned()
 		end
@@ -757,7 +757,7 @@ function AddFear(amount)
 		StartThread(StartPinned)
 	end
 	Drop()
-	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+	Spring.SetUnitRulesParam(unitID, "fear", fear)
 end
 
 function ToggleWeapon(num, isEnabled)

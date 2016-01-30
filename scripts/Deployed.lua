@@ -380,6 +380,9 @@ function script.EndBurst(weaponNum)
 	end
 end
 
+function script.TargetWeight(weaponNum, targetUnitID)
+	return GG.lusHelper.standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
+end
 
 function script.Killed(recentDamage, maxHealth)
 	local corpse = 1
@@ -405,7 +408,7 @@ end
 function RestoreAfterCover()
 	Signal(SIG_FEAR)
 	fear = 0
-	Spring.SetUnitRulesParam(unitID, "suppress", 0)
+	Spring.SetUnitRulesParam(unitID, "fear", 0)
 	StopPinned()
 end
 
@@ -415,7 +418,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "suppress", fear)
+		Spring.SetUnitRulesParam(unitID, "fear", fear)
 		if pinned and fear < FEAR_PINNED then
 			StopPinned()
 		end
@@ -434,7 +437,7 @@ function AddFear(amount)
 	if fear > FEAR_PINNED and not pinned then
 		StartThread(StartPinned)
 	end
-	Spring.SetUnitRulesParam(unitID, "suppress", fear)
+	Spring.SetUnitRulesParam(unitID, "fear", fear)
 end
 
 function ToggleWeapon(num, isEnabled)

@@ -14,6 +14,7 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 		},
 	},
 	customParams = {
+		weapontoggle		= 'explicitly-undefined-in-child',
 		armor_front			= 63,
 		armor_rear			= 43,
 		armor_side			= 44,

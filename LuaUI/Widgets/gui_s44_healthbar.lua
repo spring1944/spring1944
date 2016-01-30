@@ -366,14 +366,16 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		local aurametal = GetUnitRulesParam(uid, "aurametal") or 0
 		local aurarange = GetUnitRulesParam(uid, "aurarange") or 0
 		local aurareload = GetUnitRulesParam(uid, "aurareload") or 0]]
-		local aurasuppress = GetUnitRulesParam(uid, "suppress") or 0
+		-- TODO: unit rules param for 'suppressState' or something
+		local aurafear = GetUnitRulesParam(uid, "fear") or 0
 		local auraoutofammo = (GetUnitRulesParam(uid, "ammo") or 100) <= 0
 		local aurainsupply = GetUnitRulesParam(uid, "insupply") or 0
-		if ((aurasuppress + aurainsupply) > 0 or auraoutofammo) then
+		if ((aurafear + aurainsupply) > 0 or auraoutofammo) then
 			unitAuras[uid] =
 			{
+				-- TODO: make this read from suppressState
 				["suppress"] = {
-					value = (aurasuppress > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurasuppress > 0) and 1 or 0,
+					value = (aurafear > (0.8 * (tonumber(ud.customParams.fearlimit) or 25)) and 2) or (aurafear > 0) and 1 or 0,
 				},
 				["ammo"] = {
 					value = auraoutofammo and 4 or nil,

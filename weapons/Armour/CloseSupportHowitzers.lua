@@ -14,13 +14,13 @@ local CS95mm = CSHowitzer:New{
   },
 }
 
-local CS95mmHE = CS95mm:New(HowitzerHE, true):New{
+local CS95mmHE = HowitzerHE:New(CS95mm, true):New{
   areaOfEffect       = 109,
   damage = {
     default            = 2500,
   },  
 }
-local CS95mmSmoke = CS95mm:New(HowitzerSmoke, true)
+local CS95mmSmoke = HowitzerSmoke:New(CS95mm, true)
 
 -- M4 105mm (USA)
 local M4105mm = CSHowitzer:New{
@@ -30,13 +30,13 @@ local M4105mm = CSHowitzer:New{
   reloadTime         = 11.25,
 }
 
-local M4105mmHE = M4105mm:New(HowitzerHE, true):New{
+local M4105mmHE = HowitzerHE:New(M4105mm, true):New{
   areaOfEffect       = 131,
   damage = {
     default            = 4360,
   },  
 }
-local M4105mmSmoke = M4105mm:New(HowitzerSmoke, true)
+local M4105mmSmoke = HowitzerSmoke:New(M4105mm, true)
 
 
 -- Return only the full weapons

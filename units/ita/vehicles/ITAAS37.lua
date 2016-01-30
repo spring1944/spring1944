@@ -1,8 +1,11 @@
 local ITAAS37 = HalfTrack:New{
 	name					= "Carro Protetto A.S. 37",
 	description				= "Transport/Supply Armoured Truck",
+	acceleration			= 0.047,
+	brakeRate				= 0.09,
 	buildCostMetal			= 1100,
 	maxDamage				= 560,
+	movementClass			= "TANK_Car",
 	trackOffset				= 10,
 	trackWidth				= 15,
 	

@@ -3,7 +3,7 @@ function widget:GetInfo()
   return {
     name      = "1944 Aircraft Selection Buttons",
     desc      = "Automatically creates selection buttons for newly entered aircraft.",
-    author    = "Ray Modified by Godde, Szunti",
+    author    = "Ray Modified by Godde, Szunti, kmar",
     date      = "Sep 6, 2011",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
@@ -14,7 +14,7 @@ end
 -----------------------------
 -- Customisable parameters
 -----------------------------
-local MAX_ICONS = 10
+local MAX_ICONS = 15
 local ICON_SIZE_X = 70
 local ICON_SIZE_Y = 70
 local CONDENSE = false -- show one icon for all planes of same type
@@ -55,6 +55,7 @@ local glTexture                = gl.Texture
 local glTranslate              = gl.Translate
 local glUnit                   = gl.Unit
 local glUnitShape              = gl.UnitShape
+local glDrawGroundCircle	   = gl.DrawGroundCircle
 
 
 -----------------
@@ -62,6 +63,9 @@ local glUnitShape              = gl.UnitShape
 -----------------
 local GetUnitDefDimensions   = Spring.GetUnitDefDimensions
 local GetUnitDefID           = Spring.GetUnitDefID
+local GetUnitFuel 			 = Spring.GetUnitFuel
+local GetUnitHealth 		 = Spring.GetUnitHealth
+local GetUnitRulesParam 	 = Spring.GetUnitRulesParam
 local GetMyTeamID            = Spring.GetMyTeamID
 local GetTeamUnitsSorted     = Spring.GetTeamUnitsSorted
 local GetModKeyState         = Spring.GetModKeyState
@@ -278,10 +282,31 @@ local function DrawUnitBuildPics(number)
 		if CONDENSE then
 			local NumberCondensed = #drawTable[ct].units
 			if NumberCondensed > 1 then
-				glText(NumberCondensed, (X1 + X2) * 0.5, Y_MAX + 2,ICON_SIZE_Y * 0.25, "oc")
-			end
+				glText(NumberCondensed, (X1 - ICON_SIZE_X / 2), Y_MAX + 2,ICON_SIZE_Y * 0.25, "oc")		 
+			end						
+			--++kmar 07-01-2016 added fuel indicator for unstacked aircraft	
+		else
 			
+			
+			local sHP, sMaxHP = GetUnitHealth(drawTable[ct].units)			
+			local sRatio = sHP/sMaxHP
+			
+			if sRatio > 0.75 then
+				glColor(0,1,0)
+			else
+				if sRatio > 0.5 then
+					glColor(1,1,0)
+				else 
+					glColor(1,0,0)
+				end
+			end
+			glRect( X1 - ICON_SIZE_X, Y_MAX, X1 - ICON_SIZE_X*(1 - (sHP/sMaxHP) ), Y_MAX - 4)			
+			glColor(1,1,1)				
+			local sFuel = floor(GetUnitFuel(drawTable[ct].units))
+			glText(sFuel, X1, Y_MIN + 2,ICON_SIZE_Y * 0.18, "or") 
+			----kmar 07-01-2016
 		end
+		
 	end
 end
 
@@ -511,8 +536,14 @@ function widget:DrawWorld()
 	mouseOnUnitID = unitID
 	-- hilight the unit we are about to click on
 	glUnit(unitID, true)
+	local ux, uy, uz = GetUnitPosition(mouseOnUnitID)
+	
+	glDrawGroundCircle( ux, uy, uz, 3200, 24 ) --++kmar 07-01-2016 Might be a bit over kill, although a 8 sided circle isn't hard to draw i think
+	glDrawGroundCircle( ux, uy, uz, 1600, 20 ) --and no, this is not how i imagined it, but it is kinda more usefull then how i imagined it
+	glDrawGroundCircle( ux, uy, uz, 800, 16 ) 
+	glDrawGroundCircle( ux, uy, uz, 400, 12 ) 
+	glDrawGroundCircle( ux, uy, uz, 200, 8 ) 
 end
-
 
 function widget:DrawInMiniMap(sx, sz)
 	if not mouseOnUnitID then return -1 end
@@ -522,9 +553,11 @@ function widget:DrawInMiniMap(sx, sz)
     return
   end
 	local xr = ux*MINIMAP_X_MUL
-	local yr = 1 - uz*MINIMAP_X_MUL
+	local yr = 1 - uz*MINIMAP_Y_MUL --might fix minimap rectangle highlighting
 	glColor(1,0,0)
-	glRect(xr*sx, yr*sz, (xr*sx)+5, (yr*sz)+5)
+	--glRect((xr*sx)-2, (yr*sz)-2, (xr*sx)+2, (yr*sz)+2) --++kmar 07-01-2016 changed a rectangle on the minimap to a huge cross to be way more noticable when in panic
+	glRect(xr*sx, 0, (xr*sx)+1, Game.mapY*512)
+	glRect(0, yr*sz, Game.mapX*512, (yr*sz)+1)
 end
 
 
@@ -557,9 +590,9 @@ function widget:MouseRelease(x, y, button)
   local alt, ctrl, meta, shift = GetModKeyState()
   
   if (button == 1) then -- left mouse
-  	SelectUnitArray({unitID})
+  	SelectUnitArray({unitID}, shift) -- ++kmar 05-01-2016 - allow shift clicking to append 
   elseif (button == 2) then -- middle mouse
-    SelectUnitArray({unitID})
+    SelectUnitArray({unitID}, shift) -- ++kmar 05-01-2016
     SendCommands({"viewselection"})   
   end
 	

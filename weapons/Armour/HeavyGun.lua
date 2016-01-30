@@ -10,14 +10,14 @@ local D25122mm = HeavyGun:New{
   soundStart         = [[RUS_122mm]],
 }
 
-local D25122mmHE = D25122mm:New(HeavyHE, true):New{
+local D25122mmHE = HeavyHE:New(D25122mm, true):New{
   areaOfEffect       = 154,
   weaponVelocity     = 900,
   damage = {
     default            = 7200,
   },  
 }
-local D25122mmAP = D25122mm:New(HeavyAP, true):New{
+local D25122mmAP = HeavyAP:New(D25122mm, true):New{
   weaponVelocity     = 1584,
   customparams = {
     armor_penetration_1000m = 131,
@@ -40,7 +40,7 @@ local ML20S152mm = HeavyGun:New{
   },
 }
 
-local ML20S152mmHE = ML20S152mm:New(HeavyHE, true):New{
+local ML20S152mmHE = HeavyHE:New(ML20S152mm, true):New{
   areaOfEffect       = 183,
   soundHitDry        = [[GEN_Explo_6]],
   weaponVelocity     = 1200, --?
@@ -51,7 +51,7 @@ local ML20S152mmHE = ML20S152mm:New(HeavyHE, true):New{
     fearaoe            = 150,
   },
 }
-local ML20S152mmAP = ML20S152mm:New(HeavyAP, true):New{
+local ML20S152mmAP = HeavyAP:New(ML20S152mm, true):New{
   soundHitDry        = [[GEN_Explo_4]],
   weaponVelocity     = 1200,
   customparams = {
@@ -89,14 +89,14 @@ local Type38150mmL11 = HeavyGun:New{
   },
 }
 
-local Type38150mmL11HE = Type38150mmL11:New(HeavyHE, true):New{
+local Type38150mmL11HE = HeavyHE:New(Type38150mmL11, true):New{
   areaOfEffect       = 165,
   soundHitDry        = [[GEN_Explo_6]],
   damage = {
     default            = 8500,
   },
 }
-local Type38150mmL11Smoke = Type38150mmL11:New(HeavySmoke, true)
+local Type38150mmL11Smoke = HeavySmoke:New(Type38150mmL11, true)
 
 
 -- Return only the full weapons

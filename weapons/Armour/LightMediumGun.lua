@@ -8,14 +8,14 @@ local QF6Pdr57mm = LightMediumGun:New{
   reloadTime         = 4.95,
 }
 
-local QF6Pdr57mmHE = QF6Pdr57mm:New(LightMediumHE, true):New{
+local QF6Pdr57mmHE = LightMediumHE:New(QF6Pdr57mm, true):New{
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 760,
   },  
 }
-local QF6Pdr57mmAP = QF6Pdr57mm:New(MediumAP, true):New{
+local QF6Pdr57mmAP = MediumAP:New(QF6Pdr57mm, true):New{
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 66,
@@ -27,7 +27,7 @@ local QF6Pdr57mmAP = QF6Pdr57mm:New(MediumAP, true):New{
 }
 
 -- Naval QF 6-Pounder Mk IIA - uses only HE
-local QF6Pdr57MkIIAHE = QF6Pdr57mm:New(LightMediumHE, false):New{
+local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	name		= [[QF 6-Pounder Mk IIA]],
 	-- autoloader, 40 shots per minute
 	reloadTime	= 1.5,
@@ -45,14 +45,14 @@ local KwK50mmL60 = LightMediumGun:New{
   reloadTime         = 4.95,
 }
 
-local KwK50mmL60HE = KwK50mmL60:New(LightMediumHE, true):New{
+local KwK50mmL60HE = LightMediumHE:New(KwK50mmL60, true):New{
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 330, -- much lower than 6pdr?
   },  
 }
-local KwK50mmL60AP = KwK50mmL60:New(MediumAP, true):New{
+local KwK50mmL60AP = MediumAP:New(KwK50mmL60, true):New{
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 44,
@@ -71,7 +71,7 @@ local ZiS257mm = LightMediumGun:New{
 }
 
 -- Currently only AP used
-local ZiS257mmAP = ZiS257mm:New(MediumAP, true):New{
+local ZiS257mmAP = MediumAP:New(ZiS257mm, true):New{
   weaponVelocity     = 1980,
   customparams = {
     armor_penetration_1000m = 64,
@@ -89,14 +89,14 @@ local Type9757mm = LightMediumGun:New{
   reloadTime         = 4.0,
 }
 
-local Type9757mmHE = Type9757mm:New(LightMediumHE, true):New{
+local Type9757mmHE = LightMediumHE:New(Type9757mm, true):New{
   areaOfEffect       = 57,
   weaponVelocity     = 800,
   damage = {
     default            = 1400,
   },  
 }
-local Type9757mmAP = Type9757mm:New(MediumAP, true):New{
+local Type9757mmAP = MediumAP:New(Type9757mm, true):New{
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 25,

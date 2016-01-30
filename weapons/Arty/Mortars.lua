@@ -12,8 +12,8 @@ local ML3InMortar = Mortar:New{
     default            = 1088,
   },
 }
-local ML3InMortarHE = ML3InMortar:New(MortarHE, true)
-local ML3InMortarSmoke = ML3InMortar:New(MortarSmoke, true)
+local ML3InMortarHE = MortarHE:New(ML3InMortar, true)
+local ML3InMortarSmoke = MortarSmoke:New(ML3InMortar, true)
 
 -- 4in Smoke Mortar (GBR)
 local BL4InMortar = Mortar:New{
@@ -21,7 +21,7 @@ local BL4InMortar = Mortar:New{
 	range			 = 1450,
 	commandFire		 = true,
 }
-local BL4InMortarSmoke = BL4InMortar:New(MortarSmoke, true)
+local BL4InMortarSmoke = MortarSmoke:New(BL4InMortar, true)
 
 -- Granatwerfer 34 (GER)
 local GrW34_8cmMortar = Mortar:New{
@@ -32,8 +32,8 @@ local GrW34_8cmMortar = Mortar:New{
     default            = 1100,
   },
 }
-local GrW34_8cmMortarHE = GrW34_8cmMortar:New(MortarHE, true)
-local GrW34_8cmMortarSmoke = GrW34_8cmMortar:New(MortarSmoke, true)
+local GrW34_8cmMortarHE = MortarHE:New(GrW34_8cmMortar, true)
+local GrW34_8cmMortarSmoke = MortarSmoke:New(GrW34_8cmMortar, true)
 
 -- M1 81mm Mortar (USA)
 local M1_81mmMortar = Mortar:New{
@@ -44,8 +44,8 @@ local M1_81mmMortar = Mortar:New{
     default            = 1100,
   },
 }
-local M1_81mmMortarHE = M1_81mmMortar:New(MortarHE, true)
-local M1_81mmMortarSmoke = M1_81mmMortar:New(MortarSmoke, true) 
+local M1_81mmMortarHE = MortarHE:New(M1_81mmMortar, true)
+local M1_81mmMortarSmoke = MortarSmoke:New(M1_81mmMortar, true) 
 
 -- 82-PM 37 (RUS)
 local m1937_Mortar = Mortar:New{
@@ -56,8 +56,8 @@ local m1937_Mortar = Mortar:New{
     default            = 800,
   },
 }
-local m1937_MortarHE = m1937_Mortar:New(MortarHE, true)
-local m1937_MortarSmoke = m1937_Mortar:New(MortarSmoke, true) 
+local m1937_MortarHE = MortarHE:New(m1937_Mortar, true)
+local m1937_MortarSmoke = MortarSmoke:New(m1937_Mortar, true) 
 
 -- Knee Mortar
 local cKneeMortar = Mortar:New{
@@ -72,8 +72,8 @@ local cKneeMortar = Mortar:New{
     default            = 300,
   },
 }
-local KneeMortar = cKneeMortar:New(MortarHE, true)
-local KneeMortar_smoke = cKneeMortar:New(MortarSmoke, true) 
+local KneeMortar = MortarHE:New(cKneeMortar, true)
+local KneeMortar_smoke = MortarSmoke:New(cKneeMortar, true) 
 
 -- Type 97 81mm mortar
 local Type97_81mmMortar = Mortar:New{
@@ -84,8 +84,8 @@ local Type97_81mmMortar = Mortar:New{
     default            = 1100,
   },
 }
-local Type97_81mmMortarHE = Type97_81mmMortar:New(MortarHE, true)
-local Type97_81mmMortarSmoke = Type97_81mmMortar:New(MortarSmoke, true) 
+local Type97_81mmMortarHE = MortarHE:New(Type97_81mmMortar, true)
+local Type97_81mmMortarSmoke = MortarSmoke:New(Type97_81mmMortar, true) 
 
 
 

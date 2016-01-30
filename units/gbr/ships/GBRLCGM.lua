@@ -6,6 +6,7 @@ local GBR_LCGM = ArmedBoat:New{
 	buildCostMetal			= 10500,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
+	iconType			= "artyboat",
 	maxDamage				= 30800,
 	maxReverseVelocity		= 0.55,
 	maxVelocity				= 1.1,
