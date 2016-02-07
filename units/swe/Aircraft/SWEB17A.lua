@@ -1,4 +1,4 @@
-local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
+Unit('SWE_B17A'):Extends('Fighter'):Attrs{ -- based on JPN Ki 51
 	name				= "SAAB B 17A",
 	description			= "Light Bomber",
 	buildCostMetal		= 2175, -- shared with CR.42
@@ -62,6 +62,3 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 }
 
 
-return lowerkeys({
-	["SWEB17A"] = SWE_B17A,
-})

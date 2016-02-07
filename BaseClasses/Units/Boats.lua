@@ -1,5 +1,5 @@
 -- Boats ----
-local Boat = Unit:New{ -- used for transports as is
+AbstractUnit('Boat'):Extends('Unit'):Attrs{ -- used for transports as is
 	airSightDistance	= 1500,
 	canMove				= true,
 	category 			= "SHIP MINETRIGGER",
@@ -24,7 +24,7 @@ local Boat = Unit:New{ -- used for transports as is
 }
 
 -- Engineer Built
-local AssaultBoat = Boat:New{
+AbstractUnit('AssaultBoat'):Extends('Boat'):Attrs{
 	name				= "Rubber Dingy", -- will be overwritten by e.g. sturmboot
 	description			= "Infantry Water Transport",
 	acceleration		= 0.3,
@@ -49,7 +49,7 @@ local AssaultBoat = Boat:New{
 	waterline			= 0.2,
 }
 
-local PontoonRaft = Boat:New{
+AbstractUnit('PontoonRaft'):Extends('Boat'):Attrs{
 	name				= "Pontoon Raft",
 	description			= "Heavy Equipment Transport",
 	acceleration		= 0.15,
@@ -72,7 +72,7 @@ local PontoonRaft = Boat:New{
 }
 
 -- Landing Craft
-local InfantryLandingCraft = Boat:New{
+AbstractUnit('InfantryLandingCraft'):Extends('Boat'):Attrs{
 	description				= "Infantry Landing Craft",
 	iconType				= "landingship",
 	movementClass			= "BOAT_LandingCraftSmall",
@@ -85,7 +85,7 @@ local InfantryLandingCraft = Boat:New{
 	},
 }
 
-local TankLandingCraft = Boat:New{
+AbstractUnit('TankLandingCraft'):Extends('Boat'):Attrs{
 	description				= "Tank Landing Craft",
 	iconType				= "transportship",
 	movementClass			= "BOAT_LandingCraft",
@@ -98,7 +98,7 @@ local TankLandingCraft = Boat:New{
 }
 
 -- Composites
-local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
+AbstractUnit('BoatMother'):Extends('Boat'):Attrs{ -- used for combat boats with multiple turrets
 	iconType			= "gunboat",
 	movementClass		= "BOAT_LightPatrol",
 	script				= "BoatMother.lua",
@@ -113,14 +113,14 @@ local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	}
 }
 
-local ArmedBoat = BoatMother:New{
+AbstractUnit('ArmedBoat'):Extends('BoatMother'):Attrs{
 	customparams = {
 		flagCapRate			= 2,
 		flagCapType			= 'buoy',
 	}
 }
 
-local BoatChild = Boat:New{ -- a boat turret
+AbstractUnit('BoatChild'):Extends('Boat'):Attrs{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
 	canMove						= true,
 	cantBeTransported			= false,
@@ -143,11 +143,11 @@ local BoatChild = Boat:New{ -- a boat turret
 	}
 }
 
-local EnclosedBoatTurret = BoatChild:New{
+AbstractUnit('EnclosedBoatTurret'):Extends('BoatChild'):Attrs{
 	maxDamage			= 1600,
 }
 
-local OpenBoatTurret = BoatChild:New{
+AbstractUnit('OpenBoatTurret'):Extends('BoatChild'):Attrs{
 	maxDamage			= 800,
 	customparams = {
 		feartarget		= true,
@@ -156,22 +156,7 @@ local OpenBoatTurret = BoatChild:New{
 }
 
 -- as durable as a fully enclosed, but still suppressible
-local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
+AbstractUnit('PartiallyEnclosedBoatTurret'):Extends('OpenBoatTurret'):Attrs{
 	maxDamage			= 1600,
 }
 
-return {
-	-- Basic class
-	Boat = Boat,
-	-- BoatMother and BoatChild deliberately not exported.
-	ArmedBoat = ArmedBoat,
-	OpenBoatTurret = OpenBoatTurret,
-	PartiallyEnclosedBoatTurret = PartiallyEnclosedBoatTurret,
-	EnclosedBoatTurret = EnclosedBoatTurret,
-	-- Engineer built raft & boat
-	PontoonRaft = PontoonRaft,
-	AssaultBoat = AssaultBoat,
-	-- Landing Craft
-	InfantryLandingCraft = InfantryLandingCraft,
-	TankLandingCraft = TankLandingCraft,
-}

@@ -1,4 +1,4 @@
-local US_LCVP = InfantryLandingCraft:New{
+Unit('US_LCVP'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "Landing Craft, Vehicle, Personnel",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
@@ -35,6 +35,3 @@ local US_LCVP = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["USLCVP"] = US_LCVP,
-})

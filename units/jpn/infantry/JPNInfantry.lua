@@ -1,12 +1,12 @@
-local JPNInf = {
+AbstractUnit('JPNInf'):Attrs{
 	maxDamageMul		= 0.8,
 }
 
-local JPN_HQEngineer = EngineerInf:New(JPNInf):New{
+Unit('JPN_HQEngineer'):Extends('EngineerInf'):Extends('JPNInf'):Attrs{
 	name				= "Field",
 }
 
-local JPN_Rifle = RifleInf:New(JPNInf):New{
+Unit('JPN_Rifle'):Extends('RifleInf'):Extends('JPNInf'):Attrs{
 	name				= "Arisaka Type 99 Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -18,7 +18,7 @@ local JPN_Rifle = RifleInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type100SMG = SMGInf:New(JPNInf):New{
+Unit('JPN_Type100SMG'):Extends('SMGInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 100 Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -30,7 +30,7 @@ local JPN_Type100SMG = SMGInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type99LMG = LMGInf:New(JPNInf):New{
+Unit('JPN_Type99LMG'):Extends('LMGInf'):Extends('JPNInf'):Attrs{
 	name				= "BREN Mk II Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -39,12 +39,12 @@ local JPN_Type99LMG = LMGInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type92HMG = HMGInf:New(JPNInf):New{
+Unit('JPN_Type92HMG'):Extends('HMGInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 92 Heavy Machinegun",
 	script				= "Infantry.lua",
 }
 
-local JPN_Type92HMG_Sandbag = SandbagMG:New{
+Unit('JPN_Type92HMG_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Type 92 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -53,7 +53,7 @@ local JPN_Type92HMG_Sandbag = SandbagMG:New{
 	},
 }
 
-local JPN_Sniper = SniperInf:New(JPNInf):New{
+Unit('JPN_Sniper'):Extends('SniperInf'):Extends('JPNInf'):Attrs{
 	name				= "Arisaka 99 Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -62,7 +62,7 @@ local JPN_Sniper = SniperInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
+Unit('JPN_Type3AT'):Extends('ATGrenadeInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 3 AT Grenade",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -71,7 +71,7 @@ local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type4AT = ATLauncherInf:New(JPNInf):New{
+Unit('JPN_Type4AT'):Extends('ATLauncherInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 4 AT Rocket Launcher",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -80,7 +80,7 @@ local JPN_Type4AT = ATLauncherInf:New(JPNInf):New{
 	},
 }
 
-local JPN_KneeMortar = LightMortarInf:New(JPNInf):New{
+Unit('JPN_KneeMortar'):Extends('LightMortarInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 10 Grenade Discharger",
 	weapons = {
 		[1] = { -- HE
@@ -92,7 +92,7 @@ local JPN_KneeMortar = LightMortarInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Mortar = MedMortarInf:New(JPNInf):New{
+Unit('JPN_Mortar'):Extends('MedMortarInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 97 81mm Mortar",
 	weapons = {
 		[1] = { -- HE
@@ -104,7 +104,7 @@ local JPN_Mortar = MedMortarInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Observ = ObservInf:New(JPNInf):New{
+Unit('JPN_Observ'):Extends('ObservInf'):Extends('JPNInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "NambuType14",
@@ -112,7 +112,7 @@ local JPN_Observ = ObservInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
+Unit('JPN_Type4Mortar_Mobile'):Extends('MedMortarInf'):Extends('JPNInf'):Attrs{
 	name				= "Type 4 200mm Mortar",
 	buildCostMetal		= 1500,
 	iconType			= "artillery",
@@ -124,7 +124,7 @@ local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	},
 }
 
-local JPN_Type4Mortar_Stationary = Deployed:New{
+Unit('JPN_Type4Mortar_Stationary'):Extends('Deployed'):Attrs{
 	name				= "Type 4 200mm Mortar",
 	description			= "Deployed Heavy Rocket Mortar",
 	corpse				= "GERNebelwerfer_Destroyed", -- TODO: corpse
@@ -152,21 +152,3 @@ local JPN_Type4Mortar_Stationary = Deployed:New{
 	},
 }
 
-return lowerkeys({
-	-- Regular Inf
-	["JPNHQEngineer"] = JPN_HQEngineer,
-	["JPNHQAIEngineer"] = JPN_HQEngineer:Clone("JPNHQEngineer"),
-	["JPNRifle"] = JPN_Rifle,
-	["JPNType100SMG"] = JPN_Type100SMG,
-	["JPNType99LMG"] = JPN_Type99LMG,
-	["JPNType92HMG_DugIn"] = JPN_Type92HMG_Sandbag,
-	["JPNType92HMG"] = JPN_Type92HMG,
-	["JPNSniper"] = JPN_Sniper,
-	["JPNType3AT"] = JPN_Type3AT,
-	["JPNType4AT"] = JPN_Type4AT,
-	["JPNKneeMortar"] = JPN_KneeMortar,
-	["JPNMortar"] = JPN_Mortar,
-	["JPNObserv"] = JPN_Observ,
-	["JPNType4Mortar_Mobile"] = JPN_Type4Mortar_Mobile,
-	["JPNType4Mortar_Stationary"] = JPN_Type4Mortar_Stationary,
-})

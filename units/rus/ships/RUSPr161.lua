@@ -1,4 +1,4 @@
-local RUS_Pr161 = ArmedBoat:New{
+Unit('RUS_Pr161'):Extends('ArmedBoat'):Attrs{
 	name					= "Pr.161 Armoured Boat",
 	description				= "Sea-going armored gunboat",
 	acceleration			= 0.05,
@@ -43,7 +43,7 @@ local RUS_Pr161 = ArmedBoat:New{
 }
 
 
-local RUS_Pr161_Turret_DshK = OpenBoatTurret:New{
+Unit('RUS_Pr161_Turret_DshK'):Extends('OpenBoatTurret'):Attrs{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -60,7 +60,7 @@ local RUS_Pr161_Turret_DshK = OpenBoatTurret:New{
 	},
 }
 
-local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
+Unit('RUS_Pr161_Turret_85mm_Front'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "85mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSBKA1125_Turret_76mm.s3o", -- temp hack to avoid clipping
@@ -79,7 +79,7 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 		elevationspeed			= 20,
     },
 }
-local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
+Unit('RUS_Pr161_Turret_85mm_Rear'):Extends('RUS_Pr161_Turret_85mm_Front'):Attrs{
   	weapons = {	
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -90,9 +90,3 @@ local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
     },
 }
 
-return lowerkeys({
-	["RUSPr161"] = RUS_Pr161,
-	["RUSPr161_Turret_DshK"] = RUS_Pr161_Turret_DshK,
-	["RUSPr161_Turret_85mm_Front"] = RUS_Pr161_Turret_85mm_Front,
-	["RUSPr161_Turret_85mm_Rear"] = RUS_Pr161_Turret_85mm_Rear,
-})

@@ -1,11 +1,11 @@
-local RUS_61K_Truck = AAGunTractor:New{
+Unit('RUS_61K_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed 37mm 61-K",
 	corpse					= "RUSZiS5_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
 }
 
-local RUS_61K_Stationary = AAGun:New{
+Unit('RUS_61K_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed 37mm 61-K",
 	corpse					= "RUS61K_Destroyed",
 
@@ -19,8 +19,3 @@ local RUS_61K_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["RUS61K_Truck"] = RUS_61K_Truck,
-	["RUS61K_Stationary"] = RUS_61K_Stationary,
-	["RUS61K_Stationary_base"] = RUS_61K_Stationary:Clone("RUS61K_Stationary"),
-})

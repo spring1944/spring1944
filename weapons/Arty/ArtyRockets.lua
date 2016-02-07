@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Nebelwerfer 41 150mm (GER)
-local Nebelwerfer41 = ArtyRocket:New{
+Weapon('Nebelwerfer41'):Extends('ArtyRocket'):Attrs{
   areaOfEffect       = 184,
   burst              = 6,
   burstrate          = 0.8,
@@ -18,7 +18,7 @@ local Nebelwerfer41 = ArtyRocket:New{
 }
 
 -- M-13 132mm (RUS)
-local M13132mm = ArtyRocket:New{
+Weapon('M13132mm'):Extends('ArtyRocket'):Attrs{
   areaOfEffect       = 122,
   burst              = 16,
   burstrate          = 0.6,
@@ -33,7 +33,7 @@ local M13132mm = ArtyRocket:New{
 }
 
 -- M-8 82mm (RUS)
-local m8rocket82mm = ArtyRocket:New{
+Weapon('m8rocket82mm'):Extends('ArtyRocket'):Attrs{
   areaOfEffect       = 60,
   burst              = 8,
   burstrate          = 0.3,
@@ -49,7 +49,7 @@ local m8rocket82mm = ArtyRocket:New{
 }
 
 -- Beach Barrage Rocket
-local BBR_Rack = ArtyRocket:New{
+Weapon('BBR_Rack'):Extends('ArtyRocket'):Attrs{
 	areaOfEffect	= 100,
 	burst		= 12,
 	burstrate	= 0.5,
@@ -67,7 +67,7 @@ local BBR_Rack = ArtyRocket:New{
 }
 
 -- Type 4 200mm rocket mortar (JPN)
-local Type4RocketMortar = ArtyRocket:New{
+Weapon('Type4RocketMortar'):Extends('ArtyRocket'):Attrs{
   name               = "Type 4 200mm unguided artillery rocket",
   reloadtime         = 20,
   range              = 3200,
@@ -78,7 +78,7 @@ local Type4RocketMortar = ArtyRocket:New{
   },  
 }
 
-local Type4RocketMortarHE = Type4RocketMortar:New{
+Weapon('Type4RocketMortarHE'):Extends('Type4RocketMortar'):Attrs{
   areaOfEffect       = 203,
   explosionGenerator = [[custom:HE_XLarge]],
   
@@ -87,7 +87,7 @@ local Type4RocketMortarHE = Type4RocketMortar:New{
   },
 }
 
-local Type4RocketMortarSmoke = Type4RocketMortar:New{
+Weapon('Type4RocketMortarSmoke'):Extends('Type4RocketMortar'):Attrs{
   areaOfEffect       = 30,
 
   customparams = {
@@ -101,11 +101,3 @@ local Type4RocketMortarSmoke = Type4RocketMortar:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  Nebelwerfer41 = Nebelwerfer41,
-  M13132mm = M13132mm,
-  m8rocket82mm = m8rocket82mm,
-  BBR_Rack = BBR_Rack,
-  Type4RocketMortarHE = Type4RocketMortarHE,
-  Type4RocketMortarSmoke = Type4RocketMortarSmoke,
-})

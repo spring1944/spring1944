@@ -1,4 +1,4 @@
-local ITA_Vedetta = ArmedBoat:New{
+Unit('ITA_Vedetta'):Extends('ArmedBoat'):Attrs{
 	name					= "Classe Vedetta",
 	description				= "Patrol Gunboat",
 	acceleration			= 0.075,
@@ -29,7 +29,7 @@ local ITA_Vedetta = ArmedBoat:New{
 	},
 }
 
-local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
+Unit('ITA_Vedetta_Turret_76mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "76mm Turret",
 	description				= "Primary Turret",
 	weapons = {	
@@ -47,7 +47,7 @@ local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 	},
 }
 
-local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
+Unit('ITA_Vedetta_Turret_MG'):Extends('OpenBoatTurret'):Attrs{
 	name					= "MG Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -73,8 +73,3 @@ local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["ITAVedetta"] = ITA_Vedetta,
-	["ITAVedetta_Turret_76mm"] = ITA_Vedetta_Turret_76mm,
-	["ITAVedetta_Turret_MG"] = ITA_Vedetta_Turret_MG,
-})

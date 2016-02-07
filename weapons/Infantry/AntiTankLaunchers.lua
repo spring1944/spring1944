@@ -3,7 +3,7 @@
 -- Implementations
 -- RCL & Spigot Mortar
 -- PIAT(GBR)
-local PIAT = RCL_ATLClass:New{
+Weapon('PIAT'):Extends('RCL_ATLClass'):Attrs{
   areaOfEffect       = 46,
   edgeEffectiveness  = 0.8,
   name               = [[P.I.A.T.]],
@@ -19,7 +19,7 @@ local PIAT = RCL_ATLClass:New{
 }
 
 -- Panzerfasut 60 (GER)
-local Panzerfaust = RCL_ATLClass:New{
+Weapon('Panzerfaust'):Extends('RCL_ATLClass'):Attrs{
   areaOfEffect       = 55,
   edgeEffectiveness  = 0.01, -- ?
   name               = [[Panzerfaust 60]],
@@ -35,7 +35,7 @@ local Panzerfaust = RCL_ATLClass:New{
 }
 
 -- Rocket Launchers
-local Panzerschrek = Rocket_ATLClass:New{
+Weapon('Panzerschrek'):Extends('Rocket_ATLClass'):Attrs{
   name               = [[RPzB 54/1 Panzerschrek]],
   range              = 360,
   soundStart         = [[GER_Panzerschrek]],
@@ -49,7 +49,7 @@ local Panzerschrek = Rocket_ATLClass:New{
 }
 
 -- M9A1 Bazooka (USA)
-local M9A1Bazooka = Rocket_ATLClass:New{
+Weapon('M9A1Bazooka'):Extends('Rocket_ATLClass'):Attrs{
   name               = [[M9A1 Bazooka]],
   range              = 270,
   soundStart         = [[US_Bazooka]],
@@ -63,7 +63,7 @@ local M9A1Bazooka = Rocket_ATLClass:New{
 }
 
 -- Type 4 Rocket Launcher (JPN)
-local Type4AT = Rocket_ATLClass:New{
+Weapon('Type4AT'):Extends('Rocket_ATLClass'):Attrs{
   name               = [[Type 4 Rocket Launcher]],
   range              = 270,
   soundStart         = [[US_Bazooka]],
@@ -77,12 +77,3 @@ local Type4AT = Rocket_ATLClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  -- RCL / Spigot Mortar
-  PIAT = PIAT,
-  Panzerfaust = Panzerfaust,
-  -- Rockets
-  Panzerschrek = Panzerschrek,
-  M9A1Bazooka = M9A1Bazooka,
-  Type4AT = Type4AT,
-})

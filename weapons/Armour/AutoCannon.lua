@@ -2,7 +2,7 @@
 -- Implementations
 
 -- FlaK 38 20mm (GER)
-local FlaK3820mm = AutoCannon:New{
+Weapon('FlaK3820mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 255,
   burst              = 4, -- 20 round box mag, 5 bursts
   burstRate          = 0.133, -- cyclic 450rpm
@@ -20,11 +20,11 @@ local FlaK3820mm = AutoCannon:New{
   },
 }
 
-local FlaK3820mmAA = AutoCannonAA:New(FlaK3820mm, true):New{
+Weapon('FlaK3820mmAA'):Extends('AutoCannonAA'):Extends('FlaK3820mm'):Attrs{ -- name append
   range              = 1910,
 }
-local FlaK3820mmHE = AutoCannonHE:New(FlaK3820mm, true)
-local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
+Weapon('FlaK3820mmHE'):Extends('AutoCannonHE'):Extends('FlaK3820mm') -- name append
+Weapon('FlaK3820mmAP'):Extends('AutoCannonAP'):Extends('FlaK3820mm'):Attrs{ -- name append
   weaponVelocity     = 1560,
   customparams = {
     armor_penetration_1000m = 9,
@@ -37,17 +37,17 @@ local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
 
 -- Flakvierling
 -- derives from the above, only with 4x burst (can't have 1/4 the burstrate)
-local FlakVierling20mmAA = FlaK3820mmAA:New({
+Weapon('FlakVierling20mmAA'):Extends('FlaK3820mmAA'):Attrs{ -- name append
   burst              = 16,
   name               = [[(Quad)]],
-}, true)
-local FlakVierling20mmHE = FlaK3820mmHE:New({
+}
+Weapon('FlakVierling20mmHE'):Extends('FlaK3820mmHE'):Attrs { -- name append
   burst              = 16,
   name               = [[(Quad)]],
-}, true)
+}
 
 -- Oerlikon/Polsten 20mm (GBR)
-local Oerlikon20mm = AutoCannon:New{
+Weapon('Oerlikon20mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 255,
   burst              = 5, -- 15 or 30 round drum
   burstRate          = 0.133, -- cyclic 450rpm
@@ -65,17 +65,17 @@ local Oerlikon20mm = AutoCannon:New{
   },
 }
 
-local Oerlikon20mmAA = AutoCannonAA:New(Oerlikon20mm, true):New{
+Weapon('Oerlikon20mmAA'):Extends('AutoCannonAA'):Extends('Oerlikon20mm'):Attrs{ -- name append
   range              = 1950,
 }
-local Oerlikon20mmHE = AutoCannonHE:New(Oerlikon20mm, true)
-local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
+Weapon('Oerlikon20mmHE'):Extends('AutoCannonHE'):Extends('Oerlikon20mm') -- name append
+Weapon('Twin_Oerlikon20mmAA'):Extends('Oerlikon20mmAA'):Attrs{ -- name append
   name               = [[(Twin)]],
   reloadTime         = 0.6,
-}, true)
+}
 
 -- TNSh 20mm (RUS)
-local TNSh20mm = AutoCannon:New{
+Weapon('TNSh20mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 300,
   burst              = 3,
   burstRate          = 0.1,
@@ -90,8 +90,8 @@ local TNSh20mm = AutoCannon:New{
   },
 }
 
-local TNSh20mmHE = AutoCannonHE:New(TNSh20mm, true)
-local TNSh20mmAP = AutoCannonAP:New(TNSh20mm, true):New{
+Weapon('TNSh20mmHE'):Extends('AutoCannonHE'):Extends('TNSh20mm') -- name append
+Weapon('TNSh20mmAP'):Extends('AutoCannonAP'):Extends('TNSh20mm'):Attrs{ -- name append
   weaponVelocity     = 1500,
   customparams = {
     armor_penetration_1000m = 16,
@@ -103,7 +103,7 @@ local TNSh20mmAP = AutoCannonAP:New(TNSh20mm, true):New{
 }
 
 -- Breda M35 20mm (ITA)
-local BredaM3520mm = AutoCannon:New{
+Weapon('BredaM3520mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 100, --Why not 255 like the rest?
   burst              = 4,
   burstRate          = 0.261,
@@ -121,23 +121,23 @@ local BredaM3520mm = AutoCannon:New{
   },
 }
 
-local BredaM3520mmAA = AutoCannonAA:New(BredaM3520mm, true):New{
+Weapon('BredaM3520mmAA'):Extends('AutoCannonAA'):Extends('BredaM3520mm'):Attrs{ -- name append
   range              = 1950,
   sprayAngle         = 475,
 }
 
-local TwinBredaM3520mmAA = BredaM3520mmAA:New{
+Weapon('TwinBredaM3520mmAA'):Extends('BredaM3520mmAA'):Attrs{
   burst              = 8,
   burstRate          = 0.13,
 }
 
-local BredaM3520mmHE = AutoCannonHE:New(BredaM3520mm, true):New{
+Weapon('BredaM3520mmHE'):Extends('AutoCannonHE'):Extends('BredaM3520mm'):Attrs{ -- name append
   customparams = {
     fearaoe            = 30,
   },
 }
 
-local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
+Weapon('BredaM3520mmAP'):Extends('AutoCannonAP'):Extends('BredaM3520mm'):Attrs{ -- name append
   sprayAngle         = 400,
   weaponVelocity     = 1560,
   customparams = {
@@ -150,7 +150,7 @@ local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
 }
 
 -- Type 98 20mm (JPN)
-local Type9820mm = AutoCannon:New{
+Weapon('Type9820mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 255,
   areaOfEffect       = 15,
   burst              = 4,
@@ -166,14 +166,14 @@ local Type9820mm = AutoCannon:New{
   },
 }
 
-local Type9820mmAA = AutoCannonAA:New(Type9820mm, true):New{
+Weapon('Type9820mmAA'):Extends('AutoCannonAA'):Extends('Type9820mm'):Attrs{ -- name append
   range              = 1950,
 }
 
-local Type9820mmHE = AutoCannonHE:New(Type9820mm, true)
+Weapon('Type9820mmHE'):Extends('AutoCannonHE'):Extends('Type9820mm') -- name append
 
 -- Type 96 25mm (JPN)
-local Type9625mm = AutoCannon:New{
+Weapon('Type9625mm'):Extends('AutoCannon'):Attrs{
   accuracy           = 255,
   areaOfEffect       = 15, --if this is changed, change AA and HE aoe and fearaoe accordingly
   burst              = 5,
@@ -192,22 +192,22 @@ local Type9625mm = AutoCannon:New{
   },
 }
 
-local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
+Weapon('Type9625mmAA'):Extends('AutoCannonAA'):Extends('Type9625mm'):Attrs{ -- name append
   range              = 1950,
   damage = {
     default            = 55,
   },
 }
 
-local TwinType9625mmAA = Type9625mmAA:New{
+Weapon('TwinType9625mmAA'):Extends('Type9625mmAA'):Attrs{
 	burst            = 36,
 	burstrate        = 0.12,
     reloadtime       = 6.5,
 }
 
-local Type9625mmHE = AutoCannonHE:New(Type9625mm, true)
+Weapon('Type9625mmHE'):Extends('AutoCannonHE'):Extends('Type9625mm') -- name append
 
-local TwinType9625mmHE = Type9625mmHE:New{
+Weapon('TwinType9625mmHE'):Extends('Type9625mmHE'):Attrs{
 	burst            = 36,
 	burstrate        = 0.12,
     reloadtime       = 6.5,
@@ -215,31 +215,3 @@ local TwinType9625mmHE = Type9625mmHE:New{
 
 
 -- Return only the full weapons
-return lowerkeys({
-  -- FlaK 38
-  FlaK3820mmAA = FlaK3820mmAA,
-  FlaK3820mmHE = FlaK3820mmHE,
-  FlaK3820mmAP = FlaK3820mmAP,
-  FlakVierling20mmAA = FlakVierling20mmAA,
-  FlakVierling20mmHE = FlakVierling20mmHE,
-  -- Oerlikon
-  Oerlikon20mmAA = Oerlikon20mmAA,
-  Oerlikon20mmHE = Oerlikon20mmHE,
-  Twin_Oerlikon20mmAA = Twin_Oerlikon20mmAA,
-  -- TNSh
-  TNSh20mmHE = TNSh20mmHE,
-  TNSh20mmAP = TNSh20mmAP,
-  -- Breda M30
-  BredaM3520mmAA = BredaM3520mmAA,
-  TwinBredaM3520mmAA = TwinBredaM3520mmAA,
-  BredaM3520mmHE = BredaM3520mmHE,
-  BredaM3520mmAP = BredaM3520mmAP,
-  -- Type 98
-  Type9820mmAA = Type9820mmAA,
-  Type9820mmHE = Type9820mmHE,
-  -- Type 96
-  Type9625mmAA = Type9625mmAA,
-  TwinType9625mmAA = TwinType9625mmAA,
-  Type9625mmHE = Type9625mmHE,
-  TwinType9625mmHE = TwinType9625mmHE,
-})

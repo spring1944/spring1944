@@ -3,14 +3,14 @@
 -- Implementations
 -- AP Nades
 -- No. 69 Mills Bomb (GBR)
-local No69 = APGrenadeClass:New{
+Weapon('No69'):Extends('APGrenadeClass'):Attrs{
   accuracy           = 1421,
   areaOfEffect       = 32,
   name               = [[No. 69 Hand Grenade]],
 }
 
 -- Model 24 (GER)
-local Model24 = APGrenadeClass:New{
+Weapon('Model24'):Extends('APGrenadeClass'):Attrs{
   accuracy           = 1250,
   areaOfEffect       = 24,
   edgeEffectiveness  = 0.5, -- intended?
@@ -24,7 +24,7 @@ local Model24 = APGrenadeClass:New{
 }
 
 -- Mk. 2 (USA)
-local Mk2 = APGrenadeClass:New{
+Weapon('Mk2'):Extends('APGrenadeClass'):Attrs{
   accuracy           = 1777,
   areaOfEffect       = 40,
   name               = [[Mk. 2 Hand Grenade]],
@@ -33,14 +33,14 @@ local Mk2 = APGrenadeClass:New{
 
 -- F1 (RUS)
 -- this is new, currently unused, stas copied from No.69
-local F1 = APGrenadeClass:New{
+Weapon('F1'):Extends('APGrenadeClass'):Attrs{
   accuracy           = 1421,
   areaOfEffect       = 32,
   name               = [[F-1 Hand Grenade]],
 }
 
 -- OTO Model 35 (ITA)
-local OTO_model35 = APGrenadeClass:New{
+Weapon('OTO_model35'):Extends('APGrenadeClass'):Attrs{
   areaOfEffect       = 30,
   name               = [[italian Grenade]],
   range              = 200,
@@ -53,7 +53,7 @@ local OTO_model35 = APGrenadeClass:New{
 }
 
 -- Type 99 AP Grenade (JPN)
-local Type99Grenade = APGrenadeClass:New{
+Weapon('Type99Grenade'):Extends('APGrenadeClass'):Attrs{
   accuracy           = 1421,
   areaOfEffect       = 32,
   name               = [[Type 99 Grenade]],
@@ -63,7 +63,7 @@ local Type99Grenade = APGrenadeClass:New{
 
 -- AT nades
 -- RPG-43 AT Nade (RUS)
-local RPG43 = ATGrenadeClass:New{
+Weapon('RPG43'):Extends('ATGrenadeClass'):Attrs{
   accuracy           = 400,
   areaOfEffect       = 24,
   name               = [[RPG-43 Anti-Tank Grenade]],
@@ -76,7 +76,7 @@ local RPG43 = ATGrenadeClass:New{
 }
 
 -- Model 42 AT Grenade (ITA)
-local BredaMod42 = ATGrenadeClass:New{
+Weapon('BredaMod42'):Extends('ATGrenadeClass'):Attrs{
   areaOfEffect       = 31,
   name               = [[Breda Anti-Tank Grenade]],
   reloadtime         = 9,
@@ -90,7 +90,7 @@ local BredaMod42 = ATGrenadeClass:New{
 }
 
 -- L-type heavy AT grenade (ITA)
-local L_type_grenade = ATGrenadeClass:New{
+Weapon('L_type_grenade'):Extends('ATGrenadeClass'):Attrs{
   areaOfEffect       = 33,
   name               = [[Italian Anti-Tank Stickgrenade]],
   reloadtime         = 12, 
@@ -104,7 +104,7 @@ local L_type_grenade = ATGrenadeClass:New{
 }
 
 -- Type 3 AT Grenade (JPN)
-local Type3AT = ATGrenadeClass:New{
+Weapon('Type3AT'):Extends('ATGrenadeClass'):Attrs{
   accuracy           = 400,
   areaOfEffect       = 24,
   name               = [[Type 3 Anti-Tank Grenade]],
@@ -118,13 +118,13 @@ local Type3AT = ATGrenadeClass:New{
 
 -- Smoke nades
 -- No. 77 WP (GBR)
-local No77 = SmokeGrenadeClass:New{
+Weapon('No77'):Extends('SmokeGrenadeClass'):Attrs{
   accuracy           = 1421,
   name               = [[No. 77 Smoke Grenade]],
 }
 
 -- Other nades
-local Molotov = GrenadeClass:New{
+Weapon('Molotov'):Extends('GrenadeClass'):Attrs{
   areaOfEffect       = 40,
   canattackground    = true, -- intended?
   cegTag             = [[Flametrail]],
@@ -151,21 +151,3 @@ local Molotov = GrenadeClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  -- AP nades
-  No69 = No69,
-  Model24 = Model24,
-  Mk2 = Mk2,
-  F1 = F1,
-  OTO_model35 = OTO_model35,
-  Type99Grenade = Type99Grenade,
-  -- AT nades
-  RPG43 = RPG43,
-  BredaMod42 = BredaMod42,
-  L_type_grenade = L_type_grenade,
-  Type3AT = Type3AT,
-  -- Smoke nades
-  No77 = No77,
-  -- Other
-  Molotov = Molotov,
-})

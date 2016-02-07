@@ -1,4 +1,4 @@
-local RUS_La5FN = Fighter:New{
+Unit('RUS_La5FN'):Extends('Fighter'):Attrs{
 	name				= "La-5FN",
 	buildCostMetal		= 1125,
 	maxDamage			= 260.5,
@@ -34,6 +34,3 @@ local RUS_La5FN = Fighter:New{
 }
 
 
-return lowerkeys({
-	["RUSLa5FN"] = RUS_La5FN,
-})

@@ -1,13 +1,9 @@
-local JPN_IsuzuTX40Base = TransportTruck:New{
+Unit('JPN_IsuzuTX40Base'):Extends('TransportTruck'):Attrs{
 	name					= "Type 97 Isuzu TX 40",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local JPN_IsuzuTX40 = JPN_IsuzuTX40Base:New(TransportTruck)
-local JPN_PontoonTruck = JPN_IsuzuTX40Base:New(PontoonTruck, true)
+Unit('JPN_IsuzuTX40'):Extends('JPN_IsuzuTX40Base'):Extends('TransportTruck')
+Unit('JPN_PontoonTruck'):Extends('JPN_IsuzuTX40Base'):Extends('PontoonTruck') -- name append
 
-return lowerkeys({
-	["JPNIsuzuTX40"] = JPN_IsuzuTX40,
-	["JPNPontoonTruck"] = JPN_PontoonTruck,
-})

@@ -1,4 +1,4 @@
-local GBRShermanFirefly = MediumTank:New{
+Unit('GBRShermanFirefly'):Extends('MediumTank'):Attrs{
 	name				= "Sherman Mk. Vc Firefly",
 	description			= "Upgunned Medium Tank",
 	buildCostMetal		= 4000,
@@ -35,6 +35,3 @@ local GBRShermanFirefly = MediumTank:New{
 	},
 }
 
-return lowerkeys({
-	["GBRShermanFirefly"] = GBRShermanFirefly,
-})

@@ -1,4 +1,4 @@
-local JPN_Type98_20mm_Truck = AAGunTractor:New{
+Unit('JPN_Type98_20mm_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed Type 98 20mm Gun",
 	buildCostMetal			= 1250,
 	corpse					= "JPNIsuzuTX40_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local JPN_Type98_20mm_Truck = AAGunTractor:New{
 	trackWidth				= 13,
 }
 
-local JPN_Type98_20mm_Stationary = AAGun:New{
+Unit('JPN_Type98_20mm_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed Type 98 20mm Gun",
 	corpse					= "JPNType98_20mm_Destroyed",
 
@@ -20,8 +20,3 @@ local JPN_Type98_20mm_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["JPNType98_20mm_Truck"] = JPN_Type98_20mm_Truck,
-	["JPNType98_20mm_Stationary"] = JPN_Type98_20mm_Stationary,
-	["JPNType98_20mm_Stationary_base"] = JPN_Type98_20mm_Stationary:Clone("JPNType98_20mm_Stationary"),
-})

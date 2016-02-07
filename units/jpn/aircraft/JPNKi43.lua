@@ -1,4 +1,4 @@
-local JPN_Ki43 = Interceptor:New{
+Unit('JPN_Ki43'):Extends('Interceptor'):Attrs{
 	name				= "Ki-43 Hayabusa",
 	buildCostMetal		= 985,
 	maxDamage			= 235,
@@ -30,6 +30,3 @@ local JPN_Ki43 = Interceptor:New{
 }
 
 
-return lowerkeys({
-	["JPNKi43"] = JPN_Ki43,
-})

@@ -1,4 +1,4 @@
-local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
+Unit('GERJagdPanther'):Extends('HeavyTank'):Extends('TankDestroyer'):Attrs{
 	name				= "SdKfz 173 JagdPanther",
 	description			= "Heavy Turretless Tank Destroyer",
 	buildCostMetal		= 9100,
@@ -26,6 +26,3 @@ local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 	},
 }
 
-return lowerkeys({
-	["GERJagdPanther"] = GERJagdPanther,
-})

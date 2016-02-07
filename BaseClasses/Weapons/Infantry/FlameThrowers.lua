@@ -1,7 +1,7 @@
 -- Flamethrowers
 
 -- Flamethrower Class
-local FlamerClass = Weapon:New{
+AbstractWeapon('FlamerClass'):Extends('Weapon'):Attrs{
 	avoidFeature       = false,
 	burstrate          = 0.05,
 	cegTag             = [[Flametrail]],
@@ -35,6 +35,3 @@ local FlamerClass = Weapon:New{
 }
 
 -- Return only the full weapons
-return {
-	FlamerClass = FlamerClass,
-}

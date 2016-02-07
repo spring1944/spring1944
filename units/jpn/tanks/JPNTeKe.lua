@@ -1,4 +1,4 @@
-local TeKeBase = Tankette:New{
+Unit('TeKeBase'):Extends('Tankette'):Attrs{
 	name				= "Type 97 Te-Ke",
 	buildCostMetal		= 600,
 	maxDamage			= 475,
@@ -14,7 +14,7 @@ local TeKeBase = Tankette:New{
 	},
 }
 
-local JPNTeKe = TeKeBase:New{
+Unit('JPNTeKe'):Extends('TeKeBase'):Attrs{
 	weapons = {
 		[1] = {
 			name				= "Type9437mmAP",
@@ -35,7 +35,7 @@ local JPNTeKe = TeKeBase:New{
 	},
 }
 
-local JPNTeKe_HMG = TeKeBase:New{
+Unit('JPNTeKe_HMG'):Extends('TeKeBase'):Attrs{
 	buildCostMetal		= 400,
 	description			= "Tankettte with 7.7mm MG",
 	weapons = {
@@ -48,7 +48,3 @@ local JPNTeKe_HMG = TeKeBase:New{
 	},
 }
 
-return lowerkeys({
-	["JPNTeKe"] = JPNTeKe,
-	["JPNTeKe_HMG"] = JPNTeKe_HMG,
-})

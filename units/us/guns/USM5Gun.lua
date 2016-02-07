@@ -1,4 +1,4 @@
-local US_M5Gun_Truck = ATGunTractor:New{
+Unit('US_M5Gun_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed 3-Inch M5",
 	buildCostMetal			= 600,
 	corpse					= "USGMCTruck_Destroyed",
@@ -6,7 +6,7 @@ local US_M5Gun_Truck = ATGunTractor:New{
 	trackWidth				= 15,
 }
 
-local US_M5Gun_Stationary = ATGun:New{
+Unit('US_M5Gun_Stationary'):Extends('ATGun'):Attrs{
 	name					= "Deployed 3-Inch M5",
 	corpse					= "usm5gun_destroyed",
 	weapons = {
@@ -16,7 +16,3 @@ local US_M5Gun_Stationary = ATGun:New{
 	},
 }
 
-return lowerkeys({
-	["USM5Gun_Truck"] = US_M5Gun_Truck,
-	["USM5Gun_Stationary"] = US_M5Gun_Stationary,
-})

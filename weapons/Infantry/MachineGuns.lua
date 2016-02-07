@@ -3,7 +3,7 @@
 -- Implementations
 -- Rifle Calibre (~8mm) MG's
 -- BESA
-local BESA = MGClass:New{
+Weapon('BESA'):Extends('MGClass'):Attrs{
   burst              = 8,
   burstRate          = 0.109,
   movingAccuracy     = 7111,
@@ -16,7 +16,7 @@ local BESA = MGClass:New{
 }
 
 -- Bren Mk. 2 (GBR)
-local Bren = MGClass:New{
+Weapon('Bren'):Extends('MGClass'):Attrs{
   burst              = 5,
   burstRate          = 0.109,
   movingAccuracy     = 7111,
@@ -28,7 +28,7 @@ local Bren = MGClass:New{
 }
 
 -- MG34 (GER)
-local MG34 = MGClass:New{
+Weapon('MG34'):Extends('MGClass'):Attrs{
   accuracy           = 100, --?
   burst              = 10,
   burstRate          = 0.069,
@@ -41,7 +41,7 @@ local MG34 = MGClass:New{
 }
 
 -- MG42 (GER)
-local MG42 = MGClass:New{
+Weapon('MG42'):Extends('MGClass'):Attrs{
   accuracy           = 100, --?
   burst              = 11,
   burstRate          = 0.0175,
@@ -53,18 +53,18 @@ local MG42 = MGClass:New{
   sprayAngle         = 530,
 }
 -- Deployed MG42
-local MG42_Deployed = MG42:New{
+Weapon('MG42_Deployed'):Extends('MG42'):Attrs{
   range              = 1040,
   sprayAngle         = 360,
 }
 -- Anti Air MG42
-local MG42AA = MG42:New(AAMG):New{
+Weapon('MG42AA'):Extends('MG42'):Extends('AAMG'):Attrs{
   range              = 1170,
   sprayAngle         = 460,
 }
 
 -- DP (RUS)
-local DP = MGClass:New{
+Weapon('DP'):Extends('MGClass'):Attrs{
   burst              = 5,
   burstRate          = 0.12,
   movingAccuracy     = 1777, -- this looks like backwards 7111?
@@ -74,7 +74,7 @@ local DP = MGClass:New{
   soundStart         = [[RUS_DP]],
 }
 -- DT
-local DT = DP:New{
+Weapon('DT'):Extends('DP'):Attrs{
   movingAccuracy     = 300,
   range              = 910,
   reloadTime         = 3,
@@ -82,7 +82,7 @@ local DT = DP:New{
 }
 
 -- Maxim (RUS)
-local Maxim = MGClass:New{
+Weapon('Maxim'):Extends('MGClass'):Attrs{
   burst              = 14,
   burstRate          = 0.115,
   name               = [[M1910 Maxim]],
@@ -91,20 +91,20 @@ local Maxim = MGClass:New{
   soundStart         = [[RUS_Maxim]],
 }
 -- Maxim AA
-local MaximAA = Maxim:New(AAMG):New{
+Weapon('MaximAA'):Extends('Maxim'):Extends('AAMG'):Attrs{
   burst              = 7,
   burstRate          = 0.103,
   movingAccuracy     = 400,
   range              = 1050,
 }
 -- Vickers (GBR)
-local Vickers = Maxim:New{
+Weapon('Vickers'):Extends('Maxim'):Attrs{
   name               = [[Vickers, .303 Mark 1]],
   sprayAngle         = 300, -- ?
 }
 
 -- M1919 Browning (USA)
-local M1919A4Browning = MGClass:New{
+Weapon('M1919A4Browning'):Extends('MGClass'):Attrs{
   burst              = 7,
   burstRate          = 0.14,
   movingAccuracy     = 6222,
@@ -115,13 +115,13 @@ local M1919A4Browning = MGClass:New{
   sprayAngle         = 460,
 }
 -- Deployed Browning
-local M1919A4Browning_Deployed = M1919A4Browning:New{
+Weapon('M1919A4Browning_Deployed'):Extends('M1919A4Browning'):Attrs{
   range              = 1020,
   sprayAngle         = 400,
 }
 
 -- Breda 30 (ITA)
-local Breda30 = MGClass:New{
+Weapon('Breda30'):Extends('MGClass'):Attrs{
   burst              = 3,
   burstrate          = 0.1,
   movingAccuracy     = 2667,
@@ -133,7 +133,7 @@ local Breda30 = MGClass:New{
 }
 
 -- Breda M37 (ITA)
-local BredaM37 = MGClass:New{
+Weapon('BredaM37'):Extends('MGClass'):Attrs{
   burst              = 8,
   burstRate          = 0.16,
   movingAccuracy     = 6222,
@@ -145,7 +145,7 @@ local BredaM37 = MGClass:New{
 }
 
 -- Breda M38 (ITA)
-local BredaM38 = MGClass:New{
+Weapon('BredaM38'):Extends('MGClass'):Attrs{
   burst              = 7,
   burstRate          = 0.16,
   movingAccuracy     = 6222,
@@ -157,7 +157,7 @@ local BredaM38 = MGClass:New{
 }
 
 -- 7.7mm Breda SAFAT Air MG (ITA)
-local BredaSafat03 = MGClass:New(AMG):New{
+Weapon('BredaSafat03'):Extends('MGClass'):Extends('AMG'):Attrs{
   burst				 = 6,
   burstRate          = 0.05,
   canAttackGround    = false,
@@ -173,7 +173,7 @@ local BredaSafat03 = MGClass:New(AMG):New{
 }
 
 -- Type 97, also used for Type 99 (JPN)
-local Type97MG = MGClass:New{
+Weapon('Type97MG'):Extends('MGClass'):Attrs{
   burst              = 6,
   burstRate          = 0.1,
   movingAccuracy     = 6222,
@@ -185,7 +185,7 @@ local Type97MG = MGClass:New{
 }
 
 -- Type 92 (JPN)
-local Type92MG = MGClass:New{
+Weapon('Type92MG'):Extends('MGClass'):Attrs{
   burst              = 8,
   burstRate          = 0.073,
   movingAccuracy     = 6222,
@@ -197,7 +197,7 @@ local Type92MG = MGClass:New{
 } 
 
 -- 7.7mm TE-4 Air MG (JPN)
-local TE4 = MGClass:New(AAMG):New{
+Weapon('TE4'):Extends('MGClass'):Extends('AAMG'):Attrs{
   burst				 = 6,
   burstRate          = 0.15,
   name               = [[7.7mm TE-4 Machinegun]],
@@ -215,30 +215,30 @@ local TE4 = MGClass:New(AAMG):New{
 
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
-local Twin05CalVickers = HeavyMGClass:New{
+Weapon('Twin05CalVickers'):Extends('HeavyMGClass'):Attrs{
   name               = [[Twin Vickers .50 Caliber Heavy Machine Gun]],
   range              = 875,
   reloadTime         = 2.2,
   soundStart         = [[US_50CAL]],
   customParams = {
-    onlyTargetCategory = SmallArm.customparams.onlytargetcategory .. " AIR", -- TODO: fudge as these can target air too
+	onlytargetcategory = "INFANTRY SOFTVEH DEPLOYED AIR", -- this is a bit of a special snowflake with target categories?
   },
 }
 
 -- DShK (RUS)
-local DShK = HeavyMGClass:New{
+Weapon('DShK'):Extends('HeavyMGClass'):Attrs{
   name               = [[DShK 12.7mm Heavy Machine Gun]],
   range              = 875,
   reloadTime         = 3,
   soundStart         = [[RUS_DShK]],
 }
 -- Twin DShK
-local Twin_DShK = DShK:New{
+Weapon('Twin_DShK'):Extends('DShK'):Attrs{
   reloadTime         = 1.4, -- why not 1.5?
 }
 
 -- M2 Browning  (USA)
-local M2Browning = HeavyMGClass:New{
+Weapon('M2Browning'):Extends('HeavyMGClass'):Attrs{
   name               = [[M2 Browning .50 Caliber Heavy Machine Gun]],
   burst				 = 3,
   range              = 880,
@@ -246,7 +246,7 @@ local M2Browning = HeavyMGClass:New{
   soundStart         = [[US_50CAL]],
 }
 -- M2 Browning AA
-local M2BrowningAA = M2Browning:New(AAMG):New{
+Weapon('M2BrowningAA'):Extends('M2Browning'):Extends('AAMG'):Attrs{
   burst              = 3,
   movingAccuracy     = 200,
   range              = 1170,
@@ -254,7 +254,7 @@ local M2BrowningAA = M2Browning:New(AAMG):New{
   reloadTime         = 0.375,
 }
 -- M2 Browning Aircraft
-local M2BrowningAMG = M2Browning:New(AMG):New{
+Weapon('M2BrowningAMG'):Extends('M2Browning'):Extends('AMG'):Attrs{
   burst             = 3,
   burstRate         = 0.085,
   range             = 900,
@@ -271,7 +271,7 @@ local M2BrowningAMG = M2Browning:New(AMG):New{
 }
 
 -- Breda M1931 (ITA)
-local BredaM1931 = HeavyMGClass:New{
+Weapon('BredaM1931'):Extends('HeavyMGClass'):Attrs{
   name               = [[Breda M1931 13mm Heavy Machine Gun]],
   range              = 880,
   reloadTime         = 4,
@@ -280,7 +280,7 @@ local BredaM1931 = HeavyMGClass:New{
 }
 
 --Breda M1931 AA
-local BredaM1931AA = BredaM1931:New{
+Weapon('BredaM1931AA'):Extends('BredaM1931'):Attrs{
   accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
@@ -297,7 +297,7 @@ local BredaM1931AA = BredaM1931:New{
 }
 
 -- .50 Caliber Breda SAFAT Air MG (ITA)
-local BredaSafat05 = HeavyMGClass:New(AMG):New{
+Weapon('BredaSafat05'):Extends('HeavyMGClass'):Extends('AMG'):Attrs{
   burst				 = 6,
   burstRate          = 0.125,
   canAttackGround    = false,
@@ -314,7 +314,7 @@ local BredaSafat05 = HeavyMGClass:New(AMG):New{
 
 
 -- Type 93 (JPN)
-local Type93HMG = HeavyMGClass:New{
+Weapon('Type93HMG'):Extends('HeavyMGClass'):Attrs{
   name               = [[Type 93 13mm Heavy Machine Gun]],
   range              = 880,
   reloadTime         = 4,
@@ -323,7 +323,7 @@ local Type93HMG = HeavyMGClass:New{
 }
 
 -- Type 93 AA
-local Type93AA = Type93HMG:New{
+Weapon('Type93AA'):Extends('Type93HMG'):Attrs{
   accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
@@ -339,7 +339,7 @@ local Type93AA = Type93HMG:New{
 }
 
 -- Type 1 Ho-103 12.7mm Air MG (JPN)
-local Type1Ho103 = HeavyMGClass:New{
+Weapon('Type1Ho103'):Extends('HeavyMGClass'):Attrs{
   burst			= 8,
   burstRate          = 0.085,
   canAttackGround    = false,
@@ -359,39 +359,3 @@ local Type1Ho103 = HeavyMGClass:New{
 
 
 -- Return only the full weapons
-return lowerkeys({
-  -- 8mm
-  BESA = BESA,
-  Bren = Bren,
-  Vickers = Vickers,
-  MG34 = MG34,
-  MG42 = MG42,
-  MG42_Deployed = MG42_Deployed,
-  MG42AA = MG42AA,
-  DP = DP,
-  DT = DT,
-  Maxim = Maxim,
-  MaximAA = MaximAA,
-  M1919A4Browning = M1919A4Browning,
-  M1919A4Browning_Deployed = M1919A4Browning_Deployed,
-  Breda30 = Breda30,
-  BredaM37 = BredaM37,
-  BredaM38 = BredaM38,
-  BredaSafat03 = BredaSafat03,
-  Type97MG = Type97MG,
-  Type92MG = Type92MG,
-  TE4 = TE4,
-  -- 13mm
-  Twin05CalVickers = Twin05CalVickers,
-  DShK = DShK,
-  Twin_DShK = Twin_DShK,
-  M2Browning = M2Browning,
-  M2BrowningAA = M2BrowningAA,
-  M2BrowningAMG = M2BrowningAMG,
-  BredaM1931 = BredaM1931,
-  BredaM1931AA = BredaM1931AA,
-  BredaSafat05 = BredaSafat05,
-  Type93HMG = Type93HMG,
-  Type93AA = Type93AA,
-  Type1Ho103 = Type1Ho103,
-})

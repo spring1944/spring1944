@@ -1,4 +1,4 @@
-local ITASPADovunque = TruckAA:New{
+Unit('ITASPADovunque'):Extends('TruckAA'):Attrs{
 	name				= "Autocannone Breda da 20 mm A/A su Fiat-SPA Dovunque 35",
 	buildCostMetal		= 1200,
 	maxDamage			= 453,
@@ -16,6 +16,3 @@ local ITASPADovunque = TruckAA:New{
 	}
 }
 
-return lowerkeys({
-	["ITASPADovunque"] = ITASPADovunque,
-})

@@ -1,5 +1,5 @@
 -- Tanks ----
-local Tank = Unit:New{ -- some overlap with Vehicle
+AbstractUnit('Tank'):Extends('Unit'):Attrs{ -- some overlap with Vehicle
 	acceleration		= 0.051,
 	brakeRate			= 0.15,
 	canMove				= true,
@@ -26,7 +26,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 
 
 -- Light Tank
-local LightTank = Tank:New{
+AbstractUnit('LightTank'):Extends('Tank'):Attrs{
 	description 		= "Light Tank",
 	iconType			= "lighttank",
 	movementClass		= "TANK_Light",
@@ -38,7 +38,7 @@ local LightTank = Tank:New{
 }
 
 -- Tankette
-local Tankette = LightTank:New{
+AbstractUnit('Tankette'):Extends('LightTank'):Attrs{
 	description 		= "Tankette",
 	explodeAs			= "Vehicle_Explosion_Sm",
 	footprintX			= 2,
@@ -46,7 +46,7 @@ local Tankette = LightTank:New{
 }
 
 -- Medium Tank
-local MediumTank = Tank:New{
+AbstractUnit('MediumTank'):Extends('Tank'):Attrs{
 	description 		= "Medium Tank",
 	iconType			= "medtank",
 
@@ -56,7 +56,7 @@ local MediumTank = Tank:New{
 }
 
 -- Heavy Tank
-local HeavyTank = Tank:New{
+AbstractUnit('HeavyTank'):Extends('Tank'):Attrs{
 	acceleration		= 0.043,
 	brakeRate			= 0.105,
 	description 		= "Heavy Tank",
@@ -72,7 +72,7 @@ local HeavyTank = Tank:New{
 }
 
 -- Assault Gun
-local AssaultGun = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('AssaultGun'):Attrs{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
 	turnRate			= 160,
@@ -82,7 +82,7 @@ local AssaultGun = Def:New{ -- not a full class (role/mixin)
 }
 
 -- Tank Destroyer
-local TankDestroyer = AssaultGun:New{
+AbstractUnit('TankDestroyer'):Extends('AssaultGun'):Attrs{
 	description 		= "Tank Destroyer",
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP/TD",
@@ -91,7 +91,7 @@ local TankDestroyer = AssaultGun:New{
 }
 
 -- SP Arty Tank
-local SPArty = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('SPArty'):Attrs{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Howitzer",
 	iconType			= "sparty",
 	turnRate			= 175,
@@ -102,21 +102,10 @@ local SPArty = Def:New{ -- not a full class (role/mixin)
 	}
 }
 
-local OpenTopped = Def:New{ --not a full class (role/mixin)
+AbstractUnit('OpenTopped'):Attrs{ --not a full class (role/mixin)
 	category			= "MINETRIGGER OPENVEH",
 	customParams = {
 		damageGroup		= "armouredVehicles",
 	},
 }
 
-return {
-	Tank = Tank,
-	Tankette = Tankette,
-	LightTank = LightTank,
-	MediumTank = MediumTank,
-	HeavyTank = HeavyTank,
-	AssaultGun = AssaultGun,
-	TankDestroyer = TankDestroyer,
-	SPArty = SPArty,
-	OpenTopped = OpenTopped,
-}

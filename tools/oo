@@ -1,0 +1,72 @@
+#!/usr/bin/env lua
+
+package.path = './tools/lib/3rdparty/?.lua;' .. package.path
+package.path = './gamedata/lib/3rdparty/?.lua;' .. package.path
+package.path = './gamedata/lib/?.lua;' .. package.path
+
+local Parser = require 'argparse'
+registry = require 'registry'
+local inspect = require 'inspect'
+local json = require 'dkjson'
+local oo = require './tools/lib/oo'
+local env = require 'oo_env'
+
+local cli = Parser "oo"
+cli:description('handy tool for working with OO spring defs')
+cli:command_target("command")
+cli:option("-d --dir", "directories to search for defs", 'BaseClasses,units,weapons')
+cli:option("-f --format", "output format (json or lua)", 'lua')
+
+local render = cli:command('render', 'render a class into a its full form')
+render:argument("class")
+
+local users = cli:command('users', 'show users of a given class/tag')
+users:argument("class", "class to trace"):args(1)
+users:argument("key"):args('?')
+
+local trace = cli:command('trace', 'show source for each tag of a class')
+trace:argument("class", "class to trace"):args(1)
+
+local unused = cli:command('unused', 'find abstract classes with no users')
+local lint = cli:command('lint', 'check for errors in defs')
+
+local function output(table, format)
+	if format == 'lua' then
+		print(inspect(table))
+	elseif format == 'json' then
+		print(json.encode(table))
+	else
+		print('unknown output format', format)
+	end
+end
+
+local args, err = cli:parse()
+
+local action = {
+	lint = function (args)
+		print("lint done!")
+	end,
+	trace = function (args)
+		output(oo.trace(args.class), args.format)
+	end,
+	render = function (args)
+		output(oo.render(args.class), args.format)
+	end,
+	users = function (args)
+		output(oo.users(args.class, args.key), args.format)
+	end,
+	unused = function (args)
+		io.output(io.stderr):write("searching 'users' tree for every known def to find unused branches, this will take some time...\n")
+		io.output(io.stderr):write("TODO: make this faster\n")
+		output(oo.unused(), args.format)
+	end
+}
+
+if args.command then
+	oo.crawlDir(args.dir)
+	local status, err = pcall(action[args.command], args)
+	if err then
+		err = string.gsub(err, "^.+:[0-9]+: ", '')
+		print("error: " .. err)
+	end
+end

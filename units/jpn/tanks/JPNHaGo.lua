@@ -1,4 +1,4 @@
-local JPNHaGo = LightTank:New{
+Unit('JPNHaGo'):Extends('LightTank'):Attrs{
 	name				= "Type 95 Ha-Go",
 	buildCostMetal		= 1150,
 	maxDamage			= 740,
@@ -36,6 +36,3 @@ local JPNHaGo = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["JPNHaGo"] = JPNHaGo,
-})

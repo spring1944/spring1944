@@ -1,8 +1,5 @@
-local GER_StorageBunker = Storage:New(Bunker):New{
+Unit('GER_StorageBunker'):Extends('Storage'):Extends('Bunker'):Attrs{
 	name					= "Hardened Storage Shed",
 	maxDamage				= 15000,
 }
 
-return lowerkeys({
-	["GERStorageBunker"] = GER_StorageBunker,
-})

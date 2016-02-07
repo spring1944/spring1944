@@ -1,4 +1,4 @@
-local US_SC = ArmedBoat:New{
+Unit('US_SC'):Extends('ArmedBoat'):Attrs{
 	name					= "SC-497 Submarine Chaser",
 	description				= "Patrol Gunboat",
 	acceleration			= 0.075,
@@ -37,7 +37,7 @@ local US_SC = ArmedBoat:New{
 }
 
 
-local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
+Unit('US_SC_Turret_20mm_Left'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "<SIDE>/USSC_Turret_20mm.s3o",
@@ -66,7 +66,7 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 		facing 					= 3,
 	},
 }
-local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
+Unit('US_SC_Turret_20mm_Right'):Extends('US_SC_Turret_20mm_Left'):Attrs{
 	weapons = {	
 		[1] = {
 			mainDir				= [[-1 0 0]],
@@ -79,7 +79,7 @@ local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
 		facing 					= 1,
 	},
 }
-local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
+Unit('US_SC_Turret_20mm_Rear'):Extends('US_SC_Turret_20mm_Left'):Attrs{
 	weapons = {	
 		[1] = {
 			mainDir				= [[0 0 1]],
@@ -95,7 +95,7 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 	},
 }
 
-local US_SC_Turret_76mm = OpenBoatTurret:New{
+Unit('US_SC_Turret_76mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -116,10 +116,3 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["USSC"] = US_SC,
-	["USSC_Turret_76mm"] = US_SC_Turret_76mm,
-	["USSC_Turret_20mm_Left"] = US_SC_Turret_20mm_Left,
-	["USSC_Turret_20mm_Right"] = US_SC_Turret_20mm_Right,
-	["USSC_Turret_20mm_Rear"] = US_SC_Turret_20mm_Rear,
-})

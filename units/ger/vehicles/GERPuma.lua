@@ -1,4 +1,4 @@
-local GERPuma = HeavyArmouredCar:New{
+Unit('GERPuma'):Extends('HeavyArmouredCar'):Attrs{
 	name				= "Sd.Kfz. 234/2 Puma",
 	buildCostMetal		= 1700,
 	maxDamage			= 1174,
@@ -37,6 +37,3 @@ local GERPuma = HeavyArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["GERPuma"] = GERPuma,
-})

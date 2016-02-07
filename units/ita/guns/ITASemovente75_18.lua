@@ -1,4 +1,4 @@
-local ITASemovente75_18 = MediumTank:New(AssaultGun):New{
+Unit('ITASemovente75_18'):Extends('MediumTank'):Extends('AssaultGun'):Attrs{
 	name				= "Semovente da 75/18",
 	buildCostMetal		= 2050,
 	maxDamage			= 1470,
@@ -28,6 +28,3 @@ local ITASemovente75_18 = MediumTank:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["ITASemovente75_18"] = ITASemovente75_18,
-})

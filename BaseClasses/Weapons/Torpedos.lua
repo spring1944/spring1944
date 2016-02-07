@@ -1,7 +1,7 @@
 -- Misc - Torpedos
 
 -- Torpedo Base Class
-local TorpedoClass   = Weapon:New{
+AbstractWeapon('TorpedoClass'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 32,  -- *
 	avoidFriendly      = true,
 	burnblow           = true,
@@ -28,6 +28,3 @@ local TorpedoClass   = Weapon:New{
 	},
 }
 
-return {
-	TorpedoClass = TorpedoClass,
-}

@@ -1,4 +1,4 @@
-local ITA_MC205 = FighterBomber:New{
+Unit('ITA_MC205'):Extends('FighterBomber'):Attrs{
 	name				= "Macchi MC205 Veltro",
 	buildCostMetal		= 3375,
 	maxDamage			= 340,
@@ -48,6 +48,3 @@ local ITA_MC205 = FighterBomber:New{
 }
 
 
-return lowerkeys({
-	["ITAMC205"] = ITA_MC205,
-})

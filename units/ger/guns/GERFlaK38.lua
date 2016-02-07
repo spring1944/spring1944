@@ -1,4 +1,4 @@
-local GER_FlaK38_Truck = AAGunTractor:New{
+Unit('GER_FlaK38_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed 2cm FlaK 38",
 	buildCostMetal			= 1250,
 	corpse					= "GEROpelBlitz_Destroyed",
@@ -6,7 +6,7 @@ local GER_FlaK38_Truck = AAGunTractor:New{
 	trackWidth				= 13,
 }
 
-local GER_FlaK38_Stationary = AAGun:New{
+Unit('GER_FlaK38_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed 2cm FlaK 38",
 	corpse					= "GERFlaK38_Destroyed",
 
@@ -20,8 +20,3 @@ local GER_FlaK38_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["GERFlaK38_Truck"] = GER_FlaK38_Truck,
-	["GERFlaK38_Stationary"] = GER_FlaK38_Stationary,
-	["GERFlaK38_Stationary_base"] = GER_FlaK38_Stationary:Clone("GERFlaK38_Stationary"),
-})

@@ -1,4 +1,4 @@
-local GBRSatchelCharge = Mine:New{
+Unit('GBRSatchelCharge'):Extends('Mine'):Attrs{
 	name						= "Satchel Charge",
 	description					= "Anti-Building Demolitions Pack",
 	buildTime					= 750,
@@ -15,43 +15,43 @@ local GBRSatchelCharge = Mine:New{
 }
 
 -- Mines --
-local APMine = Mine:New{
+Unit('APMine'):Extends('Mine'):Attrs{
 	name						= "Anti-Personnel Mine",
 	buildingGroundDecalSizeX	= 1,
 	buildingGroundDecalSizeY	= 1,
-	explodeAs					= "APMine",
-	selfDestructAs				= "APMine",
+	explodeAs					= "APMineExplosion",
+	selfDestructAs				= "APMineExplosion",
 	weapons = {
 		[1] = {
-			name					= "APMine",
+			name					= "APMineExplosion",
 		}
 	},
 }
 
-local ATMine = Mine:New{
+Unit('ATMine'):Extends('Mine'):Attrs{
 	name						= "Anti-Tank Mine",
 	buildingGroundDecalSizeX	= 2,
 	buildingGroundDecalSizeY	= 2,
-	explodeAs					= "ATMine",
-	selfDestructAs				= "ATMine",
+	explodeAs					= "ATMineExplosion",
+	selfDestructAs				= "ATMineExplosion",
 	weapons = {
 		[1] = {
-			name					= "ATMine",
+			name					= "ATMineExplosion",
 		}
 	},
 }
 
 -- Mine Signs --
-local APMineSign = MineSign:New{
+Unit('APMineSign'):Extends('MineSign'):Attrs{
 	name						= "AP Minefield",
 	description					= "Warning! AP Mines!",
-	maxSlope				= 3,
+	maxSlope					= 3,
 	customparams = {
 		minetype				= "apminesign",
 	},
 }
 
-local ATMineSign = MineSign:New{
+Unit('ATMineSign'):Extends('MineSign'):Attrs{
 	buildCostMetal              = 180,
 	buildTime				    = 180,
 	name						= "AT Minefield",
@@ -62,18 +62,10 @@ local ATMineSign = MineSign:New{
 	},
 }
 
-local units = {
-	APMine = APMine,
-	ATMine = ATMine,
-	GBRSatchelCharge = GBRSatchelCharge,
-}
-
 for _, side in pairs(Sides) do
-	units[side .. "apminesign"] = APMineSign:New{}
-	units[side .. "atminesign"] = ATMineSign:New{}
+	Unit(side..'APMineSign'):Extends('APMineSign')
+	Unit(side..'ATMineSign'):Extends('ATMineSign')
 	-- tank trap just uses plain base class for now...
 	-- .. may do side specific models later
-	units[side .. "tankobstacle"] = TankObstacle:New{}
+	Unit(side..'tankobstacle'):Extends('TankObstacle')
 end
-
-return lowerkeys(units)

@@ -1,4 +1,4 @@
-local GERLeIG18 = InfantryGun:New{
+Unit('GERLeIG18'):Extends('InfantryGun'):Attrs{
 	name					= "7.5cm LeIG 18",
 	corpse					= "gerleig18_destroyed",
 	buildCostMetal				= 1280,
@@ -10,6 +10,3 @@ local GERLeIG18 = InfantryGun:New{
 }
 
 
-return lowerkeys({
-	["GERLeIG18"] = GERLeIG18,
-})

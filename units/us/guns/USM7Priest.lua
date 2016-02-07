@@ -1,4 +1,4 @@
-local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
+Unit('USM7Priest'):Extends('MediumTank'):Extends('SPArty'):Extends('OpenTopped'):Attrs{
 	name				= "M7 HMC Priest",
 	buildCostMetal		= 4500,
 	maxDamage			= 2300,
@@ -27,6 +27,3 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["USM7Priest"] = USM7Priest,
-})

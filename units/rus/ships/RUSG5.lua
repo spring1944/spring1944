@@ -1,4 +1,4 @@
-local RUS_G5 = ArmedBoat:New{
+Unit('RUS_G5'):Extends('ArmedBoat'):Attrs{
 	name					= "G-5 torpedo boat with M-8 rocket launcher",
 	description				= "Rocket artillery boat",
 	acceleration			= 0.1,
@@ -34,7 +34,7 @@ local RUS_G5 = ArmedBoat:New{
 	},
 }
 
-local RUS_G5_Turret_M_8 = OpenBoatTurret:New{
+Unit('RUS_G5_Turret_M_8'):Extends('OpenBoatTurret'):Attrs{
 	name					= "M-8 Turret",
 	description				= "Rocket Launcher",
   	weapons = {	
@@ -51,7 +51,7 @@ local RUS_G5_Turret_M_8 = OpenBoatTurret:New{
     },
 }
 
-local RUS_G5_Turret_DshK = OpenBoatTurret:New{
+Unit('RUS_G5_Turret_DshK'):Extends('OpenBoatTurret'):Attrs{
 	name					= "DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -68,8 +68,3 @@ local RUS_G5_Turret_DshK = OpenBoatTurret:New{
 	},
 }
 
-return lowerkeys({
-	["RUSG5"] = RUS_G5,
-	["RUSG5_Turret_M-8"] = RUS_G5_Turret_M_8,
-	["RUSG5_Turret_DshK"] = RUS_G5_Turret_DshK,
-})

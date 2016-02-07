@@ -3,13 +3,10 @@
 -- Implementations
 
 -- Binoculars
-local Binocs = OpticClass:New{
+Weapon('Binocs'):Extends('OpticClass'):Attrs{
   name               = [[Binoculars]],
   range              = 2000,
 }
 
 
 -- Return only the full weapons
-return lowerkeys({
-  Binocs = Binocs,
-})

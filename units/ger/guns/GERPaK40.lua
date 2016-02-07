@@ -1,11 +1,11 @@
-local GER_PaK40_Truck = ATGunTractor:New{
+Unit('GER_PaK40_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed 7.5cm PaK 40",
 	corpse					= "GERSdKfz11_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local GER_PaK40_Stationary = ATGun:New{
+Unit('GER_PaK40_Stationary'):Extends('ATGun'):Attrs{
 	name					= "Deployed 7.5cm PaK 40",
 	corpse					= "gerpak40_destroyed",
 
@@ -16,7 +16,3 @@ local GER_PaK40_Stationary = ATGun:New{
 	},
 }
 	
-return lowerkeys({
-	["GERPaK40_Truck"] = GER_PaK40_Truck,
-	["GERPaK40_Stationary"] = GER_PaK40_Stationary,
-})

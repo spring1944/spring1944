@@ -1,4 +1,4 @@
-local RUSIS2 = HeavyTank:New{
+Unit('RUSIS2'):Extends('HeavyTank'):Attrs{
 	name				= "IS-2 M1944",
 	buildCostMetal		= 11400,
 	maxDamage			= 4600,
@@ -36,6 +36,3 @@ local RUSIS2 = HeavyTank:New{
 	},
 }
 
-return lowerkeys({
-	["RUSIS2"] = RUSIS2,
-})

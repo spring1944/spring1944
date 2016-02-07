@@ -1,4 +1,4 @@
-local GBR_LZ = Building:New{
+Unit('GBR_LZ'):Extends('Building'):Attrs{
 	name			= "Commando Landing Zone",
 	buildCostMetal	= 2700,
 	explodeAs		= "GBRLZ_death",
@@ -22,6 +22,3 @@ local GBR_LZ = Building:New{
 	}
 }
 
-return lowerkeys({
-	["GBRLZ"] = GBR_LZ,
-})

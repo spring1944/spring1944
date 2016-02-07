@@ -1,4 +1,4 @@
-local ITA_MZ = TankLandingCraft:New{
+Unit('ITA_MZ'):Extends('TankLandingCraft'):Attrs{
 	name					= "Motozattera",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
@@ -55,6 +55,3 @@ local ITA_MZ = TankLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["ITAMZ"] = ITA_MZ,
-})

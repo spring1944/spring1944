@@ -1,4 +1,4 @@
-local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
+Unit('GBRM10Achilles'):Extends('MediumTank'):Extends('TankDestroyer'):Extends('OpenTopped'):Attrs{
 	name				= "17pdr SP Achilles Ic",
 	description			= "Upgunned Tank Destroyer",
 	buildCostMetal		= 2400,
@@ -31,6 +31,3 @@ local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["GBRM10Achilles"] = GBRM10Achilles,
-})

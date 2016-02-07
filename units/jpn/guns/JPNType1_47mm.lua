@@ -1,4 +1,4 @@
-local JPN_Type1_47mm_Truck = ATGunTractor:New{
+Unit('JPN_Type1_47mm_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed Type 1 47mm Gun",
 	buildCostMetal			= 400,
 	corpse					= "JPNIsuzuTX40_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local JPN_Type1_47mm_Truck = ATGunTractor:New{
 	trackWidth				= 12,
 }
 
-local JPN_Type1_47mm_Stationary = LightATGun:New{
+Unit('JPN_Type1_47mm_Stationary'):Extends('LightATGun'):Attrs{
 	name					= "Deployed Type 1 47mm Gun",
 	corpse					= "JPNType1_47mm_destroyed",
 	weapons = {
@@ -16,7 +16,3 @@ local JPN_Type1_47mm_Stationary = LightATGun:New{
 	},
 }
 
-return lowerkeys({
-	["JPNType1_47mm_Truck"] = JPN_Type1_47mm_Truck,
-	["JPNType1_47mm_Stationary"] = JPN_Type1_47mm_Stationary,
-})

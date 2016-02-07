@@ -1,4 +1,4 @@
-local JPNHoHa = HalfTrack:New{
+Unit('JPNHoHa'):Extends('HalfTrack'):Attrs{
 	name					= "Type 1 Ho-Ha",
 	buildCostMetal			= 1100,
 	maxDamage				= 900,
@@ -14,6 +14,3 @@ local JPNHoHa = HalfTrack:New{
 	},
 }
 
-return lowerkeys({
-	["JPNHoHa"] = JPNHoHa,
-})

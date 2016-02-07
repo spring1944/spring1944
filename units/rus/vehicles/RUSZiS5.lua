@@ -1,13 +1,13 @@
-local RUS_ZiS5Base = Truck:New{
+Unit('RUS_ZiS5Base'):Extends('Truck'):Attrs{
 	name					= "ZiS-5",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local RUS_ZiS5 = RUS_ZiS5Base:New(TransportTruck)
-local RUS_PontoonTruck = RUS_ZiS5Base:New(PontoonTruck, true)
+Unit('RUS_ZiS5'):Extends('RUS_ZiS5Base'):Extends('TransportTruck')
+Unit('RUS_PontoonTruck'):Extends('RUS_ZiS5Base'):Extends('PontoonTruck') -- name append
 
-local RUS_SupplyTruck = RUS_ZiS5Base:New{
+Unit('RUS_SupplyTruck'):Extends('RUS_ZiS5Base'):Attrs{
 	name					= "ZiS-5 Supply Storage Truck",
 	description				= "Deploys Into Storage Shed",
 	energyStorage			= 1040,
@@ -17,8 +17,3 @@ local RUS_SupplyTruck = RUS_ZiS5Base:New{
 	idleTime				= 1000,
 }
 
-return lowerkeys({
-	["RUSZiS5"] = RUS_ZiS5,
-	["RUSPontoonTruck"] = RUS_PontoonTruck,
-	["RUSSupplyTruck"] = RUS_SupplyTruck,
-})

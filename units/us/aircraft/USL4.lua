@@ -1,4 +1,4 @@
-local US_L4 = Recon:New{
+Unit('US_L4'):Extends('Recon'):Attrs{
 	name			= "L-4 Grasshopper",
 	maxDamage		= 34.5,
 	
@@ -11,6 +11,3 @@ local US_L4 = Recon:New{
 }
 
 
-return lowerkeys({
-	["USL4"] = US_L4,
-})

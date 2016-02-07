@@ -1,9 +1,6 @@
-local JPN_StorageTunnel = Storage:New{
+Unit('JPN_StorageTunnel'):Extends('Storage'):Attrs{
 	name					= "Storage & Supply Tunnel",
 	description				= "General Logistics & Ammunition Stockpile, also provides logistics income",
 	energyMake				= 2,
 }
 
-return lowerkeys({
-	["JPNStorageTunnel"] = JPN_StorageTunnel,
-})

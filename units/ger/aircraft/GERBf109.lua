@@ -1,4 +1,4 @@
-local GER_Bf109 = Interceptor:New{
+Unit('GER_Bf109'):Extends('Interceptor'):Attrs{
 	name				= "BF 109K-4",
 	buildCostMetal		= 985,
 	maxDamage			= 224.7,
@@ -35,6 +35,3 @@ local GER_Bf109 = Interceptor:New{
 }
 
 
-return lowerkeys({
-	["GERBf109"] = GER_Bf109,
-})

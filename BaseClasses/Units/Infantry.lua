@@ -1,5 +1,5 @@
 -- Infantry ----
-local Infantry = Unit:New{
+AbstractUnit('Infantry'):Extends('Unit'):Attrs{
 	airSightDistance	= 2000,
 	acceleration		= 0.375,
 	brakeRate			= 0.9,
@@ -37,7 +37,7 @@ local Infantry = Unit:New{
 }
 
 -- Basic Types
-local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
+AbstractUnit('RifleInf'):Extends('Infantry'):Attrs{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
 	
@@ -55,7 +55,7 @@ local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	},
 }
 
-local SMGInf = Infantry:New{
+AbstractUnit('SMGInf'):Extends('Infantry'):Attrs{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
 	
@@ -74,7 +74,7 @@ local SMGInf = Infantry:New{
 }
 
 -- Support & Specialists
-local LMGInf = Infantry:New{
+AbstractUnit('LMGInf'):Extends('Infantry'):Attrs{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
 	buildCostMetal		= 200, -- TODO: needed?
@@ -86,7 +86,7 @@ local LMGInf = Infantry:New{
 	},
 }
 
-local HMGInf = Infantry:New{
+AbstractUnit('HMGInf'):Extends('Infantry'):Attrs{
 	description			= "Heavy Machinegun",
 	acceleration		= 0.2,
 	iconType			= "lightmg",
@@ -100,7 +100,7 @@ local HMGInf = Infantry:New{
 	},
 }
 
-local SniperInf = Infantry:New{
+AbstractUnit('SniperInf'):Extends('Infantry'):Attrs{
 	description			= "Sniper",
 	iconType			= "sniper",
 	buildCostMetal		= 300, -- TODO: needed?
@@ -121,7 +121,7 @@ local SniperInf = Infantry:New{
 	},
 }
 
-local ObservInf = Infantry:New{
+AbstractUnit('ObservInf'):Extends('Infantry'):Attrs{
 	name				= "Scout",
 	description			= "Reconnaisance Infantry",
 	iconType			= "officer",
@@ -138,7 +138,7 @@ local ObservInf = Infantry:New{
 }
 
 
-local MedMortarInf = Infantry:New{
+AbstractUnit('MedMortarInf'):Extends('Infantry'):Attrs{
 	description			= "Heavy Infantry Fire Support",
 	highTrajectory		= 1,
 	iconType			= "mortar",
@@ -154,13 +154,13 @@ local MedMortarInf = Infantry:New{
 	},
 }
 
-local LightMortarInf = MedMortarInf:New{
+AbstractUnit('LightMortarInf'):Extends('MedMortarInf'):Attrs{
 	description			= "Light Infantry Mortar",
 	hightrajectory		= false,
 	maxVelocity			= 1.45,
 }
 	
-local FlameInf = Infantry:New{
+AbstractUnit('FlameInf'):Extends('Infantry'):Attrs{
 	description			= "Close Range Heavy Assault Infantry",
 	iconType			= "flame",
 	acceleration		= 0.2,
@@ -180,7 +180,7 @@ local FlameInf = Infantry:New{
 }
 
 -- Anti-Tank
-local ATLauncherInf = Infantry:New{
+AbstractUnit('ATLauncherInf'):Extends('Infantry'):Attrs{
 	description			= "Anti-Tank Infantry",
 	iconType			= "antitank",
 	weapons = {
@@ -190,11 +190,11 @@ local ATLauncherInf = Infantry:New{
 	},	
 }
 
-local ATGrenadeInf = ATLauncherInf:New{
+AbstractUnit('ATGrenadeInf'):Extends('ATLauncherInf'):Attrs{
 	description			= "Short Range Heavy Anti-Tank",
 }
 
-local ATRifleInf = Infantry:New{
+AbstractUnit('ATRifleInf'):Extends('Infantry'):Attrs{
 	description			= "Long Range Light Anti-Tank",
 	icontype			= "rusptrd", -- TODO: atm italian solothurn has its own icon, consolidate
 	
@@ -206,7 +206,7 @@ local ATRifleInf = Infantry:New{
 }
 
 -- Engineers --
-local EngineerInf = Infantry:New{
+AbstractUnit('EngineerInf'):Extends('Infantry'):Attrs{
 	description			= "Basic Engineer",
 	buildCostMetal		= 260,
 	category			= "INFANTRY", -- no MINETRIGGER
@@ -223,7 +223,7 @@ local EngineerInf = Infantry:New{
 }
 
 -- Infantry Guns --
-local InfantryGun = Infantry:New{
+AbstractUnit('InfantryGun'):Extends('Infantry'):Attrs{
 	description			= "Infantry Support Cannon",
 	acceleration		= 0.2,
 	brakeRate			= 0.6,
@@ -252,25 +252,3 @@ local InfantryGun = Infantry:New{
 	},
 }
 
-return {
-	Infantry = Infantry,
-	-- Basic Types
-	RifleInf = RifleInf,
-	SMGInf = SMGInf,
-	-- Support & Specialists
-	LMGInf = LMGInf,
-	HMGInf = HMGInf,
-	SniperInf = SniperInf,
-	LightMortarInf = LightMortarInf,
-	MedMortarInf = MedMortarInf,
-	FlameInf = FlameInf,
-	ObservInf = ObservInf,
-	-- Anti-Tank
-	ATLauncherInf = ATLauncherInf,
-	ATGrenadeInf = ATGrenadeInf,
-	ATRifleInf = ATRifleInf,
-	-- Engineers
-	EngineerInf = EngineerInf,
-	-- Infantry Guns
-	InfantryGun = InfantryGun,
-}

@@ -1,4 +1,4 @@
-local GERTiger = HeavyTank:New{
+Unit('GERTiger'):Extends('HeavyTank'):Attrs{
 	name				= "PzKpfw VI Tiger Ausf E",
 	buildCostMetal		= 9770,
 	maxDamage			= 5700,
@@ -34,6 +34,3 @@ local GERTiger = HeavyTank:New{
 	},
 }
 
-return lowerkeys({
-	["GERTiger"] = GERTiger,
-})

@@ -1,13 +1,9 @@
-local GBR_BedfordBase = Truck:New{
+Unit('GBR_BedfordBase'):Extends('Truck'):Attrs{
 	name					= "Bedford QL",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local GBR_BedfordTruck = GBR_BedfordBase:New(TransportTruck)
-local GBR_PontoonTruck = GBR_BedfordBase:New(PontoonTruck, true)
+Unit('GBR_BedfordTruck'):Extends('GBR_BedfordBase'):Extends('TransportTruck')
+Unit('GBR_PontoonTruck'):Extends('GBR_BedfordBase'):Extends('PontoonTruck') -- name append
 
-return lowerkeys({
-	["GBRBedfordTruck"] = GBR_BedfordTruck,
-	["GBRPontoonTruck"] = GBR_PontoonTruck,
-})

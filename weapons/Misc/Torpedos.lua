@@ -1,7 +1,7 @@
 -- Misc - Torpedos
 
 -- Implementations
-local GBR18inTorpedo = TorpedoClass:New{
+Weapon('GBR18inTorpedo'):Extends('TorpedoClass'):Attrs{
   name               = "Mk.XV 18inch torpedo",
   damage = {
     default = 8000,
@@ -13,7 +13,7 @@ local GBR18inTorpedo = TorpedoClass:New{
   weaponVelocity     = 450,
 }
 
-local RUS533mmTorpedo = TorpedoClass:New{
+Weapon('RUS533mmTorpedo'):Extends('TorpedoClass'):Attrs{
   name               = "53-38 533mm torpedo",
   damage = {
     default = 50000, -- HUGE!
@@ -25,7 +25,7 @@ local RUS533mmTorpedo = TorpedoClass:New{
   weaponVelocity     = 500,
 }
 
-local ITA450mmTorpedo = TorpedoClass:New{
+Weapon('ITA450mmTorpedo'):Extends('TorpedoClass'):Attrs{
   name               = "450mm torpedo",
   damage = {
     default = 8000, -- HUGE!
@@ -40,8 +40,3 @@ local ITA450mmTorpedo = TorpedoClass:New{
 
 
 -- Return only the full weapons
-return lowerkeys({
-  GBR18inTorpedo = GBR18inTorpedo,
-  RUS533mmTorpedo = RUS533mmTorpedo,
-  ITA450mmTorpedo = ITA450mmTorpedo,
-})

@@ -1,4 +1,4 @@
-local JPN_Ki102 = Fighter:New(ArmouredPlane):New{
+Unit('JPN_Ki102'):Extends('Fighter'):Extends('ArmouredPlane'):Attrs{
 	name				= "Ki-102b (Type 4) Assault Plane",
 	description			= "Anti-Tank Aircraft",
 	buildCostMetal		= 985,
@@ -49,6 +49,3 @@ local JPN_Ki102 = Fighter:New(ArmouredPlane):New{
 }
 
 
-return lowerkeys({
-	["JPNKi102"] = JPN_Ki102,
-})

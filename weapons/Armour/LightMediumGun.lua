@@ -2,20 +2,20 @@
 -- Implementations
 
 -- QF 6Pdr 57mm (GBR)
-local QF6Pdr57mm = LightMediumGun:New{
+Weapon('QF6Pdr57mm'):Extends('LightMediumGun'):Attrs{
   name               = [[QF 6 Pdr Mk.?]],
   range              = 1200,
   reloadTime         = 4.95,
 }
 
-local QF6Pdr57mmHE = LightMediumHE:New(QF6Pdr57mm, true):New{
+Weapon('QF6Pdr57mmHE'):Extends('LightMediumHE'):Extends('QF6Pdr57mm'):Attrs{ -- name append
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 760,
   },  
 }
-local QF6Pdr57mmAP = MediumAP:New(QF6Pdr57mm, true):New{
+Weapon('QF6Pdr57mmAP'):Extends('MediumAP'):Extends('QF6Pdr57mm'):Attrs{ -- name append
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 66,
@@ -27,7 +27,7 @@ local QF6Pdr57mmAP = MediumAP:New(QF6Pdr57mm, true):New{
 }
 
 -- Naval QF 6-Pounder Mk IIA - uses only HE
-local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
+Weapon('QF6Pdr57MkIIAHE'):Extends('LightMediumHE'):Extends('QF6Pdr57mm'):Attrs{ -- NOname append
 	name		= [[QF 6-Pounder Mk IIA]],
 	-- autoloader, 40 shots per minute
 	reloadTime	= 1.5,
@@ -39,20 +39,20 @@ local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 }
 
 -- KwK39 L60 50mm (GER)
-local KwK50mmL60 = LightMediumGun:New{
+Weapon('KwK50mmL60'):Extends('LightMediumGun'):Attrs{
   name               = [[5cm KwK39 L/60]],
   range              = 1125,
   reloadTime         = 4.95,
 }
 
-local KwK50mmL60HE = LightMediumHE:New(KwK50mmL60, true):New{
+Weapon('KwK50mmL60HE'):Extends('LightMediumHE'):Extends('KwK50mmL60'):Attrs{ -- name append
   areaOfEffect       = 55,
   weaponVelocity     = 1100,
   damage = {
     default            = 330, -- much lower than 6pdr?
   },  
 }
-local KwK50mmL60AP = MediumAP:New(KwK50mmL60, true):New{
+Weapon('KwK50mmL60AP'):Extends('MediumAP'):Extends('KwK50mmL60'):Attrs{ -- name append
   weaponVelocity     = 1670,
   customparams = {
     armor_penetration_1000m = 44,
@@ -64,14 +64,14 @@ local KwK50mmL60AP = MediumAP:New(KwK50mmL60, true):New{
 }
 
 -- ZiS-2 57mm (RUS)
-local ZiS257mm = LightMediumGun:New{
+Weapon('ZiS257mm'):Extends('LightMediumGun'):Attrs{
   name               = [[ZiS-2 57mm]],
   range              = 1180,
   reloadTime         = 4.95,
 }
 
 -- Currently only AP used
-local ZiS257mmAP = MediumAP:New(ZiS257mm, true):New{
+Weapon('ZiS257mmAP'):Extends('MediumAP'):Extends('ZiS257mm'):Attrs{ -- name append
   weaponVelocity     = 1980,
   customparams = {
     armor_penetration_1000m = 64,
@@ -83,20 +83,20 @@ local ZiS257mmAP = MediumAP:New(ZiS257mm, true):New{
 }
 
 -- Type 97 57mm (JPN)
-local Type9757mm = LightMediumGun:New{
+Weapon('Type9757mm'):Extends('LightMediumGun'):Attrs{
   name               = [[Type 97 57mm]],
   range              = 980,
   reloadTime         = 4.0,
 }
 
-local Type9757mmHE = LightMediumHE:New(Type9757mm, true):New{
+Weapon('Type9757mmHE'):Extends('LightMediumHE'):Extends('Type9757mm'):Attrs{ -- name append
   areaOfEffect       = 57,
   weaponVelocity     = 800,
   damage = {
     default            = 1400,
   },  
 }
-local Type9757mmAP = MediumAP:New(Type9757mm, true):New{
+Weapon('Type9757mmAP'):Extends('MediumAP'):Extends('Type9757mm'):Attrs{ -- name append
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 25,
@@ -109,18 +109,3 @@ local Type9757mmAP = MediumAP:New(Type9757mm, true):New{
 
 
 -- Return only the full weapons
-return lowerkeys({
-  -- QF 6Pdr
-  QF6Pdr57mmHE = QF6Pdr57mmHE,
-  QF6Pdr57mmAP = QF6Pdr57mmAP,
-  QF6Pdr57MkIIAHE = QF6Pdr57MkIIAHE,
-  -- KwK39 L60
-  KwK50mmL60HE = KwK50mmL60HE,
-  KwK50mmL60AP = KwK50mmL60AP,
-  -- ZiS-2
-  ZiS257mmAP = ZiS257mmAP,
-  -- Type 97 57mm
-  Type9757mmHE = Type9757mmHE,
-  Type9757mmAP = Type9757mmAP,
-  
-})

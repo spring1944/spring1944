@@ -1,4 +1,4 @@
-local USM8Gun = InfantryGun:New{
+Unit('USM8Gun'):Extends('InfantryGun'):Attrs{
 	name					= "75mm M8",
 	corpse					= "usm8gun_destroyed",
 	buildCostMetal				= 1280,
@@ -10,6 +10,3 @@ local USM8Gun = InfantryGun:New{
 }
 
 
-return lowerkeys({
-	["USM8Gun"] = USM8Gun,
-})

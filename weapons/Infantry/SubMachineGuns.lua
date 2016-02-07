@@ -2,7 +2,7 @@
 
 -- Implementations
 -- STEN Mk. II (GBR)
-local STEN = SMGClass:New{
+Weapon('STEN'):Extends('SMGClass'):Attrs{
   burstrate          = 0.1,
   name               = [[STEN Mk. II]],
   range              = 300,
@@ -12,7 +12,7 @@ local STEN = SMGClass:New{
 
 -- Commando Silenced STEN Mk. IIS (GBR)
 -- derives from the above STEN
-local SilencedSten = STEN:New({
+Weapon('SilencedSten'):Extends('STEN'):Attrs{ -- name append
   burst              = 3,
   movingAccuracy     = 400,
   name               = [[Silenced]],
@@ -22,10 +22,10 @@ local SilencedSten = STEN:New({
   damage = {
     default            = 80,
   }
-}, true)
+}
 
 -- MP.40 (GER)
-local MP40 = SMGClass:New{
+Weapon('MP40'):Extends('SMGClass'):Attrs{
   burstRate          = 0.12,
   movingAccuracy     = 470, -- intended?
   name               = [[Maschinenpistole 40]],
@@ -35,7 +35,7 @@ local MP40 = SMGClass:New{
 }
 
 -- M1A1 Thompson (USA)
-local Thompson = SMGClass:New{
+Weapon('Thompson'):Extends('SMGClass'):Attrs{
   burst              = 6,
   burstRate          = 0.086,
   movingAccuracy     = 1170, -- O_o
@@ -50,7 +50,7 @@ local Thompson = SMGClass:New{
 }
 
 -- PPSh (RUS)
-local PPSh = SMGClass:New{
+Weapon('PPSh'):Extends('SMGClass'):Attrs{
   burst              = 9,
   burstRate          = 0.05,
   movingAccuracy     = 933,
@@ -63,7 +63,7 @@ local PPSh = SMGClass:New{
 }
 
 -- Beretta M38 (ITA)
-local BerettaM38 = SMGClass:New{
+Weapon('BerettaM38'):Extends('SMGClass'):Attrs{
   burst              = 8,
   burstRate          = 0.086,
   movingAccuracy     = 1300,
@@ -75,7 +75,7 @@ local BerettaM38 = SMGClass:New{
 }
 
 -- FNAB-43 (ITA)
-local FNAB43 = SMGClass:New{
+Weapon('FNAB43'):Extends('SMGClass'):Attrs{
   burst              = 5,
   burstRate          = 0.112,
   movingAccuracy     = 1000,
@@ -89,7 +89,7 @@ local FNAB43 = SMGClass:New{
   },
 }
 
-local Type100SMG = SMGClass:New{
+Weapon('Type100SMG'):Extends('SMGClass'):Attrs{
   burst              = 5,
   burstRate          = 0.066,
   movingAccuracy     = 1300,
@@ -101,13 +101,3 @@ local Type100SMG = SMGClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  STEN = STEN,
-  SilencedSten = SilencedSten,
-  MP40 = MP40,
-  Thompson = Thompson,
-  PPSh = PPSh,
-  BerettaM38 = BerettaM38,
-  FNAB43 = FNAB43,
-  Type100SMG = Type100SMG,
-})

@@ -1,4 +1,4 @@
-local ShermanBase = MediumTank:New{
+Unit('ShermanBase'):Extends('MediumTank'):Attrs{
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USShermanA",
@@ -34,7 +34,7 @@ local ShermanBase = MediumTank:New{
 	},
 }	
 
-local USM4A4Sherman = ShermanBase:New{
+Unit('USM4A4Sherman'):Extends('ShermanBase'):Attrs{
 	name				= "M4A3 Sherman",
 	buildCostMetal		= 2550,
 	maxDamage			= 3180,
@@ -54,7 +54,7 @@ local USM4A4Sherman = ShermanBase:New{
 }
 
 
-local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
+Unit('USM4Jumbo'):Extends('USM4A4Sherman'):Extends('HeavyTank'):Attrs{
 	name				= "M4A3E2 Sherman Jumbo",
 	description			= "Uparmoured Medium Tank",
 	buildCostMetal		= 6200,
@@ -69,7 +69,7 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	},
 }
 
-local USM4A376Sherman = ShermanBase:New{
+Unit('USM4A376Sherman'):Extends('ShermanBase'):Attrs{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
 	buildCostMetal		= 2850,
@@ -91,7 +91,7 @@ local USM4A376Sherman = ShermanBase:New{
 	},
 }
 
-local USM4A3105Sherman = ShermanBase:New{
+Unit('USM4A3105Sherman'):Extends('ShermanBase'):Attrs{
 	name				= "M4A3(105) Sherman",
 	description			= "Close Support Tank",
 	buildCostMetal		= 3450,
@@ -117,9 +117,3 @@ local USM4A3105Sherman = ShermanBase:New{
 	},
 }
 
-return lowerkeys({
-	["USM4A4Sherman"] = USM4A4Sherman,
-	["USM4Jumbo"] = USM4Jumbo,
-	["USM4A376Sherman"] = USM4A376Sherman,
-	["USM4A3105Sherman"] = USM4A3105Sherman,
-})

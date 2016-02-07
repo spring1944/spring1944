@@ -1,10 +1,7 @@
-local ITA_StorageSupply = Storage:New{
+Unit('ITA_StorageSupply'):Extends('Storage'):Attrs{
 	name					= "Storage & Supply Center",
 	customparams = {
 		supplyrangemodifier		= 0.5,
 	},
 }
 
-return lowerkeys({
-	["ITAStorageSupply"] = ITA_StorageSupply,
-})

@@ -1,4 +1,4 @@
-local GER_SiebelFahre = Boat:New{
+Unit('GER_SiebelFahre'):Extends('Boat'):Attrs{
 	name					= "Siebel Fahre",
 	description				= "Infantry Ferry",
 	acceleration			= 0.15,
@@ -69,6 +69,3 @@ local GER_SiebelFahre = Boat:New{
 }
 
 
-return lowerkeys({
-	["GERSiebelFahre"] = GER_SiebelFahre,
-})

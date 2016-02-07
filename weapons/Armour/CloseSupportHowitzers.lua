@@ -3,7 +3,7 @@
 -- Implementations
 
 -- CS 95mm (GBR)
-local CS95mm = CSHowitzer:New{
+Weapon('CS95mm'):Extends('CSHowitzer'):Attrs{
   edgeEffectiveness  = 0.35,
   name               = [[CS 95mm]],
   range              = 1690, -- fwiw I object to this too
@@ -14,37 +14,29 @@ local CS95mm = CSHowitzer:New{
   },
 }
 
-local CS95mmHE = HowitzerHE:New(CS95mm, true):New{
+Weapon('CS95mmHE'):Extends('HowitzerHE'):Extends('CS95mm'):Attrs{ -- name append
   areaOfEffect       = 109,
   damage = {
     default            = 2500,
   },  
 }
-local CS95mmSmoke = HowitzerSmoke:New(CS95mm, true)
+Weapon('CS95mmSmoke'):Extends('HowitzerSmoke'):Extends('CS95mm') -- name append
 
 -- M4 105mm (USA)
-local M4105mm = CSHowitzer:New{
+Weapon('M4105mm'):Extends('CSHowitzer'):Attrs{
   edgeEffectiveness  = 0.25,
   name               = [[M4 105mm Howitzer]],
   range              = 1700, -- fwiw I object to this too
   reloadTime         = 11.25,
 }
 
-local M4105mmHE = HowitzerHE:New(M4105mm, true):New{
+Weapon('M4105mmHE'):Extends('HowitzerHE'):Extends('M4105mm'):Attrs{ -- name append
   areaOfEffect       = 131,
   damage = {
     default            = 4360,
   },  
 }
-local M4105mmSmoke = HowitzerSmoke:New(M4105mm, true)
+Weapon('M4105mmSmoke'):Extends('HowitzerSmoke'):Extends('M4105mm') -- name append
 
 
 -- Return only the full weapons
-return lowerkeys({
-  -- CS 95mm
-  CS95mmHE = CS95mmHE,
-  CS95mmSmoke = CS95mmSmoke,
-  -- M4 105mm
-  M4105mmHE = M4105mmHE,
-  M4105mmSmoke = M4105mmSmoke,
-})

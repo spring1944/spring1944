@@ -1,4 +1,4 @@
-local JPN_Ki84 = Fighter:New{
+Unit('JPN_Ki84'):Extends('Fighter'):Attrs{
 	name				= "Ki.84 Hayate",
 	buildCostMetal		= 3125,
 	maxDamage			= 260,
@@ -41,6 +41,3 @@ local JPN_Ki84 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["JPNKi84"] = JPN_Ki84,
-})

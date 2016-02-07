@@ -1,4 +1,4 @@
-local GBR_LCA = InfantryLandingCraft:New{
+Unit('GBR_LCA'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "Landing Craft, Assault",
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
@@ -31,6 +31,3 @@ local GBR_LCA = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["GBRLCA"] = GBR_LCA,
-})

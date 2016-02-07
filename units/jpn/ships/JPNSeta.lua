@@ -1,4 +1,4 @@
-local JPN_Seta = ArmedBoat:New{
+Unit('JPN_Seta'):Extends('ArmedBoat'):Attrs{
 	name					= "Seta-class Gunboat",
 	description				= "Large river gunboat",
 	acceleration			= 0.05,
@@ -37,7 +37,7 @@ local JPN_Seta = ArmedBoat:New{
 	},
 }
 
-local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
+Unit('JPN_Seta_Turret_76mm_Front'):Extends('PartiallyEnclosedBoatTurret'):Attrs{
 	name					= "Seta 76mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/JPNSeta_turret_76mm.s3o",
@@ -57,7 +57,7 @@ local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
     },
 }
 
-local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
+Unit('JPN_Seta_Turret_76mm_Rear'):Extends('JPN_Seta_Turret_76mm_Front'):Attrs{
 	weapons = {
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -68,7 +68,7 @@ local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
 	},
 }
 
-local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
+Unit('JPN_Seta_Turret_25mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Seta 25mm Turret",
 	description				= "AA Turret",
   	weapons = {	
@@ -107,9 +107,3 @@ local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["JPNSeta"] = JPN_Seta,
-	["JPNSeta_Turret_76mm_Front"] = JPN_Seta_Turret_76mm_Front,
-	["JPNSeta_Turret_76mm_Rear"] = JPN_Seta_Turret_76mm_Rear,
-	["JPNSeta_Turret_25mm"] = JPN_Seta_Turret_25mm,
-})

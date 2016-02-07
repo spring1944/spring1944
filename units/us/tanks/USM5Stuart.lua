@@ -1,4 +1,4 @@
-local StuartBase = LightTank:New{
+Unit('StuartBase'):Extends('LightTank'):Attrs{
 	maxDamage			= 1520,
 	trackOffset			= 5,
 	trackWidth			= 18,
@@ -14,7 +14,7 @@ local StuartBase = LightTank:New{
 	},
 }	
 
-local USM5Stuart = StuartBase:New{
+Unit('USM5Stuart'):Extends('StuartBase'):Attrs{
 	name				= "M5A1 Stuart",
 	buildCostMetal		= 1725,
 
@@ -51,7 +51,7 @@ local USM5Stuart = StuartBase:New{
 	},
 }
 
-local USM8Scott = StuartBase:New(AssaultGun):New{
+Unit('USM8Scott'):Extends('StuartBase'):Extends('AssaultGun'):Attrs{
 	name				= "M8 Scott GMC",
 	buildCostMetal		= 2100,
 	
@@ -75,7 +75,3 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["USM5Stuart"] = USM5Stuart,
-	["USM8Scott"] = USM8Scott,
-})

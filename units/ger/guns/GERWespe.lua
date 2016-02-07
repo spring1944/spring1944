@@ -1,4 +1,4 @@
-local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
+Unit('GERWespe'):Extends('LightTank'):Extends('SPArty'):Extends('OpenTopped'):Attrs{
 	name				= "SdKfz 124 Wespe",
 	buildCostMetal		= 4200,
 	maxDamage			= 1100,
@@ -27,6 +27,3 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["GERWespe"] = GERWespe,
-})

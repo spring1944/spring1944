@@ -1,4 +1,4 @@
-local US_C47 = ParaTransport:New{
+Unit('US_C47'):Extends('ParaTransport'):Attrs{
 	name			= "C-47 Skytrain",
 	maxDamage		= 1705.7,
 	
@@ -9,12 +9,9 @@ local US_C47 = ParaTransport:New{
 	
 	weapons = {
 		[1] = {
-			name			= "us_paratrooper",
+			name			= "us_paratrooper_trigger",
 		},
 	},
 }
 
 
-return lowerkeys({
-	["USC47"] = US_C47,
-})

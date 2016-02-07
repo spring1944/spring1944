@@ -1,4 +1,4 @@
-local JPNChiHe = MediumTank:New{
+Unit('JPNChiHe'):Extends('MediumTank'):Attrs{
 	name				= "Type 1 Chi-He",
 	buildCostMetal		= 2300,
 	maxVelocity			= 2.9,
@@ -40,6 +40,3 @@ local JPNChiHe = MediumTank:New{
 	},
 }
 
-return lowerkeys({
-	["JPNChiHe"] = JPNChiHe,
-})

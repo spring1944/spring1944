@@ -1,4 +1,4 @@
-local GBR_Auster = Recon:New{
+Unit('GBR_Auster'):Extends('Recon'):Attrs{
 	name			= "TC Auster AOP Mk V",
 	maxDamage		= 49.9,
 	
@@ -9,6 +9,3 @@ local GBR_Auster = Recon:New{
 }
 
 
-return lowerkeys({
-	["GBRAuster"] = GBR_Auster,
-})

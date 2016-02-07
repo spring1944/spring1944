@@ -1,4 +1,4 @@
-local RUSValentine = LightTank:New{
+Unit('RUSValentine'):Extends('LightTank'):Attrs{
 	name				= "Mk.III Valentine Infantry Tank",
 	buildCostMetal		= 2000,
 	maxDamage			= 1650,
@@ -36,6 +36,3 @@ local RUSValentine = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["RUSValentine"] = RUSValentine,
-})

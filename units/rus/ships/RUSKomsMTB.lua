@@ -1,4 +1,4 @@
-local RUS_KomsMTB = ArmedBoat:New{
+Unit('RUS_KomsMTB'):Extends('ArmedBoat'):Attrs{
 	name					= "Komsomolets (Pr. 123) Class",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.1,
@@ -34,7 +34,7 @@ local RUS_KomsMTB = ArmedBoat:New{
 	},
 }
 
-local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
+Unit('RUS_KomsMTB_Turret_DShK'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Twin DShK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -57,7 +57,3 @@ local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
 	},
 }
 
-return lowerkeys({
-	["RUSKomsMTB"] = RUS_KomsMTB,
-	["RUSKomsMTB_Turret_DShK"] = RUS_KomsMTB_Turret_DShK,
-})

@@ -1,4 +1,4 @@
-local US_LCSL = ArmedBoat:New{
+Unit('US_LCSL'):Extends('ArmedBoat'):Attrs{
 	name					= "LCS(L) Mk. 3",
 	description				= "Landing Craft Support (Large)",
 	acceleration			= 0.075,
@@ -20,7 +20,7 @@ local US_LCSL = ArmedBoat:New{
 	},
 	customparams = {
 		children = {
-			"USSC_Turret_76mm",
+			"USLCSL_Turret_76mm",
 			"USLCSL_Turret_TwinBofors_Front",
 			"USSC_Turret_20mm_Left",
 			"USSC_Turret_20mm_Right",
@@ -40,7 +40,7 @@ local US_LCSL = ArmedBoat:New{
 }
 
 
-local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
+Unit('US_LCSL_Turret_TwinBofors_Front'):Extends('OpenBoatTurret'):Attrs{
 	name					= "40mm Twin Bofors Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/USLCSL_Turret_TwinBofors.s3o",
@@ -85,7 +85,7 @@ local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
     },
 }
 
-local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
+Unit('US_LCSL_Turret_TwinBofors_Rear'):Extends('US_LCSL_Turret_TwinBofors_Front'):Attrs{
 	weapons = {	
 		[1] = {
 			mainDir				= [[0 0 -1]],
@@ -105,7 +105,7 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 	},
 }
 
-local US_SC_Turret_76mm = OpenBoatTurret:New{
+Unit('US_LCSL_Turret_76mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "3in Mk 50 Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -126,8 +126,3 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["USLCSL"] = US_LCSL,
-	["USLCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
-	["USLCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
-})

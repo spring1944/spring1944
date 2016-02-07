@@ -1,4 +1,4 @@
-local SWEB18 = Fighter:New{
+Unit('SWEB18'):Extends('Fighter'):Attrs{
 	name				= "SAAB T 18", --ATM pure copy of Ki-102b (Type 4) Assault Plane
 	description			= "Anti-Tank & Anti-Shipping Aircraft",
 	buildCostMetal		= 985,
@@ -51,6 +51,3 @@ local SWEB18 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["SWEB18"] = SWEB18,
-})

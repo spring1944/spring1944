@@ -1,4 +1,4 @@
-local GBR_Barracks = Barracks:New{
+Unit('GBR_Barracks'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 2340,
 	buildingGroundDecalSizeX	= 7,
 	buildingGroundDecalSizeY	= 7,
@@ -16,6 +16,3 @@ local GBR_Barracks = Barracks:New{
 									yyyy]],
 }
 
-return lowerkeys({
-	["GBRBarracks"] = GBR_Barracks,
-})

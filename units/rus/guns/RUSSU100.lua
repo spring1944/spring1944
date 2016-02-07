@@ -1,4 +1,4 @@
-local RUSSU100 = MediumTank:New(TankDestroyer):New{
+Unit('RUSSU100'):Extends('MediumTank'):Extends('TankDestroyer'):Attrs{
 	name				= "SU-100",
 	description			= "Heavy Tank Destroyer",
 	buildCostMetal		= 6000,
@@ -27,6 +27,3 @@ local RUSSU100 = MediumTank:New(TankDestroyer):New{
 	},
 }
 
-return lowerkeys({
-	["RUSSU100"] = RUSSU100,
-})

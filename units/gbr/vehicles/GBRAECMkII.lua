@@ -1,4 +1,4 @@
-local GBRAECMkII = HeavyArmouredCar:New{
+Unit('GBRAECMkII'):Extends('HeavyArmouredCar'):Attrs{
 	name				= "AEC Armoured Car Mk.II",
 	buildCostMetal		= 1350,
 	maxDamage			= 1270,
@@ -35,6 +35,3 @@ local GBRAECMkII = HeavyArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["GBRAECMkII"] = GBRAECMkII,
-})

@@ -1,4 +1,4 @@
-local US_LCSS = Boat:New{
+Unit('US_LCSS'):Extends('Boat'):Attrs{
 	name					= "Landing Craft, Support, Small",
 	description				= "Light Rocket Craft",
 	acceleration			= 0.15,
@@ -57,6 +57,3 @@ local US_LCSS = Boat:New{
 }
 
 
-return lowerkeys({
-	["USLCSS"] = US_LCSS,
-})

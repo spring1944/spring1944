@@ -1,6 +1,6 @@
 -- Misc 'Gameplay' related weapons
 
-local BulletProofClass = Weapon:New{
+AbstractWeapon('BulletProofClass'):Extends('Weapon'):Attrs{
 	exteriorShield     = true,
 	shieldEnergyUse    = 0,
 	shieldForce        = 500,
@@ -16,7 +16,7 @@ local BulletProofClass = Weapon:New{
 	--VisibleShieldHitFrames = 10,
 }
 
-local DeathClass = Weapon:New{
+AbstractWeapon('DeathClass'):Extends('Weapon'):Attrs{
 	craterMult         = 0,
 	explosionSpeed     = 30,
 	customparams = {
@@ -27,7 +27,7 @@ local DeathClass = Weapon:New{
 	},
 }
 
-local MineClass = Weapon:New{
+AbstractWeapon('MineClass'):Extends('Weapon'):Attrs{
 	explosionGenerator = [[custom:HE_Large]],
 	explosionSpeed     = 30,
 	fireSubmersed      = true,
@@ -43,7 +43,7 @@ local MineClass = Weapon:New{
 	},
 }
 
-local OpticClass = Weapon:New{
+AbstractWeapon('OpticClass'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 0,
 	avoidFeature       = false,
 	avoidFriendly      = false,
@@ -73,7 +73,7 @@ local OpticClass = Weapon:New{
 	},
 }
 
-local ParaDropClass = Weapon:New{
+AbstractWeapon('ParaDropClass'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 1, -- needed?
 	collideFriendly    = false,
 	explosionGenerator = [[custom:nothing]],
@@ -96,10 +96,3 @@ local ParaDropClass = Weapon:New{
 	},
 }
 
-return {
-	BulletProofClass = BulletProofClass,
-	DeathClass = DeathClass,
-	MineClass = MineClass,  
-	ParaDropClass = ParaDropClass,
-	OpticClass = OpticClass,
-}

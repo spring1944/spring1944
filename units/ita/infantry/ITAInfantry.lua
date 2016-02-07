@@ -1,19 +1,20 @@
-local ITAInf = {
+AbstractUnit('ITAInf'):Attrs{
 	maxDamageMul		= 0.8,
 }
-local Alpini = {
+
+AbstractUnit('Alpini'):Attrs{
 	maxDamageMul		= 0.9,
 	movementClass		= "KBOT_alpini",
 }
-local Bersaglieri = {
+AbstractUnit('Bersaglieri'):Attrs{
 	maxDamageMul		= 1.3,
 }
 
-local ITA_HQEngineer = EngineerInf:New(ITAInf):New{
+Unit('ITA_HQEngineer'):Extends('EngineerInf'):Extends('ITAInf'):Attrs{
 	name				= "Field Engineer",
 }
 
-local ITA_Rifle = RifleInf:New(ITAInf):New{
+Unit('ITA_Rifle'):Extends('RifleInf'):Extends('ITAInf'):Attrs{
 	name				= "Carcano Mod.91/38 Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -25,7 +26,7 @@ local ITA_Rifle = RifleInf:New(ITAInf):New{
 	},
 }
 
-local ITA_M38 = SMGInf:New(ITAInf):New{
+Unit('ITA_M38'):Extends('SMGInf'):Extends('ITAInf'):Attrs{
 	name				= "MAB38 Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -37,7 +38,7 @@ local ITA_M38 = SMGInf:New(ITAInf):New{
 	},
 }
 
-local ITA_Breda30 = LMGInf:New(ITAInf):New{
+Unit('ITA_Breda30'):Extends('LMGInf'):Extends('ITAInf'):Attrs{
 	name				= "Breda 30 Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -46,12 +47,12 @@ local ITA_Breda30 = LMGInf:New(ITAInf):New{
 	},
 }
 
-local ITA_MG = HMGInf:New(ITAInf):New{
+Unit('ITA_MG'):Extends('HMGInf'):Extends('ITAInf'):Attrs{
 	name				= "Breda M37 Heavy Machinegun",
 	script				= "Infantry.lua",
 }
 
-local ITA_MG_Sandbag = SandbagMG:New{
+Unit('ITA_MG_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Breda M37 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -60,7 +61,7 @@ local ITA_MG_Sandbag = SandbagMG:New{
 	},
 }
 
-local ITA_Sniper = SniperInf:New(ITAInf):New{
+Unit('ITA_Sniper'):Extends('SniperInf'):Extends('ITAInf'):Attrs{
 	name				= "Carcano Mod.91/38 Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -69,7 +70,7 @@ local ITA_Sniper = SniperInf:New(ITAInf):New{
 	},
 }
 
-local ITA_SoloAT = ATRifleInf:New(ITAInf):New{
+Unit('ITA_SoloAT'):Extends('ATRifleInf'):Extends('ITAInf'):Attrs{
 	name				= "Solothurn S-18/100",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -78,7 +79,7 @@ local ITA_SoloAT = ATRifleInf:New(ITAInf):New{
 	},
 }
 
-local ITA_PanzerFaust = ATLauncherInf:New(ITAInf):New{
+Unit('ITA_PanzerFaust'):Extends('ATLauncherInf'):Extends('ITAInf'):Attrs{
 	name				= "Panzerfaust 60",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -87,7 +88,7 @@ local ITA_PanzerFaust = ATLauncherInf:New(ITAInf):New{
 	},
 }
 
-local ITA_Mortar = MedMortarInf:New(ITAInf):New{
+Unit('ITA_Mortar'):Extends('MedMortarInf'):Extends('ITAInf'):Attrs{
 	name				= "81/14 Mortar",
 	weapons = {
 		[1] = { -- HE
@@ -99,7 +100,7 @@ local ITA_Mortar = MedMortarInf:New(ITAInf):New{
 	},
 }
 
-local ITA_Observ = ObservInf:New(ITAInf):New{
+Unit('ITA_Observ'):Extends('ObservInf'):Extends('ITAInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "BerettaM1934",
@@ -108,7 +109,7 @@ local ITA_Observ = ObservInf:New(ITAInf):New{
 }
 
 -- Bersaglieri
-local ITA_BersaglieriRifle = ITA_Rifle:Clone("ITARifle"):New(Bersaglieri):New{
+Unit('ITA_BersaglieriRifle'):Extends('ITA_Rifle'):Extends("Bersaglieri"):Attrs{
 	name				= "Carcano Mod.91/41 Rifle",
 	description			= "Elite Infantry armed with new rifle and heavy grenades",
 	buildpic			= "ITABersaglieriRifle.png", -- have to overwrite Clone
@@ -128,7 +129,7 @@ local ITA_BersaglieriRifle = ITA_Rifle:Clone("ITARifle"):New(Bersaglieri):New{
 	},
 }
 
-local ITA_BersaglieriM38 = ITA_M38:Clone("ITAM38"):New(Bersaglieri):New{
+Unit('ITA_BersaglieriM38'):Extends('ITA_M38'):Extends("Bersaglieri"):Attrs{
 	name				= "MAB38 Submachinegun",
 	description			= "Elite Close-Quarters Assault Infantry armed with heavy grenade",
 	buildpic			= "ITABersaglieriM38.png", -- have to overwrite Clone
@@ -148,7 +149,7 @@ local ITA_BersaglieriM38 = ITA_M38:Clone("ITAM38"):New(Bersaglieri):New{
 	},
 }
 
-local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
+Unit('ITA_EliteSoloAT'):Extends('ITA_SoloAT'):Extends("Bersaglieri"):Attrs{
 	name				= "Scoped Solothurn S-18/100",
 	description			= "Scoped Long Range Light Anti-Tank",
 	weapons = {
@@ -159,7 +160,7 @@ local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
 }
 
 -- Alpini
-local ITA_AlpiniRifle = ITA_Rifle:Clone("ITARifle"):New(Alpini):New{
+Unit('ITA_AlpiniRifle'):Extends('ITA_Rifle'):Extends("Alpini"):Attrs{
 	name				= "Carcano Mod.91/38 Rifle",
 	description			= "Mountaineering Rifle Infantry armed with heavy stickgrenade",
 	buildpic			= "ITAAlpiniRifle.png", -- have to overwrite Clone
@@ -179,7 +180,7 @@ local ITA_AlpiniRifle = ITA_Rifle:Clone("ITARifle"):New(Alpini):New{
 	},
 }
 
-local ITA_AlpiniFNAB43 = ITA_M38:Clone("ITAM38"):New(Alpini):New{
+Unit('ITA_AlpiniFNAB43'):Extends('ITA_M38'):Extends("Alpini"):Attrs{
 	name				= "FNAB43 Submachinegun",
 	description			= "Mountaineering Close-Quarters Assault Infantry armed with heavy grenade",
 	buildpic			= "ITABersaglieriM38.png", -- have to overwrite Clone
@@ -199,35 +200,11 @@ local ITA_AlpiniFNAB43 = ITA_M38:Clone("ITAM38"):New(Alpini):New{
 	},
 }
 
-local ITA_AlpiniObserv = ITA_Observ:Clone("ITAObserv"):New(Alpini):New{
+Unit('ITA_AlpiniObserv'):Extends('ITA_Observ'):Extends("Alpini"):Attrs{
 	buildpic			= "ITAAlpiniObserv.png", -- have to overwrite Clone
 }
 
-local ITA_AlpiniMortar = ITA_Mortar:Clone("ITAMortar"):New(Alpini):New{
+Unit('ITA_AlpiniMortar'):Extends('ITA_Mortar'):Extends("Alpini"):Attrs{
 	buildpic			= "ITAAlpiniMortar.png", -- have to overwrite Clone
 }
 
-return lowerkeys({
-	-- Regular Inf
-	["ITAHQEngineer"] = ITA_HQEngineer,
-	["ITAHQAIEngineer"] = ITA_HQEngineer:Clone("ITAHQEngineer"),
-	["ITARifle"] = ITA_Rifle,
-	["ITAM38"] = ITA_M38,
-	["ITABreda30"] = ITA_Breda30,
-	["ITAMG_DugIn"] = ITA_MG_Sandbag,
-	["ITAMG"] = ITA_MG,
-	["ITASniper"] = ITA_Sniper,
-	["ITASoloAT"] = ITA_SoloAT,
-	["ITAPanzerFaust"] = ITA_PanzerFaust,
-	["ITAMortar"] = ITA_Mortar,
-	["ITAObserv"] = ITA_Observ,
-	-- Bersaglieri
-	["ITABersaglieriRifle"] = ITA_BersaglieriRifle,
-	["ITABersaglieriM38"] = ITA_BersaglieriM38,
-	["ITAEliteSoloAT"] = ITA_EliteSoloAT,
-	-- Alpini
-	["ITAAlpiniRifle"] = ITA_AlpiniRifle,
-	["ITAAlpiniFNAB43"] = ITA_AlpiniFNAB43,
-	["ITAAlpiniObserv"] = ITA_AlpiniObserv,
-	["ITAAlpiniMortar"] = ITA_AlpiniMortar,
-})

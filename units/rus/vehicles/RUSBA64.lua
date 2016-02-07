@@ -1,4 +1,4 @@
-local RUSBA64 = ArmouredCar:New{
+Unit('RUSBA64'):Extends('ArmouredCar'):Attrs{
 	name				= "BA-64",
 	description			= "Light Scout Car",
 	buildCostMetal		= 525,
@@ -23,6 +23,3 @@ local RUSBA64 = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["RUSBA64"] = RUSBA64,
-})

@@ -1,11 +1,11 @@
-local GBR_17Pdr_Truck = ATGunTractor:New{
+Unit('GBR_17Pdr_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed Q.F. 17 Pounder",
 	corpse					= "gbrmorrisquad_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 18,
 }
 
-local GBR_17Pdr_Stationary = ATGun:New{
+Unit('GBR_17Pdr_Stationary'):Extends('ATGun'):Attrs{
 	name					= "Deployed Q.F. 17 Pounder",
 	corpse					= "gbr17pdr_destroyed",
 
@@ -16,7 +16,3 @@ local GBR_17Pdr_Stationary = ATGun:New{
 	},
 }
 
-return lowerkeys({
-	["GBR17Pdr_Truck"] = GBR_17Pdr_Truck,
-	["GBR17Pdr_Stationary"] = GBR_17Pdr_Stationary,
-})

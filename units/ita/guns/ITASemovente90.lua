@@ -1,4 +1,4 @@
-local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
+Unit('ITASemovente90'):Extends('MediumTank'):Extends('TankDestroyer'):Extends('OpenTopped'):Attrs{
 	name				= "Semovente da 90/53",
 	description			= "Heavily Armed Tank Destroyer",
 	buildCostMetal		= 3550,
@@ -25,6 +25,3 @@ local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["ITASemovente90"] = ITASemovente90,
-})

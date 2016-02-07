@@ -1,5 +1,5 @@
 -- Vehicles ----
-local Deployed = Unit:New{
+AbstractUnit('Deployed'):Extends('Unit'):Attrs{
 	activateWhenBuilt			= true,
 	airSightDistance			= 2000,
 	buildingGroundDecalSizeX	= 5,
@@ -27,14 +27,14 @@ local Deployed = Unit:New{
 	},
 }
 
-local DeployedGun = Deployed:New{
+AbstractUnit('DeployedGun'):Extends('Deployed'):Attrs{
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
 		maxammo			= 4,
 		scriptAnimation	= "gun",
 	},
 }
 
-local TankShelter = Deployed:New{
+AbstractUnit('TankShelter'):Extends('Deployed'):Attrs{
 	description					= "Tank fortification",
 	buildCostMetal				= 450,
 	cloakCost					= 0,
@@ -51,7 +51,7 @@ local TankShelter = Deployed:New{
 }
 
 -- Sandbag MG --
-local SandbagMG = Deployed:New{
+AbstractUnit('SandbagMG'):Extends('Deployed'):Attrs{
 	description					= "Dug-in Heavy Infantry Fire Support",
 	buildCostMetal				= 800, -- only for power calcs
 	buildingGroundDecalSizeX	= 4,
@@ -85,7 +85,7 @@ local SandbagMG = Deployed:New{
 }
 
 -- Guns --
-local AAGun = DeployedGun:New{
+AbstractUnit('AAGun'):Extends('DeployedGun'):Attrs{
 	description			= "Deployed Anti-Aircraft Gun",
 	buildCostMetal		= 1400,
 	iconType			= "aaartillery",
@@ -98,7 +98,7 @@ local AAGun = DeployedGun:New{
 	},
 }
 
-local ATGun = DeployedGun:New{
+AbstractUnit('ATGun'):Extends('DeployedGun'):Attrs{
 	description			= "Deployed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
@@ -110,7 +110,7 @@ local ATGun = DeployedGun:New{
 	},
 }
 
-local LightATGun = ATGun:New{
+AbstractUnit('LightATGun'):Extends('ATGun'):Attrs{
 	buildCostMetal		= 400,
 	initCloaked			= true,
 	cloakCost			= 0,
@@ -118,7 +118,7 @@ local LightATGun = ATGun:New{
 	minCloakDistance	= 300,
 }
 
-local FGGun = DeployedGun:New{
+AbstractUnit('FGGun'):Extends('DeployedGun'):Attrs{
 	description			= "Deployed Field Gun",
 	buildCostMetal		= 1300,
 	iconType			= "artillery",
@@ -133,7 +133,7 @@ local FGGun = DeployedGun:New{
 	},	
 }
 
-local HGun = DeployedGun:New{
+AbstractUnit('HGun'):Extends('DeployedGun'):Attrs{
 	description			= "Deployed Howitzer",
 	buildCostMetal		= 1800,
 	iconType			= "artillery",
@@ -151,7 +151,7 @@ local HGun = DeployedGun:New{
 	},
 }
 
-local RGun = DeployedGun:New{
+AbstractUnit('RGun'):Extends('DeployedGun'):Attrs{
 	description			= "Deployed Rocket Launcher",
 	buildCostMetal		= 3600,
 	iconType			= "artillery",
@@ -165,16 +165,3 @@ local RGun = DeployedGun:New{
 	},
 }
 
-return {
-	Deployed = Deployed,
-	DeployedGun = DeployedGun,
-	TankShelter = TankShelter,
-	SandbagMG = SandbagMG,
-	-- Trucks
-	AAGun = AAGun,
-	ATGun = ATGun,
-	LightATGun = LightATGun,
-	FGGun = FGGun,
-	HGun = HGun,
-	RGun = RGun,
-}

@@ -1,4 +1,4 @@
-local ITAAutocannone100 = Truck:New(SPArty):New{
+Unit('ITAAutocannone100'):Extends('Truck'):Extends('SPArty'):Attrs{
 	name				= "Autocannone da 100/17",
 	buildCostMetal		= 3750,
 	maxDamage			= 650,
@@ -16,6 +16,3 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 	},
 }
 
-return lowerkeys({
-	["ITAAutocannone100"] = ITAAutocannone100,
-})

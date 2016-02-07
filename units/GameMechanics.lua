@@ -1,10 +1,10 @@
-local BinocSpot = Null:New{
+Unit('BinocSpot'):Extends('Null'):Attrs{
 	airsightdistance			= 1000,
 	sightDistance				= 200,
 	yardmap						= "y",
 }
 
-local Flag = Null:New{
+Unit('Flag'):Extends('Null'):Attrs{
 	name				= "Flag",
 	description			= "Command Flag",
 	activateWhenBuilt	= true,
@@ -24,7 +24,7 @@ local Flag = Null:New{
 	},
 }
 
-local Buoy = Flag:New{ -- One day...
+Unit('Buoy'):Extends('Flag'):Attrs{ -- One day...
 	name				= "Buoy",
 	description			= "Naval Spawn Point",
 	floater				= true,
@@ -32,12 +32,12 @@ local Buoy = Flag:New{ -- One day...
 	canMove 			= false, -- for some reason cannot be true or it won't float?
 }
 
-local SmallTankShelter = TankShelter:New{
+Unit('SmallTankShelter'):Extends('TankShelter'):Attrs{
 	name				= "Tank Shelter (Small)",
 	transportMass		= 2100,
 }
 
-local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
+Unit('GMToolBox'):Extends('Fighter'):Attrs{ -- TODO: I am a disgusting hack
 	name				= "Game Master Toolbox",
 	description			= "Allows the game master to do game-mastery things",
 	objectName			= "US/USP51DMustangGA.S3O",
@@ -66,10 +66,3 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 	},
 }
 
-return lowerkeys({
-	["BinocSpot"] = BinocSpot,
-	["Flag"] = Flag,
-	["Buoy"] = Buoy,
-	["SmallTankShelter"] = SmallTankShelter,
-	["GMToolBox"] = GMToolBox,
-})

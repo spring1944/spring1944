@@ -1,4 +1,4 @@
-local JPN_Ki51 = Fighter:New{
+Unit('JPN_Ki51'):Extends('Fighter'):Attrs{
 	name				= "Ki. 51 (Type 99) Assault Plane",
 	description			= "Ground-Attack Aircraft",
 	buildCostMetal		= 2175, -- shared with CR.42
@@ -58,6 +58,3 @@ local JPN_Ki51 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["JPNKi51"] = JPN_Ki51,
-})

@@ -1,4 +1,4 @@
-local RUS_M30_Truck = HGunTractor:New{
+Unit('RUS_M30_Truck'):Extends('HGunTractor'):Attrs{
 	name					= "Towed 122mm M-30",
 	buildCostMetal			= 2000,
 	corpse					= "RUSYa12_abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local RUS_M30_Truck = HGunTractor:New{
 	trackWidth				= 13,
 }
 
-local RUS_M30_Stationary = HGun:New{
+Unit('RUS_M30_Stationary'):Extends('HGun'):Attrs{
 	name					= "Deployed 122mm M-30",
 	corpse					= "RUSM30_Destroyed",
 	weapons = {
@@ -19,7 +19,3 @@ local RUS_M30_Stationary = HGun:New{
 	},
 }
 
-return lowerkeys({
-	["RUSM30_Truck"] = RUS_M30_Truck,
-	["RUSM30_Stationary"] = RUS_M30_Stationary,
-})

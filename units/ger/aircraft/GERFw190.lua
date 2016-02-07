@@ -1,4 +1,4 @@
-local GER_Fw190 = Fighter:New{
+Unit('GER_Fw190'):Extends('Fighter'):Attrs{
 	name				= "Fw 190A-8",
 	buildCostMetal		= 1125,
 	maxDamage			= 320,
@@ -50,6 +50,3 @@ local GER_Fw190 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["GERFw190"] = GER_Fw190,
-})

@@ -2,7 +2,7 @@
  
 -- Implementations
 -- PTRD (RUS)
-local PTRD = ATRifleClass:New{
+Weapon('PTRD'):Extends('ATRifleClass'):Attrs{
   accuracy           = 225,
   name               = [[PTRD]],
   range              = 655,
@@ -20,7 +20,7 @@ local PTRD = ATRifleClass:New{
 }
 
 -- Solothurn (ITA)
-local Solothurn = ATRifleClass:New{
+Weapon('Solothurn'):Extends('ATRifleClass'):Attrs{
   accuracy           = 300,
   name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
   range              = 640,
@@ -38,15 +38,10 @@ local Solothurn = ATRifleClass:New{
 }
 
 -- Scoped Solothurn (ITA)
-local ScopedSolothurn = Solothurn:New{
+Weapon('ScopedSolothurn'):Extends('Solothurn'):Attrs{
   accuracy           = 150,
   name               = [[Solothurn S-18/1000 Anti-Tank Rifle]],
   range              = 1010,
 }
 
 
-return lowerkeys({
-  PTRD = PTRD,
-  Solothurn = Solothurn,
-  ScopedSolothurn = ScopedSolothurn,
-})

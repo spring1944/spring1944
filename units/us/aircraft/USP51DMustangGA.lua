@@ -1,4 +1,4 @@
-local US_P51DMustangGA = AttackFighter:New{
+Unit('US_P51DMustangGA'):Extends('AttackFighter'):Attrs{
 	name				= "P-51D-25 Mustang",
 	buildCostMetal		= 3000,
 	maxDamage			= 346.5,
@@ -60,6 +60,3 @@ local US_P51DMustangGA = AttackFighter:New{
 }
 
 
-return lowerkeys({
-	["USP51DMustangGA"] = US_P51DMustangGA,
-})

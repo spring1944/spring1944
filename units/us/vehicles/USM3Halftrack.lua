@@ -1,4 +1,4 @@
-local USM3Base = Vehicle:New{
+Unit('USM3Base'):Extends('Vehicle'):Attrs{
 	maxDamage				= 930,
 	trackOffset				= 10,
 	trackWidth				= 15,
@@ -13,7 +13,7 @@ local USM3Base = Vehicle:New{
 	},
 }
 
-local USM3Halftrack = USM3Base:New(HalfTrack):New{
+Unit('USM3Halftrack'):Extends('USM3Base'):Extends('HalfTrack'):Attrs{
 	name					= "M3A1 Halftrack",
 	buildCostMetal			= 1200,
 	
@@ -28,7 +28,7 @@ local USM3Halftrack = USM3Base:New(HalfTrack):New{
 }
 
 
-local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
+Unit('USM16MGMC'):Extends('USM3Base'):Extends('ArmouredCarAA'):Attrs{
 	name					= "M16 MGMC",
 	buildCostMetal			= 990,
 	corpse					= "usm3halftrack_destroyed", -- TODO: M16 corpse
@@ -58,12 +58,6 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 
 
 -- Lend Lease
-local GBRM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
-local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
+Unit('GBRM5Halftrack'):Extends('USM3Halftrack'):Attrs{name = "M5A1 Halftrack"}
+Unit('RUSM5Halftrack'):Extends('USM3Halftrack'):Attrs{name = "M5A1 Halftrack"}
 
-return lowerkeys({
-	["USM3Halftrack"] = USM3Halftrack,
-	["USM16MGMC"] = USM16MGMC,
-	["GBRM5Halftrack"] = GBRM5Halftrack,
-	["RUSM5Halftrack"] = RUSM5Halftrack,
-})

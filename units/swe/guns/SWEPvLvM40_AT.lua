@@ -1,4 +1,4 @@
-local SWEPvLvM40_AT_Stationary = LightATGun:New{
+Unit('SWEPvLvM40_AT_Stationary'):Extends('LightATGun'):Attrs{
 	name					= "Deployed PvLv m/40 AT Tripod",
 	description				= "Deployed AT Autocannon",
 	corpse					= "ruszis2_destroyed", -- TODO: change
@@ -17,6 +17,3 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	},
 }
 
-return lowerkeys({
-	["SWEPvLvM40_AT_Stationary"] = SWEPvLvM40_AT_Stationary,
-})

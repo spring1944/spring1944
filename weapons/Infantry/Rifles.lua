@@ -2,7 +2,7 @@
 -- Implementations
 
 -- SMLE No. 4 Mk. I (GBR)
-local Enfield = RifleClass:New{
+Weapon('Enfield'):Extends('RifleClass'):Attrs{
   accuracy           = 50, -- overwrites default
   name               = [[Lee-Enfield No. 4 Mk. I]],
   range              = 680,
@@ -11,7 +11,7 @@ local Enfield = RifleClass:New{
 }
 
 -- Karabiner 98K (GER)
-local K98k = RifleClass:New{
+Weapon('K98k'):Extends('RifleClass'):Attrs{
   name               = [[Karabiner 98k]],
   range              = 665,
   reloadtime         = 2.8,
@@ -19,7 +19,7 @@ local K98k = RifleClass:New{
 }
 
 -- M1 Garand (USA)
-local M1Garand = RifleClass:New{
+Weapon('M1Garand'):Extends('RifleClass'):Attrs{
   name               = [[M1 Garand]],
   range              = 535,
   reloadtime         = 1.7,
@@ -27,7 +27,7 @@ local M1Garand = RifleClass:New{
 }
 
 -- M1918A2 BAR (USA) (Possibly a little fudged in here)
-local BAR = RifleClass:New{
+Weapon('BAR'):Extends('RifleClass'):Attrs{
   burst              = 3,
   burstrate          = 0.1,
   movingAccuracy     = 2667,
@@ -43,7 +43,7 @@ local BAR = RifleClass:New{
 }
 
 -- Mosin Nagant M1890/30 (RUS)
-local MosinNagant = RifleClass:New{
+Weapon('MosinNagant'):Extends('RifleClass'):Attrs{
   name               = [[Mosin-Nagant]],
   range              = 660,
   reloadtime         = 3,
@@ -52,7 +52,7 @@ local MosinNagant = RifleClass:New{
 }
 
 -- SVT (USSR)
-local SVT = RifleClass:New{
+Weapon('SVT'):Extends('RifleClass'):Attrs{
   name               = [[SVT-40]],
   range              = 535,
   reloadtime         = 2,
@@ -62,7 +62,7 @@ local SVT = RifleClass:New{
 
 
 -- Carcano 91/38 (ITA)
-local Mod91 = RifleClass:New{
+Weapon('Mod91'):Extends('RifleClass'):Attrs{
   accuracy           = 95, -- overwrites default
   name               = [[Carcano Mod.91/38]],
   range              = 610,
@@ -74,14 +74,14 @@ local Mod91 = RifleClass:New{
 }
 
 -- Carcano 91/41 (ITA)
-local Mod91_41 = Mod91:New{
+Weapon('Mod91_41'):Extends('Mod91'):Attrs{
   accuracy           = 65,
   name               = [[Carcano Mod.91/41]],
   range              = 640,
 }
 
 -- Arisaka type 99 (JPN)
-local Arisaka99 = RifleClass:New{
+Weapon('Arisaka99'):Extends('RifleClass'):Attrs{
   accuracy           = 95, -- overwrites default
   name               = [[Arisaka Type 99]],
   range              = 630,
@@ -92,87 +92,46 @@ local Arisaka99 = RifleClass:New{
 
 
 
--- Sniper Rifle Base Class
-local SniperRifleClass = RifleClass:New{
-  accuracy           = 0,
-  explosionGenerator = [[custom:Bullet]],
-  movingAccuracy     = 1777,
-  range              = 1040,
-  reloadtime         = 10,
-  soundTrigger       = false,
-  tolerance          = 2000,
-  turret             = true,
-  weaponType         = [[LaserCannon]],
-  customparams = {
-    damagetype         = [[smallarm]],
-    fearaoe            = 90,
-    fearid             = 401,
-	scriptanimation    = [[sniper]],
-  },
-  damage = {
-    default              = 625,
-    infantry             = 1700,
-    sandbags             = 325,
-  },
-}
 
 -- Implementations
 
 -- SMLE No. 4 Mk. I (T) (GBR)
-local Enfield_T = SniperRifleClass:New{
+Weapon('Enfield_T'):Extends('SniperRifleClass'):Attrs{
   name               = [[Lee-Enfield No. 4 Mk. I Scoped]],
   reloadtime         = 8.5, -- overwrites default
   soundStart         = [[GBR_Enfield]],
 }
 
 -- Karabiner 98K Scope (GER)
-local K98kScope = SniperRifleClass:New{
+Weapon('K98kScope'):Extends('SniperRifleClass'):Attrs{
   name               = [[Karabiner 98k Scoped]],
   soundStart         = [[GER_K98K]],
 }
 
 -- M1903A4 Springfield (USA)
-local M1903Springfield = SniperRifleClass:New{
+Weapon('M1903Springfield'):Extends('SniperRifleClass'):Attrs{
   movingAccuracy     = 888, -- intended?
   name               = [[M1903A4 Springfield]],
   soundStart         = [[US_Springfield]],
 }
 
 -- Mosin Nagant M1890/30 PU (RUS)
-local MosinNagantPU = SniperRifleClass:New{
+Weapon('MosinNagantPU'):Extends('SniperRifleClass'):Attrs{
   name               = [[Mosin-Nagant PU Scoped]],
   soundStart         = [[RUS_MosinNagant]],
 }
 
 
 -- Carcano 91 Sniper (ITA)
-local Mod91Sniper = SniperRifleClass:New{
+Weapon('Mod91Sniper'):Extends('SniperRifleClass'):Attrs{
   name               = [[Carcano Mod.91 Sniper Model]],
   soundStart         = [[ITA_CarcanoM91]],
 }
 
 -- Arisaka type 99 Sniper (JPN)
-local Arisaka99Sniper = SniperRifleClass:New{
+Weapon('Arisaka99Sniper'):Extends('SniperRifleClass'):Attrs{
   name               = [[Arisaka Type 99 Sniper Model]],
   soundStart         = [[JPN_Arisaka_Type99]],
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  Enfield = Enfield,
-  K98k = K98k,
-  M1Garand = M1Garand,
-  BAR = BAR,
-  MosinNagant = MosinNagant,
-  Mod91 = Mod91,
-  Mod91_41 = Mod91_41,
-  Arisaka99 = Arisaka99,
-  -- sniper weapons
-  Enfield_T = Enfield_T,
-  K98kScope = K98kScope,
-  M1903Springfield = M1903Springfield,
-  MosinNagantPU = MosinNagantPU,
-  SVT = SVT,
-  Mod91Sniper = Mod91Sniper,
-  Arisaka99Sniper = Arisaka99Sniper,
-})

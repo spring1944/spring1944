@@ -1,4 +1,4 @@
-local ITA_MC202 = Fighter:New{
+Unit('ITA_MC202'):Extends('Fighter'):Attrs{
 	name				= "Macchi MC.202",
 	description			= "Light Fighter",
 	buildCostMetal		= 3125,
@@ -42,6 +42,3 @@ local ITA_MC202 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["ITAMC202"] = ITA_MC202,
-})

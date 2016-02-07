@@ -1,5 +1,5 @@
 -- Base AP Class
-local AP = Weapon:New{
+AbstractWeapon('AP'):Extends('Weapon'):Attrs{
 	canattackground    = false,
 	colormap           = "ap_colormap.png",
 	impactonly         = true,
@@ -12,7 +12,7 @@ local AP = Weapon:New{
 	},  
 }
 
-local AutoCannonAP = AP:New{
+AbstractWeapon('AutoCannonAP'):Extends('AP'):Attrs{
 	intensity          = 0.1,
 	separation         = 2,
 	size               = 1,  
@@ -20,20 +20,20 @@ local AutoCannonAP = AP:New{
 	explosionGenerator = "custom:AP_XSmall",
 } 
 	
-local LightAP = AP:New{
+AbstractWeapon('LightAP'):Extends('AP'):Attrs{
 	explosionGenerator = "custom:AP_Small",
 }
 
-local MediumAP = AP:New{ -- LightMedium & Medium
+AbstractWeapon('MediumAP'):Extends('AP'):Attrs{ -- LightMedium & Medium
 	explosionGenerator = "custom:AP_Medium",
 }
 
-local HeavyAP = AP:New{ -- MediumHeavy & Heavy
+AbstractWeapon('HeavyAP'):Extends('AP'):Attrs{ -- MediumHeavy & Heavy
 	explosionGenerator = "custom:AP_Medium",
 }
 
 -- Base HEAT Class
-local HEAT = Weapon:New{ -- Medium
+AbstractWeapon('HEAT'):Extends('Weapon'):Attrs{ -- Medium
 	collisionSize      = 3,
 	edgeEffectiveness  = 0.2,
 	explosionGenerator = "custom:EP_medium",
@@ -43,19 +43,20 @@ local HEAT = Weapon:New{ -- Medium
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
 		damagetype         = "shapedcharge",
-		onlytargetcategory = AP.customparams.onlytargetcategory,
-		badtargetcategory  = AP.customparams.badtargetcategory,
+		-- same as AP. potentially do something fancy to reference here?
+		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+		badtargetcategory  = "SOFTVEH",
 	},
 }
 
-local HeavyHEAT = HEAT:New{ -- MediumHeavy
+AbstractWeapon('HeavyHEAT'):Extends('HEAT'):Attrs{ -- MediumHeavy
 	explosionGenerator = "custom:EP_Large",
 	soundHitDry        = "GEN_Explo_3",
 }
 
 -- Base HE Class
 
-local HE = Weapon:New{
+AbstractWeapon('HE'):Extends('Weapon'):Attrs{
 	accuracy           = 300,
 	edgeEffectiveness  = 0.2,
 	explosionGenerator = "custom:HE_Medium",
@@ -68,7 +69,7 @@ local HE = Weapon:New{
 	},
 }
 
-local AutoCannonHE = HE:New{ -- + AAGunHE
+AbstractWeapon('AutoCannonHE'):Extends('HE'):Attrs{ -- + AAGunHE
 	areaOfEffect       = 24,
 	edgeEffectiveness  = 0.5,
 	explosionGenerator = "custom:HE_XSmall",
@@ -77,20 +78,20 @@ local AutoCannonHE = HE:New{ -- + AAGunHE
 	},
 }
 
-local LightHE = HE:New{
+AbstractWeapon('LightHE'):Extends('HE'):Attrs{
 	explosionGenerator = "custom:HE_Small",
 	customparams = {
 		fearaoe            = 40,
 	},
 }
 
-local LightMediumHE = HE:New{
+AbstractWeapon('LightMediumHE'):Extends('HE'):Attrs{
 	customparams = {
 		fearaoe            = 50,
 	},
 }
 
-local MediumHE = HE:New{ -- Medium & MediumHeavy & InfGun
+AbstractWeapon('MediumHE'):Extends('HE'):Attrs{ -- Medium & MediumHeavy & InfGun
 	soundHitDry        = "GEN_Explo_3",
 	customparams = {
 		fearaoe            = 75,
@@ -98,7 +99,7 @@ local MediumHE = HE:New{ -- Medium & MediumHeavy & InfGun
 	},
 }
 
-local HeavyHE = HE:New{
+AbstractWeapon('HeavyHE'):Extends('HE'):Attrs{
 	edgeEffectiveness  = 0.1,
 	explosionGenerator = "custom:HE_XLarge",
 	soundHitDry        = "GEN_Explo_4",
@@ -107,7 +108,7 @@ local HeavyHE = HE:New{
 		fearid             = 501,
 	},
 }
-local HowitzerHE = HE:New{ -- + CS Howitzer
+AbstractWeapon('HowitzerHE'):Extends('HE'):Attrs{ -- + CS Howitzer
 	explosionGenerator = "custom:HE_Large",
 	customparams = {
 		fearaoe            = 125,
@@ -115,7 +116,7 @@ local HowitzerHE = HE:New{ -- + CS Howitzer
 	},
 }
 
-local MortarHE = HE:New{
+AbstractWeapon('MortarHE'):Extends('HE'):Attrs{
 	soundHitDry        = "GEN_Explo_3",
 	customparams = {
 		fearaoe            = 105,
@@ -125,7 +126,7 @@ local MortarHE = HE:New{
 
 -- Base Smoke Class
 
-local Smoke = Weapon:New{
+AbstractWeapon('Smoke'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 30,
 	name               = "Smoke Shell",
 	damage = {
@@ -133,7 +134,7 @@ local Smoke = Weapon:New{
 	} ,
 }
 
-local MortarSmoke = Smoke:New{
+AbstractWeapon('MortarSmoke'):Extends('Smoke'):Attrs{
 	customparams = {
 		smokeradius        = 160,
 		smokeduration      = 25,
@@ -141,7 +142,7 @@ local MortarSmoke = Smoke:New{
 	},
 }
 
-local HowitzerSmoke = Smoke:New{ -- + CS Howitzer
+AbstractWeapon('HowitzerSmoke'):Extends('Smoke'):Attrs{ -- + CS Howitzer
 	customparams = {
 		smokeradius        = 250,
 		smokeduration      = 40,
@@ -149,7 +150,7 @@ local HowitzerSmoke = Smoke:New{ -- + CS Howitzer
 	},
 }
 
-local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
+AbstractWeapon('HeavySmoke'):Extends('Smoke'):Attrs{ -- e.g. Ho-Ro
 	customparams = {
 		smokeradius        = 350,
 		smokeduration      = 50,
@@ -159,7 +160,7 @@ local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
 
 -- AA Round Class
 
-local AA = Weapon:New{
+AbstractWeapon('AA'):Extends('Weapon'):Attrs{
 	accuracy           = 200,
 	burnblow           = true,
 	canattackground    = false,
@@ -178,21 +179,21 @@ local AA = Weapon:New{
 	},
 }
 
-local AutoCannonAA = AA:New{
+AbstractWeapon('AutoCannonAA'):Extends('AA'):Attrs{
 	areaOfEffect       = 30,
 	explosionGenerator = [[custom:HE_Small]],
 	movingAccuracy     = 0,
 	targetMoveError    = 0,
 }
 
-local AntiAirGunAA = AA:New{
+AbstractWeapon('AntiAirGunAA'):Extends('AA'):Attrs{
 	areaOfEffect       = 60,
 	explosionGenerator = [[custom:HE_Medium]],
 }
 
 -- Cannon Base
 
-local Cannon = Weapon:New{
+AbstractWeapon('Cannon'):Extends('Weapon'):Attrs{
 	avoidFeature       = false,
 	collisionSize      = 4,
 	impulseFactor      = 0,
@@ -210,7 +211,7 @@ local Cannon = Weapon:New{
 
 -- Armour - Tank Guns
 
-local TankGun = Cannon:New{
+AbstractWeapon('TankGun'):Extends('Cannon'):Attrs{
 	accuracy           = 100,
 	intensity          = 0.25,
 	leadBonus          = 0.5,
@@ -219,7 +220,7 @@ local TankGun = Cannon:New{
 	tolerance          = 300,
 }
 
-local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
+AbstractWeapon('AirATGun'):Extends('TankGun'):Extends('LightAP'):Attrs{ -- assumes we won't give them HE
 	heightBoostFactor  = 0,
 	targetMoveError    = 0.1,
 	tolerance          = 600,
@@ -232,7 +233,7 @@ local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
 }
 
 -- Armour - Light Gun (37 to 45mm)
-local LightGun = TankGun:New{
+AbstractWeapon('LightGun'):Extends('TankGun'):Attrs{
 	movingAccuracy     = 500, --590 for 2pdr?
 	soundStart         = "US_37mm", -- move later?
 	customparams = {
@@ -242,7 +243,7 @@ local LightGun = TankGun:New{
 }
 
 -- Armour - Light-Medium Gun (50 to 57mm)
-local LightMediumGun = TankGun:New{
+AbstractWeapon('LightMediumGun'):Extends('TankGun'):Attrs{
 	soundStart         = "GER_50mm", -- move later?
 	customparams = {
 		cegflare           = "MEDIUMSMALL_MUZZLEFLASH",
@@ -251,7 +252,7 @@ local LightMediumGun = TankGun:New{
 }
 
 -- Armour - Medium Gun (75 to 76mm)
-local MediumGun = TankGun:New{
+AbstractWeapon('MediumGun'):Extends('TankGun'):Attrs{
 	customparams = {
 		cegflare           = "MEDIUM_MUZZLEFLASH",
 		weaponcost         = 12,
@@ -259,7 +260,7 @@ local MediumGun = TankGun:New{
 }
 
 -- Armour - Medium Heavy Gun (85 to 100mm)
-local MediumHeavyGun = TankGun:New{
+AbstractWeapon('MediumHeavyGun'):Extends('TankGun'):Attrs{
 	customparams = {
 		cegflare           = "MEDIUMLARGE_MUZZLEFLASH",
 		weaponcost         = 20,
@@ -267,7 +268,7 @@ local MediumHeavyGun = TankGun:New{
 }
 
 -- Armour - Heavy Gun (120 to 152mm)
-local HeavyGun = TankGun:New{
+AbstractWeapon('HeavyGun'):Extends('TankGun'):Attrs{
 	customParams = {
 		cegflare           = "LARGE_MUZZLEFLASH",
 		weaponcost         = 28,
@@ -275,7 +276,7 @@ local HeavyGun = TankGun:New{
 }
 
 -- Armour - CS Howitzer
-local CSHowitzer = HeavyGun:New{ -- for cegflare only atm (+TankGun base)
+AbstractWeapon('CSHowitzer'):Extends('HeavyGun'):Attrs{ -- for cegflare only atm (+TankGun base)
 	accuracy           = 300,
 	soundHitDry        = "GEN_Explo_4",
 	soundStart         = "GEN_105mm", -- move later?
@@ -287,7 +288,7 @@ local CSHowitzer = HeavyGun:New{ -- for cegflare only atm (+TankGun base)
 }
 
 -- Artillery - Light Anti-Air (20 - 25mm)
-local AutoCannon = Cannon:New{
+AbstractWeapon('AutoCannon'):Extends('Cannon'):Attrs{
 	edgeEffectiveness  = 0.5,
 	explosionSpeed     = 100, -- needed?
 	movingAccuracy     = 500,
@@ -303,7 +304,7 @@ local AutoCannon = Cannon:New{
 	},
 }
 
-local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
+AbstractWeapon('AirAutoCannon'):Extends('AutoCannon'):Attrs{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
 	heightBoostFactor  = 0,
 	predictBoost       = 0.5,
 	soundTrigger       = false,
@@ -318,7 +319,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 }
 
 -- Artillery - Medium Anti-Air (37 - 40mm)
-local AntiAirGun = Cannon:New{
+AbstractWeapon('AntiAirGun'):Extends('Cannon'):Attrs{
 	intensity          = 0.9,
 	predictBoost       = 0, -- this seems very strange for an AA weapon!
 	size               = 1e-5,
@@ -333,7 +334,7 @@ local AntiAirGun = Cannon:New{
 }
 
 -- Artillery - Inf Guns
-local InfGun = Cannon:New(MediumHE):New{
+AbstractWeapon('InfGun'):Extends('Cannon'):Extends('MediumHE'):Attrs{
 	accuracy           = 510,
 	intensity          = 0.1,
 	noSelfDamage       = true,
@@ -349,7 +350,7 @@ local InfGun = Cannon:New(MediumHE):New{
 }
 
 -- Artillery - Light Howitzers
-local Howitzer = Cannon:New{
+AbstractWeapon('Howitzer'):Extends('Cannon'):Attrs{
 	intensity          = 0.1,
 	leadLimit          = 0.05,
 	noSelfDamage       = true,
@@ -367,7 +368,7 @@ local Howitzer = Cannon:New{
 
 -- Artillery - Mortars
 
-local Mortar = Cannon:New{
+AbstractWeapon('Mortar'):Extends('Cannon'):Attrs{
 	accuracy           = 485,
 	collideFriendly    = false,
 	leadLimit          = 500,
@@ -383,51 +384,3 @@ local Mortar = Cannon:New{
 	},
 }
 
-return {
-	-- AMMO TYPES
-	-- AP bases
-	AP = AP,
-	AutoCannonAP = AutoCannonAP,
-	LightAP = LightAP,
-	MediumAP = MediumAP,
-	HeavyAP = HeavyAP,
-	-- HEAT bases
-	HEAT = HEAT,
-	HeavyHEAT = HeavyHEAT,
-	-- HE bases
-	HE = HE,
-	AutoCannonHE = AutoCannonHE,
-	LightHE = LightHE,
-	LightMediumHE = LightMediumHE,
-	MediumHE = MediumHE,
-	HeavyHE = HeavyHE,
-	HowitzerHE = HowitzerHE,
-	MortarHE = MortarHE,
-	-- Smoke bases
-	Smoke = Smoke,
-	MortarSmoke = MortarSmoke,
-	HowitzerSmoke = HowitzerSmoke,
-	HeavySmoke = HeavySmoke,
-	-- AA bases
-	AA = AA,
-	AutoCannonAA = AutoCannonAA,
-	AntiAirGunAA = AntiAirGunAA,
-	-- WEAPON TYPES
-	Cannon = Cannon,
-	-- (Anti) Tank Guns
-	TankGun = TankGun,
-	AirATGun = AirATGun,
-	LightGun = LightGun,
-	LightMediumGun = LightMediumGun,
-	MediumGun = MediumGun,
-	MediumHeavyGun = MediumHeavyGun,
-	HeavyGun = HeavyGun,
-	CSHowitzer = CSHowitzer,
-	-- Artillery
-	AutoCannon = AutoCannon,
-	AirAutoCannon = AirAutoCannon,
-	AntiAirGun = AntiAirGun,
-	InfGun = InfGun,
-	Howitzer = Howitzer,
-	Mortar = Mortar,
-}

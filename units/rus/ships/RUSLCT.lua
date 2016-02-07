@@ -1,4 +1,4 @@
-local RUS_LCT = TankLandingCraft:New{
+Unit('RUS_LCT'):Extends('TankLandingCraft'):Attrs{
 	name					= "LCT Mk. 6",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
@@ -50,6 +50,3 @@ local RUS_LCT = TankLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["RUSLCT"] = RUS_LCT,
-})

@@ -1,4 +1,4 @@
-local SmallArm = Weapon:New{
+AbstractWeapon('SmallArm'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 1,
 	avoidFeature       = true,
 	avoidFriendly      = false,
@@ -21,7 +21,7 @@ local SmallArm = Weapon:New{
 }
 
 -- Pistol Base Class
-local PistolClass = SmallArm:New{
+AbstractWeapon('PistolClass'):Extends('SmallArm'):Attrs{
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
 	duration           = 0.025,
@@ -41,7 +41,7 @@ local PistolClass = SmallArm:New{
 }
 
 -- Rifle Base Class
-local RifleClass = SmallArm:New{
+AbstractWeapon('RifleClass'):Extends('SmallArm'):Attrs{
 	accuracy           = 100,
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
@@ -62,27 +62,31 @@ local RifleClass = SmallArm:New{
 }
 
 -- Sniper Rifle Base Class
-local SniperRifleClass = RifleClass:New{
-	accuracy           = 0,
-	movingAccuracy     = 1777,
-	range              = 1040,
-	reloadtime         = 10,
-	tolerance          = 2000,
-	customparams = {
-		onlytargetcategory  = "INFANTRY DEPLOYED", -- don't waste sniper shots on light vehs
-		fearaoe            = 90,
-		fearid             = 401,
-		scriptanimation    = "sniper",
-	},
-	damage = {
-		default              = 625,
-		infantry             = 1700,
-		sandbags             = 325,
-	},
+Weapon('SniperRifleClass'):Extends('RifleClass'):Attrs{
+  accuracy           = 0,
+  explosionGenerator = [[custom:Bullet]],
+  movingAccuracy     = 1777,
+  range              = 1040,
+  reloadtime         = 10,
+  soundTrigger       = false,
+  tolerance          = 2000,
+  turret             = true,
+  weaponType         = [[LaserCannon]],
+  customparams = {
+    damagetype         = [[smallarm]],
+    fearaoe            = 90,
+    fearid             = 401,
+	scriptanimation    = [[sniper]],
+  },
+  damage = {
+    default              = 625,
+    infantry             = 1700,
+    sandbags             = 325,
+  },
 }
 
 -- Submachinegun Base Class
-local SMGClass = SmallArm:New{
+AbstractWeapon('SMGClass'):Extends('SmallArm'):Attrs{
 	accuracy           = 100,
 	burst              = 5,
 	collisionSize      = 2.5,
@@ -104,7 +108,7 @@ local SMGClass = SmallArm:New{
 }
 
 -- MachineGun Base Class
-local MGClass = SmallArm:New{
+AbstractWeapon('MGClass'):Extends('SmallArm'):Attrs{
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
 	duration           = 0.01,
@@ -128,7 +132,7 @@ local MGClass = SmallArm:New{
 	},
 }
 
-local HeavyMGClass = MGClass:New{
+AbstractWeapon('HeavyMGClass'):Extends('MGClass'):Attrs{
 	burst              = 8,
 	burstRate          = 0.1,
 	interceptedByShieldType = 16,
@@ -145,14 +149,14 @@ local HeavyMGClass = MGClass:New{
 	},
 }
 
-local AMG = Weapon:New{ -- should be used like ammo bases
+AbstractWeapon('AMG'):Extends('Weapon'):Attrs{ -- should be used like ammo bases
 	customparams = {
 		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	}
 }
 
-local AAMG = Weapon:New{ -- should be used like ammo bases
+AbstractWeapon('AAMG'):Extends('Weapon'):Attrs{ -- should be used like ammo bases
 	sprayAngle         = 1050,
 	accuracy           = 400,
 	movingAccuracy     = 800,
@@ -167,14 +171,3 @@ local AAMG = Weapon:New{ -- should be used like ammo bases
 	}
 }
 
-return {
-	SmallArm = SmallArm,
-	PistolClass = PistolClass,
-	RifleClass = RifleClass,
-	SniperRifleClass = SniperRifleClass,
-	SMGClass = SMGClass,
-	MGClass = MGClass,
-	HeavyMGClass = HeavyMGClass,
-	AMG = AMG,
-	AAMG = AAMG,
-}

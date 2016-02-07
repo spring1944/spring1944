@@ -1,4 +1,4 @@
-local GERJagdPanzerIV = MediumTank:New(TankDestroyer):New{
+Unit('GERJagdPanzerIV'):Extends('MediumTank'):Extends('TankDestroyer'):Attrs{
 	name				= "SdKfz 162 JagdPanzer IV/70(V)",
 	description			= "Turretless Tank Destroyer",
 	buildCostMetal		= 4500,
@@ -26,6 +26,3 @@ local GERJagdPanzerIV = MediumTank:New(TankDestroyer):New{
 	},
 }
 
-return lowerkeys({
-	["GERJagdPanzerIV"] = GERJagdPanzerIV,
-})

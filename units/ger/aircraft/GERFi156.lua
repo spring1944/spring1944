@@ -1,4 +1,4 @@
-local GER_Fi156 = Recon:New{
+Unit('GER_Fi156'):Extends('Recon'):Attrs{
 	name			= "Fi 156 Storch",
 	maxDamage		= 86,
 	
@@ -19,6 +19,3 @@ local GER_Fi156 = Recon:New{
 }
 
 
-return lowerkeys({
-	["GERFi156"] = GER_Fi156,
-})

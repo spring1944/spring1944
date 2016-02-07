@@ -1,13 +1,13 @@
-local US_GMCTruckBase = Truck:New{
+Unit('US_GMCTruckBase'):Extends('Truck'):Attrs{
 	name					= "GMC 2.5t Truck",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local US_GMCTruck = US_GMCTruckBase:New(TransportTruck)
-local US_PontoonTruck = US_GMCTruckBase:New(PontoonTruck, true)
+Unit('US_GMCTruck'):Extends('US_GMCTruckBase'):Extends('TransportTruck')
+Unit('US_PontoonTruck'):Extends('US_GMCTruckBase'):Extends('PontoonTruck') -- name append
 
-local US_DUKW = US_GMCTruck:New(Amphibian):New{
+Unit('US_DUKW'):Extends('US_GMCTruck'):Extends('Amphibian'):Attrs{
 	name					= "DUKW",
 	description				= "Amphibious Transport Truck",
 	buildCostMetal			= 500,
@@ -17,8 +17,3 @@ local US_DUKW = US_GMCTruck:New(Amphibian):New{
 	maxDamage				= 650,
 }
 
-return lowerkeys({
-	["USGMCTruck"] = US_GMCTruck,
-	["USPontoonTruck"] = US_PontoonTruck,
-	["USDUKW"] = US_DUKW,
-})

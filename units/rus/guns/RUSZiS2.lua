@@ -1,4 +1,4 @@
-local RUS_ZiS2_Truck = ATGunTractor:New{
+Unit('RUS_ZiS2_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed 57mm ZiS-2",
 	buildCostMetal			= 450,
 	corpse					= "RUSZiS5_Destroyed",
@@ -6,7 +6,7 @@ local RUS_ZiS2_Truck = ATGunTractor:New{
 	trackWidth				= 12,
 }
 
-local RUS_ZiS2_Stationary = LightATGun:New{
+Unit('RUS_ZiS2_Stationary'):Extends('LightATGun'):Attrs{
 	name					= "Deployed 57mm ZiS-2",
 	corpse					= "ruszis2_destroyed",
 
@@ -17,7 +17,3 @@ local RUS_ZiS2_Stationary = LightATGun:New{
 	},
 }
 
-return lowerkeys({
-	["RUSZiS2_Truck"] = RUS_ZiS2_Truck,
-	["RUSZiS2_Stationary"] = RUS_ZiS2_Stationary,
-})

@@ -1,4 +1,4 @@
-local RUSISU152 = HeavyTank:New(AssaultGun):New{
+Unit('RUSISU152'):Extends('HeavyTank'):Extends('AssaultGun'):Attrs{
 	name				= "ISU-152",
 	description			= "Heavy Assault Gun",
 	buildCostMetal		= 5800,
@@ -33,6 +33,3 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["RUSISU152"] = RUSISU152,
-})

@@ -1,4 +1,4 @@
-local GER_SchSturmboot = InfantryLandingCraft:New{
+Unit('GER_SchSturmboot'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "Schwere Sturmboot 42",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
@@ -17,6 +17,3 @@ local GER_SchSturmboot = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["GERSchSturmboot"] = GER_SchSturmboot,
-})

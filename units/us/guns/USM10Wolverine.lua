@@ -1,4 +1,4 @@
-local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
+Unit('USM10Wolverine'):Extends('MediumTank'):Extends('TankDestroyer'):Extends('OpenTopped'):Attrs{
 	name				= "M10 GMC Wolverine",
 	description			= "Turreted Tank Destroyer",
 	buildCostMetal		= 1900,
@@ -31,6 +31,3 @@ local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["USM10Wolverine"] = USM10Wolverine,
-})

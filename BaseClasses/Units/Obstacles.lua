@@ -1,5 +1,5 @@
 -- Obstacles --
-local Mine = Unit:New{
+AbstractUnit('Mine'):Extends('Unit'):Attrs{
 	buildingGroundDecalType	= "MineDirt.dds",
 	category				= "MINE",
 	kamikaze				= true,
@@ -22,7 +22,7 @@ local Mine = Unit:New{
 	}
 }
 
-local MineSign = Mine:New{
+AbstractUnit('MineSign'):Extends('Mine'):Attrs{
 	buildCostMetal			= 360,
 	buildingGroundDecalType	= "",
 	category				= "FLAG",
@@ -34,7 +34,7 @@ local MineSign = Mine:New{
 	useBuildingGroundDecal	= false,
 }
 
-local TankObstacle = Unit:New{
+AbstractUnit('TankObstacle'):Extends('Unit'):Attrs{
 	name					= "Tank Obstacle",
 	description				= "Blocks Tracked & Wheeled Vehicles",
 	buildCostMetal			= 10,
@@ -58,8 +58,3 @@ local TankObstacle = Unit:New{
 	},
 }
 
-return {
-	Mine = Mine,
-	MineSign = MineSign,
-	TankObstacle = TankObstacle,
-}

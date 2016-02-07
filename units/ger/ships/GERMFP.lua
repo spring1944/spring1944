@@ -1,4 +1,4 @@
-local GER_MFP = TankLandingCraft:New{
+Unit('GER_MFP'):Extends('TankLandingCraft'):Attrs{
 	name					= "Marinefahrprahm",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
@@ -81,6 +81,3 @@ local GER_MFP = TankLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["GERMFP"] = GER_MFP,
-})

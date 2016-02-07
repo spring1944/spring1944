@@ -1,12 +1,12 @@
-local GERInf = {
+AbstractUnit('GERInf'):Attrs{
 	maxDamageMul		= 1.1,
 }
 
-local GER_HQEngineer = EngineerInf:New(GERInf):New{
+Unit('GER_HQEngineer'):Extends('EngineerInf'):Extends('GERInf'):Attrs{
 	name				= "Feldpionier",
 }
 
-local GER_Rifle = RifleInf:New(GERInf):New{
+Unit('GER_Rifle'):Extends('RifleInf'):Extends('GERInf'):Attrs{
 	name				= "Karabiner 98K Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -18,7 +18,7 @@ local GER_Rifle = RifleInf:New(GERInf):New{
 	},
 }
 
-local GER_MP40 = SMGInf:New(GERInf):New{
+Unit('GER_MP40'):Extends('SMGInf'):Extends('GERInf'):Attrs{
 	name				= "MP40 Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -30,7 +30,7 @@ local GER_MP40 = SMGInf:New(GERInf):New{
 	},
 }
 
-local GER_MG42 = LMGInf:New(GERInf):New{
+Unit('GER_MG42'):Extends('LMGInf'):Extends('GERInf'):Attrs{
 	name				= "MG42 Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -40,7 +40,7 @@ local GER_MG42 = LMGInf:New(GERInf):New{
 }
 
 
-local GER_MG42_Sandbag = SandbagMG:New{
+Unit('GER_MG42_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed MG42 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -50,7 +50,7 @@ local GER_MG42_Sandbag = SandbagMG:New{
 	},
 }
 
-local GER_Sniper = SniperInf:New(GERInf):New{
+Unit('GER_Sniper'):Extends('SniperInf'):Extends('GERInf'):Attrs{
 	name				= "K98k Heckenschutze",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -59,7 +59,7 @@ local GER_Sniper = SniperInf:New(GERInf):New{
 	},
 }
 
-local GER_PanzerFaust = ATLauncherInf:New(GERInf):New{
+Unit('GER_PanzerFaust'):Extends('ATLauncherInf'):Extends('GERInf'):Attrs{
 	name				= "Panzerfaust 60",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -68,7 +68,7 @@ local GER_PanzerFaust = ATLauncherInf:New(GERInf):New{
 	},
 }
 
-local GER_PanzerSchrek = ATLauncherInf:New(GERInf):New{
+Unit('GER_PanzerSchrek'):Extends('ATLauncherInf'):Extends('GERInf'):Attrs{
 	name				= "Panzerschrek RPzB 54",
 	description			= "Heavy Anti-Tank Infantry",
 	weapons = {
@@ -78,7 +78,7 @@ local GER_PanzerSchrek = ATLauncherInf:New(GERInf):New{
 	},
 }
 
-local GER_GrW34 = MedMortarInf:New(GERInf):New{
+Unit('GER_GrW34'):Extends('MedMortarInf'):Extends('GERInf'):Attrs{
 	name				= "8cm GrW 34 Mortar",
 	weapons = {
 		[1] = { -- HE
@@ -90,7 +90,7 @@ local GER_GrW34 = MedMortarInf:New(GERInf):New{
 	},
 }
 
-local GER_Observ = ObservInf:New(GERInf):New{
+Unit('GER_Observ'):Extends('ObservInf'):Extends('GERInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "WaltherP38",
@@ -99,17 +99,3 @@ local GER_Observ = ObservInf:New(GERInf):New{
 }
 
 
-return lowerkeys({
-	-- Regular Inf
-	["GERHQEngineer"] = GER_HQEngineer,
-	["GERHQAIEngineer"] = GER_HQEngineer:Clone("GERHQEngineer"),
-	["GERRifle"] = GER_Rifle,
-	["GERMP40"] = GER_MP40,
-	["GERMG42"] = GER_MG42,
-	["GERMG42_Sandbag"] = GER_MG42_Sandbag,
-	["GERSniper"] = GER_Sniper,
-	["GERPanzerfaust"] = GER_PanzerFaust,
-	["GERPanzerschrek"] = GER_PanzerSchrek,
-	["GERGrW34"] = GER_GrW34,
-	["GERObserv"] = GER_Observ,
-})

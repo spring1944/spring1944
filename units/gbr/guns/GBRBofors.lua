@@ -1,11 +1,11 @@
-local GBR_Bofors_Truck = AAGunTractor:New{
+Unit('GBR_Bofors_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed Q.F. 40mm Bofors",
 	corpse					= "GBRBedfordTruck_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local GBR_Bofors_Stationary = AAGun:New{
+Unit('GBR_Bofors_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed Q.F. 40mm Bofors",
 	corpse					= "GBRBofors_Destroyed",
 
@@ -19,8 +19,3 @@ local GBR_Bofors_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["GBRBofors_Truck"] = GBR_Bofors_Truck,
-	["GBRBofors_Stationary"] = GBR_Bofors_Stationary,
-	["GBRBofors_Stationary_base"] = GBR_Bofors_Stationary:Clone("GBRBofors_Stationary"),
-})

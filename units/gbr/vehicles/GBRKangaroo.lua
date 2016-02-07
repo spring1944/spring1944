@@ -1,4 +1,4 @@
-local GBRKangaroo = MediumTank:New(Transport):New{
+Unit('GBRKangaroo'):Extends('MediumTank'):Extends('Transport'):Attrs{
 	name				= "Ram Kangaroo",
 	description			= "Heavily Armoured Transport",
 	buildCostMetal		= 1200,
@@ -23,6 +23,3 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 	},
 }
 
-return lowerkeys({
-	["GBRKangaroo"] = GBRKangaroo,
-})

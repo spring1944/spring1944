@@ -1,4 +1,4 @@
-local ITA_Reggiane2005 = Fighter:New{
+Unit('ITA_Reggiane2005'):Extends('Fighter'):Attrs{
 	name				= "Reggiane Re.2005",
 	buildCostMetal		= 3125,
 	maxDamage			= 260,
@@ -46,6 +46,3 @@ local ITA_Reggiane2005 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["ITAReggiane2005"] = ITA_Reggiane2005,
-})

@@ -1,4 +1,4 @@
-local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
+Unit('GBRSexton'):Extends('MediumTank'):Extends('SPArty'):Extends('OpenTopped'):Attrs{
 	name				= "25pdr SP Sexton Mk. II",
 	buildCostMetal		= 4725,
 	maxDamage			= 2586,
@@ -24,6 +24,3 @@ local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["GBRSexton"] = GBRSexton,
-})

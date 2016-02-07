@@ -1,4 +1,4 @@
-local US_PT103 = ArmedBoat:New{
+Unit('US_PT103'):Extends('ArmedBoat'):Attrs{
 	name					= "PT-103 Type",
 	description				= "Patrol Torpedo Boat",
 	acceleration			= 0.3,
@@ -38,7 +38,7 @@ local US_PT103 = ArmedBoat:New{
 }
 
 
-local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
+Unit('US_PT103_Turret_Twin50'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Browning 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -59,7 +59,7 @@ local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 }
 
 
-local US_PT103_Turret_20mm = OpenBoatTurret:New{
+Unit('US_PT103_Turret_20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	weapons = {	
@@ -85,7 +85,7 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 	},
 }
 
-local US_PT103_Turret_Bofors = OpenBoatTurret:New{
+Unit('US_PT103_Turret_Bofors'):Extends('OpenBoatTurret'):Attrs{
 	name					= "40mm Bofors Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -116,9 +116,3 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["USPT103"] = US_PT103,
-	["USPT103_Turret_20mm"] = US_PT103_Turret_20mm,
-	["USPT103_Turret_Twin50"] = US_PT103_Turret_Twin50,
-	["USPT103_Turret_Bofors"] = US_PT103_Turret_Bofors,
-})

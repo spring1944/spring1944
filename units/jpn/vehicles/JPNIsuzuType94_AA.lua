@@ -1,4 +1,4 @@
-local JPNIsuzuType94_AA = TruckAA:New{
+Unit('JPNIsuzuType94_AA'):Extends('TruckAA'):Attrs{
 	name				= "Type 94 Isuzu w/ Type 98 20mm AA",
 	buildCostMetal		= 1200,
 	maxDamage			= 600,
@@ -16,6 +16,3 @@ local JPNIsuzuType94_AA = TruckAA:New{
 	}
 }
 
-return lowerkeys({
-	["JPNIsuzuType94_AA"] = JPNIsuzuType94_AA,
-})

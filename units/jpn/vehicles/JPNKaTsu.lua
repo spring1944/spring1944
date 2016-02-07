@@ -1,4 +1,4 @@
-local JPNKaTsu = HalfTrack:New(Amphibian):New{
+Unit('JPNKaTsu'):Extends('HalfTrack'):Extends('Amphibian'):Attrs{
 	name					= "Type 4 Ka-Tsu",
 	buildCostMetal			= 1100,
 	maxDamage				= 1600,
@@ -28,6 +28,3 @@ local JPNKaTsu = HalfTrack:New(Amphibian):New{
 	},
 }
 
-return lowerkeys({
-	["JPNKaTsu"] = JPNKaTsu,
-})

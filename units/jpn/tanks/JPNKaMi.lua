@@ -1,4 +1,4 @@
-local JPNKaMi = LightTank:New(Amphibian):New{
+Unit('JPNKaMi'):Extends('LightTank'):Extends('Amphibian'):Attrs{
 	name				= "Type 2 Ka-Mi",
 	description			= "Amphibious Light Tank",
 	buildCostMetal		= 1150,
@@ -38,6 +38,3 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 	},
 }
 
-return lowerkeys({
-	["JPNKaMi"] = JPNKaMi,
-})

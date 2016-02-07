@@ -1,4 +1,4 @@
-local JPNHoNiII = LightTank:New(SPArty):New(OpenTopped):New{
+Unit('JPNHoNiII'):Extends('LightTank'):Extends('SPArty'):Extends('OpenTopped'):Attrs{
 	name				= "Type 2 Ho-Ni II",
 	buildCostMetal		= 3150,
 	maxDamage			= 1630,
@@ -24,6 +24,3 @@ local JPNHoNiII = LightTank:New(SPArty):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["JPNHoNiII"] = JPNHoNiII,
-})

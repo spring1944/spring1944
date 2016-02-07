@@ -1,4 +1,4 @@
-local JPN_Ki76 = Recon:New{
+Unit('JPN_Ki76'):Extends('Recon'):Attrs{
 	name			= "Ki-76 Stella",
 	maxDamage		= 86,
 	
@@ -11,6 +11,3 @@ local JPN_Ki76 = Recon:New{
 }
 
 
-return lowerkeys({
-	["JPNKi76"] = JPN_Ki76,
-})

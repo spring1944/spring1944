@@ -1,10 +1,12 @@
-local RUSInf = {
+
+AbstractUnit('RUSInf'):Attrs{
 	maxDamageMul		= 0.65,
 	customParams = {
 		flagCapRate		= 0.085,
 	},
 }
-local Partisan = {
+
+AbstractUnit('Partisan'):Attrs{
 	maxDamageMul		= 0.40,
 
 	cloakCost			= 0,
@@ -12,11 +14,11 @@ local Partisan = {
 	minCloakDistance	= 225,
 }
 
-local RUS_Engineer = EngineerInf:New(RUSInf):New{
+Unit('RUS_Engineer'):Extends('EngineerInf'):Extends('RUSInf'):Attrs{
 	name				= "Engineer",
 }
 
-local RUS_Commissar = EngineerInf:New(RUSInf):New{
+Unit('RUS_Commissar'):Extends('EngineerInf'):Extends('RUSInf'):Attrs{
 	name				= "Engineer",
 	description			= "Political Commander",
 	energyStorage		= 0.01, -- TODO: needed?
@@ -33,7 +35,7 @@ local RUS_Commissar = EngineerInf:New(RUSInf):New{
 	},
 }
 
-local RUS_Rifle = RifleInf:New(RUSInf):New{
+Unit('RUS_Rifle'):Extends('RifleInf'):Extends('RUSInf'):Attrs{
 	name				= "Mosin-Nagant M91/30 Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -45,7 +47,7 @@ local RUS_Rifle = RifleInf:New(RUSInf):New{
 	},
 }
 
-local RUS_PPSh = SMGInf:New(RUSInf):New{
+Unit('RUS_PPSh'):Extends('SMGInf'):Extends('RUSInf'):Attrs{
 	name				= "PPSh 41 Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -57,7 +59,7 @@ local RUS_PPSh = SMGInf:New(RUSInf):New{
 	},
 }
 
-local RUS_DP = LMGInf:New(RUSInf):New{
+Unit('RUS_DP'):Extends('LMGInf'):Extends('RUSInf'):Attrs{
 	name				= "DP 28 Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -66,12 +68,12 @@ local RUS_DP = LMGInf:New(RUSInf):New{
 	},
 }
 
-local RUS_Maxim = HMGInf:New(RUSInf):New{
+Unit('RUS_Maxim'):Extends('HMGInf'):Extends('RUSInf'):Attrs{
 	name				= "Maxim PM 1910 Heavy Machinegun",
 	buildpic			= "RUSSandbagMG.png",
 }
 
-local RUS_Maxim_Sandbag = SandbagMG:New{
+Unit('RUS_Maxim_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Maxim PM 1910 Heavy Machinegun",
 	buildpic			= "RUSSandbagMG.png",
 	weapons = {
@@ -81,7 +83,7 @@ local RUS_Maxim_Sandbag = SandbagMG:New{
 	},
 }
 
-local RUS_Sniper = SniperInf:New(RUSInf):New{
+Unit('RUS_Sniper'):Extends('SniperInf'):Extends('RUSInf'):Attrs{
 	name				= "Mosin-Nagant M91/30 PU Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -94,7 +96,7 @@ local RUS_Sniper = SniperInf:New(RUSInf):New{
 	},
 }
 
-local RUS_PTRD = ATRifleInf:New(RUSInf):New{
+Unit('RUS_PTRD'):Extends('ATRifleInf'):Extends('RUSInf'):Attrs{
 	name				= "PTRD",
 	weapons = {
 		[1] = { -- AT Rifle
@@ -103,7 +105,7 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 	},
 }
 
-local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
+Unit('RUS_RPG43'):Extends('ATGrenadeInf'):Extends('RUSInf'):Attrs{
 	name				= "RPG43",
 	customparams = {
 		scriptanimation		= "smg",
@@ -115,7 +117,7 @@ local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	},
 }
 
-local RUS_Mortar = MedMortarInf:New(RUSInf):New{
+Unit('RUS_Mortar'):Extends('MedMortarInf'):Extends('RUSInf'):Attrs{
 	name				= "M1937 Mortar",
 	weapons = {
 		[1] = { -- HE
@@ -127,7 +129,7 @@ local RUS_Mortar = MedMortarInf:New(RUSInf):New{
 	},
 }
 
-local RUS_Observ = ObservInf:New(RUSInf):New{
+Unit('RUS_Observ'):Extends('ObservInf'):Extends('RUSInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "TT33",
@@ -136,7 +138,7 @@ local RUS_Observ = ObservInf:New(RUSInf):New{
 }
 
 -- Naval Inf
-local RUS_NI_Rifle = RifleInf:New(RUSInf):New{
+Unit('RUS_NI_Rifle'):Extends('RifleInf'):Extends('RUSInf'):Attrs{
 	name				= "SVT-40 Rifle",
 	description			= "Naval Infantry Rifleman",
 	weapons = {
@@ -150,7 +152,7 @@ local RUS_NI_Rifle = RifleInf:New(RUSInf):New{
 }
 
 -- Partisans
-local RUS_PartisanRifle = RifleInf:New(Partisan):New{
+Unit('RUS_PartisanRifle'):Extends('RifleInf'):Extends('Partisan'):Attrs{
 	name				= "Mosin Nagant M91/30 Partisan",
 	description			= "Very Light Defensive Ambusher",
 	
@@ -169,23 +171,3 @@ local RUS_PartisanRifle = RifleInf:New(Partisan):New{
 	},
 }
 
-return lowerkeys({
-	-- Regular Inf
-	["RUSEngineer"] = RUS_Engineer,
-	["RUSCommissar"] = RUS_Commissar,
-	["RUSAICommissar"] = RUS_Commissar:Clone("RUSCommissar"),
-	["RUSRifle"] = RUS_Rifle,
-	["RUSPPSh"] = RUS_PPSh,
-	["RUSDP"] = RUS_DP,
-	["RUSMaxim_Sandbag"] = RUS_Maxim_Sandbag,
-	["RUSMaxim"] = RUS_Maxim,
-	["RUSSniper"] = RUS_Sniper,
-	["RUSPTRD"] = RUS_PTRD,
-	["RUSRPG43"] = RUS_RPG43,
-	["RUSMortar"] = RUS_Mortar,
-	["RUSObserv"] = RUS_Observ,
-	-- Naval Inf
-	["RUS_NI_Rifle"] = RUS_NI_Rifle,
-	-- Partisans
-	["RUSPartisanRifle"] = RUS_PartisanRifle,
-})

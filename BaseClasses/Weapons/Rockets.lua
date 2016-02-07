@@ -1,4 +1,4 @@
-local Rocket = Weapon:New{
+AbstractWeapon('Rocket'):Extends('Weapon'):Attrs{
 	avoidFeature       = false,
 	explosionSpeed     = 30,
 	impulseFactor      = 0,
@@ -11,7 +11,7 @@ local Rocket = Weapon:New{
 }
 
 -- Rocket Artillery Base Class
-local ArtyRocket = Rocket:New{
+AbstractWeapon('ArtyRocket'):Extends('Rocket'):Attrs{
 	cegTag             = "RocketTrail",
 	commandfire        = true,
 	edgeEffectiveness  = 0.1,
@@ -38,7 +38,7 @@ local ArtyRocket = Rocket:New{
 }
 
 -- AirRocket Base Class
-local AirRocket = Rocket:New{
+AbstractWeapon('AirRocket'):Extends('Rocket'):Attrs{
 	cegTag             = "BazookaTrail",
 	collideFriendly    = false,
 	explosionGenerator = "custom:HE_Medium",
@@ -59,8 +59,3 @@ local AirRocket = Rocket:New{
 	},
 }
 
-return {
-	Rocket = Rocket,
-	ArtyRocket = ArtyRocket,
-	AirRocket = AirRocket,
-}

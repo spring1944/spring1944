@@ -1,4 +1,4 @@
-local JPNHoNiIII = LightTank:New(TankDestroyer):New{
+Unit('JPNHoNiIII'):Extends('LightTank'):Extends('TankDestroyer'):Attrs{
 	name				= "Type 3 Ho-Ni III",
 	buildCostMetal		= 2050,
 	maxDamage			= 1700,
@@ -24,6 +24,3 @@ local JPNHoNiIII = LightTank:New(TankDestroyer):New{
 	},
 }
 
-return lowerkeys({
-	["JPNHoNiIII"] = JPNHoNiIII,
-})

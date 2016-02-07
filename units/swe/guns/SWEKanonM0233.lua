@@ -1,4 +1,4 @@
-local SWEKanonM02_33_Truck = FGGunTractor:New{
+Unit('SWEKanonM02_33_Truck'):Extends('FGGunTractor'):Attrs{
 	name					= "Towed 7,5cm Kanon m/02-33",
 	buildCostMetal			= 1250,
 	corpse					= "ITATL37_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local SWEKanonM02_33_Truck = FGGunTractor:New{
 	trackWidth				= 13,
 }
 
-local SWEKanonM02_33_Stationary = FGGun:New{
+Unit('SWEKanonM02_33_Stationary'):Extends('FGGun'):Attrs{
 	name					= "Deployed 7,5cm Kanon m/02-33",
 	corpse					= "ITACannone75_Destroyed",
 
@@ -20,7 +20,3 @@ local SWEKanonM02_33_Stationary = FGGun:New{
 	},	
 }
 
-return lowerkeys({
-	["SWEKanonM02_33_Truck"] = SWEKanonM02_33_Truck,
-	["SWEKanonM02_33_Stationary"] = SWEKanonM02_33_Stationary,
-})

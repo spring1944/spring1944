@@ -1,12 +1,12 @@
-local GBRInf = {
+AbstractUnit('GBRInf'):Attrs{
 	maxDamageMul		= 1.4,
 }
 
-local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
+Unit('GBR_HQEngineer'):Extends('EngineerInf'):Extends('GBRInf'):Attrs{
 	name				= "Sapper",
 }
 
-local GBR_Rifle = RifleInf:New(GBRInf):New{
+Unit('GBR_Rifle'):Extends('RifleInf'):Extends('GBRInf'):Attrs{
 	name				= "SMLE No.4 Mk I Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -18,7 +18,7 @@ local GBR_Rifle = RifleInf:New(GBRInf):New{
 	},
 }
 
-local GBR_STEN = SMGInf:New(GBRInf):New{
+Unit('GBR_STEN'):Extends('SMGInf'):Extends('GBRInf'):Attrs{
 	name				= "STEN Mk II Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -30,7 +30,7 @@ local GBR_STEN = SMGInf:New(GBRInf):New{
 	},
 }
 
-local GBR_BREN = LMGInf:New(GBRInf):New{
+Unit('GBR_BREN'):Extends('LMGInf'):Extends('GBRInf'):Attrs{
 	name				= "BREN Mk II Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -39,11 +39,11 @@ local GBR_BREN = LMGInf:New(GBRInf):New{
 	},
 }
 
-local GBR_Vickers = HMGInf:New(GBRInf):New{
+Unit('GBR_Vickers'):Extends('HMGInf'):Extends('GBRInf'):Attrs{
 	name				= "Vickers Mk I Heavy Machinegun",
 }
 
-local GBR_Vickers_Sandbag = SandbagMG:New{
+Unit('GBR_Vickers_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Vickers Mk I Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -52,7 +52,7 @@ local GBR_Vickers_Sandbag = SandbagMG:New{
 	},
 }
 
-local GBR_Sniper = SniperInf:New(GBRInf):New{
+Unit('GBR_Sniper'):Extends('SniperInf'):Extends('GBRInf'):Attrs{
 	name				= "SMLE No.4 Mk I (T) Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -61,7 +61,7 @@ local GBR_Sniper = SniperInf:New(GBRInf):New{
 	},
 }
 
-local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
+Unit('GBR_PIAT'):Extends('ATLauncherInf'):Extends('GBRInf'):Attrs{
 	name				= "PIAT",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -70,7 +70,7 @@ local GBR_PIAT = ATLauncherInf:New(GBRInf):New{
 	},
 }
 
-local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
+Unit('GBR_3InMortar'):Extends('MedMortarInf'):Extends('GBRInf'):Attrs{
 	name				= [[ML 3" Mortar Mk II]],
 	weapons = {
 		[1] = { -- HE
@@ -82,7 +82,7 @@ local GBR_3InMortar = MedMortarInf:New(GBRInf):New{
 	},
 }
 
-local GBR_Observ = ObservInf:New(GBRInf):New{
+Unit('GBR_Observ'):Extends('ObservInf'):Extends('GBRInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "Webley",
@@ -92,7 +92,7 @@ local GBR_Observ = ObservInf:New(GBRInf):New{
 
 -- Still inheriting GBRInf even though I'm overriding the maxDamageMul,
 -- so if anyone adds something there it'll change commandos as well.
-local GBR_Commando = SMGInf:New(GBRInf):New{
+Unit('GBR_Commando'):Extends('SMGInf'):Extends('GBRInf'):Attrs{
 	name				= "Commando",
 	description			= "Demolitions and Infiltration Infantry",
 	canManualFire		= true,
@@ -124,27 +124,10 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	},
 }
 
-return lowerkeys({
-	-- Regular Inf
-	["GBRHQEngineer"] = GBR_HQEngineer,
-	["GBRHQAIEngineer"] = GBR_HQEngineer:Clone("GBRHQEngineer"),
-	["GBRRifle"] = GBR_Rifle,
-	["GBRSTEN"] = GBR_STEN,
-	["GBRBREN"] = GBR_BREN,
-	["GBRVickers_Sandbag"] = GBR_Vickers_Sandbag,
-	["GBRVickers"] = GBR_Vickers,
-	["GBRSniper"] = GBR_Sniper,
-	["GBRPIAT"] = GBR_PIAT,
-	["GBR3InMortar"] = GBR_3InMortar,
-	["GBRObserv"] = GBR_Observ,
-	-- Glider Inf
-	["GBRParaRifle"] = GBR_Rifle:New{},
-	["GBRParaSTEN"] = GBR_STEN:New{},
-	["GBRParaBREN"] = GBR_BREN:New{},
-	["GBRParaPIAT"] = GBR_PIAT:New{},
-	["GBRPara3InMortar"] = GBR_3InMortar:New{},
-	["GBRParaObserv"] = GBR_Observ:New{},
-	-- Commandos
-	["GBRCommando"] = GBR_Commando,
-	["GBRCommandoC"] = GBR_Commando:Clone("GBRCommando")
-})
+Unit('GBR_Commando_C'):Extends('GBR_Commando')
+
+Unit('GBR_Para_STEN'):Extends('GBR_STEN')
+Unit('GBR_Para_BREN'):Extends('GBR_BREN')
+Unit('GBR_Para_PIAT'):Extends('GBR_PIAT')
+Unit('GBR_Para_3InMortar'):Extends('GBR_3InMortar')
+Unit('GBR_Para_Observ'):Extends('GBR_Observ')

@@ -1,9 +1,6 @@
-local GBR_MatadorEngVehicle = EngineerVehicle:New{
+Unit('GBR_MatadorEngVehicle'):Extends('EngineerVehicle'):Attrs{
 	name					= "AEC Matador w/Coles Crane",
 	trackOffset				= 10,
 	trackWidth				= 15,
 }
 
-return lowerkeys({
-	["GBRMatadorEngVehicle"] = GBR_MatadorEngVehicle,
-})

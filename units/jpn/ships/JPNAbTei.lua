@@ -1,4 +1,4 @@
-local JPN_AbTei = ArmedBoat:New{
+Unit('JPN_AbTei'):Extends('ArmedBoat'):Attrs{
 	name					= "Armored Boat Ab-Tei",
 	description				= "Armoured river gunboat",
 	acceleration			= 0.05,
@@ -39,7 +39,7 @@ local JPN_AbTei = ArmedBoat:New{
 	},
 }
 
-local JPN_AbTei_Turret_57mm_Front = EnclosedBoatTurret:New{
+Unit('JPN_AbTei_Turret_57mm_Front'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "Ab-Tei 57mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/JPNAbTei_turret_57mm.s3o",
@@ -60,7 +60,7 @@ local JPN_AbTei_Turret_57mm_Front = EnclosedBoatTurret:New{
     },
 }
 
-local JPN_AbTei_Turret_57mm_Rear = JPN_AbTei_Turret_57mm_Front:New{
+Unit('JPN_AbTei_Turret_57mm_Rear'):Extends('JPN_AbTei_Turret_57mm_Front'):Attrs{
 	weapons = {
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -71,7 +71,7 @@ local JPN_AbTei_Turret_57mm_Rear = JPN_AbTei_Turret_57mm_Front:New{
 	},
 }
 
-local JPN_AbTei_Turret_MG = EnclosedBoatTurret:New{
+Unit('JPN_AbTei_Turret_MG'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "Ab-Tei MG Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -91,9 +91,3 @@ local JPN_AbTei_Turret_MG = EnclosedBoatTurret:New{
 }
 
 
-return lowerkeys({
-	["JPNAbTei"] = JPN_AbTei,
-	["JPNAbTei_Turret_57mm_Front"] = JPN_AbTei_Turret_57mm_Front,
-	["JPNAbTei_Turret_57mm_Rear"] = JPN_AbTei_Turret_57mm_Rear,
-	["JPNAbTei_Turret_MG"] = JPN_AbTei_Turret_MG,
-})

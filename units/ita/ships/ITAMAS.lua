@@ -1,4 +1,4 @@
-local ITA_MAS = ArmedBoat:New{
+Unit('ITA_MAS'):Extends('ArmedBoat'):Attrs{
 	name					= "MAS 500 type",
 	description				= "Motor Torpedo boat",
 	acceleration			= 0.3,
@@ -34,6 +34,3 @@ local ITA_MAS = ArmedBoat:New{
 }
 
 
-return lowerkeys({
-	["ITAMAS"] = ITA_MAS,
-})

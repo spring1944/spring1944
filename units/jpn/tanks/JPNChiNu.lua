@@ -1,4 +1,4 @@
-local JPNChiNu = MediumTank:New{
+Unit('JPNChiNu'):Extends('MediumTank'):Attrs{
 	name				= "Type 3 Chi-Nu",
 	description			= "75mm Medium Tank",
 	buildCostMetal		= 2650,
@@ -35,6 +35,3 @@ local JPNChiNu = MediumTank:New{
 	},
 }
 
-return lowerkeys({
-	["JPNChiNu"] = JPNChiNu,
-})

@@ -1,18 +1,23 @@
-local units = {}
-
 local axis = {ger = true, ita = true, jpn = true}
 
 for _, side in pairs(Sides) do
-	units[side .. "pontoonraft"] = PontoonRaft:New{}
-	units[side .. "assaultboat"] = AssaultBoat:New{}
 	if axis[side] then -- for now make all axis use Ger model and all Allied use US
-		units[side .. "pontoonraft"].objectName = "GER/GerPontoonRaft.s3o"
-		units[side .. "assaultboat"].objectName = "GER/GerSturmboot.s3o"
+		Unit(side..'PontoonRaft'):Extends('PontoonRaft'):Attrs{
+			objectName	= 'GER/GerPontoonRaft.s3o'
+		}
+		Unit(side..'AssaultBoat'):Extends('AssaultBoat'):Attrs{
+			objectName	= "GER/GerSturmboot.s3o"
+		}
+
 	elseif side == "rus" then -- TODO: eventually, unified script and <SIDE>AssaultBoat.s3o
-		units[side .. "assaultboat"].objectName = "RUS/RUSPG117.s3o"
-		units[side .. "assaultboat"].name = "PG-117"
-		units[side .. "assaultboat"].script = "RUSPG117.cob"
+		Unit(side..'PontoonRaft'):Extends('PontoonRaft')
+		Unit(side..'AssaultBoat'):Extends('AssaultBoat'):Attrs{
+			name		= "PG-117",
+			objectName	= "RUS/RUSPG117.s3o",
+			script		= "RUSPG117.cob"
+		}
+	else
+		Unit(side..'PontoonRaft'):Extends('PontoonRaft')
+		Unit(side..'AssaultBoat'):Extends('AssaultBoat')
 	end
 end
-
-return lowerkeys(units)

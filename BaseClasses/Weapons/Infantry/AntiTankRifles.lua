@@ -1,7 +1,7 @@
 -- Smallarms - Anti-Tank Rifles
 
 -- Anti-Tank Rifle Base Class
-local ATRifleClass = Weapon:New{
+AbstractWeapon('ATRifleClass'):Extends('Weapon'):Attrs{
 	areaOfEffect       = 1,
 	avoidFeature       = true,
 	avoidFriendly      = false,
@@ -34,6 +34,3 @@ local ATRifleClass = Weapon:New{
 	},
 }
 
-return {
-	ATRifleClass = ATRifleClass,
-}

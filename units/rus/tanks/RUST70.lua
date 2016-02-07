@@ -1,4 +1,4 @@
-local RUST70 = LightTank:New{
+Unit('RUST70'):Extends('LightTank'):Attrs{
 	name				= "T-70/M42",	
 	buildCostMetal		= 1500,
 	maxDamage			= 920,
@@ -35,6 +35,3 @@ local RUST70 = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["RUST70"] = RUST70,
-})

@@ -1,13 +1,9 @@
-local ITA_Fiat626Base = Truck:New{
+Unit('ITA_Fiat626Base'):Extends('Truck'):Attrs{
 	name					= "Fiat 626",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local ITA_Fiat626 = ITA_Fiat626Base:New(TransportTruck)
-local ITA_PontoonTruck = ITA_Fiat626Base:New(PontoonTruck, true)
+Unit('ITA_Fiat626'):Extends('ITA_Fiat626Base'):Extends('TransportTruck')
+Unit('ITA_PontoonTruck'):Extends('ITA_Fiat626Base'):Extends('PontoonTruck') -- name append
 
-return lowerkeys({
-	["ITAFiat626"] = ITA_Fiat626,
-	["ITAPontoonTruck"] = ITA_PontoonTruck,
-})

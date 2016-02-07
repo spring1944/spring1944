@@ -1,7 +1,7 @@
 -- Infantry Anti-Tank Launchers
 
 -- AT Launcher Base Class
-local ATLClass = Weapon:New{
+AbstractWeapon('ATLClass'):Extends('Weapon'):Attrs{
 	explosionGenerator = [[custom:HE_Medium]],
 	explosionSpeed     = 30,
 	impulseFactor      = 0,
@@ -19,7 +19,7 @@ local ATLClass = Weapon:New{
 }
 
 -- Recoilless Rifle (& Spigot Mortar) Class
-local RCL_ATLClass = ATLClass:New{
+AbstractWeapon('RCL_ATLClass'):Extends('ATLClass'):Attrs{
 	accuracy           = 500,
 	collisionSize      = 3,
 	reloadtime         = 15,
@@ -28,7 +28,7 @@ local RCL_ATLClass = ATLClass:New{
 }
 
 -- Rocket Launcher Class
-local Rocket_ATLClass = ATLClass:New{
+AbstractWeapon('Rocket_ATLClass'):Extends('ATLClass'):Attrs{
 	areaOfEffect       = 32,
 	cegTag             = [[BazookaTrail]],
 	flightTime         = 1,
@@ -41,8 +41,3 @@ local Rocket_ATLClass = ATLClass:New{
 	weaponVelocity     = 1000,
 }
 
-return {
-	ATLClass = ATLClass,
-	RCL_ATLClass = RCL_ATLClass,
-	Rocket_ATLClass = Rocket_ATLClass,
-}

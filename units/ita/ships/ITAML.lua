@@ -1,4 +1,4 @@
-local ITA_ML = InfantryLandingCraft:New{
+Unit('ITA_ML'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "Moto Lance",
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
@@ -40,6 +40,3 @@ local ITA_ML = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["ITAML"] = ITA_ML,
-})

@@ -1,4 +1,4 @@
-local GER_V1 = CruiseMissile:New{
+Unit('GER_V1'):Extends('CruiseMissile'):Attrs{
 	name			= "V-1 (Fi-103)",
 	maxDamage		= 400,
 	explodeAs		= "v1",
@@ -6,6 +6,3 @@ local GER_V1 = CruiseMissile:New{
 }
 
 
-return lowerkeys({
-	["GERV1"] = GER_V1,
-})

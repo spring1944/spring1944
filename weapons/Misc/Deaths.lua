@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Tiny Explosion (Used for Infantry Guns currently)
-local Tiny_Explosion = DeathClass:New{
+Weapon('Tiny_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 64,
   impulseFactor      = 0,
   soundHitDry        = [[GEN_Explo_1]],
@@ -14,7 +14,7 @@ local Tiny_Explosion = DeathClass:New{
 
 -- VEHICLES
 -- Vehicle Explosion - Small
-local Vehicle_Explosion_Sm = DeathClass:New{
+Weapon('Vehicle_Explosion_Sm'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 64,
   soundHitDry        = [[GEN_Explo_Vehicle1]],
   damage = {
@@ -23,7 +23,7 @@ local Vehicle_Explosion_Sm = DeathClass:New{
 }
 
 -- Vehicle Explosion - medium
-local Vehicle_Explosion_Med = DeathClass:New{
+Weapon('Vehicle_Explosion_Med'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 96,
   soundHitDry        = [[GEN_Explo_Vehicle2]],
   damage = {
@@ -32,7 +32,7 @@ local Vehicle_Explosion_Med = DeathClass:New{
 }
 
 -- Vehicle Explosion - Large
-local Vehicle_Explosion_Large = DeathClass:New{
+Weapon('Vehicle_Explosion_Large'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 120,
   soundHitDry        = [[GEN_Explo_Vehicle3]],
   damage = {
@@ -43,7 +43,7 @@ local Vehicle_Explosion_Large = DeathClass:New{
 -- BUILDINGS
 
 -- Building Explosion - Small
-local Small_Explosion = DeathClass:New{
+Weapon('Small_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 65,
   soundHitDry        = [[GEN_Explo_2]],
   damage = {
@@ -52,7 +52,7 @@ local Small_Explosion = DeathClass:New{
 }
 
 -- Building Explosion - Medium
-local Med_Explosion = DeathClass:New{
+Weapon('Med_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 112,
   explosionGenerator = [[custom:ROACHPLOSION]],
   soundHitDry        = [[GEN_Explo_3]],
@@ -62,7 +62,7 @@ local Med_Explosion = DeathClass:New{
 }
 
 -- Building Explosion - Large
-local Large_Explosion = DeathClass:New{
+Weapon('Large_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 112,
   explosionGenerator = [[custom:HE_Large]],
   impulseFactor      = 2,
@@ -73,7 +73,7 @@ local Large_Explosion = DeathClass:New{
 }
 
 -- Building Explosion - Huge
-local Huge_Explosion = DeathClass:New{
+Weapon('Huge_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 250,
   explosionGenerator = [[custom:HE_XLarge]],
   impulseFactor      = 2,
@@ -84,7 +84,7 @@ local Huge_Explosion = DeathClass:New{
 }
 
 -- Building Explosion - Massive
-local Massive_Explosion = DeathClass:New{
+Weapon('Massive_Explosion'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 300,
   explosionGenerator = [[custom:HE_XXLarge]],
   explosionSpeed     = 2.5, -- overrides default
@@ -96,7 +96,7 @@ local Massive_Explosion = DeathClass:New{
 }
 
 -- Resource Boom - doesn't really fit in with the established hierarchy :(
-local ResourceBoom = DeathClass:New{
+Weapon('ResourceBoom'):Extends('DeathClass'):Attrs{
   areaOfEffect       = 120,
   explosionGenerator = [[custom:SmallBuildingDeath]],
   impulseFactor      = 2,
@@ -107,17 +107,3 @@ local ResourceBoom = DeathClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  Tiny_Explosion = Tiny_Explosion,
-  -- Vehicles
-  Vehicle_Explosion_Sm = Vehicle_Explosion_Sm,
-  Vehicle_Explosion_Med = Vehicle_Explosion_Med,
-  Vehicle_Explosion_Large = Vehicle_Explosion_Large,
-  -- Buildings
-  Small_Explosion = Small_Explosion,
-  Med_Explosion = Med_Explosion,
-  Large_Explosion = Large_Explosion,
-  Huge_Explosion = Huge_Explosion,
-  Massive_Explosion = Massive_Explosion,
-  ResourceBoom = ResourceBoom,
-})

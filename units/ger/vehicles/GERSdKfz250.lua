@@ -1,4 +1,4 @@
-local GERSdKfz250 = ArmouredCar:New{
+Unit('GERSdKfz250'):Extends('ArmouredCar'):Attrs{
 	name				= "Sd.Kfz. 250/9",
 	description			= "Light Support Halftrack",
 	acceleration		= 0.039,
@@ -41,6 +41,3 @@ local GERSdKfz250 = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["GERSdKfz250"] = GERSdKfz250,
-})

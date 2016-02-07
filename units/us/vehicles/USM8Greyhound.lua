@@ -1,4 +1,4 @@
-local USM8Greyhound = ArmouredCar:New{
+Unit('USM8Greyhound'):Extends('ArmouredCar'):Attrs{
 	name				= "M8 Greyhound",
 	buildCostMetal		= 1400,
 	maxDamage			= 780,
@@ -39,6 +39,3 @@ local USM8Greyhound = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["USM8Greyhound"] = USM8Greyhound,
-})

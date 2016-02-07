@@ -1,4 +1,4 @@
-local GER_RBoot = ArmedBoat:New{
+Unit('GER_RBoot'):Extends('ArmedBoat'):Attrs{
 	name					= "Raumboot",
 	description				= "Minesweeper (light patrol ship)",
 	acceleration			= 0.2,
@@ -33,7 +33,7 @@ local GER_RBoot = ArmedBoat:New{
 	},
 }
 
-local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
+Unit('GER_RBoot_Turret_37mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "37mm Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -52,7 +52,7 @@ local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
     },
 }
 
-local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
+Unit('GER_RBoot_Turret_20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "20mm Turret",
 	description				= "20mm AA Turret",
   	weapons = {	
@@ -80,8 +80,3 @@ local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
     },
 }
 
-return lowerkeys({
-	["GERRBoot"] = GER_RBoot,
-	["GERRBoot_Turret_37mm"] = GER_RBoot_Turret_37mm,
-	["GERRBoot_Turret_20mm"] = GER_RBoot_Turret_20mm,
-})

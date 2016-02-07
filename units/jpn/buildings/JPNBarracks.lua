@@ -1,4 +1,4 @@
-local JPN_Barracks = Barracks:New{
+Unit('JPN_Barracks'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 1500,
 	collisionVolumeScales		= [[50 32 110]],
 	collisionVolumeOffsets		= [[0 15 0]],
@@ -15,7 +15,7 @@ local JPN_Barracks = Barracks:New{
 									cccccc]],
 }
 
-local JPN_Tent = Barracks:New{
+Unit('JPN_Tent'):Extends('Barracks'):Attrs{
 	name						= "Tent Barracks",
 	description					= "Light Infantry Training & Housing Facility",
 	buildCostMetal				= 1000,
@@ -30,7 +30,3 @@ local JPN_Tent = Barracks:New{
 									occco]],
 }
 
-return lowerkeys({
-	["JPNBarracks"] = JPN_Barracks,
-	["JPNTent"] = JPN_Tent,
-})

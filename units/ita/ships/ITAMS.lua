@@ -1,4 +1,4 @@
-local ITA_MS = ArmedBoat:New{
+Unit('ITA_MS'):Extends('ArmedBoat'):Attrs{
 	name					= "MS type CRDA 60 t.",
 	description				= "Large Torpedo boat",
 	acceleration			= 0.3,
@@ -34,7 +34,7 @@ local ITA_MS = ArmedBoat:New{
 	},
 }
 
-local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
+Unit('ITA_MS_Turret_20mm_Front'):Extends('OpenBoatTurret'):Attrs{
 	name					= "20mm Turret",
 	description				= "AA Turret",
 	objectName				= "<SIDE>/ITAMS_Turret_20mm.s3o",
@@ -59,7 +59,7 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
     },
 }
 
-local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
+Unit('ITA_MS_Turret_20mm_Rear'):Extends('ITA_MS_Turret_20mm_Front'):Attrs{
 	weapons = {
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -73,8 +73,3 @@ local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
 	},
 }
 
-return lowerkeys({
-	["ITAMS"] = ITA_MS,
-	["ITAMS_Turret_20mm_Front"] = ITA_MS_Turret_20mm_Front,
-	["ITAMS_Turret_20mm_Rear"] = ITA_MS_Turret_20mm_Rear,
-})

@@ -1,4 +1,4 @@
-local GBRCromwell = MediumTank:New{
+Unit('GBRCromwell'):Extends('MediumTank'):Attrs{
 	name				= "A27M Cromwell Mk. IV",
 	buildCostMetal		= 2680,
 	maxDamage			= 2800,
@@ -34,7 +34,7 @@ local GBRCromwell = MediumTank:New{
 	},
 }
 
-local GBRCromwellMkVI = GBRCromwell:New{
+Unit('GBRCromwellMkVI'):Extends('GBRCromwell'):Attrs{
 	name				= "A27M Cromwell Mk. VI",
 	description			= "Close Support Tank",
 	
@@ -58,7 +58,3 @@ local GBRCromwellMkVI = GBRCromwell:New{
 	},
 }
 
-return lowerkeys({
-	["GBRCromwell"] = GBRCromwell,
-	["GBRCromwellMkVI"] = GBRCromwellMkVI,
-})

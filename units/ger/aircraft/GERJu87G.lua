@@ -1,4 +1,4 @@
-local GER_Ju87G = Fighter:New{
+Unit('GER_Ju87G'):Extends('Fighter'):Attrs{
 	name				= "Ju-87G-1 Stuka",
 	description			= "Anti-Tank Aircraft",
 	buildCostMetal		= 1800,
@@ -55,6 +55,3 @@ local GER_Ju87G = Fighter:New{
 }
 
 
-return lowerkeys({
-	["GERJu87G"] = GER_Ju87G,
-})

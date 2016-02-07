@@ -1,4 +1,4 @@
-local ITA_Ro37 = Recon:New{
+Unit('ITA_Ro37'):Extends('Recon'):Attrs{
 	name			= "Ro.37Bis Lince",
 	maxDamage		= 77,
 	
@@ -11,6 +11,3 @@ local ITA_Ro37 = Recon:New{
 }
 
 
-return lowerkeys({
-	["ITARo37"] = ITA_Ro37,
-})

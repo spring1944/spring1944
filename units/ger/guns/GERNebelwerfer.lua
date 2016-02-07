@@ -1,11 +1,11 @@
-local GER_Nebelwerfer_Truck = RGunTractor:New{
+Unit('GER_Nebelwerfer_Truck'):Extends('RGunTractor'):Attrs{
 	name					= "Towed 15cm Nebelwerfer 41",
 	corpse					= "GEROpelBlitz_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local GER_Nebelwerfer_Stationary = RGun:New{
+Unit('GER_Nebelwerfer_Stationary'):Extends('RGun'):Attrs{
 	name					= "Deployed 15cm Nebelwerfer 41",
 	corpse					= "gernebelwerfer_destroyed",
 	customParams = {
@@ -18,7 +18,3 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 	},
 }
 
-return lowerkeys({
-	["GERNebelwerfer_Truck"] = GER_Nebelwerfer_Truck,
-	["GERNebelwerfer_Stationary"] = GER_Nebelwerfer_Stationary,
-})

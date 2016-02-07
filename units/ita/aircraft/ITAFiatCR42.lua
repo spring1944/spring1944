@@ -1,4 +1,4 @@
-local ITA_FiatCR42 = Fighter:New{
+Unit('ITA_FiatCR42'):Extends('Fighter'):Attrs{
 	name				= "Fiat CR.42 Falco",
 	description			= "Light Attack Aircraft",
 	buildCostMetal		= 2175,
@@ -51,6 +51,3 @@ local ITA_FiatCR42 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["ITAFiatCR42"] = ITA_FiatCR42,
-})

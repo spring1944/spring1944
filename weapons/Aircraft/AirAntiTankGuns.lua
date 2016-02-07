@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Bordkanone BK 37 (GER)
-local BK37mmAP = AirATGun:New{
+Weapon('BK37mmAP'):Extends('AirATGun'):Attrs{
   --burst              = 1,
   --burstrate          = 0.375,
   name               = [[BK-37 37mm Semi-Automatic Cannon]],
@@ -21,7 +21,7 @@ local BK37mmAP = AirATGun:New{
 }
 
 -- Ho-401 57mm HEAT (JPN)
-local Ho40157mm = AirATGun:New{
+Weapon('Ho40157mm'):Extends('AirATGun'):Attrs{
   areaOfEffect       = 12,
   name               = [[Ho-401 57 mm HEAT]],
   range              = 760,
@@ -39,7 +39,3 @@ local Ho40157mm = AirATGun:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  BK37mmAP = BK37mmAP,
-  Ho40157mm = Ho40157mm,
-})

@@ -1,4 +1,4 @@
-local SWE_J22 = Fighter:New{
+Unit('SWE_J22'):Extends('Fighter'):Attrs{
 	name				= "J 22B",
 	buildCostMetal		= 1125,
 	maxDamage			= 283.5,
@@ -40,6 +40,3 @@ local SWE_J22 = Fighter:New{
 }
 
 
-return lowerkeys({
-	["SWEJ22"] = SWE_J22,
-})

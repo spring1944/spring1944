@@ -1,4 +1,4 @@
-local RUS_BKA_1125 = ArmedBoat:New{
+Unit('RUS_BKA_1125'):Extends('ArmedBoat'):Attrs{
 	name					= "Pr.1125 Armored Boat",
 	description				= "Armoured river gunboat",
 	acceleration			= 0.05,
@@ -39,7 +39,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	},
 }
 
-local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
+Unit('RUS_BKA_1125_Turret_76mm'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "Pr.1125 76mm Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -59,7 +59,7 @@ local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
     },
 }
 
-local RUS_BKA_1125_Turret_DshK = EnclosedBoatTurret:New{
+Unit('RUS_BKA_1125_Turret_DshK'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "Pr.1125 DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	objectName				= "<SIDE>/RUSBKA1125_Turret_DshK.s3o",
@@ -76,7 +76,7 @@ local RUS_BKA_1125_Turret_DshK = EnclosedBoatTurret:New{
 	},
 }
 
-local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
+Unit('RUS_BKA_1125_Turret_DshK_Front'):Extends('RUS_BKA_1125_Turret_DshK'):Attrs{
 	weapons = {
 		[1] = {
 			maxAngleDif			= 270,
@@ -85,7 +85,7 @@ local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
 	},
 }
 
-local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
+Unit('RUS_BKA_1125_Turret_DshK_Top'):Extends('RUS_BKA_1125_Turret_DshK'):Attrs{
 	weapons = {
 		[1] = {
 			maxAngleDif			= 358,
@@ -94,7 +94,7 @@ local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
 	},
 }
 
-local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
+Unit('RUS_BKA_1125_Turret_DshK_Rear'):Extends('RUS_BKA_1125_Turret_DshK'):Attrs{
 	weapons = {
 		[1] = {
 			maxAngleDif			= 270,
@@ -106,10 +106,3 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 	},
 }
 
-return lowerkeys({
-	["RUSBKA1125"] = RUS_BKA_1125,
-	["RUSBKA1125_Turret_76mm"] = RUS_BKA_1125_Turret_76mm,
-	["RUSBKA1125_Turret_DshK_Front"] = RUS_BKA_1125_Turret_DshK_Front,
-	["RUSBKA1125_Turret_DshK_Top"] = RUS_BKA_1125_Turret_DshK_Top,
-	["RUSBKA1125_Turret_DshK_Rear"] = RUS_BKA_1125_Turret_DshK_Rear,
-})

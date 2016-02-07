@@ -1,4 +1,4 @@
-local SWE_S14B = Recon:New{
+Unit('SWE_S14B'):Extends('Recon'):Attrs{
 	name			= "S 14B Storch",
 	maxDamage		= 86,
 	
@@ -20,6 +20,3 @@ local SWE_S14B = Recon:New{
 }
 
 
-return lowerkeys({
-	["SWES14B"] = SWE_S14B,
-})

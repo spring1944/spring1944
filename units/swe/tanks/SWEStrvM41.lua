@@ -1,4 +1,4 @@
-local SWEStrvM41 = LightTank:New{
+Unit('SWEStrvM41'):Extends('LightTank'):Attrs{
 	name				= "Stridsvagn m/41 SII",
 	buildCostMetal		= 2000,
 	maxDamage			= 1100,
@@ -37,6 +37,3 @@ local SWEStrvM41 = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["SWEStrvM41"] = SWEStrvM41,
-})

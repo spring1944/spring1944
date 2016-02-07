@@ -1,11 +1,11 @@
-local ITA_Obice100_Truck = HGunTractor:New{
+Unit('ITA_Obice100_Truck'):Extends('HGunTractor'):Attrs{
 	name					= "Towed Obice da 100/22",
 	corpse					= "ITATL37_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local ITA_Obice100_Stationary = HGun:New{
+Unit('ITA_Obice100_Stationary'):Extends('HGun'):Attrs{
 	name					= "Deployed Obice da 100/22",
 	corpse					= "ITAObice100_Destroyed",
 	weapons = {
@@ -18,7 +18,3 @@ local ITA_Obice100_Stationary = HGun:New{
 	},
 }
 
-return lowerkeys({
-	["ITAObice100_Truck"] = ITA_Obice100_Truck,
-	["ITAObice100_Stationary"] = ITA_Obice100_Stationary,
-})

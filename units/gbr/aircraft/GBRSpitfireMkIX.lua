@@ -1,4 +1,4 @@
-local GBR_SpitfireMkIX = FighterBomber:New{
+Unit('GBR_SpitfireMkIX'):Extends('FighterBomber'):Attrs{
 	name				= "Spitfire Mk IXe LF",
 	buildCostMetal		= 3375,
 	maxDamage			= 254.5,
@@ -42,6 +42,3 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 }
 
 
-return lowerkeys({
-	["GBRSpitfireMkIX"] = GBR_SpitfireMkIX,
-})

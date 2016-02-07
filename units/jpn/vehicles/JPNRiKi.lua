@@ -1,4 +1,4 @@
-local JPN_RiKi = EngineerVehicle:New{
+Unit('JPN_RiKi'):Extends('EngineerVehicle'):Attrs{
 	name					= "Type 95 Crane Vehicle Ri-Ki",
 	maxReverseVelocity		= 1.25,
 	maxVelocity				= 2.5,
@@ -11,6 +11,3 @@ local JPN_RiKi = EngineerVehicle:New{
 	},
 }
 
-return lowerkeys({
-	["JPNRiKi"] = JPN_RiKi,
-})

@@ -1,4 +1,4 @@
-local SWEStrvM37 = Tankette:New{
+Unit('SWEStrvM37'):Extends('Tankette'):Attrs{
 	name				= "Stridsvagn m/37",
 	buildCostMetal		= 700,
 	maxDamage			= 450,
@@ -30,6 +30,3 @@ local SWEStrvM37 = Tankette:New{
 	},
 }
 
-return lowerkeys({
-	["SWEStrvM37"] = SWEStrvM37,
-})

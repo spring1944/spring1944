@@ -1,4 +1,4 @@
-local GBR_Typhoon = AttackFighter:New{
+Unit('GBR_Typhoon'):Extends('AttackFighter'):Attrs{
 	name				= "Hawker Typhoon Mk.IB",
 	buildCostMetal		= 3000,
 	maxDamage			= 444.5,
@@ -50,6 +50,3 @@ local GBR_Typhoon = AttackFighter:New{
 }
 
 
-return lowerkeys({
-	["GBRTyphoon"] = GBR_Typhoon,
-})

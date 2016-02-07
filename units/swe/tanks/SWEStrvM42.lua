@@ -1,4 +1,4 @@
-local StrvM42Base = {
+AbstractUnit('StrvM42Base'):Attrs{
 	maxDamage			= 2250,
 	trackOffset			= 5,
 	trackWidth			= 20,
@@ -12,7 +12,7 @@ local StrvM42Base = {
 	},
 }
 
-local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
+Unit('SWEStrvM42'):Extends('MediumTank'):Extends('StrvM42Base'):Attrs{
 	name				= "Stridsvagn m/42",
 	buildCostMetal		= 2400,
 	weapons = {
@@ -49,12 +49,8 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	},
 }
 
-local SWEBBVM42 = EngineerVehicle:New(MediumTank):New(StrvM42Base):New{
+Unit('SWEBBVM42'):Extends('EngineerVehicle'):Extends('MediumTank'):Extends('StrvM42Base'):Attrs{
 	name				= "Bärgningsbandvagn m/42",
 	category			= "HARDVEH", -- don't trigger mines
 }
 
-return lowerkeys({
-	["SWEStrvM42"] = SWEStrvM42,
-	["SWEBBVM42"] = SWEBBVM42,
-})

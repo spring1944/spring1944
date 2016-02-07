@@ -1,4 +1,4 @@
-local ITAM1542 = LightTank:New{
+Unit('ITAM1542'):Extends('LightTank'):Attrs{
 	name				= "Carro Mediuo M15/42",
 	buildCostMetal		= 1850,
 	maxDamage			= 1550,
@@ -47,6 +47,3 @@ local ITAM1542 = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["ITAM1542"] = ITAM1542,
-})

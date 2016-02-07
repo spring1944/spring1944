@@ -1,4 +1,4 @@
-local USLVTA4 = LightTank:New(Amphibian):New{
+Unit('USLVTA4'):Extends('LightTank'):Extends('Amphibian'):Attrs{
 	name				= "LVT(A)-4",
 	description			= "Amphibious Support Tank",
 	buildCostMetal		= 2250,
@@ -27,6 +27,3 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 	},
 }
 
-return lowerkeys({
-	["USLVTA4"] = USLVTA4,
-})

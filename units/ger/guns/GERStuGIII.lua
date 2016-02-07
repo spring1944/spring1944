@@ -1,4 +1,4 @@
-local GERStuGIII = MediumTank:New(AssaultGun):New{
+Unit('GERStuGIII'):Extends('MediumTank'):Extends('AssaultGun'):Attrs{
 	name				= "SdKfz 142/1 StuG III Ausf. G",
 	buildCostMetal		= 2750,
 	maxDamage			= 2390,
@@ -29,6 +29,3 @@ local GERStuGIII = MediumTank:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["GERStuGIII"] = GERStuGIII,
-})

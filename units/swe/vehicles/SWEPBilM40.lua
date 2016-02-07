@@ -1,4 +1,4 @@
-local SWEPBilM40 = ArmouredCar:New{
+Unit('SWEPBilM40'):Extends('ArmouredCar'):Attrs{
 	name				= "PBil m/40 Lynx",
 	buildCostMetal		= 1085, -- from ITA AB41
 	maxDamage			= 780,
@@ -36,6 +36,3 @@ local SWEPBilM40 = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["SWEPBilM40"] = SWEPBilM40,
-})

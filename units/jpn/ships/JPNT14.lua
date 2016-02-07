@@ -1,4 +1,4 @@
-local JPNT14 = ArmedBoat:New{
+Unit('JPNT14'):Extends('ArmedBoat'):Attrs{
 	name					= "Type T-14 Motor Torpedo Boat",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.3,
@@ -30,7 +30,7 @@ local JPNT14 = ArmedBoat:New{
 	},
 }
 
-local JPNT14_Turret_25mm = OpenBoatTurret:New{
+Unit('JPNT14_Turret_25mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "25mm Turret",
 	description				= "25mm AA Turret",
   	weapons = {	
@@ -52,7 +52,3 @@ local JPNT14_Turret_25mm = OpenBoatTurret:New{
     },
 }
 
-return lowerkeys({
-	["JPNT14"] = JPNT14,
-	["JPNT14_Turret_25mm"] = JPNT14_Turret_25mm,
-})

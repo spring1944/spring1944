@@ -1,4 +1,4 @@
-local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
+Unit('JPNHoRo'):Extends('LightTank'):Extends('AssaultGun'):Extends('OpenTopped'):Attrs{
 	name				= "Type 4 Ho-Ro",
 	description			= "Heavy Howitzer Assault Gun",
 	buildCostMetal		= 3450,
@@ -31,6 +31,3 @@ local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["JPNHoRo"] = JPNHoRo,
-})

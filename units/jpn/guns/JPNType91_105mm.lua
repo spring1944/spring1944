@@ -1,4 +1,4 @@
-local JPN_Type91_105mm_Truck = HGunTractor:New{
+Unit('JPN_Type91_105mm_Truck'):Extends('HGunTractor'):Attrs{
 	name					= "Towed Type 91 105mm Howitzer",
 	buildCostMetal			= 1850, -- TODO: why?
 	corpse					= "JPNShiKe_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local JPN_Type91_105mm_Truck = HGunTractor:New{
 	trackWidth				= 13,
 }
 
-local JPN_Type91_105mm_Stationary = HGun:New{
+Unit('JPN_Type91_105mm_Stationary'):Extends('HGun'):Attrs{
 	name					= "Deployed Type 91 105mm Howitzer",
 	corpse					= "JPNType91_105mm_Destroyed",
 	weapons = {
@@ -19,7 +19,3 @@ local JPN_Type91_105mm_Stationary = HGun:New{
 	},
 }
 
-return lowerkeys({
-	["JPNType91_105mm_Truck"] = JPN_Type91_105mm_Truck,
-	["JPNType91_105mm_Stationary"] = JPN_Type91_105mm_Stationary,
-})

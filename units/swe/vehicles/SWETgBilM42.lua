@@ -1,4 +1,4 @@
-local SWETgBilM42 = HalfTrack:New{
+Unit('SWETgBilM42'):Extends('HalfTrack'):Attrs{
 	name					= "Terrängbil m/42 KP",
 	description				= "Transport/Supply Armoured Truck",
 	buildCostMetal			= 1100,
@@ -15,6 +15,3 @@ local SWETgBilM42 = HalfTrack:New{
 	},
 }
 
-return lowerkeys({
-	["SWETgBilM42"] = SWETgBilM42,
-})

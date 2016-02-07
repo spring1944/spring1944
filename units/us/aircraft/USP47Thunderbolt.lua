@@ -1,4 +1,4 @@
-local US_P47Thunderbolt = FighterBomber:New{
+Unit('US_P47Thunderbolt'):Extends('FighterBomber'):Attrs{
 	name				= "P47D Thunderbolt",
 	buildCostMetal		= 3375,
 	maxDamage			= 453.6,
@@ -62,6 +62,3 @@ local US_P47Thunderbolt = FighterBomber:New{
 }
 
 
-return lowerkeys({
-	["USP47Thunderbolt"] = US_P47Thunderbolt,
-})

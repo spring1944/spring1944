@@ -1,4 +1,4 @@
-local RUS_Barracks = Barracks:New{
+Unit('RUS_Barracks'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 1500,
 	collisionVolumeScales		= [[50 32 110]],
 	collisionVolumeOffsets		= [[0 15 0]],
@@ -15,6 +15,3 @@ local RUS_Barracks = Barracks:New{
 									cccccc]],
 }
 
-return lowerkeys({
-	["RUSBarracks"] = RUS_Barracks,
-})

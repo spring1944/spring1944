@@ -1,4 +1,4 @@
-local ITA_Cannone75_Truck = FGGunTractor:New{
+Unit('ITA_Cannone75_Truck'):Extends('FGGunTractor'):Attrs{
 	name					= "Towed Cannone da 75/32",
 	buildCostMetal			= 1250,
 	corpse					= "ITATL37_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local ITA_Cannone75_Truck = FGGunTractor:New{
 	trackWidth				= 13,
 }
 
-local ITA_Cannone75_Stationary = FGGun:New{
+Unit('ITA_Cannone75_Stationary'):Extends('FGGun'):Attrs{
 	name					= "Towed Cannone da 75/32",
 	corpse					= "ITACannone75_Destroyed",
 	weapons = {
@@ -19,7 +19,3 @@ local ITA_Cannone75_Stationary = FGGun:New{
 	},	
 }
 
-return lowerkeys({
-	["ITACannone75_Truck"] = ITA_Cannone75_Truck,
-	["ITACannone75_Stationary"] = ITA_Cannone75_Stationary,
-})

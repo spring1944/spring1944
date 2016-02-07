@@ -1,7 +1,7 @@
 -- Aircraft - Bombs
 
 -- Bomb Base Class
-local BombClass = Weapon:New{
+AbstractWeapon('BombClass'):Extends('Weapon'):Attrs{
 	collideFriendly    = true,
 	explosionSpeed     = 30,
 	explosionGenerator = [[custom:HE_XXLarge]],
@@ -29,6 +29,3 @@ local BombClass = Weapon:New{
 }
 
 -- Return only the full weapons
-return {
-	BombClass = BombClass,
-}

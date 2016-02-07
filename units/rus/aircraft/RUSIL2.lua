@@ -1,4 +1,4 @@
-local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
+Unit('RUS_IL2'):Extends('FighterBomber'):Extends('ArmouredPlane'):Attrs{
 	name				= "IL-2M Shturmovik",
 	description			= "Attack Aircraft",
 	buildCostMetal		= 3375,
@@ -65,7 +65,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	},
 }
 
-local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
+Unit('RUS_IL2PTAB'):Extends('RUS_IL2'):Attrs{
 	name				= "IL-2M Shturmovik with PTAB",
 	description			= "Anti-tank Aircraft",
 	buildpic			= "RUSIL2PTAB.png", -- override clone
@@ -86,7 +86,3 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 	},
 }
 
-return lowerkeys({
-	["RUSIL2"] = RUS_IL2,
-	["RUSIL2PTAB"] = RUS_IL2PTAB,
-})

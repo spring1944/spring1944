@@ -1,4 +1,4 @@
-local ITA_Gabbiano = ArmedBoat:New{
+Unit('ITA_Gabbiano'):Extends('ArmedBoat'):Attrs{
 	name					= "Classe Gabbiano",
 	description				= "Corvette",
 	acceleration			= 0.15,
@@ -39,7 +39,7 @@ local ITA_Gabbiano = ArmedBoat:New{
 	},
 }
 
-local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
+Unit('ITA_Gabbiano_Turret_100mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "100mm Turret",
 	description				= "Primary Turret",
 	weapons = {	
@@ -57,7 +57,7 @@ local ITA_Gabbiano_Turret_100mm = OpenBoatTurret:New{
 	},
 }
 
-local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
+Unit('ITA_Gabbiano_Turret_20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "20mm Turret",
 	description				= "AA Turret",
 	weapons = {	
@@ -82,7 +82,7 @@ local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
     },
 }
 
-local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
+Unit('ITA_Gabbiano_Turret_Twin20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Twin 20mm Turret",
 	description				= "AA Turret",
 	weapons = {	
@@ -110,9 +110,3 @@ local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
     },
 }
 
-return lowerkeys({
-	["ITAGabbiano"] = ITA_Gabbiano,
-	["ITAGabbiano_Turret_100mm"] = ITA_Gabbiano_Turret_100mm,
-	["ITAGabbiano_Turret_20mm"] = ITA_Gabbiano_Turret_20mm,
-	["ITAGabbiano_Turret_Twin20mm"] = ITA_Gabbiano_Turret_Twin20mm,
-})

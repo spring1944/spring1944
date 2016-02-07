@@ -1,4 +1,4 @@
-local ITAL6_40lf = LightTank:New{
+Unit('ITAL6_40lf'):Extends('LightTank'):Attrs{
 	name				= "L6/40 Lancia Flamme",
 	description			= "Light Flamethrower Tank",
 	buildCostMetal		= 1350,
@@ -26,6 +26,3 @@ local ITAL6_40lf = LightTank:New{
 	},
 }
 
-return lowerkeys({
-	["ITAL6_40lf"] = ITAL6_40lf,
-})

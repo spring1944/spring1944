@@ -1,4 +1,4 @@
-local ITA_HQ = HQ:New{
+Unit('ITA_HQ'):Extends('HQ'):Attrs{
 	name					= "Italian Army HQ",
 	footprintX				= 7,
 	footprintZ				= 7,
@@ -12,6 +12,3 @@ local ITA_HQ = HQ:New{
 								ooyyyoo]],
 }
 
-return lowerkeys({
-	["ITAHQ"] = ITA_HQ,
-})

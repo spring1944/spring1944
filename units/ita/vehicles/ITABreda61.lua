@@ -1,4 +1,4 @@
-local ITA_Breda61 = EngineerVehicle:New{
+Unit('ITA_Breda61'):Extends('EngineerVehicle'):Attrs{
 	name					= "Breda tipo 61",
 	description				= "Minelaying Vehicle",
 	category				= "INFANTRY", -- a hack so it is still targeted by smallarms & HE but not mines
@@ -10,6 +10,3 @@ local ITA_Breda61 = EngineerVehicle:New{
 	trackWidth				= 15,
 }
 
-return lowerkeys({
-	["ITABreda61"] = ITA_Breda61,
-})

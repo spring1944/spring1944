@@ -1,4 +1,4 @@
-local GBR_LCSL = ArmedBoat:New{
+Unit('GBR_LCSL'):Extends('ArmedBoat'):Attrs{
 	name					= "LCS(L) Mk. 2",
 	description				= "Landing Craft Support",
 	acceleration			= 0.025,
@@ -35,7 +35,7 @@ local GBR_LCSL = ArmedBoat:New{
 	},
 }
 
-local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
+Unit('GBR_LCSL_Turret_4inMortar'):Extends('OpenBoatTurret'):Attrs{
 	name					= "4in Smoke Mortar",
 	description				= "Smoke Launcher",
   	weapons = {	
@@ -53,7 +53,7 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 }
 
 
-local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
+Unit('GBR_LCSL_Turret_Vickers50'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -77,7 +77,7 @@ local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
 	},
 }
 
-local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
+Unit('GBR_LCSL_Turret_6pdr'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
   	weapons = {	
@@ -102,7 +102,7 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 }
 
 
-local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
+Unit('GBR_LCSL_Turret_20mm_Left'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "<SIDE>/GBRLCSL_Turret_20mm.s3o",
@@ -129,7 +129,7 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 		facing 					= 3,
 	},
 }
-local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
+Unit('GBR_LCSL_Turret_20mm_Right'):Extends('GBR_LCSL_Turret_20mm_Left'):Attrs{
 	weapons = {	
 		[1] = {
 			mainDir				= [[-1 0 0]],
@@ -144,11 +144,3 @@ local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
 }
 
 
-return lowerkeys({
-	["GBRLCSL"] = GBR_LCSL,
-	["GBRLCSL_Turret_4inMortar"] = GBR_LCSL_Turret_4inMortar,
-	["GBRLCSL_Turret_Vickers50"] = GBR_LCSL_Turret_Vickers50,
-	["GBRLCSL_Turret_6pdr"] = GBR_LCSL_Turret_6pdr,
-	["GBRLCSL_Turret_20mm_Left"] = GBR_LCSL_Turret_20mm_Left,
-	["GBRLCSL_Turret_20mm_Right"] = GBR_LCSL_Turret_20mm_Right,
-})

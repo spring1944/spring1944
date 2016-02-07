@@ -1,4 +1,4 @@
-local RUS_Po2 = Recon:New{
+Unit('RUS_Po2'):Extends('Recon'):Attrs{
 	name			= "Po-2 Kukuruznik",
 	maxDamage		= 77,
 	
@@ -14,7 +14,7 @@ local RUS_Po2 = Recon:New{
 	},
 }
 
-local RUS_Po2Partisan = RUS_Po2:Clone("RUSPo2"):New{
+Unit('RUS_Po2Partisan'):Extends('RUS_Po2'):Attrs{
 	buildpic		= "RUSPo2Partisan.png", -- override clone
 	script			= "RUSPo2Partisan.cob", -- more override clone
 	description		= "Partisan Supply Plane",
@@ -30,7 +30,3 @@ local RUS_Po2Partisan = RUS_Po2:Clone("RUSPo2"):New{
 	},
 }
 
-return lowerkeys({
-	["RUSPo2"] = RUS_Po2,
-	["RUSPo2Partisan"] = RUS_Po2Partisan,
-})

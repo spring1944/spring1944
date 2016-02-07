@@ -1,8 +1,5 @@
-local US_StorageLarge = Storage:New{
+Unit('US_StorageLarge'):Extends('Storage'):Attrs{
 	name					= "Large Storage Shed",
 	energyStorage			= 3120,
 }
 
-return lowerkeys({
-	["USStorageLarge"] = US_StorageLarge,
-})

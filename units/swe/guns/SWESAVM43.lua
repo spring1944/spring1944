@@ -1,4 +1,4 @@
-local SWESAVM43 = LightTank:New(AssaultGun):New{
+Unit('SWESAVM43'):Extends('LightTank'):Extends('AssaultGun'):Attrs{
 	name				= "SAV m/43",
 	buildCostMetal		= 1740,
 	maxDamage			= 1200,
@@ -29,6 +29,3 @@ local SWESAVM43 = LightTank:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["SWESAVM43"] = SWESAVM43,
-})

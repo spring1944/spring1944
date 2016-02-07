@@ -1,4 +1,4 @@
-local GER_MAL = ArmedBoat:New{
+Unit('GER_MAL'):Extends('ArmedBoat'):Attrs{
 	name					= "Marineartillerieleichter",
 	description				= "Landing Fire Support Ship",
 	acceleration			= 0.15,
@@ -32,7 +32,7 @@ local GER_MAL = ArmedBoat:New{
 	},
 }
 
-local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
+Unit('GER_MAL_Turret_105mm'):Extends('PartiallyEnclosedBoatTurret'):Attrs{ --
 	name					= "105mm Turret", -- TODO: should be for MAL 2?
 	description				= "Primary Turret",
   	weapons = {	
@@ -51,7 +51,7 @@ local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
     },
 }
 
-local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
+Unit('GER_MAL_Turret_Quad20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Flakvierling 20mm Turret",
 	description				= "Quad 20mm AA Turret",
   	weapons = {	
@@ -105,7 +105,7 @@ local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
     },
 }
 
-local GER_MAL_Turret_37mm = OpenBoatTurret:New{
+Unit('GER_MAL_Turret_37mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "37mm Turret",
 	description				= "37mm AA Turret",
   	weapons = {	
@@ -129,9 +129,3 @@ local GER_MAL_Turret_37mm = OpenBoatTurret:New{
     },
 }
 
-return lowerkeys({
-	["GERMAL"] = GER_MAL,
-	["GERMAL_Turret_105mm"] = GER_MAL_Turret_105mm,
-	["GERMAL_Turret_Quad20mm"] = GER_MAL_Turret_Quad20mm,
-	["GERMAL_Turret_37mm"] = GER_MAL_Turret_37mm,
-})

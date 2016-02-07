@@ -1,4 +1,4 @@
-local JPN_TypeNo1AuxSC = ArmedBoat:New{
+Unit('JPN_TypeNo1AuxSC'):Extends('ArmedBoat'):Attrs{
 	name					= "Type No.1 Class Auxiliary Subchaser",
 	description				= "Patrol boat",
 	acceleration			= 0.3,
@@ -33,7 +33,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 	},
 }
 
-local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
+Unit('JPN_SC_Turret_25mm_Front'):Extends('OpenBoatTurret'):Attrs{
 	name					= "SC 25mm Turret",
 	description				= "AA Turret",
 	objectName				= "<SIDE>/JPNTypeNo1AuxSC_turret_25mm.s3o",
@@ -58,7 +58,7 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
     },
 }
 
-local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
+Unit('JPN_SC_Turret_25mm_Rear'):Extends('JPN_SC_Turret_25mm_Front'):Attrs{
 	weapons = {
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -73,8 +73,3 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 }
 
 
-return lowerkeys({
-	["JPNTypeNo1AuxSC"] = JPN_TypeNo1AuxSC,
-	["JPNSC_Turret_25mm_Front"] = JPN_SC_Turret_25mm_Front,
-	["JPNSC_Turret_25mm_Rear"] = JPN_SC_Turret_25mm_Rear,
-})

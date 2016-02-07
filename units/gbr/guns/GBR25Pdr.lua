@@ -1,11 +1,11 @@
-local GBR_25Pdr_Truck = HGunTractor:New{
+Unit('GBR_25Pdr_Truck'):Extends('HGunTractor'):Attrs{
 	name					= "Towed Q.F. 25 Pounder",
 	corpse					= "gbrmorrisquad_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 18,
 }
 
-local GBR_25Pdr_Stationary = HGun:New{
+Unit('GBR_25Pdr_Stationary'):Extends('HGun'):Attrs{
 	name					= "Deployed Q.F. 25 Pounder",
 	corpse					= "gbr25pdr_destroyed",
 
@@ -21,7 +21,3 @@ local GBR_25Pdr_Stationary = HGun:New{
 	},
 }
 
-return lowerkeys({
-	["GBR25Pdr_Truck"] = GBR_25Pdr_Truck,
-	["GBR25Pdr_Stationary"] = GBR_25Pdr_Stationary,
-})

@@ -3,7 +3,7 @@
 -- Implementations
 
 -- 250Kg Bomb (Generic)
-local Bomb = BombClass:New{
+Weapon('Bomb'):Extends('BombClass'):Attrs{
   accuracy           = 1500,
   areaOfEffect       = 200,
   --commandfire        = true,
@@ -15,7 +15,7 @@ local Bomb = BombClass:New{
 }
 
 -- 160Kg Bomb (Generic)
-local Bomb160kg = BombClass:New{
+Weapon('Bomb160kg'):Extends('BombClass'):Attrs{
   accuracy           = 500,
   areaOfEffect       = 160,
   name               = [[160kg Bomb]],
@@ -31,7 +31,7 @@ local Bomb160kg = BombClass:New{
 }
 
 -- 50Kg Bomb (Generic)
-local Bomb50kg = BombClass:New{
+Weapon('Bomb50kg'):Extends('BombClass'):Attrs{
   name               = [[50kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
   weaponType         = [[Cannon]],
@@ -55,14 +55,14 @@ local Bomb50kg = BombClass:New{
 }
 
 -- V1 Missile Explosions (GER)
-local V1 = BombClass:New{
+Weapon('V1'):Extends('BombClass'):Attrs{
   areaOfEffect       = 200,
   name               = [[V1 Missile]],
   soundHitDry        = [[GEN_Explo_9]],
 }
 
 -- PTAB "Antitank Aviation Bomb" (RUS)
-local PTAB = BombClass:New{
+Weapon('PTAB'):Extends('BombClass'):Attrs{
   areaOfEffect       = 24,
   burst              = 40,
   selfExplode	     = true,
@@ -91,7 +91,7 @@ local PTAB = BombClass:New{
 	},
   }
 --  3.5kg Hollow Charge Bomblet (ITA)
-local A_tkbomb = BombClass:New{
+Weapon('A_tkbomb'):Extends('BombClass'):Attrs{
   areaOfEffect       = 26,
   burst              = 7,
   selfExplode	     = true,
@@ -121,11 +121,3 @@ local A_tkbomb = BombClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  Bomb = Bomb,
-  Bomb160kg = Bomb160kg,
-  Bomb50kg = Bomb50kg,
-  PTAB = PTAB,
-  A_tkbomb = A_tkbomb,
-  V1 = V1,
-})

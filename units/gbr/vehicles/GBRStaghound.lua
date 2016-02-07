@@ -1,4 +1,4 @@
-local GBRStaghound = ArmouredCarAA:New{
+Unit('GBRStaghound'):Extends('ArmouredCarAA'):Attrs{
 	name				= "T17E2 Staghound AA",
 	buildCostMetal		= 990,
 	maxDamage			= 1270,
@@ -29,6 +29,3 @@ local GBRStaghound = ArmouredCarAA:New{
 	}
 }
 
-return lowerkeys({
-	["GBRStaghound"] = GBRStaghound,
-})

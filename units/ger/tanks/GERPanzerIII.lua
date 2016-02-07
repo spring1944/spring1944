@@ -1,4 +1,4 @@
-local GERPanzerIII = MediumTank:New{
+Unit('GERPanzerIII'):Extends('MediumTank'):Attrs{
 	name				= "PzKpfw III Ausf L",
 	buildCostMetal		= 2150,
 	maxDamage			= 2130,
@@ -33,6 +33,3 @@ local GERPanzerIII = MediumTank:New{
 	},
 }
 
-return lowerkeys({
-	["GERPanzerIII"] = GERPanzerIII,
-})

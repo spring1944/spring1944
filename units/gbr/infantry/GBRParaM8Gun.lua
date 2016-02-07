@@ -1,4 +1,4 @@
-local GBR_ParaM8Gun = InfantryGun:New{
+Unit('GBR_ParaM8Gun'):Extends('InfantryGun'):Attrs{
 	name					= "75mm M8",
 	corpse					= "usm8gun_destroyed",
 
@@ -10,6 +10,3 @@ local GBR_ParaM8Gun = InfantryGun:New{
 }
 
 
-return lowerkeys({
-	["GBRParaM8Gun"] = GBR_ParaM8Gun,
-})

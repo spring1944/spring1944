@@ -1,7 +1,7 @@
 -- Smallarms - Infantry Grenades
 
 -- Grenade Base Class
-local GrenadeClass = Weapon:New{
+AbstractWeapon('GrenadeClass'):Extends('Weapon'):Attrs{
 	avoidFeature       = false,
 	bounceRebound      = 0.2,
 	bounceSlip         = 0.1,
@@ -23,7 +23,7 @@ local GrenadeClass = Weapon:New{
 }
 
 -- Anti-Personel Grenade Class
-local APGrenadeClass = GrenadeClass:New{
+AbstractWeapon('APGrenadeClass'):Extends('GrenadeClass'):Attrs{
 	collisionSize      = 1e-100,
 	edgeEffectiveness  = 0.8,
 	explosionGenerator = "custom:HE_Small",
@@ -41,7 +41,7 @@ local APGrenadeClass = GrenadeClass:New{
 }
 
 -- Anti-Tank Grenade Class
-local ATGrenadeClass = GrenadeClass:New{
+AbstractWeapon('ATGrenadeClass'):Extends('GrenadeClass'):Attrs{
 	edgeEffectiveness  = 0.5,
 	explosionGenerator = "custom:HE_Medium",
 	movingAccuracy     = 1000,
@@ -55,7 +55,7 @@ local ATGrenadeClass = GrenadeClass:New{
 }
 
 -- Smoke Grenade Class
-local SmokeGrenadeClass = GrenadeClass:New{
+AbstractWeapon('SmokeGrenadeClass'):Extends('GrenadeClass'):Attrs{
 	areaOfEffect       = 20,
 	canAttackGround    = true,
 	commandFire        = true,
@@ -73,9 +73,3 @@ local SmokeGrenadeClass = GrenadeClass:New{
 }
 
 
-return {
-	GrenadeClass = GrenadeClass,
-	APGrenadeClass = APGrenadeClass,
-	ATGrenadeClass = ATGrenadeClass,
-	SmokeGrenadeClass = SmokeGrenadeClass,
-}

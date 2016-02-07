@@ -1,4 +1,4 @@
-local RUS_BMO = ArmedBoat:New{
+Unit('RUS_BMO'):Extends('ArmedBoat'):Attrs{
 	name					= "BMO Class Subchaser",
 	description				= "Armoured light patrol ship",
 	acceleration			= 0.1,
@@ -37,7 +37,7 @@ local RUS_BMO = ArmedBoat:New{
 	},
 }
 
-local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multiple vessels
+Unit('RUS_Turret_37mm_Front'):Extends('PartiallyEnclosedBoatTurret'):Attrs{ -- Used on multiple vessels
 	name					= "37mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSBMO_Turret_37mm.s3o",
@@ -61,7 +61,7 @@ local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multip
 		aaweapon				= 1,
     },
 }
-local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
+Unit('RUS_Turret_37mm_Rear'):Extends('RUS_Turret_37mm_Front'):Attrs{
   	weapons = {	
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -75,7 +75,7 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
     },
 }
 
-local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
+Unit('RUS_BMO_Turret_DshKAA'):Extends('OpenBoatTurret'):Attrs{
 	name					= "BMO DshK Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -100,7 +100,7 @@ local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
 	},
 }
 
-local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
+Unit('RUS_BMO_Turret_Vickers'):Extends('OpenBoatTurret'):Attrs{
 	name					= "BMO Vickers .50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -124,7 +124,7 @@ local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
 	},
 }
 
-local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
+Unit('RUS_Turret_45mm_Front'):Extends('OpenBoatTurret'):Attrs{ -- Used on multiple vessels
 	name					= "45mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/RUSBMO_Turret_45mm.s3o",
@@ -143,7 +143,7 @@ local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
 		elevationspeed			= 30,
     },
 }
-local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
+Unit('RUS_Turret_45mm_Rear'):Extends('RUS_Turret_45mm_Front'):Attrs{
   	weapons = {	
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -154,12 +154,3 @@ local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
     },
 }
 
-return lowerkeys({
-	["RUSBMO"] = RUS_BMO,
-	["RUSTurret_37mm_Front"] = RUS_Turret_37mm_Front,
-	["RUSTurret_37mm_Rear"] = RUS_Turret_37mm_Rear,
-	["RUSTurret_45mm_Front"] = RUS_Turret_45mm_Front,
-	["RUSTurret_45mm_Rear"] = RUS_Turret_45mm_Rear,
-	["RUSBMO_Turret_DshKAA"] = RUS_BMO_Turret_DshKAA,
-	["RUSBMO_Turret_Vickers"] = RUS_BMO_Turret_Vickers,
-})

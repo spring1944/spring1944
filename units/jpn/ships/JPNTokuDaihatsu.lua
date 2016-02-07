@@ -1,4 +1,4 @@
-local JPN_TokuDaihatsu = TankLandingCraft:New{
+Unit('JPN_TokuDaihatsu'):Extends('TankLandingCraft'):Attrs{
 	name					= "Toku Daihatsu Landing Craft",
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
@@ -44,6 +44,3 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["JPNTokuDaihatsu"] = JPN_TokuDaihatsu,
-})

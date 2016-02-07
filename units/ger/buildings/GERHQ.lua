@@ -1,4 +1,4 @@
-local GER_HQ = HQ:New(Bunker):New{
+Unit('GER_HQ'):Extends('HQ'):Extends('Bunker'):Attrs{
 	name					= "Wehrmacht HQ Bunker",
 	buildTime				= 40000,
 	collisionVolumeScales	= [[150 30 110]],
@@ -23,6 +23,3 @@ local GER_HQ = HQ:New(Bunker):New{
 	},
 }
 
-return lowerkeys({
-	["GERHQBunker"] = GER_HQ,
-})

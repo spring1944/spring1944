@@ -1,13 +1,9 @@
-local GER_OpelBlitzBase = Truck:New{
+Unit('GER_OpelBlitzBase'):Extends('Truck'):Attrs{
 	name					= "Opel Blitz",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local GER_OpelBlitz = GER_OpelBlitzBase:New(TransportTruck)
-local GER_PontoonTruck = GER_OpelBlitzBase:New(PontoonTruck, true)
+Unit('GER_OpelBlitz'):Extends('GER_OpelBlitzBase'):Extends('TransportTruck')
+Unit('GER_PontoonTruck'):Extends('GER_OpelBlitzBase'):Extends('PontoonTruck') -- name append
 
-return lowerkeys({
-	["GEROpelBlitz"] = GER_OpelBlitz,
-	["GERPontoonTruck"] = GER_PontoonTruck,
-})

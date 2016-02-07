@@ -11,22 +11,19 @@ local defFields = {
 
 local units = {}
 
-local sortieInclude = lowerkeys(VFS.Include("LuaRules/Configs/sortie_defs.lua"))
-local squadInclude = lowerkeys(VFS.Include("LuaRules/Configs/squad_defs.lua"))
+if VFS then
+	local sortieInclude = VFS.Include("LuaRules/Configs/sortie_defs.lua")
+	local squadInclude = VFS.Include("LuaRules/Configs/squad_defs.lua")
 
-local function generateFrom(defFile)
-	for unitName, unitData in pairs(defFile) do
-		local autoUnit = Null:New{}
-		for i = 1, #defFields do
-			if unitData[defFields[i]] then
-				autoUnit[defFields[i]] = unitData[defFields[i]]
-			end
+	local function generateFrom(defFile)
+		for unitName, unitData in pairs(defFile) do
+			Unit(unitName):Extends('Null'):Attrs(unitData)
 		end
-		units[unitName] = autoUnit
 	end
+
+	generateFrom(sortieInclude)
+	generateFrom(squadInclude)
+else
+	-- CLI interface
+	io.output(io.stderr):write("skipping units/AutoGen.lua, no sortie or squad units are present in DB\n")
 end
-
-generateFrom(sortieInclude)
-generateFrom(squadInclude)
-
-return lowerkeys(units)

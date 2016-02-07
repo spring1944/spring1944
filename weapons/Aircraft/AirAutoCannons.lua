@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Hispano HS.404 20mm (GBR)
-local HS40420mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('HS40420mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 10,
   burst              = 3,
   burstrate          = 0.1,
@@ -18,7 +18,7 @@ local HS40420mm = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- Mk. 108 30mm (GER)
-local Mk10830mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('Mk10830mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 25,
   burst              = 3,
   burstRate          = 0.25,
@@ -34,7 +34,7 @@ local Mk10830mm = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- MG151/20 20mm (GER)
-local MG15120mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('MG15120mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 15,
   burst              = 6,
   burstRate          = 0.085,
@@ -51,7 +51,7 @@ local MG15120mm = AutoCannonHE:New(AirAutoCannon, true):New{
 -- MG151/15 15mm (GER)
 -- treated like a machinegun in game, but
 -- this derives from the above 20mm
-local MG15115mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('MG15115mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 8,
   burstRate          = 0.08,
   explosionGenerator = [[custom:Bullet]],
@@ -65,7 +65,7 @@ local MG15115mm = AutoCannonHE:New(AirAutoCannon, true):New{
 } 
 
 -- ShVAK 20mm (RUS)
-local ShVAK20mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('ShVAK20mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 10,
   burst              = 3,
   burstRate          = 0.085,
@@ -80,7 +80,7 @@ local ShVAK20mm = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- VYa 23mm (RUS)
-local VYa23mm = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('VYa23mm'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   areaOfEffect       = 14,
   burst              = 3,
   burstRate          = 0.085,
@@ -95,7 +95,7 @@ local VYa23mm = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- Ho-5 20mm AP (JPN)
-local Ho520mmAP = AutoCannonAP:New(AirAutoCannon, true):New{
+Weapon('Ho520mmAP'):Extends('AutoCannonAP'):Extends('AirAutoCannon'):Attrs{ -- name append
   burst              = 5,
   burstRate          = 0.091,
   name               = [[Ho-5 20mm Cannon AP]],
@@ -113,7 +113,7 @@ local Ho520mmAP = AutoCannonAP:New(AirAutoCannon, true):New{
 }
 
 -- Ho-5 20mm HE (JPN) 
-local Ho520mmHE = AutoCannonHE:New(AirAutoCannon, true):New{
+Weapon('Ho520mmHE'):Extends('AutoCannonHE'):Extends('AirAutoCannon'):Attrs{ -- name append
   burst              = 5,
   areaOfEffect       = 6,
   burstRate          = 0.091,
@@ -128,13 +128,3 @@ local Ho520mmHE = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  HS40420mm = HS40420mm,
-  Mk10830mm = Mk10830mm,
-  MG15120mm = MG15120mm,
-  MG15115mm = MG15115mm,
-  ShVAK20mm = ShVAK20mm,
-  VYa23mm = VYa23mm,
-  Ho520mmAP = Ho520mmAP,
-  Ho520mmHE = Ho520mmHE,
-})

@@ -1,4 +1,4 @@
-local GBR_LCGM = ArmedBoat:New{
+Unit('GBR_LCGM'):Extends('ArmedBoat'):Attrs{
 	name					= "LCG(M)",
 	description				= "Landing Craft Gun (Medium)",
 	acceleration			= 0.001,
@@ -30,7 +30,7 @@ local GBR_LCGM = ArmedBoat:New{
 	},
 }
 
-local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
+Unit('GBR_LCGM_Turret_25pdr_Left'):Extends('EnclosedBoatTurret'):Attrs{
 	name					= "25Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/GBRLCGM_Turret_25pdr.s3o",
@@ -49,7 +49,7 @@ local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 		elevationspeed			= 17,
     },
 }
-local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{
+Unit('GBR_LCGM_Turret_25pdr_Right'):Extends('GBR_LCGM_Turret_25pdr_Left'):Attrs{
   	weapons = {	
 		[1] = {
 			mainDir				= [[-1 0 1]],
@@ -58,8 +58,3 @@ local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{
 }
 
 
-return lowerkeys({
-	["GBRLCGM"] = GBR_LCGM,
-	["GBRLCGM_Turret_25pdr_Left"] = GBR_LCGM_Turret_25pdr_Left,
-	["GBRLCGM_Turret_25pdr_Right"] = GBR_LCGM_Turret_25pdr_Right,
-})

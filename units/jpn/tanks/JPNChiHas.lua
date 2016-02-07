@@ -1,4 +1,4 @@
-local ChiHaBase = LightTank:New{
+Unit('ChiHaBase'):Extends('LightTank'):Attrs{
 	maxDamage			= 1580,
 	trackOffset			= 5,
 	trackWidth			= 14,
@@ -12,7 +12,7 @@ local ChiHaBase = LightTank:New{
 	},
 }
 	
-local JPNChiHa = ChiHaBase:New{
+Unit('JPNChiHa'):Extends('ChiHaBase'):Attrs{
 	name				= "Type 97 Chi-Ha",
 	buildCostMetal		= 1600,
 	
@@ -46,7 +46,7 @@ local JPNChiHa = ChiHaBase:New{
 	},
 }	
 
-local JPNChiHa120mm = ChiHaBase:New{
+Unit('JPNChiHa120mm'):Extends('ChiHaBase'):Attrs{
 	name				= "Type 97 Chi-Ha",
 	description			= "Close Support Tank",
 	buildCostMetal		= 2650,
@@ -70,7 +70,7 @@ local JPNChiHa120mm = ChiHaBase:New{
 	},
 }
 
-local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
+Unit('JPNShinhotoChiHa'):Extends('JPNChiHa'):Attrs{ -- just change the gun
 	name				= "Type 97 Shinhoto Chi-Ha",
 	description			= "Upgunned Medium Tank",
 	buildCostMetal		= 1750,
@@ -89,8 +89,3 @@ local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
 	},
 }	
 
-return lowerkeys({
-	["JPNChiHa"] = JPNChiHa,
-	["JPNChiHa120mm"] = JPNChiHa120mm,
-	["JPNShinhotoChiHa"] = JPNShinhotoChiHa,
-})

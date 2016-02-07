@@ -1,11 +1,11 @@
-local SWEHaubitsM39_Truck = HGunTractor:New{
+Unit('SWEHaubitsM39_Truck'):Extends('HGunTractor'):Attrs{
 	name					= "Towed 10.5cm Haubits m/39",
 	--corpse					= "GERSdKfz11_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local SWEHaubitsM39_Stationary = HGun:New{
+Unit('SWEHaubitsM39_Stationary'):Extends('HGun'):Attrs{
 	name					= "Deployed 10.5cm Haubits m/39",
 	corpse					= "gerlefh18_destroyed",
 
@@ -19,7 +19,3 @@ local SWEHaubitsM39_Stationary = HGun:New{
 	},
 }
 
-return lowerkeys({
-	["SWEHaubitsM39_Truck"] = SWEHaubitsM39_Truck,
-	["SWEHaubitsM39_Stationary"] = SWEHaubitsM39_Stationary,
-})

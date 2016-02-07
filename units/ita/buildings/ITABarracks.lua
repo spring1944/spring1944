@@ -1,4 +1,4 @@
-local ITA_Barracks = Barracks:New{
+Unit('ITA_Barracks'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 1500,
 	collisionVolumeScales		= [[50 32 110]],
 	collisionVolumeOffsets		= [[0 15 0]],
@@ -15,12 +15,8 @@ local ITA_Barracks = Barracks:New{
 									cccccc]],
 }
 
-local ITA_BarracksElite = ITA_Barracks:New{
+Unit('ITA_BarracksElite'):Extends('ITA_Barracks'):Attrs{
 	objectName					= "<SIDE>/ITABarracks.s3o",
 	buildPic					= "itabarracks.png",
 }
 
-return lowerkeys({
-	["ITABarracks"] = ITA_Barracks,
-	["ITAEliteBarracks"] = ITA_BarracksElite -- TODO: change unitname too
-})

@@ -1,16 +1,17 @@
-local USInf = {
+
+AbstractUnit('USInf'):Attrs{
 	maxDamageMul		= 1.0,
 }
 
-local USPara = {
+AbstractUnit('USPara'):Attrs{
 	maxDamageMul		= 1.4,
 }
 
-local US_HQEngineer = EngineerInf:New(USInf):New{
+Unit('US_HQEngineer'):Extends('EngineerInf'):Extends('USInf'):Attrs{
 	name				= "Field Engineer",
 }
 
-local US_Rifle = RifleInf:New(USInf):New{
+Unit('US_Rifle'):Extends('RifleInf'):Extends('USInf'):Attrs{
 	name				= "M1 Garand Rifle",
 	weapons = {
 		[1] = { -- Rifle
@@ -22,7 +23,7 @@ local US_Rifle = RifleInf:New(USInf):New{
 	},
 }
 
-local US_Thompson = SMGInf:New(USInf):New{
+Unit('US_Thompson'):Extends('SMGInf'):Extends('USInf'):Attrs{
 	name				= "M1A1 Thompson Submachinegun",
 	weapons = {
 		[1] = { -- SMG
@@ -34,7 +35,7 @@ local US_Thompson = SMGInf:New(USInf):New{
 	},
 }
 
-local US_BAR = RifleInf:New(USInf):New{
+Unit('US_BAR'):Extends('RifleInf'):Extends('USInf'):Attrs{
 	name				= "BAR M1918A2 Light Machinegun",
 	description			= "Long Range Assault/Light Fire Support Unit",
 	weapons = {
@@ -47,7 +48,7 @@ local US_BAR = RifleInf:New(USInf):New{
 	},
 }
 
-local US_MG = LMGInf:New(USInf):New{
+Unit('US_MG'):Extends('LMGInf'):Extends('USInf'):Attrs{
 	name				= "Browning M1919A4 Machinegun",
 	weapons = {
 		[1] = { -- LMG
@@ -56,7 +57,7 @@ local US_MG = LMGInf:New(USInf):New{
 	},
 }
 
-local US_MG_Sandbag = SandbagMG:New{
+Unit('US_MG_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Vickers Mk I Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -66,7 +67,7 @@ local US_MG_Sandbag = SandbagMG:New{
 	},
 }
 
-local US_Sniper = SniperInf:New(USInf):New{
+Unit('US_Sniper'):Extends('SniperInf'):Extends('USInf'):Attrs{
 	name				= "M1903A4 Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -75,7 +76,7 @@ local US_Sniper = SniperInf:New(USInf):New{
 	},
 }
 
-local US_Bazooka = ATLauncherInf:New(USInf):New{
+Unit('US_Bazooka'):Extends('ATLauncherInf'):Extends('USInf'):Attrs{
 	name				= "M9A1 Bazooka",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -84,7 +85,7 @@ local US_Bazooka = ATLauncherInf:New(USInf):New{
 	},
 }
 
-local US_Flamethrower = FlameInf:New(USInf):New{
+Unit('US_Flamethrower'):Extends('FlameInf'):Extends('USInf'):Attrs{
 	name				= "M2 Flamethrower",
 	weapons = {
 		[1] = { -- Flamethrower
@@ -93,7 +94,7 @@ local US_Flamethrower = FlameInf:New(USInf):New{
 	},	
 }
 
-local US_Mortar = MedMortarInf:New(USInf):New{
+Unit('US_Mortar'):Extends('MedMortarInf'):Extends('USInf'):Attrs{
 	name				= "81mm M1 Mortar",
 	weapons = {
 		[1] = { -- HE
@@ -105,7 +106,7 @@ local US_Mortar = MedMortarInf:New(USInf):New{
 	},
 }
 
-local US_Observ = ObservInf:New(USInf):New{
+Unit('US_Observ'):Extends('ObservInf'):Extends('USInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "m1911a1colt",
@@ -113,30 +114,7 @@ local US_Observ = ObservInf:New(USInf):New{
 	},
 }
 
-local US_Paratrooper = Infantry:New{
+Unit('US_Paratrooper'):Extends('Infantry'):Attrs{
 	script = "<NAME>.cob"
 }
 
-return lowerkeys({
-	-- Regular Inf
-	["USHQEngineer"] = US_HQEngineer,
-	["USHQAIEngineer"] = US_HQEngineer:Clone("USHQEngineer"),
-	["USRifle"] = US_Rifle,
-	["USThompson"] = US_Thompson,
-	["USBAR"] = US_BAR,
-	["USMG"] = US_MG,
-	["USMG_Sandbag"] = US_MG_Sandbag,
-	["USSniper"] = US_Sniper,
-	["USBazooka"] = US_Bazooka,
-	["USMortar"] = US_Mortar,
-	["USFlamethrower"] = US_Flamethrower,
-	["USObserv"] = US_Observ,
-	-- Paratroopers
-	["USParaRifle"] = US_Rifle:New(USPara),
-	["USParaThompson"] = US_Thompson:New(USPara),
-	["USParaBAR"] = US_BAR:New(USPara),
-	["USParaMG"] = US_MG:New(USPara),
-	["USParaMG_Sandbag"] = US_MG_Sandbag:New(USPara),
-	["USParaBazooka"] = US_Bazooka:New(USPara),
-	["USParatrooper"] = US_Paratrooper,
-})

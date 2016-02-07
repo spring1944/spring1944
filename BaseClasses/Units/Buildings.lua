@@ -1,5 +1,5 @@
 -- Buildings ----
-local Building = Unit:New{
+AbstractUnit('Building'):Extends('Unit'):Attrs{
 	airSightDistance			= 2000,
 	buildingGroundDecalType		= "Dirt2.dds",
 	category					= "BUILDING",
@@ -18,7 +18,7 @@ local Building = Unit:New{
 }
 
 -- Yards --
-local Yard = Building:New{
+AbstractUnit('Yard'):Extends('Building'):Attrs{
 	builder 					= true,
 	buildingGroundDecalSizeX	= 8,
 	buildingGroundDecalSizeY	= 8,
@@ -49,7 +49,7 @@ local Yard = Building:New{
 	},
 }
 
-local HQ = Yard:New{
+AbstractUnit('HQ'):Extends('Yard'):Attrs{
 	description			= "Command Outpost",
 	buildCostMetal		= 2050,
 	explodeAs			= "HUGE_Explosion", -- override Yard
@@ -67,7 +67,7 @@ local HQ = Yard:New{
 	},	
 }
 
-local Barracks = Yard:New{
+AbstractUnit('Barracks'):Extends('Yard'):Attrs{
 	name				= "Barracks",
 	description			= "Infantry Training & Housing Facility",
 	--buildCostMetal		= 2000, -- GBR 2340, GER 2140, ITA 1500, JPN 1500, RUS 1500, US 2300
@@ -80,7 +80,7 @@ local Barracks = Yard:New{
 	},
 }
 
-local GunYard = Yard:New{
+AbstractUnit('GunYard'):Extends('Yard'):Attrs{
 	name				= "Towed Gun Yard",
 	description			= "Towed Artillery Prep. Facility",
 	buildCostMetal		= 2000, -- JPN 1800, ITA 1800
@@ -88,19 +88,19 @@ local GunYard = Yard:New{
 	buildPic			= "<SIDE>GunYard.png", -- inherited by upgrades
 }
 
-local GunYardSP = GunYard:New{
+AbstractUnit('SPYard'):Extends('GunYard'):Attrs{ -- TODO: change these to GunyardSP/GunyardTD
 	name				= "Self-Propelled Gun Yard",
 	description			= "Self-Propelled Gun Prep. Facility",
 	buildCostMetal		= 2000, -- GBR 1868, GER 2175, ITA 1800, JPN 1800, RUS 5400, US 3600
 }
 
-local GunYardTD = GunYard:New{
+AbstractUnit('SPYard1'):Extends('GunYard'):Attrs{
 	name				= "Tank Destroyer Yard",
 	description			= "Tank Destroyer Prep. Facility",
 	buildCostMetal		= 2000, -- GBR 1868, GER 2175, ITA 1800, JPN 1800, RUS 5400, US 3600,
 }
 
-local VehicleYard = Yard:New{
+AbstractUnit('VehicleYard'):Extends('Yard'):Attrs{
 	name				= "Light Vehicle Yard",
 	description			= "Light Vehicle Prep. Facility",
 	buildCostMetal		= 4600,
@@ -108,12 +108,12 @@ local VehicleYard = Yard:New{
 	buildPic			= "<SIDE>VehicleYard.png", -- inherited by upgrades
 }
 
-local VehicleYardArmour = VehicleYard:New{
+AbstractUnit('VehicleYard1'):Extends('VehicleYard'):Attrs{
 	name				= "Light Vehicle & Armour Yard",
 	description			= "Light Vehicle & Armour Prep. Facility",
 }
 
-local TankYard = Yard:New{
+AbstractUnit('TankYard'):Extends('Yard'):Attrs{
 	name				= "Tank Yard",
 	description			= "Basic Armour Prep. Facility",
 	buildCostMetal		= 8050, -- ITA 8530, JPN 8530
@@ -122,17 +122,17 @@ local TankYard = Yard:New{
 	buildPic			= "<SIDE>TankYard.png", -- inherited by upgrades
 }
 
-local TankYardAdv = TankYard:New{
+AbstractUnit('TankYard1'):Extends('TankYard'):Attrs{ --TODO rename everything to TankYardAdv/TankYardHeavy (instead of 1/2)
 	name				= "Advanced Tank Yard",
 	description			= "Advanced Armour Prep. Facility",
 }
 
-local TankYardHeavy = TankYard:New{
+AbstractUnit('TankYard2'):Extends('TankYard'):Attrs{
 	name				= "Heavy Tank Yard",
 	description			= "Heavy Armour Prep. Facility",
 }
 
-local BoatYard = Yard:New{
+AbstractUnit('BoatYard'):Extends('Yard'):Attrs{
 	name				= "Boat Yard",
 	description			= "Light Naval Prep. Facility",
 	buildCostMetal		= 5445,
@@ -164,13 +164,13 @@ local BoatYard = Yard:New{
 							ooccccccccccoo]],
 }
 
-local BoatYardLarge = BoatYard:New{
+AbstractUnit('BoatYardLarge'):Extends('BoatYard'):Attrs{
 	iconType			= "hshipyard", -- TODO: worth it? only upgraded fac with its own icon
     workerTime          = 100,
 	maxDamage           = 32500,
 }
 
-local Radar = Yard:New{
+AbstractUnit('Radar'):Extends('Yard'):Attrs{
 	description			= "Flight Detection & Control Station",
 	buildCostMetal		= 5138,
 	iconType			= "radar", -- override Yard
@@ -187,14 +187,14 @@ local Radar = Yard:New{
 }
 
 -- Bunkers
-local Bunker = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('Bunker'):Attrs{ -- not a full class (role/mixin)
 	customParams = {
 		damageGroup		= "bunkers",
 	},
 }
 
 -- Supply Depots
-local SupplyDepot = Yard:New{
+AbstractUnit('SupplyDepot'):Extends('Yard'):Attrs{
 	name					= "Large Supply Depot",
 	description				= "Supplies An Extended Area",
 	buildCostMetal			= 3600,
@@ -221,7 +221,7 @@ local SupplyDepot = Yard:New{
 -- Logistics
 
 -- Storages
-local Storage = Building:New{
+AbstractUnit('Storage'):Extends('Building'):Attrs{
 	name					= "Storage Shed",
 	description				= "General Logistics & Ammunition Stockpile",
 	buildCostMetal			= 4500,
@@ -248,7 +248,7 @@ local Storage = Building:New{
 	},
 }
 -- Truck Supplies
-local Supplies = Building:New{
+AbstractUnit('Supplies'):Extends('Building'):Attrs{
 	name						= "Unloaded Truck Supplies",
 	description					= "Supplies A Small Area",
 	activateWhenBuilt			= true,
@@ -267,7 +267,7 @@ local Supplies = Building:New{
 	maxDamage					= 400,
 }
 
-local SuppliesSmall = Supplies:New{
+AbstractUnit('SuppliesSmall'):Extends('Supplies'):Attrs{
 	name						= "Small Supply Dump",
 	description					= "Supplies A Small Area",
 	corpse						= "Debris_Small",
@@ -281,27 +281,3 @@ local SuppliesSmall = Supplies:New{
 	yardmap						= [[yyy yyy yyy]],
 }
 
-return {
-	Building = Building,
-	-- Yards
-	Yard = Yard,
-	HQ = HQ,
-	Barracks = Barracks,
-	GunYard = GunYard,
-	GunYardSP = GunYardSP,
-	GunYardTD = GunYardTD,
-	VehicleYard = VehicleYard,
-	VehicleYardArmour = VehicleYardArmour,
-	TankYard = TankYard,
-	TankYardAdv = TankYardAdv,
-	TankYardHeavy = TankYardHeavy,
-	BoatYard = BoatYard,
-	BoatYardLarge = BoatYardLarge,
-	Radar = Radar,
-	Bunker = Bunker,
-	SupplyDepot = SupplyDepot,
-	-- Logistics
-	Storage = Storage,
-	Supplies = Supplies,
-	SuppliesSmall = SuppliesSmall,
-}

@@ -3,7 +3,7 @@
 -- Implementations
 
 -- QF 25pdr Gun (GBR)
-local QF25Pdr = Howitzer:New{
+Weapon('QF25Pdr'):Extends('Howitzer'):Attrs{
   accuracy           = 720,
   areaOfEffect       = 94,
   edgeEffectiveness  = 0.2, -- overrides default
@@ -20,19 +20,19 @@ local QF25Pdr = Howitzer:New{
 }
 
 -- QF 25pdr on a boat
-local NavalQF25Pdr = QF25Pdr:New{
+Weapon('NavalQF25Pdr'):Extends('QF25Pdr'):Attrs{
   accuracy           = 1400,
 }
 
-local QF25PdrHE = HowitzerHE:New(QF25Pdr, true)
-local QF25PdrSmoke = HowitzerSmoke:New(QF25Pdr, true)
+Weapon('QF25PdrHE'):Extends('HowitzerHE'):Extends('QF25Pdr') -- name append
+Weapon('QF25PdrSmoke'):Extends('HowitzerSmoke'):Extends('QF25Pdr') -- name append
 
-local NavalQF25PdrHE = HowitzerHE:New(NavalQF25Pdr, true)
-local NavalQF25PdrSmoke = HowitzerSmoke:New(NavalQF25Pdr, true)
+Weapon('NavalQF25PdrHE'):Extends('HowitzerHE'):Extends('NavalQF25Pdr') -- name append
+Weapon('NavalQF25PdrSmoke'):Extends('HowitzerSmoke'):Extends('NavalQF25Pdr') -- name append
 
 
 -- 10.5cm LeFH 18/40 (GER)
-local LeFH18 = Howitzer:New{
+Weapon('LeFH18'):Extends('Howitzer'):Attrs{
   accuracy           = 1050,
   areaOfEffect       = 129,
   name               = [[10.5cm LeFH 18/40]],
@@ -42,11 +42,11 @@ local LeFH18 = Howitzer:New{
     default            = 4200,
   },
 }
-local LeFH18HE = HowitzerHE:New(LeFH18, true)
-local LeFH18Smoke = HowitzerSmoke:New(LeFH18, true)
+Weapon('LeFH18HE'):Extends('HowitzerHE'):Extends('LeFH18') -- name append
+Weapon('LeFH18Smoke'):Extends('HowitzerSmoke'):Extends('LeFH18') -- name append
 
 -- M2 105mm Howitzer (USA)
-local M2 = Howitzer:New{
+Weapon('M2'):Extends('Howitzer'):Attrs{
   accuracy           = 1050,
   areaOfEffect       = 131,
   name               = [[10.5cm LeFH 18/40]],
@@ -56,11 +56,11 @@ local M2 = Howitzer:New{
     default            = 4360,
   },
 }
-local M2HE = HowitzerHE:New(M2, true)
-local M2Smoke = HowitzerSmoke:New(M2, true)
+Weapon('M2HE'):Extends('HowitzerHE'):Extends('M2') -- name append
+Weapon('M2Smoke'):Extends('HowitzerSmoke'):Extends('M2') -- name append
 
 -- M-30 122mm Howitzer (RUS)
-local M30122mm = Howitzer:New{
+Weapon('M30122mm'):Extends('Howitzer'):Attrs{
   accuracy           = 1150,
   areaOfEffect       = 154,
   name               = [[M-30 122mm Howitzer]],
@@ -73,15 +73,15 @@ local M30122mm = Howitzer:New{
     default            = 7200,
   },
 }
-local M30122mmHE = HowitzerHE:New(M30122mm, true):New{
+Weapon('M30122mmHE'):Extends('HowitzerHE'):Extends('M30122mm'):Attrs{ -- name append
   customparams = {
     fearaoe            = 250,
   }
 }
-local M30122mmSmoke = HowitzerSmoke:New(M30122mm, true)
+Weapon('M30122mmSmoke'):Extends('HowitzerSmoke'):Extends('M30122mm') -- name append
 
 -- 100m howitzer L22 (ITA)
-local Obice100mmL22 = Howitzer:New{
+Weapon('Obice100mmL22'):Extends('Howitzer'):Attrs{
   accuracy           = 1050,
   areaOfEffect       = 115,
   name               = [[Obice 100mm/22 M14]],
@@ -92,11 +92,11 @@ local Obice100mmL22 = Howitzer:New{
     default            = 3800,
   },
 }
-local Obice100mmL22he = HowitzerHE:New(Obice100mmL22, true)
-local Obice100mmL22smoke = HowitzerSmoke:New(Obice100mmL22, true)
+Weapon('Obice100mmL22he'):Extends('HowitzerHE'):Extends('Obice100mmL22') -- name append
+Weapon('Obice100mmL22smoke'):Extends('HowitzerSmoke'):Extends('Obice100mmL22') -- name append
 
 --  100mm Howitzer L17 (ITA)
-local Obice100mmL17 = Howitzer:New{
+Weapon('Obice100mmL17'):Extends('Howitzer'):Attrs{
   accuracy           = 1150,
   areaOfEffect       = 115,
   name               = [[Obice 100mm/17 M14]],
@@ -107,11 +107,11 @@ local Obice100mmL17 = Howitzer:New{
     default            = 3800,
   },
 }
-local Obice100mmL17HE = HowitzerHE:New(Obice100mmL17, true)
-local Obice100mmL17Smoke = HowitzerSmoke:New(Obice100mmL17, true)
+Weapon('Obice100mmL17HE'):Extends('HowitzerHE'):Extends('Obice100mmL17') -- name append
+Weapon('Obice100mmL17Smoke'):Extends('HowitzerSmoke'):Extends('Obice100mmL17') -- name append
 
 -- Type 91 105m howitzer L/24 (JPN)
-local Type91105mmL24 = Howitzer:New{
+Weapon('Type91105mmL24'):Extends('Howitzer'):Attrs{
   accuracy           = 1000,
   areaOfEffect       = 125,
   name               = [[Type 91 105mm/24]],
@@ -121,25 +121,7 @@ local Type91105mmL24 = Howitzer:New{
     default            = 4050,
   },
 }
-local Type91105mmL24HE = HowitzerHE:New(Type91105mmL24, true)
-local Type91105mmL24Smoke = HowitzerSmoke:New(Type91105mmL24, true)
+Weapon('Type91105mmL24HE'):Extends('HowitzerHE'):Extends('Type91105mmL24') -- name append
+Weapon('Type91105mmL24Smoke'):Extends('HowitzerSmoke'):Extends('Type91105mmL24') -- name append
 
 -- Return only the full weapons
-return lowerkeys({
-  QF25PdrHE = QF25PdrHE,
-  QF25PdrSmoke = QF25PdrSmoke,
-  NavalQF25PdrHE = NavalQF25PdrHE,
-  NavalQF25PdrSmoke = NavalQF25PdrSmoke,
-  LeFH18HE = LeFH18HE,
-  LeFH18Smoke = LeFH18Smoke,
-  M2HE = M2HE,
-  M2Smoke = M2Smoke,
-  M30122mmHE = M30122mmHE,
-  M30122mmSmoke = M30122mmSmoke,
-  Obice100mmL22he = Obice100mmL22he,
-  Obice100mmL22smoke = Obice100mmL22smoke,
-  Obice100mmL17HE = Obice100mmL17HE,
-  Obice100mmL17Smoke = Obice100mmL17Smoke,
-  Type91105mmL24HE = Type91105mmL24HE,
-  Type91105mmL24Smoke = Type91105mmL24Smoke,
-})

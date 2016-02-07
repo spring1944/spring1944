@@ -3,20 +3,20 @@
 -- Implementations
 
 -- QF 2Pdr 40mm (GBR)
-local QF2Pdr40mm = LightGun:New{
+Weapon('QF2Pdr40mm'):Extends('LightGun'):Attrs{
   name               = [[QF 2 Pdr Mk.X]],
   range              = 1070,
   reloadTime         = 4.5,
 }
 
-local QF2Pdr40mmHE = LightHE:New(QF2Pdr40mm, true):New{
+Weapon('QF2Pdr40mmHE'):Extends('LightHE'):Extends('QF2Pdr40mm'):Attrs{ -- name append
   areaOfEffect       = 42,
   weaponVelocity     = 1584,
   damage = {
     default            = 350,
   },  
 }
-local QF2Pdr40mmAP = LightAP:New(QF2Pdr40mm, true):New{
+Weapon('QF2Pdr40mmAP'):Extends('LightAP'):Extends('QF2Pdr40mm'):Attrs{ -- name append
   weaponVelocity     = 1616,
   customparams = {
     armor_penetration_1000m = 45,
@@ -28,14 +28,14 @@ local QF2Pdr40mmAP = LightAP:New(QF2Pdr40mm, true):New{
 }
 
 -- M6 37mm (USA)
-local M637mm = LightGun:New{
+Weapon('M637mm'):Extends('LightGun'):Attrs{
   name               = [[37mm M6]],
   range              = 1010,
   reloadTime         = 4.5,
 }
 
 -- Canister is radically different!
-local M637mmCanister = M637mm:New({
+Weapon('M637mmCanister'):Extends('M637mm'):Attrs{ -- name append
   areaOfEffect       = 10,
   coreThickness      = 0.15,
   duration           = 0.01,
@@ -63,16 +63,16 @@ local M637mmCanister = M637mm:New({
   damage = {
     default            = 150,
   },  
-}, true)
+}
 
-local M637mmHE = LightHE:New(M637mm, true):New{
+Weapon('M637mmHE'):Extends('LightHE'):Extends('M637mm'):Attrs{ -- name append
   areaOfEffect       = 44,
   weaponVelocity     = 1584,
   damage = {
     default            = 228,
   },  
 }
-local M637mmAP = LightAP:New(M637mm, true):New{
+Weapon('M637mmAP'):Extends('LightAP'):Extends('M637mm'):Attrs{ -- name append
   weaponVelocity     = 1768,
   customparams = {
     armor_penetration_1000m = 46,
@@ -84,21 +84,21 @@ local M637mmAP = LightAP:New(M637mm, true):New{
 }
 
 -- M1938 20K 45mm (RUS)
-local M1938_20K45mm = LightGun:New{
+Weapon('M1938_20K45mm'):Extends('LightGun'):Attrs{
   name               = [[20K M1938 45mm]],
   range              = 980,
   reloadTime         = 4.8,
   soundStart         = [[RUS_45mm]],
 }
 
-local M1938_20K45mmHE = LightHE:New(M1938_20K45mm, true):New{
+Weapon('M1938_20K45mmHE'):Extends('LightHE'):Extends('M1938_20K45mm'):Attrs{ -- name append
   areaOfEffect       = 52, -- Naval is 47?
   weaponVelocity     = 1584,
   damage = {
     default            = 270,
   },  
 }
-local M1938_20K45mmAP = LightAP:New(M1938_20K45mm, true):New{
+Weapon('M1938_20K45mmAP'):Extends('LightAP'):Extends('M1938_20K45mm'):Attrs{ -- name append
   weaponVelocity     = 1518, -- Naval (unused) is 1768?
   customparams = {
     armor_penetration_1000m = 20,
@@ -110,19 +110,19 @@ local M1938_20K45mmAP = LightAP:New(M1938_20K45mm, true):New{
 }
 
 -- Naval copy, only HE used currently. Should these values be so different?
-local M1937_40K45mmHE = M1938_20K45mmHE:New{
+Weapon('M1937_40K45mmHE'):Extends('M1938_20K45mmHE'):Attrs{
   name                 = [[40K 45mm Naval Gun HE Shell]],
 }
 
 -- Cannone da 47/32 M35 (ITA)
-local CannoneDa47mml32 = LightGun:New{
+Weapon('CannoneDa47mml32'):Extends('LightGun'):Attrs{
   name                 = [[47 mm L/32 Gun]],
   range                = 980,
   reloadTime           = 4.8,
   soundStart           = [[ITA_M35_47mm]],
 }
 
-local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
+Weapon('CannoneDa47mml32AP'):Extends('LightAP'):Extends('CannoneDa47mml32'):Attrs{ -- name append
   weaponVelocity       = 1000,
   customparams = {
     armor_penetration_1000m = 32,
@@ -133,7 +133,7 @@ local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
   },
 }
 
-local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
+Weapon('CannoneDa47mml32HEAT'):Extends('HEAT'):Extends('CannoneDa47mml32'):Attrs{ -- name append
   range                = 637,
   weaponVelocity       = 800,
   customparams = {
@@ -148,14 +148,14 @@ local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
 -- it had some links:
 -- https://web.archive.org/web/20081021061843/http://ww2armor.jexiste.fr/Files/Axis/Axis/1-Vehicles/Italy/2-MediumTanks/M13-40/2-Design.htm
 -- http://www.quarry.nildram.co.uk/ammotable6.htm
-local CannoneDa47mml40 = LightGun:New{
+Weapon('CannoneDa47mml40'):Extends('LightGun'):Attrs{
   name                 = [[47 mm L/40 Gun]],
   range                = 1090,
   reloadTime           = 4.4,
   soundStart           = [[ITA_M39_47mm]],
 }
 
-local CannoneDa47mml40HE = LightHE:New(CannoneDa47mml40, true):New{
+Weapon('CannoneDa47mml40HE'):Extends('LightHE'):Extends('CannoneDa47mml40'):Attrs{ -- name append
   areaOfEffect       = 52,
   weaponVelocity     = 1084,
   damage = {
@@ -163,7 +163,7 @@ local CannoneDa47mml40HE = LightHE:New(CannoneDa47mml40, true):New{
   },  
 }
 
-local CannoneDa47mml40AP = LightAP:New(CannoneDa47mml40, true):New{
+Weapon('CannoneDa47mml40AP'):Extends('LightAP'):Extends('CannoneDa47mml40'):Attrs{ -- name append
   weaponVelocity     = 1818,
   customparams = {
     armor_penetration_1000m = 43,
@@ -173,7 +173,7 @@ local CannoneDa47mml40AP = LightAP:New(CannoneDa47mml40, true):New{
     default            = 1225,
   },
 }
-local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
+Weapon('CannoneDa47mml40HEAT'):Extends('HEAT'):Extends('CannoneDa47mml40'):Attrs{ -- name append
   range                = 708,
   weaponVelocity       = 900,
   customparams = {
@@ -186,14 +186,14 @@ local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
 
 
 -- Type 1 37mm (JPN)
-local Type137mm = LightGun:New{
+Weapon('Type137mm'):Extends('LightGun'):Attrs{
   name                 = [[Type 1 37 mm Gun]],
   range                = 950,
   reloadTime           = 4.4,
   soundStart           = [[US_37mm]],
 }
 
-local Type137mmHE = LightHE:New(Type137mm, true):New{
+Weapon('Type137mmHE'):Extends('LightHE'):Extends('Type137mm'):Attrs{ -- name append
   areaOfEffect       = 26,
   weaponVelocity     = 800,
   damage = {
@@ -201,7 +201,7 @@ local Type137mmHE = LightHE:New(Type137mm, true):New{
   },
 }
 
-local Type137mmAP = LightAP:New(Type137mm, true):New{
+Weapon('Type137mmAP'):Extends('LightAP'):Extends('Type137mm'):Attrs{ -- name append
   weaponVelocity     = 1118,
   customparams = {
     armor_penetration_1000m = 25,
@@ -214,14 +214,14 @@ local Type137mmAP = LightAP:New(Type137mm, true):New{
 
 
 -- Type 98 37mm (JPN)
-local Type9837mm = LightGun:New{
+Weapon('Type9837mm'):Extends('LightGun'):Attrs{
   name                 = [[Type 98 37 mm Gun]],
   range                = 930,
   reloadTime           = 4.0,
   soundStart           = [[RUS_45mm]],
 }
 
-local Type9837mmHE = LightHE:New(Type9837mm, true):New{
+Weapon('Type9837mmHE'):Extends('LightHE'):Extends('Type9837mm'):Attrs{ -- name append
   areaOfEffect       = 28,
   weaponVelocity     = 800,
   damage = {
@@ -229,7 +229,7 @@ local Type9837mmHE = LightHE:New(Type9837mm, true):New{
   },
 }
 
-local Type9837mmAP = LightAP:New(Type9837mm, true):New{
+Weapon('Type9837mmAP'):Extends('LightAP'):Extends('Type9837mm'):Attrs{ -- name append
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 20,
@@ -241,14 +241,14 @@ local Type9837mmAP = LightAP:New(Type9837mm, true):New{
 }
 
 -- Type 94 37mm (JPN)
-local Type9437mm = LightGun:New{
+Weapon('Type9437mm'):Extends('LightGun'):Attrs{
   name                 = [[Type 94 37 mm Gun]],
   range                = 900,
   reloadTime           = 4.8,
   soundStart           = [[RUS_45mm]],
 }
 
-local Type9437mmHE = LightHE:New(Type9437mm, true):New{
+Weapon('Type9437mmHE'):Extends('LightHE'):Extends('Type9437mm'):Attrs{ -- name append
   areaOfEffect       = 32,
   weaponVelocity     = 800,
   damage = {
@@ -256,7 +256,7 @@ local Type9437mmHE = LightHE:New(Type9437mm, true):New{
   },
 }
 
-local Type9437mmAP = LightAP:New(Type9437mm, true):New{
+Weapon('Type9437mmAP'):Extends('LightAP'):Extends('Type9437mm'):Attrs{ -- name append
   weaponVelocity     = 1518,
   customparams = {
     armor_penetration_1000m = 25,
@@ -268,14 +268,14 @@ local Type9437mmAP = LightAP:New(Type9437mm, true):New{
 }
 
 -- Type 1 47mm (JPN)
-local Type147mm = LightGun:New{
+Weapon('Type147mm'):Extends('LightGun'):Attrs{
   name                 = [[Type 1 47 mm Gun]],
   range                = 1100,
   reloadTime           = 4.5,
   soundStart           = [[RUS_45mm]],
 }
 
-local Type147mmHE = LightHE:New(Type147mm, true):New{
+Weapon('Type147mmHE'):Extends('LightHE'):Extends('Type147mm'):Attrs{ -- name append
   areaOfEffect       = 38,
   weaponVelocity     = 800,
   damage = {
@@ -283,7 +283,7 @@ local Type147mmHE = LightHE:New(Type147mm, true):New{
   },
 }
 
-local Type147mmAP = LightAP:New(Type147mm, true):New{
+Weapon('Type147mmAP'):Extends('LightAP'):Extends('Type147mm'):Attrs{ -- name append
   weaponVelocity     = 1118,
   customparams = {
     armor_penetration_1000m = 53,
@@ -296,34 +296,3 @@ local Type147mmAP = LightAP:New(Type147mm, true):New{
 
 
 -- Return only the full weapons
-return lowerkeys({
-  -- QF 2Pdr
-  QF2Pdr40mmHE = QF2Pdr40mmHE,
-  QF2Pdr40mmAP = QF2Pdr40mmAP,
-  -- M6 37mm
-  M637mmHE = M637mmHE,
-  M637mmAP = M637mmAP,
-  M637mmCanister = M637mmCanister,
-  -- M1938 20K 45mm
-  M1938_20K45mmHE = M1938_20K45mmHE,
-  M1938_20K45mmAP = M1938_20K45mmAP,
-  -- M1936 40K 45mm
-  M1937_40K45mmHE = M1937_40K45mmHE,
-  -- Cannone da 47/32 M35
-  CannoneDa47mml32AP = CannoneDa47mml32AP,
-  CannoneDa47mml32HEAT = CannoneDa47mml32HEAT,
-  -- Cannone da 47/40
-  CannoneDa47mml40HE = CannoneDa47mml40HE,
-  CannoneDa47mml40AP = CannoneDa47mml40AP,
-  CannoneDa47mml40HEAT = CannoneDa47mml40HEAT,
-  -- Japanese 37mms
-  Type137mmHE = Type137mmHE,
-  Type137mmAP = Type137mmAP,
-  Type9837mmHE = Type9837mmHE,
-  Type9837mmAP = Type9837mmAP,
-  Type9437mmHE = Type9437mmHE,
-  Type9437mmAP = Type9437mmAP,
-  -- Type 1 47mm
-  Type147mmHE = Type147mmHE,
-  Type147mmAP = Type147mmAP,
-})

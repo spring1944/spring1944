@@ -3,7 +3,7 @@
 -- Implementations
 
 -- Anti-Personnel Mine
-local APMine = MineClass:New{
+Weapon('APMineExplosion'):Extends('MineClass'):Attrs{
   areaOfEffect       = 88,
   explosionGenerator = [[custom:HE_Medium]], -- overrides default
   impulseFactor      = 0.1,
@@ -19,7 +19,7 @@ local APMine = MineClass:New{
 }
 
 -- Anti-Tank Mine
-local ATMine = MineClass:New{
+Weapon('ATMineExplosion'):Extends('MineClass'):Attrs{
   areaOfEffect       = 46,
   name               = [[Anti-Tank Mine]],
   range              = 35,
@@ -35,7 +35,7 @@ local ATMine = MineClass:New{
 }
 
 -- Satchel Charge (GBR)
-local SatchelCharge = MineClass:New{
+Weapon('SatchelCharge'):Extends('MineClass'):Attrs{
   areaOfEffect       = 104,
   edgeEffectiveness  = 1,
   name               = [[Satchel Charge]],
@@ -49,8 +49,3 @@ local SatchelCharge = MineClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  APMine = APMine,
-  ATMine = ATMine,
-  SatchelCharge = SatchelCharge,
-})

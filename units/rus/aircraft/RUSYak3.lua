@@ -1,4 +1,4 @@
-local RUS_Yak3 = Interceptor:New{
+Unit('RUS_Yak3'):Extends('Interceptor'):Attrs{
 	name				= "Yak-9U",
 	buildCostMetal		= 985,
 	maxDamage			= 235,
@@ -39,6 +39,3 @@ local RUS_Yak3 = Interceptor:New{
 }
 
 
-return lowerkeys({
-	["RUSYak3"] = RUS_Yak3,
-})

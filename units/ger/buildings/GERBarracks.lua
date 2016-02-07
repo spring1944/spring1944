@@ -1,4 +1,4 @@
-local GER_Barracks = Barracks:New{
+Unit('GER_Barracks'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 2140,
 	buildingGroundDecalSizeX	= 6,
 	buildingGroundDecalSizeY	= 8,
@@ -16,7 +16,7 @@ local GER_Barracks = Barracks:New{
 									yyyyy]],
 }
 
-local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
+Unit('GER_BarracksBunker'):Extends('GER_Barracks'):Extends('Bunker'):Attrs{
 	buildCostMetal				= 5640,
 	maxDamage					= 18250,
 	yardmap						= [[ooyyy 
@@ -28,7 +28,3 @@ local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
 									ooyyy]],
 }
 
-return lowerkeys({
-	["GERBarracks"] = GER_Barracks,
-	["GERBarracksBunker"] = GER_BarracksBunker,
-})

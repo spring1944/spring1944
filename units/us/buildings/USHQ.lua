@@ -1,4 +1,4 @@
-local US_HQ = HQ:New{
+Unit('US_HQ'):Extends('HQ'):Attrs{
 	name						= "US Army HQ",
 	buildingGroundDecalSizeX	= 5,
 	buildingGroundDecalSizeY	= 7,
@@ -16,6 +16,3 @@ local US_HQ = HQ:New{
 									yyyy]],
 }
 
-return lowerkeys({
-	["USHQ"] = US_HQ,
-})

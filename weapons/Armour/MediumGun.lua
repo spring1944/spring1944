@@ -3,21 +3,21 @@
 -- Implementations
 
 -- QF 75mm (GBR)
-local QF75mm = MediumGun:New{
+Weapon('QF75mm'):Extends('MediumGun'):Attrs{
   name               = [[QF 75mm Mk.V]],
   range              = 1270,
   reloadTime         = 5.25,
   soundStart         = [[US_75mm]],
 }
 
-local QF75mmHE = MediumHE:New(QF75mm, true):New{
+Weapon('QF75mmHE'):Extends('MediumHE'):Extends('QF75mm'):Attrs{ -- name append
   areaOfEffect       = 88,
   weaponVelocity     = 926,
   damage = {
     default            = 1334,
   },  
 }
-local QF75mmAP = MediumAP:New(QF75mm, true):New{
+Weapon('QF75mmAP'):Extends('MediumAP'):Extends('QF75mm'):Attrs{ -- name append
   weaponVelocity     = 1236,
   customparams = {
     armor_penetration_1000m = 52,
@@ -29,7 +29,7 @@ local QF75mmAP = MediumAP:New(QF75mm, true):New{
 }
 
 -- QF 17pdr 76mm (GBR)
-local QF17Pdr = MediumGun:New{
+Weapon('QF17Pdr'):Extends('MediumGun'):Attrs{
   name               = [[QF 17Pdr Mk.IV]],
   range              = 1690,
   reloadTime         = 6.75,
@@ -39,14 +39,14 @@ local QF17Pdr = MediumGun:New{
   },
 }
 
-local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
+Weapon('QF17PdrHE'):Extends('MediumHE'):Extends('QF17Pdr'):Attrs{ -- name append
   areaOfEffect       = 90,
   weaponVelocity     = 1768,
   damage = {
     default            = 1420,
   },  
 }
-local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
+Weapon('QF17PdrAP'):Extends('MediumAP'):Extends('QF17Pdr'):Attrs{ -- name append
   weaponVelocity     = 1584,
   customparams = {
     armor_penetration_1000m = 119,
@@ -58,7 +58,7 @@ local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
 }
 
 -- KwK 40 75mm L/48 (GER)
-local KwK75mmL48 = MediumGun:New{
+Weapon('KwK75mmL48'):Extends('MediumGun'):Attrs{
   name               = [[7.5cm KwK 40 L/48]],
   range              = 1520,
   reloadTime         = 6.45,
@@ -68,14 +68,14 @@ local KwK75mmL48 = MediumGun:New{
   },  
 }
 
-local KwK75mmL48HE = MediumHE:New(KwK75mmL48, true):New{
+Weapon('KwK75mmL48HE'):Extends('MediumHE'):Extends('KwK75mmL48'):Attrs{ -- name append
   areaOfEffect       = 87,
   weaponVelocity     = 1096,
   damage = {
     default            = 1280,
   },  
 }
-local KwK75mmL48AP = MediumAP:New(KwK75mmL48, true):New{
+Weapon('KwK75mmL48AP'):Extends('MediumAP'):Extends('KwK75mmL48'):Attrs{ -- name append
   weaponVelocity     = 1480,
   customparams = {
     armor_penetration_1000m = 81,
@@ -87,7 +87,7 @@ local KwK75mmL48AP = MediumAP:New(KwK75mmL48, true):New{
 }
 
 -- KwK 42 75mm L/71 (GER)
-local KwK75mmL71 = MediumGun:New{
+Weapon('KwK75mmL71'):Extends('MediumGun'):Attrs{
   name               = [[7.5cm KwK 42 L/71]],
   range              = 1860,
   reloadTime         = 7.65,
@@ -97,14 +97,14 @@ local KwK75mmL71 = MediumGun:New{
   },
 }
 
-local KwK75mmL71HE = MediumHE:New(KwK75mmL71, true):New{
+Weapon('KwK75mmL71HE'):Extends('MediumHE'):Extends('KwK75mmL71'):Attrs{ -- name append
   areaOfEffect       = 85,
   weaponVelocity     = 1096,
   damage = {
     default            = 1220,
   },  
 }
-local KwK75mmL71AP = MediumAP:New(KwK75mmL71, true):New{
+Weapon('KwK75mmL71AP'):Extends('MediumAP'):Extends('KwK75mmL71'):Attrs{ -- name append
   weaponVelocity     = 1870,
   customparams = {
     armor_penetration_1000m = 111,
@@ -116,21 +116,21 @@ local KwK75mmL71AP = MediumAP:New(KwK75mmL71, true):New{
 }
 
 -- F-34 76.2mm (RUS)
-local F3476mm = MediumGun:New{
+Weapon('F3476mm'):Extends('MediumGun'):Attrs{
   name               = [[F-34 76.2mm]],
   range              = 1270,
   reloadTime         = 5.25,
   soundStart         = [[RUS_76mm]],
 }
 
-local F3476mmHE = MediumHE:New(F3476mm, true):New{
+Weapon('F3476mmHE'):Extends('MediumHE'):Extends('F3476mm'):Attrs{ -- name append
   areaOfEffect       = 103, -- !
   weaponVelocity     = 926,
   damage = {
     default            = 2160,
   },  
 }
-local F3476mmAP = MediumAP:New(F3476mm, true):New{
+Weapon('F3476mmAP'):Extends('MediumAP'):Extends('F3476mm'):Attrs{ -- name append
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 46,
@@ -142,21 +142,21 @@ local F3476mmAP = MediumAP:New(F3476mm, true):New{
 }
 
 -- ZiS-3 76.2mm (RUS)
-local ZiS376mm = MediumGun:New{
+Weapon('ZiS376mm'):Extends('MediumGun'):Attrs{
   name               = [[ZiS-3 76.2mm]],
   range              = 1310,
   reloadTime         = 5.25,
   soundStart         = [[RUS_76mm]],
 }
 
-local ZiS376mmHE = MediumHE:New(ZiS376mm, true):New{
+Weapon('ZiS376mmHE'):Extends('MediumHE'):Extends('ZiS376mm'):Attrs{ -- name append
   areaOfEffect       = 103, -- !
   weaponVelocity     = 926,
   damage = {
     default            = 2160,
   },  
 }
-local ZiS376mmAP = MediumAP:New(ZiS376mm, true):New{
+Weapon('ZiS376mmAP'):Extends('MediumAP'):Extends('ZiS376mm'):Attrs{ -- name append
   weaponVelocity     = 1420,
   customparams = {
     armor_penetration_1000m = 47,
@@ -168,21 +168,21 @@ local ZiS376mmAP = MediumAP:New(ZiS376mm, true):New{
 }
 
 -- M3 75mm (USA)
-local M375mm = MediumGun:New{
+Weapon('M375mm'):Extends('MediumGun'):Attrs{
   name               = [[M3 75mm]],
   range              = 1270,
   reloadTime         = 5.25,
   soundStart         = [[US_75mm]],
 }
 
-local M375mmHE = MediumHE:New(M375mm, true):New{
+Weapon('M375mmHE'):Extends('MediumHE'):Extends('M375mm'):Attrs{ -- name append
   areaOfEffect       = 88,
   weaponVelocity     = 926,
   damage = {
     default            = 1334,
   },  
 }
-local M375mmAP = MediumAP:New(M375mm, true):New{
+Weapon('M375mmAP'):Extends('MediumAP'):Extends('M375mm'):Attrs{ -- name append
   weaponVelocity     = 1176,
   customparams = {
     armor_penetration_1000m = 57,
@@ -194,7 +194,7 @@ local M375mmAP = MediumAP:New(M375mm, true):New{
 }
 
 -- M7 76mm (USA)
-local M7 = MediumGun:New{
+Weapon('M7'):Extends('MediumGun'):Attrs{
   name               = [[M7 76.2mm]],
   range              = 1545,
   reloadTime         = 6.75,
@@ -204,14 +204,14 @@ local M7 = MediumGun:New{
   },
 }
 
-local M7HE = MediumHE:New(M7, true):New{
+Weapon('M7HE'):Extends('MediumHE'):Extends('M7'):Attrs{ -- name append
   areaOfEffect       = 74,
   weaponVelocity     = 1646,
   damage = {
     default            = 780,
   },  
 }
-local M7AP = MediumAP:New(M7, true):New{
+Weapon('M7AP'):Extends('MediumAP'):Extends('M7'):Attrs{ -- name append
   weaponVelocity     = 1584, -- lower than HE?
   customparams = {
     armor_penetration_1000m = 81,
@@ -223,7 +223,7 @@ local M7AP = MediumAP:New(M7, true):New{
 }
 
 -- Mk22 3inch (USA)
-local Mk223in50 = MediumGun:New{
+Weapon('Mk223in50'):Extends('MediumGun'):Extends('MediumHE'):Attrs{
   areaOfEffect       = 80,
   name               = [[Mk22 3in L/50]],
   range              = 2000,
@@ -233,18 +233,18 @@ local Mk223in50 = MediumGun:New{
   damage = {
     default            = 1152,
   },  
-}:New(MediumHE, true)
+}
 
 
 -- Ansaldo L/18 75mm (ITA)
-local Ansaldo75mmL18 = MediumGun:New{
+Weapon('Ansaldo75mmL18'):Extends('MediumGun'):Attrs{
   name               = [[Ansaldo L/18 75mm Howitzer]],
   range              = 1310,
   reloadTime         = 6.75,
   soundStart         = [[US_75mm]],
 }
 
-local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
+Weapon('Ansaldo75mmL18HE'):Extends('MediumHE'):Extends('Ansaldo75mmL18'):Attrs{ -- name append
   areaOfEffect       = 94,
   weaponVelocity     = 800,
   damage = {
@@ -252,7 +252,7 @@ local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
   },  
 }
 
-local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
+Weapon('Ansaldo75mmL18HEAT'):Extends('HEAT'):Extends('Ansaldo75mmL18'):Attrs{ -- name append
   range              = 851,
   weaponVelocity     = 600,
   customparams = {
@@ -264,7 +264,7 @@ local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
 }
 
 -- Ansaldo L/27 75mm (ITA)
-local Ansaldo75mmL27HE = MediumGun:New(MediumHE, true):New{
+Weapon('Ansaldo75mmL27HE'):Extends('MediumGun'):Extends('MediumHE'):Attrs{ -- name append
   areaOfEffect       = 94,
   name               = [[Ansaldo L/27 75mm Howitzer]],
   range              = 1390,
@@ -277,21 +277,21 @@ local Ansaldo75mmL27HE = MediumGun:New(MediumHE, true):New{
 }
 
 -- Ansaldo L/34 75mm (ITA)
-local Ansaldo75mmL34 = MediumGun:New{
+Weapon('Ansaldo75mmL34'):Extends('MediumGun'):Attrs{
   name               = [[Ansaldo L/34 75mm]],
   range              = 1270,
   reloadTime         = 5.25,
   soundStart         = [[US_75mm]],
 }
 
-local Ansaldo75mmL34HE = MediumHE:New(Ansaldo75mmL34, true):New{
+Weapon('Ansaldo75mmL34HE'):Extends('MediumHE'):Extends('Ansaldo75mmL34'):Attrs{ -- name append
   areaOfEffect       = 104,
   weaponVelocity     = 926,
   damage = {
     default            = 2260,
   },  
 }
-local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
+Weapon('Ansaldo75mmL34AP'):Extends('MediumAP'):Extends('Ansaldo75mmL34'):Attrs{ -- name append
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 51,
@@ -301,7 +301,7 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
     default            = 2280,
   },
 }
-local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
+Weapon('Ansaldo75mmL34HEAT'):Extends('HEAT'):Extends('Ansaldo75mmL34'):Attrs{ -- name append
   range              = 825,
   weaponVelocity     = 700,
   customparams = {
@@ -313,7 +313,7 @@ local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
 }
 
 -- Ansaldo L/46 75mm (ITA) 15 RPM
-local Ansaldo75mmL46 = MediumGun:New{
+Weapon('Ansaldo75mmL46'):Extends('MediumGun'):Attrs{
   name               = [[Ansaldo L/46 75mm]],
   range              = 1530,
   reloadTime         = 5.0,
@@ -323,7 +323,7 @@ local Ansaldo75mmL46 = MediumGun:New{
   },  
 }
 
-local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
+Weapon('Ansaldo75mmL46HE'):Extends('MediumHE'):Extends('Ansaldo75mmL46'):Attrs{ -- name append
   areaOfEffect       = 104,
   weaponVelocity     = 926,
   damage = {
@@ -331,7 +331,7 @@ local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
   },  
 }
 
-local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
+Weapon('Ansaldo75mmL46AP'):Extends('MediumAP'):Extends('Ansaldo75mmL46'):Attrs{ -- name append
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 86,
@@ -343,7 +343,7 @@ local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
 }
 
 -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun (ITA)
-local Ansaldo76mmL40HE = MediumGun:New(MediumHE, true):New{
+Weapon('Ansaldo76mmL40HE'):Extends('MediumGun'):Extends('MediumHE'):Attrs{ -- name append
   areaOfEffect       = 76,
   name               = [[Ansaldo 76mm/40 Naval Gun]],
   range              = 1320,
@@ -356,7 +356,7 @@ local Ansaldo76mmL40HE = MediumGun:New(MediumHE, true):New{
 }
 
 -- Type 3 75mm/38 (JPN) 12RPM
-local Type375mmL38 = MediumGun:New{
+Weapon('Type375mmL38'):Extends('MediumGun'):Attrs{
   name               = [[Type 3 75mm/38]],
   range              = 1480,
   reloadTime         = 4.85,
@@ -366,14 +366,14 @@ local Type375mmL38 = MediumGun:New{
   },  
 }
 
-local Type375mmL38HE = MediumHE:New(Type375mmL38, true):New{
+Weapon('Type375mmL38HE'):Extends('MediumHE'):Extends('Type375mmL38'):Attrs{ -- name append
   areaOfEffect       = 84,
   weaponVelocity     = 926,
   damage = {
     default            = 2260,
   },  
 }
-local Type375mmL38AP = MediumAP:New(Type375mmL38, true):New{
+Weapon('Type375mmL38AP'):Extends('MediumAP'):Extends('Type375mmL38'):Attrs{ -- name append
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 70,
@@ -385,7 +385,7 @@ local Type375mmL38AP = MediumAP:New(Type375mmL38, true):New{
 }
 
 -- Type 90 75mm (JPN) 7 RPM
-local Type9075mm = MediumGun:New{
+Weapon('Type9075mm'):Extends('MediumGun'):Attrs{
   name               = [[Type 90 75mm]],
   range              = 1270,
   reloadTime         = 6.5,
@@ -395,7 +395,7 @@ local Type9075mm = MediumGun:New{
   },  
 }
 
-local Type9075mmHE = MediumHE:New(Type9075mm, true):New{
+Weapon('Type9075mmHE'):Extends('MediumHE'):Extends('Type9075mm'):Attrs{ -- name append
   areaOfEffect       = 84,
   weaponVelocity     = 926,
   damage = {
@@ -403,7 +403,7 @@ local Type9075mmHE = MediumHE:New(Type9075mm, true):New{
   },  
 }
 
-local Type9075mmAP = MediumAP:New(Type9075mm, true):New{
+Weapon('Type9075mmAP'):Extends('MediumAP'):Extends('Type9075mm'):Attrs{ -- name append
   weaponVelocity     = 1358,
   customparams = {
     armor_penetration_1000m = 70,
@@ -415,7 +415,7 @@ local Type9075mmAP = MediumAP:New(Type9075mm, true):New{
 }
 
 -- Type 3 76mm/40 Naval gun (JPN)
-local Type376mmL40HE = MediumGun:New(MediumHE, true):New{
+Weapon('Type376mmL40HE'):Extends('MediumGun'):Extends('MediumHE'):Attrs{ -- name append
   areaOfEffect       = 80,
   name               = [[Type 3 76mm/40 Naval gun]],
   range              = 1300,
@@ -427,54 +427,3 @@ local Type376mmL40HE = MediumGun:New(MediumHE, true):New{
   },  
 }
 
--- Return only the full weapons
-return lowerkeys({
-  -- QF 75mm
-  QF75mmHE = QF75mmHE,
-  QF75mmAP = QF75mmAP,
-  -- QF 17Pdr
-  QF17PdrHE = QF17PdrHE,
-  QF17PdrAP = QF17PdrAP,
-  -- KwK 40 L/48
-  KwK75mmL48HE = KwK75mmL48HE,
-  KwK75mmL48AP = KwK75mmL48AP,
-  -- KwK 40 L/71
-  KwK75mmL71HE = KwK75mmL71HE,
-  KwK75mmL71AP = KwK75mmL71AP,
-  -- F-34 76.2mm
-  F3476mmHE = F3476mmHE,
-  F3476mmAP = F3476mmAP,
-  -- ZiS-3 76.2mm
-  ZiS376mmHE = ZiS376mmHE,
-  ZiS376mmAP = ZiS376mmAP,
-  -- M3 75mm
-  M375mmHE = M375mmHE,
-  M375mmAP = M375mmAP,
-  -- M7 76mm
-  M7HE = M7HE,
-  M7AP = M7AP,
-  -- Mk22 3inch
-  Mk223in50 = Mk223in50,
-  -- Ansaldo L/18 75mm
-  Ansaldo75mmL18HE = Ansaldo75mmL18HE,
-  Ansaldo75mmL18HEAT = Ansaldo75mmL18HEAT,
-  -- Ansaldo L/27 75mm
-  Ansaldo75mmL27HE = Ansaldo75mmL27HE,
-  -- Ansaldo L/34 75mm
-  Ansaldo75mmL34HE = Ansaldo75mmL34HE,
-  Ansaldo75mmL34AP = Ansaldo75mmL34AP,
-  Ansaldo75mmL34HEAT = Ansaldo75mmL34HEAT,
-  -- Ansaldo L/46 75mm
-  Ansaldo75mmL46HE = Ansaldo75mmL46HE,
-  Ansaldo75mmL46AP = Ansaldo75mmL46AP,
-  -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun
-  Ansaldo76mmL40HE = Ansaldo76mmL40HE,
-  -- Type 3 75mm/38
-  Type375mmL38HE = Type375mmL38HE,
-  Type375mmL38AP = Type375mmL38AP,
-  -- Type 90 75mm
-  Type9075mmHE = Type9075mmHE,
-  Type9075mmAP = Type9075mmAP,
-  -- Type 3 76mm/40 Naval gun (JPN)
-  Type376mmL40HE = Type376mmL40HE,
-})

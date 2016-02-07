@@ -1,4 +1,4 @@
-local GBR_Horsa = Glider:New{
+Unit('GBR_Horsa'):Extends('Glider'):Attrs{
 	name			= "AS 51 Horsa",
 	description		= "Troop-Carrying Glider",
 	maxDamage		= 215,
@@ -9,6 +9,3 @@ local GBR_Horsa = Glider:New{
 }
 
 
-return lowerkeys({
-	["GBRHorsa"] = GBR_Horsa,
-})

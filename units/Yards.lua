@@ -1,53 +1,72 @@
 local units = {}
 
+-- Radars have slightly more specific names
+local radarNames = {
+	GBR = "AA No4 Mk3(P) Light Warning Set",
+	GER = "Freya Air Control Station",
+	ITA = "Freya Air Control Station",
+	JPN = "Type 1 Model 2 'Mobile Matress' Radar",
+	RUS = "RUS-2 Air Control Station",
+	US = "AN/TPS-3 (SCR-602-T8) Light Aircraft Detector"
+}
+
 for _, side in pairs(Sides) do
 	-- Yards
-	units[side .. "boatyard"] = BoatYard:New{}
-	units[side .. "boatyardlarge"] = BoatYardLarge:New{}
-	units[side .. "gunyard"] = GunYard:New{}
-	units[side .. "spyard"] = GunYardSP:New{} -- TODO: change unitnames too
-	units[side .. "spyard1"] = GunYardTD:New{} 
-	units[side .. "vehicleyard"] = VehicleYard:New{}
-	units[side .. "vehicleyard1"] = VehicleYardArmour:New{}
-	units[side .. "tankyard"] = TankYard:New{}
-	units[side .. "tankyard1"] = TankYardAdv:New{}
-	units[side .. "tankyard2"] = TankYardHeavy:New{}
-	units[side .. "radar"] = Radar:New{}
-	units[side .. "supplydepot"] = SupplyDepot:New{}
+	Unit(side .. "BoatYard"):Extends('BoatYard')
+	Unit(side .. "BoatYardLarge"):Extends('BoatYardLarge')
+	Unit(side .. "GunYard"):Extends('GunYard')
+	Unit(side .. "SPYard"):Extends('SPYard')
+
+	Unit(side .. "VehicleYard"):Extends('VehicleYard')
+	Unit(side .. "TankYard"):Extends('TankYard')
+	Unit(side .. "TankYard1"):Extends('TankYard1')
+
 	-- Logistics
-	units[side .. "storage"] = Storage:New{	
+	Unit(side .. "SupplyDepot"):Extends('SupplyDepot')
+	Unit(side .. "TruckSupplies"):Extends('Supplies')
+
+	-- differentiating
+	-- US has no TD yard TODO: Add M18 and M36, hurr hurr
+	if side ~= "US" then
+		Unit(side .. "SPYard1"):Extends('SPYard1')
+	end
+
+	local advVeh = Unit(side .. "VehicleYard1"):Extends('VehicleYard1')
+	local heavyTanks = Unit(side .. "TankYard2"):Extends('TankYard2')
+	local radar = Unit(side .. "Radar"):Extends('Radar')
+	local storage = Unit(side .. "Storage"):Extends('Storage'):Attrs{
 		objectName				= "GEN/Storage.S3O",
 	}
-	units[side .. "trucksupplies"] = Supplies:New{}
+
+	if radarNames[side] then
+		radar:Attrs{
+			name = radarNames[side]
+		}
+	end
+
+	-- JPN Upgrades are a bit different
+	if side == 'JPN' then
+		heavyTanks:Attrs{
+			name = "Support Tank Depot",
+			description = "Support Armour Prep. Facility",
+		}
+		advVeh:Attrs{
+			name = "Light Vehicle & Amphibian Yard",
+			description = "Light Vehicle & Amphibian Prep. Facility",
+		}
+		storage:Attrs{
+			objectname = "jpn/jpnstorage.s3o"
+		}
+	end
 end
 
--- JPN Upgrades are a bit different
-units["jpntankyard2"].name = "Support Tank Depot"
-units["jpntankyard2"].description = "Support Armour Prep. Facility"
-units["jpnvehicleyard2"] = VehicleYardArmour:New{
-	name = "Light Vehicle & Amphibian Yard",
-	description = "Light Vehicle & Amphibian Prep. Facility",
-}
-units["jpnstorage"].objectname = "jpn/jpnstorage.s3o"
-
--- US has no TD yard TODO: Add M18 and M36, hurr hurr
-units["usspyard1"] = nil
-
 -- Extra units
-units["usdukwsupplies"] = Supplies:New{}
-units["gbrglidersupplies"] = SuppliesSmall:New{}
-units["ruspartisansupplies"] = SuppliesSmall:New{
+Unit("USDUKWSupplies"):Extends("Supplies")
+Unit("GBRGliderSupplies"):Extends('SuppliesSmall')
+Unit("RUSPartisanSupplies"):Extends('SuppliesSmall'):Attrs{
     customParams = {
-		spawnsunit = "ruspartisanrifle",
+		spawnsunit = "RUSPartisanRifle",
     },
 }
 
--- Radars have slightly more specific names
-units["gbrradar"].name = "AA No4 Mk3(P) Light Warning Set"
-units["gerradar"].name = "Freya Air Control Station"
-units["itaradar"].name = "Freya Air Control Station"
-units["jpnradar"].name = "Type 1 Model 2 'Mobile Matress' Radar"
-units["rusradar"].name = "RUS-2 Air Control Station"
-units["usradar"].name = "AN/TPS-3 (SCR-602-T8) Light Aircraft Detector"
 
-return lowerkeys(units)

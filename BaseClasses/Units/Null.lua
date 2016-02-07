@@ -1,6 +1,6 @@
 -- Null Unit --
 -- Used as base for sorties, squads, etc
-local Null = Unit:New{
+AbstractUnit('Null'):Extends('Unit'):Attrs{
 	canMove = true, -- required to pass orders
 	category = "FLAG",
 	explodeAs = "noweapon",
@@ -22,6 +22,3 @@ local Null = Unit:New{
 }
 
 
-return {
-	Null = Null,
-}

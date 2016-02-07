@@ -1,4 +1,4 @@
-local ITAP40 = MediumTank:New{
+Unit('ITAP40'):Extends('MediumTank'):Attrs{
 	name				= "Carro Pesante P26/40",
 	buildCostMetal		= 2500,
 	maxDamage			= 2600,
@@ -40,6 +40,3 @@ local ITAP40 = MediumTank:New{
 	},
 }
 
-return lowerkeys({
-	["ITAP40"] = ITAP40,
-})

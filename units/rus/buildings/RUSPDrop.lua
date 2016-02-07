@@ -1,4 +1,4 @@
-local RUSPDrop = Null:New{
+Unit('RUSPDrop'):Extends('Null'):Attrs{
 	name						= "Partisan Supplies",
 	description					= "Partisan Supply Drop",
 	category					= "AIR PARA",
@@ -6,6 +6,3 @@ local RUSPDrop = Null:New{
 	maxDamage					= 1500,
 }
 
-return lowerkeys({
-	["RUSPDrop"] = RUSPDrop,
-})

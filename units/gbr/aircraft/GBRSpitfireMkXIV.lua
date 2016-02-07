@@ -1,4 +1,4 @@
-local GBR_SpitfireMkXIV = Interceptor:New{
+Unit('GBR_SpitfireMkXIV'):Extends('Interceptor'):Attrs{
 	name				= "Spitfire Mk XIVe",
 	buildCostMetal		= 1250,
 	maxDamage			= 299.3,
@@ -43,6 +43,3 @@ local GBR_SpitfireMkXIV = Interceptor:New{
 }
 
 
-return lowerkeys({
-	["GBRSpitfireMkXIV"] = GBR_SpitfireMkXIV,
-})

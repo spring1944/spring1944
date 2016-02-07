@@ -2,7 +2,7 @@
 
 -- Implementations
 -- Enfield No. 2 Mk. I (GBR)
-local Webley = PistolClass:New{
+Weapon('Webley'):Extends('PistolClass'):Attrs{
   name               = [[Enfield No. 2 Mk. I]], soundStart         = [[GBR_Webley]],
   damage = {
     default            = 35, -- intended?
@@ -10,13 +10,13 @@ local Webley = PistolClass:New{
 }
 
 -- Walter P38 (GER)
-local WaltherP38 = PistolClass:New{
+Weapon('WaltherP38'):Extends('PistolClass'):Attrs{
   name               = [[Walther P38]],
   soundStart         = [[GER_Walther]],
 }
 
 -- M1911A1 Colt (USA)
-local M1911A1Colt = PistolClass:New{
+Weapon('M1911A1Colt'):Extends('PistolClass'):Attrs{
   name               = [[M1911A1 Colt]],
   reloadtime         = 1, -- intended?
   soundStart         = [[US_Colt]],
@@ -24,7 +24,7 @@ local M1911A1Colt = PistolClass:New{
 }
 
 -- Tokarev TT-33 (RUS)
-local TT33 = PistolClass:New{
+Weapon('TT33'):Extends('PistolClass'):Attrs{
   name               = [[Tokarev TT-33]],
   reloadtime         = 1.5, -- intended?
   soundStart         = [[RUS_TT33]],
@@ -34,14 +34,14 @@ local TT33 = PistolClass:New{
 }
 
 -- Beretta M1934 (ITA)
-local BerettaM1934 = PistolClass:New{
+Weapon('BerettaM1934'):Extends('PistolClass'):Attrs{
   name               = [[Beretta M1934]],
   reloadtime         = 1, -- intended?
   soundStart         = [[ITA_BerettaM34]],
   sprayAngle         = 50, -- intended?
 }
 
-local NambuType14 = PistolClass:New{
+Weapon('NambuType14'):Extends('PistolClass'):Attrs{
   name               = [[Nambu Type 14 8mm]],
   reloadtime         = 1, -- intended?
   soundStart         = [[ITA_BerettaM34]],
@@ -49,11 +49,3 @@ local NambuType14 = PistolClass:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  Webley = Webley,
-  WaltherP38 = WaltherP38,
-  M1911A1Colt = M1911A1Colt,
-  TT33 = TT33,
-  BerettaM1934 = BerettaM1934,
-  NambuType14 = NambuType14,
-})

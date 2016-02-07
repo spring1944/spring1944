@@ -1,12 +1,12 @@
-local SWEInf = {
+AbstractUnit('SWEInf'):Attrs{
 	maxDamageMul		= 1.4,
 }
 
-local SWE_HQEngineer = EngineerInf:New(SWEInf):New{
+Unit('SWE_HQEngineer'):Extends('EngineerInf'):Extends('SWEInf'):Attrs{
 	name				= "Ingenjörer",
 }
 
-local SWE_Rifle = RifleInf:New(SWEInf):New{
+Unit('SWE_Rifle'):Extends('RifleInf'):Extends('SWEInf'):Attrs{
 	name				= "6,5 mm Gevär m/38",
 	weapons = {
 		[1] = { -- Rifle
@@ -18,7 +18,7 @@ local SWE_Rifle = RifleInf:New(SWEInf):New{
 	},
 }
 
-local SWE_AgM42 = RifleInf:New(SWEInf):New{
+Unit('SWE_AgM42'):Extends('RifleInf'):Extends('SWEInf'):Attrs{
 	name				= "6,5 mm Automatgevär m/42",
 	weapons = {
 		[1] = { -- Rifle
@@ -30,7 +30,7 @@ local SWE_AgM42 = RifleInf:New(SWEInf):New{
 	},
 }
 
-local SWE_KPistM3739 = SMGInf:New(SWEInf):New{
+Unit('SWE_KPistM3739'):Extends('SMGInf'):Extends('SWEInf'):Attrs{
 	name				= "9mm Kulsprutepistol m/37-39",
 	weapons = {
 		[1] = { -- SMG
@@ -42,7 +42,7 @@ local SWE_KPistM3739 = SMGInf:New(SWEInf):New{
 	},
 }
 
-local SWE_KgM37 = RifleInf:New(SWEInf):New{
+Unit('SWE_KgM37'):Extends('RifleInf'):Extends('SWEInf'):Attrs{
 	name				= "Kulsprutegevär m/37 Light Machinegun",
 	description			= "Long Range Assault/Light Fire Support Unit",
 	weapons = {
@@ -55,11 +55,11 @@ local SWE_KgM37 = RifleInf:New(SWEInf):New{
 	},
 }
 
-local SWE_MG = HMGInf:New(SWEInf):New{
+Unit('SWE_MG'):Extends('HMGInf'):Extends('SWEInf'):Attrs{
 	name				= "Kulsprutegevär m/36 Heavy Machinegun",
 }
 
-local SWE_MG_Sandbag = SandbagMG:New{
+Unit('SWE_MG_Sandbag'):Extends('SandbagMG'):Attrs{
 	name				= "Deployed Kulsprutegevär m/36 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
@@ -68,7 +68,7 @@ local SWE_MG_Sandbag = SandbagMG:New{
 	},
 }
 
-local SWE_Sniper = SniperInf:New(SWEInf):New{
+Unit('SWE_Sniper'):Extends('SniperInf'):Extends('SWEInf'):Attrs{
 	name				= "6,5 mm Gevär m/41 Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
@@ -77,7 +77,7 @@ local SWE_Sniper = SniperInf:New(SWEInf):New{
 	},
 }
 
-local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
+Unit('SWE_PSkottM45'):Extends('ATLauncherInf'):Extends('SWEInf'):Attrs{
 	name				= "Pansarskott m/45",
 	weapons = {
 		[1] = { -- AT Launcher
@@ -86,7 +86,7 @@ local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 	},
 }
 
-local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
+Unit('SWE_PvGM42'):Extends('ATRifleInf'):Extends('SWEInf'):Attrs{
 	name				= "Pansarvärnsgevär m/42",
 	weapons = {
 		[1] = { -- AT Rifle
@@ -95,7 +95,7 @@ local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
 	},
 }
 
-local SWE_Mortar = MedMortarInf:New(SWEInf):New{
+Unit('SWE_Mortar'):Extends('MedMortarInf'):Extends('SWEInf'):Attrs{
 	name				= "8 cm Granatkastare m/29-34",
 	weapons = {
 		[1] = { -- HE
@@ -107,7 +107,7 @@ local SWE_Mortar = MedMortarInf:New(SWEInf):New{
 	},
 }
 
-local SWE_Observ = ObservInf:New(SWEInf):New{
+Unit('SWE_Observ'):Extends('ObservInf'):Extends('SWEInf'):Attrs{
 	weapons = {
 		[2] = { -- Pistol
 			name				= "WaltherP38",
@@ -116,18 +116,3 @@ local SWE_Observ = ObservInf:New(SWEInf):New{
 }
 
 
-return lowerkeys({
-	-- Regular Inf
-	["SWEEngineer"] = SWE_HQEngineer,
-	["SWERifle"] = SWE_Rifle,
-	["SWEAgM42"] = SWE_AgM42,
-	["SWEKPistM3739"] = SWE_KPistM3739,
-	["SWEKgM37"] = SWE_KgM37,
-	["SWEMG_Sandbag"] = SWE_MG_Sandbag,
-	["SWEMG"] = SWE_MG,
-	["SWESniper"] = SWE_Sniper,
-	["SWEPvGM42"] = SWE_PvGM42,
-	["SWEPSkottM45"] = SWE_PSkottM45,
-	["SWEMortar"] = SWE_Mortar,
-	["SWEObserv"] = SWE_Observ,
-})

@@ -1,4 +1,4 @@
-local ITA_Breda20_Truck = AAGunTractor:New{
+Unit('ITA_Breda20_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed Breda 20/65",
 	buildCostMetal			= 1250,
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local ITA_Breda20_Truck = AAGunTractor:New{
 	trackWidth				= 13,
 }
 
-local ITA_Breda20_Stationary = AAGun:New{
+Unit('ITA_Breda20_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed Breda 20/65",
 	corpse					= "ITABreda20_Destroyed",
 
@@ -20,8 +20,3 @@ local ITA_Breda20_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["ITABreda20_Truck"] = ITA_Breda20_Truck,
-	["ITABreda20_Stationary"] = ITA_Breda20_Stationary,
-	["ITABreda20_Stationary_base"] = ITA_Breda20_Stationary:Clone("ITABreda20_Stationary"),
-})

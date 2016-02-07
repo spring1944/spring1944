@@ -1,4 +1,4 @@
-local GBRChurchillMkVII = HeavyTank:New{
+Unit('GBRChurchillMkVII'):Extends('HeavyTank'):Attrs{
 	name				= "A22F Churchill Mk. VII",
 	description			= "Heavily Armoured All-Terrain Support Tank",
 	buildCostMetal		= 5800,
@@ -36,6 +36,3 @@ local GBRChurchillMkVII = HeavyTank:New{
 	},
 }
 
-return lowerkeys({
-	["GBRChurchillMkVII"] = GBRChurchillMkVII,
-})

@@ -1,4 +1,4 @@
-local GBR_FairmileD = ArmedBoat:New{
+Unit('GBR_FairmileD'):Extends('ArmedBoat'):Attrs{
 	name					= "Fairmile D",
 	description				= "Motor Gun/Torpedo Boat",
 	acceleration			= 0.025,
@@ -51,7 +51,7 @@ local GBR_FairmileD = ArmedBoat:New{
 }
 
 
-local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
+Unit('GBR_FairmileD_Turret_Vickers50'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Vickers 50cal Turret",
 	description				= "Heavy Machinegun Turret",
 	weapons = {	
@@ -73,7 +73,7 @@ local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
 	},
 }
 
-local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
+Unit('GBR_FairmileD_Turret_6pdr_Front'):Extends('OpenBoatTurret'):Attrs{
 	name					= "6Pdr Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/GBRFairmileD_Turret_6pdr.s3o",
@@ -92,7 +92,7 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		elevationspeed			= 20,
     },
 }
-local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
+Unit('GBR_FairmileD_Turret_6pdr_Rear'):Extends('GBR_FairmileD_Turret_6pdr_Front'):Attrs{
   	weapons = {	
 		[1] = {
 			mainDir		= [[0 0 -1]],
@@ -103,7 +103,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
     },
 }
 
-local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
+Unit('GBR_FairmileD_Turret_Vickers30_Left'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Vickers 30cal Turret",
 	description				= "Machinegun Turret",
 	objectName				= "<SIDE>/GBRFairmileD_Turret_Vickers30.s3o",
@@ -122,7 +122,7 @@ local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 		facing					= 3,
 	},
 }
-local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left:New{
+Unit('GBR_FairmileD_Turret_Vickers30_Right'):Extends('GBR_FairmileD_Turret_Vickers30_Left'):Attrs{
 	weapons = {	
 		[1] = {
 			mainDir				= [[-1 0 0]],
@@ -133,7 +133,7 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 	},
 }
 
-local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
+Unit('GBR_FairmileD_Turret_20mm'):Extends('OpenBoatTurret'):Attrs{
 	name					= "Twin Oerlikon 20mm Turret",
 	description				= "20mm AA Turret",
 	weapons = {	
@@ -169,12 +169,3 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 	},
 }
 
-return lowerkeys({
-	["GBRFairmileD"] = GBR_FairmileD,
-	["GBRFairmileD_Turret_Vickers50"] = GBR_FairmileD_Turret_Vickers50,
-	["GBRFairmileD_Turret_Vickers30_Left"] = GBR_FairmileD_Turret_Vickers30_Left,
-	["GBRFairmileD_Turret_Vickers30_Right"] = GBR_FairmileD_Turret_Vickers30_Right,
-	["GBRFairmileD_Turret_6pdr_Front"] = GBR_FairmileD_Turret_6pdr_Front,
-	["GBRFairmileD_Turret_6pdr_Rear"] = GBR_FairmileD_Turret_6pdr_Rear,
-	["GBRFairmileD_Turret_20mm"] = GBR_FairmileD_Turret_20mm,
-})

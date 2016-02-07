@@ -3,19 +3,15 @@
 -- Implementations
 
 -- .30cal proof
-local Bounce30cal = BulletProofClass:New{
+Weapon('Bounce30cal'):Extends('BulletProofClass'):Attrs{
   shieldInterceptType = 8, -- 001000
   shieldRadius       = 35,
 }
 
 -- .50cal proof
-local Bounce50cal = BulletProofClass:New{
+Weapon('Bounce50cal'):Extends('BulletProofClass'):Attrs{
   shieldInterceptType = 24, -- 011000
   shieldRadius       = 40,
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  [".30calproof"] = Bounce30cal,
-  [".50calproof"] = Bounce50cal,
-})

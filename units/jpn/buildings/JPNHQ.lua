@@ -1,4 +1,4 @@
-local JPN_HQ = HQ:New{
+Unit('JPN_HQ'):Extends('HQ'):Attrs{
 	name					= "Imperial Japanese Army HQ",
 	collisionVolumeScales	= [[41 44 82]],
 	collisionVolumeOffsets	= [[0 -11 -3]],
@@ -14,6 +14,3 @@ local JPN_HQ = HQ:New{
 								yyyy]],
 }
 
-return lowerkeys({
-	["JPNHQ"] = JPN_HQ,
-})

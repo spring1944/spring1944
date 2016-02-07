@@ -1,4 +1,4 @@
-local RUS_PShack = Barracks:New{
+Unit('RUS_PShack'):Extends('Barracks'):Attrs{
 	buildCostMetal				= 645,
     description                 = "Partisan Resistance Center",
 	footprintX					= 3,
@@ -10,6 +10,3 @@ local RUS_PShack = Barracks:New{
 									yyy]],
 }
 
-return lowerkeys({
-	["RUSPShack"] = RUS_PShack,
-})

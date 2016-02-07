@@ -1,4 +1,4 @@
-local JPN_Daihatsu = InfantryLandingCraft:New{
+Unit('JPN_Daihatsu'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "Daihatsu Landing Craft",
 	acceleration			= 0.9,
 	brakeRate				= 0.5,
@@ -24,6 +24,3 @@ local JPN_Daihatsu = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["JPNDaihatsu"] = JPN_Daihatsu,
-})

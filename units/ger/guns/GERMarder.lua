@@ -1,4 +1,4 @@
-local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
+Unit('GERMarder'):Extends('LightTank'):Extends('TankDestroyer'):Extends('OpenTopped'):Attrs{
 	name				= "SdKfz 138 Panzerjäger Marder III Ausf. M",
 	description			= "Cheap Turretless Tank Destroyer",
 	buildCostMetal		= 1400,
@@ -26,6 +26,3 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["GERMarder"] = GERMarder,
-})

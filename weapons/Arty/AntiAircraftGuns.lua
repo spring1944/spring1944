@@ -1,7 +1,7 @@
 -- Artillery - Anti Aircraft Guns
 
 -- Bofors 40mm AA Gun (GBR & USA)
-local Bofors40mm = AntiAirGun:New{
+Weapon('Bofors40mm'):Extends('AntiAirGun'):Attrs{
   name               = [[40mm Bofors Anti-Aircraft Gun]],
   burst              = 4, -- 4 round clips
   burstrate          = 0.429, -- cyclic 140rpm
@@ -14,24 +14,24 @@ local Bofors40mm = AntiAirGun:New{
     weaponcost = 2,
   },
 }
-local Bofors40mmAA = AntiAirGunAA:New(Bofors40mm, true):New{
+Weapon('Bofors40mmAA'):Extends('AntiAirGunAA'):Extends('Bofors40mm'):Attrs{ -- name append
   range              = 2025,
 }
-local Bofors40mmHE = AutoCannonHE:New(Bofors40mm, true):New{
+Weapon('Bofors40mmHE'):Extends('AutoCannonHE'):Extends('Bofors40mm'):Attrs{ -- name append
   range              = 725,
 }
 
 -- Twin Bofors 40mm AA Gun (For ships)
 -- derives from the above, only with half the reloadtime
-local Twin_Bofors40mmAA = Bofors40mmAA:New{
+Weapon('Twin_Bofors40mmAA'):Extends('Bofors40mmAA'):Attrs{
   reloadtime         = 1.35,
 }
-local Twin_Bofors40mmHE = Bofors40mmHE:New{
+Weapon('Twin_Bofors40mmHE'):Extends('Bofors40mmHE'):Attrs{
   reloadtime         = 1.35,
 }
 
 -- FlaK 43 37mm AA Gun (GER)
-local FlaK4337mm = AntiAirGun:New{
+Weapon('FlaK4337mm'):Extends('AntiAirGun'):Attrs{
   name               = [[37mm FlaK 43 Anti-Aircraft Gun]],
   burst              = 4, -- 8 round clips
   burstrate          = 0.240, -- cyclic 250rpm
@@ -44,15 +44,15 @@ local FlaK4337mm = AntiAirGun:New{
     weaponcost = 2,
   },
 }
-local FlaK4337mmAA = AntiAirGunAA:New(FlaK4337mm, true):New{
+Weapon('FlaK4337mmAA'):Extends('AntiAirGunAA'):Extends('FlaK4337mm'):Attrs{ -- name append
   range              = 2025,
 }
-local FlaK4337mmHE = AutoCannonHE:New(FlaK4337mm, true):New{
+Weapon('FlaK4337mmHE'):Extends('AutoCannonHE'):Extends('FlaK4337mm'):Attrs{ -- name append
   range              = 725,
 }
 
 -- M-1939 61-K 37mm AA Gun (RUS)
-local M1939_61K37mm = AntiAirGun:New{
+Weapon('M1939_61K37mm'):Extends('AntiAirGun'):Attrs{
   name               = [[37mm M-1939 61-K Anti-Aircraft Gun]],
   burst              = 5, -- 5 round clip
   burstrate          = 0.353, -- cyclic 170rpm
@@ -65,22 +65,11 @@ local M1939_61K37mm = AntiAirGun:New{
     weaponcost = 1,
   },
 }
-local M1939_61K37mmAA = AntiAirGunAA:New(M1939_61K37mm, true):New{
+Weapon('M1939_61K37mmAA'):Extends('AntiAirGunAA'):Extends('M1939_61K37mm'):Attrs{ -- name append
   range              = 2025,
 }
-local M1939_61K37mmHE = AutoCannonHE:New(M1939_61K37mm, true):New{
+Weapon('M1939_61K37mmHE'):Extends('AutoCannonHE'):Extends('M1939_61K37mm'):Attrs{ -- name append
   range              = 725,
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  -- Medium (40mm)
-  Bofors40mmAA = Bofors40mmAA,
-  Bofors40mmHE = Bofors40mmHE,
-  Twin_Bofors40mmAA = Twin_Bofors40mmAA,
-  Twin_Bofors40mmHE = Twin_Bofors40mmHE,
-  FlaK4337mmAA = FlaK4337mmAA,
-  FlaK4337mmHE = FlaK4337mmHE,
-  M1939_61K37mmAA = M1939_61K37mmAA,
-  M1939_61K37mmHE = M1939_61K37mmHE,
-})

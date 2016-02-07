@@ -1,4 +1,4 @@
-local ITA_Cannone47_Truck = ATGunTractor:New{
+Unit('ITA_Cannone47_Truck'):Extends('ATGunTractor'):Attrs{
 	name					= "Towed Cannone da 47/32",
 	buildCostMetal			= 400,
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
@@ -6,7 +6,7 @@ local ITA_Cannone47_Truck = ATGunTractor:New{
 	trackWidth				= 12,
 }
 
-local ITA_Cannone47_Stationary = LightATGun:New{
+Unit('ITA_Cannone47_Stationary'):Extends('LightATGun'):Attrs{
 	name					= "Deployed Cannone da 47/32",
 	corpse					= "ITACannone47_destroyed",
 	weapons = {
@@ -16,7 +16,3 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 	},
 }
 
-return lowerkeys({
-	["ITACannone47_Truck"] = ITA_Cannone47_Truck,
-	["ITACannone47_Stationary"] = ITA_Cannone47_Stationary,
-})

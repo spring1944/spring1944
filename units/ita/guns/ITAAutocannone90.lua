@@ -1,4 +1,4 @@
-local ITAAutocannone90 = Truck:New(TankDestroyer):New{
+Unit('ITAAutocannone90'):Extends('Truck'):Extends('TankDestroyer'):Attrs{
 	name				= "Autocannone 90/53 su Lancia 3Ro",
 	description			= "Self-Propelled AT Gun",
 	buildCostMetal		= 2950,
@@ -18,6 +18,3 @@ local ITAAutocannone90 = Truck:New(TankDestroyer):New{
 	},
 }
 
-return lowerkeys({
-	["ITAAutocannone90"] = ITAAutocannone90,
-})

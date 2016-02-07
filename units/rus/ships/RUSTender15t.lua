@@ -1,4 +1,4 @@
-local RUS_Tender15t = InfantryLandingCraft:New{
+Unit('RUS_Tender15t'):Extends('InfantryLandingCraft'):Attrs{
 	name					= "15-ton Tender",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
@@ -31,6 +31,3 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 }
 
 
-return lowerkeys({
-	["RUSTender15t"] = RUS_Tender15t,
-})

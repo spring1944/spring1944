@@ -5,7 +5,7 @@
 -- British rocket, typhoon currently uses HVAR
 
 -- HVAR Rocket (USA)
-local HVARRocket = AirRocket:New{
+Weapon('HVARRocket'):Extends('AirRocket'):Attrs{
   areaOfEffect       = 18,
   name               = [[5-Inch HVAR Rocket]],
   range              = 900,
@@ -20,7 +20,7 @@ local HVARRocket = AirRocket:New{
   },
 }
 -- RS 82 Rocket (RUS)
-local RS82Rocket = AirRocket:New{
+Weapon('RS82Rocket'):Extends('AirRocket'):Attrs{
   areaOfEffect       = 78,
   name               = [[high-explosive RS82 Rocket]],
   range              = 800,
@@ -38,7 +38,3 @@ local RS82Rocket = AirRocket:New{
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  HVARRocket = HVARRocket,
-  RS82Rocket = RS82Rocket,
-})

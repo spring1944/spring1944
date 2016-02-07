@@ -1,4 +1,4 @@
-local GBR_HQ = HQ:New{
+Unit('GBR_HQ'):Extends('HQ'):Attrs{
 	name					= "British Army HQ",
 	collisionVolumeScales	= [[76 45 86]],
 	collisionVolumeOffsets	= [[0 -9 -3]],
@@ -13,6 +13,3 @@ local GBR_HQ = HQ:New{
 								yyyyyyy]],
 }
 
-return lowerkeys({
-	["GBRHQ"] = GBR_HQ,
-})

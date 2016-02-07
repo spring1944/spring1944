@@ -3,7 +3,7 @@
 -- Implementations
 
 -- LeIG 18 (GER)
-local LeIG18HE = InfGun:New{
+Weapon('LeIG18HE'):Extends('InfGun'):Attrs{
   areaOfEffect       = 88,
   name               = [[75mm LeIG 18 HE Shell]],
   soundStart         = [[GER_75mm]],
@@ -13,7 +13,7 @@ local LeIG18HE = InfGun:New{
 }
 
 -- M8 Pack Howitzer (USA)
-local M875mmHE = InfGun:New{
+Weapon('M875mmHE'):Extends('InfGun'):Attrs{
   areaOfEffect       = 94,
   name               = [[M8 75mm Pack Howitzer HE Shell]],
   soundStart         = [[US_75mm]],
@@ -23,7 +23,7 @@ local M875mmHE = InfGun:New{
 }
 
 -- Cannone da 65/17 (ITA)
-local Cannone65L17HE = InfGun:New{
+Weapon('Cannone65L17HE'):Extends('InfGun'):Attrs{
   areaOfEffect       = 68,
   name               = [[Cannone da 65/17 HE Shell]],
   range              = 1010,
@@ -36,7 +36,7 @@ local Cannone65L17HE = InfGun:New{
   },
 }
 
-local Cannone65L17HEAT = InfGun:New{ -- TODO: make a HEAT base class and inherit from Cannone65
+Weapon('Cannone65L17HEAT'):Extends('InfGun'):Attrs{ -- TODO: make a HEAT base class and inherit from Cannone65
   areaOfEffect       = 8,
   accuracy           = 250,
   predictBoost	     = 0.2,
@@ -60,9 +60,3 @@ local Cannone65L17HEAT = InfGun:New{ -- TODO: make a HEAT base class and inherit
 }
 
 -- Return only the full weapons
-return lowerkeys({
-  LeIG18HE = LeIG18HE,
-  M875mmHE = M875mmHE,
-  Cannone65L17HE = Cannone65L17HE,
-  Cannone65L17HEAT = Cannone65L17HEAT,
-})

@@ -1,4 +1,4 @@
-local GERSdKfz251 = HalfTrack:New{
+Unit('GERSdKfz251'):Extends('HalfTrack'):Attrs{
 	name					= "SdKfz 251/1 Halftrack",
 	buildCostMetal			= 1100,
 	maxDamage				= 850,
@@ -24,6 +24,3 @@ local GERSdKfz251 = HalfTrack:New{
 	
 }
 
-return lowerkeys({
-	["GERSdKfz251"] = GERSdKfz251,
-})

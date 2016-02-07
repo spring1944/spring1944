@@ -1,4 +1,4 @@
-local ITACannone65 = InfantryGun:New{
+Unit('ITACannone65'):Extends('InfantryGun'):Attrs{
 	name					= "Cannone da 65/17",
 	corpse					= "itacannone65_destroyed",
 	buildCostMetal				= 950,
@@ -15,6 +15,3 @@ local ITACannone65 = InfantryGun:New{
 }
 
 
-return lowerkeys({
-	["ITACannone65"] = ITACannone65,
-})

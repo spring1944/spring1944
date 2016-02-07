@@ -1,4 +1,4 @@
-local ITAAutocannone75 = Truck:New(AssaultGun):New{
+Unit('ITAAutocannone75'):Extends('Truck'):Extends('AssaultGun'):Attrs{
 	name				= "Autocannone da 75/27",
 	description			= "Gun Truck",
 	buildCostMetal		= 1650,
@@ -18,6 +18,3 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 	},
 }
 
-return lowerkeys({
-	["ITAAutocannone75"] = ITAAutocannone75,
-})

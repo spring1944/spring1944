@@ -1,4 +1,4 @@
-local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
+Unit('RUSSU76'):Extends('LightTank'):Extends('AssaultGun'):Extends('OpenTopped'):Attrs{
 	name				= "SU-76",
 	buildCostMetal		= 1740,
 	maxDamage			= 1120,
@@ -30,6 +30,3 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 	},
 }
 
-return lowerkeys({
-	["RUSSU76"] = RUSSU76,
-})

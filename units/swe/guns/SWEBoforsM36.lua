@@ -1,11 +1,11 @@
-local SWE_BoforsM36_Truck = AAGunTractor:New{
+Unit('SWE_BoforsM36_Truck'):Extends('AAGunTractor'):Attrs{
 	name					= "Towed 4cm LvAkan m/36",
 	corpse					= "USGMCTruck_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
 }
 
-local SWE_BoforsM36_Stationary = AAGun:New{
+Unit('SWE_BoforsM36_Stationary'):Extends('AAGun'):Attrs{
 	name					= "Deployed 4cm LvAkan m/36",
 	corpse					= "SWEBoforsM36_Destroyed",
 
@@ -19,7 +19,3 @@ local SWE_BoforsM36_Stationary = AAGun:New{
 	},
 }
 
-return lowerkeys({
-	["SWEBoforsM36_Truck"] = SWE_BoforsM36_Truck,
-	["SWEBoforsM36_Stationary"] = SWE_BoforsM36_Stationary,
-})

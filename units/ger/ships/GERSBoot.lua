@@ -1,4 +1,4 @@
-local GER_SBoot = ArmedBoat:New{
+Unit('GER_SBoot'):Extends('ArmedBoat'):Attrs{
 	name					= "SchnellBoot",
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.3,
@@ -35,7 +35,7 @@ local GER_SBoot = ArmedBoat:New{
 	},
 }
 
-local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
+Unit('GER_SBoot_Turret_20mm_Front'):Extends('OpenBoatTurret'):Attrs{
 	name					= "20mm Turret",
 	description				= "20mm AA Turret",
 	objectName				= "GER/GERSBoot_Turret_20mm.s3o",
@@ -60,7 +60,7 @@ local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
     },
 }
 
-local GER_SBoot_Turret_20mm_Rear = GER_SBoot_Turret_20mm_Front:New{
+Unit('GER_SBoot_Turret_20mm_Rear'):Extends('GER_SBoot_Turret_20mm_Front'):Attrs{
   	weapons = {	
 		[1] = {
 			maxAngleDif			= 330,
@@ -76,8 +76,3 @@ local GER_SBoot_Turret_20mm_Rear = GER_SBoot_Turret_20mm_Front:New{
 		facing					= 2,
     },
 }
-return lowerkeys({
-	["GERSBoot"] = GER_SBoot,
-	["GER_SBoot_Turret_20mm_Front"] = GER_SBoot_Turret_20mm_Front,
-	["GER_SBoot_Turret_20mm_Rear"] = GER_SBoot_Turret_20mm_Rear,
-})

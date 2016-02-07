@@ -1,5 +1,5 @@
 -- Vehicles ----
-local Vehicle = Unit:New{
+AbstractUnit('Vehicle'):Extends('Unit'):Attrs{
 	canMove				= true,
 	explodeAs			= "Vehicle_Explosion_Sm",
 	footprintX			= 3,
@@ -21,7 +21,7 @@ local Vehicle = Unit:New{
 }
 
 -- Armoured Car
-local ArmouredCar = Vehicle:New{
+AbstractUnit('ArmouredCar'):Extends('Vehicle'):Attrs{
 	acceleration		= 0.047,
 	brakeRate			= 0.09,
 	description			= "Light Armoured Car",
@@ -34,14 +34,14 @@ local ArmouredCar = Vehicle:New{
 	},
 }
 
-local HeavyArmouredCar = ArmouredCar:New{
+AbstractUnit('HeavyArmouredCar'):Extends('ArmouredCar'):Attrs{
 	acceleration		= 0.03,
 	description			= "Heavy Armoured Car",
 	category			= "MINETRIGGER HARDVEH",
 }
 
 -- Engineer Vehicles
-local EngineerVehicle = Vehicle:New{
+AbstractUnit('EngineerVehicle'):Extends('Vehicle'):Attrs{
 	description			= "Engineer Vehicle",
 	acceleration		= 0.25,
 	brakeRate			= 0.96,
@@ -61,7 +61,7 @@ local EngineerVehicle = Vehicle:New{
 }
 
 -- Trucks --
-local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
+AbstractUnit('Truck'):Extends('Vehicle'):Attrs{ -- Basis of all Trucks e.g. gun tractors, transports
 	acceleration		= 0.3,
 	brakeRate			= 0.96,
 	category			= "MINETRIGGER SOFTVEH",
@@ -77,7 +77,7 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	},
 }
 
-local PontoonTruck = Truck:New{
+AbstractUnit('PontoonTruck'):Extends('Truck'):Attrs{
 	name				= "Pontoon Carrier", -- appended
 	description			= "Deployable Boatyard Vehicle",
 	buildCostMetal		= 1400,
@@ -87,7 +87,7 @@ local PontoonTruck = Truck:New{
 	script				= nil, -- TODO: atm they have individual copies
 }
 
-local Transport = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('Transport'):Attrs{ -- not a full class (role/mixin)
 	loadingRadius		= 120,
     releaseHeld         = false,
 	transportCapacity	= 15,
@@ -96,24 +96,24 @@ local Transport = Def:New{ -- not a full class (role/mixin)
 	unloadSpread		= 3,
 }
 
-local Amphibian = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('Amphibian'):Attrs{ -- not a full class (role/mixin)
 	movementClass		= "HOVER_AmphibTruck",
 	waterline = 7.5,
 }
 
-local MobileAA = Def:New{ -- not a full class (role/mixin)
+AbstractUnit('MobileAA'):Attrs{ -- not a full class (role/mixin)
 	description			= "Self-Propelled Light Anti-Aircraft",
 	iconType			= "aacar",
 }
 
-local TruckAA = Truck:New(MobileAA):New{
+AbstractUnit('TruckAA'):Extends('Truck'):Extends('MobileAA'):Attrs{
 	acceleration		= 0.067,
 	brakeRate			= 0.195,
 }
-local ArmouredCarAA = ArmouredCar:New(MobileAA)
+AbstractUnit('ArmouredCarAA'):Extends('ArmouredCar'):Extends('MobileAA')
 
 
-local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
+AbstractUnit('TransportTruck'):Extends('Truck'):Extends('Transport'):Attrs{ -- Transport Trucks
 	description			= "Transport/Supply Truck",
 	buildCostMetal		= 510,
 	iconType			= "truck",
@@ -123,7 +123,7 @@ local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	},
 }
 
-local HalfTrack = ArmouredCar:New(Transport):New{
+AbstractUnit('HalfTrack'):Extends('ArmouredCar'):Extends('Transport'):Attrs{
 	description			= "Transport/Supply Halftrack",
 	category			= "MINETRIGGER OPENVEH",
 	acceleration		= 0.039,
@@ -137,56 +137,33 @@ local HalfTrack = ArmouredCar:New(Transport):New{
 	},
 }
 
-local AAGunTractor = Truck:New{
+AbstractUnit('AAGunTractor'):Extends('Truck'):Attrs{
 	description			= "Towed Anti-Aircraft Gun",
 	buildCostMetal		= 1400,
 	iconType			= "aatruck",
 }
 
-local ATGunTractor = Truck:New{
+AbstractUnit('ATGunTractor'):Extends('Truck'):Attrs{
 	description			= "Towed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "attruck",
 }
 
-local FGGunTractor = Truck:New{
+AbstractUnit('FGGunTractor'):Extends('Truck'):Attrs{
 	description			= "Towed Field Gun",
 	buildCostMetal		= 1300,
 	iconType			= "fgtruck",
 }
 
-local HGunTractor = Truck:New{
+AbstractUnit('HGunTractor'):Extends('Truck'):Attrs{
 	description			= "Towed Howitzer",
 	buildCostMetal		= 1800,
 	iconType			= "htruck",
 }
 
-local RGunTractor = Truck:New{
+AbstractUnit('RGunTractor'):Extends('Truck'):Attrs{
 	description			= "Towed Rocket Launcher",
 	buildCostMetal		= 3600,
 	iconType			= "rtruck",
 }
 
-return {
-	Vehicle = Vehicle,
-	-- Roles
-	Amphibian = Amphibian,
-	MobileAA = MobileAA,
-	Transport = Transport,
-	-- Base Classes
-	ArmouredCar = ArmouredCar,
-	ArmouredCarAA = ArmouredCarAA,
-	HeavyArmouredCar = HeavyArmouredCar,
-	EngineerVehicle = EngineerVehicle,
-	HalfTrack = HalfTrack,
-	-- Trucks
-	Truck = Truck,
-	TruckAA  = TruckAA ,
-	PontoonTruck = PontoonTruck,
-	TransportTruck = TransportTruck,
-	AAGunTractor = AAGunTractor,
-	ATGunTractor = ATGunTractor,
-	FGGunTractor = FGGunTractor,
-	HGunTractor = HGunTractor,
-	RGunTractor = RGunTractor,
-}

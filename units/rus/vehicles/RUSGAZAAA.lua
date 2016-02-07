@@ -1,4 +1,4 @@
-local RUSGAZAAA = TruckAA:New{
+Unit('RUSGAZAAA'):Extends('TruckAA'):Attrs{
 	name				= "M4 GAZ-AAA",
 	buildCostMetal		= 750,
 	maxDamage			= 600,
@@ -25,6 +25,3 @@ local RUSGAZAAA = TruckAA:New{
 	},
 }
 
-return lowerkeys({
-	["RUSGAZAAA"] = RUSGAZAAA,
-})

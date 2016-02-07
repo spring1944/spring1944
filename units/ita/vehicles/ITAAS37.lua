@@ -1,4 +1,4 @@
-local ITAAS37 = HalfTrack:New{
+Unit('ITAAS37'):Extends('HalfTrack'):Attrs{
 	name					= "Carro Protetto A.S. 37",
 	description				= "Transport/Supply Armoured Truck",
 	acceleration			= 0.047,
@@ -25,6 +25,3 @@ local ITAAS37 = HalfTrack:New{
 	},
 }
 
-return lowerkeys({
-	["ITAAS37"] = ITAAS37,
-})

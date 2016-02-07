@@ -1,4 +1,4 @@
-local ITAAB41 = ArmouredCar:New{
+Unit('ITAAB41'):Extends('ArmouredCar'):Attrs{
 	name				= "Autoblinda AB-41",
 	buildCostMetal		= 1085,
 	maxDamage			= 752,
@@ -41,6 +41,3 @@ local ITAAB41 = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["ITAAB41"] = ITAAB41,
-})

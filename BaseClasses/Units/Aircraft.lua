@@ -1,5 +1,5 @@
 -- Aircraft ----
-local Aircraft = Unit:New{
+AbstractUnit('Aircraft'):Extends('Unit'):Attrs{
 	airSightDistance	= 4000,
 	brakeRate			= 5,
 	canFly				= true,
@@ -27,7 +27,7 @@ local Aircraft = Unit:New{
 	},
 }
 
-local Recon = Aircraft:New{
+AbstractUnit('Recon'):Extends('Aircraft'):Attrs{
 	description			= "Recon Plane",
 	buildCostMetal		= 1000,
 	cruiseAlt			= 720,
@@ -45,7 +45,7 @@ local Recon = Aircraft:New{
 	sightDistance		= 600,
 }
 
-local Fighter = Aircraft:New{
+AbstractUnit('Fighter'):Extends('Aircraft'):Attrs{
 	description			= "Air-Superiority Fighter",
 	cruiseAlt			= 1500,
 	iconType			= "fighter",
@@ -65,20 +65,20 @@ local Fighter = Aircraft:New{
 	-- },
 }
 
-local Interceptor = Fighter:New{
+AbstractUnit('Interceptor'):Extends('Fighter'):Attrs{
 	description			= "Interceptor",
 	cruiseAlt			= 1500,
 	maxFuel				= 120,
 	noChaseCategory		= "FLAG MINE HARDVEH BUILDING",
 }
 
-local AttackFighter = Fighter:New{
+AbstractUnit('AttackFighter'):Extends('Fighter'):Attrs{
 	description			= "Attack Fighter",
 	cruiseAlt			= 900,
 	noChaseCategory		= "FLAG INFANTRY AIR BUILDING MINE",
 }
 
-local FighterBomber = Fighter:New{
+AbstractUnit('FighterBomber'):Extends('Fighter'):Attrs{
 	attackSafetyDistance	= 200,
 	description				= "Fighter-Bomber",
 	iconType				= "bomber",
@@ -97,7 +97,7 @@ local FighterBomber = Fighter:New{
 	},
 }
 
-local CruiseMissile = Aircraft:New{
+AbstractUnit('CruiseMissile'):Extends('Aircraft'):Attrs{
 	buildCostMetal				= 6000,
 	cruiseAlt					= 1500,
 	iconType					= "fighter",
@@ -119,7 +119,7 @@ local CruiseMissile = Aircraft:New{
 	},
 }
 
-local Glider = Aircraft:New{
+AbstractUnit('Glider'):Extends('Aircraft'):Attrs{
 	airSightDistance	= 0,
 	buildCostMetal		= 6000,
 	corpse				= "<NAME>_Damaged",
@@ -142,7 +142,7 @@ local Glider = Aircraft:New{
 	maxVelocity			= 9.8,
 }
 
-local ParaTransport = Aircraft:New{
+AbstractUnit('ParaTransport'):Extends('Aircraft'):Attrs{
 	description			= "Paratroop Transport Plane",
 	buildCostMetal		= 3000,
 	cruiseAlt			= 1800,
@@ -173,21 +173,9 @@ local ParaTransport = Aircraft:New{
 	}
 }
 
-local ArmouredPlane = Def:New{
+AbstractUnit('ArmouredPlane'):Attrs{
 	customParams = {
 		damageGroup		= "armouredPlanes",
 	}
 }
 
-return {
-	Aircraft = Aircraft,
-	Recon = Recon,
-	Fighter = Fighter,
-	Interceptor = Interceptor,
-	AttackFighter = AttackFighter,
-	FighterBomber = FighterBomber,
-	CruiseMissile = CruiseMissile,
-	Glider = Glider,
-	ArmouredPlane = ArmouredPlane,
-	ParaTransport = ParaTransport,
-}

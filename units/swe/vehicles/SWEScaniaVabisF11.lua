@@ -1,13 +1,9 @@
-local SWE_ScaniaVabisF11Base = Truck:New{
+Unit('SWE_ScaniaVabisF11Base'):Extends('Truck'):Attrs{
 	name					= "Scania Vabis F11 Truck",
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
 
-local SWE_ScaniaVabisF11 = SWE_ScaniaVabisF11Base:New(TransportTruck)
-local SWE_PontoonTruck = SWE_ScaniaVabisF11Base:New(PontoonTruck, true)
+Unit('SWE_ScaniaVabisF11'):Extends('SWE_ScaniaVabisF11Base'):Extends('TransportTruck')
+Unit('SWE_PontoonTruck'):Extends('SWE_ScaniaVabisF11Base'):Extends('PontoonTruck') -- name append
 
-return lowerkeys({
-	["SWEScaniaVabisF11"] = SWE_ScaniaVabisF11,
-	["SWEPontoonTruck"] = SWE_PontoonTruck,
-})

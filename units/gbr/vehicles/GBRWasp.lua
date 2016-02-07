@@ -1,4 +1,4 @@
-local GBRWasp = ArmouredCar:New{
+Unit('GBRWasp'):Extends('ArmouredCar'):Attrs{
 	name				= "Wasp Mk.II",
 	description			= "Universal Carrier Flamethrower",
 	buildCostMetal		= 1100,
@@ -27,6 +27,3 @@ local GBRWasp = ArmouredCar:New{
 	}
 }
 
-return lowerkeys({
-	["GBRWasp"] = GBRWasp,
-})

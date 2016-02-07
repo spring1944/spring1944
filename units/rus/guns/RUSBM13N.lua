@@ -1,4 +1,4 @@
-local RUSBM13N = Truck:New{
+Unit('RUSBM13N'):Extends('Truck'):Attrs{
 	name				= "BM-13N Katyusha",
 	description			= "Self-Propelled Rocket Artillery",
 	buildCostMetal		= 6800,
@@ -20,6 +20,3 @@ local RUSBM13N = Truck:New{
 	},
 }
 
-return lowerkeys({
-	["RUSBM13N"] = RUSBM13N,
-})
