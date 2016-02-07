@@ -11,7 +11,7 @@ local defFields = {
 
 local units = {}
 
-if VFS then
+if Spring then
 	local sortieInclude = VFS.Include("LuaRules/Configs/sortie_defs.lua")
 	local squadInclude = VFS.Include("LuaRules/Configs/squad_defs.lua")
 

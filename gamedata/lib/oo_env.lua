@@ -4,7 +4,7 @@ This is for setting up any bits that should be in the OO def environment.
 ]]--
 
 local sideData
-if VFS then
+if Spring then
 	sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
 else
 	package.path = './gamedata/?.lua;' .. package.path
