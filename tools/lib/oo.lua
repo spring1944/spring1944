@@ -36,33 +36,6 @@ local function trace (def)
     return res
 end
 
-local Registry = require 'registry'
-local registry = Registry:new()
-
-function Def (name)
-	return registry:register(name)
-end
-
-function Unit (name)
-	return registry:register(name)
-end
-
-function Weapon (name)
-	return registry:register(name)
-end
-
-function AbstractDef (name)
-	return registry:registerAbstract(name)
-end
-
-function AbstractUnit (name)
-	return registry:registerAbstract(name)
-end
-
-function AbstractWeapon (name)
-	return registry:registerAbstract(name)
-end
-
 local function crawlDir(dir)
 	local toCrawl = {}
 	for filename in lfs.dir(dir) do

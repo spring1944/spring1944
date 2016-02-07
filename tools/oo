@@ -5,11 +5,13 @@ package.path = './gamedata/lib/3rdparty/?.lua;' .. package.path
 package.path = './gamedata/lib/?.lua;' .. package.path
 
 local Parser = require 'argparse'
-registry = require 'registry'
+Registry = require 'registry'
 local inspect = require 'inspect'
 local json = require 'dkjson'
-local oo = require './tools/lib/oo'
 local env = require 'oo_env'
+
+registry = env.registry
+local oo = require './tools/lib/oo'
 
 local cli = Parser "oo"
 cli:description('handy tool for working with OO spring defs')
