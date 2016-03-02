@@ -5,3 +5,5 @@ base
     usflag
     jpnflag
     itaflag
+    sweflag
+    hunflag
