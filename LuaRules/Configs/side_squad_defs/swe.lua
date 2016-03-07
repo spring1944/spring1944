@@ -3,6 +3,20 @@ local sweDefs = {
 	 -- SWE Platoons and Squads --
 	 ----------------------------
 
+	["swe_platoon_hq"] =
+	{
+		members = {
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"sweagm42",
+			"swekpistm3739",
+		},
+		name = "HQ Platoon",
+		description = "3 x Rifle, 1 x AGM, 1 x SMG: Small Combat Squad",
+		buildCostMetal = 550,
+		buildPic = "swerifle.png",
+	},
 
 	["swe_platoon_rifle"] =
 	{
