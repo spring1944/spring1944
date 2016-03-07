@@ -7,7 +7,12 @@ local SWE_ScaniaVabisF11Base = Truck:New{
 local SWE_ScaniaVabisF11 = SWE_ScaniaVabisF11Base:New(TransportTruck)
 local SWE_PontoonTruck = SWE_ScaniaVabisF11Base:New(PontoonTruck, true)
 
+local SWE_BarracksTruck = SWE_ScaniaVabisF11Base:New{
+	buildpic	= "swescaniavabisf11.png",
+}
+
 return lowerkeys({
 	["SWEScaniaVabisF11"] = SWE_ScaniaVabisF11,
 	["SWEPontoonTruck"] = SWE_PontoonTruck,
+	["SWEScaniaVabisF11_barracks"] = SWE_BarracksTruck,
 })
