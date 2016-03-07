@@ -70,6 +70,12 @@ function script.Create()
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
+	-- hide propeller blades if any
+	if info.blades then
+		for _, blade in pairs(info.blades)
+			Hide(blade)
+		end
+	end
 end
 
 

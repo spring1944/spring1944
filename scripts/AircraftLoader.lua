@@ -32,6 +32,7 @@ info.bombPieces = {}
 info.aimPieces = {}
 info.reversedWeapons = {}
 info.smokePieces = {}
+info.blades = {}
 
 local pieceMap = Spring.GetUnitPieceMap(unitID)
 
@@ -39,6 +40,9 @@ for pieceName, pieceNum in pairs(pieceMap) do
 	-- Find Wheel Speeds
 	if pieceName:find("base") or pieceName:find("wing") or pieceName:find("fuselage") then
 		info.smokePieces[#info.smokePieces + 1] = pieceNum
+	end
+	if pieceName:find("blades") then
+		info.blades[#info.blades + 1] = pieceNum
 	end
 end
 
