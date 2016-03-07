@@ -9,6 +9,7 @@ local SWE_PontoonTruck = SWE_ScaniaVabisF11Base:New(PontoonTruck, true)
 
 local SWE_BarracksTruck = SWE_ScaniaVabisF11Base:New{
 	buildpic	= "swescaniavabisf11.png",
+	buildCostMetal				= 1500,
 }
 
 return lowerkeys({
