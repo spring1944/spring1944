@@ -7,10 +7,10 @@ local SWE_HQ = HQ:New{
 	yardmap					= [[ooooooo 
 							    oocccoo 
 								oocccoo 
-								ooyyyoo 
-								ooyyyoo 
-								ooyyyoo 
-								ooyyyoo]],
+								ooyyyyo 
+								ooyyyyo 
+								ooyyyyo 
+								ooyyyyo]],
 }
 
 return lowerkeys({
