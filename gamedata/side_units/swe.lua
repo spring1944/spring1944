@@ -1,5 +1,19 @@
 local sweunits =
 {
+	sweengineer =
+	{
+		"swevehicleyard",
+		"swebarracks",
+		"swegunyard",
+		"swestorage",
+		"sweradar",
+		"sweatminesign",
+		"sweapminesign",
+		"swetankobstacle",
+		"sweassaultboat",
+		"swepontoonraft",
+	},
+
 	swehq = {
 		"swe_sortie_recon",
 		"sweengineer",
@@ -18,7 +32,77 @@ local sweunits =
 		"swescaniavabisf11",
 		"swepontoontruck",
 	},
-	
+
+	swevehicleyard =
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"swepbilm40",
+		"swetgbilm42",
+		"swestrvm37",
+		"swepbilm31",
+	},
+
+	swevehicleyard1	=
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"swepbilm40",
+		"swetgbilm42",
+		"swestrvm37",
+		"swepbilm31",
+		"swestrvm41",
+	},
+
+	swegunyard =
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"sweboforsm36_truck",
+		"swepvkanm43_truck",
+		"swekanonm02_33_truck",
+		"swehaubitsm39_truck",
+	},
+
+	swespyard =
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"sweboforsm36_truck",
+		"swepvkanm43_truck",
+		"swekanonm02_33_truck",
+		"swehaubitsm39_truck",
+		"swepbilm31",
+	},
+
+	swespyard1 =
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"sweboforsm36_truck",
+		"swepvkanm43_truck",
+		"swekanonm02_33_truck",
+		"swehaubitsm39_truck",
+		"swesavm43",
+	},
+
+	swetankyard =
+	{
+		"swevolvotvc",
+		"swestrvm40sii",
+	},
+
+	swetankyard1 =
+	{
+		"swevolvotvc",
+		"swestrvm40sii",
+		"swestrvm42",
+	}	
 }
 
 return sweunits
