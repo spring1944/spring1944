@@ -1,6 +1,7 @@
 local SWE_VolvoTVC = Truck:New{
 	name					= "Volvo TVC m/42",
 	buildCostMetal			= 1800,
+	description			= "Heavy truck - deploys into assembly yards",
 	mass					= 600, -- 2x default truck
 	maxDamage 				= 600, -- 2x default truck
 	trackOffset				= 25,
