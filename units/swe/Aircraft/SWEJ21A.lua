@@ -1,5 +1,6 @@
 local SWEJ21A = Fighter:New{
-	name				= "Fw 190A-8",
+	name				= "SAAB J 21A",
+	description			= "Heavy Fighter",
 	buildCostMetal		= 1125,
 	maxDamage			= 320,
 		
@@ -11,8 +12,6 @@ local SWEJ21A = Fighter:New{
 	maxRudder			= 0.003,
 	maxVelocity			= 18.9,
 
-	script				= "gerfw190.cob", -- TODO: LUS!
-	
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
