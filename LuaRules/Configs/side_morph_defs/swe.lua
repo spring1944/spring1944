@@ -1,5 +1,27 @@
 local sweDefs = {
 -- Upgrade Defs
+	swescaniavabisf11_barracks = {
+		{
+			into = 'swebarracks',
+			tech = 0,
+			time = 20,
+			metal = 0,
+			energy = 0,
+			facing = true,
+		},
+	},
+	swebarracks = {
+		{
+			into = 'swescaniavabisf11_barracks',
+			tech = 0,
+			time = 20,
+			metal = 0,
+			name = '  Pack  \n  Up  ',
+			energy = 0,
+			facing = true,
+		},
+	},
+
 	swevolvotvc = {
 		{
 			into = 'swegunyard',
