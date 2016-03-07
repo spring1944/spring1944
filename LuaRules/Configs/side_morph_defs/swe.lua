@@ -281,17 +281,6 @@ local sweDefs = {
 	},
 	
 	-- Unique mobile HQ
-	--[[	-- this one doesn't work
-	swehq =
-	{
-		into = 'swepbilm31f',
-		tech = 0,
-		time = 80,
-		metal = 0,
-		energy = 0,
-	},
-	]]--
-
 	swepbilm31f =
 	{
 		into = 'swehq',
@@ -300,6 +289,18 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},	
+
+	swehq =
+	{
+		{
+			into = 'swepbilm31f',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		}
+	},
 }
 local newDefs = {}
 for unitName, morphList in pairs(sweDefs) do
