@@ -102,7 +102,15 @@ local sweunits =
 		"swevolvotvc",
 		"swestrvm40sii",
 		"swestrvm42",
-	}	
+	},
+	
+	sweradar = {
+		"swe_sortie_recon",
+		"swe_sortie_interceptor",
+		"swe_sortie_fighter",
+		"swe_sortie_divebomber",
+		"swe_sortie_at",
+	},
 }
 
 return sweunits
