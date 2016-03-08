@@ -7,20 +7,20 @@ local SWEStrvM40SII = LightTank:New{
 
 	weapons = {
 		[1] = {
-			name				= "M637mmAP",
+			name				= "Bofors_m38AP",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "M637mmHE",
+			name				= "Bofors_m38HE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[3] = { -- coax 1
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 		},
 		[4] = { -- coax 2
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 		},
 		[5] = {
 			name				= ".50calproof",

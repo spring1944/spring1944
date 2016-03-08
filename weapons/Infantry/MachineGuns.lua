@@ -120,6 +120,27 @@ local M1919A4Browning_Deployed = M1919A4Browning:New{
   sprayAngle         = 400,
 }
 
+-- Swedish version
+local ksp_m1936 = M1919A4Browning:New{
+	name		= "Kulspruta m/36",
+	soundStart	= "KSP_M_36",
+	burstRate          = 0.086,	-- sync with sound
+}
+
+local ksp_m1936_deployed = M1919A4Browning_Deployed:New{
+	name		= "Kulspruta m/36",
+	soundStart	= "KSP_M_36",
+	burstRate          = 0.086,	-- sync with sound
+}
+
+-- Swedish tank version (later tanks only)
+local ksp_m1939 = M1919A4Browning:New{
+	name		= "Kulspruta m/39",
+	soundStart	= "KSP_M_39",
+	burst				= 5,
+	burstRate          = 0.072,	-- sync with sound
+}
+
 -- Breda 30 (ITA)
 local Breda30 = MGClass:New{
   burst              = 3,
@@ -394,4 +415,7 @@ return lowerkeys({
   Type93HMG = Type93HMG,
   Type93AA = Type93AA,
   Type1Ho103 = Type1Ho103,
+  ksp_m1936 = ksp_m1936,
+  ksp_m1936_deployed = ksp_m1936_deployed,
+  ksp_m1939 = ksp_m1939,
 })

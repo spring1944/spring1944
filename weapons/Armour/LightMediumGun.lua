@@ -107,6 +107,24 @@ local Type9757mmAP = MediumAP:New(Type9757mm, true):New{
   },
 }
 
+-- 57 mm pansarvärnskanon m/43 (SWE)
+local PvKanM43 = LightMediumGun:New{
+	name               = [[57 mm pansarvärnskanon m/43]],
+	range              = 1200,
+	reloadTime         = 4.95,
+	soundStart			= [[PVKAN_M_43]],
+}
+
+local PvKanM43AP = MediumAP:New(PvKanM43, true):New{
+	weaponVelocity     = 1670,
+	customparams = {
+		armor_penetration_1000m = 66,
+		armor_penetration_100m  = 86,
+	},
+	damage = {
+		default            = 1795,
+	},
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -122,5 +140,5 @@ return lowerkeys({
   -- Type 97 57mm
   Type9757mmHE = Type9757mmHE,
   Type9757mmAP = Type9757mmAP,
-  
+  PvKanM43AP = PvKanM43AP,
 })

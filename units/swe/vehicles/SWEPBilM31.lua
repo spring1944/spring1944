@@ -10,7 +10,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 			name				= "flak3820mmaa",
 		},
 		[2] = {
-			name				= "vickers", -- TODO: ksp m/36
+			name				= "ksp_m1936",
 			maxAngleDif			= 15,
 		},
 		[3] = {

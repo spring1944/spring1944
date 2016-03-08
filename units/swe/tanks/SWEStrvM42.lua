@@ -17,26 +17,26 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	buildCostMetal		= 2400,
 	weapons = {
 		[1] = {
-			name				= "M375mmAP",
+			name				= "SWE75mmL34AP",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "M375mmHE",
+			name				= "SWE75mmL34HE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[3] = { -- coax 1
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 		},
 		[4] = { -- coax 2
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 		},
 		[5] = { -- back turret
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 		},
 		[6] = { -- hull
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 			maxAngleDif			= 50,
 		},
 		[7] = {

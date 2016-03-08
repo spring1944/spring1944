@@ -427,6 +427,32 @@ local Type376mmL40HE = MediumGun:New(MediumHE, true):New{
   },  
 }
 
+-- 75 mm m/41 gun L/34 (SWE)
+local SWE75mmL34 = MediumGun:New{
+  name               = [[75 mm m/41 gun L/34]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[SWE_75_mm_Strv_42]],
+}
+
+local SWE75mmL34HE = MediumHE:New(SWE75mmL34, true):New{
+  areaOfEffect       = 104,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2260,
+  },  
+}
+local SWE75mmL34AP = MediumAP:New(SWE75mmL34, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 51,
+    armor_penetration_100m  = 89,
+  },
+  damage = {
+    default            = 2280,
+  },
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 75mm
@@ -477,4 +503,6 @@ return lowerkeys({
   Type9075mmAP = Type9075mmAP,
   -- Type 3 76mm/40 Naval gun (JPN)
   Type376mmL40HE = Type376mmL40HE,
+  SWE75mmL34HE = SWE75mmL34HE,
+  SWE75mmL34AP = SWE75mmL34AP,
 })

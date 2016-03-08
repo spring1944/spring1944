@@ -10,7 +10,7 @@ local SWE_Rifle = RifleInf:New(SWEInf):New{
 	name				= "6,5 mm Gevär m/38",
 	weapons = {
 		[1] = { -- Rifle
-			name				= "Enfield",
+			name				= "Gevar_M_38",
 		},
 		[2] = { -- Grenade
 			name				= "Model24",
@@ -22,7 +22,7 @@ local SWE_AgM42 = RifleInf:New(SWEInf):New{
 	name				= "6,5 mm Automatgevär m/42",
 	weapons = {
 		[1] = { -- Rifle
-			name				= "M1Garand",
+			name				= "AgM42",
 		},
 		[2] = { -- Grenade
 			name				= "Model24",
@@ -34,7 +34,7 @@ local SWE_KPistM3739 = SMGInf:New(SWEInf):New{
 	name				= "9mm Kulsprutepistol m/37-39",
 	weapons = {
 		[1] = { -- SMG
-			name				= "STEN",
+			name				= "KPistM3738",
 		},
 		[2] = { -- Grenade
 			name				= "Model24",
@@ -63,7 +63,7 @@ local SWE_MG_Sandbag = SandbagMG:New{
 	name				= "Deployed Kulsprutegevär m/36 Heavy Machinegun",
 	weapons = {
 		[1] = { -- HMG
-			name				= "m1919a4browning_deployed",
+			name				= "ksp_m1936_deployed",
 		},
 	},
 }
@@ -72,7 +72,7 @@ local SWE_Sniper = SniperInf:New(SWEInf):New{
 	name				= "6,5 mm Gevär m/41 Sniper",
 	weapons = {
 		[1] = { -- Sniper Rifle
-			name				= "Enfield_T",
+			name				= "Gevar_M_38_Sniper",
 		},
 	},
 }
@@ -110,7 +110,7 @@ local SWE_Mortar = MedMortarInf:New(SWEInf):New{
 local SWE_Observ = ObservInf:New(SWEInf):New{
 	weapons = {
 		[2] = { -- Pistol
-			name				= "WaltherP38",
+			name				= "HusqvarnaM40",
 		},
 	},
 }

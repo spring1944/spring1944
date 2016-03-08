@@ -7,12 +7,12 @@ local SWEStrvM37 = Tankette:New{
 
 	weapons = {
 		[1] = {
-			name				= "Vickers", -- TODO: m/36
+			name				= "ksp_m1936",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "Vickers", -- TODO: m/36
+			name				= "ksp_m1936",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 			slaveTo				= 1,

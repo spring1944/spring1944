@@ -100,6 +100,17 @@ local Type100SMG = SMGClass:New{
   sprayAngle         = 380,
 }
 
+local KPistM3738 = SMGClass:New{
+	burst		= 5,
+	burstRate	= 0.076,	-- sync with sound sample
+	movingAccuracy	= 1300,
+	name		= "kpist m/37-39",
+	range		= 325,
+	reloadtime	= 1.7,
+	soundStart	= [[KPist_M_37_39]],
+	sprayAngle	= 380,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   STEN = STEN,
@@ -110,4 +121,5 @@ return lowerkeys({
   BerettaM38 = BerettaM38,
   FNAB43 = FNAB43,
   Type100SMG = Type100SMG,
+  KPistM3738 = KPistM3738,
 })

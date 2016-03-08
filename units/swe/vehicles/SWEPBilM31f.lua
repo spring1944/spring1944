@@ -7,7 +7,7 @@ local SWEPBilM31f = ArmouredCar:New{
 
 	weapons = {
 		[1] = {
-			name				= "M1919A4Browning",
+			name				= "ksp_m1936",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 90,
 		},

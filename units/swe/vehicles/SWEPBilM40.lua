@@ -17,7 +17,7 @@ local SWEPBilM40 = ArmouredCar:New{
 			maxAngleDif			= 210,
 		},
 		[3] = {
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},-- TODO: Hull MGs?

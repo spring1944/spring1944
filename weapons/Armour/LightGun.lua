@@ -83,6 +83,30 @@ local M637mmAP = LightAP:New(M637mm, true):New{
   },
 }
 
+-- Sweden
+local Bofors_m38 = M637mm:New{
+	name	= [[37 mm Bofors m/38 gun]],
+	soundStart = [[SWE_37_mm]]
+}
+
+local Bofors_m38AP = LightAP:New(Bofors_m38, true):New{
+	weaponVelocity     = 1768,
+	customparams = {
+		armor_penetration_1000m = 46,
+		armor_penetration_100m  = 63,
+	},
+	damage = {
+		default            = 933,
+	},
+}
+
+local Bofors_m38HE = LightHE:New(Bofors_m38, true):New{
+	areaOfEffect       = 44,
+	weaponVelocity     = 1584,
+	damage = {
+		default            = 228,
+	},
+}
 -- M1938 20K 45mm (RUS)
 local M1938_20K45mm = LightGun:New{
   name               = [[20K M1938 45mm]],
@@ -326,4 +350,6 @@ return lowerkeys({
   -- Type 1 47mm
   Type147mmHE = Type147mmHE,
   Type147mmAP = Type147mmAP,
+  Bofors_m38AP = Bofors_m38AP,
+  Bofors_m38HE = Bofors_m38HE,
 })
