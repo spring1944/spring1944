@@ -11,6 +11,7 @@ local SWE_BarracksTruck = SWE_ScaniaVabisF11Base:New{
 	buildpic	= "swescaniavabisf11.png",
 	buildCostMetal				= 1500,
 	description	= "Mobile Barracks",
+	iconType		= "truck_barracks",
 }
 
 return lowerkeys({
