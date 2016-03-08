@@ -1,6 +1,4 @@
 base
-    plate
-        post
-            nano
-                beam
+    truck
     pad
+        beam
