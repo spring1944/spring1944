@@ -72,7 +72,7 @@ function script.Create()
 	end
 	-- hide propeller blades if any
 	if info.blades then
-		for _, blade in pairs(info.blades)
+		for _, blade in pairs(info.blades) do
 			Hide(blade)
 		end
 	end
