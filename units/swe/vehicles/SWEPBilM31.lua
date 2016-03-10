@@ -10,10 +10,14 @@ local SWEPBilM31 = ArmouredCarAA:New{
 			name				= "boforsm40_20mmaa",
 		},
 		[2] = {
-			name				= "ksp_m1936",
-			maxAngleDif			= 15,
+			name				= "boforsm40_20mmhe",
 		},
+
 		[3] = {
+			name				= "ksp_m1936",
+			maxAngleDif			= 30,
+		},
+		[4] = {
 			name				= ".30calproof",
 		},
 	},
