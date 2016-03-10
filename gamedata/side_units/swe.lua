@@ -111,6 +111,21 @@ local sweunits =
 		"swe_sortie_divebomber",
 		"swe_sortie_at",
 	},
+	sweboatyard =
+	{
+		"sweassaultboat",
+		"swepontoonraft",
+		"swet21",
+		"swevedettbat",
+	},
+	sweboatyardlarge =
+	{
+		"sweassaultboat",
+		"swepontoonraft",
+		"swet21",
+		"swevedettbat",
+		"swearholma",
+	},
 }
 
 return sweunits
