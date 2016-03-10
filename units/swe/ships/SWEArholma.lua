@@ -5,7 +5,7 @@ local SWE_Arholma = ArmedBoat:New{
 	brakeRate				= 0.14,
 	buildCostMetal			= 15000,
 	category				= "LARGESHIP SHIP MINETRIGGER",
-	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
+	collisionVolumeOffsets	= [[0.0 -60.0 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
 	maxDamage				= 67000,
 	maxVelocity				= 1.8,
@@ -25,6 +25,16 @@ local SWE_Arholma = ArmedBoat:New{
 			"SWEArholma_Turret_105mm_rear", 
 			"SWEArholma_Turret_40mm_rear", 
 			"SWEArholma_Turret_40mm_rear", 
+		},
+		piecehitvols = {
+			superstructure = {
+				offset = { 0, 0, 0 },
+				scale = { 0.6, 1, 1 }
+			},
+			base2 = {
+				offset = { 0, 0, 0 },
+				scale = { 0.6, 1, 1 }
+			},
 		},
 		deathanim = {
 			["z"] = {angle = 20, speed = 10},
