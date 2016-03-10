@@ -22,7 +22,7 @@ local SWE_Vedettbat = ArmedBoat:New{
 		children = {
 			"SWEVedettbat_turret_57mm_front",
 			"SWEVedettbat_turret_57mm_rear",
-			"SWEVedettbat_turret_40mm_rear",
+			"SWEVedettbat_turret_25mm_rear",
 		},
 
 		deathanim = {
@@ -66,18 +66,18 @@ local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
     },
 }
 
-local SWEVedettbat_turret_40mm_rear = OpenBoatTurret:New{
-	name					= "Bofors Turret",
+local SWEVedettbat_turret_25mm_rear = OpenBoatTurret:New{
+	name					= "25mm Bofors Turret",
 	description				= "AA Turret",
-	objectName				= "<SIDE>/SWEVedettbat_turret_40mm.s3o",
+	objectName				= "<SIDE>/SWEVedettbat_turret_25mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "bofors40mmaa",
+			name				= "bofors25mm_aa",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			name				= "bofors40mmhe",
+			name				= "bofors25mm_he",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
@@ -98,5 +98,5 @@ return lowerkeys({
 	["SWEVedettbat"] = SWE_Vedettbat,
 	["SWEVedettbat_turret_57mm_front"] = SWEVedettbat_turret_57mm_front,
 	["SWEVedettbat_turret_57mm_rear"] = SWEVedettbat_turret_57mm_rear,
-	["SWEVedettbat_turret_40mm_rear"] = SWEVedettbat_turret_40mm_rear,
+	["SWEVedettbat_turret_25mm_rear"] = SWEVedettbat_turret_25mm_rear,
 })

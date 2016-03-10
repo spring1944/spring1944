@@ -91,9 +91,9 @@ local Bofors_m38 = M637mm:New{
 
 local Bofors_m38AP = LightAP:New(Bofors_m38, true):New{
 	weaponVelocity     = 1768,
-	customparams = {
-		armor_penetration_1000m = 46,
-		armor_penetration_100m  = 63,
+	customparams = {	-- taken from http://www.jaegerplatoon.net/AT_GUNS1.htm
+		armor_penetration_1000m = 43,
+		armor_penetration_100m  = 71,
 	},
 	damage = {
 		default            = 933,
