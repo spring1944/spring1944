@@ -49,7 +49,15 @@ local RUS_LCT = TankLandingCraft:New{
 	},
 }
 
+local SWE_LCT = RUS_LCT:New{
+	corpse		= "SWELCT_dead",
+	script		= "ruslct.cob",
+	customparams	= {
+		soundcategory		= "SWE/Boat",
+	},
+}
 
 return lowerkeys({
 	["RUSLCT"] = RUS_LCT,
+	["SWELCT"] = SWE_LCT,
 })

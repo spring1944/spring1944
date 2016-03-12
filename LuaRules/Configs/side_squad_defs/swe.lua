@@ -160,6 +160,17 @@ local sweDefs = {
 		buildCostMetal = 3500,
 		-- other fields not needed for transport squads
 	},
+	["swe_platoon_lct"] =
+	{
+		members = {
+			"swestrvm42",
+			"swestrvm42",
+			"swestrvm42",
+			"swesavm43",
+			"swetgbilm42",
+		},
+		-- other fields not needed for transport squads
+	},
 
 }
 
