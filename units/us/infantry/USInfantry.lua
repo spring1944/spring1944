@@ -37,6 +37,7 @@ local US_Thompson = SMGInf:New(USInf):New{
 local US_BAR = RifleInf:New(USInf):New{
 	name				= "BAR M1918A2 Light Machinegun",
 	description			= "Long Range Assault/Light Fire Support Unit",
+	iconType			= "bar",
 	weapons = {
 		[1] = { -- LMG
 			name				= "BAR",
