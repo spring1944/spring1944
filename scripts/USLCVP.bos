@@ -278,7 +278,7 @@ FireWeapon1()
 
 Shot1(foo)
 {
-	emit-sfx SMALL_TRACER from flare1;
+	//emit-sfx SMALL_TRACER from flare1;
 	emit-sfx MG_MUZZLEFLASH from flare1;
 }
 
@@ -313,7 +313,7 @@ FireWeapon2()
 
 Shot2(foo)
 {
-	emit-sfx SMALL_TRACER from flare2;
+	//emit-sfx SMALL_TRACER from flare2;
 	emit-sfx MG_MUZZLEFLASH from flare2;
 }
 
