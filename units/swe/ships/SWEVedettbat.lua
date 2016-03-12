@@ -42,14 +42,14 @@ local SWEVedettbat_turret_57mm_front = OpenBoatTurret:New{
 	objectName				= "<SIDE>/SWEVedettbat_Turret_57mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "QF6Pdr57MkIIAHE",
+			name				= "SWE_57mmM95",
 			maxAngleDif			= 270,
 		},
 	},
 	customparams = {
 		maxammo					= 14,
 
-		barrelrecoildist		= 7,
+		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
