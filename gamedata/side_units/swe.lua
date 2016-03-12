@@ -115,6 +115,7 @@ local sweunits =
 	{
 		"sweassaultboat",
 		"swepontoonraft",
+		"swelcvp",
 		"swet21",
 		"swevedettbat",
 	},
@@ -122,6 +123,7 @@ local sweunits =
 	{
 		"sweassaultboat",
 		"swepontoonraft",
+		"swelcvp",
 		"swet21",
 		"swevedettbat",
 		"swearholma",

@@ -34,7 +34,16 @@ local US_LCVP = InfantryLandingCraft:New{
 	},
 }
 
+SWE_LCVP = US_LCVP:New{
+	objectName		= "<SIDE>/SWELCVP.s3o",
+	corpse			= "uslcvp_dead",
+	script			= "uslcvp.cob",
+	customparams = {
+		soundcategory		= "SWE/Boat",
+	}
+}
 
 return lowerkeys({
 	["USLCVP"] = US_LCVP,
+	["SWELCVP"] = SWE_LCVP,
 })

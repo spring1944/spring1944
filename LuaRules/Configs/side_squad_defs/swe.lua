@@ -128,6 +128,39 @@ local sweDefs = {
 		buildPic = "sweobserv.png",
 	},
 
+	["swe_platoon_landing"] =
+	{
+		members = {
+			"sweobserv",
+			"sweobserv",
+			"swemg",
+			"swekgm37",
+			"swekgm37",
+			"swekgm37",
+			"swekgm37",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+		},
+		buildCostMetal = 3500,
+		-- other fields not needed for transport squads
+	},
+
 }
 
 return sweDefs
