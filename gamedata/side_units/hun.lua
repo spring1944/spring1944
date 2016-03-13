@@ -19,6 +19,17 @@ local hununits = {
 		"hunpontoonraft",
 	},
 
+	hunbergehetzer = {
+		"hunbarracks",
+		"hungunyard",
+		"hunvehicleyard",
+		"hunradar",
+		"huntankyard",
+		"hunstorage",
+		"hunsupplydepot",
+		"huntankobstacle",
+	},
+	
 	hunbarracks =
 	{
 		"hunengineer",
@@ -70,7 +81,32 @@ local hununits = {
 		"huntoldiii",
 		"hun40mturan",
 	},
-	
+
+	huntankyard =
+	{
+		"hunbergehetzer",
+		"huntoldiiia",
+		"hun40mturan",
+		"hun41mturanii",
+	},
+
+	huntankyard1 =
+	{
+		"hunbergehetzer",
+		"huntoldiiia",
+		"hun40mturan",
+		"hun41mturanii",
+		"hun43mturaniii",
+	},
+
+	huntankyard2 =
+	{
+		"hunbergehetzer",
+		"huntoldiiia",
+		"hun40mturan",
+		"hun41mturanii",
+		"hun44mtas",
+	},	
 }
 
 return hununits

@@ -453,6 +453,66 @@ local SWE75mmL34AP = MediumAP:New(SWE75mmL34, true):New{
   },
 }
 
+-- Hungary
+local Mavag_75_41M = MediumGun:New{
+  name               = [[MAVAG 41.M 75mm/24]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[US_75mm]],
+}
+
+local Mavag_75_41MHE = MediumHE:New(Mavag_75_41M, true):New{
+  areaOfEffect       = 88,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 1334,
+  },  
+}
+
+-- 42/36M páncélgránát
+local Mavag_75_41MAP = MediumAP:New(Mavag_75_41M, true):New{
+  weaponVelocity     = 1176,
+  customparams = {
+    armor_penetration_1000m = 45,
+    armor_penetration_100m  = 56,
+  },
+  damage = {
+    default            = 2557,
+  },
+}
+
+-- 7,5 cm 42M páncélrobbantó gránát
+local Mavag_75_41MHEAT = HEAT:New(Mavag_75_41M, true):New{
+  range              = 851,
+  weaponVelocity     = 600,
+  customparams = {
+    armor_penetration       = 70,
+  },
+  damage = {
+    default            = 2419,
+  },
+}
+
+local Mavag_75_43MHE = MediumHE:New(KwK75mmL48, true):New{
+	name				= [[MAVAG 43.M 75mm]],
+	areaOfEffect       = 87,
+	weaponVelocity     = 1096,
+	damage = {
+		default            = 1280,
+	},  
+}
+local Mavag_75_43MAP = MediumAP:New(KwK75mmL48, true):New{
+	name				= [[MAVAG 43.M 75mm]],
+	weaponVelocity     = 1480,
+	customparams = {
+		armor_penetration_1000m = 81,
+		armor_penetration_100m  = 91,
+	},
+	damage = {
+		default            = 2613,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 75mm
@@ -505,4 +565,9 @@ return lowerkeys({
   Type376mmL40HE = Type376mmL40HE,
   SWE75mmL34HE = SWE75mmL34HE,
   SWE75mmL34AP = SWE75mmL34AP,
+  Mavag_75_41MAP = Mavag_75_41MAP,
+  Mavag_75_41MHE = Mavag_75_41MHE,
+  Mavag_75_41MHEAT = Mavag_75_41MHEAT,
+  Mavag_75_43MAP = Mavag_75_43MAP,
+  Mavag_75_43MHE = Mavag_75_43MHE,
 })

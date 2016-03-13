@@ -124,7 +124,27 @@ local hunDefs = {
 			facing = true,
 		},
 	},
+	huntankyard = {
+		{
+			into = 'huntankyard1',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Advanced  \n  Mediums  ',
+			text = 'Makes Advanced Medium Armor available in this yard',
+			facing = true,
+		},
 
+		{
+			into = 'huntankyard2',
+			metal = 4500,
+			energy = 0,
+			time = 60,
+			name = '  Heavy  \n  Armor  ',
+			text = 'Makes Heavy Armor available in this yard',
+			facing = true,
+		},
+	},
 }
 
 return hunDefs
