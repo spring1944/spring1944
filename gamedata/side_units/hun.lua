@@ -41,6 +41,15 @@ local hununits = {
 		"hun36mbofors_truck",
 	},
 
+	hunspyard1 =
+	{
+		"hunbergehetzer",
+		"hun38mbotond",
+		"hunpak40_truck",
+		"hunlefh18_truck",
+		"hun36mbofors_truck",
+		"hunhetzer",
+	},
 }
 
 return hununits

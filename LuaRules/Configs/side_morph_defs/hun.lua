@@ -91,6 +91,28 @@ local hunDefs = {
 		energy = 0,
 	},
 
+	hungunyard = {
+		--[[
+		{
+			into = 'hunspyard',
+			metal = 4025,
+			energy = 0,
+			time = 115,
+			name = '  Self  \n  Propelled  ',
+			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		]]--
+		{
+			into = 'hunspyard1',
+			metal = 5200,
+			energy = 0,
+			time = 150,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
+			facing = true,
+		},
+	},
 }
 
 return hunDefs
