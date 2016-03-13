@@ -34,6 +34,21 @@ local function DamageSmoke(smokePieces)
 	end
 end
 
+-- this is for SWE radar equivalent
+local function AirScanner()
+	local turret, balancer = piece("scanner_turret"), piece("scanner_balancer")
+	if turret and balancer then
+		local scanSpeed = math.rad(5)
+		while true do
+			Turn(turret, y_axis, math.rad(math.random(0, 50) - 25), scanSpeed)
+			Turn(balancer, x_axis, math.rad(math.random(0, 80) - 40), scanSpeed)
+			WaitForTurn(turret, y_axis)
+			WaitForTurn(balancer, x_axis)
+			Sleep(1000)
+		end
+	end
+end
+
 local function Raise()
 	local height = Spring.GetUnitHeight(unitID)
 	while select(5, Spring.GetUnitHealth(unitID)) < 1 do
@@ -43,6 +58,9 @@ local function Raise()
 	Move(base, y_axis, 0)
 	if radar then
 		Spin(radar, y_axis, math.rad(60), math.rad(5))
+	end
+	if piece("scanner_turret") then
+		StartThread(AirScanner)
 	end
 end
 
