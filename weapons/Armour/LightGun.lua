@@ -318,6 +318,30 @@ local Type147mmAP = LightAP:New(Type147mm, true):New{
   },
 }
 
+-- Hungarian 40mm tank gun
+local Mavag_37_42M = Bofors_m38:New{
+	name			= [[37/42M MÁVAG]],
+	reloadTime		= 3.75,	-- 16 rpm
+}
+
+local Mavag_37_42MAP = LightAP:New(Mavag_37_42M, true):New{
+	weaponVelocity	= 1768,
+	customparams = {
+		armor_penetration_100m = 64,
+		armor_penetration_1000m = 30,
+	},
+	damage = {
+		default            = 933,
+	},
+}
+
+local Mavag_37_42MHE = LightHE:New(Mavag_37_42M, true):New{
+	areaOfEffect       = 44,
+	weaponVelocity     = 1584,
+	damage = {
+		default            = 228,
+	},
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -352,4 +376,7 @@ return lowerkeys({
   Type147mmAP = Type147mmAP,
   Bofors_m38AP = Bofors_m38AP,
   Bofors_m38HE = Bofors_m38HE,
+  -- Hungary
+  Mavag_37_42MAP = Mavag_37_42MAP,
+  Mavag_37_42MHE = Mavag_37_42MHE,
 })

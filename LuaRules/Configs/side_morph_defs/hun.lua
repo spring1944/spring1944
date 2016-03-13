@@ -113,6 +113,18 @@ local hunDefs = {
 			facing = true,
 		},
 	},
+	hunvehicleyard = {
+		{
+			into = 'hunvehicleyard1',
+			metal = 2000,
+			energy = 0,
+			time = 65,
+			name = '  Light  \n  Armor  ',
+			text = 'Makes Light Armor available in this yard',
+			facing = true,
+		},
+	},
+
 }
 
 return hunDefs

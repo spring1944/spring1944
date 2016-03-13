@@ -391,6 +391,10 @@ local Schwarzlose = Maxim:New{
 	name               = [[Schwarzlose 07/31M]],
 }
 
+local gebauer_1934_37m = M1919A4Browning:New{
+	name			= [[Gebauer Tank Machine Gun 1934/37.M]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- 8mm
@@ -433,4 +437,5 @@ return lowerkeys({
   ksp_m1939 = ksp_m1939,
   mg30 = mg30,
   mg7_deployed = Schwarzlose,
+  gebauer_1934_37m = gebauer_1934_37m,
 })
