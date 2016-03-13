@@ -92,7 +92,6 @@ local hunDefs = {
 	},
 
 	hungunyard = {
-		--[[
 		{
 			into = 'hunspyard',
 			metal = 4025,
@@ -102,7 +101,6 @@ local hunDefs = {
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
 		},
-		]]--
 		{
 			into = 'hunspyard1',
 			metal = 5200,
