@@ -1,0 +1,11 @@
+[hunhq_dead] {
+  description=Destroyed HQ;
+  damage=2501;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=10;
+  footprintZ=8;
+  object=HUN/HUNHQ_Dead.S3O;
+  reclaimable=1;
+}
+

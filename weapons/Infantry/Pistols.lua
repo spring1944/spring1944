@@ -56,6 +56,12 @@ local HusqvarnaM40 = PistolClass:New{
 	sprayAngle         = 50, -- intended?
 }
 
+-- FÉG 37M
+local feg37m = PistolClass:New{
+	name			= [[FÉG 37M]],
+	soundStart         = [[GER_Walther]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Webley = Webley,
@@ -65,4 +71,5 @@ return lowerkeys({
   BerettaM1934 = BerettaM1934,
   NambuType14 = NambuType14,
   HusqvarnaM40 = HusqvarnaM40,
+  feg37m = feg37m,
 })

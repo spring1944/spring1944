@@ -107,6 +107,15 @@ local Gevar_M_38 = RifleClass:New{
 	soundStart         = [[SWE_M_38_rifle]],
 }
 
+-- Hungary
+-- FÉG 35M
+local HUN_FEG35M = RifleClass:New{
+	name               = [[FÉG 35M]],
+	range              = 665,
+	reloadtime         = 2.8,
+	soundStart         = [[GER_K98K]],
+}
+
 -- Sniper Rifle Base Class
 local SniperRifleClass = RifleClass:New{
   accuracy           = 0,
@@ -177,6 +186,11 @@ local Gevar_M_38_Sniper = SniperRifleClass:New{
 	soundStart		= [[SWE_M_38_rifle]],
 }
 
+local FEG_35M_Sniper = SniperRifleClass:New{
+	name			= "FÉG 35M Sniper Model",
+	soundStart         = [[GER_K98K]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Enfield = Enfield,
@@ -198,4 +212,6 @@ return lowerkeys({
   AgM42 = AgM42,
   Gevar_M_38 = Gevar_M_38,
   Gevar_M_38_Sniper = Gevar_M_38_Sniper,
+  feg35m = HUN_FEG35M,
+  feg35m_sniper = FEG_35M_Sniper,
 })

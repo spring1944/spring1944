@@ -1,0 +1,11 @@
+[hunbarracks_destroyed] {
+  description=Destroyed Barracks;
+  damage=1251;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=5;
+  footprintZ=7;
+  object=HUN/HUNBarracks_Dead.S3O;
+  reclaimable=1;
+}
+

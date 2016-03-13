@@ -30,7 +30,10 @@ local sidedata = {
 	{
 	name = "SWE",
 	startUnit = "SWEHQ",
+	},
+	{
+	name = "HUN",
+	startUnit = "HUNHQ",
 	}
-
 }
 return sidedata

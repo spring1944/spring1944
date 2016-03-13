@@ -63,6 +63,13 @@ local MG42AA = MG42:New(AAMG):New{
   sprayAngle         = 460,
 }
 
+-- remote-controlled MG42 - really crappy accuracy as the gunner doesn't really see what he's shooting
+local mg42remote = MG42:New{
+	accuracy		= 5000,
+	movingAccuracy	= 9000,
+	sprayAngle		= 1000,
+}
+
 -- DP (RUS)
 local DP = MGClass:New{
   burst              = 5,
@@ -233,7 +240,6 @@ local TE4 = MGClass:New(AAMG):New{
   }
 }
 
-
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
 local Twin05CalVickers = HeavyMGClass:New{
@@ -376,8 +382,14 @@ local Type1Ho103 = HeavyMGClass:New{
   }
 }
 
+-- Solothurn 31M
+local mg30 = MG34:New{
+	name			= [[Solothurn 31M]],
+}
 
-
+local Schwarzlose = Maxim:New{
+	name               = [[Schwarzlose 07/31M]],
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -389,6 +401,7 @@ return lowerkeys({
   MG42 = MG42,
   MG42_Deployed = MG42_Deployed,
   MG42AA = MG42AA,
+  mg42remote = mg42remote,
   DP = DP,
   DT = DT,
   Maxim = Maxim,
@@ -418,4 +431,6 @@ return lowerkeys({
   ksp_m1936 = ksp_m1936,
   ksp_m1936_deployed = ksp_m1936_deployed,
   ksp_m1939 = ksp_m1939,
+  mg30 = mg30,
+  mg7_deployed = Schwarzlose,
 })

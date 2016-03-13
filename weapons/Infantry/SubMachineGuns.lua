@@ -111,6 +111,19 @@ local KPistM3738 = SMGClass:New{
 	sprayAngle	= 380,
 }
 
+-- Hungary
+-- Danuvia 43M
+local danuvia43m = SMGClass:New{
+	burst              = 8,
+	burstRate          = 0.086,
+	movingAccuracy     = 1300,
+	name               = [[Danuvia 43M]],
+	range              = 325,
+	reloadtime         = 1.7,
+	soundStart         = [[ITA_BerettaM38]],
+	sprayAngle         = 380,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   STEN = STEN,
@@ -122,4 +135,5 @@ return lowerkeys({
   FNAB43 = FNAB43,
   Type100SMG = Type100SMG,
   KPistM3738 = KPistM3738,
+  danuvia43m = danuvia43m,
 })

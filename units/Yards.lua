@@ -30,6 +30,9 @@ units["jpnvehicleyard2"] = VehicleYardArmour:New{
 }
 units["jpnstorage"].objectname = "jpn/jpnstorage.s3o"
 
+-- Hungary uses side-specific storage model
+units["hunstorage"].objectname = "hun/hunstorage.s3o"
+
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
 

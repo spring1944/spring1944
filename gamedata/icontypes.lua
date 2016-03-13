@@ -400,6 +400,11 @@ local iconTypes = {
 		size		=	4,
 		distance	=	0.8,
 	},
+	hunhq = {
+		bitmap		=	"icons/hunhq.tga",
+		size			=	4,
+		distance	=	0.8,
+	},	
 }
 
 return iconTypes
