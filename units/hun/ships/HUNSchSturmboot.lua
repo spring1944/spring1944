@@ -1,5 +1,8 @@
-local GER_SchSturmboot = InfantryLandingCraft:New{
+local HUN_SchSturmboot = InfantryLandingCraft:New{
 	name					= "Schwere Sturmboot 42",
+	objectName				= "GER/GERSchSturmboot.s3o",
+	corpse					= "GERSchSturmboot_dead",
+	script					= "gerschsturmboot.cob",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 400,
@@ -17,5 +20,5 @@ local GER_SchSturmboot = InfantryLandingCraft:New{
 }
 
 return lowerkeys({
-	["GERSchSturmboot"] = GER_SchSturmboot,
+	["HUNSchSturmboot"] = HUN_SchSturmboot,
 })

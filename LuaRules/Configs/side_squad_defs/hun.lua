@@ -132,7 +132,7 @@ local hunDefs = {
 		members = {
 			"hunobserv",
 			"hunobserv",
-			"hunmg42",
+			"hunlmg",
 			"hunsmg",
 			"hunsmg",
 			"hunsmg",
@@ -155,17 +155,14 @@ local hunDefs = {
 		-- other fields not needed for transport squads
 	},
 
---[[
 	["hun_platoon_lct"] =
 	{
 		members = {
-			"gerpanzeriv",
-			"gerpanzeriv",
-			"gerpanzeriv",
+			"hun40mturan",
+			"hun41mturanii",
 		},
 		-- other fields not needed for transport squads
 	},
-]]--
 }
 
 return hunDefs

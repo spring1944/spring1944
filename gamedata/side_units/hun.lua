@@ -116,7 +116,27 @@ local hununits = {
 		"hun40mturan",
 		"hun41mturanii",
 		"hun44mtas",
-	},	
+	},
+	hunboatyard =
+	{
+		"hunassaultboat",
+		"hunpontoonraft",
+		"hunpam21",
+		"hunpm",
+		"hungunboat",
+		"hunschsturmboot",
+	},
+	hunboatyardlarge =
+	{
+		"hunassaultboat",
+		"hunpontoonraft",
+		"hunpam21",
+		"hunpm",
+		"hungunboat",
+		"hunafp",
+		"hunschsturmboot",
+		"hunlabo41",
+	},
 }
 
 return hununits

@@ -143,6 +143,28 @@ local hunDefs = {
 			facing = true,
 		},
 	},
+	hunpontoontruck =
+	{
+		into = 'hunboatyard',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+		facing = true,
+	},
+
+	hunboatyard = {
+		{
+			into = 'hunboatyardlarge',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Landing \n Fire \n Support  ',
+			text = 'Makes Landing Fire Support Craft available in this yard',
+			facing = true,
+		},
+	},
+
 }
 
 return hunDefs
