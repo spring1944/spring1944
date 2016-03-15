@@ -90,15 +90,15 @@ local hunDefs = {
 	["hun_platoon_mortar"] =
 	{
 		members = {
-			"hungrw34",
+			"hunmortar",
 			"hunobserv",
-			"hungrw34",
-			"hungrw34",
+			"hunmortar",
+			"hunmortar",
 		},
-		name = "GrW 34 Mortar Team",
-		description = "3 x GrW 34 Mortar, 1 x Scout: Heavy Infantry Fire Support",
+		name = "8 cm 36/39M aknavető Mortar team",
+		description = "8 cm 36/39M aknavető (Mortar), 1 x Scout: Heavy Infantry Fire Support",
 		buildCostMetal = 2110,
-		buildPic = "HUNGrW34.png",
+		buildPic = "hunmortar.png",
 	},
 
 	["hun_platoon_at"] =

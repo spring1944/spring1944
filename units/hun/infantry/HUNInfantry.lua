@@ -80,8 +80,8 @@ local HUN_PanzerSchrek = ATLauncherInf:New(HUNInf):New{
 	},
 }
 
-local HUN_GrW34 = MedMortarInf:New(HUNInf):New{
-	name				= "8cm GrW 34 Mortar",
+local HUN_Mortar = MedMortarInf:New(HUNInf):New{
+	name				= "8 cm 36/39M aknavető",
 	weapons = {
 		[1] = { -- HE
 			name				= "GrW34_8cmMortar",
@@ -113,6 +113,6 @@ return lowerkeys({
 	["HUNSniper"] = HUN_Sniper,
 	["HUNPanzerfaust"] = HUN_PanzerFaust,
 	["HUNPanzerschrek"] = HUN_PanzerSchrek,
-	["HUNGrW34"] = HUN_GrW34,
+	["HUNMortar"] = HUN_Mortar,
 	["HUNObserv"] = HUN_Observ,
 })
