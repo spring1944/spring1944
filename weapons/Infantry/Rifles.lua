@@ -113,7 +113,7 @@ local HUN_FEG35M = RifleClass:New{
 	name               = [[FÉG 35M]],
 	range              = 665,
 	reloadtime         = 2.8,
-	soundStart         = [[GER_K98K]],
+	soundStart         = [[HUN_FEG_35M]],
 }
 
 -- Sniper Rifle Base Class
@@ -188,7 +188,7 @@ local Gevar_M_38_Sniper = SniperRifleClass:New{
 
 local FEG_35M_Sniper = SniperRifleClass:New{
 	name			= "FÉG 35M Sniper Model",
-	soundStart         = [[GER_K98K]],
+	soundStart         = [[HUN_FEG_35M]],
 }
 
 -- Return only the full weapons

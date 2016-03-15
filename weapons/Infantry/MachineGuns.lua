@@ -389,6 +389,9 @@ local mg30 = MG34:New{
 
 local Schwarzlose = Maxim:New{
 	name               = [[Schwarzlose 07/31M]],
+	burstRate          = 0.132,	-- sync with sound
+	reloadTime         = 3.5,
+	soundStart	   = [[7m_Schwarzlose_burst]],
 }
 
 local gebauer_1934_37m = M1919A4Browning:New{
