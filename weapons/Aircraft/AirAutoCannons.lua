@@ -64,6 +64,19 @@ local MG15115mm = AutoCannonHE:New(AirAutoCannon, true):New{
   },
 } 
 
+local MG13113mm = AutoCannonHE:New(AirAutoCannon, true):New{
+  areaOfEffect       = 8,
+  burstRate          = 0.08,
+  explosionGenerator = [[custom:Bullet]],
+  name               = [[13mm MG 131/13 Aircraft Cannon]],  
+  predictBoost       = 0.75,
+  reloadTime         = 0.8, -- why so different?
+  soundStart         = [[GER_15mmAir]],
+  damage = {
+    default            = 30,
+  },
+} 
+
 -- ShVAK 20mm (RUS)
 local ShVAK20mm = AutoCannonHE:New(AirAutoCannon, true):New{
   areaOfEffect       = 10,
@@ -133,6 +146,7 @@ return lowerkeys({
   Mk10830mm = Mk10830mm,
   MG15120mm = MG15120mm,
   MG15115mm = MG15115mm,
+  MG13113mm = MG13113mm,
   ShVAK20mm = ShVAK20mm,
   VYa23mm = VYa23mm,
   Ho520mmAP = Ho520mmAP,

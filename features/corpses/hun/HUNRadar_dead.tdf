@@ -1,0 +1,11 @@
+[hunradar_destroyed] {
+  description=Destroyed Radar;
+  damage=1251;
+  energy=1000;
+  featureDead=BuildingDebris_Large;
+  footprintX=5;
+  footprintZ=7;
+  object=HUN/HUNRadar_Dead.S3O;
+  reclaimable=1;
+}
+

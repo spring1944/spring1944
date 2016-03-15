@@ -137,6 +137,12 @@ local hununits = {
 		"hunschsturmboot",
 		"hunlabo41",
 	},
+	hunradar = {
+		"hun_sortie_recon",
+		"hun_sortie_interceptor",
+		"hun_sortie_fighter",
+		"hun_sortie_bomber",
+	},
 }
 
 return hununits
