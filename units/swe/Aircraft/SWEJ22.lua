@@ -1,5 +1,6 @@
 local SWE_J22 = Fighter:New{
-	name				= "J 22B",
+	name				= "FFVS J 22B",
+	description			= "Interceptor",
 	buildCostMetal		= 1125,
 	maxDamage			= 283.5,
 		

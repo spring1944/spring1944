@@ -16,7 +16,6 @@ local GER_SchSturmboot = InfantryLandingCraft:New{
 	},
 }
 
-
 return lowerkeys({
 	["GERSchSturmboot"] = GER_SchSturmboot,
 })

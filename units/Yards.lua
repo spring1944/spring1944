@@ -30,6 +30,9 @@ units["jpnvehicleyard2"] = VehicleYardArmour:New{
 }
 units["jpnstorage"].objectname = "jpn/jpnstorage.s3o"
 
+-- Hungary uses side-specific storage model
+units["hunstorage"].objectname = "hun/hunstorage.s3o"
+
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
 
@@ -49,5 +52,7 @@ units["itaradar"].name = "Freya Air Control Station"
 units["jpnradar"].name = "Type 1 Model 2 'Mobile Matress' Radar"
 units["rusradar"].name = "RUS-2 Air Control Station"
 units["usradar"].name = "AN/TPS-3 (SCR-602-T8) Light Aircraft Detector"
+units["hunradar"].name = "SAS Air Control Station"
+units["hunradar"].corpse = "hunradar_destroyed"
 
 return lowerkeys(units)

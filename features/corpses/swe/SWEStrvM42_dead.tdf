@@ -1,0 +1,61 @@
+[SWEStrvM42_Abandoned]
+{
+  description=Abandoned Tank;
+  damage=2501;
+  energy=50;
+  featureDead=SWEStrvM42_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEStrvM42.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[SWEStrvM42_Burning]
+{
+  description=Destroyed Tank;
+  damage=2501;
+  energy=50;
+  featureDead=SWEStrvM42_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEStrvM42_Dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[SWEStrvM42_Wreck]
+{
+  description=Destroyed Tank;
+  damage=2501;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEStrvM42_Wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}

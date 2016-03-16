@@ -103,12 +103,14 @@ end
 
 function ChangeSmokeGenStatus(unitID, smokeGenEnabled)
 	local cmdDescID = FindUnitCmdDesc(unitID, CMD_SMOKEGEN)
-    local disabledSmokeCmd = {}
-    for k,v in pairs(smokeGenCmdDesc) do
-        disabledSmokeCmd[k] = v
-    end
-    disabledSmokeCmd.disabled = not smokeGenEnabled
-	EditUnitCmdDesc(unitID, cmdDescID, disabledSmokeCmd)
+	if cmdDescID then
+		local disabledSmokeCmd = {}
+		for k,v in pairs(smokeGenCmdDesc) do
+			disabledSmokeCmd[k] = v
+		end
+		disabledSmokeCmd.disabled = not smokeGenEnabled
+		EditUnitCmdDesc(unitID, cmdDescID, disabledSmokeCmd)
+	end
 end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)

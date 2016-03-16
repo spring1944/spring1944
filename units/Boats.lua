@@ -13,6 +13,9 @@ for _, side in pairs(Sides) do
 		units[side .. "assaultboat"].name = "PG-117"
 		units[side .. "assaultboat"].script = "RUSPG117.cob"
 	end
+	-- band-aid fix: remove corpses
+	units[side .. "pontoonraft"].corpse = nil
+	units[side .. "assaultboat"].corpse = nil
 end
 
 return lowerkeys(units)

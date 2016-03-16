@@ -1,5 +1,27 @@
 local sweDefs = {
 -- Upgrade Defs
+	swescaniavabisf11_barracks = {
+		{
+			into = 'swebarracks',
+			tech = 0,
+			time = 20,
+			metal = 0,
+			energy = 0,
+			facing = true,
+		},
+	},
+	swebarracks = {
+		{
+			into = 'swescaniavabisf11_barracks',
+			tech = 0,
+			time = 20,
+			metal = 0,
+			name = '  Pack  \n  Up  ',
+			energy = 0,
+			facing = true,
+		},
+	},
+
 	swevolvotvc = {
 		{
 			into = 'swegunyard',
@@ -278,6 +300,28 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 		facing = true,
+	},
+	
+	-- Unique mobile HQ
+	swepbilm31f =
+	{
+		into = 'swehq',
+		tech = 0,
+		time = 80,
+		metal = 0,
+		energy = 0,
+	},	
+
+	swehq =
+	{
+		{
+			into = 'swepbilm31f',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		}
 	},
 }
 local newDefs = {}

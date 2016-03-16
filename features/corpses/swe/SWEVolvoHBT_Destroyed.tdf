@@ -1,0 +1,22 @@
+[SWEVolvoHBT_Destroyed] {
+  description=Destroyed Gun Tractor;
+  damage=1251;
+  energy=50;
+  featureDead=SWEVolvoHBT_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEVolvoHBT_Dead.S3O;
+  reclaimable=1;
+}
+
+[SWEVolvoHBT_Wreck] {
+  description=Destroyed Gun Tractor;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEVolvoHBT_Wreck.S3O;
+  reclaimable=1;
+}
+

@@ -1,0 +1,26 @@
+[SWETgBilM42_destroyed] {
+  description=Destroyed Truck;
+  damage=1251;
+  energy=50;
+  featureDead=SWETgBilM42_wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWETgBilM42_Dead.s3o;
+  reclaimable=1;
+}
+
+[SWETgBilM42_wreck] {
+  description=Destroyed Truck;
+  damage=1251;
+  energy=50;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWETgBilM42_Wreck.s3o;
+  reclaimable=1;
+	[customParams]
+		{
+		ceg_created=Burning;
+		}
+
+}

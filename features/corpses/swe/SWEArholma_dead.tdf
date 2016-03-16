@@ -1,0 +1,13 @@
+[SWEArholma_dead]
+{
+	object=SWE/SWEArholma_dead.s3o;
+	description=Sunk Arholma class;
+	energy=5000;
+	damage=30000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+}

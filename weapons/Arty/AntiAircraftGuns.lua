@@ -72,6 +72,29 @@ local M1939_61K37mmHE = AutoCannonHE:New(M1939_61K37mm, true):New{
   range              = 725,
 }
 
+-- 25mm Bofors gun - Swedish ships
+local Bofors25mm = AntiAirGun:New{
+	name               = [[25mm M/38 Bofors Anti-Aircraft Gun]],
+	burst              = 6, -- 6 round clips
+	burstrate          = 0.429, -- cyclic 140rpm
+	reloadtime         = 2.7, -- practical 90rpm
+	weaponVelocity     = 1646,
+	damage = {
+		default            = 150,
+	},
+	customparams = {
+		weaponcost = 2,
+	},
+}
+
+local Bofors25mm_AA = AntiAirGunAA:New(Bofors25mm, true):New{
+	range              = 2025,
+}
+
+local Bofors25mm_HE = AutoCannonHE:New(Bofors25mm, true):New{
+	range              = 725,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- Medium (40mm)
@@ -83,4 +106,6 @@ return lowerkeys({
   FlaK4337mmHE = FlaK4337mmHE,
   M1939_61K37mmAA = M1939_61K37mmAA,
   M1939_61K37mmHE = M1939_61K37mmHE,
+  Bofors25mm_AA = Bofors25mm_AA,
+  Bofors25mm_HE = Bofors25mm_HE,
 })

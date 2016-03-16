@@ -7,13 +7,17 @@ local SWEPBilM31 = ArmouredCarAA:New{
 
 	weapons = {
 		[1] = {
-			name				= "flak3820mmaa",
+			name				= "boforsm40_20mmaa",
 		},
 		[2] = {
-			name				= "vickers", -- TODO: ksp m/36
-			maxAngleDif			= 15,
+			name				= "boforsm40_20mmhe",
 		},
+
 		[3] = {
+			name				= "ksp_m1936",
+			maxAngleDif			= 30,
+		},
+		[4] = {
 			name				= ".30calproof",
 		},
 	},

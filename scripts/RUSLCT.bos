@@ -219,7 +219,7 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	emit-sfx LARGE_TRACER from flare_1;
+	//emit-sfx LARGE_TRACER from flare_1;
 /*
 	show flare_1;
 	sleep 200;
@@ -261,7 +261,7 @@ AimWeapon2(heading, pitch)
 
 FireWeapon2()
 {
-	emit-sfx LARGE_TRACER from flare_2;
+	//emit-sfx LARGE_TRACER from flare_2;
 /*	show flare_2;
 	sleep 200;
 	hide flare_2;*/
@@ -304,7 +304,7 @@ AimWeapon3(heading, pitch)
 
 FireWeapon3()
 {
-	emit-sfx LARGE_TRACER from flare_1;
+	//emit-sfx LARGE_TRACER from flare_1;
 /*
 	show flare_1;
 	sleep 200;
@@ -348,7 +348,7 @@ AimWeapon4(heading, pitch)
 
 FireWeapon4()
 {
-	emit-sfx LARGE_TRACER from flare_2;
+	//emit-sfx LARGE_TRACER from flare_2;
 /*	show flare_2;
 	sleep 200;
 	hide flare_2;*/

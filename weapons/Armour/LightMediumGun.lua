@@ -38,6 +38,19 @@ local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	},
 }
 
+-- Swedish naval 57mm gun 	57mm/26.9 Finspång QF M/1895
+-- stats from http://www.navypedia.org/arms/sweden/sw_guns.htm
+local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
+	name		= [[57mm/26.9 Finspång QF M/1895]],
+	-- 20 rounds per minute
+	reloadTime	= 3,
+	areaOfEffect	= 50,
+	weaponVelocity	= 650,
+	damage = {
+		default		= 696,
+	},
+}
+
 -- KwK39 L60 50mm (GER)
 local KwK50mmL60 = LightMediumGun:New{
   name               = [[5cm KwK39 L/60]],
@@ -107,6 +120,24 @@ local Type9757mmAP = MediumAP:New(Type9757mm, true):New{
   },
 }
 
+-- 57 mm pansarvärnskanon m/43 (SWE)
+local PvKanM43 = LightMediumGun:New{
+	name               = [[57 mm pansarvärnskanon m/43]],
+	range              = 1200,
+	reloadTime         = 4.95,
+	soundStart			= [[PVKAN_M_43]],
+}
+
+local PvKanM43AP = MediumAP:New(PvKanM43, true):New{
+	weaponVelocity     = 1670,
+	customparams = {
+		armor_penetration_1000m = 66,
+		armor_penetration_100m  = 86,
+	},
+	damage = {
+		default            = 1795,
+	},
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -122,5 +153,7 @@ return lowerkeys({
   -- Type 97 57mm
   Type9757mmHE = Type9757mmHE,
   Type9757mmAP = Type9757mmAP,
-  
+  -- Sweden
+  PvKanM43AP = PvKanM43AP,
+  SWE_57mmM95 = SWE_57mmM95,
 })

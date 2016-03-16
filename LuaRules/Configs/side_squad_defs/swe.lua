@@ -3,6 +3,20 @@ local sweDefs = {
 	 -- SWE Platoons and Squads --
 	 ----------------------------
 
+	["swe_platoon_hq"] =
+	{
+		members = {
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"sweagm42",
+			"swekpistm3739",
+		},
+		name = "HQ Platoon",
+		description = "3 x Rifle, 1 x AGM, 1 x SMG: Small Combat Squad",
+		buildCostMetal = 550,
+		buildPic = "swerifle.png",
+	},
 
 	["swe_platoon_rifle"] =
 	{
@@ -112,6 +126,50 @@ local sweDefs = {
 		description = "3 x Scout: Reconaissance",
 		buildCostMetal = 440,
 		buildPic = "sweobserv.png",
+	},
+
+	["swe_platoon_landing"] =
+	{
+		members = {
+			"sweobserv",
+			"sweobserv",
+			"swemg",
+			"swekgm37",
+			"swekgm37",
+			"swekgm37",
+			"swekgm37",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swekpistm3739",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+			"swerifle",
+		},
+		buildCostMetal = 3500,
+		-- other fields not needed for transport squads
+	},
+	["swe_platoon_lct"] =
+	{
+		members = {
+			"swestrvm42",
+			"swestrvm42",
+			"swestrvm42",
+			"swesavm43",
+			"swetgbilm42",
+		},
+		-- other fields not needed for transport squads
 	},
 
 }

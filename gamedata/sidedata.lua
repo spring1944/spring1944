@@ -26,6 +26,14 @@ local sidedata = {
 	{
 	name = "JPN",
 	startUnit = "JPNHQ",
+	},
+	{
+	name = "SWE",
+	startUnit = "SWEHQ",
+	},
+	{
+	name = "HUN",
+	startUnit = "HUNHQ",
 	}
 }
 return sidedata

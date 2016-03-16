@@ -143,7 +143,8 @@ Unit = Def:New{
 
 Weapon = Def:New{
 	customParams = {
-		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		-- this breaks AA, commenting it out. Why is it even there?
+		--onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 }
 

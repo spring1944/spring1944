@@ -205,6 +205,16 @@ local iconTypes = {
 		size			=	2,
 		distance	=	0.2,
 	},
+	truck_factory = {
+		bitmap		=	"icons/truck_factory.png",
+		size			=	2,
+		distance	=	0.2,
+	},
+	truck_barracks = {
+		bitmap		=	"icons/truck_barracks.png",
+		size			=	2,
+		distance	=	0.2,
+	},
 	htruck = {
 		bitmap		=	"icons/Htruck.tga",
 		size			=	2,
@@ -390,6 +400,11 @@ local iconTypes = {
 		size		=	4,
 		distance	=	0.8,
 	},
+	hunhq = {
+		bitmap		=	"icons/hunhq.tga",
+		size			=	4,
+		distance	=	0.8,
+	},	
 }
 
 return iconTypes

@@ -1,0 +1,13 @@
+[hunsoldier_dead] {
+  description=Dead Hungarian;
+  blocking=0;
+  damage=1000;
+  featureDead=GER_shoulderhit;
+  footprintX=1;
+  footprintZ=1;
+  metal=-1;
+  object=HUN/HUNTrooper_dead.S3O;
+  reclaimable=0;
+  smoketime=0;
+}
+

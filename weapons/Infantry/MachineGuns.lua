@@ -63,6 +63,13 @@ local MG42AA = MG42:New(AAMG):New{
   sprayAngle         = 460,
 }
 
+-- remote-controlled MG42 - really crappy accuracy as the gunner doesn't really see what he's shooting
+local mg42remote = MG42:New{
+	accuracy		= 5000,
+	movingAccuracy	= 9000,
+	sprayAngle		= 1000,
+}
+
 -- DP (RUS)
 local DP = MGClass:New{
   burst              = 5,
@@ -118,6 +125,27 @@ local M1919A4Browning = MGClass:New{
 local M1919A4Browning_Deployed = M1919A4Browning:New{
   range              = 1020,
   sprayAngle         = 400,
+}
+
+-- Swedish version
+local ksp_m1936 = M1919A4Browning:New{
+	name		= "Kulspruta m/36",
+	soundStart	= "KSP_M_36",
+	burstRate          = 0.086,	-- sync with sound
+}
+
+local ksp_m1936_deployed = M1919A4Browning_Deployed:New{
+	name		= "Kulspruta m/36",
+	soundStart	= "KSP_M_36",
+	burstRate          = 0.086,	-- sync with sound
+}
+
+-- Swedish tank version (later tanks only)
+local ksp_m1939 = M1919A4Browning:New{
+	name		= "Kulspruta m/39",
+	soundStart	= "KSP_M_39",
+	burst				= 5,
+	burstRate          = 0.072,	-- sync with sound
 }
 
 -- Breda 30 (ITA)
@@ -211,7 +239,6 @@ local TE4 = MGClass:New(AAMG):New{
     fearid             = 701,
   }
 }
-
 
 -- Large calibre (12.7mm) MG's
 -- Vickers 50 cal (GBR)
@@ -355,8 +382,21 @@ local Type1Ho103 = HeavyMGClass:New{
   }
 }
 
+-- Solothurn 31M
+local mg30 = MG34:New{
+	name			= [[Solothurn 31M]],
+}
 
+local Schwarzlose = Maxim:New{
+	name               = [[Schwarzlose 07/31M]],
+	burstRate          = 0.132,	-- sync with sound
+	reloadTime         = 3.5,
+	soundStart	   = [[7m_Schwarzlose_burst]],
+}
 
+local gebauer_1934_37m = M1919A4Browning:New{
+	name			= [[Gebauer Tank Machine Gun 1934/37.M]],
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -368,6 +408,7 @@ return lowerkeys({
   MG42 = MG42,
   MG42_Deployed = MG42_Deployed,
   MG42AA = MG42AA,
+  mg42remote = mg42remote,
   DP = DP,
   DT = DT,
   Maxim = Maxim,
@@ -394,4 +435,10 @@ return lowerkeys({
   Type93HMG = Type93HMG,
   Type93AA = Type93AA,
   Type1Ho103 = Type1Ho103,
+  ksp_m1936 = ksp_m1936,
+  ksp_m1936_deployed = ksp_m1936_deployed,
+  ksp_m1939 = ksp_m1939,
+  mg30 = mg30,
+  mg7_deployed = Schwarzlose,
+  gebauer_1934_37m = gebauer_1934_37m,
 })

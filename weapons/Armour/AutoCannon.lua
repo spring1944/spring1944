@@ -149,6 +149,48 @@ local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
   },
 }
 
+-- 20 mm maskinkanon M.40 S
+local BoforsM40_20mm = AutoCannon:New{
+	accuracy           = 255,
+	burst              = 4,
+	burstRate          = 0.261,
+	name               = [[20 mm maskinkanon M.40 S]],
+	range              = 730,
+	reloadTime         = 1.6,
+	soundStart         = [[GER_20mm]],
+	sprayAngle         = 300,
+	weaponVelocity     = 2000,
+	damage = {
+		default            = 41,
+	},
+	customparams = {
+		weaponcost = 1,
+	},
+}
+
+local BoforsM40_20mmAA = AutoCannonAA:New(BoforsM40_20mm, true):New{
+	burst = 8,
+	burstRate = 0.13,
+}
+
+local BoforsM40_20mmHE = AutoCannonHE:New(BoforsM40_20mm, true):New{
+	customparams = {
+		fearaoe            = 30,
+	},
+}
+
+local BoforsM40_20mmAP = AutoCannonAP:New(BoforsM40_20mm, true):New{
+	sprayAngle         = 400,
+	weaponVelocity     = 1560,
+	customparams = {	-- data taken from http://www.jaegerplatoon.net/AT_GUNS1.htm
+		armor_penetration_1000m = 10,
+		armor_penetration_100m  = 32,
+	},
+	damage = {
+		default            = 345,
+	},
+}
+
 -- Type 98 20mm (JPN)
 local Type9820mm = AutoCannon:New{
   accuracy           = 255,
@@ -242,4 +284,8 @@ return lowerkeys({
   TwinType9625mmAA = TwinType9625mmAA,
   Type9625mmHE = Type9625mmHE,
   TwinType9625mmHE = TwinType9625mmHE,
+  -- Bofors 20mm
+  BoforsM40_20mmHE = BoforsM40_20mmHE,
+  BoforsM40_20mmAP = BoforsM40_20mmAP,
+  BoforsM40_20mmAA = BoforsM40_20mmAA,
 })

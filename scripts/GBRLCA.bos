@@ -252,21 +252,21 @@ AimWeapon1(heading, pitch)
 
 FireWeapon1()
 {
-	emit-sfx SMALL_TRACER from bren_flare;
+//	emit-sfx SMALL_TRACER from bren_flare;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
-	emit-sfx SMALL_TRACER from bren_flare;
+//	emit-sfx SMALL_TRACER from bren_flare;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
-	emit-sfx SMALL_TRACER from bren_flare;
+//	emit-sfx SMALL_TRACER from bren_flare;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;
 	sleep 67;
 	emit-sfx MG_MUZZLEFLASH from bren_flare;

@@ -7,17 +7,17 @@ local SWEPBilM40 = ArmouredCar:New{
 
 	weapons = {
 		[1] = {
-			name				= "BredaM3520mmap",
+			name				= "boforsm40_20mmap",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "BredaM3520mmhe",
+			name				= "boforsm40_20mmhe",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[3] = {
-			name				= "M1919A4Browning",
+			name				= "ksp_m1939",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},-- TODO: Hull MGs?

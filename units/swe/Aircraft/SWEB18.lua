@@ -16,8 +16,6 @@ local SWEB18 = Fighter:New{
 	maxRudder			= 0.0025,
 	maxVelocity			= 11.2,
 
-	script				= "jpnki102.cob", -- TODO: LUS!
-	
 	customParams = {
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,

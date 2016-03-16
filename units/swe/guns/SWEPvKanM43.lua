@@ -12,7 +12,7 @@ local SWE_PvKanM43_Stationary = LightATGun:New{
 
 	weapons = {
 		[1] = { -- AP
-			name				= "zis257mmap", -- TODO: change
+			name				= "PvKanM43AP",
 		},
 	},
 }

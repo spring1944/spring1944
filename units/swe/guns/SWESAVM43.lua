@@ -1,6 +1,7 @@
 local SWESAVM43 = LightTank:New(AssaultGun):New{
 	name				= "SAV m/43",
 	buildCostMetal		= 1740,
+	corpse			= "SWESAVM43_Abandoned",
 	maxDamage			= 1200,
 	turnRate			= 160,
 	trackOffset			= 3,

@@ -89,8 +89,32 @@ local Arisaka99 = RifleClass:New{
   soundStart         = [[JPN_Arisaka_Type99]],
 }
 
+-- Sweden
+-- Ag M/42
+local AgM42 = RifleClass:New{
+  name               = [[Automatgevär m/42]],
+  range              = 535,
+  reloadtime         = 1.7,
+  soundStart         = [[AG_M_42]],
+}
 
+-- Gevar M/38
+local Gevar_M_38 = RifleClass:New{
+	accuracy           = 95, -- overwrites default
+	name               = [[6,5 mm Gevär m/38]],
+	range              = 630,
+	reloadtime         = 2.5,
+	soundStart         = [[SWE_M_38_rifle]],
+}
 
+-- Hungary
+-- FÉG 35M
+local HUN_FEG35M = RifleClass:New{
+	name               = [[FÉG 35M]],
+	range              = 665,
+	reloadtime         = 2.8,
+	soundStart         = [[HUN_FEG_35M]],
+}
 
 -- Sniper Rifle Base Class
 local SniperRifleClass = RifleClass:New{
@@ -157,6 +181,16 @@ local Arisaka99Sniper = SniperRifleClass:New{
   soundStart         = [[JPN_Arisaka_Type99]],
 }
 
+local Gevar_M_38_Sniper = SniperRifleClass:New{
+	name			= "6,5 mm Gevдr m/41 Sniper",
+	soundStart		= [[SWE_M_38_rifle]],
+}
+
+local FEG_35M_Sniper = SniperRifleClass:New{
+	name			= "FÉG 35M Sniper Model",
+	soundStart         = [[HUN_FEG_35M]],
+}
+
 -- Return only the full weapons
 return lowerkeys({
   Enfield = Enfield,
@@ -175,4 +209,9 @@ return lowerkeys({
   SVT = SVT,
   Mod91Sniper = Mod91Sniper,
   Arisaka99Sniper = Arisaka99Sniper,
+  AgM42 = AgM42,
+  Gevar_M_38 = Gevar_M_38,
+  Gevar_M_38_Sniper = Gevar_M_38_Sniper,
+  feg35m = HUN_FEG35M,
+  feg35m_sniper = FEG_35M_Sniper,
 })
