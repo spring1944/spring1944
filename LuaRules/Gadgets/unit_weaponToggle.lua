@@ -37,18 +37,19 @@ local function ProcessToggleData(unitDefID, toggleData)
 	local cmdID = GG.CustomCommands.GetCmdID(toggleData.id)
 	local cmdDesc = cmdIDToCMDDesc[cmdID]
 	if not cmdDesc then
-	
+
 		local params = {0}
 		for _, state in pairs(toggleData.states) do
 			params[#params + 1] = state.name
 		end
-		
+
 		cmdDesc = {
 			id 		 = cmdID,
 			type   = CMDTYPE.ICON_MODE,
 			action = toggleData.action,
 			tooltip = toggleData.tooltip,
 			params = params,
+			queueing = false
 		}
 		cmdIDToCMDDesc[cmdID] = cmdDesc
 		cmdIDToStates[cmdID] = toggleData.states
@@ -84,7 +85,7 @@ function gadget:UnitCreated(unitID, unitDefID)
 	if not toggleUnits[unitDefID] then
 		return
 	end
-	
+
 	local env = Spring.UnitScript.GetScriptEnv(unitID)
 	if env then
 		toggleCache[unitID] = env
@@ -111,7 +112,7 @@ function gadget:Initialize()
 			ProcessToggleData(unitDefID, toggleData)
 		end
 	end
-	
+
 	local allUnits = Spring.GetAllUnits()
 	for i=1,#allUnits do
 		local unitID = allUnits[i]
