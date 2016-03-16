@@ -26,7 +26,6 @@ if (gadgetHandler:IsSyncedCode()) then
 local SetUnitRulesParam 	= Spring.SetUnitRulesParam
 local mcDisable				= Spring.MoveCtrl.Disable
 -- Synced Read
-local GetUnitFuel 			= Spring.GetUnitFuel
 local GetUnitHealth			= Spring.GetUnitHealth
 local GetUnitTeam			= Spring.GetUnitTeam
 local GetUnitRulesParam 	= Spring.GetUnitRulesParam
@@ -58,7 +57,7 @@ function gadget:Initialize()
 	if (fear_mult ~= 1) then
 		BUGOUT_LEVEL = BUGOUT_LEVEL * fear_mult
 	end
-	
+
 	for _, teamID in pairs(Spring.GetTeamList()) do
 		local px, py, pz = Spring.GetTeamStartPosition(teamID)
 		if px then
@@ -107,21 +106,21 @@ function gadget:GameStart()
 		teamStartPos[teamID] = {px, py, pz}
 	end
 end
-		
+
 
 function gadget:GameFrame(n)
 	if (n % 15 == 0) then -- every 15 frames
 		for unitID, funcID in pairs(planeScriptIDs) do
 			if not crashingPlanes[unitID] then
 				local fear = GetUnitRulesParam(unitID, "fear")
-				local fuel = GetUnitFuel(unitID)
+				local fuel = GetUnitRulesParam(unitID, "fuel")
 				local teamID = GetUnitTeam(unitID)
 				if fear > 0 then
 					local newFuel = fuel - FUEL_LOSS_RATE
 					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
 						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*fear})
-						SetUnitFuel(unitID, newFuel)
+						SetUnitRulesParam(unitID, "fuel", math.max(newFuel, 0))
 						if fear > BUGOUT_LEVEL then
 							local px, py, pz = unpack(teamStartPos[teamID])
 							GiveOrderToUnit(unitID, CMD_MOVE, {px, py, pz}, {})

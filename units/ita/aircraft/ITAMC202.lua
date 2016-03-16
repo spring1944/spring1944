@@ -3,8 +3,7 @@ local ITA_MC202 = Fighter:New{
 	description			= "Light Fighter",
 	buildCostMetal		= 3125,
 	maxDamage			= 224.7,
-	maxFuel				= 90,
-	
+
 	maxAcc				= 0.777,
 	maxAileron			= 0.00465,
 	maxBank				= 1,
@@ -16,6 +15,7 @@ local ITA_MC202 = Fighter:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
+		maxFuel				= 90,
 	},
 
 	weapons = {
@@ -27,7 +27,7 @@ local ITA_MC202 = Fighter:New{
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
-		},	
+		},
 		[3] = {
 			name				= "BredaSafat03",
 			maxAngleDif			= 10,

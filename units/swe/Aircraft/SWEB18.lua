@@ -5,9 +5,8 @@ local SWEB18 = Fighter:New{
 	maxDamage			= 495,
 	cruiseAlt			= 1250,
 	radarDistance		= 1200,
-	maxFuel				= 160,
 	iconType			= "bomber",
-		
+
 	maxAcc				= 0.702,
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
@@ -20,6 +19,7 @@ local SWEB18 = Fighter:New{
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
 		maxammo				= 18,
+		maxFuel				= 160,
 	},
 
 	weapons = {
@@ -33,7 +33,7 @@ local SWEB18 = Fighter:New{
 			maxAngleDif			= 10,
 			mainDir				= [[0 -1 16]],
 			slaveTo				= 1, -- TODO: why?
-		},	
+		},
 		[3] = {
 			name				= "Ho520mmAP",
 			maxAngleDif			= 10,

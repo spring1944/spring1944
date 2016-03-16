@@ -3,8 +3,7 @@ local ITA_MC200 = Fighter:New{
 	description			= "Attack Fighter",
 	buildCostMetal		= 2375,
 	maxDamage			= 210,
-	maxFuel				= 60,
-	
+
 	maxAcc				= 0.782,
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
@@ -16,7 +15,8 @@ local ITA_MC200 = Fighter:New{
 	customParams = {
 		enginesound			= "yakb-",
 		enginesoundnr		= 20,
-		maxmmo				= 2,
+		maxammo				= 2,
+		maxFuel				= 60,
 	},
 
 	weapons = {
@@ -27,7 +27,7 @@ local ITA_MC200 = Fighter:New{
 		[2] = {
 			name				= "A_tkbomb",
 			maxAngleDif			= 10,
-		},	
+		},
 		[3] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,

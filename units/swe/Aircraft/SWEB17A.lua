@@ -3,10 +3,9 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 	description			= "Light Bomber",
 	buildCostMetal		= 2175, -- shared with CR.42
 	maxDamage			= 240, -- shared with CR.42
-	maxFuel				= 105,
 	cruiseAlt			= 1500,
 	iconType			= "bomber",
-		
+
 	maxAcc				= 0.581,
 	maxAileron			= 0.0055,
 	maxBank				= 1.1,
@@ -19,6 +18,7 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
 		maxammo				= 5,
+		maxFuel				= 105,
 	},
 
 	weapons = {
@@ -34,7 +34,7 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
 			slaveTo				= 2,
-		},	
+		},
 		[4] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
@@ -43,7 +43,7 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
 			slaveTo				= 4,
-		},	
+		},
 		[6] = {
 			name				= "mg42aa",
 			maxAngleDif			= 10,

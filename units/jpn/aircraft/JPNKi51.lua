@@ -3,10 +3,9 @@ local JPN_Ki51 = Fighter:New{
 	description			= "Ground-Attack Aircraft",
 	buildCostMetal		= 2175, -- shared with CR.42
 	maxDamage			= 240, -- shared with CR.42
-	maxFuel				= 105,
 	cruiseAlt			= 1500,
 	iconType			= "bomber",
-		
+
 	maxAcc				= 0.581,
 	maxAileron			= 0.0055,
 	maxBank				= 1.1,
@@ -18,6 +17,7 @@ local JPN_Ki51 = Fighter:New{
 	customParams = {
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
+		maxFuel				= 105,
 	},
 
 	weapons = {
@@ -29,7 +29,7 @@ local JPN_Ki51 = Fighter:New{
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
             slaveTo             = 1,
-		},	
+		},
 		[3] = {
 			name				= "bomb50kg",
 			maxAngleDif			= 10,
@@ -39,7 +39,7 @@ local JPN_Ki51 = Fighter:New{
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
             slaveTo             = 1,
-		},	
+		},
 		[5] = {
 			name				= "Type1Ho103",
 			maxAngleDif			= 10,

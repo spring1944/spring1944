@@ -2,8 +2,7 @@ local ITA_Reggiane2005 = Fighter:New{
 	name				= "Reggiane Re.2005",
 	buildCostMetal		= 3125,
 	maxDamage			= 260,
-	maxFuel				= 150,
-	
+
 	maxAcc				= 0.792,
 	maxAileron			= 0.007,
 	maxBank				= 1,
@@ -15,6 +14,7 @@ local ITA_Reggiane2005 = Fighter:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
+		maxFuel				= 150,
 	},
 
 	weapons = {
@@ -26,7 +26,7 @@ local ITA_Reggiane2005 = Fighter:New{
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
-		},	
+		},
 		[3] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,

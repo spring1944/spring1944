@@ -18,7 +18,7 @@ local Aircraft = Unit:New{
 	sightdistance		= 0,
 	stealth				= true,
 	turnRate			= 50,
-	
+
 	customParams = {
 		damageGroup			= "planes",
 		feartarget			= true,
@@ -37,24 +37,27 @@ local Recon = Aircraft:New{
 	maxAileron			= 0.005,
 	maxBank				= 0.1,
 	maxElevator			= 0.005,
-	maxFuel				= 60,
 	maxPitch			= 1,
 	maxRudder			= 0.005,
 	maxVelocity			= 11.2,
 	radardistance		= 1500,
 	sightDistance		= 600,
+
+	customParams = {
+		maxFuel				= 60,
+	},
 }
 
 local Fighter = Aircraft:New{
 	description			= "Air-Superiority Fighter",
 	cruiseAlt			= 1500,
 	iconType			= "fighter",
-	maxFuel				= 180,
-	
+
 	customParams = {
 		soundcategory		= "<SIDE>/Air/Fighter",
+		maxFuel				= 180,
 	},
-	
+
 	-- sfxTypes = { -- TODO: remove once using LUS
 		-- explosionGenerators = {
 			-- "custom:SMOKEPUFF_GPL_FX",
@@ -68,8 +71,11 @@ local Fighter = Aircraft:New{
 local Interceptor = Fighter:New{
 	description			= "Interceptor",
 	cruiseAlt			= 1500,
-	maxFuel				= 120,
 	noChaseCategory		= "FLAG MINE HARDVEH BUILDING",
+
+	customParams = {
+		maxFuel				= 120,
+	},
 }
 
 local AttackFighter = Fighter:New{
@@ -85,9 +91,12 @@ local FighterBomber = Fighter:New{
 	cruiseAlt				= 750,
 	fireState				= 0,
 	maxElevator				= 0.001,
-	maxFuel					= 60,
 	maxPitch				= 0.5,
-	
+
+	customParams = {
+		maxFuel				= 60,
+	},
+
 	weapons = {
 		[1] = {
 			name				= "bomb",
@@ -105,17 +114,17 @@ local CruiseMissile = Aircraft:New{
 	maxAileron					= 0.00465,
 	maxBank						= 1,
 	maxElevator					= 0.0036,
-	maxFuel						= 120,
 	maxPitch					= 1,
 	maxRudder					= 0.002765,
 	maxVelocity					= 18.2,
-	
+
 	customParams = {
 		cruise_missile_accuracy		= 400,
 		enginesound					= "v1-",
 		enginesoundnr				= 19,
 		enginevolume				= 8,
 		deposit						= 0,
+		maxFuel						= 120,
 	},
 }
 
@@ -124,7 +133,7 @@ local Glider = Aircraft:New{
 	buildCostMetal		= 6000,
 	corpse				= "<NAME>_Damaged",
 	cruiseAlt			= 1500,
-	
+
 	customParams = {
 		cruise_missile_accuracy	= 1,
 		deposit					= 0,
@@ -136,17 +145,20 @@ local Glider = Aircraft:New{
 	maxBank				= 1,
 	maxDamage			= 215,
 	maxElevator			= 0.0036,
-	maxFuel				= 120,
 	maxPitch			= 1,
 	maxRudder			= 0.002765,
 	maxVelocity			= 9.8,
+
+	customParams = {
+		maxFuel				= 120,
+	},
 }
 
 local ParaTransport = Aircraft:New{
 	description			= "Paratroop Transport Plane",
 	buildCostMetal		= 3000,
 	cruiseAlt			= 1800,
-	
+
 	footprintX			= 6,
 	footprintZ			= 6,
 	iconType			= "transportplane",
@@ -155,7 +167,6 @@ local ParaTransport = Aircraft:New{
 	maxAileron			= 0.003,
 	maxBank				= 0.25,
 	maxElevator			= 0.0025,
-	maxFuel				= 180,
 	maxPitch			= 1,
 	maxRudder			= 0.002,
 	maxVelocity			= 11.2,
@@ -163,8 +174,9 @@ local ParaTransport = Aircraft:New{
 
 	customParams = {
 		damageGroup		= "heavyPlanes",
-		troopdropper	= 1,
 		deposit			= 0,
+		troopdropper	= 1,
+		maxFuel				= 180,
 	},
 	weapons = {
 		[1] = {

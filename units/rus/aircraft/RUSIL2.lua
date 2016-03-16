@@ -3,8 +3,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	description			= "Attack Aircraft",
 	buildCostMetal		= 3375,
 	maxDamage			= 436,
-	maxFuel				= 180,
-		
+
 	maxAcc				= 0.474,
 	maxAileron			= 0.004,
 	maxBank				= 0.75,
@@ -17,6 +16,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
 		maxammo				= 4,
+		maxFuel				= 180,
 	},
 
 	weapons = {
@@ -46,7 +46,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 			name				= "VYa23mm",
 			maxAngleDif			= 10,
 			slaveTo				= 5,
-		},	
+		},
 		[7] = {
 			name				= "m2browningamg",
 			maxAngleDif			= 10,

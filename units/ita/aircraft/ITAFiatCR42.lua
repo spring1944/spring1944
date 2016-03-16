@@ -3,9 +3,8 @@ local ITA_FiatCR42 = Fighter:New{
 	description			= "Light Attack Aircraft",
 	buildCostMetal		= 2175,
 	maxDamage			= 240,
-	maxFuel				= 95,
 	cruiseAlt			= 1200,
-		
+
 	maxAcc				= 0.625,
 	maxAileron			= 0.0055,
 	maxBank				= 1.1,
@@ -17,6 +16,7 @@ local ITA_FiatCR42 = Fighter:New{
 	customParams = {
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
+		maxFuel				= 95,
 	},
 
 	weapons = {
@@ -27,7 +27,7 @@ local ITA_FiatCR42 = Fighter:New{
 		[2] = {
 			name				= "bomb50Kg",
 			maxAngleDif			= 10,
-		},	
+		},
 		[3] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,

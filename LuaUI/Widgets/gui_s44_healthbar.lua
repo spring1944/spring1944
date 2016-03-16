@@ -227,9 +227,9 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
                 bars.ammo.color = {1.0, 1.0, 0, 0.8}
             end
 
-            if ud.maxFuel > 0 then
+            if ud.customParams.maxfuel then
                 bars.fuel = {}
-                bars.fuel.max = MAP_FUEL_SCALE(ud.maxFuel)
+                bars.fuel.max = MAP_FUEL_SCALE(tonumber(ud.customParams.maxfuel))
                 bars.fuel.color = {0.9, 0.5766, 0.207, 0.8}
             end
 
@@ -289,9 +289,9 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 
 	-- FUEL
 	if bars.fuel then
-		local curFuel = Spring.GetUnitFuel(uid)
+		local curFuel = Spring.GetUnitRulesParam(uid, "fuel")
 		bars.fuel.cur = curFuel
-		bars.fuel.pct = curFuel / MAP_FUEL_SCALE(ud.maxFuel)
+		bars.fuel.pct = curFuel / MAP_FUEL_SCALE(tonumber(ud.customParams.maxfuel))
 		display = true
 	end
 
@@ -433,40 +433,40 @@ function widget:DrawWorld()
 		for _,uid in pairs(GetVisibleUnits(ALL_UNITS,iconDist,false)) do
 
 			local udid = GetUnitDefID(uid)
-			
+
 			--Verify we can really access information about this unit.
 			--This should solve issues when switching spectated team
 			if udid then
 				if not unitData[uid] or unitData[uid].frame < currentFrame then
 					GenerateUnitGraphics(uid, udid, getAuras)
 				end
-	
+
 				local display = unitData[uid].display or IsUnitSelected(uid)
 				unitData[uid].display = display
-	
+
 				local radius,r,g,b,x,y,z,heightscale
-	
+
 				if display or SHOW_ICON[udid] then
-	
+
 					radius = GetUnitRadius(uid)
-	
+
 					if radius <= 4 then radius = radius * 7 end
 					local teamID = GetUnitTeam(uid)
 					r,g,b = GetTeamColor(teamID)
 					x,y,z = GetUnitBasePosition(uid)
 					heightscale = mathMax((camX - x) / scalefactor, (camY - y) / scalefactor, (camZ - z) / scalefactor)
-	
-	
+
+
 					glPushMatrix()
 						glTranslate(x, y, z)
 						glBillboard()
 						glTranslate(0, -radius, 0)
-	
+
 						local alpha = 1
 						if not display then
 							alpha = (heightscale/3.4)
 						end
-	
+
 						if ICON_TYPE[udid] and alpha > 0.3 then
 							glColor(r,g,b,alpha)
 							glTex(ICON_TYPE[udid])
@@ -485,8 +485,8 @@ function widget:DrawWorld()
 							end
 							counter = 0
 						end
-	
-	
+
+
 						--glTex('LuaUI/zui/bars/hp.png')
 						for bar, bardata in pairs(unitBars[uid]) do
 							local pct = bardata.pct
@@ -501,7 +501,7 @@ function widget:DrawWorld()
 							end
 						end
 						--glTex(false)
-	
+
 				end
 				if display or SHOW_ICON[udid] then
 					glPopMatrix()
