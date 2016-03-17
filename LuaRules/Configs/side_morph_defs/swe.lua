@@ -47,18 +47,15 @@ local sweDefs = {
 			energy = 0,
 			facing = true,
 		},
-	},
-		--[[gbrstorage = {
 		{
-			into = 'gbrstoragecamo',
-			metal = 1000,
+			into = 'swesupplydepot',
+			tech = 0,
+			time = 20,
+			metal = 0,
 			energy = 0,
-			time = 25,
-			name = '  Camo  ',
-			text = 'Hides the storage shed from observation.',
 			facing = true,
 		},
-	},	]]
+	},
 	swevehicleyard = {
 		{
 			into = 'swevehicleyard1',
@@ -166,7 +163,18 @@ local sweDefs = {
 		},
 	},
 
-	
+--[[
+	swesupplydepot = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
+]]--	
 	sweboatyard = {
 		{
 			into = 'sweboatyardlarge',
