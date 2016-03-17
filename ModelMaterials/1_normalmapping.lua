@@ -1,7 +1,7 @@
 -- $Id$
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-local GADGET_DIR = "LuaRules/Configs/"
+local SHADER_DIR = "ModelMaterials/Shaders/"
 
 local materials = {
    normalMappedS3o = {
@@ -10,7 +10,7 @@ local materials = {
          "#define use_normalmapping",
          --"#define flip_normalmap",
        },
-       shader    = include(GADGET_DIR .. "UnitMaterials/Shaders/default.lua"),
+       shader    = include(SHADER_DIR .. "default.lua"),
        usecamera = false,
        culling   = GL.BACK,
        texunits  = {

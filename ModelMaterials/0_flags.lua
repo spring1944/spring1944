@@ -2,7 +2,7 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-local GADGET_DIR = "LuaRules/Configs/"
+local SHADER_DIR = "ModelMaterials/Shaders/"
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -30,9 +30,15 @@ local function UnitCreated(unitID, material, materialID)
 end
 
 
-local function DrawUnit(unitID, material)
-  gl.Uniform(material.frameLoc, (Spring.GetGameFrame() + Spring.GetFrameTimeOffset())/10)
+local frameLoc
 
+local function DrawUnit(unitID, material)
+  if frameLoc == nil then
+    local curShader = (drawMode == 5) and material.deferredShader or material.standardShader
+    frameLoc = gl.GetUniformLocation(curShader, "frame2")
+  end
+
+  gl.Uniform(frameLoc, (Spring.GetGameFrame() + Spring.GetFrameTimeOffset())/10)
   --// engine should still draw it (we just set the uniforms for the shader)
   return false
 end
@@ -71,7 +77,7 @@ local materials = {
           }
         ]],
       },
-      shader    = include(GADGET_DIR .. "UnitMaterials/Shaders/default.lua"),
+      shader    = include(SHADER_DIR .. "default.lua"),
       force     = true,
       usecamera = false,
       culling   = GL.BACK,
