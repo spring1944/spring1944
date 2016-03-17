@@ -128,6 +128,11 @@ local sweunits =
 		"swevedettbat",
 		"swearholma",
 	},
+	swesupplydepot =
+	{
+		"swescaniavabisf11",
+		"swetgbilm42",
+	},
 }
 
 return sweunits
