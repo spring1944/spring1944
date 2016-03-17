@@ -143,6 +143,10 @@ local hununits = {
 		"hun_sortie_fighter",
 		"hun_sortie_bomber",
 	},
+	hunsupplydepot = {
+		"hun38mbotond",
+		"hun43mlehel",
+	},
 }
 
 return hununits
