@@ -36,6 +36,9 @@ units["hunstorage"].objectname = "hun/hunstorage.s3o"
 -- US has no TD yard TODO: Add M18 and M36, hurr hurr
 units["usspyard1"] = nil
 
+-- SWE supply depot looks different
+units["swesupplydepot"].objectname = "swe/swesupplydepot.s3o"
+
 -- Extra units
 units["usdukwsupplies"] = Supplies:New{}
 units["gbrglidersupplies"] = SuppliesSmall:New{}
