@@ -1,7 +1,7 @@
 local hunDefs = {
 	hunhmg =
 	{
-		into = 'hunsandbagmg',
+		into = 'hunhmg_sandbags',
 		tech = 0,
 		time = 25,
 		metal = 0,
@@ -9,7 +9,7 @@ local hunDefs = {
 		directional = true,
 	},
 	
-	hunsandbagmg =
+	hunhmg_sandbags =
 	{
 		into = 'hunhmg',
 		tech = 0,

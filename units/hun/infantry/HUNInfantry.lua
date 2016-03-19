@@ -109,7 +109,7 @@ return lowerkeys({
 	["HUNSMG"] = HUN_SMG43M,
 	["HUNLMG"] = HUN_LMG31M,
 	["HUNHMG"] = HUN_HMG,
-	["HUNSandbagMG"] = HUN_HMG_Sandbag,
+	["HUNHMG_Sandbags"] = HUN_HMG_Sandbag,
 	["HUNSniper"] = HUN_Sniper,
 	["HUNPanzerfaust"] = HUN_PanzerFaust,
 	["HUNPanzerschrek"] = HUN_PanzerSchrek,
