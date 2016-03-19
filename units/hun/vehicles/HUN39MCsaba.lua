@@ -31,7 +31,11 @@ local HUN39MCsaba = ArmouredCar:New{
 		armor_top			= 6,
 		maxammo				= 24,
 		reversemult			= 0.75,
-		maxvelocitykmh		= 65,
+		maxvelocitykmh			= 65,
+		barrelrecoildist		= 2,
+		barrelrecoilspeed		= 10,
+		turretturnspeed			= 15,
+		elevationspeed			= 20,
 	}
 }
 

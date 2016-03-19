@@ -32,6 +32,10 @@ local HUNToldiII = LightTank:New{
 		armor_top			= 5,
 		maxammo				= 24,
 		maxvelocitykmh		= 48,
+		barrelrecoildist		= 2,
+		barrelrecoilspeed		= 10,
+		turretturnspeed			= 15,
+		elevationspeed			= 20,
 	},
 }
 
