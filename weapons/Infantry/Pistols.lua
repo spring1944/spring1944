@@ -59,7 +59,7 @@ local HusqvarnaM40 = PistolClass:New{
 -- FÉG 37M
 local feg37m = PistolClass:New{
 	name			= [[FÉG 37M]],
-	soundStart         = [[GER_Walther]],
+	soundStart         = [[FEG_37M]],
 }
 
 -- Return only the full weapons
