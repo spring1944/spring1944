@@ -76,6 +76,23 @@ local Type4AT = Rocket_ATLClass:New{
   },
 }
 
+-- 44M Buzoganyveto
+local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
+	name			= [[215mm 44M Buzogány]],
+	range			= 600,
+	burst			= 2,
+	burstRate		= 0.5,
+	soundStart		= [[US_Bazooka]],
+	targetMoveError    = 0.1,
+	customparams = {
+		armor_penetration  = 300,
+		weaponCost			= 50,
+	},
+	damage = {
+		default            = 8000,
+	},	
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- RCL / Spigot Mortar
@@ -85,4 +102,5 @@ return lowerkeys({
   Panzerschrek = Panzerschrek,
   M9A1Bazooka = M9A1Bazooka,
   Type4AT = Type4AT,
+  Buzoganyveto44MHEAT = Buzoganyveto44MHEAT,
 })

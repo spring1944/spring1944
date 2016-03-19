@@ -91,6 +91,24 @@ local hunDefs = {
 		energy = 0,
 	},
 
+	hun44mbuzoganyveto_truck =
+	{
+		into = 'hun44mbuzoganyveto_stationary',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+	},
+
+	hun44mbuzoganyveto_stationary =
+	{
+		into = 'hun44mbuzoganyveto_truck',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+	},
+	
 	hungunyard = {
 		{
 			into = 'hunspyard',

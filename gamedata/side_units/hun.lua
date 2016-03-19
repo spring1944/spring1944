@@ -50,6 +50,7 @@ local hununits = {
 		"hunpak40_truck",
 		"hunlefh18_truck",
 		"hun36mbofors_truck",
+		"hun44mbuzoganyveto_truck",
 	},
 
 	hunspyard1 =
@@ -59,6 +60,7 @@ local hununits = {
 		"hunpak40_truck",
 		"hunlefh18_truck",
 		"hun36mbofors_truck",
+		"hun44mbuzoganyveto_truck",
 		"hunhetzer",
 	},
 
@@ -69,6 +71,7 @@ local hununits = {
 		"hunpak40_truck",
 		"hunlefh18_truck",
 		"hun36mbofors_truck",
+		"hun44mbuzoganyveto_truck",
 		"hun43mzrynyiii",
 	},
 
