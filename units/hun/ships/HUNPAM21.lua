@@ -89,7 +89,7 @@ local HUNPAM21_turret_20mm = EnclosedBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 19,
+		maxammo					= 24,
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

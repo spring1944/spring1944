@@ -255,6 +255,42 @@ local TwinType9625mmHE = Type9625mmHE:New{
     reloadtime       = 6.5,
 }
 
+-- Vehicle solothurn as used by Hungary
+local Solothurn_36MAP = AutoCannonAP:New{
+	accuracy           = 300,
+	burst              = 1,
+	burstRate          = 0.1,
+	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
+	range              = 640,
+	reloadTime         = 4,
+	soundStart         = [[ITA_Solothurn]],
+	weaponVelocity     = 1600,
+	customparams = {
+		armor_penetration_1000m = 16,
+		armor_penetration_100m = 35,
+		weaponcost				= 1,
+	},
+	damage = {
+		default            = 402,
+	},
+}
+
+local Solothurn_36MHE = AutoCannonHE:New{
+	accuracy           = 300,
+	burst              = 1,
+	burstRate          = 0.1,
+	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
+	range              = 640,
+	reloadTime         = 4,
+	soundStart         = [[ITA_Solothurn]],
+	weaponVelocity     = 1600,
+	customparams = {
+		weaponcost				= 1,
+	},
+	damage = {
+		default            = 110,
+	},
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -288,4 +324,8 @@ return lowerkeys({
   BoforsM40_20mmHE = BoforsM40_20mmHE,
   BoforsM40_20mmAP = BoforsM40_20mmAP,
   BoforsM40_20mmAA = BoforsM40_20mmAA,
+  -- Hungarian AT rifle used as vehicle weapon, had to move it here as it is AP/HE like a cannon
+  Solothurn_36MAP = Solothurn_36MAP,
+  Solothurn_36MHE = Solothurn_36MHE,
+  
 })

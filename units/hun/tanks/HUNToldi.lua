@@ -30,7 +30,7 @@ local HUNToldiII = LightTank:New{
 		armor_rear			= 13,
 		armor_side			= 13,
 		armor_top			= 5,
-		maxammo				= 18,
+		maxammo				= 24,
 		maxvelocitykmh		= 48,
 	},
 }
