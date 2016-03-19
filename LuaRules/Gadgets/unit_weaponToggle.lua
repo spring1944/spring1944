@@ -21,7 +21,6 @@ local InsertUnitCmdDesc = Spring.InsertUnitCmdDesc
 local FindUnitCmdDesc = Spring.FindUnitCmdDesc
 local EditUnitCmdDesc = Spring.EditUnitCmdDesc
 
-
 local toggleDefs = VFS.Include("LuaRules/Configs/toggle_defs.lua")
 
 local toggleCache
@@ -31,6 +30,7 @@ local cmdIDToCMDDesc
 local cmdIDToStates
 local cmdIDToFuncName
 
+local Engine100 = (Game.version:find('100') == 1)
 
 local function ProcessToggleData(unitDefID, toggleData)
 
@@ -51,6 +51,9 @@ local function ProcessToggleData(unitDefID, toggleData)
 			params = params,
 			queueing = false
 		}
+		if Engine100 then
+			cmdDesc.queueing = nil
+		end
 		cmdIDToCMDDesc[cmdID] = cmdDesc
 		cmdIDToStates[cmdID] = toggleData.states
 		cmdIDToFuncName[cmdID] = toggleData.funcName
