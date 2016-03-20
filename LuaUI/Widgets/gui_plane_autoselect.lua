@@ -301,7 +301,7 @@ local function DrawUnitBuildPics(number)
 			end
 			glRect( X1 - ICON_SIZE_X, Y_MAX, X1 - ICON_SIZE_X*(1 - (sHP/sMaxHP) ), Y_MAX - 4)
 			glColor(1,1,1)
-			local sFuel = floor(GetUnitRulesParam(drawTable[ct].units, "fuel"))
+			local sFuel = floor(GetUnitRulesParam(drawTable[ct].units, "fuel") or 0)
 			glText(sFuel, X1, Y_MIN + 2,ICON_SIZE_Y * 0.18, "or")
 			----kmar 07-01-2016
 		end

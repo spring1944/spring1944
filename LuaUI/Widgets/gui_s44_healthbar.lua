@@ -289,7 +289,7 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 
 	-- FUEL
 	if bars.fuel then
-		local curFuel = Spring.GetUnitRulesParam(uid, "fuel")
+		local curFuel = Spring.GetUnitRulesParam(uid, "fuel") or 0
 		bars.fuel.cur = curFuel
 		bars.fuel.pct = curFuel / MAP_FUEL_SCALE(tonumber(ud.customParams.maxfuel))
 		display = true
