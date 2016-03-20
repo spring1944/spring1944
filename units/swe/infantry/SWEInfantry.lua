@@ -91,7 +91,7 @@ local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
 	name				= "Pansarvärnsgevär m/42",
 	weapons = {
 		[1] = { -- AT Rifle
-			name				= "Solothurn",
+			name				= "pvgm42",
 		},
 	},
 }
@@ -116,6 +116,14 @@ local SWE_Observ = ObservInf:New(SWEInf):New{
 	},
 }
 
+-- inf-mobile 20mm
+local SWE_PvlvM40_Mobile = HMGInf:New(SWEInf):New{
+	name			= "20 mm maskinkanon M.40 S",
+	description		= "AT/AA gun",
+	buildpic		= "SWEPvLvM40_AT.png",
+	buildCostMetal			= 1250,
+	iconType		= "rusptrd",
+}
 
 return lowerkeys({
 	-- Regular Inf
@@ -131,4 +139,5 @@ return lowerkeys({
 	["SWEPSkottM45"] = SWE_PSkottM45,
 	["SWEMortar"] = SWE_Mortar,
 	["SWEObserv"] = SWE_Observ,
+	["SWEPvlvM40"] = SWE_PvlvM40_Mobile,
 })

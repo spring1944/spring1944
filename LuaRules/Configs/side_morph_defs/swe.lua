@@ -206,6 +206,64 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	
+	swepvlvm40 = {
+		{
+			into = 'swepvlvm40_aa_stationary',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+		{
+			into = 'swepvlvm40_at_stationary',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+	},
+
+	swepvlvm40_aa_stationary = {
+		{
+			into = 'swepvlvm40',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+		{
+			into = 'swepvlvm40_at_stationary',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+	},
+	
+	swepvlvm40_at_stationary = {
+		{
+			into = 'swepvlvm40',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+		{
+			into = 'swepvlvm40_aa_stationary',
+			tech = 0,
+			time = 25,
+			metal = 0,
+			energy = 0,
+			directional = true,
+		},
+	},
+	
 		-- Towed Guns
 	swepvkanm43_truck = {
 		{

@@ -105,13 +105,14 @@ local sweDefs = {
 	["swe_platoon_at"] =
 	{
 		members = {
-			"swepskottm45",
+			"swepvgm42",
+			"swepvgm42",
 			"swepskottm45",
 			"swepskottm45",
 		},
 		name = "Anti-Tank Squad",
-		description = "3 x swepskottm45: Anti-Tank Infantry",
-		buildCostMetal = 350,
+		description = "2 x Pansarvärnsgevär m/42, 2 x Pansarskott m/45: Anti-Tank Infantry",
+		buildCostMetal = 450,
 		buildPic = "swepskottm45.png",
 	},
 

@@ -44,8 +44,27 @@ local ScopedSolothurn = Solothurn:New{
   range              = 1010,
 }
 
+-- Swedish PvGM42
+local SWE_PvGM42 = ATRifleClass:New{
+	name			= "Pansarvдrnsgevдr m/42",
+	soundStart		= "SWE_PvGM42",
+	accuracy           = 300,
+	range              = 640,
+	reloadtime         = 12,
+	rgbColor           = [[0.0 0.7 0.0]],
+	weaponVelocity     = 1240,
+	customparams = {
+		armor_penetration_1000m = 17,
+		armor_penetration_100m = 40,
+	},
+	damage = {
+		default            = 402,
+	},
+}
+
 return lowerkeys({
   PTRD = PTRD,
   Solothurn = Solothurn,
   ScopedSolothurn = ScopedSolothurn,
+  pvgm42 = SWE_PvGM42,
 })
