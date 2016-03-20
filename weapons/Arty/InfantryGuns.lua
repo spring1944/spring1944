@@ -16,7 +16,7 @@ local LeIG18HE = InfGun:New{
 local M875mmHE = InfGun:New{
   areaOfEffect       = 94,
   name               = [[M8 75mm Pack Howitzer HE Shell]],
-  soundStart         = [[US_75mm]],
+  soundStart         = [[short_75mm]],
   damage = {
     default            = 1620,
   },

@@ -241,7 +241,7 @@ local Ansaldo75mmL18 = MediumGun:New{
   name               = [[Ansaldo L/18 75mm Howitzer]],
   range              = 1310,
   reloadTime         = 6.75,
-  soundStart         = [[US_75mm]],
+  soundStart         = [[short_75mm]],
 }
 
 local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
@@ -458,7 +458,7 @@ local Mavag_75_41M = MediumGun:New{
   name               = [[MAVAG 41.M 75mm/24]],
   range              = 1270,
   reloadTime         = 5.25,
-  soundStart         = [[US_75mm]],
+  soundStart         = [[short_75mm]],
 }
 
 local Mavag_75_41MHE = MediumHE:New(Mavag_75_41M, true):New{
