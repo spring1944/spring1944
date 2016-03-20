@@ -189,6 +189,7 @@ local jpnunits =
 		"jpntypeno1auxsc",
 		"jpnabtei",
 		"jpnseta",
+		"jpnbusoudaihatsu",
 	},
 	jpnsupplydepot =
 	{
