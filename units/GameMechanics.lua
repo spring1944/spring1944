@@ -40,7 +40,7 @@ local SmallTankShelter = TankShelter:New{
 local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 	name				= "Game Master Toolbox",
 	description			= "Allows the game master to do game-mastery things",
-	objectName			= "US/USP51DMustangGA.S3O",
+	objectName			= "GEN/GMToolbox.S3O",
 	maxDamage			= 3.465e+06,
 	category			= "FLAG",
 
