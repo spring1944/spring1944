@@ -56,6 +56,8 @@ local SWE_PvGM42 = ATRifleClass:New{
 	customparams = {
 		armor_penetration_1000m = 17,
 		armor_penetration_100m = 40,
+		-- this is shoulder-fired, unlike all the other AT rifles
+		scriptanimation    = "atlauncher",
 	},
 	damage = {
 		default            = 402,

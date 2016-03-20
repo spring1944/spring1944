@@ -89,6 +89,7 @@ local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
 
 local SWE_PvGM42 = ATRifleInf:New(SWEInf):New{
 	name				= "Pansarvärnsgevär m/42",
+	iconType			= "itasolo",
 	weapons = {
 		[1] = { -- AT Rifle
 			name				= "pvgm42",
