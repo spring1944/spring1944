@@ -408,6 +408,9 @@ for name, ud in pairs(UnitDefs) do
 	if name == "gmtoolbox" then GM_UD = ud end
 end
 
+-- try to get the list sorted a bit
+table.sort(GMBuildOptions)
+
 GM_UD["buildoptions"] = GMBuildOptions
 
 VFS.Include("gamedata/unitdefs_post_dependency.lua")
