@@ -1,6 +1,6 @@
 local units = {}
 
-local axis = {ger = true, ita = true, jpn = true}
+local axis = {ger = true, ita = true, jpn = true, hun = true}
 
 for _, side in pairs(Sides) do
 	units[side .. "pontoonraft"] = PontoonRaft:New{}
