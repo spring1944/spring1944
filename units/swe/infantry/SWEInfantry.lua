@@ -124,6 +124,9 @@ local SWE_PvlvM40_Mobile = HMGInf:New(SWEInf):New{
 	buildpic		= "SWEPvLvM40_AT.png",
 	buildCostMetal			= 1250,
 	iconType		= "rusptrd",
+	customparams = {
+		scriptanimation		= "wheeled",
+	},
 }
 
 return lowerkeys({

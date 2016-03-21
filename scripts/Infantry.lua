@@ -10,6 +10,23 @@ if not info.animation then
 end
 local poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities = unpack(info.animation)
 
+-- Just in case we have wheels
+local WHEEL_CHECK_DELAY = 990
+local WHEEL_ACCELERATION_FACTOR = 3
+
+local hasWheels = false
+info.wheelSpeeds = {}
+local pieceMap = Spring.GetUnitPieceMap(unitID)
+for pieceName, pieceNum in pairs(pieceMap) do
+	-- Find Wheel Speeds
+	if pieceName:find("wheel") then
+		hasWheels = true
+		local wheelInfo = Spring.GetUnitPieceInfo(unitID, pieceNum)
+		local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
+		info.wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
+	end
+end
+
 
 --Constants
 local SIG_STATE = 1
@@ -98,6 +115,29 @@ local function Delay(func, duration, mask, ...)
 	SetSignalMask(mask)
 	Sleep(duration)
 	func(...)
+end
+
+local function SpinWheels()
+	Signal(SIG_MOVE)
+	SetSignalMask(SIG_MOVE)
+	local wheelSpeeds = info.wheelSpeeds
+	while true do
+		local frontDir = Spring.GetUnitVectors(unitID)
+		local vx, vy, vz = Spring.GetUnitVelocity(unitID)
+		local dotFront = vx * frontDir[1] + vy * frontDir[2] + vz * frontDir[3]
+		local direction = dotFront > 0 and 1 or -1
+		for wheelPiece, speed in pairs(wheelSpeeds) do
+			Spin(wheelPiece, x_axis, speed * direction, speed / WHEEL_ACCELERATION_FACTOR)
+		end
+		Sleep(WHEEL_CHECK_DELAY)
+	end
+end
+
+local function StopWheels()
+	Signal(SIG_MOVE)
+	for wheelPiece, speed in pairs(info.wheelSpeeds) do
+		StopSpin(wheelPiece, x_axis, speed / WHEEL_ACCELERATION_FACTOR)
+	end
 end
 
 local function PlayAnim()
@@ -362,6 +402,16 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 		end
 		standing = newStanding
 		aiming = newAiming
+
+		-- for wheeled models - heavy inf weapons can have wheels
+		if hasWheels then
+			if newMoving then
+				StartThread(SpinWheels)
+			else
+				StartThread(StopWheels)
+			end
+		end
+
 		moving = newMoving
 		pinned = newPinned
 		building = newBuilding
