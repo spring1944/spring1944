@@ -34,7 +34,7 @@ local hunSorties = {
 		name = "Air Superiority Fighter Sortie",
 		description = "3 x Me 210Ca-1",
 		buildCostMetal = 4500,
-		buildPic = "HUMe210.png",
+		buildPic = "HUNMe210.png",
 	},
 	hun_sortie_bomber = {
 		members = {
@@ -46,7 +46,7 @@ local hunSorties = {
 		name = "Bomber Sortie",
 		description = "2 x Me 210 gyorsbombázó",
 		buildCostMetal = 6750,
-		buildPic = "HUMe210_bomber.png",
+		buildPic = "HUNMe210_bomber.png",
 	},
 
 }
