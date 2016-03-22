@@ -117,6 +117,34 @@ local SWE_Observ = ObservInf:New(SWEInf):New{
 	},
 }
 
+-- Swedish partisan
+local Partisan = {
+	maxDamageMul		= 0.40,
+
+	cloakCost			= 0,
+	cloakCostMoving		= 0,
+	minCloakDistance	= 225,
+}
+
+local SWE_Partisan = RifleInf:New(Partisan):New{
+	name				= "HVA M/96 Partisan",
+	description			= "Very Light Defensive Ambusher",
+
+	customParams = {
+		flagCapRate			= 0.005,
+		weapontoggle		= "ambush",
+	},
+
+	weapons = {
+		[1] = { -- Rifle
+			name				= "HVAM96",
+		},
+		[2] = { -- Grenade
+			name				= "Model24",
+		},
+	},
+}
+
 -- inf-mobile 20mm
 local SWE_PvlvM40_Mobile = HMGInf:New(SWEInf):New{
 	name			= "20 mm maskinkanon M.40 S",
@@ -144,4 +172,5 @@ return lowerkeys({
 	["SWEMortar"] = SWE_Mortar,
 	["SWEObserv"] = SWE_Observ,
 	["SWEPvlvM40"] = SWE_PvlvM40_Mobile,
+	["SWEPartisan"] = SWE_Partisan,
 })

@@ -107,6 +107,12 @@ local Gevar_M_38 = RifleClass:New{
 	soundStart         = [[SWE_M_38_rifle]],
 }
 
+-- Partisan rifle
+local HVAM96 = RifleClass:New(K98k):New{
+	name				= [[m/96 Partisan rifle]],
+	soundStart			= [[HVA_M_96]],
+}
+
 -- Hungary
 -- FÉG 35M
 local HUN_FEG35M = RifleClass:New{
@@ -212,6 +218,7 @@ return lowerkeys({
   AgM42 = AgM42,
   Gevar_M_38 = Gevar_M_38,
   Gevar_M_38_Sniper = Gevar_M_38_Sniper,
+  HVAM96 = HVAM96,
   feg35m = HUN_FEG35M,
   feg35m_sniper = FEG_35M_Sniper,
 })
