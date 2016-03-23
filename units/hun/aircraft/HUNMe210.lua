@@ -96,7 +96,7 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	description		= "Ground attack aircraft",
 
 	customParams = {
-		maxammo				= 16,
+		maxammo				= 6,
 	},
 	
 	weapons = {
@@ -107,6 +107,7 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 		[2] = {
 			name	= "NebelAir",
 			maxAngleDif = 30,
+			slaveTo = 1,
 		},
 		[3] = {	-- Pretend this is Bofors 40mm with AP ammo
 			name				= "bk37mmap",

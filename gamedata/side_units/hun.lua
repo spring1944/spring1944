@@ -145,6 +145,7 @@ local hununits = {
 		"hun_sortie_interceptor",
 		"hun_sortie_fighter",
 		"hun_sortie_bomber",
+		"hun_sortie_attack",
 	},
 	hunsupplydepot = {
 		"hun38mbotond",

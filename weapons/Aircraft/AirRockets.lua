@@ -47,7 +47,7 @@ local AirNebelwerfer41 = AirRocket:New{
 	soundStart         = [[GER_Nebelwerfer]],
 	wobble             = 1300,
 	customparams = {
-		damagetype         = [[explosive]],
+		damagetype			= [[explosive]],
 	},
 	damage = {
 		default            = 5525,

@@ -48,7 +48,18 @@ local hunSorties = {
 		buildCostMetal = 6750,
 		buildPic = "HUNMe210_bomber.png",
 	},
-
+	hun_sortie_attack = {
+		members = {
+			"hunme210_attack",
+			"hunme210_attack",
+		},
+		delay = 45,
+		weight = 1,
+		name = "Attack sortie",
+		description = "2 x Me 210 with Nebelwerfer rockets",
+		buildCostMetal = 6750,
+		buildPic = "HUNMe210_bomber.png",
+	},
 }
 
 return hunSorties
