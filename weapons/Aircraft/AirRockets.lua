@@ -37,8 +37,26 @@ local RS82Rocket = AirRocket:New{
   },
 }
 
+-- Air-based nebelwerfer
+local AirNebelwerfer41 = AirRocket:New{
+	areaOfEffect       = 184,
+	explosionGenerator = [[custom:HE_XLarge]],
+	reloadtime			= 3,
+	name               = [[Nebelwerfer 41 150mm unguided artillery rocket]],
+	range              = 900,
+	soundStart         = [[GER_Nebelwerfer]],
+	wobble             = 1300,
+	customparams = {
+		damagetype         = [[explosive]],
+	},
+	damage = {
+		default            = 5525,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   HVARRocket = HVARRocket,
   RS82Rocket = RS82Rocket,
+  NebelAir = AirNebelwerfer41,
 })
