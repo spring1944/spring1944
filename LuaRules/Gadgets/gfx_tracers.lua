@@ -63,25 +63,32 @@ local SendMessageToTeam		= Spring.SendMessageToTeam
 -- Variables
 local unitWeaponRounds = {}
 
+function gadget:UnitDestroyed(unitID, unitDefID, unitTeam)
+  unitWeaponRounds[unitID] = nil
+end
 
 function gadget:ProjectileCreated(proID, proOwnerID, weaponDefID)
   if weapons[weaponDefID] then
     if not unitWeaponRounds[proOwnerID] then
       unitWeaponRounds[proOwnerID] = {}
     end
-	unitWeaponRounds[proOwnerID][weaponDefID] = (unitWeaponRounds[proOwnerID][weaponDefID] or 0) + 1
+    unitWeaponRounds[proOwnerID][weaponDefID] = (unitWeaponRounds[proOwnerID][weaponDefID] or 0) + 1
     if unitWeaponRounds[proOwnerID][weaponDefID] == (tonumber(WeaponDefs[weaponDefID].customParams.tracerfreq or 5)) then --customparam this later too
-	  unitWeaponRounds[proOwnerID][weaponDefID] = 0
-	  --TODO: batch sending if required
+      unitWeaponRounds[proOwnerID][weaponDefID] = 0
+      --TODO: batch sending if required
       SendToUnsynced("lupsProjectiles_AddProjectile", proID, proOwnerID, weaponDefID)
     end
   end
 end
 
+function gadget:ProjectileDestroyed(proID)
+  SendToUnsynced("lupsProjectiles_RemoveProjectile", proID)
+end
+
 else
 --UNSYNCED
 local Lups
-local LupsAddParticles 
+local LupsAddParticles
 local SYNCED = SYNCED
 
 local projectiles = {}
@@ -94,7 +101,7 @@ local function AddProjectile(_, proID, proOwnerID, weaponID)
     local fxTable = projectiles[proID]
     local fx = def[i]
     local options = {}
-	table.copy(fx.options, options)
+    table.copy(fx.options, options)
     --options.unit = proOwnerID
     options.projectile = proID
     options.weapon = weaponID
