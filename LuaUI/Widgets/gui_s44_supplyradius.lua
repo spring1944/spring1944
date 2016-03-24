@@ -102,11 +102,11 @@ local glLineWidth = gl.LineWidth
 local glPointSize = gl.PointSize
 local glSmoothing = gl.Smoothing
 
+local glBeginEnd = gl.BeginEnd
+local glVertex = gl.Vertex
 local glCreateList = gl.CreateList
 local glCallList = gl.CallList
 local glDeleteList = gl.DeleteList
-
-local glShape = gl.Shape
 
 local glTranslate = gl.Translate
 local glScale = gl.Scale
@@ -281,6 +281,12 @@ end
 ------------------------------------------------
 --drawing
 ------------------------------------------------
+local function VertexList(points)
+	for i, point in pairs(points) do
+		glVertex(point)
+	end
+end
+
 local function DrawSupplyRing(supplyInfo)
 	--Spring.Echo('ring', radius)
 	local supplyDefInfo = supplyInfo.supplyDefInfo
@@ -295,16 +301,14 @@ local function DrawSupplyRing(supplyInfo)
 			local gx, gz = x + r * cos(angle), z + r * sin(angle)
 			local gy =  max(GetGroundHeight(gx, gz), 0)
 			if gy then
-				vertices[vi] = {
-					v = {gx, gy, gz}
-				}
+				vertices[vi] = {gx, gy, gz}
 				vi = vi + 1
 			end
 		end
 		angle = angle + segmentAngle
 	end
 
-	glShape(GL_POINTS, vertices)
+	glBeginEnd(GL_POINTS, VertexList, vertices)
 end
 
 local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
@@ -319,15 +323,13 @@ local function DrawSupplyRingFull(supplyDefInfo, x, z, radius)
 		local gx, gz = x + r * cos(angle), z + r * sin(angle)
 		local gy =  max(GetGroundHeight(gx, gz), 0)
 		if gy then
-			vertices[vi] = {
-				v = {gx, gy, gz}
-			}
+			vertices[vi] = {gx, gy, gz}
 			vi = vi + 1
 		end
 		angle = angle + segmentAngle
 	end
 
-	glShape(GL_POINTS, vertices)
+	glBeginEnd(GL_POINTS, VertexList, vertices)
 end
 
 local function DrawTrucks()
@@ -532,11 +534,11 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 
 	local supplyDefInfo = supplyDefInfos[unitDefID]
-	
+
 	if not supplyDefInfo then
 		return
 	end
-	
+
 	--enter info
 	local supplyInfo = {}
 	supplyInfo.supplyDefInfo = supplyDefInfo
@@ -545,7 +547,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	supplyInfo.x, supplyInfo.z = x, z
 
 	inBuildSupplyInfos[unitID] = supplyInfo
-	
+
 	UpdateLists()
 end
 
@@ -561,14 +563,14 @@ function widget:UnitFinished(unitID, unitDefID, unitTeam)
 	if not supplyDefInfo and not UnitDefs[unitDefID].customParams.supplyrangemodifier then
 		return
 	end
-	
+
 	if UnitDefs[unitDefID].customParams.supplyrangemodifier then
 		for supplyUnitID, _ in pairs(supplyInfos) do
 			local supplyUnitDefID = GetUnitDefID(supplyUnitID)
 			CreateSupplyInfo(supplyUnitID, supplyDefInfos[supplyUnitDefID])
 		end
 	end
-	
+
 	if supplyDefInfo then
 		CreateSupplyInfo(unitID, supplyDefInfo)
 	end
@@ -612,7 +614,7 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 		end
 		doUpdate = true
 	end
-	
+
 	if doUpdate then
 		UpdateLists()
 	end
