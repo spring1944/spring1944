@@ -168,10 +168,10 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 	SetSignalMask(0)
 	--Spring.Echo("start transition")
 	for i, frame in pairs(transition) do
-		local duration, turns, moves, headingTurn, pitchTurn, anim, emit = 
+		local duration, turns, moves, headingTurn, pitchTurn, anim, emit =
 			  frame.duration, frame.turns, frame.moves, frame.headingTurn, frame.pitchTurn, frame.anim, frame.emit
-		
-		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)			
+
+		--Spring.Echo("frame", i, #turns, #moves, duration, headingTurn, pitchTurn)
 		if turns then
 			for _, params in pairs(turns) do
 				Turn(unpack(params))
@@ -216,7 +216,7 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 end
 
 local function PickPose(name)
-	
+
 	local nextPoseID = GetNewPoseID(name)
 	if not currentPoseID then
 		--Spring.Echo("warp")
@@ -238,13 +238,18 @@ local function PickPose(name)
 
 		local transition
 		if firing then
-			transition = fireTransitions[currentPoseID][nextPoseID]
+			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
+				transition = fireTransitions[currentPoseID][nextPoseID]
+			else
+				Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+				return false
+			end
 		end
 		if not transition then
 			transition = transitions[currentPoseID][nextPoseID]
 		end
 		if not transition then
-			Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name)
+			Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
 			return false
 		end
 
@@ -268,7 +273,7 @@ local function ReAim(newHeading, newPitch)
 			return true
 		end
 	end
-	
+
 	SetSignalMask(SIG_AIM)
 	local pose = poses[currentPoseID]
 	local headingTurn, pitchTurn = pose.headingTurn, pose.pitchTurn
@@ -286,7 +291,7 @@ local function ReAim(newHeading, newPitch)
 	if headingTurn then
 		WaitForTurn(headingPiece, headingAxis)
 	end
-	if pitchTurn then 
+	if pitchTurn then
 		WaitForTurn(pitchPiece, pitchAxis)
 	end
 	currentHeading = newHeading
@@ -341,7 +346,7 @@ local function UpdateSpeed()
 	if newSpeed == currentSpeed then
 		return
 	end
-	
+
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -356,7 +361,7 @@ local function UpdateSpeed()
 		end
 	end
 	currentSpeed = newSpeed
-	
+
 	if UnitDef.isBuilder then
 		local origBuildSpeed = UnitDef.buildSpeed
 		if fear > 0 then
@@ -442,7 +447,7 @@ local function UpdateTargetState()
 	targetMoving = wantedMoving
 	targetPinned = wantedPinned
 	targetBuilding = wantedBuilding and (not wantedPinned and not wantedMoving and not wantedAiming and fear == 0)
-	
+
 	if wantedAiming then
 		local tags = weaponsTags[wantedAiming]
 		if wantedMoving then
@@ -454,11 +459,11 @@ local function UpdateTargetState()
 			targetAiming = (targetStanding or tags.canProneFire) and targetAiming
 		end
 	end
-	
+
 	if targetBuilding then
 		targetStanding = true
 	end
-	
+
 end
 
 
@@ -469,7 +474,7 @@ local function IsWantedPose()
 		 pinned == targetPinned and
 		 building == targetBuilding and
 		 not firing
-		 
+
 	-- Spring.Echo("wanted", wanted)
 	return wanted
 end
@@ -478,11 +483,11 @@ local function NextPose()
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
 	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned, wantedBuilding)
 	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned, targetBuilding)
-		
+
 	if firing then
 		return UpdatePose(standing, aiming == wantedAiming and aiming, moving, pinned, building)
 	end
-	
+
 	if targetPinned and not pinned then
 		if aiming then
 			return UpdatePose(standing, false, moving, pinned, building)
@@ -497,7 +502,7 @@ local function NextPose()
 	elseif pinned and not targetPinned then
 		return UpdatePose(false, false, false, false, false)
 	end
-	
+
 	if standing ~= targetStanding  then
 		if building then
 			return UpdatePose(standing, aiming, moving, pinned, false)
@@ -510,7 +515,7 @@ local function NextPose()
 		end
 		return UpdatePose(targetStanding and fear == 0, aiming, moving, pinned, building)
 	end
-	
+
 	if moving ~= targetMoving then
 		if building then
 			return UpdatePose(standing, aiming, moving, pinned, false)
@@ -520,7 +525,7 @@ local function NextPose()
 		end
 		return UpdatePose(standing, aiming, targetMoving, pinned, building)
 	end
-	
+
 	if aiming ~= targetAiming then
 		if building then
 			return UpdatePose(standing, aiming, moving, pinned, false)
@@ -530,11 +535,11 @@ local function NextPose()
 		end
 		return UpdatePose(standing, targetAiming, moving, pinned, building)
 	end
-	
+
 	if building ~= targetBuilding then
 		return UpdatePose(standing, aiming, moving, pinned, targetBuilding)
 	end
-	
+
 	Spring.Log("infantry script", "error", "shouldn't reach here")
 	Sleep(33)
 end
@@ -631,7 +636,7 @@ end
 
 
 function script.Create()
-	if flare then 
+	if flare then
 		Hide(flare)
 	end
 	standing = true
@@ -702,15 +707,18 @@ function script.AimWeapon(num, heading, pitch)
 	if not weaponEnabled[num] then
 		return false
 	end
-	
+	if firing then
+		return false
+	end
+
 	local weaponClass = weaponsMap[num]
 	local tags = weaponsTags[weaponClass]
 	if not tags then return false end
-	
+
 	if tags.aimOnLoaded and not IsLoaded(weaponClass) then
 		return false
 	end
-	
+
 	Signal(SIG_AIM)
 	StartThread(Delay, StopAiming, STOP_AIM_DELAY, SIG_RESTORE)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
@@ -822,14 +830,14 @@ if UnitDef.isBuilder then
 			StartBuilding()
 		end
 	end
-	
+
 	function script.StopBuilding()
 		StopBuilding()
 	end
 end
 
 if UnitDef.customParams.canclearmines then
-	
+
 	function StartClearMines(blowFunc, blowDelay)
 		if CanAim("engineer") then
 			StartThread(Delay, blowFunc, blowDelay, SIG_STATE, unitID)
@@ -839,11 +847,11 @@ if UnitDef.customParams.canclearmines then
 		StartAiming("engineer")
 		return false
 	end
-	
+
 	function IsClearing()
 		return CanAim("engineer")
 	end
-	
+
 	function StopClearMines()
 		if CanAim("engineer") then
 			StopAiming()
