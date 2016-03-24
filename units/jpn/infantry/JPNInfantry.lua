@@ -64,6 +64,9 @@ local JPN_Sniper = SniperInf:New(JPNInf):New{
 
 local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 	name				= "Type 3 AT Grenade",
+	customparams = {
+		scriptanimation		= "smg",
+	},
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "Type3AT",

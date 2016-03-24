@@ -107,6 +107,9 @@ local function GetNewPoseID(poseName)
 		return currentPoseID
 	end
 	local variants = poseVariants[poseName]
+	if not variants then
+		Spring.Log("infantry script", "error", "no variants for pose: " .. poseName .. " " .. UnitDef.name, unitID)
+	end
 	return variants[random(#variants)]
 end
 
