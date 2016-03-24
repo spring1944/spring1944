@@ -31,7 +31,7 @@ local JPN_Type100SMG = SMGInf:New(JPNInf):New{
 }
 
 local JPN_Type99LMG = LMGInf:New(JPNInf):New{
-	name				= "BREN Mk II Light Machinegun",
+	name				= "Type 99 Light Machinegun",
 	weapons = {
 		[1] = { -- LMG
 			name				= "Type97MG",
@@ -116,7 +116,7 @@ local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	name				= "Type 4 200mm Mortar",
 	buildCostMetal		= 1500,
 	iconType			= "artillery",
-	
+
 	customParams = {
 		canareaattack		= false,
 		scriptanimation		= "mg",
@@ -139,7 +139,7 @@ local JPN_Type4Mortar_Stationary = Deployed:New{
 		weapontoggle		= "smoke",
 		--scriptAnimation		= "gun",
 	},
-	
+
 	weapons = {
 		[1] = {
 			name				= "Type4RocketMortarHE",
