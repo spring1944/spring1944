@@ -163,6 +163,17 @@ local sweDefs = {
 		},
 	},
 
+	swestorage = {
+		{
+			into = 'swepartisanbase',
+			metal = 500,
+			energy = 0,
+			time = 50,
+			name = '  Partisan  \n  Base  ',
+			text = 'Hidden partisan base that spawns partisan units',
+			facing = true,
+		},
+	},
 --[[
 	swesupplydepot = {
 		{
