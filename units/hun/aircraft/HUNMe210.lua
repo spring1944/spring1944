@@ -1,7 +1,7 @@
 local HUN_Me210_base = {
 	buildCostMetal		= 1200,
 	maxDamage			= 800,
-		
+
 	maxAcc				= 0.693,
 	maxAileron			= 0.0054,
 	maxBank				= 1,
@@ -49,7 +49,7 @@ local HUN_Me210 = Fighter:New(HUN_Me210_base):New{
 			name				= "mg13113mm",
 			maxAngleDif			= 30,
 			mainDir				= [[0 0 -1]],
-		},	
+		},
 	},
 }
 
@@ -87,8 +87,8 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 			name				= "mg13113mm",
 			maxAngleDif			= 30,
 			mainDir				= [[0 0 -1]],
-		},	
-	},	
+		},
+	},
 }
 
 local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
@@ -98,51 +98,51 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	customParams = {
 		maxammo				= 6,
 	},
-	
+
 	weapons = {
-		[1] = {
-			name	= "NebelAir",
-			maxAngleDif = 30,
-		},
-		[2] = {
-			name	= "NebelAir",
-			maxAngleDif = 30,
-			slaveTo = 1,
-		},
-		[3] = {	-- Pretend this is Bofors 40mm with AP ammo
+		[1] = {	-- Pretend this is Bofors 40mm with AP ammo
 			name				= "bk37mmap",
 			maxAngleDif			= 10,
 			mainDir				= [[0 0 9]],
 		},
-		[4] = {
+		[2] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
+		},
+		[3] = {
+			name				= "MG15120mm",
+			maxAngleDif			= 10,
+			slaveTo				= 1,
+		},
+		[4] = {	-- Pretend this is MG17
+			name				= "mg42aa",
+			maxAngleDif			= 10,
+			slaveTo				= 1,
 		},
 		[5] = {
-			name				= "MG15120mm",
-			maxAngleDif			= 10,
-			slaveTo				= 1,
-		},
-		[6] = {	-- Pretend this is MG17
 			name				= "mg42aa",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
+		},
+		[6] = {	-- this is in rear defence turret
+			name				= "mg13113mm",
+			maxAngleDif			= 30,
+			mainDir				= [[0 0 -1]],
 		},
 		[7] = {
-			name				= "mg42aa",
-			maxAngleDif			= 10,
-			slaveTo				= 1,
-		},
-		[8] = {	-- this is in rear defence turret
 			name				= "mg13113mm",
 			maxAngleDif			= 30,
 			mainDir				= [[0 0 -1]],
+		},
+		[8] = {
+			name	= "NebelAir",
+			maxAngleDif = 30,
 		},
 		[9] = {
-			name				= "mg13113mm",
-			maxAngleDif			= 30,
-			mainDir				= [[0 0 -1]],
-		},	
+			name	= "NebelAir",
+			maxAngleDif = 30,
+			slaveTo = 1,
+		},
 	},
 }
 

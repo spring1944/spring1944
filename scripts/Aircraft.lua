@@ -22,6 +22,7 @@ end
 
 local lastRocket = 0
 local fear = 0
+local bombsFired = {}
 
 local PI = math.pi
 local FEAR_LIMIT = 10
@@ -84,7 +85,7 @@ local function IsMainGun(weaponNum)
 end
 
 local function IsRocket(weaponNum)
-	return info.numRockets > 0 and IsMainGun(weaponNum)
+	return info.rocketWeapons[weaponNum]
 end
 
 function script.QueryWeapon(weaponNum)
@@ -92,7 +93,7 @@ function script.QueryWeapon(weaponNum)
 		return piece("rocket" .. math.max(lastRocket, 1))
 	end
 	local cegPiece = info.cegPieces[weaponNum]
-	if cegPiece then 
+	if cegPiece then
 		return cegPiece
 	end
 	-- Shields etc.
@@ -108,7 +109,16 @@ function script.AimFromWeapon(weaponNum)
 end
 
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	return (IsMainGun(weaponNum) and Spring.GetUnitRulesParam(unitID, "ammo") < 1) or false
+	if IsRocket(weaponNum) then
+		return lastRocket >= info.numRockets
+	end
+	if info.bombPieces[weaponNum] then
+		return bombsFired[weaponNum] ~= nil
+	end
+	if IsMainGun(weaponNum) then
+		return Spring.GetUnitRulesParam(unitID, "ammo") < 1
+	end
+	return false
 end
 
 function script.AimWeapon(weaponNum, heading, pitch)
@@ -118,22 +128,22 @@ function script.AimWeapon(weaponNum, heading, pitch)
 		return true
 	end
 	SetSignalMask(SIG_AIM[weaponNum])
-	
+
 	if info.reversedWeapons[weaponNum] then
 		heading = heading + PI
 		pitch = -pitch
 	end
-	
+
 	local headingPiece, pitchPiece = aimPieces[1], aimPieces[2]
 	Turn(headingPiece, y_axis, heading, info.turretTurnSpeed)
-	
+
 	if pitchPiece then
 		Turn(pitchPiece, x_axis, -pitch, info.elevationSpeed)
 		WaitForTurn(pitchPiece, x_axis)
 	end
-	
+
 	WaitForTurn(headingPiece, y_axis)
-	
+
 	return true
 end
 
@@ -152,6 +162,7 @@ function script.Shot(weaponNum)
 	end
 	if info.bombPieces[weaponNum] then
 		Hide(info.bombPieces[weaponNum])
+		bombsFired[weaponNum] = true
 	end
 end
 
@@ -164,7 +175,7 @@ function script.Killed(recentDamage, maxHealth)
 			Explode(pieceID, SFX.SHATTER)
 		end
 	end
-	
+
 	return 1
 end
 
@@ -196,7 +207,7 @@ if UnitDef.isBuilder then
 	function script.StartBuilding(buildHeading, pitch)
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 	end
-	
+
 	function script.StopBuilding()
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
 	end

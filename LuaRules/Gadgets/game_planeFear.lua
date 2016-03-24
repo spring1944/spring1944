@@ -74,6 +74,9 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		if (planeScriptID) then
 			local properAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 			SetUnitRulesParam(unitID, "fear", 0)
+			if not GetUnitRulesParam(unitID, "fuel") then
+				SetUnitRulesParam(unitID, "fuel", tonumber(ud.customParams.maxfuel))
+			end
 			planeScriptIDs[unitID] = planeScriptID
 			accuracyTable[unitID] = properAccuracy
 		end

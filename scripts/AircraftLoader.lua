@@ -10,7 +10,7 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 			break
 		end
 		i = i + 1
-		
+
 		if currentPiece:find("turret") then
 			headingPiece = pieceMap[currentPiece]
 		end
@@ -20,7 +20,7 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 		if headingPiece and pitchPiece then
 			break
 		end
-		
+
 		local pieceInfo = Spring.GetUnitPieceInfo(unitID, pieceMap[currentPiece])
 		currentPiece = pieceInfo.parent
 	end
@@ -29,6 +29,7 @@ end
 
 info.cegPieces = {}
 info.bombPieces = {}
+info.rocketWeapons = {}
 info.aimPieces = {}
 info.reversedWeapons = {}
 info.smokePieces = {}
@@ -53,13 +54,15 @@ for weaponNum = 1,info.numWeapons do
 		if WeaponDefs[UnitDef.weapons[weaponNum].weaponDef].customParams.bomb then
 			info.bombPieces[weaponNum] = piece("bomb_" .. weaponNum)
 			info.cegPieces[weaponNum] = piece("flare_" .. weaponNum) or info.bombPieces[weaponNum]
+		elseif WeaponDefs[UnitDef.weapons[weaponNum].weaponDef].customParams.rocket then
+			info.rocketWeapons[weaponNum] = true
 		else
 			lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
 			info.cegPieces[weaponNum] = pieceMap[lastflare]
 			local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
 			if headingPiece then
 				info.aimPieces[weaponNum] = {headingPiece, pitchPiece}
-				
+
 				local _, _, _, dx, dy, dz = Spring.GetUnitPiecePosDir(unitID, pieceMap[lastflare])
 				local frontDir = Spring.GetUnitVectors(unitID)
 				local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
