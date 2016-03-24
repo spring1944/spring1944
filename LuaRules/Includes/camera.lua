@@ -14,7 +14,7 @@ do
 	end
 	local origState = Spring.GetCameraState()
 	for name, mode in pairs(CAMERA_IDS) do
-		Spring.SetCameraState({name = name, mode = mode})
+		Spring.SetCameraState({name = name, mode = mode}, 0)
 		local state = Spring.GetCameraState()
 		state.name = nil
 		state.mode = nil
@@ -24,7 +24,7 @@ do
 		end
 		CAMERA_STATE_FORMATS[mode] = argTable
 	end
-	Spring.SetCameraState(origState)
+	Spring.SetCameraState(origState, 0)
 
 	Spring.SendCommands("minimap min 0")
 end
@@ -169,102 +169,5 @@ function Camera.PacketToState(p)
 
 	return result
 end
-
-
---Interpolation code, thanks ZK!
-local currentMode
-local beginTimer
-local active
-local period
-local beginCam = {}
-local deltaEnd = {}
-local targetCam = {}
-
-local function CopyState(cs, newState)
-	for k, v in pairs(newState) do
-		cs[k] = v
-	end
-end
-
-local function Sub(result, vector1, vector2)
-	for k, v in pairs(vector1) do
-		if type(v) == type(0) then
-			result[k] = vector1[k] - vector2[k]
-		end
-	end
-end
-
-
-function Camera.OverrideSetCameraStateInterpolate(cs,smoothness)
-	if currentMode ~= cs.mode then
-		Spring.SetCameraState(cs)
-		currentMode = cs.mode
-		active = false
-		beginCam = {}
-		deltaEnd = {}
-		targetCam = {}
-		return
-	end
-	Camera.Interpolate()
-	beginTimer = Spring.GetTimer()
-	period = smoothness
-
-	local now = Spring.GetCameraState()
-	CopyState(beginCam, now)
-
-	CopyState(targetCam, cs)
-	active = true
-
-	Sub(deltaEnd, cs, now)
-
-end
-
-local function Add(vector1,vector2,factor)
-	local newVector = {}
-	for k, v in pairs(vector1) do
-		if type(v) == type(0) then
-			newVector[k] = v + (vector2[k] or 0) * factor
-		else
-			newVector[k] = v
-		end
-	end
-	return newVector
-end
-
-local function DisableEngineTilt(cs)
-	--Disable engine's tilt when we press arrow key and move mouse
-	cs.tiltSpeed = 0
-	cs.scrollSpeed = 0
-end
-
---All algorithm is from "Spring/rts/game/CameraHandler.cpp"
-function Camera.Interpolate()
-	if not (active) then return end
-
-	local lapsedTime = Spring.DiffTimers(Spring.GetTimer(), beginTimer);
-
-	if ( lapsedTime >= period) then
-		local cs = Spring.GetCameraState()
-		CopyState(cs, targetCam)
-		DisableEngineTilt(cs)
-		Spring.SetCameraState(cs)
-		active = false
-	else
-		if (period > 0) then
-			local timeRatio = (period - lapsedTime) / (period);
-			local tweenFact = 1.0 - math.pow(timeRatio, 4);
-
-			local newState = Add(beginCam,deltaEnd,tweenFact) --add changes to camera state in gradual manner
-			local cs = Spring.GetCameraState()
-			CopyState(cs, newState)
-			DisableEngineTilt(cs)
-			Spring.SetCameraState(cs)
-		end
-	end
-end
-
-
-
-
 
 return Camera
