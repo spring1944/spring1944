@@ -12,7 +12,7 @@ local Vehicle = Unit:New{
 	trackType			= "Stdtank",
 	turnInPlace			= false,
 	turnRate			= 400,
-	
+
 	customParams = {
 		damageGroup		= "unarmouredVehicles",
 		soundcategory	= "<SIDE>/Vehicle",
@@ -27,7 +27,7 @@ local ArmouredCar = Vehicle:New{
 	description			= "Light Armoured Car",
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
-	movementClass		= "TANK_Car",	
+	movementClass		= "TANK_Car",
 
 	customParams = {
 		damageGroup		= "armouredVehicles",
@@ -71,7 +71,7 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
 	turnRate			= 440,
-	
+
 	customParams = {
 		buildOutside	= 1,
 	},
@@ -81,7 +81,6 @@ local PontoonTruck = Truck:New{
 	name				= "Pontoon Carrier", -- appended
 	description			= "Deployable Boatyard Vehicle",
 	buildCostMetal		= 1400,
-	corpse				= "<NAME>_Dead", -- TODO: grumble
 	maxWaterDepth		= 70,
 	movementClass		= "HOVER_AmphibTruck",
 	script				= nil, -- TODO: atm they have individual copies
@@ -131,7 +130,7 @@ local HalfTrack = ArmouredCar:New(Transport):New{
 	buildCostMetal		= 1200,
 	iconType			= "halftrack",
 	movementClass		= "TANK_Light",
-	
+
 	customParams = {
 		supplyRange			= 200,
 	},
