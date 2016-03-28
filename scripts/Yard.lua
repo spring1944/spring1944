@@ -1,3 +1,5 @@
+local info = GG.lusHelper[unitDefID]
+
 local base = piece("base") or piece("building")
 local radar = piece("radar")
 
@@ -167,4 +169,36 @@ do
 		end
 	
 	end -- bunker
+	-- Hungarian fortified storage
+	if info.numWeapons > 1 then
+		local guns = {}
+		local flares = {}
+		local n
+		for n = 1, info.numWeapons do
+			if info.reloadTimes[n] then
+				guns[n] = piece("gun"..n) or base
+				flares[n] = piece("flare"..n) or base
+			end
+		end
+
+		function script.QueryWeapon(weaponNum)
+			return flares[weaponNum]
+		end
+
+		function script.AimFromWeapon(weaponNum)
+			return guns[weaponNum]
+		end
+		
+		function script.AimWeapon(weaponNum, heading, pitch)
+			Turn(guns[weaponNum], y_axis, heading)
+			return true
+		end
+		
+		function script.Shot(weaponNum)
+			local ceg = info.weaponCEGs[weaponNum]
+			if ceg then
+				GG.EmitSfxName(unitID, flares[weaponNum], ceg)
+			end
+		end
+	end
 end
