@@ -1,4 +1,16 @@
 local hunDefs = {
+   	hunstorage = {
+		{
+			into = 'hunfortifiedstorage',
+			metal = 6000,
+			energy = 0,
+			time = 80,
+			name = '  Fortified \n Storage  ',
+			text = 'Turns into a fortified storage.',
+			facing = true,
+		},
+	},
+	
 	hunhmg =
 	{
 		into = 'hunhmg_sandbags',
