@@ -80,7 +80,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 }
 
 local HUN43MTuranIII = HUN41MTuranII:New{
-	name				= "41.M Turan II",
+	name				= "43.M Turan III",
 	corpse				= "HUN43MTuranIII_Abandoned",
 	buildCostMetal		= 3000,
 	maxDamage			= 1900,
