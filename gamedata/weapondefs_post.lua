@@ -227,7 +227,7 @@ local function CopyCategories(ud)
 				end
 			end
 
-			--Spring.Echo("Replacing " .. unitName .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with:", targetCat.only, "BadTargetCategory with:", targetCat.bad)
+			--Spring.Echo("Replacing " .. ud.name .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with:", targetCat.only, "BadTargetCategory with:", targetCat.bad)
 			ud.weapons[weaponID].onlytargetcategory = only
 			if bad and not ud.weapons[weaponID].badtargetcategory then -- don't overwrite
 				ud.weapons[weaponID].badtargetcategory = bad
