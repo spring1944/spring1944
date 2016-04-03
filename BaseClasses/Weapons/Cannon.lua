@@ -63,6 +63,7 @@ local HE = Weapon:New{
 	name               = "HE Shell",
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		damagetype         = "explosive",
 		fearid             = 301,
 	},
