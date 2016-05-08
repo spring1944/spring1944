@@ -19,7 +19,6 @@ local Bomb160kg = BombClass:New{
   accuracy           = 500,
   areaOfEffect       = 160,
   name               = [[160kg Bomb]],
-  weaponType         = [[AircraftBomb]],
   model              = [[Bomb_Medium.S3O]],
   reloadtime	     = 600,
   range              = 450,
@@ -59,6 +58,9 @@ local V1 = BombClass:New{
   areaOfEffect       = 200,
   name               = [[V1 Missile]],
   soundHitDry        = [[GEN_Explo_9]],
+    damage = {
+    default            = 30000,
+    },
 }
 
 -- PTAB "Antitank Aviation Bomb" (RUS)
