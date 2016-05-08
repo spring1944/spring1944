@@ -110,6 +110,8 @@ local HeavyHE = HE:New{
 }
 local HowitzerHE = HE:New{ -- + CS Howitzer
 	explosionGenerator = "custom:HE_Large",
+	soundStart         = [[GEN_105mm]],
+	soundHitDry        = [[GEN_Explo_4]],
 	customparams = {
 		fearaoe            = 125,
 		fearid             = 501,
