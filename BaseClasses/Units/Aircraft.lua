@@ -30,7 +30,7 @@ local Aircraft = Unit:New{
 local Recon = Aircraft:New{
 	description			= "Recon Plane",
 	buildCostMetal		= 1000,
-	cruiseAlt			= 720,
+	cruiseAlt			= 1500,
 	iconType			= "recon",
 
 	maxAcc				= 0.343,
@@ -80,7 +80,7 @@ local Interceptor = Fighter:New{
 
 local AttackFighter = Fighter:New{
 	description			= "Attack Fighter",
-	cruiseAlt			= 900,
+	cruiseAlt			= 1500,
 	noChaseCategory		= "FLAG INFANTRY AIR BUILDING MINE",
 }
 
@@ -88,7 +88,7 @@ local FighterBomber = Fighter:New{
 	attackSafetyDistance	= 200,
 	description				= "Fighter-Bomber",
 	iconType				= "bomber",
-	cruiseAlt				= 750,
+	cruiseAlt				= 1500,
 	fireState				= 0,
 	maxElevator				= 0.001,
 	maxPitch				= 0.5,
