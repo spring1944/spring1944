@@ -34,6 +34,8 @@ local APGrenadeClass = GrenadeClass:New{
 	customparams = {
 		armor_penetration  = 80, -- more than AT nades??
 		damagetype         = "grenade",
+		-- this prevents grenading observer null units
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 	damage = {
 		default            = 1450,
