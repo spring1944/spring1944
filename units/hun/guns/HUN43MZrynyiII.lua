@@ -9,13 +9,13 @@ local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 	weapons = {
 		[1] = {
 			name				= "Mavag_105_4043MHEAT",
-			mainDir				= [[0 16 1]],
-			maxAngleDif			= 210,
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 25,
 		},
 		[2] = {
 			name				= "Mavag_105_4043MHE",
-			mainDir				= [[0 16 1]],
-			maxAngleDif			= 210,
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 25,
 		},
 		[3] = {
 			name				= ".50calproof",
