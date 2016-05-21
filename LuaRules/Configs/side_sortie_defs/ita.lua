@@ -33,7 +33,7 @@ local itaSorties = {
 		name = "Air Superiority Fighter Sortie",
 		description = "4 x Reggiane Re.2005",
 		buildCostMetal = 4400,
-		buildPic = "itare2005.png",
+		buildPic = "itareggiane2005.png",
 	},
 	ita_sortie_interceptor = {
 		members = {
