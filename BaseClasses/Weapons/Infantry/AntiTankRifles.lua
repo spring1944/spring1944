@@ -30,6 +30,8 @@ local ATRifleClass = Weapon:New{
 		damagetype         = [[kinetic]],
 		cegflare           = [[ptrd_muzzleflash]],
 		scriptanimation    = [[atrifle]],
+		-- this prevents shooting observer null units
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		badtargetcategory  = "INFANTRY",
 	},
 }
