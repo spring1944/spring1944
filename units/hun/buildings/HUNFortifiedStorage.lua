@@ -1,6 +1,7 @@
 local HUN_FortifiedStorage = Storage:New(Bunker):New{
 	name					= "Fortified Storage Shed",
 	maxDamage				= 10000,
+	energyStorage			= 2200,
 	weapons = {
 		[1] = {
 			name				= "feg35m",

@@ -1,5 +1,6 @@
 local GER_StorageBunker = Storage:New(Bunker):New{
 	name					= "Hardened Storage Shed",
+	energyStorage			= 2200,
 	maxDamage				= 15000,
 }
 
