@@ -83,6 +83,7 @@ local hununits = {
 		"hun40mnimrod",
 		"hun39mcsaba",
 		"huntoldiii",
+		"hunfiat508cm",
 	},
 	hunvehicleyard1 =
 	{
@@ -93,6 +94,7 @@ local hununits = {
 		"hun39mcsaba",
 		"huntoldiii",
 		"hun40mturan",
+		"hunfiat508cm",
 	},
 
 	huntankyard =

@@ -43,6 +43,7 @@ local sweunits =
 		"swetgbilm42",
 		"swestrvm37",
 		"swepbilm31",
+		"swevolvotpv",
 	},
 
 	swevehicleyard1	=
@@ -55,6 +56,7 @@ local sweunits =
 		"swestrvm37",
 		"swepbilm31",
 		"swestrvm41",
+		"swevolvotpv",
 	},
 
 	swegunyard =
