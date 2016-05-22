@@ -2,55 +2,60 @@
 
 -- Implementations
 
--- 250Kg Bomb (Generic)
-local Bomb = BombClass:New{
-  accuracy           = 1500,
-  areaOfEffect       = 200,
-  --commandfire        = true,
-  edgeEffectiveness  = 0.1,
+-- timefuze
+local timebombClass = BombClass:New{
+  accuracy           = 2000,
+  commandfire        = true,
+  groundBounce	     = true,
+  burnblow	     = false,
+  collideEnemy     = false,
   model              = [[Bomb_Medium.S3O]],
+  soundHitDry        = [[GEN_Explo_9]],
+  bounceRebound	     = 0.1,
+  bounceSlip	     = 0.1,
+  numBounce	     = 20,
+}
+-- 250Kg Bomb (Generic)
+local Bomb = timebombClass:New{
+  areaOfEffect       = 200,
+  commandfire        = true,
+  edgeEffectiveness  = 0.1,
   name               = [[250kg Bomb]],
   range              = 500,
-  soundHitDry        = [[GEN_Explo_9]],
+  damage = {
+    default            = 30000,
+  },
 }
 
 -- 160Kg Bomb (Generic)
-local Bomb160kg = BombClass:New{
-  accuracy           = 500,
+local Bomb160kg = timebombClass:New{
   areaOfEffect       = 160,
   name               = [[160kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
-  reloadtime	     = 600,
   range              = 450,
+  commandfire        = false,
     damage = {
     default            = 15000,
-	planes		= 5,
     },
-  soundHit           = [[GEN_Explo_9]],
 }
 
 -- 50Kg Bomb (Generic)
 local Bomb50kg = BombClass:New{
   name               = [[50kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
-  weaponType         = [[Cannon]],
   size		     = 1,
-  accuracy           = 240,	
+  accuracy           = 200,
+  tolerance          = 600,	
   areaOfEffect       = 76,
-  trajectoryHeight   = 0.0,
   heightMod		= 0.2,
-  heightBoostFactor  = 0.5,
   mygravity	= 0.05,
     damage = {
     default            = 7500,
 	planes		= 5,
     },
-  range              = 180,
-  leadlimit	     = 900,
+  range              = 150,
   explosionGenerator = [[custom:HE_Large]],
   soundHit           = [[GEN_Explo_5]],
-  tolerance          = 1000,
-  targetMoveError = 0.1,
 }
 
 -- V1 Missile Explosions (GER)
@@ -66,20 +71,17 @@ local V1 = BombClass:New{
 -- PTAB "Antitank Aviation Bomb" (RUS)
 local PTAB = BombClass:New{
   areaOfEffect       = 24,
-  burst              = 40,
-  selfExplode	     = true,
+  burst              = 36,
   burstrate          = 0.1,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
-  weaponType         = [[AircraftBomb]],
-  InterceptedByShieldType=32,   -- needed because of weapontype
   model              = [[MortarShell.S3O]],
   weaponVelocity     = 150,
   name               = [[PTAB Anti-Tank Bomblets]],
-  projectiles        = 10,
+  projectiles        = 8,
   range              = 500,
   soundHitDry        = [[GEN_Explo_3]],
-  sprayangle         = 2000,
+  sprayangle         = 7000,
   customparams = {
     armor_hit_side     = [[top]],
     armor_penetration  = 65,
@@ -96,19 +98,16 @@ local PTAB = BombClass:New{
 local A_tkbomb = BombClass:New{
   areaOfEffect       = 26,
   burst              = 7,
-  selfExplode	     = true,
   burstrate          = 0.15,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
-  weaponType         = [[AircraftBomb]],
-  InterceptedByShieldType=32,   -- needed because of weapontype
   model              = [[MortarShell.S3O]],
   weaponVelocity     = 250,
   name               = [[3.5kg Hollow Charge A-tk Anti-Tank Bomblets]],
   projectiles        = 3,
   range              = 500,
   soundHitDry        = [[GEN_Explo_3]],
-  sprayangle         = 4000,
+  sprayangle         = 3000,
   customparams = {
     armor_hit_side     = [[top]],
     armor_penetration  = 70,
@@ -116,8 +115,8 @@ local A_tkbomb = BombClass:New{
   },
   damage = {
     default            = 4406, 
-    infantry           = 50, -- I have no idea how effective it should be vs infantry. Nerfed to avoid usages different of historical usage.
-    lightBuildings     = 75, -- Nerfed to avoid usages different of historical usage. Still very effective vs storages.
+    infantry           = 50, 
+    lightBuildings     = 75, 
     bunkers            = 500,
   }
 }

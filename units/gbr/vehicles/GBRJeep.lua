@@ -12,7 +12,7 @@ local GBRJeep = ArmouredCar:New{
 	weapons = {
 		[1] = {
 			name				= "binocs2",
-			mainDir				= [[0 16 1]],
+			mainDir				= [[0 0 1]],
 			maxAngleDif			= 20,
 		},
 	},
