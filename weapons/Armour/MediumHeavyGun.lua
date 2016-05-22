@@ -190,68 +190,6 @@ local OTO100mmL47HE = MediumHeavyGun:New(MediumHE, true):New{
   },  
 }
 
--- Ansaldo 105mm/25 (ITA)
-local Ansaldo105mmL25 = MediumHeavyGun:New{
-  name               = [[Ansaldo L/18 75mm Howitzer]],
-  range              = 1775,
-  reloadTime         = 11.25,
-  soundStart         = [[GEN_105mm]],
-  customparams = {
-    cegflare           = "LARGE_MUZZLEFLASH",
-  }
-}
-
-local Ansaldo105mmL25HE = MediumHE:New(Ansaldo105mmL25, true):New{
-  areaOfEffect       = 129,
-  weaponVelocity     = 900,
-   soundHitDry        = [[GEN_Explo_4]],
-  damage = {
-    default            = 4009,
-  },  
-}
-
-local Ansaldo105mmL25HEAT = HeavyHEAT:New(Ansaldo105mmL25, true):New{
-  range              = 1153,
-  weaponVelocity     = 600,
-  customparams = {
-    armor_penetration       = 140,
-  },
-  damage = {
-    default            = 3790,
-  },
-}
-
--- MÁVAG 40/43M L20.5 
-local Mavag_105_4043M = MediumHeavyGun:New{
-  name               = [[MÁVAG 40/43M L20.5  Howitzer]],
-  range              = 1775,
-  reloadTime         = 11.25,
-  soundStart         = [[GEN_105mm]],
-  customparams = {
-    cegflare           = "LARGE_MUZZLEFLASH",
-  }
-}
-
-local Mavag_105_4043MHE = MediumHE:New(Mavag_105_4043M, true):New{
-  areaOfEffect       = 129,
-  weaponVelocity     = 900,
-   soundHitDry        = [[GEN_Explo_4]],
-  damage = {
-    default            = 4009,
-  },  
-}
-
-local Mavag_105_4043MHEAT = HeavyHEAT:New(Mavag_105_4043M, true):New{
-  range              = 1153,
-  weaponVelocity     = 600,
-  customparams = {
-    armor_penetration       = 90,
-  },
-  damage = {
-    default            = 3790,
-  },
-}
-
 -- Return only the full weapons
 return lowerkeys({
   -- KwK36 88mm L/56
@@ -275,9 +213,4 @@ return lowerkeys({
   Ansaldo90mmL53AP = Ansaldo90mmL53AP,
   -- OTO 100mm/47 1928 Naval gun
   OTO100mmL47HE = OTO100mmL47HE,
-  -- Ansaldo 105mm/25
-  Ansaldo105mmL25HE = Ansaldo105mmL25HE,
-  Ansaldo105mmL25HEAT = Ansaldo105mmL25HEAT,
-  Mavag_105_4043MHE = Mavag_105_4043MHE,
-  Mavag_105_4043MHEAT = Mavag_105_4043MHEAT,
 })
