@@ -132,6 +132,7 @@ local gbrunits = {
     "gbrdaimler",
     "gbrkangaroo",
     "gbrwasp",
+
   },
   
   gbrvehicleyard1 =
@@ -144,6 +145,7 @@ local gbrunits = {
     "gbrkangaroo",
 		"gbrwasp",
     "gbraecmkii",
+    "gbrjeep",
   },
 
   gbrmatadorengvehicle =

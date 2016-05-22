@@ -1,0 +1,20 @@
+[itafiat508cm_destroyed] {
+  description=Wrecked scoutcar;
+  damage=301;
+  energy=15;
+  featureDead=Debris_Small;
+  footprintX=3;
+  footprintZ=3;
+  object=ITAFiat508CM_wreck.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 20 40;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+

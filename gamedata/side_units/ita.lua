@@ -146,6 +146,7 @@ local itaunits =
 	"itaautocannone75",
 	"itasemovente47",
 	"itaspadovunque",
+	"itafiat508cm",
   },
 
    itavehicleyard1 =
@@ -159,6 +160,7 @@ local itaunits =
 	"itasemovente47",
 	"itaspadovunque",
 	"ital6_40lf",
+	"itafiat508cm",
   }, 
   itatankyard =
   {

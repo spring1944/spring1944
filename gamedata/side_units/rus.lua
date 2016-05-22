@@ -115,6 +115,7 @@ local rusunits =
     "rusgazaaa",
     "rust60",
     "russu76",
+    "rusgaz67",
   },
 
   rusvehicleyard1 =
@@ -128,6 +129,7 @@ local rusunits =
     "russu76",
 	"rusvalentine",
 --    "rust70",
+    "rusgaz67",
   },
 
   rusgunyard =
