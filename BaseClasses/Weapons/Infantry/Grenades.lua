@@ -32,7 +32,7 @@ local APGrenadeClass = GrenadeClass:New{
 	reloadtime         = 8,
 	soundHitDry        = "GEN_Explo_Grenade",
 	customparams = {
-		armor_penetration  = 80, -- more than AT nades??
+		armor_penetration  = 40, -- more than AT nades??
 		damagetype         = "grenade",
 		-- this prevents grenading observer null units
 		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
