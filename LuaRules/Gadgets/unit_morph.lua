@@ -141,7 +141,7 @@ local GetUnitRank = function() return 0 end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-
+local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
 
 --// translate lowercase UnitNames to real unitname (with upper-/lowercases)
 local defNamesL = {}
@@ -208,7 +208,8 @@ local function BuildMorphDef(udSrc, morphData)
     --newData.cmd     = CMD_MORPH      + MAX_MORPH
 	newData.cmd = GG.CustomCommands.GetCmdID("CMD_MORPH_" .. newData.into)
     if udSrc.isFactory then
-        newData.upgradeUnit = UnitDefNames["morph_" .. udSrc.name .. "_" .. morphData.into].id
+		local tmpSide = getSideName(udSrc.name)
+        newData.upgradeUnit = UnitDefNames[tmpSide .. "_morph_" .. udSrc.name .. "_" .. morphData.into].id
         upgradeDefs[newData.upgradeUnit] = newData
     end
 	isAMorphCmdID[newData.cmd] = true

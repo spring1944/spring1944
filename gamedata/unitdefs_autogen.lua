@@ -1,5 +1,7 @@
 local morphInclude = VFS.Include("LuaRules/Configs/morph_defs.lua")
 
+local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
+
 local function getTemplate()
 	return  	{
 					canmove = true, -- required to pass orders
@@ -33,7 +35,6 @@ local function isFactory(unitDef)
 	return yardmap and (not velocity or velocity <= 0) and workerTime and workerTime > 0
 end
 
-
 for unitName, unitMorphs in pairs(morphInclude) do
 	local unitDef = UnitDefs[unitName]
 	if not unitDef then
@@ -43,7 +44,8 @@ for unitName, unitMorphs in pairs(morphInclude) do
 			local unitMorphData = unitMorphs[i]
 			local intoDef = UnitDefs[unitMorphData.into] or {}
 			local autoUnit = getTemplate()
-			local autoUnitName = "morph_" .. unitName .. "_" .. unitMorphData.into
+			local tmpSide = getSideName(unitName)
+			local autoUnitName = tmpSide .. "_morph_" .. unitName .. "_" .. unitMorphData.into
 			local buildOptions = unitDef.buildoptions or unitDef.buildOptions or {}
 			unitDef.buildoptions = buildOptions
 			autoUnit.name = text
