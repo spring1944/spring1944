@@ -334,8 +334,8 @@ local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
 local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
   weaponVelocity     = 1358,
   customparams = {
-    armor_penetration_1000m = 86,
-    armor_penetration_100m  = 98,
+    armor_penetration_1000m = 90,
+    armor_penetration_100m  = 118,
   },
   damage = {
     default            = 2613,
