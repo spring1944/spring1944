@@ -20,6 +20,31 @@ local Vehicle = Unit:New{
 	},
 }
 
+-- Scout car
+local ScoutCar = Vehicle:New{
+	acceleration		= 0.047,
+	brakeRate			= 0.09,
+	buildCostMetal		= 1100,
+	maxDamage			= 100,
+	description			= "Light Scout Car",
+	category			= "MINETRIGGER SOFTVEH",
+	iconType			= "jeep",
+	movementClass		= "TANK_Car",
+	turnRate			= 425,
+
+	weapons = {
+		[1] = {
+			name				= "binocs2",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 20,
+		},
+	},
+	customParams = {
+		maxvelocitykmh		= 85,
+		damageGroup		= "unarmouredVehicles",
+	},
+}
+
 -- Armoured Car
 local ArmouredCar = Vehicle:New{
 	acceleration		= 0.047,
@@ -173,6 +198,7 @@ return {
 	MobileAA = MobileAA,
 	Transport = Transport,
 	-- Base Classes
+	ScoutCar = ScoutCar,
 	ArmouredCar = ArmouredCar,
 	ArmouredCarAA = ArmouredCarAA,
 	HeavyArmouredCar = HeavyArmouredCar,
