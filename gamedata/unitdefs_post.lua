@@ -17,15 +17,7 @@ local squadDefs = VFS.Include("luarules/configs/squad_defs_loader.lua")
 local GMBuildOptions = {}
 local GM_UD
 
-local sideData = VFS.Include("gamedata/sidedata.lua", VFS.ZIP)
-local SIDES = {}
-
-
-for sideNum, data in pairs(sideData) do
-	if sideNum > 1 then -- ignore Random/GM
-		SIDES[sideNum] = data.name:lower()
-	end
-end
+local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
 
 local function RecursiveReplaceStrings(t, name, side, replacedMap)
 	if (replacedMap[t]) then
@@ -44,14 +36,16 @@ local function RecursiveReplaceStrings(t, name, side, replacedMap)
 end
 
 local function ReplaceStrings(t, name)
-	local side = ""
+	local side = getSideName(name)
 	local replacedMap = {}
+	--[[
 	for _, sideName in pairs(SIDES) do
 		if name:find(sideName) == 1 then
 			side = sideName
 			break
 		end
 	end
+	]]--
 	RecursiveReplaceStrings(t, name, side, replacedMap)
 end
 
