@@ -62,7 +62,7 @@ local jpnDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "2 x Type 99 Machinegun, 1 x Type 98 Heavy Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1200,
+		buildCostMetal = 1020,
 		buildPic = "JPNType99LMG.png",
 	},
 	["jpn_platoon_sniper"] =

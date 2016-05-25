@@ -1,5 +1,5 @@
 local JPNInf = {
-	maxDamageMul		= 0.8,
+	maxDamageMul		= 0.94,
 }
 
 local JPN_HQEngineer = EngineerInf:New(JPNInf):New{
