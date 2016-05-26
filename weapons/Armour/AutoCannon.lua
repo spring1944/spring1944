@@ -21,7 +21,7 @@ local FlaK3820mm = AutoCannon:New{
 }
 
 local FlaK3820mmAA = AutoCannonAA:New(FlaK3820mm, true):New{
-  range              = 1910,
+  range              = 1560,
 }
 local FlaK3820mmHE = AutoCannonHE:New(FlaK3820mm, true)
 local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
@@ -66,7 +66,7 @@ local Oerlikon20mm = AutoCannon:New{
 }
 
 local Oerlikon20mmAA = AutoCannonAA:New(Oerlikon20mm, true):New{
-  range              = 1950,
+  range              = 1560,
 }
 local Oerlikon20mmHE = AutoCannonHE:New(Oerlikon20mm, true)
 local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
@@ -122,7 +122,7 @@ local BredaM3520mm = AutoCannon:New{
 }
 
 local BredaM3520mmAA = AutoCannonAA:New(BredaM3520mm, true):New{
-  range              = 1950,
+  range              = 1560,
   sprayAngle         = 475,
 }
 
@@ -209,7 +209,7 @@ local Type9820mm = AutoCannon:New{
 }
 
 local Type9820mmAA = AutoCannonAA:New(Type9820mm, true):New{
-  range              = 1950,
+  range              = 1560,
 }
 
 local Type9820mmHE = AutoCannonHE:New(Type9820mm, true)
@@ -235,7 +235,7 @@ local Type9625mm = AutoCannon:New{
 }
 
 local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
-  range              = 1950,
+  range              = 1620,
   damage = {
     default            = 55,
   },

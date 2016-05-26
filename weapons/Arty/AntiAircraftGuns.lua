@@ -15,7 +15,7 @@ local Bofors40mm = AntiAirGun:New{
   },
 }
 local Bofors40mmAA = AntiAirGunAA:New(Bofors40mm, true):New{
-  range              = 2025,
+  range              = 1620,
 }
 local Bofors40mmHE = AutoCannonHE:New(Bofors40mm, true):New{
   range              = 725,
@@ -45,7 +45,7 @@ local FlaK4337mm = AntiAirGun:New{
   },
 }
 local FlaK4337mmAA = AntiAirGunAA:New(FlaK4337mm, true):New{
-  range              = 2025,
+  range              = 1620,
 }
 local FlaK4337mmHE = AutoCannonHE:New(FlaK4337mm, true):New{
   range              = 725,
@@ -66,7 +66,7 @@ local M1939_61K37mm = AntiAirGun:New{
   },
 }
 local M1939_61K37mmAA = AntiAirGunAA:New(M1939_61K37mm, true):New{
-  range              = 2025,
+  range              = 1620,
 }
 local M1939_61K37mmHE = AutoCannonHE:New(M1939_61K37mm, true):New{
   range              = 725,
@@ -88,7 +88,7 @@ local Bofors25mm = AntiAirGun:New{
 }
 
 local Bofors25mm_AA = AntiAirGunAA:New(Bofors25mm, true):New{
-	range              = 2025,
+	range              = 1620,
 }
 
 local Bofors25mm_HE = AutoCannonHE:New(Bofors25mm, true):New{
