@@ -106,7 +106,7 @@ local MaximAA = Maxim:New(AAMG):New{
   }
 }
 -- ShKAS1941 (RUS)
-local ShKAS1941 = MGClass:New{
+local ShKAS1941 = MGClass:New(AMG):New{
   burst              = 9,
   burstRate          = 0.09,
   name               = [[ShKAS1941]],
@@ -266,7 +266,7 @@ local Twin_DShK = DShK:New{
   reloadTime         = 1.4, -- why not 1.5?
 }
 -- BeresinUBS
-local BeresinUBS = HeavyMGClass:New{
+local BeresinUBS = HeavyMGClass:New(AMG):New{
   reloadTime         = 0.7,
   name               = [[BeresinUBS 12.7mm Machine Gun]],
   burst             = 6,
@@ -373,7 +373,7 @@ local Type93AA = Type93HMG:New{
 }
 
 -- Type 1 Ho-103 12.7mm Air MG (JPN)
-local Type1Ho103 = HeavyMGClass:New{
+local Type1Ho103 = HeavyMGClass:New(AMG):New{
   burst			= 8,
   burstRate          = 0.085,
   name               = [[Type1 Ho-103 12.7mm]],
