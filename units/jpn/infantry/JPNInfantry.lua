@@ -41,7 +41,6 @@ local JPN_Type99LMG = LMGInf:New(JPNInf):New{
 
 local JPN_Type92HMG = HMGInf:New(JPNInf):New{
 	name				= "Type 92 Heavy Machinegun",
-	script				= "Infantry.lua",
 }
 
 local JPN_Type92HMG_Sandbag = SandbagMG:New{
