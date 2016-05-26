@@ -20,10 +20,10 @@ local JPN_Seta = ArmedBoat:New{
 	},
 	customparams = {
 		children = {
-			"JPN_Seta_turret_76mm_front",
-			"JPN_Seta_turret_25mm",
-			"JPN_Seta_turret_25mm",
-			"JPN_Seta_turret_76mm_rear",
+			"JPNSeta_turret_76mm_front",
+			"JPNSeta_turret_25mm",
+			"JPNSeta_turret_25mm",
+			"JPNSeta_turret_76mm_rear",
 		},
 		piecehitvols = {
 			tower = {
