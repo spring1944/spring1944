@@ -149,6 +149,7 @@ local HeavyMGClass = MGClass:New{
 }
 
 local AMG = Weapon:New{ -- should be used like ammo bases
+		avoidFriendly      = true,
 	customparams = {
 		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",

@@ -311,6 +311,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	predictBoost       = 0.5,
 	size               = 0.4,
 	soundTrigger       = false,
+	avoidFriendly      = true,
 	sprayAngle         = 250,
 	customparams = {
 		armor_hit_side     = "top",
