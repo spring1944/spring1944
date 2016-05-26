@@ -10,6 +10,7 @@ local sweData = {
 			"swekanonm02_33_truck",
 			"swepvkanm43_truck",
 			"swestorage",
+			"swe_sortie_recon",
 		},
 	},
 }
