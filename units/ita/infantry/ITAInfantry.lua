@@ -52,6 +52,7 @@ local ITA_MG = HMGInf:New(ITAInf):New{
 
 local ITA_MG_Sandbag = SandbagMG:New{
 	name				= "Deployed Breda M37 Heavy Machinegun",
+	buildpic			= "ITAMG.png",
 	weapons = {
 		[1] = { -- HMG
 			name				= "Vickers",

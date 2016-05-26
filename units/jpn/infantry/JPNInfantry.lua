@@ -45,6 +45,7 @@ local JPN_Type92HMG = HMGInf:New(JPNInf):New{
 
 local JPN_Type92HMG_Sandbag = SandbagMG:New{
 	name				= "Deployed Type 92 Heavy Machinegun",
+	buildpic			= "JPNType92HMG.png",
 	weapons = {
 		[1] = { -- HMG
 			name				= "Type92MG",
