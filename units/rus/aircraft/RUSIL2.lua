@@ -48,12 +48,12 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 			slaveTo				= 5,
 		},
 		[7] = {
-			name				= "m2browningamg",
+			name				= "ShKAS1941",
 			maxAngleDif			= 10,
 			slaveTo				= 5,
 		},
 		[8] = {
-			name				= "m2browningamg",
+			name				= "ShKAS1941",
 			maxAngleDif			= 10,
 			slaveTo				= 5,
 		},

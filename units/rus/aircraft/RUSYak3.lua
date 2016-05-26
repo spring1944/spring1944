@@ -22,11 +22,11 @@ local RUS_Yak3 = Interceptor:New{
 
 	weapons = {
 		[1] = {
-			name				= "m2browningamg",
+			name				= "BeresinUBS",
 			maxAngleDif			= 10,
 		},
 		[2] = {
-			name				= "m2browningamg",
+			name				= "BeresinUBS",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},	
