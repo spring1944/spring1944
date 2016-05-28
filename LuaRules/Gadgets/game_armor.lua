@@ -252,10 +252,6 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	
 	local mult = penetration / (penetration + armor)
 	
-	if weaponInfo[1] == "explosive" and unitInfo[5] == "armouredvehicles" then
-		mult = mult + 1
-	end
-	
 	return damage * mult
 end
 

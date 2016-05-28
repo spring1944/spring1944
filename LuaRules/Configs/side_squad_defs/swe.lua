@@ -36,7 +36,7 @@ local sweDefs = {
 		},
 		name = "Rifle Platoon",
 		description = "8 x Garand Rifle, 2 x Enfield, 2 x Kulsprutegevär Light Machinegun: Long-Range Combat Platoon",
-		buildCostMetal = 1675,
+		buildCostMetal = 1927,
 		buildPic = "swerifle.png",
 	},
 
@@ -58,7 +58,7 @@ local sweDefs = {
 		},
 		name = "Assault Platoon",
 		description = "8 x Sten SMG, 2 x Garand, 1 x Kulsprutegevär, 1 x swepskottm45: Close Quarters Assault Infantry",
-		buildCostMetal = 1540,
+		buildCostMetal = 1771,
 		buildPic = "swekpistm3739.png",
 	},
 
@@ -98,7 +98,7 @@ local sweDefs = {
 		},
 		name = "Mortar Team",
 		description = "3 x M1 Mortar, 1 x Scout: Heavy Infantry Fire Support",
-		buildCostMetal = 2100,
+		buildCostMetal = 2140,
 		buildPic = "swemortar.png",
 	},
 
