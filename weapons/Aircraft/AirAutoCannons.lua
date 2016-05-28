@@ -49,15 +49,13 @@ local MG15120mm = AutoCannonHE:New(AirAutoCannon, true):New{
 }
 
 -- MG151/15 15mm (GER)
--- treated like a machinegun in game, but
--- this derives from the above 20mm
 local MG15115mm = AutoCannonHE:New(AirAutoCannon, true):New{
+  burst              = 6,
   areaOfEffect       = 8,
   burstRate          = 0.08,
   explosionGenerator = [[custom:Bullet]],
   name               = [[15mm MG 151/15 Aircraft Cannon]],  
-  predictBoost       = 0.75,
-  reloadTime         = 0.8, -- why so different?
+  reloadTime         = 1.2, 
   soundStart         = [[GER_15mmAir]],
   damage = {
     default            = 40,
@@ -65,12 +63,12 @@ local MG15115mm = AutoCannonHE:New(AirAutoCannon, true):New{
 } 
 
 local MG13113mm = AutoCannonHE:New(AirAutoCannon, true):New{
+  burst              = 7,
   areaOfEffect       = 8,
   burstRate          = 0.08,
   explosionGenerator = [[custom:Bullet]],
   name               = [[13mm MG 131/13 Aircraft Cannon]],  
-  predictBoost       = 0.75,
-  reloadTime         = 0.8, -- why so different?
+  reloadTime         = 1.3, 
   soundStart         = [[GER_15mmAir]],
   damage = {
     default            = 30,
@@ -113,7 +111,7 @@ local Ho520mmAP = AutoCannonAP:New(AirAutoCannon, true):New{
   burstRate          = 0.091,
   name               = [[Ho-5 20mm Cannon AP]],
   range              = 830,
-  reloadTime         = 0.8,
+  reloadTime         = 1.2,
   soundStart         = [[JPN_20mmAir]],
   weaponVelocity     = 1800,
   customparams = {
@@ -132,7 +130,7 @@ local Ho520mmHE = AutoCannonHE:New(AirAutoCannon, true):New{
   burstRate          = 0.091,
   name               = [[Ho-5 20mm Cannon HE]],
   range              = 830,
-  reloadTime         = 0.8,
+  reloadTime         = 1.2,
   soundStart         = [[JPN_20mmAir]],
   weaponVelocity     = 1800,
   damage = {
