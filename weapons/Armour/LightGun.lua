@@ -147,7 +147,7 @@ local CannoneDa47mml32 = LightGun:New{
 }
 
 local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
-  weaponVelocity       = 1000,
+  weaponVelocity       = 1200,
   customparams = {
     armor_penetration_1000m = 32,
     armor_penetration_100m  = 57,
