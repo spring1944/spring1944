@@ -1,7 +1,7 @@
 local ITA_Barracks = Barracks:New{
 	buildCostMetal				= 1500,
 	collisionVolumeScales		= [[50 32 110]],
-	collisionVolumeOffsets		= [[0 15 0]],
+	collisionVolumeOffsets		= [[0 -5 0]],
 	footprintX					= 6,
 	footprintZ					= 8,
 	maxDamage					= 10000, -- TODO: wtf?
