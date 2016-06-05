@@ -14,6 +14,28 @@ local sweunits =
 		"swepontoonraft",
 	},
 
+	swehqaiengineer =
+	{
+		"swevehicleyard",
+		"swevehicleyard1",
+		"swetankyard",
+		"swetankyard1",
+		"swebarracks",
+		"swegunyard",
+		"swespyard",
+		"swespyard1",
+		"swestorage",
+		"swesupplydepot",
+		"swepartisanbase",
+		"sweradar",
+		"sweatminesign",
+		"sweapminesign",
+		"swetankobstacle",
+		"sweassaultboat",
+		"swepontoonraft",
+	},
+
+
 	swehq = {
 		"swe_sortie_recon",
 		"sweengineer",
