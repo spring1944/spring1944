@@ -356,7 +356,109 @@ gadget.unitBuildOrder = UnitBag{
 	{
 		"jpnhoro",
 	},
-	
+	-- SWE
+	swehq = UnitArray{
+		"sweengineer",
+		"swe_platoon_hq",
+		"swe_platoon_hq",
+		"swe_platoon_hq",
+	},
+	swebarracks = UnitArray{
+		"sweengineer",
+		"swe_platoon_rifle",
+		"swe_platoon_assault",
+		"swe_platoon_rifle",
+		"swe_platoon_sniper",
+		"swe_platoon_rifle",
+		"sweengineer",
+		"swe_platoon_mortar",
+		"swe_platoon_rifle",
+		--"swe_platoon_mg",
+		"swe_platoon_at",
+	},
+	swevehicleyard = UnitArray{
+		"swepbilm40",
+		"swetgbilm42",
+		"swepbilm40",
+		"swestrvm37",
+		"swepbilm31",
+		"swestrvm37",
+	},
+	swetankyard = UnitArray{
+		"swestrvm40sii",
+	},
+	swetankyard1 = UnitArray{
+		"swestrvm42",
+	},
+	swevehicleyard1 = UnitArray{
+		"swestrvm41",
+		"swetgbilm42",
+		"swestrvm41",
+		"swepbilm31",
+	},
+	swespyard = UnitArray{
+		"swepbilm31",
+	},
+	swespyard1 = UnitArray{
+		"swesavm43",
+	},
+	-- HUN
+	hunhq = UnitArray{
+		"hunengineer",
+		"hunengineer",
+		"hun_platoon_hq",
+		"hun_platoon_hq",
+		"hun_platoon_hq",
+		"hun_platoon_hq",
+	},
+	hunbarracks = UnitArray{
+		"hunengineer",
+		"hun_platoon_rifle",
+		"hunengineer",
+		"hun_platoon_rifle",
+		"hun_platoon_assault",
+		"hun_platoon_rifle",
+		"hun_platoon_mortar",
+		"hun_platoon_rifle",
+		"hun_platoon_rifle",
+		--"hun_platoon_mg",
+	},
+	hunvehicleyard = UnitArray{
+		"hunbergehetzer",
+		"hun39mcsaba",
+		"hun39mcsaba",
+		"hun43mlehel",
+		"hun40mnimrod",
+		"huntoldiii",
+		"huntoldiii",
+	},
+	huntankyard = UnitArray{
+		"hunbergehetzer",
+		"huntoldiiia",
+		"hun40mturan",
+		"hun41mturanii",
+		"hun40mturan",
+		"hun41mturanii",
+	},
+	hunvehicleyard1 = UnitArray{
+		"hun40mturan",
+		"hun43mlehel",
+		"hun40mturan",
+		"hun40mturan",
+		"hun40mnimrod",
+	},
+	hunspyard = UnitArray{
+		"hun43mzrynyiii",
+	},
+	hunspyard1 = UnitArray{
+		"hunhetzer",
+	},
+	huntankyard1 = UnitArray{
+		"hun43mturaniii",
+	},
+	huntankyard2 = UnitArray{
+		"hun44mtas",
+	},
 }
 
 -- Format: side = { "unit to build 1", "unit to build 2", ... }
@@ -412,7 +514,7 @@ gadget.baseBuildOrder = {
 		"ustankyard1",
 		"ustankyard2",
 	},
-		ita = UnitArray{
+	ita = UnitArray{
 		-- Works J
 		"itabarracks", "itabarracks",
 		"itavehicleyard",
@@ -424,7 +526,7 @@ gadget.baseBuildOrder = {
 		"itatankyard1",
 	},
 		-- "itaradar",
-		jpn = UnitArray{
+	jpn = UnitArray{
 		"jpnbarracks", "jpnbarracks",
 		"jpnstorage",
 		"jpnvehicleyard",
@@ -437,6 +539,35 @@ gadget.baseBuildOrder = {
 		"jpnvehicleyard2",
 		"jpntankyard1",
 		"jpntankyard2",
+	},
+	swe = UnitArray{
+		"swebarracks",
+		"swebarracks",
+		"swevehicleyard",
+		"swestorage",
+		"swetankyard",
+		"swestorage",
+		"swevehicleyard1",
+		"swespyard",
+		"swestorage",
+		"swespyard1",
+		"swetankyard1",
+	},
+	hun = UnitArray{
+		"hunbarracks",
+		"hunbarracks",
+		"hunvehicleyard",
+		"hunstorage",
+		"huntankyard",
+		"hunstorage",
+		"hunsupplydepot",
+		"hunstorage",
+		"huntankyard2",
+		"hunvehicleyard1",
+		"huntankyard1",
+		"hunstorage",
+		"hunspyard",
+		"hunspyard1",
 	},
 }
 
@@ -461,6 +592,11 @@ gadget.baseBuilders = UnitSet{
 	"jpnriki",
 	"jpnhqengineer",
 	"jpnhqaiengineer",
+	"sweengineer",
+	"swehqaiengineer",
+	"hunengineer",
+	"hunhqaiengineer",
+	"hunbergehetzer",
 }
 
 -- This lists all the units that should be considered flags.
@@ -477,6 +613,8 @@ gadget.flagCappers = UnitSet{
 	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
 	"rusaicommissar",
+	"swerifle",
+	"hunrifle",
 }
 
 -- Number of units per side used to cap flags.
@@ -487,4 +625,6 @@ gadget.reservedFlagCappers = {
 	ita = 24,
 	jpn = 24,
 	rus = 2,
+	swe = 24,
+	hun = 24,
 }
