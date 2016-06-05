@@ -147,8 +147,11 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 				end
 			end
 			for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-				Log("Queueing: ", UnitDefs[bo].humanName)
-				GiveOrderToUnit(unitID, -bo, {}, {})
+				if bo then
+					Log("Queueing: ", UnitDefs[bo].humanName)
+					GiveOrderToUnit(unitID, -bo, {}, {})
+				else
+				end
 			end
 		else
 			Log("Warning: unitBuildOrder can only be used to control factories")
