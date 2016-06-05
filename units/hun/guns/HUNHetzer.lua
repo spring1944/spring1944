@@ -34,6 +34,7 @@ local HUNBergeHetzer = EngineerVehicle:New{
 	name				= "Berge Hetzer",
 	description			= "Armored recovery vehicle",
 	corpse				= "HUNBergeHetzer_Abandoned",
+	category			= "HARDVEH",
 	maxDamage			= 1575,
 	trackOffset			= 5,
 	trackWidth			= 20,
