@@ -147,10 +147,11 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 				end
 			end
 			for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-				if bo then
+				if bo and UnitDefs[bo] then
 					Log("Queueing: ", UnitDefs[bo].humanName)
 					GiveOrderToUnit(unitID, -bo, {}, {})
 				else
+					Spring.Echo("CRAIG: invalid buildorder found: " .. UnitDefs[unitDefID].humanName .. " -> " .. (bo or 'nil'))
 				end
 			end
 		else
