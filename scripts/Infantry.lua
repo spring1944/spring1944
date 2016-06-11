@@ -350,7 +350,12 @@ local function UpdateSpeed()
 		return
 	end
 
-	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
+	if newSpeed ~= nil then
+		Spring.Log("infantry script", LOG.DEBUG, "SetGroundMoveTypeData: " .. UnitDef.name, unitID)
+		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
+	else
+		Spring.Log("infantry script", "error", "nil as newSpeed: " .. UnitDef.name, unitID)
+	end
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
 		if #cmds >= 2 then
