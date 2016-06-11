@@ -124,6 +124,7 @@ local Partisan = {
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 225,
+	corpse			= "ruspartisan_dead",
 }
 
 local SWE_Partisan = RifleInf:New(Partisan):New{
