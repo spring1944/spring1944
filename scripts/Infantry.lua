@@ -350,12 +350,12 @@ local function UpdateSpeed()
 		return
 	end
 
-	if newSpeed ~= nil then
-		Spring.Log("infantry script", LOG.DEBUG, "SetGroundMoveTypeData: " .. UnitDef.name, unitID)
+
+	-- prevents a crash when the unit is movectrl'd by some other script already
+	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-	else
-		Spring.Log("infantry script", "error", "nil as newSpeed: " .. UnitDef.name, unitID)
 	end
+
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
 		if #cmds >= 2 then

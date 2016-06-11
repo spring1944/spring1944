@@ -418,6 +418,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 
   Spring.SetUnitHealth(unitID, { paralyze = 1.0e9 })    --// turns mexes and mm off (paralyze the unit)
   Spring.MoveCtrl.Enable(unitID)
+  Spring.SetUnitRulesParam(unitID, "movectrl", 1)
   --Spring.SetUnitResourcing(unitID,"e",0)                --// turns solars off
   --Spring.GiveOrderToUnit(unitID, CMD.ONOFF, { 0 }, { "alt" }) --// turns radars/jammers off
   Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, { "alt" })
@@ -454,6 +455,7 @@ local function StopMorph(unitID, morphData)
 
   SendToUnsynced("unit_morph_stop", unitID)
   Spring.MoveCtrl.Disable(unitID)
+  Spring.SetUnitRulesParam(unitID, "movectrl", 0)
   -- try to prevent unit flying away by giving a move order to the current position
   -- can the thing move?
   if (UnitDefs[unitDefID].speed or 0) > 0 then
