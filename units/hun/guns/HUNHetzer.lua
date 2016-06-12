@@ -25,7 +25,7 @@ local HUNHetzer = MediumTank:New(TankDestroyer):New{
 		armor_side			= 26,
 		armor_top			= 8,
 		maxammo				= 15,
-		soundcategory		= "GER/Tank/JgPz",
+		soundcategory		= "HUN/Tank",
 		maxvelocitykmh		= 40,
 	},
 }
@@ -43,8 +43,8 @@ local HUNBergeHetzer = EngineerVehicle:New{
 		armor_rear			= 21,
 		armor_side			= 26,
 		armor_top			= 0,
-		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 40,
+		soundcategory		= "HUN/Tank",
 	},
 }
 
