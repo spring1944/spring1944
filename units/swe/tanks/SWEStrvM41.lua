@@ -1,6 +1,6 @@
 local SWEStrvM41 = LightTank:New{
 	name				= "Stridsvagn m/41 SII",
-	buildCostMetal		= 2000,
+	buildCostMetal		= 1800,
 	maxDamage			= 1100,
 	trackOffset			= 5,
 	trackWidth			= 18,
@@ -28,9 +28,9 @@ local SWEStrvM41 = LightTank:New{
 		},
 	},
 	customParams = { -- TODO: armour values are made up based on 'better than m/40'
-		armor_front			= 57,
-		armor_rear			= 20,
-		armor_side			= 24,
+		armor_front			= 50,
+		armor_rear			= 15,
+		armor_side			= 15,
 		armor_top			= 8,
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
