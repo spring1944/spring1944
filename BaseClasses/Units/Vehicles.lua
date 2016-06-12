@@ -56,6 +56,7 @@ local ArmouredCar = Vehicle:New{
 
 	customParams = {
 		damageGroup		= "armouredVehicles",
+		hasturnbutton	= true,
 	},
 }
 
