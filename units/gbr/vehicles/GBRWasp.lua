@@ -22,7 +22,6 @@ local GBRWasp = ArmouredCar:New{
 		armor_side			= 8,
 		armor_top			= 0,
 		maxammo				= 7,
-		hasturnbutton		= true,
 		maxvelocitykmh		= 48,
 	}
 }
