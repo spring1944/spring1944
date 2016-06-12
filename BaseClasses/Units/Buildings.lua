@@ -92,12 +92,14 @@ local GunYardSP = GunYard:New{
 	name				= "Self-Propelled Gun Yard",
 	description			= "Self-Propelled Gun Prep. Facility",
 	buildCostMetal		= 2000, -- GBR 1868, GER 2175, ITA 1800, JPN 1800, RUS 5400, US 3600
+	workerTime			= 50,
 }
 
 local GunYardTD = GunYard:New{
 	name				= "Tank Destroyer Yard",
 	description			= "Tank Destroyer Prep. Facility",
 	buildCostMetal		= 2000, -- GBR 1868, GER 2175, ITA 1800, JPN 1800, RUS 5400, US 3600,
+	workerTime			= 50,
 }
 
 local VehicleYard = Yard:New{
