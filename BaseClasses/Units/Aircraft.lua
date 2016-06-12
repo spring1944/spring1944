@@ -137,6 +137,7 @@ local Glider = Aircraft:New{
 	customParams = {
 		cruise_missile_accuracy	= 1,
 		deposit					= 0,
+		maxFuel				= 120,
 	},
 	explodeAs			= "noweapon",
 	iconType			= "transportplane",
@@ -149,9 +150,6 @@ local Glider = Aircraft:New{
 	maxRudder			= 0.002765,
 	maxVelocity			= 9.8,
 
-	customParams = {
-		maxFuel				= 120,
-	},
 }
 
 local ParaTransport = Aircraft:New{
