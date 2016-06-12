@@ -2,10 +2,30 @@
   description=Wrecked scoutcar;
   damage=251;
   energy=15;
+  featureDead=usjeep_wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=US/USJeep_dead.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=35;
+		}
+}
+
+[usjeep_wreck] {
+  description=Wrecked scoutcar;
+  damage=251;
+  energy=15;
   featureDead=Debris_Small;
   footprintX=2;
   footprintZ=2;
-  object=USJeep_wreck.S3O;
+  object=US/USJeep_wreck.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=15 15 35;
