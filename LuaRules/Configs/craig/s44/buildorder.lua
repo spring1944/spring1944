@@ -60,6 +60,10 @@ gadget.unitBuildOrder = UnitBag{
 		"gbrm10achilles",
 	},
 	-- Russia
+	ruspshack = UnitArray {
+		"rus_platoon_partisan",
+	},
+	
 	rusbarracks = UnitArray{
 		"rus_platoon_rifle",
 		"rusengineer",
@@ -485,6 +489,7 @@ gadget.baseBuildOrder = {
 		"russtorage", "russtorage",
 		"rustankyard",
 		"russupplydepot",
+		"ruspshack",
 		"russpyard",
 		"rustankyard1",
 		"russpyard1",
@@ -612,7 +617,6 @@ gadget.flagCappers = UnitSet{
 	"usrifle", "usthompson",
 	"jpnrifle", "jpntype100smg",
 	"ruscommissar", --no commander because it is needed for base building
-	"rusaicommissar",
 	"swerifle",
 	"hunrifle",
 }

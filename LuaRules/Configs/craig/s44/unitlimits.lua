@@ -36,6 +36,7 @@ local unitLimits = UnitBag{
 	gbrbarracks    = { 3, 3, 4 },
 	gerbarracks    = { 3, 3, 4 },
 	rusbarracks    = { 3, 3, 4 },
+	ruspshack		= {1, 2, 2},
 	usbarracks     = { 3, 3, 4 },
 	jpnbarracks     = { 3, 3, 4 },
 	itabarracks     = { 3, 3, 3 },
