@@ -71,6 +71,7 @@ local ITA_Sniper = SniperInf:New(ITAInf):New{
 
 local ITA_SoloAT = ATRifleInf:New(ITAInf):New{
 	name				= "Solothurn S-18/100",
+	icontype			= "ITASolo",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "Solothurn",
@@ -151,6 +152,7 @@ local ITA_BersaglieriM38 = ITA_M38:Clone("ITAM38"):New(Bersaglieri):New{
 local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
 	name				= "Scoped Solothurn S-18/100",
 	description			= "Scoped Long Range Light Anti-Tank",
+	icontype			= "ITAscopedsolo",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "ScopedSolothurn",
