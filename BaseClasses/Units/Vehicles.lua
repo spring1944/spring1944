@@ -106,6 +106,7 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 local PontoonTruck = Truck:New{
 	name				= "Pontoon Carrier", -- appended
 	description			= "Deployable Boatyard Vehicle",
+	iconType			= "ptruck",
 	buildCostMetal		= 1400,
 	maxWaterDepth		= 70,
 	movementClass		= "HOVER_AmphibTruck",

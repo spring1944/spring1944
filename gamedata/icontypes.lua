@@ -200,6 +200,11 @@ local iconTypes = {
 		size			=	2,
 		distance	=	0.2,
 	},
+	ptruck = {
+		bitmap		=	"icons/ptruck.tga",
+		size			=	2,
+		distance	=	0.2,
+	},
 	truck_ammo = {
 		bitmap		=	"icons/truck_ammo.png",
 		size			=	2,
