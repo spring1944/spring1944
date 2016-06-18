@@ -12,8 +12,7 @@ local BK37mmAP = AirATGun:New{
   soundStart         = [[US_37mm]],
   weaponVelocity     = 1768,
   customparams = {
-    --constant penetration since aircraft engagement range can't be realistically controlled
-    armor_penetration = 45,
+    armor_penetration = 60,
   },
   damage = {
     default            = 825,
