@@ -71,7 +71,7 @@ local Fighter = Aircraft:New{
 local Interceptor = Fighter:New{
 	description			= "Interceptor",
 	cruiseAlt			= 1500,
-	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH HARDVEH BUILDING",
+	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH BUILDING",
 
 	customParams = {
 		maxFuel				= 120,
