@@ -3,6 +3,9 @@ local USParatrooper = Null:New{
 	category					= "AIR PARA",
 	maxDamage					= 60,
 	objectName					= "US/USParatrooper.s3o",
+	customParams = {
+		damageGroup			= "infantry",
+	},
 }
 
 return lowerkeys({
