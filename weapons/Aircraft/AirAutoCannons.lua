@@ -117,6 +117,8 @@ local Ho520mmAP = AutoCannonAP:New(AirAutoCannon, true):New{
   customparams = {
     armor_penetration_1000m  = 6,
     armor_penetration_100m   = 28,
+		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP HARDVEH LARGESHIP DEPLOYED TURRETS",
   },
   damage = {
     default            = 305,

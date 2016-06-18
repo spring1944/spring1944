@@ -317,8 +317,8 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 		armor_hit_side     = "top",
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
-		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
 	},
 }
 
