@@ -8,7 +8,10 @@ local HUN_44M_HeavyAT_Truck = ATGunTractor:New{
 local HUN_44MHeavyAT_Stationary = LightATGun:New{
 	name					= "Deployed 44M Buzogányvető",
 	corpse					= "hun44mbuzoganyveto_destroyed",
-
+	cloakCost			= 0,
+	cloakCostMoving		= 0,
+	decloakOnFire		= true,
+	minCloakDistance	= 220,
 	customParams = {
 		maxammo		= 2,
 	},
