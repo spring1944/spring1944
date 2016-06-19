@@ -44,9 +44,6 @@ local Thompson = SMGClass:New{
   reloadtime         = 1.7,
   soundStart         = [[US_Thompson]],
   sprayAngle         = 400, -- intended?
-  damage = {
-    default            = 19, -- intended?
-  },
 }
 
 -- PPSh (RUS)
@@ -84,9 +81,6 @@ local FNAB43 = SMGClass:New{
   reloadtime         = 1.2,
   soundStart         = [[ITA_Fnab43]],
   sprayAngle         = 300,
-  damage = {
-    default            = 19, -- intended?
-  },
 }
 
 local Type100SMG = SMGClass:New{
