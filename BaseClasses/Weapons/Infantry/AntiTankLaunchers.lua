@@ -20,7 +20,8 @@ local ATLClass = Weapon:New{
 
 -- Recoilless Rifle (& Spigot Mortar) Class
 local RCL_ATLClass = ATLClass:New{
-	accuracy           = 500,
+	accuracy           = 300,
+	predictBoost = 0.25,
 	collisionSize      = 3,
 	reloadtime         = 15,
 	weaponType         = [[Cannon]],
