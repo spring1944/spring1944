@@ -51,8 +51,8 @@ local Recon = Aircraft:New{
 local Fighter = Aircraft:New{
 	description			= "Air-Superiority Fighter",
 	cruiseAlt			= 1500,
+	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH BUILDING",
 	iconType			= "fighter",
-
 	customParams = {
 		soundcategory		= "<SIDE>/Air/Fighter",
 		maxFuel				= 180,
@@ -71,8 +71,6 @@ local Fighter = Aircraft:New{
 local Interceptor = Fighter:New{
 	description			= "Interceptor",
 	cruiseAlt			= 1500,
-	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH BUILDING",
-
 	customParams = {
 		maxFuel				= 120,
 	},
@@ -89,6 +87,7 @@ local FighterBomber = Fighter:New{
 	description				= "Fighter-Bomber",
 	iconType				= "bomber",
 	cruiseAlt				= 1500,
+	noChaseCategory		= "FLAG AIR MINE",
 	fireState				= 0,
 	maxElevator				= 0.001,
 	maxPitch				= 0.5,
