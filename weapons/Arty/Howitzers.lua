@@ -206,6 +206,7 @@ local BL45inGun = LongRangeCannon:New{
 	name               = [[BL 4.5 inch Medium Gun]],
 	range              = 12100,
 	reloadtime         = 22,	-- Force lower RoF
+	soundStart			= [[4_5in]],
 	damage = {
 		default            = 4500,	-- a bit more than for 105
 	},
@@ -221,6 +222,7 @@ local M1_45in_Gun = LongRangeCannon:New{
 	name               = [[4.5 inch Gun M1]],
 	range              = 12100,
 	reloadtime         = 22,	-- Force lower RoF
+	soundStart			= [[4_5in]],
 	damage = {
 		default            = 4500,	-- a bit more than for 105
 	},
