@@ -232,7 +232,7 @@ local M1_45in_GunSmoke = HowitzerSmoke:New(M1_45in_Gun, true)
 -- A-19
 local A19 = LongRangeCannon:New{
 	accuracy           = 1150,
-	areaOfEffect       = 129,
+	areaOfEffect       = 135,
 	name               = [[122mm A-19]],
 	range              = 13300,
 	reloadtime         = 30,	-- Force lower RoF
