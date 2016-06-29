@@ -1,0 +1,11 @@
+[ger10sk18_destroyed] {
+  description=Destroyed Cannon;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=GER/GER10sK18_Dead.S3O;
+  reclaimable=1;
+}
+

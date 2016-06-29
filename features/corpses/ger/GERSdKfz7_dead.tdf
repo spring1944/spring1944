@@ -1,0 +1,9 @@
+[GERSdKfz7_destroyed] {
+  description=Destroyed Artillery Tractor;
+  damage=1251;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=GER/GERSdKfz7_Dead.s3o;
+  reclaimable=1;
+}

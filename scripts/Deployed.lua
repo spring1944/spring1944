@@ -13,6 +13,10 @@ local carriage = piece "carriage"
 local turret = piece "turret"
 local sleeve = piece "sleeve"
 
+-- for some guns there are hydraulic cylinders, usually 2
+local cylinder1 = piece "cylinder1"
+local cylinder2 = piece "cylinder2"
+
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
@@ -160,6 +164,10 @@ local function ReAim(newHeading, newPitch)
 	SetSignalMask(SIG_AIM)
 	Turn(weaponTags.headingPiece, y_axis, newHeading, info.turretTurnSpeed)
 	Turn(weaponTags.pitchPiece, x_axis, -newPitch, info.elevationSpeed)
+
+	if cylinder2 then
+		Turn(cylinder2, x_axis, newPitch, info.elevationSpeed)
+	end
 
 	WaitForTurn(weaponTags.headingPiece, y_axis)
 	WaitForTurn(weaponTags.pitchPiece, x_axis)

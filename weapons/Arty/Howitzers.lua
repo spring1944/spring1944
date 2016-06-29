@@ -169,6 +169,21 @@ local Cannone105_32 = LongRangeCannon:New{
 local Cannone105_32HE = HowitzerHE:New(Cannone105_32)
 local Cannone105_32Smoke = HowitzerSmoke:New(Cannone105_32)
 
+-- 10 sK18
+local GER10sK18 = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[10.5 cm schwere Kanone 18]],
+	range              = 12000,
+	reloadtime         = 22,	-- Force lower RoF
+	damage = {
+		default            = 4200,
+	},
+}
+
+local GER10sK18HE = HowitzerHE:New(GER10sK18)
+local GER10sK18Smoke = HowitzerSmoke:New(GER10sK18)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -193,4 +208,6 @@ return lowerkeys({
   m31_105mmSmoke = m31_105mmSmoke,
   Cannone105_32HE = Cannone105_32HE,
   Cannone105_32Smoke = Cannone105_32Smoke,
+  GER10sK18HE = GER10sK18HE,
+  GER10sK18Smoke = GER10sK18Smoke,
 })

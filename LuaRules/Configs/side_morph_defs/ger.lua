@@ -149,7 +149,25 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
+
+  ger10sk18_truck = 
+  {
+    into = 'ger10sk18_stationary',
+    tech = 0,
+    time = 60,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
   
+  ger10sk18_stationary = 
+  {
+    into = 'ger10sk18_truck',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+  },  
 	gernebelwerfer_truck = 
   {
     into = 'gernebelwerfer_stationary',
