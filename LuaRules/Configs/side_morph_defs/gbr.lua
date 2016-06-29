@@ -141,7 +141,25 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
-  
+  gbr45ingun_truck = 
+  {
+    into = 'gbr45ingun_stationary',
+    tech = 0,
+    time = 60,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
+
+  gbr45ingun_stationary = 
+  {
+    into = 'gbr45ingun_truck',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+  },
+
   gbrbofors_truck =
   {
     into = 'gbrbofors_stationary',

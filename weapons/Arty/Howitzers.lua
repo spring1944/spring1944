@@ -166,8 +166,8 @@ local Cannone105_32 = LongRangeCannon:New{
 	},
 }
 
-local Cannone105_32HE = HowitzerHE:New(Cannone105_32)
-local Cannone105_32Smoke = HowitzerSmoke:New(Cannone105_32)
+local Cannone105_32HE = HowitzerHE:New(Cannone105_32, true)
+local Cannone105_32Smoke = HowitzerSmoke:New(Cannone105_32, true)
 
 -- 10 sK18
 local GER10sK18 = LongRangeCannon:New{
@@ -181,8 +181,8 @@ local GER10sK18 = LongRangeCannon:New{
 	},
 }
 
-local GER10sK18HE = HowitzerHE:New(GER10sK18)
-local GER10sK18Smoke = HowitzerSmoke:New(GER10sK18)
+local GER10sK18HE = HowitzerHE:New(GER10sK18, true)
+local GER10sK18Smoke = HowitzerSmoke:New(GER10sK18, true)
 
 -- Type 92 10 cm Cannon
 local Type92_10cm = LongRangeCannon:New{
@@ -196,8 +196,23 @@ local Type92_10cm = LongRangeCannon:New{
 	},
 } 
 
-local Type92_10cmHE = HowitzerHE:New(Type92_10cm)
-local Type92_10cmSmoke = HowitzerSmoke:New(Type92_10cm)
+local Type92_10cmHE = HowitzerHE:New(Type92_10cm, true)
+local Type92_10cmSmoke = HowitzerSmoke:New(Type92_10cm, true)
+
+-- BL 4.5-inch gun
+local BL45inGun = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[BL 4.5 inch Medium Gun]],
+	range              = 12100,
+	reloadtime         = 22,	-- Force lower RoF
+	damage = {
+		default            = 4500,	-- a bit more than for 105
+	},
+}
+
+local BL45inGunHE = HowitzerHE:New(BL45inGun, true)
+local BL45inGunSmoke = HowitzerSmoke:New(BL45inGun, true)
 
 -- Return only the full weapons
 return lowerkeys({
@@ -227,4 +242,6 @@ return lowerkeys({
   GER10sK18Smoke = GER10sK18Smoke,
   Type92_10cmHE = Type92_10cmHE,
   Type92_10cmSmoke = Type92_10cmSmoke,
+  BL45inGunHE = BL45inGunHE,
+  BL45inGunSmoke = BL45inGunSmoke,
 })
