@@ -1,0 +1,11 @@
+[jpntype92_10cm_destroyed] {
+  description=Destroyed Cannon;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=JPN/JPNType92_10cm_dead.S3O;
+  reclaimable=1;
+}
+

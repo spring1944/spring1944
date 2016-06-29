@@ -181,6 +181,24 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+  jpntype92_10cm_truck =
+  {
+    into = 'jpntype92_10cm_stationary',
+    tech = 0,
+    time = 60,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
+  
+  jpntype92_10cm_stationary =
+  {
+    into = 'jpntype92_10cm_truck',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+  },  
     jpntype92hmg =
   {
     into = 'jpntype92hmg_dugin',

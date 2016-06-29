@@ -184,6 +184,21 @@ local GER10sK18 = LongRangeCannon:New{
 local GER10sK18HE = HowitzerHE:New(GER10sK18)
 local GER10sK18Smoke = HowitzerSmoke:New(GER10sK18)
 
+-- Type 92 10 cm Cannon
+local Type92_10cm = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[Type 92 10 cm Cannon]],
+	range              = 12300,
+	reloadtime         = 22,	-- Force lower RoF
+	damage = {
+		default            = 4200,
+	},
+} 
+
+local Type92_10cmHE = HowitzerHE:New(Type92_10cm)
+local Type92_10cmSmoke = HowitzerSmoke:New(Type92_10cm)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -210,4 +225,6 @@ return lowerkeys({
   Cannone105_32Smoke = Cannone105_32Smoke,
   GER10sK18HE = GER10sK18HE,
   GER10sK18Smoke = GER10sK18Smoke,
+  Type92_10cmHE = Type92_10cmHE,
+  Type92_10cmSmoke = Type92_10cmSmoke,
 })
