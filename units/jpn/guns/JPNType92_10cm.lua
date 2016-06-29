@@ -1,6 +1,5 @@
-local JPN_Type92_10cm_Truck = HGunTractor:New{
+local JPN_Type92_10cm_Truck = LongRangeGunTractor:New{
 	name					= "Towed Type 92 10cm Cannon",
-	buildCostMetal			= 3000,
 	corpse					= "JPNType98_RoKe_Destroyed", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 17,

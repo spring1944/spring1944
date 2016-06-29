@@ -1,4 +1,4 @@
-local GBR_4_5in_Truck = HGunTractor:New{
+local GBR_4_5in_Truck = LongRangeGunTractor:New{
 	name					= "Towed BL 4.5 inch Medium Gun",
 	corpse					= "gbrmatador_destroyed",
 	trackOffset				= 10,

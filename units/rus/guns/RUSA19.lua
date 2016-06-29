@@ -1,4 +1,4 @@
-local RUS_A19_Truck = HGunTractor:New{
+local RUS_A19_Truck = LongRangeGunTractor:New{
 	name					= "Towed 122mm A-19",
 	buildCostMetal			= 3500,
 	corpse					= "RUSYa12_abandoned", -- TODO: grumble

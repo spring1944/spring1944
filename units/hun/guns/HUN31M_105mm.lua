@@ -1,6 +1,5 @@
-local HUN_31M_105mm_Truck = HGunTractor:New{
+local HUN_31M_105mm_Truck = LongRangeGunTractor:New{
 	name					= "Towed 105mm 31M Tábori Ágyú",
-	buildCostMetal			= 3200,
 	corpse					= "HUNPavesi_dead",
 	trackOffset				= 10,
 	trackWidth				= 15,

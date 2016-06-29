@@ -1,7 +1,6 @@
-local US_M1_45inGun_Truck = HGunTractor:New{
+local US_M1_45inGun_Truck = LongRangeGunTractor:New{
 	name					= "Towed 4.5 inch Gun M1",
 	corpse					= "USM5Tractor_Destroyed",
-	buildCostMetal			= 3000,
 	trackOffset				= 10,
 	trackWidth				= 15,
 }

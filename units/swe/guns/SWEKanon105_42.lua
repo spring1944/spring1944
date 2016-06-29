@@ -1,7 +1,6 @@
-local SWEKanon105_42_Truck = HGunTractor:New{
+local SWEKanon105_42_Truck = LongRangeGunTractor:New{
 	name					= "Towed 10.5 cm kanon m/34",
 	corpse					= "SWEVolvoTVC_Destroyed",
-	buildCostMetal			= 3200,
 	mass					= 600, -- 2x default truck
 	maxDamage 				= 600, -- 2x default truck
 	trackOffset				= 25,

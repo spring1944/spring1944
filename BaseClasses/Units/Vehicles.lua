@@ -187,6 +187,14 @@ local HGunTractor = Truck:New{
 	iconType			= "htruck",
 }
 
+local LongRangeGunTractor = Truck:New{
+	description			= "Towed Long-Range Gun",
+	buildCostMetal		= 3200,
+	iconType			= "htruck",
+	maxVelocity			= 3,
+	maxReverseVelocity	= 1.2,
+}
+
 local RGunTractor = Truck:New{
 	description			= "Towed Rocket Launcher",
 	buildCostMetal		= 3600,

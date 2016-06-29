@@ -1,7 +1,7 @@
-local ITA_Cannone_105_32_Truck = HGunTractor:New{
+local ITA_Cannone_105_32_Truck = LongRangeGunTractor:New{
 	name					= "Towed Cannone da 105/32",
-	buildCostMetal			= 3200,
 	corpse					= "itapavesi_dead",
+	buildCostMetal			= 3000,	-- this is the weakest long-ranged gun
 	trackOffset				= 10,
 	trackWidth				= 15,
 }

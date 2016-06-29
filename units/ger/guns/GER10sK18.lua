@@ -1,4 +1,4 @@
-local GER_10sK18_Truck = HGunTractor:New{
+local GER_10sK18_Truck = LongRangeGunTractor:New{
 	name					= "Towed 10cm sK 18",
 	corpse					= "GERSdKfz7_Destroyed",
 	trackOffset				= 10,
