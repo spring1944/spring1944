@@ -229,6 +229,22 @@ local M1_45in_Gun = LongRangeCannon:New{
 local M1_45in_GunHE = HowitzerHE:New(M1_45in_Gun, true)
 local M1_45in_GunSmoke = HowitzerSmoke:New(M1_45in_Gun, true)
 
+-- A-19
+local A19 = LongRangeCannon:New{
+	accuracy           = 1150,
+	areaOfEffect       = 129,
+	name               = [[122mm A-19]],
+	range              = 13300,
+	reloadtime         = 30,	-- Force lower RoF
+	soundStart			= [[RUS_122mm]],
+	damage = {
+		default            = 4800,	-- a bit more than for 105
+	},
+}
+
+local A19HE = HowitzerHE:New(A19, true)
+local A19Smoke = HowitzerSmoke:New(A19, true)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -261,4 +277,6 @@ return lowerkeys({
   BL45inGunSmoke = BL45inGunSmoke,
   M1_45in_GunHE = M1_45in_GunHE,
   M1_45in_GunSmoke = M1_45in_GunSmoke,
+  A19HE = A19HE,
+  A19Smoke = A19Smoke,
 })

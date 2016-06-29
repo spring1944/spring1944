@@ -1,0 +1,11 @@
+[rusa19_destroyed] {
+  description=Destroyed Howitzer;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=RUS/RUSA19_Dead.S3O;
+  reclaimable=1;
+}
+

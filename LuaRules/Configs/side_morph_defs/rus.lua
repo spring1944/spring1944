@@ -156,6 +156,24 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
+  rusa19_truck = 
+  {
+    into = 'rusa19_stationary',
+    tech = 0,
+    time = 70,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
+  
+  rusa19_stationary = 
+  {
+    into = 'rusa19_truck',
+    tech = 0,
+    time = 45,
+    metal = 0,
+    energy = 0,
+  },  
   -- Trucks / Trucksupplies
    ruszis5 =
   {
