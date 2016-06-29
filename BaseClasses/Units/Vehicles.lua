@@ -224,4 +224,5 @@ return {
 	FGGunTractor = FGGunTractor,
 	HGunTractor = HGunTractor,
 	RGunTractor = RGunTractor,
+	LongRangeGunTractor = LongRangeGunTractor,
 }
