@@ -142,7 +142,26 @@ local usDefs = {
     energy = 0,
   },
  
-     usm1bofors_truck = 
+  usm1_45ingun_truck = 
+  {
+    into = 'usm1_45ingun_stationary',
+    tech = 0,
+    time = 60,
+    metal = 0,
+    energy = 0,
+    directional = true,
+  },
+  
+  usm1_45ingun_stationary = 
+  {
+    into = 'usm1_45ingun_truck',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+  },
+
+ usm1bofors_truck = 
   {
     into = 'usm1bofors_stationary',
     tech = 0,

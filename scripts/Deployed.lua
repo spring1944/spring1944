@@ -17,6 +17,17 @@ local sleeve = piece "sleeve"
 local cylinder1 = piece "cylinder1"
 local cylinder2 = piece "cylinder2"
 
+local cylinder1inverse = 1
+local cylinder2inverse = 1
+if UnitDef.customparams then
+	if UnitDef.customparams.guncylinderinverse1 then
+		cylinder1inverse = -1
+	end
+	if UnitDef.customparams.guncylinderinverse2 then
+		cylinder2inverse = -1
+	end
+end
+
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
@@ -166,7 +177,7 @@ local function ReAim(newHeading, newPitch)
 	Turn(weaponTags.pitchPiece, x_axis, -newPitch, info.elevationSpeed)
 
 	if cylinder2 then
-		Turn(cylinder2, x_axis, newPitch, info.elevationSpeed)
+		Turn(cylinder2, x_axis, newPitch * cylinder2inverse, info.elevationSpeed)
 	end
 
 	WaitForTurn(weaponTags.headingPiece, y_axis)

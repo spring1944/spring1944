@@ -214,6 +214,21 @@ local BL45inGun = LongRangeCannon:New{
 local BL45inGunHE = HowitzerHE:New(BL45inGun, true)
 local BL45inGunSmoke = HowitzerSmoke:New(BL45inGun, true)
 
+-- US M1 4.5in gun - same as British
+local M1_45in_Gun = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[4.5 inch Gun M1]],
+	range              = 12100,
+	reloadtime         = 22,	-- Force lower RoF
+	damage = {
+		default            = 4500,	-- a bit more than for 105
+	},
+}
+
+local M1_45in_GunHE = HowitzerHE:New(M1_45in_Gun, true)
+local M1_45in_GunSmoke = HowitzerSmoke:New(M1_45in_Gun, true)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -244,4 +259,6 @@ return lowerkeys({
   Type92_10cmSmoke = Type92_10cmSmoke,
   BL45inGunHE = BL45inGunHE,
   BL45inGunSmoke = BL45inGunSmoke,
+  M1_45in_GunHE = M1_45in_GunHE,
+  M1_45in_GunSmoke = M1_45in_GunSmoke,
 })
