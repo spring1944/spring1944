@@ -1,0 +1,11 @@
+[hun31m_105mm_destroyed] {
+  description=Destroyed Cannon;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=HUN/HUN31M_105mm_Dead.S3O;
+  reclaimable=1;
+}
+

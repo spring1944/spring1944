@@ -350,6 +350,28 @@ local sweDefs = {
 			energy = 0,
 		},
 	},
+	
+	swekanon105_42_truck = {
+		{
+			into	= "swekanon105_42_stationary",
+			tech	= 0,
+			time	= 60,
+			metal	= 0,
+			energy	= 0,
+			directional = true,
+		},
+	},
+	
+	swekanon105_42_stationary = {
+		{
+			into	= "swekanon105_42_truck",
+			tech	= 0,
+			time	= 40,
+			metal	= 0,
+			energy	= 0,
+		},
+	},
+	
 	-- Trucks / Trucksupplies
 	swescaniavabisf11 =
 	{

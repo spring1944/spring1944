@@ -1,0 +1,11 @@
+[itacannone105_32_destroyed] {
+  description=Destroyed Cannon;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=ITA/ITACannone105_32_Dead.S3O;
+  reclaimable=1;
+}
+

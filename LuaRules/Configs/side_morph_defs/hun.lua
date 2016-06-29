@@ -103,6 +103,23 @@ local hunDefs = {
 		energy = 0,
 	},
 
+	hun31m_105mm_truck = {
+		into = 'hun31m_105mm_stationary',
+		tech = 0,
+		time = 60,
+		metal = 0,
+		energy = 0,
+		directional = true,
+	},
+
+	hun31m_105mm_stationary = {
+		into = 'hun31m_105mm_truck',
+		tech = 0,
+		time = 40,
+		metal = 0,
+		energy = 0,
+	},
+
 	hun44mbuzoganyveto_truck =
 	{
 		into = 'hun44mbuzoganyveto_stationary',

@@ -103,6 +103,26 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },
+  
+  itacannone105_32_truck =
+  {
+    into = 'itacannone105_32_stationary',
+    tech = 0,
+    time = 60,
+    metal = 0,
+    energy = 0,
+	directional = true,
+  },
+  
+  itacannone105_32_stationary =
+  {
+    into = 'itacannone105_32_truck',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+  },  
+  
     itamg =
   {
     into = 'itamg_dugin',

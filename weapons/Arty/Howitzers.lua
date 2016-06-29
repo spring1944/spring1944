@@ -124,6 +124,51 @@ local Type91105mmL24 = Howitzer:New{
 local Type91105mmL24HE = HowitzerHE:New(Type91105mmL24, true)
 local Type91105mmL24Smoke = HowitzerSmoke:New(Type91105mmL24, true)
 
+-- Bofors 10.5 cm kanon m/34
+local Bofors105mmM_34 = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[10.5 cm kanon m/34]],
+	range              = 10990,
+	reloadtime         = 20,	-- Force lower RoF
+	damage = {
+		default            = 4200,
+	},
+}
+
+local Bofors105mmM_34HE = HowitzerHE:New(Bofors105mmM_34, true)
+local Bofors105mmM_34Smoke = HowitzerSmoke:New(Bofors105mmM_34, true)
+
+-- Same for m/27 - Hungary uses that
+local m31_105mm = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[31.M 105mm cannon]],
+	range              = 10990,
+	reloadtime         = 20,	-- Force lower RoF
+	damage = {
+		default            = 4200,
+	},
+}
+
+local m31_105mmHE = HowitzerHE:New(m31_105mm, true)
+local m31_105mmSmoke = HowitzerSmoke:New(m31_105mm, true)
+
+-- Cannone da 105/32
+local Cannone105_32 = LongRangeCannon:New{
+	accuracy           = 950,
+	areaOfEffect       = 129,
+	name               = [[Cannone da 105/32]],
+	range              = 9000,
+	reloadtime         = 15,	-- Force lower RoF
+	damage = {
+		default            = 4200,
+	},
+}
+
+local Cannone105_32HE = HowitzerHE:New(Cannone105_32)
+local Cannone105_32Smoke = HowitzerSmoke:New(Cannone105_32)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -142,4 +187,10 @@ return lowerkeys({
   Obice100mmL17Smoke = Obice100mmL17Smoke,
   Type91105mmL24HE = Type91105mmL24HE,
   Type91105mmL24Smoke = Type91105mmL24Smoke,
+  Bofors105mmM_34HE = Bofors105mmM_34HE,
+  Bofors105mmM_34Smoke = Bofors105mmM_34Smoke,
+  m31_105mmHE = m31_105mmHE,
+  m31_105mmSmoke = m31_105mmSmoke,
+  Cannone105_32HE = Cannone105_32HE,
+  Cannone105_32Smoke = Cannone105_32Smoke,
 })

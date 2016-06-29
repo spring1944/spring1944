@@ -370,6 +370,23 @@ local Howitzer = Cannon:New{
 	},
 }
 
+-- Artillery - long-range cannon
+local LongRangeCannon = Cannon:New{
+	intensity          = 0.1,
+	leadLimit          = 0.05,
+	noSelfDamage       = true,
+	soundStart         = "GEN_105mm",
+	targetMoveError    = 0.75,
+	tolerance          = 3000,
+	weaponVelocity     = 1600,
+	customparams = {
+		howitzer           = 1,
+		cegflare           = "LARGE_MUZZLEFLASH",
+		seismicping        = 15,
+		weaponcost         = 40,
+	},
+}
+
 -- Artillery - Mortars
 
 local Mortar = Cannon:New{
@@ -434,5 +451,6 @@ return {
 	AntiAirGun = AntiAirGun,
 	InfGun = InfGun,
 	Howitzer = Howitzer,
+	LongRangeCannon = LongRangeCannon,
 	Mortar = Mortar,
 }
