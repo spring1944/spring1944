@@ -5,6 +5,7 @@ for _, side in pairs(Sides) do
 	units[side .. "boatyard"] = BoatYard:New{}
 	units[side .. "boatyardlarge"] = BoatYardLarge:New{}
 	units[side .. "gunyard"] = GunYard:New{}
+	units[side .. "gunyard2"] = GunYardLongRange:New{}
 	units[side .. "spyard"] = GunYardSP:New{} -- TODO: change unitnames too
 	units[side .. "spyard1"] = GunYardTD:New{} 
 	units[side .. "vehicleyard"] = VehicleYard:New{}

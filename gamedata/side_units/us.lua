@@ -126,6 +126,16 @@ local usunits = {
     "usm1bofors_truck",
   },
 
+  usgunyard2 =
+  {
+    "usgmcengvehicle",
+    "usgmctruck",
+    "usm8gun",
+    "usm5gun_truck",
+    "usm2gun_truck",
+	"usm1_45ingun_truck",
+    "usm1bofors_truck",
+  },  
   usspyard =
   {
     "usgmcengvehicle",

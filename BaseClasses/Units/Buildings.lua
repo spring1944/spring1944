@@ -102,6 +102,13 @@ local GunYardTD = GunYard:New{
 	workerTime			= 50,
 }
 
+local GunYardLongRange = GunYard:New{
+	name				= "Long Range Artillery Yard",
+	description			= "Long Range Cannons Prep. Facility",
+	buildCostMetal		= 5000,
+	workerTime			= 125,
+}
+
 local VehicleYard = Yard:New{
 	name				= "Light Vehicle Yard",
 	description			= "Light Vehicle Prep. Facility",
@@ -292,6 +299,7 @@ return {
 	GunYard = GunYard,
 	GunYardSP = GunYardSP,
 	GunYardTD = GunYardTD,
+	GunYardLongRange = GunYardLongRange,
 	VehicleYard = VehicleYard,
 	VehicleYardArmour = VehicleYardArmour,
 	TankYard = TankYard,

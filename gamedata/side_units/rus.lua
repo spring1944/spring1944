@@ -139,7 +139,16 @@ local rusunits =
     "ruszis3_truck",
     "rus61k_truck",
   },
-  
+
+  rusgunyard2 =
+  {
+    "ruszis5",
+    "ruszis2_truck",
+    "ruszis3_truck",
+    "rus61k_truck",
+	"rusm30_truck",
+	"rusa19_truck",
+  },  
   russpyard =
   {
     "rusk31",

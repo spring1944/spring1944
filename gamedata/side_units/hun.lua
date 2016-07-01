@@ -73,6 +73,17 @@ local hununits = {
 		"hun44mbuzoganyveto_truck",
 	},
 
+	hungunyard2 =
+	{
+		"hunbergehetzer",
+		"hun38mbotond",
+		"hunpak40_truck",
+		"hunlefh18_truck",
+		"hun31m_105mm_truck",
+		"hun36mbofors_truck",
+		"hun44mbuzoganyveto_truck",
+	},
+
 	hunspyard1 =
 	{
 		"hunbergehetzer",

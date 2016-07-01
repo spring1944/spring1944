@@ -185,6 +185,15 @@ local itaDefs = {
 			text = 'Makes Self-Propelled Artillery  available in this yard',
 			facing = true,
 		},
+		{
+			into = 'itagunyard2',
+			metal = 5000,
+			energy = 0,
+			time = 140,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery  available in this yard',
+			facing = true,
+		},
 	},
 	itatankyard = {
 		{

@@ -41,6 +41,15 @@ local gerDefs = {
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
 		},
+		{
+			into = 'gergunyard2',
+			metal = 5250,
+			energy = 0,
+			time = 150,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery available in this yard',
+			facing = true,
+		},
 	},	
 	gertankyard = {
 		{

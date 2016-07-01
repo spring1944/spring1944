@@ -118,6 +118,16 @@ local jpnunits =
 		"jpntype90_75mm_truck",
 		"jpntype91_105mm_truck",
 	},
+	jpngunyard2 =
+	{
+		"jpnriki",
+		"jpnisuzutx40",
+		"jpntype98_20mm_truck",
+		"jpntype1_47mm_truck",
+		"jpntype90_75mm_truck",
+		"jpntype91_105mm_truck",
+		"jpntype92_10cm_truck",
+	},	
 	jpnspyard =
 	{
 		"jpnriki",

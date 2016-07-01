@@ -92,6 +92,17 @@ local sweunits =
 		"swehaubitsm39_truck",
 	},
 
+	swegunyard2 =
+	{
+		"swevolvotvc",
+		"swescaniavabisf11_barracks",
+		"swescaniavabisf11",
+		"sweboforsm36_truck",
+		"swepvkanm43_truck",
+		"swekanonm02_33_truck",
+		"swehaubitsm39_truck",
+		"swekanon105_42_truck",
+	},	
 	swespyard =
 	{
 		"swevolvotvc",

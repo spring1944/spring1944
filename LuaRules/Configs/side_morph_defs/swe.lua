@@ -105,6 +105,15 @@ local sweDefs = {
 			facing = true,
 		},
 		{
+			into = 'swegunyard2',
+			metal = 5250,
+			energy = 0,
+			time = 150,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery available in this yard',
+			facing = true,
+		},
+		{
 			into = 'swevolvotvc',
 			metal = 0,
 			energy = 0,
@@ -112,7 +121,17 @@ local sweDefs = {
 			name = '  Pack  \n  Up  ',
 			facing = true,
 		},
-	},	
+	},
+	swegunyard2 = {
+		{
+			into = 'swevolvotvc',
+			metal = 0,
+			energy = 0,
+			time = 20,
+			name = '  Pack  \n  Up  ',
+			facing = true,
+		},
+	},
 	swespyard = {
 		{
 			into = 'swevolvotvc',

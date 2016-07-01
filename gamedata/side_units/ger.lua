@@ -130,6 +130,17 @@ local gerunits =
     "gerflak38_truck",
   },
   
+  gergunyard2 =
+  {
+    "gersdkfz9",
+    "geropelblitz",
+    "gerleig18",
+    "gerpak40_truck",
+    "gerlefh18_truck",
+	"ger10sk18_truck",
+    "gerflak38_truck",  
+  },
+  
   gerspyard =
   {
     "gersdkfz9",

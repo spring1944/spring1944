@@ -109,7 +109,6 @@ local itaunits =
   {
 	"itabreda41",
 	"itafiat626",
-	-- "itasemovente47",
 	"itabreda20_truck",
 	"itacannone47_truck",
 	"itacannone75_truck",
@@ -117,6 +116,17 @@ local itaunits =
 	"itacannone65",
   },
 
+  itagunyard2 =
+  {
+	"itabreda41",
+	"itafiat626",
+	"itabreda20_truck",
+	"itacannone47_truck",
+	"itacannone75_truck",
+	"itaobice100_truck",
+	"itacannone105_32_truck",
+	"itacannone65",
+  },  
   itaspyard =
   {
 	"itabreda41",

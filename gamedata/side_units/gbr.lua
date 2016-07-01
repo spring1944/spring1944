@@ -72,7 +72,16 @@ local gbrunits = {
     "gbr25pdr_truck",
     "gbrbofors_truck",
   },
-  
+
+  gbrgunyard2 =
+  {
+    "gbrmatadorengvehicle",
+    "gbrbedfordtruck",
+    "gbr17pdr_truck",
+    "gbr25pdr_truck",
+	"gbr45ingun_truck",
+    "gbrbofors_truck",
+  },  
   gbrspyard =
   {
     "gbrmatadorengvehicle",

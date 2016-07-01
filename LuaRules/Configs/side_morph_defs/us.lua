@@ -32,6 +32,16 @@ local usDefs = {
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
 		},
+		{
+			into = 'usgunyard2',
+			metal = 5200,
+			energy = 0,
+			time = 150,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery Artillery available in this yard',
+			facing = true,
+		},
+		
 	},
 	ustankyard = {
 		{

@@ -30,6 +30,16 @@ local jpnDefs = {
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
 		},
+		{
+			into = 'jpngunyard2',
+			metal = 5200,
+			energy = 0,
+			time = 150,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery available in this yard',
+			facing = true,
+		},
+		
 	},	
 	jpnvehicleyard = {
 		{

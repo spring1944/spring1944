@@ -30,6 +30,15 @@ local rusDefs = {
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
 		},
+		{
+			into = 'rusgunyard2',
+			metal = 5500,
+			energy = 0,
+			time = 155,
+			name = ' Long Range \n Artillery ',
+			text = 'Makes Long Range Artillery available in this yard',
+			facing = true,
+		},
 	},
 	rustankyard = {
 		{
