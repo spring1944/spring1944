@@ -171,7 +171,7 @@ local Cannone105_32Smoke = HowitzerSmoke:New(Cannone105_32, true)
 
 -- 10 sK18
 local GER10sK18 = LongRangeCannon:New{
-	accuracy           = 950,
+	accuracy           = 900,
 	areaOfEffect       = 129,
 	name               = [[10.5 cm schwere Kanone 18]],
 	range              = 12000,
@@ -202,7 +202,7 @@ local Type92_10cmSmoke = HowitzerSmoke:New(Type92_10cm, true)
 -- BL 4.5-inch gun
 local BL45inGun = LongRangeCannon:New{
 	accuracy           = 950,
-	areaOfEffect       = 129,
+	areaOfEffect       = 110,	-- shell is known to produce relatively few shrapnel
 	name               = [[BL 4.5 inch Medium Gun]],
 	range              = 12100,
 	reloadtime         = 22,	-- Force lower RoF
@@ -218,7 +218,7 @@ local BL45inGunSmoke = HowitzerSmoke:New(BL45inGun, true)
 -- US M1 4.5in gun - same as British
 local M1_45in_Gun = LongRangeCannon:New{
 	accuracy           = 950,
-	areaOfEffect       = 129,
+	areaOfEffect       = 110,	-- shell is known to produce relatively few shrapnel
 	name               = [[4.5 inch Gun M1]],
 	range              = 12100,
 	reloadtime         = 22,	-- Force lower RoF
@@ -239,8 +239,11 @@ local A19 = LongRangeCannon:New{
 	range              = 13300,
 	reloadtime         = 30,	-- Force lower RoF
 	soundStart			= [[RUS_122mm]],
+	customParams		= {
+		weaponcost		= 45,
+	},
 	damage = {
-		default            = 4800,	-- a bit more than for 105
+		default            = 4800,	-- a bit more than for 4.5"
 	},
 }
 
