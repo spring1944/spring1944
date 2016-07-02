@@ -52,6 +52,9 @@ for unitName, unitMorphs in pairs(morphInclude) do
 			--autoUnit.description = unitMorphData.text
 			autoUnit.buildcostmetal = unitMorphData.metal
 			autoUnit.buildpic = intoDef.buildpic
+			if autoUnit.buildpic == '<NAME>.png' then
+				autoUnit.buildpic = unitMorphData.into .. '.png'
+			end
 			autoUnit.buildtime = (unitDef.workerTime or unitDef.workertime) * unitMorphData.time
 			autoUnit.side = intoDef.side
 			table.insert(buildOptions, autoUnitName)
