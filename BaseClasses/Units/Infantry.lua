@@ -243,7 +243,7 @@ local InfantryGun = Infantry:New{
 		hasturnbutton		= true,
 		maxammo				= 4,
 		infgun				= true,
-		scriptAnimation = "infantrygun",
+		scriptAnimation = "infantrygun_anim",
 	},
 	weapons = {
 		[1] = { -- Cannon
