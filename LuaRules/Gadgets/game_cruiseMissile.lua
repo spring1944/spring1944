@@ -124,7 +124,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
   
   mcEnable(unitID)
   
-  mcSetRotation(unitID, 0, angle, 0)
+  mcSetRotation(unitID, 0, -angle, 0)
   mcSetVelocity(unitID, vx, 0, vz)
   
   SetUnitNoSelect(unitID, true)
@@ -186,9 +186,9 @@ function gadget:GameFrame(n)
     local vx, vy, vz = GetUnitVelocity(unitID)
     local sx, _, sz, s = vNormalized(vx, 0, vz)
     local angleY = atan2(vx, vz)
-    local angleX = -atan2(vy, s)
+    local angleX = atan2(vy, s)
     
-    mcSetRotation(unitID, angleX, angleY, 0)
+    mcSetRotation(unitID, angleX, -angleY, 0)
   end
 end
 
