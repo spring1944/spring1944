@@ -38,6 +38,19 @@ function Net.DeltaDecompress(packet, prevData)
 	local sectionBitMask
 	local section = ''
 	local offset = 1
+	if not prevData then
+		for i=1, packet:len() do
+			if i % 9 == 1 then
+				sectionBitMask = string.byte(packet, i)
+			elseif sectionBitMask % 2 ~= 1 then
+				return nil
+			else
+				result = result .. packet:sub(i, i)
+				sectionBitMask = math.floor(sectionBitMask / 2) -- 8 bit shift right
+			end
+		end
+		return result
+	end
 	for i=1,prevData:len() do
 		if i % 8 == 1 then
 			sectionBitMask = string.byte(packet, offset)

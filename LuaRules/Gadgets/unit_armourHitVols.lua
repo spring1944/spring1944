@@ -31,7 +31,7 @@ local function SetColVols(unitID, ud, colPieces)
 					scale = { 1, 1, 1 }
 				}
 
-				local sX, sY, sZ, oX, oY, oZ, volumeType, _, primaryAxis = GetPieceColVol(unitID, i-1)
+				local sX, sY, sZ, oX, oY, oZ, volumeType, _, primaryAxis = GetPieceColVol(unitID, i)
 				sX = sX * pieceTweaks.scale[1]
 				sY = sY * pieceTweaks.scale[2]
 				sZ = sZ * pieceTweaks.scale[3]
@@ -40,9 +40,9 @@ local function SetColVols(unitID, ud, colPieces)
 				oY = oY + pieceTweaks.offset[2]
 				oZ = oZ + pieceTweaks.offset[3]
 
-				SetPieceColVol(unitID, i - 1, true, sX, sY, sZ, oX, oY, oZ, volumeType, primaryAxis)
+				SetPieceColVol(unitID, i, true, sX, sY, sZ, oX, oY, oZ, volumeType, primaryAxis)
 			else
-				SetPieceColVol(unitID, i - 1, false, 1,1,1, 0,0,0, -1, 0)
+				SetPieceColVol(unitID, i, false, 1,1,1, 0,0,0, -1, 0)
 			end
 
 		end

@@ -114,7 +114,7 @@ local function LockCamera(playerID)
 		lockPlayerID = playerID
 		local info = lastBroadcasts[lockPlayerID]
 		if info then
-			SetCameraState(info[2], transitionTime)
+			SetCameraState(info[2])
 			local _, _, _, teamID = Spring.GetPlayerInfo(playerID)
 			Spring.SendCommands("specteam ".. teamID)
 		end
@@ -208,7 +208,10 @@ function widget:RecvLuaMsg(msg, playerID)
 		return
 	end
 	local data = msg:sub(1 + PACKET_HEADER_LENGTH)
-	data = Net.DeltaDecompress(data, lastBroadcasts[playerID] and lastBroadcasts[playerID][3] or data)
+	data = Net.DeltaDecompress(data, lastBroadcasts[playerID] and lastBroadcasts[playerID][3])
+	if not data then
+		return
+	end
 	local cameraState = Camera.PacketToState(data)
 
 	if not cameraState then
@@ -225,7 +228,7 @@ function widget:RecvLuaMsg(msg, playerID)
 
 
 	if (playerID == lockPlayerID) then
-		 SetCameraState(cameraState, transitionTime)
+		SetCameraState(cameraState, transitionTime)
 	end
 
 end

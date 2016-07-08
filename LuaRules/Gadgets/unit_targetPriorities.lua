@@ -19,7 +19,7 @@ local lusPriorityCache = {}
 local unitDefIDsPassed = {}
 
 -- function gadget:AllowWeaponTargetCheck(attackerID, attackerWeaponNum, attackerWeaponDefID)
-	-- if lusPriorityCache[attackerID] and Spring.GetUnitStates(attackerID).firestate == 2 and 
+	-- if lusPriorityCache[attackerID] and Spring.GetUnitStates(attackerID).firestate == 2 and
 			-- not WeaponDefs[attackerWeaponDefID].noAutoTarget then -- verify we're on fire at will
 		-- return true
 	-- end
@@ -28,7 +28,7 @@ local unitDefIDsPassed = {}
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	if lusPriorityCache[unitID] then
-		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum + 1, attackerWeaponDefID, defPriority)
+		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 		return true, newPriority
 	else
 		return true, defPriority
