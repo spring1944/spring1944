@@ -376,6 +376,7 @@ function gadget:GamePreload()
 		
 		-- Parse UnitDef Weapon Data
 		local missileWeaponIDs = {}
+		local paratroopWeaponIDs = {}
 		local burstLengths = {}
 		local burstRates = {}
 		local reloadTimes = {}
@@ -403,6 +404,9 @@ function gadget:GamePreload()
 				flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 				weaponCEGs[i] = weaponDef.customParams.cegflare
 				seismicPings[i] = weaponDef.customParams.seismicping
+				if weaponDef.customParams.paratrooper then
+					paratroopWeaponIDs[i] = true
+				end
 			end
 		end
 		-- WeaponDef Level Info
@@ -416,6 +420,7 @@ function gadget:GamePreload()
 		info.weaponAnimations = weaponAnimations
 		info.weaponCEGs = weaponCEGs
 		info.seismicPings = seismicPings
+		info.paratroopWeaponIDs = paratroopWeaponIDs
 		-- UnitDef Level Info
 		local corpse = FeatureDefNames[unitDef.wreckName:lower()]
 		info.numCorpses = 0

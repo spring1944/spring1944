@@ -1,5 +1,7 @@
 local info = GG.lusHelper[unitDefID]
 
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 if not info.cegPieces then
 	include "AircraftLoader.lua"
 end
@@ -163,6 +165,24 @@ function script.Shot(weaponNum)
 	if info.bombPieces[weaponNum] then
 		Hide(info.bombPieces[weaponNum])
 		bombsFired[weaponNum] = true
+	end
+end
+
+function script.FireWeapon(weaponNum)
+	if info.paratroopWeaponIDs[weaponNum] then
+		if UnitDef.customParams.planevoice then
+			PlaneVoice('drop_started')
+		end	
+	end
+end
+
+function script.EndBurst(weaponNum)
+	if info.paratroopWeaponIDs[weaponNum] then
+		-- return to base immedeately after paradropping
+		SetUnitRulesParam(unitID, "fuel", 0)
+		if UnitDef.customParams.planevoice then
+			PlaneVoice('drop_complete')
+		end
 	end
 end
 
