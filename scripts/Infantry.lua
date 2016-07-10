@@ -240,7 +240,8 @@ local function PickPose(name)
 	else
 
 		local transition
-		if firing then
+		-- do not attempt to change for morphing units
+		if firing and Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
 				transition = fireTransitions[currentPoseID][nextPoseID]
 			else
