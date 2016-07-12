@@ -113,6 +113,14 @@ function script.Create()
 		Hide(brakeright)
 	end
 
+	-- reliably hide all the flares
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	for pieceName, pieceNum in pairs(pieceMap) do
+		if pieceName:find("flare") then
+			Hide(pieceNum)
+		end
+	end
+	
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
