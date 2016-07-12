@@ -154,7 +154,7 @@ local Glider = Aircraft:New{
 local ParaTransport = Aircraft:New{
 	description			= "Paratroop Transport Plane",
 	buildCostMetal		= 3000,
-	cruiseAlt			= 1800,
+	cruiseAlt			= 2100,
 
 	footprintX			= 6,
 	footprintZ			= 6,

@@ -1,4 +1,4 @@
-local GER_Ju87G = Fighter:New{
+local GER_Ju87G = AttackFighter:New{
 	name				= "Ju-87G-1 Stuka",
 	description			= "Anti-Tank Aircraft",
 	buildCostMetal		= 1800,
@@ -44,11 +44,13 @@ local GER_Ju87G = Fighter:New{
 		},
 		[5] = {
 			name				= "mg15115mm",
+			mainDir				= [[0 0 9]],
 			maxAngleDif			= 25,
 		},
 		[6] = {
 			name				= "mg15115mm",
 			maxAngleDif			= 25,
+			mainDir				= [[0 0 9]],
 			slaveTo				= 5,
 		},
 	},

@@ -1,4 +1,4 @@
-local SWEB18 = Fighter:New{
+local SWEB18 = AttackFighter:New{
 	name				= "SAAB T 18", --ATM pure copy of Ki-102b (Type 4) Assault Plane
 	description			= "Anti-Tank & Anti-Shipping Aircraft",
 	buildCostMetal		= 985,

@@ -308,8 +308,9 @@ local AutoCannon = Cannon:New{
 
 local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
 	heightBoostFactor  = 0,
+	range		= 860,
 	predictBoost       = 0.5,
-	size               = 0.4,
+	size               = 0.3,
 	soundTrigger       = false,
 	avoidFriendly      = true,
 	sprayAngle         = 250,
@@ -317,8 +318,8 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 		armor_hit_side     = "top",
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
-		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRETS",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRETS",
 	},
 }
 
