@@ -163,10 +163,10 @@ local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
 -- AA Round Class
 
 local AA = Weapon:New{
-	accuracy           = 200,
+	accuracy           = 100,
 	burnblow           = true,
 	canattackground    = false,
-	collisionSize      = 5,
+	collisionSize      = 3,
 	cylinderTargeting  = 2.5,
 	edgeEffectiveness  = 0.001,
 	name               = "AA Shell",
@@ -326,6 +326,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 
 -- Artillery - Medium Anti-Air (37 - 40mm)
 local AntiAirGun = Cannon:New{
+	accuracy           = 150,
 	intensity          = 0.9,
 	predictBoost       = 0, -- this seems very strange for an AA weapon!
 	size               = 1e-5,
