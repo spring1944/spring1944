@@ -32,13 +32,12 @@ local JPN_Ki102 = AttackFighter:New(ArmouredPlane):New{
 			name				= "Ho520mmAP",
 			maxAngleDif			= 10,
 			mainDir				= [[0 -1 16]],
-			slaveTo				= 1, -- TODO: why?
 		},
 		[3] = {
 			name				= "Ho520mmAP",
 			maxAngleDif			= 10,
-			mainDir				= [[0 .5 -1]],
-			slaveTo				= 1, -- TODO: why?
+			mainDir				= [[0 -1 16]],
+			slaveTo				= 2, 
 		},
 		[4] = {
 			name				= "Te4",

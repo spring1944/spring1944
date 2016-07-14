@@ -43,9 +43,9 @@ local AirNebelwerfer41 = AirRocket:New{
 	explosionGenerator = [[custom:HE_XLarge]],
 	reloadtime			= 3,
 	name               = [[Nebelwerfer 41 150mm unguided artillery rocket]],
-	range              = 900,
+	range              = 750,
 	soundStart         = [[GER_Nebelwerfer]],
-	wobble             = 1300,
+	wobble             = 2800,
 	customparams = {
 		damagetype			= [[explosive]],
 	},
