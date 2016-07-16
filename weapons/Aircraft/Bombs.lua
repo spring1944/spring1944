@@ -120,7 +120,29 @@ local A_tkbomb = BombClass:New{
     bunkers            = 500,
   }
 }
-
+--  12 kg anti-personnel Bomb Type F  (ITA)
+local TypeF12kg = timebombClass:New{
+  areaOfEffect       = 94,
+  explosionSpeed     = 8,
+  impulseFactor      = 0.0,
+  burst              = 2,
+  burstrate          = 0.25,
+  edgeEffectiveness  = 0.05,
+  explosionGenerator = [[custom:HE_small]], -- overrides default
+  weaponVelocity     = 250,
+  name               = [[12kg Fragmentation Bomblets]],
+  projectiles        = 2,
+  range              = 500,
+  model              = [[Bomb_small.S3O]],
+  soundHitDry        = [[GEN_Explo_3]],
+  sprayangle         = 3000,
+  customparams = {
+    damagetype         = [[explosive]], -- overrides default
+  },
+  damage = {
+    default            = 600, 
+  }
+}
 -- Return only the full weapons
 return lowerkeys({
   Bomb = Bomb,
@@ -128,5 +150,6 @@ return lowerkeys({
   Bomb50kg = Bomb50kg,
   PTAB = PTAB,
   A_tkbomb = A_tkbomb,
+  TypeF12kg = TypeF12kg,
   V1 = V1,
 })

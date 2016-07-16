@@ -21,6 +21,18 @@ local itaSorties = {
 		buildCostMetal = 4500,
 		buildPic = "itamc200.png",
 	},
+	ita_sortie_light_attack = {
+		members = {
+			"itafiatcr42",
+			"itafiatcr42",
+		},
+		weight = 1,
+		delay = 30,
+		name = "Light Ground-Attack Sortie",
+		description = "2 x Fiat Cr.42 armed with anti-personel Bomblets",
+		buildCostMetal = 2800,
+		buildPic = "itafiatcr42.png",
+	},
 	ita_sortie_fighter = {
 		members = {
 			"itareggiane2005",

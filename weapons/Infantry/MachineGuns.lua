@@ -287,10 +287,10 @@ local M2Browning = HeavyMGClass:New{
 }
 -- M2 Browning AA
 local M2BrowningAA = M2Browning:New(AAMG):New{
-  burst              = 3,
+  burst              = 4,
   range              = 1170,
   sprayAngle        = 250,
-  reloadTime         = 0.375,
+  reloadTime         = 0.75,
 }
 -- M2 Browning Aircraft
 local M2BrowningAMG = M2Browning:New(AMG):New{

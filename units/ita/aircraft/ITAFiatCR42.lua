@@ -1,9 +1,11 @@
 local ITA_FiatCR42 = Fighter:New{
 	name				= "Fiat CR.42 Falco",
-	description			= "Light Attack Aircraft",
-	buildCostMetal		= 2175,
+	description			= "Lowaltitude Light Attack Aircraft",
+	buildCostMetal		= 1175,
+	noChaseCategory		= "FLAG MINE OPENVEH HARDVEH BUILDING",
 	maxDamage			= 240,
-	cruiseAlt			= 1200,
+	cruiseAlt			= 750,
+	sightDistance			= 600,
 
 	maxAcc				= 0.625,
 	maxAileron			= 0.0055,
@@ -21,11 +23,11 @@ local ITA_FiatCR42 = Fighter:New{
 
 	weapons = {
 		[1] = {
-			name				= "bomb50kg",
+			name				= "TypeF12kg",
 			maxAngleDif			= 10,
 		},
 		[2] = {
-			name				= "bomb50Kg",
+			name				= "TypeF12kg",
 			maxAngleDif			= 10,
 		},
 		[3] = {
