@@ -42,6 +42,7 @@ local ScoutCar = Vehicle:New{
 	customParams = {
 		maxvelocitykmh		= 85,
 		damageGroup		= "unarmouredVehicles",
+		turretturnspeed		= 180,
 	},
 }
 
@@ -57,6 +58,7 @@ local ArmouredCar = Vehicle:New{
 	customParams = {
 		damageGroup		= "armouredVehicles",
 		hasturnbutton	= true,
+		turretturnspeed		= 36,	-- more than default tanks
 	},
 }
 
@@ -130,14 +132,17 @@ local Amphibian = Def:New{ -- not a full class (role/mixin)
 local MobileAA = Def:New{ -- not a full class (role/mixin)
 	description			= "Self-Propelled Light Anti-Aircraft",
 	iconType			= "aacar",
+	customParams		= {
+		turretturnspeed		= 75,
+	},
 }
 
 local TruckAA = Truck:New(MobileAA):New{
 	acceleration		= 0.067,
 	brakeRate			= 0.195,
 }
-local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
+local ArmouredCarAA = ArmouredCar:New(MobileAA)
 
 local TransportTruck = Truck:New(Transport):New{ -- Transport Trucks
 	description			= "Transport/Supply Truck",

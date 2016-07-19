@@ -31,6 +31,7 @@ local DeployedGun = Deployed:New{
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
 		maxammo			= 4,
 		scriptAnimation	= "gun",
+		turretturnspeed	= 36,
 	},
 }
 
@@ -103,6 +104,10 @@ local ATGun = DeployedGun:New{
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
 
+	customParams		= {
+		turretturnspeed		= 24,
+	},
+	
 	weapons = {
 		[1] = { -- AP
 			maxAngleDif			= 70,
@@ -116,6 +121,10 @@ local LightATGun = ATGun:New{
 	cloakCost			= 0,
 	cloakTimeout		= 160,
 	minCloakDistance	= 300,
+
+	customParams		= {
+		turretturnspeed		= 36,
+	},	
 }
 
 local FGGun = DeployedGun:New{
@@ -123,6 +132,10 @@ local FGGun = DeployedGun:New{
 	buildCostMetal		= 1300,
 	iconType			= "artillery",
 
+	customParams		= {
+		turretturnspeed		= 24,
+	},
+	
 	weapons = {
 		[1] = { -- HE
 			maxAngleDif			= 60,
@@ -140,6 +153,7 @@ local HGun = DeployedGun:New{
 	customParams = {
 		canAreaAttack		= true,
 		weapontoggle		= "smoke",
+		turretturnspeed		= 12,
 	},
 	weapons = {
 		[1] = { -- HE
@@ -157,6 +171,7 @@ local RGun = DeployedGun:New{
 	iconType			= "artillery",
 	customParams = {
 		scriptAnimation		= "rocket",
+		turretturnspeed		= 16,
 	},
 	weapons = {
 		[1] = {

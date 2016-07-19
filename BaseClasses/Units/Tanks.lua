@@ -21,6 +21,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		hasturnbutton		= true,
 		reversemult			= 0.5,
 		weapontoggle		= "priorityAPHE",
+		turretturnspeed		= 24,	-- default
 	},
 }
 
@@ -34,6 +35,7 @@ local LightTank = Tank:New{
 
 	customParams = {
 		damageGroup		= "lightTanks",
+		turretturnspeed		= 36,	-- faster than default
 	},
 }
 
@@ -78,6 +80,7 @@ local AssaultGun = Def:New{ -- not a full class (role/mixin)
 	turnRate			= 160,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
+		turretturnspeed		= 24,
 	}
 }
 
