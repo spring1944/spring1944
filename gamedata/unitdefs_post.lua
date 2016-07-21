@@ -122,8 +122,8 @@ for name, ud in pairs(UnitDefs) do
 	local detection = {
 		BUILDING    = {300, 2000, 650, 0},
 		INFANTRY    = {650, 2000, 650, 1400},
-		SOFTVEH     = {300, 2000, 950, 0},
-		OPENVEH     = {300, 2000, 1250, 0},
+		SOFTVEH     = {225, 2000, 950, 0},
+		OPENVEH     = {225, 2000, 950, 0},
 		HARDVEH     = {150, 1000, 650, 0},
 		SHIP        = {400, 2500, 950, 0},
 		DEPLOYED    = {650, 2000, 650, 1400},
