@@ -1,6 +1,6 @@
 local GER_HQ = HQ:New(Bunker):New{
 	name					= "Wehrmacht HQ Bunker",
-	buildTime				= 40000,
+	buildCostMetal			= 4000,
 	collisionVolumeScales	= [[150 30 110]],
 	collisionVolumeOffsets	= [[0 -13 0]],
 	footprintX				= 10,

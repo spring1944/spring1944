@@ -1,6 +1,6 @@
 local HUN_HQ = HQ:New(Bunker):New{
 	name					= "Hungarian HQ Bunker",
-	buildTime				= 25000,
+	buildCostMetal			= 3500,
 	collisionVolumeScales	= [[150 30 110]],
 	collisionVolumeOffsets	= [[0 -13 0]],
 	footprintX				= 10,
