@@ -31,7 +31,6 @@ local DeployedGun = Deployed:New{
 	customParams = { -- SandbagMG doesn't use ammo, and can't overwrite with nil (and false doesn't seem to work either)
 		maxammo			= 4,
 		scriptAnimation	= "gun",
-		turretturnspeed	= 36,
 	},
 }
 
@@ -68,6 +67,7 @@ local SandbagMG = Deployed:New{
 
 	customParams = {
 		scriptAnimation		= "hmg",
+		turretturnspeed		= 36,
 	},
 	
 	sfxtypes = {
