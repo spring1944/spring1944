@@ -35,7 +35,8 @@ local smokePieces = {}
 local cegPieces = {}
 local aimPieces = {}
 local reversedWeapons = {}
-
+local exhausts = {}
+local dusttrails = {}
 
 local pieceMap = Spring.GetUnitPieceMap(unitID)
 for pieceName, pieceNum in pairs(pieceMap) do
@@ -47,6 +48,10 @@ for pieceName, pieceNum in pairs(pieceMap) do
 		numWheels = numWheels + 1
 	elseif pieceName:find("tracks") then
 		tracks[#tracks + 1] = pieceNum
+	elseif pieceName:find("exhaust") then
+		exhausts[#exhausts + 1] = pieceNum
+	elseif pieceName:find("dusttrail") then
+		dusttrails[#dusttrails + 1] = pieceNum
 	elseif pieceName:find("base") or pieceName:find("sleeve") or pieceName:find("turret") or pieceName:find("exhaust") then
 		smokePieces[#smokePieces + 1] = pieceNum
 	end
@@ -76,3 +81,5 @@ info.smokePieces = smokePieces
 info.cegPieces = cegPieces
 info.aimPieces = aimPieces
 info.reversedWeapons = reversedWeapons
+info.dustTrails = dusttrails
+info.exhausts = exhausts

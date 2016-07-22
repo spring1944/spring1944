@@ -59,6 +59,10 @@ local WHEEL_ACCELERATION_FACTOR = 3
 
 local REAIM_THRESHOLD = 0.15
 
+local exhaust_fx_name = "petrol_exhaust"
+if UnitDef.customparams then
+	exhaust_fx_name = UnitDef.customparams.exhaust_fx_name or exhaust_fx_name
+end
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -186,6 +190,18 @@ local function SwapTracks()
 	end
 end
 
+local function EmitDust()
+	SetSignalMask(SIG_MOVE)
+	local dustEmitters = info.dustTrails
+	while true do
+		local i
+		for i = 1, #dustEmitters do
+			GG.EmitSfxName(unitID, dustEmitters[i], "dustcloud_medium")
+		end
+		Sleep(TRACK_SWAP_DELAY * 4)
+	end
+end
+
 local function StopWheels()
 	for wheelPiece, speed in pairs(info.wheelSpeeds) do
 		StopSpin(wheelPiece, x_axis, speed / WHEEL_ACCELERATION_FACTOR)
@@ -200,6 +216,15 @@ function script.StartMoving()
 	end
 	if #info.tracks > 1 then
 		StartThread(SwapTracks)
+	end
+	if #info.dustTrails > 0 then
+		StartThread(EmitDust)
+	end
+	if #info.exhausts > 0 then
+		local i
+		for i = 1, #info.exhausts do
+			GG.EmitSfxName(unitID, info.exhausts[i], exhaust_fx_name)
+		end
 	end
 end
 
