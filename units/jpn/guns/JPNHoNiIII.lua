@@ -21,6 +21,7 @@ local JPNHoNiIII = LightTank:New(TankDestroyer):New{
 		armor_top			= 12,
 		maxammo				= 14,
 		maxvelocitykmh		= 38,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

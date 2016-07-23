@@ -21,6 +21,7 @@ local JPNHoNiII = LightTank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 0,
 		maxammo				= 4,
 		maxvelocitykmh		= 38,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

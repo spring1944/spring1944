@@ -30,6 +30,7 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 		maxvelocitykmh		= 40,
 		killvoicecategory	= "RUS/Tank/Zveroboy/RUS_ISU_KILL",
 		killvoicephasecount	= 3,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

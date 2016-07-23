@@ -33,6 +33,7 @@ local JPNHaGo = LightTank:New{
 		armor_top			= 6,
 		maxammo				= 20,
 		maxvelocitykmh		= 45,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

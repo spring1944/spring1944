@@ -11,6 +11,7 @@ local TeKeBase = Tankette:New{
 		armor_side			= 16,
 		armor_top			= 6,
 		maxvelocitykmh		= 42,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

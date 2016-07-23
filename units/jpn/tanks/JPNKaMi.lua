@@ -35,6 +35,7 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		armor_top			= 6,
 		maxammo				= 15,
 		maxvelocitykmh		= 37,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

@@ -33,6 +33,7 @@ local RUST3476 = MediumTank:New{
 		maxvelocitykmh		= 53,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

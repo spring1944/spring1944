@@ -38,6 +38,7 @@ local JPNChiHe = MediumTank:New{
 		armor_top			= 11,
 		maxammo				= 20,
 		maxvelocitykmh		= 44,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 

@@ -12,6 +12,7 @@ local JPNKaTsu = HalfTrack:New(Amphibian):New{
 		armor_top				= 10,
 		transportsquad			= "jpn_platoon_amph",
 		maxvelocitykmh			= 20,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 	
 	weapons = {

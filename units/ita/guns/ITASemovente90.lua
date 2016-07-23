@@ -22,6 +22,7 @@ local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_top			= 10,
 		maxammo				= 6,
 		maxvelocitykmh		= 25,
+		exhaust_fx_name			= "diesel_exhaust",
 	},
 }
 
