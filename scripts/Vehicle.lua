@@ -60,8 +60,8 @@ local WHEEL_ACCELERATION_FACTOR = 3
 local REAIM_THRESHOLD = 0.15
 
 local exhaust_fx_name = "petrol_exhaust"
-if UnitDef.customparams then
-	exhaust_fx_name = UnitDef.customparams.exhaust_fx_name or exhaust_fx_name
+if UnitDef.customParams then
+	exhaust_fx_name = UnitDef.customParams.exhaust_fx_name or exhaust_fx_name
 end
 
 local function Delay(func, duration, mask, ...)
