@@ -208,8 +208,20 @@ local function StopWheels()
 	end
 end
 
+function Undeploy()
+	info.deployAnims.undeploy()
+end
+
+function Deploy()
+	info.deployAnims.deploy()
+end
+
 function script.StartMoving()
 	Signal(SIG_MOVE)
+	-- Undeploy anim
+	if info.deployAnims and info.deployAnims.undeploy then
+		StartThread(Undeploy)
+	end
 	moving = true
 	if info.numWheels > 0 then
 		StartThread(SpinWheels)
@@ -232,6 +244,10 @@ function script.StopMoving()
 	Signal(SIG_MOVE)
 	moving = false
 	StopWheels()
+	-- Deploy anim
+	if info.deployAnims and info.deployAnims.deploy then
+		StartThread(Deploy)
+	end
 end
 
 local function RestoreTurret(weaponNum)

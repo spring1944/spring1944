@@ -452,6 +452,11 @@ function gadget:GamePreload()
 
 		info.planeVoice = table.unserialize(cp.planevoice) or {}
 
+		-- deploy anims
+		if cp.deployanims then
+			info.deployAnimsName = cp.deployanims
+		end
+		
 		-- Children
 		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access

@@ -83,3 +83,7 @@ info.aimPieces = aimPieces
 info.reversedWeapons = reversedWeapons
 info.dustTrails = dusttrails
 info.exhausts = exhausts
+
+if info.deployAnimsName then
+	info.deployAnims = include("anims/vehicles/" .. info.deployAnimsName .. ".lua")
+end
