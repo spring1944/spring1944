@@ -43,7 +43,7 @@ local m8rocket82mm = ArtyRocket:New{
   soundStart         = [[RUS_Katyusha]],
   wobble             = 1618,
   damage = {
-    default            = 680,
+    default            = 1320,
 	weaponcost         = 22,
   },
 }

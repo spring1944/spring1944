@@ -6,12 +6,12 @@ local Mine = Unit:New{
 	maxDamage				= 10,
 	maxWaterDepth			= 50,
 	objectName				= "GEN/APMine.S3O", -- never seen
-	minCloakDistance		= 1e-07,
+	minCloakDistance		= 3,
 	script					= "Mine.cob",
 	selfDestructCountdown	= 1,
 	sightDistance			= 160,
 	stealth					= true,
-	useBuildingGroundDecal	= true,
+	useBuildingGroundDecal	= false,
 	yardmap					= "y",
 
 	customparams = {
