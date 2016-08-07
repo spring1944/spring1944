@@ -537,11 +537,14 @@ function widget:DrawWorld()
 	glUnit(unitID, true)
 	local ux, uy, uz = GetUnitPosition(mouseOnUnitID)
 
-	glDrawGroundCircle( ux, uy, uz, 3200, 24 ) --++kmar 07-01-2016 Might be a bit over kill, although a 8 sided circle isn't hard to draw i think
-	glDrawGroundCircle( ux, uy, uz, 1600, 20 ) --and no, this is not how i imagined it, but it is kinda more usefull then how i imagined it
-	glDrawGroundCircle( ux, uy, uz, 800, 16 )
-	glDrawGroundCircle( ux, uy, uz, 400, 12 )
-	glDrawGroundCircle( ux, uy, uz, 200, 8 )
+	-- should help for cases when currently selected plane dies
+	if ux and uy and uz then
+		glDrawGroundCircle( ux, uy, uz, 3200, 24 ) --++kmar 07-01-2016 Might be a bit over kill, although a 8 sided circle isn't hard to draw i think
+		glDrawGroundCircle( ux, uy, uz, 1600, 20 ) --and no, this is not how i imagined it, but it is kinda more usefull then how i imagined it
+		glDrawGroundCircle( ux, uy, uz, 800, 16 )
+		glDrawGroundCircle( ux, uy, uz, 400, 12 )
+		glDrawGroundCircle( ux, uy, uz, 200, 8 )
+	end
 end
 
 function widget:DrawInMiniMap(sx, sz)
