@@ -57,7 +57,7 @@ local hunSorties = {
 		weight = 1,
 		name = "Attack sortie",
 		description = "2 x Me 210 with Nebelwerfer rockets",
-		buildCostMetal = 6750,
+		buildCostMetal = 7763,
 		buildPic = "HUNMe210_bomber.png",
 	},
 }
