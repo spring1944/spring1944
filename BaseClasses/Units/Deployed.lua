@@ -88,6 +88,7 @@ local SandbagMG = Deployed:New{
 -- Guns --
 local AAGun = DeployedGun:New{
 	description			= "Deployed Anti-Aircraft Gun",
+	airSightDistance			= 2500,
 	buildCostMetal		= 1400,
 	iconType			= "aaartillery",
 	maxDamage			= 1250,
