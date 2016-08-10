@@ -8,7 +8,7 @@ local HUN_PAM21 = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 2800,
-	maxDamage				= 3000,
+	maxDamage				= 3360,
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
@@ -17,7 +17,7 @@ local HUN_PAM21 = ArmedBoat:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "Solothurn_36MAP",
+			name				= "Solothurn_36MHE",
 		},
 	},
 	customparams = {
@@ -47,7 +47,7 @@ local HUN_PM = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 3800,
-	maxDamage				= 4200,
+	maxDamage				= 4560,
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 2.0,
 	movementClass			= "BOAT_RiverSmall",
@@ -56,7 +56,7 @@ local HUN_PM = ArmedBoat:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "Mavag_37_42MAP",
+			name				= "Mavag_37_42MHE",
 		},
 	},
 	customparams = {
