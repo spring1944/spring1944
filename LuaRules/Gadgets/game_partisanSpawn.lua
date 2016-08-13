@@ -29,7 +29,7 @@ local GiveOrderToUnit	    = Spring.GiveOrderToUnit
 -- constants
 local SPAWNER_UD = UnitDefNames['ruspartisansupplies']
 local INTERVAL = 5 -- 5 seconds
-local SPAWN_LIMIT = 15 -- Number of partisans a single supply dump can support at once
+local SPAWN_LIMIT = 5 -- Number of partisans a single supply dump can support at once
 local ENEMY_TOO_CLOSE_RADIUS = SPAWNER_UD.customParams['supplyrange']
 local STALL_THRESHOLD = 50 -- command < this number, your spawn points start decaying
 
