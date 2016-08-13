@@ -192,6 +192,11 @@ local ATLauncherInf = Infantry:New{
 
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
+	weapons = {
+		[1] = { -- AT Launcher
+			maxAngleDif			= 270,
+		},
+	},
 }
 
 local ATRifleInf = Infantry:New{
