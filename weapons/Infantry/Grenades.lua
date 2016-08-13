@@ -143,6 +143,7 @@ local Molotov = GrenadeClass:New{
 	fearid             = 1,
 	damagetime         = 25,
 	ceg                = [[Molotov]],
+	onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
   },
   damage = {
     default            = 15,
