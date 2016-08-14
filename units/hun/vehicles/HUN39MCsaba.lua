@@ -1,7 +1,7 @@
 local HUN39MCsaba = ArmouredCar:New{
 	name				= "39.M Csaba",
 	corpse				= "HUN39MCsaba_dead",
-	buildCostMetal		= 900,
+	buildCostMetal		= 750,
 	maxDamage			= 595,
 	trackOffset			= 10,
 	trackWidth			= 13,
