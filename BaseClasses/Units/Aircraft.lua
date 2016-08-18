@@ -91,7 +91,7 @@ local FighterBomber = Fighter:New{
 	noChaseCategory		= "FLAG AIR MINE",
 	fireState				= 0,
 	maxElevator				= 0.001,
-	maxPitch				= 0.3,
+	maxPitch				= 0.2,
 
 	customParams = {
 		maxFuel				= 60,

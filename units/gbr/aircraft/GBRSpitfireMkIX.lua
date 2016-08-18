@@ -6,8 +6,6 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 	maxAcc				= 0.622,
 	maxAileron			= 0.006,
 	maxBank				= 0.9,
-	maxElevator			= 0.005,
-	maxPitch			= 1,
 	maxRudder			= 0.004,
 	maxVelocity			= 12.6,
 

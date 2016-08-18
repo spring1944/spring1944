@@ -6,8 +6,6 @@ local GER_Fw190G = FighterBomber:New{
 	maxAcc				= 0.685,
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
-	maxElevator			= 0.0042,
-	maxPitch			= 1,
 	maxRudder			= 0.003,
 	maxVelocity			= 17.5,
 

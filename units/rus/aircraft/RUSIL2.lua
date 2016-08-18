@@ -7,8 +7,8 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	maxAcc				= 0.474,
 	maxAileron			= 0.004,
 	maxBank				= 0.75,
-	maxElevator			= 0.0025,
-	maxPitch			= 1,
+	maxElevator			= 0.002,
+	maxPitch			= 0.03,
 	maxRudder			= 0.0019,
 	maxVelocity			= 14,
 
@@ -32,10 +32,12 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		[3] = {
 			name				= "bomb",
 			mainDir				= [[0 -0.18 1]],
+			maxAngleDif			= 30,
 		},
 		[4] = {
 			name				= "bomb",
 			mainDir				= [[0 -0.18 1]],
+			maxAngleDif			= 30,
 			slaveTo				= 3,
 		},
 		[5] = {

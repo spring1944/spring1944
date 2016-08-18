@@ -6,8 +6,6 @@ local US_P47Thunderbolt = FighterBomber:New{
 	maxAcc				= 0.723,
 	maxAileron			= 0.0044,
 	maxBank				= 0.9,
-	maxElevator			= 0.0031,
-	maxPitch			= 1,
 	maxRudder			= 0.0023,
 	maxVelocity			= 17.5,
 
