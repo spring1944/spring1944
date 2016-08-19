@@ -98,6 +98,12 @@ local AAGun = DeployedGun:New{
 		turretturnspeed		= 75,
 		elevationspeed		= 60,
 	},
+	weapons = {
+		[1] = { -- AA
+			maxAngleDif			= 360,
+			mainDir				= [[0 -1 1]],
+		},
+	},
 }
 
 local ATGun = DeployedGun:New{

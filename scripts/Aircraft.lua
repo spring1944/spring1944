@@ -188,6 +188,8 @@ end
 
 function script.Killed(recentDamage, maxHealth)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	fear = FEAR_LIMIT
+	Spring.SetUnitRulesParam(unitID, "fear", fear)
 	for _,pieceID in pairs(pieceMap) do
 		if math.random(5) < 2 then
 			Explode(pieceID, SFX.FALL + SFX.SMOKE + SFX.FIRE + SFX.EXPLODE_ON_HIT)
