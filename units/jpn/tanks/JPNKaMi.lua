@@ -36,6 +36,8 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		maxammo				= 15,
 		maxvelocitykmh		= 37,
 		exhaust_fx_name			= "diesel_exhaust",
+		flagCapRate			= 0.5,
+		flagCapType			= 'buoy',
 	},
 }
 
