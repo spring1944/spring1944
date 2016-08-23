@@ -151,7 +151,8 @@ local HeavyMGClass = MGClass:New{
 
 local AMG = Weapon:New{ -- should be used like ammo bases
 	avoidFriendly      = true,
-	accuracy           = 1200,
+	accuracy           = 600,
+	sprayangle	   = 1200,
 	customparams = {
 		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
 		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED",
