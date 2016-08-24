@@ -140,7 +140,7 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
 					local idx = enemyBaseLastAttacked
 					for i=1,enemyBaseCount do
 						-- enemyBases[] is in the right format to pass into GiveOrderToUnit...
-						GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {"shift"})
+						GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {})
 						idx = idx + 1
 						if idx > enemyBaseCount then idx = 1 end
 					end
