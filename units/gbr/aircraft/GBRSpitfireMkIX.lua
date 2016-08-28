@@ -9,8 +9,6 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 	maxRudder			= 0.004,
 	maxVelocity			= 12.6,
 
-	turnRate			= 24,
-
 	customParams = {
 		enginesound			= "spitfireb-",
 		enginesoundnr		= 18,

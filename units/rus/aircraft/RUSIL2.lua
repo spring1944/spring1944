@@ -60,9 +60,9 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 			slaveTo				= 5,
 		},
 		[9] = {
-			name				= "m2browningaa",
+			name				= "MaximAA",
 			maxAngleDif			= 90,
-			mainDir				= [[0 .25 -1]],
+			mainDir				= [[0 1 -1]],
 		},
 	},
 }

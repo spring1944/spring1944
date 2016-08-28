@@ -41,10 +41,9 @@ local m8rocket82mm = ArtyRocket:New{
   name               = [[M-8 82mm unguided artillery rocket]],
   range              = 2965,
   soundStart         = [[RUS_Katyusha]],
-  wobble             = 1618,
+  wobble             = 1618, 
   damage = {
     default            = 1320,
-	weaponcost         = 22,
   },
 }
 
@@ -58,7 +57,7 @@ local BBR_Rack = ArtyRocket:New{
 	name               = [[4.5" Beach Barrage Rocket Mk 7 Launcher]],
 	range              = 950,
   	startVelocity      = 600,
-	tolerance          = 300,
+	tolerance          = 300, 
 	soundStart         = [[GER_Panzerschrek]],
 	wobble             = 500,
 	damage = {
@@ -73,9 +72,7 @@ local Type4RocketMortar = ArtyRocket:New{
   range              = 3200,
   soundStart         = [[GER_Nebelwerfer]],
   wobble             = 1300,
-  customparams = {
-    weaponcost    = 70,
-  },  
+ 
 }
 
 local Type4RocketMortarHE = Type4RocketMortar:New{
