@@ -15,7 +15,32 @@ local WHEEL_CHECK_DELAY = 990
 
 local moving = false
 local firing = false
+local usesAmmo = info.usesAmmo
 local lastRocket = info.numRockets
+
+-- Pieces
+local function findPieces(input, name)
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	--{ "piecename1" = pieceNum1, ... , "piecenameN" = pieceNumN }
+	for pieceName, pieceNum in pairs(pieceMap) do
+		local index = pieceName:find(name)
+		if index then
+			local num = tonumber(pieceName:sub(index + string.len(name), -1))
+			input[num] = piece(pieceName)
+		end
+	end
+end
+
+local rockets = {}
+if lastRocket > 0 then findPieces(rockets, "rocket") end
+
+local function GetAmmo()
+	local ammo = 0
+	if usesAmmo then
+		ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+	end
+	return ammo
+end
 
 local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
 local deploying = false
@@ -37,7 +62,6 @@ if not info.wheelSpeeds then
 		end
 	end
 end
-
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -134,9 +158,6 @@ function script.StopMoving()
 end
 
 function script.Create()
-	for i = 1,info.numRockets do
-		Hide(piece("rocket" .. i))
-	end
 end
 
 local function RestoreTurret()
@@ -146,16 +167,27 @@ local function RestoreTurret()
 end
 
 local function _RestoreRockets(restoreDelay)
-	Sleep(restoreDelay)
-	for i = 1,info.numRockets do
-		Show(piece("rocket" .. i))
+	Sleep((info.reloadTimes[1] - 1) * 1000) -- show 1 second before ready to fire
+	for _, rocket in pairs(rockets) do
+		Show(rocket)
+		Sleep(info.burstRates[1] * 1000)
 	end
 end
 
-function RestoreRockets(restoreDelay)
-	StartThread(_RestoreRockets, restoreDelay)
+function RestoreRockets()
+	StartThread(_RestoreRockets)
 end
 
+function script.BlockShot(weaponNum)
+	if usesAmmo then
+		local ammo = GetAmmo()
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return false
+end
 
 function script.AimWeapon(weaponNum, heading, pitch)
 	if firing or moving then return false end
@@ -186,6 +218,10 @@ end
 function script.FireWeapon(weaponNum)
 	Signal(SIG_AIM + SIG_DEPLOY)
 	firing = true
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+	end
 end
 
 function script.Shot(weaponNum)
@@ -199,10 +235,12 @@ function script.Shot(weaponNum)
 	if ping then
 		Spring.AddUnitSeismicPing(unitID, ping)
 	end
+	
 end
 
 function script.EndBurst(weaponNum)
 	StartThread(RestoreTurret)
+	StartThread(RestoreRockets) 
 	firing = false
 end
 
