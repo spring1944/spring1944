@@ -36,12 +36,12 @@ local US_LCSS = Boat:New{
 		},
 	},
 	customparams = {
-		supplyRange				= 400,
-		--[[ enable me later when using LUS
+		maxAmmo					= 1,
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
-		},]]
+		},
 	},
+	--[[
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
 			[1] = "custom:SMOKEPUFF_GPL_FX",
@@ -54,6 +54,7 @@ local US_LCSS = Boat:New{
 			[8] = "custom:MG_MUZZLEFLASH",
 		},
 	},
+	]]--
 }
 
 
