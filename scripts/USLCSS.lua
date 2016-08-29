@@ -21,6 +21,16 @@ local rocket2 = 1
 local rocketCount1 = 12
 local rocketCount2 = 12
 
+local usesAmmo = info.usesAmmo
+
+local function GetAmmo()
+	local ammo = 0
+	if usesAmmo then
+		ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+	end
+	return ammo
+end
+
 local bAimAA = false
 
 local rocketFlares1 = {}
@@ -200,6 +210,17 @@ function RocketDisplayControl(rackNumber)
 	return
 end
 
+function script.BlockShot(weaponNum)
+	if usesAmmo then
+		local ammo = GetAmmo()
+		if ammo <= 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function script.AimFromWeapon1()
 	return rack1
 end
@@ -219,6 +240,11 @@ function script.AimWeapon1(heading, pitch)
 end
 
 function script.FireWeapon1()
+	-- only check weapon1 since 2 is the same and it's supposed to use ammo once, not twice
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+	end
 	return
 end
 
