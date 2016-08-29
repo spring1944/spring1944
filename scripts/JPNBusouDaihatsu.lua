@@ -211,6 +211,10 @@ function script.AimWeapon(weaponID, heading, pitch)
 end
 
 function script.FireWeapon(weaponID)
+	if usesAmmo then
+		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
+		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+	end
 	return true
 end
 
