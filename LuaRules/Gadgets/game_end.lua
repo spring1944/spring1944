@@ -396,6 +396,21 @@ function gadget:GameFrame(n)
 				end
 			end
 		end
+
+		-- add AIs
+		local aTeamList = spGetAllyTeamList()
+		local i
+		for i = 1, #aTeamList do
+			local teamList = spGetTeamList(aTeamList[i])
+			local j
+			for j = 1, #teamList do
+				local _,_,_,isAiTeam = spGetTeamInfo(teamList[j])
+				if isAiTeam then
+					activePlayers = activePlayers + 1
+				end
+			end
+		end
+		
 		if activePlayers < 2 then
 			GG.RemoveGadget(gadget)
 			return
