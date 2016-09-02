@@ -4,7 +4,7 @@ local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 	buildCostMetal		= 9100,
 	maxDamage			= 4550,
 	trackOffset			= 5,
-	trackWidth			= 20,
+	trackWidth			= 26,
 
 	weapons = {
 		[1] = {
