@@ -100,6 +100,10 @@ local min = math.min
 local PI = math.pi
 local TAU = 2 * PI
 
+-- if no weaponswithammo then do not check - solves commando problem
+if UnitDef.customParams.weaponswithammo and UnitDef.customParams.weaponswithammo == '0' then
+	usesAmmo = false
+end
 
 local function GetNewPoseID(poseName)
 	--Spring.Echo("looking for " .. poseName)

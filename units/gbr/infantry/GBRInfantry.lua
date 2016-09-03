@@ -112,7 +112,7 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 	customParams		= {
 		maxammo				= 2,
 		weaponcost			= 50,
-		weaponswithammo		= 0,
+		weaponswithammo		= 0,	-- do not remove, needed to prevent sten and grenade from using ammo!
 		flagcaprate			= 0,
 	},
 	weapons = {
