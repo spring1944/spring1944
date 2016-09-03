@@ -31,6 +31,7 @@ local RS82Rocket = AirRocket:New{
   reloadtime         = 1.8,
   customparams = {
     damagetype         = [[explosive]],
+    onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP BUILDING DEPLOYED INFANTRY",
   },
   damage = {
     default            = 1700,

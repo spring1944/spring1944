@@ -20,6 +20,7 @@ local HUN_44MHeavyAT_Stationary = LightATGun:New{
 		[1] = { -- AP
 			name				= "Buzoganyveto44MHEAT",
 			maxAngleDif			= 360,	-- this has full rotation
+			onlyTargetCategory = "HARDVEH OPENVEH SOFTVEH SHIP LARGESHIP",
 		},
 	},
 }
