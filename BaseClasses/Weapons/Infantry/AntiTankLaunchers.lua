@@ -9,6 +9,8 @@ local ATLClass = Weapon:New{
 	noSelfDamage       = true,
 	soundHitDry        = [[GEN_Explo_3]],
 	tolerance          = 6000,
+	proximityPriority  = 0.6,
+	predictBoost = 0.1,
 	turret             = true,
 	customparams = {
 		damagetype         = [[shapedcharge]],
@@ -21,11 +23,11 @@ local ATLClass = Weapon:New{
 -- Recoilless Rifle (& Spigot Mortar) Class
 local RCL_ATLClass = ATLClass:New{
 	accuracy           = 300,
-	predictBoost = 0.25,
+	tolerance          = 12000,
 	collisionSize      = 3,
 	reloadtime         = 15,
 	weaponType         = [[Cannon]],
-	weaponVelocity     = 400,
+	weaponVelocity     = 600,
 }
 
 -- Rocket Launcher Class
