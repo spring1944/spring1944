@@ -79,7 +79,8 @@ local Interceptor = Fighter:New{
 local AttackFighter = Fighter:New{
 	description			= "Attack Fighter",
 	cruiseAlt			= 1500,
-	maxPitch				= 0.5,
+	maxPitch				= 0.3,
+	maxElevator				= 0.002,
 	noChaseCategory		= "FLAG INFANTRY DEPLOYED AIR BUILDING MINE",
 }
 

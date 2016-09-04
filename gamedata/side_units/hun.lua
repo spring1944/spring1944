@@ -82,6 +82,7 @@ local hununits = {
 		"hun31m_105mm_truck",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
+		"hun40mnimrod",
 	},
 
 	hunspyard1 =
@@ -93,6 +94,7 @@ local hununits = {
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 		"hunhetzer",
+		"hun40mnimrod",
 	},
 
 	hunspyard =
@@ -104,6 +106,7 @@ local hununits = {
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 		"hun43mzrynyiii",
+		"hun40mnimrod",
 	},
 
 	hunvehicleyard =

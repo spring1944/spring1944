@@ -1,4 +1,5 @@
 local Rocket = Weapon:New{
+	accuracy	= 300,
 	avoidFeature       = false,
 	explosionSpeed     = 30,
 	impulseFactor      = 0,
