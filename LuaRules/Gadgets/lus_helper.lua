@@ -453,8 +453,8 @@ function gadget:GamePreload()
 		info.planeVoice = table.unserialize(cp.planevoice) or {}
 
 		-- deploy anims
-		if cp.deployanims then
-			info.deployAnimsName = cp.deployanims
+		if cp.customanims then
+			info.customAnimsName = cp.customanims
 		end
 		
 		-- Children

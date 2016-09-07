@@ -10,6 +10,8 @@ if not info.aimPieces then
 	include "VehicleLoader.lua"
 end
 
+local customAnims = info.customAnims
+
 --Localisations
 local PI = math.pi
 local TAU = 2 * PI
@@ -102,6 +104,9 @@ local function DamageSmoke(smokePieces)
 end
 
 function script.Create()
+	if customAnims and customAnims.preCreate then
+		customAnims.preCreate()
+	end
 	local flare = piece "flare"
 	local coaxflare = piece "coaxflare"
 	if flare then
@@ -162,6 +167,9 @@ function script.Create()
 			Turn(wheelPiece, x_axis, math.rad(math.random(0, 359)))
 		end
 	end
+	if customAnims and customAnims.postCreate then
+		customAnims.postCreate()
+	end	
 end
 
 local function SpinWheels()
@@ -209,17 +217,17 @@ local function StopWheels()
 end
 
 function Undeploy()
-	info.deployAnims.undeploy()
+	customAnims.undeploy()
 end
 
 function Deploy()
-	info.deployAnims.deploy()
+	customAnims.deploy()
 end
 
 function script.StartMoving()
 	Signal(SIG_MOVE)
 	-- Undeploy anim
-	if info.deployAnims and info.deployAnims.undeploy then
+	if customAnims and customAnims.undeploy then
 		StartThread(Undeploy)
 	end
 	moving = true
@@ -245,7 +253,7 @@ function script.StopMoving()
 	moving = false
 	StopWheels()
 	-- Deploy anim
-	if info.deployAnims and info.deployAnims.deploy then
+	if customAnims and customAnims.deploy then
 		StartThread(Deploy)
 	end
 end
