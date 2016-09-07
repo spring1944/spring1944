@@ -61,6 +61,11 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 local GBRM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 
+-- add custom anims here (model-specific, do not apply to M5)
+USM3Halftrack.customparams.customanims		= "m3a1halftrack"
+USM3Halftrack.customparams.normaltex		= nil	-- old file does not fit, sorry
+USM3Halftrack.objectname 					= "<SIDE>/USM3A1Halftrack.s3o"
+
 return lowerkeys({
 	["USM3Halftrack"] = USM3Halftrack,
 	["USM16MGMC"] = USM16MGMC,
