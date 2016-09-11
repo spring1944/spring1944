@@ -19,6 +19,8 @@ local GrenadeClass = Weapon:New{
 	weaponVelocity     = 200,
 	customparams = {
 		scriptanimation    = "grenade",
+				-- this prevents grenading observer null units
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 }
 
@@ -37,10 +39,9 @@ local APGrenadeClass = GrenadeClass:New{
 	reloadtime         = 8,
 	soundHitDry        = "GEN_Explo_Grenade",
 	customparams = {
-		armor_penetration  = 40, -- more than AT nades??
+		armor_penetration  = 40, 
 		damagetype         = "grenade",
-		-- this prevents grenading observer null units
-		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			badtargetcategory  = "OPENVEH HARDVEH BUILDING",
 	},
 	damage = {
 		default            = 1450,
