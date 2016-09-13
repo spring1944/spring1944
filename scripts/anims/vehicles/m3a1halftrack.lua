@@ -21,11 +21,13 @@ local function CustomizePieces()
 	else
 		Hide(supports)
 	end
-	-- customize front part: either 1 or 2 is shown, the other is hidden
-	if random(2) == 1 then
-		Hide(front2)
-	else
-		Hide(front1)
+	-- customize front part: either 1 or 2 is shown, the other is hidden. M16 lacks these so check if they are available
+	if front1 and front2 then
+		if random(2) == 1 then
+			Hide(front2)
+		else
+			Hide(front1)
+		end
 	end
 	-- customize front cans
 	if random(2) == 1 then
@@ -39,8 +41,8 @@ local function CustomizePieces()
 	elseif n == 2 then
 		Hide(rear_cans)
 	end
-	-- customize tent
-	if random(2) == 1 then
+	-- customize tent. M16 has no tent so check for that
+	if tent and random(2) == 1 then
 		Hide(tent)
 	end
 	-- and tools

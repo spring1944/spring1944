@@ -31,7 +31,7 @@ local USM3Halftrack = USM3Base:New(HalfTrack):New{
 local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 	name					= "M16 MGMC",
 	buildCostMetal			= 990,
-	corpse					= "usm3halftrack_destroyed", -- TODO: M16 corpse
+	corpse					= "usm16mgmc_destroyed",
 
 	weapons = {
 		[1] = {
@@ -55,8 +55,6 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 	},
 }
 
-
-
 -- Lend Lease
 local GBRM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
@@ -65,6 +63,9 @@ local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 USM3Halftrack.customparams.customanims		= "m3a1halftrack"
 USM3Halftrack.customparams.normaltex		= nil	-- old file does not fit, sorry
 USM3Halftrack.objectname 					= "<SIDE>/USM3A1Halftrack.s3o"
+
+USM16MGMC.customparams.normaltex		= nil	-- old file does not fit, sorry
+USM16MGMC.customparams.customanims		= "m3a1halftrack"
 
 return lowerkeys({
 	["USM3Halftrack"] = USM3Halftrack,
