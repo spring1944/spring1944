@@ -3,6 +3,7 @@ local US_C47 = ParaTransport:New{
 	maxDamage		= 1705.7,
 	
 	customParams = {
+		feartarget = false,
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
 	},
