@@ -14,6 +14,7 @@ local ATLClass = Weapon:New{
 		damagetype         = [[shapedcharge]],
 		cegflare           = "XSMALL_MUZZLEFLASH",
 		scriptanimation    = "atlauncher",
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		badTargetCategory  = "BUILDING FLAG INFANTRY SOFTVEH OPENVEH DEPLOYED",
 	},
 }

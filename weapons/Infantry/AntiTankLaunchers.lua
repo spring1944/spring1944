@@ -14,7 +14,7 @@ local PIAT = RCL_ATLClass:New{
     armor_penetration  = 100,
   },
   damage = {
-    default            = 8800,
+    default            = 6800,
   },
 }
 
@@ -44,7 +44,7 @@ local Panzerschrek = Rocket_ATLClass:New{
     armor_penetration  = 200,
   },
   damage = {
-    default            = 5280, -- same as bazooka?
+    default            = 6280, -- same as bazooka?
   },
 }
 
@@ -67,12 +67,12 @@ local Type4AT = Rocket_ATLClass:New{
   name               = [[Type 4 Rocket Launcher]],
   range              = 270,
   soundStart         = [[US_Bazooka]],
-  targetMoveError    = 0.075,
+  targetMoveError    = 0.05,
   customparams = {
-    armor_penetration  = 108,
+    armor_penetration  = 104,
   },
   damage = {
-    default            = 5280,
+    default            = 5120,
   },
 }
 
