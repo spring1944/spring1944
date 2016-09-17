@@ -114,7 +114,7 @@ local BredaM3520mm = AutoCannon:New{
   sprayAngle         = 300,
   weaponVelocity     = 2000,
   damage = {
-    default            = 41,
+    default            = 82,
   },
   customparams = {
     weaponcost = 1,
@@ -153,15 +153,15 @@ local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
 local BoforsM40_20mm = AutoCannon:New{
 	accuracy           = 255,
 	burst              = 4,
-	burstRate          = 0.261,
+	burstRate          = 0.361,
 	name               = [[20 mm maskinkanon M.40 S]],
-	range              = 730,
-	reloadTime         = 1.6,
+	range              = 740,
+	reloadTime         = 2.2,
 	soundStart         = [[GER_20mm]],
 	sprayAngle         = 300,
-	weaponVelocity     = 2000,
+	weaponVelocity     = 2100,
 	damage = {
-		default            = 41,
+		default            = 121,
 	},
 	customparams = {
 		weaponcost = 1,
@@ -169,8 +169,8 @@ local BoforsM40_20mm = AutoCannon:New{
 }
 
 local BoforsM40_20mmAA = AutoCannonAA:New(BoforsM40_20mm, true):New{
-	burst = 8,
-	burstRate = 0.13,
+	burst = 4,
+	burstRate = 0.33,
 }
 
 local BoforsM40_20mmHE = AutoCannonHE:New(BoforsM40_20mm, true):New{
@@ -204,7 +204,7 @@ local Type9820mm = AutoCannon:New{
   sprayAngle         = 400,
   weaponVelocity     = 2000,
   damage = {
-    default            = 52,
+    default            = 102,
   },
 }
 
@@ -227,7 +227,7 @@ local Type9625mm = AutoCannon:New{
   sprayAngle         = 400,
   weaponVelocity     = 2000,
   damage = {
-    default            = 45,
+    default            = 145,
   },
   customparams = {
     weaponcost = 1,

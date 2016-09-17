@@ -7,7 +7,7 @@ local sweData = {
 			"sweboforsm36_truck",
 			"sweboforsm36_truck",
 			"sweengineer",
-			"swekanonm02_33_truck",
+			"swepvlvm40",
 			"swepvkanm43_truck",
 			"swestorage",
 			"swe_sortie_recon",

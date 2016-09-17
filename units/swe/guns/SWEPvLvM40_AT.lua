@@ -8,12 +8,12 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	},
 	weapons = {
 		[1] = { -- AP
-			name				= "flak3820mmap", -- TODO: change
-			maxAngleDif			= 20,
+			name				= "boforsm40_20mmap", 
+			maxAngleDif			= 32,
 		},
 		[2] = { -- HE
-			name				= "flak3820mmhe", -- TODO: change
-			maxAngleDif			= 20,
+			name				= "boforsm40_20mmhe", 
+			maxAngleDif			= 32,
 		},
 	},
 }
@@ -25,10 +25,10 @@ local SWEPvLvM40_AA_Stationary = AAGun:New{
 
 	weapons = {
 		[1] = { -- AA
-			name				= "flak3820mmaa",
+			name				= "boforsm40_20mmaa",
 		},
 		[2] = { -- HE
-			name				= "flak3820mmhe",
+			name				= "boforsm40_20mmhe",
 		},
 	},
 }
