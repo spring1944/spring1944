@@ -589,6 +589,9 @@ if UnitDef.isBuilder then
 	local DEFAULT_CRANE_TURN_SPEED = math.rad(50)
 
 	function script.StartBuilding(buildHeading, pitch)
+		if customAnims and customAnims.deploy then
+			StartThread(Deploy)
+		end
 		if turret then
 			Signal(SIG_BUILD)
 			SetSignalMask(SIG_BUILD)
@@ -600,6 +603,9 @@ if UnitDef.isBuilder then
 
 	function script.StopBuilding()
 		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+		if customAnims and customAnims.undeploy then
+			StartThread(Undeploy)
+		end
 		if turret then
 			Signal(SIG_BUILD)
 			Turn(turret, y_axis, 0, DEFAULT_CRANE_TURN_SPEED)

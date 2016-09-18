@@ -45,6 +45,7 @@ local HUNBergeHetzer = EngineerVehicle:New{
 		armor_top			= 0,
 		maxvelocitykmh		= 40,
 		soundcategory		= "HUN/Tank",
+		customanims			= "bergehetzer",
 	},
 }
 
