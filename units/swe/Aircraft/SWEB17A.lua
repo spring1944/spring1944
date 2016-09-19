@@ -45,11 +45,11 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 			slaveTo				= 4,
 		},
 		[6] = {
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 		},
 		[7] = {
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 6,
 		},
