@@ -159,32 +159,36 @@ function widget:Initialize()
 	local inUse = false
 	--outer loop: stationaries
 	for stationaryUnitDefID, stationaryUnitDef in ipairs(UnitDefs) do
-		local maxAngleDif = GetUnitDefMaxAngleDif(stationaryUnitDef)
-		if maxAngleDif > 0 and stationaryUnitDef.speed == 0 then
-			--create stationary list
-			local list = stationaryLists[maxAngleDif]
-			local range = stationaryUnitDef.maxWeaponRange
-			if not list then
-				list = glCreateList(DrawStationary, maxAngleDif)
-				stationaryLists[maxAngleDif] = list
-			end
-			unitDefInfos[stationaryUnitDefID] = {list, range}
+		local cp = stationaryUnitDef.customParams
+		-- should this even have the fire arc?
+		if not(cp and cp.hidefirearc) then
+			local maxAngleDif = GetUnitDefMaxAngleDif(stationaryUnitDef)
+			if maxAngleDif > 0 and stationaryUnitDef.speed == 0 then
+				--create stationary list
+				local list = stationaryLists[maxAngleDif]
+				local range = stationaryUnitDef.maxWeaponRange
+				if not list then
+					list = glCreateList(DrawStationary, maxAngleDif)
+					stationaryLists[maxAngleDif] = list
+				end
+				unitDefInfos[stationaryUnitDefID] = {list, range}
 
-			inUse = true
+				inUse = true
 
-			--look for mobiles
-			local staticBasename = GetBasename(stationaryUnitDef.name)
+				--look for mobiles
+				local staticBasename = GetBasename(stationaryUnitDef.name)
 
-			for mobileUnitDefID, mobileUnitDef in ipairs(UnitDefs) do
-				if mobileUnitDef.speed > 0 then
-					local mobileBasename = GetBasename(mobileUnitDef.name)
-					if mobileBasename == staticBasename then
-						local list = mobileLists[maxAngleDif]
-						if not list then
-							list = glCreateList(DrawMobile, maxAngleDif)
-							mobileLists[maxAngleDif] = list
+				for mobileUnitDefID, mobileUnitDef in ipairs(UnitDefs) do
+					if mobileUnitDef.speed > 0 then
+						local mobileBasename = GetBasename(mobileUnitDef.name)
+						if mobileBasename == staticBasename then
+							local list = mobileLists[maxAngleDif]
+							if not list then
+								list = glCreateList(DrawMobile, maxAngleDif)
+								mobileLists[maxAngleDif] = list
+							end
+							unitDefInfos[mobileUnitDefID] = {list, range}
 						end
-						unitDefInfos[mobileUnitDefID] = {list, range}
 					end
 				end
 			end

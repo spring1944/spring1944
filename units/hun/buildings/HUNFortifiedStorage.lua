@@ -61,6 +61,7 @@ if HUN_FortifiedStorage.customparams then
 	HUN_FortifiedStorage.customparams.armor_side = nil
 	HUN_FortifiedStorage.customparams.armor_top = nil
 	HUN_FortifiedStorage.customparams.armor_rear = nil
+	HUN_FortifiedStorage.customparams.hidefirearc	= true
 end
 
 return lowerkeys({
