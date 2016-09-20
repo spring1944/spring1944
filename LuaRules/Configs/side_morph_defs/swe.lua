@@ -249,7 +249,7 @@ local sweDefs = {
 		{
 			into = 'swepvlvm40_at_stationary',
 			tech = 0,
-			time = 25,
+			time = 15,
 			metal = 0,
 			energy = 0,
 			directional = true,
@@ -279,7 +279,7 @@ local sweDefs = {
 		{
 			into = 'swepvlvm40',
 			tech = 0,
-			time = 25,
+			time = 15,
 			metal = 0,
 			energy = 0,
 			directional = true,
