@@ -42,7 +42,7 @@ local HUN40MTuran = MediumTank:New{
 local HUN41MTuranII = HUN40MTuran:New{
 	name				= "41.M Turan II",
 	corpse				= "HUN41MTuranII_Abandoned",
-	buildCostMetal		= 2200,
+	buildCostMetal		= 2550,
 	maxDamage			= 1900,
 
 	weapons = {
@@ -82,7 +82,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 local HUN43MTuranIII = HUN41MTuranII:New{
 	name				= "43.M Turan III",
 	corpse				= "HUN43MTuranIII_Abandoned",
-	buildCostMetal		= 3000,
+	buildCostMetal		= 3330,
 	maxDamage			= 1900,
 
 	weapons = {

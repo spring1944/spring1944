@@ -171,7 +171,7 @@ local ParaTransport = Aircraft:New{
 	refuelTime			= 10,
 
 	customParams = {
-		damageGroup		= "heavyPlanes",
+		damageGroup			= "armouredPlanes",
 		deposit			= 0,
 		troopdropper	= 1,
 		maxFuel				= 180,
