@@ -135,7 +135,7 @@ local MobileAA = Def:New{ -- not a full class (role/mixin)
 	description			= "Self-Propelled Light Anti-Aircraft",
 	iconType			= "aacar",
 	customParams		= {
-		turretturnspeed		= 75,
+		turretturnspeed		= 80,
 	},
 }
 

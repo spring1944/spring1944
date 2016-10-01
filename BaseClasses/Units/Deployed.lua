@@ -96,7 +96,7 @@ local AAGun = DeployedGun:New{
 		maxammo				= 16,
 		scriptAnimation		= "aa",
 		turretturnspeed		= 75,
-		elevationspeed		= 60,
+		elevationspeed		= 90,
 	},
 	weapons = {
 		[1] = { -- AA
