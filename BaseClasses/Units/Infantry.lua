@@ -116,7 +116,7 @@ local SniperInf = Infantry:New{
 	
 	weapons = {
 		[1] = { -- Rifle
-			maxAngleDif			= 170,
+			maxAngleDif			= 60,
 		},
 	},
 }
