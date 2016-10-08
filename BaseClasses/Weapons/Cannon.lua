@@ -284,6 +284,7 @@ local CSHowitzer = HeavyGun:New{ -- for cegflare only atm (+TankGun base)
 	soundStart         = "GEN_105mm", -- move later?
 	targetMoveError    = 0.75,
 	weaponVelocity     = 1000,
+  	tolerance          = 900,
 	customParams = {
 		weaponcost         = 22,
 	},
