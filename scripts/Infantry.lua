@@ -242,26 +242,28 @@ local function PickPose(name)
 			end
 		end
 	else
-
-		local transition
 		-- do not attempt to change for morphing units
-		if firing and Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
-			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
-				transition = fireTransitions[currentPoseID][nextPoseID]
-			else
-				Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+		if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+			local transition
+
+			if firing then
+				if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
+					transition = fireTransitions[currentPoseID][nextPoseID]
+				else
+					Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+					return false
+				end
+			end
+			if not transition then
+				transition = transitions[currentPoseID][nextPoseID]
+			end
+			if not transition then
+				Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
 				return false
 			end
-		end
-		if not transition then
-			transition = transitions[currentPoseID][nextPoseID]
-		end
-		if not transition then
-			Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
-			return false
-		end
 
-		ChangePose(transition, nextPoseID, name)
+			ChangePose(transition, nextPoseID, name)
+		end
 	end
 	return true
 end
