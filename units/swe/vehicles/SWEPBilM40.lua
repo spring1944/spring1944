@@ -20,8 +20,18 @@ local SWEPBilM40 = ArmouredCar:New{
 			name				= "ksp_m1939",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
-		},-- TODO: Hull MGs?
+		},
 		[4] = {
+			name				= "ksp_m1939",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 45,
+		},
+		[5] = {
+			name				= "ksp_m1939",
+			mainDir				= [[0 0 -1]],
+			maxAngleDif			= 45,
+		},		
+		[6] = {
 			name				= ".30calproof",
 		},
 	},
