@@ -19,7 +19,8 @@ local GlTranslate             = gl.Translate
 local GlBillboard             = gl.Billboard
 local GlText                  = gl.Text
 
-local FhUseDefaultFont        = fontHandler.UseDefaultFont
+-- do not localize, it doesn't work otherwise
+--local FhUseDefaultFont        = fontHandler.UseDefaultFont
 
 local GetUnitDefID            = Spring.GetUnitDefID
 local GetUnitRulesParam       = Spring.GetUnitRulesParam
@@ -54,7 +55,7 @@ function widget:DrawWorld()
    GlDepthTest(true)
 
    GlColor(1, 1, 1)
-   FhUseDefaultFont()
+   fontHandler.UseDefaultFont()
 
    for flagID,prodStr in pairs(flagUnitIDtoProdString) do
       GlDrawFuncAtUnit(flagID, false, function(prodStr)

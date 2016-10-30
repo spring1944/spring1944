@@ -20,6 +20,11 @@ local RUSIS2 = HeavyTank:New{
 			name				= "DT",
 		},
 		[4] = {
+			name				= "DT",
+			mainDir                         = [[0 16 -1]],
+			maxAngleDif                     = 15,
+		},
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
