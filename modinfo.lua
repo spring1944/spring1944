@@ -1,7 +1,7 @@
 local modinfo = {
 	name			= 'Spring 1944',
 	shortName		= 's44',
-	version			= 'beta-161030',
+	version			= 'beta-161031',
 	game			= 'Spring 1944',
 	shortGame		= 's44',
 	mutator			= 'Official',
