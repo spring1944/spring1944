@@ -496,7 +496,7 @@ end
 
 local function NextPose()
 	-- do nothing for morphing units
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') = 1 then
+	if Spring.GetUnitRulesParam(unitID, 'movectrl') == 1 then
 		return true
 	end
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
