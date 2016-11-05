@@ -1,5 +1,3 @@
-local GetUnitRulesParam = Spring.GetUnitRulesParam
-
 -- pieces
 local torso = piece "torso"
 
@@ -244,28 +242,26 @@ local function PickPose(name)
 			end
 		end
 	else
-		-- do not attempt to change for morphing units
-		if GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
-			local transition
 
-			if firing then
-				if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
-					transition = fireTransitions[currentPoseID][nextPoseID]
-				else
-					Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
-					return false
-				end
-			end
-			if not transition then
-				transition = transitions[currentPoseID][nextPoseID]
-			end
-			if not transition then
-				Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+		local transition
+		-- do not attempt to change for morphing units
+		if firing and Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
+				transition = fireTransitions[currentPoseID][nextPoseID]
+			else
+				Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
 				return false
 			end
-
-			ChangePose(transition, nextPoseID, name)
 		end
+		if not transition then
+			transition = transitions[currentPoseID][nextPoseID]
+		end
+		if not transition then
+			Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+			return false
+		end
+
+		ChangePose(transition, nextPoseID, name)
 	end
 	return true
 end
@@ -361,7 +357,7 @@ local function UpdateSpeed()
 
 
 	-- prevents a crash when the unit is movectrl'd by some other script already
-	if GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	end
 
@@ -497,10 +493,6 @@ local function IsWantedPose()
 end
 
 local function NextPose()
-	-- do nothing for morphing units
-	if GetUnitRulesParam(unitID, 'movectrl') == 1 then
-		return true
-	end
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
 	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned, wantedBuilding)
 	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned, targetBuilding)
@@ -568,7 +560,7 @@ end
 local function ResolvePose(isFire)
 	SetSignalMask(0)
 	--Spring.Echo("trying to change")
-	if inTransition or Spring.GetUnitRulesParam(unitID, 'movectrl') == 1 then return false end
+	if inTransition then return false end
 	if isFire then
 		UpdateTargetState()
 		inTransition = true
