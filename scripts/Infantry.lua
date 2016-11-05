@@ -1,3 +1,5 @@
+local GetUnitRulesParam = Spring.GetUnitRulesParam
+
 -- pieces
 local torso = piece "torso"
 
@@ -243,7 +245,7 @@ local function PickPose(name)
 		end
 	else
 		-- do not attempt to change for morphing units
-		if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+		if GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 			local transition
 
 			if firing then
@@ -359,7 +361,7 @@ local function UpdateSpeed()
 
 
 	-- prevents a crash when the unit is movectrl'd by some other script already
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+	if GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	end
 
@@ -496,7 +498,7 @@ end
 
 local function NextPose()
 	-- do nothing for morphing units
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') == 1 then
+	if GetUnitRulesParam(unitID, 'movectrl') == 1 then
 		return true
 	end
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
@@ -566,7 +568,7 @@ end
 local function ResolvePose(isFire)
 	SetSignalMask(0)
 	--Spring.Echo("trying to change")
-	if inTransition then return false end
+	if inTransition or Spring.GetUnitRulesParam(unitID, 'movectrl') == 1 then return false end
 	if isFire then
 		UpdateTargetState()
 		inTransition = true
