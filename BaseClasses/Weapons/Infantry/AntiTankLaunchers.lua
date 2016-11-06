@@ -32,13 +32,19 @@ local RCL_ATLClass = ATLClass:New{
 -- Rocket Launcher Class
 local Rocket_ATLClass = ATLClass:New{
 	areaOfEffect       = 32,
+	avoidGround	= false,
+	avoidFeature	= false,
+	targetBorder	= 1,
+	leadLimit 	= 100,
+	proximityPriority = -1,
 	cegTag             = [[BazookaTrail]],
 	reloadtime         = 10,
+	tolerance          = 3000,
 	tracks		= true,
-	turnRate	  = 2,
-	startVelocity     = 1250,
-	weaponAcceleration = 350,
-	weaponTimer        = 0.1,
+	turnRate	  = 4,
+	startVelocity     = 200,
+	weaponAcceleration = 850,
+	flightTime        = 3,
 	weaponType         = [[MissileLauncher]],
 }
 
