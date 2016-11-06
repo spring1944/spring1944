@@ -131,6 +131,7 @@ local LightATGun = ATGun:New{
 
 	customParams		= {
 		turretturnspeed		= 36,
+		hiddenbuilding		= true,
 	},	
 }
 
