@@ -108,7 +108,7 @@ local SPArty = Def:New{ -- not a full class (role/mixin)
 local OpenTopped = Def:New{ --not a full class (role/mixin)
 	category			= "MINETRIGGER OPENVEH",
 	customParams = {
-		damageGroup		= "armouredVehicles",
+		damageGroup		= "lightTanks",
 	},
 }
 
