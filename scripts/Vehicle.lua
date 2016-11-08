@@ -18,6 +18,7 @@ local TAU = 2 * PI
 local abs = math.abs
 local rad = math.rad
 local atan2 = math.atan2
+local SetUnitRulesParam = Spring.SetUnitRulesParam
 
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
@@ -462,7 +463,7 @@ end
 function script.FireWeapon(weaponNum)
 	if IsMainGun(weaponNum) and usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 
@@ -664,14 +665,18 @@ if UnitDef.waterline > 0 then
 		local origSpeed = UnitDef.speed
 		local newSpeed = origSpeed
 		local newReverseSpeed = origReverseSpeed
+		local speedMult = 1.0
 		if inWater then
 			newSpeed = origSpeed / WATER_SPEED_DIVISOR
 			newReverseSpeed = origReverseSpeed / WATER_SPEED_DIVISOR
+			speedMult = 1 / WATER_SPEED_DIVISOR
 		end
+		SetUnitRulesParam(unitID, "amphib_movement", speedMult)
+		GG.ApplySpeedChanges(unitID)
 		if newSpeed == currentSpeed then
 			return
 		end
-
+		--[[
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
 		if currentSpeed < newSpeed then
 			local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -685,6 +690,7 @@ if UnitDef.waterline > 0 then
 				end
 			end
 		end
+		]]--
 		currentSpeed = newSpeed
 	end
 

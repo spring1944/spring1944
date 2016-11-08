@@ -5,6 +5,8 @@ local flare = piece "flare"
 
 local info = GG.lusHelper[unitDefID]
 
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 if not info.animation then
 	include "InfantryLoader.lua"
 end
@@ -346,17 +348,24 @@ end
 local function UpdateSpeed()
 	local origSpeed = UnitDef.speed
 	local newSpeed = origSpeed
+	local speedMult = 1.0
 	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
 		newSpeed = 0
+		speedMult = 0
 	elseif not standing then
 		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
+		speedMult = 1 / CRAWL_SLOWDOWN_FACTOR
 	end
+	-- change for unified speed adjustement
+	SetUnitRulesParam(unitID, "fear_movement", speedMult)
+	GG.ApplySpeedChanges(unitID)
 	if newSpeed == currentSpeed then
 		return
 	end
 
 
 	-- prevents a crash when the unit is movectrl'd by some other script already
+	--[[
 	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	end
@@ -373,6 +382,7 @@ local function UpdateSpeed()
 			end
 		end
 	end
+	]]--
 	currentSpeed = newSpeed
 
 	if UnitDef.isBuilder then
@@ -758,7 +768,7 @@ function script.FireWeapon(num)
 	firing = true
 	if usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 	UpdateSpeed()
 end
@@ -797,7 +807,7 @@ function RestoreAfterCover()
 	--Spring.Echo("restoring")
 	Signal(SIG_FEAR)
 	fear = 0
-	Spring.SetUnitRulesParam(unitID, "fear", 0)
+	SetUnitRulesParam(unitID, "fear", 0)
 	StopPinned()
 	Stand()
 end
@@ -808,7 +818,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "fear", fear)
+		SetUnitRulesParam(unitID, "fear", fear)
 		if pinned and fear < FEAR_PINNED then
 			StopPinned()
 		end
@@ -828,7 +838,7 @@ function AddFear(amount)
 		StartThread(StartPinned)
 	end
 	Drop()
-	Spring.SetUnitRulesParam(unitID, "fear", fear)
+	SetUnitRulesParam(unitID, "fear", fear)
 end
 
 function ToggleWeapon(num, isEnabled)

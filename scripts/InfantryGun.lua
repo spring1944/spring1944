@@ -20,6 +20,7 @@ local PI = math.pi
 local TAU = 2 * PI
 local abs = math.abs
 local random = math.random
+local SetUnitRulesParam = Spring.SetUnitRulesParam
 
 --Constants
 local SIG_AIM = 1
@@ -135,13 +136,18 @@ end
 local function UpdateSpeed()
 	local origSpeed = UnitDef.speed
 	local newSpeed = origSpeed
+	local speedMult = 1.0
 	if pinned then
 		newSpeed = 0
+		speedMult = 0
 	end
+	SetUnitRulesParam(unitID, "fear_movement", speedMult)
+	GG.ApplySpeedChanges(unitID)
 	if newSpeed == currentSpeed then
 		return
 	end
 
+	--[[
 	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
 	if currentSpeed < newSpeed then
 		local cmds = Spring.GetCommandQueue(unitID, 2)
@@ -156,6 +162,7 @@ local function UpdateSpeed()
 			end
 		end
 	end
+	]]--
 	currentSpeed = newSpeed
 end
 
@@ -461,7 +468,7 @@ function script.FireWeapon(weaponNum)
 	end
 	if usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 
@@ -520,7 +527,7 @@ end
 function RestoreAfterCover()
 	Signal(SIG_FEAR)
 	fear = 0
-	Spring.SetUnitRulesParam(unitID, "fear", 0)
+	SetUnitRulesParam(unitID, "fear", 0)
 	StopPinned()
 end
 
@@ -530,7 +537,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "fear", fear)
+		SetUnitRulesParam(unitID, "fear", fear)
 		if pinned and fear < FEAR_PINNED then
 			StopPinned()
 		end
@@ -549,7 +556,7 @@ function AddFear(amount)
 	if fear > FEAR_PINNED and not pinned then
 		StartThread(StartPinned)
 	end
-	Spring.SetUnitRulesParam(unitID, "fear", fear)
+	SetUnitRulesParam(unitID, "fear", fear)
 end
 
 function ToggleWeapon(num, isEnabled)
