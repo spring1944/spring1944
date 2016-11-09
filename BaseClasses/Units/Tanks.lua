@@ -22,6 +22,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		reversemult			= 0.5,
 		weapontoggle		= "priorityAPHE",
 		turretturnspeed		= 24,	-- default
+		immobilizationresistance = 0.75,	-- rather high by default
 	},
 }
 
