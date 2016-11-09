@@ -89,7 +89,6 @@ local firing
 local lastShot
 
 -- OTHER
-local currentSpeed
 local fear
 local weaponEnabled = {}
 local usesAmmo = info.usesAmmo
@@ -346,44 +345,15 @@ end
 
 
 local function UpdateSpeed()
-	local origSpeed = UnitDef.speed
-	local newSpeed = origSpeed
 	local speedMult = 1.0
 	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
-		newSpeed = 0
 		speedMult = 0
 	elseif not standing then
-		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
 		speedMult = 1 / CRAWL_SLOWDOWN_FACTOR
 	end
 	-- change for unified speed adjustement
 	SetUnitRulesParam(unitID, "fear_movement", speedMult)
 	GG.ApplySpeedChanges(unitID)
-	if newSpeed == currentSpeed then
-		return
-	end
-
-
-	-- prevents a crash when the unit is movectrl'd by some other script already
-	--[[
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-	end
-
-	if currentSpeed < newSpeed then
-		local cmds = Spring.GetCommandQueue(unitID, 2)
-		if #cmds >= 2 then
-			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
-				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
-				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
-			end
-		end
-	end
-	]]--
-	currentSpeed = newSpeed
 
 	if UnitDef.isBuilder then
 		local origBuildSpeed = UnitDef.buildSpeed
@@ -678,7 +648,6 @@ function script.Create()
 	currentPitch = nil
 	currentHeading = nil
 	firing = false
-	currentSpeed = UnitDef.speed
 	UpdatePose(standing, aiming, moving, pinned, building)
 	for i=1,#weaponsMap do
 		weaponEnabled[i] = true

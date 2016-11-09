@@ -72,7 +72,6 @@ local turretElevateSpeed
 local recoilDistance = 2.4
 local recoilReturnSpeed = 10
 
-local currentSpeed
 local fear
 local weaponEnabled = {}
 
@@ -134,36 +133,12 @@ end
 
 
 local function UpdateSpeed()
-	local origSpeed = UnitDef.speed
-	local newSpeed = origSpeed
 	local speedMult = 1.0
 	if pinned then
-		newSpeed = 0
 		speedMult = 0
 	end
 	SetUnitRulesParam(unitID, "fear_movement", speedMult)
 	GG.ApplySpeedChanges(unitID)
-	if newSpeed == currentSpeed then
-		return
-	end
-
-	--[[
-	Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-	if currentSpeed < newSpeed then
-		local cmds = Spring.GetCommandQueue(unitID, 2)
-		if #cmds >= 2 then
-			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
-				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
-				Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
-			end
-		end
-	end
-	]]--
-	currentSpeed = newSpeed
 end
 
 
@@ -339,8 +314,6 @@ function script.Create()
 	if brakeright then
 		Hide(brakeright)
 	end
-
-	currentSpeed = UnitDef.speed
 
 	pinned = false
 	moving = false
