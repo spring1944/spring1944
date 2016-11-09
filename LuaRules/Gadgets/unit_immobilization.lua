@@ -30,8 +30,11 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 		return
 	end
 	local wd = WeaponDefs[weaponDefID]
+	if not wd then
+		return
+	end
 	local cp = wd.customParams
-	if cp.immobilizationchance and tonumber(cp.immobilizationchance) > 0 then
+	if cp and cp.immobilizationchance and tonumber(cp.immobilizationchance) > 0 then
 		-- get target unit resistance. If none then this unit can't be immobilized
 		local ud = UnitDefs[unitDefID]
 		local ucp = ud.customParams
