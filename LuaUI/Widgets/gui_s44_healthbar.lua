@@ -370,7 +370,8 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		local aurafear = GetUnitRulesParam(uid, "fear") or 0
 		local auraoutofammo = (GetUnitRulesParam(uid, "ammo") or 100) <= 0
 		local aurainsupply = GetUnitRulesParam(uid, "insupply") or 0
-		if ((aurafear + aurainsupply) > 0 or auraoutofammo) then
+		local auraimmobilized = GetUnitRulesParam(uid, "immobilized") or 0
+		if ((aurafear + aurainsupply) > 0 or auraoutofammo or (auraimmobilized > 0)) then
 			unitAuras[uid] =
 			{
 				-- TODO: make this read from suppressState
@@ -383,7 +384,10 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 				},
 				["insupply"] = {
 					value = aurainsupply,
-				}
+				},
+				["immobilized"] = {
+					value = auraimmobilized,
+				},
 				--['buildspeed'] = aurabuildspeed,
 				--['hp'] = aurahp,
 				--['heal'] = auraheal,
