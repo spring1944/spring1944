@@ -392,13 +392,20 @@ function GG.ApplySpeedChanges(unitID)
 	local deployedMult = GetUnitRulesParam(unitID, "deployed_movement") or 1.0
 	local amphibMult = GetUnitRulesParam(unitID, "amphib_movement") or 1.0
 
-	newSpeed = newSpeed * fearMult * deployedMult * amphibMult
-	newReverseSpeed = newReverseSpeed * fearMult * deployedMult * amphibMult
+	local immobilized = false
+	local immobilizedMult = 1.0
+	if (GetUnitRulesParam(unitID, "immobilized") or 0) > 0 then
+		immobilized = true
+		immobilizedMult = 0
+	end
+
+	newSpeed = newSpeed * fearMult * deployedMult * amphibMult * immobilizedMult
+	newReverseSpeed = newReverseSpeed * fearMult * deployedMult * amphibMult * immobilizedMult
 
 	--Spring.Echo('fearMult ' .. fearMult .. ' deployedMult ' .. deployedMult .. ' amphibMult ' .. amphibMult .. ' newSpeed ' .. newSpeed .. ' origSpeed ' .. origSpeed)
 
 	-- only deployed mult overrides turn rates so far
-	if deployedMult == 1.0 then
+	if deployedMult == 1.0 and not immobilized then
 		SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed, turnRate = UnitDef.turnRate, accRate = UnitDef.maxAcc})
 	else
 		SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = origReverseSpeed, turnRate = 0.001, accRate = 0})
