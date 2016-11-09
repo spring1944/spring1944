@@ -19,6 +19,7 @@ local abs = math.abs
 local rad = math.rad
 local atan2 = math.atan2
 local SetUnitRulesParam = Spring.SetUnitRulesParam
+local SetUnitCOBValue = Spring.SetUnitCOBValue
 
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
@@ -599,11 +600,11 @@ if UnitDef.isBuilder then
 			Turn(turret, y_axis, buildHeading, DEFAULT_CRANE_TURN_SPEED)
 			WaitForTurn(turret, y_axis)
 		end
-		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
+		SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 	end
 
 	function script.StopBuilding()
-		Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+		SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
 		if customAnims and customAnims.undeploy then
 			StartThread(Undeploy)
 		end
@@ -647,8 +648,6 @@ if UnitDef.waterline > 0 then
 
 	local wake = piece "wake"
 	local inWater = false
-	local currentSpeed = UnitDef.speed
-	local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
 
 	local function Wakes()
 		Signal(SIG_WATER)
@@ -662,36 +661,13 @@ if UnitDef.waterline > 0 then
 	end
 
 	local function UpdateSpeed()
-		local origSpeed = UnitDef.speed
-		local newSpeed = origSpeed
-		local newReverseSpeed = origReverseSpeed
 		local speedMult = 1.0
 		if inWater then
-			newSpeed = origSpeed / WATER_SPEED_DIVISOR
-			newReverseSpeed = origReverseSpeed / WATER_SPEED_DIVISOR
 			speedMult = 1 / WATER_SPEED_DIVISOR
 		end
 		SetUnitRulesParam(unitID, "amphib_movement", speedMult)
 		GG.ApplySpeedChanges(unitID)
-		if newSpeed == currentSpeed then
-			return
-		end
-		--[[
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
-		if currentSpeed < newSpeed then
-			local cmds = Spring.GetCommandQueue(unitID, 2)
-			if #cmds >= 2 then
-				if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-					if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-						Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
-					end
-					local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
-					Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
-				end
-			end
-		end
-		]]--
-		currentSpeed = newSpeed
+
 	end
 
 	function script.setSFXoccupy(curTerrainType)
@@ -699,10 +675,12 @@ if UnitDef.waterline > 0 then
 		inWater = curTerrainType ~= 4
 		if inWater then
 			Spring.SetUnitLeaveTracks(unitID, false)
+			SetUnitCOBValue(unitID, COB.UPRIGHT, 1)
 			StartThread(Wakes)
 			UpdateSpeed()
 		else
 			Spring.SetUnitLeaveTracks(unitID, true)
+			SetUnitCOBValue(unitID, COB.UPRIGHT, 0)
 			UpdateSpeed()
 		end
 	end
