@@ -31,6 +31,7 @@ local SpawnCEG				= Spring.SpawnCEG
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
 local SetGroundMoveTypeData	= Spring.MoveCtrl.SetGroundMoveTypeData
 local GiveOrderToUnit		= Spring.GiveOrderToUnit
+local SetUnitRulesParam		= Spring.SetUnitRulesParam
 -- LUS
 local CallAsUnit 			= Spring.UnitScript.CallAsUnit	
 
@@ -385,6 +386,7 @@ function GG.ApplySpeedChanges(unitID)
 
 	local newSpeed = origSpeed
 	local newReverseSpeed = origReverseSpeed
+	local currentSpeed = GetUnitRulesParam(unitID, "current_speed") or origSpeed
 	
 	local fearMult = GetUnitRulesParam(unitID, "fear_movement") or 1.0
 	local deployedMult = GetUnitRulesParam(unitID, "deployed_movement") or 1.0
@@ -402,18 +404,20 @@ function GG.ApplySpeedChanges(unitID)
 		SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = origReverseSpeed, turnRate = 0.001, accRate = 0})
 	end
 
-	if origSpeed < newSpeed then
+	if currentSpeed ~= newSpeed then
 		local cmds = GetCommandQueue(unitID, 2)
-		if #cmds >= 2 then
+		--if #cmds >= 2 then
+		if #cmds >= 1 then
 			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
 				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
 					GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
 				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, 1}
+				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
 				SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
 				GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 			end
 		end
+		SetUnitRulesParam(unitID, "current_speed", newSpeed)
 	end
 end
 
