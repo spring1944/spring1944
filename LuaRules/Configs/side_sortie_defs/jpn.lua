@@ -46,7 +46,7 @@ local jpnSorties = {
 		weight=1,
 		name = "Dive Bomber Sortie",
 		description = "2 x Ki-51",
-		buildCostMetal = 4550,
+		buildCostMetal = 5255,
 		buildPic = "JPNKi51.png",
 	},
 	jpn_sortie_at = {
