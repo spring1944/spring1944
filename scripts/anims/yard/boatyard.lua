@@ -1,4 +1,3 @@
-include "Yard.lua"
 local smoke = piece "smoke"
 local smoke2 = piece "smoke2"
 local barge1 = piece "barge1"
@@ -11,12 +10,6 @@ local BARGE_MOVE_SPEED  = 3
 local SMOKE_DELAY       = 500
 
 local active = false
-
-local _Activate = script.Activate
-local _Deactivate = script.Deactivate
-local _Create = script.Create
-local _StartBuilding = script.StartBuilding
-local _StopBuilding = script.StopBuilding
 
 local function SafeTurn(p, ...)
 	if p then
@@ -56,56 +49,31 @@ local function Funnels()
 	end
 end
 
-local function OpenYard()
-	Signal(1)
-	SetSignalMask(1)
+local function startBuildingAnim()
+	active = true
 	SafeMove(barge1, x_axis, -BARGE_MOVE_DIST, BARGE_MOVE_SPEED)
 	SafeMove(barge2, x_axis, BARGE_MOVE_DIST, BARGE_MOVE_SPEED)
 	SafeMove(barge3, x_axis, -BARGE_MOVE_DIST, BARGE_MOVE_SPEED)
 	SafeMove(barge4, x_axis, BARGE_MOVE_DIST, BARGE_MOVE_SPEED)
-	SafeWaitForMove(barge1, x_axis)
-	SafeWaitForMove(barge2, x_axis)
-	
-	SetUnitValue(COB.YARD_OPEN, true)
 end
 
-local function CloseYard()
-	Signal(1)
-	SetSignalMask(1)
-	SetUnitValue(COB.YARD_OPEN, false)
-	
+local function stopBuildingAnim()
+	active = false
 	SafeMove(barge1, x_axis, 0, BARGE_MOVE_SPEED)
 	SafeMove(barge2, x_axis, 0, BARGE_MOVE_SPEED)
 	SafeMove(barge3, x_axis, 0, BARGE_MOVE_SPEED)
 	SafeMove(barge4, x_axis, 0, BARGE_MOVE_SPEED)
-	SafeWaitForMove(barge1, x_axis)
-	SafeWaitForMove(barge2, x_axis)
-	
 end
 
-function script.Create()
-	_Create()
+local function postCreate()
 	StartThread(Funnels)
 end
 
-function script.Activate()
-	_Activate()
-	active = true
-	StartThread(OpenYard)
-end
+local anims =
+{
+	startBuildingAnim = startBuildingAnim,
+	stopBuildingAnim = stopBuildingAnim,
+	postCreate = postCreate,
+}
 
-function script.Deactivate()
-	_Deactivate()
-	active = false
-	StartThread(CloseYard)
-end
-
-function script.StartBuilding()
-	_StartBuilding()
-	active = true
-end
-
-function script.StopBuilding()
-	_StopBuilding()
-	active = false
-end
+return anims
