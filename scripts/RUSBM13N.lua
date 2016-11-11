@@ -18,6 +18,8 @@ local firing = false
 local usesAmmo = info.usesAmmo
 local lastRocket = info.numRockets
 
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 -- Pieces
 local function findPieces(input, name)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
@@ -42,7 +44,6 @@ local function GetAmmo()
 	return ammo
 end
 
-local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
 local deploying = false
 local deployed = false
 
@@ -72,21 +73,12 @@ end
 
 local function UpdateSpeed()
 	--Spring.Echo("speed up to date")
+	local speedMult = 1.0
 	if deployed or deploying then
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = 0.001, maxReverseSpeed = 0.001, turnRate = 0.001, accRate = 0})
-	else
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = UnitDef.speed, maxReverseSpeed = origReverseSpeed, turnRate = UnitDef.turnRate, accRate = UnitDef.maxAcc})
-		local cmds = Spring.GetCommandQueue(unitID, 2)
-		if #cmds >= 2 then
-			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
-				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, UnitDef.speed}
-				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
-			end
-		end
+		speedMult = 0
 	end
+	SetUnitRulesParam(unitID, "deployed_movement", speedMult)
+	GG.ApplySpeedChanges(unitID)
 end
 
 local function Deploy()
@@ -220,7 +212,7 @@ function script.FireWeapon(weaponNum)
 	firing = true
 	if usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 end
 

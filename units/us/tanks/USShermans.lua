@@ -20,6 +20,11 @@ local ShermanBase = MediumTank:New{
 			name				= "M2BrowningAA",
 		},
 		[5] = {
+			name				= "M1919A4Browning",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 20,
+		},
+		[6] = {
 			name				= ".50calproof",
 		},
 	},

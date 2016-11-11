@@ -13,6 +13,7 @@ local PTRD = ATRifleClass:New{
   customparams = {
     armor_penetration_1000m = 16,
     armor_penetration_100m = 35,
+	immobilizationchance = 0.5,
   },
   damage = {
     default            = 254,
@@ -31,6 +32,7 @@ local Solothurn = ATRifleClass:New{
   customparams = {
     armor_penetration_1000m = 16,
     armor_penetration_100m = 35,
+	immobilizationchance = 0.5,
   },
   damage = {
     default            = 402,
@@ -42,6 +44,9 @@ local ScopedSolothurn = Solothurn:New{
   accuracy           = 150,
   name               = [[Solothurn S-18/1000 Anti-Tank Rifle]],
   range              = 1010,
+  customparams = {
+	immobilizationchance = 0.75,	-- aimed shots - more effective at that
+  },
 }
 
 -- Swedish PvGM42
@@ -58,6 +63,7 @@ local SWE_PvGM42 = ATRifleClass:New{
 		armor_penetration_100m = 40,
 		-- this is shoulder-fired, unlike all the other AT rifles
 		scriptanimation    = "atlauncher",
+		immobilizationchance = 0.5,
 	},
 	damage = {
 		default            = 402,

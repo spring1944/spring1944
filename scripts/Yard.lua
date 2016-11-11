@@ -3,6 +3,12 @@ local info = GG.lusHelper[unitDefID]
 local base = piece("base") or piece("building")
 local radar = piece("radar")
 
+if info.customAnimsName then
+	info.customAnims = include("anims/yard/" .. info.customAnimsName .. ".lua")
+end
+
+local customAnims = info.customAnims
+
 local function DamageSmoke(smokePieces)
 	-- emit some smoke if the unit is damaged
 	-- check if the unit has finished building
@@ -67,10 +73,16 @@ local function Raise()
 end
 
 function script.Create()
+	if customAnims and customAnims.preCreate then
+		customAnims.preCreate()
+	end
 	StartThread(Raise)
 	if base then
 		StartThread(DamageSmoke, {base})
 	end
+	if customAnims and customAnims.postCreate then
+		customAnims.postCreate()
+	end	
 end
 
 function script.Killed(recentDamage, maxHealth)
@@ -134,10 +146,16 @@ if UnitDef.isBuilder then -- yard
 	end
 
 	function script.StartBuilding()
+		if customAnims and customAnims.startBuildingAnim then
+			customAnims.startBuildingAnim()
+		end	
 		-- TODO: You can run any animation that continues throughout the build process here e.g. spin pad
 	end
 
 	function script.StopBuilding()
+		if customAnims and customAnims.stopBuildingAnim then
+			customAnims.stopBuildingAnim()
+		end		
 		-- TODO: You can run any animation that signifies the end of the build process here
 	end
 

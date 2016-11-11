@@ -155,7 +155,7 @@ local BoatYard = Yard:New{
     maxDamage           = 16250,
 	maxWaterDepth		= 1e+06, -- engine default, override Yard
 	minWaterDepth		= 10,
-	script				= "BoatYard.lua",
+	script				= "Yard.lua",
 	workerTime			= 75, -- override Yard
 	yardmap				= [[ooccccccccccoo 
 						    ooccccccccccoo 
@@ -171,6 +171,9 @@ local BoatYard = Yard:New{
 							ooccccccccccoo 
 							ooccccccccccoo 
 							ooccccccccccoo]],
+	customParams		= {
+		customanims		= "boatyard",
+	},
 }
 
 local BoatYardLarge = BoatYard:New{

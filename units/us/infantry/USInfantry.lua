@@ -58,7 +58,7 @@ local US_MG = LMGInf:New(USInf):New{
 }
 
 local US_MG_Sandbag = SandbagMG:New{
-	name				= "Deployed Vickers Mk I Heavy Machinegun",
+	name				= "Browning M1919A4 Machinegun",
 	weapons = {
 		[1] = { -- HMG
 			name				= "m1919a4browning_deployed",

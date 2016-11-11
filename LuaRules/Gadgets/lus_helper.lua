@@ -23,10 +23,15 @@ local GetUnitPieceMap		= Spring.GetUnitPieceMap
 local GetUnitPiecePosDir	= Spring.GetUnitPiecePosDir
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitWeaponTarget	= Spring.GetUnitWeaponTarget
+local GetUnitRulesParam		= Spring.GetUnitRulesParam
+local GetCommandQueue		= Spring.GetCommandQueue
 -- Synced Ctrl
 local PlaySoundFile			= Spring.PlaySoundFile
 local SpawnCEG				= Spring.SpawnCEG
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
+local SetGroundMoveTypeData	= Spring.MoveCtrl.SetGroundMoveTypeData
+local GiveOrderToUnit		= Spring.GiveOrderToUnit
+local SetUnitRulesParam		= Spring.SetUnitRulesParam
 -- LUS
 local CallAsUnit 			= Spring.UnitScript.CallAsUnit	
 
@@ -174,7 +179,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	
 	-- Remove aircraft land and repairlevel buttons
 	if UnitDefs[unitDefID].canFly then
-		Spring.GiveOrderToUnit(unitID, CMD.IDLEMODE, {0}, {})
+		GiveOrderToUnit(unitID, CMD.IDLEMODE, {0}, {})
 		local toRemove = {CMD.IDLEMODE, CMD.AUTOREPAIRLEVEL}
 		for _, cmdID in pairs(toRemove) do
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
@@ -367,6 +372,62 @@ end
 GG.lusHelper.standardTargetWeight = standardTargetWeight
 -- end of weapon and armor stuff
 
+-- Movement speed changes
+function GG.ApplySpeedChanges(unitID)
+	-- no need to attempt this
+	if GetUnitRulesParam(unitID, 'movectrl') == 1 then
+		return
+	end
+
+	local unitDefID = GetUnitDefID(unitID)
+	local UnitDef = UnitDefs[unitDefID]
+	local origSpeed = UnitDef.speed
+	local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
+
+	local newSpeed = origSpeed
+	local newReverseSpeed = origReverseSpeed
+	local currentSpeed = GetUnitRulesParam(unitID, "current_speed") or origSpeed
+	
+	local fearMult = GetUnitRulesParam(unitID, "fear_movement") or 1.0
+	local deployedMult = GetUnitRulesParam(unitID, "deployed_movement") or 1.0
+	local amphibMult = GetUnitRulesParam(unitID, "amphib_movement") or 1.0
+
+	local immobilized = false
+	local immobilizedMult = 1.0
+	if (GetUnitRulesParam(unitID, "immobilized") or 0) > 0 then
+		immobilized = true
+		immobilizedMult = 0
+	end
+
+	newSpeed = newSpeed * fearMult * deployedMult * amphibMult * immobilizedMult
+	newReverseSpeed = newReverseSpeed * fearMult * deployedMult * amphibMult * immobilizedMult
+
+	--Spring.Echo('fearMult ' .. fearMult .. ' deployedMult ' .. deployedMult .. ' amphibMult ' .. amphibMult .. ' newSpeed ' .. newSpeed .. ' origSpeed ' .. origSpeed)
+
+	-- only deployed mult overrides turn rates so far
+	if deployedMult == 1.0 and not immobilized then
+		SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed, turnRate = UnitDef.turnRate, accRate = UnitDef.maxAcc})
+	else
+		SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = origReverseSpeed, turnRate = 0.001, accRate = 0})
+	end
+
+	if currentSpeed ~= newSpeed then
+		local cmds = GetCommandQueue(unitID, 2)
+		--if #cmds >= 2 then
+		if #cmds >= 1 then
+			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
+				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
+					GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
+				end
+				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
+				SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
+				GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
+			end
+		end
+		SetUnitRulesParam(unitID, "current_speed", newSpeed)
+	end
+end
+
 function gadget:GamePreload()
 	-- Parse UnitDef Data
 	for unitDefID, unitDef in pairs(UnitDefs) do
@@ -469,7 +530,7 @@ function gadget:Initialize()
 	gadget:GamePreload()
 	for _,unitID in ipairs(Spring.GetAllUnits()) do
 		local teamID = Spring.GetUnitTeam(unitID)
-		local unitDefID = Spring.GetUnitDefID(unitID)
+		local unitDefID = GetUnitDefID(unitID)
 		gadget:UnitCreated(unitID, unitDefID, teamID)
 	end
 end

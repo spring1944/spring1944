@@ -22,6 +22,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		reversemult			= 0.5,
 		weapontoggle		= "priorityAPHE",
 		turretturnspeed		= 24,	-- default
+		immobilizationresistance = 0.75,	-- rather high by default
 	},
 }
 
@@ -108,7 +109,7 @@ local SPArty = Def:New{ -- not a full class (role/mixin)
 local OpenTopped = Def:New{ --not a full class (role/mixin)
 	category			= "MINETRIGGER OPENVEH",
 	customParams = {
-		damageGroup		= "armouredVehicles",
+		damageGroup		= "lightTanks",
 	},
 }
 

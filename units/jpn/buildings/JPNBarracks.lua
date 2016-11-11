@@ -22,6 +22,9 @@ local JPN_Tent = Barracks:New{
 	footprintX					= 5,
 	footprintZ					= 5,
 	minCloakDistance			= 300,
+	customparams = {
+			hiddenbuilding				= true,
+	},
 	workerTime					= 15,
 	yardmap						= [[ooooo 
 								    ooooo 
