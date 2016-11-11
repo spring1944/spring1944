@@ -20,6 +20,11 @@ local GERTiger = HeavyTank:New{
 			name				= "MG34",
 		},
 		[4] = {
+			name				= "MG34",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
+		},		
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
