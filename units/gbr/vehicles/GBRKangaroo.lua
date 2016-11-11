@@ -4,7 +4,7 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 	buildCostMetal		= 1200,
 	maxDamage			= 2948,
 	trackOffset			= 10,
-	trackWidth			= 15,
+	trackWidth			= 21,
 	transportCapacity	= 12,
     transportMass       = 600,
 	

@@ -395,7 +395,7 @@ function script.EndBurst(weaponNum)
 	StartThread(ResolvePose, true)
 	firing = false
 	if UnitDef.stealth then
-		StartThread(Delay, VISIBLE_PERIOD, 0, Spring.SetUnitStealth, unitID, true)
+		StartThread(Delay, Spring.SetUnitStealth, VISIBLE_PERIOD, 0, unitID, true)
 	end
 end
 

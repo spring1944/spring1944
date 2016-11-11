@@ -9,7 +9,6 @@ local PIAT = RCL_ATLClass:New{
   name               = [[P.I.A.T.]],
   range              = 245,
   soundStart         = [[GBR_PIAT]],
-  targetMoveError    = 0.02,
   customparams = {
     armor_penetration  = 100,
   },
@@ -25,7 +24,6 @@ local Panzerfaust = RCL_ATLClass:New{
   name               = [[Panzerfaust 60]],
   range              = 235,
   soundStart         = [[GER_Panzerfaust]],
-  targetMoveError    = 0.1,
   customparams = {
     armor_penetration  = 170, -- wiki says 200?
   },
@@ -39,7 +37,6 @@ local Panzerschrek = Rocket_ATLClass:New{
   name               = [[RPzB 54/1 Panzerschrek]],
   range              = 360,
   soundStart         = [[GER_Panzerschrek]],
-  targetMoveError    = 0.1,
   customparams = {
     armor_penetration  = 200,
   },
@@ -53,7 +50,6 @@ local M9A1Bazooka = Rocket_ATLClass:New{
   name               = [[M9A1 Bazooka]],
   range              = 270,
   soundStart         = [[US_Bazooka]],
-  targetMoveError    = 0.075,
   customparams = {
     armor_penetration  = 108,
   },
@@ -81,9 +77,8 @@ local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
 	name			= [[215mm 44M Buzogány]],
 	range			= 600,
 	burst			= 2,
-	burstRate		= 0.5,
+	burstRate		= 0.8,
 	soundStart		= [[US_Bazooka]],
-	targetMoveError    = 0.1,
 	customparams = {
 		armor_penetration  = 300,
 		weaponCost			= 50,

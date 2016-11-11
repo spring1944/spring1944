@@ -5,6 +5,8 @@ local flare = piece "flare"
 
 local info = GG.lusHelper[unitDefID]
 
+local SetUnitRulesParam = Spring.SetUnitRulesParam
+
 if not info.animation then
 	include "InfantryLoader.lua"
 end
@@ -87,7 +89,6 @@ local firing
 local lastShot
 
 -- OTHER
-local currentSpeed
 local fear
 local weaponEnabled = {}
 local usesAmmo = info.usesAmmo
@@ -242,28 +243,26 @@ local function PickPose(name)
 			end
 		end
 	else
-		-- do not attempt to change for morphing units
-		if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
-			local transition
 
-			if firing then
-				if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
-					transition = fireTransitions[currentPoseID][nextPoseID]
-				else
-					Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
-					return false
-				end
-			end
-			if not transition then
-				transition = transitions[currentPoseID][nextPoseID]
-			end
-			if not transition then
-				Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+		local transition
+		-- do not attempt to change for morphing units
+		if firing and Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
+			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then
+				transition = fireTransitions[currentPoseID][nextPoseID]
+			else
+				Spring.Log("infantry script", "error", "no fire transition change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
 				return false
 			end
-
-			ChangePose(transition, nextPoseID, name)
 		end
+		if not transition then
+			transition = transitions[currentPoseID][nextPoseID]
+		end
+		if not transition then
+			Spring.Log("infantry script", "error", "no change possible: " .. currentPoseName .. " " .. name .. " " .. UnitDef.name, unitID)
+			return false
+		end
+
+		ChangePose(transition, nextPoseID, name)
 	end
 	return true
 end
@@ -346,36 +345,15 @@ end
 
 
 local function UpdateSpeed()
-	local origSpeed = UnitDef.speed
-	local newSpeed = origSpeed
+	local speedMult = 1.0
 	if pinned or (firing and not (standing and moving and weaponsTags[aiming].canRunFire)) then
-		newSpeed = 0
+		speedMult = 0
 	elseif not standing then
-		newSpeed = origSpeed / CRAWL_SLOWDOWN_FACTOR
+		speedMult = 1 / CRAWL_SLOWDOWN_FACTOR
 	end
-	if newSpeed == currentSpeed then
-		return
-	end
-
-
-	-- prevents a crash when the unit is movectrl'd by some other script already
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
-		Spring.MoveCtrl.SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed})
-	end
-
-	if currentSpeed < newSpeed then
-		local cmds = Spring.GetCommandQueue(unitID, 2)
-		if #cmds >= 2 then
-			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-					Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
-				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
-				Spring.GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
-			end
-		end
-	end
-	currentSpeed = newSpeed
+	-- change for unified speed adjustement
+	SetUnitRulesParam(unitID, "fear_movement", speedMult)
+	GG.ApplySpeedChanges(unitID)
 
 	if UnitDef.isBuilder then
 		local origBuildSpeed = UnitDef.buildSpeed
@@ -495,10 +473,6 @@ local function IsWantedPose()
 end
 
 local function NextPose()
-	-- do nothing for morphing units
-	if Spring.GetUnitRulesParam(unitID, 'movectrl') = 1 then
-		return true
-	end
 	-- Spring.Echo("current", standing, aiming, moving, pinned, building)
 	-- Spring.Echo("wanted", wantedStanding, wantedAiming, wantedMoving, wantedPinned, wantedBuilding)
 	-- Spring.Echo("target", targetStanding, targetAiming, targetMoving, targetPinned, targetBuilding)
@@ -674,7 +648,6 @@ function script.Create()
 	currentPitch = nil
 	currentHeading = nil
 	firing = false
-	currentSpeed = UnitDef.speed
 	UpdatePose(standing, aiming, moving, pinned, building)
 	for i=1,#weaponsMap do
 		weaponEnabled[i] = true
@@ -764,7 +737,7 @@ function script.FireWeapon(num)
 	firing = true
 	if usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
+		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
 	end
 	UpdateSpeed()
 end
@@ -803,7 +776,7 @@ function RestoreAfterCover()
 	--Spring.Echo("restoring")
 	Signal(SIG_FEAR)
 	fear = 0
-	Spring.SetUnitRulesParam(unitID, "fear", 0)
+	SetUnitRulesParam(unitID, "fear", 0)
 	StopPinned()
 	Stand()
 end
@@ -814,7 +787,7 @@ local function RecoverFear()
 	while fear > 0 do
 		--Spring.Echo("Lowered fear", fear)
 		fear = fear - 1
-		Spring.SetUnitRulesParam(unitID, "fear", fear)
+		SetUnitRulesParam(unitID, "fear", fear)
 		if pinned and fear < FEAR_PINNED then
 			StopPinned()
 		end
@@ -834,7 +807,7 @@ function AddFear(amount)
 		StartThread(StartPinned)
 	end
 	Drop()
-	Spring.SetUnitRulesParam(unitID, "fear", fear)
+	SetUnitRulesParam(unitID, "fear", fear)
 end
 
 function ToggleWeapon(num, isEnabled)

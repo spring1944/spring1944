@@ -68,6 +68,7 @@ local SandbagMG = Deployed:New{
 	customParams = {
 		scriptAnimation		= "hmg",
 		turretturnspeed		= 36,
+		hiddenbuilding		= true,
 	},
 	
 	sfxtypes = {
@@ -131,6 +132,7 @@ local LightATGun = ATGun:New{
 
 	customParams		= {
 		turretturnspeed		= 36,
+		hiddenbuilding		= true,
 	},	
 }
 

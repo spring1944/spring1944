@@ -26,21 +26,25 @@ local RCL_ATLClass = ATLClass:New{
 	collisionSize      = 3,
 	reloadtime         = 15,
 	weaponType         = [[Cannon]],
-	weaponVelocity     = 400,
+	weaponVelocity     = 750,
 }
 
 -- Rocket Launcher Class
 local Rocket_ATLClass = ATLClass:New{
 	areaOfEffect       = 32,
+	avoidGround	= false,
+	avoidFeature	= false,
+	leadLimit 	= 25,
+	proximityPriority = -1,
 	cegTag             = [[BazookaTrail]],
-	flightTime         = 1,
-	gravityaffected    = true,
 	reloadtime         = 10,
-	startVelocity      = 10,
-	weaponAcceleration = 2000,
-	weaponTimer        = 1,
+	tolerance          = 1000,
+	tracks		= true,
+	turnRate	  = 4,
+	startVelocity     = 200,
+	weaponAcceleration = 1050,
+	flightTime        = 3,
 	weaponType         = [[MissileLauncher]],
-	weaponVelocity     = 1000,
 }
 
 return {

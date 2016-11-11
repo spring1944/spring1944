@@ -17,6 +17,7 @@ local Vehicle = Unit:New{
 		damageGroup		= "unarmouredVehicles",
 		soundcategory	= "<SIDE>/Vehicle",
 		reversemult		= 0.5,
+		immobilizationresistance = 0,
 	},
 }
 
@@ -61,6 +62,7 @@ local ArmouredCar = Vehicle:New{
 		damageGroup		= "armouredVehicles",
 		hasturnbutton	= true,
 		turretturnspeed		= 36,	-- more than default tanks
+		immobilizationresistance = 0.25,
 	},
 }
 
@@ -68,6 +70,7 @@ local HeavyArmouredCar = ArmouredCar:New{
 	acceleration		= 0.03,
 	description			= "Heavy Armoured Car",
 	category			= "MINETRIGGER HARDVEH",
+	immobilizationresistance = 0.5,
 }
 
 -- Engineer Vehicles
@@ -167,6 +170,7 @@ local HalfTrack = ArmouredCar:New(Transport):New{
 
 	customParams = {
 		supplyRange			= 200,
+		immobilizationresistance = 0.5,
 	},
 }
 
