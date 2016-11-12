@@ -84,6 +84,7 @@ local DT = DP:New{
   range              = 910,
   reloadTime         = 3,
   sprayAngle         = 250,
+  soundStart         = [[RUSDT_5]],
 }
 
 -- Maxim (RUS)
