@@ -216,8 +216,8 @@ local Cannon = Weapon:New{
 local TankGun = Cannon:New{
 	accuracy           = 100,
 	intensity          = 0.25,
-	leadBonus          = 0.5,
-	leadLimit          = 0,
+	leadBonus          = 0.25,
+	leadLimit          = 3,
 	movingAccuracy     = 600,
 	tolerance          = 300,
 }
