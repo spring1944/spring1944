@@ -21,6 +21,11 @@ local GBRShermanFirefly = MediumTank:New{
 			name				= "M1919A4Browning",
 		},
 		[4] = {
+			name				= "BESA",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
+		},
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
