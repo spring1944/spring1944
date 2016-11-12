@@ -132,7 +132,7 @@ local Smoke = Weapon:New{
 	areaOfEffect       = 30,
 	name               = "Smoke Shell",
 	damage = {
-		default = 100,
+		default = 10,
 	} ,
 }
 

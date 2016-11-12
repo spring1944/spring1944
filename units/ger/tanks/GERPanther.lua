@@ -1,6 +1,6 @@
 local GERPanther = HeavyTank:New{
 	name				= "PzKpfw V Panther Ausf G",
-	buildCostMetal		= 5895,
+	buildCostMetal		= 5400,
 	maxDamage			= 4547,
 	trackOffset			= 5,
 	trackWidth			= 19,

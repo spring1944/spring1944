@@ -29,7 +29,7 @@ local GERTigerII = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 154,
+		armor_front			= 161,
 		armor_rear			= 90,
 		armor_side			= 84,
 		armor_top			= 40,
