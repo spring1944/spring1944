@@ -25,7 +25,6 @@ local ArtyRocket = Rocket:New{
 	trajectoryHeight   = 0.5,
 	weaponVelocity     = 1400,
 	customparams = {
-		armor_hit_side     = "top",
 		damagetype         = "explosive",
 		fearaoe            = 200,
 		fearid             = 501,
