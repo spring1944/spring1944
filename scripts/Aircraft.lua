@@ -214,13 +214,17 @@ local function RecoverFear()
 end
 
 function AddFear(amount)
-	Signal(SIG_FEAR)
-	fear = fear + amount
-	if fear > FEAR_LIMIT then
+	ud = UnitDefs[unitDefID]
+	if ud.name ~= "usc47" then 
+		Signal(SIG_FEAR)
+		fear = fear + amount
+
+		if fear > FEAR_LIMIT then
 		fear = FEAR_LIMIT
+		Spring.SetUnitRulesParam(unitID, "fear", fear)
+		StartThread(RecoverFear)
+		end
 	end
-	Spring.SetUnitRulesParam(unitID, "fear", fear)
-	StartThread(RecoverFear)
 end
 
 
