@@ -77,7 +77,7 @@ local Mod91 = RifleClass:New{
 local Mod91_41 = Mod91:New{
   accuracy           = 65,
   name               = [[Carcano Mod.91/41]],
-  range              = 640,
+  range              = 644,
 }
 
 -- Arisaka type 99 (JPN)
@@ -100,10 +100,13 @@ local AgM42 = RifleClass:New{
 
 -- Gevar M/38
 local Gevar_M_38 = RifleClass:New{
-	accuracy           = 95, -- overwrites default
+	accuracy           = 75, -- 
 	name               = [[6,5 mm Gevär m/38]],
 	range              = 630,
-	reloadtime         = 2.5,
+	reloadtime         = 2.4,
+  damage = {
+    default            = 30,
+  },
 	soundStart         = [[SWE_M_38_rifle]],
 }
 
@@ -117,8 +120,8 @@ local HVAM96 = RifleClass:New(K98k):New{
 -- FÉG 35M
 local HUN_FEG35M = RifleClass:New{
 	name               = [[FÉG 35M]],
-	range              = 665,
-	reloadtime         = 2.8,
+	range              = 670,
+	reloadtime         = 2.9,
 	soundStart         = [[HUN_FEG_35M]],
 }
 

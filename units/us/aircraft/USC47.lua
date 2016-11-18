@@ -4,6 +4,7 @@ local US_C47 = ParaTransport:New{
 	
 	customParams = {
 		feartarget = false,
+		cruise_missile_accuracy	= 1,
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
 	},
