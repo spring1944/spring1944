@@ -188,7 +188,6 @@ end
 
 function script.Killed(recentDamage, maxHealth)
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
-	fear = FEAR_LIMIT
 	Spring.SetUnitRulesParam(unitID, "fear", fear)
 	for _,pieceID in pairs(pieceMap) do
 		if math.random(5) < 2 then
@@ -218,7 +217,6 @@ function AddFear(amount)
 	if ud.name ~= "usc47" then 
 		Signal(SIG_FEAR)
 		fear = fear + amount
-
 		if fear > FEAR_LIMIT then
 		fear = FEAR_LIMIT
 		Spring.SetUnitRulesParam(unitID, "fear", fear)

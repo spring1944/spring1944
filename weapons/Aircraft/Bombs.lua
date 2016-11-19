@@ -38,26 +38,39 @@ local Bomb160kg = timebombClass:New{
     default            = 15000,
     },
 }
-
--- 50Kg Bomb (Generic)
-local Bomb50kg = BombClass:New{
-  name               = [[50kg Bomb]],
-  model              = [[Bomb_Medium.S3O]],
+-- divebomb
+local divebomb = BombClass:New{
   size		     = 1,
   accuracy           = 200,
   tolerance          = 100,	
-  areaOfEffect       = 76,
   heightMod		= 1,
   mygravity	= 0.01,
+  explosionGenerator = [[custom:HE_Large]],
+  soundHit           = [[GEN_Explo_5]],
+}
+-- 50Kg divebomb 
+local Bomb50kg = divebomb:New{
+  name               = [[50kg Bomb]],
+  model              = [[Bomb_Medium.S3O]],
+  areaOfEffect       = 76,
     damage = {
     default            = 7500,
 	planes		= 5,
     },
   range              = 300,
-  explosionGenerator = [[custom:HE_Large]],
-  soundHit           = [[GEN_Explo_5]],
 }
-
+-- 250kg divebomb
+local Bomb250kg = divebomb:New{
+  name               = [[250kg Bomb]],
+  model              = [[Bomb_Medium.S3O]],
+  areaOfEffect       = 156,
+  commandfire        = true,
+    damage = {
+    default            = 27500,
+	planes		= 5,
+    },
+  range              = 330,
+}
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{
   areaOfEffect       = 200,
@@ -148,6 +161,7 @@ return lowerkeys({
   Bomb = Bomb,
   Bomb160kg = Bomb160kg,
   Bomb50kg = Bomb50kg,
+  Bomb250kg = Bomb250kg,
   PTAB = PTAB,
   A_tkbomb = A_tkbomb,
   TypeF12kg = TypeF12kg,
