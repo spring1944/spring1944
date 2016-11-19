@@ -18,6 +18,9 @@ local AutoCannonAP = AP:New{
 	size               = 1,  
 	stages             = 50,
 	explosionGenerator = "custom:AP_XSmall",
+	customParams		= {
+		immobilizationchance = 0.25,	-- rather low
+	},
 } 
 	
 local LightAP = AP:New{
@@ -75,6 +78,7 @@ local AutoCannonHE = HE:New{ -- + AAGunHE
 	explosionGenerator = "custom:HE_XSmall",
 	customparams = {
 		fearaoe            = 40,
+		immobilizationchance = 0.25,	-- rather low
 	},
 }
 
