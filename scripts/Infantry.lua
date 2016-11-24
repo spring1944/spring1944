@@ -4,6 +4,7 @@ local torso = piece "torso"
 local flare = piece "flare"
 
 local info = GG.lusHelper[unitDefID]
+local customAnims = info.customAnims
 
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 
@@ -748,6 +749,9 @@ function script.Shot(num)
 	lastShot = num
 	if not tags.aimOnLoaded then
 		StartThread(ResolvePose, true)
+	end
+	if customAnims and customAnims.postShot then
+		customAnims.postShot(num)
 	end
 end
 

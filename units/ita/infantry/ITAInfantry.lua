@@ -58,6 +58,9 @@ local ITA_MG_Sandbag = SandbagMG:New{
 			name				= "Vickers",
 		},
 	},
+	customparams = {
+		customanims			= "itahmg",
+	},
 }
 
 local ITA_Sniper = SniperInf:New(ITAInf):New{

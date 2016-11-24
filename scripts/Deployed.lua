@@ -33,6 +33,7 @@ local info = GG.lusHelper[unitDefID]
 if not info.animation then
 	include "DeployedLoader.lua"
 end
+local customAnims = info.customAnims
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
 
 --Localisations
@@ -387,7 +388,9 @@ function script.Shot(weaponNum)
 	if brakeright then
 		GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 	end
-
+	if customAnims and customAnims.postShot then
+		customAnims.postShot(weaponNum)
+	end
 end
 
 function script.EndBurst(weaponNum)
