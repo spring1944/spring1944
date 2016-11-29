@@ -360,6 +360,7 @@ return lowerkeys({
   -- Cannone da 47/32 M35
   CannoneDa47mml32AP = CannoneDa47mml32AP,
   CannoneDa47mml32HEAT = CannoneDa47mml32HEAT,
+  CannoneDa47mml32AP_towed = CannoneDa47mml32AP:New(LightMediumATGun, true),
   -- Cannone da 47/40
   CannoneDa47mml40HE = CannoneDa47mml40HE,
   CannoneDa47mml40AP = CannoneDa47mml40AP,
@@ -374,6 +375,7 @@ return lowerkeys({
   -- Type 1 47mm
   Type147mmHE = Type147mmHE,
   Type147mmAP = Type147mmAP,
+  Type147mmAP_towed = Type147mmAP:New(LightMediumATGun, true),
   Bofors_m38AP = Bofors_m38AP,
   Bofors_m38HE = Bofors_m38HE,
   -- Hungary

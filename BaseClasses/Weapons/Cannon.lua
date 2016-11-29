@@ -18,7 +18,7 @@ local AutoCannonAP = AP:New{
 	size               = 1,  
 	stages             = 50,
 	explosionGenerator = "custom:AP_XSmall",
-	customParams		= {
+	customparams		= {
 		immobilizationchance = 0.25,	-- rather low
 	},
 } 
@@ -238,6 +238,13 @@ local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
 	},
 }
 
+-- Special case: light deployed AT guns have immobilization chance
+local LightMediumATGun = {
+	customparams = {
+		immobilizationchance = 0.75,	-- rather high
+	},
+}
+
 -- Armour - Light Gun (37 to 45mm)
 local LightGun = TankGun:New{
 	movingAccuracy     = 500, --590 for 2pdr?
@@ -421,6 +428,7 @@ return {
 	LightAP = LightAP,
 	MediumAP = MediumAP,
 	HeavyAP = HeavyAP,
+	LightMediumATGun = LightMediumATGun,
 	-- HEAT bases
 	HEAT = HEAT,
 	HeavyHEAT = HeavyHEAT,
