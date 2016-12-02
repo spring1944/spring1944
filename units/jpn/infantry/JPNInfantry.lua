@@ -51,6 +51,9 @@ local JPN_Type92HMG_Sandbag = SandbagMG:New{
 			name				= "Type92MG",
 		},
 	},
+	customparams = {
+		customanims			= "jpnhmg",
+	},
 }
 
 local JPN_Sniper = SniperInf:New(JPNInf):New{

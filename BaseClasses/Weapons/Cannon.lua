@@ -18,6 +18,9 @@ local AutoCannonAP = AP:New{
 	size               = 1,  
 	stages             = 50,
 	explosionGenerator = "custom:AP_XSmall",
+	customparams		= {
+		immobilizationchance = 0.25,	-- rather low
+	},
 } 
 	
 local LightAP = AP:New{
@@ -75,6 +78,7 @@ local AutoCannonHE = HE:New{ -- + AAGunHE
 	explosionGenerator = "custom:HE_XSmall",
 	customparams = {
 		fearaoe            = 40,
+		immobilizationchance = 0.25,	-- rather low
 	},
 }
 
@@ -132,7 +136,7 @@ local Smoke = Weapon:New{
 	areaOfEffect       = 30,
 	name               = "Smoke Shell",
 	damage = {
-		default = 100,
+		default = 10,
 	} ,
 }
 
@@ -216,8 +220,8 @@ local Cannon = Weapon:New{
 local TankGun = Cannon:New{
 	accuracy           = 100,
 	intensity          = 0.25,
-	leadBonus          = 0.5,
-	leadLimit          = 0,
+	leadBonus          = 0.25,
+	leadLimit          = 3,
 	movingAccuracy     = 600,
 	tolerance          = 300,
 }
@@ -231,6 +235,13 @@ local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
 		armor_hit_side     = "top",
 		cegflare           = "SMALL_MUZZLEFLASH",
 		weaponcost         = -1, -- to automagic weaponswithammo
+	},
+}
+
+-- Special case: light deployed AT guns have immobilization chance
+local LightMediumATGun = {
+	customparams = {
+		immobilizationchance = 0.75,	-- rather high
 	},
 }
 
@@ -417,6 +428,7 @@ return {
 	LightAP = LightAP,
 	MediumAP = MediumAP,
 	HeavyAP = HeavyAP,
+	LightMediumATGun = LightMediumATGun,
 	-- HEAT bases
 	HEAT = HEAT,
 	HeavyHEAT = HeavyHEAT,

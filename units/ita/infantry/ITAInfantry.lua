@@ -2,11 +2,11 @@ local ITAInf = {
 	maxDamageMul		= 0.8,
 }
 local Alpini = {
-	maxDamageMul		= 0.9,
+	maxDamageMul		= 1.2,
 	movementClass		= "KBOT_alpini",
 }
 local Bersaglieri = {
-	maxDamageMul		= 1.3,
+	maxDamageMul		= 1.1,
 }
 
 local ITA_HQEngineer = EngineerInf:New(ITAInf):New{
@@ -57,6 +57,9 @@ local ITA_MG_Sandbag = SandbagMG:New{
 		[1] = { -- HMG
 			name				= "Vickers",
 		},
+	},
+	customparams = {
+		customanims			= "itahmg",
 	},
 }
 

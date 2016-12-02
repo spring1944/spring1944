@@ -269,6 +269,7 @@ local Solothurn_36MAP = AutoCannonAP:New{
 		armor_penetration_1000m = 16,
 		armor_penetration_100m = 35,
 		weaponcost				= 1,
+		immobilizationchance = 0.5,	-- medium
 	},
 	damage = {
 		default            = 402,

@@ -437,3 +437,7 @@ for weaponNum = 1,info.numWeapons do
 		end
 	end
 end
+
+if info.customAnimsName then
+	info.customAnims = include("anims/infantry/" .. info.customAnimsName .. ".lua")
+end

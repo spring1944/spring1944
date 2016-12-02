@@ -23,8 +23,8 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 
 	weapons = {
 		[1] = {
-			name				= "bomb", -- 250kg
-			maxAngleDif			= 10,
+			name				= "bomb250kg", 
+			maxAngleDif			= 12,
 		},
 		[2] = {
 			name				= "bomb50kg",

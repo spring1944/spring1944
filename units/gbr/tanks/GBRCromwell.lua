@@ -20,6 +20,11 @@ local GBRCromwell = MediumTank:New{
 			name				= "BESA",
 		},
 		[4] = {
+			name				= "BESA",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
+		},
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
