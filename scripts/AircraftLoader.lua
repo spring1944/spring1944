@@ -39,7 +39,7 @@ local pieceMap = Spring.GetUnitPieceMap(unitID)
 
 for pieceName, pieceNum in pairs(pieceMap) do
 	-- Find Wheel Speeds
-	if pieceName:find("base") or pieceName:find("wing") or pieceName:find("fuselage") then
+	if pieceName:find("base") or pieceName:find("propeller") or pieceName:find("wing") or pieceName:find("fuselage") then
 		info.smokePieces[#info.smokePieces + 1] = pieceNum
 	end
 	if pieceName:find("blades") then
