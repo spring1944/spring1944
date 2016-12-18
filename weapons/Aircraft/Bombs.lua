@@ -45,13 +45,15 @@ local divebomb = BombClass:New{
   tolerance          = 100,	
   heightMod		= 1,
   mygravity	= 0.01,
+  model              = [[Bomb_Medium.S3O]],
   explosionGenerator = [[custom:HE_Large]],
   soundHit           = [[GEN_Explo_5]],
 }
 -- 50Kg divebomb 
 local Bomb50kg = divebomb:New{
   name               = [[50kg Bomb]],
-  model              = [[Bomb_Medium.S3O]],
+  explosionGenerator = [[custom:HE_Medium]],
+  soundHit           = [[GEN_Explo_4]],
   areaOfEffect       = 76,
     damage = {
     default            = 7500,
@@ -62,7 +64,6 @@ local Bomb50kg = divebomb:New{
 -- 250kg divebomb
 local Bomb250kg = divebomb:New{
   name               = [[250kg Bomb]],
-  model              = [[Bomb_Medium.S3O]],
   areaOfEffect       = 156,
   commandfire        = true,
     damage = {
