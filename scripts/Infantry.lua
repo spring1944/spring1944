@@ -244,10 +244,6 @@ local function PickPose(name)
 			end
 		end
 	else
-		-- do not attempt to change to this very pose
-		if currentPoseID == nextPoseID then
-			return false
-		end
 
 		local transition
 		-- do not attempt to change for morphing units
