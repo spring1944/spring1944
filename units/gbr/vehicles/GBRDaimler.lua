@@ -1,6 +1,6 @@
 local GBRDaimler = ArmouredCar:New{
 	name				= "Daimler Armoured Car Mk.II",
-	buildCostMetal		= 1350,
+	buildCostMetal		= 1215,
 	maxDamage			= 680,
 	trackOffset			= 10,
 	trackWidth			= 13,
