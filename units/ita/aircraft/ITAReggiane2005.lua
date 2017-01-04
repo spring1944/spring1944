@@ -25,22 +25,20 @@ local ITA_Reggiane2005 = Fighter:New{
 		[2] = {
 			name				= "BredaSafat05",
 			maxAngleDif			= 10,
-			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
-			slaveTo				= 1,
 		},
 		[4] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
-			slaveTo				= 1,
+			slaveTo				= 3,
 		},
 		[5] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
-			slaveTo				= 1,
+			slaveTo				= 3,
 		},
 	},
 }

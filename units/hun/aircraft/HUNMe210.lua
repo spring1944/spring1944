@@ -8,7 +8,7 @@ local HUN_Me210_base = {
 	maxElevator			= 0.0042,
 	maxPitch			= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 15.8,
+	maxVelocity			= 16.6,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -69,23 +69,23 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 			slaveTo				= 1,
 		},
 		[4] = {	-- Pretend this is MG17
-			name				= "mg42aa",
+			name				= "BredaSafat05",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[5] = {
-			name				= "mg42aa",
+			name				= "BredaSafat05",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[6] = {	-- this is in rear defence turret
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 45,
 			mainDir				= [[0 0 -1]],
 		},
 		[7] = {
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 45,
 			mainDir				= [[0 0 -1]],
 		},
 	},

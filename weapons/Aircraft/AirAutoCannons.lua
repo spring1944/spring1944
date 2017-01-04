@@ -13,7 +13,7 @@ local HS40420mm = AutoCannonHE:New(AirAutoCannon, true):New{
   soundStart         = [[GBR_20mmAir]],
   weaponVelocity     = 2700,
   damage = {
-    default            = 110,
+    default            = 88,
   },
 }
 
