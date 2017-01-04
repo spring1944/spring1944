@@ -35,7 +35,7 @@ local sweSorties = {
 		weight = 1,
 		name = "Air Superiority Fighter Sortie",
 		description = "3 x SAAB J 21A",
-		buildCostMetal = 4500,
+		buildCostMetal = 4050,
 		buildPic = "SWEJ21A.png",
 	},
 
