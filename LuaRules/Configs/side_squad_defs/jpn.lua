@@ -190,7 +190,7 @@ local jpnDefs = {
 		},
 		name = "Tankette Platoon",
 		description = "1 x tankette Te-Ke 37mm, 1 x tankette Te-Ke 7.7mm",
-		buildCostMetal = 1000,
+		buildCostMetal = 900,
 		buildPic = "JPNteke.png",
 		objectName = "JPNteke_build.s3o",
 	},

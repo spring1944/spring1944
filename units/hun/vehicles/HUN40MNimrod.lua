@@ -1,7 +1,7 @@
 local HUN40MNimrod = ArmouredCarAA:New{
 	name				= "40.M Nimrod",
 	corpse				= "HUN40MNimrod_Burning",
-	buildCostMetal			= 2500,
+	buildCostMetal			= 2250,
 	maxDamage			= 1050,
 	trackOffset			= 10,
 	trackWidth			= 16,

@@ -60,7 +60,6 @@ local ArmouredCar = Vehicle:New{
 
 	customParams = {
 		damageGroup		= "armouredVehicles",
-		hasturnbutton	= true,
 		turretturnspeed		= 36,	-- more than default tanks
 		immobilizationresistance = 0.25,
 	},
