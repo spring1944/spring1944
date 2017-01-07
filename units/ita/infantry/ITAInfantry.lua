@@ -122,11 +122,12 @@ local ITA_BersaglieriRifle = ITA_Rifle:Clone("ITARifle"):New(Bersaglieri):New{
 		},
 		[2] = { -- Grenade
 			name				= "OTO_model35",
+			onlytargetcategory     = "INFANTRY SOFTVEH",
 		},
 		[3] = {
 			name				= "bredamod42",
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING OPENVEH HARDVEH SHIP DEPLOYED",
 			mainDir				= [[0 0 1]],
 		},
 	},
@@ -142,6 +143,7 @@ local ITA_BersaglieriM38 = ITA_M38:Clone("ITAM38"):New(Bersaglieri):New{
 		},
 		[2] = { -- Grenade
 			name				= "OTO_model35",
+			onlytargetcategory     = "INFANTRY SOFTVEH",
 		},
 		[3] = {
 			name				= "L_type_grenade",
@@ -174,11 +176,12 @@ local ITA_AlpiniRifle = ITA_Rifle:Clone("ITARifle"):New(Alpini):New{
 		},
 		[2] = { -- Grenade
 			name				= "OTO_model35",
+			onlytargetcategory     = "INFANTRY SOFTVEH",
 		},
 		[3] = {
 			name				= "L_type_grenade",
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING OPENVEH HARDVEH SHIP DEPLOYED",
 			mainDir				= [[0 0 1]],
 		},
 	},
@@ -194,11 +197,12 @@ local ITA_AlpiniFNAB43 = ITA_M38:Clone("ITAM38"):New(Alpini):New{
 		},
 		[2] = { -- Grenade
 			name				= "OTO_model35",
+			onlytargetcategory     = "INFANTRY SOFTVEH",
 		},
 		[3] = {
 			name				= "bredamod42",
 			maxAngleDif			= 170,
-			onlyTargetCategory	= "BUILDING SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING OPENVEH HARDVEH SHIP DEPLOYED",
 			mainDir				= [[0 0 1]],
 		},
 	},
