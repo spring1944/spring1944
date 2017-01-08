@@ -44,6 +44,9 @@ local TankShelter = Deployed:New{
 	minCloakDistance			= 500,
 	objectName					= "GEN/<NAME>.s3o",
 	cloakTimeout				= 160,
+	customParams		= {
+		hiddenbuilding		= true,
+	},
 	releaseHeld					= true,
 	script						= "tankshelter.lua",
 	transportCapacity			= 1,
@@ -114,6 +117,7 @@ local ATGun = DeployedGun:New{
 
 	customParams		= {
 		turretturnspeed		= 24,
+		hiddenbuilding		= true,
 	},
 	
 	weapons = {
@@ -132,7 +136,6 @@ local LightATGun = ATGun:New{
 
 	customParams		= {
 		turretturnspeed		= 36,
-		hiddenbuilding		= true,
 	},	
 }
 
@@ -143,6 +146,7 @@ local FGGun = DeployedGun:New{
 
 	customParams		= {
 		turretturnspeed		= 24,
+		hiddenbuilding		= true,
 	},
 	
 	weapons = {

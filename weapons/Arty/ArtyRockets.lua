@@ -57,9 +57,10 @@ local BBR_Rack = ArtyRocket:New{
 	name               = [[4.5" Beach Barrage Rocket Mk 7 Launcher]],
 	range              = 950,
   	startVelocity      = 600,
-	tolerance          = 300, 
+	tolerance          = 1500,
+  	sprayangle         = 3000, 
 	soundStart         = [[GER_Panzerschrek]],
-	wobble             = 500,
+	wobble             = 2000,
 	damage = {
 		default            = 2500,
 	},
