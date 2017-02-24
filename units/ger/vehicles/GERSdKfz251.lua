@@ -8,9 +8,12 @@ local GERSdKfz251 = HalfTrack:New{
 	weapons = {
 		[1] = {
 			name					= "MG34",
+			maxAngleDif				= 90,
 		},
 		[2] = {
-			name					= "MG42AA",
+			name					= "MG34",
+			maxAngleDif			= 180,
+			mainDir				= [[0 0 -1]],
 		},
 	},
 	
