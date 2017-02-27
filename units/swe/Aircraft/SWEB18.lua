@@ -22,18 +22,18 @@ local SWEB18 = AttackFighter:New{
 
 	weapons = {
 		[1] = {
-			name				= "bk37mmap",
+			name				= "bofors57mmAP",
 			maxAngleDif			= 15,
 			mainDir				= [[0 -1 16]],
 		},
 		[2] = {
-			name				= "Ho520mmAP",
+			name				= "boforsm40_20mmap",
 			maxAngleDif			= 10,
 			mainDir				= [[0 -1 16]],
 			slaveTo				= 1, -- TODO: why?
 		},
 		[3] = {
-			name				= "Ho520mmAP",
+			name				= "boforsm40_20mmap",
 			maxAngleDif			= 10,
 			mainDir				= [[0 .5 -1]],
 			slaveTo				= 1, -- TODO: why?
