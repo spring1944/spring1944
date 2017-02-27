@@ -10,8 +10,6 @@ local JPN_Ki102 = AttackFighter:New(ArmouredPlane):New{
 	maxAcc				= 0.702,
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
-	maxElevator			= 0.0025,
-	maxPitch			= 1,
 	maxRudder			= 0.0025,
 	maxVelocity			= 13.8,
 

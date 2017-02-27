@@ -10,8 +10,6 @@ local SWEB18 = AttackFighter:New{
 	maxAcc				= 0.702,
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
-	maxElevator			= 0.00375,
-	maxPitch			= 1,
 	maxRudder			= 0.0025,
 	maxVelocity			= 11.2,
 
@@ -24,7 +22,7 @@ local SWEB18 = AttackFighter:New{
 
 	weapons = {
 		[1] = {
-			name				= "Ho40157mm",
+			name				= "bk37mmap",
 			maxAngleDif			= 15,
 			mainDir				= [[0 -1 16]],
 		},

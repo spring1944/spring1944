@@ -7,8 +7,6 @@ local ITA_MC200 = Fighter:New{
 	maxAcc				= 0.782,
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
-	maxElevator			= 0.0042,
-	maxPitch			= 1,
 	maxRudder			= 0.003,
 	maxVelocity			= 16.5,
 

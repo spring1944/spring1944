@@ -220,6 +220,7 @@ local EngineerInf = Infantry:New{
 	buildDistance		= 128,
 	terraformSpeed		= 300,
 	workerTime			= 15,
+	reclaimSpeed 		= 30,
 	
 	customParams = {
 		canclearmines			= true,

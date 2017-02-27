@@ -6,8 +6,6 @@ local US_P51DMustangGA = AttackFighter:New{
 	maxAcc				= 0.622,
 	maxAileron			= 0.0052,
 	maxBank				= 0.9,
-	maxElevator			= 0.004,
-	maxPitch			= 1,
 	maxRudder			= 0.003,
 	maxVelocity			= 17.5,
 

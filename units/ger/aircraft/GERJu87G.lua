@@ -8,8 +8,6 @@ local GER_Ju87G = AttackFighter:New{
 	maxAcc				= 0.416,
 	maxAileron			= 0.00375,
 	maxBank				= 1,
-	maxElevator			= 0.00375,
-	maxPitch			= 1,
 	maxRudder			= 0.0015,
 	maxVelocity			= 14,
 
