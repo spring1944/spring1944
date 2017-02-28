@@ -186,18 +186,20 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 			clearer.done = true
 		end
 	end
-	local wx, wy, wz, distance
+	local wx, wy, wz, distance2
 	if not clearer.done then
 		wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
-		distance = math.sqrt((wx - px)^2 + (wy - py)^2 + (wz - pz)^2)
-		if distance < MIN_DIST then
+		-- Computing the square of MIN_DIST is dramatically cheaper than
+		-- the square root of distance2
+		distance2 = (wx - px)^2 + (wy - py)^2 + (wz - pz)^2
+		if distance2 < MIN_DIST^2 then
 			clearer.done = ClearWaypoint(unitID, wx, wz)
 		end
 		return true, false
 	else
-		distance = math.sqrt((x - px)^2 + (y - py)^2 + (z - pz)^2)
+		distance2 = (x - px)^2 + (y - py)^2 + (z - pz)^2
 		local dx, dz
-		if distance > WAYPOINT_DIST then
+		if distance2 > WAYPOINT_DIST^2 then
 			if clearer.new then
 				local angle = math.atan2(x - px, z - pz)
 				dx = math.sin(angle) * WAYPOINT_DIST
@@ -210,7 +212,7 @@ function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmd
 			wx, wz = clearer.waypoint[1], clearer.waypoint[3]
 			wx = wx + dx
 			wz = wz + dz
-		elseif distance > MIN_DIST then
+		elseif distance2 > MIN_DIST^2 then
 			wx = x
 			wz = z
 		else
