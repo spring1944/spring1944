@@ -397,7 +397,11 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 		if newBuilding then
 			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 		elseif not wantedBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+			-- Fix https://github.com/spring1944/spring1944/issues/200
+			comm = Spring.GetUnitCommands(unitID, 1)[1]
+			if not comm or comm.id ~= CMD.RECLAIM then
+				Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+			end
 		end
 		standing = newStanding
 		aiming = newAiming
@@ -624,6 +628,8 @@ local function StopBuilding()
 	-- Spring.Echo("stopped building")
 	wantedBuilding = false
 	StartThread(ResolvePose)
+	-- Fix https://github.com/spring1944/spring1944/issues/200
+	StartThread(fixReclaim)
 end
 
 
@@ -829,6 +835,20 @@ if UnitDef.isBuilder then
 
 	function script.StopBuilding()
 		StopBuilding()
+	end
+
+	function fixReclaim()
+		while true do
+			local comm = Spring.GetUnitCommands(unitID, 1)[1]
+			if not comm or comm.id ~= CMD.RECLAIM then
+				-- We already finished reclaiming things
+				break
+			end
+			Sleep(33)
+		end
+		if not wantedBuilding then
+			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+		end
 	end
 end
 
