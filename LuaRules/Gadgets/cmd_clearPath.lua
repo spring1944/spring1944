@@ -20,20 +20,20 @@ if (gadgetHandler:IsSyncedCode()) then
 
 
 -- Synced Read
-local GetUnitDefID			= Spring.GetUnitDefID
+local GetUnitDefID		= Spring.GetUnitDefID
 local GetUnitPosition		= Spring.GetUnitPosition
 local GetUnitsInCylinder	= Spring.GetUnitsInCylinder
 local GetFeaturesInCylinder	= Spring.GetFeaturesInCylinder
 local GetFeatureBlocking	= Spring.GetFeatureBlocking
-local ValidUnitID			= Spring.ValidUnitID
+local ValidUnitID		= Spring.ValidUnitID
 local GetGroundHeight		= Spring.GetGroundHeight
 
 
 -- Synced Ctrl
-local DestroyUnit			= Spring.DestroyUnit
+local DestroyUnit		= Spring.DestroyUnit
 local RemoveBuildingDecal	= Spring.RemoveBuildingDecal
 local SetUnitMoveGoal		= Spring.SetUnitMoveGoal
-local SpawnCEG				= Spring.SpawnCEG
+local SpawnCEG			= Spring.SpawnCEG
 local GiveOrderToUnit		= Spring.GiveOrderToUnit
 
 
@@ -55,7 +55,7 @@ local currentFrame
 local clearPathDesc = {
 	name	= "Clear Path",
 	action	= "clearpath",
-	id		= CMD_CLEARPATH,
+	id	= CMD_CLEARPATH,
 	type	= CMDTYPE.ICON_MAP, -- change to ICON_AREA?
 	tooltip	= "Clear the path to a given location",
 	cursor	= "Clear Path",
@@ -144,80 +144,86 @@ end
 
 
 function gadget:CommandFallback(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
-	if cmdID == CMD_CLEARPATH then
-		local ud = UnitDefs[unitDefID]
-		local cp = ud.customParams
-		if cp and cp.canclearmines then
-			local clearer
-			local x = cmdParams[1]
-			local y = cmdParams[2]
-			local z = cmdParams[3]
-			local px, py, pz = GetUnitPosition(unitID)
-			
-			if not clearers[unitID] then
-				clearers[unitID] = {target = {x, y, z}, waypoint={px, py, pz}, delta = {0.0, 0.0}, new = true, active = false, done = true}
-				clearer = clearers[unitID]
-			else
-				clearer = clearers[unitID]
-				if not Spring.UnitScript.CallAsUnit(unitID, isClearingCache[unitID]) then
-					clearer.active = false
-				end
-				if clearer.active then
-					return true, false
-				end
-				local currentTarget = clearer.target
-				if currentTarget[1] ~= x or currentTarget[2] ~= y or currentTarget[3] ~= z then
-					currentTarget[1], currentTarget[2], currentTarget[3] = x, y, z
-					clearer.new = true
-					clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = px, py, pz
-					clearer.done = true
-				end
-			end
-			local wx, wy, wz, distance
-			if not clearer.done then
-				wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
-				distance = math.sqrt((wx - px)^2 + (wy - py)^2 + (wz - pz)^2)
-				if distance < MIN_DIST then
-					clearer.done = ClearWaypoint(unitID, wx, wz)
-				end
-				return true, false
-			else
-				distance = math.sqrt((x - px)^2 + (y - py)^2 + (z - pz)^2)
-				local dx, dz
-				if distance > WAYPOINT_DIST then
-					if clearer.new then
-						local angle = math.atan2(x - px, z - pz)
-						dx = math.sin(angle) * WAYPOINT_DIST
-						dz = math.cos(angle) * WAYPOINT_DIST
-						clearer.delta[1], clearer.delta[2] = dx, dz
-						clearer.new = false
-					else
-						dx, dz = clearer.delta[1], clearer.delta[2]
-					end
-					wx, wz = clearer.waypoint[1], clearer.waypoint[3]
-					wx = wx + dx
-					wz = wz + dz
-				elseif distance > MIN_DIST then
-					wx = x
-					wz = z
-				else
-					clearers[unitID] = nil
-					return true, true
-				end
-				wy = GetGroundHeight(wx, wz)
-				SetUnitMoveGoal(unitID, wx, wy, wz, STOP_DIST)
-				clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = wx, wy, wz
-				clearer.done = false
-				return true, false
-			end
-		else
-			-- Don't take any action, the unit shouldn't be able to clear mines 
-			--(we consider that they didn't get a mineclear command)
-			return false
-		end
-	else
+	if cmdID ~= CMD_CLEARPATH then
 		-- It was a different command, do nothing
 		return false
+	end
+	local ud = UnitDefs[unitDefID]
+	local cp = ud.customParams
+	if not cp or not cp.canclearmines then
+		-- Don't take any action, the unit shouldn't be able to clear mines 
+		--(we consider that they didn't get a mineclear command)
+		return false
+	end
+	local clearer
+	local x = cmdParams[1]
+	local y = cmdParams[2]
+	local z = cmdParams[3]
+	local px, py, pz = GetUnitPosition(unitID)
+	if not clearers[unitID] then
+		clearers[unitID] = {target = {x, y, z},
+		                    waypoint={px, py, pz},
+		                    delta = {0.0, 0.0},
+		                    new = true,
+		                    active = false,
+		                    done = true}
+		clearer = clearers[unitID]
+	else
+		clearer = clearers[unitID]
+		if not Spring.UnitScript.CallAsUnit(unitID, isClearingCache[unitID]) then
+			clearer.active = false
+		end
+		if clearer.active then
+			-- The unit is still busy accomplishing the mission
+			return true, false
+		end
+		local currentTarget = clearer.target
+		if currentTarget[1] ~= x or currentTarget[2] ~= y or currentTarget[3] ~= z then
+			-- The target has changed
+			currentTarget[1], currentTarget[2], currentTarget[3] = x, y, z
+			clearer.new = true
+			clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = px, py, pz
+			clearer.done = true
+		end
+	end
+	local wx, wy, wz, distance2
+	if not clearer.done then
+		wx, wy, wz = clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3]
+		-- Computing the square of MIN_DIST is dramatically cheaper than
+		-- the square root of distance2
+		distance2 = (wx - px)^2 + (wy - py)^2 + (wz - pz)^2
+		if distance2 < MIN_DIST^2 then
+			clearer.done = ClearWaypoint(unitID, wx, wz)
+		end
+		return true, false
+	else
+		distance2 = (x - px)^2 + (y - py)^2 + (z - pz)^2
+		local dx, dz
+		if distance2 > WAYPOINT_DIST^2 then
+			if clearer.new then
+				local angle = math.atan2(x - px, z - pz)
+				dx = math.sin(angle) * WAYPOINT_DIST
+				dz = math.cos(angle) * WAYPOINT_DIST
+				clearer.delta[1], clearer.delta[2] = dx, dz
+				clearer.new = false
+			else
+				dx, dz = clearer.delta[1], clearer.delta[2]
+			end
+			wx, wz = clearer.waypoint[1], clearer.waypoint[3]
+			wx = wx + dx
+			wz = wz + dz
+		elseif distance2 > MIN_DIST^2 then
+			wx = x
+			wz = z
+		else
+			clearers[unitID] = nil
+			return true, true
+		end
+		wy = GetGroundHeight(wx, wz)
+		SetUnitMoveGoal(unitID, wx, wy, wz, STOP_DIST)
+		clearer.waypoint[1], clearer.waypoint[2], clearer.waypoint[3] = wx, wy, wz
+		clearer.done = false
+		return true, false
 	end
 end
 
