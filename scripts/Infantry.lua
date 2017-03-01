@@ -628,8 +628,6 @@ local function StopBuilding()
 	-- Spring.Echo("stopped building")
 	wantedBuilding = false
 	StartThread(ResolvePose)
-	-- Fix https://github.com/spring1944/spring1944/issues/200
-	StartThread(fixReclaim)
 end
 
 
@@ -660,6 +658,10 @@ function script.Create()
 		weaponEnabled[i] = true
 	end
 	UpdateSpeed()
+	-- Fix https://github.com/spring1944/spring1944/issues/200
+	if UnitDef.isBuilder then
+		StartThread(fixReclaim)
+	end
 end
 
 function script.StartMoving()
@@ -842,12 +844,13 @@ if UnitDef.isBuilder then
 			local comm = Spring.GetUnitCommands(unitID, 1)[1]
 			if not comm or comm.id ~= CMD.RECLAIM then
 				-- We already finished reclaiming things
-				break
+				if not wantedBuilding then
+					Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+				end
+			else
+				Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 			end
-			Sleep(33)
-		end
-		if not wantedBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+			Sleep(150)
 		end
 	end
 end
