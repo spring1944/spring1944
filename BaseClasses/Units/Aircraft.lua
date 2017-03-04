@@ -118,6 +118,8 @@ local CruiseMissile = Aircraft:New{
 	maxPitch					= 1,
 	maxRudder					= 0.002765,
 	maxVelocity					= 18.2,
+	radardistance				= 0,
+	airSightDistance			= 0,
 
 	customParams = {
 		cruise_missile_accuracy		= 400,
