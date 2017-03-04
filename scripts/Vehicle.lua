@@ -171,7 +171,7 @@ function script.Create()
 	end
 	if customAnims and customAnims.postCreate then
 		customAnims.postCreate()
-	end	
+	end
 end
 
 local function SpinWheels()
@@ -267,8 +267,17 @@ local function RestoreTurret(weaponNum)
 			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
 		end
 		if pitchPiece then
-			Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+			if UnitDef.name == "gerflak38_truck" 
+				or UnitDef.name == "hun40mnimrod"
+				or UnitDef.name == "itaspadovunque"
+				or UnitDef.name == "jpnisuzutype94_aa" then
+
+				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
+			else
+				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+			end
 		end
+	--Spring.Echo("truckAA", weaponNum, pitchPiece)
 	end
 end
 
