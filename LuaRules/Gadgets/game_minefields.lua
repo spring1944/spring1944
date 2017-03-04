@@ -41,6 +41,8 @@ mineTypes["atminesign"] = {
 	mineToSpawn = "atmine",
 }
 
+local maxPlacementRetries = 3
+
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
@@ -57,11 +59,15 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 			local x, y, z = GetUnitPosition(unitID)
 			local mineCount = 0
 			while mineCount < mineData.number do
+				local placementRetry = 0
+
 				local xpos = RandPos(mineData) + x
 				local zpos = RandPos(mineData) + z
-				while #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) > 0 do -- This could well be slow >_>
+				while #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) > 0 and placementRetry <= maxPlacementRetries do -- This could well be slow >_>
 					xpos = RandPos(mineData) + x
 					zpos = RandPos(mineData) + z
+
+					placementRetry = placementRetry + 1
 				end
 				local ypos = GetGroundHeight(xpos, zpos)
 				local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
