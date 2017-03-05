@@ -72,9 +72,12 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 					placementRetry = placementRetry + 1
 				end
 
-				local ypos = GetGroundHeight(xpos, zpos)
-				local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
-				SetUnitBlocking(mineID, false, false, false)
+				if #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) == 0 then
+					local ypos = GetGroundHeight(xpos, zpos)
+					local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
+					SetUnitBlocking(mineID, false, false, false)
+				end
+
 				mineCount = mineCount + 1
 			end
 			-- DelayCall needed to fix the notify widget as unsynced can't find gaia units!
