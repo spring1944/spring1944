@@ -10,7 +10,11 @@ local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 			name				= "QF25pdrHE",
 			maxAngleDif			= 15,
 		},
-		[2] = {
+		[2] = { -- Smoke
+			name				= "qf25pdrsmoke",
+			maxAngleDif			= 15,
+		},
+		[3] = {
 			name				= ".50calproof",
 		},
 	},

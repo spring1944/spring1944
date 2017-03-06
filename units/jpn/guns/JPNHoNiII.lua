@@ -10,7 +10,10 @@ local JPNHoNiII = LightTank:New(SPArty):New(OpenTopped):New{
 			name				= "Type91105mmL24HE",
 			maxAngleDif			= 20,
 		},
-		[2] = {
+		[2] = { -- Smoke
+			name				= "Type91105mmL24smoke",
+		},
+		[3] = {
 			name				= ".50calproof",
 		},
 	},

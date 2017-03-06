@@ -10,10 +10,13 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 			name				= "LeFH18HE",
 			maxAngleDif			= 15,
 		},
-		[2] = {
-			name				= "mg42aa",
+		[2] = { -- Smoke
+			name				= "leFH18smoke",
 		},
 		[3] = {
+			name				= "mg42aa",
+		},
+		[4] = {
 			name				= ".30calproof",
 		},
 	},

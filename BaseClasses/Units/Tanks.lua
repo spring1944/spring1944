@@ -102,7 +102,7 @@ local SPArty = Def:New{ -- not a full class (role/mixin)
 	customParams = {
 		canareaattack		= true,
 		soundcategory		= "<SIDE>/Tank/SP",
-		weapontoggle		= false,
+		weapontoggle		= "smoke",
 	}
 }
 
