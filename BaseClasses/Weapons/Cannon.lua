@@ -137,7 +137,10 @@ local Smoke = Weapon:New{
 	name               = "Smoke Shell",
 	damage = {
 		default = 10,
-	} ,
+	},
+	customparams = {
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	}
 }
 
 local MortarSmoke = Smoke:New{

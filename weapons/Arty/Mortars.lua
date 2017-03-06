@@ -48,7 +48,7 @@ local M1_81mmMortarHE = MortarHE:New(M1_81mmMortar, true):New{
     default            = 1100,
   },
 }
-local M1_81mmMortarSmoke = MortarSmoke:New(M1_81mmMortar, true) 
+local M1_81mmMortarSmoke = MortarSmoke:New(M1_81mmMortar, true)
 
 -- 82-PM 37 (RUS)
 local m1937_Mortar = Mortar:New{
@@ -56,12 +56,12 @@ local m1937_Mortar = Mortar:New{
   name               = [[82-PM 37 Mortar]],
   range              = 1365,
 }
-local m1937_MortarHE = MortarHE:New(m1937_Mortar, true){
+local m1937_MortarHE = MortarHE:New(m1937_Mortar, true):New{
   damage = {
     default            = 800,
   },
 }
-local m1937_MortarSmoke = MortarSmoke:New(m1937_Mortar, true) 
+local m1937_MortarSmoke = MortarSmoke:New(m1937_Mortar, true)
 
 -- Knee Mortar
 local cKneeMortar = Mortar:New{
@@ -78,7 +78,7 @@ local KneeMortar = MortarHE:New(cKneeMortar, true):New{
     default            = 300,
   },
 }
-local KneeMortar_smoke = MortarSmoke:New(cKneeMortar, true) 
+local KneeMortar_smoke = MortarSmoke:New(cKneeMortar, true)
 
 -- Type 97 81mm mortar
 local Type97_81mmMortar = Mortar:New{
