@@ -1,0 +1,8 @@
+[submodule "LuaRules/modules/core"]
+	path = LuaRules/modules/core
+	url = https://bitbucket.org/notabots/core.git
+	branch = master
+[submodule "LuaRules/modules/customCommands/data"]
+	path = LuaRules/modules/customCommands/data
+	url = https://bitbucket.org/notabots/customcommands.git
+	branch = master
