@@ -2,10 +2,30 @@
   description=Destroyed Halftrack;
   damage=1251;
   energy=500;
+  featureDead=gersdkfz250_wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=GERSdKfz250_Dead.S3O;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=15 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=50;
+		}
+}
+
+[gersdkfz250_wreck] {
+  description=Destroyed Halftrack;
+  damage=1251;
+  energy=500;
   featureDead=Debris_Small;
   footprintX=2;
   footprintZ=2;
-  object=GERSdKfz250_Destroyed.S3O;
+  object=GERSdKfz250_Wreck.S3O;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=15 20 50;
