@@ -10,14 +10,10 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 			name				= "M2HE",
 			maxAngleDif			= 15,
 		},
-		[2] = { -- Smoke
-			name				= "M2smoke",
-			maxAngleDif			= 15,
-		},
-		[3] = {
+		[2] = {
 			name				= "M2BrowningAA",
 		},
-		[4] = {
+		[3] = {
 			name				= ".50calproof",
 		},
 	},
