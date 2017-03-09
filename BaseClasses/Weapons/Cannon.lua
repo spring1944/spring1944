@@ -334,8 +334,8 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	customparams = {
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRETS",
-		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRETS",
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRET",
 	},
 }
 
