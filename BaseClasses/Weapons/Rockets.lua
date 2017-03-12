@@ -53,7 +53,7 @@ local AirRocket = Rocket:New{
 	wobble             = 500,
 	customparams = {
 		no_range_adjust    = true,
-		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP",
+		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
 		rocket             = true,
 	},
 }
