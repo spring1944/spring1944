@@ -54,6 +54,7 @@ local AirRocket = Rocket:New{
 	customparams = {
 		no_range_adjust    = true,
 		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
+		badtargetcategory  = "SHIP LARGESHIP",
 		rocket             = true,
 	},
 }

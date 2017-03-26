@@ -3,6 +3,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 	corpse				= "HUN40MNimrod_Burning",
 	buildCostMetal			= 1912,
 	maxDamage			= 1050,
+	movementClass		= "TANK_Light",
 	trackOffset			= 10,
 	trackWidth			= 16,
 
@@ -15,6 +16,8 @@ local HUN40MNimrod = ArmouredCarAA:New{
 		},
 	},
 	customParams = {
+		hasturnbutton		= true,
+		damageGroup		= "lightTanks",
 		armor_front			= 13,
 		armor_rear			= 6,
 		armor_side			= 10,

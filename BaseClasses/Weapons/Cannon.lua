@@ -334,7 +334,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	customparams = {
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
 		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRET",
 	},
 }
@@ -349,6 +349,7 @@ local AntiAirGun = Cannon:New{
 	soundTrigger       = false,
 	sprayAngle         = 400,
 	customparams = {
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
 		cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 		flareonshot        = true,
 		weaponcost         = 8,
