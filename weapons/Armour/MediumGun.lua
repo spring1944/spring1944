@@ -41,13 +41,13 @@ local QF17Pdr = MediumGun:New{
 
 local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
   areaOfEffect       = 90,
-  weaponVelocity     = 1768,
+  weaponVelocity     = 1584,
   damage = {
     default            = 1420,
   },  
 }
 local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
-  weaponVelocity     = 1584,
+  weaponVelocity     = 1768,
   customparams = {
     armor_penetration_1000m = 119,
     armor_penetration_100m  = 140,
@@ -383,7 +383,34 @@ local Type375mmL38AP = MediumAP:New(Type375mmL38, true):New{
     default            = 2490,
   },
 }
+-- Type 5 75mm/56.4 (JPN) 
+local Type575mmL56 = MediumGun:New{
+  name               = [[Type 5 75mm/56]],
+  range              = 1770, -- good sights
+  reloadTime         = 6.5,
+  soundStart         = [[JPN_type5_75mm]],
+  customparams = {
+    weaponcost    = 17,
+  },  
+}
 
+local Type575mmL56HE = MediumHE:New(Type575mmL56, true):New{
+  areaOfEffect       = 82,
+  weaponVelocity     = 1026,
+  damage = {
+    default            = 2200,
+  },  
+}
+local Type575mmL56AP = MediumAP:New(Type575mmL56, true):New{
+  weaponVelocity     = 1728,
+  customparams = {
+    armor_penetration_1000m = 80,
+    armor_penetration_100m  = 122,
+  },
+  damage = {
+    default            = 2450,
+  },
+}
 -- Type 90 75mm (JPN) 7 RPM
 local Type9075mm = MediumGun:New{
   name               = [[Type 90 75mm]],
@@ -558,6 +585,9 @@ return lowerkeys({
   -- Type 3 75mm/38
   Type375mmL38HE = Type375mmL38HE,
   Type375mmL38AP = Type375mmL38AP,
+  -- Type 5 75mm/56
+  Type575mmL56HE = Type575mmL56HE,
+  Type575mmL56AP = Type575mmL56AP,
   -- Type 90 75mm
   Type9075mmHE = Type9075mmHE,
   Type9075mmAP = Type9075mmAP,

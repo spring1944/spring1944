@@ -113,6 +113,7 @@ local usunits = {
     "usm8greyhound",
     "usm8scott",
     "usm5stuart",
+	"uslvta4",
     "usjeep",
   },
 

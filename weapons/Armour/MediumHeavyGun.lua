@@ -59,6 +59,8 @@ local KwK88mmL71AP = HeavyAP:New(KwK88mmL71, true):New{
 
 -- SK 8.8cm C/30 (GER)
 local SK88mmC30 = MediumHeavyGun:New(MediumHE, true):New{
+  accuracy		= 500,
+  tolerance		= 1000,
   areaOfEffect       = 85,
   name               = [[8.8cm SK C/30 Naval Gun]],
   range              = 2110,

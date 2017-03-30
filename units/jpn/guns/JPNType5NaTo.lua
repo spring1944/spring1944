@@ -1,14 +1,14 @@
 local JPNType5NaTo = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "Type 5 Na-To",
 	description			= "Heavily Armed Tank Destroyer",
-	buildCostMetal		= 3550,
+	buildCostMetal		= 2550,
 	maxDamage			= 1700,
 	trackOffset			= 5,
 	trackWidth			= 20,
 
 	weapons = {
 		[1] = {
-			name				= "KwK75mmL71AP",
+			name				= "Type575mmL56AP",
 			maxAngleDif			= 40,
 		},
 		[2] = {
