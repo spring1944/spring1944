@@ -3,7 +3,7 @@ local SWE_Arholma = ArmedBoat:New{
 	description				= "Minesweeper",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
-	buildCostMetal			= 15000,
+	buildCostMetal			= 16800,
 	category				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -60.0 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
@@ -15,7 +15,7 @@ local SWE_Arholma = ArmedBoat:New{
 		[1] = {
 			name				= "OTO100mmL47HE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
 	},
 	customparams = {

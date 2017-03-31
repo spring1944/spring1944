@@ -7,7 +7,7 @@ local AP = Weapon:New{
 	soundHitDry        = "GEN_Explo_1",
 	customparams = {
 		damagetype         = "kinetic",
-		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET",
 		badtargetcategory  = "SOFTVEH",
 	},  
 }
@@ -66,7 +66,7 @@ local HE = Weapon:New{
 	name               = "HE Shell",
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
-		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		damagetype         = "explosive",
 		fearid             = 301,
 	},
@@ -137,7 +137,10 @@ local Smoke = Weapon:New{
 	name               = "Smoke Shell",
 	damage = {
 		default = 10,
-	} ,
+	},
+	customparams = {
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	}
 }
 
 local MortarSmoke = Smoke:New{
@@ -331,8 +334,8 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	customparams = {
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRETS",
-		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRETS",
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRET",
 	},
 }
 
@@ -346,6 +349,7 @@ local AntiAirGun = Cannon:New{
 	soundTrigger       = false,
 	sprayAngle         = 400,
 	customparams = {
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
 		cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 		flareonshot        = true,
 		weaponcost         = 8,

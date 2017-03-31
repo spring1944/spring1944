@@ -122,6 +122,7 @@ local ArmedBoat = BoatMother:New{
 
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
+	blocking					= false,
 	canMove						= true,
 	cantBeTransported			= false,
 	canSelfDestruct				= false,

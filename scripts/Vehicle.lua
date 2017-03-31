@@ -270,6 +270,10 @@ local function RestoreTurret(weaponNum)
 			if UnitDef.name == "gerflak38_truck" 
 				or UnitDef.name == "hun40mnimrod"
 				or UnitDef.name == "itaspadovunque"
+				or UnitDef.name == "gbrstaghound"
+				or UnitDef.name == "rusgazaaa"
+				or UnitDef.name == "swepbilm31"
+				or UnitDef.name == "usm16mgmc"
 				or UnitDef.name == "jpnisuzutype94_aa" then
 
 				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)

@@ -54,7 +54,7 @@ local MosinNagant = RifleClass:New{
 -- SVT (USSR)
 local SVT = RifleClass:New{
   name               = [[SVT-40]],
-  range              = 535,
+  range              = 575,
   reloadtime         = 2,
   rgbColor           = [[0.0 0.7 0.0]], -- overwrites default
   soundStart         = [[RUS_SVT]],

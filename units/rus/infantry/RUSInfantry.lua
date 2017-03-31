@@ -145,6 +145,7 @@ local RUS_Observ = ObservInf:New(RUSInf):New{
 local RUS_NI_Rifle = RifleInf:New(RUSInf):New{
 	name				= "SVT-40 Rifle",
 	description			= "Naval Infantry Rifleman",
+	maxDamageMul		= 1.05,
 	weapons = {
 		[1] = { -- Rifle
 			name				= "SVT",
