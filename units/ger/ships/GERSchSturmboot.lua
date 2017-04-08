@@ -5,7 +5,7 @@ local GER_SchSturmboot = InfantryLandingCraft:New{
 	buildCostMetal			= 400,
 	maxDamage				= 950,
 	maxReverseVelocity		= 0.76,
-	maxVelocity				= 1.52,
+	maxVelocity				= 4,
 	turnRate				= 165,	
 
 	customparams = {

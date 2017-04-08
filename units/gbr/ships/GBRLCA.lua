@@ -1,6 +1,6 @@
 local GBR_LCA = InfantryLandingCraft:New{
 	name					= "Landing Craft, Assault",
-	acceleration			= 0.9,
+	acceleration			= 0.009,
 	brakeRate				= 0.5,
 	buildCostMetal			= 500,
 	maxDamage				= 914,

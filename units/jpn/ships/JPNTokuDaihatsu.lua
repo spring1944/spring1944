@@ -1,6 +1,6 @@
 local JPN_TokuDaihatsu = TankLandingCraft:New{
 	name					= "Toku Daihatsu Landing Craft",
-	acceleration			= 0.9,
+	acceleration			= 0.09,
 	brakeRate				= 0.5,
 	buildCostMetal			= 1000,
 	maxDamage				= 3500,
@@ -22,10 +22,6 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 		},
 	},
 	customparams = {
-		armor_front				= 6,
-		armor_rear				= 6,
-		armor_side				= 6,
-		armor_top				= 6,
 		supplyrange				= 350, -- overwrite
 		--[[ enable me later when using LUS
 		deathanim = {

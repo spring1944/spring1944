@@ -7,8 +7,8 @@ local HUN_SchSturmboot = InfantryLandingCraft:New{
 	brakeRate				= 0.14,
 	buildCostMetal			= 400,
 	maxDamage				= 950,
-	maxReverseVelocity		= 0.76,
-	maxVelocity				= 1.52,
+	maxReverseVelocity		= 0.6,
+	maxVelocity				= 4,
 	turnRate				= 165,	
 
 	customparams = {
