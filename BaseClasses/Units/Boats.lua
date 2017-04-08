@@ -145,7 +145,7 @@ local BoatChild = Boat:New{ -- a boat turret
 }
 
 local EnclosedBoatTurret = BoatChild:New{
-	maxDamage			= 1600,
+	maxDamage			= 2500,
 }
 
 local OpenBoatTurret = BoatChild:New{

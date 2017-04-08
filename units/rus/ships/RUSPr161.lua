@@ -8,7 +8,7 @@ local RUS_Pr161 = ArmedBoat:New{
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	corpse					= "RUSPr161_dead",
 	mass					= 16100,
-	maxDamage				= 16100, --TODO: +10% because it has armor??
+	maxDamage				= 16100, 
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
@@ -22,6 +22,7 @@ local RUS_Pr161 = ArmedBoat:New{
 	customparams = {
 		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
 		killvoicephasecount		= 3,
+		damageGroup			= 'hardships',
 		children = {
 			"RUSTurret_45mm_Front",
 			"RUSPr161_Turret_85mm_Front",

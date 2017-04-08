@@ -19,6 +19,7 @@ local JPN_AbTei = ArmedBoat:New{
 		},
 	},
 	customparams = {
+		damageGroup			= 'hardships',
 	    armor_front	= 6,
 		armor_rear	= 6,
 		armor_side	= 6,

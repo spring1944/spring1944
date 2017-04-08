@@ -7,7 +7,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 2930,
-	maxDamage				= 3060, --+15% because it has armor
+	maxDamage				= 2930, 
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
@@ -22,6 +22,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	customparams = {
 		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
 		killvoicephasecount		= 3,
+		damageGroup			= 'hardships',
 		children = {
 			"RUSBKA1125_turret_76mm", 
 			"RUSBKA1125_Turret_DshK_Front", 
