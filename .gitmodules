@@ -6,3 +6,6 @@
 	path = LuaRules/modules/customCommands/data
 	url = https://bitbucket.org/notabots/customcommands.git
 	branch = master
+[submodule "LuaUI/Widgets/notAchili/data"]
+	path = LuaUI/Widgets/notAchili/data
+	url = https://bitbucket.org/notabots/notachili.git
