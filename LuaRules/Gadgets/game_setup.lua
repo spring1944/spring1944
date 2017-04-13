@@ -34,11 +34,13 @@ local GetUnitDefID				= Spring.GetUnitDefID
 local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local TestBuildOrder			= Spring.TestBuildOrder
-local TestMoveOrder       = Spring.TestMoveOrder
+local TestMoveOrder				= Spring.TestMoveOrder
+local GetPlayerInfo				= Spring.GetPlayerInfo
 -- SyncedCtrl
 local CreateUnit				= Spring.CreateUnit
 local DestroyFeature			= Spring.DestroyFeature
 local SetTeamResource			= Spring.SetTeamResource
+local SetTeamRulesParam			= Spring.SetTeamRulesParam
 
 
 -- constants
@@ -154,7 +156,7 @@ end
 
 local function GetStartUnit(teamID)
 	-- get the team startup info
-	local side = select(5, GetTeamInfo(teamID))
+	local side = GG.teamSide[teamID]
 	local startUnit
 	if (side == "") then
 		-- startscript didn't specify a side for this team
@@ -179,7 +181,7 @@ local function GetStartUnit(teamID)
 		end
 	end
 	GG.teamSide[teamID] = side
-	Spring.SetTeamRulesParam(teamID, "side", side)
+	SetTeamRulesParam(teamID, "side", side)
 	return startUnit
 end
 
@@ -271,5 +273,21 @@ function gadget:GameStart()
 			SpawnStartUnit(teamID)
 			SetStartResources(teamID)
 		end
+	end
+end
+
+-- keep track of choosing faction ingame
+function gadget:RecvLuaMsg(msg, playerID)
+	local code = string.sub(msg,1,1)
+	if code ~= '\138' then
+		return true
+	end
+	local side = string.sub(msg,2,string.len(msg))
+	local _, _, playerIsSpec, playerTeam = GetPlayerInfo(playerID)
+	if not playerIsSpec then
+		GG.teamSide[playerTeam] = side
+		SetTeamRulesParam(playerTeam, "side", side, {allied=true, public=false}) -- visible to allies only, set visible to all on GameStart
+		side = select(5, GetTeamInfo(playerTeam))
+		return true
 	end
 end
