@@ -89,7 +89,12 @@ function getTeamNameByNumber(teamNum)
 		teamNum = teamNum - #sidedata
 	end
 
-	return sidedata[teamNum].sideName
+	local side = sidedata[teamNum].sideName
+    -- Convert the "OVNI" into a random team
+    if side == "random team (gm)" then
+        side = ""
+    end
+    return side
 end
 
 
