@@ -229,7 +229,7 @@ local Mk223in50 = MediumGun:New{
   range              = 1800,
   reloadTime         = 3.5, -- 15 - 20 rounds per minute, as per Russian sources
   soundStart         = [[GEN_105mm]], -- :o
-  weaponVelocity     = 926,
+  weaponVelocity     = 1406,
   damage = {
     default            = 1325,
   },  
@@ -344,12 +344,12 @@ local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
 
 -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun (ITA)
 local Ansaldo76mmL40HE = MediumGun:New(MediumHE, true):New{
-  areaOfEffect       = 76,
+  areaOfEffect       = 96,
   name               = [[Ansaldo 76mm/40 Naval Gun]],
   range              = 1320,
   reloadTime         = 3.8,
   soundStart         = [[GER_75mm]],
-  weaponVelocity     = 1300,
+  weaponVelocity     = 1100,
   damage = {
     default            = 1828,
   },  
