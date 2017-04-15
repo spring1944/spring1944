@@ -191,6 +191,18 @@ local OTO100mmL47HE = MediumHeavyGun:New(MediumHE, true):New{
     default            = 3000,
   },  
 }
+-- 105mm 1936 Naval gun (SWE)
+local Mod105mm1936HE = MediumHeavyGun:New(MediumHE, true):New{
+  areaOfEffect       = 112,
+  name               = [[105mm mod.1936 Naval Gun]],
+  range              = 1705,
+  reloadTime         = 6.5,
+  soundStart         = [[GEN_105mm]],
+  weaponVelocity     = 1400,
+  damage = {
+    default            = 3800,
+  },  
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -215,4 +227,6 @@ return lowerkeys({
   Ansaldo90mmL53AP = Ansaldo90mmL53AP,
   -- OTO 100mm/47 1928 Naval gun
   OTO100mmL47HE = OTO100mmL47HE,
+  -- SWE 105mm 1936 Naval gun
+  Mod105mm1936HE = Mod105mm1936HE,
 })
