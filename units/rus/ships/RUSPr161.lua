@@ -16,7 +16,7 @@ local RUS_Pr161 = ArmedBoat:New{
 	turnRate				= 150,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "S5385mmHE",
+			name				= "S5385mmAP",
 		},
 	},
 	customparams = {
@@ -67,7 +67,7 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 	objectName				= "<SIDE>/RUSBKA1125_Turret_76mm.s3o", -- temp hack to avoid clipping
   	weapons = {	
 		[1] = {
-			name				= "S5385mmHE",
+			name				= "S5385mmAP",
 			maxAngleDif			= 300,
 		},
 	},
