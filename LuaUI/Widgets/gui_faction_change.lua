@@ -63,7 +63,7 @@ local SIDEDATA = {
 		sideName	= "random team (gm)",
 		description = "Random team"
 	},
-    -- Axis
+	-- Axis
 	[2] = {
 		sideName	= "ger",
 		description = "        Germany\n\nWell balanced\nfaction, with strong\ntanks and army"
@@ -80,7 +80,7 @@ local SIDEDATA = {
 		sideName	= "hun",
 		description = "           Hungary\n\nVery competitive at\nair and sea, with\nsome aces at terrain,\nlike Nimrod and TAS"
 	},
-    -- Allies
+	-- Allies
 	[6] = {
 		sideName	= "gbr",
 		description = "  United Kingdom\n\nDeploy infantry\neverywhere with\nGliders and sneak\ncommandos in\nenemy lines"
@@ -93,17 +93,17 @@ local SIDEDATA = {
 		sideName	= "us",
 		description = "           USA\n\nEnjoy the great\nSherman armour\nand infiltrate the\n101 airborne\nparatroopers"
 	},
-    -- Neutral
+	-- Neutral
 	[9] = {
 		sideName	= "swe",
 		description = "         Sweden\n\nDominate the sea\nand pack up your\nfactories if\nneeded"
 	},
-    --[[
+	--[[
 	[10] = {
 		sideName	= "fin",
 		description = "Finland\n\n???????"
 	},
-    --]]
+	--]]
 }
 local N_AXIS = 4
 local N_ALLIES = 3
@@ -114,7 +114,7 @@ local N_NEUTRAL = 2  -- Random team is considered neutral
 -- Functions
 --------------------------------------------------------------------------------
 function spGetSideData()
-    return SIDEDATA
+	return SIDEDATA
 end
 
 function getTeamName()
@@ -148,18 +148,18 @@ function getTeamNameByNumber(teamNum)
 	end
 
 	local side = sidedata[teamNum].sideName
-    -- Convert the "OVNI" into a random team
-    if side == "random team (gm)" then
-        side = ""
-    end
-    return side
+	-- Convert the "OVNI" into a random team
+	if side == "random team (gm)" then
+		side = ""
+	end
+	return side
 end
 
 function readAll(file)
-    local f = io.open(file, "rb")
-    local content = f:read("*all")
-    f:close()
-    return content
+	local f = io.open(file, "rb")
+	local content = f:read("*all")
+	f:close()
+	return content
 end
 
 --------------------------------------------------------------------------------
@@ -198,15 +198,15 @@ function widget:DrawScreen()
 end
 
 function DrawCircle(a0, a1, n)
-    local da = a1 - a0
-    local r = RADIUS
+	local da = a1 - a0
+	local r = RADIUS
 	glVertex(r, r)
 
-    for i=0,n do
-        local a = a0 + i * da / n
+	for i=0,n do
+		local a = a0 + i * da / n
 		glVertex(
-            r + (r * math.sin(a)), 
-		    r + (r * math.cos(a))
+			r + (r * math.sin(a)), 
+			r + (r * math.cos(a))
 		)
 	end
 end
@@ -214,38 +214,38 @@ end
 function FactionChangeList()
 	-- Panel
 	local sidedata = spGetSideData()
-    local n = #sidedata
-    local da = 2.0 * math.pi / n
-    local a0 = 0.5 * da
-    local a1 = a0 + N_AXIS * da
+	local n = #sidedata
+	local da = 2.0 * math.pi / n
+	local a0 = 0.5 * da
+	local a1 = a0 + N_AXIS * da
 	glColor(0.5, 0, 0, 0.5)
 	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_AXIS * 3)
-    local a0 = a1
-    local a1 = a0 + N_ALLIES * da
+	local a0 = a1
+	local a1 = a0 + N_ALLIES * da
 	glColor(0, 0, 0.5, 0.5)
 	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_ALLIES * 3)
-    local a0 = a1
-    local a1 = a0 + N_NEUTRAL * da
+	local a0 = a1
+	local a1 = a0 + N_NEUTRAL * da
 	glColor(0, 0, 0, 0.5)
 	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_NEUTRAL * 3)
 
-    -- Teams
-    local selTeam = getTeamNumber()
-    local R = RADIUS
-    local r = math.pi * R / n
+	-- Teams
+	local selTeam = getTeamNumber()
+	local R = RADIUS
+	local r = math.pi * R / n
 	glColor(1, 1, 1, 1)
 	for i=1,n do
-        x = R + ((R - 0.7 * r) * math.sin((i-1) * 2.0 * math.pi / n))
-        y = R + ((R - 0.7 * r) * math.cos((i-1) * 2.0 * math.pi / n))
-	    glTexture('LuaUI/Widgets/faction_change/' .. sidedata[i].sideName .. '.png')
-	    glTexRect(x - 0.5 * r, y - 0.5 * r,
-                  x + 0.5 * r, y + 0.5 * r)
-	    glTexture(false)
+		x = R + ((R - 0.7 * r) * math.sin((i-1) * 2.0 * math.pi / n))
+		y = R + ((R - 0.7 * r) * math.cos((i-1) * 2.0 * math.pi / n))
+		glTexture('LuaUI/Widgets/faction_change/' .. sidedata[i].sideName .. '.png')
+		glTexRect(x - 0.5 * r, y - 0.5 * r,
+				  x + 0.5 * r, y + 0.5 * r)
+		glTexture(false)
 		if selTeam == i then
-	        glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
-	        glTexRect(x - 0.5 * r, y - 0.5 * r,
-                      x + 0.5 * r, y + 0.5 * r)
-	        glTexture(false)
+			glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
+			glTexRect(x - 0.5 * r, y - 0.5 * r,
+					  x + 0.5 * r, y + 0.5 * r)
+			glTexture(false)
 		end
 	end
 
@@ -261,18 +261,18 @@ end
 
 function widget:MousePress(mx, my, mButton)
 
-    -- Check we are on the circle
-    local R = RADIUS
-    local rx = mx - (px + R)
-    local ry = my - (py + R)
-    if rx*rx + ry*ry >= R*R then
-        return true
-    end
+	-- Check we are on the circle
+	local R = RADIUS
+	local rx = mx - (px + R)
+	local ry = my - (py + R)
+	if rx*rx + ry*ry >= R*R then
+		return true
+	end
 
-    if (mButton == 2 or mButton == 3) then
+	if (mButton == 2 or mButton == 3) then
 		-- Dragging
 		return true
-    end
+	end
 
 	-- Spectator check before any action
 	if spGetSpectatingState() then
@@ -280,20 +280,20 @@ function widget:MousePress(mx, my, mButton)
 		return false
 	end
 
-    -- Check if we are selecting a new team
+	-- Check if we are selecting a new team
 	local sidedata = spGetSideData()
-    local n = #sidedata
-    local r = math.pi * R / n
-    if rx*rx + ry*ry <= (R - 1.4*r)*(R - 1.4*r) then
-        return true
-    end
+	local n = #sidedata
+	local r = math.pi * R / n
+	if rx*rx + ry*ry <= (R - 1.4*r)*(R - 1.4*r) then
+		return true
+	end
 
-    -- Get the new team
-    local da = 2.0 * math.pi / n
-    local a = math.atan2(rx, ry) + 0.5 * da
-    local i = math.floor(a / da) + 1
-    mySide = getTeamNameByNumber(i)
-    spSendLuaRulesMsg('\138' .. mySide)
+	-- Get the new team
+	local da = 2.0 * math.pi / n
+	local a = math.atan2(rx, ry) + 0.5 * da
+	local i = math.floor(a / da) + 1
+	mySide = getTeamNameByNumber(i)
+	spSendLuaRulesMsg('\138' .. mySide)
 	if factionChangeList then
 		glDeleteList(factionChangeList)
 	end
