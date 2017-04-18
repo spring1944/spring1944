@@ -50,7 +50,7 @@ local spSetTeamRulesParam = Spring.SetTeamRulesParam
 local spGetGroundHeight = Spring.GetGroundHeight
 local spSendLuaRulesMsg = Spring.SendLuaRulesMsg
 local spGetSpectatingState = Spring.GetSpectatingState
-local spGetSideData = Spring.GetSideData
+-- local spGetSideData = Spring.GetSideData  -- Overloaded by a custom sidedata
 
 local amNewbie = (spGetTeamRulesParam(myTeamID, 'isNewbie') == 1)
 local mySide = select(5, spGetTeamInfo(myTeamID))
@@ -58,22 +58,65 @@ local mySide = select(5, spGetTeamInfo(myTeamID))
 local factionChangeList
 
 local RADIUS = 128
-local DESCRIPTIONS = {}
-DESCRIPTIONS["fin"] = "Finland\n\n???????"
-DESCRIPTIONS["gbr"] = "  United Kingdom\n\nDeploy infantry\neverywhere with\nGliders and sneak\ncommandos in\nenemy lines"
-DESCRIPTIONS["ger"] = "        Germany\n\nWell balanced\nfaction, with strong\ntanks and army"
-DESCRIPTIONS["hun"] = "           Hungary\n\nVery competitive at\nair and sea, with\nsome aces at terrain,\nlike Nimrod and TAS"
-DESCRIPTIONS["ita"] = "                 Italy\n\nVery good infantry,\nconveniently supported\nby gun trucks"
-DESCRIPTIONS["jpn"] = "            Japan\n\nProbably the most\npowerful faction at\nthe early stages\nof the battle"
-DESCRIPTIONS["rus"] = "             USSR\n\nSmash your enemies\nwith your T34 tanks\nand the infantry\nsupport"
-DESCRIPTIONS["swe"] = "         Sweden\n\nDominate the sea\nand pack up your\nfactories if\nneeded"
-DESCRIPTIONS["us"] = "           USA\n\nEnjoy the great\nSherman armour\nand infiltrate the\n101 airborne\nparatroopers"
-DESCRIPTIONS[""] = "Random team"
-DESCRIPTIONS["random team (gm)"] = DESCRIPTIONS[""]
+local SIDEDATA = {
+	[1] = {
+		sideName	= "random team (gm)",
+		description = "Random team"
+	},
+    -- Axis
+	[2] = {
+		sideName	= "ger",
+		description = "        Germany\n\nWell balanced\nfaction, with strong\ntanks and army"
+	},
+	[3] = {
+		sideName	= "jpn",
+		description = "            Japan\n\nProbably the most\npowerful faction at\nthe early stages\nof the battle"
+	},
+	[4] = {
+		sideName	= "ita",
+		description = "                 Italy\n\nVery good infantry,\nconveniently supported\nby gun trucks"
+	},
+	[5] = {
+		sideName	= "hun",
+		description = "           Hungary\n\nVery competitive at\nair and sea, with\nsome aces at terrain,\nlike Nimrod and TAS"
+	},
+    -- Allies
+	[6] = {
+		sideName	= "gbr",
+		description = "  United Kingdom\n\nDeploy infantry\neverywhere with\nGliders and sneak\ncommandos in\nenemy lines"
+	},
+	[7] = {
+		sideName	= "rus",
+		description = "             USSR\n\nSmash your enemies\nwith your T34 tanks\nand the infantry\nsupport"
+	},
+	[8] = {
+		sideName	= "us",
+		description = "           USA\n\nEnjoy the great\nSherman armour\nand infiltrate the\n101 airborne\nparatroopers"
+	},
+    -- Neutral
+	[9] = {
+		sideName	= "swe",
+		description = "         Sweden\n\nDominate the sea\nand pack up your\nfactories if\nneeded"
+	},
+    --[[
+	[10] = {
+		sideName	= "fin",
+		description = "Finland\n\n???????"
+	},
+    --]]
+}
+local N_AXIS = 4
+local N_ALLIES = 3
+local N_NEUTRAL = 2  -- Random team is considered neutral
+
 
 --------------------------------------------------------------------------------
 -- Functions
 --------------------------------------------------------------------------------
+function spGetSideData()
+    return SIDEDATA
+end
+
 function getTeamName()
 	local side = mySide
 	if side == "" then
@@ -195,10 +238,10 @@ function FactionChangeList()
 	end
 
 	-- Determine the side
-	local side = getTeamName()
+	local side = getTeamNumber()
 	-- Add a description
 	glBeginText()
-		glText(DESCRIPTIONS[side], R, R, 12, 'cv')
+		glText(sidedata[side].description, R, R, 12, 'cv')
 	glEndText()
 end
 
