@@ -32,6 +32,7 @@ local glTexRect = gl.TexRect
 local glDepthTest = gl.DepthTest
 local glBeginEnd = gl.BeginEnd
 local GL_QUADS = GL.QUADS
+local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
 local glPushMatrix = gl.PushMatrix
 local glPopMatrix = gl.PopMatrix
 local glTranslate = gl.Translate
@@ -55,6 +56,20 @@ local amNewbie = (spGetTeamRulesParam(myTeamID, 'isNewbie') == 1)
 local mySide = select(5, spGetTeamInfo(myTeamID))
 
 local factionChangeList
+
+local RADIUS = 128
+local DESCRIPTIONS = {}
+DESCRIPTIONS["fin"] = "Finland\n\n???????"
+DESCRIPTIONS["gbr"] = "  United Kingdom\n\nDeploy infantry\neverywhere with\nGliders and sneak\ncommandos in\nenemy lines"
+DESCRIPTIONS["ger"] = "        Germany\n\nWell balanced\nfaction, with strong\ntanks and army"
+DESCRIPTIONS["hun"] = "           Hungary\n\nVery competitive at\nair and sea, with\nsome aces at terrain,\nlike Nimrod and TAS"
+DESCRIPTIONS["ita"] = "                 Italy\n\nVery good infantry,\nconveniently supported\nby gun trucks"
+DESCRIPTIONS["jpn"] = "            Japan\n\nProbably the most\npowerful faction at\nthe early stages\nof the battle"
+DESCRIPTIONS["rus"] = "             USSR\n\nSmash your enemies\nwith your T34 tanks\nand the infantry\nsupport"
+DESCRIPTIONS["swe"] = "         Sweden\n\nDominate the sea\nand pack up your\nfactories if\nneeded"
+DESCRIPTIONS["us"] = "           USA\n\nEnjoy the great\nSherman armour\nand infiltrate the\n101 airborne\nparatroopers"
+DESCRIPTIONS[""] = "Random team"
+DESCRIPTIONS["random team (gm)"] = DESCRIPTIONS[""]
 
 --------------------------------------------------------------------------------
 -- Functions
@@ -97,6 +112,12 @@ function getTeamNameByNumber(teamNum)
     return side
 end
 
+function readAll(file)
+    local f = io.open(file, "rb")
+    local content = f:read("*all")
+    f:close()
+    return content
+end
 
 --------------------------------------------------------------------------------
 -- Callins
@@ -133,21 +154,51 @@ function widget:DrawScreen()
 	
 end
 
+function DrawCircle()
+	local n = 32
+    local r = RADIUS
+	glVertex(r, r)
+
+    for i=0,n do
+		glVertex(
+            r + (r * math.cos(i * 2.0 * math.pi / n)), 
+		    r + (r * math.sin(i * 2.0 * math.pi / n))
+		)
+	end
+end
+
 function FactionChangeList()
 	-- Panel
 	glColor(0, 0, 0, 0.5)
-	glRect(0, 0, 128, 80)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle)
+
+    -- Teams
+	local sidedata = spGetSideData()
+    local selTeam = getTeamNumber()
+    local R = RADIUS
+    local n = #sidedata
+    local r = math.pi * R / n
+	glColor(1, 1, 1, 1)
+	for i=1,n do
+        x = R + ((R - 0.7 * r) * math.sin((i-1) * 2.0 * math.pi / n))
+        y = R + ((R - 0.7 * r) * math.cos((i-1) * 2.0 * math.pi / n))
+	    glTexture('LuaUI/Widgets/faction_change/' .. sidedata[i].sideName .. '.png')
+	    glTexRect(x - 0.5 * r, y - 0.5 * r,
+                  x + 0.5 * r, y + 0.5 * r)
+	    glTexture(false)
+		if selTeam == i then
+	        glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
+	        glTexRect(x - 0.5 * r, y - 0.5 * r,
+                      x + 0.5 * r, y + 0.5 * r)
+	        glTexture(false)
+		end
+	end
+
 	-- Determine the side
 	local side = getTeamName()
-	-- Icon
-	glColor(1, 1, 1, 1)
-	glTexture('sidepics/' .. side .. '.png')
-	glTexRect(40, 14, 88, 62)
-	glTexture(false)
-	-- Text
+	-- Add a description
 	glBeginText()
-		glText('Change Faction', 64, 64, 12, 'cd')
-		glText(side, 64, 0, 12, 'cd')
+		glText(DESCRIPTIONS[side], R, R, 12, 'cv')
 	glEndText()
 end
 
@@ -155,34 +206,44 @@ end
 
 function widget:MousePress(mx, my, mButton)
 
-	-- Check 3 of the 4 sides
-	if mx >= px and mx <= px + 128 and my >= py and my < py + 80 then
+    -- Check we are on the circle
+    local R = RADIUS
+    local rx = mx - (px + R)
+    local ry = my - (py + R)
+    if rx*rx + ry*ry >= R*R then
+        return true
+    end
 
-		-- Check buttons
-		if mButton == 1 then
+    if (mButton == 2 or mButton == 3) then
+		-- Dragging
+		return true
+    end
 
-			-- Spectator check before any action
-			if spGetSpectatingState() then
-				widgetHandler:RemoveWidget(self)
-				return false
-			end
-
-			-- Get the next team of the list
-			local teamN = getTeamNumber()
-			mySide = getTeamNameByNumber(teamN + 1)
-			spSendLuaRulesMsg('\138' .. mySide)
-			--Remake gui
-			if factionChangeList then
-				glDeleteList(factionChangeList)
-			end
-			factionChangeList = glCreateList(FactionChangeList)
-			return true
-			
-		elseif (mButton == 2 or mButton == 3) then
-			-- Dragging
-			return true
-		end
+	-- Spectator check before any action
+	if spGetSpectatingState() then
+		widgetHandler:RemoveWidget(self)
+		return false
 	end
+
+    -- Check if we are selecting a new team
+	local sidedata = spGetSideData()
+    local n = #sidedata
+    local r = math.pi * R / n
+    if rx*rx + ry*ry <= (R - 1.4*r)*(R - 1.4*r) then
+        return true
+    end
+
+    -- Get the new team
+    local da = 2.0 * math.pi / n
+    local a = math.atan2(rx, ry) + 0.5 * da
+    local i = math.floor(a / da) + 1
+    mySide = getTeamNameByNumber(i)
+    spSendLuaRulesMsg('\138' .. mySide)
+	if factionChangeList then
+		glDeleteList(factionChangeList)
+	end
+	factionChangeList = glCreateList(FactionChangeList)
+	return true
 end
 
 function widget:MouseMove(mx, my, dx, dy, mButton)
