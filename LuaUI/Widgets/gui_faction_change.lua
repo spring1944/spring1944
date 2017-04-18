@@ -197,29 +197,41 @@ function widget:DrawScreen()
 	
 end
 
-function DrawCircle()
-	local n = 32
+function DrawCircle(a0, a1, n)
+    local da = a1 - a0
     local r = RADIUS
 	glVertex(r, r)
 
     for i=0,n do
+        local a = a0 + i * da / n
 		glVertex(
-            r + (r * math.cos(i * 2.0 * math.pi / n)), 
-		    r + (r * math.sin(i * 2.0 * math.pi / n))
+            r + (r * math.sin(a)), 
+		    r + (r * math.cos(a))
 		)
 	end
 end
 
 function FactionChangeList()
 	-- Panel
+	local sidedata = spGetSideData()
+    local n = #sidedata
+    local da = 2.0 * math.pi / n
+    local a0 = 0.5 * da
+    local a1 = a0 + N_AXIS * da
+	glColor(0.5, 0, 0, 0.5)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_AXIS * 3)
+    local a0 = a1
+    local a1 = a0 + N_ALLIES * da
+	glColor(0, 0, 0.5, 0.5)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_ALLIES * 3)
+    local a0 = a1
+    local a1 = a0 + N_NEUTRAL * da
 	glColor(0, 0, 0, 0.5)
-	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_NEUTRAL * 3)
 
     -- Teams
-	local sidedata = spGetSideData()
     local selTeam = getTeamNumber()
     local R = RADIUS
-    local n = #sidedata
     local r = math.pi * R / n
 	glColor(1, 1, 1, 1)
 	for i=1,n do
