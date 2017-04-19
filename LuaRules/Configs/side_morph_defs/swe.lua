@@ -350,7 +350,25 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
-	
+
+	swehaubitsm06_truck = 
+	{
+		into = 'swehaubitsm06_stationary',
+		tech = 0,
+		time = 35,
+		metal = 0,
+		energy = 0,
+		directional = true,
+	},
+	swehaubitsm06_stationary = 
+	{
+		into = 'swehaubitsm06_truck',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+	},
+
 	sweboforsm36_truck = {
 		{
 			into = 'sweboforsm36_stationary',
