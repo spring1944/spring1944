@@ -91,8 +91,8 @@ local sweDefs = {
 			metal = 3000,
 			energy = 0,
 			time = 85,
-			name = '  Self  \n  Propelled  ',
-			text = 'Makes Self-Propelled Artillery available in this yard',
+			name = '  Heavy  \n  Fieldguns  ',
+			text = 'Makes heavy-fieldguns available in this yard',
 			facing = true,
 		},
 		{

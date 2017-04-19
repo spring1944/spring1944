@@ -1,6 +1,7 @@
 local SWEHaubitsM06_Truck = HGunTractor:New{
 	name					= "Towed Haubits m/06",
 	corpse					= "SWEVolvoHBT_Destroyed",
+	buildCostMetal			= 2650,
 	trackOffset				= 10,
 	trackWidth				= 13,
 }
