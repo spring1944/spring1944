@@ -104,6 +104,13 @@ local N_NEUTRAL = 1
 --------------------------------------------------------------------------------
 -- Functions
 --------------------------------------------------------------------------------
+local function QuadVerts(x, y, z, r)
+	glTexCoord(0, 0); glVertex(x - r, y, z - r)
+	glTexCoord(1, 0); glVertex(x + r, y, z - r)
+	glTexCoord(1, 1); glVertex(x + r, y, z + r)
+	glTexCoord(0, 1); glVertex(x - r, y, z + r)
+end
+
 function spGetSideData()
 	return SIDEDATA
 end
@@ -263,7 +270,7 @@ function widget:MousePress(mx, my, mButton)
 	local rx = mx - (px + R)
 	local ry = my - (py + R)
 	if rx*rx + ry*ry >= R*R then
-		return true
+		return
 	end
 
 	if (mButton == 2 or mButton == 3) then
