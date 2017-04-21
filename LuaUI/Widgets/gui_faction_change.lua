@@ -173,6 +173,25 @@ function widget:Initialize()
 	spSendLuaRulesMsg('\138' .. mySide)
 end
 
+function widget:DrawWorld()
+	glColor(1, 1, 1, 0.5)
+	glDepthTest(false)
+	for i = 1, #teamList do
+		local teamID = teamList[i]
+		local tsx, tsy, tsz = spGetTeamStartPosition(teamID)
+		if tsx and tsx > 0 then
+			local side = spGetTeamRulesParam(teamID, 'side')
+			if side == "" or side == 0 then
+				-- No idea why it takes 0 value after choosing random team...
+				side = "random team (gm)"
+			end
+			glTexture('LuaUI/Widgets/faction_change/' .. side .. '.png')
+			glBeginEnd(GL_QUADS, QuadVerts, tsx, spGetGroundHeight(tsx, tsz), tsz, 80)
+		end
+	end
+	glTexture(false)
+end
+
 function widget:DrawScreen()
 
 	-- Spectator check
