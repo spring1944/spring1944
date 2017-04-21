@@ -32,6 +32,7 @@ local glTexRect = gl.TexRect
 local glDepthTest = gl.DepthTest
 local glBeginEnd = gl.BeginEnd
 local GL_QUADS = GL.QUADS
+local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
 local glPushMatrix = gl.PushMatrix
 local glPopMatrix = gl.PopMatrix
 local glTranslate = gl.Translate
@@ -49,16 +50,71 @@ local spSetTeamRulesParam = Spring.SetTeamRulesParam
 local spGetGroundHeight = Spring.GetGroundHeight
 local spSendLuaRulesMsg = Spring.SendLuaRulesMsg
 local spGetSpectatingState = Spring.GetSpectatingState
-local spGetSideData = Spring.GetSideData
+-- local spGetSideData = Spring.GetSideData  -- Overloaded by a custom sidedata
 
 local amNewbie = (spGetTeamRulesParam(myTeamID, 'isNewbie') == 1)
 local mySide = select(5, spGetTeamInfo(myTeamID))
 
 local factionChangeList
 
+local RADIUS = 128
+local SIDEDATA = {
+	[1] = {
+		sideName	= "random team (gm)",
+	},
+	-- Axis
+	[2] = {
+		sideName	= "ger",
+	},
+	[3] = {
+		sideName	= "jpn",
+	},
+	[4] = {
+		sideName	= "ita",
+	},
+	[5] = {
+		sideName	= "hun",
+	},
+	-- Allies
+	[6] = {
+		sideName	= "gbr",
+	},
+	[7] = {
+		sideName	= "rus",
+	},
+	[8] = {
+		sideName	= "us",
+	},
+	-- Neutral
+	[9] = {
+		sideName	= "swe",
+	},
+	--[[
+	[10] = {
+		sideName	= "fin",
+		description = "Finland\n\n???????"
+	},
+	--]]
+}
+local N_AXIS = 4
+local N_ALLIES = 3
+local N_NEUTRAL = 1
+
+
 --------------------------------------------------------------------------------
 -- Functions
 --------------------------------------------------------------------------------
+local function QuadVerts(x, y, z, r)
+	glTexCoord(0, 0); glVertex(x - r, y, z - r)
+	glTexCoord(1, 0); glVertex(x + r, y, z - r)
+	glTexCoord(1, 1); glVertex(x + r, y, z + r)
+	glTexCoord(0, 1); glVertex(x - r, y, z + r)
+end
+
+function spGetSideData()
+	return SIDEDATA
+end
+
 function getTeamName()
 	local side = mySide
 	if side == "" then
@@ -90,13 +146,19 @@ function getTeamNameByNumber(teamNum)
 	end
 
 	local side = sidedata[teamNum].sideName
-    -- Convert the "OVNI" into a random team
-    if side == "random team (gm)" then
-        side = ""
-    end
-    return side
+	-- Convert the "OVNI" into a random team
+	if side == "random team (gm)" then
+		side = ""
+	end
+	return side
 end
 
+function readAll(file)
+	local f = io.open(file, "rb")
+	local content = f:read("*all")
+	f:close()
+	return content
+end
 
 --------------------------------------------------------------------------------
 -- Callins
@@ -109,6 +171,25 @@ function widget:Initialize()
 	end
 	-- Check that game_setup.lua has a faction already set
 	spSendLuaRulesMsg('\138' .. mySide)
+end
+
+function widget:DrawWorld()
+	glColor(1, 1, 1, 0.5)
+	glDepthTest(false)
+	for i = 1, #teamList do
+		local teamID = teamList[i]
+		local tsx, tsy, tsz = spGetTeamStartPosition(teamID)
+		if tsx and tsx > 0 then
+			local side = spGetTeamRulesParam(teamID, 'side')
+			if side == "" or side == 0 then
+				-- No idea why it takes 0 value after choosing random team...
+				side = "random team (gm)"
+			end
+			glTexture('LuaUI/Widgets/faction_change/' .. side .. '.png')
+			glBeginEnd(GL_QUADS, QuadVerts, tsx, spGetGroundHeight(tsx, tsz), tsz, 80)
+		end
+	end
+	glTexture(false)
 end
 
 function widget:DrawScreen()
@@ -133,56 +214,125 @@ function widget:DrawScreen()
 	
 end
 
+function DrawCircle(a0, a1, n)
+	local da = a1 - a0
+	local r = RADIUS
+	glVertex(r, r)
+
+	for i=0,n do
+		local a = a0 + i * da / n
+		glVertex(
+			r + (r * math.sin(a)), 
+			r + (r * math.cos(a))
+		)
+	end
+end
+
 function FactionChangeList()
-	-- Panel
+	-- Panel (Divided in Axis/Allies/Neutral)
+	local sidedata = spGetSideData()
+	local n = #sidedata
+	local da = 2.0 * math.pi / (n - 1)  -- Random is placed at mid
+	local a0 = 0.5 * N_NEUTRAL * da     -- Neutrals are placed at top
+	local a1 = a0 + N_AXIS * da
+	glColor(0.5, 0, 0, 0.5)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_AXIS * 4)
+	local a0 = a1
+	local a1 = a0 + N_ALLIES * da
+	glColor(0, 0, 0.5, 0.5)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_ALLIES * 4)
+	local a0 = a1
+	local a1 = a0 + N_NEUTRAL * da
 	glColor(0, 0, 0, 0.5)
-	glRect(0, 0, 128, 80)
-	-- Determine the side
-	local side = getTeamName()
-	-- Icon
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_NEUTRAL * 4)
+
+	-- Place random at mid
+	local selTeam = getTeamNumber()
+	local R = RADIUS
+	local r = math.pi * R / (n - 1)
 	glColor(1, 1, 1, 1)
-	glTexture('sidepics/' .. side .. '.png')
-	glTexRect(40, 14, 88, 62)
+	glTexture('LuaUI/Widgets/faction_change/' .. sidedata[1].sideName .. '.png')
+	glTexRect(R - 0.5 * r, R - 0.5 * r,
+			  R + 0.5 * r, R + 0.5 * r)
 	glTexture(false)
-	-- Text
-	glBeginText()
-		glText('Change Faction', 64, 64, 12, 'cd')
-		glText(side, 64, 0, 12, 'cd')
-	glEndText()
+	if selTeam == 1 then
+		glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
+		glTexRect(R - 0.5 * r, R - 0.5 * r,
+				  R + 0.5 * r, R + 0.5 * r)
+		glTexture(false)
+	end
+	-- And the rest of factions all around
+	local a0 = 0.5 * (N_NEUTRAL + 1) * da  -- Neutrals are placed at top
+	for i=2,n do
+		local ii = i - 2
+		x = R + ((R - 0.7 * r) * math.sin(a0 + ii * 2.0 * math.pi / (n - 1)))
+		y = R + ((R - 0.7 * r) * math.cos(a0 + ii * 2.0 * math.pi / (n - 1)))
+		glTexture('LuaUI/Widgets/faction_change/' .. sidedata[i].sideName .. '.png')
+		glTexRect(x - 0.5 * r, y - 0.5 * r,
+				  x + 0.5 * r, y + 0.5 * r)
+		glTexture(false)
+		if selTeam == i then
+			glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
+			glTexRect(x - 0.5 * r, y - 0.5 * r,
+					  x + 0.5 * r, y + 0.5 * r)
+			glTexture(false)
+		end
+	end
 end
 
 
 
 function widget:MousePress(mx, my, mButton)
 
-	-- Check 3 of the 4 sides
-	if mx >= px and mx <= px + 128 and my >= py and my < py + 80 then
-
-		-- Check buttons
-		if mButton == 1 then
-
-			-- Spectator check before any action
-			if spGetSpectatingState() then
-				widgetHandler:RemoveWidget(self)
-				return false
-			end
-
-			-- Get the next team of the list
-			local teamN = getTeamNumber()
-			mySide = getTeamNameByNumber(teamN + 1)
-			spSendLuaRulesMsg('\138' .. mySide)
-			--Remake gui
-			if factionChangeList then
-				glDeleteList(factionChangeList)
-			end
-			factionChangeList = glCreateList(FactionChangeList)
-			return true
-			
-		elseif (mButton == 2 or mButton == 3) then
-			-- Dragging
-			return true
-		end
+	-- Check we are on the circle
+	local R = RADIUS
+	local rx = mx - (px + R)
+	local ry = my - (py + R)
+	if rx*rx + ry*ry >= R*R then
+		return
 	end
+
+	if (mButton == 2 or mButton == 3) then
+		-- Dragging
+		return true
+	end
+
+	-- Spectator check before any action
+	if spGetSpectatingState() then
+		widgetHandler:RemoveWidget(self)
+		return false
+	end
+
+	-- Check if we are selecting a new team
+	local sidedata = spGetSideData()
+	local n = #sidedata
+	local r = math.pi * R / (n - 1)
+	if rx*rx + ry*ry <= 0.25 * R * R then
+		-- That's the midddle faction (random team)
+		mySide = getTeamNameByNumber(1)
+		spSendLuaRulesMsg('\138' .. mySide)
+		if factionChangeList then
+			glDeleteList(factionChangeList)
+		end
+		factionChangeList = glCreateList(FactionChangeList)
+		return true
+	end
+
+	-- Get the new team
+	local da = 2.0 * math.pi / (n - 1)
+	local a0 = 0.5 * N_NEUTRAL * da     -- Neutrals are placed at top
+	local a = math.atan2(rx, ry) - a0
+	if a < 0.0 then
+		a = a + 2.0 * math.pi
+	end
+	local i = math.floor(a / da) + 2
+	mySide = getTeamNameByNumber(i)
+	spSendLuaRulesMsg('\138' .. mySide)
+	if factionChangeList then
+		glDeleteList(factionChangeList)
+	end
+	factionChangeList = glCreateList(FactionChangeList)
+	return true
 end
 
 function widget:MouseMove(mx, my, dx, dy, mButton)
