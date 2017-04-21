@@ -61,42 +61,33 @@ local RADIUS = 128
 local SIDEDATA = {
 	[1] = {
 		sideName	= "random team (gm)",
-		description = "Random team"
 	},
 	-- Axis
 	[2] = {
 		sideName	= "ger",
-		description = "        Germany\n\nWell balanced\nfaction, with strong\ntanks and army"
 	},
 	[3] = {
 		sideName	= "jpn",
-		description = "            Japan\n\nProbably the most\npowerful faction at\nthe early stages\nof the battle"
 	},
 	[4] = {
 		sideName	= "ita",
-		description = "                 Italy\n\nVery good infantry,\nconveniently supported\nby gun trucks"
 	},
 	[5] = {
 		sideName	= "hun",
-		description = "           Hungary\n\nVery competitive at\nair and sea, with\nsome aces at terrain,\nlike Nimrod and TAS"
 	},
 	-- Allies
 	[6] = {
 		sideName	= "gbr",
-		description = "  United Kingdom\n\nDeploy infantry\neverywhere with\nGliders and sneak\ncommandos in\nenemy lines"
 	},
 	[7] = {
 		sideName	= "rus",
-		description = "             USSR\n\nSmash your enemies\nwith your T34 tanks\nand the infantry\nsupport"
 	},
 	[8] = {
 		sideName	= "us",
-		description = "           USA\n\nEnjoy the great\nSherman armour\nand infiltrate the\n101 airborne\nparatroopers"
 	},
 	-- Neutral
 	[9] = {
 		sideName	= "swe",
-		description = "         Sweden\n\nDominate the sea\nand pack up your\nfactories if\nneeded"
 	},
 	--[[
 	[10] = {
@@ -107,7 +98,7 @@ local SIDEDATA = {
 }
 local N_AXIS = 4
 local N_ALLIES = 3
-local N_NEUTRAL = 2  -- Random team is considered neutral
+local N_NEUTRAL = 1
 
 
 --------------------------------------------------------------------------------
@@ -212,31 +203,44 @@ function DrawCircle(a0, a1, n)
 end
 
 function FactionChangeList()
-	-- Panel
+	-- Panel (Divided in Axis/Allies/Neutral)
 	local sidedata = spGetSideData()
 	local n = #sidedata
-	local da = 2.0 * math.pi / n
-	local a0 = 0.5 * da
+	local da = 2.0 * math.pi / (n - 1)  -- Random is placed at mid
+	local a0 = 0.5 * N_NEUTRAL * da     -- Neutrals are placed at top
 	local a1 = a0 + N_AXIS * da
 	glColor(0.5, 0, 0, 0.5)
-	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_AXIS * 3)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_AXIS * 4)
 	local a0 = a1
 	local a1 = a0 + N_ALLIES * da
 	glColor(0, 0, 0.5, 0.5)
-	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_ALLIES * 3)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_ALLIES * 4)
 	local a0 = a1
 	local a1 = a0 + N_NEUTRAL * da
 	glColor(0, 0, 0, 0.5)
-	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_NEUTRAL * 3)
+	glBeginEnd(GL_TRIANGLE_FAN, DrawCircle, a0, a1, N_NEUTRAL * 4)
 
-	-- Teams
+	-- Place random at mid
 	local selTeam = getTeamNumber()
 	local R = RADIUS
-	local r = math.pi * R / n
+	local r = math.pi * R / (n - 1)
 	glColor(1, 1, 1, 1)
-	for i=1,n do
-		x = R + ((R - 0.7 * r) * math.sin((i-1) * 2.0 * math.pi / n))
-		y = R + ((R - 0.7 * r) * math.cos((i-1) * 2.0 * math.pi / n))
+	glTexture('LuaUI/Widgets/faction_change/' .. sidedata[1].sideName .. '.png')
+	glTexRect(R - 0.5 * r, R - 0.5 * r,
+			  R + 0.5 * r, R + 0.5 * r)
+	glTexture(false)
+	if selTeam == 1 then
+		glTexture('LuaUI/Widgets/faction_change/Selected Team.png')
+		glTexRect(R - 0.5 * r, R - 0.5 * r,
+				  R + 0.5 * r, R + 0.5 * r)
+		glTexture(false)
+	end
+	-- And the rest of factions all around
+	local a0 = 0.5 * (N_NEUTRAL + 1) * da  -- Neutrals are placed at top
+	for i=2,n do
+		local ii = i - 2
+		x = R + ((R - 0.7 * r) * math.sin(a0 + ii * 2.0 * math.pi / (n - 1)))
+		y = R + ((R - 0.7 * r) * math.cos(a0 + ii * 2.0 * math.pi / (n - 1)))
 		glTexture('LuaUI/Widgets/faction_change/' .. sidedata[i].sideName .. '.png')
 		glTexRect(x - 0.5 * r, y - 0.5 * r,
 				  x + 0.5 * r, y + 0.5 * r)
@@ -248,13 +252,6 @@ function FactionChangeList()
 			glTexture(false)
 		end
 	end
-
-	-- Determine the side
-	local side = getTeamNumber()
-	-- Add a description
-	glBeginText()
-		glText(sidedata[side].description, R, R, 12, 'cv')
-	glEndText()
 end
 
 
@@ -283,15 +280,26 @@ function widget:MousePress(mx, my, mButton)
 	-- Check if we are selecting a new team
 	local sidedata = spGetSideData()
 	local n = #sidedata
-	local r = math.pi * R / n
-	if rx*rx + ry*ry <= (R - 1.4*r)*(R - 1.4*r) then
+	local r = math.pi * R / (n - 1)
+	if rx*rx + ry*ry <= 0.25 * R * R then
+		-- That's the midddle faction (random team)
+		mySide = getTeamNameByNumber(1)
+		spSendLuaRulesMsg('\138' .. mySide)
+		if factionChangeList then
+			glDeleteList(factionChangeList)
+		end
+		factionChangeList = glCreateList(FactionChangeList)
 		return true
 	end
 
 	-- Get the new team
-	local da = 2.0 * math.pi / n
-	local a = math.atan2(rx, ry) + 0.5 * da
-	local i = math.floor(a / da) + 1
+	local da = 2.0 * math.pi / (n - 1)
+	local a0 = 0.5 * N_NEUTRAL * da     -- Neutrals are placed at top
+	local a = math.atan2(rx, ry) - a0
+	if a < 0.0 then
+		a = a + 2.0 * math.pi
+	end
+	local i = math.floor(a / da) + 2
 	mySide = getTeamNameByNumber(i)
 	spSendLuaRulesMsg('\138' .. mySide)
 	if factionChangeList then
