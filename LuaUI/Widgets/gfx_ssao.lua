@@ -1,0 +1,358 @@
+function widget:GetInfo()
+	return {
+		name      = "Screen-Space Ambient Occlusion",
+		version	  = 1.0,
+		desc      = "Generate ambient occlusion in screen space",
+		author    = "Sanguinario_Joe",
+		date      = "Apr. 2017",
+		license   = "GPL",
+		layer     = -1,
+		enabled   = true
+	}
+end
+
+options_path = 'Settings/Graphics/Effects/SSAO'
+
+options_order = {'useSSAO'}
+
+options = {
+	useSSAO = { type='bool', name='Screen-Space Ambient Occlusion', value=true, noHotkey = true, advanced = false}
+}
+
+local function onChangeFunc()
+	if options.useSSAO.value then
+		widget:Initialize()
+	else
+		if glDeleteTexture then
+			glDeleteTexture(blurTex or "")
+			glDeleteTexture(ssaoTex or "")
+			blurTex, ssaoTex = nil, nil
+		end
+	end
+end
+
+options.useSSAO.OnChange = onChangeFunc
+
+-----------------------------------------------------------------
+-- Engine Functions
+-----------------------------------------------------------------
+
+local spGetCameraPosition    = Spring.GetCameraPosition
+
+local glCopyToTexture        = gl.CopyToTexture
+local glCreateShader         = gl.CreateShader
+local glCreateTexture        = gl.CreateTexture
+local glDeleteShader         = gl.DeleteShader
+local glDeleteTexture        = gl.DeleteTexture
+local glGetShaderLog         = gl.GetShaderLog
+local glTexture              = gl.Texture
+local glTexRect              = gl.TexRect
+local glRenderToTexture		 = gl.RenderToTexture
+local glUseShader            = gl.UseShader
+local glGetUniformLocation   = gl.GetUniformLocation
+local glUniform				 = gl.Uniform
+local glUniformMatrix		 = gl.UniformMatrix
+local glUniformArray         = gl.UniformArray
+
+-----------------------------------------------------------------
+
+
+-----------------------------------------------------------------
+-- Global Vars
+-----------------------------------------------------------------
+
+local vsx = nil	-- current viewport width
+local vsy = nil	-- current viewport height
+local noiseShader = nil  -- Used just once to generate noiseTex (due to the lack of glTexImage2D)
+local depthBlendShader = nil  -- Since spring is separately rendering map and units, we should mix all together here
+local normalBlendShader = nil  -- Since spring is separately rendering map and units, we should mix all together here
+local ssaoShader = nil
+local blurShader = nil
+local renderShader = nil
+local noiseTex = nil  -- Noise to add to the samples data
+local depthTex = nil  -- depths blended texture
+local normalTex = nil  -- normals blended texture
+local ssaoTex = nil  -- Actual ambient occlusion texture
+local blurTex = nil  -- Blurred ambient occlusion texture, to avoid noise artifacts
+
+-- shader uniform handles
+local eyePosLoc = nil
+local viewMatLoc = nil
+local projectionMatLoc = nil
+local projectionMatInvLoc = nil
+local noiseScaleLoc = nil
+local samplesXLoc = nil
+local samplesYLoc = nil
+local samplesZLoc = nil
+local texelSizeLoc = nil
+-- Constant uniform values
+local samplesX = nil
+local samplesY = nil
+local samplesZ = nil
+
+
+-----------------------------------------------------------------
+
+function widget:ViewResize(x, y)
+	vsx, vsy = gl.GetViewSizes()
+	glDeleteTexture(ssaoTex or "")
+	glDeleteTexture (blurTex or "")
+	ssaoTex, blurTex = nil, nil
+
+    -- May I not create a single component texture?? i.e. GL_RED format
+	depthTex = glCreateTexture(vsx, vsy, {
+		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
+		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+	})
+	
+	normalTex = glCreateTexture(vsx, vsy, {
+		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
+		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+	})
+	
+	ssaoTex = glCreateTexture(vsx, vsy, {
+		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
+		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+	})
+	
+	blurTex = glCreateTexture(vsx, vsy, {
+		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
+		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+	})
+	
+	if not depthTex or not normalTex or not blurTex or not ssaoTex then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create textures!")
+		widgetHandler:RemoveWidget()
+		return
+	end
+end
+
+function widget:Initialize()
+	if (glCreateShader == nil) then
+		Spring.Echo("[Screen-Space Ambient Occlusion::Initialize] removing widget, no shader support")
+		widgetHandler:RemoveWidget()
+		return
+	end
+	
+	if not options.useSSAO.value then
+		return
+	end
+
+    -- The Noise texture generation shader, called just once
+    -- =====================================================
+	noiseShader = noiseShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_noise.fs", VFS.ZIP),
+	})
+	if not noiseShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create noise shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
+    -- The map and model depth/normal blending shaders
+    -- ===============================================
+	depthBlendShader = depthBlendShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_depth_blend.fs", VFS.ZIP),
+		uniformInt = {mapdepths = 0, modeldepths = 1},
+	})
+	if not depthBlendShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO depth blend shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
+	normalBlendShader = normalBlendShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_normal_blend.fs", VFS.ZIP),
+		uniformInt = {mapdepths = 0, modeldepths = 1, mapnormals = 2, modelnormals = 3},
+	})
+	if not normalBlendShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO normal blend shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
+    -- The SSAO oclussion map computation
+    -- ==================================
+	ssaoShader = ssaoShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao.fs", VFS.ZIP),
+		uniformInt = {normals = 0, depths = 1, texNoise = 2},
+	})
+	if not ssaoShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
+	eyePosLoc = gl.GetUniformLocation(ssaoShader, "eyePos")
+    viewMatLoc = gl.GetUniformLocation(ssaoShader, "viewMat")
+	projectionMatLoc = gl.GetUniformLocation(ssaoShader, "projectionMat")
+	projectionMatInvLoc = gl.GetUniformLocation(ssaoShader, "projectionMatInv")
+	noiseScaleLoc = gl.GetUniformLocation(ssaoShader, "noiseScale")
+	samplesXLoc = gl.GetUniformLocation(ssaoShader, "samplesX")
+	samplesYLoc = gl.GetUniformLocation(ssaoShader, "samplesY")
+	samplesZLoc = gl.GetUniformLocation(ssaoShader, "samplesZ")
+
+    -- The SSAO oclussion map blurring shader
+    -- ======================================
+	blurShader = blurShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\blur.fs", VFS.ZIP),
+		uniformInt = {ssao = 0},
+	})
+	if not blurShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO blur shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
+	texelSizeLoc = gl.GetUniformLocation(blurShader, "texelSize")
+
+    -- Generate the samples kernel
+    samplesX = {}
+    samplesY = {}
+    samplesZ = {}
+    for i=1,32 do
+        local sx = math.random() * 2.0 - 1.0
+        local sy = math.random() * 2.0 - 1.0
+        local ss = math.sqrt(sx*sx + sy*sy)
+        local sz = math.random() * (1.0 - ss) + ss
+        ss = math.sqrt(sx*sx + sy*sy + sz*sz)
+        if ss > 0.000001 then
+            sx = sx / ss
+            sy = sy / ss
+            sz = sz / ss
+        end
+        --[[
+        ss = math.random()
+        sx = sx * ss
+        sy = sy * ss
+        sz = sz * ss
+        --]]
+        ss = i / 64.0
+        ss = 0.1 + ss * ss * (1.0 - 0.1)  -- lerp
+        samplesX[i] = sx * ss
+        samplesY[i] = sy * ss
+        samplesZ[i] = sz * ss
+    end
+
+	widget:ViewResize()
+end
+
+function widget:Shutdown()
+	if (glDeleteShader and noiseShader) then
+		glDeleteShader(noiseShader)
+	end
+	if (glDeleteShader and depthBlendShader) then
+		glDeleteShader(depthBlendShader)
+	end
+	if (glDeleteShader and normalBlendShader) then
+		glDeleteShader(normalBlendShader)
+	end
+	if (glDeleteShader and ssaoShader) then
+		glDeleteShader(ssaoShader)
+	end
+	if (glDeleteShader and blurShader) then
+		glDeleteShader(blurShader)
+	end
+	if (glDeleteShader and renderShader) then
+		glDeleteShader(renderShader)
+	end
+	
+	if glDeleteTexture then
+		glDeleteTexture(noiseTex or "")
+		glDeleteTexture(depthTex or "")
+		glDeleteTexture(normalTex or "")
+		glDeleteTexture(ssaoTex or "")
+		glDeleteTexture(blurTex or "")
+	end
+	noiseShader, depthBlendShader, normalBlendShader, ssaoShader, blurShader, renderShader = nil, nil, nil, nil, nil, nil
+	noiseTex, depthTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil
+end
+
+function widget:DrawScreenEffects()
+	if not options.useSSAO.value then
+		return -- if the option is disabled don't draw anything.
+	end
+
+    if not noiseTex then
+        -- Due to the lack of glTexImage2D, the noise should be rendered once
+        -- to a FBO texture
+        noiseTex = glCreateTexture(4, 4, {
+		    fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
+		    wrap_s = GL.REPEAT, wrap_t = GL.REPEAT,
+	    })
+        glUseShader(noiseShader)
+            glRenderToTexture(noiseTex, glTexRect, -1, 1, 1, -1)
+        glUseShader(0)
+    end
+
+    -- Blend both the depth and normal maps
+	glUseShader(depthBlendShader)
+		glTexture(0, "$map_gbuffer_zvaltex")
+		glTexture(1, "$model_gbuffer_zvaltex")
+		
+		glRenderToTexture(depthTex, glTexRect, -1, 1, 1, -1)
+		
+		glTexture(0, false)
+		glTexture(1, false)
+	glUseShader(0)
+	glUseShader(normalBlendShader)
+		glTexture(0, "$map_gbuffer_zvaltex")
+		glTexture(1, "$model_gbuffer_zvaltex")
+		glTexture(2, "$map_gbuffer_normtex")
+		glTexture(3, "$model_gbuffer_normtex")
+
+		glRenderToTexture(normalTex, glTexRect, -1, 1, 1, -1)
+		
+		glTexture(0, false)
+		glTexture(1, false)
+		glTexture(2, false)
+		glTexture(3, false)
+	glUseShader(0)
+
+    -- Now we wanna generate the SSAO texture
+	local cpx, cpy, cpz = spGetCameraPosition()
+	glUseShader(ssaoShader)
+		glUniform(eyePosLoc, cpx, cpy, cpz)
+		glUniformMatrix(viewMatLoc, "view")
+		glUniformMatrix(projectionMatLoc, "projection")
+		glUniformMatrix(projectionMatInvLoc, "projectioninverse")
+        glUniformArray(samplesXLoc, 1, samplesX)
+        glUniformArray(samplesYLoc, 1, samplesY)
+        glUniformArray(samplesZLoc, 1, samplesZ)
+        glUniform(noiseScaleLoc, vsx / 4.0, vsy / 4.0)
+		glTexture(0, normalTex)
+		glTexture(1, depthTex)
+		glTexture(2, noiseTex)
+
+        glRenderToTexture(ssaoTex, glTexRect, -1, 1, 1, -1)
+		-- glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
+		
+		glTexture(0, false)
+		glTexture(1, false)
+		glTexture(2, false)
+	glUseShader(0)
+
+    -- Which should be blured
+	glUseShader(blurShader)
+        glUniform(texelSizeLoc, 1.0 / vsx, 1.0 / vsy)
+		glTexture(0, ssaoTex)
+
+        glRenderToTexture(blurTex, glTexRect, -1, 1, 1, -1)
+		-- glTexRect(0, 0, vsx, vsy, false, true)
+		
+		glTexture(0, false)
+	glUseShader(0)
+    
+
+    -- Debug
+	glTexture(blurTex)
+    glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
+	glTexture(false)
+    
+
+end
