@@ -1,0 +1,13 @@
+[RUSPr165_dead] {
+  description=Sunk Floating Battery;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=RUSPr165_dead.s3o;
+  reclaimable=1;
+}
+

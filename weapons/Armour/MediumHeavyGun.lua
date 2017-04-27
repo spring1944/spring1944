@@ -72,7 +72,6 @@ local SK88mmC30 = MediumHeavyGun:New(MediumHE, true):New{
   },  
 }
 
-
 -- S-53 85mm (RUS)
 local S5385mm = MediumHeavyGun:New{
   name               = [[S-53 85mm]],
@@ -126,6 +125,21 @@ local D10S100mmAP = HeavyAP:New(D10S100mm, true):New{
   },
 }
 
+-- B-24 100mm naval gun
+local B24_100mm =  MediumHeavyGun:New{
+  name               = [[B-24 100mm]],
+  range              = 2260,
+  reloadTime         = 10,
+  soundStart         = [[RUS_85mm]],
+	weaponVelocity     = 1410,
+  customparams = {
+    weaponcost         = 22,
+    cegflare           = "LARGE_MUZZLEFLASH",
+  },
+  damage = {
+    default            = 2100,
+  },
+}
 
 -- M3 90mm (USA)
 local M390mm = MediumHeavyGun:New{
@@ -219,6 +233,8 @@ return lowerkeys({
   S5385mmAP = S5385mmAP,
   -- D-10 100mm
   D10S100mmAP = D10S100mmAP,
+  -- B-24BM 100mm naval, so HE only
+  B24_100mmHE = B24_100mm,
   -- M3 90mm
   M390mmHE = M390mmHE,
   M390mmAP = M390mmAP,
