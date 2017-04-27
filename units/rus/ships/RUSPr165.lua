@@ -7,6 +7,7 @@ local RUS_Pr165_PB = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	corpse					= "RUSPr165_dead",
+	iconType			= "artyboat",
 	mass					= 3300,
 	maxDamage				= 3300, 
 	maxReverseVelocity		= 0.35,
