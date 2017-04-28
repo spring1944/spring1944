@@ -26,8 +26,8 @@ local RUS_Pr165_PB = ArmedBoat:New{
 		damageGroup			= 'hardships',
 		children = {
 			"RUSPr165_turret_B24",
-			"RUSPr165_turret_DshK",
-			"RUSPr165_turret_DshK",
+			"RUSPr165_turret_DshK_Left",
+			"RUSPr165_turret_DshK_Right",
 		},
 		deathanim = {
 			["x"] = {angle = 15, speed = 5},
@@ -65,7 +65,7 @@ local RUS_Pr165_Turret_DshK = OpenBoatTurret:New{
 	weapons = {	
 		[1] = {
 			name				= "dshk",
-			maxAngleDif			= 270,
+			maxAngleDif			= 260,
 		},
 	},
 	customparams = {
@@ -74,8 +74,28 @@ local RUS_Pr165_Turret_DshK = OpenBoatTurret:New{
 	},
 }
 
+local RUS_Pr165_Turret_DshK_Left = RUS_Pr165_Turret_DshK:New{
+    objectName				= "<SIDE>/RUSPr165_turret_DshK.s3o",
+
+	customparams = {
+        facing                  = 3,
+	},
+}
+
+local RUS_Pr165_Turret_DshK_Right = RUS_Pr165_Turret_DshK:New{
+    objectName				= "<SIDE>/RUSPr165_turret_DshK.s3o",
+
+	customparams = {
+        facing                  = 1,
+	},
+}
+
+RUS_Pr165_Turret_DshK_Left.weapons[1].mainDir		= [[1 0 -1]]
+RUS_Pr165_Turret_DshK_Right.weapons[1].mainDir		= [[-1 0 -1]]
+
 return lowerkeys({
 	["RUSPr165PB"] = RUS_Pr165_PB,
-	["RUSPr165_turret_DshK"] = RUS_Pr165_Turret_DshK,
+	["RUSPr165_turret_DshK_Left"] = RUS_Pr165_Turret_DshK_Left,
+    ["RUSPr165_turret_DshK_Right"] = RUS_Pr165_Turret_DshK_Right,
 	["RUSPr165_turret_B24"] = RUSPr165_Turret_B24,
 })
