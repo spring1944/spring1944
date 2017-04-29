@@ -36,7 +36,7 @@ local JPN_Ki51 = Fighter:New{
             slaveTo             = 1,
 		},
 		[4] = {
-			name				= "bomb50Kg",
+			name				= "lastbomb50Kg",
 			maxAngleDif			= 10,
             slaveTo             = 1,
 		},

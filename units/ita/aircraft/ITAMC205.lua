@@ -17,11 +17,13 @@ local ITA_MC205 = FighterBomber:New{
 	weapons = {
 		[1] = {
 			name				= "Bomb160kg",
-			maxAngleDif			= 15,
+			maxAngleDif			= 20,
 		},
 		[2] = {
-			name				= "Bomb160kg",
-			maxAngleDif			= 15,
+			name				= "lastBomb160kg",
+			maxAngleDif			= 20,
+			mainDir				= [[0 0 1]],
+			slaveTo				= 1,
 		},
 		[3] = {
 			name				= "BredaSafat05",

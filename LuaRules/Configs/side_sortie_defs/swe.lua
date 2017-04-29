@@ -48,7 +48,7 @@ local sweSorties = {
 		weight = 1,
 		name = "Dive Bomber Sortie",
 		description = "2 x SAAB B 17A",
-		buildCostMetal = 5750,
+		buildCostMetal = 6750,
 		buildPic = "SWEB17A.png",
 	},
 	
