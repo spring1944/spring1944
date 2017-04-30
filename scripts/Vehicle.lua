@@ -105,6 +105,39 @@ local function DamageSmoke(smokePieces)
 	end
 end
 
+
+local function RestoreTurret(weaponNum) -- called by Create so must be prior
+	if info.aimPieces[weaponNum] then
+		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+		if headingPiece then
+			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
+		end
+		if pitchPiece then
+			if UnitDef.customParams.spaa then
+				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
+			else
+				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+			end
+		end
+	end
+end
+
+local function StopAiming(weaponNum)
+	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
+	if prioritisedWeapon == weaponNum then
+		prioritisedWeapon = nil
+	end
+
+	for i = 1,info.numWeapons do
+		-- If we're still aiming at anything, we don't want to restore the turret
+		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
+			wantedDirection[i][1] then
+			return
+		end
+	end
+	RestoreTurret(weaponNum)
+end
+
 function script.Create()
 	if customAnims and customAnims.preCreate then
 		customAnims.preCreate()
@@ -172,6 +205,7 @@ function script.Create()
 	if customAnims and customAnims.postCreate then
 		customAnims.postCreate()
 	end
+	StartThread(RestoreTurret, 1) -- force elevation of guns for SPAA
 end
 
 local function SpinWheels()
@@ -260,46 +294,6 @@ function script.StopMoving()
 	end
 end
 
-local function RestoreTurret(weaponNum)
-	if info.aimPieces[weaponNum] then
-		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
-		if headingPiece then
-			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
-		end
-		if pitchPiece then
-			if UnitDef.name == "gerflak38_truck" 
-				or UnitDef.name == "hun40mnimrod"
-				or UnitDef.name == "itaspadovunque"
-				or UnitDef.name == "gbrstaghound"
-				or UnitDef.name == "rusgazaaa"
-				or UnitDef.name == "swepbilm31"
-				or UnitDef.name == "usm16mgmc"
-				or UnitDef.name == "jpnisuzutype94_aa" then
-
-				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
-			else
-				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
-			end
-		end
-	--Spring.Echo("truckAA", weaponNum, pitchPiece)
-	end
-end
-
-local function StopAiming(weaponNum)
-	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
-	if prioritisedWeapon == weaponNum then
-		prioritisedWeapon = nil
-	end
-
-	for i = 1,info.numWeapons do
-		-- If we're still aiming at anything, we don't want to restore the turret
-		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
-			wantedDirection[i][1] then
-			return
-		end
-	end
-	RestoreTurret(weaponNum)
-end
 
 local function IsMainGun(weaponNum)
 	return weaponNum <= info.weaponsWithAmmo

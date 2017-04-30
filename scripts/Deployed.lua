@@ -89,7 +89,6 @@ local fear
 local lastRocket
 local weaponEnabled = {}
 local usesAmmo = info.usesAmmo
-local ud
 
 
 local function Delay(func, duration, mask, ...)
@@ -269,23 +268,7 @@ function script.Create()
 		Spring.SetUnitStealth(unitID, true)
 	end
 	-- turn AA barrel up
-	ud = UnitDef.name
-	--Spring.Echo("name", UnitDef.icontype, ud)
-	if ud == "gbrbofors_stationary"
-		or ud == "gerflak38_stationary"
-		or ud == "hun36mbofors_stationary"
-		or ud == "itabreda20_stationary"
-		or ud == "jpntype98_20mm_stationary"
-		or ud == "rus61k_stationary"
-		or ud == "swepvlvm40_aa_stationary"
-		or ud == "usm1bofors_stationary"
-		or ud == "gerflak38_stationary_base"
-		or ud == "hun36mbofors_stationary_base"
-		or ud == "itabreda20_stationary_base"
-		or ud == "jpntype98_20mm_stationary_base"
-		or ud == "swepvlvm40_aa_stationary_base"
-		or ud == "usm1bofors_stationary_base"
-		or ud == "gbrbofors_stationary_base" then
+	if UnitDef.customParams.scriptanimation == "aa" then
 		Turn(weaponTags.headingPiece, y_axis, 0, info.turretTurnSpeed)
 		Turn(weaponTags.pitchPiece, x_axis, -70, info.elevationSpeed)
 		WaitForTurn(weaponTags.headingPiece, y_axis)
