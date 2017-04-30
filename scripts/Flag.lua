@@ -29,8 +29,12 @@ function SetFlag(teamID)
 	end
 	local side = GG.teamSide[teamID]
 	if side and side ~= "" then
-		Move(flags[side], y_axis, 65, 10)
-		WaitForMove(flags[side], y_axis)
+		if not flags[side] then
+			Spring.Log("flag script", "error", "teamSide contains: " .. (side or 'nil') .. ' for teamID: ' .. teamID)
+		else
+			Move(flags[side], y_axis, 65, 10)
+			WaitForMove(flags[side], y_axis)
+		end if
 		currentSide = side
 	end
 end
