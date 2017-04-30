@@ -123,6 +123,7 @@ local function ClearUnitPosition(unitID)
 end
 
 local function SpawnBaseUnits(teamID, startUnit, px, pz)
+	local isLuaAITeam = ((Spring.GetTeamLuaAI(teamID) or '') ~= '')
 	local spawnList = hqDefs[startUnit]
 	if spawnList then
 		for i = 1, #spawnList.units do
@@ -141,7 +142,7 @@ local function SpawnBaseUnits(teamID, startUnit, px, pz)
 		local facing=math.abs(HALF_MAP_X - x) > math.abs(HALF_MAP_Z - z)
 			and ((x > HALF_MAP_X) and "west" or "east")
 			or ((z > HALF_MAP_Z) and "north" or "south")
-					if AIUnitReplacementTable[unitName] and Spring.GetAIInfo(teamID) then
+					if AIUnitReplacementTable[unitName] and isLuaAITeam then
 						unitName = AIUnitReplacementTable[unitName]
 					end
 					local unitID = CreateUnit(unitName, x, 0, z, facing, teamID)
