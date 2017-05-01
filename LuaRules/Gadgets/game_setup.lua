@@ -158,6 +158,7 @@ end
 local function GetStartUnit(teamID)
 	-- get the team startup info
 	local side = GG.teamSide[teamID]
+	if side == "" then side = select(5, GetTeamInfo(teamID)) end
 	local startUnit
 	if (side == "") then
 		-- startscript didn't specify a side for this team
