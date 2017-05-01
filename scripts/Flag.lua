@@ -34,7 +34,7 @@ function SetFlag(teamID)
 		else
 			Move(flags[side], y_axis, 65, 10)
 			WaitForMove(flags[side], y_axis)
-		end if
+		end 
 		currentSide = side
 	end
 end
