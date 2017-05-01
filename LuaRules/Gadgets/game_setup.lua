@@ -281,7 +281,7 @@ end
 function gadget:RecvLuaMsg(msg, playerID)
 	local code = string.sub(msg,1,1)
 	if code ~= '\138' then
-		return true
+		return
 	end
 	local side = string.sub(msg,2,string.len(msg))
 	local _, _, playerIsSpec, playerTeam = GetPlayerInfo(playerID)
