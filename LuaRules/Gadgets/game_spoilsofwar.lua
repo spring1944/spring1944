@@ -26,7 +26,7 @@ local CreateUnit				= Spring.CreateUnit
 
 local modOptions				= Spring.GetModOptions()
 
-local currentMode = modOptions.spoilsofwar
+local currentMode = modOptions.spoilsofwar or 'disabled'
 local spawnTable = {}
 
 if (gadgetHandler:IsSyncedCode()) then
@@ -128,6 +128,9 @@ function gadget:GameStart()
 end
 
 function gadget:GameFrame(n)
+	if currentMode == "disabled" then
+		return
+	end
 	if n == 2 then
 		-- Spawn everything here, so the flags are already in place
 		local allUnits = Spring.GetAllUnits()
