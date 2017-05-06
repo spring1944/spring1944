@@ -81,12 +81,12 @@ local function IsPositionValid(teamID, unitDefID, x, z)
 			return false
 		end
 	end
-	]]--
 	-- Don't place units too close together.
 	local units = GetUnitsInCylinder(x, z, CLEARANCE)
 	if (units[1] ~= nil) then
 		return false
 	end
+	]]--
 	return true
 end
 
