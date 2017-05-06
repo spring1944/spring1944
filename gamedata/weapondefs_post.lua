@@ -358,6 +358,24 @@ for name, ud in pairs(UnitDefs) do
 	end
 end
 
+-- Add information about ammunition carrying capacity and usage to the description of units.
+for name, ud in pairs(UnitDefs) do
+	-- ammo users, add ammo-related description
+	if (ud.customparams) then
+		if (ud.customparams.weaponcost) and (ud.customparams.maxammo) then
+			local newDescrLine = "max. ammo: "..ud.customparams.maxammo..", log. per shot: "..ud.customparams.weaponcost..", total: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
+			if not (ud.description) then
+				ud.description = newDescrLine
+			end
+			ud.description = ud.description.." ("..newDescrLine..")"
+
+		end
+		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
+			ud.usepiececollisionvolumes = true
+		end
+	end
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 -- Range Multiplier

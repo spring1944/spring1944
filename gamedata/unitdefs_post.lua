@@ -228,20 +228,6 @@ for name, ud in pairs(UnitDefs) do
 			ud.description = ud.description.." (log. storage: "..ud.energystorage..")"
 		end
 	end
-	-- ammo users, add ammo-related description
-	if (ud.customparams) then
-		if (ud.customparams.weaponcost) and (ud.customparams.maxammo) then
-			local newDescrLine = "max. ammo: "..ud.customparams.maxammo..", log. per shot: "..ud.customparams.weaponcost..", total: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
-			if not (ud.description) then
-				ud.description = newDescrLine
-			end
-			ud.description = ud.description.." ("..newDescrLine..")"
-
-		end
-		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
-			ud.usepiececollisionvolumes = true
-		end
-	end
 
 	--a crazy default value so we see it when it happens
 	--at the moment all boats seem to lack mass, so that's what they have
