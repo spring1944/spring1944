@@ -374,6 +374,10 @@ function gadget:GameFrame(n)
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Captured!")
 								TransferUnit(flagID, teamID, false)
 								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) + 1, {public = true})
+								-- send message to other gadgets should they need it
+								if GG.FlagCapNotification then
+									GG.FlagCapNotification(flagID, teamID)
+								end
 							else
 								-- Team flag being neutralised
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
