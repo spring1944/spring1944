@@ -25,11 +25,20 @@ local usDefs = {
 	usgunyard = {
 		{
 			into = 'usspyard',
-			metal = 5175,
+			metal = 3475,
 			energy = 0,
-			time = 150,
+			time = 85,
 			name = '  Self  \n  Propelled  ',
 			text = 'Makes Self-Propelled Artillery available in this yard',
+			facing = true,
+		},
+		{
+			into = 'usspyard1',
+			metal = 5200,
+			energy = 0,
+			time = 150,
+			name = '  Tank  \n  Destroyers  ',
+			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
 		},
 		{
