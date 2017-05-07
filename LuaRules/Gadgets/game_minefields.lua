@@ -46,6 +46,11 @@ mineTypes["atminesign"] = {
 if gadgetHandler:IsSyncedCode() then
 --	SYNCED
 
+local function DelayedCreate(unitTypeName, x, y, z, facing, teamID)
+	local mineID = CreateUnit(unitTypeName, x, y, z, facing, teamID)
+	SetUnitBlocking(mineID, false, false, false)
+end
+
 local function RandPos(mineData)
 	return math.random(-mineData.fieldSize, mineData.fieldSize) * mineData.spread
 end
@@ -74,8 +79,9 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 
 				if #GetUnitsInCylinder(xpos, zpos, mineData.minDist, GAIA_TEAM_ID) == 0 then
 					local ypos = GetGroundHeight(xpos, zpos)
-					local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
-					SetUnitBlocking(mineID, false, false, false)
+					GG.Delay.DelayCall(DelayedCreate, {mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID})
+					--local mineID = CreateUnit(mineData.mineToSpawn, xpos, ypos, zpos, 0, GAIA_TEAM_ID)
+					--SetUnitBlocking(mineID, false, false, false)
 				end
 
 				mineCount = mineCount + 1
