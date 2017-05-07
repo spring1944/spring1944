@@ -1,6 +1,8 @@
 local unitDefs = {
 	["trucks"] = {
-		"fracitroentype45",
+		{	-- spawn tier 1
+			"fracitroentype45",
+		},
 	},
 }
 
