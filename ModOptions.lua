@@ -93,16 +93,21 @@ local options = {
 	section	= '2gamemode',
 	def="disabled",
 	items={
-         {
-		 key = "disabled",
-		 name = "None",
-		 desc = "No neutral units",
-		 },
-         {
-		 key = "trucks",
-		 name = "Trucks",
-		 desc = "Neutral Trucks" ,
-		 },
+		{
+			key = "disabled",
+			name = "None",
+			desc = "No neutral units",
+		},
+		{
+			key = "trucks",
+			name = "Trucks",
+			desc = "Neutral Trucks" ,
+		},
+		{
+			key = "mines",
+			name = "Minefields",
+			desc = "Some flags will start out with anti-personnel minefields (more likely father from player starts)" ,
+		},
 	},
    },
   {

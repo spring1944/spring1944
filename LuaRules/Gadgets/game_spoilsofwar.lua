@@ -126,6 +126,11 @@ local function IsPositionValid(teamID, unitDefID, x, z)
 	return true
 end
 
+local function DelayedCreate(unitTypeName, x, y, z, facing, teamID)
+	local unitID = CreateUnit(unitTypeName, x, y, z, facing, teamID)
+	SetUnitNeutral(unitID, true)
+end
+
 function gadget:Initialize()
 	if currentMode ~= "disabled" then
 		Spring.Log('spoils of war', 'info', 'Building spawn table for: ' .. currentMode)
@@ -200,27 +205,27 @@ function gadget:GameFrame(n)
 				-- get a random unit to place
 				local i = random(spawnUnitTypeCount)
 				local unitTypeName = tmpSpawnTable[i]
-				--Spring.Echo('unitType ' .. i .. ' is ' .. (unitTypeName or 'nil'))
-				local unitTypeID = UnitDefNames[unitTypeName].id
-				-- attempt to place this unit
-				-- first directly at flag position
-				if IsPositionValid(GAIA_TEAM_ID, unitTypeID, x, z) then
-					local unitID = CreateUnit(unitTypeName, x, 0, z, 0, GAIA_TEAM_ID)
-					SetUnitNeutral(unitID, true)
-				else
-					-- if not possible then attempt to shift a bit
-					local maxSpread = 200
-					local curSpread = 50
-					local spreadStep = 50
-					while curSpread <= maxSpread do
-						local dx = random(-curSpread, curSpread)
-						local dz = random(-curSpread, curSpread)
-						if IsPositionValid(GAIA_TEAM_ID, unitTypeID, x + dx, z + dz) then
-							local unitID = CreateUnit(unitTypeName, x + dx, 0, z + dz, 0, GAIA_TEAM_ID)
-							SetUnitNeutral(unitID, true)
-							break
+				-- it is possible there are empty units in the list, so check for that
+				if unitTypeName and UnitDefNames[unitTypeName] then
+					local unitTypeID = UnitDefNames[unitTypeName].id
+					-- attempt to place this unit
+					-- first directly at flag position
+					if IsPositionValid(GAIA_TEAM_ID, unitTypeID, x, z) then
+						GG.Delay.DelayCall(DelayedCreate, {unitTypeName, x, 0, z, 0, GAIA_TEAM_ID}, flagNum)
+					else
+						-- if not possible then attempt to shift a bit
+						local maxSpread = 200
+						local curSpread = 50
+						local spreadStep = 50
+						while curSpread <= maxSpread do
+							local dx = random(-curSpread, curSpread)
+							local dz = random(-curSpread, curSpread)
+							if IsPositionValid(GAIA_TEAM_ID, unitTypeID, x + dx, z + dz) then
+								GG.Delay.DelayCall(DelayedCreate, {unitTypeName, x + dx, 0, z + dz, 0, GAIA_TEAM_ID}, floor(flagNum / 10) + 1)
+								break
+							end
+							curSpread = curSpread + spreadStep
 						end
-						curSpread = curSpread + spreadStep
 					end
 				end
 			end
