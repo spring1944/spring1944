@@ -47,7 +47,7 @@ function FlagCapNotification(flagID, teamID)
 				if GetUnitTeam(unitID) == GAIA_TEAM_ID then
 					-- is this not a flag?
 					local cp2 = UnitDefs[GetUnitDefID(unitID)].customParams
-					if not cp2 or not cp2.flag then
+					if (not cp2) or not (cp2.flag or cp2.ismine) then
 						-- transfer unit to the new flag owner
 						TransferUnit(unitID, teamID, false)
 						SetUnitNeutral(unitID, false)
