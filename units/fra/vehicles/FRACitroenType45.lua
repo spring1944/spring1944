@@ -1,5 +1,4 @@
-local FRA_CitroenType45 = Truck:New{
-	description				= "Transport/supply truck",
+local FRA_CitroenType45 = TransportTruck:New{
 	name					= "Citroen Type 45",
 	trackOffset				= 10,
 	trackWidth				= 16,
