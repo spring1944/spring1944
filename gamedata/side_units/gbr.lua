@@ -100,7 +100,7 @@ local gbrunits = {
     "gbr17pdr_truck",
     "gbr25pdr_truck",
     "gbrbofors_truck",
-    "gbraecmkii",
+    --"gbraecmkii",
     "gbrm10achilles",
   },
   

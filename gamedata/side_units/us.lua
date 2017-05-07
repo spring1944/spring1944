@@ -147,8 +147,9 @@ local usunits = {
     "usm1bofors_truck",
 	"usm16mgmc",
     "usm8scott",
-	"usm10wolverine",
     "usm7priest",
+	"usm10wolverine",
+    "usm36jackson",
   },
 
   usgmcengvehicle =
