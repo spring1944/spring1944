@@ -20,9 +20,11 @@ end
 
 -- for flags
 function SetFlag(teamID)
-	if currentSide then
+	if currentSide and flags[currentSide] then
 		Move(flags[currentSide], y_axis, 0, 20)
 		WaitForMove(flags[currentSide], y_axis)
+	else
+		Spring.Log("flag script", "error", "currentSide contains: " .. (currentSide or 'nil') .. ' for teamID: ' .. teamID)
 	end
 	while not GG.teamSide do -- for /luarules reload
 		Sleep(33)
