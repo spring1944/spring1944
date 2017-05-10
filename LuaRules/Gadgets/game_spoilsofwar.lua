@@ -22,6 +22,7 @@ local GetUnitDefID				= Spring.GetUnitDefID
 local TransferUnit				= Spring.TransferUnit
 local SetUnitNeutral			= Spring.SetUnitNeutral
 local GetTeamStartPosition		= Spring.GetTeamStartPosition
+local SetUnitHealth				= Spring.SetUnitHealth
 
 local GetGroundHeight			= Spring.GetGroundHeight
 local TestBuildOrder			= Spring.TestBuildOrder
@@ -31,6 +32,10 @@ local CreateUnit				= Spring.CreateUnit
 local modOptions				= Spring.GetModOptions()
 
 local currentMode = modOptions.spoilsofwar or 'disabled'
+
+-- Should created units be paralyzed to prevent them shooting at players before being captured?
+local stunSpawnedUnits = (currentMode ~= "mines")
+
 local spawnTable = {}
 local maxSpawnTier = 1
 
@@ -102,6 +107,9 @@ local function FlagCapNotification(flagID, teamID)
 						-- transfer unit to the new flag owner
 						TransferUnit(unitID, teamID, false)
 						SetUnitNeutral(unitID, false)
+						if stunSpawnedUnits then
+							SetUnitHealth(unitID, { paralyze = -1 })
+						end
 					end
 				end
 			end
@@ -129,6 +137,9 @@ end
 local function DelayedCreate(unitTypeName, x, y, z, facing, teamID)
 	local unitID = CreateUnit(unitTypeName, x, y, z, facing, teamID)
 	SetUnitNeutral(unitID, true)
+	if stunSpawnedUnits then
+		SetUnitHealth(unitID, { paralyze = 1.0e9 })
+	end
 end
 
 function gadget:Initialize()
