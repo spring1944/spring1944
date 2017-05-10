@@ -24,7 +24,10 @@ function SetFlag(teamID)
 		Move(flags[currentSide], y_axis, 0, 20)
 		WaitForMove(flags[currentSide], y_axis)
 	else
-		Spring.Log("flag script", "error", "currentSide contains: " .. (currentSide or 'nil') .. ' for teamID: ' .. teamID)
+		-- it is very possible for this to be nil, at the first frame of the game. So only print error if it is not nil, but there is no data to move the flag
+		if currentSide then
+			Spring.Log("flag script", "error", "currentSide contains: " .. (currentSide or 'nil') .. ' for teamID: ' .. teamID)
+		end
 	end
 	while not GG.teamSide do -- for /luarules reload
 		Sleep(33)
