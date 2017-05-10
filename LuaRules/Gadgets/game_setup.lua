@@ -287,6 +287,12 @@ function gadget:RecvLuaMsg(msg, playerID)
 	local side = string.sub(msg,2,string.len(msg))
 	local _, _, playerIsSpec, playerTeam = GetPlayerInfo(playerID)
 	if not playerIsSpec then
+		-- Is this a random side?
+		if side == GetSideData(1) then
+			-- randomize!
+			local randSide = math.random(2,#GetSideData())	-- start at 2 to avoid picking random side again
+			side = randSide
+		end
 		GG.teamSide[playerTeam] = side
 		SetTeamRulesParam(playerTeam, "side", side, {allied=true, public=false}) -- visible to allies only, set visible to all on GameStart
 		side = select(5, GetTeamInfo(playerTeam))
