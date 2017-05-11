@@ -171,7 +171,7 @@ local function GetStartUnit(teamID)
 		-- set the gamerules param to notify other gadgets it was a direct launch
 		Spring.SetGameRulesParam("runningWithoutScript", 1)
 	else
-		startUnit = GetSideData(side)
+		_, startUnit = GetSideData(side)
 	end
 	-- Check for GM / Random team
 	if startUnit == "gmtoolbox" then
