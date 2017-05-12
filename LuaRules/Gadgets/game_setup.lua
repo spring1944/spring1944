@@ -171,7 +171,7 @@ local function GetStartUnit(teamID)
 		-- set the gamerules param to notify other gadgets it was a direct launch
 		Spring.SetGameRulesParam("runningWithoutScript", 1)
 	else
-		_, startUnit = GetSideData(side)
+		startUnit = GetSideData(side)
 	end
 	-- Check for GM / Random team
 	if startUnit == "gmtoolbox" then
@@ -287,12 +287,6 @@ function gadget:RecvLuaMsg(msg, playerID)
 	local side = string.sub(msg,2,string.len(msg))
 	local _, _, playerIsSpec, playerTeam = GetPlayerInfo(playerID)
 	if not playerIsSpec then
-		-- Is this a random side?
-		if side == GetSideData(1) then
-			-- randomize!
-			local randSide = math.random(2,#GetSideData())	-- start at 2 to avoid picking random side again
-			side = randSide
-		end
 		GG.teamSide[playerTeam] = side
 		SetTeamRulesParam(playerTeam, "side", side, {allied=true, public=false}) -- visible to allies only, set visible to all on GameStart
 		side = select(5, GetTeamInfo(playerTeam))
