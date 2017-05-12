@@ -168,6 +168,7 @@ function widget:Initialize()
 	   Spring.GetGameFrame() > 0 or
 	   amNewbie then
 		widgetHandler:RemoveWidget(self)
+		return
 	end
 	-- Check that game_setup.lua has a faction already set
 	spSendLuaRulesMsg('\138' .. mySide)
