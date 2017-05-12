@@ -32,10 +32,23 @@ end
 
 -- SYNCED
 
+-- units incomming
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	customCommands.UnitIncomming(unitID, unitDefID, unitTeam, builderID)
+	customCommands.UnitIncomming(unitID, unitDefID, unitTeam)
+end
+function gadget:UnitGiven(unitID, unitDefID, newTeam, oldTeam) -- in this moment the unit is already part of the newTeam
+	customCommands.UnitIncomming(unitID, unitDefID, newTeam)
 end
 
+-- units removed
+function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeamD)
+	customCommands.UnitRemoved(unitID, unitDefID, unitTeam)
+end
+function gadget:UnitTaken(unitID, unitDefID, oldTeam, newTeam) -- in this moment the unit is still part of the oldTeam
+	customCommands.UnitRemoved(unitID, unitDefID, oldTeam)
+end
+
+-- msg updates
 function gadget:RecvLuaMsg(msg, playerID)
 	message.Receive(msg, playerID) -- using messageReceiver data structure
 end
