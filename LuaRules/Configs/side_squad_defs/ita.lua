@@ -180,7 +180,7 @@ local itaDefs = {
 		},
 		name = "Alpini Mountain Division",
 		description = "4 x Alpini Rifles, 8 x Alpini SMG Troopers, 1 x Alpini Mortar , 1 x Alpini Scout: Alpini Mountain Squad",
-		buildCostMetal = 3600,
+		buildCostMetal = 2880,
 		buildPic = "itaalpini.png",
 	},
 
