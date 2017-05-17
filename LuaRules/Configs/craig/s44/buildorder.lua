@@ -339,14 +339,15 @@ gadget.unitBuildOrder = UnitBag{
 	},
 	jpnspyard = UnitArray{
 		"jpnhoniii",
+		"jpnhonii",
 	},
 	jpnspyard1 = UnitArray{
-		"jpnhoniiii",
+		"jpntype5nato",
 	},
 	jpntankyard = UnitArray{
 	
 		"jpnriki",
-		"jpnhago","jpnhonii",
+		"jpnhago","jpnhoniiii",
 		"jpnchiha",
 		"jpnchihe","jpnchihe",
 		"jpnchiha",
@@ -359,6 +360,7 @@ gadget.unitBuildOrder = UnitBag{
 	jpntankyard2 =
 	{
 		"jpnhoro",
+		"jpnchinu",
 	},
 	-- SWE
 	swehq = UnitArray{

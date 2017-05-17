@@ -2,11 +2,11 @@ local ITAInf = {
 	maxDamageMul		= 0.8,
 }
 local Alpini = {
-	maxDamageMul		= 1.2,
+	maxDamageMul		= 1.25,
 	movementClass		= "KBOT_alpini",
 }
 local Bersaglieri = {
-	maxDamageMul		= 1.1,
+	maxDamageMul		= 1.15,
 }
 
 local ITA_HQEngineer = EngineerInf:New(ITAInf):New{
@@ -55,7 +55,7 @@ local ITA_MG_Sandbag = SandbagMG:New{
 	buildpic			= "ITAMG.png",
 	weapons = {
 		[1] = { -- HMG
-			name				= "Vickers",
+			name				= "BredaM37",
 		},
 	},
 	customparams = {

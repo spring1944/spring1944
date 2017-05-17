@@ -26,6 +26,7 @@ local HUN_Debrecen = ArmedBoat:New{
 			"HUNGunboat_turret_75mm_rear", 
 			"HUNGunboat_turret_flak_rear", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = 15, speed = 5},
 		},

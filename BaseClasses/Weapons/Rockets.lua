@@ -38,6 +38,7 @@ local ArtyRocket = Rocket:New{
 
 -- AirRocket Base Class
 local AirRocket = Rocket:New{
+	accuracy	= 300,
 	cegTag             = "BazookaTrail",
 	collideFriendly    = false,
 	explosionGenerator = "custom:HE_Medium",

@@ -111,11 +111,11 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	name				= "RPG43",
 	acceleration		= 0.5,
-	customparams = {
-		scriptanimation		= "smg",
-	},
 	weapons = {
-		[1] = { -- AT Grenade
+		[1] = { -- SMG
+			name				= "PPSh",
+		},
+		[2] = { -- AT Grenade
 			name				= "RPG43",
 		},
 	},

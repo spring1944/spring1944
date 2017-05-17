@@ -1,7 +1,7 @@
 local USLVTA4 = LightTank:New(Amphibian):New{
 	name				= "LVT(A)-4",
 	description			= "Amphibious Support Tank",
-	buildCostMetal		= 2250,
+	buildCostMetal		= 1800,
 	maxDamage			= 1814,
 	trackOffset			= 5,
 	trackWidth			= 18,

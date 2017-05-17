@@ -175,8 +175,8 @@ local BredaM37 = MGClass:New{
   burst              = 8,
   burstRate          = 0.16,
   name               = [[Breda M37 Heavy Machinegun]],
-  range              = 1090,
-  reloadTime         = 3.1,
+  range              = 1110,
+  reloadTime         = 2.8,
   soundStart         = [[ITA_M37]],
   sprayAngle         = 260,
 }

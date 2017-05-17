@@ -106,12 +106,12 @@ local sweDefs = {
 	{
 		members = {
 			"swepvgm42",
-			"swepvgm42",
+			"swepskottm45",
 			"swepskottm45",
 			"swepskottm45",
 		},
 		name = "Anti-Tank Squad",
-		description = "2 x Pansarvärnsgevär m/42, 2 x Pansarskott m/45: Anti-Tank Infantry",
+		description = "1 x Pansarvärnsgevär m/42, 3 x Pansarskott m/45: Anti-Tank Infantry",
 		buildCostMetal = 450,
 		buildPic = "swepskottm45.png",
 	},

@@ -113,6 +113,7 @@ local usunits = {
     "usm8greyhound",
     "usm8scott",
     "usm5stuart",
+	"uslvta4",
     "usjeep",
   },
 
@@ -135,6 +136,17 @@ local usunits = {
     "usm2gun_truck",
 	"usm1_45ingun_truck",
     "usm1bofors_truck",
+  }, 
+  usspyard1 =
+  {
+    "usgmcengvehicle",
+    "usgmctruck",
+    "usm8gun",
+    "usm5gun_truck",
+    "usm2gun_truck",
+    "usm1bofors_truck",
+	"usm10wolverine",
+    "usm36jackson",
   },  
   usspyard =
   {
@@ -146,8 +158,9 @@ local usunits = {
     "usm1bofors_truck",
 	"usm16mgmc",
     "usm8scott",
-	"usm10wolverine",
     "usm7priest",
+	--"usm10wolverine",
+    --"usm36jackson",
   },
 
   usgmcengvehicle =

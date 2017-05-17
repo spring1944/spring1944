@@ -26,6 +26,7 @@ local HUN_PAM21 = ArmedBoat:New{
 			"HUNPAM21_turret_mg_right", 
 			"HUNPAM21_turret_mg_left", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = 15, speed = 5},
 		},
@@ -66,6 +67,7 @@ local HUN_PM = ArmedBoat:New{
 			"HUNPAM21_turret_mg_right", 
 			"HUNPAM21_turret_mg_left", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = -30, speed = -15},
 		},

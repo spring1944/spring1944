@@ -1,0 +1,11 @@
+[swehaubitsm06_destroyed] {
+  description=Destroyed Cannon;
+  damage=1251;
+  energy=1000;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=SWE/SWEHaubitsM06_Dead.S3O;
+  reclaimable=1;
+}
+
