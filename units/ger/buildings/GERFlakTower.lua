@@ -4,7 +4,7 @@ local GER_Flak_Tower = ArmedBoat:New(HQ):New(Bunker):New{
 	collisionVolumeScales	= [[150 30 110]],
 	collisionVolumeOffsets	= [[0 -13 0]],
     -- this will rarely be needed
-    corpse                  = "BuildingDebris_Large",
+    corpse                  = "gerflakturmg_dead",
 	footprintX				= 10,
 	footprintZ				= 10,
 	maxDamage				= 106250,
