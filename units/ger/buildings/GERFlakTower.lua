@@ -9,7 +9,8 @@ local GER_Flak_Tower = ArmedBoat:New(HQ):New(Bunker):New{
 	footprintZ				= 10,
 	maxDamage				= 106250,
 
-	script				= "BoatMother.lua",
+	script					= "BoatMother.lua",
+	transportCapacity		= 12,
 	usePieceCollisionVolumes	= true,
 
 	-- Transport tags
