@@ -5,7 +5,7 @@
   featureDead=BuildingDebris_Large;
   footprintX=10;
   footprintZ=8;
-  object=GER/GERflakturmg_Destroyed.S3O;
+  object=GER/GERFlakTurmG_Destroyed.S3O;
   reclaimable=1;
 }
 
