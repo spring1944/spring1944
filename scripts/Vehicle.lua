@@ -21,6 +21,8 @@ local atan2 = math.atan2
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local SetUnitCOBValue = Spring.SetUnitCOBValue
 
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
 local rockRestoreSpeed = rad(20)
@@ -67,6 +69,10 @@ local exhaust_fx_name = "petrol_exhaust"
 if UnitDef.customParams then
 	exhaust_fx_name = UnitDef.customParams.exhaust_fx_name or exhaust_fx_name
 end
+
+-- Optional composite units stuff
+local childrenPieces = info.childrenPieces
+local children = info.children
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -192,6 +198,21 @@ function script.Create()
 			end
 		end
 	end
+
+	-- composite units
+	if #children > 0 then
+		local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+		local teamID = Spring.GetUnitTeam(unitID)
+		for i, childDefName in ipairs(children) do
+			local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
+			if (childID ~= nil) then
+				Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
+				Hide(childrenPieces[i])
+				SetUnitNoSelect(childID, true)
+			end
+		end
+	end
+	
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
@@ -480,6 +501,11 @@ function script.Killed(recentDamage, maxHealth)
 	local turret = piece "turret"
 	local sleeve = piece "sleeve"
 
+	-- for composite units
+	for _, child in pairs(childrenPieces) do
+		Show(child)
+	end
+	
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end

@@ -38,6 +38,9 @@ local reversedWeapons = {}
 local exhausts = {}
 local dusttrails = {}
 
+-- Compositing
+local childrenPieces = {}
+
 local pieceMap = Spring.GetUnitPieceMap(unitID)
 for pieceName, pieceNum in pairs(pieceMap) do
 	-- Find Wheel Speeds
@@ -54,6 +57,8 @@ for pieceName, pieceNum in pairs(pieceMap) do
 		dusttrails[#dusttrails + 1] = pieceNum
 	elseif pieceName:find("base") or pieceName:find("sleeve") or pieceName:find("turret") or pieceName:find("exhaust") then
 		smokePieces[#smokePieces + 1] = pieceNum
+	elseif pieceName:find("child") then
+		childrenPieces[#childrenPieces + 1] = pieceNum
 	end
 end
 
@@ -83,7 +88,9 @@ info.aimPieces = aimPieces
 info.reversedWeapons = reversedWeapons
 info.dustTrails = dusttrails
 info.exhausts = exhausts
+info.childrenPieces = childrenPieces
 
 if info.customAnimsName then
 	info.customAnims = include("anims/vehicles/" .. info.customAnimsName .. ".lua")
 end
+
