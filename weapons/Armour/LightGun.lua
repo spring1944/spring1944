@@ -343,6 +343,33 @@ local Mavag_37_42MHE = LightHE:New(Mavag_37_42M, true):New{
 	},
 }
 
+--FRA47mmSA35AP
+local FRA47mmSA35 = LightGun:New{
+  name                 = [[47mm SA35]],
+  range                = 1100,
+  reloadTime           = 4.0,	-- 15rpm, might be a bit too high
+  soundStart           = [[RUS_45mm]],
+}
+
+local FRA47mmSA35AP = LightAP:New(FRA47mmSA35, true):New{
+	weaponVelocity     = 1118,
+	customparams = {
+		armor_penetration_1000m = 53,
+		armor_penetration_100m  = 76,
+	},
+	damage = {
+		default            = 1183,
+	},
+}
+
+local FRA47mmSA35HE = LightHE:New(FRA47mmSA35, true):New{
+	areaOfEffect       = 38,
+	weaponVelocity     = 800,
+	damage = {
+		default            = 350,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 2Pdr
@@ -381,4 +408,7 @@ return lowerkeys({
   -- Hungary
   Mavag_37_42MAP = Mavag_37_42MAP,
   Mavag_37_42MHE = Mavag_37_42MHE,
+  -- France
+  FRA47mmSA35AP = FRA47mmSA35AP,
+  FRA47mmSA35HE = FRA47mmSA35HE,
 })

@@ -6,7 +6,7 @@
   featureDead=FRACitroenType45_Burning;
   footprintX=2;
   footprintZ=2;
-  object=FRA/FRACitroenType45_Dead.s3o;
+  object=FRA/FRACitroenType45_dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -25,7 +25,7 @@
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=FRA/FRACitroenType45_Wreck.s3o;
+  object=FRA/FRACitroenType45_wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
