@@ -6,6 +6,10 @@ local FRACharB1Bis = MediumTank:New{
 	trackOffset			= 5,
 	trackWidth			= 20,
 
+	collisionVolumeType	= "box",
+	collisionVolumeOffsets	= [[0.0 0 -2]],
+	collisionVolumeScales	= [[2.5 1.0 6.0]],
+	
 	-- Transport tags
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,
@@ -39,7 +43,12 @@ local FRACharB1Bis = MediumTank:New{
 		armor_side			= 60,
 		armor_top			= 25,
 		maxammo				= 24,
-		turretturnspeed		= 26.5, -- 13.6s for 360
+
+		barrelrecoildist		= 1,
+		barrelrecoilspeed		= 10,
+		turretturnspeed			= 15,
+		elevationspeed			= 20,
+
 		maxvelocitykmh		= 28,
 		mother				= true,
 		children = {
