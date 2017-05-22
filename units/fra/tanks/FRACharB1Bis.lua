@@ -1,5 +1,5 @@
 local FRACharB1Bis = MediumTank:New{
-	corpse				= "FRACharB1Bis_Abandoned",
+	corpse				= "FRACharB1Bis_Burning",
 	name				= "Char B1bis",
 	buildCostMetal		= 2400,
 	maxDamage			= 2800,
@@ -61,6 +61,7 @@ local FRACharB1Bis = MediumTank:New{
 local FRA_75mmSA35_Turret = EnclosedBoatTurret:New{
 	name					= "75mm SA35",
 	description				= "Primary Turret",
+	category				= "MINETRIGGER TURRET HARDVEH",
 	objectName				= "FRA/FRA_75mmSA35_Turret.s3o",
   	weapons = {	
 		[1] = {
