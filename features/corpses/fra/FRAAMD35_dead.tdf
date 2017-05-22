@@ -1,0 +1,60 @@
+[FRAAMD35_Abandoned]
+{
+  description=Abandoned Panhard 178;
+  damage=2501;
+  energy=50;
+  featureDead=FRAAMD35_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAAMD35.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAAMD35_Burning]
+{
+  description=Destroyed Panhard 178;
+  damage=2501;
+  energy=50;
+  featureDead=FRAAMD35_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAAMD35_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAAMD35_Wreck]
+{
+  description=Destroyed Panhard 178;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAAMD35_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
