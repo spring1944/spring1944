@@ -343,7 +343,60 @@ local Mavag_37_42MHE = LightHE:New(Mavag_37_42M, true):New{
 	},
 }
 
---FRA47mmSA35AP
+--France
+
+-- one of the worst 37mm guns ever! And this is upgraded 1937 version, original from FT-17 was even worse
+local FRA37mmSA18 = LightGun:New{
+  name                 = [[Canon de 37 SA 18 mle 37]],
+  range                = 930,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+  weaponVelocity		= 600,
+}
+
+local FRA37mmSA18AP = LightAP:New(FRA37mmSA18, true):New{
+	customparams = {
+		armor_penetration_1000m = 10,
+		armor_penetration_100m  = 25,
+	},
+	damage = {
+		default            = 650,
+	},
+}
+
+local FRA37mmSA18HE = LightHE:New(FRA37mmSA18, true):New{
+	fearaoe			= 25,
+	damage = {
+		default            = 200,
+	},
+}
+
+-- A bit better 37mm
+local FRA37mmSA38 = LightGun:New{
+  name                 = [[Canon de 37 SA 38]],
+  range                = 930,
+  reloadTime           = 4.0,
+  soundStart           = [[US_37mm]],
+  weaponVelocity		= 800,
+}
+
+local FRA37mmSA38AP = LightAP:New(FRA37mmSA38, true):New{
+	customparams = {
+		armor_penetration_1000m = 16,
+		armor_penetration_100m  = 29,
+	},
+	damage = {
+		default            = 750,
+	},
+}
+
+local FRA37mmSA38HE = LightHE:New(FRA37mmSA38, true):New{
+	fearaoe			= 28,
+	damage = {
+		default            = 250,
+	},
+}
+
 local FRA47mmSA35 = LightGun:New{
   name                 = [[47mm SA35]],
   range                = 1100,
@@ -409,6 +462,10 @@ return lowerkeys({
   Mavag_37_42MAP = Mavag_37_42MAP,
   Mavag_37_42MHE = Mavag_37_42MHE,
   -- France
+  FRA37mmSA18AP = FRA37mmSA18AP,
+  FRA37mmSA18HE = FRA37mmSA18HE,
+  FRA37mmSA38AP = FRA37mmSA38AP,
+  FRA37mmSA38HE = FRA37mmSA38HE,  
   FRA47mmSA35AP = FRA47mmSA35AP,
   FRA47mmSA35HE = FRA47mmSA35HE,
 })
