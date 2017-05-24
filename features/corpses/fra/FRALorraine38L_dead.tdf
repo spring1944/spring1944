@@ -1,0 +1,60 @@
+[FRALorraine38L_Abandoned]
+{
+  description=Abandoned Personnel Carrier;
+  damage=2501;
+  energy=50;
+  featureDead=FRALorraine38L_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRALorraine38L.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRALorraine38L_Burning]
+{
+  description=Destroyed Personnel Carrier;
+  damage=2501;
+  energy=50;
+  featureDead=FRALorraine38L_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRALorraine38L_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRALorraine38L_Wreck]
+{
+  description=Destroyed Personnel Carrier;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRALorraine38L_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
