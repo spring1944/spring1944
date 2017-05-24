@@ -365,7 +365,9 @@ local FRA37mmSA18AP = LightAP:New(FRA37mmSA18, true):New{
 }
 
 local FRA37mmSA18HE = LightHE:New(FRA37mmSA18, true):New{
-	fearaoe			= 25,
+	customparams = {
+		fearaoe			= 24,
+	},
 	damage = {
 		default            = 200,
 	},
@@ -391,7 +393,9 @@ local FRA37mmSA38AP = LightAP:New(FRA37mmSA38, true):New{
 }
 
 local FRA37mmSA38HE = LightHE:New(FRA37mmSA38, true):New{
-	fearaoe			= 28,
+	customparams = {
+		fearaoe			= 28,
+	},
 	damage = {
 		default            = 250,
 	},
