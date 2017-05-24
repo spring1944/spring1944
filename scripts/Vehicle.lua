@@ -32,6 +32,8 @@ local wheelSpeed
 local currentTrack
 local lastShot
 
+local hasTrailerTracks = false
+
 -- Logic
 local usesAmmo = info.usesAmmo
 
@@ -174,11 +176,19 @@ function script.Create()
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
-		for i = 2,#info.tracks do
+		for i = 2, #info.tracks do
 			Hide(info.tracks[i])
 		end
 	end
 
+	if #info.trailerTracks > 1 then
+		hasTrailerTracks = true
+		Show(info.trailerTracks[1])
+		for i = 2, #info.trailerTracks do
+			Hide(info.trailerTracks[i])
+		end
+	end
+	
 	moving = false
 	weaponEnabled = {}
 	weaponPriorities = {}
@@ -247,10 +257,17 @@ end
 local function SwapTracks()
 	SetSignalMask(SIG_MOVE)
 	local tracks = info.tracks
+	local trailerTracks = info.trailerTracks
 	while true do
 		Hide(tracks[currentTrack])
+		if hasTrailerTracks then
+			Hide(trailerTracks[currentTrack])
+		end
 		currentTrack = (currentTrack % #tracks) + 1
 		Show(tracks[currentTrack])
+		if hasTrailerTracks then
+			Show(trailerTracks[currentTrack])
+		end
 		Sleep(TRACK_SWAP_DELAY)
 	end
 end

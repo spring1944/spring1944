@@ -31,6 +31,7 @@ local info = GG.lusHelper[unitDefID]
 local numWheels = 0
 local wheelSpeeds = {}
 local tracks = {}
+local trailerTracks = {}
 local smokePieces = {}
 local cegPieces = {}
 local aimPieces = {}
@@ -49,6 +50,8 @@ for pieceName, pieceNum in pairs(pieceMap) do
 		local wheelHeight = math.abs(wheelInfo.max[2] - wheelInfo.min[2])
 		wheelSpeeds[pieceNum] = (UnitDefs[unitDefID].speed / wheelHeight)
 		numWheels = numWheels + 1
+	elseif pieceName:find("trailer_tracks") then
+		trailerTracks[#trailerTracks + 1] = pieceNum
 	elseif pieceName:find("tracks") then
 		tracks[#tracks + 1] = pieceNum
 	elseif pieceName:find("exhaust") then
@@ -82,6 +85,7 @@ end
 info.numWheels = numWheels
 info.wheelSpeeds = wheelSpeeds
 info.tracks = tracks
+info.trailerTracks = trailerTracks
 info.smokePieces = smokePieces
 info.cegPieces = cegPieces
 info.aimPieces = aimPieces
