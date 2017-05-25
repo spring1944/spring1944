@@ -544,7 +544,7 @@ local Mavag_75_43MAP = MediumAP:New(KwK75mmL48, true):New{
 local FRA75mmSA35 = MediumGun:New{
 	name               = [[75mm SA35 L17]],
 	range              = 1270,
-	reloadTime         = 5,	-- sources say 15-30, but that's too much for manually loaded 75mm
+	reloadTime         = 6,	-- sources say 15-30, but that's too much for manually loaded 75mm
 	soundStart         = [[short_75mm]],
 }
 

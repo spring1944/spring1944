@@ -411,8 +411,8 @@ local FRA47mmSA35 = LightGun:New{
 local FRA47mmSA35AP = LightAP:New(FRA47mmSA35, true):New{
 	weaponVelocity     = 1118,
 	customparams = {
-		armor_penetration_1000m = 53,
-		armor_penetration_100m  = 76,
+		armor_penetration_1000m = 33,
+		armor_penetration_100m  = 49,
 	},
 	damage = {
 		default            = 1183,
