@@ -23,6 +23,7 @@ local TransferUnit				= Spring.TransferUnit
 local SetUnitNeutral			= Spring.SetUnitNeutral
 local GetTeamStartPosition		= Spring.GetTeamStartPosition
 local SetUnitHealth				= Spring.SetUnitHealth
+local GetUnitIsTransporting		= Spring.GetUnitIsTransporting
 
 local GetGroundHeight			= Spring.GetGroundHeight
 local TestBuildOrder			= Spring.TestBuildOrder
@@ -87,6 +88,22 @@ local function InitFlagDistances()
 	table.sort(flags, function(unitID1, unitID2) return flagDistances[unitID1] < flagDistances[unitID2] end)
 end
 
+local function TransferSpawnedUnit(unitID, newTeamID)
+	-- transfer unit to the new flag owner
+	TransferUnit(unitID, newTeamID, false)
+	SetUnitNeutral(unitID, false)
+	if stunSpawnedUnits then
+		SetUnitHealth(unitID, { paralyze = -1 })
+	end
+	-- Do the same for anything this unit might be transporting. This covers composite units too
+	local cargoList = GetUnitIsTransporting(unitID)
+	if cargoList and #cargoList > 0 then
+		for _, cargoID in pairs(cargoList) do
+			TransferSpawnedUnit(cargoID, newTeamID)
+		end
+	end
+end
+
 local function FlagCapNotification(flagID, teamID)
 	--Spring.Log('spoils of war', 'error', "Flag cap event received: flagID " .. (flagID or 'nil') .. ' teamID: ' .. (teamID or nil))
 	if flagID and teamID ~= GAIA_TEAM_ID then
@@ -105,11 +122,7 @@ local function FlagCapNotification(flagID, teamID)
 					local cp2 = UnitDefs[GetUnitDefID(unitID)].customParams
 					if (not cp2) or not (cp2.flag or cp2.ismine) then
 						-- transfer unit to the new flag owner
-						TransferUnit(unitID, teamID, false)
-						SetUnitNeutral(unitID, false)
-						if stunSpawnedUnits then
-							SetUnitHealth(unitID, { paralyze = -1 })
-						end
+						TransferSpawnedUnit(unitID, teamID)
 					end
 				end
 			end
