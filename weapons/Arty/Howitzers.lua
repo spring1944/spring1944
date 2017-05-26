@@ -269,6 +269,23 @@ local A19HE = HowitzerHE:New(A19, true):New{
 }
 local A19Smoke = HowitzerSmoke:New(A19, true)
 
+-- France
+-- 10.5cm LeFH 18/40 (GER)
+local FRA105mm = Howitzer:New{
+  accuracy           = 1050,
+  areaOfEffect       = 129,
+  name               = [[anon de 105mm C (L/17) Mle1935 Bourges]],
+  range              = 7100,
+  reloadtime         = 11.25,
+}
+local FRA105mmHE = HowitzerHE:New(FRA105mm, true):New{
+  damage = {
+    default            = 4200,
+  },
+}
+
+local FRA105mmSmoke = HowitzerSmoke:New(FRA105mm, true)
+
 -- Return only the full weapons
 return lowerkeys({
   QF25PdrHE = QF25PdrHE,
@@ -303,4 +320,6 @@ return lowerkeys({
   M1_45in_GunSmoke = M1_45in_GunSmoke,
   A19HE = A19HE,
   A19Smoke = A19Smoke,
+  FRA105mmHE = FRA105mmHE,
+  FRA105mmSmoke = FRA105mmSmoke,
 })

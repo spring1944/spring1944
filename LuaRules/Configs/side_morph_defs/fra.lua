@@ -92,7 +92,26 @@ local fraDefs = {
 		metal = 0,
 		energy = 0,
 	},
-	
+
+    fra105mmmle1935b_truck = 
+    {
+        into = 'fra105mmmle1935b_stationary',
+        tech = 0,
+        time = 35,
+        metal = 0,
+        energy = 0,
+        directional = true,
+    },
+
+    fra105mmmle1935b_stationary = 
+    {
+        into = 'fra105mmmle1935b_truck',
+        tech = 0,
+        time = 20,
+        metal = 0,
+        energy = 0,
+    },
+
 }
 
 return fraDefs
