@@ -52,5 +52,5 @@ void main(void) {
 	// Gamma correction 
 	mapped = pow(mapped, vec3(1.0 / gamma));
 
-	gl_FragColor = vec4(mapped, color.w);
+	gl_FragColor = vec4(mapped, 1.0);
 }
