@@ -51,17 +51,17 @@ local GL_NEAREST             = GL.NEAREST
 
 local vsx = nil	-- current viewport width
 local vsy = nil	-- current viewport height
-local noiseShader = nil  -- Used just once to generate noiseTex (due to the lack of glTexImage2D)
+local noiseShader       = nil  -- Used just once to generate noiseTex (due to the lack of glTexImage2D)
 local normalBlendShader = nil  -- Since spring is separately rendering map and units, we should mix all together here
-local ssaoShader = nil
-local blurShader = nil
-local renderShader = nil
-local depthTex = nil  -- rendered depths texture
-local colorTex = nil  -- rendered fragments texture
-local noiseTex = nil  -- Noise to add to the samples data
+local ssaoShader        = nil
+local blurShader        = nil
+local renderShader      = nil
+local depthTex  = nil  -- rendered depths texture
+local colorTex  = nil  -- rendered fragments texture
+local noiseTex  = nil  -- Noise to add to the samples data
 local normalTex = nil  -- normals blended texture
-local ssaoTex = nil  -- Actual ambient occlusion texture
-local blurTex = nil  -- Blurred ambient occlusion texture, to avoid noise artifacts
+local ssaoTex   = nil  -- Actual ambient occlusion texture
+local blurTex   = nil  -- Blurred ambient occlusion texture, to avoid noise and band artifacts
 
 -- shader uniform handles
 local eyePosLoc = nil
@@ -83,9 +83,13 @@ local samplesZ = nil
 
 function widget:ViewResize(x, y)
 	vsx, vsy = gl.GetViewSizes()
+	glDeleteTexture(depthTex or "")
+	glDeleteTexture(colorTex or "")
+	glDeleteTexture(noiseTex or "")
+	glDeleteTexture(normalTex or "")
 	glDeleteTexture(ssaoTex or "")
-	glDeleteTexture (blurTex or "")
-	ssaoTex, blurTex = nil, nil
+	glDeleteTexture(blurTex or "")
+	depthTex, colorTex, noiseTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil, nil
 
 	depthTex = gl.CreateTexture(vsx,vsy, {
 		border = false,
@@ -103,17 +107,17 @@ function widget:ViewResize(x, y)
 		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
 	})
-	
+
 	ssaoTex = glCreateTexture(vsx, vsy, {
 		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
 	})
-	
+
 	blurTex = glCreateTexture(vsx, vsy, {
 		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
 	})
-	
+
 	if not depthTex or not colorTex or not normalTex or not ssaoTex or not blurTex then
 		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create textures!")
 		widgetHandler:RemoveWidget()
@@ -127,7 +131,7 @@ function widget:Initialize()
 		widgetHandler:RemoveWidget()
 		return
 	end
-	
+
 	-- The Noise texture generation shader, called just once
 	-- =====================================================
 	noiseShader = noiseShader or glCreateShader({
@@ -261,11 +265,6 @@ function widget:Shutdown()
 	end
 	noiseShader, normalBlendShader, ssaoShader, blurShader, renderShader = nil, nil, nil, nil, nil
 	depthTex, colorTex, noiseTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil, nil
-end
-
-function widget:DrawWorldPreUnit()
-	gl.ResetState()		-- to prevent on/off flicker induced by other widgets maybe (i tried single out which thing included in gl.ResetSate fixed it but it kept doing it)
-	glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
 end
 
 function widget:DrawScreenEffects()
