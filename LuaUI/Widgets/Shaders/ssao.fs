@@ -73,8 +73,5 @@ void main(void) {
 
 	occlusion = 1.0 - (occlusion / float(KERNEL_SIZE));
 
-	// occlusion = 2.0 * (1.0 - occlusion / float(KERNEL_SIZE));
-	// occlusion = occlusion / float(KERNEL_SIZE);
-
 	gl_FragColor = vec4(vec3(occlusion), alpha);
 }
