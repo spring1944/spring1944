@@ -52,7 +52,6 @@ local GL_NEAREST             = GL.NEAREST
 local vsx = nil	-- current viewport width
 local vsy = nil	-- current viewport height
 local noiseShader = nil  -- Used just once to generate noiseTex (due to the lack of glTexImage2D)
-local depthBlendShader = nil  -- Since spring is separately rendering map and units, we should mix all together here
 local normalBlendShader = nil  -- Since spring is separately rendering map and units, we should mix all together here
 local ssaoShader = nil
 local blurShader = nil
@@ -141,19 +140,8 @@ function widget:Initialize()
 		return
 	end
 
-	-- The map and model depth/normal blending shaders
-	-- ===============================================
-	depthBlendShader = depthBlendShader or glCreateShader({
-		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_depth_blend.fs", VFS.ZIP),
-		uniformInt = {mapdepths = 0, modeldepths = 1},
-	})
-	if not depthBlendShader then
-		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO depth blend shader!")
-		Spring.Echo(gl.GetShaderLog())
-		widgetHandler:RemoveWidget()
-		return
-	end
-
+	-- The map and model normal blending shader
+	-- ========================================
 	normalBlendShader = normalBlendShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_normal_blend.fs", VFS.ZIP),
 		uniformInt = {mapdepths = 0, modeldepths = 1, mapnormals = 2, modelnormals = 3},
@@ -250,9 +238,6 @@ function widget:Shutdown()
 	if (glDeleteShader and noiseShader) then
 		glDeleteShader(noiseShader)
 	end
-	if (glDeleteShader and depthBlendShader) then
-		glDeleteShader(depthBlendShader)
-	end
 	if (glDeleteShader and normalBlendShader) then
 		glDeleteShader(normalBlendShader)
 	end
@@ -274,7 +259,7 @@ function widget:Shutdown()
 		glDeleteTexture(ssaoTex or "")
 		glDeleteTexture(blurTex or "")
 	end
-	noiseShader, depthBlendShader, normalBlendShader, ssaoShader, blurShader, renderShader = nil, nil, nil, nil, nil, nil
+	noiseShader, normalBlendShader, ssaoShader, blurShader, renderShader = nil, nil, nil, nil, nil
 	depthTex, colorTex, noiseTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil, nil
 end
 
@@ -301,18 +286,7 @@ function widget:DrawScreenEffects()
 		glUseShader(0)
 	end
 
-	-- Blend both the depth and normal maps
-	--[[
-	glUseShader(depthBlendShader)
-		glTexture(0, "$map_gbuffer_zvaltex")
-		glTexture(1, "$model_gbuffer_zvaltex")
-		
-		glRenderToTexture(depthTex, glTexRect, -1, 1, 1, -1)
-
-		glTexture(0, false)
-		glTexture(1, false)
-	glUseShader(0)
-	--]]
+	-- Blend normal maps into a single one
 	glUseShader(normalBlendShader)
 		glTexture(0, "$map_gbuffer_zvaltex")
 		glTexture(1, "$model_gbuffer_zvaltex")
@@ -343,8 +317,7 @@ function widget:DrawScreenEffects()
 		glTexture(2, noiseTex)
 
 		glRenderToTexture(ssaoTex, glTexRect, -1, 1, 1, -1)
-		-- glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
-		
+
 		glTexture(0, false)
 		glTexture(1, false)
 		glTexture(2, false)
@@ -356,19 +329,18 @@ function widget:DrawScreenEffects()
 		glTexture(0, ssaoTex)
 
 		glRenderToTexture(blurTex, glTexRect, -1, 1, 1, -1)
-		-- glTexRect(0, 0, vsx, vsy, false, true)
-		
+
 		glTexture(0, false)
 	glUseShader(0)
 	
-	-- Apply the ssao
+	-- Apply the SSAO to the rendered image
 	glUseShader(renderShader)
 		glTexture(0, depthTex)
 		glTexture(1, blurTex)
 		glTexture(2, colorTex)
 
 		glTexRect(0, 0, vsx, vsy, false, true)
-		
+
 		glTexture(0, false)
 		glTexture(1, false)
 		glTexture(2, false)
