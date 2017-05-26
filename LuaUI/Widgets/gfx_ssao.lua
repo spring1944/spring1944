@@ -37,6 +37,12 @@ options.useSSAO.OnChange = onChangeFunc
 -- Engine Functions
 -----------------------------------------------------------------
 
+local GL_DEPTH_BITS = 0x0D56
+local GL_DEPTH_COMPONENT   = 0x1902
+local GL_DEPTH_COMPONENT16 = 0x81A5
+local GL_DEPTH_COMPONENT24 = 0x81A6
+local GL_DEPTH_COMPONENT32 = 0x81A7
+
 local spGetCameraPosition    = Spring.GetCameraPosition
 
 local glCopyToTexture        = gl.CopyToTexture
@@ -47,12 +53,16 @@ local glDeleteTexture        = gl.DeleteTexture
 local glGetShaderLog         = gl.GetShaderLog
 local glTexture              = gl.Texture
 local glTexRect              = gl.TexRect
-local glRenderToTexture		 = gl.RenderToTexture
+local glRenderToTexture      = gl.RenderToTexture
 local glUseShader            = gl.UseShader
 local glGetUniformLocation   = gl.GetUniformLocation
-local glUniform				 = gl.Uniform
-local glUniformMatrix		 = gl.UniformMatrix
+local glUniform              = gl.Uniform
+local glUniformMatrix        = gl.UniformMatrix
 local glUniformArray         = gl.UniformArray
+local glBlitFBO              = gl.BlitFBO
+local GL_DEPTH_BUFFER_BIT    = GL.DEPTH_BUFFER_BIT
+local GL_COLOR_BUFFER_BIT    = GL.COLOR_BUFFER_BIT
+local GL_NEAREST             = GL.NEAREST
 
 -----------------------------------------------------------------
 
@@ -69,8 +79,9 @@ local normalBlendShader = nil  -- Since spring is separately rendering map and u
 local ssaoShader = nil
 local blurShader = nil
 local renderShader = nil
+local depthTex = nil  -- rendered depths texture
+local colorTex = nil  -- rendered fragments texture
 local noiseTex = nil  -- Noise to add to the samples data
-local depthTex = nil  -- depths blended texture
 local normalTex = nil  -- normals blended texture
 local ssaoTex = nil  -- Actual ambient occlusion texture
 local blurTex = nil  -- Blurred ambient occlusion texture, to avoid noise artifacts
@@ -99,12 +110,18 @@ function widget:ViewResize(x, y)
 	glDeleteTexture (blurTex or "")
 	ssaoTex, blurTex = nil, nil
 
-    -- May I not create a single component texture?? i.e. GL_RED format
-	depthTex = glCreateTexture(vsx, vsy, {
-		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
-		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
-	})
-	
+    depthTex = gl.CreateTexture(vsx,vsy, {
+        border = false,
+        format = GL_DEPTH_COMPONENT32,
+        min_filter = GL.NEAREST,
+        mag_filter = GL.NEAREST,
+    })
+    colorTex = gl.CreateTexture(vsx, vsy, {
+        border = false,
+        min_filter = GL.NEAREST,
+        mag_filter = GL.NEAREST,
+    })
+
 	normalTex = glCreateTexture(vsx, vsy, {
 		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
@@ -120,7 +137,7 @@ function widget:ViewResize(x, y)
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
 	})
 	
-	if not depthTex or not normalTex or not blurTex or not ssaoTex then
+	if not depthTex or not colorTex or not normalTex or not blurTex or not ssaoTex then
 		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create textures!")
 		widgetHandler:RemoveWidget()
 		return
@@ -211,6 +228,19 @@ function widget:Initialize()
 
 	texelSizeLoc = gl.GetUniformLocation(blurShader, "texelSize")
 
+    -- The SSAO application final step
+    -- ===============================
+	renderShader = renderShader or glCreateShader({
+		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_apply.fs", VFS.ZIP),
+		uniformInt = {depths = 0, ssao = 1, colors = 2},
+	})
+	if not renderShader then
+		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create SSAO application shader!")
+		Spring.Echo(gl.GetShaderLog())
+		widgetHandler:RemoveWidget()
+		return
+	end
+
     -- Generate the samples kernel
     samplesX = {}
     samplesY = {}
@@ -263,14 +293,20 @@ function widget:Shutdown()
 	end
 	
 	if glDeleteTexture then
-		glDeleteTexture(noiseTex or "")
 		glDeleteTexture(depthTex or "")
+		glDeleteTexture(colorTex or "")
+		glDeleteTexture(noiseTex or "")
 		glDeleteTexture(normalTex or "")
 		glDeleteTexture(ssaoTex or "")
 		glDeleteTexture(blurTex or "")
 	end
 	noiseShader, depthBlendShader, normalBlendShader, ssaoShader, blurShader, renderShader = nil, nil, nil, nil, nil, nil
-	noiseTex, depthTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil
+	depthTex, colorTex, noiseTex, normalTex, ssaoTex, blurTex = nil, nil, nil, nil, nil, nil
+end
+
+function widget:DrawWorldPreUnit()
+	gl.ResetState()		-- to prevent on/off flicker induced by other widgets maybe (i tried single out which thing included in gl.ResetSate fixed it but it kept doing it)
+	glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
 end
 
 function widget:DrawScreenEffects()
@@ -278,6 +314,11 @@ function widget:DrawScreenEffects()
 		return -- if the option is disabled don't draw anything.
 	end
 
+    -- Get the depth and color rendered images
+    glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
+    glCopyToTexture(colorTex,  0, 0, 0, 0, vsx, vsy)
+
+    -- Compute the noise texture (if it is not already computed)
     if not noiseTex then
         -- Due to the lack of glTexImage2D, the noise should be rendered once
         -- to a FBO texture
@@ -291,15 +332,17 @@ function widget:DrawScreenEffects()
     end
 
     -- Blend both the depth and normal maps
+    --[[
 	glUseShader(depthBlendShader)
 		glTexture(0, "$map_gbuffer_zvaltex")
 		glTexture(1, "$model_gbuffer_zvaltex")
 		
 		glRenderToTexture(depthTex, glTexRect, -1, 1, 1, -1)
-		
+
 		glTexture(0, false)
 		glTexture(1, false)
 	glUseShader(0)
+	--]]
 	glUseShader(normalBlendShader)
 		glTexture(0, "$map_gbuffer_zvaltex")
 		glTexture(1, "$model_gbuffer_zvaltex")
@@ -348,11 +391,23 @@ function widget:DrawScreenEffects()
 		glTexture(0, false)
 	glUseShader(0)
     
+    -- Apply the ssao
+	glUseShader(renderShader)
+		glTexture(0, depthTex)
+		glTexture(1, blurTex)
+		glTexture(2, colorTex)
+
+		glTexRect(0, 0, vsx, vsy, false, true)
+		
+		glTexture(0, false)
+		glTexture(1, false)
+		glTexture(2, false)
+	glUseShader(0)
 
     -- Debug
+    --[[
 	glTexture(blurTex)
     glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
 	glTexture(false)
-    
-
+    --]]
 end
