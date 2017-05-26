@@ -7,31 +7,9 @@ function widget:GetInfo()
 		date      = "Apr. 2017",
 		license   = "GPL",
 		layer     = -1,
-		enabled   = true
+		enabled   = false
 	}
 end
-
-options_path = 'Settings/Graphics/Effects/SSAO'
-
-options_order = {'useSSAO'}
-
-options = {
-	useSSAO = { type='bool', name='Screen-Space Ambient Occlusion', value=true, noHotkey = true, advanced = false}
-}
-
-local function onChangeFunc()
-	if options.useSSAO.value then
-		widget:Initialize()
-	else
-		if glDeleteTexture then
-			glDeleteTexture(blurTex or "")
-			glDeleteTexture(ssaoTex or "")
-			blurTex, ssaoTex = nil, nil
-		end
-	end
-end
-
-options.useSSAO.OnChange = onChangeFunc
 
 -----------------------------------------------------------------
 -- Engine Functions
@@ -137,7 +115,7 @@ function widget:ViewResize(x, y)
 		wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
 	})
 	
-	if not depthTex or not colorTex or not normalTex or not blurTex or not ssaoTex then
+	if not depthTex or not colorTex or not normalTex or not ssaoTex or not blurTex then
 		Spring.Echo("Screen-Space Ambient Occlusion: Failed to create textures!")
 		widgetHandler:RemoveWidget()
 		return
@@ -151,10 +129,6 @@ function widget:Initialize()
 		return
 	end
 	
-	if not options.useSSAO.value then
-		return
-	end
-
 	-- The Noise texture generation shader, called just once
 	-- =====================================================
 	noiseShader = noiseShader or glCreateShader({
@@ -310,10 +284,6 @@ function widget:DrawWorldPreUnit()
 end
 
 function widget:DrawScreenEffects()
-	if not options.useSSAO.value then
-		return -- if the option is disabled don't draw anything.
-	end
-
 	-- Get the depth and color rendered images
 	glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
 	glCopyToTexture(colorTex,  0, 0, 0, 0, vsx, vsy)
