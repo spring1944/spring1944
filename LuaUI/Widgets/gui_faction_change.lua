@@ -168,6 +168,7 @@ function widget:Initialize()
 	   Spring.GetGameFrame() > 0 or
 	   amNewbie then
 		widgetHandler:RemoveWidget(self)
+		return
 	end
 	-- Check that game_setup.lua has a faction already set
 	spSendLuaRulesMsg('\138' .. mySide)
@@ -181,7 +182,7 @@ function widget:DrawWorld()
 		local tsx, tsy, tsz = spGetTeamStartPosition(teamID)
 		if tsx and tsx > 0 then
 			local side = spGetTeamRulesParam(teamID, 'side')
-			if side == "" or side == 0 then
+			if side == "" or side == 0 or side == nil then
 				-- No idea why it takes 0 value after choosing random team...
 				side = "random team (gm)"
 			end

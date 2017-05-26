@@ -46,7 +46,8 @@ local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
 	-- 20 rounds per minute
 	reloadTime	= 3,
 	areaOfEffect	= 50,
-	weaponVelocity	= 650,
+	movingAccuracy     = 300,
+	weaponVelocity	= 850,
 	damage = {
 		default		= 696,
 	},

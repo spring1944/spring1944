@@ -1,8 +1,8 @@
-local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
+local SWE_B17A = Fighter:New{ 
 	name				= "SAAB B 17A",
 	description			= "Light Bomber",
 	buildCostMetal		= 2175, -- shared with CR.42
-	maxDamage			= 240, -- shared with CR.42
+	maxDamage			= 397, 
 	cruiseAlt			= 1500,
 	iconType			= "bomber",
 
@@ -24,25 +24,26 @@ local SWE_B17A = Fighter:New{ -- based on JPN Ki 51
 	weapons = {
 		[1] = {
 			name				= "bomb250kg", 
-			maxAngleDif			= 12,
+			maxAngleDif			= 5,
 		},
 		[2] = {
 			name				= "bomb50kg",
-			maxAngleDif			= 10,
+			maxAngleDif			= 15,
 		},
 		[3] = {
 			name				= "bomb50Kg",
-			maxAngleDif			= 10,
+			maxAngleDif			= 15,
 			slaveTo				= 2,
 		},
 		[4] = {
 			name				= "bomb50kg",
-			maxAngleDif			= 10,
+			maxAngleDif			= 15,
+			slaveTo				= 2,
 		},
 		[5] = {
-			name				= "bomb50Kg",
-			maxAngleDif			= 10,
-			slaveTo				= 4,
+			name				= "lastbomb50Kg",
+			maxAngleDif			= 15,
+			slaveTo				= 2,
 		},
 		[6] = {
 			name				= "BredaSafat03",

@@ -81,6 +81,7 @@ local damagedefs = {
   },
   fire = {
     bunkers = 4,
+    infantry = 4/3,
 	lightbuildings = 3/2,
 	ships = 3/2,
 	hardships = 1,

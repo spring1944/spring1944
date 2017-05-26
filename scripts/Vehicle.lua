@@ -21,6 +21,8 @@ local atan2 = math.atan2
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local SetUnitCOBValue = Spring.SetUnitCOBValue
 
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
 local rockRestoreSpeed = rad(20)
@@ -29,6 +31,8 @@ local rockRestoreSpeed = rad(20)
 local wheelSpeed
 local currentTrack
 local lastShot
+
+local hasTrailerTracks = false
 
 -- Logic
 local usesAmmo = info.usesAmmo
@@ -68,6 +72,10 @@ if UnitDef.customParams then
 	exhaust_fx_name = UnitDef.customParams.exhaust_fx_name or exhaust_fx_name
 end
 
+-- Optional composite units stuff
+local childrenPieces = info.childrenPieces
+local children = info.children
+
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
 	SetSignalMask(mask)
@@ -105,6 +113,39 @@ local function DamageSmoke(smokePieces)
 	end
 end
 
+
+local function RestoreTurret(weaponNum) -- called by Create so must be prior
+	if info.aimPieces[weaponNum] then
+		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+		if headingPiece then
+			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
+		end
+		if pitchPiece then
+			if UnitDef.customParams.spaa then
+				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
+			else
+				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+			end
+		end
+	end
+end
+
+local function StopAiming(weaponNum)
+	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
+	if prioritisedWeapon == weaponNum then
+		prioritisedWeapon = nil
+	end
+
+	for i = 1,info.numWeapons do
+		-- If we're still aiming at anything, we don't want to restore the turret
+		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
+			wantedDirection[i][1] then
+			return
+		end
+	end
+	RestoreTurret(weaponNum)
+end
+
 function script.Create()
 	if customAnims and customAnims.preCreate then
 		customAnims.preCreate()
@@ -135,11 +176,19 @@ function script.Create()
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
-		for i = 2,#info.tracks do
+		for i = 2, #info.tracks do
 			Hide(info.tracks[i])
 		end
 	end
 
+	if #info.trailerTracks > 1 then
+		hasTrailerTracks = true
+		Show(info.trailerTracks[1])
+		for i = 2, #info.trailerTracks do
+			Hide(info.trailerTracks[i])
+		end
+	end
+	
 	moving = false
 	weaponEnabled = {}
 	weaponPriorities = {}
@@ -159,6 +208,21 @@ function script.Create()
 			end
 		end
 	end
+
+	-- composite units
+	if #children > 0 then
+		local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+		local teamID = Spring.GetUnitTeam(unitID)
+		for i, childDefName in ipairs(children) do
+			local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
+			if (childID ~= nil) then
+				Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
+				Hide(childrenPieces[i])
+				SetUnitNoSelect(childID, true)
+			end
+		end
+	end
+	
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
@@ -172,6 +236,7 @@ function script.Create()
 	if customAnims and customAnims.postCreate then
 		customAnims.postCreate()
 	end
+	StartThread(RestoreTurret, 1) -- force elevation of guns for SPAA
 end
 
 local function SpinWheels()
@@ -192,10 +257,17 @@ end
 local function SwapTracks()
 	SetSignalMask(SIG_MOVE)
 	local tracks = info.tracks
+	local trailerTracks = info.trailerTracks
 	while true do
 		Hide(tracks[currentTrack])
+		if hasTrailerTracks then
+			Hide(trailerTracks[currentTrack])
+		end
 		currentTrack = (currentTrack % #tracks) + 1
 		Show(tracks[currentTrack])
+		if hasTrailerTracks then
+			Show(trailerTracks[currentTrack])
+		end
 		Sleep(TRACK_SWAP_DELAY)
 	end
 end
@@ -260,46 +332,6 @@ function script.StopMoving()
 	end
 end
 
-local function RestoreTurret(weaponNum)
-	if info.aimPieces[weaponNum] then
-		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
-		if headingPiece then
-			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
-		end
-		if pitchPiece then
-			if UnitDef.name == "gerflak38_truck" 
-				or UnitDef.name == "hun40mnimrod"
-				or UnitDef.name == "itaspadovunque"
-				or UnitDef.name == "gbrstaghound"
-				or UnitDef.name == "rusgazaaa"
-				or UnitDef.name == "swepbilm31"
-				or UnitDef.name == "usm16mgmc"
-				or UnitDef.name == "jpnisuzutype94_aa" then
-
-				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
-			else
-				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
-			end
-		end
-	--Spring.Echo("truckAA", weaponNum, pitchPiece)
-	end
-end
-
-local function StopAiming(weaponNum)
-	wantedDirection[weaponNum][1], wantedDirection[weaponNum][2] = nil, nil
-	if prioritisedWeapon == weaponNum then
-		prioritisedWeapon = nil
-	end
-
-	for i = 1,info.numWeapons do
-		-- If we're still aiming at anything, we don't want to restore the turret
-		if info.aimPieces[weaponNum] and info.aimPieces[i] and info.aimPieces[weaponNum][1] == info.aimPieces[i][1] and -- make sure it's a relevant weapon
-			wantedDirection[i][1] then
-			return
-		end
-	end
-	RestoreTurret(weaponNum)
-end
 
 local function IsMainGun(weaponNum)
 	return weaponNum <= info.weaponsWithAmmo
@@ -486,6 +518,11 @@ function script.Killed(recentDamage, maxHealth)
 	local turret = piece "turret"
 	local sleeve = piece "sleeve"
 
+	-- for composite units
+	for _, child in pairs(childrenPieces) do
+		Show(child)
+	end
+	
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end

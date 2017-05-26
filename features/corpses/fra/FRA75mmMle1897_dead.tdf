@@ -1,0 +1,11 @@
+[FRA75mmMle1897_destroyed] {
+  description=Destroyed Gun;
+  damage=1251;
+  energy=500;
+  featureDead=Debris_Small;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRA75mmMle1897_dead.s3o;
+  reclaimable=1;
+}
+

@@ -23,7 +23,7 @@ local ITA_MC200 = Fighter:New{
 			maxAngleDif			= 10,
 		},
 		[2] = {
-			name				= "A_tkbomb",
+			name				= "lastA_tkbomb",
 			maxAngleDif			= 10,
 		},
 		[3] = {

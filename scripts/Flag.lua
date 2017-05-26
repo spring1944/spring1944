@@ -20,17 +20,26 @@ end
 
 -- for flags
 function SetFlag(teamID)
-	if currentSide then
+	if currentSide and flags[currentSide] then
 		Move(flags[currentSide], y_axis, 0, 20)
 		WaitForMove(flags[currentSide], y_axis)
+	else
+		-- it is very possible for this to be nil, at the first frame of the game. So only print error if it is not nil, but there is no data to move the flag
+		if currentSide then
+			Spring.Log("flag script", "error", "currentSide contains: " .. (currentSide or 'nil') .. ' for teamID: ' .. teamID)
+		end
 	end
 	while not GG.teamSide do -- for /luarules reload
 		Sleep(33)
 	end
 	local side = GG.teamSide[teamID]
 	if side and side ~= "" then
-		Move(flags[side], y_axis, 65, 10)
-		WaitForMove(flags[side], y_axis)
+		if not flags[side] then
+			Spring.Log("flag script", "error", "teamSide contains: " .. (side or 'nil') .. ' for teamID: ' .. teamID)
+		else
+			Move(flags[side], y_axis, 65, 10)
+			WaitForMove(flags[side], y_axis)
+		end 
 		currentSide = side
 	end
 end

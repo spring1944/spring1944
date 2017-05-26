@@ -138,6 +138,7 @@ local MobileAA = Def:New{ -- not a full class (role/mixin)
 	iconType			= "aacar",
 	customParams		= {
 		turretturnspeed		= 80,
+		spaa				= 1, -- hack due to unitdef.iconType being nil from engine
 	},
 }
 

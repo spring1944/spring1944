@@ -40,11 +40,14 @@ local RS82Rocket = AirRocket:New{
 
 -- Air-based nebelwerfer
 local AirNebelwerfer41 = AirRocket:New{
+	accuracy	= 2000,
 	areaOfEffect       = 184,
+	burst	= 3,
+	burstRate          = 0.233,
 	explosionGenerator = [[custom:HE_XLarge]],
-	reloadtime			= 3,
+	reloadtime			= 12,
 	name               = [[Nebelwerfer 41 150mm unguided artillery rocket]],
-	range              = 750,
+	range              = 1250,
 	soundStart         = [[GER_Nebelwerfer]],
 	wobble             = 2800,
 	customparams = {

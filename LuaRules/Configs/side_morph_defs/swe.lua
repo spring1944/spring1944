@@ -91,8 +91,8 @@ local sweDefs = {
 			metal = 3000,
 			energy = 0,
 			time = 85,
-			name = '  Self  \n  Propelled  ',
-			text = 'Makes Self-Propelled Artillery available in this yard',
+			name = '  Heavy  \n  Fieldguns  ',
+			text = 'Makes heavy-fieldguns available in this yard',
 			facing = true,
 		},
 		{
@@ -244,7 +244,7 @@ local sweDefs = {
 			time = 25,
 			metal = 0,
 			energy = 0,
-			directional = true,
+			directional = false,
 		},
 		{
 			into = 'swepvlvm40_at_stationary',
@@ -263,7 +263,7 @@ local sweDefs = {
 			time = 25,
 			metal = 0,
 			energy = 0,
-			directional = true,
+			directional = false,
 		},
 		{
 			into = 'swepvlvm40_at_stationary',
@@ -282,7 +282,7 @@ local sweDefs = {
 			time = 15,
 			metal = 0,
 			energy = 0,
-			directional = true,
+			directional = false,
 		},
 		{
 			into = 'swepvlvm40_aa_stationary',
@@ -290,7 +290,7 @@ local sweDefs = {
 			time = 25,
 			metal = 0,
 			energy = 0,
-			directional = true,
+			directional = false,
 		},
 	},
 	
@@ -350,7 +350,25 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
-	
+
+	swehaubitsm06_truck = 
+	{
+		into = 'swehaubitsm06_stationary',
+		tech = 0,
+		time = 35,
+		metal = 0,
+		energy = 0,
+		directional = true,
+	},
+	swehaubitsm06_stationary = 
+	{
+		into = 'swehaubitsm06_truck',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+	},
+
 	sweboforsm36_truck = {
 		{
 			into = 'sweboforsm36_stationary',
