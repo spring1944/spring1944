@@ -110,17 +110,17 @@ function widget:ViewResize(x, y)
 	glDeleteTexture (blurTex or "")
 	ssaoTex, blurTex = nil, nil
 
-    depthTex = gl.CreateTexture(vsx,vsy, {
-        border = false,
-        format = GL_DEPTH_COMPONENT32,
-        min_filter = GL.NEAREST,
-        mag_filter = GL.NEAREST,
-    })
-    colorTex = gl.CreateTexture(vsx, vsy, {
-        border = false,
-        min_filter = GL.NEAREST,
-        mag_filter = GL.NEAREST,
-    })
+	depthTex = gl.CreateTexture(vsx,vsy, {
+		border = false,
+		format = GL_DEPTH_COMPONENT32,
+		min_filter = GL.NEAREST,
+		mag_filter = GL.NEAREST,
+	})
+	colorTex = gl.CreateTexture(vsx, vsy, {
+		border = false,
+		min_filter = GL.NEAREST,
+		mag_filter = GL.NEAREST,
+	})
 
 	normalTex = glCreateTexture(vsx, vsy, {
 		fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
@@ -155,8 +155,8 @@ function widget:Initialize()
 		return
 	end
 
-    -- The Noise texture generation shader, called just once
-    -- =====================================================
+	-- The Noise texture generation shader, called just once
+	-- =====================================================
 	noiseShader = noiseShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_noise.fs", VFS.ZIP),
 	})
@@ -167,8 +167,8 @@ function widget:Initialize()
 		return
 	end
 
-    -- The map and model depth/normal blending shaders
-    -- ===============================================
+	-- The map and model depth/normal blending shaders
+	-- ===============================================
 	depthBlendShader = depthBlendShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_depth_blend.fs", VFS.ZIP),
 		uniformInt = {mapdepths = 0, modeldepths = 1},
@@ -191,8 +191,8 @@ function widget:Initialize()
 		return
 	end
 
-    -- The SSAO oclussion map computation
-    -- ==================================
+	-- The SSAO oclussion map computation
+	-- ==================================
 	ssaoShader = ssaoShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao.fs", VFS.ZIP),
 		uniformInt = {normals = 0, depths = 1, texNoise = 2},
@@ -205,7 +205,7 @@ function widget:Initialize()
 	end
 
 	eyePosLoc = gl.GetUniformLocation(ssaoShader, "eyePos")
-    viewMatLoc = gl.GetUniformLocation(ssaoShader, "viewMat")
+	viewMatLoc = gl.GetUniformLocation(ssaoShader, "viewMat")
 	projectionMatLoc = gl.GetUniformLocation(ssaoShader, "projectionMat")
 	projectionMatInvLoc = gl.GetUniformLocation(ssaoShader, "projectionMatInv")
 	noiseScaleLoc = gl.GetUniformLocation(ssaoShader, "noiseScale")
@@ -213,8 +213,8 @@ function widget:Initialize()
 	samplesYLoc = gl.GetUniformLocation(ssaoShader, "samplesY")
 	samplesZLoc = gl.GetUniformLocation(ssaoShader, "samplesZ")
 
-    -- The SSAO oclussion map blurring shader
-    -- ======================================
+	-- The SSAO oclussion map blurring shader
+	-- ======================================
 	blurShader = blurShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\blur.fs", VFS.ZIP),
 		uniformInt = {ssao = 0},
@@ -228,8 +228,8 @@ function widget:Initialize()
 
 	texelSizeLoc = gl.GetUniformLocation(blurShader, "texelSize")
 
-    -- The SSAO application final step
-    -- ===============================
+	-- The SSAO application final step
+	-- ===============================
 	renderShader = renderShader or glCreateShader({
 		fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\ssao_apply.fs", VFS.ZIP),
 		uniformInt = {depths = 0, ssao = 1, colors = 2},
@@ -241,33 +241,33 @@ function widget:Initialize()
 		return
 	end
 
-    -- Generate the samples kernel
-    samplesX = {}
-    samplesY = {}
-    samplesZ = {}
-    for i=1,32 do
-        local sx = math.random() * 2.0 - 1.0
-        local sy = math.random() * 2.0 - 1.0
-        local ss = math.sqrt(sx*sx + sy*sy)
-        local sz = math.random() * (1.0 - ss) + ss
-        ss = math.sqrt(sx*sx + sy*sy + sz*sz)
-        if ss > 0.000001 then
-            sx = sx / ss
-            sy = sy / ss
-            sz = sz / ss
-        end
-        --[[
-        ss = math.random()
-        sx = sx * ss
-        sy = sy * ss
-        sz = sz * ss
-        --]]
-        ss = i / 64.0
-        ss = 0.1 + ss * ss * (1.0 - 0.1)  -- lerp
-        samplesX[i] = sx * ss
-        samplesY[i] = sy * ss
-        samplesZ[i] = sz * ss
-    end
+	-- Generate the samples kernel
+	samplesX = {}
+	samplesY = {}
+	samplesZ = {}
+	for i=1,32 do
+		local sx = math.random() * 2.0 - 1.0
+		local sy = math.random() * 2.0 - 1.0
+		local ss = math.sqrt(sx*sx + sy*sy)
+		local sz = math.random() * (1.0 - ss) + ss
+		ss = math.sqrt(sx*sx + sy*sy + sz*sz)
+		if ss > 0.000001 then
+			sx = sx / ss
+			sy = sy / ss
+			sz = sz / ss
+		end
+		--[[
+		ss = math.random()
+		sx = sx * ss
+		sy = sy * ss
+		sz = sz * ss
+		--]]
+		ss = i / 64.0
+		ss = 0.1 + ss * ss * (1.0 - 0.1)  -- lerp
+		samplesX[i] = sx * ss
+		samplesY[i] = sy * ss
+		samplesZ[i] = sz * ss
+	end
 
 	widget:ViewResize()
 end
@@ -314,25 +314,25 @@ function widget:DrawScreenEffects()
 		return -- if the option is disabled don't draw anything.
 	end
 
-    -- Get the depth and color rendered images
-    glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
-    glCopyToTexture(colorTex,  0, 0, 0, 0, vsx, vsy)
+	-- Get the depth and color rendered images
+	glCopyToTexture(depthTex,  0, 0, 0, 0, vsx, vsy)
+	glCopyToTexture(colorTex,  0, 0, 0, 0, vsx, vsy)
 
-    -- Compute the noise texture (if it is not already computed)
-    if not noiseTex then
-        -- Due to the lack of glTexImage2D, the noise should be rendered once
-        -- to a FBO texture
-        noiseTex = glCreateTexture(4, 4, {
-		    fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
-		    wrap_s = GL.REPEAT, wrap_t = GL.REPEAT,
-	    })
-        glUseShader(noiseShader)
-            glRenderToTexture(noiseTex, glTexRect, -1, 1, 1, -1)
-        glUseShader(0)
-    end
+	-- Compute the noise texture (if it is not already computed)
+	if not noiseTex then
+		-- Due to the lack of glTexImage2D, the noise should be rendered once
+		-- to a FBO texture
+		noiseTex = glCreateTexture(4, 4, {
+			fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
+			wrap_s = GL.REPEAT, wrap_t = GL.REPEAT,
+		})
+		glUseShader(noiseShader)
+			glRenderToTexture(noiseTex, glTexRect, -1, 1, 1, -1)
+		glUseShader(0)
+	end
 
-    -- Blend both the depth and normal maps
-    --[[
+	-- Blend both the depth and normal maps
+	--[[
 	glUseShader(depthBlendShader)
 		glTexture(0, "$map_gbuffer_zvaltex")
 		glTexture(1, "$model_gbuffer_zvaltex")
@@ -357,22 +357,22 @@ function widget:DrawScreenEffects()
 		glTexture(3, false)
 	glUseShader(0)
 
-    -- Now we wanna generate the SSAO texture
+	-- Now we wanna generate the SSAO texture
 	local cpx, cpy, cpz = spGetCameraPosition()
 	glUseShader(ssaoShader)
 		glUniform(eyePosLoc, cpx, cpy, cpz)
 		glUniformMatrix(viewMatLoc, "view")
 		glUniformMatrix(projectionMatLoc, "projection")
 		glUniformMatrix(projectionMatInvLoc, "projectioninverse")
-        glUniformArray(samplesXLoc, 1, samplesX)
-        glUniformArray(samplesYLoc, 1, samplesY)
-        glUniformArray(samplesZLoc, 1, samplesZ)
-        glUniform(noiseScaleLoc, vsx / 4.0, vsy / 4.0)
+		glUniformArray(samplesXLoc, 1, samplesX)
+		glUniformArray(samplesYLoc, 1, samplesY)
+		glUniformArray(samplesZLoc, 1, samplesZ)
+		glUniform(noiseScaleLoc, vsx / 4.0, vsy / 4.0)
 		glTexture(0, normalTex)
 		glTexture(1, depthTex)
 		glTexture(2, noiseTex)
 
-        glRenderToTexture(ssaoTex, glTexRect, -1, 1, 1, -1)
+		glRenderToTexture(ssaoTex, glTexRect, -1, 1, 1, -1)
 		-- glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
 		
 		glTexture(0, false)
@@ -380,18 +380,18 @@ function widget:DrawScreenEffects()
 		glTexture(2, false)
 	glUseShader(0)
 
-    -- Which should be blured
+	-- Which should be blured
 	glUseShader(blurShader)
-        glUniform(texelSizeLoc, 1.0 / vsx, 1.0 / vsy)
+		glUniform(texelSizeLoc, 1.0 / vsx, 1.0 / vsy)
 		glTexture(0, ssaoTex)
 
-        glRenderToTexture(blurTex, glTexRect, -1, 1, 1, -1)
+		glRenderToTexture(blurTex, glTexRect, -1, 1, 1, -1)
 		-- glTexRect(0, 0, vsx, vsy, false, true)
 		
 		glTexture(0, false)
 	glUseShader(0)
-    
-    -- Apply the ssao
+	
+	-- Apply the ssao
 	glUseShader(renderShader)
 		glTexture(0, depthTex)
 		glTexture(1, blurTex)
@@ -404,10 +404,10 @@ function widget:DrawScreenEffects()
 		glTexture(2, false)
 	glUseShader(0)
 
-    -- Debug
-    --[[
+	-- Debug
+	--[[
 	glTexture(blurTex)
-    glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
+	glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
 	glTexture(false)
-    --]]
+	--]]
 end
