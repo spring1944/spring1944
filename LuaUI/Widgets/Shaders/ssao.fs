@@ -13,7 +13,7 @@ uniform vec2 noiseScale;
 
 #define KERNEL_SIZE 32
 #define RADIUS 5.0
-#define BIAS 0.2
+#define BIAS 0.1
 
 void main(void) {
 	vec2 C0 = gl_TexCoord[0].st;
