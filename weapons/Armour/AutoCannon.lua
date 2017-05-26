@@ -326,6 +326,16 @@ local Canon_25_SA_35_HE = AutoCannonHE:New(Canon_25_SA_35, true):New{
 	},
 }
 
+local Canon_25_SA_34_AP = AutoCannonAP:New(Canon_25_SA_35, true):New{
+	customparams = {	-- data taken from http://www.littlewars.se/french1940/gundata.html
+		armor_penetration_1000m = 30,
+		armor_penetration_100m  = 54,	-- longer towed version
+	},
+	damage = {
+		default            = 540,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- FlaK 38
@@ -364,4 +374,5 @@ return lowerkeys({
   -- French tank version of 25mm
   Canon_25_SA_35_AP = Canon_25_SA_35_AP,
   Canon_25_SA_35_HE = Canon_25_SA_35_HE,
+  Canon_25_SA_34_AP = Canon_25_SA_34_AP,
 })

@@ -427,6 +427,18 @@ local FRA47mmSA35HE = LightHE:New(FRA47mmSA35, true):New{
 	},
 }
 
+-- towed version
+local FRA47mmSA37AP = LightAP:New(FRA47mmSA35, true):New{
+	weaponVelocity     = 1118,
+	customparams = {
+		armor_penetration_1000m = 53,
+		armor_penetration_100m  = 72,
+	},
+	damage = {
+		default            = 1183,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 2Pdr
@@ -472,4 +484,5 @@ return lowerkeys({
   FRA37mmSA38HE = FRA37mmSA38HE,  
   FRA47mmSA35AP = FRA47mmSA35AP,
   FRA47mmSA35HE = FRA47mmSA35HE,
+  FRA47mmSA37AP = FRA47mmSA37AP,
 })
