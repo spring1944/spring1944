@@ -20,11 +20,11 @@ uniform sampler2D colors;
 uniform float width;  //scene sampler width
 uniform float height; //scene sampler height
 uniform float timer;
+uniform float grainamount;
 
 const float permTexUnit = 1.0/256.0;		// Perm texture texel-size
 const float permTexUnitHalf = 0.5/256.0;	// Half perm texture texel-size
 
-const float grainamount = 0.02; //grain amount
 float grainsize = 2.5; //grain particle size (1.5 - 2.5)
     
 //a random texture generator, but you can also use a pre-computed perturbation texture
