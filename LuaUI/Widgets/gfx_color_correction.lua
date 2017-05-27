@@ -382,7 +382,7 @@ function MinimizedList()
 end
 
 function MaximizedList()
-	local w, h = 256, 256
+	local w, h = 256, 128
 	gui_w, gui_h = w, h
 	glColor(0, 0, 0, 0.5)
 	glBeginEnd(GL_QUADS, DrawRectRound, 0, -h, w, 0, 0)
