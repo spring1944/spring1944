@@ -20,9 +20,12 @@ local FRA_25mmAT_Stationary = LightATGun:New{
 	},
 }
 
-local FRA_25mmAA_Truck = AAGunTractor:New(FRA_25mmAT_Truck, true):New{
+local FRA_25mmAA_Truck = AAGunTractor:New{
 	name					= "Towed Canon de 25 mm Hotchkiss",
 	corpse					= "FRACitroenType45_Abandoned",
+	buildCostMetal			= 1300,
+	trackOffset				= 4,
+	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmAA_Truck.s3o",
 }
 
@@ -33,10 +36,10 @@ local FRA_25mmAA_Stationary = AAGun:New{
 
 	weapons = {
 		[1] = { -- AA
-			name				= "Type9820mmAA",
+			name				= "Hotchkiss25mmAA",
 		},
 		[2] = { -- HE
-			name				= "Type9820mmHE",
+			name				= "Hotchkiss25mmHE",
 		},
 	},
 }
