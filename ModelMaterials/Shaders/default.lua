@@ -193,7 +193,6 @@ vertex = [[
 			outColor.rgb=outColor.rgb*aoTerm;
 		#endif
 
-        outColor.rgb = vec3(1.0);
 		#if (deferred_mode == 0)
 			gl_FragColor = outColor;
 		#else
