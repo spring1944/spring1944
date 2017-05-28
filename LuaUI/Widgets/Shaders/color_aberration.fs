@@ -1,6 +1,7 @@
 uniform sampler2D colors;
 uniform float width;
 uniform float height;
+uniform float max_distort;
 
 
 vec2 barrelDistortion(vec2 coord, float amt)
@@ -31,7 +32,6 @@ vec4 spectrum_offset( float t )
 	return pow( ret, vec4(1.0/2.2) );
 }
 
-const float max_distort = 0.1;
 const int num_iter = 6;
 const float reci_num_iter_f = 1.0 / float(num_iter);
 
