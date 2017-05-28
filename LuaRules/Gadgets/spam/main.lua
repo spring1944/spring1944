@@ -1,14 +1,14 @@
 
 -- main.lua
- 
+
 -- Spam main file
- 
+
 config = include ("LuaRules/Configs/spam_config.lua")
- 
+
 local ai_list = {}
 local lifetime = {}
 local randomness_factor = 16 -- Must be an integer and larger than zero
- 
+
 local function get_ai_instance (team)
     for _, i in ipairs (ai_list) do
         if i.team == team then
@@ -17,7 +17,7 @@ local function get_ai_instance (team)
     end
     return nil
 end
- 
+
 local function GetSpamTeams ()
     local l = {}
     for _, i in ipairs (ai_list) do
@@ -25,7 +25,7 @@ local function GetSpamTeams ()
     end
     return l
 end
- 
+
 local function GetSpamHq (team)
     local instance = get_ai_instance (team)
     if instance ~= nil then
@@ -33,11 +33,11 @@ local function GetSpamHq (team)
     end
     return nil
 end
- 
+
 local function CalcUnitLongevity (unitDefID)
     return 300 * Game.gameSpeed -- math.ceil ((Game.mapSizeX + Game.mapSizeZ) / UnitDefs[unitDefID].speed)
 end
- 
+
 local function MakeSpamInstance (team)
     local instance = {}
     instance.team = team
@@ -67,21 +67,21 @@ local function MakeSpamInstance (team)
     instance.current_squad_size = 0
     return instance
 end
- 
+
 local function issue_build_order (instance, unitId, builder, x, y, z)
     Spring.GiveOrderToUnit (builder, -unitId, {x, y, z}, {"shift"})
     table.insert (instance.build_list, {unitId, builder})
 end
- 
+
 local function build_order_completed (team, unit, unitDef)
     --local build_list = get_ai_instance(unit).build_list
-   
+    
 end
- 
+
 local function apply_unit_bonus (unit)
- 
+
 end
- 
+
 local function SetTarget (teamID, target)
     local instance = get_ai_instance (teamID)
     if instance == nil then
@@ -106,7 +106,7 @@ local function SetTarget (teamID, target)
         Spring.GiveOrderToUnit (instance.hq, CMD.MOVE, {x, y, z}, {"shift"}) -- For units that cannot fight
     end
 end
- 
+
 local function make_random_build_order (build_list)
     local new_list = {}
     for _, i in ipairs (build_list) do
@@ -124,7 +124,7 @@ local function make_random_build_order (build_list)
     end
     return new_list
 end
- 
+
 local function StartSpam (team)
     local instance = get_ai_instance (team)
     if instance == nil then
@@ -134,7 +134,7 @@ local function StartSpam (team)
         Spring.GiveOrderToUnit (instance.hq, -(UnitDefNames[unit].id), {}, {"shift"})
     end
 end
- 
+
 local function SpawnSpam (team)
     local instance = get_ai_instance (team)
     if instance == nil then
@@ -175,7 +175,7 @@ local function SpawnSpam (team)
     GG.Delay.DelayCall (function (t) StartSpam (t) end, {team}, config.wait * Game.gameSpeed)
     return hq
 end
- 
+
 function gadget:Initialize ()
     for _, t in ipairs (Spring.GetTeamList ()) do
         local teamID, _, _, isAI = Spring.GetTeamInfo (t)
@@ -211,7 +211,7 @@ function gadget:Initialize ()
         GG.Delay.DelayCall (Spring.SendMessageToPlayer, {p, config.warning}, config.wait * Game.gameSpeed)
     end
 end
- 
+
 function gadget:UnitCreated (unitID, unitDefID, unitTeam, builderID)
     local instance = get_ai_instance (unitTeam)
     if instance ~= nil then
@@ -231,10 +231,10 @@ function gadget:UnitCreated (unitID, unitDefID, unitTeam, builderID)
         end
     end
 end
- 
+
 function gadget:UnitFinished (unitID, unitDefID, team)
 end
- 
+
 function gadget:UnitFromFactory (unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
     local instance = get_ai_instance (unitTeam)
     if instance ~= nil then
@@ -250,8 +250,8 @@ function gadget:UnitFromFactory (unitID, unitDefID, unitTeam, factID, factDefID,
         end
     end
 end
- 
-function gadget:UnitDestroyed (unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+
+function gadget:UnitDestroyed (unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam) 
     local instance = get_ai_instance (unitTeam)
     if instance ~= nil then
         if unitID == instance.hq then
@@ -274,7 +274,7 @@ function gadget:UnitDestroyed (unitID, unitDefID, unitTeam, attackerID, attacker
         end
     end
 end
- 
+
 function gadget:UnitEnteredLos (unitID, unitTeam, allyTeam, unitDefID)
     for _, team in pairs (Spring.GetTeamList (allyTeam)) do
         local instance = get_ai_instance (team)
@@ -285,7 +285,7 @@ function gadget:UnitEnteredLos (unitID, unitTeam, allyTeam, unitDefID)
         end
     end
 end
- 
+
 function gadget:UnitIdle (unitID, unitDefID, unitTeam)
     if get_ai_instance (unitTeam) ~= nil then
         if unitID == get_ai_instance (unitTeam).hq then
@@ -313,7 +313,7 @@ function gadget:UnitIdle (unitID, unitDefID, unitTeam)
         end
     end
 end
- 
+
 function gadget:TeamDied (team)
     local newlist = {}
     for _, instance in ipairs (ai_list) do
@@ -342,10 +342,9 @@ function gadget:TeamDied (team)
         end
     end
 end
- 
+
 GG.Spam = {GetSpamTeams = GetSpamTeams,
            GetSpamHq = GetSpamHq,
            MakeSpamInstance = MakeSpamInstance,
            SpawnSpam = SpawnSpam,
            SetTarget = SetTarget}
-           
