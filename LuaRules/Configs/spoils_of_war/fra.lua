@@ -28,9 +28,8 @@ local unitDefs = {
 			"fras35",
 			"fra75mmmle1897_truck",
 		},
-		-- NOOOOO, composite unit spawning doesn't work correctly here!
 		{	-- tier 6 - heavy
-			--"fracharb1bis",
+			"fracharb1bis",
 			"fra105mmmle1935b_truck",
 		},
 	},
