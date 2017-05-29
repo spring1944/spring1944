@@ -3,6 +3,8 @@ local FRACharB1Bis = MediumTank:New{
 	name				= "Char B1bis",
 	buildCostMetal		= 2400,
 	maxDamage			= 2800,
+	-- this thing was specifically built to be able to cross trenches
+	movementClass		= "TANK_Goat",
 	trackOffset			= 5,
 	trackWidth			= 20,
 

@@ -23,6 +23,9 @@ local SetUnitCOBValue = Spring.SetUnitCOBValue
 
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 
+local CreateUnit = Spring.CreateUnit
+local AttachUnit = Spring.UnitScript.AttachUnit
+
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
 local rockRestoreSpeed = rad(20)
@@ -146,6 +149,20 @@ local function StopAiming(weaponNum)
 	RestoreTurret(weaponNum)
 end
 
+local function SpawnChildren()
+	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+	local teamID = Spring.GetUnitTeam(unitID)
+	Sleep(50)
+	for i, childDefName in ipairs(children) do
+		local childID = CreateUnit(childDefName, x, y, z, 0, teamID)
+		if (childID ~= nil) then
+			AttachUnit(childrenPieces[i], childID)
+			Hide(childrenPieces[i])
+			SetUnitNoSelect(childID, true)
+		end
+	end
+end
+
 function script.Create()
 	if customAnims and customAnims.preCreate then
 		customAnims.preCreate()
@@ -211,16 +228,7 @@ function script.Create()
 
 	-- composite units
 	if #children > 0 then
-		local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
-		local teamID = Spring.GetUnitTeam(unitID)
-		for i, childDefName in ipairs(children) do
-			local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
-			if (childID ~= nil) then
-				Spring.UnitScript.AttachUnit(childrenPieces[i], childID)
-				Hide(childrenPieces[i])
-				SetUnitNoSelect(childID, true)
-			end
-		end
+		StartThread(SpawnChildren)
 	end
 	
 	if info.smokePieces then
@@ -674,9 +682,9 @@ if UnitDef.transportCapacity > 0 then
 	function script.TransportPickup(passengerID)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
 		if mass < 100 then --ugly check for inf gun vs. infantry.
-			Spring.UnitScript.AttachUnit(-1, passengerID)
+			AttachUnit(-1, passengerID)
 		elseif canTow then
-			Spring.UnitScript.AttachUnit(tow_point, passengerID)
+			AttachUnit(tow_point, passengerID)
 			canTow = false
 		end
 	end
