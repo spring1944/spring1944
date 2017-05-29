@@ -198,7 +198,7 @@ vertex = [[
 		vec4 extraColor = texture2D(textureS3o2, gl_TexCoord[0].st);
 		vec3 reflectDir = reflect(cameraDir, normal);
 		
-		#if (deferred_mode == 0)
+		#if (DEFERRED_MODE == 0)
 			// vec3 specular   = textureCube(specularTex, reflectDir).rgb * extraColor.g * SPECULARMULT;
 			float CTS = cookTorranceSpecular(sunPos,
 			                                 -normalize(cameraDir),
@@ -208,7 +208,7 @@ vertex = [[
 			vec3 specular   = sunDiffuse * CTS * SPECULARMULT;
 			vec3 reflection = textureCube(reflectTex,  reflectDir).rgb;
 		#endif
-		#if (deferred_mode == 1) 
+		#if (DEFERRED_MODE == 1) 
 			vec3 specular   = vec3(1.0,1.0,1.0) * extraColor.g * SPECULARMULT;
 			vec3 reflection = vec3(0.0,0.0,0.0);
 		#endif
@@ -224,7 +224,7 @@ vertex = [[
 
 		outColor.rgb = mix(outColor.rgb, teamColor.rgb, outColor.a);
 
-		//#if (deferred_mode == 0)
+		//#if (DEFERRED_MODE == 0)
 			// diffuse + specular + envcube lighting
 			// (reflection contains the NdotL term!)
 			outColor.rgb = outColor.rgb * reflection + specular;
@@ -237,10 +237,10 @@ vertex = [[
 			outColor.rgb=outColor.rgb*aoTerm;
 		#endif
 
-		#if (deferred_mode == 0)
+		#if (DEFERRED_MODE == 0)
 			gl_FragColor = outColor;
 		#else
-			gl_FragData[0] = vec4((normal + 1.0) * 0.5, 1.0);
+			gl_FragData[0] = vec4((normal + vec3(1.0, 1.0, 1.0)) * 0.5, 1.0);
 			gl_FragData[1] = outColor;
 			gl_FragData[2] = vec4(specular, extraColor.a);
 			gl_FragData[3] = vec4(extraColor.rrr, 1.0);
