@@ -1,4 +1,4 @@
-local GER_Flak_Tower = ArmedBoat:New(HQ):New(Bunker):New{
+local GER_Flak_Tower = HQ:New(Bunker):New{
 	name					= "Flakturm G",
 	buildCostMetal			= 40000,
 	collisionVolumeScales	= [[150 30 110]],
@@ -9,7 +9,6 @@ local GER_Flak_Tower = ArmedBoat:New(HQ):New(Bunker):New{
 	footprintZ				= 10,
 	maxDamage				= 106250,
 
-	script					= "BoatMother.lua",
 	transportCapacity		= 12,
 	usePieceCollisionVolumes	= true,
 
@@ -35,11 +34,13 @@ local GER_Flak_Tower = ArmedBoat:New(HQ):New(Bunker):New{
         },
 	},
 
+	--[[
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "Flak40_12_8cm_HE",
 		},
 	},
+	]]--
 
 	yardmap					= [[oooooooooo 
 								oooooooooo 
@@ -83,8 +84,15 @@ local GER_Flak40_Twin_Child = OpenBoatTurret:New(GER_Flak40_Twin_Base, true):New
     objectName                  = "<SIDE>/GERFlak40_Twin_Turret.s3o",
 }
 
+-- Spambot HQ
+local spam_hq = GER_Flak_Tower:New{
+	buildPic	= "gerflakturmg.png",
+	objectName	= "GER/GERFlakTurmG.s3o",
+}
+
 return lowerkeys({
 	["GERFlakTurmG"] = GER_Flak_Tower,
     ["GERFlak40_Twin_Turret"] = GER_Flak40_Twin_Base,
     ["GER_Flak40_Twin_Child"] = GER_Flak40_Twin_Child,
+	["spam_hq"] = spam_hq,
 })
