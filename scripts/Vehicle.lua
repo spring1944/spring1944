@@ -21,6 +21,11 @@ local atan2 = math.atan2
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local SetUnitCOBValue = Spring.SetUnitCOBValue
 
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
+local CreateUnit = Spring.CreateUnit
+local AttachUnit = Spring.UnitScript.AttachUnit
+
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
 local rockRestoreSpeed = rad(20)
@@ -29,6 +34,8 @@ local rockRestoreSpeed = rad(20)
 local wheelSpeed
 local currentTrack
 local lastShot
+
+local hasTrailerTracks = false
 
 -- Logic
 local usesAmmo = info.usesAmmo
@@ -67,6 +74,10 @@ local exhaust_fx_name = "petrol_exhaust"
 if UnitDef.customParams then
 	exhaust_fx_name = UnitDef.customParams.exhaust_fx_name or exhaust_fx_name
 end
+
+-- Optional composite units stuff
+local childrenPieces = info.childrenPieces
+local children = info.children
 
 local function Delay(func, duration, mask, ...)
 	--Spring.Echo("wait", duration)
@@ -138,6 +149,20 @@ local function StopAiming(weaponNum)
 	RestoreTurret(weaponNum)
 end
 
+local function SpawnChildren()
+	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+	local teamID = Spring.GetUnitTeam(unitID)
+	Sleep(50)
+	for i, childDefName in ipairs(children) do
+		local childID = CreateUnit(childDefName, x, y, z, 0, teamID)
+		if (childID ~= nil) then
+			AttachUnit(childrenPieces[i], childID)
+			Hide(childrenPieces[i])
+			SetUnitNoSelect(childID, true)
+		end
+	end
+end
+
 function script.Create()
 	if customAnims and customAnims.preCreate then
 		customAnims.preCreate()
@@ -168,11 +193,19 @@ function script.Create()
 	if #info.tracks > 1 then
 		currentTrack = 1
 		Show(info.tracks[1])
-		for i = 2,#info.tracks do
+		for i = 2, #info.tracks do
 			Hide(info.tracks[i])
 		end
 	end
 
+	if #info.trailerTracks > 1 then
+		hasTrailerTracks = true
+		Show(info.trailerTracks[1])
+		for i = 2, #info.trailerTracks do
+			Hide(info.trailerTracks[i])
+		end
+	end
+	
 	moving = false
 	weaponEnabled = {}
 	weaponPriorities = {}
@@ -192,6 +225,12 @@ function script.Create()
 			end
 		end
 	end
+
+	-- composite units
+	if #children > 0 then
+		StartThread(SpawnChildren)
+	end
+	
 	if info.smokePieces then
 		StartThread(DamageSmoke, info.smokePieces)
 	end
@@ -226,10 +265,17 @@ end
 local function SwapTracks()
 	SetSignalMask(SIG_MOVE)
 	local tracks = info.tracks
+	local trailerTracks = info.trailerTracks
 	while true do
 		Hide(tracks[currentTrack])
+		if hasTrailerTracks then
+			Hide(trailerTracks[currentTrack])
+		end
 		currentTrack = (currentTrack % #tracks) + 1
 		Show(tracks[currentTrack])
+		if hasTrailerTracks then
+			Show(trailerTracks[currentTrack])
+		end
 		Sleep(TRACK_SWAP_DELAY)
 	end
 end
@@ -480,6 +526,11 @@ function script.Killed(recentDamage, maxHealth)
 	local turret = piece "turret"
 	local sleeve = piece "sleeve"
 
+	-- for composite units
+	for _, child in pairs(childrenPieces) do
+		Show(child)
+	end
+	
 	for wheelPiece, _ in pairs(info.wheelSpeeds) do
 		Explode(wheelPiece, SFX.SHATTER + SFX.EXPLODE_ON_HIT)
 	end
@@ -631,9 +682,9 @@ if UnitDef.transportCapacity > 0 then
 	function script.TransportPickup(passengerID)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
 		if mass < 100 then --ugly check for inf gun vs. infantry.
-			Spring.UnitScript.AttachUnit(-1, passengerID)
+			AttachUnit(-1, passengerID)
 		elseif canTow then
-			Spring.UnitScript.AttachUnit(tow_point, passengerID)
+			AttachUnit(tow_point, passengerID)
 			canTow = false
 		end
 	end

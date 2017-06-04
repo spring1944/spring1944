@@ -540,6 +540,39 @@ local Mavag_75_43MAP = MediumAP:New(KwK75mmL48, true):New{
 	},
 }
 
+-- France
+local FRA75mmSA35 = MediumGun:New{
+	name               = [[75mm SA35 L17]],
+	range              = 1270,
+	reloadTime         = 6,	-- sources say 15-30, but that's too much for manually loaded 75mm
+	soundStart         = [[short_75mm]],
+}
+
+local FRA75mmSA35HE = MediumHE:New(FRA75mmSA35, true):New{
+	areaOfEffect       = 88,
+	weaponVelocity     = 926,
+	damage = {
+		default            = 1334,
+	},
+}
+
+-- 75mm Mle1897
+local FRA75mmMle1897 = M375mm:New{
+	name				= [[Canon de 75 modèle 1897]],
+}
+
+local FRA75mmMle1897HE = M375mmHE:New{
+	name				= [[Canon de 75 modèle 1897 HE]],
+}
+
+local FRA75mmMle1897AP = M375mmAP:New{
+	name				= [[Canon de 75 modèle 1897 AP]],
+	customparams = {
+		armor_penetration_1000m = 52,
+		armor_penetration_100m  = 62,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 75mm
@@ -600,4 +633,8 @@ return lowerkeys({
   Mavag_75_41MHEAT = Mavag_75_41MHEAT,
   Mavag_75_43MAP = Mavag_75_43MAP,
   Mavag_75_43MHE = Mavag_75_43MHE,
+  -- France
+  FRA75mmSA35HE = FRA75mmSA35HE,
+  FRA75mmMle1897HE = FRA75mmMle1897HE,
+  FRA75mmMle1897AP = FRA75mmMle1897AP,
 })

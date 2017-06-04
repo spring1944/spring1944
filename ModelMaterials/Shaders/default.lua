@@ -104,7 +104,7 @@ vertex = [[
 	uniform vec3 sunAmbient;
 	uniform vec3 etcLoc;
 	#ifndef SPECULARMULT
-		#define SPECULARMULT 2.0
+		#define SPECULARMULT 1.0
 	#endif
 	
 	#ifdef use_shadows
@@ -138,7 +138,45 @@ vertex = [[
 			return 1.0;
 		#endif
 	}
-	
+
+	float beckmannDistribution(float x, float roughness)
+	{
+		float NdotH = max(x, 0.0001);
+		float cos2Alpha = NdotH * NdotH;
+		float tan2Alpha = (cos2Alpha - 1.0) / cos2Alpha;
+		float roughness2 = roughness * roughness;
+		float denom = 3.141592653589793 * roughness2 * cos2Alpha * cos2Alpha;
+		return exp(tan2Alpha / roughness2) / denom;
+	}
+
+	float cookTorranceSpecular(vec3 lightDirection,
+	                           vec3 viewDirection,
+	                           vec3 surfaceNormal,
+	                           float roughness,
+	                           float fresnel)
+	{
+		float VdotN = max(dot(viewDirection, surfaceNormal), 0.0);
+		float LdotN = max(dot(lightDirection, surfaceNormal), 0.0);
+
+		//Half angle vector
+		vec3 H = normalize(lightDirection + viewDirection);
+
+		//Geometric term
+		float NdotH = max(dot(surfaceNormal, H), 0.0);
+		float VdotH = max(dot(viewDirection, H), 0.000001);
+		float x = 2.0 * NdotH / VdotH;
+		float G = min(1.0, min(x * VdotN, x * LdotN));
+
+		//Distribution term
+		float D = beckmannDistribution(NdotH, roughness);
+
+		//Fresnel term
+		float F = pow(1.0 - VdotN, fresnel);
+
+		//Multiply terms and done
+		return  G * F * D / max(3.14159265 * VdotN * LdotN, 0.000001);
+	}
+
 	void main(void){
 		%%FRAGMENT_PRE_SHADING%%
 
@@ -161,7 +199,13 @@ vertex = [[
 		vec3 reflectDir = reflect(cameraDir, normal);
 		
 		#if (deferred_mode == 0)
-			vec3 specular   = textureCube(specularTex, reflectDir).rgb * extraColor.g * SPECULARMULT;
+			// vec3 specular   = textureCube(specularTex, reflectDir).rgb * extraColor.g * SPECULARMULT;
+			float CTS = cookTorranceSpecular(sunPos,
+			                                 -normalize(cameraDir),
+			                                 normal,
+			                                 1.0 - extraColor.g,
+			                                 0.8);
+			vec3 specular   = sunDiffuse * CTS * SPECULARMULT;
 			vec3 reflection = textureCube(reflectTex,  reflectDir).rgb;
 		#endif
 		#if (deferred_mode == 1) 
@@ -196,7 +240,7 @@ vertex = [[
 		#if (deferred_mode == 0)
 			gl_FragColor = outColor;
 		#else
-			gl_FragData[0] = vec4((normal + 1.0) * 0.5, 1.0);
+			gl_FragData[0] = vec4((normal + 1.0) * 0.5, outColor.a);
 			gl_FragData[1] = outColor;
 			gl_FragData[2] = vec4(specular, extraColor.a);
 			gl_FragData[3] = vec4(extraColor.rrr, 1.0);

@@ -1,0 +1,20 @@
+[gerflak40_twin_turret_destroyed] {
+  description=Destroyed Flak Emplacement;
+  damage=626;
+  energy=1000;
+  featureDead=Debris_Large;
+  footprintX=3;
+  footprintZ=3;
+  object=ger/gerflak40_twin_turret_dead.s3o;
+  reclaimable=1;
+ 	collisionVolumeType=cylX;
+	collisionVolumeScales=22 20 50;
+	collisionVolumeOffsets=0 -5 0;
+	collisionVolumeTest=1;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=60;
+		}
+}
+

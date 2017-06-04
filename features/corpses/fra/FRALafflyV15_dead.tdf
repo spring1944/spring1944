@@ -1,12 +1,12 @@
-[ITAP43bis_Abandoned]
+[FRALafflyV15_Abandoned]
 {
-  description=Abandoned P43;
+  description=Abandoned Laffly V15;
   damage=2501;
   energy=50;
-  featureDead=ITAP43_Burning;
+  featureDead=FRALafflyV15_Burning;
   footprintX=2;
   footprintZ=2;
-  object=ITA/ITAP40;
+  object=FRA/FRALafflyV15T.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -18,15 +18,15 @@
 		}
 }
 
-[ITAP43_Burning]
+[FRALafflyV15_Burning]
 {
-  description=Destroyed P43 burning;
+  description=Destroyed Laffly V15;
   damage=2501;
   energy=50;
-  featureDead=ITAP43_Wreck;
+  featureDead=FRALafflyV15_Wreck;
   footprintX=2;
   footprintZ=2;
-  object=ITAP40_Dead;
+  object=FRA/FRALafflyV15T_Dead.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;
@@ -39,14 +39,14 @@
 		}
 }
 
-[ITAP43_Wreck]
+[FRALafflyV15_Wreck]
 {
-  description=Destroyed P43;
+  description=Destroyed Laffly V15;
   damage=2501;
   energy=50;
   footprintX=2;
   footprintZ=2;
-  object=ITAP43bis_damaged;
+  object=FRA/FRALafflyV15T_Wreck.s3o;
   reclaimable=1;
 	collisionVolumeType=cylX;
 	collisionVolumeScales=18 15 35;

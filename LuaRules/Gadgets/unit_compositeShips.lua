@@ -84,7 +84,7 @@ function gadget:UnitGiven(unitID, unitDefID, newTeam, oldTeam)
 	local children = GG.boatMothers[unitID]
 	if children then
 		for _, childID in pairs(children) do
-			TransferUnit(childID, newTeam, true)
+			GG.Delay.DelayCall(TransferUnit, {childID, newTeam, true}, 1)
 		end
 	end
 end

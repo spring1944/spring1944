@@ -104,6 +104,11 @@ local options = {
 			desc = "Neutral Trucks" ,
 		},
 		{
+			key = "france",
+			name = "French Legacy",
+			desc = "French units for capture" ,
+		},
+		{
 			key = "mines",
 			name = "Minefields",
 			desc = "Some flags will start out with anti-personnel minefields (more likely father from player starts)" ,
