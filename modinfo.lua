@@ -1,7 +1,7 @@
 local modinfo = {
 	name			= 'Steam Spring 1944',
 	shortName		= 'ss44',
-	version			= 'release-170604',
+	version			= '170604',
 	game			= 'Steam Spring 1944',
 	shortGame		= 'ss44',
 	mutator			= 'notAlab build',
