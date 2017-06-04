@@ -60,7 +60,6 @@ local ArmouredCar = Vehicle:New{
 
 	customParams = {
 		damageGroup		= "armouredVehicles",
-		hasturnbutton	= true,
 		turretturnspeed		= 36,	-- more than default tanks
 		immobilizationresistance = 0.25,
 	},
@@ -139,6 +138,7 @@ local MobileAA = Def:New{ -- not a full class (role/mixin)
 	iconType			= "aacar",
 	customParams		= {
 		turretturnspeed		= 80,
+		spaa				= 1, -- hack due to unitdef.iconType being nil from engine
 	},
 }
 

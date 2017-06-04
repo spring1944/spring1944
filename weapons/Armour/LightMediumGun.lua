@@ -32,6 +32,7 @@ local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	-- autoloader, 40 shots per minute
 	reloadTime	= 1.5,
 	areaOfEffect       = 55,
+	movingAccuracy     = 300,
 	weaponVelocity     = 1100,
 	damage = {
 		default		= 760,
@@ -45,7 +46,8 @@ local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
 	-- 20 rounds per minute
 	reloadTime	= 3,
 	areaOfEffect	= 50,
-	weaponVelocity	= 650,
+	movingAccuracy     = 300,
+	weaponVelocity	= 850,
 	damage = {
 		default		= 696,
 	},
@@ -99,6 +101,7 @@ local ZiS257mmAP = MediumAP:New(ZiS257mm, true):New{
 local Type9757mm = LightMediumGun:New{
   name               = [[Type 97 57mm]],
   range              = 980,
+  movingAccuracy     = 300,  -- mainly because of naval use
   reloadTime         = 4.0,
 }
 

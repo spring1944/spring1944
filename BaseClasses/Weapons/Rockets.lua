@@ -25,7 +25,6 @@ local ArtyRocket = Rocket:New{
 	trajectoryHeight   = 0.5,
 	weaponVelocity     = 1400,
 	customparams = {
-		armor_hit_side     = "top",
 		damagetype         = "explosive",
 		fearaoe            = 200,
 		fearid             = 501,
@@ -39,6 +38,7 @@ local ArtyRocket = Rocket:New{
 
 -- AirRocket Base Class
 local AirRocket = Rocket:New{
+	accuracy	= 300,
 	cegTag             = "BazookaTrail",
 	collideFriendly    = false,
 	explosionGenerator = "custom:HE_Medium",
@@ -54,7 +54,8 @@ local AirRocket = Rocket:New{
 	wobble             = 500,
 	customparams = {
 		no_range_adjust    = true,
-		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP",
+		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
+		badtargetcategory  = "SHIP LARGESHIP",
 		rocket             = true,
 	},
 }

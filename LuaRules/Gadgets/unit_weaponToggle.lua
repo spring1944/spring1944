@@ -62,6 +62,9 @@ local function ProcessToggleData(unitDefID, toggleData)
 end
 
 local function ApplyToggle(unitID, cmdID, newState)
+	if not (cmdIDToFuncName[cmdID] and toggleCache[unitID]) then
+		return
+	end
 	local toggleFunc = toggleCache[unitID][cmdIDToFuncName[cmdID]]
 	local weaponStateTable = cmdIDToStates[cmdID][newState + 1].toggle
 	for weaponNum, isEnabled in pairs(weaponStateTable) do

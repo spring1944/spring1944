@@ -85,7 +85,36 @@ local options = {
          { key = "3000", name = "3000", desc = "Insane!", },
       },
    },
-   
+   {
+	key="spoilsofwar",
+	name="Spoils of War",
+	desc="Captureable Neutral units",
+	type="list",
+	section	= '2gamemode',
+	def="disabled",
+	items={
+		{
+			key = "disabled",
+			name = "None",
+			desc = "No neutral units",
+		},
+		{
+			key = "trucks",
+			name = "Trucks",
+			desc = "Neutral Trucks" ,
+		},
+		{
+			key = "france",
+			name = "French Legacy",
+			desc = "French units for capture" ,
+		},
+		{
+			key = "mines",
+			name = "Minefields",
+			desc = "Some flags will start out with anti-personnel minefields (more likely father from player starts)" ,
+		},
+	},
+   },
   {
 	key    = '3resources',
 	name   = 'Resource Settings',

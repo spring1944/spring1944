@@ -166,7 +166,8 @@ function ApplySmoke(unitID)
 	local oldAirLos = GetUnitSensorRadius(unitID, "airLos")
 	local oldSeismic = GetUnitSensorRadius(unitID, "seismic")
 
-	if oldSight > 0 then
+	-- On first round oldLos = 0, check that to avoid overwriting it in later rounds
+	if oldSight > 0 and SmokedUnits[unitID].oldLos == 0 then
 		SmokedUnits[unitID].oldLos = oldSight
 	end
 	if oldRadar > 0 then

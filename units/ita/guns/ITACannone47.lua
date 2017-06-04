@@ -13,7 +13,7 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 	cloakTimeout = 64,
 	weapons = {
 		[1] = { -- AP
-			name				= "CannoneDa47mml32AP",
+			name				= "CannoneDa47mml32AP_towed",
 		},
 	},
 }

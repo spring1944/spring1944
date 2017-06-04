@@ -91,19 +91,9 @@ local gbrunits = {
     "gbrbofors_truck",
     "gbrstaghound",
     "gbrsexton",
-  },
-  
-  gbrspyard1 =
-  {
-    "gbrmatadorengvehicle",
-    "gbrbedfordtruck",
-    "gbr17pdr_truck",
-    "gbr25pdr_truck",
-    "gbrbofors_truck",
-    "gbraecmkii",
     "gbrm10achilles",
   },
-  
+
   gbrcommandoc =
   {
   "gbrsatchelcharge",

@@ -136,6 +136,7 @@ local jpnunits =
 		"jpntype1_47mm_truck",
 		"jpntype90_75mm_truck",
 		"jpntype91_105mm_truck",
+		"jpnhonii",
 		"jpnhoniii",
 	},
 	jpnspyard1 =
@@ -146,13 +147,13 @@ local jpnunits =
 		"jpntype1_47mm_truck",
 		"jpntype90_75mm_truck",
 		"jpntype91_105mm_truck",
-		"jpnhoniiii",
+		"jpntype5nato",
 	},
 	jpntankyard =
 	{
 		"jpnriki",
 		"jpnhago",
-		"jpnhonii",
+		"jpnhoniiii",
 		"jpnchiha",
 		"jpnchihe",
 	},
@@ -160,7 +161,7 @@ local jpnunits =
 	{
 		"jpnriki",
 		"jpnhago",
-		"jpnhonii",
+		"jpnhoniiii",
 		"jpnchiha",
 		"jpnchihe",
 		"jpnchinu",
@@ -170,9 +171,10 @@ local jpnunits =
 	{
 		"jpnriki",
 		"jpnhago",
-		"jpnhonii",
+		"jpnhoniiii",
 		"jpnchiha",
 		"jpnchihe",
+		"jpnchinu",
 		"jpnhoro",
 	},
 	jpnradar =
@@ -191,6 +193,7 @@ local jpnunits =
 		"jpntokudaihatsu",
 		"jpntypeno1auxsc",
 		"jpnabtei",
+		"jpnt14",
 	},
 	jpnboatyardlarge =
 	{
@@ -200,6 +203,7 @@ local jpnunits =
 		"jpntokudaihatsu",
 		"jpntypeno1auxsc",
 		"jpnabtei",
+		"jpnt14",
 		"jpnseta",
 		"jpnbusoudaihatsu",
 	},

@@ -42,7 +42,6 @@ local APGrenadeClass = GrenadeClass:New{
 		armor_penetration  = 40, 
 		damagetype         = "grenade",
 		badtargetcategory  = "OPENVEH HARDVEH BUILDING",
-		immobilizationchance = 0.25,	-- rather low
 	},
 	damage = {
 		default            = 1450,

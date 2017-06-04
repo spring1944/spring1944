@@ -25,22 +25,14 @@ local gbrDefs = {
 	gbrgunyard = {
 		{
 			into = 'gbrspyard',
-			metal = 3000,
+			metal = 3800,
 			energy = 0,
-			time = 85,
+			time = 90,
 			name = '  Self  \n  Propelled  ',
 			text = 'Makes Self-Propelled Artillery available in this yard',
 			facing = true,
 		},
-		{
-			into = 'gbrspyard1',
-			metal = 5250,
-			energy = 0,
-			time = 150,
-			name = '  Tank  \n  Destroyers  ',
-			text = 'Makes Tank Destroyers available in this yard',
-			facing = true,
-		},
+
 		{
 			into = 'gbrgunyard2',
 			metal = 5250,

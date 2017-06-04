@@ -88,7 +88,12 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage)
 	if ud.canFly and ud.name ~= "usparatrooper" and not ud.customParams.cruise_missile_accuracy then
 		local health = GetUnitHealth(unitID)
 		if damage > health then
-			SetUnitCOBValue(unitID, COB.CRASHING, 1)
+			Spring.SetUnitCrashing(unitID, true)
+			Spring.SetUnitNoSelect(unitID, true)
+			-- note that we let the unit keep its airlos
+			Spring.SetUnitSensorRadius(unitID, "los", 0)
+			Spring.SetUnitSensorRadius(unitID, "radar", 0)
+			Spring.SetUnitSensorRadius(unitID, "sonar", 0)
 			crashingPlanes[unitID] = true
 			mcDisable(unitID) -- disable movectrl for V1 / glider
 			return 0
@@ -122,7 +127,7 @@ function gadget:GameFrame(n)
 					local newFuel = fuel - FUEL_LOSS_RATE
 					local oldAccuracy = GetUnitWeaponState(unitID, 1, "accuracy")
 					if oldAccuracy ~= nil then
-						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*fear})
+						SetUnitWeaponState(unitID, 1, {accuracy = oldAccuracy*2*fear})
 						SetUnitRulesParam(unitID, "fuel", math.max(newFuel, 0))
 						if fear > BUGOUT_LEVEL then
 							local px, py, pz = unpack(teamStartPos[teamID])

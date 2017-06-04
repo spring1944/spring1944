@@ -84,6 +84,7 @@ local DT = DP:New{
   range              = 910,
   reloadTime         = 3,
   sprayAngle         = 250,
+  soundStart         = [[RUSDT_5]],
 }
 
 -- Maxim (RUS)
@@ -174,8 +175,8 @@ local BredaM37 = MGClass:New{
   burst              = 8,
   burstRate          = 0.16,
   name               = [[Breda M37 Heavy Machinegun]],
-  range              = 1090,
-  reloadTime         = 3.1,
+  range              = 1110,
+  reloadTime         = 2.8,
   soundStart         = [[ITA_M37]],
   sprayAngle         = 260,
 }
@@ -398,6 +399,17 @@ local gebauer_1934_37m = M1919A4Browning:New{
 	name			= [[Gebauer Tank Machine Gun 1934/37.M]],
 }
 
+-- France
+local MACmle1931 = MGClass:New{
+	burst              = 6,
+	burstRate          = 0.1,
+	name               = [[Reibel mle1931]],
+	range              = 870,
+	reloadTime         = 2.8,
+	soundStart         = [[FRAMle1924MG]],
+	sprayAngle         = 320,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- 8mm
@@ -443,4 +455,5 @@ return lowerkeys({
   mg30 = mg30,
   mg7_deployed = Schwarzlose,
   gebauer_1934_37m = gebauer_1934_37m,
+  MACmle1931 = MACmle1931,
 })

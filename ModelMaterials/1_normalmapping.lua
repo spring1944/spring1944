@@ -6,13 +6,24 @@ local SHADER_DIR = "ModelMaterials/Shaders/"
 local materials = {
    normalMappedS3o = {
        shaderDefinitions = {
-	"#define use_perspective_correct_shadows",
+         "#define use_perspective_correct_shadows",
          "#define use_normalmapping",
+         "#define deferred_mode 0",
+         "#define SPECULARMULT 1.0",
          --"#define flip_normalmap",
        },
+       deferredDefinitions = {
+         "#define use_perspective_correct_shadows",
+         "#define use_normalmapping",
+         "#define deferred_mode 1",
+         "#define SPECULARMULT 1.0",
+       },
        shader    = include(SHADER_DIR .. "default.lua"),
+       deferred  = include(SHADER_DIR .. "default.lua"), 
        usecamera = false,
        culling   = GL.BACK,
+       predl  = nil,
+       postdl = nil,
        texunits  = {
          [0] = '%%UNITDEFID:0',
          [1] = '%%UNITDEFID:1',
@@ -20,6 +31,34 @@ local materials = {
          [3] = '$specular',
          [4] = '$reflection',
          [5] = '%NORMALTEX',
+       },
+   },
+   normalModelledS3o = {
+       shaderDefinitions = {
+         "#define use_perspective_correct_shadows",
+         --"#define use_normalmapping",
+         "#define deferred_mode 0",
+         "#define SPECULARMULT 1.0",
+         --"#define flip_normalmap",
+       },
+       deferredDefinitions = {
+         "#define use_perspective_correct_shadows",
+         --"#define use_normalmapping",
+         "#define deferred_mode 1",
+         "#define SPECULARMULT 1.0",
+       },
+       shader    = include(SHADER_DIR .. "default.lua"),
+       deferred  = include(SHADER_DIR .. "default.lua"), 
+       usecamera = false,
+       culling   = GL.BACK,
+       predl  = nil,
+       postdl = nil,
+       texunits  = {
+         [0] = '%%UNITDEFID:0',
+         [1] = '%%UNITDEFID:1',
+         [2] = '$shadow',
+         [3] = '$specular',
+         [4] = '$reflection',
        },
    },
 }
@@ -94,6 +133,8 @@ for i, udef in pairs(UnitDefs) do
       local normaltex = FindNormalmap(tex1,tex2)
       if (normaltex and not unitMaterials[udef.name]) then
         unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
+      else
+        unitMaterials[udef.name] = {"normalModelledS3o"}
       end
     end --if model
 
@@ -116,6 +157,8 @@ for i, udef in pairs(UnitDefs) do
           local normaltex = FindNormalmap(tex1,tex2)
           if (normaltex and not unitMaterials[udef.name]) then
             unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
+          else
+            unitMaterials[udef.name] = {"normalModelledS3o"}
           end
         end
       end

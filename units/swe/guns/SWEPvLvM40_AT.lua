@@ -3,6 +3,10 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	description				= "Deployed AT Autocannon",
 	corpse					= "ruszis2_destroyed", -- TODO: change
 	buildpic				= "SWEPvLvM40_AT.png",
+	stealth						= true,
+	cloakCost			= 0,
+	cloakTimeout		= 160,
+	minCloakDistance	= 220,
 	customParams = {
 		scriptAnimation	= "pvlvm40",
 	},

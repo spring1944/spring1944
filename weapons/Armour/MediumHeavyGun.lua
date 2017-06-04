@@ -59,6 +59,8 @@ local KwK88mmL71AP = HeavyAP:New(KwK88mmL71, true):New{
 
 -- SK 8.8cm C/30 (GER)
 local SK88mmC30 = MediumHeavyGun:New(MediumHE, true):New{
+  accuracy		= 500,
+  tolerance		= 1000,
   areaOfEffect       = 85,
   name               = [[8.8cm SK C/30 Naval Gun]],
   range              = 2110,
@@ -66,10 +68,9 @@ local SK88mmC30 = MediumHeavyGun:New(MediumHE, true):New{
   soundStart         = [[GER_88mm]],
   weaponVelocity     = 1250,
   damage = {
-    default            = 1275,
+    default            = 1530,
   },  
 }
-
 
 -- S-53 85mm (RUS)
 local S5385mm = MediumHeavyGun:New{
@@ -124,6 +125,21 @@ local D10S100mmAP = HeavyAP:New(D10S100mm, true):New{
   },
 }
 
+-- B-24 100mm naval gun
+local B24_100mm =  MediumHeavyGun:New{
+  name               = [[B-24 100mm]],
+  range              = 2260,
+  reloadTime         = 10,
+  soundStart         = [[RUS_85mm]],
+	weaponVelocity     = 1410,
+  customparams = {
+    weaponcost         = 22,
+    cegflare           = "LARGE_MUZZLEFLASH",
+  },
+  damage = {
+    default            = 2100,
+  },
+}
 
 -- M3 90mm (USA)
 local M390mm = MediumHeavyGun:New{
@@ -189,6 +205,18 @@ local OTO100mmL47HE = MediumHeavyGun:New(MediumHE, true):New{
     default            = 3000,
   },  
 }
+-- 105mm 1936 Naval gun (SWE)
+local Mod105mm1936HE = MediumHeavyGun:New(MediumHE, true):New{
+  areaOfEffect       = 112,
+  name               = [[105mm mod.1936 Naval Gun]],
+  range              = 1705,
+  reloadTime         = 6.5,
+  soundStart         = [[GEN_105mm]],
+  weaponVelocity     = 1400,
+  damage = {
+    default            = 3800,
+  },  
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -205,6 +233,8 @@ return lowerkeys({
   S5385mmAP = S5385mmAP,
   -- D-10 100mm
   D10S100mmAP = D10S100mmAP,
+  -- B-24BM 100mm naval, so HE only
+  B24_100mmHE = B24_100mm,
   -- M3 90mm
   M390mmHE = M390mmHE,
   M390mmAP = M390mmAP,
@@ -213,4 +243,6 @@ return lowerkeys({
   Ansaldo90mmL53AP = Ansaldo90mmL53AP,
   -- OTO 100mm/47 1928 Naval gun
   OTO100mmL47HE = OTO100mmL47HE,
+  -- SWE 105mm 1936 Naval gun
+  Mod105mm1936HE = Mod105mm1936HE,
 })

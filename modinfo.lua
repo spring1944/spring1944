@@ -1,12 +1,12 @@
 local modinfo = {
-	name			= 'Spring 1944',
-	shortName		= 's44',
-	version			= '2.31',
-	game			= 'Spring 1944',
-	shortGame		= 's44',
-	mutator			= 'Official',
-	description		= 'Epic World War II RTS!',
-	url				= 'http://www.spring1944.net/',
+	name			= 'Steam Spring 1944',
+	shortName		= 'ss44',
+	version			= 'release-170604',
+	game			= 'Steam Spring 1944',
+	shortGame		= 'ss44',
+	mutator			= 'notAlab build',
+	description		= 'Epic World War II RTS',
+	url				= 'http://notalab.com/products/ss44/',
 	modtype			= '1',
 }
 

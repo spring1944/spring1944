@@ -1,0 +1,243 @@
+[FRAR35_Abandoned]
+{
+  description=Abandoned R35;
+  damage=2501;
+  energy=50;
+  featureDead=FRAR35_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR35.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAR35_Burning]
+{
+  description=Destroyed R35;
+  damage=2501;
+  energy=50;
+  featureDead=FRAR35_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR35_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAR35_Wreck]
+{
+  description=Destroyed R35;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR35_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH35_Abandoned]
+{
+  description=Abandoned H35;
+  damage=2501;
+  energy=50;
+  featureDead=FRAH35_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH35.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH35_Burning]
+{
+  description=Destroyed H35;
+  damage=2501;
+  energy=50;
+  featureDead=FRAH35_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH35_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH35_Wreck]
+{
+  description=Destroyed H35;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH35_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAR39_Abandoned]
+{
+  description=Abandoned R39;
+  damage=2501;
+  energy=50;
+  featureDead=FRAR39_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR39.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAR39_Burning]
+{
+  description=Destroyed R39;
+  damage=2501;
+  energy=50;
+  featureDead=FRAR39_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR39_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAR39_Wreck]
+{
+  description=Destroyed R39;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAR39_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH39_Abandoned]
+{
+  description=Abandoned H39;
+  damage=2501;
+  energy=50;
+  featureDead=FRAH39_Burning;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH39.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH39_Burning]
+{
+  description=Destroyed H39;
+  damage=2501;
+  energy=50;
+  featureDead=FRAH39_Wreck;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH39_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
+
+[FRAH39_Wreck]
+{
+  description=Destroyed H39;
+  damage=2501;
+  energy=50;
+  footprintX=2;
+  footprintZ=2;
+  object=FRA/FRAH39_wreck.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		ceg_created=Burning;
+		cover_strength=2;
+		cover_radius=40;
+		}
+}

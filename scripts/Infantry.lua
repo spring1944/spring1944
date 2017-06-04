@@ -4,6 +4,7 @@ local torso = piece "torso"
 local flare = piece "flare"
 
 local info = GG.lusHelper[unitDefID]
+local customAnims = info.customAnims
 
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 
@@ -396,7 +397,11 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 		if newBuilding then
 			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
 		elseif not wantedBuilding then
-			Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+			-- Fix https://github.com/spring1944/spring1944/issues/200
+			comm = Spring.GetUnitCommands(unitID, 1)[1]
+			if not comm or comm.id ~= CMD.RECLAIM then
+				Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+			end
 		end
 		standing = newStanding
 		aiming = newAiming
@@ -653,6 +658,10 @@ function script.Create()
 		weaponEnabled[i] = true
 	end
 	UpdateSpeed()
+	-- Fix https://github.com/spring1944/spring1944/issues/200
+	if UnitDef.isBuilder then
+		StartThread(fixReclaim)
+	end
 end
 
 function script.StartMoving()
@@ -749,6 +758,9 @@ function script.Shot(num)
 	if not tags.aimOnLoaded then
 		StartThread(ResolvePose, true)
 	end
+	if customAnims and customAnims.postShot then
+		customAnims.postShot(num)
+	end
 end
 
 function script.EndBurst(num)
@@ -825,6 +837,21 @@ if UnitDef.isBuilder then
 
 	function script.StopBuilding()
 		StopBuilding()
+	end
+
+	function fixReclaim()
+		while true do
+			local comm = Spring.GetUnitCommands(unitID, 1)[1]
+			if not comm or comm.id ~= CMD.RECLAIM then
+				-- We already finished reclaiming things
+				if not wantedBuilding then
+					Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
+				end
+			else
+				Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 1)
+			end
+			Sleep(150)
+		end
 	end
 end
 

@@ -122,9 +122,9 @@ for name, ud in pairs(UnitDefs) do
 	local detection = {
 		BUILDING    = {300, 2000, 650, 0},
 		INFANTRY    = {650, 2000, 650, 1400},
-		SOFTVEH     = {225, 2000, 950, 0},
-		OPENVEH     = {225, 2000, 950, 0},
-		HARDVEH     = {150, 1000, 650, 0},
+		SOFTVEH     = {200, 2000, 950, 0},
+		OPENVEH     = {150, 2000, 950, 0},
+		HARDVEH     = {125, 1000, 650, 0},
 		SHIP        = {400, 2500, 950, 0},
 		DEPLOYED    = {650, 2000, 650, 1400},
 	}
@@ -226,20 +226,6 @@ for name, ud in pairs(UnitDefs) do
 				ud.description = "log. storage: "..ud.energystorage
 			end
 			ud.description = ud.description.." (log. storage: "..ud.energystorage..")"
-		end
-	end
-	-- ammo users, add ammo-related description
-	if (ud.customparams) then
-		if (ud.customparams.weaponcost) and (ud.customparams.maxammo) then
-			local newDescrLine = "max. ammo: "..ud.customparams.maxammo..", log. per shot: "..ud.customparams.weaponcost..", total: "..(ud.customparams.weaponcost*ud.customparams.maxammo)
-			if not (ud.description) then
-				ud.description = newDescrLine
-			end
-			ud.description = ud.description.." ("..newDescrLine..")"
-
-		end
-		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
-			ud.usepiececollisionvolumes = true
 		end
 	end
 

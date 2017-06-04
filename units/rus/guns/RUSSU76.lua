@@ -1,6 +1,6 @@
 local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 	name				= "SU-76",
-	buildCostMetal		= 1740,
+	buildCostMetal		= 1570,
 	maxDamage			= 1120,
 	trackOffset			= 3,
 	trackWidth			= 19,

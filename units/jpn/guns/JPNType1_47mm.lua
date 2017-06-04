@@ -12,7 +12,7 @@ local JPN_Type1_47mm_Stationary = LightATGun:New{
 	minCloakDistance = 160,
 	weapons = {
 		[1] = { -- AP
-			name				= "Type147mmAP",
+			name				= "Type147mmAP_towed",
 		},
 	},
 }

@@ -35,7 +35,7 @@ local sweSorties = {
 		weight = 1,
 		name = "Air Superiority Fighter Sortie",
 		description = "3 x SAAB J 21A",
-		buildCostMetal = 4500,
+		buildCostMetal = 4050,
 		buildPic = "SWEJ21A.png",
 	},
 
@@ -48,7 +48,7 @@ local sweSorties = {
 		weight = 1,
 		name = "Dive Bomber Sortie",
 		description = "2 x SAAB B 17A",
-		buildCostMetal = 5750,
+		buildCostMetal = 6750,
 		buildPic = "SWEB17A.png",
 	},
 	

@@ -269,6 +269,7 @@ local Solothurn_36MAP = AutoCannonAP:New{
 		armor_penetration_1000m = 16,
 		armor_penetration_100m = 35,
 		weaponcost				= 1,
+		immobilizationchance = 0.5,	-- medium
 	},
 	damage = {
 		default            = 402,
@@ -289,6 +290,49 @@ local Solothurn_36MHE = AutoCannonHE:New{
 	},
 	damage = {
 		default            = 110,
+	},
+}
+
+-- French guns
+local Canon_25_SA_35 = AutoCannon:New{
+	accuracy           = 255,
+	burst              = 1,
+	name               = [[Canon de 25 SA 35]],
+	range              = 740,
+	reloadTime         = 3,
+	soundStart         = [[GER_20mm]],
+	weaponVelocity     = 2100,
+	damage = {
+		default            = 121,
+	},
+	customparams = {
+		weaponcost = 1,
+	},
+}
+
+local Canon_25_SA_35_AP = AutoCannonAP:New(Canon_25_SA_35, true):New{
+	customparams = {	-- data taken from http://www.littlewars.se/french1940/gundata.html
+		armor_penetration_1000m = 30,
+		armor_penetration_100m  = 47,	-- note: this is the short tank version, towed gun is longer = even more penetration. Crazy for just a 25mm
+	},
+	damage = {
+		default            = 540,
+	},
+}
+
+local Canon_25_SA_35_HE = AutoCannonHE:New(Canon_25_SA_35, true):New{
+	customparams = {
+		fearaoe            = 35,
+	},
+}
+
+local Canon_25_SA_34_AP = AutoCannonAP:New(Canon_25_SA_35, true):New{
+	customparams = {	-- data taken from http://www.littlewars.se/french1940/gundata.html
+		armor_penetration_1000m = 30,
+		armor_penetration_100m  = 54,	-- longer towed version
+	},
+	damage = {
+		default            = 540,
 	},
 }
 
@@ -327,5 +371,8 @@ return lowerkeys({
   -- Hungarian AT rifle used as vehicle weapon, had to move it here as it is AP/HE like a cannon
   Solothurn_36MAP = Solothurn_36MAP,
   Solothurn_36MHE = Solothurn_36MHE,
-  
+  -- French tank version of 25mm
+  Canon_25_SA_35_AP = Canon_25_SA_35_AP,
+  Canon_25_SA_35_HE = Canon_25_SA_35_HE,
+  Canon_25_SA_34_AP = Canon_25_SA_34_AP,
 })

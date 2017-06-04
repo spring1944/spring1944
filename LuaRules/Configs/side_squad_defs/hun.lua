@@ -15,7 +15,7 @@ local hunDefs = {
 		},
 		name = "Rifle Squad",
 		description = "4 x FEG 35M Rifle, 2 x 43M SMG: Small Combat Squad",
-		buildCostMetal = 610,
+		buildCostMetal = 550,
 		buildPic = "HUNRifle.png",
 	},
 

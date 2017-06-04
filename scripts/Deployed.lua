@@ -19,6 +19,7 @@ local cylinder2 = piece "cylinder2"
 
 local cylinder1inverse = 1
 local cylinder2inverse = 1
+
 if UnitDef.customparams then
 	if UnitDef.customparams.guncylinderinverse1 then
 		cylinder1inverse = -1
@@ -33,6 +34,7 @@ local info = GG.lusHelper[unitDefID]
 if not info.animation then
 	include "DeployedLoader.lua"
 end
+local customAnims = info.customAnims
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
 
 --Localisations
@@ -265,6 +267,13 @@ function script.Create()
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
 	end
+	-- turn AA barrel up
+	if UnitDef.customParams.scriptanimation == "aa" then
+		Turn(weaponTags.headingPiece, y_axis, 0, info.turretTurnSpeed)
+		Turn(weaponTags.pitchPiece, x_axis, -70, info.elevationSpeed)
+		WaitForTurn(weaponTags.headingPiece, y_axis)
+		WaitForTurn(weaponTags.pitchPiece, x_axis)
+	end
 end
 
 local function StopPinned()
@@ -387,7 +396,9 @@ function script.Shot(weaponNum)
 	if brakeright then
 		GG.EmitSfxName(unitID, brakeright, "MUZZLEBRAKESMOKE")
 	end
-
+	if customAnims and customAnims.postShot then
+		customAnims.postShot(weaponNum)
+	end
 end
 
 function script.EndBurst(weaponNum)

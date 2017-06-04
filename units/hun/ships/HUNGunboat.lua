@@ -4,7 +4,7 @@ local HUN_Debrecen = ArmedBoat:New{
 	corpse					= "HUNGunboat_dead",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
-	buildCostMetal			= 5000,
+	buildCostMetal			= 4250,
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 14400,
@@ -26,6 +26,7 @@ local HUN_Debrecen = ArmedBoat:New{
 			"HUNGunboat_turret_75mm_rear", 
 			"HUNGunboat_turret_flak_rear", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = 15, speed = 5},
 		},

@@ -27,7 +27,7 @@ local SilencedSten = STEN:New({
 -- MP.40 (GER)
 local MP40 = SMGClass:New{
   burstRate          = 0.12,
-  movingAccuracy     = 470, -- intended?
+  movingAccuracy     = 1200, 
   name               = [[Maschinenpistole 40]],
   range              = 330,
   reloadtime         = 2,
@@ -75,7 +75,7 @@ local BerettaM38 = SMGClass:New{
 local FNAB43 = SMGClass:New{
   burst              = 5,
   burstRate          = 0.112,
-  movingAccuracy     = 1000,
+  movingAccuracy     = 800,
   name               = [[FNAB-43]],
   range              = 340,
   reloadtime         = 1.2,
@@ -109,11 +109,11 @@ local KPistM3738 = SMGClass:New{
 -- Danuvia 43M
 local danuvia43m = SMGClass:New{
 	burst              = 8,
-	burstRate          = 0.086,
-	movingAccuracy     = 1300,
+	burstRate          = 0.09,
+	movingAccuracy     = 1200,
 	name               = [[Danuvia 43M]],
-	range              = 325,
-	reloadtime         = 1.7,
+	range              = 330,
+	reloadtime         = 1.8,
 	soundStart         = [[ITA_BerettaM38]],
 	sprayAngle         = 380,
 }

@@ -7,8 +7,8 @@ local RUS_Pr161 = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	corpse					= "RUSPr161_dead",
-	mass					= 15100,
-	maxDamage				= 15100, --TODO: +10% because it has armor??
+	mass					= 16100,
+	maxDamage				= 16100, 
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
@@ -16,12 +16,13 @@ local RUS_Pr161 = ArmedBoat:New{
 	turnRate				= 150,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "S5385mmHE",
+			name				= "S5385mmAP",
 		},
 	},
 	customparams = {
 		killvoicecategory		= "RUS/Boat/RUS_BOAT_KILL",
 		killvoicephasecount		= 3,
+		damageGroup			= 'hardships',
 		children = {
 			"RUSTurret_45mm_Front",
 			"RUSPr161_Turret_85mm_Front",
@@ -66,7 +67,7 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 	objectName				= "<SIDE>/RUSBKA1125_Turret_76mm.s3o", -- temp hack to avoid clipping
   	weapons = {	
 		[1] = {
-			name				= "S5385mmHE",
+			name				= "S5385mmAP",
 			maxAngleDif			= 300,
 		},
 	},

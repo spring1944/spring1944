@@ -7,7 +7,7 @@ local AP = Weapon:New{
 	soundHitDry        = "GEN_Explo_1",
 	customparams = {
 		damagetype         = "kinetic",
-		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP",
+		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET",
 		badtargetcategory  = "SOFTVEH",
 	},  
 }
@@ -18,6 +18,9 @@ local AutoCannonAP = AP:New{
 	size               = 1,  
 	stages             = 50,
 	explosionGenerator = "custom:AP_XSmall",
+	customparams		= {
+		immobilizationchance = 0.25,	-- rather low
+	},
 } 
 	
 local LightAP = AP:New{
@@ -63,7 +66,7 @@ local HE = Weapon:New{
 	name               = "HE Shell",
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
-		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		damagetype         = "explosive",
 		fearid             = 301,
 	},
@@ -75,6 +78,7 @@ local AutoCannonHE = HE:New{ -- + AAGunHE
 	explosionGenerator = "custom:HE_XSmall",
 	customparams = {
 		fearaoe            = 40,
+		immobilizationchance = 0.25,	-- rather low
 	},
 }
 
@@ -132,8 +136,11 @@ local Smoke = Weapon:New{
 	areaOfEffect       = 30,
 	name               = "Smoke Shell",
 	damage = {
-		default = 100,
-	} ,
+		default = 10,
+	},
+	customparams = {
+		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+	}
 }
 
 local MortarSmoke = Smoke:New{
@@ -216,8 +223,8 @@ local Cannon = Weapon:New{
 local TankGun = Cannon:New{
 	accuracy           = 100,
 	intensity          = 0.25,
-	leadBonus          = 0.5,
-	leadLimit          = 0,
+	leadBonus          = 0.25,
+	leadLimit          = 3,
 	movingAccuracy     = 600,
 	tolerance          = 300,
 }
@@ -231,6 +238,13 @@ local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
 		armor_hit_side     = "top",
 		cegflare           = "SMALL_MUZZLEFLASH",
 		weaponcost         = -1, -- to automagic weaponswithammo
+	},
+}
+
+-- Special case: light deployed AT guns have immobilization chance
+local LightMediumATGun = {
+	customparams = {
+		immobilizationchance = 0.75,	-- rather high
 	},
 }
 
@@ -320,8 +334,8 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	customparams = {
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
-		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED TURRETS",
-		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRETS",
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
+		onlytargetcategory = "INFANTRY SOFTVEH AIR OPENVEH SHIP LARGESHIP HARDVEH DEPLOYED TURRET",
 	},
 }
 
@@ -335,6 +349,7 @@ local AntiAirGun = Cannon:New{
 	soundTrigger       = false,
 	sprayAngle         = 400,
 	customparams = {
+		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
 		cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 		flareonshot        = true,
 		weaponcost         = 8,
@@ -417,6 +432,7 @@ return {
 	LightAP = LightAP,
 	MediumAP = MediumAP,
 	HeavyAP = HeavyAP,
+	LightMediumATGun = LightMediumATGun,
 	-- HEAT bases
 	HEAT = HEAT,
 	HeavyHEAT = HeavyHEAT,

@@ -27,7 +27,7 @@ local Boat = Unit:New{ -- used for transports as is
 local AssaultBoat = Boat:New{
 	name				= "Rubber Dingy", -- will be overwritten by e.g. sturmboot
 	description			= "Infantry Water Transport",
-	acceleration		= 0.3,
+	acceleration		= 0.1,
 	brakeRate			= 0.2,
 	buildCostMetal		= 200,
 	category			= "SHIP MINETRIGGER SOFTVEH",
@@ -36,7 +36,7 @@ local AssaultBoat = Boat:New{
 	iconType			= "lttrans",--rubber",
 	mass				= 145,
 	maxDamage			= 145,
-	maxVelocity			= 3.55,
+	maxVelocity			= 2.66,
 	movementClass		= "BOAT_Small",
 	objectName			= "GEN/RubberDingy.S3O",
 	script				= "RubberDingy.cob",
@@ -122,6 +122,7 @@ local ArmedBoat = BoatMother:New{
 
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
+	blocking					= false,
 	canMove						= true,
 	cantBeTransported			= false,
 	canSelfDestruct				= false,
@@ -144,11 +145,13 @@ local BoatChild = Boat:New{ -- a boat turret
 }
 
 local EnclosedBoatTurret = BoatChild:New{
-	maxDamage			= 1600,
+	maxDamage			= 2500,
+	buildCostMetal			= 1000,
 }
 
 local OpenBoatTurret = BoatChild:New{
 	maxDamage			= 800,
+	buildCostMetal			= 300,
 	customparams = {
 		feartarget		= true,
 		fearlimit		= 12,
@@ -158,6 +161,7 @@ local OpenBoatTurret = BoatChild:New{
 -- as durable as a fully enclosed, but still suppressible
 local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
 	maxDamage			= 1600,
+	buildCostMetal			= 700,
 }
 
 return {

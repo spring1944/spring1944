@@ -20,6 +20,11 @@ local RUST3476 = MediumTank:New{
 			name				= "DT",
 		},
 		[4] = {
+			name				= "DT",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
+		},		
+		[5] = {
 			name				= ".50calproof",
 		},
 	},

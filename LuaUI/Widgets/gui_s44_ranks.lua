@@ -1593,6 +1593,9 @@ local function GetRankList(rank, prefix)
 		rankTable = geRanks
 	elseif prefix == "us" then
 		rankTable = usRanks
+	else
+		-- generic option = US to have at least something
+		rankTable = usRanks
 	end
 	
 	for i = 1,#rankTable do

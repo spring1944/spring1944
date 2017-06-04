@@ -38,26 +38,48 @@ local Bomb160kg = timebombClass:New{
     default            = 15000,
     },
 }
-
--- 50Kg Bomb (Generic)
-local Bomb50kg = BombClass:New{
-  name               = [[50kg Bomb]],
-  model              = [[Bomb_Medium.S3O]],
+local lastBomb160kg = Bomb160kg:New{
+  commandfire        = true,
+  range              = 405,
+}
+-- divebomb
+local divebomb = BombClass:New{
   size		     = 1,
   accuracy           = 200,
   tolerance          = 100,	
-  areaOfEffect       = 76,
   heightMod		= 1,
   mygravity	= 0.01,
+  model              = [[Bomb_Medium.S3O]],
+  explosionGenerator = [[custom:HE_Large]],
+  soundHit           = [[GEN_Explo_5]],
+}
+-- 50Kg divebomb 
+local Bomb50kg = divebomb:New{
+  name               = [[50kg Bomb]],
+  explosionGenerator = [[custom:HE_Medium]],
+  soundHit           = [[GEN_Explo_4]],
+  areaOfEffect       = 76,
     damage = {
     default            = 7500,
 	planes		= 5,
     },
   range              = 300,
-  explosionGenerator = [[custom:HE_Large]],
-  soundHit           = [[GEN_Explo_5]],
 }
-
+local lastBomb50kg = Bomb50kg:New{
+  commandfire        = true,
+  range              = 270,
+}
+-- 250kg divebomb
+local Bomb250kg = divebomb:New{
+  name               = [[250kg Bomb]],
+  areaOfEffect       = 156,
+  commandfire        = true,
+    damage = {
+    default            = 27500,
+	planes		= 5,
+    },
+  range              = 210,
+}
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{
   areaOfEffect       = 200,
@@ -73,6 +95,7 @@ local PTAB = BombClass:New{
   areaOfEffect       = 24,
   burst              = 36,
   burstrate          = 0.1,
+  commandfire	= true,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
   model              = [[MortarShell.S3O]],
@@ -120,6 +143,9 @@ local A_tkbomb = BombClass:New{
     bunkers            = 500,
   }
 }
+local lastA_tkbomb = A_tkbomb:New{
+  commandfire        = true,
+}
 --  12 kg anti-personnel Bomb Type F  (ITA)
 local TypeF12kg = timebombClass:New{
   areaOfEffect       = 94,
@@ -148,8 +174,12 @@ return lowerkeys({
   Bomb = Bomb,
   Bomb160kg = Bomb160kg,
   Bomb50kg = Bomb50kg,
+  lastBomb160kg = lastBomb160kg,
+  lastBomb50kg = lastBomb50kg,
+  Bomb250kg = Bomb250kg,
   PTAB = PTAB,
   A_tkbomb = A_tkbomb,
+  lastA_tkbomb = lastA_tkbomb,
   TypeF12kg = TypeF12kg,
   V1 = V1,
 })

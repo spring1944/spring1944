@@ -141,8 +141,8 @@ local HeavyMGClass = MGClass:New{
 	weaponVelocity     = 3000,
 	customparams = {
 		fearid             = 401,
-		onlytargetcategory = "INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP TURRETS",
-		badtargetcategory  = "OPENVEH LARGESHIP DEPLOYED TURRETS",
+		onlytargetcategory = "INFANTRY SOFTVEH DEPLOYED SHIP LARGESHIP TURRET",
+		badtargetcategory  = "OPENVEH LARGESHIP DEPLOYED SHIP",
 	},
 	damage = {
 		default            = 50,
@@ -156,7 +156,7 @@ local AMG = Weapon:New{ -- should be used like ammo bases
 	size		   = 1e-13,
 	rgbColor           = [[0.2 0.0 0.3]],
 	customparams = {
-		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRETS",
+		onlytargetcategory = "AIR INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED TURRET",
 		badtargetcategory  = "INFANTRY SOFTVEH OPENVEH SHIP LARGESHIP DEPLOYED",
 	}
 }

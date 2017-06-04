@@ -343,6 +343,102 @@ local Mavag_37_42MHE = LightHE:New(Mavag_37_42M, true):New{
 	},
 }
 
+--France
+
+-- one of the worst 37mm guns ever! And this is upgraded 1937 version, original from FT-17 was even worse
+local FRA37mmSA18 = LightGun:New{
+  name                 = [[Canon de 37 SA 18 mle 37]],
+  range                = 930,
+  reloadTime           = 4.0,
+  soundStart           = [[RUS_45mm]],
+  weaponVelocity		= 600,
+}
+
+local FRA37mmSA18AP = LightAP:New(FRA37mmSA18, true):New{
+	customparams = {
+		armor_penetration_1000m = 10,
+		armor_penetration_100m  = 25,
+	},
+	damage = {
+		default            = 650,
+	},
+}
+
+local FRA37mmSA18HE = LightHE:New(FRA37mmSA18, true):New{
+	customparams = {
+		fearaoe			= 24,
+	},
+	damage = {
+		default            = 200,
+	},
+}
+
+-- A bit better 37mm
+local FRA37mmSA38 = LightGun:New{
+  name                 = [[Canon de 37 SA 38]],
+  range                = 930,
+  reloadTime           = 4.0,
+  soundStart           = [[US_37mm]],
+  weaponVelocity		= 800,
+}
+
+local FRA37mmSA38AP = LightAP:New(FRA37mmSA38, true):New{
+	customparams = {
+		armor_penetration_1000m = 16,
+		armor_penetration_100m  = 29,
+	},
+	damage = {
+		default            = 750,
+	},
+}
+
+local FRA37mmSA38HE = LightHE:New(FRA37mmSA38, true):New{
+	customparams = {
+		fearaoe			= 28,
+	},
+	damage = {
+		default            = 250,
+	},
+}
+
+local FRA47mmSA35 = LightGun:New{
+  name                 = [[47mm SA35]],
+  range                = 1100,
+  reloadTime           = 4.0,	-- 15rpm, might be a bit too high
+  soundStart           = [[RUS_45mm]],
+}
+
+local FRA47mmSA35AP = LightAP:New(FRA47mmSA35, true):New{
+	weaponVelocity     = 1118,
+	customparams = {
+		armor_penetration_1000m = 33,
+		armor_penetration_100m  = 49,
+	},
+	damage = {
+		default            = 1183,
+	},
+}
+
+local FRA47mmSA35HE = LightHE:New(FRA47mmSA35, true):New{
+	areaOfEffect       = 38,
+	weaponVelocity     = 800,
+	damage = {
+		default            = 350,
+	},
+}
+
+-- towed version
+local FRA47mmSA37AP = LightAP:New(FRA47mmSA35, true):New{
+	weaponVelocity     = 1118,
+	customparams = {
+		armor_penetration_1000m = 53,
+		armor_penetration_100m  = 72,
+	},
+	damage = {
+		default            = 1183,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 2Pdr
@@ -360,6 +456,7 @@ return lowerkeys({
   -- Cannone da 47/32 M35
   CannoneDa47mml32AP = CannoneDa47mml32AP,
   CannoneDa47mml32HEAT = CannoneDa47mml32HEAT,
+  CannoneDa47mml32AP_towed = CannoneDa47mml32AP:New(LightMediumATGun, true),
   -- Cannone da 47/40
   CannoneDa47mml40HE = CannoneDa47mml40HE,
   CannoneDa47mml40AP = CannoneDa47mml40AP,
@@ -374,9 +471,18 @@ return lowerkeys({
   -- Type 1 47mm
   Type147mmHE = Type147mmHE,
   Type147mmAP = Type147mmAP,
+  Type147mmAP_towed = Type147mmAP:New(LightMediumATGun, true),
   Bofors_m38AP = Bofors_m38AP,
   Bofors_m38HE = Bofors_m38HE,
   -- Hungary
   Mavag_37_42MAP = Mavag_37_42MAP,
   Mavag_37_42MHE = Mavag_37_42MHE,
+  -- France
+  FRA37mmSA18AP = FRA37mmSA18AP,
+  FRA37mmSA18HE = FRA37mmSA18HE,
+  FRA37mmSA38AP = FRA37mmSA38AP,
+  FRA37mmSA38HE = FRA37mmSA38HE,  
+  FRA47mmSA35AP = FRA47mmSA35AP,
+  FRA47mmSA35HE = FRA47mmSA35HE,
+  FRA47mmSA37AP = FRA47mmSA37AP,
 })

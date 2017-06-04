@@ -9,7 +9,7 @@ local HUN_Bf109 = Interceptor:New{
 	maxElevator			= 0.0036,
 	maxPitch			= 1,
 	maxRudder			= 0.002765,
-	maxVelocity			= 18.9,
+	maxVelocity			= 19.85,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -29,7 +29,6 @@ local HUN_Bf109 = Interceptor:New{
 		[3] = {
 			name				= "mk10830mm",
 			maxAngleDif			= 10,
-			slaveTo				= 1,
 		},
 	},
 }

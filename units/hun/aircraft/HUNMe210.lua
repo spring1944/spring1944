@@ -8,7 +8,7 @@ local HUN_Me210_base = {
 	maxElevator			= 0.0042,
 	maxPitch			= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 15.8,
+	maxVelocity			= 17.6,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -31,23 +31,23 @@ local HUN_Me210 = Fighter:New(HUN_Me210_base):New{
 			slaveTo				= 1,
 		},
 		[3] = {	-- Pretend this is MG17
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[4] = {
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[5] = {	-- this is in rear defence turret
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 		[6] = {
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 	},
@@ -69,23 +69,23 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 			slaveTo				= 1,
 		},
 		[4] = {	-- Pretend this is MG17
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[5] = {
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[6] = {	-- this is in rear defence turret
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 		[7] = {
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 	},
@@ -94,9 +94,10 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	name			= "Me 210Ca-1 ground attack",
 	description		= "Ground attack aircraft",
+	cruisealt		= 1000,
 
 	customParams = {
-		maxammo				= 6,
+		maxammo				= 12,
 	},
 
 	weapons = {
@@ -115,23 +116,23 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 			slaveTo				= 1,
 		},
 		[4] = {	-- Pretend this is MG17
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[5] = {
-			name				= "mg42aa",
+			name				= "BredaSafat03",
 			maxAngleDif			= 10,
 			slaveTo				= 1,
 		},
 		[6] = {	-- this is in rear defence turret
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 		[7] = {
 			name				= "mg13113mm",
-			maxAngleDif			= 30,
+			maxAngleDif			= 50,
 			mainDir				= [[0 0 -1]],
 		},
 		[8] = {

@@ -31,7 +31,7 @@ local D25122mmAP = HeavyAP:New(D25122mm, true):New{
 -- ML-20S 152mm (RUS)
 local ML20S152mm = HeavyGun:New{
   name               = [[ML-20S 152mm Howitzer]],
-  range              = 1750,
+  range              = 1950,
   reloadTime         = 17.5,
   soundStart         = [[RUS_152mm]],
   customparams = {
@@ -67,7 +67,7 @@ local ML20S152mmAP = HeavyAP:New(ML20S152mm, true):New{
 local Short120mmHE = HeavyGun:New(HeavyHE, true):New{
   areaOfEffect       = 129,
   name               = [[Short Naval 120mm]],
-  range              = 1720,
+  range              = 1620,
   reloadtime         = 11.25,
   soundStart         = [[GEN_105mm]],
   weaponVelocity     = 700,
@@ -81,7 +81,7 @@ local Type38150mmL11 = HeavyGun:New{
   name               = [[Type 38 150mm/11]],
   soundStart         = [[150mmtype38]],
   
-  range              = 1700,
+  range              = 1900,
   reloadtime         = 15,
   weaponVelocity     = 700,
   customparams = {
@@ -98,6 +98,22 @@ local Type38150mmL11HE = HeavyHE:New(Type38150mmL11, true):New{
 }
 local Type38150mmL11Smoke = HeavySmoke:New(Type38150mmL11, true)
 
+-- 12.8cm Flak40
+--flak40_12_8cm
+local Flak40_12_8cm = HeavyGun:New{
+    name            = [[12.8cm Flak40]],
+    soundStart      = [[RUS_122mm]],
+    range           = 2500,
+    reloadTime      = 10,
+    weaponVelocity  = 2000,
+}
+
+local Flak40_12_8cm_HE = HeavyHE:New(Flak40_12_8cm, true):New{
+    areaOfEffect       = 120,
+    damage = {
+        default         = 5000,
+    }
+}
 
 -- Return only the full weapons
 return lowerkeys({
@@ -112,4 +128,6 @@ return lowerkeys({
   -- Type 38 150mm Howitzer L/11
   Type38150mmL11HE = Type38150mmL11HE,
   Type38150mmL11Smoke = Type38150mmL11Smoke,
+  -- Flak40
+  Flak40_12_8cm_HE = Flak40_12_8cm_HE,
 })

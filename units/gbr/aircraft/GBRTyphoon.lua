@@ -6,8 +6,6 @@ local GBR_Typhoon = AttackFighter:New{
 	maxAcc				= 0.648,
 	maxAileron			= 0.0044,
 	maxBank				= 0.9,
-	maxElevator			= 0.0031,
-	maxPitch			= 1,
 	maxRudder			= 0.0023,
 	maxVelocity			= 14,
 

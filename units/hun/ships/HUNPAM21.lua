@@ -4,7 +4,7 @@ local HUN_PAM21 = ArmedBoat:New{
 	corpse					= "HUNPAM21_dead",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
-	buildCostMetal			= 1500,
+	buildCostMetal			= 1275,
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 2800,
@@ -26,6 +26,7 @@ local HUN_PAM21 = ArmedBoat:New{
 			"HUNPAM21_turret_mg_right", 
 			"HUNPAM21_turret_mg_left", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = 15, speed = 5},
 		},
@@ -43,7 +44,7 @@ local HUN_PM = ArmedBoat:New{
 	corpse					= "HUNPM_dead",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
-	buildCostMetal			= 2500,
+	buildCostMetal			= 2125,
 	collisionVolumeOffsets	= [[0.0 -6.0 0.0]],
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	mass					= 3800,
@@ -66,6 +67,7 @@ local HUN_PM = ArmedBoat:New{
 			"HUNPAM21_turret_mg_right", 
 			"HUNPAM21_turret_mg_left", 
 		},
+		damageGroup			= 'hardships',
 		deathanim = {
 			["z"] = {angle = -30, speed = -15},
 		},

@@ -3,7 +3,7 @@ local US_SC = ArmedBoat:New{
 	description				= "Patrol Gunboat",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
-	buildCostMetal			= 3500,
+	buildCostMetal			= 2975,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 9800,
@@ -15,7 +15,7 @@ local US_SC = ArmedBoat:New{
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "mk223in50",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
 	},
 	customparams = {
