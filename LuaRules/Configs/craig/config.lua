@@ -48,7 +48,7 @@ end
 --  Include configuration
 --
 
-local dir = "LuaRules/Configs/craig/" .. Game.modShortName .. "/"
+local dir = "LuaRules/Configs/craig/s44/"
 
 if (gadgetHandler:IsSyncedCode()) then
 	-- SYNCED
