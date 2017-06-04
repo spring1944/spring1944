@@ -27,7 +27,7 @@ local singleSelectionWidget
 
 local unitGroups = {
 	"Air",
-	"Kbots",
+	"Soldiers",
 	"Vehicles",
 	"Navy",
 	"Hover",
@@ -390,7 +390,7 @@ function GetGrid( unitDefId )
 		if info.canFly then
 			group = "Air"
 		elseif kbot then
-			group = armed and "Kbots" or "Unarmed"
+			group = armed and "Soldiers" or "Unarmed"
 		else
 			group = armed and "Vehicles" or "Unarmed"
 		end
