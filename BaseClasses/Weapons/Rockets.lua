@@ -38,6 +38,7 @@ local ArtyRocket = Rocket:New{
 
 -- AirRocket Base Class
 local AirRocket = Rocket:New{
+	accuracy	= 300,
 	cegTag             = "BazookaTrail",
 	collideFriendly    = false,
 	explosionGenerator = "custom:HE_Medium",
@@ -53,7 +54,8 @@ local AirRocket = Rocket:New{
 	wobble             = 500,
 	customparams = {
 		no_range_adjust    = true,
-		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP",
+		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
+		badtargetcategory  = "SHIP LARGESHIP",
 		rocket             = true,
 	},
 }

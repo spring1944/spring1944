@@ -1,22 +1,22 @@
 local JPNT14 = ArmedBoat:New{
 	name					= "Type T-14 Motor Torpedo Boat",
 	description				= "Motor Torpedo Boat",
-	acceleration			= 0.3,
+	acceleration			= 0.35,
 	brakeRate				= 0.15,
-	buildCostMetal			= 2200,
+	buildCostMetal			= 1800,
 	collisionVolumeOffsets	= [[0.0 -10.0 -5.0]],
 	collisionVolumeScales	= [[22.0 20.0 85.0]],
-	corpse					= "GERSBoot_dead", -- TODO: needs a corpse (model exists)
+	corpse					= "RUSKomsMTB_dead", -- TODO: needs a corpse (model exists)
 	maxDamage				= 1450,
 	maxReverseVelocity		= 3.005,
-	maxVelocity				= 6.01,
+	maxVelocity				= 5.24,
 	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 1, -- 1 x 1fpu turrets
 	turnRate				= 205,	
 	weapons = {	
 		[1] = {
 			name				= "Type9625mmHE",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET DEPLOYED",
 		},
 	},
 	customparams = {

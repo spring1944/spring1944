@@ -142,6 +142,7 @@ local rusunits =
 
   rusgunyard2 =
   {
+    "rusk31",
     "ruszis5",
     "ruszis2_truck",
     "ruszis3_truck",

@@ -214,3 +214,7 @@ function AddFear(amount)
 	Spring.SetUnitRulesParam(unitID, "fear", curFear)
 	StartThread(FearRecovery)
 end
+
+function script.Killed(recentDamage, maxHealth)
+	return 1
+end

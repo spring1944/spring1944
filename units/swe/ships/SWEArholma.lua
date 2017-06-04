@@ -3,19 +3,19 @@ local SWE_Arholma = ArmedBoat:New{
 	description				= "Minesweeper",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
-	buildCostMetal			= 15000,
+	buildCostMetal			= 14280,
 	category				= "LARGESHIP SHIP MINETRIGGER",
 	collisionVolumeOffsets	= [[0.0 -60.0 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
-	maxDamage				= 67000,
-	maxVelocity				= 1.8,
+	maxDamage				= 39000,
+	maxVelocity				= 1.7,
 	transportCapacity		= 4,
 	turnRate				= 25,	
 	weapons = {	
 		[1] = {
-			name				= "OTO100mmL47HE",
+			name				= "Mod105mm1936HE",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
 	},
 	customparams = {
@@ -47,17 +47,17 @@ local SWE_Arholma = ArmedBoat:New{
 	},
 }
 
-local SWEArholma_Turret_105mm_front = OpenBoatTurret:New{
+local SWEArholma_Turret_105mm_front = PartiallyEnclosedBoatTurret:New{
 	name					= "105mm Turret",
 	description				= "Primary Turret",
 	objectName				= "<SIDE>/SWEArholma_turret_105mm.s3o",
 	weapons = {	
 		[1] = {
-			name				= "OTO100mmL47HE",
+			name				= "Mod105mm1936HE",
 			maxAngleDif			= 270,		},
 	},
 	customparams = {
-		maxammo					= 18,
+		maxammo					= 15,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,

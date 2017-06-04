@@ -110,11 +110,12 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 
 local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	name				= "RPG43",
-	customparams = {
-		scriptanimation		= "smg",
-	},
+	acceleration		= 0.5,
 	weapons = {
-		[1] = { -- AT Grenade
+		[1] = { -- SMG
+			name				= "PPSh",
+		},
+		[2] = { -- AT Grenade
 			name				= "RPG43",
 		},
 	},
@@ -144,6 +145,7 @@ local RUS_Observ = ObservInf:New(RUSInf):New{
 local RUS_NI_Rifle = RifleInf:New(RUSInf):New{
 	name				= "SVT-40 Rifle",
 	description			= "Naval Infantry Rifleman",
+	maxDamageMul		= 1.05,
 	weapons = {
 		[1] = { -- Rifle
 			name				= "SVT",

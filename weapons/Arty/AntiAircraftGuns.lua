@@ -95,6 +95,29 @@ local Bofors25mm_HE = AutoCannonHE:New(Bofors25mm, true):New{
 	range              = 725,
 }
 
+-- Hotchkiss 25mm AA
+local Hotchkiss25mmAA = AntiAirGun:New{
+	name               = [[Mitrailleuse de 25 mm CA mle 39]],
+	burst              = 5, -- 15 round clips, split into bursts of 5
+	burstrate          = 0.24, -- cyclic 250rpm
+	reloadtime         = 1.52, -- practical 110rpm
+	weaponVelocity     = 1646,
+	damage = {
+		default            = 150,
+	},
+	customparams = {
+		weaponcost = 2,
+	},
+}
+
+local Hotchkiss25mmAA_AA = AntiAirGunAA:New(Hotchkiss25mmAA, true):New{
+	range              = 1620,
+}
+
+local Hotchkiss25mmAA_HE = AutoCannonHE:New(Hotchkiss25mmAA, true):New{
+	range              = 725,
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- Medium (40mm)
@@ -108,4 +131,6 @@ return lowerkeys({
   M1939_61K37mmHE = M1939_61K37mmHE,
   Bofors25mm_AA = Bofors25mm_AA,
   Bofors25mm_HE = Bofors25mm_HE,
+  Hotchkiss25mmAA = Hotchkiss25mmAA_AA,
+  Hotchkiss25mmHE = Hotchkiss25mmAA_HE,
 })

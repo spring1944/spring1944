@@ -1,7 +1,16 @@
 local info = GG.lusHelper[unitDefID]
 
+local SetUnitNoSelect = Spring.SetUnitNoSelect
+
+local CreateUnit = Spring.CreateUnit
+local AttachUnit = Spring.UnitScript.AttachUnit
+
 local base = piece("base") or piece("building")
 local radar = piece("radar")
+
+-- Compositing
+local childrenPieces = {}
+local children = info.children
 
 if info.customAnimsName then
 	info.customAnims = include("anims/yard/" .. info.customAnimsName .. ".lua")
@@ -72,17 +81,44 @@ local function Raise()
 	end
 end
 
+local function SpawnChildren()
+	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+	local teamID = Spring.GetUnitTeam(unitID)
+	Sleep(50)
+	for i, childDefName in ipairs(children) do
+		local childID = CreateUnit(childDefName, x, y, z, 0, teamID)
+		if (childID ~= nil) then
+			AttachUnit(childrenPieces[i], childID)
+			Hide(childrenPieces[i])
+			SetUnitNoSelect(childID, true)
+		end
+	end
+end
+
 function script.Create()
+	-- get children if any
+	local pieceMap = Spring.GetUnitPieceMap(unitID)
+	for pieceName, pieceNum in pairs(pieceMap) do
+		if pieceName:find("child") then
+			childrenPieces[#childrenPieces + 1] = pieceNum
+		end
+	end
 	if customAnims and customAnims.preCreate then
 		customAnims.preCreate()
 	end
 	StartThread(Raise)
+
+	-- composite units
+	if #children > 0 then
+		StartThread(SpawnChildren)
+	end
+
 	if base then
 		StartThread(DamageSmoke, {base})
 	end
 	if customAnims and customAnims.postCreate then
 		customAnims.postCreate()
-	end	
+	end
 end
 
 function script.Killed(recentDamage, maxHealth)

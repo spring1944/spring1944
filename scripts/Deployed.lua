@@ -19,6 +19,7 @@ local cylinder2 = piece "cylinder2"
 
 local cylinder1inverse = 1
 local cylinder2inverse = 1
+
 if UnitDef.customparams then
 	if UnitDef.customparams.guncylinderinverse1 then
 		cylinder1inverse = -1
@@ -265,6 +266,13 @@ function script.Create()
 	end
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, true)
+	end
+	-- turn AA barrel up
+	if UnitDef.customParams.scriptanimation == "aa" then
+		Turn(weaponTags.headingPiece, y_axis, 0, info.turretTurnSpeed)
+		Turn(weaponTags.pitchPiece, x_axis, -70, info.elevationSpeed)
+		WaitForTurn(weaponTags.headingPiece, y_axis)
+		WaitForTurn(weaponTags.pitchPiece, x_axis)
 	end
 end
 

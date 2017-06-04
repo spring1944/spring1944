@@ -1,11 +1,11 @@
 local US_LCVP = InfantryLandingCraft:New{
 	name					= "Landing Craft, Vehicle, Personnel",
-	acceleration			= 0.15,
+	acceleration			= 0.2,
 	brakeRate				= 0.14,
 	buildCostMetal			= 500,
 	maxDamage				= 820,
 	maxReverseVelocity		= 0.5,
-	maxVelocity				= 2,
+	maxVelocity				= 4.2,
 	transportCapacity		= 25,
 	transportMass			= 1275,
 	turnRate				= 180,	

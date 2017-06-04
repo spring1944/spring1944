@@ -50,6 +50,9 @@ for i = 1, numTeams do
 	ammoSuppliers[teamID] = {}
 end
 
+-- Can't ignore GAIA anymore, there can be neutral suppliers now with Spoils of War
+ammoSuppliers[GAIA_TEAM_ID] = {}
+
 local modOptions
 if (Spring.GetModOptions) then
   modOptions = Spring.GetModOptions()

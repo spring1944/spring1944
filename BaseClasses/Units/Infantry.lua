@@ -193,7 +193,10 @@ local ATLauncherInf = Infantry:New{
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
 	weapons = {
-		[1] = { -- AT Launcher
+		[1] = { -- Rifle
+			maxAngleDif			= 170,
+		},
+		[2] = { -- AT Launcher
 			maxAngleDif			= 270,
 		},
 	},
@@ -220,6 +223,7 @@ local EngineerInf = Infantry:New{
 	buildDistance		= 128,
 	terraformSpeed		= 300,
 	workerTime			= 15,
+	reclaimSpeed 		= 30,
 	
 	customParams = {
 		canclearmines			= true,

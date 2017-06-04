@@ -7,8 +7,6 @@ local ITA_MC200 = Fighter:New{
 	maxAcc				= 0.782,
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
-	maxElevator			= 0.0042,
-	maxPitch			= 1,
 	maxRudder			= 0.003,
 	maxVelocity			= 16.5,
 
@@ -25,7 +23,7 @@ local ITA_MC200 = Fighter:New{
 			maxAngleDif			= 10,
 		},
 		[2] = {
-			name				= "A_tkbomb",
+			name				= "lastA_tkbomb",
 			maxAngleDif			= 10,
 		},
 		[3] = {

@@ -1,6 +1,6 @@
 local GBRAECMkII = HeavyArmouredCar:New{
 	name				= "AEC Armoured Car Mk.II",
-	buildCostMetal		= 1350,
+	buildCostMetal		= 1550,
 	maxDamage			= 1270,
 	trackOffset			= 10,
 	trackWidth			= 13,
@@ -12,15 +12,15 @@ local GBRAECMkII = HeavyArmouredCar:New{
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
-		--[2] = {
-			--name				= "qf6pdr57mmhe",
-			--mainDir				= [[0 16 1]],
-			--maxAngleDif			= 210,
-		--},
 		[2] = {
-			name				= "BESA",
+			name				= "qf6pdr57mmhe",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
 		},
 		[3] = {
+			name				= "BESA",
+		},
+		[4] = {
 			name				= ".30calproof",
 		},
 	},

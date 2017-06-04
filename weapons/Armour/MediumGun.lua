@@ -41,13 +41,13 @@ local QF17Pdr = MediumGun:New{
 
 local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
   areaOfEffect       = 90,
-  weaponVelocity     = 1768,
+  weaponVelocity     = 1584,
   damage = {
     default            = 1420,
   },  
 }
 local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
-  weaponVelocity     = 1584,
+  weaponVelocity     = 1768,
   customparams = {
     armor_penetration_1000m = 119,
     armor_penetration_100m  = 140,
@@ -229,7 +229,7 @@ local Mk223in50 = MediumGun:New{
   range              = 1800,
   reloadTime         = 3.5, -- 15 - 20 rounds per minute, as per Russian sources
   soundStart         = [[GEN_105mm]], -- :o
-  weaponVelocity     = 926,
+  weaponVelocity     = 1406,
   damage = {
     default            = 1325,
   },  
@@ -344,12 +344,12 @@ local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
 
 -- Ansaldo 76/40 Mod. 1916 R.M. Naval gun (ITA)
 local Ansaldo76mmL40HE = MediumGun:New(MediumHE, true):New{
-  areaOfEffect       = 76,
+  areaOfEffect       = 96,
   name               = [[Ansaldo 76mm/40 Naval Gun]],
   range              = 1320,
   reloadTime         = 3.8,
   soundStart         = [[GER_75mm]],
-  weaponVelocity     = 1300,
+  weaponVelocity     = 1100,
   damage = {
     default            = 1828,
   },  
@@ -383,7 +383,34 @@ local Type375mmL38AP = MediumAP:New(Type375mmL38, true):New{
     default            = 2490,
   },
 }
+-- Type 5 75mm/56.4 (JPN) 
+local Type575mmL56 = MediumGun:New{
+  name               = [[Type 5 75mm/56]],
+  range              = 1770, -- good sights
+  reloadTime         = 6.5,
+  soundStart         = [[JPN_type5_75mm]],
+  customparams = {
+    weaponcost    = 17,
+  },  
+}
 
+local Type575mmL56HE = MediumHE:New(Type575mmL56, true):New{
+  areaOfEffect       = 82,
+  weaponVelocity     = 1026,
+  damage = {
+    default            = 2200,
+  },  
+}
+local Type575mmL56AP = MediumAP:New(Type575mmL56, true):New{
+  weaponVelocity     = 1728,
+  customparams = {
+    armor_penetration_1000m = 80,
+    armor_penetration_100m  = 122,
+  },
+  damage = {
+    default            = 2450,
+  },
+}
 -- Type 90 75mm (JPN) 7 RPM
 local Type9075mm = MediumGun:New{
   name               = [[Type 90 75mm]],
@@ -513,6 +540,39 @@ local Mavag_75_43MAP = MediumAP:New(KwK75mmL48, true):New{
 	},
 }
 
+-- France
+local FRA75mmSA35 = MediumGun:New{
+	name               = [[75mm SA35 L17]],
+	range              = 1270,
+	reloadTime         = 6,	-- sources say 15-30, but that's too much for manually loaded 75mm
+	soundStart         = [[short_75mm]],
+}
+
+local FRA75mmSA35HE = MediumHE:New(FRA75mmSA35, true):New{
+	areaOfEffect       = 88,
+	weaponVelocity     = 926,
+	damage = {
+		default            = 1334,
+	},
+}
+
+-- 75mm Mle1897
+local FRA75mmMle1897 = M375mm:New{
+	name				= [[Canon de 75 modèle 1897]],
+}
+
+local FRA75mmMle1897HE = M375mmHE:New{
+	name				= [[Canon de 75 modèle 1897 HE]],
+}
+
+local FRA75mmMle1897AP = M375mmAP:New{
+	name				= [[Canon de 75 modèle 1897 AP]],
+	customparams = {
+		armor_penetration_1000m = 52,
+		armor_penetration_100m  = 62,
+	},
+}
+
 -- Return only the full weapons
 return lowerkeys({
   -- QF 75mm
@@ -558,6 +618,9 @@ return lowerkeys({
   -- Type 3 75mm/38
   Type375mmL38HE = Type375mmL38HE,
   Type375mmL38AP = Type375mmL38AP,
+  -- Type 5 75mm/56
+  Type575mmL56HE = Type575mmL56HE,
+  Type575mmL56AP = Type575mmL56AP,
   -- Type 90 75mm
   Type9075mmHE = Type9075mmHE,
   Type9075mmAP = Type9075mmAP,
@@ -570,4 +633,8 @@ return lowerkeys({
   Mavag_75_41MHEAT = Mavag_75_41MHEAT,
   Mavag_75_43MAP = Mavag_75_43MAP,
   Mavag_75_43MHE = Mavag_75_43MHE,
+  -- France
+  FRA75mmSA35HE = FRA75mmSA35HE,
+  FRA75mmMle1897HE = FRA75mmMle1897HE,
+  FRA75mmMle1897AP = FRA75mmMle1897AP,
 })

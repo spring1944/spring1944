@@ -112,6 +112,7 @@ local sweunits =
 		"swepvkanm43_truck",
 		"swekanonm02_33_truck",
 		"swehaubitsm39_truck",
+		"swehaubitsm06_truck",
 		"swepbilm31",
 	},
 
@@ -124,6 +125,7 @@ local sweunits =
 		"swepvkanm43_truck",
 		"swekanonm02_33_truck",
 		"swehaubitsm39_truck",
+		"swepbilm31",
 		"swesavm43",
 	},
 

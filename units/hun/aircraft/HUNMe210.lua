@@ -8,7 +8,7 @@ local HUN_Me210_base = {
 	maxElevator			= 0.0042,
 	maxPitch			= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 16.6,
+	maxVelocity			= 17.6,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -94,9 +94,10 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	name			= "Me 210Ca-1 ground attack",
 	description		= "Ground attack aircraft",
+	cruisealt		= 1000,
 
 	customParams = {
-		maxammo				= 6,
+		maxammo				= 12,
 	},
 
 	weapons = {

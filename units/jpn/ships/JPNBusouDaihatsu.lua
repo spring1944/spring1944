@@ -1,12 +1,12 @@
 local JPN_BusouDaihatsu = ArmedBoat:New{
 	name					= "Busou Daihatsu Artillery Craft",
-	acceleration			= 0.9,
+	acceleration			= 0.09,
 	brakeRate				= 0.5,
 	buildCostMetal			= 2500,
 	maxDamage				= 3000,
 	iconType			= "artyboat",
 	maxReverseVelocity		= 0.685,
-	maxVelocity				= 1.1,
+	maxVelocity				= 1.7,
 	transportMass			= 2100,
 	transportSize			= 1,
 	turnRate				= 100,	
@@ -19,10 +19,6 @@ local JPN_BusouDaihatsu = ArmedBoat:New{
 		},
 	},
 	customparams = {
-		armor_front				= 6,
-		armor_rear				= 6,
-		armor_side				= 6,
-		armor_top				= 6,
 		deathanim = {
 			["z"] = {angle = 30, speed = 10},
 		},

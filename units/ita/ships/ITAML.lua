@@ -1,11 +1,11 @@
 local ITA_ML = InfantryLandingCraft:New{
 	name					= "Moto Lance",
-	acceleration			= 0.9,
+	acceleration			= 0.1,
 	brakeRate				= 0.5,
 	buildCostMetal			= 800,
 	maxDamage				= 1550,
 	maxReverseVelocity		= 0.685,
-	maxVelocity				= 2,
+	maxVelocity				= 2.2,
 	transportCapacity		= 22,
 	transportMass			= 1300,
 	turnRate				= 100,	

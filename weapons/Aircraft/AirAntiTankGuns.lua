@@ -36,9 +36,21 @@ local Ho40157mm = AirATGun:New{
 	cegflare           = "MEDIUM_MUZZLEFLASH",
   },
 }
+-- 57mm bofors (SWE)
+local bofors57mmAP = BK37mmAP:New{
+  name               = [[57mm Bofors Cannon]],
+  reloadtime         = 1.2,
+  range              = 1150,
+  soundStart         = [[PVKAN_M_43]],
+  damage = {
+    default            = 1425,
+	cegflare           = "MEDIUM_MUZZLEFLASH",
+  },
+}
 
 -- Return only the full weapons
 return lowerkeys({
   BK37mmAP = BK37mmAP,
+  bofors57mmAP = bofors57mmAP,
   Ho40157mm = Ho40157mm,
 })
