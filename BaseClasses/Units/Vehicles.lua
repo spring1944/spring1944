@@ -116,8 +116,8 @@ local PontoonTruck = Truck:New{
 	buildCostMetal		= 1400,
 	maxWaterDepth		= 70,
 	acceleration		= 0.2,
-	maxReverseVelocity	= 1.25,
-	maxVelocity			= 2.5,
+	maxReverseVelocity	= 0.5,
+	maxVelocity			= 1,
 	movementClass		= "HOVER_AmphibTruck",
 	script				= nil, -- TODO: atm they have individual copies
 }
