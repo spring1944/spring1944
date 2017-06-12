@@ -32,7 +32,7 @@ No email confirmation is required.
 
 ## Enter the room
 
-[Spring1944](http://spring1944.net) is currently under heavy development, so usually the best room to play is "S:1944 public development (2) & type /join #s44 in main chat", where the latest game version is deployed. Just move to Battlelist tab, and make double click on the appropiate room:
+[Spring1944](http://spring1944.net) is currently under heavy development. Hence, the best room to play online is "**S:1944 public development (2) & type /join #s44 in main chat**", where the latest game version is deployed. Just move to **Battlelist** tab, and make double click on the appropiate room:
 
 ![](docs/imgs/s44_dev_room.png)
 
@@ -46,7 +46,7 @@ The you successfully joined the game room! You can notice that your user has a w
 
 Now you must wait for other players. Sometimes it would take some time... Don't desesperate... it'll come, evetually...
 
-# Looking for help, or players
+# Looking for help, or contact other players
 
 [SpringLobby](http://springlobby.info/) has a IRC client that can be used to join the s44 channel, where usually some expert [Spring1944](http://spring1944.net) players and developers can be found. You can join such IRC channel by Tools/join channel:
 
@@ -56,13 +56,16 @@ To make [SpringLobby](http://springlobby.info/) autoconnect to the channel at st
 
 ![](docs/imgs/s44_irc_autojoin.png)
 
-# Engine missconfigured annoying bug
+After joining the channel, you can chat at tab **Chat**.
+
+# Executable not found annoying bug
 
 Some versions of [SpringLobby](http://springlobby.info/) have an annoying error that makes impossible to launch the game, reporting the following message in a constant basis:
 
 ![](docs/imgs/springlobby_annoyingbug.png)
+<small>The spring executable version "was not found at the set location", please re-check.</small>
 
-To fix that, just simply open the setting window, select an engine from left column, apply, close, and restart springlobby. If you are about to start an online game, don't worry, you can join the same room, and press Start button to join the game.
+To fix that, just simply restart springlobby. If you are about to start an online game, don't worry, after that you can join the same room, and press **Start** button to enter the game again.
 
 # Boosting graphics
 
