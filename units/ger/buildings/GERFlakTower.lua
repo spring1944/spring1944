@@ -7,7 +7,7 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
     corpse                  = "gerflakturmg_dead",
 	footprintX				= 10,
 	footprintZ				= 10,
-	maxDamage				= 106250,
+	maxDamage				= 25000,
 
 	transportCapacity		= 12,
 	usePieceCollisionVolumes	= true,
@@ -16,6 +16,8 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,
 
+    workerTime          = 50,
+    
 	customparams = {
 		mother				= true,
         children            = {
