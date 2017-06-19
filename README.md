@@ -1,8 +1,10 @@
 ![](docs/imgs/header.png)
 
-A real-time strategy game using the Spring engine, set in the final days of WWII. Think of it as a cross between Supreme Commander and Company of Heroes, designed by someone who played neither.
+**Spring:1944** is a free, open source (See [License.txt file](docs/License.txt)) WWII themed 3D multiplayer game based on the libre SpringRTS Engine. Our goal is to create a game that is as realistic as possible while still being fun and accessible to play. Games on average take 40 minutes and feature up to 6 factions battling to the last man standing. All factions are complete with several types of infantry, towed and self-propelled guns, normal and rocket artillery, tanks, aircraft and littoral naval assets. The game supports big matches with thousands of units and double digit player counts.
 
-It is free-software! See [License.txt file](docs/License.txt)
+Version 2.0 of the game lets you play either as one of the axis powers (Germany, Italy, Japan, Hungary), or one of the allies (Great Britain, Soviet Union, United States), or even the Sweeden neutral faction. Of course you can team all of them together as there is no limit to which factions can play in the same in-game alliance.
+
+**Spring:1944** is a full featured game with complex in-game mechanics. To learn more about them we have prepared commented replays, which can be watched [here](https://www.youtube.com/channel/UCuL4DSXgglXR_4LF53HZSZw).
 
 # How to play
 
@@ -30,9 +32,13 @@ When [SpringLobby](http://springlobby.info/) is already installed you can create
 
 No email confirmation is required.
 
-## Enter the room
+## Head to one of the rooms
 
-[Spring1944](http://spring1944.net) is currently under heavy development. Hence, the best room to play online is "**S:1944 public development (2) & type /join #s44 in main chat**", where the latest game version is deployed. Just move to **Battlelist** tab, and make double click on the appropiate room:
+Currently there are 2 official rooms to play [S:1944](http://spring1944.net):
+* S:1944 Stable! (World War Two game)
+* S:1944 public development (2) & type /join #s44 in main chat
+
+Since **Spring:1944** is currently under heavy development, probably you wanna head to "**S:1944 public development (2) & type /join #s44 in main chat**", where the latest game version is deployed. Just move to **Battlelist** tab, and make double click on the appropiate room:
 
 ![](docs/imgs/s44_dev_room.png)
 
@@ -40,36 +46,62 @@ No email confirmation is required.
 
 ![](docs/imgs/s44_dev_room_download.png)
 
-The you successfully joined the game room! You can notice that your user has a warning signal. Don't worry, the signal is vanishing when game and map is downloaded.
+And will join the game room! Be patient as SpringLobby downloads the appropriate engine and game versions and the required map. While waiting for the downloads to complete (about 300MB), you can check out our [old official website](http://spring1944.net), and the [in-progress new one](spring1944.github.io).
 
 ## Wait for other players
 
 Now you must wait for other players. Sometimes it would take some time... Don't desesperate... it'll come, evetually...
 
-# Looking for help, or contact other players
+## Looking for help, or contact other players
 
-[SpringLobby](http://springlobby.info/) has a IRC client that can be used to join the s44 channel, where usually some expert [Spring1944](http://spring1944.net) players and developers can be found. You can join such IRC channel by Tools/join channel:
+If you find yourself alone, come into our lobby chat channel and do not hesitate to ask for a game. To do that you can use [SpringLobby](http://springlobby.info/) IRC client, by clicking *Tools/Join Channel...*:
 
 ![](docs/imgs/s44_irc_join.png)
 
-To make [SpringLobby](http://springlobby.info/) autoconnect to the channel at start use Edit/Autojoin channels:
+To make [SpringLobby](http://springlobby.info/) autoconnect to the channel at start use *Edit/Autojoin channels*:
 
 ![](docs/imgs/s44_irc_autojoin.png)
 
 After joining the channel, you can chat at tab **Chat**.
 
-# Executable not found annoying bug
+We can usually be found every evening (GMT) in the development room where you can join us in testing two new factions: Hungary has been added to the axis team and Sweden is available to those who would rather not to pick sides in this war.
+
+# Notes:
+
+## Important links:
+
+* **Official websites**: [old](http://spring1944.net) and [new](spring1944.github.io)
+* **IRC**: (live help) freenode #spring1944 (irc.freenode.net) [click here (webchat)](https://webchat.freenode.net/?channels=%23spring1944)
+* **Matrix**: (live help) Matrix channel s44 [click here for webchat](https://riot.im/app/#/room/#s44:matrix.org)
+* **Forum**: [springrts community subforum](https://springrts.com/phpbb/viewforum.php?f=45) and [new dedicated forum](https://forum.spring1944.tk/)
+* **Wiki**: [main](http://spring1944.net/wiki/index.php?title=Main_Page) and [new](https://github.com/spring1944/spring1944/wiki)
+* **Github**: [link](https://github.com/spring1944)
+* **Game demo repository**: [here](http://replays.springrts.com/browse/?game_pref=5) and [here](https://think.nsupdate.info/s44/autohosts/demos)
+
+## Minimum system requirements:
+
+* Mid-range x86 64-bit machine built in this decade.
+* GNU/Linux, Windows or (depending on your skill level) Mac OS X.
+
+## FAQ:
+
+* You can of course use other lobbies like [Weblobby](http://weblobby.springrts.com/) or [flobby](https://github.com/cleanrock/flobby) (GNU/Linux only).
+* If you cannot zoom, type /taview into in-game chat or press ctrl+f2.
+* To players using Radeon cards: if you experience crashes, try turning off "forced shaders" in springsettings.
+
+## Executable not found annoying bug
 
 Some versions of [SpringLobby](http://springlobby.info/) have an annoying error that makes impossible to launch the game, reporting the following message in a constant basis:
 
 ![](docs/imgs/springlobby_annoyingbug.png)
-<small>The spring executable version "was not found at the set location", please re-check.</small>
+
+*The spring executable version "was not found at the set location", please re-check.*
 
 To fix that, just simply restart springlobby. If you are about to start an online game, don't worry, after that you can join the same room, and press **Start** button to enter the game again.
 
-# Boosting graphics
+## Boosting graphics
 
-The most important [Spring](https://springrts.com) setting can be edited directly at [SpringLobby](http://springlobby.info/), by clicking on Edit/Spring settings:
+The most relevant [Spring](https://springrts.com) setting can be edited directly at [SpringLobby](http://springlobby.info/), by clicking on Edit/Spring settings:
 
 ![](docs/imgs/spring_settings.png)
 
