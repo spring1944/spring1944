@@ -106,7 +106,7 @@ However, some additional postprocessing effects can be enabled/disabled directly
 ## Other:
 
 * You can of course use other lobbies like [Weblobby](http://weblobby.springrts.com/) or [flobby](https://github.com/cleanrock/flobby) (GNU/Linux only).
-* If you cannot zoom, type /taview into in-game chat or press ctrl+f2.
+* If you cannot zoom, type /viewta into in-game chat or press ctrl+f2.
 * To players using Radeon cards: if you experience crashes, try turning off "forced shaders" in springsettings.
 
 # Developers guide
