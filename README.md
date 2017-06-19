@@ -8,7 +8,7 @@ Version 2.0 of the game lets you play either as one of the axis powers (Germany,
 
 # How to play
 
-4 simple steps are required to start playing [Spring1944](http://spring1944.net)...
+4 simple steps are required to start playing **Spring:1944...
 
 ## Install springlobby
 
@@ -34,7 +34,7 @@ No email confirmation is required.
 
 ## Head to one of the rooms
 
-Currently there are 2 official rooms to play [S:1944](http://spring1944.net):
+Currently there are 2 official rooms to play **S:1944**
 * S:1944 Stable! (World War Two game)
 * S:1944 public development (2) & type /join #s44 in main chat
 
@@ -46,11 +46,28 @@ Since **Spring:1944** is currently under heavy development, probably you wanna h
 
 ![](docs/imgs/s44_dev_room_download.png)
 
-And will join the game room! Be patient as SpringLobby downloads the appropriate engine and game versions and the required map. While waiting for the downloads to complete (about 300MB), you can check out our [old official website](http://spring1944.net), and the [in-progress new one](spring1944.github.io).
+And will join the game room! Be patient as SpringLobby downloads the appropriate engine and game versions and the required map. While waiting for the downloads to complete (about 300MB), you can check out our [old official website](http://spring1944.net), and the [in-progress new one](https://spring1944.github.io).
 
 ## Wait for other players
 
 Now you must wait for other players. Sometimes it would take some time... Don't desesperate... it'll come, evetually...
+
+# Notes:
+
+## Important links:
+
+* **Official websites**: [old](http://spring1944.net) and [new](https://spring1944.github.io)
+* **IRC**: (live help) freenode #spring1944 (irc.freenode.net) [click here (webchat)](https://webchat.freenode.net/?channels=%23spring1944)
+* **Matrix**: (live help) Matrix channel s44 [click here for webchat](https://riot.im/app/#/room/#s44:matrix.org)
+* **Forum**: [springrts community subforum](https://springrts.com/phpbb/viewforum.php?f=45) and [new dedicated forum](https://forum.spring1944.tk/)
+* **Wiki**: [main](http://spring1944.net/wiki/index.php?title=Main_Page) and [new](https://github.com/spring1944/spring1944/wiki)
+* **Github**: [link](https://github.com/spring1944)
+* **Game demo repository**: [here](http://replays.springrts.com/browse/?game_pref=5) and [here](https://think.nsupdate.info/s44/autohosts/demos)
+
+## Minimum system requirements:
+
+* Mid-range x86 64-bit machine built in this decade.
+* GNU/Linux, Windows or (depending on your skill level) Mac OS X.
 
 ## Looking for help, or contact other players
 
@@ -65,29 +82,6 @@ To make [SpringLobby](http://springlobby.info/) autoconnect to the channel at st
 After joining the channel, you can chat at tab **Chat**.
 
 We can usually be found every evening (GMT) in the development room where you can join us in testing two new factions: Hungary has been added to the axis team and Sweden is available to those who would rather not to pick sides in this war.
-
-# Notes:
-
-## Important links:
-
-* **Official websites**: [old](http://spring1944.net) and [new](spring1944.github.io)
-* **IRC**: (live help) freenode #spring1944 (irc.freenode.net) [click here (webchat)](https://webchat.freenode.net/?channels=%23spring1944)
-* **Matrix**: (live help) Matrix channel s44 [click here for webchat](https://riot.im/app/#/room/#s44:matrix.org)
-* **Forum**: [springrts community subforum](https://springrts.com/phpbb/viewforum.php?f=45) and [new dedicated forum](https://forum.spring1944.tk/)
-* **Wiki**: [main](http://spring1944.net/wiki/index.php?title=Main_Page) and [new](https://github.com/spring1944/spring1944/wiki)
-* **Github**: [link](https://github.com/spring1944)
-* **Game demo repository**: [here](http://replays.springrts.com/browse/?game_pref=5) and [here](https://think.nsupdate.info/s44/autohosts/demos)
-
-## Minimum system requirements:
-
-* Mid-range x86 64-bit machine built in this decade.
-* GNU/Linux, Windows or (depending on your skill level) Mac OS X.
-
-## FAQ:
-
-* You can of course use other lobbies like [Weblobby](http://weblobby.springrts.com/) or [flobby](https://github.com/cleanrock/flobby) (GNU/Linux only).
-* If you cannot zoom, type /taview into in-game chat or press ctrl+f2.
-* To players using Radeon cards: if you experience crashes, try turning off "forced shaders" in springsettings.
 
 ## Executable not found annoying bug
 
@@ -108,6 +102,12 @@ The most relevant [Spring](https://springrts.com) setting can be edited directly
 However, some additional postprocessing effects can be enabled/disabled directly in game, like "Screen Space Ambient Occlusion" and "Color Correction". Just press F11 while in game, and click over them to enable/disable ("Screen Space Ambient Occlusion" may require to quit and restart the game):
 
 ![](docs/imgs/postprocessing_effects.png)
+
+## Other:
+
+* You can of course use other lobbies like [Weblobby](http://weblobby.springrts.com/) or [flobby](https://github.com/cleanrock/flobby) (GNU/Linux only).
+* If you cannot zoom, type /taview into in-game chat or press ctrl+f2.
+* To players using Radeon cards: if you experience crashes, try turning off "forced shaders" in springsettings.
 
 # Developers guide
 
