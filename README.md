@@ -75,8 +75,7 @@ The most important [Spring](https://springrts.com) setting can be edited directl
 
 However, some additional postprocessing effects can be enabled/disabled directly in game, like "Screen Space Ambient Occlusion" and "Color Correction". Just press F11 while in game, and click over them to enable/disable ("Screen Space Ambient Occlusion" may require to quit and restart the game):
 
-<img src="docs/imgs/postprocessing_effects_before.png" style="width:40%;"/> <img src="docs/imgs/postprocessing_effects_after.png" style="width:40%;"/>
-![](docs/imgs/postprocessing_effects_before.png) ![](docs/imgs/postprocessing_effects_after.png)
+![](docs/imgs/postprocessing_effects.png)
 
 # Developers guide
 
