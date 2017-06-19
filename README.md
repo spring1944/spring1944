@@ -50,7 +50,7 @@ And will join the game room! Be patient as SpringLobby downloads the appropriate
 
 ## Wait for other players
 
-Now you must wait for other players. Sometimes it would take some time... Don't desesperate... it'll come, evetually...
+Now you must wait for other players. Sometimes it would take some time... Don't desesperate... it'll come, eventually...
 
 # Notes:
 
