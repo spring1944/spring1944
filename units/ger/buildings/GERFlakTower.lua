@@ -7,8 +7,11 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
     corpse                  = "gerflakturmg_dead",
 	footprintX				= 10,
 	footprintZ				= 10,
-	maxDamage				= 25000,
+	maxDamage				= 12500,
 
+	energyMake				= 50,
+	metalMake				= 50,
+	
 	transportCapacity		= 12,
 	usePieceCollisionVolumes	= true,
 
