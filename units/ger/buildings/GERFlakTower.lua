@@ -9,6 +9,8 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
 	footprintZ				= 10,
 	maxDamage				= 12500,
 
+	idleAutoHeal			= 30,
+	
 	energyMake				= 50,
 	metalMake				= 50,
 	
@@ -37,6 +39,7 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
             "GERMAL_Turret_Quad20mm",
             "GERMAL_Turret_Quad20mm",
         },
+		supplyrange			= 1000,
 	},
 
 	--[[
