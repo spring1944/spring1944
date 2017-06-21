@@ -13,6 +13,8 @@ return {
     hq_los = 512,
     hq_range = 1024, -- Range of all 4 lasers
     hq_damage = 100, -- Damage for each of the 4 lasers with beamtime 0.25 and reload time 1.0
+	hq_storage_metal = 100000,	-- Metal storage
+	hq_storage_energy = 100000,	-- Energy storage
     unit_bonus_multiplier = 0.25,
     warning = "Ready or not here they come!",
  
