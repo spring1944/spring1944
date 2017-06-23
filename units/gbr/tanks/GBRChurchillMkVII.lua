@@ -38,6 +38,7 @@ local GBRChurchillMkVII = HeavyTank:New{
 		maxammo				= 14,
 		turretturnspeed		= 24, -- 15s for 360
 		maxvelocitykmh		= 24,
+		normaltex			= "unittextures/GBRChurchillMkVII_normals.dds",
 	},
 }
 

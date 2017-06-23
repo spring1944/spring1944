@@ -3,6 +3,9 @@ local GBR_Bofors_Truck = AAGunTractor:New{
 	corpse					= "GBRBedfordTruck_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local GBR_Bofors_Stationary = AAGun:New{
@@ -16,6 +19,9 @@ local GBR_Bofors_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

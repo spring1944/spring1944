@@ -2,6 +2,9 @@ local BinocSpot = Null:New{
 	airsightdistance			= 1000,
 	sightDistance				= 200,
 	yardmap						= "y",
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local Flag = Null:New{
@@ -21,6 +24,7 @@ local Flag = Null:New{
 	customParams = {
 		dontCount			= true,
 		flag				= true,
+		normaltex			= "",
 	},
 }
 
@@ -30,11 +34,17 @@ local Buoy = Flag:New{ -- One day...
 	floater				= true,
 	objectName			= "Gen/buoy.S3O",
 	canMove 			= false, -- for some reason cannot be true or it won't float?
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local SmallTankShelter = TankShelter:New{
 	name				= "Tank Shelter (Small)",
 	transportMass		= 2100,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
@@ -63,6 +73,9 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 
 	customParams = {
 		gm					= 1,
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

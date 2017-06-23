@@ -5,6 +5,7 @@ local GBR_Auster = Recon:New{
 	customParams = {
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
+		normaltex			= "unittextures/GBRAuster1_normals.dds",
 	},
 }
 

@@ -19,6 +19,7 @@ local GBR_LZ = Building:New{
 	customParams = {
 		hiddenbuilding	= true,
 		dontCount		= true,
+		normaltex		= "",
 	}
 }
 

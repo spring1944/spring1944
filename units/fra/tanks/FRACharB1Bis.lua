@@ -57,6 +57,7 @@ local FRACharB1Bis = MediumTank:New{
 			"FRA_75mmSA35_Turret",
 		},
 		customanims			= "charb1bis",
+		normaltex			= "",
 	},
 }
 
@@ -79,6 +80,7 @@ local FRA_75mmSA35_Turret = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "",
     },
 }
 

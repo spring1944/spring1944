@@ -20,6 +20,7 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 		armor_side			= 44,
 		armor_top			= 15,
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/GBRKangaroo_normals.dds",
 	},
 }
 

@@ -14,6 +14,9 @@ local GBR_Barracks = Barracks:New{
 									oyyo 
 									yyyy 
 									yyyy]],
+	customParams = {
+		normaltex		= "unittextures/GBRBarracks_normals.dds",
+	},
 }
 
 return lowerkeys({

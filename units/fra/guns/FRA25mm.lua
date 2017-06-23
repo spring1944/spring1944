@@ -5,6 +5,9 @@ local FRA_25mmAT_Truck = ATGunTractor:New{
 	trackOffset				= 4,
 	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmMle1934_Truck.s3o",
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local FRA_25mmAT_Stationary = LightATGun:New{
@@ -18,6 +21,9 @@ local FRA_25mmAT_Stationary = LightATGun:New{
 			name				= "Canon_25_SA_34_AP",
 		},
 	},
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local FRA_25mmAA_Truck = AAGunTractor:New{
@@ -27,6 +33,9 @@ local FRA_25mmAA_Truck = AAGunTractor:New{
 	trackOffset				= 4,
 	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmAA_Truck.s3o",
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local FRA_25mmAA_Stationary = AAGun:New{
@@ -41,6 +50,9 @@ local FRA_25mmAA_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "Hotchkiss25mmHE",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 
