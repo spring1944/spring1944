@@ -7,6 +7,10 @@
   footprintZ=2;
   object=SWE/SWEVolvoHBT_Dead.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
 [SWEVolvoHBT_Wreck] {
@@ -18,5 +22,9 @@
   footprintZ=2;
   object=SWE/SWEVolvoHBT_Wreck.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
