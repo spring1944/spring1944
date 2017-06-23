@@ -7,5 +7,9 @@
   footprintZ=5;
   object=US/USVehicleYard.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 

@@ -7,5 +7,9 @@
   footprintZ=3;
   object=USGMCTruck_Destroyed.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
