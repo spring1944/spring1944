@@ -9,6 +9,10 @@
   hitdensity=70;
   object=HUN/HUNPAM21_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
 [HUNPM_dead] {
@@ -22,4 +26,8 @@
   hitdensity=70;
   object=HUN/HUNPM_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }

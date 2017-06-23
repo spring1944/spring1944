@@ -9,5 +9,9 @@
   object=HUN/HUNTrooper_dead.S3O;
   reclaimable=0;
   smoketime=0;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
