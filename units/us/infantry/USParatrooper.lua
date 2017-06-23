@@ -5,6 +5,7 @@ local USParatrooper = Null:New{
 	objectName					= "US/USParatrooper.s3o",
 	customParams = {
 		damageGroup			= "infantry",
+		normaltex			= "",
 	},
 }
 

@@ -7,6 +7,7 @@ local US_L4 = Recon:New{
 	customParams = {
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
+		normaltex			= "",
 	},
 }
 

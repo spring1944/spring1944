@@ -37,6 +37,7 @@ local USM8Greyhound = ArmouredCar:New{
 		maxammo				= 15,
 		turretturnspeed		= 12, -- manual
 		maxvelocitykmh		= 89,
+		normaltex			= "unittextures/USM8Greyhound_normals.dds",
 	}
 }
 

@@ -2,6 +2,9 @@ local US_GMCTruckBase = Truck:New{
 	name					= "GMC 2.5t Truck",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local US_GMCTruck = US_GMCTruckBase:New(TransportTruck)
@@ -15,6 +18,9 @@ local US_DUKW = US_GMCTruck:New(Amphibian):New{
 	collisionVolumeOffsets	= [[0 -3 0]],
 	corpse					= "usgmctruck_destroyed", -- TODO: DUKW corpse
 	maxDamage				= 650,
+	customParams = {
+		normaltex			= "unittextures/USDUKW1_normals.dds",
+	},
 }
 
 return lowerkeys({
