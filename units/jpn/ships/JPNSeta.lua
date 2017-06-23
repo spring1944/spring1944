@@ -30,7 +30,7 @@ local JPN_Seta = ArmedBoat:New{
 				offset = { 0, 0, 10 },
 				scale = { 1, 1, 0.65 }
 			}
-		}
+		},
 		--[[deathanim = {
 			["z"] = {angle = -10, speed = 45},
 		},]]
