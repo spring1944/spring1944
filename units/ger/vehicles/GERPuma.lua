@@ -35,6 +35,7 @@ local GERPuma = HeavyArmouredCar:New{
 		turretturnspeed		= 12, -- manual
 		reversemult			= 0.75,
 		maxvelocitykmh		= 80,
+		normaltex			= "unittextures/GERPuma_normals.dds",
 	}
 }
 

@@ -23,6 +23,7 @@ local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 		maxammo				= 15,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 46,
+		normaltex			= "",
 	},
 }
 

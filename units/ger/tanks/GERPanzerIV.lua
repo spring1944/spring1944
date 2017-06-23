@@ -36,6 +36,7 @@ local GERPanzerIV = MediumTank:New{
 		maxammo				= 17,
 		turretturnspeed		= 16, -- 22.5s for 360
 		maxvelocitykmh		= 25,
+		normaltex			= "",
 	},
 }
 

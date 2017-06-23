@@ -1,5 +1,8 @@
 local HUNInf = {
 	maxDamageMul		= 1.0,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local HUN_HQEngineer = EngineerInf:New(HUNInf):New{

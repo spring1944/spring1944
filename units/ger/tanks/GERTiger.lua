@@ -36,6 +36,7 @@ local GERTiger = HeavyTank:New{
 		maxammo				= 17,
 		turretturnspeed		= 10, -- 60s for 360
 		maxvelocitykmh		= 45.4,
+		normaltex			= "",
 	},
 }
 

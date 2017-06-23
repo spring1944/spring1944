@@ -12,6 +12,7 @@ local GER_Fw190G = FighterBomber:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
+		normaltex			= "",
 	},
 
 	weapons = {

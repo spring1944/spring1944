@@ -16,6 +16,7 @@ local HUN_SchSturmboot = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+		normaltex			= "",
 	},
 }
 

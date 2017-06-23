@@ -14,6 +14,9 @@ local GER_Barracks = Barracks:New{
 									yyyyy 
 									yyyyy 
 									yyyyy]],
+	customParams = {
+		normaltex			= "unittextures/GERBarracks_normals.dds",
+	},
 }
 
 local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
@@ -26,6 +29,9 @@ local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
 									ooyyy 
 									ooyyy 
 									ooyyy]],
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

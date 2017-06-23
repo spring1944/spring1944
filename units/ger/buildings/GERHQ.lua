@@ -21,6 +21,9 @@ local GER_HQ = HQ:New(Bunker):New{
 			name				= "MG34",
 		},
 	},
+	customParams = {
+		normaltex			= "unittextures/GERHQBunker_normals.dds",
+	},
 }
 
 return lowerkeys({

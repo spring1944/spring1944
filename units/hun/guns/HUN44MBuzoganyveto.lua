@@ -3,6 +3,9 @@ local HUN_44M_HeavyAT_Truck = ATGunTractor:New{
 	corpse					= "HUNKfz69_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local HUN_44MHeavyAT_Stationary = LightATGun:New{
@@ -22,6 +25,9 @@ local HUN_44MHeavyAT_Stationary = LightATGun:New{
 			maxAngleDif			= 360,	-- this has full rotation
 			onlyTargetCategory = "HARDVEH OPENVEH SOFTVEH SHIP LARGESHIP",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 	

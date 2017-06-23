@@ -3,6 +3,9 @@ local HUN_BoforsM36_Truck = AAGunTractor:New{
 	corpse					= "HUN38MBotond_Abandoned",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local HUN_BoforsM36_Stationary = AAGun:New{
@@ -16,6 +19,9 @@ local HUN_BoforsM36_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 
