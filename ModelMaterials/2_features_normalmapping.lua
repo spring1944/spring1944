@@ -112,6 +112,9 @@ for i, udef in pairs(FeatureDefs) do
   if (udef.customParams.normaltex and VFS.FileExists(udef.customParams.normaltex)) then
     unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = udef.customParams.normaltex}
 
+  elseif (udef.customParams.normaltex == "") then
+    unitMaterials[udef.name] = {"normalModelledS3o"}
+
   elseif (udef.model.type == "s3o") then
     local modelpath = udef.model.path
     if (modelpath and VFS.FileExists(modelpath)) then
