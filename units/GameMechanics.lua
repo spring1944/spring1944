@@ -73,8 +73,6 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 
 	customParams = {
 		gm					= 1,
-	},
-	customParams = {
 		normaltex			= "",
 	},
 }
