@@ -11,6 +11,6 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "",
+		normaltex = "";
 		}
 }

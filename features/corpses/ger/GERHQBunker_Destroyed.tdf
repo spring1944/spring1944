@@ -9,7 +9,7 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "unittextures/GERHQBunker_normals.dds",
+		normaltex = "unittextures/GERHQBunker_normals.dds";
 		}
 }
 

@@ -15,7 +15,7 @@
 		{
 		cover_strength=2;
 		cover_radius=60;
-		normaltex = "unittextures/RUSIS2_normals.dds",
+		normaltex = "unittextures/RUSIS2_normals.dds";
 		}
 }
 
@@ -37,7 +37,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=45;
-		normaltex = "",
+		normaltex = "";
 		}
 }
 

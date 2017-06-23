@@ -9,7 +9,7 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "",
+		normaltex = "";
 		}
 }
 
@@ -24,7 +24,7 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "",
+		normaltex = "";
 		}
 }
 

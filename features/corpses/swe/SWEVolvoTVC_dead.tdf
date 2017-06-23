@@ -9,7 +9,7 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "",
+		normaltex = "";
 		}
 }
 
@@ -25,7 +25,7 @@
 	[customParams]
 		{
 		ceg_created=Burning;
-		normaltex = "",
+		normaltex = "";
 		}
 
 }

@@ -16,7 +16,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
-		normaltex = "unittextures/GBRAS51_normals.dds",
+		normaltex = "unittextures/GBRAS51_normals.dds";
 		}
 }
 
@@ -37,7 +37,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
-		normaltex = "unittextures/GBRAS51_normals.dds",
+		normaltex = "unittextures/GBRAS51_normals.dds";
 		}
 }
 

@@ -14,7 +14,7 @@
 		{
 		cover_strength=2;
 		cover_radius=35;
-		normaltex = "",
+		normaltex = "";
 		}
 }
 

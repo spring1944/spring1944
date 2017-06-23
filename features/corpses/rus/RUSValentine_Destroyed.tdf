@@ -12,7 +12,7 @@
 	collisionVolumeOffsets=0 -5 0;
 	[customParams]
 		{
-		normaltex = "unittextures/RUSValentine_normals.dds",
+		normaltex = "unittextures/RUSValentine_normals.dds";
 		}
 }
 
@@ -33,7 +33,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=40;
-		normaltex = "",
+		normaltex = "";
 		}
 }
 
@@ -54,6 +54,6 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=40;
-		normaltex = "",
+		normaltex = "";
 		}
 }
