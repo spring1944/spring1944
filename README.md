@@ -39,7 +39,7 @@ Currently there are 2 official rooms to play **S:1944**
 * S:1944 Stable! (World War Two game) [2]
 * S:1944 Stable! (World War Two game) [3]
 
-Please, head to one of them just moving to **Battlelist** tab, and make double click on the appropiate room:
+Please, head to one of them just moving to **Battlelist** tab, and making double click on the appropiate room:
 
 ![](docs/imgs/s44_dev_room.png)
 
