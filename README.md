@@ -35,10 +35,11 @@ No email confirmation is required.
 ## Head to one of the rooms
 
 Currently there are 2 official rooms to play **S:1944**
-* S:1944 Stable! (World War Two game)
-* S:1944 public development (2) & type /join #s44 in main chat
 
-Since **Spring:1944** is currently under heavy development, probably you wanna head to "**S:1944 public development (2) & type /join #s44 in main chat**", where the latest game version is deployed. Just move to **Battlelist** tab, and make double click on the appropiate room:
+* S:1944 Stable! (World War Two game) [2]
+* S:1944 Stable! (World War Two game) [3]
+
+Please, head to one of them just moving to **Battlelist** tab, and making double click on the appropiate room:
 
 ![](docs/imgs/s44_dev_room.png)
 
