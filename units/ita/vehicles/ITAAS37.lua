@@ -15,6 +15,7 @@ local ITAAS37 = HalfTrack:New{
 		armor_side				= 6,
 		armor_top				= 0,
 		maxvelocitykmh			= 52,
+		normaltex			= "",
 	},
 	
 	weapons = {

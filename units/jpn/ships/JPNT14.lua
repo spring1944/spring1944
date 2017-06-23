@@ -27,6 +27,7 @@ local JPNT14 = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = 45, speed = 15},
 		},
+		normaltex			= "",
 	},
 }
 
@@ -49,6 +50,7 @@ local JPNT14_Turret_25mm = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
+		normaltex			= "",
     },
 }
 

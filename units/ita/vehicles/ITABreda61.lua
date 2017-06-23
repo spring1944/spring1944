@@ -8,6 +8,9 @@ local ITA_Breda61 = EngineerVehicle:New{
 	maxVelocity				= 3,
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

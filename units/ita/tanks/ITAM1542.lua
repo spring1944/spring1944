@@ -44,6 +44,7 @@ local ITAM1542 = LightTank:New{
 		maxammo				= 25,
 		maxvelocitykmh		= 40,
 		weapontoggle		= "priorityAPHEATHE",
+		normaltex			= "",
 	},
 }
 

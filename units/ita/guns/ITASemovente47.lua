@@ -27,6 +27,7 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 18,
 		weapontoggle		= false,
 		maxvelocitykmh		= 42.3,
+		normaltex			= "",
 	},
 }
 

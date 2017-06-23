@@ -7,6 +7,7 @@ local JPN_Ki76 = Recon:New{
 	customParams = {
 		enginesound		= "po2-",
 		enginesoundnr	= 11,
+		normaltex			= "",
 	},
 }
 

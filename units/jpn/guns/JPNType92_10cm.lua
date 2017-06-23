@@ -3,6 +3,9 @@ local JPN_Type92_10cm_Truck = LongRangeGunTractor:New{
 	corpse					= "JPNType98_RoKe_Destroyed", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 17,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local JPN_Type92_10cm_Stationary = HGun:New{
@@ -15,6 +18,9 @@ local JPN_Type92_10cm_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "Type92_10cmSmoke",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

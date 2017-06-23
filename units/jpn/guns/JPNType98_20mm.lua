@@ -4,6 +4,9 @@ local JPN_Type98_20mm_Truck = AAGunTractor:New{
 	corpse					= "JPNIsuzuTX40_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local JPN_Type98_20mm_Stationary = AAGun:New{
@@ -17,6 +20,9 @@ local JPN_Type98_20mm_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "Type9820mmHE",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

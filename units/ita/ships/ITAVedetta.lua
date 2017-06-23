@@ -26,6 +26,7 @@ local ITA_Vedetta = ArmedBoat:New{
 		--[[deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+		normaltex			= "",
 	},
 }
 
@@ -44,6 +45,7 @@ local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
+		normaltex			= "",
 	},
 }
 
@@ -69,6 +71,7 @@ local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
 		elevationspeed			= 60,
 		facing					= 2,
 		aaweapon				= 1,
+		normaltex			= "",
 	},
 }
 

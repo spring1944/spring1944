@@ -18,6 +18,7 @@ local JPN_Ki102 = AttackFighter:New(ArmouredPlane):New{
 		enginesoundnr		= 20,
 		maxammo				= 18,
 		maxFuel				= 160,
+		normaltex			= "",
 	},
 
 	weapons = {
