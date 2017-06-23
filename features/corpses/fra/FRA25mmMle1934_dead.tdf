@@ -7,5 +7,9 @@
   footprintZ=2;
   object=FRA/FRA25mmMle1934_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 

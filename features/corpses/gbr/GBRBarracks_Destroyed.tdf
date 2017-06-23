@@ -7,5 +7,9 @@
   footprintZ=6;
   object=GBRBarracks_Destroyed.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "unittextures/GERBarracks_normals.dds",
+		}
 }
 
