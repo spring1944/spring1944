@@ -7,5 +7,9 @@
   footprintZ=2;
   object=GER/GER10sK18_Dead.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
