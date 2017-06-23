@@ -8,6 +8,7 @@ local SWE_S14B = Recon:New{
 	customParams = {
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
+		normaltex			= "",
 	},
 	
 	weapons = {

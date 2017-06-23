@@ -3,6 +3,9 @@ local SWEHaubitsM39_Truck = HGunTractor:New{
 	corpse					= "SWEVolvoHBT_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local SWEHaubitsM39_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local SWEHaubitsM39_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "leFH18smoke",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

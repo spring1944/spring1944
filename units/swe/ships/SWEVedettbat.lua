@@ -33,6 +33,7 @@ local SWE_Vedettbat = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -53,6 +54,7 @@ local SWEVedettbat_turret_57mm_front = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
+		normaltex			= "",
     },
 }
 local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
@@ -63,6 +65,7 @@ local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		normaltex			= "",
     },
 }
 
@@ -90,6 +93,7 @@ local SWEVedettbat_turret_25mm_rear = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
+		normaltex			= "",
     },
 }
 

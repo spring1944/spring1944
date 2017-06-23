@@ -2,6 +2,9 @@ local SWE_ScaniaVabisF11Base = Truck:New{
 	name					= "Scania Vabis F11 Truck",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local SWE_ScaniaVabisF11 = SWE_ScaniaVabisF11Base:New(TransportTruck)
@@ -12,6 +15,9 @@ local SWE_BarracksTruck = SWE_ScaniaVabisF11Base:New{
 	buildCostMetal				= 1500,
 	description	= "Mobile Barracks",
 	iconType		= "truck_barracks",
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

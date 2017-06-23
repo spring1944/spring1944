@@ -28,6 +28,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		armor_top			= 0,
 		maxammo				= 19,
 		maxvelocitykmh		= 60,
+		normaltex			= "",
 	}
 }
 

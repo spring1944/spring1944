@@ -13,6 +13,7 @@ local SWE_VolvoTVC = Truck:New{
 	customParams = {
 		dontCount				= false, -- override truck as TVC can be a factory!
 		maxvelocitykmh			= 52,
+		normaltex			= "",
 	}
 }
 

@@ -11,6 +11,7 @@ local SWE_HQ = HQ:New{
 								ooyyyyo 
 								ooyyyyo 
 								ooyyyyo]],
+		normaltex			= "",
 }
 
 return lowerkeys({

@@ -9,6 +9,7 @@ local StrvM42Base = {
 		armor_rear			= 23,
 		armor_side			= 30,
 		armor_top			= 9,
+		normaltex			= "",
 	},
 }
 

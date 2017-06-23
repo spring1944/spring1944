@@ -27,6 +27,7 @@ local SWEStrvM37 = Tankette:New{
 		armor_side			= 10,
 		armor_top			= 4,
 		maxvelocitykmh		= 60,
+		normaltex			= "",
 	},
 }
 

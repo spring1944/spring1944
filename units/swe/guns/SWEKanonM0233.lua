@@ -4,6 +4,9 @@ local SWEKanonM02_33_Truck = FGGunTractor:New{
 	corpse					= "SWEScaniaVabisF11_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local SWEKanonM02_33_Stationary = FGGun:New{
@@ -18,6 +21,9 @@ local SWEKanonM02_33_Stationary = FGGun:New{
 			name	= "Ansaldo75mmL34AP",
 		},
 	},	
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

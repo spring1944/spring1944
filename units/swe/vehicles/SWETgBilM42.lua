@@ -12,6 +12,7 @@ local SWETgBilM42 = HalfTrack:New{
 		armor_side				= 8,
 		armor_top				= 0,
 		maxvelocitykmh			= 70,
+		normaltex			= "",
 	},
 }
 

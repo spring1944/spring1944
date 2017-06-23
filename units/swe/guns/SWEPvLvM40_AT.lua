@@ -9,6 +9,7 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	minCloakDistance	= 220,
 	customParams = {
 		scriptAnimation	= "pvlvm40",
+		normaltex			= "",
 	},
 	weapons = {
 		[1] = { -- AP
@@ -34,6 +35,9 @@ local SWEPvLvM40_AA_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "boforsm40_20mmhe",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 
