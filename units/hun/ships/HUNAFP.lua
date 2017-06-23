@@ -192,7 +192,7 @@ local HUNAFP_turret_20mm_left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing					= 2,
 		normaltex			= "",
-    },
+	},
 }
 
 local HUNAFP_turret_20mm_right = HUNAFP_turret_20mm_left:New{
@@ -203,6 +203,8 @@ local HUNAFP_turret_20mm_right = HUNAFP_turret_20mm_left:New{
 		[2] = {
 			mainDir		= [[-1 0 -1]],
 		},		
+	},
+	customparams = {
 		normaltex			= "",
 	},
 }

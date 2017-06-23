@@ -160,7 +160,7 @@ local HUNPAM21_turret_mg = EnclosedBoatTurret:New{
 		barrelrecoildist		= 0,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
--- 		normaltex			= "",
+ 		normaltex			= "",
 	},
 }
 
