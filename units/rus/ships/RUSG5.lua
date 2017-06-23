@@ -31,6 +31,7 @@ local RUS_G5 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -48,6 +49,7 @@ local RUS_G5_Turret_M_8 = OpenBoatTurret:New{
 	    maxammo					= 1,
 		turretturnspeed			= 15,
 		elevationspeed			= 5,
+		normaltex			= "",
     },
 }
 
@@ -65,6 +67,7 @@ local RUS_G5_Turret_DshK = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
+		normaltex			= "",
 	},
 }
 

@@ -11,6 +11,7 @@ local RUS_Po2 = Recon:New{
 			enter_map		= 'sounds/rus/air/po2/rus_air_po2_select.wav',
 			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
 		},
+		normaltex			= "",
 	},
 }
 
@@ -21,6 +22,7 @@ local RUS_Po2Partisan = RUS_Po2:Clone("RUSPo2"):New{
 	customParams = {
 		troopdropper	= 1,
 		deposit			= 0,
+		normaltex			= "",
 	},
 	
 	weapons = {

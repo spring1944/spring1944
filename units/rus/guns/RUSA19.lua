@@ -4,6 +4,9 @@ local RUS_A19_Truck = LongRangeGunTractor:New{
 	corpse					= "RUSYa12_abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local RUS_A19_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local RUS_A19_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "A19Smoke",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

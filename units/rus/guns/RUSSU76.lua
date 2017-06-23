@@ -27,6 +27,7 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 		maxvelocitykmh		= 45,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount	= 3,
+		normaltex			= "unittextures/RUSSU76_normals.dds",
 	},
 }
 
