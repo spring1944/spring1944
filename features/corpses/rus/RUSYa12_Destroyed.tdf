@@ -7,6 +7,10 @@
   footprintZ=2;
   object=RUSYa12.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
 [rusya12_destroyed] {
@@ -18,5 +22,9 @@
   footprintZ=2;
   object=RUSYa12_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 

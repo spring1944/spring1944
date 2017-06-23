@@ -9,5 +9,9 @@
   hitdensity=70;
   object=RUSPr161_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 

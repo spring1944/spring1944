@@ -8,6 +8,10 @@
   object=RUSTrooper_dead.S3O;
   reclaimable=0;
   smoketime=0;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
 [ruspartisan_dead] {
@@ -20,4 +24,8 @@
   object=Partisan_dead.S3O;
   reclaimable=0;
   smoketime=0;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }

@@ -9,5 +9,9 @@
   hitdensity=50;
   object=RUSTender15t_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "",
+		}
 }
 
