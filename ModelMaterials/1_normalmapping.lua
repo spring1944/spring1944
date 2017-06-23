@@ -136,13 +136,13 @@ for i, udef in pairs(UnitDefs) do
       local normaltex = FindNormalmap(tex1,tex2)
       if (normaltex and not unitMaterials[udef.name]) then
         Spring.Log('Custom Unit Shaders',
-                   LOG.WARNING,
-                   'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
         unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
       else
         Spring.Log('Custom Unit Shaders',
-                   LOG.WARNING,
-                   'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
         unitMaterials[udef.name] = {"normalModelledS3o"}
       end
     end --if model
@@ -166,13 +166,13 @@ for i, udef in pairs(UnitDefs) do
           local normaltex = FindNormalmap(tex1,tex2)
           if (normaltex and not unitMaterials[udef.name]) then
             Spring.Log('Custom Unit Shaders',
-                LOG.WARNING,
-                'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
+              LOG.WARNING,
+              'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
             unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
           else
             Spring.Log('Custom Unit Shaders',
-                LOG.WARNING,
-                'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
+              LOG.WARNING,
+               'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
             unitMaterials[udef.name] = {"normalModelledS3o"}
           end
         end
