@@ -132,6 +132,14 @@ function widget:Initialize()
 		return
 	end
 
+	if (Spring.GetConfigInt("AllowDeferredMapRendering") == 0 or Spring.GetConfigInt("AllowDeferredModelRendering") == 0) then
+		Spring.Echo('SSAO (gfx_ssao.lua) requires restarting Spring to properly work!') 
+		Spring.SetConfigInt("AllowDeferredMapRendering", 1)
+		Spring.SetConfigInt("AllowDeferredModelRendering", 1)
+		widgetHandler:RemoveWidget()
+		return
+	end
+
 	-- The Noise texture generation shader, called just once
 	-- =====================================================
 	noiseShader = noiseShader or glCreateShader({
