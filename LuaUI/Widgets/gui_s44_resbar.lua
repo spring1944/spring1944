@@ -60,7 +60,6 @@ local IsGUIHidden = Spring.IsGUIHidden
 local SetShareLevel = Spring.SetShareLevel
 
 local glLineWidth = gl.LineWidth
-local glSmoothing = gl.Smoothing
 
 local glColor = gl.Color
 local glPolygonMode = gl.PolygonMode
@@ -269,7 +268,6 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:DrawScreen()
-  glSmoothing(false, true, false)
   glLineWidth(1)
   glPushMatrix()
     glTranslate(vsx, vsy, 0)
@@ -278,7 +276,6 @@ function widget:DrawScreen()
       DrawMain()
     end
   glPopMatrix()
-  glSmoothing(false, false, false)
 end
 
 function widget:GameFrame(n)
