@@ -1,6 +1,7 @@
 local Rocket = Weapon:New{
 	avoidFeature       = false,
 	explosionSpeed     = 30,
+	targetBorder	   = 0.8,
 	impulseFactor      = 0,
 	soundTrigger       = false,
 	turret             = true,

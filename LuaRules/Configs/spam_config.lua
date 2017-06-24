@@ -5,14 +5,16 @@
 return {
     max_units = 100, -- Maximum amount of units a ai instance will have at once
     wait = 300, -- Time before the ai begins its attack
-    metal_income = 20, -- Its nominal metal income
-    energy_income = 20, -- Its nominal energy income
-    hq_build_speed = 500, --
-    hq_hp = 1000000, -- Initial health of the spam hq
+    metal_income = 50, -- Its nominal metal income
+    energy_income = 50, -- Its nominal energy income
+    hq_build_speed = 1000, --
+    hq_hp = 12500, -- Initial health of the spam hq
     hq_bonus_multiplier = 2, --
     hq_los = 512,
     hq_range = 1024, -- Range of all 4 lasers
     hq_damage = 100, -- Damage for each of the 4 lasers with beamtime 0.25 and reload time 1.0
+	hq_storage_metal = 100000,	-- Metal storage
+	hq_storage_energy = 100000,	-- Energy storage
     unit_bonus_multiplier = 0.25,
     warning = "Ready or not here they come!",
  
