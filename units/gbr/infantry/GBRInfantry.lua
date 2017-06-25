@@ -1,5 +1,8 @@
 local GBRInf = {
 	maxDamageMul		= 1.4,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local GBR_HQEngineer = EngineerInf:New(GBRInf):New{

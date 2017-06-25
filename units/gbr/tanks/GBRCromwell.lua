@@ -36,6 +36,7 @@ local GBRCromwell = MediumTank:New{
 		maxammo				= 12,
 		turretturnspeed		= 25, -- 14-15s for 360
 		maxvelocitykmh		= 64,
+		normaltex			= "unittextures/GBRCromwell_normals.dds",
 	},
 }
 
@@ -60,6 +61,7 @@ local GBRCromwellMkVI = GBRCromwell:New{
 		maxammo				= 10,
 		weapontoggle		= "smoke",
 		canfiresmoke		= true,
+		normaltex		= "unittextures/GBRCromwellMkVI_normals.dds",
 	},
 }
 

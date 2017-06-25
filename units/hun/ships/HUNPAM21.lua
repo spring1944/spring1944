@@ -35,6 +35,7 @@ local HUN_PAM21 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -76,6 +77,7 @@ local HUN_PM = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -96,6 +98,7 @@ local HUNPAM21_turret_20mm = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "",
     },
 }
 
@@ -121,6 +124,7 @@ local HUNPM_turret_40mm_front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "",
     },
 }
 
@@ -139,6 +143,7 @@ local HUNPM_turret_40mm_rear = HUNPM_turret_40mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		normaltex			= "",
 	}
 }
 
@@ -155,6 +160,7 @@ local HUNPAM21_turret_mg = EnclosedBoatTurret:New{
 		barrelrecoildist		= 0,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
+ 		normaltex			= "",
 	},
 }
 
@@ -165,6 +171,9 @@ local HUNPAM21_turret_mg_left = HUNPAM21_turret_mg:New{
 			mainDir		= [[1 0 1]],
 		},
 	},
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local HUNPAM21_turret_mg_right = HUNPAM21_turret_mg:New{
@@ -173,6 +182,9 @@ local HUNPAM21_turret_mg_right = HUNPAM21_turret_mg:New{
 			maxAngleDif			= 45,
 			mainDir		= [[-1 0 1]],
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

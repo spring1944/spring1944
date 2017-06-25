@@ -15,5 +15,6 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=40;
+		normaltex = "";
 		}
 }

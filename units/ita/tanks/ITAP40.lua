@@ -37,6 +37,7 @@ local ITAP40 = MediumTank:New{
 		maxammo				= 19,
 		maxvelocitykmh		= 40,
 		weapontoggle		= "priorityAPHEATHE",
+		normaltex			= "",
 	},
 }
 

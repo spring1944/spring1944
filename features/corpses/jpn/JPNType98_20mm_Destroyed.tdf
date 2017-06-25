@@ -7,5 +7,9 @@
   footprintZ=2;
   object=JPNType98_20mm_Destroyed;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }
 

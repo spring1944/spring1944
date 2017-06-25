@@ -7,6 +7,10 @@
   footprintZ=2;
   object=SWE/SWETgBilM42_Dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }
 
 [SWETgBilM42_wreck] {
@@ -21,6 +25,7 @@
 	[customParams]
 		{
 		ceg_created=Burning;
+		normaltex = "";
 		}
 
 }

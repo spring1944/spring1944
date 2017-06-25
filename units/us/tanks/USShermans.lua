@@ -36,6 +36,7 @@ local ShermanBase = MediumTank:New{
 		armor_top			= 21,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
+		normaltex			= "",
 	},
 }	
 
@@ -55,6 +56,7 @@ local USM4A4Sherman = ShermanBase:New{
 	
 	customParams = {
 		maxammo				= 20,
+		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
 }
 
@@ -71,6 +73,7 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 		armor_side			= 56,
 		armor_top			= 21,
 		maxvelocitykmh		= 35,
+		normaltex			= "unittextures/USM4Jumbo_normals.dds",
 	},
 }
 
@@ -93,6 +96,7 @@ local USM4A376Sherman = ShermanBase:New{
 		armor_rear			= 43,
 		armor_side			= 43,
 		maxammo				= 14,
+		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
 }
 
@@ -119,6 +123,7 @@ local USM4A3105Sherman = ShermanBase:New{
 		cabfiresmoke		= true,
 		turretturnspeed		= 8, -- manual traverse
 		maxvelocitykmh		= 39,
+		normaltex			= "unittextures/USM4ShermanB_normals.dds",
 	},
 }
 

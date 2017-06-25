@@ -32,6 +32,7 @@ local GER_SBoot = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -57,6 +58,7 @@ local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
+		normaltex			= "",
     },
 }
 
@@ -74,6 +76,7 @@ local GER_SBoot_Turret_20mm_Rear = GER_SBoot_Turret_20mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
+		normaltex			= "",
     },
 }
 return lowerkeys({

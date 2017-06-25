@@ -4,6 +4,9 @@ local JPN_Type1_47mm_Truck = ATGunTractor:New{
 	corpse					= "JPNIsuzuTX40_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 12,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local JPN_Type1_47mm_Stationary = LightATGun:New{
@@ -14,6 +17,9 @@ local JPN_Type1_47mm_Stationary = LightATGun:New{
 		[1] = { -- AP
 			name				= "Type147mmAP_towed",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

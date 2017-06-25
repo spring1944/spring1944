@@ -2,6 +2,7 @@ local RUSInf = {
 	maxDamageMul		= 0.65,
 	customParams = {
 		flagCapRate		= 0.085,
+		normaltex			= "",
 	},
 }
 local Partisan = {

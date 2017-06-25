@@ -1,5 +1,8 @@
 local ITAInf = {
 	maxDamageMul		= 0.8,
+	customParams = {
+		normaltex			= "",
+	},
 }
 local Alpini = {
 	maxDamageMul		= 1.25,

@@ -25,6 +25,7 @@ local ITASemovente75_46 = MediumTank:New(AssaultGun):New{
 		armor_top			= 15,
 		maxammo				= 11,
 		maxvelocitykmh		= 38,
+		normaltex			= "",
 	},
 }
 

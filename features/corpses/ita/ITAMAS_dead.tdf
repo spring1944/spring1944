@@ -10,4 +10,8 @@
 	blocking=0;
 	hitdensity=70;
 	height=5;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }

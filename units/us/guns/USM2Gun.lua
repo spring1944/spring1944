@@ -3,6 +3,9 @@ local US_M2Gun_Truck = HGunTractor:New{
 	corpse					= "USM5Tractor_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local US_M2Gun_Stationary = HGun:New{
@@ -18,6 +21,9 @@ local US_M2Gun_Stationary = HGun:New{
 			name				= "M2smoke",
 			maxAngleDif			= 45,
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

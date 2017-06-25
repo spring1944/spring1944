@@ -37,6 +37,7 @@ local GBRShermanFirefly = MediumTank:New{
 		maxammo				= 14,
 		turretturnspeed		= 24, -- 15s for 360
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/GBRShermans_normals.dds",
 	},
 }
 

@@ -12,6 +12,9 @@ local JPN_HQ = HQ:New{
 								oyyo 
 								yyyy 
 								yyyy]],
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

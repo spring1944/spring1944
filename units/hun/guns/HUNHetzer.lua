@@ -27,6 +27,7 @@ local HUNHetzer = MediumTank:New(TankDestroyer):New{
 		maxammo				= 15,
 		soundcategory		= "HUN/Tank",
 		maxvelocitykmh		= 40,
+		normaltex			= "",
 	},
 }
 
@@ -46,6 +47,7 @@ local HUNBergeHetzer = EngineerVehicle:New{
 		maxvelocitykmh		= 40,
 		soundcategory		= "HUN/Tank",
 		customanims			= "bergehetzer",
+		normaltex			= "",
 	},
 }
 

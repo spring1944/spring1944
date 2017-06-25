@@ -36,6 +36,7 @@ local GERPanther = HeavyTank:New{
 		maxammo				= 15,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 46,
+		normaltex			= "",
 	},
 }
 

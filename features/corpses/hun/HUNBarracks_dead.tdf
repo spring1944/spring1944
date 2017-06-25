@@ -7,5 +7,9 @@
   footprintZ=7;
   object=HUN/HUNBarracks_Dead.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }
 

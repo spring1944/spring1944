@@ -12,6 +12,7 @@ local SWE_PartisanBase = Storage:New{
 		hiddenbuilding		= 1,
 		dontCount			= 1,
 		spawnsUnit			= "swepartisan",
+		normaltex			= "",
 	},
 }
 

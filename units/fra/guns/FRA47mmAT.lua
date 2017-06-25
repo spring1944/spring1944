@@ -5,6 +5,9 @@ local FRA_47mmAT_Truck = ATGunTractor:New{
 	trackOffset				= 4,
 	trackWidth				= 15,
 	objectName				= "FRA/FRA47mmAT_truck.s3o",
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local FRA_47mmAT_Stationary = ATGun:New{
@@ -16,6 +19,9 @@ local FRA_47mmAT_Stationary = ATGun:New{
 		[1] = { -- AP
 			name				= "FRA47mmSA37AP",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

@@ -35,6 +35,7 @@ local HUN_Debrecen = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+		normaltex			= "",
 	},
 }
 
@@ -54,6 +55,7 @@ local HUNGunboat_turret_75mm_front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "",
     },
 }
 
@@ -65,6 +67,7 @@ local HUNGunboat_turret_75mm_rear = HUNGunboat_turret_75mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		normaltex			= "",
 	}
 }
 
@@ -123,6 +126,7 @@ local HUNGunboat_turret_flak_rear = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon			= 1,
 		facing				= 2,
+		normaltex			= "",
     },
 }
 

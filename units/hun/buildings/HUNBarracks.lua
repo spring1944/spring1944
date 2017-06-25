@@ -14,6 +14,9 @@ local HUN_Barracks = Barracks:New{
 									oyyo 
 									yyyy 
 									yyyy]],
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

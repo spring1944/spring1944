@@ -32,6 +32,7 @@ local RUST70 = LightTank:New{
 		maxvelocitykmh		= 45,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
+		normaltex			= "unittextures/RUST70_normals.dds",
 	},
 }
 

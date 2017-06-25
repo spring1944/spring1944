@@ -21,6 +21,9 @@ local HUN_HQ = HQ:New(Bunker):New{
 			name				= "MG34",
 		},
 	},
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

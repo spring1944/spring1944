@@ -28,6 +28,7 @@ local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 13,
 		turretturnspeed		= 8, -- Manual traverse 45s
 		maxvelocitykmh		= 48,
+		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
 }
 

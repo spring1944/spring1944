@@ -4,6 +4,9 @@ local ITA_Cannone47_Truck = ATGunTractor:New{
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local ITA_Cannone47_Stationary = LightATGun:New{
@@ -15,6 +18,9 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 		[1] = { -- AP
 			name				= "CannoneDa47mml32AP_towed",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

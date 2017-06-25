@@ -40,6 +40,8 @@ local FRAAMD35 = ArmouredCar:New{
 		reversemult			= 0.75,
 		maxammo				= 19,
 		maxvelocitykmh		= 73,
+
+		normaltex			= "",
 	}
 }
 

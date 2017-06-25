@@ -31,6 +31,7 @@ local RUS_KomsMTB = ArmedBoat:New{
 			["z"] = {angle = 15, speed = 10},
 		},
 		-- TODO: implement 'cruise mode' too
+		normaltex			= "",
 	},
 }
 
@@ -54,6 +55,7 @@ local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
 		facing					= 2,
+		normaltex			= "",
 	},
 }
 

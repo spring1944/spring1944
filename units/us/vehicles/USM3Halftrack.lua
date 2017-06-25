@@ -10,6 +10,7 @@ local USM3Base = Vehicle:New{
 		armor_top				= 8,
 		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
 		maxvelocitykmh			= 72,
+		normaltex			= "",
 	},
 }
 

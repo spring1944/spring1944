@@ -10,6 +10,7 @@ local ChiHaBase = LightTank:New{
 		armor_top			= 11,
 		maxvelocitykmh		= 38,
 		exhaust_fx_name			= "diesel_exhaust",
+		normaltex			= "",
 	},
 }
 	

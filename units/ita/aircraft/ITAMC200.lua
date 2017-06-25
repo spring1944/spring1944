@@ -15,6 +15,7 @@ local ITA_MC200 = Fighter:New{
 		enginesoundnr		= 20,
 		maxammo				= 2,
 		maxFuel				= 60,
+		normaltex			= "",
 	},
 
 	weapons = {

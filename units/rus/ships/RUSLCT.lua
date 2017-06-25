@@ -39,6 +39,7 @@ local RUS_LCT = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+		normaltex			= "",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -54,6 +55,7 @@ local SWE_LCT = RUS_LCT:New{
 	script		= "ruslct.cob",
 	customparams	= {
 		soundcategory		= "SWE/Boat",
+		normaltex			= "",
 	},
 }
 

@@ -4,6 +4,9 @@ local RUSPDrop = Null:New{
 	category					= "AIR PARA",
 	iconType					= "paratrooper",
 	maxDamage					= 1500,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

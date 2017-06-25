@@ -12,6 +12,7 @@ local StuartBase = LightTank:New{
 		armor_side			= 28,
 		armor_top			= 13,
 		maxvelocitykmh		= 58,
+		normaltex			= "",
 	},
 }	
 
@@ -49,6 +50,7 @@ local USM5Stuart = StuartBase:New{
 		maxammo				= 27,
 		weapontoggle		= false,
 		turretturnspeed		= 25.7, -- 14s for 360
+		normaltex			= "unittextures/USM5Stuart_normals.dds",
 	},
 }
 
@@ -73,6 +75,7 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 		maxammo				= 9,
 		weapontoggle		= false,
 		turretturnspeed		= 12, -- manual
+		normaltex			= "unittextures/USM8Scott_normals.dds",
 	},
 }
 

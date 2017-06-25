@@ -51,6 +51,7 @@ local GER_SiebelFahre = Boat:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+		normaltex			= "",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

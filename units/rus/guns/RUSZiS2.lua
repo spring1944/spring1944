@@ -4,6 +4,9 @@ local RUS_ZiS2_Truck = ATGunTractor:New{
 	corpse					= "RUSZiS5_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local RUS_ZiS2_Stationary = LightATGun:New{
@@ -14,6 +17,9 @@ local RUS_ZiS2_Stationary = LightATGun:New{
 		[1] = { -- AP
 			name				= "zis257mmap",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

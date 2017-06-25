@@ -15,6 +15,7 @@ local GER_Ju87G = AttackFighter:New{
 		enginesound			= "stukab-",
 		enginesoundnr		= 12,
 		maxammo				= 15,
+		normaltex			= "",
 	},
 
 	weapons = {

@@ -5,6 +5,9 @@ local FRALafflyV15R = ScoutCar:New{
 	trackWidth			= 15,
 	objectName			= "FRA/FRALafflyV15R.s3o",
 
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

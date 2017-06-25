@@ -12,6 +12,7 @@ local ITA_MC205 = FighterBomber:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
+		normaltex			= "",
 	},
 
 	weapons = {

@@ -65,6 +65,7 @@ local GER_MFP = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+		normaltex			= "",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

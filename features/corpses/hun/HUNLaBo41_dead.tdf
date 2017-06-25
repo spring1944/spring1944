@@ -10,4 +10,8 @@
   hitdensity=70;
   object=HUN/HUNLaBo41_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }

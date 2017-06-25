@@ -3,6 +3,9 @@ local GER_LeFH18_Truck = HGunTractor:New{
 	corpse					= "GERSdKfz11_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local GER_LeFH18_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local GER_LeFH18_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "leFH18smoke",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

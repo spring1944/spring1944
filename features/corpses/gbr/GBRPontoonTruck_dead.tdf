@@ -10,5 +10,9 @@
   hitdensity=70;
   object=GBRBedfordTruck_Destroyed.S3O;
   reclaimable=1;
+	[customParams]
+		{
+		normaltex = "";
+		}
 }
 

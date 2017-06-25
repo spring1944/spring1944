@@ -17,6 +17,7 @@ local GERSdKfz10 = TruckAA:New{
 		armor_top			= 0,
 		maxammo				= 25,
 		maxvelocitykmh		= 75,
+		normaltex			= "",
 	}
 }
 

@@ -23,6 +23,9 @@ local RUSGAZAAA = TruckAA:New{
 			slaveTo				= 1,
 		},
 	},
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 return lowerkeys({

@@ -4,6 +4,9 @@ local ITA_Breda20_Truck = AAGunTractor:New{
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local ITA_Breda20_Stationary = AAGun:New{
@@ -17,6 +20,9 @@ local ITA_Breda20_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "BredaM3520mmHE",
 		},
+	},
+	customParams = {
+		normaltex			= "",
 	},
 }
 

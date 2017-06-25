@@ -1,5 +1,8 @@
 local GERInf = {
 	maxDamageMul		= 1.1,
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 local GER_HQEngineer = EngineerInf:New(GERInf):New{

@@ -7,6 +7,9 @@ local GERLeIG18 = InfantryGun:New{
 			name				= "leig18HE",
 		},
 	},
+	customParams = {
+		normaltex			= "",
+	},
 }
 
 
