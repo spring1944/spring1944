@@ -37,7 +37,7 @@ local RUS_Pr165_PB = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -57,7 +57,7 @@ local RUSPr165_Turret_B24 = PartiallyEnclosedBoatTurret:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 5,    -- real turn rates: 5 degrees/sec, taken from Wiki
 		elevationspeed			= 5,    -- same thing
-		normaltex			= "",
+
     },
 }
 
@@ -73,7 +73,7 @@ local RUS_Pr165_Turret_DshK = OpenBoatTurret:New{
 	customparams = {
 		turretturnspeed			= 80,
 		elevationspeed			= 45,
-		normaltex			= "",
+
 	},
 }
 
@@ -82,7 +82,7 @@ local RUS_Pr165_Turret_DshK_Left = RUS_Pr165_Turret_DshK:New{
 
 	customparams = {
         facing                  = 3,
-		normaltex			= "",
+
 	},
 }
 
@@ -91,7 +91,7 @@ local RUS_Pr165_Turret_DshK_Right = RUS_Pr165_Turret_DshK:New{
 
 	customparams = {
         facing                  = 1,
-		normaltex			= "",
+
 	},
 }
 

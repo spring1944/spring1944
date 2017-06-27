@@ -30,7 +30,7 @@ local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
 									ooyyy 
 									ooyyy]],
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

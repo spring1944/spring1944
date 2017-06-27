@@ -8,7 +8,7 @@ local GERLeIG18 = InfantryGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

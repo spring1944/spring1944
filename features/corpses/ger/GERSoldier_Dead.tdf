@@ -10,7 +10,7 @@
   smoketime=0;
 	[customParams]
 		{
-		normaltex = "";
+
 		}
 }
 
@@ -27,7 +27,7 @@
   smoketime=0;
 	[customParams]
 		{
-		normaltex = "";
+
 		}
 }
 

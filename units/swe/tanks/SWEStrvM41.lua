@@ -34,7 +34,7 @@ local SWEStrvM41 = LightTank:New{
 		armor_top			= 8,
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
-		normaltex			= "",
+
 	},
 }
 

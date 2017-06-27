@@ -3,7 +3,7 @@ local JPN_IsuzuTX40Base = TransportTruck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -30,7 +30,7 @@ local ITA_MAS = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 

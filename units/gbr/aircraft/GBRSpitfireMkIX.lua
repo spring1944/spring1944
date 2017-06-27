@@ -12,7 +12,7 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 	customParams = {
 		enginesound			= "spitfireb-",
 		enginesoundnr		= 18,
-		normaltex			= "",
+
 	},
 
 	weapons = {

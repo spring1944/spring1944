@@ -5,7 +5,7 @@ local RUS_A19_Truck = LongRangeGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local RUS_A19_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

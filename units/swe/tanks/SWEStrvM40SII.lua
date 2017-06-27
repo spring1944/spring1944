@@ -33,7 +33,7 @@ local SWEStrvM40SII = LightTank:New{
 		armor_top			= 5,
 		maxammo				= 18,
 		maxvelocitykmh		= 48,
-		normaltex			= "",
+
 	},
 }
 

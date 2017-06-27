@@ -22,7 +22,7 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-		normaltex			= "",
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

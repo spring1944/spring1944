@@ -9,7 +9,7 @@ local ITA_Breda61 = EngineerVehicle:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

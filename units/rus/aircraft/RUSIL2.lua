@@ -17,7 +17,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		enginesoundnr		= 16,
 		maxammo				= 4,
 		maxFuel				= 180,
-		normaltex			= "",
+
 	},
 
 	weapons = {
@@ -88,7 +88,7 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

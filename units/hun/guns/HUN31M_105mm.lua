@@ -4,7 +4,7 @@ local HUN_31M_105mm_Truck = LongRangeGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local HUN_31M_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

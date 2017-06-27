@@ -36,7 +36,7 @@ local HUN40MTuran = MediumTank:New{
 		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-		normaltex			= "",
+
 	},
 }
 
@@ -77,7 +77,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-		normaltex			= "",
+
 	},
 }
 
@@ -118,7 +118,7 @@ local HUN43MTuranIII = HUN41MTuranII:New{
 		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-		normaltex			= "",
+
 	},
 }
 

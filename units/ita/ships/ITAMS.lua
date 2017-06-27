@@ -31,7 +31,7 @@ local ITA_MS = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -57,7 +57,7 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		normaltex			= "",
+
     },
 }
 
@@ -72,7 +72,7 @@ local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
-		normaltex			= "",
+
 	},
 }
 

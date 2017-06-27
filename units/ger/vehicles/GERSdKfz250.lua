@@ -39,7 +39,7 @@ local GERSdKfz250 = ArmouredCar:New{
 		turretturnspeed		= 20, -- manual, light turret
 		maxvelocitykmh		= 76,
 		customanims			= "sdkfz250",
-		normaltex			= "",
+
 	}
 }
 

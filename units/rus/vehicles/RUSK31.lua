@@ -3,7 +3,7 @@ local RUS_K31 = EngineerVehicle:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -15,7 +15,7 @@ local US_Barracks = Barracks:New{
 									yyyy 
 									yyyy]],
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

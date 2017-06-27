@@ -5,7 +5,7 @@ local ITA_Cannone_105_32_Truck = LongRangeGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local ITA_Cannone_105_32_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

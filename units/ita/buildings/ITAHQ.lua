@@ -11,7 +11,7 @@ local ITA_HQ = HQ:New{
 								ooyyyoo 
 								ooyyyoo]],
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

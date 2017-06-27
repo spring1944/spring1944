@@ -4,7 +4,7 @@ local US_M2Gun_Truck = HGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -23,7 +23,7 @@ local US_M2Gun_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

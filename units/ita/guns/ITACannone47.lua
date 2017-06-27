@@ -5,7 +5,7 @@ local ITA_Cannone47_Truck = ATGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -20,7 +20,7 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

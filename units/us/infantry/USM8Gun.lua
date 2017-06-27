@@ -8,7 +8,7 @@ local USM8Gun = InfantryGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

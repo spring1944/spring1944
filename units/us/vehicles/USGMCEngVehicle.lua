@@ -3,7 +3,7 @@ local US_GMCEngVehicle = EngineerVehicle:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

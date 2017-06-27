@@ -3,7 +3,7 @@ local RUS_ZiS5Base = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -19,7 +19,7 @@ local RUS_SupplyTruck = RUS_ZiS5Base:New{
 	idleAutoHeal			= 2,
 	idleTime				= 1000,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

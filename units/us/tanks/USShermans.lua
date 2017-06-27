@@ -36,7 +36,7 @@ local ShermanBase = MediumTank:New{
 		armor_top			= 21,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
-		normaltex			= "",
+
 	},
 }	
 

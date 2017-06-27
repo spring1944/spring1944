@@ -4,7 +4,7 @@ local GER_Nebelwerfer_Truck = RGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -20,7 +20,7 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -14,7 +14,7 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 		turretturnspeed		= 8,
 		maxammo				= 8,
 		maxvelocitykmh		= 45,
-		normaltex			= "",
+
 	},
 }
 

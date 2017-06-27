@@ -5,7 +5,7 @@ local RUS_ZiS2_Truck = ATGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -19,7 +19,7 @@ local RUS_ZiS2_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

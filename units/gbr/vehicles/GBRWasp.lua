@@ -23,7 +23,7 @@ local GBRWasp = ArmouredCar:New{
 		armor_top			= 0,
 		maxammo				= 7,
 		maxvelocitykmh		= 48,
-		normaltex			= "",
+
 	}
 }
 

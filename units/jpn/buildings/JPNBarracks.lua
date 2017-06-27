@@ -14,7 +14,7 @@ local JPN_Barracks = Barracks:New{
 									cccccc 
 									cccccc]],
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

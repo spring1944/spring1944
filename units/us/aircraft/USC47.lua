@@ -6,7 +6,7 @@ local US_C47 = ParaTransport:New{
 		feartarget = false,
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
-		normaltex			= "",
+
 	},
 	
 	weapons = {

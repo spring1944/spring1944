@@ -3,7 +3,7 @@ local GER_SdKfz9 = EngineerVehicle:New{
 	trackOffset				= 3,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

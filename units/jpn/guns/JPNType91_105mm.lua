@@ -5,7 +5,7 @@ local JPN_Type91_105mm_Truck = HGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local JPN_Type91_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

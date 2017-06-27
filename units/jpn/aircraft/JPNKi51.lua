@@ -18,7 +18,7 @@ local JPN_Ki51 = Fighter:New{
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
 		maxFuel				= 105,
-		normaltex			= "",
+
 	},
 
 	weapons = {

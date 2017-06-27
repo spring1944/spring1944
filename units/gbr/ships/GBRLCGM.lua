@@ -27,7 +27,7 @@ local GBR_LCGM = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = 15, speed = 2.5},
 		},
-		normaltex			= "",
+
 	},
 }
 
@@ -48,7 +48,7 @@ local GBR_LCGM_Turret_25pdr_Left = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 17,
 		elevationspeed			= 17,
-		normaltex			= "",
+
 	},
 }
 local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{
@@ -58,7 +58,7 @@ local GBR_LCGM_Turret_25pdr_Right = GBR_LCGM_Turret_25pdr_Left:New{
 		},
 	},
 	customparams = {
-		normaltex			= "",
+
 	},
 }
 

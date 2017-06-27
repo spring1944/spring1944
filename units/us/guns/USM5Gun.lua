@@ -5,7 +5,7 @@ local US_M5Gun_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -18,7 +18,7 @@ local US_M5Gun_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

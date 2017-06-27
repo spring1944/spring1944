@@ -12,7 +12,7 @@ local StuartBase = LightTank:New{
 		armor_side			= 28,
 		armor_top			= 13,
 		maxvelocitykmh		= 58,
-		normaltex			= "",
+
 	},
 }	
 

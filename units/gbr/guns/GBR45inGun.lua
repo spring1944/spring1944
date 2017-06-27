@@ -4,7 +4,7 @@ local GBR_4_5in_Truck = LongRangeGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 18,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local GBR_4_5in_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

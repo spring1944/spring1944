@@ -1,7 +1,7 @@
 local SWEInf = {
 	maxDamageMul		= 1.4,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

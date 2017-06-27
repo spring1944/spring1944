@@ -36,7 +36,7 @@ local HUNToldiII = LightTank:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-		normaltex			= "",
+
 	},
 }
 
@@ -75,7 +75,7 @@ local HUNToldiIIA = HUNToldiII:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

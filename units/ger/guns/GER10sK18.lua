@@ -4,7 +4,7 @@ local GER_10sK18_Truck = LongRangeGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 19,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local GER_10sK18_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

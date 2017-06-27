@@ -5,7 +5,7 @@ local JPN_Type1_47mm_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -19,7 +19,7 @@ local JPN_Type1_47mm_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

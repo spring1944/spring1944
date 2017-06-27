@@ -5,13 +5,13 @@ local FRA_CitroenType45 = TransportTruck:New{
 	objectName				= "FRA/FRACitroenType45.s3o",
 
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
 local FRA_TruckSupplies = Supplies:New{
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -14,7 +14,7 @@ local US_P47Thunderbolt = FighterBomber:New{
 		enginesoundnr		= 16,
 		proptexture			= "prop5.tga",
 		maxFuel				= 180,
-		normaltex			= "",
+
 	},
 
 	weapons = {

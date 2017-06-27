@@ -24,6 +24,7 @@ local function getTemplate()
 						damagegroup			= "invincible",
 						isupgrade			= true,
 						dontcount			= 1,
+						normaltex			= "",
 					},
 				}
 end

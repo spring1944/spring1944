@@ -3,7 +3,7 @@ local JPN_StorageTunnel = Storage:New{
 	description				= "General Logistics & Ammunition Stockpile, also provides logistics income",
 	energyMake				= 2,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

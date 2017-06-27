@@ -13,7 +13,7 @@ local HUN_Me210_base = {
 	customParams = {
 		enginesound			= "me109b-",
 		enginesoundnr		= 18,
-		normaltex			= "",
+
 	},
 }
 

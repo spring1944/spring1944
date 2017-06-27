@@ -4,7 +4,7 @@ local RUS_ZiS3_Truck = FGGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local RUS_ZiS3_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -24,7 +24,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 		armor_top			= 0,
 		maxammo				= 19,
 		maxvelocitykmh		= 50,
-		normaltex			= "",
+
 	}
 }
 
@@ -42,7 +42,7 @@ local HUN43MLehel = HalfTrack:New{
 		armor_side				= 13,
 		armor_top				= 0,
 		maxvelocitykmh			= 50,
-		normaltex			= "",
+
 	},
 }
 

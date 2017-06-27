@@ -13,7 +13,7 @@ local JPN_HQ = HQ:New{
 								yyyy 
 								yyyy]],
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

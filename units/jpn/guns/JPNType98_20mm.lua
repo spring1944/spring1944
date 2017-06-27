@@ -5,7 +5,7 @@ local JPN_Type98_20mm_Truck = AAGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -22,7 +22,7 @@ local JPN_Type98_20mm_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

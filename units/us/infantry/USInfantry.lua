@@ -1,14 +1,14 @@
 local USInf = {
 	maxDamageMul		= 1.0,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
 local USPara = {
 	maxDamageMul		= 1.4,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

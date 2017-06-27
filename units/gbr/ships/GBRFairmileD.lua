@@ -47,7 +47,7 @@ local GBR_FairmileD = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -71,7 +71,7 @@ local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		normaltex			= "",
+
 	},
 }
 
@@ -92,7 +92,7 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
-		normaltex			= "",
+
     },
 }
 local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
@@ -103,7 +103,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
 	},
 	customparams = {
 		facing				= 2,
-		normaltex			= "",
+
     },
 }
 
@@ -124,7 +124,7 @@ local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		facing					= 3,
-		normaltex			= "",
+
 	},
 }
 local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left:New{
@@ -135,7 +135,7 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 	},
 	customparams = {
 		facing					= 1,
-		normaltex			= "",
+
 	},
 }
 
@@ -172,7 +172,7 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
-		normaltex			= "",
+
 	},
 }
 

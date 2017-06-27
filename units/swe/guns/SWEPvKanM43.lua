@@ -5,7 +5,7 @@ local SWE_PvKanM43_Truck = ATGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -19,7 +19,7 @@ local SWE_PvKanM43_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

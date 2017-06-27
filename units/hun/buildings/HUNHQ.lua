@@ -22,7 +22,7 @@ local HUN_HQ = HQ:New(Bunker):New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

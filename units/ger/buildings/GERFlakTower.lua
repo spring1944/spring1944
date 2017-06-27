@@ -40,7 +40,7 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
             "GERMAL_Turret_Quad20mm",
         },
 		supplyrange			= 1000,
-		normaltex			= "",
+
 	},
 
 	--[[
@@ -85,7 +85,7 @@ local GER_Flak40_Twin_Base = Building:New{
 		barrelrecoilspeed		= 32,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
-		normaltex			= "",
+
     },
 }
 
@@ -99,7 +99,7 @@ local spam_hq = GER_Flak_Tower:New{
 	buildPic	= "gerflakturmg.png",
 	objectName	= "GER/GERFlakTurmG.s3o",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

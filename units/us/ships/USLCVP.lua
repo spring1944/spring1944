@@ -26,7 +26,7 @@ local US_LCVP = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-		normaltex			= "",
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -41,7 +41,7 @@ SWE_LCVP = US_LCVP:New{
 	script			= "uslcvp.cob",
 	customparams = {
 		soundcategory		= "SWE/Boat",
-		normaltex			= "",
+
 	}
 }
 

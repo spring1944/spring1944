@@ -24,7 +24,7 @@ local JPNType5NaTo = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		maxvelocitykmh		= 40,
 		exhaust_fx_name		= "diesel_exhaust",
 		customanims			= "type5nato",
-		normaltex			= "",
+
 	},
 }
 

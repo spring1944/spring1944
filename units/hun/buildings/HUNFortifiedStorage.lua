@@ -55,7 +55,7 @@ local HUN_FortifiedStorage = Storage:New(Bunker):New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

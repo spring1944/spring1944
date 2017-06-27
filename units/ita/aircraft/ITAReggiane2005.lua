@@ -15,7 +15,7 @@ local ITA_Reggiane2005 = Fighter:New{
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
 		maxFuel				= 150,
-		normaltex			= "",
+
 	},
 
 	weapons = {

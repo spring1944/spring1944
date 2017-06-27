@@ -8,6 +8,6 @@
   reclaimable=1;
 	[customParams]
 		{
-		normaltex = "";
+
 		}
 }

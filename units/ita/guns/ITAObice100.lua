@@ -4,7 +4,7 @@ local ITA_Obice100_Truck = HGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -20,7 +20,7 @@ local ITA_Obice100_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

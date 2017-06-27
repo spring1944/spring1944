@@ -15,7 +15,7 @@ local SWEJ21A = Fighter:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
-		normaltex			= "",
+
 	},
 
 	weapons = {

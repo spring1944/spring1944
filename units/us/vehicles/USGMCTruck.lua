@@ -3,7 +3,7 @@ local US_GMCTruckBase = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

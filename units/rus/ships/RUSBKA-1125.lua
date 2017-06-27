@@ -37,7 +37,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -58,7 +58,7 @@ local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-		normaltex			= "",
+
     },
 }
 
@@ -76,7 +76,7 @@ local RUS_BKA_1125_Turret_DshK = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
-		normaltex			= "",
+
 	},
 }
 
@@ -88,7 +88,7 @@ local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -100,7 +100,7 @@ local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -113,7 +113,7 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 	},
 	customparams = {
 		facing = 2,
-		normaltex			= "",
+
 	},
 }
 

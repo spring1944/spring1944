@@ -6,7 +6,7 @@ local FRA_25mmAT_Truck = ATGunTractor:New{
 	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmMle1934_Truck.s3o",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -22,7 +22,7 @@ local FRA_25mmAT_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -34,7 +34,7 @@ local FRA_25mmAA_Truck = AAGunTractor:New{
 	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmAA_Truck.s3o",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -52,7 +52,7 @@ local FRA_25mmAA_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -5,7 +5,7 @@ local SWEHaubitsM06_Truck = HGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -22,7 +22,7 @@ local SWEHaubitsM06_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

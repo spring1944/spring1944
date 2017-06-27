@@ -4,7 +4,7 @@ local RUS_61K_Truck = AAGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local RUS_61K_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

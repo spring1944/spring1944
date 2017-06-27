@@ -13,7 +13,7 @@ local ITACannone65 = InfantryGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

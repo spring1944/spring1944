@@ -29,7 +29,7 @@ local GER_MAL = ArmedBoat:New{
 		deathanim = {
 			["x"] = {angle = -10, speed = 5},
 		},
-		normaltex			= "",
+
 	},
 }
 
@@ -49,7 +49,7 @@ local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
-		normaltex			= "",
+
     },
 }
 
@@ -104,7 +104,7 @@ local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 
@@ -129,7 +129,7 @@ local GER_MAL_Turret_37mm = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 

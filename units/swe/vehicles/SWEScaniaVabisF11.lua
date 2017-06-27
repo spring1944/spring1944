@@ -3,7 +3,7 @@ local SWE_ScaniaVabisF11Base = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -16,7 +16,7 @@ local SWE_BarracksTruck = SWE_ScaniaVabisF11Base:New{
 	description	= "Mobile Barracks",
 	iconType		= "truck_barracks",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

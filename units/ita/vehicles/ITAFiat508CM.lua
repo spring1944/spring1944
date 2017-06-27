@@ -3,7 +3,7 @@ local ITAFiat508CM = ScoutCar:New{
 	trackOffset			= 4,
 	trackWidth			= 11,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -1,7 +1,7 @@
 local GBRInf = {
 	maxDamageMul		= 1.4,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

@@ -4,7 +4,7 @@ local GBR_25Pdr_Truck = HGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 18,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -23,7 +23,7 @@ local GBR_25Pdr_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

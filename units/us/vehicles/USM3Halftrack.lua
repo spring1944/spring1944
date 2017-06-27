@@ -10,7 +10,6 @@ local USM3Base = Vehicle:New{
 		armor_top				= 8,
 		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
 		maxvelocitykmh			= 72,
-		normaltex			= "",
 	},
 }
 
@@ -25,6 +24,10 @@ local USM3Halftrack = USM3Base:New(HalfTrack):New{
 		[2] = {
 			name					= "M2BrowningAA",
 		},
+	},
+	
+	customParams = {
+		normaltex	= "",
 	},
 }
 
@@ -54,6 +57,9 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 			name					= "M2BrowningAA",
 		},
 	},
+	customParams = {
+		normaltex	= "",
+	},
 }
 
 -- Lend Lease
@@ -62,10 +68,8 @@ local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
 
 -- add custom anims here (model-specific, do not apply to M5)
 USM3Halftrack.customparams.customanims		= "m3a1halftrack"
-USM3Halftrack.customparams.normaltex		= nil	-- old file does not fit, sorry
 USM3Halftrack.objectname 					= "<SIDE>/USM3A1Halftrack.s3o"
 
-USM16MGMC.customparams.normaltex		= nil	-- old file does not fit, sorry
 USM16MGMC.customparams.customanims		= "m3a1halftrack"
 
 return lowerkeys({

@@ -4,7 +4,7 @@ local GBR_17Pdr_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 18,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -18,7 +18,7 @@ local GBR_17Pdr_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

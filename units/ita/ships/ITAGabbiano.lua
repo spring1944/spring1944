@@ -36,7 +36,7 @@ local ITA_Gabbiano = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -55,7 +55,7 @@ local ITA_Gabbiano_Turret_100mm = PartiallyEnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 28,
 		elevationspeed			= 28,
-		normaltex			= "",
+
 	},
 }
 
@@ -81,7 +81,7 @@ local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 
@@ -110,7 +110,7 @@ local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		facing					= 2,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 

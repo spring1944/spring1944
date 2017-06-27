@@ -5,7 +5,7 @@ local JPN_Type90_75mm_Truck = FGGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -22,7 +22,7 @@ local JPN_Type90_75mm_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

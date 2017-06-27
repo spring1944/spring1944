@@ -4,7 +4,7 @@ local HUN_44M_HeavyAT_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -27,7 +27,7 @@ local HUN_44MHeavyAT_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 	

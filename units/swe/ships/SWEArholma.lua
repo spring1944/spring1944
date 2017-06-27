@@ -44,7 +44,7 @@ local SWE_Arholma = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -64,7 +64,7 @@ local SWEArholma_Turret_105mm_front = PartiallyEnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 25,
 		elevationspeed			= 25,
-		normaltex			= "",
+
 	},
 }
 
@@ -76,7 +76,7 @@ local SWEArholma_Turret_105mm_rear = SWEArholma_Turret_105mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
-		normaltex			= "",
+
     },
 }
 
@@ -104,7 +104,7 @@ local SWEArholma_turret_40mm_rear = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 

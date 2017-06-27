@@ -30,7 +30,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-		normaltex			= "",
+
 	},
 }
 
@@ -56,7 +56,7 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
-		normaltex			= "",
+
     },
 }
 
@@ -71,7 +71,7 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
-		normaltex			= "",
+
 	},
 }
 

@@ -5,7 +5,7 @@ local FRA_105mm_Truck = HGunTractor:New{
 	trackWidth				= 12,
 	objectName              = "FRA/FRA105mmMle1935B_truck.s3o",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -23,7 +23,7 @@ local FRA_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

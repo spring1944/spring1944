@@ -12,7 +12,7 @@ local JPNHoHa = HalfTrack:New{
 		armor_top				= 0,
 		maxvelocitykmh			= 50,
 		exhaust_fx_name			= "diesel_exhaust",
-		normaltex			= "",
+
 	},
 }
 

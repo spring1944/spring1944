@@ -5,7 +5,7 @@ local ITA_Cannone75_Truck = FGGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -21,7 +21,7 @@ local ITA_Cannone75_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

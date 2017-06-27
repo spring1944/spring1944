@@ -4,7 +4,7 @@ local GER_PaK40_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -18,7 +18,7 @@ local GER_PaK40_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 	

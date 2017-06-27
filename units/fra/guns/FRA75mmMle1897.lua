@@ -5,7 +5,7 @@ local FRA_75mmMle1897_Truck = FGGunTractor:New{
 	trackWidth				= 12,
 	objectName				= "FRA/FRA75mmMle1897_truck.s3o",
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -23,7 +23,7 @@ local FRA_75mmMle1897_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

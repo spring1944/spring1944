@@ -6,7 +6,7 @@ local SWEKanon105_42_Truck = LongRangeGunTractor:New{
 	trackOffset				= 25,
 	trackWidth				= 17,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -23,7 +23,7 @@ local SWEKanon105_42_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

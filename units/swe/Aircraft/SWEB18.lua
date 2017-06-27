@@ -18,7 +18,7 @@ local SWEB18 = AttackFighter:New{
 		enginesoundnr		= 20,
 		maxammo				= 18,
 		maxFuel				= 160,
-		normaltex			= "",
+
 	},
 
 	weapons = {

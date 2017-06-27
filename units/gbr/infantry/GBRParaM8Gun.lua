@@ -8,7 +8,7 @@ local GBR_ParaM8Gun = InfantryGun:New{
 		},
 	},
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

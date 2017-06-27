@@ -13,7 +13,7 @@ local SWE_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
-		normaltex			= "",
+
 }
 
 return lowerkeys({

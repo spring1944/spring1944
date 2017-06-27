@@ -1,7 +1,7 @@
 local JPNInf = {
 	maxDamageMul		= 0.94,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

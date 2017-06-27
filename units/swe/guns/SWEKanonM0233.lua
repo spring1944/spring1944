@@ -5,7 +5,7 @@ local SWEKanonM02_33_Truck = FGGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 
@@ -22,7 +22,7 @@ local SWEKanonM02_33_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-		normaltex			= "",
+
 	},
 }
 

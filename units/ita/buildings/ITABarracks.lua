@@ -13,7 +13,7 @@ local ITA_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
-		normaltex			= "",
+
 }
 
 local ITA_BarracksElite = ITA_Barracks:New{
