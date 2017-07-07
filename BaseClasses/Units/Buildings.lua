@@ -256,7 +256,7 @@ local Storage = Building:New{
 		armor_rear				= 0,
 		armor_side				= 15,
 		armor_top				= 30,
-		dontcount				= true,
+		dontcount				= 1,
 	},
 }
 -- Truck Supplies
@@ -269,7 +269,7 @@ local Supplies = Building:New{
 	buildingGroundDecalSizeY	= 4,
 	corpse						= "Debris_Large",
 	customparams = {
-		dontCount					= true,
+		dontCount					= 1,
 		supplyRange					= 560,
 	},
 	explodeAs					= "ResourceBoom",

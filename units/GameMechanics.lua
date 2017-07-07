@@ -22,7 +22,7 @@ local Flag = Null:New{
 	windGenerator		= 0.00001, -- needed for WindChanged callin
 	yardmap				= "y",
 	customParams = {
-		dontCount			= true,
+		dontCount			= 1,
 		flag				= true,
 
 	},
