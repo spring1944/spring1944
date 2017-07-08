@@ -17,6 +17,7 @@ local M2Flamethrower = FlamerClass:New{
   areaOfEffect       = 80,
   burst              = 5,
   name               = [[M2-2 Flamethrower]],
+  reloadtime	= 4,
   range              = 260,
   customparams = {
     fearaoe            = 60,

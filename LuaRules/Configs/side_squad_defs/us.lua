@@ -139,7 +139,7 @@ local usDefs = {
 		},
 		name = "Flamethrower Squad",
 		description = "4 x Flamethrower: Specialized Assault Infantry",
-		buildCostMetal = 600,
+		buildCostMetal = 508,
 		buildPic = "usflamethrower.png",
 	},
 

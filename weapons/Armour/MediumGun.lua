@@ -38,7 +38,6 @@ local QF17Pdr = MediumGun:New{
     weaponcost    = 19,
   },
 }
-
 local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
   areaOfEffect       = 90,
   weaponVelocity     = 1584,
@@ -56,7 +55,14 @@ local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
     default            = 2777,
   },
 }
-
+local QF17PdrMkVIHE = QF17PdrHE:New{
+  name               = [[QF 17Pdr Mk.VI]],
+  reloadTime         = 8.1,
+}
+local QF17PdrMkVIAP = QF17PdrAP:New{
+  name               = [[QF 17Pdr Mk.VI]],
+  reloadTime         = 8.1,
+}
 -- KwK 40 75mm L/48 (GER)
 local KwK75mmL48 = MediumGun:New{
   name               = [[7.5cm KwK 40 L/48]],
@@ -581,6 +587,8 @@ return lowerkeys({
   -- QF 17Pdr
   QF17PdrHE = QF17PdrHE,
   QF17PdrAP = QF17PdrAP,
+  QF17PdrMkVIHE = QF17PdrMkVIHE,
+  QF17PdrMkVIAP = QF17PdrMkVIAP,
   -- KwK 40 L/48
   KwK75mmL48HE = KwK75mmL48HE,
   KwK75mmL48AP = KwK75mmL48AP,
