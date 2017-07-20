@@ -52,7 +52,7 @@ local Config = {
 		px = vsx*0.31,py = vsy*0.048, --default start position
 		sx = vsx*0.4, --background size
 		
-		fontsize = 11.5*widgetScale,
+		fontsize = 8*widgetScale,
 		
 		minlines = 1, --minimal number of lines to display
 		maxlines = 6,
