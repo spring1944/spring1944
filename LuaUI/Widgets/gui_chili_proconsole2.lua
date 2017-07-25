@@ -158,396 +158,115 @@ options = {
 	lblMisc = {name='Misc. Settings', type='label'},
 	
 	error_opengl_source = {
-		name = "Filter out \'Error: OpenGL: source\' error",
-		type = 'bool',
 		value = true,
-		desc = "This filter out \'Error: OpenGL: source\' error message from ingame chat, which happen specifically in Spring 91 with Intel Mesa driver."
-		.."\nTips: the spam will be written in infolog.txt, if the file get unmanageably large try set it to Read-Only to prevent write.",
-		path = filter_path ,
-		advanced = true,
 	},
 	
 	enableConsole = {
-		name = "Enable the debug console",
-		type = 'bool',
 		value = false,
-		advanced = true,
-		OnChange = function(self)
-			if window_console then
-				if self.value then
-					screen0:AddChild(window_console)
-				else
-					screen0:RemoveChild(window_console)
-				end
-			end
-		end
 	},
 	
 	text_height_chat = {
-		name = 'Chat Text Size',
-		type = 'number',
 		value = 14,
-		min = 8, max = 30, step = 1,
-		OnChange = onOptionsChanged,
 	},
 	text_height_console = {
-		name = 'Log Text Size',
-		type = 'number',
 		value = 14,
-		min = 8, max = 30, step = 1,
-		OnChange = onOptionsChanged,
 	},
 	
 	highlighted_text_height = {
-		name = 'Highlighted Text Size',
-		type = 'number',
 		value = 16,
-		min = 8, max = 30, step = 1,
-		OnChange = onOptionsChanged,
 	},
 	clickable_points = {
-		name = "Clickable points and labels",
-		type = 'bool',
 		value = true,
-		OnChange = onOptionsChanged,
-		advanced = true,
 	},
 	
 	-- TODO work in progress
 	dedupe_messages = {
-		name = "Dedupe messages",
-		type = 'bool',
 		value = true,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		noHotkey = true,
-		path = dedupe_path,
 	},
 	dedupe_points = {
-		name = "Dedupe points and labels",
-		type = 'bool',
 		value = true,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		noHotkey = true,
-		path = dedupe_path,
 	},
 	highlight_all_private = {
-		name = "Highlight all private messages",
-		type = 'bool',
 		value = true,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
 	highlight_filter_allies = {
-		name = "Check allies messages for highlight",
-		type = 'bool',
 		value = true,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
 	highlight_filter_enemies = {
-		name = "Check enemy messages for highlight",
-		type = 'bool',
 		value = true,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
 	highlight_filter_specs = {
-		name = "Check spec messages for highlight",
-		type = 'bool',
 		value = true,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
 	highlight_filter_other = {
-		name = "Check other messages for highlight",
-		type = 'bool',
 		value = false,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
---[[
-	highlight_filter = {
-		name = 'Highlight filter',
-		type = 'list',
-		OnChange = onOptionsChanged, -- NO NEED
-		value = 'allies',
-		items = {
-			{ key = 'disabled', name = "Disabled" },
-			{ key = 'allies', name = "Highlight only allies messages" },
-			{ key = 'all', name = "Highlight all messages" },
-		},
-		advanced = true,
-	},
---]]
-	
-	--[[
-	highlight_surround = {
-		name = "Surround highlighted messages",
-		type = 'bool',
-		value = true,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		path = hilite_path,
-	},
-	--]]
 	highlight_sound = {
-		name = "Sound for highlighted messages",
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		noHotkey = true,
-		path = hilite_path,
 	},
 	hideSpec = {
-		name = "Hide Spectator Chat",
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = false,
-		path = filter_path,
 	},
 	hideAlly = {
-		name = "Hide Ally Chat",
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		path = filter_path,
 	},
 	hidePoint = {
-		name = "Hide Points",
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		path = filter_path,
 	},
 	hideLabel = {
-		name = "Hide Labels",         
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		path = filter_path,
 	},
 	hideLog = {
-		name = "Hide Engine Logging Messages",
-		type = 'bool',
 		value = false,
-		OnChange = onOptionsChanged,
-		advanced = true,
-		path = filter_path,
 	},
 	max_lines = {
-		name = 'Maximum Lines (20-100)',
-		type = 'number',
 		value = 60,
-		min = 20, max = 100, step = 1, 
-		OnChange = onOptionsChanged,
 	},
 	
 	color_chat = {
-		name = 'Everyone chat text',
-		type = 'colors',
 		value = { 1, 1, 1, 1 },
-		OnChange = onOptionsChanged,
-		path = color_path,
 	},
 	color_ally = {
-		name = 'Ally text',
-		type = 'colors',
 		value = { 0.2, 1, 0.2, 1 },
-		OnChange = onOptionsChanged,
-		path = color_path,
 	},
 	color_other = {
-		name = 'Other text',
-		type = 'colors',
 		value = { 0.6, 0.6, 0.6, 1 },
-		OnChange = onOptionsChanged,
-		path = color_path,
 	},
 	color_spec = {
-		name = 'Spectator text',
-		type = 'colors',
 		value = { 0.8, 0.8, 0.8, 1 },
-		OnChange = onOptionsChanged,
-		path = color_path,
 	},
-	--[[
-	color_dup = {
-		name = 'Duplicate message mark',
-		type = 'colors',
-		value = { 1, 0.2, 0.2, 1 },
-		OnChange = onOptionsChanged,
-		path = dedupe_path,
-	},
-	--]]
 	color_highlight = {
-		name = 'Highlight mark',
-		type = 'colors',
 		value = { 1, 1, 0.2, 1 },
-		OnChange = onOptionsChanged,
-		path = hilite_path,
 	},
 	color_chat_background = {
-		name = "Chat Background color",
-		type = "colors",
 		value = { 0, 0, 0, 0},
-		OnChange = function(self) 
-			scrollpanel_chat.backgroundColor = self.value
-			scrollpanel_chat.borderColor = self.value
-			scrollpanel_chat:Invalidate()
-		end,
-		path = color_path,
 	},
 	color_console_background = {
-		name = "Console Background color",
-		type = "colors",
 		value = { 0, 0, 0, 0},
-		OnChange = function(self)
-			-- [[
-			scrollpanel_console.backgroundColor = self.value
-			scrollpanel_console.borderColor = self.value
-			scrollpanel_console:Invalidate()
-			--]]
-			window_console.backgroundColor = self.value
-			window_console.color = self.value
-			window_console:Invalidate()
-		end,
-		path = color_path,
 	},
-	--[[
-	mousewheel = {
-		name = "Scroll with mousewheel",
-		type = 'bool',
-		value = false,
-		OnChange = function(self) scrollpanel_console.ignoreMouseWheel = not self.value; end,
-	},
-	--]]
 	defaultAllyChat = {
-		name = "Default ally chat",
-		desc = "Sets default chat mode to allies at game start",
-		type = 'bool',
 		value = true,
-		noHotkey = true,
 	},
 	defaultBacklogEnabled = {
-		name = "Enable backlog at start",
-		desc = "Starts with the backlog chat enabled.",
-		type = 'bool',
 		value = false,
-		noHotkey = true,
-	},
-	toggleBacklog = {
-		name = "Toggle backlog",
-		desc = "The toggle backlog button is here to let you hotkey this action.",
-		type = 'button',
 	},
 	mousewheelBacklog = {
-		name = "Mousewheel Backlog",
-		desc = "Scroll the backlog chat with the mousewheel.",
-		type = 'bool',
 		value = true,
-		noHotkey = true,
-		OnChange = function(self)
-			scrollpanel_backchat.ignoreMouseWheel = not options.mousewheelBacklog.value
-			scrollpanel_backchat:Invalidate()
-		end,
 	},
 	enableSwap = {
-		name = "Backlog Arrow",
-		desc = "Enable the button to swap between chat and backlog chat.",
-		type = 'bool',
 		value = true,
-		noHotkey = true,
-		OnChange = function(self)
-			if self.value then
-				window_chat:AddChild(backlogButton)
-				if options.enableChatBackground.value then
-					window_chat:RemoveChild(inputspace)
-				end
-				inputspace = WG.Chili.ScrollPanel:New{
-					x = 0,
-					bottom = 0,
-					right = inputsize,
-					height = inputsize,
-					backgroundColor = {1,1,1,1},
-					borderColor = {0,0,0,1},
-					--backgroundColor = {1,1,1,1},
-				}
-				if options.enableChatBackground.value then
-					window_chat:AddChild(inputspace)
-				end
-			else
-				window_chat:RemoveChild(backlogButton)
-				if options.enableChatBackground.value then
-					window_chat:RemoveChild(inputspace)
-				end
-				inputspace = WG.Chili.ScrollPanel:New{
-					x = 0,
-					bottom = 0,
-					right = 0,
-					height = inputsize,
-					backgroundColor = {1,1,1,1},
-					borderColor = {0,0,0,1},
-					--backgroundColor = {1,1,1,1},
-				}
-				if options.enableChatBackground.value then
-					window_chat:AddChild(inputspace)
-				end
-			end
-			window_chat:Invalidate()
-		end,
 	},
 	changeFont = {
-		name = "Change message entering font.",
-		desc = "With this enabled the text-entering font will be changed to match the chat. May cause Spring to competely lock up intermittently on load. Requires reload to update.",
-		type = 'bool',
 		value = false,
-		noHotkey = true,
-		advanced = true,
 	},
 	enableChatBackground = {
-		name = "Enable chat background.",
-		desc = "Enables a background for the text-entering box.",
-		type = 'bool',
 		value = false,
-		noHotkey = true,
-		advanced = true,
-		OnChange = function(self)
-			if self.value then
-				window_chat:AddChild(inputspace)
-			else
-				window_chat:RemoveChild(inputspace)
-			end
-			scrollpanel_console:Invalidate()
-		end,
 	},
 	backchatOpacity = {
-		name = "Backlog Border Opacity",
-		type = 'number',
 		value = 0.5,
-		min = 0, max = 1, step = 0.05,
-		OnChange = function(self)
-			scrollpanel_backchat.borderColor = {0,0,0,self.value}
-			scrollpanel_backchat:Invalidate()
-		end,
 	},
 	autohide_text_time = {
-		name = "Text decay time",
-		type = 'number',
 		value = 20,
-		min = 10, max = 60, step = 5,
-		OnChange = function() decayTime = options.autohide_text_time.value end,
 	},
 	
 }
@@ -1175,8 +894,6 @@ local function SwapBacklog()
 	end
 	showingBackchat = not showingBackchat
 end
-
-options.toggleBacklog.OnChange = SwapBacklog
 
 -----------------------------------------------------------------------
 -- callins
