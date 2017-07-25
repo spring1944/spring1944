@@ -2,16 +2,16 @@
 --------------------------------------------------------------------------------
 
 function widget:GetInfo()
-  return {
-    name      = "Chili Pro Console2",
-    desc      = "v2.004 Chili Chat Pro Console.",
-    author    = "CarRepairer (adapted to S44 by Jose Luis Cercos-Pita)",
-    date      = "2014-04-20",
-    license   = "GNU GPL, v2 or later",
-    layer     = 50,
-    experimental = false,
-    enabled   = true,
-  }
+	return {
+		name         = "Chili Pro Console2",
+		desc         = "v2.004 Chili Chat Pro Console.",
+		author       = "CarRepairer (adapted to S44 by Jose Luis Cercos-Pita)",
+		date         = "2014-04-20",
+		license      = "GNU GPL, v2 or later",
+		layer        = 50,
+		experimental = false,
+		enabled      = true,
+	}
 end
 
 include("keysym.h.lua")
@@ -145,7 +145,7 @@ local highlightPattern -- currently based on player name -- TODO add configurabl
 local firstEnter = true --used to activate ally-chat at game start. To run once
 local noAlly = false	--used to skip the ally-chat above. eg: if 1vs1 skip ally-chat
 
-local decayTime  = 20 
+local decayTime = 20 
 
 local lastMsgChat, lastMsgBackChat, lastMsgConsole
 
@@ -285,23 +285,22 @@ end
 -- TODO : should these pattern/escape functions be moved to some shared file/library?
 
 local function nocase(s)
-  return string.gsub(s, "%a", function (c)
+	return string.gsub(s, "%a", function (c)
 		return string.format("[%s%s]", string.lower(c), string.upper(c))
-	  end
-  )
+	end)
 end
 
 local function escapePatternMatchChars(s)
-  return string.gsub(s, "(%W)", "%%%1")
+	return string.gsub(s, "(%W)", "%%%1")
 end
 
 local function caseInsensitivePattern(s)
-  return nocase(escapePatternMatchChars(s))
+	return nocase(escapePatternMatchChars(s))
 end
 
 -- local widget only
 function getMessageRuleOptionName(msgtype, suboption)
-  return msgtype .. "_" .. suboption
+	return msgtype .. "_" .. suboption
 end
 
 --[[
@@ -328,21 +327,21 @@ for msgtype,rule in pairs(MESSAGE_RULES) do
 			end
 		end
 		options[option_name] = o
-    end
+	end
 end
 
 local function getOutputFormat(msgtype)
-  local rule = MESSAGE_RULES[msgtype]
-  if not rule then
-	Spring.Echo("UNKNOWN MESSAGE TYPE: " .. msgtype or "NiL")
-	return
-  elseif rule.output then -- rule has multiple user-selectable output formats
-    local option_name = getMessageRuleOptionName(msgtype, "output_format")
-    local value = options[option_name].value
-    return rule.output[value].format
-  else -- rule has only 1 format defined
-	return rule.format
-  end
+	local rule = MESSAGE_RULES[msgtype]
+	if not rule then
+		Spring.Echo("UNKNOWN MESSAGE TYPE: " .. msgtype or "NiL")
+		return
+	elseif rule.output then -- rule has multiple user-selectable output formats
+		local option_name = getMessageRuleOptionName(msgtype, "output_format")
+		local value = options[option_name].value
+		return rule.output[value].format
+	else -- rule has only 1 format defined
+		return rule.format
+	end
 end
 --]]
 
@@ -372,9 +371,9 @@ local function detectHighlight(msg)
 		msg.highlight = true
 		return
 	end
-	
---	Spring.Echo("msg.source = " .. (msg.source or 'NiL'))
-	
+
+	-- Spring.Echo("msg.source = " .. (msg.source or 'NiL'))
+
 	if msg.source == 'ally' and not options.highlight_filter_allies.value
 	or msg.source == 'enemy' and not options.highlight_filter_enemies.value
 	or msg.source == 'spec' and not options.highlight_filter_specs.value
@@ -406,7 +405,6 @@ local function escape_lua_pattern(s)
 		["\0"] = "%z";
 	}
 
-  
 	return (s:gsub(".", matches))
 end
 
@@ -491,7 +489,7 @@ local function AddMessage(msg, target, remake)
 	if hideMessage(msg) or (not WG.Chili) then
 		return
 	end
-	
+
 	local stack
 	local fade
 	local size
@@ -512,8 +510,8 @@ local function AddMessage(msg, target, remake)
 		size = options.text_height_chat.value
 		stack = stack_backchat
 		lastMsg = lastMsgBackChat
-	end	
-	
+	end
+
 	-- TODO betterify this / make configurable
 	--[[
 	local highlight_sequence1 = (msg.highlight and options.highlight_surround.value and (incolor_highlight .. HIGHLIGHT_SURROUND_SEQUENCE_1) or '')
@@ -533,23 +531,23 @@ local function AddMessage(msg, target, remake)
 		end
 		return
 	end
-	
+
 	local control 
 	local sourceTextBox
 	local message
 	local messageTextBox
 	local flagButton
-	
+
 	local messageText = msg.text
 	if target == 'chat' or target == 'backchat' then
 		messageText = msg.textFormatted
 	end
-	
+
 	--colors
 	local messageColor = GetColor(msg)
-	
+
 	local nameColor = teamColors[msg.source2] or {1,1,1,1}
-	
+
 	messageTextBox = WG.Chili.TextBox:New{
 		width = '100%',
 		align = "left",
@@ -574,7 +572,7 @@ local function AddMessage(msg, target, remake)
 			color         = messageColor,
 		}
 	}
-	
+
 	local messageTextBoxCont = WG.Chili.StackPanel:New{
 		--width = '100%',
 		orientation='horizontal';
@@ -587,8 +585,8 @@ local function AddMessage(msg, target, remake)
 		itemMargin  = {0,0,0,0},
 		children = {messageTextBox};
 	}
-	
-	
+
+
 	sourceTextBox = WG.Chili.Label:New{
 		caption = msg.source2,
 		width = LEFTCOLWIDTH,
@@ -606,10 +604,10 @@ local function AddMessage(msg, target, remake)
 			-- outlineWidth = 3,
 			-- outlineWeight = 10,
 			-- outline = true,
-			color         = nameColor,
+			color = nameColor,
 		}
 	}
-	
+
 	local controlChildren = {sourceTextBox, messageTextBoxCont}
 	if msg.point then
 		flagButton = WG.Chili.Button:New{
@@ -647,7 +645,7 @@ local function AddMessage(msg, target, remake)
 		--columns=2,
 		width = '100%',
 		orientation = "horizontal",
-		padding =  {0,0,0,0},
+		padding = {0,0,0,0},
 		margin = {0,0,0,0},
 		--itemPadding = {5,5,5,5};
 		--backgroundColor = {0,0,0,0.5};
@@ -657,13 +655,13 @@ local function AddMessage(msg, target, remake)
 		centerItems = false,
 		children = controlChildren;		
 	}
-	
+
 	if target == 'chat' or target == 'backchat' then
 		stack:AddChild(control, false)
 	else
 		stack:AddChild(messageTextBox, false)
 	end
-	
+
 	if fade then
 		AddControlToFadeTracker(control)
 		AddControlToFadeTracker(messageTextBox, 'text')
@@ -672,9 +670,8 @@ local function AddMessage(msg, target, remake)
 			AddControlToFadeTracker(flagButton, 'button')
 		end
 	end
-	
+
 	--[[
-	
 		elseif WG.alliedCursorsPos and msg.player and msg.player.id then --message is regular chat, make hidden button
 			local cur = WG.alliedCursorsPos[msg.player.id]
 			if cur then
@@ -692,7 +689,7 @@ local function AddMessage(msg, target, remake)
 			end
 		end
 	--]]
-	
+
 	if target == 'chat' then
 		lastMsgChat = messageTextBox
 	elseif target == 'backchat' then
@@ -702,7 +699,6 @@ local function AddMessage(msg, target, remake)
 	end
 
 	stack:UpdateClientArea()
-		
 end 
 
 local function setupPlayers(playerID)
@@ -772,11 +768,11 @@ function RemakeConsole()
 	for i=1, #stack_console.children do
 		stack_console.children[1]:Dispose() --dispose/disconnect all children (safer)
 	end
-	
+
 	for i=1, #stack_backchat.children do
 		stack_backchat.children[1]:Dispose() --dispose/disconnect all children (safer)
 	end
-	
+
 	-- FIXME : messages collection changing while iterating (if max_lines option has been shrinked)
 	for i = 1, #chatMessages do 
 		local msg = chatMessages[i]
@@ -788,7 +784,7 @@ function RemakeConsole()
 		AddMessage(msg, 'console', true )
 	end
 	removeToMaxLines()
-	
+
 end
 
 local function ShowInputSpace()
@@ -822,7 +818,6 @@ local function MakeMessageStack(margin)
 end
 
 local function MakeMessageWindow(name, enabled)
-
 	local x,y,bottom,width,height
 	local screenWidth, screenHeight = Spring.GetWindowGeometry()
 	if name == "ProChat" then
@@ -845,7 +840,7 @@ local function MakeMessageWindow(name, enabled)
 			y = 50 -- resource bar height
 		end
 	end
-	
+
 	return WG.Chili.Window:New{
 		parent = (enabled and screen0) or nil,
 		margin = { 0, 0, 0, 0 },
@@ -902,7 +897,6 @@ end
 
 function widget:KeyPress(key, modifier, isRepeat)
 	if (key == KEYSYMS.RETURN) then
-
 		if noAlly then
 			firstEnter = false --skip the default-ally-chat initialization if there's no ally. eg: 1vs1
 		end
@@ -912,7 +906,6 @@ function widget:KeyPress(key, modifier, isRepeat)
 			end
 			firstEnter = false
 		end
-		
 		ShowInputSpace()
 	else
 		HideInputSpace()
@@ -956,48 +949,48 @@ end
 function widget:AddConsoleMessage(msg)
 	if options.error_opengl_source.value and msg.msgtype == 'other' and (msg.argument):find('Error: OpenGL: source') then return end
 	if msg.msgtype == 'other' and (msg.argument):find('added point') then return end
-	
+
 	local isChat = isChat(msg)
 	local isPoint = msg.msgtype == "point" or msg.msgtype == "label"
 	local messages = isChat and chatMessages or consoleMessages
-	
+
 	if #messages > 0
 		and messages[#messages].text == msg.text 
 		and (isPoint and options.dedupe_points.value or options.dedupe_messages.value)
 		then
-		
+
 		if isPoint then
 			-- update MapPoint position with most recent, as it is probably more relevant
 			messages[#messages].point = msg.point
 		end
-		
+
 		messages[#messages].dup = messages[#messages].dup + 1
-		
+
 		if isChat then
 			AddMessage(messages[#messages], 'chat')
 			AddMessage(messages[#messages], 'backchat')
 		else
 			AddMessage(messages[#messages], 'console')
 		end
-				
+
 		return
-	
+
 	end
-	
+
 	msg.dup = 1
 	
 	detectHighlight(msg)
 	formatMessage(msg) -- does not handle dedupe or highlight
-	
+
 	messages[#messages + 1] = msg
-	
+
 	if isChat then 
 		AddMessage(msg, 'chat')
 		AddMessage(msg, 'backchat')
 	else
 		AddMessage(msg, 'console')
 	end
-	
+
 	if msg.highlight and options.highlight_sound.value then
 		PlaySound("highlight")
 	elseif (msg.msgtype == "player_to_allies") then -- FIXME not for sent messages
@@ -1009,9 +1002,9 @@ function widget:AddConsoleMessage(msg)
 	if #messages > MAX_STORED_MESSAGES then
 		table.remove(messages, 1)
 	end
-	
+
 	removeToMaxLines()
-	
+
 	-- if playername == myName then
 		if WG.enteringText then
 			HideInputSpace()
@@ -1028,7 +1021,6 @@ local fadePeriod = 0.1
 local fadeLength = 4
 
 function widget:Update(s)
-
 	timer = timer + s
 	fadeTimer = fadeTimer + s
 	
@@ -1074,7 +1066,7 @@ function widget:Update(s)
 			
 		end
 	end
-	
+
 	if firstUpdate then
 		if options.defaultBacklogEnabled.value then
 			SwapBacklog()
@@ -1125,7 +1117,10 @@ function widget:AddConsoleLine(msg, priority)
 		return -- ignore
 	end
 
-	--censor message for muted player. This is mandatory, everyone is forced to close ears to muted players (ie: if it is optional, then everyone will opt to hear muted player for spec-cheat info. Thus it will defeat the purpose of mute)
+	-- censor message for muted player. This is mandatory, everyone is forced to
+	-- close ears to muted players (ie: if it is optional, then everyone will
+	-- opt to hear muted player for spec-cheat info. Thus it will defeat the
+	-- purpose of mute)
 	local newMsg = { text = msg, priority = priority }
 	MessageProcessor:ProcessConsoleLine(newMsg) --chat_preprocess.lua
 	if newMsg.msgtype ~= 'other' and newMsg.msgtype ~= 'autohost' and newMsg.msgtype ~= 'userinfo' and newMsg.msgtype ~= 'game_message' then 
@@ -1153,8 +1148,7 @@ function widget:AddConsoleLine(msg, priority)
 			return
 		end
 	end
-	
-    
+
 	if MUTE_LOBBY and newMsg.msgtype == 'autohost' then
 		local spectating = select(1, Spring.GetSpectatingState())
 		if (not spectating) and newMsg.argument then
@@ -1191,7 +1185,7 @@ function widget:AddConsoleLine(msg, priority)
 	if newMsg.msgtype == 'userinfo' and newMsg.argument then
 		return
 	end
-  
+
 	if newMsg.msgtype == 'point' or newMsg.msgtype == 'label' then
 		return -- ignore all console messages about points... those come in through the MapDrawCmd callin
 	end
@@ -1244,15 +1238,15 @@ function widget:Initialize()
 	end
 
 	screen0 = WG.Chili.Screen0
-	
+
 	Spring.SendCommands("bind Any+enter  chat")
-	
+
 	stack_console = MakeMessageStack(1)
-	
+
 	stack_chat = MakeMessageStack(0)
-	
+
 	stack_backchat = MakeMessageStack(1)
-	
+
 	inputspace = WG.Chili.ScrollPanel:New{
 		x = 0,
 		bottom = 0,
@@ -1281,7 +1275,7 @@ function widget:Initialize()
 		OnClick = {SwapBacklog},
 		children={ backlogButtonImage },
 	}
-	
+
 	scrollpanel_chat = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 1,1,1,4 },
@@ -1300,7 +1294,7 @@ function widget:Initialize()
 		verticalScrollbar = false,
 		horizontalScrollbar = false,
 	}
-	
+
 	--spacer that forces chat to be scrolled to bottom of chat window
 	WG.Chili.Panel:New{
 		width = '100%',
@@ -1308,7 +1302,7 @@ function widget:Initialize()
 		backgroundColor = {0,0,0,0},
 		parent = stack_chat,
 	}
-	
+
 	scrollpanel_backchat = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 3,3,3,3 },
@@ -1325,7 +1319,7 @@ function widget:Initialize()
 			stack_backchat,
 		},
 	}
-	
+
 	scrollpanel_console = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 5, 5, 5, 5 },
@@ -1342,27 +1336,27 @@ function widget:Initialize()
 			stack_console,
 		},
 	}
-	
+
 	window_chat = MakeMessageWindow("ProChat", true)
 	window_chat:AddChild(scrollpanel_chat)
 	window_chat:AddChild(backlogButton)
 	if options.enableChatBackground.value then
 		window_chat:AddChild(inputspace)
 	end
-	
+
 	window_console = MakeMessageWindow("ProConsole", options.enableConsole.value)
 	window_console:AddChild(scrollpanel_console)
-	
+
 	RemakeConsole()
 	local buffer = MessageProcessor:ProcessConsoleBuffer(options.max_lines.value)
 	for i=1,#buffer do
-	  widget:AddConsoleMessage(buffer[i])
+		widget:AddConsoleMessage(buffer[i])
 	end
-	
+
 	Spring.SendCommands({"console 0"})
-	
+
 	HideInputSpace()
- 	
+
 	self:LocalColorRegister()
 end
 
@@ -1379,8 +1373,6 @@ function widget:Shutdown()
 	SetInputFontSize(20)
 	Spring.SendCommands({"console 1", "inputtextgeo default"}) -- not saved to spring's config file on exit
 	Spring.SetConfigString("InputTextGeo", "0.26 0.73 0.02 0.028") -- spring default values
-	
+
 	self:LocalColorUnregister()
 end
-
-	
