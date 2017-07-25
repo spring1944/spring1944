@@ -872,7 +872,7 @@ local function AddMessage(msg, target, remake)
 	
 	sourceTextBox = WG.Chili.Label:New{
 		caption = msg.source2,
-		width = LEFTCOLWIDTH ,
+		width = LEFTCOLWIDTH,
 		align = "right",
 		fontsize = size,
 		--valign = "ascender",
@@ -884,14 +884,12 @@ local function AddMessage(msg, target, remake)
 		--autoObeyLineHeight=true,
 		
 		font = {
-			outlineWidth = 3,
-			outlineWeight = 10,
-			outline = true,
+			-- outlineWidth = 3,
+			-- outlineWeight = 10,
+			-- outline = true,
 			color         = nameColor,
 		}
 	}
-	
-	local tbheight = 20
 	
 	local controlChildren = {sourceTextBox, messageTextBoxCont}
 	if msg.point then
@@ -1479,7 +1477,7 @@ function widget:AddConsoleLine(msg, priority)
   
 	if newMsg.msgtype == 'point' or newMsg.msgtype == 'label' then
 		return -- ignore all console messages about points... those come in through the MapDrawCmd callin
-	end    
+	end
 	self:AddConsoleMessage(newMsg)
 end
 
