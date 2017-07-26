@@ -161,6 +161,7 @@ local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
 	name				= "Scoped Solothurn S-18/100",
 	description			= "Scoped Long Range Light Anti-Tank",
 	iconType			= "itascopedsolo",
+	buildpic			= "ITAeliteSoloAT.png",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "ScopedSolothurn",

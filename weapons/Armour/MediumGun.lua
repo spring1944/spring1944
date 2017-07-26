@@ -202,6 +202,7 @@ local M375mmAP = MediumAP:New(M375mm, true):New{
 -- M7 76mm (USA)
 local M7 = MediumGun:New{
   name               = [[M7 76.2mm]],
+  movingaccuracy	= 350, -- HVSS buff
   range              = 1545,
   reloadTime         = 6.75,
   soundStart         = [[US_76mm]],
@@ -212,13 +213,13 @@ local M7 = MediumGun:New{
 
 local M7HE = MediumHE:New(M7, true):New{
   areaOfEffect       = 74,
-  weaponVelocity     = 1646,
+  weaponVelocity     = 1586,
   damage = {
     default            = 780,
   },  
 }
 local M7AP = MediumAP:New(M7, true):New{
-  weaponVelocity     = 1584, -- lower than HE?
+  weaponVelocity     = 1674, 
   customparams = {
     armor_penetration_1000m = 81,
     armor_penetration_100m  = 100,
@@ -338,7 +339,7 @@ local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
 }
 
 local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
-  weaponVelocity     = 1358,
+  weaponVelocity     = 1658,
   customparams = {
     armor_penetration_1000m = 90,
     armor_penetration_100m  = 118,

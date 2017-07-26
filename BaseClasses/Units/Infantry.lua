@@ -77,7 +77,7 @@ local SMGInf = Infantry:New{
 local LMGInf = Infantry:New{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
-	buildCostMetal		= 200, -- TODO: needed?
+	buildCostMetal		= 75, -- TODO: needed?
 	
 	weapons = {
 		[1] = { -- Rifle
@@ -90,7 +90,7 @@ local HMGInf = Infantry:New{
 	description			= "Heavy Machinegun",
 	acceleration		= 0.2,
 	iconType			= "lightmg",
-	buildCostMetal		= 700, -- TODO: needed?
+	buildCostMetal		= 150, -- TODO: needed?
 	mass				= 75,
 	maxVelocity			= 0.8,
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
@@ -164,7 +164,7 @@ local FlameInf = Infantry:New{
 	description			= "Close Range Heavy Assault Infantry",
 	iconType			= "flame",
 	acceleration		= 0.2,
-	buildCostMetal		= 300, -- TODO: needed?
+	buildCostMetal		= 60, -- TODO: needed?
 	explodeAs			= "Small_Explosion",
 	maxVelocity			= 1,
 
