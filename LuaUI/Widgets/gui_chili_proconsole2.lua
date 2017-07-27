@@ -130,6 +130,8 @@ local scrollpanel_chat, scrollpanel_console, scrollpanel_backchat
 local inputspace
 local backlogButton
 local backlogButtonImage
+local consoleButton
+local consoleButtonImage
 
 local echo = Spring.Echo
 
@@ -822,7 +824,6 @@ local function MakeMessageWindow(name, enabled)
 	local x,y,bottom,width,height
 	local screenWidth, screenHeight = Spring.GetWindowGeometry()
 	if name == "ProChat" then
-		local screenWidth, screenHeight = Spring.GetWindowGeometry()
 		local integralWidth = math.max(350, math.min(450, screenWidth*screenHeight*0.0004))
 		local integralHeight = math.min(screenHeight/4.5, 200*integralWidth/450)
 		width = 450
@@ -889,6 +890,16 @@ local function SwapBacklog()
 		backlogButtonImage:Invalidate()
 	end
 	showingBackchat = not showingBackchat
+end
+
+local showingConsole = options.enableConsole.value
+local function SwitchConsole()
+	if showingConsole then
+		screen0:RemoveChild(window_console)
+	else
+		screen0:AddChild(window_console)
+	end
+	showingConsole = not showingConsole
 end
 
 -----------------------------------------------------------------------
@@ -1277,6 +1288,26 @@ function widget:Initialize()
 		children={ backlogButtonImage },
 	}
 
+	consoleButtonImage = WG.Chili.Image:New {
+		width = inputsize - 7,
+		height = inputsize - 7,
+		keepAspect = true,
+		--color = {0.7,0.7,0.7,0.4},
+		file = 'LuaUI/Images/console.png',
+	}
+	consoleButton = WG.Chili.Button:New{
+		right=inputsize,
+		bottom=1,
+		width = inputsize - 3,
+		height = inputsize - 3,
+		padding = { 1,1,1,1 },
+		backgroundColor = {1,1,1,1},
+		caption = '',
+		tooltip = 'Show the console',
+		OnClick = {SwitchConsole},
+		children={ consoleButtonImage },
+	}
+
 	scrollpanel_chat = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 1,1,1,4 },
@@ -1341,6 +1372,7 @@ function widget:Initialize()
 	window_chat = MakeMessageWindow("ProChat", true)
 	window_chat:AddChild(scrollpanel_chat)
 	window_chat:AddChild(backlogButton)
+	window_chat:AddChild(consoleButton)
 	if options.enableChatBackground.value then
 		window_chat:AddChild(inputspace)
 	end
