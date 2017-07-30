@@ -18,6 +18,25 @@ local usDefs = {
 		buildCostMetal = 570,
 		buildPic = "USRifle.png",
 	},
+	["us_platoon_hq_pioneers"] =
+	{
+		members = {
+			"usrifle",
+			"usbazooka",
+			"usbazooka",
+			"usrifle",
+			"usflamethrower",
+			"usrifle",
+			"usrifle",
+			"usrifle",
+			"usmortar",
+			"usmg",
+		},
+		name = "Pioneer Squad",
+		description = "5 x Garand Rifle, 1 x Browning .30 Cal Machinegun, 1 x Flamethrower, 2 x Bazooka, 1 x M1 Mortar: Pioneer HQ Squad",
+		buildCostMetal = 1970,
+		buildPic = "USPioneer.png",
+	},
 
 	["us_platoon_rifle"] =
 	{
