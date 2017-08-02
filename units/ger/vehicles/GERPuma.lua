@@ -5,6 +5,9 @@ local GERPuma = HeavyArmouredCar:New{
 	acceleration		= 0.052,
 	trackOffset			= 10,
 	trackWidth			= 13,
+	brakeRate			= 0.72,
+	turnrate			= 800,
+	movementClass		= "TANK_6pluswheels",
 
 	weapons = {
 		[1] = {
