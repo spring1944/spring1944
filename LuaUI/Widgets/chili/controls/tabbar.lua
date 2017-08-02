@@ -77,4 +77,22 @@ function TabBar:Select(tabname)
 end
 
 
+function TabBar:Remove(tabname)
+	if #self.children < 2 then
+		return false
+	end
+
+	for i = 1, #self.children do
+		local c = self.children[i]
+		if c.caption == tabname then
+			c:Dispose()
+			-- selects next tab
+			c = self.children[math.min(i, #self.children)]
+			self:Select(c.caption)
+			return true
+		end
+	end
+
+	return false
+end
 --//=============================================================================

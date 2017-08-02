@@ -211,6 +211,12 @@ function EditBox:MouseUp(...)
 	return self
 end
 
+function EditBox:Select(startIndex, endIndex)
+	self.selStart = startIndex
+	self.selEnd = endIndex
+	self:Invalidate()
+end
+
 function EditBox:ClearSelected()
 	local left = self.selStart
 	local right = self.selEnd
@@ -243,22 +249,46 @@ function EditBox:KeyPress(key, mods, isRepeat, label, unicode, ...)
 	-- deletions
 	elseif key == Spring.GetKeyCode("backspace") then
 		if self.selStart == nil then
-			self.text, self.cursor = Utf8BackspaceAt(txt, cp)
+			if mods.ctrl then
+				repeat
+					self.text, self.cursor = Utf8BackspaceAt(self.text, self.cursor)
+				until self.cursor == 1 or (self.text:sub(self.cursor-2, self.cursor-2) ~= " " and self.text:sub(self.cursor-1, self.cursor-1) == " ")
+			else
+				self.text, self.cursor = Utf8BackspaceAt(self.text, self.cursor)
+			end
 		else
 			self:ClearSelected()
 		end
 	elseif key == Spring.GetKeyCode("delete") then
 		if self.selStart == nil then
+			if mods.ctrl then
+				repeat
+					self.text = Utf8DeleteAt(self.text, self.cursor)
+				until self.cursor >= #self.text-1 or (self.text:sub(self.cursor, self.cursor) == " " and self.text:sub(self.cursor+1, self.cursor+1) ~= " ")
+			else
 			self.text = Utf8DeleteAt(txt, cp)
+			end
 		else
 			self:ClearSelected()
 		end
 
 	-- cursor movement
 	elseif key == Spring.GetKeyCode("left") then
+		if mods.ctrl then
+			repeat
+				self.cursor = Utf8PrevChar(txt, self.cursor)
+			until self.cursor == 1 or (txt:sub(self.cursor-1, self.cursor-1) ~= " " and txt:sub(self.cursor, self.cursor) == " ")
+		else
 		self.cursor = Utf8PrevChar(txt, cp)
+		end
 	elseif key == Spring.GetKeyCode("right") then
+		if mods.ctrl then
+			repeat
+				self.cursor = Utf8NextChar(txt, self.cursor)
+			until self.cursor >= #txt-1 or (txt:sub(self.cursor-1, self.cursor-1) == " " and txt:sub(self.cursor, self.cursor) ~= " ")
+		else
 		self.cursor = Utf8NextChar(txt, cp)
+		end
 	elseif key == Spring.GetKeyCode("home") then
 		self.cursor = 1
 	elseif key == Spring.GetKeyCode("end") then
