@@ -20,7 +20,7 @@ local BombClass = Weapon:New{
 	customparams = {
 		bomb               = true,
 		no_range_adjust    = true,
-		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
+		onlyTargetCategory = "BUILDING HARDVEH OPENVEH SHIP LARGESHIP TURRET",
 		badtargetcategory  = "SHIP LARGESHIP",
 		damagetype         = [[explosive]],
 	},

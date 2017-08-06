@@ -27,7 +27,6 @@ local RS82Rocket = AirRocket:New{
   wobble             = 2100,
   soundStart         = [[RUS_RS82]],
   size		     = 0.5,
-  leadLimit	     = 500,
   reloadtime         = 1.8,
   customparams = {
     damagetype         = [[explosive]],
