@@ -1016,7 +1016,7 @@ function Control:_SetupRTT(fnc, self_, drawInContentRect, ...)
 		end
 		gl.Color(1,1,1,1)
 --]]
-	gl.BlendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA)
+	gl.Blending("reset")
 
 	gl.StencilTest(false)
 end
@@ -1275,7 +1275,7 @@ function Control:Draw()
 			gl.Texture(0, self._tex_all)
 			gl.TexRect(0, 0, self.width, self.height)
 			gl.Texture(0, false)
-			gl.BlendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA)
+			gl.Blending("reset")
 		gl.PopMatrix()
 		return
 	elseif (self._all_dlist) then

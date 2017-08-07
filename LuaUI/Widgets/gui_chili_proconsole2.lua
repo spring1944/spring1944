@@ -10,7 +10,7 @@ function widget:GetInfo()
 		license      = "GNU GPL, v2 or later",
 		layer        = 50,
 		experimental = false,
-		enabled      = false,
+		enabled      = true,
 	}
 end
 
@@ -130,6 +130,10 @@ local scrollpanel_chat, scrollpanel_console, scrollpanel_backchat
 local inputspace
 local backlogButton
 local backlogButtonImage
+local consoleButton
+local consoleButtonImage
+local moveButton
+local moveButtonImage
 
 local echo = Spring.Echo
 
@@ -449,6 +453,7 @@ local function MessageIsChatInfo(msg)
 	string.find(msg.argument,'Sync error for') or
 	string.find(msg.argument,'Cheating is') or
 	string.find(msg.argument,'resigned') or
+	string.find(msg.argument,'Buildings set') or
 	(string.find(msg.argument,'left the game') and string.find(msg.argument,'Player'))
 	--string.find(msg.argument,'Team') --endgame comedic message. Engine message, loaded from gamedata/messages.lua (hopefully 'Team' with capital 'T' is not used anywhere else)
 end
@@ -821,7 +826,6 @@ local function MakeMessageWindow(name, enabled)
 	local x,y,bottom,width,height
 	local screenWidth, screenHeight = Spring.GetWindowGeometry()
 	if name == "ProChat" then
-		local screenWidth, screenHeight = Spring.GetWindowGeometry()
 		local integralWidth = math.max(350, math.min(450, screenWidth*screenHeight*0.0004))
 		local integralHeight = math.min(screenHeight/4.5, 200*integralWidth/450)
 		width = 450
@@ -862,15 +866,6 @@ local function MakeMessageWindow(name, enabled)
 		minHeight = MIN_HEIGHT,
 		maxHeight = 500,
 		color = { 0, 0, 0, 0 },
-		OnMouseDown = {
-			function(self) --//click on scroll bar shortcut to "Settings/HUD Panels/Chat/Console".
-				local _,_, meta,_ = Spring.GetModKeyState()
-				if not meta then return false end
-				WG.crude.OpenPath(options_path)
-				WG.crude.ShowMenu() --make epic Chili menu appear.
-				return true
-			end
-		},
 	}
 end
 
@@ -888,6 +883,34 @@ local function SwapBacklog()
 		backlogButtonImage:Invalidate()
 	end
 	showingBackchat = not showingBackchat
+end
+
+local showingConsole = options.enableConsole.value
+local function SwitchConsole()
+	if showingConsole then
+		screen0:RemoveChild(window_console)
+	else
+		screen0:AddChild(window_console)
+	end
+	showingConsole = not showingConsole
+end
+
+local draggingPos = nil
+local function StartDragging(self, x, y)
+	draggingPos = {x, y}
+	return true
+end
+local function Drag(self, x, y)
+	if not draggingPos then
+		return false
+	end
+	window_chat:SetPos(window_chat.x + x - draggingPos[1],
+	                   window_chat.y + y - draggingPos[2])
+	return true
+end
+local function StopDragging(self, x, y)
+	draggingPos = nil
+	return true
 end
 
 -----------------------------------------------------------------------
@@ -1276,6 +1299,48 @@ function widget:Initialize()
 		children={ backlogButtonImage },
 	}
 
+	consoleButtonImage = WG.Chili.Image:New {
+		width = inputsize - 7,
+		height = inputsize - 7,
+		keepAspect = true,
+		--color = {0.7,0.7,0.7,0.4},
+		file = 'LuaUI/Images/console.png',
+	}
+	consoleButton = WG.Chili.Button:New{
+		right=inputsize,
+		bottom=1,
+		width = inputsize - 3,
+		height = inputsize - 3,
+		padding = { 1,1,1,1 },
+		backgroundColor = {1,1,1,1},
+		caption = '',
+		tooltip = 'Show the console',
+		OnClick = {SwitchConsole},
+		children={ consoleButtonImage },
+	}
+
+	moveButtonImage = WG.Chili.Image:New {
+		width = inputsize - 7,
+		height = inputsize - 7,
+		keepAspect = true,
+		--color = {0.7,0.7,0.7,0.4},
+		file = 'LuaUI/Images/move.png',
+	}
+	moveButton = WG.Chili.Button:New{
+		right=2*inputsize,
+		bottom=1,
+		width = inputsize - 3,
+		height = inputsize - 3,
+		padding = { 1,1,1,1 },
+		backgroundColor = {1,1,1,1},
+		caption = '',
+		tooltip = 'Move the chat widget',
+		OnMouseDown = {StartDragging},
+		OnMouseMove = {Drag},
+		OnMouseUp = {StopDragging},
+		children={ moveButtonImage },
+	}
+
 	scrollpanel_chat = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 1,1,1,4 },
@@ -1340,6 +1405,8 @@ function widget:Initialize()
 	window_chat = MakeMessageWindow("ProChat", true)
 	window_chat:AddChild(scrollpanel_chat)
 	window_chat:AddChild(backlogButton)
+	window_chat:AddChild(consoleButton)
+	window_chat:AddChild(moveButton)
 	if options.enableChatBackground.value then
 		window_chat:AddChild(inputspace)
 	end
