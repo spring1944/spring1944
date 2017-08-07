@@ -13,7 +13,7 @@ local SWE_Vedettbat = ArmedBoat:New{
 	turnRate				= 240,	
 	weapons = {	
 		[1] = {
-			name				= "QF6Pdr57MkIIAHE",
+			name				= "SWE_57mmM95",
 		},
 	},
 

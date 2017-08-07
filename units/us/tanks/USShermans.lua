@@ -85,7 +85,7 @@ local USM4A376Sherman = ShermanBase:New{
 
 	weapons = {
 		[1] = {
-			name				= "M7AP",
+			name				= "M7APe8",
 		},
 		[2] = {
 			name				= "M7HE",

@@ -86,7 +86,7 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 14,
+		maxammo					= 21,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,

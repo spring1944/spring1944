@@ -202,7 +202,6 @@ local M375mmAP = MediumAP:New(M375mm, true):New{
 -- M7 76mm (USA)
 local M7 = MediumGun:New{
   name               = [[M7 76.2mm]],
-  movingaccuracy	= 350, -- HVSS buff
   range              = 1545,
   reloadTime         = 6.75,
   soundStart         = [[US_76mm]],
@@ -227,6 +226,9 @@ local M7AP = MediumAP:New(M7, true):New{
   damage = {
     default            = 2646,
   },
+}
+local M7APe8 = MediumGun:New{
+  movingaccuracy	= 350, -- HVSS buff
 }
 
 -- Mk22 3inch (USA)
@@ -608,6 +610,7 @@ return lowerkeys({
   -- M7 76mm
   M7HE = M7HE,
   M7AP = M7AP,
+  M7APe8 = M7APe8,
   -- Mk22 3inch
   Mk223in50 = Mk223in50,
   -- Ansaldo L/18 75mm
