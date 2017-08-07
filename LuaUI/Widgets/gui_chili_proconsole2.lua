@@ -132,6 +132,8 @@ local backlogButton
 local backlogButtonImage
 local consoleButton
 local consoleButtonImage
+local moveButton
+local moveButtonImage
 
 local echo = Spring.Echo
 
@@ -893,6 +895,24 @@ local function SwitchConsole()
 	showingConsole = not showingConsole
 end
 
+local draggingPos = nil
+local function StartDragging(self, x, y)
+	draggingPos = {x, y}
+	return true
+end
+local function Drag(self, x, y)
+	if not draggingPos then
+		return false
+	end
+	window_chat:SetPos(window_chat.x + x - draggingPos[1],
+	                   window_chat.y + y - draggingPos[2])
+	return true
+end
+local function StopDragging(self, x, y)
+	draggingPos = nil
+	return true
+end
+
 -----------------------------------------------------------------------
 -- callins
 -----------------------------------------------------------------------
@@ -1299,6 +1319,28 @@ function widget:Initialize()
 		children={ consoleButtonImage },
 	}
 
+	moveButtonImage = WG.Chili.Image:New {
+		width = inputsize - 7,
+		height = inputsize - 7,
+		keepAspect = true,
+		--color = {0.7,0.7,0.7,0.4},
+		file = 'LuaUI/Images/move.png',
+	}
+	moveButton = WG.Chili.Button:New{
+		right=2*inputsize,
+		bottom=1,
+		width = inputsize - 3,
+		height = inputsize - 3,
+		padding = { 1,1,1,1 },
+		backgroundColor = {1,1,1,1},
+		caption = '',
+		tooltip = 'Move the chat widget',
+		OnMouseDown = {StartDragging},
+		OnMouseMove = {Drag},
+		OnMouseUp = {StopDragging},
+		children={ moveButtonImage },
+	}
+
 	scrollpanel_chat = WG.Chili.ScrollPanel:New{
 		--margin = {5,5,5,5},
 		padding = { 1,1,1,4 },
@@ -1364,6 +1406,7 @@ function widget:Initialize()
 	window_chat:AddChild(scrollpanel_chat)
 	window_chat:AddChild(backlogButton)
 	window_chat:AddChild(consoleButton)
+	window_chat:AddChild(moveButton)
 	if options.enableChatBackground.value then
 		window_chat:AddChild(inputspace)
 	end
