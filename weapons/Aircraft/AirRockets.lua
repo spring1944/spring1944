@@ -10,6 +10,7 @@ local HVARRocket = AirRocket:New{
   name               = [[5-Inch HVAR Rocket]],
   range              = 900,
   reloadtime         = 2.5,
+  canAttackGround    = false,
   customparams = {
     armor_penetration  = 38,
     armor_hit_side     = [[top]],
