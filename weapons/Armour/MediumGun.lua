@@ -227,7 +227,7 @@ local M7AP = MediumAP:New(M7, true):New{
     default            = 2646,
   },
 }
-local M7APe8 = MediumGun:New{
+local M7APe8 = M7AP:New{
   movingaccuracy	= 350, -- HVSS buff
 }
 
