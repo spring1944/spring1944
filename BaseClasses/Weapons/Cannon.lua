@@ -327,6 +327,7 @@ local AutoCannon = Cannon:New{
 local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
 	heightBoostFactor  = 0,
 	range		= 860,
+  	canAttackGround    = false,
 	accuracy           = 500,
 	sprayangle	   = 1200,
 	weaponVelocity     = 1700,
