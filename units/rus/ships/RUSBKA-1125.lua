@@ -12,7 +12,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 250,	
+	turnRate				= 55,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging

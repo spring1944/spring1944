@@ -11,7 +11,7 @@ local JPN_Seta = ArmedBoat:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 250,	
+	turnRate				= 50,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging

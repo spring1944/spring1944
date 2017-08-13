@@ -6,7 +6,7 @@ local GER_SchSturmboot = InfantryLandingCraft:New{
 	maxDamage				= 950,
 	maxReverseVelocity		= 0.76,
 	maxVelocity				= 4,
-	turnRate				= 165,	
+	turnRate				= 65,	
 
 	customparams = {
 		--[[ enable me later when using LUS
