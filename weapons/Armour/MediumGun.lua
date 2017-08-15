@@ -263,7 +263,7 @@ local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
 
 local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
   range              = 851,
-  weaponVelocity     = 600,
+  weaponVelocity     = 750,
   customparams = {
     armor_penetration       = 90,
   },
@@ -312,7 +312,7 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
 }
 local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
   range              = 825,
-  weaponVelocity     = 700,
+  weaponVelocity     = 850,
   customparams = {
     armor_penetration       = 120,
   },
@@ -520,7 +520,7 @@ local Mavag_75_41MAP = MediumAP:New(Mavag_75_41M, true):New{
 -- 7,5 cm 42M páncélrobbantó gránát
 local Mavag_75_41MHEAT = HEAT:New(Mavag_75_41M, true):New{
   range              = 851,
-  weaponVelocity     = 600,
+  weaponVelocity     = 820,
   customparams = {
     armor_penetration       = 70,
   },
