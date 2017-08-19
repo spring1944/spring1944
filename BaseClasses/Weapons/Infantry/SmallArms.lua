@@ -9,6 +9,7 @@ local SmallArm = Weapon:New{
 	fireStarter        = 0,
 	impactonly         = true,
 	interceptedByShieldType = 8,
+	fireTolerance	= 5000,
 	tolerance          = 6000,
 	turret             = true,
 	weaponType         = "LaserCannon",

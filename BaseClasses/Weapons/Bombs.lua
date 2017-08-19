@@ -5,6 +5,7 @@ local BombClass = Weapon:New{
 	collideFriendly    = true,
 	explosionSpeed     = 30,
 	explosionGenerator = [[custom:HE_XXLarge]],
+	fireTolerance	= 5000,
 	heightBoostFactor  = 0,
 	highTrajectory     = 0,
 	targetBorder	   = 0.6,

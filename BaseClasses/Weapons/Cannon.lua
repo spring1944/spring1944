@@ -199,6 +199,7 @@ local AutoCannonAA = AA:New{
 
 local AntiAirGunAA = AA:New{
 	areaOfEffect       = 60,
+	explosionSpeed     = 15,
 	explosionGenerator = [[custom:HE_Medium]],
 }
 

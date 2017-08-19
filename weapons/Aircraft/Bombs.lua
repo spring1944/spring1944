@@ -163,6 +163,7 @@ local TypeF12kg = timebombClass:New{
   soundHitDry        = [[GEN_Explo_3]],
   sprayangle         = 3000,
   customparams = {
+	onlyTargetCategory = "BUILDING INFANTRY DEPLOYED TURRET",
     damagetype         = [[explosive]], -- overrides default
   },
   damage = {

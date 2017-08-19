@@ -54,6 +54,7 @@ local ATGrenadeClass = GrenadeClass:New{
 	explosionGenerator = "custom:HE_Medium",
 	movingAccuracy     = 200,
 	range              = 170,
+	fireTolerance	   = 8500,
 	predictBoost = 0.5,
 	reloadTime         = 5,
 	soundHitDry        = "GEN_Explo_3",
