@@ -1,7 +1,7 @@
 local SWEStrvM40SII = LightTank:New{
-	name				= "Stridsvagn m/40",
+	name				= "Stridsvagn m/40K",
 	buildCostMetal		= 1500,
-	maxDamage			= 750,
+	maxDamage			= 1090,
 	trackOffset			= 5,
 	trackWidth			= 18,
 
@@ -27,12 +27,12 @@ local SWEStrvM40SII = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 54, -- 13+35~63d,  13 + 30mm @ 32d gives 81!
+		armor_front			= 50, -- 13+35~63d,  13 + 30mm @ 32d gives 81!
 		armor_rear			= 18,
 		armor_side			= 18,
 		armor_top			= 5,
 		maxammo				= 18,
-		maxvelocitykmh		= 48,
+		maxvelocitykmh		= 46,
 
 	},
 }

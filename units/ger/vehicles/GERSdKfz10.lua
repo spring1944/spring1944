@@ -1,4 +1,4 @@
-local GERSdKfz10 = TruckAA:New{
+local GERSdKfz10 = ArmouredCarAA:New{
 	name				= "SdKfz 10/5",
 	buildCostMetal		= 1275,
 	maxDamage			= 499,
