@@ -104,10 +104,9 @@ local gerunits =
     "gersdkfz250",
     "gersdkfz251",
     "gersdkfz10",
-    "germarder",
     "gerkubel",
   },
-  
+
   gervehicleyard1 =
   {
     "gersdkfz9",
@@ -115,7 +114,6 @@ local gerunits =
     "gersdkfz250",
     "gersdkfz251",
     "gersdkfz10",
-    "germarder",
     "gerpuma",
     "gerkubel",
   },
@@ -129,7 +127,7 @@ local gerunits =
     "gerlefh18_truck",
     "gerflak38_truck",
   },
-  
+
   gergunyard2 =
   {
     "gersdkfz9",
@@ -138,9 +136,9 @@ local gerunits =
     "gerpak40_truck",
     "gerlefh18_truck",
 	"ger10sk18_truck",
-    "gerflak38_truck",  
+    "gerflak38_truck",
   },
-  
+
   gerspyard =
   {
     "gersdkfz9",
@@ -153,7 +151,7 @@ local gerunits =
 	"gersdkfz10",
     "gerwespe",
   },
-  
+
   gerspyard1 =
   {
     "gersdkfz9",
@@ -182,7 +180,7 @@ local gerunits =
     "gertankobstacle",
   },
 
-  gerbarracksbunker = 
+  gerbarracksbunker =
   {
     "gerhqengineer",
     "ger_platoon_rifle",
@@ -195,7 +193,7 @@ local gerunits =
     "gerleig18",
     "geropelblitz",
   },
-  
+
   gertankyard =
   {
     "gersdkfz9",
@@ -204,7 +202,7 @@ local gerunits =
     "gerpanzeriv",
     "gertiger",
   },
-  
+
   gertankyard1 =
   {
     "gersdkfz9",
@@ -214,7 +212,7 @@ local gerunits =
     "gertiger",
     "gerpanther",
   },
-  
+
   gertankyard2 =
   {
     "gersdkfz9",
@@ -239,7 +237,7 @@ local gerunits =
     "gerju87g",
     "gerfw190g",
   },
-  
+
   gerradar = {
     "ger_sortie_recon",
     "ger_sortie_interceptor",
@@ -248,7 +246,7 @@ local gerunits =
     "ger_sortie_attack",
     "ger_sortie_flying_bomb",
   },
-  
+
   gerboatyard =
   {
     "gerassaultboat",
