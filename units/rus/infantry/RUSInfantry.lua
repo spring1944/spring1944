@@ -111,7 +111,6 @@ local RUS_PTRD = ATRifleInf:New(RUSInf):New{
 
 local RUS_RPG43 = ATGrenadeInf:New(RUSInf):New{
 	name				= "RPG43",
-	acceleration		= 0.5,
 	weapons = {
 		[1] = { -- SMG
 			name				= "PPSh",

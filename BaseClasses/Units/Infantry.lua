@@ -183,6 +183,7 @@ local FlameInf = Infantry:New{
 local ATLauncherInf = Infantry:New{
 	description			= "Anti-Tank Infantry",
 	iconType			= "antitank",
+	maxVelocity			= 1.5,
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,
