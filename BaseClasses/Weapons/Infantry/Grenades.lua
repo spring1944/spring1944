@@ -17,6 +17,7 @@ local GrenadeClass = Weapon:New{
 	--weaponTimer        = 5,
 	weaponType         = "Cannon",
 	weaponVelocity     = 200,
+	allowNonBlockingAim = true,
 	customparams = {
 		scriptanimation    = "grenade",
 				-- this prevents grenading observer null units
