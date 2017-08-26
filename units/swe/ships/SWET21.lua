@@ -3,7 +3,7 @@ local SWE_T21 = ArmedBoat:New{
 	description				= "Motor Torpedo boat",
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
-	buildCostMetal			= 1000,
+	buildCostMetal			= 1100,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
 	maxDamage				= 2700,
@@ -12,7 +12,7 @@ local SWE_T21 = ArmedBoat:New{
 	turnRate				= 75,	
 	weapons = {	
 		[1] = {
-			name				= "BredaM3520mmHE",
+			name				= "boforsm40_20mmhe",
 			mainDir		= [[0 0 -1]],
 		},
 	},
@@ -39,12 +39,12 @@ local SWE_T21_Turret_20mm_Rear = OpenBoatTurret:New{
 	objectName				= "<SIDE>/SWET21_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "BredaM3520mmAA",
+			name				= "boforsm40_20mmaa",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			name				= "BredaM3520mmHE",
+			name				= "boforsm40_20mmhe",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
