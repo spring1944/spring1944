@@ -1,16 +1,16 @@
 local GBR_FairmileD = ArmedBoat:New{
 	name					= "Fairmile D",
 	description				= "Motor Gun/Torpedo Boat",
-	acceleration			= 0.025,
+	acceleration			= 0.25,
 	brakeRate				= 0.01,
 	buildCostMetal			= 4000,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 10400,
 	maxReverseVelocity		= 1.99,
-	maxVelocity				= 3.98,
+	maxVelocity				= 3.48, -- 29kn based on 0.12 maxspeed/maxkn
 	transportCapacity		= 7, -- 7 x 1fpu turrets
-	turnRate				= 140,	
+	turnRate				= 84,	
 	weapons = {	
 		[1] = {
 			name				= "QF6Pdr57MkIIAHE",
@@ -86,7 +86,7 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 21,
+		maxammo					= 16,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,

@@ -8,7 +8,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	maxDamage				= 13000,
 	maxReverseVelocity		= 0.6,
-	maxVelocity				= 1.1,
+	maxVelocity				= 1.32,
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	
