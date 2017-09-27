@@ -22,7 +22,7 @@ wallDefs["WallRedBricks"] = {
     collisionVolumeTest = 1,
     collisionVolumeType = "box",
     collisionVolumeScales = {4, 24, 36},
-    collisionVolumeOffsets = {0, 12, 0},
+    collisionVolumeOffsets = {0, 0, 0},
     customParams = {
         mod = true,
     },
@@ -48,7 +48,7 @@ wallDefs["WallRedBricks_Large"] = {
     collisionVolumeTest = 1,
     collisionVolumeType = "box",
     collisionVolumeScales = {4, 24, 72},
-    collisionVolumeOffsets = {0, 12, 0},
+    collisionVolumeOffsets = {0, 0, 0},
     customParams = {
         mod = true,
     },
@@ -74,7 +74,7 @@ wallDefs["WallRedBricks_Corner"] = {
     collisionVolumeTest = 1,
     collisionVolumeType = "box",
     collisionVolumeScales = {6, 24, 6},
-    collisionVolumeOffsets = {0, 12, 0},
+    collisionVolumeOffsets = {0, 0, 0},
     customParams = {
         mod = true,
     },
