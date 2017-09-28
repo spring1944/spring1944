@@ -112,6 +112,9 @@ for i, udef in pairs(FeatureDefs) do
   if (udef.customParams.normaltex and VFS.FileExists(udef.customParams.normaltex)) then
     unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = udef.customParams.normaltex}
 
+  elseif (udef.customParams.normaltex == "") then
+    unitMaterials[udef.name] = {"normalModelledS3o"}
+
   elseif (udef.modeltype == "s3o") then
     local modelpath = udef.modelpath
     if (modelpath and VFS.FileExists(modelpath)) then
@@ -134,8 +137,14 @@ for i, udef in pairs(FeatureDefs) do
 
       local normaltex = FindNormalmap(tex1,tex2)
       if (normaltex and not unitMaterials[udef.name]) then
+        Spring.Log('Custom Unit Shaders',
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to feature ' .. udef.name)
         unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
       else
+        Spring.Log('Custom Unit Shaders',
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="" to feature ' .. udef.name)
         unitMaterials[udef.name] = {"normalModelledS3o"}
       end
     end --if model
@@ -158,8 +167,14 @@ for i, udef in pairs(FeatureDefs) do
 
           local normaltex = FindNormalmap(tex1,tex2)
           if (normaltex and not unitMaterials[udef.name]) then
+            Spring.Log('Custom Unit Shaders',
+              LOG.WARNING,
+              'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to feature ' .. udef.name)
             unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
           else
+            Spring.Log('Custom Unit Shaders',
+              LOG.WARNING,
+              'Please, manually set the attribute customParams.normaltex="" to feature ' .. udef.name)
             unitMaterials[udef.name] = {"normalModelledS3o"}
           end
         end
