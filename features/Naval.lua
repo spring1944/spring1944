@@ -15,8 +15,8 @@ defs["PortCrane"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 1,
-    footprintZ  = 1,
+    footprintX  = 67 / 16,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 67 / 16,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,

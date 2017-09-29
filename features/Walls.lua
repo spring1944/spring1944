@@ -16,7 +16,7 @@ wallDefs["WallRedBricks"] = {
     mass            = 40,
     crushResistance = 14,
     footprintX  = 1,
-    footprintZ  = 1,
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -42,7 +42,7 @@ wallDefs["WallRedBricks_Large"] = {
     mass            = 40,
     crushResistance = 14,
     footprintX  = 1,
-    footprintZ  = 1,
+    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
