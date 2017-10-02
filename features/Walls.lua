@@ -80,4 +80,82 @@ wallDefs["WallRedBricks_Corner"] = {
     },
 }
 
+wallDefs["WallFortress"] = {
+    description    = "WallFortress",
+    object         = "Features/WallFortress.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = false,
+    energy          = 0,
+    damage          = 50000,
+    metal           = 0,
+    mass            = 5000,
+    crushResistance = 100,
+    footprintX  = 1,
+    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {16, 48, 72},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod = true,
+    },
+}
+
+wallDefs["WallFortress_door"] = {
+    description    = "WallFortress_door",
+    object         = "Features/WallFortress_door.dae",
+    blocking       = false,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = false,
+    energy          = 0,
+    damage          = 50000,
+    metal           = 0,
+    mass            = 5000,
+    crushResistance = 100,
+    footprintX  = 1,
+    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {16, 8, 72},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod = true,
+    },
+}
+
+wallDefs["WallFortress_corner"] = {
+    description    = "WallFortress_corner",
+    object         = "Features/WallFortress_corner.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = false,
+    energy          = 0,
+    damage          = 50000,
+    metal           = 0,
+    mass            = 5000,
+    crushResistance = 100,
+    footprintX  = 2,
+    footprintZ  = 2,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {36, 60, 36},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod = true,
+    },
+}
+
 return lowerkeys( wallDefs )
