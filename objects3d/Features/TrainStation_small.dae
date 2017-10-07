@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-01T18:49:48</created>
-    <modified>2017-10-01T18:49:48</modified>
+    <created>2017-10-04T18:16:58</created>
+    <modified>2017-10-04T18:16:58</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -14,9 +14,12 @@
     <image id="FeaturesTrainStation_png" name="FeaturesTrainStation_png">
       <init_from>FeaturesTrainStation.png</init_from>
     </image>
+    <image id="FeaturesTrainStation_normals_png" name="FeaturesTrainStation_normals_png">
+      <init_from>FeaturesTrainStation_normals.png</init_from>
+    </image>
   </library_images>
   <library_effects>
-    <effect id="FeaturesTrainStation_png-effect">
+    <effect id="RailStation-effect">
       <profile_COMMON>
         <newparam sid="FeaturesTrainStation_png-surface">
           <surface type="2D">
@@ -28,22 +31,51 @@
             <source>FeaturesTrainStation_png-surface</source>
           </sampler2D>
         </newparam>
+        <newparam sid="FeaturesTrainStation_normals_png-surface">
+          <surface type="2D">
+            <init_from>FeaturesTrainStation_normals_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="FeaturesTrainStation_normals_png-sampler">
+          <sampler2D>
+            <source>FeaturesTrainStation_normals_png-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
             <diffuse>
-              <texture texture="FeaturesTrainStation_png-sampler" texcoord="FeaturesTrainStation_png"/>
+              <texture texture="FeaturesTrainStation_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0 0 0 1</color>
+              <color sid="specular">0.5 0.5 0.5 1</color>
             </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
           </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <bump>
+                <texture texture="FeaturesTrainStation_normals_png-sampler" texcoord="UVMap"/>
+              </bump>
+            </technique>
+          </extra>
         </technique>
       </profile_COMMON>
     </effect>
   </library_effects>
   <library_materials>
-    <material id="FeaturesTrainStation_png-material" name="FeaturesTrainStation_png">
-      <instance_effect url="#FeaturesTrainStation_png-effect"/>
+    <material id="RailStation-material" name="RailStation">
+      <instance_effect url="#RailStation-effect"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -81,17 +113,11 @@
         <vertices id="RailStation_small-mesh-vertices">
           <input semantic="POSITION" source="#RailStation_small-mesh-positions"/>
         </vertices>
-        <triangles material="FeaturesTrainStation_png-material" count="136">
+        <triangles material="RailStation-material" count="138">
           <input semantic="VERTEX" source="#RailStation_small-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#RailStation_small-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#RailStation_small-mesh-map" offset="2" set="0"/>
-          <p>1 0 0 2 0 1 0 0 2 9 1 3 6 1 4 8 1 5 7 2 6 4 2 7 6 2 8 11 3 9 0 3 10 10 3 11 1 0 12 13 0 13 3 0 14 7 2 15 21 2 16 5 2 17 5 3 18 10 3 19 4 3 20 3 1 21 8 1 22 2 1 23 3 1 24 15 1 25 9 1 26 11 3 27 12 3 28 1 3 29 9 2 30 14 2 31 11 2 32 12 0 33 17 0 34 13 0 35 15 2 36 18 2 37 14 2 38 27 4 39 33 4 40 29 4 41 31 5 42 32 5 43 33 5 44 28 6 45 30 6 46 26 6 47 34 5 48 36 5 49 35 5 50 22 6 51 37 6 52 25 6 53 24 7 54 35 7 55 23 7 56 39 0 57 40 0 58 38 0 59 45 2 60 42 2 61 44 2 62 43 3 63 38 3 64 42 3 65 47 0 66 48 0 67 46 0 68 52 2 72 51 2 73 50 2 74 51 3 75 46 3 76 50 3 77 52 8 78 46 8 79 48 8 80 49 9 81 51 9 82 53 9 83 55 0 84 56 0 85 54 0 86 57 1 87 60 1 88 56 1 89 61 2 90 58 2 91 60 2 92 59 3 93 54 3 94 58 3 95 56 0 96 62 0 97 54 0 98 58 2 99 65 2 100 60 2 101 54 3 102 64 3 103 58 3 104 60 1 105 63 1 106 56 1 107 67 0 108 68 0 109 66 0 110 69 1 111 72 1 112 68 1 113 73 2 114 70 2 115 72 2 116 71 3 117 66 3 118 70 3 119 68 0 120 74 0 121 66 0 122 70 2 123 77 2 124 72 2 125 66 3 126 76 3 127 70 3 128 72 1 129 75 1 130 68 1 131 79 0 132 80 0 133 78 0 134 81 1 135 84 1 136 80 1 137 85 2 138 82 2 139 84 2 140 83 3 141 78 3 142 82 3 143 80 0 144 86 0 145 78 0 146 82 2 147 89 2 148 84 2 149 78 3 150 88 3 151 82 3 152 84 1 153 87 1 154 80 1 155 91 0 156 92 0 157 90 0 158 93 1 159 96 1 160 92 1 161 97 2 162 94 2 163 96 2 164 95 3 165 90 3 166 94 3 167 92 0 168 98 0 169 90 0 170 94 2 171 101 2 172 96 2 173 90 3 174 100 3 175 94 3 176 96 1 177 99 1 178 92 1 179 103 0 180 104 0 181 102 0 182 105 1 183 108 1 184 104 1 185 109 2 186 106 2 187 108 2 188 107 3 189 102 3 190 106 3 191 104 0 192 110 0 193 102 0 194 106 2 195 113 2 196 108 2 197 102 3 198 112 3 199 106 3 200 108 1 201 111 1 202 104 1 203 115 3 204 116 3 205 114 3 206 1 0 207 3 0 208 2 0 209 9 1 210 7 1 211 6 1 212 7 2 213 5 2 214 4 2 215 11 3 216 1 3 217 0 3 218 1 0 219 12 0 220 13 0 221 7 2 222 20 2 223 21 2 224 5 3 225 11 3 226 10 3 227 3 1 228 9 1 229 8 1 230 3 1 231 13 1 232 15 1 233 11 3 234 14 3 235 12 3 236 9 2 237 15 2 238 14 2 239 12 0 240 16 0 241 17 0 242 15 2 243 19 2 244 18 2 245 27 10 246 31 10 247 33 10 248 31 5 249 30 5 250 32 5 251 28 11 252 32 11 253 30 11 254 34 5 255 37 5 256 36 5 257 22 6 258 36 6 259 37 6 260 24 7 261 34 7 262 35 7 263 39 0 264 41 0 265 40 0 266 45 2 267 43 2 268 42 2 269 43 3 270 39 3 271 38 3 272 47 0 273 49 0 274 48 0 275 52 2 279 53 2 280 51 2 281 51 3 282 47 3 283 46 3 284 52 8 285 50 8 286 46 8 287 49 9 288 47 9 289 51 9 290 55 0 291 57 0 292 56 0 293 57 1 294 61 1 295 60 1 296 61 2 297 59 2 298 58 2 299 59 3 300 55 3 301 54 3 302 56 0 303 63 0 304 62 0 305 58 2 306 64 2 307 65 2 308 54 3 309 62 3 310 64 3 311 60 1 312 65 1 313 63 1 314 67 0 315 69 0 316 68 0 317 69 1 318 73 1 319 72 1 320 73 2 321 71 2 322 70 2 323 71 3 324 67 3 325 66 3 326 68 0 327 75 0 328 74 0 329 70 2 330 76 2 331 77 2 332 66 3 333 74 3 334 76 3 335 72 1 336 77 1 337 75 1 338 79 0 339 81 0 340 80 0 341 81 1 342 85 1 343 84 1 344 85 2 345 83 2 346 82 2 347 83 3 348 79 3 349 78 3 350 80 0 351 87 0 352 86 0 353 82 2 354 88 2 355 89 2 356 78 3 357 86 3 358 88 3 359 84 1 360 89 1 361 87 1 362 91 0 363 93 0 364 92 0 365 93 1 366 97 1 367 96 1 368 97 2 369 95 2 370 94 2 371 95 3 372 91 3 373 90 3 374 92 0 375 99 0 376 98 0 377 94 2 378 100 2 379 101 2 380 90 3 381 98 3 382 100 3 383 96 1 384 101 1 385 99 1 386 103 0 387 105 0 388 104 0 389 105 1 390 109 1 391 108 1 392 109 2 393 107 2 394 106 2 395 107 3 396 103 3 397 102 3 398 104 0 399 111 0 400 110 0 401 106 2 402 112 2 403 113 2 404 102 3 405 110 3 406 112 3 407 108 1 408 113 1 409 111 1 410 115 3 411 117 3 412 116 3 413</p>
-        </triangles>
-        <triangles count="2">
-          <input semantic="VERTEX" source="#RailStation_small-mesh-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#RailStation_small-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#RailStation_small-mesh-map" offset="2" set="0"/>
-          <p>49 1 69 52 1 70 48 1 71 49 1 276 53 1 277 52 1 278</p>
+          <p>1 0 0 2 0 1 0 0 2 9 1 3 6 1 4 8 1 5 7 2 6 4 2 7 6 2 8 11 3 9 0 3 10 10 3 11 1 0 12 13 0 13 3 0 14 7 2 15 21 2 16 5 2 17 5 3 18 10 3 19 4 3 20 3 1 21 8 1 22 2 1 23 3 1 24 15 1 25 9 1 26 11 3 27 12 3 28 1 3 29 9 2 30 14 2 31 11 2 32 12 0 33 17 0 34 13 0 35 15 2 36 18 2 37 14 2 38 27 4 39 33 4 40 29 4 41 31 5 42 32 5 43 33 5 44 28 6 45 30 6 46 26 6 47 34 5 48 36 5 49 35 5 50 22 6 51 37 6 52 25 6 53 24 7 54 35 7 55 23 7 56 39 0 57 40 0 58 38 0 59 45 2 60 42 2 61 44 2 62 43 3 63 38 3 64 42 3 65 47 0 66 48 0 67 46 0 68 49 1 69 52 1 70 48 1 71 52 2 72 51 2 73 50 2 74 51 3 75 46 3 76 50 3 77 52 8 78 46 8 79 48 8 80 49 9 81 51 9 82 53 9 83 55 0 84 56 0 85 54 0 86 57 1 87 60 1 88 56 1 89 61 2 90 58 2 91 60 2 92 59 3 93 54 3 94 58 3 95 56 0 96 62 0 97 54 0 98 58 2 99 65 2 100 60 2 101 54 3 102 64 3 103 58 3 104 60 1 105 63 1 106 56 1 107 67 0 108 68 0 109 66 0 110 69 1 111 72 1 112 68 1 113 73 2 114 70 2 115 72 2 116 71 3 117 66 3 118 70 3 119 68 0 120 74 0 121 66 0 122 70 2 123 77 2 124 72 2 125 66 3 126 76 3 127 70 3 128 72 1 129 75 1 130 68 1 131 79 0 132 80 0 133 78 0 134 81 1 135 84 1 136 80 1 137 85 2 138 82 2 139 84 2 140 83 3 141 78 3 142 82 3 143 80 0 144 86 0 145 78 0 146 82 2 147 89 2 148 84 2 149 78 3 150 88 3 151 82 3 152 84 1 153 87 1 154 80 1 155 91 0 156 92 0 157 90 0 158 93 1 159 96 1 160 92 1 161 97 2 162 94 2 163 96 2 164 95 3 165 90 3 166 94 3 167 92 0 168 98 0 169 90 0 170 94 2 171 101 2 172 96 2 173 90 3 174 100 3 175 94 3 176 96 1 177 99 1 178 92 1 179 103 0 180 104 0 181 102 0 182 105 1 183 108 1 184 104 1 185 109 2 186 106 2 187 108 2 188 107 3 189 102 3 190 106 3 191 104 0 192 110 0 193 102 0 194 106 2 195 113 2 196 108 2 197 102 3 198 112 3 199 106 3 200 108 1 201 111 1 202 104 1 203 115 3 204 116 3 205 114 3 206 1 0 207 3 0 208 2 0 209 9 1 210 7 1 211 6 1 212 7 2 213 5 2 214 4 2 215 11 3 216 1 3 217 0 3 218 1 0 219 12 0 220 13 0 221 7 2 222 20 2 223 21 2 224 5 3 225 11 3 226 10 3 227 3 1 228 9 1 229 8 1 230 3 1 231 13 1 232 15 1 233 11 3 234 14 3 235 12 3 236 9 2 237 15 2 238 14 2 239 12 0 240 16 0 241 17 0 242 15 2 243 19 2 244 18 2 245 27 10 246 31 10 247 33 10 248 31 5 249 30 5 250 32 5 251 28 11 252 32 11 253 30 11 254 34 5 255 37 5 256 36 5 257 22 6 258 36 6 259 37 6 260 24 7 261 34 7 262 35 7 263 39 0 264 41 0 265 40 0 266 45 2 267 43 2 268 42 2 269 43 3 270 39 3 271 38 3 272 47 0 273 49 0 274 48 0 275 49 1 276 53 1 277 52 1 278 52 2 279 53 2 280 51 2 281 51 3 282 47 3 283 46 3 284 52 8 285 50 8 286 46 8 287 49 9 288 47 9 289 51 9 290 55 0 291 57 0 292 56 0 293 57 1 294 61 1 295 60 1 296 61 2 297 59 2 298 58 2 299 59 3 300 55 3 301 54 3 302 56 0 303 63 0 304 62 0 305 58 2 306 64 2 307 65 2 308 54 3 309 62 3 310 64 3 311 60 1 312 65 1 313 63 1 314 67 0 315 69 0 316 68 0 317 69 1 318 73 1 319 72 1 320 73 2 321 71 2 322 70 2 323 71 3 324 67 3 325 66 3 326 68 0 327 75 0 328 74 0 329 70 2 330 76 2 331 77 2 332 66 3 333 74 3 334 76 3 335 72 1 336 77 1 337 75 1 338 79 0 339 81 0 340 80 0 341 81 1 342 85 1 343 84 1 344 85 2 345 83 2 346 82 2 347 83 3 348 79 3 349 78 3 350 80 0 351 87 0 352 86 0 353 82 2 354 88 2 355 89 2 356 78 3 357 86 3 358 88 3 359 84 1 360 89 1 361 87 1 362 91 0 363 93 0 364 92 0 365 93 1 366 97 1 367 96 1 368 97 2 369 95 2 370 94 2 371 95 3 372 91 3 373 90 3 374 92 0 375 99 0 376 98 0 377 94 2 378 100 2 379 101 2 380 90 3 381 98 3 382 100 3 383 96 1 384 101 1 385 99 1 386 103 0 387 105 0 388 104 0 389 105 1 390 109 1 391 108 1 392 109 2 393 107 2 394 106 2 395 107 3 396 103 3 397 102 3 398 104 0 399 111 0 400 110 0 401 106 2 402 112 2 403 113 2 404 102 3 405 110 3 406 112 3 407 108 1 408 113 1 409 111 1 410 115 3 411 117 3 412 116 3 413</p>
         </triangles>
       </mesh>
     </geometry>
@@ -103,9 +129,7 @@
         <instance_geometry url="#RailStation_small-mesh" name="RailStation_small">
           <bind_material>
             <technique_common>
-              <instance_material symbol="FeaturesTrainStation_png-material" target="#FeaturesTrainStation_png-material">
-                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
+              <instance_material symbol="RailStation-material" target="#RailStation-material"/>
             </technique_common>
           </bind_material>
         </instance_geometry>

@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-01T15:09:32</created>
-    <modified>2017-10-01T15:09:32</modified>
+    <created>2017-10-04T18:17:43</created>
+    <modified>2017-10-04T18:17:43</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -14,9 +14,12 @@
     <image id="FeaturesWallFortress_png" name="FeaturesWallFortress_png">
       <init_from>FeaturesWallFortress.png</init_from>
     </image>
+    <image id="FeaturesWallFortress_normals_png" name="FeaturesWallFortress_normals_png">
+      <init_from>FeaturesWallFortress_normals.png</init_from>
+    </image>
   </library_images>
   <library_effects>
-    <effect id="FeaturesWallFortress_png-effect">
+    <effect id="WallFortress-effect">
       <profile_COMMON>
         <newparam sid="FeaturesWallFortress_png-surface">
           <surface type="2D">
@@ -28,22 +31,51 @@
             <source>FeaturesWallFortress_png-surface</source>
           </sampler2D>
         </newparam>
+        <newparam sid="FeaturesWallFortress_normals_png-surface">
+          <surface type="2D">
+            <init_from>FeaturesWallFortress_normals_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="FeaturesWallFortress_normals_png-sampler">
+          <sampler2D>
+            <source>FeaturesWallFortress_normals_png-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
             <diffuse>
-              <texture texture="FeaturesWallFortress_png-sampler" texcoord="FeaturesWallFortress_png"/>
+              <texture texture="FeaturesWallFortress_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0 0 0 1</color>
+              <color sid="specular">0.5 0.5 0.5 1</color>
             </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
           </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <bump>
+                <texture texture="FeaturesWallFortress_normals_png-sampler" texcoord="UVMap"/>
+              </bump>
+            </technique>
+          </extra>
         </technique>
       </profile_COMMON>
     </effect>
   </library_effects>
   <library_materials>
-    <material id="FeaturesWallFortress_png-material" name="FeaturesWallFortress_png">
-      <instance_effect url="#FeaturesWallFortress_png-effect"/>
+    <material id="WallFortress-material" name="WallFortress">
+      <instance_effect url="#WallFortress-effect"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -81,7 +113,7 @@
         <vertices id="WallFortress_corner-mesh-vertices">
           <input semantic="POSITION" source="#WallFortress_corner-mesh-positions"/>
         </vertices>
-        <triangles material="FeaturesWallFortress_png-material" count="170">
+        <triangles material="WallFortress-material" count="170">
           <input semantic="VERTEX" source="#WallFortress_corner-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#WallFortress_corner-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#WallFortress_corner-mesh-map" offset="2" set="0"/>
@@ -97,9 +129,7 @@
         <instance_geometry url="#WallFortress_corner-mesh" name="WallFortress_corner">
           <bind_material>
             <technique_common>
-              <instance_material symbol="FeaturesWallFortress_png-material" target="#FeaturesWallFortress_png-material">
-                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
+              <instance_material symbol="WallFortress-material" target="#WallFortress-material"/>
             </technique_common>
           </bind_material>
         </instance_geometry>
