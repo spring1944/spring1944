@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-04T18:17:58</created>
-    <modified>2017-10-04T18:17:58</modified>
+    <created>2017-10-12T17:53:08</created>
+    <modified>2017-10-12T17:53:08</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -14,8 +14,8 @@
     <image id="FeaturesWallFortress_png" name="FeaturesWallFortress_png">
       <init_from>FeaturesWallFortress.png</init_from>
     </image>
-    <image id="FeaturesWallFortress_normals_png" name="FeaturesWallFortress_normals_png">
-      <init_from>FeaturesWallFortress_normals.png</init_from>
+    <image id="FeaturesWallFortress_specular_png" name="FeaturesWallFortress_specular_png">
+      <init_from>FeaturesWallFortress_specular.png</init_from>
     </image>
   </library_images>
   <library_effects>
@@ -31,14 +31,14 @@
             <source>FeaturesWallFortress_png-surface</source>
           </sampler2D>
         </newparam>
-        <newparam sid="FeaturesWallFortress_normals_png-surface">
+        <newparam sid="FeaturesWallFortress_specular_png-surface">
           <surface type="2D">
-            <init_from>FeaturesWallFortress_normals_png</init_from>
+            <init_from>FeaturesWallFortress_specular_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="FeaturesWallFortress_normals_png-sampler">
+        <newparam sid="FeaturesWallFortress_specular_png-sampler">
           <sampler2D>
-            <source>FeaturesWallFortress_normals_png-surface</source>
+            <source>FeaturesWallFortress_specular_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -53,7 +53,7 @@
               <texture texture="FeaturesWallFortress_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0.5 0.5 0.5 1</color>
+              <texture texture="FeaturesWallFortress_specular_png-sampler" texcoord="UVMap"/>
             </specular>
             <shininess>
               <float sid="shininess">50</float>
@@ -62,13 +62,6 @@
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
           </phong>
-          <extra>
-            <technique profile="FCOLLADA">
-              <bump>
-                <texture texture="FeaturesWallFortress_normals_png-sampler" texcoord="UVMap"/>
-              </bump>
-            </technique>
-          </extra>
         </technique>
       </profile_COMMON>
     </effect>

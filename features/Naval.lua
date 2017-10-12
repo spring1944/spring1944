@@ -24,7 +24,8 @@ defs["PortCrane"] = {
     collisionVolumeScales = {67, 68, 67},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesPortCrane_normals.png",
     },
 }
 

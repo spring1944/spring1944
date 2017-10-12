@@ -24,7 +24,8 @@ wallDefs["WallRedBricks"] = {
     collisionVolumeScales = {4, 24, 36},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallRedBricks_normals.png",
     },
 }
 
@@ -50,7 +51,8 @@ wallDefs["WallRedBricks_Large"] = {
     collisionVolumeScales = {4, 24, 72},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallRedBricks_normals.png",
     },
 }
 
@@ -76,7 +78,8 @@ wallDefs["WallRedBricks_Corner"] = {
     collisionVolumeScales = {6, 24, 6},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallRedBricks_normals.png",
     },
 }
 
@@ -102,7 +105,8 @@ wallDefs["WallFortress"] = {
     collisionVolumeScales = {16, 48, 72},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallFortress_normals.png",
     },
 }
 
@@ -128,7 +132,8 @@ wallDefs["WallFortress_door"] = {
     collisionVolumeScales = {16, 8, 72},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallFortress_normals.png",
     },
 }
 
@@ -154,7 +159,8 @@ wallDefs["WallFortress_corner"] = {
     collisionVolumeScales = {36, 60, 36},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesWallFortress_normals.png",
     },
 }
 

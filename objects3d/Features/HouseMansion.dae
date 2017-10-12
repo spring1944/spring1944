@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-04T18:15:18</created>
-    <modified>2017-10-04T18:15:18</modified>
+    <created>2017-10-12T14:47:46</created>
+    <modified>2017-10-12T14:47:46</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -14,8 +14,8 @@
     <image id="FeaturesHouseMansion_png" name="FeaturesHouseMansion_png">
       <init_from>FeaturesHouseMansion.png</init_from>
     </image>
-    <image id="FeaturesHouseMansion_normals_png" name="FeaturesHouseMansion_normals_png">
-      <init_from>FeaturesHouseMansion_normals.png</init_from>
+    <image id="FeaturesHouseMansion_specular_png" name="FeaturesHouseMansion_specular_png">
+      <init_from>FeaturesHouseMansion_specular.png</init_from>
     </image>
   </library_images>
   <library_effects>
@@ -31,14 +31,14 @@
             <source>FeaturesHouseMansion_png-surface</source>
           </sampler2D>
         </newparam>
-        <newparam sid="FeaturesHouseMansion_normals_png-surface">
+        <newparam sid="FeaturesHouseMansion_specular_png-surface">
           <surface type="2D">
-            <init_from>FeaturesHouseMansion_normals_png</init_from>
+            <init_from>FeaturesHouseMansion_specular_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="FeaturesHouseMansion_normals_png-sampler">
+        <newparam sid="FeaturesHouseMansion_specular_png-sampler">
           <sampler2D>
-            <source>FeaturesHouseMansion_normals_png-surface</source>
+            <source>FeaturesHouseMansion_specular_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -53,7 +53,7 @@
               <texture texture="FeaturesHouseMansion_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0.1 0.1 0.1 1</color>
+              <texture texture="FeaturesHouseMansion_specular_png-sampler" texcoord="UVMap"/>
             </specular>
             <shininess>
               <float sid="shininess">255</float>
@@ -62,13 +62,6 @@
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
           </phong>
-          <extra>
-            <technique profile="FCOLLADA">
-              <bump>
-                <texture texture="FeaturesHouseMansion_normals_png-sampler" texcoord="UVMap"/>
-              </bump>
-            </technique>
-          </extra>
         </technique>
       </profile_COMMON>
     </effect>

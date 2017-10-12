@@ -5,17 +5,14 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-09-21T11:47:17</created>
-    <modified>2017-09-21T11:47:17</modified>
+    <created>2017-10-12T17:48:00</created>
+    <modified>2017-10-12T17:48:00</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_images>
     <image id="FeaturesWallRedBricks_png" name="FeaturesWallRedBricks_png">
       <init_from>FeaturesWallRedBricks.png</init_from>
-    </image>
-    <image id="FeaturesWallRedBricks_normals_png" name="FeaturesWallRedBricks_normals_png">
-      <init_from>FeaturesWallRedBricks_normals.png</init_from>
     </image>
     <image id="FeaturesWallRedBricks_specular_png" name="FeaturesWallRedBricks_specular_png">
       <init_from>FeaturesWallRedBricks_specular.png</init_from>
@@ -44,16 +41,6 @@
             <source>FeaturesWallRedBricks_specular_png-surface</source>
           </sampler2D>
         </newparam>
-        <newparam sid="FeaturesWallRedBricks_normals_png-surface">
-          <surface type="2D">
-            <init_from>FeaturesWallRedBricks_normals_png</init_from>
-          </surface>
-        </newparam>
-        <newparam sid="FeaturesWallRedBricks_normals_png-sampler">
-          <sampler2D>
-            <source>FeaturesWallRedBricks_normals_png-surface</source>
-          </sampler2D>
-        </newparam>
         <technique sid="common">
           <phong>
             <emission>
@@ -75,13 +62,6 @@
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
           </phong>
-          <extra>
-            <technique profile="FCOLLADA">
-              <bump>
-                <texture texture="FeaturesWallRedBricks_normals_png-sampler" texcoord="UVMap"/>
-              </bump>
-            </technique>
-          </extra>
         </technique>
       </profile_COMMON>
     </effect>
@@ -95,7 +75,7 @@
     <geometry id="WallRedBricks-mesh" name="WallRedBricks">
       <mesh>
         <source id="WallRedBricks-mesh-positions">
-          <float_array id="WallRedBricks-mesh-positions-array" count="48">-2 -18 0 -2 -18 24 -2 18 0 -2 18 24 2 -18 0 2 -18 24 2 18 0 2 18 24 -3 -18 24 -3 18 24 3 18 24 3 -18 24 -3 -18 25 -3 18 25 3 18 25 3 -18 25</float_array>
+          <float_array id="WallRedBricks-mesh-positions-array" count="48">-2 -18 0 -2 -18 24 -2 18 0 -2 18 24 2 -18 0 2 -18 24 2 18 0 2 18 24 -3.4 -18 24 -3.4 18 24 3.4 18 24 3.4 -18 24 -3.4 -18 25.23503 -3.4 18 25.23503 3.4 18 25.23503 3.4 -18 25.23503</float_array>
           <technique_common>
             <accessor source="#WallRedBricks-mesh-positions-array" count="16" stride="3">
               <param name="X" type="float"/>
@@ -137,26 +117,15 @@
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
-      <node id="ground" name="ground" type="NODE">
-        <translate sid="location">0 0 0</translate>
-        <rotate sid="rotationZ">0 0 1 0</rotate>
-        <rotate sid="rotationY">0 1 0 0</rotate>
-        <rotate sid="rotationX">1 0 0 0</rotate>
-        <scale sid="scale">1 1 1</scale>
-        <node id="WallRedBricks" name="WallRedBricks" type="NODE">
-          <translate sid="location">0 0 0</translate>
-          <rotate sid="rotationZ">0 0 1 0</rotate>
-          <rotate sid="rotationY">0 1 0 0</rotate>
-          <rotate sid="rotationX">1 0 0 0</rotate>
-          <scale sid="scale">1 1 1</scale>
-          <instance_geometry url="#WallRedBricks-mesh" name="WallRedBricks">
-            <bind_material>
-              <technique_common>
-                <instance_material symbol="Bricks-material" target="#Bricks-material"/>
-              </technique_common>
-            </bind_material>
-          </instance_geometry>
-        </node>
+      <node id="WallRedBricks" name="WallRedBricks" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#WallRedBricks-mesh" name="WallRedBricks">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Bricks-material" target="#Bricks-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
       </node>
     </visual_scene>
   </library_visual_scenes>

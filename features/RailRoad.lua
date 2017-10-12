@@ -24,7 +24,8 @@ defs["RailStation_small"] = {
     collisionVolumeScales = {144, 64, 48},
     collisionVolumeOffsets = {0, 0, 0},
     customParams = {
-        mod = true,
+        mod       = true,
+        normaltex = "unittextures/FeaturesTrainStation_normals.png",
     },
 }
 

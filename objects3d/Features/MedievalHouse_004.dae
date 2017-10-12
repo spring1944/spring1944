@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-08T14:27:23</created>
-    <modified>2017-10-08T14:27:23</modified>
+    <created>2017-10-12T12:29:53</created>
+    <modified>2017-10-12T12:29:53</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -14,8 +14,8 @@
     <image id="FeaturesMedievalHouse_png" name="FeaturesMedievalHouse_png">
       <init_from>FeaturesMedievalHouse.png</init_from>
     </image>
-    <image id="FeaturesMedievalHouse_normals_png" name="FeaturesMedievalHouse_normals_png">
-      <init_from>FeaturesMedievalHouse_normals.png</init_from>
+    <image id="FeaturesMedievalHouse_specular_png" name="FeaturesMedievalHouse_specular_png">
+      <init_from>FeaturesMedievalHouse_specular.png</init_from>
     </image>
   </library_images>
   <library_effects>
@@ -31,14 +31,14 @@
             <source>FeaturesMedievalHouse_png-surface</source>
           </sampler2D>
         </newparam>
-        <newparam sid="FeaturesMedievalHouse_normals_png-surface">
+        <newparam sid="FeaturesMedievalHouse_specular_png-surface">
           <surface type="2D">
-            <init_from>FeaturesMedievalHouse_normals_png</init_from>
+            <init_from>FeaturesMedievalHouse_specular_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="FeaturesMedievalHouse_normals_png-sampler">
+        <newparam sid="FeaturesMedievalHouse_specular_png-sampler">
           <sampler2D>
-            <source>FeaturesMedievalHouse_normals_png-surface</source>
+            <source>FeaturesMedievalHouse_specular_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -53,7 +53,7 @@
               <texture texture="FeaturesMedievalHouse_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0.1 0.1 0.1 1</color>
+              <texture texture="FeaturesMedievalHouse_specular_png-sampler" texcoord="UVMap"/>
             </specular>
             <shininess>
               <float sid="shininess">50</float>
@@ -62,13 +62,6 @@
               <float sid="index_of_refraction">1</float>
             </index_of_refraction>
           </phong>
-          <extra>
-            <technique profile="FCOLLADA">
-              <bump>
-                <texture texture="FeaturesMedievalHouse_normals_png-sampler" texcoord="UVMap"/>
-              </bump>
-            </technique>
-          </extra>
         </technique>
       </profile_COMMON>
     </effect>
