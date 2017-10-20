@@ -162,4 +162,109 @@ defs["HouseMedieval_004"] = {
 }
 
 
+defs["Factory_SmokeStack"] = {
+    description    = "Factory_SmokeStack",
+    object         = "Features/Factory_SmokeStack.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 300000,
+    metal           = 0,
+    mass            = 30000,
+    crushResistance = 3000,
+    footprintX  = 34 / 16,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 34 / 16,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "cylY",
+    collisionVolumeScales = {34, 212, 34},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesFactorySmokestack_normals.png",
+    },
+}
+defs["Factory_001"] = {
+    description    = "Factory_001",
+    object         = "Features/Factory_001.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 300000,
+    metal           = 0,
+    mass            = 30000,
+    crushResistance = 3000,
+    footprintX  = 100 / 16,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 53 / 16,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {100, 51, 53},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesFactory_normals.png",
+    },
+}
+defs["Factory_002"] = {
+    description    = "Factory_002",
+    object         = "Features/Factory_002.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 300000,
+    metal           = 0,
+    mass            = 30000,
+    crushResistance = 3000,
+    footprintX  = 122 / 16,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 86 / 16,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {122, 100, 86},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesFactory_normals.png",
+    },
+}
+defs["Factory_003"] = {
+    description    = "Factory_003",
+    object         = "Features/Factory_003.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 300000,
+    metal           = 0,
+    mass            = 30000,
+    crushResistance = 3000,
+    footprintX  = 122 / 16,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 86 / 16,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {122, 100, 86},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesFactory_normals.png",
+    },
+}
+
 return lowerkeys( defs )

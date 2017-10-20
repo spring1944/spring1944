@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
+    </contributor>
+    <created>2017-10-20T18:50:52</created>
+    <modified>2017-10-20T18:50:52</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="FeaturesFactory_png" name="FeaturesFactory_png">
+      <init_from>FeaturesFactory.png</init_from>
+    </image>
+    <image id="FeaturesFactory_specular_png" name="FeaturesFactory_specular_png">
+      <init_from>FeaturesFactory_specular.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="Factory-effect">
+      <profile_COMMON>
+        <newparam sid="FeaturesFactory_png-surface">
+          <surface type="2D">
+            <init_from>FeaturesFactory_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="FeaturesFactory_png-sampler">
+          <sampler2D>
+            <source>FeaturesFactory_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="FeaturesFactory_specular_png-surface">
+          <surface type="2D">
+            <init_from>FeaturesFactory_specular_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="FeaturesFactory_specular_png-sampler">
+          <sampler2D>
+            <source>FeaturesFactory_specular_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="FeaturesFactory_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <texture texture="FeaturesFactory_specular_png-sampler" texcoord="UVMap"/>
+            </specular>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="Factory-material" name="Factory">
+      <instance_effect url="#Factory-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Factory_003-mesh" name="Factory_003">
+      <mesh>
+        <source id="Factory_003-mesh-positions">
+          <float_array id="Factory_003-mesh-positions-array" count="180">-60 -48 0 -60 -48 36.15362 -60 48 0 -60 48 36.15362 60 -48 0 60 -48 36.15362 60 48 0 60 48 36.15362 -60 48 56.15362 -60 0 36.15362 -60 -48 56.15362 -60 0 0 60 0 0 60 0 36.15362 -60 -48 56.15362 -60 48 56.15362 60 -48 56.15362 60 48 56.15362 -60 0 86.15362 -60 0 56.15362 60 0 86.15362 60 0 56.15362 60 -48 56.15362 60 48 56.15362 -60 0 56.15362 60 0 56.15362 -61.03709 -50.2457 54.75005 -61.03709 50.2457 54.75005 61.03709 -50.2457 54.75005 61.03709 50.2457 54.75005 -61.03709 0 86.15362 61.03709 0 86.15362 -61.03709 -50.2457 54.75005 -61.03709 50.2457 54.75005 61.03709 -50.2457 54.75005 61.03709 50.2457 54.75005 -61.03709 0 86.15362 61.03709 0 86.15362 -36.26847 -18.19272 81.78317 -36.26847 18.19272 81.78317 36.26847 -18.19272 81.78317 36.26847 18.19272 81.78317 -36.26847 0 93.15362 -36.26847 -18.19272 72.78317 36.26847 0 93.15362 -36.26847 18.19272 72.78317 -41.64116 -19.04388 81.25119 -41.64116 19.04388 81.25119 41.64116 -19.04388 81.25119 41.64116 19.04388 81.25119 -41.64116 0 93.15362 41.64116 0 93.15362 -41.64116 -19.04388 81.25119 -41.64116 19.04388 81.25119 41.64116 -19.04388 81.25119 41.64116 19.04388 81.25119 -41.64116 0 93.15362 41.64116 0 93.15362 36.26847 -18.19272 72.78317 36.26847 18.19272 72.78317</float_array>
+          <technique_common>
+            <accessor source="#Factory_003-mesh-positions-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Factory_003-mesh-normals">
+          <float_array id="Factory_003-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 -0.529999 -0.8479984 0 0.529999 -0.8479984 0 -0.529999 0.8479984 0 0.529999 0.8479984 0 -0.529999 -0.8479983 0 0.529999 -0.8479983 0 -0.529999 0.8479983 0 0.529999 0.8479983</float_array>
+          <technique_common>
+            <accessor source="#Factory_003-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Factory_003-mesh-map">
+          <float_array id="Factory_003-mesh-map-array" count="324">1.00023 0.4772589 0.6990049 0.2503762 1.00023 0.2503762 0.005043447 0.6540241 0.6405916 0.4183751 0.005043447 0.4183751 1.000298 0.7447985 0.6990736 0.505608 1.000298 0.505608 0.6405916 0.6540242 0.005043447 0.4183753 0.6405916 0.4183753 0.03434491 0.4464309 0.3355699 0.5655172 0.3355699 0.4464309 0.6990049 0.4772589 1.00023 0.2503762 0.6990049 0.2503762 0.3355699 0.4464309 0.03434491 0.5655172 0.03434491 0.4464309 0.6367948 0.4464309 0.3355699 0.5655172 0.3355699 0.4464309 0.005122959 0.4452084 0.6400213 0.5657466 0.6400213 0.4452084 0.6990736 0.7447985 1.000298 0.505608 0.6990736 0.505608 0.8514786 0.106417 0.8514786 0.1961447 0.7079143 0.106417 0.8514786 0.106417 0.8514786 0.1961447 0.995043 0.106417 0.5003613 0.9904608 0.9997463 0.7568878 0.5003613 0.7568878 0.5003613 0.9905147 0.9997463 0.7569417 0.5003613 0.7569417 0.3355699 0.4464309 0.6367948 0.5655172 0.6367948 0.4464309 0.6400213 0.4452085 0.005122959 0.5657466 0.005122959 0.4452085 0.9997463 0.7569417 0.5003613 0.9905147 0.5003613 0.7569417 0.9997463 0.7568878 0.5003613 0.9904608 0.5003613 0.7568878 0.995043 0.1417492 0.7079143 0.1417492 0.8514786 0.2314769 0.707857 0.1418603 0.9948275 0.07087767 0.9948275 0.1418603 3.61323e-4 0.9904608 0.4997463 0.7568878 3.61323e-4 0.7568878 3.61323e-4 0.9905147 0.4997463 0.7569417 3.61323e-4 0.7569417 0.4997463 0.7569417 3.61323e-4 0.9905147 3.61323e-4 0.7569417 0.4997463 0.7568878 3.61323e-4 0.9904608 3.61323e-4 0.7568878 0.7079143 0.1417492 0.995043 0.1417492 0.8514786 0.2314769 0.9948275 0.1418603 0.707857 0.07087767 0.707857 0.1418603 0.02601361 0.7301952 0.8596202 0.6385534 0.8596202 0.7301952 0.02601361 0.6385534 0.8596202 0.7301952 0.8596202 0.6385534 1.00023 0.4772589 0.6990049 0.4772589 0.6990049 0.2503762 0.005043447 0.6540241 0.6405916 0.6540241 0.6405916 0.4183751 1.000298 0.7447985 0.6990736 0.7447985 0.6990736 0.505608 0.6405916 0.6540242 0.005043447 0.6540242 0.005043447 0.4183753 0.03434491 0.4464309 0.03434491 0.5655172 0.3355699 0.5655172 0.6990049 0.4772589 1.00023 0.4772589 1.00023 0.2503762 0.3355699 0.4464309 0.3355699 0.5655172 0.03434491 0.5655172 0.6367948 0.4464309 0.6367948 0.5655172 0.3355699 0.5655172 0.005122959 0.4452084 0.005122959 0.5657466 0.6400213 0.5657466 0.6990736 0.7447985 1.000298 0.7447985 1.000298 0.505608 0.8514786 0.106417 0.995043 0.106417 0.8514786 0.1961447 0.8514786 0.106417 0.7079143 0.106417 0.8514786 0.1961447 0.5003613 0.9904608 0.9997463 0.9904608 0.9997463 0.7568878 0.5003613 0.9905147 0.9997463 0.9905147 0.9997463 0.7569417 0.3355699 0.4464309 0.3355699 0.5655172 0.6367948 0.5655172 0.6400213 0.4452085 0.6400213 0.5657466 0.005122959 0.5657466 0.9997463 0.7569417 0.9997463 0.9905147 0.5003613 0.9905147 0.9997463 0.7568878 0.9997463 0.9904608 0.5003613 0.9904608 0.707857 0.1418603 0.707857 0.07087767 0.9948275 0.07087767 3.61323e-4 0.9904608 0.4997463 0.9904608 0.4997463 0.7568878 3.61323e-4 0.9905147 0.4997463 0.9905147 0.4997463 0.7569417 0.4997463 0.7569417 0.4997463 0.9905147 3.61323e-4 0.9905147 0.4997463 0.7568878 0.4997463 0.9904608 3.61323e-4 0.9904608 0.9948275 0.1418603 0.9948275 0.07087767 0.707857 0.07087767 0.02601361 0.7301952 0.02601361 0.6385534 0.8596202 0.6385534 0.02601361 0.6385534 0.02601361 0.7301952 0.8596202 0.7301952</float_array>
+          <technique_common>
+            <accessor source="#Factory_003-mesh-map-array" count="162" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Factory_003-mesh-vertices">
+          <input semantic="POSITION" source="#Factory_003-mesh-positions"/>
+        </vertices>
+        <triangles material="Factory-material" count="54">
+          <input semantic="VERTEX" source="#Factory_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Factory_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Factory_003-mesh-map" offset="2" set="0"/>
+          <p>9 0 0 2 0 1 11 0 2 3 1 3 6 1 4 2 1 5 13 2 6 4 2 7 12 2 8 5 3 9 0 3 10 4 3 11 1 0 12 24 0 13 9 0 14 7 2 15 12 2 16 6 2 17 13 2 18 22 2 19 5 2 20 7 2 21 25 2 22 13 2 23 3 1 24 23 1 25 7 1 26 1 0 27 11 0 28 0 0 29 21 2 30 20 2 31 16 2 32 19 0 33 18 0 34 15 0 35 37 4 36 33 4 37 35 4 38 36 5 39 34 5 40 32 5 41 9 0 42 8 0 43 3 0 44 5 3 45 10 3 46 1 3 47 28 6 48 30 6 49 26 6 50 27 7 51 31 7 52 29 7 53 39 0 54 38 0 55 42 0 56 40 2 57 59 2 58 41 2 59 57 8 60 53 8 61 55 8 62 56 9 63 54 9 64 52 9 65 48 10 66 50 10 67 46 10 68 47 11 69 51 11 70 49 11 71 40 2 72 41 2 73 44 2 74 39 0 75 43 0 76 38 0 77 38 3 78 58 3 79 40 3 80 45 1 81 41 1 82 59 1 83 9 0 84 3 0 85 2 0 86 3 1 87 7 1 88 6 1 89 13 2 90 5 2 91 4 2 92 5 3 93 1 3 94 0 3 95 1 0 96 10 0 97 24 0 98 7 2 99 13 2 100 12 2 101 13 2 102 25 2 103 22 2 104 7 2 105 23 2 106 25 2 107 3 1 108 8 1 109 23 1 110 1 0 111 9 0 112 11 0 113 21 2 114 17 2 115 20 2 116 19 0 117 14 0 118 18 0 119 37 4 120 36 4 121 33 4 122 36 5 123 37 5 124 34 5 125 9 0 126 24 0 127 8 0 128 5 3 129 22 3 130 10 3 131 28 6 132 31 6 133 30 6 134 27 7 135 30 7 136 31 7 137 40 2 138 58 2 139 59 2 140 57 8 141 56 8 142 53 8 143 56 9 144 57 9 145 54 9 146 48 10 147 51 10 148 50 10 149 47 11 150 50 11 151 51 11 152 39 0 153 45 0 154 43 0 155 38 3 156 43 3 157 58 3 158 45 1 159 39 1 160 41 1 161</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Factory_003" name="Factory_003" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Factory_003-mesh" name="Factory_003">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Factory-material" target="#Factory-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
