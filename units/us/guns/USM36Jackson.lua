@@ -5,7 +5,6 @@ local USM36Jackson = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	maxDamage			= 3100,
 	trackOffset			= 5,
 	trackWidth			= 18,
-	turnRate			= 240,
 
 	weapons = {
 		[1] = {
@@ -26,7 +25,7 @@ local USM36Jackson = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 19,
 		maxammo				= 13,
-		turretturnspeed		= 8, -- Manual traverse 45s
+		turretturnspeed		= 10, -- Manual traverse 45s
 		maxvelocitykmh		= 44,
 		normaltex			= "unittextures/usm4shermana_normals.dds",
 	},

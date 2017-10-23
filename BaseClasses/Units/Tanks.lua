@@ -13,7 +13,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	script				= "Vehicle.lua",
 	seismicSignature	= 1,
 	trackType			= "Stdtank",
-	turnRate			= 250,
+	turnRate			= 75,
 	
 	customParams = {
 		blockfear			= true,
@@ -21,7 +21,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 		hasturnbutton		= true,
 		reversemult			= 0.5,
 		weapontoggle		= "priorityAPHE",
-		turretturnspeed		= 24,	-- default
+		turretturnspeed		= 16,	-- default
 		immobilizationresistance = 0.75,	-- rather high by default
 	},
 }
@@ -33,6 +33,7 @@ local LightTank = Tank:New{
 	iconType			= "lighttank",
 	movementClass		= "TANK_Light",
 	trackType			= "T60-70-SU76",
+	turnRate			= 150,
 
 	customParams = {
 		damageGroup		= "lightTanks",
@@ -52,6 +53,7 @@ local Tankette = LightTank:New{
 local MediumTank = Tank:New{
 	description 		= "Medium Tank",
 	iconType			= "medtank",
+	turnRate			= 125,
 
 	customParams = {
 		damageGroup		= "mediumTanks",
@@ -66,7 +68,7 @@ local HeavyTank = Tank:New{
 	explodeAs			= "Vehicle_Explosion_Large",
 	iconType			= "heavytank",
 	movementClass		= "TANK_Heavy",
-	turnRate			= 150,
+	turnRate			= 100,
 
 	customParams = {
 		damageGroup			= "heavyTanks",
@@ -78,7 +80,7 @@ local HeavyTank = Tank:New{
 local AssaultGun = Def:New{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Assault Gun",
 	iconType			= "selfprop",
-	turnRate			= 160,
+	turnRate			= 110,
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
 		turretturnspeed		= 24,
@@ -98,7 +100,7 @@ local TankDestroyer = AssaultGun:New{
 local SPArty = Def:New{ -- not a full class (role/mixin)
 	description 		= "Self-Propelled Howitzer",
 	iconType			= "sparty",
-	turnRate			= 175,
+	turnRate			= 95,
 	customParams = {
 		canareaattack		= true,
 		soundcategory		= "<SIDE>/Tank/SP",

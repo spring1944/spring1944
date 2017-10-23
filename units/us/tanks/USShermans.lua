@@ -2,7 +2,6 @@ local ShermanBase = MediumTank:New{
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USShermanA",
-	turnRate			= 280, -- FIXME: worth it?
 	
 	weapons = {
 		[1] = {
@@ -80,7 +79,8 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 local USM4A376Sherman = ShermanBase:New{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
-	buildCostMetal		= 2850,
+	buildCostMetal		= 3135,
+	turnRate			= 135,
 	maxDamage			= 3365,
 
 	weapons = {
@@ -121,7 +121,7 @@ local USM4A3105Sherman = ShermanBase:New{
 		maxammo				= 12,
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
-		turretturnspeed		= 8, -- manual traverse
+		turretturnspeed		= 10, -- manual traverse
 		maxvelocitykmh		= 39,
 		normaltex			= "unittextures/USM4ShermanB_normals.dds",
 	},

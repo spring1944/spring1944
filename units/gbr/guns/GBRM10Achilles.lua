@@ -5,7 +5,6 @@ local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	maxDamage			= 2960,
 	trackOffset			= 5,
 	trackWidth			= 18,
-	turnRate			= 280,
 
 	weapons = {
 		[1] = {
@@ -26,7 +25,7 @@ local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 25,
 		armor_top			= 19,
 		maxammo				= 10,
-		turretturnspeed		= 8, -- Manual traverse 45s
+		turretturnspeed		= 10, -- Manual traverse 45s
 		maxvelocitykmh		= 51,
 		normaltex			= "unittextures/GBRShermans_normals.dds",
 	},
