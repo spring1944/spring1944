@@ -158,8 +158,8 @@ local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
 }
 
 local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
-  range                = 637,
-  weaponVelocity       = 800,
+  weaponVelocity       = 1200,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 75,
   },
@@ -198,8 +198,8 @@ local CannoneDa47mml40AP = LightAP:New(CannoneDa47mml40, true):New{
   },
 }
 local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
-  range                = 708,
-  weaponVelocity       = 900,
+  weaponVelocity     = 1818,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 115,
   },

@@ -25,7 +25,7 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 15,
 		armor_top			= 0,
 		maxammo				= 18,
-		weapontoggle		= false,
+		weapontoggle		= "priorityAPHEATHE",
 		maxvelocitykmh		= 42.3,
 
 	},

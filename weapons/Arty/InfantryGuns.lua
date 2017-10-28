@@ -38,11 +38,10 @@ local Cannone65L17HE = InfGun:New{
 
 local Cannone65L17HEAT = InfGun:New{ -- TODO: make a HEAT base class and inherit from Cannone65
   areaOfEffect       = 8,
-  accuracy           = 250,
+  accuracy           = 500,
   predictBoost	     = 0.2,
   explosionGenerator = [[custom:EP_medium]],
   name               = [[Cannone da 65/17 HEAT Shell]],
-  range              = 715,
   reloadtime         = 6.25,
   soundHitDry        = [[GEN_Explo_2]],
   soundStart         = [[RUS_45mm]],
