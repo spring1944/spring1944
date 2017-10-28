@@ -1,6 +1,6 @@
 local ITAP40 = MediumTank:New{
 	name				= "Carro Pesante P26/40",
-	buildCostMetal		= 2500,
+	buildCostMetal		= 2470,
 	maxDamage			= 2600,
 	trackOffset			= 5,
 	trackWidth			= 20,
@@ -30,9 +30,9 @@ local ITAP40 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 66,
-		armor_rear			= 42,
-		armor_side			= 46,
+		armor_front			= 61,
+		armor_rear			= 40,
+		armor_side			= 45,
 		armor_top			= 20,
 		maxammo				= 19,
 		maxvelocitykmh		= 40,

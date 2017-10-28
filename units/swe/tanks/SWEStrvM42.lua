@@ -15,7 +15,7 @@ local StrvM42Base = {
 
 local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 	name				= "Stridsvagn m/42",
-	buildCostMetal		= 2400,
+	buildCostMetal		= 2520,
 	weapons = {
 		[1] = {
 			name				= "SWE75mmL34AP",
