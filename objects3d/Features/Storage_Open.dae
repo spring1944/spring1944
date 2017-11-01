@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2017-09-12, commit time:08:47, hash:8ef39d5c882</authoring_tool>
     </contributor>
-    <created>2017-10-30T18:26:46</created>
-    <modified>2017-10-30T18:26:46</modified>
+    <created>2017-11-01T19:27:15</created>
+    <modified>2017-11-01T19:27:15</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -50,10 +50,10 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="FeaturesStorages_png-sampler"/>
+              <texture texture="FeaturesStorages_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <texture texture="FeaturesStorages_specular_png-sampler"/>
+              <texture texture="FeaturesStorages_specular_png-sampler" texcoord="UVMap"/>
             </specular>
             <index_of_refraction>
               <float sid="index_of_refraction">1</float>
