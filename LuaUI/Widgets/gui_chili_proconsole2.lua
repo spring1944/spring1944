@@ -456,6 +456,8 @@ local function MessageIsChatInfo(msg)
 	string.find(msg.argument,'Buildings set') or
 	(string.find(msg.argument,'left the game') and string.find(msg.argument,'Player'))
 	--string.find(msg.argument,'Team') --endgame comedic message. Engine message, loaded from gamedata/messages.lua (hopefully 'Team' with capital 'T' is not used anywhere else)
+	-- S44 specific stuff: never hide air raid warnings
+	or string.find(msg.argument,'aircraft spotted')
 end
 
 local function hideMessage(msg)

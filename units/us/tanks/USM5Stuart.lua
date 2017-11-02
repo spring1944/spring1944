@@ -4,7 +4,6 @@ local StuartBase = LightTank:New{
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USStuart",
-	turnRate			= 280, -- FIXME: worth it?
 	
 	customParams = {
 		armor_front			= 43,
