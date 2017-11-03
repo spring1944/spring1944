@@ -58,5 +58,6 @@ units["rusradar"].name = "RUS-2 Air Control Station"
 units["usradar"].name = "AN/TPS-3 (SCR-602-T8) Light Aircraft Detector"
 units["hunradar"].name = "SAS Air Control Station"
 units["hunradar"].corpse = "hunradar_destroyed"
+units["sweradar"].name = "Acoustic Airplane Locator"
 
 return lowerkeys(units)
