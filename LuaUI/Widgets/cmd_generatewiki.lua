@@ -50,6 +50,17 @@ local function __to_string(data, indent)
     return str
 end
 
+local function __split_str(inputstr, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local t={} ; i=1
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+        t[i] = str
+        i = i + 1
+    end
+    return t
+end
 
 UNITS = {}  -- Global list of units to document
 
@@ -62,48 +73,83 @@ local function _to_wikilist(data, url_base, prefix)
     local i, v
     local count = 1
     for i, v in pairs(data) do
-        if UNITS[i] ~= "" then
-            -- We are not interested on adding morphs to this list, which are
-            -- featured by the abscence of a human readable name
-            str = str .. prefix .. tostring(count) .. ".- "
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
-            str = str .. _to_wikilist(v, url_base, prefix .. tostring(count) .. ".")
-            count = count + 1
-        end
+        str = str .. prefix .. tostring(count) .. ".- "
+        str = str .. "[" .. UNITS[i] .. "]"
+        str = str .. "(" .. url_base .. i .. ")\n\n"
+        str = str .. _to_wikilist(v, url_base, prefix .. tostring(count) .. ".")
+        count = count + 1
     end
 
     return str
 end
 
-function _units_tree(startUnit)
+function _is_morph_link(id)
+    -- Analyze the unit name to determine whether it is a morphing link or not
+    local name = id
+    if type(name) == "number" then
+        name = UnitDefs[id].name
+    end
+
+    fields = __split_str(name, "_")
+    if #fields >= 4 and fields[2] == "morph" then
+        return true
+    end
+
+    return false
+end
+
+function _unit_name(id, side)
+    -- Get an unitDefID, and return its name. This function is also resolving
+    -- morphing links.
+    -- id can be directly the name of the unit in case just the morphing
+    -- link resolution should be carried out
+    local name = id
+    if type(name) == "number" then
+        name = UnitDefs[id].name
+    end
+
+    -- Morphing link resolution
+    fields = __split_str(name, "_")
+    if #fields >= 4 and fields[1] == side and fields[2] == "morph" then
+        -- It is a morphing unit, see BuildMorphDef function in
+        -- LuaRules/Gadgets/unit_morph. We are interested in the morphed
+        -- unit instead of the morphing one
+        name = fields[4]
+        for i = 5,#fields do
+            -- Some swe nightmare names has underscores...
+            name = name .. "_" .. fields[i]
+        end
+    end
+
+    return name
+end
+
+function _units_tree(startUnit, side)
     -- Departs from the starting unit, and traverse all the tech tree derived
     -- from him, simply following the building capabilities of each unit.
     local name = startUnit
-    if type(name) == "number" then
-        name = UnitDefs[startUnit].name
-    end
-    local tree = {}
+
     local unitDef = UnitDefNames[name]
-    if UNITS[name] == nil then
-        UNITS[name] = unitDef.humanName
-    else
+    local tree = {}
+
+    if UNITS[name] ~= nil then
         -- The unit has been already digested. Parsing that again will result
         -- in an infinite loop
-        return {}
+        return tree
     end
+    UNITS[name] = unitDef.humanName
+
+    -- Add its children to the tree
     local children = unitDef.buildOptions
     for i = 1,#children do
-        local name = children[i]
-        if type(name) == "number" then
-            name = UnitDefs[name].name
-        end
-        tree[name] = _units_tree(name)
+        name = _unit_name(children[i], side)
+        tree[name] = _units_tree(name, side)
     end
     return tree
 end
 
-FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
+-- FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
+FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
 
 function _gen_faction(folder, faction)
     local side = faction.sideName
@@ -122,16 +168,81 @@ function _gen_faction(folder, faction)
 
     -- Faction units tree
     local tree = {}
-    tree[faction.startUnit] = _units_tree(faction.startUnit)
+    tree[faction.startUnit] = _units_tree(faction.startUnit, side)
     handle.write(handle, "## Units tree\n\n")
-    handle.write(handle, _to_wikilist(tree, "factions/" .. side .. "/"))
+    handle.write(handle, _to_wikilist(tree, "units/"))
     handle.write(handle, "\n")    
 
     handle.close(handle)
 end
 
+-- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
+UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+morphDefs = include("LuaRules/Configs/morph_defs.lua")
+
+function _gen_unit(name, folder)
+    local unitDef = UnitDefNames[name]
+    local unit_folder = folder .. "/units/"
+    -- Title line
+    -- ==========
+    local handle = io.open(unit_folder .. name .. ".md", "w")
+    handle.write(handle, "# ![" .. name .. "-buildpic]")
+    handle.write(handle, "(" .. UNITS_PICS_URL .. string.lower(unitDef.buildpicname) .. ") ")
+    handle.write(handle, unitDef.humanName .. "\n\n")
+    -- Get the morphing alternatives
+    -- =============================
+    local nMorphs = 0
+    if morphDefs[name] ~= nil then
+        handle.write(handle, "## Transformations\n\n")
+        handle.write(handle, "This unit can be converted in the following ones:\n\n")
+        local morphDef
+        if morphDefs[name].into ~= nil then
+            -- Conveniently transform it in a single element table
+            morphDefs[name] = {morphDefs[name]}
+        end
+        for _, morphDef in pairs(morphDefs[name]) do
+            local childName = UnitDefNames[morphDef.into].name
+            local childHumanName = UnitDefNames[morphDef.into].humanName
+            local childBuildPic = string.lower(UnitDefNames[morphDef.into].buildpicname)
+            -- Image/Logo
+            handle.write(handle, "![" .. childName .. "-logo]")
+            handle.write(handle, "(" .. UNITS_PICS_URL .. childBuildPic .. ") ")
+            -- Name
+            handle.write(handle, "[" .. childHumanName .. "]")
+            handle.write(handle, "(units/" .. childName .. ")\n\n")
+
+            nMorphs = nMorphs + 1
+        end
+    end
+    -- Document the build options
+    -- ==========================
+    local children = unitDef.buildOptions
+    if #children - nMorphs > 0 then
+        handle.write(handle, "## Build options\n\n")
+        handle.write(handle, "This unit can build the following items:\n\n")
+        local child
+        for _, child in pairs(children) do
+            if not _is_morph_link(child) then
+                local childName = UnitDefs[child].name
+                local childHumanName = UnitDefs[child].humanName
+                local childBuildPic = string.lower(UnitDefs[child].buildpicname)
+                -- Image/Logo
+                handle.write(handle, "![" .. childName .. "-logo]")
+                handle.write(handle, "(" .. UNITS_PICS_URL .. childBuildPic .. ") ")
+                -- Name
+                handle.write(handle, "[" .. childHumanName .. "]")
+                handle.write(handle, "(units/" .. childName .. ")\n\n")
+            end
+        end
+    end
+
+    handle.close(handle)
+end
+
 function _gen_wiki(folder)
-    if Spring.CreateDir(folder .. "/factions") == false then
+    -- Factions documentation
+    -- ======================
+    if not Spring.CreateDir(folder .. "/factions") then
         Spring.Log("cmd_generatewiki.lua", "error",
             "Failure creating the folder '" .. folder .. "/factions" .. "'")
         return false
@@ -154,6 +265,18 @@ function _gen_wiki(folder)
     end
     handle.write(handle, "\n")
     handle.close(handle)
+
+    -- Units documentation
+    -- ===================
+    if not Spring.CreateDir(folder .. "/units") then
+        Spring.Log("cmd_generatewiki.lua", "error",
+            "Failure creating the folder '" .. folder .. "/units" .. "'")
+        return false
+    end
+    for id,unitDef in pairs(UnitDefs) do
+        _gen_unit(unitDef.name, folder)
+    end
+    
     return true
 end
 
