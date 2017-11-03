@@ -64,6 +64,9 @@ end
 
 UNITS = {}  -- Global list of units to document
 
+-- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
+UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+
 local function _to_wikilist(data, url_base, prefix)
     local str = ""
 
@@ -72,12 +75,47 @@ local function _to_wikilist(data, url_base, prefix)
     end
     local i, v
     local count = 1
+    -- Let's add first the "end of lines", i.e. the ones which may not build
+    -- more units
     for i, v in pairs(data) do
-        str = str .. prefix .. tostring(count) .. ".- "
-        str = str .. "[" .. UNITS[i] .. "]"
-        str = str .. "(" .. url_base .. i .. ")\n\n"
-        str = str .. _to_wikilist(v, url_base, prefix .. tostring(count) .. ".")
-        count = count + 1
+        if next(v) == nil then
+            -- Prefix (replace indentation)
+            local prefix_to_add = tostring(count)
+            if count < 10 then
+                prefix_to_add = "0" .. prefix_to_add
+            end
+            str = str .. prefix .. prefix_to_add .. ".- "
+            -- Image/Logo
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            str = str .. "![" .. i .. "-logo]"
+            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+            -- Unit name
+            str = str .. "[" .. UNITS[i] .. "]"
+            str = str .. "(" .. url_base .. i .. ")\n\n"
+
+            count = count + 1
+        end
+    end
+    -- Now add the units with additional children
+    for i, v in pairs(data) do
+        if next(v) ~= nil then
+            -- Prefix (replace indentation)
+            local prefix_to_add = tostring(count)
+            if count < 10 then
+                prefix_to_add = "0" .. prefix_to_add
+            end
+            str = str .. prefix .. prefix_to_add .. ".- "
+            -- Image/Logo
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            str = str .. "![" .. i .. "-logo]"
+            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+            -- Unit name
+            str = str .. "[" .. UNITS[i] .. "]"
+            str = str .. "(" .. url_base .. i .. ")\n\n"
+
+            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add .. ".")
+            count = count + 1
+        end
     end
 
     return str
@@ -176,8 +214,6 @@ function _gen_faction(folder, faction)
     handle.close(handle)
 end
 
--- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
-UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
 morphDefs = include("LuaRules/Configs/morph_defs.lua")
 
 function _gen_unit(name, folder)
