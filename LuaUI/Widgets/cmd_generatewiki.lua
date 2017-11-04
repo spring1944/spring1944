@@ -10,6 +10,15 @@ function widget:GetInfo ()
     }
 end
 
+-- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
+UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+-- FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
+FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
+
+-- =============================================================================
+-- STRING UTILITIES
+-- =============================================================================
+
 local function __to_string(data, indent)
     local str = ""
 
@@ -62,10 +71,27 @@ local function __split_str(inputstr, sep)
     return t
 end
 
-UNITS = {}  -- Global list of units to document
+-- =============================================================================
+-- FACTIONS AUTO-DOCUMENTATION
+-- =============================================================================
 
--- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
-UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+UNITS = {}  -- Global list of units to document
+morphDefs = include("LuaRules/Configs/morph_defs.lua")
+
+function _is_morph_link(id)
+    -- Analyze the unit name to determine whether it is a morphing link or not
+    local name = id
+    if type(name) == "number" then
+        name = UnitDefs[id].name
+    end
+
+    fields = __split_str(name, "_")
+    if #fields >= 4 and fields[2] == "morph" then
+        return true
+    end
+
+    return false
+end
 
 local function _to_wikilist(data, url_base, prefix)
     local str = ""
@@ -121,21 +147,6 @@ local function _to_wikilist(data, url_base, prefix)
     return str
 end
 
-function _is_morph_link(id)
-    -- Analyze the unit name to determine whether it is a morphing link or not
-    local name = id
-    if type(name) == "number" then
-        name = UnitDefs[id].name
-    end
-
-    fields = __split_str(name, "_")
-    if #fields >= 4 and fields[2] == "morph" then
-        return true
-    end
-
-    return false
-end
-
 function _unit_name(id, side)
     -- Get an unitDefID, and return its name. This function is also resolving
     -- morphing links.
@@ -179,15 +190,18 @@ function _units_tree(startUnit, side)
 
     -- Add its children to the tree
     local children = unitDef.buildOptions
+    if name == side .. "pontoontruck" then
+        -- The factories transformations are added as morphing links build
+        -- options. However, the pontoontruck morph to shipyard is not specified
+        -- as a build option, so we must manually add it
+        children[#children + 1] = side .. "boatyard"
+    end
     for i = 1,#children do
         name = _unit_name(children[i], side)
         tree[name] = _units_tree(name, side)
     end
     return tree
 end
-
--- FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
-FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
 
 function _gen_faction(folder, faction)
     local side = faction.sideName
@@ -214,7 +228,9 @@ function _gen_faction(folder, faction)
     handle.close(handle)
 end
 
-morphDefs = include("LuaRules/Configs/morph_defs.lua")
+-- =============================================================================
+-- UNITS AUTO-DOCUMENTATION
+-- =============================================================================
 
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
