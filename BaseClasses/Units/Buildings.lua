@@ -352,6 +352,8 @@ local Storage = Building:New{
 		armor_side				= 15,
 		armor_top				= 30,
 		dontcount				= 1,
+		wiki_parser             = "storage",  -- storage.md template
+		wiki_comments           = "",         -- To be override by each unit
 	},
 }
 -- Truck Supplies
@@ -366,6 +368,8 @@ local Supplies = Building:New{
 	customparams = {
 		dontCount					= 1,
 		supplyRange					= 560,
+		wiki_parser             = "supplies",  -- storage.md template
+		wiki_comments           = "",         -- To be override by each unit
 	},
 	explodeAs					= "ResourceBoom",
 	footprintX					= 4,

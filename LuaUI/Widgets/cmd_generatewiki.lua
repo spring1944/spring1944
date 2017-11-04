@@ -257,6 +257,54 @@ function _parse_yard(unitDef)
     return t
 end
 
+function _parse_storage(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "storage.md")
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    local buildSpeed = unitDef.buildSpeed
+    if buildSpeed == nil or buildSpeed == 0 then
+        buildSpeed = 1
+    end
+    t = string.gsub(t,
+                    "{buildTime}",
+                    tostring(unitDef.buildTime / buildSpeed))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{energyStorage}",
+                    tostring(unitDef.energyStorage))
+    return t
+end
+
+function _parse_supplies(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "supplies.md")
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    local buildSpeed = unitDef.buildSpeed
+    if buildSpeed == nil or buildSpeed == 0 then
+        buildSpeed = 1
+    end
+    t = string.gsub(t,
+                    "{buildTime}",
+                    tostring(unitDef.buildTime / buildSpeed))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{supplyRange}",
+                    tostring(unitDef.customParams.supplyrange))
+    return t
+end
+
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
     local unit_folder = folder .. "/units/"
@@ -273,6 +321,10 @@ function _gen_unit(name, folder)
         local parser = customParams.wiki_parser
         if parser == "yard" then
             handle.write(handle, _parse_yard(unitDef))
+        elseif parser == "storage" then
+            handle.write(handle, _parse_storage(unitDef))
+        elseif parser == "supplies" then
+            handle.write(handle, _parse_supplies(unitDef))
         end
     end
     -- Get the morphing alternatives
