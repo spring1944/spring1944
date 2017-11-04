@@ -232,6 +232,31 @@ end
 -- UNITS AUTO-DOCUMENTATION
 -- =============================================================================
 
+TEMPLATES_FOLDER = "LuaUI/Widgets/generatewiki/templates/"
+
+function _parse_yard(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "yard.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{buildTime}",
+                    tostring(unitDef.buildTime / unitDef.buildSpeed))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{supplyRange}",
+                    tostring(unitDef.customParams.supplyrange))
+    return t
+end
+
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
     local unit_folder = folder .. "/units/"
@@ -241,6 +266,15 @@ function _gen_unit(name, folder)
     handle.write(handle, "# ![" .. name .. "-buildpic]")
     handle.write(handle, "(" .. UNITS_PICS_URL .. string.lower(unitDef.buildpicname) .. ") ")
     handle.write(handle, unitDef.humanName .. "\n\n")
+    -- Parse the unit by its class
+    -- ===========================
+    local customParams = unitDef.customParams
+    if customParams then
+        local parser = customParams.wiki_parser
+        if parser == "yard" then
+            handle.write(handle, _parse_yard(unitDef))
+        end
+    end
     -- Get the morphing alternatives
     -- =============================
     local nMorphs = 0
