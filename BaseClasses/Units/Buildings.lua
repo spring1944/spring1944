@@ -177,8 +177,10 @@ local BoatYard = Yard:New{
 }
 
 local BoatYardLarge = BoatYard:New{
+	name				= "Large Boat Yard",
+	description			= "Large Naval Prep. Facility",
 	iconType			= "hshipyard", -- TODO: worth it? only upgraded fac with its own icon
-    workerTime          = 100,
+	workerTime          = 100,
 	maxDamage           = 32500,
 }
 
