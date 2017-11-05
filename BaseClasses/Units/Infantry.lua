@@ -33,6 +33,9 @@ local Infantry = Unit:New{
 		damageGroup			= "infantry",
 		feartarget			= true,
 		soundcategory 		= "<SIDE>/Infantry",
+		wiki_parser                 = "infantry",  -- infantry.md template
+		wiki_subclass_comments      = "",      -- To be override by inf classes
+		wiki_comments               = "",      -- To be override by each unit
 	},
 }
 
@@ -43,6 +46,14 @@ local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	
 	customParams = {
 		flagcaprate			= 1,
+		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
+Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
+front line, providing a line of sight to other longer-range guns. Rifle weapon
+can just be used to shoot against another infantry units, or eventually to cause
+tiny damage to deployed guns. On the other hand, grenades can be used to kill
+several infantry units by a single shot, damage deployed guns and structures,
+or even slightly damage armoured vehicles. Unfortunately, grenade strikes can
+be only carried out in a dramatically short range.]],
 	},
 	
 	weapons = {
@@ -61,8 +72,14 @@ local SMGInf = Infantry:New{
 	
 	customParams = {
 		flagcaprate			= 1,
+		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
+Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
+front line, providing a line of sight to other longer-range guns. Conversely
+to Rifle Infantry, Assault infantry are trained to combat in a short range,
+significantly damaging infantry, deployed guns or structures with its deadly
+combination of a short range sub-machinegun and grenades.]],
 	},
-	
+
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
@@ -79,6 +96,14 @@ local LMGInf = Infantry:New{
 	iconType			= "lightmg",
 	buildCostMetal		= 75, -- TODO: needed?
 	
+	customParams = {
+		wiki_subclass_comments = [[Machineguns are meant to cause a significant
+number of enemy infantry casualties. Also, the enemy soldiers under machinegun
+fire will be
+[suppressed](https://gitlab.com/Spring1944/spring1944/wikis/inffear).
+On the other hand, this unit is not able to damage structures or vehicles]],
+	},
+
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
@@ -97,6 +122,11 @@ local HMGInf = Infantry:New{
 	turnRate			= 420,
 	customparams = {
 		scriptanimation		= "mg",
+		wiki_subclass_comments = [[Machineguns are meant to cause a significant
+number of enemy infantry casualties. Also, the enemy soldiers under machinegun
+fire will be
+[suppressed](https://gitlab.com/Spring1944/spring1944/wikis/inffear).
+On the other hand, this unit is not able to damage structures or vehicles]],
 	},
 }
 
@@ -112,8 +142,14 @@ local SniperInf = Infantry:New{
 	
 	customParams = {
 		soundcategory 		= "<SIDE>/Infantry/Sniper",
+		wiki_subclass_comments = [[Snipers are the nightmare of the infantry.
+They are experts at camouflage, such that they cannot be seen unless enemy come
+quite close to them, or during a short lapse of time after shooting the rifle.
+On top of that, they can open fire from a long distance with a deadly
+precision... A casualty per bullet!
+On the other hand, this unit is not able to damage structures or vehicles]],
 	},
-	
+
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 60,
@@ -130,6 +166,18 @@ local ObservInf = Infantry:New{
 	cloakCost			= 0,
 	cloakCostMoving		= 0,
 	minCloakDistance	= 160,
+
+	customParams = {
+		wiki_subclass_comments = [[This unit is not meant to directly cause
+casualties, but to provide line of sight to another longer range weapons which
+may inflict significant damage from a safe position. This unit may sneak into
+enemy lines, since it cannot be detected until enemy comes close to him. When
+a good observation point is reached, this unit may use the binoculars to spot
+an specific area (use attack command to do that). Take care, while using the
+binoculars this unit is not invisible anymore. Don't try to use the unit as
+cloacked scout, because it has a very short sight range.]],
+	},
+
 	weapons = {
 		[1] = { -- Binocs
 			name				= "Binocs",
@@ -151,6 +199,18 @@ local MedMortarInf = Infantry:New{
 		canareaattack		= true,
 		maxammo				= 10,
 		weapontoggle 		= "smoke",
+		wiki_subclass_comments = [[Mortars are a long-range indirect fire
+weapon, very valuable to support infantry in battle. Due to the long range, and
+the indirect fire, they can shoot from a safe position, and due to the explosion
+range, they can inflict serious number of casualties among enemy infantry by a
+single shot. This unit is also effective against deployed guns and strucutures.
+It's a quite exprensive unit, easily
+[suppressed](https://gitlab.com/Spring1944/spring1944/wikis/inffear), such that
+they have a very low performance in close-quarters combat. Hence, If you lost
+your front line then you should consider retreating your mortars.
+
+Watch out, mortars are very ammo hungry! They can eventually drain your
+storages...]],
 	},
 }
 
@@ -170,6 +230,11 @@ local FlameInf = Infantry:New{
 
 	customParams = {
 		maxammo				= 5,
+		wiki_subclass_comments = [[Its limited fire range make this unit quite
+useless in general operations. However, when strategically placed, this units
+may inflict huge damage to enemy groups, deployed guns or even strucutures.
+For instance, moving a couple of this guys to a hill top is a good way to
+protect the spot against enemy infantry raids.]],
 	},
 
 	weapons = {
@@ -184,6 +249,15 @@ local ATLauncherInf = Infantry:New{
 	description			= "Anti-Tank Infantry",
 	iconType			= "antitank",
 	maxVelocity			= 1.5,
+
+	customParams = {
+		wiki_subclass_comments = [[Is the enemy rushing your base with tanks?
+well, a couple of this guys may easily stop them. Due to the low fire range and
+rate, Anti-Tank Infantry has a very low performance fighting enemy soldiers.
+However, Anti-Tank Infantry is an excellent unit to ambush unprotected enemy
+tanks. When the tanks realise on the presence of him, it will be too late.]],
+	},
+
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,
@@ -193,6 +267,15 @@ local ATLauncherInf = Infantry:New{
 
 local ATGrenadeInf = ATLauncherInf:New{
 	description			= "Short Range Heavy Anti-Tank",
+
+	customParams = {
+		wiki_subclass_comments = [[Is the enemy rushing your base with tanks?
+well, a couple of this guys may easily stop them. Due to the low fire range and
+rate, Anti-Tank Infantry has a very low performance fighting enemy soldiers.
+However, Anti-Tank Infantry is an excellent unit to ambush unprotected enemy
+tanks. When the tanks realise on the presence of him, it will be too late.]],
+	},
+
 	weapons = {
 		[1] = { -- Rifle
 			maxAngleDif			= 170,
@@ -206,7 +289,17 @@ local ATGrenadeInf = ATLauncherInf:New{
 local ATRifleInf = Infantry:New{
 	description			= "Long Range Light Anti-Tank",
 	icontype			= "rusptrd", -- TODO: atm italian solothurn has its own icon, consolidate
-	
+
+	customParams = {
+		wiki_subclass_comments = [[Conversely to the short range anti-tank
+weapons, the Anti-Tank rifle is not meant to destroy enemy vehicles by a single
+shot, but to slightly damaging them while shooting from a safe distance. A shot
+of this gun may make a vehicle inoperative to still moving for a short lapse of
+time.
+This kind of weapons can be useful in some contexts, but you should not rely on
+them to setup your anti-tank line.]],
+	},
+
 	weapons = {
 		[1] = { -- AT Launcher
 			maxAngleDif			= 170,
@@ -229,6 +322,9 @@ local EngineerInf = Infantry:New{
 	customParams = {
 		canclearmines			= true,
 		scriptAnimation			= "engineer",
+		wiki_subclass_comments = [[Engineers are the basic building staff of
+your army. They are not prepared to direct fighting the enemy at all, so keep
+them away from the enemy.]],
 	},
 }
 
@@ -254,6 +350,14 @@ local InfantryGun = Infantry:New{
 		maxammo				= 4,
 		infgun				= true,
 		scriptAnimation = "infantrygun_anim",
+		wiki_subclass_comments = [[A gun towed by infantry. This gun is an
+efficient way to provide infantry support, becoming relatively cheap, with a
+long enough range and destructive capabilities. The main drawback of this unit
+is the extremelly low speed. However, this gun can be eventually towed by a
+supply truck, in order to quickly deploy it in the battlefield.
+
+Even though this gun may damage some light armoured vehicles, don't expect a
+great performance against them.]],
 	},
 	weapons = {
 		[1] = { -- Cannon

@@ -305,6 +305,50 @@ function _parse_supplies(unitDef)
     return t
 end
 
+function _parse_infantry(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "infantry.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    -- Structural details
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{flagCap}",
+                    tostring(unitDef.customParams.flagcaprate or 0))
+    -- Line of Shight
+    t = string.gsub(t,
+                    "{sight}",
+                    tostring(unitDef.losRadius))
+    t = string.gsub(t,
+                    "{airLOS}",
+                    tostring(unitDef.airLosRadius))
+    t = string.gsub(t,
+                    "{noiseLOS}",
+                    tostring(unitDef.seismicRadius))
+    -- Motion
+    t = string.gsub(t,
+                    "{maxspeed}",
+                    tostring(unitDef.speed))
+    t = string.gsub(t,
+                    "{turn}",
+                    tostring(unitDef.turnRate / 0.16))
+    t = string.gsub(t,
+                    "{slope}",
+                    tostring(unitDef.moveDef.maxSlope))
+    t = string.gsub(t,
+                    "{maxdepth}",
+                    tostring(unitDef.moveDef.depth))
+    return t
+end
+
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
     local unit_folder = folder .. "/units/"
@@ -325,6 +369,8 @@ function _gen_unit(name, folder)
             handle.write(handle, _parse_storage(unitDef))
         elseif parser == "supplies" then
             handle.write(handle, _parse_supplies(unitDef))
+        elseif parser == "infantry" then
+            handle.write(handle, _parse_infantry(unitDef))
         end
     end
     -- Get the morphing alternatives
