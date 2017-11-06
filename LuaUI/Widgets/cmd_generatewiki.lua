@@ -467,6 +467,19 @@ function _parse_weapon(unitDef, weapon)
     t = string.gsub(t,
                     "{fireRate}",
                     tostring(salvoSize / salvoTime))
+    -- Ammo cost
+    -- =========
+    local ammoCost = ""
+    local weaponcost = weaponDef.customParams.weaponcost
+    if weaponcost ~= nil and tonumber(weaponcost) > 0 then
+        ammoCost = "![Ammo][108] Ammo cost: "
+        ammoCost = ammoCost .. tostring(weaponcost) .. " per shot ("
+        ammoCost = ammoCost .. tostring(weaponcost * salvoSize / salvoTime)
+        ammoCost = ammoCost .. " per second)\n\n"
+    end
+    t = string.gsub(t,
+                    "{ammoCost}",
+                    ammoCost)
     -- Targets and damage inflicted
     -- ============================
     local targets = ""
