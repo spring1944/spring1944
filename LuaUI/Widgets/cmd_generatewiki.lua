@@ -437,6 +437,78 @@ function _parse_infantry(unitDef)
     return t
 end
 
+function _parse_vehicle(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "vehicles.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    -- Structural details
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{frontArmour}",
+                    tostring(unitDef.customParams.armor_front or 0))
+    t = string.gsub(t,
+                    "{rearArmour}",
+                    tostring(unitDef.customParams.armor_rear or 0))
+    t = string.gsub(t,
+                    "{sideArmour}",
+                    tostring(unitDef.customParams.armor_side or 0))
+    t = string.gsub(t,
+                    "{topArmour}",
+                    tostring(unitDef.customParams.armor_top or 0))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. name .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
+    local maxammo = ""
+    if unitDef.customParams.maxammo ~= nil then
+        maxammo = "![Ammo][11] Max ammo: " .. unitDef.customParams.maxammo
+    end
+    t = string.gsub(t,
+                    "{maxammo}",
+                    maxammo)    
+    -- Line of Shight
+    t = string.gsub(t,
+                    "{sight}",
+                    tostring(unitDef.losRadius))
+    t = string.gsub(t,
+                    "{airLOS}",
+                    tostring(unitDef.airLosRadius))
+    t = string.gsub(t,
+                    "{noiseLOS}",
+                    tostring(unitDef.seismicRadius))
+    -- Motion
+    t = string.gsub(t,
+                    "{maxspeed}",
+                    tostring(unitDef.speed))
+    t = string.gsub(t,
+                    "{turn}",
+                    tostring(unitDef.turnRate / 0.16))
+    t = string.gsub(t,
+                    "{slope}",
+                    tostring(unitDef.moveDef.maxSlope))
+    t = string.gsub(t,
+                    "{maxdepth}",
+                    tostring(unitDef.moveDef.depth))
+    return t
+end
+
 function _parse_weapon(unitDef, weapon)
     -- The parameter weapon is not a weapon def, but an unitDef weapon table
     weaponDef = WeaponDefs[weapon.weaponDef]
@@ -581,6 +653,8 @@ function _gen_unit(name, folder)
             handle.write(handle, _parse_supplies(unitDef))
         elseif parser == "infantry" then
             handle.write(handle, _parse_infantry(unitDef))
+        elseif parser == "vehicle" then
+            handle.write(handle, _parse_vehicle(unitDef))
         end
     end
     -- Parse the weapons

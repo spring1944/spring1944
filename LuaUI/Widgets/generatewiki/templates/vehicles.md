@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a vehicle. Vehicles are in general faster and stronger than infantry, becoming a determinant factor in terrain battles. However, vehicles have some significant drawbacks to be considered as well: In general, manufacturing vehicles is not a cheap operation, and their line of sight is quite limited, usually requiring infantry support. 
+Vehicles are in general faster and stronger than infantry, becoming by themselves a determinant factor in terrain battles. However, vehicles have some significant drawbacks to be considered as well: In general, manufacturing vehicles is not a cheap operation, and their line of sight is quite limited, usually requiring some infantry scouting support.
 
 {subclass_comments}
 
@@ -10,8 +10,8 @@ This is a vehicle. Vehicles are in general faster and stronger than infantry, be
 
 | Parameter | Value | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|-----------|-------|
-| ![Cost][1] Cost | {buildCost} | ![Health][2] Health points | {maxDamage} | ![Flag][3] Flag capturing | {flagCap} |
-| ![Armour][106] Front armour | {frontArmour} | ![Armour][106] Sides armour | {sidesArmour} | ![Armour][106] Rear armour | {rearArmour} |
+| ![Cost][1] Cost | {buildCost} | ![Health][2] Health points | {maxDamage} | ![Armour][106] Front armour | {frontArmour} mm |
+| ![Armour][106] Rear armour | {rearArmour} mm | ![Armour][106] Sides armour | {sideArmour} mm | ![Armour][106] Top armour | {topArmour} mm |
 
 
 ![Category][104] Targeted as: {categories}
