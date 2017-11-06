@@ -168,13 +168,13 @@ local ObservInf = Infantry:New{
 	minCloakDistance	= 160,
 
 	customParams = {
-		wiki_subclass_comments = [[This unit is not meant to directly cause
-casualties, but to provide line of sight to another longer range weapons which
-may inflict significant damage from a safe position. This unit may sneak into
-enemy lines, since it cannot be detected until enemy comes close to him. When
-a good observation point is reached, this unit may use the binoculars to spot
-an specific area (use attack command to do that). Take care, while using the
-binoculars this unit is not invisible anymore. Don't try to use the unit as
+		wiki_subclass_comments = [[This unit is not intended to can directly
+cause casualties, but to provide line of sight to another longer range weapons
+which may inflict significant damage from a safe position. This unit may sneak
+into enemy lines, since it cannot be detected until enemy comes close to him.
+When a good observation point is reached, this unit may use the binoculars to
+spot an specific area (use attack command to do that). Take care, while using
+the binoculars this unit is not invisible anymore. Don't try to use the unit as
 cloacked scout, because it has a very short sight range.]],
 	},
 
@@ -202,15 +202,13 @@ local MedMortarInf = Infantry:New{
 		wiki_subclass_comments = [[Mortars are a long-range indirect fire
 weapon, very valuable to support infantry in battle. Due to the long range, and
 the indirect fire, they can shoot from a safe position, and due to the explosion
-range, they can inflict serious number of casualties among enemy infantry by a
-single shot. This unit is also effective against deployed guns and strucutures.
-It's a quite exprensive unit, easily
-[suppressed](https://gitlab.com/Spring1944/spring1944/wikis/inffear), such that
-they have a very low performance in close-quarters combat. Hence, If you lost
-your front line then you should consider retreating your mortars.
+range, they can inflict a number of casualties among enemy infantry by a
+single shot. This unit is also effective against deployed guns and structures.
+It's a quite exprensive unit, with a painfully low performance in close-quarters
+combat. Hence, If you lost your front line then you should consider retreating
+your mortars to a safer position.
 
-Watch out, mortars are very ammo hungry! They can eventually drain your
-storages...]],
+Watch out, mortars are ammo hungry! They can eventually drain your storages...]],
 	},
 }
 
@@ -232,9 +230,9 @@ local FlameInf = Infantry:New{
 		maxammo				= 5,
 		wiki_subclass_comments = [[Its limited fire range make this unit quite
 useless in general operations. However, when strategically placed, this units
-may inflict huge damage to enemy groups, deployed guns or even strucutures.
-For instance, moving a couple of this guys to a hill top is a good way to
-protect the spot against enemy infantry raids.]],
+may inflict huge damage to enemy groups, deployed guns or even structures.
+It's not strange finding a couple of this guys guarding a hill top, a good way
+to protect the spot against enemy infantry raids.]],
 	},
 
 	weapons = {
@@ -252,10 +250,11 @@ local ATLauncherInf = Infantry:New{
 
 	customParams = {
 		wiki_subclass_comments = [[Is the enemy rushing your base with tanks?
-well, a couple of this guys may easily stop them. Due to the low fire range and
-rate, Anti-Tank Infantry has a very low performance fighting enemy soldiers.
-However, Anti-Tank Infantry is an excellent unit to ambush unprotected enemy
-tanks. When the tanks realise on the presence of him, it will be too late.]],
+well, a couple of this guys may appropriately welcome them. Due to the low fire
+range and rate, Anti-Tank Infantry has a very low performance fighting enemy
+soldiers. However, Anti-Tank Infantry is an excellent unit to ambush unprotected
+enemy tanks. When the enemy tanks realise on their presence, it will be too
+late!]],
 	},
 
 	weapons = {
@@ -270,10 +269,11 @@ local ATGrenadeInf = ATLauncherInf:New{
 
 	customParams = {
 		wiki_subclass_comments = [[Is the enemy rushing your base with tanks?
-well, a couple of this guys may easily stop them. Due to the low fire range and
-rate, Anti-Tank Infantry has a very low performance fighting enemy soldiers.
-However, Anti-Tank Infantry is an excellent unit to ambush unprotected enemy
-tanks. When the tanks realise on the presence of him, it will be too late.]],
+well, a couple of this guys may appropriately welcome them. Due to the low fire
+range and rate, Anti-Tank Infantry has a very low performance fighting enemy
+soldiers. However, Anti-Tank Infantry is an excellent unit to ambush unprotected
+enemy tanks. When the enemy tanks realise on their presence, it will be too
+late!]],
 	},
 
 	weapons = {
@@ -293,11 +293,11 @@ local ATRifleInf = Infantry:New{
 	customParams = {
 		wiki_subclass_comments = [[Conversely to the short range anti-tank
 weapons, the Anti-Tank rifle is not meant to destroy enemy vehicles by a single
-shot, but to slightly damaging them while shooting from a safe distance. A shot
-of this gun may make a vehicle inoperative to still moving for a short lapse of
-time.
+shot, but to slightly damaging them while shooting from a safe distance.
+Moreover, a successfull hit of this gun has a chance to turn a vehicle
+inoperative to still moving for a short lapse of time.
 This kind of weapons can be useful in some contexts, but you should not rely on
-them to setup your anti-tank line.]],
+them at the time of setting up your anti-tank defenses.]],
 	},
 
 	weapons = {
@@ -323,8 +323,8 @@ local EngineerInf = Infantry:New{
 		canclearmines			= true,
 		scriptAnimation			= "engineer",
 		wiki_subclass_comments = [[Engineers are the basic building staff of
-your army. They are not prepared to direct fighting the enemy at all, so keep
-them away from the enemy.]],
+your army. They are not prepared to combat the enemy at all, so keep them away
+from the first line.]],
 	},
 }
 
@@ -350,11 +350,11 @@ local InfantryGun = Infantry:New{
 		maxammo				= 4,
 		infgun				= true,
 		scriptAnimation = "infantrygun_anim",
-		wiki_subclass_comments = [[A gun towed by infantry. This gun is an
-efficient way to provide infantry support, becoming relatively cheap, with a
-long enough range and destructive capabilities. The main drawback of this unit
-is the extremelly low speed. However, this gun can be eventually towed by a
-supply truck, in order to quickly deploy it in the battlefield.
+		wiki_subclass_comments = [[This gun, towed by infantry, is an efficient
+way to provide infantry support, becoming relatively cheap, with a long enough
+range and destructive capabilities. The main drawback of this unit is the
+extremelly low speed. However, this gun can be eventually towed by a supply
+truck, in order to quickly deploy it in the battlefield.
 
 Even though this gun may damage some light armoured vehicles, don't expect a
 great performance against them.]],

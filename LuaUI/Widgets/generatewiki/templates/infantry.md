@@ -1,9 +1,9 @@
 ## Introduction
 
-This is an infantry soldier. Soldiers are the basic unit in Spring-1944, and you always want to have a number of soldiers deployed... Don't stop recruiting them!
-Along this line, infantry soldiers are the very only units that can capture terrain flags, and are one of the most effective ways to provide a line of sight for armoured vehicles (remember that vehicles are in general almost blind).
+This is an infantry soldier. Soldiers are the basic unit in Spring-1944, and you always want to have a number of them deployed along the battlefield... Don't stop recruiting them!
+Along this line, infantry units are the very only units that can capture terrain flags, and are one of the most efficient ways to provide a line of sight for armoured vehicles (it should be recalled that vehicles have in general a quite limite sight distance).
 
-Infantry is cheap, but very fragile... And vulnerable to almost every weapon of the game. Also infantry can be easily [suppressed by fear](inffear).
+Infantry is cheap, but very fragile... And vulnerable to almost every weapon of the game. On top of that, infantry can be easily [suppressed by fear](inffear).
 
 {subclass_comments}
 
