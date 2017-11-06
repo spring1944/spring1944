@@ -290,7 +290,7 @@ function _parse_yard(unitDef)
     local categories = ""
     for name, value in pairs(unitDef.modCategories) do
         if value then
-            categories = categories .. ", "
+            categories = categories .. name .. ", "
         end
     end
     t = string.gsub(t,
@@ -326,7 +326,7 @@ function _parse_storage(unitDef)
     local categories = ""
     for name, value in pairs(unitDef.modCategories) do
         if value then
-            categories = categories .. ", "
+            categories = categories .. name .. ", "
         end
     end
     t = string.gsub(t,
@@ -362,7 +362,7 @@ function _parse_supplies(unitDef)
     local categories = ""
     for name, value in pairs(unitDef.modCategories) do
         if value then
-            categories = categories .. ", "
+            categories = categories .. name .. ", "
         end
     end
     t = string.gsub(t,
@@ -395,7 +395,7 @@ function _parse_infantry(unitDef)
     local categories = ""
     for name, value in pairs(unitDef.modCategories) do
         if value then
-            categories = categories .. ", "
+            categories = categories .. name .. ", "
         end
     end
     t = string.gsub(t,
