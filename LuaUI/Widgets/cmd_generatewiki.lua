@@ -496,11 +496,14 @@ function _parse_weapon(unitDef, weapon)
                     "{range}",
                     tostring(weaponDef.range))
     t = string.gsub(t,
+                    "{damageArea}",
+                    tostring(weaponDef.damageAreaOfEffect or 0))
+    t = string.gsub(t,
                     "{accuracy}",
                     tostring(weaponDef.accuracy))
     t = string.gsub(t,
-                    "{damageArea}",
-                    tostring(weaponDef.damageAreaOfEffect or 0))
+                    "{movingAccuracy}",
+                    tostring(weaponDef.movingAccuracy))
     local pen100 = weaponDef.customParams.armor_penetration or 0
     local pen1000 = pen100
     if weaponDef.customParams.armor_penetration_100m then
@@ -522,19 +525,9 @@ function _parse_weapon(unitDef, weapon)
     t = string.gsub(t,
                     "{fireRate}",
                     tostring(salvoSize / salvoTime))
-    -- Ammo cost
-    -- =========
-    local ammoCost = ""
-    local weaponcost = weaponDef.customParams.weaponcost
-    if weaponcost ~= nil and tonumber(weaponcost) > 0 then
-        ammoCost = "![Ammo][108] Ammo cost: "
-        ammoCost = ammoCost .. tostring(weaponcost) .. " per shot ("
-        ammoCost = ammoCost .. tostring(weaponcost * salvoSize / salvoTime)
-        ammoCost = ammoCost .. " per second)\n\n"
-    end
     t = string.gsub(t,
                     "{ammoCost}",
-                    ammoCost)
+                    tostring(weaponDef.customParams.weaponcost or 0))
     -- Targets and damage inflicted
     -- ============================
     local targets = ""

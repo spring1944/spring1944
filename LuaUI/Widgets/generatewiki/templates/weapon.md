@@ -7,12 +7,12 @@
 | ![Heading][101] Heading | {minHeading} º | {maxHeading} º | {speedHeading} º/s |
 | ![Pitch][102] Pitch | {minPitch} º | {maxPitch} º | {speedPitch} º/s |
 
-| Parameter | Value | Parameter | Value | Parameter | Value |
-|-----------|-------|-----------|-------|-----------|-------|
-| ![Range][103] Range | {range} m | ![Accuracy][104] Inaccuracy | {accuracy} | ![Explosion][105] Effect radius | {damageArea} m |
-| ![Penetration][106] Penetration (100m) | {pen100} mm | ![Penetration][106] Penetration (1000m) | {pen1000} mm | ![Reload][107] Fire rate | {fireRate} bullets/s |
-
-{ammoCost}
+| Parameter | Value | Parameter | Value |
+|-----------|-------|-----------|-------|
+| ![Range][103] Range | {range} m | ![Explosion][105] Effect radius | {damageArea} m |
+| ![Accuracy][104] Inaccuracy | {accuracy} | ![Accuracy][104] Moving inaccuracy | {movingAccuracy} |
+| ![Penetration][106] Penetration (100m) | {pen100} mm | ![Penetration][106] Penetration (1000m) | {pen1000} mm |
+| ![Reload][107] Fire rate | {fireRate} bullets/s | ![AmmoCost][108] Ammo cost | {ammoCost} units/bullet | 
 
 ![Targets][104] Targets: {targets}
 
