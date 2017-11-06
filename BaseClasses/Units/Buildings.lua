@@ -84,9 +84,9 @@ local Barracks = Yard:New{
 	customParams = {
 		separatebuildspot		= true,
 		wiki_subclass_comments = [[Barracks is the main building to recruit
-infantry squads. This is one of the first yards you should build, because even
-with the most advanced armoured vehicles you are probably failing without
-infantry support.]],
+infantry squads. This is one of the first yards you should consider building,
+because even with the most advanced armoured vehicles, you are probably failing
+without infantry support.]],
 	},
 }
 
@@ -98,9 +98,9 @@ local GunYard = Yard:New{
 	buildPic			= "<SIDE>GunYard.png", -- inherited by upgrades
 	customParams = {
 		wiki_subclass_comments = [[This yard is intended to build towed basic
-guns. Towed artillery is in general less flexible and effective than
-self-propelled guns or armoured vehicles. However they are much cheaper,
-becoming a great option to setup a defense line.]],
+guns. Towed guns are usually less flexible and effective than self-propelled
+guns or armoured vehicles. However they are significantly cheaper, becoming a
+great option to setup a defense line.]],
 	},
 }
 
@@ -114,7 +114,7 @@ local GunYardSP = GunYard:New{
 basic guns, as well as self-propelled artillery. Self-propelled artillery is
 significantly more expensive than towed artillery guns, but much more effective
 as well, since can be quickly moved to avoid counter artillery fire, or even to
-get closer to the enemy base to increase the accuracy.]],
+get closer to the enemy base to maximize the accuracy.]],
 	},
 }
 
@@ -127,9 +127,8 @@ local GunYardTD = GunYard:New{
 		wiki_subclass_comments = [[This yard is intended to build the towed
 basic guns, as well as tank-destroyers. Tank destroyers are special armoured
 vehicles specifically designed to hunt enemy armoured forces. Tank destroyers
-may not even engage enemy infantry or buildings, excepting the assault guns.
-Tank destroyers may become a quite efficient way to drive out enemy armoured
-forces.]],
+may not even engage enemy infantry or buildings. Tank destroyers may become a
+quite efficient way to drive out enemy armoured forces from your territory.]],
 	},
 }
 
@@ -142,8 +141,7 @@ local GunYardLongRange = GunYard:New{
 		wiki_subclass_comments = [[This yard is intended to build towed
 guns, including the long-range artillery units. Long-range artillery can be
 deployed at an insane distance from the enemy bases, harrassing them from a
-safe position. Watch out of your ammo storage, they will easily emptied by
-long-range artillery]],
+safe position. Watch out of your ammo storages, they will be quickly emptied.]],
 	},
 }
 
@@ -168,7 +166,7 @@ local VehicleYardArmour = VehicleYard:New{
 	description			= "Light Vehicle & Armour Prep. Facility",
 	customParams = {
 		wiki_subclass_comments = [[This yard is intended to build light
-vehicles and light tanks. The light tanks enjoy in general a slight increase of
+vehicles and light tanks. The light tanks enjoy in general a slight increased
 armour and fire power, which can be used to efficiently hunt large ammounts of
 enemy vehicles rushing into your base. They can also eventually survive to
 light anti-tank bullet impacts.]],
@@ -184,7 +182,7 @@ local TankYard = Yard:New{
 	buildPic			= "<SIDE>TankYard.png", -- inherited by upgrades
 	customParams = {
 		wiki_subclass_comments = [[This yard can build basic armoured vehicles.
-Tanks may make the difference at the time of pushing enemy lines, since their
+Tanks may make the difference at the time of pushing on enemy lines, since their
 large armour allows them to receive some impacts before putting them out of
 action, while their weaponry is usually enough to deal big damage on enemy
 forces.]],
@@ -209,10 +207,10 @@ local TankYardHeavy = TankYard:New{
 	description			= "Heavy Armour Prep. Facility",
 	customParams = {
 		wiki_subclass_comments = [[This yard can build Heavy tanks, as well as
-basic armoured vehicles. Heavy tanks are the ultimate armoured mobile weapon.
-They are armoured enough to receive frontal impacts of above average weapons
-without dealing damage. As drawback, heavy tanks are extremely expensive
-units.]],
+basic armoured vehicles. Heavy tanks are the ultimate armoured mobile weapons.
+They are armoured enough to receive frontal impacts of above average guns,
+without dealing significant damage. As drawback, heavy tanks are extremely
+expensive units.]],
 	},
 }
 
@@ -261,8 +259,8 @@ local BoatYardLarge = BoatYard:New{
 	maxDamage           = 32500,
 	customParams		= {
 		wiki_subclass_comments = [[This yard can build large naval units.
-If the sea battle ferocity starts increasing, you should consider start
-producing large ships, with an upgraded armour and weaponry.]],
+If the sea battle ferocity starts growing, you should consider start
+producing larger ships, with an upgraded armour and weaponry.]],
 	},
 }
 
@@ -281,7 +279,7 @@ local Radar = Yard:New{
 							oocoo 
 							ooooo]],
 	customParams		= {
-		wiki_subclass_comments = [[This yard can ask for air raids.
+		wiki_subclass_comments = [[This yard can ask for air sorties.
 You should never underestimate the eventual destructive power of an air
 strike, which may easily knock out large armoured squads, or even reduce to
 ashes valuable structures.]],
@@ -321,7 +319,7 @@ local SupplyDepot = Yard:New{
 its main target is providing a large supply area, where your units may become
 constantly resupplied with ammo. You should always try to deploy one of this
 structures in a strategical point of the battle theater, such that you can
-safely support your front units.]],
+safely resupply your first combat line.]],
 	},
 }
 

@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a yard, i.e. a static building meant to recruit/build new units. As other buildings, they are expensive and fragile critical units that should be placed as far away as possible of enemy fire.
+This is a yard, i.e. a static building meant to recruit/build new units. Buildings in general are expensive and fragile critical units, that should indeed be placed far away from enemy sight and fire.
 
 {subclass_comments}
 
