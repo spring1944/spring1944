@@ -1,9 +1,6 @@
 ## Introduction
 
-This is an infantry soldier. Soldiers are the basic unit in Spring-1944, and you always want to have a number of them deployed along the battlefield... Don't stop recruiting them!
-Along this line, infantry units are the very only units that can capture terrain flags, and are one of the most efficient ways to provide a line of sight for armoured vehicles (it should be recalled that vehicles have in general a quite limite sight distance).
-
-Infantry is cheap, but very fragile... And vulnerable to almost every weapon of the game. On top of that, infantry can be easily [suppressed by fear](inffear).
+This is a vehicle. Vehicles are in general faster and stronger than infantry, becoming a determinant factor in terrain battles. However, vehicles have some significant drawbacks to be considered as well: In general, manufacturing vehicles is not a cheap operation, and their line of sight is quite limited, usually requiring infantry support. 
 
 {subclass_comments}
 
@@ -14,10 +11,13 @@ Infantry is cheap, but very fragile... And vulnerable to almost every weapon of 
 | Parameter | Value | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|-----------|-------|
 | ![Cost][1] Cost | {buildCost} | ![Health][2] Health points | {maxDamage} | ![Flag][3] Flag capturing | {flagCap} |
+| ![Armour][106] Front armour | {frontArmour} | ![Armour][106] Sides armour | {sidesArmour} | ![Armour][106] Rear armour | {rearArmour} |
+
 
 ![Category][104] Targeted as: {categories}
 
 ![Armor][105] Damaged as: {armorType}
+
 
 ## Line of sight
 
@@ -45,4 +45,5 @@ Infantry is cheap, but very fragile... And vulnerable to almost every weapon of 
 [10]: /uploads/d8f4188ac2c806a6407d3f7d0a5ceefc/water_icon.svg
 [104]: /uploads/c9800e87cd30bc07a5fbf59d5ff2ae73/accuracy_icon.svg
 [105]: /uploads/5e43d946a83a1c4661c4da46dba6c60d/explosion_icon.svg
+[106]: /uploads/7c5b9b7ffed7e56a91d4746c5f33ad00/penetration.svg
 

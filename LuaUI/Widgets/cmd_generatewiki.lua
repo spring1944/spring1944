@@ -287,6 +287,18 @@ function _parse_yard(unitDef)
     t = string.gsub(t,
                     "{supplyRange}",
                     tostring(unitDef.customParams.supplyrange))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
     return t
 end
 
@@ -311,6 +323,18 @@ function _parse_storage(unitDef)
     t = string.gsub(t,
                     "{energyStorage}",
                     tostring(unitDef.energyStorage))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
     return t
 end
 
@@ -335,6 +359,18 @@ function _parse_supplies(unitDef)
     t = string.gsub(t,
                     "{supplyRange}",
                     tostring(unitDef.customParams.supplyrange))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
     return t
 end
 
@@ -356,6 +392,18 @@ function _parse_infantry(unitDef)
     t = string.gsub(t,
                     "{flagCap}",
                     tostring(unitDef.customParams.flagcaprate or 0))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
     -- Line of Shight
     t = string.gsub(t,
                     "{sight}",
