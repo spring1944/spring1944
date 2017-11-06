@@ -232,6 +232,39 @@ end
 -- UNITS AUTO-DOCUMENTATION
 -- =============================================================================
 
+squadDefs = include("LuaRules/Configs/squad_defs.lua")
+sortieDefs = include("LuaRules/Configs/sortie_defs.lua")
+Spring.Echo(__to_string(sortieDefs))
+
+function _parse_squad(unitDef)
+    if squadDefs[unitDef.name] == nil and sortieDefs[unitDef.name] == nil then
+        -- Not a squad, just don't write nothing
+        return ""
+    end
+    local squad = squadDefs[unitDef.name] or sortieDefs[unitDef.name]
+    local t = "![Cost][1] Cost: " .. tostring(squad.buildCostMetal) .. "\n\n"
+    t = t .. "This is a team composed by the following members:\n\n"
+    local members = {}
+    local member, n
+    for _, member in pairs(squad.members) do
+        if members[member] == nil then
+            members[member] = 1
+        else
+            members[member] = members[member] + 1
+        end
+    end
+    for member, n in pairs(members) do
+        local memberDef = UnitDefNames[member]
+        t = t .. "* " .. tostring(n) .. " x "
+        t = t .. "[" .. memberDef.humanName .. "]"
+        t = t .. "(units/" .. memberDef.name .. ")\n"
+    end
+
+    t = t .. "\n[1]: /uploads/ec651a1312826e75c31e416dad059540/hammer_icon.svg\n\n"
+
+    return t
+end
+
 TEMPLATES_FOLDER = "LuaUI/Widgets/generatewiki/templates/"
 
 function _parse_yard(unitDef)
@@ -475,6 +508,7 @@ function _gen_unit(name, folder)
     handle.write(handle, unitDef.humanName .. "\n\n")
     -- Parse the unit by its class
     -- ===========================
+    handle.write(handle, _parse_squad(unitDef))
     local customParams = unitDef.customParams
     if customParams then
         local parser = customParams.wiki_parser
