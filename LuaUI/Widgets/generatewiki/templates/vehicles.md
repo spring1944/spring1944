@@ -18,6 +18,7 @@ This is a vehicle. Vehicles are in general faster and stronger than infantry, be
 
 ![Armor][105] Damaged as: {armorType}
 
+{maxammo}
 
 ## Line of sight
 
@@ -43,6 +44,7 @@ This is a vehicle. Vehicles are in general faster and stronger than infantry, be
 [8]: /uploads/dda0f867d1d99d161acc0208e89775b0/turn_icon.svg
 [9]: /uploads/92cde52bdf35ecf8e97941c38b89fd2a/slope_icon.svg
 [10]: /uploads/d8f4188ac2c806a6407d3f7d0a5ceefc/water_icon.svg
+[11]: /uploads/36e910c23dd318832e2ba5e72c5738dc/ammo_icon.svg
 [104]: /uploads/c9800e87cd30bc07a5fbf59d5ff2ae73/accuracy_icon.svg
 [105]: /uploads/5e43d946a83a1c4661c4da46dba6c60d/explosion_icon.svg
 [106]: /uploads/7c5b9b7ffed7e56a91d4746c5f33ad00/penetration.svg

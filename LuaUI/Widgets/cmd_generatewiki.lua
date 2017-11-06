@@ -404,6 +404,13 @@ function _parse_infantry(unitDef)
     t = string.gsub(t,
                     "{armorType}",
                     Game.armorTypes[unitDef.armorType])
+    local maxammo = ""
+    if unitDef.customParams.maxammo ~= nil then
+        maxammo = "![Ammo][11] Max ammo: " .. unitDef.customParams.maxammo
+    end
+    t = string.gsub(t,
+                    "{maxammo}",
+                    maxammo)    
     -- Line of Shight
     t = string.gsub(t,
                     "{sight}",
