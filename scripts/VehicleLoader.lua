@@ -25,6 +25,13 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 	return headingPiece, pitchPiece
 end
 
+local function GetTurretDefaultPositions(weaponNum)
+	local cp = UnitDefs[unitDefID].customParams
+	if cp then
+		return cp['defaultheading' .. weaponNum] or 0, cp['defaultpitch' .. weaponNum] or 0
+	end
+	return 0, 0
+end
 
 local info = GG.lusHelper[unitDefID]
 
@@ -38,6 +45,9 @@ local aimPieces = {}
 local reversedWeapons = {}
 local exhausts = {}
 local dusttrails = {}
+
+-- default position of the turret
+local turretDefaultPositions = {}
 
 -- Compositing
 local childrenPieces = {}
@@ -80,6 +90,8 @@ for weaponNum = 1,info.numWeapons do
 			reversedWeapons[weaponNum] = true
 		end
 	end
+	local defaultHeading, defaultPitch = GetTurretDefaultPositions(weaponNum)
+	turretDefaultPositions[weaponNum] = {heading = defaultHeading, pitch = defaultPitch,}
 end
 
 info.numWheels = numWheels
@@ -93,6 +105,7 @@ info.reversedWeapons = reversedWeapons
 info.dustTrails = dusttrails
 info.exhausts = exhausts
 info.childrenPieces = childrenPieces
+info.turretDefaultPositions = turretDefaultPositions
 
 if info.customAnimsName then
 	info.customAnims = include("anims/vehicles/" .. info.customAnimsName .. ".lua")
