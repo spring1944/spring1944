@@ -349,6 +349,121 @@ function _parse_infantry(unitDef)
     return t
 end
 
+function _parse_weapon(unitDef, weapon)
+    -- The parameter weapon is not a weapon def, but an unitDef weapon table
+    weaponDef = WeaponDefs[weapon.weaponDef]
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "weapon.md")
+    -- Weapon name and comments
+    -- ========================
+    local comments = weaponDef.customParams.wiki_comments or ""
+    t = string.gsub(t,
+                    "{name}",
+                    weaponDef.name)
+    t = string.gsub(t,
+                    "{comments}",
+                    comments)
+    -- Heading and Pitch data
+    -- ======================
+    local dir = weapon.mainDir or {weapon.mainDirX, weapon.mainDirY, weapon.mainDirZ}
+    local angle = math.deg(math.acos(weapon.maxAngleDif))
+    local minHeading, maxHeading, minPitch, maxPitch
+    local pitchBase = math.deg(math.atan2(
+        dir[2], math.sqrt(dir[1] * dir[1] + dir[3] * dir[3])))
+    if pitchBase + angle > 90 then
+        -- The barrel can be heading everywhere
+        minHeading = -360
+        maxHeading = 360
+        minPitch = math.max(-90, pitchBase - angle)
+        maxPitch = 90
+    else
+        local headingBase = math.deg(math.atan2(-dir[1], dir[3]))
+        minHeading = headingBase - angle
+        maxHeading = headingBase + angle
+        minPitch = math.max(-90, pitchBase - angle)
+        maxPitch = math.min(90, pitchBase + angle)
+    end
+    local speedHeading = unitDef.customParams.turretturnspeed or unitDef.turnRate / 0.16
+    local speedPitch = unitDef.customParams.elevationspeed or speedHeading
+    t = string.gsub(t,
+                    "{minHeading}",
+                    tostring(minHeading))
+    t = string.gsub(t,
+                    "{maxHeading}",
+                    tostring(maxHeading))
+    t = string.gsub(t,
+                    "{speedHeading}",
+                    tostring(speedHeading))
+    t = string.gsub(t,
+                    "{minPitch}",
+                    tostring(minPitch))
+    t = string.gsub(t,
+                    "{maxPitch}",
+                    tostring(maxPitch))
+    t = string.gsub(t,
+                    "{speedPitch}",
+                    tostring(speedPitch))
+    -- Shot statistics
+    -- ===============
+    t = string.gsub(t,
+                    "{range}",
+                    tostring(weaponDef.range))
+    t = string.gsub(t,
+                    "{accuracy}",
+                    tostring(weaponDef.accuracy))
+    t = string.gsub(t,
+                    "{damageArea}",
+                    tostring(weaponDef.damageAreaOfEffect or 0))
+    local pen100 = weaponDef.customParams.armor_penetration or 0
+    local pen1000 = pen100
+    if weaponDef.customParams.armor_penetration_100m then
+        pen100 = weaponDef.customParams.armor_penetration_100m
+    end
+    if weaponDef.customParams.armor_penetration_1000m then
+        pen1000 = weaponDef.customParams.armor_penetration_1000m
+    end
+    t = string.gsub(t,
+                    "{pen100}",
+                    tostring(pen100))
+    t = string.gsub(t,
+                    "{pen1000}",
+                    tostring(pen1000))
+    -- Special case of burst/shotgun mode
+    local salvoSize = weaponDef.salvoSize * weaponDef.projectiles
+    local salvoTime = math.max(weaponDef.reload,
+                               weaponDef.salvoSize * weaponDef.salvoDelay)
+    t = string.gsub(t,
+                    "{fireRate}",
+                    tostring(salvoSize / salvoTime))
+    -- Targets and damage inflicted
+    -- ============================
+    local targets = ""
+    local name, value
+    for name, value in pairs(weapon.onlyTargets) do
+        if value then
+            targets = targets .. name .. ", "
+        end
+    end
+    if targets == "none, " then
+        -- This weapon is not actually used, so drop it from the wiki
+        return ""
+    end
+    local damages = ""
+    local name, damage
+    for id, damage in pairs(weaponDef.damages) do
+        if Game.armorTypes[id] ~= nil then
+            local name = Game.armorTypes[id]
+            damages = damages .. name .. " = " .. tostring(damage) .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{targets}",
+                    targets)
+    t = string.gsub(t,
+                    "{damages}",
+                    tostring(damages))
+    return t
+end
+
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
     local unit_folder = folder .. "/units/"
@@ -371,6 +486,16 @@ function _gen_unit(name, folder)
             handle.write(handle, _parse_supplies(unitDef))
         elseif parser == "infantry" then
             handle.write(handle, _parse_infantry(unitDef))
+        end
+    end
+    -- Parse the weapons
+    -- ===========================
+    local weapons = unitDef.weapons
+    if weapons ~= nil and #weapons > 0 then
+        handle.write(handle, "## Weapons\n\n")
+        local weapon
+        for _, weapon in pairs(weapons) do
+            handle.write(handle, _parse_weapon(unitDef, weapon))
         end
     end
     -- Get the morphing alternatives
