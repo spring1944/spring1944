@@ -427,7 +427,7 @@ function _parse_infantry(unitDef)
                     tostring(unitDef.speed))
     t = string.gsub(t,
                     "{turn}",
-                    tostring(unitDef.turnRate / 0.16))
+                    tostring(unitDef.turnRate * 0.16))
     t = string.gsub(t,
                     "{slope}",
                     tostring(unitDef.moveDef.maxSlope))
@@ -499,7 +499,7 @@ function _parse_vehicle(unitDef)
                     tostring(unitDef.speed))
     t = string.gsub(t,
                     "{turn}",
-                    tostring(unitDef.turnRate / 0.16))
+                    tostring(unitDef.turnRate * 0.16))
     t = string.gsub(t,
                     "{slope}",
                     tostring(unitDef.moveDef.maxSlope))
@@ -542,7 +542,7 @@ function _parse_weapon(unitDef, weapon)
         minPitch = math.max(-90, pitchBase - angle)
         maxPitch = math.min(90, pitchBase + angle)
     end
-    local speedHeading = unitDef.customParams.turretturnspeed or unitDef.turnRate / 0.16
+    local speedHeading = unitDef.customParams.turretturnspeed or unitDef.turnRate * 0.16
     local speedPitch = unitDef.customParams.elevationspeed or speedHeading
     t = string.gsub(t,
                     "{minHeading}",

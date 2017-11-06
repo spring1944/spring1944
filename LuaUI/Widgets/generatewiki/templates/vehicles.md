@@ -30,8 +30,8 @@ Vehicles are in general faster and stronger than infantry, becoming by themselve
 
 | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|
-| ![Speed][7] Max speed | {maxspeed} | ![Turn][8] Turn rate | {turn} |
-| ![Slope][9] Max slope | {slope} | ![Depth][10] Max water depth | {maxdepth} |
+| ![Speed][7] Max speed | {maxspeed} m/s | ![Turn][8] Turn rate | {turn} º/s |
+| ![Slope][9] Max slope | {slope} | ![Depth][10] Max water depth | {maxdepth} m |
 
 
 [1]: /uploads/ec651a1312826e75c31e416dad059540/hammer_icon.svg
