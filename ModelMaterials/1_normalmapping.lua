@@ -113,8 +113,9 @@ for i, udef in pairs(UnitDefs) do
   elseif (udef.customParams.normaltex == "") then
     unitMaterials[udef.name] = {"normalModelledS3o"}
 
-  elseif (udef.model.type == "s3o") then
-    local modelpath = udef.model.path
+  local modeltype = udef.modeltype or udef.model.type
+  elseif (modeltype == "s3o") then
+    local modelpath = udef.modelpath or udef.model.path
     if (modelpath) then
       --// udef.model.textures is empty at gamestart, so read the texture filenames from the s3o directly
 
@@ -147,8 +148,8 @@ for i, udef in pairs(UnitDefs) do
       end
     end --if model
 
-  elseif (udef.model.type == "obj") then
-    local modelinfopath = udef.model.path
+  elseif (modeltype == "obj") then
+    local modelinfopath = udef.modelpath or udef.model.path
     if (modelinfopath) then
       modelinfopath = modelinfopath .. ".lua"
 
