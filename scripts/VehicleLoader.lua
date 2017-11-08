@@ -71,7 +71,10 @@ for pieceName, pieceNum in pairs(pieceMap) do
 	elseif pieceName:find("base") or pieceName:find("sleeve") or pieceName:find("turret") or pieceName:find("exhaust") then
 		smokePieces[#smokePieces + 1] = pieceNum
 	elseif pieceName:find("child") then
-		childrenPieces[#childrenPieces + 1] = pieceNum
+		-- can't just put them all in array as is, order matters here!
+		local _, endPos = pieceName:find("child")
+		local childNum = tonumber(pieceName:sub(endPos + 1))
+		childrenPieces[childNum] = pieceNum
 	end
 end
 
