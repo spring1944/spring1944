@@ -311,7 +311,7 @@ function widget:DrawScreenEffects()
 	local cpx, cpy, cpz = spGetCameraPosition()
 	glUseShader(ssaoShader)
 		glUniform(eyePosLoc, cpx, cpy, cpz)
-		glUniformMatrix(viewMatLoc, "view")
+		glUniformMatrix(viewMatLoc, "viewinverse")
 		glUniformMatrix(projectionMatLoc, "projection")
 		glUniformMatrix(projectionMatInvLoc, "projectioninverse")
 		-- For some reason, gl.UniformArray is not working in 104.0. On the
@@ -370,7 +370,7 @@ function widget:DrawScreenEffects()
 
 	-- Debug
 	--[[
-	glTexture(ssaoTex)
+	glTexture(blurTex)
 	glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
 	glTexture(false)
 	--]]
