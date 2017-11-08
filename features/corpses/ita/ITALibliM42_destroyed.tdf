@@ -1,0 +1,17 @@
+[ITALibli_m42_Abandoned]
+{
+  description=Abandoned Armored Railroad Car;
+  damage=6000;
+  footprintX=4;
+  footprintZ=4;
+  object=ITA/ITALibli_m42_dead.s3o;
+  reclaimable=1;
+	collisionVolumeType=cylX;
+	collisionVolumeScales=18 15 35;
+	collisionVolumeOffsets=0 -5 0;
+	[customParams]
+		{
+		cover_strength=2;
+		cover_radius=40;
+		}
+}
