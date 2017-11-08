@@ -6,12 +6,11 @@ uniform mat4 viewMat;
 uniform mat4 projectionMat;
 uniform mat4 projectionMatInv;
 // Spring only let's sending float arrays of 32 components...
-uniform float samplesX[32];
-uniform float samplesY[32];
-uniform float samplesZ[32];
+uniform mat4 samplesX;
+uniform mat4 samplesY;
+uniform mat4 samplesZ;
 uniform vec2 noiseScale;
 
-#define KERNEL_SIZE 32
 #define RADIUS 5.0
 #define BIAS 0.1
 
@@ -37,13 +36,15 @@ void main(void) {
 
 	float occlusion = 0.0;
 
-	for(int i = 0; i < KERNEL_SIZE; ++i)
+	for(int i = 0; i < 4; ++i)
+	{
+	for(int j = 0; j < 4; ++j)
 	{
 		// get view-space sample position
-		vec3 sample = TBN * vec3(samplesX[i],
-		                         samplesY[i],
-		                         samplesZ[i]);
-		sample = viewPos.xyz + sample * RADIUS; 
+		vec3 sample = TBN * vec3(samplesX[i][j],
+		                         samplesY[i][j],
+		                         samplesZ[i][j]);
+		sample = viewPos.xyz + sample * RADIUS;
 
 		// Come back to screen space to request the sample depth
 		vec4 offset = vec4(sample, 1.0);
@@ -70,8 +71,9 @@ void main(void) {
 		// And accumulate oclussion
 		occlusion += (samplePos.z >= sample.z + BIAS ? 1.0 : 0.0) * rangeCheck;
 	}
+	}
 
-	occlusion = 1.0 - (occlusion / float(KERNEL_SIZE));
+	occlusion = 1.0 - (occlusion / 16.0);
 
 	gl_FragColor = vec4(vec3(occlusion), alpha);
 }

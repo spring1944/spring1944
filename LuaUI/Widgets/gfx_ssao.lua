@@ -36,7 +36,6 @@ local glUseShader            = gl.UseShader
 local glGetUniformLocation   = gl.GetUniformLocation
 local glUniform              = gl.Uniform
 local glUniformMatrix        = gl.UniformMatrix
-local glUniformArray         = gl.UniformArray
 local glBlitFBO              = gl.BlitFBO
 local GL_DEPTH_BUFFER_BIT    = GL.DEPTH_BUFFER_BIT
 local GL_COLOR_BUFFER_BIT    = GL.COLOR_BUFFER_BIT
@@ -219,7 +218,7 @@ function widget:Initialize()
 	samplesX = {}
 	samplesY = {}
 	samplesZ = {}
-	for i=1,32 do
+	for i=1,16 do
 		local sx = math.random() * 2.0 - 1.0
 		local sy = math.random() * 2.0 - 1.0
 		local ss = math.sqrt(sx*sx + sy*sy)
@@ -315,9 +314,25 @@ function widget:DrawScreenEffects()
 		glUniformMatrix(viewMatLoc, "view")
 		glUniformMatrix(projectionMatLoc, "projection")
 		glUniformMatrix(projectionMatInvLoc, "projectioninverse")
-		glUniformArray(samplesXLoc, 1, samplesX)
-		glUniformArray(samplesYLoc, 1, samplesY)
-		glUniformArray(samplesZLoc, 1, samplesZ)
+		-- For some reason, gl.UniformArray is not working in 104.0. On the
+		-- other hand, future spring versions will mover to GL 4.X, where all
+		-- this stuff will be deprecated, so not worth investigating/fixing,
+		-- better working around...
+		glUniformMatrix(samplesXLoc,
+            samplesX[1],  samplesX[2],  samplesX[3],  samplesX[4],
+            samplesX[5],  samplesX[6],  samplesX[7],  samplesX[8],
+            samplesX[9],  samplesX[10], samplesX[11], samplesX[12],
+            samplesX[13], samplesX[14], samplesX[15], samplesX[16])
+		glUniformMatrix(samplesYLoc,
+            samplesY[1],  samplesY[2],  samplesY[3],  samplesY[4],
+            samplesY[5],  samplesY[6],  samplesY[7],  samplesY[8],
+            samplesY[9],  samplesY[10], samplesY[11], samplesY[12],
+            samplesY[13], samplesY[14], samplesY[15], samplesY[16])
+		glUniformMatrix(samplesZLoc,
+            samplesZ[1],  samplesZ[2],  samplesZ[3],  samplesZ[4],
+            samplesZ[5],  samplesZ[6],  samplesZ[7],  samplesZ[8],
+            samplesZ[9],  samplesZ[10], samplesZ[11], samplesZ[12],
+            samplesZ[13], samplesZ[14], samplesZ[15], samplesZ[16])
 		glUniform(noiseScaleLoc, vsx / 4.0, vsy / 4.0)
 		glTexture(0, normalTex)
 		glTexture(1, depthTex)
@@ -355,7 +370,7 @@ function widget:DrawScreenEffects()
 
 	-- Debug
 	--[[
-	glTexture(blurTex)
+	glTexture(ssaoTex)
 	glTexRect(vsx/2, vsy/2, vsx, vsy, false, true)
 	glTexture(false)
 	--]]
