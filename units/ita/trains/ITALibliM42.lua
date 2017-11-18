@@ -93,6 +93,16 @@ local ITA_47mm32_Turret = EnclosedBoatTurret:New{
 	objectName				= "ITA/ITALibli_47mm_Turret.s3o",
   	weapons = {	
 		[1] = {
+			name				= "CannoneDa47mml40HEAT",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
+		},
+		[2] = {
+			name				= "CannoneDa47mml40AP",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
+		},
+		[3] = {
 			name				= "CannoneDa47mml40HE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
@@ -116,7 +126,7 @@ local ITA_47mm32_Turret_Rear = ITA_47mm32_Turret:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -150,7 +160,7 @@ local ITA_81mmMortar_Turret_Rear = ITA_81mmMortar_Turret:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 
