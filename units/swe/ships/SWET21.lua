@@ -51,6 +51,7 @@ local SWE_T21_Turret_20mm_Rear = OpenBoatTurret:New{
 	},
 	customparams = {
 		facing					= 2,
+		defaultheading1			= math.rad(180),
 		maxammo					= 14,
 
 		aaweapon				= 1,

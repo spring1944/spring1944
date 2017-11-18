@@ -55,7 +55,7 @@ local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

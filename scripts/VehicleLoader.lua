@@ -81,7 +81,9 @@ end
 local lastflare = pieceMap["flare"] and "flare"
 for weaponNum = 1,info.numWeapons do
 	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
-		lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+		-- Modified this to support boat turrets
+		lastflare = (pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum)) or (pieceMap["flare" .. weaponNum] and ("flare" .. weaponNum)) or (pieceMap["r_rocket" .. weaponNum] and ("r_rocket" .. weaponNum)) or lastflare
+
 		cegPieces[weaponNum] = pieceMap[lastflare]
 		local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
 		aimPieces[weaponNum] = {headingPiece, pitchPiece}

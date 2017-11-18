@@ -143,7 +143,7 @@ local HUNPM_turret_40mm_rear = HUNPM_turret_40mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1			= math.rad(180),
 	}
 }
 

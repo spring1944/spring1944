@@ -115,7 +115,7 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 		elevationspeed			= 90,
 		aaweapon				= 1,
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 

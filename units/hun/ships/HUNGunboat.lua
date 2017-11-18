@@ -126,7 +126,7 @@ local HUNGunboat_turret_flak_rear = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon			= 1,
 		facing				= 2,
-
+		defaultheading1			= math.rad(180),
     },
 }
 

@@ -131,7 +131,7 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon				= 1,
 		facing 					= 3,
-
+		defaultheading1			= math.rad(-90),
 	},
 }
 local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
@@ -145,7 +145,7 @@ local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 1,
-
+		defaultheading1				= math.rad(90),
 	},
 }
 

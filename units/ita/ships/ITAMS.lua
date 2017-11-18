@@ -72,7 +72,7 @@ local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

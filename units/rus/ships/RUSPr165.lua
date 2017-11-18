@@ -82,7 +82,7 @@ local RUS_Pr165_Turret_DshK_Left = RUS_Pr165_Turret_DshK:New{
 
 	customparams = {
         facing                  = 3,
-
+	defaultheading1		= math.rad(-90),
 	},
 }
 
@@ -91,7 +91,7 @@ local RUS_Pr165_Turret_DshK_Right = RUS_Pr165_Turret_DshK:New{
 
 	customparams = {
         facing                  = 1,
-
+	defaultheading1		= math.rad(90),
 	},
 }
 

@@ -113,7 +113,7 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 	},
 	customparams = {
 		facing = 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

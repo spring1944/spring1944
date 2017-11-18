@@ -103,7 +103,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1			= math.rad(180),
     },
 }
 
@@ -123,8 +123,8 @@ local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		facing					= 3,
-
+		facing				= 3,
+		defaultheading1			= math.rad(-90),
 	},
 }
 local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left:New{
@@ -135,7 +135,7 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 	},
 	customparams = {
 		facing					= 1,
-
+		defaultheading1				= math.rad(90),
 	},
 }
 

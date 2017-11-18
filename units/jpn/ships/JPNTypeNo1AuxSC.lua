@@ -71,7 +71,7 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

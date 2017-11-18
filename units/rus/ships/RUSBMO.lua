@@ -74,7 +74,7 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 
@@ -100,7 +100,7 @@ local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
 		turretturnspeed			= 80,
 		elevationspeed			= 45,
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -125,7 +125,7 @@ local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -157,7 +157,7 @@ local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 

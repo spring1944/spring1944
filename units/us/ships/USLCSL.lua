@@ -104,7 +104,7 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 	},
 	customparams = {
 		facing 					= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

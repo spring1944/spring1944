@@ -79,7 +79,7 @@ local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
 		elevationspeed			= 80,
 		aaweapon				= 1,
 		facing					= 2,
-
+		defaultheading1			= math.rad(180),
     },
 }
 

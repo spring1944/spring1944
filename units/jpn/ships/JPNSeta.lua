@@ -67,7 +67,7 @@ local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

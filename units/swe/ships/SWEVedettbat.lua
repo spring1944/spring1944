@@ -65,7 +65,7 @@ local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 

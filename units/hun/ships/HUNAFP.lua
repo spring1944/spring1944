@@ -65,7 +65,7 @@ local HUNAFP_Turret_88mm_rear = HUNAFP_Turret_88mm_front:New{ --
 	},
 	customparams = {
 		facing		= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 
@@ -137,7 +137,7 @@ local HUNAFP_turret_flak_rear = HUNAFP_turret_flak_front:New{
 	},
 	customparams = {
 		facing			= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -191,7 +191,7 @@ local HUNAFP_turret_20mm_left = OpenBoatTurret:New{
 		elevationspeed			= 30,
 		aaweapon				= 1,
 		facing					= 2,
-
+		defaultheading1			= math.rad(180),
 	},
 }
 

@@ -91,7 +91,7 @@ local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 

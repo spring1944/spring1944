@@ -76,7 +76,7 @@ local SWEArholma_Turret_105mm_rear = SWEArholma_Turret_105mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
-
+		defaultheading1		= math.rad(180),
     },
 }
 

@@ -65,7 +65,7 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon				= 1,
 		facing 					= 3,
-
+		defaultheading1		= math.rad(-90),
 	},
 }
 local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
@@ -79,7 +79,7 @@ local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 1,
-
+		defaultheading1		= math.rad(90),
 	},
 }
 local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
@@ -95,7 +95,7 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 2,
-
+		defaultheading1		= math.rad(180),
 	},
 }
 

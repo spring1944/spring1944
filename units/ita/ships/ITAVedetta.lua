@@ -70,6 +70,7 @@ local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		facing					= 2,
+		defaultheading1		= math.rad(180),
 		aaweapon				= 1,
 
 	},
