@@ -85,7 +85,6 @@ local rockets = {}
 if numRockets > 0 then findPieces(rockets, "r_rocket") end
 
 local function Delay(func, duration, mask, ...)
-	--Spring.Echo("wait", duration)
 	SetSignalMask(mask)
 	Sleep(duration)
 	func(...)
@@ -108,7 +107,7 @@ local function RestoreTurret(weaponNum) -- called by Create so must be prior
 	if info.aimPieces[weaponNum] then
 		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
 		local defaultHeading = info.turretDefaultPositions[weaponNum].heading or 0
-		Spring.Echo('weapon ' .. weaponNum .. ' default heading: ' .. defaultHeading)
+
 		local defaultPitch = info.turretDefaultPositions[weaponNum].pitch or 0
 		if headingPiece then
 			Turn(headingPiece, y_axis, defaultHeading, info.turretTurnSpeed)
@@ -474,7 +473,7 @@ function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPri
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
 		newPriority = GetAngleDiff(heading, currentHeading)
 	--end
-	--Spring.Echo("priority", targetID, newPriority)
+
 	return newPriority * 100
 end
 
