@@ -75,12 +75,7 @@ end
 
 local base = piece("base")
 local turret, sleeve, flare, barrel = piece("turret", "sleeve",  "flare", "barrel")
-local turrets = {}
-if not turret then
-	findPieces(turrets, 'turret')
-else
-	turrets[1] = turret
-end
+
 local flares = {}
 if not flare then findPieces(flares, "flare") end
 local barrels = {}
@@ -113,6 +108,7 @@ local function RestoreTurret(weaponNum) -- called by Create so must be prior
 	if info.aimPieces[weaponNum] then
 		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
 		local defaultHeading = info.turretDefaultPositions[weaponNum].heading or 0
+		Spring.Echo('weapon ' .. weaponNum .. ' default heading: ' .. defaultHeading)
 		local defaultPitch = info.turretDefaultPositions[weaponNum].pitch or 0
 		if headingPiece then
 			Turn(headingPiece, y_axis, defaultHeading, info.turretTurnSpeed)
@@ -196,89 +192,7 @@ local function ShowRockets()
 		Sleep(info.burstRates[1] * 1000)
 	end
 end
---[[
-function script.BlockShot(weaponNum, targetUnitID, userTarget)
-	if usesAmmo then
-		local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		if ammo <= 0 then
-			return true
-		end
-	end
 
-	return false
-end
-
-function script.AimWeapon(weaponID, heading, pitch)
-	if isDisabled or isPinned then return false end -- don't even animate if we are pinned/disabled
-
-	Signal(2 ^ weaponID) -- 2 'to the power of' weapon ID
-	SetSignalMask(2 ^ weaponID)
-	if aaWeapon and aaWeapon == weaponID then
-		aaAiming = true
-	elseif aaAiming and weaponID > numBarrels then -- HE weapons
-		return false
-	end
-	Turn(turret, y_axis, heading, turretTurnSpeed)
-	Turn(sleeve, x_axis, -pitch, elevationSpeed)
-	WaitForTurn(turret, y_axis)
-	WaitForTurn(sleeve, x_axis)
-	--StartThread(RestoreAfterDelay)
-	aaAiming = false
-	if weaponID % 5 > 1 then Sleep(100) end -- make flakvierling fire in diagonal pairs
-	return true
-end
-
-function script.FireWeapon(weaponID)
-	if not flareOnShots[weaponID] then
-		-- TODO: Autoloader feed anim for Fairmile D
-		EmitSfx(flare or flares[weaponID], SFX.CEG + weaponID)
-		if barrel then
-			Move(barrel, z_axis, -barrelRecoilDist)
-			WaitForMove(barrel, z_axis)
-			Move(barrel, z_axis, 0, barrelRecoilSpeed)
-		end
-	elseif numRockets > 0 then
-		StartThread(ShowRockets)
-	end
-	if usesAmmo then
-		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
-		Spring.SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)
-	end
-end
-
-function script.Shot(weaponID)
-	if aaWeapon and weaponID > numBarrels then
-		weaponID = weaponID - numBarrels
-	end
-	if flareOnShots[weaponID] then
-		if numRockets > 0 then
-			EmitSfx(backBlast, SFX.CEG + weaponID)
-			Hide(rockets[curRocket])
-			curRocket = curRocket + 1
-			if curRocket > numRockets then curRocket = 1 end
-		else
-			EmitSfx(flare or flares[weaponID], SFX.CEG + weaponID)
-			local barrelToMove = barrel or barrels[weaponID]
-			if barrelToMove then
-				Move(barrelToMove, z_axis, -barrelRecoilDist)
-				WaitForMove(barrelToMove, z_axis)
-				Move(barrelToMove, z_axis, 0, barrelRecoilSpeed)
-			end
-		end
-	end
-end
-
-function script.AimFromWeapon(weaponID)
-	return sleeve
-end
-
-function script.QueryWeapon(weaponID)
-	if aaWeapon and weaponID > numBarrels then
-		weaponID = weaponID - numBarrels
-	end
-	return flare or flares[weaponID] or rockets[curRocket]
-end
-]]--
 local function SetWeaponReload(multiplier)
 	for weaponID = 1, numWeapons do
 		Spring.SetUnitWeaponState(unitID, weaponID, {reloadTime = reloadTimes[weaponID] * multiplier})
