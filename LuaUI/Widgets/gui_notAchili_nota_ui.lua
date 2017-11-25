@@ -100,7 +100,7 @@ options = {
 			CONSOLE_WIDGET.ResetWidget()
 			
 		end,
-		default = smallSize,
+		default = mediumSize,
 		items = {
 			{
 				key = smallSize,

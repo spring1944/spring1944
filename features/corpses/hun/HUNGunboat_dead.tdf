@@ -9,4 +9,8 @@
   hitdensity=70;
   object=HUN/HUNGunboat_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }

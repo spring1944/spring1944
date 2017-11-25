@@ -8,13 +8,14 @@ local JPN_Daihatsu = InfantryLandingCraft:New{
 	maxVelocity				= 1.9,
 	transportCapacity		= 40,
 	transportMass			= 2000,
-	turnRate				= 100,
+	turnRate				= 50,
 
 	customparams = {
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 }
 

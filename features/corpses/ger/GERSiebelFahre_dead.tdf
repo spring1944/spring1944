@@ -9,5 +9,9 @@
   hitdensity=50;
   object=GERSiebelFahre_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

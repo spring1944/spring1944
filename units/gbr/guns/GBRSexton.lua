@@ -21,6 +21,7 @@ local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 		armor_top			= 6,
 		maxammo				= 21,
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/GBRSexton_normals.dds",
 	},
 }
 

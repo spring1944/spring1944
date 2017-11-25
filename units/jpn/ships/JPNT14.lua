@@ -3,16 +3,16 @@ local JPNT14 = ArmedBoat:New{
 	description				= "Motor Torpedo Boat",
 	acceleration			= 0.35,
 	brakeRate				= 0.15,
-	buildCostMetal			= 1800,
+	buildCostMetal			= 1440,
 	collisionVolumeOffsets	= [[0.0 -10.0 -5.0]],
 	collisionVolumeScales	= [[22.0 20.0 85.0]],
 	corpse					= "RUSKomsMTB_dead", -- TODO: needs a corpse (model exists)
 	maxDamage				= 1450,
 	maxReverseVelocity		= 3.005,
-	maxVelocity				= 5.24,
+	maxVelocity				= 3.96,
 	movementClass			= "BOAT_LightPatrol",
 	transportCapacity		= 1, -- 1 x 1fpu turrets
-	turnRate				= 205,	
+	turnRate				= 105,	
 	weapons = {	
 		[1] = {
 			name				= "Type9625mmHE",
@@ -27,6 +27,7 @@ local JPNT14 = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = 45, speed = 15},
 		},
+
 	},
 }
 
@@ -49,6 +50,7 @@ local JPNT14_Turret_25mm = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 80,
 		aaweapon				= 1,
+
     },
 }
 

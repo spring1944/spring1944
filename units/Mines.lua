@@ -11,6 +11,7 @@ local GBRSatchelCharge = Mine:New{
 	useBuildingGroundDecal		= false,
 	customparams = {
 		candetonate 				= true,
+		normaltex 				= "",
 	},
 }
 
@@ -26,6 +27,9 @@ local APMine = Mine:New{
 			name					= "APMine",
 		}
 	},
+	customparams = {
+		normaltex 				= "",
+	},
 }
 
 local ATMine = Mine:New{
@@ -39,6 +43,9 @@ local ATMine = Mine:New{
 			name					= "ATMine",
 		}
 	},
+	customparams = {
+		normaltex 				= "",
+	},
 }
 
 -- Mine Signs --
@@ -48,6 +55,7 @@ local APMineSign = MineSign:New{
 	maxSlope				= 3,
 	customparams = {
 		minetype				= "apminesign",
+		normaltex 				= "",
 	},
 }
 
@@ -59,6 +67,7 @@ local ATMineSign = MineSign:New{
 	maxSlope				= 15,
 	customparams = {
 		minetype				= "atminesign",
+		normaltex 				= "",
 	},
 }
 

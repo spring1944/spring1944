@@ -8,6 +8,10 @@
   object=GER_shoulderhit.S3O;
   reclaimable=0;
   smoketime=0;
+	[customParams]
+		{
+
+		}
 }
 
 [gersoldier_dead] {
@@ -21,5 +25,9 @@
   object=GERTrooper_dead.S3O;
   reclaimable=0;
   smoketime=0;
+	[customParams]
+		{
+
+		}
 }
 

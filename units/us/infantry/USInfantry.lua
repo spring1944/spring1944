@@ -1,9 +1,15 @@
 local USInf = {
 	maxDamageMul		= 1.0,
+	customParams = {
+
+	},
 }
 
 local USPara = {
 	maxDamageMul		= 1.4,
+	customParams = {
+
+	},
 }
 
 local US_HQEngineer = EngineerInf:New(USInf):New{

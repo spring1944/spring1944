@@ -3,6 +3,9 @@ local HUN_38MBotondBase = Truck:New{
 	corpse					= "HUN38MBotond_Abandoned",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local HUN_38MBotond = HUN_38MBotondBase:New(TransportTruck)

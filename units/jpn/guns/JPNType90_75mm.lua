@@ -4,6 +4,9 @@ local JPN_Type90_75mm_Truck = FGGunTractor:New{
 	corpse					= "JPNShiKe_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local JPN_Type90_75mm_Stationary = FGGun:New{
@@ -18,6 +21,9 @@ local JPN_Type90_75mm_Stationary = FGGun:New{
 			name	= "Type9075mmAP",
 		},
 	},	
+	customParams = {
+
+	},
 }
 
 

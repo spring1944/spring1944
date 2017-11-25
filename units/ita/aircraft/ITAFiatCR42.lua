@@ -19,6 +19,7 @@ local ITA_FiatCR42 = Fighter:New{
 		enginesound			= "po2-",
 		enginesoundnr		= 11,
 		maxFuel				= 95,
+
 	},
 
 	weapons = {

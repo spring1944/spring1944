@@ -3,6 +3,9 @@ local GBR_17Pdr_Truck = ATGunTractor:New{
 	corpse					= "gbrmorrisquad_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 18,
+	customParams = {
+
+	},
 }
 
 local GBR_17Pdr_Stationary = ATGun:New{
@@ -13,6 +16,9 @@ local GBR_17Pdr_Stationary = ATGun:New{
 		[1] = { -- AP
 			name				= "qf17pdrap",
 		},
+	},
+	customParams = {
+
 	},
 }
 

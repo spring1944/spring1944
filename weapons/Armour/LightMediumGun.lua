@@ -49,7 +49,7 @@ local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
 	movingAccuracy     = 300,
 	weaponVelocity	= 850,
 	damage = {
-		default		= 696,
+		default		= 835,
 	},
 }
 

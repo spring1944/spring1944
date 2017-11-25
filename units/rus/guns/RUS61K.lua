@@ -3,6 +3,9 @@ local RUS_61K_Truck = AAGunTractor:New{
 	corpse					= "RUSZiS5_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+
+	},
 }
 
 local RUS_61K_Stationary = AAGun:New{
@@ -16,6 +19,9 @@ local RUS_61K_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "M1939_61k37mmhe",
 		},
+	},
+	customParams = {
+
 	},
 }
 

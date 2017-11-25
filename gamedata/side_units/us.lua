@@ -10,7 +10,7 @@ local usunits = {
     --"usairengineer",
     "us_platoon_hq",
     --"us_platoon_hq_rifle",
-    --"us_platoon_hq_assault",
+    "us_platoon_hq_pioneers",
   },
 
   uscp =

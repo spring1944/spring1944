@@ -29,6 +29,7 @@ local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 		canfiresmoke		= true,
 		maxvelocitykmh		= 38,
 		exhaust_fx_name			= "diesel_exhaust",
+
 	},
 }
 

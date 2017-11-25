@@ -3,6 +3,9 @@ local HUN_LeFH18_Truck = HGunTractor:New{
 	corpse					= "HUNHansaLloyd_Burning",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local HUN_LeFH18_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local HUN_LeFH18_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "leFH18smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

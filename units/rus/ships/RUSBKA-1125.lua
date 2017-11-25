@@ -12,7 +12,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 250,	
+	turnRate				= 55,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
@@ -37,6 +37,7 @@ local RUS_BKA_1125 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -57,6 +58,7 @@ local RUS_BKA_1125_Turret_76mm = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+
     },
 }
 
@@ -74,6 +76,7 @@ local RUS_BKA_1125_Turret_DshK = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
+
 	},
 }
 
@@ -84,6 +87,9 @@ local RUS_BKA_1125_Turret_DshK_Front = RUS_BKA_1125_Turret_DshK:New{
 			mainDir		= [[0 0 1]],
 		},
 	},
+	customParams = {
+
+	},
 }
 
 local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
@@ -92,6 +98,9 @@ local RUS_BKA_1125_Turret_DshK_Top = RUS_BKA_1125_Turret_DshK:New{
 			maxAngleDif			= 358,
 			mainDir		= [[0 0 1]],
 		},
+	},
+	customParams = {
+
 	},
 }
 
@@ -104,6 +113,7 @@ local RUS_BKA_1125_Turret_DshK_Rear = RUS_BKA_1125_Turret_DshK:New{
 	},
 	customparams = {
 		facing = 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 

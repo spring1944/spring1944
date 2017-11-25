@@ -12,17 +12,20 @@ local ITA_MC205 = FighterBomber:New{
 	customParams = {
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
+
 	},
 
 	weapons = {
 		[1] = {
 			name				= "Bomb160kg",
-			maxAngleDif			= 20,
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 25,
 		},
 		[2] = {
 			name				= "lastBomb160kg",
-			maxAngleDif			= 20,
 			mainDir				= [[0 0 1]],
+			maxAngleDif			= 25,
+
 			slaveTo				= 1,
 		},
 		[3] = {

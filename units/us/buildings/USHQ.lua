@@ -14,6 +14,9 @@ local US_HQ = HQ:New{
 									oyyo 
 									yyyy 
 									yyyy]],
+	customParams = {
+		normaltex			= "unittextures/USHQ1_normals.dds",
+	},
 }
 
 return lowerkeys({

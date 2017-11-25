@@ -23,6 +23,7 @@ local GERSdKfz251 = HalfTrack:New{
 		armor_side			= 10,
 		armor_top			= 0,
 		maxvelocitykmh		= 52.5,
+
 	},
 	
 }

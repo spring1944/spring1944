@@ -25,8 +25,8 @@ local minExpenseCoverage = {
 }
 
 local needMessage = {
-	energy = "Need Energy!",
-	metal  = "Need Metal!",
+	energy = "Need Supplies!",
+	metal  = "Need Command!",
 	rearm  = "Need Rearm!",
 }
 
@@ -45,8 +45,8 @@ local commonTooltip = {
 }
 
 local barTooltip = {
-	metal  = "Metal bar\n"  .. string.format( commonTooltip.bar, "metal" ),
-	energy = "Energy bar\n" .. string.format( commonTooltip.bar, "energy" ),
+	metal  = "Command bar\n"  .. string.format( commonTooltip.bar, "metal" ),
+	energy = "Supplies bar\n" .. string.format( commonTooltip.bar, "energy" ),
 	rearm = "Rearm bar\n" .. string.format( commonTooltip.bar, "rearm" ),
 }
 

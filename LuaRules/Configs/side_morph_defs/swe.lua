@@ -185,7 +185,7 @@ local sweDefs = {
 	swestorage = {
 		{
 			into = 'swepartisanbase',
-			metal = 500,
+			metal = 1000,
 			energy = 0,
 			time = 50,
 			name = '  Partisan  \n  Base  ',

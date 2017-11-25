@@ -40,6 +40,7 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
             "GERMAL_Turret_Quad20mm",
         },
 		supplyrange			= 1000,
+
 	},
 
 	--[[
@@ -84,6 +85,7 @@ local GER_Flak40_Twin_Base = Building:New{
 		barrelrecoilspeed		= 32,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
+
     },
 }
 
@@ -96,6 +98,9 @@ local GER_Flak40_Twin_Child = OpenBoatTurret:New(GER_Flak40_Twin_Base, true):New
 local spam_hq = GER_Flak_Tower:New{
 	buildPic	= "gerflakturmg.png",
 	objectName	= "GER/GERFlakTurmG.s3o",
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

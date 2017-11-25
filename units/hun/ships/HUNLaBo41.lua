@@ -13,6 +13,7 @@ local HUN_LaBo41 = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 }
 

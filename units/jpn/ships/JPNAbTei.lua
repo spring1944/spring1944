@@ -11,7 +11,7 @@ local JPN_AbTei = ArmedBoat:New{
 	maxVelocity				= 1.8,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
-	turnRate				= 250,	
+	turnRate				= 50,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
@@ -37,6 +37,7 @@ local JPN_AbTei = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -69,6 +70,7 @@ local JPN_AbTei_Turret_57mm_Rear = JPN_AbTei_Turret_57mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 

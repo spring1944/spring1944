@@ -81,7 +81,7 @@ local TNSh20mm = AutoCannon:New{
   burstRate          = 0.1,
   name               = [[20mm TNSh]],
   range              = 675,
-  reloadTime         = 2.5,
+  reloadTime         = 2,
   soundStart         = [[GER_20mm]],
   sprayAngle         = 444,
   weaponVelocity     = 1600,
@@ -296,7 +296,7 @@ local Solothurn_36MHE = AutoCannonHE:New{
 -- French guns
 local Canon_25_SA_35 = AutoCannon:New{
 	accuracy           = 255,
-	burst              = 1,
+	burst              = 2,
 	name               = [[Canon de 25 SA 35]],
 	range              = 740,
 	reloadTime         = 3,

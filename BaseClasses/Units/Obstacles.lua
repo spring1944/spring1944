@@ -17,7 +17,7 @@ local Mine = Unit:New{
 	customparams = {
 		damageGroup			= "mines",
 		hiddenbuilding		= true,
-		dontcount			= true,
+		dontcount			= 1,
 		ismine				= true,
 	}
 }
@@ -53,7 +53,7 @@ local TankObstacle = Unit:New{
   	customparams = {
 		damageGroup			= "heavyTanks",
 		hiddenbuilding		= true,
-		dontcount			= true,
+		dontcount			= 1,
 		isobstacle			= true,
 	},
 }

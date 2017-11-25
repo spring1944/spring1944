@@ -3,6 +3,9 @@ local US_M1Bofors_Truck = AAGunTractor:New{
 	corpse					= "USGMCTruck_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+
+	},
 }
 
 local US_M1Bofors_Stationary = AAGun:New{
@@ -16,6 +19,9 @@ local US_M1Bofors_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
+	},
+	customParams = {
+
 	},
 }
 

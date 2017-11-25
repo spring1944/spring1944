@@ -15,8 +15,8 @@ local Lorraine38L = HalfTrack:New{
 		armor_top			= 0,
 		maxvelocitykmh		= 37,
 		customanims			= "lorraine38l",
+
 	},
-	
 }
 
 return lowerkeys({

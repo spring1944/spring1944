@@ -3,6 +3,9 @@ local US_M1_45inGun_Truck = LongRangeGunTractor:New{
 	corpse					= "USM5Tractor_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+
+	},
 }
 
 local US_M1_45inGun_Stationary = HGun:New{
@@ -20,6 +23,9 @@ local US_M1_45inGun_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "M1_45in_GunSmoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

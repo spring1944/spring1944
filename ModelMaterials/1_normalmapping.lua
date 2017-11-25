@@ -110,8 +110,12 @@ for i, udef in pairs(UnitDefs) do
   if (udef.customParams.normaltex and VFS.FileExists(udef.customParams.normaltex)) then
     unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = udef.customParams.normaltex}
 
-  elseif (udef.model.type == "s3o") then
-    local modelpath = udef.model.path
+  elseif (udef.customParams.normaltex == "") then
+    unitMaterials[udef.name] = {"normalModelledS3o"}
+
+  local modeltype = udef.modeltype or udef.model.type
+  elseif (modeltype == "s3o") then
+    local modelpath = udef.modelpath or udef.model.path
     if (modelpath) then
       --// udef.model.textures is empty at gamestart, so read the texture filenames from the s3o directly
 
@@ -132,14 +136,20 @@ for i, udef in pairs(UnitDefs) do
 
       local normaltex = FindNormalmap(tex1,tex2)
       if (normaltex and not unitMaterials[udef.name]) then
+        Spring.Log('Custom Unit Shaders',
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
         unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
       else
+        Spring.Log('Custom Unit Shaders',
+          LOG.WARNING,
+          'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
         unitMaterials[udef.name] = {"normalModelledS3o"}
       end
     end --if model
 
-  elseif (udef.model.type == "obj") then
-    local modelinfopath = udef.model.path
+  elseif (modeltype == "obj") then
+    local modelinfopath = udef.modelpath or udef.model.path
     if (modelinfopath) then
       modelinfopath = modelinfopath .. ".lua"
 
@@ -156,8 +166,14 @@ for i, udef in pairs(UnitDefs) do
 
           local normaltex = FindNormalmap(tex1,tex2)
           if (normaltex and not unitMaterials[udef.name]) then
+            Spring.Log('Custom Unit Shaders',
+              LOG.WARNING,
+              'Please, manually set the attribute customParams.normaltex="' .. normaltex .. '" to unit ' .. udef.name)
             unitMaterials[udef.name] = {"normalMappedS3o", NORMALTEX = normaltex}
           else
+            Spring.Log('Custom Unit Shaders',
+              LOG.WARNING,
+               'Please, manually set the attribute customParams.normaltex="" to unit ' .. udef.name)
             unitMaterials[udef.name] = {"normalModelledS3o"}
           end
         end

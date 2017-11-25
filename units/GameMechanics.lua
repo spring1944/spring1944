@@ -2,6 +2,9 @@ local BinocSpot = Null:New{
 	airsightdistance			= 1000,
 	sightDistance				= 200,
 	yardmap						= "y",
+	customParams = {
+
+	},
 }
 
 local Flag = Null:New{
@@ -19,8 +22,9 @@ local Flag = Null:New{
 	windGenerator		= 0.00001, -- needed for WindChanged callin
 	yardmap				= "y",
 	customParams = {
-		dontCount			= true,
+		dontCount			= 1,
 		flag				= true,
+
 	},
 }
 
@@ -30,11 +34,17 @@ local Buoy = Flag:New{ -- One day...
 	floater				= true,
 	objectName			= "Gen/buoy.S3O",
 	canMove 			= false, -- for some reason cannot be true or it won't float?
+	customParams = {
+
+	},
 }
 
 local SmallTankShelter = TankShelter:New{
 	name				= "Tank Shelter (Small)",
 	transportMass		= 2100,
+	customParams = {
+
+	},
 }
 
 local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
@@ -63,6 +73,7 @@ local GMToolBox = Fighter:New{ -- TODO: I am a disgusting hack
 
 	customParams = {
 		gm					= 1,
+
 	},
 }
 

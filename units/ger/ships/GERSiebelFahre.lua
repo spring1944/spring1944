@@ -12,7 +12,7 @@ local GER_SiebelFahre = Boat:New{
 	transportCapacity		= 48,
 	transportMass			= 4000,
 	transportSize			= 2,
-	turnRate				= 100,	
+	turnRate				= 30,	
 	weapons = {	
 		[1] = {
 			name				= "flak3820mmhe",
@@ -51,6 +51,7 @@ local GER_SiebelFahre = Boat:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

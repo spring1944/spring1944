@@ -3,17 +3,17 @@ local SWE_Vedettbat = ArmedBoat:New{
 	description				= "Sea-going patrol vessel",
 	acceleration			= 0.025,
 	brakeRate				= 0.01,
-	buildCostMetal			= 3400,
+	buildCostMetal			= 3035,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 10.0 240.0]],
 	maxDamage				= 10400,
 	maxReverseVelocity		= 1.79,
 	maxVelocity				= 3.59,
 	transportCapacity		= 3,
-	turnRate				= 240,	
+	turnRate				= 70,	
 	weapons = {	
 		[1] = {
-			name				= "QF6Pdr57MkIIAHE",
+			name				= "SWE_57mmM95",
 		},
 	},
 
@@ -33,6 +33,7 @@ local SWE_Vedettbat = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -53,6 +54,7 @@ local SWEVedettbat_turret_57mm_front = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
+
     },
 }
 local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
@@ -63,6 +65,7 @@ local SWEVedettbat_turret_57mm_rear = SWEVedettbat_turret_57mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		defaultheading1		= math.rad(180),
     },
 }
 
@@ -90,6 +93,7 @@ local SWEVedettbat_turret_25mm_rear = OpenBoatTurret:New{
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
+
     },
 }
 

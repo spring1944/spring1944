@@ -4,6 +4,9 @@ local ITA_Cannone75_Truck = FGGunTractor:New{
 	corpse					= "ITATL37_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local ITA_Cannone75_Stationary = FGGun:New{
@@ -17,6 +20,9 @@ local ITA_Cannone75_Stationary = FGGun:New{
 			name	= "Ansaldo75mmL34AP",
 		},
 	},	
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

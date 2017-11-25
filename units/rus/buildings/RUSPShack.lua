@@ -11,6 +11,9 @@ local RUS_PShack = Barracks:New{
 	yardmap						= [[yyy 
 									yyy 
 									yyy]],
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

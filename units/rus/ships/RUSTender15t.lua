@@ -8,7 +8,7 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 	maxDamage				= 1360,
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 2.2,
-	turnRate				= 220,	
+	turnRate				= 50,	
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -22,6 +22,7 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

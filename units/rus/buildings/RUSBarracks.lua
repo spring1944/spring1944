@@ -13,6 +13,9 @@ local RUS_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

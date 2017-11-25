@@ -3,6 +3,9 @@ local SWE_BoforsM36_Truck = AAGunTractor:New{
 	corpse					= "SWEScaniaVabisF11_destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+
+	},
 }
 
 local SWE_BoforsM36_Stationary = AAGun:New{
@@ -16,6 +19,9 @@ local SWE_BoforsM36_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "bofors40mmhe",
 		},
+	},
+	customParams = {
+
 	},
 }
 

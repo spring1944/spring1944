@@ -12,6 +12,9 @@ local ITACannone65 = InfantryGun:New{
 			maxAngleDif			= 30,
 		},
 	},
+	customParams = {
+
+	},
 }
 
 

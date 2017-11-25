@@ -102,7 +102,7 @@ local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
 	maxReverseVelocity	= 2.25,
 	maxVelocity			= 4.5,
 	movementClass		= "TANK_Truck",
-	turnRate			= 440,
+	turnRate			= 220,
 
 	customParams = {
 		buildOutside	= 1,

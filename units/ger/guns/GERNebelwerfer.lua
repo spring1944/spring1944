@@ -3,6 +3,9 @@ local GER_Nebelwerfer_Truck = RGunTractor:New{
 	corpse					= "GEROpelBlitz_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local GER_Nebelwerfer_Stationary = RGun:New{
@@ -15,6 +18,9 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 		[1] = {
 			name				= "Nebelwerfer41",
 		},
+	},
+	customParams = {
+
 	},
 }
 

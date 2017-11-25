@@ -77,6 +77,7 @@ local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
 	name			= [[215mm 44M Buzogány]],
 	range			= 600,
 	burst			= 2,
+	startVelocity     = 320,
 	burstRate		= 0.8,
 	soundStart		= [[US_Bazooka]],
 	customparams = {

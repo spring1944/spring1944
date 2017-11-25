@@ -7,5 +7,9 @@
   footprintZ=2;
   object=GERleFH18_Destroyed.S3O;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

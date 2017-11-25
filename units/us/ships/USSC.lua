@@ -11,7 +11,7 @@ local US_SC = ArmedBoat:New{
 	maxVelocity				= 1.56,
 	movementClass			= "BOAT_Medium",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 300,	
+	turnRate				= 90,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "mk223in50",
@@ -33,6 +33,7 @@ local US_SC = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -64,6 +65,7 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon				= 1,
 		facing 					= 3,
+		defaultheading1		= math.rad(-90),
 	},
 }
 local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
@@ -77,6 +79,7 @@ local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 1,
+		defaultheading1		= math.rad(90),
 	},
 }
 local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
@@ -92,6 +95,7 @@ local US_SC_Turret_20mm_Rear = US_SC_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -112,6 +116,7 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
+
     },
 }
 

@@ -7,5 +7,9 @@
   footprintZ=2;
   object=FRA/FRA105mmMle1935B_dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

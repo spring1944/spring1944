@@ -5,6 +5,9 @@ local USM8Greyhound = ArmouredCar:New{
 	maxDamage			= 780,
 	trackOffset			= 10,
 	trackWidth			= 13,
+	brakeRate			= 0.54,
+	turnrate			= 600,
+	movementClass		= "TANK_6pluswheels",
 
 	weapons = {
 		[1] = {
@@ -37,6 +40,7 @@ local USM8Greyhound = ArmouredCar:New{
 		maxammo				= 15,
 		turretturnspeed		= 12, -- manual
 		maxvelocitykmh		= 89,
+		normaltex			= "unittextures/USM8Greyhound_normals.dds",
 	}
 }
 

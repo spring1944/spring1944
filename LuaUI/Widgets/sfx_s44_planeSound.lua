@@ -98,7 +98,7 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function widget:AddConsoleLine(msg, priority)
-  if msg:find("enemy aircraft spotted") then
+  if msg:find("aircraft spotted overhead!") then
     PlaySoundFile("sounds/GEN_air_raid.wav", 1)
   end
 end

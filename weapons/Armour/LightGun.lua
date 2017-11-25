@@ -6,7 +6,7 @@
 local QF2Pdr40mm = LightGun:New{
   name               = [[QF 2 Pdr Mk.X]],
   range              = 1070,
-  reloadTime         = 4.5,
+  reloadTime         = 2.8, -- wiki 22 RPM
 }
 
 local QF2Pdr40mmHE = LightHE:New(QF2Pdr40mm, true):New{
@@ -31,7 +31,7 @@ local QF2Pdr40mmAP = LightAP:New(QF2Pdr40mm, true):New{
 local M637mm = LightGun:New{
   name               = [[37mm M6]],
   range              = 1010,
-  reloadTime         = 4.5,
+  reloadTime         = 2.5, -- wiki 25 RPM
 }
 
 -- Canister is radically different!
@@ -111,7 +111,7 @@ local Bofors_m38HE = LightHE:New(Bofors_m38, true):New{
 local M1938_20K45mm = LightGun:New{
   name               = [[20K M1938 45mm]],
   range              = 980,
-  reloadTime         = 4.8,
+  reloadTime         = 3.3, 	-- 18 RPM
   soundStart         = [[RUS_45mm]],
 }
 
@@ -142,7 +142,7 @@ local M1937_40K45mmHE = M1938_20K45mmHE:New{
 local CannoneDa47mml32 = LightGun:New{
   name                 = [[47 mm L/32 Gun]],
   range                = 980,
-  reloadTime           = 4.8,
+  reloadTime           = 4.8, 
   soundStart           = [[ITA_M35_47mm]],
 }
 
@@ -158,8 +158,8 @@ local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
 }
 
 local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
-  range                = 637,
-  weaponVelocity       = 800,
+  weaponVelocity       = 1200,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 75,
   },
@@ -175,7 +175,7 @@ local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
 local CannoneDa47mml40 = LightGun:New{
   name                 = [[47 mm L/40 Gun]],
   range                = 1090,
-  reloadTime           = 4.4,
+  reloadTime           = 2.5, -- wiki 25 RPM for the tankgun
   soundStart           = [[ITA_M39_47mm]],
 }
 
@@ -198,8 +198,8 @@ local CannoneDa47mml40AP = LightAP:New(CannoneDa47mml40, true):New{
   },
 }
 local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
-  range                = 708,
-  weaponVelocity       = 900,
+  weaponVelocity     = 1818,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 115,
   },
@@ -241,7 +241,7 @@ local Type137mmAP = LightAP:New(Type137mm, true):New{
 local Type9837mm = LightGun:New{
   name                 = [[Type 98 37 mm Gun]],
   range                = 930,
-  reloadTime           = 4.0,
+  reloadTime           = 3.6,
   soundStart           = [[RUS_45mm]],
 }
 

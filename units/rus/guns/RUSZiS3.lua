@@ -3,6 +3,9 @@ local RUS_ZiS3_Truck = FGGunTractor:New{
 	corpse					= "RUSZiS5_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+
+	},
 }
 
 local RUS_ZiS3_Stationary = FGGun:New{
@@ -17,6 +20,9 @@ local RUS_ZiS3_Stationary = FGGun:New{
 			name	= "ZiS376mmAP",
 		},
 	},	
+	customParams = {
+
+	},
 }
 
 return lowerkeys({
