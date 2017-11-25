@@ -92,14 +92,14 @@ local LightHE = HE:New{
 
 local LightMediumHE = HE:New{
 	customparams = {
-		fearaoe            = 50,
+		fearaoe            = 100,
 	},
 }
 
 local MediumHE = HE:New{ -- Medium & MediumHeavy & InfGun
 	soundHitDry        = "GEN_Explo_3",
 	customparams = {
-		fearaoe            = 75,
+		fearaoe            = 150,
 		fearid             = 401,
 	},
 }
@@ -109,7 +109,7 @@ local HeavyHE = HE:New{
 	explosionGenerator = "custom:HE_XLarge",
 	soundHitDry        = "GEN_Explo_4",
 	customparams = {
-		fearaoe            = 75,
+		fearaoe            = 150,
 		fearid             = 501,
 	},
 }
@@ -118,7 +118,7 @@ local HowitzerHE = HE:New{ -- + CS Howitzer
 	soundStart         = [[GEN_105mm]],
 	soundHitDry        = [[GEN_Explo_4]],
 	customparams = {
-		fearaoe            = 125,
+		fearaoe            = 250,
 		fearid             = 501,
 	},
 }
@@ -333,7 +333,7 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 	size               = 1e-13,
 	soundTrigger       = false,
 	avoidFriendly      = true,
-	sprayAngle         = 250,
+	sprayAngle         = 950,
 	customparams = {
 		no_range_adjust    = true,
 		weaponcost         = -2, --Air auto cannons don't cost ammo
