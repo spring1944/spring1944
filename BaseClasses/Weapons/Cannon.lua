@@ -46,8 +46,8 @@ local HEAT = Weapon:New{ -- Medium
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
 		damagetype         = "shapedcharge",
-		onlytargetcategory = AP.customparams.onlytargetcategory,
-		badtargetcategory  = AP.customparams.badtargetcategory,
+		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET",
+		badtargetcategory  = "SOFTVEH",
 	},
 }
 
