@@ -2,6 +2,9 @@ local GBR_BedfordBase = Truck:New{
 	name					= "Bedford QL",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local GBR_BedfordTruck = GBR_BedfordBase:New(TransportTruck)

@@ -35,6 +35,7 @@ local GERPanzerIII = MediumTank:New{
 		armor_top			= 14,
 		maxammo				= 12,
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/GERPanzerIII_normals.dds",
 	},
 }
 

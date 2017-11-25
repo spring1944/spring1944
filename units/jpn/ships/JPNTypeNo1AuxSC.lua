@@ -8,7 +8,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 	collisionVolumeScales	= [[24.0 12.0 160.0]],
 	maxDamage				= 13000,
 	maxReverseVelocity		= 0.6,
-	maxVelocity				= 1.1,
+	maxVelocity				= 1.32,
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	
@@ -30,6 +30,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -55,6 +56,7 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
+
     },
 }
 
@@ -69,6 +71,7 @@ local JPN_SC_Turret_25mm_Rear = JPN_SC_Turret_25mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 

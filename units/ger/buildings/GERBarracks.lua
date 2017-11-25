@@ -1,12 +1,10 @@
 local GER_Barracks = Barracks:New{
-	buildCostMetal				= 2140,
 	buildingGroundDecalSizeX	= 6,
 	buildingGroundDecalSizeY	= 8,
 	collisionVolumeScales		= [[70 30 105]],
 	collisionVolumeOffsets		= [[0 -10 0]],
 	footprintX					= 5,
 	footprintZ					= 7,
-	maxDamage					= 6250,
 	yardmap						= [[yyooo 
 								    ooooo 
 									ooooo 
@@ -14,6 +12,9 @@ local GER_Barracks = Barracks:New{
 									yyyyy 
 									yyyyy 
 									yyyyy]],
+	customParams = {
+		normaltex			= "unittextures/GERBarracks_normals.dds",
+	},
 }
 
 local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
@@ -26,6 +27,9 @@ local GER_BarracksBunker = GER_Barracks:New(Bunker):New{
 									ooyyy 
 									ooyyy 
 									ooyyy]],
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

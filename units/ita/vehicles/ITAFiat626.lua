@@ -2,6 +2,9 @@ local ITA_Fiat626Base = Truck:New{
 	name					= "Fiat 626",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local ITA_Fiat626 = ITA_Fiat626Base:New(TransportTruck)

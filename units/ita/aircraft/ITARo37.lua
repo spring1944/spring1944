@@ -7,6 +7,7 @@ local ITA_Ro37 = Recon:New{
 	customParams = {
 		enginesound		= "po2-",
 		enginesoundnr	= 11,
+
 	},
 }
 

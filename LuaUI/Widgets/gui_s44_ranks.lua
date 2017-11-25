@@ -70,7 +70,6 @@ local glTexRect = gl.TexRect
 
 local glLineWidth = gl.LineWidth
 
-local glSmoothing = gl.Smoothing
 local glBlendFunc = gl.BlendFunc
 local glDepthTest = gl.DepthTest
 
@@ -1658,7 +1657,6 @@ function widget:Shutdown()
 end
 
 function widget:DrawWorld()
-	glSmoothing(false, true, false)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 	glLineWidth(lineWidth)
 	local visibleUnits = GetVisibleUnits(-1, 0, false)
@@ -1671,5 +1669,4 @@ function widget:DrawWorld()
 		end
 	end
 	glLineWidth(1)
-	glSmoothing(false, false, false)
 end

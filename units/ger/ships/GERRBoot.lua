@@ -3,14 +3,14 @@ local GER_RBoot = ArmedBoat:New{
 	description				= "Minesweeper (light patrol ship)",
 	acceleration			= 0.2,
 	brakeRate				= 0.15,
-	buildCostMetal			= 2604,
+	buildCostMetal			= 4557,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
 	maxDamage				= 16000,
 	maxReverseVelocity		= 1.37,
-	maxVelocity				= 2.74,
+	maxVelocity				= 2.52, -- 21kn
 	transportCapacity		= 3, -- 3 x 1fpu turrets
-	turnRate				= 205,	
+	turnRate				= 65,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "flak4337mmhe",
@@ -30,6 +30,7 @@ local GER_RBoot = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -49,6 +50,7 @@ local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 60,
 		elevationspeed			= 30,
+
     },
 }
 
@@ -77,6 +79,7 @@ local GER_RBoot_Turret_20mm = OpenBoatTurret:New{
 		elevationspeed			= 80,
 		aaweapon				= 1,
 		facing					= 2,
+		defaultheading1			= math.rad(180),
     },
 }
 

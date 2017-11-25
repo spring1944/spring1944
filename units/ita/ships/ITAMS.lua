@@ -7,7 +7,7 @@ local ITA_MS = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
 	maxDamage				= 6600,
-	maxVelocity				= 3.2,
+	maxVelocity				= 4.2,
 	transportCapacity		= 2, -- 2 x 1fpu turrets
 	turnRate				= 55,	
 	weapons = {	
@@ -31,6 +31,7 @@ local ITA_MS = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -56,6 +57,7 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
+
     },
 }
 
@@ -70,6 +72,7 @@ local ITA_MS_Turret_20mm_Rear = ITA_MS_Turret_20mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 

@@ -13,7 +13,7 @@ local HUN_PAM21 = ArmedBoat:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 3,
-	turnRate				= 250,	
+	turnRate				= 50,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
@@ -35,6 +35,7 @@ local HUN_PAM21 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -76,6 +77,7 @@ local HUN_PM = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -96,6 +98,7 @@ local HUNPAM21_turret_20mm = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+
     },
 }
 
@@ -121,6 +124,7 @@ local HUNPM_turret_40mm_front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+
     },
 }
 
@@ -139,6 +143,7 @@ local HUNPM_turret_40mm_rear = HUNPM_turret_40mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		defaultheading1			= math.rad(180),
 	}
 }
 
@@ -155,6 +160,7 @@ local HUNPAM21_turret_mg = EnclosedBoatTurret:New{
 		barrelrecoildist		= 0,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
+ 
 	},
 }
 
@@ -165,6 +171,9 @@ local HUNPAM21_turret_mg_left = HUNPAM21_turret_mg:New{
 			mainDir		= [[1 0 1]],
 		},
 	},
+	customParams = {
+
+	},
 }
 
 local HUNPAM21_turret_mg_right = HUNPAM21_turret_mg:New{
@@ -173,6 +182,9 @@ local HUNPAM21_turret_mg_right = HUNPAM21_turret_mg:New{
 			maxAngleDif			= 45,
 			mainDir		= [[-1 0 1]],
 		},
+	},
+	customParams = {
+
 	},
 }
 

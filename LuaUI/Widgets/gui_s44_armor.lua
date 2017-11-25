@@ -77,7 +77,6 @@ local glBillboard = gl.Billboard
 local glLineWidth = gl.LineWidth
 local glShape = gl.Shape
 
-local glSmoothing = gl.Smoothing
 
 local GL_LINES = GL.LINES
 
@@ -137,7 +136,6 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 	}
 
 	glLineWidth(lineWidth)
-	glSmoothing(false, smooth, false)
 
 	glPushMatrix()
 		glTranslate(tx, ty, tz)
@@ -188,7 +186,6 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 	glPopMatrix()
 
 	glLineWidth(1)
-	glSmoothing(false, false, false)	
 end
 
 local function CalculateDamage(weaponInfo, unitInfo, distance, health)

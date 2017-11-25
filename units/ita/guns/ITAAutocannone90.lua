@@ -16,6 +16,7 @@ local ITAAutocannone90 = Truck:New(TankDestroyer):New{
 		maxammo				= 5,
 		maxvelocitykmh		= 45,
 		customanims		= "autocannone90",
+
 	},
 }
 

@@ -1,5 +1,8 @@
 local JPNInf = {
 	maxDamageMul		= 0.94,
+	customParams = {
+
+	},
 }
 
 local JPN_HQEngineer = EngineerInf:New(JPNInf):New{
@@ -67,7 +70,6 @@ local JPN_Sniper = SniperInf:New(JPNInf):New{
 
 local JPN_Type3AT = ATGrenadeInf:New(JPNInf):New{
 	name				= "Type 3 AT Grenade",
-	acceleration		= 0.5,
 	weapons = {
 		[1] = { -- SMG
 			name				= "Type100SMG",

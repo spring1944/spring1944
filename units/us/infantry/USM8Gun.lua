@@ -7,6 +7,9 @@ local USM8Gun = InfantryGun:New{
 			name				= "M875mmHE",
 		},
 	},
+	customParams = {
+
+	},
 }
 
 

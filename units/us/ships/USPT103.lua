@@ -8,10 +8,10 @@ local US_PT103 = ArmedBoat:New{
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 4000,
 	maxReverseVelocity		= 2.15,
-	maxVelocity				= 4.3,
+	maxVelocity				= 4.92, -- 41kn
 	movementClass			= "BOAT_Medium",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 300,	
+	turnRate				= 100,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "bofors40mmhe",
@@ -34,6 +34,7 @@ local US_PT103 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -55,6 +56,7 @@ local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 	customparams = {
 		turretturnspeed			= 250, -- TODO: :o huge compared to others
 		elevationspeed			= 200, -- TODO: ditto
+
 	},
 }
 
@@ -82,6 +84,7 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+
 	},
 }
 
@@ -112,6 +115,7 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 		elevationspeed			= 90,
 		aaweapon				= 1,
 		facing					= 2,
+		defaultheading1		= math.rad(180),
     },
 }
 

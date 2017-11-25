@@ -11,7 +11,7 @@ local JPN_Seta = ArmedBoat:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 250,	
+	turnRate				= 50,	
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
@@ -30,10 +30,11 @@ local JPN_Seta = ArmedBoat:New{
 				offset = { 0, 0, 10 },
 				scale = { 1, 1, 0.65 }
 			}
-		}
+		},
 		--[[deathanim = {
 			["z"] = {angle = -10, speed = 45},
 		},]]
+
 	},
 }
 
@@ -54,6 +55,7 @@ local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
+
     },
 }
 
@@ -65,6 +67,7 @@ local JPN_Seta_Turret_76mm_Rear = JPN_Seta_Turret_76mm_Front:New{
 	},
 	customparams = {
 		facing = 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -103,6 +106,7 @@ local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
+
     },
 }
 

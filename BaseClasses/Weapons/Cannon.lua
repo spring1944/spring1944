@@ -46,8 +46,8 @@ local HEAT = Weapon:New{ -- Medium
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
 		damagetype         = "shapedcharge",
-		onlytargetcategory = AP.customparams.onlytargetcategory,
-		badtargetcategory  = AP.customparams.badtargetcategory,
+		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET",
+		badtargetcategory  = "SOFTVEH",
 	},
 }
 
@@ -175,7 +175,8 @@ local AA = Weapon:New{
 	burnblow           = true,
 	canattackground    = false,
 	collisionSize      = 3,
-	cylinderTargeting  = 2.5,
+	cylinderTargeting  = 5,
+	leadlimit	= 280,
 	edgeEffectiveness  = 0.001,
 	name               = "AA Shell",
 	soundHitDry        = "GEN_Explo_Flak1",
@@ -192,12 +193,13 @@ local AA = Weapon:New{
 local AutoCannonAA = AA:New{
 	areaOfEffect       = 30,
 	explosionGenerator = [[custom:HE_Small]],
-	movingAccuracy     = 0,
+	movingAccuracy     = 300,
 	targetMoveError    = 0,
 }
 
 local AntiAirGunAA = AA:New{
 	areaOfEffect       = 60,
+	explosionSpeed     = 15,
 	explosionGenerator = [[custom:HE_Medium]],
 }
 
@@ -308,12 +310,11 @@ local CSHowitzer = HeavyGun:New{ -- for cegflare only atm (+TankGun base)
 -- Artillery - Light Anti-Air (20 - 25mm)
 local AutoCannon = Cannon:New{
 	edgeEffectiveness  = 0.5,
-	explosionSpeed     = 100, -- needed?
+	explosionSpeed     = 20, 
 	movingAccuracy     = 500,
-	predictBoost       = 0,
 	size               = 1e-13, -- visuals done with tracers, except AP rounds
 	targetMoveError    = 0.1,
-	tolerance          = 650,
+	tolerance          = 850,
 	customparams = {
 		cegflare           = "XSMALL_MUZZLEFLASH",
 		flareonshot        = true,
@@ -325,6 +326,7 @@ local AutoCannon = Cannon:New{
 local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAccuracy and targetMoveError will pan out
 	heightBoostFactor  = 0,
 	range		= 860,
+  	canAttackGround    = false,
 	accuracy           = 500,
 	sprayangle	   = 1200,
 	weaponVelocity     = 1700,
@@ -344,7 +346,6 @@ local AirAutoCannon = AutoCannon:New{ -- TODO: not sure how inheriting movingAcc
 local AntiAirGun = Cannon:New{
 	accuracy           = 150,
 	intensity          = 0.9,
-	predictBoost       = 0, -- this seems very strange for an AA weapon!
 	size               = 1e-5,
 	soundStart         = "GEN_37mmAA",
 	soundTrigger       = false,

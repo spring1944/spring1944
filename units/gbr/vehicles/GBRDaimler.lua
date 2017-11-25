@@ -34,6 +34,7 @@ local GBRDaimler = ArmouredCar:New{
 		reversemult			= 0.75,
 		turretturnspeed		= 20, -- manual, light turret
 		maxvelocitykmh		= 80,
+		normaltex			= "unittextures/GBRDaimler_normals.dds",
 	}
 }
 

@@ -67,11 +67,19 @@ local defs = {
 	priorityAPHEATHE = {
 		states = {
 			{
-				name = "Prefer AP",
+				name = "Prefer HEAT",
 				toggle = {
 					[1] = 1,
-					[2] = 2,
-					[3] = 3,
+					[2] = 3,
+					[3] = 2,
+				},
+			},
+			{
+				name = "Prefer AP",
+				toggle = {
+					[1] = 3,
+					[2] = 1,
+					[3] = 2,
 				},
 			},
 			{

@@ -70,7 +70,7 @@ local HQ = Yard:New{
 local Barracks = Yard:New{
 	name				= "Barracks",
 	description			= "Infantry Training & Housing Facility",
-	--buildCostMetal		= 2000, -- GBR 2340, GER 2140, ITA 1500, JPN 1500, RUS 1500, US 2300
+	buildCostMetal		= 2000, -- (OLD) GBR 2340, GER 2140, ITA 1500, JPN 1500, RUS 1500, US 2300
 	explodeAs			= "Med_Explosion", -- override Yard
 	iconType			= "barracks", -- override Yard
 	idleAutoHeal		= 10, -- engine default, override Yard
@@ -217,7 +217,7 @@ local SupplyDepot = Yard:New{
 	footprintX				= 6,
 	footprintZ				= 6,
 	iconType				= "ammo2",
-	maxDamage				= 3000,
+	maxDamage				= 3750,
 	objectName				= "GEN/SupplyDepot.S3O",
 	yardmap					= [[occcco 
 							    occcco 
@@ -248,7 +248,7 @@ local Storage = Building:New{
 	footprintX				= 4,
 	footprintZ				= 6,
 	iconType				= "stockpile",
-	maxDamage				= 1200,
+	maxDamage				= 1800,
 	reclaimable				= true,
 	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
 	customparams = {
@@ -256,7 +256,7 @@ local Storage = Building:New{
 		armor_rear				= 0,
 		armor_side				= 15,
 		armor_top				= 30,
-		dontcount				= true,
+		dontcount				= 1,
 	},
 }
 -- Truck Supplies
@@ -269,7 +269,7 @@ local Supplies = Building:New{
 	buildingGroundDecalSizeY	= 4,
 	corpse						= "Debris_Large",
 	customparams = {
-		dontCount					= true,
+		dontCount					= 1,
 		supplyRange					= 560,
 	},
 	explodeAs					= "ResourceBoom",

@@ -114,4 +114,11 @@ for name, fd in pairs(FeatureDefs) do
 			fd.collisionvolumeoffsets = [[0 -100 0]]
 		end
 	end
+	-- add null normaltex
+	if not fd.customparams then
+		fd.customparams = {}
+	end
+	if not fd.customparams.normaltex then
+		fd.customparams.normaltex = ""
+	end
 end

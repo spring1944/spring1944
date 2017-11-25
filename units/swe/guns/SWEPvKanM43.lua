@@ -4,6 +4,9 @@ local SWE_PvKanM43_Truck = ATGunTractor:New{
 	corpse					= "SWEScaniaVabisF11_Destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
+	customParams = {
+
+	},
 }
 
 local SWE_PvKanM43_Stationary = LightATGun:New{
@@ -14,6 +17,9 @@ local SWE_PvKanM43_Stationary = LightATGun:New{
 		[1] = { -- AP
 			name				= "PvKanM43AP",
 		},
+	},
+	customParams = {
+
 	},
 }
 

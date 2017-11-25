@@ -8,7 +8,7 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 	maxVelocity				= 1.1,
 	transportMass			= 2100,
 	  transportSize=9,
-	turnRate				= 100,	
+	turnRate				= 50,	
 	weapons = {	
 		[1] = {
 			name				= "Type9625mmAA",
@@ -27,6 +27,7 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

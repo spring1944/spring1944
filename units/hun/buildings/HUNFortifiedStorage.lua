@@ -1,6 +1,6 @@
 local HUN_FortifiedStorage = Storage:New(Bunker):New{
 	name					= "Fortified Storage Shed",
-	maxDamage				= 10000,
+	maxDamage				= 12000,
 	energyStorage			= 2200,
 	weapons = {
 		[1] = {
@@ -53,6 +53,9 @@ local HUN_FortifiedStorage = Storage:New(Bunker):New{
 			mainDir				= [[1 0 0]],
 			maxAngleDif			= 90,
 		},
+	},
+	customParams = {
+
 	},
 }
 

@@ -96,6 +96,9 @@ local Obice100mmL22 = Howitzer:New{
   soundStart         = [[ITA_100mm]],
   range              = 7200,
   reloadtime         = 10.25,
+  customParams = {
+  	weaponcost         = 24,
+  },
 }
 local Obice100mmL22he = HowitzerHE:New(Obice100mmL22, true):New{
   damage = {
@@ -112,6 +115,9 @@ local Obice100mmL17 = Howitzer:New{
   soundStart         = [[ITA_100mm]],
   range              = 6000,
   reloadtime         = 9.25,
+  customParams = {
+  	weaponcost         = 24,
+  },
 }
 local Obice100mmL17HE = HowitzerHE:New(Obice100mmL17, true):New{
   damage = {

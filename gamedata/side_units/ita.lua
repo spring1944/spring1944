@@ -153,9 +153,10 @@ local itaunits =
 	"itafiat626",
 	"itaab41",
 	"itaas37",
-	"itaautocannone75",
+	--"itaautocannone75",
 	"itasemovente47",
 	"itaspadovunque",
+	"ital6_40lf",
 	"itafiat508cm",
   },
 
@@ -166,11 +167,12 @@ local itaunits =
 	"itafiat626",
 	"itaab41",
 	"itaas37",
-	"itaautocannone75",
 	"itasemovente47",
 	"itaspadovunque",
+	"itaautocannone75",
 	"ital6_40lf",
 	"itafiat508cm",
+
   }, 
   itatankyard =
   {

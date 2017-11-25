@@ -15,6 +15,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
+
 		}
 }
 
@@ -36,6 +37,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -57,6 +59,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -77,6 +80,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
+
 		}
 }
 
@@ -98,6 +102,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -119,6 +124,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -139,6 +145,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
+
 		}
 }
 
@@ -160,6 +167,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -181,6 +189,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -201,6 +210,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
+
 		}
 }
 
@@ -222,6 +232,7 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }
 
@@ -243,5 +254,6 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=35;
+
 		}
 }

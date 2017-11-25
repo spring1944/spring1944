@@ -40,6 +40,7 @@ local FRAR35 = LightTank:New{
 
 		maxvelocitykmh		= 20,
 		customanims			= "renault_r",
+
 	},
 }
 

@@ -15,6 +15,7 @@
 		{
 		cover_strength=2;
 		cover_radius=40;
+
 		}
 }
 
@@ -37,6 +38,7 @@
 		cover_strength=2;
 		cover_radius=40;
 		}
+
 }
 
 [ITABreda61_Wreck]
@@ -56,5 +58,6 @@
 		ceg_created=Burning;
 		cover_strength=2;
 		cover_radius=40;
+
 		}
 }

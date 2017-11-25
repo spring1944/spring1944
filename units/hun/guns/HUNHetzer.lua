@@ -2,7 +2,7 @@ local HUNHetzer = MediumTank:New(TankDestroyer):New{
 	name				= "Sd.Kfz. 138/2 JagdPanzer 38 Hetzer",
 	description			= "Turretless Tank Destroyer",
 	corpse				= "HUNHetzer_Abandoned",
-	buildCostMetal		= 3500,
+	buildCostMetal		= 2800,
 	maxDamage			= 1575,
 	trackOffset			= 5,
 	trackWidth			= 20,
@@ -27,6 +27,7 @@ local HUNHetzer = MediumTank:New(TankDestroyer):New{
 		maxammo				= 15,
 		soundcategory		= "HUN/Tank",
 		maxvelocitykmh		= 40,
+
 	},
 }
 
@@ -46,6 +47,7 @@ local HUNBergeHetzer = EngineerVehicle:New{
 		maxvelocitykmh		= 40,
 		soundcategory		= "HUN/Tank",
 		customanims			= "bergehetzer",
+
 	},
 }
 

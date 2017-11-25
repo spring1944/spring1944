@@ -24,7 +24,6 @@ local IsUnitInView       = Spring.IsUnitInView
 
 -- OpenGL
 local glCallList =  gl.CallList
-local glSmoothing = gl.Smoothing
 local glShape = gl.Shape
 local glPushMatrix = gl.PushMatrix
 local glPopMatrix = gl.PopMatrix
@@ -87,7 +86,6 @@ function widget:Shutdown()
 end
 
 function widget:DrawWorldPreUnit()
-  --glSmoothing(true, true, true)
 
   for i = 1, #teams do
     local teamID = teams[i]
@@ -128,7 +126,6 @@ function widget:DrawWorldPreUnit()
     end
   end
   
-  --glSmoothing(false, false, false)
 end
 
 function widget:UnitTaken(unitID, unitDefID, unitTeam, newTeam)

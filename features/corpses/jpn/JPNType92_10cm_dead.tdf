@@ -7,5 +7,9 @@
   footprintZ=2;
   object=JPN/JPNType92_10cm_dead.S3O;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

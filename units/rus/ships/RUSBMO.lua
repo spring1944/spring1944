@@ -9,9 +9,9 @@ local RUS_BMO = ArmedBoat:New{
 	mass					= 5620,
 	maxDamage				= 5880, --+10% because it has armor
 	maxReverseVelocity		= 1.1,
-	maxVelocity				= 2.2,
+	maxVelocity				= 3.12,
 	transportCapacity		= 4, -- 4 x 1fpu turrets
-	turnRate				= 300,	
+	turnRate				= 100,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "M1939_61k37mmaa",
@@ -34,6 +34,7 @@ local RUS_BMO = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -59,6 +60,7 @@ local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multip
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
+
     },
 }
 local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
@@ -72,6 +74,7 @@ local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
+		defaultheading1		= math.rad(180),
     },
 }
 
@@ -97,6 +100,7 @@ local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
 		turretturnspeed			= 80,
 		elevationspeed			= 45,
 		facing					= 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -121,6 +125,7 @@ local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
 		facing					= 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 
@@ -141,6 +146,7 @@ local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 25,
 		elevationspeed			= 30,
+
     },
 }
 local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
@@ -151,6 +157,7 @@ local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{
 	},
 	customparams = {
 		facing					= 2,
+		defaultheading1		= math.rad(180),
     },
 }
 

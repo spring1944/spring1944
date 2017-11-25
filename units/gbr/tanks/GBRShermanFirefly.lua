@@ -8,12 +8,12 @@ local GBRShermanFirefly = MediumTank:New{
 
 	weapons = {
 		[1] = {
-			name				= "QF17pdrAP",
+			name				= "QF17pdrMkVIAP",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		[2] = {
-			name				= "QF17pdrHE",
+			name				= "QF17pdrMkVIHE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
@@ -35,8 +35,9 @@ local GBRShermanFirefly = MediumTank:New{
 		armor_side			= 41,
 		armor_top			= 21,
 		maxammo				= 14,
-		turretturnspeed		= 24, -- 15s for 360
+		turretturnspeed		= 19, 
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/GBRShermans_normals.dds",
 	},
 }
 

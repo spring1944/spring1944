@@ -347,8 +347,8 @@ function Object:ClearChildren()
   self.preserveChildrenOrder = false
 
   --// remove all children  
-    for i=1,#self.children_hidden do
-      self:ShowChild(self.children_hidden[i])
+    for c in pairs(self.children_hidden) do
+      self:ShowChild(c)
     end
 
     for i=#self.children,1,-1 do

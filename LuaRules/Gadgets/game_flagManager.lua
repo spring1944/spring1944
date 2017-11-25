@@ -56,8 +56,8 @@ local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
 
 -- variables
 local metalMap = {}
-local maxMetal = 0
-local totalMetal = 0
+local maxMetal = 1
+local totalMetal = 1
 local metalSpots = {}
 local metalSpotCount	= 0
 local metalData = {}

@@ -7,5 +7,9 @@
   footprintZ=2;
   object=ITAObice100_Destroyed;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

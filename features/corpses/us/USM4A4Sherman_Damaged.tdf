@@ -15,6 +15,7 @@
 		{
 		cover_strength=2;
 		cover_radius=50;
+		normaltex = "unittextures/USM4ShermanA_normals.dds";
 		}
 }
 
@@ -24,6 +25,7 @@
     ceg_created=Burning;
 	cover_strength=2;
 	cover_radius=35;
+	normaltex = "";
   }
   damage=2501;
   energy=500;

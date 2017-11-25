@@ -5,6 +5,7 @@ local GBR_Horsa = Glider:New{
 	script			= "<NAME>.lua",
 	customParams = {
 		spawn_on_death			= "gbr_platoon_glider_horsa", -- TODO: generalise
+		normaltex			= "unittextures/GBRAS51_normals.dds",
 	},
 }
 

@@ -9,5 +9,9 @@
   hitdensity=70;
   object=GERSBoot_dead;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

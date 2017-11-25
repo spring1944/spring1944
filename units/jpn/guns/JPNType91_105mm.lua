@@ -4,6 +4,9 @@ local JPN_Type91_105mm_Truck = HGunTractor:New{
 	corpse					= "JPNShiKe_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local JPN_Type91_105mm_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local JPN_Type91_105mm_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "Type91105mmL24smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

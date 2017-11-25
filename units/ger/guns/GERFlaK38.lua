@@ -4,6 +4,9 @@ local GER_FlaK38_Truck = AAGunTractor:New{
 	corpse					= "GEROpelBlitz_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local GER_FlaK38_Stationary = AAGun:New{
@@ -17,6 +20,9 @@ local GER_FlaK38_Stationary = AAGun:New{
 		[2] = { -- HE
 			name				= "flak3820mmhe",
 		},
+	},
+	customParams = {
+
 	},
 }
 

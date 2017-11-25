@@ -1,5 +1,8 @@
 local SWEInf = {
 	maxDamageMul		= 1.4,
+	customParams = {
+
+	},
 }
 
 local SWE_HQEngineer = EngineerInf:New(SWEInf):New{

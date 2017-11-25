@@ -3,6 +3,9 @@ local HUN_31M_105mm_Truck = LongRangeGunTractor:New{
 	corpse					= "HUNPavesi_dead",
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+
+	},
 }
 
 local HUN_31M_105mm_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local HUN_31M_105mm_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "m31_105mmSmoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

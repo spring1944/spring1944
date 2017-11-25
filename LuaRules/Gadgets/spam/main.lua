@@ -194,6 +194,7 @@ function gadget:Initialize ()
     end
     if #ai_list == 0 then
         gadgetHandler:RemoveGadget ()
+        return
     end
     for index, unit in ipairs (config.build_order) do
         if UnitDefNames[unit[1]] == nil then

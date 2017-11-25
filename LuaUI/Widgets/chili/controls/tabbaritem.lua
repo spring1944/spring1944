@@ -28,3 +28,11 @@ function TabBarItem:MouseDown(...)
 end
 
 --//=============================================================================
+
+function TabBarItem:Remove()
+  if not self.parent then return end
+  self.parent:Remove(self.caption)
+  return self
+end
+
+--//=============================================================================

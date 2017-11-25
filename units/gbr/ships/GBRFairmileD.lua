@@ -1,16 +1,16 @@
 local GBR_FairmileD = ArmedBoat:New{
 	name					= "Fairmile D",
 	description				= "Motor Gun/Torpedo Boat",
-	acceleration			= 0.025,
+	acceleration			= 0.25,
 	brakeRate				= 0.01,
 	buildCostMetal			= 4000,
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 10400,
 	maxReverseVelocity		= 1.99,
-	maxVelocity				= 3.98,
+	maxVelocity				= 3.48, -- 29kn based on 0.12 maxspeed/maxkn
 	transportCapacity		= 7, -- 7 x 1fpu turrets
-	turnRate				= 240,	
+	turnRate				= 84,	
 	weapons = {	
 		[1] = {
 			name				= "QF6Pdr57MkIIAHE",
@@ -47,6 +47,7 @@ local GBR_FairmileD = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -70,6 +71,7 @@ local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
+
 	},
 }
 
@@ -84,12 +86,13 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 14,
+		maxammo					= 16,
 
 		barrelrecoildist		= 7,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
+
     },
 }
 local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
@@ -100,6 +103,7 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
 	},
 	customparams = {
 		facing				= 2,
+		defaultheading1			= math.rad(180),
     },
 }
 
@@ -119,7 +123,8 @@ local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-		facing					= 3,
+		facing				= 3,
+		defaultheading1			= math.rad(-90),
 	},
 }
 local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left:New{
@@ -130,6 +135,7 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 	},
 	customparams = {
 		facing					= 1,
+		defaultheading1				= math.rad(90),
 	},
 }
 
@@ -166,6 +172,7 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+
 	},
 }
 

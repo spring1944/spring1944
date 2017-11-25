@@ -20,6 +20,7 @@ local RUSBA64 = ArmouredCar:New{
 		armor_side			= 6,
 		armor_top			= 4,
 		maxvelocitykmh		= 80,
+		normaltex			= "unittextures/RUSBA64_normals.dds",
 	}
 }
 

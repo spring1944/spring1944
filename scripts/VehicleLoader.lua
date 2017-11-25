@@ -25,6 +25,13 @@ local function GetAimingPieces(unitID, pieceName, pieceMap)
 	return headingPiece, pitchPiece
 end
 
+local function GetTurretDefaultPositions(weaponNum)
+	local cp = UnitDefs[unitDefID].customParams
+	if cp then
+		return cp['defaultheading' .. weaponNum] or 0, cp['defaultpitch' .. weaponNum] or 0
+	end
+	return 0, 0
+end
 
 local info = GG.lusHelper[unitDefID]
 
@@ -38,6 +45,9 @@ local aimPieces = {}
 local reversedWeapons = {}
 local exhausts = {}
 local dusttrails = {}
+
+-- default position of the turret
+local turretDefaultPositions = {}
 
 -- Compositing
 local childrenPieces = {}
@@ -61,14 +71,19 @@ for pieceName, pieceNum in pairs(pieceMap) do
 	elseif pieceName:find("base") or pieceName:find("sleeve") or pieceName:find("turret") or pieceName:find("exhaust") then
 		smokePieces[#smokePieces + 1] = pieceNum
 	elseif pieceName:find("child") then
-		childrenPieces[#childrenPieces + 1] = pieceNum
+		-- can't just put them all in array as is, order matters here!
+		local _, endPos = pieceName:find("child")
+		local childNum = tonumber(pieceName:sub(endPos + 1))
+		childrenPieces[childNum] = pieceNum
 	end
 end
 
 local lastflare = pieceMap["flare"] and "flare"
 for weaponNum = 1,info.numWeapons do
 	if info.reloadTimes[weaponNum] then -- don't want any shields etc.
-		lastflare = pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum) or lastflare
+		-- Modified this to support boat turrets
+		lastflare = (pieceMap["flare_" .. weaponNum] and ("flare_" .. weaponNum)) or (pieceMap["flare" .. weaponNum] and ("flare" .. weaponNum)) or (pieceMap["r_rocket" .. weaponNum] and ("r_rocket" .. weaponNum)) or lastflare
+
 		cegPieces[weaponNum] = pieceMap[lastflare]
 		local headingPiece, pitchPiece = GetAimingPieces(unitID, lastflare, pieceMap)
 		aimPieces[weaponNum] = {headingPiece, pitchPiece}
@@ -80,6 +95,8 @@ for weaponNum = 1,info.numWeapons do
 			reversedWeapons[weaponNum] = true
 		end
 	end
+	local defaultHeading, defaultPitch = GetTurretDefaultPositions(weaponNum)
+	turretDefaultPositions[weaponNum] = {heading = defaultHeading, pitch = defaultPitch,}
 end
 
 info.numWheels = numWheels
@@ -93,6 +110,7 @@ info.reversedWeapons = reversedWeapons
 info.dustTrails = dusttrails
 info.exhausts = exhausts
 info.childrenPieces = childrenPieces
+info.turretDefaultPositions = turretDefaultPositions
 
 if info.customAnimsName then
 	info.customAnims = include("anims/vehicles/" .. info.customAnimsName .. ".lua")

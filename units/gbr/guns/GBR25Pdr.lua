@@ -3,6 +3,9 @@ local GBR_25Pdr_Truck = HGunTractor:New{
 	corpse					= "gbrmorrisquad_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 18,
+	customParams = {
+
+	},
 }
 
 local GBR_25Pdr_Stationary = HGun:New{
@@ -18,6 +21,9 @@ local GBR_25Pdr_Stationary = HGun:New{
 			name				= "qf25pdrsmoke",
 			maxAngleDif			= 50,
 		},
+	},
+	customParams = {
+
 	},
 }
 

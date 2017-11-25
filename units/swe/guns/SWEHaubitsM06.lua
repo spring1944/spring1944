@@ -4,6 +4,9 @@ local SWEHaubitsM06_Truck = HGunTractor:New{
 	buildCostMetal			= 2650,
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local SWEHaubitsM06_Stationary = HGun:New{
@@ -17,6 +20,9 @@ local SWEHaubitsM06_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "Type38150mmL11Smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

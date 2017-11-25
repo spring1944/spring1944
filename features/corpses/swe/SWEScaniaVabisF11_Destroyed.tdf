@@ -7,6 +7,10 @@
   footprintZ=2;
   object=SWE/SWEScaniaVabisF11_Dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 
 [SWEScaniaVabisF11_wreck] {
@@ -21,6 +25,7 @@
 	[customParams]
 		{
 		ceg_created=Burning;
+
 		}
 
 }
@@ -34,6 +39,10 @@
   footprintZ=2;
   object=SWE/SWEScaniaVabisF11_Dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 
 [swescaniavabisf11_barracks_destroyed] {
@@ -45,6 +54,10 @@
   footprintZ=2;
   object=SWE/SWEScaniaVabisF11_Barracks_Dead.s3o;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 
 [SWEScaniaVabisF11_Barracks_wreck] {
@@ -59,6 +72,7 @@
 	[customParams]
 		{
 		ceg_created=Burning;
+
 		}
 
 }

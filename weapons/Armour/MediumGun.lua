@@ -38,7 +38,6 @@ local QF17Pdr = MediumGun:New{
     weaponcost    = 19,
   },
 }
-
 local QF17PdrHE = MediumHE:New(QF17Pdr, true):New{
   areaOfEffect       = 90,
   weaponVelocity     = 1584,
@@ -56,7 +55,14 @@ local QF17PdrAP = MediumAP:New(QF17Pdr, true):New{
     default            = 2777,
   },
 }
-
+local QF17PdrMkVIHE = QF17PdrHE:New{
+  name               = [[QF 17Pdr Mk.VI]],
+  reloadTime         = 8.1,
+}
+local QF17PdrMkVIAP = QF17PdrAP:New{
+  name               = [[QF 17Pdr Mk.VI]],
+  reloadTime         = 8.1,
+}
 -- KwK 40 75mm L/48 (GER)
 local KwK75mmL48 = MediumGun:New{
   name               = [[7.5cm KwK 40 L/48]],
@@ -206,13 +212,13 @@ local M7 = MediumGun:New{
 
 local M7HE = MediumHE:New(M7, true):New{
   areaOfEffect       = 74,
-  weaponVelocity     = 1646,
+  weaponVelocity     = 1586,
   damage = {
     default            = 780,
   },  
 }
 local M7AP = MediumAP:New(M7, true):New{
-  weaponVelocity     = 1584, -- lower than HE?
+  weaponVelocity     = 1674, 
   customparams = {
     armor_penetration_1000m = 81,
     armor_penetration_100m  = 100,
@@ -220,6 +226,9 @@ local M7AP = MediumAP:New(M7, true):New{
   damage = {
     default            = 2646,
   },
+}
+local M7APe8 = M7AP:New{
+  movingaccuracy	= 350, -- HVSS buff
 }
 
 -- Mk22 3inch (USA)
@@ -253,8 +262,8 @@ local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
 }
 
 local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
-  range              = 851,
-  weaponVelocity     = 600,
+  accuracy	= 500,
+  weaponVelocity     = 750,
   customparams = {
     armor_penetration       = 90,
   },
@@ -302,8 +311,8 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
   },
 }
 local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
-  range              = 825,
-  weaponVelocity     = 700,
+  weaponVelocity     = 1358,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 120,
   },
@@ -332,7 +341,7 @@ local Ansaldo75mmL46HE = MediumHE:New(Ansaldo75mmL46, true):New{
 }
 
 local Ansaldo75mmL46AP = MediumAP:New(Ansaldo75mmL46, true):New{
-  weaponVelocity     = 1358,
+  weaponVelocity     = 1658,
   customparams = {
     armor_penetration_1000m = 90,
     armor_penetration_100m  = 118,
@@ -510,8 +519,8 @@ local Mavag_75_41MAP = MediumAP:New(Mavag_75_41M, true):New{
 
 -- 7,5 cm 42M páncélrobbantó gránát
 local Mavag_75_41MHEAT = HEAT:New(Mavag_75_41M, true):New{
-  range              = 851,
-  weaponVelocity     = 600,
+  weaponVelocity     = 1158,
+  accuracy	= 500,
   customparams = {
     armor_penetration       = 70,
   },
@@ -581,6 +590,8 @@ return lowerkeys({
   -- QF 17Pdr
   QF17PdrHE = QF17PdrHE,
   QF17PdrAP = QF17PdrAP,
+  QF17PdrMkVIHE = QF17PdrMkVIHE,
+  QF17PdrMkVIAP = QF17PdrMkVIAP,
   -- KwK 40 L/48
   KwK75mmL48HE = KwK75mmL48HE,
   KwK75mmL48AP = KwK75mmL48AP,
@@ -599,6 +610,7 @@ return lowerkeys({
   -- M7 76mm
   M7HE = M7HE,
   M7AP = M7AP,
+  M7APe8 = M7APe8,
   -- Mk22 3inch
   Mk223in50 = Mk223in50,
   -- Ansaldo L/18 75mm

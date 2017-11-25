@@ -139,6 +139,9 @@ Unit = Def:New{
 	objectName				= "<SIDE>/<NAME>.s3o",
 	buildPic				= "<NAME>.png",
 	script					= "<NAME>.cob",
+	customParams			= {
+		normaltex			= "",
+	},
 }
 
 Weapon = Def:New{

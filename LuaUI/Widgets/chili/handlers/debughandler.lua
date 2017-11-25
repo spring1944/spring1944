@@ -96,7 +96,7 @@ local function ChiliErrorHandler(msg,...)
 
       --// this also unloads all owned chili objects
       Spring.Log("Chili", "error", "Removed widget: " .. wname)
-      WG.RemoveWidget(w)
+      widgetHandler:RemoveWidget(w)
     else
       Spring.Log("Chili", "error", ("in `%s` (couldn't detect the owner widget): %s"):format(control.name, msg))
       Spring.Log("Chili", "error", DebugHandler.Stacktrace())
@@ -117,7 +117,7 @@ local function ChiliErrorHandler(msg,...)
     --// unload Chili to avoid error spam
     if (numChiliErrors>=DebugHandler.maxChiliErrors) then
       Spring.Log("Chili", "error", "Removed widget: " .. widget.whInfo.name)
-      WG.RemoveWidget(widget)
+      widgetHandler:RemoveWidget(widget)
     end
   end
 end

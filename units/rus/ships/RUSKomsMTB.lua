@@ -8,9 +8,9 @@ local RUS_KomsMTB = ArmedBoat:New{
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
 	maxDamage				= 2090,
 	maxReverseVelocity		= 2.4,
-	maxVelocity				= 4.8,
+	maxVelocity				= 5.78, -- 48kn
 	transportCapacity		= 2, -- 2 x 1fpu turrets
-	turnRate				= 350,	
+	turnRate				= 105,	
 	weapons = {	
 		[1] = {
 			name				= "dshk",
@@ -31,6 +31,7 @@ local RUS_KomsMTB = ArmedBoat:New{
 			["z"] = {angle = 15, speed = 10},
 		},
 		-- TODO: implement 'cruise mode' too
+
 	},
 }
 
@@ -54,6 +55,7 @@ local RUS_KomsMTB_Turret_DShK = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
 		facing					= 2,
+		defaultheading1		= math.rad(180),
 	},
 }
 

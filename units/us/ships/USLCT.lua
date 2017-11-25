@@ -9,7 +9,7 @@ local US_LCT = TankLandingCraft:New{
 	maxReverseVelocity		= 0.35,
 	maxVelocity				= 2,
 	transportMass			= 15000,
-	turnRate				= 140,	
+	turnRate				= 40,	
 	weapons = {	
 		[1] = {
 			name				= "Oerlikon20mmaa",
@@ -41,6 +41,7 @@ local US_LCT = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

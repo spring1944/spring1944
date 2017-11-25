@@ -5,6 +5,7 @@ local BombClass = Weapon:New{
 	collideFriendly    = true,
 	explosionSpeed     = 30,
 	explosionGenerator = [[custom:HE_XXLarge]],
+	fireTolerance	= 5000,
 	heightBoostFactor  = 0,
 	highTrajectory     = 0,
 	targetBorder	   = 0.6,
@@ -20,7 +21,7 @@ local BombClass = Weapon:New{
 	customparams = {
 		bomb               = true,
 		no_range_adjust    = true,
-		onlyTargetCategory = "HARDVEH OPENVEH SHIP LARGESHIP TURRET",
+		onlyTargetCategory = "BUILDING HARDVEH OPENVEH SHIP LARGESHIP TURRET",
 		badtargetcategory  = "SHIP LARGESHIP",
 		damagetype         = [[explosive]],
 	},

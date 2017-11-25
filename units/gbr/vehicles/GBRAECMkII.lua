@@ -32,6 +32,7 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		maxammo				= 10,
 		turretturnspeed		= 32, -- 11s for 360
 		maxvelocitykmh		= 66,
+		normaltex			= "unittextures/GBRAECMkII_normals.dds",
 	}
 }
 

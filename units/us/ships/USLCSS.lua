@@ -10,7 +10,7 @@ local US_LCSS = Boat:New{
 	maxVelocity				= 2,
 	movementClass			= "BOAT_LandingCraftSmall",
 	script					= "<NAME>.lua",
-	turnRate				= 180,	
+	turnRate				= 80,	
 	weapons = {	
 		[1] = {
 			name				= "BBR_Rack",
@@ -40,6 +40,7 @@ local US_LCSS = Boat:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},
+
 	},
 	--[[
 	sfxtypes = { -- remove once using LUS

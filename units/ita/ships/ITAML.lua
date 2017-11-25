@@ -8,7 +8,7 @@ local ITA_ML = InfantryLandingCraft:New{
 	maxVelocity				= 2.2,
 	transportCapacity		= 22,
 	transportMass			= 1300,
-	turnRate				= 100,	
+	turnRate				= 55,	
 	weapons = {	
 		[1] = {
 			name				= "BredaM1931AA",
@@ -31,6 +31,7 @@ local ITA_ML = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

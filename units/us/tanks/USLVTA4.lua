@@ -26,6 +26,7 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		maxvelocitykmh		= 40,
 		flagCapRate			= 0.5,
 		flagCapType			= 'buoy',
+		normaltex			= "unittextures/USLVTA4_normals.dds",
 	},
 }
 

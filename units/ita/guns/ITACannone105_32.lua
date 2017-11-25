@@ -4,6 +4,9 @@ local ITA_Cannone_105_32_Truck = LongRangeGunTractor:New{
 	buildCostMetal			= 3000,	-- this is the weakest long-ranged gun
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+
+	},
 }
 
 local ITA_Cannone_105_32_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local ITA_Cannone_105_32_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "Cannone105_32Smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 
