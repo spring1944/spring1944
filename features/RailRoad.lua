@@ -15,8 +15,8 @@ defs["RailStation_small"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 144 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 48 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 10,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,   -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,

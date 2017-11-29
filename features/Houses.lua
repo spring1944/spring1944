@@ -42,8 +42,8 @@ defs["HouseMansion"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 168 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 149 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 11,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 10,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -69,8 +69,8 @@ defs["HouseMedieval_001"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 69 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 40 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 4,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -95,8 +95,8 @@ defs["HouseMedieval_002"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 57 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 38 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 4,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -121,8 +121,8 @@ defs["HouseMedieval_003"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 69 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 44 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 5,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -147,8 +147,8 @@ defs["HouseMedieval_004"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 65 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 44 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 4,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -175,8 +175,8 @@ defs["Factory_SmokeStack"] = {
     metal           = 0,
     mass            = 30000,
     crushResistance = 3000,
-    footprintX  = 34 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 34 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 3,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -201,8 +201,8 @@ defs["Factory_001"] = {
     metal           = 0,
     mass            = 30000,
     crushResistance = 3000,
-    footprintX  = 100 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 53 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 7,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -227,8 +227,8 @@ defs["Factory_002"] = {
     metal           = 0,
     mass            = 30000,
     crushResistance = 3000,
-    footprintX  = 122 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 86 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -253,8 +253,8 @@ defs["Factory_003"] = {
     metal           = 0,
     mass            = 30000,
     crushResistance = 3000,
-    footprintX  = 122 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 86 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -284,8 +284,8 @@ defs["House_001"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 112 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 88 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -311,8 +311,8 @@ defs["House_002"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 136 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 64 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 9,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -338,8 +338,8 @@ defs["House_003"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 88 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 64 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 6,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -365,8 +365,8 @@ defs["House_004"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 136 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 88 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 9,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -392,8 +392,8 @@ defs["House_005"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 88 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 64 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 6,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -419,8 +419,8 @@ defs["House_006"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 112 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 88 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -446,8 +446,8 @@ defs["House_007"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 88 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 88 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 6,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -473,8 +473,8 @@ defs["House_008"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 136 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 64 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 9,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -500,8 +500,8 @@ defs["House_009"] = {
     metal           = 0,
     mass            = 50000,
     crushResistance = 5000,
-    footprintX  = 136 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 88 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 9,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -514,6 +514,114 @@ defs["House_009"] = {
     },
 }
 
+
+defs["House_010"] = {
+    description    = "House_010",
+    object         = "Features/House_010.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 500000,
+    metal           = 0,
+    mass            = 50000,
+    crushResistance = 5000,
+    footprintX  = 9,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {136, 84, 64},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesHouseNormal_127.png",
+    },
+}
+
+defs["House_011"] = {
+    description    = "House_011",
+    object         = "Features/House_011.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 500000,
+    metal           = 0,
+    mass            = 50000,
+    crushResistance = 5000,
+    footprintX  = 6,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {88, 75, 64},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesHouseNormal_166.png",
+    },
+}
+
+defs["House_012"] = {
+    description    = "House_012",
+    object         = "Features/House_012.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 500000,
+    metal           = 0,
+    mass            = 50000,
+    crushResistance = 5000,
+    footprintX  = 6,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {88, 83, 64},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesHouseNormal_098.png",
+    },
+}
+
+defs["House_013"] = {
+    description    = "House_013",
+    object         = "Features/House_013.dae",
+    blocking       = true,
+    burnable       = false,
+    reclaimable    = false,
+    noSelect       = false,
+    indestructible = true,
+    energy          = 0,
+    damage          = 500000,
+    metal           = 0,
+    mass            = 50000,
+    crushResistance = 5000,
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
+    upright =  true,
+    floating = false,
+    collisionVolumeTest = 1,
+    collisionVolumeType = "box",
+    collisionVolumeScales = {112, 91, 64},
+    collisionVolumeOffsets = {0, 0, 0},
+    customParams = {
+        mod       = true,
+        normaltex = "unittextures/FeaturesHouseNormal_008.png",
+    },
+}
 
 
 return lowerkeys( defs )

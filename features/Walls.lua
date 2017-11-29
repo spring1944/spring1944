@@ -15,8 +15,8 @@ wallDefs["WallRedBricks"] = {
     metal           = 0,
     mass            = 40,
     crushResistance = 14,
-    footprintX  = 1,
-    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
+    footprintX  = 2,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -42,8 +42,8 @@ wallDefs["WallRedBricks_Large"] = {
     metal           = 0,
     mass            = 40,
     crushResistance = 14,
-    footprintX  = 1,
-    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
+    footprintX  = 2,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -96,8 +96,8 @@ wallDefs["WallFortress"] = {
     metal           = 0,
     mass            = 5000,
     crushResistance = 100,
-    footprintX  = 1,
-    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
+    footprintX  = 2,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -123,8 +123,8 @@ wallDefs["WallFortress_door"] = {
     metal           = 0,
     mass            = 5000,
     crushResistance = 100,
-    footprintX  = 1,
-    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
+    footprintX  = 2,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 6,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -150,8 +150,8 @@ wallDefs["WallFortress_corner"] = {
     metal           = 0,
     mass            = 5000,
     crushResistance = 100,
-    footprintX  = 2,
-    footprintZ  = 2,  -- 1 footprint unit = 16 elmo
+    footprintX  = 3,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 3,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,

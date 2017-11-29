@@ -16,8 +16,8 @@ defs["Silo"] = {
     metal           = 0,
     mass            = 30000,
     crushResistance = 3000,
-    footprintX  = 36 / 16,  -- 1 footprint unit = 16 elmo
-    footprintZ  = 36 / 16,  -- 1 footprint unit = 16 elmo
+    footprintX  = 4,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 4,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -43,8 +43,8 @@ defs["Storage_001"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 98 / 16,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 55 / 16,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -70,8 +70,8 @@ defs["Storage_002"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 98 / 16,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 55 / 16,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 8,  -- 1 footprint unit = 16 elmo
+    footprintZ  = 5,  -- 1 footprint unit = 16 elmo
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -97,8 +97,8 @@ defs["Storage_Open"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -124,8 +124,8 @@ defs["Storage_Open_002"] = {
     metal           = 0,
     mass            = 10000,
     crushResistance = 1000,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -151,8 +151,8 @@ defs["Crate_001"] = {
     metal           = 0,
     mass            = 1000,
     crushResistance = 10,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -178,8 +178,8 @@ defs["Crate_002"] = {
     metal           = 0,
     mass            = 1000,
     crushResistance = 10,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -205,8 +205,8 @@ defs["Crates_001"] = {
     metal           = 0,
     mass            = 1000,
     crushResistance = 10,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -232,8 +232,8 @@ defs["Crates_002"] = {
     metal           = 0,
     mass            = 1000,
     crushResistance = 10,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
@@ -259,8 +259,8 @@ defs["Crates_003"] = {
     metal           = 0,
     mass            = 1000,
     crushResistance = 10,
-    footprintX  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
-    footprintZ  = 1,  -- 1 footprint unit = 16 elmo (no blocking)
+    footprintX  = 1,  -- (no blocking)
+    footprintZ  = 1,  -- (no blocking)
     upright =  true,
     floating = false,
     collisionVolumeTest = 1,
