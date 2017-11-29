@@ -50,10 +50,10 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="FeaturesHouse_007_png-sampler"/>
+              <texture texture="FeaturesHouse_007_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <texture texture="FeaturesHouseSpecular_007_png-sampler"/>
+              <texture texture="FeaturesHouseSpecular_007_png-sampler" texcoord="UVMap"/>
             </specular>
             <shininess>
               <float sid="shininess">50</float>
