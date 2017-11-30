@@ -58,7 +58,7 @@ local Ansaldo105mmL25HE = HeavyHE:New(Ansaldo105mmL25, true):New{
 }
 
 local Ansaldo105mmL25HEAT = HeavyHEAT:New(Ansaldo105mmL25, true):New{
-  accuracy	= 700,
+  accuracy	= 500,
   weaponVelocity     = 600,
   customparams = {
     armor_penetration       = 140,
@@ -88,7 +88,7 @@ local Mavag_105_4043MHE = HeavyHE:New(Mavag_105_4043M, true):New{
 }
 
 local Mavag_105_4043MHEAT = HeavyHEAT:New(Mavag_105_4043M, true):New{
-  accuracy	= 700,
+  accuracy	= 500,
   weaponVelocity     = 600,
   customparams = {
     armor_penetration       = 90,

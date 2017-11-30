@@ -43,8 +43,8 @@ local HUN40MTuran = MediumTank:New{
 local HUN41MTuranII = HUN40MTuran:New{
 	name				= "41.M Turan II",
 	corpse				= "HUN41MTuranII_Abandoned",
-	buildCostMetal		= 2550,
-	maxDamage			= 1900,
+	buildCostMetal		= 2422,
+	maxDamage			= 1920,
 
 	weapons = {
 		[1] = {
@@ -53,19 +53,24 @@ local HUN41MTuranII = HUN40MTuran:New{
 			maxAngleDif			= 210,
 		},
 		[2] = {
+			name				= "Mavag_75_41MAP",
+			mainDir				= [[0 16 1]],
+			maxAngleDif			= 210,
+		},
+		[3] = {
 			name				= "Mavag_75_41MHE",
 			mainDir				= [[0 16 1]],
 			maxAngleDif			= 210,
 		},
 		-- in theory the MG was changed to 1934/40.M, in practice I don't know if it was any different
-		[3] = { -- coax 1
+		[4] = { -- coax 1
 			name				= "gebauer_1934_37m",
 		},
-		[4] = { -- bow mg
+		[5] = { -- bow mg
 			name				= "gebauer_1934_37m",
 			maxAngleDif			= 30,
 		},
-		[5] = {
+		[6] = {
 			name				= ".50calproof",
 		},	
 	},
@@ -77,7 +82,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-
+		weapontoggle		= "priorityAPHEATHE",
 	},
 }
 
