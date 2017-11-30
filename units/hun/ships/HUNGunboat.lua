@@ -17,7 +17,7 @@ local HUN_Debrecen = ArmedBoat:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "Mavag_75_43MHE",
+			name				= "Mavag_75_41MHE",
 		},
 	},
 	customparams = {
@@ -45,12 +45,13 @@ local HUNGunboat_turret_75mm_front = EnclosedBoatTurret:New{
 	objectName				= "<SIDE>/HUNGunboat_turret_75mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "Mavag_75_43MHE",
+			name				= "Mavag_75_41MHE",
+			maxAngleDif			= 300,
 		},
 
 	},
 	customparams = {
-		maxammo					= 6,
+		maxammo					= 12,
 		barrelrecoildist		= 2,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
@@ -67,6 +68,7 @@ local HUNGunboat_turret_75mm_rear = HUNGunboat_turret_75mm_front:New{
 	},
 	customparams = {
 		facing				= 2,
+		defaultheading1		= math.rad(180),
 
 	}
 }
