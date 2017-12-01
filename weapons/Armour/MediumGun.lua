@@ -498,10 +498,10 @@ local Mavag_75_41M = MediumGun:New{
 }
 
 local Mavag_75_41MHE = MediumHE:New(Mavag_75_41M, true):New{
-  areaOfEffect       = 88,
+  areaOfEffect       = 91,
   weaponVelocity     = 926,
   damage = {
-    default            = 1334,
+    default            = 1534,
   },  
 }
 
