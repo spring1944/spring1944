@@ -258,12 +258,13 @@ local TwinType9625mmHE = Type9625mmHE:New{
 -- Vehicle solothurn as used by Hungary
 local Solothurn_36MAP = AutoCannonAP:New{
 	accuracy           = 300,
-	burst              = 1,
-	burstRate          = 0.1,
+	burst              = 3,
+	burstRate          = 0.4,
 	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
 	range              = 800,
-	reloadTime         = 4,
+	reloadTime         = 4.4,
 	soundStart         = [[ITA_Solothurn]],
+	SoundTrigger	= false,
 	weaponVelocity     = 1600,
 	customparams = {
 		armor_penetration_1000m = 16,
@@ -272,18 +273,19 @@ local Solothurn_36MAP = AutoCannonAP:New{
 		immobilizationchance = 0.5,	-- medium
 	},
 	damage = {
-		default            = 402,
+		default            = 201,
 	},
 }
 
 local Solothurn_36MHE = AutoCannonHE:New{
 	accuracy           = 300,
-	burst              = 1,
-	burstRate          = 0.1,
+	burst              = 3,
+	burstRate          = 0.4,
 	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
 	range              = 800,
-	reloadTime         = 4,
+	reloadTime         = 4.4,
 	soundStart         = [[ITA_Solothurn]],
+	SoundTrigger	= false,
 	weaponVelocity     = 1600,
 	customparams = {
 		weaponcost				= 1,
