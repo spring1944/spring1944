@@ -159,7 +159,7 @@ local BoforsM40_20mm = AutoCannon:New{
 	reloadTime         = 2.2,
 	soundStart         = [[GER_20mm]],
 	sprayAngle         = 300,
-	weaponVelocity     = 2100,
+	weaponVelocity     = 1900,
 	damage = {
 		default            = 121,
 	},
@@ -180,8 +180,8 @@ local BoforsM40_20mmHE = AutoCannonHE:New(BoforsM40_20mm, true):New{
 }
 
 local BoforsM40_20mmAP = AutoCannonAP:New(BoforsM40_20mm, true):New{
-	sprayAngle         = 400,
-	weaponVelocity     = 1560,
+	sprayAngle         = 200,
+	weaponVelocity     = 2060,
 	customparams = {	-- data taken from http://www.jaegerplatoon.net/AT_GUNS1.htm
 		armor_penetration_1000m = 10,
 		armor_penetration_100m  = 32,
