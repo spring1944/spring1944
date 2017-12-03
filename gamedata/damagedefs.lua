@@ -103,9 +103,9 @@ local damagedefs = {
     armouredvehicles = 1,
     lightbuildings = 2/3,
     guns = 3/4,
-    lighttanks = 1/3,
-	mediumtanks = 1/3,
-	heavytanks = 1/3,
+    lighttanks = 2/5,
+	mediumtanks = 2/5,
+	heavytanks = 1/2,
     invincible = 0,
   },
 }

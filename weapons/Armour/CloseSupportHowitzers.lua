@@ -64,7 +64,7 @@ local Ansaldo105mmL25HEAT = HeavyHEAT:New(Ansaldo105mmL25, true):New{
     armor_penetration       = 140,
   },
   damage = {
-    default            = 3790,
+    default            = 3608,
   },
 }
 
@@ -83,7 +83,7 @@ local Mavag_105_4043MHE = HeavyHE:New(Mavag_105_4043M, true):New{
   areaOfEffect       = 129,
   weaponVelocity     = 900,
   damage = {
-    default            = 4009,
+    default            = 4200,
   },  
 }
 
