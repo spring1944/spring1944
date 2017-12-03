@@ -105,7 +105,7 @@ local damagedefs = {
     guns = 3/4,
     lighttanks = 2/5,
 	mediumtanks = 2/5,
-	heavytanks = 1/2,
+	heavytanks = 2/5,
     invincible = 0,
   },
 }
