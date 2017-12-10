@@ -6,6 +6,7 @@ local RUS_KomsMTB = ArmedBoat:New{
 	buildCostMetal			= 1350,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
+	movementClass			= "BOAT_RiverSmall",
 	maxDamage				= 2090,
 	maxReverseVelocity		= 2.4,
 	maxVelocity				= 5.78, -- 48kn

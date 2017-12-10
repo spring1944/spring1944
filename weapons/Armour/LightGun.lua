@@ -204,7 +204,7 @@ local CannoneDa47mml40HEAT = HEAT:New(CannoneDa47mml40, true):New{
     armor_penetration       = 115,
   },
   damage = {
-    default            = 1048,
+    default            = 980,
   },
 }
 

@@ -159,7 +159,7 @@ local BoforsM40_20mm = AutoCannon:New{
 	reloadTime         = 2.2,
 	soundStart         = [[GER_20mm]],
 	sprayAngle         = 300,
-	weaponVelocity     = 2100,
+	weaponVelocity     = 1900,
 	damage = {
 		default            = 121,
 	},
@@ -180,8 +180,8 @@ local BoforsM40_20mmHE = AutoCannonHE:New(BoforsM40_20mm, true):New{
 }
 
 local BoforsM40_20mmAP = AutoCannonAP:New(BoforsM40_20mm, true):New{
-	sprayAngle         = 400,
-	weaponVelocity     = 1560,
+	sprayAngle         = 200,
+	weaponVelocity     = 2060,
 	customparams = {	-- data taken from http://www.jaegerplatoon.net/AT_GUNS1.htm
 		armor_penetration_1000m = 10,
 		armor_penetration_100m  = 32,
@@ -258,12 +258,13 @@ local TwinType9625mmHE = Type9625mmHE:New{
 -- Vehicle solothurn as used by Hungary
 local Solothurn_36MAP = AutoCannonAP:New{
 	accuracy           = 300,
-	burst              = 1,
-	burstRate          = 0.1,
+	burst              = 3,
+	burstRate          = 0.4,
 	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
 	range              = 800,
-	reloadTime         = 4,
+	reloadTime         = 4.4,
 	soundStart         = [[ITA_Solothurn]],
+	SoundTrigger	= false,
 	weaponVelocity     = 1600,
 	customparams = {
 		armor_penetration_1000m = 16,
@@ -272,18 +273,19 @@ local Solothurn_36MAP = AutoCannonAP:New{
 		immobilizationchance = 0.5,	-- medium
 	},
 	damage = {
-		default            = 402,
+		default            = 201,
 	},
 }
 
 local Solothurn_36MHE = AutoCannonHE:New{
 	accuracy           = 300,
-	burst              = 1,
-	burstRate          = 0.1,
+	burst              = 3,
+	burstRate          = 0.4,
 	name               = [[Solothurn S-18/100 Anti-Tank Rifle]],
 	range              = 800,
-	reloadTime         = 4,
+	reloadTime         = 4.4,
 	soundStart         = [[ITA_Solothurn]],
+	SoundTrigger	= false,
 	weaponVelocity     = 1600,
 	customparams = {
 		weaponcost				= 1,

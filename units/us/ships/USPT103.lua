@@ -4,6 +4,7 @@ local US_PT103 = ArmedBoat:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 1785,
+	movementClass			= "BOAT_RiverSmall",
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 4000,

@@ -14,11 +14,11 @@ local SWEPvLvM40_AT_Stationary = LightATGun:New{
 	weapons = {
 		[1] = { -- AP
 			name				= "boforsm40_20mmap", 
-			maxAngleDif			= 32,
+			maxAngleDif			= 70,
 		},
 		[2] = { -- HE
 			name				= "boforsm40_20mmhe", 
-			maxAngleDif			= 32,
+			maxAngleDif			= 70,
 		},
 	},
 }
