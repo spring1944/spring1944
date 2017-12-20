@@ -8,7 +8,7 @@ local AP = Weapon:New{
 	customparams = {
 		damagetype         = "kinetic",
 		onlytargetcategory = "SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP TURRET",
-		badtargetcategory  = "SOFTVEH",
+		badtargetcategory  = "SOFTVEH TURRET",
 	},  
 }
 
@@ -68,6 +68,7 @@ local HE = Weapon:New{
 	soundHitDry        = "GEN_Explo_2",
 	customparams = {
 		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
+		badtargetcategory  = "HARDVEH",
 		damagetype         = "explosive",
 		fearid             = 301,
 	},

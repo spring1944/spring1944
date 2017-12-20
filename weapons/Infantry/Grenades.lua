@@ -84,10 +84,11 @@ local BredaMod42 = ATGrenadeClass:New{
   weaponVelocity     = 420,
   reloadtime         = 9,
   damage = {
-    default            = 2780,
+    default            = 1390,
   },
     customparams = {
-    damagetype         = [[explosive]],
+    armor_penetration  = 52,
+    damagetype         = [[fire]],
     howitzer	= true,
   },
 }
@@ -99,10 +100,11 @@ local L_type_grenade = ATGrenadeClass:New{
   weaponVelocity     = 380,
   reloadtime         = 12, 
   damage = {
-    default            = 4080,
+    default            = 2040,
   },
     customparams = {
-    damagetype         = [[explosive]],
+    armor_penetration  = 59,
+    damagetype         = [[fire]],
     howitzer	= true,
   },
 }
