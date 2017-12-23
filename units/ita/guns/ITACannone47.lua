@@ -1,6 +1,6 @@
 local ITA_Cannone47_Truck = ATGunTractor:New{
 	name					= "Towed Cannone da 47/32",
-	buildCostMetal			= 400,
+	buildCostMetal			= 360,
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
 	trackOffset				= 5,
 	trackWidth				= 12,
