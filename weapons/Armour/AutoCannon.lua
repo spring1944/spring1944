@@ -237,7 +237,7 @@ local Type9625mm = AutoCannon:New{
 local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
   range              = 1620,
   damage = {
-    default            = 55,
+    default            = 155,
   },
 }
 

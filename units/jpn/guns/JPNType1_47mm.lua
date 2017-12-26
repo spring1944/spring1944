@@ -11,6 +11,7 @@ local JPN_Type1_47mm_Truck = ATGunTractor:New{
 
 local JPN_Type1_47mm_Stationary = LightATGun:New{
 	name					= "Deployed Type 1 47mm Gun",
+	buildCostMetal			= 360,
 	corpse					= "JPNType1_47mm_destroyed",
 	minCloakDistance = 160,
 	weapons = {

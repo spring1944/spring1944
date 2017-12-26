@@ -11,6 +11,7 @@ local ITA_Cannone47_Truck = ATGunTractor:New{
 
 local ITA_Cannone47_Stationary = LightATGun:New{
 	name					= "Deployed Cannone da 47/32",
+	buildCostMetal			= 360,
 	corpse					= "ITACannone47_destroyed",
 	minCloakDistance = 160,
 	cloakTimeout = 64,

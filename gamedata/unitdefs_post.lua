@@ -121,12 +121,12 @@ for name, ud in pairs(UnitDefs) do
 	--index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
 	local detection = {
 		BUILDING    = {300, 2000, 650, 0},
-		INFANTRY    = {650, 2000, 650, 1400},
-		SOFTVEH     = {200, 2000, 950, 0},
-		OPENVEH     = {150, 2000, 950, 0},
+		INFANTRY    = {650, 1500, 650, 1400},
+		SOFTVEH     = {200, 1500, 950, 0},
+		OPENVEH     = {150, 1500, 950, 0},
 		HARDVEH     = {125, 1000, 650, 0},
-		SHIP        = {400, 2500, 950, 0},
-		DEPLOYED    = {650, 2000, 650, 1400},
+		SHIP        = {500, 1500, 950, 0},
+		DEPLOYED    = {650, 1500, 650, 1400},
 	}
 
 	--set detection values per unit category (with some special casing for
