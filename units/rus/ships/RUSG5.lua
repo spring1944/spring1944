@@ -4,6 +4,7 @@ local RUS_G5 = ArmedBoat:New{
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1700,
+	stealth			= true,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
 	maxDamage				= 1500,

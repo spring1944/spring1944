@@ -14,7 +14,7 @@ local US_LCSL = ArmedBoat:New{
 	turnRate				= 70,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "mk223in50",
+			name				= "mk223in50ap",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
 	},
@@ -115,7 +115,10 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 		[1] = {
 			maxAngleDif			= 270,
 			name				= "mk223in50",
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		},
+		[2] = {
+			maxAngleDif			= 270,
+			name				= "mk223in50ap",
 		},
 	},
 	customparams = {
