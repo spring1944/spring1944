@@ -17,7 +17,10 @@ local AreTeamsAllied			= Spring.AreTeamsAllied
 local GetFeatureDefID			= Spring.GetFeatureDefID
 local GetFeaturePosition		= Spring.GetFeaturePosition
 local GetGroundHeight			= Spring.GetGroundHeight
-local GetGroundInfo				= Spring.GetGroundInfo
+-- 104.0.1: Spring.GetGroundInfo returns different values. Better using
+-- Spring.GetMetalAmount
+-- local GetGroundInfo				= Spring.GetGroundInfo
+local GetMetalAmount			= Spring.GetMetalAmount
 local GetUnitsInCylinder		= Spring.GetUnitsInCylinder
 local GetUnitPosition			= Spring.GetUnitPosition
 local GetUnitTeam				= Spring.GetUnitTeam
@@ -149,7 +152,9 @@ local function AnalyzeMetalMap()
 		for mz_i = 1, MAP_HEIGHT do
 			local mx = mx_i * GRID_SIZE
 			local mz = mz_i * GRID_SIZE
-			local _, curMetal = GetGroundInfo(mx, mz)
+			-- 104.0.1: Spring.GetGroundInfo returns different values. Better
+			-- using Spring.GetMetalAmount
+			local curMetal = GetMetalAmount(mx, mz)
 			totalMetal = totalMetal + curMetal
 			--curMetal = floor(curMetal * 100)
 			metalMap[mx_i][mz_i] = curMetal
