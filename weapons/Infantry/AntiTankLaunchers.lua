@@ -68,7 +68,21 @@ local Type4AT = Rocket_ATLClass:New{
     armor_penetration  = 104,
   },
   damage = {
-    default            = 5120,
+    default            = 5820,
+  },
+}
+
+-- 44M kézi rakétavetõ
+local Raketaveto44M = Rocket_ATLClass:New{
+  name               = [[44M kézi rakétavetőkén]],
+  range              = 260,
+  soundStart         = [[GER_Panzerschrek]],
+  targetMoveError    = 0.01,
+  customparams = {
+    armor_penetration  = 101,
+  },
+  damage = {
+    default            = 5320,
   },
 }
 
@@ -77,7 +91,7 @@ local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
 	name			= [[215mm 44M Buzogány]],
 	range			= 600,
 	burst			= 2,
-	startVelocity     = 320,
+	startVelocity     = 420,
 	burstRate		= 0.8,
 	soundStart		= [[US_Bazooka]],
 	customparams = {
@@ -99,4 +113,5 @@ return lowerkeys({
   M9A1Bazooka = M9A1Bazooka,
   Type4AT = Type4AT,
   Buzoganyveto44MHEAT = Buzoganyveto44MHEAT,
+  Raketaveto44M = Raketaveto44M,
 })
