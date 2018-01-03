@@ -34,6 +34,10 @@ local buoyDefID               = UnitDefNames["buoy"].id
 --------------------------------------------- Code ----------------------------------------------
 -------------------------------------------------------------------------------------------------
 
+if not fontHandler then
+    fontHandler = VFS.Include("LuaUI/modfonts.lua")
+end
+
 -- generate a new production string (to be drawn on map) for every flag
 local function GenNewFlagProdString(flagID)
    local newprod = GetUnitRulesParam(flagID, "production")
