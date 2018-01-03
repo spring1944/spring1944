@@ -110,7 +110,7 @@ local hunDefs = {
 		},
 		name = "Anti-Tank Squad",
 		description = "2 x Panzerfaust, 1 x Panzerschrek: Anti-Tank Infantry",
-		buildCostMetal = 450,
+		buildCostMetal = 350,
 		buildPic = "HUNPanzerfaust.png",
 	},
 
