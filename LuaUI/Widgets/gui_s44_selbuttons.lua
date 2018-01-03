@@ -473,7 +473,14 @@ function widget:DrawScreen()
 	end
 	glColor(1,1,1,1)
 	-- draw the highlights
-	if (not widgetHandler:InTweakMode() and (mouseIcon >= 0)) then
+	-- 104 bug: attempt to call method 'InTweakMode' (a nil value)
+	local inTweak
+	if widgetHandler.InTweakMode then
+		inTweak = widgetHandler:InTweakMode()
+	else
+		inTweak = widgetHandler.tweakMode
+	end
+	if (not inTweak and (mouseIcon >= 0)) then
 		if (lb or mb or rb) then
 			DrawIconQuad(mouseIcon, { 1, 0, 0, 0.333 })  --  red highlight
 		else

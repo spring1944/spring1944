@@ -514,7 +514,14 @@ end
 --]]
 
 function widget:DrawWorld()
-	if widgetHandler:InTweakMode() then return -1 end
+	-- 104 bug: attempt to call method 'InTweakMode' (a nil value)
+	local inTweak
+	if widgetHandler.InTweakMode then
+		inTweak = widgetHandler:InTweakMode()
+	else
+		inTweak = widgetHandler.tweakMode
+	end
+	if inTweak then return -1 end
 
 	local x,y,_,_,_ = GetMouseState()
 	local iconNum = MouseOverIcon(x, y)
