@@ -237,22 +237,22 @@ local Type9625mm = AutoCannon:New{
 local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
   range              = 1620,
   damage = {
-    default            = 55,
+    default            = 155,
   },
 }
 
 local TwinType9625mmAA = Type9625mmAA:New{
-	burst            = 36,
+	burst            = 10,
 	burstrate        = 0.12,
-    reloadtime       = 6.5,
+    reloadtime       = 3.5,
 }
 
 local Type9625mmHE = AutoCannonHE:New(Type9625mm, true)
 
 local TwinType9625mmHE = Type9625mmHE:New{
-	burst            = 36,
+	burst            = 10,
 	burstrate        = 0.12,
-    reloadtime       = 6.5,
+    reloadtime       = 3.5,
 }
 
 -- Vehicle solothurn as used by Hungary

@@ -194,6 +194,8 @@ local jpnunits =
 		"jpntypeno1auxsc",
 		"jpnabtei",
 		"jpnt14",
+		"jpnkatsu",
+		"jpnkami",
 	},
 	jpnboatyardlarge =
 	{
@@ -204,6 +206,8 @@ local jpnunits =
 		"jpntypeno1auxsc",
 		"jpnabtei",
 		"jpnt14",
+		"jpnkatsu",
+		"jpnkami",
 		"jpnseta",
 		"jpnbusoudaihatsu",
 	},
