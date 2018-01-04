@@ -111,6 +111,7 @@ local extraUnitMorphDefs = {} -- stores mainly planetwars morphs
 local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
+local postMorphSpawns = {} -- unitID => postMorphData, until https://springrts.com/mantis/view.php?id=5862 change anything
 
 local upgradeDefs = {} -- mapping between the auto generated units and the morph defs.
 local upgradeUnits = {} -- similar to morphUnits, all factories being upgraded at the moment. made global in Initialize()
@@ -365,36 +366,6 @@ local function AddExtraUnitMorph(unitID, unitDef, teamID, morphDef)  -- adds ext
 end
 
 
-
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
-
-local function ReAssignAssists(newUnit,oldUnit)
-  -- this function is nuts, it iterates every command in the command queue...
-  -- ...of every allied unit, looking for guard commands
-  -- Make it a no-op for now
-  --[[
-  local ally = Spring.GetUnitAllyTeam(newUnit)
-  local alliedTeams = Spring.GetTeamList(ally)
-  for n=1,#alliedTeams do
-    local teamID = alliedTeams[n]
-    local alliedUnits = Spring.GetTeamUnits(teamID)
-    for i=1,#alliedUnits do
-      local unitID = alliedUnits[i]
-      local cmds = Spring.GetCommandQueue(unitID)
-      for j=1,#cmds do
-        local cmd = cmds[j]
-        if (cmd.id == CMD.GUARD)and(cmd.params[1] == oldUnit) then
-          Spring.GiveOrderToUnit(unitID,CMD.INSERT,{cmd.tag,CMD.GUARD,0,newUnit},{})
-          Spring.GiveOrderToUnit(unitID,CMD.REMOVE,{cmd.tag},{})
-        end
-      end
-    end
-  end]]
-end
-
-
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -473,64 +444,61 @@ local function StopMorph(unitID, morphData)
   end
 end
 
-function TransferFactoryQueues(srcUnitID, dstUnitID, dstUnitDef)
-  local queue = Spring.GetFullBuildQueue(srcUnitID)
-  local dstCanBuild = {}
-  for _, unitDefID in ipairs(dstUnitDef.buildOptions) do
-    dstCanBuild[unitDefID] = true
-  end
-  
-  
-  if queue and dstCanBuild then
-    for _,buildPair in ipairs(queue) do
-      local unitDefID, count = next(buildPair, nil)
-      if dstCanBuild[unitDefID] then
-        for i = 1, count do
-          Spring.GiveOrderToUnit(dstUnitID,CMD.INSERT,{-1,-unitDefID, 0},{"ctrl", "alt"})
-        end
-      end
-    end
-  end
+--[[
+following function new logic:
 
-  queue = Spring.GetCommandQueue(srcUnitID)
-  if queue ~= nil then
-    for _, cmd in ipairs(queue) do
-      if not isAMorphCmdID[cmd.id] then
-        local opts = cmd.options 
-        local alt, ctrl, shift, right = opts.alt, opts.ctrl, opts.shift, opts.right
-        opts = {(alt and "alt"), (shift and "shift"), (ctrl and "ctrl"), (right and "right")}
-        Spring.GiveOrderToUnit(dstUnitID, cmd.id, cmd.params, opts)
-      end
-    end
-  end
-  
-end
+* GET info1
+* GET info2
+* ...
+* GET infoN
+
+* UNLOAD units from transport
+
+* DELETE unit
+* pack all to new morphData
+
+spawning moved away and works next way: 
+
+* call CreateMorphedUnit(morphData) in next frame once unitID is unblocked by the engine
+* CREATE "newUnitID" with same "unitID"
+
+* SET info1
+* SET info2
+* ...
+* SET infoN
+
+]]--
 
 local function FinishMorph(unitID, morphData)
-  local udDst = UnitDefs[morphData.def.into]
-  local ud = UnitDefs[Spring.GetUnitDefID(unitID)]
-  local defName = udDst.name
+  local unitDefAfterMorph = UnitDefs[morphData.def.into]
+  local unitDefBeforeMorph = UnitDefs[Spring.GetUnitDefID(unitID)]
+  local unitDefNameAfterMorph = unitDefAfterMorph.name
   local unitTeam = morphData.teamID
   local px, py, pz = Spring.GetUnitBasePosition(unitID)
   local h = Spring.GetUnitHeading(unitID)
+  local unitDefIDBeforeMorph = Spring.GetUnitDefID(unitID)
   Spring.SetUnitBlocking(unitID, false)
   morphUnits[unitID] = nil
   upgradeUnits[unitID] = nil
 
-  local oldHealth,oldMaxHealth,paralyzeDamage,captureProgress,buildProgress = Spring.GetUnitHealth(unitID)
+  -- GET health
+  local oldHealth, oldMaxHealth, paralyzeDamage, captureProgress, buildProgress = Spring.GetUnitHealth(unitID)
   local isBeingBuilt = false
   if buildProgress < 1 then
     isBeingBuilt = true
   end
-  local newUnit
-  if udDst.speed == 0 and udDst.isBuilder or defName == "russtorage" then
-  --if udDst.isBuilding then
-	local x = math.floor(px/16)*16
-	local y = py
-	local z = math.floor(pz/16)*16
-	local face = HeadingToFacing(h)
-	local xsize = udDst.xsize
-	local zsize =(udDst.zsize or udDst.ysize)	
+  
+  -- GET position, rotation, etc.
+  local x, y, z, face, xsize, zsize, face  
+  if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
+  --if unitDefAfterMorph.isBuilding then
+	x = math.floor(px/16)*16
+	y = py
+	z = math.floor(pz/16)*16
+	face = HeadingToFacing(h)
+	xsize = unitDefAfterMorph.xsize
+	zsize =(unitDefAfterMorph.zsize or unitDefAfterMorph.ysize)
+	
 	if ((face == 1) or(face == 3)) then
 	  xsize, zsize = zsize, xsize
 	end	
@@ -540,44 +508,21 @@ local function FinishMorph(unitID, morphData)
 	if zsize/4 ~= math.floor(zsize/4) then
 	  z = z+8
 	end	
-	newUnit = Spring.CreateUnit(defName, x, y, z, face, unitTeam, isBeingBuilt)
-	if newUnit ~= nil then
-	  Spring.SetUnitPosition(newUnit, x, y, z)
-	end
-  else
-	newUnit = Spring.CreateUnit(defName, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt)
-	if newUnit ~= nil then
-	  Spring.SetUnitRotation(newUnit, 0, -h * math.pi / 32768, 0)
-	  Spring.SetUnitPosition(newUnit, px, py, pz)
-	end
-  end  
-
-  -- hit a unitLimit or something. bail out.
-  if newUnit == nil then
-    return
   end
   
-  if (udDst.customParams.maxammo) then
-	local ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
-	Spring.SetUnitRulesParam(newUnit, "ammo", ammoLevel)
-
-	local weapon1 = UnitDefs[Spring.GetUnitDefID(unitID)].weapons[1]
-	if (weapon1) then
-		Spring.SetUnitRulesParam(newUnit, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
-	end
+  -- GET ammo and weapon state
+  local ammoLevel
+  if (unitDefAfterMorph.customParams.maxammo) then
+	ammoLevel = Spring.GetUnitRulesParam(unitID, "ammo") or 0
   end
-	
-  if (extraUnitMorphDefs[unitID] ~= nil) then
-    -- nothing here for now
-  end
-
-  --//copy experience
+  
+  -- GET experience and related morph stuff
   local newXp = Spring.GetUnitExperience(unitID)*XpScale
   local nextMorph = morphDefs[morphData.def.into]
   if nextMorph~= nil and nextMorph.into ~= nil then nextMorph = {morphDefs[morphData.def.into]} end
   if (nextMorph) then --//determine the lowest xp req. of all next possible morphs
     local maxXp = math.huge
-    for _, nm in pairs(nextMorph) do
+	for _, nm in pairs(nextMorph) do
       local rankXpInto = RankToXp(nm.into,nm.rank)
       if (rankXpInto>0)and(rankXpInto<maxXp) then
         maxXp=rankXpInto
@@ -589,57 +534,26 @@ local function FinishMorph(unitID, morphData)
     end
     newXp = math.min( newXp, maxXp*0.9)
   end
-  Spring.SetUnitExperience(newUnit, newXp)
-
-  --//copy some state
-  local states = Spring.GetUnitStates(unitID)
   
+  -- GET states
+  local states = Spring.GetUnitStates(unitID)  
   local fakeFireStateDescID = Spring.FindUnitCmdDesc(unitID, CMD_FAKE_FIRE_STATE)
   if fakeFireStateDescID then
     states.firestate = Spring.GetUnitCmdDescs(unitID, fakeFireStateDescID)[1].params[1]
   end
   
-  Spring.GiveOrderArrayToUnitArray({ newUnit }, {
-    { CMD.FIRE_STATE, { states.firestate },             { } },
-	{ CMD_FAKE_FIRE_STATE, { states.firestate },        { } },
-    { CMD.MOVE_STATE, { states.movestate },             { } },
-    { CMD.REPEAT,     { states["repeat"] and 1 or 0 },  { } },
-    { CMD.CLOAK,      { states.cloak     and 1 or udDst.initCloaked },  { } },
-    { CMD.ONOFF,      { 1 },                            { } },
-    { CMD.TRAJECTORY, { states.trajectory and 1 or 0 }, { } },
-  })
-
-  --//copy command queue
+  -- GET command queue
   local cmds = Spring.GetUnitCommands(unitID, -1)
-  for i = 2, #cmds do  -- skip the first command (CMD_MORPH)
-    local cmd = cmds[i]
-    Spring.GiveOrderToUnit(newUnit, cmd.id, cmd.params, cmd.options.coded)
-  end
-
-  --//reassign assist commands to new unit
-  ReAssignAssists(newUnit,unitID)
-
-  --// copy health
-  -- old health is declared above
-  local _,newMaxHealth         = Spring.GetUnitHealth(newUnit)
-  local newHealth = (oldHealth / oldMaxHealth) * newMaxHealth
-  local hpercent = newHealth/newMaxHealth
-  if newHealth<=1 then newHealth = 1 end
-
-  -- prevent conflict with rezz gadget
-  if hpercent > 0.045 and hpercent < 0.055 then
-    newHealth = newMaxHealth * 0.056 + 1
-  end
-
-  Spring.SetUnitHealth(newUnit, {health = newHealth, build = buildProgress})
   
-  --// copy shield power
-  local enabled,oldShieldState = Spring.GetUnitShieldState(unitID) 
-  if oldShieldState and Spring.GetUnitShieldState(newUnit) then
-    Spring.SetUnitShieldState(newUnit, enabled,oldShieldState)
-  end
-
-  -- unload units so they don't die when the transport does
+  -- GET build queue
+  if unitDefAfterMorph.isFactory and unitDefBeforeMorph.isFactory then
+	local buildQueue = Spring.GetFullBuildQueue(unitID)
+  end 
+  
+  -- GET shield data
+  local enabled, oldShieldState = Spring.GetUnitShieldState(unitID) 
+  
+  -- UNLOAD units so they don't die when the transport does
   local transportedUnits = Spring.GetUnitIsTransporting(unitID)
   if (transportedUnits and #transportedUnits > 0) then
     -- this is a quick hack for spawning them in a loose rectangle.
@@ -661,36 +575,202 @@ local function FinishMorph(unitID, morphData)
       if absZ >= 0 and absZ < (2 * spawnDistance) then
         xOffset = xOffset + (offsetSwitch * 2 * spawnDistance)
       end
-
-      local replacement = Spring.CreateUnit(transportedDef.name, px + xOffset, py, pz + zOffset, 0, unitTeam)
-
-      local exp = Spring.GetUnitExperience(transportedUnitID)
-      local health = Spring.GetUnitHealth(transportedUnitID)
-
-      Spring.SetUnitExperience(replacement, exp)
-      Spring.SetUnitHealth(replacement, health)
-
-      if (transportedDef.customParams.maxammo) then
-        local ammoLevel = Spring.GetUnitRulesParam(transportedUnitID, "ammo")
-		Spring.SetUnitRulesParam(replacement, "ammo", ammoLevel)
-      end
-
-      Spring.DestroyUnit(transportedUnitID, false, true)
+	  
+	  Spring.UnitDetach(transportedUnitID)
+	  Spring.SetUnitPosition(px + xOffset, py, pz + zOffset)
     end
-
   end
-
-  --// FIXME: - re-attach to current transport?
-  --// update selection
-  SendToUnsynced("unit_morph_finished", unitID, newUnit)
-
-  Spring.SetUnitBlocking(newUnit, true)
-  if udDst.isFactory and ud.isFactory then
-    TransferFactoryQueues(unitID, newUnit, udDst)
-  end
+  
+  -- DESTROY UNIT
   Spring.DestroyUnit(unitID, false, true) -- selfd = false, reclaim = true
+  
+  -- passing data until https://springrts.com/mantis/view.php?id=5862 is fixed
+  return {
+    unitID = unitID,
+    unitDefAfterMorph = unitDefAfterMorph,
+    unitDefBeforeMorph = unitDefBeforeMorph,
+    unitDefNameAfterMorph = unitDefNameAfterMorph,
+    unitDefIDBeforeMorph = unitDefIDBeforeMorph,
+    unitTeam = unitTeam,
+    h = h,
+    x = x,
+    y = y,
+    z = z,
+    px = px,
+    py = py,
+    pz = pz,
+    oldHealth = oldHealth,
+    oldMaxHealth = oldMaxHealth,
+    isBeingBuilt = isBeingBuilt,
+    buildProgress = buildProgress,
+    ammoLevel = ammoLevel,
+    newXp = newXp,
+    states = states,
+    cmds = cmds,
+    oldShieldState = oldShieldState,
+  }
 end
 
+-- FIXME: MERGE functions once https://springrts.com/mantis/view.php?id=5862 is implemented
+-- delayed function call of spawning part of the morphing to archive same unitIDs
+-- can be merged with FinishMorph()
+local function CreateMorphedUnit(postMorphData)
+  local unitID = postMorphData.unitID
+  local unitDefAfterMorph = postMorphData.unitDefAfterMorph
+  local unitDefBeforeMorph = postMorphData.unitDefBeforeMorph
+  local unitDefNameAfterMorph = postMorphData.unitDefNameAfterMorph
+  local unitDefIDBeforeMorph = postMorphData.unitDefIDBeforeMorph
+  local unitTeam = postMorphData.unitTeam
+  local h = postMorphData.h  
+  local x = postMorphData.x
+  local y = postMorphData.y
+  local z = postMorphData.z  
+  local px = postMorphData.px
+  local py = postMorphData.py
+  local pz = postMorphData.pz
+  local oldHealth = postMorphData.oldHealth
+  local oldMaxHealth = postMorphData.oldMaxHealth
+  local isBeingBuilt = postMorphData.isBeingBuilt
+  local buildProgress = postMorphData.buildProgress
+  local ammoLevel = postMorphData.ammoLevel
+  local newXp = postMorphData.newXp
+  local states = postMorphData.states
+  local cmds = postMorphData.cmds
+  local oldShieldState = postMorphData.oldShieldState
+  
+  -- NEW UNIT  
+  local newUnitID
+  
+  -- SET position, rotation, etc. 
+  if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
+	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, x, y, z, face, unitTeam, isBeingBuilt, false, unitID)
+	if newUnitID ~= nil then
+	  Spring.SetUnitPosition(newUnitID, x, y, z)
+	end
+  else
+	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt, false, unitID)
+	if newUnitID ~= nil then
+	  Spring.SetUnitRotation(newUnitID, 0, -h * math.pi / 32768, 0)
+	  Spring.SetUnitPosition(newUnitID, px, py, pz)
+	end
+  end
+
+  -- hit a unitLimit or something. bail out.
+  -- PepeAmpere: I'm not aware of any reason why this should fail now but lets keep it here
+  if newUnitID == nil then
+    return
+  end
+  
+  -- SO FROM NOW NEW UNIT ALREADY EXISTS
+  
+  -- disable physics
+  Spring.SetUnitBlocking(newUnitID, false)  
+  
+  -- SET health
+  local _, newMaxHealth = Spring.GetUnitHealth(newUnitID)
+  local newHealth = (oldHealth / oldMaxHealth) * newMaxHealth
+  local hpercent = newHealth/newMaxHealth
+  if newHealth <= 1 then newHealth = 1 end
+
+  -- prevent conflict with rezz gadget
+  if hpercent > 0.045 and hpercent < 0.055 then
+    newHealth = newMaxHealth * 0.056 + 1
+  end
+
+  Spring.SetUnitHealth(newUnitID, {health = newHealth, build = buildProgress})
+  
+  -- SET ammo and weapon state
+  if (unitDefAfterMorph.customParams.maxammo) then
+	Spring.SetUnitRulesParam(newUnitID, "ammo", ammoLevel)
+
+	local weapon1 = UnitDefs[unitDefIDBeforeMorph].weapons[1]
+	if (weapon1) then
+		Spring.SetUnitRulesParam(newUnitID, "defRegen", tonumber(WeaponDefs[weapon1.weaponDef].reload))
+	end
+  end
+
+  -- SET experience and related morph stuff
+  Spring.SetUnitExperience(newUnitID, newXp)
+
+  -- SET states
+  Spring.GiveOrderArrayToUnitArray({newUnitID}, {
+    {
+		CMD.FIRE_STATE,
+		{states.firestate}, 
+		{}
+	},
+	{
+		CMD_FAKE_FIRE_STATE, 
+		{states.firestate}, 
+		{}
+	},
+    {
+		CMD.MOVE_STATE,
+		{states.movestate},
+		{}
+	},
+    {
+		CMD.REPEAT,
+		{states["repeat"] and 1 or 0},  
+		{}
+	},
+    {
+		CMD.CLOAK,
+		{states.cloak and 1 or unitDefAfterMorph.initCloaked},
+		{}
+	},
+    {
+		CMD.ONOFF, 
+		{1}, 
+		{}
+	},
+    {
+		CMD.TRAJECTORY,
+		{states.trajectory and 1 or 0},
+		{}
+	},
+  })
+
+  -- SET command queue
+  for i = 2, #cmds do -- skip the first command (CMD_MORPH)
+    local cmd = cmds[i]
+    Spring.GiveOrderToUnit(newUnitID, cmd.id, cmd.params, cmd.options.coded)
+  end
+
+  -- SET build queue
+  if unitDefAfterMorph.isFactory and unitDefBeforeMorph.isFactory then
+    local dstCanBuild = {}
+    for _, unitDefID in ipairs(unitDefAfterMorph.buildOptions) do
+      dstCanBuild[unitDefID] = true
+    end  
+  
+    if buildQueue and dstCanBuild then
+      for _,buildPair in ipairs(buildQueue) do
+        local unitDefID, count = next(buildPair, nil)
+        if dstCanBuild[unitDefID] then
+          for i = 1, count do
+            Spring.GiveOrderToUnit(newUnitID, CMD.INSERT, {-1,-unitDefID, 0}, {"ctrl", "alt"})
+          end
+        end
+      end
+    end
+  end
+  
+  -- SET shield data
+  if oldShieldState and Spring.GetUnitShieldState(newUnitID) then
+    Spring.SetUnitShieldState(newUnitID, enabled, oldShieldState)
+  end
+  
+  -- MISSING: re-attach loaded units - there are no morphing transports in s44
+
+  -- INFORM unsynced
+  SendToUnsynced("unit_morph_finished", unitID, newUnitID)
+  
+   -- enable physics
+  Spring.SetUnitBlocking(newUnitID, true)
+  
+  return newUnitID
+end
 
 local function UpdateMorph(unitID, morphData)
   if Spring.GetUnitTransporter(unitID) then return true end
@@ -699,12 +779,34 @@ local function UpdateMorph(unitID, morphData)
     morphData.progress = morphData.progress + morphData.increment
   end
   if (morphData.progress >= 1.0) then
-    FinishMorph(unitID, morphData)
-    return false -- remove from the list, all done
+	  local postMorphData = FinishMorph(unitID, morphData)
+	  -- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
+	  -- and FinishMorph and CreateMorphedUnit are merged
+	  postMorphSpawns[unitID] = {}
+	  for k,v in pairs(postMorphData) do
+	    postMorphSpawns[unitID][k] = v
+	  end
+	  return false -- remove from the list, all done
   end
   return true
 end
 
+-- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
+local function PostMorphCreate()
+	local unitsMorphedSuccessfully = {}
+	
+	for unitID, postMorphData in pairs (postMorphSpawns) do
+	  local newUnitID = CreateMorphedUnit(postMorphData)
+	  if (newUnitID ~= nil) then
+		unitsMorphedSuccessfully[#unitsMorphedSuccessfully + 1] = unitID
+	  end
+	end
+	
+	-- clear postmorhps for solved units
+	for i=1, #unitsMorphedSuccessfully do
+		postMorphSpawns[unitsMorphedSuccessfully[i]] = nil
+	end
+end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -1072,6 +1174,8 @@ function gadget:GameFrame(n)
   for _, morphData in pairs(upgradeUnits) do
     _,_,_,_,morphData.progress = Spring.GetUnitHealth(morphData.fakeUnit)
   end
+  
+  PostMorphCreate() -- remove once https://springrts.com/mantis/view.php?id=5862 is implemented
 end
 
 
