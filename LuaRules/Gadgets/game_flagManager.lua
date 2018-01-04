@@ -58,9 +58,7 @@ local MAP_WIDTH = floor(Game.mapSizeX / GRID_SIZE)
 local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
 
 -- variables
-local metalMap = {}
 local maxMetal = 1
-local totalMetal = 1
 local metalSpots = {}
 local metalSpotCount	= 0
 local metalData = {}
@@ -148,19 +146,16 @@ end
 
 local function AnalyzeMetalMap()
 	for mx_i = 1, MAP_WIDTH do
-		metalMap[mx_i] = {}
 		for mz_i = 1, MAP_HEIGHT do
 			local mx = mx_i * GRID_SIZE
 			local mz = mz_i * GRID_SIZE
 			-- 104.0.1: Spring.GetGroundInfo returns different values. Better
 			-- using Spring.GetMetalAmount
-			local curMetal = GetMetalAmount(mx / (GRID_SIZE * 2),
-			                                mz / (GRID_SIZE * 2))
-			totalMetal = totalMetal + curMetal
-			--curMetal = floor(curMetal * 100)
-			metalMap[mx_i][mz_i] = curMetal
-			if (curMetal > maxMetal) then
-				maxMetal = curMetal
+			local mCur = GetMetalAmount(mx / (GRID_SIZE * 2),
+			                            mz / (GRID_SIZE * 2))
+			--mCur = floor(mCur * 100)
+			if (mCur > maxMetal) then
+				maxMetal = mCur
 			end
 		end
 	end
@@ -169,7 +164,14 @@ local function AnalyzeMetalMap()
 
 	for mx_i = 1, MAP_WIDTH do
 		for mz_i = 1, MAP_HEIGHT do
-			local mCur = metalMap[mx_i][mz_i]
+			local mx = mx_i * GRID_SIZE
+			local mz = mz_i * GRID_SIZE
+			-- Storing metalMap may be too much memory consuming. Even more if
+			-- a wrong GRID_SIZE is choosen (like it happened before). Hence, is
+			-- better calling GetMetalAmount again (since it is pure C
+			-- implementation, it would be even faster!).
+			local mCur = GetMetalAmount(mx / (GRID_SIZE * 2),
+			                            mz / (GRID_SIZE * 2))
 			if mCur > lowMetalThresh then
 				metalDataCount = metalDataCount +1
 
