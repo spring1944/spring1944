@@ -14,13 +14,13 @@ local US_LCSL = ArmedBoat:New{
 	turnRate				= 70,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "mk223in50ap",
+			name				= "M7APe8",
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
 	},
 	customparams = {
 		children = {
-			"USSC_Turret_76mm",
+			"USLCSL_Turret_76mm",
 			"USLCSL_Turret_TwinBofors_Front",
 			"USSC_Turret_20mm_Left",
 			"USSC_Turret_20mm_Right",
@@ -108,23 +108,22 @@ local US_LCSL_Turret_TwinBofors_Rear = US_LCSL_Turret_TwinBofors_Front:New{
 	},
 }
 
-local US_SC_Turret_76mm = OpenBoatTurret:New{
-	name					= "3in Mk 50 Turret",
+local US_LCSL_Turret_76mm = OpenBoatTurret:New{
+	name					= "3in M7 Turret",
 	description				= "Primary Turret",
-  	weapons = {	
+	weapons = {
 		[1] = {
-			maxAngleDif			= 270,
-			name				= "mk223in50",
+			name				= "M7APe8",
 		},
 		[2] = {
-			maxAngleDif			= 270,
-			name				= "mk223in50ap",
+			name				= "M7HE",
 		},
 	},
+	
 	customparams = {
 		maxammo					= 18,
 
-		barrelrecoildist		= 7,
+		barrelrecoildist		= 5,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
@@ -137,4 +136,5 @@ return lowerkeys({
 	["USLCSL"] = US_LCSL,
 	["USLCSL_Turret_TwinBofors_Front"] = US_LCSL_Turret_TwinBofors_Front,
 	["USLCSL_Turret_TwinBofors_Rear"] = US_LCSL_Turret_TwinBofors_Rear,
+	["USLCSL_Turret_76mm"] = US_LCSL_Turret_76mm,
 })

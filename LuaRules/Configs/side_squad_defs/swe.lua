@@ -112,7 +112,7 @@ local sweDefs = {
 		},
 		name = "Anti-Tank Squad",
 		description = "1 x Pansarvärnsgevär m/42, 3 x Pansarskott m/45: Anti-Tank Infantry",
-		buildCostMetal = 450,
+		buildCostMetal = 400,
 		buildPic = "swepskottm45.png",
 	},
 
