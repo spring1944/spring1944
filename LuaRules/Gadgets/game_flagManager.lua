@@ -52,7 +52,7 @@ local DEF_MULT = 0.25 --multiplies against the FBI defined DefRate
 
 -- easymetal constants
 local EXTRACT_RADIUS = Game.extractorRadius > 125 and Game.extractorRadius or 125
-local GRID_SIZE	= 4
+local GRID_SIZE	= Game.squareSize
 local THRESH_FRACTION = 0.4
 local MAP_WIDTH = floor(Game.mapSizeX / GRID_SIZE)
 local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
@@ -154,7 +154,8 @@ local function AnalyzeMetalMap()
 			local mz = mz_i * GRID_SIZE
 			-- 104.0.1: Spring.GetGroundInfo returns different values. Better
 			-- using Spring.GetMetalAmount
-			local curMetal = GetMetalAmount(mx, mz)
+			local curMetal = GetMetalAmount(mx / (GRID_SIZE * 2),
+			                                mz / (GRID_SIZE * 2))
 			totalMetal = totalMetal + curMetal
 			--curMetal = floor(curMetal * 100)
 			metalMap[mx_i][mz_i] = curMetal
