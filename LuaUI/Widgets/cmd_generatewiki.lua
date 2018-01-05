@@ -234,7 +234,6 @@ end
 
 squadDefs = include("LuaRules/Configs/squad_defs.lua")
 sortieDefs = include("LuaRules/Configs/sortie_defs.lua")
-Spring.Echo(__to_string(sortieDefs))
 
 function _parse_squad(unitDef)
     if squadDefs[unitDef.name] == nil and sortieDefs[unitDef.name] == nil then
@@ -509,6 +508,147 @@ function _parse_vehicle(unitDef)
     return t
 end
 
+function _parse_boat(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "boats.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    -- Structural details
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{frontArmour}",
+                    tostring(unitDef.customParams.armor_front or 0))
+    t = string.gsub(t,
+                    "{rearArmour}",
+                    tostring(unitDef.customParams.armor_rear or 0))
+    t = string.gsub(t,
+                    "{sideArmour}",
+                    tostring(unitDef.customParams.armor_side or 0))
+    t = string.gsub(t,
+                    "{topArmour}",
+                    tostring(unitDef.customParams.armor_top or 0))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. name .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
+    local maxammo = ""
+    if unitDef.customParams.maxammo ~= nil then
+        maxammo = "![Ammo][11] Max ammo: " .. unitDef.customParams.maxammo
+    end
+    t = string.gsub(t,
+                    "{maxammo}",
+                    maxammo)    
+    -- Line of Shight
+    t = string.gsub(t,
+                    "{sight}",
+                    tostring(unitDef.losRadius))
+    t = string.gsub(t,
+                    "{airLOS}",
+                    tostring(unitDef.airLosRadius))
+    t = string.gsub(t,
+                    "{noiseLOS}",
+                    tostring(unitDef.seismicRadius))
+    -- Motion
+    t = string.gsub(t,
+                    "{maxspeed}",
+                    tostring(unitDef.speed))
+    t = string.gsub(t,
+                    "{turn}",
+                    tostring(unitDef.turnRate * 0.16))
+    t = string.gsub(t,
+                    "{mindepth}",
+                    tostring(unitDef.moveDef.minWaterDepth))
+    -- Turrets
+    if unitDef.customParams.mother and unitDef.customParams.children then
+        t = t .. "## Turrets\n\n"
+        local children = loadstring("return " .. unitDef.customParams.children)()
+        local turret
+        for _, turret in pairs(children) do
+            local turretDef = UnitDefNames[string.lower(turret)]
+            local turretName = turretDef.humanName
+            local turretRef = "units/" .. string.lower(turret)
+            t = t .. "[" .. turretName .. "](" .. turretRef .. ")\n\n"
+        end
+
+    end
+    return t
+end
+
+function _parse_turret(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "turrets.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    -- Structural details
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    t = string.gsub(t,
+                    "{frontArmour}",
+                    tostring(unitDef.customParams.armor_front or 0))
+    t = string.gsub(t,
+                    "{rearArmour}",
+                    tostring(unitDef.customParams.armor_rear or 0))
+    t = string.gsub(t,
+                    "{sideArmour}",
+                    tostring(unitDef.customParams.armor_side or 0))
+    t = string.gsub(t,
+                    "{topArmour}",
+                    tostring(unitDef.customParams.armor_top or 0))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. name .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
+    local maxammo = ""
+    if unitDef.customParams.maxammo ~= nil then
+        maxammo = "![Ammo][11] Max ammo: " .. unitDef.customParams.maxammo
+    end
+    t = string.gsub(t,
+                    "{maxammo}",
+                    maxammo)    
+    -- Line of Shight
+    t = string.gsub(t,
+                    "{sight}",
+                    tostring(unitDef.losRadius))
+    t = string.gsub(t,
+                    "{airLOS}",
+                    tostring(unitDef.airLosRadius))
+    t = string.gsub(t,
+                    "{noiseLOS}",
+                    tostring(unitDef.seismicRadius))
+    return t
+end
+
 function _parse_weapon(unitDef, weapon)
     -- The parameter weapon is not a weapon def, but an unitDef weapon table
     weaponDef = WeaponDefs[weapon.weaponDef]
@@ -655,16 +795,24 @@ function _gen_unit(name, folder)
             handle.write(handle, _parse_infantry(unitDef))
         elseif parser == "vehicle" then
             handle.write(handle, _parse_vehicle(unitDef))
+        elseif parser == "boat" then
+            if customParams.child then
+                handle.write(handle, _parse_turret(unitDef))
+            else
+                handle.write(handle, _parse_boat(unitDef))
+            end
         end
     end
     -- Parse the weapons
     -- ===========================
-    local weapons = unitDef.weapons
-    if weapons ~= nil and #weapons > 0 then
-        handle.write(handle, "## Weapons\n\n")
-        local weapon
-        for _, weapon in pairs(weapons) do
-            handle.write(handle, _parse_weapon(unitDef, weapon))
+    if not ((customParams.wiki_parser == "boat") and customParams.mother) then
+        local weapons = unitDef.weapons
+        if weapons ~= nil and #weapons > 0 then
+            handle.write(handle, "## Weapons\n\n")
+            local weapon
+            for _, weapon in pairs(weapons) do
+                    handle.write(handle, _parse_weapon(unitDef, weapon))
+            end
         end
     end
     -- Get the morphing alternatives
