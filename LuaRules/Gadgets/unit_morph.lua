@@ -72,7 +72,7 @@ end
 
 local function HeadingToFacing(heading)
 	--return math.floor((-heading - 24576) / 16384) % 4
-	return ((heading + 8192) / 16384) % 4
+	return math.floor(((heading + 8192) / 16384) % 4)
 end
 
 --------------------------------------------------------------------------------
@@ -489,7 +489,7 @@ local function FinishMorph(unitID, morphData)
   end
   
   -- GET position, rotation, etc.
-  local x, y, z, face, xsize, zsize, face  
+  local x, y, z, face, xsize, zsize  
   if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
   --if unitDefAfterMorph.isBuilding then
 	x = math.floor(px/16)*16
@@ -592,6 +592,7 @@ local function FinishMorph(unitID, morphData)
     unitDefNameAfterMorph = unitDefNameAfterMorph,
     unitDefIDBeforeMorph = unitDefIDBeforeMorph,
     unitTeam = unitTeam,
+	face = face,
     h = h,
     x = x,
     y = y,
@@ -621,6 +622,7 @@ local function CreateMorphedUnit(postMorphData)
   local unitDefNameAfterMorph = postMorphData.unitDefNameAfterMorph
   local unitDefIDBeforeMorph = postMorphData.unitDefIDBeforeMorph
   local unitTeam = postMorphData.unitTeam
+  local face = postMorphData.face
   local h = postMorphData.h  
   local x = postMorphData.x
   local y = postMorphData.y
@@ -772,6 +774,18 @@ local function CreateMorphedUnit(postMorphData)
   return newUnitID
 end
 
+-- shared temporary API procedure for calls of FinishMorph from different places
+local function FinishMorphGlobal(unitID, morphData)
+  local postMorphData = FinishMorph(unitID, morphData)
+  -- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
+  -- then FinishMorph and CreateMorphedUnit can be merged
+  -- and FinishMorphGlobal can be removed at all
+  postMorphSpawns[unitID] = {}
+  for k,v in pairs(postMorphData) do
+    postMorphSpawns[unitID][k] = v
+  end
+end
+
 local function UpdateMorph(unitID, morphData)
   if Spring.GetUnitTransporter(unitID) then return true end
 	
@@ -779,13 +793,7 @@ local function UpdateMorph(unitID, morphData)
     morphData.progress = morphData.progress + morphData.increment
   end
   if (morphData.progress >= 1.0) then
-	  local postMorphData = FinishMorph(unitID, morphData)
-	  -- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
-	  -- and FinishMorph and CreateMorphedUnit are merged
-	  postMorphSpawns[unitID] = {}
-	  for k,v in pairs(postMorphData) do
-	    postMorphSpawns[unitID][k] = v
-	  end
+	  FinishMorphGlobal(unitID, morphData)
 	  return false -- remove from the list, all done
   end
   return true
@@ -797,8 +805,8 @@ local function PostMorphCreate()
 	
 	for unitID, postMorphData in pairs (postMorphSpawns) do
 	  local newUnitID = CreateMorphedUnit(postMorphData)
-	  if (newUnitID ~= nil) then
-		unitsMorphedSuccessfully[#unitsMorphedSuccessfully + 1] = unitID
+      if (newUnitID ~= nil) then
+	    unitsMorphedSuccessfully[#unitsMorphedSuccessfully + 1] = unitID
 	  end
 	end
 	
@@ -962,7 +970,7 @@ end
 
 function gadget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
   if upgradeDefs[unitDefID] then
-    FinishMorph(factID, upgradeUnits[factID])
+    FinishMorphGlobal(factID, upgradeUnits[factID])
     Spring.DestroyUnit(unitID, false, true)
   end
 end
