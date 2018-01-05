@@ -508,6 +508,63 @@ function _parse_vehicle(unitDef)
     return t
 end
 
+function _parse_aircraft(unitDef)
+    local t = VFS.LoadFile(TEMPLATES_FOLDER .. "aircrafts.md")
+    t = string.gsub(t,
+                    "{subclass_comments}",
+                    unitDef.customParams.wiki_subclass_comments)
+    t = string.gsub(t,
+                    "{comments}",
+                    unitDef.customParams.wiki_comments)
+    -- Structural details
+    t = string.gsub(t,
+                    "{buildCost}",
+                    tostring(unitDef.metalCost))
+    t = string.gsub(t,
+                    "{maxDamage}",
+                    tostring(unitDef.health))
+    local categories = ""
+    for name, value in pairs(unitDef.modCategories) do
+        if value then
+            categories = categories .. name .. ", "
+        end
+    end
+    t = string.gsub(t,
+                    "{categories}",
+                    categories)
+    t = string.gsub(t,
+                    "{armorType}",
+                    Game.armorTypes[unitDef.armorType])
+    local maxammo = ""
+    if unitDef.customParams.maxammo ~= nil then
+        maxammo = "![Ammo][11] Max ammo: " .. unitDef.customParams.maxammo
+    end
+    t = string.gsub(t,
+                    "{maxammo}",
+                    maxammo)    
+    -- Line of Shight
+    t = string.gsub(t,
+                    "{sight}",
+                    tostring(unitDef.losRadius))
+    t = string.gsub(t,
+                    "{airLOS}",
+                    tostring(unitDef.airLosRadius))
+    t = string.gsub(t,
+                    "{noiseLOS}",
+                    tostring(unitDef.seismicRadius))
+    -- Motion
+    t = string.gsub(t,
+                    "{maxspeed}",
+                    tostring(unitDef.speed))
+    t = string.gsub(t,
+                    "{turn}",
+                    tostring(unitDef.turnRate * 0.16))
+    t = string.gsub(t,
+                    "{fuel}",
+                    tostring(unitDef.customParams.maxfuel))
+    return t
+end
+
 function _parse_boat(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "boats.md")
     t = string.gsub(t,
@@ -795,6 +852,8 @@ function _gen_unit(name, folder)
             handle.write(handle, _parse_infantry(unitDef))
         elseif parser == "vehicle" then
             handle.write(handle, _parse_vehicle(unitDef))
+        elseif parser == "aircraft" then
+            handle.write(handle, _parse_aircraft(unitDef))
         elseif parser == "boat" then
             if customParams.child then
                 handle.write(handle, _parse_turret(unitDef))
