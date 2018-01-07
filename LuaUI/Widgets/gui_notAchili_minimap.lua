@@ -122,14 +122,14 @@ local ReadSettings
 ----------------------------------------------------------------------------------------------------
 --                                        Global variables                                        --
 ----------------------------------------------------------------------------------------------------
-if not WG.NOTA_UI then
-	WG.NOTA_UI = {}
+if not WG.SS44_UI then
+	WG.SS44_UI = {}
 end
 
-WG.NOTA_UI.minimapOffset = minimapHeight
+WG.SS44_UI.minimapOffset = minimapHeight
 
-WG.NOTA_UI.ResetMinimapWidget = function()
-	globalSize = WG.NOTA_UI.globalSize or 2.5
+WG.SS44_UI.ResetMinimapWidget = function()
+	globalSize = WG.SS44_UI.globalSize or 2.5
 
 	ReadSettings()
 	UpdateMinimapGeometry()
@@ -481,7 +481,7 @@ end
 function ReadSettings()
 	minimapLeft,	minimapTop		= 0,					0
 	minimapWidth,	minimapHeight	= 104 * globalSize,		88 * globalSize
-	--minimapWidth,	minimapHeight	= WG.NOTA_UI.totalW,	88 * globalSize
+	--minimapWidth,	minimapHeight	= WG.SS44_UI.totalW,	88 * globalSize
 
 	offsetLeft,		offsetTop		= 6.7 * globalSize,		4.4 * globalSize
 	offsetRight,	offsetBottom	= 23.0 * globalSize,	4 * globalSize
@@ -492,7 +492,7 @@ function ReadSettings()
 
 	buttonOffset					= 2.4 * globalSize
 
-	WG.NOTA_UI.minimapOffset = minimapHeight
+	WG.SS44_UI.minimapOffset = minimapHeight
 end
 
 ----------------------------------------------------------------------------------------------------

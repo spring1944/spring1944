@@ -192,7 +192,7 @@ function CreateBuildWidget()
 		}
 	}
 	
-	NOTA_UI.buildWidget = buildWidget
+	SS44_UI.buildWidget = buildWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -201,7 +201,7 @@ function UpdateBuildsData( commands )
 	local buildCommands = {}
 	
 	-- show build menu, if selected only one units category
-	if NOTA_UI.selectionWidget.onlyOneCategory then
+	if SS44_UI.selectionWidget.onlyOneCategory then
 		buildCommands = commands
 	end
 
@@ -322,7 +322,7 @@ end
 ----------------------------------------------------------------------------------------------------
 function UpdateGeometry( forceUpdate )
 	
-	local buildY = NOTA_UI.ordersWidget.y + NOTA_UI.ordersWidget.height
+	local buildY = SS44_UI.ordersWidget.y + SS44_UI.ordersWidget.height
 		
 	if ( not forceUpdate ) and ( buildY == buildWidget.y ) then
 		return
@@ -348,9 +348,9 @@ function UpdateGeometry( forceUpdate )
 	
 	local buildScroll = buildWidget.children[ 1 ]
 
-	local buildY = NOTA_UI.ordersWidget.y + NOTA_UI.ordersWidget.height
+	local buildY = SS44_UI.ordersWidget.y + SS44_UI.ordersWidget.height
 	--[[
-	local buildX = NOTA_UI.ordersWidget.x + NOTA_UI.ordersWidget.width
+	local buildX = SS44_UI.ordersWidget.x + SS44_UI.ordersWidget.width
 	local buildY = 0
 	--]]
 	local buildH = screen0.height - buildY
@@ -623,18 +623,18 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 end
 
 ----------------------------------------------------------------------------------------------------

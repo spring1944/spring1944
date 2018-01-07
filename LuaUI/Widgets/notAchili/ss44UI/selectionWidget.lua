@@ -189,7 +189,7 @@ function CreateSelectionWidget()
 		}
 	}
 	
-	NOTA_UI.selectionWidget = selectionWidget
+	SS44_UI.selectionWidget = selectionWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -362,7 +362,7 @@ function UpdateSelectionWidget()
 	
 	selectionWidget.onlyOneCategory = ( #gridPanel.children < 3 )
 	
-	local selectionY = NOTA_UI.minimapOffset or 0
+	local selectionY = SS44_UI.minimapOffset or 0
 	local selectionH = screen0.height - selectionY
 	
 	if totalHeight <= selectionH then
@@ -557,18 +557,18 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 end
 
 ----------------------------------------------------------------------------------------------------

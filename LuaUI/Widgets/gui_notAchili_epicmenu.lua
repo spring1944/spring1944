@@ -1260,8 +1260,8 @@ local function MakeCrudeExitWindow()
 			
 			Button:New{
 				caption = "Exit game", OnMouseUp = { function() 
-					if WG.NOTA_UI and WG.NOTA_UI.ShowExitScreen then
-						WG.NOTA_UI.ShowExitScreen()
+					if WG.SS44_UI and WG.SS44_UI.ShowExitScreen then
+						WG.SS44_UI.ShowExitScreen()
 					else
 						Spring.SendCommands{ "quit", "quitforce" }
 					end
@@ -2042,8 +2042,8 @@ function ConfirmExitGameAction()
 		"You want to exit game,\n      are you sure?",
 		function()
 			HideConfirmWindow()
-			if WG.NOTA_UI and WG.NOTA_UI.ShowExitScreen then
-				WG.NOTA_UI.ShowExitScreen()
+			if WG.SS44_UI and WG.SS44_UI.ShowExitScreen then
+				WG.SS44_UI.ShowExitScreen()
 			else
 				Spring.SendCommands{ "quit", "quitforce" }
 			end

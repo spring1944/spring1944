@@ -1,9 +1,9 @@
 ----------------------------------------------------------------------------------------------------
---                                            Nota UI                                             --
+--                                            ss44 UI                                             --
 ----------------------------------------------------------------------------------------------------
 function widget:GetInfo()
 	return {
-		name	= "NotAchili Nota UI",
+		name	= "NotAchili ss44 UI",
 		desc	= "Unit Control Menu",
 		author	= "a1983",
 		date	= "01 04 2013",
@@ -33,38 +33,38 @@ local players = {}
 ----------------------------------------------------------------------------------------------------
 --                                        Global variables                                        --
 ----------------------------------------------------------------------------------------------------
-if not WG.NOTA_UI then
-	WG.NOTA_UI = {}
+if not WG.SS44_UI then
+	WG.SS44_UI = {}
 end
-NOTA_UI = WG.NOTA_UI
+SS44_UI = WG.SS44_UI
 
-NOTA_UI.players = players
+SS44_UI.players = players
 
 local function SetGlobalSize( globalSize )
 	if type( globalSize ) == "table" then
 		globalSize = globalSize.priv_value
 	end
 
-	NOTA_UI.globalSize = globalSize
+	SS44_UI.globalSize = globalSize
 	
-	NOTA_UI.imageW = 21 * globalSize
-	NOTA_UI.imageH = 16 * globalSize
-	NOTA_UI.imageOffset = 2 * globalSize
-	NOTA_UI.imageInRow = 4
+	SS44_UI.imageW = 21 * globalSize
+	SS44_UI.imageH = 16 * globalSize
+	SS44_UI.imageOffset = 2 * globalSize
+	SS44_UI.imageInRow = 4
 	
-	NOTA_UI.labelH = 8 * globalSize
-	NOTA_UI.labelFontSize = 4.8 * globalSize
+	SS44_UI.labelH = 8 * globalSize
+	SS44_UI.labelFontSize = 4.8 * globalSize
 	
-	NOTA_UI.skinMargin = 5 * globalSize
+	SS44_UI.skinMargin = 5 * globalSize
 	
-	NOTA_UI.minimapH = 80 * globalSize
+	SS44_UI.minimapH = 80 * globalSize
 	
-	NOTA_UI.stateW = 9.6 * globalSize
-	NOTA_UI.stateH = 9.6 * globalSize
+	SS44_UI.stateW = 9.6 * globalSize
+	SS44_UI.stateH = 9.6 * globalSize
 	
-	local count = NOTA_UI.imageInRow
-	NOTA_UI.rowSize	= NOTA_UI.imageW * count + NOTA_UI.imageOffset * ( count + 1 )
-	NOTA_UI.totalW	= NOTA_UI.rowSize + NOTA_UI.skinMargin * 2
+	local count = SS44_UI.imageInRow
+	SS44_UI.rowSize	= SS44_UI.imageW * count + SS44_UI.imageOffset * ( count + 1 )
+	SS44_UI.totalW	= SS44_UI.rowSize + SS44_UI.skinMargin * 2
 end
 
 -- by default small size
@@ -87,11 +87,11 @@ options = {
 
 			-- Recreate all widgets to apply new settings
 			
-			if NOTA_UI.ResetMinimapWidget then
-				NOTA_UI.ResetMinimapWidget()
+			if SS44_UI.ResetMinimapWidget then
+				SS44_UI.ResetMinimapWidget()
 			end
 			
-			WG.crude.ResetWidget( NOTA_UI )
+			WG.crude.ResetWidget( SS44_UI )
 			-- MINIMAP_WIDGET.ResetWidget()
 			SELECTION_WIDGET.ResetWidget()
 			ORDERS_WIDGET.ResetWidget()
@@ -137,7 +137,7 @@ include( path .. "buildWidget.lua" )
 include( path .. "resourceBarWidget.lua" )
 include( path .. "consoleWidget.lua" )
 
-NOTA_UI.Tools = TOOLS
+SS44_UI.Tools = TOOLS
 
 ----------------------------------------------------------------------------------------------------
 --                                      Function declarations                                     --
@@ -216,7 +216,7 @@ function widget:Initialize ()
 	--gl.SlaveMiniMap( true )
 	--WG.NotAchili.PostNotAchiliDraw = RenderMinimap
 	
-	WG.crude.ResetWidget( NOTA_UI )
+	WG.crude.ResetWidget( SS44_UI )
 	
 	-- initialize widgets
 	--CreateMinimapWidget()

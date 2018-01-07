@@ -197,7 +197,7 @@ function CreateResourceBarWidget()
 	resourceWidgets[ "energy" ] = CreateResourceWidget( "energy" )
 	resourceWidgets[ "rearm" ] = CreateResourceWidget( "rearm" )
 
-	NOTA_UI.resourceBarWidget = resourceBarWidget
+	SS44_UI.resourceBarWidget = resourceBarWidget
 	UpdateResourceBarGeometry()
 end
 
@@ -434,7 +434,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
 	resourceBarH	= 16.4 * globalSize
 	resourceW		= 104 * globalSize
