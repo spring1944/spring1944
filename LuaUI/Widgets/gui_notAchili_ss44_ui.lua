@@ -258,10 +258,8 @@ function widget:KeyPress( key, mods, isRepeat, label, unicode )
 	if key == enterKey then
 		
 		if keyEnterPressed then
-			keyEnterPressed = false
 			DisableConsoleTextBox()
 		else
-			keyEnterPressed = true
 			ToggleConsoleTextBox()
 		end
 	elseif key == escapeKey and mods.shift then
