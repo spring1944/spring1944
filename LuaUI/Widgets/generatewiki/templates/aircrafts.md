@@ -27,7 +27,7 @@
 
 | Parameter | Value | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|-----------|-------|
-| ![Speed][7] Max speed | {maxspeed} m/s | ![Turn][8] Turn rate | {turn} º/s | ![Fuel][9] Max fuel | {fuel} s |
+| ![Speed][7] Max speed | {maxspeed} km/h | ![Turn][8] Turn rate | {turn} º/s | ![Fuel][9] Max fuel | {fuel} s |
 
 
 [1]: /uploads/ec651a1312826e75c31e416dad059540/hammer_icon.svg
