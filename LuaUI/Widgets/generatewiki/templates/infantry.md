@@ -31,7 +31,7 @@ Infantry is cheap, but very fragile... And vulnerable to almost every weapon of 
 
 | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|
-| ![Speed][7] Max speed | {maxspeed} m/s | ![Turn][8] Turn rate | {turn} º/s |
+| ![Speed][7] Max speed | {maxspeed} km/h | ![Turn][8] Turn rate | {turn} º/s |
 | ![Slope][9] Max slope | {slope} | ![Depth][10] Max water depth | {maxdepth} m |
 
 

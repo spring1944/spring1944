@@ -30,7 +30,7 @@ Boats are the units meant to move and fight by water.
 
 | Parameter | Value | Parameter | Value | Parameter | Value |
 |-----------|-------|-----------|-------|-----------|-------|
-| ![Speed][7] Max speed | {maxspeed} m/s | ![Turn][8] Turn rate | {turn} º/s | ![Depth][10] Min water depth | {mindepth} m |
+| ![Speed][7] Max speed | {maxspeed} km/h | ![Turn][8] Turn rate | {turn} º/s | ![Depth][10] Min water depth | {mindepth} m |
 
 
 [1]: /uploads/ec651a1312826e75c31e416dad059540/hammer_icon.svg

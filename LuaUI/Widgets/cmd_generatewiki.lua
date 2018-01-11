@@ -423,7 +423,7 @@ function _parse_infantry(unitDef)
     -- Motion
     t = string.gsub(t,
                     "{maxspeed}",
-                    tostring(unitDef.speed))
+                    tostring(unitDef.speed / 8.0 * 3.6))
     t = string.gsub(t,
                     "{turn}",
                     tostring(unitDef.turnRate * 0.16))
@@ -432,7 +432,7 @@ function _parse_infantry(unitDef)
                     tostring(unitDef.moveDef.maxSlope))
     t = string.gsub(t,
                     "{maxdepth}",
-                    tostring(unitDef.moveDef.depth))
+                    tostring((unitDef.moveDef.depth or 0) / 8.0))
     return t
 end
 
@@ -495,7 +495,7 @@ function _parse_vehicle(unitDef)
     -- Motion
     t = string.gsub(t,
                     "{maxspeed}",
-                    tostring(unitDef.speed))
+                    tostring(unitDef.speed / 8.0 * 3.6))
     t = string.gsub(t,
                     "{turn}",
                     tostring(unitDef.turnRate * 0.16))
@@ -504,7 +504,7 @@ function _parse_vehicle(unitDef)
                     tostring(unitDef.moveDef.maxSlope))
     t = string.gsub(t,
                     "{maxdepth}",
-                    tostring(unitDef.moveDef.depth))
+                    tostring((unitDef.moveDef.depth or 0) / 8.0))
     return t
 end
 
@@ -555,7 +555,7 @@ function _parse_aircraft(unitDef)
     -- Motion
     t = string.gsub(t,
                     "{maxspeed}",
-                    tostring(unitDef.speed))
+                    tostring(unitDef.speed / 8.0 * 3.6))
     t = string.gsub(t,
                     "{turn}",
                     tostring(unitDef.turnRate * 0.16))
@@ -624,13 +624,13 @@ function _parse_boat(unitDef)
     -- Motion
     t = string.gsub(t,
                     "{maxspeed}",
-                    tostring(unitDef.speed))
+                    tostring(unitDef.speed / 8.0 * 3.6))
     t = string.gsub(t,
                     "{turn}",
                     tostring(unitDef.turnRate * 0.16))
     t = string.gsub(t,
                     "{mindepth}",
-                    tostring(unitDef.moveDef.minWaterDepth))
+                    tostring(unitDef.moveDef.depth))
     -- Turrets
     if unitDef.customParams.mother and unitDef.customParams.children then
         t = t .. "## Turrets\n\n"
