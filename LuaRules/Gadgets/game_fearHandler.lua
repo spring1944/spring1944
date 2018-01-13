@@ -155,6 +155,7 @@ function gadget:UnitDestroyed(unitID)
 	cobScriptIDs[unitID] = nil
 	lusScriptIDs[unitID] = nil
 	fearShields[unitID] = nil
+	collisionUpdated[unitID] = nil
 end
 
 
