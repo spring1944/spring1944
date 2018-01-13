@@ -41,6 +41,7 @@ local lusScriptIDs = {}
 local restoreCOBScriptIDs = {}
 local restorelusScriptIDs = {}
 
+local collisionUpdated = {}
 
 local fearShields = {}
 local targets = {}
@@ -50,6 +51,33 @@ local blockAllyTeams = {}
 
 if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
+
+local function UpdateCollision(unitID, direction)
+	local unitDef = UnitDefs[Spring.GetUnitDefID(unitID)]
+	
+	-- filter out static units like MG nests and AA posts
+	if (unitDef.speed > 0) then
+		
+		-- filter out repeated calls on units already in proper state
+		if ((collisionUpdated[unitID] and direction == 1) or (collisionUpdated[unitID] == nil and direction == -1)) then
+			
+			-- hitsphere update 
+			local scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, volumeType, testType, primaryAxis = Spring.GetUnitCollisionVolumeData(unitID)
+			Spring.SetUnitCollisionVolumeData(unitID, scaleX, scaleY, scaleZ, offsetX, offsetY + direction * scaleY/2, offsetZ, volumeType, testType, primaryAxis)
+			
+			-- ! it is not possible to play with the aim pos because it setting mid pos via Spring.SetUnitMidAndAimPos will reset the animation script
+			-- enemies aiming to old position will still hit
+			
+			-- inverting between "nil" and "true" 
+			-- better than "true" and "false" because the table is shorter for per frame iteration below
+			if (collisionUpdated[unitID] == nil) then
+				collisionUpdated[unitID] = true 
+			else 
+				collisionUpdated[unitID] = nil 
+			end
+		end
+	end
+end
 
 local function UpdateSuppressionCOB(unitID)
 
@@ -118,6 +146,8 @@ function gadget:UnitCreated(unitID, unitDefID)
 	if UnitDefs[unitDefID].customParams.blockfear then
 		fearShields[unitID] = true
 	end
+	
+	UpdateCollision(unitID, 1)
 end
 
 
@@ -135,6 +165,7 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 		-- SMGs and Rifles do a small amount of suppression cob side, so update suppression when hit by them
 		-- ... but be sure not to update suppression for a dead unit (UnitDamaged is called before UnitDestroyed, so cobScriptIDs[unitID] is still valid!)
 		if cp and cp.damagetype == "smallarm" and not cp.fearid and not GetUnitIsDead(unitID) then
+			UpdateCollision(unitID, -1) 
 			if cobScriptIDs[unitID] then
 				UpdateSuppressionCOB(unitID)
 			else -- danger Will Robinson! assumes the unit must have a lusScriptID
@@ -192,6 +223,7 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 		local unitID = targets[i]
 		-- GetUnitInSphere can catch tombstoned units, so check that cobScriptIDs[unitID] is valid (unit is not dead)
 		if unitID ~= ownerID then
+			UpdateCollision(unitID, -1) 
 			if lusScriptIDs[unitID] then
 				Spring.UnitScript.CallAsUnit(unitID, lusScriptIDs[unitID], FEAR_IDS[fearID])
 			elseif cobScriptIDs[unitID] then
@@ -231,6 +263,11 @@ function gadget:GameFrame(n)
 		end
 		for unitID, funcID in pairs(lusScriptIDs) do
 			UpdateSuppressionLUS(unitID)
+		end
+		for unitID, _ in pairs(collisionUpdated) do
+			if (GetUnitRulesParam(unitID, "fear") == 0) then
+				UpdateCollision(unitID, 1)
+			end
 		end
 	end
 end
