@@ -67,9 +67,6 @@ local function SetGlobalSize( globalSize )
 	SS44_UI.totalW	= SS44_UI.rowSize + SS44_UI.skinMargin * 2
 end
 
--- by default small size
-SetGlobalSize( smallSize )
-
 ----------------------------------------------------------------------------------------------------
 -- Settings for crude menu
 ----------------------------------------------------------------------------------------------------
@@ -120,6 +117,9 @@ options = {
 		},		
 	},
 }
+
+-- by default small size
+SetGlobalSize( options.interfaceSizeOption.default )
 
 ----------------------------------------------------------------------------------------------------
 --                                            Includes                                            --
