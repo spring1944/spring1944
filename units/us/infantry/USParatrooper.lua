@@ -5,7 +5,7 @@ local USParatrooper = Null:New{
 	objectName					= "US/USParatrooper.s3o",
 	customParams = {
 		damageGroup			= "infantry",
-
+		pronespheremovemult = 0.5,
 	},
 }
 
