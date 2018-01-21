@@ -20,6 +20,9 @@ local Boat = Unit:New{ -- used for transports as is
 		dontCount			= 1,
 		hasturnbutton		= 1,
 		reversemult			= 0.5,
+		wiki_parser                 = "boat",  -- boats.md template
+		wiki_subclass_comments      = "",      -- To be override by boat classes
+		wiki_comments               = "",      -- To be override by each unit
 	}
 }
 
@@ -47,6 +50,11 @@ local AssaultBoat = Boat:New{
 	turninplace			= 0,
 	turnRate			= 350,
 	waterline			= 0.2,
+	customParams = {
+		wiki_subclass_comments = [[Light infantry transport, meant to unload
+a small group of infantry units in a beach. You should never understimate the
+power of a small infantry group behind the enemy lines.]],
+	},
 }
 
 local PontoonRaft = Boat:New{
@@ -69,6 +77,11 @@ local PontoonRaft = Boat:New{
 	transportSize		= 9,
 	turnRate			= 200,
 	waterline			= 2.5,
+	customParams = {
+		wiki_subclass_comments = [[Light vehicles transport, meant to transport
+a single vehicle trhough the water. Due to its poor armour and velocity, this
+unit is usually considered for logistic, but not assault operations.]],
+	},
 }
 
 -- Landing Craft
@@ -82,6 +95,9 @@ local InfantryLandingCraft = Boat:New{
 	customparams = {
 		transportsquad			= "<SIDE>_platoon_landing",
 		supplyRange				= 350,
+		wiki_subclass_comments = [[Large infantry squad transport, meant to
+unload a small group of infantry units in a beach. You should never understimate
+the power of infantry behind the enemy lines..]],
 	},
 }
 
@@ -94,6 +110,8 @@ local TankLandingCraft = Boat:New{
 	customparams = {
 		supplyRange				= 600,
 		transportsquad			= "<SIDE>_platoon_lct",
+		wiki_subclass_comments = [[Large tanks transport, meant to unload an
+armoured task force in the beach.]],
 	}
 }
 
@@ -117,6 +135,14 @@ local ArmedBoat = BoatMother:New{
 	customparams = {
 		flagCapRate			= 2,
 		flagCapType			= 'buoy',
+		wiki_subclass_comments = [[This is a combat ship. Combat ships are
+featured by their turrets. The turrets can be disabled one by one, or depending
+on the specific turret, even suppressed by enemy fire. However, the very only
+way to destroy a turret is destroying the whole ship. Along this line, a heavy
+ship, with all the turrets disabled, is in fact a quite useless unit, and a
+great target for the enemy.
+
+This ship can capture buoys, i.e. water flags]],
 	}
 }
 
@@ -147,6 +173,10 @@ local BoatChild = Boat:New{ -- a boat turret
 local EnclosedBoatTurret = BoatChild:New{
 	maxDamage			= 2500,
 	buildCostMetal			= 1000,
+	customparams = {
+		wiki_subclass_comments = [[Armoured ship turret, which cannot be
+suppressed.]],
+	}
 }
 
 local OpenBoatTurret = BoatChild:New{
@@ -155,6 +185,8 @@ local OpenBoatTurret = BoatChild:New{
 	customparams = {
 		feartarget		= true,
 		fearlimit		= 12,
+		wiki_subclass_comments = [[Unprotected ship turret, which can be easily
+suppresed and destroyed. Keep it away from enemy fire]],
 	}
 }
 
@@ -162,6 +194,11 @@ local OpenBoatTurret = BoatChild:New{
 local PartiallyEnclosedBoatTurret = OpenBoatTurret:New{
 	maxDamage			= 1600,
 	buildCostMetal			= 700,
+	customparams = {
+		wiki_subclass_comments = [[Partially enbclosed ship turret, which enjoys
+an armoured frontal protection, but can be easily suppressed or even destroyed
+from behind.]],
+	}
 }
 
 return {

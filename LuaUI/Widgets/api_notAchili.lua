@@ -1,21 +1,19 @@
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
-
 function widget:GetInfo()
-  return {
-    name      = "NotAchili Framework",
-    desc      = "Hot GUI Framework (DO NOT DISABLE)",
-    author    = "jK & quantum",
-    date      = "WIP",
-    license   = "GPLv2",
-    layer     = -math.huge,
-    enabled   = true,  --  loaded by default?
-    handler   = true,
-    api       = true,
-	alwaysStart = true,
-  }
+	return {
+		name = "NotAchili Framework",
+		desc = "Hot GUI Framework (DO NOT DISABLE)",
+		author = "jK & quantum", -- edited by a1983 and PepeAmpere
+		date = "WIP",
+		license = "GPLv2",
+		layer = -math.huge,
+		enabled = true, -- loaded by default?
+		handler = true,
+		api = true,
+		alwaysStart = true,
+	}
 end
 
+DEFAULT_SKIN = "s44" -- temporary constant, to set the skin outside of the framework
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -29,7 +27,7 @@ local tk
 --------------------------------------------------------------------------------
 
 function widget:Initialize()
-  NotAchili = VFS.Include(LUAUI_DIRNAME.."Widgets/notAchili/data/core.lua")
+  NotAchili = VFS.Include(LUAUI_DIRNAME .. "Widgets/notAchili/data/core.lua")
 
   screen0 = NotAchili.Screen:New{}
   th = NotAchili.TextureHandler

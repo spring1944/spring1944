@@ -257,7 +257,7 @@ local Ansaldo75mmL18HE = MediumHE:New(Ansaldo75mmL18, true):New{
   areaOfEffect       = 94,
   weaponVelocity     = 800,
   damage = {
-    default            = 2509,
+    default            = 2258,
   },  
 }
 
@@ -268,13 +268,13 @@ local Ansaldo75mmL18HEAT = HEAT:New(Ansaldo75mmL18, true):New{
     armor_penetration       = 90,
   },
   damage = {
-    default            = 2419,
+    default            = 2032,
   },
 }
 
 -- Ansaldo L/27 75mm (ITA)
 local Ansaldo75mmL27HE = MediumGun:New(MediumHE, true):New{
-  areaOfEffect       = 94,
+  areaOfEffect       = 98,
   name               = [[Ansaldo L/27 75mm Howitzer]],
   range              = 1390,
   reloadTime         = 6.75,
@@ -307,7 +307,7 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
     armor_penetration_100m  = 89,
   },
   damage = {
-    default            = 2280,
+    default            = 2412,
   },
 }
 local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
@@ -498,10 +498,10 @@ local Mavag_75_41M = MediumGun:New{
 }
 
 local Mavag_75_41MHE = MediumHE:New(Mavag_75_41M, true):New{
-  areaOfEffect       = 88,
+  areaOfEffect       = 91,
   weaponVelocity     = 926,
   damage = {
-    default            = 1334,
+    default            = 1534,
   },  
 }
 
@@ -525,7 +525,7 @@ local Mavag_75_41MHEAT = HEAT:New(Mavag_75_41M, true):New{
     armor_penetration       = 70,
   },
   damage = {
-    default            = 2419,
+    default            = 2045,
   },
 }
 

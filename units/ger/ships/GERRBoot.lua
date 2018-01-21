@@ -13,7 +13,7 @@ local GER_RBoot = ArmedBoat:New{
 	turnRate				= 65,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "flak4337mmhe",
+			name				= "flak4337mmap",
 		},
 	},
 	customparams = {
@@ -39,6 +39,10 @@ local GER_RBoot_Turret_37mm = OpenBoatTurret:New{
 	description				= "Primary Turret",
   	weapons = {	
 		[1] = {
+			name				= "flak4337mmap",
+			maxAngleDif			= 270,
+		},
+		[2] = {
 			name				= "flak4337mmhe",
 			maxAngleDif			= 270,
 		},

@@ -13,7 +13,7 @@ local GBR_LCSL = ArmedBoat:New{
 	turnRate				= 40,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "qf6pdr57mmhe",
+			name				= "qf6pdr57mmap",
 		},
 	},
 	customparams = {
@@ -85,11 +85,11 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 	description				= "Primary Turret",
   	weapons = {	
 		[1] = {
-			name				= "qf6pdr57mmhe",
+			name				= "qf6pdr57mmap",
 			maxAngleDif			= 270,
 		},
 		[2] = {
-			name				= "qf6pdr57mmap",
+			name				= "qf6pdr57mmhe",
 			maxAngleDif			= 270,
 		},
 	},

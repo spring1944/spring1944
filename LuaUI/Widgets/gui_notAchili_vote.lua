@@ -259,6 +259,7 @@ function widget:Initialize()
 				end},
 			padding = {1,1,1,1},
 			--keepAspect = true,
+			styleKey = "buttonResizable",
 		}
 		progress_vote[i]:SetValue(0)
 		voteCount[i] = 0
@@ -282,7 +283,8 @@ function widget:Initialize()
 					if notSpam then
 					Spring.SendCommands("say !endvote")
 				end
-			end}
+			end},
+		styleKey = "buttonResizable",
 	}
 	button_end_image = Image:New {
 		width = 16,

@@ -166,13 +166,8 @@ path='Settings/Interface/Interface Skin'
 			WG.crude.SetSkin( self.value );
 		end,
 		items = {
-			{ key = 'default',		name = 'Default', },
+			{ key = 's44',			name = 'Default s44', },
 			{ key = 'Carbon',		name = 'Carbon', },
-			{ key = 'DarkGlass',	name = 'DarkGlass', },
-			{ key = 'DarkHive',		name = 'DarkHive', },
-			{ key = 'Glass',		name = 'Glass', },
-			{ key = 'Nota',			name = 'Nota', },
-			{ key = 'Robocracy',	name = 'Robocracy', },
 		},
 	})
 	

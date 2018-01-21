@@ -1458,7 +1458,7 @@ function widget:Update(dt)
 	local show_cursortip = true
 	alt,_,meta,_ = spGetModKeyState()
 	
-	local consoleWidget = WG.NOTA_UI and WG.NOTA_UI.consoleWidget
+	local consoleWidget = WG.SS44_UI and WG.SS44_UI.consoleWidget
 	local inputText = consoleWidget	and consoleWidget.inputText
 
 	if meta and ( not inputText ) then

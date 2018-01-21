@@ -58,7 +58,7 @@ local HUN_PM = ArmedBoat:New{
 	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "Mavag_37_42MHE",
+			name				= "Mavag_37_42MAP",
 		},
 	},
 	customparams = {
@@ -108,7 +108,7 @@ local HUNPM_turret_40mm_front = EnclosedBoatTurret:New{
 	objectName				= "<SIDE>/HUNPM_turret_40mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "Mavag_37_42MHE",
+			name				= "Mavag_37_42MAP",
 		},
 		[2] = { -- coax 1
 			name				= "gebauer_1934_37m",

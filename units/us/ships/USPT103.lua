@@ -4,6 +4,7 @@ local US_PT103 = ArmedBoat:New{
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 1785,
+	movementClass			= "BOAT_RiverSmall",
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 4000,
@@ -96,14 +97,12 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 			name				= "bofors40mmaa",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
-			badTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP DEPLOYED",
 			onlyTargetCategory	= "AIR",
 		},
 		[2] = {
 			name				= "bofors40mmhe",
 			mainDir		= [[0 0 -1]],
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 		},
 	},
 	customparams = {

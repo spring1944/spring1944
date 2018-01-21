@@ -319,7 +319,7 @@ local sweDefs = {
 	{
 		into = 'swekanonm02_33_stationary',
 		tech = 0,
-		time = 25,
+		time = 15,
 		metal = 0,
 		energy = 0,
 		directional = true,
@@ -328,7 +328,7 @@ local sweDefs = {
 	{
 		into = 'swekanonm02_33_truck',
 		tech = 0,
-		time = 20,
+		time = 12,
 		metal = 0,
 		energy = 0,
 	},
@@ -355,7 +355,7 @@ local sweDefs = {
 	{
 		into = 'swehaubitsm06_stationary',
 		tech = 0,
-		time = 35,
+		time = 28,
 		metal = 0,
 		energy = 0,
 		directional = true,

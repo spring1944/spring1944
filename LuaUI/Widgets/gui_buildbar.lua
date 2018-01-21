@@ -718,7 +718,12 @@ function widget:Update()
     myTeamID = Spring.GetMyTeamID()
     UpdateFactoryList()
   end
-  inTweak = widgetHandler:InTweakMode()
+  -- 104 bug: attempt to call method 'InTweakMode' (a nil value)
+  if widgetHandler.InTweakMode then
+    inTweak = widgetHandler:InTweakMode()
+  else
+    inTweak = widgetHandler.tweakMode
+  end
 end
 
 

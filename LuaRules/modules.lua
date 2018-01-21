@@ -30,10 +30,34 @@ modules = {
 			head = "stringExt.lua",
 		},
 	},
+	tableExt = {
+		data = {
+			path = MODULES_DIR .. "core/ext/tableExt/",
+			head = "tableExt.lua",
+		},
+	},
 	timeExt = {
 		data = {
 			path = MODULES_DIR .. "core/ext/timeExt/",
 			head = "timeExt.lua",	
+		},
+	},
+	vec3 = {
+		data = {
+			path = MODULES_DIR .. "core/vec3/",
+			head = "vec3.lua",	
+		},
+	},
+	hmsf = {
+		data = {
+			path = MODULES_DIR .. "core/hmsf/",
+			head = "hmsf.lua",	
+		},
+	},
+	json = {
+		data = {
+			path = MODULES_DIR .. "core/json/",
+			head = "json.lua",	
 		},
 	},
 	actionTypes = {

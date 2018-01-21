@@ -119,8 +119,16 @@ local RESUPPLY_PERIOD = math.floor(Spring.GetGameRulesParam("resupplyPeriod") / 
 ----------------------------------------------------------------------------------------------------
 --                                            Includes                                            --
 ----------------------------------------------------------------------------------------------------
-VFS.Include("LuaRules/modules/core/api/message/message.lua", nil, VFS.ZIP_ONLY)
-local includeDir = 'LuaUI/Widgets/notAchili/ss44UI/config/'
+-- get madatory module operators
+VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
+
+-- get other madatory dependencies
+attach.Module(modules, "message")
+HMSF = attach.Module(modules, "hmsf")
+
+-- notaUI config
+local includeDir = 'Widgets/notAchili/NotaUI/config/'
 ----------------------------------------------------------------------------------------------------
 --                                       NotAchili UI shortcuts                                       --
 ----------------------------------------------------------------------------------------------------
@@ -197,7 +205,7 @@ function CreateResourceBarWidget()
 	resourceWidgets[ "energy" ] = CreateResourceWidget( "energy" )
 	resourceWidgets[ "rearm" ] = CreateResourceWidget( "rearm" )
 
-	NOTA_UI.resourceBarWidget = resourceBarWidget
+	SS44_UI.resourceBarWidget = resourceBarWidget
 	UpdateResourceBarGeometry()
 end
 
@@ -378,7 +386,14 @@ function UpdateResource( resName, resUpdateData )
 			progressBar.color = progressbarColors[ resName ]
 		end
 		progressBar:SetValue( current / storage * 100 );
-		progressBar:SetCaption( GetShortNumber( current ) .. " / " .. GetShortNumber( storage ) )
+		
+		-- special handling of rearm res
+		if (resName == "rearm") then
+			progressBar:SetCaption((HMSF(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
+		else
+			progressBar:SetCaption( GetShortNumber( current ) .. " / " .. GetShortNumber( storage ) )
+		end
+		
 	end
 end
 
@@ -434,7 +449,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
 	resourceBarH	= 16.4 * globalSize
 	resourceW		= 104 * globalSize

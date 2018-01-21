@@ -29,7 +29,6 @@ local GER_MAL = ArmedBoat:New{
 		deathanim = {
 			["x"] = {angle = -10, speed = 5},
 		},
-
 	},
 }
 

@@ -895,6 +895,7 @@ local function MakeHotkeyedControl(control, path, option)
 		backgroundColor = epic_colors.sub_button_bg,
 		textColor = epic_colors.sub_button_fg, 
 		tooltip = 'Hotkey: ' .. hotkeystring,
+		styleKey = "buttonResizable",
 	}
 	
 	return StackPanel:New{
@@ -1001,7 +1002,8 @@ MakeSubWindow = function(path)
 					OnMouseUp = {option.OnChange},
 					backgroundColor = epic_colors.sub_button_bg,
 					textColor = epic_colors.sub_button_fg, 
-					tooltip = option.desc
+					tooltip = option.desc,
+					styleKey = "buttonResizable",
 				}
 				tree_children[#tree_children+1] = MakeHotkeyedControl(button, path, option)
 			end
@@ -1021,7 +1023,8 @@ MakeSubWindow = function(path)
 					OnMouseUp = { function() MakeHelp(option.name, option.value) end },
 					backgroundColor = epic_colors.sub_button_bg,
 					textColor = epic_colors.sub_button_fg, 
-					tooltip=option.desc
+					tooltip=option.desc,
+					styleKey = "buttonResizable",
 				}
 			
 		elseif option.type == 'bool' then				
@@ -1075,6 +1078,7 @@ MakeSubWindow = function(path)
 					backgroundColor = epic_colors.sub_button_bg,
 					textColor = epic_colors.sub_button_fg, 
 					tooltip = item.desc,
+					styleKey = "buttonResizable",
 				}
 			end
 			
@@ -1131,14 +1135,38 @@ MakeSubWindow = function(path)
 	local backButton 
 	--back button
 	if parent_path then
-		window_children[#window_children+1] = Button:New{ caption = 'Back', OnMouseUp = { KillSubWindow, function() MakeSubWindow(parent_path) end,  }, 
-			backgroundColor = epic_colors.sub_back_bg,textColor = epic_colors.sub_back_fg, x=0, bottom=1, width='33%', height=buttonH, }
+		window_children[#window_children+1] = Button:New{ 
+			caption = 'Back', 
+			OnMouseUp = { 
+				KillSubWindow, 
+				function() MakeSubWindow(parent_path) end,
+			},
+			backgroundColor = epic_colors.sub_back_bg,
+			textColor = epic_colors.sub_back_fg,
+			x=0, 
+			bottom=1, 
+			width='33%', 
+			height=buttonH,
+			styleKey = "buttonResizable",
+		}
 	end
 	
 	
 	--reset button
-	window_children[#window_children+1] = Button:New{ caption = 'Reset', OnMouseUp = { function() ResetWinSettings(path); RemakeEpicMenu(); end }, 
-		textColor = epic_colors.sub_close_fg, backgroundColor = epic_colors.sub_close_bg, width='33%', x='33%', right='33%', bottom=1, height=buttonH, }
+	window_children[#window_children+1] = Button:New{
+		caption = 'Reset', 
+		OnMouseUp = { 
+			function() ResetWinSettings(path); RemakeEpicMenu(); end 
+		},
+		textColor = epic_colors.sub_close_fg,
+		backgroundColor = epic_colors.sub_close_bg,
+		width='33%',
+		x='33%',
+		right='33%',
+		bottom=1,
+		height=buttonH,
+		styleKey = "buttonResizable",
+	}
 	
 	
 	--close button
@@ -1152,6 +1180,7 @@ MakeSubWindow = function(path)
 		backgroundColor = epic_colors.sub_close_bg,
 		width='33%', x='66%', right=1, bottom=1,
 		height=buttonH,
+		styleKey = "buttonResizable",
 	}
 	
 	
@@ -1260,8 +1289,8 @@ local function MakeCrudeExitWindow()
 			
 			Button:New{
 				caption = "Exit game", OnMouseUp = { function() 
-					if WG.NOTA_UI and WG.NOTA_UI.ShowExitScreen then
-						WG.NOTA_UI.ShowExitScreen()
+					if WG.SS44_UI and WG.SS44_UI.ShowExitScreen then
+						WG.SS44_UI.ShowExitScreen()
 					else
 						Spring.SendCommands{ "quit", "quitforce" }
 					end
@@ -1503,7 +1532,8 @@ local function MakeMenuBar()
 			caption = "Menu",
 			backgroundColor = { 1, 1, 1, 1 },
 			font = { size = fontSize },
-			OnMouseUp = { ShowMenuWindow }
+			OnMouseUp = { ShowMenuWindow },
+			styleKey = "buttonResizable",
 		} )
 		panel:AddChild( button )
 		
@@ -1945,7 +1975,8 @@ function CreateMenuWindow()
 				font = { size = fontSize },
 				OnMouseUp = { function()
 					Spring.SendCommands{ "pause" }
-				end }
+				end },
+				styleKey = "buttonResizable",
 			} )
 		
 			local settingsButton = Button:New( {
@@ -1956,7 +1987,8 @@ function CreateMenuWindow()
 				OnMouseUp = { function() 
 					HideMenuWindow()
 					MakeSubWindow( 'Settings' ) 
-				end }
+				end },
+				styleKey = "buttonResizable",
 			} )
 			
 			local resignButton = Button:New( {
@@ -1964,7 +1996,8 @@ function CreateMenuWindow()
 				caption = "Resign",
 				backgroundColor = { 1, 1, 1, 1 },
 				font = { size = fontSize },
-				OnMouseUp = { ConfirmResignAction }
+				OnMouseUp = { ConfirmResignAction },
+				styleKey = "buttonResizable",
 			} )
 			
 			local exitGameButton = Button:New( {
@@ -1972,7 +2005,8 @@ function CreateMenuWindow()
 				caption = "Exit Game",
 				backgroundColor = { 1, 1, 1, 1 },
 				font = { size = fontSize },
-				OnMouseUp = { ConfirmExitGameAction }
+				OnMouseUp = { ConfirmExitGameAction },
+				styleKey = "buttonResizable",
 			} )
 			
 			local exitMenuButton = Button:New( {
@@ -1980,7 +2014,8 @@ function CreateMenuWindow()
 				caption = "Back to Game",
 				backgroundColor = { 1, 1, 1, 1 },
 				font = { size = fontSize },
-				OnMouseUp = { HideMenuWindow }
+				OnMouseUp = { HideMenuWindow },
+				styleKey = "buttonResizable",
 			} )
 			
 			stackPanel:AddChild( CreateVerticalSeparator( 8 * globalSize ) )
@@ -2042,8 +2077,8 @@ function ConfirmExitGameAction()
 		"You want to exit game,\n      are you sure?",
 		function()
 			HideConfirmWindow()
-			if WG.NOTA_UI and WG.NOTA_UI.ShowExitScreen then
-				WG.NOTA_UI.ShowExitScreen()
+			if WG.SS44_UI and WG.SS44_UI.ShowExitScreen then
+				WG.SS44_UI.ShowExitScreen()
 			else
 				Spring.SendCommands{ "quit", "quitforce" }
 			end
@@ -2082,7 +2117,8 @@ function ShowConfirmWidget( title, description, action )
 				caption = "Ok",
 				backgroundColor = { 1, 1, 1, 1 },
 				font = { size = fontSize },
-				OnMouseUp = { action }
+				OnMouseUp = { action },
+				styleKey = "buttonResizable",
 			}
 
 			local cancelButton = Button:New{
@@ -2094,7 +2130,8 @@ function ShowConfirmWidget( title, description, action )
 						HideConfirmWindow()
 						ShowMenuWindow()
 					end
-				}
+				},
+				styleKey = "buttonResizable",
 			}
 			
 			stackPanel:AddChild( CreateVerticalSeparator( 16 * globalSize ) )

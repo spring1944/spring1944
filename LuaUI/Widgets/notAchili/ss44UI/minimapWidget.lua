@@ -115,7 +115,7 @@ function CreateMinimapWidget()
 		width = totalW, height = minimapH,
 	}
 	
-	NOTA_UI.minimapWidget = minimapWidget
+	SS44_UI.minimapWidget = minimapWidget
 	
 	UpdateMinimapGeometry()
 end
@@ -183,22 +183,22 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
+	labelH = SS44_UI.labelH
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 	
 	minimapW = totalW
-	minimapH = NOTA_UI.minimapH
+	minimapH = SS44_UI.minimapH
 	
-	minimapOffset = NOTA_UI.skinMargin
+	minimapOffset = SS44_UI.skinMargin
 end
 
 ----------------------------------------------------------------------------------------------------

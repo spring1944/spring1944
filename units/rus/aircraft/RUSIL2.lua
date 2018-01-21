@@ -8,7 +8,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	maxAileron			= 0.004,
 	maxBank				= 0.75,
 	maxElevator			= 0.002,
-	maxPitch			= 0.03,
+	maxPitch			= 0.05,
 	maxRudder			= 0.0019,
 	maxVelocity			= 14,
 

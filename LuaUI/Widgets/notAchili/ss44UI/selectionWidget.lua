@@ -1,3 +1,12 @@
+-- DEPENDENCIES --
+
+-- get madatory module operators
+VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
+
+-- get other madatory dependencies
+attach.Module(modules, "tableExt")
+
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
@@ -60,6 +69,7 @@ local function GotoUnitFromSelection( selectDefId ) end
 
 local function ResetWidget() end
 local function ReadSettings() end
+
 ----------------------------------------------------------------------------------------------------
 --                          Shortcut to used global functions to speedup                          --
 ----------------------------------------------------------------------------------------------------
@@ -152,6 +162,7 @@ function CreateSelectionWidget()
 				x = 0, y = 0, width = "100%", height = labelH,
 				caption = "Unit Name",
 				font = { size = labelFontSize },
+				styleKey = "buttonResizable",
 			},
 			Image:New{
 				x = imageOffset, y = labelH + 2,
@@ -189,7 +200,7 @@ function CreateSelectionWidget()
 		}
 	}
 	
-	NOTA_UI.selectionWidget = selectionWidget
+	SS44_UI.selectionWidget = selectionWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -204,7 +215,7 @@ function CreateStatLine( items )
 			file = unitStatsIconPrefix .. item .. ".png"
 		}
 		result[ #result + 1 ] = Label:New{
-			width = 14.4 * globalSize, height = 6.4 * globalSize,
+			width = 12.4 * globalSize, height = 6.4 * globalSize,
 			autosize = false,
 			caption = '',
 			font = {
@@ -315,7 +326,9 @@ function UpdateSelectionWidget()
 					caption = group, 
 					width = "100%", height = labelH,
 					font = { size = labelFontSize },
+					styleKey = "buttonResizable",
 				}
+				
 				groupButton.OnClick = { DoSelectionGroupMouseUp }
 				groupButton.unitDefIdList = grid.unitDefIdList
 				
@@ -362,7 +375,7 @@ function UpdateSelectionWidget()
 	
 	selectionWidget.onlyOneCategory = ( #gridPanel.children < 3 )
 	
-	local selectionY = NOTA_UI.minimapOffset or 0
+	local selectionY = SS44_UI.minimapOffset or 0
 	local selectionH = screen0.height - selectionY
 	
 	if totalHeight <= selectionH then
@@ -557,18 +570,18 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 end
 
 ----------------------------------------------------------------------------------------------------

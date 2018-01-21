@@ -70,7 +70,7 @@ local itaDefs = {
   {
     into = 'itacannone75_stationary',
     tech = 0,
-    time = 25,
+    time = 15,
     metal = 0,
     energy = 0,
 	directional = true,
@@ -80,7 +80,7 @@ local itaDefs = {
   {
     into = 'itacannone75_truck',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
   },

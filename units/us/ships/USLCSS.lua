@@ -4,6 +4,7 @@ local US_LCSS = Boat:New{
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 1800,
+	stealth			= true,
 	iconType				= "gunboat",
 	maxDamage				= 1030,
 	maxReverseVelocity		= 0.5,

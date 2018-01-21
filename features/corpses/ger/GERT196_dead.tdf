@@ -1,0 +1,17 @@
+[GERT196_dead]
+{
+	object=GER/GERT196_dead.s3o;
+	description=Sunk Torpedo boat;
+	energy=5000;
+	damage=30000;
+	footprintx=8;
+	footprintz=8;
+	reclaimable=1;
+	blocking=0;
+	hitdensity=50;
+	height=15;
+	[customParams]
+		{
+
+		}
+}
