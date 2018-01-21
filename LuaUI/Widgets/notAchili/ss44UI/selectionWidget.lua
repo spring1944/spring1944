@@ -1,3 +1,12 @@
+-- DEPENDENCIES --
+
+-- get madatory module operators
+VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
+
+-- get other madatory dependencies
+attach.Module(modules, "tableExt")
+
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
@@ -60,6 +69,7 @@ local function GotoUnitFromSelection( selectDefId ) end
 
 local function ResetWidget() end
 local function ReadSettings() end
+
 ----------------------------------------------------------------------------------------------------
 --                          Shortcut to used global functions to speedup                          --
 ----------------------------------------------------------------------------------------------------
@@ -152,6 +162,7 @@ function CreateSelectionWidget()
 				x = 0, y = 0, width = "100%", height = labelH,
 				caption = "Unit Name",
 				font = { size = labelFontSize },
+				styleKey = "buttonResizable",
 			},
 			Image:New{
 				x = imageOffset, y = labelH + 2,
@@ -204,7 +215,7 @@ function CreateStatLine( items )
 			file = unitStatsIconPrefix .. item .. ".png"
 		}
 		result[ #result + 1 ] = Label:New{
-			width = 14.4 * globalSize, height = 6.4 * globalSize,
+			width = 12.4 * globalSize, height = 6.4 * globalSize,
 			autosize = false,
 			caption = '',
 			font = {
@@ -315,7 +326,9 @@ function UpdateSelectionWidget()
 					caption = group, 
 					width = "100%", height = labelH,
 					font = { size = labelFontSize },
+					styleKey = "buttonResizable",
 				}
+				
 				groupButton.OnClick = { DoSelectionGroupMouseUp }
 				groupButton.unitDefIdList = grid.unitDefIdList
 				

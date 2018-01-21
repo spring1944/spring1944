@@ -307,7 +307,8 @@ function UpdateBuildsWidget()
 						y = 2, height = labelH - 4,
 						file = stateIcons[ grid.viewState ],
 					}
-				}
+				},
+				styleKey = "buttonResizable",
 			}
 			--groupButton.OnClick = { DoBuildIconMouseClicked }
 			
