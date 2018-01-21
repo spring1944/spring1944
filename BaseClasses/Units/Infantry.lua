@@ -33,6 +33,7 @@ local Infantry = Unit:New{
 		damageGroup			= "infantry",
 		feartarget			= true,
 		soundcategory 		= "<SIDE>/Infantry",
+		pronespheremovemult = 0.4,
 		wiki_parser                 = "infantry",  -- infantry.md template
 		wiki_subclass_comments      = "",      -- To be override by inf classes
 		wiki_comments               = "",      -- To be override by each unit
@@ -349,6 +350,7 @@ local InfantryGun = Infantry:New{
 		hasturnbutton		= true,
 		maxammo				= 4,
 		infgun				= true,
+		pronespheremovemult = 0.2,
 		scriptAnimation = "infantrygun_anim",
 		wiki_subclass_comments = [[This gun, towed by infantry, is an efficient
 way to provide infantry support, becoming relatively cheap, with a long enough

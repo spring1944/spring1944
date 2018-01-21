@@ -26,6 +26,7 @@ local GetTeamInfo				= Spring.GetTeamInfo
 local CallCOBScript				= Spring.CallCOBScript
 local SetUnitExperience			= Spring.SetUnitExperience
 local SetUnitRulesParam 		= Spring.SetUnitRulesParam
+
 -- constants
 local MORALE_RADIUS = 150
 local FEAR_IDS = 	{["301"] = 2, --small arms or very small calibre cannon: MGs, snipers, LMGs, 20mm
@@ -34,6 +35,8 @@ local FEAR_IDS = 	{["301"] = 2, --small arms or very small calibre cannon: MGs, 
 					 ["601"] = 16, --omgwtfbbq explosions: medium/large bombs, 170+mm guns, rocket arty}
 					 ["701"] = 2  --a hack for aircraft fear, should be merged with 301 at some point.
 					}
+local DEFAULT_PRONE_SPHERE_MOVE_MULT = 0.4
+
 -- variables
 local cobScriptIDs = {}
 local lusScriptIDs = {}
@@ -55,15 +58,16 @@ if (gadgetHandler:IsSyncedCode()) then
 local function UpdateCollision(unitID, direction)
 	local unitDef = UnitDefs[Spring.GetUnitDefID(unitID)]
 	
-	-- filter out static units like MG nests and AA posts
+	-- filter out static units like MG nests and AA/AT posts
 	if (unitDef.speed > 0) then
 		
 		-- filter out repeated calls on units already in proper state
 		if ((collisionUpdated[unitID] and direction == 1) or (collisionUpdated[unitID] == nil and direction == -1)) then
+			local sphereMult = unitDef.customParams.pronespheremovemult or DEFAULT_PRONE_SPHERE_MOVE_MULT
 			
 			-- hitsphere update 
 			local scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, volumeType, testType, primaryAxis = Spring.GetUnitCollisionVolumeData(unitID)
-			Spring.SetUnitCollisionVolumeData(unitID, scaleX, scaleY, scaleZ, offsetX, offsetY + direction * scaleY/2, offsetZ, volumeType, testType, primaryAxis)
+			Spring.SetUnitCollisionVolumeData(unitID, scaleX, scaleY, scaleZ, offsetX, offsetY + direction * scaleY * sphereMult, offsetZ, volumeType, testType, primaryAxis)
 			
 			-- ! it is not possible to play with the aim pos because it setting mid pos via Spring.SetUnitMidAndAimPos will reset the animation script
 			-- enemies aiming to old position will still hit
