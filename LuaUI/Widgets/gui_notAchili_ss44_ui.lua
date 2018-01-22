@@ -47,8 +47,8 @@ local function SetGlobalSize( globalSize )
 
 	SS44_UI.globalSize = globalSize
 	
-	SS44_UI.imageW = 18 * globalSize
-	SS44_UI.imageH = 18 * globalSize
+	SS44_UI.imageW = 24 * globalSize
+	SS44_UI.imageH = 24 * globalSize
 	SS44_UI.imageOffset = 2 * globalSize
 	SS44_UI.imageInRow = 4
 	

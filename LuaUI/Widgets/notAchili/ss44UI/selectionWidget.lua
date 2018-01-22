@@ -21,7 +21,7 @@ local imageOffset = 5
 local imageInRow = 3
 
 local labelH = 20
-local labelFontSize = 4.8 * globalSize
+local labelFontSize = 8 * globalSize
 
 local rowSize = imageW * imageInRow + imageOffset * ( imageInRow + 1 )
 local totalW = rowSize + 21
@@ -439,13 +439,15 @@ function CreateUnitIcon( unitDefId, unitsCount )
 
 	local label = Label:New{ 
 		caption = unitsCount,
-		y = countLabelY,
-		right = countLabelX,
+		y = 2, height = labelH,
+		right = countLabelX, width = "100%",
 		autosize = false,
 		align = "right",
+		valign = "top",
 		font = {
 			outline = true,
-			size = labelFontSize
+			size = 8 * globalSize,
+			font = "LuaUI/Fonts/Visitor1.ttf",
 		},
 	}
 
