@@ -39,7 +39,7 @@ local hoverColor	= { 0.5, 0.5, 1.0, 1 }
 local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
-local metalColor  = { 0.8, 0.8, 0.8, 1 }
+local metalColor  = { 0.9, 0.9, 0.9, 1 }
 local energyColor = { 1.0, 1.0, 0.0, 1 }
 
 ----------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ function CreateBuildWidget()
 	-- setup NotAchili
 	NotAchili = WG.NotAchili
 	Button = NotAchili.Button
-	Font  =NotAchili.Font
+	Font = NotAchili.Font
 	Label = NotAchili.Label
 	Colorbars = NotAchili.Colorbars
 	Checkbox = NotAchili.Checkbox
@@ -448,8 +448,8 @@ function GetBuildButton( unitDefId )
 			align = "right",
 			valign = "top",
 			font = {
-				font = "LuaUI/Fonts/Visitor2.ttf",
-				size = 7.2 * globalSize,
+				font = "LuaUI/Fonts/Visitor1.ttf",
+				size = 8 * globalSize,
 				color = { 1, 1, 1, 1 },
 				outline = true,
 			}
@@ -458,33 +458,33 @@ function GetBuildButton( unitDefId )
 		local info = UnitDefs[ unitDefId ]
 		local metalCostLabel = Label:New{ 
 			caption = math_floor( info.metalCost ),
-			bottom = 4.8 * globalSize, height = labelH,
-			x = 2, width = "100%",
+			bottom = 2 * globalSize, height = labelH,
+			x = 0, width = "100%",
 			autosize = false,
-			align = "left",
+			align = "right",
 			valign = "bottom",
 			font = {
 				font = "LuaUI/Fonts/Visitor1.ttf",
-				size = 4 * globalSize,
+				size = 8 * globalSize,
 				color = metalColor,
 				outline = true,
 			}
 		}
 		
-		local energyCostLabel = Label:New{ 
-			caption = math_floor( info.energyCost ),
-			bottom = 2, height = labelH,
-			x = 2, width = "100%",
-			autosize = false,
-			align = "left",
-			valign = "bottom",
-			font = {
-				font = "LuaUI/Fonts/Visitor1.ttf",
-				size = 4 * globalSize,
-				color = energyColor,
-				outline = true,
-			}
-		}
+		-- local energyCostLabel = Label:New{ 
+			-- caption = math_floor( info.energyCost ),
+			-- bottom = 2, height = labelH,
+			-- x = 2, width = "100%",
+			-- autosize = false,
+			-- align = "left",
+			-- valign = "bottom",
+			-- font = {
+				-- font = "LuaUI/Fonts/Visitor1.ttf",
+				-- size = 4 * globalSize,
+				-- color = energyColor,
+				-- outline = true,
+			-- }
+		-- }
 
 		image = Image:New{
 			name = "build"..unitDefId,
@@ -499,7 +499,7 @@ function GetBuildButton( unitDefId )
 			OnMouseEnter = DoBuildIconMouseEnter,
 			OnMouseLeave = DoBuildIconMouseLeave,
 			
-			children = { countLabel, metalCostLabel, energyCostLabel },
+			children = { countLabel, metalCostLabel },
 		} 
 		
 		buildButtons[ unitDefId ] = image

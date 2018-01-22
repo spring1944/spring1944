@@ -12,6 +12,8 @@ local hoverColor	= { 0.5, 0.5, 1.0, 1 }
 local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
+local markerColor	= { 1.0, 1.0, 0.7, 1 }
+
 local ordersGroup = {
 	"states",
 	"basic",
@@ -494,11 +496,21 @@ function GetOrderButton( cmd )
 			image.file = button.texture
 		else
 			local label = Label:New{
-				parent = button, width = "100%", height = "100%", 
-				autosize = false, align = "center",
+				parent = button, 
+				width = "100%", height = "100%", 
+				caption = cmd.name,
+				bottom = 1 * globalSize,
+				x = 2,
+				autosize = false,
+				align = "left",
+				valign = "bottom",
+				font = {
+					--font = "LuaUI/Fonts/Visitor1.ttf",
+					size = 4.5 * globalSize,
+					color = markerColor,
+					outline = true,
+				}
 			}
-			label.font.outline = true
-			label:SetCaption( cmd.name )
 			
 			if( cmd.texture ) then
 				local image = Image:New{ parent = button, width = "100%", height = "100%" }
