@@ -448,6 +448,9 @@ function CreateUnitIcon( unitDefId, unitsCount )
 			outline = true,
 			size = 8 * globalSize,
 			font = "LuaUI/Fonts/Visitor1.ttf",
+			outline = true,
+			outlineWidth = 7,
+			outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 		},
 	}
 
