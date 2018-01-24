@@ -307,7 +307,7 @@ function AddConsoleLine( line )
 	local lineLabel = Label:New{
 		width = labelW, height = labelH,
 		autosize = false,
-		caption = "\t\t" .. parsed.formattedText,
+		caption = "\t\t\t" .. parsed.formattedText,
 		message = parsed,
 		font = { 
 			outline = true,

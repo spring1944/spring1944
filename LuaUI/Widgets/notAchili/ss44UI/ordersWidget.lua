@@ -13,6 +13,9 @@ local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
 local markerColor	= { 1.0, 1.0, 0.7, 1 }
+local outlineColor = { 0.1, 0.1, 0.1, 0.9 }
+
+local outlineWidth = 8
 
 local ordersGroup = {
 	"states",
@@ -500,15 +503,17 @@ function GetOrderButton( cmd )
 				width = "100%", height = "100%", 
 				caption = cmd.name,
 				bottom = 1 * globalSize,
-				x = 2,
+				x = 0,
 				autosize = false,
-				align = "left",
+				align = "right",
 				valign = "bottom",
 				font = {
 					--font = "LuaUI/Fonts/Visitor1.ttf",
-					size = 4.5 * globalSize,
+					size = 4 * globalSize,
 					color = markerColor,
 					outline = true,
+					outlineWidth = outlineWidth,
+					outlineColor = outlineColor,
 				}
 			}
 			

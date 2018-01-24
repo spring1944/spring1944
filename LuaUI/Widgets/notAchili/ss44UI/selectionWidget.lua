@@ -185,7 +185,16 @@ function CreateSelectionWidget()
 				padding = { 0, 0, 0, 0 },
 				itemMargin = { 0, 0, 4, 4 },
 				resizeItems = false,
-				children = CreateStatLine{ "dps", "range", "speed", "health" }
+				children = CreateStatLine{ "dps", "range"}
+			},
+			Grid:New{
+				x = imageOffset * 2 + imageW, width = imageW * 2 + imageOffset * 2 + 10,
+				y = 2*labelH + imageOffset, height = imageH,
+				centerItems = false,
+				padding = { 0, 0, 0, 0 },
+				itemMargin = { 0, 0, 4, 4 },
+				resizeItems = false,
+				children = CreateStatLine{ "speed", "health" }
 			}
 				
 			--[[
@@ -211,11 +220,11 @@ function CreateStatLine( items )
 	
 		local item = items[ i ]
 		result[ #result + 1 ] = Image:New{ 
-			width = 6.4 * globalSize, height = 6.4 * globalSize,
+			width = 6 * globalSize, height = 7 * globalSize,
 			file = unitStatsIconPrefix .. item .. ".png"
 		}
 		result[ #result + 1 ] = Label:New{
-			width = 12.4 * globalSize, height = 6.4 * globalSize,
+			width = 14 * globalSize, height = 7 * globalSize,
 			autosize = false,
 			caption = '',
 			font = {
@@ -291,6 +300,7 @@ function UpdateSelectionWidget()
 	
 	local gridPanel = StackPanel:New{
 		width = "100%",
+		height = imageH + imageOffset,
 		autosize = true,
 		itemMargin = { 0, 0, 0, 0 },
 		itemPadding = { 0, 0, 0, 0 },
@@ -352,23 +362,25 @@ function UpdateSelectionWidget()
 		local countLabel = image.children[ 1 ]
 		countLabel:SetCaption( unit.count == 1 and '' or unit.count )
 		
-		local statGrid = singleSelectionWidget.children[ 3 ]
+		local statGridOne = singleSelectionWidget.children[ 3 ]
 		
-		local attack = statGrid.children[ 2 ]
+		local attack = statGridOne.children[ 2 ]
 		attack:SetCaption( CalculateDPS( info ) )
 		
 		local rangeText = ( info.maxWeaponRange > 0 ) and info.maxWeaponRange or "-"
-		local range = statGrid.children[ 4 ]
+		local range = statGridOne.children[ 4 ]
 		range:SetCaption( rangeText )
 		
+		local statGridTwo = singleSelectionWidget.children[ 4 ]
+		
 		local speedText = ( info.speed > 0 ) and string_format( "%i", info.speed ) or "-"
-		local speed = statGrid.children[ 6 ]
+		local speed = statGridTwo.children[ 2 ]
 		speed:SetCaption( speedText )
 		
-		local health = statGrid.children[ 8 ]
+		local health = statGridTwo.children[ 4 ]
 		health:SetCaption( info.health )
 		
-		totalHeight = labelH + imageH + imageOffset * 3 + 4 + 8
+		totalHeight = 2*labelH + imageH + imageOffset * 3 + 4 + 6
 		--totalHeight = singleSelectionWidget.height
 		gridPanel:AddChild( singleSelectionWidget )
 	end
@@ -448,6 +460,9 @@ function CreateUnitIcon( unitDefId, unitsCount )
 			outline = true,
 			size = 8 * globalSize,
 			font = "LuaUI/Fonts/Visitor1.ttf",
+			outline = true,
+			outlineWidth = 7,
+			outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 		},
 	}
 

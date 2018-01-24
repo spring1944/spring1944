@@ -35,12 +35,15 @@ local supportUnits = {
 
 local enabledColor	= { 1.0, 1.0, 1.0, 1 }
 local disabledColor	= { 0.5, 0.5, 0.5, 1 }
-local hoverColor	= { 0.5, 0.5, 1.0, 1 }
+local hoverColor	= { 0.8, 0.8, 1.0, 1 }
 local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
 local metalColor  = { 0.9, 0.9, 0.9, 1 }
+local metalOutlineColor = { 0.1, 0.1, 0.1, 0.9 }
 local energyColor = { 1.0, 1.0, 0.0, 1 }
+
+local outlineWidth = 7
 
 ----------------------------------------------------------------------------------------------------
 --                                        Local variables                                         --
@@ -452,6 +455,8 @@ function GetBuildButton( unitDefId )
 				size = 8 * globalSize,
 				color = { 1, 1, 1, 1 },
 				outline = true,
+				outlineWidth = outlineWidth,
+				outlineColor = metalOutlineColor,
 			}
 		}
 		
@@ -459,15 +464,17 @@ function GetBuildButton( unitDefId )
 		local metalCostLabel = Label:New{ 
 			caption = math_floor( info.metalCost ),
 			bottom = 2 * globalSize, height = labelH,
-			x = 0, width = "100%",
+			right = countLabelX + 0.5 * globalSize, width = "100%",
 			autosize = false,
 			align = "right",
 			valign = "bottom",
 			font = {
 				font = "LuaUI/Fonts/Visitor1.ttf",
-				size = 8 * globalSize,
+				size = 6 * globalSize,
 				color = metalColor,
 				outline = true,
+				outlineWidth = outlineWidth,
+				outlineColor = metalOutlineColor,
 			}
 		}
 		
