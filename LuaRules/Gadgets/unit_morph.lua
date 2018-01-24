@@ -291,7 +291,7 @@ local function GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, un
      (morphDef.rank > unitRank) or
      (not teamOwnsReqUnit)
   then
-    tt = tt .. RedStr .. 'needs'
+    tt = tt .. LightRedStr .. 'needs'
     if (morphDef.tech>teamTech) then tt = tt .. ' level: ' .. morphDef.tech end
     if (morphDef.xp>unitXP)     then tt = tt .. ' xp: '    .. string.format('%.2f',morphDef.xp) end
     if (morphDef.rank>unitRank) then tt = tt .. ' rank: '  .. morphDef.rank .. ' (' .. string.format('%.2f',RankToXp(unitDefID,morphDef.rank)) .. 'xp)' end
@@ -403,7 +403,7 @@ local function StartMorph(unitID, unitDefID, teamID, morphDef, cmdParams)
 
   local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
   if (cmdDescID) then
-    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
+    Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=LightRedStr.."Stop", type = CMDTYPE.ICON})
   end
 
   SendToUnsynced("unit_morph_start", unitID, unitDefID, morphDef.cmd)
@@ -1191,7 +1191,7 @@ function FactoryQueueUpgrade(unitID, morphDef)
     Spring.GiveOrderToUnit(unitID,CMD.INSERT,{-1,-morphDef.upgradeUnit,0},{"ctrl", "alt"})
     local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
     if (cmdDescID) then
-        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
+        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=LightRedStr.."Stop", type = CMDTYPE.ICON})
     end
 end
 
@@ -1202,7 +1202,7 @@ function FactoryStartUpgrade(unitID, unitDefID, teamID, morphDef, fakeUnitID)
                          fakeUnit = fakeUnitID}
     local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
     if (cmdDescID) then
-        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=RedStr.."Stop", type = CMDTYPE.ICON})
+        Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=LightRedStr.."Stop", type = CMDTYPE.ICON})
     end
     SendToUnsynced("unit_morph_start", unitID, unitDefID, morphDef.cmd)
     upgradeUnits[unitID] = upgradeData
