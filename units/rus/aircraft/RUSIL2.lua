@@ -8,7 +8,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	maxAileron			= 0.004,
 	maxBank				= 0.75,
 	maxElevator			= 0.002,
-	maxPitch			= 0.03,
+	maxPitch			= 0.05,
 	maxRudder			= 0.0019,
 	maxVelocity			= 14,
 
@@ -17,6 +17,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		enginesoundnr		= 16,
 		maxammo				= 4,
 		maxFuel				= 180,
+
 	},
 
 	weapons = {
@@ -85,6 +86,9 @@ local RUS_IL2PTAB = RUS_IL2:Clone("RUSIl2"):New{
 		[4] = {
 			name				= "NOWEAPON",
 		},
+	},
+	customParams = {
+
 	},
 }
 

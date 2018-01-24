@@ -309,7 +309,7 @@ MakeWidgetList = function()
 				bottom=1,
 				width='40%',
 				height=C_HEIGHT,
-				
+				styleKey = "buttonResizable",
 			},
 			--Categorization checkbox
 			Checkbox:New{ 

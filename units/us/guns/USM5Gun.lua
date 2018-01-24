@@ -4,6 +4,9 @@ local US_M5Gun_Truck = ATGunTractor:New{
 	corpse					= "USGMCTruck_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 15,
+	customParams = {
+
+	},
 }
 
 local US_M5Gun_Stationary = ATGun:New{
@@ -13,6 +16,9 @@ local US_M5Gun_Stationary = ATGun:New{
 		[1] = { -- AP
 			name				= "M7ap",
 		},
+	},
+	customParams = {
+
 	},
 }
 

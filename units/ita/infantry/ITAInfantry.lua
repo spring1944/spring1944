@@ -1,9 +1,15 @@
 local ITAInf = {
 	maxDamageMul		= 0.8,
+	customParams = {
+
+	},
 }
 local Alpini = {
 	maxDamageMul		= 1.25,
 	movementClass		= "KBOT_alpini",
+	customParams = {
+		pronespheremovemult = 0.5,
+	}
 }
 local Bersaglieri = {
 	maxDamageMul		= 1.15,
@@ -158,6 +164,7 @@ local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
 	name				= "Scoped Solothurn S-18/100",
 	description			= "Scoped Long Range Light Anti-Tank",
 	iconType			= "itascopedsolo",
+	buildpic			= "ITAeliteSoloAT.png",
 	weapons = {
 		[1] = { -- AT Launcher
 			name				= "ScopedSolothurn",

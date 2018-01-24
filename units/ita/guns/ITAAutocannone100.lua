@@ -9,11 +9,15 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 		[1] = {
 			name				= "Obice100mmL17HE",
 		},
+		[2] = {
+			name				= "Obice100mmL17Smoke",
+		},
 	},
 	customParams = {
 		turretturnspeed		= 8,
 		maxammo				= 8,
 		maxvelocitykmh		= 45,
+		weapontoggle		= "smoke",
 	},
 }
 

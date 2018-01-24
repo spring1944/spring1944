@@ -1,5 +1,8 @@
 local SWEInf = {
 	maxDamageMul		= 1.4,
+	customParams = {
+
+	},
 }
 
 local SWE_HQEngineer = EngineerInf:New(SWEInf):New{
@@ -76,6 +79,9 @@ local SWE_Sniper = SniperInf:New(SWEInf):New{
 			name				= "Gevar_M_38_Sniper",
 		},
 	},
+	customParams = {
+		pronespheremovemult = 0.5,
+	}
 }
 
 local SWE_PSkottM45 = ATLauncherInf:New(SWEInf):New{
@@ -134,6 +140,7 @@ local SWE_Partisan = RifleInf:New(Partisan):New{
 	customParams = {
 		flagCapRate			= 0.005,
 		weapontoggle		= "ambush",
+		pronespheremovemult = 0.5,
 	},
 
 	weapons = {

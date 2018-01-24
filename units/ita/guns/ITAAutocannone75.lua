@@ -1,7 +1,7 @@
 local ITAAutocannone75 = Truck:New(AssaultGun):New{
 	name				= "Autocannone da 75/27",
 	description			= "Gun Truck",
-	buildCostMetal		= 1650,
+	buildCostMetal		= 1403,
 	maxDamage			= 270,
 	trackOffset			= 5,
 	trackWidth			= 19,
@@ -15,6 +15,7 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 	customParams = {
 		maxammo				= 5,
 		maxvelocitykmh		= 38,
+
 	},
 }
 

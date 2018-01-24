@@ -9,6 +9,7 @@ local JPN_RiKi = EngineerVehicle:New{
 	customParams = {
 		maxvelocitykmh		= 32,
 		exhaust_fx_name			= "diesel_exhaust",
+
 	},
 }
 

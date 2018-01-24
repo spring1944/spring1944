@@ -36,6 +36,7 @@ local GERTigerII = HeavyTank:New{
 		maxammo				= 16,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 38,
+		normaltex			= "unittextures/GERTigerII_normals.dds",
 	},
 }
 

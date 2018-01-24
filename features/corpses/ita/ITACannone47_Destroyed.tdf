@@ -7,5 +7,9 @@
   footprintZ=2;
   object=ITACannone47_Destroyed;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

@@ -71,7 +71,7 @@ local hunDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "2 x 31M Light Machinegun, 1 x 7M/31 Heavy Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1350,
+		buildCostMetal = 1150,
 		buildPic = "HUNHMG.png",
 	},
 
@@ -109,8 +109,8 @@ local hunDefs = {
 			"hunpanzerschrek",
 		},
 		name = "Anti-Tank Squad",
-		description = "2 x Panzerfaust, 1 x Panzerschrek: Anti-Tank Infantry",
-		buildCostMetal = 450,
+		description = "2 x Panzerfaust, 1 x 44M kézi rakétavetõ: Anti-Tank Infantry",
+		buildCostMetal = 350,
 		buildPic = "HUNPanzerfaust.png",
 	},
 

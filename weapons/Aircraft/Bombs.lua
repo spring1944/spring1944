@@ -95,11 +95,14 @@ local PTAB = BombClass:New{
   areaOfEffect       = 24,
   burst              = 36,
   burstrate          = 0.1,
-  commandfire	= true,
+  commandfire		= true,
+  turret		= true,
+  tolerance		= 5000,
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
   model              = [[MortarShell.S3O]],
-  weaponVelocity     = 150,
+  weaponVelocity     = 200,
+  leadlimit		= 100,
   name               = [[PTAB Anti-Tank Bomblets]],
   projectiles        = 8,
   range              = 500,
@@ -121,7 +124,7 @@ local PTAB = BombClass:New{
 local A_tkbomb = BombClass:New{
   areaOfEffect       = 26,
   burst              = 7,
-  burstrate          = 0.15,
+  burstrate          = 0.15, 
   edgeEffectiveness  = 0.5,
   explosionGenerator = [[custom:HE_medium]], -- overrides default
   model              = [[MortarShell.S3O]],
@@ -137,7 +140,7 @@ local A_tkbomb = BombClass:New{
     damagetype         = [[shapedcharge]], -- overrides default
   },
   damage = {
-    default            = 4406, 
+    default            = 5287, 
     infantry           = 50, 
     lightBuildings     = 75, 
     bunkers            = 500,
@@ -163,10 +166,13 @@ local TypeF12kg = timebombClass:New{
   soundHitDry        = [[GEN_Explo_3]],
   sprayangle         = 3000,
   customparams = {
+	onlyTargetCategory = "BUILDING INFANTRY DEPLOYED TURRET",
     damagetype         = [[explosive]], -- overrides default
+	fearid             = 401,
+	fearaoe            = 250, 
   },
   damage = {
-    default            = 600, 
+    default            = 600,
   }
 }
 -- Return only the full weapons

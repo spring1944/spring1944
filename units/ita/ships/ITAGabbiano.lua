@@ -8,9 +8,9 @@ local ITA_Gabbiano = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -12.5 0.0]],
 	collisionVolumeScales	= [[24.0 11.0 150.0]],
 	maxDamage				= 67000,
-	maxVelocity				= 1.8,
+	maxVelocity				= 2.2, -- 18.5kn
 	transportCapacity		= 6, -- 6 x 1fpu turrets
-	turnRate				= 25,	
+	turnRate				= 35,	
 	weapons = {	
 		[1] = {
 			name				= "OTO100mmL47HE",
@@ -36,6 +36,7 @@ local ITA_Gabbiano = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -54,6 +55,7 @@ local ITA_Gabbiano_Turret_100mm = PartiallyEnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 28,
 		elevationspeed			= 28,
+
 	},
 }
 
@@ -79,6 +81,7 @@ local ITA_Gabbiano_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+
     },
 }
 
@@ -106,7 +109,9 @@ local ITA_Gabbiano_Turret_Twin20mm = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
 		facing					= 2,
+		defaultheading1			= math.rad(180),
 		aaweapon				= 1,
+
     },
 }
 

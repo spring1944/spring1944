@@ -10,10 +10,10 @@ local GBR_LCSL = ArmedBoat:New{
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.4,
 	transportCapacity		= 5, -- 5 x 1fpu turrets
-	turnRate				= 240,	
+	turnRate				= 40,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
-			name				= "qf6pdr57mmhe",
+			name				= "qf6pdr57mmap",
 		},
 	},
 	customparams = {
@@ -32,6 +32,7 @@ local GBR_LCSL = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -49,7 +50,8 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 		maxammo					= 10,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
-    },
+
+	},
 }
 
 
@@ -74,6 +76,7 @@ local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		facing 					= 2,
+
 	},
 }
 
@@ -82,11 +85,11 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 	description				= "Primary Turret",
   	weapons = {	
 		[1] = {
-			name				= "qf6pdr57mmhe",
+			name				= "qf6pdr57mmap",
 			maxAngleDif			= 270,
 		},
 		[2] = {
-			name				= "qf6pdr57mmap",
+			name				= "qf6pdr57mmhe",
 			maxAngleDif			= 270,
 		},
 	},
@@ -98,6 +101,7 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 		turretturnspeed			= 21, -- 16.9s for 360
 		elevationspeed			= 20,
 		aaweapon				= 2, -- TODO: rename to something more generic e.g. masterweapon
+
     },
 }
 
@@ -127,6 +131,7 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon				= 1,
 		facing 					= 3,
+		defaultheading1			= math.rad(-90),
 	},
 }
 local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
@@ -140,6 +145,7 @@ local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{
 	},
 	customparams = {
 		facing 					= 1,
+		defaultheading1				= math.rad(90),
 	},
 }
 

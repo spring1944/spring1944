@@ -8,11 +8,11 @@
 local HVARRocket = AirRocket:New{
   areaOfEffect       = 18,
   name               = [[5-Inch HVAR Rocket]],
-  range              = 900,
+  range              = 700,
   reloadtime         = 2.5,
+  canAttackGround    = false,
   customparams = {
     armor_penetration  = 38,
-    armor_hit_side     = [[top]],
     damagetype         = [[shapedcharge]],
   },
   damage = {
@@ -27,7 +27,6 @@ local RS82Rocket = AirRocket:New{
   wobble             = 2100,
   soundStart         = [[RUS_RS82]],
   size		     = 0.5,
-  leadLimit	     = 500,
   reloadtime         = 1.8,
   customparams = {
     damagetype         = [[explosive]],

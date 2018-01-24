@@ -139,12 +139,16 @@ Unit = Def:New{
 	objectName				= "<SIDE>/<NAME>.s3o",
 	buildPic				= "<NAME>.png",
 	script					= "<NAME>.cob",
+	customParams			= {
+		normaltex			= "",
+	},
 }
 
 Weapon = Def:New{
 	customParams = {
 		-- this breaks AA, commenting it out. Why is it even there?
 		--onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
+		wiki_comments = "",      -- To be override by each unit
 	},
 }
 

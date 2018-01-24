@@ -217,7 +217,18 @@ local Mod105mm1936HE = MediumHeavyGun:New(MediumHE, true):New{
     default            = 3800,
   },  
 }
-
+-- 105mm/42 SK C/06 Naval gun (GER)
+local sk105_42c06 = MediumHeavyGun:New(MediumHE, true):New{
+  areaOfEffect       = 112,
+  name               = [[105mm SK C/06 Naval Gun]],
+  range              = 1705,
+  reloadTime         = 6.5,
+  soundStart         = [[GEN_105mm]],
+  weaponVelocity     = 1400,
+  damage = {
+    default            = 3800,
+  },  
+}
 -- Return only the full weapons
 return lowerkeys({
   -- KwK36 88mm L/56
@@ -245,4 +256,5 @@ return lowerkeys({
   OTO100mmL47HE = OTO100mmL47HE,
   -- SWE 105mm 1936 Naval gun
   Mod105mm1936HE = Mod105mm1936HE,
+  sk105_42c06 = sk105_42c06,
 })

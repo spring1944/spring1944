@@ -3,13 +3,16 @@ local FRA_105mm_Truck = HGunTractor:New{
 	corpse					= "fracitroenp17_destroyed",
 	trackOffset				= 5,
 	trackWidth				= 12,
-    objectName              = "FRA/FRA105mmMle1935B_truck.s3o",
+	objectName              = "FRA/FRA105mmMle1935B_truck.s3o",
+	customParams = {
+
+	},
 }
 
 local FRA_105mm_Stationary = HGun:New{
 	name					= "Deployed Canon de 105 court modèle 1935 B",
 	corpse					= "FRA105mm_destroyed",
-    objectName              = "FRA/FRA105mmMle1935B_stationary.s3o",
+	objectName              = "FRA/FRA105mmMle1935B_stationary.s3o",
     
 	weapons = {
 		[1] = { -- HE
@@ -18,6 +21,9 @@ local FRA_105mm_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "FRA105mmsmoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

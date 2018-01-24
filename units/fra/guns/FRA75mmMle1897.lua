@@ -4,6 +4,9 @@ local FRA_75mmMle1897_Truck = FGGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	objectName				= "FRA/FRA75mmMle1897_truck.s3o",
+	customParams = {
+
+	},
 }
 
 local FRA_75mmMle1897_Stationary = FGGun:New{
@@ -19,6 +22,9 @@ local FRA_75mmMle1897_Stationary = FGGun:New{
 			name	= "FRA75mmMle1897AP",
 		},
 	},	
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

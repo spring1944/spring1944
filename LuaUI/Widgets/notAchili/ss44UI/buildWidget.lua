@@ -35,12 +35,15 @@ local supportUnits = {
 
 local enabledColor	= { 1.0, 1.0, 1.0, 1 }
 local disabledColor	= { 0.5, 0.5, 0.5, 1 }
-local hoverColor	= { 0.5, 0.5, 1.0, 1 }
+local hoverColor	= { 0.8, 0.8, 1.0, 1 }
 local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
-local metalColor  = { 0.8, 0.8, 0.8, 1 }
+local metalColor  = { 0.9, 0.9, 0.9, 1 }
+local metalOutlineColor = { 0.1, 0.1, 0.1, 0.9 }
 local energyColor = { 1.0, 1.0, 0.0, 1 }
+
+local outlineWidth = 7
 
 ----------------------------------------------------------------------------------------------------
 --                                        Local variables                                         --
@@ -142,7 +145,7 @@ function CreateBuildWidget()
 	-- setup NotAchili
 	NotAchili = WG.NotAchili
 	Button = NotAchili.Button
-	Font  =NotAchili.Font
+	Font = NotAchili.Font
 	Label = NotAchili.Label
 	Colorbars = NotAchili.Colorbars
 	Checkbox = NotAchili.Checkbox
@@ -192,7 +195,7 @@ function CreateBuildWidget()
 		}
 	}
 	
-	NOTA_UI.buildWidget = buildWidget
+	SS44_UI.buildWidget = buildWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -201,7 +204,7 @@ function UpdateBuildsData( commands )
 	local buildCommands = {}
 	
 	-- show build menu, if selected only one units category
-	if NOTA_UI.selectionWidget.onlyOneCategory then
+	if SS44_UI.selectionWidget.onlyOneCategory then
 		buildCommands = commands
 	end
 
@@ -307,7 +310,8 @@ function UpdateBuildsWidget()
 						y = 2, height = labelH - 4,
 						file = stateIcons[ grid.viewState ],
 					}
-				}
+				},
+				styleKey = "buttonResizable",
 			}
 			--groupButton.OnClick = { DoBuildIconMouseClicked }
 			
@@ -322,7 +326,7 @@ end
 ----------------------------------------------------------------------------------------------------
 function UpdateGeometry( forceUpdate )
 	
-	local buildY = NOTA_UI.ordersWidget.y + NOTA_UI.ordersWidget.height
+	local buildY = SS44_UI.ordersWidget.y + SS44_UI.ordersWidget.height
 		
 	if ( not forceUpdate ) and ( buildY == buildWidget.y ) then
 		return
@@ -348,9 +352,9 @@ function UpdateGeometry( forceUpdate )
 	
 	local buildScroll = buildWidget.children[ 1 ]
 
-	local buildY = NOTA_UI.ordersWidget.y + NOTA_UI.ordersWidget.height
+	local buildY = SS44_UI.ordersWidget.y + SS44_UI.ordersWidget.height
 	--[[
-	local buildX = NOTA_UI.ordersWidget.x + NOTA_UI.ordersWidget.width
+	local buildX = SS44_UI.ordersWidget.x + SS44_UI.ordersWidget.width
 	local buildY = 0
 	--]]
 	local buildH = screen0.height - buildY
@@ -447,43 +451,47 @@ function GetBuildButton( unitDefId )
 			align = "right",
 			valign = "top",
 			font = {
-				font = "LuaUI/Fonts/Visitor2.ttf",
-				size = 7.2 * globalSize,
+				font = "LuaUI/Fonts/Visitor1.ttf",
+				size = 8 * globalSize,
 				color = { 1, 1, 1, 1 },
 				outline = true,
+				outlineWidth = outlineWidth,
+				outlineColor = metalOutlineColor,
 			}
 		}
 		
 		local info = UnitDefs[ unitDefId ]
 		local metalCostLabel = Label:New{ 
 			caption = math_floor( info.metalCost ),
-			bottom = 4.8 * globalSize, height = labelH,
-			x = 2, width = "100%",
+			bottom = 2 * globalSize, height = labelH,
+			right = countLabelX + 0.5 * globalSize, width = "100%",
 			autosize = false,
-			align = "left",
+			align = "right",
 			valign = "bottom",
 			font = {
 				font = "LuaUI/Fonts/Visitor1.ttf",
-				size = 4 * globalSize,
+				size = 6 * globalSize,
 				color = metalColor,
 				outline = true,
+				outlineWidth = outlineWidth,
+				outlineColor = metalOutlineColor,
 			}
 		}
 		
-		local energyCostLabel = Label:New{ 
-			caption = math_floor( info.energyCost ),
-			bottom = 2, height = labelH,
-			x = 2, width = "100%",
-			autosize = false,
-			align = "left",
-			valign = "bottom",
-			font = {
-				font = "LuaUI/Fonts/Visitor1.ttf",
-				size = 4 * globalSize,
-				color = energyColor,
-				outline = true,
-			}
-		}
+		-- local energyCostLabel = Label:New{ 
+			-- caption = math_floor( info.energyCost ),
+			-- bottom = 2, height = labelH,
+			-- x = 2, width = "100%",
+			-- autosize = false,
+			-- align = "left",
+			-- valign = "bottom",
+			-- font = {
+				-- font = "LuaUI/Fonts/Visitor1.ttf",
+				-- size = 4 * globalSize,
+				-- color = energyColor,
+				-- outline = true,
+			-- }
+		-- }
 
 		image = Image:New{
 			name = "build"..unitDefId,
@@ -498,7 +506,7 @@ function GetBuildButton( unitDefId )
 			OnMouseEnter = DoBuildIconMouseEnter,
 			OnMouseLeave = DoBuildIconMouseLeave,
 			
-			children = { countLabel, metalCostLabel, energyCostLabel },
+			children = { countLabel, metalCostLabel },
 		} 
 		
 		buildButtons[ unitDefId ] = image
@@ -623,18 +631,18 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 end
 
 ----------------------------------------------------------------------------------------------------

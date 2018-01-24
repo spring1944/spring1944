@@ -12,6 +12,11 @@ local hoverColor	= { 0.5, 0.5, 1.0, 1 }
 local selectedColor	= { 1.0, 0.5, 0.5, 1 }
 local pressedColor	= { 0.5, 0.5, 0.5, 1 }
 
+local markerColor	= { 1.0, 1.0, 0.7, 1 }
+local outlineColor = { 0.1, 0.1, 0.1, 0.9 }
+
+local outlineWidth = 8
+
 local ordersGroup = {
 	"states",
 	"basic",
@@ -175,7 +180,7 @@ function CreateOrdersWidget()
 	basicGrid = GetGrid( ordersGroup[ 2 ] )
 	otherGrid = GetGrid( ordersGroup[ 3 ] )
 	
-	NOTA_UI.ordersWidget = ordersWidget
+	SS44_UI.ordersWidget = ordersWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -183,7 +188,7 @@ function UpdateOrdersData( commands )
 
 	local states = commands.states
 	local orders
-	if NOTA_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 0 ) then
+	if SS44_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 0 ) then
 		orders = {}
 	else
 		orders = commands.orders
@@ -219,7 +224,7 @@ function UpdateOrdersData( commands )
 			end
 		end
 		
-		local posY = NOTA_UI.selectionWidget.y + NOTA_UI.selectionWidget.height
+		local posY = SS44_UI.selectionWidget.y + SS44_UI.selectionWidget.height
 			
 		if posY ~= ordersWidget.y then
 			UpdateGeometry()
@@ -369,7 +374,7 @@ function UpdateGeometry()
 	end
 	
 	local ordersScroll = ordersWidget.children[ 1 ]
-	local posY = NOTA_UI.selectionWidget.y + NOTA_UI.selectionWidget.height
+	local posY = SS44_UI.selectionWidget.y + SS44_UI.selectionWidget.height
 	local orderH = screen0.height - posY
 	
 	if totalHeight <= orderH then
@@ -379,7 +384,7 @@ function UpdateGeometry()
 		ordersWidget:SetPos( posX, posY, totalW + ordersScroll.scrollbarSize, orderH )
 	end
 	
-	-- Spring.Echo( NOTA_UI.ordersWidget.y + NOTA_UI.ordersWidget.height )
+	-- Spring.Echo( SS44_UI.ordersWidget.y + SS44_UI.ordersWidget.height )
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -494,11 +499,23 @@ function GetOrderButton( cmd )
 			image.file = button.texture
 		else
 			local label = Label:New{
-				parent = button, width = "100%", height = "100%", 
-				autosize = false, align = "center",
+				parent = button, 
+				width = "100%", height = "100%", 
+				caption = cmd.name,
+				bottom = 1 * globalSize,
+				x = 0,
+				autosize = false,
+				align = "right",
+				valign = "bottom",
+				font = {
+					--font = "LuaUI/Fonts/Visitor1.ttf",
+					size = 4 * globalSize,
+					color = markerColor,
+					outline = true,
+					outlineWidth = outlineWidth,
+					outlineColor = outlineColor,
+				}
 			}
-			label.font.outline = true
-			label:SetCaption( cmd.name )
 			
 			if( cmd.texture ) then
 				local image = Image:New{ parent = button, width = "100%", height = "100%" }
@@ -573,20 +590,20 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 	
-	stateW, stateH = NOTA_UI.stateW, NOTA_UI.stateH
+	stateW, stateH = SS44_UI.stateW, SS44_UI.stateH
 end
 
 ----------------------------------------------------------------------------------------------------

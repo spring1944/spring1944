@@ -1,5 +1,8 @@
 local GBRInf = {
 	maxDamageMul		= 1.4,
+	customParams = {
+
+	},
 }
 
 local GBR_HQEngineer = EngineerInf:New(GBRInf):New{
@@ -114,6 +117,7 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 		weaponcost			= 50,
 		weaponswithammo		= 0,	-- do not remove, needed to prevent sten and grenade from using ammo!
 		flagcaprate			= 0,
+		pronespheremovemult = 0.5,
 	},
 	weapons = {
 		[1] = { -- SMG

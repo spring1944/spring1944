@@ -24,6 +24,9 @@ local Aircraft = Unit:New{
 		feartarget			= true,
 		proptexture			= "prop3.tga",
 		soundcategory		= "<SIDE>/Air",
+		wiki_parser                 = "aircraft",  -- aircrafts.md template
+		wiki_subclass_comments      = "",          -- To be override by boat classes
+		wiki_comments               = "",          -- To be override by each unit
 	},
 }
 
@@ -45,17 +48,24 @@ local Recon = Aircraft:New{
 
 	customParams = {
 		maxFuel				= 60,
+		wiki_subclass_comments = [[Cheap aircraft used to carry out scouting
+tasks. A great way to spy enemy, and to provide a line of sight to your long
+range weapons (care, unlike terrain and water units, it is not improving the
+accuracy). Stay away from enemy AA.]],
 	},
 }
 
 local Fighter = Aircraft:New{
 	description			= "Air-Superiority Fighter",
 	cruiseAlt			= 1500,
-	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH BUILDING TURRET",
+	noChaseCategory		= "FLAG MINE INFANTRY DEPLOYED SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP BUILDING TURRET",
 	iconType			= "fighter",
 	customParams = {
 		soundcategory		= "<SIDE>/Air/Fighter",
 		maxFuel				= 180,
+		wiki_subclass_comments = [[Designed to hunt enemy aircrafts. However,
+it can be very useful to strike against infantry, deployed guns, or even light
+vehicles.]],
 	},
 
 	-- sfxTypes = { -- TODO: remove once using LUS
@@ -79,9 +89,15 @@ local Interceptor = Fighter:New{
 local AttackFighter = Fighter:New{
 	description			= "Attack Fighter",
 	cruiseAlt			= 1500,
-	maxPitch				= 0.3,
+	maxPitch				= 0.24,
 	maxElevator				= 0.002,
 	noChaseCategory		= "FLAG INFANTRY DEPLOYED AIR BUILDING MINE",
+	customParams = {
+		wiki_subclass_comments = [[Unit specifically designed to carry out
+terrain/water units strikes. This is a very dangerous unit, which may inflict
+dramatically large amount of damage. However, they are quite vulnerable to
+AA defenses]],
+	},
 }
 
 local FighterBomber = Fighter:New{
@@ -96,6 +112,10 @@ local FighterBomber = Fighter:New{
 
 	customParams = {
 		maxFuel				= 60,
+		wiki_subclass_comments = [[Unit specifically designed to carry out
+buildings strikes. This is a very dangerous unit, which may inflict
+dramatically large amount of damage. However, they are quite vulnerable to
+AA defenses]],
 	},
 
 	weapons = {
@@ -128,6 +148,8 @@ local CruiseMissile = Aircraft:New{
 		enginevolume				= 8,
 		deposit						= 0,
 		maxFuel						= 120,
+		wiki_subclass_comments = [[Inaccurate cruise missile which can be sent
+from your far and safe radar station to anywhere.]],
 	},
 }
 
@@ -141,6 +163,11 @@ local Glider = Aircraft:New{
 		cruise_missile_accuracy	= 1,
 		deposit					= 0,
 		maxFuel				= 120,
+		wiki_subclass_comments = [[Gliders are aircrafts meant to land in a
+designated area, deploying a relatively large task force, enough to cause big
+troubles in enemy base, or to recover some flags. Gliders are extremely
+vulnerable to AA, at a point that they cannot even flight over a protected
+area.]],
 	},
 	explodeAs			= "noweapon",
 	iconType			= "transportplane",
@@ -178,6 +205,11 @@ local ParaTransport = Aircraft:New{
 		deposit			= 0,
 		troopdropper	= 1,
 		maxFuel				= 180,
+		wiki_subclass_comments = [[Airbourne troopers transport and drop. This
+aircraft will flight over a designated area, releasing paratroopers. In fact a
+really fast way to deploy infantry anywhere. Meanwhile the aircraft can be
+armoured enough to flight over AA protected areas, the paratroopers exposed to
+AA fire are easy targets.]],
 	},
 	weapons = {
 		[1] = {

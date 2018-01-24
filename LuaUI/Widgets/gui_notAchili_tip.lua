@@ -914,36 +914,36 @@ local function GetExtraInfo( info )
 	if energyProduce > 1 then
 		if info.windGenerator > 0 then
 			extraInfo = extraInfo ..
-				"\nProduces energy " .. green .. string_format( "%d - %d", Game.windMin, Game.windMax ) .. white
+				"\nProduces supplies " .. green .. string_format( "%d - %d", Game.windMin, Game.windMax ) .. white
 		elseif info.tidalGenerator > 0 then
 			extraInfo = extraInfo ..
-				"\nProduces energy " .. green .. formatThousands( Game.tidal ) .. white
+				"\nProduces supplies " .. green .. formatThousands( Game.tidal ) .. white
 		else
 			extraInfo = extraInfo ..
-				"\nProduces energy " .. green .. formatThousands( energyProduce ) .. white
+				"\nProduces supplies " .. green .. formatThousands( energyProduce ) .. white
 		end
 	elseif energyProduce < -1 then
 		extraInfo = extraInfo ..
-			"\nConsumes energy " .. red .. formatThousands( energyProduce ) .. white
+			"\nConsumes supplies " .. red .. formatThousands( energyProduce ) .. white
 	end
 	
 	if info.makesMetal > 0 then
 		extraInfo = extraInfo ..
-			"\nProduces metal " .. green ..  string_format( "%.1f", info.makesMetal ) .. white
+			"\nProduces command " .. green ..  string_format( "%.1f", info.makesMetal ) .. white
 	end
 	if info.extractsMetal > 0 then
 		extraInfo = extraInfo ..
-			"\nExtracts metal depends on metal deposit"
+			"\nExtracts command depends on command source"
 	end
 	
 	if info.metalStorage > 1 then
 		extraInfo = extraInfo ..
-			"\nProvides metal storage " .. green .. formatThousands( info.metalStorage ) .. white
+			"\nProvides command storage " .. green .. formatThousands( info.metalStorage ) .. white
 	end
 	
 	if info.energyStorage > 1 then
 		extraInfo = extraInfo ..
-			"\nProvides energy storage " .. green .. formatThousands( info.energyStorage ) .. white
+			"\nProvides supplies storage " .. green .. formatThousands( info.energyStorage ) .. white
 	end
 	
 	if info.canCloak then
@@ -1458,7 +1458,7 @@ function widget:Update(dt)
 	local show_cursortip = true
 	alt,_,meta,_ = spGetModKeyState()
 	
-	local consoleWidget = WG.NOTA_UI and WG.NOTA_UI.consoleWidget
+	local consoleWidget = WG.SS44_UI and WG.SS44_UI.consoleWidget
 	local inputText = consoleWidget	and consoleWidget.inputText
 
 	if meta and ( not inputText ) then

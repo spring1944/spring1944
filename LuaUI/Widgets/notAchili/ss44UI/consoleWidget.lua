@@ -125,7 +125,7 @@ function CreateConsoleWidget()
 	Control		= NotAchili.Control
 	screen0		= NotAchili.Screen0
 	
-	players	= NOTA_UI.players
+	players	= SS44_UI.players
 	
 	ReadSettings()
 	
@@ -161,7 +161,7 @@ function CreateConsoleWidget()
 		y = 0, height = textBoxH,
 	}
 	
-	NOTA_UI.consoleWidget = consoleWidget
+	SS44_UI.consoleWidget = consoleWidget
 	
 	UpdateConsoleGeometry()
 end
@@ -307,7 +307,7 @@ function AddConsoleLine( line )
 	local lineLabel = Label:New{
 		width = labelW, height = labelH,
 		autosize = false,
-		caption = "\t\t" .. parsed.formattedText,
+		caption = "\t\t\t" .. parsed.formattedText,
 		message = parsed,
 		font = { 
 			outline = true,
@@ -418,7 +418,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
 	
 	consoleFontSize = 5.6 * globalSize
@@ -436,7 +436,7 @@ function ReadSettings()
 	consoleW, consoleH = 296 * globalSize, lineH * ( chatLineCount + 1 )
 
 	consoleTextW = consoleW - 10 * globalSize
-	consoleOffset = NOTA_UI.skinMargin
+	consoleOffset = SS44_UI.skinMargin
 	
 	labelW = consoleTextW - consoleOffset
 end

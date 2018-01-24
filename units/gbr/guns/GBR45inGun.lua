@@ -3,6 +3,9 @@ local GBR_4_5in_Truck = LongRangeGunTractor:New{
 	corpse					= "gbrmatador_destroyed",
 	trackOffset				= 10,
 	trackWidth				= 18,
+	customParams = {
+
+	},
 }
 
 local GBR_4_5in_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local GBR_4_5in_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "BL45inGunSmoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

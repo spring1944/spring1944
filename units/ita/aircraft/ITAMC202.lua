@@ -16,6 +16,7 @@ local ITA_MC202 = Fighter:New{
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
 		maxFuel				= 90,
+
 	},
 
 	weapons = {

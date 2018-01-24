@@ -99,8 +99,12 @@ function script.Create()
 	-- get children if any
 	local pieceMap = Spring.GetUnitPieceMap(unitID)
 	for pieceName, pieceNum in pairs(pieceMap) do
-		if pieceName:find("child") then
-			childrenPieces[#childrenPieces + 1] = pieceNum
+		local childPos = pieceName:find("child")
+		if childPos then
+			-- try to guess child number
+			local childNumStr = pieceName:sub(childPos + 5)
+			childrenPieces[tonumber(childNumStr)] = pieceNum
+			--childrenPieces[#childrenPieces + 1] = pieceNum
 		end
 	end
 	if customAnims and customAnims.preCreate then

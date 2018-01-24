@@ -159,7 +159,7 @@ local jpnDefs = {
   {
     into = 'jpntype90_75mm_stationary',
     tech = 0,
-    time = 25,
+    time = 15,
     metal = 0,
     energy = 0,
     directional = true,
@@ -169,7 +169,7 @@ local jpnDefs = {
   {
     into = 'jpntype90_75mm_truck',
     tech = 0,
-    time = 20,
+    time = 12,
     metal = 0,
     energy = 0,
   },

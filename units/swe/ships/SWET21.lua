@@ -3,16 +3,17 @@ local SWE_T21 = ArmedBoat:New{
 	description				= "Motor Torpedo boat",
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
-	buildCostMetal			= 1000,
+	buildCostMetal			= 1100,
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
-	maxDamage				= 2400,
-	maxVelocity				= 4.3, -- 43 knots
+	maxDamage				= 2700,
+	maxVelocity				= 5.88, -- 49 knots
 	transportCapacity		= 1, -- 1 x 1fpu turrets
-	turnRate				= 55,	
+	turnRate				= 75,
+	movementClass			= "BOAT_RiverSmall",	
 	weapons = {	
 		[1] = {
-			name				= "BredaM3520mmHE",
+			name				= "boforsm40_20mmhe",
 			mainDir		= [[0 0 -1]],
 		},
 	},
@@ -29,6 +30,7 @@ local SWE_T21 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -38,18 +40,19 @@ local SWE_T21_Turret_20mm_Rear = OpenBoatTurret:New{
 	objectName				= "<SIDE>/SWET21_Turret_20mm.s3o",
   	weapons = {	
 		[1] = {
-			name				= "BredaM3520mmAA",
+			name				= "boforsm40_20mmaa",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
 		[2] = {
-			name				= "BredaM3520mmHE",
+			name				= "boforsm40_20mmhe",
 			maxAngleDif			= 270,
 			mainDir		= [[0 0 -1]],
 		},
 	},
 	customparams = {
 		facing					= 2,
+		defaultheading1			= math.rad(180),
 		maxammo					= 14,
 
 		aaweapon				= 1,
@@ -57,6 +60,7 @@ local SWE_T21_Turret_20mm_Rear = OpenBoatTurret:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
+
     },
 }
 

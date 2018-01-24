@@ -6,7 +6,7 @@ local GBR_LCA = InfantryLandingCraft:New{
 	maxDamage				= 914,
 	maxReverseVelocity		= 0.685,
 	maxVelocity				= 2,
-	turnRate				= 100,	
+	turnRate				= 40,	
 	weapons = {	
 		[1] = {
 			name				= "bren",
@@ -22,6 +22,7 @@ local GBR_LCA = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

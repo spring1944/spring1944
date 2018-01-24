@@ -3,6 +3,9 @@ local GER_10sK18_Truck = LongRangeGunTractor:New{
 	corpse					= "GERSdKfz7_Destroyed",
 	trackOffset				= 10,
 	trackWidth				= 19,
+	customParams = {
+
+	},
 }
 
 local GER_10sK18_Stationary = HGun:New{
@@ -16,6 +19,9 @@ local GER_10sK18_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "GER10sK18Smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

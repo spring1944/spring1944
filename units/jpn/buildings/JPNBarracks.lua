@@ -1,10 +1,8 @@
 local JPN_Barracks = Barracks:New{
-	buildCostMetal				= 1500,
 	collisionVolumeScales		= [[50 32 110]],
 	collisionVolumeOffsets		= [[0 15 0]],
 	footprintX					= 6,
 	footprintZ					= 8,
-	maxDamage					= 10000, -- TODO: wtf?
 	yardmap						= [[oooooo 
 								    oooooo 
 									ooccoo 
@@ -13,12 +11,16 @@ local JPN_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
+	customParams = {
+
+	},
 }
 
 local JPN_Tent = Barracks:New{
 	name						= "Tent Barracks",
 	description					= "Light Infantry Training & Housing Facility",
 	buildCostMetal				= 1000,
+	maxDamage					= 3125,
 	footprintX					= 5,
 	footprintZ					= 5,
 	minCloakDistance			= 300,

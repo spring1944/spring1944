@@ -30,6 +30,9 @@ local gl = gl  --  use a local copy for faster access
 
 local etaTable = {}
 
+if not fontHandler then
+    fontHandler = VFS.Include("LuaUI/modfonts.lua")
+end
 
 --------------------------------------------------------------------------------
 

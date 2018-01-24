@@ -50,6 +50,17 @@ local FlaK4337mmAA = AntiAirGunAA:New(FlaK4337mm, true):New{
 local FlaK4337mmHE = AutoCannonHE:New(FlaK4337mm, true):New{
   range              = 725,
 }
+local FlaK4337mmAP = AutoCannonAP:New(FlaK4337mm, true):New{
+  range              = 725,
+  customparams = {
+    armor_penetration_1000m = 29,
+    armor_penetration_100m  = 52,
+  },
+  damage = {
+    default            = 585,
+  },
+}
+
 
 -- M-1939 61-K 37mm AA Gun (RUS)
 local M1939_61K37mm = AntiAirGun:New{
@@ -127,6 +138,7 @@ return lowerkeys({
   Twin_Bofors40mmHE = Twin_Bofors40mmHE,
   FlaK4337mmAA = FlaK4337mmAA,
   FlaK4337mmHE = FlaK4337mmHE,
+  FlaK4337mmAP = FlaK4337mmAP,
   M1939_61K37mmAA = M1939_61K37mmAA,
   M1939_61K37mmHE = M1939_61K37mmHE,
   Bofors25mm_AA = Bofors25mm_AA,

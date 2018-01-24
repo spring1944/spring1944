@@ -718,7 +718,12 @@ function widget:Update()
     myTeamID = Spring.GetMyTeamID()
     UpdateFactoryList()
   end
-  inTweak = widgetHandler:InTweakMode()
+  -- 104 bug: attempt to call method 'InTweakMode' (a nil value)
+  if widgetHandler.InTweakMode then
+    inTweak = widgetHandler:InTweakMode()
+  else
+    inTweak = widgetHandler.tweakMode
+  end
 end
 
 
@@ -968,8 +973,8 @@ function widget:GetTooltip(x,y)
       local unitDef = UnitDefs[facs[openedMenu+1].buildList[hoveredBOpt+1]]
       return "Build: " .. unitDef.humanName .. " - " .. unitDef.tooltip .. "\n" ..
              GreyStr .. "Health " .. GreenStr .. unitDef.health .. "\n" ..
-             GreyStr .. "Metal cost " .. OrangeStr .. unitDef.metalCost .. "\n" ..
-             GreyStr .. "Energy cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
+             GreyStr .. "Command cost " .. OrangeStr .. unitDef.metalCost .. "\n" ..
+             GreyStr .. "Supplies cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
     end
   end
   return ""

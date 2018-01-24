@@ -11,6 +11,9 @@ local GBR_HQ = HQ:New{
 								oyyyyyo 
 								yyyyyyy 
 								yyyyyyy]],
+	customParams = {
+		normaltex		= "unittextures/GBRHQ_normals.dds",
+	},
 }
 
 return lowerkeys({

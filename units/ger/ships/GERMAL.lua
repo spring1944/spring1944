@@ -12,7 +12,7 @@ local GER_MAL = ArmedBoat:New{
 	maxVelocity				= 1.6,
 	movementClass			= "BOAT_LandingCraft",
 	transportCapacity		= 5, -- 5 x 1fpu turrets
-	turnRate				= 120,	
+	turnRate				= 50,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "sk88mmc30",
@@ -48,6 +48,7 @@ local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
+
     },
 }
 
@@ -102,6 +103,7 @@ local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+
     },
 }
 
@@ -126,6 +128,7 @@ local GER_MAL_Turret_37mm = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
+
     },
 }
 

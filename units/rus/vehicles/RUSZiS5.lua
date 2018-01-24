@@ -2,6 +2,9 @@ local RUS_ZiS5Base = Truck:New{
 	name					= "ZiS-5",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local RUS_ZiS5 = RUS_ZiS5Base:New(TransportTruck)
@@ -15,6 +18,9 @@ local RUS_SupplyTruck = RUS_ZiS5Base:New{
 	iconType				= "truck_ammo",
 	idleAutoHeal			= 2,
 	idleTime				= 1000,
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

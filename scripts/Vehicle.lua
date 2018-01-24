@@ -120,14 +120,16 @@ end
 local function RestoreTurret(weaponNum) -- called by Create so must be prior
 	if info.aimPieces[weaponNum] then
 		local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+		local defaultHeading = info.turretDefaultPositions[weaponNum].heading or 0
+		local defaultPitch = info.turretDefaultPositions[weaponNum].pitch or 0
 		if headingPiece then
-			Turn(headingPiece, y_axis, 0, info.turretTurnSpeed)
+			Turn(headingPiece, y_axis, defaultHeading, info.turretTurnSpeed)
 		end
 		if pitchPiece then
 			if UnitDef.customParams.spaa then
 				Turn(pitchPiece, x_axis, -70, info.elevationSpeed)
 			else
-				Turn(pitchPiece, x_axis, 0, info.elevationSpeed)
+				Turn(pitchPiece, x_axis, defaultPitch, info.elevationSpeed)
 			end
 		end
 	end
@@ -217,12 +219,17 @@ function script.Create()
 		wantedDirection[i] = {}
 		if info.aimPieces[weaponNum] then
 			local headingPiece, pitchPiece = info.aimPieces[weaponNum][1], info.aimPieces[weaponNum][2]
+
+			local defaultHeading = info.turretDefaultPositions[weaponNum].heading or 0
+			local defaultPitch = info.turretDefaultPositions[weaponNum].pitch or 0
+
 			if headingPiece then
-				Turn(headingPiece, y_axis, 0)
+				Turn(headingPiece, y_axis, defaultHeading)
 			end
 			if pitchPiece then
-				Turn(pitchPiece, x_axis, 0)
+				Turn(pitchPiece, x_axis, defaultPitch)
 			end
+
 		end
 	end
 

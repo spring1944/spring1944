@@ -2,7 +2,6 @@ local ShermanBase = MediumTank:New{
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USShermanA",
-	turnRate			= 280, -- FIXME: worth it?
 	
 	weapons = {
 		[1] = {
@@ -36,6 +35,7 @@ local ShermanBase = MediumTank:New{
 		armor_top			= 21,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
+
 	},
 }	
 
@@ -55,6 +55,7 @@ local USM4A4Sherman = ShermanBase:New{
 	
 	customParams = {
 		maxammo				= 20,
+		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
 }
 
@@ -71,18 +72,20 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 		armor_side			= 56,
 		armor_top			= 21,
 		maxvelocitykmh		= 35,
+		normaltex			= "unittextures/USM4Jumbo_normals.dds",
 	},
 }
 
 local USM4A376Sherman = ShermanBase:New{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
-	buildCostMetal		= 2850,
+	buildCostMetal		= 3135,
+	turnRate			= 135,
 	maxDamage			= 3365,
 
 	weapons = {
 		[1] = {
-			name				= "M7AP",
+			name				= "M7APe8",
 		},
 		[2] = {
 			name				= "M7HE",
@@ -93,6 +96,7 @@ local USM4A376Sherman = ShermanBase:New{
 		armor_rear			= 43,
 		armor_side			= 43,
 		maxammo				= 14,
+		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
 }
 
@@ -117,8 +121,9 @@ local USM4A3105Sherman = ShermanBase:New{
 		maxammo				= 12,
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,
-		turretturnspeed		= 8, -- manual traverse
+		turretturnspeed		= 10, -- manual traverse
 		maxvelocitykmh		= 39,
+		normaltex			= "unittextures/USM4ShermanB_normals.dds",
 	},
 }
 

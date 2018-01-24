@@ -30,8 +30,6 @@ local cmdIDToCMDDesc
 local cmdIDToStates
 local cmdIDToFuncName
 
-local Engine100 = (Game.version:find('100') == 1)
-
 local function ProcessToggleData(unitDefID, toggleData)
 
 	local cmdID = GG.CustomCommands.GetCmdID(toggleData.id)
@@ -51,9 +49,6 @@ local function ProcessToggleData(unitDefID, toggleData)
 			params = params,
 			queueing = false
 		}
-		if Engine100 then
-			cmdDesc.queueing = nil
-		end
 		cmdIDToCMDDesc[cmdID] = cmdDesc
 		cmdIDToStates[cmdID] = toggleData.states
 		cmdIDToFuncName[cmdID] = toggleData.funcName

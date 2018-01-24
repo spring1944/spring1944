@@ -31,6 +31,7 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 		killvoicecategory	= "RUS/Tank/Zveroboy/RUS_ISU_KILL",
 		killvoicephasecount	= 3,
 		exhaust_fx_name			= "diesel_exhaust",
+		normaltex			= "unittextures/RUSISU152_normals.dds",
 	},
 }
 

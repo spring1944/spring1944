@@ -1,6 +1,6 @@
 local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 	name				= "43.M Zrynyi II",
-	buildCostMetal		= 3500,
+	buildCostMetal		= 3150,
 	corpse				= "HUN43MZrynyiII_Abandoned",
 	maxDamage			= 2160,
 	trackOffset			= 5,
@@ -23,12 +23,13 @@ local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 	},
 
 	customParams = {
-		armor_front			= 70,
+		armor_front			= 75,
 		armor_rear			= 25,
-		armor_side			= 30,
-		armor_top			= 15,
+		armor_side			= 30, -- Schuertzen
+		armor_top			= 13,
 		maxammo				= 18,
-		maxvelocitykmh		= 40,
+		maxvelocitykmh		= 43,
+
 	},
 }
 

@@ -168,6 +168,15 @@ local function SpawnSpam (team)
         Spring.SetUnitMaxHealth (hq, config.hq_hp)
         Spring.SetUnitHealth (hq, config.hq_hp)
     end
+	-- Storage capacity
+	if config.hq_storage_metal then
+		Spring.SetTeamResource(team, "ms", config.hq_storage_metal)
+		Spring.SetTeamResource(team, "m", config.hq_storage_metal)
+	end
+	if config.hq_storage_energy then
+		Spring.SetTeamResource(team, "es", config.hq_storage_energy)
+		Spring.SetTeamResource(team, "e", config.hq_storage_energy)
+	end
     x, y, z = Spring.GetTeamStartPosition (instance.current_enemy)
     Spring.GiveOrderToUnit (hq, CMD.REPEAT, {1}, {}) -- Remove this when factories can idle in spring
     Spring.GiveOrderToUnit (hq, CMD.FIGHT, {x, y, z}, {})
@@ -185,6 +194,7 @@ function gadget:Initialize ()
     end
     if #ai_list == 0 then
         gadgetHandler:RemoveGadget ()
+        return
     end
     for index, unit in ipairs (config.build_order) do
         if UnitDefNames[unit[1]] == nil then

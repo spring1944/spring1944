@@ -24,6 +24,7 @@ local RUSSU85 = MediumTank:New(TankDestroyer):New{
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
 		exhaust_fx_name			= "diesel_exhaust",
+		normaltex			= "unittextures/RUSSU85_normals.dds",
 	},
 }
 

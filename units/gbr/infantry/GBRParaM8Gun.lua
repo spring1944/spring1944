@@ -7,6 +7,9 @@ local GBR_ParaM8Gun = InfantryGun:New{
 			name				= "M875mmHE",
 		},
 	},
+	customParams = {
+
+	},
 }
 
 

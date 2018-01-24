@@ -3,6 +3,9 @@ local HUN_PaK40_Truck = ATGunTractor:New{
 	corpse					= "HUNHansaLloyd_Burning",
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local HUN_PaK40_Stationary = ATGun:New{
@@ -13,6 +16,9 @@ local HUN_PaK40_Stationary = ATGun:New{
 		[1] = { -- AP
 			name				= "KwK75mmL48AP",
 		},
+	},
+	customParams = {
+
 	},
 }
 	

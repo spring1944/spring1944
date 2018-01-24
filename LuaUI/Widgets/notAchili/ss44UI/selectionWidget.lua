@@ -1,3 +1,12 @@
+-- DEPENDENCIES --
+
+-- get madatory module operators
+VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
+
+-- get other madatory dependencies
+attach.Module(modules, "tableExt")
+
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
@@ -12,7 +21,7 @@ local imageOffset = 5
 local imageInRow = 3
 
 local labelH = 20
-local labelFontSize = 4.8 * globalSize
+local labelFontSize = 8 * globalSize
 
 local rowSize = imageW * imageInRow + imageOffset * ( imageInRow + 1 )
 local totalW = rowSize + 21
@@ -60,6 +69,7 @@ local function GotoUnitFromSelection( selectDefId ) end
 
 local function ResetWidget() end
 local function ReadSettings() end
+
 ----------------------------------------------------------------------------------------------------
 --                          Shortcut to used global functions to speedup                          --
 ----------------------------------------------------------------------------------------------------
@@ -152,6 +162,7 @@ function CreateSelectionWidget()
 				x = 0, y = 0, width = "100%", height = labelH,
 				caption = "Unit Name",
 				font = { size = labelFontSize },
+				styleKey = "buttonResizable",
 			},
 			Image:New{
 				x = imageOffset, y = labelH + 2,
@@ -174,7 +185,16 @@ function CreateSelectionWidget()
 				padding = { 0, 0, 0, 0 },
 				itemMargin = { 0, 0, 4, 4 },
 				resizeItems = false,
-				children = CreateStatLine{ "dps", "range", "speed", "health" }
+				children = CreateStatLine{ "dps", "range"}
+			},
+			Grid:New{
+				x = imageOffset * 2 + imageW, width = imageW * 2 + imageOffset * 2 + 10,
+				y = 2*labelH + imageOffset, height = imageH,
+				centerItems = false,
+				padding = { 0, 0, 0, 0 },
+				itemMargin = { 0, 0, 4, 4 },
+				resizeItems = false,
+				children = CreateStatLine{ "speed", "health" }
 			}
 				
 			--[[
@@ -189,7 +209,7 @@ function CreateSelectionWidget()
 		}
 	}
 	
-	NOTA_UI.selectionWidget = selectionWidget
+	SS44_UI.selectionWidget = selectionWidget
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -200,11 +220,11 @@ function CreateStatLine( items )
 	
 		local item = items[ i ]
 		result[ #result + 1 ] = Image:New{ 
-			width = 6.4 * globalSize, height = 6.4 * globalSize,
+			width = 6 * globalSize, height = 7 * globalSize,
 			file = unitStatsIconPrefix .. item .. ".png"
 		}
 		result[ #result + 1 ] = Label:New{
-			width = 14.4 * globalSize, height = 6.4 * globalSize,
+			width = 14 * globalSize, height = 7 * globalSize,
 			autosize = false,
 			caption = '',
 			font = {
@@ -280,6 +300,7 @@ function UpdateSelectionWidget()
 	
 	local gridPanel = StackPanel:New{
 		width = "100%",
+		height = imageH + imageOffset,
 		autosize = true,
 		itemMargin = { 0, 0, 0, 0 },
 		itemPadding = { 0, 0, 0, 0 },
@@ -315,7 +336,9 @@ function UpdateSelectionWidget()
 					caption = group, 
 					width = "100%", height = labelH,
 					font = { size = labelFontSize },
+					styleKey = "buttonResizable",
 				}
+				
 				groupButton.OnClick = { DoSelectionGroupMouseUp }
 				groupButton.unitDefIdList = grid.unitDefIdList
 				
@@ -339,30 +362,32 @@ function UpdateSelectionWidget()
 		local countLabel = image.children[ 1 ]
 		countLabel:SetCaption( unit.count == 1 and '' or unit.count )
 		
-		local statGrid = singleSelectionWidget.children[ 3 ]
+		local statGridOne = singleSelectionWidget.children[ 3 ]
 		
-		local attack = statGrid.children[ 2 ]
+		local attack = statGridOne.children[ 2 ]
 		attack:SetCaption( CalculateDPS( info ) )
 		
 		local rangeText = ( info.maxWeaponRange > 0 ) and info.maxWeaponRange or "-"
-		local range = statGrid.children[ 4 ]
+		local range = statGridOne.children[ 4 ]
 		range:SetCaption( rangeText )
 		
+		local statGridTwo = singleSelectionWidget.children[ 4 ]
+		
 		local speedText = ( info.speed > 0 ) and string_format( "%i", info.speed ) or "-"
-		local speed = statGrid.children[ 6 ]
+		local speed = statGridTwo.children[ 2 ]
 		speed:SetCaption( speedText )
 		
-		local health = statGrid.children[ 8 ]
+		local health = statGridTwo.children[ 4 ]
 		health:SetCaption( info.health )
 		
-		totalHeight = labelH + imageH + imageOffset * 3 + 4 + 8
+		totalHeight = 2*labelH + imageH + imageOffset * 3 + 4 + 6
 		--totalHeight = singleSelectionWidget.height
 		gridPanel:AddChild( singleSelectionWidget )
 	end
 	
 	selectionWidget.onlyOneCategory = ( #gridPanel.children < 3 )
 	
-	local selectionY = NOTA_UI.minimapOffset or 0
+	local selectionY = SS44_UI.minimapOffset or 0
 	local selectionH = screen0.height - selectionY
 	
 	if totalHeight <= selectionH then
@@ -426,13 +451,18 @@ function CreateUnitIcon( unitDefId, unitsCount )
 
 	local label = Label:New{ 
 		caption = unitsCount,
-		y = countLabelY,
-		right = countLabelX,
+		y = 2, height = labelH,
+		right = countLabelX, width = "100%",
 		autosize = false,
 		align = "right",
+		valign = "top",
 		font = {
 			outline = true,
-			size = labelFontSize
+			size = 8 * globalSize,
+			font = "LuaUI/Fonts/Visitor1.ttf",
+			outline = true,
+			outlineWidth = 7,
+			outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 		},
 	}
 
@@ -557,18 +587,18 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
-	globalSize = NOTA_UI.globalSize
+	globalSize = SS44_UI.globalSize
 
-	imageW = NOTA_UI.imageW 
-	imageH = NOTA_UI.imageH
-	imageOffset = NOTA_UI.imageOffset
-	imageInRow = NOTA_UI.imageInRow
+	imageW = SS44_UI.imageW 
+	imageH = SS44_UI.imageH
+	imageOffset = SS44_UI.imageOffset
+	imageInRow = SS44_UI.imageInRow
 
-	labelH = NOTA_UI.labelH
-	labelFontSize = NOTA_UI.labelFontSize
+	labelH = SS44_UI.labelH
+	labelFontSize = SS44_UI.labelFontSize
 	
-	rowSize = NOTA_UI.rowSize
-	totalW = NOTA_UI.totalW
+	rowSize = SS44_UI.rowSize
+	totalW = SS44_UI.totalW
 end
 
 ----------------------------------------------------------------------------------------------------

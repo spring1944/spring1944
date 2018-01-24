@@ -1,15 +1,16 @@
 local ITA_MAS = ArmedBoat:New{
 	name					= "MAS 500 type",
 	description				= "Motor Torpedo boat",
-	acceleration			= 0.3,
+	acceleration			= 0.35,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1000,
+	movementClass			= "BOAT_RiverSmall",
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
 	maxDamage				= 2400,
-	maxVelocity				= 4.3, -- 43 knots
+	maxVelocity				= 5.16, -- 43 knots
 	transportCapacity		= 1, -- 1 x 1fpu turrets
-	turnRate				= 55,	
+	turnRate				= 85,	
 	weapons = {	
 		[1] = {
 			name				= "BredaM3520mmHE",
@@ -30,6 +31,7 @@ local ITA_MAS = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 

@@ -33,6 +33,7 @@ local RUSValentine = LightTank:New{
 		maxvelocitykmh		= 24,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
+		normaltex			= "unittextures/RUSValentine_normals.dds",
 	},
 }
 

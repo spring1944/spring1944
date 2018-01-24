@@ -11,8 +11,9 @@ local SWE_VolvoTVC = Truck:New{
 	turnRate				= 330,
 	
 	customParams = {
-		dontCount				= false, -- override truck as TVC can be a factory!
+		dontCount				= nil, -- override truck as TVC can be a factory!
 		maxvelocitykmh			= 52,
+
 	}
 }
 

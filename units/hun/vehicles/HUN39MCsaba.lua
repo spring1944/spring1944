@@ -36,6 +36,7 @@ local HUN39MCsaba = ArmouredCar:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+
 	}
 }
 

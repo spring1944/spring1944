@@ -4,13 +4,14 @@ local RUS_G5 = ArmedBoat:New{
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1700,
+	stealth			= true,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
 	maxDamage				= 1500,
 	maxReverseVelocity		= 1.1,
 	maxVelocity				= 5.3,
 	transportCapacity		= 2, -- 2 x 1fpu turrets
-	turnRate				= 300,	
+	turnRate				= 100,	
 	weapons = {	
 		[1] = { -- give primary weapon for ranging
 			name				= "m8rocket82mm",
@@ -31,6 +32,7 @@ local RUS_G5 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
+
 	},
 }
 
@@ -48,6 +50,7 @@ local RUS_G5_Turret_M_8 = OpenBoatTurret:New{
 	    maxammo					= 1,
 		turretturnspeed			= 15,
 		elevationspeed			= 5,
+
     },
 }
 
@@ -65,6 +68,7 @@ local RUS_G5_Turret_DshK = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 60,
 		elevationspeed			= 35,
+
 	},
 }
 

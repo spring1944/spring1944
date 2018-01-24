@@ -3,6 +3,9 @@ local ITA_Obice100_Truck = HGunTractor:New{
 	corpse					= "ITATL37_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,
+	customParams = {
+
+	},
 }
 
 local ITA_Obice100_Stationary = HGun:New{
@@ -15,6 +18,9 @@ local ITA_Obice100_Stationary = HGun:New{
 		[2] = { -- Smoke
 			name				= "Obice100mml22smoke",
 		},
+	},
+	customParams = {
+
 	},
 }
 

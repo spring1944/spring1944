@@ -1,6 +1,6 @@
 local ITAM1542 = LightTank:New{
 	name				= "Carro Mediuo M15/42",
-	buildCostMetal		= 1850,
+	buildCostMetal		= 1942,
 	maxDamage			= 1550,
 	trackOffset			= 5,
 	trackWidth			= 18,
@@ -37,13 +37,15 @@ local ITAM1542 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 43,
-		armor_rear			= 25,
-		armor_side			= 25,
-		armor_top			= 14,
+		armor_front			= 50,
+		armor_rear			= 41,
+		armor_side			= 42,
+		armor_top			= 15,
 		maxammo				= 25,
 		maxvelocitykmh		= 40,
+		turretturnspeed		= 18,
 		weapontoggle		= "priorityAPHEATHE",
+
 	},
 }
 

@@ -1,5 +1,8 @@
 local HUNInf = {
 	maxDamageMul		= 1.0,
+	customParams = {
+
+	},
 }
 
 local HUN_HQEngineer = EngineerInf:New(HUNInf):New{
@@ -71,11 +74,11 @@ local HUN_PanzerFaust = ATLauncherInf:New(HUNInf):New{
 }
 
 local HUN_PanzerSchrek = ATLauncherInf:New(HUNInf):New{
-	name				= "Panzerschrek RPzB 54",
+	name				= "44M kézi rakétavetõ",
 	description			= "Heavy Anti-Tank Infantry",
 	weapons = {
 		[1] = { -- AT Launcher
-			name				= "Panzerschrek",
+			name				= "raketaveto44M",
 		},
 	},
 }

@@ -37,12 +37,7 @@ local infos = {}
 --unitID = timeSinceLastUpdate
 local times = {}
 
-function widget:Initialize()
-	if (Game.modShortName ~= "S44") then
-		WG.RemoveWidget(self)
-		return
-	end
-	
+function widget:Initialize()	
 	vNormalized = WG.Vector.Normalized
 	
 	for unitDefID, unitDef in pairs(UnitDefs) do
@@ -103,7 +98,7 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
 end
 
 function widget:AddConsoleLine(msg, priority)
-  if msg:find("enemy aircraft spotted") then
+  if msg:find("aircraft spotted overhead!") then
     PlaySoundFile("sounds/GEN_air_raid.wav", 1)
   end
 end

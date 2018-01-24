@@ -7,8 +7,13 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
     corpse                  = "gerflakturmg_dead",
 	footprintX				= 10,
 	footprintZ				= 10,
-	maxDamage				= 106250,
+	maxDamage				= 12500,
 
+	idleAutoHeal			= 30,
+	
+	energyMake				= 50,
+	metalMake				= 50,
+	
 	transportCapacity		= 12,
 	usePieceCollisionVolumes	= true,
 
@@ -16,6 +21,8 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
 	isFirePlatform 		= true,
 
+    workerTime          = 50,
+    
 	customparams = {
 		mother				= true,
         children            = {
@@ -32,6 +39,8 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
             "GERMAL_Turret_Quad20mm",
             "GERMAL_Turret_Quad20mm",
         },
+		supplyrange			= 1000,
+
 	},
 
 	--[[
@@ -76,6 +85,7 @@ local GER_Flak40_Twin_Base = Building:New{
 		barrelrecoilspeed		= 32,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
+
     },
 }
 
@@ -88,6 +98,9 @@ local GER_Flak40_Twin_Child = OpenBoatTurret:New(GER_Flak40_Twin_Base, true):New
 local spam_hq = GER_Flak_Tower:New{
 	buildPic	= "gerflakturmg.png",
 	objectName	= "GER/GERFlakTurmG.s3o",
+	customParams = {
+
+	},
 }
 
 return lowerkeys({

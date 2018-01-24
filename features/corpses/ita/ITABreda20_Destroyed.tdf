@@ -7,5 +7,9 @@
   footprintZ=2;
   object=ITABreda20_Destroyed;
   reclaimable=1;
+	[customParams]
+		{
+
+		}
 }
 

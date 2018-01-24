@@ -38,6 +38,7 @@ local GBR_LCT = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
+
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

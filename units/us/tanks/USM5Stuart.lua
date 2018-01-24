@@ -4,7 +4,6 @@ local StuartBase = LightTank:New{
 	trackOffset			= 5,
 	trackWidth			= 18,
 	trackType			= "USStuart",
-	turnRate			= 280, -- FIXME: worth it?
 	
 	customParams = {
 		armor_front			= 43,
@@ -12,6 +11,7 @@ local StuartBase = LightTank:New{
 		armor_side			= 28,
 		armor_top			= 13,
 		maxvelocitykmh		= 58,
+
 	},
 }	
 
@@ -49,6 +49,7 @@ local USM5Stuart = StuartBase:New{
 		maxammo				= 27,
 		weapontoggle		= false,
 		turretturnspeed		= 25.7, -- 14s for 360
+		normaltex			= "unittextures/USM5Stuart_normals.dds",
 	},
 }
 
@@ -73,6 +74,7 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 		maxammo				= 9,
 		weapontoggle		= false,
 		turretturnspeed		= 12, -- manual
+		normaltex			= "unittextures/USM8Scott_normals.dds",
 	},
 }
 
