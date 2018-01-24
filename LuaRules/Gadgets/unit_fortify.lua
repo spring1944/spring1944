@@ -86,7 +86,7 @@ local function StartFortification(unitID, unitDefID)
 		Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, { "alt" })
 		local cmdDescID = Spring.FindUnitCmdDesc(unitID, CMD_FORTIFY)
 		if (cmdDescID) then
-			Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=CMD_FORTIFY_STOP, name=RedStr.."Stop", type = CMDTYPE.ICON})
+			Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=CMD_FORTIFY_STOP, name=LightRedStr.."Stop", type = CMDTYPE.ICON})
 		end
 	end
 end
