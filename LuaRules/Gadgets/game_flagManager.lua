@@ -330,8 +330,8 @@ end
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
+		local teams = Spring.GetTeamList()
 		for _, flagType in pairs(flagTypes) do
-			local teams = Spring.GetTeamList()
 			local flagData = flagTypeData[flagType]
 			--for spotNum, flagID in pairs(flags[flagType]) do
 			for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
