@@ -93,7 +93,6 @@ end
 
 
 local flagCapStatuses = {} -- table of flag's capping statuses
-local teams	= Spring.GetTeamList()
 
 local modOptions
 if (Spring.GetModOptions) then
@@ -332,6 +331,7 @@ function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
 		for _, flagType in pairs(flagTypes) do
+			local teams = Spring.GetTeamList()
 			local flagData = flagTypeData[flagType]
 			--for spotNum, flagID in pairs(flags[flagType]) do
 			for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
@@ -343,7 +343,7 @@ function gadget:GameFrame(n)
 				local defendTotal = 0
 				local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, flagData.radius)
 				if #unitsAtFlag == 1 then -- Only the flag, no other units
-					for teamID = 0, #teams-1 do
+					for _, teamID in pairs(teams) do
 						if teamID ~= flagTeamID then
 							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - flagData.regen
@@ -364,8 +364,7 @@ function gadget:GameFrame(n)
 							end
 						end
 					end
-					for j = 1, #teams do
-						teamID = teams[j]
+					for _, teamID in pairs(teams) do
 						if teamID ~= flagTeamID then
 							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
@@ -400,7 +399,7 @@ function gadget:GameFrame(n)
 							-- Turn flag back on
 							GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
 							-- Flag has changed team, reset capping statuses
-							for cleanTeamID = 0, #teams-1 do
+							for _, cleanTeamID in pairs(teams) do
 								flagCapStatuses[flagID][cleanTeamID] = 0
 								SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0, {public = true})
 							end
