@@ -29,6 +29,8 @@ local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local GetTeamUnitDefCount		= Spring.GetTeamUnitDefCount
 local GetTeamUnitsSorted		= Spring.GetTeamUnitsSorted
 local GetUnitDefID				= Spring.GetUnitDefID
+local GetGaiaTeamID				= Spring.GetGaiaTeamID
+local GetTeamList				= Spring.GetTeamList
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local CreateUnit				= Spring.CreateUnit
@@ -43,7 +45,7 @@ local SetUnitRulesParam			= Spring.SetUnitRulesParam
 local TransferUnit				= Spring.TransferUnit
 
 -- constants
-local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
+local GAIA_TEAM_ID = GetGaiaTeamID()
 local PROFILE_PATH = "maps/flagConfig/" .. Game.mapName .. "_profile.lua"
 local DEBUG	= false -- enable to print out flag locations in profile format
 
@@ -330,7 +332,21 @@ end
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
-		local teams = Spring.GetTeamList()
+
+		if GAIA_TEAM_ID ~= GetGaiaTeamID() then
+			GAIA_TEAM_ID = GetGaiaTeamID()
+			-- Gaia team has changed of ID, and would break the whole system.
+			-- We should indeed track all the orphan flags, reassigning them
+			-- to the new Gaia
+			for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
+				local flagID = flags[flagType][spotNum]
+				if GetUnitTeam(flagID) == nil then
+					TransferUnit(flagID, GAIA_TEAM_ID, false)
+				end
+			end
+		end
+
+		local teams = GetTeamList()
 		for _, flagType in pairs(flagTypes) do
 			local flagData = flagTypeData[flagType]
 			--for spotNum, flagID in pairs(flags[flagType]) do
