@@ -332,16 +332,17 @@ end
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
-
 		if GAIA_TEAM_ID ~= GetGaiaTeamID() then
 			GAIA_TEAM_ID = GetGaiaTeamID()
 			-- Gaia team has changed of ID, and would break the whole system.
 			-- We should indeed track all the orphan flags, reassigning them
 			-- to the new Gaia
-			for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
-				local flagID = flags[flagType][spotNum]
-				if GetUnitTeam(flagID) == nil then
-					TransferUnit(flagID, GAIA_TEAM_ID, false)
+			for _, flagType in pairs(flagTypes) do
+				for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
+					local flagID = flags[flagType][spotNum]
+					if GetUnitTeam(flagID) == nil then
+						TransferUnit(flagID, GAIA_TEAM_ID, false)
+					end
 				end
 			end
 		end
