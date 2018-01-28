@@ -102,7 +102,11 @@ local function DamageSmoke()
 	end
 end
 
-function script.Create()
+local function SpawnChildren()
+	-- To avoid recursion errors, we better spawn children in a separate thread,
+	-- with a neglectible delay. Otherwise, ships would not work with
+	-- Spring.CreateUnit synced commands
+	Sleep(1)
 	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
 	for i, childDefName in ipairs(children) do
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
@@ -111,7 +115,11 @@ function script.Create()
 			Hide(childrenPieces[i])
 			SetUnitNoSelect(childID, true)
 		end
-	end
+	end    
+end
+
+function script.Create()
+	StartThread(SpawnChildren)
 	StartThread(DamageSmoke)
 	StartThread(FlagFlap)
 end
