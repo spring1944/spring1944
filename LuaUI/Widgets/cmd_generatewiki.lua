@@ -860,6 +860,8 @@ function _gen_unit(name, folder)
             else
                 handle.write(handle, _parse_boat(unitDef))
             end
+        else
+            Spring.Echo("No customParams.wiki_parser : ", unitDef.name)
         end
     end
     -- Parse the weapons
