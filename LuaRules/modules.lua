@@ -84,4 +84,14 @@ modules = {
 			head = "init.lua",	
 		},	
 	},
+	strongpoints = {
+		config = {
+			path = MODULES_DIR .. "strongpoints/config/",
+			files = {},
+		},
+		data = {
+			path = MODULES_DIR .. "strongpoints/data/",
+			head = "init.lua",	
+		},	
+	},
 }

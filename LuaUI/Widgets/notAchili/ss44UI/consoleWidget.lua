@@ -12,12 +12,9 @@ local textBoxWidget
 
 local globalSize = 2.5
 
-
 local consoleFontSize = 4.8 * globalSize
 local textBoxH = 45
 local textBoxOffset = 0.4 * globalSize
-
-
 
 local cyclicBuffer = {}
 local maxLineCount = 1000
@@ -30,7 +27,7 @@ local labelH = 8 * globalSize
 local lineH = labelH
 
 local consoleX, consoleY = 0, 16 * globalSize
-local consoleW, consoleH = 296 * globalSize, lineH * ( chatLineCount + 1 )
+local consoleW, consoleH = (8 + 8 + 104) * 3 * globalSize, lineH * ( chatLineCount + 1 )
 
 local consoleOffset = 10
 local consoleTextW = consoleW - 10 * globalSize
@@ -419,7 +416,6 @@ end
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
 	globalSize = SS44_UI.globalSize
-
 	
 	consoleFontSize = 5.6 * globalSize
 	
@@ -433,7 +429,7 @@ function ReadSettings()
 	lineH = labelH
 	
 	consoleX, consoleY = 0, 16 * globalSize
-	consoleW, consoleH = 296 * globalSize, lineH * ( chatLineCount + 1 )
+	consoleW, consoleH = (8 + 8 + 104) * 3 * globalSize, lineH * ( chatLineCount + 1 )
 
 	consoleTextW = consoleW - 10 * globalSize
 	consoleOffset = SS44_UI.skinMargin

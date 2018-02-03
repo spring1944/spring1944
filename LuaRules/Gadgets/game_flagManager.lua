@@ -263,6 +263,16 @@ function PlaceFlag(spot, flagType, unitID)
 	end
 
 	table.insert(GG.flags, newFlag)
+	
+	-- external handles
+	Script.LuaRules.Strongpoints_Add(newFlag, {
+		ID = newFlag, -- we can use unitID
+		x = spot.x,
+		z = spot.z,
+		radius = flagTypeData[flagType].radius,
+		income = spot.initialProduction,
+		ownerTeamID = Spring.GetGaiaTeamID(),
+	})
 end
 
 
@@ -386,11 +396,17 @@ function gadget:GameFrame(n)
 								if GG.FlagCapNotification then
 									GG.FlagCapNotification(flagID, teamID)
 								end
+								
+								-- external handles
+								Script.LuaRules.Strongpoints_UpdateParameter(flagID, "ownerTeamID", teamID)
 							else
 								-- Team flag being neutralised
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
 								TransferUnit(flagID, GAIA_TEAM_ID, false)
 								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) - 1, {public = true})
+								
+								-- external handles
+								Script.LuaRules.Strongpoints_UpdateParameter(flagID, "ownerTeamID", GAIA_TEAM_ID)
 							end
 							-- reset production
 							SetUnitRulesParam(flagID, "lifespan", 0)

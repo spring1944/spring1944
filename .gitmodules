@@ -9,3 +9,6 @@
 [submodule "LuaUI/Widgets/notAchili/data"]
 	path = LuaUI/Widgets/notAchili/data
 	url = https://bitbucket.org/notabots/notachili.git
+[submodule "LuaRules/modules/strongpoints/data"]
+	path = LuaRules/modules/strongpoints/data
+	url = https://bitbucket.org/notabots/strongpoints.git
