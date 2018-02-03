@@ -16,12 +16,12 @@ end
 ----------------------------------------------------------------------------------------------------
 -- Config file data
 ----------------------------------------------------------------------------------------------------
-local confdata		= include( "Widgets/notAchili/ss44UI/config/epicmenu_conf.lua" )
-
-local epic_options	= confdata.eopt
-local epic_colors	= confdata.color
-local title_text	= confdata.title
-local title_image	= confdata.title_image
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local confdata = VFS.Include( SS44_UI_DIRNAME .. "config/epicmenu_conf.lua" , nil, VFSMODE )
+local epic_options = confdata.eopt
+local epic_colors = confdata.color
+local title_text = confdata.title
+local title_image = confdata.title_image
 ----------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------
@@ -129,7 +129,8 @@ local max = math.max
 
 local echo = Spring.Echo
 
-include( "Widgets/notAchili/ss44UI/tools.lua" )
+VFS.Include( SS44_UI_DIRNAME .. "tools.lua" , nil, VFSMODE )
+
 local GetTimeString		= TOOLS.GetTimeString
 local BoolToInt			= TOOLS.BoolToInt
 local IntToBool			= TOOLS.IntToBool

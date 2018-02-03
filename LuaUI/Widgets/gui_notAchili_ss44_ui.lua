@@ -126,16 +126,13 @@ SetGlobalSize( options.interfaceSizeOption.default )
 ----------------------------------------------------------------------------------------------------
 include( "keysym.h.lua" )
 
-local path = "Widgets/notAchili/ss44UI/"
-include( path .. "tools.lua" )
-include( path .. "unitControlTools.lua" )
-include( path .. "minimapWidget.lua" )
-include( path .. "selectionWidget.lua" )
-include( path .. "ordersWidget.lua" )
-include( path .. "buildWidget.lua" )
+-- MODULES
+-- get madatory module operators
+VFS.Include("modules.lua") -- modules table
+VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
 
-include( path .. "resourceBarWidget.lua" )
-include( path .. "consoleWidget.lua" )
+-- get other madatory dependencies
+attach.ModuleWithConfigs(modules, "notAchili", "ss44UI")
 
 SS44_UI.Tools = TOOLS
 

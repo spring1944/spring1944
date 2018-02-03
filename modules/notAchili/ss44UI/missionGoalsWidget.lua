@@ -1,126 +1,28 @@
-----------------------------------------------------------------------------------------------------
---                                        Local constants                                         --
-----------------------------------------------------------------------------------------------------
+-- MISSION GOALS WIDGET
+-- derived from resources widget by PepeAmpere 2018-02-03
 
-local resources = { "energy", "metal", "rearm" }
-
-local enabledColor	= { 1.0, 1.0, 1.0, 1 }
-local disabledColor	= { 0.5, 0.5, 0.5, 1 }
-local hoverColor	= { 0.5, 0.5, 1.0, 1 }
-local selectedColor	= { 1.0, 0.5, 0.5, 1 }
-local pressedColor	= { 0.5, 0.5, 0.5, 1 }
-
-local incomeColor	= { 0, 1, 0, 1 }
-local expenseColor	= { 1, 0, 0, 1 }
-local progressbarColors = {
-	energy = { 1, 1, 0, 0.8 },
-	metal  = { 1, 1, 1, 0.5 },
-	rearm = { 1, 1, 0, 0.5 },
-}
-
-local minExpenseCoverage = {
-	energy = 0.9,
-	metal  = 0.8,
-	rearm  = 0.8,
-}
-
-local needMessage = {
-	energy = "Need Supplies!",
-	metal  = "Need Command!",
-	rearm  = "Need Rearm!",
-}
-
-local yellowStr = "\255\255\255\1"
-
-local commonTooltip = {
-	bar =		"Show current resource amount and maximum storage\n" ..
-				"Press mouse button to setup %s sharing\n\n" ..
-				"Current share level " .. yellowStr,
-
-	income =	"Total %s income\n" ..
-				"Self produced and received from other players",
-
-	expense =	"Total %s expense\n" ..
-				"Consumed by factories, weapons and units"
-}
-
-local barTooltip = {
-	metal  = "Command bar\n"  .. string.format( commonTooltip.bar, "metal" ),
-	energy = "Supplies bar\n" .. string.format( commonTooltip.bar, "energy" ),
-	rearm = "Rearm bar\n" .. string.format( commonTooltip.bar, "rearm" ),
-}
-
-local incomeTooltip = {
-	metal  = string.format( commonTooltip.income, "metal"  ),
-	energy = string.format( commonTooltip.income, "energy" ),
-	rearm = string.format( commonTooltip.income, "rearm" ),
-}
-
-local expenseTooltip = {
-	metal  = string.format( commonTooltip.expense, "metal"  ),
-	energy = string.format( commonTooltip.expense, "energy" ),
-	rearm = string.format( commonTooltip.expense, "rearm" ),
-}
-----------------------------------------------------------------------------------------------------
---                                        Local variables                                         --
-----------------------------------------------------------------------------------------------------
-local globalSize = 2.5
-local resourceBarH = 16.4 * globalSize
-local resourceW = 104 * globalSize
-local imageW = 8 * globalSize
-local offsetW = 8 * globalSize
-local textW = 20 * globalSize
-
-local fontSize = 4.8 * globalSize
-
-local resourceBarWidget
-
-local resourceWidgets = {}
-
-local minBlink = 0.3
-local maxBlink = 1
-local blinkTimer = 0.0
-local blinkInterval = 0.05
-local blinkStep = ( maxBlink - minBlink ) / 10
-local blinkWidgets = {}
-
-----------------------------------------------------------------------------------------------------
---                                      Function declarations                                     --
-----------------------------------------------------------------------------------------------------
-local function CreateResourceBarWidget() end
-local function CreateResourceWidget( resName ) end
-local function SetResourceBarParent( parent ) end
-local function UpdateResourceBarWidget( dt ) end
-local function UpdateResource( resName ) end
-local function UpdateResourceBarGeometry() end
-local function ResetWidget() end
+-- Function declarations
+local function CreateMissionGoalsWidget() end
+local function CreateMissionGoalAlly( goalData ) end
+local function SetMissionGoalsParent( parent ) end
+local function UpdateMissionGoalsWidget( dt ) end
+local function UpdateMissionGoal( goalName ) end
+local function UpdateMissionGoalsGeometry() end
+local function ResetMissionGoalsWidget() end
 local function Blink( widget ) end
-local function SetShareLevel( self, v, vOld ) end
 local function ReadSettings() end
 
-----------------------------------------------------------------------------------------------------
---                          Shortcut to used global functions to speedup                          --
-----------------------------------------------------------------------------------------------------
-local SpGetModKeyState			= Spring.GetModKeyState
-local SpGetMyTeamID				= Spring.GetMyTeamID
-local SpGetTeamResources		= Spring.GetTeamResources
-local SpSetShareLevel			= Spring.SetShareLevel
-local SpGetTeamRulesParam		= Spring.GetTeamRulesParam
-
-local table_sort				= table.sort
-local table_insert				= table.insert
-local string_format				= string.format
-
-local pairs						= pairs
-
+-- Shortcut to used global functions to speedup
+local SpGetModKeyState = Spring.GetModKeyState
+local SpGetMyTeamID	= Spring.GetMyTeamID
+local SpGetTeamRulesParam = Spring.GetTeamRulesParam
+local pairs	= pairs
 local GetShortNumber = TOOLS.GetShortNumber
-local myTeamID = Spring.GetMyTeamID()
-local RESUPPLY_PERIOD = math.floor(Spring.GetGameRulesParam("resupplyPeriod") / 30)
-----------------------------------------------------------------------------------------------------
---                                            Includes                                            --
-----------------------------------------------------------------------------------------------------
+local myTeamID = SpGetMyTeamID()
+
+-- Includes
 -- get madatory module operators
-VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include("modules.lua") -- modules table
 VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
 
 -- get other madatory dependencies
@@ -129,9 +31,8 @@ HMSF = attach.Module(modules, "hmsf")
 
 -- notaUI config
 local includeDir = 'Widgets/notAchili/NotaUI/config/'
-----------------------------------------------------------------------------------------------------
---                                       NotAchili UI shortcuts                                       --
-----------------------------------------------------------------------------------------------------
+
+-- NotAchili UI shortcuts --
 local NotAchili
 local Button
 local Label
@@ -151,12 +52,47 @@ local Colorbars
 local Control
 local screen0
 
-----------------------------------------------------------------------------------------------------
---                                         Implementation                                         --
-----------------------------------------------------------------------------------------------------
+local HEIGHT = 100
 
-----------------------------------------------------------------------------------------------------
-function CreateResourceBarWidget()
+local globalSize = SS44_UI.globalSize
+local missionGoalsH = HEIGHT * globalSize
+
+-- temp
+local visualsPerType = {
+	["Strongpoints_Capture"] = {
+		strongpointImg = "flag.png",
+	}
+}
+
+local allyGoals = {
+	[1] = {
+		key = "g1",
+		ownerAllyID = 0,
+		logic = {
+			name = "Strongpoints_CaptureAmount",
+			currentAmount = 10,
+			amountToWin = 20,				
+		},
+		visual = {
+			name = "Strongpoints_Capture",
+		}
+	},
+	[2] = {
+		key = "g2",
+		ownerAllyID = 0,
+		logic = {
+			name = "Strongpoints_PreventCapturingAmount",
+			ownerAllyID = 1,
+			currentAmount = 5,
+			amountToWin = 20,
+		},
+		visual = {
+			name = "Strongpoints_Capture",
+		}
+	}
+}
+
+function CreateMissionGoalsWidget()
 
 	-- setup NotAchili
 	NotAchili = WG.NotAchili
@@ -182,11 +118,11 @@ function CreateResourceBarWidget()
 
 	local parent = screen0.childrenByName.epicmenubar or screen0
 
-	resourceBarWidget = Control:New{
+	missionGoalsWidget = Control:New{
 		parent = parent,
 		x = 0, y = 0,
 		padding = { 0, 0, 0, 0 },
-		height = resourceBarH,
+		height = missionGoalsH,
 		resizable = false,
 		draggable = false,
 		children = {
@@ -200,20 +136,20 @@ function CreateResourceBarWidget()
 			}
 		}
 	}
+	
+	for i, goalData in pairs (allyGoals) do
+		goalsWidgets[goalData.key] = CreateMissionGoal(goalData)
+	end
 
-	resourceWidgets[ "metal"  ] = CreateResourceWidget( "metal"  )
-	resourceWidgets[ "energy" ] = CreateResourceWidget( "energy" )
-	resourceWidgets[ "rearm" ] = CreateResourceWidget( "rearm" )
-
-	SS44_UI.resourceBarWidget = resourceBarWidget
-	UpdateResourceBarGeometry()
+	SS44_UI.missionGoalsWidget = missionGoalsWidget
+	UpdateMissionGoalsGeometry()
 end
 
 ----------------------------------------------------------------------------------------------------
-function CreateResourceWidget( resName )
+function CreateMissionGoal(goalData)
 
-	local panel = resourceBarWidget.children[ 1 ]
-	local imagePath = "LuaUI/Widgets/notAchili/ss44UI/images/resources/"
+	local panel = missionGoalsWidget.children[1]
+	local imagePath = "LuaUI/Widgets/notAchili/data/images/resources/"
 
 	resWidget = Control:New{
 		parent = panel,
@@ -298,13 +234,13 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function SetResourceBarParent( parent )
-	parent:AddChild( resourceBarWidget )
+	parent:AddChild( missionGoalsWidget )
 end
 
 ----------------------------------------------------------------------------------------------------
 local updateIntervalSec = 0.1
 local lastTimer = 0.0
-function UpdateResourceBarWidget( dt )
+function UpdatemissionGoalsWidget( dt )
 
 	-- blink
 	if blinkTimer < blinkInterval then
@@ -398,22 +334,22 @@ function UpdateResource( resName, resUpdateData )
 end
 
 ----------------------------------------------------------------------------------------------------
-function UpdateResourceBarGeometry()
+function UpdateMissionGoalsGeometry()
 
 	local resourceBarW = ( offsetW + imageW + textW + resourceW ) * #resources
-	resourceBarWidget.width = resourceBarW
+	missionGoalsWidget.width = resourceBarW
 
-	resourceBarWidget:SetPos( 0, 0 )
+	missionGoalsWidget:SetPos( 0, 0 )
 end
 
 ----------------------------------------------------------------------------------------------------
 function ResetWidget()
-	if resourceBarWidget then
-		resourceBarWidget:Dispose()
+	if missionGoalsWidget then
+		missionGoalsWidget:Dispose()
 	end
 	blinkWidgets = {}
 
-	CreateResourceBarWidget()
+	CreatemissionGoalsWidget()
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -450,24 +386,19 @@ end
 ----------------------------------------------------------------------------------------------------
 function ReadSettings()
 	globalSize = SS44_UI.globalSize
-
-	resourceBarH	= 16.4 * globalSize
-	resourceW		= 104 * globalSize
-	imageW			= 8 * globalSize
-	offsetW			= 8 * globalSize
-	textW			= 20 * globalSize
-
-	fontSize		= 4.8 * globalSize
+	missionGoalsH = HEIGHT * globalSize
+	resourceW = 104 * globalSize
+	imageW = 8 * globalSize
+	offsetW = 8 * globalSize
+	textW = 20 * globalSize
+	fontSize = 4.8 * globalSize
 end
 
-----------------------------------------------------------------------------------------------------
---                     Export constants and functions, used in other modules                      --
-----------------------------------------------------------------------------------------------------
+-- Export constants and functions, used in other modules
 RESOURCE_BAR_WIDGET = {
-	CreateResourceBarWidget		= CreateResourceBarWidget,
-	SetResourceBarParent		= SetResourceBarParent,
-	UpdateResourceBarGeometry	= UpdateResourceBarGeometry,
-	UpdateResourceBarWidget		= UpdateResourceBarWidget,
-	ResetWidget					= ResetWidget,
+	CreatemissionGoalsWidget = CreatemissionGoalsWidget,
+	SetMissionGoalsParent = SetMissionGoalsParent,
+	UpdateMissionGoalsGeometry = UpdateMissionGoalsGeometry,
+	UpdatemissionGoalsWidget = UpdatemissionGoalsWidget,
+	ResetWidget = ResetWidget,
 }
-----------------------------------------------------------------------------------------------------
