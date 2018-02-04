@@ -10,7 +10,8 @@ attach.Module(modules, "tableExt")
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
-local unitStatsIconPrefix = ":a:LuaUI/Widgets/notAchili/ss44UI/images/unitStats/"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local unitStatsIconPrefix = ":a:" .. SS44_UI_DIRNAME .. "images/unitStats/"
 
 ----------------------------------------------------------------------------------------------------
 --                                        Local variables                                         --

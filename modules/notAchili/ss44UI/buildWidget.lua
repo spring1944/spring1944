@@ -2,7 +2,8 @@
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
-local iconPath = "LuaUI/Widgets/notAchili/ss44UI/images/buildButtons/"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local iconPath = SS44_UI_DIRNAME .. "images/buildButtons/"
 local buildGroups = {
 	{ name = "Units",		icon = iconPath .. "units.png" },
 	{ name = "Eco",			icon = iconPath .. "eco.png" },

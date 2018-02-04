@@ -93,7 +93,8 @@ local pairs						= pairs
 ----------------------------------------------------------------------------------------------------
 --                                            Includes                                            --
 ----------------------------------------------------------------------------------------------------
-local includeDir = 'LuaUI/Widgets/notAchili/ss44UI/config/'
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local includeDir = SS44_UI_DIRNAME .. 'config/'
 local overrides = include( includeDir .. 'overrides_commands.lua' )
 ----------------------------------------------------------------------------------------------------
 --                                       NotAchili UI shortcuts                                       --

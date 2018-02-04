@@ -46,6 +46,8 @@ local chatMode = true
 
 local players
 
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+
 ----------------------------------------------------------------------------------------------------
 --                                      Function declarations                                     --
 ----------------------------------------------------------------------------------------------------
@@ -524,7 +526,7 @@ function ParseMessage( message )
 					)
 					
 					if player.spectator then
-						result.image		= "LuaUI/Widgets/notAchili/ss44UI/images/console/spectator.png"
+						result.image		= SS44_UI_DIRNAME .. "images/console/spectator.png"
 						result.color		= { 1, 1, 1, 1 }
 					else
 						result.image		= GetSideIconByName( player.side )

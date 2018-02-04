@@ -149,7 +149,6 @@ end
 function CreateMissionGoal(goalData)
 
 	local panel = missionGoalsWidget.children[1]
-	local imagePath = "LuaUI/Widgets/notAchili/data/images/resources/"
 
 	resWidget = Control:New{
 		parent = panel,
@@ -349,7 +348,7 @@ function ResetWidget()
 	end
 	blinkWidgets = {}
 
-	CreatemissionGoalsWidget()
+	CreateMissionGoalsWidget()
 end
 
 ----------------------------------------------------------------------------------------------------

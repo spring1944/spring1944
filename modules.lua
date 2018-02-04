@@ -93,13 +93,13 @@ modules = {
 					"buildWidget.lua",
 					"resourceBarWidget.lua",
 					"consoleWidget.lua",
-					"missionGoalsWidget.lua",
+					--"missionGoalsWidget.lua",
 				},
 			},
 		},
 		data = {
 			path = MODULES_DIR .. "notAchili/data/",
-			head = "init.lua",	
+			head = "core.lua",	
 		},	
 	},
 	strongpoints = {

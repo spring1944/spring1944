@@ -128,6 +128,7 @@ attach.Module(modules, "message")
 HMSF = attach.Module(modules, "hmsf")
 
 -- notaUI config
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
 local includeDir = 'Widgets/notAchili/NotaUI/config/'
 ----------------------------------------------------------------------------------------------------
 --                                       NotAchili UI shortcuts                                       --
@@ -213,7 +214,7 @@ end
 function CreateResourceWidget( resName )
 
 	local panel = resourceBarWidget.children[ 1 ]
-	local imagePath = "LuaUI/Widgets/notAchili/ss44UI/images/resources/"
+	local imagePath = SS44_UI_DIRNAME .. "images/resources/"
 
 	resWidget = Control:New{
 		parent = panel,
