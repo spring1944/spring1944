@@ -1,3 +1,6 @@
+-- Let's add the fixed factions. There are several widgets that already assumed
+-- these factions exist, and are sorted in that way. So better adding them like
+-- that for the time being.
 local sidedata = {
 	{
 	name = "Random Team (GM)",
@@ -156,4 +159,20 @@ Japan infantry are also the least useful in direct combat, as they heavily rely 
 .]],
     }
 }
+
+-- Let's append more factions as an extension
+Spring.Log('sidedata', 'info', "Loading sides data...")
+local SideFiles = VFS.DirList("gamedata/side_data", "*.lua")
+Spring.Log('sidedata', 'info', "Found "..#SideFiles.." tables")
+-- then add their contents to the main table
+for _, SideFile in pairs(SideFiles) do
+	Spring.Log('sidedata', 'info', " - Processing "..SideFile)
+	local tmpTable = VFS.Include(SideFile)
+	if tmpTable then
+		sidedata[#sidedata + 1] = tmpTable
+		Spring.Log('sidedata', 'info', " -- Added ".. tmpTable.name .." faction")
+		tmpTable = nil
+	end
+end
+
 return sidedata
