@@ -19,7 +19,8 @@ end
 ----------------------------------------------------------------------------------------------------
 local mapRatio = Game.mapX / Game.mapY
 
-local imagesPath = "LuaUI/Widgets/notAchili/ss44UI/images/minimap/"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local imagesPath = SS44_UI_DIRNAME .. "images/minimap/"
 local panelTexture = imagesPath .. "panel.png"
 local buttonTextures = {
 	["normal"]				= imagesPath .. "normal.png",

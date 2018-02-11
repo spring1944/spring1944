@@ -50,6 +50,7 @@ local springieName = Spring.GetModOptions().springiename or ''
 
 --local voteAntiSpam = false
 local VOTE_SPAM_DELAY = 1	--seconds
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
 
 --[[
 local index_votesHave = 14
@@ -292,7 +293,7 @@ function widget:Initialize()
 		x = 2,
 		y = 2,
 		keepAspect = false,
-		file = "LuaUI/Widgets/notAchili/ss44UI/images/closex_32.png";
+		file = SS44_UI_DIRNAME .. "images/closex_32.png";
 		parent = button_end;
 	}
 end

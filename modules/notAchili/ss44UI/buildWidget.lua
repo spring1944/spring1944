@@ -2,7 +2,8 @@
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
-local iconPath = "LuaUI/Widgets/notAchili/ss44UI/images/buildButtons/"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local iconPath = SS44_UI_DIRNAME .. "images/buildButtons/"
 local buildGroups = {
 	{ name = "Units",		icon = iconPath .. "units.png" },
 	{ name = "Eco",			icon = iconPath .. "eco.png" },
@@ -62,8 +63,11 @@ local totalW = rowSize + 21
 
 local buildX = 0
 
-local countLabelX = 0
-local countLabelY = 0
+local countLabelRight = 1
+local countLabelY = 2
+
+local costLabelRight = countLabelRight
+local costLabelBottom = countLabelY
 
 -- Widgets
 local buildWidget
@@ -445,8 +449,8 @@ function GetBuildButton( unitDefId )
 	if not image then
 		local countLabel = Label:New{ 
 			caption = '',
-			y = 2, height = labelH,
-			right = countLabelX, width = "100%",
+			y = countLabelY, height = labelH,
+			right = countLabelRight * globalSize, width = "100%",
 			autosize = false,
 			align = "right",
 			valign = "top",
@@ -463,8 +467,8 @@ function GetBuildButton( unitDefId )
 		local info = UnitDefs[ unitDefId ]
 		local metalCostLabel = Label:New{ 
 			caption = math_floor( info.metalCost ),
-			bottom = 2 * globalSize, height = labelH,
-			right = countLabelX + 0.5 * globalSize, width = "100%",
+			bottom = costLabelBottom * globalSize, height = labelH,
+			right = costLabelRight * globalSize, width = "100%",
 			autosize = false,
 			align = "right",
 			valign = "bottom",

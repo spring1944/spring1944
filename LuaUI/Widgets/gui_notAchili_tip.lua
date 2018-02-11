@@ -43,8 +43,9 @@ local echo = Spring.Echo
 
 local iconFormat = ''
 
-local iconTypesPath = LUAUI_DIRNAME.."Configs/icontypes.lua"
+local iconTypesPath = LUAUI_DIRNAME .. "Configs/icontypes.lua"
 local icontypes = VFS.FileExists(iconTypesPath) and VFS.Include(iconTypesPath)
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
 
 local color = {}
 
@@ -572,9 +573,9 @@ local function UpdateResourceStack( tooltipType, unitID, ud, tooltip, fontSize )
 		itemPadding = {0,0,0,0},
 		itemMargin = {5,0,0,0},
 		children = {
-			Image:New{file='LuaUI/Widgets/notAchili/ss44UI/images/resources/metal.png',height= icon_size,width= icon_size, fontSize=ttFontSize,},
+			Image:New{file= SS44_UI_DIRNAME .. 'images/resources/metal.png',height= icon_size,width= icon_size, fontSize=ttFontSize,},
 			lbl_metal2,
-			Image:New{file='LuaUI/Widgets/notAchili/ss44UI/images/resources/energy.png',height= icon_size,width= icon_size, fontSize=ttFontSize,},
+			Image:New{file= SS44_UI_DIRNAME .. 'images/resources/energy.png',height= icon_size,width= icon_size, fontSize=ttFontSize,},
 			lbl_energy2,
 		},
 	}
@@ -1024,7 +1025,7 @@ local function MakeToolTip_UD( buildTable )
 	
 	tooltip = tooltip .. "\n" .. GetExtraInfo( info )
 	
-	local unitStatsIconPrefix = ":a:LuaUI/Widgets/notAchili/ss44UI/images/unitStats/"
+	local unitStatsIconPrefix = ":a:" .. SS44_UI_DIRNAME .. "images/unitStats/"
 	
 	local buildPic = morphData 
 		and { name= 'bp', directcontrol = 'buildpic_morph' } 
@@ -1040,9 +1041,9 @@ local function MakeToolTip_UD( buildTable )
 	local ttStructure = {
 		leftBar = {
 			buildPic,
-			{ name = 'metalCost',  icon = 'LuaUI/Widgets/notAchili/ss44UI/images/resources/metal.png',  text = metalTextColor  .. formatThousands( info.metalCost  ), },
-			{ name = 'energyCost', icon = 'LuaUI/Widgets/notAchili/ss44UI/images/resources/energy.png', text = energyTextColor .. formatThousands( info.energyCost ), },
-			{ name = 'buildCost',  icon = 'LuaUI/Widgets/notAchili/ss44UI/images/unitStats/build.png',  text = GetBuildTime( info ), },
+			{ name = 'metalCost',  icon = SS44_UI_DIRNAME .. 'images/resources/metal.png',  text = metalTextColor  .. formatThousands( info.metalCost  ), },
+			{ name = 'energyCost', icon = SS44_UI_DIRNAME .. 'images/resources/energy.png', text = energyTextColor .. formatThousands( info.energyCost ), },
+			{ name = 'buildCost',  icon = SS44_UI_DIRNAME .. 'images/unitStats/build.png',  text = GetBuildTime( info ), },
 		},
 		main = {
 			{ name = 'udname',	icon = iconPath, text = info.humanName, fontSize = 2 },
@@ -1178,7 +1179,7 @@ local function MakeToolTip_Feature(data, tooltip)
 			tt_ud and
 			{
 				{ name= 'bp', directcontrol = 'buildpic_feature' },
-				{ name='cost', icon = 'LuaUI/Widgets/notAchili/ss44UI/images/resources/metal.png', text = cyan .. numformat((tt_ud and tt_ud.metalCost) or '0'), },
+				{ name='cost', icon = SS44_UI_DIRNAME .. 'images/resources/metal.png', text = cyan .. numformat((tt_ud and tt_ud.metalCost) or '0'), },
 			}
 			or nil,
 		main = {
@@ -1218,7 +1219,7 @@ local function CreateHpBar( name )
 		autosize=true,
 		children = {
 			Image:New{
-				file = 'LuaUI/Widgets/notAchili/ss44UI/images/unitstats/health.png',
+				file = SS44_UI_DIRNAME .. 'images/unitstats/health.png',
 				x = 0, width = icon_size,
 				y = 0, height = icon_size,
 			},
@@ -1237,10 +1238,10 @@ end
 local function MakeMapDrawingToolTip()
 	local ttStructure = {
 		main = {
-			{ name='lmb', 		icon = LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/pencil.png', 	text = 'Left Mouse Button', },
-			{ name='rmb', 		icon = LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/eraser.png', 	text = 'Right Mouse Button', },
-			{ name='mmb', 		icon = LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/flag.png', 		text = 'Middle Mouse Button', },
-			{ name='dblclick', 	icon = LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/flagtext.png', 	text = 'Double Click', },
+			{ name='lmb', 		icon = SS44_UI_DIRNAME .. 'images/drawingCursors/pencil.png', 	text = 'Left Mouse Button', },
+			{ name='rmb', 		icon = SS44_UI_DIRNAME .. 'images/drawingCursors/eraser.png', 	text = 'Right Mouse Button', },
+			{ name='mmb', 		icon = SS44_UI_DIRNAME .. 'images/drawingCursors/flag.png', 		text = 'Middle Mouse Button', },
+			{ name='dblclick', 	icon = SS44_UI_DIRNAME .. 'images/drawingCursors/flagtext.png', 	text = 'Double Click', },
 		},
 	}
 	BuildTooltip2('drawing', ttStructure)
@@ -1387,8 +1388,8 @@ function widget:Initialize()
 	end
 	
 	local VFSMODE = VFS.RAW_FIRST
-	_, iconFormat = VFS.Include( LUAUI_DIRNAME .. "Widgets/notAchili/ss44UI/config/tip_conf.lua" , nil, VFSMODE )
-	local confdata = VFS.Include( LUAUI_DIRNAME .. "Widgets/notAchili/ss44UI/config/epicmenu_conf.lua", nil, VFSMODE )
+	_, iconFormat = VFS.Include( SS44_UI_DIRNAME .. "config/tip_conf.lua" , nil, VFSMODE )
+	local confdata = VFS.Include( SS44_UI_DIRNAME .. "config/epicmenu_conf.lua", nil, VFSMODE )
 	color = confdata.color
 
 	-- setup NotAchili
@@ -1538,9 +1539,9 @@ function widget:DrawScreen()
 	
 	local filefound
 	if drawing then
-		filefound = glTexture( LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/pencil.png' )
+		filefound = glTexture( SS44_UI_DIRNAME .. 'images/drawingCursors/pencil.png' )
 	elseif erasing then
-		filefound = glTexture( LUAUI_DIRNAME .. 'Widgets/notAchili/ss44UI/images/drawingCursors/eraser.png' )
+		filefound = glTexture( SS44_UI_DIRNAME .. 'images/drawingCursors/eraser.png' )
 	end
 	
 	if filefound then

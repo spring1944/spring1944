@@ -1,7 +1,7 @@
 -- DEPENDENCIES --
 
 -- get madatory module operators
-VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include("modules.lua") -- modules table
 VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
 
 -- get other madatory dependencies
@@ -10,7 +10,8 @@ attach.Module(modules, "tableExt")
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
-local unitStatsIconPrefix = ":a:LuaUI/Widgets/notAchili/ss44UI/images/unitStats/"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local unitStatsIconPrefix = ":a:" .. SS44_UI_DIRNAME .. "images/unitStats/"
 
 ----------------------------------------------------------------------------------------------------
 --                                        Local variables                                         --
@@ -28,8 +29,8 @@ local totalW = rowSize + 21
 
 local selectionX = 0
 
-local countLabelX = 0
-local countLabelY = 0
+local countLabelX = 1
+local countLabelY = 1
 
 local selectionWidget
 local singleSelectionWidget
@@ -172,15 +173,22 @@ function CreateSelectionWidget()
 						right = 2, y = 2,
 						width = "100%", height = "100%",
 						caption = "",
-						font = { size = labelFontSize },
+						font = {
+							outline = true,
+							size = 8 * globalSize,
+							font = "LuaUI/Fonts/Visitor1.ttf",
+							outline = true,
+							outlineWidth = 7,
+							outlineColor = { 0.1, 0.1, 0.1, 0.9 },
+						},
 						autosize = false,
 						align = "right", valign = "top"
 					},
 				}
 			},
 			Grid:New{
-				x = imageOffset * 2 + imageW, width = imageW * 2 + imageOffset * 2 + 10,
-				y = labelH + imageOffset, height = imageH,
+				x = imageOffset * 2 + imageW, width = rowSize - (imageW + imageOffset * 2),
+				y = labelH + imageOffset, height = labelH,
 				centerItems = false,
 				padding = { 0, 0, 0, 0 },
 				itemMargin = { 0, 0, 4, 4 },
@@ -188,8 +196,8 @@ function CreateSelectionWidget()
 				children = CreateStatLine{ "dps", "range"}
 			},
 			Grid:New{
-				x = imageOffset * 2 + imageW, width = imageW * 2 + imageOffset * 2 + 10,
-				y = 2*labelH + imageOffset, height = imageH,
+				x = imageOffset * 2 + imageW, width = rowSize - (imageW + imageOffset * 2),
+				y = 2*labelH + imageOffset, height = labelH,
 				centerItems = false,
 				padding = { 0, 0, 0, 0 },
 				itemMargin = { 0, 0, 4, 4 },
@@ -220,11 +228,11 @@ function CreateStatLine( items )
 	
 		local item = items[ i ]
 		result[ #result + 1 ] = Image:New{ 
-			width = 6 * globalSize, height = 7 * globalSize,
+			width = 8 * globalSize, height = 7 * globalSize,
 			file = unitStatsIconPrefix .. item .. ".png"
 		}
 		result[ #result + 1 ] = Label:New{
-			width = 14 * globalSize, height = 7 * globalSize,
+			width = 16 * globalSize, height = 7 * globalSize,
 			autosize = false,
 			caption = '',
 			font = {
@@ -367,7 +375,7 @@ function UpdateSelectionWidget()
 		local attack = statGridOne.children[ 2 ]
 		attack:SetCaption( CalculateDPS( info ) )
 		
-		local rangeText = ( info.maxWeaponRange > 0 ) and info.maxWeaponRange or "-"
+		local rangeText = ( info.maxWeaponRange > 0 ) and math.floor(info.maxWeaponRange) or "-"
 		local range = statGridOne.children[ 4 ]
 		range:SetCaption( rangeText )
 		
@@ -378,9 +386,9 @@ function UpdateSelectionWidget()
 		speed:SetCaption( speedText )
 		
 		local health = statGridTwo.children[ 4 ]
-		health:SetCaption( info.health )
+		health:SetCaption( math.floor(info.health) )
 		
-		totalHeight = 2*labelH + imageH + imageOffset * 3 + 4 + 6
+		totalHeight = imageH + labelH + 8*globalSize
 		--totalHeight = singleSelectionWidget.height
 		gridPanel:AddChild( singleSelectionWidget )
 	end
@@ -451,8 +459,8 @@ function CreateUnitIcon( unitDefId, unitsCount )
 
 	local label = Label:New{ 
 		caption = unitsCount,
-		y = 2, height = labelH,
-		right = countLabelX, width = "100%",
+		y = countLabelX * globalSize, height = labelH,
+		right = countLabelX * globalSize, width = "100%",
 		autosize = false,
 		align = "right",
 		valign = "top",

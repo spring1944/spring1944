@@ -64,18 +64,6 @@ for name, ud in pairs(UnitDefs) do
 		ud.customparams = {}
 	end
 	local cp = ud.customparams
-	--MODOPTION CONTROLS
-    if (modOptions.scoremode) then
-        if (modOptions.scoremode ~= 'disabled') then
-            if (ud.customparams) then
-                if (not ud.customparams.flagcaprate) then
-                    if (not ud.customparams.flag and ud.weapons ~= nil) then
-                        ud.customparams.flagcaprate = 1
-                    end
-                end
-            end
-        end
-    end
 
     if (modOptions.command_mult) then
         if (ud.extractsmetal) then

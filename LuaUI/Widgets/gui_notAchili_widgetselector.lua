@@ -48,7 +48,8 @@ local VFSMODE      = VFS.RAW_FIRST
 
 --------------------------------------------------------------------------------
 
-local file = LUAUI_DIRNAME .. "Widgets/notAchili/ss44UI/config/epicmenu_conf.lua"
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local file = SS44_UI_DIRNAME .. "config/epicmenu_conf.lua"
 local confdata = VFS.Include(file, nil, VFSMODE)
 local color = confdata.color
 

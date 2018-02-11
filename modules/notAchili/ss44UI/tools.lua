@@ -5,6 +5,7 @@
 
 local math_floor = math.floor
 local string_format = string.format
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
 
 ----------------------------------------------------------------------------------------------------
 local CheckBounds = function( value, minValue, maxValue )
@@ -166,7 +167,7 @@ local function GetUnitIconByHumanName( name )
 	icon = "icons/" .. icon .. iconType
 	
 	if not VFS.FileExists( icon ) then
-		icon = "LuaUI/Widgets/notAchili/ss44UI/images/console/warning.png"
+		icon = SS44_UI_DIRNAME .. "images/console/warning.png"
 	end
 	
 	iconByNameCache[ name ] = icon
@@ -182,9 +183,9 @@ local function GetSideIconByName( side )
 		return icon
 	end
 	
-	icon = "LuaUI/Widgets/notAchili/ss44UI/images/console/" .. side .. ".png"
+	icon = SS44_UI_DIRNAME .. "images/console/" .. side .. ".png"
 	if not VFS.FileExists( icon ) then
-		icon = "LuaUI/Widgets/notAchili/ss44UI/images/console/player.png"
+		icon = SS44_UI_DIRNAME .. "images/console/player.png"
 	end
 	
 	iconSideCache[ side ] = icon

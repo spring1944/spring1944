@@ -18,7 +18,8 @@ VFS.Include("LuaRules/Configs/commandsIDs.lua")
 
 -- Command overrides. State commands by default expect array of textures, one for each state.
 -- You can specify texture, text,tooltip, color
-local commandsDir = 'LuaUI/Widgets/notAchili/ss44UI/images/commands/'
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local commandsDir = SS44_UI_DIRNAME .. 'images/commands/'
 local imageDir = commandsDir .. 'bold/'
 local statesDir = commandsDir .. 'states/'
 
