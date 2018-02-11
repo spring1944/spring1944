@@ -132,15 +132,22 @@ Japan infantry are also the least useful in direct combat, as they heavily rely 
 	wiki_title = "Sweden",
 	wiki_desc = [[## Introduction
 
-.
+Even Sweden built an army for an eventual geopolitical change that enforce it to enter in the war, actually the goverment achieved to kept neutral during the whole conflict, making in fact some concessions in favor of both, Allies and Axis.
+
+Said that, is notyworthy that Sweden supported Finland in the Winter War against the Soviet troops.
 
 ## Strengths
 
-.
+Sweden have probably one of the best infantry, well supported by great field guns.
+Sweden also enjoys a costly but very effective air force and landing support naval series combat boats.
+
+Finally, Sweden structures can be packed and moved to a different place, either to run away of enemy fire, or to get a better strategical configuration.
 
 ## Weakness
 
-.]],
+A poorly developed tanks industry leads Sweden forces to a very bad position when the fight evolves in a heavily armoured confrontation, that can be only  balanced by a dense guns distribution planned in detail, or by the great air support.
+
+Unfortunately, guns are consuming ammo quite fast, so take a look to your storages. Also, Sweden air support may be too costly, so you must try to get back your planes at all cost!]],
 	},
 	{
 	name = "HUN",
@@ -148,15 +155,16 @@ Japan infantry are also the least useful in direct combat, as they heavily rely 
 	wiki_title = "Hungary",
 	wiki_desc = [[## Introduction
 
-.
+Hungary joined the Axis forces. However, in 1944, while they were battling Soviet forces, an armistice was signed with United States and United Kingdom. At that point Hitler decided to invade Hungary, turning in fact the Hungarian goverment in nothing else but a puppet.
 
 ## Strengths
 
-.
+Germany feeded Hungary with good weapons, which turns it a very dangerous faction in the early stages of the battle, with great light armoured vehicles.
+Hungary has also one of the best naval series of the game.
 
 ## Weakness
 
-.]],
+Even Turan tanks can be considered good enough tanks for the very first steps of the armoured battle, when largest tier tanks dominates the battlefield, Hungarian forces will be probably driven out.]],
     }
 }
 
