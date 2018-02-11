@@ -29,8 +29,8 @@ local totalW = rowSize + 21
 
 local selectionX = 0
 
-local countLabelX = 0
-local countLabelY = 0
+local countLabelX = 1
+local countLabelY = 1
 
 local selectionWidget
 local singleSelectionWidget
@@ -459,8 +459,8 @@ function CreateUnitIcon( unitDefId, unitsCount )
 
 	local label = Label:New{ 
 		caption = unitsCount,
-		y = 2, height = labelH,
-		right = countLabelX, width = "100%",
+		y = countLabelX * globalSize, height = labelH,
+		right = countLabelX * globalSize, width = "100%",
 		autosize = false,
 		align = "right",
 		valign = "top",
