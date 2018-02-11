@@ -24,6 +24,34 @@ local Vehicle = Unit:New{
 	},
 }
 
+-- Motorcycle
+local Motorcycle = Vehicle:New{
+    acceleration        = 0.3,
+    brakeRate           = 0.4,
+    buildCostMetal      = 800,
+    footprintX          = 2,
+    footprintZ          = 2,
+    maxDamage           = 50,
+    sightDistance           = 300,
+    radarDistance           = 1250,
+    description         = "Motorcycle",
+    category            = "MINETRIGGER SOFTVEH",
+    iconType            = "jeep",
+    movementClass       = "TANK_Motorcycle",
+    turnRate            = 425,
+
+    customParams = {
+        maxvelocitykmh      = 85,
+        damageGroup     = "unarmouredVehicles",
+        turretturnspeed     = 180,
+        wiki_subclass_comments = [[This specific vehicle has been designed
+to offer a good line of sight, which can be conveniently used to support other
+armoured vehicles to engage enemy units.
+This vehicle is poorly armoured, so it should not be excesivelly exposed to
+enemy fire.]],
+    },
+}
+
 -- Scout car
 local ScoutCar = Vehicle:New{
 	acceleration		= 0.047,
@@ -292,6 +320,7 @@ return {
 	MobileAA = MobileAA,
 	Transport = Transport,
 	-- Base Classes
+	Motorcycle = Motorcycle,
 	ScoutCar = ScoutCar,
 	ArmouredCar = ArmouredCar,
 	ArmouredCarAA = ArmouredCarAA,

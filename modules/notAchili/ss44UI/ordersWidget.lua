@@ -93,7 +93,8 @@ local pairs						= pairs
 ----------------------------------------------------------------------------------------------------
 --                                            Includes                                            --
 ----------------------------------------------------------------------------------------------------
-local includeDir = 'LuaUI/Widgets/notAchili/ss44UI/config/'
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local includeDir = SS44_UI_DIRNAME .. 'config/'
 local overrides = include( includeDir .. 'overrides_commands.lua' )
 ----------------------------------------------------------------------------------------------------
 --                                       NotAchili UI shortcuts                                       --
@@ -502,14 +503,14 @@ function GetOrderButton( cmd )
 				parent = button, 
 				width = "100%", height = "100%", 
 				caption = cmd.name,
-				bottom = 1 * globalSize,
-				x = 0,
+				y = 1 * globalSize,
+				x = 1 * globalSize,
 				autosize = false,
-				align = "right",
-				valign = "bottom",
+				align = "left",
+				valign = "top",
 				font = {
 					--font = "LuaUI/Fonts/Visitor1.ttf",
-					size = 4 * globalSize,
+					size = 3.8 * globalSize,
 					color = markerColor,
 					outline = true,
 					outlineWidth = outlineWidth,
@@ -621,7 +622,7 @@ ORDERS_WIDGET = {
 -- customCommands extension
 
 -- get madatory module operators
-VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include("modules.lua") -- modules table
 VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
 
 -- get other madatory dependencies

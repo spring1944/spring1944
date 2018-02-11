@@ -1,11 +1,15 @@
-[submodule "LuaRules/modules/core"]
-	path = LuaRules/modules/core
+[submodule "modules/core"]
+	path = modules/core
 	url = https://bitbucket.org/notabots/core.git
-	branch = master
-[submodule "LuaRules/modules/customCommands/data"]
-	path = LuaRules/modules/customCommands/data
+[submodule "modules/customCommands/data"]
+	path = modules/customCommands/data
 	url = https://bitbucket.org/notabots/customcommands.git
-	branch = master
-[submodule "LuaUI/Widgets/notAchili/data"]
-	path = LuaUI/Widgets/notAchili/data
+[submodule "modules/notAchili/data"]
+	path = modules/notAchili/data
 	url = https://bitbucket.org/notabots/notachili.git
+[submodule "modules/strongpoints/data"]
+	path = modules/strongpoints/data
+	url = https://bitbucket.org/notabots/strongpoints.git
+[submodule "modules/goals/data"]
+	path = modules/goals/data
+	url = https://bitbucket.org/notabots/goals.git

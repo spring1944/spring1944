@@ -13,7 +13,8 @@ function widget:GetInfo()
 	}
 end
 
-DEFAULT_SKIN = "s44" -- temporary constant, to set the skin outside of the framework
+local NOTACHILI_DIRNAME = "modules/notAchili/data"
+DEFAULT_SKIN = "ss44UI" -- temporary constant, to set the skin outside of the framework
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -27,7 +28,7 @@ local tk
 --------------------------------------------------------------------------------
 
 function widget:Initialize()
-  NotAchili = VFS.Include(LUAUI_DIRNAME .. "Widgets/notAchili/data/core.lua")
+  NotAchili = VFS.Include(NOTACHILI_DIRNAME .. "/core.lua")
 
   screen0 = NotAchili.Screen:New{}
   th = NotAchili.TextureHandler

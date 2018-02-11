@@ -120,14 +120,15 @@ local RESUPPLY_PERIOD = math.floor(Spring.GetGameRulesParam("resupplyPeriod") / 
 --                                            Includes                                            --
 ----------------------------------------------------------------------------------------------------
 -- get madatory module operators
-VFS.Include("LuaRules/modules.lua") -- modules table
+VFS.Include("modules.lua") -- modules table
 VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib module
 
 -- get other madatory dependencies
 attach.Module(modules, "message")
-HMSF = attach.Module(modules, "hmsf")
+hmsf = attach.Module(modules, "hmsf")
 
 -- notaUI config
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
 local includeDir = 'Widgets/notAchili/NotaUI/config/'
 ----------------------------------------------------------------------------------------------------
 --                                       NotAchili UI shortcuts                                       --
@@ -213,7 +214,7 @@ end
 function CreateResourceWidget( resName )
 
 	local panel = resourceBarWidget.children[ 1 ]
-	local imagePath = "LuaUI/Widgets/notAchili/ss44UI/images/resources/"
+	local imagePath = SS44_UI_DIRNAME .. "images/resources/"
 
 	resWidget = Control:New{
 		parent = panel,
@@ -389,7 +390,7 @@ function UpdateResource( resName, resUpdateData )
 		
 		-- special handling of rearm res
 		if (resName == "rearm") then
-			progressBar:SetCaption((HMSF(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
+			progressBar:SetCaption((hmsf(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
 		else
 			progressBar:SetCaption( GetShortNumber( current ) .. " / " .. GetShortNumber( storage ) )
 		end

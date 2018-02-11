@@ -29,6 +29,8 @@ local GetTeamRulesParam			= Spring.GetTeamRulesParam
 local GetTeamUnitDefCount		= Spring.GetTeamUnitDefCount
 local GetTeamUnitsSorted		= Spring.GetTeamUnitsSorted
 local GetUnitDefID				= Spring.GetUnitDefID
+local GetGaiaTeamID				= Spring.GetGaiaTeamID
+local GetTeamList				= Spring.GetTeamList
 -- Synced Ctrl
 local CallCOBScript				= Spring.CallCOBScript
 local CreateUnit				= Spring.CreateUnit
@@ -43,7 +45,7 @@ local SetUnitRulesParam			= Spring.SetUnitRulesParam
 local TransferUnit				= Spring.TransferUnit
 
 -- constants
-local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
+local GAIA_TEAM_ID = GetGaiaTeamID()
 local PROFILE_PATH = "maps/flagConfig/" .. Game.mapName .. "_profile.lua"
 local DEBUG	= false -- enable to print out flag locations in profile format
 
@@ -93,7 +95,6 @@ end
 
 
 local flagCapStatuses = {} -- table of flag's capping statuses
-local teams	= Spring.GetTeamList()
 
 local modOptions
 if (Spring.GetModOptions) then
@@ -263,6 +264,16 @@ function PlaceFlag(spot, flagType, unitID)
 	end
 
 	table.insert(GG.flags, newFlag)
+	
+	-- external handles
+	Script.LuaRules.Strongpoints_Add(newFlag, {
+		ID = newFlag, -- we can use unitID
+		x = spot.x,
+		z = spot.z,
+		radius = flagTypeData[flagType].radius,
+		income = spot.initialProduction,
+		ownerTeamID = Spring.GetGaiaTeamID(),
+	})
 end
 
 
@@ -331,6 +342,22 @@ end
 function gadget:GameFrame(n)
 	-- FLAG CONTROL
 	if n % 30 == 5 then -- every second with a 5 frame offset
+		if GAIA_TEAM_ID ~= GetGaiaTeamID() then
+			GAIA_TEAM_ID = GetGaiaTeamID()
+			-- Gaia team has changed of ID, and would break the whole system.
+			-- We should indeed track all the orphan flags, reassigning them
+			-- to the new Gaia
+			for _, flagType in pairs(flagTypes) do
+				for spotNum = 1, numFlags[flagType] do -- WARNING: Assumes flags are placed in order they exist in flags[flagType]
+					local flagID = flags[flagType][spotNum]
+					if GetUnitTeam(flagID) == nil then
+						TransferUnit(flagID, GAIA_TEAM_ID, false)
+					end
+				end
+			end
+		end
+
+		local teams = GetTeamList()
 		for _, flagType in pairs(flagTypes) do
 			local flagData = flagTypeData[flagType]
 			--for spotNum, flagID in pairs(flags[flagType]) do
@@ -343,7 +370,7 @@ function gadget:GameFrame(n)
 				local defendTotal = 0
 				local unitsAtFlag = GetUnitsInCylinder(spots[spotNum].x, spots[spotNum].z, flagData.radius)
 				if #unitsAtFlag == 1 then -- Only the flag, no other units
-					for teamID = 0, #teams-1 do
+					for _, teamID in pairs(teams) do
 						if teamID ~= flagTeamID then
 							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - flagData.regen
@@ -364,8 +391,7 @@ function gadget:GameFrame(n)
 							end
 						end
 					end
-					for j = 1, #teams do
-						teamID = teams[j]
+					for _, teamID in pairs(teams) do
 						if teamID ~= flagTeamID then
 							if (flagCapStatuses[flagID][teamID] or 0) > 0 then
 								flagCapStatuses[flagID][teamID] = flagCapStatuses[flagID][teamID] - defendTotal
@@ -386,11 +412,17 @@ function gadget:GameFrame(n)
 								if GG.FlagCapNotification then
 									GG.FlagCapNotification(flagID, teamID)
 								end
+								
+								-- external handles
+								Script.LuaRules.Strongpoints_UpdateParameter(flagID, "ownerTeamID", teamID)
 							else
 								-- Team flag being neutralised
 								--Spring.SendMessageToTeam(teamID, flagData.tooltip .. " Neutralised!")
 								TransferUnit(flagID, GAIA_TEAM_ID, false)
 								SetTeamRulesParam(teamID, "flags", (GetTeamRulesParam(teamID, "flags") or 0) - 1, {public = true})
+								
+								-- external handles
+								Script.LuaRules.Strongpoints_UpdateParameter(flagID, "ownerTeamID", GAIA_TEAM_ID)
 							end
 							-- reset production
 							SetUnitRulesParam(flagID, "lifespan", 0)
@@ -400,7 +432,7 @@ function gadget:GameFrame(n)
 							-- Turn flag back on
 							GiveOrderToUnit(flagID, CMD.ONOFF, {1}, {})
 							-- Flag has changed team, reset capping statuses
-							for cleanTeamID = 0, #teams-1 do
+							for _, cleanTeamID in pairs(teams) do
 								flagCapStatuses[flagID][cleanTeamID] = 0
 								SetUnitRulesParam(flagID, "cap" .. tostring(cleanTeamID), 0, {public = true})
 							end
