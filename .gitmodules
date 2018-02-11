@@ -10,3 +10,6 @@
 [submodule "modules/strongpoints/data"]
 	path = modules/strongpoints/data
 	url = https://bitbucket.org/notabots/strongpoints.git
+[submodule "modules/goals/data"]
+	path = modules/goals/data
+	url = https://bitbucket.org/notabots/goals.git

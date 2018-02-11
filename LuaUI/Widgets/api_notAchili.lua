@@ -14,7 +14,7 @@ function widget:GetInfo()
 end
 
 local NOTACHILI_DIRNAME = "modules/notAchili/data"
-DEFAULT_SKIN = "s44" -- temporary constant, to set the skin outside of the framework
+DEFAULT_SKIN = "ss44UI" -- temporary constant, to set the skin outside of the framework
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

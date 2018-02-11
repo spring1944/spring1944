@@ -80,6 +80,12 @@ modules = {
 			head = "init.lua",	
 		},	
 	},
+	goals = {
+		data = {
+			path = MODULES_DIR .. "goals/data/",
+			head = "goals.lua"
+		}
+	},
 	notAchili = {
 		config = {
 			ss44UI = {
@@ -93,7 +99,7 @@ modules = {
 					"buildWidget.lua",
 					"resourceBarWidget.lua",
 					"consoleWidget.lua",
-					--"missionGoalsWidget.lua",
+					"missionGoalsWidget.lua",
 				},
 			},
 		},

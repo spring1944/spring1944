@@ -125,7 +125,7 @@ VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib 
 
 -- get other madatory dependencies
 attach.Module(modules, "message")
-HMSF = attach.Module(modules, "hmsf")
+hmsf = attach.Module(modules, "hmsf")
 
 -- notaUI config
 local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
@@ -390,7 +390,7 @@ function UpdateResource( resName, resUpdateData )
 		
 		-- special handling of rearm res
 		if (resName == "rearm") then
-			progressBar:SetCaption((HMSF(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
+			progressBar:SetCaption((hmsf(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
 		else
 			progressBar:SetCaption( GetShortNumber( current ) .. " / " .. GetShortNumber( storage ) )
 		end

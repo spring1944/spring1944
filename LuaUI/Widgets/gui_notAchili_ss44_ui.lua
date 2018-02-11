@@ -95,6 +95,7 @@ options = {
 			BUILD_WIDGET.ResetWidget()
 			RESOURCE_BAR_WIDGET.ResetWidget()
 			CONSOLE_WIDGET.ResetWidget()
+			MISSION_GOALS_WIDGET.ResetWidget()
 			
 		end,
 		default = mediumSize,
@@ -178,6 +179,10 @@ local ToggleConsoleTextBox	= CONSOLE_WIDGET.ToggleConsoleTextBox
 local DisableConsoleTextBox	= CONSOLE_WIDGET.DisableConsoleTextBox
 local ToggleConsoleMode		= CONSOLE_WIDGET.ToggleConsoleMode
 
+local CreateMissionGoalsWidget	= MISSION_GOALS_WIDGET.CreateMissionGoalsWidget
+local UpdateMissionGoalsWidget	= MISSION_GOALS_WIDGET.UpdateMissionGoalsWidget
+local UpdateMissionGoalsGeometry = MISSION_GOALS_WIDGET.UpdateMissionGoalsGeometry
+
 local SpGetActiveCommand	= Spring.GetActiveCommand
 local SpGetTeamColor		= Spring.GetTeamColor
 local SpGetPlayerList		= Spring.GetPlayerList
@@ -222,6 +227,7 @@ function widget:Initialize ()
 	CreateBuildWidget()
 	CreateResourceBarWidget()
 	CreateConsoleWidget()
+	CreateMissionGoalsWidget()
 	
 	SetupPlayers()
 	
@@ -289,6 +295,7 @@ function widget:ViewResize( w, h )
 	UpdateBuildsWidget()
 	UpdateResourceBarGeometry()
 	UpdateConsoleGeometry()
+	UpdateMissionGoalsGeometry()
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -326,6 +333,8 @@ function widget:Update( dt )
 	
 	UpdateResourceBarWidget( dt )
 	UpdateConsoleWidget( dt )
+	
+	UpdateMissionGoalsWidget( dt )
 end
 
 ----------------------------------------------------------------------------------------------------

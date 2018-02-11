@@ -1,14 +1,14 @@
 function widget:GetInfo()
   return {
-    name      = "EPIC Menu",
-    desc      = "v1.302 Extremely Powerful Ingame NotAchili Menu.",
-    author    = "CarRepairer",
-    date      = "2009-06-02",
-    license   = "GNU GPL, v2 or later",
-    layer     = -100001, -- smaller layer, loaded first
-    handler   = true,
+    name = "S44 Epic Menu",
+    desc = "Extremely Powerful Ingame NotAchili Menu.",
+    author = "CarRepairer", -- upgraded by a1983 for notaUI, converted for s44 by PepeAmpere
+    date  = "2009-06-02",
+    license = "GNU GPL, v2 or later",
+    layer = -100001, -- smaller layer, loaded first
+    handler = true,
     experimental = false,	
-    enabled   = true,
+    enabled = true,
 	alwaysStart = true,
   }
 end
@@ -63,7 +63,7 @@ local ingameTimeWidget
 local confirmWidget
 
 -- Controls size
-local globalSize = 2.5
+local globalSize = 3
 
 local buttonW, buttonH = 52 * globalSize, 10 * globalSize
 
@@ -1038,6 +1038,7 @@ MakeSubWindow = function(path)
 				OnMouseUp = { option.OnChange, }, 
 				textColor = epic_colors.sub_fg, 
 				tooltip   = option.desc,
+				boxsize = 26,
 			}
 			tree_children[#tree_children+1] = MakeHotkeyedControl(chbox,  path, option)
 			

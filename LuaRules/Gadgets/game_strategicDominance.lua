@@ -32,11 +32,13 @@ attach.Module(modules, "message")
 hmsf = attach.Module(modules, "hmsf")
 tableExt = attach.Module(modules, "tableExt")
 strongpoints = attach.Module(modules, "strongpoints")
+goals = attach.Module(modules, "goals")
 
 -- CONSTANTS
 local STRONGPOINTS_RATIO = tonumber(Spring.GetModOptions().strongpointsration or "0.8")
 local DOMINANCE_TIMEOUT = tonumber(Spring.GetModOptions().dominancetimeout or "3")
-local DOMINANCE_TIMOUT_RESET = Spring.GetModOptions().strongpointsration or "noWithPenalty"
+local DOMINANCE_TIMEOUT_RESET = Spring.GetModOptions().strongpointsration or "noWithPenalty"
+local DOMINANCE_TIMEOUT_TEXT = DOMINANCE_TIMEOUT .. " minutes" 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local _,_,_,_,_,GAIA_ALLY_ID = Spring.GetTeamInfo(GAIA_TEAM_ID)
 local DEFAULT_DOMINATING_ALLY_ID = GAIA_ALLY_ID
@@ -54,7 +56,8 @@ local defaultTimerValue = hmsf(0, DOMINANCE_TIMEOUT, 0, 0):Normalize()
 local alliancesCountdowns = {} -- allyID => hmsf() time
 local ZERO_TIME = hmsf(0, 0, 0, 0)
 local actualPenalty = ZERO_TIME:Copy()
-local victoryDeclared = false
+victoryDeclared = false
+--local lastUpdates = {}
 
 -- LOCAL FUNCTIONS
 local function FlagsOfThisTeam(previousValue, flagID, flagData, teamID)
@@ -102,15 +105,89 @@ local function UpdateAllyScores()
 	end
 end
 
+local function UpdateGoals()	
+	for scoreAllyID, score in pairs(alliancesScores) do
+		local goalNameBase = scoreAllyID .. scoreAllyID .. "_"
+		
+		-- first ally-own flags and timers
+		local thisAllyGoals = {
+			{
+				key = goalNameBase .. "captureFlags",
+				goalType = "captureFlags",
+				ownerAllianceID = scoreAllyID,
+				
+				currentFlags = score,
+				flagsToWin = dominationCount,
+			},
+			{
+				key = goalNameBase .. "holdFlags",
+				goalType = "holdFlags",
+				ownerAllianceID = scoreAllyID,
+				
+				remainingTime = alliancesCountdowns[scoreAllyID]:Copy(),
+				totalTime = defaultTimerValue:Copy(),
+				totalTimeText = DOMINANCE_TIMEOUT_TEXT,
+				flagsToWin = dominationCount,
+			}
+		}
+	
+		for countdownAllyID, timeValue in pairs(alliancesCountdowns) do
+			-- if not same ally
+			-- + avoid making mission goals to fight with gaia
+			if (scoreAllyID ~= countdownAllyID and countdownAllyID ~= GAIA_ALLY_ID) then
+				
+				goalNameBase = scoreAllyID .. countdownAllyID .. "_"				
+				
+				-- one enemy ally flags
+				thisAllyGoals[#thisAllyGoals + 1] = {
+					key = goalNameBase .. "preventCapturingFlags",
+					goalType = "preventCapturingFlags",
+					ownerAllianceID = scoreAllyID,
+					
+					currentFlags = alliancesScores[countdownAllyID],
+					flagsToWin = dominationCount,
+					allianceID = countdownAllyID,
+				}
+				
+				-- one enemy ally holding flags			
+				thisAllyGoals[#thisAllyGoals + 1] = {
+					key = goalNameBase .. "preventHoldingFlags",
+					goalType = "preventHoldingFlags",
+					ownerAllianceID = scoreAllyID,
+					
+					remainingTime = timeValue:Copy(),
+					totalTime = defaultTimerValue:Copy(),
+					totalTimeText = DOMINANCE_TIMEOUT_TEXT,
+					flagsToWin = dominationCount,
+					allianceID = countdownAllyID,
+				}
+			end
+		end
+		
+		-- save to team info of each team in currently probed ally 
+		for teamID, allyID in pairs(teamIDtoAllyID) do
+			if allyID == scoreAllyID then
+				message.SendSyncedInfoTeamPacked(
+					"missionGoals",
+					message.Encode(thisAllyGoals),
+					teamID,
+					"allied"
+				)
+			end
+		end
+			
+	end	
+end
+
 local function TriggerCountdown(allyID)
 	-- nothing yet
 end
 
 local function StopCountdown(allyID)
 	-- resets 
-	if     (DOMINANCE_TIMOUT_RESET == "yes") then
+	if     (DOMINANCE_TIMEOUT_RESET == "yes") then
 		alliancesCountdowns[allyID] = defaultTimerValue:Copy()
-	elseif (DOMINANCE_TIMOUT_RESET == "noWithPenalty") then
+	elseif (DOMINANCE_TIMEOUT_RESET == "noWithPenalty") then
 		alliancesCountdowns[allyID] = alliancesCountdowns[allyID] + actualPenalty
 	end
 	-- if set to "no", we can skip it
@@ -118,7 +195,7 @@ end
 
 local function TickCountdown(allyID)
 	alliancesCountdowns[allyID] = alliancesCountdowns[allyID] - hmsf(0, 0, 0, TICK_STEP_FRAMES)
-	Spring.Echo(allyID .. " is going to win. Remaining time is " .. alliancesCountdowns[allyID]:HHMMSSFF(false, true, true, false))
+	-- Spring.Echo(allyID .. " is going to win. Remaining time is " .. alliancesCountdowns[allyID]:HHMMSSFF(false, true, true, false))
 end
 
 local function CheckDominance()
@@ -183,6 +260,7 @@ function gadget:GameFrame(n)
 		if (dominatingAlly ~= DEFAULT_DOMINATING_ALLY_ID) then
 			TickCountdown(dominatingAlly)
 		end
+		UpdateGoals()
 		CheckVictory()
 	end
 end

@@ -386,7 +386,7 @@ function UpdateSelectionWidget()
 		speed:SetCaption( speedText )
 		
 		local health = statGridTwo.children[ 4 ]
-		health:SetCaption( info.health )
+		health:SetCaption( math.floor(info.health) )
 		
 		totalHeight = imageH + labelH + 8*globalSize
 		--totalHeight = singleSelectionWidget.height

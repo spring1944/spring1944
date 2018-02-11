@@ -3,13 +3,12 @@
 
 -- Function declarations
 local function CreateMissionGoalsWidget() end
-local function CreateMissionGoalAlly( goalData ) end
-local function SetMissionGoalsParent( parent ) end
-local function UpdateMissionGoalsWidget( dt ) end
-local function UpdateMissionGoal( goalName ) end
+local function CreateMissionGoalAlly(goalData) end
+local function SetMissionGoalsParent(parent) end
+local function UpdateMissionGoalsWidget(dt) end
+local function UpdateMissionGoal(goalName) end
 local function UpdateMissionGoalsGeometry() end
-local function ResetMissionGoalsWidget() end
-local function Blink( widget ) end
+local function ResetallGoalsWidget() end
 local function ReadSettings() end
 
 -- Shortcut to used global functions to speedup
@@ -27,10 +26,16 @@ VFS.Include(modules.attach.data.path .. modules.attach.data.head) -- attach lib 
 
 -- get other madatory dependencies
 attach.Module(modules, "message")
-HMSF = attach.Module(modules, "hmsf")
+hmsf = attach.Module(modules, "hmsf")
+local goalTypes = attach.Module(modules, "goals")
 
 -- notaUI config
 local includeDir = 'Widgets/notAchili/NotaUI/config/'
+
+local SS44_UI_DIRNAME = "modules/notAchili/ss44UI/"
+local confdata = VFS.Include( SS44_UI_DIRNAME .. "config/epicmenu_conf.lua" , nil, VFSMODE )
+local epic_options = confdata.eopt
+local epic_colors = confdata.color
 
 -- NotAchili UI shortcuts --
 local NotAchili
@@ -52,45 +57,116 @@ local Colorbars
 local Control
 local screen0
 
-local HEIGHT = 100
+local DEBUG = true
+
+local CHECKBOX_WIDTH = 10
+local COUNTER_WIDTH = 20
+local DESCRIPTION_WIDTH = 90
+
+local WIDGET_DEFAULT_HEIGHT = 50
+local WIDGET_DEFAULT_WIDTH = CHECKBOX_WIDTH + COUNTER_WIDTH + DESCRIPTION_WIDTH
+local FROM_TOP = 26
+
+local ONE_GOAL_LINE_HEIGHT = CHECKBOX_WIDTH
+local ONE_GOAL_MARGIN = 2
+local ONE_GOAL_LABLE_MARGIN = 2
+local DEFAULT_FONT_SIZE = 4
+local HIGHLIGHT_FONT_SIZE = 5
+
+local GOALS_BUTTON_WIDTH = 40
+local GOALS_BUTTON_HEIGHT = 10
+local GOALS_BUTTON_RIGHT = 2
+local GOALS_BUTTON_TOP = 16
+
+local myAllianceID = Spring.GetMyAllyTeamID()
+local myTeamID = Spring.GetMyTeamID()
 
 local globalSize = SS44_UI.globalSize
-local missionGoalsH = HEIGHT * globalSize
 
--- temp
-local visualsPerType = {
-	["Strongpoints_Capture"] = {
-		strongpointImg = "flag.png",
-	}
-}
+local allGoalsW = WIDGET_DEFAULT_WIDTH * globalSize
+local allGoalsH = WIDGET_DEFAULT_HEIGHT * globalSize -- future: auto
+local fromTop = FROM_TOP * globalSize
 
-local allyGoals = {
-	[1] = {
-		key = "g1",
-		ownerAllyID = 0,
-		logic = {
-			name = "Strongpoints_CaptureAmount",
-			currentAmount = 10,
-			amountToWin = 20,				
-		},
-		visual = {
-			name = "Strongpoints_Capture",
-		}
-	},
-	[2] = {
-		key = "g2",
-		ownerAllyID = 0,
-		logic = {
-			name = "Strongpoints_PreventCapturingAmount",
-			ownerAllyID = 1,
-			currentAmount = 5,
-			amountToWin = 20,
-		},
-		visual = {
-			name = "Strongpoints_Capture",
-		}
-	}
-}
+local oneGoalH = ONE_GOAL_LINE_HEIGHT * globalSize
+local oneGoalMarginLeft = ONE_GOAL_MARGIN * globalSize
+local oneGoalMarginTop = ONE_GOAL_MARGIN * globalSize
+local oneGoalMarginRight = ONE_GOAL_MARGIN * globalSize * 4
+local oneGoalMarginBottom = ONE_GOAL_MARGIN * globalSize
+local oneGoalHFull = oneGoalH + oneGoalMarginTop + oneGoalMarginBottom
+
+local oneGoalCheckboxSize = CHECKBOX_WIDTH * globalSize
+local oneGoalCheckboxMargin = ONE_GOAL_LABLE_MARGIN * globalSize
+local oneGoalIconSize = oneGoalH
+
+local oneGoalCounterW = COUNTER_WIDTH * globalSize
+local oneGoalCounterMarginLeft = oneGoalCheckboxMargin
+local oneGoalCaptionW = allGoalsW - oneGoalMarginLeft - oneGoalMarginRight - oneGoalCheckboxSize - oneGoalCheckboxMargin - oneGoalCounterW
+
+local counterFontSize = HIGHLIGHT_FONT_SIZE * globalSize
+local descriptionFontSize =  DEFAULT_FONT_SIZE * globalSize
+
+local goalsButtonW = GOALS_BUTTON_WIDTH * globalSize
+local goalsButtonH = GOALS_BUTTON_HEIGHT * globalSize
+local goalsButtonRight = GOALS_BUTTON_RIGHT * globalSize
+local goalsButtonTop = GOALS_BUTTON_TOP * globalSize
+
+local completedColor = {0.4, 1, 0.4, 1}
+local notCompletedColor = {1, 1, 1, 1}
+
+local goalsWidgets = {}
+local missionGoals = {}
+
+local showingGoals = true
+
+-- local inputGoals = {
+	-- {
+		-- key = "w1",
+		-- goalType = "captureFlags",
+	-- },
+	-- {
+		-- key = "w2",
+		-- goalType = "holdFlags",
+	-- },
+	-- {
+		-- key = "w3",
+		-- goalType = "preventCapturingFlags",
+	-- },
+	-- {
+		-- key = "w4",
+		-- goalType = "preventHoldingFlags",
+	-- }
+-- }
+
+
+-- for i=1, #inputGoals do
+	-- local key = inputGoals[i].key
+	-- local goalType = inputGoals[i].goalType
+	-- local newIndex = #missionGoals + 1
+	-- missionGoals[newIndex] = {
+		-- key = key,
+		-- goalType = goalType,
+	-- }
+	-- for k,v in pairs(goalTypes[goalType]) do
+		-- missionGoals[newIndex][k] = v
+	-- end
+-- end
+
+local function GetGoalIndexPerKey(goals, key)
+	for i=1, #goals do
+		if key == goals[i].key then
+			return i
+		end
+	end
+end
+
+local function GetGoalLinesCount(goalData)
+	--Spring.Echo(tableExt.Dump(goalData),4)
+	return math.ceil(string.len(goalData.Description(goalData)) / (DESCRIPTION_WIDTH/2))
+end
+
+local function GetOneGoalHeight(goalData)
+	return (GetGoalLinesCount(goalData) * oneGoalH + oneGoalMarginTop + oneGoalMarginBottom)
+end
 
 function CreateMissionGoalsWidget()
 
@@ -110,294 +186,254 @@ function CreateMissionGoalsWidget()
 	TextBox = NotAchili.TextBox
 	Image = NotAchili.Image
 	Progressbar = NotAchili.Progressbar
-	Colorbars = NotAchili.Colorbars
 	Control = NotAchili.Control
 	screen0 = NotAchili.Screen0
 
 	ReadSettings()
+	
+	goalsButton = Button:New{
+		right = goalsButtonRight,  
+		y = goalsButtonTop,
+		width = goalsButtonW, height = goalsButtonH,
+		caption = "Mission Goals",
+		parent = screen0,
+		font = { size = labelFontSize },
+		styleKey = "buttonResizable",
+		OnMouseUp = { function() 
+			if (showingGoals) then
+				HideGoals()
+			else
+				ShowGoals()
+			end
+			showingGoals = not showingGoals
+		end }, 
+	}
+	
+	CreateGoals()
+end
 
-	local parent = screen0.childrenByName.epicmenubar or screen0
-
-	missionGoalsWidget = Control:New{
-		parent = parent,
-		x = 0, y = 0,
+function CreateGoals()
+	allGoalsWidget = Control:New{
+		parent = screen0,
+		right = 0,
+		y = fromTop,
 		padding = { 0, 0, 0, 0 },
-		height = missionGoalsH,
+		width = allGoalsW,
+		--autosize = true,
 		resizable = false,
 		draggable = false,
+		tweakDraggable = true,
+		backgroundColor = epic_colors.main_bg,
 		children = {
 			StackPanel:New{
 				width = "100%", height = "100%",
-				orientation = "horizontal",
+				orientation = "vertical",
 				centerItems = false,
-				resizeItems = false,
+				resizeItems = true,
 				itemPadding = {0, 0, 0, 0},
 				itemMargin  = {0, 0, 0, 0},
+				weightedResize = true,
 			}
-		}
+		},
 	}
 	
-	for i, goalData in pairs (allyGoals) do
+	-- if not development, this will be empty
+	for i, goalData in pairs (missionGoals) do
+		--Spring.Echo(tableExt.Dump(goalData))
 		goalsWidgets[goalData.key] = CreateMissionGoal(goalData)
 	end
 
-	SS44_UI.missionGoalsWidget = missionGoalsWidget
+	SS44_UI.allGoalsWidget = allGoalsWidget
 	UpdateMissionGoalsGeometry()
 end
 
-----------------------------------------------------------------------------------------------------
+function ShowGoals()
+	CreateGoals()
+end
+
+function HideGoals()
+	screen0:RemoveChild(allGoalsWidget)
+end
+
+
 function CreateMissionGoal(goalData)
-
-	local panel = missionGoalsWidget.children[1]
-
-	resWidget = Control:New{
+	local height = GetOneGoalHeight(goalData)
+	local panel = allGoalsWidget.children[1]
+		
+	oneGoalWidget = Control:New{
 		parent = panel,
-		width = resourceW, height = "100%",
+		width = allGoalsW,
+		autosize = true,
+		weight = height,
+		backgroundColor = epic_colors.main_bg,
 		children = {
-			Image:New{
-				x = 0, width = imageW,
-				y = 0, height = "100%",
-				file = imagePath .. resName .. ".png"
-			},
-		}
+			-- all added below
+		},	
 	}
-
-	local incomeLabel =	Label:New{
-		parent = resWidget,
-		x = imageW, width = textW,
-		y = 0, height = 4 * globalSize,
+	
+	local checkbox = Checkbox:New{
+		parent = oneGoalWidget,
+		x = 0, y = 2,
+		padding = {oneGoalMarginLeft, oneGoalMarginTop, oneGoalMarginRight, oneGoalMarginBottom},
+		width = oneGoalCheckboxSize,
+		caption = "", 
+		checked = goalData.Value(goalData), 
+		textColor = epic_colors.sub_fg, 
+		tooltip = goalData.Tooltip(goalData),
+		boxsize = 26,
+		inputAllowed = false,
+	}
+	local counter = Label:New{
+		parent = oneGoalWidget,
+		x = oneGoalCheckboxSize + oneGoalCheckboxMargin + oneGoalCounterMarginLeft,
+		y = 2, 
+		height = height,
+		width = oneGoalCounterW,
 		autosize = false,
 		valign = "top",
-		align = "center",
-		caption = "9999k",
+		align = "left",
+		caption = goalData.Counter(goalData),
 		HitTest = function( self ) return self end,
-		tooltip = incomeTooltip[ resName ],
 		font = {
-			size = fontSize,
-			color = incomeColor,
+			size = counterFontSize,
+			outline = true,
+			outlineWidth = 5,
+			outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 		},
 	}
-
-	local expenseLabel = Label:New{
-		parent = resWidget,
-		x = imageW, width = textW,
+	local description = Label:New{
+		parent = oneGoalWidget,
+		x = oneGoalCheckboxSize + oneGoalCheckboxMargin + oneGoalCounterW, 
+		y = 2,
+		height = height,
+		width = oneGoalCaptionW,
 		autosize = false,
-		bottom = 0, height = 4 * globalSize,
-		valign = "bottom",
-		align = "center",
-		caption = "9999k",
+		valign = "top",
+		align = "left",
+		caption = goalData.Description(goalData),
 		HitTest = function( self ) return self end,
-		tooltip = expenseTooltip[ resName ],
 		font = {
-			size = fontSize,
-			color = expenseColor,
+			size = descriptionFontSize,
+			outline = true,
+			outlineWidth = 3.5,
+			outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 		},
 	}
-
-	local shareBar = Trackbar:New{
-		parent = resWidget,
-		x = imageW + textW, width = resourceW - textW - imageW - offsetW,
-		y = 0, height = "100%",
-		value = 0, min = 0, max = 1, step = 0.01,
-		thumbColor = { 1, 0, 0, 1 },
-		noDrawStep	= true,
-        noDrawBar	= true,
-		noDrawThumb	= true,
-		useValueTooltip = false,
-		resName = resName,
-		OnChange = {
-			SetShareLevel
-		},
-	}
-
-	local progressBar = Progressbar:New{
-		parent = resWidget,
-		padding = { 0, 0, 0, 0 },
-		x = imageW + textW, width = resourceW - textW - imageW - offsetW,
-		y = 0, height = "100%",
-		color = progressbarColors[ resName ],
-		caption = "1000M / 1000M",
-		blink = 1.0, blinkStep = blinkStep,
-		font = {
-			size = fontSize,
-		},
-	}
-
+	
 	return {
-		incomeLabel = incomeLabel,
-		expenseLabel = expenseLabel,
-		shareBar = shareBar,
-		progressBar = progressBar
+		checkbox = checkbox,
+		counter = counter,
+		description = description,
+		oneGoalWidget = oneGoalWidget,
 	}
 end
 
-----------------------------------------------------------------------------------------------------
-function SetResourceBarParent( parent )
-	parent:AddChild( missionGoalsWidget )
+function SetMissionGoalsParent(parent)
+	parent:AddChild(allGoalsWidget)
 end
 
-----------------------------------------------------------------------------------------------------
-local updateIntervalSec = 0.1
-local lastTimer = 0.0
-function UpdatemissionGoalsWidget( dt )
+function UpdateMissionGoalsWidget(dt)
 
-	-- blink
-	if blinkTimer < blinkInterval then
-		blinkTimer = blinkTimer + dt
-	else
-		blinkTimer = 0
-		if blinkWidgets.metal then
-			Blink( blinkWidgets.metal )
-		end
-
-		if blinkWidgets.energy then
-			Blink( blinkWidgets.energy )
-		end
-	end
-
-	-- update data
-	if lastTimer < updateIntervalSec then
-		lastTimer = lastTimer + dt
-		return
-	end
-
-	lastTimer = 0.0
-	
-	myTeamID = SpGetMyTeamID()
-
-	UpdateResource( "energy" )
-	UpdateResource( "metal" )
-	
-	local seconds = Spring.GetGameSeconds()
-	UpdateResource( "rearm", {storage = RESUPPLY_PERIOD - (seconds % RESUPPLY_PERIOD), storageSize = RESUPPLY_PERIOD, lastIncome = 0, lastConsumption = 0})
-end
----------
--- and message handler for this
-
-----------------------------------------------------------------------------------------------------
-function UpdateResource( resName, resUpdateData )
-
-	local current, storage,	pull, income, expense, share, sent, receive
-	if (resUpdateData == nil) then -- metal, energy
-		current, storage, pull, income, expense, share, sent, receive = SpGetTeamResources( myTeamID, resName )
-	else -- custom resource
-		current, storage, pull, income, expense, share, sent, receive = resUpdateData.storage, resUpdateData.storageSize, 0, resUpdateData.lastIncome, resUpdateData.lastConsumption, 0, 0, 0
-	end
-	
-	local totalIncome = income + receive
-
-	current = current + totalIncome - expense
-
-	if current < 0 then
-		current = 0
-	elseif current > storage then
-		current = storage
-	end
-
-	local w = resourceWidgets[ resName ]
-
-	w.incomeLabel:SetCaption( GetShortNumber( totalIncome ) )
-
-	w.expenseLabel:SetCaption( GetShortNumber( pull ) )
-
-	if w.shareBar.value ~= share then
-		w.shareBar.turnOffEvents = true
-		w.shareBar:SetValue( share )
-		w.shareBar.turnOffEvents = nil
-	end
-
-	local progressBar = w.progressBar
-
-	local pullCoverage = totalIncome / pull
-	if current < pull and pullCoverage < minExpenseCoverage[ resName ] then
-		if not blinkWidgets[ resName ] then
-			blinkWidgets[ resName ] = progressBar
-			progressBar:SetCaption( needMessage[ resName ] )
-			progressBar:SetValue( progressBar.max );
-		end
-	else
-		if blinkWidgets[ resName ] then
-			blinkWidgets[ resName ] = nil
-			progressBar.color = progressbarColors[ resName ]
-		end
-		progressBar:SetValue( current / storage * 100 );
+	local encodedMissionGoals = SpGetTeamRulesParam(myTeamID, "missionGoals")
+	if (encodedMissionGoals ~= nil) then
+		local rawMissionGoals = message.Decode(encodedMissionGoals)
 		
-		-- special handling of rearm res
-		if (resName == "rearm") then
-			progressBar:SetCaption((HMSF(0,0, current, 0):Normalize()):HHMMSSFF(false, true, true, false))
-		else
-			progressBar:SetCaption( GetShortNumber( current ) .. " / " .. GetShortNumber( storage ) )
+		for index=1, #rawMissionGoals do
+			local goalData = rawMissionGoals[index]
+			local key = goalData.key
+			local goalType = goalData.goalType
+			local creationNeeded = false
+			
+			if (missionGoals[index] == nil) then
+				-- init goal table
+				missionGoals[index] = {
+					key = key,
+					goalType = goalType,
+				}
+				-- init goal per type
+				for k,v in pairs(goalTypes[goalType]) do
+					missionGoals[index][k] = v
+				end
+				
+				creationNeeded = true
+			end
+			
+			-- apply update patch
+			for k,v in pairs(goalData) do
+				missionGoals[index][k] = v
+			end
+			
+			-- create after all patches applied
+			if (creationNeeded) then
+				goalsWidgets[goalData.key] = CreateMissionGoal(missionGoals[index])
+			end
+			
+			-- update UI
+			UpdateGoal(missionGoals[index])
 		end
-		
 	end
+	UpdateMissionGoalsGeometry()
 end
 
-----------------------------------------------------------------------------------------------------
+function UpdateGoal(goalData)
+	
+	local w = goalsWidgets[goalData.key]
+	
+	if (goalData.Value(goalData)) then
+		if (not w.checkbox.checked) then
+			w.checkbox:Toggle()
+		end
+		w.counter.font.color = completedColor
+		w.description.font.color = completedColor
+	else
+		if (w.checkbox.checked) then
+			w.checkbox:Toggle()
+		end		
+		w.counter.font.color = notCompletedColor
+		w.description.font.color = notCompletedColor
+	end
+	
+	w.checkbox.tooltip = goalData.Tooltip(goalData)
+	w.counter:SetCaption(goalData.Counter(goalData))
+	w.description:SetCaption(goalData.Description(goalData))
+	w.oneGoalWidget.weight = GetOneGoalHeight(goalData)
+	-- update hack until color updates are fixed on caption in notAchili framework
+	w.description:Invalidate()
+	w.counter:Invalidate()
+end
+
 function UpdateMissionGoalsGeometry()
-
-	local resourceBarW = ( offsetW + imageW + textW + resourceW ) * #resources
-	missionGoalsWidget.width = resourceBarW
-
-	missionGoalsWidget:SetPos( 0, 0 )
+	local height = 0
+	for i=1, #missionGoals do
+		height = height + GetOneGoalHeight(missionGoals[i])
+	end
+	allGoalsWidget:Resize(allGoalsW, height)
+	goalsButton:Resize(goalsButtonW, goalsButtonH)
+	allGoalsWidget:Invalidate()
+	goalsButton:Invalidate()
 end
 
-----------------------------------------------------------------------------------------------------
 function ResetWidget()
-	if missionGoalsWidget then
-		missionGoalsWidget:Dispose()
+	if allGoalsWidget then
+		allGoalsWidget:Dispose()
 	end
-	blinkWidgets = {}
-
+	if goalsButton then
+		goalsButton:Dispose()
+	end
 	CreateMissionGoalsWidget()
 end
 
-----------------------------------------------------------------------------------------------------
-function Blink( widget )
-	widget.blink = widget.blink + widget.blinkStep
-	if widget.blink < minBlink then
-		widget.blink = minBlink
-		widget.blinkStep = -widget.blinkStep
-	elseif widget.blink > maxBlink then
-		widget.blink = maxBlink
-		widget.blinkStep = -widget.blinkStep
-	end
-
-	local blinkColor = { 1, 0, 0, widget.blink }
-	widget.color = blinkColor
-	widget:Invalidate()
-	--widget:SetColor( { 1, 0, 0, 1 } )
-end
-
-----------------------------------------------------------------------------------------------------
-function SetShareLevel( self, v, vOld )
-	if not self.turnOffEvents then
-		local resName = self.resName
-		if (resName == "metal" or resName == "energy") then
-			SpSetShareLevel( resName, self.value )
-		else
-			-- TBD custom resource sharing
-		end
-		self.tooltip = barTooltip[ resName ]
-			.. string_format( "%i %%", 100 - v * 100 )
-	end
-end
-
-----------------------------------------------------------------------------------------------------
 function ReadSettings()
 	globalSize = SS44_UI.globalSize
-	missionGoalsH = HEIGHT * globalSize
-	resourceW = 104 * globalSize
-	imageW = 8 * globalSize
-	offsetW = 8 * globalSize
-	textW = 20 * globalSize
-	fontSize = 4.8 * globalSize
+	allGoalsH = WIDGET_DEFAULT_HEIGHT * globalSize
+	allGoalsW = WIDGET_DEFAULT_WIDTH * globalSize
 end
 
 -- Export constants and functions, used in other modules
-RESOURCE_BAR_WIDGET = {
-	CreatemissionGoalsWidget = CreatemissionGoalsWidget,
+MISSION_GOALS_WIDGET = {
+	CreateMissionGoalsWidget = CreateMissionGoalsWidget,
 	SetMissionGoalsParent = SetMissionGoalsParent,
 	UpdateMissionGoalsGeometry = UpdateMissionGoalsGeometry,
-	UpdatemissionGoalsWidget = UpdatemissionGoalsWidget,
+	UpdateMissionGoalsWidget = UpdateMissionGoalsWidget,
 	ResetWidget = ResetWidget,
 }
