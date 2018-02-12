@@ -87,11 +87,11 @@ local options = {
 		desc = "Is dominance timeout reset everytime the dominance threshold is met again?",
 		type = "list",
 		section	= '2victormode',
-		def = "noWithPenalty",
+		def = "nowithpenalty",
 		items = {
 			{ key = "yes", name = "Yes", desc = "Timeout is always reset once the dominance is reached."},
 			{ key = "no", name = "No", desc = "Countdown starts from last timeout value once the dominance is reached again."},
-			{ key = "noWithPenalty", name = "No with Penalty", desc = "Countdown starts approximately on last time value once the dominance is reached again but small penalty is added to its value"},
+			{ key = "nowithpenalty", name = "No with Penalty", desc = "Countdown starts approximately on last time value once the dominance is reached again but small penalty is added to its value"},
 		},
 	},
 	{
