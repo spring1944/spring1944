@@ -47,7 +47,7 @@ local usSorties = {
 		weight = 1,
 		name = "Attack Sortie",
 		description = "2 x P-51D-25 Mustang",
-		buildCostMetal = 6000,
+		buildCostMetal = 5100,
 		buildPic = "USP51DMustangGA.png",
 	},
 
