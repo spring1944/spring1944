@@ -60,7 +60,7 @@ local HeavyHEAT = HEAT:New{ -- MediumHeavy
 
 local HE = Weapon:New{
 	accuracy           = 300,
-	targetBorder	   = 0.6,
+	targetBorder	   = -0.6,
 	edgeEffectiveness  = 0.2,
 	explosionGenerator = "custom:HE_Medium",
 	explosionSpeed     = 30, -- needed?

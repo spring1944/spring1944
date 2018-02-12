@@ -45,20 +45,20 @@ local commonTooltip = {
 }
 
 local barTooltip = {
-	metal  = "Command bar\n"  .. string.format( commonTooltip.bar, "metal" ),
-	energy = "Supplies bar\n" .. string.format( commonTooltip.bar, "energy" ),
+	metal  = "Command bar\n"  .. string.format( commonTooltip.bar, "command" ),
+	energy = "Supplies bar\n" .. string.format( commonTooltip.bar, "ammunition" ),
 	rearm = "Rearm bar\n" .. string.format( commonTooltip.bar, "rearm" ),
 }
 
 local incomeTooltip = {
-	metal  = string.format( commonTooltip.income, "metal"  ),
-	energy = string.format( commonTooltip.income, "energy" ),
+	metal  = string.format( commonTooltip.income, "command"  ),
+	energy = string.format( commonTooltip.income, "ammunition" ),
 	rearm = string.format( commonTooltip.income, "rearm" ),
 }
 
 local expenseTooltip = {
-	metal  = string.format( commonTooltip.expense, "metal"  ),
-	energy = string.format( commonTooltip.expense, "energy" ),
+	metal  = string.format( commonTooltip.expense, "command"  ),
+	energy = string.format( commonTooltip.expense, "ammunition" ),
 	rearm = string.format( commonTooltip.expense, "rearm" ),
 }
 ----------------------------------------------------------------------------------------------------
