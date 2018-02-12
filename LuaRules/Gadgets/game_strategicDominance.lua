@@ -35,8 +35,8 @@ strongpoints = attach.Module(modules, "strongpoints")
 goals = attach.Module(modules, "goals")
 
 -- CONSTANTS
-local STRONGPOINTS_RATIO = tonumber(Spring.GetModOptions().strongpointsration or "0.8")
-local DOMINANCE_TIMEOUT = tonumber(Spring.GetModOptions().dominancetimeout or "3")
+local STRONGPOINTS_RATIO = tonumber(Spring.GetModOptions().strongpointsratio or "0.7")
+local DOMINANCE_TIMEOUT = tonumber(Spring.GetModOptions().dominancetimeout or "6")
 local DOMINANCE_TIMEOUT_RESET = Spring.GetModOptions().strongpointsration or "noWithPenalty"
 local DOMINANCE_TIMEOUT_TEXT = DOMINANCE_TIMEOUT .. " minutes" 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()

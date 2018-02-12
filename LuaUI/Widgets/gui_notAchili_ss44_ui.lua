@@ -59,8 +59,8 @@ local function SetGlobalSize( globalSize )
 	
 	SS44_UI.minimapH = 80 * globalSize
 	
-	SS44_UI.stateW = 9.6 * globalSize
-	SS44_UI.stateH = 9.6 * globalSize
+	SS44_UI.stateW = 11.2 * globalSize
+	SS44_UI.stateH = 11.2 * globalSize
 	
 	local count = SS44_UI.imageInRow
 	SS44_UI.rowSize	= SS44_UI.imageW * count + SS44_UI.imageOffset * ( count + 1 )
