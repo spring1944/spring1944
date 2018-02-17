@@ -189,7 +189,7 @@ function UpdateOrdersData( commands )
 
 	local states = commands.states
 	local orders
-	if SS44_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 0 ) then
+	if SS44_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 1 ) then --hotfix fot commando
 		orders = {}
 	else
 		orders = commands.orders

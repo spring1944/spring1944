@@ -147,7 +147,8 @@ function CreateSelectionWidget()
 		children = {
 			ScrollPanel:New{
 				--parent = selectionWidget,
-				width = "100%", height = "100%",
+				width = "100%", 
+				height = "100%",
 				padding = { 0, 0, 0, 0 },
 			}
 		}
@@ -166,7 +167,7 @@ function CreateSelectionWidget()
 				styleKey = "buttonResizable",
 			},
 			Image:New{
-				x = imageOffset, y = labelH + 2,
+				x = imageOffset, y = labelH,
 				width = imageW, height = imageH,
 				children = {
 					Label:New{

@@ -83,40 +83,76 @@ local myTeamID = Spring.GetMyTeamID()
 
 local globalSize = SS44_UI.globalSize
 
-local allGoalsW = WIDGET_DEFAULT_WIDTH * globalSize
-local allGoalsH = WIDGET_DEFAULT_HEIGHT * globalSize -- future: auto
-local fromTop = FROM_TOP * globalSize
+local allGoalsW
+local allGoalsH
+local fromTop
 
-local oneGoalH = ONE_GOAL_LINE_HEIGHT * globalSize
-local oneGoalMarginLeft = ONE_GOAL_MARGIN * globalSize
-local oneGoalMarginTop = ONE_GOAL_MARGIN * globalSize
-local oneGoalMarginRight = ONE_GOAL_MARGIN * globalSize * 4
-local oneGoalMarginBottom = ONE_GOAL_MARGIN * globalSize
-local oneGoalHFull = oneGoalH + oneGoalMarginTop + oneGoalMarginBottom
+local oneGoalH
+local oneGoalMarginLeft
+local oneGoalMarginTop
+local oneGoalMarginRight
+local oneGoalMarginBottom
+local oneGoalHFull
 
-local oneGoalCheckboxSize = CHECKBOX_WIDTH * globalSize
-local oneGoalCheckboxMargin = ONE_GOAL_LABLE_MARGIN * globalSize
-local oneGoalIconSize = oneGoalH
+local oneGoalCheckboxSize
+local oneGoalCheckboxMargin
+local oneGoalIconSize
 
-local oneGoalCounterW = COUNTER_WIDTH * globalSize
-local oneGoalCounterMarginLeft = oneGoalCheckboxMargin
-local oneGoalCaptionW = allGoalsW - oneGoalMarginLeft - oneGoalMarginRight - oneGoalCheckboxSize - oneGoalCheckboxMargin - oneGoalCounterW
+local oneGoalCounterW
+local oneGoalCounterMarginLeft
+local oneGoalCaptionW
 
-local counterFontSize = HIGHLIGHT_FONT_SIZE * globalSize
-local descriptionFontSize =  DEFAULT_FONT_SIZE * globalSize
+local counterFontSize
+local descriptionFontSize
 
-local goalsButtonW = GOALS_BUTTON_WIDTH * globalSize
-local goalsButtonH = GOALS_BUTTON_HEIGHT * globalSize
-local goalsButtonRight = GOALS_BUTTON_RIGHT * globalSize
-local goalsButtonTop = GOALS_BUTTON_TOP * globalSize
+local goalsButtonW
+local goalsButtonH
+local goalsButtonRight
+local goalsButtonTop
+local goalsButtonLableFontSize
 
-local completedColor = {0.4, 1, 0.4, 1}
-local notCompletedColor = {1, 1, 1, 1}
+local completedColor
+local notCompletedColor
 
 local goalsWidgets = {}
 local missionGoals = {}
 
 local showingGoals = true
+
+function ReadSettings()
+	globalSize = SS44_UI.globalSize
+
+	allGoalsW = WIDGET_DEFAULT_WIDTH * globalSize
+	allGoalsH = WIDGET_DEFAULT_HEIGHT * globalSize -- future: auto
+	fromTop = FROM_TOP * globalSize
+
+	oneGoalH = ONE_GOAL_LINE_HEIGHT * globalSize
+	oneGoalMarginLeft = ONE_GOAL_MARGIN * globalSize
+	oneGoalMarginTop = ONE_GOAL_MARGIN * globalSize
+	oneGoalMarginRight = ONE_GOAL_MARGIN * globalSize * 4
+	oneGoalMarginBottom = ONE_GOAL_MARGIN * globalSize
+	oneGoalHFull = oneGoalH + oneGoalMarginTop + oneGoalMarginBottom
+
+	oneGoalCheckboxSize = CHECKBOX_WIDTH * globalSize
+	oneGoalCheckboxMargin = ONE_GOAL_LABLE_MARGIN * globalSize
+	oneGoalIconSize = oneGoalH
+
+	oneGoalCounterW = COUNTER_WIDTH * globalSize
+	oneGoalCounterMarginLeft = oneGoalCheckboxMargin
+	oneGoalCaptionW = allGoalsW - oneGoalMarginLeft - oneGoalMarginRight - oneGoalCheckboxSize - oneGoalCheckboxMargin - oneGoalCounterW
+
+	counterFontSize = HIGHLIGHT_FONT_SIZE * globalSize
+	descriptionFontSize =  DEFAULT_FONT_SIZE * globalSize
+
+	goalsButtonW = GOALS_BUTTON_WIDTH * globalSize
+	goalsButtonH = GOALS_BUTTON_HEIGHT * globalSize
+	goalsButtonRight = GOALS_BUTTON_RIGHT * globalSize
+	goalsButtonTop = GOALS_BUTTON_TOP * globalSize
+	goalsButtonLableFontSize = HIGHLIGHT_FONT_SIZE * globalSize
+
+	completedColor = {0.4, 1, 0.4, 1}
+	notCompletedColor = {1, 1, 1, 1}
+end
 
 -- local inputGoals = {
 	-- {
@@ -197,7 +233,7 @@ function CreateMissionGoalsWidget()
 		width = goalsButtonW, height = goalsButtonH,
 		caption = "Mission Goals",
 		parent = screen0,
-		font = { size = labelFontSize },
+		font = { size = goalsButtonLableFontSize },
 		styleKey = "buttonResizable",
 		OnMouseUp = { function() 
 			if (showingGoals) then
@@ -210,6 +246,7 @@ function CreateMissionGoalsWidget()
 	}
 	
 	CreateGoals()
+	UpdateMissionGoalsGeometry()
 end
 
 function CreateGoals()
@@ -244,7 +281,6 @@ function CreateGoals()
 	end
 
 	SS44_UI.allGoalsWidget = allGoalsWidget
-	UpdateMissionGoalsGeometry()
 end
 
 function ShowGoals()
@@ -421,12 +457,6 @@ function ResetWidget()
 		goalsButton:Dispose()
 	end
 	CreateMissionGoalsWidget()
-end
-
-function ReadSettings()
-	globalSize = SS44_UI.globalSize
-	allGoalsH = WIDGET_DEFAULT_HEIGHT * globalSize
-	allGoalsW = WIDGET_DEFAULT_WIDTH * globalSize
 end
 
 -- Export constants and functions, used in other modules
