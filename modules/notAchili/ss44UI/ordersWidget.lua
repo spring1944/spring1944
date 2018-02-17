@@ -188,12 +188,7 @@ end
 function UpdateOrdersData( commands )
 
 	local states = commands.states
-	local orders
-	if SS44_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 0 ) then
-		orders = {}
-	else
-		orders = commands.orders
-	end
+	local orders = commands.orders
 	local others = commands.others
 	
 	local statesEqual = IsTableEqual( states, currentStates )
