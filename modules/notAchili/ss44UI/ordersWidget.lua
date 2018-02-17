@@ -188,7 +188,12 @@ end
 function UpdateOrdersData( commands )
 
 	local states = commands.states
-	local orders = commands.orders
+	local orders
+	if SS44_UI.selectionWidget.onlyOneCategory and ( #commands.builds > 1 ) then --hotfix fot commando
+		orders = {}
+	else
+		orders = commands.orders
+	end
 	local others = commands.others
 	
 	local statesEqual = IsTableEqual( states, currentStates )
