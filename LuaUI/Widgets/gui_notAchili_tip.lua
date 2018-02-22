@@ -915,17 +915,17 @@ local function GetExtraInfo( info )
 	if energyProduce > 1 then
 		if info.windGenerator > 0 then
 			extraInfo = extraInfo ..
-				"\nProduces supplies " .. green .. string_format( "%d - %d", Game.windMin, Game.windMax ) .. white
+				"\nProduces ammunition " .. green .. string_format( "%d - %d", Game.windMin, Game.windMax ) .. white
 		elseif info.tidalGenerator > 0 then
 			extraInfo = extraInfo ..
-				"\nProduces supplies " .. green .. formatThousands( Game.tidal ) .. white
+				"\nProduces ammunition " .. green .. formatThousands( Game.tidal ) .. white
 		else
 			extraInfo = extraInfo ..
-				"\nProduces supplies " .. green .. formatThousands( energyProduce ) .. white
+				"\nProduces ammunition " .. green .. formatThousands( energyProduce ) .. white
 		end
 	elseif energyProduce < -1 then
 		extraInfo = extraInfo ..
-			"\nConsumes supplies " .. red .. formatThousands( energyProduce ) .. white
+			"\nConsumes ammunition " .. red .. formatThousands( energyProduce ) .. white
 	end
 	
 	if info.makesMetal > 0 then
@@ -944,7 +944,7 @@ local function GetExtraInfo( info )
 	
 	if info.energyStorage > 1 then
 		extraInfo = extraInfo ..
-			"\nProvides supplies storage " .. green .. formatThousands( info.energyStorage ) .. white
+			"\nProvides ammunition storage " .. green .. formatThousands( info.energyStorage ) .. white
 	end
 	
 	if info.canCloak then
