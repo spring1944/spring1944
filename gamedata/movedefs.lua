@@ -33,6 +33,14 @@ local moveDefs 	=	 {
 		heatmapping		=	false,
 	},
 	{
+		name					=	"TANK_Motorcycle",
+		footprintX		=	2,
+		maxWaterDepth	=	8,
+		maxSlope			=	22,
+		slopeMod		= 80,
+		heatmapping		=	false,
+	},
+	{
 		name					=	"TANK_6pluswheels",
 		footprintX		=	2,
 		maxWaterDepth	=	8,

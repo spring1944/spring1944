@@ -8,7 +8,7 @@ local USInf = {
 local USPara = {
 	maxDamageMul		= 1.4,
 	customParams = {
-
+		pronespheremovemult = 0.5,
 	},
 }
 
