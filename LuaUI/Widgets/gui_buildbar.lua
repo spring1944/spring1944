@@ -973,8 +973,8 @@ function widget:GetTooltip(x,y)
       local unitDef = UnitDefs[facs[openedMenu+1].buildList[hoveredBOpt+1]]
       return "Build: " .. unitDef.humanName .. " - " .. unitDef.tooltip .. "\n" ..
              GreyStr .. "Health " .. GreenStr .. unitDef.health .. "\n" ..
-             GreyStr .. "Metal cost " .. OrangeStr .. unitDef.metalCost .. "\n" ..
-             GreyStr .. "Energy cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
+             GreyStr .. "Command cost " .. OrangeStr .. unitDef.metalCost .. "\n" ..
+             GreyStr .. "Ammunition cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
     end
   end
   return ""

@@ -43,10 +43,6 @@ local rotations = {}
 local path = "LuaUI/Images/Props/"
 
 function widget:Initialize()
-	if (Game.modShortName ~= "S44") then
-		WG.RemoveWidget(self)
-		return
-	end
 end
 
 function widget:DrawWorld()
