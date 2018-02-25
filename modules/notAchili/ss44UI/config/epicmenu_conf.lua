@@ -166,8 +166,7 @@ path='Settings/Interface/Interface Skin'
 			WG.crude.SetSkin( self.value );
 		end,
 		items = {
-			{ key = 's44',			name = 'Default s44', },
-			{ key = 'Carbon',		name = 'Carbon', },
+			{ key = 'ss44UI', name = 'Default Spring 1944 UI',},
 		},
 	})
 	

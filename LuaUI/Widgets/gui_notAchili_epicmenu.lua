@@ -1141,7 +1141,7 @@ MakeSubWindow = function(path)
 			caption = 'Back', 
 			OnMouseUp = { 
 				KillSubWindow, 
-				function() MakeSubWindow(parent_path) end,
+				function() if (parent_path == "") then ShowMenuWindow() else MakeSubWindow(parent_path) end end,
 			},
 			backgroundColor = epic_colors.sub_back_bg,
 			textColor = epic_colors.sub_back_fg,
