@@ -23,3 +23,7 @@ function script.Killed(recentDamage, maxHealth)
     WaitForMove(base, z_axis)
     return 1
 end
+
+function script.WindChanged(heading, strength)
+    Turn(base, y_axis, heading, math.rad(20))
+end
