@@ -31,13 +31,11 @@ local function DLByPieces(unitID, material, materialID)
 end
 
 local function DLByUnits(unitID, udef, material, materialID)
-    Spring.Echo("**** DLByUnits")
     local pieceMap = Spring.GetUnitPieceMap(unitID)
     for pieceName, pieceID in pairs(pieceMap) do
         if pieceName:find("flag") then
             local dl = unitDLs[udef.name]
             if (not dl) then
-                Spring.Echo("**** Creating dl...")
                 dl = gl.CreateList(function()
                 gl.MultiTexCoord(4,100)
                 gl.UnitPiece(unitID, pieceID)
