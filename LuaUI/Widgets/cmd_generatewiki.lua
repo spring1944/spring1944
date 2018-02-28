@@ -10,10 +10,21 @@ function widget:GetInfo ()
     }
 end
 
-UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
--- UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
-FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
--- FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
+-- UNITS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/unitpics/"
+-- FACTIONS_PICS_URL = "https://gitlab.com/Spring1944/spring1944/raw/master/LuaUI/Widgets/faction_change/"
+-- WIKI_WIDGET_PICS_EXT = "svg"
+-- STRUCTURE = "hierarchical"  -- Pages are organized in folders
+UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
+WIKI_WIDGET_PICS_URL = "https://raw.githubusercontent.com/wiki/spring1944/spring1944/images/wiki_widget"
+WIKI_WIDGET_PICS_EXT = "png"
+STRUCTURE = "plain"  -- All pages are in root folder, with dot based names
+
+if STRUCTURE == "hierarchical" then
+    SEPARATOR = "/"
+else
+    SEPARATOR = "."    
+end
 
 -- =============================================================================
 -- STRING UTILITIES
@@ -205,14 +216,19 @@ end
 
 function _gen_faction(folder, faction)
     local side = faction.sideName
-    local faction_folder = folder .. "/factions/" .. side
-    if Spring.CreateDir(faction_folder) == false then
-        Spring.Log("cmd_generatewiki.lua", "error",
-            "Failure creating the folder '" .. faction_folder .. "'")
+    local handle
+    if STRUCTURE == "hierarchical" then
+        local faction_folder = folder .. "/factions/" .. side
+        if Spring.CreateDir(faction_folder) == false then
+            Spring.Log("cmd_generatewiki.lua", "error",
+                "Failure creating the folder '" .. faction_folder .. "'")
+        end
+        handle = io.open(faction_folder .. "/main.md", "w")
+    else
+        handle = io.open(folder .. "/factions." .. side ..".md", "w")
     end
 
     -- Create the wiki page
-    local handle = io.open(faction_folder .. "/main.md", "w")
     handle.write(handle, "# ![side-logo]")
     handle.write(handle, "(" .. FACTIONS_PICS_URL .. side .. ".png) ")
     handle.write(handle, faction.title .. "\n\n")
@@ -222,7 +238,7 @@ function _gen_faction(folder, faction)
     local tree = {}
     tree[faction.startUnit] = _units_tree(faction.startUnit, side)
     handle.write(handle, "## Units tree\n\n")
-    handle.write(handle, _to_wikilist(tree, "units/"))
+    handle.write(handle, _to_wikilist(tree, "units" .. SEPARATOR))
     handle.write(handle, "\n")    
 
     handle.close(handle)
@@ -256,10 +272,10 @@ function _parse_squad(unitDef)
         local memberDef = UnitDefNames[member]
         t = t .. "* " .. tostring(n) .. " x "
         t = t .. "[" .. memberDef.humanName .. "]"
-        t = t .. "(units/" .. memberDef.name .. ")\n"
+        t = t .. "(units" .. SEPARATOR .. memberDef.name .. ")\n"
     end
 
-    t = t .. "\n[1]: /uploads/ec651a1312826e75c31e416dad059540/hammer_icon.svg\n\n"
+    t = t .. "\n[1]: " .. WIKI_WIDGET_PICS_URL .. "/hammer_icon." .. WIKI_WIDGET_PICS_EXT .. "\n\n"
 
     return t
 end
@@ -268,6 +284,12 @@ TEMPLATES_FOLDER = "LuaUI/Widgets/generatewiki/templates/"
 
 function _parse_yard(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "yard.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
@@ -303,6 +325,12 @@ end
 
 function _parse_storage(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "storage.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{comments}",
                     unitDef.customParams.wiki_comments)
@@ -340,6 +368,12 @@ end
 function _parse_supplies(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "supplies.md")
     t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
+    t = string.gsub(t,
                     "{comments}",
                     unitDef.customParams.wiki_comments)
     t = string.gsub(t,
@@ -375,6 +409,12 @@ end
 
 function _parse_infantry(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "infantry.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
@@ -438,6 +478,12 @@ end
 
 function _parse_vehicle(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "vehicles.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
@@ -511,6 +557,12 @@ end
 function _parse_aircraft(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "aircrafts.md")
     t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
+    t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
     t = string.gsub(t,
@@ -567,6 +619,12 @@ end
 
 function _parse_boat(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "boats.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
@@ -639,7 +697,7 @@ function _parse_boat(unitDef)
         for _, turret in pairs(children) do
             local turretDef = UnitDefNames[string.lower(turret)]
             local turretName = turretDef.humanName
-            local turretRef = "units/" .. string.lower(turret)
+            local turretRef = "units" .. SEPARATOR .. string.lower(turret)
             t = t .. "[" .. turretName .. "](" .. turretRef .. ")\n\n"
         end
 
@@ -649,6 +707,12 @@ end
 
 function _parse_turret(unitDef)
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "turrets.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     t = string.gsub(t,
                     "{subclass_comments}",
                     unitDef.customParams.wiki_subclass_comments)
@@ -710,6 +774,12 @@ function _parse_weapon(unitDef, weapon)
     -- The parameter weapon is not a weapon def, but an unitDef weapon table
     weaponDef = WeaponDefs[weapon.weaponDef]
     local t = VFS.LoadFile(TEMPLATES_FOLDER .. "weapon.md")
+    t = string.gsub(t,
+                    "{iconsUrl}",
+                    WIKI_WIDGET_PICS_URL)
+    t = string.gsub(t,
+                    "{iconExt}",
+                    WIKI_WIDGET_PICS_EXT)
     -- Weapon name and comments
     -- ========================
     local comments = weaponDef.customParams.wiki_comments or ""
@@ -829,10 +899,17 @@ end
 
 function _gen_unit(name, folder)
     local unitDef = UnitDefNames[name]
-    local unit_folder = folder .. "/units/"
+    local handle
+    if STRUCTURE == "hierarchical" then
+        local unit_folder = folder .. "/units/"
+        handle = io.open(unit_folder .. name .. ".md", "w")
+    else
+        handle = io.open(folder .. "/units." .. name .. ".md", "w")
+    end
+
     -- Title line
     -- ==========
-    local handle = io.open(unit_folder .. name .. ".md", "w")
+
     handle.write(handle, "# ![" .. name .. "-buildpic]")
     handle.write(handle, "(" .. UNITS_PICS_URL .. string.lower(unitDef.buildpicname) .. ") ")
     handle.write(handle, unitDef.humanName .. "\n\n")
@@ -860,6 +937,8 @@ function _gen_unit(name, folder)
             else
                 handle.write(handle, _parse_boat(unitDef))
             end
+        else
+            Spring.Echo("No customParams.wiki_parser : ", unitDef.name)
         end
     end
     -- Parse the weapons
@@ -894,7 +973,7 @@ function _gen_unit(name, folder)
             handle.write(handle, "(" .. UNITS_PICS_URL .. childBuildPic .. ") ")
             -- Name
             handle.write(handle, "[" .. childHumanName .. "]")
-            handle.write(handle, "(units/" .. childName .. ")\n\n")
+            handle.write(handle, "(units" .. SEPARATOR .. childName .. ")\n\n")
 
             nMorphs = nMorphs + 1
         end
@@ -916,7 +995,7 @@ function _gen_unit(name, folder)
                 handle.write(handle, "(" .. UNITS_PICS_URL .. childBuildPic .. ") ")
                 -- Name
                 handle.write(handle, "[" .. childHumanName .. "]")
-                handle.write(handle, "(units/" .. childName .. ")\n\n")
+                handle.write(handle, "(units" .. SEPARATOR .. childName .. ")\n\n")
             end
         end
     end
@@ -927,12 +1006,22 @@ end
 function _gen_wiki(folder)
     -- Factions documentation
     -- ======================
-    if not Spring.CreateDir(folder .. "/factions") then
-        Spring.Log("cmd_generatewiki.lua", "error",
-            "Failure creating the folder '" .. folder .. "/factions" .. "'")
-        return false
+    local handle
+    if STRUCTURE == "hierarchical" then
+        if not Spring.CreateDir(folder .. "/factions") then
+            Spring.Log("cmd_generatewiki.lua", "error",
+                "Failure creating the folder '" .. folder .. "/factions" .. "'")
+            return false
+        end
+        handle = io.open(folder .. "/factions/main.md", "w")
+    else
+        if not Spring.CreateDir(folder) then
+            Spring.Log("cmd_generatewiki.lua", "error",
+                "Failure creating the folder '" .. folder .. "'")
+            return false
+        end
+        handle = io.open(folder .. "/factions" .. ".md", "w")
     end
-    local handle = io.open(folder .. "/factions/main.md", "w")
     handle.write(handle, "# Factions\n")
     local factions = Spring.GetSideData()
     local extra_data = include("gamedata/sidedata.lua")
@@ -945,7 +1034,11 @@ function _gen_wiki(folder)
             handle.write(handle, "* ![" .. side .. "]")
             handle.write(handle, "(" .. FACTIONS_PICS_URL .. side .. ".png) ")
             handle.write(handle, "[" .. factions[i].title .. "]")
-            handle.write(handle, "(factions/" .. side .. "/main)\n")
+            if STRUCTURE == "hierarchical" then
+                handle.write(handle, "(factions/" .. side .. "/main)\n")
+            else
+                handle.write(handle, "(factions." .. side .. ")\n")
+            end
         end
     end
     handle.write(handle, "\n")
@@ -953,10 +1046,12 @@ function _gen_wiki(folder)
 
     -- Units documentation
     -- ===================
-    if not Spring.CreateDir(folder .. "/units") then
-        Spring.Log("cmd_generatewiki.lua", "error",
-            "Failure creating the folder '" .. folder .. "/units" .. "'")
-        return false
+    if STRUCTURE == "hierarchical" then
+        if not Spring.CreateDir(folder .. "/units") then
+            Spring.Log("cmd_generatewiki.lua", "error",
+                "Failure creating the folder '" .. folder .. "/units" .. "'")
+            return false
+        end
     end
     for id,unitDef in pairs(UnitDefs) do
         _gen_unit(unitDef.name, folder)
