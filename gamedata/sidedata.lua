@@ -5,12 +5,14 @@ local sidedata = {
 	{
 	name = "Random Team (GM)",
 	startUnit = "GMToolbox",
+	alliance = "",
 	wiki_title = "Random team",
 	wiki_description = "A random team",
 	},
 	{
 	name = "GER",
 	startUnit = "GERHQBunker",
+	alliance = "axis",
 	wiki_title = "Nazi Germany",
 	wiki_desc = [[## Introduction
 
@@ -33,6 +35,7 @@ This affected the fighting capabilities of the Wehrmacht's frontline units as we
 	{
 	name = "GBR",
 	startUnit = "GBRHQ",
+	alliance = "allies",
 	wiki_title = "Great Britain",
 	wiki_desc = [[## Introduction
 
@@ -55,6 +58,7 @@ One other rather annoying aspect of the GBR faction is the artillery. Despite ha
 	{
 	name = "RUS",
 	startUnit = "RUSCommissar",
+	alliance = "allies",
 	wiki_title = "Union of Soviet Socialist Republics",
 	wiki_desc = [[## Introduction
 
@@ -71,6 +75,7 @@ While having speed and good aim helps, soviet guns are generally weaker and not 
 	{
 	name = "US",
 	startUnit = "USHQ",
+	alliance = "allies",
 	wiki_title = "United States of America",
 	wiki_desc = [[## Introduction
 
@@ -89,6 +94,7 @@ While US have a solid midgame and a very aggresive start with powerful infantry 
 	{
 	name = "ITA",
 	startUnit = "ITAHQ",
+	alliance = "axis",
 	wiki_title = "Italy",
 	wiki_desc = [[## Introduction
 
@@ -109,6 +115,7 @@ Late game the situation changes, as Italy fields much better armored tank destro
 	{
 	name = "JPN",
 	startUnit = "JPNHQ",
+	alliance = "axis",
 	wiki_title = "Japan",
 	wiki_desc = [[## Introduction
 
@@ -129,6 +136,7 @@ Japan infantry are also the least useful in direct combat, as they heavily rely 
 	{
 	name = "SWE",
 	startUnit = "SWEHQ",
+	alliance = "neutral",
 	wiki_title = "Sweden",
 	wiki_desc = [[## Introduction
 
@@ -152,6 +160,7 @@ Unfortunately, guns are consuming ammo quite fast, so take a look to your storag
 	{
 	name = "HUN",
 	startUnit = "HUNHQ",
+	alliance = "axis",
 	wiki_title = "Hungary",
 	wiki_desc = [[## Introduction
 
