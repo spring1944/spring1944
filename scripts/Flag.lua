@@ -100,7 +100,7 @@ function script.Create()
 end
 
 function script.WindChanged (heading, strength)
-    if currentSide then
+    if currentSide and flags[currentSide] then
         Turn(flags[currentSide], y_axis, heading, math.rad(20))
     elseif buoy then
         Turn(flag, y_axis, heading, math.rad(20))
