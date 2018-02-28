@@ -73,7 +73,7 @@ local factions = VFS.Include("gamedata/sidedata.lua")
 for _, faction in ipairs(factions) do
     if faction.alliance and faction.alliance == "axis" then
         SIDEDATA[#SIDEDATA + 1] = {
-            sideName = faction.name,
+            sideName = string.lower(faction.name),
         }
         N_AXIS = N_AXIS + 1
     end
@@ -82,7 +82,7 @@ end
 for _, faction in ipairs(factions) do
     if faction.alliance and faction.alliance == "allies" then
         SIDEDATA[#SIDEDATA + 1] = {
-            sideName = faction.name,
+            sideName = string.lower(faction.name),
         }
         N_ALLIES = N_ALLIES + 1
     end
@@ -91,7 +91,7 @@ end
 for _, faction in ipairs(factions) do
     if (faction.alliance == nil) or (faction.alliance == "neutral") then
         SIDEDATA[#SIDEDATA + 1] = {
-            sideName = faction.name,
+            sideName = string.lower(faction.name),
         }
         N_NEUTRAL = N_NEUTRAL + 1
     end
