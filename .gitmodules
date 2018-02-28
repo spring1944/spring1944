@@ -1,15 +1,15 @@
 [submodule "modules/core"]
 	path = modules/core
-	url = https://bitbucket.org/notabots/core.git
+	url = https://github.com/spring1944/submodule-core.git
 [submodule "modules/customCommands/data"]
 	path = modules/customCommands/data
-	url = https://bitbucket.org/notabots/customcommands.git
+	url = https://github.com/spring1944/submodule-customCommands.git
 [submodule "modules/notAchili/data"]
 	path = modules/notAchili/data
-	url = https://bitbucket.org/notabots/notachili.git
+	url = https://github.com/spring1944/submodule-notAchili.git
 [submodule "modules/strongpoints/data"]
 	path = modules/strongpoints/data
-	url = https://bitbucket.org/notabots/strongpoints.git
+	url = https://github.com/spring1944/submodule-strongpoints.git
 [submodule "modules/goals/data"]
 	path = modules/goals/data
-	url = https://bitbucket.org/notabots/goals.git
+	url = https://github.com/spring1944/submodule-goals.git
