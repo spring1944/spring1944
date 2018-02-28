@@ -28,7 +28,11 @@ function SpawnChildFlag(teamID)
         childUnitID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
         if (childUnitID ~= nil) then
             Spring.UnitScript.AttachUnit(base, childUnitID)
+            Spring.SetUnitBlocking(childUnitID, false, false, false)
+            Spring.SetUnitNeutral(childUnitID, true)
             Spring.SetUnitNoSelect(childUnitID, true)
+            Spring.SetUnitAlwaysVisible(childUnitID, true)
+
         end
     end
     return childUnitID
