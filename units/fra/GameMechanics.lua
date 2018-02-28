@@ -14,7 +14,7 @@ local fraFlag = Null:New{
     customParams = {
         dontCount = 1,
         flag      = false,
-        normaltex = "flag-nullnormals.png",
+        normaltex = "unittextures/flag-nullnormals.png",
     },
 }
 
