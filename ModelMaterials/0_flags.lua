@@ -8,25 +8,57 @@ local SHADER_DIR = "ModelMaterials/Shaders/"
 --------------------------------------------------------------------------------
 
 local pieceDLs = {}
+local unitDLs = {}
+
+local function DLByPieces(unitID, material, materialID)
+    local pieceMap = Spring.GetUnitPieceMap(unitID)
+    local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag", "jpnflag", "itaflag", "sweflag", "hunflag", "flag", "teamflag"}
+    for i=1,#flagPieces do
+        local pieceID = pieceMap[ flagPieces[i] ]
+        if (pieceID) then
+            local dl = pieceDLs[i]
+            if (not dl) then
+                dl = gl.CreateList(function()
+                gl.MultiTexCoord(4,100)
+                gl.UnitPiece(unitID, pieceID)
+                gl.MultiTexCoord(4,0)
+                end)
+                pieceDLs[i] = dl
+            end
+            Spring.UnitRendering.SetPieceList(unitID,materialID,pieceID,dl)
+        end
+    end
+end
+
+local function DLByUnits(unitID, udef, material, materialID)
+    Spring.Echo("**** DLByUnits")
+    local pieceMap = Spring.GetUnitPieceMap(unitID)
+    for pieceName, pieceID in pairs(pieceMap) do
+        if pieceName:find("flag") then
+            local dl = unitDLs[udef.name]
+            if (not dl) then
+                Spring.Echo("**** Creating dl...")
+                dl = gl.CreateList(function()
+                gl.MultiTexCoord(4,100)
+                gl.UnitPiece(unitID, pieceID)
+                gl.MultiTexCoord(4,0)
+                end)
+                unitDLs[udef.name] = dl
+            end
+            Spring.UnitRendering.SetPieceList(unitID,materialID,pieceID,dl)
+            break
+        end
+    end
+end
 
 local function UnitCreated(unitID, material, materialID)
-  local pieceMap = Spring.GetUnitPieceMap(unitID)
-  local flagPieces = {"gbrflag", "gerflag", "usflag", "rusflag", "jpnflag", "itaflag", "sweflag", "hunflag", "flag", "teamflag"}
-  for i=1,#flagPieces do
-    local pieceID = pieceMap[ flagPieces[i] ]
-    if (pieceID) then
-      local dl = pieceDLs[i]
-      if (not dl) then
-        dl = gl.CreateList(function()
-          gl.MultiTexCoord(4,100)
-          gl.UnitPiece(unitID, pieceID)
-          gl.MultiTexCoord(4,0)
-        end)
-        pieceDLs[i] = dl
-      end
-      Spring.UnitRendering.SetPieceList(unitID,materialID,pieceID,dl)
+    local unitDefID = Spring.GetUnitDefID(unitID)
+    local udef = UnitDefs[unitDefID]
+    if udef.name == "flag" then
+        DLByPieces(unitID, material, materialID)
+    elseif udef.name:find("flag") then
+        DLByUnits(unitID, udef, material, materialID)
     end
-  end
 end
 
 
@@ -141,9 +173,13 @@ local unitMaterials = {}
 
 for i, udef in pairs(UnitDefs) do
     if udef.name:find("flag") then
+        local normaltex = "unittextures/Flags_normals.dds"
+        if (udef.customParams.normaltex and VFS.FileExists(udef.customParams.normaltex)) then
+            normaltex = udef.customParams.normaltex
+        end
         unitMaterials[udef.name] = {
             "flagShader",
-            NORMALTEX = "unittextures/Flags_normals.dds",  -- Sure about that??
+            NORMALTEX = normaltex,  -- Sure about that??
         }
     end
 end
