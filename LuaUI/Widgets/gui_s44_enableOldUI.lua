@@ -30,18 +30,18 @@ local oldUIWidgets = {
 
 function DisableNewUI()
 	for i = 1, #newUIWidgets do
-		local wdigetName = newUIWidgets[i]
+		local widgetName = newUIWidgets[i]
 		
 		Spring.SendCommands{
-			"luaui disablewidget " .. wdigetName,
+			"luaui disablewidget " .. widgetName,
 		}
 	end
 	
 	for i = 1, #oldUIWidgets do
-		local wdigetName = oldUIWidgets[i]
+		local widgetName = oldUIWidgets[i]
 		
 		Spring.SendCommands{
-			"luaui enablewidget " .. wdigetName,
+			"luaui enablewidget " .. widgetName,
 		}
 	end
 			
@@ -54,18 +54,18 @@ end
 
 function EnableNewUI()
 	for i = #oldUIWidgets, 1, -1 do
-		local wdigetName = oldUIWidgets[i]
+		local widgetName = oldUIWidgets[i]
 		
 		Spring.SendCommands{
-			"luaui disablewidget " .. wdigetName,
+			"luaui disablewidget " .. widgetName,
 		}
 	end
 
 	for i = #newUIWidgets, 1, -1 do
-		local wdigetName = newUIWidgets[i]
+		local widgetName = newUIWidgets[i]
 		
 		Spring.SendCommands{
-			"luaui enablewidget " .. wdigetName,
+			"luaui enablewidget " .. widgetName,
 		}
 	end
 end
