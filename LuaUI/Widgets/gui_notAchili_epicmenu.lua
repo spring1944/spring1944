@@ -1,6 +1,6 @@
 function widget:GetInfo()
   return {
-    name = "S44 Epic Menu",
+    name = "1944 notAchili Epic menu",
     desc = "Extremely Powerful Ingame NotAchili Menu.",
     author = "CarRepairer", -- upgraded by a1983 for notaUI, converted for s44 by PepeAmpere
     date  = "2009-06-02",
@@ -1948,7 +1948,7 @@ function CreateMenuWindow()
 		name	= 'mainWindow',
 		caption = 'Main Menu',
 		width	= menuW,
-		height	= menuH,
+		height	= menuH + 8*globalSize,
 		margin	= { 0, 0, 0, 0 },
 		padding	= { 2, 8.8 * globalSize, 2, 2 },
 		--dockable = true,

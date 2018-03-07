@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------------------
 function widget:GetInfo()
 	return {
-		name	= "NotAchili ss44 UI",
+		name	= "1944 notAchili ss44 UI",
 		desc	= "Unit Control Menu",
 		author	= "a1983",
 		date	= "01 04 2013",
@@ -17,9 +17,10 @@ end
 ----------------------------------------------------------------------------------------------------
 --                                        Local constants                                         --
 ----------------------------------------------------------------------------------------------------
-local smallSize		= 2.5
-local mediumSize	= 3.0
-local largeSize		= 3.5
+local superSmallSize = 2
+local smallSize = 2.5
+local mediumSize = 3.0
+local largeSize = 3.5
 
 ----------------------------------------------------------------------------------------------------
 --                                        Local variables                                         --
@@ -98,21 +99,26 @@ options = {
 			MISSION_GOALS_WIDGET.ResetWidget()
 			
 		end,
-		default = mediumSize,
+		default = smallSize,
 		items = {
 			{
+				key = superSmallSize,
+				name = "XS Interface Size",
+				desc = "Extra Small Interface Size",
+			},
+			{
 				key = smallSize,
-				name = "Small Interface Size",
+				name = "S Interface Size",
 				desc = "Small Interface Size",
 			},
 			{
 				key = mediumSize,
-				name = "Medium Interface Size",
+				name = "M Interface Size",
 				desc = "Medium Interface Size",
 			},
 			{
 				key = largeSize,
-				name = "Large Interface Size",
+				name = "L Interface Size",
 				desc = "Large Interface Size",
 			},
 		},		
@@ -437,6 +443,10 @@ local disabledWidgets = {
 	"Red_Drawing",
 	"SelectionButtons",
 	"Unit Stats",
+	-- s44 old UI
+	"1944 Resource Bars",
+	"Chili Pro Console2",
+	"Simple player list",
 }
 
 function DisableWidgets()

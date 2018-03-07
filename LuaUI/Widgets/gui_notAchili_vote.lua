@@ -3,7 +3,7 @@
 
 function widget:GetInfo()
   return {
-    name      = "NotAchili Vote Display",
+    name      = "1944 notAchili Vote Display",
     desc      = "GUI for votes",
     author    = "KingRaptor",
     date      = "May 04, 2008",

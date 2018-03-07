@@ -3,7 +3,7 @@
 ----------------------------------------------------------------------------------------------------
 function widget:GetInfo()
 	return {
-		name	= "Nota Minimap",
+		name	= "1944 notAchili Minimap",
 		desc	= "Cool minimap",
 		author	= "a1983",
 		date	= "01 08 2013",

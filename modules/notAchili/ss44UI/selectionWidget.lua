@@ -18,10 +18,10 @@ local unitStatsIconPrefix = ":a:" .. SS44_UI_DIRNAME .. "images/unitStats/"
 ----------------------------------------------------------------------------------------------------
 local globalSize = 2.5
 local imageW, imageH = 21 * globalSize, 16 * globalSize
-local imageOffset = 5
+local imageOffset = 2 * globalSize
 local imageInRow = 3
 
-local labelH = 20
+local labelH = 20 * globalSize
 local labelFontSize = 8 * globalSize
 
 local rowSize = imageW * imageInRow + imageOffset * ( imageInRow + 1 )
@@ -168,7 +168,7 @@ function CreateSelectionWidget()
 			},
 			Image:New{
 				x = imageOffset, y = labelH,
-				width = imageW, height = imageH,
+				width = imageW, height = imageH - 1*globalSize,
 				children = {
 					Label:New{
 						right = 2, y = 2,
@@ -179,7 +179,7 @@ function CreateSelectionWidget()
 							size = 8 * globalSize,
 							font = "LuaUI/Fonts/Visitor1.ttf",
 							outline = true,
-							outlineWidth = 7,
+							outlineWidth = 7 * globalSize,
 							outlineColor = { 0.1, 0.1, 0.1, 0.9 },
 						},
 						autosize = false,
@@ -338,7 +338,7 @@ function UpdateSelectionWidget()
 			local grid = selectionGrids[ group ]
 			if grid then
 			
-				local gridH = math.ceil( #grid.children / imageInRow ) * ( imageH + 7 ) + 1
+				local gridH = math.ceil( #grid.children / imageInRow ) * ( imageH + 7 ) + 1*globalSize
 				totalHeight = totalHeight + labelH + gridH
 			
 				local groupButton = Button:New{ 
@@ -411,7 +411,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function GetGrid( unitDefId )
-	local group = "Others"
+	local group = "Groups and Others"
 	local info = UnitDefs[ unitDefId ]
 	
 	local mobile = info.speed > 0.1

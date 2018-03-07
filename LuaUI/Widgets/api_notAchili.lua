@@ -1,6 +1,6 @@
 function widget:GetInfo()
 	return {
-		name = "NotAchili Framework",
+		name = "notAchili Framework",
 		desc = "Hot GUI Framework (DO NOT DISABLE)",
 		author = "jK & quantum", -- edited by a1983 and PepeAmpere
 		date = "WIP",
