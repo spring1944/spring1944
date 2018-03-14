@@ -10,7 +10,26 @@ function widget:GetInfo()
 	}
 end
 
+-- syntax + defaults from https://github.com/spring/spring/blob/104.0/doc/uikeys.txt
+-- complex syntax: https://springrts.com/wiki/Uikeys.txt
+
 local MAP_HEIGHT_RATIO = 0.12
+
+local defaultKeyBinds = {
+	"bind Ctrl+f1 viewfps",
+	"bind Ctrl+f2 viewta",
+	"bind Ctrl+f3 viewtw",
+	"bind Ctrl+f4 viewrot",
+	"bind Any+f1 showElevation",
+	"bind Any+f2 ShowPathTraversability",
+	"bind Any+f3 LastMsgPos",
+	"bind Any+f4 ShowMetalMap",
+	"bind Any+f5 hideinterface",
+	"bind Any+f6 NoSound",
+	"bind Shift+esc quitmenu",
+	"bind Any+0xa7 drawinmap",
+	"bind Any+; drawinmap", -- alternative for non-english keyboards
+}
 
 -- new UI
 local newUIWidgets = {
@@ -24,8 +43,22 @@ local newUIWidgets = {
 	"1944 Tooltip Replacement", -- in both lists, reset
 }
 
+-- old UI
 local oldUIWidgets = {
-	"1944 Tooltip Replacement" -- in both lists, reset
+	"1944 Tooltip Replacement", -- in both lists, reset
+	"1944 Resource Bars",
+	"Chili Pro Console2",
+	"Simple player list",
+}
+
+local oldUIunbinds = {
+	"unbindkeyset f1",
+	"unbindkeyset f2",
+	"unbindkeyset f3",
+	"unbindkeyset f4",	
+	"unbindkeyset f5",
+	"unbindkeyset Shift+esc",
+	"unbindkeyset Any+0xa7",
 }
 
 function DisableNewUI()
@@ -44,12 +77,23 @@ function DisableNewUI()
 			"luaui enablewidget " .. widgetName,
 		}
 	end
-			
+	
+	-- map reset
 	local mapX = math.floor(Game.mapSizeX / 512)
 	local mapZ = math.floor(Game.mapSizeZ / 512)
 	local x, z = Spring.GetScreenGeometry()
 	local height = x * MAP_HEIGHT_RATIO
 	Spring.SendCommands{"minimap geometry 2 2 " .. math.floor(mapZ / height) .. " " .. height }
+	
+	-- unbind
+	for i = 1, #oldUIunbinds do
+		Spring.SendCommands{oldUIunbinds[i]}
+	end
+	
+	-- default key binds reset
+	for i = 1, #defaultKeyBinds do
+		Spring.SendCommands{defaultKeyBinds[i]}
+	end
 end
 
 function EnableNewUI()

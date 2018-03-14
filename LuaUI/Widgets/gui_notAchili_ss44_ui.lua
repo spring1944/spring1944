@@ -443,10 +443,6 @@ local disabledWidgets = {
 	"Red_Drawing",
 	"SelectionButtons",
 	"Unit Stats",
-	-- s44 old UI
-	"1944 Resource Bars",
-	"Chili Pro Console2",
-	"Simple player list",
 }
 
 function DisableWidgets()
