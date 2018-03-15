@@ -41,6 +41,7 @@ local Motorcycle = Vehicle:New{
     turnRate            = 425,
 
     customParams = {
+	buildOutside	= 1,
         maxvelocitykmh      = 85,
         damageGroup     = "unarmouredVehicles",
         turretturnspeed     = 180,
