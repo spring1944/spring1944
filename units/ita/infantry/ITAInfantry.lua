@@ -7,9 +7,6 @@ local ITAInf = {
 local Alpini = {
 	maxDamageMul		= 1.25,
 	movementClass		= "KBOT_alpini",
-	customParams = {
-		pronespheremovemult = 0.5,
-	}
 }
 local Bersaglieri = {
 	maxDamageMul		= 1.15,
