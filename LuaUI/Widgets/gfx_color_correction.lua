@@ -80,17 +80,49 @@ local grain = 0.02
 local vignette = {0.3, 1.0}
 local aberration = 0.1
 
+local scratches = {
+    texture = nil,
+    shader = nil,
+    threshold = grain * grain * grain * 2000,
+    thresholdLoc = nil,
+    randomLoc = nil,
+    timerLoc = nil,
+}
+
+local gamma_noise = {
+    A = {0.05, 0.04, 0.02, 0.01},
+    T = {1.0, 0.25, 0.1, 0.05},
+    L = {},
+}
+gamma_noise.n = #gamma_noise.A
+for i=1,gamma_noise.n do
+    gamma_noise.L[i] = math.random() * math.pi
+end
+
 -----------------------------------------------------------------
+
+function gammaNoise(t)
+    local noise = 0
+    for i=1,gamma_noise.n do
+        local A = gamma_noise.A[i]
+        local w = 2 * math.pi / gamma_noise.T[i]
+        local lag = gamma_noise.L[i]
+        noise = noise + A * math.sin(w * t + lag)
+    end
+    return noise
+end
 
 function widget:ViewResize(x, y)
     vsx, vsy = gl.GetViewSizes()
     glDeleteTexture(colorTex or "")
     glDeleteTexture(toneMappingTex or "")
     glDeleteTexture(filmGrainTex or "")
+    glDeleteTexture(scratches.texture or "")
     glDeleteTexture(vignettingTex or "")
     colorTex = nil
     toneMappingTex = nil
     filmGrainTex = nil
+    scratches.texture = nil
     vignettingTex = nil
 
     colorTex = gl.CreateTexture(vsx, vsy, {
@@ -106,12 +138,16 @@ function widget:ViewResize(x, y)
         fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
         wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
     })
+    scratches.texture = glCreateTexture(vsx, vsy, {
+        fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
+        wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+    })
     vignettingTex = glCreateTexture(vsx, vsy, {
         fbo = true, min_filter = GL.LINEAR, mag_filter = GL.LINEAR,
         wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
     })
 
-    if not colorTex or not toneMappingTex or not filmGrainTex or not vignettingTex then
+    if not colorTex or not toneMappingTex or not filmGrainTex or not scratches.texture or not vignettingTex then
         Spring.Echo("Color correction: Failed to create textures!")
         widgetHandler:RemoveWidget()
         return
@@ -158,6 +194,23 @@ function widget:Initialize()
     timerLoc = gl.GetUniformLocation(filmGrainShader, "timer")
     grainLoc = gl.GetUniformLocation(filmGrainShader, "grainamount")
 
+    -- Scratches
+    -- =========
+    scratches.shader = scratches.shader or glCreateShader({
+        fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\scratches.fs", VFS.ZIP),
+        uniformInt = {colors = 0},
+    })
+    if not scratches.shader then
+        Spring.Echo("Color correction: Failed to create scratches shader!")
+        Spring.Echo(gl.GetShaderLog())
+        widgetHandler:RemoveWidget()
+        return
+    end
+
+    scratches.thresholdLoc = gl.GetUniformLocation(scratches.shader, "threshold")
+    scratches.randomLoc = gl.GetUniformLocation(scratches.shader, "randomValue")
+    scratches.timerLoc = gl.GetUniformLocation(scratches.shader, "timer")
+
     -- Vignetting
     -- ==========
     vignettingShader = vignettingShader or glCreateShader({
@@ -202,6 +255,9 @@ function widget:Shutdown()
     if (glDeleteShader and filmGrainShader) then
         glDeleteShader(filmGrainShader)
     end
+    if (glDeleteShader and scratches.shader) then
+        glDeleteShader(scratches.shader)
+    end
     if (glDeleteShader and vignettingShader) then
         glDeleteShader(vignettingShader)
     end
@@ -213,10 +269,11 @@ function widget:Shutdown()
         glDeleteTexture(colorTex or "")
         glDeleteTexture(toneMappingTex or "")
         glDeleteTexture(filmGrainTex or "")
+        glDeleteTexture(scratches.texture or "")
         glDeleteTexture(vignettingTex or "")
     end
-    toneMappingShader, filmGrainShader, vignettingShader, aberrationShader = nil, nil, nil, nil
-    colorTex, toneMappingTex, filmGrainTex, vignettingTex = nil, nil, nil, nil
+    toneMappingShader, filmGrainShader, scratches.shader, vignettingShader, aberrationShader = nil, nil, nil, nil, nil
+    colorTex, toneMappingTex, filmGrainTex, scratches.texture, vignettingTex = nil, nil, nil, nil, nil
 end
 
 function widget:DrawScreenEffects()
@@ -224,8 +281,9 @@ function widget:DrawScreenEffects()
     glCopyToTexture(colorTex,  0, 0, 0, 0, vsx, vsy)
 
     -- Tone-mapping
+    local timer = Spring.GetGameSeconds()
     glUseShader(toneMappingShader)
-        glUniform(gammaLoc, gamma)
+        glUniform(gammaLoc, gamma + gammaNoise(timer))
         glTexture(0, colorTex)
 
         glRenderToTexture(toneMappingTex, glTexRect, -1, 1, 1, -1)
@@ -234,7 +292,6 @@ function widget:DrawScreenEffects()
     glUseShader(0)
 
     -- Film grain
-    local timer = Spring.GetGameSeconds()
     glUseShader(filmGrainShader)
         glUniform(widthLoc, vsx)
         glUniform(heightLoc, vsy)
@@ -246,11 +303,25 @@ function widget:DrawScreenEffects()
 
         glTexture(0, false)
     glUseShader(0)
+
+    -- Scratches
+    local randomValue = math.random()
+    glUseShader(scratches.shader)
+        glUniform(scratches.thresholdLoc, scratches.threshold)
+        glUniform(scratches.randomLoc, randomValue)
+        glUniform(timerLoc, timer)
+        glTexture(0, filmGrainTex)
+
+        glRenderToTexture(scratches.texture, glTexRect, -1, 1, 1, -1)
+
+        glTexture(0, false)
+    glUseShader(0)
+    
     
     -- Vignetting
     glUseShader(vignettingShader)
         glUniform(vignetteLoc, vignette[1], vignette[2])
-        glTexture(0, filmGrainTex)
+        glTexture(0, scratches.texture)
 
         glRenderToTexture(vignettingTex, glTexRect, -1, 1, 1, -1)
 
@@ -484,6 +555,7 @@ function widget:MousePress(mx, my, mButton)
     elseif ry >= 64 - 8 and ry < 64 + 8 and rx >= 64 and rx <= w - 8 then
         -- Film grain
         grain = sliderVal(rx, grainBounds)
+        scratches.threshold = grain * grain * grain * 2000
     elseif ry >= 80 - 8 and ry < 80 + 8 and rx >= 64 and rx <= w - 8 then
         -- Vignette
         vignette[2] = sliderVal(rx, vignetteBounds)
