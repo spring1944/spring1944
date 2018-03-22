@@ -146,6 +146,24 @@ This ship can capture buoys, i.e. water flags]],
 	}
 }
 
+-- Composite version of infantry landing craft
+local InfantryLandingCraftComposite = ArmedBoat:New{
+	description				= "Infantry Landing Craft",
+	iconType				= "landingship",
+	movementClass			= "BOAT_LandingCraftSmall",
+	transportCapacity		= 20,
+	transportMass			= 1000,
+	transportSize			= 1,
+	customparams = {
+		compositetransporter	= true,
+		transportsquad			= "<SIDE>_platoon_landing",
+		supplyRange				= 350,
+		wiki_subclass_comments = [[Large infantry squad transport, meant to
+unload a small group of infantry units in a beach. You should never understimate
+the power of infantry behind the enemy lines..]],
+	},
+}
+
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
 	blocking					= false,
@@ -215,4 +233,5 @@ return {
 	-- Landing Craft
 	InfantryLandingCraft = InfantryLandingCraft,
 	TankLandingCraft = TankLandingCraft,
+	InfantryLandingCraftComposite = InfantryLandingCraftComposite,
 }

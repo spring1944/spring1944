@@ -50,10 +50,13 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local cp = ud.customParams
 	if cp.mother then
 		GG.boatMothers[unitID] = {}
-		local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
-		for _, cmdID in pairs(toRemove) do
-			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
-			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
+		-- only remove load/unload commands if the unit is not really a transporter!
+		if not cp.compositetransporter then
+			local toRemove = {CMD.LOAD_UNITS, CMD.UNLOAD_UNITS}
+			for _, cmdID in pairs(toRemove) do
+				local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
+				Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
+			end
 		end
 	elseif cp.child then
 		childCache[unitID] = true

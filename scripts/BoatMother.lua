@@ -39,6 +39,14 @@ findPieces(propellers, "prop")
 local tpTurrets = {}
 findPieces(tpTurrets, "tpturret")
 
+-- transport capacity
+local cargoPlacesLarge = {}
+findPieces(cargoPlacesLarge, "cargo")
+local cargoPlacesSmall = {}
+findPieces(cargoPlacesSmall, "seat")
+
+local canTransport = (#cargoPlacesLarge > 0 or #cargoPlacesSmall > 0)
+
 local function FlagFlap()
 	local flags = {}
 	findPieces(flags, "flag")
@@ -169,6 +177,117 @@ end
 
 function script.QueryWeapon(weaponID) 
 	return base
+end
+
+--Transports
+if canTransport then
+	local turret, grabber, link = piece('turret', 'grabber', 'link')
+
+	local AttachUnit = Spring.UnitScript.AttachUnit
+	-- index: attach piece. Value: ID of transported unit
+	local cargoAttachList = {}
+	-- index: ID of transported unit. Value: attach piece
+	local cargoList = {}
+	local function GetPieceForPassenger(passengerID, mass)
+		-- find first empty piece to hold this passenger
+		local attachPiece = -1
+		local n
+		if mass < 100 then
+			n = 1
+			while n <= #cargoPlacesSmall do
+				local currentPiece = cargoPlacesSmall[n]
+				if not cargoAttachList[currentPiece] then
+					attachPiece = currentPiece
+					break
+				end
+				n = n + 1
+			end
+		end
+		-- if we did not find a small attach piece, try pieces for large cargo
+		if attachPiece == -1 then
+			n = 1
+			while n <= #cargoPlacesLarge do
+				local currentPiece = cargoPlacesLarge[n]
+				if not cargoAttachList[currentPiece] then
+					attachPiece = currentPiece
+					break
+				end
+				n = n + 1
+			end
+		end
+		-- we have a piece, or at least a -1
+		return attachPiece
+	end
+
+	-- adapted from ZK, thank you for a few ideas
+	function DropPassenger(passengerID, x, y, z)
+		local emptyTable = {}
+		local px1, py1, pz1 = Spring.GetUnitBasePosition(unitID)
+		local surfaceY = math.max(0, Spring.GetGroundHeight(px1, pz1))
+		local DropUnit = Spring.UnitScript.DropUnit
+
+		SetUnitValue(COB.BUSY, 1)
+		Spring.MoveCtrl.Enable(unitID) -- freeze in place during unloading to make sure the passenger gets unloaded at the right place
+		
+		y = y - Spring.GetUnitHeight(passengerID) - 10
+		local dx, dy, dz = x - px1, y - py1, z - pz1
+		local heading = (Spring.GetHeadingFromVector(dx, dz) - Spring.GetUnitHeading(unitID))/32768*math.pi
+		local sqDist2D = dx*dx + dz*dz
+		local dist2D = math.sqrt(sqDist2D)
+		local dist3D = math.sqrt(sqDist2D + dy*dy)
+		
+		AttachUnit(link, passengerID)
+		Turn(turret, y_axis, heading)
+		if (dist3D > 0) then
+			Move(turret, y_axis, dy)
+			Move(grabber, z_axis, dist2D)
+			Sleep(30)
+		end
+		
+		DropUnit(passengerID)
+
+		-- remove passenger from transported list, mark piece as free
+		if cargoList[passengerID] ~= -1 then
+			cargoAttachList[cargoList[passengerID]] = nil
+		end
+		cargoList[passengerID] = nil
+		
+		Move(grabber, z_axis, 0)
+		Move(turret, y_axis, 0)
+		
+		Spring.MoveCtrl.Disable(unitID)
+		SetUnitValue(COB.BUSY, 0)
+	end
+	
+	function script.TransportPickup(passengerID)
+		-- check that it is not a turret
+		local ud = UnitDefs[Spring.GetUnitDefID(passengerID)]
+		if ud and ud.customParams and ud.customParams.child then
+			return
+		end
+		local mass = ud.mass
+		local attachPiece = GetPieceForPassenger(passengerID, mass)
+
+		AttachUnit(attachPiece, passengerID)
+		cargoAttachList[attachPiece] = passengerID
+		cargoList[passengerID] = attachPiece
+	end
+
+	-- note x, y z is in worldspace
+	function script.TransportDrop(passengerID, x, y, z)
+		local ud = UnitDefs[Spring.GetUnitDefID(passengerID)]
+		-- are we trying to drop a turret?
+		if ud and ud.customParams and ud.customParams.child then
+			-- Try to drop one valid passenger instead
+			for realPassengerID, _ in pairs(cargoList) do
+				DropPassenger(realPassengerID, x, y, z)
+				break
+			end
+		else
+			-- just drop the passenger
+			DropPassenger(passengerID, x, y, z)
+		end
+	end
 end
 
 function script.Killed(recentDamage, maxHealth)
