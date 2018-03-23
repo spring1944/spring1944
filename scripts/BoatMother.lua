@@ -245,6 +245,8 @@ if canTransport then
 		end
 		
 		DropUnit(passengerID)
+		SetUnitNoSelect(passengerID, false)
+		Spring.SetUnitHealth(passengerID, { paralyze = 0 })    -- re-enable the passenger
 
 		-- remove passenger from transported list, mark piece as free
 		if cargoList[passengerID] ~= -1 then
@@ -271,6 +273,8 @@ if canTransport then
 		AttachUnit(attachPiece, passengerID)
 		cargoAttachList[attachPiece] = passengerID
 		cargoList[passengerID] = attachPiece
+		SetUnitNoSelect(passengerID, true)
+		Spring.SetUnitHealth(passengerID, { paralyze = 1.0e9 })    -- disable the passenger just in case
 	end
 
 	-- note x, y z is in worldspace
