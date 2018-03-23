@@ -1,9 +1,10 @@
-local unitDefID = Spring.GetUnitDefID(unitID)
+local spGetUnitDefID = Spring.GetUnitDefID
+local unitDefID = spGetUnitDefID(unitID)
 local teamID = Spring.GetUnitTeam(unitID)
 local GetUnitHealth = Spring.GetUnitHealth
 local SetUnitNoSelect = Spring.SetUnitNoSelect
 
-unitDefID = Spring.GetUnitDefID(unitID)
+unitDefID = spGetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
 
@@ -181,6 +182,10 @@ end
 
 --Transports
 if canTransport then
+	local spMoveCtrlEnable = Spring.MoveCtrl.Enable
+	local spMoveCtrlDisable = Spring.MoveCtrl.Disable
+	local spSetUnitHealth = Spring.SetUnitHealth
+
 	local turret, grabber, link = piece('turret', 'grabber', 'link')
 
 	local AttachUnit = Spring.UnitScript.AttachUnit
@@ -227,7 +232,7 @@ if canTransport then
 		local DropUnit = Spring.UnitScript.DropUnit
 
 		SetUnitValue(COB.BUSY, 1)
-		Spring.MoveCtrl.Enable(unitID) -- freeze in place during unloading to make sure the passenger gets unloaded at the right place
+		spMoveCtrlEnable(unitID) -- freeze in place during unloading to make sure the passenger gets unloaded at the right place
 		
 		y = y - Spring.GetUnitHeight(passengerID) - 10
 		local dx, dy, dz = x - px1, y - py1, z - pz1
@@ -246,7 +251,7 @@ if canTransport then
 		
 		DropUnit(passengerID)
 		SetUnitNoSelect(passengerID, false)
-		Spring.SetUnitHealth(passengerID, { paralyze = 0 })    -- re-enable the passenger
+		spSetUnitHealth(passengerID, { paralyze = 0 })    -- re-enable the passenger
 
 		-- remove passenger from transported list, mark piece as free
 		if cargoList[passengerID] ~= -1 then
@@ -257,13 +262,13 @@ if canTransport then
 		Move(grabber, z_axis, 0)
 		Move(turret, y_axis, 0)
 		
-		Spring.MoveCtrl.Disable(unitID)
+		spMoveCtrlDisable(unitID)
 		SetUnitValue(COB.BUSY, 0)
 	end
 	
 	function script.TransportPickup(passengerID)
 		-- check that it is not a turret
-		local ud = UnitDefs[Spring.GetUnitDefID(passengerID)]
+		local ud = UnitDefs[spGetUnitDefID(passengerID)]
 		if ud and ud.customParams and ud.customParams.child then
 			return
 		end
@@ -274,18 +279,28 @@ if canTransport then
 		cargoAttachList[attachPiece] = passengerID
 		cargoList[passengerID] = attachPiece
 		SetUnitNoSelect(passengerID, true)
-		Spring.SetUnitHealth(passengerID, { paralyze = 1.0e9 })    -- disable the passenger just in case
+		spSetUnitHealth(passengerID, { paralyze = 1.0e9 })    -- disable the passenger just in case
 	end
 
 	-- note x, y z is in worldspace
 	function script.TransportDrop(passengerID, x, y, z)
-		local ud = UnitDefs[Spring.GetUnitDefID(passengerID)]
+		local ud = UnitDefs[spGetUnitDefID(passengerID)]
 		-- are we trying to drop a turret?
 		if ud and ud.customParams and ud.customParams.child then
 			-- Try to drop one valid passenger instead
+			local passengerFound = 0
 			for realPassengerID, _ in pairs(cargoList) do
+				passengerFound = 1
 				DropPassenger(realPassengerID, x, y, z)
 				break
+			end
+			-- if we did not find any valid passengers, it's time to cancel unload command
+			if passengerFound == 0 then
+				local cmdQueue = Spring.GetUnitCommands(unitID, 1)
+				if #cmdQueue > 0 then
+					local cmd = cmdQueue[1]
+					Spring.GiveOrderToUnit(unitID, CMD.REMOVE, {cmd.tag}, 0)
+				end
 			end
 		else
 			-- just drop the passenger
