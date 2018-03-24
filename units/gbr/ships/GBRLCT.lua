@@ -25,7 +25,7 @@ local GBR_LCT = TankLandingCraftComposite:New{
 			"GBRLCSL_Turret_20mm_Right",
 		},
 		deathanim = {
-			["z"] = {angle = -30, speed = 10},
+			["x"] = {angle = -30, speed = 10},
 		},
 		customanims = "gbr_lct",
 	},
