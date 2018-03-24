@@ -66,6 +66,13 @@ function widget:Initialize()
             dGamma = 0.5,
             gammaLoc = nil,
         },
+        grayscale = {
+            texture = nil,
+            shader = nil,
+            enabled = false,
+            sepia = 0.5,
+            sepiaLoc = nil,
+        },
         filmgrain = {
             texture = nil,
             shader = nil,

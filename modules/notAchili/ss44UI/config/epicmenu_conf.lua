@@ -312,6 +312,21 @@ path='Settings/Graphics/GFX effects'
 		springsetting = 'GFXAberration',
 		OnChange = function(self) WG.POSTPROC.aberration.aberration = indexedNumber(self) end, 
 	} )
+	AddOption({ 	
+		name = 'GrayScale/Sepia',
+		type = 'bool',
+		default = false,
+		springsetting = 'GFXGrayScale',
+		OnChange=function(self) WG.POSTPROC.grayscale.enabled = self.value end, 
+	} )
+	AddOption({
+		name = 'Sepia tone',
+		type = 'number',
+		valuelist = numberIndexes(0.5, {0.0, 1.0}, 9),
+		actualBounds = {0, 1.0},
+		springsetting = 'GFXSepia',
+		OnChange = function(self) WG.POSTPROC.grayscale.sepia = indexedNumber(self) end, 
+	} )
 
 path='Settings/View'
 
