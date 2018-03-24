@@ -67,6 +67,23 @@ local spSendCommands = Spring.SendCommands
 confdata.eopt = {}
 local path = ''
 
+local function numberIndexes( value, bounds, n )
+    local relVal = (value - bounds[1]) / (bounds[2] - bounds[1])
+    local index = math.floor(relVal * (n - 1))
+    local indexes = {}
+    for i=1,n do
+        indexes[i] = i - index
+    end
+    return indexes
+end
+
+local function indexedNumber( option )
+    local relVal = (option.value - option.valuelist[1]) /
+                   (option.valuelist[#option.valuelist] - option.valuelist[1])
+    return relVal * (option.actualBounds[2] - option.actualBounds[1]) +
+           option.actualBounds[1]
+end
+
 local function AddOption( option )
 	option.path = path
 	if not option.key then
@@ -238,6 +255,63 @@ path='Settings/Graphics'
 	ShButton('Low Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 1024"} end )
 	ShButton('Medium Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 2048"} end )
 	ShButton('High Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 4096"} end )
+
+	ShLabel('GFX effects')
+
+path='Settings/Graphics/GFX effects'
+	ShLabel('Screen Space Ambience Occlusion')
+	ShButton('Toggle SSAO', function() spSendCommands{'luaui togglewidget Screen-Space Ambient Occlusion'} end )
+
+	ShLabel('Post-Processing')
+	ShButton('Toggle Post-processing effects', function() spSendCommands{'luaui togglewidget Post-processing'} end )
+	AddOption({
+		name = 'Gamma',
+		type = 'number',
+		valuelist = numberIndexes(0.75, {0.5, 1.0}, 9),
+		actualBounds = {0.5, 1.0},
+		springsetting = 'GFXGamma',
+		OnChange = function(self) WG.POSTPROC.tonemapping.gamma = indexedNumber(self) end, 
+	} )
+	AddOption({
+		name = 'Gamma fluctuation',
+		type = 'number',
+		valuelist = numberIndexes(0.0, {0.0, 1.0}, 9),
+		actualBounds = {0.0, 1.0},
+		springsetting = 'GFXGammaFluctuation',
+		OnChange = function(self) WG.POSTPROC.tonemapping.dGamma = indexedNumber(self) end,
+	} )
+	AddOption({
+		name = 'Film grain',
+		type = 'number',
+		valuelist = numberIndexes(0.02, {0.0, 0.1}, 9),
+		actualBounds = {0.0, 0.1},
+		springsetting = 'GFXFilmGrain',
+		OnChange = function(self) WG.POSTPROC.filmgrain.grain = indexedNumber(self) end,
+	} )
+	AddOption({
+		name = 'Scratches',
+		type = 'number',
+		valuelist = numberIndexes(0.0, {0.0, 1.0}, 9),
+		actualBounds = {0.0, 1.0},
+		springsetting = 'GFXScratches',
+		OnChange = function(self) WG.POSTPROC.scratches.threshold = indexedNumber(self) end,
+	} )
+	AddOption({
+		name = 'Vignette',
+		type = 'number',
+		valuelist = numberIndexes(1.0, {0.7, 2.0}, 9),
+		actualBounds = {2.0, 0.7},
+		springsetting = 'GFXVignette',
+		OnChange = function(self) WG.POSTPROC.vignette.vignette[2] = indexedNumber(self) end, 
+	} )
+	AddOption({
+		name = 'Chromatic aberration',
+		type = 'number',
+		valuelist = numberIndexes(0.1, {0.0, 0.5}, 9),
+		actualBounds = {0, 0.5},
+		springsetting = 'GFXAberration',
+		OnChange = function(self) WG.POSTPROC.aberration.aberration = indexedNumber(self) end, 
+	} )
 
 path='Settings/View'
 

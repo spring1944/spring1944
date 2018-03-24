@@ -478,7 +478,11 @@ local function AddOption( path, option, wname )
 			option.default = option.value
 		else
 			option.default = newValue
-		end	
+		end
+	else
+		if newValue == nil then
+			newValue = option.default
+		end
 	end
 	
 	if newValue ~= nil and option.value ~= newValue then --must nilcheck newValue
