@@ -194,6 +194,7 @@ if canTransport then
 	local spMoveCtrlEnable = Spring.MoveCtrl.Enable
 	local spMoveCtrlDisable = Spring.MoveCtrl.Disable
 	local spSetUnitHealth = Spring.SetUnitHealth
+	local spSetUnitBlocking = Spring.SetUnitBlocking
 
 	local turret, grabber, link = piece('turret', 'grabber', 'link')
 
@@ -257,6 +258,7 @@ if canTransport then
 		AttachUnit(link, passengerID)
 		Turn(turret, y_axis, heading)
 		if (dist3D > 0) then
+			spSetUnitBlocking(unitID, false, false, true)
 			Move(turret, y_axis, dy)
 			Move(grabber, z_axis, dist2D)
 			Sleep(30)
@@ -266,6 +268,8 @@ if canTransport then
 		SetUnitNoSelect(passengerID, false)
 		spSetUnitHealth(passengerID, { paralyze = 0 })    -- re-enable the passenger
 
+		spSetUnitBlocking(unitID, true, true, true)
+		
 		-- remove passenger from transported list, mark piece as free
 		if cargoList[passengerID] ~= -1 then
 			cargoAttachList[cargoList[passengerID]] = nil
