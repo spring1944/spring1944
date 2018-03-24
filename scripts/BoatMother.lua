@@ -52,7 +52,7 @@ findPieces(cargoPlacesLarge, "cargo")
 local cargoPlacesSmall = {}
 findPieces(cargoPlacesSmall, "seat")
 
-local canTransport = (#cargoPlacesLarge > 0 or #cargoPlacesSmall > 0)
+local canTransport = (UnitDef.customParams.compositetransporter)
 
 local function FlagFlap()
 	local flags = {}
@@ -156,7 +156,7 @@ function script.StartMoving()
 	Signal(SIG_MOVE)
 	StartThread(EmitWakes)
 	if customAnims and customAnims.CloseRamp then
-		customAnims.CloseRamp()
+		StartThread(customAnims.CloseRamp)
 	end
 	local propSpeed = math.rad(180)
 	for _, prop in pairs(propellers) do
@@ -242,7 +242,7 @@ if canTransport then
 		local DropUnit = Spring.UnitScript.DropUnit
 
 		if customAnims and customAnims.OpenRamp then
-			customAnims.OpenRamp()
+			StartThread(customAnims.OpenRamp)
 		end
 		
 		SetUnitValue(COB.BUSY, 1)
@@ -290,7 +290,7 @@ if canTransport then
 			return
 		end
 		if customAnims and customAnims.OpenRamp then
-			customAnims.OpenRamp()
+			StartThread(customAnims.OpenRamp)
 		end
 		local mass = ud.mass
 		local attachPiece = GetPieceForPassenger(passengerID, mass)
