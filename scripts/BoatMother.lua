@@ -137,6 +137,9 @@ function script.Create()
 	StartThread(SpawnChildren)
 	StartThread(DamageSmoke)
 	StartThread(FlagFlap)
+	if customAnims and customAnims.postCreated then
+		StartThread(customAnims.postCreated)
+	end
 end
 
 local function EmitWakes()
