@@ -6,7 +6,7 @@ function widget:GetInfo()
         author    = "Sanguinario_Joe",
         date      = "May. 2017",
         license   = "GPL",
-        layer     = 1,
+        layer     = math.huge,
         enabled   = false
     }
 end
@@ -111,12 +111,14 @@ end
 
 function widget:Initialize()
     if (glCreateShader == nil) then
-        Spring.Echo("[Post-Processing::Initialize] removing widget, no shader support")
+        Spring.Log("Post-processing", "error",
+                   "removing widget, no shader support")
         widgetHandler:RemoveWidget()
         return
     end
 
     local tonemapping = WG.POSTPROC.tonemapping
+    local grayscale = WG.POSTPROC.grayscale
     local filmgrain = WG.POSTPROC.filmgrain
     local scratches = WG.POSTPROC.scratches
     local vignette = WG.POSTPROC.vignette
@@ -129,13 +131,30 @@ function widget:Initialize()
         uniformInt = {colors = 0},
     })
     if not tonemapping.shader then
-        Spring.Echo("Post-Processing: Failed to create tone-mapping shader!")
+        Spring.Log("Post-processing", "error",
+                   "Failed to create tone-mapping shader!")
         Spring.Echo(gl.GetShaderLog())
         widgetHandler:RemoveWidget()
         return
     end
 
     tonemapping.gammaLoc = gl.GetUniformLocation(tonemapping.shader, "gamma")
+
+    -- Grayscale/sepia
+    -- ===============
+    grayscale.shader = grayscale.shader or glCreateShader({
+        fragment = VFS.LoadFile("LuaUI\\Widgets\\Shaders\\color_grayscale.fs", VFS.ZIP),
+        uniformInt = {colors = 0},
+    })
+    if not grayscale.shader then
+        Spring.Log("Post-processing", "error",
+                   "Failed to create grayscale/sepia shader!")
+        Spring.Echo(gl.GetShaderLog())
+        widgetHandler:RemoveWidget()
+        return
+    end
+
+    grayscale.sepiaLoc = gl.GetUniformLocation(grayscale.shader, "sepiaFactor")
 
     -- Film-grain
     -- ==========
@@ -144,7 +163,8 @@ function widget:Initialize()
         uniformInt = {colors = 0},
     })
     if not filmgrain.shader then
-        Spring.Echo("Post-Processing: Failed to create film grain shader!")
+        Spring.Log("Post-processing", "error",
+                   "Failed to create film grain shader!")
         Spring.Echo(gl.GetShaderLog())
         widgetHandler:RemoveWidget()
         return
@@ -162,7 +182,8 @@ function widget:Initialize()
         uniformInt = {colors = 0},
     })
     if not scratches.shader then
-        Spring.Echo("Post-Processing: Failed to create scratches shader!")
+        Spring.Log("Post-processing", "error",
+                   "Failed to create scratches shader!")
         Spring.Echo(gl.GetShaderLog())
         widgetHandler:RemoveWidget()
         return
@@ -179,7 +200,8 @@ function widget:Initialize()
         uniformInt = {colors = 0},
     })
     if not vignette.shader then
-        Spring.Echo("Post-Processing: Failed to create Vignetting shader!")
+        Spring.Log("Post-processing", "error",
+                   "Failed to create Vignetting shader!")
         Spring.Echo(gl.GetShaderLog())
         widgetHandler:RemoveWidget()
         return
@@ -194,7 +216,8 @@ function widget:Initialize()
         uniformInt = {colors = 0},
     })
     if not aberration.shader then
-        Spring.Echo("Post-Processing: Failed to create Vignetting shader!")
+        Spring.Log("Post-processing", "error",
+                   "Failed to create Vignetting shader!")
         Spring.Echo(gl.GetShaderLog())
         widgetHandler:RemoveWidget()
         return
@@ -229,6 +252,7 @@ end
 
 function widget:DrawScreenEffects()
     local tonemapping = WG.POSTPROC.tonemapping
+    local grayscale = WG.POSTPROC.grayscale
     local filmgrain = WG.POSTPROC.filmgrain
     local scratches = WG.POSTPROC.scratches
     local vignette = WG.POSTPROC.vignette
@@ -249,13 +273,27 @@ function widget:DrawScreenEffects()
         glTexture(0, false)
     glUseShader(0)
 
+    -- Grayscale/sepia
+    local filmGrainInTex = tonemapping.texture
+    if grayscale.enabled then
+        filmGrainInTex = grayscale.texture
+        glUseShader(grayscale.shader)
+            glUniform(grayscale.sepiaLoc, grayscale.sepia)
+            glTexture(0, tonemapping.texture)
+
+            glRenderToTexture(grayscale.texture, glTexRect, -1, 1, 1, -1)
+
+            glTexture(0, false)
+        glUseShader(0)
+    end
+
     -- Film grain
     glUseShader(filmgrain.shader)
         glUniform(filmgrain.widthLoc, vsx)
         glUniform(filmgrain.heightLoc, vsy)
         glUniform(filmgrain.timerLoc, timer)
         glUniform(filmgrain.grainLoc, filmgrain.grain)
-        glTexture(0, tonemapping.texture)
+        glTexture(0, filmGrainInTex)
 
         glRenderToTexture(filmgrain.texture, glTexRect, -1, 1, 1, -1)
 
