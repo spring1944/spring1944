@@ -1,4 +1,4 @@
-local GBR_LCT = TankLandingCraft:New{
+local GBR_LCT = TankLandingCraftComposite:New{
 	name					= "LCT Mk. 4",
 	acceleration			= 0.001,
 	brakeRate				= 0.001,
@@ -14,41 +14,19 @@ local GBR_LCT = TankLandingCraft:New{
 	weapons = {
 		[1] = {
 			name				= "Oerlikon20mmaa",
-			maxAngleDif			= 240,
-			mainDir				= [[1 0 0]],
-		},
-		[2] = {
-			name				= "Oerlikon20mmaa",
-			maxAngleDif			= 240,
-			mainDir				= [[-1 0 0]],
-		},
-		[3] = {
-			name				= "Oerlikon20mmhe",
-			maxAngleDif			= 240,
-			mainDir				= [[1 0 0]],
-		},
-		[4] = {
-			name				= "Oerlikon20mmhe",
-			maxAngleDif			= 240,
-			mainDir				= [[-1 0 0]],
 		},
 	},
 	customparams = {
-		--[[ enable me later when using LUS
+		children = {
+			"GBRLCSL_Turret_20mm_Left",
+			"GBRLCSL_Turret_20mm_Right",
+		},
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
-		},]]
-
-	},
-	sfxtypes = { -- remove once using LUS
-		explosionGenerators = {
-			[1] = "custom:SMOKEPUFF_GPL_FX",
-			[8] = "custom:XSMALL_MUZZLEFLASH",
-			[9] = "custom:XSMALL_MUZZLEDUST",
 		},
+		customanims = "gbr_lct",
 	},
 }
-
 
 return lowerkeys({
 	["GBRLCT"] = GBR_LCT,
