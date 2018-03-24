@@ -479,17 +479,14 @@ local function AddOption( path, option, wname )
 		else
 			option.default = newValue
 		end
-	else
-		if newValue == nil then
-			newValue = option.default
-		end
+	elseif option.value == nil and newValue == nil then
+		newValue = option.default
 	end
 	
 	if newValue ~= nil and option.value ~= newValue then --must nilcheck newValue
 		valuechanged = true
 		option.value = newValue
 	end
-	
 	
 	
 	local origOnChange = option.OnChange or function() end
@@ -2203,9 +2200,15 @@ end
 ----------------------------------------------------------------------------------------------------
 function GetIndex( t, v )
 	local idx = 1
-	while ( t[ idx ] < v ) and ( t[ idx + 1 ] ) do
-		idx = idx + 1
-	end 
+    if t[#t] > t[1] then
+		while ( t[ idx ] < v ) and ( t[ idx + 1 ] ) do
+			idx = idx + 1
+		end
+	else
+		while ( t[ idx ] > v ) and ( t[ idx + 1 ] ) do
+			idx = idx + 1
+		end
+	end
 	return idx
 end
 
