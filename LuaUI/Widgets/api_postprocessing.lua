@@ -13,57 +13,13 @@ function widget:GetInfo()
     }
 end
 
-local tonemapping = {
-    texture = nil,
-    shader = nil,
-    gamma = 0.75,
-    dGamma = 1.0,
-    gammaLoc = nil,
-}
-
-local filmgrain = {
-    texture = nil,
-    shader = nil,
-    grain = 0.02,
-    widthLoc = nil,
-    heightLoc = nil,
-    timerLoc = nil,
-    widthLoc = nil,
-    grainLoc = nil,
-}
-
-local scratches = {
-    texture = nil,
-    shader = nil,
-    threshold = filmgrain.grain * filmgrain.grain * filmgrain.grain * 2000,
-    thresholdLoc = nil,
-    randomLoc = nil,
-    timerLoc = nil,
-}
-
-local vignette = {
-    texture = nil,
-    shader = nil,
-    vignette = {0.3, 1.0},
-    vignetteLoc = nil
-}
-
-local aberration = {
-    texture = nil,
-    shader = nil,
-    aberration = 0.1,
-    widthLoc = nil,
-    heightLoc = nil,
-    aberrationLoc = nil
-}
-
 function widget:Initialize()
     WG.POSTPROC = {
         tonemapping = {
             texture = nil,
             shader = nil,
             gamma = 0.75,
-            dGamma = 0.5,
+            dGamma = 0.0,
             gammaLoc = nil,
         },
         grayscale = {
@@ -86,7 +42,7 @@ function widget:Initialize()
         scratches = {
             texture = nil,
             shader = nil,
-            threshold = filmgrain.grain * filmgrain.grain * filmgrain.grain * 2000,
+            threshold = 0.0,
             thresholdLoc = nil,
             randomLoc = nil,
             timerLoc = nil,

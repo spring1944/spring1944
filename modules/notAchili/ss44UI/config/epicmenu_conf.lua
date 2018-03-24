@@ -67,21 +67,13 @@ local spSendCommands = Spring.SendCommands
 confdata.eopt = {}
 local path = ''
 
-local function numberIndexes( value, bounds, n )
-    local relVal = (value - bounds[1]) / (bounds[2] - bounds[1])
-    local index = math.floor(relVal * (n - 1))
-    local indexes = {}
-    for i=1,n do
-        indexes[i] = i - index
-    end
-    return indexes
-end
-
-local function indexedNumber( option )
-    local relVal = (option.value - option.valuelist[1]) /
-                   (option.valuelist[#option.valuelist] - option.valuelist[1])
-    return relVal * (option.actualBounds[2] - option.actualBounds[1]) +
-           option.actualBounds[1]
+local function linspace(bounds, n)
+	local values = {}
+	for i=1,n do
+		local f = (i - 1) / (n - 1)
+		values[i] = bounds[1] + f * (bounds[2] - bounds[1])
+	end
+	return values
 end
 
 local function AddOption( option )
@@ -267,65 +259,85 @@ path='Settings/Graphics/GFX effects'
 	AddOption({
 		name = 'Gamma',
 		type = 'number',
-		valuelist = numberIndexes(0.75, {0.5, 1.0}, 9),
-		actualBounds = {0.5, 1.0},
-		springsetting = 'GFXGamma',
-		OnChange = function(self) WG.POSTPROC.tonemapping.gamma = indexedNumber(self) end, 
+		valuelist = linspace({0.5, 1.0}, 51),
+		default = 0.75,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.tonemapping.gamma = self.value
+			end
+		end, 
 	} )
 	AddOption({
 		name = 'Gamma fluctuation',
 		type = 'number',
-		valuelist = numberIndexes(0.0, {0.0, 1.0}, 9),
-		actualBounds = {0.0, 1.0},
-		springsetting = 'GFXGammaFluctuation',
-		OnChange = function(self) WG.POSTPROC.tonemapping.dGamma = indexedNumber(self) end,
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.tonemapping.dGamma = self.value
+			end
+		end, 
 	} )
 	AddOption({
 		name = 'Film grain',
 		type = 'number',
-		valuelist = numberIndexes(0.02, {0.0, 0.1}, 9),
-		actualBounds = {0.0, 0.1},
-		springsetting = 'GFXFilmGrain',
-		OnChange = function(self) WG.POSTPROC.filmgrain.grain = indexedNumber(self) end,
+		valuelist = linspace({0.0, 0.1}, 51),
+		default = 0.05,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.filmgrain.grain = self.value
+			end
+		end, 
 	} )
 	AddOption({
 		name = 'Scratches',
 		type = 'number',
-		valuelist = numberIndexes(0.0, {0.0, 1.0}, 9),
-		actualBounds = {0.0, 1.0},
-		springsetting = 'GFXScratches',
-		OnChange = function(self) WG.POSTPROC.scratches.threshold = indexedNumber(self) end,
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.scratches.threshold = self.value
+			end
+		end, 
 	} )
 	AddOption({
 		name = 'Vignette',
 		type = 'number',
-		valuelist = numberIndexes(1.0, {0.7, 2.0}, 9),
-		actualBounds = {2.0, 0.7},
-		springsetting = 'GFXVignette',
-		OnChange = function(self) WG.POSTPROC.vignette.vignette[2] = indexedNumber(self) end, 
+		valuelist = linspace({2.0, 0.7}, 51),
+		default = 1.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.vignette.vignette[2] = self.value
+			end
+		end, 
 	} )
 	AddOption({
 		name = 'Chromatic aberration',
 		type = 'number',
-		valuelist = numberIndexes(0.1, {0.0, 0.5}, 9),
-		actualBounds = {0, 0.5},
-		springsetting = 'GFXAberration',
-		OnChange = function(self) WG.POSTPROC.aberration.aberration = indexedNumber(self) end, 
+		valuelist = linspace({0.0, 0.5}, 51),
+		default = 0.1,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.aberration.aberration = self.value
+			end
+		end, 
 	} )
 	AddOption({ 	
 		name = 'GrayScale/Sepia',
 		type = 'bool',
 		default = false,
-		springsetting = 'GFXGrayScale',
 		OnChange=function(self) WG.POSTPROC.grayscale.enabled = self.value end, 
 	} )
 	AddOption({
 		name = 'Sepia tone',
 		type = 'number',
-		valuelist = numberIndexes(0.5, {0.0, 1.0}, 9),
-		actualBounds = {0, 1.0},
-		springsetting = 'GFXSepia',
-		OnChange = function(self) WG.POSTPROC.grayscale.sepia = indexedNumber(self) end, 
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.5,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.grayscale.sepia = self.value
+			end
+		end, 
 	} )
 
 path='Settings/View'
