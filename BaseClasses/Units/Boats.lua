@@ -164,6 +164,21 @@ the power of infantry behind the enemy lines..]],
 	},
 }
 
+local TankLandingCraftComposite = ArmedBoat:New{
+	description				= "Tank Landing Craft",
+	iconType				= "transportship",
+	movementClass			= "BOAT_LandingCraft",
+	transportCapacity		= 30,
+	transportSize			= 5,
+	customparams = {
+		compositetransporter	= true,
+		supplyRange				= 600,
+		transportsquad			= "<SIDE>_platoon_lct",
+		wiki_subclass_comments = [[Large tanks transport, meant to unload an
+armoured task force in the beach.]],
+	}
+}
+
 local BoatChild = Boat:New{ -- a boat turret
 	buildCostMetal				= 1500, -- only used for exp
 	blocking					= false,
@@ -234,4 +249,5 @@ return {
 	InfantryLandingCraft = InfantryLandingCraft,
 	TankLandingCraft = TankLandingCraft,
 	InfantryLandingCraftComposite = InfantryLandingCraftComposite,
+	TankLandingCraftComposite = TankLandingCraftComposite,
 }

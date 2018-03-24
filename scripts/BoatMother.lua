@@ -8,6 +8,12 @@ unitDefID = spGetUnitDefID(unitID)
 unitDef = UnitDefs[unitDefID]
 info = GG.lusHelper[unitDefID]
 
+if info.customAnimsName then
+	info.customAnims = include("anims/ships/" .. info.customAnimsName .. ".lua")
+end
+
+local customAnims = info.customAnims
+
 local minRanges = info.minRanges
 local SIG_MOVE = 1
 
@@ -149,6 +155,9 @@ end
 function script.StartMoving()
 	Signal(SIG_MOVE)
 	StartThread(EmitWakes)
+	if customAnims and customAnims.CloseRamp then
+		customAnims.CloseRamp()
+	end
 	local propSpeed = math.rad(180)
 	for _, prop in pairs(propellers) do
 		Spin(prop, z_axis, propSpeed)
@@ -231,6 +240,10 @@ if canTransport then
 		local surfaceY = math.max(0, Spring.GetGroundHeight(px1, pz1))
 		local DropUnit = Spring.UnitScript.DropUnit
 
+		if customAnims and customAnims.OpenRamp then
+			customAnims.OpenRamp()
+		end
+		
 		SetUnitValue(COB.BUSY, 1)
 		spMoveCtrlEnable(unitID) -- freeze in place during unloading to make sure the passenger gets unloaded at the right place
 		
@@ -271,6 +284,9 @@ if canTransport then
 		local ud = UnitDefs[spGetUnitDefID(passengerID)]
 		if ud and ud.customParams and ud.customParams.child then
 			return
+		end
+		if customAnims and customAnims.OpenRamp then
+			customAnims.OpenRamp()
 		end
 		local mass = ud.mass
 		local attachPiece = GetPieceForPassenger(passengerID, mass)
