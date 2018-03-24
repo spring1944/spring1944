@@ -5,6 +5,7 @@ local RAMP_OPEN_SPEED = math.rad(30)
 
 local function OpenRamp()
 	Turn(ramp, x_axis, RAMP_OPEN_ANGLE, RAMP_OPEN_SPEED)
+	--WaitForTurn(ramp, x_axis)
 end
 
 local function CloseRamp()
