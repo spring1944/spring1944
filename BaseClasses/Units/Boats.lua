@@ -42,7 +42,7 @@ local AssaultBoat = Boat:New{
 	maxVelocity			= 2.66,
 	movementClass		= "BOAT_Small",
 	objectName			= "GEN/RubberDingy.S3O",
-	script				= "RubberDingy.cob",
+	script				= "BoatMother.lua",
 	stealth				= true,
 	transportCapacity	= 9,
 	transportMass		= 450,
@@ -51,6 +51,7 @@ local AssaultBoat = Boat:New{
 	turnRate			= 350,
 	waterline			= 0.2,
 	customParams = {
+		compositetransporter	= true,
 		wiki_subclass_comments = [[Light infantry transport, meant to unload
 a small group of infantry units in a beach. You should never understimate the
 power of a small infantry group behind the enemy lines.]],
@@ -71,13 +72,14 @@ local PontoonRaft = Boat:New{
 	minTransportSize	= 1,
 	movementClass		= "BOAT_Medium",
 	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
-	script				= "PontoonRaft.cob",
+	script				= "BoatMother.lua",
 	stealth				= true,
 	transportCapacity	= 1,
 	transportSize		= 9,
 	turnRate			= 200,
 	waterline			= 2.5,
 	customParams = {
+		compositetransporter	= true,
 		wiki_subclass_comments = [[Light vehicles transport, meant to transport
 a single vehicle trhough the water. Due to its poor armour and velocity, this
 unit is usually considered for logistic, but not assault operations.]],
