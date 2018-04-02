@@ -186,8 +186,8 @@ vertex = [[
 				tc.t = 1.0 - tc.t;
 			#endif
 			vec4 normaltex=texture2D(normalMap, tc);
-			vec3 nvTS   = normalize((normaltex.xyz - 0.5) * 2.0);
-			vec3 normal = tbnMatrix * nvTS;
+			vec3 nvTS   = (normaltex.xyz - 0.5) * 2.0;
+			vec3 normal = normalize(tbnMatrix * nvTS);
 		#else
 			vec3 normal = normalize(normalv);
 		#endif
