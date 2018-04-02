@@ -1,8 +1,7 @@
-local HUN_SchSturmboot = InfantryLandingCraft:New{
+local HUN_SchSturmboot = InfantryLandingCraftComposite:New{
 	name					= "Schwere Sturmboot 42",
 	objectName				= "GER/GERSchSturmboot.s3o",
 	corpse					= "GERSchSturmboot_dead",
-	script					= "gerschsturmboot.cob",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 400,
@@ -12,11 +11,9 @@ local HUN_SchSturmboot = InfantryLandingCraft:New{
 	turnRate				= 65,	
 
 	customparams = {
-		--[[ enable me later when using LUS
 		deathanim = {
-			["z"] = {angle = -30, speed = 10},
-		},]]
-
+			["z"] = {angle = 30, speed = 10},
+		},
 	},
 }
 
