@@ -259,13 +259,14 @@ if canTransport then
 		local dist3D = math.sqrt(sqDist2D + dy*dy)
 		
 		AttachUnit(link, passengerID)
-		Turn(turret, y_axis, heading)
+		Turn(turret, y_axis, heading, math.rad(360))
 		if (dist3D > 0) then
 			spSetUnitBlocking(unitID, false, false, true)
-			Move(turret, y_axis, dy)
-			Move(grabber, z_axis, dist2D)
-			Sleep(30)
+			Move(turret, y_axis, dy, 99)
+			Move(grabber, z_axis, dist2D, 99)
 		end
+		WaitForTurn(turret, y_axis)
+		WaitForMove(grabber, z_axis)
 		
 		DropUnit(passengerID)
 		SetUnitNoSelect(passengerID, false)
@@ -281,6 +282,7 @@ if canTransport then
 		
 		Move(grabber, z_axis, 0)
 		Move(turret, y_axis, 0)
+		Turn(turret, y_axis, 0)
 		
 		spMoveCtrlDisable(unitID)
 		SetUnitValue(COB.BUSY, 0)
