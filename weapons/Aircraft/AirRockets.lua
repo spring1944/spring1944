@@ -6,14 +6,17 @@
 
 -- HVAR Rocket (USA)
 local HVARRocket = AirRocket:New{
-  areaOfEffect       = 18,
+  accuracy	= 50,
+  edgeEffectiveness  = 0.8,
+  targetBorder	   = 0,
+  areaOfEffect       = 36,
   name               = [[5-Inch HVAR Rocket]],
   range              = 700,
+  wobble             = 50,
   reloadtime         = 2.5,
   canAttackGround    = false,
   customparams = {
-    armor_penetration  = 38,
-    damagetype         = [[shapedcharge]],
+    damagetype         = [[explosive]],
   },
   damage = {
     default            = 7000,
@@ -22,6 +25,7 @@ local HVARRocket = AirRocket:New{
 -- RS 82 Rocket (RUS)
 local RS82Rocket = AirRocket:New{
   areaOfEffect       = 78,
+  cegTag             = "RocketTrail",
   name               = [[high-explosive RS82 Rocket]],
   range              = 800,
   wobble             = 2100,
