@@ -169,7 +169,7 @@ local M390mmAP = HeavyAP:New(M390mm, true):New{
 
 -- 90mm Ansaldo 90/53 M41 L/53 (ITA)
 local Ansaldo90mmL53 = MediumHeavyGun:New{
-  name               = [[90mm Ansaldo 90/53 M41 L/53]],
+  name               = [[90mm Ansaldo 90/53 M41 L58]],
   range              = 2110,
   reloadTime         = 9.25,
   soundStart         = [[GER_88mm]],
@@ -194,16 +194,29 @@ local Ansaldo90mmL53AP = HeavyAP:New(Ansaldo90mmL53, true):New{
 }
 
 -- OTO 100mm/47 1928 Naval gun (ITA)
-local OTO100mmL47HE = MediumHeavyGun:New(MediumHE, true):New{
-  areaOfEffect       = 110,
-  name               = [[100mm/47 mod.1928 Naval Gun]],
-  range              = 1700,
-  reloadTime         = 6,
-  soundStart         = [[GEN_105mm]],
-  weaponVelocity     = 1400,
+local OTO100mmL47 = MediumHeavyGun:New{
+  name               = [[OTO100mmL47]],
+  range              = 1810,
+  reloadTime         = 6.25,
+  soundStart         = [[GER_88mm]],
+}
+
+local OTO100mmL47HE = MediumHE:New(OTO100mmL47, true):New{
+  areaOfEffect       = 109,
+  weaponVelocity     = 1004,
   damage = {
     default            = 3000,
   },  
+}
+local OTO100mmL47AP = HeavyAP:New(OTO100mmL47, true):New{
+  weaponVelocity     = 1450,
+  customparams = {
+    armor_penetration_1000m = 90,
+    armor_penetration_100m  = 129,
+  },
+  damage = {
+    default            = 3600,
+  },
 }
 -- 105mm 1936 Naval gun (SWE)
 local Mod105mm1936HE = MediumHeavyGun:New(MediumHE, true):New{
@@ -254,6 +267,7 @@ return lowerkeys({
   Ansaldo90mmL53AP = Ansaldo90mmL53AP,
   -- OTO 100mm/47 1928 Naval gun
   OTO100mmL47HE = OTO100mmL47HE,
+  OTO100mmL47AP = OTO100mmL47AP,
   -- SWE 105mm 1936 Naval gun
   Mod105mm1936HE = Mod105mm1936HE,
   sk105_42c06 = sk105_42c06,

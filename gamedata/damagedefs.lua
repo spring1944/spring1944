@@ -35,7 +35,7 @@ local damagedefs = {
 	-- smallarms are the only distinction between ships and ship turrets
 	ships = 0,
 	hardships = 0,
-	shipturrets = 3/4,
+	shipturrets = 3/7,
     mines = 0,
   },
   explosive = {
@@ -44,7 +44,7 @@ local damagedefs = {
     infantry = 3/2,
 	ships = 9/8,
 	hardships = 1/2,
-	shipturrets = 4/5,
+	shipturrets = 3/5,
     unarmouredvehicles = 1,
     armouredvehicles = 2/3,
     lightbuildings = 4/5,
