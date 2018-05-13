@@ -346,12 +346,13 @@ end
 function script.StopMoving()
 	Signal(SIG_MOVE)
 	moving = false
-	deploying = false
+
 	StopWheels()
 	-- Deploy anim
 	if customAnims and customAnims.deploy then
 		StartThread(Deploy)
 	end
+	deploying = false
 end
 
 
@@ -454,7 +455,7 @@ end
 
 local function CanAim(weaponNum)
 
-	Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
+	--Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
 
 	if moving and info.nomoveandfire or deploying and info.nomoveandfire then
 		return false
