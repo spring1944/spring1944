@@ -1,6 +1,6 @@
 local ITA_Breda20_Truck = AAGunTractor:New{
 	name					= "Towed Breda 20/65",
-	buildCostMetal			= 1250,
+	buildCostMetal			= 1100,
 	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,

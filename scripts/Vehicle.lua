@@ -25,6 +25,7 @@ local SetUnitNoSelect = Spring.SetUnitNoSelect
 
 local CreateUnit = Spring.CreateUnit
 local AttachUnit = Spring.UnitScript.AttachUnit
+local GiveOrderToUnit	= Spring.GiveOrderToUnit
 
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
@@ -57,6 +58,7 @@ local weaponEnabled
 local weaponPriorities
 local prioritisedWeapon
 local moving
+local deploying
 
 
 -- Constants
@@ -307,10 +309,12 @@ end
 
 function Undeploy()
 	customAnims.undeploy()
+	deploying = true
 end
 
 function Deploy()
 	customAnims.deploy()
+	deploying = true
 end
 
 function script.StartMoving()
@@ -320,6 +324,8 @@ function script.StartMoving()
 		StartThread(Undeploy)
 	end
 	moving = true
+	deploying = false
+
 	if info.numWheels > 0 then
 		StartThread(SpinWheels)
 	end
@@ -340,6 +346,7 @@ end
 function script.StopMoving()
 	Signal(SIG_MOVE)
 	moving = false
+	deploying = false
 	StopWheels()
 	-- Deploy anim
 	if customAnims and customAnims.deploy then
@@ -446,6 +453,12 @@ end
 
 
 local function CanAim(weaponNum)
+
+	Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
+
+	if moving and info.nomoveandfire or deploying and info.nomoveandfire then
+		return false
+	end
 	if not IsAimed(weaponNum) then
 		return false
 	end
@@ -488,6 +501,7 @@ function script.BlockShot(weaponNum, targetUnitID, userTarget)
 				return true
 			end
 		end
+
 	end
 
 	return not (CanAim(weaponNum) and weaponEnabled[weaponNum])

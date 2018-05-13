@@ -99,6 +99,7 @@ local AssaultGun = Def:New{ -- not a full class (role/mixin)
 	customParams = {
 		soundcategory		= "<SIDE>/Tank/SP",
 		turretturnspeed		= 24,
+		nomoveandfire		= true,
 		wiki_subclass_comments = [[This is an assault gun, a turret-less tank.
 It's quite evident that the lack of a turret is a drawback of this tank, but it
 is compensated by the large front armour. In a static front line, this weapons
