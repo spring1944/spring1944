@@ -18,9 +18,14 @@ function GetModeFromName(name)
     return camNames[name]
 end
 
-function widget:SetConfigData(data)
-    camName = data and data.name or defaultCamName
-end
+-- Apparently, the persistent camera view mode causes troubles. See
+-- https://github.com/spring1944/spring1944/issues/305
+-- So now we are just using the default taview camera. Not even considering to
+-- save/load the setting
+-- function widget:SetConfigData(data)
+--     camName = data and data.name or defaultCamName
+-- end
+camName = defaultCamName
 
 function widget:Initialize()
     --Spring.Echo("wanted", camName)
@@ -33,11 +38,11 @@ function widget:Initialize()
     end
 end
 
-function widget:GetConfigData()
-    local camState = Spring.GetCameraState()
-    local data = {}
-    data.name = camState.name
-    --Spring.Echo("saved", data.name, camState.mode)
-    return data
-end
+-- function widget:GetConfigData()
+--     local camState = Spring.GetCameraState()
+--     local data = {}
+--     data.name = camState.name
+--     --Spring.Echo("saved", data.name, camState.mode)
+--     return data
+-- end
 
