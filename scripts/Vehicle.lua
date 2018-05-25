@@ -211,6 +211,7 @@ function script.Create()
 	end
 	
 	moving = false
+	deploying = false
 	weaponEnabled = {}
 	weaponPriorities = {}
 	wantedDirection = {}
@@ -457,7 +458,10 @@ local function CanAim(weaponNum)
 
 	--Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
 
-	if moving and info.nomoveandfire or deploying and info.nomoveandfire then
+	if moving == true and info.nomoveandfire == true then
+		return false
+	end
+	if deploying == true and info.nomoveandfire == true then
 		return false
 	end
 	if not IsAimed(weaponNum) then
