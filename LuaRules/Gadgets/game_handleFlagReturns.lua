@@ -17,7 +17,7 @@ local min, max					= math.min, math.max
 local GetUnitRulesParam			= Spring.GetUnitRulesParam
 local GetUnitTeam				= Spring.GetUnitTeam
 local GetUnitPosition			= Spring.GetUnitPosition
-local GetGroundInfo				= Spring.GetGroundInfo
+local GetMetalAmount			= Spring.GetMetalAmount
 
 -- Synced Ctrl
 local SetUnitMetalExtraction	= Spring.SetUnitMetalExtraction
@@ -34,7 +34,8 @@ local GROWTH_CAP	= 10
 local GROWTH_RATE	= 1.12
 
 -- prospector constants
-local METAL_MAP_SQUARE_SIZE = 16
+local GRID_SIZE = Game.squareSize
+local METAL_MAP_SQUARE_SIZE = 2 * GRID_SIZE
 local MAP_SIZE_X = Game.mapSizeX
 local MAP_SIZE_X_SCALED = MAP_SIZE_X / METAL_MAP_SQUARE_SIZE
 local MAP_SIZE_Z = Game.mapSizeZ
@@ -71,7 +72,10 @@ local function IntegrateMetal(posX, posZ)
 			local dist = dx * dx + dz * dz
 
 			if (dist < EXTRACT_RADIUS_SQR) then
-				local _, metal = GetGroundInfo(cx, cz)
+				-- 104.0.1: Spring.GetGroundInfo returns different values. Better
+				-- using Spring.GetMetalAmount
+				local metal = GetMetalAmount(cx / METAL_MAP_SQUARE_SIZE,
+				                             cz / METAL_MAP_SQUARE_SIZE)
 				result = result + metal
 			end
 		end

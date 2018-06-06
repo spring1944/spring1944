@@ -54,7 +54,7 @@ local DEF_MULT = 0.25 --multiplies against the FBI defined DefRate
 
 -- easymetal constants
 local EXTRACT_RADIUS = Game.extractorRadius > 125 and Game.extractorRadius or 125
-local GRID_SIZE	= Game.squareSize
+local GRID_SIZE = Game.squareSize
 local THRESH_FRACTION = 0.4
 local MAP_WIDTH = floor(Game.mapSizeX / GRID_SIZE)
 local MAP_HEIGHT = floor(Game.mapSizeZ / GRID_SIZE)
