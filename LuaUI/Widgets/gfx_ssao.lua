@@ -139,6 +139,13 @@ function widget:Initialize()
 		return
 	end
 
+	if Script.IsEngineMinVersion(104,0,1) then
+		Spring.Log("Post-processing", "error",
+		           "removing widget, engine version not supported yet")
+		widgetHandler:RemoveWidget()
+		return        
+	end
+
 	-- The Noise texture generation shader, called just once
 	-- =====================================================
 	noiseShader = noiseShader or glCreateShader({
