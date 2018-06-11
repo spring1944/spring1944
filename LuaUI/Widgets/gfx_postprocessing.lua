@@ -117,6 +117,13 @@ function widget:Initialize()
         return
     end
 
+    if Script.IsEngineMinVersion(104,0,1) then
+        Spring.Log("Post-processing", "error",
+                   "removing widget, engine version not supported yet")
+        widgetHandler:RemoveWidget()
+        return        
+    end
+
     local tonemapping = WG.POSTPROC.tonemapping
     local grayscale = WG.POSTPROC.grayscale
     local filmgrain = WG.POSTPROC.filmgrain

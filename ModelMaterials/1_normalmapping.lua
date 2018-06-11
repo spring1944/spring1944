@@ -3,6 +3,19 @@
 --------------------------------------------------------------------------------
 local SHADER_DIR = "ModelMaterials/Shaders/"
 
+if not Script.IsEngineMinVersion or not Script.IsEngineMinVersion(101,0,0) then
+    -- Too old engine, ignore it
+    return {}, {}
+elseif Script.IsEngineMinVersion(104,0,1) then
+    -- GL 4.X
+    SHADER_DIR = "ModelMaterials/Shaders/GL4.X"
+    return {}, {}
+else
+    -- GL 3.X
+    SHADER_DIR = "ModelMaterials/Shaders/GL3.X"
+end
+
+
 local materials = {
    normalMappedS3o = {
        shaderDefinitions = {
