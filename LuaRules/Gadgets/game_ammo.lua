@@ -180,6 +180,9 @@ local function Resupply(unitID)
                 -- never takes much more than RELOAD_AVERAGE_DURATION
                 -- (math.floor + 0.5 trick is because Lua lacks math.round, and we need integers)
                 local roundsPerTick = math.floor(maxAmmo * RELOAD_FREQUENCY / RELOAD_AVERAGE_DURATION + 0.5)
+                -- roundsPerTick * ammocost cannot be higher than logisticsLevel we have
+                roundsPerTick = math.min(math.floor(logisticsLevel / weaponCost), roundsPerTick)
+
                 if roundsPerTick == 0 then
                     roundsPerTick = 1
                 end
