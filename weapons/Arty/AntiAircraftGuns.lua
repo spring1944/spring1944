@@ -23,8 +23,8 @@ local Bofors40mmHE = AutoCannonHE:New(Bofors40mm, true):New{
 local Bofors40mmAP = AutoCannonAP:New(Bofors40mm, true):New{
   range              = 725,
   customparams = {
-   armor_penetration_1000m = 35,
-    armor_penetration_100m  = 68,
+   armor_penetration_1000m = 32,
+    armor_penetration_100m  = 49,
   },
   damage = {
     default            = 895,
