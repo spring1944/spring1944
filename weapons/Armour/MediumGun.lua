@@ -311,7 +311,7 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
   },
 }
 local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
-  weaponVelocity     = 1358,
+  weaponVelocity     = 1100,
   accuracy	= 500,
   customparams = {
     armor_penetration       = 120,

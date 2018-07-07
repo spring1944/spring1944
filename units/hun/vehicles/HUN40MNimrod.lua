@@ -8,11 +8,14 @@ local HUN40MNimrod = ArmouredCarAA:New{
 	trackWidth			= 16,
 
 	weapons = {
-		[1] = { -- AA
+		[3] = { -- AA
 			name				= "bofors40mmaa",
 		},
 		[2] = { -- HE
 			name				= "bofors40mmhe",
+		},
+		[1] = { -- AP
+			name				= "bofors40mmap",
 		},
 	},
 	customParams = {
@@ -24,7 +27,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 		armor_top			= 0,
 		maxammo				= 19,
 		maxvelocitykmh		= 50,
-
+		weapontoggle		= "priorityAPHE",
 	}
 }
 

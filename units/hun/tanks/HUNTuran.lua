@@ -123,7 +123,7 @@ local HUN43MTuranIII = HUN41MTuranII:New{
 		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-
+		weapontoggle		= "priorityAPHE",
 	},
 }
 

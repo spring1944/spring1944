@@ -410,7 +410,7 @@ local function ResolveDirection(headingPiece, pitchPiece)
 				prioritisedWeapon = weaponNum
 				break
 			end
-			if weaponPriorities[weaponNum] < topPriority then
+			if weaponPriorities[weaponNum] ~= topPriority then
 				topDirection = dir
 				topPriority = weaponPriorities[weaponNum]
 				prioritisedWeapon = weaponNum
@@ -475,7 +475,7 @@ local function CanAim(weaponNum)
 				if not loaded then
 					return false
 				end
-				if IsAimed(i) and weaponPriorities[i] < weaponPriorities[weaponNum] then
+				if IsAimed(i) and weaponPriorities[i] ~= weaponPriorities[weaponNum] then
 					return false
 				end
 			end
