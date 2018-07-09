@@ -475,7 +475,7 @@ local function CanAim(weaponNum)
 				if not loaded then
 					return false
 				end
-				if IsAimed(i) and weaponPriorities[i] ~= weaponPriorities[weaponNum] then
+				if IsAimed(i) and weaponPriorities[i] < weaponPriorities[weaponNum] then
 					return false
 				end
 			end
@@ -644,7 +644,7 @@ end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	local newPriority = defPriority
-	--if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
+	--if prioritisedWeapon and attackerWeaponNum > prioritisedWeapon then
 		local headingPiece = info.aimPieces[attackerWeaponNum] and info.aimPieces[attackerWeaponNum][1] or base
 		local heading = GetHeadingToTarget(headingPiece, {targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)
