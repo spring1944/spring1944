@@ -107,7 +107,7 @@ local Type9757mm = LightMediumGun:New{
 
 local Type9757mmHE = LightMediumHE:New(Type9757mm, true):New{
   areaOfEffect       = 57,
-  weaponVelocity     = 800,
+  weaponVelocity     = 620,
   damage = {
     default            = 1400,
   },  

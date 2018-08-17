@@ -30,6 +30,8 @@ local Bomb = timebombClass:New{
 -- 160Kg Bomb (Generic)
 local Bomb160kg = timebombClass:New{
   areaOfEffect       = 160,
+  fireTolerance	= 15000,
+  tolerance          = 700,
   name               = [[160kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
   range              = 450,
