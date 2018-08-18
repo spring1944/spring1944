@@ -55,7 +55,7 @@ local USM5Stuart = StuartBase:New{
 
 local USM8Scott = StuartBase:New(AssaultGun):New{
 	name				= "M8 Scott GMC",
-	buildCostMetal		= 2100,
+	buildCostMetal		= 1785,
 	
 	weapons = {
 		[1] = {
