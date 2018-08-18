@@ -28,6 +28,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 		maxammo				= 19,
 		maxvelocitykmh		= 50,
 		weapontoggle		= "priorityAPHE",
+		nomoveandfire		= true,
 	}
 }
 
