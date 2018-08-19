@@ -458,12 +458,12 @@ local function CanAim(weaponNum)
 
 	--Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
 
-	if moving == true and info.nomoveandfire == true then
-		return false
+	if info.nomoveandfire then
+		if moving or deploying then
+			return false
+		end
 	end
-	if deploying == true and info.nomoveandfire == true then
-		return false
-	end
+
 	if not IsAimed(weaponNum) then
 		return false
 	end
