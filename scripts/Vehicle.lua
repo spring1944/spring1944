@@ -310,12 +310,12 @@ end
 
 function Undeploy()
 	customAnims.undeploy()
-	deploying = true
+	deploying = false
 end
 
 function Deploy()
 	customAnims.deploy()
-	deploying = true
+	deploying = false
 end
 
 function script.StartMoving()
@@ -353,7 +353,7 @@ function script.StopMoving()
 	if customAnims and customAnims.deploy then
 		StartThread(Deploy)
 	end
-	deploying = false
+	deploying = true
 end
 
 
