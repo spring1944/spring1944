@@ -64,6 +64,53 @@ local defs = {
 		tooltip = 'Change ammunition priorities',
 		id = "CMD_TOGGLE_PRIORITY",
 	},
+
+	priorityHEATAP = {
+		states = {
+			{
+				name = "Prefer AP",
+				toggle = {
+					[1] = 2,
+					[2] = 1,
+				},
+			},
+			{
+				name = "Prefer HEAT",
+				toggle = {
+					[1] = 1,
+					[2] = 2,
+				},
+			},
+		},
+		action = "togglepriority",
+		funcName = "TogglePriority",
+		tooltip = 'Change ammunition priorities',
+		id = "CMD_TOGGLE_PRIORITY_HTAP",
+	},
+
+	priorityHEATHE = {
+		states = {
+			{
+				name = "Prefer HE",
+				toggle = {
+					[1] = 2,
+					[2] = 1,
+				},
+			},
+			{
+				name = "Prefer HEAT",
+				toggle = {
+					[1] = 1,
+					[2] = 2,
+				},
+			},
+		},
+		action = "togglepriority",
+		funcName = "TogglePriority",
+		tooltip = 'Change ammunition priorities',
+		id = "CMD_TOGGLE_PRIORITY_HTHE",
+	},
+
 	priorityAPHEATHE = {
 		states = {
 			{

@@ -467,9 +467,6 @@ local function CanAim(weaponNum)
 	if not IsAimed(weaponNum) then
 		return false
 	end
-	if prioritisedWeapon ~= weaponNum and IsMainGun(weaponNum) then
-		return false
-	end
 
 	if IsMainGun(weaponNum) then
 		for i = 1,info.weaponsWithAmmo do
