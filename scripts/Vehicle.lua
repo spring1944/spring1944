@@ -352,8 +352,8 @@ function script.StopMoving()
 	-- Deploy anim
 	if customAnims and customAnims.deploy then
 		StartThread(Deploy)
-	end
 	deploying = true
+	end
 end
 
 
