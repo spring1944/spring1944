@@ -10,12 +10,12 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		[1] = {
 			name				= "CannoneDa47mml32AP",
 			mainDir				= [[0 0 1]],
-			maxAngleDif			= 210,
+			maxAngleDif			= 30,
 		},
 		[2] = {
 			name				= "CannoneDa47mml32HEAT",
 			mainDir				= [[0 0 1]],
-			maxAngleDif			= 210,
+			maxAngleDif			= 30,
 		},
 		[3] = {
 			name				= ".50calproof",
