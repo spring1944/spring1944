@@ -34,7 +34,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 
 local HUN43MLehel = HalfTrack:New{
 	name					= "43.M Lehel",
-	buildCostMetal			= 1100,
+	buildCostMetal			= 900,
 	corpse				= "HUN43MLehel_Abandoned",
 	maxDamage				= 1020,
 	trackOffset				= 10,
