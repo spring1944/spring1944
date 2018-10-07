@@ -57,6 +57,9 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 	description			= "Fast bomber",
 	objectName		= "<SIDE>/HUNMe210_bomber.s3o",
 	weapons = {
+		[1] = {
+			maxAngleDif			= 30,
+		},
 		[2] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
