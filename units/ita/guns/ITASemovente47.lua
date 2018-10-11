@@ -5,6 +5,7 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 	maxDamage			= 640,
 	trackOffset			= 5,
 	trackWidth			= 11,
+	turnRate = 150,
 
 	weapons = {
 		[1] = {
