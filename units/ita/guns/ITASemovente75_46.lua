@@ -8,11 +8,11 @@ local ITASemovente75_46 = MediumTank:New(AssaultGun):New{
 	weapons = {
 		[1] = {
 			name				= "Ansaldo75mmL46ap",
-			maxAngleDif			= 15,
+			maxAngleDif			= 10,
 		},
 		[2] = {
 			name				= "Ansaldo75mmL46he",
-			maxAngleDif			= 15,
+			maxAngleDif			= 10,
 		},
 		[3] = {
 			name				= ".50calproof",

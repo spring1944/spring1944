@@ -33,7 +33,7 @@ local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	reloadTime	= 1.5,
 	areaOfEffect       = 55,
 	movingAccuracy     = 300,
-	weaponVelocity     = 1100,
+	weaponVelocity     = 1210,
 	damage = {
 		default		= 760,
 	},
@@ -47,7 +47,7 @@ local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
 	reloadTime	= 3,
 	areaOfEffect	= 50,
 	movingAccuracy     = 300,
-	weaponVelocity	= 850,
+	weaponVelocity	= 1040,
 	damage = {
 		default		= 835,
 	},
