@@ -15,14 +15,14 @@ local SWEHaubitsM06_Stationary = HGun:New{
 
 	weapons = {
 		[1] = { -- HE
-			name				= "Type38150mmL11HE",
+			name				= "haubm06150mmL11HE",
 		},
 		[2] = { -- Smoke
-			name				= "Type38150mmL11Smoke",
+			name				= "haubm06150mmL11Smoke",
 		},
 	},
 	customParams = {
-
+		weapontoggle		= "smoke",
 	},
 }
 

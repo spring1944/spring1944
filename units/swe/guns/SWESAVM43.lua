@@ -1,6 +1,6 @@
 local SWESAVM43 = LightTank:New(AssaultGun):New{
 	name				= "SAV m/43",
-	buildCostMetal		= 1740,
+	buildCostMetal		= 1570,
 	corpse			= "SWESAVM43_Abandoned",
 	maxDamage			= 1200,
 	turnRate			= 160,
@@ -9,11 +9,11 @@ local SWESAVM43 = LightTank:New(AssaultGun):New{
 
 	weapons = {
 		[1] = {
-			name				= "Ansaldo75mmL34AP",
+			name				= "SWE75mmL30AP",
 			maxAngleDif			= 15,
 		},
 		[2] = {
-			name				= "Ansaldo75mmL34HE",
+			name				= "SWE75mmL30HE",
 			maxAngleDif			= 15,
 		},
 		[3] = {
