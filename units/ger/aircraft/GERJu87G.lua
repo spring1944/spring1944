@@ -33,12 +33,12 @@ local GER_Ju87G = AttackFighter:New{
 		[3] = {
 			name				= "mg42aa",
 			maxAngleDif			= 90,
-			mainDir				= [[0 .5 -1]],
+			mainDir				= [[0 .25 -1]],
 		},
 		[4] = {
 			name				= "mg42aa",
 			maxAngleDif			= 90,
-			mainDir				= [[0 .5 -1]],
+			mainDir				= [[0 .25 -1]],
 			slaveTo				= 3,
 		},
 		[5] = {

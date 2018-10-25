@@ -40,9 +40,9 @@ local SWEB18 = AttackFighter:New{
 			slaveTo				= 1, -- TODO: why?
 		},
 		[4] = {
-			name				= "Te4",
-			maxAngleDif			= 50,
-			mainDir				= [[0 1 -1]],
+			name				= "ksp_m1936AA",
+			maxAngleDif			= 90,
+			mainDir				= [[0 .25 -1]],
 		},
 	},
 }

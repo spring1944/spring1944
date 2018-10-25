@@ -13,9 +13,9 @@ local SWE_S14B = Recon:New{
 	
 	weapons = {
 		[1] = {
-			name				= "mg42aa",
+			name				= "ksp_m1936AA",
 			maxAngleDif			= 90,
-			mainDir				= [[0 .75 -1]],
+			mainDir				= [[0 .25 -1]],
 		},
 	},
 }
