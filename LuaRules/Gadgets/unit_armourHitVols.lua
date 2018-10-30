@@ -20,7 +20,7 @@ local armourPieces = {["base"] = true, ["turret"] = true}
 local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2"] = true}
 
 local function SetColVols(unitID, ud, colPieces)
-	if ud.model.type ~= "3do" then
+	if (ud.modeltype or ud.model.type) ~= "3do" then
 		local pieces = GetUnitPieceList(unitID)
 		local tweaks = table.unserialize(ud.customParams.piecehitvols) or {}
 		for i, pieceName in pairs(pieces) do
