@@ -139,8 +139,9 @@ local usDefs = {
 	{
 		members = {
 			"usobserv",
-			"usobserv",
-			"usobserv",
+			"USParaRifle",
+			"USParaRifle",
+			"USParaBazooka",
 		},
 		name = "Scout Team",
 		description = "3 x Scout: Reconaissance",
