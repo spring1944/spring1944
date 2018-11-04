@@ -1,12 +1,13 @@
 function widget:GetInfo()
 	return {
 		name = "1944 Enable/Disable Old UI",
-		desc = "Smooth enable of legacy UI by turning ON, revert by disabling",
+		desc = "Smooth enable of new UI by turning ON, revert by disabling",
 		author = "PepeAmpere",
 		date = "2018-03-06",
 		license = "MIT",
 		layer = 0,
-		enabled = false, -- not loaded by default
+		experimetnal = true,
+		enabled = false,
 	}
 end
 
@@ -115,9 +116,9 @@ function EnableNewUI()
 end
 
 function widget:Initialize()
-	DisableNewUI()
+	EnableNewUI()
 end
 
 function widget:Shutdown()
-	EnableNewUI()
+	DisableNewUI()
 end

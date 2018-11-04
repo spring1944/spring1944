@@ -6,10 +6,10 @@ function widget:GetInfo()
 		date = "WIP",
 		license = "GPLv2",
 		layer = -math.huge,
-		enabled = true, -- loaded by default?
+		enabled = false,
 		handler = true,
 		api = true,
-		alwaysStart = true,
+		alwaysStart = false,
 	}
 end
 
