@@ -6,7 +6,7 @@ function widget:GetInfo()
 		date = "2018-03-06",
 		license = "MIT",
 		layer = 0,
-		experimetnal = true,
+		experimental = true,
 		enabled = false,
 	}
 end
