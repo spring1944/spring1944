@@ -10,7 +10,8 @@ function widget:GetInfo()
 		license	= "GPL",
 		layer	= math.huge,
 		handler	= true, -- used widget handlers
-		enabled	= true  -- loaded by default
+		experimental = true,
+		enabled	= false,
 	}
 end
 

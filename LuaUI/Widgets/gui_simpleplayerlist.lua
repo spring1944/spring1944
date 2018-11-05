@@ -21,7 +21,7 @@ function widget:GetInfo()
 		date      = "e^(-i*pi)",
 		license   = "WTFPL",
 		layer     = 0,
-		enabled   = false
+		enabled   = true,
 	}
 end
 
