@@ -92,7 +92,7 @@ local usDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "3 x Browning .30 Cal Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1050,
+		buildCostMetal = 1200,
 		buildPic = "usmg.png",
 	},
 
@@ -104,7 +104,7 @@ local usDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Springfield Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1240,
+		buildCostMetal = 1100,
 		buildPic = "ussniper.png",
 	},
 
@@ -139,9 +139,7 @@ local usDefs = {
 	{
 		members = {
 			"usobserv",
-			"USParaRifle",
-			"USParaRifle",
-			"USParaBazooka",
+			"usjeep",
 		},
 		name = "Scout Team",
 		description = "3 x Scout: Reconaissance",

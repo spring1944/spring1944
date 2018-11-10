@@ -71,7 +71,7 @@ local gerDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "3 x MG42 Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1350,
+		buildCostMetal = 1220,
 		buildPic = "GERMG42.png",
 	},
 
@@ -83,7 +83,7 @@ local gerDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Kar 98K Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1250,
+		buildCostMetal = 1110,
 		buildPic = "GERSniper.png",
 	},
 

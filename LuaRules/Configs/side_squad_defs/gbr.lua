@@ -37,7 +37,7 @@ local gbrDefs = {
 		},
 		name = "Enfield Rifle Platoon",
 		description = "10 x Enfield Rifle, 2 x Sten SMG: Long-Range Combat Platoon",
-		buildCostMetal = 2140,
+		buildCostMetal = 1926,
 		buildPic = "GBRRifle.png",
 	},
 
@@ -58,7 +58,7 @@ local gbrDefs = {
 		},
 		name = "Assault Platoon",
 		description = "10 x STEN SMG, 1 x Commando: Close-Quarters Assault Infantry",
-		buildCostMetal = 1960,
+		buildCostMetal = 1862,
 		buildPic = "GBRSTEN.png",
 	},
 
@@ -72,7 +72,7 @@ local gbrDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "1 x Vickers, 2 x Bren Machineguns, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1050,
+		buildCostMetal = 1280,
 		buildPic = "GBRBREN.png",
 	},
 
@@ -84,7 +84,7 @@ local gbrDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Enfield Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1300,
+		buildCostMetal = 1140,
 		buildPic = "GBRSniper.png",
 	},
 
