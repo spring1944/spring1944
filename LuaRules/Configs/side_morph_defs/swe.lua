@@ -299,7 +299,7 @@ local sweDefs = {
 		{
 			into = 'swepvkanm43_stationary',
 			tech = 0,
-			time = 5,
+			time = 7,
 			metal = 0,
 			energy = 0,
 			directional = true,
@@ -309,7 +309,7 @@ local sweDefs = {
 		{
 			into = 'swepvkanm43_truck',
 			tech = 0,
-			time = 5,
+			time = 7,
 			metal = 0,
 			energy = 0,
 		},
