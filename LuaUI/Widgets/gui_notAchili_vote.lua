@@ -9,8 +9,8 @@ function widget:GetInfo()
     date      = "May 04, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = -9, 
-    experimental = true,
-    enabled   = false,
+    experimental = false,
+    enabled   = true,
   }
 end
 --//version +0.3;

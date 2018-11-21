@@ -7,9 +7,9 @@ function widget:GetInfo()
     license   = "GNU GPL, v2 or later",
     layer     = -100000,
     handler   = true,
-    experimental = true,
-    enabled   = false,
-    alwaysStart = false,
+    experimental = false,
+    enabled   = true,
+    alwaysStart = true,
   }
 end
 

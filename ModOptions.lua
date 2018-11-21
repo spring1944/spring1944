@@ -55,7 +55,7 @@ local options = {
 		desc = "Portion of strongpoints necessary to win strategic dominance victory mode",
 		type = "list",
 		section	= '2victormode',
-		def = "0.9",
+		def = "0.7",
 		items = {
 			{ key = "0.51", name = "51 %"},
 			{ key = "0.6", name = "60 %"},
