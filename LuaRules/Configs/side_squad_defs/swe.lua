@@ -72,7 +72,7 @@ local sweDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "3 x m1919a4browning Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1050,
+		buildCostMetal = 1280,
 		buildPic = "swemg.png",
 	},
 
@@ -84,7 +84,7 @@ local sweDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Enfieldfield Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1240,
+		buildCostMetal = 1140,
 		buildPic = "swesniper.png",
 	},
 

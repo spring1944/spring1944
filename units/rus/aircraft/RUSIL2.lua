@@ -63,7 +63,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		[9] = {
 			name				= "MaximAA",
 			maxAngleDif			= 90,
-			mainDir				= [[0 1 -1]],
+			mainDir				= [[0 .25 -1]],
 		},
 	},
 }

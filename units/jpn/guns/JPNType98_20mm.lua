@@ -1,6 +1,6 @@
 local JPN_Type98_20mm_Truck = AAGunTractor:New{
 	name					= "Towed Type 98 20mm Gun",
-	buildCostMetal			= 1250,
+	buildCostMetal			= 1125,
 	corpse					= "JPNIsuzuTX40_Abandoned", -- TODO: grumble
 	trackOffset				= 10,
 	trackWidth				= 13,

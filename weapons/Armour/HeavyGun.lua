@@ -98,6 +98,27 @@ local Type38150mmL11HE = HeavyHE:New(Type38150mmL11, true):New{
 }
 local Type38150mmL11Smoke = HeavySmoke:New(Type38150mmL11, true)
 
+-- -- 15 cm Positionshaubits m 06
+local haubm06150mmL11 = HeavyGun:New{
+  name               = [[15cm haub m/06]],
+  soundStart         = [[150mmtype38]],
+  
+  range              = 2280,
+  reloadtime         = 18,
+  weaponVelocity     = 750,
+  customparams = {
+  	weaponcost         = 64,
+  },
+}
+
+local haubm06150mmL11HE = HeavyHE:New(haubm06150mmL11, true):New{
+  areaOfEffect       = 158,
+  soundHitDry        = [[GEN_Explo_6]],
+  damage = {
+    default            = 9200,
+  },
+}
+local haubm06150mmL11Smoke = HeavySmoke:New(haubm06150mmL11, true)
 -- 12.8cm Flak40
 --flak40_12_8cm
 local Flak40_12_8cm = HeavyGun:New{
@@ -128,6 +149,9 @@ return lowerkeys({
   -- Type 38 150mm Howitzer L/11
   Type38150mmL11HE = Type38150mmL11HE,
   Type38150mmL11Smoke = Type38150mmL11Smoke,
+  -- Haub M06 150mm L11
+  haubm06150mmL11HE = haubm06150mmL11HE,
+  haubm06150mmL11Smoke = haubm06150mmL11Smoke,
   -- Flak40
   Flak40_12_8cm_HE = Flak40_12_8cm_HE,
 })

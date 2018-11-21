@@ -57,10 +57,6 @@ local MG42_Deployed = MG42:New{
 local MG42AA = MG42:New(AAMG):New{
   range              = 1170,
   sprayAngle         = 460,
-  customparams = {
-    no_range_adjust    = true,
-	--onlytargetCategory = "AIR",
-  }
 }
 
 -- remote-controlled MG42 - really crappy accuracy as the gunner doesn't really see what he's shooting
@@ -100,11 +96,7 @@ local Maxim = MGClass:New{
 local MaximAA = Maxim:New(AAMG):New{
   burst              = 7,
   burstRate          = 0.103,
-  range              = 1050,
-  customparams = {
-    no_range_adjust    = true,
-	--onlytargetCategory = "AIR",
-  }
+  range              = 1150,
 }
 -- ShKAS1941 (RUS)
 local ShKAS1941 = MGClass:New(AMG):New{
@@ -115,6 +107,9 @@ local ShKAS1941 = MGClass:New(AMG):New{
   sprayAngle         = 1260,
   reloadTime         = 2.2,
   soundStart         = [[RUS_DP]],
+  customparams = {
+    no_range_adjust    = true,
+  }
 }
 -- Vickers (GBR)
 local Vickers = Maxim:New{
@@ -137,7 +132,6 @@ local M1919A4Browning_Deployed = M1919A4Browning:New{
   range              = 1020,
   sprayAngle         = 400,
 }
-
 -- Swedish version
 local ksp_m1936 = M1919A4Browning:New{
 	name		= "Kulspruta m/36",
@@ -157,6 +151,17 @@ local ksp_m1939 = M1919A4Browning:New{
 	soundStart	= "KSP_M_39",
 	burst				= 5,
 	burstRate          = 0.072,	-- sync with sound
+}
+local ksp_m1936AMG = ksp_m1936:New(AMG):New{
+  range              = 880,
+  customparams = {
+    no_range_adjust    = true,
+	--onlytargetCategory = "AIR",
+  }
+}
+
+local ksp_m1936AA = ksp_m1936:New(AAMG):New{
+  range              = 1126,
 }
 
 -- Breda 30 (ITA)
@@ -233,14 +238,10 @@ local TE4 = MGClass:New(AAMG):New{
   burst				 = 6,
   burstRate          = 0.15,
   name               = [[7.7mm TE-4 Machinegun]],
-  range              = 925,
+  range              = 1025,
   predictBoost       = 0.2,
   reloadTime         = 1.5,
   soundStart         = [[JPN_TE4_MG]],
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 
 -- Large calibre (12.7mm) MG's
@@ -318,17 +319,13 @@ local BredaM1931 = HeavyMGClass:New{
 }
 
 --Breda M1931 AA
-local BredaM1931AA = BredaM1931:New{
+local BredaM1931AA = BredaM1931:New(AAMG):New{
+  range              = 1080,
   accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
   predictBoost       = 0.25,
   reloadTime         = 1.5,
-  sprayAngle         = 300,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 
 -- .50 Caliber Breda SAFAT Air MG (ITA)
@@ -349,29 +346,25 @@ local BredaSafat05 = HeavyMGClass:New(AMG):New{
 -- Type 93 (JPN)
 local Type93HMG = HeavyMGClass:New{
   name               = [[Type 93 13mm Heavy Machine Gun]],
-  range              = 880,
+  range              = 1120,
   reloadTime         = 4,
   soundStart         = [[US_50CAL]],
   sprayAngle         = 300,
 }
 
 -- Type 93 AA
-local Type93AA = Type93HMG:New{
+local Type93AA = Type93HMG:New(AAMG):New{
   accuracy	     = 200,
   burst              = 6,
   burstRate          = 0.109,
   predictBoost       = 0.25,
   reloadTime         = 1.5,
   sprayAngle         = 300,
-  customparams = {
-    no_range_adjust    = true,
-    fearid             = 701,
-  }
 }
 
 -- Type 1 Ho-103 12.7mm Air MG (JPN)
 local Type1Ho103 = HeavyMGClass:New(AMG):New{
-  burst			= 8,
+  burst			= 5,
   burstRate          = 0.085,
   name               = [[Type1 Ho-103 12.7mm]],
   range              = 800,
@@ -385,6 +378,7 @@ local Type1Ho103 = HeavyMGClass:New(AMG):New{
 
 -- Solothurn 31M
 local mg30 = MG34:New{
+  	range              = 930,
 	name			= [[Solothurn 31M]],
 }
 
@@ -450,6 +444,8 @@ return lowerkeys({
   Type93AA = Type93AA,
   Type1Ho103 = Type1Ho103,
   ksp_m1936 = ksp_m1936,
+  ksp_m1936AMG = ksp_m1936AMG,
+  ksp_m1936AA = ksp_m1936AA,
   ksp_m1936_deployed = ksp_m1936_deployed,
   ksp_m1939 = ksp_m1939,
   mg30 = mg30,

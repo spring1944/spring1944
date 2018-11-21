@@ -1,4 +1,5 @@
 local SmallArm = Weapon:New{
+	accuracy           = 100,
 	areaOfEffect       = 1,
 	avoidFeature       = true,
 	avoidFriendly      = false,
@@ -43,7 +44,7 @@ local PistolClass = SmallArm:New{
 
 -- Rifle Base Class
 local RifleClass = SmallArm:New{
-	accuracy           = 100,
+	accuracy           = 210,
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
 	duration           = 0.01,
@@ -84,7 +85,7 @@ local SniperRifleClass = RifleClass:New{
 
 -- Submachinegun Base Class
 local SMGClass = SmallArm:New{
-	accuracy           = 100,
+	accuracy           = 300,
 	burst              = 5,
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
@@ -106,6 +107,7 @@ local SMGClass = SmallArm:New{
 
 -- MachineGun Base Class
 local MGClass = SmallArm:New{
+	accuracy           = 220,
 	collisionSize      = 2.5,
 	coreThickness      = 0.15,
 	duration           = 0.01,

@@ -316,7 +316,7 @@ function CreateMissionGoal(goalData)
 		checked = goalData.Value(goalData), 
 		textColor = epic_colors.sub_fg, 
 		tooltip = goalData.Tooltip(goalData),
-		boxsize = 26,
+		boxsize = oneGoalCheckboxSize - 1*globalSize,
 		inputAllowed = false,
 	}
 	local counter = Label:New{

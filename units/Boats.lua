@@ -12,7 +12,7 @@ for _, side in pairs(Sides) do
 	elseif side == "rus" then -- TODO: eventually, unified script and <SIDE>AssaultBoat.s3o
 		units[side .. "assaultboat"].objectname = "RUS/RUSPG117.s3o"
 		units[side .. "assaultboat"].name = "PG-117"
-		units[side .. "assaultboat"].script = "RUSPG117.cob"
+--		units[side .. "assaultboat"].script = "RUSPG117.cob"
 	end
 	-- band-aid fix: remove corpses
 	units[side .. "pontoonraft"].corpse = nil

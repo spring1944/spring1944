@@ -1,15 +1,15 @@
 function widget:GetInfo()
 	return {
-		name = "NotAchili Framework",
+		name = "notAchili Framework",
 		desc = "Hot GUI Framework (DO NOT DISABLE)",
 		author = "jK & quantum", -- edited by a1983 and PepeAmpere
 		date = "WIP",
 		license = "GPLv2",
 		layer = -math.huge,
-		enabled = true, -- loaded by default?
+		enabled = false,
 		handler = true,
 		api = true,
-		alwaysStart = true,
+		alwaysStart = false,
 	}
 end
 

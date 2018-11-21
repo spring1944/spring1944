@@ -311,7 +311,7 @@ local Ansaldo75mmL34AP = MediumAP:New(Ansaldo75mmL34, true):New{
   },
 }
 local Ansaldo75mmL34HEAT = HEAT:New(Ansaldo75mmL34, true):New{
-  weaponVelocity     = 1358,
+  weaponVelocity     = 1100,
   accuracy	= 500,
   customparams = {
     armor_penetration       = 120,
@@ -488,6 +488,31 @@ local SWE75mmL34AP = MediumAP:New(SWE75mmL34, true):New{
     default            = 2280,
   },
 }
+-- 7,5 cm Kanon m/02 L30 (SWE)
+local SWE75mmL30 = MediumGun:New{
+  name               = [[75 mm m/02 gun L/30]],
+  range              = 1270,
+  reloadTime         = 7.25,
+  soundStart         = [[short_75mm]],
+}
+
+local SWE75mmL30HE = MediumHE:New(SWE75mmL34, true):New{
+  areaOfEffect       = 108,
+  weaponVelocity     = 914,
+  damage = {
+    default            = 2010,
+  },  
+}
+local SWE75mmL30AP = MediumAP:New(SWE75mmL34, true):New{
+  weaponVelocity     = 1244,
+  customparams = {
+    armor_penetration_1000m = 31,
+    armor_penetration_100m  = 69,
+  },
+  damage = {
+    default            = 1800,
+  },
+}
 
 -- Hungary
 local Mavag_75_41M = MediumGun:New{
@@ -638,13 +663,17 @@ return lowerkeys({
   Type9075mmAP = Type9075mmAP,
   -- Type 3 76mm/40 Naval gun (JPN)
   Type376mmL40HE = Type376mmL40HE,
-  SWE75mmL34HE = SWE75mmL34HE,
-  SWE75mmL34AP = SWE75mmL34AP,
+  -- 75mm (HUN)
   Mavag_75_41MAP = Mavag_75_41MAP,
   Mavag_75_41MHE = Mavag_75_41MHE,
   Mavag_75_41MHEAT = Mavag_75_41MHEAT,
   Mavag_75_43MAP = Mavag_75_43MAP,
   Mavag_75_43MHE = Mavag_75_43MHE,
+  -- 75mm (SWE)
+  SWE75mmL34HE = SWE75mmL34HE,
+  SWE75mmL34AP = SWE75mmL34AP,
+  SWE75mmL30HE = SWE75mmL30HE,
+  SWE75mmL30AP = SWE75mmL30AP,
   -- France
   FRA75mmSA35HE = FRA75mmSA35HE,
   FRA75mmMle1897HE = FRA75mmMle1897HE,

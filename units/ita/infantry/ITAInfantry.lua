@@ -7,9 +7,6 @@ local ITAInf = {
 local Alpini = {
 	maxDamageMul		= 1.25,
 	movementClass		= "KBOT_alpini",
-	customParams = {
-		pronespheremovemult = 0.5,
-	}
 }
 local Bersaglieri = {
 	maxDamageMul		= 1.15,
@@ -187,7 +184,6 @@ local ITA_AlpiniRifle = ITA_Rifle:Clone("ITARifle"):New(Alpini):New{
 		},
 		[3] = {
 			name				= "L_type_grenade",
-			maxAngleDif			= 170,
 			onlyTargetCategory	= "BUILDING OPENVEH HARDVEH SHIP DEPLOYED",
 			mainDir				= [[0 0 1]],
 		},

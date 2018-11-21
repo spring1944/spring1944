@@ -67,6 +67,15 @@ local spSendCommands = Spring.SendCommands
 confdata.eopt = {}
 local path = ''
 
+local function linspace(bounds, n)
+	local values = {}
+	for i=1,n do
+		local f = (i - 1) / (n - 1)
+		values[i] = bounds[1] + f * (bounds[2] - bounds[1])
+	end
+	return values
+end
+
 local function AddOption( option )
 	option.path = path
 	if not option.key then
@@ -238,6 +247,98 @@ path='Settings/Graphics'
 	ShButton('Low Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 1024"} end )
 	ShButton('Medium Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 2048"} end )
 	ShButton('High Detail Shadows', function() local curShadow=Spring.GetConfigInt("Shadows"); curShadow=math.max(1,curShadow); spSendCommands{"Shadows " .. curShadow .. " 4096"} end )
+
+	ShLabel('GFX effects')
+
+path='Settings/Graphics/GFX effects'
+	ShLabel('Screen Space Ambience Occlusion')
+	ShButton('Toggle SSAO', function() spSendCommands{'luaui togglewidget Screen-Space Ambient Occlusion'} end )
+
+	ShLabel('Post-Processing')
+	ShButton('Toggle Post-processing effects', function() spSendCommands{'luaui togglewidget Post-processing'} end )
+	AddOption({
+		name = 'Gamma',
+		type = 'number',
+		valuelist = linspace({0.5, 1.0}, 51),
+		default = 0.75,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.tonemapping.gamma = self.value
+			end
+		end, 
+	} )
+	AddOption({
+		name = 'Gamma fluctuation',
+		type = 'number',
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.tonemapping.dGamma = self.value
+			end
+		end, 
+	} )
+	AddOption({
+		name = 'Film grain',
+		type = 'number',
+		valuelist = linspace({0.0, 0.1}, 51),
+		default = 0.05,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.filmgrain.grain = self.value
+			end
+		end, 
+	} )
+	AddOption({
+		name = 'Scratches',
+		type = 'number',
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.scratches.threshold = self.value
+			end
+		end, 
+	} )
+	AddOption({
+		name = 'Vignette',
+		type = 'number',
+		valuelist = linspace({2.0, 0.7}, 51),
+		default = 1.0,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.vignette.vignette[2] = self.value
+			end
+		end, 
+	} )
+	AddOption({
+		name = 'Chromatic aberration',
+		type = 'number',
+		valuelist = linspace({0.0, 0.5}, 51),
+		default = 0.1,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.aberration.aberration = self.value
+			end
+		end, 
+	} )
+	AddOption({ 	
+		name = 'GrayScale/Sepia',
+		type = 'bool',
+		default = false,
+		OnChange=function(self) WG.POSTPROC.grayscale.enabled = self.value end, 
+	} )
+	AddOption({
+		name = 'Sepia tone',
+		type = 'number',
+		valuelist = linspace({0.0, 1.0}, 51),
+		default = 0.5,
+		OnChange = function(self)
+			if self.value ~= nil then
+				WG.POSTPROC.grayscale.sepia = self.value
+			end
+		end, 
+	} )
 
 path='Settings/View'
 

@@ -47,7 +47,7 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 10,
+		maxammo					= 4,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
 

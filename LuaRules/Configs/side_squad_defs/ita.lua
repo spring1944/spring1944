@@ -69,7 +69,7 @@ local itaDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "2 x M37 Machinegun, 1 x Breda 30 Light Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1200,
+		buildCostMetal = 1160,
 		buildPic = "ITAM37.png",
 	},
 
@@ -81,7 +81,7 @@ local itaDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Carcano M91 Sniper, 1 x Spotter: Long-Range Fire Support",
-		buildCostMetal = 1140,
+		buildCostMetal = 1080,
 		buildPic = "ITASniper.png",
 	},
 

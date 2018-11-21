@@ -5,15 +5,18 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 	maxDamage			= 640,
 	trackOffset			= 5,
 	trackWidth			= 11,
+	turnRate = 150,
 
 	weapons = {
 		[1] = {
-			name				= "CannoneDa47mml32HEAT",
-			maxAngleDif			= 15,
+			name				= "CannoneDa47mml32AP",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
 		},
 		[2] = {
-			name				= "CannoneDa47mml32AP",
-			maxAngleDif			= 15,
+			name				= "CannoneDa47mml32HEAT",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
 		},
 		[3] = {
 			name				= ".50calproof",
@@ -25,7 +28,7 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		armor_side			= 15,
 		armor_top			= 0,
 		maxammo				= 18,
-		weapontoggle		= "priorityAPHEATHE",
+		weapontoggle		= "priorityHEATAP",
 		maxvelocitykmh		= 42.3,
 
 	},

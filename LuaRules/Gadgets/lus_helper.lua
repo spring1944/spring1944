@@ -512,12 +512,15 @@ function gadget:GamePreload()
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
 
 		info.planeVoice = table.unserialize(cp.planevoice) or {}
+		
 
 		-- deploy anims
 		if cp.customanims then
 			info.customAnimsName = cp.customanims
 		end
-		
+		if cp.nomoveandfire then
+			info.nomoveandfire = cp.nomoveandfire
+		end
 		-- Children
 		info.children = table.unserialize(cp.children)
 		-- And finally, stick it in GG for the script to access

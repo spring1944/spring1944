@@ -26,7 +26,7 @@ local numBarrels = info.numBarrels
 local numRockets = info.numRockets
 
 local MIN_HEALTH = 1
-local FEAR_LIMIT = info.fearLimit or 20
+local FEAR_LIMIT = info.fearLimit or 25
 local PINNED_LEVEL = 0.8 * FEAR_LIMIT
 local SUPPRESSED_FIRE_RATE_PENALTY = 2
 
@@ -210,19 +210,19 @@ local function FearRecovery()
 		curFear = curFear - 1
 		SetUnitRulesParam(unitID, "fear", curFear)
 		if curFear >= PINNED_LEVEL then
+			isPinned = true
 			fearChanged = currFearState == "pinned"
 			currFearState = "pinned"
 			if fearChanged then
 				-- TODO: crew hiding anim
-				isPinned = true
 			end
 		else
+			isPinned = false
 			fearChanged = currFearState == "suppressed"
 			currFearState = "suppressed"
 			if fearChanged then
 				-- reduce fire rate when suppressed but not pinned
 				SetWeaponReload(SUPPRESSED_FIRE_RATE_PENALTY)
-				isPinned = false
 			end
 		end
 	end
@@ -407,7 +407,10 @@ function script.AimWeapon(weaponNum, heading, pitch)
 		StartThread(ResolveDirection, headingPiece, pitchPiece)
 	end
 
-	return IsAimed(weaponNum)
+	-- Since in this logic there is not a way to stop aiming running threads,
+	-- we shall check another time that the gun is not pinned or disabled before
+	-- allowing it to fire
+	return IsAimed(weaponNum) and (not (isDisabled or isPinned))
 end
 
 function script.FireWeapon(weaponNum)

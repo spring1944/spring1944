@@ -88,7 +88,7 @@ local sweDefs = {
 	swegunyard = {
 		{
 			into = 'swespyard',
-			metal = 3000,
+			metal = 3450,
 			energy = 0,
 			time = 85,
 			name = 'Heavy\nFieldguns',
@@ -97,9 +97,9 @@ local sweDefs = {
 		},
 		{
 			into = 'swespyard1',
-			metal = 5250,
+			metal = 3150,
 			energy = 0,
-			time = 150,
+			time = 85,
 			name = 'Tank\nDestroyers',
 			text = 'Makes Tank Destroyers available in this yard',
 			facing = true,
@@ -299,7 +299,7 @@ local sweDefs = {
 		{
 			into = 'swepvkanm43_stationary',
 			tech = 0,
-			time = 5,
+			time = 7,
 			metal = 0,
 			energy = 0,
 			directional = true,
@@ -309,7 +309,7 @@ local sweDefs = {
 		{
 			into = 'swepvkanm43_truck',
 			tech = 0,
-			time = 5,
+			time = 7,
 			metal = 0,
 			energy = 0,
 		},

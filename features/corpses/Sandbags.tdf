@@ -1,16 +1,3 @@
-[ATGun_Destroyed] {
-  description=Debris;
-  blocking=0;
-  damage=1000;
-  energy=50;
-  footprintX=3;
-  footprintZ=3;
-  indestructible=1;
-  metal=0;
-  object=ATGun_Destroyed.S3O;
-  reclaimable=1;
-}
-
 [SandbagMG_Destroyed] {
   description=Debris;
   blocking=0;

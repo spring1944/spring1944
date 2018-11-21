@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------------------------------------
 function widget:GetInfo()
   return {
-    name      = "NotAchili Cursor Tip 3",
+    name      = "1944 notAchili Cursor Tip 3",
     desc      = "v0.102 NotAchili Cursor Tooltips.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
-    experimental = false,
-    enabled   = true,
+    experimental = true,
+    enabled   = false,
   }
 end
 

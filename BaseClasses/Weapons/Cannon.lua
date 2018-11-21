@@ -37,6 +37,7 @@ local HeavyAP = AP:New{ -- MediumHeavy & Heavy
 
 -- Base HEAT Class
 local HEAT = Weapon:New{ -- Medium
+	canattackground    = false,
 	collisionSize      = 3,
 	edgeEffectiveness  = 0.2,
 	explosionGenerator = "custom:EP_medium",

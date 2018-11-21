@@ -70,7 +70,7 @@ local cKneeMortar = Mortar:New{
   range              = 650,
   weaponVelocity     = 350,
   customparams = {
-    weaponcost         = 7,
+    weaponcost         = 5,
   },
 }
 local KneeMortar = MortarHE:New(cKneeMortar, true):New{

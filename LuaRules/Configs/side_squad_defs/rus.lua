@@ -93,7 +93,7 @@ local rusDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "1 x Maxim Heavy Machinegun, 2 x DP Light Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 900,
+		buildCostMetal = 1120,
 		buildPic = "RUSDP.png",
 	},
 
@@ -105,7 +105,7 @@ local rusDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x Mosin-Nagant Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1120,
+		buildCostMetal = 1060,
 		buildPic = "russniper.png",
 	},
 

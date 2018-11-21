@@ -3,7 +3,7 @@
 
 -- SMLE No. 4 Mk. I (GBR)
 local Enfield = RifleClass:New{
-  accuracy           = 50, -- overwrites default
+  accuracy           = 150, -- overwrites default
   name               = [[Lee-Enfield No. 4 Mk. I]],
   range              = 680,
   reloadtime         = 2.5,
@@ -63,7 +63,7 @@ local SVT = RifleClass:New{
 
 -- Carcano 91/38 (ITA)
 local Mod91 = RifleClass:New{
-  accuracy           = 95, -- overwrites default
+  accuracy           = 195, -- overwrites default
   name               = [[Carcano Mod.91/38]],
   range              = 610,
   reloadtime         = 2.6,
@@ -75,14 +75,14 @@ local Mod91 = RifleClass:New{
 
 -- Carcano 91/41 (ITA)
 local Mod91_41 = Mod91:New{
-  accuracy           = 65,
+  accuracy           = 165,
   name               = [[Carcano Mod.91/41]],
   range              = 644,
 }
 
 -- Arisaka type 99 (JPN)
 local Arisaka99 = RifleClass:New{
-  accuracy           = 95, -- overwrites default
+  accuracy           = 185, -- overwrites default
   name               = [[Arisaka Type 99]],
   range              = 630,
   reloadtime         = 2.5,
@@ -100,7 +100,7 @@ local AgM42 = RifleClass:New{
 
 -- Gevar M/38
 local Gevar_M_38 = RifleClass:New{
-	accuracy           = 75, -- 
+	accuracy           = 175, -- 
 	name               = [[6,5 mm Gevär m/38]],
 	range              = 630,
 	reloadtime         = 2.4,

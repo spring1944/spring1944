@@ -53,7 +53,7 @@ local JPN_Ki51 = Fighter:New{
 		[7] = {
 			name				= "Te4",
 			maxAngleDif			= 70,
-			mainDir				= [[0 1 -9]],
+			mainDir				= [[0 .25 -9]],
 		},
 	},
 }

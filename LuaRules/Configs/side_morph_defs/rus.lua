@@ -113,7 +113,7 @@ local rusDefs = {
   {
     into = 'ruszis2_stationary',
     tech = 0,
-    time = 5,
+    time = 7,
     metal = 0,
     energy = 0,
     directional = true,
@@ -123,7 +123,7 @@ local rusDefs = {
   {
     into = 'ruszis2_truck',
     tech = 0,
-    time = 5,
+    time = 7,
     metal = 0,
     energy = 0,
   },
@@ -132,7 +132,7 @@ local rusDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 10,
+    time = 12,
     metal = 0,
     energy = 0,
     directional = true,
@@ -142,7 +142,7 @@ local rusDefs = {
   {
     into = 'ruszis3_truck',
     tech = 0,
-    time = 10,
+    time = 12,
     metal = 0,
     energy = 0,
   },

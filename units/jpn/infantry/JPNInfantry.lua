@@ -1,8 +1,5 @@
 local JPNInf = {
 	maxDamageMul		= 0.94,
-	customParams = {
-		pronespheremovemult = 0.5,
-	},
 }
 
 local JPN_HQEngineer = EngineerInf:New(JPNInf):New{

@@ -20,6 +20,17 @@ local Bofors40mmAA = AntiAirGunAA:New(Bofors40mm, true):New{
 local Bofors40mmHE = AutoCannonHE:New(Bofors40mm, true):New{
   range              = 725,
 }
+local Bofors40mmAP = AutoCannonAP:New(Bofors40mm, true):New{
+  range              = 725,
+  customparams = {
+   armor_penetration_1000m = 32,
+    armor_penetration_100m  = 49,
+  },
+  damage = {
+    default            = 895,
+  },
+}
+
 
 -- Twin Bofors 40mm AA Gun (For ships)
 -- derives from the above, only with half the reloadtime
@@ -134,6 +145,7 @@ return lowerkeys({
   -- Medium (40mm)
   Bofors40mmAA = Bofors40mmAA,
   Bofors40mmHE = Bofors40mmHE,
+  Bofors40mmAP = Bofors40mmAP,
   Twin_Bofors40mmAA = Twin_Bofors40mmAA,
   Twin_Bofors40mmHE = Twin_Bofors40mmHE,
   FlaK4337mmAA = FlaK4337mmAA,
