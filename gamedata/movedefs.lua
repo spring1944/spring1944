@@ -29,8 +29,8 @@ local moveDefs 	=	 {
 		footprintX		=	2,
 		maxWaterDepth	=	8,
 		maxSlope			=	18,
-		slopeMod		= 80,
-		heatmapping		=	false,
+		slopeMod		= 150,
+		heatmapping		=	true,
 	},
 	{
 		name					=	"TANK_Motorcycle",
@@ -47,7 +47,7 @@ local moveDefs 	=	 {
 		maxSlope			=	19,
 		slopeMod		= 70,
 		crushStrength	=	13,
-		heatmapping		=	false,
+		heatmapping		=	true,
 	},
 	{
 		name					=	"TANK_Light",
@@ -55,7 +55,7 @@ local moveDefs 	=	 {
 		maxWaterDepth	=	8,
 		maxSlope			=	22,
 		crushStrength	=	15,
-		heatmapping		=	false,
+		heatmapping		=	true,
 	},
 	{
 		name					=	"TANK_Medium",
