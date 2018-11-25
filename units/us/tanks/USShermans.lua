@@ -80,6 +80,7 @@ local USM4A376Sherman = ShermanBase:New{
 	name				= "M4A3(76) HVSS Sherman",
 	description			= "Upgunned Medium Tank",
 	buildCostMetal		= 3135,
+	acceleration		= 0.058,
 	turnRate			= 135,
 	maxDamage			= 3365,
 

@@ -77,15 +77,15 @@ local Twin_Oerlikon20mmAA = Oerlikon20mmAA:New({
 
 -- TNSh 20mm (RUS)
 local TNSh20mm = AutoCannon:New{
-  accuracy           = 300,
+  accuracy           = 200,
   burst              = 3,
   burstRate          = 0.1,
   turret	= true,
   name               = [[20mm TNSh]],
   range              = 675,
-  reloadTime         = 2,
+  reloadTime         = 1.8,
   soundStart         = [[GER_20mm]],
-  sprayAngle         = 444,
+  sprayAngle         = 400,
   weaponVelocity     = 1600,
   damage = {
     default            = 110,
