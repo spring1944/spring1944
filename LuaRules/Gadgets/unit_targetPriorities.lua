@@ -26,8 +26,13 @@ local unitDefIDsPassed = {}
 	-- return false
 -- end
 
+function ValidID(objectID)
+	return Spring.ValidUnitID(objectID) or Spring.ValidFeatureID(objectID)
+end
+
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
-	if lusPriorityCache[unitID] then
+	-- Apparently, in spring-104 the targetID can be an invalid ID
+	if lusPriorityCache[unitID] and ValidID(targetID) then
 		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 		return true, newPriority
 	else
