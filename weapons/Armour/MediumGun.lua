@@ -413,8 +413,8 @@ local Type575mmL56HE = MediumHE:New(Type575mmL56, true):New{
 local Type575mmL56AP = MediumAP:New(Type575mmL56, true):New{
   weaponVelocity     = 1728,
   customparams = {
-    armor_penetration_1000m = 80,
-    armor_penetration_100m  = 122,
+    armor_penetration_1000m = 96,
+    armor_penetration_100m  = 134,
   },
   damage = {
     default            = 2450,
