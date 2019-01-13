@@ -49,6 +49,7 @@ local overrides = {
 	[Spring.GetGameRulesParam("CMD_TURN")] = { text = 'Turn', texture = imageDir .. 'turn.png' },
 	[Spring.GetGameRulesParam("CMD_CLEARPATH")] = { text = 'Clear Path', texture = imageDir .. 'clearPath.png' },
 	[Spring.GetGameRulesParam("CMD_LOOK")] = { text = 'Use Binoculars to look at a point', texture = imageDir .. 'look.png' },
+	[Spring.GetGameRulesParam("CMD_SMOKEGEN")] = { text = 'Smoke Screen', texture = imageDir .. 'smokescreen.png' },
 	-- no kidding
 	[CMD.DGUN] = { text = 'Smoke grenade: Throw a smoke greanade', texture = imageDir .. 'smokescreen.png' },
 	
