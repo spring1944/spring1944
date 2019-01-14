@@ -67,6 +67,7 @@ local SandbagMG = Deployed:New{
 	maxDamage					= 1600,
 	noChaseCategory				= "OPENVEH AIR FLAG SOFTVEH MINE",
 	objectName					= "<SIDE>/<SIDE>SandbagMG.S3O",
+	sightDistance				= 900,
 
 	customParams = {
 		scriptAnimation		= "hmg",
@@ -114,6 +115,7 @@ local ATGun = DeployedGun:New{
 	description			= "Deployed Anti-Tank Gun",
 	buildCostMetal		= 840,
 	iconType			= "atartillery",
+	radardistance				= 950,
 
 	customParams		= {
 		turretturnspeed		= 24,

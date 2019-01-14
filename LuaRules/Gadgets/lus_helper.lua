@@ -419,7 +419,7 @@ function GG.ApplySpeedChanges(unitID)
 				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
 					GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
 				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED, 0, newSpeed}
+				local params = {1, CMD.SET_WANTED_MAX_SPEED or cmds[1].id, 0, newSpeed}
 				SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
 				GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 			end

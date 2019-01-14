@@ -159,7 +159,7 @@ local M390mmHE = MediumHE:New(M390mm, true):New{
 local M390mmAP = HeavyAP:New(M390mm, true):New{
   weaponVelocity     = 1490,
   customparams = {
-    armor_penetration_1000m = 107,
+    armor_penetration_1000m = 137,
     armor_penetration_100m  = 151,
   },
   damage = {
@@ -185,7 +185,7 @@ local Ansaldo90mmL53HE = MediumHE:New(Ansaldo90mmL53, true):New{
 local Ansaldo90mmL53AP = HeavyAP:New(Ansaldo90mmL53, true):New{
   weaponVelocity     = 1490,
   customparams = {
-    armor_penetration_1000m = 108,
+    armor_penetration_1000m = 118,
     armor_penetration_100m  = 149,
   },
   damage = {
@@ -196,7 +196,7 @@ local Ansaldo90mmL53AP = HeavyAP:New(Ansaldo90mmL53, true):New{
 -- OTO 100mm/47 1928 Naval gun (ITA)
 local OTO100mmL47 = MediumHeavyGun:New{
   name               = [[OTO100mmL47]],
-  range              = 1810,
+  range              = 2010,
   reloadTime         = 6.25,
   soundStart         = [[GER_88mm]],
 }

@@ -275,7 +275,7 @@ if canTransport then
 		spSetUnitBlocking(unitID, true, true, true)
 		
 		-- remove passenger from transported list, mark piece as free
-		if cargoList[passengerID] ~= -1 then
+		if cargoList[passengerID] and cargoList[passengerID] ~= -1 then
 			cargoAttachList[cargoList[passengerID]] = nil
 		end
 		cargoList[passengerID] = nil
