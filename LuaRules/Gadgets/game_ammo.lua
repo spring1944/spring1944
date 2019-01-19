@@ -36,8 +36,8 @@ local SetUnitExperience = Spring.SetUnitExperience
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local SetUnitWeaponState = Spring.SetUnitWeaponState
 local UseUnitResource = Spring.UseUnitResource
-local GetTeamRulesParam	= Spring.GetTeamRulesParam
-local SetTeamRulesParam	= Spring.SetTeamRulesParam
+local GetTeamRulesParam = Spring.GetTeamRulesParam
+local SetTeamRulesParam = Spring.SetTeamRulesParam
 
 -- Constants
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
@@ -47,8 +47,8 @@ local RELOAD_AVERAGE_DURATION = RELOAD_FREQUENCY * 11 -- average ammo is around 
 --[[ 
 NB: the customParams used by this script:
 
-	maxammo	- The total ammo capacity of this unit
-	supplyrange	- How far this supply unit can supply
+	maxammo - The total ammo capacity of this unit
+	supplyrange - How far this supply unit can supply
 	weaponcost - The cost to reload the weapons with ammo per tick
 	weaponswithammo - Number of weapons that use ammo. Must be the first ones. Default is 2
 ]]
@@ -189,17 +189,17 @@ local function Resupply(unitID, unitDefID)
 		else
 			SetUnitRulesParam(unitID, "insupply", 1)
 			if oldAmmo < maxAmmo and weaponCost >= 0 then
-                -- scale the number of loaded rounds per tick so that total reload time 
-                -- never takes much more than RELOAD_AVERAGE_DURATION
-                local maxAmmoPerTick = math.round(maxAmmo * RELOAD_FREQUENCY / RELOAD_AVERAGE_DURATION)
+				-- scale the number of loaded rounds per tick so that total reload time 
+				-- never takes much more than RELOAD_AVERAGE_DURATION
+				local maxAmmoPerTick = math.round(maxAmmo * RELOAD_FREQUENCY / RELOAD_AVERAGE_DURATION)
 
-                -- ammoPerTick must be between 1 and amount player has logistics for
-                local ammoPerTick = math.max(1, maxAmmoPerTick)
-                ammoPerTick = math.min(ammoPerTick, math.floor(logisticsLevel / weaponCost))
+				-- ammoPerTick must be between 1 and amount player has logistics for
+				local ammoPerTick = math.max(1, maxAmmoPerTick)
+				ammoPerTick = math.min(ammoPerTick, math.floor(logisticsLevel / weaponCost))
 
-                UseUnitResource(unitID, "e", weaponCost * ammoPerTick)
+				UseUnitResource(unitID, "e", weaponCost * ammoPerTick)
 
-                local newAmmo = oldAmmo + ammoPerTick
+				local newAmmo = oldAmmo + ammoPerTick
 				vehicles[unitID].ammoLevel = newAmmo
 				SetUnitRulesParam(unitID, "ammo", newAmmo)
 			end
@@ -221,8 +221,8 @@ local function Resupply(unitID, unitDefID)
 				
 				if savedFrames[unitID] then
 					savedFrame = savedFrames[unitID]
-				end				
-				reloadState = savedFrame				
+				end	
+				reloadState = savedFrame
 				
 				if unitName == "rusbm13n" or unitName == "gernebelwerfer_stationary" then
 					local difference = savedFrame - currFrame
@@ -235,7 +235,7 @@ local function Resupply(unitID, unitDefID)
 						Spring.UnitScript.CallAsUnit(unitID, env.RestoreRockets, (difference * 30) - 3000)
 					else
 						Spring.CallCOBScript(unitID, "RestoreRockets", 0, (difference * 30) - 3000)
-					end					
+					end	
 				end
 				
 				-- if a unit is LUS-ified, don't muck with
