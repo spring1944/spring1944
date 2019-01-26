@@ -294,6 +294,7 @@ end
 function gadget:UnitDestroyed(unitID, unitDefID, teamID)
 	newVehicles[unitID] = nil
 	vehicles[unitID] = nil
+	savedFrames[unitID] = nil
 	CleanUp(unitID, unitDefID, teamID)
 end
 
