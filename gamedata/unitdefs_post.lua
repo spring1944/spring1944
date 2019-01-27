@@ -114,7 +114,7 @@ for name, ud in pairs(UnitDefs) do
 		OPENVEH     = {150, 1500, 950, 0},
 		HARDVEH     = {125, 1000, 650, 0},
 		SHIP        = {500, 1500, 950, 0},
-		DEPLOYED    = {650, 1500, 650, 1400},
+		DEPLOYED    = {650, 1500, 950, 1400},
 	}
 
 	--set detection values per unit category (with some special casing for
