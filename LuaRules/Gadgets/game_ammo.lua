@@ -310,7 +310,7 @@ end
 -- otherwise next call to ProcessWeapons thinks every weapon has fired.
 function gadget:UnitUnloaded(unitID, unitDefID)
 	if weaponsWithAmmo[unitDefID] then
-		local weaponsWithAmmo = uweaponsWithAmmo[unitDefID] or 2
+		local weaponsWithAmmo = weaponsWithAmmo[unitDefID] or 2
 
 		for weaponIndex = 1, weaponsWithAmmo do
 			local reloadFrame = GetUnitWeaponState(unitID, weaponIndex, "reloadState")

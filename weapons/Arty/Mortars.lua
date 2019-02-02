@@ -7,7 +7,7 @@ local ML3InMortar = Mortar:New{
   areaOfEffect       = 112,
   edgeEffectiveness  = 0.25, -- overrides default
   name               = [[Ordnance ML 3 Inch Mortar]],
-  range              = 1450,
+  range              = 1232,
 }
 local ML3InMortarHE = MortarHE:New(ML3InMortar, true):New{
   damage = {
@@ -19,7 +19,7 @@ local ML3InMortarSmoke = MortarSmoke:New(ML3InMortar, true)
 -- 4in Smoke Mortar (GBR)
 local BL4InMortar = Mortar:New{
 	name			 = [[BL 4 Inch Mortar]],
-	range			 = 1450,
+	range			 = 1232,
 	commandFire		 = true,
 }
 local BL4InMortarSmoke = MortarSmoke:New(BL4InMortar, true)
@@ -28,7 +28,7 @@ local BL4InMortarSmoke = MortarSmoke:New(BL4InMortar, true)
 local GrW34_8cmMortar = Mortar:New{
   areaOfEffect       = 81,
   name               = [[8 cm Granatwerfer 34]],
-  range              = 1365,
+  range              = 1201,
 }
 local GrW34_8cmMortarHE = MortarHE:New(GrW34_8cmMortar, true):New{
   damage = {
@@ -41,7 +41,7 @@ local GrW34_8cmMortarSmoke = MortarSmoke:New(GrW34_8cmMortar, true)
 local M1_81mmMortar = Mortar:New{
   areaOfEffect       = 104,
   name               = [[M1 81mm Mortar]],
-  range              = 1320,
+  range              = 1161,
 }
 local M1_81mmMortarHE = MortarHE:New(M1_81mmMortar, true):New{
   damage = {
@@ -54,7 +54,7 @@ local M1_81mmMortarSmoke = MortarSmoke:New(M1_81mmMortar, true)
 local m1937_Mortar = Mortar:New{
   areaOfEffect       = 88,
   name               = [[82-PM 37 Mortar]],
-  range              = 1365,
+  range              = 1201,
 }
 local m1937_MortarHE = MortarHE:New(m1937_Mortar, true):New{
   damage = {
@@ -84,7 +84,7 @@ local KneeMortar_smoke = MortarSmoke:New(cKneeMortar, true)
 local Type97_81mmMortar = Mortar:New{
   areaOfEffect       = 104,
   name               = [[Type 97 81mm Mortar]],
-  range              = 1320,
+  range              = 1161,
 }
 local Type97_81mmMortarHE = MortarHE:New(Type97_81mmMortar, true):New{
   damage = {
