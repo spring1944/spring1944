@@ -18,11 +18,11 @@
 
 ![Damage][105] Damage: {damages}
 
-[101]: /uploads/f34b312f778ec209c9dc8a0908e75202/gunheading_icon.svg
-[102]: /uploads/153c9619ab329f1570600fbc417cd120/gunpitch_icon.svg
-[103]: /uploads/c3e0251c2814e7b78dc31210ad7ea55b/range_icon.svg
-[104]: /uploads/c9800e87cd30bc07a5fbf59d5ff2ae73/accuracy_icon.svg
-[105]: /uploads/5e43d946a83a1c4661c4da46dba6c60d/explosion_icon.svg
-[106]: /uploads/7c5b9b7ffed7e56a91d4746c5f33ad00/penetration.svg
-[107]: /uploads/cc6b71fe47afdf8091bddb96958eb167/reload_icon.svg
-[108]: /uploads/36e910c23dd318832e2ba5e72c5738dc/ammo_icon.svg
+[101]: {iconsUrl}/gunheading_icon.{iconExt}
+[102]: {iconsUrl}/gunpitch_icon.{iconExt}
+[103]: {iconsUrl}/range_icon.{iconExt}
+[104]: {iconsUrl}/accuracy_icon.{iconExt}
+[105]: {iconsUrl}/explosion_icon.{iconExt}
+[106]: {iconsUrl}/penetration.{iconExt}
+[107]: {iconsUrl}/reload_icon.{iconExt}
+[108]: {iconsUrl}/ammo_icon.{iconExt}

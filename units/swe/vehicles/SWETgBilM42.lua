@@ -1,7 +1,7 @@
 local SWETgBilM42 = HalfTrack:New{
 	name					= "Terrängbil m/42 KP",
 	description				= "Transport/Supply Armoured Truck",
-	buildCostMetal			= 1100,
+	buildCostMetal			= 800,
 	maxDamage				= 646,
 	trackOffset				= 10,
 	trackWidth				= 15,

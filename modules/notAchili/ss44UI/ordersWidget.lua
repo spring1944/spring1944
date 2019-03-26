@@ -28,11 +28,11 @@ local ordersGroup = {
 ----------------------------------------------------------------------------------------------------
 local globalSize = 2.5
 local imageW, imageH = 21 * globalSize, 16 * globalSize
-local imageOffset = 5
+local imageOffset = 2 * globalSize
 local imageInRow = 3
 
-local labelH = 20
-local labelFontSize = 14
+local labelH = 20 * globalSize
+local labelFontSize = 14 * globalSize
 
 local rowSize = imageW * imageInRow + imageOffset * ( imageInRow + 1 )
 local totalW = rowSize + 21
@@ -356,10 +356,10 @@ end
 ----------------------------------------------------------------------------------------------------
 function UpdateGeometry()
 	
-	local totalHeight = imageOffset * 3 + 4
+	local totalHeight = imageOffset * 3 + 2*globalSize
 	
 	if #stateGrid.children > 0 then
-		local gridH = math.ceil( #stateGrid.children / stateImageInRow ) * ( stateH + 7 ) + 1
+		local gridH = math.ceil( #stateGrid.children / stateImageInRow ) * ( stateH + 7 ) + 1*globalSize
 		totalHeight = totalHeight + gridH
 	end
 	
@@ -368,7 +368,7 @@ function UpdateGeometry()
 		local grid = ordersGrids[ group ]
 		
 		if grid and #grid.children > 0 then
-			local gridH = math.ceil( #grid.children / imageInRow ) * ( imageH + 7 ) + 1
+			local gridH = math.ceil( #grid.children / imageInRow ) * ( imageH + 7 ) + 1*globalSize
 			--totalHeight = totalHeight + labelH + gridH
 			totalHeight = totalHeight + gridH
 		end

@@ -69,14 +69,17 @@ local function UpdateCollision(unitID, direction)
 			local scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, volumeType, testType, primaryAxis = Spring.GetUnitCollisionVolumeData(unitID)
 			Spring.SetUnitCollisionVolumeData(unitID, scaleX, scaleY, scaleZ, offsetX, offsetY + direction * scaleY * sphereMult, offsetZ, volumeType, testType, primaryAxis)
 			
-			-- ! it is not possible to play with the aim pos because it setting mid pos via Spring.SetUnitMidAndAimPos will reset the animation script
-			-- enemies aiming to old position will still hit
+			-- read model data for aimpoint upgrade
+			local bpx,bpy,bpz,mpx,mpy,mpz = Spring.GetUnitPosition(unitID, true)
+			local centerHeight = mpy - bpy
 			
 			-- inverting between "nil" and "true" 
 			-- better than "true" and "false" because the table is shorter for per frame iteration below
 			if (collisionUpdated[unitID] == nil) then
+				Spring.SetUnitMidAndAimPos(unitID,0,centerHeight,0,0,centerHeight*DEFAULT_PRONE_SPHERE_MOVE_MULT,0,true)
 				collisionUpdated[unitID] = true 
-			else 
+			else
+				Spring.SetUnitMidAndAimPos(unitID,0,centerHeight,0,0,centerHeight,0,true)
 				collisionUpdated[unitID] = nil 
 			end
 		end
@@ -152,6 +155,45 @@ function gadget:UnitCreated(unitID, unitDefID)
 	end
 	
 	UpdateCollision(unitID, 1)
+	
+	--[[
+		DOCUMENTATION OF SPRING API
+		
+		Spring.GetUnitPosition
+		( number unitID, [, boolean midPos [, boolean aimPos ] ] ) ->
+		nil |
+		number bpx, number bpy, number bpz
+		[, number mpx, number mpy, number mpz ]
+		[, number apx, number apy, number apz ]
+	
+		Spring.SetUnitMidAndAimPos
+		( number unitID, 
+		number mpx, number mpy, number mpz, 
+		number apx, number apy, number apz, 
+		[, boolean relative] ) -> boolean success
+		mpx, mpy, mpz: new middle position of unit
+		apx, apy, apz: new position that enemies aim at on this unit
+		relative: to the unit coordinates (false => relative to the world coordinates)
+		
+		UNCOMMENT SECTION BELOW FOR EXPERIMENTS
+	]]--
+
+	--[[
+	local unitDef = UnitDefs[Spring.GetUnitDefID(unitID)]
+	
+	-- filter out static units like MG nests and AA/AT posts
+	if (unitDef.speed > 0) then
+		local bpx,bpy,bpz,mpx,mpy,mpz,apx,apy,apz = Spring.GetUnitPosition(unitID, true, true)
+		Spring.Echo("before",bpx,bpy,bpz,mpx,mpy,mpz,apx,apy,apz)
+		local centerHeight = mpy-bpy
+		local scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, volumeType, testType, primaryAxis = Spring.GetUnitCollisionVolumeData(unitID)
+		Spring.Echo("properties",scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, volumeType, testType, primaryAxis)
+		--Spring.SetUnitMidAndAimPos(unitID,mpx,mpy,mpz,apx,apy-scaleY*DEFAULT_PRONE_SPHERE_MOVE_MULT,apz)
+		Spring.SetUnitMidAndAimPos(unitID,0,centerHeight,0,0,centerHeight*DEFAULT_PRONE_SPHERE_MOVE_MULT,0,true)
+		local bpx,bpy,bpz,mpx,mpy,mpz,apx,apy,apz = Spring.GetUnitPosition(unitID, true, true)
+		Spring.Echo("after",bpx,bpy,bpz,mpx,mpy,mpz,apx,apy,apz)
+	end
+	]]--
 end
 
 
@@ -244,7 +286,6 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 	
 	return false
 end
-
 
 function gadget:Initialize()
 	for weaponId, weaponDef in pairs (WeaponDefs) do

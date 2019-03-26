@@ -3,7 +3,6 @@ local moduleInfo = {
 	desc = "Gadget connecting custom commands module allowing players to define their own commands",
 	author = "PepeAmpere",
 	date = "2017-01-24",
-	license = "notAlicense",
 	layer = 0,
 	enabled = true -- loaded by default?
 }

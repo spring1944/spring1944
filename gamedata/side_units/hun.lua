@@ -92,6 +92,7 @@ local hununits = {
 		"hunlefh18_truck",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
+		"hun40mnimrod",
 		"hunhetzer",
 	},
 
@@ -103,6 +104,7 @@ local hununits = {
 		"hunlefh18_truck",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
+		"hun40mnimrod",
 		"hun43mzrynyiii",
 	},
 

@@ -25,7 +25,7 @@ local minExpenseCoverage = {
 }
 
 local needMessage = {
-	energy = "Need Supplies!",
+	energy = "Need Ammunition!",
 	metal  = "Need Command!",
 	rearm  = "Need Rearm!",
 }
@@ -46,7 +46,7 @@ local commonTooltip = {
 
 local barTooltip = {
 	metal  = "Command bar\n"  .. string.format( commonTooltip.bar, "command" ),
-	energy = "Supplies bar\n" .. string.format( commonTooltip.bar, "ammunition" ),
+	energy = "Ammunition bar\n" .. string.format( commonTooltip.bar, "ammunition" ),
 	rearm = "Rearm bar\n" .. string.format( commonTooltip.bar, "rearm" ),
 }
 
@@ -65,13 +65,13 @@ local expenseTooltip = {
 --                                        Local variables                                         --
 ----------------------------------------------------------------------------------------------------
 local globalSize = 2.5
-local resourceBarH = 16.4 * globalSize
+local resourceBarH = 18 * globalSize
 local resourceW = 104 * globalSize
 local imageW = 8 * globalSize
 local offsetW = 8 * globalSize
 local textW = 20 * globalSize
 
-local fontSize = 4.8 * globalSize
+local fontSize = 4.5 * globalSize
 
 local resourceBarWidget
 
@@ -192,7 +192,7 @@ function CreateResourceBarWidget()
 		draggable = false,
 		children = {
 			StackPanel:New{
-				width = "100%", height = "100%",
+				width = "100%", height = 20 * globalSize,
 				orientation = "horizontal",
 				centerItems = false,
 				resizeItems = false,
@@ -218,11 +218,11 @@ function CreateResourceWidget( resName )
 
 	resWidget = Control:New{
 		parent = panel,
-		width = resourceW, height = "100%",
+		width = resourceW, height = 20 * globalSize,
 		children = {
 			Image:New{
 				x = 0, width = imageW,
-				y = 0, height = "100%",
+				y = 0, height = 8 * globalSize,
 				file = imagePath .. resName .. ".png"
 			},
 		}
@@ -248,8 +248,8 @@ function CreateResourceWidget( resName )
 		parent = resWidget,
 		x = imageW, width = textW,
 		autosize = false,
-		bottom = 0, height = 4 * globalSize,
-		valign = "bottom",
+		y = 4 * globalSize, height = 4 * globalSize,
+		valign = "top",
 		align = "center",
 		caption = "9999k",
 		HitTest = function( self ) return self end,
@@ -263,7 +263,7 @@ function CreateResourceWidget( resName )
 	local shareBar = Trackbar:New{
 		parent = resWidget,
 		x = imageW + textW, width = resourceW - textW - imageW - offsetW,
-		y = 0, height = "100%",
+		y = 0, height = 9 * globalSize,
 		value = 0, min = 0, max = 1, step = 0.01,
 		thumbColor = { 1, 0, 0, 1 },
 		noDrawStep	= true,
@@ -280,12 +280,12 @@ function CreateResourceWidget( resName )
 		parent = resWidget,
 		padding = { 0, 0, 0, 0 },
 		x = imageW + textW, width = resourceW - textW - imageW - offsetW,
-		y = 0, height = "100%",
+		y = 0, height = 9 * globalSize,
 		color = progressbarColors[ resName ],
 		caption = "1000M / 1000M",
 		blink = 1.0, blinkStep = blinkStep,
 		font = {
-			size = fontSize,
+			size = fontSize + 0.6*globalSize,
 		},
 	}
 
@@ -452,13 +452,13 @@ end
 function ReadSettings()
 	globalSize = SS44_UI.globalSize
 
-	resourceBarH	= 16.4 * globalSize
+	resourceBarH	= 18 * globalSize
 	resourceW		= 104 * globalSize
 	imageW			= 8 * globalSize
 	offsetW			= 8 * globalSize
 	textW			= 20 * globalSize
 
-	fontSize		= 4.8 * globalSize
+	fontSize		= 4.2 * globalSize
 end
 
 ----------------------------------------------------------------------------------------------------

@@ -5,8 +5,6 @@ local HUN_Me210_base = {
 	maxAcc				= 0.693,
 	maxAileron			= 0.0054,
 	maxBank				= 1,
-	maxElevator			= 0.0042,
-	maxPitch			= 1,
 	maxRudder			= 0.003,
 	maxVelocity			= 17.6,
 
@@ -20,7 +18,7 @@ local HUN_Me210_base = {
 local HUN_Me210 = Fighter:New(HUN_Me210_base):New{
 	name				= "Me 210Ca-1",
 	description			= "Heavy Fighter",
-
+	maxVelocity			= 18,
 	weapons = {
 		[1] = {
 			name				= "MG15120mm",
@@ -58,8 +56,10 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 	name				= "Me 210Ca-1 gyorsbombázó",
 	description			= "Fast bomber",
 	objectName		= "<SIDE>/HUNMe210_bomber.s3o",
-
 	weapons = {
+		[1] = {
+			maxAngleDif			= 30,
+		},
 		[2] = {
 			name				= "MG15120mm",
 			maxAngleDif			= 10,
@@ -95,8 +95,8 @@ local HUN_Me210_Bomber = FighterBomber:New(HUN_Me210_base):New{
 local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	name			= "Me 210Ca-1 ground attack",
 	description		= "Ground attack aircraft",
-	cruisealt		= 1000,
-
+	cruisealt		= 1500,
+	maxVelocity			= 16,
 	customParams = {
 		maxammo				= 12,
 	},
@@ -143,7 +143,7 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 		[9] = {
 			name	= "NebelAir",
 			maxAngleDif = 30,
-			slaveTo = 1,
+			slaveTo = 8,
 		},
 	},
 }

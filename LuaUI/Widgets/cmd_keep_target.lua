@@ -19,7 +19,7 @@ Spring.Echo("CMDIDs in keeptarget:", CMD_UNIT_SET_TARGET, CMD_UNIT_CANCEL_TARGET
 
 function widget:CommandNotify(id, params, options)
     if id == CMD.SET_WANTED_MAX_SPEED then
-        return false -- FUCK CMD.SET_WANTED_MAX_SPEED
+        return false -- FUCK CMD.SET_WANTED_MAX_SPEED (In spring 104 this cannot happens)
     end
     if id == CMD.MOVE then
         local units = Spring.GetSelectedUnits()

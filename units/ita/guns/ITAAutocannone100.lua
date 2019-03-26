@@ -18,6 +18,7 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 		maxammo				= 8,
 		maxvelocitykmh		= 45,
 		weapontoggle		= "smoke",
+		nomoveandfire		= true,
 	},
 }
 

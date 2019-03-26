@@ -29,7 +29,7 @@ local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 		armor_top			= 13,
 		maxammo				= 18,
 		maxvelocitykmh		= 43,
-
+		weapontoggle		= "priorityHEATHE",
 	},
 }
 

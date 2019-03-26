@@ -1,13 +1,18 @@
+-- Let's add the fixed factions. There are several widgets that already assumed
+-- these factions exist, and are sorted in that way. So better adding them like
+-- that for the time being.
 local sidedata = {
 	{
 	name = "Random Team (GM)",
 	startUnit = "GMToolbox",
+	alliance = "",
 	wiki_title = "Random team",
 	wiki_description = "A random team",
 	},
 	{
 	name = "GER",
 	startUnit = "GERHQBunker",
+	alliance = "axis",
 	wiki_title = "Nazi Germany",
 	wiki_desc = [[## Introduction
 
@@ -30,6 +35,7 @@ This affected the fighting capabilities of the Wehrmacht's frontline units as we
 	{
 	name = "GBR",
 	startUnit = "GBRHQ",
+	alliance = "allies",
 	wiki_title = "Great Britain",
 	wiki_desc = [[## Introduction
 
@@ -52,6 +58,7 @@ One other rather annoying aspect of the GBR faction is the artillery. Despite ha
 	{
 	name = "RUS",
 	startUnit = "RUSCommissar",
+	alliance = "allies",
 	wiki_title = "Union of Soviet Socialist Republics",
 	wiki_desc = [[## Introduction
 
@@ -68,6 +75,7 @@ While having speed and good aim helps, soviet guns are generally weaker and not 
 	{
 	name = "US",
 	startUnit = "USHQ",
+	alliance = "allies",
 	wiki_title = "United States of America",
 	wiki_desc = [[## Introduction
 
@@ -86,6 +94,7 @@ While US have a solid midgame and a very aggresive start with powerful infantry 
 	{
 	name = "ITA",
 	startUnit = "ITAHQ",
+	alliance = "axis",
 	wiki_title = "Italy",
 	wiki_desc = [[## Introduction
 
@@ -106,6 +115,7 @@ Late game the situation changes, as Italy fields much better armored tank destro
 	{
 	name = "JPN",
 	startUnit = "JPNHQ",
+	alliance = "axis",
 	wiki_title = "Japan",
 	wiki_desc = [[## Introduction
 
@@ -126,34 +136,60 @@ Japan infantry are also the least useful in direct combat, as they heavily rely 
 	{
 	name = "SWE",
 	startUnit = "SWEHQ",
+	alliance = "neutral",
 	wiki_title = "Sweden",
 	wiki_desc = [[## Introduction
 
-.
+Even Sweden built an army for an eventual geopolitical change that enforce it to enter in the war, actually the goverment achieved to kept neutral during the whole conflict, making in fact some concessions in favor of both, Allies and Axis.
+
+Said that, is notyworthy that Sweden supported Finland in the Winter War against the Soviet troops.
 
 ## Strengths
 
-.
+Sweden have probably one of the best infantry, well supported by great field guns.
+Sweden also enjoys a costly but very effective air force and landing support naval series combat boats.
+
+Finally, Sweden structures can be packed and moved to a different place, either to run away of enemy fire, or to get a better strategical configuration.
 
 ## Weakness
 
-.]],
+A poorly developed tanks industry leads Sweden forces to a very bad position when the fight evolves in a heavily armoured confrontation, that can be only  balanced by a dense guns distribution planned in detail, or by the great air support.
+
+Unfortunately, guns are consuming ammo quite fast, so take a look to your storages. Also, Sweden air support may be too costly, so you must try to get back your planes at all cost!]],
 	},
 	{
 	name = "HUN",
 	startUnit = "HUNHQ",
+	alliance = "axis",
 	wiki_title = "Hungary",
 	wiki_desc = [[## Introduction
 
-.
+Hungary joined the Axis forces. However, in 1944, while they were battling Soviet forces, an armistice was signed with United States and United Kingdom. At that point Hitler decided to invade Hungary, turning in fact the Hungarian goverment in nothing else but a puppet.
 
 ## Strengths
 
-.
+Germany feeded Hungary with good weapons, which turns it a very dangerous faction in the early stages of the battle, with great light armoured vehicles.
+Hungary has also one of the best naval series of the game.
 
 ## Weakness
 
-.]],
+Even Turan tanks can be considered good enough tanks for the very first steps of the armoured battle, when largest tier tanks dominates the battlefield, Hungarian forces will be probably driven out.]],
     }
 }
+
+-- Let's append more factions as an extension
+Spring.Log('sidedata', 'info', "Loading sides data...")
+local SideFiles = VFS.DirList("gamedata/side_data", "*.lua")
+Spring.Log('sidedata', 'info', "Found "..#SideFiles.." tables")
+-- then add their contents to the main table
+for _, SideFile in pairs(SideFiles) do
+	Spring.Log('sidedata', 'info', " - Processing "..SideFile)
+	local tmpTable = VFS.Include(SideFile)
+	if tmpTable then
+		sidedata[#sidedata + 1] = tmpTable
+		Spring.Log('sidedata', 'info', " -- Added ".. tmpTable.name .." faction")
+		tmpTable = nil
+	end
+end
+
 return sidedata

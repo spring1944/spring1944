@@ -1,15 +1,15 @@
 function widget:GetInfo()
   return {
-    name = "S44 Epic Menu",
+    name = "1944 notAchili Epic menu",
     desc = "Extremely Powerful Ingame NotAchili Menu.",
     author = "CarRepairer", -- upgraded by a1983 for notaUI, converted for s44 by PepeAmpere
     date  = "2009-06-02",
     license = "GNU GPL, v2 or later",
     layer = -100001, -- smaller layer, loaded first
     handler = true,
-    experimental = false,	
-    enabled = true,
-	alwaysStart = true,
+    experimental = false,
+    enabled   = true,
+    alwaysStart = true,
   }
 end
 
@@ -289,13 +289,17 @@ local function MakeHelp( caption, text )
 end
 
 ----------------------------------------------------------------------------------------------------
+-- jlcercos : For the time being, I keep this function... Even though is
+--            actually useless, since it's just splitting the keybind info in a
+--            table to just join it again later...
 local function HotkeyFromUikey( uikey_hotkey )
 	local uikey_table = SplitStringToArray( '+', uikey_hotkey )
-	local alt, ctrl, meta, shift
+	local any, alt, ctrl, meta, shift
 
 	for i = 1, #uikey_table do
 		local str2 = uikey_table[i]:lower()
-		if str2 == 'alt' 		then alt = true
+		if str2 == 'any' 		then any = true
+		elseif str2 == 'alt' 	then alt = true
 		elseif str2 == 'ctrl' 	then ctrl = true
 		elseif str2 == 'shift' 	then shift = true
 		elseif str2 == 'meta' 	then meta = true
@@ -303,29 +307,20 @@ local function HotkeyFromUikey( uikey_hotkey )
 	end
 	
 	local modstring = '' ..
-		( alt	and 'A+' or '' ) ..
-		( ctrl	and 'C+' or '' ) ..
-		( meta	and 'M+' or '' ) ..
-		( shift	and 'S+' or '' )
+		( any	and 'Any+' or '' ) ..
+		( alt	and 'Alt+' or '' ) ..
+		( ctrl	and 'Ctrl+' or '' ) ..
+		( meta	and 'Meta+' or '' ) ..
+		( shift	and 'Shift+' or '' )
 	return {
 		key = uikey_table[ #uikey_table ],
 		mod = modstring,
 	}
 end
 
-local function GetReadableHotkeyMod( mod )
-	return (mod:lower():find('a+') and 'Alt+' or '') ..
-		(mod:lower():find('c+') and 'Ctrl+' or '') ..
-		(mod:lower():find('m+') and 'Meta+' or '') ..
-		(mod:lower():find('s+') and 'Shift+' or '') ..
-		''		
-end
-
-
 -- Assign a keybinding to settings and other tables that keep track of related info
 --local function AssignKeyBind(hotkey, menukey, itemindex, item, verbose)
 local function AssignKeyBind(hotkey, path, option, verbose) -- param4 = verbose
-
 	if not (hotkey.key and hotkey.mod) then
 		Spring.Log(widget:GetInfo().name, LOG.ERROR, '<EPIC Menu> Wacky assign keybind error #1')
 		return
@@ -336,14 +331,14 @@ local function AssignKeyBind(hotkey, path, option, verbose) -- param4 = verbose
 	if option.type == 'bool' then
 		kbfunc = function()
 			if not pathOptions[path] or not pathOptions[path][option.wname..option.key] then
-				Spring.Echo("Warning, detected keybind mishap. Please report this info and help us fix it:")
-				Spring.Echo("Option path is "..path)
-				Spring.Echo("Option name is "..option.wname..option.key)
+				echo("Warning, detected keybind mishap. Please report this info and help us fix it:")
+				echo("Option path is "..path)
+				echo("Option name is "..option.wname..option.key)
 				if pathOptions[path] then --pathOptions[path] table still intact, but option table missing
-					Spring.Echo("case: option table was missing")
+					echo("case: option table was missing")
 					pathOptions[path][option.wname..option.key] = option --re-add option table
 				else --both option table & pathOptions[path] was missing, probably was never initialized
-					Spring.Echo("case: whole path was never initialized")
+					echo("case: whole path was never initialized")
 					pathOptions[path] = {}
 					pathOptions[path][option.wname..option.key] = option
 				end
@@ -367,14 +362,14 @@ local function AssignKeyBind(hotkey, path, option, verbose) -- param4 = verbose
 	if verbose then
 		local actions = Spring.GetKeyBindings(hotkey.mod .. hotkey.key)
 		if (actions and #actions > 0) then
-			echo( 'Warning: There are other actions bound to this hotkey combo (' .. GetReadableHotkeyMod(hotkey.mod) .. hotkey.key .. '):' )
+			echo( 'Warning: There are other actions bound to this hotkey combo (' .. hotkey.mod .. hotkey.key .. '):' )
 			for i=1, #actions do
 				for actionCmd, actionExtra in pairs(actions[i]) do
 					echo ('  - ' .. actionCmd .. ' ' .. actionExtra)
 				end
 			end
 		end
-		echo( 'Hotkey (' .. GetReadableHotkeyMod(hotkey.mod) .. hotkey.key .. ') bound to action: ' .. actionName )
+		echo( 'Hotkey (' .. hotkey.mod .. hotkey.key .. ') bound to action: ' .. actionName )
 	end
 	
 	--actionName = actionName:lower()
@@ -393,7 +388,6 @@ end
 
 -- Unsssign a keybinding from settings and other tables that keep track of related info
 local function UnassignKeyBind(path, option)
-	
 	local actionName = GetActionName( option )
 	
 	if option.action then --if keybindings was hardcoded by widget:
@@ -478,14 +472,15 @@ local function AddOption( path, option, wname )
 			option.default = option.value
 		else
 			option.default = newValue
-		end	
+		end
+	elseif option.value == nil and newValue == nil then
+		newValue = option.default
 	end
 	
 	if newValue ~= nil and option.value ~= newValue then --must nilcheck newValue
 		valuechanged = true
 		option.value = newValue
 	end
-	
 	
 	
 	local origOnChange = option.OnChange or function() end
@@ -853,7 +848,7 @@ WG.crude.GetHotkey = function(actionName)
 	if not hotkey or hotkey == 'none' then
 	  return ''
 	end
-	return GetReadableHotkeyMod(hotkey.mod) .. ToCamelStyle(hotkey.key)
+	return hotkey.mod .. ToCamelStyle(hotkey.key)
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -862,7 +857,7 @@ local function GetHotkeyData(path, option)
 	local actionName = GetActionName( option )
 	local hotkey = settings.keybounditems[actionName]
 	if hotkey and hotkey ~= 'none' then
-		return hotkey, GetReadableHotkeyMod(hotkey.mod) .. ToCamelStyle( hotkey.key )
+		return hotkey, hotkey.mod .. ToCamelStyle( hotkey.key )
 	end
 	
 	return nil, 'None'
@@ -1141,7 +1136,7 @@ MakeSubWindow = function(path)
 			caption = 'Back', 
 			OnMouseUp = { 
 				KillSubWindow, 
-				function() MakeSubWindow(parent_path) end,
+				function() if (parent_path == "") then ShowMenuWindow() else MakeSubWindow(parent_path) end end,
 			},
 			backgroundColor = epic_colors.sub_back_bg,
 			textColor = epic_colors.sub_back_fg,
@@ -1561,7 +1556,6 @@ end
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 function widget:Initialize()
-	
 	Spring.SendCommands( "unbindaction quitmenu" ) -- http://springrts.com/mantis/view.php?id=2944
 	
 	if not WG.NotAchili then
@@ -1852,10 +1846,10 @@ function widget:KeyPress(key, modifier, isRepeat)
 	end
 	
 	local modstring = 
-		(modifier.alt and 'A+' or '') ..
-		(modifier.ctrl and 'C+' or '') ..
-		(modifier.meta and 'M+' or '') ..
-		(modifier.shift and 'S+' or '')
+		(modifier.alt and 'Alt+' or '') ..
+		(modifier.ctrl and 'Ctrl+' or '') ..
+		(modifier.meta and 'Meta+' or '') ..
+		(modifier.shift and 'Shift+' or '')
 	
 	--Set a keybinding 
 	if get_key then
@@ -1948,7 +1942,7 @@ function CreateMenuWindow()
 		name	= 'mainWindow',
 		caption = 'Main Menu',
 		width	= menuW,
-		height	= menuH,
+		height	= menuH + 8*globalSize,
 		margin	= { 0, 0, 0, 0 },
 		padding	= { 2, 8.8 * globalSize, 2, 2 },
 		--dockable = true,
@@ -2199,9 +2193,15 @@ end
 ----------------------------------------------------------------------------------------------------
 function GetIndex( t, v )
 	local idx = 1
-	while ( t[ idx ] < v ) and ( t[ idx + 1 ] ) do
-		idx = idx + 1
-	end 
+    if t[#t] > t[1] then
+		while ( t[ idx ] < v ) and ( t[ idx + 1 ] ) do
+			idx = idx + 1
+		end
+	else
+		while ( t[ idx ] > v ) and ( t[ idx + 1 ] ) do
+			idx = idx + 1
+		end
+	end
 	return idx
 end
 

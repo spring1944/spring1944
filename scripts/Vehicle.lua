@@ -25,6 +25,7 @@ local SetUnitNoSelect = Spring.SetUnitNoSelect
 
 local CreateUnit = Spring.CreateUnit
 local AttachUnit = Spring.UnitScript.AttachUnit
+local GiveOrderToUnit	= Spring.GiveOrderToUnit
 
 -- Should be fetched from OO defs when time comes
 local rockSpeedFactor = rad(50)
@@ -57,6 +58,7 @@ local weaponEnabled
 local weaponPriorities
 local prioritisedWeapon
 local moving
+local deploying
 
 
 -- Constants
@@ -209,6 +211,7 @@ function script.Create()
 	end
 	
 	moving = false
+	deploying = false
 	weaponEnabled = {}
 	weaponPriorities = {}
 	wantedDirection = {}
@@ -307,10 +310,12 @@ end
 
 function Undeploy()
 	customAnims.undeploy()
+	deploying = false
 end
 
 function Deploy()
 	customAnims.deploy()
+	deploying = false
 end
 
 function script.StartMoving()
@@ -320,6 +325,8 @@ function script.StartMoving()
 		StartThread(Undeploy)
 	end
 	moving = true
+	deploying = false
+
 	if info.numWheels > 0 then
 		StartThread(SpinWheels)
 	end
@@ -340,10 +347,12 @@ end
 function script.StopMoving()
 	Signal(SIG_MOVE)
 	moving = false
+
 	StopWheels()
 	-- Deploy anim
 	if customAnims and customAnims.deploy then
 		StartThread(Deploy)
+	deploying = true
 	end
 end
 
@@ -446,6 +455,15 @@ end
 
 
 local function CanAim(weaponNum)
+
+	--Spring.Echo("Move,Deploy,canIaim",moving,deploying,info.nomoveandfire)
+
+	if info.nomoveandfire then
+		if moving or deploying then
+			return false
+		end
+	end
+
 	if not IsAimed(weaponNum) then
 		return false
 	end
@@ -488,6 +506,7 @@ function script.BlockShot(weaponNum, targetUnitID, userTarget)
 				return true
 			end
 		end
+
 	end
 
 	return not (CanAim(weaponNum) and weaponEnabled[weaponNum])
@@ -625,7 +644,7 @@ end
 
 function WeaponPriority(targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 	local newPriority = defPriority
-	--if prioritisedWeapon and attackerWeaponNum ~= prioritisedWeapon then
+	--if prioritisedWeapon and attackerWeaponNum > prioritisedWeapon then
 		local headingPiece = info.aimPieces[attackerWeaponNum] and info.aimPieces[attackerWeaponNum][1] or base
 		local heading = GetHeadingToTarget(headingPiece, {targetID})
 		local _, currentHeading, _ = Spring.UnitScript.GetPieceRotation(headingPiece)

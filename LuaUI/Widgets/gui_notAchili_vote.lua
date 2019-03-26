@@ -3,13 +3,14 @@
 
 function widget:GetInfo()
   return {
-    name      = "NotAchili Vote Display",
+    name      = "1944 notAchili Vote Display",
     desc      = "GUI for votes",
     author    = "KingRaptor",
     date      = "May 04, 2008",
     license   = "GNU GPL, v2 or later",
     layer     = -9, 
-    enabled   = true  --  loaded by default?
+    experimental = false,
+    enabled   = true,
   }
 end
 --//version +0.3;

@@ -272,7 +272,7 @@ function PlaceFlag(spot, flagType, unitID)
 		z = spot.z,
 		radius = flagTypeData[flagType].radius,
 		income = spot.initialProduction,
-		ownerTeamID = Spring.GetGaiaTeamID(),
+		ownerTeamID = GAIA_TEAM_ID,
 	})
 end
 

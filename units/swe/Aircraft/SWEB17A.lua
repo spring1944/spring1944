@@ -47,18 +47,18 @@ local SWE_B17A = Fighter:New{
 			slaveTo				= 2,
 		},
 		[6] = {
-			name				= "BredaSafat03",
+			name				= "ksp_m1936AMG",
 			maxAngleDif			= 10,
 		},
 		[7] = {
-			name				= "BredaSafat03",
+			name				= "ksp_m1936AMG",
 			maxAngleDif			= 10,
 			slaveTo				= 6,
 		},
 		[8] = {
-			name				= "mg42aa",
-			maxAngleDif			= 50,
-			mainDir				= [[0 1 -1]],
+			name				= "ksp_m1936AA",
+			maxAngleDif			= 90,
+			mainDir				= [[0 .25 -1]],
 		},
 	},
 }

@@ -1,15 +1,15 @@
 function widget:GetInfo()
   return {
-    name      = "NotAchili Widget Selector", --needs epic menu to dynamically update widget checkbox colors.
-    desc      = "v1.0 NotAchili Widget Selector", 
+    name      = "1944 notAchili Widget Selector", --needs epic menu to dynamically update widget checkbox colors.
+    desc      = "v1.0 notAchili Widget Selector", 
     author    = "CarRepairer",
     date      = "2012-01-11",
     license   = "GNU GPL, v2 or later",
     layer     = -100000,
     handler   = true,
-    experimental = false,	
+    experimental = false,
     enabled   = true,
-	alwaysStart = true,
+    alwaysStart = true,
   }
 end
 
@@ -256,6 +256,7 @@ MakeWidgetList = function()
 					caption = wdata.name_display, 
 					checked = enabled,
 					tooltip = '(By ' .. tostring(wdata.author) .. ")\n" .. tostring(wdata.desc),
+					boxsize = 20,
 					OnChange = { 
 						function(self) 
 							widgetHandler:ToggleWidget(wdata.name)
@@ -320,7 +321,8 @@ MakeWidgetList = function()
 				textColor=color.sub_fg, 
 				checked = widget_categorize,
 				x = '50%',
-				width = '30%',
+				width = '40%',
+				boxsize = 20,
 				height= C_HEIGHT,
 				bottom=1,
 			},

@@ -10,7 +10,7 @@ function widget:GetInfo()
 		license      = "GNU GPL, v2 or later",
 		layer        = 50,
 		experimental = false,
-		enabled      = false,
+		enabled      = true,
 	}
 end
 
@@ -1231,7 +1231,13 @@ function widget:Initialize()
 	end
 
 	WG.ignorelist = {count = 0,ignorees ={}}
-	local customkeys = select(10, Spring.GetPlayerInfo(Spring.GetMyPlayerID()))
+	local i_info = 10
+	if Script.IsEngineMinVersion(104) then
+		-- Change in the API. HasSkirmishAIsInTeam(player->team) has been
+		-- inserted at position 10
+		i_info = 11
+	end
+	local customkeys = select(i_info, Spring.GetPlayerInfo(Spring.GetMyPlayerID()))
 	if customkeys["ignored"] then
 		if string.find(customkeys["ignored"],",") then
 			local newignorelist = string.gsub(customkeys["ignored"],","," ")

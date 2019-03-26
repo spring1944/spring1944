@@ -3,14 +3,15 @@
 ----------------------------------------------------------------------------------------------------
 function widget:GetInfo()
 	return {
-		name	= "Nota Minimap",
+		name	= "1944 notAchili Minimap",
 		desc	= "Cool minimap",
 		author	= "a1983",
 		date	= "01 08 2013",
 		license	= "GPL",
 		layer	= math.huge,
 		handler	= true, -- used widget handlers
-		enabled	= true  -- loaded by default
+		experimental = false,
+		enabled	= true,
 	}
 end
 

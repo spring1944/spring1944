@@ -3,7 +3,6 @@ local moduleInfo = {
 	desc = "Custom endgame rules.",
 	author = "PepeAmpere",
 	date = "2018-01-29",
-	license = "notAlicense",
 	layer = 0,
 	enabled = true -- loaded by default?
 }

@@ -1,6 +1,6 @@
 local JPNHoHa = HalfTrack:New{
 	name					= "Type 1 Ho-Ha",
-	buildCostMetal			= 1100,
+	buildCostMetal			= 700,
 	maxDamage				= 900,
 	trackOffset				= 10,
 	trackWidth				= 15,

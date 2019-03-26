@@ -2,12 +2,11 @@ local usData = {
 	ushq = {
         spread = 200,
         units = {
-            "us_platoon_hq",
-            "us_platoon_hq",
+            "us_platoon_rifle",
+            "us_platoon_scout",
             "usstorage",
             "usm1bofors_stationary_base",
             "usm1bofors_stationary_base",
-            "usobserv",
             "ushqengineer",
             "usm5gun_truck",
             "usm5gun_truck",

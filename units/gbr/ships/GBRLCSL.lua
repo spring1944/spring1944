@@ -7,8 +7,8 @@ local GBR_LCSL = ArmedBoat:New{
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 8400,
-	maxReverseVelocity		= 0.6,
-	maxVelocity				= 1.4,
+	maxVelocity             = 1.776, -- 14.8 knots, see Fairmile definition for formula
+	maxReverseVelocity      = 0.888, -- let it be half, no data
 	transportCapacity		= 5, -- 5 x 1fpu turrets
 	turnRate				= 40,	
 	weapons = {	
@@ -47,7 +47,7 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 10,
+		maxammo					= 4,
 		turretturnspeed			= 30,
 		elevationspeed			= 20,
 

@@ -7,9 +7,6 @@ local USInf = {
 
 local USPara = {
 	maxDamageMul		= 1.4,
-	customParams = {
-		pronespheremovemult = 0.5,
-	},
 }
 
 local US_HQEngineer = EngineerInf:New(USInf):New{

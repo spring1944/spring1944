@@ -41,6 +41,7 @@ local Motorcycle = Vehicle:New{
     turnRate            = 425,
 
     customParams = {
+	buildOutside	= 1,
         maxvelocitykmh      = 85,
         damageGroup     = "unarmouredVehicles",
         turretturnspeed     = 180,
@@ -148,13 +149,13 @@ significantly expensive and vulnerable, keep it safe!]],
 
 -- Trucks --
 local Truck = Vehicle:New{ -- Basis of all Trucks e.g. gun tractors, transports
-	acceleration		= 0.3,
+	acceleration		= 0.24,
 	brakeRate			= 0.96,
 	category			= "MINETRIGGER SOFTVEH",
 	mass				= 300,
 	maxDamage			= 300,
 	maxReverseVelocity	= 2.25,
-	maxVelocity			= 4.5,
+	maxVelocity			= 3.6,
 	movementClass		= "TANK_Truck",
 	turnRate			= 220,
 

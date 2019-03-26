@@ -82,7 +82,7 @@ local GL_LINES = GL.LINES
 
 local ARMOR_POWER = 8.75 --3.7
 local DIRECT_HIT_THRESHOLD = 0.98
-local HE_MULT = 3.15
+local HE_MULT = 1.45
 
 ------------------------------------------------
 --local functions

@@ -12,7 +12,7 @@ local buildGroups = {
 	{ name = "Defense",		icon = iconPath .. "defense.png" },
 	{ name = "Navy",		icon = iconPath .. "navy.png" },
 	{ name = "Tech",		icon = iconPath .. "tech.png" },
-	{ name = "Others",		icon = iconPath .. "other.png" },
+	{ name = "Groups and Others", icon = iconPath .. "other.png" },
 }
 
 local stateIcons = {
@@ -375,7 +375,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 function GetGrid( unitDefId )
-	local group = "Others"
+	local group = "Groups and Others"
 	local info = UnitDefs[ unitDefId ]
 	
 	local mobile	= info.speed > 1

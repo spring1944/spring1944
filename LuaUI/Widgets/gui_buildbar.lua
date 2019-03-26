@@ -974,7 +974,7 @@ function widget:GetTooltip(x,y)
       return "Build: " .. unitDef.humanName .. " - " .. unitDef.tooltip .. "\n" ..
              GreyStr .. "Health " .. GreenStr .. unitDef.health .. "\n" ..
              GreyStr .. "Command cost " .. OrangeStr .. unitDef.metalCost .. "\n" ..
-             GreyStr .. "Supplies cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
+             GreyStr .. "Ammunition cost " .. YellowStr .. unitDef.energyCost .. GreyStr .. " Build time "  .. BlueStr .. unitDef.buildTime
     end
   end
   return ""

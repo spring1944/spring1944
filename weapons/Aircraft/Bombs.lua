@@ -30,6 +30,8 @@ local Bomb = timebombClass:New{
 -- 160Kg Bomb (Generic)
 local Bomb160kg = timebombClass:New{
   areaOfEffect       = 160,
+  fireTolerance	= 15000,
+  tolerance          = 700,
   name               = [[160kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
   range              = 450,
@@ -42,6 +44,23 @@ local lastBomb160kg = Bomb160kg:New{
   commandfire        = true,
   range              = 405,
 }
+
+-- 100 kg bomb (generic)
+local Bomb100kg = timebombClass:New{
+  areaOfEffect       = 160,
+  name               = [[100kg Bomb]],
+  model              = [[Bomb_Medium.S3O]],
+  range              = 450,
+  commandfire        = false,
+    damage = {
+    default            = 10000,
+    },
+}
+local lastBomb100kg = Bomb100kg:New{
+  commandfire        = true,
+  range              = 405,
+}
+
 -- divebomb
 local divebomb = BombClass:New{
   size		     = 1,
@@ -179,8 +198,10 @@ local TypeF12kg = timebombClass:New{
 return lowerkeys({
   Bomb = Bomb,
   Bomb160kg = Bomb160kg,
+  Bomb100kg = Bomb100kg,
   Bomb50kg = Bomb50kg,
   lastBomb160kg = lastBomb160kg,
+  lastBomb100kg = lastBomb100kg,
   lastBomb50kg = lastBomb50kg,
   Bomb250kg = Bomb250kg,
   PTAB = PTAB,

@@ -39,9 +39,9 @@ local JPN_Ki102 = AttackFighter:New(ArmouredPlane):New{
 			slaveTo				= 2, 
 		},
 		[4] = {
-			name				= "Te4",
-			maxAngleDif			= 50,
-			mainDir				= [[0 1 -1]],
+			name				= "Type93AA",
+			maxAngleDif			= 90,
+			mainDir				= [[0 .25 -1]],
 		},
 	},
 }

@@ -71,7 +71,7 @@ local hunDefs = {
 		},
 		name = "Machinegun Squad",
 		description = "2 x 31M Light Machinegun, 1 x 7M/31 Heavy Machinegun, 1 x Scout: Infantry Fire Support Squad",
-		buildCostMetal = 1150,
+		buildCostMetal = 1220,
 		buildPic = "HUNHMG.png",
 	},
 
@@ -83,7 +83,7 @@ local hunDefs = {
 		},
 		name = "Sniper Team",
 		description = "1 x FEG 35M Sniper, 1 x Scout: Long-Range Fire Support",
-		buildCostMetal = 1250,
+		buildCostMetal = 1110,
 		buildPic = "HUNSniper.png",
 	},
 

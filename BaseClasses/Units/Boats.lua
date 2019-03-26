@@ -42,7 +42,7 @@ local AssaultBoat = Boat:New{
 	maxVelocity			= 2.66,
 	movementClass		= "BOAT_Small",
 	objectName			= "GEN/RubberDingy.S3O",
-	script				= "RubberDingy.cob",
+	script				= "BoatMother.lua",
 	stealth				= true,
 	transportCapacity	= 9,
 	transportMass		= 450,
@@ -51,6 +51,7 @@ local AssaultBoat = Boat:New{
 	turnRate			= 350,
 	waterline			= 0.2,
 	customParams = {
+		compositetransporter	= true,
 		wiki_subclass_comments = [[Light infantry transport, meant to unload
 a small group of infantry units in a beach. You should never understimate the
 power of a small infantry group behind the enemy lines.]],
@@ -71,13 +72,14 @@ local PontoonRaft = Boat:New{
 	minTransportSize	= 1,
 	movementClass		= "BOAT_Medium",
 	objectName			= "US/USPontoonRaft.S3O", -- TODO: per side models
-	script				= "PontoonRaft.cob",
+	script				= "BoatMother.lua",
 	stealth				= true,
 	transportCapacity	= 1,
 	transportSize		= 9,
 	turnRate			= 200,
 	waterline			= 2.5,
 	customParams = {
+		compositetransporter	= true,
 		wiki_subclass_comments = [[Light vehicles transport, meant to transport
 a single vehicle trhough the water. Due to its poor armour and velocity, this
 unit is usually considered for logistic, but not assault operations.]],
@@ -143,6 +145,39 @@ ship, with all the turrets disabled, is in fact a quite useless unit, and a
 great target for the enemy.
 
 This ship can capture buoys, i.e. water flags]],
+	}
+}
+
+-- Composite version of infantry landing craft
+local InfantryLandingCraftComposite = ArmedBoat:New{
+	description				= "Infantry Landing Craft",
+	iconType				= "landingship",
+	movementClass			= "BOAT_LandingCraftSmall",
+	transportCapacity		= 20,
+	transportMass			= 1000,
+	transportSize			= 1,
+	customparams = {
+		compositetransporter	= true,
+		transportsquad			= "<SIDE>_platoon_landing",
+		supplyRange				= 350,
+		wiki_subclass_comments = [[Large infantry squad transport, meant to
+unload a small group of infantry units in a beach. You should never understimate
+the power of infantry behind the enemy lines..]],
+	},
+}
+
+local TankLandingCraftComposite = ArmedBoat:New{
+	description				= "Tank Landing Craft",
+	iconType				= "transportship",
+	movementClass			= "BOAT_LandingCraft",
+	transportCapacity		= 30,
+	transportSize			= 5,
+	customparams = {
+		compositetransporter	= true,
+		supplyRange				= 600,
+		transportsquad			= "<SIDE>_platoon_lct",
+		wiki_subclass_comments = [[Large tanks transport, meant to unload an
+armoured task force in the beach.]],
 	}
 }
 
@@ -215,4 +250,6 @@ return {
 	-- Landing Craft
 	InfantryLandingCraft = InfantryLandingCraft,
 	TankLandingCraft = TankLandingCraft,
+	InfantryLandingCraftComposite = InfantryLandingCraftComposite,
+	TankLandingCraftComposite = TankLandingCraftComposite,
 }

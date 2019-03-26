@@ -33,7 +33,7 @@ local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	reloadTime	= 1.5,
 	areaOfEffect       = 55,
 	movingAccuracy     = 300,
-	weaponVelocity     = 1100,
+	weaponVelocity     = 1210,
 	damage = {
 		default		= 760,
 	},
@@ -47,7 +47,7 @@ local SWE_57mmM95 = LightMediumHE:New(QF6Pdr57mm, false):New{
 	reloadTime	= 3,
 	areaOfEffect	= 50,
 	movingAccuracy     = 300,
-	weaponVelocity	= 850,
+	weaponVelocity	= 1040,
 	damage = {
 		default		= 835,
 	},
@@ -70,8 +70,8 @@ local KwK50mmL60HE = LightMediumHE:New(KwK50mmL60, true):New{
 local KwK50mmL60AP = MediumAP:New(KwK50mmL60, true):New{
   weaponVelocity     = 1670,
   customparams = {
-    armor_penetration_1000m = 44,
-    armor_penetration_100m  = 67,
+    armor_penetration_1000m = 47,
+    armor_penetration_100m  = 69,
   },
   damage = {
     default            = 1435,
@@ -107,7 +107,7 @@ local Type9757mm = LightMediumGun:New{
 
 local Type9757mmHE = LightMediumHE:New(Type9757mm, true):New{
   areaOfEffect       = 57,
-  weaponVelocity     = 800,
+  weaponVelocity     = 620,
   damage = {
     default            = 1400,
   },  

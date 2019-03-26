@@ -13,7 +13,7 @@ local ITA_Gabbiano = ArmedBoat:New{
 	turnRate				= 35,	
 	weapons = {	
 		[1] = {
-			name				= "OTO100mmL47HE",
+			name				= "OTO100mmL47AP",
 			maxAngleDif			= 270,
 			onlyTargetCategory	= "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED TURRET",
 		},
@@ -45,9 +45,14 @@ local ITA_Gabbiano_Turret_100mm = PartiallyEnclosedBoatTurret:New{
 	description				= "Primary Turret",
 	weapons = {	
 		[1] = {
-			name				= "OTO100mmL47HE",
+			name				= "OTO100mmL47AP",
 			maxAngleDif			= 270,		},
 	},
+		[2] = {
+			name				= "OTO100mmL47HE",
+			maxAngleDif			= 270,
+		},
+
 	customparams = {
 		maxammo					= 18,
 
