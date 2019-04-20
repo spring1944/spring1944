@@ -178,7 +178,7 @@ local function Resupply(unitID, unitDefID)
 	
 	if supplierID then
 		local oldAmmo = GetUnitRulesParam(unitID, "ammo")
-		local weaponsWithAmmo = weaponsWithAmmo[unitDefID]
+		local unitWeaponsWithAmmo = weaponsWithAmmo[unitDefID]
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
 		local weaponCost = weaponsCosts[unitDefID]
 		local maxAmmo = maxAmmo[unitDefID]	
@@ -242,7 +242,7 @@ local function Resupply(unitID, unitDefID)
 				-- reloads, just rely on the unit script
 				local env = Spring.UnitScript.GetScriptEnv(unitID)
 				if not env then
-					for weaponIndex = 1, weaponsWithAmmo[unitDefID] do
+					for weaponIndex = 1, unitWeaponsWithAmmo do
 						SetUnitWeaponState(unitID, weaponIndex, {reloadTime = reload, reloadState = reloadState})
 						vehicles[unitID].reloadFrame[weaponIndex] = reloadState
 					end
@@ -310,9 +310,9 @@ end
 -- otherwise next call to ProcessWeapons thinks every weapon has fired.
 function gadget:UnitUnloaded(unitID, unitDefID)
 	if weaponsWithAmmo[unitDefID] then
-		local weaponsWithAmmo = weaponsWithAmmo[unitDefID] or 2
+		local unitWeaponsWithAmmo = weaponsWithAmmo[unitDefID] or 2
 
-		for weaponIndex = 1, weaponsWithAmmo do
+		for weaponIndex = 1, unitWeaponsWithAmmo do
 			local reloadFrame = GetUnitWeaponState(unitID, weaponIndex, "reloadState")
 			vehicles[unitID].reloadFrame[weaponIndex] = reloadFrame
 		end
