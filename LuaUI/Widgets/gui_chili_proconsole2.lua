@@ -166,7 +166,7 @@ options = {
 	},
 	
 	enableConsole = {
-		value = false,
+		value = true,
 	},
 	
 	text_height_chat = {
