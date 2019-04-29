@@ -3,6 +3,7 @@ local NewInfGun = Unit:New{
     airSightDistance    = 2000,
     category            = "INFANTRY MINETRIGGER",
     corpse              = "<NAME>_Destroyed",
+    iconType            = "artillery",
     damageModifier      = 0.265,
     footprintX          = 2,
     footprintZ          = 2,

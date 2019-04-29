@@ -64,19 +64,11 @@ end
 
 local function UpdateCrew()
     while true do
-        if passengers == 0 then
-            if Spring.GetUnitTeam(unitID) ~= GAIA_TEAM_ID then
-                local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
-                Spring.Echo(cap)
-                if cap >= 1.0 then
-                    Spring.SetUnitHealth(unitID, {capture = 0})
-                    Spring.TransferUnit(unitID, GAIA_TEAM_ID)
-                else
-                    Spring.SetUnitHealth(unitID, {capture = cap + 0.01})
-                end
-            end
-        else
-            Spring.SetUnitHealth(unitID, {capture = 0})
+        local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
+        if passengers > 0 then
+            -- Assist restoring the capture state
+            local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
+            Spring.SetUnitHealth(unitID, {capture = cap - 0.01 * passengers})
         end
         if UnitDef.transportCapacity > passengers then
             SetUnitRulesParam(unitID, "immobilized", 1)
