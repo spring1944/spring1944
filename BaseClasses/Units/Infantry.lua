@@ -28,7 +28,7 @@ local Infantry = Unit:New{
 	stealth				= true,
 	turnRate			= 1010,
 	upright				= true,
-	
+
 	customParams = {
 		damageGroup			= "infantry",
 		feartarget			= true,
@@ -40,13 +40,38 @@ local Infantry = Unit:New{
 	},
 }
 
+-- Infantry able to capture units
+local CapInfantry = Infantry:New{ -- don't want a conflict with weapon Rifle
+	builder				= true,
+	isBuilder			= true,
+	buildDistance		= 128,
+	canRestore			= false,
+	canRepair			= false,
+	canReclaim			= false,
+	canResurrect		= false,
+	canCapture			= true,
+	workerTime			= 10,
+	repairSpeed			= 0,
+	reclaimSpeed		= 0,
+	resurrectSpeed		= 0,
+	captureSpeed		= 10,
+	terraformSpeed		= 0,
+	canAssist			= false,
+	canSelfRepair		= false,
+
+	customParams = {
+		canclearmines		= false,
+		flagcaprate			= 1,
+	},
+}
+
+
 -- Basic Types
-local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
+local RifleInf = CapInfantry:New{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
 	
 	customParams = {
-		flagcaprate			= 1,
 		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
 Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
 front line, providing a line of sight to other longer-range guns. Rifle weapon
@@ -67,12 +92,11 @@ be only carried out in a dramatically short range.]],
 	},
 }
 
-local SMGInf = Infantry:New{
+local SMGInf = CapInfantry:New{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
 	
 	customParams = {
-		flagcaprate			= 1,
 		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
 Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
 front line, providing a line of sight to other longer-range guns. Conversely
@@ -315,11 +339,16 @@ local EngineerInf = Infantry:New{
 	category			= "INFANTRY", -- no MINETRIGGER
 	iconType			= "engineer",
 	builder				= true,
+	isBuilder				= true,
 	buildDistance		= 128,
+	canRestore			= true,
+	canRepair			= true,
+	canReclaim			= true,
+	canResurrect		= false,
 	terraformSpeed		= 300,
 	workerTime			= 15,
 	reclaimSpeed 		= 30,
-	
+
 	customParams = {
 		canclearmines			= true,
 		scriptAnimation			= "engineer",
@@ -345,7 +374,7 @@ local InfantryGun = Infantry:New{
 	movementClass		= "KBOT_Gun", -- TODO: --KBOT
 	script				= "InfantryGun.lua",
 	turnRate			= 120,
-	
+
 	customParams = {
 		hasturnbutton		= true,
 		maxammo				= 4,
@@ -370,6 +399,7 @@ great performance against them.]],
 
 return {
 	Infantry = Infantry,
+	CapInfantry = CapInfantry,
 	-- Basic Types
 	RifleInf = RifleInf,
 	SMGInf = SMGInf,
