@@ -103,6 +103,10 @@ local function GetSupplyRangeModifier(teamID)
 end
 
 local function CheckAmmoSupplier(unitID, unitDefID, teamID)
+	if teamID ~= GAIA_TEAM_ID then
+		return
+	end
+
 	if supplyRanges[unitDefID] then
 		local allyID = teamIDToAllyID[teamID]
 		ammoSuppliersPerAlly[allyID][unitID] = supplyRanges[unitDefID]
@@ -153,6 +157,10 @@ local function ProcessWeapons(unitID, unitDefID)
 end
 
 local function FindSupplier(unitID, teamID)
+	if teamID ~= GAIA_TEAM_ID then
+		return
+	end
+
 	local rangeModifier = GetSupplyRangeModifier(teamID)
 	
 	-- find all suppliers for given allyID
@@ -171,6 +179,9 @@ end
 
 local function Resupply(unitID, unitDefID)
 	local teamID = GetUnitTeam(unitID)
+	if teamID ~= GAIA_TEAM_ID then
+		return
+	end
 	local allyID = GetUnitAllyTeam(unitID)
 	
 	-- First check own team
@@ -282,7 +293,7 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
 end
 
 local function CleanUp(unitID, unitDefID, teamID)
-	if supplyRanges[unitDefID] then
+	if supplyRanges[unitDefID] and teamID ~= GAIA_TEAM_ID then
 		local allyID = teamIDToAllyID[teamID]
 		ammoSuppliersPerAlly[allyID][unitID] = nil
 	end
