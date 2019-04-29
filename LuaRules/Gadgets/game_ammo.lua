@@ -103,7 +103,7 @@ local function GetSupplyRangeModifier(teamID)
 end
 
 local function CheckAmmoSupplier(unitID, unitDefID, teamID)
-	if teamID ~= GAIA_TEAM_ID then
+	if teamID == GAIA_TEAM_ID then
 		return
 	end
 
@@ -157,7 +157,7 @@ local function ProcessWeapons(unitID, unitDefID)
 end
 
 local function FindSupplier(unitID, teamID)
-	if teamID ~= GAIA_TEAM_ID then
+	if teamID == GAIA_TEAM_ID then
 		return
 	end
 
@@ -179,7 +179,7 @@ end
 
 local function Resupply(unitID, unitDefID)
 	local teamID = GetUnitTeam(unitID)
-	if teamID ~= GAIA_TEAM_ID then
+	if teamID == GAIA_TEAM_ID then
 		return
 	end
 	local allyID = GetUnitAllyTeam(unitID)
