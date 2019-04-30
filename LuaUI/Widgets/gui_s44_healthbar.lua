@@ -197,6 +197,7 @@ end
 
 local function GenerateUnitGraphics(uid, udid, getAuras)
 
+
 	--General
 	local ud = UnitDefs[udid]
 	if not unitData[uid] then
@@ -204,10 +205,16 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
     end
     unitData[uid].display = false
     unitData[uid].frame = currentFrame
+	if not Spring.ValidUnitID(uid) then
+		return
+	end
 
-	-- Don't show transported
-	if not Spring.ValidUnitID(uid) or (Spring.GetUnitTransporter(uid) and not ud.customParams.child) then
-        return
+	-- Don't show transported inside vehicles
+	local tid = Spring.GetUnitTransporter(uid)
+	if tid then
+		if not ud.customParams.child and not UnitDefs[Spring.GetUnitDefID(tid)].customParams.infgun then
+			return
+		end
 	end
 
 	local bars = unitBars[uid]
