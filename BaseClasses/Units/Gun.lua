@@ -54,7 +54,7 @@ local NewInfGun = Unit:New{
         maxammo                = 4,
         infgun                 = true,
         pronespheremovemult    = 0.2,
-        scriptAnimation        = "infantrygun_anim",
+        scriptAnimation        = "gun_anim",
     },
 
     weapons = {

@@ -15,11 +15,12 @@ local GERLeIG18 = InfantryGun:New{
 
 local KK = NewInfGun:New{
 	name					= "7.5cm LeIG 18",
+	objectName				= "GER/GERleIG18.dae",
 	corpse					= "gerleig18_destroyed",
-	buildCostMetal				= 1280,
+	buildCostMetal			= 1280,
 	weapons = {
 		[1] = { -- HE
-			name				= "leig18HE",
+			name			= "leig18HE",
 		},
 	},
 	customParams = {

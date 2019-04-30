@@ -1,7 +1,7 @@
 local info = GG.lusHelper[unitDefID]
 
 if not info.animation then
-    include "DeployedLoader.lua"
+    include "GunLoader.lua"
     info.wheelSpeeds = {}
     local pieceMap = Spring.GetUnitPieceMap(unitID)
     for pieceName, pieceNum in pairs(pieceMap) do
@@ -14,6 +14,7 @@ if not info.animation then
     end
 end
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
+local GetCrewPosition = include "crew/crew.lua"
 
 --Localisations
 local PI = math.pi
@@ -23,6 +24,7 @@ local random = math.random
 local SetUnitRulesParam = Spring.SetUnitRulesParam
 local AttachUnit = Spring.UnitScript.AttachUnit
 local DropUnit = Spring.UnitScript.DropUnit
+local SetUnitNoDraw = Spring.SetUnitNoDraw
 
 
 --Constants
@@ -277,13 +279,18 @@ end
 
 
 function script.TransportPickup(passengerID)
-    local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
-    AttachUnit(-1, passengerID)
     passengers = passengers + 1
+    local p = GetCrewPosition(passengers)
+    AttachUnit(p, passengerID)
+    if p == -1 then
+        SetUnitNoDraw(passengerID, true)
+    end
 end
 
 -- note x, y z is in worldspace
 function script.TransportDrop(passengerID, x, y, z)
     DropUnit(passengerID)
+    -- Ensure the unit is visible again
+    SetUnitNoDraw(passengerID, false)
     passengers = passengers - 1
 end
