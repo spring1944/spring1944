@@ -14,10 +14,11 @@ if (gadgetHandler:IsSyncedCode()) then
 -- SYNCED
 
 -- SyncedCtrl
-local SetUnitCOBValue = Spring.SetUnitCOBValue
+local SetUnitCOBValue   = Spring.SetUnitCOBValue
 -- SyncedRead
-local GetUnitCOBValue = Spring.GetUnitCOBValue
-local GetUnitPosition = Spring.GetUnitPosition
+local GetUnitCOBValue   = Spring.GetUnitCOBValue
+local GetUnitPosition   = Spring.GetUnitPosition
+local GetUnitRulesParam = Spring.GetUnitRulesParam
 -- Constants
 local CMD_TURN = GG.CustomCommands.GetCmdID("CMD_TURN")
 local COB_ANGULAR = 182
@@ -65,7 +66,8 @@ end
 
 function gadget:GameFrame(n)
 	for unitID, turnTable in pairs(turning) do
-		if turnTable.numFrames > 0 then
+		local immobilized = GetUnitRulesParam(unitID, "immobilized") or 0
+		if (turnTable.numFrames > 0) and immobilized == 0 then
 			turnTable.currHeading = turnTable.currHeading + turnTable.turnRate
 			if turnTable.currHeading < -180 * COB_ANGULAR then turnTable.currHeading = turnTable.currHeading + 360 * COB_ANGULAR end
 			if turnTable.currHeading > 180 * COB_ANGULAR then turnTable.currHeading = turnTable.currHeading - 360 * COB_ANGULAR end

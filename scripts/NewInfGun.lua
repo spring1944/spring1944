@@ -26,7 +26,6 @@ local AttachUnit = Spring.UnitScript.AttachUnit
 local DropUnit = Spring.UnitScript.DropUnit
 local SetUnitNoDraw = Spring.SetUnitNoDraw
 
-
 --Constants
 local SIG_AIM = 1
 local SIG_FIRE = 2
@@ -53,6 +52,7 @@ local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 
 -- STATUS
 local passengers = 0
+local passengersIDs = {}
 local weaponEnabled = {}
 
 
@@ -68,9 +68,8 @@ local function UpdateCrew()
     while true do
         local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
         if passengers > 0 then
-            -- Assist restoring the capture state
-            local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
-            Spring.SetUnitHealth(unitID, {capture = cap - 0.01 * passengers})
+            -- Make the unit non-capturable until the crew has not been killed
+            Spring.SetUnitHealth(unitID, {capture = 0})
         end
         if UnitDef.transportCapacity > passengers then
             SetUnitRulesParam(unitID, "immobilized", 1)
@@ -279,8 +278,18 @@ end
 
 
 function script.TransportPickup(passengerID)
+    -- Add the pax to the first available slot
     passengers = passengers + 1
-    local p = GetCrewPosition(passengers)
+    local i = 0
+    while true do
+        i = i + 1
+        if passengersIDs[i] == nil then
+            passengersIDs[i] = passengerID
+            break
+        end
+    end
+    -- Attach the unit to the found slot
+    local p = GetCrewPosition(i)
     AttachUnit(p, passengerID)
     if p == -1 then
         SetUnitNoDraw(passengerID, true)
@@ -289,8 +298,17 @@ end
 
 -- note x, y z is in worldspace
 function script.TransportDrop(passengerID, x, y, z)
+    -- Remove the pax from the stored list
+    passengers = passengers - 1
+    local i, pax
+    for i,pax in pairs(passengersIDs) do
+        if pax == passengerID then
+            passengersIDs[i] = nil
+            break
+        end
+    end
+    -- Drop the unit
     DropUnit(passengerID)
     -- Ensure the unit is visible again
     SetUnitNoDraw(passengerID, false)
-    passengers = passengers - 1
 end
