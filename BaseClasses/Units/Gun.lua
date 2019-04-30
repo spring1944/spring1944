@@ -43,7 +43,9 @@ local NewInfGun = Unit:New{
     unloadSpread        = 3,
 
     customParams = {
-        damageGroup            = "infantry",
+        damageGroup              = "armouredvehicles",
+        armor_front              = 1,
+        immobilizationresistance = 1.0,
         feartarget             = true,
         soundcategory          = "<SIDE>/Infantry",
         pronespheremovemult    = 0.4,

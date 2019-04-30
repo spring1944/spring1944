@@ -18,6 +18,11 @@ local KK = NewInfGun:New{
 	objectName				= "GER/GERleIG18.dae",
 	corpse					= "gerleig18_destroyed",
 	buildCostMetal			= 1280,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {20.0, 10.0, 6.0},
+	collisionVolumeOffsets	= {0.0, 3.0, 6.0},
+
 	weapons = {
 		[1] = { -- HE
 			name			= "leig18HE",
