@@ -31,9 +31,6 @@ end
 
 local MAX_MORPH = 0 --// will increase dynamically
 
--- Fix for 104+, not compatible with lower versions, need to do a version check
-local engineIsMin104 = (Script.IsEngineMinVersion and Script.IsEngineMinVersion(104,0,0))
-
 --------------------------------------------------------------------------------
 --  COMMON
 --------------------------------------------------------------------------------
@@ -583,12 +580,8 @@ local function FinishMorph(unitID, morphData)
     end
   end
   
-  -- DESTROY UNIT
-  if engineIsMin104 then
-	Spring.DestroyUnit(unitID, false, true, 0, true) -- selfd = false, reclaim = true, attacker = 0, recycleID = true
-  else
-    Spring.DestroyUnit(unitID, false, true) -- selfd = false, reclaim = true
-  end
+  -- DESTROY UNIT, this syntax is for spring 104+ only (parameter #5 does not exist in 103)
+  Spring.DestroyUnit(unitID, false, true, 0, true) -- selfd = false, reclaim = true, attacker = 0, recycleID = true
   
   -- passing data until https://springrts.com/mantis/view.php?id=5862 is fixed
   return {
@@ -977,7 +970,7 @@ end
 function gadget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
   if upgradeDefs[unitDefID] then
     FinishMorphGlobal(factID, upgradeUnits[factID])
-    Spring.DestroyUnit(unitID, false, true)
+    Spring.DestroyUnit(unitID, false, true, 0, true)
   end
 end
 
