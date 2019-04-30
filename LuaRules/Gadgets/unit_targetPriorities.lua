@@ -31,13 +31,14 @@ function ValidID(objectID)
 end
 
 function gadget:AllowWeaponTarget(unitID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
+	-- Apparently, in spring-104 defPriority can be nil
+	defPriority = defPriority or 0.0
 	-- Apparently, in spring-104 the targetID can be an invalid ID
 	if lusPriorityCache[unitID] and ValidID(targetID) then
 		local newPriority = Spring.UnitScript.CallAsUnit(unitID, lusPriorityCache[unitID], targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
 		return true, newPriority
-	else
-		return true, defPriority
 	end
+	return true, defPriority
 end
 
 function gadget:UnitCreated(unitID, unitDefID)
