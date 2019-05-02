@@ -14,7 +14,7 @@ if not info.animation then
     end
 end
 local poses, transitions, fireTransitions, weaponTags = unpack(info.animation)
-local GetCrewPosition = include "crew/crew.lua"
+local GetCrewPosition = include "crew/crew_transporter.lua"
 
 --Localisations
 local PI = math.pi
@@ -54,6 +54,7 @@ local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local passengers = 0
 local passengersIDs = {}
 local weaponEnabled = {}
+local moving = false
 
 
 local function Delay(func, duration, mask, ...)
@@ -143,6 +144,53 @@ function script.Create()
         weaponEnabled[i] = true
     end
     StartThread(UpdateCrew)
+end
+
+local function SpinWheels()
+    SetSignalMask(SIG_MOVE)
+    local wheelSpeeds = info.wheelSpeeds
+    while true do
+        local frontDir = Spring.GetUnitVectors(unitID)
+        local vx, vy, vz = Spring.GetUnitVelocity(unitID)
+        local dotFront = vx * frontDir[1] + vy * frontDir[2] + vz * frontDir[3]
+        local direction = dotFront > 0 and 1 or -1
+        for wheelPiece, speed in pairs(wheelSpeeds) do
+            Spin(wheelPiece, x_axis, speed * direction, speed / WHEEL_ACCELERATION_FACTOR)
+        end
+        Sleep(WHEEL_CHECK_DELAY)
+    end
+end
+
+local function StopWheels()
+    for wheelPiece, speed in pairs(info.wheelSpeeds) do
+        StopSpin(wheelPiece, x_axis, speed / WHEEL_ACCELERATION_FACTOR)
+    end
+end
+
+function script.StartMoving()
+    Signal(SIG_MOVE)
+    moving = true
+
+    -- Wheels
+    StartThread(SpinWheels)
+    -- Crew
+    for _, crewID in pairs(passengersIDs) do
+        local env = Spring.UnitScript.GetScriptEnv(crewID)
+        Spring.UnitScript.CallAsUnit(crewID, env.script.StartMoving)
+    end
+end
+
+function script.StopMoving()
+    Signal(SIG_MOVE)
+    moving = false
+
+    -- Wheels
+    StopWheels()
+    -- Crew
+    for _, crewID in pairs(passengersIDs) do
+        local env = Spring.UnitScript.GetScriptEnv(crewID)
+        Spring.UnitScript.CallAsUnit(crewID, env.script.StopMoving)
+    end
 end
 
 function script.QueryWeapon(weaponNum)

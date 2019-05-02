@@ -1,7 +1,7 @@
 -- The Gun without crew members enough
 local NewInfGun = Unit:New{
     airSightDistance    = 2000,
-    category            = "INFANTRY MINETRIGGER",
+    category            = "MINETRIGGER OPENVEH",
     corpse              = "<NAME>_Destroyed",
     iconType            = "artillery",
     damageModifier      = 0.265,

@@ -3,6 +3,8 @@ local torso = piece "torso"
 
 local flare = piece "flare"
 
+local weaponPiece = piece "gun"
+
 local info = GG.lusHelper[unitDefID]
 local customAnims = info.customAnims
 
@@ -61,6 +63,7 @@ local aiming
 local moving
 local pinned
 local building
+local transportee
 
 --UNIT WANTED STATE
 local wantedStanding
@@ -316,8 +319,15 @@ end
 
 
 local function GetPoseName(newStanding, newAiming, newMoving, newPinned, newBuilding)
+	-- Check if the soldier is in a gun
+	local ingun = ""
+	local tID = Spring.GetUnitTransporter(unitID)
+	if tID ~= nil and UnitDefs[Spring.GetUnitDefID(tID)].customParams.infgun then
+		ingun = "_ingun"
+	end
+
 	if newPinned then
-		return "pinned"
+		return "pinned" .. ingun
 	end
 	if newBuilding then
 		return "build"
@@ -327,23 +337,23 @@ local function GetPoseName(newStanding, newAiming, newMoving, newPinned, newBuil
 			if newAiming then
 				return "run_aim_" .. newAiming
 			else
-				return "run"
+				return "run" .. ingun
 			end
 		else
 			if newAiming then
 				return "stand_aim_" .. newAiming
 			else
-				return "stand"
+				return "stand" .. ingun
 			end
 		end
 	else
 		if newMoving then
-			return "crawl"
+			return "crawl" .. ingun
 		else
 			if newAiming then
 				return "prone_aim_" .. newAiming
 			else
-				return "prone"
+				return "prone" .. ingun
 			end
 		end
 	end
@@ -397,6 +407,9 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 					end
 				end
 			end
+		end
+		if transportee then
+			Hide(weaponPiece)
 		end
 		Spring.SetUnitCOBValue(unitID, COB.ARMORED, newStanding and 0 or 1)
 		if newBuilding then
@@ -664,6 +677,8 @@ function script.Create()
 		weaponEnabled[i] = true
 	end
 	UpdateSpeed()
+	transportee = false
+	StartThread(transportChecker)
 	-- Fix https://github.com/spring1944/spring1944/issues/200
 	if UnitDef.isBuilder then
 		StartThread(fixReclaim)
@@ -835,6 +850,22 @@ end
 
 function ToggleWeapon(num, isEnabled)
 	weaponEnabled[num] = isEnabled
+end
+
+function transportChecker()
+	while true do
+		local tID = Spring.GetUnitTransporter(unitID)
+		if tID ~= nil and transportee == false then
+			transportee = true
+			Hide(weaponPiece)
+			UpdatePose(true, false, false, false, false)
+		elseif tID == nil and transportee == true then
+			transportee = false
+			Show(weaponPiece)
+			UpdatePose(true, false, false, false, false)
+		end
+		Sleep(150)
+	end
 end
 
 if UnitDef.isBuilder then
