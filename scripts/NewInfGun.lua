@@ -25,23 +25,18 @@ local SetUnitRulesParam = Spring.SetUnitRulesParam
 local AttachUnit = Spring.UnitScript.AttachUnit
 local DropUnit = Spring.UnitScript.DropUnit
 local SetUnitNoDraw = Spring.SetUnitNoDraw
+local GetUnitRulesParam = Spring.GetUnitRulesParam
 
 --Constants
 local SIG_AIM = 1
 local SIG_FIRE = 2
 local SIG_MOVE = 4
 local SIG_ANIM = 16
-local SIG_FEAR = 32
 
 local DEFAULT_TURN_SPEED = math.rad(300)
 local REAIM_THRESHOLD = 0.15
 
-local FEAR_LIMIT = 25
-local FEAR_PINNED = 2
-local FEAR_MAX = 15
-
-local FEAR_INITIAL_SLEEP = 5000
-local FEAR_SLEEP = 1000
+local FEAR_PINNED = 20  -- Copy from Infantry.lua
 
 local RECOIL_DELAY = 198
 
@@ -49,12 +44,14 @@ local WHEEL_CHECK_DELAY = 990
 local WHEEL_ACCELERATION_FACTOR = 3
 
 local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
+local usesAmmo = info.usesAmmo
 
 -- STATUS
 local passengers = 0
 local passengersIDs = {}
 local weaponEnabled = {}
 local moving = false
+local pinned = false
 
 
 local function Delay(func, duration, mask, ...)
@@ -62,6 +59,16 @@ local function Delay(func, duration, mask, ...)
     SetSignalMask(mask)
     Sleep(duration)
     func(...)
+end
+
+
+local function UpdateSpeed()
+    local speedMult = 1.0
+    if pinned then
+        speedMult = 0
+    end
+    SetUnitRulesParam(unitID, "fear_movement", speedMult)
+    -- GG.ApplySpeedChanges(unitID)  -- UpdateCrew is doing that
 end
 
 
@@ -79,10 +86,21 @@ local function UpdateCrew()
             end
         else
             SetUnitRulesParam(unitID, "immobilized", 0)
+            -- The gun is functional, but depending on whether the crew members
+            -- are pinned or not, it might be unable to move or fire
+            pinned = false
+            for _,paxID in pairs(passengersIDs) do
+                if GetUnitRulesParam(paxID, "fear") >= FEAR_PINNED then
+                    pinned = true
+                    break
+                end
+            end
+            UpdateSpeed()
             for i=1,info.numWeapons do
-                weaponEnabled[i] = true
+                weaponEnabled[i] = not pinned
             end
         end
+
         GG.ApplySpeedChanges(unitID)
         Sleep(33)
     end
@@ -217,7 +235,7 @@ local function IsLoaded()
 end
 
 local function CanAim()
-    return UnitDef.transportCapacity == passengers
+    return UnitDef.transportCapacity == passengers and not (moving or pinned)
 end
 
 local function Recoil()
