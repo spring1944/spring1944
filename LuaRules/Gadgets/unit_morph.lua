@@ -499,21 +499,13 @@ local function CreateMorphedUnit(postMorphData)
   local newUnitID
   
   -- SET position, rotation, etc. 
-  -- When the morphed unit is a factory, reciclying the ID is not working, prolly
-  -- because all this stuff was called by gadget.UnitFromFactory. So  in such case
-  -- we are just simply accepting a new ID. I actually don't know the consequences
-  -- of that
-  local oldID = unitID
-  if unitDefBeforeMorph.isFactory then
-      oldID = -1
-  end
   if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
-	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, x, y, z, face, unitTeam, isBeingBuilt, false, oldID)
+	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, x, y, z, face, unitTeam, isBeingBuilt, false, unitID)
 	if newUnitID ~= nil then
 	  Spring.SetUnitPosition(newUnitID, x, y, z)
 	end
   else
-	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt, false, oldID)
+	newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt, false, unitID)
 	if newUnitID ~= nil then
 	  Spring.SetUnitRotation(newUnitID, 0, -h * math.pi / 32768, 0)
 	  Spring.SetUnitPosition(newUnitID, px, py, pz)
@@ -655,7 +647,7 @@ local function FinishMorph(unitID, morphData)
   if buildProgress < 1 then
     isBeingBuilt = true
   end
-  
+
   -- GET position, rotation, etc.
   local x, y, z, face, xsize, zsize  
   if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
@@ -751,9 +743,7 @@ local function FinishMorph(unitID, morphData)
 
   -- DESTROY UNIT, this syntax is for spring 104+ only (parameter #5 does not exist in 103)
   -- selfd = false, reclaim = true, attacker = 0, recycleID = true
-  -- For some reason, probably related with the fact that factories morph by means of
-  -- gadget.UnitFromFactory, recycling the ID of factories is not working
-  Spring.DestroyUnit(unitID, false, true, 0, not unitDefBeforeMorph.isFactory)
+  Spring.DestroyUnit(unitID, false, true, 0, true)
 
   CreateMorphedUnit({
         unitID = unitID,
@@ -948,7 +938,14 @@ end
 
 function gadget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
   if upgradeDefs[unitDefID] then
-    FinishMorph(factID, upgradeUnits[factID])
+    -- It seems that trying to morph right now makes impossible recycling the
+    -- unitID, so better we take a detour to let GameFrame carry out the job
+    morphUnits[factID] = upgradeUnits[factID]
+    -- Mark the morphing as finished
+    morphUnits[factID].progress = 1.0
+    morphUnits[factID].increment = 0.0
+    -- Remove the fake unit (built by the factory to let the user know the
+    -- progress). Obviously, we don't want to recycle this unitID
     Spring.DestroyUnit(unitID, false, true, 0, false)
   end
 end
