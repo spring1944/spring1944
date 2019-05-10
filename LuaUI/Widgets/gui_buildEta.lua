@@ -27,6 +27,7 @@ end
 --------------------------------------------------------------------------------
 
 local gl = gl  --  use a local copy for faster access
+local IsGUIHidden = Spring.IsGUIHidden
 
 local etaTable = {}
 
@@ -187,6 +188,7 @@ end
 --------------------------------------------------------------------------------
 
 function widget:DrawWorld()
+  if IsGUIHidden() then return end
   gl.DepthTest(true)
 
   gl.Color(1, 1, 1)
