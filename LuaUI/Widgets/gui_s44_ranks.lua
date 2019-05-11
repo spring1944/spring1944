@@ -48,6 +48,7 @@ local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitRadius = Spring.GetUnitRadius
 local GetUnitHeight = Spring.GetUnitHeight
+local IsGUIHidden = Spring.IsGUIHidden
 
 local glCreateList = gl.CreateList
 local glCallList = gl.CallList
@@ -1657,6 +1658,8 @@ function widget:Shutdown()
 end
 
 function widget:DrawWorld()
+	if IsGUIHidden() then return end
+
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 	glLineWidth(lineWidth)
 	local visibleUnits = GetVisibleUnits(-1, 0, false)
