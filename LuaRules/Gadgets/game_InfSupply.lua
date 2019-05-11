@@ -103,6 +103,10 @@ end
 
 function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	if not teamID then return end -- team already died
+	if not infantry[teamID] then
+		-- cheat-spawning units for a team that was not there at game start?
+		infantry[teamID] = {}
+	end
 	if infReloadCache[unitDefID] then
 		infantry[teamID][unitID] = infReloadCache[unitDefID]
 		Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
