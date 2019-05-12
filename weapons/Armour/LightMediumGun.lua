@@ -16,7 +16,7 @@ local QF6Pdr57mmHE = LightMediumHE:New(QF6Pdr57mm, true):New{
   },  
 }
 local QF6Pdr57mmAP = MediumAP:New(QF6Pdr57mm, true):New{
-  weaponVelocity     = 1670,
+  weaponVelocity     = 1800,
   customparams = {
     armor_penetration_1000m = 66,
     armor_penetration_100m  = 86,
