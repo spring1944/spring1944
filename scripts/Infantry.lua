@@ -7,6 +7,7 @@ local info = GG.lusHelper[unitDefID]
 local customAnims = info.customAnims
 
 local SetUnitRulesParam = Spring.SetUnitRulesParam
+local GetGameFrame = Spring.GetGameFrame
 
 if not info.animation then
 	include "InfantryLoader.lua"
@@ -748,6 +749,11 @@ end
 
 function script.FireWeapon(num)
 	firing = true
+
+	-- tell the cloak gadget we fired so we should not be cloaked
+	local f, _ = GetGameFrame() -- this is not a single number...
+	SetUnitRulesParam(unitID, 'decloak_activity_frame', f)
+
 	if usesAmmo then
 		local currentAmmo = Spring.GetUnitRulesParam(unitID, 'ammo')
 		SetUnitRulesParam(unitID, 'ammo', currentAmmo - 1)

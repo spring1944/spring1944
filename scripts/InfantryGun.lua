@@ -432,6 +432,11 @@ end
 
 function script.FireWeapon(weaponNum)
 	firing = true
+
+	-- tell the cloak gadget we fired so we should not be cloaked
+	local f, _ = GetGameFrame() -- this is not a single number...
+	SetUnitRulesParam(unitID, 'decloak_activity_frame', f)
+	
 	if UnitDef.stealth then
 		Spring.SetUnitStealth(unitID, false)
 	end

@@ -30,7 +30,10 @@ local moveDefs 	=	 {
 		maxWaterDepth	=	8,
 		maxSlope			=	18,
 		slopeMod		= 150,
+		speedModClass		= 0,
 		heatmapping		=	true,
+		heatProduced		=	20,
+		heatMod			=	0.6,
 	},
 	{
 		name					=	"TANK_Motorcycle",
@@ -38,6 +41,7 @@ local moveDefs 	=	 {
 		maxWaterDepth	=	8,
 		maxSlope			=	22,
 		slopeMod		= 80,
+		speedModClass		= 0,
 		heatmapping		=	false,
 	},
 	{
@@ -48,6 +52,9 @@ local moveDefs 	=	 {
 		slopeMod		= 70,
 		crushStrength	=	13,
 		heatmapping		=	true,
+		speedModClass		= 0,
+		heatProduced		=	35,
+		heatMod			=	0.4, 
 	},
 	{
 		name					=	"TANK_Light",
@@ -56,6 +63,8 @@ local moveDefs 	=	 {
 		maxSlope			=	22,
 		crushStrength	=	15,
 		heatmapping		=	true,
+		heatProduced		=	50,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"TANK_Medium",
@@ -64,6 +73,8 @@ local moveDefs 	=	 {
 		maxSlope			=	21,
 		crushStrength	=	20,
 		heatmapping		=	false,
+		heatProduced		=	60,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"TANK_Heavy",
@@ -72,6 +83,8 @@ local moveDefs 	=	 {
 		maxSlope			=	20,
 		crushStrength	=	30,
 		heatmapping		=	false,
+		heatProduced		=	70,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"TANK_Goat",
@@ -80,6 +93,8 @@ local moveDefs 	=	 {
 		maxSlope		=	30,
 		crushStrength	=	30,
 		heatmapping		= false,
+		heatProduced		=	80,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"TANK_SuperHeavy",
@@ -88,6 +103,8 @@ local moveDefs 	=	 {
 		maxSlope			=	18,
 		crushStrength	=	50,
 		heatmapping		=	false,
+		heatProduced		=	90,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"TANK_VeryLarge",
@@ -96,6 +113,8 @@ local moveDefs 	=	 {
 		maxSlope			=	10,
 		crushStrength	=	50,
 		heatmapping		=	false,
+		heatProduced		=	120,
+		allowRawMovement	=	true,
 	},
 	{
 		name					=	"KBOT_Gun",
