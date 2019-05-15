@@ -656,27 +656,9 @@ local function CreateMorphedUnit(postMorphData)
 	end
   end
 
-  -- try a workaround - just don't give a unit ID...
-  if (newUnitID or 0) == 0 then
-    Spring.Log('morph gadget', 'warning', 'Failed to spawn the new unit the regular way, trying a workaround now: ' .. (unitDefNameAfterMorph or 'nil'))
-    if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
-        newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, x, y, z, face, unitTeam, isBeingBuilt, false)
-        if newUnitID ~= nil then
-            Spring.SetUnitPosition(newUnitID, x, y, z)
-        end
-    else
-        newUnitID = Spring.CreateUnit(unitDefNameAfterMorph, px, py, pz, HeadingToFacing(h), unitTeam, isBeingBuilt, false)
-        if newUnitID ~= nil then
-            Spring.SetUnitRotation(newUnitID, 0, -h * math.pi / 32768, 0)
-            Spring.SetUnitPosition(newUnitID, px, py, pz)
-        end
-    end
-  end
-
   -- hit a unitLimit or something. bail out.
   -- PepeAmpere: I'm not aware of any reason why this should fail now but lets keep it here
-  if (newUnitID or 0) == 0 then
-    Spring.Log('morph gadget', 'error', 'Failed to spawn the new unit: ' .. (unitDefNameAfterMorph or 'nil'))
+  if newUnitID == nil then
     return
   end
   
