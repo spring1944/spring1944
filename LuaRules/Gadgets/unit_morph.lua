@@ -110,7 +110,6 @@ local extraUnitMorphDefs = {} -- stores mainly planetwars morphs
 local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
-local postMorphSpawns = {} -- unitID => postMorphData, until https://springrts.com/mantis/view.php?id=5862 change anything
 
 local upgradeDefs = {} -- mapping between the auto generated units and the morph defs.
 local upgradeUnits = {} -- similar to morphUnits, all factories being upgraded at the moment. made global in Initialize()
@@ -486,7 +485,7 @@ local function FinishMorph(unitID, morphData)
   if buildProgress < 1 then
     isBeingBuilt = true
   end
-  
+
   -- GET position, rotation, etc.
   local x, y, z, face, xsize, zsize  
   if unitDefAfterMorph.speed == 0 and unitDefAfterMorph.isBuilder or unitDefNameAfterMorph == "russtorage" then
@@ -579,41 +578,37 @@ local function FinishMorph(unitID, morphData)
 	  Spring.SetUnitPosition(px + xOffset, py, pz + zOffset)
     end
   end
-  
+
   -- DESTROY UNIT, this syntax is for spring 104+ only (parameter #5 does not exist in 103)
-  Spring.DestroyUnit(unitID, false, true, 0, true) -- selfd = false, reclaim = true, attacker = 0, recycleID = true
-  
-  -- passing data until https://springrts.com/mantis/view.php?id=5862 is fixed
-  return {
-    unitID = unitID,
-    unitDefAfterMorph = unitDefAfterMorph,
-    unitDefBeforeMorph = unitDefBeforeMorph,
-    unitDefNameAfterMorph = unitDefNameAfterMorph,
-    unitDefIDBeforeMorph = unitDefIDBeforeMorph,
-    unitTeam = unitTeam,
-	face = face,
-    h = h,
-    x = x,
-    y = y,
-    z = z,
-    px = px,
-    py = py,
-    pz = pz,
-    oldHealth = oldHealth,
-    oldMaxHealth = oldMaxHealth,
-    isBeingBuilt = isBeingBuilt,
-    buildProgress = buildProgress,
-    ammoLevel = ammoLevel,
-    newXp = newXp,
-    states = states,
-    cmds = cmds,
-    oldShieldState = oldShieldState,
-  }
+  -- selfd = false, reclaim = true, attacker = 0, recycleID = true
+  Spring.DestroyUnit(unitID, false, true, 0, true)
+
+  CreateMorphedUnit({
+        unitID = unitID,
+        unitDefAfterMorph = unitDefAfterMorph,
+        unitDefBeforeMorph = unitDefBeforeMorph,
+        unitDefNameAfterMorph = unitDefNameAfterMorph,
+        unitDefIDBeforeMorph = unitDefIDBeforeMorph,
+        unitTeam = unitTeam,
+        face = face,
+        h = h,
+        x = x,
+        y = y,
+        z = z,
+        px = px,
+        py = py,
+        pz = pz,
+        oldHealth = oldHealth,
+        oldMaxHealth = oldMaxHealth,
+        isBeingBuilt = isBeingBuilt,
+        buildProgress = buildProgress,
+        ammoLevel = ammoLevel,
+        newXp = newXp,
+        states = states,
+        cmds = cmds,
+        oldShieldState = oldShieldState,})
 end
 
--- FIXME: MERGE functions once https://springrts.com/mantis/view.php?id=5862 is implemented
--- delayed function call of spawning part of the morphing to archive same unitIDs
--- can be merged with FinishMorph()
 local function CreateMorphedUnit(postMorphData)
   local unitID = postMorphData.unitID
   local unitDefAfterMorph = postMorphData.unitDefAfterMorph
@@ -638,7 +633,7 @@ local function CreateMorphedUnit(postMorphData)
   local states = postMorphData.states
   local cmds = postMorphData.cmds
   local oldShieldState = postMorphData.oldShieldState
-  
+
   -- NEW UNIT  
   local newUnitID
   
@@ -773,18 +768,6 @@ local function CreateMorphedUnit(postMorphData)
   return newUnitID
 end
 
--- shared temporary API procedure for calls of FinishMorph from different places
-local function FinishMorphGlobal(unitID, morphData)
-  local postMorphData = FinishMorph(unitID, morphData)
-  -- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
-  -- then FinishMorph and CreateMorphedUnit can be merged
-  -- and FinishMorphGlobal can be removed at all
-  postMorphSpawns[unitID] = {}
-  for k,v in pairs(postMorphData) do
-    postMorphSpawns[unitID][k] = v
-  end
-end
-
 local function UpdateMorph(unitID, morphData)
   if Spring.GetUnitTransporter(unitID) then return true end
 	
@@ -792,27 +775,10 @@ local function UpdateMorph(unitID, morphData)
     morphData.progress = morphData.progress + morphData.increment
   end
   if (morphData.progress >= 1.0) then
-	  FinishMorphGlobal(unitID, morphData)
+	  FinishMorph(unitID, morphData)
 	  return false -- remove from the list, all done
   end
   return true
-end
-
--- all below will be removed once https://springrts.com/mantis/view.php?id=5862 is implemented
-local function PostMorphCreate()
-	local unitsMorphedSuccessfully = {}
-	
-	for unitID, postMorphData in pairs (postMorphSpawns) do
-	  local newUnitID = CreateMorphedUnit(postMorphData)
-      if (newUnitID ~= nil) then
-	    unitsMorphedSuccessfully[#unitsMorphedSuccessfully + 1] = unitID
-	  end
-	end
-	
-	-- clear postmorhps for solved units
-	for i=1, #unitsMorphedSuccessfully do
-		postMorphSpawns[unitsMorphedSuccessfully[i]] = nil
-	end
 end
 
 --------------------------------------------------------------------------------
@@ -969,8 +935,15 @@ end
 
 function gadget:UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)
   if upgradeDefs[unitDefID] then
-    FinishMorphGlobal(factID, upgradeUnits[factID])
-    Spring.DestroyUnit(unitID, false, true, 0, true)
+    -- It seems that trying to morph right now makes impossible recycling the
+    -- unitID, so better we take a detour to let GameFrame carry out the job
+    morphUnits[factID] = upgradeUnits[factID]
+    -- Mark the morphing as finished
+    morphUnits[factID].progress = 1.0
+    morphUnits[factID].increment = 0.0
+    -- Remove the fake unit (built by the factory to let the user know the
+    -- progress). Obviously, we don't want to recycle this unitID
+    Spring.DestroyUnit(unitID, false, true, 0, false)
   end
 end
 
@@ -1181,8 +1154,6 @@ function gadget:GameFrame(n)
   for _, morphData in pairs(upgradeUnits) do
     _,_,_,_,morphData.progress = Spring.GetUnitHealth(morphData.fakeUnit)
   end
-  
-  PostMorphCreate() -- remove once https://springrts.com/mantis/view.php?id=5862 is implemented
 end
 
 
