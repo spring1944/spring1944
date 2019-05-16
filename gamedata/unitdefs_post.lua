@@ -372,7 +372,20 @@ for name, ud in pairs(UnitDefs) do
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions
-	GMBuildOptions[#GMBuildOptions + 1] = name
+    -- but only if it is not a turret or a generated upgrade unitdef
+    local skipUnit = false
+    if ud.customparams then
+        if ud.customparams.child and (ud.customparams.child == true or ud.customparams.child == 'true') then
+            skipUnit = true
+        end
+        if ud.customparams.isupgrade then
+            skipUnit = true
+        end
+    end
+    if not skipUnit then
+        GMBuildOptions[#GMBuildOptions + 1] = name
+    end
+
 	if name == "gmtoolbox" then GM_UD = ud end
 end
 
