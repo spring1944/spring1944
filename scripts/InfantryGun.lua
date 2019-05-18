@@ -21,6 +21,7 @@ local TAU = 2 * PI
 local abs = math.abs
 local random = math.random
 local SetUnitRulesParam = Spring.SetUnitRulesParam
+local GetGameFrame = Spring.GetGameFrame
 
 --Constants
 local SIG_AIM = 1
