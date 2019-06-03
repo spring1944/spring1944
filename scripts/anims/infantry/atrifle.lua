@@ -28,6 +28,31 @@ local tags = {
 }
 
 local stances = {
+	run_1 =	{
+					turns = {
+						{head,   x_axis, math.rad(-10)},
+						{head,   y_axis, 0},
+						{head,   z_axis, 0},
+						{ruparm, x_axis, math.rad(-45)},
+						{ruparm, y_axis, 0},
+						{ruparm, z_axis, 0},
+						{luparm, x_axis, math.rad(-70)},
+						{luparm, y_axis, math.rad(5)},
+						{luparm, z_axis, math.rad(-15)},
+						{rloarm, x_axis, math.rad(-15)},
+						{rloarm, y_axis, 0},
+						{rloarm, z_axis, 0},
+						{lloarm, x_axis, math.rad(-75)},
+						{lloarm, y_axis, math.rad(20)},
+						{lloarm, z_axis, math.rad(-95)},
+						{gun,    x_axis, math.rad(5)},
+						{gun,    y_axis, math.rad(-5)},
+						{gun,    z_axis, math.rad(175)},
+						{torso,  x_axis, math.rad(10)},
+						{torso,  y_axis, 0},
+						{torso,  z_axis, 0},
+					},
+				},
 	stand =	{
 					turns = {
 						{head,   x_axis, 0},
@@ -137,7 +162,7 @@ local keyframeDelays = {
 local variants = {
 	stand = {stances.stand},
 	prone = {stances.prone},
-	run = {stances.stand},
+	run = {stances.run_1},
 	stand_aim = {stances.stand_aim},
 	prone_aim = {stances.prone_aim},
 	run_aim = {stances.run_aim},
