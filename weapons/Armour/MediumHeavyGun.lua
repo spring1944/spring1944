@@ -205,7 +205,7 @@ local OTO100mmL47HE = MediumHE:New(OTO100mmL47, true):New{
   areaOfEffect       = 109,
   weaponVelocity     = 1004,
   damage = {
-    default            = 3000,
+    default            = 3600,
   },  
 }
 local OTO100mmL47AP = HeavyAP:New(OTO100mmL47, true):New{
@@ -215,7 +215,7 @@ local OTO100mmL47AP = HeavyAP:New(OTO100mmL47, true):New{
     armor_penetration_100m  = 129,
   },
   damage = {
-    default            = 3600,
+    default            = 4320,
   },
 }
 -- 105mm 1936 Naval gun (SWE)
@@ -239,7 +239,7 @@ local sk105_42c06 = MediumHeavyGun:New(MediumHE, true):New{
   soundStart         = [[GEN_105mm]],
   weaponVelocity     = 1400,
   damage = {
-    default            = 3800,
+    default            = 4560,
   },  
 }
 -- Return only the full weapons

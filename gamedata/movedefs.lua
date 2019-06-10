@@ -62,8 +62,8 @@ local moveDefs 	=	 {
 		maxWaterDepth	=	8,
 		maxSlope			=	22,
 		crushStrength	=	15,
-		heatmapping		=	true,
-		heatProduced		=	50,
+		heatmapping		=	false,
+		heatProduced		=	25,
 		allowRawMovement	=	true,
 	},
 	{

@@ -1,7 +1,7 @@
 local USM36Jackson = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "M36 GMC Jackson",
 	description			= "Heavy Tank Destroyer",
-	buildCostMetal		= 4705,
+	buildCostMetal		= 5410,
 	maxDamage			= 3100,
 	trackOffset			= 5,
 	trackWidth			= 18,
