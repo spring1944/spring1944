@@ -1,6 +1,6 @@
 local GERTiger = HeavyTank:New{
 	name				= "PzKpfw VI Tiger Ausf E",
-	buildCostMetal		= 8790,
+	buildCostMetal		= 6592,
 	maxDamage			= 5700,
 	trackOffset			= 5,
 	trackWidth			= 23,
