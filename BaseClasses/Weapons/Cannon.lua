@@ -77,7 +77,7 @@ local HE = Weapon:New{
 
 local AutoCannonHE = HE:New{ -- + AAGunHE
 	areaOfEffect       = 24,
-	edgeEffectiveness  = 0.5,
+	edgeEffectiveness  = 0.05,
 	explosionGenerator = "custom:HE_XSmall",
 	customparams = {
 		fearaoe            = 40,
@@ -173,7 +173,7 @@ local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
 -- AA Round Class
 
 local AA = Weapon:New{
-	accuracy           = 100,
+	accuracy           = 500,
 	burnblow           = true,
 	canattackground    = false,
 	collisionSize      = 3,
@@ -195,7 +195,7 @@ local AA = Weapon:New{
 local AutoCannonAA = AA:New{
 	areaOfEffect       = 30,
 	explosionGenerator = [[custom:HE_Small]],
-	movingAccuracy     = 300,
+	movingAccuracy     = 800,
 	targetMoveError    = 0,
 }
 

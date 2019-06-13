@@ -108,13 +108,13 @@ for name, ud in pairs(UnitDefs) do
 	--sets base values for detection radii
 	--index 1 = los, 2 = airlos, 3 = radar, 4 = seismic
 	local detection = {
-		BUILDING    = {300, 2000, 650, 0},
-		INFANTRY    = {650, 1500, 650, 1400},
-		SOFTVEH     = {200, 1500, 950, 0},
-		OPENVEH     = {150, 1500, 950, 0},
-		HARDVEH     = {125, 1000, 650, 0},
-		SHIP        = {500, 1500, 950, 0},
-		DEPLOYED    = {650, 1500, 950, 1400},
+		BUILDING    = {300, 800, 650, 0},
+		INFANTRY    = {650, 800, 650, 1400},
+		SOFTVEH     = {200, 800, 950, 0},
+		OPENVEH     = {150, 800, 1250, 0},
+		HARDVEH     = {125, 800, 1250, 0},
+		SHIP        = {300, 1000, 1450, 0},
+		DEPLOYED    = {650, 1400, 950, 1400},
 	}
 
 	--set detection values per unit category (with some special casing for
