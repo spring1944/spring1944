@@ -8,6 +8,7 @@ local Aircraft = Unit:New{
 	explodeAs			= "Vehicle_Explosion_Med",
 	footprintX			= 4,
 	footprintZ			= 4,
+	allowTerrainCollisions		= false, 
 	idleAutoHeal		= 2,
 	idleTime			= 1800,
 	myGravity			= 0.6,
