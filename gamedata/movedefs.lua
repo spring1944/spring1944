@@ -6,7 +6,7 @@ local moveDefs 	=	 {
 		maxSlope			=	36,
 		crushStrength	=	0,
 		heatmapping		=	true,
-		heatProduced		=	5,
+		heatProduced		=	3,
 	},
 	{
 		name
@@ -16,7 +16,7 @@ local moveDefs 	=	 {
 		maxSlope			=	48,
 		crushStrength	=	0,
 		heatmapping		=	true,
-		heatProduced		=	6,
+		heatProduced		=	5,
 	},
 	{
 		name					=	"TANK_Truck",
@@ -25,7 +25,7 @@ local moveDefs 	=	 {
 		maxSlope			=	17,
 		slopeMod		= 52,
 		heatmapping		=	true,
-		heatMod			=	1.4,
+		heatMod			=	1.1,
 	},
 	{
 		name					=	"TANK_Car",
@@ -36,7 +36,7 @@ local moveDefs 	=	 {
 		speedModClass		= 0,
 		heatmapping		=	true,
 		heatProduced		=	20,
-		heatMod			=	1.4,
+		heatMod			=	0.9,
 	},
 	{
 		name					=	"TANK_Motorcycle",
@@ -58,7 +58,7 @@ local moveDefs 	=	 {
 		heatmapping		=	true,
 		speedModClass		= 0,
 		heatProduced		=	25,
-		heatMod			=	0.9, 
+		heatMod			=	0.7, 
 	},
 	{
 		name					=	"TANK_Light",
