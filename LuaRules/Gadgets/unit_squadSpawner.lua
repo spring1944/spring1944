@@ -95,9 +95,9 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 
 		if (i % 4 == 0) then
 			xSpace = -2
-			zSpace = zSpace + 12
+			zSpace = zSpace + 15
 		else
-			xSpace = xSpace + 12
+			xSpace = xSpace + 15
 		end
 	end
 
