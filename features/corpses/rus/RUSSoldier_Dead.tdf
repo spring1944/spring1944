@@ -14,7 +14,7 @@
 		}
 }
 
-[ruspartisan_dead] {
+[ruspsoldier_dead] {
   description=Dead Partisan;
   blocking=0;
   damage=1000;

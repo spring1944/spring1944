@@ -12,7 +12,7 @@ local Partisan = {
 	cloakCostMoving		= 0,
 	minCloakDistance	= 225,
 
-	corpse			= "ruspartisan_dead",
+	corpse			= "ruspsoldier_dead",
 }
 
 local RUS_Engineer = EngineerInf:New(RUSInf):New{

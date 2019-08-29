@@ -2,7 +2,7 @@
   description=Dead Hungarian;
   blocking=0;
   damage=1000;
-  featureDead=GER_shoulderhit;
+  featureDead=GER_soldierhit;
   footprintX=1;
   footprintZ=1;
   metal=-1;

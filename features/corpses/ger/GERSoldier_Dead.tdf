@@ -1,4 +1,4 @@
-[ger_shoulderhit] {
+[ger_soldierhit] {
   description=Dead German after shoulder hit;
   blocking=0;
   damage=1000;
@@ -18,7 +18,7 @@
   description=Dead German;
   blocking=0;
   damage=1000;
-  featureDead=GER_shoulderhit;
+  featureDead=GER_soldierhit;
   footprintX=1;
   footprintZ=1;
   metal=-1;
