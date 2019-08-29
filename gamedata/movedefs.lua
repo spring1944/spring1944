@@ -7,6 +7,7 @@ local moveDefs 	=	 {
 		crushStrength	=	0,
 		heatmapping		=	true,
 		heatProduced		=	3,
+		allowRawMovement	= true,
 	},
 	{
 		name

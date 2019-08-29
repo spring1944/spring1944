@@ -109,6 +109,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	end
 	if infReloadCache[unitDefID] then
 		infantry[teamID][unitID] = infReloadCache[unitDefID]
+		--                             block clobj clpro clray crush bkpush bkheight
 		Spring.SetUnitBlocking(unitID, true, true, true, true, true, false, false)
 	else
 		local ud = UnitDefs[unitDefID]

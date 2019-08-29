@@ -15,6 +15,7 @@ local modRules = {
 		},
 	},
 	movement = {
+		allowPushingEnemyUnits = true,
 		allowUnitCollisionDamage  = false,
 		allowUnitCollisionOverlap  = false,
 	},
