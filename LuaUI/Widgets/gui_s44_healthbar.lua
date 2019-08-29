@@ -1,6 +1,6 @@
 function widget:GetInfo()
 	return {
-		name	  = "S44 Healthbars",
+		name	  = "1944 Healthbars",
 		desc	  = "Custom healthbars",
 		author	  = "TheFatController/Gnome, adapted from IW Healthbars", --Updated by FLOZi and ashdnazg 2014-2015
 		date	  = "November 2009",
