@@ -56,6 +56,30 @@ function gadget:gameFrame(n)
 	end
 end
 
+local function CreateSquadMember(unitName, x,y,z, unitHeading, teamID, queue)
+	local newUnitID = CreateUnit(unitName, x,y+1,z, unitHeading, teamID)
+	if newUnitID then
+		if states then
+			if UnitDefNames[unitName].fireState == -1 then -- unit set to inherit from builder
+				GiveOrderToUnit(newUnitID,  CMD.FIRE_STATE, { states.firestate }, 0)
+			end
+			if UnitDefNames[unitName].moveState == -1 then -- unit set to inherit from builder
+				GiveOrderToUnit(newUnitID,  CMD.MOVE_STATE, { states.movestate }, 0)
+			end
+		end
+	end
+	-- If its a valid queue
+	if queue then
+		-- Fix some things up
+		for k,v in ipairs(queue) do
+			local opts = v.options
+			if (not opts.internal) then
+				-- Give order to the units
+				GiveOrderToUnit(newUnitID, v.id, v.params, opts.coded)
+			end
+		end
+	end
+end
 
 local function CreateSquad(unitID, unitDefID, teamID, builderID)
 	local squadDef = squadDefs[unitDefID]
@@ -74,45 +98,13 @@ local function CreateSquad(unitID, unitDefID, teamID, builderID)
 		states = GetUnitStates(builderID)
 	end
 
-	local squad_units = {}
-
-	local xSpace, zSpace = -5, -5
-
+	local wait = 2 * 30 / #squadDef.members
+	
 	-- Spawn the units
 	for i, unitName in ipairs(squadDef.members) do
-		local newUnitID = CreateUnit(unitName, px + xSpace,py, pz + zSpace, unitHeading, teamID)
-		if newUnitID then
-			squad_units[#squad_units+1] = newUnitID
-			if states then
-				if UnitDefNames[unitName].fireState == -1 then -- unit set to inherit from builder
-					GiveOrderToUnit(newUnitID,  CMD.FIRE_STATE, { states.firestate }, 0)
-				end
-				if UnitDefNames[unitName].moveState == -1 then -- unit set to inherit from builder
-					GiveOrderToUnit(newUnitID,  CMD.MOVE_STATE, { states.movestate }, 0)
-				end
-			end
-		end
+		GG.Delay.DelayCall(CreateSquadMember, {unitName, px,py,pz, unitHeading, teamID, queue}, wait*(i-1))
 
-		if (i % 4 == 0) then
-			xSpace = -2
-			zSpace = zSpace + 15
-		else
-			xSpace = xSpace + 15
-		end
 	end
-
-	-- If its a valid queue
-	if queue then
-		-- Fix some things up
-		for k,v in ipairs(queue) do
-			local opts = v.options
-			if (not opts.internal) then
-				-- Give order to the units
-				GiveOrderToUnitArray(squad_units, v.id, v.params, opts.coded)
-			end
-		end
-	end
-
 	DestroyUnit(unitID, false, true)
 end
 
