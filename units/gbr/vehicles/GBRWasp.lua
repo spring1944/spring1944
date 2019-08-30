@@ -6,6 +6,7 @@ local GBRWasp = ArmouredCar:New{
 	maxDamage			= 431,
 	trackOffset			= 10,
 	trackWidth			= 13,
+	movementClass		= "TANK_Light", -- tracked so should be better at slopes than wheeled light AFVs
 
 	weapons = {
 		[1] = {
