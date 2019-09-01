@@ -10,7 +10,8 @@ function gadget:GetInfo()
   }
 end
 -- Mindecloakdistance under smoke
-local Mindecloakdist = 170
+-- default sniper has 220, let's make this a bit worse
+local Mindecloakdist = 250
 -- how often to check units
 local UPDATE_PERIOD = 32
 local UPDATE_OFFSET = 5
