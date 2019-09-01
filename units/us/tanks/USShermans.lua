@@ -63,13 +63,13 @@ local USM4A4Sherman = ShermanBase:New{
 local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	name				= "M4A3E2 Sherman Jumbo",
 	description			= "Uparmoured Medium Tank",
-	buildCostMetal		= 6200,
+	buildCostMetal		= 6530,
 	maxDamage			= 4267,
 	
 	customParams = {
-		armor_front			= 146,
-		armor_rear			= 46,
-		armor_side			= 56,
+		armor_front			= 156,
+		armor_rear			= 40,
+		armor_side			= 76,
 		armor_top			= 21,
 		maxvelocitykmh		= 35,
 		normaltex			= "unittextures/USM4Jumbo_normals.dds",
@@ -94,7 +94,7 @@ local USM4A376Sherman = ShermanBase:New{
 	},
 	
 	customParams = {
-		armor_rear			= 43,
+		armor_rear			= 44,
 		armor_side			= 43,
 		maxammo				= 14,
 		normaltex			= "unittextures/USM4ShermanA_normals.dds",

@@ -547,7 +547,7 @@ local Mavag_75_41MHEAT = HEAT:New(Mavag_75_41M, true):New{
   weaponVelocity     = 1158,
   accuracy	= 500,
   customparams = {
-    armor_penetration       = 70,
+    armor_penetration       = 100,-- german Hl-Gr.38C
   },
   damage = {
     default            = 2045,
