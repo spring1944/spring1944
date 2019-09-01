@@ -331,13 +331,12 @@ local function GiveNotifyingOrder(cmdID, cmdParams, cmdOpts)
 	spGiveOrder(cmdID, cmdParams, cmdOpts.coded)
 end
 local function GiveNotifyingOrderToUnit(uID, cmdID, cmdParams, cmdOpts)
-	
+	if cmdParams[1] == 0 then Spring.Echo("CustomFormations is guilty as charged! Please report to FLOZi at once with demo!", uID, cmdParams[1], cmdParams[2], cmdParams[3]) end
 	for _, w in ipairs(widgetHandler.widgets) do
 		if w.UnitCommandNotify and w:UnitCommandNotify(uID, cmdID, cmdParams, cmdOpts) then
 			return
 		end
 	end
-	
 	spGiveOrderToUnit(uID, cmdID, cmdParams, cmdOpts.coded)
 end
 
@@ -513,12 +512,12 @@ function widget:MouseRelease(mx, my, mButton)
 	
 	-- Using path? If so then we do nothing
 	if draggingPath then
-		
+		Spring.Echo("draggingPath")
 		draggingPath = false
 		
 	-- Using formation? If so then it's time to calculate and issue orders.
 	elseif usingFormation then
-		
+		Spring.Echo("usingFormation")
 		-- Add final position (Sometimes we don't get the last MouseMove before this MouseRelease)
 		if (not inMinimap) or spIsAboveMiniMap(mx, my) then
 			local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
@@ -546,12 +545,15 @@ function widget:MouseRelease(mx, my, mButton)
 				
 				local orders
 				if (#mUnits <= maxHungarianUnits) then
+					Spring.Echo("Hungarian")
 					orders = GetOrdersHungarian(interpNodes, mUnits, #mUnits, shift and not meta)
 				else
+					Spring.Echo("NoX")
 					orders = GetOrdersNoX(interpNodes, mUnits, #mUnits, shift and not meta)
 				end
 				
 				if meta then
+					Spring.Echo("meta")
 					local altOpts = GetCmdOpts(true, false, false, false, false)
 					for i = 1, #orders do
 						local orderPair = orders[i]
@@ -559,6 +561,7 @@ function widget:MouseRelease(mx, my, mButton)
 						GiveNotifyingOrderToUnit(orderPair[1], CMD_INSERT, {0, usingCmd, cmdOpts.coded, orderPos[1], orderPos[2], orderPos[3]}, altOpts)
 					end
 				else
+					Spring.Echo("not meta")
 					for i = 1, #orders do
 						local orderPair = orders[i]
 						GiveNotifyingOrderToUnit(orderPair[1], usingCmd, orderPair[2], cmdOpts)
