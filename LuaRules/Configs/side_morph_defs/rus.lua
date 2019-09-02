@@ -230,7 +230,22 @@ local rusDefs = {
     energy = 0,
 	facing = true,
   },
-
+  rusbt7 =
+  {
+    into = 'rusbt7_wheeled',
+    tech = 0,
+    time = 30,
+    metal = 0,
+    energy = 0,    
+  },
+  rusbt7_wheeled =
+  {
+    into = 'rusbt7',
+    tech = 0,
+    time = 30,
+    metal = 0,
+    energy = 0,    
+  },
 }
 
 return rusDefs
