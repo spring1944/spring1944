@@ -492,6 +492,8 @@ local function CreateMorphedUnit(postMorphData)
   local cmds = postMorphData.cmds
   local oldShieldState = postMorphData.oldShieldState
 
+  local valueToPass = postMorphData.valueToPass
+
   -- NEW UNIT  
   local newUnitID
   
@@ -533,6 +535,11 @@ local function CreateMorphedUnit(postMorphData)
   end
 
   Spring.SetUnitHealth(newUnitID, {health = newHealth, build = buildProgress})
+
+  -- pass custom param
+  if (unitDefAfterMorph.customParams.pass_morph_unitrules_param) then
+	Spring.SetUnitRulesParam(newUnitID, unitDefAfterMorph.customParams.pass_morph_unitrules_param, valueToPass)
+  end
   
   -- SET ammo and weapon state
   if (unitDefAfterMorph.customParams.maxammo) then
@@ -743,6 +750,12 @@ local function FinishMorph(unitID, morphData)
   -- selfd = false, reclaim = true, attacker = 0, recycleID = true
   Spring.DestroyUnit(unitID, false, true, 0, true)
 
+  -- try to pass UnitRulesParam if asked to do so
+  local valueToPass
+  if (unitDefBeforeMorph.customParams) and (unitDefBeforeMorph.customParams.pass_morph_unitrules_param) then
+    valueToPass = Spring.GetUnitRulesParam(unitID, unitDefBeforeMorph.customParams.pass_morph_unitrules_param)
+  end
+
   CreateMorphedUnit({
         unitID = unitID,
         unitDefAfterMorph = unitDefAfterMorph,
@@ -766,7 +779,9 @@ local function FinishMorph(unitID, morphData)
         newXp = newXp,
         states = states,
         cmds = cmds,
-        oldShieldState = oldShieldState,})
+        oldShieldState = oldShieldState,
+		valueToPass = valueToPass,
+		})
 end
 
 local function UpdateMorph(unitID, morphData)
