@@ -331,7 +331,7 @@ local function GiveNotifyingOrder(cmdID, cmdParams, cmdOpts)
 	spGiveOrder(cmdID, cmdParams, cmdOpts.coded)
 end
 local function GiveNotifyingOrderToUnit(uID, cmdID, cmdParams, cmdOpts)
-	if cmdParams[1] == 0 then Spring.Echo("CustomFormations is guilty as charged! Please report to FLOZi at once with demo!", uID, cmdParams[1], cmdParams[2], cmdParams[3]) end
+	if not cmdParams or cmdParams[1] == 0 then Spring.Echo("CustomFormations is guilty as charged! Please report to FLOZi at once with demo!", uID, cmdParams[1], cmdParams[2], cmdParams[3]) end
 	for _, w in ipairs(widgetHandler.widgets) do
 		if w.UnitCommandNotify and w:UnitCommandNotify(uID, cmdID, cmdParams, cmdOpts) then
 			return
