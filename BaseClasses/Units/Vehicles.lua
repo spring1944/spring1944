@@ -99,6 +99,7 @@ local ArmouredCar = Vehicle:New{
 		damageGroup		= "armouredVehicles",
 		turretturnspeed		= 36,	-- more than default tanks
 		immobilizationresistance = 0.25,
+		weapontoggle		= "priorityAPHE",
 		wiki_subclass_comments = [[Light vehicles are fast vehicles specifically
 aimed to provide infatry skirmish support. They are fast enough to quickly take
 position at front, or even to run away just in case.

@@ -91,7 +91,7 @@ local Mavag_105_4043MHEAT = HeavyHEAT:New(Mavag_105_4043M, true):New{
   accuracy	= 500,
   weaponVelocity     = 600,
   customparams = {
-    armor_penetration       = 90,
+    armor_penetration       = 110, --german Hl/C
   },
   damage = {
     default            = 3790,
