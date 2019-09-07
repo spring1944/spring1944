@@ -41,8 +41,22 @@ local builders  = { }  -- keep track of builders
 local transporters = {} -- unitDefID = squadDefID
 
 
+local function GetUnitNames(pattern)
+	local list = {}
+	for unitName in pairs (UnitDefNames) do
+		if unitName:find(pattern) == 1 then
+			if not unitName:find("_all") then -- prevent recursion
+				table.insert(list, unitName)
+			end
+		end
+	end
+	return list
+end
+
 function gadget:Initialize()
 	squadDefs = include("LuaRules/Configs/squad_defs.lua")
+	squadDefs.hun_all.members = GetUnitNames("hun")
+	squadDefs.ger_all.members = GetUnitNames("ger")
 	initFrame = Spring.GetGameFrame()
 end
 
@@ -58,6 +72,7 @@ end
 
 local function CreateSquadMember(unitName, x,y,z, unitHeading, teamID, queue)
 	local newUnitID = CreateUnit(unitName, x,y+1,z, unitHeading, teamID)
+	Spring.Echo("SQUADSPAWNER: ", unitName, newUnitID)
 	if newUnitID then
 		if states then
 			if UnitDefNames[unitName].fireState == -1 then -- unit set to inherit from builder

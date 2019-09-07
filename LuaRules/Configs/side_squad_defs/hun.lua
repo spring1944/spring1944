@@ -2,6 +2,9 @@ local hunDefs = {
 	 -----------------------------
 	 -- HUN Platoons and Squads --
 	 -----------------------------
+	["hun_all"] = 
+	{
+	},
 
 	["hun_platoon_hq"] =
 	{

@@ -2,6 +2,9 @@ local gerDefs = {
 	 -----------------------------
 	 -- GER Platoons and Squads --
 	 -----------------------------
+	["ger_all"] = 
+	{
+	},
 
 	["ger_platoon_hq"] =
 	{
