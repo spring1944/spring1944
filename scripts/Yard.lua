@@ -140,7 +140,6 @@ end
 
 if UnitDef.isBuilder then -- yard
 
-	SetUnitValue(COB.BUGGER_OFF, true)
 	Spring.SetUnitNanoPieces(unitID, {piece("beam")})
 	local pad = piece("pad")
 	local door = piece("door")
@@ -171,7 +170,7 @@ if UnitDef.isBuilder then -- yard
 			end
 		end
 		SetUnitValue(COB.INBUILDSTANCE, open)
-		--SetUnitValue(COB.BUGGER_OFF, open)
+		SetUnitValue(COB.BUGGER_OFF, open)
 	end
 
 	-- Called when factory yard opens
