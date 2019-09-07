@@ -89,11 +89,11 @@ local Raketaveto44M = Rocket_ATLClass:New{
 -- 44M Buzoganyveto
 local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
 	name			= [[215mm 44M Buzogány]],
-	range			= 600,
+	range			= 740,
 	burst			= 2,
 	startVelocity     = 420,
 	burstRate		= 0.8,
-	soundStart		= [[US_Bazooka]],
+	soundStart		= [[GER_Panzerschrek]],
 	customparams = {
 		armor_penetration  = 300,
 		weaponCost			= 50,

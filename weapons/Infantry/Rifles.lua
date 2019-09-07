@@ -79,6 +79,13 @@ local Mod91_41 = Mod91:New{
   name               = [[Carcano Mod.91/41]],
   range              = 644,
 }
+-- Breda Mod. 1935 PG
+local Breda_35PG = Mod91:New{
+  reloadtime         = 1.5,
+  accuracy           = 185,
+  name               = [[Breda Mod. 1935 PG]],
+  range              = 614,
+}
 
 -- Arisaka type 99 (JPN)
 local Arisaka99 = RifleClass:New{
@@ -209,6 +216,7 @@ return lowerkeys({
   MosinNagant = MosinNagant,
   Mod91 = Mod91,
   Mod91_41 = Mod91_41,
+  Breda_35PG=Breda_35PG,
   Arisaka99 = Arisaka99,
   -- sniper weapons
   Enfield_T = Enfield_T,

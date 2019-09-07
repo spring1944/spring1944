@@ -44,7 +44,7 @@ local Rocket_ATLClass = ATLClass:New{
 	tracks		= true,
 	turnRate	  = 4,
 	startVelocity     = 200,
-	weaponAcceleration = 1050,
+	weaponAcceleration = 725,
 	flightTime        = 3,
 	weaponType         = [[MissileLauncher]],
 }

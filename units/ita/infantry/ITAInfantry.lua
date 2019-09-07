@@ -171,12 +171,12 @@ local ITA_EliteSoloAT = ITA_SoloAT:Clone("ITASoloAT"):New(Bersaglieri):New{
 
 -- Alpini
 local ITA_AlpiniRifle = ITA_Rifle:Clone("ITARifle"):New(Alpini):New{
-	name				= "Carcano Mod.91/38 Rifle",
+	name				= "Breda Mod. 1935 PG Rifle",
 	description			= "Mountaineering Rifle Infantry armed with heavy stickgrenade",
 	buildpic			= "ITAAlpiniRifle.png", -- have to overwrite Clone
 	weapons = {
 		[1] = { -- Rifle
-			name				= "Mod91",
+			name				= "Breda_35PG",
 		},
 		[2] = { -- Grenade
 			name				= "OTO_model35",

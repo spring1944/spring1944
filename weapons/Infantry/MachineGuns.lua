@@ -381,15 +381,19 @@ local mg30 = MG34:New{
   	range              = 930,
 	name			= [[Solothurn 31M]],
 }
-
+-- schwarzlose
 local Schwarzlose = Maxim:New{
 	name               = [[Schwarzlose 07/31M]],
+  	burst			= 16,
+	range			= 1190,
 	burstRate          = 0.132,	-- sync with sound
 	reloadTime         = 3.5,
+  	sprayAngle         = 400,
 	soundStart	   = [[7m_Schwarzlose_burst]],
 }
-
+-- gebauer 37m
 local gebauer_1934_37m = M1919A4Browning:New{
+  	sprayAngle         = 400,
 	name			= [[Gebauer Tank Machine Gun 1934/37.M]],
 }
 
