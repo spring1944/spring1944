@@ -12,6 +12,7 @@ local GBRWasp = ArmouredCar:New{
 		[1] = {
 			name				= "waspflamethrower",
 			maxAngleDif			= 15,
+			mainDir				= [[0 0.05 1]],
 		},
 		[2] = {
 			name				= ".30calproof",
