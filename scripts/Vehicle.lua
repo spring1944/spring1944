@@ -638,7 +638,10 @@ end
 
 function script.EndBurst(weaponNum)
 	if IsMainGun(weaponNum) then
-		GG.EmitSfxName(unitID, base, "fire_dust")
+		local dust = info.weaponDusts[weaponNum]
+		if dust then
+			GG.EmitSfxName(unitID, base, dust)
+		end
 	end
 end
 

@@ -446,6 +446,7 @@ function gadget:GamePreload()
 		local flareOnShots = {}
 		local weaponAnimations = {}
 		local weaponCEGs = {}
+		local weaponDusts = {}
 		local seismicPings = {}
 		for i = 1, #weapons do
 			local weaponInfo = weapons[i]
@@ -464,6 +465,7 @@ function gadget:GamePreload()
 				weaponAnimations[i] = weaponDef.customParams.scriptanimation
 				flareOnShots[i] = tobool(weaponDef.customParams.flareonshot)
 				weaponCEGs[i] = weaponDef.customParams.cegflare
+				weaponDusts[i] = weaponDef.customParams.firedust
 				seismicPings[i] = weaponDef.customParams.seismicping
 				if weaponDef.customParams.paratrooper then
 					paratroopWeaponIDs[i] = true
@@ -480,6 +482,7 @@ function gadget:GamePreload()
 		info.explodeRanges = explodeRanges
 		info.weaponAnimations = weaponAnimations
 		info.weaponCEGs = weaponCEGs
+		info.weaponDusts = weaponDusts
 		info.seismicPings = seismicPings
 		info.paratroopWeaponIDs = paratroopWeaponIDs
 		-- UnitDef Level Info

@@ -232,6 +232,9 @@ local TankGun = Cannon:New{
 	leadLimit          = 3,
 	movingAccuracy     = 600,
 	tolerance          = 300,
+	customparams = {
+		firedust	       = "fire_dust",
+	},
 }
 
 local AirATGun = TankGun:New(LightAP):New{ -- assumes we won't give them HE
