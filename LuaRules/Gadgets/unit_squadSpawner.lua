@@ -72,7 +72,6 @@ end
 
 local function CreateSquadMember(unitName, x,y,z, unitHeading, teamID, queue)
 	local newUnitID = CreateUnit(unitName, x,y+1,z, unitHeading, teamID)
-	Spring.Echo("SQUADSPAWNER: ", unitName, newUnitID)
 	if newUnitID then
 		if states then
 			if UnitDefNames[unitName].fireState == -1 then -- unit set to inherit from builder
