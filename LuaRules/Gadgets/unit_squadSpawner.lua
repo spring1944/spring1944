@@ -67,15 +67,15 @@ local function CreateSquadMember(unitName, x,y,z, unitHeading, teamID, queue)
 				GiveOrderToUnit(newUnitID,  CMD.MOVE_STATE, { states.movestate }, 0)
 			end
 		end
-	end
-	-- If its a valid queue
-	if queue then
-		-- Fix some things up
-		for k,v in ipairs(queue) do
-			local opts = v.options
-			if (not opts.internal) then
-				-- Give order to the units
-				GiveOrderToUnit(newUnitID, v.id, v.params, opts.coded)
+		-- If its a valid queue
+		if queue then
+			-- Fix some things up
+			for k,v in ipairs(queue) do
+				local opts = v.options
+				if (not opts.internal) then
+					-- Give order to the units
+					GiveOrderToUnit(newUnitID, v.id, v.params, opts.coded)
+				end
 			end
 		end
 	end
