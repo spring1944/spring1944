@@ -512,12 +512,12 @@ function widget:MouseRelease(mx, my, mButton)
 	
 	-- Using path? If so then we do nothing
 	if draggingPath then
-		Spring.Echo("draggingPath")
+		--Spring.Echo("draggingPath")
 		draggingPath = false
 		
 	-- Using formation? If so then it's time to calculate and issue orders.
 	elseif usingFormation then
-		Spring.Echo("usingFormation")
+		--Spring.Echo("usingFormation")
 		-- Add final position (Sometimes we don't get the last MouseMove before this MouseRelease)
 		if (not inMinimap) or spIsAboveMiniMap(mx, my) then
 			local _, pos = spTraceScreenRay(mx, my, true, inMinimap)
@@ -545,15 +545,15 @@ function widget:MouseRelease(mx, my, mButton)
 				
 				local orders
 				if (#mUnits <= maxHungarianUnits) then
-					Spring.Echo("Hungarian")
+					--Spring.Echo("Hungarian")
 					orders = GetOrdersHungarian(interpNodes, mUnits, #mUnits, shift and not meta)
 				else
-					Spring.Echo("NoX")
+					--Spring.Echo("NoX")
 					orders = GetOrdersNoX(interpNodes, mUnits, #mUnits, shift and not meta)
 				end
 				
 				if meta then
-					Spring.Echo("meta")
+					--Spring.Echo("meta")
 					local altOpts = GetCmdOpts(true, false, false, false, false)
 					for i = 1, #orders do
 						local orderPair = orders[i]
@@ -561,7 +561,7 @@ function widget:MouseRelease(mx, my, mButton)
 						GiveNotifyingOrderToUnit(orderPair[1], CMD_INSERT, {0, usingCmd, cmdOpts.coded, orderPos[1], orderPos[2], orderPos[3]}, altOpts)
 					end
 				else
-					Spring.Echo("not meta")
+					--Spring.Echo("not meta")
 					for i = 1, #orders do
 						local orderPair = orders[i]
 						GiveNotifyingOrderToUnit(orderPair[1], usingCmd, orderPair[2], cmdOpts)
