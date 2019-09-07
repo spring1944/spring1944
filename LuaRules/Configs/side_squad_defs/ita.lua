@@ -15,7 +15,7 @@ local itaDefs = {
 		},
 		name = "Rifle Squad",
 		description = "5 x Carcano M91 Rifle, 1 x M38 SMG: Small Combat Squad",
-		buildCostMetal = 580,
+		buildCostMetal = 522,
 		buildPic = "ITARifle.png",
 	},
 

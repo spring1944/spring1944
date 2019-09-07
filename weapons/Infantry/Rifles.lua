@@ -100,9 +100,12 @@ local Arisaka99 = RifleClass:New{
 -- Ag M/42
 local AgM42 = RifleClass:New{
   name               = [[Automatgevär m/42]],
-  range              = 535,
+  range              = 595,
   reloadtime         = 1.7,
   soundStart         = [[AG_M_42]],
+  damage = {
+    default            = 30,
+  },
 }
 
 -- Gevar M/38
