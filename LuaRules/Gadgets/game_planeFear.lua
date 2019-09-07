@@ -32,7 +32,6 @@ local GetUnitRulesParam 	= Spring.GetUnitRulesParam
 local GetUnitWeaponState	= Spring.GetUnitWeaponState
 -- Synced Ctrl
 local CallCOBScript			= Spring.CallCOBScript
-local SetUnitCOBValue		= Spring.SetUnitCOBValue
 local SetUnitFuel 			= Spring.SetUnitFuel
 local SetUnitWeaponState	= Spring.SetUnitWeaponState
 -- Unsynced Ctrl
