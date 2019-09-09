@@ -158,10 +158,9 @@ local CannoneDa47mml32AP = LightAP:New(CannoneDa47mml32, true):New{
 }
 
 local CannoneDa47mml32HEAT = HEAT:New(CannoneDa47mml32, true):New{
-  weaponVelocity       = 1000,
-  accuracy	= 500,
+  weaponVelocity       = 1120,
   customparams = {
-    armor_penetration       = 75,
+    armor_penetration       = 80,-- actually Hesh
   },
   damage = {
     default            = 1048,
