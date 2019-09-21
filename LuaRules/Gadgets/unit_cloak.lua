@@ -6,7 +6,7 @@ return {
 		date      = "May 11, 2019",
 		license   = "GNU GPL, v2 or later",
 		layer     = 0,
-		enabled   = true  --  loaded by default?
+		enabled   = false--true  --  loaded by default?
 	}
 end
 
@@ -34,6 +34,7 @@ local cloakedDefs = {}
 
 -- all units which can cloak
 local cloakedUnits = {}
+GG.cloakedUnits = cloakedUnits
 
 -- units which are pending cloaking (they can cloak but are not cloaked yet for some reason)
 local unitsWantToCloak = {}
@@ -62,21 +63,20 @@ end
 
 -- is this unit performing some noisy activity like firing? Or are there enemies too close to it?
 local function hasDecloakingCondition(unitID, unitDefID, currentFrame)
-	local result = false
+	-- check distance first
+	local decloakDistance = cloakedDefs[unitDefID]
+	local enemyTooClose = spGetUnitNearestEnemy(unitID, decloakDistance, false)
+	if enemyTooClose then
+		return true
+	end
+
+	-- then check if param expired
 	local lastDecloakActivityFrame = spGetUnitRulesParam(unitID, 'decloak_activity_frame')
 	if lastDecloakActivityFrame and (lastDecloakActivityFrame + DECLOAK_AFTER_FIRING_DELAY) > currentFrame then
-		result = true
+		return true
 	end
 
-	if result == false then
-		local decloakDistance = cloakedDefs[unitDefID]
-		local enemyTooClose = spGetUnitNearestEnemy(unitID, decloakDistance, false)
-		if enemyTooClose then
-			result = true
-		end
-	end
-
-	return result
+	return false
 end
 
 -- main loop
@@ -105,6 +105,7 @@ function gadget:GameFrame(n)
 					--spLog('unit_cloak', 'error', 'de-cloaking unit: ' .. unitID)
 					-- decloak
 					spSetUnitCloak(unitID, false)
+					Spring.SetUnitRulesParam(unitID, 'decloak_activity_frame', n)
 					-- put in the pending cloak list
 					unitsWantToCloak[unitID] = unitDefID
 				end
