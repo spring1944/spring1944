@@ -196,6 +196,7 @@ function ApplySmoke(unitID)
 			SetUnitCloak(unitID, 2)
 			else
 			SetUnitCloak(unitID, 2, Mindecloakdist)
+			Spring.SetUnitRulesParam(unitID, 'mindecloakdist', Mindecloakdist)
 		end
 		Spring.SetUnitRulesParam(unitID, 'decloak_activity_frame', Spring.GetGameFrame())
 	end
@@ -232,7 +233,7 @@ function RemoveSmoke(unitID)
 	SetUnitSensorRadius(unitID, "seismic", defaultSeismic)
 
 	-- unhide the unit
-	SetUnitCloak(unitID, 1)
+	--SetUnitCloak(unitID, 1)
 	-- and make it cloak/stealth by its own if it can
 	local tmpUDID = GetUnitDefID(unitID)
 	if tmpUDID then
@@ -267,7 +268,10 @@ local lastDecloaked = {}
 function gadget:AllowUnitCloak(unitID, enemyID)
 	--Spring.Echo("AllowUnitCloak", enemyID)
 	if SmokedUnits[unitID] then
-		Spring.Echo("SmokedUnit", unitID, enemyID, SmokedUnits[unitID].underSmoke)
+		local checkID = Spring.GetUnitNearestEnemy(unitID, 5000, false)
+		local separation = checkID and Spring.GetUnitSeparation(unitID, checkID) or "no enemy"
+		local name = UnitDefs[Spring.GetUnitDefID(unitID)].name
+		Spring.Echo("SmokedUnit", name, unitID, enemyID, checkID, separation, SmokedUnits[unitID].underSmoke, Spring.GetUnitRulesParam(unitID, 'mindecloakdist'))
 	end
 	local n = Spring.GetGameFrame()
 	local canCloak = (enemyID == nil) and (((lastDecloaked[unitID] or 0) + CLOAK_TIMEOUT) < n)
