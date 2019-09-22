@@ -271,7 +271,7 @@ function gadget:AllowUnitCloak(unitID, enemyID)
 		local checkID = Spring.GetUnitNearestEnemy(unitID, 5000, false)
 		local separation = checkID and Spring.GetUnitSeparation(unitID, checkID) or "no enemy"
 		local name = UnitDefs[Spring.GetUnitDefID(unitID)].name
-		Spring.Echo("SmokedUnit", name, unitID, enemyID, checkID, separation, SmokedUnits[unitID].underSmoke, Spring.GetUnitRulesParam(unitID, 'mindecloakdist'))
+		--Spring.Echo("SmokedUnit", name, unitID, enemyID, checkID, separation, SmokedUnits[unitID].underSmoke, Spring.GetUnitRulesParam(unitID, 'mindecloakdist'))
 	end
 	local n = Spring.GetGameFrame()
 	local canCloak = (enemyID == nil) and (((lastDecloaked[unitID] or 0) + CLOAK_TIMEOUT) < n)
