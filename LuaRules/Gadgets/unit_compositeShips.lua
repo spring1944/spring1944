@@ -65,6 +65,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID)
 			local cmdDescID = Spring.FindUnitCmdDesc(unitID, cmdID)
 			Spring.RemoveUnitCmdDesc(unitID, cmdDescID)
 		end
+		-- Try to fix the blocked yard issue
+		Spring.SetUnitBlocking(unitID, false, false, true, true, false, false, false)
 	end
 end
 
