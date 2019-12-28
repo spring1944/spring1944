@@ -24,6 +24,7 @@ local ValidUnitID = Spring.ValidUnitID
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitIsStunned = Spring.GetUnitIsStunned
+local GetUnitNeutral = Spring.GetUnitNeutral
 local GetUnitPosition = Spring.GetUnitPosition
 local GetUnitRulesParam = Spring.GetUnitRulesParam
 local GetUnitSeparation = Spring.GetUnitSeparation
@@ -408,8 +409,8 @@ function gadget:GameFrame(n)
 		if n % (RELOAD_FREQUENCY*30) < 0.1 then
 			for unitID, vehicleData in pairs(vehicles) do
 				-- skip units which are being transported
-				-- also skip incomplete units (use the first return value)
-				local stunned = GetUnitIsStunned(unitID)
+				-- also skip incomplete units (use the first return value), and neutral units (turrets on unfinished composite ships)
+				local stunned = GetUnitIsStunned(unitID) or GetUnitNeutral(unitID)
 				if (not stunned) then				
 					
 					-- if a unit is LUS-ified, don't muck with
