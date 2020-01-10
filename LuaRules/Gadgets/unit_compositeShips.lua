@@ -121,7 +121,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		-- don't become shields)
 		local passThroughDamage = damage - newDamage
 		local mother = childCache[unitID]
-		if mother and not Spring.GetUnitIsDead(mother) then
+		-- exclude the case when we still have boolean true in here instead of a unitID
+		if mother and not (mother == true) and not Spring.GetUnitIsDead(mother) then
 			local wd = WeaponDefs[weaponDefID]
 			local smallarmsDamage = wd.customParams and wd.customParams.damagetype == 'smallarm'
 			-- hulls (mothers) don't take smallarms damage
