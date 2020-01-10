@@ -96,6 +96,11 @@ end
 
 function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
 	if childCache[unitID] then
+		-- try to fix it right here
+		if transportID and not GG.boatMothers[transportID] then
+			Spring.Log('composite ships', 'error', 'Fixing: Transporter ID not in boatmother list: transporter ID ' .. (transportID or 'nil') .. ' loaded unit: ' .. (UnitDefs[unitDefID].name or nil))
+			GG.boatMothers[transportID] = {}
+		end
 		if transportID and GG.boatMothers[transportID] then
 			childCache[unitID] = transportID -- set value to unitID of mother
 			table.insert(GG.boatMothers[transportID], unitID) -- insert into GG.boatMothers list
