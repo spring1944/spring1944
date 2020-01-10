@@ -30,10 +30,10 @@ local damagedefs = {
     lighttanks = 0,
     mediumtanks = 0,
     heavytanks = 0,
+	ships = 2/25,
     armouredPlanes = 1/8,
     invincible = 0,
-	-- smallarms are the only distinction between ships and ship turrets
-	ships = 0,
+	shipturrets = 1/9,
 	hardships = 0,
 	shipturrets = 3/7,
     mines = 0,

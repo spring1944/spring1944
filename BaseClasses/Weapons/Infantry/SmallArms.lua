@@ -168,8 +168,8 @@ local AMG = Weapon:New{ -- should be used like ammo bases
 
 local AAMG = Weapon:New{ -- should be used like ammo bases
 	sprayAngle         = 1050,
-	accuracy           = 400,
-	movingAccuracy     = 800,
+	accuracy           = 900,
+	movingAccuracy     = 1200,
 	size		   = 1e-13,
 	canAttackGround    = false,
 	predictBoost       = 0.75,

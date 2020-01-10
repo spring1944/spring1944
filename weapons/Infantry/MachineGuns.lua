@@ -296,11 +296,11 @@ local M2BrowningAA = M2Browning:New(AAMG):New{
 }
 -- M2 Browning Aircraft
 local M2BrowningAMG = M2Browning:New(AMG):New{
-  burst             = 3,
+  burst             = 6,
   burstRate         = 0.085,
   range             = 900,
   heightBoostFactor = 0,
-  reloadTime        = 0.3,
+  reloadTime        = 0.65,
   soundStart        = [[US_50CALAir]],
   tolerance         = 1100, --?
   customparams = {

@@ -52,7 +52,7 @@ local SWEVedettbat_turret_57mm_front = OpenBoatTurret:New{
 
 		barrelrecoildist		= 3,
 		barrelrecoilspeed		= 10,
-		turretturnspeed			= 30,
+		turretturnspeed			= 45,
 		elevationspeed			= 20,
 
     },
