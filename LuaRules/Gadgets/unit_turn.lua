@@ -82,6 +82,12 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 	end
 end
 
+function gadget:UnitDestroyed(unitID, unitDefID)
+	if unitID then
+		turning[unitID] = nil
+	end
+end
+
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
 	local ud = UnitDefs[unitDefID]
 	if cmdID == CMD_TURN and not ud.customParams.hasturnbutton then
