@@ -43,7 +43,7 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 		[1] = {
 			name				= "BL4inMortarSmoke",
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "NIL", -- commandfire only
+			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH HARDVEH DEPLOYED", -- commandfire only
 		},
 	},
 	customparams = {
