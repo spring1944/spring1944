@@ -96,7 +96,10 @@ local Maxim = MGClass:New{
 local MaximAA = Maxim:New(AAMG):New{
   burst              = 7,
   burstRate          = 0.103,
-  range              = 1150,
+  range              = 1250,
+  customparams = {
+    no_range_adjust    = true,
+  }
 }
 -- ShKAS1941 (RUS)
 local ShKAS1941 = MGClass:New(AMG):New{

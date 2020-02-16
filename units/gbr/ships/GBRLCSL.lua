@@ -41,9 +41,8 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 	description				= "Smoke Launcher",
   	weapons = {	
 		[1] = {
-			name				= "BL4inMortarSmoke",
+			name				= "ML3InMortar", -- until composite aiming is fixed
 			maxAngleDif			= 270,
-			onlyTargetCategory	= "INFANTRY SOFTVEH OPENVEH HARDVEH DEPLOYED", -- commandfire only
 		},
 	},
 	customparams = {

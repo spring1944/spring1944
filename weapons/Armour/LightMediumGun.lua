@@ -29,8 +29,8 @@ local QF6Pdr57mmAP = MediumAP:New(QF6Pdr57mm, true):New{
 -- Naval QF 6-Pounder Mk IIA - uses only HE
 local QF6Pdr57MkIIAHE = LightMediumHE:New(QF6Pdr57mm, false):New{
 	name		= [[QF 6-Pounder Mk IIA]],
-	-- autoloader, 40 shots per minute
-	reloadTime	= 1.5,
+	-- autoloader, 50 shots per minute
+	reloadTime	= 1.2, 
 	areaOfEffect       = 55,
 	movingAccuracy     = 300,
 	weaponVelocity     = 1210,

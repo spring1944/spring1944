@@ -39,11 +39,13 @@ local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
 -- Flakvierling
 -- derives from the above, only with 4x burst (can't have 1/4 the burstrate)
 local FlakVierling20mmAA = FlaK3820mmAA:New({
-  burst              = 16,
+  projectiles              = 4,
+  separation		  =1,
   name               = [[(Quad)]],
 }, true)
 local FlakVierling20mmHE = FlaK3820mmHE:New({
-  burst              = 16,
+  projectiles              = 4,
+  separation		  =1,
   name               = [[(Quad)]],
 }, true)
 
@@ -130,8 +132,9 @@ local BredaM3520mmAA = AutoCannonAA:New(BredaM3520mm, true):New{
 }
 
 local TwinBredaM3520mmAA = BredaM3520mmAA:New{
-  burst              = 8,
-  burstRate          = 0.13,
+  projectiles        = 2,
+  separation		  =0.8,
+  burstRate          = 0.23,
 }
 
 local BredaM3520mmHE = AutoCannonHE:New(BredaM3520mm, true):New{
@@ -245,17 +248,15 @@ local Type9625mmAA = AutoCannonAA:New(Type9625mm, true):New{
 }
 
 local TwinType9625mmAA = Type9625mmAA:New{
-	burst            = 10,
-	burstrate        = 0.12,
-    reloadtime       = 3.5,
+    projectiles        = 2,
+    separation		  =1,
 }
 
 local Type9625mmHE = AutoCannonHE:New(Type9625mm, true)
 
 local TwinType9625mmHE = Type9625mmHE:New{
-	burst            = 10,
-	burstrate        = 0.12,
-    reloadtime       = 3.5,
+    projectiles        = 2,
+    separation		  =1,
 }
 
 -- Vehicle solothurn as used by Hungary
