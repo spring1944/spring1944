@@ -64,7 +64,7 @@ function DamageSmoke()
 	-- emit some smoke if the unit is damaged
 	-- check if the unit has finished building
 	_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
-	while (buildProgress > 0) do
+	while (buildProgress < 1) do
 		Sleep(150)
 		_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
 	end
@@ -91,7 +91,7 @@ end
 
 function FlagFlap()
 	local _,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
-	while (buildProgress > 0) do
+	while (buildProgress < 1) do
 		Sleep(150)
 		_,_,_,_,buildProgress = Spring.GetUnitHealth(unitID)
 	end

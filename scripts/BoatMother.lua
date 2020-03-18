@@ -64,7 +64,7 @@ local function FlagFlap()
 		Turn(flags[1], y_axis, math.rad(180))
 	end
 	local _,_,_,_,buildProgress = GetUnitHealth(unitID)
-	while (buildProgress > 0) do
+	while (buildProgress < 1) do
 		Sleep(150)
 		_,_,_,_,buildProgress = GetUnitHealth(unitID)
 	end
@@ -92,7 +92,7 @@ local function DamageSmoke()
 	-- emit some smoke if the unit is damaged
 	-- check if the unit has finished building
 	_,_,_,_,buildProgress = GetUnitHealth(unitID)
-	while (buildProgress > 0) do
+	while (buildProgress < 1) do
 		Sleep(150)
 		_,_,_,_,buildProgress = GetUnitHealth(unitID)
 	end
@@ -118,6 +118,12 @@ local function DamageSmoke()
 end
 
 local function SpawnChildren()
+	-- try to fix the blocked yard issue by spawning children AFTER the unit is fully built
+	_,_,_,_,buildProgress = GetUnitHealth(unitID)
+	while (buildProgress < 1) do
+		Sleep(150)
+		_,_,_,_,buildProgress = GetUnitHealth(unitID)
+	end
 	-- To avoid recursion errors, we better spawn children in a separate thread,
 	-- with a neglectible delay. Otherwise, ships would not work with
 	-- Spring.CreateUnit synced commands
