@@ -14,15 +14,15 @@ end
 -- The filename of this file starts with a 0 to ensure that it is loaded before all other gadgets
 -- Note that loading order != execution order, which is what layer in GetInfo controls!
 
--- Setup
-GG.CustomCommands = {}
-GG.CustomCommands.numCmds = 0
-GG.CustomCommands.IDs = {}
-
-_G.CustomCommandIDs = {}
-
 -- Constants
 local BASE_CMD_ID = 1001
+
+-- Setup (add the commands that shall have a fixed ID here, e.g. all of those
+-- that are called in widgets, and therefore cannot call GG)
+GG.CustomCommands = {}
+GG.CustomCommands.numCmds = 1
+GG.CustomCommands.IDs = {CMD_SET_WANTED_MAX_SPEED = BASE_CMD_ID + 1}
+_G.CustomCommandIDs = {CMD_SET_WANTED_MAX_SPEED = BASE_CMD_ID + 1}
 
 -- Variables
 local customCommands = GG.CustomCommands

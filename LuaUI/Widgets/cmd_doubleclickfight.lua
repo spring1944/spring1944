@@ -32,7 +32,7 @@ local CMD_OPT_CTRL  = CMD.OPT_CTRL
 local CMD_OPT_RIGHT = CMD.OPT_RIGHT
 local CMD_OPT_SHIFT = CMD.OPT_SHIFT
 local CMD_REMOVE    = CMD.REMOVE
-local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED
+local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or 1002  -- See LuaRules/Gadgets/unit_customformations2.lua
 
 local spDiffTimers           = Spring.DiffTimers
 local spGetCommandQueue      = Spring.GetCommandQueue
