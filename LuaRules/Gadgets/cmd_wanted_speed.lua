@@ -54,7 +54,7 @@ end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
     if cmdID ~= CMD_SET_WANTED_MAX_SPEED then
-        MaintainWantedSpeed(unitID)
+        -- MaintainWantedSpeed(unitID)  -- Zero-K has this enabled for some reason
         return true
     end
 
