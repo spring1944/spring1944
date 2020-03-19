@@ -150,12 +150,14 @@ local CMD_MOVE = CMD.MOVE
 local CMD_ATTACK = CMD.ATTACK
 local CMD_UNLOADUNIT = CMD.UNLOAD_UNIT
 local CMD_UNLOADUNITS = CMD.UNLOAD_UNITS
-local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED  -- Removed in spring 104
+local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or 1002  -- See LuaRules/Gadgets/unit_customformations2.lua
 local CMD_OPT_ALT = CMD.OPT_ALT
 local CMD_OPT_CTRL = CMD.OPT_CTRL
 local CMD_OPT_META = CMD.OPT_META
 local CMD_OPT_SHIFT = CMD.OPT_SHIFT
 local CMD_OPT_RIGHT = CMD.OPT_RIGHT
+
+local REMOVED_SET_WANTED_MAX_SPEED = not CMD.SET_WANTED_MAX_SPEED
 
 local keyShift = 304
 
@@ -338,6 +340,33 @@ local function GiveNotifyingOrderToUnit(uID, cmdID, cmdParams, cmdOpts)
 		end
 	end
 	spGiveOrderToUnit(uID, cmdID, cmdParams, cmdOpts.coded)
+end
+
+local function SendSetWantedMaxSpeed(alt, ctrl, meta, shift)
+	-- Move Speed (Applicable to every order)
+	local wantedSpeed = 99999 -- High enough to exceed all units speed, but not high enough to cause errors (i.e. vs math.huge)
+	if ctrl then
+		local selUnits = spGetSelectedUnits()
+		for i = 1, #selUnits do
+			local ud = UnitDefs[spGetUnitDefID(selUnits[i])]
+			local uSpeed = ud and ud.speed
+			if uSpeed and uSpeed > 0 and uSpeed < wantedSpeed then
+				wantedSpeed = uSpeed
+			end
+		end
+	elseif REMOVED_SET_WANTED_MAX_SPEED then
+		wantedSpeed = -1
+	end
+	
+	-- Directly giving speed order appears to work perfectly, including with shifted orders ...
+	-- ... But other widgets CMD.INSERT the speed order into the front (Posn 1) of the queue instead (which doesn't work with shifted orders)
+	if REMOVED_SET_WANTED_MAX_SPEED then
+		local units = Spring.GetSelectedUnits()
+		Spring.GiveOrderToUnitArray(units, CMD_SET_WANTED_MAX_SPEED, {wantedSpeed}, 0)
+	else
+		local speedOpts = GetCmdOpts(alt, ctrl, meta, shift, true)
+		GiveNotifyingOrder(CMD_SET_WANTED_MAX_SPEED, {wantedSpeed / 30}, speedOpts)
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -570,25 +599,7 @@ function widget:MouseRelease(mx, my, mButton)
 			end
 		end
 
-		if CMD_SET_WANTED_MAX_SPEED then  -- Removed in spring 104
-			-- Move Speed (Applicable to every order)
-			local wantedSpeed = 99999 -- High enough to exceed all units speed, but not high enough to cause errors (i.e. vs math.huge)
-			
-			if ctrl then
-				local selUnits = spGetSelectedUnits()
-				for i = 1, #selUnits do
-					local uSpeed = UnitDefs[spGetUnitDefID(selUnits[i])].speed
-					if uSpeed > 0 and uSpeed < wantedSpeed then
-						wantedSpeed = uSpeed
-					end
-				end
-			end
-			
-			-- Directly giving speed order appears to work perfectly, including with shifted orders ...
-			-- ... But other widgets CMD.INSERT the speed order into the front (Posn 1) of the queue instead (which doesn't work with shifted orders)
-			local speedOpts = GetCmdOpts(alt, ctrl, meta, shift, true)
-			GiveNotifyingOrder(CMD_SET_WANTED_MAX_SPEED, {wantedSpeed / 30}, speedOpts)
-		end
+		SendSetWantedMaxSpeed(alt, ctrl, meta, shift)
 	end
 	
 	if #fNodes > 1 then

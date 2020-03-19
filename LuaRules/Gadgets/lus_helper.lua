@@ -38,6 +38,7 @@ local CallAsUnit 			= Spring.UnitScript.CallAsUnit
 -- Unsynced Ctrl
 -- Constants
 local RANGE_INACCURACY_PERCENT = 5
+local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or GG.CustomCommands.GetCmdID("CMD_SET_WANTED_MAX_SPEED")
 -- Variables
 
 -- Useful functions for GG
@@ -416,10 +417,10 @@ function GG.ApplySpeedChanges(unitID)
 		--if #cmds >= 2 then
 		if #cmds >= 1 then
 			if cmds[1].id == CMD.MOVE or cmds[1].id == CMD.FIGHT or cmds[1].id == CMD.ATTACK then
-				if cmds[2] and cmds[2].id == CMD.SET_WANTED_MAX_SPEED then
-					GiveOrderToUnit(unitID,CMD.REMOVE,{cmds[2].tag},{})
+				if cmds[2] and cmds[2].id == CMD_SET_WANTED_MAX_SPEED then
+					GiveOrderToUnit(unitID, CMD.REMOVE, {cmds[2].tag}, {})
 				end
-				local params = {1, CMD.SET_WANTED_MAX_SPEED or cmds[1].id, 0, newSpeed}
+				local params = {1, CMD_SET_WANTED_MAX_SPEED, 0, newSpeed}
 				SetGroundMoveTypeData(unitID, {maxSpeed = newSpeed, maxReverseSpeed = newReverseSpeed})
 				GiveOrderToUnit(unitID, CMD.INSERT, params, {"alt"})
 			end
