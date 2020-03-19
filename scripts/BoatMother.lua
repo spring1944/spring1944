@@ -128,7 +128,10 @@ local function SpawnChildren()
 	-- with a neglectible delay. Otherwise, ships would not work with
 	-- Spring.CreateUnit synced commands
 	Sleep(1)
-	local x,y,z = Spring.GetUnitPosition(unitID) -- strictly needed?
+	-- Load the turret completely out of the map. In that way, if the engine is
+    -- able to update the position, good for it, otherwise they would never
+    -- block nothing (so the boat yard would not get stuck)
+	local x, y, z = -1000000, 1000000, -1000000
 	for i, childDefName in ipairs(children) do
 		local childID = Spring.CreateUnit(childDefName, x, y, z, 0, teamID)
 		if (childID ~= nil) then
