@@ -27,8 +27,15 @@ local lastWantedSpeed = {}
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
 
-local function SetUnitWantedSpeed(unitID, wantedSpeed, forceUpdate)
+local function SetUnitWantedSpeed(unitID, unitDefID, wantedSpeed, forceUpdate)
     if (not forceUpdate) and (lastWantedSpeed[unitID] == wantedSpeed) then
+        return
+    end
+
+    local ud = UnitDefs[unitDefID]
+    if ud.isImmobile or ud.canFly or ud.isAirUnit then
+        -- Not ground unit. Zero-K is also considering the case of hovercrafts,
+        -- but I (Sanguinario_Joe) think we are not even interested on that
         return
     end
 
@@ -36,16 +43,16 @@ local function SetUnitWantedSpeed(unitID, wantedSpeed, forceUpdate)
     Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxWantedSpeed", (wantedSpeed or 2000))
 end
 
-function GG.ForceUpdateWantedMaxSpeed(unitID)
-    SetUnitWantedSpeed(unitID, lastWantedSpeed[unitID], true)
+function GG.ForceUpdateWantedMaxSpeed(unitID, unitDefID)
+    SetUnitWantedSpeed(unitID, unitDefID, lastWantedSpeed[unitID], true)
 end
 
-local function MaintainWantedSpeed(unitID)
+local function MaintainWantedSpeed(unitID, unitDefID)
     if not lastWantedSpeed[unitID] then
         return
     end
     
-    Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxWantedSpeed", lastWantedSpeed[unitID])
+    Spring.MoveCtrl.SetGroundMoveTypeData(unitID, unitDefID, "maxWantedSpeed", lastWantedSpeed[unitID])
 end
 
 -------------------------------------------------------------------------------------
@@ -54,7 +61,7 @@ end
 
 function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
     if cmdID ~= CMD_SET_WANTED_MAX_SPEED then
-        -- MaintainWantedSpeed(unitID)  -- Zero-K has this enabled for some reason
+        -- MaintainWantedSpeed(unitID, unitDefID)  -- Zero-K has this enabled for some reason
         return true
     end
 
@@ -63,7 +70,7 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         return false
     end
     wantedSpeed = (wantedSpeed > 0) and wantedSpeed
-    SetUnitWantedSpeed(unitID, wantedSpeed)
+    SetUnitWantedSpeed(unitID, unitDefID, wantedSpeed)
 
     return false
 end
