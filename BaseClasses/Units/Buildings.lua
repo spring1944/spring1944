@@ -230,20 +230,20 @@ local BoatYard = Yard:New{
 	minWaterDepth		= 10,
 	script				= "Yard.lua",
 	workerTime			= 75, -- override Yard
-	yardmap				= [[ooccccccccccoo 
-						    ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo 
-							ooccccccccccoo]],
+	yardmap				= [[yyyyyyyyyyyyyy 
+						    yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy 
+							yyyyyyyyyyyyyy]],
 	customParams		= {
 		customanims		= "boatyard",
 		wiki_subclass_comments = [[This yard can build basic naval units.
