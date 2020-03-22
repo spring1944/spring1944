@@ -1,10 +1,10 @@
 local ITA_MAS = ArmedBoat:New{
 	name					= "MAS 500 type",
 	description				= "Motor Torpedo boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.35,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1000,
-	movementClass			= "BOAT_RiverSmall",
 	collisionVolumeOffsets	= [[0.0 -16.0 -15.0]],
 	collisionVolumeScales	= [[40.0 20.0 260.0]],
 	maxDamage				= 2400,

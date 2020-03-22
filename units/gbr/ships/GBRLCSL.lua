@@ -1,6 +1,7 @@
 local GBR_LCSL = ArmedBoat:New{
 	name					= "LCS(L) Mk. 2",
 	description				= "Landing Craft Support",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.025,
 	brakeRate				= 0.01,
 	buildCostMetal			= 1900,

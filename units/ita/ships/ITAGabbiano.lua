@@ -1,6 +1,7 @@
 local ITA_Gabbiano = ArmedBoat:New{
 	name					= "Classe Gabbiano",
 	description				= "Corvette",
+	movementClass			= "BOAT_RiverLarge",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 15000,

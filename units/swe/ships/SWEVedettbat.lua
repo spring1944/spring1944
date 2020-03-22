@@ -1,6 +1,7 @@
 local SWE_Vedettbat = ArmedBoat:New{
 	name					= "Vedettbat",
 	description				= "Sea-going patrol vessel",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.025,
 	brakeRate				= 0.01,
 	buildCostMetal			= 2732,

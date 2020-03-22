@@ -1,6 +1,7 @@
 local JPN_AbTei = ArmedBoat:New{
 	name					= "Armored Boat Ab-Tei",
 	description				= "Armoured river gunboat",
+	movementClass			= "BOAT_RiverSmall",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 1425,
@@ -9,7 +10,6 @@ local JPN_AbTei = ArmedBoat:New{
 	maxDamage				= 3000,
 	maxReverseVelocity		= 0.8,
 	maxVelocity				= 1.8,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 3, -- 3 x 1fpu turrets
 	turnRate				= 50,	
 	

@@ -1,6 +1,7 @@
 local JPN_Seta = ArmedBoat:New{
 	name					= "Seta-class Gunboat",
 	description				= "Large river gunboat",
+	movementClass			= "BOAT_RiverLarge",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 7290,
@@ -9,7 +10,6 @@ local JPN_Seta = ArmedBoat:New{
 	maxDamage				= 30800,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.6,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 50,	
 	

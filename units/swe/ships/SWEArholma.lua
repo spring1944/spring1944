@@ -1,6 +1,7 @@
 local SWE_Arholma = ArmedBoat:New{
 	name					= "Arholma class",
 	description				= "Minesweeper",
+	movementClass			= "BOAT_RiverLarge",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 12850,

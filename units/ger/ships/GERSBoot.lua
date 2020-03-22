@@ -1,6 +1,7 @@
 local GER_SBoot = ArmedBoat:New{
 	name					= "SchnellBoot",
 	description				= "Motor Torpedo Boat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 2200,

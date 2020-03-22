@@ -1,6 +1,7 @@
 local SWE_T21 = ArmedBoat:New{
 	name					= "T-21 torpedo boat",
 	description				= "Motor Torpedo boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1100,
@@ -10,7 +11,6 @@ local SWE_T21 = ArmedBoat:New{
 	maxVelocity				= 5.88, -- 49 knots
 	transportCapacity		= 1, -- 1 x 1fpu turrets
 	turnRate				= 75,
-	movementClass			= "BOAT_RiverSmall",	
 	weapons = {	
 		[1] = {
 			name				= "boforsm40_20mmhe",

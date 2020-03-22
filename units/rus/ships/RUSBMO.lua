@@ -1,6 +1,7 @@
 local RUS_BMO = ArmedBoat:New{
 	name					= "BMO Class Subchaser",
 	description				= "Armoured light patrol ship",
+	movementClass			= "BOAT_RiverSmall",
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1700,

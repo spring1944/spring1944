@@ -1,6 +1,7 @@
 local JPN_TypeNo1AuxSC = ArmedBoat:New{
 	name					= "Type No.1 Class Auxiliary Subchaser",
 	description				= "Patrol boat",
+	movementClass			= "BOAT_RiverSmall",
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1500,

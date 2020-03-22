@@ -1,6 +1,7 @@
 local US_LCSL = ArmedBoat:New{
 	name					= "LCS(L) Mk. 3",
 	description				= "Landing Craft Support (Large)",
+	movementClass			= "BOAT_RiverLarge",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 6885,
@@ -9,7 +10,6 @@ local US_LCSL = ArmedBoat:New{
 	maxDamage				= 25400,
 	maxReverseVelocity		= 0.6,
 	maxVelocity				= 1.8,
-	movementClass			= "BOAT_LandingCraft",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 70,	
 	weapons = {	

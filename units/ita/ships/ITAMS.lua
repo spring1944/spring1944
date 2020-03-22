@@ -1,6 +1,7 @@
 local ITA_MS = ArmedBoat:New{
 	name					= "MS type CRDA 60 t.",
 	description				= "Large Torpedo boat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.3,
 	brakeRate				= 0.3,
 	buildCostMetal			= 1500,
