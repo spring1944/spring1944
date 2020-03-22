@@ -1,6 +1,7 @@
 local JPNT14 = ArmedBoat:New{
 	name					= "Type T-14 Motor Torpedo Boat",
 	description				= "Motor Torpedo Boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.35,
 	brakeRate				= 0.15,
 	buildCostMetal			= 1440,
@@ -10,7 +11,6 @@ local JPNT14 = ArmedBoat:New{
 	maxDamage				= 1450,
 	maxReverseVelocity		= 3.005,
 	maxVelocity				= 3.96,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 1, -- 1 x 1fpu turrets
 	turnRate				= 105,	
 	weapons = {	

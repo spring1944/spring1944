@@ -1,6 +1,7 @@
 local US_SC = ArmedBoat:New{
 	name					= "SC-497 Submarine Chaser",
 	description				= "Patrol Gunboat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 2975,
@@ -9,7 +10,6 @@ local US_SC = ArmedBoat:New{
 	maxDamage				= 9800,
 	maxReverseVelocity		= 0.7,
 	maxVelocity				= 1.56,
-	movementClass			= "BOAT_Medium",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 90,	
 	weapons = {	

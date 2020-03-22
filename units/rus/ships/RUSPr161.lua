@@ -1,6 +1,7 @@
 local RUS_Pr161 = ArmedBoat:New{
 	name					= "Pr.161 Armoured Boat",
 	description				= "Sea-going armored gunboat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 6500,
@@ -11,7 +12,6 @@ local RUS_Pr161 = ArmedBoat:New{
 	maxDamage				= 16100, 
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 7, -- 7 x 1fpu turrets
 	turnRate				= 50,	
 	weapons = {	

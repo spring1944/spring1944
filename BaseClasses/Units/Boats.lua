@@ -120,7 +120,7 @@ armoured task force in the beach.]],
 -- Composites
 local BoatMother = Boat:New{ -- used for combat boats with multiple turrets
 	iconType			= "gunboat",
-	movementClass		= "BOAT_LightPatrol",
+	movementClass		= "BOAT_RiverMedium",
 	script				= "BoatMother.lua",
 	usePieceCollisionVolumes	= true,
 

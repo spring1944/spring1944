@@ -1,16 +1,15 @@
 local US_PT103 = ArmedBoat:New{
 	name					= "PT-103 Type",
 	description				= "Patrol Torpedo Boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.3,
 	brakeRate				= 0.15,
 	buildCostMetal			= 1785,
-	movementClass			= "BOAT_RiverSmall",
 	collisionVolumeOffsets	= [[0.0 -16.0 0.0]],
 	collisionVolumeScales	= [[35.0 18.0 240.0]],
 	maxDamage				= 4000,
 	maxReverseVelocity		= 2.15,
 	maxVelocity				= 4.92, -- 41kn
-	movementClass			= "BOAT_Medium",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 100,	
 	weapons = {	

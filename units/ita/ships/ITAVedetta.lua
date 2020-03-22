@@ -1,6 +1,7 @@
 local ITA_Vedetta = ArmedBoat:New{
 	name					= "Classe Vedetta",
 	description				= "Patrol Gunboat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.075,
 	brakeRate				= 0.05,
 	buildCostMetal			= 2200,

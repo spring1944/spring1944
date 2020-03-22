@@ -1,6 +1,7 @@
 local RUS_BKA_1125 = ArmedBoat:New{
 	name					= "Pr.1125 Armored Boat",
 	description				= "Armoured river gunboat",
+	movementClass			= "BOAT_RiverSmall",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 2815,
@@ -10,7 +11,6 @@ local RUS_BKA_1125 = ArmedBoat:New{
 	maxDamage				= 2930, 
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.8,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 4, -- 4 x 1fpu turrets
 	turnRate				= 55,	
 	

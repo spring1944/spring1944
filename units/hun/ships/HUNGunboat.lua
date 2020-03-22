@@ -2,6 +2,7 @@ local HUN_Debrecen = ArmedBoat:New{
 	name					= "Armored river gunboat",
 	description				= "Large patrol ship",
 	corpse					= "HUNGunboat_dead",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 5100,
@@ -11,7 +12,6 @@ local HUN_Debrecen = ArmedBoat:New{
 	maxDamage				= 15000,
 	maxReverseVelocity		= 0.9,
 	maxVelocity				= 1.6,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 3,
 	turnRate				= 50,	
 	

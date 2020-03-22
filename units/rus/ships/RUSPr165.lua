@@ -1,6 +1,7 @@
 local RUS_Pr165_PB = ArmedBoat:New{
 	name					= "Pr.165 PB Floating Battery",
 	description				= "Mobile Fire Support Platrofm",
+	movementClass			= "BOAT_RiverSmall",
 	acceleration			= 0.05,
 	brakeRate				= 0.025,
 	buildCostMetal			= 4500,
@@ -12,7 +13,6 @@ local RUS_Pr165_PB = ArmedBoat:New{
 	maxDamage				= 3300, 
 	maxReverseVelocity		= 0.35,
 	maxVelocity				= 0.5,
-	movementClass			= "BOAT_RiverSmall",
 	transportCapacity		= 3,
 	turnRate				= 150,	
 	weapons = {	

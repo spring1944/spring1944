@@ -1,6 +1,7 @@
 local GER_T196 = ArmedBoat:New{
 	name					= "T196",
 	description				= "Training Torpedo Boat",
+	movementClass			= "BOAT_RiverLarge",
 	acceleration			= 0.15,
 	brakeRate				= 0.14,
 	buildCostMetal			= 15000,

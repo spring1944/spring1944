@@ -1,6 +1,7 @@
 local GBR_FairmileD = ArmedBoat:New{
 	name					= "Fairmile D",
 	description				= "Motor Gun/Torpedo Boat",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.25,
 	brakeRate				= 0.01,
 	buildCostMetal			= 4000,

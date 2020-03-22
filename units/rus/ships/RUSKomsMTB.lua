@@ -1,12 +1,12 @@
 local RUS_KomsMTB = ArmedBoat:New{
 	name					= "Komsomolets (Pr. 123) Class",
 	description				= "Motor Torpedo Boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1350,
 	collisionVolumeOffsets	= [[0.0 -9.0 0.0]],
 	collisionVolumeScales	= [[24.0 24.0 110.0]],
-	movementClass			= "BOAT_RiverSmall",
 	maxDamage				= 2090,
 	maxReverseVelocity		= 2.4,
 	maxVelocity				= 5.78, -- 48kn

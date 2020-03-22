@@ -1,6 +1,7 @@
 local GER_RBoot = ArmedBoat:New{
 	name					= "Raumboot",
 	description				= "Minesweeper (light patrol ship)",
+	movementClass			= "BOAT_RiverMedium",
 	acceleration			= 0.2,
 	brakeRate				= 0.15,
 	buildCostMetal			= 3873,

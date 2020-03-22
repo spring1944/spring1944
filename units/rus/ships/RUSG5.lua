@@ -1,6 +1,7 @@
 local RUS_G5 = ArmedBoat:New{
 	name					= "G-5 torpedo boat with M-8 rocket launcher",
 	description				= "Rocket artillery boat",
+	movementClass			= "BOAT_MotorTorpedo",
 	acceleration			= 0.1,
 	brakeRate				= 0.05,
 	buildCostMetal			= 1700,
