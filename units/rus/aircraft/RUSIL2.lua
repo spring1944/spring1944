@@ -10,7 +10,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 	maxElevator			= 0.002,
 	maxPitch			= 0.05,
 	maxRudder			= 0.0019,
-	maxVelocity			= 14,
+	maxVelocity			= 17,
 
 	customParams = {
 		enginesound			= "p51b-",

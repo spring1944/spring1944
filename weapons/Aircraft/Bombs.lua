@@ -21,7 +21,7 @@ local Bomb = timebombClass:New{
   commandfire        = true,
   edgeEffectiveness  = 0.1,
   name               = [[250kg Bomb]],
-  range              = 500,
+  range              = 600,
   damage = {
     default            = 30000,
   },
@@ -50,7 +50,7 @@ local Bomb100kg = timebombClass:New{
   areaOfEffect       = 160,
   name               = [[100kg Bomb]],
   model              = [[Bomb_Medium.S3O]],
-  range              = 450,
+  range              = 550,
   commandfire        = false,
     damage = {
     default            = 10000,
@@ -58,7 +58,7 @@ local Bomb100kg = timebombClass:New{
 }
 local lastBomb100kg = Bomb100kg:New{
   commandfire        = true,
-  range              = 405,
+  range              = 505,
 }
 
 -- divebomb
@@ -82,11 +82,11 @@ local Bomb50kg = divebomb:New{
     default            = 7500,
 	planes		= 5,
     },
-  range              = 300,
+  range              = 500,
 }
 local lastBomb50kg = Bomb50kg:New{
   commandfire        = true,
-  range              = 270,
+  range              = 470,
 }
 -- 250kg divebomb
 local Bomb250kg = divebomb:New{
@@ -97,7 +97,7 @@ local Bomb250kg = divebomb:New{
     default            = 27500,
 	planes		= 5,
     },
-  range              = 210,
+  range              = 410,
 }
 -- V1 Missile Explosions (GER)
 local V1 = BombClass:New{

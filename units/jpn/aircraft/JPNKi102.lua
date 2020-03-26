@@ -11,7 +11,7 @@ local JPN_Ki102 = AttackFighter:New(ArmouredPlane):New{
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
 	maxRudder			= 0.0025,
-	maxVelocity			= 13.8,
+	maxVelocity			= 16.8,
 
 	customParams = {
 		enginesound			= "yakb-",

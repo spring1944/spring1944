@@ -13,7 +13,7 @@ local ITA_FiatCR42 = Fighter:New{
 	maxElevator			= 0.0064,
 	maxPitch			= 1,
 	maxRudder			= 0.005,
-	maxVelocity			= 13.3,
+	maxVelocity			= 16.3,
 
 	customParams = {
 		enginesound			= "po2-",

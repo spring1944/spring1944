@@ -108,7 +108,7 @@ local FighterBomber = Fighter:New{
 	cruiseAlt				= 1500,
 	noChaseCategory		= "FLAG AIR MINE",
 	fireState				= 0,
-	maxElevator				= 0.001,
+	maxElevator				= 0.003,
 	maxPitch				= 0.2,
 
 	customParams = {

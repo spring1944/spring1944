@@ -7,7 +7,7 @@ local US_P47Thunderbolt = FighterBomber:New{
 	maxAileron			= 0.0044,
 	maxBank				= 0.9,
 	maxRudder			= 0.0023,
-	maxVelocity			= 17.5,
+	maxVelocity			= 20.5,
 
 	customParams = {
 		enginesound			= "p51b-",

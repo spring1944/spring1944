@@ -11,7 +11,7 @@ local SWEB18 = AttackFighter:New{
 	maxAileron			= 0.00375,
 	maxBank				= 0.9,
 	maxRudder			= 0.0025,
-	maxVelocity			= 11.2,
+	maxVelocity			= 14.2,
 
 	customParams = {
 		enginesound			= "yakb-",

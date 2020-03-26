@@ -7,7 +7,7 @@ local GER_Fw190G = FighterBomber:New{
 	maxAileron			= 0.0054,
 	maxBank				= 0.9,
 	maxRudder			= 0.003,
-	maxVelocity			= 17.5,
+	maxVelocity			= 20.5,
 
 	customParams = {
 		enginesound			= "fw190b-",

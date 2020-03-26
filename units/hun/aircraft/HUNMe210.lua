@@ -6,7 +6,7 @@ local HUN_Me210_base = {
 	maxAileron			= 0.0054,
 	maxBank				= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 17.6,
+	maxVelocity			= 21.6,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -18,7 +18,7 @@ local HUN_Me210_base = {
 local HUN_Me210 = Fighter:New(HUN_Me210_base):New{
 	name				= "Me 210Ca-1",
 	description			= "Heavy Fighter",
-	maxVelocity			= 18,
+	maxVelocity			= 27,
 	weapons = {
 		[1] = {
 			name				= "MG15120mm",
@@ -96,7 +96,7 @@ local HUN_Me210_attack = AttackFighter:New(HUN_Me210_base):New{
 	name			= "Me 210Ca-1 ground attack",
 	description		= "Ground attack aircraft",
 	cruisealt		= 1500,
-	maxVelocity			= 16,
+	maxVelocity			= 19,
 	customParams = {
 		maxammo				= 12,
 	},
