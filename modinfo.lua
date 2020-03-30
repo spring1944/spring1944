@@ -8,7 +8,6 @@ local modinfo = {
 	description					= 'Epic World War II RTS!',
 	url							= 'http://www.spring1944.net/',
 	modtype						= '1',
-	allowSepAxisCollisionTest	= true,
 }
 
 return modinfo
