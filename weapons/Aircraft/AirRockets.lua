@@ -7,11 +7,11 @@
 -- HVAR Rocket (USA)
 local HVARRocket = AirRocket:New{
   accuracy	= 50,
-  edgeEffectiveness  = 0.8,
+  edgeEffectiveness  = 0.5,
   targetBorder	   = 0,
-  areaOfEffect       = 36,
+  areaOfEffect       = 28,
   name               = [[5-Inch HVAR Rocket]],
-  range              = 700,
+  range              = 900,
   wobble             = 50,
   reloadtime         = 2.5,
   canAttackGround    = false,
@@ -20,6 +20,25 @@ local HVARRocket = AirRocket:New{
   },
   damage = {
     default            = 7000,
+  },
+}
+-- RP3 Rocket (GBR)
+local RP3Rocket = AirRocket:New{
+  accuracy	= 150,
+  edgeEffectiveness  = 0.9,
+  targetBorder	   = 0,
+  areaOfEffect       = 34,
+  name               = [[RP3 Rocket]],
+  range              = 700,
+  wobble             = 80,
+  reloadtime         = 2.5,
+  soundHitDry        = "GEN_Explo_4",
+  canAttackGround    = false,
+  customparams = {
+    damagetype         = [[explosive]],
+  },
+  damage = {
+    default            = 9000,
   },
 }
 -- RS 82 Rocket (RUS)
@@ -64,6 +83,7 @@ local AirNebelwerfer41 = AirRocket:New{
 -- Return only the full weapons
 return lowerkeys({
   HVARRocket = HVARRocket,
+  RP3Rocket = RP3Rocket,
   RS82Rocket = RS82Rocket,
   NebelAir = AirNebelwerfer41,
 })

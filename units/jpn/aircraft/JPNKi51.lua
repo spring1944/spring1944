@@ -3,7 +3,7 @@ local JPN_Ki51 = Fighter:New{
 	description			= "Ground-Attack Aircraft",
 	buildCostMetal		= 2175, -- shared with CR.42
 	maxDamage			= 240, -- shared with CR.42
-	cruiseAlt			= 1500,
+	cruiseAlt			= 1700,
 	iconType			= "bomber",
 
 	maxAcc				= 0.581,
@@ -12,7 +12,7 @@ local JPN_Ki51 = Fighter:New{
 	maxElevator			= 0.0044,
 	maxPitch			= 1,
 	maxRudder			= 0.005,
-	maxVelocity			= 13.3,
+	maxVelocity			= 15.3,
 
 	customParams = {
 		enginesound			= "po2-",

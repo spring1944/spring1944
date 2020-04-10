@@ -3,16 +3,16 @@ local SWE_B17A = Fighter:New{
 	description			= "Light Bomber",
 	buildCostMetal		= 2175, -- shared with CR.42
 	maxDamage			= 397, 
-	cruiseAlt			= 1500,
+	cruiseAlt			= 1700,
 	iconType			= "bomber",
 
-	maxAcc				= 0.581,
+	maxAcc				= 0.591,
 	maxAileron			= 0.0055,
 	maxBank				= 1.1,
 	maxElevator			= 0.0044,
 	maxPitch			= 1,
 	maxRudder			= 0.005,
-	maxVelocity			= 13.3,
+	maxVelocity			= 15.5,
 
 	customParams = {
 		enginesound			= "po2-",

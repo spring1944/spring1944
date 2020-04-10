@@ -204,7 +204,7 @@ local moveDefs 	=	 {
 		minWaterDepth			=	6,
 		crushStrength			=	5,
 		heatmapping				=	true,
-		heatProduced			=	25,
+		heatProduced			=	45,
 		allowTerrainCollisions	=	false,
 		speedModClass			=	3,
 	},

@@ -7,7 +7,7 @@ local GBR_Typhoon = AttackFighter:New{
 	maxAileron			= 0.0044,
 	maxBank				= 0.9,
 	maxRudder			= 0.0023,
-	maxVelocity			= 14,
+	maxVelocity			= 16,
 
 	customParams = {
 		enginesound			= "spitfireb-",
@@ -18,11 +18,11 @@ local GBR_Typhoon = AttackFighter:New{
 
 	weapons = {
 		[1] = {
-			name				= "HVARRocket",
+			name				= "RP3Rocket",
 			maxAngleDif			= 30,
 		},
 		[2] = {
-			name				= "HVARRocket",
+			name				= "RP3Rocket",
 			maxAngleDif			= 30,
 			slaveTo				= 1,
 		},

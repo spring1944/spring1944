@@ -7,12 +7,12 @@ local US_P51DMustangGA = AttackFighter:New{
 	maxAileron			= 0.0052,
 	maxBank				= 0.9,
 	maxRudder			= 0.003,
-	maxVelocity			= 17.5,
+	maxVelocity			= 20.5,
 
 	customParams = {
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
-		maxammo				= 6,
+		maxammo				= 8,
 
 	},
 
