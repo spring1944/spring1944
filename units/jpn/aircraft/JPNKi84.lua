@@ -9,7 +9,7 @@ local JPN_Ki84 = Fighter:New{
 	maxElevator			= 0.0039,
 	maxPitch			= 1,
 	maxRudder			= 0.0035,
-	maxVelocity			= 20.6,
+	maxVelocity			= 23.6,
 
 	customParams = {
 		enginesound			= "fw190b-",

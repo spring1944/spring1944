@@ -4,13 +4,13 @@ local SWE_J22 = Fighter:New{
 	buildCostMetal		= 1125,
 	maxDamage			= 283.5,
 		
-	maxAcc				= 0.990,
+	maxAcc				= 0.790,
 	maxAileron			= 0.0055,
 	maxBank				= 1,
 	maxElevator			= 0.0043,
 	maxPitch			= 1,
 	maxRudder			= 0.0035,
-	maxVelocity			= 21,
+	maxVelocity			= 23,
 	
 	customParams = {
 		enginesound			= "yakb-",

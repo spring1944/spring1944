@@ -9,7 +9,7 @@ local JPN_Ki43 = Interceptor:New{
 	maxElevator			= 0.0031,
 	maxPitch			= 1,
 	maxRudder			= 0.0043,
-	maxVelocity			= 19.3,
+	maxVelocity			= 22.3,
 
 	customParams = {
 		enginesound			= "yakb-",

@@ -9,7 +9,7 @@ local GER_Fw190 = Fighter:New{
 	maxElevator			= 0.0042,
 	maxPitch			= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 18.9,
+	maxVelocity			= 20.9,
 
 	customParams = {
 		enginesound			= "fw190b-",

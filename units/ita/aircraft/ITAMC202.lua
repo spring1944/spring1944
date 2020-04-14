@@ -10,7 +10,7 @@ local ITA_MC202 = Fighter:New{
 	maxElevator			= 0.004,
 	maxPitch			= 1,
 	maxRudder			= 0.00375,
-	maxVelocity			= 18.9,
+	maxVelocity			= 20.9,
 
 	customParams = {
 		enginesound			= "fw190b-",

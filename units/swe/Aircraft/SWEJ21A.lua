@@ -10,7 +10,7 @@ local SWEJ21A = Fighter:New{
 	maxElevator			= 0.0044,
 	maxPitch			= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 18.9,
+	maxVelocity			= 21.9,
 
 	customParams = {
 		enginesound			= "fw190b-",

@@ -9,7 +9,7 @@ local RUS_Yak3 = Interceptor:New{
 	maxElevator			= 0.0031,
 	maxPitch			= 1,
 	maxRudder			= 0.0023,
-	maxVelocity			= 21,
+	maxVelocity			= 24,
 
 	customParams = {
 		enginesound			= "yakb-",

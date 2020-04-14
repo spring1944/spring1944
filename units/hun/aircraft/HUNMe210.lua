@@ -6,7 +6,7 @@ local HUN_Me210_base = {
 	maxAileron			= 0.0054,
 	maxBank				= 1,
 	maxRudder			= 0.003,
-	maxVelocity			= 21.6,
+	maxVelocity			= 21,
 
 	customParams = {
 		enginesound			= "me109b-",
@@ -18,7 +18,7 @@ local HUN_Me210_base = {
 local HUN_Me210 = Fighter:New(HUN_Me210_base):New{
 	name				= "Me 210Ca-1",
 	description			= "Heavy Fighter",
-	maxVelocity			= 27,
+	maxVelocity			= 21.7,
 	weapons = {
 		[1] = {
 			name				= "MG15120mm",

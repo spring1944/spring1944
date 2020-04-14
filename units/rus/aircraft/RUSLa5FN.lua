@@ -9,7 +9,7 @@ local RUS_La5FN = Fighter:New{
 	maxElevator			= 0.0043,
 	maxPitch			= 1,
 	maxRudder			= 0.0035,
-	maxVelocity			= 21,
+	maxVelocity			= 24,
 
 	customParams = {
 		enginesound			= "yakb-",

@@ -9,7 +9,7 @@ local ITA_Reggiane2005 = Fighter:New{
 	maxElevator			= 0.006,
 	maxPitch			= 1,
 	maxRudder			= 0.004,
-	maxVelocity			= 19.6,
+	maxVelocity			= 22.6,
 
 	customParams = {
 		enginesound			= "fw190b-",

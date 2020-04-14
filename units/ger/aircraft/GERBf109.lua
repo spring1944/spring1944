@@ -9,7 +9,7 @@ local GER_Bf109 = Interceptor:New{
 	maxElevator			= 0.0036,
 	maxPitch			= 1,
 	maxRudder			= 0.002765,
-	maxVelocity			= 19.85,
+	maxVelocity			= 22.85,
 
 	customParams = {
 		enginesound			= "me109b-",
