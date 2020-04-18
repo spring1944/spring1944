@@ -9,7 +9,7 @@ local GER_Ju87G = AttackFighter:New{
 	maxAileron			= 0.00375,
 	maxBank				= 1,
 	maxRudder			= 0.0015,
-	maxVelocity			= 14,
+	maxVelocity			= 16.8,
 
 	customParams = {
 		enginesound			= "stukab-",
