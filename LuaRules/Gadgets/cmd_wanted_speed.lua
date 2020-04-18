@@ -40,7 +40,14 @@ local function SetUnitWantedSpeed(unitID, unitDefID, wantedSpeed, forceUpdate)
     end
 
     lastWantedSpeed[unitID] = wantedSpeed
-    Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxWantedSpeed", (wantedSpeed or 2000))
+	-- try to catch the exception
+	if not pcall(
+	    function()
+            Spring.MoveCtrl.SetGroundMoveTypeData(unitID, "maxWantedSpeed", (wantedSpeed or 2000))
+		end
+	) then
+		Spring.Echo("unit " .. unitID .. " has incompatible movetype for SetGroundMoveTypeData. The unit is: " .. UnitDefs[unitDefID].name)
+	end;
 end
 
 function GG.ForceUpdateWantedMaxSpeed(unitID, unitDefID)
