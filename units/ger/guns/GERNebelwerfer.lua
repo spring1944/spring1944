@@ -19,9 +19,6 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 			name				= "Nebelwerfer41",
 		},
 	},
-	customParams = {
-
-	},
 }
 
 return lowerkeys({
