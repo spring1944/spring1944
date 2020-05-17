@@ -5,6 +5,7 @@
  */
 
 // #define SIMPLE_SCHEME
+#define COOLING 0.1
 
 uniform sampler2D T;
 uniform sampler2D Q;
@@ -17,6 +18,7 @@ uniform float heating;
 void main(void) {
     vec2 C0 = gl_TexCoord[0].st;
     vec4 Ti = texture2D(T, C0);
+    vec4 Qi = texture2D(Q, C0) - vec4(COOLING);
 
 #ifndef SIMPLE_SCHEME 
     vec4 lapT = -3.0 * Ti;
@@ -44,5 +46,5 @@ void main(void) {
 #endif
 
     gl_FragColor = clamp(
-        Ti + dt * (heating * texture2D(Q, C0) + diffusion * lapT), 0.0, 1.0);
+        Ti + dt * (heating * Qi + diffusion * lapT), 0.0, 1.0);
 } 

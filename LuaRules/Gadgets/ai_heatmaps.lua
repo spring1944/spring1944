@@ -167,10 +167,11 @@ function gadget:Initialize()
     GG.SetAIHeatmapPump = set_pump
 
     -- Testing
-    new_heatmap("testing", 64, 20.0, 100.0)
+    new_heatmap("testing", 64, 30.0, 10.0)
     set_pump("testing", "pump1", Game.mapSizeX / 4.0, Game.mapSizeZ / 4.0, {r=1.0, g=0.8, b=0.6, a=1.0}, 8.0 * 64)
     set_pump("testing", "pump2", Game.mapSizeX / 1.25, Game.mapSizeZ / 1.25, {r=0.0, g=0.4, b=0.2, a=1.0}, 64)
     set_pump("testing", "pump3", Game.mapSizeX / 1.2499, Game.mapSizeZ / 1.24995, {r=1.0, g=0.0, b=0.0, a=1.0}, 64)
+    set_pump("testing", "pump4", Game.mapSizeX / 1.24, Game.mapSizeZ / 1.26, {r=0.0, g=0.0, b=0.5, a=1.0}, 8.0 * 64)
     SetDebug("ai_heatmaps", "ai_heatmaps testing", {"testing"}, nil)
 end
 
@@ -255,14 +256,16 @@ function gadget:DrawGenesis()
             a = 1.0
         end
 
-        gl.Color(r, g, b, a)
         gl.Blending(false);
+        gl.Color(r, g, b, a)
 
         gl.PushMatrix();
         gl.LoadIdentity();
 
         gl.ActiveFBO(heatmap.pump_fbo, gl.Clear, GL.COLOR_BUFFER_BIT, r, g, b, a);
+        gl.Blending("add");
         gl.ActiveFBO(heatmap.pump_fbo, DrawPumps, heatmap);
+        gl.Blending(false);
 
         -- Solve the diffusion equation
         local next_texture
