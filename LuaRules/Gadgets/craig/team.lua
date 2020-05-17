@@ -54,6 +54,10 @@ local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, Log)
 -- Flag capping
 local flagsMgr = CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
 
+-- Heatmap management
+local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
+Team.heatmapMgr = heatmapMgr
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -79,10 +83,17 @@ function Team.GameStart()
 	if waypointMgr then
 		flagsMgr.GameStart()
 	end
+	heatmapMgr.GameStart()
 	Log("Preparing to attack ", enemyBaseCount, " enemies")
 end
 
 function Team.GameFrame(f)
+	heatmapMgr.GameFrame(f)
+
+	if (f + myTeamID) % 128 > .1 then
+		return
+	end
+
 	--Log("GameFrame")
 
 	baseMgr.GameFrame(f)
@@ -183,6 +194,7 @@ function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDef
 		flagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 		combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
+	heatmapMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 end
 
 function Team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
@@ -199,6 +211,14 @@ end
 
 function Team.UnitIdle(unitID, unitDefID, unitTeam)
 	Log("UnitIdle: ", UnitDefs[unitDefID].humanName)
+end
+
+function Team.UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
+	heatmapMgr.UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
+end
+
+function Team.UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+	heatmapMgr.UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
 end
 
 --------------------------------------------------------------------------------

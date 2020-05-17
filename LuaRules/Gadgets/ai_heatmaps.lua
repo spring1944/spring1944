@@ -51,6 +51,8 @@ local function SetDebug(cmd, line, words, player)
         Error("1 parameter expected, got " .. tostring(#words))
         return true
     elseif HEATMAPS_DEBUG == words[1] then
+        HEATMAPS_DEBUG = nil
+        Log("debug disabled")
         return true
     elseif words[1] == nil then
         HEATMAPS_DEBUG = nil
@@ -61,7 +63,7 @@ local function SetDebug(cmd, line, words, player)
     end
     
     HEATMAPS_DEBUG = words[1]
-    Spring.Echo("AI heatmaps: debug set to " .. HEATMAPS_DEBUG)
+    Log("debug set to " .. HEATMAPS_DEBUG)
 
     return true
 end
@@ -75,10 +77,10 @@ local function SetupCmdChangeAIDebug()
 end
 
 local function world2tex(x, z)
-    return x / Game.mapSizeX, z / Game.mapSizeZ
+    return x / Game.mapSizeX, (Game.mapSizeZ - z) / Game.mapSizeZ
 end
 
-local function new_heatmap(name, tsize, diffusion, heating)
+local function __new_heatmap(name, tsize, diffusion, heating)
     if name == "nil" then
         Error("Cannot create a heatmap with the reserved name '" .. name .. "'")
         return false
@@ -127,10 +129,13 @@ local function new_heatmap(name, tsize, diffusion, heating)
     heatmaps[name].pump_tex = heatmaps[name].textures[3]
     heatmaps[name].pump_fbo = gl.CreateFBO({color0 = heatmaps[name].pump_tex})
 
+    Log("New heatmap : '" .. name .. "'")
+    SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
+
     return true
 end
 
-local function set_pump(name, pump_name, x, z, q, r)
+local function __set_pump(name, pump_name, x, z, q, r)
     if heatmaps[name] == nil then
         Error("Cannot find a heatmap named '" .. name .. "'")
         return false
@@ -141,6 +146,20 @@ local function set_pump(name, pump_name, x, z, q, r)
         lr = 1.0
     end
     heatmaps[name].pumps[pump_name] = {x = lx, y = ly, q = q, r = lr}
+
+    return true
+end
+
+local function __unset_pump(name, pump_name)
+    if heatmaps[name] == nil then
+        Error("Cannot find a heatmap named '" .. name .. "'")
+        return false
+    end
+    if heatmaps[name].pumps[pump_name] == nil then
+        Error("Cannot find a pump named '" .. pump_name .. "'")
+        return false
+    end
+    heatmaps[name].pumps[pump_name] = nil
 
     return true
 end
@@ -163,16 +182,19 @@ function gadget:Initialize()
     uni_diffusion = gl.GetUniformLocation(shader, "diffusion")
     uni_heating = gl.GetUniformLocation(shader, "heating")
 
-    GG.CreateAIHeatmap = new_heatmap
-    GG.SetAIHeatmapPump = set_pump
+    GG.CreateAIHeatmap = __new_heatmap
+    GG.SetAIHeatmapPump = __set_pump
+    GG.UnsetAIHeatmapPump = __unset_pump
 
     -- Testing
-    new_heatmap("testing", 64, 30.0, 10.0)
-    set_pump("testing", "pump1", Game.mapSizeX / 4.0, Game.mapSizeZ / 4.0, {r=1.0, g=0.8, b=0.6, a=1.0}, 8.0 * 64)
-    set_pump("testing", "pump2", Game.mapSizeX / 1.25, Game.mapSizeZ / 1.25, {r=0.0, g=0.4, b=0.2, a=1.0}, 64)
-    set_pump("testing", "pump3", Game.mapSizeX / 1.2499, Game.mapSizeZ / 1.24995, {r=1.0, g=0.0, b=0.0, a=1.0}, 64)
-    set_pump("testing", "pump4", Game.mapSizeX / 1.24, Game.mapSizeZ / 1.26, {r=0.0, g=0.0, b=0.5, a=1.0}, 8.0 * 64)
+    --[[
+    __new_heatmap("testing", 64, 30.0, 10.0)
+    __set_pump("testing", "pump1", Game.mapSizeX / 4.0, Game.mapSizeZ / 4.0, {r=1.0, g=0.8, b=0.6, a=1.0}, 8.0 * 64)
+    __set_pump("testing", "pump2", Game.mapSizeX / 1.25, Game.mapSizeZ / 1.25, {r=0.0, g=0.4, b=0.2, a=1.0}, 64)
+    __set_pump("testing", "pump3", Game.mapSizeX / 1.2499, Game.mapSizeZ / 1.24995, {r=1.0, g=0.0, b=0.0, a=1.0}, 64)
+    __set_pump("testing", "pump4", Game.mapSizeX / 1.24, Game.mapSizeZ / 1.26, {r=0.0, g=0.0, b=0.5, a=1.0}, 8.0 * 64)
     SetDebug("ai_heatmaps", "ai_heatmaps testing", {"testing"}, nil)
+    --]]
 end
 
 function gadget:Shutdown()
@@ -285,8 +307,8 @@ function gadget:DrawGenesis()
             -- fetching the same texel several times, impairing diffusion.
             -- Thus, we want to increase this value to something closer to 2
             -- pixels, but not too close
-            gl.Uniform(uni_dx, 1.49 / heatmap.sx)
-            gl.Uniform(uni_dy, 1.49 / heatmap.sy)
+            gl.Uniform(uni_dx, 1.25 / heatmap.sx)
+            gl.Uniform(uni_dy, 1.25 / heatmap.sy)
             gl.Uniform(uni_dt, DT)
             gl.Uniform(uni_diffusion, heatmap.diffusion)
             gl.Uniform(uni_heating, heatmap.heating)

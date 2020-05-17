@@ -109,6 +109,7 @@ include("LuaRules/Gadgets/craig/combat.lua")
 include("LuaRules/Gadgets/craig/flags.lua")
 include("LuaRules/Gadgets/craig/pathfinder.lua")
 include("LuaRules/Gadgets/craig/unitlimits.lua")
+include("LuaRules/Gadgets/craig/heatmap.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
 
@@ -244,10 +245,8 @@ function gadget:GameFrame(f)
 	end
 	
 	-- AI update
-	if f % 128 < .1 then
-		for _,t in pairs(team) do
-			t.GameFrame(f)
-		end
+	for _,t in pairs(team) do
+		t.GameFrame(f)
 	end
 end
 
@@ -327,6 +326,18 @@ function gadget:UnitIdle(unitID, unitDefID, unitTeam)
 	end
 end
 
+function gadget:UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
+	if team[unitTeam] then
+		team[unitTeam].UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
+	end
+end
+
+function gadget:UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+	if team[unitTeam] then
+		team[unitTeam].UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+	end
+end
+
 end
 
 
@@ -342,5 +353,7 @@ callInList = {
 	"UnitTaken",
 	"UnitGiven",
 	"UnitIdle",
+	"UnitEnteredLos",
+	"UnitLeftLos",
 }
 return include("LuaRules/Gadgets/craig/framework.lua")

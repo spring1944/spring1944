@@ -5,7 +5,7 @@
  */
 
 // #define SIMPLE_SCHEME
-#define COOLING 0.1
+#define COOLING 0.05
 
 uniform sampler2D T;
 uniform sampler2D Q;
