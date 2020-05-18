@@ -101,6 +101,7 @@ local MY_PLAYER_ID = Spring.GetMyPlayerID()
 
 -- globals
 waypointMgr = {}
+intelligences = {}  -- One per ally
 
 -- include code
 include("LuaRules/Gadgets/craig/buildsite.lua")
@@ -112,6 +113,7 @@ include("LuaRules/Gadgets/craig/unitlimits.lua")
 include("LuaRules/Gadgets/craig/heatmap.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
+include("LuaRules/Gadgets/craig/intelligence.lua")
 
 -- locals
 local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
@@ -184,6 +186,10 @@ function gadget:GamePreload()
 	if waypointMgr then
 		waypointMgrGameFrameRate = waypointMgr.GetGameFrameRate()
 	end
+	-- Intialise intelligence
+	for _, allyTeamID in ipairs(Spring.GetAllyTeamList()) do
+		intelligences[allyTeamID] = CreateIntelligence(allyTeamID)
+	end
 end
 
 local function CreateTeams()
@@ -238,6 +244,10 @@ function gadget:GameFrame(f)
 		-- in the team, to support random faction (implemented by swapping out HQ
 		-- in GameStart of that gadget.)
 		CreateTeams()
+
+		for _, intelligence in pairs(intelligences) do
+			intelligence.GameStart()
+		end
 	end
 	-- waypointMgr update
 	if waypointMgr and f % waypointMgrGameFrameRate < .1 then
@@ -245,6 +255,9 @@ function gadget:GameFrame(f)
 	end
 	
 	-- AI update
+	for _, intelligence in pairs(intelligences) do
+		intelligence.GameFrame(f)
+	end
 	for _,t in pairs(team) do
 		t.GameFrame(f)
 	end
@@ -296,14 +309,20 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 	if team[unitTeam] then
 		team[unitTeam].UnitFinished(unitID, unitDefID, unitTeam)
 	end
+	for _, intelligence in pairs(intelligences) do
+		intelligence.UnitFinished(unitID, unitDefID, unitTeam)
+	end
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	if waypointMgr then
 		waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
-	if team[unitTeam] then
-		team[unitTeam].UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	for teamID, t in pairs(team) do
+		t.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+	end
+	for _, intelligence in pairs(intelligences) do
+		intelligence.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 	end
 end
 
@@ -327,14 +346,20 @@ function gadget:UnitIdle(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
-	if team[unitTeam] then
-		team[unitTeam].UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
+	for _, intelligence in pairs(intelligences) do
+		intelligence.UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
 	end
 end
 
 function gadget:UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
-	if team[unitTeam] then
-		team[unitTeam].UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+	for _, intelligence in pairs(intelligences) do
+		intelligence.UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+	end
+end
+
+function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
+	for _, intelligence in pairs(intelligences) do
+		intelligence.UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
 	end
 end
 

@@ -5,7 +5,7 @@
  */
 
 // #define SIMPLE_SCHEME
-#define COOLING 0.05
+#define COOLING 0.1
 
 uniform sampler2D T;
 uniform sampler2D Q;
@@ -18,7 +18,15 @@ uniform float heating;
 void main(void) {
     vec2 C0 = gl_TexCoord[0].st;
     vec4 Ti = texture2D(T, C0);
-    vec4 Qi = texture2D(Q, C0) - vec4(COOLING);
+    vec4 Qi = texture2D(Q, C0);
+    if (Qi.x <= 0.0)
+        Qi.x = -COOLING;
+    if (Qi.y <= 0.0)
+        Qi.y = -COOLING;
+    if (Qi.z <= 0.0)
+        Qi.z = -COOLING;
+    if (Qi.w <= 0.0)
+        Qi.w = -COOLING;
 
 #ifndef SIMPLE_SCHEME 
     vec4 lapT = -3.0 * Ti;

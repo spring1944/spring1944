@@ -86,7 +86,7 @@ local function __new_heatmap(name, tsize, diffusion, heating)
         return false
     end
     if heatmaps[name] ~= nil then
-        Error("Already exists a heatmap named '" .. name .. "'")
+        Warning("Already exists a heatmap named '" .. name .. "'")
         return false
     end
     local tile_size = math.floor(tsize)
@@ -156,7 +156,6 @@ local function __unset_pump(name, pump_name)
         return false
     end
     if heatmaps[name].pumps[pump_name] == nil then
-        Error("Cannot find a pump named '" .. pump_name .. "'")
         return false
     end
     heatmaps[name].pumps[pump_name] = nil

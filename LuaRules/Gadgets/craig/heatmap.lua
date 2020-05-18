@@ -9,16 +9,14 @@ Public interface:
 
 function HeatmapMgr.GameStart()
 function HeatmapMgr.GameFrame(f)
-function HeatmapMgr.UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
-function HeatmapMgr.UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
 function HeatmapMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 ]]--
 
 function CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
 
-local UNITS_PER_FRAME = 100
-local F_D, F_P, F_A = 1.0 / 20000.0, 1.0 / 200.0, 1.0 / 100000.0
-local F_H = 1.0 / 50000.0
+local UNITS_PER_FRAME = 5
+local F_D, F_P, F_A = 1e-8, 1.0 / 50.0, 1e-8
+local F_H = 2e-9
 local HeatmapMgr = {}
 
 local armourTypesByKey = {}
@@ -28,6 +26,7 @@ for i, armourType in ipairs(Game.armorTypes) do
     armourTypesByKey[armourType] = i
 end
 local units = {}
+local intelligence
 
 local function parse_unit_heat(unitID, unitDefID)
     local unitDef = UnitDefs[unitDefID]
@@ -42,7 +41,7 @@ local function parse_unit_heat(unitID, unitDefID)
     -- In the red channel we have the firepower, which is a combination of the
     -- potential damage, d, the penetration, p, the reloading time, t, and the
     -- inaccuracy, a:
-    --   firepower = F_D * (1 + F_P * p) * d / t - F_A * a
+    --   firepower = sqrt(F_D * (1 + F_P * p) * d / t - F_A * a)
     -- We need to create a heat source for each weapon
     local unit_radius = 1
     for i = 1, #unitDef.weapons do
@@ -56,27 +55,35 @@ local function parse_unit_heat(unitID, unitDefID)
                   0
         local t = weaponDef.reload / (weaponDef.salvoSize * weaponDef.projectiles)
         local a = weaponDef.accuracy
-        local r = weaponDef.range
-        if r > unit_radius then
-            unit_radius = r
+        local radius = weaponDef.range
+        if radius > unit_radius then
+            unit_radius = radius
         end
-        heats[name] = {x = x, z = z, radius = r,
-                       r = F_D * (1 + F_P * p) * d / t - F_A * a,
-                       g = 0.0, b = 0.0, a = 0.0}
+        local r = math.sqrt(F_D * (1 + F_P * p) * d / t - F_A * a)
+        heats[name] = {x = x, z = z, radius = radius,
+                       r = r, g = 0.0, b = 0.0, a = 0.0}
     end
 
-    -- In the blue channel we are storing the firepower to vanquish the unit,
+    -- In the green channel we are storing the firepower to vanquish the unit,
     -- as a function of the health points, h, and armors, af, as, ar
-    --   resistance = F_H * (1 + F_P * (af + as + ar) / 3) * h
-    local name = tostring(unitID)
+    --   resistance = sqrt(F_H * (1 + F_P * (af + as + ar) / 3) * h)
+    local name = tostring(unitID) .. ".health"
     local af = unitDef.customParams.armor_front or 0
     local as = unitDef.customParams.armor_side or 0
     local ar = unitDef.customParams.armor_rear or 0
     local a = (af + as + ar) / 3.0
     local h = Spring.GetUnitHealth(unitID)
+    local g = math.sqrt(F_H * (1 + F_P * a) * h)
     heats[name] = {x = x, z = z, radius = unit_radius,
-                   g = F_H * (1 + F_P * a) * h,
-                   r = 0.0, b = 0.0, a = 0.0}
+                   r = 0.0, g = g, b = 0.0, a = 0.0}
+
+    -- In the blue channel we are storing the LOS
+    if Spring.GetUnitAllyTeam(unitID) == myAllyTeamID then
+        local name = tostring(unitID) .. ".los"
+        heats[name] = {x = x, z = z,
+                       radius = Spring.GetUnitSensorRadius(unitID, "los"),
+                       r = 0.0, g = 0.0, b = 1.0, a = 0.0}
+    end
 
     return heats
 end
@@ -92,19 +99,28 @@ function HeatmapMgr.GameStart()
     -- team already did the job
     HeatmapMgr.hmap_name = "craig." .. tostring(myAllyTeamID) .. ".ground"
     GG.CreateAIHeatmap(HeatmapMgr.hmap_name, 64, 1.0, 1.0)
+    intelligence = gadget.intelligences[myAllyTeamID]
 end
 
 local first_unit = 1
 
 function HeatmapMgr.GameFrame(f)
+    local parsing = {}
+
     local team_units = Spring.GetTeamUnits(myTeamID)
     if first_unit > #team_units then
         first_unit = 1
     end
-
     local last_unit = math.min(first_unit + UNITS_PER_FRAME - 1, #team_units)
     for i = first_unit, last_unit do
-        local unitID = team_units[i]
+        parsing[#parsing + 1] = team_units[i]
+    end
+
+    for _, unitID in ipairs(intelligence.GetUnits(UNITS_PER_FRAME)) do
+        parsing[#parsing + 1] = unitID
+    end
+
+    for _, unitID in ipairs(parsing) do
         if Spring.ValidUnitID(unitID) and not Spring.GetUnitIsDead(unitID) then
             local unitDefID = Spring.GetUnitDefID(unitID)
             local heats = parse_unit_heat(unitID, unitDefID)
@@ -123,19 +139,16 @@ function HeatmapMgr.GameFrame(f)
 end
 
 function HeatmapMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    if units[unitID] ~= nil then
-        for name, _ in pairs(units[unitID]) do
-            GG.UnsetAIHeatmapPump(HeatmapMgr.hmap_name, name)
-        end
-
-        units[unitID] = nil
+    if units[unitID] == nil then
+        return
     end
-end
 
-function HeatmapMgr.UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)
-end
-
-function HeatmapMgr.UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)
+    for name, _ in pairs(units[unitID]) do
+        -- This opeartion may potentially fail since several teams handle the
+        -- same heatmap. We are just simply not checking for eventual errors
+        GG.UnsetAIHeatmapPump(HeatmapMgr.hmap_name, name)
+    end
+    units[unitID] = nil
 end
 
 --------------------------------------------------------------------------------
