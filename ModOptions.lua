@@ -245,6 +245,24 @@ local options = {
 	},
 	
 	{
+		key = "sloped_armour",
+		name = "Sloped Armour",
+		desc = "Armour values vary dynamically by angle.",
+		type = "bool",
+		section = '4other',
+		def = true,
+	},
+	
+	{
+		key = "sloped_armour_debug",
+		name = "Sloped Armour Debugger",
+		desc = "Enables debugging echoes",
+		type = "bool",
+		section = '4other',
+		def = true,
+	},
+	
+	{
 		key = "gm_team_enable",
 		name = "Enable Sandbox/GM tools faction",
 		desc = "Allows the sandbox/game master tools faction to spawn, rather than changing to a random team (key = 'gm_team_enable')",
