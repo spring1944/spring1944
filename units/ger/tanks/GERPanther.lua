@@ -30,10 +30,13 @@ local GERPanther = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 113,
-		armor_rear			= 47,
-		armor_side			= 49,
-		armor_top			= 16,
+		armor_front			= 82,
+		armor_rear			= 40,
+		armor_side			= 50,
+		armor_top			= 17,
+		slope_front			= 55,
+		slope_rear			= -24,
+		slope_side			= 30,
 		maxammo				= 15,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 46,
