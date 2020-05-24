@@ -26,10 +26,13 @@ local HUNToldiII = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 35,
+		armor_front			= 13,
 		armor_rear			= 13,
 		armor_side			= 13,
 		armor_top			= 5,
+		slope_front			= 30,
+		slope_rear			= -33,
+		slope_side			= 15,
 		maxammo				= 24,
 		maxvelocitykmh		= 48,
 		barrelrecoildist		= 2,
@@ -75,7 +78,7 @@ local HUNToldiIIA = HUNToldiII:New{
 		},
 	},
 	customParams = {
-
+		armor_front			= 23,
 	},
 }
 

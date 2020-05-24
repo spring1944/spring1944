@@ -30,10 +30,12 @@ local HUN40MTuran = MediumTank:New{
 	},
 
 	customParams = {
-		armor_front			= 55,
+		armor_front			= 50,
 		armor_rear			= 25,
 		armor_side			= 25,
-		armor_top			= 15,
+		armor_top			= 13,
+		slope_front			= 18,
+		slope_side			= 10,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 
@@ -76,10 +78,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 	},
 	
 	customParams = {
-		armor_front			= 55,
-		armor_rear			= 25,
-		armor_side			= 35,
-		armor_top			= 15,
+		armor_side			= 33, --+ 8mm skirts
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHEATHE",
@@ -117,10 +116,9 @@ local HUN43MTuranIII = HUN41MTuranII:New{
 	},
 	
 	customParams = {
-		armor_front			= 80,
-		armor_rear			= 25,
+		armor_front			= 75,
+		armor_rear			= 35,
 		armor_side			= 35,
-		armor_top			= 15,
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHE",

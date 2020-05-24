@@ -17,9 +17,12 @@ local JPNType5NaTo = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 	},
 	customParams = {
 		armor_front			= 12,
-		armor_rear			= 10,
-		armor_side			= 10,
+		armor_rear			= 4,
+		armor_side			= 12,
 		armor_top			= 0,
+		slope_front			= 25,
+		slope_rear			= 1,
+		
 		maxammo				= 6,
 		maxvelocitykmh		= 40,
 		exhaust_fx_name		= "diesel_exhaust",

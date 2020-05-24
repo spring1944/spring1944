@@ -18,10 +18,13 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 18,
-		armor_rear			= 14,
-		armor_side			= 13,
+		armor_front			= 15,
+		armor_rear			= 15,
+		armor_side			= 15,
 		armor_top			= 4,
+		slope_front			= 25,
+		slope_rear			= -7,
+		slope_side			= 15,
 		maxammo				= 6,
 		maxvelocitykmh		= 40,
 

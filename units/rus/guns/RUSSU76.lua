@@ -19,10 +19,12 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 29,
-		armor_rear			= 17,
-		armor_side			= 12,
+		armor_front			= 25,
+		armor_rear			= 15,
+		armor_side			= 15,
 		armor_top			= 7,
+		slope_front			= 60,
+
 		maxammo				= 11,
 		maxvelocitykmh		= 45,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",

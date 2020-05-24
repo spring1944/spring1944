@@ -33,10 +33,12 @@ local USM8Greyhound = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 18,
-		armor_rear			= 11,
-		armor_side			= 11,
-		armor_top			= 3,
+		armor_front			= 13,
+		armor_rear			= 5,
+		armor_side			= 10,
+		armor_top			= 6,
+		slope_front			= 59,
+		slope_side			= 19,
 		maxammo				= 15,
 		turretturnspeed		= 12, -- manual
 		maxvelocitykmh		= 89,

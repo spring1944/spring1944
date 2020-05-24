@@ -10,6 +10,9 @@ local JPNHoHa = HalfTrack:New{
 		armor_rear				= 8,
 		armor_side				= 10,
 		armor_top				= 0,
+		slope_front			= 39,
+		slope_side			= 31,
+
 		maxvelocitykmh			= 50,
 		exhaust_fx_name			= "diesel_exhaust",
 

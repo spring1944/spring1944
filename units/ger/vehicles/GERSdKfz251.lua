@@ -22,6 +22,9 @@ local GERSdKfz251 = HalfTrack:New{
 		armor_rear			= 9,
 		armor_side			= 10,
 		armor_top			= 0,
+		slope_front			= 18,
+		slope_rear			= -30,
+		slope_side			= 35,
 		maxvelocitykmh		= 52.5,
 
 	},

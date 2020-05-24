@@ -25,10 +25,12 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 57,
-		armor_rear			= 16,
-		armor_side			= 30,
+		armor_front			= 17,
+		armor_rear			= 14,
+		armor_side			= 25,
 		armor_top			= 8,
+		slope_front			= 58,
+		slope_rear			= -10,
 		maxammo				= 10,
 		turretturnspeed		= 32, -- 11s for 360
 		maxvelocitykmh		= 66,

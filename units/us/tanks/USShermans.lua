@@ -29,10 +29,12 @@ local ShermanBase = MediumTank:New{
 	},
 	
 	customParams = {
-		armor_front			= 70,
-		armor_rear			= 41,
-		armor_side			= 41,
-		armor_top			= 21,
+		armor_front			= 64,
+		armor_rear			= 38,
+		armor_side			= 38,
+		armor_top			= 20,
+		slope_front			= 47,
+		slope_rear			= 11,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
 
@@ -67,10 +69,8 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	maxDamage			= 4267,
 	
 	customParams = {
-		armor_front			= 156,
-		armor_rear			= 40,
+		armor_front			= 102,--38+64
 		armor_side			= 76,
-		armor_top			= 21,
 		maxvelocitykmh		= 35,
 		normaltex			= "unittextures/USM4Jumbo_normals.dds",
 	},
@@ -94,8 +94,6 @@ local USM4A376Sherman = ShermanBase:New{
 	},
 	
 	customParams = {
-		armor_rear			= 44,
-		armor_side			= 43,
 		maxammo				= 14,
 		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
@@ -117,8 +115,6 @@ local USM4A3105Sherman = ShermanBase:New{
 	},
 	
 	customParams = {
-		armor_rear			= 32,
-		armor_side			= 50,
 		maxammo				= 12,
 		weapontoggle		= "smoke",
 		cabfiresmoke		= true,

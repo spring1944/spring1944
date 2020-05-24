@@ -30,10 +30,13 @@ local ITAP40 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 61,
+		armor_front			= 50,
 		armor_rear			= 40,
 		armor_side			= 45,
-		armor_top			= 20,
+		armor_top			= 15, -- engine deck
+		slope_front			= 45,
+		slope_rear			= -40,
+		slope_side			= 35,
 		maxammo				= 19,
 		maxvelocitykmh		= 40,
 		turretturnspeed		= 22,

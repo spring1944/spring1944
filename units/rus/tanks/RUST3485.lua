@@ -29,10 +29,13 @@ local RUST3485 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 90,
-		armor_rear			= 59,
-		armor_side			= 56,
-		armor_top			= 20,
+		armor_front			= 45,
+		armor_rear			= 40,
+		armor_side			= 40,
+		armor_top			= 16,
+		slope_front			= 60,
+		slope_rear			= 47,
+		slope_side			= 40,
 		maxammo				= 11,
 		turretturnspeed		= 17, -- 21.1s for 360
 		maxvelocitykmh		= 48,

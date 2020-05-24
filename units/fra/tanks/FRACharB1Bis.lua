@@ -41,9 +41,10 @@ local FRACharB1Bis = MediumTank:New{
 	},
 	customParams = {
 		armor_front			= 60,
-		armor_rear			= 55,
-		armor_side			= 60,
+		armor_rear			= 50,
+		armor_side			= 55,
 		armor_top			= 25,
+		slope_front			= 42,
 		maxammo				= 24,
 
 		barrelrecoildist		= 1,

@@ -13,6 +13,7 @@ local Lorraine38L = HalfTrack:New{
 		armor_rear			= 16,
 		armor_side			= 9,
 		armor_top			= 0,
+		slope_front			= 66,
 		maxvelocitykmh		= 37,
 		customanims			= "lorraine38l",
 

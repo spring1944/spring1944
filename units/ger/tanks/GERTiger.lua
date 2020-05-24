@@ -29,10 +29,12 @@ local GERTiger = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 103,
-		armor_rear			= 81,
-		armor_side			= 71,
-		armor_top			= 25,
+		armor_front			= 102,
+		armor_rear			= 82,
+		armor_side			= 82,
+		armor_top			= 26,
+		slope_front			= 9,
+		slope_rear			= -9,
 		maxammo				= 17,
 		turretturnspeed		= 12, -- 60s for 360
 		maxvelocitykmh		= 45.4,

@@ -30,10 +30,13 @@ local GERPuma = HeavyArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 37,
-		armor_rear			= 11,
-		armor_side			= 10,
-		armor_top			= 8,
+		armor_front			= 30,
+		armor_rear			= 10,
+		armor_side			= 8,
+		armor_top			= 5,
+		slope_front			= 55,
+		slope_rear			= 46,
+		slope_side			= 34,
 		maxammo				= 10,
 		turretturnspeed		= 12, -- manual
 		reversemult			= 0.75,

@@ -5,11 +5,13 @@ local StrvM42Base = {
 
 
 	customParams = {
-		armor_front			= 64,
-		armor_rear			= 23,
-		armor_side			= 30,
+		armor_front			= 55,
+		armor_rear			= 20,
+		armor_side			= 25,
 		armor_top			= 9,
-
+		slope_front			= 28,
+		slope_rear			= -29,
+		slope_side			= 30,
 	},
 }
 

@@ -4,10 +4,13 @@ local ChiHaBase = LightTank:New{
 	trackWidth			= 14,
 	
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 25,
+		armor_front			= 25,
+		armor_rear			= 20,
 		armor_side			= 25,
 		armor_top			= 11,
+		slope_front			= 31,
+		slope_rear			= 25,
+		slope_side			= 40,
 		maxvelocitykmh		= 38,
 		exhaust_fx_name			= "diesel_exhaust",
 

@@ -21,9 +21,13 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 	},
 	customParams = {
 		armor_front			= 90,
-		armor_rear			= 80,
-		armor_side			= 86,
+		armor_rear			= 60,
+		armor_side			= 75,
 		armor_top			= 30,
+		slope_front			= 29,
+		slope_rear			= 50,
+		slope_side			= 15,
+
 		maxammo				= 4,
 		soundcategory		= "RUS/Tank/Zveroboy",
 		weapontoggle		= false,

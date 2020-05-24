@@ -29,10 +29,11 @@ local GBRCromwell = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 71,
-		armor_rear			= 37,
-		armor_side			= 37,
-		armor_top			= 20,
+		armor_front			= 64,
+		armor_rear			= 32,
+		armor_side			= 25,
+		armor_top			= 14,
+		slope_front			= 1,
 		maxammo				= 12,
 		turretturnspeed		= 25, -- 14-15s for 360
 		maxvelocitykmh		= 64,

@@ -19,6 +19,9 @@ local RUSBA64 = ArmouredCar:New{
 		armor_rear			= 4,
 		armor_side			= 6,
 		armor_top			= 4,
+		slope_front			= 38,
+		slope_rear			= 26,
+		slope_side			= 34,
 		maxvelocitykmh		= 80,
 		normaltex			= "unittextures/RUSBA64_normals.dds",
 	}

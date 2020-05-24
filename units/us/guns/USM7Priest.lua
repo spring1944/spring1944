@@ -18,10 +18,12 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 23,
-		armor_rear			= 13,
+		armor_front			= 38,
+		armor_rear			= 38,
 		armor_side			= 19,
-		armor_top			= 25,
+		armor_top			= 13,
+		slope_front			= 55,
+		slope_rear			= -15,
 		maxammo				= 13,
 		maxvelocitykmh		= 39,
 

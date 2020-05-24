@@ -27,10 +27,12 @@ local FRAR35 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 40,
-		armor_rear			= 32,
+		armor_front			= 32,
+		armor_rear			= 40,
 		armor_side			= 40,
 		armor_top			= 25,
+		slope_front			= 13,
+		slope_rear			= 24,
 		maxammo				= 24,
 
 		barrelrecoildist		= 1,
@@ -65,8 +67,13 @@ local FRAH35 = FRAR35:New{
 	buildCostMetal		= 1700,
 	objectName			= "FRA/FRAH35.s3o",
 	customParams = {
-		armor_rear		= 30,
-		armor_top		= 12,
+		armor_front			= 34,
+		armor_rear			= 34,
+		armor_side			= 34,
+		armor_top			= 22,
+		slope_front			= 8,
+		slope_side			= 20,
+		slope_rear			= 31,
 		maxvelocitykmh	= 25,
 		customanims	= "hotchkiss_h",
 	},
@@ -85,9 +92,11 @@ local FRAH39 = FRAH35:New{
 			name		= "FRA37mmSA38HE",
 		},		
 	},
-	-- Front armor upgraded to 45mm
+	-- armor upgraded to 40mm
 	customParams = {
-		armor_front	= 45,
+		armor_front	= 40,
+		armor_side	= 40,
+		armor_rear	= 40,
 	},
 }
 

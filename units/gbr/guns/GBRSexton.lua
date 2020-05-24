@@ -15,10 +15,11 @@ local GBRSexton = MediumTank:New(SPArty):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 63,
-		armor_rear			= 38,
-		armor_side			= 38,
-		armor_top			= 6,
+		armor_front			= 19, -- superstructure
+		armor_rear			= 38, -- hull
+		armor_side			= 13, -- superstructure
+		armor_top			= 0,
+		slope_front			= 25,
 		maxammo				= 21,
 		maxvelocitykmh		= 40,
 		normaltex			= "unittextures/GBRSexton_normals.dds",

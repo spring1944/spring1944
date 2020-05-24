@@ -18,10 +18,11 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
+		armor_front			= 13,
 		armor_rear			= 6,
 		armor_side			= 8,
 		armor_top			= 6,
+		slope_front			= 31,
 		maxammo				= 9,
 		maxvelocitykmh		= 40,
 		flagCapRate			= 0.5,

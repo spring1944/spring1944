@@ -20,9 +20,12 @@ local ITASemovente75_18 = MediumTank:New(AssaultGun):New{
 	},
 	customParams = {
 		armor_front			= 50,
-		armor_rear			= 25,
+		armor_rear			= 27,
 		armor_side			= 25,
 		armor_top			= 15,
+		slope_front			= 4,
+		slope_rear			= -20,
+		slope_side			= 8,
 		maxammo				= 14,
 		maxvelocitykmh		= 40,
 		exhaust_fx_name			= "diesel_exhaust",

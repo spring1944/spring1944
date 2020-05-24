@@ -10,10 +10,13 @@ local ITAAS37 = HalfTrack:New{
 	trackWidth				= 15,
 	
 	customParams = {
-		armor_front				= 10,
+		armor_front				= 9,
 		armor_rear				= 7,
 		armor_side				= 6,
 		armor_top				= 0,
+		slope_front			= 30,
+		slope_rear			= 10,
+		slope_side			= 19,
 		maxvelocitykmh			= 52,
 
 	},

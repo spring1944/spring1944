@@ -20,10 +20,13 @@ local USM10Wolverine = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 60,
-		armor_rear			= 25,
-		armor_side			= 25,
-		armor_top			= 19,
+		armor_front			= 38,
+		armor_rear			= 19,
+		armor_side			= 19,
+		armor_top			= 10,
+		slope_front			= 55,
+		slope_rear			= 28,
+		slope_side			= 38,
 		maxammo				= 13,
 		turretturnspeed		= 10, -- Manual traverse 45s
 		maxvelocitykmh		= 48,

@@ -26,10 +26,13 @@ local GBRDaimler = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
+		armor_front			= 14,
 		armor_rear			= 14,
-		armor_side			= 11,
+		armor_side			= 10,
 		armor_top			= 8,
+		slope_front			= 39,
+		slope_rear			= -23,
+		slope_side			= 31,
 		maxammo				= 13,
 		reversemult			= 0.75,
 		turretturnspeed		= 20, -- manual, light turret

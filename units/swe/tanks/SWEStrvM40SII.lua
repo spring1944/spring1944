@@ -27,10 +27,13 @@ local SWEStrvM40SII = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 50, -- 13+35~63d,  13 + 30mm @ 32d gives 81!
-		armor_rear			= 18,
-		armor_side			= 18,
+		armor_front			= 43,
+		armor_rear			= 13,
+		armor_side			= 13,
 		armor_top			= 5,
+		slope_front			= 58,
+		slope_rear			= -35,
+		slope_side			= 16,
 		maxammo				= 18,
 		maxvelocitykmh		= 46,
 

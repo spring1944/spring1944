@@ -15,10 +15,14 @@ local RUSSU85 = MediumTank:New(TankDestroyer):New{
 		},
 	},
 	customParams = {
-		armor_front			= 77,
-		armor_rear			= 48,
-		armor_side			= 46,
+		armor_front			= 45,
+		armor_rear			= 45,
+		armor_side			= 45,
 		armor_top			= 20,
+		slope_front			= 49,
+		slope_rear			= 48,
+		slope_side			= 18,
+
 		maxammo				= 9,
 		maxvelocitykmh		= 55,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",

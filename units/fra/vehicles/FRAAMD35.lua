@@ -28,10 +28,12 @@ local FRAAMD35 = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 20,
+		armor_front			= 15,
 		armor_rear			= 15,
 		armor_side			= 15,
 		armor_top			= 7,
+		slope_front			= 66,
+		slope_rear			= -2,
 
 		barrelrecoildist	= 1,
 

@@ -27,11 +27,13 @@ local SWEStrvM41 = LightTank:New{
 			name				= ".50calproof",
 		},
 	},
-	customParams = { -- TODO: armour values are made up based on 'better than m/40'
+	customParams = {
 		armor_front			= 50,
 		armor_rear			= 15,
-		armor_side			= 15,
+		armor_side			= 20,
 		armor_top			= 8,
+		slope_front			= 19,
+		slope_rear			= 15,
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
 

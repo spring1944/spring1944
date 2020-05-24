@@ -20,10 +20,13 @@ local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 25,
+		armor_front			= 25,
+		armor_rear			= 20,
 		armor_side			= 25,
 		armor_top			= 0,
+		slope_front			= 23,
+		slope_rear			= 25,
+		
 		maxammo				= 4,
 		weapontoggle		= "smoke",
 		canfiresmoke		= true,

@@ -26,6 +26,9 @@ local SWEStrvM37 = Tankette:New{
 		armor_rear			= 10,
 		armor_side			= 10,
 		armor_top			= 4,
+		slope_front			= 68,
+		slope_rear			= 15,
+		slope_side			= 14,
 		maxvelocitykmh		= 60,
 
 	},

@@ -16,10 +16,12 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 10,
-		armor_rear			= 10,
-		armor_side			= 13,
-		armor_top			= 10,
+		armor_front			= 19, -- superstructure + gunshield
+		armor_rear			= 15,
+		armor_side			= 11,
+		armor_top			= 12,
+		slope_front			= 31,
+		slope_side			= 8,
 		maxammo				= 6,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 42,

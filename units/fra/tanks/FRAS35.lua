@@ -33,10 +33,13 @@ local FRAS35 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 39,
-		armor_rear			= 30,
-		armor_side			= 35,
-		armor_top			= 15,
+		armor_front			= 47,
+		armor_rear			= 35,
+		armor_side			= 38,
+		armor_top			= 25,
+		slope_front			= 23,
+		slope_rear			= 29,
+		slope_side			= 20,
 		maxammo				= 24,
 
 		barrelrecoildist		= 1,

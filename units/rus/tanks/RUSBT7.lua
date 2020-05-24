@@ -25,9 +25,11 @@ local RUSBT7 = LightTank:New{
 	},
 	customParams = {
 		armor_front			= 20,
-		armor_rear			= 10,
+		armor_rear			= 103
 		armor_side			= 15,
 		armor_top			= 10,
+		slope_front			= 18,
+		slope_rear			= -16,
 		maxammo				= 18,
 		maxvelocitykmh		= 52,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",

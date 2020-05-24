@@ -11,6 +11,9 @@ local SWETgBilM42 = HalfTrack:New{
 		armor_rear				= 8,
 		armor_side				= 8,
 		armor_top				= 0,
+		slope_front				= 25,
+		slope_rear				= 37,
+		slope_side				= 25, -- guesstimate
 		maxvelocitykmh			= 70,
 
 	},

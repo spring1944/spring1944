@@ -21,10 +21,13 @@ local SWESAVM43 = LightTank:New(AssaultGun):New{
 		},
 	},
 	customParams = {
-		armor_front			= 55,
+		armor_front			= 50,
 		armor_rear			= 15,
 		armor_side			= 13,
 		armor_top			= 13,
+		slope_front			= 24,
+		slope_rear			= 13,
+		slope_side			= 14,
 		maxammo				= 11,
 		maxvelocitykmh		= 43,
 
