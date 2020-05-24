@@ -16,7 +16,7 @@ end
 --config
 ------------------------------------------------
 local dist = 32
-local fontSizeWorld = 12
+local fontSizeWorld = 10--12
 local fontSizeScreen = 24
 local lineWidth = 1
 local maxArmor = 120
@@ -101,12 +101,20 @@ local function GetDamageColor(percentage)
 	return {red, green, 0}
 end
 
+local function GetArmorString(a, suffix, s)
+	return a .. suffix .. "\n@" .. s .. "°"
+end
+
+local function GetDamageString(a, suffix)
+	return a .. suffix
+end
+
 local function forwardArmorTranslation(x)
   return x ^ ARMOR_POWER
 end
 
-local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
-	local front, side, rear, top = unpack(textTable)
+local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction, suffix)
+	local front, side, rear, top, fslope, sslope, rslope = unpack(textTable)
 	local tx, ty, tz = GetUnitPosition(unitID)
 	local frontdir, updir, rightdir = GetUnitVectors(unitID)
 
@@ -146,7 +154,7 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 			glPushMatrix()
 				glTranslate(frontdir[1] * dist, frontdir[2] * dist, frontdir[3] * dist)
 				glBillboard()
-				font:Print(front .. suffix, 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(front, suffix, fslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 
@@ -155,13 +163,13 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 			glPushMatrix()
 				glTranslate(rightdir[1] * dist, rightdir[2] * dist, rightdir[3] * dist)
 				glBillboard()
-				font:Print(side .. suffix, 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(side, suffix, sslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		
 			glPushMatrix()
 				glTranslate(-rightdir[1] * dist, -rightdir[2] * dist, -rightdir[3] * dist)
 				glBillboard()
-				font:Print(side .. suffix, 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(side, suffix, sslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 		
@@ -170,7 +178,7 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, suffix)
 			glPushMatrix()
 				glTranslate(-frontdir[1] * dist, -frontdir[2] * dist, -frontdir[3] * dist)
 				glBillboard()
-				font:Print(rear .. suffix, 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(rear, suffix, rslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 
@@ -261,6 +269,9 @@ function widget:Initialize()
 			local armor_side = cp.armor_side or armor_front
 			local armor_rear = cp.armor_rear or armor_side
 			local armor_top = cp.armor_top or armor_rear
+			local slope_front = math.rad(cp.slope_front or 0)
+			local slope_side = math.rad(cp.slope_side or 0)
+			local slope_rear = math.rad(cp.slope_rear or 0)
 			
 			unitInfos[unitDefID] = {
 				forwardArmorTranslation(armor_front),
@@ -269,6 +280,9 @@ function widget:Initialize()
 				forwardArmorTranslation(armor_top),
 				unitDef.armorType,
 				armorTypes[unitDef.armorType],
+				slope_front,
+				slope_side,
+				slope_rear,
 			}
 		end
 	end
@@ -373,7 +387,7 @@ function widget:DrawWorld()
 						end
 					end
 					
-					DrawValuesOnUnit(mouseTarget, totalDamage, GetDamageColor, "%")
+					DrawValuesOnUnit(mouseTarget, totalDamage, GetDamageColor, GetDamageString, "%")
 					return
 				end
 			end
@@ -382,8 +396,11 @@ function widget:DrawWorld()
 				customParams.armor_side or armor_front,
 				customParams.armor_rear or armor_side,
 				customParams.armor_top or armor_rear,
+				customParams.slope_front or 0,
+				customParams.slope_side or 0,
+				customParams.slope_rear or 0,
 			}
-			DrawValuesOnUnit(mouseTarget, textTable, GetArmorColor, "mm")
+			DrawValuesOnUnit(mouseTarget, textTable, GetArmorColor, GetArmorString, "mm")
 		end
 	end
 end
