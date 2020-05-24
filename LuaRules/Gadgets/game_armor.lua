@@ -174,6 +174,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
  -- Limit impulse from crush damage; reduce crush damage
 	if weaponDefID == -7 then 
 			return damage * 0.1, 0.01 
+	elseif not projectileID then
+		return damage
 	end
 	-- check if damage was done by a weapon (not falling or debris)
 	if not weaponDefID or weaponDefID < 0 or not ValidUnitID(unitID) then return damage end
@@ -342,6 +344,8 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function gadget:GameOver()
-	Spring.Log('armour gadget', 'info', "Base Hits: " .. baseHits)
-	Spring.Log('armour gadget', 'info', "Turret Hits: " .. turretHits)
+	--Spring.Log('armour gadget', 'info', "Base Hits: " .. baseHits)
+	--Spring.Log('armour gadget', 'info', "Turret Hits: " .. turretHits)
+	Spring.Echo("Base Hits: " .. baseHits)
+	Spring.Echo("Turret Hits: " .. turretHits)
 end
