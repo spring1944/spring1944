@@ -81,6 +81,7 @@ local weaponInfos = {}
 -- counters for piece hits
 local turretHits = 0
 local baseHits = 0
+local hits = {} -- unitdefID = {base, turret}
 
 -- Remember where projectile owners were when they were spawned
 local ownerPos = {}
@@ -205,6 +206,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if not unitInfo or not weaponInfo or not weaponDef then return damage end
 	--- count how many turret and base hits we get
 	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
+	if not hits[unitDefID] then hits[unitDefID] = {} end
+	hits[unitDefID][pieceHit] = hits[unitDefID][pieceHit] or 0 + 1
 	if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
 	
 	local armor, slope
@@ -222,7 +225,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local dx, dy, dz = Spring.GetProjectileDirection(projectileID)
 	-- for some reason we need to flip the direction of all these for stuff to work :/
 	if not dx then
-		Spring.Echo("dx was nil?" dx, dy, dz, projectileID, weaponDef.name, UnitDefs[unitDefID].name)
+		Spring.Echo("dx was nil?", dx, dy, dz, projectileID, weaponDef.name, UnitDefs[unitDefID].name)
 		return 0
 	end
 	dx = -dx 
@@ -352,4 +355,10 @@ function gadget:GameOver()
 	--Spring.Log('armour gadget', 'info', "Turret Hits: " .. turretHits)
 	Spring.Echo("Base Hits: " .. baseHits)
 	Spring.Echo("Turret Hits: " .. turretHits)
+	for unitDefID, hitTable in pairs(hits) do
+		Spring.Echo(UnitDefs[unitDefID].name, "was hit")
+		for piece, times in pairs(hitTable) do
+			Spring.Echo(piece, times)
+		end
+	end
 end
