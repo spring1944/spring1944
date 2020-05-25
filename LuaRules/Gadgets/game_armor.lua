@@ -221,6 +221,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local dotFront, dotUp
 	local dx, dy, dz = Spring.GetProjectileDirection(projectileID)
 	-- for some reason we need to flip the direction of all these for stuff to work :/
+	if not dx then
+		Spring.Echo("dx was nil?" dx, dy, dz, projectileID, weaponDef.name, UnitDefs[unitDefID].name)
+		return 0
+	end
 	dx = -dx 
 	dy = -dy
 	dz = -dz
