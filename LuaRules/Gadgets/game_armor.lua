@@ -206,9 +206,11 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if not unitInfo or not weaponInfo or not weaponDef then return damage end
 	--- count how many turret and base hits we get
 	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
-	if not hits[unitDefID] then hits[unitDefID] = {} end
-	hits[unitDefID][pieceHit] = hits[unitDefID][pieceHit] or 0 + 1
-	if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
+	if pieceHit then
+		if not hits[unitDefID] then hits[unitDefID] = {} end
+		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
+		if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
+	end
 	
 	local armor, slope
 	
