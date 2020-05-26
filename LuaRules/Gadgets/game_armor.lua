@@ -121,6 +121,7 @@ function gadget:Initialize()
 			local slope_front = math.rad(customParams.slope_front or 0)
 			local slope_side = math.rad(customParams.slope_side or 0)
 			local slope_rear = math.rad(customParams.slope_rear or 0)
+			local lwRatio --= math.cos(math.rad(45))
 			
 			unitInfos[i] = {
 				armor_front, --forwardArmorTranslation(armor_front),
@@ -132,6 +133,7 @@ function gadget:Initialize()
 				slope_front,
 				slope_side,
 				slope_rear,
+				lwRatio,
 			}
 		end
 	end
@@ -190,6 +192,20 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	--binocs and tracers do zero damage already, so we don't need to be doing a string search...
 	if damage <= 1 then return 0 end
 	
+	--- count how many turret and base hits we get
+	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
+	if pieceHit then
+		if not hits[unitDefID] then hits[unitDefID] = {} end
+		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
+		if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
+	end
+
+	if not unitInfos[unitDefID][10] then
+		local pieceMap = Spring.GetUnitPieceMap(unitID)
+		local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["base"])
+		unitInfos[unitDefID][10] = math.cos(math.atan(y/x))
+	end
+	
 	local unitInfo = unitInfos[unitDefID]
 	local weaponInfo = weaponInfos[weaponDefID]
 	local weaponDef = WeaponDefs[weaponDefID]
@@ -203,17 +219,10 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		return 0
 	end
 		
-	if not unitInfo or not weaponInfo or not weaponDef then return damage end
-	--- count how many turret and base hits we get
-	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
-	if pieceHit then
-		if not hits[unitDefID] then hits[unitDefID] = {} end
-		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
-		if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
-	end
+	if not unitInfo or not weaponInfo or not weaponDef then return damage end	
 	
+	-- If we got this far, we are doing armour calculations
 	local armor, slope
-	
 	local armor_hit_side = weaponInfo[3]
 	
 	local frontDir, upDir, rightDir = GetUnitVectors(unitID)
@@ -256,9 +265,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
 			armor_hit_side = "top"
 		else
-			if dotFront > SQRT_HALF then
+			if dotFront > unitInfo[10] then
 				armor_hit_side = "front"
-			elseif dotFront > -SQRT_HALF then
+			elseif dotFront > -unitInfo[10] then
 				armor_hit_side = "side"
 			else
 				armor_hit_side = "rear"
