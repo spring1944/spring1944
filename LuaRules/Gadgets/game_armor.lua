@@ -203,7 +203,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if not unitInfos[unitDefID][10] then
 		local pieceMap = Spring.GetUnitPieceMap(unitID)
 		local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["base"])
-		unitInfos[unitDefID][10] = math.cos(math.atan(y/x))
+		unitInfos[unitDefID][10] = math.cos(math.atan(y/z))
 	end
 	
 	local unitInfo = unitInfos[unitDefID]
