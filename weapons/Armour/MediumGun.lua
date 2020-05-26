@@ -121,6 +121,65 @@ local KwK75mmL71AP = MediumAP:New(KwK75mmL71, true):New{
   },
 }
 
+--KT 76.2mm (RUS)
+local KT28_76mm = MediumGun:New{
+  name               = [[KT-28]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[short_75mm]],
+  customparams = {
+    weaponcost    = 15,
+  }, 
+}
+
+local KT28_76mmHE = MediumHE:New(KT28_76mm, true):New{
+  areaOfEffect       = 91,
+  weaponVelocity     = 926,
+  damage = {
+    default            = 1534,
+  },  
+}
+
+local KT28_76mmAP = MediumAP:New(KT28_76mm, true):New{
+  weaponVelocity     = 1176,
+  customparams = {
+    armor_penetration_1000m = 34,
+    armor_penetration_100m  = 28,
+  },
+  damage = {
+    default            = 2557,
+  },
+}
+
+-- L-10 76.2mm (RUS)
+local L10_76mm = MediumGun:New{
+  name               = [[L-10 76.2mm]],
+  range              = 1270,
+  reloadTime         = 5.25,
+  soundStart         = [[RUS_76mm]],
+  customparams = {
+    weaponcost    = 16,
+  }, 
+}
+
+local L10_76mmHE = MediumHE:New(L10_76mm, true):New{
+  areaOfEffect       = 103, -- !
+  weaponVelocity     = 926,
+  damage = {
+    default            = 2160,
+  },  
+}
+local L10_76mmAP = MediumAP:New(L10_76mm, true):New{
+  weaponVelocity     = 1358,
+  customparams = {
+    armor_penetration_1000m = 46,
+    armor_penetration_100m  = 67,
+  },
+  damage = {
+    default            = 2510,
+  },
+}
+
 -- F-34 76.2mm (RUS)
 local F3476mm = MediumGun:New{
   name               = [[F-34 76.2mm]],
@@ -623,6 +682,12 @@ return lowerkeys({
   -- KwK 40 L/71
   KwK75mmL71HE = KwK75mmL71HE,
   KwK75mmL71AP = KwK75mmL71AP,
+  -- KT
+  KT28_76mmAP = KT28_76mmAP,
+  KT28_76mmHE = KT28_76mmHE,
+  -- L-10
+  L10_76mmAP = L10_76mmAP,
+  L10_76mmHE = L10_76mmHE,
   -- F-34 76.2mm
   F3476mmHE = F3476mmHE,
   F3476mmAP = F3476mmAP,
