@@ -200,7 +200,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
 	end
 
-	if not unitInfos[unitDefID][10] then
+	if unitInfos[unitDefID] and not unitInfos[unitDefID][10] then
 		local pieceMap = Spring.GetUnitPieceMap(unitID)
 		local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["base"])
 		unitInfos[unitDefID][10] = math.cos(math.atan(x/z))
