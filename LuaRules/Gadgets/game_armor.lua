@@ -63,7 +63,7 @@ end
 
 local function inverseArmorTranslation(x)
 	return x ^ (1 / ARMOR_POWER)
-end
+end 
 
 ----------------------------------------------------------------
 --locals
@@ -204,6 +204,16 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		local pieceMap = Spring.GetUnitPieceMap(unitID)
 		local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["base"])
 		unitInfos[unitDefID][10] = math.cos(math.atan(x/z))
+		Spring.Echo("base", x, z, x/z)
+		unitInfos[unitDefID][10] = math.cos(math.atan(x/z))
+		unitInfos[unitDefID]["base"] = pieceMap["base"]
+		--x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["turret"])
+		--unitInfos[unitDefID][11] = math.cos(math.atan(y/x))
+		--unitInfos[unitDefID]["turret"] = pieceMap["turret"]
+		x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["super"])
+		Spring.Echo("super", x, z, x/z)
+		unitInfos[unitDefID][12] = math.cos(math.atan(x/z))
+		unitInfos[unitDefID]["super"] = pieceMap["super"]
 	end
 	
 	local unitInfo = unitInfos[unitDefID]
@@ -242,9 +252,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	dx = -dx 
 	dy = -dy
 	dz = -dz
-	
+	local ux, uy, uz
 	if ownerPos[attackerID] then -- position when the projectile was _created_
-		local ux, uy, uz = GetUnitPosition(unitID)
+		ux, uy, uz = Spring.GetUnitPiecePosDir(unitID, pieceHit and unitInfo[pieceHit] or 1)--GetUnitPosition(unitID)
 		local ax, ay, az = unpack(ownerPos[attackerID])
 		local sx, sy, sz -- displacement vector
 		sx, sy, sz = ax - ux, ay - uy, az - uz
@@ -258,16 +268,18 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		d = 500
 	end
 	
+	local todo = (pieceHit == "base" and 10) or 12
 	--discrete arcs
 	--splash hits don't use armor_hit_side
+	Spring.Echo("Piece was", pieceHit, ux, uy, uz, "dotFront", dotFront, todo, "threshold", unitInfo[todo], math.deg(math.acos(unitInfo[todo])))
 	if not armor_hit_side then
 			--and (weaponInfo[1] ~= "explosive" or damage / weaponDef.damages[unitInfo[6]] > DIRECT_HIT_THRESHOLD) then
 		if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
 			armor_hit_side = "top"
 		else
-			if dotFront > unitInfo[10] then
+			if dotFront > unitInfo[todo] then
 				armor_hit_side = "front"
-			elseif dotFront > -unitInfo[10] then
+			elseif dotFront > -unitInfo[todo] then
 				armor_hit_side = "side"
 			else
 				armor_hit_side = "rear"
@@ -347,7 +359,8 @@ end
 
 function gadget:ProjectileCreated(projID, ownerID, weaponID)
 	if weaponInfos[weaponID] and ownerID then
-		ownerPos[ownerID] = {GetUnitPosition(ownerID)}
+		local pieceMap = Spring.GetUnitPieceMap(ownerID)
+		ownerPos[ownerID] = {Spring.GetUnitPiecePosDir(ownerID, pieceMap["flare_1"])}--GetUnitPosition(ownerID)}
 	end
 end
 

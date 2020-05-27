@@ -36,6 +36,12 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 		killvoicephasecount	= 3,
 		exhaust_fx_name			= "diesel_exhaust",
 		normaltex			= "unittextures/RUSISU152_normals.dds",
+		piecehitvols		= {
+			base				= {
+									scale = {1, 0.6, 1},
+									offset = {0, -0.2, 0},
+								},
+		},
 	},
 }
 

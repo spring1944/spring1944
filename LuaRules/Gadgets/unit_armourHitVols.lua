@@ -16,7 +16,7 @@ local GetUnitPieceList					= Spring.GetUnitPieceList
 local SetPieceColVol					= Spring.SetUnitPieceCollisionVolumeData
 local GetPieceColVol					= Spring.GetUnitPieceCollisionVolumeData
 
-local armourPieces = {["base"] = true, ["turret"] = true}
+local armourPieces = {["base"] = true, ["turret"] = true, ["super"] = true}
 local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2"] = true}
 
 local function SetColVols(unitID, ud, colPieces)
