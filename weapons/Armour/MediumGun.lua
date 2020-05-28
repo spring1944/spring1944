@@ -143,8 +143,8 @@ local KT28_76mmHE = MediumHE:New(KT28_76mm, true):New{
 local KT28_76mmAP = MediumAP:New(KT28_76mm, true):New{
   weaponVelocity     = 1176,
   customparams = {
-    armor_penetration_1000m = 34,
-    armor_penetration_100m  = 28,
+    armor_penetration_1000m = 28,
+    armor_penetration_100m  = 34,
   },
   damage = {
     default            = 2557,
