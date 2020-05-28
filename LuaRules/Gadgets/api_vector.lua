@@ -32,6 +32,12 @@ local function Normalized(x, y, z)
 		return x / mag, y / mag, z / mag, mag
 	end
 end
+local function Elevate(x,y,z, ux,uy,uz, angle)
+	local cosAngle = cos(angle)
+	local sinAngle = sin(angle)
+	--return x*cosAngle, y*cosAngle + uy*sinAngle, z*cosAngle
+	return x*cosAngle + ux*sinAngle, y*cosAngle + uy*sinAngle, z*cosAngle + uz*sinAngle
+end
 
 local function RotateY(x, y, z, angle)
 	local cosAngle = cos(angle)
@@ -216,6 +222,7 @@ end
 local Vector = {
 	Magnitude = Magnitude,
 	Normalized = Normalized,
+	Elevate = Elevate,
 	RotateY = RotateY,
 	RotateX = RotateX,
 	RotateZ = RotateZ,

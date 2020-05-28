@@ -47,10 +47,12 @@ end
 --along with cost, controls how hard counters are; higher = harder counters
 --recommend somewhere around 4-8?
 local ARMOR_POWER = 8.75 --3.7
-local OVERMATCH = 1.5 -- how much armour needs to be exceeded by to always pen
-local BOUNCE_MIN_ANGLE = math.cos(math.rad(60)) -- 60 degrees or more
+local OVERMATCH = 0.1--.5 -- how much armour needs to be exceeded by to always pen
+local BOUNCE_MIN_ANGLE = math.cos(math.rad(6)) -- 60 degrees or more
 local BOUNCE_MULT = 0.2 -- how much velocity to keep after a richochet
 local BOUNCE_TTL = 45 -- 1.5 seconds
+
+local PIECES = {["base"] = true, ["super"] = true, ["turret"] = true}
 
 --effective penetration = HE_MULT * sqrt(damage)
 local HE_MULT = 1.45 --1.9/2.2
@@ -79,8 +81,7 @@ local unitInfos = {}
 local weaponInfos = {}
 
 -- counters for piece hits
-local turretHits = 0
-local baseHits = 0
+local hitCounts = {} -- ["base"] = number, etc
 local hits = {} -- unitdefID = {base, turret}
 
 -- Remember where projectile owners were when they were spawned
@@ -111,7 +112,7 @@ function gadget:Initialize()
 	vDotProduct = GG.Vector.DotProduct3
 	local armorTypes = Game.armorTypes
 
-	for i,  unitDef in pairs(UnitDefs) do
+	for unitDefID,  unitDef in pairs(UnitDefs) do
 		local customParams = unitDef.customParams
 		if customParams.armor_front then
 			local armor_front = customParams.armor_front
@@ -123,7 +124,7 @@ function gadget:Initialize()
 			local slope_rear = math.rad(customParams.slope_rear or 0)
 			local lwRatio --= math.cos(math.rad(45))
 			
-			unitInfos[i] = {
+			unitInfos[unitDefID] = {
 				armor_front, --forwardArmorTranslation(armor_front),
 				armor_side, --forwardArmorTranslation(armor_side),
 				armor_rear, --forwardArmorTranslation(armor_rear),
@@ -134,6 +135,12 @@ function gadget:Initialize()
 				slope_side,
 				slope_rear,
 				lwRatio,
+			}
+		end
+		if customParams.armour then
+			unitInfos[unitDefID] = {
+				["armour"] = table.unserialize(customParams.armour),
+				lwRatios = {},
 			}
 		end
 	end
@@ -171,6 +178,26 @@ function gadget:Initialize()
 			Script.SetWatchWeapon(i, true)
 		end
 	end
+	-- Fake UnitCreated events for existing units. (for '/luarules reload')
+	local allUnits = Spring.GetAllUnits()
+	for i=1,#allUnits do
+		local unitID = allUnits[i]
+		gadget:UnitCreated(unitID, Spring.GetUnitDefID(unitID))
+	end
+end
+
+function gadget:UnitCreated(unitID, unitDefID, unitTeam)
+	-- TODO: remove the check for .armour once everything uses the table
+	if unitInfos[unitDefID] and unitInfos[unitDefID].armour and not unitInfos[unitDefID].lwRatios["base"] then
+		local pieceMap = Spring.GetUnitPieceMap(unitID)
+		for piece in pairs(PIECES) do
+			local pieceNum = pieceMap[piece]
+			if pieceNum then -- Only 1 of turret or super should exist
+				local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceNum)
+				unitInfos[unitDefID].lwRatios[piece] = math.cos(math.atan(x/z))
+			end
+		end
+	end
 end
 
 function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
@@ -197,28 +224,15 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if pieceHit then
 		if not hits[unitDefID] then hits[unitDefID] = {} end
 		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
-		if pieceHit == "turret" then turretHits = turretHits + 1 else baseHits = baseHits + 1 end
+		hitCounts[pieceHit] = (hitCounts[pieceHit] or 0) + 1
 	end
 
-	if unitInfos[unitDefID] and not unitInfos[unitDefID][10] then
-		local pieceMap = Spring.GetUnitPieceMap(unitID)
-		local x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["base"])
-		unitInfos[unitDefID][10] = math.cos(math.atan(x/z))
-		Spring.Echo("base", x, z, x/z)
-		unitInfos[unitDefID][10] = math.cos(math.atan(x/z))
-		unitInfos[unitDefID]["base"] = pieceMap["base"]
-		--x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["turret"])
-		--unitInfos[unitDefID][11] = math.cos(math.atan(y/x))
-		--unitInfos[unitDefID]["turret"] = pieceMap["turret"]
-		x,y,z = Spring.GetUnitPieceCollisionVolumeData(unitID, pieceMap["super"])
-		Spring.Echo("super", x, z, x/z)
-		unitInfos[unitDefID][12] = math.cos(math.atan(x/z))
-		unitInfos[unitDefID]["super"] = pieceMap["super"]
-	end
-	
 	local unitInfo = unitInfos[unitDefID]
 	local weaponInfo = weaponInfos[weaponDefID]
 	local weaponDef = WeaponDefs[weaponDefID]
+	
+	-- If the hit unit wasn't armoured, we're done
+	if not unitInfo or not weaponInfo or not weaponDef then return damage end	
 	
 	-- smallarms do 0 damage to heavy armour
 	if unitInfo and weaponDef.customParams.damagetype == "smallarm" then 
@@ -228,8 +242,6 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		end
 		return 0
 	end
-		
-	if not unitInfo or not weaponInfo or not weaponDef then return damage end	
 	
 	-- If we got this far, we are doing armour calculations
 	local armor, slope
@@ -268,36 +280,39 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		d = 500
 	end
 	
-	local todo = (pieceHit == "base" and 10) or 12
+	--local todo = (pieceHit == "base" and 10) or 12
+	local cosLW = unitInfo.lwRatios[pieceHit]
 	--discrete arcs
 	--splash hits don't use armor_hit_side
-	Spring.Echo("Piece was", pieceHit, ux, uy, uz, "dotFront", dotFront, todo, "threshold", unitInfo[todo], math.deg(math.acos(unitInfo[todo])))
+	Spring.Echo("Piece was", pieceHit, ux, uy, uz, "dotFront", dotFront, cosLW, "threshold", cosLW, math.deg(math.acos(cosLW)))
 	if not armor_hit_side then
 			--and (weaponInfo[1] ~= "explosive" or damage / weaponDef.damages[unitInfo[6]] > DIRECT_HIT_THRESHOLD) then
 		if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
 			armor_hit_side = "top"
 		else
-			if dotFront > unitInfo[todo] then
+			if dotFront > cosLW then
 				armor_hit_side = "front"
-			elseif dotFront > -unitInfo[todo] then
+			elseif dotFront > -cosLW then
 				armor_hit_side = "side"
 			else
 				armor_hit_side = "rear"
 			end
 		end
 	end
+	armor = unitInfo.armour[pieceHit][armor_hit_side].thickness
+	slope = unitInfo.armour[pieceHit][armor_hit_side].slope or 0
 	if armor_hit_side == "top" then 
-		armor = unitInfo[4] -- top
-		slope = 0
+		--armor = unitInfo[4] -- top
+		--slope = 0
 		hitVector = upDir
 	elseif armor_hit_side == "rear" then
-		armor = unitInfo[3]
-		slope = unitInfo[9]
+		--armor = unitInfo[3]
+		--slope = unitInfo[9]
 		hitVector = rearDir
 		rotateFunc = GG.Vector.RotateX
 	elseif armor_hit_side == "side" then
-		armor = unitInfo[2]
-		slope = unitInfo[8]
+		--armor = unitInfo[2]
+		--slope = unitInfo[8]
 		rotateFunc = GG.Vector.RotateZ
 		local dotRight = vDotProduct(dx,dy,dz, rightDir[1], rightDir[2], rightDir[3])
 		if dotRight > 0 then
@@ -307,8 +322,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 			hitVector = leftDir
 		end
 	else -- front
-		armor = unitInfo[1]
-		slope = unitInfo[7]
+		--armor = unitInfo[1]
+		--slope = unitInfo[7]
 		hitVector = frontDir
 		rotateFunc = GG.Vector.RotateX
 		rotateDir = -1
@@ -324,8 +339,11 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	if (not modOptions) or (modOptions and modOptions.sloped_armour == "1") then
 		local fx,fy,fz = unpack(hitVector)
 		if rotateFunc then
-			fx,fy,fz = rotateFunc(hitVector[1], hitVector[2], hitVector[3], rotateDir * slope)
-			fy = (slope > 0) and math.abs(fy) or -math.abs(fy)
+			Spring.Echo("Original vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
+			--fx,fy,fz = rotateFunc(hitVector[1], hitVector[2], hitVector[3], rotateDir * math.rad(slope))
+			fx,fy,fz = GG.Vector.Elevate(hitVector[1],hitVector[2],hitVector[3], upDir[1],upDir[2],upDir[3], math.rad(slope))
+			Spring.Echo("Rotated vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
+			--fy = (slope > 0) and math.abs(fy) or -math.abs(fy)
 		end
 
 		local armorPre = armor -- just for debug echo
@@ -375,14 +393,17 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function gadget:GameOver()
-	--Spring.Log('armour gadget', 'info', "Base Hits: " .. baseHits)
-	--Spring.Log('armour gadget', 'info', "Turret Hits: " .. turretHits)
-	Spring.Echo("Base Hits: " .. baseHits)
-	Spring.Echo("Turret Hits: " .. turretHits)
+	for piece, count in pairs(hitCounts) do
+		Spring.Echo(piece .. " hits: " .. count)
+	end
 	for unitDefID, hitTable in pairs(hits) do
 		Spring.Echo(UnitDefs[unitDefID].name, "was hit")
 		for piece, times in pairs(hitTable) do
 			Spring.Echo(piece, times)
 		end
 	end
+end
+
+function gadget:UnitDestroyed()
+	gadget:GameOver()
 end

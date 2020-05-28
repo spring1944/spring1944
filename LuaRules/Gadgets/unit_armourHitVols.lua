@@ -55,7 +55,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local cp = ud.customParams
 	if cp and cp.children then
 		SetColVols(unitID, ud, boatPieces)
-	elseif cp and cp.armor_front then
+	elseif cp and (cp.armor_front or cp.armour) then
 		SetColVols(unitID, ud, armourPieces)
 	end
 end

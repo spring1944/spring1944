@@ -20,13 +20,41 @@ local RUSISU152 = HeavyTank:New(AssaultGun):New{
 		},
 	},
 	customParams = {
-		armor_front			= 90,
-		armor_rear			= 60,
-		armor_side			= 75,
-		armor_top			= 30,
-		slope_front			= 29,
-		slope_rear			= 50,
-		slope_side			= 15,
+		armour = {
+			base = {
+				front = {
+					thickness		= 90,
+					slope			= -31,
+				},
+				rear = {
+					thickness		= 60,
+					slope			= 50,
+				},
+				side = {
+					thickness 		= 90,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 90,
+					slope			= 29,
+				},
+				rear = {
+					thickness		= 60,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 75,
+					slope			= 15,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+		},
 
 		maxammo				= 4,
 		soundcategory		= "RUS/Tank/Zveroboy",
