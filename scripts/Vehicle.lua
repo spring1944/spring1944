@@ -490,11 +490,11 @@ function script.QueryWeapon(weaponNum)
 		return cegPiece
 	end
 	-- Shields etc.
-	return base
+	return base - 1
 end
 
 function script.AimFromWeapon(weaponNum)
-	local headingPiece = info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] or base
+	local headingPiece = info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] or (base -1)
 	return headingPiece
 end
 
