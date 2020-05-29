@@ -31,12 +31,43 @@ local GERSdKfz250 = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
-		armor_rear			= 10,
-		armor_side			= 8,
-		armor_top			= 6,
-		slope_front			= 20,
-		slope_rear			= 20,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 20,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 20,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 30,
+					slope			= 36,
+				},
+				rear = {
+					thickness		= 8,
+					slope			= 36,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 27,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
+		
 		slope_side			= 30,
 		maxammo				= 19,
 		turretturnspeed		= 20, -- manual, light turret

@@ -29,12 +29,41 @@ local GERPanzerIII = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 70,
-		armor_rear			= 50,
-		armor_side			= 30,
-		armor_top			= 15,
-		slope_front			= 12,
-		slope_rear			= -10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 70,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 53,
+					slope			= 16,
+				},
+				side = {
+					thickness 		= 30,
+				},
+				top = {
+					thickness		= 17,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+					slope			= 15,
+				},
+				rear = {
+					thickness		= 30,
+					slope			= 12,
+				},
+				side = {
+					thickness 		= 30,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 12,
 		maxvelocitykmh		= 40,
 		normaltex			= "unittextures/GERPanzerIII_normals.dds",

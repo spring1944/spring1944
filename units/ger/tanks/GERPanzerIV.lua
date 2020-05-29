@@ -29,12 +29,42 @@ local GERPanzerIV = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 80,
-		armor_rear			= 20,
-		armor_side			= 35, -- 30mm + 5mm skirt
-		armor_top			= 15,
-		slope_front			= 11,
-		slope_rear			= -10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 80,
+					slope			= 10,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= -8,
+				},
+				side = {
+					thickness 		= 35,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+					slope			= 11,
+				},
+				rear = {
+					thickness		= 38,
+					slope			= 17,
+				},
+				side = {
+					thickness 		= 38, -- 30mm + 8mm skirt
+					slope			= 26,
+				},
+				top = {
+					thickness		= 16,
+				},
+			},
+		},
+		
 		maxammo				= 17,
 		turretturnspeed		= 16, -- 22.5s for 360
 		maxvelocitykmh		= 25,

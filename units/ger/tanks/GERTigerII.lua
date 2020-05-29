@@ -29,13 +29,44 @@ local GERTigerII = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 150,
-		armor_rear			= 80,
-		armor_side			= 80,
-		armor_top			= 40,
-		slope_front			= 50,
-		slope_rear			= -28,
-		slope_side			= 27,
+		armour = {
+			base = {
+				front = {
+					thickness		= 150,
+					slope			= 50,
+				},
+				rear = {
+					thickness		= 80,
+					slope			= -28,
+				},
+				side = {
+					thickness 		= 80,
+					slope			= 27,
+				},
+				top = {
+					thickness		= 40,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 185,
+					slope			= 9,
+				},
+				rear = {
+					thickness		= 80,
+					slope			= 19,
+				},
+				side = {
+					thickness 		= 80,
+					slope			= 19,
+				},
+				top = {
+					thickness		= 44,
+				},
+			},
+		},
+	
+
 		maxammo				= 16,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 38,

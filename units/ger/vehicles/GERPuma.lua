@@ -30,12 +30,43 @@ local GERPuma = HeavyArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 10,
-		armor_side			= 8,
-		armor_top			= 5,
-		slope_front			= 55,
-		slope_rear			= 46,
+		armour = {
+			base = {
+				front = {
+					thickness		= 30,
+					slope			= 55,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 21,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 35,
+				},
+				top = {
+					thickness		= 5,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 30,
+					slope			= 20,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 25,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+		},
+
 		slope_side			= 34,
 		maxammo				= 10,
 		turretturnspeed		= 12, -- manual

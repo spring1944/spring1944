@@ -11,6 +11,38 @@ local GERSdKfz10 = ArmouredCarAA:New{
 		},
 	},
 	customParams = {
+		armour = {
+			base = {
+				front = {
+					thickness		= 11,
+					slope			= 17,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 7,
+					slope			= 28,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		armor_front			= 11,
 		armor_rear			= 0,
 		armor_side			= 0,
