@@ -340,7 +340,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		armor = GG.Vector.EffectiveThickness(armor, dx,dy,dz, fx,fy,fz)
 		local dotActual = vDotProduct(dx,dy,dz, fx,fy,fz)
 		if (not modOptions) or (modOptions and modOptions.sloped_armour_debug == "1") then
-			Spring.Echo(pieceHit .. " (" .. armor_hit_side .. ") actual armour is " .. armorPre .. " @ " .. slope .. ". Effective armour is " .. armor .. " @ " .. math.deg(math.acos(dotActual)) .. " (Pen: " .. penetration .."mm)")
+			Spring.Echo(pieceHit .. " (" .. armor_hit_side .. ") actual armour is " .. armorPre .. "mm @ " .. slope .. "°" ..
+						". Effective armour is " .. string.format("%3d",armor) .. "mm @ " .. string.format("%3d",math.deg(math.acos(dotActual))) .. "°" ..
+						" (Pen: " .. string.format("%3d",penetration) .."mm)")
 		end
 		
 		if OVERMATCH * penetration < armor then -- might bounce, check angle
@@ -361,7 +363,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	-- apply damage
 	armor = forwardArmorTranslation(armor)
 	penetration = forwardArmorTranslation(penetration)
-	local mult = 0--penetration / (penetration + armor)
+	local mult = penetration / (penetration + armor)
 	
 	return damage * mult
 end

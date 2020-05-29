@@ -28,12 +28,41 @@ local FRAAMD35 = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
-		armor_rear			= 15,
-		armor_side			= 15,
-		armor_top			= 7,
-		slope_front			= 66,
-		slope_rear			= -2,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 66,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 7,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 26,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 30,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 24,
+				},
+				top = {
+					thickness		= 7,
+				},
+			},
+		},
 
 		barrelrecoildist	= 1,
 

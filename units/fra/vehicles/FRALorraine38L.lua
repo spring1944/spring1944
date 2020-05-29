@@ -9,14 +9,25 @@ local Lorraine38L = HalfTrack:New{
 	objectName				= "FRA/FRALorraine38L.s3o",
 	
 	customParams = {
-		armor_front			= 16,
-		armor_rear			= 16,
-		armor_side			= 9,
-		armor_top			= 0,
-		slope_front			= 66,
+		armour = {
+			base = {
+				front = {
+					thickness		= 16,
+					slope			= 66,
+				},
+				rear = {
+					thickness		= 16,
+				},
+				side = {
+					thickness 		= 9,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxvelocitykmh		= 37,
 		customanims			= "lorraine38l",
-
 	},
 }
 

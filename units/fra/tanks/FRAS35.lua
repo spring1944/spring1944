@@ -33,15 +33,44 @@ local FRAS35 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 47,
-		armor_rear			= 35,
-		armor_side			= 38,
-		armor_top			= 25,
-		slope_front			= 23,
-		slope_rear			= 29,
-		slope_side			= 20,
+		armour = {
+			base = {
+				front = {
+					thickness		= 47,
+					slope			= 24,
+				},
+				rear = {
+					thickness		= 35,
+					slope			= 31,
+				},
+				side = {
+					thickness 		= 40,
+					slope			= 21,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 56,
+				},
+				rear = {
+					thickness		= 45,
+					slope			= 21,
+				},
+				side = {
+					thickness 		= 45,
+					slope			= 22,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+		},
+		
 		maxammo				= 24,
-
+		
 		barrelrecoildist		= 1,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,

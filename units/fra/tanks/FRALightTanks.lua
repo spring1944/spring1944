@@ -27,14 +27,44 @@ local FRAR35 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 32,
-		armor_rear			= 40,
-		armor_side			= 40,
-		armor_top			= 25,
-		slope_front			= 13,
-		slope_rear			= 24,
+		armour = {
+			base = {
+				front = {
+					thickness		= 32,
+					slope			= 23,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= 24,
+				},
+				side = {
+					thickness 		= 40,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 45,
+					slope			= 28,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= 29,
+				},
+				side = {
+					thickness 		= 40,
+					slope			= 26,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
+		
+		
 		maxammo				= 24,
-
 		barrelrecoildist		= 1,
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
@@ -67,13 +97,43 @@ local FRAH35 = FRAR35:New{
 	buildCostMetal		= 1700,
 	objectName			= "FRA/FRAH35.s3o",
 	customParams = {
-		armor_front			= 34,
-		armor_rear			= 34,
-		armor_side			= 34,
-		armor_top			= 22,
-		slope_front			= 8,
-		slope_side			= 20,
-		slope_rear			= 31,
+		armour = {
+			base = {
+				front = {
+					thickness		= 34,
+					slope			= 31,
+				},
+				rear = {
+					thickness		= 34,
+					slope			= 31,
+				},
+				side = {
+					thickness 		= 34,
+					slope			= 22,
+				},
+				top = {
+					thickness		= 22,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 45,
+					slope			= 28,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= 30,
+				},
+				side = {
+					thickness 		= 40,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
+
 		maxvelocitykmh	= 25,
 		customanims	= "hotchkiss_h",
 	},
@@ -94,9 +154,19 @@ local FRAH39 = FRAH35:New{
 	},
 	-- armor upgraded to 40mm
 	customParams = {
-		armor_front	= 40,
-		armor_side	= 40,
-		armor_rear	= 40,
+		armour = {
+			base = {
+				front = {
+					thickness		= 40,
+				},
+				rear = {
+					thickness		= 40,
+				},
+				side = {
+					thickness 		= 40,
+				},
+			},
+		},
 	},
 }
 

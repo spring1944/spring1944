@@ -72,7 +72,7 @@ local GERPanther = HeavyTank:New{
 		piecehitvols		= {
 			base = {
 				scale = {1, 0.8, 1},
-				offset = {0, -0.2, 0},
+				offset = {0, -0.1, 0},
 			},
 		},
 	},
