@@ -29,11 +29,41 @@ local GBRCromwell = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 64,
-		armor_rear			= 32,
-		armor_side			= 25,
-		armor_top			= 14,
-		slope_front			= 1,
+		armour = {
+			base = {
+				front = {
+					thickness		= 64,
+					slope			= 1,
+				},
+				rear = {
+					thickness		= 32,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 44, -- upper hull side
+				},
+				top = {
+					thickness		= 14, -- engine deck
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 64,
+					slope			= 1,
+				},
+				rear = {
+					thickness		= 44,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 51,
+					slope			= 1,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
 		maxammo				= 12,
 		turretturnspeed		= 25, -- 14-15s for 360
 		maxvelocitykmh		= 64,

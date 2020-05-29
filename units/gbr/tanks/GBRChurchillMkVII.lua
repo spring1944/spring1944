@@ -31,12 +31,41 @@ local GBRChurchillMkVII = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 152,
-		armor_rear			= 51,
-		armor_side			= 95,
-		armor_top			= 16,
-		slope_front			= 1,
-		slope_rear			= 1,
+		armour = {
+			base = {
+				front = {
+					thickness		= 152,
+					slope			= 1,
+				},
+				rear = {
+					thickness		= 51,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 95,
+				},
+				top = {
+					thickness		= 16,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 152,
+					slope			= 1,
+				},
+				rear = {
+					thickness		= 95,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 95,
+					slope			= 0,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
 		maxammo				= 14,
 		turretturnspeed		= 24, -- 15s for 360
 		maxvelocitykmh		= 24,
